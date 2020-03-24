@@ -1,0 +1,83 @@
+################################
+# Example Changelog File
+#
+# Note: This file, and files beginning with ".", and files that don't end in ".yml" will not be read. If you change this file, you will look really dumb.
+#
+# Your changelog will be merged with a master changelog. (New stuff added only, and only on the date entry for the day it was merged.)
+# When it is, any changes listed below will disappear.
+#
+# Valid Prefixes: 
+#   bugfix
+#   wip (For works in progress)
+#   tweak
+#   soundadd
+#   sounddel
+#   rscadd (general adding of nice things)
+#   rscdel (general deleting of nice things)
+#   imageadd
+#   imagedel
+#   maptweak
+#   spellcheck (typo fixes)
+#   experiment
+#################################
+
+# Your name.  
+author: TobiNerd
+
+# Optional: Remove this file after generating master changelog.  Useful for PR changelogs that won't get used again.
+delete-after: True
+
+# Any changes you've made.  See valid prefix list above.
+# INDENT WITH TWO SPACES.  NOT TABS.  SPACES.
+# SCREW THIS UP AND IT WON'T WORK.
+# Also, all entries are changed into a single [] after a master changelog generation. Just remove the brackets when you add new entries.
+# Please surround your changes in  double quotes ("), as certain characters otherwise screws up compiling. The quotes will not show up in the changelog.
+changes: 
+  - wip: "Until reactors get reworked: ship fusion engines now always start in perfect state with max fuel and no fuel consumption."
+  - experiment: "ORDNANCE TECHNICIAN UPDATE. The Maintenance Technician is now renamed to Ordnance Technicnan."
+  - rscadd: "The Ordnance Technician (OT) keep the duties of maintaining the OB cannon and may perform the same duties as the old MT, but their primary active job is the construction of new weapons for the USCM arsenal."
+  - maptweak: "Moved Tank Crew quarters to the northern tank bay."
+  - rscadd: "Added an ordnance workshop in the area of the former tank bay. This workshop has everything needed to create custom explosives, although of finite quantity. Use your materials wisely!"
+  - rscadd: "Added the armylathe. The armylathe is a special autolathe in the weapons workshop that prints weapon parts. For now this is just for custom explosives. MT level engineering is required to operate the armylathe."
+  - rscadd: "Added a demolitions simulator to the workshop. You can use this to test explosions."
+  - rscadd: "Added the demolitions scanner. This is a special reagent scanner used for scanning bombs and analyzing potential explosive and fire hazards. Use in hand to print the latest reading."
+  - rscadd: "You can now make custom mines, C4, mortar shells and spec rockets. Mortar shells and rockets need hydrogen or methane as fuel respectively."
+  - tweak: "Small chemnade casings can no longer be made by hand and large chemnade casings can no longer be made in the autolathe. Both of these must be made in the armylathe now."
+  - tweak: "Small chemnades now fit in the underslug grenade launcher."
+  - tweak: "MT level engineering is now required to assemble any custom explosive, which can generally be refered to as chembombs."
+  - tweak: "Chemnades can now only use timers. Custom mines can use proximity sensors. Custom C4 can use any of the former plus remote signal."
+  - tweak: "Chemical explosions and chemical fire limits are now defined by the container. This means that the upper limit is significantly lower for grenades than what it used to be, while rockets and mortars are closer to the old upper limit. Overall all custom explosives have an upper limit of 150-175% that of the non customizable equivalent."
+  - tweak: "Chemical explosions and chemical fire reactions can now interact with each other."
+  - tweak: "Nerfed water and potassium explosive reaction as there has been added new explosives."
+  - experiment: "Added the following new chemicals."
+  - rscadd: "Formaldehyde, made with 1 methane, 1 oxygen and 1 phoron. Formed in either a silver beaker (available in the workshop) or with silver as a catalyst. Used in making hexamine and paraformaldehyde."
+  - rscadd: "Paraformaldehyde, made with 1 formaldehyde and 1 water inside the workshop industry freezer. Used in making octogen."
+  - rscadd: "Hexamine, made with 2 ammonia and 3 formaldehyde. Used in making cyclonite and octogen."
+  - rscadd: "Ammonium Nitrate, made with 1 ammonia and 1 polytrinic acid. Used in making ANFO."
+  - rscadd: "Ammonium Nitrate Fuel Oil (ANFO), made with 2 Ammonium nitrate and 1 fuel oil. This is a low strength and low cost explosive."
+  - rscadd: "Cyclonite (RDX), made with 1 hexamine and 1 polytrinic acid. This is a medium strength medium cost explosive."
+  - rscadd: "Octogen (HMX), made with 1 hexamine, 1 polytrinic acid, 1 paraformaldehyde and 1 ammonium nitrate. This is a high strength high cost explosive."
+  - rscadd: "Explosive chemicals can now be either sensitive or insensitive."
+  - rscadd: "Sensitive explosives are potassium hydroxide (water and potassium), nitroglycerin and ANFO. These will spontanously explode if made in more than a certain quantity at a time or when ignited."
+  - rscadd: "Insensitive explosives are ammonium nitrate, cyclonite and octogen. These will only explode when ignited."
+  - rscadd: "Added the reactional chemical properties Oxidizing, Fueling, Flowing, Viscous and Explosive, which affect chemical fire and explosions."
+  - rscadd: "Added the following purchaseable supply crates to Req."
+  - rscadd: "Assembly crate, containing 5 of each igniters, prox sensors and timers."
+  - rscadd: "Pyrotecnics crate, containing beakers of sulfuric acid, ethanol, phosphorus, lithium, salt and potassium chloride."
+  - rscadd: "Phoron crate, containing 2 stacks of 30 phoron bars."
+  - rscadd: "Plastic crate, containing 2 stacks of 10 plastic sheets."
+  - rscadd: "Precious metal crate, a stack of each gold, silver and uranium."
+  - rscadd: "Explosives production crate, two canisters with 400 units of each hydrogen, ammonia, oxygen, methane and polytrinic acid."
+  - imageadd: "Added new sprites for chembombs."
+  - imageadd: "Added dynamic reagent fillings for buckets."
+  - tweak: "The Tool Storage Machine has been renamed to Component Storage Machine and a few has been removed from the Almayer. The YouTool vendor has been renamed to Tool Storage Machine. The Engi-Vend has been renamed to Electronics Vendor. The contents of these three vendors has been tweaked to be more specialized."
+  - tweak: "Vials from random vialboxes are now always full."
+  - tweak: "Proximity sensors now have IFF."
+  - tweak: "It is now possible to disarm C4 with a multitool, or dissolve it with acid."
+  - tweak: "Removed the public autolathe in the hangar."
+  - tweak: "Increased bucket metal costs."
+  - tweak: "You can now dispose reagents from the chem grinder."
+  - tweak: "Added mopbuckets to the autolathe for twice the cost of a normal bucket. Holds twice the amount."
+  - tweak: "Research Cells are no longer excempt from the grenade antigrief. So OTs don't go to research to turn them into your test lab, you aren't supposed to spend the whole round testing. That is why you have the demo scanner."
+  - tweak: "The Ordnance Technician will be restricted behind 3 hours of squad engineer playtime, when time restrictions are reactivated."
+  - experiment: "The code for almost all explosive devices were configured to be compatible with the above updates. If any explosive behaves oddly, please gitlab it."

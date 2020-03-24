@@ -8603,7 +8603,7 @@
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
-/obj/structure/machinery/vending/engineering,
+/obj/structure/machinery/cm_vending/sorted/tech/comp_storage,
 /turf/open/floor{
 	icon_state = "vault"
 	},
@@ -8984,7 +8984,7 @@
 	},
 /area/lv624/lazarus/robotics)
 "aAj" = (
-/obj/structure/machinery/vending/tool,
+/obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
 /turf/open/floor{
 	icon_state = "vault"
 	},
@@ -11577,7 +11577,7 @@
 /obj/structure/mirror{
 	pixel_x = 30
 	},
-/obj/item/explosive/grenade/chem_grenade/cleaner,
+/obj/item/explosive/grenade/custom/cleaner,
 /obj/item/reagent_container/spray/cleaner,
 /turf/open/floor{
 	icon_state = "freezerfloor"
@@ -13157,7 +13157,7 @@
 /turf/closed/gm/dense,
 /area/lv624/ground/jungle3)
 "aLn" = (
-/obj/structure/mopbucket,
+/obj/item/reagent_container/glass/bucket/mopbucket,
 /obj/item/tool/mop,
 /obj/item/tool/mop,
 /turf/open/floor{
@@ -17088,7 +17088,7 @@
 /turf/open/floor/greengrid,
 /area/lv624/lazarus/secure_storage)
 "aWd" = (
-/obj/structure/machinery/vending/engineering,
+/obj/structure/machinery/cm_vending/sorted/tech/comp_storage,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "brown"
@@ -17283,7 +17283,7 @@
 /area/lv624/lazarus/engineering)
 "aWA" = (
 /obj/structure/foamedmetal,
-/obj/structure/machinery/vending/engivend,
+/obj/structure/machinery/cm_vending/sorted/tech/electronics_storage,
 /turf/open/floor{
 	icon_state = "dark"
 	},

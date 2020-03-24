@@ -292,6 +292,84 @@
 	new /obj/item/device/flashlight/flare/on/illumination(T)
 	playsound(T, 'sound/weapons/gun_flare.ogg', 50, 1, 4)
 
+/obj/item/mortar_shell/custom
+	name = "\improper 80mm custom mortar shell"
+	desc = "An 80mm mortar shell."
+	icon_state = "mortar_ammo_custom"
+	matter = list("metal" = 18750) //5 sheets
+	var/obj/item/explosive/warhead/mortar/warhead
+	var/obj/item/reagent_container/glass/fuel
+	var/fuel_requirement = 60
+	var/fuel_type = "hydrogen"
+	var/locked = FALSE
+
+/obj/item/mortar_shell/custom/detonate(var/turf/T)
+	if(fuel)
+		var/fuel_amount = fuel.reagents.get_reagent_amount(fuel_type)
+		if(fuel_amount >= fuel_requirement)
+			forceMove(T)
+	if(warhead && locked && warhead.detonator)
+		warhead.prime()
+
+/obj/item/mortar_shell/custom/attack_self(mob/user as mob)
+	if(!locked)
+		if(warhead)
+			user.put_in_hands(warhead)
+			warhead = null
+		else if(fuel)
+			user.put_in_hands(fuel)
+			fuel = null
+		icon_state = initial(icon_state)
+		desc = initial(desc) + "\n Contains[fuel?" fuel":""] [warhead?" and warhead":""]."
+		return
+
+/obj/item/mortar_shell/custom/attackby(obj/item/W as obj, mob/user as mob)
+	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_OT))
+		to_chat(user, SPAN_WARNING("You do not know how to tinker with [name]."))
+		return
+	if(istype(W,/obj/item/tool/screwdriver))
+		if(!warhead)
+			to_chat(user, SPAN_NOTICE("[name] must contain a warhead to do that!"))
+			return
+		if(locked)
+			to_chat(user, SPAN_NOTICE("You unlock [name]."))
+			icon_state = initial(icon_state) +"_unlocked"
+		else
+			to_chat(user, SPAN_NOTICE("You lock [name]."))
+			if(fuel && fuel.reagents.get_reagent_amount(fuel_type) >= fuel_requirement)
+				icon_state = initial(icon_state) +"_locked"
+			else
+				icon_state = initial(icon_state) +"_no_fuel"
+		locked = !locked
+		playsound(loc, 'sound/items/Screwdriver.ogg', 25, 0, 6)
+		return
+	else if(istype(W,/obj/item/reagent_container/glass) && !locked)
+		if(fuel)
+			to_chat(user, SPAN_DANGER("The [name] already has a fuel container!"))
+			return
+		else
+			user.temp_drop_inv_item(W)
+			W.forceMove(src)
+			fuel = W
+			to_chat(user, SPAN_DANGER("You add [W] to [name]."))
+			desc = initial(desc) + "\n Contains[fuel?" fuel":""] [warhead?" and warhead":""]."
+			playsound(loc, 'sound/items/Screwdriver2.ogg', 25, 0, 6)
+	else if(istype(W,/obj/item/explosive/warhead/mortar) && !locked)
+		if(warhead)
+			to_chat(user, SPAN_DANGER("The [name] already has a warhead!"))
+			return
+		var/obj/item/explosive/warhead/mortar/det = W
+		if(det.assembly_stage < ASSEMBLY_LOCKED)
+			to_chat(user, SPAN_DANGER("The [W] is not secured!"))
+			return
+		user.temp_drop_inv_item(W)
+		W.forceMove(src)
+		warhead = W
+		to_chat(user, SPAN_DANGER("You add [W] to [name]."))
+		icon_state = initial(icon_state) +"_unlocked"
+		desc = initial(desc) + "\n Contains[fuel?" fuel":""] [warhead?" and warhead":""]."
+		playsound(loc, 'sound/items/Screwdriver2.ogg', 25, 0, 6)
+
 //Special flare subtype for the illumination flare shell
 //Acts like a flare, just even stronger, and set length
 /obj/item/device/flashlight/flare/on/illumination

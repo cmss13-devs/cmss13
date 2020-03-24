@@ -10,18 +10,20 @@
 	secured = 0
 
 	var/scanning = 0
-	var/timing = 0
+	var/timing = FALSE
 	var/time = 10
 	var/range = 2
+	var/iff_signal = ACCESS_IFF_MARINE
 
-	var/delay = 2 //number of seconds between sensing and pulsing
+	var/delay = 1 //number of seconds between sensing and pulsing
 	var/delaying = FALSE
 
 /obj/item/device/assembly/prox_sensor/activate()
-	if(!..())	return 0//Cooldown check
+	if(!..())
+		return FALSE//Cooldown check
 	timing = !timing
 	update_icon()
-	return 0
+	return FALSE
 
 
 /obj/item/device/assembly/prox_sensor/toggle_secure()
@@ -71,6 +73,10 @@
 	if(scanning)
 		var/turf/mainloc = get_turf(src)
 		for(var/mob/living/M in range(range,mainloc))
+			if(ishuman(M))
+				var/mob/living/carbon/human/H = M
+				if(H.get_target_lock(iff_signal))
+					continue
 			HasProximity(M)
 
 	if(timing && (time >= 0))
@@ -100,9 +106,6 @@
 		attached_overlays += "prox_scanning"
 	if(holder)
 		holder.update_icon()
-	if(holder && istype(holder.loc,/obj/item/explosive/grenade/chem_grenade))
-		var/obj/item/explosive/grenade/chem_grenade/grenade = holder.loc
-		grenade.primed(scanning)
 	return
 
 
@@ -150,7 +153,7 @@
 	if(href_list["delay"])
 		var/d = text2num(href_list["delay"])
 		delay += d
-		delay = min(max(delay, 2), 10)
+		delay = min(max(delay, 1), 10)
 
 	if(href_list["close"])
 		close_browser(usr, "prox")

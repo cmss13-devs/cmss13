@@ -1765,9 +1765,7 @@
 			msg_admin_attack("[user.name] ([user.ckey]) primed \a [src] in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
 		icon_state = initial(icon_state) + "_active"
 		active = 1
-		if(dangerous)
-			updateicon()
-
+		update_icon()
 		add_timer(CALLBACK(src, .proc/prime), det_time)
 
 	prime()

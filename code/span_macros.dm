@@ -65,3 +65,5 @@
 
 // Colours
 #define SPAN_BLUE(X) "<span class='blue'>[X]</span>"
+#define SPAN_RED(X) "<span class='red'>[X]</span>"
+#define SPAN_ORANGE(X) "<span class='orange'>[X]</span>"

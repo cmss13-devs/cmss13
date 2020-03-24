@@ -15,6 +15,11 @@
 	path = /obj/item/reagent_container/glass/bucket
 	category = "General"
 
+/datum/autolathe/recipe/mopbucket
+	name = "mop bucket"
+	path = /obj/item/reagent_container/glass/bucket/mopbucket
+	category = "General"
+
 /datum/autolathe/recipe/flashlight
 	name = "flashlight"
 	path = /obj/item/device/flashlight
@@ -194,11 +199,6 @@
 	path = /obj/item/reagent_container/syringe
 	category = "Medical"
 
-/datum/autolathe/recipe/largegrenade
-	name = "large chem grenade"
-	path = /obj/item/explosive/grenade/chem_grenade/large
-	category = "Devices and Components"
-
 /datum/autolathe/recipe/consolescreen
 	name = "console screen"
 	path = /obj/item/stock_parts/console_screen
@@ -270,3 +270,46 @@
 	path = /obj/item/handcuffs
 	hidden = 1
 	category = "General"
+
+//Armylathe recipes
+/datum/autolathe/recipe/armylathe
+
+/datum/autolathe/recipe/armylathe/m40
+	name = "M40 Grenade Casing"
+	path = /obj/item/explosive/grenade/custom
+	category = "Explosives"
+
+/datum/autolathe/recipe/armylathe/m15
+	name = "M15 Grenade Casing"
+	path = /obj/item/explosive/grenade/custom/large
+	category = "Explosives"
+
+/datum/autolathe/recipe/armylathe/m20
+	name = "M20 Mine Casing"
+	path = /obj/item/explosive/mine/custom
+	category = "Explosives"
+
+/datum/autolathe/recipe/armylathe/c4
+	name = "C4 Plastic Casing"
+	path = /obj/item/explosive/plastique/custom
+	category = "Explosives"
+
+/datum/autolathe/recipe/armylathe/rocket_tube
+	name = "88mm Rocket Tube"
+	path = /obj/item/ammo_magazine/rocket/custom
+	category = "Explosives"
+
+/datum/autolathe/recipe/armylathe/rocket_warhead
+	name = "88mm Rocket Warhead"
+	path = /obj/item/explosive/warhead/rocket
+	category = "Explosives"
+
+/datum/autolathe/recipe/armylathe/mortar_shell
+	name = "80mm Mortar Shell"
+	path = /obj/item/mortar_shell/custom
+	category = "Explosives"
+
+/datum/autolathe/recipe/armylathe/mortar_warhead
+	name = "80mm Mortar Warhead"
+	path = /obj/item/explosive/warhead/mortar
+	category = "Explosives"

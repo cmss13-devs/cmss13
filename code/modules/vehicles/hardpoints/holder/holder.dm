@@ -80,7 +80,7 @@
 
 /obj/item/hardpoint/holder/attackby(var/obj/item/O, var/mob/user)
 	if(iscrowbar(O))
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_MT))
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_OT))
 			to_chat(user, SPAN_WARNING("You don't know what to do with \the [O] on \the [src]."))
 			return
 
@@ -93,7 +93,7 @@
 		return
 
 	if(istype(O, /obj/item/hardpoint))
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_MT))
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_OT))
 			to_chat(user, SPAN_WARNING("You don't know what to do with \the [O] on \the [src]."))
 			return
 

@@ -420,7 +420,7 @@
 	flags_pass = PASS_FLAGS_FLAME
 	var/firelevel = 12 //Tracks how much "fire" there is. Basically the timer of how long the fire burns
 	var/burnlevel = 10 //Tracks how HOT the fire is. This is basically the heat level of the fire and determines the temperature.
-	var/flame_color = "red"
+	var/flame_icon = "red"
 	var/flameshape = FLAMESHAPE_DEFAULT // diagonal square shape
 	var/weapon_source
 	var/weapon_source_mob
@@ -428,18 +428,25 @@
 /obj/flamer_fire/New(turf/loc, var/source, var/source_mob, fire_lvl, burn_lvl, f_color, fire_spread_amount, new_flameshape)
 	..()
 	if(f_color)
-		flame_color = f_color
+		if(f_color != "red" && f_color != "green" && f_color != "blue")
+			flame_icon = "dynamic"
+		else
+			flame_icon = f_color
+	else
+		f_color = "red"
 
 	if(new_flameshape)
 		flameshape = new_flameshape
 
-	if(!flame_color)
-		flame_color = "red"
+	if(!flame_icon)
+		flame_icon = "red"
+	else if(flame_icon == "dynamic")
+		color = f_color
 
 	weapon_source = source
 	weapon_source_mob = source_mob
 
-	icon_state = "[flame_color]_2"
+	icon_state = "[flame_icon]_2"
 	if(fire_lvl)
 		firelevel = fire_lvl
 	if(burn_lvl)
@@ -458,7 +465,8 @@
 					continue
 				var/obj/flamer_fire/foundflame = locate() in T
 				if(foundflame)
-					foundflame.flame_color = f_color
+					foundflame.flame_icon = flame_icon
+					foundflame.color = color
 					foundflame.burnlevel = burn_lvl
 					foundflame.firelevel = fire_lvl
 					continue
@@ -500,7 +508,8 @@
 					if(istype(T,/turf/open/space)) continue
 					var/obj/flamer_fire/foundflame = locate() in T
 					if(foundflame)
-						foundflame.flame_color = f_color
+						foundflame.flame_icon = flame_icon
+						foundflame.color = color
 						foundflame.burnlevel = burn_lvl
 						foundflame.firelevel = fire_lvl
 						continue
@@ -621,17 +630,17 @@
 
 
 /obj/flamer_fire/proc/updateicon()
-	if(burnlevel < 15)
+	if(burnlevel < 15 && flame_icon != "dynamic")
 		color = "#c1c1c1" //make it darker to make show its weaker.
 	switch(firelevel)
 		if(1 to 9)
-			icon_state = "[flame_color]_1"
+			icon_state = "[flame_icon]_1"
 			SetLuminosity(2)
 		if(10 to 25)
-			icon_state = "[flame_color]_2"
+			icon_state = "[flame_icon]_2"
 			SetLuminosity(4)
 		if(25 to INFINITY) //Change the icons and luminosity based on the fire's intensity
-			icon_state = "[flame_color]_3"
+			icon_state = "[flame_icon]_3"
 			SetLuminosity(6)
 
 

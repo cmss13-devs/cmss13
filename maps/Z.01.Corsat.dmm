@@ -23103,7 +23103,7 @@
 	},
 /area/corsat/gamma/engineering/atmos)
 "bhN" = (
-/obj/structure/machinery/vending/engineering{
+/obj/structure/machinery/cm_vending/sorted/tech/comp_storage{
 	req_access = list(102)
 	},
 /turf/open/floor/corsat{
@@ -23166,7 +23166,7 @@
 	},
 /area/corsat/gamma/engineering/atmos)
 "bhV" = (
-/obj/structure/machinery/vending/engivend{
+/obj/structure/machinery/cm_vending/sorted/tech/electronics_storage{
 	req_access = list(102)
 	},
 /turf/open/floor/corsat{
@@ -23253,7 +23253,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/obj/structure/machinery/vending/tool{
+/obj/structure/machinery/cm_vending/sorted/tech/tool_storage{
 	req_access = list(102)
 	},
 /turf/open/floor/corsat{
@@ -32830,7 +32830,7 @@
 	},
 /area/corsat/gamma/engineering)
 "bLy" = (
-/obj/structure/machinery/vending/tool{
+/obj/structure/machinery/cm_vending/sorted/tech/tool_storage{
 	req_access = list(102)
 	},
 /turf/open/floor/corsat{
@@ -33065,7 +33065,7 @@
 	},
 /area/corsat/omega/maint)
 "bMo" = (
-/obj/structure/machinery/vending/engivend{
+/obj/structure/machinery/cm_vending/sorted/tech/electronics_storage{
 	req_access = list(102)
 	},
 /turf/open/floor/corsat{
@@ -35654,7 +35654,7 @@
 /area/corsat/omega/complex)
 "bUr" = (
 /obj/structure/table/reinforced,
-/obj/item/explosive/grenade/chem_grenade/metalfoam,
+/obj/item/explosive/grenade/custom/metalfoam,
 /turf/open/floor/corsat{
 	icon_state = "lightplate"
 	},
@@ -35675,7 +35675,7 @@
 /area/corsat/sigma/south/complex)
 "bUv" = (
 /obj/structure/table/reinforced,
-/obj/item/explosive/grenade/chem_grenade/large,
+/obj/item/explosive/grenade/custom/large,
 /turf/open/floor/corsat{
 	icon_state = "lightplate"
 	},
@@ -35699,7 +35699,7 @@
 "bUA" = (
 /obj/structure/table/almayer,
 /obj/item/paper,
-/obj/item/explosive/grenade/chem_grenade/antiweed,
+/obj/item/explosive/grenade/custom/antiweed,
 /turf/open/floor/corsat{
 	icon_state = "purplewhite"
 	},
@@ -44325,7 +44325,7 @@
 	},
 /area/corsat/sigma/south/offices)
 "gVR" = (
-/obj/structure/machinery/vending/tool{
+/obj/structure/machinery/cm_vending/sorted/tech/tool_storage{
 	req_access = list(102)
 	},
 /turf/open/floor/corsat{
@@ -44359,7 +44359,7 @@
 	},
 /area/corsat/gamma/residential/west)
 "gXv" = (
-/obj/structure/machinery/vending/engivend{
+/obj/structure/machinery/cm_vending/sorted/tech/electronics_storage{
 	req_access = list(102)
 	},
 /turf/open/floor/corsat{
@@ -53245,7 +53245,7 @@
 	},
 /area/corsat/gamma/engineering)
 "nui" = (
-/obj/structure/machinery/vending/engineering{
+/obj/structure/machinery/cm_vending/sorted/tech/comp_storage{
 	req_access = list(102)
 	},
 /turf/open/floor/corsat{

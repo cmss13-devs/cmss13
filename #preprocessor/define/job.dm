@@ -38,7 +38,7 @@ var/global/list/JOB_COMMAND_ROLES_LIST  = list(JOB_CO, JOB_XO, JOB_SO)
 #define JOB_SEA                         "Senior Enlisted Advisor"
 
 #define JOB_CHIEF_ENGINEER              "Chief Engineer"
-#define JOB_ENGINEER                    "Maintenance Tech"
+#define JOB_ORDNANCE_TECH               "Ordnance Technician"
 
 #define JOB_CHIEF_REQUISITION           "Requisitions Officer"
 #define JOB_REQUISITION                 "Cargo Technician"

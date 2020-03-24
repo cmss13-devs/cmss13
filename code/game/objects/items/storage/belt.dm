@@ -194,7 +194,7 @@
 	max_storage_space = 21
 	can_hold = list(
 		/obj/item/explosive/grenade/flashbang,
-		/obj/item/explosive/grenade/chem_grenade/teargas,
+		/obj/item/explosive/grenade/custom/teargas,
 		/obj/item/reagent_container/spray/pepper,
 		/obj/item/handcuffs,
 		/obj/item/device/flash,

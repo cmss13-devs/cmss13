@@ -1142,7 +1142,7 @@
 /turf/closed/wall/r_wall,
 /area/lv624/lazarus/security)
 "Ln" = (
-/obj/structure/mopbucket,
+/obj/item/reagent_container/glass/bucket/mopbucket,
 /obj/item/tool/mop,
 /obj/item/tool/mop,
 /turf/open/floor{

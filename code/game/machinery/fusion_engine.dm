@@ -18,19 +18,19 @@
 
 	var/power_gen_percent = 0 //50,000W at full capacity
 	var/buildstate = 0 //What state of building it are we on, 0-3, 1 is "broken", the default
-	var/is_on = 0  //Is this damn thing on or what?
-	var/fail_rate = 5 //% chance of failure each fail_tick check
+	var/is_on = TRUE  //Is this damn thing on or what?
+	var/fail_rate = FALSE //% chance of failure each fail_tick check
 	var/cur_tick = 0 //Tick updater
 
 	var/obj/item/fuelCell/fusion_cell = new //Starts with a fuel cell loaded in.  Maybe replace with the plasma tanks in the future and have it consume plasma?  Possibly remove this later if it's irrelevent...
 	var/fuel_rate = 0.00 //Rate at which fuel is used.  Based mostly on how long the generator has been running.
 
 /obj/structure/machinery/power/fusion_engine/New()
-	buildstate = rand(0,3) //This is needed to set the state for repair interactions
-	fusion_cell.fuel_amount = rand(15,100)
+	fusion_cell.fuel_amount = 100
 	update_icon()
 	connect_to_network() //Should start with a cable piece underneath, if it doesn't, something's messed up in mapping
 	..()
+	start_processing_power()
 
 /obj/structure/machinery/power/fusion_engine/power_change()
 	return
@@ -70,8 +70,7 @@
 				fuel_rate = 0.1
 
 		add_avail(FUSION_ENGINE_MAX_POWER_GEN * (power_gen_percent / 100) ) //Nope, all good, just add the power
-		fusion_cell.fuel_amount-=fuel_rate //Consumes fuel
-
+		
 		update_icon()
 
 
@@ -248,7 +247,7 @@
 			to_chat(user, SPAN_INFO("The power gauge reads: [power_gen_percent]%"))
 		if(fusion_cell)
 			to_chat(user, SPAN_INFO("You can see a fuel cell in the receptacle."))
-			if(skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_MT))
+			if(skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_OT))
 				switch(fusion_cell.get_fuel_percent())
 					if(0 to 10)
 						to_chat(user, SPAN_DANGER("The fuel cell is critically low."))

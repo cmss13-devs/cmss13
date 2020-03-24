@@ -618,8 +618,8 @@
 	name = "\improper M66 tear gas grenade box"
 	desc = "A secure box holding 25 M66 tear gas grenades. Used for riot control."
 	icon_state = "teargas_nade_placeholder"
-	can_hold = list(/obj/item/explosive/grenade/chem_grenade/teargas)
-	grenade_type = /obj/item/explosive/grenade/chem_grenade/teargas
+	can_hold = list(/obj/item/explosive/grenade/custom/teargas)
+	grenade_type = /obj/item/explosive/grenade/custom/teargas
 
 
 

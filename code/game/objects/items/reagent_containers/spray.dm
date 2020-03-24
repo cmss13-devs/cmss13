@@ -2,7 +2,7 @@
 	name = "spray bottle"
 	desc = "A spray bottle, with an unscrewable top."
 	icon = 'icons/obj/items/spray.dmi'
-	icon_state = "cleaner"
+	icon_state = "spray"
 	item_state = "cleaner"
 	flags_atom = OPENCONTAINER|FPRINT
 	flags_item = NOBLUDGEON
@@ -91,6 +91,7 @@
 /obj/item/reagent_container/spray/cleaner
 	name = "space cleaner"
 	desc = "BLAM!-brand non-foaming space cleaner!"
+	icon_state = "cleaner"
 
 /obj/item/reagent_container/spray/cleaner/drone
 	name = "space cleaner"

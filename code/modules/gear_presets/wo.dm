@@ -437,7 +437,7 @@
 /*****************************************************************************************************/
 
 /datum/equipment_preset/wo/bc
-	name = "WO Bunker Crew" //MT
+	name = "WO Bunker Crew" //OT
 	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO
 
 	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_CE, ACCESS_MARINE_ENGINEERING, ACCESS_MARINE_BRIDGE, ACCESS_CIVILIAN_ENGINEERING)
@@ -445,7 +445,7 @@
 	rank = "Bunker Crew"
 	paygrade = "E4"
 	role_comm_title = "BC"
-	skills = /datum/skills/MT
+	skills = /datum/skills/OT
 	idtype = /obj/item/card/id
 
 /datum/equipment_preset/wo/bc/load_gear(mob/living/carbon/human/H)

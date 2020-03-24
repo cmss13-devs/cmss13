@@ -1192,10 +1192,9 @@ Defined in conflicts.dm of the #defines folder.
 		else
 			playsound(user, 'sound/weapons/gun_shotgun_shell_insert.ogg', 25, 1)
 			current_rounds++
-			loaded_grenades += G.type
+			loaded_grenades += G
 			to_chat(user, SPAN_NOTICE("You load [G] in [src]."))
-			user.temp_drop_inv_item(G)
-			qdel(G)
+			user.drop_inv_item_to_loc(G, src)
 
 /obj/item/attachable/attached_gun/grenade/fire_attachment(atom/target,obj/item/weapon/gun/gun,mob/living/user)
 	if(get_dist(user,target) > max_range)
@@ -1207,11 +1206,9 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/attached_gun/grenade/proc/prime_grenade(atom/target,obj/item/weapon/gun/gun,mob/living/user)
 	set waitfor = 0
-	var/nade_type = loaded_grenades[1]
-	var/obj/item/explosive/grenade/HE/G = new nade_type (get_turf(gun))
+	var/obj/item/explosive/grenade/G = loaded_grenades[1]
 
 	if(grenade_grief_check(G))
-		qdel(G)
 		to_chat(user, SPAN_WARNING("\The [name]'s IFF inhibitor prevents you from firing!"))
 		message_staff("[key_name(user)] attempted to prime \a [G.name] in [get_area(src)] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>)")
 		return
@@ -1222,6 +1219,7 @@ Defined in conflicts.dm of the #defines folder.
 	G.det_time = 15
 	G.throw_range = max_range
 	G.activate(user)
+	G.forceMove(get_turf(gun))
 	G.launch_towards(target, max_range, SPEED_VERY_FAST, user)
 	current_rounds--
 	loaded_grenades.Cut(1,2)

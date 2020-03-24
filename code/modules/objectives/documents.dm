@@ -105,7 +105,7 @@
 				to_chat(user, SPAN_WARNING("You can't understand this."))
 				return 0
 		if(DOCUMENT_SKILL_ENGINEERING)
-			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_MT))
+			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_OT))
 				to_chat(user, SPAN_WARNING("You can't understand this."))
 				return 0
 		if(DOCUMENT_SKILL_WEAPONS)

@@ -12,7 +12,7 @@
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE
 	gear_preset = "USCM Chief Engineer (CE)"
 	minimum_playtimes = list(
-		JOB_ENGINEER = HOURS_6
+		JOB_ORDNANCE_TECH = HOURS_6
 	)
 
 /datum/job/logistics/engineering/generate_entry_message(mob/living/carbon/human/H)
@@ -35,29 +35,32 @@
 	entry_message_body = "Your job is to dispense supplies to the marines, including weapon attachments. Your cargo techs can help you out, but you have final say in your department. Make sure they're not goofing off. While you may request paperwork for supplies, do not go out of your way to screw with marines, unless you want to get deposed. A happy ship is a well-functioning ship."
 	return ..()
 
-//Maintenance Tech
+//Ordnance Technician
 /datum/job/logistics/tech
-	title = JOB_ENGINEER
-	flag = ROLE_MAINTENANCE_TECH
+	title = JOB_ORDNANCE_TECH
+	flag = ROLE_ORDNANCE_TECH
 	department_flag = ROLEGROUP_MARINE_ENGINEERING
 	faction = FACTION_MARINE
-	total_positions = 4
-	spawn_positions = 4
+	total_positions = 3
+	spawn_positions = 3
 	allow_additional = 1
 	scaled = 1
 	supervisors = "the chief engineer"
-	selection_class = "job_mt"
+	selection_class = "job_ot"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE
-	gear_preset = "USCM Maintenance Tech (MT)"
+	gear_preset = "USCM Ordnance Technician (OT)"
+	minimum_playtimes = list(
+		JOB_SQUAD_ENGI = HOURS_3
+	)
 
 /datum/job/logistics/tech/maint/set_spawn_positions(var/count)
-	spawn_positions = mt_slot_formula(count)
+	spawn_positions = ot_slot_formula(count)
 
 /datum/job/logistics/tech/maint/get_total_positions(var/latejoin = 0)
-	return (latejoin ? mt_slot_formula(get_total_marines()) : spawn_positions)
+	return (latejoin ? ot_slot_formula(get_total_marines()) : spawn_positions)
 
 /datum/job/logistics/tech/maint/generate_entry_message(mob/living/carbon/human/H)
-	entry_message_body = "Your job is to make sure the ship is clean and the powergrid is operational. Start with the ship's engine, and don't forget radiation equipment."
+	entry_message_body = "Your job is to maintain the integrity of the USCM weapons, munitions and equipment, including the orbital cannon. You can use the workshop in the portside hangar to construct new armaments for the marines. However you remain one of the more flexible roles on the ship and as such may receive other menial tasks from your superiors."
 	return ..()
 
 //Cargo Tech. Don't ask why this is in engineering

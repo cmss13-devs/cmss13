@@ -1508,10 +1508,15 @@
 //Corrosive acid is consolidated -- it checks for specific castes for strength now, but works identically to each other.
 //The acid items are stored in XenoProcs.
 /mob/living/carbon/Xenomorph/proc/corrosive_acid(atom/O, acid_type, plasma_cost)
-
 	if(!O.Adjacent(src))
-		to_chat(src, SPAN_WARNING("[O] is too far away."))
-		return
+		if(istype(O,/obj/item/explosive/plastique))
+			var/obj/item/explosive/plastique/E = O
+			if(E.plant_target && !E.plant_target.Adjacent(src))
+				to_chat(src, SPAN_WARNING("You can't reach [O]."))
+				return
+		else
+			to_chat(src, SPAN_WARNING("[O] is too far away."))
+			return
 
 	if(!isturf(loc) || burrow)
 		to_chat(src, SPAN_WARNING("You can't melt [O] from here!"))
@@ -1573,14 +1578,21 @@
 	if(!check_state())
 		return
 
-	if(!O || O.disposed || !get_turf(O)) //Some logic.
+	if(!O || O.disposed) //Some logic.
 		return
 
 	if(!check_plasma(plasma_cost))
 		return
 
 	if(!O.Adjacent(src) || (I && !isturf(I.loc)))//not adjacent or inside something
-		return
+		if(istype(O,/obj/item/explosive/plastique))
+			var/obj/item/explosive/plastique/E = O
+			if(E.plant_target && !E.plant_target.Adjacent(src))
+				to_chat(src, SPAN_WARNING("You can't reach [O]."))
+				return
+		else
+			to_chat(src, SPAN_WARNING("[O] is too far away."))
+			return
 
 	use_plasma(plasma_cost)
 

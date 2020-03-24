@@ -78,7 +78,7 @@
 
 	new /obj/item/clothing/suit/fire/firefighter(src)
 	new /obj/item/clothing/mask/gas(src)
-	new /obj/item/tank/oxygen/red(src)
+	new /obj/item/reagent_container/glass/canister/oxygen(src)
 	new /obj/item/tool/extinguisher(src)
 	new /obj/item/clothing/head/hardhat/red(src)
 
@@ -90,7 +90,7 @@
 	new /obj/item/clothing/suit/fire/firefighter(src)
 	new /obj/item/clothing/mask/gas(src)
 	new /obj/item/device/flashlight(src)
-	new /obj/item/tank/oxygen/red(src)
+	new /obj/item/reagent_container/glass/canister/oxygen(src)
 	new /obj/item/tool/extinguisher(src)
 	new /obj/item/clothing/head/hardhat/red(src)
 
@@ -216,7 +216,7 @@
 	new /obj/item/clothing/suit/fire/firefighter(src)
 	new /obj/item/clothing/mask/gas(src)
 	new /obj/item/device/flashlight(src)
-	new /obj/item/tank/oxygen/red(src)
+	new /obj/item/reagent_container/glass/canister/oxygen(src)
 	new /obj/item/tool/extinguisher(src)
 	new /obj/item/clothing/head/hardhat/red(src)
 

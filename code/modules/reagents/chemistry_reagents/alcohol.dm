@@ -15,7 +15,12 @@
 	reagent_state = LIQUID
 	nutriment_factor = 0 //So alcohol can fill you up! If they want to.
 	color = "#404030" // rgb: 64, 64, 48
-	properties = list(PROPERTY_ALCOHOLIC = 4)
+	chemfiresupp = TRUE
+	intensitymod = 0.2
+	durationmod = 0.25
+	radiusmod = 0.1
+	burncolor = "#6897f7"
+	properties = list(PROPERTY_ALCOHOLIC = 4, PROPERTY_FUELING = 1, PROPERTY_OXIDIZING = 1, PROPERTY_FLOWING = 4)
 	var/boozepwr = 5 //higher numbers mean the booze will have an effect faster.
 	var/booze_data = 0
 	var/dizzy_adj = 3

@@ -66,7 +66,7 @@ var/list/event_last_fired = list()
 		if(isrobot(M) && M:module && M:module.name == "engineering robot module")
 			active_with_role["Engineer"]++
 
-		if(M.job in list("Chief Engineer", "Maintenance Tech"))
+		if(M.job in list("Chief Engineer", "Ordnance Techician"))
 			active_with_role["Engineer"]++
 
 		if(isrobot(M) && M:module && M:module.name == "medical robot module")

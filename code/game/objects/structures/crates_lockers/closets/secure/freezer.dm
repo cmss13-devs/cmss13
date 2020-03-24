@@ -131,3 +131,36 @@
 			new /obj/item/reagent_container/food/snacks/flour(src)
 		new /obj/item/reagent_container/food/condiment/enzyme(src)
 		return
+
+/obj/structure/closet/secure_closet/freezer/industry
+	name = "Industry Freezer"
+	desc = "A powerful fine tuned freezer used to polymerize chemicals in the cold. This one is set to the perfect temperature for paraformaldehyde polymerization. The freezer must be kept closed for polymerization."
+	icon_state = "fridge1"
+	icon_closed = "fridge"
+	icon_locked = "fridge1"
+	icon_opened = "fridgeopen"
+	icon_broken = "fridgebroken"
+	icon_off = "fridge1"
+	req_access = list(ACCESS_MARINE_ENGINEERING)
+	var/obj/structure/machinery/paraform_cooler/CU
+
+/obj/structure/closet/secure_closet/freezer/industry/Initialize()
+	CU = new /obj/structure/machinery/paraform_cooler()
+	CU.freezer = src
+	CU.start_processing()
+	. = ..()
+	
+/obj/structure/machinery/paraform_cooler
+	var/cooldown = 5
+	var/list/polymerization_recipe = list("formaldehyde" = 5, "water" = 5)
+	var/obj/structure/closet/secure_closet/freezer/industry/freezer
+
+/obj/structure/machinery/paraform_cooler/process()
+	if(freezer.opened)
+		return
+	if(cooldown)
+		cooldown--
+		return
+	cooldown = 5
+	for(var/obj/item/reagent_container/glass/I in freezer.contents)
+		I.reagents.replace_with(polymerization_recipe, "paraformaldehyde", 5)

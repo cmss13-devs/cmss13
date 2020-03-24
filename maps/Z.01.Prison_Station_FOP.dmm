@@ -16657,7 +16657,7 @@
 /turf/open/floor/prison,
 /area/prison/cleaning)
 "aNN" = (
-/obj/structure/mopbucket,
+/obj/item/reagent_container/glass/bucket/mopbucket,
 /turf/open/floor/prison,
 /area/prison/cleaning)
 "aNO" = (
@@ -17222,7 +17222,7 @@
 /turf/open/floor/prison,
 /area/prison/cleaning)
 "aPk" = (
-/obj/structure/mopbucket,
+/obj/item/reagent_container/glass/bucket/mopbucket,
 /obj/structure/machinery/light{
 	dir = 4
 	},
@@ -21206,7 +21206,7 @@
 	},
 /area/prison/hallway/staff)
 "aZA" = (
-/obj/structure/mopbucket,
+/obj/item/reagent_container/glass/bucket/mopbucket,
 /obj/item/tool/mop,
 /turf/open/floor/prison{
 	tag = "icon-sterile_white";
@@ -39210,7 +39210,7 @@
 	},
 /area/prison/toilet/security)
 "bTA" = (
-/obj/structure/mopbucket,
+/obj/item/reagent_container/glass/bucket/mopbucket,
 /obj/item/tool/mop,
 /turf/open/floor/plating,
 /area/prison/maintenance/residential/sw)
@@ -40536,7 +40536,7 @@
 	},
 /area/prison/engineering)
 "bXf" = (
-/obj/structure/machinery/vending/tool,
+/obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
 /turf/open/floor/prison{
 	tag = "icon-darkyellowfull2 (EAST)";
 	icon_state = "darkyellowfull2";
@@ -40935,7 +40935,7 @@
 /turf/open/floor/plating,
 /area/prison/engineering)
 "bYk" = (
-/obj/structure/machinery/vending/engivend,
+/obj/structure/machinery/cm_vending/sorted/tech/electronics_storage,
 /turf/open/floor/plating,
 /area/prison/engineering)
 "bYl" = (
@@ -41230,7 +41230,7 @@
 /turf/open/floor/plating,
 /area/prison/engineering)
 "bZi" = (
-/obj/structure/machinery/vending/engineering,
+/obj/structure/machinery/cm_vending/sorted/tech/comp_storage,
 /turf/open/floor/plating,
 /area/prison/engineering)
 "bZj" = (
@@ -50650,7 +50650,7 @@
 /turf/open/floor/plating,
 /area/prison/cellblock/mediumsec/west)
 "ecJ" = (
-/obj/structure/mopbucket,
+/obj/item/reagent_container/glass/bucket/mopbucket,
 /obj/item/tool/mop,
 /turf/open/floor/plating,
 /area/prison/maintenance/residential/nw)

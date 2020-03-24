@@ -220,7 +220,9 @@
 	chemfiresupp = TRUE
 	intensitymod = 0.75
 	radiusmod = -0.075
+	burncolor = "#58daff"
 	chemclass = CHEM_CLASS_BASIC
+	properties = list(PROPERTY_OXIDIZING = 4, PROPERTY_VISCOUS = 3)
 
 	custom_metabolism = 0.01
 
@@ -229,6 +231,8 @@
 	id = "copper"
 	description = "Chemical element of atomic number 29. A solfe malleable red metal with high thermal and electrical conductivity."
 	color = "#6E3B08" // rgb: 110, 59, 8
+	chemfiresupp = TRUE
+	burncolor = "#78be5a"
 	chemclass = CHEM_CLASS_BASIC
 
 	custom_metabolism = 0.01
@@ -254,7 +258,11 @@
 	durationmod = -0.5
 	radiusmod = 0.14
 	intensitymod = -0.75
+	burncolor = "#b6f8ff"
+	explosive = TRUE
+	power = 0.15
 	chemclass = CHEM_CLASS_BASIC
+	properties = list(PROPERTY_FLOWING = 1, PROPERTY_EXPLOSIVE = 0.5)
 
 	custom_metabolism = 0.01
 
@@ -302,7 +310,11 @@
 	description = "Chemical element of atomic number 6. A very abundant element that occurs in all known organic life and in more than half of all known compounds. Used as fuel, in the production of steel, for nanotechnology and many other industrial purposes."
 	reagent_state = SOLID
 	color = "#1C1300" // rgb: 30, 20, 0
+	chemfiresupp = TRUE
+	durationmod = 0.8
+	burncolor = "#ffd700"
 	chemclass = CHEM_CLASS_BASIC
+	properties = list(PROPERTY_FUELING = 4)
 
 	custom_metabolism = 0.01
 
@@ -377,10 +389,12 @@
 	reagent_state = SOLID
 	color = "#832828" // rgb: 131, 40, 40
 	chemfiresupp = TRUE
-	intensitymod = 1.15
+	intensitymod = 1
 	durationmod = 0.1
 	radiusmod = -0.12
+	burncolor = "#ffdba4"
 	chemclass = CHEM_CLASS_BASIC
+	properties = list(PROPERTY_OXIDIZING = 5)
 
 	custom_metabolism = 0.01
 
@@ -390,9 +404,13 @@
 	description = "Chemical element of atomic number 3. Is a soft alkali metal commonly used in the production of batteries. Highly reactive and flammable. Used as an antidepressant and for treating bipolar disorder."
 	reagent_state = SOLID
 	color = "#808080" // rgb: 128, 128, 128
+	chemfiresupp = TRUE
+	intensitymod = 0.15
+	burncolor = "#ff356f"
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_BASIC
+	properties = list(PROPERTY_OXIDIZING = 1)
 
 	on_mob_life(mob/living/M)
 		. = ..()
@@ -432,15 +450,6 @@
 
 	custom_metabolism = 0.01
 
-/datum/reagent/nitroglycerin
-	name = "Nitroglycerin"
-	id = "nitroglycerin"
-	description = "Nitroglycerin is a heavy, colorless, oily, explosive liquid obtained by nitrating glycerol. Despite being a highly volatile material, it is used for many medical purposes."
-	reagent_state = LIQUID
-	color = "#808080" // rgb: 128, 128, 128
-
-	custom_metabolism = 0.01
-
 /datum/reagent/radium
 	name = "Radium"
 	id = "radium"
@@ -474,7 +483,11 @@
 	intensitymod = 0.25
 	durationmod = 1
 	radiusmod = -0.10
+	burncolor = "#ffb300"
+	explosive = TRUE
+	power = 0.5
 	chemclass = CHEM_CLASS_UNCOMMON
+	properties = list(PROPERTY_FUELING = 4, PROPERTY_OXIDIZING = 1, PROPERTY_VISCOUS = 4, PROPERTY_EXPLOSIVE = 1)
 
 /datum/reagent/thermite/on_mob_life(mob/living/M)
 		. = ..()
@@ -593,10 +606,15 @@
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemfiresupp = TRUE
-	intensitymod = 0.25
+	intensitymod = 0.15
 	durationmod = 0.75
 	radiusmod = -0.075
+	explosive = TRUE
+	power = 0.12
+	falloff_level = 12
+	burncolor = "#ff9900"
 	chemclass = CHEM_CLASS_RARE
+	properties = list(PROPERTY_FUELING = 4, PROPERTY_OXIDIZING = 1, PROPERTY_VISCOUS = 3)
 
 	reaction_obj(var/obj/O, var/volume)
 		var/turf/the_turf = get_turf(O)
@@ -791,6 +809,17 @@
 	color = "#404030" // rgb: 64, 64, 48
 	chemclass = CHEM_CLASS_COMMON
 
+/datum/reagent/hexamine
+	name = "Hexamine"
+	id = "hexamine"
+	description = "A crystalline compound that sees many uses varying from food additives, making plastics, treating urinary tract infections, as a smokeless heating element in military rations, and the creation of several explosives."
+	reagent_state = SOLID
+	color = "#F0F0F0"
+	chemfiresupp = TRUE
+	durationmod = 0.5
+	burncolor = "#ff9900"
+	chemclass = CHEM_CLASS_UNCOMMON
+
 /datum/reagent/ultraglue
 	name = "Ultra Glue"
 	id = "glue"
@@ -837,6 +866,18 @@
 
 // Chemfire supplements
 
+/datum/reagent/napalm
+	name = "Napalm"
+	id = "napalm"
+	description = "This will probably ignite before you get to read this."
+	reagent_state = LIQUID
+	color = "#0064C8"
+	chemfiresupp = TRUE
+	intensitymod = 0.4
+	radiusmod = 0.085
+	durationmod = 1
+	burncolor = "#ffb300"
+
 /datum/reagent/chlorinetrifluoride
 	name = "Chlorine Trifluoride"
 	id = "chlorine trifluoride"
@@ -845,11 +886,12 @@
 	color = "#00FFFF"
 	custom_metabolism = 100
 	chemfiresupp = TRUE
-	intensitymod = 1.25
-	durationmod = -0.75
+	intensitymod = 1.5
+	durationmod = -1
 	radiusmod = -0.075
+	burncolor = "#ff9300"
 	chemclass = CHEM_CLASS_UNCOMMON
-	properties = list(PROPERTY_CORROSIVE = 8, PROPERTY_TOXIC = 6)
+	properties = list(PROPERTY_CORROSIVE = 8, PROPERTY_TOXIC = 6, PROPERTY_OXIDIZING = 8, PROPERTY_VISCOUS = 3)
 
 /datum/reagent/chlorinetrifluoride/on_mob_life(var/mob/living/M) // Not a good idea, instantly messes you up from the inside out.
 	. = ..()
@@ -875,12 +917,94 @@
 	chemfiresupp = TRUE
 	intensitymod = -1
 	radiusmod = 0.1
+	burncolor = "#00a5ff"
+	explosive = TRUE
+	power = 0.15
 	chemclass = CHEM_CLASS_COMMON
-	properties = list(PROPERTY_TOXIC = 2)
+	properties = list(PROPERTY_TOXIC = 2, PROPERTY_FLOWING = 4, PROPERTY_EXPLOSIVE = 0.5)
 
 /datum/reagent/methane/on_mob_life(var/mob/living/M)
 	. = ..()
 	M.adjustToxLoss(1)
+
+///////////////////////////////////////////Explosives////////////////////////////////////////////////////////////
+
+/datum/reagent/potassium_hydroxide
+	name = "Potassium hydroxide"
+	id = "potassium_hydroxide"
+	description = "This will probably explode before you manage to read this."
+	explosive = TRUE
+	power = 0.5
+	falloff_level = 16
+
+/datum/reagent/ammoniumnitrate
+	name = "Ammonium Nitrate"
+	id = "ammonium_nitrate"
+	description = "A white crystalline compound that is used in agriculture as a high-nitrogen fertilizer. On its own, ammonium nitrate is not explosive, but rapidly becomes so when mixed with fuel oil."
+	reagent_state = SOLID
+	color = "#E5E5E5"
+	explosive = TRUE
+	power = 0.4
+	falloff_level = 16
+	chemfiresupp = TRUE
+	durationmod = -0.2
+	intensitymod = 0.5
+	burncolor = "#ff9900"
+	chemclass = CHEM_CLASS_UNCOMMON
+	properties = list(PROPERTY_OXIDIZING = 2, PROPERTY_EXPLOSIVE = 1)
+
+/datum/reagent/anfo
+	name = "Ammonium nitrate fuel oil"
+	id = "anfo"
+	color = "#E0E0E0"
+	description = "Ammonium nitrate fuel oil (ANFO) is a low cost bulk explosive commonly used for mining and construction operations."
+	explosive = TRUE
+	power = 1
+	falloff_level = 12
+	chemclass = CHEM_CLASS_RARE
+	properties = list(PROPERTY_EXPLOSIVE = 2)
+
+/datum/reagent/nitroglycerin
+	name = "Nitroglycerin"
+	id = "nitroglycerin"
+	description = "Nitroglycerin is a heavy, colorless, oily, explosive liquid obtained by nitrating glycerol. Despite being a highly volatile material, it is used for many medical purposes."
+	reagent_state = LIQUID
+	color = "#808080" // rgb: 128, 128, 128
+	custom_metabolism = 0.01
+	explosive = TRUE
+	power = 1
+	falloff_level = 8
+
+/datum/reagent/cyclonite
+	name = "Cyclonite"
+	id = "cyclonite"
+	description = "Cyclonite is a low sensitivity highly explosive compound, commonly known as RDX. It is considered as one of the most energetic military high explosives. It is also sometimes used as a rat poison by civilians."
+	reagent_state = SOLID
+	color = "#E3E0BA"
+	explosive = TRUE
+	power = 1.5
+	falloff_level = 8
+	chemclass = CHEM_CLASS_RARE
+	properties = list(PROPERTY_TOXIC = 2, PROPERTY_EXPLOSIVE = 3)
+
+/datum/reagent/cyclonite/on_mob_life(var/mob/living/M)
+	. = ..()
+	M.adjustToxLoss(1)
+
+/datum/reagent/octogen
+	name = "Octogen"
+	id = "octogen"
+	description = "Octogen, also known as HMX or Her Majesty's Explosive, is a powerful and relatively insensitive explosive. It is one of the most potent chemical explosives available, exceeding that of cyclonite (RDX)."
+	reagent_state = SOLID
+	color = "#F5F5F5"
+	explosive = TRUE
+	power = 2
+	falloff_level = 4
+	chemfiresupp = TRUE
+	durationmod = -0.2
+	intensitymod = 0.5
+	chemclass = CHEM_CLASS_RARE
+	properties = list(PROPERTY_EXPLOSIVE = 4, PROPERTY_OXIDIZING = 2)
 
 ///////////////////////////////////////////Blood plasmas////////////////////////////////////////////////////////////
 /datum/reagent/plasma

@@ -1890,7 +1890,7 @@
 	},
 /area/desert_dam/building/administration/control_room)
 "aff" = (
-/obj/structure/machinery/vending/engivend,
+/obj/structure/machinery/cm_vending/sorted/tech/electronics_storage,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "green"
@@ -6086,7 +6086,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_central_hallway)
 "apZ" = (
-/obj/structure/machinery/vending/engineering,
+/obj/structure/machinery/cm_vending/sorted/tech/comp_storage,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "darkyellow2"
@@ -6578,7 +6578,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_east_hallway)
 "arh" = (
-/obj/structure/machinery/vending/engivend,
+/obj/structure/machinery/cm_vending/sorted/tech/electronics_storage,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "darkyellow2"
@@ -9379,7 +9379,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "ayo" = (
-/obj/structure/mopbucket,
+/obj/item/reagent_container/glass/bucket/mopbucket,
 /obj/item/tool/mop,
 /turf/open/floor/plating,
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
@@ -14862,7 +14862,7 @@
 	},
 /area/desert_dam/building/warehouse/warehouse)
 "aMw" = (
-/obj/structure/machinery/vending/tool,
+/obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
 /turf/open/floor/prison{
 	icon_state = "darkbrown2"
 	},
@@ -14936,7 +14936,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_medical)
 "aMF" = (
-/obj/structure/machinery/vending/engivend,
+/obj/structure/machinery/cm_vending/sorted/tech/electronics_storage,
 /turf/open/floor/prison{
 	icon_state = "darkbrown2"
 	},
@@ -15406,7 +15406,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_northwest)
 "aNN" = (
-/obj/structure/machinery/vending/engineering,
+/obj/structure/machinery/cm_vending/sorted/tech/comp_storage,
 /turf/open/floor/prison{
 	icon_state = "darkbrown2"
 	},
@@ -24148,7 +24148,7 @@
 	},
 /area/desert_dam/interior/dam_interior/hanger)
 "bmE" = (
-/obj/structure/machinery/vending/engivend,
+/obj/structure/machinery/cm_vending/sorted/tech/electronics_storage,
 /turf/open/floor/prison{
 	tag = "icon-cell_stripe";
 	icon_state = "blue";
@@ -24169,7 +24169,7 @@
 	},
 /area/desert_dam/interior/dam_interior/tech_storage)
 "bmI" = (
-/obj/structure/machinery/vending/tool,
+/obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
 /turf/open/floor/prison{
 	tag = "icon-cell_stripe";
 	icon_state = "blue";
@@ -24540,14 +24540,14 @@
 	},
 /area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "bnN" = (
-/obj/structure/machinery/vending/engivend,
+/obj/structure/machinery/cm_vending/sorted/tech/electronics_storage,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "darkbrown2"
 	},
 /area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "bnO" = (
-/obj/structure/machinery/vending/tool,
+/obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
 /turf/open/floor/prison{
 	dir = 5;
 	icon_state = "darkbrown2"
@@ -27768,8 +27768,8 @@
 /area/desert_dam/interior/dam_interior/northeastern_tunnel)
 "bxv" = (
 /obj/structure/rack,
-/obj/item/explosive/grenade/chem_grenade/metalfoam,
-/obj/item/explosive/grenade/chem_grenade/metalfoam,
+/obj/item/explosive/grenade/custom/metalfoam,
+/obj/item/explosive/grenade/custom/metalfoam,
 /obj/item/device/flashlight,
 /turf/open/floor/prison{
 	dir = 9;
@@ -29720,7 +29720,7 @@
 	},
 /area/desert_dam/interior/caves/east_caves)
 "bDz" = (
-/obj/structure/machinery/vending/tool,
+/obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "green"
@@ -31364,7 +31364,7 @@
 	},
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "bIe" = (
-/obj/structure/mopbucket,
+/obj/item/reagent_container/glass/bucket/mopbucket,
 /obj/item/tool/mop,
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/northeastern_tunnel)
@@ -34283,7 +34283,7 @@
 	},
 /area/desert_dam/interior/dam_interior/office)
 "bRd" = (
-/obj/structure/machinery/vending/engivend,
+/obj/structure/machinery/cm_vending/sorted/tech/electronics_storage,
 /turf/open/floor/prison{
 	tag = "icon-floor (SOUTHWEST)";
 	icon_state = "floor";
@@ -35630,7 +35630,7 @@
 	},
 /area/desert_dam/interior/dam_interior/workshop)
 "bVa" = (
-/obj/structure/machinery/vending/tool,
+/obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
 /turf/open/floor/prison{
 	tag = "icon-floor (SOUTHWEST)";
 	icon_state = "floor";
@@ -55062,7 +55062,7 @@
 	},
 /area/desert_dam/building/hydroponics/hydroponics)
 "daM" = (
-/obj/structure/mopbucket,
+/obj/item/reagent_container/glass/bucket/mopbucket,
 /obj/item/tool/mop,
 /turf/open/floor/plating,
 /area/desert_dam/building/cafeteria/backroom)

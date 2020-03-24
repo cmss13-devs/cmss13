@@ -306,15 +306,25 @@
 	idle_power_usage = 211 //refrigerator - believe it or not, this is actually the average power consumption of a refrigerated vending machine according to NRCan.
 
 /obj/structure/machinery/vending/tool
-	name = "YouTool"
-	desc = "Tools for tools."
+	name = "Tool Storage Machine"
+	desc = "A large storage machine containing various tools and devices for general repair."
 	icon_state = "tool"
 	icon_deny = "tool-deny"
 	//req_access = list(ACCESS_MARINE_LEADER) //Maintenance access
-	products = list(/obj/item/stack/cable_coil/random = 10,/obj/item/tool/crowbar = 5,/obj/item/tool/weldingtool = 3,/obj/item/tool/wirecutters = 5,
-					/obj/item/tool/wrench = 5,/obj/item/device/analyzer = 5,/obj/item/device/t_scanner = 5,/obj/item/tool/screwdriver = 5)
+	products = list(/obj/item/clothing/head/hardhat = 4,
+					/obj/item/clothing/head/welding = 4,
+					/obj/item/storage/belt/utility = 4,
+					/obj/item/clothing/gloves/yellow = 4,
+					/obj/item/device/analyzer = 5,
+					/obj/item/device/reagent_scanner = 2,
+					/obj/item/clothing/glasses/meson = 2,
+					/obj/item/device/t_scanner = 5,
+					/obj/item/tool/crowbar = 5,
+					/obj/item/tool/weldingtool = 3,
+					/obj/item/tool/wirecutters = 5,
+					/obj/item/tool/wrench = 5,
+					/obj/item/tool/screwdriver = 5)
 	contraband = list(/obj/item/tool/weldingtool/hugetank = 2,/obj/item/clothing/gloves/fyellow = 2)
-	premium = list(/obj/item/clothing/gloves/yellow = 1)
 
 /obj/structure/machinery/vending/tool/antag
 	req_access = list(ACCESS_ILLEGAL_PIRATE)
@@ -331,12 +341,13 @@
 	contraband = list(/obj/item/tool/weldingtool/hugetank = 10)
 
 /obj/structure/machinery/vending/engivend
-	name = "Engi-Vend"
+	name = "Electronics Vendor"
 	desc = "Spare tool vending. What? Did you expect some witty description?"
 	icon_state = "engivend"
 	icon_deny = "engivend-deny"
 	req_access = list(ACCESS_MARINE_ENGINEERING) //Engineering Equipment access
-	products = list(/obj/item/clothing/glasses/meson = 2,
+	products = list(
+					/obj/item/stack/cable_coil/random = 10,
 					/obj/item/device/multitool = 4,
 					/obj/item/circuitboard/airlock = 10,
 					/obj/item/circuitboard/apc = 10,
@@ -348,24 +359,29 @@
 	req_access = list(ACCESS_ILLEGAL_PIRATE)
 	products = list(/obj/item/circuitboard/airlock = 20,
 					/obj/item/circuitboard/apc = 20,
+					/obj/item/cell = 8,
 					/obj/item/cell/high = 20)
 	contraband = list(/obj/item/cell/super = 10)
 
 //This one's from bay12
 /obj/structure/machinery/vending/engineering
-	name = "Tool Storage Machine"
-	desc = "A large storage machine containing various tools and devices for general repair."
+	name = "Component Storage Machine"
+	desc = "A large storage machine containing various components."
 	icon_state = "engi"
 	icon_deny = "engi-deny"
 	req_access = list(ACCESS_MARINE_ENGINEERING)
-	products = list(/obj/item/clothing/head/hardhat = 4,/obj/item/storage/belt/utility = 4,/obj/item/clothing/glasses/meson = 4,/obj/item/clothing/gloves/yellow = 4,
-					/obj/item/tool/screwdriver = 12,/obj/item/tool/crowbar = 12,/obj/item/tool/wirecutters = 12,/obj/item/device/multitool = 12,/obj/item/tool/wrench = 12,
-					/obj/item/device/t_scanner = 12,/obj/item/stack/cable_coil/heavyduty = 8, /obj/item/cell = 8, /obj/item/tool/weldingtool = 8,/obj/item/clothing/head/welding = 8,
-					/obj/item/light_bulb/tube = 10, /obj/item/stock_parts/scanning_module = 5,/obj/item/stock_parts/micro_laser = 5,
-					/obj/item/stock_parts/matter_bin = 5,/obj/item/stock_parts/manipulator = 5,/obj/item/stock_parts/console_screen = 5)
-	// There was an incorrect entry (cablecoil/power).  I improvised to cablecoil/heavyduty.
-	// Another invalid entry, /obj/item/circuitry.  I don't even know what that would translate to, removed it.
-	// The original products list wasn't finished.  The ones without given quantities became quantity 5.  -Sayu
+	products = list(/obj/item/device/assembly/igniter = 10,
+					/obj/item/device/assembly/timer = 5,
+					/obj/item/device/assembly/prox_sensor = 3,
+					/obj/item/device/assembly/signaler = 3,
+					/obj/item/device/assembly/infra = 3,
+					/obj/item/light_bulb/tube = 10,
+					/obj/item/stock_parts/scanning_module = 5,
+					/obj/item/stock_parts/micro_laser = 5,
+					/obj/item/stock_parts/matter_bin = 5,
+					/obj/item/stock_parts/manipulator = 5,
+					/obj/item/stock_parts/console_screen = 5)
+	contraband = list(/obj/item/device/assembly/voice = 3, /obj/item/device/assembly/mousetrap = 5)
 
 //This one's from bay12
 /obj/structure/machinery/vending/robotics

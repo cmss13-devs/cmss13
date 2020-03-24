@@ -7,22 +7,41 @@
 	item_state = "plasticx"
 	flags_item = NOBLUDGEON
 	w_class = SIZE_SMALL
+	allowed_sensors = list(/obj/item/device/assembly/prox_sensor, /obj/item/device/assembly/signaler, /obj/item/device/assembly/timer)
+	max_container_size = 240
+	reaction_limits = list(	"max_ex_power" = 260,	"max_ex_falloff" = 45,	"max_ex_shards" = 32,
+							"max_fire_rad" = 6,		"max_fire_int" = 26,	"max_fire_dur" = 30,
+							"min_fire_rad" = 2,		"min_fire_int" = 4,		"min_fire_dur" = 5
+	)
 	
 	var/timer = 10
 	var/atom/plant_target = null //which atom the plstique explosive is planted on
+	var/overlay_image = "plastic-explosive2"
+	var/image/overlay
 
 /obj/item/explosive/plastique/Dispose()
-	plant_target = null
+	disarm()
 	. = ..()
 
 /obj/item/explosive/plastique/attack(mob/M as mob, mob/user as mob, def_zone)
 	return FALSE
 
+/obj/item/explosive/plastique/attack_hand(mob/user)
+	if(active)
+		to_chat(user, SPAN_WARNING("You can't just pickup [src] while it is active! Use a multitool!"))
+		return
+	. = ..()
+
 /obj/item/explosive/plastique/attack_self(mob/user)
 	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_METAL))
 		to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 		return
-
+	
+	. = ..()
+	if(customizable && detonator)
+		if(istimer(detonator.a_right) || istimer(detonator.a_left))
+			detonator.attack_self(user)
+		return
 	var/new_time = input(usr, "Please set the timer.", "Timer", 10) as num
 	if(new_time < 10)
 		new_time = 10
@@ -46,23 +65,27 @@
 	if(ismob(target))
 		var/mob/M = target
 		to_chat(M, FONT_SIZE_HUGE(SPAN_DANGER("[user] is trying to plant [name] on you!")))
-
-	var/turf/current_turf = get_turf(src)
-	var/image/I = image('icons/obj/items/assemblies.dmi', "plastic-explosive2")
-	I.layer = BELOW_MOB_LAYER
-	if(!ismob(target)) //Father forgive me for I have sinned
-		calculate_pixel_offset(user, target, current_turf, I)
-
+	
 	if(!do_after(user, 50, INTERRUPT_ALL, BUSY_ICON_HOSTILE, target, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
 		if(!ismob(target))
-			current_turf.overlays -= I
+			disarm()
 		return
 
 	user.drop_held_item()
-	loc = null
+	source_mob = user
+	plant_target = target
+	icon_state = overlay_image
+
+	if(!istype(target, /obj/structure/window) && !istype(target, /turf/closed))
+		user.drop_held_item()
+		target.contents += src
+		overlay = image('icons/obj/items/assemblies.dmi', overlay_image)
+		overlay.layer = ABOVE_XENO_LAYER
+		target.overlays += overlay
+	else
+		calculate_pixel_offset(user, target)
 
 	if(ismob(target))
-		target.overlays += I
 		var/mob/M = target
 		to_chat(M, FONT_SIZE_HUGE(SPAN_DANGER("[user] plants [name] on you!")))
 		user.attack_log += "\[[time_stamp()]\] <font color='red'> [user.real_name] successfully planted [name] on [target:real_name] ([target:ckey])</font>"
@@ -72,10 +95,54 @@
 		message_admins("[key_name(user, user.client)](<A HREF='?_src_=admin_holder;adminmoreinfo;extra=\ref[user]'>?</A>) planted [src.name] on [target.name] at ([target.x],[target.y],[target.z] - <A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[target.x];Y=[target.y];Z=[target.z]'>JMP</a>) with [timer] second fuse")
 		log_game("[key_name(user)] planted [src.name] on [target.name] at ([target.x],[target.y],[target.z]) with [timer] second fuse")
 
-	user.visible_message(SPAN_WARNING("[user] plants [name] on [target]!"),
-	SPAN_WARNING("You plant [name] on [target]! Timer counting down from [timer]."))
+	if(customizable)
+		user.visible_message(SPAN_WARNING("[user] plants [name] on [target]!"),
+		SPAN_WARNING("You plant [name] on [target]!."))
+		activate_sensors()
+		if(!istimer(detonator.a_right) && !istimer(detonator.a_left))
+			icon_state = overlay_image
+	else
+		user.visible_message(SPAN_WARNING("[user] plants [name] on [target]!"),
+		SPAN_WARNING("You plant [name] on [target]! Timer counting down from [timer]."))
+		active = TRUE
+		add_timer(CALLBACK(src, .proc/prime), timer * 10)		
 
-	add_timer(CALLBACK(src, .proc/explode, user, target, current_turf, I), timer * 10)
+/obj/item/explosive/plastique/attackby(obj/item/W, mob/user)
+	if(ismultitool(W))
+		if(active)
+			if(user.action_busy)
+				return
+			user.visible_message(SPAN_NOTICE("[user] starts disarming [src]."), \
+			SPAN_NOTICE("You start disarming [src]."))
+			if(!do_after(user, 30, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
+				user.visible_message(SPAN_WARNING("[user] stops disarming [src]."), \
+					SPAN_WARNING("You stop disarming [src]."))
+				return
+			if(!active)//someone beat us to it
+				return
+			user.visible_message(SPAN_NOTICE("[user] finishes disarming [src]."), \
+			SPAN_NOTICE("You finish disarming [src]."))
+			disarm()
+	else
+		return ..()
+
+/obj/item/explosive/plastique/proc/disarm()
+	pixel_x = 0
+	pixel_y = 0
+	if(plant_target && !istype(plant_target, /obj/structure/window) & !istype(plant_target, /turf/closed))
+		plant_target.overlays -= overlay
+		qdel(overlay)
+		plant_target.contents -= src
+		forceMove(plant_target.loc)
+	plant_target = null
+	if(customizable)
+		if(active) //deactivate
+			if(!isigniter(detonator.a_right) && !issignaler(detonator.a_right))
+				detonator.a_right.activate()
+			if(!isigniter(detonator.a_left) && !issignaler(detonator.a_left))
+				detonator.a_left.activate()
+	active = FALSE
+	update_icon()
 
 /obj/item/explosive/plastique/proc/can_place(var/mob/user, var/atom/target)
 	if(istype(target, /obj/structure/ladder) || istype(target, /obj/item) || istype(target, /turf/open))
@@ -96,63 +163,84 @@
 		if(W.not_damageable)
 			to_chat(user, SPAN_WARNING("[W] is much too tough for you to do anything to it with [src].")) //On purpose to mimic wall message
 			return FALSE
-			
+	
+	if(customizable && assembly_stage < ASSEMBLY_LOCKED)
+		return FALSE
+
 	return TRUE
 
-/obj/item/explosive/plastique/proc/calculate_pixel_offset(var/mob/user, var/atom/target, var/turf/current_turf, var/image/I)
+/obj/item/explosive/plastique/proc/calculate_pixel_offset(var/mob/user, var/atom/target)
 	switch(get_dir(user, target))
 		if(NORTH)
-			I.pixel_y = 24
+			pixel_y = 24
 		if(NORTHEAST)
-			I.pixel_y = 24
-			I.pixel_x = 24
+			pixel_y = 24
+			pixel_x = 24
 		if(EAST)
-			I.pixel_x = 24
+			pixel_x = 24
 		if(SOUTHEAST)
-			I.pixel_x = 24
-			I.pixel_y = -24
+			pixel_x = 24
+			pixel_y = -24
 		if(SOUTH)
-			I.pixel_y = -24
+			pixel_y = -24
 		if(SOUTHWEST)
-			I.pixel_y = -24
-			I.pixel_x = -24
+			pixel_y = -24
+			pixel_x = -24
 		if(WEST)
-			I.pixel_x = -24
+			pixel_x = -24
 		if(NORTHWEST)
-			I.pixel_x = -24
-			I.pixel_y = 24
-	current_turf.overlays += I
+			pixel_x = -24
+			pixel_y = 24
 
-/obj/item/explosive/plastique/proc/explode(var/mob/user, var/atom/target, var/turf/current_turf, var/image/I)
-	if(!target || target.disposed)
+/obj/item/explosive/plastique/prime(var/force = FALSE)
+	if(!force && (!plant_target || plant_target.disposed || !active))
 		return
+	var/turf/target_turf
+	if(!force)
+		if(!istype(plant_target, /obj/structure/window) & !istype(plant_target, /turf/closed))
+			plant_target.overlays -= overlay
+			qdel(overlay)
+			plant_target.contents -= src
+			forceMove(plant_target.loc)
+		if(ismob(plant_target))
+			var/mob/M = plant_target
+			M.last_damage_source = initial(name)
+			M.last_damage_mob = source_mob
 
-	if(ismob(target))
-		var/mob/M = target
-		M.last_damage_source = initial(name)
-		M.last_damage_mob = user
-		target.overlays -= I
+		target_turf = get_turf(plant_target)
 	else
-		current_turf.overlays -= I
-	qdel(I)
-
-	var/turf/target_turf = get_turf(target)
-	target.ex_act(1000, , initial(name), user)
+		plant_target = loc
+		target_turf = loc
+	if(customizable)
+		. = ..()
+		if(!disposed)
+			cell_explosion(target_turf, 60, 30, null, initial(name), source_mob)
+			qdel(src)
+		return
+	plant_target.ex_act(1000, , initial(name), source_mob)
 
 	for(var/turf/closed/wall/W in orange(1, target_turf))
 		if(W.hull)
 			continue
-		W.ex_act(1000, , initial(name), user)
+		W.ex_act(1000, , initial(name), source_mob)
 
 	for(var/obj/structure/window/W in orange(1, target_turf))
 		if(W.not_damageable)
 			continue
 
-		W.ex_act(1000, , initial(name), user)
+		W.ex_act(1000, , initial(name), source_mob)
 
 	for(var/obj/structure/machinery/door/D in orange(1, target_turf))
-		D.ex_act(1000, , initial(name), user)
+		D.ex_act(1000, , initial(name), source_mob)
 	
-	cell_explosion(target_turf, 120, 30, null, initial(name), user)
+	cell_explosion(target_turf, 120, 30, null, initial(name), source_mob)
 
 	qdel(src)
+
+/obj/item/explosive/plastique/custom
+	name = "Custom plastic explosive"
+	desc = "A custom plastic explosive."
+	icon_state = "custom_plastic_explosive"
+	overlay_image = "custom_plastic_explosive_sensing"
+	customizable = TRUE
+	matter = list("metal" = 7500, "plastic" = 2000) // 2 metal and 1 plastic sheet

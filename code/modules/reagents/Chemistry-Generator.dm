@@ -190,15 +190,7 @@
 	for(var/i=1;i<=rand(1,5);i++) //overdose_critical is min 5u, to max 30u + normal overdose
 		if(prob(20))
 			overdose_critical += 5
-	
-	//Nutriment factor
-	if(properties && PROPERTY_NUTRITIOUS in properties)
-		nutriment_factor = 0.5
-		for(var/i=1;i<=rand(1,5);i++) //min 0.5, to max 3 (the nutriment factor of pure nutriment)
-			if(prob(60))//Deviating from 0.5 gets exponentially more rare.
-				nutriment_factor += 0.5
-		properties[PROPERTY_NUTRITIOUS] = nutriment_factor
-
+		
 	//Metabolism
 	var/direction = rand(0,1) //the direction we deviate from 0.2
 	for(var/i=1;i<=rand(1,8);i++) //min of 0.01 (barely metabolizes, but chance is 0.00065%, so it deserves to be this miraculous) to max 0.4 (neuraline)
@@ -212,10 +204,43 @@
 	
 	//Color
 	color = text("#[][][]",num2hex(rand(0,255)),num2hex(rand(0,255)),num2hex(rand(0,255)))
+	burncolor = color
 	
 	//Description
 	generate_description()
 	return TRUE
+
+//For properties that change stats
+/datum/reagent/proc/update_stats()
+	if(!properties)
+		return
+	for(var/P in properties)
+		var/potency = properties[P] * 0.5
+		switch(P)
+			if(PROPERTY_NUTRITIOUS)
+				nutriment_factor = potency
+			if(PROPERTY_FUELING)
+				chemfiresupp = TRUE
+				durationmod = 0.4 * potency
+				intensitymod = 0.2 * potency
+			if(PROPERTY_OXIDIZING)
+				chemfiresupp = TRUE
+				durationmod = 0.2 * potency
+				intensitymod = 0.4 * potency
+			if(PROPERTY_FLOWING)
+				chemfiresupp = TRUE
+				radiusmod = 0.05 * potency
+				durationmod = 0.1 * potency
+				intensitymod = 0.1 * potency
+			if(PROPERTY_VISCOUS)
+				chemfiresupp = TRUE
+				radiusmod = 0.05 * potency
+				durationmod = 0.1 * potency
+				intensitymod = 0.1 * potency
+			if(PROPERTY_EXPLOSIVE)
+				explosive = TRUE
+				power = potency
+				falloff_level =  30 / potency
 
 /proc/get_negative_chem_properties(var/special_properties)
 	var/list/negative_properties = list(PROPERTY_HYPOXEMIC = "Reacts with hemoglobin in red blood cells preventing oxygen from being absorbed, resulting in hypoxemia.",\
@@ -246,8 +271,8 @@
 										PROPERTY_ALCOHOLIC = "Binds to glutamate neurotransmitters and gamma aminobutyric acid (GABA), slowing brain functions response to stimuli. This effect is also known as intoxication.",\
 										PROPERTY_HALLUCINOGENIC = "Causes perception-like experiences that occur without an external stimulus, which are vivid and clear, with the full force and impact of normal perceptions, though not under voluntary control.",\
 										PROPERTY_RELAXING = "Has a sedative effect on neuromuscular junctions depressing the force of muscle contractions. High concentrations can cause respiratory failure and cardiac arrest.",\
-										PROPERTY_HYPERTHERMIC = "Causes an endothermic reaction when metabolized in the body, increasing internal body temperature.",\
-										PROPERTY_HYPOTHERMIC = "Causes an exothermic reaction when metabolized in the body, decreasing internal body temperature.",\
+										PROPERTY_HYPERTHERMIC = "Causes an exothermic reaction when metabolized in the body, increasing internal body temperature. Warning: this can ignite chemicals on reaction.",\
+										PROPERTY_HYPOTHERMIC = "Causes an endothermic reaction when metabolized in the body, decreasing internal body temperature.",\
 										PROPERTY_BALDING = "Damages the hair follicles in the skin causing extreme alopecia, also refered to as baldness.",\
 										PROPERTY_FLUFFING = "Accelerates cell division in the hair follicles resulting in random and excessive hairgrowth.",\
 										PROPERTY_ALLERGENIC = "Creates a hyperactive immune response in the body, resulting in irritation.",\
@@ -255,6 +280,7 @@
 										PROPERTY_EUPHORIC = "Causes the release of endorphin hormones resulting intense excitement and happiness.",\
 										PROPERTY_EMETIC = "Acts on the enteric nervous system to induce emesis, the forceful emptying of the stomach.",\
 										PROPERTY_PSYCHOSTIMULATING = "Stimulates psychological functions causing increased awareness, focus and anti-depressing effects.",\
+										PROPERTY_VISCOUS = "The chemical is thick and gooey due to high surface tension. It will not spread very far when spilled. This would decrease the radius of a chemical fire.",\
 										PROPERTY_ANTIHALLUCINOGENIC = "Stabilizes perseptive abnormalities such as hallucinations caused by mindbreaker toxin.")
 	if(special_properties)
 		neutral_properties += list(		PROPERTY_CROSSMETABOLIZING = "The chemical can be metabolized in other humanoid lifeforms.")
@@ -278,7 +304,11 @@
 										PROPERTY_BONEMENDING = "Rapidly increases the production of osteoblasts and chondroblasts while also accelerating the process of endochondral ossification. This allows broken bone tissue to be re-wowen and restored quickly if the bone is correctly positioned. Overdosing may result in the bone structure growing abnormally and can have adverse effects on the skeletal structure.",\
 										PROPERTY_FLUXING = "Liquifies large crystalline and metallic structures under bodytemperature in the body and allows it to migrate to and be excreted through the skin.",\
 										PROPERTY_NEUROCRYOGENIC = "Causes a temporal freeze of all neurological processes and cellular respirations in the brain. This allows the brain to be preserved for long periods of time.",\
-										PROPERTY_ANTIPARASITIC = "Antimicrobial property specifically targeting parasitic pathogens in the body disrupting their growth and potentially killing them.")
+										PROPERTY_ANTIPARASITIC = "Antimicrobial property specifically targeting parasitic pathogens in the body disrupting their growth and potentially killing them.",\
+										PROPERTY_FUELING = "The chemical can be burned as a fuel, expanding the burn time of a chemical fire. However, this also lowers heat intensity.",\
+										PROPERTY_OXIDIZING = "The chemical is oxidizing, increasing the intensity of chemical fires. However, the fuel is also burned faster because of it.",\
+										PROPERTY_FLOWING = "The chemical is the opposite of viscous, and it tends to spill everywhere. This could probably be used to expand the radius of a chemical fire.",\
+										PROPERTY_EXPLOSIVE = "The chemical is highly explosive. Do not ignite. Careful when handling, as higher explosive levels cause increased sensitivity, which can lead to spontanous detonation.")
 	if(special_properties)
 		positive_properties += list(	PROPERTY_DEFIBRILLATING = "Causes an electrochemical reaction in the cardiac muscles, forcing the heart to continue pumping. May cause irregular heart rhythms.",\
 										PROPERTY_OMNIPOTENT = "Fully revitalizes all bodily functions.",\
@@ -382,7 +412,7 @@
 												PROPERTY_HEPATOTOXIC = PROPERTY_HEPATOPEUTIC,	PROPERTY_NEPHROTOXIC = PROPERTY_NEPHROPEUTIC,	PROPERTY_PNEUMOTOXIC = PROPERTY_PNEUMOPEUTIC,\
 												PROPERTY_OCULOTOXIC = PROPERTY_OCULOPEUTIC, 	PROPERTY_CARDIOTOXIC = PROPERTY_CARDIOPEUTIC,	PROPERTY_NEUROTOXIC = PROPERTY_NEUROPEUTIC,\
 												PROPERTY_FLUXING = PROPERTY_REPAIRING, 			PROPERTY_RELAXING = PROPERTY_MUSCLESTIMULATING,	PROPERTY_HEMOGENIC = PROPERTY_HEMOLYTIC,\
-												PROPERTY_HEMOGENIC = PROPERTY_HEMORRAGING,		PROPERTY_NUTRITIOUS = PROPERTY_EMETIC)
+												PROPERTY_HEMOGENIC = PROPERTY_HEMORRAGING,		PROPERTY_NUTRITIOUS = PROPERTY_EMETIC, 			PROPERTY_FLOWING = PROPERTY_VISCOUS)
 		//The list below defines which properties should be combined into a combo property
 		var/list/combining_properties = list(	PROPERTY_DEFIBRILLATING = list(PROPERTY_MUSCLESTIMULATING, PROPERTY_CARDIOPEUTIC))
 		var/match
@@ -431,4 +461,8 @@
 	var/info
 	for(var/P in properties)
 		info += "<BR><B>[capitalize(P)] Level [properties[P]]</B> - [all_properties[P]]<BR>"
+		if(P == PROPERTY_HYPERTHERMIC)
+			info += "<I>WARNING: Mixing too much at a time can cause spontanous ignition!</I>"
+		else if(P == PROPERTY_EXPLOSIVE)
+			info += "<I>WARNING: Mixing too much at a time can cause spontanous explosion!</I>"
 	description = info

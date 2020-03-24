@@ -74,3 +74,10 @@
 	icon_state = "green"
 	requires_power = 0
 	flags_atom = AREA_NOTUNNEL
+
+//Simulation area
+/area/adminlevel/simulation
+	name = "Simulated Reality"
+	icon_state = "green"
+	requires_power = 0
+	flags_atom = AREA_NOTUNNEL

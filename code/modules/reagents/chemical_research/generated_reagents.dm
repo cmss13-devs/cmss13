@@ -15,6 +15,7 @@
 	if(!chemical_reagents_list[id])
 		generate_name()
 		generate_stats()
+		update_stats()
 		chemical_reagents_list[id] = src
 	make_alike(chemical_reagents_list[id])
 
@@ -841,3 +842,19 @@
 					D.stage--
 					if(D.stage < 1)
 						D.cure()
+
+/datum/chemical_reaction/generated/on_reaction(var/datum/reagents/holder, var/created_volume)
+	var/datum/reagent/R = holder.reagent_list[id]
+	if(!R || !R.properties)
+		return
+	for(var/P in R.properties)
+		var/potency = R.properties[P] * 0.5
+		if(!potency)
+			continue
+		switch(P)
+			if(PROPERTY_HYPERTHERMIC)
+				if(created_volume > (created_volume * 5) / potency)
+					holder.trigger_volatiles = TRUE
+			if(PROPERTY_EXPLOSIVE)
+				if(created_volume > (created_volume * 5) / potency)
+					holder.trigger_volatiles = TRUE

@@ -122,4 +122,10 @@
 #define PROPERTY_RAVENING			"ravening"
 #define PROPERTY_CURING				"curing"
 #define PROPERTY_OMNIPOTENT			"omnipotent"
+//Reaction Properties
+#define PROPERTY_FUELING			"fueling"
+#define PROPERTY_OXIDIZING			"oxidizing"
+#define PROPERTY_FLOWING			"flowing"
+#define PROPERTY_VISCOUS			"viscous"
+#define PROPERTY_EXPLOSIVE			"explosive"
 

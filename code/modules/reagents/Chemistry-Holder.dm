@@ -10,7 +10,17 @@ var/const/INGEST = 2
 	var/total_volume = 0
 	var/maximum_volume = 100
 	var/atom/my_atom = null
+	var/trigger_volatiles = FALSE
 	var/exploded = FALSE
+	var/max_ex_power = 175
+	var/max_ex_falloff = 35
+	var/max_ex_shards = 32
+	var/max_fire_rad = 5
+	var/max_fire_int = 20
+	var/max_fire_dur = 24
+	var/min_fire_rad = 1
+	var/min_fire_int = 3
+	var/min_fire_dur = 3
 
 /datum/reagents/New(maximum=100)
 	maximum_volume = maximum
@@ -264,11 +274,16 @@ var/const/INGEST = 2
 				var/list/multipliers = new/list()
 
 				for(var/B in C.required_reagents)
-					if(!has_reagent(B, C.required_reagents[B]))	break
+					if(!has_reagent(B, C.required_reagents[B]))
+						break
 					total_matching_reagents++
 					multipliers += round(get_reagent_amount(B) / C.required_reagents[B])
 				for(var/B in C.required_catalysts)
-					if(!has_reagent(B, C.required_catalysts[B]))	break
+					if(B == "silver" && istype(my_atom, /obj/item/reagent_container/glass/beaker/silver))
+						total_matching_catalysts++
+						continue
+					if(!has_reagent(B, C.required_catalysts[B]))
+						break
 					total_matching_catalysts++
 
 				if(isliving(my_atom) && !C.mob_react) //Makes it so some chemical reactions don't occur in mobs
@@ -314,7 +329,9 @@ var/const/INGEST = 2
 					break
 
 	while(reaction_occured)
-	if(exploded) // clear reagents only when everything has reacted
+	if(trigger_volatiles)
+		handle_volatiles()
+	if(exploded) //clear reagents only when everything has reacted
 		clear_reagents()
 		exploded = FALSE
 	update_total()
@@ -418,9 +435,8 @@ var/const/INGEST = 2
 
 		var/datum/reagent/R = new D.type()
 		if(D.type == /datum/reagent/generated)
-			for(var/V in D.vars)//We do this so admin spawned chemicals don't get defaulted
-				if(V in list("id","name","description","chemclass","gen_tier","properties","overdose", "overdose_critical","original_type","nutriment_factor","custom_metabolism","last_source_mob","color","key","scannable","ingestible","objective_value"))
-					R.vars[V] = D.vars[V]
+			R.make_alike(D)
+			R.update_stats()
 		reagent_list += R
 		R.holder = src
 		R.volume = amount
@@ -525,6 +541,157 @@ var/const/INGEST = 2
 	var/list/trans_data = current_reagent.data.Copy()
 
 	return trans_data
+
+/datum/reagents/proc/replace_with(var/list/replacing, var/result, var/amount)
+	for(var/id in replacing)
+		if(get_reagent_amount(id) < replacing[id])
+			return FALSE
+	for(var/id in replacing)
+		remove_reagent(id, replacing[id], TRUE)
+	add_reagent(result, amount)
+
+//////////////////////////////EXPLOSIONS AND FIRE//////////////////////////////
+
+/datum/reagents/proc/handle_volatiles()
+	var/turf/sourceturf = get_turf(my_atom)
+	//For explosion
+	var/ex_power = 0
+	var/avg_falloff_level = 0
+	//For chemical fire
+	var/radius = 0
+	var/intensity = 0
+	var/duration = 0
+	var/supplemented = 0 //for determining fire shape. Intensifying chems add, moderating chems remove.
+	var/smokerad = 0
+	var/list/supplements = list()
+	for(var/datum/reagent/R in reagent_list)
+		if(R.explosive)
+			//Calculate explosive power
+			ex_power += R.volume*R.power
+			//Calculate average falloff level
+			if(avg_falloff_level)
+				avg_falloff_level = (R.falloff_level + avg_falloff_level)/2
+			else
+				avg_falloff_level = R.falloff_level
+		if(R.chemfiresupp)
+			supplements += R
+			supplemented += R.intensitymod * R.volume
+			intensity += R.intensitymod * R.volume
+			duration += R.durationmod * R.volume
+			radius += R.radiusmod * R.
+		if(R.id == "phosphorus")
+			smokerad = min(R.volume / 10, max_fire_rad - 1)
+	//only integers please
+	radius = round(radius)
+	intensity = round(intensity)
+	duration = round(duration)
+	if(ex_power)
+		explode(sourceturf, ex_power, avg_falloff_level)
+	if(intensity)
+		var/firecolor = mix_burn_colors(supplements)
+		combust(sourceturf, radius, intensity, duration, supplemented, firecolor, smokerad)
+	if(exploded && sourceturf)
+		sourceturf.chemexploded = TRUE // to prevent grenade stacking
+		add_timer(CALLBACK(src, .proc/reset_chemexploded, sourceturf), 20, TIMER_UNIQUE)
+	trigger_volatiles = FALSE
+	return exploded
+
+/datum/reagents/proc/explode(var/turf/sourceturf, var/ex_power, var/falloff_level)
+	if(!sourceturf)
+		return
+	if(sourceturf.chemexploded)
+		return // Has recently exploded, so no explosion this time. Prevents instagib satchel charges.
+	
+	var/exfalloff
+	var/shards = 4 // Because explosions are messy
+	var/shard_type = /datum/ammo/bullet/shrapnel
+	var/source_mob
+
+	if(ishuman(my_atom))
+		var/mob/living/carbon/human/H = my_atom
+		source_mob = H
+		msg_admin_niche("WARNING: Ingestion based explosion attempted in containing mob [H.name] ([H.ckey]) in area [sourceturf.loc] at ([H.loc.x],[H.loc.y],[H.loc.z]) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[H.loc.x];Y=[H.loc.y];Z=[H.loc.z]'>JMP</a>)")
+		exploded = TRUE
+		return
+
+	if(my_atom) //It exists outside of null space.
+		for(var/datum/reagent/R in reagent_list) // if you want to do extra stuff when other chems are present, do it here
+			if(R.id == "iron")
+				shards += round(R.volume)
+			else if(R.id == "phoron" && R.volume >= 10)
+				shard_type = /datum/ammo/bullet/shrapnel/incendiary
+
+		// some upper limits
+		if(shards > max_ex_shards)
+			shards = max_ex_shards
+		if(istype(shard_type, /datum/ammo/bullet/shrapnel/incendiary) && shards > max_ex_shards / 4) // less max incendiary shards
+			shards = max_ex_shards / 4
+		if(ex_power > max_ex_power)
+			ex_power = max_ex_power
+		exfalloff = ex_power/falloff_level
+		if(exfalloff < 15)
+			exfalloff = 15
+		else if(exfalloff > max_ex_falloff)
+			exfalloff = max_ex_falloff
+
+		//Note: No need to log here as that is done in cell_explosion()
+
+		create_shrapnel(sourceturf, shards, , ,shard_type, "chemical reaction", source_mob)
+		sleep(2) // So mobs aren't knocked down before getting hit by shrapnel
+		cell_explosion(sourceturf, ex_power, exfalloff, null, "chemical reaction", source_mob)
+
+		exploded = TRUE // clears reagents after all reactions processed
+
+	return exploded
+
+/datum/reagents/proc/combust(var/turf/sourceturf, var/radius, var/intensity, var/duration, var/supplemented, var/firecolor, var/smokerad, var/mob/user)
+	if(!sourceturf)
+		return
+	if(sourceturf.chemexploded)
+		return // Has recently exploded, so no explosion this time. Prevents instagib satchel charges.
+	
+	var/flameshape = FLAMESHAPE_DEFAULT
+	
+	// some upper and lower limits
+	if(radius <= min_fire_rad)
+		radius = min_fire_rad
+	else if(radius >= max_fire_rad)
+		radius = max_fire_rad
+	if(intensity <= min_fire_int)
+		intensity = min_fire_int
+	else if(intensity >= max_fire_int)
+		intensity = max_fire_int
+	if(duration <= min_fire_dur)
+		duration = min_fire_dur
+	else if(duration >= max_fire_dur)
+		duration = max_fire_dur
+
+	// shape
+	if(supplemented > 0 && intensity > 30)
+		flameshape = FLAMESHAPE_STAR
+
+	if(supplemented < 0 && intensity < 15)
+		flameshape = FLAMESHAPE_IRREGULAR
+		radius += 2 //  to make up for tiles lost to irregular shape
+	
+	// smoke
+	if(smokerad)
+		var/datum/effect_system/smoke_spread/phosphorus/smoke = new /datum/effect_system/smoke_spread/phosphorus
+		smoke.set_up(max(smokerad, 1), 0, sourceturf, null, 6)
+		smoke.start()
+		smoke = null
+
+	exploded = TRUE // clears reagents after all reactions processed
+
+	msg_admin_attack("Chemical fire with Intensity: [intensity], Duration: [duration], Radius: [radius] in [sourceturf.loc.name] ([sourceturf.x],[sourceturf.y],[sourceturf.z]).", sourceturf.x, sourceturf.y, sourceturf.z)
+
+	new /obj/flamer_fire(sourceturf, "chemical fire", user, duration, intensity, firecolor, radius, FALSE, flameshape)
+	sleep(5)
+	playsound(sourceturf, 'sound/weapons/gun_flamethrower1.ogg', 25, 1)
+
+/datum/reagents/proc/reset_chemexploded(var/turf/sourceturf)
+	sourceturf.chemexploded = FALSE
+	
 
 ///////////////////////////////////////////////////////////////////////////////////
 

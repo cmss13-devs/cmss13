@@ -1,193 +1,42 @@
-/obj/item/explosive/grenade/chem_grenade
-	name = "Grenade Casing"
-	icon_state = "chemg"
-	item_state = "flashbang"
-	desc = "A hand made chemical grenade."
+/obj/item/explosive/grenade/custom
+	name = "Custom grenade"
+	icon_state = "grenade_custom"
+	desc = "A custom chemical grenade with an M40 casing. This one is made to fit into underslung grenade launchers, but can also be used in hand."
 	w_class = SIZE_SMALL
 	force = 2.0
-	var/stage = 0
-	var/state = 0
-	var/path = 0
-	var/obj/item/device/assembly_holder/detonator = null
-	var/list/beakers = new/list()
-	var/list/allowed_containers = list(/obj/item/reagent_container/glass/beaker, /obj/item/reagent_container/glass/bottle)
-	var/affected_area = 3
+	dangerous = TRUE
+	customizable = TRUE
+	underslug_launchable = TRUE
+	allowed_sensors = list(/obj/item/device/assembly/timer)
+	matter = list("metal" = 3750)
 
-/obj/item/explosive/grenade/chem_grenade/New()
-	var/datum/reagents/R = new/datum/reagents(1000)
-	reagents = R
-	R.my_atom = src
-
-/obj/item/explosive/grenade/chem_grenade/attack_self(mob/user as mob)
-	if(stage <= 1)
-		if(detonator)
-			detonator.detached()
-			usr.put_in_hands(detonator)
-			detonator=null
-			stage=0
-			icon_state = initial(icon_state)
-		else if(beakers.len)
-			for(var/obj/B in beakers)
-				if(istype(B))
-					beakers -= B
-					user.put_in_hands(B)
-		name = "unsecured grenade with [beakers.len] containers[detonator?" and detonator":""]"
-	else
-		..()
-
-/obj/item/explosive/grenade/chem_grenade/attackby(obj/item/W as obj, mob/user as mob)
-
-	if(istype(W,/obj/item/device/assembly_holder) && (!stage || stage==1) && path != 2)
-		var/obj/item/device/assembly_holder/det = W
-		if(istype(det.a_left,det.a_right.type) || (!isigniter(det.a_left) && !isigniter(det.a_right)))
-			to_chat(user, SPAN_DANGER("Assembly must contain one igniter."))
-			return
-		if(!det.secured)
-			to_chat(user, SPAN_DANGER("Assembly must be secured with screwdriver."))
-			return
-		if(detonator)
-			to_chat(user, SPAN_DANGER("This casing already has a detonator."))
-			return
-		path = 1
-		to_chat(user, SPAN_NOTICE("You add [W] to the metal casing."))
-		playsound(src.loc, 'sound/items/Screwdriver2.ogg', 25, 0, 6)
-		user.temp_drop_inv_item(det)
-		det.forceMove(src)
-		detonator = det
-		icon_state = initial(icon_state) +"_ass"
-		name = "unsecured grenade with [beakers.len] containers[detonator?" and detonator":""]"
-		stage = 1
-	else if(istype(W,/obj/item/tool/screwdriver) && path != 2)
-		if(stage == 1)
-			path = 1
-			if(beakers.len)
-				to_chat(user, SPAN_NOTICE("You lock the assembly."))
-				name = "grenade"
-			else
-				to_chat(user, SPAN_NOTICE("You lock the empty assembly."))
-				name = "fake grenade"
-			playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 0, 6)
-			icon_state = initial(icon_state) +"_locked"
-			stage = 2
-		else if(stage == 2)
-			if(active && prob(95))
-				to_chat(user, SPAN_DANGER("You trigger the assembly!"))
-				prime()
-				return
-			else
-				to_chat(user, SPAN_NOTICE("You unlock the assembly."))
-				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 0, 6)
-				name = "unsecured grenade with [beakers.len] containers[detonator?" and detonator":""]"
-				icon_state = initial(icon_state) + (detonator?"_ass":"")
-				stage = 1
-				active = 0
-	else if(is_type_in_list(W, allowed_containers) && (!stage || stage==1) && path != 2)
-		path = 1
-		if(beakers.len == 2)
-			to_chat(user, SPAN_DANGER("The grenade can not hold more containers."))
-			return
-		else
-			if(W.reagents.total_volume)
-				if(user.drop_held_item())
-					to_chat(user, SPAN_NOTICE("You add \the [W] to the assembly."))
-					W.forceMove(src)
-					beakers += W
-					stage = 1
-					name = "unsecured grenade with [beakers.len] containers[detonator?" and detonator":""]"
-			else
-				to_chat(user, SPAN_DANGER("\the [W] is empty."))
-
-/obj/item/explosive/grenade/chem_grenade/examine(mob/user)
+/obj/item/explosive/grenade/custom/prime()
+	overlays.Cut()
 	..()
-	if(detonator)
-		to_chat(user, "With attached [detonator.name]")
 
-/obj/item/explosive/grenade/chem_grenade/activate(mob/user as mob)
-	if(active) return
-
-	if(detonator)
-		if(!isigniter(detonator.a_left))
-			detonator.a_left.activate()
-			active = 1
-		if(!isigniter(detonator.a_right))
-			detonator.a_right.activate()
-			active = 1
-	if(active)
-		icon_state = initial(icon_state) + "_active"
-		playsound(loc, arm_sound, 25, 1, 6)
-
-	return
-
-/obj/item/explosive/grenade/chem_grenade/proc/primed(var/primed = 1)
-	if(active)
-		icon_state = initial(icon_state) + (primed?"_primed":"_active")
-
-/obj/item/explosive/grenade/chem_grenade/prime()
-	if(!stage || stage<2) return
-
-	//if(prob(reliability))
-	var/has_reagents = 0
-	for(var/obj/item/reagent_container/glass/G in beakers)
-		if(G.reagents.total_volume) has_reagents = 1
-
-	active = 0
-	if(!has_reagents)
-		icon_state = initial(icon_state) +"_locked"
-		playsound(src.loc, 'sound/items/Screwdriver2.ogg', 25, 1)
-		return
-
-	playsound(src.loc, 'sound/effects/bamf.ogg', 50, 1)
-	var/reagent_list_text = ""
-	for(var/obj/O in beakers)
-		if(!O.reagents) continue
-		for(var/reagent in O.reagents.reagent_list)
-			reagent_list_text += " [reagent], "
-
-	msg_admin_attack("[src] detonated a chemnade (REAGENTS: [reagent_list_text]) in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
-
-	for(var/obj/item/reagent_container/glass/G in beakers)
-		G.reagents.trans_to(src, G.reagents.total_volume)
-
-	if(!disposed) //the possible reactions didn't qdel src
-		if(reagents.total_volume) //The possible reactions didnt use up all reagents.
-			var/datum/effect_system/steam_spread/steam = new /datum/effect_system/steam_spread()
-			steam.set_up(10, 0, get_turf(src))
-			steam.attach(src)
-			steam.start()
-
-			for(var/atom/A in view(affected_area, src.loc))
-				if( A == src ) continue
-				src.reagents.reaction(A, 1, 10)
-
-		if(istype(loc, /mob/living/carbon))		//drop dat grenade if it goes off in your hand
-			var/mob/living/carbon/C = loc
-			C.drop_inv_item_on_ground(src)
-			C.toggle_throw_mode(THROW_MODE_OFF)
-
-		invisibility = INVISIBILITY_MAXIMUM //Why am i doing this?
-		spawn(50)		   //To make sure all reagents can work
-			qdel(src)	   //correctly before deleting the grenade.
-
-
-/obj/item/explosive/grenade/chem_grenade/large
-	name = "Large Chem Grenade"
-	desc = "An oversized grenade that affects a larger area."
-	icon_state = "large_grenade"
+/obj/item/explosive/grenade/custom/large
+	name = "Large Custom Grenade"
+	desc = "A custom chemical grenade with an M15 casing. This casing has a higher explosive capacity than the M40 variant."
+	icon_state = "large_grenade_custom"
 	allowed_containers = list(/obj/item/reagent_container/glass)
+	max_container_size = 120
+	reaction_limits = list(	"max_ex_power" = 215,	"max_ex_falloff" = 40,	"max_ex_shards" = 32,
+							"max_fire_rad" = 5,		"max_fire_int" = 20,	"max_fire_dur" = 24,
+							"min_fire_rad" = 1,		"min_fire_int" = 3,		"min_fire_dur" = 3
+	)
+	underslug_launchable = FALSE
 	
-	affected_area = 4
 	w_class = SIZE_MEDIUM
-	matter = list("metal" = 5000)
+	matter = list("metal" = 7000)
 
 
-/obj/item/explosive/grenade/chem_grenade/metalfoam
+/obj/item/explosive/grenade/custom/metalfoam
 	name = "Metal-Foam Grenade"
 	desc = "Used for emergency sealing of air breaches."
-	path = 1
-	stage = 2
+	assembly_stage = ASSEMBLY_LOCKED
 	harmful = FALSE
 
-/obj/item/explosive/grenade/chem_grenade/metalfoam/New()
+/obj/item/explosive/grenade/custom/metalfoam/New()
 	..()
 	var/obj/item/reagent_container/glass/beaker/B1 = new(src)
 	var/obj/item/reagent_container/glass/beaker/B2 = new(src)
@@ -198,18 +47,17 @@
 
 	detonator = new/obj/item/device/assembly_holder/timer_igniter(src)
 
-	beakers += B1
-	beakers += B2
-	icon_state = initial(icon_state) + "_locked"
+	containers += B1
+	containers += B2
+	update_icon()
 
 
-/obj/item/explosive/grenade/chem_grenade/incendiary
+/obj/item/explosive/grenade/custom/incendiary
 	name = "Incendiary Grenade"
 	desc = "Used for clearing rooms of living things."
-	path = 1
-	stage = 2
+	assembly_stage = ASSEMBLY_LOCKED
 
-/obj/item/explosive/grenade/chem_grenade/incendiary/New()
+/obj/item/explosive/grenade/custom/incendiary/New()
 	..()
 	var/obj/item/reagent_container/glass/beaker/B1 = new(src)
 	var/obj/item/reagent_container/glass/beaker/B2 = new(src)
@@ -222,19 +70,18 @@
 
 	detonator = new/obj/item/device/assembly_holder/timer_igniter(src)
 
-	beakers += B1
-	beakers += B2
-	icon_state = initial(icon_state) + "_locked"
+	containers += B1
+	containers += B2
+	update_icon()
 
 
-/obj/item/explosive/grenade/chem_grenade/antiweed
+/obj/item/explosive/grenade/custom/antiweed
 	name = "weedkiller grenade"
 	desc = "Used for purging large areas of invasive plant species. Contents under pressure. Do not directly inhale contents."
-	path = 1
-	stage = 2
+	assembly_stage = ASSEMBLY_LOCKED
 	harmful = FALSE
 
-/obj/item/explosive/grenade/chem_grenade/antiweed/New()
+/obj/item/explosive/grenade/custom/antiweed/New()
 	..()
 	var/obj/item/reagent_container/glass/beaker/B1 = new(src)
 	var/obj/item/reagent_container/glass/beaker/B2 = new(src)
@@ -246,19 +93,18 @@
 
 	detonator = new/obj/item/device/assembly_holder/timer_igniter(src)
 
-	beakers += B1
-	beakers += B2
-	icon_state = initial(icon_state) + "_locked"
+	containers += B1
+	containers += B2
+	update_icon()
 
 
-/obj/item/explosive/grenade/chem_grenade/cleaner
+/obj/item/explosive/grenade/custom/cleaner
 	name = "cleaner grenade"
 	desc = "BLAM!-brand foaming space cleaner. In a special applicator for rapid cleaning of wide areas."
-	stage = 2
-	path = 1
+	assembly_stage = ASSEMBLY_LOCKED
 	harmful = FALSE
 
-/obj/item/explosive/grenade/chem_grenade/cleaner/New()
+/obj/item/explosive/grenade/custom/cleaner/New()
 	..()
 	var/obj/item/reagent_container/glass/beaker/B1 = new(src)
 	var/obj/item/reagent_container/glass/beaker/B2 = new(src)
@@ -269,20 +115,20 @@
 
 	detonator = new/obj/item/device/assembly_holder/timer_igniter(src)
 
-	beakers += B1
-	beakers += B2
-	icon_state = initial(icon_state) + "_locked"
+	containers += B1
+	containers += B2
+	update_icon()
 
 
 
 
-/obj/item/explosive/grenade/chem_grenade/teargas
+/obj/item/explosive/grenade/custom/teargas
 	name = "\improper M66 teargas grenade"
 	desc = "Tear gas grenade used for nonlethal riot control. Please wear adequate gas protection."
-	stage = 2
+	assembly_stage = ASSEMBLY_LOCKED
 	harmful = FALSE
 
-/obj/item/explosive/grenade/chem_grenade/teargas/New()
+/obj/item/explosive/grenade/custom/teargas/New()
 	..()
 	var/obj/item/reagent_container/glass/beaker/B1 = new(src)
 	var/obj/item/reagent_container/glass/beaker/B2 = new(src)
@@ -294,25 +140,25 @@
 
 	detonator = new/obj/item/device/assembly_holder/timer_igniter(src, 2) //~4 second timer
 
-	beakers += B1
-	beakers += B2
+	containers += B1
+	containers += B2
 
-	icon_state = initial(icon_state) + "_locked"
+	update_icon()
 
 
-/obj/item/explosive/grenade/chem_grenade/teargas/attack_self(mob/user)
+/obj/item/explosive/grenade/custom/teargas/attack_self(mob/user)
 	if(!skillcheck(user, SKILL_POLICE, SKILL_POLICE_MP))
 		to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 		return
 	..()
 
 
-/obj/item/explosive/grenade/chem_grenade/ied
+/obj/item/explosive/grenade/custom/ied
 	name = "improvised explosive device"
 	desc = "An improvised chemical explosive grenade. Designed to kill through fragmentation."
-	stage = 2
+	assembly_stage = ASSEMBLY_LOCKED
 
-/obj/item/explosive/grenade/chem_grenade/ied/New()
+/obj/item/explosive/grenade/custom/ied/New()
 	..()
 	var/obj/item/reagent_container/glass/beaker/B1 = new(src)
 	var/obj/item/reagent_container/glass/beaker/B2 = new(src)
@@ -324,18 +170,18 @@
 
 	detonator = new/obj/item/device/assembly_holder/timer_igniter(src, 2) //~4 second timer
 
-	beakers += B1
-	beakers += B2
+	containers += B1
+	containers += B2
 
-	icon_state = initial(icon_state) + "_locked"
+	update_icon()
 
 
-/obj/item/explosive/grenade/chem_grenade/ied_incendiary
+/obj/item/explosive/grenade/custom/ied_incendiary
 	name = "improvised explosive device (incendiary)"
 	desc = "An improvised chemical explosive grenade. Designed spray incendiary shrapnel across a wide area."
-	stage = 2
+	assembly_stage = ASSEMBLY_LOCKED
 
-/obj/item/explosive/grenade/chem_grenade/ied_incendiary/New()
+/obj/item/explosive/grenade/custom/ied_incendiary/New()
 	..()
 	var/obj/item/reagent_container/glass/beaker/B1 = new(src)
 	var/obj/item/reagent_container/glass/beaker/B2 = new(src)
@@ -348,7 +194,7 @@
 
 	detonator = new/obj/item/device/assembly_holder/timer_igniter(src, 2) //~4 second timer
 
-	beakers += B1
-	beakers += B2
+	containers += B1
+	containers += B2
 
-	icon_state = initial(icon_state) + "_locked"
+	update_icon()

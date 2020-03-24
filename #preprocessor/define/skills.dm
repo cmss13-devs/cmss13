@@ -83,7 +83,7 @@
 #define SKILL_CONSTRUCTION_METAL    1   //metal barricade construction (CT)
 #define SKILL_CONSTRUCTION_PLASTEEL 2   //plasteel barricade,(Req)(combat engi)
 #define SKILL_CONSTRUCTION_ADVANCED 3   //windows and girder construction
-#define SKILL_CONSTRUCTION_MASTER   4   //building machine&computer frames (MT, CE)
+#define SKILL_CONSTRUCTION_MASTER   4   //building machine&computer frames (OT, CE)
 
 
 
@@ -93,7 +93,7 @@
 #define SKILL_ENGINEER_METAL    1   //barricade repair && c4 use
 #define SKILL_ENGINEER_PLASTEEL 2   //plasteel barricade deconstruction
 #define SKILL_ENGINEER_ENGI     3   //hacking&&planet engine fixing&&apc building (combat engi)
-#define SKILL_ENGINEER_MT       4   //Telecomms fixing, faster engine fixing (MT)
+#define SKILL_ENGINEER_OT       4   //Telecomms fixing, faster engine fixing (OT)
 //higher levels give faster Almayer engine repair.
 
 
@@ -142,7 +142,7 @@
 #define SKILL_POWERLOADER_DEFAULT   0
 #define SKILL_POWERLOADER_DABBLING  1 //Pilot
 #define SKILL_POWERLOADER_TRAINED   2 //CT, Req
-#define SKILL_POWERLOADER_PRO       3 //MT
+#define SKILL_POWERLOADER_PRO       3 //OT
 #define SKILL_POWERLOADER_MASTER    4 //CE
 
 

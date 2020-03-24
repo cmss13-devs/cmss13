@@ -256,3 +256,99 @@ FORENSIC SCANNER
 	name = "advanced reagent scanner"
 	icon_state = "adv_spectrometer"
 	details = 1
+	
+/obj/item/device/demo_scanner
+	name = "demolitions scanner"
+	desc = "A hand-held specially designed reagent scanner meant for analyzing bombs. It can report explosive and fire hazards from chemical containers and explosive casings, including explosive and fire intensity. However, it can not predict effects such as shrapnel or burn duration nor predict hazards caused from immediate chemical reactions."
+	icon_state = "demolitions_scanner"
+	item_state = "analyzer"
+	w_class = SIZE_SMALL
+	flags_atom = FPRINT|CONDUCT
+	flags_equip_slot = SLOT_WAIST
+	throwforce = 5
+	throw_speed = SPEED_VERY_FAST
+	throw_range = 20
+	matter = list("metal" = 30,"glass" = 20)
+	var/scan_name = ""
+	var/dat = ""
+	var/ex_potential = 0
+	var/int_potential = 0
+	var/rad_potential = 0
+
+/obj/item/device/demo_scanner/afterattack(obj/O, mob/user as mob, proximity)
+	if(!proximity)
+		return
+	if(user.stat)
+		return
+	if(!(istype(user, /mob/living/carbon/human) || ticker) && ticker.mode.name != "monkey")
+		to_chat(user, SPAN_DANGER("You don't have the dexterity to do this!"))
+		return
+	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_OT))
+		to_chat(user, SPAN_WARNING("You do not know how to use the [name]."))
+		return
+	if(!istype(O))
+		return
+
+	if(!isnull(O.reagents))
+		scan_name = O.name
+		dat = ""
+		ex_potential = 0
+		int_potential = 0
+		rad_potential = 0
+		if(istype(O,/obj/item/explosive))
+			var/obj/item/explosive/E = O
+			if(!E.customizable)
+				to_chat(user, SPAN_NOTICE("ERROR: This brand of explosive is under data protection. Scan has been cancelled."))
+				return
+			for(var/obj/container in E.containers)
+				scan(container)
+		else if(istype(O,/obj/item/ammo_magazine/rocket/custom))
+			var/obj/item/ammo_magazine/rocket/custom/E = O
+			if(!E.warhead)
+				to_chat(user, SPAN_NOTICE("No warhead detected in [E]."))
+				return
+			for(var/obj/container in E.warhead.containers)
+				scan(container)
+		else if(istype(O,/obj/item/mortar_shell/custom))
+			var/obj/item/mortar_shell/custom/E = O
+			if(!E.warhead)
+				to_chat(user, SPAN_NOTICE("No warhead detected in [E]."))
+				return
+			for(var/obj/container in E.warhead.containers)
+				scan(container)
+		else
+			scan(O)
+		if(dat)
+			if(ex_potential)
+				dat += SPAN_ORANGE("<br>EXPLOSIVE HAZARD: ignition will create explosive detonation.<br>Potential detonation power: [min(ex_potential, O.reagents.max_ex_power)]")
+			if(int_potential)
+				dat += SPAN_RED("<br>FIRE HAZARD: ignition will create chemical fire.<br>Expected fire intensity rating of [min(max(int_potential,O.reagents.min_fire_int),O.reagents.max_fire_int)] in a [min(max(rad_potential,O.reagents.min_fire_rad),O.reagents.max_fire_rad)] meter radius.")
+			to_chat(user, SPAN_NOTICE("Chemicals found: [dat]"))
+		else
+			to_chat(user, SPAN_NOTICE("No active chemical agents found in [O]."))
+	else
+		to_chat(user, SPAN_NOTICE(" No significant chemical agents found in [O]."))
+	return
+
+/obj/item/device/demo_scanner/proc/scan(var/obj/O)
+	if(!O)
+		return
+	if(O.reagents.reagent_list.len > 0)
+		for(var/datum/reagent/R in O.reagents.reagent_list)
+			dat += SPAN_BLUE("<br>[R.name]: [R.volume]u")
+			if(R.explosive)
+				ex_potential += R.volume*R.power
+			if(R.chemfiresupp)
+				int_potential += R.intensitymod * R.volume
+				rad_potential += R.radiusmod * R.volume
+	return dat
+
+/obj/item/device/demo_scanner/attack_self(mob/user as mob)
+	if(!dat)
+		to_chat(user, SPAN_NOTICE("No scan data available."))
+		return
+	if(alert(user,"Print latest scan?","[scan_name]","Yes","No") == "Yes")
+		var/obj/item/paper/printing = new /obj/item/paper/()
+		printing.name = scan_name
+		printing.info = "Chemicals found: [dat]"
+		user.put_in_hands(printing)

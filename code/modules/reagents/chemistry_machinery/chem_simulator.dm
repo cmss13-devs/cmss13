@@ -32,7 +32,8 @@
 		PROPERTY_NERVESTIMULATING = "NST", 	PROPERTY_MUSCLESTIMULATING = "MST",	PROPERTY_PAINKILLING = "PNK",		PROPERTY_HEPATOPEUTIC = "HPP", 		PROPERTY_NEPHROPEUTIC = "NPP",\
 		PROPERTY_PNEUMOPEUTIC = "PNP", 		PROPERTY_OCULOPEUTIC = "OCP", 		PROPERTY_CARDIOPEUTIC = "CDP", 		PROPERTY_NEUROPEUTIC = "NRP",		PROPERTY_BONEMENDING = "BNM",\
 		PROPERTY_FLUXING = "FLX", 			PROPERTY_NEUROCRYOGENIC = "NRC", 	PROPERTY_ANTIPARASITIC = "APS", 	PROPERTY_DEFIBRILLATING ="DFB",\
-		PROPERTY_OMNIPOTENT = "OMN", 		PROPERTY_CURING = "CUR")
+		PROPERTY_OMNIPOTENT = "OMN", 		PROPERTY_CURING = "CUR", 			PROPERTY_FUELING = "FUL",			PROPERTY_OXIDIZING = "OXI",			PROPERTY_FLOWING = "FLW",\
+		PROPERTY_EXPLOSIVE = "EXP", 		PROPERTY_VISCOUS = "VIS")
 
 	var/mode = MODE_AMPLIFY
 	var/target_property = ""
@@ -293,7 +294,7 @@
 		C.properties[target_property] += 1
 		if(dictionary["positive"].Find(target_property))
 			if(C.overdose <= 5)
-				C.overdose = max(C.overdose--,1)
+				C.overdose = max(C.overdose - 1,1)
 			else
 				C.overdose = max(5, C.overdose - 5)
 			C.overdose_critical = max(10, C.overdose_critical - 5)
@@ -371,6 +372,7 @@
 			continue
 		break
 	//Save the reagent
+	C.update_stats()
 	C.generate_description()
 	C.chemclass = CHEM_CLASS_RARE //So that we can always scan this in the future, don't generate defcon, and don't get a loop of making credits
 	chemical_reagents_list[C.id] = C

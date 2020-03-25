@@ -945,10 +945,13 @@ and you're good to go.
 			to_chat(user, SPAN_WARNING("You don't have the dexterity to do this!"))
 			return
 
-		if(isSynth(user))
-			var/mob/living/carbon/human/S = user
-			if(S.allow_gun_usage != TRUE)
-				to_chat(user, SPAN_WARNING("Your program does not allow you to use firearms."))
+		if(ishuman(user))
+			var/mob/living/carbon/human/H = user
+			if(!H.allow_gun_usage)
+				if(isSynth(user))
+					to_chat(user, SPAN_WARNING("Your programming does not allow you to use firearms."))
+				else
+					to_chat(user, SPAN_WARNING("You are unable to use firearms."))
 				return
 
 		if(flags_gun_features & GUN_TRIGGER_SAFETY)

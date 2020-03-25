@@ -47,6 +47,7 @@
 		disable_special_flags()
 		disable_detectors()
 		disable_lights()
+		disable_special_items()
 	if(pulledby && isXeno(pulledby)) // Xenos lose grab on dead humans
 		pulledby.stop_pulling()
 	//Handle species-specific deaths.

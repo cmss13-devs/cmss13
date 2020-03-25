@@ -219,6 +219,13 @@
 	anchored = FALSE
 	frozen = FALSE
 
+/mob/living/carbon/human/proc/disable_special_items()
+	if(istype(back, /obj/item/storage/backpack/marine/satchel/scout_cloak))
+		var/obj/item/storage/backpack/marine/satchel/scout_cloak/SC = back
+		if(SC.camo_active)
+			SC.deactivate_camouflage(src)
+			return
+
 /mob/living/carbon/human/proc/disable_detectors()
 	for(var/obj/I in src)
 		check_if_detector(I)

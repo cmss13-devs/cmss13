@@ -142,8 +142,6 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/upp, WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/synth, WEAR_L_STORE)
 
-	H.allow_gun_usage = TRUE
-
 /*****************************************************************************************************/
 /datum/equipment_preset/upp/soldier_medic
 	name = "UPP Soldier (Medic)"

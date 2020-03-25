@@ -27,6 +27,8 @@
 	if(isEarlySynthetic(H))
 		H.set_skills(/datum/skills/early_synthetic)
 
+	H.allow_gun_usage = FALSE
+
 /*****************************************************************************************************/
 
 /datum/equipment_preset/synth/uscm
@@ -109,6 +111,8 @@
 	H.equip_to_slot_or_del(new /obj/item/attachable/bayonet, WEAR_L_HAND)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine, WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/m56_goggles, WEAR_EYES)
+
+	H.allow_gun_usage = TRUE
 
 /*****************************************************************************************************/
 

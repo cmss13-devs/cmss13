@@ -187,3 +187,18 @@ OPERATIONS
 	buyable = 0
 	group = "Operations"
 	iteration_needed = null
+
+/datum/supply_packs/spec_kits
+	name = "Specialist Kits"
+	contains = list(
+		/obj/item/spec_kit,
+		/obj/item/spec_kit,
+		/obj/item/spec_kit,
+		/obj/item/spec_kit
+	)
+	cost = 0
+	containertype = /obj/structure/closet/crate/supply
+	containername = "specialist kits crate"
+	buyable = 0
+	group = "Operations"
+	iteration_needed = null

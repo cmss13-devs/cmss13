@@ -1317,9 +1317,8 @@
 	var/obj/structure/resource_node/plasma/target_node = locate() in current_turf
 	if(target_node && get_dist(src, current_turf) <= max(1, src.caste.max_build_dist)) // Building resource collectors
 		var/obj/effect/alien/resin/collector/alien_blocker = locate() in current_turf
-		// var/obj/effect/alien/resin/collector/marine_blocker = locate() in current_turf
-		// if(alien_blocker || marine_blocker)
-		if(alien_blocker)
+		var/obj/structure/machinery/collector/marine_blocker = locate() in current_turf
+		if(alien_blocker || marine_blocker)
 			to_chat(src, SPAN_WARNING("There is already another collector here!"))
 			return FALSE
 		if(!target_node.growth_level)

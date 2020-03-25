@@ -1,3 +1,5 @@
+#define XENOCON_THRESHOLD 4500
+
 #define XENO_HIVE_EVOLUTION_FREETIME 3000 // 5 minutes of free evolution
 
 #define TUNNEL_MOVEMENT_XENO_DELAY 20

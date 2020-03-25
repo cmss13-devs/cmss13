@@ -280,6 +280,11 @@
 
 	if(objectives_controller)
 		to_chat(src, objectives_controller.get_objectives_progress())
+		to_chat(src, "<b>DEFCON:</b> [objectives_controller.get_scored_points()] / [objectives_controller.get_total_points()] points")
+	
+	for(var/datum/hive_status/hive in hive_datum)
+		if(hive.xenocon_points)
+			to_chat(src, "<b>XENOCON [hive.hivenumber]:</b> [hive.xenocon_points] / [XENOCON_THRESHOLD] points")
 
 /client/proc/award_medal()
 	if(!check_rights(R_ADMIN))

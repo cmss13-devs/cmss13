@@ -1,3 +1,5 @@
+#define COLLECTOR_DEFCON_RATE 0.5
+
 var/global/list/faction_phoron_stored_list = list(
 	FACTION_MARINE = 0,
 	FACTION_PMC = 0,
@@ -75,6 +77,9 @@ var/global/list/faction_phoron_stored_list = list(
 	flick("+collect", src)
 	last_gathered_time = world.time
 	faction_phoron_stored_list[belonging_to_faction] += RN.gather_resource(RN.collect_amount)
+
+	if(FACTION_MARINE in belonging_to_faction)
+		objectives_controller.add_admin_points(COLLECTOR_DEFCON_RATE)
 
 	if(RN.disposed)
 		break_down()

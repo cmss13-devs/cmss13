@@ -380,7 +380,7 @@
 				dat += "<BR><hr>"
 				dat += "<BR>DEFCON [defcon_controller.current_defcon_level]: [defcon_controller.check_defcon_percentage()]%"
 				dat += "<BR>Threat assessment level: [defcon_controller.last_objectives_completion_percentage*100]%"
-				dat += "<BR>Remaining DEFCON asset points: [defcon_controller.remaining_reward_points]."
+				dat += "<BR>Remaining DEFCON asset budget: $[defcon_controller.remaining_reward_points * DEFCON_TO_MONEY_MULTIPLIER]."
 				dat += "<BR><A href='?src=\ref[src];operation=defcon'>Enable DEFCON assets</A>"
 				dat += "<BR><hr>"
 

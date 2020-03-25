@@ -140,19 +140,6 @@ can cause issues with ammo types getting mixed up during the burst.
 	return 1
 
 
-/obj/item/weapon/gun/shotgun/able_to_fire(mob/living/user)
-	. = ..()
-	if (. && istype(user)) //Let's check all that other stuff first.
-		var/obj/item/storage/backpack/marine/satchel/scout_cloak/SC = user.back
-		if(istype(SC))
-			if(SC.camo_active)
-				to_chat(user, SPAN_WARNING("You cannot fire [src] while cloaked!"))
-				return FALSE
-			else if(!SC.camo_ready && (world.time - SC.camo_cooldown_start_time) < SECONDS_2)
-				return FALSE
-
-
-
 //-------------------------------------------------------
 //GENERIC MERC SHOTGUN //Not really based on anything.
 

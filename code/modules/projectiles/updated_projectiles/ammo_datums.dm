@@ -569,7 +569,7 @@
 	shrapnel_chance = 0
 	damage_falloff = 0
 	flags_ammo_behavior = AMMO_BALLISTIC
-	accurate_range_min = 6
+	accurate_range_min = 4
 
 /datum/ammo/bullet/rifle/m4ra/New()
 	..()

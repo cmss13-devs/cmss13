@@ -92,6 +92,8 @@
 	var/protection_aura = 0
 	var/marksman_aura = 0
 
+	var/FF_hit_evade = 15
+
 	var/is_important = FALSE
 
 	var/temporary_slowdown = 0 //Stacking slowdown caused from effects, currently used by neurotoxin gas

@@ -313,15 +313,8 @@
 	icon_state = "scout_cloak"
 	uniform_restricted = list(/obj/item/clothing/suit/storage/marine/M3S, /obj/item/clothing/head/helmet/marine/scout) //Need to wear Scout armor and helmet to equip this.
 	has_gamemode_skin = FALSE //same sprite for all gamemode.
-	var/camo_active = 0
-	var/camo_active_timer = 0
-	var/camo_cooldown_timer = 0
-	var/camo_cooldown_start_time = 0
-	var/camo_ready = 1
-
-	var/camo_cooldown = 100
-	var/camo_time_limit = 50
-	var/camo_alpha = 10
+	var/camo_active = FALSE
+	var/camo_alpha = 15
 
 	actions_types = list(/datum/action/item_action)
 
@@ -334,94 +327,62 @@
 	set desc = "Activate your cloak's camouflage."
 	set category = "Weapons"
 
-	if (!usr || usr.is_mob_incapacitated(TRUE))
+	if(!usr || usr.is_mob_incapacitated(TRUE))
 		return
 
-	var/mob/living/carbon/human/M = usr
-	if (!istype(M))
+	if(!ishuman(usr))
+		return
+	var/mob/living/carbon/human/H = usr
+
+	if(H.species.name == "Zombie")
 		return
 
-	if(M.species.name == "Zombie")
+	if(H.back != src)
+		to_chat(H, SPAN_WARNING("You must be wearing the cloak to activate it!"))
 		return
 
-	if (M.back != src)
-		to_chat(M, SPAN_WARNING("You must be wearing the cloak to activate it!"))
+	if(camo_active)
+		deactivate_camouflage(H)
 		return
 
-	if (camo_active)
-		camo_off(usr)
-		return
+	camo_active = TRUE
+	H.visible_message(SPAN_DANGER("[H] vanishes into thin air!"), SPAN_NOTICE("You activate your cloak's camouflage."), max_distance = 4)
+	playsound(H.loc,'sound/effects/cloak_scout_on.ogg', 15, 1)
 
-	if (!camo_ready)
-		to_chat(M, SPAN_WARNING("Your thermal dampeners are still recharging!"))
-		return
-
-	camo_ready = 0
-	camo_active = 1
-	to_chat(M, SPAN_NOTICE("You activate your cloak's camouflage."))
-
-	for (var/mob/O in oviewers(M))
-		O.show_message("[M] vanishes into thin air!", 1)
-	playsound(M.loc,'sound/effects/cloak_scout_on.ogg', 15, 1)
-
-	M.alpha = camo_alpha
+	H.alpha = camo_alpha
+	H.FF_hit_evade = 100
+	H.allow_gun_usage = FALSE
 
 	var/datum/mob_hud/security/advanced/SA = huds[MOB_HUD_SECURITY_ADVANCED]
-	SA.remove_from_hud(M)
+	SA.remove_from_hud(H)
 	var/datum/mob_hud/xeno_infection/XI = huds[MOB_HUD_XENO_INFECTION]
-	XI.remove_from_hud(M)
+	XI.remove_from_hud(H)
 
-	spawn(1)
-		anim(M.loc,M,'icons/mob/mob.dmi',,"cloak",,M.dir)
+	anim(H.loc, H, 'icons/mob/mob.dmi', null, "cloak", null, H.dir)
 
-	camo_active_timer = world.time + camo_time_limit
-	process_active_camo(usr)
-	return 1
 
-/obj/item/storage/backpack/marine/satchel/scout_cloak/proc/camo_off(var/mob/user)
-	if (!user)
-		return 0
+/obj/item/storage/backpack/marine/satchel/scout_cloak/proc/deactivate_camouflage(var/mob/living/carbon/human/H)
+	if(!istype(H))
+		return FALSE
 
-	to_chat(user, SPAN_WARNING("Your cloak's camouflage has deactivated!"))
-	camo_active = 0
+	camo_active = FALSE
+	H.visible_message(SPAN_DANGER("[H] shimmers into existence!"), SPAN_WARNING("Your cloak's camouflage has deactivated!"), max_distance = 4)
+	playsound(H.loc,'sound/effects/cloak_scout_off.ogg', 15, 1)
 
-	for (var/mob/O in oviewers(user))
-		O.show_message("[user.name] shimmers into existence!",1)
-	playsound(user.loc,'sound/effects/cloak_scout_off.ogg', 15, 1)
-	user.alpha = initial(user.alpha)
+	H.alpha = initial(H.alpha)
+	H.FF_hit_evade = initial(H.FF_hit_evade)
 
 	var/datum/mob_hud/security/advanced/SA = huds[MOB_HUD_SECURITY_ADVANCED]
-	SA.add_to_hud(user)
+	SA.add_to_hud(H)
 	var/datum/mob_hud/xeno_infection/XI = huds[MOB_HUD_XENO_INFECTION]
-	XI.add_to_hud(user)
+	XI.add_to_hud(H)
 
-	spawn(1)
-		anim(user.loc,user,'icons/mob/mob.dmi',,"uncloak",,user.dir)
+	anim(H.loc, H,'icons/mob/mob.dmi', null, "uncloak", null, H.dir)
 
-	camo_cooldown_timer = world.time + camo_cooldown
-	camo_cooldown_start_time = world.time
-	process_camo_cooldown(user)
+	add_timer(CALLBACK(src, .proc/allow_shooting, H), 5)
 
-/obj/item/storage/backpack/marine/satchel/scout_cloak/proc/process_camo_cooldown(var/mob/user)
-	set background = 1
-
-	spawn while (!camo_ready && !camo_active)
-		if (world.time > camo_cooldown_timer)
-			to_chat(user, SPAN_NOTICE("Your cloak's thermal dampeners have recharged!"))
-			camo_ready = 1
-
-		sleep(10)	// Process every second.
-
-/obj/item/storage/backpack/marine/satchel/scout_cloak/proc/process_active_camo(var/mob/user)
-	set background = 1
-
-	spawn while (camo_active)
-		if (world.time > camo_active_timer)
-			camo_active = 0
-			camo_off(user)
-
-		sleep(10)	// Process every second.
-
+/obj/item/storage/backpack/marine/satchel/scout_cloak/proc/allow_shooting(var/mob/living/carbon/human/H)
+	H.allow_gun_usage = TRUE
 
 /obj/item/storage/backpack/marine/satchel/scout_cloak/upp
 	name = "\improper V86 Thermal Cloak"
@@ -429,9 +390,7 @@
 	uniform_restricted = list(/obj/item/clothing/suit/storage/marine/faction/UPP/commando) //Need to wear UPP commando armor to equip this.
 
 	max_storage_space = 21
-	camo_cooldown = 50
-	camo_time_limit = 300
-	camo_alpha = 20
+	camo_alpha = 25
 
 
 

@@ -364,6 +364,7 @@
 	var/allowed_nest_distance = 15 //How far away do we allow nests from an ovied Queen. Default 15 tiles.
 	var/obj/effect/alien/resin/special/pylon/core/hive_location = null //Set to ref every time a core is built, for defining the hive location.
 	var/crystal_stored = 0 //How much stockpiled material is stored for the hive to use.
+	var/xenocon_points = 0 //Xeno version of DEFCON
 
 	var/datum/mutator_set/hive_mutators/mutators = new
 	var/tier_slot_multiplier = 1.0

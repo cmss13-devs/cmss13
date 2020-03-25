@@ -199,27 +199,41 @@ var/global/datum/objectives_controller/objectives_controller
 	objectives_controller.active_objectives += objectives_controller.comms
 	return 1
 
-
-/datum/objectives_controller/proc/get_objective_completion_stats()
+/datum/objectives_controller/proc/get_total_points()
 	var/total_points = 0
-	var/scored_points = 0 + bonus_admin_points//bonus points only apply to scored points, not to total, to make admin lives easier
 
 	for(var/datum/cm_objective/L in objectives)
 		total_points += L.total_point_value()
-		scored_points += L.get_point_value()
 
 	for(var/L in chemical_gen_classes_list["C5"])
 		total_points += chemical_objective_list[L]
+
+	for(var/L in chemical_gen_classes_list["C6"])
+		total_points += chemical_objective_list[L]
+
+	return total_points
+
+/datum/objectives_controller/proc/get_scored_points()
+	var/scored_points = 0 + bonus_admin_points//bonus points only apply to scored points, not to total, to make admin lives easier
+
+	for(var/datum/cm_objective/L in objectives)
+		scored_points += L.get_point_value()
+
+	for(var/L in chemical_gen_classes_list["C5"])
 		if(chemical_identified_list[L])
 			scored_points += chemical_identified_list[L]
 
 	for(var/L in chemical_gen_classes_list["C6"])
-		total_points += chemical_objective_list[L]
 		if(chemical_identified_list[L])
 			scored_points += chemical_identified_list[L]
 
-	var/list/answer = list()
+	return scored_points
 
+/datum/objectives_controller/proc/get_objective_completion_stats()
+	var/total_points = get_total_points()
+	var/scored_points = get_scored_points()
+
+	var/list/answer = list()
 	answer["scored_points"] = scored_points
 	answer["total_points"] = total_points
 

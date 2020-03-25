@@ -1,3 +1,4 @@
+#define COLLECTOR_XENOCON_RATE 2
 
 /obj/effect/alien/resin/collector
 	name = "hive collector"
@@ -54,4 +55,5 @@
 		return
 	last_gathered_time = world.time
 	linked_hive.crystal_stored += connected_node.gather_resource()
+	linked_hive.xenocon_points += COLLECTOR_XENOCON_RATE
 	flick("[icon_state]_gather", src)

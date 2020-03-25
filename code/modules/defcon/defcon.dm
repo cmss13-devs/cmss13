@@ -145,7 +145,7 @@ var/global/datum/defcon/defcon_controller
 
 /datum/defcon_reward/New()
 	. = ..()
-	name = "([cost] points) [name]"
+	name = "($[cost * DEFCON_TO_MONEY_MULTIPLIER]) [name]"
 
 /datum/defcon_reward/proc/apply_reward(var/datum/defcon/d)
 	if(d.remaining_reward_points < cost)
@@ -155,10 +155,10 @@ var/global/datum/defcon/defcon_controller
 	return 1
 
 /datum/defcon_reward/supply_points
-	name = "Additional Supply Points"
+	name = "Additional Supply Budget"
 	cost = DEFCON_COST_MODERATE
 	minimum_defcon_level = 5
-	announcement_message = "Additional Supply Points have been authorised for this operation."
+	announcement_message = "Additional Supply Budget has been authorised for this operation."
 
 /datum/defcon_reward/supply_points/apply_reward(var/datum/defcon/d)
 	. = ..()
@@ -177,12 +177,6 @@ var/global/datum/defcon/defcon_controller
 	if(. == 0)
 		return
 	supply_controller.dropship_points += 1600 //Enough for both fuel enhancers, or about 3.5 fatties
-
-/datum/defcon_reward/tank_points/apply_reward(var/datum/defcon/d)
-	. = ..()
-	if(. == 0)
-		return
-	supply_controller.tank_points += 3000 //Enough for full kit + ammo
 
 /datum/defcon_reward/ob_he
 	name = "Additional OB projectiles - HE x2"
@@ -228,6 +222,19 @@ var/global/datum/defcon/defcon_controller
 	minimum_defcon_level = 5
 	announcement_message = "Additional Orbital Bombardment ornaments (Incendiary, count:2) have been delivered to Requisitions' ASRS."
 
+/datum/defcon_reward/ob_incendiary/apply_reward(var/datum/defcon/d)
+	. = ..()
+	if(. == 0)
+		return
+
+	var/datum/supply_order/O = new /datum/supply_order()
+	O.ordernum = supply_controller.ordernum
+	supply_controller.ordernum++
+	O.object = supply_controller.supply_packs["OB Incendiary Crate"]
+	O.orderedby = MAIN_AI_SYSTEM
+
+	supply_controller.shoppinglist += O
+
 /datum/defcon_reward/cryo_squad
 	name = "Wake up additional troops"
 	cost = DEFCON_COST_PRICEY
@@ -252,7 +259,20 @@ var/global/datum/defcon/defcon_controller
 	unique = TRUE
 	announcement_message = "Additional Tank Part Fabricator Points have been authorised for this operation."
 
-/datum/defcon_reward/ob_incendiary/apply_reward(var/datum/defcon/d)
+/datum/defcon_reward/tank_points/apply_reward(var/datum/defcon/d)
+	. = ..()
+	if(. == 0)
+		return
+	supply_controller.tank_points += 3000 //Enough for full kit + ammo
+
+/datum/defcon_reward/spec_kits
+	name = "Four Specialist Kits"
+	cost = DEFCON_COST_EXPENSIVE
+	minimum_defcon_level = 2
+	unique = TRUE
+	announcement_message = "Specialist kits have been delievered to Requisitions' ASRS."
+
+/datum/defcon_reward/spec_kits/apply_reward(var/datum/defcon/d)
 	. = ..()
 	if(. == 0)
 		return
@@ -260,7 +280,7 @@ var/global/datum/defcon/defcon_controller
 	var/datum/supply_order/O = new /datum/supply_order()
 	O.ordernum = supply_controller.ordernum
 	supply_controller.ordernum++
-	O.object = supply_controller.supply_packs["OB Incendiary Crate"]
+	O.object = supply_controller.supply_packs["Specialist Kits"]
 	O.orderedby = MAIN_AI_SYSTEM
 
 	supply_controller.shoppinglist += O

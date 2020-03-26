@@ -16,6 +16,6 @@ var/datum/subsystem/inactivity/SSxenocon
 
 	for(var/datum/hive_status/hive in hive_datum)
 		if(hive.xenocon_points >= XENOCON_THRESHOLD)
-			var/datum/emergency_call/xenos/picked_call = new()
-			picked_call.activate(TRUE)
+			ticker.mode.picked_call = new /datum/emergency_call/xenos()
+			ticker.mode.picked_call.activate()
 			rewarded = TRUE

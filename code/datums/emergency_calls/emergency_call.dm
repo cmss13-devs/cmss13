@@ -179,12 +179,14 @@
 		//Trim down the list
 		var/list/datum/mind/picked_candidates = list()
 		if(mob_max > 0)
-			for(var/i = 1 to mob_max)
-				if(!candidates.len) break//We ran out of candidates, maybe they alienized. Use what we have.
+			for(var/i in 1 to mob_max)
+				if(!candidates.len) 
+					break//We ran out of candidates, maybe they alienized. Use what we have.
 				var/datum/mind/M = pick(candidates) //Get a random candidate, then remove it from the candidates list.
-				if(istype(M.current,/mob/living/carbon/Xenomorph))
+				if(isXeno(M.current) && M.current.stat != DEAD)
 					candidates.Remove(M) //Strip them from the list, they aren't dead anymore.
-					if(!candidates.len) break //NO picking from empty lists
+					if(!candidates.len) 
+						break //NO picking from empty lists
 					M = pick(candidates)
 				if(!istype(M))//Something went horrifically wrong
 					candidates.Remove(M)

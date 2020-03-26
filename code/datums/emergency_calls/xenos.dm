@@ -20,20 +20,23 @@
 /datum/emergency_call/xenos/create_member(datum/mind/M)
 	var/turf/spawn_loc = get_spawn_point()
 
-	if(!istype(spawn_loc)) return //Didn't find a useable spawn point.
-	var/chance = rand(0,3)
+	if(!istype(spawn_loc)) 
+		return //Didn't find a useable spawn point.
+
+	var/mob/current_mob = M.current
+
 	var/mob/living/carbon/Xenomorph/new_xeno
 	if(!leader)
 		new_xeno = new /mob/living/carbon/Xenomorph/Ravager(spawn_loc)
 		leader = new_xeno
-	else if(chance == 0)
-		new_xeno = new /mob/living/carbon/Xenomorph/Drone/elite(spawn_loc)
-	else if(chance == 1)
-		new_xeno = new /mob/living/carbon/Xenomorph/Spitter/mature(spawn_loc)
 	else
-		new_xeno = new /mob/living/carbon/Xenomorph/Lurker/mature(spawn_loc)
+		var/picked = pick(/mob/living/carbon/Xenomorph/Drone/elite, /mob/living/carbon/Xenomorph/Spitter/mature, /mob/living/carbon/Xenomorph/Lurker/mature)
+		new_xeno = new picked(spawn_loc)
 
-	M.transfer_to(new_xeno)
+	M.transfer_to(new_xeno, TRUE)
+
+	if(current_mob)
+		qdel(current_mob)
 
 
 /datum/emergency_call/xenos/platoon

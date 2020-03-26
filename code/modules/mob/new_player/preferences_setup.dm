@@ -245,7 +245,7 @@ datum/preferences/proc/job_pref_to_gear_preset()
 		if(ROLE_CHIEF_ENGINEER)
 			return "USCM Chief Engineer (CE)"
 		if(ROLE_ORDNANCE_TECH)
-			return "USCM Ordnance Techician (OT)"
+			return "USCM Ordnance Technician (OT)"
 		if(ROLE_REQUISITION_OFFICER)
 			return "USCM Requisitions Officer (RO)"
 		if(ROLE_REQUISITION_TECH)

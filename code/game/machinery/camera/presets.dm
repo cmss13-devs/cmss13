@@ -141,7 +141,7 @@
 
 //Simulator camera
 /obj/structure/machinery/camera/simulation
-	network = null
+	network = list("simulation")
 	invuln = TRUE
 	view_range = 14
 	use_power = FALSE

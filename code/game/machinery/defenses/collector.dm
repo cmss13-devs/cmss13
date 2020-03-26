@@ -39,7 +39,7 @@ var/global/list/faction_phoron_stored_list = list(
 		qdel(I)
 		var/obj/structure/machinery/collector/C = new(loc)
 		C.RN = src 
-		C.belonging_to_faction = list(user.faction)
+		C.belonging_to_faction = user.faction
 		return
 
 
@@ -59,13 +59,13 @@ var/global/list/faction_phoron_stored_list = list(
 	var/obj/structure/resource_node/RN = null
 	var/last_gathered_time = 0
 	var/gather_cooldown = SECONDS_10
-	var/belonging_to_faction = list(FACTION_MARINE)
+	var/belonging_to_faction = FACTION_MARINE
 
 /obj/structure/machinery/collector/Initialize()
 	. = ..()
 	
 	if(!(belonging_to_faction in faction_phoron_stored_list))
-		belonging_to_faction = list(FACTION_MARINE)
+		belonging_to_faction = FACTION_MARINE
 
 	marine_collectors += src
 	start_processing()
@@ -78,7 +78,7 @@ var/global/list/faction_phoron_stored_list = list(
 	last_gathered_time = world.time
 	faction_phoron_stored_list[belonging_to_faction] += RN.gather_resource(RN.collect_amount)
 
-	if(FACTION_MARINE in belonging_to_faction)
+	if(FACTION_MARINE == belonging_to_faction)
 		objectives_controller.add_admin_points(COLLECTOR_DEFCON_RATE)
 
 	if(RN.disposed)

@@ -461,7 +461,7 @@
 /obj/item/reagent_container/glass/bucket/mopbucket
 	name = "mop bucket"
 	desc = "A larger bucket, typically used with a mop. Holds 240 units"
-	icon_state = "mop bucket"
+	icon_state = "mopbucket"
 	matter = list("metal" = 4000)
 	w_class = SIZE_LARGE
 	amount_per_transfer_from_this = 20

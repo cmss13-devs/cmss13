@@ -164,7 +164,7 @@ var/bomb_set = FALSE
 						explosion_time = world.time + timeleft
 						start_processing()
 						var/name = "[MAIN_AI_SYSTEM] Nuclear Tracker"
-						var/input = "ALERT.\n\nNUCLEAR EXPLOSIVE ORDINANCE ACTIVATED.\n\nDETONATION IN [timeleft/10] SECONDS."
+						var/input = "ALERT.\n\nNUCLEAR EXPLOSIVE ORDNANCE ACTIVATED.\n\nDETONATION IN [timeleft/10] SECONDS."
 						marine_announcement(input, name, 'sound/misc/notice1.ogg')
 						announce_xenos()
 						announce_yautja()
@@ -236,7 +236,7 @@ var/bomb_set = FALSE
 	timeleft = explosion_time - world.time
 	explosion_time = null
 	var/name = "[MAIN_AI_SYSTEM] Nuclear Tracker"
-	var/input = "ALERT.\n\nNUCLEAR EXPLOSIVE ORDINANCE DEACTIVATED"
+	var/input = "ALERT.\n\nNUCLEAR EXPLOSIVE ORDNANCE DEACTIVATED"
 	marine_announcement(input, name, 'sound/misc/notice1.ogg')
 	announce_xenos()
 	announce_yautja()

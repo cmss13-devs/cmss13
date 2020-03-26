@@ -121,7 +121,7 @@ var/const/INGEST = 2
 
 	return the_id
 
-/datum/reagents/proc/trans_to(var/obj/target, var/amount=1, var/multiplier=1, var/preserve_data=1)//if preserve_data=0, the reagents data will be lost. Usefull if you use data for some strange stuff and don't want it to be transferred.
+/datum/reagents/proc/trans_to(var/obj/target, var/amount=1, var/multiplier=1, var/preserve_data=1, var/reaction = TRUE)//if preserve_data=0, the reagents data will be lost. Usefull if you use data for some strange stuff and don't want it to be transferred.
 	if(!target )
 		return
 	if(!target.reagents || total_volume<=0)
@@ -143,8 +143,9 @@ var/const/INGEST = 2
 
 	update_total()
 	R.update_total()
-	R.handle_reactions()
-	handle_reactions()
+	if(reaction)
+		R.handle_reactions()
+		handle_reactions()
 	return amount
 
 /datum/reagents/proc/trans_to_ingest(var/atom/movable/target, var/amount=1, var/multiplier=1, var/preserve_data=1) //For items ingested. A delay is added between ingestion and addition of the reagents

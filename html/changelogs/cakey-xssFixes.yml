@@ -1,7 +1,0 @@
-author: Cakey
-
-delete-after: True
-
-changes: 
-  - tweak: "Queens will now start with 100 plasmagas when evolving."
-  - tweak: "Adjusted the amount of resin pylons allowed from 4 to 8."

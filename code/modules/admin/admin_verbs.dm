@@ -22,7 +22,6 @@ var/list/admin_verbs_admin = list(
 	/client/proc/cmd_admin_create_AI_report,  //Allows creation of IC reports by the ships AI utilizing Almayer General channel. Relies on ARES being intact and tcomms being powered.
 	/client/proc/cmd_admin_create_AI_shipwide_report,  //Allows creation of IC reports by the ships AI utilizing announcement code. Will be shown to every conscious human on Almayer z-level regardless of ARES and tcomms status.
 	/client/proc/cmd_admin_create_predator_report, //Predator ship AI report
-	/client/proc/show_objectives_status,
 	/client/proc/toggleprayers,			/*toggles prayers on/off*/
 	/client/proc/toggle_hear_radio,		/*toggles whether we hear the radio*/
 	/client/proc/event_panel,
@@ -32,6 +31,7 @@ var/list/admin_verbs_admin = list(
 	/client/proc/modify_slot,
 	/client/proc/adjust_predator_round,
 	/client/proc/cmd_admin_change_custom_event,
+	/client/proc/cmd_admin_rejuvenate,
 	/datum/admins/proc/admin_force_distress,
 	/datum/admins/proc/admin_force_ERT_shuttle,
 	/datum/admins/proc/admin_force_selfdestruct,
@@ -220,6 +220,7 @@ var/list/admin_verbs_mod = list(
 	/client/proc/cmd_admin_pm_context,
 	/client/proc/cmd_admin_check_contents,
 	/datum/admins/proc/show_player_panel,
+	/client/proc/show_objectives_status,
 	/client/proc/hide_admin_mob_verbs
 )
 

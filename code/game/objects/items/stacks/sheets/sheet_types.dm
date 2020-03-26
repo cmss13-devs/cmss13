@@ -22,7 +22,7 @@ var/global/list/datum/stack_recipe/metal_recipes = list ( \
 	new/datum/stack_recipe("bell tower module", /obj/item/defense_module/bell_tower, MODULE_METAL_COST, time = 10, skill_req = SKILL_CONSTRUCTION_PLASTEEL), \
 	new/datum/stack_recipe("tesla coil module", /obj/item/defense_module/tesla_coil, MODULE_METAL_COST, time = 10, skill_req = SKILL_CONSTRUCTION_PLASTEEL), \
 	null, \
-	new/datum/stack_recipe("resource collector", /obj/item/collector, DEFENSE_METAL_COST, time = 40, skill_req = SKILL_CONSTRUCTION_PLASTEEL), \
+	new/datum/stack_recipe("resource collector", /obj/item/collector, MODULE_METAL_COST, time = 40, skill_req = SKILL_CONSTRUCTION_PLASTEEL), \
 	null, \
 	new/datum/stack_recipe("apc frame", /obj/item/frame/apc, 2), \
 	new/datum/stack_recipe("fire alarm frame", /obj/item/frame/fire_alarm, 2), \

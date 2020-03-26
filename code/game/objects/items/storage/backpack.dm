@@ -314,7 +314,7 @@
 	uniform_restricted = list(/obj/item/clothing/suit/storage/marine/M3S, /obj/item/clothing/head/helmet/marine/scout) //Need to wear Scout armor and helmet to equip this.
 	has_gamemode_skin = FALSE //same sprite for all gamemode.
 	var/camo_active = FALSE
-	var/camo_alpha = 15
+	var/camo_alpha = 5
 
 	actions_types = list(/datum/action/item_action)
 
@@ -390,7 +390,7 @@
 	uniform_restricted = list(/obj/item/clothing/suit/storage/marine/faction/UPP/commando) //Need to wear UPP commando armor to equip this.
 
 	max_storage_space = 21
-	camo_alpha = 25
+	camo_alpha = 15
 
 
 

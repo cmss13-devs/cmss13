@@ -331,18 +331,19 @@
 	var/list/fallen_blood_types
 	var/list/fallen_assgns
 
+/obj/item/dogtag/Initialize()
+	. = ..()
+	
+	fallen_names = list()
+	fallen_blood_types = list()
+	fallen_assgns = list()
+
 /obj/item/dogtag/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/dogtag))
 		var/obj/item/dogtag/D = I
 		to_chat(user, SPAN_NOTICE("You join the [fallen_names.len>1 ? "tags":"two tags"] together."))
 		name = "information dog tags"
 		if(D.fallen_names)
-			if(!fallen_names)
-				fallen_names = list()
-			if(!fallen_blood_types)
-				fallen_blood_types = list()
-			if(!fallen_assgns)
-				fallen_assgns = list()
 			fallen_names += D.fallen_names
 			fallen_blood_types += D.fallen_blood_types
 			fallen_assgns += D.fallen_assgns

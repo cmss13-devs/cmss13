@@ -15,7 +15,7 @@
 		var/reagentweight = re.volume
 		if(istype(re, /datum/reagent/paint))
 			reagentweight *= 20 //Paint colours a mixture twenty times as much
-		weight[i] = reagentweight
+		weight[i] = max(reagentweight,1)
 
 
 	//fill the lists of colours
@@ -75,7 +75,7 @@
 	for(var/i in 1 to contents)
 		//fill the list of weights
 		var/datum/reagent/re = reagent_list[i]
-		weight[i] = re.volume
+		weight[i] = max(re.volume,1)
 		//fill the lists of colours
 		var/hue = re.burncolor
 		if(length(hue) != 7)

@@ -173,7 +173,8 @@
 
 	for(var/obj/item/reagent_container/glass/G in containers)
 		G.reagents.trans_to(src, G.reagents.total_volume)
-		reagents.trigger_volatiles = TRUE //So it doesn't explode before transfering the second container
+		if(reagents)
+			reagents.trigger_volatiles = TRUE //So it doesn't explode before transfering the second container
 	if(reagents)
 		reagents.trigger_volatiles = FALSE
 	

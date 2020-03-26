@@ -403,11 +403,11 @@
 
 	juice_items = list ()
 
-/obj/structure/machinery/reagentgrinder/Initialize()
+/obj/structure/machinery/reagentgrinder/industrial/Initialize()
 	. = ..()
 	beaker = new /obj/item/reagent_container/glass/bucket(src)
 	return
 
-/obj/structure/machinery/reagentgrinder/update_icon()
+/obj/structure/machinery/reagentgrinder/industrial/update_icon()
 	icon_state = "industry"+num2text(!isnull(beaker))
 	return

@@ -196,9 +196,8 @@
 
 /obj/item/explosive/proc/make_copy_of(var/obj/item/explosive/other)
 	assembly_stage = other.assembly_stage
-	for(var/obj/item/reagent_container/container in other.containers)
-		var/obj/item/reagent_container/new_container = new container.type()
-		new_container.reagents.reagent_list = container.reagents.reagent_list.Copy()
-		new_container.reagents.total_volume = container.reagents.total_volume
+	for(var/obj/item/reagent_container/other_container in other.containers)
+		var/obj/item/reagent_container/new_container = new other_container.type()
+		other_container.reagents.copy_to(new_container, other_container.reagents.total_volume, TRUE, TRUE, TRUE)
 		containers += new_container
 		

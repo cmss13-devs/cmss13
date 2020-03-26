@@ -1,4 +1,4 @@
-#define COLLECTOR_XENOCON_RATE 2
+#define COLLECTOR_XENOCON_RATE 1
 
 /obj/effect/alien/resin/collector
 	name = "hive collector"

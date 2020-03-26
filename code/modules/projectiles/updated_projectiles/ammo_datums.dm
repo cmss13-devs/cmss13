@@ -575,7 +575,7 @@
 	..()
 	damage = config.high_hit_damage
 	scatter = -config.low_scatter_value
-	penetration= config.hlow_armor_penetration
+	penetration= config.hmed_armor_penetration
 	shell_speed = config.fast_shell_speed
 
 /datum/ammo/bullet/rifle/m4ra/incendiary
@@ -587,7 +587,7 @@
 	damage = config.hmed_hit_damage
 	accuracy = config.hmed_hit_accuracy
 	scatter = -config.low_scatter_value
-	penetration= config.low_armor_penetration
+	penetration= config.hlow_armor_penetration
 	shell_speed = config.fast_shell_speed
 
 /datum/ammo/bullet/rifle/m4ra/impact

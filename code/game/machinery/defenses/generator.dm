@@ -9,16 +9,16 @@
 	use_power = FALSE
 	var/obj/structure/machinery/defenses/defenses_in_range = list()
 	var/turned_on = FALSE
-	var/belonging_to_faction = list(FACTION_MARINE)
+	var/belonging_to_faction = FACTION_MARINE
 
 /obj/structure/machinery/generator/New(var/loc, var/mob/user)
 	. = ..()
 
 	if(istype(user))
-		belonging_to_faction = list(user.faction)
+		belonging_to_faction = user.faction
 
 	if(!(belonging_to_faction in faction_phoron_stored_list))
-		belonging_to_faction = list(FACTION_MARINE)
+		belonging_to_faction = FACTION_MARINE
 
 /obj/structure/machinery/generator/Initialize()
 	..()

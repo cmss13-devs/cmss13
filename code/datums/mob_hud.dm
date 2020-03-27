@@ -558,15 +558,24 @@ var/datum/mob_hud/huds = list(
 /mob/proc/hud_set_order()
 	return
 
+var/global/image/hud_icon_hudmove
+var/global/image/hud_icon_hudhold
+var/global/image/hud_icon_hudfocus
 // ORDER HUD
 /mob/living/carbon/human/hud_set_order()
 	var/image/holder = hud_list[ORDER_HUD]
 	holder.icon_state = "hudblank"
 	holder.overlays.Cut()
 	if(mobility_aura)
-		holder.overlays += image('icons/mob/hud/hud.dmi', src, "hudmove")
+		if(!hud_icon_hudmove)
+			hud_icon_hudmove = image('icons/mob/hud/hud.dmi', src, "hudmove")
+		holder.overlays += hud_icon_hudmove
 	if(protection_aura)
-		holder.overlays += image('icons/mob/hud/hud.dmi', src, "hudhold")
+		if(!hud_icon_hudhold)
+			hud_icon_hudhold = image('icons/mob/hud/hud.dmi', src, "hudhold")
+		holder.overlays += hud_icon_hudhold
 	if(marksman_aura)
-		holder.overlays += image('icons/mob/hud/hud.dmi', src, "hudfocus")
+		if(!hud_icon_hudfocus)
+			hud_icon_hudfocus = image('icons/mob/hud/hud.dmi', src, "hudfocus")
+		holder.overlays += hud_icon_hudfocus
 	hud_list[ORDER_HUD] = holder

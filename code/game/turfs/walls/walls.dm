@@ -332,10 +332,8 @@
 					return
 				if(!do_after(user, 60, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					return
-				if(!d_state)
-					d_state++
-					user.visible_message(SPAN_NOTICE("[user] slices through the outer plating."),
-					SPAN_NOTICE("You slice through the outer plating."))
+				d_state = WALL_STATE_SCREW
+				user.visible_message(SPAN_NOTICE("[user] slices through the outer plating."), SPAN_NOTICE("You slice through the outer plating."))
 				return
 
 		if(WALL_STATE_SCREW)
@@ -345,10 +343,8 @@
 				playsound(src, 'sound/items/Screwdriver.ogg', 25, 1)
 				if(!do_after(user, 60, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					return
-				if(d_state == 1)
-					d_state++
-					user.visible_message(SPAN_NOTICE("[user] removes the support lines."),
-					SPAN_NOTICE("You remove the support lines."))
+				d_state = WALL_STATE_WIRECUTTER
+				user.visible_message(SPAN_NOTICE("[user] removes the support lines."), SPAN_NOTICE("You remove the support lines."))
 				return
 
 		if(WALL_STATE_WIRECUTTER)
@@ -358,23 +354,19 @@
 				playsound(src, 'sound/items/Wirecutter.ogg', 25, 1)
 				if(!do_after(user, 60, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					return
-				if(d_state == 5)
-					d_state++
-					user.visible_message(SPAN_NOTICE("[user] finishes uncrimping the hydraulic lines."),
-					SPAN_NOTICE("You finish uncrimping the hydraulic lines."))
+				d_state = WALL_STATE_WRENCH
+				user.visible_message(SPAN_NOTICE("[user] finishes uncrimping the hydraulic lines."), SPAN_NOTICE("You finish uncrimping the hydraulic lines."))
 				return
 
 		if(WALL_STATE_WRENCH)
-			if(iswelder(W))
+			if(iswrench(W))
 				user.visible_message(SPAN_NOTICE("[user] starts loosening the anchoring bolts securing the support rods."),
 				SPAN_NOTICE("You start loosening the anchoring bolts securing the support rods."))
 				playsound(src, 'sound/items/Ratchet.ogg', 25, 1)
 				if(!do_after(user, 60, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					return
-				if(d_state == 4)
-					d_state++
-					user.visible_message(SPAN_NOTICE("[user] removes the bolts anchoring the support rods."),
-					SPAN_NOTICE("You remove the bolts anchoring the support rods."))
+				d_state = WALL_STATE_CROWBAR
+				user.visible_message(SPAN_NOTICE("[user] removes the bolts anchoring the support rods."), SPAN_NOTICE("You remove the bolts anchoring the support rods."))
 				return
 
 		if(WALL_STATE_CROWBAR)
@@ -384,10 +376,9 @@
 				playsound(src, 'sound/items/Crowbar.ogg', 25, 1)
 				if(!do_after(user, 60, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					return
-				if(d_state == 3)
-					d_state++
-					user.visible_message(SPAN_NOTICE("[user] pries apart the connecting rods."),
-					SPAN_NOTICE("You pry apart the connecting rods."))
+				user.visible_message(SPAN_NOTICE("[user] pries apart the connecting rods."), SPAN_NOTICE("You pry apart the connecting rods."))
+				new /obj/item/stack/rods(src)
+				dismantle_wall()
 				return
 
 	return attack_hand(user)

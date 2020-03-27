@@ -284,7 +284,6 @@
 		L.heat_source = 1000
 		src.modules += L
 
-		src.modules += new /obj/item/tool/kitchen/tray/robotray(src)
 		src.modules += new /obj/item/reagent_container/food/drinks/shaker(src)
 		src.emag = new /obj/item/reagent_container/food/drinks/cans/beer(src)
 

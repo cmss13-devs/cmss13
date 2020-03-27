@@ -130,7 +130,7 @@ macro "macro"
 		command = "asay"
 	elem 
 		name = "F6"
-		command = "Player-Panel"
+		command = "C:-Player-Panel"
 	elem 
 		name = "F7"
 		command = "Admin-PM"
@@ -342,7 +342,7 @@ macro "hotkeymode"
 		command = "asay"
 	elem 
 		name = "F6"
-		command = "Player-Panel"
+		command = "C:-Player-Panel"
 	elem 
 		name = "F7"
 		command = "Admin-PM"

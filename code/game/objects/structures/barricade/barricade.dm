@@ -257,6 +257,9 @@
 			stack_amt = destroyed_stack_amount
 		else 
 			stack_amt = round(stack_amount * (health/maxhealth)) //Get an amount of sheets back equivalent to remaining health. Obviously, fully destroyed means 0
+		if(upgraded)
+			stack_amt += round(2 * (health/maxhealth))
+			
 		if(stack_amt) 
 			new stack_type (loc, stack_amt)
 	qdel(src)

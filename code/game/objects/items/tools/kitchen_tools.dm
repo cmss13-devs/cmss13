@@ -221,34 +221,14 @@
 	flags_atom = FPRINT|CONDUCT
 	matter = list("metal" = 3000)
 	var/cooldown = 0	//shield bash cooldown. based on world.time
-	var/list/carrying = list() // List of things on the tray. - Doohl
-	var/max_carry = 10 // w_class = 1 -- takes up 1
-					   // w_class = SIZE_SMALL -- takes up 3
-					   // w_class = SIZE_MEDIUM -- takes up 5
 
 /obj/item/tool/kitchen/tray/attack(mob/living/carbon/M, mob/living/carbon/user)
-
-	// Drop all the things. All of them.
-	overlays.Cut()
-	for(var/obj/item/I in carrying)
-		I.loc = M.loc
-		carrying.Remove(I)
-		if(isturf(I.loc))
-			spawn()
-				for(var/i = 1, i <= rand(1,2), i++)
-					if(I)
-						step(I, pick(NORTH,SOUTH,EAST,WEST))
-						sleep(rand(2,4))
-	update_tray_size()
-
 	to_chat(user, SPAN_WARNING("You accidentally slam yourself with the [src]!"))
 	user.KnockDown(1)
 	user.take_limb_damage(2)
 
 	playsound(M, 'sound/items/trayhit2.ogg', 25, 1) //sound playin'
 	return //it always returns, but I feel like adding an extra return just for safety's sakes. EDIT; Oh well I won't :3
-
-
 
 /obj/item/tool/kitchen/tray/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/tool/kitchen/rollingpin))
@@ -258,79 +238,3 @@
 			cooldown = world.time
 	else
 		..()
-
-/*
-===============~~~~~================================~~~~~====================
-=																			=
-=  Code for trays carrying things. By Doohl for Doohl erryday Doohl Doohl~  =
-=																			=
-===============~~~~~================================~~~~~====================
-*/
-/obj/item/tool/kitchen/tray/proc/calc_carry()
-	// calculate the weight of the items on the tray
-	var/val = 0 // value to return
-
-	for(var/obj/item/I in carrying)
-		if(I.w_class == 1.0)
-			val ++
-		else if(I.w_class == 2.0)
-			val += 3
-		else
-			val += 5
-
-	return val
-
-/obj/item/tool/kitchen/tray/pickup(mob/user)
-
-	if(!isturf(loc))
-		return
-
-	for(var/obj/item/I in loc)
-		if( I != src && !I.anchored && !istype(I, /obj/item/clothing/under) && !istype(I, /obj/item/clothing/suit) && !istype(I, /obj/item/projectile) )
-			var/add = 0
-			if(I.w_class == 1.0)
-				add = 1
-			else if(I.w_class == 2.0)
-				add = 3
-			else
-				add = 5
-			if(calc_carry() + add >= max_carry)
-				break
-
-			I.loc = src
-			carrying.Add(I)
-			overlays += image("icon" = I.icon, "icon_state" = I.icon_state, "layer" = 30 + I.layer)
-
-	update_tray_size()
-
-/obj/item/tool/kitchen/tray/dropped(mob/user)
-	..()
-	var/mob/living/M
-	for(M in src.loc) //to handle hand switching
-		return
-
-	var/foundtable = 0
-	for(var/obj/structure/table/T in loc)
-		foundtable = 1
-		break
-
-	overlays.Cut()
-
-	for(var/obj/item/I in carrying)
-		I.loc = loc
-		carrying.Remove(I)
-		if(!foundtable && isturf(loc))
-			// if no table, presume that the person just shittily dropped the tray on the ground and made a mess everywhere!
-			spawn()
-				for(var/i = 1, i <= rand(1,2), i++)
-					if(I)
-						step(I, pick(NORTH,SOUTH,EAST,WEST))
-						sleep(rand(2,4))
-	update_tray_size()
-
-
-/obj/item/tool/kitchen/tray/proc/update_tray_size()
-	if(carrying && carrying.len)
-		w_class = SIZE_LARGE
-	else
-		w_class = initial(w_class)

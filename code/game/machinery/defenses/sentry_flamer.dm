@@ -9,7 +9,6 @@
 	var/obj/item/projectile/P = new(initial(name), owner_mob)
 	P.generate_bullet(new ammo.default_ammo)
 	P.fire_at(A, src, owner_mob, P.ammo.max_range, P.ammo.shell_speed)
-	playsound(get_turf(src), 'sound/weapons/tank_flamethrower.ogg', 60, 1)
 	ammo.current_rounds--
 	if(ammo.current_rounds == 0)
 		visible_message("[htmlicon(src, viewers(src))] <span class='warning'>The [name] beeps steadily and its ammo light blinks red.</span>")

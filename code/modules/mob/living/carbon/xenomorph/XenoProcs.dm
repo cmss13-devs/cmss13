@@ -106,10 +106,10 @@
 	else
 		stat("Construction Placement:", "QUEEN")
 
-	if(hive && !hive.hive_orders)
-		stat("Hive Orders:", "-")
-	else
+	if(hive && hive.hive_orders)
 		stat("Hive Orders:", "[hive.hive_orders]")
+	else
+		stat("Hive Orders:", "-")
 
 	stat("")
 	return TRUE

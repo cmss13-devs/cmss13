@@ -194,7 +194,6 @@
 	P.generate_bullet(new ammo.default_ammo)
 	P.fire_at(A, src, owner_mob, P.ammo.max_range, P.ammo.shell_speed)
 	muzzle_flash(Get_Angle(get_turf(src), A))
-	playsound(loc, 'sound/weapons/gun_sentry.ogg', 75, 1)
 	ammo.current_rounds--
 	if(ammo.current_rounds == 0)
 		visible_message("[htmlicon(src, viewers(src))] <span class='warning'>The [name] beeps steadily and its ammo light blinks red.</span>")

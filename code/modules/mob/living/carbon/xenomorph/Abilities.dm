@@ -915,6 +915,10 @@
 	if(!X.check_alien_construction(current_turf))
 		return
 
+	if(!X.hive.has_structure(XENO_STRUCTURE_CORE))
+		to_chat(X, SPAN_XENOWARNING("The hive requires you to build a hive core before you ovipositor!"))
+		return
+
 	if(X.action_busy)
 		return
 
@@ -1185,10 +1189,10 @@
 		return FALSE
 
 	//Make sure construction is unrestricted
-	if(X.hive.construction_allowed == 1 && X.hive_pos == NORMAL_XENO)
+	if(X.hive && X.hive.construction_allowed == 1 && X.hive_pos == NORMAL_XENO)
 		to_chat(X, SPAN_WARNING("Construction is currently restricted to Leaders only!"))
 		return FALSE
-	else if(X.hive.construction_allowed == 0 && !istype(X.caste, /datum/caste_datum/queen))
+	else if(X.hive && X.hive.construction_allowed == 0 && !istype(X.caste, /datum/caste_datum/queen))
 		to_chat(X, SPAN_WARNING("Construction is currently restricted to Queen only!"))
 		return FALSE
 

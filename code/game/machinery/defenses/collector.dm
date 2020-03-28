@@ -58,7 +58,7 @@ var/global/list/faction_phoron_stored_list = list(
 	var/health_max = 150
 	var/obj/structure/resource_node/RN = null
 	var/last_gathered_time = 0
-	var/gather_cooldown = SECONDS_15
+	var/gather_cooldown = SECONDS_20
 	var/belonging_to_faction = FACTION_MARINE
 
 /obj/structure/machinery/collector/Initialize()

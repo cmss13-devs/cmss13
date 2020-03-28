@@ -1,4 +1,4 @@
-#define XENOCON_THRESHOLD 5500
+#define XENOCON_THRESHOLD 6000
 
 #define XENO_HIVE_EVOLUTION_FREETIME 3000 // 5 minutes of free evolution
 

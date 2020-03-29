@@ -153,6 +153,9 @@
 	valid_parts = /obj/item/hardpoint
 	valid_ammo = /obj/item/ammo_magazine/hardpoint
 
+	unacidable = TRUE
+	indestructible = TRUE
+
 /obj/structure/machinery/part_fabricator/tank/get_point_store()
     return supply_controller.tank_points
     

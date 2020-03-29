@@ -184,7 +184,7 @@
 		return
 
 	next_use = world.time + cooldown * owner.misc_multipliers["cooldown"]
-	if(!prob(accuracy * 100 * owner.misc_multipliers["accuracy"]))
+	if(!prob((accuracy * 100) / owner.misc_multipliers["accuracy"]))
 		A = get_step(get_turf(A), pick(cardinal))
 
 	if(LAZYLEN(firing_sounds))

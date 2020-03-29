@@ -68,7 +68,7 @@
 	if(chained <= 0) chained = 1
 
 	next_use = world.time + (chained > chain_delays.len ? 0.5 : chain_delays[chained])
-	if(!prob(accuracy * 100))
+	if(!prob((accuracy * 100) / owner.misc_multipliers["accuracy"]))
 		A = get_step(get_turf(A), pick(cardinal))
 
 	var/turf/origin_turf = get_turf(src)

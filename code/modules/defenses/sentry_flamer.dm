@@ -4,6 +4,7 @@
 	fire_delay = 30
 	ammo = new /obj/item/ammo_magazine/sentry_flamer
 	sentry_type = "flamer"
+	handheld_type = /obj/item/defenses/handheld/sentry/flamer
 
 /obj/structure/machinery/defenses/sentry/flamer/actual_fire(var/atom/A)
 	var/obj/item/projectile/P = new(initial(name), owner_mob)

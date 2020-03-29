@@ -10,21 +10,18 @@
 	var/list/obj/effect/turret_trigger/turret_triggers = list()
 	var/atom/movable/target = null
 	var/datum/effect_system/spark_spread/spark_system //The spark system, used for generating... sparks?
-	var/obj/structure/machinery/camera/camera = null
 	var/last_fired = 0
 	var/fire_delay = 6
 	var/immobile = FALSE //Used for prebuilt ones.
 	var/obj/item/ammo_magazine/ammo = new /obj/item/ammo_magazine/sentry
 	var/sentry_type = "sentry" //Used for the icon
+	handheld_type = /obj/item/defenses/handheld/sentry
 
 /obj/structure/machinery/defenses/sentry/Initialize()
 	. = ..()
 	spark_system = new /datum/effect_system/spark_spread
 	spark_system.set_up(5, 0, src)
 	spark_system.attach(src)
-	camera = new (src)
-	camera.network = list("military")
-	camera.c_tag = "[name] ([rand(0, 1000)])"
 	if(turned_on)
 		create_turret_triggers()
 	update_icon()
@@ -62,10 +59,6 @@
 /obj/structure/machinery/defenses/sentry/power_on_action()
 	target = null
 	SetLuminosity(7)
-	if(!camera)
-		camera = new /obj/structure/machinery/camera(src)
-		camera.network = list("military")
-		camera.c_tag = src.name
 
 	visible_message("[htmlicon(src, viewers(src))] [SPAN_NOTICE("The [name] hums to life and emits several beeps.")]")
 	visible_message("[htmlicon(src, viewers(src))] [SPAN_NOTICE("The [name] buzzes in a monotone voice: 'Default systems initiated'")]")
@@ -323,10 +316,6 @@
 	fire(target.loc)
 
 /obj/structure/machinery/defenses/sentry/Dispose() //Clear these for safety's sake.
-	if(camera)
-		qdel(camera)
-		camera = null
-
 	target = null
 	delete_turret_triggers()
 	SetLuminosity(0)
@@ -338,9 +327,6 @@
 	immobile = TRUE
 	turned_on = TRUE
 	icon_state = "sentry_on"
-
-/obj/structure/machinery/defenses/sentry/premade/search_generators()
-	return
 
 /obj/structure/machinery/defenses/sentry/premade/power_on()
 	return

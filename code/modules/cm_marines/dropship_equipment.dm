@@ -331,11 +331,6 @@
 		icon_state = "sentry_system_installed"
 		if(deployed_turret)
 			deployed_turret.dir = dir
-			if(linked_shuttle && deployed_turret.camera)
-				if(linked_shuttle.shuttle_tag == "[MAIN_SHIP_NAME] Dropship 1")
-					deployed_turret.camera.network.Add("dropship1") //accessible via the dropship camera console
-				else
-					deployed_turret.camera.network.Add("dropship2")
 			if(ship_base.base_category == DROPSHIP_WEAPON)
 				switch(dir)
 					if(SOUTH)
@@ -356,11 +351,6 @@
 	else
 		dir = initial(dir)
 		if(deployed_turret)
-			if(deployed_turret.camera)
-				if(deployed_turret.camera.network.Find("dropship1"))
-					deployed_turret.camera.network.Remove("dropship1")
-				else if(deployed_turret.camera.network.Find("dropship2"))
-					deployed_turret.camera.network.Remove("dropship2")
 			icon_state = "sentry_system"
 			deployed_turret.pixel_y = 0
 			deployed_turret.pixel_x = 0

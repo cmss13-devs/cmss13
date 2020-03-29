@@ -52,8 +52,11 @@ var/datum/subsystem/decorator/SSdecorator
 		CHECK_TICK
 	..()
 
-/datum/subsystem/decorator/proc/add_decorator(decor_type)	
-	var/datum/decorator/decor = new decor_type()
+/datum/subsystem/decorator/proc/add_decorator(decor_type, ...)
+	var/list/arguments = list()
+	if (length(args) > 1)
+		arguments = args.Copy(2)
+	var/datum/decorator/decor = new decor_type(arglist(arguments))
 
 	// DECORATOR IS ENABLED FORCEFULLY
 

@@ -1032,6 +1032,7 @@
 #include "code\modules\decorators\cassette_decorator.dm"
 #include "code\modules\decorators\christmas.dm"
 #include "code\modules\decorators\mass_xeno_decorator.dm"
+#include "code\modules\decorators\weapon_decorator.dm"
 #include "code\modules\defcon\defcon.dm"
 #include "code\modules\desert_dam\filtration\consoles.dm"
 #include "code\modules\desert_dam\filtration\filtration.dm"

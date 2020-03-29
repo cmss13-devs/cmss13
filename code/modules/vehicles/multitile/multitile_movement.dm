@@ -153,7 +153,7 @@
 /obj/vehicle/multitile/proc/update_next_move()
 	// 1/((m/M)*b) where m is momentum, M is max momentum and b is the build factor
 	var/anti_build_factor = momentum != 0 ? 1/((abs(momentum)/max_momentum)*momentum_build_factor) : 1/((1/max_momentum)*momentum_build_factor)
-	next_move = world.time + move_delay * momentum_build_factor * anti_build_factor
+	next_move = world.time + move_delay * momentum_build_factor * anti_build_factor * misc_multipliers["move"]
 	l_move_time = world.time
 
 // This just checks if the vehicle can physically move in the given direction

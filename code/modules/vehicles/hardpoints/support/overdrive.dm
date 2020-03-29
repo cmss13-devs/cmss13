@@ -9,8 +9,9 @@
 	point_cost = 400
 	health = 250
 
+	// 25% movespeed increase. Remember that movespeed is given in delay
 	buff_multipliers = list(
-		"move" = 1.65
+		"move" = 0.75
 	)
 
 	px_offsets = list(

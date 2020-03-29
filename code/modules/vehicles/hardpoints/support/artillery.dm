@@ -8,6 +8,7 @@
 
 	slot = HDPT_SUPPORT
 	hdpt_layer = HDPT_LAYER_SUPPORT
+	activatable = TRUE
 
 	point_cost = 600
 	health = 250
@@ -18,16 +19,20 @@
 	var/view_tile_offset = 5
 
 /obj/item/hardpoint/artillery_module/activate(var/mob/user, var/atom/A)
-	var/obj/vehicle/multitile/tank/C = owner
-	if(!user.client) return
+	if(!user.client)
+		return
+
 	if(is_active)
 		user.client.change_view(7)
 		user.client.pixel_x = 0
 		user.client.pixel_y = 0
 		is_active = FALSE
 		return
+
 	user.client.change_view(view_buff)
 	is_active = TRUE
+
+	var/obj/vehicle/multitile/tank/C = owner
 	switch(C.dir)
 		if(NORTH)
 			user.client.pixel_x = 0
@@ -43,7 +48,9 @@
 			user.client.pixel_y = 0
 
 /obj/item/hardpoint/artillery_module/deactivate()
-	if(!is_active) return
+	if(!is_active)
+		return
+
 	var/obj/vehicle/multitile/C = owner
 	for(var/seat in C.seats)
 		if(!ismob(C.seats[seat]))

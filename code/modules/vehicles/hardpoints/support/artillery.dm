@@ -13,6 +13,8 @@
 	health = 250
 	damage_multiplier = 0.075
 
+	activatable = TRUE
+
 	var/is_active = 0
 	var/view_buff = 12 //This way you can VV for more or less fun
 	var/view_tile_offset = 5

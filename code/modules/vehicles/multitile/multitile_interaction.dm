@@ -240,6 +240,9 @@
 	if(!do_after(M, SECONDS_2, INTERRUPT_ALL_OUT_OF_RANGE, BUSY_ICON_GENERIC))
 		return
 
+	if(mob_x != M.x - src.x || mob_y != M.y - src.y)
+		return
+
 	// Dragged stuff comes with
 	var/atom/dragged_atom
 	if(istype(M.get_inactive_hand(), /obj/item/grab))

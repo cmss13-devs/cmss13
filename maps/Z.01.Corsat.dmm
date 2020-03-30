@@ -4936,6 +4936,7 @@
 /area/corsat/gamma/residential/researcher)
 "anl" = (
 /obj/structure/platform{
+	density = 0;
 	dir = 4;
 	icon_state = "platform_deco"
 	},
@@ -4946,6 +4947,7 @@
 /area/corsat/sigma/dorms)
 "anm" = (
 /obj/structure/platform{
+	density = 0;
 	dir = 8;
 	icon_state = "platform_deco"
 	},
@@ -15378,6 +15380,7 @@
 "aOR" = (
 /obj/structure/prop/almayer/sensor_computer2,
 /obj/structure/platform{
+	density = 0;
 	dir = 1;
 	icon_state = "platform_deco"
 	},
@@ -15392,6 +15395,7 @@
 	tag = "icon-broadcaster_send"
 	},
 /obj/structure/platform{
+	density = 0;
 	dir = 4;
 	icon_state = "platform_deco"
 	},
@@ -19681,6 +19685,7 @@
 /area/corsat/theta/biodome)
 "aZn" = (
 /obj/structure/platform{
+	density = 0;
 	dir = 8;
 	icon_state = "platform_deco"
 	},
@@ -19911,6 +19916,7 @@
 "aZK" = (
 /obj/effect/decal/cleanable/blood/splatter/animated,
 /obj/structure/platform{
+	density = 0;
 	dir = 4;
 	icon_state = "platform_deco"
 	},
@@ -19984,6 +19990,7 @@
 /area/corsat/sigma/southeast/datamaint)
 "aZT" = (
 /obj/structure/platform{
+	density = 0;
 	dir = 4;
 	icon_state = "platform_deco"
 	},
@@ -38452,6 +38459,7 @@
 /area/corsat/gamma/engineering)
 "cJU" = (
 /obj/structure/platform{
+	density = 0;
 	dir = 4;
 	icon_state = "platform_deco"
 	},
@@ -41304,6 +41312,7 @@
 /area/corsat/sigma/south/complex)
 "eNI" = (
 /obj/structure/platform{
+	density = 0;
 	icon_state = "platform_deco"
 	},
 /turf/open/floor/corsat{
@@ -45129,6 +45138,7 @@
 /area/corsat/omega/security)
 "hwV" = (
 /obj/structure/platform{
+	density = 0;
 	dir = 4;
 	icon_state = "platform_deco"
 	},
@@ -47101,6 +47111,7 @@
 /area/corsat/gamma/biodome/toxins)
 "iPn" = (
 /obj/structure/platform{
+	density = 0;
 	icon_state = "platform_deco"
 	},
 /turf/open/floor/corsat{
@@ -47186,6 +47197,7 @@
 /area/corsat/sigma/hangar/arrivals)
 "iTt" = (
 /obj/structure/platform{
+	density = 0;
 	dir = 1;
 	icon_state = "platform_deco"
 	},
@@ -47349,6 +47361,7 @@
 /area/corsat/sigma/dorms)
 "jai" = (
 /obj/structure/platform{
+	density = 0;
 	icon_state = "platform_deco"
 	},
 /turf/open/floor/corsat{
@@ -48078,6 +48091,7 @@
 /area/corsat/sigma/dorms)
 "jGd" = (
 /obj/structure/platform{
+	density = 0;
 	dir = 1;
 	icon_state = "platform_deco"
 	},
@@ -49493,6 +49507,7 @@
 /area/corsat/sigma/hangar/security)
 "kMZ" = (
 /obj/structure/platform{
+	density = 0;
 	dir = 4;
 	icon_state = "platform_deco"
 	},
@@ -49970,6 +49985,7 @@
 	pixel_x = 32
 	},
 /obj/structure/platform{
+	density = 0;
 	dir = 4;
 	icon_state = "platform_deco"
 	},
@@ -50061,6 +50077,7 @@
 /area/corsat/sigma/southeast/datalab)
 "lgt" = (
 /obj/structure/platform{
+	density = 0;
 	dir = 4;
 	icon_state = "platform_deco"
 	},
@@ -51592,6 +51609,7 @@
 "mhq" = (
 /obj/effect/decal/cleanable/blood/splatter/animated,
 /obj/structure/platform{
+	density = 0;
 	dir = 8;
 	icon_state = "platform_deco"
 	},
@@ -51960,6 +51978,7 @@
 /area/corsat/gamma/biodome/virology)
 "mxa" = (
 /obj/structure/platform{
+	density = 0;
 	icon_state = "platform_deco"
 	},
 /turf/open/floor/corsat{
@@ -52482,6 +52501,7 @@
 /area/corsat/gamma/sigmaremote)
 "mQU" = (
 /obj/structure/platform{
+	density = 0;
 	dir = 8;
 	icon_state = "platform_deco"
 	},
@@ -57983,6 +58003,7 @@
 "qTd" = (
 /obj/structure/reagent_dispensers/water_cooler,
 /obj/structure/platform{
+	density = 0;
 	dir = 8;
 	icon_state = "platform_deco"
 	},
@@ -58072,6 +58093,7 @@
 /area/corsat/gamma/administration)
 "qVF" = (
 /obj/structure/platform{
+	density = 0;
 	dir = 1;
 	icon_state = "platform_deco"
 	},
@@ -58714,6 +58736,7 @@
 /area/corsat/theta/biodome)
 "rws" = (
 /obj/structure/platform{
+	density = 0;
 	dir = 1;
 	icon_state = "platform_deco"
 	},
@@ -59977,6 +60000,7 @@
 /area/corsat/sigma/hangar)
 "snP" = (
 /obj/structure/platform{
+	density = 0;
 	icon_state = "platform_deco"
 	},
 /turf/open/floor/corsat{
@@ -64664,12 +64688,6 @@
 	icon_state = "purplewhitecorner"
 	},
 /area/corsat/gamma/biodome/virology)
-"vFB" = (
-/turf/open/floor/corsat{
-	dir = 10;
-	icon_state = "red"
-	},
-/area/corsat/omega/airlocknorth)
 "vFJ" = (
 /obj/structure/pipes/vents/pump{
 	dir = 8
@@ -65109,6 +65127,7 @@
 /area/corsat/gamma/residential/researcher)
 "vXy" = (
 /obj/structure/platform{
+	density = 0;
 	dir = 8;
 	icon_state = "platform_deco"
 	},
@@ -65962,6 +65981,7 @@
 /area/corsat/sigma/airlock/control)
 "wDw" = (
 /obj/structure/platform{
+	density = 0;
 	dir = 4;
 	icon_state = "platform_deco"
 	},
@@ -66555,6 +66575,7 @@
 /area/corsat/gamma/residential/east)
 "wZC" = (
 /obj/structure/platform{
+	density = 0;
 	dir = 8;
 	icon_state = "platform_deco"
 	},
@@ -66593,6 +66614,7 @@
 /area/corsat/gamma/hallwaysouth)
 "xbu" = (
 /obj/structure/platform{
+	density = 0;
 	dir = 8;
 	icon_state = "platform_deco"
 	},
@@ -67116,11 +67138,6 @@
 	icon_state = "squares"
 	},
 /area/corsat/sigma/airlock/control)
-"xzP" = (
-/turf/open/floor/corsat{
-	icon_state = "red"
-	},
-/area/corsat/omega/airlocknorth)
 "xzU" = (
 /obj/structure/filingcabinet/filingcabinet,
 /obj/item/document_objective/technical_manual,
@@ -67832,6 +67849,7 @@
 /area/corsat/gamma/hallwaysouth)
 "ybJ" = (
 /obj/structure/platform{
+	density = 0;
 	dir = 8;
 	icon_state = "platform_deco"
 	},
@@ -72210,7 +72228,7 @@ aMC
 fTT
 cth
 mpj
-vFB
+kap
 aEG
 auL
 aSa
@@ -72455,7 +72473,7 @@ aMC
 aMC
 usz
 aMC
-xzP
+qgl
 ged
 auL
 aSa
@@ -72700,7 +72718,7 @@ aMC
 aXE
 lda
 aEC
-xzP
+qgl
 lhS
 auL
 aaa
@@ -73432,7 +73450,7 @@ aGB
 aoC
 aoC
 aoC
-xzP
+qgl
 aoA
 aac
 qqK

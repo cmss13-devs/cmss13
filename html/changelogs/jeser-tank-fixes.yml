@@ -1,0 +1,9 @@
+author: Jeser
+
+delete-after: True
+
+changes: 
+  - bugfix: "Fixed entering vehicles after they moved away."
+  - bugfix: "Fixed artillery module not being selectable. [stobarico]"
+  - bugfix: "Fixed tank turret rotating in direction it's already facing."
+  - bugfix: "Fixed too many ship roles having access to vehicles and Vehicle Bay machinery. [Sakuyoi]"

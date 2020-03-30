@@ -971,18 +971,24 @@ var/list/mechtoys = list(
 	frequency.post_signal(src, status_signal)
 
 /obj/structure/machinery/computer/supplycomp/vehicle
+	name = "vehicle ASRS console"
 	desc = "A console for an Automated Storage and Retrieval System. This one is tied to a deep storage unit for vehicles."
 	req_access = list(ACCESS_MARINE_CREWMAN)
 	// Can only retrieve one vehicle per round
 	var/spent = FALSE
 
-/obj/structure/machinery/computer/supplycomp/vehicle/attack_hand(var/mob/user as mob)
-	if(z != MAIN_SHIP_Z_LEVEL) return
-	if(!allowed(user))
-		to_chat(user, SPAN_DANGER("Access Denied."))
+/obj/structure/machinery/computer/supplycomp/vehicle/attack_hand(var/mob/living/carbon/human/H as mob)
+	if(stat & (BROKEN|NOPOWER))
 		return
 
-	user.set_interaction(src)
+	if(z != MAIN_SHIP_Z_LEVEL)
+		return
+
+	if(!allowed(H))
+		to_chat(H, SPAN_DANGER("Access Denied."))
+		return
+
+	H.set_interaction(src)
 	post_signal("supply_vehicle")
 	
 	var/datum/shuttle/ferry/supply/elevator = supply_controller.vehicle_elevator
@@ -1018,7 +1024,7 @@ var/list/mechtoys = list(
 		<a href='?src=\ref[src];get_vehicle=med_apc'>M577-MED Armored Personnel Carrier</a><br>
 		<a href='?src=\ref[src];get_vehicle=cmd_apc'>M577-CMD Armored Personnel Carrier</a><br>"}
 
-	show_browser(user, dat, "Automated Storage and Retrieval System", "computer", "size=575x450")
+	show_browser(H, dat, "Automated Storage and Retrieval System", "computer", "size=575x450")
 
 /obj/structure/machinery/computer/supplycomp/vehicle/Topic(href, href_list)
 	if(z != MAIN_SHIP_Z_LEVEL)

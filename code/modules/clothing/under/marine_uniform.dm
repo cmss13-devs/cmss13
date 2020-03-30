@@ -259,7 +259,9 @@
 	armor_bio = CLOTHING_ARMOR_NONE
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_LOW
-	suit_restricted = list(/obj/item/clothing/suit/storage/marine/veteran/PMC, /obj/item/clothing/suit/storage/marine/smartgunner/veteran/PMC)
+	suit_restricted = list(/obj/item/clothing/suit/storage/marine/veteran/PMC,
+							/obj/item/clothing/suit/storage/marine/smartgunner/veteran/PMC,
+							/obj/item/clothing/suit/armor/vest/security)//For survivors.
 
 /obj/item/clothing/under/marine/veteran/PMC/leader
 	name = "\improper PMC command fatigues"

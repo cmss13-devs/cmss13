@@ -65,10 +65,10 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "ah" = (
-/turf/closed/wall/r_wall,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/marshall_office)
 "ai" = (
-/turf/closed/wall/rock/red,
+/turf/closed/wall/solaris/rock,
 /area/bigredv2/caves)
 "aj" = (
 /turf/open/mars,
@@ -154,7 +154,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "at" = (
-/turf/closed/wall,
+/turf/closed/wall/solaris,
 /area/bigredv2/outside/marshall_office)
 "au" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -618,13 +618,6 @@
 	dir = 2
 	},
 /area/bigredv2/outside/marshall_office)
-"bz" = (
-/turf/open/floor{
-	tag = "icon-bcircuit";
-	icon_state = "bcircuit";
-	dir = 2
-	},
-/area/bigredv2/outside/marshall_office)
 "bA" = (
 /obj/structure/machinery/computer/security,
 /obj/structure/table,
@@ -673,7 +666,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "bG" = (
-/obj/structure/window/framed/colony/reinforced,
+/obj/structure/window/framed/solaris/reinforced,
 /turf/open/floor/plating,
 /area/bigredv2/outside/marshall_office)
 "bH" = (
@@ -705,7 +698,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "bL" = (
-/obj/structure/window_frame/colony,
+/obj/structure/window_frame/solaris,
 /obj/item/shard,
 /obj/item/stack/rods,
 /turf/open/floor/plating,
@@ -953,12 +946,12 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "co" = (
-/obj/structure/window_frame/colony,
+/obj/structure/window_frame/solaris,
 /obj/item/shard,
 /turf/open/floor/plating,
 /area/bigredv2/outside/marshall_office)
 "cp" = (
-/obj/structure/window_frame/colony,
+/obj/structure/window_frame/solaris,
 /turf/open/floor/plating,
 /area/bigredv2/outside/marshall_office)
 "cq" = (
@@ -1150,7 +1143,7 @@
 /area/bigredv2/outside/marshall_office)
 "cR" = (
 /obj/structure/pipes/vents/pump{
-	dir = 1 
+	dir = 1
 	},
 /turf/open/floor{
 	dir = 2;
@@ -1301,7 +1294,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/marshall_office)
 "dj" = (
-/turf/closed/wall/r_wall,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/medical)
 "dk" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -1327,7 +1320,7 @@ ah
 by
 bM
 by
-bz
+by
 at
 cz
 cN
@@ -1348,7 +1341,7 @@ aP
 aY
 bi
 ah
-bz
+by
 aM
 aM
 aM
@@ -1399,7 +1392,7 @@ ah
 bB
 bN
 bX
-bz
+by
 at
 cA
 cP

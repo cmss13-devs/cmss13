@@ -1,9 +1,9 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "b" = (
-/turf/closed/wall/r_wall,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/caves/eta/xenobiology)
 "c" = (
-/turf/closed/wall,
+/turf/closed/wall/solaris,
 /area/bigredv2/caves/eta/xenobiology)
 "d" = (
 /turf/open/floor{
@@ -41,7 +41,7 @@
 /turf/open/mars,
 /area/bigredv2/caves/eta/xenobiology)
 "i" = (
-/obj/structure/window/framed/colony/reinforced,
+/obj/structure/window/framed/solaris/reinforced,
 /turf/open/floor/plating,
 /area/bigredv2/caves/eta/xenobiology)
 "j" = (

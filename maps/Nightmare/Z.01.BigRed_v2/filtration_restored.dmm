@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
-/turf/closed/wall,
+/turf/closed/wall/solaris,
 /area/bigredv2/outside/filtration_plant)
 "ab" = (
 /obj/structure/closet/wardrobe/atmospherics_yellow,
@@ -32,14 +32,14 @@
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "ah" = (
-/obj/structure/window/framed/colony,
+/obj/structure/window/framed/solaris,
 /turf/open/floor/plating,
 /area/bigredv2/outside/filtration_plant)
 "ai" = (
 /turf/open/floor/plating,
 /area/bigredv2/outside/filtration_plant)
 "aj" = (
-/turf/closed/wall/rock/red,
+/turf/closed/wall/solaris/rock,
 /area/bigredv2/caves)
 "ak" = (
 /obj/item/tool/warning_cone,
@@ -291,7 +291,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "aY" = (
-/turf/closed/wall/r_wall,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/filtration_plant)
 "aZ" = (
 /obj/structure/machinery/door/airlock/almayer/engineering{
@@ -336,7 +336,7 @@
 /area/bigredv2/outside/filtration_plant)
 "bf" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/closed/wall,
+/turf/closed/wall/solaris,
 /area/bigredv2/outside/filtration_plant)
 "bg" = (
 /obj/structure/rack,
@@ -412,7 +412,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "bq" = (
-/obj/structure/window_frame/colony/reinforced,
+/obj/structure/window_frame/solaris/reinforced,
 /obj/item/shard,
 /turf/open/floor/plating,
 /area/bigredv2/outside/filtration_plant)
@@ -448,7 +448,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/filtration_plant)
 "bw" = (
-/turf/closed/wall/r_wall/unmeltable,
+/turf/closed/wall/solaris/reinforced/hull,
 /area/bigredv2/outside/filtration_plant)
 "bx" = (
 /obj/structure/cargo_container/horizontal{
@@ -462,7 +462,7 @@
 /area/bigredv2/outside/filtration_plant)
 "by" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/closed/wall/r_wall/unmeltable,
+/turf/closed/wall/solaris/reinforced/hull,
 /area/bigredv2/outside/filtration_plant)
 "bz" = (
 /obj/item/tank/air,
@@ -470,7 +470,7 @@
 /area/bigredv2/outside/filtration_plant)
 "bA" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/window/framed/colony,
+/obj/structure/window/framed/solaris,
 /turf/open/floor/plating,
 /area/bigredv2/outside/filtration_plant)
 "bB" = (
@@ -491,7 +491,7 @@
 /area/bigredv2/outside/filtration_plant)
 "bD" = (
 /obj/structure/window/framed/colony/reinforced/hull,
-/turf/closed/wall/r_wall,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/filtration_plant)
 "bE" = (
 /obj/structure/cryofeed/right{
@@ -555,7 +555,7 @@
 	},
 /area/bigredv2/outside/s)
 "bM" = (
-/turf/closed/wall/r_wall/unmeltable,
+/turf/closed/wall/solaris/reinforced/hull,
 /area/bigredv2/outside/s)
 "bN" = (
 /obj/structure/machinery/door_control{
@@ -758,7 +758,7 @@
 /obj/structure/sign/safety/atmospherics{
 	pixel_x = 32
 	},
-/turf/closed/wall/r_wall,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/filtration_plant)
 "cs" = (
 /obj/effect/landmark/resource_node/plasma{

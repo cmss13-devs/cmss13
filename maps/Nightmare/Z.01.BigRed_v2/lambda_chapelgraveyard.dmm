@@ -85,7 +85,7 @@
 	},
 /area/bigredv2/outside/se)
 "o" = (
-/turf/closed/wall/rock/red,
+/turf/closed/wall/solaris/rock,
 /area/bigredv2/outside/se)
 "p" = (
 /obj/structure/prop/dam/large_boulder/boulder2,
@@ -102,14 +102,14 @@
 /turf/open/mars,
 /area/bigredv2/outside/se)
 "s" = (
-/turf/closed/wall/rock/red,
+/turf/closed/wall/solaris/rock,
 /area/bigredv2/caves)
 "t" = (
 /obj/structure/fence,
 /turf/open/mars,
 /area/bigredv2/outside/se)
 "D" = (
-/turf/closed/wall/r_wall,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/caves)
 
 (1,1,1) = {"

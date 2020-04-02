@@ -1,17 +1,17 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "ab" = (
-/turf/closed/wall/r_wall,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/admin_building)
 "ac" = (
 /obj/effect/acid_hole,
-/turf/closed/wall,
+/turf/closed/wall/solaris,
 /area/bigredv2/outside/admin_building)
 "ad" = (
-/obj/structure/window/framed/colony,
+/obj/structure/window/framed/solaris,
 /turf/open/floor/plating,
 /area/bigredv2/outside/admin_building)
 "ae" = (
-/turf/closed/wall,
+/turf/closed/wall/solaris,
 /area/bigredv2/outside/admin_building)
 "af" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -35,14 +35,6 @@
 	dir = 2
 	},
 /area/bigredv2/outside/admin_building)
-"ah" = (
-/obj/structure/window/reinforced,
-/turf/open/floor{
-	tag = "icon-dark";
-	icon_state = "dark";
-	dir = 2
-	},
-/area/bigredv2/outside/admin_building)
 "ai" = (
 /obj/effect/landmark{
 	name = "surv_spawn";
@@ -55,7 +47,7 @@
 	},
 /area/bigredv2/outside/admin_building)
 "aj" = (
-/obj/structure/window_frame/colony,
+/obj/structure/window_frame/solaris,
 /obj/item/shard,
 /turf/open/floor/plating,
 /area/bigredv2/outside/admin_building)
@@ -97,30 +89,20 @@
 	dir = 8
 	},
 /area/bigredv2/outside/admin_building)
-"ao" = (
+"ap" = (
+/obj/structure/window/reinforced{
+	dir = 1
+	},
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/turf/open/floor{
-	tag = "icon-dark";
-	icon_state = "dark";
-	dir = 2
-	},
-/area/bigredv2/outside/admin_building)
-"ap" = (
-/turf/open/jungle{
-	bushes_spawn = 0;
-	icon_state = "grass_impenetrable"
-	},
-/area/bigredv2/outside/admin_building)
-"aq" = (
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/turf/open/floor{
-	tag = "icon-dark";
-	icon_state = "dark";
-	dir = 2
+/obj/structure/window/reinforced,
+/turf/open/jungle{
+	bushes_spawn = 0;
+	icon_state = "grass_impenetrable"
 	},
 /area/bigredv2/outside/admin_building)
 "ar" = (
@@ -170,16 +152,6 @@
 /area/bigredv2/outside/admin_building)
 "aw" = (
 /obj/effect/decal/cleanable/blood/xeno,
-/turf/open/floor{
-	tag = "icon-dark";
-	icon_state = "dark";
-	dir = 2
-	},
-/area/bigredv2/outside/admin_building)
-"ax" = (
-/obj/structure/window/reinforced{
-	dir = 1
-	},
 /turf/open/floor{
 	tag = "icon-dark";
 	icon_state = "dark";
@@ -404,7 +376,7 @@
 "ba" = (
 /obj/structure/table,
 /obj/structure/pipes/vents/pump{
-	dir = 4 
+	dir = 4
 	},
 /obj/item/clothing/head/helmet/marine/veteran/PMC/leader,
 /turf/open/floor{
@@ -688,7 +660,7 @@ bq
 "}
 (10,1,1) = {"
 ag
-ao
+ay
 aw
 bf
 ay
@@ -699,9 +671,9 @@ ay
 br
 "}
 (11,1,1) = {"
-ah
+ay
 ap
-ax
+ay
 aG
 aN
 aU
@@ -712,7 +684,7 @@ bs
 "}
 (12,1,1) = {"
 ai
-aq
+ay
 ay
 aH
 ae

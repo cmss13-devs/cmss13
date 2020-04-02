@@ -1,9 +1,9 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
-/turf/closed/wall/rock/red,
+/turf/closed/wall/solaris/rock,
 /area/bigredv2/caves)
 "ab" = (
-/turf/closed/wall/r_wall/unmeltable,
+/turf/closed/wall/solaris/reinforced/hull,
 /area/bigredv2/outside/virology)
 "ac" = (
 /obj/effect/decal/cleanable/dirt,
@@ -379,10 +379,10 @@
 	},
 /area/bigredv2/outside/virology)
 "bc" = (
-/turf/closed/wall/rock/red,
+/turf/closed/wall/solaris/rock,
 /area/bigredv2/outside)
 "bd" = (
-/turf/closed/wall/r_wall,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/virology)
 "be" = (
 /obj/structure/pipes/standard/simple/hidden/green,

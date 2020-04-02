@@ -32,7 +32,7 @@
 #define MAP_PRISON_STATION "Prison Station"
 #define MAP_WHISKEY_OUTPOST "Whiskey Outpost" // Unused
 #define MAP_DESERT_DAM "Trijent Dam"  // Highpop only
-#define MAP_SOROKYNE_STRATA "Sorokyne Strata" // Highpop only
+#define MAP_SOROKYNE_STRATA "Sorokyne Strata"
 #define MAP_CORSAT "CORSAT" // Highpop only
 
 #define PLAYERCOUNT_LOWPOP_MAP_LIMIT 130 // number of players before we switch to lowpop maps only (LV, BR, Prison)
@@ -297,6 +297,9 @@ var/static/list/scarySounds = list('sound/weapons/thudswoosh.ogg','sound/weapons
 #define WALL_STRATA_OUTPOST_BARE "strata_bare_outpost_"
 #define WALL_DOME "dome"
 #define WALL_DOMER "r_dome"
+#define WALL_SOLARIS "solaris_interior"
+#define WALL_SOLARISR "solaris_interior_r"
+#define WALL_SOLARIS_ROCK "solaris_rock"
 
 //Defines for dropship weapon gimbals
 #define GIMBAL_LEFT -1

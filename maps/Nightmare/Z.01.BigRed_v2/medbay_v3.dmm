@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
-/turf/closed/wall,
+/turf/closed/wall/solaris,
 /area/bigredv2/outside/medical)
 "ab" = (
 /obj/structure/girder,
@@ -9,7 +9,7 @@
 	},
 /area/bigredv2/outside/medical)
 "ac" = (
-/obj/structure/window_frame/colony,
+/obj/structure/window_frame/solaris,
 /turf/open/floor/plating,
 /area/bigredv2/outside/medical)
 "ad" = (
@@ -34,7 +34,7 @@
 	},
 /area/bigredv2/outside/medical)
 "af" = (
-/turf/closed/wall/r_wall,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/medical)
 "ag" = (
 /obj/structure/closet/secure_closet/chemical,
@@ -59,7 +59,7 @@
 	},
 /area/bigredv2/outside/medical)
 "aj" = (
-/obj/structure/window_frame/colony,
+/obj/structure/window_frame/solaris,
 /obj/item/shard,
 /turf/open/floor/plating,
 /area/bigredv2/outside/medical)
@@ -96,7 +96,7 @@
 	},
 /area/bigredv2/outside/medical)
 "ap" = (
-/obj/structure/window/framed/colony,
+/obj/structure/window/framed/solaris,
 /turf/open/floor/plating,
 /area/bigredv2/outside/medical)
 "aq" = (
@@ -292,7 +292,7 @@
 /area/bigredv2/outside/medical)
 "aP" = (
 /obj/structure/pipes/vents/pump{
-	dir = 8 
+	dir = 8
 	},
 /obj/structure/bed/roller,
 /turf/open/floor{
@@ -339,7 +339,7 @@
 	},
 /area/bigredv2/outside/medical)
 "aX" = (
-/obj/structure/window_frame/colony,
+/obj/structure/window_frame/solaris,
 /obj/item/stack/sheet/metal{
 	amount = 1
 	},
@@ -745,13 +745,13 @@
 	},
 /area/bigredv2/outside/medical)
 "bZ" = (
-/obj/structure/window_frame/colony,
+/obj/structure/window_frame/solaris,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
 /area/bigredv2/outside/medical)
 "ca" = (
-/obj/structure/window_frame/colony,
+/obj/structure/window_frame/solaris,
 /obj/item/shard,
 /turf/open/floor{
 	icon_state = "platingdmg1"
@@ -858,7 +858,7 @@
 	},
 /area/bigredv2/outside/medical)
 "co" = (
-/obj/structure/window_frame/colony,
+/obj/structure/window_frame/solaris,
 /obj/item/stack/sheet/metal{
 	amount = 1
 	},
@@ -2161,7 +2161,7 @@
 /area/bigredv2/outside/medical)
 "fl" = (
 /obj/structure/pipes/vents/pump{
-	dir = 8 
+	dir = 8
 	},
 /turf/open/floor{
 	icon_state = "platingdmg1"

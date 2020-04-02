@@ -19,23 +19,23 @@
 	},
 /area/bigredv2/outside/space_port)
 "ac" = (
-/turf/closed/wall/r_wall,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/space_port)
 "ad" = (
-/obj/structure/window/framed/colony/reinforced,
+/obj/structure/window/framed/solaris/reinforced,
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "ae" = (
-/obj/structure/window_frame/colony,
+/obj/structure/window_frame/solaris,
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "ah" = (
-/obj/structure/window_frame/colony,
+/obj/structure/window_frame/solaris,
 /obj/item/shard,
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "ai" = (
-/obj/structure/window/framed/colony/reinforced,
+/obj/structure/window/framed/solaris/reinforced,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "Spaceport2";
 	name = "\improper Spaceport Shutters"
@@ -46,7 +46,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/closed/wall/r_wall,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/space_port)
 "ak" = (
 /turf/open/floor{
@@ -178,7 +178,7 @@
 /area/bigredv2/outside/space_port)
 "az" = (
 /obj/structure/pipes/vents/pump{
-	dir = 8 
+	dir = 8
 	},
 /turf/open/floor{
 	tag = "icon-dark";
@@ -328,7 +328,7 @@
 	},
 /area/bigredv2/outside/space_port)
 "aP" = (
-/obj/structure/window/framed/colony/reinforced,
+/obj/structure/window/framed/solaris/reinforced,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	dir = 4;
 	id = "Spaceport2";
@@ -476,7 +476,7 @@
 	},
 /area/bigredv2/outside/space_port)
 "bh" = (
-/turf/closed/wall/rock/red,
+/turf/closed/wall/solaris/rock,
 /area/bigredv2/caves)
 "bi" = (
 /turf/open/mars,

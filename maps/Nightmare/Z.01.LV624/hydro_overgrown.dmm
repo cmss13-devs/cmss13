@@ -265,9 +265,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle7)
 "alP" = (
-/turf/closed/gm/dense{
-	icon_state = "wall2"
-	},
+/turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle7)
 "anb" = (
 /obj/structure/flora/jungle/vines/heavy,
@@ -408,9 +406,7 @@
 	icon_state = "heavy_6";
 	pixel_x = -28
 	},
-/turf/closed/gm/dense{
-	icon_state = "wall2"
-	},
+/turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle7)
 "aoR" = (
 /obj/structure/table,

@@ -866,8 +866,8 @@
 /area/lv624/lazarus/crashed_ship)
 "ch" = (
 /obj/structure/machinery/defenses/sentry/premade/dumb{
-	angle = 3;
-	locked = 1
+	!INVALID_VAR! = 3;
+	!INVALID_VAR! = 1
 	},
 /obj/structure/barricade/metal,
 /turf/open/floor/plating{
@@ -979,8 +979,8 @@
 /area/lv624/lazarus/crashed_ship)
 "ct" = (
 /obj/structure/machinery/defenses/sentry/premade/dumb{
-	angle = 3;
-	locked = 1
+	!INVALID_VAR! = 3;
+	!INVALID_VAR! = 1
 	},
 /obj/structure/barricade/metal,
 /obj/structure/barricade/metal{
@@ -993,8 +993,8 @@
 /area/lv624/lazarus/crashed_ship)
 "cu" = (
 /obj/structure/machinery/defenses/sentry/premade/dumb{
-	angle = 3;
-	locked = 1
+	!INVALID_VAR! = 3;
+	!INVALID_VAR! = 1
 	},
 /obj/structure/barricade/metal,
 /obj/structure/barricade/metal{

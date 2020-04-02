@@ -3,7 +3,7 @@
 /turf/open/mars,
 /area/bigredv2/outside/n)
 "ab" = (
-/turf/closed/wall/rock/red,
+/turf/closed/wall/solaris/rock,
 /area/bigredv2/caves)
 "ac" = (
 /turf/open/mars_cave{
@@ -132,7 +132,7 @@
 	},
 /area/bigredv2/caves_north)
 "aA" = (
-/obj/structure/window/framed/colony,
+/obj/structure/window/framed/solaris,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "Dormitories";
 	name = "\improper Dormitories Shutters"
@@ -140,7 +140,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/general_offices)
 "aB" = (
-/turf/closed/wall,
+/turf/closed/wall/solaris,
 /area/bigredv2/outside/general_offices)
 "aD" = (
 /turf/closed/shuttle/ert{
@@ -170,7 +170,7 @@
 	},
 /area/bigredv2/outside/general_offices)
 "aI" = (
-/turf/closed/wall/r_wall,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/general_offices)
 "aJ" = (
 /obj/structure/machinery/light{
@@ -273,7 +273,7 @@
 	},
 /area/bigredv2/outside/general_offices)
 "aZ" = (
-/obj/structure/window_frame/colony,
+/obj/structure/window_frame/solaris,
 /obj/item/shard,
 /turf/open/floor/plating,
 /area/bigredv2/outside/general_offices)
@@ -852,7 +852,7 @@
 	},
 /area/bigredv2/outside/general_offices)
 "cz" = (
-/turf/closed/wall,
+/turf/closed/wall/solaris,
 /area/bigredv2/outside/dorms)
 "cA" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
@@ -975,7 +975,7 @@
 /area/bigredv2/outside/general_offices)
 "cT" = (
 /obj/structure/pipes/vents/pump{
-	dir = 8 
+	dir = 8
 	},
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
@@ -1164,10 +1164,10 @@
 	},
 /area/bigredv2/outside/general_offices)
 "dw" = (
-/turf/closed/wall/rock/red,
+/turf/closed/wall/solaris/rock,
 /area/bigredv2/outside)
 "dx" = (
-/turf/closed/wall,
+/turf/closed/wall/solaris,
 /area/bigredv2/outside/bar)
 "dy" = (
 /obj/structure/machinery/light{
@@ -1419,7 +1419,7 @@
 	},
 /area/bigredv2/outside/general_offices)
 "eh" = (
-/turf/closed/wall,
+/turf/closed/wall/solaris,
 /area/bigredv2/outside/hydroponics)
 "ei" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -1465,7 +1465,7 @@
 	},
 /area/bigredv2/outside/hydroponics)
 "ep" = (
-/obj/structure/window/framed/colony,
+/obj/structure/window/framed/solaris,
 /turf/open/floor/plating,
 /area/bigredv2/outside/hydroponics)
 "eq" = (
@@ -1568,7 +1568,7 @@
 	},
 /area/bigredv2/outside/hydroponics)
 "eH" = (
-/obj/structure/window_frame/colony,
+/obj/structure/window_frame/solaris,
 /obj/item/shard,
 /turf/open/floor/plating,
 /area/bigredv2/outside/hydroponics)

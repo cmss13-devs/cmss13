@@ -8,9 +8,7 @@
 	},
 /area/lv624/ground/jungle8)
 "e" = (
-/turf/closed/gm/dense{
-	icon_state = "wall2"
-	},
+/turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle8)
 "i" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
@@ -22,9 +20,7 @@
 	},
 /area/lv624/ground/river3)
 "k" = (
-/turf/closed/gm/dense{
-	icon_state = "wall2"
-	},
+/turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/river3)
 "l" = (
 /obj/effect/landmark/lv624/fog_blocker,
@@ -82,9 +78,7 @@
 /area/lv624/ground/river3)
 "v" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
-/turf/closed/gm/dense{
-	icon_state = "wall2"
-	},
+/turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/river3)
 "y" = (
 /obj/effect/landmark/lv624/fog_blocker,
@@ -99,9 +93,7 @@
 	},
 /area/lv624/ground/jungle5)
 "B" = (
-/turf/closed/gm/dense{
-	icon_state = "wall2"
-	},
+/turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle5)
 "C" = (
 /turf/open/gm/grass,

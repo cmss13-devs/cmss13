@@ -202,6 +202,20 @@
 	basestate = "strata_window"
 	reinforced = TRUE
 
+//Solaris frames
+
+/obj/structure/window_frame/solaris
+	icon = 'icons/turf/walls/solaris/solaris_windows.dmi'
+	icon_state = "solaris_window0_frame"
+	basestate = "solaris_window"
+
+/obj/structure/window_frame/solaris/reinforced
+	icon_state = "solaris_window0_frame"
+	basestate = "solaris_window"
+	reinforced = TRUE
+
+//Corsat frames
+
 /obj/structure/window_frame/corsat
 	icon = 'icons/turf/walls/windows_corsat.dmi'
 	icon_state = "padded_rwindow0_frame"

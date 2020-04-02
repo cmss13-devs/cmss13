@@ -7,7 +7,7 @@
 	},
 /area/bigredv2/outside/se)
 "b" = (
-/turf/closed/wall/r_wall,
+/turf/closed/wall/solaris/reinforced,
 /area/bigred/ground/security)
 "c" = (
 /obj/effect/landmark{
@@ -107,7 +107,7 @@
 	},
 /area/bigredv2/caves_east)
 "q" = (
-/obj/structure/window/framed/colony/reinforced,
+/obj/structure/window/framed/solaris/reinforced,
 /turf/open/floor/plating,
 /area/bigred/ground/security)
 "r" = (

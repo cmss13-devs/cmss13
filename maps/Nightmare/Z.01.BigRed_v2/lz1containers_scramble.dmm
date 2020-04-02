@@ -65,7 +65,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "an" = (
-/turf/closed/wall,
+/turf/closed/wall/solaris,
 /area/bigredv2/outside/space_port)
 "ao" = (
 /obj/structure/machinery/power/apc{
@@ -144,7 +144,7 @@
 	},
 /area/bigredv2/outside/space_port)
 "ax" = (
-/obj/structure/window/framed/colony,
+/obj/structure/window/framed/solaris,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	dir = 4;
 	id = "Spaceport";
@@ -293,7 +293,7 @@
 	},
 /area/bigredv2/outside/space_port)
 "aP" = (
-/obj/structure/window/framed/colony,
+/obj/structure/window/framed/solaris,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "Spaceport";
 	name = "\improper Spaceport Shutters"
@@ -305,12 +305,12 @@
 	tag = "icon-gib6";
 	icon_state = "gib6"
 	},
-/obj/structure/window_frame/colony,
+/obj/structure/window_frame/solaris,
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "aR" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/window_frame/colony,
+/obj/structure/window_frame/solaris,
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "aT" = (

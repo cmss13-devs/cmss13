@@ -14,9 +14,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/caves/central2)
 "ae" = (
-/turf/closed/gm/dense{
-	icon_state = "wall2"
-	},
+/turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/caves/central2)
 "af" = (
 /turf/open/gm/dirtgrassborder{

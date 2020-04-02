@@ -65,7 +65,7 @@
 	},
 /area/bigredv2/outside/c)
 "al" = (
-/turf/closed/wall/r_wall,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/storage)
 "am" = (
 /obj/structure/largecrate/hunter_games_guns/mediocre,
@@ -183,7 +183,7 @@
 /area/bigredv2/outside/storage)
 "aK" = (
 /obj/structure/pipes/vents/pump{
-	dir = 1 
+	dir = 1
 	},
 /obj/structure/table,
 /obj/effect/spawner/random/toolbox,

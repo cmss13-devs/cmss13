@@ -39,7 +39,7 @@
 	name = "reinforced hull"
 	desc = "A reinforced metal wall used to seperate rooms and make up the ship."
 	damage_cap = HEALTH_WALL_REINFORCED
-	
+
 /turf/closed/wall/almayer/outer
 	name = "outer hull"
 	desc = "A metal wall used to seperate space from the ship"
@@ -391,7 +391,7 @@
 	icon_state = "strata_jungle"
 	desc = "Exceptionally dense vegetation that you can't see through."
 	walltype = WALL_STRATA_JUNGLE //Not a metal wall
-	hull = 1 //Can't break this ice.
+	hull = 1 //Can't break this vegetation.
 
 /turf/closed/wall/strata_outpost_ribbed //this guy is our reinforced replacement
 	name = "ribbed outpost walls"
@@ -399,8 +399,8 @@
 	icon_state = "strata_ribbed_outpost_"
 	desc = "A thick and chunky metal wall covered in jagged ribs."
 	walltype = WALL_STRATA_OUTPOST_RIBBED
-	damage_cap = 1000 
-	max_temperature = 28000 
+	damage_cap = 1000
+	max_temperature = 28000
 
 /turf/closed/wall/strata_outpost_bare
 	name = "bare outpost walls"
@@ -408,6 +408,31 @@
 	icon_state = "strata_bare_outpost_"
 	desc = "A thick and chunky metal wall. The surface is barren and imposing."
 	walltype = WALL_STRATA_OUTPOST_BARE
+
+//SOLARIS RIDGE TILESET//
+
+/turf/closed/wall/solaris
+	name = "solaris ridge colony wall"
+	icon = 'icons/turf/walls/solaris/solaris.dmi'
+	icon_state = "solaris_interior"
+	desc = "Tough looking walls that have been blasted by sand since they day they were erected. A testament to human willpower."
+	walltype = WALL_SOLARIS
+
+/turf/closed/wall/solaris/reinforced
+	icon_state = "solaris_interior_r"
+	walltype = WALL_SOLARISR
+	damage_cap = 1000
+	max_temperature = 28000
+
+/turf/closed/wall/solaris/reinforced/hull
+	hull = 1
+
+/turf/closed/wall/solaris/rock
+	name = "solaris ridge rock wall"
+	icon_state = "solaris_rock"
+	walltype = WALL_SOLARIS_ROCK
+	hull = 1
+
 
 
 //Xenomorph's Resin Walls

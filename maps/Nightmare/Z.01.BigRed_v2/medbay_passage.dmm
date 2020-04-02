@@ -89,7 +89,7 @@
 	},
 /area/bigredv2/outside/c)
 "R" = (
-/turf/closed/wall/r_wall,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/admin_building)
 "S" = (
 /obj/structure/pipes/standard/simple/hidden/green,

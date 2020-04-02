@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
-/turf/closed/wall/rock/red,
+/turf/closed/wall/solaris/rock,
 /area/bigredv2/caves)
 "b" = (
 /turf/open/mars_cave{
@@ -33,7 +33,7 @@
 	},
 /area/bigredv2/caves_sw)
 "g" = (
-/turf/closed/wall/r_wall/unmeltable,
+/turf/closed/wall/solaris/reinforced/hull,
 /area/bigredv2/caves_sw)
 "h" = (
 /obj/structure/machinery/door/poddoor/two_tile{

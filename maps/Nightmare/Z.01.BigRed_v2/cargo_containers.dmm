@@ -37,7 +37,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "ai" = (
-/turf/closed/wall,
+/turf/closed/wall/solaris,
 /area/bigredv2/outside/cargo)
 "aj" = (
 /obj/structure/table,
@@ -45,7 +45,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "ak" = (
-/obj/structure/window/framed/colony,
+/obj/structure/window/framed/solaris,
 /turf/open/floor/plating,
 /area/bigredv2/outside/cargo)
 "al" = (
@@ -82,7 +82,7 @@
 /obj/structure/table,
 /obj/effect/spawner/random/toolbox,
 /obj/structure/pipes/vents/pump{
-	dir = 4 
+	dir = 4
 	},
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
@@ -131,7 +131,7 @@
 "ay" = (
 /obj/structure/closet/emcloset,
 /obj/structure/pipes/vents/pump{
-	dir = 8 
+	dir = 8
 	},
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
@@ -165,7 +165,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "aE" = (
-/obj/structure/window/framed/colony,
+/obj/structure/window/framed/solaris,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	dir = 4;
 	id = "Cargonia";
@@ -490,7 +490,7 @@
 "bt" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/vents/pump{
-	dir = 8 
+	dir = 8
 	},
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
@@ -741,7 +741,7 @@
 /obj/structure/table,
 /obj/item/device/radio,
 /obj/structure/pipes/vents/pump{
-	dir = 1 
+	dir = 1
 	},
 /obj/item/document_objective/paper,
 /turf/open/floor,
@@ -821,7 +821,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "cu" = (
-/obj/structure/window/framed/colony,
+/obj/structure/window/framed/solaris,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "Cargonia";
 	name = "\improper Cargo Shutters"
@@ -829,7 +829,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/cargo)
 "cv" = (
-/turf/closed/wall/r_wall,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/engineering)
 "cw" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{

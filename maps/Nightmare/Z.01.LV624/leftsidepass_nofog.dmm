@@ -51,9 +51,7 @@
 /turf/open/gm/river,
 /area/lv624/ground/river1)
 "am" = (
-/turf/closed/gm/dense{
-	icon_state = "wall2"
-	},
+/turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/sand7)
 "ao" = (
 /obj/effect/landmark/lv624/fog_blocker,
@@ -102,9 +100,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/river1)
 "ax" = (
-/turf/closed/gm/dense{
-	icon_state = "wall2"
-	},
+/turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle6)
 "ay" = (
 /turf/open/gm/dirt,
@@ -192,9 +188,7 @@
 /obj/effect/landmark{
 	name = "hunter_primary"
 	},
-/turf/closed/gm/dense{
-	icon_state = "wall2"
-	},
+/turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle6)
 "aO" = (
 /turf/open/gm/dirtgrassborder{
@@ -225,9 +219,7 @@
 	},
 /area/lv624/ground/jungle6)
 "aU" = (
-/turf/closed/gm/dense{
-	icon_state = "wall2"
-	},
+/turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle4)
 "aV" = (
 /turf/open/gm/grass,

@@ -11,7 +11,7 @@
 	},
 /area/bigredv2/outside/engineering)
 "ab" = (
-/turf/closed/wall,
+/turf/closed/wall/solaris,
 /area/bigredv2/outside/engineering)
 "ac" = (
 /obj/structure/largecrate/random,
@@ -71,7 +71,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "aq" = (
-/turf/closed/wall/r_wall,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/engineering)
 "ar" = (
 /turf/open/floor{
@@ -138,13 +138,13 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "aF" = (
-/obj/structure/window/framed/colony,
+/obj/structure/window/framed/solaris,
 /turf/open/floor/plating,
 /area/bigredv2/outside/engineering)
 "aG" = (
 /obj/item/shard,
 /obj/effect/decal/cleanable/blood/xeno,
-/obj/structure/window_frame/colony,
+/obj/structure/window_frame/solaris,
 /turf/open/floor/plating,
 /area/bigredv2/outside/engineering)
 "aH" = (
@@ -453,7 +453,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bD" = (
-/obj/structure/window_frame/colony/reinforced,
+/obj/structure/window_frame/solaris/reinforced,
 /obj/effect/decal/cleanable/molten_item,
 /turf/open/floor/plating,
 /area/bigredv2/outside/engineering)
@@ -546,7 +546,7 @@
 /area/bigredv2/outside/engineering)
 "bT" = (
 /obj/structure/pipes/vents/pump{
-	dir = 8 
+	dir = 8
 	},
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
@@ -601,7 +601,7 @@
 "ce" = (
 /obj/item/tool/lighter/random,
 /obj/structure/pipes/vents/pump{
-	dir = 4 
+	dir = 4
 	},
 /obj/effect/decal/cleanable/ash,
 /turf/open/floor,
@@ -773,7 +773,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "cG" = (
-/obj/structure/window/framed/colony/reinforced,
+/obj/structure/window/framed/solaris/reinforced,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "Engineering";
 	name = "\improper Engineering Shutters"
@@ -856,7 +856,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/engineering)
 "dc" = (
-/turf/closed/wall/rock/red,
+/turf/closed/wall/solaris/rock,
 /area/bigredv2/outside)
 "dd" = (
 /turf/open/mars_cave{
@@ -992,7 +992,7 @@
 	},
 /area/bigredv2/outside/s)
 "dE" = (
-/obj/structure/window_frame/colony/reinforced,
+/obj/structure/window_frame/solaris/reinforced,
 /turf/open/floor/plating,
 /area/bigredv2/outside/engineering)
 "dF" = (
@@ -1013,7 +1013,7 @@
 	},
 /area/bigredv2/outside/s)
 "dI" = (
-/turf/closed/wall/r_wall/unmeltable,
+/turf/closed/wall/solaris/reinforced/hull,
 /area/bigredv2/outside/eta)
 "dJ" = (
 /obj/effect/landmark{
@@ -1080,7 +1080,7 @@
 	},
 /area/bigredv2/caves_sw)
 "dT" = (
-/turf/closed/wall/rock/red,
+/turf/closed/wall/solaris/rock,
 /area/bigredv2/caves)
 "dU" = (
 /turf/open/mars_cave{

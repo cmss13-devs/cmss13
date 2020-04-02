@@ -180,7 +180,7 @@
 		if(AIRLOCK_WIRE_ELECTRIFY)
 			//one wire for electrifying the door. Sending a pulse through this electrifies the door for 30 seconds.
 			if(secondsElectrified==0)
-				shockedby += text("\[[time_stamp()]\][usr](ckey:[usr.ckey])")
+				shockedby += text("\[[time_stamp()]\][key_name(usr)]")
 				usr.attack_log += text("\[[time_stamp()]\] <font color='red'>Electrified the [name] at [x] [y] [z]</font>")
 				secondsElectrified = 30
 				visible_message(SPAN_DANGER("Electric arcs shoot off from \the [src] airlock!"))
@@ -239,7 +239,7 @@
 		if(AIRLOCK_WIRE_ELECTRIFY)
 			//Cutting this wire electrifies the door, so that the next person to touch the door without insulated gloves gets electrocuted.
 			if(secondsElectrified != -1)
-				shockedby += text("\[[time_stamp()]\][usr](ckey:[usr.ckey])")
+				shockedby += text("\[[time_stamp()]\][key_name(usr)]")
 				usr.attack_log += text("\[[time_stamp()]\] <font color='red'>Electrified the [name] at [x] [y] [z]</font>")
 				secondsElectrified = -1
 				visible_message(SPAN_DANGER("Electric arcs shoot off from \the [src] airlock!"))

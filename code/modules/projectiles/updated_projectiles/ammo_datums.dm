@@ -437,8 +437,8 @@
 
 	var/area/A = get_area(H)
 
-	msg_admin_attack(FONT_SIZE_HUGE("[usr.name] ([usr.key]) has battlefield executed [H] ([H.key]) in [get_area(usr)] ([usr.loc.x],[usr.loc.y],[usr.loc.z])."), usr.loc.x, usr.loc.y, usr.loc.z)
-	log_attack("[usr.name] ([usr.ckey]) battlefield executed [H] ([H.key]) at [A.name].")
+	msg_admin_attack(FONT_SIZE_HUGE("[key_name(usr)] has battlefield executed [key_name(H)] in [get_area(usr)] ([usr.loc.x],[usr.loc.y],[usr.loc.z])."), usr.loc.x, usr.loc.y, usr.loc.z)
+	log_attack("[key_name(usr)] battlefield executed [key_name(H)] at [A.name].")
 
 /*
 //================================================

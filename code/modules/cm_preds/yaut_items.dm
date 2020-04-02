@@ -952,7 +952,7 @@
 						var/turf/T = get_turf(M)
 						if(A)
 							message_staff(FONT_SIZE_HUGE("ALERT: [usr] ([usr.key]) triggered the predator self-destruct sequence of [comrade] ([comrade.key]) in [A.name] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[T.x];Y=[T.y];Z=[T.z]'>JMP</a>)</font>"))
-							log_attack("[usr.name] ([usr.ckey]) triggered the predator self-destruct sequence of [comrade] ([comrade.key]) in [A.name]")
+							log_attack("[key_name(usr)] triggered the predator self-destruct sequence of [comrade] ([comrade.key]) in [A.name]")
 						if (!bracer.exploding)
 							bracer.explodey(comrade)
 						M.visible_message(SPAN_WARNING("[M] presses a few buttons on [comrade]'s wrist bracer."),SPAN_DANGER("You activate the timer. May [comrade]'s final hunt be swift."))
@@ -995,7 +995,7 @@
 		var/area/A = get_area(M)
 		var/turf/T = get_turf(M)
 		message_staff(FONT_SIZE_HUGE("ALERT: [usr] ([usr.key]) triggered their predator self-destruct sequence [A ? "in [A.name]":""] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[T.x];Y=[T.y];Z=[T.z]'>JMP</a>)"))
-		log_attack("[usr.name] ([usr.ckey]) triggered their predator self-destruct sequence in [A ? "in [A.name]":""]")
+		log_attack("[key_name(usr)] triggered their predator self-destruct sequence in [A ? "in [A.name]":""]")
 
 		explodey(M)
 	return 1
@@ -1762,7 +1762,7 @@
 			return
 
 		if(user)
-			msg_admin_attack("[user.name] ([user.ckey]) primed \a [src] in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
+			msg_admin_attack("[key_name(user)] primed \a [src] in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
 		icon_state = initial(icon_state) + "_active"
 		active = 1
 		update_icon()

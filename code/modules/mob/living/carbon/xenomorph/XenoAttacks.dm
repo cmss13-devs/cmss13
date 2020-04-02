@@ -17,8 +17,8 @@
 			apply_damage(damage, BRUTE)
 			last_damage_source = initial(M.name)
 			last_damage_mob = M
-			S.attack_log += text("\[[time_stamp()]\] <font color='red'>attacked [src.name] ([src.ckey])</font>")
-			attack_log += text("\[[time_stamp()]\] <font color='orange'>was attacked by [S.name] ([S.ckey])</font>")
+			S.attack_log += text("\[[time_stamp()]\] <font color='red'>attacked [key_name(src)]</font>")
+			attack_log += text("\[[time_stamp()]\] <font color='orange'>was attacked by [key_name(S)]</font>")
 			updatehealth()
 
 /mob/living/carbon/Xenomorph/attack_hand(mob/living/carbon/human/M)
@@ -125,9 +125,9 @@
 					SPAN_DANGER("You slash [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 					last_damage_source = initial(M.name)
 					last_damage_mob = M
-					src.attack_log += text("\[[time_stamp()]\] <font color='orange'>was slashed by [M.name] ([M.ckey])</font>")
-					M.attack_log += text("\[[time_stamp()]\] <font color='red'>slashed [src.name] ([src.ckey])</font>")
-					log_attack("[M.name] ([M.ckey]) slashed [src.name] ([src.ckey])")
+					src.attack_log += text("\[[time_stamp()]\] <font color='orange'>was slashed by [key_name(M)]</font>")
+					M.attack_log += text("\[[time_stamp()]\] <font color='red'>slashed [key_name(src)]</font>")
+					log_attack("[key_name(M)] slashed [key_name(src)]")
 
 					M.flick_attack_overlay(src, "slash")
 					playsound(loc, "alien_claw_flesh", 25, 1)

@@ -16,7 +16,7 @@
 		return
 	if (M.client)
 		M.ghostize()
-	message_admins("[key_name_admin(usr)] modified [M.name]/([M.ckey])'s ckey to [new_ckey]", 1)
+	message_admins("[key_name_admin(usr)] modified [key_name(M)]'s ckey to [new_ckey]", 1)
 	 
 	M.ckey = new_ckey
 	var/mob/living/carbon/Xenomorph/XNO = M
@@ -115,7 +115,7 @@
 
 	M.revive(FALSE) // Argument means that viruses will be cured (except zombie virus)
 
-	message_staff(WRAP_STAFF_LOG(usr, "ahealed [M.name] ([M.ckey]) in [get_area(M)] ([M.x],[M.y],[M.z])."), M.x, M.y, M.z)
+	message_staff(WRAP_STAFF_LOG(usr, "ahealed [key_name(M)] in [get_area(M)] ([M.x],[M.y],[M.z])."), M.x, M.y, M.z)
 
 /client/proc/cmd_admin_subtle_message(mob/M as mob in mob_list)
 	set name = "Subtle Message"
@@ -136,7 +136,7 @@
 			if(usr.client.admin_holder && (usr.client.admin_holder.rights & R_MOD))
 				to_chat(M, SPAN_ANNOUNCEMENT_HEADER_BLUE("You hear a voice in your head... [msg]"))
 
-	message_staff(WRAP_STAFF_LOG(usr, "subtle messaged [M.name] ([M.ckey]), saying \"[msg]\" in [get_area(M)] ([M.x],[M.y],[M.z])."), M.x, M.y, M.z)
+	message_staff(WRAP_STAFF_LOG(usr, "subtle messaged [key_name(M)], saying \"[msg]\" in [get_area(M)] ([M.x],[M.y],[M.z])."), M.x, M.y, M.z)
 
 /client/proc/cmd_admin_direct_narrate(var/mob/M)
 	set name = "Narrate"

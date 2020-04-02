@@ -611,7 +611,7 @@ var/const/INGEST = 2
 	if(ishuman(my_atom))
 		var/mob/living/carbon/human/H = my_atom
 		source_mob = H
-		msg_admin_niche("WARNING: Ingestion based explosion attempted in containing mob [H.name] ([H.ckey]) in area [sourceturf.loc] at ([H.loc.x],[H.loc.y],[H.loc.z]) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[H.loc.x];Y=[H.loc.y];Z=[H.loc.z]'>JMP</a>)")
+		msg_admin_niche("WARNING: Ingestion based explosion attempted in containing mob [key_name(H)] in area [sourceturf.loc] at ([H.loc.x],[H.loc.y],[H.loc.z]) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[H.loc.x];Y=[H.loc.y];Z=[H.loc.z]'>JMP</a>)")
 		exploded = TRUE
 		return
 

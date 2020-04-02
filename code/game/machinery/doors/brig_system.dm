@@ -114,7 +114,7 @@
 	if(current_report.incident.active_timer)
 		timer_end()
 		if(user)
-			log_admin("[user] has released [current_report.incident.criminal_name] early for [current_report.incident.charges_to_string()]. (CKEY: ([user.ckey]))")
+			log_admin("[key_name(user)] has released [current_report.incident.criminal_name] early for [current_report.incident.charges_to_string()].")
 
 	if(user)
 		current_report.forceMove(get_turf(user))
@@ -145,7 +145,7 @@
 		INVOKE_ASYNC(door, /obj/structure/machinery/door.proc/close)
 
 	start_processing()
-	log_admin("[user] has jailed [C.criminal_name] for [C.charges_to_string()]. (CKEY: ([user.ckey]))")
+	log_admin("[key_name(user)] has jailed [C.criminal_name] for [C.charges_to_string()].")
 	if(!resuming)
 		ai_silent_announcement("BRIG REPORT: [C.criminal_name] has been jailed for [C.charges_to_string()].")
 
@@ -175,7 +175,7 @@
 	C.active_timer = FALSE
 	C.time_served = C.time_to_release - world.timeofday
 
-	log_admin("[user] has paused the jail timer of [C.criminal_name], [C.charges_to_string()]. (CKEY: ([user.ckey]))")
+	log_admin("[key_name(user)] has paused the jail timer of [C.criminal_name], [C.charges_to_string()].")
 
 /obj/structure/machinery/brig_cell/proc/get_time_left(var/obj/item/paper/incident/I)
 	if(!istype(I))
@@ -191,7 +191,7 @@
 	current_report.incident.pardoned = TRUE
 	current_report.name += " (PARDONED)"
 
-	log_admin("[user] has pardoned [current_report.incident.criminal_name] for [current_report.incident.charges_to_string()]. (CKEY: ([user.ckey]))")
+	log_admin("[key_name(user)] has pardoned [current_report.incident.criminal_name] for [current_report.incident.charges_to_string()].")
 	ai_silent_announcement("BRIG REPORT: [current_report.incident.criminal_name] has been pardoned for [current_report.incident.charges_to_string()].")
 
 	timer_end(current_report)

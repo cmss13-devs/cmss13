@@ -48,9 +48,9 @@
 		charges -= 2
 		M.visible_message(SPAN_DANGER("[M] has been prodded with the [src] by [user]!"))
 
-		user.attack_log += "\[[time_stamp()]\]<font color='red'> Stunned [M.name] ([M.ckey]) with [src.name]</font>"
-		M.attack_log += "\[[time_stamp()]\]<font color='orange'> Stunned by [user.name] ([user.ckey]) with [src.name]</font>"
-		log_attack("[user.name] ([user.ckey]) stunned [M.name] ([M.ckey]) with [src.name]")
+		user.attack_log += "\[[time_stamp()]\]<font color='red'> Stunned [key_name(M)] with [src.name]</font>"
+		M.attack_log += "\[[time_stamp()]\]<font color='orange'> Stunned by [key_name(user)] with [src.name]</font>"
+		log_attack("[key_name(user)] stunned [key_name(M)] with [src.name]")
 
 		playsound(src.loc, 'sound/weapons/Egloves.ogg', 25, 1)
 		if(charges < 1)

@@ -3,7 +3,9 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle5)
 "b" = (
-/turf/closed/wall/strata_ice/jungle,
+/turf/closed/gm/dense{
+	icon_state = "wall2"
+	},
 /area/lv624/ground/jungle5)
 "c" = (
 /obj/effect/landmark/lv624/fog_blocker,
@@ -66,7 +68,10 @@
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
 "s" = (
-/obj/structure/largecrate/supply/weapons/hpr,
+/obj/structure/largecrate/supply/weapons/sentries{
+	unslashable = 1;
+	unacidable = 1
+	},
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
 "t" = (

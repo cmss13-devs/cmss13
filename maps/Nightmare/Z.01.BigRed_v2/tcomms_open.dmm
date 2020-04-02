@@ -1,9 +1,9 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
-/turf/closed/wall/rock/red,
+/turf/closed/wall/solaris/rock,
 /area/bigredv2/caves)
 "b" = (
-/turf/closed/wall/r_wall,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/telecomm)
 "c" = (
 /obj/effect/decal/cleanable/dirt,
@@ -104,7 +104,7 @@
 /area/bigredv2/outside/telecomm)
 "o" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/closed/wall/r_wall,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/telecomm)
 "p" = (
 /turf/open/floor{
@@ -143,7 +143,7 @@
 /area/bigredv2/outside/telecomm)
 "u" = (
 /obj/structure/sign/safety/hazard,
-/turf/closed/wall/r_wall,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/telecomm)
 "v" = (
 /obj/effect/decal/cleanable/dirt,

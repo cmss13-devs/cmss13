@@ -20,9 +20,7 @@
 /area/lv624/ground/jungle1)
 "cC" = (
 /obj/structure/flora/jungle/vines,
-/turf/closed/gm/dense{
-	icon_state = "wall2"
-	},
+/turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle1)
 "eR" = (
 /obj/structure/flora/jungle/vines/heavy{
@@ -67,9 +65,7 @@
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_3"
 	},
-/turf/closed/gm/dense{
-	icon_state = "wall2"
-	},
+/turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle1)
 "nI" = (
 /obj/structure/flora/jungle/vines/heavy{
@@ -84,9 +80,7 @@
 	pixel_x = 0;
 	pixel_y = 26
 	},
-/turf/closed/gm/dense{
-	icon_state = "wall2"
-	},
+/turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle1)
 "uk" = (
 /obj/structure/flora/jungle/vines/heavy{
@@ -135,9 +129,7 @@
 	icon_state = "light_3";
 	icon_tag = "light"
 	},
-/turf/closed/gm/dense{
-	icon_state = "wall2"
-	},
+/turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle1)
 "Be" = (
 /obj/structure/flora/jungle/vines/heavy,
@@ -168,9 +160,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle1)
 "LW" = (
-/turf/closed/gm/dense{
-	icon_state = "wall2"
-	},
+/turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle1)
 "NU" = (
 /obj/structure/flora/jungle/vines/heavy{
@@ -216,9 +206,7 @@
 	icon_state = "light_2";
 	icon_tag = "light"
 	},
-/turf/closed/gm/dense{
-	icon_state = "wall2"
-	},
+/turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle1)
 "Wt" = (
 /obj/structure/flora/jungle/vines{
@@ -263,9 +251,7 @@
 	icon_state = "heavy_6";
 	pixel_x = 0
 	},
-/turf/closed/gm/dense{
-	icon_state = "wall2"
-	},
+/turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle1)
 "XS" = (
 /obj/structure/flora/jungle/vines/heavy,
@@ -286,9 +272,7 @@
 	pixel_x = 0;
 	pixel_y = 24
 	},
-/turf/closed/gm/dense{
-	icon_state = "wall2"
-	},
+/turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle1)
 "YD" = (
 /obj/structure/flora/jungle/vines/heavy{

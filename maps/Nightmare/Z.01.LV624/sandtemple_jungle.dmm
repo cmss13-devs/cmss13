@@ -93,9 +93,7 @@
 	icon_state = "light_3";
 	icon_tag = "light"
 	},
-/turf/closed/gm/dense{
-	icon_state = "wall2"
-	},
+/turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle3)
 "lR" = (
 /obj/item/attachable/bayonet{
@@ -234,9 +232,7 @@
 	icon_tag = "heavy";
 	pixel_x = 0
 	},
-/turf/closed/gm/dense{
-	icon_state = "wall2"
-	},
+/turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle3)
 "Bl" = (
 /obj/structure/flora/bush/ausbushes/genericbush,
@@ -294,9 +290,6 @@
 	dir = 8
 	},
 /area/lv624/ground/jungle3)
-"Kw" = (
-/turf/closed/gm/dense,
-/area/lv624/ground/jungle3)
 "Lv" = (
 /obj/effect/landmark/lv624/xeno_tunnel,
 /obj/structure/flora/jungle/vines{
@@ -335,9 +328,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle3)
 "LW" = (
-/turf/closed/gm/dense{
-	icon_state = "wall2"
-	},
+/turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle3)
 "Mi" = (
 /obj/structure/flora/jungle/vines/heavy{
@@ -345,9 +336,7 @@
 	icon_tag = "heavy";
 	pixel_x = 0
 	},
-/turf/closed/gm/dense{
-	icon_state = "wall2"
-	},
+/turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle3)
 "MG" = (
 /obj/structure/flora/jungle/vines,
@@ -360,9 +349,7 @@
 	icon_state = "light_2";
 	icon_tag = "light_2"
 	},
-/turf/closed/gm/dense{
-	icon_state = "wall2"
-	},
+/turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle3)
 "Nq" = (
 /obj/structure/flora/bush/ausbushes/var3/sunnybush,
@@ -424,15 +411,11 @@
 	icon_state = "light_2";
 	icon_tag = "light"
 	},
-/turf/closed/gm/dense{
-	icon_state = "wall2"
-	},
+/turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle3)
 "Wc" = (
 /obj/structure/flora/jungle/vines,
-/turf/closed/gm/dense{
-	icon_state = "wall2"
-	},
+/turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle3)
 "Wp" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
@@ -600,7 +583,7 @@ QL
 oD
 LW
 FE
-Kw
+LW
 LW
 "}
 (10,1,1) = {"
@@ -616,7 +599,7 @@ ZL
 oD
 LW
 LW
-Kw
+LW
 LW
 "}
 (11,1,1) = {"

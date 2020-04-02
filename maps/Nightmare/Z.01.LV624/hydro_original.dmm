@@ -43,9 +43,7 @@
 	},
 /area/lv624/ground/jungle7)
 "lP" = (
-/turf/closed/gm/dense{
-	icon_state = "wall2"
-	},
+/turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle7)
 "nG" = (
 /turf/closed/wall,

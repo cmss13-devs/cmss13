@@ -233,9 +233,7 @@
 	},
 /area/lv624/lazarus/security)
 "z" = (
-/turf/closed/gm/dense{
-	icon_state = "wall2"
-	},
+/turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle9)
 "A" = (
 /obj/effect/landmark{

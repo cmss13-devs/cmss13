@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
-/turf/closed/wall/r_wall/unmeltable,
+/turf/closed/wall/solaris/reinforced/hull,
 /area/bigredv2/outside/e)
 "ab" = (
 /obj/effect/landmark{
@@ -36,7 +36,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/hydroponics)
 "ag" = (
-/turf/closed/wall,
+/turf/closed/wall/solaris,
 /area/bigredv2/outside/library)
 "ah" = (
 /obj/structure/machinery/camera/autoname{
@@ -90,7 +90,7 @@
 	},
 /area/bigredv2/outside/e)
 "ap" = (
-/turf/closed/wall/rock/red,
+/turf/closed/wall/solaris/rock,
 /area/bigredv2/caves)
 "aq" = (
 /turf/open/mars_cave{
@@ -144,7 +144,7 @@
 	},
 /area/bigredv2/outside/hydroponics)
 "ax" = (
-/obj/structure/window/framed/colony,
+/obj/structure/window/framed/solaris,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "Library";
 	name = "\improper Library Shutters"
@@ -189,10 +189,10 @@
 	},
 /area/bigredv2/caves_lambda)
 "aD" = (
-/turf/closed/wall,
+/turf/closed/wall/solaris,
 /area/bigredv2/outside/hydroponics)
 "aE" = (
-/obj/structure/window/framed/colony,
+/obj/structure/window/framed/solaris,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "Kitchen";
 	name = "\improper Kitchen Shutters"
@@ -251,7 +251,7 @@
 	},
 /area/bigredv2/caves_lambda)
 "aM" = (
-/turf/closed/wall/r_wall,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/e)
 "aN" = (
 /turf/open/mars_cave{
@@ -745,7 +745,7 @@
 	},
 /area/bigredv2/outside/se)
 "cR" = (
-/turf/closed/wall/rock/red,
+/turf/closed/wall/solaris/rock,
 /area/bigredv2/outside/se)
 "cS" = (
 /turf/open/mars{
@@ -766,7 +766,7 @@
 	},
 /area/bigredv2/caves_east)
 "cV" = (
-/turf/closed/wall/r_wall/unmeltable,
+/turf/closed/wall/solaris/reinforced/hull,
 /area/bigredv2/outside/se)
 "cW" = (
 /obj/effect/decal/remains/human,

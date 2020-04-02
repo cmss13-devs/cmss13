@@ -669,6 +669,35 @@
 	reinf = 1
 	window_frame = /obj/structure/window_frame/strata/reinforced
 
+//Solaris windows
+
+/obj/structure/window/framed/solaris
+	name = "window"
+	icon = 'icons/turf/walls/solaris/solaris_windows.dmi'
+	icon_state = "solaris_window0"
+	basestate = "solaris_window"
+	desc = "A glass window inside a wall frame."
+	health = 40
+	window_frame = /obj/structure/window_frame/solaris
+
+/obj/structure/window/framed/solaris/reinforced
+	name = "reinforced window"
+	icon_state = "solaris_rwindow0"
+	basestate = "solaris_rwindow"
+	desc = "A glass window. The inside is reinforced with a few tempered matrix rods along the base. It looks rather strong. Might take a few good hits to shatter it."
+	health = 100
+	reinf = 1
+	window_frame = /obj/structure/window_frame/solaris/reinforced
+
+/obj/structure/window/framed/solaris/reinforced/hull
+	desc = "A glass window. Something tells you this one is somehow indestructable."
+	not_damageable = 1
+	not_deconstructable = 1
+	unslashable = TRUE
+	unacidable = TRUE
+	health = 1000000
+
+
 //Prison windows
 
 

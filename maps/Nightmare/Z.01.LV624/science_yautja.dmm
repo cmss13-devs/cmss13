@@ -37,9 +37,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/compound/n)
 "ah" = (
-/turf/closed/gm/dense{
-	icon_state = "wall2"
-	},
+/turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle6)
 "ai" = (
 /obj/structure/window_frame/colony/reinforced,
@@ -428,9 +426,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle9)
 "bh" = (
-/turf/closed/gm/dense{
-	icon_state = "wall2"
-	},
+/turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle9)
 "bi" = (
 /obj/structure/table,

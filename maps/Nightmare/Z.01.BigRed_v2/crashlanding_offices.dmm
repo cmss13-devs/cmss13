@@ -90,7 +90,7 @@
 /turf/open/mars,
 /area/bigredv2/outside/c)
 "ap" = (
-/turf/closed/wall,
+/turf/closed/wall/solaris,
 /area/bigredv2/outside/office_complex)
 "aq" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -108,7 +108,7 @@
 	},
 /area/bigredv2/outside/office_complex)
 "as" = (
-/obj/structure/window/framed/colony,
+/obj/structure/window/framed/solaris,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "Office Complex 1";
 	name = "\improper Office Complex Shutters"
@@ -142,7 +142,7 @@
 	},
 /area/bigredv2/outside/office_complex)
 "ax" = (
-/obj/structure/window_frame/colony,
+/obj/structure/window_frame/solaris,
 /obj/item/shard,
 /turf/open/floor/plating,
 /area/bigredv2/outside/office_complex)
@@ -313,7 +313,7 @@
 	},
 /area/bigredv2/outside/office_complex)
 "aY" = (
-/obj/structure/window/framed/colony,
+/obj/structure/window/framed/solaris,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	dir = 4;
 	id = "Office Complex 1";
@@ -328,7 +328,7 @@
 	},
 /area/bigredv2/outside/office_complex)
 "ba" = (
-/obj/structure/window_frame/colony,
+/obj/structure/window_frame/solaris,
 /obj/item/shard,
 /obj/item/stack/rods,
 /turf/open/floor/plating,
@@ -336,7 +336,7 @@
 "bb" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/vents/pump{
-	dir = 8 
+	dir = 8
 	},
 /obj/item/stack/sheet/metal,
 /turf/open/floor/plating{
@@ -584,7 +584,7 @@
 	},
 /area/bigredv2/outside/office_complex)
 "bN" = (
-/obj/structure/window_frame/colony,
+/obj/structure/window_frame/solaris,
 /obj/item/stack/rods,
 /turf/open/floor/plating,
 /area/bigredv2/outside/office_complex)
@@ -901,7 +901,7 @@
 /obj/structure/table,
 /obj/item/trash/semki,
 /obj/structure/pipes/vents/pump{
-	dir = 4 
+	dir = 4
 	},
 /turf/open/floor{
 	icon_state = "dark"
@@ -973,7 +973,7 @@
 	},
 /area/bigredv2/outside/office_complex)
 "cR" = (
-/obj/structure/window_frame/colony,
+/obj/structure/window_frame/solaris,
 /turf/open/floor/plating,
 /area/bigredv2/outside/office_complex)
 "cS" = (
@@ -1036,7 +1036,7 @@
 /area/bigredv2/outside/c)
 "da" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/closed/wall,
+/turf/closed/wall/solaris,
 /area/bigredv2/outside/office_complex)
 "db" = (
 /obj/effect/decal/cleanable/dirt,
@@ -1411,7 +1411,7 @@
 /area/bigredv2/outside/office_complex)
 "eb" = (
 /obj/structure/pipes/vents/pump{
-	dir = 4 
+	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{

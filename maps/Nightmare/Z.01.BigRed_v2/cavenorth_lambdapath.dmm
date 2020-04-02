@@ -6,7 +6,7 @@
 	},
 /area/bigredv2/caves_north)
 "b" = (
-/turf/closed/wall/rock/red,
+/turf/closed/wall/solaris/rock,
 /area/bigredv2/caves)
 "c" = (
 /turf/open/mars_cave{

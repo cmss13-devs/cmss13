@@ -1476,14 +1476,6 @@
 	tag = "icon-carpet6-2 (WEST)"
 	},
 /area/corsat/gamma/residential/lounge)
-"aeh" = (
-/obj/effect/landmark/resource_node/plasma/hive{
-	node_group = "omega"
-	},
-/turf/open/floor/corsat{
-	icon_state = "plate"
-	},
-/area/corsat/omega/biodome)
 "aei" = (
 /obj/structure/bed,
 /obj/structure/machinery/light{
@@ -1951,14 +1943,6 @@
 	},
 /turf/open/floor/plating,
 /area/corsat/sigma/hangar)
-"afw" = (
-/obj/effect/landmark/resource_node_activator/hive{
-	node_group = "omega"
-	},
-/turf/open/floor/corsat{
-	icon_state = "plate"
-	},
-/area/corsat/omega/biodome)
 "afx" = (
 /obj/structure/bed/chair/comfy/beige{
 	dir = 1
@@ -3893,12 +3877,6 @@
 "akz" = (
 /turf/closed/wall/r_wall/biodome/biodome_unmeltable,
 /area/corsat/sigma/hangar)
-"akA" = (
-/obj/effect/landmark/resource_node/plasma/marine/lz2,
-/turf/open/floor/corsat{
-	icon_state = "cargo"
-	},
-/area/corsat/gamma/cargo)
 "akB" = (
 /turf/closed/wall/biodome,
 /area/corsat/theta/airlock/east)
@@ -4122,18 +4100,6 @@
 /obj/item/device/camera/oldcamera,
 /turf/open/floor/wood,
 /area/corsat/gamma/residential/east)
-"alf" = (
-/obj/effect/landmark/resource_node_activator/landing/lz1,
-/turf/open/floor/corsat{
-	icon_state = "cargo"
-	},
-/area/corsat/gamma/cargo)
-"alg" = (
-/obj/effect/landmark/resource_node/plasma{
-	node_group = "theta"
-	},
-/turf/open/gm/dirt,
-/area/corsat/theta/biodome)
 "alh" = (
 /turf/open/floor/corsat{
 	dir = 1;
@@ -4177,21 +4143,6 @@
 	icon_state = "retrosquares"
 	},
 /area/corsat/gamma/residential)
-"alm" = (
-/obj/effect/landmark/resource_node/plasma/marine/lz2,
-/turf/open/mars_cave{
-	icon_state = "mars_dirt_4";
-	tag = "icon-mars_dirt_4"
-	},
-/area/corsat/sigma/biodome)
-"aln" = (
-/obj/effect/landmark/resource_node/plasma/marine/lz2,
-/turf/open/mars,
-/area/corsat/sigma/biodome)
-"alo" = (
-/obj/effect/landmark/resource_node_activator/landing/lz2,
-/turf/open/mars,
-/area/corsat/sigma/biodome)
 "alp" = (
 /obj/structure/machinery/door_control{
 	id = "GammaAdmin";
@@ -4208,14 +4159,6 @@
 	icon_state = "bluegrey"
 	},
 /area/corsat/gamma/administration)
-"alq" = (
-/obj/effect/landmark/resource_node_activator{
-	node_group = "theta"
-	},
-/turf/open/gm/dirtgrassborder{
-	dir = 4
-	},
-/area/corsat/theta/biodome)
 "alr" = (
 /obj/structure/table/woodentable,
 /obj/item/device/flashlight/lamp/green,
@@ -6321,12 +6264,6 @@
 	icon_state = "browncorner"
 	},
 /area/corsat/sigma/north)
-"arn" = (
-/obj/effect/landmark/resource_node/plasma{
-	node_group = "gamma"
-	},
-/turf/open/snow/layer2,
-/area/corsat/gamma/biodome)
 "aro" = (
 /turf/open/floor/corsat{
 	icon_state = "blue"
@@ -6392,12 +6329,6 @@
 	icon_state = "plate"
 	},
 /area/corsat/emergency_access)
-"arw" = (
-/obj/effect/landmark/resource_node/plasma{
-	node_group = "gamma"
-	},
-/turf/open/snow/layer0,
-/area/corsat/gamma/biodome)
 "arx" = (
 /turf/closed/wall/biodome,
 /area/corsat/gamma/freezer)
@@ -6512,13 +6443,6 @@
 	icon_state = "squareswood"
 	},
 /area/corsat/gamma/rnr/arcade)
-"arS" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/landmark/resource_node/plasma{
-	node_group = "gamma"
-	},
-/turf/open/snow/layer0,
-/area/corsat/gamma/biodome)
 "arT" = (
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
 /obj/structure/flora/bush/ausbushes/var3/leafybush,
@@ -6537,12 +6461,6 @@
 "arW" = (
 /turf/closed/wall/biodome,
 /area/corsat/gamma/residential/lavatory)
-"arX" = (
-/obj/effect/landmark/resource_node/plasma{
-	node_group = "gamma"
-	},
-/turf/open/snow/layer3,
-/area/corsat/gamma/biodome)
 "arY" = (
 /turf/open/floor/corsat{
 	icon_state = "retrosquares"
@@ -6632,12 +6550,6 @@
 /obj/structure/closet/crate/trashcart,
 /turf/open/floor/corsat,
 /area/corsat/sigma/southeast/generator)
-"asl" = (
-/obj/effect/landmark/resource_node_activator{
-	node_group = "gamma"
-	},
-/turf/open/snow/layer0,
-/area/corsat/gamma/biodome)
 "asm" = (
 /turf/closed/wall/biodome,
 /area/corsat/gamma/residential/showers)
@@ -18607,7 +18519,6 @@
 	},
 /area/corsat/sigma/southeast/datalab)
 "aWK" = (
-/obj/item/device/radio/marine,
 /obj/structure/table/woodentable/fancy,
 /turf/open/floor/wood,
 /area/corsat/gamma/administration)
@@ -24632,7 +24543,6 @@
 "blC" = (
 /obj/structure/rack,
 /obj/item/device/flashlight,
-/obj/item/device/radio/marine,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -27430,7 +27340,6 @@
 /obj/structure/machinery/light,
 /obj/structure/rack,
 /obj/item/device/flashlight,
-/obj/item/device/radio/marine,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -28078,8 +27987,6 @@
 /area/corsat/gamma/residential/maint)
 "bwH" = (
 /obj/structure/table/almayer,
-/obj/item/device/radio/marine,
-/obj/item/device/radio/marine,
 /turf/open/floor/corsat{
 	dir = 4;
 	icon_state = "yellow"
@@ -62623,7 +62530,6 @@
 /area/corsat/omega/cargo)
 "uip" = (
 /obj/structure/table/woodentable/fancy,
-/obj/item/device/radio/marine,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "carpet15-15";
@@ -67811,7 +67717,6 @@
 /area/corsat/gamma/biodome)
 "yaD" = (
 /obj/structure/table/reinforced,
-/obj/item/device/radio/marine,
 /turf/open/floor/corsat{
 	icon_state = "purplewhitecorner"
 	},
@@ -74690,7 +74595,7 @@ sWP
 avX
 avX
 avX
-aeh
+avX
 avX
 avX
 avX
@@ -74934,7 +74839,7 @@ azX
 sWP
 avX
 avX
-aeh
+avX
 avX
 avX
 avX
@@ -75422,11 +75327,11 @@ aaa
 aaa
 azX
 sWP
-aeh
 avX
-afw
 avX
-aeh
+avX
+avX
+avX
 avX
 avX
 aFc
@@ -75670,7 +75575,7 @@ sWP
 sWP
 aFc
 avX
-aeh
+avX
 avX
 avX
 avX
@@ -75913,7 +75818,7 @@ aSa
 azX
 azX
 sWP
-aeh
+avX
 avX
 avX
 aFc
@@ -76159,7 +76064,7 @@ aaa
 azX
 sWP
 sWP
-aeh
+avX
 avX
 avX
 avX
@@ -78022,7 +77927,7 @@ aeo
 aeo
 bfc
 bfc
-arX
+beO
 beO
 adX
 beX
@@ -78268,7 +78173,7 @@ beO
 aeo
 aeo
 beO
-arX
+beO
 adX
 aIk
 iQh
@@ -78510,8 +78415,8 @@ aeo
 jdk
 pSo
 oiQ
-arS
-arS
+kIW
+kIW
 epq
 beX
 adX
@@ -78754,7 +78659,7 @@ bfc
 bfc
 aeo
 aeo
-arw
+aIk
 aIk
 aIk
 iQh
@@ -79000,7 +78905,7 @@ bfe
 bfc
 beO
 aeo
-asl
+aIk
 dyK
 egd
 kIW
@@ -79247,7 +79152,7 @@ bfc
 aeo
 aIk
 aIk
-arw
+aIk
 aIk
 uIJ
 aIk
@@ -79491,7 +79396,7 @@ bfm
 bfj
 beO
 aIk
-arw
+aIk
 aIk
 aIk
 uIJ
@@ -79734,11 +79639,11 @@ bfl
 bft
 bff
 bfg
-arw
 aIk
 aIk
 aIk
-arw
+aIk
+aIk
 uIJ
 aIk
 iQh
@@ -79978,11 +79883,11 @@ pwp
 bfh
 bff
 bfg
-arn
+aeo
 aIk
 aIk
 aIk
-arw
+aIk
 beX
 beX
 aIk
@@ -80471,7 +80376,7 @@ beO
 aIk
 aIk
 aIk
-arX
+beO
 beO
 beO
 uIJ
@@ -94022,7 +93927,7 @@ smP
 bdy
 aKm
 aKi
-alg
+aKi
 gtX
 aKi
 aKi
@@ -94270,7 +94175,7 @@ aKi
 aKi
 gtX
 aKi
-alg
+aKi
 aKn
 xsU
 aKt
@@ -94511,7 +94416,7 @@ aKi
 bdU
 bdU
 aKi
-alg
+aKi
 aKi
 gtX
 aKi
@@ -95004,7 +94909,7 @@ aKj
 aKm
 aKi
 gtX
-alg
+aKi
 bel
 aKn
 bdZ
@@ -95245,12 +95150,12 @@ aKl
 aKi
 aKo
 aKh
-alq
+aKh
 bda
 aKi
 gtX
 aKi
-alg
+aKi
 qVs
 aKq
 aKt
@@ -95488,8 +95393,8 @@ bel
 aKi
 aKi
 aKi
-alg
-alg
+aKi
+aKi
 aKi
 aKi
 aKi
@@ -95731,7 +95636,7 @@ aKi
 aKi
 aKi
 aKi
-alg
+aKi
 aKi
 aKi
 aKi
@@ -95858,11 +95763,11 @@ aMG
 alj
 awC
 bJa
-akA
+awF
 feg
 bgt
-akA
-akA
+awF
+awF
 alj
 bqJ
 apI
@@ -96220,7 +96125,7 @@ aKi
 gtX
 aKi
 aKi
-alg
+aKi
 aKi
 bdU
 aKi
@@ -96229,7 +96134,7 @@ aKi
 aKi
 aKi
 aKi
-alg
+aKi
 aKi
 rRR
 aKj
@@ -96348,11 +96253,11 @@ aGn
 alj
 awC
 aAy
-akA
+awF
 aUb
-alf
+awF
 bgt
-akA
+awF
 alj
 bqJ
 apI
@@ -96464,15 +96369,15 @@ bcX
 aKi
 gtX
 qoh
-alg
+aKi
 beS
 aKi
 aKi
-alg
 aKi
 aKi
 aKi
-alg
+aKi
+aKi
 aKp
 aKj
 aKj
@@ -96838,9 +96743,9 @@ alj
 alj
 awC
 bJa
-akA
+awF
 bgt
-akA
+awF
 bgt
 bgt
 alj
@@ -97449,7 +97354,7 @@ aKn
 bdP
 bdP
 aKk
-alg
+aKi
 aKn
 bdP
 bdP
@@ -116980,9 +116885,9 @@ bhn
 bhn
 bhn
 bhn
-alm
+bgn
 bgV
-aln
+aen
 bJE
 bdf
 aJn
@@ -117228,7 +117133,7 @@ bhn
 bhn
 bgu
 aen
-aln
+aen
 bdf
 aJn
 aJx
@@ -117470,9 +117375,9 @@ bgn
 bgn
 bgn
 bhn
-alm
+bgn
 bgv
-alo
+aen
 aen
 bdf
 aJn
@@ -117714,7 +117619,7 @@ bgn
 bgn
 bgn
 bgn
-alm
+bgn
 bgv
 aen
 aen
@@ -117962,7 +117867,7 @@ bgn
 bgu
 aen
 aen
-aln
+aen
 aen
 bdf
 aJn
@@ -118208,7 +118113,7 @@ ajq
 ajq
 ajq
 ajq
-aln
+aen
 bdf
 rLp
 aJx

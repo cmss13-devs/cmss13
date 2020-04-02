@@ -127,16 +127,6 @@
 /obj/structure/machinery/door/window/northright,
 /turf/open/floor/plating,
 /area/prison/research/secret/testing)
-"aan" = (
-/obj/effect/landmark/resource_node/plasma{
-	node_group = "central"
-	},
-/turf/open/floor/prison{
-	tag = "icon-bright_clean2 (SOUTHWEST)";
-	icon_state = "bright_clean2";
-	dir = 10
-	},
-/area/prison/yard)
 "aao" = (
 /obj/effect/decal/warning_stripes{
 	tag = "icon-S";
@@ -1110,16 +1100,6 @@
 	icon_state = "whitepurple"
 	},
 /area/prison/research/secret/bioengineering)
-"aci" = (
-/obj/effect/landmark/resource_node/plasma{
-	node_group = "central"
-	},
-/turf/open/floor/prison{
-	tag = "icon-bright_clean (SOUTHWEST)";
-	icon_state = "bright_clean";
-	dir = 10
-	},
-/area/prison/yard)
 "acj" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 8
@@ -1218,9 +1198,6 @@
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
 	dir = 4
-	},
-/obj/effect/landmark/resource_node/plasma{
-	node_group = "central"
 	},
 /turf/open/floor/prison{
 	tag = "icon-bright_clean2 (SOUTHWEST)";
@@ -1420,17 +1397,6 @@
 	dir = 8
 	},
 /area/prison/research/secret/bioengineering)
-"acU" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
-/obj/effect/landmark/resource_node/plasma{
-	node_group = "central"
-	},
-/turf/open/floor/prison{
-	tag = "icon-bright_clean2 (SOUTHWEST)";
-	icon_state = "bright_clean2";
-	dir = 10
-	},
-/area/prison/yard)
 "acV" = (
 /turf/open/floor/prison{
 	tag = "icon-sterile_white (SOUTHWEST)";
@@ -2063,9 +2029,6 @@
 /area/prison/security/monitoring/maxsec/panopticon)
 "ael" = (
 /obj/structure/flora/bush/ausbushes/ppflowers,
-/obj/effect/landmark/resource_node_activator{
-	node_group = "central"
-	},
 /turf/open/organic/grass,
 /area/prison/yard)
 "aem" = (
@@ -2298,15 +2261,6 @@
 	icon_state = "whitepurplefull"
 	},
 /area/prison/research/secret/containment)
-"aeJ" = (
-/obj/effect/landmark/resource_node/plasma/hive{
-	node_group = "south_sec"
-	},
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "red"
-	},
-/area/prison/cellblock/highsec/south/north)
 "aeK" = (
 /obj/structure/disposaloutlet{
 	dir = 4
@@ -2370,16 +2324,6 @@
 	dir = 4
 	},
 /area/prison/cellblock/maxsec/north)
-"aeS" = (
-/obj/effect/landmark/resource_node/plasma/hive{
-	node_group = "south_sec"
-	},
-/turf/open/floor/prison{
-	tag = "icon-floor_plate (SOUTHWEST)";
-	icon_state = "floor_plate";
-	dir = 10
-	},
-/area/prison/cellblock/highsec/south/north)
 "aeT" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -2652,9 +2596,6 @@
 "afw" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/item/ammo_casing,
-/obj/effect/landmark/resource_node/plasma/hive{
-	node_group = "south_sec"
-	},
 /turf/open/floor/prison,
 /area/prison/cellblock/highsec/south/north)
 "afx" = (
@@ -2673,14 +2614,6 @@
 	dir = 10
 	},
 /area/prison/research/secret/bioengineering)
-"afz" = (
-/obj/effect/landmark/resource_node/plasma/hive{
-	node_group = "south_sec"
-	},
-/turf/open/floor/prison{
-	icon_state = "red"
-	},
-/area/prison/cellblock/highsec/south/north)
 "afA" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
@@ -2754,9 +2687,6 @@
 /area/prison/research/secret/containment)
 "afH" = (
 /obj/effect/alien/weeds/node,
-/obj/effect/landmark/resource_node/plasma/hive{
-	node_group = "south_sec"
-	},
 /turf/open/floor/prison,
 /area/prison/cellblock/highsec/south/north)
 "afI" = (
@@ -2776,15 +2706,6 @@
 	icon_state = "whitepurple"
 	},
 /area/prison/research/secret/bioengineering)
-"afK" = (
-/obj/effect/landmark/resource_node/plasma/hive{
-	node_group = "south_sec"
-	},
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "red"
-	},
-/area/prison/cellblock/highsec/south/north)
 "afL" = (
 /turf/open/floor/prison{
 	dir = 2;
@@ -2896,7 +2817,6 @@
 /turf/open/floor/prison,
 /area/prison/research/secret/testing)
 "afZ" = (
-/obj/effect/landmark/resource_node/plasma/marine/lz2,
 /turf/open/floor/prison,
 /area/prison/research/secret/testing)
 "aga" = (
@@ -3093,15 +3013,6 @@
 	},
 /turf/open/floor/plating,
 /area/prison/cellblock/maxsec/north)
-"agA" = (
-/obj/effect/landmark/resource_node/plasma/hive{
-	node_group = "south_sec"
-	},
-/turf/open/floor/prison{
-	dir = 6;
-	icon_state = "red"
-	},
-/area/prison/cellblock/highsec/south/north)
 "agB" = (
 /obj/structure/pipes/vents/scrubber,
 /obj/structure/disposalpipe/segment{
@@ -3218,16 +3129,6 @@
 	dir = 10
 	},
 /area/prison/cellblock/maxsec/north)
-"agO" = (
-/obj/effect/landmark/resource_node/plasma/hive{
-	node_group = "civres"
-	},
-/turf/open/floor/prison{
-	tag = "icon-sterile_white (SOUTHWEST)";
-	icon_state = "sterile_white";
-	dir = 10
-	},
-/area/prison/residential/central)
 "agP" = (
 /obj/structure/pipes/vents/scrubber{
 	dir = 8
@@ -3519,25 +3420,6 @@
 /obj/structure/machinery/light/small,
 /turf/open/floor/prison,
 /area/prison/cellblock/maxsec/north)
-"ahx" = (
-/obj/effect/decal/siding/wood_siding{
-	icon_state = "wood_siding4"
-	},
-/obj/effect/landmark/resource_node/plasma/hive{
-	node_group = "civres"
-	},
-/turf/open/floor/prison{
-	tag = "icon-sterile_white (SOUTHWEST)";
-	icon_state = "sterile_white";
-	dir = 10
-	},
-/area/prison/residential/central)
-"ahy" = (
-/obj/effect/landmark/resource_node_activator/hive{
-	node_group = "civres"
-	},
-/turf/open/gm/river,
-/area/prison/residential/central)
 "ahz" = (
 /obj/structure/pipes/vents/pump{
 	dir = 8
@@ -3674,25 +3556,6 @@
 	dir = 10
 	},
 /area/prison/residential/south)
-"ahR" = (
-/obj/effect/decal/siding/wood_siding{
-	icon_state = "wood_siding2"
-	},
-/obj/effect/landmark/resource_node/plasma/hive{
-	node_group = "civres"
-	},
-/turf/open/floor/prison{
-	tag = "icon-sterile_white (SOUTHWEST)";
-	icon_state = "sterile_white";
-	dir = 10
-	},
-/area/prison/residential/central)
-"ahS" = (
-/obj/effect/landmark/resource_node_activator/hive{
-	node_group = "south_sec"
-	},
-/turf/open/floor/prison,
-/area/prison/cellblock/highsec/south/north)
 "ahT" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/effect/landmark{
@@ -3700,14 +3563,6 @@
 	},
 /turf/open/floor/plating,
 /area/prison/cellblock/maxsec/north)
-"ahU" = (
-/obj/effect/landmark/resource_node/plasma/marine/lz2,
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "darkpurple2";
-	tag = "icon-darkpurple2 (EAST)"
-	},
-/area/prison/research/secret/containment)
 "ahV" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 5;
@@ -3724,32 +3579,6 @@
 	},
 /turf/open/floor/prison,
 /area/prison/research/secret/containment)
-"ahX" = (
-/obj/effect/landmark/resource_node/plasma/marine/lz2,
-/turf/open/floor/prison{
-	tag = "icon-darkpurple2 (EAST)";
-	icon_state = "darkpurple2";
-	dir = 4
-	},
-/area/prison/research/secret/containment)
-"ahY" = (
-/obj/effect/landmark/resource_node/plasma/hive{
-	node_group = "north_sec"
-	},
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "red"
-	},
-/area/prison/cellblock/highsec/north/south)
-"ahZ" = (
-/obj/effect/landmark/resource_node/plasma/hive{
-	node_group = "north_sec"
-	},
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "red"
-	},
-/area/prison/cellblock/highsec/north/south)
 "aia" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
@@ -3778,15 +3607,6 @@
 	icon_state = "whitepurplefull"
 	},
 /area/prison/research/secret/containment)
-"aic" = (
-/obj/effect/landmark/resource_node/plasma/hive{
-	node_group = "north_sec"
-	},
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "red"
-	},
-/area/prison/cellblock/highsec/north/south)
 "aid" = (
 /obj/structure/pipes/standard/manifold/fourway/hidden/supply,
 /turf/open/floor/prison{
@@ -3827,16 +3647,6 @@
 	tag = "icon-darkpurple2"
 	},
 /area/prison/research/secret)
-"aig" = (
-/obj/effect/landmark/resource_node/plasma/hive{
-	node_group = "north_sec"
-	},
-/turf/open/floor/prison{
-	tag = "icon-floor_plate (SOUTHWEST)";
-	icon_state = "floor_plate";
-	dir = 10
-	},
-/area/prison/cellblock/highsec/north/south)
 "aih" = (
 /turf/open/floor/prison{
 	dir = 5;
@@ -3878,13 +3688,6 @@
 	dir = 10
 	},
 /area/prison/cellblock/maxsec/north)
-"aim" = (
-/obj/structure/catwalk/prison,
-/obj/effect/landmark/resource_node_activator/hive{
-	node_group = "north_sec"
-	},
-/turf/open/floor/plating,
-/area/prison/cellblock/highsec/north/south)
 "ain" = (
 /obj/structure/machinery/light{
 	dir = 8;
@@ -4187,14 +3990,6 @@
 /obj/structure/window/framed/prison/reinforced,
 /turf/open/floor/plating,
 /area/prison/research/secret)
-"aiU" = (
-/obj/effect/landmark/resource_node/plasma/hive{
-	node_group = "north_sec"
-	},
-/turf/open/floor/prison{
-	icon_state = "red"
-	},
-/area/prison/cellblock/highsec/north/south)
 "aiV" = (
 /obj/structure/machinery/crema_switch{
 	id = "crema";
@@ -4466,14 +4261,6 @@
 	},
 /turf/open/floor/plating,
 /area/prison/hanger/research)
-"ajB" = (
-/obj/effect/landmark/resource_node/plasma/marine/lz1,
-/turf/open/floor/prison{
-	tag = "icon-bright_clean (SOUTHWEST)";
-	icon_state = "bright_clean";
-	dir = 10
-	},
-/area/prison/hallway/east)
 "ajC" = (
 /obj/structure/machinery/flasher{
 	id = "suspended_EWN"
@@ -4693,14 +4480,6 @@
 /obj/structure/pipes/vents/pump/on,
 /turf/open/floor/prison,
 /area/prison/research/secret/dissection)
-"akd" = (
-/obj/effect/landmark/resource_node_activator/landing/lz1,
-/turf/open/floor/prison{
-	tag = "icon-bright_clean (SOUTHWEST)";
-	icon_state = "bright_clean";
-	dir = 10
-	},
-/area/prison/hallway/east)
 "ake" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
@@ -4737,15 +4516,6 @@
 	dir = 10
 	},
 /area/prison/research/secret/chemistry)
-"akh" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	tag = "icon-intact-supply (EAST)";
-	icon_state = "intact-supply";
-	dir = 4
-	},
-/obj/effect/landmark/resource_node/plasma/marine/lz1,
-/turf/open/floor/prison,
-/area/prison/hallway/east)
 "aki" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
@@ -4785,12 +4555,6 @@
 	},
 /turf/open/floor/plating,
 /area/prison/cellblock/maxsec/south)
-"akn" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/disposalpipe/segment,
-/obj/effect/landmark/resource_node/plasma/marine/lz1,
-/turf/open/floor/prison,
-/area/prison/hallway/east)
 "ako" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	density = 0;
@@ -4878,14 +4642,6 @@
 	dir = 10
 	},
 /area/prison/cellblock/maxsec/south)
-"aku" = (
-/obj/effect/landmark/resource_node/plasma/marine/lz1,
-/turf/open/floor/prison{
-	tag = "icon-floor_marked (SOUTHWEST)";
-	icon_state = "floor_marked";
-	dir = 10
-	},
-/area/prison/hallway/east)
 "akv" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
@@ -4895,7 +4651,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/effect/landmark/resource_node/plasma/marine/lz1,
 /turf/open/floor/prison{
 	tag = "icon-bright_clean (SOUTHWEST)";
 	icon_state = "bright_clean";
@@ -4907,7 +4662,6 @@
 	dir = 4
 	},
 /obj/structure/pipes/standard/manifold/hidden/supply,
-/obj/effect/landmark/resource_node/plasma/marine/lz1,
 /turf/open/floor/prison{
 	tag = "icon-bright_clean (SOUTHWEST)";
 	icon_state = "bright_clean";
@@ -4945,10 +4699,6 @@
 	dir = 10
 	},
 /area/prison/cellblock/maxsec/south)
-"akz" = (
-/obj/effect/landmark/resource_node_activator/landing/lz2,
-/turf/open/floor/prison,
-/area/prison/research/secret/containment)
 "akA" = (
 /obj/structure/largecrate/random,
 /turf/open/floor/plating,
@@ -5017,7 +4767,6 @@
 /area/prison/residential/central)
 "akJ" = (
 /obj/effect/landmark/corpsespawner/scientist,
-/obj/effect/landmark/resource_node/plasma/marine/lz2,
 /turf/open/floor/prison,
 /area/prison/research/secret/containment)
 "akK" = (
@@ -5032,7 +4781,6 @@
 /area/prison/maintenance/research_medbay)
 "akM" = (
 /obj/structure/pipes/standard/manifold/hidden/supply,
-/obj/effect/landmark/resource_node/plasma/marine/lz2,
 /turf/open/floor/prison,
 /area/prison/research/secret/containment)
 "akN" = (
@@ -5139,13 +4887,6 @@
 	dir = 9
 	},
 /area/prison/research/secret/chemistry)
-"ala" = (
-/obj/effect/landmark/resource_node/plasma/marine/lz2,
-/turf/open/floor/prison{
-	tag = "icon-darkpurple2";
-	icon_state = "darkpurple2"
-	},
-/area/prison/research/secret/containment)
 "alb" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4;
@@ -61636,7 +61377,7 @@ bgc
 bgc
 aoI
 biY
-agO
+beJ
 beJ
 biY
 bnX
@@ -61851,7 +61592,7 @@ biZ
 biZ
 biZ
 biZ
-ahR
+bnY
 bgc
 bgc
 bLY
@@ -62060,7 +61801,7 @@ bLY
 bgc
 aSC
 biZ
-ahy
+biZ
 biZ
 biZ
 bnY
@@ -62482,7 +62223,7 @@ bev
 bev
 bev
 bev
-agO
+beJ
 biZ
 biZ
 biZ
@@ -62695,11 +62436,11 @@ aHt
 bhC
 bhC
 baU
-ahx
 baU
-ahx
 baU
-ahx
+baU
+baU
+baU
 bhC
 bhC
 aHt
@@ -72684,7 +72425,7 @@ bvA
 byC
 bGd
 bvA
-aeS
+bwA
 bBy
 bvC
 bvA
@@ -73273,8 +73014,8 @@ aCg
 aCg
 aCg
 aCg
-aic
-aic
+aCg
+aCg
 aNa
 aOI
 aCl
@@ -73697,7 +73438,7 @@ aEV
 aCl
 aNe
 aGb
-aig
+aGb
 aDS
 aNc
 aES
@@ -73907,12 +73648,12 @@ aIF
 aDR
 aGg
 aCl
-ahY
+aLO
 aGb
 aGb
-aim
+aDS
 aNc
-aiU
+aES
 aCl
 aEO
 aDS
@@ -73953,10 +73694,10 @@ bCg
 bwE
 bvC
 bvA
-aeJ
+byC
 bGh
 bwH
-ahS
+bKs
 bKs
 bvw
 bvA
@@ -74120,11 +73861,11 @@ aJQ
 aGb
 aCl
 aJu
-ahZ
+aLe
 aLg
 aDS
 aNc
-aiU
+aES
 aCl
 aCl
 aCl
@@ -74169,8 +73910,8 @@ byC
 bGj
 bwH
 bIe
-afK
-agA
+bwF
+bxv
 bvA
 bwA
 bwE
@@ -74592,7 +74333,7 @@ bvz
 bEU
 bGk
 bwH
-afz
+bvw
 bvA
 bxk
 bvA
@@ -85167,13 +84908,13 @@ bft
 bgJ
 bhM
 biw
-aci
+aWR
 aWR
 aWR
 biw
 aWR
 bdY
-acU
+biu
 bqd
 aZn
 bfv
@@ -85376,7 +85117,7 @@ bdV
 bfw
 aWR
 bib
-aan
+bgQ
 bku
 bix
 bjj
@@ -85594,7 +85335,7 @@ aWR
 bkd
 blo
 bmB
-aci
+aWR
 bol
 aWR
 bpC
@@ -85807,7 +85548,7 @@ bke
 blp
 bmC
 bnA
-aci
+aWR
 boZ
 bjj
 bqc
@@ -86227,7 +85968,7 @@ bib
 bjk
 aWR
 bln
-aci
+aWR
 blr
 bmE
 aWR
@@ -86437,14 +86178,14 @@ bfw
 aWR
 bib
 bjk
-aci
+aWR
 aWR
 bkg
-aci
+aWR
 aWR
 aWR
 bix
-aci
+aWR
 bgQ
 bqc
 aWR
@@ -86584,7 +86325,7 @@ afo
 afG
 afG
 afX
-ahU
+afG
 agV
 agL
 akJ
@@ -86650,12 +86391,12 @@ bdR
 bfz
 bgK
 bhN
-aci
+aWR
 bjj
 bku
 bjj
 bnC
-aci
+aWR
 bdU
 bgK
 bqd
@@ -86800,7 +86541,7 @@ agn
 agW
 ahC
 ahV
-ala
+afm
 aed
 agL
 agL
@@ -87220,11 +86961,11 @@ afr
 afI
 afI
 afI
-ahX
+afI
 agZ
-akz
+agL
 ahW
-ala
+afm
 aed
 agL
 agL
@@ -99179,7 +98920,7 @@ byj
 btt
 bCS
 bAA
-ajB
+bAA
 bEI
 bFG
 bFG
@@ -99606,7 +99347,7 @@ bAA
 bAA
 bEI
 bFH
-aku
+bFH
 bHU
 bEI
 bJb
@@ -99817,7 +99558,7 @@ bCS
 bAA
 bAA
 bEI
-aku
+bFH
 bFH
 bDM
 bEI
@@ -100027,7 +99768,7 @@ bym
 bBC
 bCS
 bAA
-akd
+bAA
 bEI
 bFI
 bFI
@@ -100452,7 +100193,7 @@ byn
 byn
 byn
 bAM
-akn
+bEB
 bFK
 bCK
 bHW
@@ -100663,7 +100404,7 @@ bAA
 bBC
 bCS
 bEI
-akh
+bDX
 bEI
 bEI
 bEI

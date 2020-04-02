@@ -124,7 +124,6 @@
 	var/ovipositor_cooldown = 0
 	var/queen_ability_cooldown = 0
 	var/egg_amount = 0 //amount of eggs inside the queen
-	var/last_larva_time = 0
 	var/screech_sound_effect = 'sound/voice/alien_queen_screech.ogg' //the noise the Queen makes when she screeches. Done this way for VV purposes.
 	var/egg_planting_range = 3 // in ovipositor queen can plant egg up to this amount of tiles away from her position
 
@@ -203,28 +202,6 @@
 		hive.set_living_xeno_queen(null)
 	return ..()
 
-/mob/living/carbon/Xenomorph/Queen/proc/can_spawn_larva()
-	return loc.z == 1 && hive_datum[hivenumber].stored_larva
-
-/mob/living/carbon/Xenomorph/Queen/proc/spawn_buried_larva(var/mob/xeno_candidate)
-	if(ovipositor && !is_mob_incapacitated(TRUE))
-		if(hive_datum[hivenumber].stored_larva && xeno_candidate)
-			var/mob/living/carbon/Xenomorph/Larva/new_xeno = new /mob/living/carbon/Xenomorph/Larva(loc)
-			new_xeno.visible_message(SPAN_XENODANGER("A larva suddenly burrows out of the ground!"),
-			SPAN_XENODANGER("You burrow out of the ground and awaken from your slumber. For the Hive!"))
-			new_xeno << sound('sound/effects/xeno_newlarva.ogg')
-			if(!ticker.mode.transfer_xeno(xeno_candidate, new_xeno))
-				qdel(new_xeno)
-				return
-
-			to_chat(new_xeno, SPAN_XENOANNOUNCE("You are a xenomorph larva awakened from slumber!"))
-			new_xeno << sound('sound/effects/xeno_newlarva.ogg')
-
-			hive_datum[hivenumber].stored_larva--
-			hive.hive_ui.update_burrowed_larva()
-
-
-
 /mob/living/carbon/Xenomorph/Queen/Life()
 	..()
 
@@ -250,19 +227,6 @@
 						var/obj/item/xeno_egg/newegg = new /obj/item/xeno_egg(loc)
 						newegg.hivenumber = hivenumber
 
-		for(var/mob/living/carbon/Xenomorph/Larva/L in range(1))
-			if(!L.ckey)
-				visible_message(SPAN_XENODANGER("[L] quickly burrows into the ground."))
-				hive_datum[hivenumber].stored_larva++
-				hive.hive_ui.update_burrowed_larva()
-				qdel(L)
-
-		if((last_larva_time + 30 SECONDS) < world.time) // every minute
-			last_larva_time = world.time
-			var/list/players_with_xeno_pref = get_alien_candidates()
-			if(players_with_xeno_pref && players_with_xeno_pref.len && can_spawn_larva())
-				spawn_buried_larva(pick(players_with_xeno_pref))
-
 		// Update vitals for all xenos in the Queen's hive
 		if(hive)
 			hive.hive_ui.update_xeno_vitals()
@@ -272,7 +236,7 @@
 	var/stored_larvae = hive_datum[hivenumber].stored_larva
 	var/xeno_leader_num = hive?.queen_leader_limit - hive?.open_xeno_leader_positions.len
 
-	stat("Burrowed Larvae:", "[stored_larvae]")
+	stat("Pooled Larvae:", "[stored_larvae]")
 	stat("Leaders:", "[xeno_leader_num] / [hive?.queen_leader_limit]")
 	return 1
 

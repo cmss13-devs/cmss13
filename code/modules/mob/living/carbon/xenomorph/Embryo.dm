@@ -228,7 +228,7 @@
 			if(round_statistics && !L.statistic_exempt)
 				round_statistics.track_new_participant(faction, -1) // keep stats sane
 			hive.stored_larva++
-			hive.hive_ui.update_burrowed_larva()
+			hive.hive_ui.update_pooled_larva()
 			qdel(L)
 
 		if(!victim.first_xeno)

@@ -363,6 +363,7 @@
 	var/isSlotOpen = TRUE //Set true for starting alerts only after the hive has reached its full potential
 	var/allowed_nest_distance = 15 //How far away do we allow nests from an ovied Queen. Default 15 tiles.
 	var/obj/effect/alien/resin/special/pylon/core/hive_location = null //Set to ref every time a core is built, for defining the hive location.
+	var/obj/effect/alien/resin/special/pool/spawn_pool = null // Ref to the spawn pool if there is one
 	var/crystal_stored = 0 //How much stockpiled material is stored for the hive to use.
 	var/xenocon_points = 0 //Xeno version of DEFCON
 
@@ -725,10 +726,10 @@
 /datum/hive_status/proc/get_tier_slots()
 	var/list/slots = list(0, 0)
 
-	var/burrowed_factor = min(stored_larva, sqrt(4*stored_larva))
-	burrowed_factor = round(burrowed_factor)
+	var/pooled_factor = min(stored_larva, sqrt(4*stored_larva))
+	pooled_factor = round(pooled_factor)
 
-	var/effective_total = totalXenos.len + burrowed_factor
+	var/effective_total = totalXenos.len + pooled_factor
 
 	// no division by zero here, sir, nope.
 	if(!effective_total)

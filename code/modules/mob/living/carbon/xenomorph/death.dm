@@ -52,7 +52,7 @@
 						new_xeno << sound('sound/effects/xeno_newlarva.ogg')
 
 					hive_datum[hivenumber].stored_larva--
-					hive_datum[hivenumber].hive_ui.update_burrowed_larva()
+					hive_datum[hivenumber].hive_ui.update_pooled_larva()
 
 			if(hive && hive.living_xeno_queen == src)
 				xeno_message(SPAN_XENOANNOUNCE("A sudden tremor ripples through the hive... the Queen has been slain! Vengeance!"),3, hivenumber)
@@ -87,10 +87,10 @@
 		A.acid_damage = 0 //Reset the acid damage
 		A.forceMove(loc)
 
-	// Banished xeno provide a burrowed larva on death to compensate
+	// Banished xeno provide a pooled larva on death to compensate
 	if(banished)
 		hive_datum[hivenumber].stored_larva++
-		hive_datum[hivenumber].hive_ui.update_burrowed_larva()
+		hive_datum[hivenumber].hive_ui.update_pooled_larva()
 
 	if(hardcore)
 		dead_hardcore_xeno_list += src

@@ -85,7 +85,7 @@ Additional game mode variables.
 
 	var/lz_selection_timer = MINUTES_25 //25 minutes in
 	var/round_time_resin = MINUTES_40	//Time for when resin placing is allowed close to LZs
-	var/round_time_burrowed_cutoff = MINUTES_25	//Time for when free burrowed larvae stop spawning.
+	var/round_time_pooled_cutoff = MINUTES_25	//Time for when free pooled larvae stop spawning.
 	var/resin_allow_finished
 
 	var/flags_round_type = NO_FLAGS
@@ -304,15 +304,15 @@ Additional game mode variables.
 
 			if(!new_xeno)
 				hive.stored_larva++
-				hive.hive_ui.update_burrowed_larva()
+				hive.hive_ui.update_pooled_larva()
 				continue  //Looks like we didn't get anyone. Keep going.
 
 			setup_new_xeno(new_xeno)
 
 			xenomorphs += new_xeno
-		else //Out of candidates, fill the xeno hive with burrowed larva
+		else //Out of candidates, fill the xeno hive with pooled larva
 			hive.stored_larva += round((xeno_starting_num - i))
-			hive.hive_ui.update_burrowed_larva()
+			hive.hive_ui.update_pooled_larva()
 			break
 
 
@@ -349,7 +349,6 @@ Additional game mode variables.
 	var/list/available_xenos = list()
 	var/list/available_xenos_non_ssd = list()
 	var/datum/hive_status/hive = hive_datum[XENO_HIVE_NORMAL]
-	var/mob/living/carbon/Xenomorph/Queen/queen = hive.living_xeno_queen
 
 	for(var/mob/living/carbon/Xenomorph/X in living_xeno_list)
 		if(X.z == ADMIN_Z_LEVEL) continue //xenos on admin z level don't count
@@ -357,31 +356,27 @@ Additional game mode variables.
 			if(X.away_timer >= 300) available_xenos_non_ssd += X
 			available_xenos += X
 
-	if(queen && queen.can_spawn_larva() && isnewplayer(xeno_candidate))
-		available_xenos += "buried larva"
+	var/obj/effect/alien/resin/special/pool/SP = hive.spawn_pool
+	if(!isnull(SP) && SP.can_spawn_larva() && isnewplayer(xeno_candidate))
+		available_xenos += "pooled larva"
 
 	if(!available_xenos.len || (instant_join && !available_xenos_non_ssd.len))
-		to_chat(xeno_candidate, SPAN_WARNING("There aren't any available xenomorphs or buried larvae. You can try getting spawned as a chestburster larva by toggling your Xenomorph candidacy in Preferences -> Toggle SpecialRole Candidacy."))
+		to_chat(xeno_candidate, SPAN_WARNING("There aren't any available xenomorphs or pooled larvae. You can try getting spawned as a chestburster larva by toggling your Xenomorph candidacy in Preferences -> Toggle SpecialRole Candidacy."))
 		return 0
 
 	var/mob/living/carbon/Xenomorph/new_xeno
 	if(!instant_join)
 		var/userInput = input("Available Xenomorphs") as null|anything in available_xenos
 
-		if(userInput == "buried larva")
-			if(!queen.ovipositor)
-				to_chat(xeno_candidate, SPAN_WARNING("The queen is not on her ovipositor. Try again later."))
-				return 0
-
-			if(queen.can_spawn_larva()) //check again incase it hit the 1 minute mark between checks
-				if(isnewplayer(xeno_candidate))
-					var/mob/new_player/N = xeno_candidate
-					N.close_spawn_windows()
-				queen.spawn_buried_larva(xeno_candidate)
-				return 1
+		if(userInput == "pooled larva" && SP.can_spawn_larva())
+			if(isnewplayer(xeno_candidate))
+				var/mob/new_player/N = xeno_candidate
+				N.close_spawn_windows()
+			SP.spawn_pooled_larva(xeno_candidate)
+			return TRUE
 
 		if(!isXeno(userInput) || !xeno_candidate)
-			return 0
+			return FALSE
 		new_xeno = userInput
 
 		if(!(new_xeno in living_mob_list) || new_xeno.stat == DEAD)
@@ -479,7 +474,8 @@ Additional game mode variables.
 	to_chat(new_queen, "<B>You should start by building a hive core.</B>")
 	to_chat(new_queen, "Talk in Hivemind using <strong>;</strong> (e.g. ';Hello my children!')")
 
-	new_queen.crystal_stored = XENO_STARTING_CRYSTAL
+	// Xeno ressource collection
+	//new_queen.crystal_stored = XENO_STARTING_CRYSTAL
 	new_queen.update_icons()
 
 /datum/game_mode/proc/transform_xeno(datum/mind/ghost_mind)

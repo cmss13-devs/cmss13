@@ -21,6 +21,9 @@
 	var/obj/effect/alien/resin/special/pylon/P = locate() in A
 	if(!P)
 		A.ceiling = initial(A.ceiling)
+	var/obj/effect/alien/weeds/node/pylon/W = locate() in loc
+	if(W)
+		qdel(W)
 	. = ..()
 
 /obj/effect/alien/resin/special/pylon/examine(mob/user)
@@ -91,3 +94,9 @@
 
 	if(hive_ref)
 		hive_ref.set_hive_location(src, linked_hive.hivenumber)
+
+/obj/effect/alien/resin/special/pylon/core/Dispose()
+	if(linked_hive)
+		linked_hive.hive_location = null
+
+	. = ..()

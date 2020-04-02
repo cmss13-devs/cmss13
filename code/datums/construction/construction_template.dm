@@ -27,6 +27,27 @@
 /datum/construction_template/proc/add_crystal(var/mob/living/carbon/Xenomorph/M)
     if(!istype(M))
         return
+    if(crystals_stored >= crystals_required)
+        to_chat(M, SPAN_WARNING("\The [name] does not require plasma."))
+        return
+    to_chat(M, SPAN_NOTICE("You begin adding \the plasma to \the [name]."))
+    if(!do_after(M, 40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+        return
+    //double-check amount required
+    if(crystals_stored >= crystals_required)
+        to_chat(M, SPAN_WARNING("\The [name] has enough plasma."))
+        return
+    var/amount_to_use = min(M.plasma_stored, (crystals_required - crystals_stored))
+    crystals_stored += amount_to_use
+    M.plasma_stored -= amount_to_use
+    to_chat(M, SPAN_WARNING("\The [name] requires [crystals_required - crystals_stored] more plasma."))
+    check_completion()
+
+// Xeno ressource collection
+/*
+/datum/construction_template/proc/add_crystal(var/mob/living/carbon/Xenomorph/M)
+    if(!istype(M))
+        return
     if(!M.crystal_stored)
         to_chat(M, SPAN_WARNING("You have no [MATERIAL_CRYSTAL] stored."))
         return
@@ -44,7 +65,7 @@
     crystals_stored += amount_to_use
     M.crystal_stored -= amount_to_use
     to_chat(M, SPAN_WARNING("\The [name] requires [crystals_required - crystals_stored] more [MATERIAL_CRYSTAL]."))
-    check_completion()
+    check_completion() */
 
 /datum/construction_template/proc/add_material(var/mob/user, var/obj/item/I)
     if(isStack(I))

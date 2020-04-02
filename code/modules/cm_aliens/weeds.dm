@@ -72,7 +72,7 @@
 		break
 
 	// NO MORE FOOD ON THE TABLE. WE DIE
-	if(!parent)
+	if(!parent || weed_strength > WEED_LEVEL_STANDARD)
 		qdel(src)
 
 /obj/effect/alien/weeds/proc/weed_expand(obj/effect/alien/weeds/node/node)

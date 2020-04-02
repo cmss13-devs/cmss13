@@ -15,8 +15,6 @@ var/global/list/datum/stack_recipe/metal_recipes = list ( \
 	new/datum/stack_recipe("metal barricade", /obj/structure/barricade/metal, 4, time = 40, one_per_turf = 2, on_floor = 1, skill_req = SKILL_CONSTRUCTION_METAL), \
 	new/datum/stack_recipe("handrail", /obj/structure/barricade/handrail, 2, time = 40, one_per_turf = 2, on_floor = 1, skill_req = SKILL_CONSTRUCTION_METAL), \
 	null, \
-	new/datum/stack_recipe("resource collector", /obj/item/collector, MODULE_METAL_COST, time = 40, skill_req = SKILL_CONSTRUCTION_PLASTEEL), \
-	null, \
 	new/datum/stack_recipe("apc frame", /obj/item/frame/apc, 2), \
 	new/datum/stack_recipe("fire alarm frame", /obj/item/frame/fire_alarm, 2), \
 	null, \

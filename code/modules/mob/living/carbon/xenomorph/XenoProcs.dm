@@ -31,7 +31,8 @@
 	stat("Time:","[worldtime2text()]")
 
 	stat("Plasma:", "[round(plasma_stored)]/[round(plasma_max)]")
-	stat("Plasmagas:", "[round(crystal_stored)]/[round(crystal_max)]")
+	// Xeno ressource collection
+	//stat("Plasmagas:", "[round(crystal_stored)]/[round(crystal_max)]")
 	if(hive && hive.crystal_stored)
 		stat("Hive Plasmagas:", "[hive.crystal_stored]")
 

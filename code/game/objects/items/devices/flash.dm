@@ -29,9 +29,9 @@
 	if(!user || !M)	return	//sanity
 	if(!ishuman(M)) return
 
-	M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been flashed (attempt) with [src.name]  by [user.name] ([user.ckey])</font>")
-	user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used the [src.name] to flash [M.name] ([M.ckey])</font>")
-	msg_admin_attack("[user.name] ([user.ckey]) used the [src.name] to flash [M.name] ([M.ckey]) in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
+	M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been flashed (attempt) with [src.name] by [key_name(user)]</font>")
+	user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used the [src.name] to flash [key_name(M)]</font>")
+	msg_admin_attack("[key_name(user)] used the [src.name] to flash [key_name(M)] in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
 
 	if(!skillcheck(user, SKILL_POLICE, SKILL_POLICE_FLASH))
 		to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
@@ -143,7 +143,7 @@
 
 	// Adds logging if you use it as an AoE flash
 	user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used the [src.name] in hand to flash everyone around him in [src.loc.name] ([src.loc.x],[src.loc.y],[src.loc.z])</font>")
-	msg_admin_attack("[user.name] ([user.ckey]) used the [src.name] to flash everyone around him in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
+	msg_admin_attack("[key_name(user)] used the [src.name] to flash everyone around him in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
 
 	for(var/mob/living/carbon/human/M in oviewers(3, null))
 		if(prob(50))
@@ -152,8 +152,8 @@
 					S.active = 0
 					S.icon_state = "shield0"
 		M.flash_eyes()
-		M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been AoE flashed (attempt) with [src.name] by [user.name] ([user.ckey]) in [src.loc.name] ([src.loc.x],[src.loc.y],[src.loc.z])</font>")
-		msg_admin_attack("[M.name] ([M.ckey]) has been AoE flashed with [src.name] by [user.name] ([user.ckey]) in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
+		M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been AoE flashed (attempt) with [src.name] by [key_name(user)] in [src.loc.name] ([src.loc.x],[src.loc.y],[src.loc.z])</font>")
+		msg_admin_attack("[key_name(M)] has been AoE flashed with [src.name] by [key_name(user)] in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
 
 	return
 

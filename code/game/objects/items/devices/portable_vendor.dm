@@ -153,7 +153,7 @@
 			if(use_points)
 				points -= cost
 
-			purchase_log += "[usr] ([usr.ckey]) bought [L[1]]."
+			purchase_log += "[key_name(usr)] bought [L[1]]."
 
 			playsound(src, "sound/machines/fax.ogg", 5)
 			fabricating = 1

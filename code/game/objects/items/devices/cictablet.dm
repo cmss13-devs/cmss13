@@ -266,7 +266,7 @@
                 input += "<br><br><i>- Sent from my USCM Command Tablet</i>"
 
                 marine_announcement(input)
-                log_announcement("[usr.name] ([usr.ckey]) has announced the following: [input]")
+                log_announcement("[key_name(usr)] has announced the following: [input]")
                 cooldown_message = world.time
 
         if("evacuation_start")

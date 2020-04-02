@@ -41,8 +41,8 @@
 
 	var/s = SPAN_DANGER("[H.name] chews on \his [O.display_name]!")
 	H.visible_message(s, SPAN_DANGER("You chew on your [O.display_name]!"),null, null, CHAT_TYPE_FLUFF_ACTION)
-	H.attack_log += text("\[[time_stamp()]\] <font color='red'>[s] ([H.ckey])</font>")
-	log_attack("[s] ([H.ckey])")
+	H.attack_log += text("\[[time_stamp()]\] <font color='red'>[s] [key_name(H)]</font>")
+	log_attack("[s] [key_name(H)]")
 
 	if(O.take_damage(1,0,1,1,"teeth marks"))
 		H.UpdateDamageIcon()

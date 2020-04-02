@@ -207,8 +207,8 @@
 					if(!(H.species && (H.species.flags & NO_PAIN)))
 						H.emote("scream")
 
-			user.attack_log +="\[[time_stamp()]\] Cremated <b>[M]/[M.ckey]</b>"
-			msg_admin_attack("\[[time_stamp()]\] <b>[user]/[user.ckey]</b> cremated <b>[M]/[M.ckey]</b> in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
+			user.attack_log +="\[[time_stamp()]\] Cremated <b>[key_name(M)]</b>"
+			msg_admin_attack("\[[time_stamp()]\] <b>[key_name(user)]</b> cremated <b>[key_name(M)]</b> in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
 			M.death("cremation", 1)
 			M.ghostize()
 			qdel(M)

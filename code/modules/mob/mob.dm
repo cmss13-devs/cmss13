@@ -467,8 +467,8 @@
 
 		flick_attack_overlay(M, "grab")
 
-		attack_log += "\[[time_stamp()]\]<font color='green'> Grabbed [M.name] ([M.ckey]) </font>"
-		M.attack_log += "\[[time_stamp()]\]<font color='orange'> Grabbed by [name] ([ckey]) </font>"
+		attack_log += "\[[time_stamp()]\]<font color='green'> Grabbed [key_name(M)]</font>"
+		M.attack_log += "\[[time_stamp()]\]<font color='orange'> Grabbed by [key_name(src)]</font>"
 		msg_admin_attack("[key_name(src)] grabbed [key_name(M)] in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
 
 		if(!no_msg)

@@ -64,14 +64,14 @@
 				user.visible_message(SPAN_DANGER("[user] has tightened \his grip on [victim]'s neck!"), null, null, 5)
 				victim.last_damage_source = initial(user.name)
 				victim.last_damage_mob = user
-				victim.attack_log += "\[[time_stamp()]\] <font color='orange'>Has been strangled (kill intent) by [user] ([user.ckey])</font>"
-				user.attack_log += "\[[time_stamp()]\] <font color='red'>Strangled (kill intent) [victim] ([victim.ckey])</font>"
+				victim.attack_log += "\[[time_stamp()]\] <font color='orange'>Has been strangled (kill intent) by [key_name(user)]</font>"
+				user.attack_log += "\[[time_stamp()]\] <font color='red'>Strangled (kill intent) [key_name(victim)]</font>"
 				msg_admin_attack("[key_name(user)] strangled (kill intent) [key_name(victim)] in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
 			if(GRAB_NECK)
 				icon_state = "disarm/kill"
 				user.visible_message(SPAN_WARNING("[user] has reinforced \his grip on [victim] (now neck)!"), null, null, 5)
-				victim.attack_log += "\[[time_stamp()]\] <font color='orange'>Has had their neck grabbed by [user] ([user.ckey])</font>"
-				user.attack_log += "\[[time_stamp()]\] <font color='red'>Grabbed the neck of [victim] ([victim.ckey])</font>"
+				victim.attack_log += "\[[time_stamp()]\] <font color='orange'>Has had their neck grabbed by [key_name(user)]</font>"
+				user.attack_log += "\[[time_stamp()]\] <font color='red'>Grabbed the neck of [key_name(victim)]</font>"
 				msg_admin_attack("[key_name(user)] grabbed the neck of [key_name(victim)] in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
 			if(GRAB_AGGRESSIVE)
 				user.visible_message(SPAN_WARNING("[user] has grabbed [victim] aggressively (now hands)!"), null, null, 5)

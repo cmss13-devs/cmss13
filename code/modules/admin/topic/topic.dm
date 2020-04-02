@@ -1107,7 +1107,7 @@
 			return
 
 		L.revive()
-		message_staff(WRAP_STAFF_LOG(usr, "ahealed [L.name] ([L.ckey]) in [get_area(L)] ([L.x],[L.y],[L.z])."), L.x, L.y, L.z)
+		message_staff(WRAP_STAFF_LOG(usr, "ahealed [key_name(L)] in [get_area(L)] ([L.x],[L.y],[L.z])."), L.x, L.y, L.z)
 
 	else if(href_list["makealien"])
 		if(!check_rights(R_SPAWN))	return
@@ -1246,7 +1246,7 @@
 				return
 
 		X.upgrade_xeno(level)
-		message_admins("[usr.ckey] has changed the maturation level of [X] ([X.ckey]) to [level].")
+		message_admins("[usr.ckey] has changed the maturation level of [key_name(X)] to [level].")
 
 /***************** BEFORE**************
 
@@ -1832,7 +1832,7 @@
 
 	if(href_list["ccmark"]) // CentComm-mark. We want to let all Admins know that something is "Marked", but not let the player know because it's not very RP-friendly.
 		var/mob/ref_person = locate(href_list["ccmark"])
-		var/msg = SPAN_NOTICE("<b>NOTICE: <font color=red>[usr.key]</font> is responding to <font color=red>[ref_person.ckey]/([ref_person])</font>.</b>")
+		var/msg = SPAN_NOTICE("<b>NOTICE: <font color=red>[usr.key]</font> is responding to <font color=red>[key_name(ref_person)]</font>.</b>")
 
 		//send this msg to all admins
 		for(var/client/X in admins)

@@ -835,7 +835,7 @@ and you're good to go.
 			playsound(user, actual_sound, sound_volume, 1)
 			simulate_recoil(2, user)
 			var/obj/item/weapon/gun/revolver/current_revolver = src
-			var/t = "\[[time_stamp()]\] <b>[user]/[user.ckey]</b> committed suicide with <b>[src]</b>" //Log it.
+			var/t = "\[[time_stamp()]\] <b>[key_name(user)]</b> committed suicide with <b>[src]</b>" //Log it.
 			if(istype(current_revolver) && current_revolver.russian_roulette) //If it's a revolver set to Russian Roulette.
 				t += " after playing Russian Roulette"
 				user.apply_damage(projectile_to_fire.damage * 3, projectile_to_fire.ammo.damage_type, "head", used_weapon = "An unlucky pull of the trigger during Russian Roulette!", sharp = 1)

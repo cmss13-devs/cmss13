@@ -149,6 +149,6 @@
 	icon_state = "launcherbtt"
 	active = 0
 
-	msg_admin_attack("[user.name] ([user.ckey]) used the [src.name] to flash everyone in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
+	msg_admin_attack("[key_name(user)] used the [src.name] to flash everyone in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
 	
 	return

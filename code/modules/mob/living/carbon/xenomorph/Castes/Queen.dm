@@ -311,7 +311,7 @@
 		xeno_message("<B>The Queen's will overwhelms your instincts...</B>",3,hivenumber)
 		xeno_message("<B>\""+txt+"\"</B>",3,hivenumber)
 		hive.hive_orders = txt
-		log_hiveorder("[usr.name] ([usr.ckey]) has set the Hive Order to: [txt]")
+		log_hiveorder("[key_name(usr)] has set the Hive Order to: [txt]")
 	else
 		hive.hive_orders = ""
 
@@ -514,8 +514,8 @@
 		visible_message(SPAN_XENODANGER("[src] viciously smashes and wrenches [victim] apart!"), \
 		SPAN_XENODANGER("You suddenly unleash pure anger on [victim], instantly wrenching \him apart!"))
 		emote("roar")
-		attack_log += text("\[[time_stamp()]\] <font color='red'>gibbed [victim.name] ([victim.ckey])</font>")
-		victim.attack_log += text("\[[time_stamp()]\] <font color='orange'>was gibbed by [name] ([ckey])</font>")
+		attack_log += text("\[[time_stamp()]\] <font color='red'>gibbed [key_name(victim)]</font>")
+		victim.attack_log += text("\[[time_stamp()]\] <font color='orange'>was gibbed by [key_name(src)]</font>")
 		victim.gib(initial(name)) //Splut
 		stop_pulling()
 

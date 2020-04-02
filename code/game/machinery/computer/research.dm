@@ -43,7 +43,7 @@
 			chemical_research_data.clearance_level = 1
 
 	visible_message(SPAN_NOTICE("[user] swipes their ID card on the [src], updating the clearance to level [chemical_research_data.clearance_level]."))
-	msg_admin_niche("[user]/([user.ckey]) has updated the research clearance to level [chemical_research_data.clearance_level].")
+	msg_admin_niche("[key_name(user)] has updated the research clearance to level [chemical_research_data.clearance_level].")
 	return
 
 /obj/structure/machinery/computer/research/attack_hand(mob/user as mob)
@@ -91,7 +91,7 @@
 				chemical_research_data.update_credits(cost * -1)
 				chemical_research_data.clearance_level++
 				visible_message(SPAN_NOTICE("Clearance access increased to level [chemical_research_data.clearance_level] for [cost] credits."))
-				msg_admin_niche("[user]/([user.ckey]) traded research credits to upgrade the clearance to level [chemical_research_data.clearance_level].")
+				msg_admin_niche("[key_name(user)] traded research credits to upgrade the clearance to level [chemical_research_data.clearance_level].")
 			else
 				to_chat(usr, SPAN_WARNING("Insufficient funds."))
 		else

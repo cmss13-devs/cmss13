@@ -144,16 +144,16 @@
 			//Logging, including anti-rulebreak logging
 			if(status_flags & XENO_HOST && stat != DEAD)
 				if(istype(buckled, /obj/structure/bed/nest)) //Host was buckled to nest while infected, this is a rule break
-					attack_log += text("\[[time_stamp()]\] <font color='orange'><B>was slashed by [M.name] ([M.ckey]) while they were infected and nested</B></font>")
-					M.attack_log += text("\[[time_stamp()]\] <font color='red'><B>slashed [name] ([ckey]) while they were infected and nested</B></font>")
+					attack_log += text("\[[time_stamp()]\] <font color='orange'><B>was slashed by [key_name(M)] while they were infected and nested</B></font>")
+					M.attack_log += text("\[[time_stamp()]\] <font color='red'><B>slashed [key_name(src)] while they were infected and nested</B></font>")
 					msg_admin_ff("[key_name(M)] slashed [key_name(src)] while they were infected and nested.") //This is a blatant rulebreak, so warn the admins
 				else //Host might be rogue, needs further investigation
-					attack_log += text("\[[time_stamp()]\] <font color='orange'>was slashed by [M.name] ([M.ckey]) while they were infected</font>")
-					M.attack_log += text("\[[time_stamp()]\] <font color='red'>slashed [name] ([ckey]) while they were infected</font>")
+					attack_log += text("\[[time_stamp()]\] <font color='orange'>was slashed by [key_name(M)] while they were infected</font>")
+					M.attack_log += text("\[[time_stamp()]\] <font color='red'>slashed [key_name(src)] while they were infected</font>")
 			else //Normal xenomorph friendship with benefits
-				attack_log += text("\[[time_stamp()]\] <font color='orange'>was slashed by [M.name] ([M.ckey])</font>")
-				M.attack_log += text("\[[time_stamp()]\] <font color='red'>slashed [name] ([ckey])</font>")
-			log_attack("[M.name] ([M.ckey]) slashed [name] ([ckey])")
+				attack_log += text("\[[time_stamp()]\] <font color='orange'>was slashed by [key_name(M)]</font>")
+				M.attack_log += text("\[[time_stamp()]\] <font color='red'>slashed [key_name(src)]</font>")
+			log_attack("[key_name(M)] slashed [key_name(src)]")
 
 			if(isXenoRavager(M))
 				var/mob/living/carbon/Xenomorph/Ravager/R = M
@@ -324,9 +324,9 @@
 			last_damage_mob = M
 			M.visible_message(SPAN_DANGER("[M] slashes [src]!"), \
 			SPAN_DANGER("You slash [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
-			attack_log += text("\[[time_stamp()]\] <font color='orange'>was slashed by [M.name] ([M.ckey])</font>")
-			M.attack_log += text("\[[time_stamp()]\] <font color='red'>slashed [name] ([ckey])</font>")
-			log_attack("[M.name] ([M.ckey]) slashed [name] ([ckey])")
+			attack_log += text("\[[time_stamp()]\] <font color='orange'>was slashed by [key_name(M)]</font>")
+			M.attack_log += text("\[[time_stamp()]\] <font color='red'>slashed [key_name(src)]</font>")
+			log_attack("[key_name(M)] slashed [key_name(src)]")
 
 			playsound(loc, "alien_claw_flesh", 25, 1)
 			apply_damage(damage, BRUTE)

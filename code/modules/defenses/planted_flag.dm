@@ -1,10 +1,11 @@
 #define PLANTED_FLAG_BUFF 3 // CO level aura
-#define PLANTED_FLAG_RANGE 3
+#define PLANTED_FLAG_RANGE 2
 
 /obj/structure/machinery/defenses/planted_flag
 	name = "\improper JIMA planted flag"
 	desc = "A planted flag with the iconic USCM flag plastered all over it, you feel a burst of energy by its mere sight."
 	var/list/effects_placed = list()
+	handheld_type = /obj/item/defenses/handheld/planted_flag
 
 /obj/structure/machinery/defenses/planted_flag/Initialize()
 	. = ..()

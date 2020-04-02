@@ -15,13 +15,6 @@ var/global/list/datum/stack_recipe/metal_recipes = list ( \
 	new/datum/stack_recipe("metal barricade", /obj/structure/barricade/metal, 4, time = 40, one_per_turf = 2, on_floor = 1, skill_req = SKILL_CONSTRUCTION_METAL), \
 	new/datum/stack_recipe("handrail", /obj/structure/barricade/handrail, 2, time = 40, one_per_turf = 2, on_floor = 1, skill_req = SKILL_CONSTRUCTION_METAL), \
 	null, \
-	new/datum/stack_recipe("defense base", /obj/structure/machinery/defensible_frame, DEFENSE_METAL_COST, time = 40, one_per_turf = 1, on_floor = 1, skill_req = SKILL_CONSTRUCTION_PLASTEEL), \
-	new/datum/stack_recipe("normal sentry module", /obj/item/defense_module/sentry, MODULE_METAL_COST, time = 10, skill_req = SKILL_CONSTRUCTION_PLASTEEL), \
-	new/datum/stack_recipe("flamer sentry module", /obj/item/defense_module/sentry_flamer, MODULE_METAL_COST, time = 10, skill_req = SKILL_CONSTRUCTION_PLASTEEL), \
-	new/datum/stack_recipe("planted flag module", /obj/item/defense_module/planted_flag, MODULE_METAL_COST, time = 10, skill_req = SKILL_CONSTRUCTION_PLASTEEL), \
-	new/datum/stack_recipe("bell tower module", /obj/item/defense_module/bell_tower, MODULE_METAL_COST, time = 10, skill_req = SKILL_CONSTRUCTION_PLASTEEL), \
-	new/datum/stack_recipe("tesla coil module", /obj/item/defense_module/tesla_coil, MODULE_METAL_COST, time = 10, skill_req = SKILL_CONSTRUCTION_PLASTEEL), \
-	null, \
 	new/datum/stack_recipe("resource collector", /obj/item/collector, MODULE_METAL_COST, time = 40, skill_req = SKILL_CONSTRUCTION_PLASTEEL), \
 	null, \
 	new/datum/stack_recipe("apc frame", /obj/item/frame/apc, 2), \
@@ -104,8 +97,6 @@ var/global/list/datum/stack_recipe/metal_recipes = list ( \
  */
 var/global/list/datum/stack_recipe/plasteel_recipes = list ( \
 	new/datum/stack_recipe("plasteel barricade", /obj/structure/barricade/plasteel, 5, time = 40, one_per_turf = 1, on_floor = 1, skill_req = SKILL_CONSTRUCTION_PLASTEEL),
-	null, \
-	new/datum/stack_recipe("defense generator", /obj/structure/machinery/generator, GEN_PLASTEEL_COST, time = 40, one_per_turf = 1, on_floor = 1, skill_req = SKILL_CONSTRUCTION_PLASTEEL),
 	null, \
 	new/datum/stack_recipe("plasteel rod", /obj/item/stack/rods/plasteel, 1, 1, 30),
 	new/datum/stack_recipe("metal crate", /obj/structure/closet/crate, 5, time = 50, one_per_turf = 1), \

@@ -7,6 +7,7 @@
 	desc = "A perfected way of producing high-voltage, low-current and high frquency electricity. Minor modifications allow it to only hit hostile targets with a devastating shock."
 	var/list/targets
 	var/last_fired = 0
+	handheld_type = /obj/item/defenses/handheld/tesla_coil
 
 /obj/structure/machinery/defenses/tesla_coil/Initialize()
 	. = ..()

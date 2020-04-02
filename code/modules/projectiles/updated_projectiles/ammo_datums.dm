@@ -987,7 +987,7 @@
 	accuracy_var_low = config.low_proj_variance
 	accuracy_var_high = config.low_proj_variance
 	max_range = config.norm_shell_range
-	damage = config.hlow_hit_damage
+	damage = config.lmed_hit_damage
 	penetration = config.hmed_armor_penetration
 	damage_armor_punch = 0
 	pen_armor_punch = 0
@@ -2033,6 +2033,10 @@
 	
 	// Very hot but burns out quickly
 	new /obj/flamer_fire(T, source, source_mob, 20, 35, "blue", fire_spread_amount = 2)
+
+/datum/ammo/flamethrower/sentry_flamer
+	iff_signal = ACCESS_IFF_MARINE
+	flags_ammo_behavior = AMMO_INCENDIARY|AMMO_IGNORE_ARMOR|AMMO_SKIPS_HUMANS
 
 /datum/ammo/flamethrower/sentry_flamer/New()
 	..()

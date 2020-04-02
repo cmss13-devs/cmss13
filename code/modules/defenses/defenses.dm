@@ -12,19 +12,15 @@
 	health = 200
 	var/belonging_to_faction = list(FACTION_MARINE)
 	var/health_max = 200
-	var/obj/structure/machinery/generator/gens_in_range = list()
 	var/turned_on = FALSE
 	var/owner_mob = null
 	var/defense_icon = "uac_sentry"
+	var/handheld_type = /obj/item/defenses/handheld
 
 /obj/structure/machinery/defenses/New(var/loc, var/faction)
 	..(loc)
 	if(!isnull(faction))
 		belonging_to_faction = list(faction)
-
-/obj/structure/machinery/defenses/Initialize()
-	..()
-	search_generators()
 
 /obj/structure/machinery/defenses/update_icon()
 	if(turned_on)
@@ -36,47 +32,38 @@
 	if(stat == DEFENSE_DAMAGED)
 		return FALSE
 
-	for(var/obj/structure/machinery/generator/G in gens_in_range)
-		if(G && G.turned_on)
-			turned_on = TRUE
-			power_on_action()
-			update_icon()
-			return TRUE
-	
-	turned_on = FALSE
-	power_off_action()
-	visible_message(SPAN_NOTICE("[src] is lacking a nearby turned on generator."), null, 5)
+	turned_on = TRUE
+	power_on_action()
 	update_icon()
-	return FALSE
 
 /obj/structure/machinery/defenses/proc/power_off()
 	turned_on = FALSE
 	power_off_action()
 	update_icon()
 
-/obj/structure/machinery/defenses/proc/search_generators()
-	gens_in_range = list()
-	for(var/obj/structure/machinery/generator/G in orange(GEN_SEARCH_RANGE))
-		if(G && G.anchored)
-			G.add_defense(src)
-			add_generator(G)
-	if(!length(gens_in_range))
-		power_off()
-
-/obj/structure/machinery/defenses/proc/remove_from_gens()
-	for(var/obj/structure/machinery/generator/G in gens_in_range)
-		G.remove_defense(src)
-
-/obj/structure/machinery/defenses/proc/add_generator(var/obj/structure/machinery/generator/G)
-	gens_in_range += G
-
-/obj/structure/machinery/defenses/proc/remove_generator(var/obj/structure/machinery/generator/G)
-	gens_in_range -= G
-	if(!length(gens_in_range))
-		power_off()
-
 /obj/structure/machinery/defenses/attackby(var/obj/item/O as obj, mob/user as mob)
 	if(isnull(O)) 
+		return
+
+	if(ismultitool(O))
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_METAL))
+			to_chat(user, SPAN_WARNING("You don't have the training to do this."))
+			return
+
+		if(health < health_max)
+			to_chat(user, SPAN_WARNING("[src] is too damaged to disassemble. Repair it with a welder first."))
+			return
+
+		user.visible_message(SPAN_NOTICE("[user] begins disassembling [src]."), SPAN_NOTICE("You begin disassembling [src]."))
+
+		if(!do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
+			return
+		
+		user.visible_message(SPAN_NOTICE("[user] disassembles [src]."), SPAN_NOTICE("You disassemble [src]."))
+
+		new handheld_type(loc)
+		playsound(loc, 'sound/mecha/mechmove04.ogg', 30, 1)
+		qdel(src)
 		return
 
 	if(iswrench(O))
@@ -93,8 +80,6 @@
 			user.visible_message(SPAN_NOTICE("[user] unanchors [src] from the ground."),
 			SPAN_NOTICE("You unanchor [src] from the ground."))
 			anchored = FALSE
-			remove_from_gens()
-			gens_in_range = list()
 			playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 			return
 		else
@@ -106,7 +91,6 @@
 			user.visible_message(SPAN_NOTICE("[user] secures [src] to the ground."),
 			SPAN_NOTICE("You secure [src] to the ground."))
 			anchored = TRUE
-			search_generators()
 			playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 			return
 
@@ -132,7 +116,7 @@
 				playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
 		return
 
-	return TRUE
+	..()
 
 /obj/structure/machinery/defenses/attack_hand(var/mob/user)
 	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_PLASTEEL))
@@ -143,7 +127,7 @@
 		to_chat(user, SPAN_WARNING("You punch [src] but nothing happens."))
 		return
 		
-	src.add_fingerprint(user)
+	add_fingerprint(user)
 
 	if(!anchored)
 		to_chat(user, SPAN_WARNING("It must be anchored to the ground before you can activate it."))
@@ -233,9 +217,7 @@
 	return
 
 /obj/structure/machinery/defenses/Dispose()
-	if(gens_in_range)
-		remove_from_gens()
-		gens_in_range = null
 	if(owner_mob)
 		owner_mob = null
+
 	. = ..()

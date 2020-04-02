@@ -720,13 +720,13 @@
 	},
 /area/almayer/squads/bravo)
 "abU" = (
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 1
+	},
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "orange";
 	tag = "icon-orange (WEST)"
-	},
-/obj/structure/pipes/standard/manifold/hidden/supply{
-	dir = 1
 	},
 /turf/open/floor/almayer,
 /area/almayer/engineering/engineering_workshop)
@@ -27088,7 +27088,6 @@
 /area/almayer/medical/operating_room_four)
 "bDD" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	dir = 4;
 	name = "\improper Tanker's Room"
 	},
 /turf/open/floor/almayer{
@@ -27875,8 +27874,6 @@
 	opacity = 0
 	},
 /obj/structure/machinery/door/window/westright{
-	dir = 8;
-	req_access = null;
 	req_one_access = list(2,7)
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer,
@@ -32421,8 +32418,7 @@
 	pixel_x = 7
 	},
 /obj/item/storage/firstaid/fire{
-	pixel_x = -6;
-	pixel_y = 0
+	pixel_x = -6
 	},
 /turf/open/floor/almayer{
 	dir = 1;
@@ -39567,6 +39563,15 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/living/briefing)
+"dmE" = (
+/obj/structure/rack,
+/obj/item/mortar_shell/incendiary,
+/obj/item/mortar_shell/incendiary,
+/turf/open/floor/almayer{
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
+	},
+/area/almayer/squads/req)
 "dnx" = (
 /obj/structure/machinery/portable_atmospherics/hydroponics,
 /obj/structure/machinery/light,
@@ -42192,9 +42197,8 @@
 /area/almayer/squads/req)
 "gwW" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
-	tag = "icon-intact-supply (EAST)";
-	icon_state = "intact-supply";
-	dir = 4
+	dir = 4;
+	tag = "icon-intact-supply (EAST)"
 	},
 /turf/open/floor/almayer,
 /area/almayer/engineering/engineering_workshop/hangar)
@@ -43035,6 +43039,15 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/living/captain_mess)
+"hAc" = (
+/obj/structure/rack,
+/obj/item/mortar_shell/flare,
+/obj/item/mortar_shell/flare,
+/turf/open/floor/almayer{
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
+	},
+/area/almayer/squads/req)
 "hAq" = (
 /obj/structure/machinery/conveyor_switch{
 	id = "gym_1";
@@ -43053,6 +43066,14 @@
 	tag = "icon-sterile_green_side (WEST)"
 	},
 /area/almayer/shipboard/brig)
+"hBz" = (
+/obj/item/mortar_kit,
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating";
+	tag = "icon-blue (NORTHEAST)"
+	},
+/area/almayer/squads/req)
 "hCo" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4;
@@ -43454,9 +43475,8 @@
 	tag = "icon-N"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
-	tag = "icon-intact-supply (EAST)";
-	icon_state = "intact-supply";
-	dir = 4
+	dir = 4;
+	tag = "icon-intact-supply (EAST)"
 	},
 /turf/open/floor/almayer{
 	dir = 5;
@@ -44230,7 +44250,6 @@
 /area/almayer/powered)
 "jgl" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	dir = 4;
 	name = "Bathroom"
 	},
 /turf/open/floor/almayer,
@@ -45604,9 +45623,8 @@
 	tag = "icon-SW-out"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
-	tag = "icon-intact-supply (EAST)";
-	icon_state = "intact-supply";
-	dir = 4
+	dir = 4;
+	tag = "icon-intact-supply (EAST)"
 	},
 /obj/structure/machinery/door/airlock/almayer/maint{
 	name = "\improper Storage Room"
@@ -46304,7 +46322,6 @@
 "lJa" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 5;
-	icon_state = "intact-supply";
 	tag = "icon-intact-supply (EAST)"
 	},
 /turf/open/floor/plating/plating_catwalk,
@@ -47591,6 +47608,15 @@
 	tag = "icon-sterile_green_side (WEST)"
 	},
 /area/almayer/medical/lower_medical)
+"ngw" = (
+/obj/structure/rack,
+/obj/item/mortar_shell/frag,
+/obj/item/mortar_shell/frag,
+/turf/open/floor/almayer{
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
+	},
+/area/almayer/squads/req)
 "ngA" = (
 /obj/structure/machinery/power/apc/almayer{
 	dir = 4
@@ -49114,9 +49140,8 @@
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/pipes/standard/simple/hidden/supply{
-	tag = "icon-intact-supply (EAST)";
-	icon_state = "intact-supply";
-	dir = 4
+	dir = 4;
+	tag = "icon-intact-supply (EAST)"
 	},
 /turf/open/floor/almayer,
 /area/almayer/engineering/engineering_workshop/hangar)
@@ -49720,9 +49745,8 @@
 /area/almayer/command/cic)
 "pVX" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
-	tag = "icon-intact-supply (EAST)";
-	icon_state = "intact-supply";
-	dir = 4
+	dir = 4;
+	tag = "icon-intact-supply (EAST)"
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/engineering/engineering_workshop/hangar)
@@ -51737,9 +51761,8 @@
 /area/almayer/hallways/starboard_hallway)
 "ssz" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
-	tag = "icon-map-supply (EAST)";
-	icon_state = "map-supply";
-	dir = 4
+	dir = 4;
+	tag = "icon-map-supply (EAST)"
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/engineering/engineering_workshop/hangar)
@@ -52545,9 +52568,8 @@
 /area/almayer/medical/containment/cell)
 "tpp" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
-	tag = "icon-intact-supply (NORTHWEST)";
-	icon_state = "intact-supply";
-	dir = 9
+	dir = 9;
+	tag = "icon-intact-supply (NORTHWEST)"
 	},
 /turf/open/floor/almayer,
 /area/almayer/engineering/engineering_workshop/hangar)
@@ -56089,6 +56111,15 @@
 	tag = "icon-wall4"
 	},
 /area/almayer/evacuation/pod17)
+"xId" = (
+/obj/structure/rack,
+/obj/item/mortar_shell/he,
+/obj/item/mortar_shell/he,
+/turf/open/floor/almayer{
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
+	},
+/area/almayer/squads/req)
 "xIs" = (
 /obj/structure/machinery/vending/wallmed1{
 	pixel_y = 25
@@ -98486,7 +98517,7 @@ bdl
 bEi
 bZr
 bmD
-bNP
+ngw
 pjG
 boz
 bpR
@@ -98689,7 +98720,7 @@ bdl
 brp
 bZr
 bmD
-bNP
+xId
 pjG
 boz
 bpR
@@ -98892,7 +98923,7 @@ bdl
 bEl
 wup
 bmD
-bmD
+hBz
 pjG
 boA
 bpR
@@ -99095,7 +99126,7 @@ bdl
 buz
 bZr
 bmD
-bNP
+dmE
 pjG
 boz
 bpR
@@ -99298,7 +99329,7 @@ bdl
 bEm
 bZr
 bmD
-bNP
+hAc
 pjG
 boz
 bpR

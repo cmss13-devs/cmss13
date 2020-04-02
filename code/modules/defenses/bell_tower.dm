@@ -1,9 +1,13 @@
-#define BELL_TOWER_RANGE 1
+#define BELL_TOWER_RANGE 2
+#define BELL_TOWER_EFFECT 4
 
 /obj/structure/machinery/defenses/bell_tower
 	name = "\improper R-1NG bell tower"
 	desc = "A tactical advanced version of a normal alarm. Designed to trigger an old instinct ingrained in humans when they hear a wake-up alarm, for fast response."
 	var/list/tripwires_placed = list()
+	var/mob/last_mob_activated
+	var/image/flick_image
+	handheld_type = /obj/item/defenses/handheld/bell_tower
 
 /obj/structure/machinery/defenses/bell_tower/Initialize()
 	. = ..()
@@ -45,6 +49,15 @@
 		FE.linked_bell = src
 		tripwires_placed += FE
 
+/obj/structure/machinery/defenses/bell_tower/Dispose()
+	. = ..()
+
+	if(last_mob_activated)
+		last_mob_activated = null
+	if(flick_image)
+		flick_image = null
+	clear_tripwires()
+
 
 /obj/effect/bell_tripwire
 	name = "flag effect"
@@ -54,8 +67,6 @@
 	unacidable = TRUE
 	var/obj/structure/machinery/defenses/bell_tower/linked_bell
 	var/faction = list(FACTION_MARINE)
-	var/mob/last_mob_activated
-	var/image/flick_image
 
 /obj/effect/bell_tripwire/New(var/turf/T, var/faction = null)
 	..(T)
@@ -66,10 +77,6 @@
 	if(linked_bell)
 		linked_bell.tripwires_placed -= src
 		linked_bell = null
-	if(last_mob_activated)
-		last_mob_activated = null
-	if(flick_image)
-		flick_image = null
 	. = ..()
 
 /obj/effect/bell_tripwire/Crossed(var/atom/movable/A)
@@ -80,18 +87,22 @@
 	if(!isXeno(A) && !ishuman(A))
 		return
 
-	if(ishuman(A)) 
-		var/mob/living/carbon/human/H = A
+	var/mob/M = A
+	if(ishuman(M)) 
+		var/mob/living/carbon/human/H = M
 		if(H.faction in faction)
 			return
 	
-	if(last_mob_activated == A)
+	if(linked_bell.last_mob_activated == M)
 		return
-	last_mob_activated = A
-	if(!flick_image)
-		flick_image = image('icons/obj/structures/machinery/defenses.dmi', icon_state = "bell_tower_alert")
-	flick_image.flick_overlay(linked_bell, 11)
-	playsound(src.loc, 'sound/misc/bell.wav', 50, 0, 50)
+	linked_bell.last_mob_activated = M
+	if(!linked_bell.flick_image)
+		linked_bell.flick_image = image('icons/obj/structures/machinery/defenses.dmi', icon_state = "bell_tower_alert")
+	linked_bell.flick_image.flick_overlay(linked_bell, 11)
+	playsound(loc, 'sound/misc/bell.wav', 50, 0, 50)
+	M.AdjustSuperslowed(BELL_TOWER_EFFECT)
+	to_chat(M, SPAN_DANGER("The frequence of the noise slows you down!"))
 
 
 #undef BELL_TOWER_RANGE
+#undef BELL_TOWER_EFFECT

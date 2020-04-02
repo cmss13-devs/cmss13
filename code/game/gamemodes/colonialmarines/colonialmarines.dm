@@ -224,7 +224,7 @@
 				check_win()
 			round_checkwin = 0
 
-		if(ticker.mode.latejoin_larva_drop && world.time >= round_time_burrowed_cutoff)
+		if(ticker.mode.latejoin_larva_drop && world.time >= round_time_pooled_cutoff)
 			ticker.mode.latejoin_larva_drop = LATEJOIN_LARVA_DROP_POST
 
 		if(!(resin_allow_finished) && world.time >= round_time_resin)

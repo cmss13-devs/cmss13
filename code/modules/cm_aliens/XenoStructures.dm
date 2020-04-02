@@ -23,7 +23,6 @@
 	health = 200
 	unacidable = TRUE
 
-
 /obj/effect/alien/resin/proc/healthcheck()
 	if(health <= 0)
 		density = 0

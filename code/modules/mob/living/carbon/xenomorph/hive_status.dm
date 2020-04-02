@@ -73,20 +73,20 @@
 	data["xeno_vitals"] = assoc_hive.get_xeno_vitals()
 
 // Updates how many buried larva there are
-/datum/hive_status_ui/proc/update_burrowed_larva()
-	data["burrowed_larva"] = assoc_hive.stored_larva
+/datum/hive_status_ui/proc/update_pooled_larva()
+	data["pooled_larva"] = assoc_hive.stored_larva
 
-// Updates all data except burrowed larva
+// Updates all data except pooled larva
 /datum/hive_status_ui/proc/update_all_xeno_data()
 	update_xeno_counts()
 	update_xeno_vitals()
 	update_xeno_keys()
 	update_xeno_info()
 
-// Updates all data, including burrowed larva
+// Updates all data, including pooled larva
 /datum/hive_status_ui/proc/update_all_data()
 	update_all_xeno_data()
-	update_burrowed_larva()
+	update_pooled_larva()
 
 /datum/hive_status_ui/proc/open_hive_status(var/mob/user)
 	if(!user)

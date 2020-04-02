@@ -412,7 +412,7 @@
 				left_behind += xeno
 		if(with_queen.len > left_behind.len) // to stop solo-suiciding by queens
 			hive.stored_larva = 0
-			hive.hive_ui.update_burrowed_larva()
+			hive.hive_ui.update_pooled_larva()
 			for(var/mob/living/carbon/Xenomorph/about_to_die in left_behind)
 				to_chat(about_to_die, SPAN_XENOANNOUNCE("The Queen has left without you, you quickly find a hiding place to enter hibernation as you lose touch with the hive mind."))
 				qdel(about_to_die) // just delete them
@@ -427,6 +427,7 @@
 				for(var/mob/living/carbon/Xenomorph/Larva/larva in potential_host)
 					qdel(larva)
 				potential_host.death("larva suicide")
+		qdel(hive.spawn_pool)
 
 	in_transit_time_left = travel_time
 	while(in_transit_time_left>0)

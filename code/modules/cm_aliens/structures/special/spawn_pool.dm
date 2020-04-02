@@ -4,11 +4,10 @@
 	desc = "A pool of primordial goop, reeking of sour smells. Home to many small, wriggling masses."
 	icon_state = "pool"
 	health = 900
-	var/last_spawned = 0
-	var/spawn_cooldown = SECONDS_45
-	var/spawn_buffer = 3 //How many respawns does the pool start with on construction
-	var/spawn_buffer_max = 6 //How many respawns it can store in total at a time
+	var/last_larva_time = 0
+	var/spawn_cooldown = 30 SECONDS
 	var/image/melting_body
+	
 	luminosity = 3
 
 /obj/effect/alien/resin/special/pool/update_icon()
@@ -19,20 +18,18 @@
 		underlays += melting_body
 	underlays += "[icon_state]_underlay"
 	overlays += image(icon, "[icon_state]_overlay", layer = ABOVE_MOB_LAYER)
-	if(spawn_buffer > 0)
+	if(linked_hive.stored_larva)
 		overlays += "[icon_state]_bubbling"
 
 /obj/effect/alien/resin/special/pool/New(loc, var/hive_ref)
-	last_spawned = world.time
+	last_larva_time = world.time
 	..(loc, hive_ref)
+	linked_hive.spawn_pool = src
 
 /obj/effect/alien/resin/special/pool/examine(mob/user)
 	..()
 	if(isXeno(user) || isobserver(user))
-		var/message = "It has [spawn_buffer] more larvae to grow"
-		if(linked_hive)
-			message += ", with [linked_hive.spawn_list.len] minds waiting"
-		message += "."
+		var/message = "It has [linked_hive.stored_larva] more larvae to grow."
 		to_chat(user, message)
 
 /obj/effect/alien/resin/special/pool/attackby(obj/item/I, mob/user)
@@ -53,9 +50,6 @@
 			return
 	if(isXeno(M))
 		return
-	if(spawn_buffer >= spawn_buffer_max)
-		to_chat(user, SPAN_XENOWARNING("\The [src] is already full! Using this one now would be a waste..."))
-		return
 	if(melting_body)
 		to_chat(user, SPAN_XENOWARNING("\The [src] is already processing a host! Using this one now would be a waste..."))
 		return
@@ -71,45 +65,26 @@
 	update_icon()
 	new /obj/effect/overlay/temp/acid_pool_splash(loc)
 	playsound(src, 'sound/effects/slosh.ogg', 25, 1)
-	spawn_buffer += 1
+	linked_hive.stored_larva += 1
 	qdel(M)
 	melt_body()
 
 /obj/effect/alien/resin/special/pool/process()
-	if(!linked_hive || !linked_hive.living_xeno_queen || !linked_hive.spawn_list.len || world.time < (last_spawned + spawn_cooldown) || spawn_buffer <= 0)
+	if(!linked_hive)
 		return
 
-	var/datum/mind/picked_mind = linked_hive.pick_from_spawn_list()
-	if(!picked_mind)
-		return
+	for(var/mob/living/carbon/Xenomorph/Larva/L in range(2, src))
+		if(!L.ckey)
+			visible_message(SPAN_XENODANGER("[L] quickly dives into the pool."))
+			linked_hive.stored_larva++
+			linked_hive.hive_ui.update_pooled_larva()
+			qdel(L)
 
-	var/mind_ckey = picked_mind.ckey
-	if(!directory[mind_ckey])
-		return
-
-	var/client/C = directory[mind_ckey]
-	var/mob/M = C.mob
-	if(isliving(M) && (M.stat != DEAD))
-		linked_hive.spawn_list.Remove(picked_mind)
-		return
-
-	if(isobserver(M))
-		var/mob/dead/observer/ghost = M
-		if((C.admin_holder && (C.admin_holder.rights & R_MOD)) && ghost.adminlarva == 0)
-			linked_hive.spawn_list.Remove(picked_mind)
-			linked_hive.spawn_list.Add(picked_mind)
-			return
-
-	last_spawned = world.time
-	var/mob/living/carbon/Xenomorph/Larva/new_xeno = new(loc)
-	new_xeno.ckey = mind_ckey
-	new_xeno.visible_message(SPAN_DANGER("\The [new_xeno] emerges from \the [src]!"), SPAN_HELPFUL("You emerge from \the [src], reborn!"))
-	playsound(new_xeno, 'sound/effects/xeno_newlarva.ogg', 25, 1)
-	spawn_buffer -= 1
-	linked_hive.spawn_list.Remove(picked_mind)
-	if(spawn_buffer <= 0)
-		visible_message(SPAN_DANGER("\The [src] hisses faintly as it stops bubbling, indicating it requires more matter!"))
-		update_icon()
+	if((last_larva_time + spawn_cooldown) < world.time && can_spawn_larva()) // every minute
+		last_larva_time = world.time
+		var/list/players_with_xeno_pref = get_alien_candidates()
+		if(players_with_xeno_pref && players_with_xeno_pref.len && can_spawn_larva())
+			spawn_pooled_larva(pick(players_with_xeno_pref))
 
 /obj/effect/alien/resin/special/pool/proc/melt_body(var/iterations = 3)
 	if(!melting_body)
@@ -123,3 +98,27 @@
 	else
 		add_timer(CALLBACK(src, /obj/effect/alien/resin/special/pool/proc/melt_body, iterations), SECONDS_2)
 	update_icon()
+
+/obj/effect/alien/resin/special/pool/proc/can_spawn_larva()
+	return linked_hive.stored_larva
+
+/obj/effect/alien/resin/special/pool/proc/spawn_pooled_larva(var/mob/xeno_candidate)
+	if(can_spawn_larva() && xeno_candidate)
+		var/mob/living/carbon/Xenomorph/Larva/new_xeno = new /mob/living/carbon/Xenomorph/Larva(loc)
+		new_xeno.visible_message(SPAN_XENODANGER("A larva suddenly emerges out of from the [src]!"),
+		SPAN_XENODANGER("You emerge out of the [src] and awaken from your slumber. For the Hive!"))
+		playsound(new_xeno, 'sound/effects/xeno_newlarva.ogg', 25, 1)
+		if(!ticker.mode.transfer_xeno(xeno_candidate, new_xeno))
+			qdel(new_xeno)
+			return
+		to_chat(new_xeno, SPAN_XENOANNOUNCE("You are a xenomorph larva awakened from slumber!"))
+		playsound(new_xeno, 'sound/effects/xeno_newlarva.ogg', 25, 1)
+
+		linked_hive.stored_larva--
+		linked_hive.hive_ui.update_pooled_larva()
+
+/obj/effect/alien/resin/special/pool/Dispose()
+	linked_hive.spawn_pool = null
+	melting_body = null
+
+	. = ..()

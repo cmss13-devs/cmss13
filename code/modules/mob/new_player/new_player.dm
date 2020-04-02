@@ -276,7 +276,7 @@
 		for(var/datum/hive_status/hs in hive_datum)
 			if(hs.living_xeno_queen) //Only give larva to hives that actually exist not to throw off the bioscans for dchat
 				hs.stored_larva++
-				hs.hive_ui.update_burrowed_larva()
+				hs.hive_ui.update_pooled_larva()
 
 	if(character.mind && character.mind.player_entity)
 		var/datum/entity/player_entity/player = character.mind.player_entity

@@ -103,10 +103,10 @@
 						if(M.client && M.ckey)
 							potential_queens++
 
-	var/burrowed_factor = min(hive.stored_larva, sqrt(4*hive.stored_larva))
-	burrowed_factor = round(burrowed_factor)
+	var/pooled_factor = min(hive.stored_larva, sqrt(4*hive.stored_larva))
+	pooled_factor = round(pooled_factor)
 
-	var/totalXenos = hive.totalXenos.len + burrowed_factor
+	var/totalXenos = hive.totalXenos.len + pooled_factor
 
 	if(tier == 1 && (((hive.tier_2_xenos.len + hive.tier_3_xenos.len) / totalXenos) * hive.tier_slot_multiplier) >= 0.5 && castepick != "Queen")
 		to_chat(src, SPAN_WARNING("The hive cannot support another Tier 2, wait for either more aliens to be born or someone to die."))

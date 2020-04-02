@@ -2065,7 +2065,6 @@
 /area/lv624/ground/sand2)
 "agE" = (
 /obj/structure/table,
-/obj/item/storage/backpack/marine,
 /obj/item/explosive/grenade/incendiary,
 /turf/open/floor/plating,
 /area/lv624/ground/sand2)
@@ -3005,7 +3004,7 @@
 /obj/structure/fence,
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass,
-/area/lv624/lazarus/landing_zones/lz1)
+/area/space)
 "ajB" = (
 /turf/open/gm/dirtgrassborder{
 	dir = 8;
@@ -5447,12 +5446,6 @@
 /obj/structure/flora/jungle/vines,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle6)
-"aqx" = (
-/obj/effect/landmark/resource_node/plasma{
-	node_group = "central"
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/sand8)
 "aqy" = (
 /obj/effect/landmark{
 	name = "hunter_primary"
@@ -6081,12 +6074,6 @@
 /obj/structure/flora/bush/ausbushes/var3/sunnybush,
 /turf/open/gm/river,
 /area/lv624/ground/river1)
-"asq" = (
-/obj/effect/landmark/resource_node_activator{
-	node_group = "central"
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/sand8)
 "asr" = (
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/dirtgrassborder{
@@ -6157,14 +6144,6 @@
 	icon_state = "dark"
 	},
 /area/lv624/lazarus/quartstorage/outdoors)
-"asB" = (
-/obj/structure/window/framed/colony/reinforced,
-/obj/structure/flora/jungle/vines{
-	icon_state = "light_2";
-	icon_tag = "light"
-	},
-/turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz1)
 "asC" = (
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/coast{
@@ -6233,7 +6212,7 @@
 	pixel_x = 0
 	},
 /turf/open/floor,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/space)
 "asN" = (
 /turf/closed/wall,
 /area/lv624/lazarus/quartstorage)
@@ -8718,7 +8697,7 @@
 	dir = 1;
 	icon_state = "grassdirt_corner"
 	},
-/area/lv624/lazarus/landing_zones/lz2)
+/area/space)
 "azE" = (
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	name = "\improper Robotics Dome";
@@ -8877,7 +8856,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/space)
 "aAa" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /turf/open/gm/grass,
@@ -9132,9 +9111,6 @@
 	},
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle9)
-"aAI" = (
-/turf/open/floor/plating,
-/area/shuttle/drop2/lz2)
 "aAJ" = (
 /obj/structure/machinery/landinglight/ds2/delaytwo{
 	tag = "icon-landingstripe (WEST)";
@@ -9142,7 +9118,7 @@
 	dir = 8
 	},
 /turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/space)
 "aAK" = (
 /obj/structure/flora/jungle/vines/heavy,
 /turf/closed/wall/strata_ice/jungle,
@@ -9732,11 +9708,11 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/space)
 "aCi" = (
 /obj/structure/machinery/camera/autoname/lz_camera,
 /turf/open/floor/plating,
-/area/shuttle/drop2/lz2)
+/area/space)
 "aCj" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /turf/open/gm/grass,
@@ -9800,7 +9776,7 @@
 /turf/open/gm/dirtgrassborder{
 	icon_state = "grassdirt_corner2"
 	},
-/area/lv624/lazarus/landing_zones/lz2)
+/area/space)
 "aCt" = (
 /obj/structure/closet,
 /obj/item/tool/crowbar,
@@ -9927,7 +9903,7 @@
 	pixel_x = -1
 	},
 /turf/open/gm/dirt,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/space)
 "aCJ" = (
 /obj/structure/flora/jungle/vines/heavy{
 	icon_state = "heavy_6";
@@ -10123,13 +10099,6 @@
 	},
 /turf/open/gm/grass,
 /area/lv624/ground/jungle9)
-"aDg" = (
-/obj/structure/machinery/floodlight/landing,
-/turf/open/floor/mech_bay_recharge_floor{
-	luminosity = 0;
-	name = "Shuttle Landing Lights"
-	},
-/area/lv624/lazarus/landing_zones/lz1)
 "aDh" = (
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_2";
@@ -10144,7 +10113,7 @@
 	dir = 1;
 	icon_state = "warning"
 	},
-/area/lv624/lazarus/landing_zones/lz1)
+/area/space)
 "aDj" = (
 /obj/structure/flora/jungle/planttop1,
 /turf/open/gm/river,
@@ -10155,7 +10124,7 @@
 /area/lv624/ground/jungle4)
 "aDl" = (
 /turf/closed/wall/strata_ice/jungle,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/space)
 "aDm" = (
 /obj/effect/landmark{
 	name = "hunter_secondary"
@@ -10226,7 +10195,7 @@
 /area/lv624/lazarus/main_hall)
 "aDv" = (
 /turf/open/gm/dirt,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/space)
 "aDw" = (
 /obj/structure/flora/bush/ausbushes/var3/ywflowers,
 /turf/open/floor/grass,
@@ -10304,45 +10273,45 @@
 	dir = 8;
 	icon_state = "warning"
 	},
-/area/lv624/lazarus/landing_zones/lz1)
+/area/space)
 "aDH" = (
 /obj/effect/decal/warning_stripes,
 /turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz1)
+/area/space)
 "aDI" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo{
 	tag = "icon-landingstripe";
 	icon_state = "landingstripe"
 	},
 /turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz1)
+/area/space)
 "aDJ" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
 	tag = "icon-landingstripe";
 	icon_state = "landingstripe"
 	},
 /turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz1)
+/area/space)
 "aDK" = (
 /obj/structure/machinery/landinglight/ds1{
 	tag = "icon-landingstripe";
 	icon_state = "landingstripe"
 	},
 /turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz1)
+/area/space)
 "aDL" = (
 /obj/structure/machinery/landinglight/ds1/delaythree{
 	tag = "icon-landingstripe";
 	icon_state = "landingstripe"
 	},
 /turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz1)
+/area/space)
 "aDM" = (
 /turf/open/floor{
 	dir = 4;
 	icon_state = "warning"
 	},
-/area/lv624/lazarus/landing_zones/lz1)
+/area/space)
 "aDN" = (
 /obj/structure/flora/jungle/plantbot1,
 /turf/open/gm/river,
@@ -10354,7 +10323,7 @@
 	dir = 8
 	},
 /turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/space)
 "aDP" = (
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_3";
@@ -10389,7 +10358,7 @@
 	icon_state = "asteroidwarning";
 	dir = 10
 	},
-/area/lv624/lazarus/landing_zones/lz2)
+/area/space)
 "aDW" = (
 /obj/structure/machinery/light{
 	icon_state = "tube1";
@@ -10479,7 +10448,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz1)
+/area/space)
 "aEk" = (
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_2";
@@ -10494,7 +10463,7 @@
 	dir = 8
 	},
 /turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz1)
+/area/space)
 "aEm" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /turf/open/gm/grass,
@@ -10537,7 +10506,7 @@
 	dir = 4;
 	icon_state = "grassdirt_corner2"
 	},
-/area/lv624/lazarus/landing_zones/lz2)
+/area/space)
 "aEt" = (
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_3";
@@ -10554,7 +10523,7 @@
 	name = "crap_item"
 	},
 /turf/open/gm/dirt,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/space)
 "aEv" = (
 /obj/structure/flora/grass/tallgrass/jungle,
 /obj/effect/landmark{
@@ -10569,7 +10538,7 @@
 	dir = 1
 	},
 /turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/space)
 "aEx" = (
 /obj/structure/window/framed/colony/reinforced,
 /turf/open/floor/plating,
@@ -11124,9 +11093,6 @@
 	},
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
-"aFI" = (
-/turf/open/gm/grass,
-/area/lv624/lazarus/landing_zones/lz1)
 "aFJ" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 6
@@ -11140,11 +11106,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz1)
-"aFL" = (
-/obj/structure/machinery/camera/autoname/lz_camera,
-/turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz1)
+/area/space)
 "aFM" = (
 /obj/structure/machinery/landinglight/ds1{
 	tag = "icon-landingstripe (WEST)";
@@ -11152,7 +11114,7 @@
 	dir = 8
 	},
 /turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz1)
+/area/space)
 "aFN" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/gm/grass,
@@ -11238,20 +11200,20 @@
 	dir = 9;
 	icon_state = "warning"
 	},
-/area/lv624/lazarus/landing_zones/lz1)
+/area/space)
 "aGb" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "warning"
 	},
-/area/lv624/lazarus/landing_zones/lz1)
+/area/space)
 "aGc" = (
 /turf/open/floor{
 	dir = 5;
 	icon_state = "warning"
 	},
-/area/lv624/lazarus/landing_zones/lz1)
+/area/space)
 "aGd" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 3
@@ -11265,7 +11227,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz1)
+/area/space)
 "aGf" = (
 /obj/structure/machinery/landinglight/ds1/delaythree{
 	tag = "icon-landingstripe (WEST)";
@@ -11273,7 +11235,7 @@
 	dir = 8
 	},
 /turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz1)
+/area/space)
 "aGg" = (
 /obj/structure/flora/bush/ausbushes/var3/ywflowers,
 /turf/open/gm/river,
@@ -11284,7 +11246,7 @@
 	dir = 1;
 	icon_state = "grassdirt_corner2"
 	},
-/area/lv624/lazarus/landing_zones/lz2)
+/area/space)
 "aGi" = (
 /obj/structure/flora/jungle/vines/heavy{
 	icon_state = "heavy_6";
@@ -11410,7 +11372,7 @@
 /area/lv624/lazarus/quartstorage)
 "aGz" = (
 /turf/open/floor,
-/area/lv624/lazarus/landing_zones/lz1)
+/area/space)
 "aGA" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 10
@@ -11424,7 +11386,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz1)
+/area/space)
 "aGC" = (
 /obj/effect/landmark{
 	name = "hunter_secondary"
@@ -11445,7 +11407,7 @@
 	dir = 8
 	},
 /turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz1)
+/area/space)
 "aGF" = (
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_2";
@@ -11495,9 +11457,6 @@
 	dir = 8
 	},
 /area/lv624/ground/sand5)
-"aGM" = (
-/turf/closed/wall/strata_ice/jungle,
-/area/lv624/lazarus/landing_zones/lz1)
 "aGN" = (
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
 /obj/structure/pipes/standard/simple/hidden/cyan,
@@ -11530,17 +11489,17 @@
 	dir = 10;
 	icon_state = "warning"
 	},
-/area/lv624/lazarus/landing_zones/lz1)
+/area/space)
 "aGR" = (
 /turf/open/floor{
 	icon_state = "warningcorner";
 	dir = 1
 	},
-/area/lv624/lazarus/landing_zones/lz1)
+/area/space)
 "aGS" = (
 /obj/structure/machinery/colony_floodlight,
 /turf/open/gm/grass,
-/area/lv624/lazarus/landing_zones/lz1)
+/area/space)
 "aGT" = (
 /obj/structure/flora/bush/ausbushes/grassybush,
 /turf/open/gm/grass,
@@ -11567,7 +11526,7 @@
 	dir = 8
 	},
 /turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/space)
 "aGY" = (
 /obj/structure/fence,
 /turf/open/gm/grass,
@@ -11729,7 +11688,7 @@
 	dir = 8;
 	icon_state = "warning"
 	},
-/area/lv624/lazarus/landing_zones/lz1)
+/area/space)
 "aHs" = (
 /obj/item/tool/crowbar/red,
 /turf/open/floor{
@@ -11737,7 +11696,7 @@
 	icon_state = "warningcorner";
 	dir = 8
 	},
-/area/lv624/lazarus/landing_zones/lz1)
+/area/space)
 "aHt" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/grass,
@@ -11747,7 +11706,7 @@
 	icon_state = "warningcorner";
 	dir = 4
 	},
-/area/lv624/lazarus/landing_zones/lz1)
+/area/space)
 "aHv" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 8
@@ -11849,7 +11808,7 @@
 	icon_state = "bot";
 	dir = 1
 	},
-/area/lv624/lazarus/landing_zones/lz1)
+/area/space)
 "aHN" = (
 /obj/structure/machinery/colony_floodlight,
 /obj/structure/flora/jungle/vines/heavy{
@@ -12113,7 +12072,7 @@
 	icon_state = "loadingarea";
 	tag = "loading"
 	},
-/area/lv624/lazarus/landing_zones/lz1)
+/area/space)
 "aIx" = (
 /obj/structure/flora/bush/ausbushes/ppflowers,
 /turf/open/gm/grass,
@@ -12306,7 +12265,7 @@
 "aIY" = (
 /obj/structure/flora/jungle/vines,
 /turf/closed/wall/strata_ice/jungle,
-/area/lv624/lazarus/landing_zones/lz1)
+/area/space)
 "aIZ" = (
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_3";
@@ -12399,7 +12358,7 @@
 	icon_state = "loadingarea";
 	tag = "loading"
 	},
-/area/lv624/lazarus/landing_zones/lz1)
+/area/space)
 "aJm" = (
 /obj/structure/machinery/light/small{
 	dir = 8
@@ -12559,7 +12518,7 @@
 /turf/open/gm/dirtgrassborder{
 	dir = 4
 	},
-/area/lv624/lazarus/landing_zones/lz2)
+/area/space)
 "aJG" = (
 /obj/item/tool/pickaxe/jackhammer{
 	desc = "Cracks rocks with sonic blasts, perfect for killing cave lizards. This one is dull and nearly useless.";
@@ -12647,7 +12606,7 @@
 /turf/open/gm/dirtgrassborder{
 	dir = 8
 	},
-/area/lv624/lazarus/landing_zones/lz2)
+/area/space)
 "aJP" = (
 /obj/item/stock_parts/scanning_module/phasic,
 /obj/structure/rack,
@@ -12681,13 +12640,13 @@
 	dir = 8;
 	icon_state = "warning"
 	},
-/area/lv624/lazarus/landing_zones/lz1)
+/area/space)
 "aJS" = (
 /obj/effect/landmark{
 	name = "hunter_primary"
 	},
 /turf/open/floor,
-/area/lv624/lazarus/landing_zones/lz1)
+/area/space)
 "aJT" = (
 /obj/effect/decal/warning_stripes,
 /obj/structure/machinery/landinglight/ds1{
@@ -12696,7 +12655,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz1)
+/area/space)
 "aJU" = (
 /obj/effect/decal/warning_stripes,
 /obj/structure/machinery/landinglight/ds1{
@@ -12705,7 +12664,7 @@
 	dir = 8
 	},
 /turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz1)
+/area/space)
 "aJV" = (
 /obj/item/bedsheet/rd,
 /obj/item/toy/bikehorn/rubberducky,
@@ -13068,7 +13027,7 @@
 	name = "crap_item"
 	},
 /turf/open/floor/plating,
-/area/shuttle/drop2/lz2)
+/area/space)
 "aKP" = (
 /obj/structure/machinery/vending/cola,
 /turf/open/floor{
@@ -13339,7 +13298,7 @@
 	name = "2"
 	},
 /turf/open/floor/plating,
-/area/shuttle/drop2/lz2)
+/area/space)
 "aLA" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	dir = 4;
@@ -13671,12 +13630,12 @@
 	dir = 10;
 	icon_state = "warning"
 	},
-/area/lv624/lazarus/landing_zones/lz1)
+/area/space)
 "aMq" = (
 /turf/open/floor{
 	icon_state = "warning"
 	},
-/area/lv624/lazarus/landing_zones/lz1)
+/area/space)
 "aMr" = (
 /obj/effect/landmark/lv624/xeno_tunnel,
 /turf/open/gm/grass,
@@ -14034,7 +13993,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz1)
+/area/space)
 "aNq" = (
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass,
@@ -14518,7 +14477,7 @@
 	dir = 1;
 	icon_state = "asteroidwarning"
 	},
-/area/lv624/lazarus/landing_zones/lz2)
+/area/space)
 "aOC" = (
 /obj/structure/window/reinforced{
 	dir = 4
@@ -15015,7 +14974,7 @@
 	density = 0
 	},
 /turf/open/gm/grass,
-/area/lv624/lazarus/landing_zones/lz1)
+/area/space)
 "aPS" = (
 /obj/structure/flora/tree/jungle/bigtreeBOT,
 /obj/structure/flora/bush/ausbushes/var3/leafybush,
@@ -15422,7 +15381,7 @@
 	name = "1"
 	},
 /turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz1)
+/area/space)
 "aQV" = (
 /obj/effect/decal/remains/xeno,
 /turf/open/gm/grass,
@@ -15509,7 +15468,7 @@
 /area/lv624/lazarus/comms)
 "aRg" = (
 /turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/space)
 "aRh" = (
 /obj/structure/closet/coffin,
 /obj/item/document_objective/folder,
@@ -15597,7 +15556,7 @@
 	dir = 8
 	},
 /turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/space)
 "aRv" = (
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_3";
@@ -15610,7 +15569,7 @@
 /turf/open/gm/dirtgrassborder{
 	dir = 1
 	},
-/area/lv624/lazarus/landing_zones/lz2)
+/area/space)
 "aRy" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 6
@@ -15696,7 +15655,7 @@
 	luminosity = 0;
 	name = "Shuttle Landing Lights"
 	},
-/area/lv624/lazarus/landing_zones/lz2)
+/area/space)
 "aRH" = (
 /obj/structure/table/woodentable/fancy,
 /obj/item/device/megaphone,
@@ -15814,7 +15773,7 @@
 	dir = 1
 	},
 /turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz1)
+/area/space)
 "aSa" = (
 /obj/structure/machinery/landinglight/ds1{
 	tag = "icon-landingstripe (NORTH)";
@@ -15822,7 +15781,7 @@
 	dir = 1
 	},
 /turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz1)
+/area/space)
 "aSb" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
 	tag = "icon-landingstripe (NORTH)";
@@ -15830,7 +15789,7 @@
 	dir = 1
 	},
 /turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz1)
+/area/space)
 "aSc" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo{
 	tag = "icon-landingstripe (NORTH)";
@@ -15838,7 +15797,7 @@
 	dir = 1
 	},
 /turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz1)
+/area/space)
 "aSd" = (
 /obj/structure/bed/chair/office/light{
 	dir = 1
@@ -15970,7 +15929,7 @@
 	dir = 8;
 	icon_state = "grassdirt_corner2"
 	},
-/area/lv624/lazarus/landing_zones/lz2)
+/area/space)
 "aSy" = (
 /obj/structure/bed/chair/wood/wings{
 	icon_state = "wooden_chair_wings";
@@ -16085,9 +16044,6 @@
 /obj/structure/window/framed/colony/reinforced,
 /turf/open/floor/plating,
 /area/lv624/lazarus/engineering)
-"aSO" = (
-/turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz1)
 "aSP" = (
 /turf/open/gm/dirtgrassborder,
 /area/lv624/ground/jungle3)
@@ -16262,7 +16218,7 @@
 	icon_state = "landingstripe"
 	},
 /turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/space)
 "aTu" = (
 /obj/structure/machinery/colony_floodlight_switch{
 	pixel_y = 30
@@ -16277,7 +16233,7 @@
 	icon_state = "landingstripe"
 	},
 /turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/space)
 "aTw" = (
 /obj/structure/window_frame/colony/reinforced,
 /obj/item/shard,
@@ -17045,7 +17001,6 @@
 /area/lv624/ground/compound/se)
 "aVL" = (
 /obj/structure/table,
-/obj/item/storage/belt/marine,
 /obj/item/document_objective/paper,
 /turf/open/floor/plating,
 /area/lv624/ground/sand2)
@@ -17230,9 +17185,6 @@
 	pixel_y = 26
 	},
 /obj/effect/decal/cleanable/cobweb,
-/obj/effect/landmark/resource_node/plasma/hive{
-	node_group = "southwest_jungle"
-	},
 /turf/open/gm/dirt,
 /area/lv624/ground/jungle3)
 "aWl" = (
@@ -17854,9 +17806,6 @@
 /area/lv624/ground/jungle3)
 "aXR" = (
 /obj/structure/flora/jungle/vines/heavy,
-/obj/effect/landmark/resource_node/plasma/hive{
-	node_group = "southwest_jungle"
-	},
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whiteyellowfull"
@@ -17902,7 +17851,7 @@
 /area/lv624/lazarus/engineering)
 "aXX" = (
 /turf/open/gm/grass,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/space)
 "aXY" = (
 /obj/structure/table,
 /obj/item/ashtray/glass,
@@ -18574,7 +18523,7 @@
 "aZP" = (
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/space)
 "aZR" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 1
@@ -18588,7 +18537,7 @@
 	dir = 1
 	},
 /turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/space)
 "aZU" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 1
@@ -19191,7 +19140,7 @@
 	amount = 2
 	},
 /turf/open/floor,
-/area/lv624/lazarus/landing_zones/lz1)
+/area/space)
 "bte" = (
 /obj/effect/landmark{
 	name = "hunter_primary"
@@ -19205,7 +19154,7 @@
 "btF" = (
 /obj/structure/fence,
 /turf/open/gm/grass,
-/area/lv624/lazarus/landing_zones/lz1)
+/area/space)
 "bEX" = (
 /obj/structure/flora/bush/ausbushes/var3/sunnybush,
 /turf/open/gm/grass,
@@ -19229,7 +19178,7 @@
 	req_one_access = list()
 	},
 /turf/open/floor,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/space)
 "bPy" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 10
@@ -19243,11 +19192,7 @@
 	dir = 3
 	},
 /turf/open/gm/grass,
-/area/lv624/lazarus/landing_zones/lz1)
-"ccn" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
-/turf/open/gm/grass,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/space)
 "cfD" = (
 /turf/closed/wall/r_wall/unmeltable,
 /area/lv624/lazarus/quartstorage/outdoors)
@@ -19279,7 +19224,7 @@
 	dir = 1;
 	icon_state = "warning"
 	},
-/area/lv624/lazarus/landing_zones/lz1)
+/area/space)
 "csY" = (
 /obj/structure/flora/bush/ausbushes/ppflowers,
 /turf/open/gm/grass,
@@ -19303,7 +19248,7 @@
 	pixel_x = 0
 	},
 /turf/open/gm/grass,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/space)
 "cPf" = (
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_2";
@@ -19313,10 +19258,6 @@
 	dir = 1
 	},
 /area/lv624/ground/jungle9)
-"cVy" = (
-/obj/structure/fence,
-/turf/open/gm/grass,
-/area/lv624/lazarus/landing_zones/lz2)
 "cXd" = (
 /obj/effect/landmark{
 	name = "monkey_spawn"
@@ -19336,17 +19277,11 @@
 	dir = 9;
 	icon_state = "warning"
 	},
-/area/lv624/lazarus/landing_zones/lz2)
+/area/space)
 "dbY" = (
 /obj/structure/flora/bush/ausbushes/lavendergrass,
 /turf/open/gm/grass,
-/area/lv624/lazarus/landing_zones/lz1)
-"dcH" = (
-/obj/effect/landmark/resource_node_activator/hive{
-	node_group = "west_caves"
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/west1)
+/area/space)
 "ddP" = (
 /obj/effect/landmark{
 	name = "monkey_spawn"
@@ -19364,7 +19299,7 @@
 "dqK" = (
 /obj/structure/flora/bush/ausbushes/var3/ywflowers,
 /turf/open/gm/grass,
-/area/lv624/lazarus/landing_zones/lz1)
+/area/space)
 "dvF" = (
 /obj/structure/flora/bush/ausbushes/pointybush,
 /obj/structure/flora/jungle/vines/heavy{
@@ -19420,7 +19355,7 @@
 	icon_state = "bot";
 	dir = 1
 	},
-/area/lv624/lazarus/landing_zones/lz1)
+/area/space)
 "ebZ" = (
 /obj/structure/flora/bush/ausbushes/ausbush,
 /turf/open/gm/grass,
@@ -19440,7 +19375,7 @@
 	dir = 5;
 	icon_state = "warning"
 	},
-/area/lv624/lazarus/landing_zones/lz2)
+/area/space)
 "eyL" = (
 /obj/structure/flora/bush/ausbushes/var3/sunnybush,
 /turf/open/gm/grass,
@@ -19469,15 +19404,15 @@
 	pixel_x = 0
 	},
 /turf/open/gm/grass,
-/area/lv624/lazarus/landing_zones/lz1)
+/area/space)
 "eHr" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /turf/open/gm/grass,
-/area/lv624/lazarus/landing_zones/lz1)
+/area/space)
 "eQh" = (
 /obj/structure/largecrate/random,
 /turf/open/floor,
-/area/lv624/lazarus/landing_zones/lz1)
+/area/space)
 "eTd" = (
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_2";
@@ -19495,13 +19430,6 @@
 	},
 /turf/open/gm/grass,
 /area/lv624/ground/jungle7)
-"faB" = (
-/obj/structure/flora/jungle/vines/heavy{
-	icon_state = "heavy_6";
-	pixel_x = 0
-	},
-/turf/open/gm/grass,
-/area/lv624/lazarus/landing_zones/lz1)
 "fja" = (
 /obj/item/attachable/bayonet{
 	desc = "A curved blade made of a strange material. It looks both old and very sharp.";
@@ -19536,18 +19464,12 @@
 	dir = 10;
 	icon_state = "warning"
 	},
-/area/lv624/lazarus/landing_zones/lz1)
+/area/space)
 "fFN" = (
 /obj/structure/window_frame/colony/reinforced,
 /obj/structure/foamedmetal,
 /turf/open/floor/plating,
 /area/lv624/lazarus/engineering)
-"fII" = (
-/obj/effect/landmark/resource_node/plasma/hive{
-	node_group = "east_caves"
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/east1)
 "fOT" = (
 /obj/structure/flora/bush/ausbushes/genericbush,
 /turf/open/gm/grass,
@@ -19580,7 +19502,7 @@
 	icon_tag = "light"
 	},
 /turf/open/floor,
-/area/lv624/lazarus/landing_zones/lz1)
+/area/space)
 "gby" = (
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_3";
@@ -19618,7 +19540,7 @@
 	dir = 1;
 	icon_state = "warning"
 	},
-/area/lv624/lazarus/landing_zones/lz2)
+/area/space)
 "gni" = (
 /obj/structure/flora/bush/ausbushes/lavendergrass,
 /turf/open/gm/grass,
@@ -19752,11 +19674,7 @@
 	dir = 9;
 	icon_state = "warning"
 	},
-/area/lv624/lazarus/landing_zones/lz1)
-"hGs" = (
-/obj/effect/landmark/resource_node_activator/landing/lz1,
-/turf/open/gm/dirt,
-/area/lv624/ground/jungle9)
+/area/space)
 "hHc" = (
 /obj/structure/window/framed/colony/reinforced,
 /obj/structure/foamedmetal,
@@ -19768,7 +19686,7 @@
 	icon_tag = "light"
 	},
 /turf/closed/wall/r_wall,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/space)
 "hJn" = (
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_2";
@@ -19778,9 +19696,6 @@
 	icon_state = "grass2"
 	},
 /area/lv624/ground/jungle6)
-"hJv" = (
-/turf/closed/wall/r_wall,
-/area/lv624/lazarus/landing_zones/lz1)
 "hMA" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 6
@@ -19795,7 +19710,7 @@
 	icon_state = "warningcorner";
 	dir = 8
 	},
-/area/lv624/lazarus/landing_zones/lz1)
+/area/space)
 "hSE" = (
 /obj/effect/landmark{
 	name = "monkey_spawn"
@@ -19844,7 +19759,7 @@
 	icon_tag = "light"
 	},
 /turf/open/gm/grass,
-/area/lv624/lazarus/landing_zones/lz1)
+/area/space)
 "iix" = (
 /obj/structure/flora/jungle/vines,
 /turf/open/gm/dirtgrassborder{
@@ -19861,7 +19776,7 @@
 	icon_state = "asteroidwarning";
 	dir = 6
 	},
-/area/lv624/lazarus/landing_zones/lz2)
+/area/space)
 "ivl" = (
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_2";
@@ -19881,29 +19796,16 @@
 	dir = 8;
 	icon_state = "warning"
 	},
-/area/lv624/lazarus/landing_zones/lz1)
+/area/space)
 "iRo" = (
 /obj/structure/flora/bush/ausbushes/var3/leafybush,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle4)
-"iUS" = (
-/obj/effect/landmark/resource_node/plasma/hive{
-	node_group = "southwest_jungle"
-	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
-/area/lv624/ground/jungle3)
 "iZZ" = (
 /obj/effect/landmark/lv624/xeno_tunnel,
 /obj/structure/flora/jungle/vines,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle3)
-"jcP" = (
-/obj/structure/machinery/colony_floodlight,
-/turf/open/gm/grass,
-/area/lv624/lazarus/landing_zones/lz2)
 "jem" = (
 /obj/structure/flora/jungle/vines/heavy{
 	icon_state = "heavy_6";
@@ -19933,7 +19835,7 @@
 	icon_tag = "light"
 	},
 /turf/open/floor,
-/area/lv624/lazarus/landing_zones/lz1)
+/area/space)
 "jqF" = (
 /obj/structure/flora/bush/ausbushes/grassybush,
 /turf/open/gm/grass,
@@ -19941,7 +19843,7 @@
 "jtg" = (
 /obj/structure/flora/bush/ausbushes/var3/leafybush,
 /turf/open/gm/grass,
-/area/lv624/lazarus/landing_zones/lz1)
+/area/space)
 "jwW" = (
 /turf/open/floor/plating{
 	icon_state = "warnplate";
@@ -20025,19 +19927,13 @@
 	icon_state = "warning";
 	dir = 6
 	},
-/area/lv624/lazarus/landing_zones/lz2)
+/area/space)
 "jRA" = (
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass{
 	icon_state = "grass2"
 	},
 /area/lv624/ground/jungle4)
-"jRR" = (
-/obj/effect/landmark/resource_node_activator/hive{
-	node_group = "central_caves"
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/central1)
 "jSg" = (
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_3";
@@ -20051,16 +19947,6 @@
 	},
 /turf/open/gm/grass,
 /area/lv624/ground/jungle7)
-"khg" = (
-/obj/effect/landmark/resource_node/plasma/hive{
-	node_group = "central_caves"
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/central1)
-"kmf" = (
-/obj/effect/landmark/resource_node/plasma/marine/lz2,
-/turf/open/gm/dirt,
-/area/lv624/ground/jungle9)
 "knP" = (
 /obj/structure/flora/bush/ausbushes/var3/leafybush,
 /turf/open/gm/grass,
@@ -20096,7 +19982,7 @@
 	name = "monkey_spawn"
 	},
 /turf/open/gm/grass,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/space)
 "kAl" = (
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass{
@@ -20106,7 +19992,7 @@
 "kFx" = (
 /obj/structure/flora/jungle/plantbot1,
 /turf/open/gm/grass,
-/area/lv624/lazarus/landing_zones/lz1)
+/area/space)
 "kLP" = (
 /obj/structure/flora/jungle/plantbot1,
 /obj/structure/flora/jungle/vines{
@@ -20115,12 +20001,6 @@
 	},
 /turf/open/gm/grass,
 /area/lv624/ground/jungle7)
-"kLR" = (
-/obj/effect/landmark/resource_node/plasma/hive{
-	node_group = "west_caves"
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/west1)
 "kQs" = (
 /obj/effect/landmark{
 	name = "hunter_primary"
@@ -20137,7 +20017,7 @@
 	name = "crap_item"
 	},
 /turf/open/floor,
-/area/lv624/lazarus/landing_zones/lz1)
+/area/space)
 "lkF" = (
 /obj/item/stack/sheet/wood{
 	amount = 2
@@ -20155,13 +20035,7 @@
 	dir = 1;
 	icon_state = "warning"
 	},
-/area/lv624/lazarus/landing_zones/lz1)
-"lkI" = (
-/obj/effect/landmark/resource_node/plasma/hive{
-	node_group = "southwest_caves"
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/west1)
+/area/space)
 "lnV" = (
 /obj/effect/landmark{
 	name = "hunter_primary"
@@ -20244,7 +20118,7 @@
 	dir = 1;
 	icon_state = "warning"
 	},
-/area/lv624/lazarus/landing_zones/lz1)
+/area/space)
 "lUb" = (
 /obj/item/stack/sheet/wood{
 	amount = 2
@@ -20253,7 +20127,7 @@
 	dir = 5;
 	icon_state = "warning"
 	},
-/area/lv624/lazarus/landing_zones/lz2)
+/area/space)
 "lYk" = (
 /obj/structure/flora/bush/ausbushes/ppflowers,
 /turf/open/gm/grass,
@@ -20272,14 +20146,14 @@
 	icon_tag = "light"
 	},
 /turf/open/floor,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/space)
 "lZl" = (
 /obj/structure/largecrate/random,
 /turf/open/floor{
 	icon_state = "bot";
 	dir = 1
 	},
-/area/lv624/lazarus/landing_zones/lz1)
+/area/space)
 "meP" = (
 /obj/structure/flora/bush/ausbushes/var3/ywflowers,
 /turf/open/gm/grass,
@@ -20308,7 +20182,7 @@
 "muv" = (
 /obj/structure/flora/jungle/vines,
 /turf/open/gm/grass,
-/area/lv624/lazarus/landing_zones/lz1)
+/area/space)
 "mxW" = (
 /obj/structure/window/framed/colony/reinforced,
 /obj/structure/flora/jungle/vines{
@@ -20316,7 +20190,7 @@
 	icon_tag = "light"
 	},
 /turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/space)
 "myI" = (
 /obj/effect/landmark{
 	name = "monkey_spawn"
@@ -20353,7 +20227,7 @@
 	},
 /obj/structure/fence,
 /turf/open/gm/grass,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/space)
 "mNH" = (
 /obj/structure/flora/bush/ausbushes/ausbush,
 /turf/open/gm/grass,
@@ -20374,11 +20248,11 @@
 	dir = 1;
 	icon_state = "warning"
 	},
-/area/lv624/lazarus/landing_zones/lz2)
+/area/space)
 "ncq" = (
 /obj/structure/flora/jungle/vines,
 /turf/closed/wall/r_wall,
-/area/lv624/lazarus/landing_zones/lz1)
+/area/space)
 "nhj" = (
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_3";
@@ -20400,14 +20274,14 @@
 	icon_state = "asteroidwarning";
 	dir = 4
 	},
-/area/lv624/lazarus/landing_zones/lz2)
+/area/space)
 "nmO" = (
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_3";
 	icon_tag = "light"
 	},
 /turf/open/gm/grass,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/space)
 "npQ" = (
 /obj/structure/flora/jungle/vines/heavy{
 	icon_state = "heavy_6";
@@ -20421,7 +20295,7 @@
 	layer = 4
 	},
 /turf/open/gm/dirt,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/space)
 "nwR" = (
 /turf/open/floor/plating{
 	icon_state = "warnplate";
@@ -20434,10 +20308,6 @@
 	icon_state = "grass2"
 	},
 /area/lv624/lazarus/atmos/outside)
-"nBH" = (
-/obj/effect/landmark/resource_node_activator/landing/lz2,
-/turf/open/gm/dirt,
-/area/lv624/ground/jungle9)
 "nEd" = (
 /turf/closed/wall/r_wall,
 /area/lv624/lazarus/robotics)
@@ -20449,7 +20319,7 @@
 "nHZ" = (
 /obj/structure/flora/bush/ausbushes/genericbush,
 /turf/open/gm/grass,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/space)
 "nIZ" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	name = "\improper Nexus Dome Canteen";
@@ -20466,24 +20336,17 @@
 	icon_state = "bot";
 	dir = 1
 	},
-/area/lv624/lazarus/landing_zones/lz1)
+/area/space)
 "nLI" = (
 /obj/structure/flora/bush/ausbushes/palebush,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle8)
-"nOi" = (
-/obj/structure/flora/jungle/vines{
-	icon_state = "light_3";
-	icon_tag = "light"
-	},
-/turf/open/gm/grass,
-/area/lv624/lazarus/landing_zones/lz1)
 "nSR" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 5
 	},
 /turf/open/gm/grass,
-/area/lv624/lazarus/landing_zones/lz1)
+/area/space)
 "nTd" = (
 /obj/structure/flora/bush/ausbushes/pointybush,
 /turf/open/gm/grass,
@@ -20561,13 +20424,13 @@
 	dir = 1;
 	icon_state = "loadingarea"
 	},
-/area/lv624/lazarus/landing_zones/lz1)
+/area/space)
 "oSh" = (
 /obj/item/stack/sheet/wood{
 	amount = 2
 	},
 /turf/open/gm/grass,
-/area/lv624/lazarus/landing_zones/lz1)
+/area/space)
 "oTX" = (
 /turf/open/gm/dirtgrassborder,
 /area/lv624/ground/river3)
@@ -20581,7 +20444,7 @@
 	icon_tag = "light"
 	},
 /turf/open/gm/grass,
-/area/lv624/lazarus/landing_zones/lz1)
+/area/space)
 "pas" = (
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/river,
@@ -20602,11 +20465,7 @@
 "phU" = (
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass,
-/area/lv624/lazarus/landing_zones/lz1)
-"pkz" = (
-/obj/effect/landmark/resource_node/plasma/marine/lz1,
-/turf/open/gm/dirt,
-/area/lv624/ground/jungle9)
+/area/space)
 "pnJ" = (
 /obj/structure/flora/bush/ausbushes/genericbush,
 /turf/open/gm/grass,
@@ -20633,7 +20492,7 @@
 	name = "hunter_primary"
 	},
 /turf/open/gm/grass,
-/area/lv624/lazarus/landing_zones/lz1)
+/area/space)
 "pJE" = (
 /obj/structure/flora/bush/ausbushes/var3/ywflowers,
 /turf/open/gm/grass,
@@ -20664,25 +20523,7 @@
 	icon_state = "asteroidwarning";
 	dir = 5
 	},
-/area/lv624/lazarus/landing_zones/lz2)
-"pVd" = (
-/obj/structure/barricade/wooden,
-/obj/structure/flora/jungle/vines/heavy{
-	icon_state = "heavy_6";
-	icon_tag = "heavy";
-	pixel_x = 0
-	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "warning"
-	},
-/area/lv624/lazarus/landing_zones/lz1)
-"qcJ" = (
-/obj/effect/landmark/resource_node_activator/hive{
-	node_group = "east_caves"
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/east1)
+/area/space)
 "qfr" = (
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	density = 1;
@@ -20697,7 +20538,7 @@
 	icon_tag = "light"
 	},
 /turf/open/floor,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/space)
 "qiE" = (
 /obj/structure/flora/bush/ausbushes/var3/ywflowers,
 /turf/open/gm/grass,
@@ -20715,7 +20556,7 @@
 "qBX" = (
 /obj/structure/flora/grass/tallgrass/jungle,
 /turf/open/gm/grass,
-/area/lv624/lazarus/landing_zones/lz1)
+/area/space)
 "qDg" = (
 /obj/structure/barricade/wooden,
 /obj/structure/flora/jungle/vines/heavy{
@@ -20727,7 +20568,7 @@
 	dir = 1;
 	icon_state = "warning"
 	},
-/area/lv624/lazarus/landing_zones/lz2)
+/area/space)
 "qGR" = (
 /obj/structure/foamedmetal,
 /obj/structure/flora/jungle/vines/heavy,
@@ -20779,7 +20620,7 @@
 	pixel_x = 0
 	},
 /turf/open/gm/grass,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/space)
 "rpR" = (
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/floor{
@@ -20820,7 +20661,7 @@
 	dir = 5;
 	icon_state = "warning"
 	},
-/area/lv624/lazarus/landing_zones/lz1)
+/area/space)
 "rFd" = (
 /obj/structure/flora/bush/ausbushes/ausbush,
 /turf/open/gm/grass,
@@ -20836,13 +20677,13 @@
 	icon_tag = "light"
 	},
 /turf/closed/wall/r_wall,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/space)
 "rKQ" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 9
 	},
 /turf/open/gm/grass,
-/area/lv624/lazarus/landing_zones/lz1)
+/area/space)
 "rKR" = (
 /obj/effect/landmark/lv624/xeno_tunnel,
 /obj/structure/flora/jungle/vines{
@@ -20881,7 +20722,7 @@
 	dir = 10
 	},
 /turf/open/gm/grass,
-/area/lv624/lazarus/landing_zones/lz1)
+/area/space)
 "sko" = (
 /obj/structure/flora/bush/ausbushes/ausbush,
 /turf/open/gm/grass,
@@ -20917,7 +20758,7 @@
 "svh" = (
 /obj/structure/flora/bush/ausbushes/grassybush,
 /turf/open/gm/grass,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/space)
 "sFc" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
 /turf/open/gm/river,
@@ -20945,7 +20786,7 @@
 	dir = 9;
 	icon_state = "warning"
 	},
-/area/lv624/lazarus/landing_zones/lz1)
+/area/space)
 "tem" = (
 /obj/structure/machinery/power/geothermal,
 /obj/structure/lattice{
@@ -20990,7 +20831,7 @@
 "ttI" = (
 /obj/structure/flora/jungle/planttop1,
 /turf/open/gm/grass,
-/area/lv624/lazarus/landing_zones/lz1)
+/area/space)
 "tvC" = (
 /obj/structure/flora/bush/ausbushes/palebush,
 /turf/open/gm/dirtgrassborder{
@@ -21015,7 +20856,7 @@
 	dir = 1
 	},
 /turf/open/gm/grass,
-/area/lv624/lazarus/landing_zones/lz1)
+/area/space)
 "tLU" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /obj/structure/flora/jungle/vines{
@@ -21033,12 +20874,6 @@
 	},
 /turf/open/gm/grass,
 /area/lv624/ground/jungle3)
-"tOU" = (
-/obj/effect/landmark/resource_node_activator/hive{
-	node_group = "southwest_caves"
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/west1)
 "tSN" = (
 /obj/structure/flora/bush/ausbushes/var3/ywflowers,
 /turf/open/gm/grass,
@@ -21066,16 +20901,7 @@
 /area/lv624/ground/jungle1)
 "tZD" = (
 /turf/closed/wall/r_wall,
-/area/lv624/lazarus/landing_zones/lz2)
-"ubS" = (
-/obj/effect/landmark/resource_node_activator/hive{
-	node_group = "southwest_jungle"
-	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
-/area/lv624/ground/jungle3)
+/area/space)
 "udM" = (
 /obj/effect/landmark{
 	name = "good_item"
@@ -21105,7 +20931,7 @@
 	icon_state = "asteroidwarning";
 	dir = 8
 	},
-/area/lv624/lazarus/landing_zones/lz2)
+/area/space)
 "uEl" = (
 /obj/structure/flora/jungle/vines/heavy{
 	icon_state = "heavy_6";
@@ -21134,7 +20960,7 @@
 /turf/open/gm/dirtgrassborder{
 	dir = 4
 	},
-/area/lv624/lazarus/landing_zones/lz2)
+/area/space)
 "uSw" = (
 /turf/open/gm/dirtgrassborder{
 	dir = 1;
@@ -21149,7 +20975,7 @@
 	icon_state = "warning";
 	dir = 6
 	},
-/area/lv624/lazarus/landing_zones/lz1)
+/area/space)
 "uVJ" = (
 /turf/open/gm/dirtgrassborder{
 	dir = 8
@@ -21171,7 +20997,7 @@
 	icon_state = "warningcorner";
 	dir = 1
 	},
-/area/lv624/lazarus/landing_zones/lz1)
+/area/space)
 "vfR" = (
 /turf/open/gm/dirtgrassborder{
 	dir = 8;
@@ -21187,23 +21013,6 @@
 	},
 /turf/open/gm/grass,
 /area/lv624/ground/jungle9)
-"vol" = (
-/obj/structure/flora/jungle/vines{
-	icon_state = "light_2";
-	icon_tag = "light"
-	},
-/turf/closed/wall/r_wall,
-/area/lv624/lazarus/landing_zones/lz1)
-"vqv" = (
-/obj/structure/flora/jungle/vines{
-	icon_state = "light_3";
-	icon_tag = "light"
-	},
-/obj/effect/landmark/resource_node/plasma/hive{
-	node_group = "southwest_jungle"
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/jungle3)
 "vxa" = (
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_3";
@@ -21213,7 +21022,7 @@
 	amount = 2
 	},
 /turf/open/gm/grass,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/space)
 "vBe" = (
 /turf/open/gm/dirtgrassborder{
 	dir = 8
@@ -21225,13 +21034,13 @@
 	icon_state = "bot";
 	dir = 1
 	},
-/area/lv624/lazarus/landing_zones/lz1)
+/area/space)
 "vGg" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 6
 	},
 /turf/open/gm/grass,
-/area/lv624/lazarus/landing_zones/lz1)
+/area/space)
 "vHI" = (
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_2";
@@ -21240,13 +21049,6 @@
 	},
 /turf/open/gm/grass,
 /area/lv624/ground/jungle5)
-"vRq" = (
-/obj/structure/flora/jungle/vines{
-	icon_state = "light_2";
-	icon_tag = "light"
-	},
-/turf/open/gm/grass,
-/area/lv624/lazarus/landing_zones/lz2)
 "vVD" = (
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_3";
@@ -21329,11 +21131,7 @@
 	dir = 2;
 	icon_state = "asteroidwarning"
 	},
-/area/lv624/lazarus/landing_zones/lz2)
-"wMQ" = (
-/obj/structure/flora/bush/ausbushes/var3/sunnybush,
-/turf/open/gm/grass,
-/area/lv624/lazarus/landing_zones/lz1)
+/area/space)
 "wNB" = (
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_3";
@@ -21367,15 +21165,7 @@
 "wZc" = (
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
 /turf/open/gm/grass,
-/area/lv624/lazarus/landing_zones/lz2)
-"xeN" = (
-/obj/structure/flora/jungle/vines/heavy{
-	icon_state = "heavy_6";
-	icon_tag = "heavy";
-	pixel_x = 0
-	},
-/turf/open/gm/grass,
-/area/lv624/lazarus/landing_zones/lz1)
+/area/space)
 "xih" = (
 /obj/structure/flora/jungle/vines/heavy{
 	icon_state = "heavy_6";
@@ -21442,29 +21232,10 @@
 	},
 /turf/open/gm/grass,
 /area/lv624/ground/jungle6)
-"xUT" = (
-/obj/structure/flora/jungle/vines/heavy{
-	icon_state = "heavy_6";
-	icon_tag = "heavy";
-	pixel_x = 0;
-	pixel_y = 26
-	},
-/obj/structure/flora/jungle/vines{
-	icon_state = "light_3";
-	icon_tag = "light"
-	},
-/obj/effect/landmark/resource_node/plasma/hive{
-	node_group = "southwest_jungle"
-	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
-/area/lv624/ground/jungle3)
 "xXB" = (
 /obj/structure/flora/bush/ausbushes/var3/sunnybush,
 /turf/open/gm/grass,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/space)
 "xXZ" = (
 /turf/open/gm/dirtgrassborder{
 	dir = 1
@@ -21491,27 +21262,14 @@
 	dir = 4;
 	icon_state = "warning"
 	},
-/area/lv624/lazarus/landing_zones/lz2)
+/area/space)
 "yiw" = (
 /obj/item/tool/hatchet{
 	pixel_x = 6;
 	pixel_y = 4
 	},
 /turf/open/gm/dirt,
-/area/lv624/lazarus/landing_zones/lz2)
-"yiB" = (
-/obj/structure/flora/jungle/vines{
-	icon_state = "light_3";
-	icon_tag = "light"
-	},
-/obj/effect/landmark/resource_node/plasma/hive{
-	node_group = "southwest_jungle"
-	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
-/area/lv624/ground/jungle3)
+/area/space)
 
 (1,1,1) = {"
 aac
@@ -23092,11 +22850,11 @@ wEQ
 aDZ
 aDZ
 aVS
-yiB
+aWl
 aWt
 aWO
-iUS
-yiB
+aWO
+aWl
 aVS
 aLi
 aPl
@@ -23778,7 +23536,7 @@ aSP
 acr
 aWo
 aWP
-ubS
+aWO
 aWt
 aWt
 axR
@@ -24460,7 +24218,7 @@ rFd
 aKY
 aVw
 aVS
-vqv
+axR
 aWt
 aWO
 aWO
@@ -24689,7 +24447,7 @@ aKY
 aNq
 aVS
 aXS
-xUT
+aWp
 aWl
 aVS
 aXS
@@ -26878,10 +26636,10 @@ abQ
 abN
 abN
 abN
-tOU
-tOU
 abN
-tOU
+abN
+abN
+abN
 abN
 abN
 abN
@@ -27335,10 +27093,10 @@ abN
 abN
 abN
 abN
-lkI
+abN
 adJ
 abN
-tOU
+abN
 abN
 abN
 abN
@@ -27560,7 +27318,7 @@ abM
 abM
 abM
 abM
-tOU
+abN
 abN
 abN
 abN
@@ -27629,8 +27387,8 @@ aXX
 nmO
 nmO
 nmO
-cVy
-ccn
+btF
+dqK
 nmO
 nmO
 aXX
@@ -28021,7 +27779,7 @@ abN
 abN
 abN
 abN
-tOU
+abN
 abM
 abM
 abM
@@ -28248,7 +28006,7 @@ abR
 abN
 abN
 abN
-tOU
+abN
 abM
 abM
 abM
@@ -28527,26 +28285,26 @@ aXX
 aZP
 aOB
 aTv
-aAI
-aAI
-aAI
-aAI
-aAI
+aRg
+aRg
+aRg
+aRg
+aRg
 aBo
 aBo
 aBo
-aAI
-aAI
+aRg
+aRg
 aCi
-aAI
-aAI
-aAI
+aRg
+aRg
+aRg
 aBo
 aBo
 aBo
 aBo
-aAI
-aAI
+aRg
+aRg
 aLz
 aEw
 aRg
@@ -28755,9 +28513,9 @@ aXX
 aZP
 aOB
 aTv
-aAI
-aAI
-aAI
+aRg
+aRg
+aRg
 aCi
 aBo
 aBo
@@ -28768,7 +28526,7 @@ aBo
 aBo
 aBo
 aBo
-aAI
+aRg
 aBo
 aBo
 aBo
@@ -28983,10 +28741,10 @@ nmO
 aZP
 aOB
 aTv
-aAI
-aAI
-aAI
-aAI
+aRg
+aRg
+aRg
+aRg
 aBo
 aBo
 aBo
@@ -29002,7 +28760,7 @@ aBo
 aBo
 aBo
 aBo
-aAI
+aRg
 aBo
 aZT
 aRg
@@ -29106,7 +28864,7 @@ abN
 abN
 abN
 abQ
-kLR
+abN
 acp
 acp
 abM
@@ -29211,7 +28969,7 @@ nmO
 aZP
 aOB
 aTv
-aAI
+aRg
 aBo
 aBo
 aBo
@@ -29335,7 +29093,7 @@ abN
 abN
 abN
 abN
-kLR
+abN
 acp
 abM
 abM
@@ -29439,7 +29197,7 @@ aXX
 aZP
 aOB
 aTv
-aAI
+aRg
 aBo
 aBo
 aBo
@@ -29458,8 +29216,8 @@ aBo
 aBo
 aBo
 aBo
-aAI
-aAI
+aRg
+aRg
 aZT
 aRg
 wLz
@@ -29558,7 +29316,7 @@ abN
 abN
 abM
 acp
-kLR
+abN
 abN
 abN
 abN
@@ -29667,7 +29425,7 @@ aXX
 aZP
 aOB
 aTt
-aAI
+aRg
 aBo
 aBo
 aBo
@@ -29686,8 +29444,8 @@ aBo
 aBo
 aBo
 aBo
-aAI
-aAI
+aRg
+aRg
 aZT
 aRg
 wLz
@@ -29788,7 +29546,7 @@ abM
 acp
 abQ
 abN
-dcH
+abN
 abN
 abN
 abN
@@ -29895,7 +29653,7 @@ nmO
 aZP
 aOB
 aTt
-aAI
+aRg
 aBo
 aBo
 aBo
@@ -29914,8 +29672,8 @@ aBo
 aBo
 aBo
 aBo
-aAI
-aAI
+aRg
+aRg
 aZT
 aRg
 wLz
@@ -30123,7 +29881,7 @@ nmO
 aZP
 aOB
 aTt
-aAI
+aRg
 aBo
 aBo
 aBo
@@ -30247,7 +30005,7 @@ abN
 abN
 abN
 abN
-kLR
+abN
 acp
 abM
 abM
@@ -30351,10 +30109,10 @@ aXX
 aZP
 aOB
 aTt
-aAI
-aAI
-aAI
-aAI
+aRg
+aRg
+aRg
+aRg
 aBo
 aBo
 aBo
@@ -30370,14 +30128,14 @@ aBo
 aBo
 aBo
 aBo
-aAI
+aRg
 aBo
 aZT
 aRg
 wLz
 tZD
 tZD
-vRq
+pab
 aOi
 aPl
 aKY
@@ -30470,11 +30228,11 @@ abN
 abN
 abM
 acp
-kLR
 abN
 abN
 abN
-kLR
+abN
+abN
 acp
 acp
 abM
@@ -30579,9 +30337,9 @@ aXX
 aZP
 aOB
 aTt
-aAI
-aAI
-aAI
+aRg
+aRg
+aRg
 aCi
 aBo
 aBo
@@ -30592,13 +30350,13 @@ aBo
 aBo
 aEq
 aBo
-aAI
+aRg
 aBo
 aBo
 aBo
 aBo
 aCi
-aAI
+aRg
 aBo
 aEw
 aRg
@@ -30699,7 +30457,7 @@ abN
 abN
 acp
 acp
-kLR
+abN
 abN
 abQ
 abN
@@ -30807,27 +30565,27 @@ aXX
 aZP
 aOB
 aTt
-aAI
-aAI
-aAI
-aAI
-aAI
+aRg
+aRg
+aRg
+aRg
+aRg
 aBo
 aBo
 aBo
-aAI
-aAI
+aRg
+aRg
 aCi
-aAI
-aAI
-aAI
+aRg
+aRg
+aRg
 aBo
 aBo
 aBo
 aBo
-aAI
-aAI
-aAI
+aRg
+aRg
+aRg
 aEw
 aRg
 wLz
@@ -32188,7 +31946,7 @@ aDv
 aDv
 aDv
 aRx
-jcP
+aGS
 aXX
 aXX
 aXX
@@ -35603,7 +35361,7 @@ atf
 atf
 eDD
 wXp
-kmf
+aVz
 koh
 jKu
 gpC
@@ -35833,7 +35591,7 @@ oAX
 aVz
 aVz
 aVz
-kmf
+aVz
 cPf
 axM
 axM
@@ -36058,7 +35816,7 @@ ayN
 ayN
 aAN
 wXp
-kmf
+aVz
 aVz
 aVz
 aVz
@@ -36288,7 +36046,7 @@ ayN
 aVz
 aVz
 aVz
-kmf
+aVz
 aVz
 jLR
 axM
@@ -36513,9 +36271,9 @@ ayN
 ayN
 ayN
 ayN
-kmf
 aVz
-nBH
+aVz
+aVz
 aVz
 aVz
 axM
@@ -36742,10 +36500,10 @@ ayN
 ayN
 ayN
 aVz
-kmf
 aVz
 aVz
-kmf
+aVz
+aVz
 mBL
 aCj
 aDh
@@ -40736,10 +40494,10 @@ abl
 abl
 abl
 abl
-khg
 abl
 abl
-khg
+abl
+abl
 abm
 abm
 abS
@@ -40963,11 +40721,11 @@ abl
 abl
 abl
 abl
-khg
 abl
 abl
 abl
-khg
+abl
+abl
 abm
 abm
 abS
@@ -41192,7 +40950,7 @@ abl
 abl
 abv
 abl
-jRR
+abl
 abl
 abl
 abm
@@ -41422,7 +41180,7 @@ abl
 abl
 abl
 abl
-khg
+abl
 abm
 abm
 abm
@@ -41647,9 +41405,9 @@ abl
 abl
 abl
 abl
-khg
 abl
-khg
+abl
+abl
 abm
 abm
 abm
@@ -43146,7 +42904,7 @@ kwG
 kwG
 aPm
 hSE
-pkz
+aVz
 kvo
 mNO
 fFN
@@ -43371,7 +43129,7 @@ ayN
 ayN
 aVz
 aVz
-pkz
+aVz
 aVz
 aVz
 aVz
@@ -43522,7 +43280,7 @@ agP
 agP
 agP
 agP
-aqx
+agP
 agP
 agP
 agP
@@ -43600,10 +43358,10 @@ ayN
 aVz
 aVz
 aOx
-hGs
-pkz
 aVz
-pkz
+aVz
+aVz
+aVz
 cys
 aSm
 aSm
@@ -43751,7 +43509,7 @@ agP
 agP
 agP
 agP
-aqx
+agP
 agP
 agP
 agP
@@ -43826,7 +43584,7 @@ ayN
 ayN
 lIm
 aVz
-pkz
+aVz
 aVz
 aVz
 aVz
@@ -43976,12 +43734,12 @@ agP
 agP
 agP
 agP
-aqx
-aqx
 agP
 agP
 agP
-aqx
+agP
+agP
+agP
 agP
 ajr
 nWJ
@@ -44056,9 +43814,9 @@ ayP
 ezz
 jQJ
 aVz
-pkz
 aVz
-pkz
+aVz
+aVz
 bKc
 atf
 axM
@@ -44204,7 +43962,7 @@ agP
 agP
 agP
 agP
-aqx
+agP
 agP
 agP
 agP
@@ -44434,9 +44192,9 @@ agP
 agP
 agP
 agP
-asq
 agP
-aqx
+agP
+agP
 agP
 agP
 ajr
@@ -44664,7 +44422,7 @@ agP
 agP
 agP
 agP
-aqx
+agP
 agP
 agP
 ajr
@@ -44888,7 +44646,7 @@ agY
 ahn
 agP
 agP
-aqx
+agP
 agP
 agP
 agP
@@ -45117,11 +44875,11 @@ aho
 ahn
 agP
 agP
-aqx
 agP
 agP
 agP
-aqx
+agP
+agP
 agP
 ajS
 ajV
@@ -45348,7 +45106,7 @@ agP
 agP
 agP
 ail
-aqx
+agP
 agP
 agP
 ajS
@@ -52269,7 +52027,7 @@ aPD
 aPD
 aNo
 aNo
-aFI
+aXX
 aFX
 aFX
 aFX
@@ -52498,7 +52256,7 @@ aNo
 aNo
 btF
 btF
-xeN
+rnj
 aFX
 aFX
 aFX
@@ -52724,10 +52482,10 @@ nIZ
 aNo
 aDG
 aGQ
-aFI
+aXX
 btF
 muv
-xeN
+rnj
 aFX
 aFX
 aOE
@@ -52952,7 +52710,7 @@ aGz
 aGz
 aGz
 aMq
-aFI
+aXX
 btF
 muv
 phU
@@ -53058,7 +52816,7 @@ acg
 acg
 acg
 acg
-fII
+acg
 acg
 acf
 acf
@@ -53173,8 +52931,8 @@ azt
 aJk
 ayu
 ayP
-aFI
-aFI
+aXX
+aXX
 aDi
 aHM
 lZl
@@ -53182,8 +52940,8 @@ aHM
 aMq
 aGS
 btF
-nOi
-nOi
+nmO
+nmO
 aFX
 aFX
 aFX
@@ -53283,7 +53041,7 @@ acg
 acf
 acf
 acg
-fII
+acg
 acg
 acg
 acg
@@ -53410,9 +53168,9 @@ aGz
 aMq
 aGQ
 btF
-aFI
+aXX
 muv
-xeN
+rnj
 aFX
 aFX
 ark
@@ -53513,7 +53271,7 @@ acg
 acg
 acg
 acg
-fII
+acg
 acg
 acf
 acf
@@ -53639,7 +53397,7 @@ aMq
 aMq
 btF
 btF
-nOi
+nmO
 phU
 aFX
 aFX
@@ -53738,9 +53496,9 @@ acg
 acg
 acg
 acg
-fII
+acg
 aaN
-qcJ
+acg
 acg
 acg
 acf
@@ -53844,9 +53602,9 @@ ati
 ati
 aEh
 abY
-aFI
-aFI
-aFI
+aXX
+aXX
+aXX
 aGS
 aDi
 vBQ
@@ -53865,10 +53623,10 @@ aGz
 aGz
 aMq
 aMq
-aFI
+aXX
 btF
-aFI
-nOi
+aXX
+nmO
 phU
 aFX
 aFX
@@ -53964,11 +53722,11 @@ acf
 acf
 acg
 acg
-fII
 acg
 acg
 acg
-fII
+acg
+acg
 acg
 acf
 acf
@@ -54072,9 +53830,9 @@ ati
 ati
 aEi
 abY
-aFI
+aXX
 jtg
-aFI
+aXX
 aPR
 aDi
 aHM
@@ -54093,12 +53851,12 @@ aHM
 vBQ
 aMq
 aMq
-aFI
+aXX
 btF
-aFI
-aFI
-nOi
-xeN
+aXX
+aXX
+nmO
+rnj
 aFX
 aFX
 aFX
@@ -54194,7 +53952,7 @@ acg
 aaN
 acg
 acg
-fII
+acg
 acg
 acg
 acg
@@ -54302,8 +54060,8 @@ ati
 abY
 aDG
 aGQ
-aFI
-aFI
+aXX
+aXX
 aDi
 aHM
 aGz
@@ -54321,13 +54079,13 @@ aGz
 aGz
 aMq
 aMq
-aFI
+aXX
 btF
 btF
 btF
 btF
-hJv
-hJv
+tZD
+tZD
 eDS
 aFX
 aFX
@@ -54530,7 +54288,7 @@ abY
 asN
 nLH
 aMq
-aFI
+aXX
 aRq
 aDi
 lZl
@@ -54549,13 +54307,13 @@ lZl
 eaJ
 aMq
 aMq
-aFI
-aFI
-aFI
-aFI
-nOi
-xeN
-hJv
+aXX
+aXX
+aXX
+aXX
+nmO
+rnj
+tZD
 hjl
 bbf
 aRT
@@ -54752,7 +54510,7 @@ acb
 avS
 acb
 asN
-aDg
+aRG
 aDG
 aDG
 aDG
@@ -54764,7 +54522,7 @@ aHu
 aGz
 aGz
 aGz
-aDg
+aRG
 aGz
 aGz
 aGz
@@ -54777,13 +54535,13 @@ aDG
 aDG
 aDG
 aMq
-aFI
-aFI
-aFI
-aFI
+aXX
+aXX
+aXX
+aXX
 pab
 taa
-hJv
+tZD
 wNB
 baK
 aKw
@@ -55002,14 +54760,14 @@ aGB
 aEj
 aFK
 aGe
-aDg
+aRG
 aDH
 aMq
-aFI
-aFI
-aFI
-aFI
-aFI
+aXX
+aXX
+aXX
+aXX
+aXX
 lkF
 fTE
 prd
@@ -55210,34 +54968,34 @@ aGz
 aGz
 aGz
 aDI
-aSO
-aSO
-aFL
-aSO
-aSO
+aRg
+aRg
+aCi
+aRg
+aRg
 aFc
 aFc
 aFc
-aSO
-aSO
-aFL
-aSO
-aSO
-aSO
+aRg
+aRg
+aCi
+aRg
+aRg
+aRg
 aFc
 aFc
 aFc
 aFc
-aSO
-aFL
+aRg
+aCi
 aQU
 aRZ
 aMq
-aFI
-aFI
-aFI
-aFI
-aFI
+aXX
+aXX
+aXX
+aXX
+aXX
 cqE
 mxW
 aFi
@@ -55438,10 +55196,10 @@ aDM
 aDM
 hSa
 aDJ
-aSO
-aSO
-aSO
-aSO
+aRg
+aRg
+aRg
+aRg
 aFc
 aFc
 aFc
@@ -55451,22 +55209,22 @@ aFc
 aFc
 aFc
 aFc
-aSO
+aRg
 aFc
 aFc
 aFc
 aFc
-aSO
-aSO
+aRg
+aRg
 aFc
 aSa
 aMq
-aFI
-aFI
-aFI
-aFI
+aXX
+aXX
+aXX
+aXX
 muv
-pVd
+qDg
 jnG
 prd
 aRT
@@ -55658,7 +55416,7 @@ lyS
 aqh
 pEl
 phU
-xeN
+rnj
 btF
 btF
 btF
@@ -55666,10 +55424,10 @@ btF
 btF
 aDi
 aDK
-aSO
-aSO
-aSO
-aSO
+aRg
+aRg
+aRg
+aRg
 aFc
 aFc
 aFc
@@ -55685,17 +55443,17 @@ aFc
 aFc
 aFc
 aFc
-aSO
+aRg
 aFc
 aSb
 aMq
-aFI
-aFI
-aFI
-aFI
+aXX
+aXX
+aXX
+aXX
 muv
 rzT
-hJv
+tZD
 xrI
 aOE
 aKw
@@ -55885,16 +55643,16 @@ ati
 lyS
 aqh
 phU
-xeN
+rnj
 muv
 aGS
-aFI
-aFI
+aXX
+aXX
 dbY
 btF
 aDi
 aDL
-aSO
+aRg
 aFc
 aFc
 aFc
@@ -55917,13 +55675,13 @@ aFc
 aFc
 aSc
 aMq
-aFI
-aFI
-aFI
-aFI
-nOi
+aXX
+aXX
+aXX
+aXX
+nmO
 muv
-hJv
+tZD
 aOE
 aOE
 aOE
@@ -56113,16 +55871,16 @@ ati
 lyS
 aqh
 aqh
-xeN
-xeN
+rnj
+rnj
 ttI
 kFx
-aFI
-aFI
+aXX
+aXX
 btF
 aDi
 aDI
-aSO
+aRg
 aFc
 aFc
 aFc
@@ -56141,16 +55899,16 @@ aFc
 aFc
 aFc
 aFc
-aSO
-aSO
+aRg
+aRg
 aRZ
 aMq
-aFI
+aXX
 btF
 btF
 btF
 btF
-hJv
+tZD
 ncq
 eDS
 aFX
@@ -56346,11 +56104,11 @@ pab
 pab
 vGg
 nSR
-aFI
+aXX
 btF
 aDi
 aDJ
-aSO
+aRg
 aFc
 aFc
 aFc
@@ -56369,15 +56127,15 @@ aFc
 aFc
 aFc
 aFc
-aSO
-aSO
+aRg
+aRg
 aSa
 aMq
-aFI
+aXX
 btF
-aFI
-aFI
-nOi
+aXX
+aXX
+nmO
 aIY
 aFX
 aFX
@@ -56571,14 +56329,14 @@ aqh
 aqh
 aqh
 muv
-nOi
+nmO
 cac
 qBX
 nSR
 btF
 aDi
 aDK
-aSO
+aRg
 aFc
 aFc
 aFc
@@ -56597,16 +56355,16 @@ aFc
 aFc
 aFc
 aFc
-aSO
-aSO
+aRg
+aRg
 aSb
 aMq
-aFI
+aXX
 btF
-aFI
-aFI
-faB
-faB
+aXX
+aXX
+cIL
+cIL
 aFX
 aFX
 aOE
@@ -56799,14 +56557,14 @@ aqh
 aqh
 aqh
 pab
-xeN
+rnj
 cac
 qBX
 tKI
 btF
 aDi
 aDL
-aSO
+aRg
 aFc
 aFc
 aFc
@@ -56831,8 +56589,8 @@ aSc
 aMq
 btF
 btF
-aFI
-nOi
+aXX
+nmO
 phU
 aFX
 aFX
@@ -57027,17 +56785,17 @@ aqh
 aqh
 aqh
 aqh
-xeN
+rnj
 shq
 qBX
 tKI
 btF
 aDi
 aDI
-aSO
-aSO
-aSO
-aSO
+aRg
+aRg
+aRg
+aRg
 aFc
 aFc
 aFc
@@ -57053,14 +56811,14 @@ aFc
 aFc
 aFc
 aFc
-aSO
+aRg
 aFc
 aRZ
 aMq
 btF
-aFI
-aFI
-nOi
+aXX
+aXX
+nmO
 aIY
 aFX
 aFX
@@ -57255,17 +57013,17 @@ aqh
 aqh
 aqh
 aqh
-nOi
-aFI
+nmO
+aXX
 shq
 rKQ
 btF
 aDi
 aDJ
-aSO
-aSO
-aSO
-aSO
+aRg
+aRg
+aRg
+aRg
 aFc
 aFc
 aFc
@@ -57275,21 +57033,21 @@ aFc
 aFc
 aFc
 aFc
-aSO
+aRg
 aFc
 aFc
 aFc
 aFc
-aSO
-aSO
+aRg
+aRg
 aFc
 aSa
 aMq
 btF
-wMQ
-nOi
-faB
-faB
+xXB
+nmO
+cIL
+cIL
 aFX
 aYa
 bbe
@@ -57482,41 +57240,41 @@ aqh
 aqh
 aqh
 aqh
-xeN
+rnj
 muv
-xeN
-aFI
+rnj
+aXX
 jtg
 btF
 aDi
 aDK
-aSO
-aSO
-aFL
-aSO
-aSO
+aRg
+aRg
+aCi
+aRg
+aRg
 aFc
 aFc
 aFc
-aSO
-aSO
-aFL
-aSO
-aSO
-aSO
+aRg
+aRg
+aCi
+aRg
+aRg
+aRg
 aFc
 aFc
 aFc
 aFc
-aSO
-aFL
-aSO
+aRg
+aCi
+aRg
 aSb
 aMq
 btF
-aFI
-aFI
-xeN
+aXX
+aXX
+rnj
 aFX
 aFX
 ark
@@ -57713,15 +57471,15 @@ aqh
 aqh
 aqh
 pab
-aFI
-aFI
+aXX
+aXX
 btF
 aDi
 aDH
 aEl
 aEl
 aFM
-aSO
+aRg
 aGE
 aEl
 aFM
@@ -57738,14 +57496,14 @@ aGE
 aEl
 aFM
 aGf
-aDg
+aRG
 aDH
 aMq
 btF
-aFI
-aFI
-faB
-nOi
+aXX
+aXX
+cIL
+nmO
 aFX
 aFX
 hjl
@@ -57942,9 +57700,9 @@ aqh
 aqh
 phU
 eHr
-aFI
+aXX
 btF
-aDg
+aRG
 aDM
 aDM
 aDM
@@ -57956,7 +57714,7 @@ aDM
 aDM
 aDM
 aDM
-aDg
+aRG
 aDM
 aDM
 aDM
@@ -57970,10 +57728,10 @@ aDM
 aDM
 uVx
 btF
-aFI
-nOi
+aXX
+nmO
 aIZ
-nOi
+nmO
 aFX
 hjl
 bbf
@@ -58170,7 +57928,7 @@ aqh
 aqh
 aqh
 pab
-aFI
+aXX
 btF
 btF
 btF
@@ -58192,14 +57950,14 @@ btF
 btF
 btF
 btF
-aFI
-aFI
-aFI
-aFI
-aFI
+aXX
+aXX
+aXX
+aXX
+aXX
 btF
-nOi
-faB
+nmO
+cIL
 aFX
 aFX
 aFX
@@ -58398,35 +58156,35 @@ aqh
 aqh
 aqh
 phU
-xeN
-aFI
-aFI
-aFI
-aFI
-aFI
+rnj
+aXX
+aXX
+aXX
+aXX
+aXX
 dbY
-aFI
-aFI
-aFI
-xeN
-aFI
+aXX
+aXX
+aXX
+rnj
+aXX
 pab
-aFI
-aFI
-xeN
+aXX
+aXX
+rnj
 pab
-aFI
-aFI
-aFI
-aFI
+aXX
+aXX
+aXX
+aXX
 btF
 oSh
-aFI
-aFI
-aFI
-aFI
+aXX
+aXX
+aXX
+aXX
 btF
-faB
+cIL
 aIY
 aFX
 aEk
@@ -58629,30 +58387,30 @@ aqh
 pab
 pab
 dqK
-xeN
-xeN
-aFI
+rnj
+rnj
+aXX
 pab
-xeN
-wMQ
-xeN
+rnj
+xXB
+rnj
 pab
-nOi
+nmO
 muv
-nOi
-faB
+nmO
+cIL
 aqh
 muv
-nOi
-faB
-faB
-aFI
+nmO
+cIL
+cIL
+aXX
 btF
-xeN
+rnj
 pab
 ieH
-aFI
-nOi
+aXX
+nmO
 ajA
 aEk
 aFX
@@ -58860,13 +58618,13 @@ pab
 pab
 aqh
 pab
-xeN
-faB
+rnj
+cIL
 pab
 muv
 aqh
 aqh
-nOi
+nmO
 muv
 aqh
 aqh
@@ -58874,13 +58632,13 @@ aqh
 pab
 aEk
 aFX
-aGM
-hJv
+aDl
+tZD
 phU
 hyU
 iFp
 fDq
-nOi
+nmO
 ajO
 aFX
 aFX
@@ -59102,13 +58860,13 @@ aqh
 aqh
 aFX
 aFX
-aGM
-hJv
+aDl
+tZD
 rJS
-asB
+mxW
 asM
-asB
-vol
+mxW
+rJS
 ajP
 aFX
 hjl

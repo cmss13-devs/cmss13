@@ -2122,14 +2122,6 @@
 	icon_state = "dark2"
 	},
 /area/ice_colony/surface/hangar/beta)
-"afJ" = (
-/obj/effect/landmark/resource_node/plasma/marine/lz1,
-/turf/open/snow/layer1,
-/area/ice_colony/exterior/surface/clearing/south)
-"afK" = (
-/obj/effect/landmark/resource_node/plasma/marine/lz1,
-/turf/open/snow/layer0,
-/area/ice_colony/exterior/surface/clearing/south)
 "afL" = (
 /obj/structure/table,
 /obj/item/book/manual/engineering_guide{
@@ -2344,14 +2336,6 @@
 "agi" = (
 /turf/closed/wall,
 /area/ice_colony/surface/engineering)
-"agj" = (
-/obj/effect/landmark/resource_node/plasma/marine/lz1,
-/turf/open/snow/layer2,
-/area/ice_colony/exterior/surface/clearing/south)
-"agk" = (
-/obj/effect/landmark/resource_node/plasma/marine/lz1,
-/turf/open/snow/layer1,
-/area/ice_colony/exterior/surface/cliff)
 "agl" = (
 /obj/structure/bed/chair,
 /turf/open/floor{
@@ -2439,7 +2423,6 @@
 	},
 /area/ice_colony/surface/engineering/generator)
 "agu" = (
-/obj/effect/landmark/resource_node/plasma/marine/lz1,
 /turf/open/snow/layer1,
 /area/ice_colony/exterior/surface/landing_pad_external)
 "agv" = (
@@ -2605,7 +2588,6 @@
 	},
 /area/ice_colony/surface/engineering)
 "agL" = (
-/obj/effect/landmark/resource_node/plasma/marine/lz2,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "darkbrown2";
@@ -2630,29 +2612,6 @@
 "agN" = (
 /turf/closed/wall/r_wall,
 /area/ice_colony/surface/substation/smes)
-"agO" = (
-/obj/effect/landmark/resource_node/plasma/marine/lz2,
-/turf/open/floor{
-	tag = "icon-darkgreencorners2 (EAST)";
-	icon_state = "darkgreencorners2";
-	dir = 4
-	},
-/area/ice_colony/underground/hallway/north_west)
-"agP" = (
-/obj/effect/landmark/resource_node/plasma/marine/lz2,
-/turf/open/floor{
-	tag = "icon-darkgreen2 (EAST)";
-	icon_state = "darkgreen2";
-	dir = 4
-	},
-/area/ice_colony/underground/hallway/north_west)
-"agQ" = (
-/obj/effect/landmark/resource_node_activator/landing/lz2,
-/turf/open/floor{
-	tag = "icon-dark2";
-	icon_state = "dark2"
-	},
-/area/ice_colony/underground/hallway/north_west)
 "agR" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
@@ -2736,14 +2695,6 @@
 	dir = 5
 	},
 /area/ice_colony/surface/engineering)
-"ahb" = (
-/obj/effect/landmark/resource_node/plasma/marine/lz2,
-/turf/open/floor{
-	tag = "icon-darkbrown2 (WEST)";
-	icon_state = "darkbrown2";
-	dir = 8
-	},
-/area/ice_colony/underground/hallway/north_west)
 "ahc" = (
 /obj/structure/bed/chair{
 	tag = "icon-chair (EAST)";
@@ -2779,41 +2730,6 @@
 /obj/item/document_objective/paper,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/surface/requesitions)
-"ahg" = (
-/obj/effect/landmark/resource_node/plasma/marine/lz2,
-/turf/open/floor{
-	tag = "icon-dark2";
-	icon_state = "dark2"
-	},
-/area/ice_colony/underground/hallway/north_west)
-"ahh" = (
-/obj/effect/landmark/resource_node_activator/landing/lz1,
-/turf/open/snow/layer1,
-/area/ice_colony/exterior/surface/clearing/south)
-"ahi" = (
-/obj/effect/landmark/resource_node_activator/hive{
-	node_group = "crashed_ship"
-	},
-/turf/open/ice,
-/area/ice_colony/exterior/underground/caves/open)
-"ahj" = (
-/obj/effect/landmark/resource_node/plasma/hive{
-	node_group = "crashed_ship"
-	},
-/turf/open/ice,
-/area/ice_colony/exterior/underground/caves/open)
-"ahk" = (
-/obj/effect/landmark/resource_node/plasma/hive{
-	node_group = "central_caves"
-	},
-/turf/open/ice,
-/area/ice_colony/exterior/underground/caves/open)
-"ahl" = (
-/obj/effect/landmark/resource_node_activator/hive{
-	node_group = "central_caves"
-	},
-/turf/open/ice,
-/area/ice_colony/exterior/underground/caves/open)
 "ahm" = (
 /turf/open/floor{
 	tag = "icon-darkyellow2 (NORTH)";
@@ -2821,24 +2737,6 @@
 	dir = 1
 	},
 /area/ice_colony/surface/engineering/generator)
-"ahn" = (
-/obj/effect/landmark/resource_node/plasma/hive{
-	node_group = "west_caves"
-	},
-/turf/open/ice,
-/area/ice_colony/exterior/underground/caves/open)
-"aho" = (
-/obj/effect/landmark/resource_node_activator/hive{
-	node_group = "west_caves"
-	},
-/turf/open/ice,
-/area/ice_colony/exterior/underground/caves/open)
-"ahp" = (
-/obj/effect/landmark/resource_node/plasma/hive{
-	node_group = "upper"
-	},
-/turf/open/snow/layer3,
-/area/ice_colony/exterior/surface/valley/west)
 "ahq" = (
 /obj/structure/table,
 /obj/effect/landmark{
@@ -2944,12 +2842,6 @@
 	dir = 5
 	},
 /area/ice_colony/surface/substation/smes)
-"ahA" = (
-/obj/effect/landmark/resource_node/plasma/hive{
-	node_group = "upper"
-	},
-/turf/open/snow/layer2,
-/area/ice_colony/exterior/surface/valley/west)
 "ahB" = (
 /obj/structure/barricade/metal,
 /turf/open/floor/plating/icefloor{
@@ -3062,12 +2954,6 @@
 	icon_state = "dark2"
 	},
 /area/ice_colony/surface/engineering)
-"ahP" = (
-/obj/effect/landmark/resource_node_activator/hive{
-	node_group = "upper"
-	},
-/turf/open/snow/layer3,
-/area/ice_colony/exterior/surface/valley/west)
 "ahQ" = (
 /obj/structure/machinery/light{
 	tag = "icon-tube1 (EAST)";
@@ -3079,24 +2965,6 @@
 	icon_state = "darkyellowcorners2"
 	},
 /area/ice_colony/surface/engineering)
-"ahR" = (
-/obj/effect/landmark/resource_node/plasma{
-	node_group = "central"
-	},
-/turf/open/ice,
-/area/ice_colony/underground/maintenance/south)
-"ahS" = (
-/obj/effect/landmark/resource_node/plasma{
-	node_group = "central"
-	},
-/turf/open/ice,
-/area/ice_colony/exterior/underground/caves/open)
-"ahT" = (
-/obj/effect/landmark/resource_node_activator{
-	node_group = "central"
-	},
-/turf/open/ice,
-/area/ice_colony/exterior/underground/caves/open)
 "ahV" = (
 /obj/structure/table,
 /obj/structure/machinery/cell_charger,
@@ -48787,11 +48655,11 @@ bmU
 boS
 bqR
 boB
-ahn
 bmU
 bmU
 bmU
-ahn
+bmU
+bmU
 bvK
 bmm
 bml
@@ -49068,13 +48936,13 @@ bmU
 bmU
 boT
 bmU
-ahn
 bmU
 bmU
 bmU
 bmU
 bmU
-ahn
+bmU
+bmU
 bmU
 bwJ
 bxe
@@ -49352,7 +49220,7 @@ bmU
 bmU
 bmU
 bmU
-aho
+bmU
 bmU
 boR
 bmU
@@ -49912,10 +49780,10 @@ bmU
 bmU
 bmU
 bmU
-ahn
 bmU
 bmU
-ahn
+bmU
+bmU
 boS
 bmk
 bup
@@ -50197,7 +50065,7 @@ bmU
 bmU
 bmU
 bmU
-ahn
+bmU
 bmS
 bml
 bmT
@@ -53007,7 +52875,7 @@ blg
 blu
 blg
 bmn
-ahb
+blg
 blg
 bnX
 blg
@@ -53569,7 +53437,7 @@ bkr
 bkr
 bkr
 blu
-agQ
+bkr
 bmo
 bkr
 bkr
@@ -53755,7 +53623,7 @@ alI
 alI
 alK
 alK
-ahp
+alK
 amA
 apS
 alK
@@ -54038,7 +53906,7 @@ alK
 alK
 alK
 alK
-ahp
+alK
 alK
 alK
 alK
@@ -54130,14 +53998,14 @@ bjR
 bkb
 bhy
 bkB
-agO
+bkN
 bkr
 bkr
 bVH
 bmp
 bkr
 bkr
-ahg
+bkr
 bkr
 bkr
 bkr
@@ -54413,14 +54281,14 @@ bkc
 bhn
 bkt
 bkO
-agP
+bkG
 bks
 blu
 bkr
-agP
 bkG
 bkG
-agP
+bkG
+bkG
 bkN
 bkr
 bpD
@@ -54597,7 +54465,7 @@ alI
 alK
 alK
 amB
-ahA
+alI
 alK
 alK
 alK
@@ -54878,15 +54746,15 @@ alI
 alK
 alK
 apg
-ahp
 alK
 alK
 alK
-ahP
 alK
 alK
 alK
-ahp
+alK
+alK
+alK
 aaS
 amB
 alK
@@ -55167,7 +55035,7 @@ alK
 alK
 alK
 alK
-ahp
+alK
 aca
 arC
 abb
@@ -55445,7 +55313,7 @@ abn
 alK
 alK
 alK
-ahp
+alK
 alK
 alK
 alK
@@ -63216,7 +63084,7 @@ bPg
 bRO
 bQu
 bQu
-ahS
+bmU
 bmU
 bmU
 bmU
@@ -63497,13 +63365,13 @@ bOj
 bOj
 bRP
 bQu
-ahR
+bQu
 bmU
 bmU
 bmU
 bmU
 bmT
-ahS
+bmU
 bmU
 bmU
 bmU
@@ -64063,12 +63931,12 @@ bRO
 bPg
 bOk
 bmj
-ahS
 bmU
 bmU
 bmU
 bmU
-ahS
+bmU
+bmU
 bmU
 bmh
 bmi
@@ -64345,11 +64213,11 @@ bRN
 bPg
 bOk
 bRp
-ahS
 bmU
 bmU
 bmU
-ahS
+bmU
+bmU
 bmU
 bmU
 bmm
@@ -64910,7 +64778,7 @@ bPg
 bQu
 bmU
 bmU
-ahT
+bmU
 bmU
 bmU
 bmU
@@ -65470,15 +65338,15 @@ bmU
 bmU
 bQu
 bRO
-ahR
+bQu
 bQu
 boR
 bmU
 bmU
-ahS
+bmU
 bmS
 bnn
-ahS
+bmU
 bmU
 bmU
 bmU
@@ -65753,13 +65621,13 @@ bmU
 bQu
 bRO
 bQu
-ahR
+bQu
 bmU
 bmU
 bzR
 boB
 bmQ
-ahS
+bmU
 bmU
 bmU
 bmU
@@ -66338,7 +66206,7 @@ bmU
 bmU
 bup
 bmT
-ahk
+bmU
 bmU
 bmU
 bOk
@@ -66619,11 +66487,11 @@ bmU
 bmU
 bmU
 bmU
-ahk
 bmU
 bmU
 bmU
-ahk
+bmU
+bmU
 bmT
 bmh
 bOk
@@ -66906,7 +66774,7 @@ bmU
 bmU
 bmU
 bmU
-ahk
+bmU
 bmQ
 bOk
 bOk
@@ -67466,10 +67334,10 @@ bmU
 bmU
 bmU
 bmU
-ahl
 bmU
 bmU
-ahk
+bmU
+bmU
 bmU
 bmU
 bmQ
@@ -68031,7 +67899,7 @@ bmU
 bmU
 bmU
 bmU
-ahk
+bmU
 bmU
 bmU
 bmU
@@ -68314,7 +68182,7 @@ bmU
 bmU
 bnU
 boB
-ahk
+bmU
 bmU
 bmU
 bmU
@@ -81157,7 +81025,7 @@ aKC
 aKu
 aKC
 aKu
-afK
+aKu
 aKu
 aKu
 aKu
@@ -81729,7 +81597,7 @@ aKC
 aKu
 aKC
 aKC
-agk
+aZK
 bac
 bal
 aaC
@@ -82009,7 +81877,7 @@ aYY
 aKC
 aKu
 aKu
-ahh
+aKC
 aKC
 aZK
 bad
@@ -82283,10 +82151,10 @@ aKu
 aKu
 aKu
 aKC
-agj
+aKE
 aKC
 aKu
-afK
+aKu
 aYY
 aKu
 aKu
@@ -82566,15 +82434,15 @@ aOf
 aOf
 aOf
 aOf
-afK
+aKu
 aYz
 aKu
 aYZ
 aKu
 aYz
-afK
+aKu
 aPq
-afJ
+aKC
 aZE
 aZM
 afO
@@ -85794,10 +85662,10 @@ bmi
 bmT
 bmU
 bmU
-ahj
 bmU
 bmU
-ahj
+bmU
+bmU
 bmU
 bmU
 bmU
@@ -86080,7 +85948,7 @@ bmU
 bmU
 bmU
 bmU
-ahj
+bmU
 bmU
 bmU
 bVW
@@ -86359,7 +86227,7 @@ bmU
 bmU
 bmU
 bmU
-ahi
+bmU
 bmU
 bmU
 bmU
@@ -86638,7 +86506,7 @@ aZF
 bmQ
 bmU
 bmU
-ahj
+bmU
 bmU
 bmU
 bmU
@@ -86921,11 +86789,11 @@ bmQ
 bmU
 bmU
 bmU
-ahj
 bmU
 bmU
 bmU
-ahj
+bmU
+bmU
 bmU
 bmU
 bVW
@@ -87206,7 +87074,7 @@ bmU
 bmU
 bmU
 bmU
-ahj
+bmU
 bmU
 bmU
 bmU

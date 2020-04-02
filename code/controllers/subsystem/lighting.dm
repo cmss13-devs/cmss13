@@ -6,7 +6,7 @@ var/datum/subsystem/lighting/SSlighting
 	init_order    = SS_INIT_LIGHTING
 	display_order = SS_DISPLAY_LIGHTING
 	priority      = SS_PRIORITY_LIGHTING
-	wait          = 2
+	wait          = 4
 	flags         = SS_FIRE_IN_LOBBY
 
 	var/list/datum/light_source/lights_current = list()

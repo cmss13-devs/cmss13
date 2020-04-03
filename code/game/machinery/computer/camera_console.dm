@@ -43,16 +43,10 @@
 
 		if(!isAI(user))
 			user.set_interaction(src)
-
-		var/list/L = list()
-		for (var/obj/structure/machinery/camera/C in cameranet.cameras)
-			L.Add(C)
-
-		camera_sort(L)
-
+			
 		var/list/D = list()
 		D["Cancel"] = "Cancel"
-		for(var/obj/structure/machinery/camera/C in L)
+		for(var/obj/structure/machinery/camera/C in cameranet.cameras)
 			if(can_access_camera(C))
 				D["[C.c_tag][C.can_use() ? null : " (Deactivated)"]"] = C
 

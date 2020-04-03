@@ -136,8 +136,6 @@
 		if(!carbon_mob.on_movement())
 			return //something blocked us from moving
 
-	soundOutput.on_movement(n)
-
 	//Check if you are being grabbed and if so attemps to break it
 	if(mob.pulledby)
 		if(mob.is_mob_incapacitated(TRUE))

@@ -86,3 +86,7 @@
 
 #define QDELING(X) (FALSE)
 #define QDELETED(X) (!X || QDELING(X))
+
+#define RECT new /datum/shape/rectangle
+#define QTREE new /datum/quadtree
+#define SEARCH_QTREE(qtree, shape_range) qtree.query_range(shape_range)

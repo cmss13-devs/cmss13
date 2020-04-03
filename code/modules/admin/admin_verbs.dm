@@ -101,7 +101,8 @@ var/list/admin_verbs_debug = list(
 	/client/proc/gc_dump_hdl,
 	/client/proc/run_individual_test,
 	/client/proc/toggle_log_hrefs,
-	/client/proc/matrix_editor
+	/client/proc/matrix_editor,
+	/client/proc/generate_sound_queues
 )
 
 var/list/debug_verbs = list(

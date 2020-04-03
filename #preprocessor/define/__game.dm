@@ -372,3 +372,10 @@ var/static/list/scarySounds = list('sound/weapons/thudswoosh.ogg','sound/weapons
 
 // Window skin types
 #define TOGGLE_WINDOW_SKIN 1
+
+// Quadtree values
+
+#define QUADTREE_CAPACITY 4
+#define QUADTREE_BOUNDARY_MINIMUM_WIDTH 3
+#define QUADTREE_BOUNDARY_MINIMUM_HEIGHT 3
+#define QUADTREE_TILE_SIZE 32

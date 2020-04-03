@@ -9,6 +9,7 @@
 	var/frequency = 1
 	var/falloff = 1
 	var/volume_cat = VOLUME_SFX
+	var/range = 1
 	var/x //Map coordinates, not sound coordinates 
 	var/y
 	var/z
@@ -59,20 +60,13 @@
 
 	if(!sound_range) 
 		sound_range = round(0.25*vol) //if no specific range, the max range is equal to a quarter of the volume.
-	
+	S.range = sound_range
+
 	if(vary)
 		S.frequency = GET_RANDOM_FREQ // Same frequency for everybody
 	
-	var/turf/T
-	for(var/mob/M in player_list)
-		T = get_turf(M)
-		if(!M.client || !M.client.soundOutput || !T) 
-			continue
-		if(get_dist(T, turf_source) <= sound_range && T.z == turf_source.z)
-			SSsound.queue(M.client, S)
-
-	// Buuut it doesn't cover vehicle interiors, since they're in a physically different location
-	// If you or a loved one are inside a vehicle, you may be eligible for hearing sounds
+	var/list/hearers = list()
+	//Grab the hearers in interiors before doing the quadtree search
 	for(var/datum/interior/I in interior_manager.interiors)
 		if(!I.ready)
 			continue
@@ -87,8 +81,9 @@
 				for(var/mob/P in interior_turf)
 					if(!P.client)
 						continue
-					P.client.soundOutput.process_sound(S)
+					hearers += P.client
 
+	SSsound.queue(S, hearers)
 	return S.channel
 
 
@@ -110,25 +105,7 @@
 	S.volume_cat = vol_cat
 	S.channel = channel
 	S.status = status
-	SSsound.queue(C, S)
-
-//Use this proc for things like OBs, dropships, or anything that plays a lenghty sound that needs to be heard even by those who arrive late
-/proc/playsound_spacial(atom/source, soundin, vol = 100, falloff = 1, duration, range = 30)
-	var/sound/S = sound(soundin)
-	S.falloff = falloff //As DM reference states, all sound within this range will keep at max vol.
-	S.channel = get_free_channel()
-	S.volume = vol
-	S.x = 1 //Adding coords is vital for the update in update_sound_pos to work,
-	S.y = 1 //given that SOUND_UPDATE won't update a sound's coords if it was given none initially
-	S.z = 1 //(this isn't 100% confirmed, but after many tests it seems to be the case)
-	S.status = SOUND_MUTE //Send it muted
-	sound_to(world, S)
-	SSspacial_sound.add_spacial_sound(S, source, range, duration)
-	for(var/client/C in clients)
-		if(!C || !C.soundOutput)
-			continue
-		C.soundOutput.update_sound_pos()
-
+	SSsound.queue(S, list(C))
 
 //Self explanatory
 /proc/playsound_area(area/A, soundin, vol = 100, channel, status, vol_cat = VOLUME_SFX)
@@ -141,10 +118,12 @@
 	S.status = status
 	S.volume_cat = vol_cat
 
+	var/list/hearers = list()
 	for(var/mob/living/M in A.contents)
 		if(!M || !M.client || !M.client.soundOutput) 
 			continue
-		SSsound.queue(M.client, S)
+		hearers += M.client
+	SSsound.queue(S, hearers)
 
 /client/proc/playtitlemusic()
 	if(!ticker || !ticker.login_music)	
@@ -153,15 +132,17 @@
 		playsound_client(src, ticker.login_music, null, 85, 0, VOLUME_ADM, SOUND_CHANNEL_LOBBY, SOUND_STREAM)
 
 
-/proc/playsound_z(atom/z, soundin, volume = 100, vol_cat = VOLUME_SFX) // Play sound for all online mobs on a given Z-level. Good for ambient sounds.
+/proc/playsound_z(z, soundin, volume = 100, vol_cat = VOLUME_SFX) // Play sound for all online mobs on a given Z-level. Good for ambient sounds.
 	var/datum/sound_template/S = new()
 	S.file = soundin
 	S.volume = volume
 	S.channel = SOUND_CHANNEL_Z
 	S.volume_cat = vol_cat
+	var/list/hearers = list()
 	for(var/mob/M in player_list)
-		if (M.z && M.client && M.client.soundOutput)
-			SSsound.queue(M.client, S)
+		if (M.z == z && M.client && M.client.soundOutput)
+			hearers += M.client
+	SSsound.queue(S, hearers)
 
 // The pick() proc has a built-in chance that can be added to any option by adding ,X; to the end of an option, where X is the % chance it will play.
 /proc/get_sfx(S)
@@ -271,3 +252,23 @@
 				S = pick('sound/voice/warcry/female_charge.ogg', 'sound/voice/warcry/female_yell1.ogg')
 
 	return S
+
+/client/proc/generate_sound_queues()
+	set name = "X: Queue sounds"
+	set desc = "stress test this bich"
+	set category = "Debug"
+
+	var/ammount = input(usr, "How many sounds to queue?") as num
+	var/range = input(usr, "Range") as num
+	var/x = input(usr, "Center X") as num 
+	var/y = input(usr, "Center Y") as num
+	var/z = input(usr, "Z level") as num
+	var/datum/sound_template/S
+	for(var/i = 1, i <= ammount, i++)
+		S = new
+		S.range = range
+		S.x = x
+		S.y = y
+		S.z = z
+		SSsound.queue(S)
+	 

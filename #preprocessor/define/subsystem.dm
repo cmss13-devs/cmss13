@@ -43,6 +43,7 @@
 #define SS_PRIORITY_SOUND          250
 #define SS_PRIORITY_TICKER         200
 #define SS_PRIORITY_MAPVIEW		   170
+#define SS_PRIORITY_QUADTREE       150
 #define SS_PRIORITY_CELLAUTO       150
 #define SS_PRIORITY_MOB            150
 #define SS_PRIORITY_XENO           149
@@ -67,7 +68,6 @@
 #define SS_PRIORITY_ENTITY	       37
 #define SS_PRIORITY_DEFCON         35
 #define SS_PRIORITY_UNSPECIFIED    30
-#define SS_PRIORITY_SPACIAL_SOUNDS 25
 #define SS_PRIORITY_SOUNDSCAPE	   24
 #define SS_PRIORITY_LIGHTING       20
 #define SS_PRIORITY_TRACKING       19

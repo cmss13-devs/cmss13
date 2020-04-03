@@ -227,7 +227,7 @@
 		mission_error = "Target is off bounds."
 		return
 	change_current_loc(shootloc)
-	playsound_spacial(shootloc, soundeffect, 70, 10, 14 SECONDS, 35) 
+	playsound(shootloc, soundeffect, 70, TRUE, 50) 
 	sleep(flyto_period)
 	stat = FIRE_MISSION_STATE_FIRING
 	mission.execute_firemission(linked_console, shootloc, recorded_dir, fire_length, step_delay, src)

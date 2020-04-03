@@ -71,26 +71,6 @@
 		S.status |= SOUND_MUTE
 	sound_to(owner, S)
 
-/datum/soundOutput/proc/on_movement()
-	if(isobserver(owner.mob)) //Ghosts move too much, plus they don't need this feature (unlike marines and xenos who need it in the case of offscreen CAS/OB)
-		return
-	if(SSspacial_sound.sound_coords.len)
-		update_sound_pos()
-
-/datum/soundOutput/proc/update_sound_pos()//This proc updates the position of spacial sounds
-	var/sound/S = sound()
-	var/turf/cur_turf = get_turf(owner.mob)
-	if(!cur_turf)
-		return
-	for(var/datum/sound_coord/SC in SSspacial_sound.sound_coords)
-		S.status = SOUND_UPDATE
-		if(status_flags & EAR_DEAF_MUTE || SC.map_z != cur_turf.z || get_dist(cur_turf, locate(SC.map_x, SC.map_y, SC.map_z)) > SC.range)
-			S.status |= SOUND_MUTE
-		S.channel = SC.channel
-		S.x = SC.map_x - cur_turf.x
-		S.z = SC.map_y - cur_turf.y
-		S.volume = 100 * owner.volume_preferences[VOLUME_SFX]
-		sound_to(owner, S)
 
 /datum/soundOutput/proc/update_soundscape()
 	scape_cooldown--

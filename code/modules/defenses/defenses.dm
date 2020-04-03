@@ -28,6 +28,11 @@
 	else
 		icon_state = "defense_base_off"
 
+/obj/structure/machinery/defenses/examine(mob/user)
+	. = ..()
+	
+	to_chat(user, SPAN_INFO("Multitool is used to disassemble it."))
+
 /obj/structure/machinery/defenses/proc/power_on()
 	if(stat == DEFENSE_DAMAGED)
 		return FALSE

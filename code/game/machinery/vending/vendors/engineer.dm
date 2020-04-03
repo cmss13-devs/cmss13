@@ -7,11 +7,11 @@
 		list("Essential Engineer Set", 0, /obj/effect/essentials_set/engi, MARINE_CAN_BUY_ESSENTIALS, "white"),
 
 		list("HANDHELD DEFENSE (choose 1)", 0, null, null, null),
-		list("UA 571-C sentry gun", 0, /obj/item/defenses/handheld/sentry, MARINE_CAN_BUY_ACCESSORY, "black"),
-		list("UA 42-F sentry flamer", 0, /obj/item/defenses/handheld/sentry/flamer, MARINE_CAN_BUY_ACCESSORY, "black"),
-		list("21S tesla coil", 0, /obj/item/defenses/handheld/tesla_coil, MARINE_CAN_BUY_ACCESSORY, "black"),
-		list("R-1NG bell tower", 0, /obj/item/defenses/handheld/bell_tower, MARINE_CAN_BUY_ACCESSORY, "black"),
-		list("JIMA planted flag", 0, /obj/item/defenses/handheld/planted_flag, MARINE_CAN_BUY_ACCESSORY, "black"),
+		list("UA 571-C sentry gun", 0, /obj/item/defenses/handheld/sentry, MARINE_CAN_BUY_MASK, "black"),
+		list("UA 42-F sentry flamer", 0, /obj/item/defenses/handheld/sentry/flamer, MARINE_CAN_BUY_MASK, "black"),
+		list("21S tesla coil", 0, /obj/item/defenses/handheld/tesla_coil, MARINE_CAN_BUY_MASK, "black"),
+		list("R-1NG bell tower", 0, /obj/item/defenses/handheld/bell_tower, MARINE_CAN_BUY_MASK, "black"),
+		list("JIMA planted flag", 0, /obj/item/defenses/handheld/planted_flag, MARINE_CAN_BUY_MASK, "black"),
 
 		list("ENGINEER SUPPLIES", 0, null, null, null),
 		list("Metal x10", 5, /obj/item/stack/sheet/metal/small_stack, null, "orange"),
@@ -102,9 +102,6 @@
 		list("Webbing", 0, /obj/item/clothing/accessory/storage/webbing, MARINE_CAN_BUY_ACCESSORY, "black"),
 		list("Brown webbing vest", 0, /obj/item/clothing/accessory/storage/brown_vest, MARINE_CAN_BUY_ACCESSORY, "black"),
 		list("Black webbing vest", 0, /obj/item/clothing/accessory/storage/black_vest, MARINE_CAN_BUY_ACCESSORY, "black"),
-
-		list("MASKS", 0, null, null, null),
-		list("Gas mask", 0, /obj/item/clothing/mask/gas, MARINE_CAN_BUY_MASK, "black"),
 	)
 
 /obj/structure/machinery/cm_vending/clothing/engi/alpha

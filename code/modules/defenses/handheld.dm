@@ -13,6 +13,11 @@
 	indestructible = TRUE
 	var/defense_type = /obj/structure/machinery/defenses
 
+/obj/item/defenses/handheld/examine(mob/user)
+	. = ..()
+
+	to_chat(user, SPAN_INFO("It is ready for deployment."))
+
 /obj/item/defenses/handheld/attack_self(var/mob/living/carbon/human/user)
 	if(!istype(user))
 		return
@@ -26,17 +31,14 @@
 	var/blocked = FALSE
 	for(var/obj/O in T)
 		if(O.density)
-			to_world("1 there is [O]")
 			blocked = TRUE
 			break
 
 	for(var/mob/M in T)
-		to_world("2 there is [M]")
 		blocked = TRUE
 		break
 
 	if(istype(T, /turf/closed))
-		to_world("3 there is [T.loc]")
 		blocked = TRUE
 
 	if(blocked)
@@ -53,26 +55,26 @@
 
 
 /obj/item/defenses/handheld/sentry
-	name = "handheld defense"
+	name = "handheld UA 571-C sentry gun"
 	icon_state = "uac_sentry_handheld"
 	defense_type = /obj/structure/machinery/defenses/sentry
 
 /obj/item/defenses/handheld/sentry/flamer
-	name = "handheld defense"
+	name = "handheld UA 42-F sentry flamer"
 	icon_state = "uac_flamer_handheld"
 	defense_type = /obj/structure/machinery/defenses/sentry/flamer
 
 /obj/item/defenses/handheld/tesla_coil
-	name = "handheld defense"
+	name = "handheld 21S tesla coil"
 	icon_state = "tesla_coil_handheld"
 	defense_type = /obj/structure/machinery/defenses/tesla_coil
 
 /obj/item/defenses/handheld/bell_tower
-	name = "handheld defense"
+	name = "handheld R-1NG bell tower"
 	icon_state = "bell_tower_handheld"
 	defense_type = /obj/structure/machinery/defenses/bell_tower
 
 /obj/item/defenses/handheld/planted_flag
-	name = "handheld defense"
+	name = "handheld JIMA planted flag"
 	icon_state = "planted_flag_handheld"
 	defense_type = /obj/structure/machinery/defenses/planted_flag

@@ -348,7 +348,7 @@
 	ceiling_muffle = FALSE
 	ambience_exterior = AMBIENCE_CAVE
 	soundscape_playlist = SCAPE_PL_CAVE
-	soundscape_interval = 25 
+	soundscape_interval = 25
 	base_muffle = MUFFLE_HIGH
 
 /area/bigredv2/caves/eta
@@ -390,7 +390,7 @@
 	name = "\improper General Store"
 	icon_state = "blueold"
 	ceiling = CEILING_METAL
-	
+
 
 /area/bigredv2/outside/marshall_office
 	name = "\improper Marshall Offices"
@@ -455,6 +455,13 @@
 	ceiling = CEILING_NONE
 	is_resin_allowed = FALSE
 
+/area/bigredv2/outside/space_port_lz2
+	name = "\improper Cargo Landing Pad"
+	icon_state = "green"
+	ceiling = CEILING_NONE
+	is_resin_allowed = FALSE
+
+
 /area/bigredv2/outside/telecomm
 	name = "\improper Telecommunications"
 	icon_state = "ass_line"
@@ -501,11 +508,11 @@
 /area/bigredv2/caves/lambda/breakroom
 	name = "\improper Lambda Breakroom"
 	icon_state = "lam_break"
-	
+
 /area/bigredv2/caves/lambda/xenobiology
 	name = "\improper Lambda Xenobiology"
 	icon_state = "lam_xeno"
-	
+
 /area/bigredv2/outside/general_offices
 	name = "\improper General Offices"
 	icon_state = "storage"
@@ -529,7 +536,7 @@
 	ceiling_muffle = FALSE
 	ambience_exterior = AMBIENCE_CAVE
 	soundscape_playlist = SCAPE_PL_CAVE
-	base_muffle = MUFFLE_HIGH	
+	base_muffle = MUFFLE_HIGH
 
 /area/bigredv2/caves_research
 	name = "\improper W-Y Research Lab Caves"

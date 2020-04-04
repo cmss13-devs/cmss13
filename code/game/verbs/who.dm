@@ -3,40 +3,43 @@
 	set name = "Who"
 	set category = "OOC"
 
-	var/count_observers = 0
-	var/count_nonadmin_observers = 0
-	var/count_humans = 0
-	var/count_marine_humans = 0
-	var/count_infectedhumans = 0
-	var/count_aliens = 0
-	var/count_preds = 0
-	var/count_zed = 0
+	var/list/counted_humanoids = list(
+							"Observers" = 0,
+							"Admin observers" = 0,
+							"Humans" = 0,
+							"Infected humans" = 0,
+							FACTION_MARINE = 0,
+							"USCM Marines" = 0,
 
-	for(var/client/C in clients)
-		if(isobserver(C.mob))
-			count_observers++
-			if(!C.admin_holder || !(C.admin_holder.rights & R_MOD))
-				count_nonadmin_observers++
-		if(C.mob && C.mob.stat != DEAD)
-			if(ishuman(C.mob) && !iszombie(C.mob))
-				count_humans++
-				if(C.mob.job in (ROLES_MARINES))
-					count_marine_humans++
-				if(C.mob.status_flags & XENO_HOST)
-					count_infectedhumans++
-			if(isXeno(C.mob))
-				count_aliens++
-			if(isYautja(C.mob))
-				count_preds++
-		if(iszombie(C.mob))
-			count_zed++
+							FACTION_YAUTJA = 0,
+							"Infected preds" = 0,
 
+							FACTION_PMC = 0,
+							FACTION_CLF = 0,
+							FACTION_UPP = 0,
+							FACTION_FREELANCER = 0,
+							FACTION_SURVIVOR = 0,
+							FACTION_DEATHSQUAD = 0,
+							FACTION_COLONIST = 0,
+							FACTION_MERCENARY = 0,
+							FACTION_DUTCH = 0,
+							FACTION_HEFA = 0,
+							FACTION_GLADIATOR = 0,
+							FACTION_PIRATE = 0,
+							FACTION_PIZZA = 0,
+							FACTION_SOUTO = 0,
+
+							FACTION_NEUTRAL = 0,
+
+							FACTION_ZOMBIE = 0
+							)
+
+	var/list/counted_xenos[6]
 
 	var/msg = "<b>Current Players:</b>\n"
-
 	var/list/Lines = list()
-
 	if(admin_holder && ((R_ADMIN & admin_holder.rights) || (R_MOD & admin_holder.rights)))
+
 		for(var/client/C in clients)
 			var/entry = "\t[C.key]"
 			if(C.admin_holder && C.admin_holder.fakekey)
@@ -47,6 +50,10 @@
 					entry += " - <font color='#404040'><b>Unconscious</b></font>"
 				if(DEAD)
 					if(isobserver(C.mob))
+						counted_humanoids["Observers"]++
+						if(C.admin_holder || C.admin_holder.rights & R_MOD)
+							counted_humanoids["Admin observers"]++
+							counted_humanoids["Observers"]--
 						var/mob/dead/observer/O = C.mob
 						if(O.started_as_observer)
 							entry += " - <font color='#777'>Observing</font>"
@@ -55,41 +62,77 @@
 					else
 						entry += " - <font color='#000'><b>DEAD</b></font>"
 
-/*			var/age
-			if(isnum(C.player_age))
-				age = C.player_age
-			else
-				age = 0
+			if(C.mob && C.mob.stat != DEAD)
+				if(ishuman(C.mob))
+					if(C.mob.faction == FACTION_ZOMBIE)
+						counted_humanoids[FACTION_ZOMBIE]++
+						continue
+					if(C.mob.faction == FACTION_YAUTJA)
+						counted_humanoids[FACTION_YAUTJA]++
+						if(C.mob.status_flags & XENO_HOST)
+							counted_humanoids["Infected preds"]++
+						continue
+					counted_humanoids["Humans"]++
+					if(C.mob.status_flags & XENO_HOST)
+						counted_humanoids["Infected humans"]++
+					if(C.mob.faction == FACTION_MARINE)
+						counted_humanoids[FACTION_MARINE]++
+						if(C.mob.job in (ROLES_MARINES))
+							counted_humanoids["USCM Marines"]++
+					else
+						counted_humanoids[C.mob.faction]++
+				if(isXeno(C.mob))
+					var/mob/living/carbon/Xenomorph/X = C.mob
+					counted_xenos[X.hivenumber]++
+					if(X.faction == FACTION_PREDALIEN)
+						counted_xenos[6]++
+					entry += " - <b><font color='red'>Xenomorph</font></b>"
 
-			if(age <= 1)
-				age = "<font color='#ff0000'><b>[age]</b></font>"
-			else if(age < 10)
-				age = "<font color='#ff8c00'><b>[age]</b></font>"
-
-			entry += " - [age]"*/
-
-			if(isXeno(C.mob))
-				entry += " - <b><font color='red'>Xenomorph</font></b>"
 			entry += " (<A HREF='?_src_=admin_holder;adminmoreinfo;extra=\ref[C.mob]'>?</A>)"
 			Lines += entry
+
+		for(var/line in sortList(Lines))
+			msg += "[line]\n"
+		msg += "<b>Total Players: [length(Lines)]</b>"
+		msg += "<br><b style='color:#777'>Observers: [counted_humanoids["Observers"]] players and [counted_humanoids["Admin observers"]] staff members</b>"
+		msg += "<br><b style='color:#2C7EFF'>Humans: [counted_humanoids["Humans"]]</b> <b style='color:#F00'>(Infected: [counted_humanoids["Infected humans"]])</b>"
+		msg += "<br><b style='color:#2C7EFF'>USCM personnel: [counted_humanoids[FACTION_MARINE]]</b> <b style='color:#688944'>(Squad Marines: [counted_humanoids["USCM Marines"]])</b>"
+		msg += "<br><b style='color:#7ABA19'>Predators: [counted_humanoids[FACTION_YAUTJA]]</b> [counted_humanoids["Infected preds"] ? "<b style='color:#F00'>(Infected: [counted_humanoids["Infected preds"]])</b>" : ""]"
+
+		var/show_fact = TRUE
+		for(var/i = 9;i < LAZYLEN(counted_humanoids) - 1; i++)
+			if(counted_humanoids[counted_humanoids[i]])
+				if(show_fact)
+					msg += "<br><br>Other factions:"
+					show_fact = FALSE
+				msg += "<br><b style='color:#2C7EFF'>[counted_humanoids[i]]: [counted_humanoids[counted_humanoids[i]]]</b>"
+		if(counted_humanoids[FACTION_NEUTRAL])
+			msg += "<br><b style='color:#777'>[FACTION_NEUTRAL] humans: [counted_humanoids[FACTION_NEUTRAL]]</b>"
+
+		show_fact = TRUE
+		var/datum/hive_status/hive
+		for(var/i = 1;i < LAZYLEN(counted_xenos); i++)
+			if(counted_xenos[i])
+				if(show_fact)
+					msg += "<br><br>Xenomorphs:"
+					show_fact = FALSE
+				hive = hive_datum[i]
+				if(hive)
+					msg += "<br><b style='color:[hive.color ? hive.color : "#8200FF"]'>[FACTION_LIST_XENOMORPH[i]] Hive: [counted_xenos[i]]</b> <b style='color:#4D0096'>(Queen: [hive.living_xeno_queen ? "Alive" : "Dead"])</b>"
+				else
+					msg += "<br><b style='color:#F00'>Error: no hive datum detected for [counted_xenos[i]]s Hive.</b>"
+				hive = null
+		if(counted_xenos[6])
+			msg += "<br><b style='color:#7ABA19'>Predaliens: [counted_xenos[6]]</b>"
+
 	else
 		for(var/client/C in clients)
 			if(C.admin_holder && C.admin_holder.fakekey)
 				Lines += C.admin_holder.fakekey
 			else
 				Lines += C.key
-
-	for(var/line in sortList(Lines))
-		msg += "[line]\n"
-
-	if(admin_holder && (admin_holder.rights & R_MOD))
-		var/datum/hive_status/hive = hive_datum[XENO_HIVE_NORMAL]
-		msg += "<b>Total Players: [length(Lines)]</b>"
-		msg += "<br><b style='color:#777'>Observers: [count_observers] (Non-Admin: [count_nonadmin_observers])</b>"
-		msg += "<br><b style='color:#2C7EFF'>Humans: [count_humans]</b> <b style='color:#688944'>(Marines: ~[count_marine_humans])</b> <b style='color:#F00'>(Infected: [count_infectedhumans])</b><br><b style='color:#2C7EFF'>Zeds: [count_zed]</b>"
-		msg += "<br><b style='color:#8200FF'>Aliens: [count_aliens]</b> <b style='color:#4D0096'>(Queen: [hive.living_xeno_queen ? "Alive" : "Dead"])</b>"
-		msg += "<br><b style='color:#7ABA19'>Predators: [count_preds]</b>"
-	else
+		for(var/line in sortList(Lines))
+			msg += "[line]\n"
 		msg += "<b>Total Players: [length(Lines)]</b>"
 
 	to_chat(src, msg)

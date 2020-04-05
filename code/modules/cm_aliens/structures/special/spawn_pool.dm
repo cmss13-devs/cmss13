@@ -6,7 +6,7 @@
 	health = 900
 	var/last_larva_time = 0
 	var/spawn_cooldown = 30 SECONDS
-	var/image/melting_body
+	var/mob/melting_body
 	
 	luminosity = 3
 
@@ -14,8 +14,6 @@
 	..()
 	overlays.Cut()
 	underlays.Cut()
-	if(melting_body)
-		underlays += melting_body
 	underlays += "[icon_state]_underlay"
 	overlays += image(icon, "[icon_state]_overlay", layer = ABOVE_MOB_LAYER)
 	if(linked_hive.stored_larva)
@@ -56,17 +54,16 @@
 	if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_GENERIC))
 		return
 	visible_message(SPAN_DANGER("\The [src] splashes loudly as \the [M] is tossed in, bubbling uncontrollably!"))
-	M.dir = SOUTH
-	var/icon/mob_icon = getFlatIcon(M)
-	mob_icon.Turn(90)
-	melting_body = image(mob_icon)
+	melting_body = M
+	melting_body.dir = SOUTH
+	melting_body.loc = null
 	melting_body.pixel_x = 16
-	melting_body.pixel_y = 16
+	melting_body.pixel_y = 19
+	vis_contents += melting_body
 	update_icon()
 	new /obj/effect/overlay/temp/acid_pool_splash(loc)
 	playsound(src, 'sound/effects/slosh.ogg', 25, 1)
 	linked_hive.stored_larva += 1
-	qdel(M)
 	melt_body()
 
 /obj/effect/alien/resin/special/pool/process()
@@ -87,17 +84,15 @@
 			spawn_pooled_larva(pick(players_with_xeno_pref))
 
 /obj/effect/alien/resin/special/pool/proc/melt_body(var/iterations = 3)
-	if(!melting_body)
-		update_icon()
-		return
 	melting_body.pixel_y -= 1
 	playsound(src, 'sound/bullets/acid_impact1.ogg', 25)
 	iterations -= 1
 	if(!iterations)
+		vis_contents.Cut()
+		qdel(melting_body)
 		melting_body = null
 	else
 		add_timer(CALLBACK(src, /obj/effect/alien/resin/special/pool/proc/melt_body, iterations), SECONDS_2)
-	update_icon()
 
 /obj/effect/alien/resin/special/pool/proc/can_spawn_larva()
 	return linked_hive.stored_larva
@@ -119,6 +114,9 @@
 
 /obj/effect/alien/resin/special/pool/Dispose()
 	linked_hive.spawn_pool = null
-	melting_body = null
+	vis_contents.Cut()
+	if(melting_body)
+		qdel(melting_body)
+		melting_body = null
 
 	. = ..()

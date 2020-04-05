@@ -1,3 +1,5 @@
+#define EGGMORPG_RANGE 7
+
 //Eggmorpher - Basically a big reusable egg
 /obj/effect/alien/resin/special/eggmorph
 	name = XENO_STRUCTURE_EGGMORPH
@@ -9,13 +11,13 @@
 	var/stored_huggers = 0
 	var/huggers_to_grow = 0
 	var/huggers_to_grow_max = 6
-	var/list/egg_triggers = list()
 	var/mob/captured_mob
+	var/datum/shape/rectangle/range_bounds
 	appearance_flags = KEEP_TOGETHER
 
 /obj/effect/alien/resin/special/eggmorph/New(loc, var/hive_ref)
-	create_egg_triggers()
 	..(loc, hive_ref)
+	range_bounds = RECT(x, y, EGGMORPG_RANGE, EGGMORPG_RANGE)
 
 /obj/effect/alien/resin/special/eggmorph/Dispose()
 	vis_contents.Cut()
@@ -23,24 +25,12 @@
 		qdel(captured_mob)
 		captured_mob = null
 
-	delete_egg_triggers()
 	. = ..()
 
 /obj/effect/alien/resin/special/eggmorph/examine(mob/user)
 	..()
 	if(isXeno(user) || isobserver(user))
 		to_chat(user, "It has [stored_huggers] facehuggers within, with [huggers_to_grow] more to grow.")
-
-/obj/effect/alien/resin/special/eggmorph/proc/create_egg_triggers()
-	for(var/turf/T in orange(src, 7))
-		var/obj/effect/egg_trigger/ET = new /obj/effect/egg_trigger(src, null, src)
-		ET.loc = T
-		egg_triggers += ET
-
-/obj/effect/alien/resin/special/eggmorph/proc/delete_egg_triggers()
-	for(var/atom/trigger in egg_triggers)
-		egg_triggers -= trigger
-		qdel(trigger)
 
 /obj/effect/alien/resin/special/eggmorph/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/grab))
@@ -107,6 +97,8 @@
 	underlays += "[icon_state]_underlay"
 
 /obj/effect/alien/resin/special/eggmorph/process()
+	check_facehugger_target()
+
 	if(!linked_hive || !captured_mob || world.time < (last_spawned + spawn_cooldown))
 		return
 	last_spawned = world.time
@@ -119,6 +111,20 @@
 			qdel(captured_mob)
 			captured_mob = null
 			update_icon()
+
+/obj/effect/alien/resin/special/eggmorph/proc/check_facehugger_target()
+	if(!range_bounds)
+		range_bounds = RECT(x, y, EGGMORPG_RANGE, EGGMORPG_RANGE)
+
+	var/list/targets = SSquadtree.players_in_range(range_bounds, z, QTREE_SCAN_MOBS | QTREE_EXCLUDE_OBSERVER)
+	if(!targets.len || isnull(targets))
+		return
+
+	var/target = pick(targets)
+	if(isnull(target))
+		return
+
+	HasProximity(target)
 
 /obj/effect/alien/resin/special/eggmorph/HasProximity(atom/movable/AM as mob|obj)
 	if(!stored_huggers || !CanHug(AM) || isSynth(AM))
@@ -140,3 +146,5 @@
 		new /obj/item/clothing/mask/facehugger(loc)
 		return
 	..()
+
+#undef EGGMORPG_RANGE

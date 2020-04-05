@@ -1179,6 +1179,9 @@
 			return
 		to_chat(user, SPAN_NOTICE("You begin unloading [src]. Hold still..."))
 		if(do_after(user,current_mag.reload_delay, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
+			if(current_mag.current_rounds <= 0)
+				to_chat(user, SPAN_WARNING("You have already unloaded \the [src]."))
+				return
 			playsound(user, unload_sound, 25, 1)
 			user.visible_message(SPAN_NOTICE("[user] unloads [ammo] from [src]."),
 			SPAN_NOTICE("You unload [ammo] from [src]."))

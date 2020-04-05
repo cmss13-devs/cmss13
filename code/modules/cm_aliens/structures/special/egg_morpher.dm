@@ -10,13 +10,19 @@
 	var/huggers_to_grow = 0
 	var/huggers_to_grow_max = 6
 	var/list/egg_triggers = list()
-	var/image/captured_mob
+	var/mob/captured_mob
+	appearance_flags = KEEP_TOGETHER
 
 /obj/effect/alien/resin/special/eggmorph/New(loc, var/hive_ref)
 	create_egg_triggers()
 	..(loc, hive_ref)
 
 /obj/effect/alien/resin/special/eggmorph/Dispose()
+	vis_contents.Cut()
+	if(captured_mob)
+		qdel(captured_mob)
+		captured_mob = null
+
 	delete_egg_triggers()
 	. = ..()
 
@@ -59,13 +65,16 @@
 				return
 			visible_message(SPAN_DANGER("\The [src] churns as it begins digest \the [M], spitting out foul smelling fumes!"))
 			playsound(src, "alien_drool", 25)
-			M.dir = SOUTH
-			captured_mob = image(getFlatIcon(M))
+			captured_mob = M
+			captured_mob.dir = SOUTH
+			captured_mob.loc = null
+			var/matrix/MX = matrix()
+			captured_mob.apply_transform(MX)
 			captured_mob.pixel_x = 16
 			captured_mob.pixel_y = 16
+			vis_contents += captured_mob
 			huggers_to_grow = huggers_to_grow_max
 			update_icon()
-			qdel(M)
 		return
 	if(istype(I, /obj/item/clothing/mask/facehugger))
 		var/obj/item/clothing/mask/facehugger/F = I
@@ -87,11 +96,14 @@
 
 /obj/effect/alien/resin/special/eggmorph/update_icon()
 	..()
+	appearance_flags |= KEEP_TOGETHER
 	overlays.Cut()
 	underlays.Cut()
 	if(captured_mob)
-		underlays += captured_mob
-		overlays += "[icon_state]_overlay"
+		var/image/J = new(icon = icon, icon_state = "[icon_state]", layer = captured_mob.layer + 0.1)
+		overlays += J
+		var/image/I = new(icon = icon, icon_state = "[icon_state]_overlay", layer = captured_mob.layer + 0.2)
+		overlays += I
 	underlays += "[icon_state]_underlay"
 
 /obj/effect/alien/resin/special/eggmorph/process()
@@ -103,9 +115,10 @@
 		stored_huggers = min(huggers_to_grow_max, stored_huggers + 1)
 		if(huggers_to_grow <= 0)
 			visible_message(SPAN_DANGER("\The [src] groans as its contents are reduced to nothing!"))
+			vis_contents.Cut()
+			qdel(captured_mob)
 			captured_mob = null
 			update_icon()
-
 
 /obj/effect/alien/resin/special/eggmorph/HasProximity(atom/movable/AM as mob|obj)
 	if(!stored_huggers || !CanHug(AM) || isSynth(AM))

@@ -16,6 +16,7 @@ var/global/datum/authority/branch/role/RoleAuthority
 #define GET_RANDOM_JOB 0
 #define BE_ASSISTANT 1
 #define RETURN_TO_LOBBY 2
+#define BE_XENOMORPH 3
 
 var/list/departments = list("Command", "Medical", "Engineering", "Security", "Civilian", "Cargo")
 
@@ -234,6 +235,7 @@ var/list/departments = list("Command", "Medical", "Engineering", "Security", "Ci
 		switch(M.client.prefs.alternate_option)
 			if(GET_RANDOM_JOB) 	roles_regular = assign_random_role(M, roles_regular) //We want to keep the list between assignments.
 			if(BE_ASSISTANT)	assign_role(M, roles_for_mode[JOB_SQUAD_MARINE]) //Should always be available, in all game modes, as a candidate. Even if it may not be a marine.
+			if(BE_XENOMORPH)	assign_to_xenomorph(M)
 			if(RETURN_TO_LOBBY) M.ready = 0
 		unassigned_players -= M
 	if(unassigned_players.len)
@@ -243,6 +245,20 @@ var/list/departments = list("Command", "Medical", "Engineering", "Security", "Ci
 	unassigned_players = null
 
 	/*===============================================================*/
+
+/datum/authority/branch/role/proc/assign_to_xenomorph(var/mob/M)
+	var/datum/mind/P = M.mind
+	var/datum/game_mode/G = ticker.mode
+	var/datum/hive_status/hive = hive_datum[XENO_HIVE_NORMAL]
+	// if we don't have at least one thing - abort
+	if(!P || !G || !hive || P.roundstart_picked)
+		return
+	
+	if(hive.stored_larva)
+		hive.stored_larva--
+		G.transform_xeno(P)
+
+	return
 
 /*
 It is possible that after looping through everyone, no one is assigned a command position

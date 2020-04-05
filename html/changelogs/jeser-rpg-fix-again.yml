@@ -1,0 +1,6 @@
+author: Jeser
+
+delete-after: True
+
+changes: 
+  - bugfix: "Fixed exploit with RPG. Again."

@@ -89,4 +89,4 @@
 
 #define RECT new /datum/shape/rectangle
 #define QTREE new /datum/quadtree
-#define SEARCH_QTREE(qtree, shape_range) qtree.query_range(shape_range)
+#define SEARCH_QTREE(qtree, shape_range, flags) qtree.query_range(shape_range, null, flags)

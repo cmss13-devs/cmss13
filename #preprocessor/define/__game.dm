@@ -378,4 +378,5 @@ var/static/list/scarySounds = list('sound/weapons/thudswoosh.ogg','sound/weapons
 #define QUADTREE_CAPACITY 4
 #define QUADTREE_BOUNDARY_MINIMUM_WIDTH 3
 #define QUADTREE_BOUNDARY_MINIMUM_HEIGHT 3
-#define QUADTREE_TILE_SIZE 32
+#define QTREE_EXCLUDE_OBSERVER 1
+#define QTREE_SCAN_MOBS 2 //Return mob list instead of client list

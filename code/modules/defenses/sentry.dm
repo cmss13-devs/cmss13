@@ -5,10 +5,10 @@
 	name = "\improper UA 571-C sentry gun"
 	desc = "A deployable, semi-automated turret with AI targeting capabilities. Armed with an M30 Autocannon and a 500-round drum magazine."
 	req_one_access = list(ACCESS_MARINE_ENGINEERING, ACCESS_MARINE_ENGPREP, ACCESS_MARINE_LEADER)
-	var/list/atom/movable/targets = list() // Lists of current potential targets
+	var/list/targets = list() // Lists of current potential targets
 	var/list/other_targets = list() //List of special target types to shoot at, if needed.
-	var/list/obj/effect/turret_trigger/turret_triggers = list()
 	var/atom/movable/target = null
+	var/datum/shape/rectangle/range_bounds
 	var/datum/effect_system/spark_spread/spark_system //The spark system, used for generating... sparks?
 	var/last_fired = 0
 	var/fire_delay = 6
@@ -23,8 +23,50 @@
 	spark_system.set_up(5, 0, src)
 	spark_system.attach(src)
 	if(turned_on)
-		create_turret_triggers()
+		start_processing()
+		set_range()
 	update_icon()
+
+/obj/structure/machinery/defenses/sentry/start_processing()
+	if(!machine_processing)
+		machine_processing = TRUE
+		fast_machines += src
+
+/obj/structure/machinery/defenses/sentry/stop_processing()
+	if(machine_processing)
+		machine_processing = FALSE
+		fast_machines -= src
+
+/obj/structure/machinery/defenses/sentry/process()
+	if(!turned_on)
+		stop_processing()
+		return
+
+	if(!range_bounds)
+		set_range()
+	targets = SSquadtree.players_in_range(range_bounds, z, QTREE_SCAN_MOBS | QTREE_EXCLUDE_OBSERVER)
+	if(!targets)
+		return FALSE
+	
+	if(!target && targets.len)
+		target = pick(targets)
+	
+	get_target(target)
+	return TRUE
+
+/obj/structure/machinery/defenses/sentry/proc/set_range()
+	switch(dir)
+		if(EAST)
+			range_bounds = RECT(x + 4, y, 7, 7)
+		if(WEST)
+			range_bounds = RECT(x - 4, y, 7, 7)
+		if(NORTH)
+			range_bounds = RECT(x, y + 4, 7, 7)
+		if(SOUTH)
+			range_bounds = RECT(x, y - 4, 7, 7)
+
+/obj/structure/machinery/defenses/sentry/proc/unset_range()
+	qdel(range_bounds)
 
 /obj/structure/machinery/defenses/sentry/update_icon()
 	..()
@@ -62,11 +104,13 @@
 
 	visible_message("[htmlicon(src, viewers(src))] [SPAN_NOTICE("The [name] hums to life and emits several beeps.")]")
 	visible_message("[htmlicon(src, viewers(src))] [SPAN_NOTICE("The [name] buzzes in a monotone voice: 'Default systems initiated'")]")
-	create_turret_triggers()
+	start_processing()
+	set_range()
 
 /obj/structure/machinery/defenses/sentry/power_off_action()
 	visible_message("[htmlicon(src, viewers(src))] [SPAN_NOTICE("The [name] powers down and goes silent.")]")
-	delete_turret_triggers()
+	stop_processing()
+	unset_range()
 
 /obj/structure/machinery/defenses/sentry/attackby(var/obj/item/O, var/mob/user)
 	if(isnull(O) || isnull(user)) 
@@ -147,18 +191,6 @@
 		spark_system.start()
 	..()
 
-/obj/structure/machinery/defenses/sentry/proc/create_turret_triggers()
-	for(var/turf/T in orange(src, SENTRY_RANGE))
-		for(var/atom/movable/A in T)
-			if((isliving(A) && !isrobot(A)) || (A.type in other_targets))
-				targets.Add(A)
-		turret_triggers.Add(new /obj/effect/turret_trigger(T, src))
-
-/obj/structure/machinery/defenses/sentry/proc/delete_turret_triggers()
-	targets = list()
-	for(var/obj/effect/turret_trigger/T in turret_triggers)
-		turret_triggers.Remove(T)
-		qdel(T)
 
 /obj/structure/machinery/defenses/sentry/proc/fire(var/atom/A)
 	if(!(world.time-last_fired >= fire_delay) || !turned_on || !ammo || isnull(target))
@@ -317,7 +349,8 @@
 
 /obj/structure/machinery/defenses/sentry/Dispose() //Clear these for safety's sake.
 	target = null
-	delete_turret_triggers()
+	qdel(range_bounds)
+	stop_processing()
 	SetLuminosity(0)
 	. = ..()
 
@@ -373,23 +406,6 @@ obj/structure/machinery/defenses/sentry/premade/damaged_action()
 		deployment_system = null
 	. = ..()
 
-
-/obj/effect/turret_trigger
-	name = "turret trigger"
-	icon = 'icons/effects/effects.dmi'
-	anchored = TRUE
-	mouse_opacity = 0
-	invisibility = INVISIBILITY_MAXIMUM
-	var/obj/structure/machinery/defenses/sentry/linked_turret
-
-/obj/effect/turret_trigger/New(loc, var/obj/structure/machinery/defenses/sentry/source_turret)
-	..()
-	linked_turret = source_turret
-
-/obj/effect/turret_trigger/Crossed(atom/movable/A)
-	if(!linked_turret)
-		qdel(src)
-	linked_turret.get_target(A)
 
 
 #undef SENTRY_FIREANGLE

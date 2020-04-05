@@ -68,21 +68,22 @@
     is_divided = TRUE
 
 /datum/quadtree/proc/insert_player(datum/coords/player/p_coords)
-    if(ismob(p_coords))
-        var/mob/M = p_coords
-        if(!M.client)
-            return FALSE
-        p_coords = new
-        p_coords.player = M.client
-        if(!M.x && !M.y && !M.z)
-            var/turf/T = get_turf(M)
-            p_coords.x_pos = T.x
-            p_coords.y_pos = T.y
-            p_coords.z_pos = T.z
-        else
-            p_coords.x_pos = M.x
-            p_coords.y_pos = M.y
-            p_coords.z_pos = M.z            
+    if(!ismob(p_coords))
+        return
+    var/mob/M = p_coords
+    if(!M.client)
+        return FALSE
+    p_coords = new
+    p_coords.player = M.client
+    if(!M.x && !M.y && !M.z)
+        var/turf/T = get_turf(M)
+        p_coords.x_pos = T.x
+        p_coords.y_pos = T.y
+        p_coords.z_pos = T.z
+    else
+        p_coords.x_pos = M.x
+        p_coords.y_pos = M.y
+        p_coords.z_pos = M.z            
 
     if(p_coords.z_pos != z_level)
         return FALSE
@@ -109,18 +110,28 @@
                         
     return TRUE
 
-/datum/quadtree/proc/query_range(datum/shape/rectangle/range, list/found_players)
+/datum/quadtree/proc/query_range(datum/shape/rectangle/range, list/found_players, flags = 0)
     if(!found_players)
         found_players = list()
     if(!range || !range.intersects(boundary))
         return found_players
     for(var/datum/coords/player/P in player_coords)
+        if(flags & QTREE_EXCLUDE_OBSERVER)
+            if(isobserver(P.player.mob))
+                continue
         if(range.contains(P))
-            found_players.Add(P.player)
+            if(!P.player)
+                continue
+            if(flags & QTREE_SCAN_MOBS)
+                if(!P.player.mob)
+                    continue
+                found_players.Add(P.player.mob)
+            else
+                found_players.Add(P.player)
     if(is_divided)
-        found_players |= (nw_branch.query_range(range, found_players))
-        found_players |= (ne_branch.query_range(range, found_players))
-        found_players |= (sw_branch.query_range(range, found_players))
-        found_players |= (se_branch.query_range(range, found_players))
+        found_players |= (nw_branch.query_range(range, found_players, flags))
+        found_players |= (ne_branch.query_range(range, found_players, flags))
+        found_players |= (sw_branch.query_range(range, found_players, flags))
+        found_players |= (se_branch.query_range(range, found_players, flags))
     
     return found_players

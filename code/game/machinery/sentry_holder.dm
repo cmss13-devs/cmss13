@@ -81,7 +81,8 @@
 	deployed_turret.pixel_x = 0
 	deployed_turret.pixel_y = 0
 
-		deployed_turret.create_turret_triggers()
+	deployed_turret.start_processing()
+	deployed_turret.set_range()
 
 /obj/structure/machinery/sentry_holder/proc/undeploy_sentry()
 	if(!deployed_turret)
@@ -91,7 +92,8 @@
 	deployment_cooldown = world.time + 50
 	deployed_turret.loc = src
 	deployed_turret.turned_on = FALSE
-	deployed_turret.delete_turret_triggers()
+	deployed_turret.stop_processing()
+	deployed_turret.unset_range()
 	pixel_x = ox
 	pixel_y = oy
 	icon_state = "sentry_system_installed"

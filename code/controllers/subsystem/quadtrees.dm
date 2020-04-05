@@ -18,7 +18,7 @@ var/datum/subsystem/quadtree/SSquadtree
 
 /datum/subsystem/quadtree/Initialize()
     var/datum/shape/rectangle/R
-    for(var/i = 1, i <= cur_quadtrees.len, i++)
+    for(var/i in 1 to cur_quadtrees.len)
         R = RECT(world.maxx/2,world.maxy/2, world.maxx, world.maxy)
         new_quadtrees[i] = QTREE(R, qtree_capacity, i)
     ..()
@@ -32,7 +32,7 @@ var/datum/subsystem/quadtree/SSquadtree
         cur_quadtrees = new_quadtrees.Copy()
         if(new_quadtrees.len < world.maxz)
             new_quadtrees.len = world.maxz
-        for(var/i = 1, i <= world.maxz, i++)
+        for(var/i in 1 to world.maxz)
             new_quadtrees[i] = QTREE(RECT(world.maxx/2,world.maxy/2, world.maxx, world.maxy), qtree_capacity, i)
 
     while(player_feed.len)
@@ -43,9 +43,9 @@ var/datum/subsystem/quadtree/SSquadtree
         if(MC_TICK_CHECK)
             return
 
-/datum/subsystem/quadtree/proc/players_in_range(datum/shape/rectangle/range, z_level)
+/datum/subsystem/quadtree/proc/players_in_range(datum/shape/range, z_level, flags = 0)
     var/list/players = list()
     if(cur_quadtrees.len < z_level || cur_quadtrees[z_level])
         var/datum/quadtree/Q = cur_quadtrees[z_level]
-        players = SEARCH_QTREE(Q, range)
+        players = SEARCH_QTREE(Q, range, flags)
     return players

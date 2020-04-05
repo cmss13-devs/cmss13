@@ -381,7 +381,8 @@
 		else
 			step(M, get_dir(src,deployed_turret))
 
-	deployed_turret.create_turret_triggers()
+	deployed_turret.start_processing()
+	deployed_turret.set_range()
 
 /obj/structure/dropship_equipment/sentry_holder/proc/undeploy_sentry()
 	if(!deployed_turret)
@@ -391,7 +392,8 @@
 	deployment_cooldown = world.time + 50
 	deployed_turret.loc = src
 	deployed_turret.turned_on = FALSE
-	deployed_turret.delete_turret_triggers()
+	deployed_turret.stop_processing()
+	deployed_turret.unset_range()
 	icon_state = "sentry_system_installed"
 
 

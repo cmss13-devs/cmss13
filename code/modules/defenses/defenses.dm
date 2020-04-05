@@ -46,6 +46,17 @@
 	power_off_action()
 	update_icon()
 
+/obj/structure/machinery/defenses/start_processing()
+	if(!machine_processing)
+		machine_processing = TRUE
+		fast_machines += src
+
+/obj/structure/machinery/defenses/stop_processing()
+	if(machine_processing)
+		machine_processing = FALSE
+		fast_machines -= src
+
+
 /obj/structure/machinery/defenses/attackby(var/obj/item/O as obj, mob/user as mob)
 	if(isnull(O)) 
 		return

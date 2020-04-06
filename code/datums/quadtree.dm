@@ -68,22 +68,21 @@
     is_divided = TRUE
 
 /datum/quadtree/proc/insert_player(datum/coords/player/p_coords)
-    if(!ismob(p_coords))
-        return
-    var/mob/M = p_coords
-    if(!M.client)
-        return FALSE
-    p_coords = new
-    p_coords.player = M.client
-    if(!M.x && !M.y && !M.z)
-        var/turf/T = get_turf(M)
-        p_coords.x_pos = T.x
-        p_coords.y_pos = T.y
-        p_coords.z_pos = T.z
-    else
-        p_coords.x_pos = M.x
-        p_coords.y_pos = M.y
-        p_coords.z_pos = M.z            
+    if(ismob(p_coords))
+        var/mob/M = p_coords
+        if(!M.client)
+            return FALSE
+        p_coords = new
+        p_coords.player = M.client
+        if(!M.x && !M.y && !M.z)
+            var/turf/T = get_turf(M)
+            p_coords.x_pos = T.x
+            p_coords.y_pos = T.y
+            p_coords.z_pos = T.z
+        else
+            p_coords.x_pos = M.x
+            p_coords.y_pos = M.y
+            p_coords.z_pos = M.z                     
 
     if(p_coords.z_pos != z_level)
         return FALSE

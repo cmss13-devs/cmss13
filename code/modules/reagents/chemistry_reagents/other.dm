@@ -262,7 +262,7 @@
 	explosive = TRUE
 	power = 0.15
 	chemclass = CHEM_CLASS_BASIC
-	properties = list(PROPERTY_FLOWING = 1, PROPERTY_EXPLOSIVE = 0.5)
+	properties = list(PROPERTY_FLOWING = 1)
 
 	custom_metabolism = 0.01
 
@@ -487,7 +487,7 @@
 	explosive = TRUE
 	power = 0.5
 	chemclass = CHEM_CLASS_UNCOMMON
-	properties = list(PROPERTY_FUELING = 4, PROPERTY_OXIDIZING = 1, PROPERTY_VISCOUS = 4, PROPERTY_EXPLOSIVE = 1)
+	properties = list(PROPERTY_FUELING = 4, PROPERTY_OXIDIZING = 1, PROPERTY_VISCOUS = 4)
 
 /datum/reagent/thermite/on_mob_life(mob/living/M)
 		. = ..()
@@ -921,7 +921,7 @@
 	explosive = TRUE
 	power = 0.15
 	chemclass = CHEM_CLASS_COMMON
-	properties = list(PROPERTY_TOXIC = 2, PROPERTY_FLOWING = 4, PROPERTY_EXPLOSIVE = 0.5)
+	properties = list(PROPERTY_TOXIC = 2, PROPERTY_FLOWING = 4)
 
 /datum/reagent/methane/on_mob_life(var/mob/living/M)
 	. = ..()
@@ -945,13 +945,11 @@
 	color = "#E5E5E5"
 	explosive = TRUE
 	power = 0.4
-	falloff_level = 16
+	falloff_level = 50
 	chemfiresupp = TRUE
 	durationmod = -0.2
 	intensitymod = 0.5
 	burncolor = "#ff9900"
-	chemclass = CHEM_CLASS_UNCOMMON
-	properties = list(PROPERTY_OXIDIZING = 2, PROPERTY_EXPLOSIVE = 1)
 
 /datum/reagent/anfo
 	name = "Ammonium nitrate fuel oil"
@@ -960,9 +958,7 @@
 	description = "Ammonium nitrate fuel oil (ANFO) is a low cost bulk explosive commonly used for mining and construction operations."
 	explosive = TRUE
 	power = 1
-	falloff_level = 12
-	chemclass = CHEM_CLASS_RARE
-	properties = list(PROPERTY_EXPLOSIVE = 2)
+	falloff_level = 30
 
 /datum/reagent/nitroglycerin
 	name = "Nitroglycerin"
@@ -973,7 +969,7 @@
 	custom_metabolism = 0.01
 	explosive = TRUE
 	power = 1
-	falloff_level = 8
+	falloff_level = 25
 
 /datum/reagent/cyclonite
 	name = "Cyclonite"
@@ -983,9 +979,7 @@
 	color = "#E3E0BA"
 	explosive = TRUE
 	power = 1.5
-	falloff_level = 8
-	chemclass = CHEM_CLASS_RARE
-	properties = list(PROPERTY_TOXIC = 2, PROPERTY_EXPLOSIVE = 3)
+	falloff_level = 20
 
 /datum/reagent/cyclonite/on_mob_life(var/mob/living/M)
 	. = ..()
@@ -999,12 +993,10 @@
 	color = "#F5F5F5"
 	explosive = TRUE
 	power = 2
-	falloff_level = 4
+	falloff_level = 15
 	chemfiresupp = TRUE
 	durationmod = -0.2
 	intensitymod = 0.5
-	chemclass = CHEM_CLASS_RARE
-	properties = list(PROPERTY_EXPLOSIVE = 4, PROPERTY_OXIDIZING = 2)
 
 ///////////////////////////////////////////Blood plasmas////////////////////////////////////////////////////////////
 /datum/reagent/plasma

@@ -240,7 +240,7 @@
 			if(PROPERTY_EXPLOSIVE)
 				explosive = TRUE
 				power = potency
-				falloff_level =  30 / potency
+				falloff_level =  50 / potency
 
 /proc/get_negative_chem_properties(var/special_properties)
 	var/list/negative_properties = list(PROPERTY_HYPOXEMIC = "Reacts with hemoglobin in red blood cells preventing oxygen from being absorbed, resulting in hypoxemia.",\

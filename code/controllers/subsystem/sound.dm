@@ -20,7 +20,8 @@ var/datum/subsystem/sound/SSsound
 	for(var/datum/sound_template/i in template_queue)
 		if(!resumed) //We haven't started processing the hearers assigned to this sound yet
 			currentrun = template_queue[i]
-			currentrun |= SSquadtree.players_in_range(RECT(i.x, i.y, i.range * 2, i.range * 2), i.z)
+			if(i.range)
+				currentrun |= SSquadtree.players_in_range(RECT(i.x, i.y, i.range * 2, i.range * 2), i.z)
 			if(MC_TICK_CHECK) //An interruption
 				return
 		while(currentrun.len) //processing the hearers

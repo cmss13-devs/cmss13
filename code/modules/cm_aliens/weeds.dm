@@ -36,7 +36,8 @@
 
 /obj/effect/alien/weeds/Dispose()
 	if(parent)
-		add_timer(CALLBACK(parent, .obj/effect/alien/weeds/node/proc/replace_child, loc, type), rand(250, 350))
+		parent.remove_child(src)
+
 	var/oldloc = loc
 	parent = null
 	. = ..()
@@ -64,7 +65,7 @@
 // Uh oh, we might be dying!
 // I know this is bad proc naming but it was too good to pass on and it's only used in this file anyways
 // If you're still confused, scroll aaaall the way down to the bottom of the file.
-// that's /obj/effect/alien/weeds/node/Dispose(). on line 318.
+// that's /obj/effect/alien/weeds/node/Dispose().
 /obj/effect/alien/weeds/proc/avoid_orphanage()
 	for(var/obj/effect/alien/weeds/node/N in orange(node_range, get_turf(src)))
 		// WE FOUND A NEW MOMMY
@@ -81,50 +82,53 @@
 	if(!istype(U))
 		return
 
-	direction_loop:
-		for(var/dirn in cardinal)
-			var/turf/T = get_step(src, dirn)
-
-			if(!istype(T))
+	for(var/dirn in cardinal)
+		var/turf/T = get_step(src, dirn)
+		if(!istype(T) || !T.is_weedable())
+			continue
+		
+		var/obj/effect/alien/weeds/W = locate() in T
+		if(W)
+			if(W.weed_strength >= node.weed_strength)
 				continue
+			qdel(W)
 
-			if(!T.is_weedable())
-				continue
 
-			var/obj/effect/alien/weeds/W = locate() in T
-			if(W)
-				if(W.weed_strength >= node.weed_strength)
-					continue
-				qdel(W)
+		if(istype(T, /turf/closed/wall/resin))
+			continue
 
-			if(istype(T, /turf/closed/wall/resin))
-				continue
+		if(istype(T, /turf/closed/wall))
+			new /obj/effect/alien/weeds/weedwall(T)
+			continue
 
-			if(istype(T, /turf/closed/wall))
-				new /obj/effect/alien/weeds/weedwall(T)
-				continue
+		if(istype(T.loc, /area/arrival))
+			continue
 
-			if(istype(T.loc, /area/arrival))
-				continue
+		if(!weed_expand_objects(T, dirn))
+			continue
 
-			for(var/obj/structure/platform/P in src.loc)
-				if(P.dir == reverse_direction(dirn))
-					continue direction_loop
+		new /obj/effect/alien/weeds(T, node)
 
-			for(var/obj/O in T)
-				if(istype(O, /obj/structure/platform))
-					if(O.dir == dirn)
-						continue direction_loop
-				if(istype(O, /obj/structure/window/framed))
-					new /obj/effect/alien/weeds/weedwall/window(T)
-					continue direction_loop
-				else if(istype(O, /obj/structure/window_frame))
-					new /obj/effect/alien/weeds/weedwall/frame(T)
-					continue direction_loop
-				else if(istype(O, /obj/structure/machinery/door) && O.density && (!(O.flags_atom & ON_BORDER) || O.dir != dirn))
-					continue direction_loop
+/obj/effect/alien/weeds/proc/weed_expand_objects(var/turf/T, var/direction)
+	for(var/obj/structure/platform/P in src.loc)
+		if(P.dir == reverse_direction(direction))
+			return FALSE
 
-			new /obj/effect/alien/weeds(T, node)
+	for(var/obj/O in T)
+		if(istype(O, /obj/structure/platform))
+			if(O.dir == direction)
+				return FALSE
+
+		if(istype(O, /obj/structure/window/framed))
+			new /obj/effect/alien/weeds/weedwall/window(T)
+			return FALSE
+		else if(istype(O, /obj/structure/window_frame))
+			new /obj/effect/alien/weeds/weedwall/frame(T)
+			return FALSE
+		else if(istype(O, /obj/structure/machinery/door) && O.density && (!(O.flags_atom & ON_BORDER) || O.dir != direction))
+			return FALSE
+
+	return TRUE
 
 /obj/effect/alien/weeds/proc/update_neighbours(turf/U)
 	if(!U)
@@ -324,8 +328,7 @@
 	for(var/X in children)
 		var/obj/effect/alien/weeds/W = X
 		remove_child(W)
-		if(istype(W))
-			add_timer(CALLBACK(W, .proc/avoid_orphanage), rand(350, 450))
+		add_timer(CALLBACK(W, .proc/avoid_orphanage), rand(350, 450))
 
 	. = ..()
 

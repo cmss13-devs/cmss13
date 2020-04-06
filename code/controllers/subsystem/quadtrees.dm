@@ -2,8 +2,7 @@ var/datum/subsystem/quadtree/SSquadtree
 
 /datum/subsystem/quadtree
     name = "Quadtree"
-    flags = SS_TICKER
-    wait = 1
+    wait = 0.5 SECONDS 
     priority = SS_PRIORITY_QUADTREE
 
     var/list/cur_quadtrees 

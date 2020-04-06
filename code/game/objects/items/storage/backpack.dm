@@ -314,10 +314,15 @@
 	uniform_restricted = list(/obj/item/clothing/suit/storage/marine/M3S, /obj/item/clothing/head/helmet/marine/scout) //Need to wear Scout armor and helmet to equip this.
 	has_gamemode_skin = FALSE //same sprite for all gamemode.
 	var/camo_active = FALSE
-	var/camo_alpha = 5
+	var/camo_alpha = 10
 
 	actions_types = list(/datum/action/item_action)
 
+/obj/item/storage/backpack/marine/satchel/scout_cloak/dropped(mob/user)
+	if(ishuman(user))
+		deactivate_camouflage(user, FALSE)
+
+	. = ..()
 
 /obj/item/storage/backpack/marine/satchel/scout_cloak/attack_self(mob/user)
 	camouflage()
@@ -352,6 +357,7 @@
 	H.alpha = camo_alpha
 	H.FF_hit_evade = 100
 	H.allow_gun_usage = FALSE
+	H.species.melee_allowed = FALSE
 
 	var/datum/mob_hud/security/advanced/SA = huds[MOB_HUD_SECURITY_ADVANCED]
 	SA.remove_from_hud(H)
@@ -361,7 +367,7 @@
 	anim(H.loc, H, 'icons/mob/mob.dmi', null, "cloak", null, H.dir)
 
 
-/obj/item/storage/backpack/marine/satchel/scout_cloak/proc/deactivate_camouflage(var/mob/living/carbon/human/H)
+/obj/item/storage/backpack/marine/satchel/scout_cloak/proc/deactivate_camouflage(var/mob/living/carbon/human/H, var/anim = TRUE)
 	if(!istype(H))
 		return FALSE
 
@@ -377,12 +383,14 @@
 	var/datum/mob_hud/xeno_infection/XI = huds[MOB_HUD_XENO_INFECTION]
 	XI.add_to_hud(H)
 
-	anim(H.loc, H,'icons/mob/mob.dmi', null, "uncloak", null, H.dir)
+	if(anim)
+		anim(H.loc, H,'icons/mob/mob.dmi', null, "uncloak", null, H.dir)
 
 	add_timer(CALLBACK(src, .proc/allow_shooting, H), 5)
 
 /obj/item/storage/backpack/marine/satchel/scout_cloak/proc/allow_shooting(var/mob/living/carbon/human/H)
 	H.allow_gun_usage = TRUE
+	H.species.melee_allowed = TRUE
 
 /obj/item/storage/backpack/marine/satchel/scout_cloak/upp
 	name = "\improper V86 Thermal Cloak"

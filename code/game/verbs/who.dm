@@ -44,52 +44,56 @@
 			var/entry = "\t[C.key]"
 			if(C.admin_holder && C.admin_holder.fakekey)
 				entry += " <i>(as [C.admin_holder.fakekey])</i>"
-			entry += " - Playing as [C.mob.real_name]"
-			switch(C.mob.stat)
-				if(UNCONSCIOUS)
-					entry += " - <font color='#404040'><b>Unconscious</b></font>"
-				if(DEAD)
-					if(isobserver(C.mob))
-						counted_humanoids["Observers"]++
-						if(C.admin_holder || C.admin_holder.rights & R_MOD)
-							counted_humanoids["Admin observers"]++
-							counted_humanoids["Observers"]--
-						var/mob/dead/observer/O = C.mob
-						if(O.started_as_observer)
-							entry += " - <font color='#777'>Observing</font>"
+			if(C.mob)	//Juuuust in case
+				if(istype(C.mob, /mob/new_player))
+					entry += " - In Lobby"
+				else
+					entry += " - Playing as [C.mob.real_name]"
+				switch(C.mob.stat)
+					if(UNCONSCIOUS)
+						entry += " - <font color='#404040'><b>Unconscious</b></font>"
+					if(DEAD)
+						if(isobserver(C.mob))
+							counted_humanoids["Observers"]++
+							if(C.admin_holder)
+								counted_humanoids["Admin observers"]++
+								counted_humanoids["Observers"]--
+							var/mob/dead/observer/O = C.mob
+							if(O.started_as_observer)
+								entry += " - <font color='#777'>Observing</font>"
+							else
+								entry += " - <font color='#000'><b>DEAD</b></font>"
 						else
 							entry += " - <font color='#000'><b>DEAD</b></font>"
-					else
-						entry += " - <font color='#000'><b>DEAD</b></font>"
 
-			if(C.mob && C.mob.stat != DEAD)
-				if(ishuman(C.mob))
-					if(C.mob.faction == FACTION_ZOMBIE)
-						counted_humanoids[FACTION_ZOMBIE]++
-						continue
-					if(C.mob.faction == FACTION_YAUTJA)
-						counted_humanoids[FACTION_YAUTJA]++
+				if(C.mob && C.mob.stat != DEAD)
+					if(ishuman(C.mob))
+						if(C.mob.faction == FACTION_ZOMBIE)
+							counted_humanoids[FACTION_ZOMBIE]++
+							continue
+						if(C.mob.faction == FACTION_YAUTJA)
+							counted_humanoids[FACTION_YAUTJA]++
+							if(C.mob.status_flags & XENO_HOST)
+								counted_humanoids["Infected preds"]++
+							continue
+						counted_humanoids["Humans"]++
 						if(C.mob.status_flags & XENO_HOST)
-							counted_humanoids["Infected preds"]++
-						continue
-					counted_humanoids["Humans"]++
-					if(C.mob.status_flags & XENO_HOST)
-						counted_humanoids["Infected humans"]++
-					if(C.mob.faction == FACTION_MARINE)
-						counted_humanoids[FACTION_MARINE]++
-						if(C.mob.job in (ROLES_MARINES))
-							counted_humanoids["USCM Marines"]++
-					else
-						counted_humanoids[C.mob.faction]++
-				if(isXeno(C.mob))
-					var/mob/living/carbon/Xenomorph/X = C.mob
-					counted_xenos[X.hivenumber]++
-					if(X.faction == FACTION_PREDALIEN)
-						counted_xenos[6]++
-					entry += " - <b><font color='red'>Xenomorph</font></b>"
+							counted_humanoids["Infected humans"]++
+						if(C.mob.faction == FACTION_MARINE)
+							counted_humanoids[FACTION_MARINE]++
+							if(C.mob.job in (ROLES_MARINES))
+								counted_humanoids["USCM Marines"]++
+						else
+							counted_humanoids[C.mob.faction]++
+					if(isXeno(C.mob))
+						var/mob/living/carbon/Xenomorph/X = C.mob
+						counted_xenos[X.hivenumber]++
+						if(X.faction == FACTION_PREDALIEN)
+							counted_xenos[6]++
+						entry += " - <b><font color='red'>Xenomorph</font></b>"
 
-			entry += " (<A HREF='?_src_=admin_holder;adminmoreinfo;extra=\ref[C.mob]'>?</A>)"
-			Lines += entry
+				entry += " (<A HREF='?_src_=admin_holder;adminmoreinfo;extra=\ref[C.mob]'>?</A>)"
+				Lines += entry
 
 		for(var/line in sortList(Lines))
 			msg += "[line]\n"

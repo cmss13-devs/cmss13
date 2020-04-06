@@ -740,6 +740,7 @@
 	var/ammo_accuracy_range = SA.accuracy_range
 	var/ammo_travelling_time = SA.travelling_time //how long the rockets/bullets take to reach the ground target.
 	var/ammo_warn_sound = SA.warning_sound
+	var/ammo_warn_sound_volume = SA.warning_sound_volume
 	deplete_ammo()
 	last_fired = world.time
 	if(linked_shuttle)
@@ -761,7 +762,7 @@
 		possible_turfs += TU
 	var/turf/impact = pick(possible_turfs)
 	if(ammo_warn_sound)
-		playsound(impact, ammo_warn_sound, 70, 1)
+		playsound(impact, ammo_warn_sound, ammo_warn_sound_volume, 1)
 	new /obj/effect/overlay/temp/blinking_laser (impact)
 	sleep(10)
 	SA.source_mob = user

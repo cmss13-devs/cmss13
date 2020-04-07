@@ -1,5 +1,5 @@
 #define SENTRY_FIREANGLE 	135
-#define SENTRY_RANGE 		7
+#define SENTRY_RANGE 		5
 #define SENTRY_MUZZLELUM	3
 /obj/structure/machinery/defenses/sentry
 	name = "\improper UA 571-C sentry gun"
@@ -11,7 +11,7 @@
 	var/datum/shape/rectangle/range_bounds
 	var/datum/effect_system/spark_spread/spark_system //The spark system, used for generating... sparks?
 	var/last_fired = 0
-	var/fire_delay = 6
+	var/fire_delay = 4
 	var/immobile = FALSE //Used for prebuilt ones.
 	var/obj/item/ammo_magazine/ammo = new /obj/item/ammo_magazine/sentry
 	var/sentry_type = "sentry" //Used for the icon

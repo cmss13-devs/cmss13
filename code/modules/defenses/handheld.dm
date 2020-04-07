@@ -12,6 +12,7 @@
 
 	indestructible = TRUE
 	var/defense_type = /obj/structure/machinery/defenses
+	var/deployment_time = 20
 
 /obj/item/defenses/handheld/examine(mob/user)
 	. = ..()
@@ -45,10 +46,13 @@
 		to_chat(usr, SPAN_WARNING("You need a clear, open area to build \a [src], something is blocking the way in front of you!"))
 		return
 
-	if(!do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
+	if(!do_after(user, deployment_time, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
 		return
 
-	var/obj/structure/machinery/defenses/D = new defense_type(T, user.faction)
+	var/factions = user.faction
+	if(factions == FACTION_MARINE) // Dumb snowflake check until survivor IFF is sorted out
+		factions = list(FACTION_MARINE, FACTION_SURVIVOR)
+	var/obj/structure/machinery/defenses/D = new defense_type(T, factions)
 	D.dir = direction
 	playsound(T, 'sound/mecha/mechmove01.ogg', 30, 1)
 	qdel(src)
@@ -68,6 +72,7 @@
 	name = "handheld 21S tesla coil"
 	icon_state = "tesla_coil_handheld"
 	defense_type = /obj/structure/machinery/defenses/tesla_coil
+	deployment_time = 10
 
 /obj/item/defenses/handheld/bell_tower
 	name = "handheld R-1NG bell tower"
@@ -78,3 +83,4 @@
 	name = "handheld JIMA planted flag"
 	icon_state = "planted_flag_handheld"
 	defense_type = /obj/structure/machinery/defenses/planted_flag
+	deployment_time = 10

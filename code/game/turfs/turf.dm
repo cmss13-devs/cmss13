@@ -86,6 +86,9 @@
 	if (!mover || !isturf(mover.loc))
 		return FALSE
 
+	if(isobserver(mover) || istype(mover, /obj/item/projectile))
+		return TRUE
+
 	var/fdir = get_dir(mover, src)
 	if (!fdir)
 		return TRUE

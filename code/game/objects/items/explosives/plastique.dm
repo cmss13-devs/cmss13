@@ -145,7 +145,7 @@
 	update_icon()
 
 /obj/item/explosive/plastique/proc/can_place(var/mob/user, var/atom/target)
-	if(istype(target, /obj/structure/ladder) || istype(target, /obj/item) || istype(target, /turf/open))
+	if(istype(target, /obj/structure/ladder) || istype(target, /obj/item) || istype(target, /turf/open) || istype(target, /obj/structure/barricade) || istype(target, /obj/structure/closet/crate))
 		return FALSE
 
 	if(istype(target, /obj/effect) || istype(target, /obj/structure/machinery))
@@ -162,6 +162,12 @@
 		var/obj/structure/window/W = target
 		if(W.not_damageable)
 			to_chat(user, SPAN_WARNING("[W] is much too tough for you to do anything to it with [src].")) //On purpose to mimic wall message
+			return FALSE
+	
+	if(ishuman(target))
+		var/mob/living/carbon/human/H = target
+		if(user.faction == H.faction)
+			to_chat(user, SPAN_WARNING("ARE YOU OUT OF YOUR MIND?!"))
 			return FALSE
 	
 	if(customizable && assembly_stage < ASSEMBLY_LOCKED)

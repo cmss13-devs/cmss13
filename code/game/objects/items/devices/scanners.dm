@@ -289,49 +289,46 @@ FORENSIC SCANNER
 	if(!istype(O))
 		return
 
-	if(!isnull(O.reagents))
-		scan_name = O.name
-		dat = ""
-		ex_potential = 0
-		int_potential = 0
-		rad_potential = 0
-		if(istype(O,/obj/item/explosive))
-			var/obj/item/explosive/E = O
-			if(!E.customizable)
-				to_chat(user, SPAN_NOTICE("ERROR: This brand of explosive is under data protection. Scan has been cancelled."))
-				return
-			for(var/obj/container in E.containers)
-				scan(container)
-		else if(istype(O,/obj/item/ammo_magazine/rocket/custom))
-			var/obj/item/ammo_magazine/rocket/custom/E = O
-			if(!E.warhead)
-				to_chat(user, SPAN_NOTICE("No warhead detected in [E]."))
-				return
-			for(var/obj/container in E.warhead.containers)
-				scan(container)
-		else if(istype(O,/obj/item/mortar_shell/custom))
-			var/obj/item/mortar_shell/custom/E = O
-			if(!E.warhead)
-				to_chat(user, SPAN_NOTICE("No warhead detected in [E]."))
-				return
-			for(var/obj/container in E.warhead.containers)
-				scan(container)
-		else
-			scan(O)
-		if(dat)
-			if(ex_potential)
-				dat += SPAN_ORANGE("<br>EXPLOSIVE HAZARD: ignition will create explosive detonation.<br>Potential detonation power: [min(ex_potential, O.reagents.max_ex_power)]")
-			if(int_potential)
-				dat += SPAN_RED("<br>FIRE HAZARD: ignition will create chemical fire.<br>Expected fire intensity rating of [min(max(int_potential,O.reagents.min_fire_int),O.reagents.max_fire_int)] in a [min(max(rad_potential,O.reagents.min_fire_rad),O.reagents.max_fire_rad)] meter radius.")
-			to_chat(user, SPAN_NOTICE("Chemicals found: [dat]"))
-		else
-			to_chat(user, SPAN_NOTICE("No active chemical agents found in [O]."))
+	scan_name = O.name
+	dat = ""
+	ex_potential = 0
+	int_potential = 0
+	rad_potential = 0
+	if(istype(O,/obj/item/explosive))
+		var/obj/item/explosive/E = O
+		if(!E.customizable)
+			to_chat(user, SPAN_NOTICE("ERROR: This brand of explosive is under data protection. Scan has been cancelled."))
+			return
+		for(var/obj/container in E.containers)
+			scan(container)
+	else if(istype(O,/obj/item/ammo_magazine/rocket/custom))
+		var/obj/item/ammo_magazine/rocket/custom/E = O
+		if(!E.warhead)
+			to_chat(user, SPAN_NOTICE("No warhead detected in [E]."))
+			return
+		for(var/obj/container in E.warhead.containers)
+			scan(container)
+	else if(istype(O,/obj/item/mortar_shell/custom))
+		var/obj/item/mortar_shell/custom/E = O
+		if(!E.warhead)
+			to_chat(user, SPAN_NOTICE("No warhead detected in [E]."))
+			return
+		for(var/obj/container in E.warhead.containers)
+			scan(container)
 	else
-		to_chat(user, SPAN_NOTICE(" No significant chemical agents found in [O]."))
+		scan(O)
+	if(dat)
+		if(ex_potential)
+			dat += SPAN_ORANGE("<br>EXPLOSIVE HAZARD: ignition will create explosive detonation.<br>Potential detonation power: [min(ex_potential, O.reagents.max_ex_power)]")
+		if(int_potential)
+			dat += SPAN_RED("<br>FIRE HAZARD: ignition will create chemical fire.<br>Expected fire intensity rating of [min(max(int_potential,O.reagents.min_fire_int),O.reagents.max_fire_int)] in a [min(max(rad_potential,O.reagents.min_fire_rad),O.reagents.max_fire_rad)] meter radius.")
+		to_chat(user, SPAN_NOTICE("Chemicals found: [dat]"))
+	else
+		to_chat(user, SPAN_NOTICE("No active chemical agents found in [O]."))
 	return
 
 /obj/item/device/demo_scanner/proc/scan(var/obj/O)
-	if(!O)
+	if(!O || isnull(O.reagents))
 		return
 	if(O.reagents.reagent_list.len > 0)
 		for(var/datum/reagent/R in O.reagents.reagent_list)

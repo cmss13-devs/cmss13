@@ -357,7 +357,6 @@
 	H.alpha = camo_alpha
 	H.FF_hit_evade = 100
 	H.allow_gun_usage = FALSE
-	H.species.melee_allowed = FALSE
 
 	var/datum/mob_hud/security/advanced/SA = huds[MOB_HUD_SECURITY_ADVANCED]
 	SA.remove_from_hud(H)
@@ -390,7 +389,6 @@
 
 /obj/item/storage/backpack/marine/satchel/scout_cloak/proc/allow_shooting(var/mob/living/carbon/human/H)
 	H.allow_gun_usage = TRUE
-	H.species.melee_allowed = TRUE
 
 /obj/item/storage/backpack/marine/satchel/scout_cloak/upp
 	name = "\improper V86 Thermal Cloak"

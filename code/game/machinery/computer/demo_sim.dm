@@ -120,6 +120,8 @@
 	var/obj/item/explosive/E = new O.type(simulation.loc)
 	E.make_copy_of(O)
 	E.prime(TRUE)
+	var/turf/sourceturf = get_turf(simulation)
+	sourceturf.chemexploded = FALSE //Make sure that this actually resets
 	QDEL_IN(E,MINUTES_1)
 
 /obj/structure/machinery/computer/demo_sim/proc/stop_cooling()

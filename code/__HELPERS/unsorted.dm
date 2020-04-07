@@ -1138,12 +1138,16 @@ var/global/image/action_blue_power_up
 	if(show_busy_icon)
 		busy_icon = get_busy_icon(show_busy_icon)
 		if(busy_icon)
+			busy_icon.appearance_flags = RESET_ALPHA|KEEP_APART
+			busy_icon.alpha = 255
 			L.overlays += busy_icon
 
 	var/image/target_icon
 	if(show_target_icon) //putting a busy overlay on top of the target
 		target_icon = get_busy_icon(show_target_icon)
 		if(target_icon)
+			target_icon.appearance_flags = RESET_ALPHA|KEEP_APART
+			target_icon.alpha = 255
 			target.overlays += target_icon
 
 	if(user_flags & BEHAVIOR_IMMOBILE)

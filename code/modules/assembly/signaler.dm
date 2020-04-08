@@ -22,6 +22,15 @@
 		set_frequency(frequency)
 	return
 
+/obj/item/device/assembly/signaler/attackby(obj/item/O as obj, mob/user as mob)
+	if(issignaler(O))
+		var/obj/item/device/assembly/signaler/S = O
+		frequency = S.frequency
+		code = S.code
+		to_chat(user, SPAN_NOTICE("You set the frequence of [src] to [frequency] and code to [code]."))
+		return
+	. = ..()
+
 /obj/item/device/assembly/signaler/activate()
 	if(cooldown > 0)	return 0
 	cooldown = 2

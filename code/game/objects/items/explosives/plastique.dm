@@ -105,7 +105,7 @@
 		user.visible_message(SPAN_WARNING("[user] plants [name] on [target]!"),
 		SPAN_WARNING("You plant [name] on [target]! Timer counting down from [timer]."))
 		active = TRUE
-		add_timer(CALLBACK(src, .proc/prime), timer * 10)		
+		add_timer(CALLBACK(src, .proc/prime), timer * 10)
 
 /obj/item/explosive/plastique/attackby(obj/item/W, mob/user)
 	if(ismultitool(W))
@@ -218,10 +218,16 @@
 		plant_target = loc
 		target_turf = loc
 	if(customizable)
-		. = ..()
-		if(!disposed)
-			cell_explosion(target_turf, 60, 30, null, initial(name), source_mob)
-			qdel(src)
+		if(issignaler(detonator.a_right) || issignaler(detonator.a_left))
+			overlays += new /obj/effect/overlay/danger
+			layer = INTERIOR_DOOR_LAYER
+			add_timer(CALLBACK(src, .proc/delayed_prime, target_turf), SECONDS_3)
+		else
+			. = ..()
+			if(!disposed)
+				overlays.Cut()
+				cell_explosion(target_turf, 60, 30, null, initial(name), source_mob)
+				qdel(src)
 		return
 	plant_target.ex_act(1000, , initial(name), source_mob)
 
@@ -242,6 +248,13 @@
 	cell_explosion(target_turf, 120, 30, null, initial(name), source_mob)
 
 	qdel(src)
+
+/obj/item/explosive/plastique/proc/delayed_prime(var/turf/target_turf)
+	prime()
+	if(!disposed)
+		overlays.Cut()
+		cell_explosion(target_turf, 60, 30, null, initial(name), source_mob)
+		qdel(src)
 
 /obj/item/explosive/plastique/custom
 	name = "Custom plastic explosive"

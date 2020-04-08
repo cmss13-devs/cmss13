@@ -8,6 +8,7 @@
 	var/list/targets
 	var/last_fired = 0
 	handheld_type = /obj/item/defenses/handheld/tesla_coil
+	disassemble_time = 10
 
 /obj/structure/machinery/defenses/tesla_coil/Initialize()
 	. = ..()

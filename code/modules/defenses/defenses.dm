@@ -16,11 +16,15 @@
 	var/owner_mob = null
 	var/defense_icon = "uac_sentry"
 	var/handheld_type = /obj/item/defenses/handheld
+	var/disassemble_time = 20
 
 /obj/structure/machinery/defenses/New(var/loc, var/faction)
 	..(loc)
 	if(!isnull(faction))
-		belonging_to_faction = list(faction)
+		if(islist(faction))
+			belonging_to_faction = faction
+		else
+			belonging_to_faction = list(faction)
 
 /obj/structure/machinery/defenses/update_icon()
 	if(turned_on)
@@ -72,7 +76,7 @@
 
 		user.visible_message(SPAN_NOTICE("[user] begins disassembling [src]."), SPAN_NOTICE("You begin disassembling [src]."))
 
-		if(!do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
+		if(!do_after(user, disassemble_time, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
 			return
 		
 		user.visible_message(SPAN_NOTICE("[user] disassembles [src]."), SPAN_NOTICE("You disassemble [src]."))
@@ -132,7 +136,7 @@
 				playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
 		return
 
-	..()
+	return TRUE
 
 /obj/structure/machinery/defenses/attack_hand(var/mob/user)
 	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_PLASTEEL))

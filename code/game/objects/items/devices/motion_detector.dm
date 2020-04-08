@@ -32,6 +32,11 @@
 	var/iff_signal = ACCESS_IFF_MARINE			//allows making PMC versions of MD.
 	actions_types = list(/datum/action/item_action)
 	var/scanning = FALSE // controls if MD is in process of scan
+	var/datum/shape/rectangle/range_bounds
+
+/obj/item/device/motiondetector/New()
+	range_bounds = new //Just creating a rectangle datum
+	..()
 
 /obj/item/device/motiondetector/update_icon()
 	if(ping_count > 8)
@@ -127,9 +132,17 @@
 
 	ping_count = 0
 
-	// doing it in a single pass with typecheck is slower by 33% than having two passes with different types
+	var/turf/cur_turf = get_turf(src)
+	if(!range_bounds)
+		range_bounds = new/datum/shape/rectangle
+	range_bounds.center_x = cur_turf.x
+	range_bounds.center_y = cur_turf.y
+	range_bounds.width = detector_range * 2
+	range_bounds.height = detector_range * 2
 
-	for(var/mob/M in orange(detector_range, loc))
+	var/list/ping_candidates = SSquadtree.players_in_range(range_bounds, cur_turf.z, QTREE_EXCLUDE_OBSERVER | QTREE_SCAN_MOBS)
+
+	for(var/mob/M in ping_candidates)
 		if(M == loc) continue //device user isn't detected
 		if(world.time > M.l_move_time + 20) continue //hasn't moved recently
 		if(isrobot(M)) continue
@@ -140,13 +153,6 @@
 		ping_count++
 		if(human_user)
 			show_blip(human_user, M)
-		TICK_CHECK
-
-	for(var/obj/effect/alien/resin/special/S in orange(detector_range, loc))
-		ping_count++
-		if(human_user)
-			show_blip(human_user, S)
-		TICK_CHECK
 
 	if(ping_count > 0)
 		playsound(loc, pick('sound/items/detector_ping_1.ogg', 'sound/items/detector_ping_2.ogg', 'sound/items/detector_ping_3.ogg', 'sound/items/detector_ping_4.ogg'), 60, 0, 7, 2)

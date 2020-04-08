@@ -317,7 +317,7 @@ FORENSIC SCANNER
 			scan(container)
 	else
 		scan(O)
-	if(dat)
+	if(dat && O.reagents)
 		if(ex_potential)
 			dat += SPAN_ORANGE("<br>EXPLOSIVE HAZARD: ignition will create explosive detonation.<br>Potential detonation power: [min(ex_potential, O.reagents.max_ex_power)]")
 		if(int_potential)

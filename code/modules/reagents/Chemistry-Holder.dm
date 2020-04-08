@@ -639,6 +639,9 @@ var/const/INGEST = 2
 
 		create_shrapnel(sourceturf, shards, , ,shard_type, "chemical reaction", source_mob)
 		sleep(2) // So mobs aren't knocked down before getting hit by shrapnel
+		if((istype(my_atom, /obj/item/explosive/plastique) || istype(my_atom, /obj/item/explosive/grenade)) && (ismob(my_atom.loc) || isStructure(my_atom.loc)))
+			my_atom.loc.ex_act(ex_power)
+			ex_power = ex_power / 2
 		cell_explosion(sourceturf, ex_power, exfalloff, null, "chemical reaction", source_mob)
 
 		exploded = TRUE // clears reagents after all reactions processed

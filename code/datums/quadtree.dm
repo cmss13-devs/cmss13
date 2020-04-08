@@ -76,6 +76,8 @@
         p_coords.player = M.client
         if(!M.x && !M.y && !M.z)
             var/turf/T = get_turf(M)
+            if(!T)
+                return FALSE
             p_coords.x_pos = T.x
             p_coords.y_pos = T.y
             p_coords.z_pos = T.z
@@ -115,12 +117,12 @@
     if(!range || !range.intersects(boundary))
         return found_players
     for(var/datum/coords/player/P in player_coords)
+        if(!P.player)
+            continue
         if(flags & QTREE_EXCLUDE_OBSERVER)
             if(isobserver(P.player.mob))
                 continue
         if(range.contains(P))
-            if(!P.player)
-                continue
             if(flags & QTREE_SCAN_MOBS)
                 if(!P.player.mob)
                     continue

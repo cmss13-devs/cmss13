@@ -44,7 +44,7 @@ var/datum/subsystem/quadtree/SSquadtree
 
 /datum/subsystem/quadtree/proc/players_in_range(datum/shape/range, z_level, flags = 0)
     var/list/players = list()
-    if(cur_quadtrees.len < z_level || cur_quadtrees[z_level])
+    if(cur_quadtrees.len >= z_level)
         var/datum/quadtree/Q = cur_quadtrees[z_level]
         players = SEARCH_QTREE(Q, range, flags)
     return players

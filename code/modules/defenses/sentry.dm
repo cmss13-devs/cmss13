@@ -234,6 +234,8 @@
 	I.flick_overlay(src, 3)
 
 /obj/structure/machinery/defenses/sentry/proc/get_target(var/atom/movable/new_target)
+	if(!islist(targets))
+		return
 	if(!targets.Find(new_target))
 		targets.Add(new_target)
 

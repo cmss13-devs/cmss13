@@ -97,14 +97,12 @@
 
 
 /client/Move(n, direct)
-	if(mob.clone != null)
-		mob.update_clone() //Update the mob's clone if it has one
+	if(world.time < next_movement)
+		return
 
 	if(mob.control_object)
-		return Move_object(direct) //admins possessing object
-	
-	if(isobserver(mob) || isAI(mob))
-		return mob.Move(n,direct)
+		next_movement = world.time + MINIMAL_MOVEMENT_INTERVAL
+		return Move_object(direct)
 
 	if(mob.noclip)
 		switch(direct)
@@ -116,31 +114,15 @@
 				mob.x += 1
 			if(WEST)
 				mob.x -= 1
+		next_movement = world.time + MINIMAL_MOVEMENT_INTERVAL
 		return
 
-	var/start_move_time = world.time
-	if(next_movement > world.time)
+	if(!mob.canmove || mob.is_mob_incapacitated(TRUE) || !mob.on_movement())
 		return
-
-	if(mob.stat == DEAD)
-		return
-
-	// There should be a var/is_zoomed in mob code not this mess
-	if(isXeno(mob))
-		if(mob:is_zoomed)
-			mob:zoom_out()
-
-	// run mob move event if it is carbon
-	if(istype(mob,/mob/living/carbon))
-		var/mob/living/carbon/carbon_mob = mob
-		if(!carbon_mob.on_movement())
-			return //something blocked us from moving
 
 	//Check if you are being grabbed and if so attemps to break it
 	if(mob.pulledby)
-		if(mob.is_mob_incapacitated(TRUE))
-			return
-		else if(mob.is_mob_restrained(0))
+		if(mob.is_mob_restrained(0))
 			next_movement = world.time + 20 //to reduce the spam
 			to_chat(src, SPAN_WARNING("You're restrained! You can't move!"))
 			return
@@ -150,14 +132,10 @@
 	if(mob.buckled)
 		return mob.buckled.relaymove(mob, direct)
 
-	if(!mob.canmove)
-		return
-
-	if(isobj(mob.loc) || ismob(mob.loc))//Inside an object, tell it we moved
+	if(!mob.z)//Inside an object, tell it we moved
 		var/atom/O = mob.loc
 		return O.relaymove(mob, direct)
-
-	if(isturf(mob.loc))
+	else
 		mob.last_move_intent = world.time + 10
 		if(mob.recalculate_move_delay)
 			move_delay = mob.movement_delay()
@@ -175,8 +153,10 @@
 		if(.)
 			mob.track_steps_walked()
 			mob.life_steps_total += 1
+			if(mob.clone != null)
+				mob.update_clone()
 		moving = 0
-		next_movement = start_move_time + move_delay
+		next_movement = world.time + move_delay
 	return
 
 ///Process_Spacemove
@@ -266,3 +246,6 @@
 /mob/proc/set_next_move_slowdown(var/val)
 	next_move_slowdown = val
 	recalculate_move_delay = TRUE
+
+/mob/proc/on_movement()
+	return TRUE

@@ -1,14 +1,14 @@
 /mob/dead
 	var/voted_this_drop = 0
+	recalculate_move_delay = FALSE
 
 /mob/dead/observer
 	name = "ghost"
 	desc = "It's a g-g-g-g-ghooooost!" //jinkies!
 	icon = 'icons/mob/mob.dmi'
 	icon_state = "ghost"
-	stat = DEAD
 	density = 0
-	canmove = 0
+	canmove = TRUE 
 	blinded = 0
 	anchored = 1	//  don't get pushed around
 	invisibility = INVISIBILITY_OBSERVER
@@ -32,8 +32,6 @@
 	see_invisible = SEE_INVISIBLE_OBSERVER
 	see_in_dark = 100
 	verbs += /mob/dead/observer/proc/dead_tele
-
-	stat = DEAD
 
 	var/turf/T
 	if(ismob(body))
@@ -85,6 +83,10 @@
 		spawn(20)
 			to_chat(src, "<span style='color: red;'>This is a <B>PREDATOR ROUND</B>! If you are whitelisted, you may Join the Hunt!</span>")
 			return
+
+/mob/dead/observer/Login()
+	..()
+	client.move_delay = MINIMAL_MOVEMENT_INTERVAL
 
 /mob/dead/observer/Dispose()
 	following = null

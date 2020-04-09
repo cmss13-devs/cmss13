@@ -1,6 +1,10 @@
 //Xenomorph General Procs And Functions - Colonial Marines
 //LAST EDIT: APOPHIS 22MAY16
 
+/mob/living/carbon/Xenomorph/Move(NewLoc, direct)
+	. = ..()
+	if(. && is_zoomed)
+		zoom_out()
 
 //Send a message to all xenos. Mostly used in the deathgasp display
 /proc/xeno_message(var/message = null, var/size = 3, var/hivenumber = XENO_HIVE_NORMAL)

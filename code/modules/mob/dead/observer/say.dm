@@ -28,10 +28,6 @@
 			//Or someone snoring.  So we make it where they won't hear it.
 		return
 
-	if(sleeping || stat == 1)
-		hear_sleep(message)
-		return
-
 	var/style = "body"
 	var/comm_paygrade = ""
 

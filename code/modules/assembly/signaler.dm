@@ -25,8 +25,8 @@
 /obj/item/device/assembly/signaler/attackby(obj/item/O as obj, mob/user as mob)
 	if(issignaler(O))
 		var/obj/item/device/assembly/signaler/S = O
-		frequency = S.frequency
 		code = S.code
+		set_frequency(S.frequency)
 		to_chat(user, SPAN_NOTICE("You set the frequence of [src] to [frequency] and code to [code]."))
 		return
 	. = ..()

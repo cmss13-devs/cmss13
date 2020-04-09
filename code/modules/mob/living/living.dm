@@ -431,7 +431,7 @@
 	var/continue_movement = 1
 	var/moving = 0
 
-/mob/living/proc/on_movement(moving = 1)
+/mob/living/on_movement(moving = 1)
 	var/datum/event_args/mob_movement/ev_args = new /datum/event_args/mob_movement()
 	ev_args.moving = moving
 	if(event_movement)

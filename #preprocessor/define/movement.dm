@@ -14,3 +14,5 @@
 #define SPEED_VERY_SLOW     3.33
 #define MAX_SPEED           20
 #define MIN_SPEED           1
+
+#define MINIMAL_MOVEMENT_INTERVAL 0.1 SECONDS

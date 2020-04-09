@@ -125,7 +125,7 @@ var/global/normal_ooc_colour = "#1c52f5"
 		if(!looc_allowed)
 			to_chat(src, SPAN_DANGER("LOOC is globally muted"))
 			return
-		if(!dlooc_allowed && (mob.stat == DEAD))
+		if(!dlooc_allowed && (mob.stat == DEAD || isobserver(mob)))
 			to_chat(usr, SPAN_DANGER("LOOC for dead mobs has been turned off."))
 			return
 		if(prefs.muted & MUTE_OOC)

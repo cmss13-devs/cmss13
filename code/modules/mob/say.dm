@@ -94,7 +94,7 @@
 	for(var/mob/M in player_list)
 		if(istype(M, /mob/new_player))
 			continue
-		if(M.client && M.stat == DEAD && M.client.prefs && (M.client.prefs.toggles_chat & CHAT_DEAD))
+		if(M.client && (M.stat == DEAD || isobserver(M)) && M.client.prefs && (M.client.prefs.toggles_chat & CHAT_DEAD))
 			to_chat(M, rendered)
 			continue
 

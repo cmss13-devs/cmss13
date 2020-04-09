@@ -218,16 +218,18 @@
 		plant_target = loc
 		target_turf = loc
 	if(customizable)
-		if(issignaler(detonator.a_right) || issignaler(detonator.a_left))
+		if(force)
+			. = ..()
+		else if(issignaler(detonator.a_right) || issignaler(detonator.a_left))
 			overlays += new /obj/effect/overlay/danger
 			layer = INTERIOR_DOOR_LAYER
 			add_timer(CALLBACK(src, .proc/delayed_prime, target_turf), SECONDS_3)
 		else
 			. = ..()
-			if(!disposed)
-				overlays.Cut()
-				cell_explosion(target_turf, 60, 30, null, initial(name), source_mob)
-				qdel(src)
+		if(!disposed)
+			overlays.Cut()
+			cell_explosion(target_turf, 60, 30, null, initial(name), source_mob)
+			qdel(src)
 		return
 	plant_target.ex_act(1000, , initial(name), source_mob)
 
@@ -250,11 +252,7 @@
 	qdel(src)
 
 /obj/item/explosive/plastique/proc/delayed_prime(var/turf/target_turf)
-	prime()
-	if(!disposed)
-		overlays.Cut()
-		cell_explosion(target_turf, 60, 30, null, initial(name), source_mob)
-		qdel(src)
+	prime(TRUE)
 
 /obj/item/explosive/plastique/custom
 	name = "Custom plastic explosive"

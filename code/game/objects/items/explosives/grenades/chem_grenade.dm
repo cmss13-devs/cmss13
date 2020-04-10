@@ -19,8 +19,8 @@
 	desc = "A custom chemical grenade with an M15 casing. This casing has a higher explosive capacity than the M40 variant."
 	icon_state = "large_grenade_custom"
 	allowed_containers = list(/obj/item/reagent_container/glass)
-	max_container_size = 120
-	reaction_limits = list(	"max_ex_power" = 215,	"max_ex_falloff" = 40,	"max_ex_shards" = 32,
+	max_container_volume = 180
+	reaction_limits = list(	"max_ex_power" = 215,	"base_ex_falloff" = 90,	"max_ex_shards" = 32,
 							"max_fire_rad" = 5,		"max_fire_int" = 20,	"max_fire_dur" = 24,
 							"min_fire_rad" = 1,		"min_fire_int" = 3,		"min_fire_dur" = 3
 	)

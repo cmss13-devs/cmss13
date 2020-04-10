@@ -40,7 +40,7 @@
 	// How much will the power drop off when the explosion propagates?
 	var/power_falloff = 20
 	// How much power does the explosion gain (or lose) by bouncing off walls?
-	var/reflection_power_multiplier = 0.9
+	var/reflection_power_multiplier = 0.4
 
 	//Diagonal cells have a small delay when branching off from a non-diagonal cell. This helps the explosion look circular
 	var/delay = 0

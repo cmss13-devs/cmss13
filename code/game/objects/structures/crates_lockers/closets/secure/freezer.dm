@@ -162,5 +162,9 @@
 		cooldown--
 		return
 	cooldown = 5
+	var/containers = 0
 	for(var/obj/item/reagent_container/glass/I in freezer.contents)
-		I.reagents.replace_with(polymerization_recipe, "paraformaldehyde", 5)
+		if(I.reagents.replace_with(polymerization_recipe, "paraformaldehyde", 3))
+			containers++
+		if(containers > 3)
+			break

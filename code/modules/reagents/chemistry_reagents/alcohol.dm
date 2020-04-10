@@ -20,6 +20,7 @@
 	durationmod = 0.25
 	radiusmod = 0.1
 	burncolor = "#6897f7"
+	burncolormod = 2
 	properties = list(PROPERTY_ALCOHOLIC = 4, PROPERTY_FUELING = 1, PROPERTY_OXIDIZING = 1, PROPERTY_FLOWING = 4)
 	var/boozepwr = 5 //higher numbers mean the booze will have an effect faster.
 	var/booze_data = 0

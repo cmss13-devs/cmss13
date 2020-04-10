@@ -134,6 +134,8 @@
 
 	if(!mob.z)//Inside an object, tell it we moved
 		var/atom/O = mob.loc
+		if(!O)
+			return
 		return O.relaymove(mob, direct)
 	else
 		mob.last_move_intent = world.time + 10

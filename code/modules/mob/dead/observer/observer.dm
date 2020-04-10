@@ -13,6 +13,7 @@
 	anchored = 1	//  don't get pushed around
 	invisibility = INVISIBILITY_OBSERVER
 	layer = ABOVE_FLY_LAYER
+	m_intent = MOVE_INTENT_WALK
 	var/adminlarva = 0
 	var/can_reenter_corpse
 	var/started_as_observer //This variable is set to 1 when you enter the game as an observer.
@@ -222,13 +223,13 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 	loc = get_turf(src) //Get out of closets and such as a ghost
 	if((direct & NORTH) && y < world.maxy)
-		y++
+		y += m_intent //Let's take advantage of the intents being 1 & 2 respectively
 	else if((direct & SOUTH) && y > 1)
-		y--
+		y -= m_intent
 	if((direct & EAST) && x < world.maxx)
-		x++
+		x += m_intent
 	else if((direct & WEST) && x > 1)
-		x--
+		x -= m_intent
 
 	var/turf/new_turf = locate(x, y, z)
 	if(!new_turf)
@@ -796,6 +797,14 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 	if(round_statistics)
 		round_statistics.show_kill_feed(src)
+
+/mob/dead/observer/verb/toggle_fast_ghost_move()
+	set category = "Ghost"
+	set name = "Toggle Observer Speed"
+	set desc = "Switch between fast and regular ghost movement"
+
+	m_intent ^= MOVE_INTENT_RUN | MOVE_INTENT_WALK //The one already active is turned off, the other is turned on
+	to_chat(src, SPAN_NOTICE("Observer movement changed"))
 
 /mob/dead/observer/Topic(href, href_list)
 	..()

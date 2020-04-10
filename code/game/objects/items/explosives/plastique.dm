@@ -216,12 +216,12 @@
 		target_turf = get_turf(plant_target)
 	else
 		plant_target = loc
-		target_turf = loc
+		target_turf = get_turf(loc)
 	if(customizable)
-		if(!detonator)
-			return
 		if(force)
 			. = ..()
+		else if(!detonator)
+			return
 		else if(issignaler(detonator.a_right) || issignaler(detonator.a_left))
 			overlays += new /obj/effect/overlay/danger
 			layer = INTERIOR_DOOR_LAYER

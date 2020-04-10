@@ -162,11 +162,13 @@
 
 	playsound(loc, 'sound/effects/bamf.ogg', 50, 1)
 	var/reagent_list_text = ""
+	var/i = 0
 	for(var/obj/O in containers)
 		if(!O.reagents)
 			continue
 		for(var/datum/reagent/R in O.reagents.reagent_list)
 			reagent_list_text += " [R.volume] [R.name], "
+		i++
 	
 	if(source_mob)//so we don't message for simulations
 		message_admins("[source_mob] detonated custom explosive by [creator]: [name] (REAGENTS: [reagent_list_text]) in [get_area(src)] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[loc.x];Y=[loc.y];Z=[loc.z]'>JMP</a>)", loc.x, loc.y, loc.z)
@@ -174,11 +176,10 @@
 	if(containers.len < 2)
 		reagents.trigger_volatiles = TRUE //Explode on the first transfer
 
-	var/i
 	for(var/obj/item/reagent_container/glass/G in containers)
 		G.reagents.trans_to(src, G.reagents.total_volume)
-		i++
-		if(reagents && i == containers.len)
+		i--
+		if(reagents && i <= 1)
 			reagents.trigger_volatiles = TRUE //So it doesn't explode before transfering the last container
 	if(reagents)
 		reagents.trigger_volatiles = FALSE

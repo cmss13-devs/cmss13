@@ -274,6 +274,7 @@ FORENSIC SCANNER
 	var/ex_potential = 0
 	var/int_potential = 0
 	var/rad_potential = 0
+	var/datum/reagents/holder
 
 /obj/item/device/demo_scanner/afterattack(obj/O, mob/user as mob, proximity)
 	if(!proximity)
@@ -299,6 +300,7 @@ FORENSIC SCANNER
 		if(!E.customizable)
 			to_chat(user, SPAN_NOTICE("ERROR: This brand of explosive is under data protection. Scan has been cancelled."))
 			return
+		holder = E.reagents
 		for(var/obj/container in E.containers)
 			scan(container)
 	else if(istype(O,/obj/item/ammo_magazine/rocket/custom))
@@ -306,6 +308,7 @@ FORENSIC SCANNER
 		if(!E.warhead)
 			to_chat(user, SPAN_NOTICE("No warhead detected in [E]."))
 			return
+		holder = E.warhead.reagents
 		for(var/obj/container in E.warhead.containers)
 			scan(container)
 	else if(istype(O,/obj/item/mortar_shell/custom))
@@ -313,15 +316,18 @@ FORENSIC SCANNER
 		if(!E.warhead)
 			to_chat(user, SPAN_NOTICE("No warhead detected in [E]."))
 			return
+		holder = E.warhead.reagents
 		for(var/obj/container in E.warhead.containers)
 			scan(container)
 	else
 		scan(O)
-	if(dat && O.reagents)
+		if(O.reagents)
+			holder = O.reagents
+	if(dat && holder)
 		if(ex_potential)
-			dat += SPAN_ORANGE("<br>EXPLOSIVE HAZARD: ignition will create explosive detonation.<br>Potential detonation power: [min(ex_potential, O.reagents.max_ex_power)]")
+			dat += SPAN_ORANGE("<br>EXPLOSIVE HAZARD: ignition will create explosive detonation.<br>Potential detonation power: [min(ex_potential, holder.max_ex_power)]")
 		if(int_potential)
-			dat += SPAN_RED("<br>FIRE HAZARD: ignition will create chemical fire.<br>Expected fire intensity rating of [min(max(int_potential,O.reagents.min_fire_int),O.reagents.max_fire_int)] in a [min(max(rad_potential,O.reagents.min_fire_rad),O.reagents.max_fire_rad)] meter radius.")
+			dat += SPAN_RED("<br>FIRE HAZARD: ignition will create chemical fire.<br>Expected fire intensity rating of [min(max(int_potential,holder.min_fire_int),holder.max_fire_int)] in a [min(max(rad_potential,holder.min_fire_rad),holder.max_fire_rad)] meter radius.")
 		to_chat(user, SPAN_NOTICE("Chemicals found: [dat]"))
 	else
 		to_chat(user, SPAN_NOTICE("No active chemical agents found in [O]."))

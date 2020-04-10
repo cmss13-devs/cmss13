@@ -102,7 +102,7 @@
 
 /obj/screen/storage
 	name = "storage"
-
+	layer = HUD_LAYER
 
 /obj/screen/storage/proc/update_fullness(obj/item/storage/S)
 	if(!S.contents.len)

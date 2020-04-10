@@ -189,28 +189,48 @@
 	if (storage_flags & STORAGE_SHOW_FULLNESS)
 		boxes.update_fullness(src)
 
-/obj/item/storage/proc/space_orient_objs(var/list/obj/item/display_contents)
+var/list/global/item_storage_box_cache = list()
 
+/datum/item_storage_box
+	var/obj/screen/storage/start = null
+	var/obj/screen/storage/continued = null
+	var/obj/screen/storage/end = null
+
+/datum/item_storage_box/New()
+	start = new()
+	start.icon_state = "stored_start"
+	continued = new()
+	continued.icon_state = "stored_continue"
+	end = new()
+	end.icon_state = "stored_end"
+
+/obj/item/storage/proc/space_orient_objs(var/list/obj/item/display_contents)
 	var/baseline_max_storage_space = 21 //should be equal to default backpack capacity
 	var/storage_cap_width = 2 //length of sprite for start and end of the box representing total storage space
 	var/stored_cap_width = 4 //length of sprite for start and end of the box representing the stored item
-	var/storage_width = min( round( 258 * max_storage_space/baseline_max_storage_space ,1) ,284) //length of sprite for the box representing total storage space
+	var/storage_width = min(round(258 * max_storage_space/baseline_max_storage_space, 1), 284) //length of sprite for the box representing total storage space
 
 	click_border_start.Cut()
 	click_border_end.Cut()
 	storage_start.overlays.Cut()
 
-	if(!opened) //initialize background box
+	if(isnull(storage_continue))
+		storage_continue = new /obj/screen/storage()
+		storage_continue.name = "storage"
+		storage_continue.master = src
+		storage_continue.icon_state = "storage_continue"
+		storage_continue.screen_loc = "7,7 to 10,8"
 		var/matrix/M = matrix()
 		M.Scale((storage_width-storage_cap_width*2+3)/32,1)
 		storage_continue.apply_transform(M)
+		
+	if(!opened) //initialize background box
 		storage_start.screen_loc = "4:16,2:16"
 		storage_continue.screen_loc = "4:[round(storage_cap_width+(storage_width-storage_cap_width*2)/2+2)],2:16"
 		storage_end.screen_loc = "4:[19+storage_width-storage_cap_width],2:16"
 
 	var/startpoint = 0
 	var/endpoint = 1
-
 	for(var/obj/item/O in contents)
 		startpoint = endpoint + 1
 		endpoint += storage_width * O.get_storage_cost()/max_storage_space
@@ -218,16 +238,25 @@
 		click_border_start.Add(startpoint)
 		click_border_end.Add(endpoint)
 
-		var/matrix/M_start = matrix()
-		var/matrix/M_continue = matrix()
-		var/matrix/M_end = matrix()
-		M_start.Translate(startpoint,0)
-		M_continue.Scale((endpoint-startpoint-stored_cap_width*2)/32,1)
-		M_continue.Translate(startpoint+stored_cap_width+(endpoint-startpoint-stored_cap_width*2)/2 - 16,0)
-		M_end.Translate(endpoint-stored_cap_width,0)
-		stored_start.apply_transform(M_start)
-		stored_continue.apply_transform(M_continue)
-		stored_end.apply_transform(M_end)
+		if(!item_storage_box_cache["[startpoint], [endpoint], [stored_cap_width]"])
+			var/datum/item_storage_box/box = new()
+			var/matrix/M_start = matrix()
+			var/matrix/M_continue = matrix()
+			var/matrix/M_end = matrix()
+			M_start.Translate(startpoint, 0)
+			M_continue.Scale((endpoint-startpoint-stored_cap_width*2)/32,1)
+			M_continue.Translate(startpoint+stored_cap_width+(endpoint-startpoint-stored_cap_width*2)/2 - 16,0)
+			M_end.Translate(endpoint-stored_cap_width,0)
+			box.start.apply_transform(M_start)
+			box.continued.apply_transform(M_continue)
+			box.end.apply_transform(M_end)
+			item_storage_box_cache["[startpoint], [endpoint], [stored_cap_width]"] = box
+
+		var/datum/item_storage_box/ISB = item_storage_box_cache["[startpoint], [endpoint], [stored_cap_width]"]
+		stored_start = ISB.start
+		stored_continue = ISB.continued
+		stored_end = ISB.end
+
 		storage_start.overlays += src.stored_start
 		storage_start.overlays += src.stored_continue
 		storage_start.overlays += src.stored_end
@@ -595,34 +624,16 @@
 	boxes.screen_loc = "7,7 to 10,8"
 	boxes.layer = HUD_LAYER
 
-	storage_start = new /obj/screen/storage(  )
+	storage_start = new /obj/screen/storage()
 	storage_start.name = "storage"
 	storage_start.master = src
 	storage_start.icon_state = "storage_start"
 	storage_start.screen_loc = "7,7 to 10,8"
-	storage_start.layer = HUD_LAYER
-	storage_continue = new /obj/screen/storage(  )
-	storage_continue.name = "storage"
-	storage_continue.master = src
-	storage_continue.icon_state = "storage_continue"
-	storage_continue.screen_loc = "7,7 to 10,8"
-	storage_continue.layer = HUD_LAYER
-	storage_end = new /obj/screen/storage(  )
+	storage_end = new /obj/screen/storage()
 	storage_end.name = "storage"
 	storage_end.master = src
 	storage_end.icon_state = "storage_end"
 	storage_end.screen_loc = "7,7 to 10,8"
-	storage_end.layer = HUD_LAYER
-
-	stored_start = new /obj //we just need these to hold the icon
-	stored_start.icon_state = "stored_start"
-	stored_start.layer = HUD_LAYER
-	stored_continue = new /obj
-	stored_continue.icon_state = "stored_continue"
-	stored_continue.layer = HUD_LAYER
-	stored_end = new /obj
-	stored_end.icon_state = "stored_end"
-	stored_end.layer = HUD_LAYER
 
 	closer = new
 	closer.master = src

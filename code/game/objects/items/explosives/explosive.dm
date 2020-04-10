@@ -11,9 +11,10 @@
 	var/list/containers = new/list()
 	var/list/allowed_sensors = list()
 	var/list/allowed_containers = list(/obj/item/reagent_container/glass/beaker, /obj/item/reagent_container/glass/bucket, /obj/item/reagent_container/glass/bottle)
-	var/max_container_size = 120
+	var/max_container_volume = 120
+	var/current_container_volume = 0
 	var/assembly_stage = ASSEMBLY_EMPTY //The assembly_stage of the assembly
-	var/list/reaction_limits = list("max_ex_power" = 175,	"max_ex_falloff" = 35,	"max_ex_shards" = 32,
+	var/list/reaction_limits = list("max_ex_power" = 175,	"base_ex_falloff" = 75,	"max_ex_shards" = 32,
 									"max_fire_rad" = 5,		"max_fire_int" = 20,	"max_fire_dur" = 24,
 									"min_fire_rad" = 1,		"min_fire_int" = 3,		"min_fire_dur" = 3
 	)
@@ -45,6 +46,7 @@
 				if(istype(B))
 					containers -= B
 					user.put_in_hands(B)
+			current_container_volume = 0
 		desc = initial(desc) + "\n Contains [containers.len] containers[detonator?" and detonator":""]"
 		return
 	source_mob = user
@@ -111,18 +113,19 @@
 			assembly_stage = ASSEMBLY_UNLOCKED
 		update_icon()
 	else if(is_type_in_list(W, allowed_containers) && (!assembly_stage || assembly_stage == ASSEMBLY_UNLOCKED))
-		if(containers.len == 2)
+		if(current_container_volume >= max_container_volume)
 			to_chat(user, SPAN_DANGER("The [name] can not hold more containers."))
 			return
 		else
 			if(W.reagents.total_volume)
-				if(W.reagents.maximum_volume > max_container_size)
+				if(W.reagents.maximum_volume + current_container_volume > max_container_volume)
 					to_chat(user, SPAN_DANGER("\the [W] is too large for [name]."))
 					return
 				if(user.drop_held_item())
 					to_chat(user, SPAN_NOTICE("You add \the [W] to the assembly."))
 					W.forceMove(src)
 					containers += W
+					current_container_volume += W.reagents.maximum_volume 
 					assembly_stage = ASSEMBLY_UNLOCKED
 					desc = initial(desc) + "\n Contains [containers.len] containers[detonator?" and detonator":""]"
 			else
@@ -162,8 +165,8 @@
 	for(var/obj/O in containers)
 		if(!O.reagents)
 			continue
-		for(var/reagent in O.reagents.reagent_list)
-			reagent_list_text += " [reagent], "
+		for(var/datum/reagent/R in O.reagents.reagent_list)
+			reagent_list_text += " [R.volume] [R.name], "
 	
 	if(source_mob)//so we don't message for simulations
 		message_admins("[source_mob] detonated custom explosive by [creator]: [name] (REAGENTS: [reagent_list_text]) in [get_area(src)] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[loc.x];Y=[loc.y];Z=[loc.z]'>JMP</a>)", loc.x, loc.y, loc.z)
@@ -171,10 +174,12 @@
 	if(containers.len < 2)
 		reagents.trigger_volatiles = TRUE //Explode on the first transfer
 
+	var/i
 	for(var/obj/item/reagent_container/glass/G in containers)
 		G.reagents.trans_to(src, G.reagents.total_volume)
-		if(reagents)
-			reagents.trigger_volatiles = TRUE //So it doesn't explode before transfering the second container
+		i++
+		if(reagents && i == containers.len)
+			reagents.trigger_volatiles = TRUE //So it doesn't explode before transfering the last container
 	if(reagents)
 		reagents.trigger_volatiles = FALSE
 	

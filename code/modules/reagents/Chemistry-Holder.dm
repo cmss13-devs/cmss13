@@ -13,7 +13,7 @@ var/const/INGEST = 2
 	var/trigger_volatiles = FALSE
 	var/exploded = FALSE
 	var/max_ex_power = 175
-	var/max_ex_falloff = 35
+	var/base_ex_falloff = 75
 	var/max_ex_shards = 32
 	var/max_fire_rad = 5
 	var/max_fire_int = 20
@@ -550,6 +550,7 @@ var/const/INGEST = 2
 	for(var/id in replacing)
 		remove_reagent(id, replacing[id], TRUE)
 	add_reagent(result, amount)
+	return TRUE
 
 //////////////////////////////EXPLOSIONS AND FIRE//////////////////////////////
 
@@ -557,7 +558,7 @@ var/const/INGEST = 2
 	var/turf/sourceturf = get_turf(my_atom)
 	//For explosion
 	var/ex_power = 0
-	var/avg_falloff_level = 0
+	var/ex_falloff = base_ex_falloff
 	//For chemical fire
 	var/radius = 0
 	var/intensity = 0
@@ -569,11 +570,8 @@ var/const/INGEST = 2
 		if(R.explosive)
 			//Calculate explosive power
 			ex_power += R.volume*R.power
-			//Calculate average falloff level
-			if(avg_falloff_level)
-				avg_falloff_level = (R.falloff_level + avg_falloff_level)/2
-			else
-				avg_falloff_level = R.falloff_level
+			//Calculate falloff
+			ex_falloff += R.volume*R.falloff_modifier
 		if(R.chemfiresupp)
 			supplements += R
 			supplemented += R.intensitymod * R.volume
@@ -587,23 +585,22 @@ var/const/INGEST = 2
 	intensity = round(intensity)
 	duration = round(duration)
 	if(ex_power)
-		explode(sourceturf, ex_power, avg_falloff_level)
+		explode(sourceturf, ex_power, ex_falloff)
 	if(intensity)
 		var/firecolor = mix_burn_colors(supplements)
 		combust(sourceturf, radius, intensity, duration, supplemented, firecolor, smokerad)
 	if(exploded && sourceturf)
 		sourceturf.chemexploded = TRUE // to prevent grenade stacking
-		add_timer(CALLBACK(src, .proc/reset_chemexploded, sourceturf), 20, TIMER_UNIQUE)
+		add_timer(CALLBACK(sourceturf, /turf.proc/reset_chemexploded), SECONDS_2)
 	trigger_volatiles = FALSE
 	return exploded
 
-/datum/reagents/proc/explode(var/turf/sourceturf, var/ex_power, var/falloff_level)
+/datum/reagents/proc/explode(var/turf/sourceturf, var/ex_power, var/ex_falloff)
 	if(!sourceturf)
 		return
 	if(sourceturf.chemexploded)
 		return // Has recently exploded, so no explosion this time. Prevents instagib satchel charges.
 	
-	var/exfalloff
 	var/shards = 4 // Because explosions are messy
 	var/shard_type = /datum/ammo/bullet/shrapnel
 	var/source_mob
@@ -629,11 +626,8 @@ var/const/INGEST = 2
 			shards = max_ex_shards / 4
 		if(ex_power > max_ex_power)
 			ex_power = max_ex_power
-		exfalloff = ex_power/falloff_level
-		if(exfalloff < 15)
-			exfalloff = 15
-		else if(exfalloff > max_ex_falloff)
-			exfalloff = max_ex_falloff
+		if(ex_falloff < 25)
+			ex_falloff = 25
 
 		//Note: No need to log here as that is done in cell_explosion()
 
@@ -642,7 +636,7 @@ var/const/INGEST = 2
 		if((istype(my_atom, /obj/item/explosive/plastique) || istype(my_atom, /obj/item/explosive/grenade)) && (ismob(my_atom.loc) || isStructure(my_atom.loc)))
 			my_atom.loc.ex_act(ex_power)
 			ex_power = ex_power / 2
-		cell_explosion(sourceturf, ex_power, exfalloff, null, "chemical reaction", source_mob)
+		cell_explosion(sourceturf, ex_power, ex_falloff, null, "chemical reaction", source_mob)
 
 		exploded = TRUE // clears reagents after all reactions processed
 
@@ -693,8 +687,8 @@ var/const/INGEST = 2
 	sleep(5)
 	playsound(sourceturf, 'sound/weapons/gun_flamethrower1.ogg', 25, 1)
 
-/datum/reagents/proc/reset_chemexploded(var/turf/sourceturf)
-	sourceturf.chemexploded = FALSE
+turf/proc/reset_chemexploded()
+	chemexploded = FALSE
 	
 
 ///////////////////////////////////////////////////////////////////////////////////

@@ -189,6 +189,7 @@
 	chemfiresupp = TRUE
 	intensitymod = 0.1
 	burncolor = "#ffff00"
+	burncolormod = 2
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_COMMON

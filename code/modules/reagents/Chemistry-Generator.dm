@@ -240,7 +240,7 @@
 			if(PROPERTY_EXPLOSIVE)
 				explosive = TRUE
 				power = potency
-				falloff_level =  50 / potency
+				falloff_modifier =  2 / potency
 
 /proc/get_negative_chem_properties(var/special_properties)
 	var/list/negative_properties = list(PROPERTY_HYPOXEMIC = "Reacts with hemoglobin in red blood cells preventing oxygen from being absorbed, resulting in hypoxemia.",\
@@ -308,7 +308,7 @@
 										PROPERTY_FUELING = "The chemical can be burned as a fuel, expanding the burn time of a chemical fire. However, this also lowers heat intensity.",\
 										PROPERTY_OXIDIZING = "The chemical is oxidizing, increasing the intensity of chemical fires. However, the fuel is also burned faster because of it.",\
 										PROPERTY_FLOWING = "The chemical is the opposite of viscous, and it tends to spill everywhere. This could probably be used to expand the radius of a chemical fire.",\
-										PROPERTY_EXPLOSIVE = "The chemical is highly explosive. Do not ignite. Careful when handling, as higher explosive levels cause increased sensitivity, which can lead to spontanous detonation.")
+										PROPERTY_EXPLOSIVE = "The chemical is highly explosive. Do not ignite. Careful when handling, sensitivity is based off the OD threshold, which can lead to spontanous detonation.")
 	if(special_properties)
 		positive_properties += list(	PROPERTY_DEFIBRILLATING = "Causes an electrochemical reaction in the cardiac muscles, forcing the heart to continue pumping. May cause irregular heart rhythms.",\
 										PROPERTY_OMNIPOTENT = "Fully revitalizes all bodily functions.",\

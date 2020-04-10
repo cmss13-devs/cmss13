@@ -83,6 +83,7 @@
 	durationmod = -0.75
 	radiusmod = 0.05
 	burncolor = "#e01e1e"
+	burncolormod = 3
 	toxpwr = 3
 	chemclass = CHEM_CLASS_RARE
 
@@ -356,6 +357,7 @@
 	chemfiresupp = TRUE
 	intensitymod = 0.1
 	burncolor = "#800080"
+	burncolormod = 5
 	toxpwr = 0
 	overdose = 30
 	chemclass = CHEM_CLASS_UNCOMMON

@@ -221,6 +221,7 @@
 	intensitymod = 0.75
 	radiusmod = -0.075
 	burncolor = "#58daff"
+	burncolormod = 2
 	chemclass = CHEM_CLASS_BASIC
 	properties = list(PROPERTY_OXIDIZING = 4, PROPERTY_VISCOUS = 3)
 
@@ -233,6 +234,7 @@
 	color = "#6E3B08" // rgb: 110, 59, 8
 	chemfiresupp = TRUE
 	burncolor = "#78be5a"
+	burncolormod = 4
 	chemclass = CHEM_CLASS_BASIC
 
 	custom_metabolism = 0.01
@@ -259,6 +261,7 @@
 	radiusmod = 0.14
 	intensitymod = -0.75
 	burncolor = "#b6f8ff"
+	burncolormod = 2
 	explosive = TRUE
 	power = 0.15
 	chemclass = CHEM_CLASS_BASIC
@@ -313,6 +316,7 @@
 	chemfiresupp = TRUE
 	durationmod = 0.8
 	burncolor = "#ffd700"
+	burncolormod = 3
 	chemclass = CHEM_CLASS_BASIC
 	properties = list(PROPERTY_FUELING = 4)
 
@@ -393,6 +397,7 @@
 	durationmod = 0.1
 	radiusmod = -0.12
 	burncolor = "#ffdba4"
+	burncolormod = 5
 	chemclass = CHEM_CLASS_BASIC
 	properties = list(PROPERTY_OXIDIZING = 5)
 
@@ -407,6 +412,7 @@
 	chemfiresupp = TRUE
 	intensitymod = 0.15
 	burncolor = "#ff356f"
+	burncolormod = 5
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_BASIC
@@ -486,6 +492,7 @@
 	burncolor = "#ffb300"
 	explosive = TRUE
 	power = 0.5
+	falloff_modifier = 1
 	chemclass = CHEM_CLASS_UNCOMMON
 	properties = list(PROPERTY_FUELING = 4, PROPERTY_OXIDIZING = 1, PROPERTY_VISCOUS = 4)
 
@@ -611,7 +618,7 @@
 	radiusmod = -0.075
 	explosive = TRUE
 	power = 0.12
-	falloff_level = 12
+	falloff_modifier = -0.1
 	burncolor = "#ff9900"
 	chemclass = CHEM_CLASS_RARE
 	properties = list(PROPERTY_FUELING = 4, PROPERTY_OXIDIZING = 1, PROPERTY_VISCOUS = 3)
@@ -918,6 +925,7 @@
 	intensitymod = -1
 	radiusmod = 0.1
 	burncolor = "#00a5ff"
+	burncolormod = 1.5
 	explosive = TRUE
 	power = 0.15
 	chemclass = CHEM_CLASS_COMMON
@@ -935,7 +943,6 @@
 	description = "This will probably explode before you manage to read this."
 	explosive = TRUE
 	power = 0.5
-	falloff_level = 16
 
 /datum/reagent/ammoniumnitrate
 	name = "Ammonium Nitrate"
@@ -945,7 +952,7 @@
 	color = "#E5E5E5"
 	explosive = TRUE
 	power = 0.4
-	falloff_level = 50
+	falloff_modifier = 1.5
 	chemfiresupp = TRUE
 	durationmod = -0.2
 	intensitymod = 0.5
@@ -958,7 +965,7 @@
 	description = "Ammonium nitrate fuel oil (ANFO) is a low cost bulk explosive commonly used for mining and construction operations."
 	explosive = TRUE
 	power = 1
-	falloff_level = 30
+	falloff_modifier = -0.6
 
 /datum/reagent/nitroglycerin
 	name = "Nitroglycerin"
@@ -969,7 +976,7 @@
 	custom_metabolism = 0.01
 	explosive = TRUE
 	power = 1
-	falloff_level = 25
+	falloff_modifier = -0.5
 
 /datum/reagent/cyclonite
 	name = "Cyclonite"
@@ -979,7 +986,7 @@
 	color = "#E3E0BA"
 	explosive = TRUE
 	power = 1.5
-	falloff_level = 20
+	falloff_modifier = -0.4
 
 /datum/reagent/cyclonite/on_mob_life(var/mob/living/M)
 	. = ..()
@@ -993,7 +1000,7 @@
 	color = "#F5F5F5"
 	explosive = TRUE
 	power = 2
-	falloff_level = 15
+	falloff_modifier = -0.2
 	chemfiresupp = TRUE
 	durationmod = -0.2
 	intensitymod = 0.5

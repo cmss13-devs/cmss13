@@ -11,7 +11,7 @@
 	flags_equip_slot = SLOT_WAIST
 	hitsound = 'sound/weapons/smash.ogg'
 	allowed_sensors = list(/obj/item/device/assembly/timer)
-	max_container_size = 60
+	max_container_volume = 60
 	var/det_time = 40
 	var/dangerous = 0		//Make an danger overlay for humans?
 	var/harmful = TRUE      //Is it harmful? Can synths use them?

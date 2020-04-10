@@ -8,8 +8,8 @@
 	flags_item = NOBLUDGEON
 	w_class = SIZE_SMALL
 	allowed_sensors = list(/obj/item/device/assembly/prox_sensor, /obj/item/device/assembly/signaler, /obj/item/device/assembly/timer)
-	max_container_size = 240
-	reaction_limits = list(	"max_ex_power" = 260,	"max_ex_falloff" = 45,	"max_ex_shards" = 32,
+	max_container_volume = 180
+	reaction_limits = list(	"max_ex_power" = 260,	"base_ex_falloff" = 90,	"max_ex_shards" = 64,
 							"max_fire_rad" = 6,		"max_fire_int" = 26,	"max_fire_dur" = 30,
 							"min_fire_rad" = 2,		"min_fire_int" = 4,		"min_fire_dur" = 5
 	)
@@ -133,7 +133,7 @@
 		plant_target.overlays -= overlay
 		qdel(overlay)
 		plant_target.contents -= src
-		forceMove(plant_target.loc)
+		forceMove(get_turf(plant_target.loc))
 	plant_target = null
 	if(customizable)
 		if(active) //deactivate
@@ -218,6 +218,8 @@
 		plant_target = loc
 		target_turf = loc
 	if(customizable)
+		if(!detonator)
+			return
 		if(force)
 			. = ..()
 		else if(issignaler(detonator.a_right) || issignaler(detonator.a_left))

@@ -25,13 +25,14 @@
 	// For explosions
 	var/explosive = FALSE
 	var/power = 0
-	var/falloff_level = 12
+	var/falloff_modifier = 0
 	// For chemical fire
 	var/chemfiresupp = FALSE
 	var/intensitymod = 0
 	var/durationmod = 0
 	var/radiusmod = 0
 	var/burncolor = "#f88818"
+	var/burncolormod = 1
 	// Chem generator and research stuff
 	var/chemclass = CHEM_CLASS_NONE //Decides how rare the chem in the generation process
 	var/gen_tier = 0 //Decides the chance of the chem being good during generation
@@ -138,7 +139,7 @@
 	burncolor = C.burncolor
 	explosive = C.explosive
 	power = C.power
-	falloff_level =  C.falloff_level
+	falloff_modifier =  C.falloff_modifier
 
 /datum/chemical_reaction/proc/make_alike(var/datum/chemical_reaction/C)
 	id = C.id

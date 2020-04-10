@@ -86,7 +86,7 @@
 		for (var/mob/M in player_list)
 			if (istype(M, /mob/new_player))
 				continue
-			else if(M.stat == 2 &&  M.client.prefs.toggles_chat & CHAT_GHOSTEARS)
+			else if((M.stat == DEAD || isobserver(M)) &&  M.client.prefs.toggles_chat & CHAT_GHOSTEARS)
 				if(M.client) to_chat(M, "<b>[src]</b> transmits, \")[message]\"")
 		return
 

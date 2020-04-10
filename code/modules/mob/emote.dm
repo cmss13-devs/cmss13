@@ -35,7 +35,7 @@
 				continue
 			if(findtext(message," snores.")) //Because we have so many sleeping people.
 				break
-			if(M.stat == DEAD && (M.client.prefs && M.client.prefs.toggles_chat & CHAT_GHOSTSIGHT) && !(M in viewers(src,null)))
+			if((M.stat == DEAD || isobserver(M)) && (M.client.prefs && M.client.prefs.toggles_chat & CHAT_GHOSTSIGHT) && !(M in viewers(src,null)))
 				M.show_message(message)
 
 
@@ -102,7 +102,7 @@
 			if(M.client && M.client.admin_holder && AHOLD_IS_MOD(M.client.admin_holder) && (M.client.prefs.toggles_chat & CHAT_DEAD)) // Show the emote to admins/mods
 				to_chat(M, message)
 
-			else if(M.stat == DEAD)
+			else if(M.stat == DEAD || isobserver(M))
 				if(M.client.prefs && !(M.client.prefs.toggles_chat & CHAT_DEAD))
 					continue
 				M.show_message(message, 2)

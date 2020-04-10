@@ -545,10 +545,9 @@ Turf and target are seperate in case you want to teleport some distance from a t
 		if (M.real_name && M.real_name != M.name)
 			name += " \[[M.real_name]\]"
 		if (M.stat == 2)
-			if(istype(M, /mob/dead/observer/))
-				name += " \[ghost\]"
-			else
-				name += " \[dead\]"
+			name += " \[dead\]"
+		if(istype(M, /mob/dead/observer/))
+			name += " \[ghost\]"
 		creatures[name] = M
 
 	return creatures
@@ -569,11 +568,9 @@ Turf and target are seperate in case you want to teleport some distance from a t
 		if (M.real_name && M.real_name != M.name)
 			name += " \[[M.real_name]\]"
 		if (M.stat == 2)
-			if(istype(M, /mob/dead/observer/))
-				name += " \[ghost\]"
-			else
-				name += " \[dead\]"
-		creatures[name] = M
+			name += " \[dead\]"
+		if(istype(M, /mob/dead/observer/))
+			name += " \[ghost\]"
 
 	return creatures
 
@@ -594,10 +591,9 @@ Turf and target are seperate in case you want to teleport some distance from a t
 		if (M.real_name && M.real_name != M.name)
 			name += " \[[M.real_name]\]"
 		if (M.stat == 2)
-			if(istype(M, /mob/dead/observer/))
-				name += " \[ghost\]"
-			else
-				name += " \[dead\]"
+			name += " \[dead\]"
+		if(istype(M, /mob/dead/observer/))
+			name += " \[ghost\]"
 		creatures[name] = M
 
 	return creatures
@@ -620,10 +616,9 @@ Turf and target are seperate in case you want to teleport some distance from a t
 		if (M.real_name && M.real_name != M.name)
 			name += " \[[M.real_name]\]"
 		if (M.stat == 2)
-			if(istype(M, /mob/dead/observer/))
-				name += " \[ghost\]"
-			else
-				name += " \[dead\]"
+			name += " \[dead\]"
+		if(istype(M, /mob/dead/observer/))
+			name += " \[ghost\]"
 		creatures[name] = M
 
 	return creatures
@@ -646,10 +641,9 @@ Turf and target are seperate in case you want to teleport some distance from a t
 		if (M.real_name && M.real_name != M.name)
 			name += " \[[M.real_name]\]"
 		if (M.stat == 2)
-			if(istype(M, /mob/dead/observer/))
-				name += " \[ghost\]"
-			else
-				name += " \[dead\]"
+			name += " \[dead\]"
+		if(istype(M, /mob/dead/observer/))
+			name += " \[ghost\]"
 		creatures[name] = M
 
 	return creatures
@@ -672,10 +666,9 @@ Turf and target are seperate in case you want to teleport some distance from a t
 		if (M.real_name && M.real_name != M.name)
 			name += " \[[M.real_name]\]"
 		if (M.stat == 2)
-			if(istype(M, /mob/dead/observer/))
-				name += " \[ghost\]"
-			else
-				name += " \[dead\]"
+			name += " \[dead\]"
+		if(istype(M, /mob/dead/observer/))
+			name += " \[ghost\]"
 		creatures[name] = M
 
 	return creatures
@@ -698,10 +691,9 @@ Turf and target are seperate in case you want to teleport some distance from a t
 		if (M.real_name && M.real_name != M.name)
 			name += " \[[M.real_name]\]"
 		if (M.stat == 2)
-			if(istype(M, /mob/dead/observer/))
-				name += " \[ghost\]"
-			else
-				name += " \[dead\]"
+			name += " \[dead\]"
+		if(istype(M, /mob/dead/observer/))
+			name += " \[ghost\]"
 		creatures[name] = M
 
 	return creatures

@@ -13,6 +13,7 @@ var/datum/subsystem/database_query_manager/SSdatabase
 	var/list/datum/db/query_response/queries
 
 	var/list/datum/db/query_response/all_queries
+	var/list/datum/db/query_response/rejected_queries
 
 	var/list/datum/db/query_response/currentrun
 
@@ -32,6 +33,7 @@ var/datum/subsystem/database_query_manager/SSdatabase
 	queries = list()
 	currentrun = list()
 	all_queries = list()
+	rejected_queries = list()
 	var/list/result = loadsql("config/dbconfig.txt")
 	settings = connection_settings_from_config(result)
 	debug_mode = settings.debug_mode
@@ -62,6 +64,8 @@ var/datum/subsystem/database_query_manager/SSdatabase
 		in_progress_tally++
 		if(Q.process())
 			queries -= Q
+			if(Q.status == DB_QUERY_BROKEN)
+				rejected_queries += Q
 			in_callback_tally++
 		currentrun.len--
 		if (MC_TICK_CHECK)			

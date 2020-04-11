@@ -172,7 +172,7 @@
 			heart.damage += 5 //Allow the defibrilator to possibly worsen heart damage. Still rare enough to just be the "clone damage" of the defib
 
 		if(!H.is_revivable())
-			if(heart.is_broken())
+			if(heart && heart.is_broken())
 				user.visible_message(SPAN_WARNING("[htmlicon(src, viewers(src))] \The [src] buzzes: Defibrillation failed. Patient's heart is too damaged. Immediate surgery is advised."))
 				return
 			user.visible_message(SPAN_WARNING("[htmlicon(src, viewers(src))] \The [src] buzzes: Defibrillation failed. Patient's general condition does not allow reviving."))

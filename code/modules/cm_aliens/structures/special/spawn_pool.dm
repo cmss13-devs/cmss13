@@ -84,6 +84,9 @@
 			spawn_pooled_larva(pick(players_with_xeno_pref))
 
 /obj/effect/alien/resin/special/pool/proc/melt_body(var/iterations = 3)
+	if(!melting_body)
+		return
+
 	melting_body.pixel_y -= 1
 	playsound(src, 'sound/bullets/acid_impact1.ogg', 25)
 	iterations -= 1

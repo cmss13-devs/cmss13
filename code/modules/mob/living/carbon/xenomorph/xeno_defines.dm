@@ -515,7 +515,7 @@
 	return TRUE
 
 /datum/hive_status/proc/remove_hive_leader(var/mob/living/carbon/Xenomorph/xeno)
-	if (!IS_XENO_LEADER(xeno))
+	if(!istype(xeno) || !IS_XENO_LEADER(xeno))
 		return FALSE
 	
 	var/leader_num = GET_XENO_LEADER_NUM(xeno)

@@ -23,6 +23,10 @@ var/list/fast_machines = list()
 	while(currentrun.len)
 		var/obj/structure/machinery/M = currentrun[currentrun.len]
 		currentrun.len--
+		
+		if(isnull(M))
+			continue
+
 		M.process()		
 		if(MC_TICK_CHECK)
 			return

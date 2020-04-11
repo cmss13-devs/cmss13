@@ -33,6 +33,9 @@
 		if(user.lying) //Can't use your inventory when lying
 			return
 
+		if(isnull(master_item))
+			return
+
 		if(over_object == user && Adjacent(user)) //This must come before the screen objects only block
 			open(user)
 			return 0

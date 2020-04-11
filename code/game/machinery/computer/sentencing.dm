@@ -442,7 +442,7 @@
 				return
 
 			var/incident_notes = sanitize(input(usr, "Describe the incident here:","Incident Report", html_decode(incident.notes)) as message, 1, MAX_PAPER_MESSAGE_LEN)
-			if(incident_notes != null)
+			if(incident_notes != null && incident)
 				incident.notes = incident_notes
 
 	updateUsrDialog()

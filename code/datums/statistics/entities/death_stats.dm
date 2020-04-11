@@ -176,7 +176,6 @@
 		xeno_stats.death_list.Insert(1, .)
 	if(cause_mob)
 		if(!ismob(cause_mob))
-			CRASH("Statistics attempted to track a mob death with a non-mob cause: [cause_mob] ([cause])")
 			return
 		var/mob/M = cause_mob
 		if(!M.statistic_exempt && M != src)

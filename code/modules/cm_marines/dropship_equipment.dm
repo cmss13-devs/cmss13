@@ -228,7 +228,7 @@
 		point_loc = ship_base.loc
 	if(!do_after(user, duration_time, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		return
-	if(point_loc && ship_base.loc != point_loc) //dropship flew away
+	if(point_loc && ship_base && ship_base.loc != point_loc) //dropship flew away
 		return
 	if(!PC.linked_powerloader || PC.loaded || PC.linked_powerloader.buckled_mob != user)
 		return

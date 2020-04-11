@@ -577,7 +577,7 @@ var/const/INGEST = 2
 			supplemented += R.intensitymod * R.volume
 			intensity += R.intensitymod * R.volume
 			duration += R.durationmod * R.volume
-			radius += R.radiusmod * R.
+			radius += R.radiusmod * R.volume
 		if(R.id == "phosphorus")
 			smokerad = min(R.volume / 10, max_fire_rad - 1)
 	//only integers please

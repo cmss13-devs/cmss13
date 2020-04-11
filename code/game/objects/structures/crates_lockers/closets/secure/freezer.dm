@@ -152,7 +152,7 @@
 	
 /obj/structure/machinery/paraform_cooler
 	var/cooldown = 5
-	var/list/polymerization_recipe = list("formaldehyde" = 5, "water" = 5)
+	var/list/polymerization_recipe = list("formaldehyde" = 3, "water" = 3)
 	var/obj/structure/closet/secure_closet/freezer/industry/freezer
 
 /obj/structure/machinery/paraform_cooler/process()

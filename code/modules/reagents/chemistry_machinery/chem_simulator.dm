@@ -280,10 +280,6 @@
 				suffix += property_codings[P] + "[C.properties[P]]"
 		else //This property was added through relation
 			suffix += property_codings[P] + "[C.properties[P]]"
-	if(C.overdose > O.overdose)
-		suffix += "+"
-	else if(C.overdose < O.overdose)
-		suffix += "-"
 	return O.name + suffix
 
 /obj/structure/machinery/chem_simulator/proc/amplify()

@@ -2,6 +2,7 @@
 	var/filename
 
 /datum/db/connection_settings/native/New(var/list/config)
+	..()
 	filename = config["db_filename"]
 
 /datum/db/connection_settings/native/create_connection()

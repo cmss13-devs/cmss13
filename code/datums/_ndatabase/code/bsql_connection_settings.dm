@@ -6,6 +6,7 @@
 	var/db
 
 /datum/db/connection_settings/bsql/New(var/list/config)
+	..()
 	ipaddress = config["db_address"]
 	port = config["db_port"]
 	username = config["db_username"]

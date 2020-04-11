@@ -1,6 +1,8 @@
 /datum/db/connection_settings
+	var/debug_mode
 
 /datum/db/connection_settings/New(var/list/config)
+	debug_mode = !!config["db_debug_mode"]
 
 /datum/db/connection_settings/proc/create_connection()
 	return null

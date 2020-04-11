@@ -34,6 +34,7 @@ var/datum/subsystem/database_query_manager/SSdatabase
 	all_queries = list()
 	var/list/result = loadsql("config/dbconfig.txt")
 	settings = connection_settings_from_config(result)
+	debug_mode = settings.debug_mode
 	NEW_SS_GLOBAL(SSdatabase)
 
 /datum/subsystem/database_query_manager/Initialize()

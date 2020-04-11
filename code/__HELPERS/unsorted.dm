@@ -572,6 +572,7 @@ Turf and target are seperate in case you want to teleport some distance from a t
 		if(istype(M, /mob/dead/observer/))
 			name += " \[ghost\]"
 
+		creatures[name] = M
 	return creatures
 
 /proc/getpreds()

@@ -36,7 +36,7 @@ var/global/normal_ooc_colour = "#1c52f5"
 		if(!ooc_allowed) //Send to LOOC instead
 			looc(msg)
 			return
-		if(!dooc_allowed && (mob.stat == DEAD))
+		if(!dooc_allowed && (mob.stat == DEAD || isobserver(mob)))
 			to_chat(usr, SPAN_DANGER("OOC for dead mobs has been turned off."))
 			return
 		if(prefs.muted & MUTE_OOC)
@@ -145,7 +145,7 @@ var/global/normal_ooc_colour = "#1c52f5"
 	var/mob/S = src.mob
 
 	var/display_name = S.key
-	if(S.stat != DEAD)
+	if(S.stat != DEAD && !isobserver(S))
 		display_name = S.name
 
 	// Handle non-admins
@@ -167,7 +167,7 @@ var/global/normal_ooc_colour = "#1c52f5"
 
 	// Now handle admins
 	display_name = S.key
-	if(S.stat != DEAD)
+	if(S.stat != DEAD && !isobserver(S))
 		display_name = "[S.name]/([S.key])"
 
 	for(var/client/C in admins)

@@ -387,7 +387,7 @@
 	return result
 
 /datum/db/adapter/bsql_adapter/proc/escape_string(str)
-	return connection.connection.Quote(str)
+	return connection.connection.Quote("[str]")
 	
 /datum/db/adapter/bsql_adapter/proc/get_filter_comparison(var/datum/db/filter/comparison/filter)
 	switch(filter.operator)

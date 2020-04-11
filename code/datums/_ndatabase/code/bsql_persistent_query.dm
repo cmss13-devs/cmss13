@@ -11,7 +11,9 @@
 		results = list()
 	if(status <= DB_QUERY_READING)
 		is_complete = query.IsComplete()
-		error = query.GetError()
+		error = null
+		if(is_complete)
+			error = query.GetError()
 		var/errored = !!error
 		if(is_complete && !errored)
 			if(!query.last_result)

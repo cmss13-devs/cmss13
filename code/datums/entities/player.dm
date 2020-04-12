@@ -36,12 +36,12 @@
 		"notes_migrated" = DB_FIELDTYPE_INT,
 		"is_permabanned" = DB_FIELDTYPE_INT,
 		"permaban_reason" = DB_FIELDTYPE_STRING_MAX,
-		"permaban_date" = DB_FIELDTYPE_DATE,
+		"permaban_date" = DB_FIELDTYPE_STRING_LARGE,
 		"is_time_banned" = DB_FIELDTYPE_INT,
 		"time_ban_reason" = DB_FIELDTYPE_STRING_MAX,
 		"time_ban_admin_id" = DB_FIELDTYPE_BIGINT,
 		"time_ban_expiration_date" = DB_FIELDTYPE_DATE,
-		"time_ban_date" = DB_FIELDTYPE_DATE)
+		"time_ban_date" = DB_FIELDTYPE_STRING_LARGE)
 
 /datum/entity_meta/player/on_read(var/datum/entity/player/player)
 	DB_FILTER(/datum/entity/player_note, DB_COMP("player_id", DB_EQUALS, player.id), CALLBACK(src, /datum/entity_meta/player.proc/on_read_notes, player))

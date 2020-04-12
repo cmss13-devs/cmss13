@@ -17,7 +17,7 @@
 	field_types = list("player_id"=DB_FIELDTYPE_BIGINT,
 			"admin_id"=DB_FIELDTYPE_BIGINT,
 			"text"=DB_FIELDTYPE_STRING_MAX,
-			"date"=DB_FIELDTYPE_DATE,
+			"date"=DB_FIELDTYPE_STRING_LARGE,
 			"is_ban"=DB_FIELDTYPE_INT,
 			"ban_time"=DB_FIELDTYPE_INT,
 			"is_confidential"=DB_FIELDTYPE_INT,

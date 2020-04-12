@@ -133,6 +133,9 @@
 	ping_count = 0
 
 	var/turf/cur_turf = get_turf(src)
+	if(!istype(cur_turf))
+		return
+
 	if(!range_bounds)
 		range_bounds = new/datum/shape/rectangle
 	range_bounds.center_x = cur_turf.x

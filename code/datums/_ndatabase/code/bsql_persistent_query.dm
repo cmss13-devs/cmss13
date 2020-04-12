@@ -18,7 +18,6 @@
 		if(is_complete && !errored)
 			if(!query.last_result)
 				status = DB_QUERY_FINISHED
-				qdel(query)
 				query = null
 				return
 			status = DB_QUERY_READING

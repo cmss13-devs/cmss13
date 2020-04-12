@@ -303,7 +303,10 @@
 			var/esfield = "[escape_string(field)]"
 			if(!local_first)
 				local_text+=","
-			local_text += "'[escape_string(fields[field])]' as `[esfield]`"
+			if(fields[field] != null)
+				local_text += "'[escape_string(fields[field])]' as `[esfield]`"
+			else
+				local_text += "null as `[esfield]`"
 			if(first && !is_id)
 				if(!items_first)
 					update_items+=","

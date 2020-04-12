@@ -24,6 +24,5 @@
 		while(query.NextRow())
 			var/list/current_row = query.GetRowData()
 			results += list(current_row)
-	affected_rows = query.RowsAffected()
-	qdel(query)
+	affected_rows = query.RowsAffected()	
 	status = DB_QUERY_FINISHED

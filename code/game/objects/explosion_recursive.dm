@@ -326,7 +326,7 @@ explosion resistance exactly as much as their health
 		target = locate(target.x + round( scatter_x , 1),target.y + round( scatter_y , 1),target.z) //Locate an adjacent turf.
 	
 	//time for the explosion to destroy windows, walls, etc which might be in the way
-	add_timer(CALLBACK(src, /atom/movable/proc/launch_towards, target, range, speed, null, TRUE), 1)
+	INVOKE_ASYNC(src, /atom/movable.proc/launch_towards, target, range, speed, null, TRUE)
 
 	return
 
@@ -370,6 +370,6 @@ explosion resistance exactly as much as their health
 		target = locate(target.x + round( scatter_x , 1),target.y + round( scatter_y , 1),target.z) //Locate an adjacent turf.
 
 	//time for the explosion to destroy windows, walls, etc which might be in the way
-	add_timer(CALLBACK(src, /atom/movable/proc/launch_towards, target, range, speed, null, spin), 1)
+	INVOKE_ASYNC(src, /atom/movable.proc/launch_towards, target, range, speed, null, spin)
 
 	return

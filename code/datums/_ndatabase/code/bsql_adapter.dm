@@ -307,7 +307,7 @@
 			if(first && !is_id)
 				if(!items_first)
 					update_items+=","
-				update_items+="`[table_name]`.`[esfield]`=__prep_update.`[esfield]`"
+				update_items+="`[table_name]`.`[esfield]`=`__prep_update`.`[esfield]`"
 				items_first = FALSE
 			local_first = FALSE
 		calltext += "SELECT [local_text]"
@@ -318,8 +318,7 @@
 	return {"
 		WITH __prep_update as (
 			[calltext]
-		)
-		UPDATE `[connection.database]`.`[table_name]` INNER JOIN __prep_update ON `[table_name]`.id = __prep_update.id SET [update_items];
+		) UPDATE `[connection.database]`.`[table_name]` INNER JOIN `__prep_update` ON `[table_name]`.id = `__prep_update`.id SET [update_items]
 	"}
 
 /datum/db/adapter/bsql_adapter/proc/getquery_delete_table(table_name, var/list/ids)

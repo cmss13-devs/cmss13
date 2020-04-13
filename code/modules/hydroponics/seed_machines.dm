@@ -8,8 +8,8 @@
 	var/list/genes = list()
 	var/genesource = "unknown"
 
-/obj/item/disk/botany/New()
-	..()
+/obj/item/disk/botany/Initialize()
+	. = ..()
 	pixel_x = rand(-5,5)
 	pixel_y = rand(-5,5)
 
@@ -27,8 +27,8 @@
 	name = "flora disk box"
 	desc = "A box of flora data disks, apparently."
 
-/obj/item/storage/box/botanydisk/New()
-	..()
+/obj/item/storage/box/botanydisk/Initialize()
+	. = ..()
 	for(var/i = 0;i<14;i++)
 		new /obj/item/disk/botany(src)
 

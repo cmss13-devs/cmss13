@@ -582,8 +582,8 @@
 	full_report = TRUE
 
 /obj/item/paper/research_notes/good/Initialize()
-		tier = pick("T3","T4")
-		. = ..()
+	tier = pick("T3","T4")
+	. = ..()
 
 /obj/item/paper/chem_report
 	icon_state = "paper_wy_words"

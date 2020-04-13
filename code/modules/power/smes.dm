@@ -34,32 +34,29 @@
 	var/output_level_max = 200000
 	var/should_be_mapped = 0 // If this is set to 0 it will send out warning on New()
 
-/obj/structure/machinery/power/smes/New()
-	..()
-	spawn(5)
-		if(!powernet)
-			connect_to_network()
+/obj/structure/machinery/power/smes/Initialize()
+	. = ..()
+	if(!powernet)
+		connect_to_network()
 
-		dir_loop:
-			for(var/d in cardinal)
-				var/turf/T = get_step(src, d)
-				for(var/obj/structure/machinery/power/terminal/term in T)
-					if(term && term.dir == turn(d, 180))
-						terminal = term
-						break dir_loop
-		if(!terminal)
-			stat |= BROKEN
-			return
-		terminal.master = src
-		if(!terminal.powernet)
-			terminal.connect_to_network()
-		updateicon()
-		start_processing_power()
+	dir_loop:
+		for(var/d in cardinal)
+			var/turf/T = get_step(src, d)
+			for(var/obj/structure/machinery/power/terminal/term in T)
+				if(term && term.dir == turn(d, 180))
+					terminal = term
+					break dir_loop
+	if(!terminal)
+		stat |= BROKEN
+		return
+	terminal.master = src
+	if(!terminal.powernet)
+		terminal.connect_to_network()
+	updateicon()
+	start_processing_power()
 
-		if(!should_be_mapped)
-			warning("Non-buildable or Non-magical SMES at [src.x]X [src.y]Y [src.z]Z")
-
-	return
+	if(!should_be_mapped)
+		warning("Non-buildable or Non-magical SMES at [src.x]X [src.y]Y [src.z]Z")
 
 /obj/structure/machinery/power/smes/proc/updateicon()
 	overlays.Cut()

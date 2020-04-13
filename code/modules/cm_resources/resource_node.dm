@@ -69,7 +69,7 @@
 	var/icon_variant = 0
 
 /obj/structure/resource_node/plasma/Initialize()
-	..()
+	. = ..()
 	icon_variant = rand(0,1)
 
 /obj/structure/resource_node/plasma/update_icon()

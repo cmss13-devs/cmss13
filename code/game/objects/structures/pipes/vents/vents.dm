@@ -14,7 +14,7 @@
 	var/vent_icon = "vent"
 
 /obj/structure/pipes/vents/Initialize()
-	..()
+	. = ..()
 
 	initial_loc = get_area(loc)
 	if(initial_loc.master)

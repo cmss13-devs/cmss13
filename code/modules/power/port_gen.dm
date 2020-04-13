@@ -112,8 +112,8 @@ display round(lastgen) and phorontank amount
 	var/time_per_sheet = 40
 	var/heat = 0
 
-/obj/structure/machinery/power/port_gen/pacman/initialize()
-	..()
+/obj/structure/machinery/power/port_gen/pacman/Initialize()
+	. = ..()
 	if(anchored)
 		connect_to_network()
 

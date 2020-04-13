@@ -2090,7 +2090,7 @@
 	damage_type = BRUTE
 	shrapnel_type = /obj/item/reagent_container/food/drinks/cans/souto/classic
 	flags_ammo_behavior = AMMO_SKIPS_ALIENS|AMMO_IGNORE_ARMOR|AMMO_IGNORE_RESIST|AMMO_BALLISTIC|AMMO_STOPPED_BY_COVER|AMMO_SPECIAL_EMBED
-	var/obj/item/reagent_container/food/drinks/cans/souto/can_type = new /obj/item/reagent_container/food/drinks/cans/souto/classic
+	var/obj/item/reagent_container/food/drinks/cans/souto/classic/can_type
 	icon = 'icons/obj/items/drinks.dmi'
 	icon_state = "souto_classic"
 
@@ -2101,12 +2101,11 @@
 	accuracy = config.max_hit_accuracy + config.max_hit_accuracy
 	accurate_range = config.short_shell_range
 	shell_speed = config.slow_shell_speed
-	can_type = new /obj/item/reagent_container/food/drinks/cans/souto/classic
 
 /datum/ammo/souto/on_embed(var/mob/embedded_mob, var/obj/limb/target_organ)
 	if(ishuman(embedded_mob) && !isYautja(embedded_mob))
 		if(istype(target_organ))
-			target_organ.embed(src.can_type)
+			target_organ.embed(new can_type)
 
 /datum/ammo/souto/on_hit_mob(mob/M, obj/item/projectile/P)
 	if(!M || M == P.firer) return
@@ -2116,7 +2115,7 @@
 				for(var/obj/item/reagent_container/food/drinks/cans/souto/S in P.contents)
 					M.put_in_active_hand(S)
 					for(var/mob/O in viewers(world.view, P)) //find all people in view.
-						O.show_message(SPAN_DANGER("[M] catches the [can_type]!"), 1) //Tell them the can was caught.
+						O.show_message(SPAN_DANGER("[M] catches the [S]!"), 1) //Tell them the can was caught.
 					return //Can was caught.
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M

@@ -14,15 +14,6 @@
 	idle_power_usage = 300
 	active_power_usage = 300
 
-/obj/structure/machinery/power/monitor/New()
-	..()
-	//var/obj/structure/cable/attached = null
-	//var/turf/T = loc
-	//if(isturf(T))
-		//attached = locate() in T
-	//if(attached)
-	//	powernet = attached.get_powernet()
-
 /obj/structure/machinery/power/monitor/attack_ai(mob/user)
 	add_fingerprint(user)
 

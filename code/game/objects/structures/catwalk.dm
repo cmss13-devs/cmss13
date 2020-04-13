@@ -9,8 +9,8 @@
 	unacidable = TRUE
 	layer = CATWALK_LAYER
 
-/obj/structure/catwalk/initialize()
-	..()
+/obj/structure/catwalk/Initialize()
+	. = ..()
 	update_icon()
 
 /obj/structure/catwalk/update_icon()

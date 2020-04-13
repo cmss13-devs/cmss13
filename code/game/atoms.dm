@@ -50,10 +50,16 @@
 	// This is here to optimze things we never want to decorate
 	var/decoratable = FALSE
 
-// Temporary call in place for preparation of implementing SSatoms.
-/atom/New()
-	. = ..()
-	Initialize()
+/atom/New(loc, ...)
+	var/check_initialize = SSatoms.init_state
+	if(check_initialize != INITIALIZATION_INSSATOMS)
+		var/check = FALSE
+		if(check_initialize == INITIALIZATION_INNEW_MAPLOAD)
+			check = TRUE
+		args[1] = check
+		if(SSatoms.initalize_atom(src, args))
+			return
+
 	Decorate()
 
 /*
@@ -427,11 +433,22 @@ its easier to just keep the beam vertical.
 /atom/proc/handle_barrier_chance()
 	return FALSE
 
-/atom/proc/initialize()
+/*
+Called after New. 
+Must refer back to this parent or manually set initialized to TRUE. 
+Parameters are passed from New.
+*/
+/atom/proc/Initialize(mapload, ...)
+	if(flags_atom & INITIALIZED)
+		CRASH("Warning: [src]([type]) initialized multiple times!")
+	flags_atom |= INITIALIZED
+
+	return INITIALIZE_HINT_NORMAL
+
+//called if Initialize returns INITIALIZE_HINT_LATELOAD
+/atom/proc/InitializeLate()
 	return
 
-/atom/proc/Initialize()
-	return
 
 /atom/proc/process()
 	return

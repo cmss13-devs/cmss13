@@ -34,7 +34,8 @@
 	icon_state = "tallcabinet"
 
 
-/obj/structure/filingcabinet/initialize()
+/obj/structure/filingcabinet/Initialize()
+	. = ..()
 	for(var/obj/item/I in loc)
 		for(var/allowed_type in allowed_types)
 			if(istype(I, allowed_type))

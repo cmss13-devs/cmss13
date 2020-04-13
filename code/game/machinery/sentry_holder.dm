@@ -19,12 +19,12 @@
 	var/ind = FALSE
 
 /obj/structure/machinery/sentry_holder/Initialize()
+	. = ..()
 	if(!deployed_turret)
 		deployed_turret = new turret_path(src)
 		deployed_turret.deployment_system = src
 		ox = pixel_x
 		oy = pixel_y
-	..()
 
 /obj/structure/machinery/sentry_holder/examine(mob/user)
 	..()

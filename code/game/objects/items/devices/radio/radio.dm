@@ -48,8 +48,6 @@
 
 /obj/item/device/radio/New()
 	..()
-	if(radio_controller)
-		initialize()
 
 /obj/item/device/radio/Dispose()
 	if(radio_connection)
@@ -73,8 +71,9 @@
 			F.remove_listener(src)
 
 
-/obj/item/device/radio/initialize()
-
+/obj/item/device/radio/Initialize()
+	. = ..()
+	
 	set_frequency(frequency)
 
 	for (var/ch_name in channels)

@@ -13,7 +13,7 @@
 	closed_layer = PODDOOR_CLOSED_LAYER
 
 /obj/structure/machinery/door/poddoor/Initialize()
-	..()
+	. = ..()
 	if(density)
 		layer = PODDOOR_CLOSED_LAYER //to override door.Initialize() proc
 	else
@@ -239,8 +239,8 @@
 		/obj/structure/machinery/door/airlock)
 
 /obj/structure/machinery/door/poddoor/almayer/Initialize()
+	. = ..()
 	add_timer(CALLBACK(src, /atom.proc/relativewall_neighbours), 10)
-	..()
 
 /obj/structure/machinery/door/poddoor/almayer/locked
 	unslashable = TRUE

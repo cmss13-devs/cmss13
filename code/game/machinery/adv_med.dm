@@ -17,7 +17,7 @@
 
 
 /obj/structure/machinery/bodyscanner/Initialize()
-	..()
+	. = ..()
 	connect_body_scanconsole()
 
 
@@ -165,7 +165,7 @@
 	var/temphtml
 
 /obj/structure/machinery/body_scanconsole/Initialize()
-	..()
+	. = ..()
 	connect_bodyscanner()
 
 

@@ -287,17 +287,12 @@
 	var/deployment_cooldown
 	var/obj/structure/machinery/defenses/sentry/premade/dropship/deployed_turret
 
-/obj/structure/dropship_equipment/sentry_holder/initialize()
-	if(!deployed_turret)
-		deployed_turret = new(src)
-		deployed_turret.deployment_system = src
-	..()
+/obj/structure/dropship_equipment/sentry_holder/Initialize()
+	. = ..()
 
-/obj/structure/dropship_equipment/sentry_holder/New()
 	if(!deployed_turret)
 		deployed_turret = new(src)
 		deployed_turret.deployment_system = src
-	..()
 
 /obj/structure/dropship_equipment/sentry_holder/examine(mob/user)
 	..()
@@ -410,13 +405,8 @@
 	var/deployment_cooldown
 	var/obj/structure/machinery/m56d_hmg/mg_turret/dropship/deployed_mg
 
-/obj/structure/dropship_equipment/mg_holder/initialize()
-	if(!deployed_mg)
-		deployed_mg = new(src)
-		deployed_mg.deployment_system = src
-	..()
-
-/obj/structure/dropship_equipment/mg_holder/New()
+/obj/structure/dropship_equipment/mg_holder/Initialize()
+	. = ..()
 	if(!deployed_mg)
 		deployed_mg = new(src)
 		deployed_mg.deployment_system = src

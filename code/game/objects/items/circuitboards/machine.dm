@@ -144,7 +144,6 @@ obj/item/circuitboard/machine/rdserver
 	//TODO: Move this stuff into the relevant constructor when pipe/construction.dm is cleaned up.
 	U.dir = src.machine_dir
 	U.valid_directions = list(init_dirs)
-	U.initialize()
 
 /obj/item/circuitboard/machine/unary_atmos/heater
 	name = "Circuit Board (Gas Heating System)"

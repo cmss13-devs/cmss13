@@ -4,11 +4,13 @@
 	layer = WEED_LAYER
 	mouse_opacity = 0
 
-/obj/effect/decal/warning_stripes/initialize()
+/obj/effect/decal/warning_stripes/Initialize()
+	. = ..()
 	loc.overlays += image(icon, icon_state=icon_state, dir=dir, layer=layer)
 	qdel(src)
 
-/obj/effect/decal/warning_stripes/permanent/initialize()
+/obj/effect/decal/warning_stripes/permanent/Initialize()
+	flags_atom |= INITIALIZED
 	loc.overlays += src
 	return
 
@@ -22,7 +24,8 @@
 	icon = 'icons/turf/overlays.dmi'
 	layer = TURF_LAYER
 
-/obj/effect/decal/sand_overlay/initialize()
+/obj/effect/decal/sand_overlay/Initialize()
+	. = ..()
 	loc.overlays += image(icon, icon_state=icon_state, dir=dir)
 	qdel(src)
 

@@ -50,7 +50,8 @@
 	unslashable = TRUE
 	unacidable = TRUE
 
-/obj/structure/machinery/embedded_controller/radio/initialize()
+/obj/structure/machinery/embedded_controller/radio/Initialize()
+	. = ..()
 	set_frequency(frequency)
 
 /obj/structure/machinery/embedded_controller/radio/update_icon()

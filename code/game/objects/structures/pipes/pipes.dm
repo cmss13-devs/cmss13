@@ -14,7 +14,7 @@
 	var/ventcrawl_message_busy = 0 //Prevent spamming
 
 /obj/structure/pipes/Initialize()
-	..()
+	. = ..()
 	if(!icon_manager)
 		icon_manager = new()
 

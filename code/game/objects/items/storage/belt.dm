@@ -906,7 +906,8 @@
 	flags_inventory = CANTSTRIP
 	max_w_class = 0 //this belt cannot hold anything
 
-/obj/item/storage/belt/souto/New()
+/obj/item/storage/belt/souto/Initialize()
+	. = ..()
+	
 	for(var/i = 1 to storage_slots)
 		new /obj/item/reagent_container/food/drinks/cans/souto/classic(src)
-	..()

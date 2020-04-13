@@ -60,7 +60,7 @@
 		if(istype(A,/obj/effect/landmark/map_load_mark))
 			subtemplates_to_spawn += A
 
-	SSatoms.InitializeAtoms() // The atoms should have been getting queued there. This flushes the queue.
+	SSatoms.initialize_all_atoms() // The atoms should have been getting queued there. This flushes the queue.
 
 	SSmachines.setup_powernets_for_cables(cables)
 	SSmachines.setup_atmos_machinery(atmos_machines)

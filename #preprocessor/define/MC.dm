@@ -12,6 +12,11 @@
 
 //SubSystem flags (Please design any new flags so that the default is off, to make adding flags to subsystems easier)
 
+#define INITIALIZATION_INSSATOMS      0	//New should not call Initialize
+#define INITIALIZATION_INSSATOMS_LATE 1	//New should not call Initialize; after the first pass is complete (handled differently)
+#define INITIALIZATION_INNEW_MAPLOAD  2	//New should call Initialize(TRUE)
+#define INITIALIZATION_INNEW_REGULAR  3	//New should call Initialize(FALSE)
+
 //subsystem should fire during pre-game lobby.
 #define SS_FIRE_IN_LOBBY 1
 

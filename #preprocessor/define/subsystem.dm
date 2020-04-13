@@ -27,6 +27,7 @@
 #define SS_INIT_DEFCON             9
 #define SS_INIT_LAW                6
 #define SS_INIT_FZ_TRANSITIONS     5
+#define SS_INIT_ATOMS              3
 #define SS_INIT_TIMER              1
 #define SS_INIT_UNSPECIFIED        0
 #define SS_INIT_EMERGENCY_SHUTTLE -19
@@ -109,3 +110,7 @@
 #define SS_DISPLAY_UNSPECIFIED     0
 #define SS_DISPLAY_SUN             10
 #define SS_DISPLAY_ADMIN           20
+
+#define INITIALIZE_HINT_NORMAL   0  //Nothing happens
+#define INITIALIZE_HINT_LATELOAD 1  //Call InitializeLate
+#define INITIALIZE_HINT_QDEL     2  //Call qdel on the atom

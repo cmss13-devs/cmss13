@@ -15,12 +15,11 @@
 
 /obj/structure/machinery/computer/New()
 	..()
-	if(ticker)
-		initialize()
 	start_processing()
 
 
-/obj/structure/machinery/computer/initialize()
+/obj/structure/machinery/computer/Initialize()
+	. = ..()
 	power_change()
 
 /obj/structure/machinery/computer/process()

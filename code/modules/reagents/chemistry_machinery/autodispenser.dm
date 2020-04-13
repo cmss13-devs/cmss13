@@ -31,7 +31,7 @@
 	var/smartlink = TRUE
 
 /obj/structure/machinery/autodispenser/Initialize()
-	..()
+	. = ..()
 	spawn(7)
 		linked_storage = locate(/obj/structure/machinery/smartfridge/chemistry,get_step(src, dir))
 	start_processing()

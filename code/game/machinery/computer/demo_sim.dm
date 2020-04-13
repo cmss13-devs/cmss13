@@ -10,6 +10,7 @@
 	var/cooling = FALSE
 
 /obj/structure/machinery/computer/demo_sim/Initialize()
+	. = ..()
 	add_timer(CALLBACK(src, .proc/post_Initialize), 20, TIMER_UNIQUE)
 
 /obj/structure/machinery/computer/demo_sim/proc/post_Initialize()

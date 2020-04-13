@@ -10,9 +10,10 @@
 	var/datum/seed/seed
 	var/modified = 0
 
-/obj/item/seeds/New()
+/obj/item/seeds/Initialize()
+	. = ..()
+
 	update_seed()
-	..()
 
 //Grabs the appropriate seed datum from the global list.
 /obj/item/seeds/proc/update_seed()

@@ -23,8 +23,8 @@
 	var/sheets_refunded = 2
 	var/obj/structure/machinery/light/newlight = null
 
-/obj/structure/machinery/light_construct/New()
-	..()
+/obj/structure/machinery/light_construct/Initialize()
+	. = ..()
 	if (fixture_type == "bulb")
 		icon_state = "bulb-construct-stage1"
 
@@ -165,32 +165,30 @@
 	light_type = /obj/item/light_bulb/tube/large
 	brightness = 12
 
-/obj/structure/machinery/light/built/New()
+/obj/structure/machinery/light/built/Initialize()
+	. = ..()
 	status = LIGHT_EMPTY
 	update(0)
-	..()
 
-/obj/structure/machinery/light/small/built/New()
+/obj/structure/machinery/light/small/built/Initialize()
+	. = ..()
 	status = LIGHT_EMPTY
 	update(0)
-	..()
 
 // create a new lighting fixture
-/obj/structure/machinery/light/New()
-	..()
+/obj/structure/machinery/light/Initialize()
+	. = ..()
+	switch(fitting)
+		if("tube")
+			brightness = 8
+			if(prob(2))
+				broken(1)
+		if("bulb")
+			brightness = 4
+			if(prob(5))
+				broken(1)
 
-	spawn(2)
-		switch(fitting)
-			if("tube")
-				brightness = 8
-				if(prob(2))
-					broken(1)
-			if("bulb")
-				brightness = 4
-				if(prob(5))
-					broken(1)
-
-		add_timer(CALLBACK(src, .proc/update, 0), 1)
+	add_timer(CALLBACK(src, .proc/update, 0), 1)
 
 	switch(fitting)
 		if("tube")
@@ -633,8 +631,8 @@
 			desc = "A broken [name]."
 
 
-/obj/item/light_bulb/New()
-	..()
+/obj/item/light_bulb/Initialize()
+	. = ..()
 	switch(name)
 		if("light tube")
 			brightness = rand(6,9)

@@ -11,7 +11,7 @@
 	foldable = null
 
 /obj/item/storage/box/m56_system/Initialize()
-	..()
+	. = ..()
 	new /obj/item/clothing/glasses/night/m56_goggles(src)
 	new /obj/item/weapon/gun/smartgun(src)
 	new /obj/item/smartgun_powerpack(src)

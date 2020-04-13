@@ -62,8 +62,8 @@
 /obj/structure/cable/white
 	color = "#666547"
 
-/obj/structure/cable/New()
-	..()
+/obj/structure/cable/Initialize()
+	. = ..()
 	// ensure d1 & d2 reflect the icon_state for entering and exiting cable
 	var/dash = findtext(icon_state, "-")
 	d1 = text2num( copytext( icon_state, 1, dash ) )

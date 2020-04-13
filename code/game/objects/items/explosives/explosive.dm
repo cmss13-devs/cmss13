@@ -20,6 +20,7 @@
 	)
 
 /obj/item/explosive/Initialize()
+	. = ..()
 	if(!customizable)
 		return
 	var/datum/reagents/R = new/datum/reagents(1000)

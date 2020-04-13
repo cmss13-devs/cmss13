@@ -29,7 +29,7 @@
 
 
 /obj/structure/machinery/autodoc/Initialize()
-	..()
+	. = ..()
 	connect_autodoc_console()
 
 /obj/structure/machinery/autodoc/proc/connect_autodoc_console()
@@ -683,7 +683,7 @@
 	idle_power_usage = 40
 
 /obj/structure/machinery/autodoc_console/Initialize()
-	..()
+	. = ..()
 	connect_autodoc()
 
 /obj/structure/machinery/autodoc_console/proc/connect_autodoc()

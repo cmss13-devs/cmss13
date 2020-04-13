@@ -53,6 +53,7 @@
 #define NO_SNOW_TYPE			2048	// Used for armors or uniforms that don't have a snow icon state.
 #define INVULNERABLE			4096
 #define CAN_BE_SYRINGED			8192	// syringes can inject or drain reagents in this even if it isn't an OPENCONTAINER
+#define INITIALIZED				16384	// Initialized by SSatoms.
 //==========================================================================================
 
 #define HANDLE_BARRIER_CHANCE 1

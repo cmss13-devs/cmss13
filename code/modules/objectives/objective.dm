@@ -29,7 +29,7 @@
 		E.required_objectives -= src
 	..()
 
-/datum/cm_objective/proc/initialize() // initial setup after the map has loaded
+/datum/cm_objective/proc/Initialize() // initial setup after the map has loaded
 
 /datum/cm_objective/proc/pre_round_start() // called by game mode just before the round starts
 

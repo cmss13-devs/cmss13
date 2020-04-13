@@ -123,9 +123,6 @@
 		pixel_x = (dir & 3)? 0 : (dir == 4 ? -24 : 24)
 		pixel_y = (dir & 3)? (dir ==1 ? -24 : 24) : 0
 		update_icon()
-		if(ticker && ticker.current_state == GAME_STATE_PLAYING)//if the game is running
-			src.initialize()
-		return
 
 	if(!pixel_x && !pixel_y)
 		switch(dir)
@@ -154,7 +151,8 @@
 	TLV["temperature"] =	list(T0C-26, T0C, T0C+40, T0C+66) // K
 
 
-/obj/structure/machinery/alarm/initialize()
+/obj/structure/machinery/alarm/Initialize()
+	. = ..()
 	set_frequency(frequency)
 	if (!master_is_operating())
 		elect_master()

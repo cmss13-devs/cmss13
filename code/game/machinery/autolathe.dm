@@ -41,10 +41,40 @@
 	var/queue_max = AUTOLATHE_MAX_QUEUE
 
 /obj/structure/machinery/autolathe/Initialize()
-	..()
+	. = ..()
 	recipes = autolathe_recipes
 	categories = autolathe_categories
 	projected_stored_material = stored_material.Copy()
+
+	//Create global autolathe recipe list if it hasn't been made already.
+	if(isnull(recipes))
+		recipes = list()
+		categories = list()
+		for(var/R in typesof(/datum/autolathe/recipe)-/datum/autolathe/recipe-/datum/autolathe/recipe/armylathe)
+			var/datum/autolathe/recipe/recipe = new R
+			if(recipe.category in disabled_categories)
+				continue
+			recipes += recipe
+			categories |= recipe.category
+
+			var/obj/item/I = new recipe.path
+			if(I.matter && !recipe.resources) //This can be overidden in the datums.
+				recipe.resources = list()
+				for(var/material in I.matter)
+					if(!isnull(storage_capacity[material]))
+						if(istype(I,/obj/item/stack/sheet))
+							recipe.resources[material] = I.matter[material] //Doesn't take more if it's just a sheet or something. Get what you put in.
+						else
+							recipe.resources[material] = round(I.matter[material]*1.25) // More expensive to produce than they are to recycle.
+				qdel(I)
+
+	//Create parts for lathe.
+	component_parts = list()
+	for(var/component in components)
+		component_parts += new component(src)
+	RefreshParts()
+
+	update_printable()
 
 /obj/structure/machinery/autolathe/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	if (istype(O, /obj/item/tool/screwdriver))
@@ -246,39 +276,6 @@
 			return
 		else
 			pulse(wire, usr)
-
-/obj/structure/machinery/autolathe/New()
-	..()
-
-	//Create global autolathe recipe list if it hasn't been made already.
-	if(isnull(recipes))
-		recipes = list()
-		categories = list()
-		for(var/R in typesof(/datum/autolathe/recipe)-/datum/autolathe/recipe-/datum/autolathe/recipe/armylathe)
-			var/datum/autolathe/recipe/recipe = new R
-			if(recipe.category in disabled_categories)
-				continue
-			recipes += recipe
-			categories |= recipe.category
-
-			var/obj/item/I = new recipe.path
-			if(I.matter && !recipe.resources) //This can be overidden in the datums.
-				recipe.resources = list()
-				for(var/material in I.matter)
-					if(!isnull(storage_capacity[material]))
-						if(istype(I,/obj/item/stack/sheet))
-							recipe.resources[material] = I.matter[material] //Doesn't take more if it's just a sheet or something. Get what you put in.
-						else
-							recipe.resources[material] = round(I.matter[material]*1.25) // More expensive to produce than they are to recycle.
-				qdel(I)
-
-	//Create parts for lathe.
-	component_parts = list()
-	for(var/component in components)
-		component_parts += new component(src)
-	RefreshParts()
-
-	update_printable()
 
 //Updates overall lathe storage size.
 /obj/structure/machinery/autolathe/RefreshParts()

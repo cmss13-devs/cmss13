@@ -19,7 +19,7 @@
 	var/underslug_launchable = FALSE
 
 /obj/item/explosive/grenade/Initialize()
-	..()
+	. = ..()
 	det_time = rand(det_time - 5, det_time + 5)
 
 /obj/item/explosive/grenade/attack_self(mob/user)

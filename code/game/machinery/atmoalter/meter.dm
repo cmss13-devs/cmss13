@@ -17,7 +17,8 @@
 	target = null
 	. = ..()
 
-/obj/structure/machinery/meter/initialize()
+/obj/structure/machinery/meter/Initialize()
+	. = ..()
 	if (!target)
 		src.target = locate(/obj/structure/pipes/standard/) in loc
 
@@ -68,7 +69,8 @@
 	return 1
 
 
-/obj/structure/machinery/meter/turf/initialize()
+/obj/structure/machinery/meter/turf/Initialize()
+	. = ..()
 	if (!target)
 		src.target = loc
 

@@ -18,9 +18,8 @@
 	maptext_width = 32
 
 /obj/structure/machinery/brig_cell/Initialize()
-	add_timer(CALLBACK(src, .proc/search_for_components), 20)
-
 	. = ..()
+	add_timer(CALLBACK(src, .proc/search_for_components), 20)
 
 /obj/structure/machinery/brig_cell/proc/search_for_components()
 	for(var/obj/structure/machinery/door/window/brigdoor/M in machines)

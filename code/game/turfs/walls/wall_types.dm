@@ -175,8 +175,8 @@
 	layer = FLY_LAYER
 	special_icon = 1
 
-/turf/closed/wall/indestructible/splashscreen/initialize()
-	..()
+/turf/closed/wall/indestructible/splashscreen/Initialize()
+	. = ..()
 	if(icon_state == "lobbyart1") // default
 		// Only pick lobby art that credits the author
 		displayed_lobby_art = rand(1,length(lobby_art_authors))
@@ -302,8 +302,8 @@
 /turf/closed/wall/vault
 	icon_state = "rockvault"
 
-/turf/closed/wall/vault/initialize()
-	..()
+/turf/closed/wall/vault/Initialize()
+	. = ..()
 	icon_state = "[type]vault"
 
 
@@ -448,8 +448,8 @@
 	blend_turfs = list(/turf/closed/wall/resin)
 	blend_objects = list(/obj/structure/mineral_door/resin)
 
-/turf/closed/wall/resin/initialize()
-	..()
+/turf/closed/wall/resin/Initialize()
+	. = ..()
 	if(!locate(/obj/effect/alien/weeds) in loc)
 		new /obj/effect/alien/weeds(loc)
 

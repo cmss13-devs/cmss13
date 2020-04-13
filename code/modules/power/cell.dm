@@ -2,8 +2,8 @@
 // charge from 0 to 100%
 // fits in APC to provide backup power
 
-/obj/item/cell/New()
-	..()
+/obj/item/cell/Initialize()
+	. = ..()
 	charge = maxcharge
 
 	add_timer(CALLBACK(src, .proc/updateicon), 5)

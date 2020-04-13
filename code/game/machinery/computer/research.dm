@@ -6,6 +6,7 @@
 	var/obj/structure/machinery/photocopier/photocopier
 
 /obj/structure/machinery/computer/research/Initialize()
+	. = ..()
 	spawn(7)
 		photocopier = locate(/obj/structure/machinery/photocopier,get_step(src, NORTH))
 

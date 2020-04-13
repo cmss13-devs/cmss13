@@ -297,6 +297,7 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	var/handfuls = FALSE
 
 /obj/item/ammo_box/magazine/Initialize()
+	. = ..()
 	if(handfuls)
 		var/obj/item/ammo_magazine/AM = new magazine_type(src)
 		AM.max_rounds = num_of_magazines
@@ -309,10 +310,11 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	update_icon()
 
 /obj/item/ammo_box/magazine/empty/Initialize()
+	flags_atom |= INITIALIZED
 	var/obj/item/ammo_box/magazine/B = new(loc)
 	B.contents = list()
 	B.update_icon()
-	qdel(src)
+	return INITIALIZE_HINT_QDEL
 
 /obj/item/ammo_box/magazine/update_icon()
 	if(overlays)
@@ -403,12 +405,13 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	overlays += image(icon, icon_state = "text[overlay_gun_type]")		//adding text
 
 /obj/item/ammo_box/magazine/shotgun/empty/Initialize()
+	flags_atom |= INITIALIZED
 	var/obj/item/ammo_box/magazine/shotgun/B = new(loc)
 	var/obj/item/ammo_magazine/AM = locate(/obj/item/ammo_magazine) in B.contents
 	AM.max_rounds = B.num_of_magazines
 	AM.current_rounds = 0
 	B.update_icon()
-	qdel(src)
+	return INITIALIZE_HINT_QDEL
 
 /obj/item/ammo_box/magazine/shotgun/buckshot
 	name = "shotgun shell box (Buckshot x 100)"
@@ -417,12 +420,13 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	magazine_type = /obj/item/ammo_magazine/shotgun/buckshot
 
 /obj/item/ammo_box/magazine/shotgun/buckshot/empty/Initialize()
+	flags_atom |= INITIALIZED
 	var/obj/item/ammo_box/magazine/shotgun/buckshot/B = new(loc)
 	var/obj/item/ammo_magazine/AM = locate(/obj/item/ammo_magazine) in B.contents
 	AM.max_rounds = B.num_of_magazines
 	AM.current_rounds = 0
 	B.update_icon()
-	qdel(src)
+	return INITIALIZE_HINT_QDEL
 
 /obj/item/ammo_box/magazine/shotgun/flechette
 	name = "shotgun shell box (Flechette x 100)"
@@ -431,12 +435,13 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	magazine_type = /obj/item/ammo_magazine/shotgun/flechette
 
 /obj/item/ammo_box/magazine/shotgun/flechette/empty/Initialize()
+	flags_atom |= INITIALIZED
 	var/obj/item/ammo_box/magazine/shotgun/flechette/B = new(loc)
 	var/obj/item/ammo_magazine/AM = locate(/obj/item/ammo_magazine) in B.contents
 	AM.max_rounds = B.num_of_magazines
 	AM.current_rounds = 0
 	B.update_icon()
-	qdel(src)
+	return INITIALIZE_HINT_QDEL
 
 /obj/item/ammo_box/magazine/shotgun/incendiary
 	name = "shotgun shell box (Incendiary slug x 100)"
@@ -445,12 +450,13 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	magazine_type = /obj/item/ammo_magazine/shotgun/incendiary
 
 /obj/item/ammo_box/magazine/shotgun/incendiary/empty/Initialize()
+	flags_atom |= INITIALIZED
 	var/obj/item/ammo_box/magazine/shotgun/incendiary/B = new(loc)
 	var/obj/item/ammo_magazine/AM = locate(/obj/item/ammo_magazine) in B.contents
 	AM.max_rounds = B.num_of_magazines
 	AM.current_rounds = 0
 	B.update_icon()
-	qdel(src)
+	return INITIALIZE_HINT_QDEL
 
 /obj/item/ammo_box/magazine/shotgun/beanbag
 	name = "shotgun shell box (Beanbag x 100)"
@@ -459,12 +465,13 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	magazine_type = /obj/item/ammo_magazine/shotgun/beanbag
 
 /obj/item/ammo_box/magazine/shotgun/beanbag/empty/Initialize()
+	flags_atom |= INITIALIZED
 	var/obj/item/ammo_box/magazine/shotgun/beanbag/B = new(loc)
 	var/obj/item/ammo_magazine/AM = locate(/obj/item/ammo_magazine) in B.contents
 	AM.max_rounds = B.num_of_magazines
 	AM.current_rounds = 0
 	B.update_icon()
-	qdel(src)
+	return INITIALIZE_HINT_QDEL
 
 //-----------------------M41A Rifle Mag Boxes-----------------------
 
@@ -475,10 +482,11 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	magazine_type = /obj/item/ammo_magazine/rifle/ap
 
 /obj/item/ammo_box/magazine/ap/empty/Initialize()
+	flags_atom |= INITIALIZED
 	var/obj/item/ammo_box/magazine/ap/B = new(loc)
 	B.contents = list()
 	B.update_icon()
-	qdel(src)
+	return INITIALIZE_HINT_QDEL
 
 /obj/item/ammo_box/magazine/le
 	name = "magazine box (LE M41A x 10)"
@@ -487,10 +495,11 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	magazine_type = /obj/item/ammo_magazine/rifle/le
 
 /obj/item/ammo_box/magazine/le/empty/Initialize()
+	flags_atom |= INITIALIZED
 	var/obj/item/ammo_box/magazine/le/B = new(loc)
 	B.contents = list()
 	B.update_icon()
-	qdel(src)
+	return INITIALIZE_HINT_QDEL
 
 /obj/item/ammo_box/magazine/ext
 	name = "magazine box (Ext M41A x 8)"
@@ -499,10 +508,11 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	magazine_type = /obj/item/ammo_magazine/rifle/extended
 
 /obj/item/ammo_box/magazine/ext/empty/Initialize()
+	flags_atom |= INITIALIZED
 	var/obj/item/ammo_box/magazine/ext/B = new(loc)
 	B.contents = list()
 	B.update_icon()
-	qdel(src)
+	return INITIALIZE_HINT_QDEL
 
 /obj/item/ammo_box/magazine/incen
 	name = "magazine box (Incen M41A x 10)"
@@ -511,10 +521,11 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	magazine_type = /obj/item/ammo_magazine/rifle/incendiary
 
 /obj/item/ammo_box/magazine/incen/empty/Initialize()
+	flags_atom |= INITIALIZED
 	var/obj/item/ammo_box/magazine/incen/B = new(loc)
 	B.contents = list()
 	B.update_icon()
-	qdel(src)
+	return INITIALIZE_HINT_QDEL
 
 /obj/item/ammo_box/magazine/explosive
 	name = "magazine box (Explosive M41A x 10)"
@@ -523,10 +534,11 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	magazine_type = /obj/item/ammo_magazine/rifle/explosive
 
 /obj/item/ammo_box/magazine/explosive/empty/Initialize()
+	flags_atom |= INITIALIZED
 	var/obj/item/ammo_box/magazine/explosive/B = new(loc)
 	B.contents = list()
 	B.update_icon()
-	qdel(src)
+	return INITIALIZE_HINT_QDEL
 
 //-----------------------M39 Rifle Mag Boxes-----------------------
 
@@ -539,10 +551,11 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	magazine_type = /obj/item/ammo_magazine/smg/m39
 
 /obj/item/ammo_box/magazine/m39/empty/Initialize()
+	flags_atom |= INITIALIZED
 	var/obj/item/ammo_box/magazine/m39/B = new(loc)
 	B.contents = list()
 	B.update_icon()
-	qdel(src)
+	return INITIALIZE_HINT_QDEL
 
 /obj/item/ammo_box/magazine/m39/ap
 	name = "magazine box (AP M39 x 12)"
@@ -551,10 +564,11 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	magazine_type = /obj/item/ammo_magazine/smg/m39/ap
 
 /obj/item/ammo_box/magazine/m39/ap/empty/Initialize()
+	flags_atom |= INITIALIZED
 	var/obj/item/ammo_box/magazine/m39/ap/B = new(loc)
 	B.contents = list()
 	B.update_icon()
-	qdel(src)
+	return INITIALIZE_HINT_QDEL
 
 /obj/item/ammo_box/magazine/m39/ext
 	name = "magazine box (Ext m39 x 10)"
@@ -564,10 +578,11 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	magazine_type = /obj/item/ammo_magazine/smg/m39/extended
 
 /obj/item/ammo_box/magazine/m39/ext/empty/Initialize()
+	flags_atom |= INITIALIZED
 	var/obj/item/ammo_box/magazine/m39/ext/B = new(loc)
 	B.contents = list()
 	B.update_icon()
-	qdel(src)
+	return INITIALIZE_HINT_QDEL
 
 /obj/item/ammo_box/magazine/m39/incen
 	name = "magazine box (Incen m39 x 12)"
@@ -579,7 +594,7 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	var/obj/item/ammo_box/magazine/m39/incen/B = new(loc)
 	B.contents = list()
 	B.update_icon()
-	qdel(src)
+	return INITIALIZE_HINT_QDEL
 
 /obj/item/ammo_box/magazine/m39/le
 	name = "magazine box (LE m39 x 12)"
@@ -588,10 +603,11 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	magazine_type = /obj/item/ammo_magazine/smg/m39/le
 
 /obj/item/ammo_box/magazine/m39/le/empty/Initialize()
+	flags_atom |= INITIALIZED
 	var/obj/item/ammo_box/magazine/m39/le/B = new(loc)
 	B.contents = list()
 	B.update_icon()
-	qdel(src)
+	return INITIALIZE_HINT_QDEL
 
 //-----------------------L42A Battle Rifle Mag Boxes-----------------------
 
@@ -603,10 +619,11 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	magazine_type = /obj/item/ammo_magazine/rifle/l42a
 
 /obj/item/ammo_box/magazine/l42a/empty/Initialize()
+	flags_atom |= INITIALIZED
 	var/obj/item/ammo_box/magazine/l42a/B = new(loc)
 	B.contents = list()
 	B.update_icon()
-	qdel(src)
+	return INITIALIZE_HINT_QDEL
 
 /obj/item/ammo_box/magazine/l42a/ap
 	name = "magazine box (AP L42A x 16)"
@@ -615,10 +632,11 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	magazine_type = /obj/item/ammo_magazine/rifle/l42a/ap
 
 /obj/item/ammo_box/magazine/l42a/ap/empty/Initialize()
+	flags_atom |= INITIALIZED
 	var/obj/item/ammo_box/magazine/l42a/ap/B = new(loc)
 	B.contents = list()
 	B.update_icon()
-	qdel(src)
+	return INITIALIZE_HINT_QDEL
 
 /obj/item/ammo_box/magazine/l42a/le
 	name = "magazine box (LE L42A x 16)"
@@ -627,10 +645,11 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	magazine_type = /obj/item/ammo_magazine/rifle/l42a/le
 
 /obj/item/ammo_box/magazine/l42a/le/empty/Initialize()
+	flags_atom |= INITIALIZED
 	var/obj/item/ammo_box/magazine/l42a/le/B = new(loc)
 	B.contents = list()
 	B.update_icon()
-	qdel(src)
+	return INITIALIZE_HINT_QDEL
 
 /obj/item/ammo_box/magazine/l42a/ext
 	name = "magazine box (Ext L42A x 12)"
@@ -640,10 +659,11 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	magazine_type = /obj/item/ammo_magazine/rifle/l42a/extended
 
 /obj/item/ammo_box/magazine/l42a/ext/empty/Initialize()
+	flags_atom |= INITIALIZED
 	var/obj/item/ammo_box/magazine/l42a/ext/B = new(loc)
 	B.contents = list()
 	B.update_icon()
-	qdel(src)
+	return INITIALIZE_HINT_QDEL
 
 /obj/item/ammo_box/magazine/l42a/incen
 	name = "magazine box (Incen L42A x 16)"
@@ -652,10 +672,11 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	magazine_type = /obj/item/ammo_magazine/rifle/l42a/incendiary
 
 /obj/item/ammo_box/magazine/l42a/incen/empty/Initialize()
+	flags_atom |= INITIALIZED
 	var/obj/item/ammo_box/magazine/l42a/incen/B = new(loc)
 	B.contents = list()
 	B.update_icon()
-	qdel(src)
+	return INITIALIZE_HINT_QDEL
 
 //-----------------------M16 Rifle Mag Box-----------------------
 
@@ -668,10 +689,11 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	magazine_type = /obj/item/ammo_magazine/rifle/m16
 
 /obj/item/ammo_box/magazine/M16/empty/Initialize()
+	flags_atom |= INITIALIZED
 	var/obj/item/ammo_box/magazine/M16/B = new(loc)
 	B.contents = list()
 	B.update_icon()
-	qdel(src)
+	return INITIALIZE_HINT_QDEL
 
 //-----------------------M4A3 Pistol Mag Box-----------------------
 
@@ -684,10 +706,11 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	magazine_type = /obj/item/ammo_magazine/pistol
 
 /obj/item/ammo_box/magazine/m4a3/empty/Initialize()
+	flags_atom |= INITIALIZED
 	var/obj/item/ammo_box/magazine/m4a3/B = new(loc)
 	B.contents = list()
 	B.update_icon()
-	qdel(src)
+	return INITIALIZE_HINT_QDEL
 
 /obj/item/ammo_box/magazine/m4a3/ap
 	name = "magazine box (AP M4A3 x 16)"
@@ -696,10 +719,11 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	magazine_type = /obj/item/ammo_magazine/pistol/ap
 
 /obj/item/ammo_box/magazine/m4a3/ap/empty/Initialize()
+	flags_atom |= INITIALIZED
 	var/obj/item/ammo_box/magazine/m4a3/ap/B = new(loc)
 	B.contents = list()
 	B.update_icon()
-	qdel(src)
+	return INITIALIZE_HINT_QDEL
 
 //-----------------------M44 Revolver Speed Loaders Box-----------------------
 
@@ -713,10 +737,11 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	magazine_type = /obj/item/ammo_magazine/revolver
 
 /obj/item/ammo_box/magazine/m44/empty/Initialize()
+	flags_atom |= INITIALIZED
 	var/obj/item/ammo_box/magazine/m44/B = new(loc)
 	B.contents = list()
 	B.update_icon()
-	qdel(src)
+	return INITIALIZE_HINT_QDEL
 
 /obj/item/ammo_box/magazine/m44/marksman
 	name = "speed loaders box (Marksman M44 x 16)"
@@ -724,10 +749,11 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	magazine_type = /obj/item/ammo_magazine/revolver/marksman
 
 /obj/item/ammo_box/magazine/m44/marksman/empty/Initialize()
+	flags_atom |= INITIALIZED
 	var/obj/item/ammo_box/magazine/m44/marksman/B = new(loc)
 	B.contents = list()
 	B.update_icon()
-	qdel(src)
+	return INITIALIZE_HINT_QDEL
 
 /obj/item/ammo_box/magazine/m44/heavy
 	name = "speed loaders box (Heavy M44 x 16)"
@@ -738,7 +764,7 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	var/obj/item/ammo_box/magazine/m44/heavy/B = new(loc)
 	B.contents = list()
 	B.update_icon()
-	qdel(src)
+	return INITIALIZE_HINT_QDEL
 
 //-----------------------SU-6 Smartpistol Mag Box-----------------------
 
@@ -751,10 +777,11 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	magazine_type = /obj/item/ammo_magazine/pistol/smart
 
 /obj/item/ammo_box/magazine/su6/empty/Initialize()
+	flags_atom |= INITIALIZED
 	var/obj/item/ammo_box/magazine/su6/B = new(loc)
 	B.contents = list()
 	B.update_icon()
-	qdel(src)
+	return INITIALIZE_HINT_QDEL
 
 //-----------------------88M4 Pistol Mag Box-----------------------
 
@@ -768,10 +795,11 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	magazine_type = /obj/item/ammo_magazine/pistol/mod88
 
 /obj/item/ammo_box/magazine/mod88/empty/Initialize()
+	flags_atom |= INITIALIZED
 	var/obj/item/ammo_box/magazine/mod88/B = new(loc)
 	B.contents = list()
 	B.update_icon()
-	qdel(src)
+	return INITIALIZE_HINT_QDEL
 
 //-----------------------VP78 Pistol Mag Box-----------------------
 
@@ -784,10 +812,12 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	magazine_type = /obj/item/ammo_magazine/pistol/vp78
 
 /obj/item/ammo_box/magazine/vp78/empty/Initialize()
+	flags_atom |= INITIALIZED
 	var/obj/item/ammo_box/magazine/vp78/B = new(loc)
 	B.contents = list()
 	B.update_icon()
-	qdel(src)
+
+	return INITIALIZE_HINT_QDEL
 
 //-----------------------Type71 Rifle Mag Box-----------------------
 
@@ -801,10 +831,12 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	magazine_type = /obj/item/ammo_magazine/rifle/type71
 
 /obj/item/ammo_box/magazine/type71/empty/Initialize()
+	flags_atom |= INITIALIZED
 	var/obj/item/ammo_box/magazine/type71/B = new(loc)
 	B.contents = list()
 	B.update_icon()
-	qdel(src)
+
+	return INITIALIZE_HINT_QDEL
 
 /obj/item/ammo_box/magazine/type71/ap
 	name = "magazine box (Type71 AP x 10)"
@@ -813,10 +845,12 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	magazine_type = /obj/item/ammo_magazine/rifle/type71/ap
 
 /obj/item/ammo_box/magazine/type71/ap/empty/Initialize()
+	flags_atom |= INITIALIZED
 	var/obj/item/ammo_box/magazine/type71/ap/B = new(loc)
 	B.contents = list()
 	B.update_icon()
-	qdel(src)
+
+	return INITIALIZE_HINT_QDEL
 
 //-----------------------MAG BOX STRUCTURE-----------------------
 
@@ -951,10 +985,12 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	update_icon()
 
 /obj/item/ammo_box/rounds/empty/Initialize()
+	flags_atom |= INITIALIZED
 	var/obj/item/ammo_box/rounds/B = new(loc)
 	B.bullet_amount = 0
 	B.update_icon()
-	qdel(src)
+
+	return INITIALIZE_HINT_QDEL
 
 /obj/item/ammo_box/rounds/update_icon()
 	if(overlays)
@@ -1046,10 +1082,11 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	default_ammo = /datum/ammo/bullet/rifle/ap
 
 /obj/item/ammo_box/rounds/ap/empty/Initialize()
+	flags_atom |= INITIALIZED
 	var/obj/item/ammo_box/rounds/ap/B = new(loc)
 	B.bullet_amount = 0
 	B.update_icon()
-	qdel(src)
+	return INITIALIZE_HINT_QDEL
 
 /obj/item/ammo_box/rounds/le
 	name = "rifle ammunition box (10x24mm LE)"
@@ -1058,10 +1095,11 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	default_ammo = /datum/ammo/bullet/rifle/le
 
 /obj/item/ammo_box/rounds/le/empty/Initialize()
+	flags_atom |= INITIALIZED
 	var/obj/item/ammo_box/rounds/le/B = new(loc)
 	B.bullet_amount = 0
 	B.update_icon()
-	qdel(src)
+	return INITIALIZE_HINT_QDEL
 
 /obj/item/ammo_box/rounds/incen
 	name = "rifle ammunition box (10x24mm Incen)"
@@ -1072,10 +1110,11 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	max_bullet_amount = 400
 
 /obj/item/ammo_box/rounds/incen/empty/Initialize()
+	flags_atom |= INITIALIZED
 	var/obj/item/ammo_box/rounds/incen/B = new(loc)
 	B.bullet_amount = 0
 	B.update_icon()
-	qdel(src)
+	return INITIALIZE_HINT_QDEL
 
 //UPP type71
 
@@ -1089,10 +1128,11 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	default_ammo = /datum/ammo/bullet/rifle
 
 /obj/item/ammo_box/rounds/type71/empty/Initialize()
+	flags_atom |= INITIALIZED
 	var/obj/item/ammo_box/rounds/type71/B = new(loc)
 	B.bullet_amount = 0
 	B.update_icon()
-	qdel(src)
+	return INITIALIZE_HINT_QDEL
 
 /obj/item/ammo_box/rounds/type71/ap
 	name = "rifle ammunition box (5.45x39mm AP)"
@@ -1103,10 +1143,11 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	default_ammo = /datum/ammo/bullet/rifle/ap
 
 /obj/item/ammo_box/rounds/type71/ap/empty/Initialize()
+	flags_atom |= INITIALIZED
 	var/obj/item/ammo_box/rounds/type71/ap/B = new(loc)
 	B.bullet_amount = 0
 	B.update_icon()
-	qdel(src)
+	return INITIALIZE_HINT_QDEL
 
 //SMG
 
@@ -1119,10 +1160,11 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	default_ammo = /datum/ammo/bullet/smg
 
 /obj/item/ammo_box/rounds/smg/empty/Initialize()
+	flags_atom |= INITIALIZED
 	var/obj/item/ammo_box/rounds/smg/B = new(loc)
 	B.bullet_amount = 0
 	B.update_icon()
-	qdel(src)
+	return INITIALIZE_HINT_QDEL
 
 /obj/item/ammo_box/rounds/smg/ap
 	name = "SMG ammunition box (10x20mm AP)"
@@ -1132,10 +1174,11 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	default_ammo = /datum/ammo/bullet/smg/ap
 
 /obj/item/ammo_box/rounds/smg/ap/empty/Initialize()
+	flags_atom |= INITIALIZED
 	var/obj/item/ammo_box/rounds/smg/ap/B = new(loc)
 	B.bullet_amount = 0
 	B.update_icon()
-	qdel(src)
+	return INITIALIZE_HINT_QDEL
 
 /obj/item/ammo_box/rounds/smg/le
 	name = "SMG ammunition box (10x20mm LE)"
@@ -1145,10 +1188,11 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	default_ammo = /datum/ammo/bullet/smg/le
 
 /obj/item/ammo_box/rounds/smg/le/empty/Initialize()
+	flags_atom |= INITIALIZED
 	var/obj/item/ammo_box/rounds/smg/le/B = new(loc)
 	B.bullet_amount = 0
 	B.update_icon()
-	qdel(src)
+	return INITIALIZE_HINT_QDEL
 
 /obj/item/ammo_box/rounds/smg/incen
 	name = "SMG ammunition box (10x20mm Incen)"
@@ -1160,7 +1204,8 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	max_bullet_amount = 400
 
 /obj/item/ammo_box/rounds/smg/incen/empty/Initialize()
+	flags_atom |= INITIALIZED
 	var/obj/item/ammo_box/rounds/smg/incen/B = new(loc)
 	B.bullet_amount = 0
 	B.update_icon()
-	qdel(src)
+	return INITIALIZE_HINT_QDEL

@@ -90,8 +90,7 @@
 	icon_off = "secureenggenoff"
 
 /obj/structure/closet/secure_closet/engineering_materials/Initialize()
-	..()
-	sleep(2)
+	. = ..()
 	new /obj/item/reagent_container/glass/canister/pacid(src)
 	new /obj/item/reagent_container/glass/canister/methane(src)
 	new /obj/item/reagent_container/glass/canister/ammonia(src)

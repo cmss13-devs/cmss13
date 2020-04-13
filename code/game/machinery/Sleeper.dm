@@ -13,7 +13,7 @@
 	idle_power_usage = 40
 
 /obj/structure/machinery/sleep_console/Initialize()
-	..()
+	. = ..()
 	connect_sleeper()
 
 /obj/structure/machinery/sleep_console/proc/connect_sleeper()
@@ -198,7 +198,7 @@
 
 
 /obj/structure/machinery/sleeper/Initialize()
-	..()
+	. = ..()
 	beaker = new /obj/item/reagent_container/glass/beaker/large()
 	connect_sleeper_console()
 

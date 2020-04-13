@@ -16,8 +16,8 @@
 	underlays += image('icons/obj/structures/props/stationobjs.dmi', icon_state = "telecomp-wires")
 	return
 
-/obj/structure/machinery/computer/teleporter/initialize()
-	..()
+/obj/structure/machinery/computer/teleporter/Initialize()
+	. = ..()
 	var/obj/structure/machinery/teleport/station/station = locate(/obj/structure/machinery/teleport/station, get_step(src, dir))
 	var/obj/structure/machinery/teleport/hub/hub
 	if(station)

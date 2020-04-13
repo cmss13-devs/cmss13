@@ -2,7 +2,6 @@ var/datum/subsystem/obj/SSobj
 
 var/list/processing_objects = list()
 
-
 /datum/subsystem/obj
 	name          = "Objects"
 	init_order    = SS_INIT_OBJECT
@@ -12,21 +11,8 @@ var/list/processing_objects = list()
 
 	var/list/currentrun
 
-
 /datum/subsystem/obj/New()
 	NEW_SS_GLOBAL(SSobj)
-
-
-/datum/subsystem/obj/Initialize()
-	for(var/atom/object in world)
-		object.initialize()
-		CHECK_TICK
-	/*for(var/area/place in areas)
-		var/obj/structure/machinery/power/apc/place_apc = place.areaapc
-		if(place_apc)
-			place_apc.update()*/
-	..()
-
 
 /datum/subsystem/obj/stat_entry()
 	..("P:[processing_objects.len]")

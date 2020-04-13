@@ -22,9 +22,8 @@
 
 ///fixes up layering on northern and southern windows, breaks fulltile windows, those shouldn't be used in the first place regardless.
 /obj/structure/window/Initialize()
-	..()
-	spawn(0)
-		update_icon()
+	. = ..()
+	update_icon()
 
 	if(shardtype)
 		debris += shardtype

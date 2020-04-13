@@ -182,7 +182,7 @@ var/global/list/frozen_items = list(SQUAD_NAME_1 = list(), SQUAD_NAME_2 = list()
 	dir = WEST
 
 /obj/structure/machinery/cryopod/Initialize()
-	..()
+	. = ..()
 	announce = new /obj/item/device/radio/intercom(src)
 
 

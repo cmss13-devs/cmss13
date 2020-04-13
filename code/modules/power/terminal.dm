@@ -15,11 +15,10 @@
 	unacidable = TRUE //so xenos can't melt visible SMES terminals on the planet to break the SMES
 
 
-/obj/structure/machinery/power/terminal/New()
-	..()
+/obj/structure/machinery/power/terminal/Initialize()
+	. = ..()
 	var/turf/T = src.loc
 	if(level==1) hide(T.intact_tile)
-	return
 
 /obj/structure/machinery/power/terminal/Dispose()
 	if(master)

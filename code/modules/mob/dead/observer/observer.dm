@@ -14,6 +14,7 @@
 	invisibility = INVISIBILITY_OBSERVER
 	layer = ABOVE_FLY_LAYER
 	m_intent = MOVE_INTENT_WALK
+	stat = DEAD
 	var/adminlarva = 0
 	var/can_reenter_corpse
 	var/started_as_observer //This variable is set to 1 when you enter the game as an observer.

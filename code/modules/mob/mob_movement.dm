@@ -117,6 +117,10 @@
 		next_movement = world.time + MINIMAL_MOVEMENT_INTERVAL
 		return
 
+	if(isobserver(mob)) //Ghosts are snowflakes unfortunately
+		next_movement = world.time + move_delay
+		return mob.Move(n, direct) 
+
 	if(!mob.canmove || mob.is_mob_incapacitated(TRUE) || !mob.on_movement())
 		return
 

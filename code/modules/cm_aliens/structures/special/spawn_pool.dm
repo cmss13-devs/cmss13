@@ -46,6 +46,9 @@
 		if(H.is_revivable())
 			to_chat(user, SPAN_XENOWARNING("This one is not suitable yet!"))
 			return
+		if(H.spawned_corpse)
+			to_chat(user, SPAN_XENOWARNING("This one does not look suitable!"))
+			return
 	if(isXeno(M))
 		return
 	if(melting_body)

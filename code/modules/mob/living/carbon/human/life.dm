@@ -9,7 +9,7 @@
 	if(!loc) //Fixing a null error that occurs when the mob isn't found in the world -- TLE
 		return
 
-	if(undefibbable && stat == DEAD)
+	if(undefibbable && stat == DEAD || spawned_corpse)
 		for (var/datum/data/record/R in data_core.general)	// Change their status on the Crew Manifest to Deceased
 			if (R.fields["name"] == real_name)
 				R.fields["p_stat"] = "*Deceased*"

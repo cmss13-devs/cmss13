@@ -1,6 +1,3 @@
-/var/global/list/autolathe_recipes
-/var/global/list/autolathe_categories
-
 /datum/autolathe/recipe
 	var/name = "object"
 	var/path

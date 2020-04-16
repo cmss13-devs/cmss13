@@ -42,8 +42,6 @@
 
 /obj/structure/machinery/autolathe/Initialize()
 	. = ..()
-	recipes = autolathe_recipes
-	categories = autolathe_categories
 	projected_stored_material = stored_material.Copy()
 
 	//Create global autolathe recipe list if it hasn't been made already.
@@ -535,12 +533,7 @@
 		/obj/item/stock_parts/manipulator,
 		/obj/item/stock_parts/console_screen
 	)
-
-/obj/structure/machinery/autolathe/armylathe/Initialize()
-	. = ..()
-	recipes = null
-	categories = null
-
+	
 /obj/structure/machinery/autolathe/armylathe/full
 	stored_material =  list("metal" = 56250, "plastic" = 20000) //15 metal and 10 plastic sheets
 

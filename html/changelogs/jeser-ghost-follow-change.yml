@@ -1,0 +1,8 @@
+author: Jeser
+
+delete-after: True
+
+changes: 
+  - tweak: "Merged all Follow verbs in Ghost tab into one verb. Added option to follow vehicles."
+  - rscadd: "Added option to follow vehicles."
+  - rscadd: "Added options to select mobs to follow by faction and by hive."

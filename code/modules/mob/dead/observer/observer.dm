@@ -306,112 +306,60 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	usr.loc = pick(L)
 	following = null
 
+
 /mob/dead/observer/verb/follow()
 	set category = "Ghost"
-	set name = "Follow" // "Haunt"
-	set desc = "Follow and haunt a mob."
+	set name = "Follow"
 
-	var/list/mobs = getmobs()
-	var/input = input("Please select a mob:", "Haunt", null, null) as null|anything in mobs
-	var/mob/target = mobs[input]
-	ManualFollow(target)
+	var/list/choices = list("Mobs Within Screen", "Humans", "Xenomorphs", "Predators", "Synthetics", "ERT Members", "Survivors", "Any Mobs", "Mobs by Factions", "Xenos by Hives", "Vehicles")
+	var/input = input("Please, select a category:", "Follow", null, null) as null|anything in choices
+	var/atom/movable/target
+	var/list/targets = list()
+	switch(input)
+		if("Mobs Within Screen")
+			ManualFollow(target)
+		if("Humans")
+			targets = gethumans()
+		if("Xenomorphs")
+			targets = getxenos()
+		if("Predators")
+			targets = getpreds()
+		if("Synthetics")
+			targets = getsynths()
+		if("ERT Members")
+			targets = getertmembers()
+		if("Survivors")
+			targets = getsurvivors()
+		if("Any Mobs")
+			targets = getmobs()
+		if("Vehicles")
+			targets = all_multi_vehicles.Copy()
 
-/mob/dead/observer/verb/follow_them(var/mob/target)
-	set category = "Ghost"
-	set name = "Follow Local" // "Haunt"
-	set desc = "Follow and haunt an on-screen mob."
+		if("Mobs by Factions")
+			choices = FACTION_LIST_HUMANOID
+			input = input("Please, select a Faction:", "Follow", null, null) as null|anything in choices
+			targets = gethumans()
+			for(var/mob/M in targets)
+				if(M.faction != choices[input])
+					targets.Remove(M)
 
-	ManualFollow(target)
+		if("Xenos by Hives")
+			choices = list("Regular Hive" = XENO_HIVE_NORMAL, "Corrupted Hive" = XENO_HIVE_CORRUPTED, "Alpha Hive" = XENO_HIVE_ALPHA, "Beta Hive" = XENO_HIVE_BETA, "Zeta Hive" = XENO_HIVE_ZETA)
+			input = input("Please, select a Hive:", "Follow", null, null) as null|anything in choices
+			targets = getxenos()
+			for(var/mob/living/carbon/Xenomorph/X in targets)
+				if(X.hivenumber != choices[input])
+					targets.Remove(X)
 
-/mob/dead/observer/verb/follow_xeno()
-	set category = "Ghost"
-	set name = "Follow Xeno" // "Haunt"
-	set desc = "Follow a living Xeno."
 
-	var/list/mobs = getxenos()
-	var/input = input("Please select a living Xeno:", "Haunt", null, null) as null|anything in mobs
-
-	if(mobs.len == 0)
-		to_chat(src, "<span style='color: red;'>There aren't any living Xenos.</span>")
+	if(!LAZYLEN(targets))
+		to_chat(usr, SPAN_WARNING("There aren't any targets in [input] category to follow."))
 		return
+	input = input("Please select a target among [input] to follow", "Follow", null, null) as null|anything in all_multi_vehicles
+	target = input
 
-	var/mob/target = mobs[input]
 	ManualFollow(target)
-
-/mob/dead/observer/verb/follow_pred()
-	set category = "Ghost"
-	set name = "Follow Predator" // "Haunt"
-	set desc = "Follow a living Predator."
-
-	var/list/mobs = getpreds()
-	var/input = input("Please select a living Predator:", "Haunt", null, null) as null|anything in mobs
-
-	if(mobs.len == 0)
-		to_chat(src, "<span style='color: red;'>There aren't any living Predators.</span>")
-		return
-
-	var/mob/target = mobs[input]
-	ManualFollow(target)
-
-/mob/dead/observer/verb/follow_human()
-	set category = "Ghost"
-	set name = "Follow Human" // "Haunt"
-	set desc = "Follow a living Human."
-
-	var/list/mobs = gethumans()
-	var/input = input("Please select a living Human:", "Haunt", null, null) as null|anything in mobs
-
-	if(mobs.len == 0)
-		to_chat(src, "<span style='color: red;'>There aren't any living Humans.</span>")
-		return
-
-	var/mob/target = mobs[input]
-	ManualFollow(target)
-
-/mob/dead/observer/verb/follow_survivor()
-	set category = "Ghost"
-	set name = "Follow Survivor" // "Haunt"
-	set desc = "Follow a living survivor."
-
-	var/list/mobs = getsurvivors()
-	var/input = input("Please select a living survivor:", "Haunt", null, null) as null|anything in mobs
-
-	if(mobs.len == 0)
-		to_chat(src, "<span style='color: red;'>There aren't any living survivors.</span>")
-		return
-
-	var/mob/target = mobs[input]
-	ManualFollow(target)
-
-/mob/dead/observer/verb/follow_ert()
-	set category = "Ghost"
-	set name = "Follow ERT" // "Haunt"
-	set desc = "Follow a living ERT member."
-
-	var/list/mobs = getertmembers()
-	var/input = input("Please select a living ERT member (UPP,CLF etc.):", "Haunt", null, null) as null|anything in mobs
-
-	if(mobs.len == 0)
-		to_chat(src, "<span style='color: red;'>There aren't any living ERT members.</span>")
-		return
-
-	var/mob/target = mobs[input]
-	ManualFollow(target)
-
-/mob/dead/observer/verb/follow_synth()
-	set category = "Ghost"
-	set name = "Follow Synth" // "Haunt"
-	set desc = "Follow a 'living' Synth."
-
-	var/list/mobs = getsynths()
-	var/input = input("Please select a 'living' Synth:", "Haunt", null, null) as null|anything in mobs
-
-	if(mobs.len == 0)
-		to_chat(src, "<span style='color: red;'>There aren't any 'living' Synths.</span>")
-		return
-
-	var/mob/target = mobs[input]
-	ManualFollow(target)
+	return
 
 // This is the ghost's follow verb with an argument
 /mob/dead/observer/proc/ManualFollow(var/atom/movable/target)

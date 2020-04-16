@@ -353,9 +353,7 @@
 /area/strata/ag/interior/paths/cabin_area/central)
 "abf" = (
 /obj/structure/table/reinforced/prison,
-/obj/structure/machinery/door/window/eastright{
-	req_access = null
-	},
+/obj/structure/machinery/door/window/eastright,
 /turf/open/floor/interior/plastic,
 /area/strata/ag/interior/paths/cabin_area/central)
 "abg" = (
@@ -828,8 +826,7 @@
 	},
 /obj/structure/window/reinforced/tinted,
 /obj/structure/machinery/door/window/eastright{
-	dir = 8;
-	req_access = null
+	dir = 8
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -1553,8 +1550,7 @@
 "aej" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 8;
-	req_access = null;
-	req_one_access = null
+	req_access = null
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -3039,8 +3035,7 @@
 "ahQ" = (
 /obj/structure/machinery/door/airlock/almayer/security{
 	dir = 8;
-	req_access = null;
-	req_one_access = null
+	req_access = null
 	},
 /turf/open/floor/strata{
 	icon_state = "floor3"
@@ -3291,8 +3286,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/security{
 	dir = 8;
-	req_access = null;
-	req_one_access = null
+	req_access = null
 	},
 /turf/open/floor/strata{
 	icon_state = "floor3"
@@ -3939,9 +3933,7 @@
 /area/strata/ug/interior/jungle/deep/structures/res)
 "akj" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	dir = 2;
-	req_access = null;
-	req_one_access = null
+	dir = 2
 	},
 /turf/closed/shuttle/ert{
 	icon_state = "upp2"
@@ -5506,8 +5498,7 @@
 "aoE" = (
 /obj/structure/machinery/door/airlock/almayer/security{
 	dir = 8;
-	req_access = null;
-	req_one_access = null
+	req_access = null
 	},
 /turf/open/floor/strata{
 	dir = 10;
@@ -6034,8 +6025,7 @@
 "apX" = (
 /obj/structure/machinery/door/airlock/almayer/security{
 	dir = 8;
-	req_access = null;
-	req_one_access = null
+	req_access = null
 	},
 /turf/open/floor/strata{
 	icon_state = "multi_tiles"
@@ -6147,8 +6137,7 @@
 "aqj" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 2;
-	req_access = null;
-	req_one_access = null
+	req_access = null
 	},
 /turf/open/floor/strata,
 /area/strata/ag/interior/research_decks/security)
@@ -6168,8 +6157,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 2;
-	req_access = null;
-	req_one_access = null
+	req_access = null
 	},
 /turf/open/floor/strata{
 	dir = 6;
@@ -6203,8 +6191,7 @@
 "aqt" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 2;
-	req_access = null;
-	req_one_access = null
+	req_access = null
 	},
 /turf/open/floor/strata{
 	dir = 6;
@@ -7327,8 +7314,7 @@
 "atn" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 8;
-	req_access = null;
-	req_one_access = null
+	req_access = null
 	},
 /turf/open/floor/strata{
 	dir = 10;
@@ -7456,9 +7442,7 @@
 "atG" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/structure/machinery/door/airlock/almayer/generic{
-	dir = 2;
-	req_access = null;
-	req_one_access = null
+	dir = 2
 	},
 /turf/open/floor/strata{
 	dir = 6;
@@ -7490,8 +7474,7 @@
 "atK" = (
 /obj/structure/machinery/door/airlock/almayer/security{
 	dir = 8;
-	req_access = null;
-	req_one_access = null
+	req_access = null
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -7511,8 +7494,7 @@
 "atM" = (
 /obj/structure/machinery/door/airlock/almayer/security{
 	dir = 8;
-	req_access = null;
-	req_one_access = null
+	req_access = null
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -8934,8 +8916,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/security{
 	dir = 8;
-	req_access = null;
-	req_one_access = null
+	req_access = null
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -9182,8 +9163,7 @@
 /area/strata/ug/interior/jungle/deep/structures/res)
 "ayf" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
-	req_access = null;
-	req_one_access = null
+	req_access = null
 	},
 /turf/open/floor/strata{
 	dir = 10;
@@ -9498,8 +9478,7 @@
 /obj/structure/machinery/door/airlock/almayer/security{
 	dir = 2;
 	name = "Security Barracks";
-	req_access = null;
-	req_one_access = null
+	req_access = null
 	},
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/security/hall)
@@ -12010,9 +11989,7 @@
 /area/strata/ag/interior/outpost/canteen/hall)
 "aFB" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	dir = 2;
-	req_access = null;
-	req_one_access = null
+	dir = 2
 	},
 /turf/open/floor/strata{
 	dir = 6;
@@ -12560,9 +12537,7 @@
 /area/strata/ag/interior/outpost/maint/canteen_e_2)
 "aGQ" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	dir = 2;
-	req_access = null;
-	req_one_access = null
+	dir = 2
 	},
 /turf/open/floor/strata{
 	dir = 6;
@@ -13962,9 +13937,7 @@
 /area/strata/ag/interior/outpost/admin/records)
 "aKN" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	dir = 2;
-	req_access = null;
-	req_one_access = null
+	dir = 2
 	},
 /turf/open/floor/strata{
 	dir = 6;
@@ -15116,8 +15089,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 8;
-	req_access = null;
-	req_one_access = null
+	req_access = null
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -16052,8 +16024,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 2;
-	req_access = null;
-	req_one_access = null
+	req_access = null
 	},
 /turf/open/floor/strata{
 	dir = 6;
@@ -17203,9 +17174,7 @@
 	dir = 5
 	},
 /obj/structure/machinery/door/airlock/almayer/generic{
-	dir = 2;
-	req_access = null;
-	req_one_access = null
+	dir = 2
 	},
 /turf/open/floor/strata{
 	dir = 6;
@@ -17250,9 +17219,7 @@
 /area/strata/ag/interior/outpost/maint/canteen_e_3)
 "aUe" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	dir = 2;
-	req_access = null;
-	req_one_access = null
+	dir = 2
 	},
 /turf/open/floor/strata{
 	dir = 10;
@@ -18730,10 +18697,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/almayer/generic{
-	req_access = null;
-	req_one_access = null
-	},
+/obj/structure/machinery/door/airlock/almayer/generic,
 /turf/open/floor/strata{
 	dir = 8;
 	icon_state = "multi_tiles"
@@ -24386,8 +24350,7 @@
 /area/strata/ag/interior/administration)
 "bAF" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
-	req_access = null;
-	req_one_access = null
+	req_access = null
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -25321,10 +25284,7 @@
 /turf/open/floor/strata,
 /area/strata/ag/interior/administration)
 "bGc" = (
-/obj/structure/machinery/door/airlock/almayer/generic{
-	req_access = null;
-	req_one_access = null
-	},
+/obj/structure/machinery/door/airlock/almayer/generic,
 /turf/open/floor/strata{
 	dir = 8;
 	icon_state = "multi_tiles"
@@ -26533,10 +26493,7 @@
 	},
 /area/strata/ug/interior/jungle/deep/structures/res)
 "bMQ" = (
-/obj/structure/machinery/door/airlock/almayer/generic{
-	req_access = null;
-	req_one_access = null
-	},
+/obj/structure/machinery/door/airlock/almayer/generic,
 /turf/open/floor/strata{
 	dir = 8;
 	icon_state = "multi_tiles"
@@ -26581,10 +26538,7 @@
 	},
 /area/strata/ag/interior/dorms/canteen)
 "bNa" = (
-/obj/structure/machinery/door/airlock/almayer/generic{
-	req_access = null;
-	req_one_access = null
-	},
+/obj/structure/machinery/door/airlock/almayer/generic,
 /turf/open/floor/strata{
 	dir = 4;
 	icon_state = "cyan2"
@@ -27410,8 +27364,7 @@
 "bRU" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 2;
-	req_access = null;
-	req_one_access = null
+	req_access = null
 	},
 /turf/open/floor/strata{
 	dir = 10;
@@ -27705,8 +27658,7 @@
 /obj/structure/machinery/door/airlock/almayer/security{
 	dir = 2;
 	name = "Security Barracks";
-	req_access = null;
-	req_one_access = null
+	req_access = null
 	},
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/security/hall)
@@ -28261,8 +28213,7 @@
 "bXa" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 2;
-	req_access = null;
-	req_one_access = null
+	req_access = null
 	},
 /turf/open/floor/strata{
 	dir = 6;
@@ -28477,8 +28428,7 @@
 "bYk" = (
 /obj/structure/machinery/door/airlock/almayer/security{
 	dir = 8;
-	req_access = null;
-	req_one_access = null
+	req_access = null
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -28559,7 +28509,10 @@
 	dir = 8
 	},
 /obj/structure/platform/strata/metal,
-/turf/closed/wall/strata_outpost_bare,
+/turf/open/floor/strata{
+	dir = 8;
+	icon_state = "multi_tiles"
+	},
 /area/strata/ag/interior/tcomms/tcomms_engi)
 "bYJ" = (
 /obj/structure/machinery/weather_siren{
@@ -28791,8 +28744,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/security{
 	dir = 8;
-	req_access = null;
-	req_one_access = null
+	req_access = null
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -33686,10 +33638,7 @@
 	},
 /area/strata/ag/interior/outpost/engi/drome)
 "ddU" = (
-/obj/structure/machinery/door/airlock/almayer/generic{
-	req_access = null;
-	req_one_access = null
-	},
+/obj/structure/machinery/door/airlock/almayer/generic,
 /turf/open/floor/strata{
 	dir = 10;
 	icon_state = "multi_tiles"
@@ -34116,7 +34065,10 @@
 /obj/structure/platform/strata/metal{
 	dir = 1
 	},
-/turf/closed/wall/strata_outpost_bare,
+/turf/open/floor/strata{
+	dir = 8;
+	icon_state = "multi_tiles"
+	},
 /area/strata/ag/interior/tcomms/tcomms_engi)
 "dGv" = (
 /obj/effect/decal/cleanable/blood,
@@ -35216,8 +35168,7 @@
 "eRJ" = (
 /obj/structure/machinery/vending/wallmed1{
 	name = "Emergency NanoMed";
-	pixel_x = 30;
-	req_access = null
+	pixel_x = 30
 	},
 /turf/open/floor/strata{
 	icon_state = "red1"
@@ -37973,8 +37924,7 @@
 /area/strata/ag/interior/outpost/med/jung_hall)
 "ixS" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
-	req_access = null;
-	req_one_access = null
+	req_access = null
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -38516,8 +38466,7 @@
 	},
 /obj/structure/machinery/vending/wallmed1{
 	name = "Emergency NanoMed";
-	pixel_x = 30;
-	req_access = null
+	pixel_x = 30
 	},
 /obj/structure/machinery/light/small{
 	dir = 4;
@@ -38982,8 +38931,7 @@
 "jPc" = (
 /obj/structure/machinery/door/airlock/almayer/command{
 	dir = 2;
-	req_access = null;
-	req_one_access = null
+	req_access = null
 	},
 /turf/open/floor/strata{
 	dir = 10;
@@ -41571,8 +41519,7 @@
 	dir = 8
 	},
 /obj/structure/machinery/door/window/eastright{
-	dir = 8;
-	req_access = null
+	dir = 8
 	},
 /turf/open/floor/strata{
 	icon_state = "blue1"
@@ -42249,10 +42196,7 @@
 	},
 /area/strata/ug/interior/jungle/deep/structures/engi)
 "ocH" = (
-/obj/structure/machinery/door/airlock/almayer/generic{
-	req_access = null;
-	req_one_access = null
-	},
+/obj/structure/machinery/door/airlock/almayer/generic,
 /turf/open/floor/strata{
 	dir = 10;
 	icon_state = "multi_tiles"
@@ -42556,8 +42500,7 @@
 	},
 /obj/structure/window/reinforced/tinted,
 /obj/structure/machinery/door/window/eastright{
-	dir = 8;
-	req_access = null
+	dir = 8
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -43111,9 +43054,7 @@
 /area/strata/ag/interior/outpost/med/hall)
 "pmT" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	dir = 2;
-	req_access = null;
-	req_one_access = null
+	dir = 2
 	},
 /turf/open/floor/strata{
 	dir = 6;
@@ -43129,8 +43070,7 @@
 	},
 /obj/structure/window/reinforced/tinted,
 /obj/structure/machinery/door/window/eastright{
-	dir = 8;
-	req_access = null
+	dir = 8
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -43878,8 +43818,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 2;
-	req_access = null;
-	req_one_access = null
+	req_access = null
 	},
 /turf/open/floor/strata{
 	dir = 6;
@@ -45710,7 +45649,6 @@
 /area/strata/ag/exterior/landingzone_2)
 "sCa" = (
 /obj/structure/machinery/computer/secure_data{
-	req_access = null;
 	req_one_access = null
 	},
 /obj/structure/table/reinforced/prison,
@@ -48860,8 +48798,7 @@
 /obj/structure/machinery/door/airlock/almayer/security{
 	dir = 2;
 	name = "Security Barracks";
-	req_access = null;
-	req_one_access = null
+	req_access = null
 	},
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/security/holding)
@@ -49428,8 +49365,7 @@
 "xlQ" = (
 /obj/structure/machinery/door/airlock/almayer/command{
 	dir = 2;
-	req_access = null;
-	req_one_access = null
+	req_access = null
 	},
 /turf/open/floor/strata{
 	dir = 6;

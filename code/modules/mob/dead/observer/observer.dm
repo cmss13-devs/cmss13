@@ -306,18 +306,23 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	usr.loc = pick(L)
 	following = null
 
+/mob/dead/observer/verb/follow_local(var/mob/target)
+	set category = "Ghost"
+	set name = "Follow Local Mob"
+	set desc = "Follow on-screen mob"
+
+	ManualFollow(target)
+	return
 
 /mob/dead/observer/verb/follow()
 	set category = "Ghost"
 	set name = "Follow"
 
-	var/list/choices = list("Mobs Within Screen", "Humans", "Xenomorphs", "Predators", "Synthetics", "ERT Members", "Survivors", "Any Mobs", "Mobs by Factions", "Xenos by Hives", "Vehicles")
+	var/list/choices = list("Humans", "Xenomorphs", "Predators", "Synthetics", "ERT Members", "Survivors", "Any Mobs", "Mobs by Factions", "Xenos by Hives", "Vehicles")
 	var/input = input("Please, select a category:", "Follow", null, null) as null|anything in choices
 	var/atom/movable/target
 	var/list/targets = list()
 	switch(input)
-		if("Mobs Within Screen")
-			ManualFollow(target)
 		if("Humans")
 			targets = gethumans()
 		if("Xenomorphs")
@@ -356,7 +361,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		to_chat(usr, SPAN_WARNING("There aren't any targets in [input] category to follow."))
 		return
 	input = input("Please select a target among [input] to follow", "Follow", null, null) as null|anything in targets
-	target = input
+	target = targets[input]
 
 	ManualFollow(target)
 	return

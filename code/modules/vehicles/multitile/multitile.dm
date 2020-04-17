@@ -134,10 +134,7 @@ var/global/list/all_multi_vehicles = list()
 	healthcheck()
 	update_icon()
 
-	if(all_multi_vehicles[name])
-		all_multi_vehicles[name + " #[LAZYLEN(all_multi_vehicles)]"] += src
-	else
-		all_multi_vehicles[name] += src
+	all_multi_vehicles += src
 
 /obj/vehicle/multitile/Dispose()
 	if(!interior.disposed)
@@ -149,7 +146,7 @@ var/global/list/all_multi_vehicles = list()
 			qdel(H)
 			hardpoints -= H
 
-	all_multi_vehicles -= list(name = src)
+	all_multi_vehicles -= src
 
 	. = ..()
 

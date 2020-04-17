@@ -355,7 +355,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(!LAZYLEN(targets))
 		to_chat(usr, SPAN_WARNING("There aren't any targets in [input] category to follow."))
 		return
-	input = input("Please select a target among [input] to follow", "Follow", null, null) as null|anything in all_multi_vehicles
+	input = input("Please select a target among [input] to follow", "Follow", null, null) as null|anything in targets
 	target = input
 
 	ManualFollow(target)

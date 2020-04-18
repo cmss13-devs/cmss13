@@ -317,7 +317,7 @@
 		return .
 
 	// Nothing happening, long sleep
-	sleep(5)
+	sleep(20)
 	return .
 
 /proc/setup_player_entity(var/ckey)

@@ -235,6 +235,7 @@
 	names = sortList(names)
 
 	for (var/V in names)
+		CHECK_TICK
 		body += debug_variable(V, D.vars[V], 0, D)
 
 	body += "</ol>"

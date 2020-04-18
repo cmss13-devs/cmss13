@@ -487,9 +487,13 @@ nanoui is used to open and update nano browser uis
 			return // Cannot update UI, no visibility
 
 	var/list/send_data = get_send_data(data)
-
+	CHECK_TICK
+	var/json_data = json_encode(send_data)
+	CHECK_TICK
+	var/url_data = url_encode(json_data)
+	CHECK_TICK
 	//user << json_encode(data) // used for debugging
-	user << output(url_encode(json_encode(send_data)),"[window_id].browser:receiveUpdateData")
+	user << output(url_data,"[window_id].browser:receiveUpdateData")
 
  /**
   * This Topic() proc is called whenever a user clicks on a link within a Nano UI

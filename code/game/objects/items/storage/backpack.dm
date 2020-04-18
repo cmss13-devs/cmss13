@@ -319,7 +319,7 @@
 	actions_types = list(/datum/action/item_action)
 
 /obj/item/storage/backpack/marine/satchel/scout_cloak/dropped(mob/user)
-	if(ishuman(user))
+	if(ishuman(user) && !isSynth(user))
 		deactivate_camouflage(user, FALSE)
 
 	. = ..()
@@ -355,7 +355,7 @@
 	playsound(H.loc,'sound/effects/cloak_scout_on.ogg', 15, 1)
 
 	H.alpha = camo_alpha
-	H.FF_hit_evade = 100
+	H.FF_hit_evade = 1000
 	H.allow_gun_usage = FALSE
 
 	var/datum/mob_hud/security/advanced/SA = huds[MOB_HUD_SECURITY_ADVANCED]

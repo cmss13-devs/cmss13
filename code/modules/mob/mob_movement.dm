@@ -144,9 +144,14 @@
 			return
 		return O.relaymove(mob, direct)
 	else
+		move_delay = mob.move_delay
 		if(mob.recalculate_move_delay && mob.next_delay_update <= world.time)
 			move_delay = mob.movement_delay()
 			mob.next_delay_update = world.time + mob.next_delay_delay
+		if(mob.next_move_slowdown)
+			move_delay += mob.next_move_slowdown
+			mob.next_move_slowdown = 0
+
 		mob.last_move_intent = world.time + 10		
 		mob.cur_speed = Clamp(10/(move_delay + 0.5), MIN_SPEED, MAX_SPEED)
 		//We are now going to move
@@ -251,10 +256,6 @@
 
 	prob_slip = round(prob_slip)
 	return(prob_slip)
-
-/mob/proc/set_next_move_slowdown(var/val)
-	next_move_slowdown = val
-	recalculate_move_delay = TRUE
 
 /mob/proc/on_movement()
 	return TRUE

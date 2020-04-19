@@ -518,6 +518,8 @@
 
 	. = ..()
 
+	move_delay = .
+
 /mob/living/simple_animal/parrot/proc/search_for_item()
 	for(var/atom/movable/AM in view(src))
 		//Skip items we already stole or are wearing or are too big

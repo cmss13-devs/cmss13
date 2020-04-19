@@ -56,7 +56,7 @@
 			else if(can_stuck && slayer == 3 && prob(2))
 				to_chat(C, SPAN_WARNING("You get stuck in [src] for a moment!"))
 				new_slowdown += 10
-			C.set_next_move_slowdown(new_slowdown)
+			C.next_move_slowdown = new_slowdown
 	..()
 
 

@@ -54,13 +54,7 @@
 		var/mob/living/carbon/human/H = AM
 		if (!isYautja(H)) // predators are immune to weed slowdown effect
 			var/new_slowdown = H.next_move_slowdown + weed_strength
-			H.set_next_move_slowdown(new_slowdown)
-
-/obj/effect/alien/weeds/Uncrossed(atom/movable/AM)
-	if (ishuman(AM))
-		var/mob/living/carbon/human/H = AM
-		if (!isYautja(H)) // predators do not get slowed down by weeds
-			H.recalculate_move_delay = TRUE
+			H.next_move_slowdown = new_slowdown
 
 // Uh oh, we might be dying!
 // I know this is bad proc naming but it was too good to pass on and it's only used in this file anyways

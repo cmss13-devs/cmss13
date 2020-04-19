@@ -496,21 +496,21 @@ ICE GRASS
 				switch(stuck)
 					if(0 to 4)
 						var/new_slowdown = H.next_move_slowdown + rand(2,3)
-						H.set_next_move_slowdown(new_slowdown)
+						H.next_move_slowdown = new_slowdown
 						if(prob(2))
 							to_chat(H, SPAN_WARNING("Moving through [src] slows you down."))
 					if(5 to 7)
 						var/new_slowdown = H.next_move_slowdown + rand(4,7)
-						H.set_next_move_slowdown(new_slowdown)
+						H.next_move_slowdown = new_slowdown
 						if(prob(10))
 							to_chat(H, SPAN_WARNING("It is very hard to move trough this [src]..."))
 					if(8 to 9)
 						var/new_slowdown = H.next_move_slowdown + rand(8,11)
-						H.set_next_move_slowdown(new_slowdown)
+						H.next_move_slowdown = new_slowdown
 						to_chat(H, SPAN_WARNING("You got tangeled in [src]!"))
 					if(10)
 						var/new_slowdown = H.next_move_slowdown + rand(12,20)
-						H.set_next_move_slowdown(new_slowdown)
+						H.next_move_slowdown = new_slowdown
 						to_chat(H, SPAN_WARNING("You got completely tangeled in [src]! Oh boy..."))
 
 /obj/structure/flora/jungle/thickbush/attackby(var/obj/I as obj, var/mob/user as mob)

@@ -233,6 +233,7 @@
 	if(pulling && pulling.drag_delay && get_pull_miltiplier())	//Dragging stuff can slow you down a bit.
 		var/pull_delay = pulling.get_pull_drag_delay() * get_pull_miltiplier()
 		. += max(pull_speed + pull_delay + 3*grab_level, 0) //harder grab makes you slower
+	move_delay = .
 
 
 //the inherent slowdown of the object when pulled

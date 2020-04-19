@@ -57,27 +57,6 @@
 				return
 	return ..()
 
-/obj/item/shard/Crossed(AM as mob|obj)
-	if(ismob(AM))
-		var/mob/M = AM
-		playsound(src.loc, 'sound/effects/glass_step.ogg', 25, 1) // not sure how to handle metal shards with sounds
-		if(!M.buckled && ishuman(M))
-			var/mob/living/carbon/human/H = M
-
-			if(!H.species || H.species.flags & IS_SYNTHETIC || H.species.insulated)
-				return
-
-			if(!H.shoes && (!H.wear_suit || !(H.wear_suit.flags_armor_protection & BODY_FLAG_FEET)))
-				to_chat(M, SPAN_WARNING("<B>You step on \the [src]!</B>"))
-				var/obj/limb/affecting = H.get_limb(pick("l_foot", "r_foot"))
-				if(affecting.status & LIMB_ROBOT)
-					return
-				H.KnockDown(3)
-				if(affecting.take_damage(5, 0))
-					H.UpdateDamageIcon()
-				H.updatehealth()
-	..()
-
 /obj/item/shard/phoron
 	name = "phoron shard"
 	desc = "A shard of phoron glass. Considerably tougher then normal glass shards. Apparently not tough enough to be a window."

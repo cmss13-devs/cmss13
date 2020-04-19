@@ -19,3 +19,5 @@
 		. -= 3
 
 	. += config.robot_delay
+
+	move_delay = .

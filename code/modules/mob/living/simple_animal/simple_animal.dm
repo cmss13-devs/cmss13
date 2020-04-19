@@ -308,6 +308,8 @@
 	. = ..()
 	. += config.animal_delay
 
+	move_delay = .
+
 /mob/living/simple_animal/Stat()
 	if (!..())
 		return 0

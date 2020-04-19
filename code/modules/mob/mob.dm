@@ -190,10 +190,9 @@
 		if(MOVE_INTENT_RUN)
 			. = 2 + config.run_speed
 		if(MOVE_INTENT_WALK)
-			. = 7 + config.walk_speed
-	. += next_move_slowdown
+			. = 7 + config.walk_speed	
 	. += speed
-	next_move_slowdown = 0
+	move_delay = .
 
 /mob/proc/Life()
 	if(client == null)

@@ -99,6 +99,7 @@
 		. += HUMAN_SLOWED_AMOUNT
 
 	. += config.human_delay
+	move_delay = .
 
 
 /mob/living/carbon/human/Process_Spacemove(var/check_drift = 0)

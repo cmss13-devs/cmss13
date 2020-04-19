@@ -247,6 +247,7 @@
 		. += XENO_SLOWED_AMOUNT
 
 	. *= speed_multiplier
+	move_delay = .
 
 
 /mob/living/carbon/Xenomorph/show_inv(mob/user)

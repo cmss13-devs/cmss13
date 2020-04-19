@@ -44,33 +44,6 @@ var/global/list/image/splatter_cache=list()
 		basecolor = "#[pick(list("FF0000","FF7F00","FFFF00","00FF00","0000FF","4B0082","8F00FF"))]"
 	color = basecolor
 
-/obj/effect/decal/cleanable/blood/Crossed(mob/living/carbon/human/perp)
-	if (!istype(perp))
-		return
-	if(amount < 1)
-		return
-
-	var/obj/limb/foot/l_foot = perp.get_limb("l_foot")
-	var/obj/limb/foot/r_foot = perp.get_limb("r_foot")
-	var/hasfeet = 1
-	if((!l_foot || l_foot.status & LIMB_DESTROYED) && (!r_foot || r_foot.status & LIMB_DESTROYED))
-		hasfeet = 0
-	if(perp.shoes && !perp.buckled)//Adding blood to shoes
-		var/obj/item/clothing/shoes/S = perp.shoes
-		if(istype(S))
-			S.add_blood(basecolor)
-			S.shoes_blood_amt = max(amount,S.shoes_blood_amt)
-
-	else if (hasfeet)//Or feet
-		perp.feet_blood_color = basecolor
-		perp.feet_blood_amt = max(amount,perp.feet_blood_amt)
-	else if (perp.buckled && istype(perp.buckled, /obj/structure/bed/chair/wheelchair))
-		var/obj/structure/bed/chair/wheelchair/W = perp.buckled
-		W.bloodiness = 4
-
-	perp.update_inv_shoes(1)
-	amount--
-
 /obj/effect/decal/cleanable/blood/proc/dry()
 	name = "dried [src.name]"
 	desc = "It's dry and crusty. Someone is not doing their job."

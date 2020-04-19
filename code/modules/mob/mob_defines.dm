@@ -187,3 +187,5 @@
 	var/ambience_playing = FALSE
 
 	var/noclip = FALSE
+
+	var/next_delay_update = 0 // when next update of move delay should happen

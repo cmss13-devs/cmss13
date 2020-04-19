@@ -1096,13 +1096,8 @@ and you're good to go.
 					if(flags_gun_features &  GUN_INTERNAL_MAG)
 						offset_or_not = 0
 
-					// Again, if firing FA, we wanna cut down on spam. Only show a message for every 5th shot
 					if((flags_gun_features & GUN_FULL_AUTO_ON) && !(fa_shots % 5) || !(flags_gun_features & GUN_FULL_AUTO_ON))
-						user.visible_message(
-						SPAN_DANGER("[user] fires [src][reflex ? " by reflex":""]!"), \
-						SPAN_WARNING("You fire [src][reflex ? "by reflex":""]! [flags_gun_features & GUN_AMMO_COUNTER && current_mag && current_mag.current_rounds ? "<B>[current_mag.current_rounds+offset_or_not]</b>/[current_mag.max_rounds]" : ""]"), \
-						SPAN_WARNING("You hear a [istype(projectile_to_fire.ammo, /datum/ammo/bullet) ? "gunshot" : "blast"]!"), 4
-						)
+						to_chat(user, SPAN_WARNING("You fire [src][reflex ? "by reflex":""]! [flags_gun_features & GUN_AMMO_COUNTER && current_mag && current_mag.current_rounds ? "<B>[current_mag.current_rounds-1]</b>/[current_mag.max_rounds]" : ""]"), null , null, CHAT_TYPE_WEAPON_USE)
 			else
 				playsound(user, actual_sound, 25)
 				if(bullets_fired == 1)

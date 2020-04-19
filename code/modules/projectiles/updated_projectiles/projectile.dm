@@ -811,12 +811,9 @@
 		var/armor_punch = armor_break_calculation(config.xeno_ranged, damage, armor, P.ammo.penetration, P.ammo.pen_armor_punch, P.ammo.damage_armor_punch, armor_integrity)
 		apply_armorbreak(armor_punch)
 
-		if(damage <= 5)
-			to_chat(src,SPAN_XENONOTICE("Your exoskeleton absorbs the force of [P]!"))
 		if(damage <= 3)
 			damage = 0
 			bullet_ping(P)
-			visible_message("<span class='avoidharm'>[src]'s thick exoskeleton deflects [P]!</span>")
 
 	bullet_message(P) //Message us about the bullet, since damage was inflicted.
 

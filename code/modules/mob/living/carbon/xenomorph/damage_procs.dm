@@ -112,7 +112,6 @@
 
 	//Immunity check
 	if(world.time < armor_integrity_immunity_time && world.time>armor_integrity_last_damage_time + XENO_ARMOR_BREAK_PASS_TIME)
-		visible_message(SPAN_XENOWARNING("[src]'s broken exoskeleton plate takes the force of the impact!"))
 		return 1
 
 	if(world.time>armor_integrity_immunity_time)
@@ -138,12 +137,6 @@
 	var/old_integrity = armor_integrity
 	if(caste)
 		armor_integrity -= armor_break_to_apply / caste.armor_hardiness_mult
-	if(armor_integrity <= 0 && old_integrity > 10)
-		visible_message(SPAN_XENODANGER("[src]'s thick exoskeleton falls apart!"))
-		armor_integrity = 0
-	else
-		if(old_integrity - armor_integrity > 25  && old_integrity > 0)
-			visible_message(SPAN_XENODANGER("[src]'s thick exoskeleton starts cracking!"))
 	if(armor_integrity < 0)
 		armor_integrity = 0
 	armor_break_to_apply = 0

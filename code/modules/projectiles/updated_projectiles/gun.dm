@@ -1092,10 +1092,6 @@ and you're good to go.
 				playsound(user, actual_sound, 60)
 
 				if(bullets_fired == 1)
-					var/offset_or_not = -1 // If its an internal mag, we want to display current_rounds as it is, if not -1 it
-					if(flags_gun_features &  GUN_INTERNAL_MAG)
-						offset_or_not = 0
-
 					if((flags_gun_features & GUN_FULL_AUTO_ON) && !(fa_shots % 5) || !(flags_gun_features & GUN_FULL_AUTO_ON))
 						to_chat(user, SPAN_WARNING("You fire [src][reflex ? "by reflex":""]! [flags_gun_features & GUN_AMMO_COUNTER && current_mag && current_mag.current_rounds ? "<B>[current_mag.current_rounds-1]</b>/[current_mag.max_rounds]" : ""]"), null , null, CHAT_TYPE_WEAPON_USE)
 			else

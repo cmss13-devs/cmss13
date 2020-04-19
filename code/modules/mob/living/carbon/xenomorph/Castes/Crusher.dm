@@ -86,6 +86,8 @@
 	)
 	mutation_type = CRUSHER_NORMAL
 
+	next_delay_delay = 2 // they need it for charge
+
 /mob/living/carbon/Xenomorph/Crusher/proc/stomp()
 	if(!check_state()) return
 

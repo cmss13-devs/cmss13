@@ -146,7 +146,7 @@
 	else
 		if(mob.recalculate_move_delay && mob.next_delay_update <= world.time)
 			move_delay = mob.movement_delay()
-			mob.next_delay_update = world.time + 10
+			mob.next_delay_update = world.time + mob.next_delay_delay
 		mob.last_move_intent = world.time + 10		
 		mob.cur_speed = Clamp(10/(move_delay + 0.5), MIN_SPEED, MAX_SPEED)
 		//We are now going to move

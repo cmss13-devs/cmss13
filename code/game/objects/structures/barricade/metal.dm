@@ -70,11 +70,10 @@
 
 	switch(build_state)
 		if(BARRICADE_BSTATE_SECURED) //Fully constructed step. Use screwdriver to remove the protection panels to reveal the bolts
-			if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_METAL))
-				to_chat(user, SPAN_WARNING("You are not trained to touch [src]..."))
-				return
-
 			if(isscrewdriver(W))
+				if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_METAL))
+					to_chat(user, SPAN_WARNING("You are not trained to touch [src]..."))
+					return
 				if(user.action_busy)
 					return
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
@@ -86,6 +85,9 @@
 				return
 
 			if(istype(W, /obj/item/stack/sheet/metal))
+				if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_METAL))
+					to_chat(user, SPAN_WARNING("You are not trained to touch [src]..."))
+					return
 				if(upgraded)
 					to_chat(user, SPAN_NOTICE("This barricade is already upgraded."))
 					return
@@ -125,6 +127,9 @@
 				return
 
 			if(ismultitool(W))
+				if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_METAL))
+					to_chat(user, SPAN_WARNING("You are not trained to touch [src]..."))
+					return
 				if(user.action_busy || !upgraded)
 					return
 				if(!do_after(user, 5, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))

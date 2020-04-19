@@ -9,7 +9,7 @@
 	debris = list(/obj/item/stack/sandbags)
 	barricade_hitsound = "sound/weapons/Genhit.ogg"
 	barricade_type = "sandbag"
-	can_wire = FALSE
+	can_wire = TRUE
 	stack_amount = 1
 	var/build_stage = BARRICADE_SANDBAG_1
 
@@ -33,29 +33,29 @@
 	icon_state = "sandbag[build_stage]"
 
 /obj/structure/barricade/sandbags/update_damage_state()
+	var/changed = FALSE
 	if(health <= BARRICADE_SANDBAG_TRESHOLD_4 && build_stage != BARRICADE_SANDBAG_4)
+		changed = TRUE
 		build_stage = BARRICADE_SANDBAG_4
 		maxhealth = BARRICADE_SANDBAG_TRESHOLD_4
-		if(is_wired)
-			is_wired = FALSE
-			climbable = TRUE
-			flags_can_pass_front |= PASS_OVER_THROW_MOB
-			flags_can_pass_behind |= PASS_OVER_THROW_MOB
-			new/obj/item/stack/barbed_wire(src.loc)
-		can_wire = FALSE
 		stack_amount = 4
 	if(health <= BARRICADE_SANDBAG_TRESHOLD_3 && build_stage != BARRICADE_SANDBAG_3)
+		changed = TRUE
 		build_stage = BARRICADE_SANDBAG_3
 		maxhealth = BARRICADE_SANDBAG_TRESHOLD_3
 		stack_amount = 3
 	if(health <= BARRICADE_SANDBAG_TRESHOLD_2 && build_stage != BARRICADE_SANDBAG_2)
+		changed = TRUE
 		build_stage = BARRICADE_SANDBAG_2
 		maxhealth = BARRICADE_SANDBAG_TRESHOLD_2
 		stack_amount = 2
 	if(health <= BARRICADE_SANDBAG_TRESHOLD_1 && build_stage != BARRICADE_SANDBAG_1)
+		changed = TRUE
 		build_stage = BARRICADE_SANDBAG_1
 		maxhealth = BARRICADE_SANDBAG_TRESHOLD_1
 		stack_amount = 1
+	if(changed && is_wired)
+		maxhealth += 50
 		
 /obj/structure/barricade/sandbags/attackby(obj/item/W, mob/user)
 	for(var/obj/effect/xenomorph/acid/A in src.loc)
@@ -114,7 +114,9 @@
 			health = BARRICADE_SANDBAG_TRESHOLD_5
 			maxhealth = BARRICADE_SANDBAG_TRESHOLD_5
 			stack_amount = 5
-			can_wire = TRUE
+	if(is_wired)
+		maxhealth += 50
+		health += 50
 	build_stage++
 
 

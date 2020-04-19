@@ -2036,7 +2036,7 @@
 
 /datum/ammo/flamethrower/sentry_flamer
 	iff_signal = ACCESS_IFF_MARINE
-	flags_ammo_behavior = AMMO_INCENDIARY|AMMO_IGNORE_ARMOR|AMMO_SKIPS_HUMANS
+	flags_ammo_behavior = AMMO_INCENDIARY|AMMO_IGNORE_ARMOR|AMMO_SKIPS_HUMANS|AMMO_IGNORE_COVER
 
 /datum/ammo/flamethrower/sentry_flamer/New()
 	..()

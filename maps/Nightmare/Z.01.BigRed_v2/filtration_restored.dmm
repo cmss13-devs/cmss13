@@ -760,33 +760,6 @@
 	},
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/filtration_plant)
-"cs" = (
-/obj/effect/landmark/resource_node/plasma{
-	node_group = "central"
-	},
-/turf/open/mars_cave{
-	tag = "icon-mars_cave_2";
-	icon_state = "mars_cave_2"
-	},
-/area/bigredv2/caves_east)
-"ct" = (
-/obj/effect/landmark/resource_node_activator{
-	node_group = "central"
-	},
-/turf/open/mars_cave{
-	tag = "icon-mars_cave_2";
-	icon_state = "mars_cave_2"
-	},
-/area/bigredv2/caves_east)
-"cu" = (
-/obj/effect/landmark/resource_node/plasma{
-	node_group = "central"
-	},
-/turf/open/mars_cave{
-	tag = "icon-mars_cave_7";
-	icon_state = "mars_cave_7"
-	},
-/area/bigredv2/caves_east)
 "jh" = (
 /obj/structure/machinery/light,
 /turf/open/floor{
@@ -1242,7 +1215,7 @@ bU
 bO
 bO
 bO
-cs
+bO
 aj
 "}
 (17,1,1) = {"
@@ -1260,11 +1233,11 @@ ao
 bW
 bw
 bO
-cs
+bO
 bO
 bO
 bQ
-cs
+bO
 bO
 bO
 bO
@@ -1287,9 +1260,9 @@ ad
 cc
 bO
 bO
-cs
 bO
-cs
+bO
+bO
 bO
 bO
 bO
@@ -1318,9 +1291,9 @@ bO
 bO
 bO
 bO
-ct
 bO
-cs
+bO
+bO
 aj
 "}
 (20,1,1) = {"
@@ -1343,11 +1316,11 @@ bO
 bO
 bO
 bO
-cs
+bO
 cg
 bO
 bO
-cs
+bO
 "}
 (21,1,1) = {"
 al
@@ -1366,7 +1339,7 @@ cn
 bO
 bO
 bO
-cs
+bO
 bQ
 bO
 bO
@@ -1389,7 +1362,6 @@ ah
 bA
 ah
 aY
-cs
 bO
 bO
 bO
@@ -1397,7 +1369,8 @@ bO
 bO
 bO
 bO
-cu
+bO
+ck
 bO
 bO
 "}
@@ -1417,10 +1390,10 @@ bv
 aY
 aj
 bO
-cs
+bO
 aj
 aj
-cs
+bO
 bO
 bO
 ck
@@ -1447,7 +1420,7 @@ aj
 aj
 aj
 aj
-cs
+bO
 bO
 ck
 bO

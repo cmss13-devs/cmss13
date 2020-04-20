@@ -51,13 +51,73 @@
 	var/col_g
 	var/col_b
 
+#define turf_update_lumcount(T, amount, col_r, col_g, col_b, removing) \
+	T.lighting_lumcount += amount; \
+	if(!isnull(col_r)){ \
+		if(removing){ \
+			T.light_col_sources--; \
+			T.lumcount_r -= col_r; \
+			T.lumcount_g -= col_g; \
+			T.lumcount_b -= col_b;} \
+		else{ \
+			T.light_col_sources++; \
+			T.lumcount_r += col_r; \
+			T.lumcount_g += col_g; \
+			T.lumcount_b += col_b;} \
+		if(T.light_col_sources){ \
+			var/r_avg = max(0, min(255, round(T.lumcount_r / T.light_col_sources, 16) + 15)); \
+			var/g_avg = max(0, min(255, round(T.lumcount_g / T.light_col_sources, 16) + 15)); \
+			var/b_avg = max(0, min(255, round(T.lumcount_b / T.light_col_sources, 16) + 15)); \
+			T.l_color = rgb(r_avg, g_avg, b_avg);} \
+		else \
+			T.l_color = null; \
+		T.color_lighting_lumcount = max(T.color_lighting_lumcount + amount, 0);} \
+	if(!T.lighting_changed){ \
+		SSlighting.changed_turfs += T; \
+		T.lighting_changed = 1;}
+
+#define ls_remove_effect(ls) for(var/turf/T in ls.effect){ turf_update_lumcount(T, -ls.effect[T], ls.col_r, ls.col_g, ls.col_b, 1); } ls.effect.Cut();
+
+#define ls_lum(ls, T) \
+	var/dist; \
+	if(!T) \
+		dist = 0; \
+	else{ \
+		var/dx = abs(T.x - __x); \
+		var/dy = abs(T.y - __y); \
+		if(dx>=dy)	dist = (0.934*dx) + (0.427*dy); \
+		else		dist = (0.427*dx) + (0.934*dy);} \
+	var/delta_lumen = owner.luminosity - dist; \
+	if(delta_lumen > 0){ \
+		ls.effect[T] = delta_lumen; \
+		turf_update_lumcount(T, delta_lumen, ls.col_r, ls.col_g, ls.col_b, 0);}
+
+#define ls_readrgb(ls, col) \
+	ls._l_color = col; \
+	if(col){ \
+		col_r = GetRedPart(col); \
+		col_g = GetGreenPart(col); \
+		col_b = GetBluePart(col);}
+	else \
+		col_r = null;
+
+#define ls_add_effect(ls) \
+	if(ls.owner.loc && ls.owner.luminosity > 0) { \
+		ls_readrgb(ls, ls.owner.l_color); \
+		effect = list(); \
+		for(var/turf/T in view(ls.owner.luminosity,owner)){ \
+			ls_lum(ls, T) } \
+		return 0; } \
+	else{ \
+		ls.owner.light = null; \
+		return 1;} \
 
 /datum/light_source/New(atom/A)
 	if(!istype(A))
 		CRASH("The first argument to the light object's constructor must be the atom that is the light source. Expected atom, received '[A]' instead.")
 	..()
 	owner = A
-	readrgb(owner.l_color)
+	ls_readrgb(src, owner.l_color)
 	__x = owner.x
 	__y = owner.y
 	__z = owner.z
@@ -68,27 +128,20 @@
 	//Check a light to see if its effect needs reprocessing. If it does, remove any old effect and create a new one
 /datum/light_source/proc/check()
 	if(!owner)
-		remove_effect()
+		ls_remove_effect(src)
 		return 1	//causes it to be removed from our list of lights. The garbage collector will then destroy it.
-/*
-	// check to see if we've moved since last update
-// This is in atom/movable/Moved now so we don't check all the time
-	if(owner.x != __x || owner.y != __y || owner.z != __z)
-		__x = owner.x
-		__y = owner.y
-		__z = owner.z
-		changed = 1
-*/
 
+	if(owner.luminosity > 8)
+		owner.luminosity = 8
 
 	if (owner.l_color != _l_color)
-		readrgb(owner.l_color)
+		ls_readrgb(src, owner.l_color)
 		changed = 1
 
 	if(changed)
 		changed = 0
-		remove_effect()
-		return add_effect()
+		ls_remove_effect(src)
+		ls_add_effect(src)
 	return 0
 
 /datum/light_source/proc/changed()
@@ -100,92 +153,12 @@
 		changed = 1
 		SSlighting.lights.Add(src)
 
+
 /datum/light_source/proc/remove_effect()
 	// before we apply the effect we remove the light's current effect.
 	for(var/turf/T in effect)	// negate the effect of this light source
-		T.update_lumcount(-effect[T], col_r, col_g, col_b, 1)
+		turf_update_lumcount(T, -effect[T], col_r, col_g, col_b, 1)
 	effect.Cut()					// clear the effect list
-
-/datum/light_source/proc/add_effect()
-	// only do this if the light is turned on and is on the map
-	if(owner.loc && owner.luminosity > 0)
-		readrgb(owner.l_color)
-		effect = list()
-
-		if(owner.directional_lum) //Directional luminosity for humans. Implemented for CM-SS13
-			for(var/turf/T in view(owner.get_light_range(),owner))
-				var/dy = T.y - owner.y
-				var/dx = T.x - owner.x
-				switch(owner.dir)
-					if(NORTH)
-						if(dy >= -1)
-							var/mul = 1
-							if(dy==0)
-								mul = 2
-							if(dy==-1)
-								mul = 2.5
-							lum(T, 0, 1, mul)
-					if(SOUTH)
-						if(dy <= 1)
-							var/mul = 1
-							if(dy==0)
-								mul = 2
-							if(dy==1)
-								mul = 2.5
-							lum(T, 0, -1, mul)
-					if(EAST)
-						if(dx >= -1)
-							var/mul = 1
-							if(dx==0)
-								mul = 2
-							if(dx==-1)
-								mul = 2.5
-							lum(T, 1, 0, mul)
-					if(WEST)
-						if(dx <= 1)
-							var/mul = 1
-							if(dx==0)
-								mul = 2
-							if(dx==1)
-								mul = 2.5
-							lum(T, -1, 0, mul)
-					else
-						lum(T)
-			
-		else
-			for(var/turf/T in view(owner.get_light_range(),owner))
-				lum(T)
-		return 0
-	else
-		owner.light = null
-		return 1	//cause the light to be removed from the lights list and garbage collected once it's no
-					//longer referenced by the queue
-
-
-/datum/light_source/proc/lum(var/turf/T, offset_x = 0, offset_y = 0, factor = 1)
-	var/dist
-	if(!T)
-		dist = 0
-	else
-#ifdef LIGHTING_CIRCULAR
-		dist = cheap_hypotenuse(T.x, T.y, __x + offset_x, __y + offset_y)
-#else
-		dist = max(abs(T.x - __x - offset_x), abs(T.y - __y - offset_y))
-#endif
-	var/delta_lumen = owner.luminosity - dist*factor
-	if(delta_lumen > 0)
-		effect[T] = delta_lumen
-		T.update_lumcount(delta_lumen, col_r, col_g, col_b, 0)
-
-
-/datum/light_source/proc/readrgb(col)
-	_l_color = col
-	if(col)
-		col_r = GetRedPart(col)
-		col_g = GetGreenPart(col)
-		col_b = GetBluePart(col)
-	else
-		col_r = null
 
 /atom
 	var/datum/light_source/light
@@ -479,7 +452,7 @@
 /area/proc/SetDynamicLighting()
 	src.lighting_use_dynamic = 1
 	for(var/turf/T in src.contents)
-		T.update_lumcount(0)
+		turf_update_lumcount(T, 0, 0, 0, 0, 0)
 
 /area/proc/InitializeLighting()	//TODO: could probably improve this bit ~Carn
 	tagbase = "[type]"

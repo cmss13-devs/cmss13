@@ -159,8 +159,11 @@
 	buckled_mob.pixel_y = 0
 	buckled_mob.old_y = 0
 
-	if(ghost_of_buckled_mob && ishuman(buckled_mob))
-		var/mob/living/carbon/human/H = buckled_mob
+	var/mob/living/carbon/human/H = buckled_mob // Gets nulled in the next line
+	
+	..()
+
+	if(ghost_of_buckled_mob && istype(H))
 		if(H.undefibbable)
 			return
 			
@@ -170,7 +173,6 @@
 			ghost_of_buckled_mob.can_reenter_corpse = TRUE
 			ghost_of_buckled_mob.reenter_corpse()
 			null_ghost_of_buckled_mob()
-	..()
 
 /obj/structure/bed/nest/ex_act(var/power)
 	if(power >= EXPLOSION_THRESHOLD_VLOW)

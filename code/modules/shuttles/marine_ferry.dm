@@ -100,6 +100,8 @@
 			if(!preflight_checks())
 				announce_preflight_failure()
 				process_state = IDLE_STATE
+				in_use = null
+				locked = 0
 				return .
 			if (skip_docking_checks() || docking_controller.can_launch())
 				if (move_time) long_jump()

@@ -125,16 +125,15 @@
 	return buckled_mob
 
 /obj/proc/unbuckle()
-	if(buckled_mob)
-		if(buckled_mob.buckled == src)	//this is probably unneccesary, but it doesn't hurt
-			buckled_mob.buckled = null
-			buckled_mob.anchored = initial(buckled_mob.anchored)
-			buckled_mob.update_canmove()
+	if(buckled_mob && buckled_mob.buckled == src)
+		buckled_mob.buckled = null
+		buckled_mob.anchored = initial(buckled_mob.anchored)
+		buckled_mob.update_canmove()
 
-			var/M = buckled_mob
-			buckled_mob = null
+		var/M = buckled_mob
+		buckled_mob = null
 
-			afterbuckle(M)
+		afterbuckle(M)
 
 
 /obj/proc/manual_unbuckle(mob/user as mob)

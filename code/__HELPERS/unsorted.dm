@@ -699,6 +699,23 @@ Turf and target are seperate in case you want to teleport some distance from a t
 
 	return creatures
 
+/proc/get_multi_vehicles()
+	var/list/multi_vehicles = all_multi_vehicles.Copy()
+	var/list/names = list()
+	var/list/namecounts = list()
+	var/list/vehicles = list()
+	for(var/obj/vehicle/multitile/MV in multi_vehicles)
+		var/name = MV.name
+		if(name in names)
+			namecounts[name]++
+			name = "[name] #([namecounts[name]])"
+		else
+			names.Add(name)
+			namecounts[name] = 1
+		vehicles[name] = MV
+
+	return vehicles
+
 //Orders mobs by type then by name
 /proc/sortmobs()
 	var/list/moblist = list()

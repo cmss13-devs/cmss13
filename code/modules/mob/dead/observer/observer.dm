@@ -318,7 +318,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set category = "Ghost"
 	set name = "Follow"
 
-	var/list/choices = list("Humans", "Xenomorphs", "Predators", "Synthetics", "ERT Members", "Survivors", "Any Mobs", "Mobs by Factions", "Xenos by Hives", "Vehicles")
+	var/list/choices = list("Humans", "Xenomorphs", "Predators", "Synthetics", "ERT Members", "Survivors", "Any Mobs", "Mobs by Faction", "Xenos by Hive", "Vehicles")
 	var/input = input("Please, select a category:", "Follow", null, null) as null|anything in choices
 	var/atom/movable/target
 	var/list/targets = list()
@@ -338,9 +338,9 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		if("Any Mobs")
 			targets = getmobs()
 		if("Vehicles")
-			targets = all_multi_vehicles.Copy()
+			targets = get_multi_vehicles()
 
-		if("Mobs by Factions")
+		if("Mobs by Faction")
 			choices = FACTION_LIST_HUMANOID
 			input = input("Please, select a Faction:", "Follow", null, null) as null|anything in choices
 			targets = gethumans()
@@ -348,7 +348,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 				if(M.faction != choices[input])
 					targets.Remove(M)
 
-		if("Xenos by Hives")
+		if("Xenos by Hive")
 			choices = list("Regular Hive" = XENO_HIVE_NORMAL, "Corrupted Hive" = XENO_HIVE_CORRUPTED, "Alpha Hive" = XENO_HIVE_ALPHA, "Beta Hive" = XENO_HIVE_BETA, "Zeta Hive" = XENO_HIVE_ZETA)
 			input = input("Please, select a Hive:", "Follow", null, null) as null|anything in choices
 			targets = getxenos()

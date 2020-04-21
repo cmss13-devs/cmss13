@@ -990,8 +990,6 @@ and you're good to go.
 		if(world.time >= last_fired + added_delay + extra_delay) //check the last time it was fired.
 			extra_delay = 0
 		else
-			if (world.time % 3)
-				to_chat(user, SPAN_WARNING("[src] is not ready to fire again!")) //to prevent spam
 			return
 	return 1
 
@@ -1077,28 +1075,20 @@ and you're good to go.
 	if(user) //The gun only messages when fired by a user.
 		projectile_to_fire.firer = user
 		if(isliving(user)) projectile_to_fire.def_zone = user.zone_selected
+		//Guns with low ammo have their firing sound
+		var/firing_sndfreq = (current_mag && (current_mag.current_rounds / current_mag.max_rounds) > GUN_LOW_AMMO_PERCENTAGE) ? FALSE : SOUND_FREQ_HIGH
 
 		//firing from an attachment
 		if(active_attachable && active_attachable.flags_attach_features & ATTACH_PROJECTILE)
 			if(active_attachable.fire_sound) //If we're firing from an attachment, use that noise instead.
 				playsound(user, active_attachable.fire_sound, 50)
-			user.visible_message(
-			SPAN_DANGER("[user] fires [active_attachable][reflex ? " by reflex":""]!"), \
-			SPAN_WARNING("You fire [active_attachable][reflex ? "by reflex":""]!"), \
-			SPAN_WARNING("You hear a [istype(projectile_to_fire.ammo, /datum/ammo/bullet) ? "gunshot" : "blast"]!"), 4, CHAT_TYPE_WEAPON_USE
-			)
 		else
+			if(current_mag && flags_gun_features & GUN_AMMO_COUNTER && bullets_fired == 1)
+				to_chat(user, SPAN_DANGER("[current_mag.current_rounds] / [current_mag.max_rounds] ROUNDS REMAINING"))
 			if(!(flags_gun_features & GUN_SILENCED))
-				playsound(user, actual_sound, 60)
-
-				if(bullets_fired == 1)
-					if((flags_gun_features & GUN_FULL_AUTO_ON) && !(fa_shots % 5) || !(flags_gun_features & GUN_FULL_AUTO_ON))
-						to_chat(user, SPAN_WARNING("You fire [src][reflex ? "by reflex":""]! [flags_gun_features & GUN_AMMO_COUNTER && current_mag && current_mag.current_rounds ? "<B>[current_mag.current_rounds-1]</b>/[current_mag.max_rounds]" : ""]"), null , null, CHAT_TYPE_WEAPON_USE)
+				playsound(user, actual_sound, 60, firing_sndfreq)
 			else
-				playsound(user, actual_sound, 25)
-				if(bullets_fired == 1)
-					if((flags_gun_features & GUN_FULL_AUTO_ON) && !(fa_shots % 5) || !(flags_gun_features & GUN_FULL_AUTO_ON))
-						to_chat(user, SPAN_WARNING("You fire [src][reflex ? "by reflex":""]! [flags_gun_features & GUN_AMMO_COUNTER && current_mag && current_mag.current_rounds ? "<B>[current_mag.current_rounds-1]</b>/[current_mag.max_rounds]" : ""]"), null , null, CHAT_TYPE_WEAPON_USE)
+				playsound(user, actual_sound, 25, firing_sndfreq)
 
 	return 1
 

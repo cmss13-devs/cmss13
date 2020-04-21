@@ -13,6 +13,9 @@
 #define MUFFLE_MEDIUM -2000
 #define MUFFLE_HIGH -10000
 
+#define SOUND_FREQ_HIGH 55000 
+#define SOUND_FREQ_LOW 32000 
+
 #define ITEM_EQUIP_VOLUME 50
 //Reserved channels
 

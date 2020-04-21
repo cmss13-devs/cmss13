@@ -11,24 +11,48 @@
 		to_chat(src, SPAN_NOTICE(" You will no longer examine things you click on."))
 
 /mob/dead/observer/click(var/atom/A, var/list/mods)
-	if (..())
+	if(..())
 		return 1
 
-	if (mods["ctrl"] && mods["middle"])
-		if(can_reenter_corpse && mind && mind.current)
-			if(A == mind.current || (mind.current in A)) // double click your corpse or whatever holds it
-				reenter_corpse()						// (cloning scanner, body bag, closet, mech, etc)
-				return 1								// seems legit.
+	if(mods["ctrl"])
+		if(A == src)
+			if(!can_reenter_corpse || !mind || !mind.current)
+				return
+			if(alert(src, "Are you sure you want to re-enter your corpse?", "Confirm", "Yes", "No") == "Yes")
+				reenter_corpse()
+				return 1
 
-		// Things you might plausibly want to follow
-		if((ismob(A) && A != src) || istype(A,/obj/structure/machinery/bot))
+		if(ismob(A) || isVehicle(A))
+			if(isXeno(A) && ticker.mode.check_xeno_late_join(src))		//if it's a xeno and all checks are alright, we are gonna try to take their body
+				var/mob/living/carbon/Xenomorph/X = A
+				if(!X.client)
+					if(X.stat == DEAD || X.z == ADMIN_Z_LEVEL)
+						to_chat(src, SPAN_WARNING("You cannot join as [X]."))
+						return
+					if(!ticker.mode.xeno_bypass_timer)
+						var/deathtime = world.time - timeofdeath
+						var/deathtimeminutes = round(deathtime / MINUTES_1)
+						var/deathtimeseconds = round((deathtime - deathtimeminutes * MINUTES_1) / 10,1)
+						if(deathtime < MINUTES_5)
+							var/message = "You have been dead for [deathtimeminutes >= 1 ? "[deathtimeminutes] minute\s and " : ""][deathtimeseconds] second\s."
+							message = SPAN_WARNING("[message]")
+							to_chat(src, message)
+							to_chat(src, SPAN_WARNING("You must wait 5 minutes before rejoining the game!"))
+							return 0
+						if(X.away_timer < SECONDS_30)
+							to_chat(src, SPAN_WARNING("That player hasn't been away long enough. Please wait [SECONDS_30 - X.away_timer] second\s longer."))
+							return 0
+					if(alert(src, "Are you sure you want to transfer yourself into [X]?", "Confirm Transfer", "Yes", "No") == "Yes")
+						if(X.client || X.stat == DEAD) // Do it again, just in case
+							to_chat(src, SPAN_WARNING("That xenomorph can no longer be controlled. Please try another."))
+							return 0
+					ticker.mode.transfer_xeno(src, X)
+					return 1
 			ManualFollow(A)
+			return 1
 
-		// Otherwise jump
-		else
-			following = null
-			loc = get_turf(A)
-
+		following = null
+		loc = get_turf(A)
 		return 1
 
 	if(world.time <= next_move)

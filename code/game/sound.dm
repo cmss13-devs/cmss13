@@ -24,14 +24,14 @@
 //source: self-explanatory.
 //soundin: the .ogg to use.
 //vol: the initial volume of the sound, 0 is no sound at all, 75 is loud queen screech.
-//vary: to make the frequency var of the sound vary (mostly unused).
+//freq: the frequency of the sound. Setting it to 1 will assign it a random frequency
 //sound_range: the maximum theoretical range (in tiles) of the sound, by default is equal to the volume.
 //vol_cat: the category of this sound, used in client volume. There are 3 volume categories: VOLUME_SFX (Sound effects), VOLUME_AMB (Ambience and Soundscapes) and VOLUME_ADM (Admin sounds and some other stuff)
 //channel: use this only when you want to force the sound to play on an specific channel
 //status: the regular 4 sound flags 
 //falloff: max range till sound volume starts dropping as distance increases
 
-/proc/playsound(atom/source, soundin, vol = 100, vary, sound_range, vol_cat = VOLUME_SFX, channel = 0, status , falloff = 1)
+/proc/playsound(atom/source, soundin, vol = 100, vary = FALSE, sound_range, vol_cat = VOLUME_SFX, channel = 0, status , falloff = 1)
 	if(isarea(source))
 		error("[source] is an area and is trying to make the sound: [soundin]")
 		return FALSE
@@ -62,9 +62,13 @@
 		sound_range = round(0.25*vol) //if no specific range, the max range is equal to a quarter of the volume.
 	S.range = sound_range
 
-	if(vary)
-		S.frequency = GET_RANDOM_FREQ // Same frequency for everybody
-	
+	if(vary != FALSE)
+		if(vary > 1)
+			S.frequency = vary
+		else
+			S.frequency = GET_RANDOM_FREQ // Same frequency for everybody
+
+
 	var/list/hearers = list()
 	//Grab the hearers in interiors before doing the quadtree search
 	for(var/datum/interior/I in interior_manager.interiors)

@@ -1,6 +1,0 @@
-author: Jeser
-
-delete-after: True
-
-changes: 
-  - tweak: "Ghosts now have one unified Follow verb that allows to search by old and several new categories, such as vehicles, mobs by faction and by hive. Follow Local Mob verb is still there unchanged."

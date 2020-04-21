@@ -10,6 +10,21 @@
 	storage_flags = STORAGE_FLAGS_POUCH
 
 
+/obj/item/storage/pouch/Initialize()
+	. = ..()
+
+	update_icon()
+
+
+/obj/item/storage/pouch/update_icon()
+	overlays.Cut()
+	if(!contents.len)
+		return
+	else if(contents.len <= storage_slots * 0.5)
+		overlays += "+[icon_state]_half"
+	else
+		overlays += "+[icon_state]_full"
+
 
 /obj/item/storage/pouch/examine(mob/user)
 	..()
@@ -80,11 +95,10 @@
 					)
 
 /obj/item/storage/pouch/general/large/m39ap/New()
+	new /obj/item/ammo_magazine/smg/m39/ap(src)
+	new /obj/item/ammo_magazine/smg/m39/ap(src)
+	new /obj/item/ammo_magazine/smg/m39/ap(src)
 	..()
-	new /obj/item/ammo_magazine/smg/m39/ap(src)
-	new /obj/item/ammo_magazine/smg/m39/ap(src)
-	new /obj/item/ammo_magazine/smg/m39/ap(src)
-
 /obj/item/storage/pouch/bayonet
 	name = "bayonet sheath"
 	desc = "A pouch for your knives."
@@ -97,13 +111,12 @@
 	storage_flags = STORAGE_FLAGS_POUCH|STORAGE_USING_DRAWING_METHOD
 
 /obj/item/storage/pouch/bayonet/full/New()
-	..()
 	new /obj/item/attachable/bayonet(src)
-
+	..()
 
 /obj/item/storage/pouch/bayonet/upp/New()
-	..()
 	new /obj/item/attachable/bayonet/upp(src)
+	..()
 
 /obj/item/storage/pouch/survival
 	name = "survival pouch"
@@ -120,13 +133,12 @@
 	)
 
 /obj/item/storage/pouch/survival/full/New()
-	..()
 	new /obj/item/device/flashlight(src)
 	new /obj/item/tool/crowbar/red(src)
 	new /obj/item/reagent_container/pill/tramadol(src)
 	new /obj/item/stack/medical/bruise_pack (src, 3)
 	new /obj/item/stack/sheet/metal(src, 20)
-
+	..()
 
 
 
@@ -146,11 +158,11 @@
 	desc = "Contains a painkiller autoinjector, first-aid autoinjector, some ointment, and some bandages."
 
 /obj/item/storage/pouch/firstaid/full/New()
-	..()
 	new /obj/item/stack/medical/ointment(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/skillless(src)
 	new /obj/item/stack/medical/bruise_pack(src)
+	..()
 
 /obj/item/storage/pouch/pistol
 	name = "sidearm pouch"
@@ -224,75 +236,74 @@
 
 
 /obj/item/storage/pouch/magazine/pistol/pmc_mateba/New()
+	new /obj/item/ammo_magazine/revolver/mateba(src)
+	new /obj/item/ammo_magazine/revolver/mateba(src)
+	new /obj/item/ammo_magazine/revolver/mateba(src)
 	..()
-	new /obj/item/ammo_magazine/revolver/mateba(src)
-	new /obj/item/ammo_magazine/revolver/mateba(src)
-	new /obj/item/ammo_magazine/revolver/mateba(src)
 
 /obj/item/storage/pouch/magazine/pistol/pmc_mod88/New()
+	new /obj/item/ammo_magazine/pistol/mod88(src)
+	new /obj/item/ammo_magazine/pistol/mod88(src)
+	new /obj/item/ammo_magazine/pistol/mod88(src)
 	..()
-	new /obj/item/ammo_magazine/pistol/mod88(src)
-	new /obj/item/ammo_magazine/pistol/mod88(src)
-	new /obj/item/ammo_magazine/pistol/mod88(src)
 
 /obj/item/storage/pouch/magazine/pistol/pmc_vp78/New()
+	new /obj/item/ammo_magazine/pistol/vp78(src)
+	new /obj/item/ammo_magazine/pistol/vp78(src)
+	new /obj/item/ammo_magazine/pistol/vp78(src)
 	..()
-	new /obj/item/ammo_magazine/pistol/vp78(src)
-	new /obj/item/ammo_magazine/pistol/vp78(src)
-	new /obj/item/ammo_magazine/pistol/vp78(src)
-
 
 /obj/item/storage/pouch/magazine/upp/New()
+	new /obj/item/ammo_magazine/rifle/type71(src)
+	new /obj/item/ammo_magazine/rifle/type71(src)
 	..()
-	new /obj/item/ammo_magazine/rifle/type71(src)
-	new /obj/item/ammo_magazine/rifle/type71(src)
 
 /obj/item/storage/pouch/magazine/large/upp/New()
+	new /obj/item/ammo_magazine/rifle/type71(src)
+	new /obj/item/ammo_magazine/rifle/type71(src)
+	new /obj/item/ammo_magazine/rifle/type71(src)
 	..()
-	new /obj/item/ammo_magazine/rifle/type71(src)
-	new /obj/item/ammo_magazine/rifle/type71(src)
-	new /obj/item/ammo_magazine/rifle/type71(src)
 
 /obj/item/storage/pouch/magazine/upp_smg/New()
+	new /obj/item/ammo_magazine/smg/skorpion(src)
+	new /obj/item/ammo_magazine/smg/skorpion(src)
 	..()
-	new /obj/item/ammo_magazine/smg/skorpion(src)
-	new /obj/item/ammo_magazine/smg/skorpion(src)
 
 /obj/item/storage/pouch/magazine/large/pmc_m39/New()
+	new /obj/item/ammo_magazine/smg/m39/ap(src)
+	new /obj/item/ammo_magazine/smg/m39/ap(src)
+	new /obj/item/ammo_magazine/smg/m39/ap(src)
 	..()
-	new /obj/item/ammo_magazine/smg/m39/ap(src)
-	new /obj/item/ammo_magazine/smg/m39/ap(src)
-	new /obj/item/ammo_magazine/smg/m39/ap(src)
 
 /obj/item/storage/pouch/magazine/large/pmc_p90/New()
+	new /obj/item/ammo_magazine/smg/fp9000(src)
+	new /obj/item/ammo_magazine/smg/fp9000(src)
+	new /obj/item/ammo_magazine/smg/fp9000(src)
 	..()
-	new /obj/item/ammo_magazine/smg/fp9000(src)
-	new /obj/item/ammo_magazine/smg/fp9000(src)
-	new /obj/item/ammo_magazine/smg/fp9000(src)
 
 /obj/item/storage/pouch/magazine/large/pmc_lmg/New()
+	new /obj/item/ammo_magazine/rifle/lmg(src)
+	new /obj/item/ammo_magazine/rifle/lmg(src)
+	new /obj/item/ammo_magazine/rifle/lmg(src)
 	..()
-	new /obj/item/ammo_magazine/rifle/lmg(src)
-	new /obj/item/ammo_magazine/rifle/lmg(src)
-	new /obj/item/ammo_magazine/rifle/lmg(src)
 
 /obj/item/storage/pouch/magazine/large/pmc_sniper/New()
+	new /obj/item/ammo_magazine/sniper/elite(src)
+	new /obj/item/ammo_magazine/sniper/elite(src)
+	new /obj/item/ammo_magazine/sniper/elite(src)
 	..()
-	new /obj/item/ammo_magazine/sniper/elite(src)
-	new /obj/item/ammo_magazine/sniper/elite(src)
-	new /obj/item/ammo_magazine/sniper/elite(src)
 
 /obj/item/storage/pouch/magazine/large/pmc_rifle/New()
+	new /obj/item/ammo_magazine/rifle/ap(src)
+	new /obj/item/ammo_magazine/rifle/ap(src)
+	new /obj/item/ammo_magazine/rifle/ap(src)
 	..()
-	new /obj/item/ammo_magazine/rifle/ap(src)
-	new /obj/item/ammo_magazine/rifle/ap(src)
-	new /obj/item/ammo_magazine/rifle/ap(src)
 
 /obj/item/storage/pouch/magazine/large/pmc_sg/New()
+	new /obj/item/ammo_magazine/smartgun/dirty(src)
+	new /obj/item/ammo_magazine/smartgun/dirty(src)
+	new /obj/item/ammo_magazine/smartgun/dirty(src)
 	..()
-	new /obj/item/ammo_magazine/smartgun/dirty(src)
-	new /obj/item/ammo_magazine/smartgun/dirty(src)
-	new /obj/item/ammo_magazine/smartgun/dirty(src)
 
 /obj/item/storage/pouch/explosive
 	name = "explosive pouch"
@@ -315,17 +326,16 @@
 		return ..()
 
 /obj/item/storage/pouch/explosive/full/New()
-	..()
 	new /obj/item/explosive/grenade/HE/frag(src)
 	new /obj/item/explosive/grenade/HE(src)
 	new /obj/item/explosive/grenade/HE(src)
-
+	..()
 
 /obj/item/storage/pouch/explosive/upp/New()
+	new /obj/item/explosive/plastique(src)
+	new /obj/item/explosive/plastique(src)
+	new /obj/item/explosive/plastique(src)
 	..()
-	new /obj/item/explosive/plastique(src)
-	new /obj/item/explosive/plastique(src)
-	new /obj/item/explosive/plastique(src)
 
 /obj/item/storage/pouch/medical
 	name = "medical pouch"
@@ -346,10 +356,10 @@
 	)
 
 /obj/item/storage/pouch/medical/full/New()
-	..()
 	new /obj/item/storage/pill_bottle/tramadol(src)
 	new /obj/item/storage/pill_bottle/bicaridine(src)
 	new /obj/item/storage/pill_bottle/kelotane(src)
+	..()
 
 /obj/item/storage/pouch/medical/frt_kit
 	name = "first responder technical pouch"
@@ -367,11 +377,11 @@
 	)
 
 /obj/item/storage/pouch/medical/frt_kit/full/New()
-	..()
 	new /obj/item/device/healthanalyzer(src)
 	new /obj/item/stack/medical/splint(src)
 	new /obj/item/stack/medical/advanced/ointment(src)
 	new /obj/item/stack/medical/advanced/bruise_pack(src)
+	..()
 
 /obj/item/storage/pouch/vials
 	name = "vial pouch"
@@ -398,9 +408,9 @@
 	)
 
 /obj/item/storage/pouch/chem/New()
-	..()
 	new /obj/item/reagent_container/glass/beaker/large(src)
 	new /obj/item/reagent_container/glass/beaker(src)
+	..()
 
 /obj/item/storage/pouch/autoinjector
 	name = "auto-injector pouch"
@@ -410,7 +420,6 @@
 	can_hold = list(/obj/item/reagent_container/hypospray/autoinjector)
 
 /obj/item/storage/pouch/autoinjector/full/New()
-	..()
 	new /obj/item/reagent_container/hypospray/autoinjector/bicaridine(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/bicaridine(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/kelotane(src)
@@ -418,6 +427,7 @@
 	new /obj/item/reagent_container/hypospray/autoinjector/tramadol(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/tramadol(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/emergency(src)
+	..()
 
 /obj/item/storage/pouch/syringe
 	name = "syringe pouch"
@@ -437,12 +447,12 @@
 
 
 /obj/item/storage/pouch/medkit/full/New()
-	..()
 	new /obj/item/storage/firstaid/regular(src)
+	..()
 
 /obj/item/storage/pouch/medkit/full_advanced/New()
-	..()
 	new /obj/item/storage/firstaid/adv(src)
+	..()
 
 /obj/item/storage/pouch/document
 	name = "document pouch"
@@ -482,11 +492,11 @@
 		return ..()
 
 /obj/item/storage/pouch/flare/full/New()
-	..()
 	contents = list()
 	var/i = 0
 	while(i++ < storage_slots)
 		new /obj/item/device/flashlight/flare(src)
+	..()
 
 /obj/item/storage/pouch/radio
 	name = "radio pouch"
@@ -508,10 +518,9 @@
 	)
 
 /obj/item/storage/pouch/electronics/full/New()
-	..()
 	new /obj/item/circuitboard/apc(src)
 	new /obj/item/cell/high(src)
-
+	..()
 
 /obj/item/storage/pouch/construction
 	name = "construction pouch"
@@ -560,29 +569,29 @@
 	bypass_w_limit = list(/obj/item/tool/shovel/etool)
 
 /obj/item/storage/pouch/tools/full/New()
-	..()
 	new /obj/item/tool/screwdriver(src)
 	new /obj/item/tool/wirecutters(src)
 	new /obj/item/device/multitool(src)
 	new /obj/item/tool/wrench(src)
+	..()
 
 /obj/item/storage/pouch/tools/pfc/New()
-	..()
 	new /obj/item/tool/screwdriver(src)
 	new /obj/item/tool/wirecutters(src)
 	new /obj/item/tool/weldingtool(src)
 	new /obj/item/tool/wrench(src)
+	..()
 
 /obj/item/storage/pouch/tools/synth/New()
-	..()
 	new /obj/item/tool/screwdriver(src)
 	new /obj/item/device/multitool(src)
 	new /obj/item/tool/weldingtool(src)
 	new /obj/item/stack/cable_coil(src)
+	..()
 
 /obj/item/storage/pouch/tools/tank/New()
-	..()
 	new /obj/item/tool/crowbar(src)
 	new /obj/item/tool/wrench(src)
 	new /obj/item/tool/weldingtool/hugetank(src)
 	new /obj/item/tool/extinguisher/mini(src)
+	..()

@@ -40,7 +40,8 @@ obj/structure/bed/Dispose()
 
 /obj/structure/bed/ex_act(var/power)
 	if(power >= EXPLOSION_THRESHOLD_VLOW)
-		new buildstacktype(get_turf(src), buildstackamount)
+		if(!isnull(buildstacktype))
+			new buildstacktype(get_turf(src), buildstackamount)
 		qdel(src)
 
 /obj/structure/bed/afterbuckle(mob/M)

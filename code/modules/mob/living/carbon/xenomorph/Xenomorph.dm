@@ -550,9 +550,6 @@
 
 	. = ..()
 
-	caste = null
-
-
 
 /mob/living/carbon/Xenomorph/slip(slip_source_name, stun_level, weaken_level, run_only, override_noslip, slide_steps)
 	return FALSE

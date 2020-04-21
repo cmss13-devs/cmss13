@@ -45,7 +45,7 @@
 			return
 		remove_action(owner)
 	owner = L
-	L.actions += src
+	L.actions.Add(src)
 	if(L.client)
 		L.client.screen += button
 	L.update_action_buttons()
@@ -53,7 +53,7 @@
 /datum/action/proc/remove_action(mob/living/L)
 	if(L.client)
 		L.client.screen -= button
-	L.actions -= src
+	L.actions.Remove(src)
 	L.update_action_buttons()
 	owner = null
 

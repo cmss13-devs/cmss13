@@ -451,7 +451,7 @@
 	else if(istype(AM, /obj))
 		AM.add_fingerprint(src)
 
-	if(AM.pulledby && M)
+	if(!isnull(AM.pulledby) && M)
 		visible_message(SPAN_WARNING("[src] has broken [AM.pulledby]'s grip on [M]!"), null, null, 5)
 		AM.pulledby.stop_pulling()
 

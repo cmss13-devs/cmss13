@@ -111,6 +111,7 @@
 			N.buckled_mob = M
 			N.afterbuckle(M)
 	M.undefibbable = TRUE
+	M.spawned_corpse = TRUE
 	qdel(src)
 
 

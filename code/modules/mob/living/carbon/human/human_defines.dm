@@ -101,3 +101,5 @@
 	var/datum/squad/assigned_squad	//the squad this human is assigned to
 	var/assigned_fireteam = 0		//the fireteam this human is assigned to
 	var/squad_status = null			//var for squad info window. Can be null, "M.I.A" and "K.I.A"
+
+	var/spawned_corpse = FALSE		// For the corpse spawner

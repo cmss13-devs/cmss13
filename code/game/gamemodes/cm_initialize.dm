@@ -479,12 +479,13 @@ Additional game mode variables.
 	new_queen.update_icons()
 
 /datum/game_mode/proc/transform_xeno(datum/mind/ghost_mind)
-	var/mob/living/original = ghost_mind.current
+	var/mob/living/carbon/human/original = ghost_mind.current
 
 	original.first_xeno = TRUE
 	original.stat = 1
 	transform_survivor(ghost_mind) //Create a new host
 	original.adjustBruteLoss(50) //Do some damage to the host
+	original.spawned_corpse = TRUE
 
 	var/obj/structure/bed/nest/start_nest = new /obj/structure/bed/nest(original.loc) //Create a new nest for the host
 	original.statistic_exempt = TRUE

@@ -89,7 +89,7 @@
 		..()
 		return
 
-	if(!do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_BUILD))
+	if(!do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_HOSTILE, M, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
 		return
 
 	if(!(CanHug(M) && (M.is_mob_incapacitated() || M.lying || M.buckled)))

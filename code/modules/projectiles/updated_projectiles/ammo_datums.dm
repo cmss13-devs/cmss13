@@ -1474,10 +1474,15 @@
 		var/mob/living/carbon/human/H = M
 		if(H.chem_effect_flags & CHEM_EFFECT_RESIST_NEURO)
 			return
+
 	if(M.knocked_out || pass_down_the_line) //second part is always false, but consistency is a great thing
 		pass_down_the_line = TRUE
 
 	if(!isXeno(M))
+		if(ishuman(M))
+			var/mob/living/carbon/human/H = M
+			if((!H.wear_suit || H.wear_suit.slowdown == 0) && H.m_intent == MOVE_INTENT_RUN)
+				insta_neuro = TRUE
 		if(insta_neuro)
 			if(M.knocked_down < 3)
 				M.AdjustKnockeddown(1 * power)

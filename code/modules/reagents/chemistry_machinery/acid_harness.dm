@@ -123,7 +123,7 @@
 
 	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if(!ui)
-		ui = new(user, src, ui_key, "acid_core_config.tmpl", "A.C.I.D. CORE CONFIG", 450, 700)
+		ui = new(user, src, ui_key, "acid_core_config.tmpl", "A.C.I.D. CORE CONFIG", 460, 760)
 		ui.set_initial_data(data)
 		ui.open()
 
@@ -437,9 +437,10 @@
 	if(!acid_harness.vial || !acid_harness.vial.reagents)
 		voice("Warning: Medicinal capsule missing.")
 		return
-	for(var/datum/reagent/R in acid_harness.vial.reagents)
+	for(var/datum/reagent/R in acid_harness.vial.reagents.reagent_list)
 		if(user.reagents.get_reagent_amount(R.id) + inject_amount > R.overdose) //Don't overdose our boi
 			voice("Notice: Injection trigger cancelled to avoid overdose.")
+			add_timer(CALLBACK(src, .proc/recheck_conditions), SECONDS_20 * inject_amount)
 			return
 	if(acid_harness.vial.reagents.trans_to(user, inject_amount))
 		playsound_client(user.client, 'sound/items/hypospray.ogg', null, ITEM_EQUIP_VOLUME)

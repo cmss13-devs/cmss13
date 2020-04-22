@@ -75,9 +75,7 @@
 // Updates how many buried larva there are
 /datum/hive_status_ui/proc/update_pooled_larva()
 	data["pooled_larva"] = assoc_hive.stored_larva
-	data["evilution"] = 1
-	if(assoc_hive.hivenumber == XENO_HIVE_NORMAL)
-		data["evilution"] = SSxevolution.boost_power
+	data["evilution"] = SSxevolution.boost_power
 
 // Updates all data except pooled larva
 /datum/hive_status_ui/proc/update_all_xeno_data()

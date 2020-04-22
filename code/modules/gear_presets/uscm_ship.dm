@@ -553,7 +553,7 @@
 	skills = /datum/skills/MP
 
 	utility_under = list(/obj/item/clothing/under/marine/mp)
-	utility_hat = list(/obj/item/clothing/head/beret/cm/red)
+	utility_hat = list(/obj/item/clothing/head/beret/marine/mp)
 	utility_extra = list(/obj/item/clothing/head/cmcap, /obj/item/clothing/head/beret/cm, /obj/item/clothing/head/beret/cm/tan)
 
 /datum/equipment_preset/uscm_ship/mp/load_gear(mob/living/carbon/human/H)
@@ -568,7 +568,7 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/security/MP/full(H), WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/MP(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud(H), WEAR_EYES)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/beret/cm/red(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/beret/marine/mp(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/taperecorder(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/medium(H), WEAR_R_STORE)
@@ -588,7 +588,7 @@
 	skills = /datum/skills/CMP
 
 	utility_under = list(/obj/item/clothing/under/marine/officer/warrant)
-	utility_hat = list(/obj/item/clothing/head/beret/cm/wo)
+	utility_hat = list(/obj/item/clothing/head/beret/marine/mp/cmp)
 	utility_extra = list(/obj/item/clothing/head/cmcap, /obj/item/clothing/head/beret/cm, /obj/item/clothing/head/beret/cm/tan)
 
 /datum/equipment_preset/uscm_ship/cmp/load_gear(mob/living/carbon/human/H)
@@ -603,7 +603,7 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/security/MP/full(H), WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/MP/WO(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud(H), WEAR_EYES)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/beret/cm/wo(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/beret/marine/mp/cmp(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/taperecorder(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)
@@ -782,7 +782,7 @@
 	skills = /datum/skills/CMP
 
 	utility_under = list(/obj/item/clothing/under/marine/officer/warrant)
-	utility_hat = list(/obj/item/clothing/head/beret/cm/wo)
+	utility_hat = list(/obj/item/clothing/head/beret/marine/mp/cmp)
 	utility_extra = list(/obj/item/clothing/head/cmcap, /obj/item/clothing/head/beret/cm, /obj/item/clothing/head/beret/cm/tan)
 
 /datum/equipment_preset/uscm_ship/riot_mp/New()

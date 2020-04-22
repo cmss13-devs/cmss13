@@ -274,6 +274,7 @@
 	new /obj/item/storage/backpack/mcommander(src)
 	new /obj/item/clothing/glasses/sunglasses(src)
 	new /obj/item/device/radio/headset/almayer/mcom/cdrcom(src)
+	new /obj/item/clothing/suit/storage/jacket/marine/dress/officer(src)
 
 /obj/structure/closet/secure_closet/securecom
 	name = "commanding officer's secure box"
@@ -403,7 +404,7 @@
 
 /obj/structure/closet/secure_closet/military_police/New()
 	..()
-	new /obj/item/clothing/head/beret/cm/red(src)
+	new /obj/item/clothing/head/beret/marine/mp(src)
 	new /obj/item/clothing/gloves/black(src)
 	new /obj/item/clothing/accessory/holster/armpit(src)
 	new /obj/item/clothing/shoes/marine(src)
@@ -435,7 +436,7 @@
 
 /obj/structure/closet/secure_closet/warrant_officer/New()
 	..()
-	new /obj/item/clothing/head/beret/cm/wo(src)
+	new /obj/item/clothing/head/beret/marine/mp/cmp(src)
 	new /obj/item/clothing/accessory/holster/armpit(src)
 	new /obj/item/clothing/shoes/marine(src)
 	new /obj/item/clothing/under/marine/officer/warrant(src)

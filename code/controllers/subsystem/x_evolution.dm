@@ -2,7 +2,7 @@ var/datum/subsystem/xevolution/SSxevolution
 
 /datum/subsystem/xevolution
 	name = "Evilution"
-	wait = 5 MINUTES
+	wait = 1 MINUTES
 	priority = SS_PRIORITY_INACTIVITY
 	
 	var/human_xeno_ratio_modifier = 0.4

@@ -56,7 +56,7 @@
 	qdel(src)
 
 /obj/item/xeno_egg/proc/plant_egg(mob/living/carbon/Xenomorph/user, turf/T, proximity = TRUE)
-	if(!proximity && user != user.hive.living_xeno_queen)
+	if(!proximity)
 		return // no message because usual behavior is not to show any
 	if(!user.hive)
 		to_chat(user, SPAN_XENOWARNING("Your hive cannot procreate."))
@@ -65,19 +65,19 @@
 		return
 	if(!user.check_plasma(30))
 		return
-	if(!(locate(/obj/effect/alien/weeds) in T))
-		to_chat(user, SPAN_XENOWARNING("[src] can only be planted on weeds."))
-		return
-	var/area/A = get_area(user)
-	if(!user.hive.in_egg_plant_range(T) && !A.statistic_exempt)	//so eggs can be planted in thunderdome/centcomm
-		to_chat(user, SPAN_XENOWARNING("[src] can only be planted near Queen in ovipositor form. Come closer, child."))
-		return
-	if(user == user.hive.living_xeno_queen && !user.hive.living_xeno_queen.in_egg_plant_range(T))
-		to_chat(user, SPAN_XENOWARNING("[T] is too far from you."))
+
+	var/found_hive_weeds = FALSE
+	for(var/obj/effect/alien/weeds/W in T)
+		if(W.weed_strength >= WEED_LEVEL_HIVE)
+			found_hive_weeds = TRUE
+			break
+
+	if(!found_hive_weeds)
+		to_chat(user, SPAN_XENOWARNING("[src] can only be planted on hive weeds."))
 		return
 
-	user.visible_message(SPAN_XENONOTICE("[user] starts planting [src]."), \
-					SPAN_XENONOTICE("You start planting [src]."), null, 5)
+	user.visible_message(SPAN_XENONOTICE("[user] starts planting [src]."), SPAN_XENONOTICE("You start planting [src]."), null, 5)
+
 	var/plant_time = 35
 	if(isXenoDrone(user))
 		plant_time = 25
@@ -89,14 +89,16 @@
 		return
 	if(!user.check_plasma(30))
 		return
-	if(locate(/obj/effect/alien/weeds) in T)
-		user.use_plasma(30)
-		var/obj/effect/alien/egg/newegg = new /obj/effect/alien/egg(T)
-		newegg.add_hiddenprint(user)
-		newegg.hivenumber = hivenumber
-		playsound(T, 'sound/effects/splat.ogg', 15, 1)
-		qdel(src)
 
+	for(var/obj/effect/alien/weeds/W in T)
+		if(W.weed_strength >= WEED_LEVEL_HIVE)
+			user.use_plasma(30)
+			var/obj/effect/alien/egg/newegg = new /obj/effect/alien/egg(T)
+			newegg.add_hiddenprint(user)
+			newegg.hivenumber = hivenumber
+			playsound(T, 'sound/effects/splat.ogg', 15, 1)
+			qdel(src)
+			break
 
 /obj/item/xeno_egg/attack_self(mob/user)
 	if(isXeno(user))

@@ -1,0 +1,6 @@
+author: Jeser
+
+delete-after: True
+
+changes: 
+  - bugfix: "Fixed bug with manual facehugging not being interrupted by moving host away. [Kendrick Lyon]"

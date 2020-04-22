@@ -158,6 +158,7 @@
 #include "code\controllers\subsystem\tracking.dm"
 #include "code\controllers\subsystem\vote.dm"
 #include "code\controllers\subsystem\weather.dm"
+#include "code\controllers\subsystem\x_evolution.dm"
 #include "code\controllers\subsystem\xeno.dm"
 #include "code\controllers\subsystem\xenocon.dm"
 #include "code\controllers\subsystem\init\landmarks.dm"

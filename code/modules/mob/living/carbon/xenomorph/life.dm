@@ -39,14 +39,8 @@
 /mob/living/carbon/Xenomorph/proc/update_progression()
 	var/progress_amount = 1
 
-	if(world.time < XENO_ROUNDSTART_PROGRESS_TIME_1) //xenos have a progression bonus at roundstart
-		progress_amount = XENO_ROUNDSTART_PROGRESS_AMOUNT
-
-	else if(world.time < XENO_ROUNDSTART_PROGRESS_TIME_2) //gradually decrease to no bonus
-		progress_amount = 1 + (1 - XENO_ROUNDSTART_PROGRESS_AMOUNT) * (world.time-XENO_ROUNDSTART_PROGRESS_TIME_2)/(XENO_ROUNDSTART_PROGRESS_TIME_2-XENO_ROUNDSTART_PROGRESS_TIME_1)
-
-	if(ticker && ticker.mode && ticker.mode.xeno_evo_speed)
-		progress_amount = ticker.mode.xeno_evo_speed
+	if(hive.living_xeno_queen.ovipositor || (ticker.game_start_time + XENO_HIVE_EVOLUTION_FREETIME) >= world.time)
+		progress_amount = SSxevolution.boost_power
 
 	if(upgrade != -1 && upgrade < 3 && (hive && !hive.living_xeno_queen || hive && hive.living_xeno_queen.loc.z == loc.z)) //upgrade possible
 		upgrade_stored = min(upgrade_stored + progress_amount, upgrade_threshold)

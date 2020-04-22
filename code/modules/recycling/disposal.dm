@@ -220,7 +220,7 @@
 	dat += "Pressure: [disposal_pressure*100/SEND_PRESSURE]%<BR></body>"
 
 	user.set_interaction(src)
-	show_browser(user, dat, "Waste Disposal Unit", "disposal")
+	show_browser(user, dat, "[name]", "disposal")
 
 //Handle machine interaction
 /obj/structure/machinery/disposal/Topic(href, href_list)
@@ -1305,12 +1305,13 @@
 	var/active = 0
 	var/turf/target	//This will be where the output objects are 'thrown' to.
 	var/mode = 0
+	var/range = 10
 
 	New()
 		..()
 
 		spawn(1)
-			target = get_ranged_target_turf(src, dir, 10)
+			target = get_ranged_target_turf(src, dir, range)
 			var/obj/structure/disposalpipe/trunk/trunk = locate() in loc
 			if(trunk)
 				trunk.linked = src	//Link the pipe trunk to self

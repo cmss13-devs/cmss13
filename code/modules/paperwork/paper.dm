@@ -525,25 +525,29 @@
 	var/tier
 	var/note_type
 	var/full_report
+	var/grant
 
 /obj/item/paper/research_notes/Initialize()
 	. = ..()
 	add_timer(CALLBACK(src, .proc/generate), 7) //To make sure reagents got initialized first
 
 /obj/item/paper/research_notes/proc/generate()
-	var/random_chem 
+	if(!note_type)
+		note_type = pick(prob(50);"synthesis",prob(35);"grant",prob(15);"test")
+	var/random_chem
 	if(tier)
 		random_chem = pick(chemical_gen_classes_list[tier])
 	else 
-		random_chem = pick(	prob(55);pick(chemical_gen_classes_list["T2"]),
-							prob(30);pick(chemical_gen_classes_list["T3"]),
-							prob(15);pick(chemical_gen_classes_list["T4"]))
+		if(note_type == "test")
+			random_chem = pick(chemical_gen_classes_list["T4"])
+		else
+			random_chem = pick(	prob(55);pick(chemical_gen_classes_list["T2"]),
+								prob(30);pick(chemical_gen_classes_list["T3"]),
+								prob(15);pick(chemical_gen_classes_list["T4"]))
 	if(!random_chem)
 		random_chem = pick(chemical_gen_classes_list["T1"])
 	var/data = "<center><img src = wylogo.png><HR><I><B>Official Weston-Yamada Document</B><BR>Experiment Notes</I><HR><H2>"
 	var/datum/reagent/C = chemical_reagents_list["[random_chem]"]
-	if(!note_type)
-		note_type = pick(prob(35);"synthesis",prob(65);"test")
 	switch(note_type)
 		if("synthesis")
 			var/datum/chemical_reaction/G = chemical_reactions_list[C.id]
@@ -565,11 +569,19 @@
 				data += "<BR>Overdoses at: [C.overdose] units</font><BR>\n"
 			else
 				data += "<BR>\nTesting for chemical properties is currently pending.<BR>\n"
+			if(C.has_property(PROPERTY_EXPLOSIVE))
+				data += "<BR><B>\nWARNING: UNSTABLE REAGENT. MIX CAREFULLY.</B><BR>\n"
 			data += "<BR>\n<HR> - <I>Weston-Yamada</I>"
 		if("test")
 			name = "Experiment [pick("C","Q","V","W","X","Y","Z")][rand(100,999)][pick("a","b","c")]"
 			data += "Note for [name]</H2></center>"
 			data += "Subject <I>[rand(10000,99999)]</I> experienced [pick(C.properties)] effects during testing of [C.name]. <BR>\nTesting for additional chemical properties is currently pending. <BR>\n"
+			data += "<BR>\n<HR> - <I>Weston-Yamada</I>"
+		if("grant")
+			grant = rand(2,4)
+			name = "Research Grant"
+			data += "Weston-Yamada Research Grant</H2></center>"
+			data += "Dear valued researcher from [map_tag]. Weston-Yamada has taken high interest of your recent scientific reports. To further support your research progress we have sent you this research grant of [grant] credits. Please scan at your local Weston-Yamada research data terminal to receive the benefits.<BR>\n"
 			data += "<BR>\n<HR> - <I>Weston-Yamada</I>"
 	info = data
 

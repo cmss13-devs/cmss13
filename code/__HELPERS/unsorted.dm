@@ -2026,3 +2026,8 @@ var/list/WALLITEMS = list(
 			net_displacement += to_redistribute
 
 	return variances
+
+/proc/check_bitflag(var/flag, var/bit)
+	if(flag & bit)
+		return TRUE
+	return FALSE

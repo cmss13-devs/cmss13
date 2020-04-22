@@ -78,7 +78,7 @@ CLOTHING
 	name = "webbings and holsters crate"
 	contains = list(
 					/obj/item/clothing/accessory/holster,
-					/obj/item/clothing/accessory/storage/brown_vest,
+					/obj/item/clothing/accessory/storage/black_vest/brown_vest,
 					/obj/item/clothing/accessory/storage/webbing,
 					/obj/item/clothing/accessory/storage/webbing,
 					/obj/item/clothing/accessory/storage/webbing,

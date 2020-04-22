@@ -100,7 +100,7 @@
 		list("ACCESSORIES", 0, null, null, null),
 		list("Shoulder holster", 0, /obj/item/clothing/accessory/holster, MARINE_CAN_BUY_ACCESSORY, "black"),
 		list("Webbing", 0, /obj/item/clothing/accessory/storage/webbing, MARINE_CAN_BUY_ACCESSORY, "black"),
-		list("Brown webbing vest", 0, /obj/item/clothing/accessory/storage/brown_vest, MARINE_CAN_BUY_ACCESSORY, "black"),
+		list("Brown webbing vest", 0, /obj/item/clothing/accessory/storage/black_vest/brown_vest, MARINE_CAN_BUY_ACCESSORY, "black"),
 		list("Black webbing vest", 0, /obj/item/clothing/accessory/storage/black_vest, MARINE_CAN_BUY_ACCESSORY, "black"),
 	)
 

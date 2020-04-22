@@ -20,6 +20,7 @@
 	var/dispatch_message = "An encrypted signal has been received from a nearby vessel. Stand by." //Msg to display when starting
 	var/arrival_message = "" //Msg to display about when the shuttle arrives
 	var/objectives //Txt of objectives to display to joined. Todo: make this into objective notes
+	var/objective_info //For additional info in the objectives txt
 	var/probability = 0 //Chance of it occuring. Total must equal 100%
 	var/hostility //For ERTs who are either hostile or friendly by random chance.
 	var/list/datum/mind/members = list() //Currently-joined members.
@@ -68,10 +69,11 @@
 	else
 		return chosen_call
 
-/datum/game_mode/proc/get_specific_call(var/call_name, var/announce = TRUE, var/is_emergency = TRUE)
+/datum/game_mode/proc/get_specific_call(var/call_name, var/announce = TRUE, var/is_emergency = TRUE, var/info = "")
 	for(var/datum/emergency_call/E in all_calls) //Loop through all potential candidates
 		if(E.name == call_name)
 			picked_call = E
+			picked_call.objective_info = info
 			picked_call.activate(announce, is_emergency)
 			return
 	error("get_specific_call could not find emergency call '[call_name]'")

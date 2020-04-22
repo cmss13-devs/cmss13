@@ -8,6 +8,14 @@
 
 	recalculate_move_delay = TRUE
 
+	if(chem_effect_flags)
+		chem_effect_reset_time--
+		if(!chem_effect_reset_time)
+			chem_effect_reset_time = 8
+			if(chem_effect_flags & CHEM_EFFECT_HYPER_THROTTLE)
+				universal_understand = FALSE
+			chem_effect_flags = 0
+
 	if(reagents && !(species.flags & NO_CHEM_METABOLIZATION))
 		var/alien = 0
 		if(species && species.reagent_tag)
@@ -45,8 +53,13 @@
 			is_OD = 1
 			if(R.overdose_critical && R.volume > R.overdose_critical)
 				is_COD = 1
+		
+		var/boost = 0
+		if(R.has_property(PROPERTY_BOOSTING))
+			boost = R.properties[PROPERTY_BOOSTING]
+		
 		for(var/P in R.properties)
-			var/potency = R.properties[P]
+			var/potency = R.properties[P] + boost
 			if(!potency) continue
 			switch(P)
 				if(PROPERTY_NEUROCRYOGENIC)
@@ -64,3 +77,5 @@
 						to_chat(src, SPAN_NOTICE("You feel your heart struggling as you suddenly feel a spark, making it desperately try to continue pumping."))
 						playsound_client(src.client, 'sound/effects/Heart Beat Short.ogg', 35)
 						add_timer(CALLBACK(src, .proc/handle_revive), 50, TIMER_UNIQUE)
+				if(PROPERTY_THANATOMETABOL)
+					R.on_mob_life(src,species.reagent_tag)

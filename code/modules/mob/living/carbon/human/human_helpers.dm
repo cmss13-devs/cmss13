@@ -311,9 +311,35 @@
 
 	return FALSE
 
+/mob/living/carbon/human/proc/is_bleeding_internal()
+	for(var/datum/effects/bleeding/internal/B in effects_list)
+		return TRUE
+
+	return FALSE
+
 /mob/living/carbon/human/proc/get_broken_limbs()
 	var/list/BL = list()
 	for(var/obj/limb/L in limbs)
 		if(L.status & LIMB_BROKEN)
 			BL += L.display_name
 	return BL
+
+/mob/living/carbon/human/proc/has_broken_limbs()
+	for(var/obj/limb/L in limbs)
+		if(L.status & LIMB_BROKEN)
+			return TRUE
+	return FALSE
+
+/mob/living/carbon/human/proc/has_splinted_limbs()
+	for(var/obj/limb/L in limbs)
+		if(L.status & LIMB_SPLINTED)
+			return TRUE
+	return FALSE
+
+/mob/living/carbon/human/proc/has_foreign_object()
+	for(var/obj/limb/L in limbs)
+		if(L.implants && L.implants.len > 0)
+			return TRUE
+	for(var/obj/item/alien_embryo/A in contents)
+		return TRUE
+	return FALSE

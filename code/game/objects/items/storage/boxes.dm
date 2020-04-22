@@ -494,7 +494,14 @@
 		new /obj/item/light_bulb/bulb(src)
 
 
+/obj/item/storage/box/autoinjectors
+	name = "box of autoinjectors"
+	icon_state = "syringe"
 
+/obj/item/storage/box/autoinjectors/New()
+	..()
+	for(var/i = 0; i < 7; i++)
+		new /obj/item/reagent_container/hypospray/autoinjector/empty(src)
 
 
 ////////// MARINES BOXES //////////////////////////

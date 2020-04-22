@@ -92,13 +92,19 @@
 		report.info += "<B>Results for sample:</B> #[sample_number]<BR>\n"
 		report.generate(S)
 		sample.name = "vial ([S.name])"
+		chemical_research_data.save_document(report, "XRF Scans", "[sample_number] - [report.name]")
 		if(S.chemclass >= CHEM_CLASS_SPECIAL && !chemical_identified_list[S.id])
 			if(last_used)
 				last_used.count_niche_stat(STATISTICS_NICHE_CHEMS)
+			if(S.has_property(PROPERTY_DNA_DISINTEGRATING))
+				if(chemical_research_data.clearance_level >= S.gen_tier)
+					ticker.mode.get_specific_call("Weston-Yamada PMC (Chemical Investigation Squad)", TRUE, FALSE, S.name)
+					chemical_research_data.update_credits(10)
+				else
+					return
 			chemical_research_data.update_credits(2)
 			chemical_identified_list[S.id] = S.objective_value
 			defcon_controller.check_defcon_level()
-		chemical_research_data.save_document(report, "XRF Scans", "[sample_number] - [report.name]")
 	else
 		report.name += "ERROR"
 		report.info += "<center><img src = wylogo.png><HR><I><B>Official Weston-Yamada Document</B><BR>Reagent Analysis Print</I><HR><H2>Analysis ERROR</H2></center>"

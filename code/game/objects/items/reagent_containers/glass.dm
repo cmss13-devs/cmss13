@@ -24,6 +24,7 @@
 		/obj/structure/closet,
 		/obj/structure/sink,
 		/obj/item/storage,
+		/obj/item/clothing,
 		/obj/structure/machinery/cryo_cell,
 		/obj/item/explosive,
 		/obj/item/mortar_shell/custom,
@@ -41,6 +42,7 @@
 		/obj/structure/machinery/reagent_analyzer,
 		/obj/structure/machinery/centrifuge,
 		/obj/structure/machinery/autodispenser,
+		/obj/item/reagent_container/hypospray,
 		/obj/structure/machinery/constructable_frame)
 
 	New()
@@ -257,6 +259,22 @@
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = list(5,10,15,25)
 	flags_atom = FPRINT|OPENCONTAINER
+
+/obj/item/reagent_container/glass/beaker/vial/tricordrazine
+	name = "tricordrazine vial"
+
+/obj/item/reagent_container/glass/beaker/vial/tricordrazine/New()
+	..()
+	reagents.add_reagent("tricordrazine", 30)
+	update_icon()
+
+/obj/item/reagent_container/glass/beaker/vial/sedative
+	name = "suxamorycin vial"
+
+/obj/item/reagent_container/glass/beaker/vial/sedative/New()
+	..()
+	reagents.add_reagent("suxamorycin", 30)
+	update_icon()
 
 /obj/item/reagent_container/glass/beaker/vial/random
 	var/tier

@@ -398,39 +398,39 @@ var/const/INGEST = 2
 		for(var/index in data)
 			new_data[index] = data[index]
 
-		for(var/A in reagent_list)
-			var/datum/reagent/R = A
-			if(R.id == reagent)
-				R.volume += amount
-				update_total()
-				my_atom.on_reagent_change()
+	for(var/A in reagent_list)
+		var/datum/reagent/R = A
+		if(R.id == reagent)
+			R.volume += amount
+			update_total()
+			my_atom.on_reagent_change()
 
-				// mix dem viruses
-				if(R.data && data)
-					if(R.data["viruses"] || new_data["viruses"])
+			// mix dem viruses
+			if(R.data && data)
+				if(R.data["viruses"] || new_data["viruses"])
 
-						var/list/mix1 = R.data["viruses"]
-						var/list/mix2 = new_data["viruses"]
+					var/list/mix1 = R.data["viruses"]
+					var/list/mix2 = new_data["viruses"]
 
-						// Stop issues with the list changing during mixing.
-						var/list/to_mix = list()
+					// Stop issues with the list changing during mixing.
+					var/list/to_mix = list()
 
-						for(var/datum/disease/advance/AD in mix1)
-							to_mix += AD
-						for(var/datum/disease/advance/AD in mix2)
-							to_mix += AD
+					for(var/datum/disease/advance/AD in mix1)
+						to_mix += AD
+					for(var/datum/disease/advance/AD in mix2)
+						to_mix += AD
 
-						var/datum/disease/advance/AD = Advance_Mix(to_mix)
-						if(AD)
-							var/list/preserve = list(AD)
-							for(var/D in R.data["viruses"])
-								if(!istype(D, /datum/disease/advance))
-									preserve += D
-							R.data["viruses"] = preserve
+					var/datum/disease/advance/AD = Advance_Mix(to_mix)
+					if(AD)
+						var/list/preserve = list(AD)
+						for(var/D in R.data["viruses"])
+							if(!istype(D, /datum/disease/advance))
+								preserve += D
+						R.data["viruses"] = preserve
 
-				if(!safety)
-					handle_reactions()
-				return FALSE
+			if(!safety)
+				handle_reactions()
+			return FALSE
 
 	var/datum/reagent/D = chemical_reagents_list[reagent]
 	if(D)

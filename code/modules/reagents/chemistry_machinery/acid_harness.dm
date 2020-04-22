@@ -438,7 +438,7 @@
 		voice("Warning: Medicinal capsule missing.")
 		return
 	for(var/datum/reagent/R in acid_harness.vial.reagents)
-		if(acid_harness.vial.reagents.get_reagent_amount(R.id) > R.overdose) //Don't overdose our boi
+		if(user.reagents.get_reagent_amount(R.id) + inject_amount > R.overdose) //Don't overdose our boi
 			voice("Notice: Injection trigger cancelled to avoid overdose.")
 			return
 	if(acid_harness.vial.reagents.trans_to(user, inject_amount))

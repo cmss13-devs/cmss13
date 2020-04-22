@@ -349,7 +349,7 @@
 			damage_scan |= ACID_SCAN_DAMAGE_BRAIN
 
 	//Vitals status
-	if(!isliving(user))
+	if(user.stat == DEAD)
 		vitals_scan = ACID_VITALS_DEAD
 	else
 		health = health / user.maxHealth * 100 //% for simplicity

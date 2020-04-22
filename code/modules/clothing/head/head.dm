@@ -63,12 +63,6 @@
 
 /obj/item/clothing/head/beret/cm/red
 	icon_state = "beretred"
-
-/obj/item/clothing/head/beret/cm/wo
-	name = "\improper USCM chief MP beret"
-	desc = "A beret with the lieutenant insignia emblazoned on it. It shines with the glow of corrupt authority and a smudge of doughnut."
-	icon_state = "beretwo"
-
 /obj/item/clothing/head/headband
 	name = "headband"
 	desc = "A rag typically worn by the less-orthodox weapons operators. While it offers no protection, it is certainly comfortable to wear compared to the standard helmet. Comes in two stylish colors."
@@ -259,6 +253,28 @@
 	armor_rad = CLOTHING_ARMOR_LOW
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 	flags_inventory = BLOCKSHARPOBJ
+
+/obj/item/clothing/head/beret/marine/mp
+	name = "\improper USCM MP beret"
+	icon_state = "beretred"
+	desc = "A reinforced beret with the military police insignia emblazoned on it."
+	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bullet = CLOTHING_ARMOR_LOW
+	armor_laser = CLOTHING_ARMOR_LOW
+	armor_energy = CLOTHING_ARMOR_LOW
+	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
+	armor_rad = CLOTHING_ARMOR_LOW
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
+	icon = 'icons/obj/items/clothing/cm_hats.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
+	)
+
+/obj/item/clothing/head/beret/marine/mp/cmp
+	name = "\improper USCM chief MP beret"
+	desc = "A reinforced beret with a military police lieutenant insignia emblazoned on it. It shines with the glow of corrupt authority and a smudge of doughnut."
+	icon_state = "beretwo"
 
 /obj/item/clothing/head/beret/marine/commander
 	name = "marine captain beret"

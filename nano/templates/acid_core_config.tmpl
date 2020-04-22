@@ -1,0 +1,52 @@
+<style>
+	.container {
+		display: flex;
+        padding: 2px 2px 2px 2px;
+        overflow: auto;
+		margin-top: 15px;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: center;
+		align-items: flex-start;
+	}
+	.enabled {
+		background-color: #24722e;
+	}
+	.disabled {
+		background-color: #666666;
+	}
+	.menubutton {
+		flex-grow: 1;
+		margin: 0px 0px 2px 2px;
+		padding: 2px;
+		max:height: 20px;
+		min-height: 20px;
+		max-width: 130px;
+		min-width: 130px;
+		cursor: pointer;
+	}
+</style>
+
+<div>
+{{:helper.link('Injection Amount: ' + data.inject_amount + ' units', null, {'inject_amount' : 1})}}
+{{:helper.link('Damage Threshold: ' + data.inject_damage_threshold + ' damage', null, {'inject_damage_threshold' : 1})}}
+{{:helper.link(data.inject_logic, null, {'inject_logic' : 1})}}
+</div>
+
+<br>
+<h2>Scanning Configurations</h2>
+<div>
+	{{props data.config :configurations:type}}
+		<h3>{{:type}}</h3>
+		<div class="container">
+			{{props data.config[type] :setting:configuration}}
+				{{if setting[0] == 1 }} 
+					{{:helper.link(configuration, 'gear', {'config_type' : type, 'config_value' : setting[1]}, null, 'menubutton enabled')}}
+				{{else}}
+					{{:helper.link(configuration, 'gear', {'config_type' : type, 'config_value' : setting[1]}, null, 'menubutton disabled')}}
+				{{/if}}
+				<br><br>
+			{{/props}}
+		</div>
+	{{/props}}
+</div>

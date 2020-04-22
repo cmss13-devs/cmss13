@@ -436,6 +436,14 @@
 	storage_slots = 6
 	can_hold = list(/obj/item/reagent_container/syringe)
 
+/obj/item/storage/pouch/syringe/full/New()
+	..()
+	new /obj/item/reagent_container/syringe(src)
+	new /obj/item/reagent_container/syringe(src)
+	new /obj/item/reagent_container/syringe(src)
+	new /obj/item/reagent_container/syringe(src)
+	new /obj/item/reagent_container/syringe(src)
+	new /obj/item/reagent_container/syringe(src)
 
 /obj/item/storage/pouch/medkit
 	name = "medkit pouch"

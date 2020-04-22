@@ -124,7 +124,7 @@
 		/obj/item/storage/belt/shotgun = round(scale * 10),
 
 		// WEBBINGS
-		/obj/item/clothing/accessory/storage/brown_vest = round(scale * 2),
+		/obj/item/clothing/accessory/storage/black_vest/brown_vest = round(scale * 2),
 		/obj/item/clothing/accessory/storage/webbing = round(scale * 5),
 
 		// POUCHES
@@ -195,7 +195,7 @@
 		/obj/item/storage/belt/marine = round(scale * 10),
 		/obj/item/storage/belt/shotgun = round(scale * 10),
 		/obj/item/clothing/accessory/storage/webbing = round(scale * 5),
-		/obj/item/clothing/accessory/storage/brown_vest = round(scale * 5),
+		/obj/item/clothing/accessory/storage/black_vest/brown_vest = round(scale * 5),
 		/obj/item/clothing/accessory/holster = round(scale * 5),
 		/obj/item/storage/belt/gun/m4a3 = round(scale * 10),
 		/obj/item/storage/belt/gun/m44 = round(scale * 5),

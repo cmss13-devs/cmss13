@@ -201,5 +201,14 @@
 	desc = "An auto-injector loaded with a small amount of painkiller for marines to self-administer."
 	icon_state = "tramadol"
 
+/obj/item/reagent_container/hypospray/autoinjector/empty
+	name = "autoinjector"
+	desc = "A custom made auto-injector, likely from research."
+	chemname = "custom"
+	mixed_chem = TRUE
+	amount_per_transfer_from_this = 5
+	volume = 15
+	uses_left = 0
+
 #undef INJECTOR_USES
 #undef INJECTOR_PERCENTAGE_OF_OD

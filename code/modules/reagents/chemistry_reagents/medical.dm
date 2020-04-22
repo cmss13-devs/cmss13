@@ -551,7 +551,6 @@
 	overdose = MED_REAGENTS_OVERDOSE
 	overdose_critical = MED_REAGENTS_OVERDOSE_CRITICAL
 	scannable = 1
-	chemclass = CHEM_CLASS_RARE
 
 /datum/reagent/russianred/on_mob_life(mob/living/M)
 	. = ..()
@@ -781,43 +780,15 @@
 	M.reagent_move_delay_modifier -= 10
 	M.recalculate_move_delay = TRUE
 
-	var/has_addiction = 0
+	var/has_addiction
 
-	for(var/datum/disease/ultrazine_addiction/D in M.viruses)
-		has_addiction = 1
-
-		if(D.stage < D.max_stages)
-			D.addiction_progression++
-			if(D.addiction_progression > D.progression_threshold)
-				D.addiction_progression = 0
-				D.stage++
-		else
-			D.addiction_progression = min(D.addiction_progression+1, D.progression_threshold) //withdrawal buffer
-
-		switch(D.stage)
-			if(2)
-				if(prob(1))
-					M.hallucination = max(50, M.hallucination)
-			if(3)
-				if(prob(1))
-					M.hallucination = max(75, M.hallucination)
-			if(4)
-				if(prob(2))
-					M.hallucination = max(75, M.hallucination)
-				if(prob(0.5) && ishuman(M))
-					var/mob/living/carbon/human/H = M
-					var/affected_organ = pick("heart","lungs","liver","kidneys")
-					var/datum/internal_organ/I =  H.internal_organs_by_name[affected_organ]
-					I.damage += 5
-
-		break
-
+	for(var/datum/disease/addiction/D in M.viruses)
+		if(D.chemical_id == id)
+			D.handle_chem()
+			has_addiction = TRUE
+			break
 	if(!has_addiction)
-		M.contract_disease(new /datum/disease/ultrazine_addiction, 1)
-
-	if(prob(2))
-		M.emote(pick("twitch","blink_r","shiver"))
-
+		M.contract_disease(new /datum/disease/addiction(id), 1)
 
 /datum/reagent/ultrazine/on_overdose(mob/living/M)
 	if(ishuman(M))
@@ -1056,7 +1027,7 @@
 	overdose_critical = LOWH_REAGENTS_OVERDOSE_CRITICAL
 	data = 0
 	chemclass = CHEM_CLASS_COMMON
-	properties = list(PROPERTY_RELAXING = 6, PROPERTY_HALLUCINOGENIC = 1)
+	properties = list(PROPERTY_SEDATIVE = 4, PROPERTY_HALLUCINOGENIC = 1)
 
 /datum/reagent/suxamorycin/on_mob_life(mob/living/M)
 	. = ..()

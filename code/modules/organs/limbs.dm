@@ -883,7 +883,8 @@ This function completely restores a damaged organ to perfect condition.
 			knitting_time = -1
 			to_chat(owner, SPAN_WARNING("You feel your [src] stop knitting together as it absorbs damage!"))
 		return
-
+	if(owner.chem_effect_flags & CHEM_EFFECT_RESIST_FRACTURE)
+		return
 	owner.recalculate_move_delay = TRUE
 	owner.visible_message(\
 		SPAN_WARNING("You hear a loud cracking sound coming from [owner]!"),

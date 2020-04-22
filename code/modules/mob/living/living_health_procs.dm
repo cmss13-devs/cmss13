@@ -54,6 +54,10 @@
 
 /mob/living/proc/adjustBrainLoss(var/amount)
 	if(status_flags & GODMODE)	return 0	//godmode
+	if(ishuman(src))
+		var/mob/living/carbon/human/H = src
+		if(H.chem_effect_flags & CHEM_EFFECT_RESIST_NEURO)
+			return
 	brainloss = min(max(brainloss + amount, 0),(maxHealth*2))
 
 /mob/living/proc/setBrainLoss(var/amount)

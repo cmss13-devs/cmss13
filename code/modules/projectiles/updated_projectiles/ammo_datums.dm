@@ -1470,6 +1470,10 @@
 	var/pass_down_the_line = FALSE
 	if(isSynth(M) || isYautja(M))
 		return // unaffected
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		if(H.chem_effect_flags & CHEM_EFFECT_RESIST_NEURO)
+			return
 	if(M.knocked_out || pass_down_the_line) //second part is always false, but consistency is a great thing
 		pass_down_the_line = TRUE
 

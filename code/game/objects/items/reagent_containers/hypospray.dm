@@ -11,15 +11,56 @@
 	amount_per_transfer_from_this = 5
 	volume = 30
 	possible_transfer_amounts = null
-	flags_atom = FPRINT|OPENCONTAINER
+	flags_atom = FPRINT
 	flags_equip_slot = SLOT_WAIST
 	var/skilllock = 1
+	var/obj/item/reagent_container/glass/beaker/vial/mag
+	var/locked = TRUE
+
+/obj/item/reagent_container/hypospray/attackby(obj/item/B, mob/living/user)
+	if(isscrewdriver(B))
+		locked = !locked
+		playsound(loc, 'sound/items/Screwdriver2.ogg', 25, 0, 6)
+		if(locked)
+			to_chat(user, SPAN_NOTICE("You lock [src]."))
+		else
+			to_chat(user, SPAN_NOTICE("You unlock [src]."))
+		return
+	if(mag && istype(B,/obj/item/reagent_container))
+		if(B.reagents)
+			var/obj/item/reagent_container/C = B
+			B.reagents.trans_to(mag, C.amount_per_transfer_from_this)
+			to_chat(user, SPAN_NOTICE("You transfer [C.amount_per_transfer_from_this] units from [B] to [src]."))
+			return
+	if(locked)
+		return
+	if(istype(B,/obj/item/reagent_container/glass/beaker/vial))
+		if(user.drop_held_item())
+			B.forceMove(src)
+			mag = B
+			to_chat(user, SPAN_NOTICE("You add \the [B] to [src]."))
+
+/obj/item/reagent_container/hypospray/attack_hand(mob/user as mob)
+	if(!locked && mag)
+		mag.update_icon()
+		user.put_in_hands(mag)
+		mag = null
+		return
+	. = ..()
 
 /obj/item/reagent_container/hypospray/attack(mob/M, mob/living/user)
-	if(!reagents.total_volume)
+	var/datum/reagents/liquid
+	if(istype(src,/obj/item/reagent_container/hypospray/autoinjector))
+		liquid = reagents
+	else if(mag)
+		liquid = mag.reagents
+	if(!liquid)
 		to_chat(user, SPAN_DANGER("[src] is empty."))
 		return
-	if (!istype(M))
+	if((!liquid.total_volume))
+		to_chat(user, SPAN_DANGER("[src] is empty."))
+		return
+	if(!istype(M))
 		return
 
 	if(skilllock && !skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_CHEM))
@@ -27,7 +68,7 @@
 		if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, M, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
 			return
 	var/sleeptoxin = 0
-	for(var/datum/reagent/R in reagents.reagent_list)
+	for(var/datum/reagent/R in liquid.reagent_list)
 		if(istype(R, /datum/reagent/toxin/chloralhydrate) || istype(R, /datum/reagent/toxin/stoxin) || istype(R, /datum/reagent/suxamorycin))
 			sleeptoxin = 1
 			break
@@ -50,11 +91,10 @@
 	to_chat(M, SPAN_WARNING("You feel a tiny prick!"))
 	playsound(loc, 'sound/items/hypospray.ogg', 50, 1)
 
-	src.reagents.reaction(M, INGEST)
+	liquid.reaction(M, INGEST)
 	if(M.reagents)
-
 		var/list/injected = list()
-		for(var/datum/reagent/R in src.reagents.reagent_list)
+		for(var/datum/reagent/R in liquid.reagent_list)
 			injected += R.name
 			R.last_source_mob = user
 		var/contained = english_list(injected)
@@ -62,8 +102,8 @@
 		user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used the [src.name] to inject [key_name(M)]. Reagents: [contained]</font>")
 		msg_admin_attack("[key_name(user)] injected [key_name(M)] with [src.name] (REAGENTS: [contained]) (INTENT: [uppertext(user.a_intent)]) in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
 
-		var/trans = reagents.trans_to(M, amount_per_transfer_from_this)
-		to_chat(user, SPAN_NOTICE(" [trans] units injected. [reagents.total_volume] units remaining in [src]."))
+		var/trans = liquid.trans_to(M, amount_per_transfer_from_this)
+		to_chat(user, SPAN_NOTICE(" [trans] units injected. [liquid.total_volume] units remaining in [src]."))
 
 	return 1
 
@@ -73,5 +113,13 @@
 
 /obj/item/reagent_container/hypospray/tricordrazine/New()
 	..()
-	reagents.add_reagent("tricordrazine", 30)
+	mag = new /obj/item/reagent_container/glass/beaker/vial/tricordrazine(src)
 
+/obj/item/reagent_container/hypospray/sedative
+	name = "Sedative Hypospray"
+	desc = "The DeForest Medical Corporation hypospray is a sterile, air-needle autoinjector for rapid administration of drugs to patients. Contains sedatives."
+	volume = 30
+
+/obj/item/reagent_container/hypospray/sedative/New()
+	..()
+	mag = new /obj/item/reagent_container/glass/beaker/vial/sedative(src)

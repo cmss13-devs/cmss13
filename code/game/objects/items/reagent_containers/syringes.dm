@@ -418,6 +418,16 @@
 		mode = SYRINGE_INJECT
 		update_icon()
 
+/obj/item/reagent_container/syringe/counteragent
+	name = "\improper syringe (Counteragent)"
+	desc = "Contains special antiviral counteragents."
+
+/obj/item/reagent_container/syringe/counteragent/New()
+		..()
+		reagents.add_reagent("vaccine", 15)
+		mode = SYRINGE_INJECT
+		update_icon()
+
 /obj/item/reagent_container/syringe/drugs
 	name = "syringe (drugs)"
 	desc = "Contains aggressive drugs meant for torture."

@@ -52,6 +52,11 @@
 #define CHEM_CLASS_SPECIAL          5 //Chemicals without a recipe and can't be obtained on the Almayer, or requires special components
 #define CHEM_CLASS_ULTRA            6 //Randomly generated chemicals
 
+//chem effect flags, used to quickly check if the mob has a chem that provides a special effect
+#define CHEM_EFFECT_RESIST_FRACTURE		1
+#define CHEM_EFFECT_RESIST_NEURO		2
+#define CHEM_EFFECT_HYPER_THROTTLE		4 //universal understand but not speech
+
 //Blood plasma
 #define PLASMA_PURPLE 			"purpleplasma"
 #define PLASMA_PHEROMONE 		"pheromoneplasma"
@@ -93,6 +98,10 @@
 #define PROPERTY_EMETIC				"emetic"
 #define PROPERTY_PSYCHOSTIMULATING	"psychostimulating"
 #define PROPERTY_ANTIHALLUCINOGENIC	"anti-hallucinogenic"
+#define PROPERTY_EXCRETING			"excreting"
+#define PROPERTY_HYPOMETABOLIC		"hypometabolic"
+#define PROPERTY_HYPERMETABOLIC		"hypermetabolic"
+#define PROPERTY_SEDATIVE			"sedative"
 //Positive
 #define PROPERTY_NUTRITIOUS 		"nutritious"
 #define PROPERTY_ANTITOXIC			"anti-toxic"
@@ -115,6 +124,17 @@
 #define PROPERTY_ANTIPARASITIC		"anti-parasitic"
 //Combo, made by combining other properties
 #define PROPERTY_DEFIBRILLATING		"defibrillating"
+#define PROPERTY_THANATOMETABOL		"thanatometabolizing"
+#define PROPERTY_HYPERDENSIFICATING	"hyperdensificating"
+#define PROPERTY_HYPERTHROTTLING	"hyper throttling"
+#define PROPERTY_NEUROSHIELDING		"neuroshielding"
+#define PROPERTY_ANTIADDICTIVE		"anti-addictive"
+#define PROPERTY_ADDICTIVE			"addictive"
+//Rare, only in gen_tier 3+
+#define PROPERTY_HYPERGENETIC		"hypergenetic"
+#define PROPERTY_BOOSTING			"boosting"
+#define PROPERTY_DNA_DISINTEGRATING	"DNA-Disintegrating"
+#define PROPERTY_REGULATING			"regulating"
 //Admin Only Properties
 #define PROPERTY_CROSSMETABOLIZING	"cross-metabolizing"
 #define PROPERTY_EMBRYONIC			"embryonic"

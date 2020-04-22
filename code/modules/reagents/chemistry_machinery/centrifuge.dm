@@ -90,24 +90,27 @@
 
 	var/initial_reagents = input_container.reagents.reagent_list.len
 	var/list/vials = list()
-	for(var/obj/item/reagent_container/glass/beaker/vial/V in output_container.contents)
+	for(var/obj/item/reagent_container/V in output_container.contents)
 		vials += V
 
 	//Split reagent types best possible, if we have move volume that types available, split volume best possible
 	if(initial_reagents)
+		var/distribute = TRUE
+		if(initial_reagents == 1)
+			distribute = FALSE
 		for(var/datum/reagent/R in input_container.reagents.reagent_list)
 
 			//A filter mechanic for QoL, as you'd never want multiple full vials with the same reagent. Lets players use impure vials as filters.
-			var/filter = 0
-			for(var/obj/item/reagent_container/glass/beaker/vial/V in vials)
-				if(V.reagents.has_reagent(R.id))
+			var/filter = FALSE
+			for(var/obj/item/reagent_container/V in vials)
+				if(distribute && V.reagents.has_reagent(R.id))
 					if(V.reagents.reagent_list.len > 1 || V.reagents.total_volume == V.reagents.maximum_volume) //If the reagent is in an impure vial, or a full vial, we skip it
 						filter = 1
 						break
 			if(filter)
 				continue
 
-			for(var/obj/item/reagent_container/glass/beaker/vial/V in vials)
+			for(var/obj/item/reagent_container/V in vials)
 				//Check the vial
 				if(V.reagents.reagent_list.len > 1) //We don't work with impure vials
 					continue
@@ -126,14 +129,24 @@
 				input_container.reagents.remove_reagent(R.id,amount_to_transfer)
 				V.update_icon()
 
-				break //Continue to next reagent
+				if(distribute)//otherwise we want to fill all
+					break //Continue to next reagent
 
 	//Label the vials
-	for(var/obj/item/reagent_container/glass/beaker/vial/V in vials)
-		if(!(V.reagents.reagent_list.len) || (V.reagents.reagent_list.len > 1))
-			V.name = "vial"
-		else
-			V.name = "vial (" + V.reagents.reagent_list[1].name + ")"
+	for(var/obj/item/reagent_container/V in vials)
+		if(istype(V,/obj/item/reagent_container/hypospray/autoinjector))
+			var/obj/item/reagent_container/hypospray/autoinjector/A = V
+			if(!(A.reagents.reagent_list.len) || (A.reagents.reagent_list.len > 1))
+				A.name = "autoinjector"
+			else
+				A.name = "autoinjector (" + A.reagents.reagent_list[1].name + ")"
+				A.uses_left = 3
+				A.update_icon()
+		else	
+			if(!(V.reagents.reagent_list.len) || (V.reagents.reagent_list.len > 1))
+				V.name = "vial"
+			else
+				V.name = "vial (" + V.reagents.reagent_list[1].name + ")"
 
 	input_container.update_icon()
 	output_container.contents = vials

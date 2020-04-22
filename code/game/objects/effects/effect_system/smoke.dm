@@ -319,6 +319,10 @@
 		return
 	if(istype(M.buckled, /obj/structure/bed/nest) && M.status_flags & XENO_HOST)
 		return
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		if(H.chem_effect_flags & CHEM_EFFECT_RESIST_NEURO)
+			return
 
 	var/effect_amt = round(6 + amount*6)
 

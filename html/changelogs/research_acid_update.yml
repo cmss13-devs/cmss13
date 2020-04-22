@@ -1,0 +1,49 @@
+################################
+# Example Changelog File
+#
+# Note: This file, and files beginning with ".", and files that don't end in ".yml" will not be read. If you change this file, you will look really dumb.
+#
+# Your changelog will be merged with a master changelog. (New stuff added only, and only on the date entry for the day it was merged.)
+# When it is, any changes listed below will disappear.
+#
+# Valid Prefixes: 
+#   bugfix
+#   wip (For works in progress)
+#   tweak
+#   soundadd
+#   sounddel
+#   rscadd (general adding of nice things)
+#   rscdel (general deleting of nice things)
+#   imageadd
+#   imagedel
+#   maptweak
+#   spellcheck (typo fixes)
+#   experiment
+#################################
+
+# Your name.  
+author: TobiNerd
+
+# Optional: Remove this file after generating master changelog.  Useful for PR changelogs that won't get used again.
+delete-after: True
+
+# Any changes you've made.  See valid prefix list above.
+# INDENT WITH TWO SPACES.  NOT TABS.  SPACES.
+# SCREW THIS UP AND IT WON'T WORK.
+# Also, all entries are changed into a single [] after a master changelog generation. Just remove the brackets when you add new entries.
+# Please surround your changes in  double quotes ("), as certain characters otherwise screws up compiling. The quotes will not show up in the changelog.
+changes: 
+  - rscadd: "Added a delivery chute in the OT workshop and research lobby that transports items to the requisitions."
+  - rscadd: "Added the Automated Chemical Integrated Delivery harness (A.C.I.D.). This special vest is will progressively scan its wearer for specific health issues and injecting its medicine when the conditions are met. Additionally it will also report the overall health to the wearer. Inspiration from #8988 by Alardun."
+  - rscadd: "The A.C.I.D. harness inject conditions can be configured by using a multitool/security access tuner on the vest."
+  - rscadd: "Research will start with two A.C.I.D. harnesses. More can be assembled by using a wirecutter on a webbing vest containing one healthanalyzer, radio, cable coil, hypospray and a battery."
+  - rscadd: "Added a new type of randomly spawned research note, research grants. Scanning these at the research data terminal will reward research credits."
+  - rscadd: "Added the chemical properties excreting, hypometabolizing, hypermetabolizing, sedative. Inspiration from #8970 by Watermelon914."
+  - rscadd: "Added 10 rare chemical properties. One rare property will now spawn in clearance level 3 and 4 chemicals at a 30% and 100% rate respectively, to make them extra special. Inspiration from #8914 by Watermelon914."
+  - tweak: "Hyposprays now have an internal vial that it uses as a magazine. This can be ejected after unlocking the hypospray with a screwdriver. You can still fill the hypospray directly if it has a vial in it, which will technically just transfer to the vial instead."
+  - tweak: "You can now add autoinjectors to vial boxes. The research centrifuge can now be used to fill autoinjectors. Boxes of empty autoinjectors has been added to research."
+  - tweak: "The research centrifuge will now only fill everything in the centrifuge uniquely if the input container has more than one chemical. Otherwise it will try to fill everything up."
+  - tweak: "Russian Red can no longer be a chemical component. Reported by Jaio Acex, #10603."
+  - tweak: "Made the bonemending property more reliable."
+  - tweak: "The trigger thresholds for mixing explosive and hyperthermic research chemicals is now determined by the OD threshold."
+  - tweak: "Added an alert window to the research data terminal clearance brokerage function to reduce accidental purchases."

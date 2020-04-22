@@ -78,3 +78,48 @@
 	probability = 0
 	max_medics = 2
 	max_heavies = 4
+
+/datum/emergency_call/pmc/chem_retrieval
+	name = "Weston-Yamada PMC (Chemical Investigation Squad)"
+	mob_max = 6
+	probability = 0
+	max_medics = 2
+	max_heavies = 1
+
+/datum/emergency_call/pmc/chem_retrieval/New()
+	..()
+	arrival_message = "[MAIN_SHIP_NAME], this is USCSS Royce. Our squad is boarding to to retrieve all samples of the chemical [objective_info] from your research department. You should already have received a significant sum of money for your department's discovery. In return we ask that you cooperate and provide everything related to [objective_info] to our retrieval team. If you do not cooperate, the team is authorized to use lethal force and terminate the research department."
+	objectives = "Secure all documents, samples and chemicals related to [objective_info] from [MAIN_SHIP_NAME] research department. Assume at least 30 units are located within the department. If they can not make more that should be all. Cooperate with the onboard CL to ensure all who know the complete recipe are kept silenced with a contract of confidentiality. All humans who have ingested the chemical must be brought back dead or alive. Viral scan is required for any humans who is suspected of ingestion. Full termination of the department is authorized if they do not cooperate."
+
+/datum/emergency_call/pmc/chem_retrieval/create_member(datum/mind/M)
+	set waitfor = 0
+	var/turf/spawn_loc = get_spawn_point()
+
+	if(!istype(spawn_loc)) return //Didn't find a useable spawn point.
+
+	var/mob/living/carbon/human/mob = new(spawn_loc)
+	mob.key = M.key
+	if(mob.client) mob.client.change_view(world.view)
+
+	ticker.mode.traitors += mob.mind
+
+	if(!leader)       //First one spawned is always the leader.
+		leader = mob
+		to_chat(mob, SPAN_WARNING(FONT_SIZE_BIG("You are a Weston-Yamada squad leader!")))
+		arm_equipment(mob, "Weston-Yamada PMC (Lead Investigator)", TRUE, TRUE)
+	else if(medics < max_medics)
+		to_chat(mob, SPAN_WARNING(FONT_SIZE_BIG("You are a Weston-Yamada medical investigator!")))
+		arm_equipment(mob, "Weston-Yamada PMC (Medical Investigator)", TRUE, TRUE)
+		medics++
+	else if(heavies < max_heavies)
+		to_chat(mob, SPAN_WARNING(FONT_SIZE_BIG("You are a Weston-Yamada heavy gunner!")))
+		arm_equipment(mob, "Weston-Yamada PMC (Gunner)", TRUE, TRUE)
+		heavies++
+	else
+		to_chat(mob, SPAN_WARNING(FONT_SIZE_BIG("You are a Weston-Yamada detainer!")))
+		arm_equipment(mob, "Weston-Yamada PMC (Detainer)", TRUE, TRUE)
+
+	print_backstory(mob)
+
+	sleep(10)
+	to_chat(M, "<B>Objectives:</b> [objectives]")

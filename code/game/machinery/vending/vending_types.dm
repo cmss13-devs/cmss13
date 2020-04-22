@@ -335,7 +335,7 @@
 					/obj/item/tool/weldingtool = 20,
 					/obj/item/tool/wirecutters = 20,
 					/obj/item/tool/wrench = 20,
-					/obj/item/clothing/accessory/storage/brown_vest = 20,
+					/obj/item/clothing/accessory/storage/black_vest/brown_vest = 20,
 					/obj/item/clothing/gloves/yellow = 20,
 					/obj/item/storage/belt/utility/full = 20)
 	contraband = list(/obj/item/tool/weldingtool/hugetank = 10)

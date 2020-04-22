@@ -269,7 +269,7 @@
 	icon_type = "vial"
 	name = "vial storage box"
 	storage_slots = 6
-	can_hold = list(/obj/item/reagent_container/glass/beaker/vial)
+	can_hold = list(/obj/item/reagent_container/glass/beaker/vial,/obj/item/reagent_container/hypospray/autoinjector)
 	var/start_vials = 6
 	var/is_random
 
@@ -299,6 +299,9 @@
 /obj/item/storage/fancy/vials/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/storage/pouch/vials))
 		var/obj/item/storage/pouch/vials/M = W
+		dump_into(M,user)
+	else if(istype(W, /obj/item/storage/box/autoinjectors))
+		var/obj/item/storage/box/autoinjectors/M = W
 		dump_into(M,user)
 	else
 		return ..()

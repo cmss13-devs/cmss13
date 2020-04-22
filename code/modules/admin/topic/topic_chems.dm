@@ -180,11 +180,11 @@
 						var/list/pool
 						switch(property_type)
 							if("Negative")
-								pool = get_negative_chem_properties(1)
+								pool = get_negative_chem_properties(TRUE,TRUE)
 							if("Neutral")
-								pool = get_neutral_chem_properties(1)
+								pool = get_neutral_chem_properties(TRUE,TRUE)
 							if("Positive")
-								pool = get_positive_chem_properties(1)
+								pool = get_positive_chem_properties(TRUE,TRUE)
 							else
 								response = alert(usr,"No? Then..","Custom reagent [target]","Specific property","Specific number","No more properties")
 						pool = sortAssoc(pool)

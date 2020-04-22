@@ -11,6 +11,14 @@
 		photocopier = locate(/obj/structure/machinery/photocopier,get_step(src, NORTH))
 
 /obj/structure/machinery/computer/research/attackby(obj/item/B, mob/living/user)
+	if(istype(B, /obj/item/paper/research_notes))
+		var/obj/item/paper/research_notes/N = B
+		if(!N.grant)
+			return
+		chemical_research_data.update_credits(N.grant)
+		visible_message(SPAN_NOTICE("[user] scans the [N.name] on the [src], collecting the [N.grant] research credits."))
+		N.grant = 0
+		return
 	if(!istype(B, /obj/item/card/id))
 		return
 	var/obj/item/card/id/card = B
@@ -86,6 +94,8 @@
 		else
 			to_chat(usr, SPAN_WARNING("Printer toner is empty."))
 	else if(href_list["broker_clearance"])
+		if(alert(usr,"The CL can swipe their ID card on the console to increase clearance for free, given enough DEFCON. Are you sure you want to spend research credits to increase the clearance immediately?","Warning","Yes","No") != "Yes")
+			return
 		if(chemical_research_data.clearance_level < 5)
 			var/cost = max(3*(chemical_research_data.clearance_level + 1) - 2*(5 - defcon_controller.current_defcon_level), 1)
 			if(cost <= chemical_research_data.rsc_credits)

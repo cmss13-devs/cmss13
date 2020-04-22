@@ -562,7 +562,7 @@
 		list("ACCESSORIES", 0, null, null, null),
 		list("Shoulder holster", 0, /obj/item/clothing/accessory/holster, MARINE_CAN_BUY_ACCESSORY, "black"),
 		list("Webbing", 0, /obj/item/clothing/accessory/storage/webbing, MARINE_CAN_BUY_ACCESSORY, "black"),
-		list("Brown webbing vest", 0, /obj/item/clothing/accessory/storage/brown_vest, MARINE_CAN_BUY_ACCESSORY, "black"),
+		list("Brown webbing vest", 0, /obj/item/clothing/accessory/storage/black_vest/brown_vest, MARINE_CAN_BUY_ACCESSORY, "black"),
 		list("Black webbing vest", 0, /obj/item/clothing/accessory/storage/black_vest, MARINE_CAN_BUY_ACCESSORY, "black"),
 
 		list("MASKS", 0, null, null, null),
@@ -623,7 +623,7 @@
 		list("ACCESSORIES", 0, null, null, null),
 		list("Shoulder holster", 0, /obj/item/clothing/accessory/holster, MARINE_CAN_BUY_ACCESSORY, "black"),
 		list("Webbing", 0, /obj/item/clothing/accessory/storage/webbing, MARINE_CAN_BUY_ACCESSORY, "black"),
-		list("Brown webbing vest", 0, /obj/item/clothing/accessory/storage/brown_vest, MARINE_CAN_BUY_ACCESSORY, "black"),
+		list("Brown webbing vest", 0, /obj/item/clothing/accessory/storage/black_vest/brown_vest, MARINE_CAN_BUY_ACCESSORY, "black"),
 		list("Black webbing vest", 0, /obj/item/clothing/accessory/storage/black_vest, MARINE_CAN_BUY_ACCESSORY, "black"),
 
 		list("MASKS", 0, null, null, null),
@@ -693,7 +693,7 @@
 		list("ACCESSORIES", 0, null, null, null),
 		list("Shoulder holster", 0, /obj/item/clothing/accessory/holster, MARINE_CAN_BUY_ACCESSORY, "black"),
 		list("Webbing", 0, /obj/item/clothing/accessory/storage/webbing, MARINE_CAN_BUY_ACCESSORY, "black"),
-		list("Brown webbing vest", 0, /obj/item/clothing/accessory/storage/brown_vest, MARINE_CAN_BUY_ACCESSORY, "black"),
+		list("Brown webbing vest", 0, /obj/item/clothing/accessory/storage/black_vest/brown_vest, MARINE_CAN_BUY_ACCESSORY, "black"),
 		list("Black webbing vest", 0, /obj/item/clothing/accessory/storage/black_vest, MARINE_CAN_BUY_ACCESSORY, "black"),
 
 		list("MASKS", 0, null, null, null),
@@ -765,7 +765,7 @@
 		list("ACCESSORIES", 0, null, null, null),
 		list("Shoulder holster", 0, /obj/item/clothing/accessory/holster, MARINE_CAN_BUY_ACCESSORY, "black"),
 		list("Webbing", 0, /obj/item/clothing/accessory/storage/webbing, MARINE_CAN_BUY_ACCESSORY, "black"),
-		list("Brown webbing vest", 0, /obj/item/clothing/accessory/storage/brown_vest, MARINE_CAN_BUY_ACCESSORY, "black"),
+		list("Brown webbing vest", 0, /obj/item/clothing/accessory/storage/black_vest/brown_vest, MARINE_CAN_BUY_ACCESSORY, "black"),
 		list("Black webbing vest", 0, /obj/item/clothing/accessory/storage/black_vest, MARINE_CAN_BUY_ACCESSORY, "black"),
 
 		list("MASKS", 0, null, null, null),
@@ -813,7 +813,7 @@
 
 		list("WEBBING (choose 1)", 0, null, null, null),
 		list("Black webbing vest", 0, /obj/item/clothing/accessory/storage/black_vest, MARINE_CAN_BUY_ACCESSORY, "black"),
-		list("Brown webbing vest", 0, /obj/item/clothing/accessory/storage/brown_vest, MARINE_CAN_BUY_ACCESSORY, "black"),
+		list("Brown webbing vest", 0, /obj/item/clothing/accessory/storage/black_vest/brown_vest, MARINE_CAN_BUY_ACCESSORY, "black"),
 		list("Webbing", 0, /obj/item/clothing/accessory/storage/webbing, MARINE_CAN_BUY_ACCESSORY, "black"),
 
 		list("SHOES (choose 1)", 0, null, null, null),
@@ -894,7 +894,7 @@
 		list("ACCESSORIES", 0, null, null, null),
 		list("Shoulder holster", 0, /obj/item/clothing/accessory/holster, MARINE_CAN_BUY_ACCESSORY, "black"),
 		list("Webbing", 0, /obj/item/clothing/accessory/storage/webbing, MARINE_CAN_BUY_ACCESSORY, "black"),
-		list("Brown webbing vest", 0, /obj/item/clothing/accessory/storage/brown_vest, MARINE_CAN_BUY_ACCESSORY, "black"),
+		list("Brown webbing vest", 0, /obj/item/clothing/accessory/storage/black_vest/brown_vest, MARINE_CAN_BUY_ACCESSORY, "black"),
 		list("Black webbing vest", 0, /obj/item/clothing/accessory/storage/black_vest, MARINE_CAN_BUY_ACCESSORY, "black"),
 
 		list("HELMET (choose 1)", 0, null, null, null),
@@ -1694,7 +1694,7 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 
 		list("Webbings", -1, null, null),
 		list("Black Webbing Vest", round(scale * 2), /obj/item/clothing/accessory/storage/black_vest, "black"),
-		list("Brown Webbing Vest", round(scale * 2), /obj/item/clothing/accessory/storage/brown_vest, "black"),
+		list("Brown Webbing Vest", round(scale * 2), /obj/item/clothing/accessory/storage/black_vest/brown_vest, "black"),
 		list("Webbing", round(scale * 5), /obj/item/clothing/accessory/storage/webbing, "black"),
 
 		list("Pouches", -1, null, null),
@@ -1768,7 +1768,7 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 		list("M276 Pattern General Pistol Holster Rig", round(scale * 10), /obj/item/storage/belt/gun/m4a3, "black"),
 
 		list("Webbings", -1, null, null),
-		list("Brown Webbing Vest", round(scale * 2), /obj/item/clothing/accessory/storage/brown_vest, "black"),
+		list("Brown Webbing Vest", round(scale * 2), /obj/item/clothing/accessory/storage/black_vest/brown_vest, "black"),
 		list("Webbing", round(scale * 3), /obj/item/clothing/accessory/storage/webbing, "black"),
 
 		list("Pouches", -1, null, null),

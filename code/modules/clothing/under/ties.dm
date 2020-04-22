@@ -528,7 +528,40 @@
 	icon_state = "vest_black"
 	slots = 5
 
-/obj/item/clothing/accessory/storage/brown_vest
+/obj/item/clothing/accessory/storage/black_vest/attackby(obj/item/B, mob/living/user)
+	if(iswirecutter(B) && skillcheck(user, SKILL_RESEARCH, SKILL_RESEARCH_TRAINED))
+		var/components = 0
+		var/obj/item/reagent_container/glass/beaker/vial
+		var/obj/item/cell/battery
+		for(var/obj/item in hold.contents)
+			if(istype(item, /obj/item/device/radio) || istype(item, /obj/item/stack/cable_coil) || istype(item, /obj/item/device/healthanalyzer))
+				components++
+			else if(istype(item, /obj/item/reagent_container/hypospray) && !istype(item, /obj/item/reagent_container/hypospray/autoinjector))
+				var/obj/item/reagent_container/hypospray/H = item
+				if(H.mag)
+					vial = H.mag
+				components++
+			else if(istype(item, /obj/item/cell))
+				battery = item
+				components++
+			else
+				components--
+		if(components == 5)
+			var/obj/item/clothing/accessory/storage/black_vest/acid_harness/AH
+			if(istype(src, /obj/item/clothing/accessory/storage/black_vest/brown_vest))
+				AH = new /obj/item/clothing/accessory/storage/black_vest/acid_harness/brown(get_turf(loc))
+			else
+				AH = new /obj/item/clothing/accessory/storage/black_vest/acid_harness(get_turf(loc))
+			if(vial)
+				AH.vial = vial
+				AH.hold.handle_item_insertion(vial)
+			AH.battery = battery
+			AH.hold.handle_item_insertion(battery)
+			qdel(src)
+			return
+	. = ..()
+
+/obj/item/clothing/accessory/storage/black_vest/brown_vest
 	name = "brown webbing vest"
 	desc = "Worn brownish synthcotton vest with lots of pockets to unload your hands."
 	icon_state = "vest_brown"

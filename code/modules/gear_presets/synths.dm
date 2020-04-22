@@ -71,7 +71,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/brown, WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full, WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow, WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/brown_vest, WEAR_ACCESSORY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/black_vest/brown_vest, WEAR_ACCESSORY)
 	H.equip_to_slot_or_del(new backItem, WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/construction/full, WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/medium, WEAR_L_STORE)

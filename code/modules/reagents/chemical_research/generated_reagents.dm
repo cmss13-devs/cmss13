@@ -149,11 +149,33 @@
 	holder.remove_reagent(id, custom_metabolism) //By default it slowly disappears.
 	
 	if((alien == IS_XENOS || alien == IS_YAUTJA || alien == IS_HORROR) && !(properties[PROPERTY_CROSSMETABOLIZING])) return
-	if(properties[PROPERTY_CRYOMETABOLIZING] && M.bodytemperature > 170) return
+	
+	var/boost = 0
+	var/effectiveness = 1
+	var/is_OD = FALSE
+	var/is_COD = FALSE
+	var/can_OD = TRUE
+	
+	//Pre-metabolis effects here
+	if(has_property(PROPERTY_BOOSTING))//Must go first before anything
+		boost = properties[PROPERTY_BOOSTING]
+	for(var/P in properties)
+		var/potency = properties[P] * 0.5 + boost
+		switch(P)
+			if(PROPERTY_CRYOMETABOLIZING)
+				if(M.bodytemperature > 170)
+					return
+			if(PROPERTY_THANATOMETABOL)
+				if(M.oxyloss <  50 && round(M.blood_volume) > BLOOD_VOLUME_BAD)
+					return
+				effectiveness = max(0.1 * potency, 0.1)
+			if(PROPERTY_REGULATING)
+				can_OD = FALSE
+			if(PROPERTY_EXCRETING)
+				holder.remove_all_type(/datum/reagent,2*potency)
+				return
 
-	var/is_OD
-	var/is_COD
-	if(overdose && volume >= overdose)
+	if(overdose && volume >= overdose && can_OD)
 		M.last_damage_source = "Experimental chemical overdose"
 		M.last_damage_mob = last_source_mob
 		is_OD = 1
@@ -161,12 +183,11 @@
 			is_COD = 1
 
 	for(var/P in properties)
-		
 		if(!is_OD && P in get_negative_chem_properties(1))
 			M.last_damage_source = "Experimental chemical overdose"
 			M.last_damage_mob = last_source_mob
 
-		var/potency = properties[P] * 0.5
+		var/potency = effectiveness * (properties[P] * 0.5 + boost)
 		if(!potency) continue
 		switch(P)
 /////////Negative Properties/////////
@@ -315,6 +336,24 @@
 							apply_neuro(M, 2*potency, FALSE)
 				else
 					M.adjustBrainLoss(1.75*potency)
+			if(PROPERTY_ADDICTIVE)
+				var/has_addiction
+				for(var/datum/disease/addiction/D in M.viruses)
+					if(D.chemical_id == id)
+						D.handle_chem()
+						has_addiction = TRUE
+						break
+				if(!has_addiction)
+					M.contract_disease(new /datum/disease/addiction(id,potency), 1)
+				if(is_OD)
+					M.adjustBrainLoss(potency)
+					if(is_COD)
+						M.disabilities |= NERVOUS
+			if(PROPERTY_DNA_DISINTEGRATING)
+				M.adjustCloneLoss(10*potency)
+				if(ishuman(M) && M.cloneloss >= 190)
+					var/mob/living/carbon/human/H = M
+					H.contract_disease(new /datum/disease/xeno_transformation(0),1) //This is the real reason PMCs are being sent to retrieve it.
 /////////Neutral Properties///////// 
 			if(PROPERTY_KETOGENIC) //weight loss
 				if(is_OD)
@@ -340,6 +379,10 @@
 				else
 					M.reagent_pain_modifier += 50*potency
 			if(PROPERTY_NEUROINHIBITING) //disabilities
+				if(ishuman(M))
+					var/mob/living/carbon/human/H = M
+					if(H.chem_effect_flags & CHEM_EFFECT_RESIST_NEURO)
+						continue
 				if(is_OD)
 					M.adjustBrainLoss(potency)
 					M.disabilities |= NERVOUS
@@ -354,6 +397,10 @@
 				if(potency > 3)
 					M.sdisabilities |= MUTE
 			if(PROPERTY_ALCOHOLIC) //drunkness
+				if(ishuman(M))
+					var/mob/living/carbon/human/H = M
+					if(H.chem_effect_flags & CHEM_EFFECT_RESIST_NEURO)
+						continue
 				if(is_OD)
 					M.confused += min(M.confused + potency*2,20*potency)
 					M.drowsyness += min(M.drowsyness + potency*2,30*potency)
@@ -524,6 +571,31 @@
 					var/mob/living/carbon/C = M
 					if(C.blood_volume < BLOOD_VOLUME_NORMAL)
 						C.blood_volume = max(0.2 * potency,BLOOD_VOLUME_NORMAL)
+			if(PROPERTY_SEDATIVE)
+				M.paralyzed += potency
+				if(M.paralyzed > potency * 2)
+					M.AdjustSleeping(potency)
+				if(prob(10)) M.emote("yawn")
+				if(is_OD)
+					M.AdjustKnockedout(potency)
+					if(is_COD)
+						M.adjustOxyLoss(5*potency)
+			if(PROPERTY_HYPERTHROTTLING)
+				if(!ishuman(M))
+					continue
+				if(is_OD)
+					M.adjustBrainLoss(3*potency)
+					if(is_COD)
+						M.KnockOut(potency*2)
+				var/mob/living/carbon/human/H = M
+				M.reagent_move_delay_modifier += 4*potency
+				M.recalculate_move_delay = TRUE
+				M.druggy = min(M.druggy + potency, 10)
+				if(H.chem_effect_flags & CHEM_EFFECT_HYPER_THROTTLE)
+					continue
+				H.chem_effect_flags |= CHEM_EFFECT_HYPER_THROTTLE
+				to_chat(M, SPAN_NOTICE("You feel like you're in a dream. It is as if the world is standing still."))
+				M.universal_understand = TRUE //Brain is working so fast it can understand the intension of everything it hears
 /////////Positive Properties///////// 
 			if(PROPERTY_ANTITOXIC) //toxin healing
 				if(is_OD)
@@ -659,6 +731,8 @@
 								M.adjustOxyLoss(5*potency)
 						else
 							L.damage = max(L.damage - 0.5*potency, 0)
+							if(L.damage < 1)
+								L.rejuvenate()
 							H.adjustOxyLoss(-2*potency)
 			if(PROPERTY_OCULOPEUTIC) //eye healing
 				if(ishuman(M))
@@ -704,23 +778,22 @@
 							if(is_COD)
 								L.fracture()
 						else
-							if(prob(10*potency))
-								if(L.knitting_time > 0) break // only one knits at a time
-								switch(L.name)
-									if("groin","chest")
-										L.time_to_knit = 1200 // 10 mins
-									if("head")
-										L.time_to_knit = 1200 // 10 mins
-									if("l_hand","r_hand","r_foot","l_foot")
-										L.time_to_knit = 600 // 5 mins
-									if("r_leg","r_arm","l_leg","l_arm")
-										L.time_to_knit = 600 // 5 mins
-								if(L.time_to_knit && (L.status & LIMB_BROKEN))
-									if(L.knitting_time == -1 && (L.status & LIMB_SPLINTED))
-										var/total_knitting_time = world.time + L.time_to_knit - 150*potency
-										L.knitting_time = total_knitting_time
-										L.start_processing()
-										to_chat(M, SPAN_NOTICE("You feel the bones in your [L.display_name] starting to knit together."))			
+							if(L.knitting_time > 0) break // only one knits at a time
+							switch(L.name)
+								if("groin","chest")
+									L.time_to_knit = 1200 // 12 mins
+								if("head")
+									L.time_to_knit = 1000 // 10 mins
+								if("l_hand","r_hand","r_foot","l_foot")
+									L.time_to_knit = 300 // 3 mins
+								if("r_leg","r_arm","l_leg","l_arm")
+									L.time_to_knit = 600 // 6 mins
+							if(L.time_to_knit && (L.status & LIMB_BROKEN))
+								if(L.knitting_time == -1 && (L.status & LIMB_SPLINTED))
+									var/total_knitting_time = world.time + L.time_to_knit - max(150*potency, L.time_to_knit + 50)
+									L.knitting_time = total_knitting_time
+									L.start_processing()
+									to_chat(M, SPAN_NOTICE("You feel the bones in your [L.display_name] starting to knit together."))			
 			if(PROPERTY_FLUXING) //dissolves metal shrapnel
 				if(is_OD)
 					M.apply_damages(2*potency, 0, 2*potency)
@@ -760,6 +833,59 @@
 										H.vomit()
 									else
 										A.counter = 90
+			if(PROPERTY_HYPERGENETIC) //brute healing on everything
+				var/mob/living/carbon/human/H = M
+				if(!H)
+					continue
+				for(var/datum/internal_organ/O in H.internal_organs)
+					if(is_OD)
+						O.damage += 2*potency
+						if(is_COD)
+							O.damage += 4*potency
+					else
+						O.heal_damage(potency)
+				if(is_OD)
+					M.adjustCloneLoss(2*potency)
+					if(is_COD)
+						M.take_limb_damage(2*potency,2*potency)
+					continue
+				else
+					M.heal_limb_damage(0.2+potency)
+			if(PROPERTY_HYPERDENSIFICATING)
+				if(!ishuman(M))
+					continue
+				var/mob/living/carbon/human/H = M
+				if(H.chem_effect_flags & CHEM_EFFECT_RESIST_FRACTURE)
+					continue
+				H.chem_effect_flags |= CHEM_EFFECT_RESIST_FRACTURE
+				to_chat(M, SPAN_NOTICE("Your body feels incredibly tense."))
+			if(PROPERTY_NEUROSHIELDING)
+				if(!ishuman(M))
+					continue
+				var/mob/living/carbon/human/H = M
+				if(is_OD)
+					var/datum/internal_organ/liver/L = H.internal_organs_by_name["liver"]
+					L.damage += potency
+					if(is_COD)
+						L.damage += 2*potency
+				if(H.chem_effect_flags & CHEM_EFFECT_RESIST_NEURO)
+					continue
+				H.chem_effect_flags |= CHEM_EFFECT_RESIST_NEURO
+				to_chat(M, SPAN_NOTICE("Your skull feels incredibly thick."))
+				M.dazed = 0
+			if(PROPERTY_ANTIADDICTIVE)
+				if(is_OD)
+					M.adjustBrainLoss(2*potency)
+					if(is_COD)
+						M.hallucination = max(M.hallucination, potency)
+				for(var/datum/disease/addiction/D in M.viruses)
+					if(potency >= 4)
+						D.cure()
+						continue
+					D.withdrawal_progression -= 2*potency
+					D.addiction_progression -= 2*potency
+					if(D.addiction_progression < potency)
+						D.cure()
 			//effects while dead are handled by handle_necro_chemicals_in_body()
 			if(PROPERTY_NEUROCRYOGENIC) //slows brain death
 				if(is_OD)
@@ -853,8 +979,8 @@
 			continue
 		switch(P)
 			if(PROPERTY_HYPERTHERMIC)
-				if(created_volume > (created_volume * 5) / potency)
+				if(created_volume > R.overdose)
 					holder.trigger_volatiles = TRUE
 			if(PROPERTY_EXPLOSIVE)
-				if(created_volume > (created_volume * 5) / potency)
+				if(created_volume > R.overdose)
 					holder.trigger_volatiles = TRUE

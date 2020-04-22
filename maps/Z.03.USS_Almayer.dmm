@@ -6360,13 +6360,14 @@
 "apR" = (
 /obj/structure/rack,
 /obj/item/storage/box/beakers{
-	pixel_y = -3
-	},
-/obj/item/storage/box/beakers{
 	pixel_y = 12
 	},
 /obj/item/storage/box/sprays{
 	pixel_y = 5
+	},
+/obj/item/storage/box/autoinjectors{
+	pixel_x = 1;
+	pixel_y = -3
 	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green";
@@ -9195,6 +9196,10 @@
 /obj/item/reagent_container/glass/beaker{
 	pixel_x = 8
 	},
+/obj/structure/disposalpipe/down/almayer{
+	dir = 4;
+	id = "almayerlink_ot_med"
+	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_corner";
 	tag = "icon-sterile"
@@ -11030,6 +11035,7 @@
 /area/almayer/medical/morgue)
 "aAI" = (
 /obj/structure/machinery/light,
+/obj/structure/machinery/iv_drip,
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "sterile_green_corner";
@@ -20040,6 +20046,13 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull)
+"bff" = (
+/obj/structure/disposalpipe/down/almayer{
+	dir = 2;
+	id = "almayerlink_med_req"
+	},
+/turf/closed/wall/almayer/white,
+/area/almayer/medical/medical_science)
 "bfj" = (
 /obj/structure/barricade/handrail{
 	dir = 4
@@ -30470,6 +30483,9 @@
 /area/almayer/squads/req)
 "bNB" = (
 /obj/structure/table/almayer,
+/obj/item/storage/box/wy_mre,
+/obj/effect/spawner/random/tool,
+/obj/item/tool/hand_labeler,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -32420,6 +32436,16 @@
 /obj/item/storage/firstaid/fire{
 	pixel_x = -6
 	},
+/obj/structure/machinery/disposal{
+	density = 0;
+	desc = "A pneumatic delivery unit. Sends items to the requisitions.";
+	icon_state = "delivery_engi";
+	name = "Requisitions Delivery Unit";
+	pixel_y = 28
+	},
+/obj/structure/disposalpipe/trunk{
+	dir = 1
+	},
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "orange";
@@ -33323,6 +33349,11 @@
 	},
 /area/almayer/engineering/engineering_workshop/hangar)
 "bWU" = (
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	name = "General Listening Channel";
+	pixel_y = -28
+	},
 /turf/open/floor/almayer{
 	dir = 10;
 	icon_state = "orange";
@@ -39593,10 +39624,18 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull)
 "doP" = (
-/obj/structure/table/almayer,
-/obj/item/storage/box/wy_mre,
-/obj/effect/spawner/random/tool,
-/obj/item/tool/hand_labeler,
+/obj/structure/disposaloutlet{
+	density = 0;
+	desc = "An outlet for the pneumatic delivery system.";
+	icon_state = "delivery_outlet";
+	name = "delivery outlet";
+	pixel_x = -1;
+	pixel_y = 25;
+	range = 0
+	},
+/obj/structure/disposalpipe/trunk{
+	dir = 1
+	},
 /turf/open/floor/almayer{
 	icon_state = "cargo";
 	tag = "icon-bluecorner (NORTH)"
@@ -41988,6 +42027,13 @@
 	tag = "icon-silver (NORTH)"
 	},
 /area/almayer/command/computerlab)
+"gkg" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
+/turf/closed/wall/almayer,
+/area/almayer/squads/req)
 "gkK" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer,
@@ -44270,10 +44316,19 @@
 "jgA" = (
 /obj/structure/table/almayer,
 /obj/item/storage/box/monkeycubes{
-	pixel_x = 4;
-	pixel_y = 6
+	pixel_x = 7;
+	pixel_y = 7
+	},
+/obj/item/storage/box/autoinjectors{
+	pixel_x = -4;
+	pixel_y = 7
 	},
 /obj/item/storage/box/monkeycubes{
+	pixel_x = 4;
+	pixel_y = -1
+	},
+/obj/item/storage/box/autoinjectors{
+	pixel_x = -9;
 	pixel_y = -1
 	},
 /turf/open/floor/almayer{
@@ -44971,8 +45026,8 @@
 /area/almayer/hallways/vehiclehangar)
 "jZs" = (
 /obj/structure/table/almayer,
-/obj/item/storage/syringe_case,
-/obj/item/reagent_container/dropper,
+/obj/item/clothing/accessory/storage/black_vest/acid_harness,
+/obj/item/clothing/accessory/storage/black_vest/acid_harness,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side";
 	tag = "icon-sterile"
@@ -45926,6 +45981,9 @@
 /area/almayer/powered)
 "lmw" = (
 /obj/structure/closet/secure_closet/medical1,
+/obj/structure/machinery/power/apc/almayer{
+	dir = 1
+	},
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_corner";
@@ -46832,6 +46890,13 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig)
+"mod" = (
+/obj/structure/disposalpipe/up/almayer{
+	dir = 8;
+	id = "almayerlink_ot_med"
+	},
+/turf/closed/wall/almayer,
+/area/almayer/engineering/engineering_workshop/hangar)
 "moh" = (
 /obj/structure/table/almayer,
 /obj/item/tool/pen,
@@ -48161,13 +48226,19 @@
 "nGr" = (
 /obj/structure/table/almayer,
 /obj/item/tool/pen{
+	pixel_x = 5;
 	pixel_y = 8
 	},
 /obj/structure/machinery/power/apc/almayer{
 	dir = 1
 	},
 /obj/item/paper_bin/wy{
+	pixel_x = 5;
 	pixel_y = 7
+	},
+/obj/item/tool/hand_labeler{
+	pixel_x = -8;
+	pixel_y = 3
 	},
 /turf/open/floor/almayer{
 	dir = 1;
@@ -48429,6 +48500,13 @@
 /obj/effect/landmark/shuttle_loc/marine_crs/dropship,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/starboard_hallway)
+"obo" = (
+/obj/structure/disposalpipe/up/almayer{
+	dir = 8;
+	id = "almayerlink_med_req"
+	},
+/turf/closed/wall/almayer,
+/area/almayer/squads/req)
 "obQ" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
@@ -48932,9 +49010,8 @@
 	},
 /area/almayer/command/cic)
 "oQL" = (
-/obj/structure/table/almayer,
 /obj/structure/machinery/light,
-/obj/item/tool/wrench,
+/obj/structure/table/almayer,
 /obj/item/tool/screwdriver,
 /obj/item/clothing/glasses/welding,
 /turf/open/floor/almayer{
@@ -50207,6 +50284,15 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull)
+"qvh" = (
+/obj/structure/reagent_dispensers/watertank{
+	anchored = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
+	},
+/area/almayer/hallways/repair_bay)
 "qvy" = (
 /obj/structure/machinery/cryopod,
 /turf/open/floor/almayer{
@@ -50710,7 +50796,14 @@
 /turf/open/floor/almayer,
 /area/almayer/living/tankerbunks)
 "rhO" = (
-/obj/structure/machinery/power/apc/almayer{
+/obj/structure/machinery/disposal{
+	density = 0;
+	desc = "A pneumatic delivery unit. Sends items to the requisitions.";
+	icon_state = "delivery_med";
+	name = "Requisitions Delivery Unit";
+	pixel_y = 28
+	},
+/obj/structure/disposalpipe/trunk{
 	dir = 1
 	},
 /turf/open/floor/almayer{
@@ -50773,11 +50866,21 @@
 /area/almayer/shipboard/brig_cells)
 "rjF" = (
 /obj/structure/table/almayer,
-/obj/item/device/mass_spectrometer{
-	pixel_x = 6
+/obj/item/cell/high{
+	pixel_x = 8;
+	pixel_y = -2
 	},
-/obj/item/tool/hand_labeler{
-	pixel_x = -6
+/obj/item/cell/high{
+	pixel_x = 8;
+	pixel_y = 8
+	},
+/obj/item/cell/high{
+	pixel_x = -8;
+	pixel_y = 8
+	},
+/obj/item/cell/high{
+	pixel_x = -8;
+	pixel_y = -2
 	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side";
@@ -50796,6 +50899,15 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/hallways/starboard_hallway)
+"rku" = (
+/obj/structure/disposalpipe/junction{
+	dir = 1;
+	icon_state = "pipe-j2"
+	},
+/turf/closed/wall/almayer/white{
+	tiles_with = list(/turf/closed/wall/almayer/white,/turf/closed/wall/almayer/outer)
+	},
+/area/almayer/medical/medical_science)
 "rkz" = (
 /obj/structure/pipes/vents/scrubber,
 /turf/open/floor/almayer,
@@ -51026,6 +51138,14 @@
 	tag = "icon-red"
 	},
 /area/almayer/shipboard/weapon_room)
+"rBb" = (
+/obj/structure/pipes/standard/manifold/hidden/supply,
+/obj/structure/disposalpipe/junction{
+	dir = 4;
+	icon_state = "pipe-j2"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hallways/port_hallway)
 "rBk" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/vents/pump{
@@ -51161,17 +51281,6 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/command/cichallway)
-"rGL" = (
-/obj/structure/disposalpipe/junction{
-	dir = 4;
-	icon_state = "pipe-j2"
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4;
-	tag = "icon-intact-supply (EAST)"
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/hallways/port_hallway)
 "rGR" = (
 /obj/structure/filingcabinet/filingcabinet,
 /turf/open/floor/almayer{
@@ -51368,6 +51477,7 @@
 /area/almayer/shipboard/brig)
 "rSD" = (
 /obj/structure/machinery/light,
+/obj/structure/machinery/iv_drip,
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_corner";
@@ -51408,6 +51518,12 @@
 	tag = "icon-silver"
 	},
 /area/almayer/command/computerlab)
+"rWb" = (
+/obj/structure/disposalpipe/segment,
+/turf/closed/wall/almayer/white{
+	tiles_with = list(/turf/closed/wall/almayer/white,/turf/closed/wall/almayer/outer)
+	},
+/area/almayer/medical/medical_science)
 "rXk" = (
 /obj/structure/table/almayer,
 /obj/structure/machinery/door/window/brigdoor/northright{
@@ -52117,8 +52233,14 @@
 	},
 /area/almayer/shipboard/brig)
 "sNz" = (
-/obj/structure/machinery/iv_drip,
 /obj/structure/machinery/light,
+/obj/structure/table/almayer,
+/obj/item/device/mass_spectrometer{
+	pixel_x = -4
+	},
+/obj/item/device/multitool{
+	pixel_x = 8
+	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side";
 	tag = "icon-sterile"
@@ -53449,6 +53571,13 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/engineering/engineering_workshop/hangar)
+"urx" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
+/turf/closed/wall/almayer,
+/area/almayer/engineering/engineering_workshop/hangar)
 "usf" = (
 /obj/structure/barricade/handrail{
 	dir = 4
@@ -54097,8 +54226,9 @@
 	dir = 1;
 	tag = "icon-map-supply (NORTH)"
 	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
+/obj/structure/disposalpipe/junction{
+	dir = 4;
+	tag = "icon-pipe-j1 (EAST)"
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/starboard_hallway)
@@ -76410,7 +76540,7 @@ bcc
 bHB
 btO
 aTc
-cmp
+urx
 bTL
 gwW
 dJa
@@ -76613,7 +76743,7 @@ bcl
 bHB
 btO
 aTc
-cmp
+mod
 siH
 plv
 cmp
@@ -81080,7 +81210,7 @@ bHB
 btO
 aTc
 cdA
-ceS
+qvh
 bJo
 cgP
 cgT
@@ -87166,7 +87296,7 @@ sMX
 hKw
 mZs
 cvY
-lAO
+rBb
 buH
 bJt
 cfg
@@ -89693,9 +89823,9 @@ ajo
 ajo
 ajo
 aAS
-ajo
-amk
-amk
+bff
+rku
+rWb
 rhO
 qqQ
 aoM
@@ -90820,7 +90950,7 @@ yfd
 vJb
 aaV
 buH
-rGL
+hop
 buH
 bJt
 ciX
@@ -97503,7 +97633,7 @@ bDZ
 bCB
 bKA
 bLX
-mCo
+bdl
 bmD
 bNP
 bmD
@@ -97511,7 +97641,7 @@ bNP
 bmD
 bNP
 bmD
-mCo
+gkg
 doP
 bKA
 bCB
@@ -97714,7 +97844,7 @@ bNP
 bmD
 bNP
 byu
-bdl
+obo
 tiE
 bYv
 tiE

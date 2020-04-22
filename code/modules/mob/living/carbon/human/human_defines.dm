@@ -83,6 +83,9 @@
 	var/list/limbs = list()
 	var/list/internal_organs_by_name = list() // so internal organs have less ickiness too
 
+	var/chem_effect_flags = 0
+	var/chem_effect_reset_time = 8
+
 	var/command_aura_available = TRUE // Whether or not you can issue an order
 
 	var/mobility_aura_count = 0 //Used to track how many auras are affecting the human

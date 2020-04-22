@@ -35,5 +35,8 @@ var/datum/subsystem/xevolution/SSxevolution
 	if(boost_power_new > 20)
 		boost_power_new = 20
 
+	if(boost_power_new < 2 && ticker.game_start_time + world.time < XENO_ROUNDSTART_PROGRESS_TIME_2)
+		boost_power_new = 2
+
 	if(!force_boost_power)
 		boost_power = boost_power_new

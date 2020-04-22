@@ -1474,10 +1474,11 @@
 		var/mob/living/carbon/human/H = M
 		if(H.chem_effect_flags & CHEM_EFFECT_RESIST_NEURO)
 			return
+
 	if(M.knocked_out || pass_down_the_line) //second part is always false, but consistency is a great thing
 		pass_down_the_line = TRUE
 
-	if(!isXeno(M))
+	if(!isXeno(M))		
 		if(insta_neuro)
 			if(M.knocked_down < 3)
 				M.AdjustKnockeddown(1 * power)
@@ -1488,8 +1489,15 @@
 				M.visible_message(SPAN_DANGER("[M] falls limp on the ground."))
 			M.KnockOut(30) //KO them. They already got rekt too much
 			pass_down_the_line = TRUE
+		
+		var/no_clothes_neuro = FALSE
 
-		if(M.dazed || pass_down_the_line)
+		if(ishuman(M))
+			var/mob/living/carbon/human/H = M
+			if((!H.wear_suit || H.wear_suit.slowdown == 0) && H.m_intent == MOVE_INTENT_RUN)
+				no_clothes_neuro = TRUE
+
+		if(M.dazed || pass_down_the_line || no_clothes_neuro)
 			if(M.knocked_down < 5)
 				M.AdjustKnockeddown(1 * power) // KD them a bit more
 				if(!pass_down_the_line)

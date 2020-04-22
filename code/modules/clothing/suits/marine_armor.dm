@@ -980,7 +980,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	icon_state = "clf_2"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN
-	slowdown = 0
+	slowdown = 0.2
 	movement_compensation = SLOWDOWN_ARMOR_MEDIUM
 
 /obj/item/clothing/suit/storage/militia/brace
@@ -989,7 +989,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	icon_state = "clf_3"
 	flags_armor_protection = BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS
 	flags_cold_protection = BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS
-	slowdown = 0
+	slowdown = 0.2
 	movement_compensation = SLOWDOWN_ARMOR_MEDIUM
 
 /obj/item/clothing/suit/storage/militia/partial
@@ -998,7 +998,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	icon_state = "clf_4"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS
-	slowdown = 0
+	slowdown = 0.2
 
 /obj/item/clothing/suit/storage/CMB
 	name = "\improper CMB jacket"

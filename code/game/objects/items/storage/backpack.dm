@@ -388,6 +388,8 @@
 	add_timer(CALLBACK(src, .proc/allow_shooting, H), 5)
 
 /obj/item/storage/backpack/marine/satchel/scout_cloak/proc/allow_shooting(var/mob/living/carbon/human/H)
+	if(camo_active)
+		return
 	H.allow_gun_usage = TRUE
 
 /obj/item/storage/backpack/marine/satchel/scout_cloak/upp

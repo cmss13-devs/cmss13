@@ -1,6 +1,7 @@
 #define TESLA_COIL_FIREDELAY 	20
 #define TESLA_COIL_RANGE 		3
-#define TESLA_COIL_EFFECT 		5
+#define TESLA_COIL_DAZE_EFFECT 		5
+#define TESLA_COIL_SLOW_EFFECT 		3
 
 /obj/structure/machinery/defenses/tesla_coil
 	name = "\improper 21S tesla coil"
@@ -84,8 +85,10 @@
 	for(var/A in atoms)
 		if(isliving(A))
 			var/mob/living/M = A
-			M.AdjustDazed(TESLA_COIL_EFFECT)
-			M.AdjustSuperslowed(TESLA_COIL_EFFECT)
+			if(!check_path(M))
+				continue
+			M.Daze(TESLA_COIL_DAZE_EFFECT)
+			M.Superslow(TESLA_COIL_SLOW_EFFECT)
 		else if(istype(A, /obj/structure/machinery/defenses))
 			var/obj/structure/machinery/defenses/D = A
 			D.power_off()
@@ -99,6 +102,32 @@
 		Beam(A, "electric", 'icons/effects/beam.dmi', 5, 5)
 
 	targets = null
+
+/obj/structure/machinery/defenses/tesla_coil/proc/check_path(var/mob/living/M)
+	if(!istype(M))
+		return FALSE
+
+	var/list/turf/path = getline2(src, M, include_from_atom = FALSE)
+
+	var/blocked = FALSE
+	for(var/turf/T in path)
+		if(T.density || T.opacity)
+			blocked = TRUE
+			break
+
+		for(var/obj/structure/S in T)
+			if(S.opacity)
+				blocked = TRUE
+				break
+
+		for(var/obj/effect/particle_effect/smoke/S in T)
+			blocked = TRUE
+			break
+
+	if(blocked)
+		return FALSE
+
+	return TRUE
 
 /obj/structure/machinery/defenses/tesla_coil/Dispose() //Clear these for safety's sake.
 	if(targets)

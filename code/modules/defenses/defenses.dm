@@ -35,7 +35,12 @@
 /obj/structure/machinery/defenses/examine(mob/user)
 	. = ..()
 	
-	to_chat(user, SPAN_INFO("Multitool is used to disassemble it."))
+	if(ishuman(user))
+		var/message = ""
+		message += SPAN_INFO("Multitool is used to disassemble it.")
+		message += "\n"
+		message += SPAN_INFO("It has [SPAN_HELPFUL("[health]/[health_max]")] health.")
+		to_chat(user, message)
 
 /obj/structure/machinery/defenses/proc/power_on()
 	if(stat == DEFENSE_DAMAGED)

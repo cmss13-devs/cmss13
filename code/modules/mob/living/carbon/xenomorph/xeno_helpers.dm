@@ -16,6 +16,9 @@
 	return FALSE
 
 /mob/living/carbon/Xenomorph/proc/can_destroy_special()
+	if(IS_XENO_LEADER(src))
+		return TRUE
+		
 	return FALSE
 
 /mob/living/carbon/Xenomorph/proc/get_plasma_percentage()

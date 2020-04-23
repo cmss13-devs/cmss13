@@ -194,6 +194,14 @@
 			if(hive.living_xeno_queen)
 				to_chat(src, SPAN_WARNING("There already is a Queen."))
 				return
+		else
+			if(tier == 1 && (((hive.tier_2_xenos.len + hive.tier_3_xenos.len) / totalXenos) * hive.tier_slot_multiplier) >= 0.5)
+				to_chat(src, SPAN_WARNING("The hive cannot support another Tier 2, wait for either more aliens to be born or someone to die."))
+				return
+
+			else if(tier == 2 && ((hive.tier_3_xenos.len / hive.totalXenos.len) * hive.tier_slot_multiplier) >= 0.25)
+				to_chat(src, SPAN_WARNING("The hive cannot support another Tier 3, wait for either more aliens to be born or someone to die."))
+				return
 
 		//From there, the new xeno exists, hopefully
 		var/mob/living/carbon/Xenomorph/new_xeno = new M(get_turf(src), src)

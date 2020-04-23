@@ -122,7 +122,7 @@
 	paygrade = "PMC1"
 	skills = /datum/skills/pmc
 
-/datum/equipment_preset/wy/pmc_standard/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/wy/pmc_detainer/load_gear(mob/living/carbon/human/H)
 
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/PMC, WEAR_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/PMC, WEAR_BODY)
@@ -201,7 +201,7 @@
 	paygrade = "PMC2"
 	skills = /datum/skills/pmc/medic
 
-/datum/equipment_preset/wy/pmc_medic/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/wy/pmc_med_investigator/load_gear(mob/living/carbon/human/H)
 
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/PMC, WEAR_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/PMC, WEAR_BODY)
@@ -231,7 +231,8 @@
 	H.equip_to_slot_or_del(new /obj/item/reagent_container/hypospray/sedative, WEAR_IN_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39/ap, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39/ap, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39/ap, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39/ap, WEAR_IN_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39/ap, WEAR_IN_JACKET)
 
 /*****************************************************************************************************/
 
@@ -278,7 +279,7 @@
 	role_comm_title = "SL"
 	skills = /datum/skills/pmc/SL
 
-/datum/equipment_preset/wy/pmc_leader/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/wy/pmc_lead_investigator/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/PMC, WEAR_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/PMC/leader, WEAR_BODY)

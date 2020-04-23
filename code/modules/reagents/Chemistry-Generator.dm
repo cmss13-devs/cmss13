@@ -251,8 +251,6 @@
 				custom_metabolism = max(custom_metabolism - 0.05 * potency, 0.005)
 			if(PROPERTY_HYPERMETABOLIC)
 				custom_metabolism = custom_metabolism + 0.05 * potency
-			if(PROPERTY_DNA_DISINTEGRATING)
-				objective_value += OBJECTIVE_ABSOLUTE_VALUE * 2
 
 /proc/get_negative_chem_properties(var/special_properties, var/admin_properties, var/normal_properties = TRUE)
 	var/list/negative_properties = list()

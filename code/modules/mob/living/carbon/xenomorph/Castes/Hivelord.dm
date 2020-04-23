@@ -74,16 +74,16 @@
 	drag_delay = 6 //pulling a big dead xeno is hard
 	tier = 2
 	actions = list(
-		/datum/action/xeno_action/xeno_resting,
-		/datum/action/xeno_action/regurgitate,
+		/datum/action/xeno_action/onclick/xeno_resting,
+		/datum/action/xeno_action/onclick/regurgitate,
 		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/plant_weeds,
-		/datum/action/xeno_action/choose_resin,
+		/datum/action/xeno_action/onclick/plant_weeds,
+		/datum/action/xeno_action/onclick/choose_resin,
 		/datum/action/xeno_action/activable/secrete_resin/hivelord,
 		/datum/action/xeno_action/activable/place_construction,
 		/datum/action/xeno_action/activable/transfer_plasma/hivelord,
 		/datum/action/xeno_action/activable/corrosive_acid,
-		/datum/action/xeno_action/emit_pheromones,
-		/datum/action/xeno_action/toggle_speed
+		/datum/action/xeno_action/onclick/emit_pheromones,
+		/datum/action/xeno_action/onclick/toggle_speed
 		)
 	mutation_type = HIVELORD_NORMAL

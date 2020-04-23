@@ -18,7 +18,7 @@
 	D.phero_modifier += XENO_PHERO_MOD_LARGE
 	D.plasma_types += PLASMA_PHEROMONE
 	mutator_update_actions(D)
-	MS.recalculate_actions(description)
+	MS.recalculate_actions(description, flavor_description)
 	D.recalculate_pheromones()
 
 /*

@@ -49,6 +49,7 @@
 						/obj/item/attachable/bayonet,
 						/obj/item/attachable/bayonet/upp,
 						/obj/item/attachable/reddot,
+						/obj/item/attachable/quickfire,
 						/obj/item/attachable/reflex,
 						/obj/item/attachable/verticalgrip,
 						/obj/item/attachable/angledgrip,
@@ -65,7 +66,6 @@
 						/obj/item/attachable/attached_gun/grenade,
 						/obj/item/attachable/attached_gun/flamer,
 						/obj/item/attachable/attached_gun/shotgun,
-						/obj/item/attachable/quickfire,
 						/obj/item/attachable/scope,
 						/obj/item/attachable/scope/mini
 						)

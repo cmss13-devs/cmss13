@@ -9,7 +9,7 @@
 	mutator_actions_to_remove = list("Secrete Resin (200)", "Corrosive Acid (100)")
 	mutator_actions_to_add = list(
 		/datum/action/xeno_action/activable/secrete_resin/remote,
-		/datum/action/xeno_action/toggle_long_range/resinwhisperer
+		/datum/action/xeno_action/onclick/toggle_long_range,
 	)
 	keystone = TRUE
 
@@ -27,7 +27,7 @@
 
 	H.mutation_type = HIVELORD_RESIN_WHISPERER
 	mutator_update_actions(H)
-	MS.recalculate_actions(description)
+	MS.recalculate_actions(description, flavor_description)
 	H.recalculate_plasma()
 
 /*
@@ -85,7 +85,3 @@
 	set hidden = 1
 	var/action_name = "Coerce Resin (150)"
 	handle_xeno_macro(src, action_name)
-
-/datum/action/xeno_action/toggle_long_range/resinwhisperer
-	name = "Toggle Long Range Sight (50)"
-	plasma_cost = 50

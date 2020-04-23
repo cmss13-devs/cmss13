@@ -1,6 +1,6 @@
 /mob/living/carbon/human
 	directional_lum = 0 				//humans carrying light sources only illuminate the area in front of themselves
-	hud_possible = list(HEALTH_HUD,STATUS_HUD, STATUS_HUD_OOC, STATUS_HUD_XENO_INFECTION,ID_HUD,WANTED_HUD,IMPLOYAL_HUD,IMPCHEM_HUD,IMPTRACK_HUD, SPECIALROLE_HUD, SQUAD_HUD, ORDER_HUD)
+	hud_possible = list(HEALTH_HUD,STATUS_HUD, STATUS_HUD_OOC, STATUS_HUD_XENO_INFECTION,ID_HUD,WANTED_HUD,IMPLOYAL_HUD,IMPCHEM_HUD,IMPTRACK_HUD, SPECIALROLE_HUD, SQUAD_HUD, ORDER_HUD, XENO_HOSTILE_ACID, XENO_HOSTILE_SLOW, XENO_HOSTILE_TAG, XENO_HOSTILE_FREEZE)
 	var/embedded_flag	  				//To check if we've need to roll for damage on movement while an item is imbedded in us.
 	var/regenZ = 1 						//Temp zombie thing until I write a better method ~Apop
 	var/allow_gun_usage = TRUE
@@ -1395,16 +1395,12 @@
 		visible_message(SPAN_DANGER("[src] expertly rolls on the floor!"), \
 			SPAN_NOTICE("You expertly roll to get rid of the acid!"), null, 5)
 	else
-		sleep_amount = 4
-		KnockDown(4, TRUE)
-		spin(40, 2)
+		KnockDown(1.5, TRUE)
+		spin(15, 2)
 		visible_message(SPAN_DANGER("[src] rolls on the floor, trying to get the acid off!"), \
 			SPAN_NOTICE("You stop, drop, and roll!"), null, 5)
 
 	sleep(sleep_amount)
-
-	if(!prob(50) && !istype(get_turf(src), /turf/open/gm/river))
-		return
 
 	visible_message(SPAN_DANGER("[src] has successfully removed the acid!"), \
 			SPAN_NOTICE("You get rid of the acid."), null, 5)

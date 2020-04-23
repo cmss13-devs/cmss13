@@ -10,23 +10,32 @@ var/datum/mob_hud/huds = list(
 	MOB_HUD_XENO_INFECTION = new /datum/mob_hud/xeno_infection(), \
 	MOB_HUD_XENO_STATUS = new /datum/mob_hud/xeno(),
 	MOB_HUD_SQUAD = new /datum/mob_hud/squad(),
+	MOB_HUD_XENO_HOSTILE = new /datum/mob_hud/xeno_hostile(),
 	)
 
 /datum/mob_hud
 	var/list/mob/hudmobs = list() //list of all mobs which display this hud
 	var/list/mob/hudusers = list() //list with all mobs who can see the hud
 	var/list/hud_icons = list() //these will be the indices for the atom's hud_list
+								// which is the list of the images maintenenced by this HUD
+								// Actually managing those images is left up to clients.
 
+// Stop displaying a HUD to a specific person
+// (took off medical glasses)
 /datum/mob_hud/proc/remove_hud_from(mob/user)
 	for(var/mob/target in hudmobs)
 		remove_from_single_hud(user, target)
 	hudusers -= user
 
+// Stop rendering a HUD on a target
+// "unenroll" them so to speak
 /datum/mob_hud/proc/remove_from_hud(mob/target)
 	for(var/mob/user in hudusers)
 		remove_from_single_hud(user, target)
 	hudmobs -= target
 
+// Always invoked on every 'user'
+// Removes target from user's client's images.
 /datum/mob_hud/proc/remove_from_single_hud(mob/user, mob/target)
 	if(!user.client)
 		return
@@ -35,16 +44,22 @@ var/datum/mob_hud/huds = list(
 		if(target.clone)
 			user.client.images -= target.clone.hud_list[i]
 
+// Allow user to view a HUD (putting on medical glasses)
 /datum/mob_hud/proc/add_hud_to(mob/user)
 	hudusers |= user
 	for(var/mob/target in hudmobs)
 		add_to_single_hud(user, target)
 
+// "Enroll" a target into the HUD. (let others see the HUD on target)
 /datum/mob_hud/proc/add_to_hud(mob/target)
 	hudmobs |= target
 	for(var/mob/user in hudusers)
 		add_to_single_hud(user, target)
 
+// This is sufficient to ship a HUD rendered on target to user for 
+// all time. essentially, OR-ing the images with the client
+// makes the client able to 'see' them whenever they're offscreen
+// somewhat confusingly
 /datum/mob_hud/proc/add_to_single_hud(mob/user, mob/target)
 	if(!user.client)
 		return
@@ -115,6 +130,8 @@ var/datum/mob_hud/huds = list(
 /datum/mob_hud/xeno
 	hud_icons = list(HEALTH_HUD_XENO, PLASMA_HUD, PHEROMONE_HUD, QUEEN_OVERWATCH_HUD, ARMOR_HUD_XENO, XENO_STATUS_HUD, XENO_BANISHED_HUD)
 
+/datum/mob_hud/xeno_hostile
+	hud_icons = list(XENO_HOSTILE_ACID, XENO_HOSTILE_SLOW, XENO_HOSTILE_TAG, XENO_HOSTILE_FREEZE)
 
 
 //Security
@@ -207,12 +224,20 @@ var/datum/mob_hud/huds = list(
 		if(!amount) amount = 1 //don't want the 'zero health' icon when we still have 4% of our health
 		holder.icon_state = "xenohealth[amount]"
 
-/mob/living/carbon/Xenomorph/proc/overlay_overheal()
+/mob/living/carbon/Xenomorph/proc/overlay_shields()
 	var/image/holder = hud_list[HEALTH_HUD_XENO]
 	holder.overlays.Cut()
-	var/percentage_overheal = round(overheal*100/max_overheal, 10)
-	if(percentage_overheal > 1)
-		holder.overlays += image('icons/mob/hud/hud.dmi', "xenooverheal[percentage_overheal]")	
+	var/total_shield_hp
+	for (var/datum/xeno_shield/XS in xeno_shields)
+		total_shield_hp += XS.amount
+
+	var/percentage_shield = round(100*XENO_SHIELD_HUD_SCALE_FACTOR*total_shield_hp/maxHealth, 10)
+	percentage_shield = min(100, percentage_shield)
+
+	if(percentage_shield > 1)
+		holder.overlays += image('icons/mob/hud/hud.dmi', "xenoshield[percentage_shield]")
+	else 
+		holder.overlays += image('icons/mob/hud/hud.dmi', "xenoshield0")
 
 /mob/living/carbon/Xenomorph/med_hud_set_armor()
 	var/image/holder = hud_list[ARMOR_HUD_XENO]
@@ -579,3 +604,58 @@ var/global/image/hud_icon_hudfocus
 			hud_icon_hudfocus = image('icons/mob/hud/hud.dmi', src, "hudfocus")
 		holder.overlays += hud_icon_hudfocus
 	hud_list[ORDER_HUD] = holder
+
+
+
+
+// Xeno "hostile" HUD
+/mob/living/carbon/human/proc/update_xeno_hostile_hud()
+	var/image/acid_holder = hud_list[XENO_HOSTILE_ACID]
+	var/image/slow_holder = hud_list[XENO_HOSTILE_SLOW]
+	var/image/tag_holder = hud_list[XENO_HOSTILE_TAG]
+	var/image/freeze_holder = hud_list[XENO_HOSTILE_FREEZE]
+
+	acid_holder.icon_state = "hudblank"
+	slow_holder.icon_state = "hudblank"
+	tag_holder.icon_state = "hudblank"
+	freeze_holder.icon_state = "hudblank"
+
+	acid_holder.overlays.Cut()
+	slow_holder.overlays.Cut()
+	tag_holder.overlays.Cut()
+	freeze_holder.overlays.Cut()
+
+	var/acid_found = FALSE
+	var/acid_count = 0
+	for (var/datum/effects/prae_acid_stacks/PAS in effects_list)
+		if (!PAS.disposed)
+			acid_count = PAS.stack_count
+			acid_found = TRUE
+			break 
+
+	if (acid_found && acid_count > 0)
+		acid_holder.overlays += image('icons/mob/hud/hud.dmi',"acid_stacks[acid_count]")
+
+	var/slow_found = FALSE
+	for (var/datum/effects/xeno_slow/XS in effects_list)
+		if (!XS.disposed)
+			slow_found = TRUE
+			break
+
+	if (slow_found)
+		slow_holder.overlays += image('icons/mob/hud/hud.dmi', "xeno_slow")
+
+	var/tag_found = FALSE
+	for (var/datum/effects/dancer_tag/DT in effects_list)
+		if (!DT.disposed)
+			tag_found = TRUE
+			break
+
+	if (tag_found)
+		tag_holder.overlays += image('icons/mob/hud/hud.dmi', src, "prae_tag")
+
+	// Hacky, but works. Currently effects are hard to make with precise timings
+	var/freeze_found = frozen
+
+	if (freeze_found)
+		freeze_holder.overlays += image('icons/mob/hud/hud.dmi', src, "xeno_freeze")

@@ -46,13 +46,13 @@
 	if(is_wired)
 		to_chat(user, SPAN_INFO("There is a length of wire strewn across the top of this barricade."))
 	switch(damage_state)
-		if(BARRICADE_DMG_NONE) 
+		if(BARRICADE_DMG_NONE)
 			to_chat(user, SPAN_INFO("It appears to be in good shape."))
-		if(BARRICADE_DMG_SLIGHT) 
+		if(BARRICADE_DMG_SLIGHT)
 			to_chat(user, SPAN_WARNING("It's slightly damaged, but still very functional."))
-		if(BARRICADE_DMG_MODERATE) 
+		if(BARRICADE_DMG_MODERATE)
 			to_chat(user, SPAN_WARNING("It's quite beat up, but it's holding together."))
-		if(BARRICADE_DMG_HEAVY) 
+		if(BARRICADE_DMG_HEAVY)
 			to_chat(user, SPAN_WARNING("It's crumbling apart, just a few more blows will tear it apart."))
 
 /obj/structure/barricade/update_icon()
@@ -63,11 +63,11 @@
 		else
 			icon_state = "[barricade_type]"
 		switch(dir)
-			if(SOUTH) 
+			if(SOUTH)
 				layer = ABOVE_MOB_LAYER
-			else if(NORTH) 
+			else if(NORTH)
 				layer = initial(layer) - 0.01
-			else 
+			else
 				layer = initial(layer)
 		if(!anchored)
 			layer = initial(layer)
@@ -82,7 +82,7 @@
 		switch(upgraded)
 			if(BARRICADE_UPGRADE_BURN)
 				overlays += image('icons/obj/structures/barricades.dmi', icon_state = "+burn_upgrade_[damage_state]")
-			if(BARRICADE_UPGRADE_BRUTE) 
+			if(BARRICADE_UPGRADE_BRUTE)
 				overlays += image('icons/obj/structures/barricades.dmi', icon_state = "+brute_upgrade_[damage_state]")
 			if(BARRICADE_UPGRADE_EXPLOSIVE)
 				overlays += image('icons/obj/structures/barricades.dmi', icon_state = "+explosive_upgrade_[damage_state]")
@@ -111,7 +111,7 @@
 	if(istype(AM, /mob/living/carbon/Xenomorph/Crusher))
 		var/mob/living/carbon/Xenomorph/Crusher/C = AM
 
-		if(C.charge_speed < C.charge_speed_max/2)
+		if (!C.throwing)
 			return
 
 		if(crusher_resistant)
@@ -253,9 +253,9 @@
 		new /obj/item/stack/barbed_wire(loc)
 	if(stack_type)
 		var/stack_amt
-		if(!deconstruct && destroyed_stack_amount) 
+		if(!deconstruct && destroyed_stack_amount)
 			stack_amt = destroyed_stack_amount
-		else 
+		else
 			stack_amt = round(stack_amount * (health/maxhealth)) //Get an amount of sheets back equivalent to remaining health. Obviously, fully destroyed means 0
 		if(upgraded)
 			stack_amt += round(2 * (health/maxhealth))

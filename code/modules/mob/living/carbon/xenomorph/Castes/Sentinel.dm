@@ -5,7 +5,7 @@
 	upgrade = 0
 	melee_damage_lower = XENO_DAMAGE_LOW
 	melee_damage_upper = XENO_DAMAGE_LOWPLUS
-	max_health = XENO_HEALTH_LOWMEDIUM
+	max_health = XENO_HEALTH_LOW
 	plasma_gain = XENO_PLASMA_GAIN_MED
 	plasma_max = XENO_PLASMA_HIGHMEDIUM
 	xeno_explosion_resistance = XENO_LOW_EXPLOSIVE_ARMOR
@@ -60,11 +60,11 @@
 	old_x = -12
 	tier = 1
 	actions = list(
-		/datum/action/xeno_action/xeno_resting,
-		/datum/action/xeno_action/regurgitate,
+		/datum/action/xeno_action/onclick/xeno_resting,
+		/datum/action/xeno_action/onclick/regurgitate,
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/activable/corrosive_acid/drone,
-		/datum/action/xeno_action/shift_spits,
+		/datum/action/xeno_action/onclick/shift_spits,
 		/datum/action/xeno_action/activable/xeno_spit
 		)
 	inherent_verbs = list(

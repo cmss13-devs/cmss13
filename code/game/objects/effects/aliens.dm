@@ -46,39 +46,67 @@
 	layer = ABOVE_OBJ_LAYER
 	mouse_opacity = 0
 	flags_pass = PASS_FLAGS_ACID_SPRAY
-	var/acid_strength = 1
 	var/source_mob
 	var/source_name
 
-/obj/effect/xenomorph/spray/New(loc, var/acid_level = 1, var/new_source_name, var/new_source_mob) //Self-deletes
+	var/stun_duration = 1
+	var/damage_amount = 20
+	var/damage_variance = 3
+	var/fire_level_to_extinguish = 13
+	
+	var/time_to_live = 10
+
+/obj/effect/xenomorph/spray/New(loc, var/new_source_name, var/new_source_mob) //Self-deletes
 	..(loc)
+	
+	// Stats tracking
 	if(new_source_mob)
 		source_mob = new_source_mob
 	if(new_source_name)
 		source_name = new_source_name
 	else
 		source_name = initial(name)
+
+	// check what's in our turf
 	for(var/atom/atm in loc)
+		
+		// Other acid sprays? delete ourself
+		if (atm != src && istype(atm, /obj/effect/xenomorph/spray))
+			qdel(src)
+			return
+
+		// Flamer fire?
 		if(istype(atm, /obj/flamer_fire))
 			var/obj/flamer_fire/FF = atm
-			if(FF.firelevel > 13)
-				FF.firelevel -= 13
+			if(FF.firelevel > fire_level_to_extinguish)
+				FF.firelevel -= fire_level_to_extinguish
 				FF.updateicon()
 			else
 				qdel(atm)
 			continue
+
+		if (istype(atm, /obj/structure/barricade))
+			var/obj/structure/barricade/B = atm
+			B.acid_spray_act()
+			continue
+
+		// Humans?
 		if(isliving(atm)) //For extinguishing mobs on fire
 			var/mob/living/M = atm
 			M.ExtinguishMob()
-			for(var/obj/item/clothing/mask/cigarette/C in M.contents)
-				if(C.item_state == C.icon_on)
-					C.die()
-	acid_strength = acid_level
+			if (ishuman(M))
+				apply_spray(M)
+				M.adjustFireLoss(damage_amount) // Deal extra damage when first placing ourselves down.
+
+			continue
+			
 	processing_objects.Add(src)
-	spawn(30 + rand(0, 20))
-		processing_objects.Remove(src)
-		qdel(src)
-		return
+	add_timer(CALLBACK(src, .proc/die), time_to_live)
+
+/obj/effect/xenomorph/spray/proc/die()
+	processing_objects.Remove(src)
+	qdel(src)
+	return
 
 /obj/effect/xenomorph/spray/Crossed(AM as mob|obj)
 	..()
@@ -92,25 +120,21 @@
 	if(!H.lying)
 		to_chat(H, SPAN_DANGER("Your feet scald and burn! Argh!"))
 		H.emote("pain")
-		H.KnockDown(1)
+		H.KnockDown(stun_duration)
 		H.last_damage_mob = source_mob
 		H.last_damage_source = source_name
-		var/obj/limb/affecting = H.get_limb("l_foot")
-		if(istype(affecting) && affecting.take_damage(0, acid_strength*rand(5, 10)))
-			H.UpdateDamageIcon()
-		affecting = H.get_limb("r_foot")
-		if(istype(affecting) && affecting.take_damage(0, acid_strength*rand(5, 10)))
+		var/obj/limb/affecting = H.get_limb(pick("l_foot", "r_foot"))
+		if(istype(affecting) && affecting.take_damage(0, rand(damage_amount-damage_variance, damage_amount + damage_variance)))
 			H.UpdateDamageIcon()
 		H.updatehealth()
 	else
-		H.adjustFireLoss(acid_strength*rand(2, 5)) //This is ticking damage!
+		H.adjustFireLoss(damage_amount*0.33) //This is ticking damage!
 		to_chat(H, SPAN_DANGER("You are scalded by the burning acid!"))
 
 /obj/effect/xenomorph/spray/process()
 	var/turf/T = loc
 	if(!istype(T))
-		processing_objects.Remove(src)
-		qdel(src)
+		die()
 		return
 
 	for(var/mob/living/carbon/human/H in loc)
@@ -120,61 +144,84 @@
 	name = "weak splatter"
 	desc = "It burns! It burns, but not as much!"
 	icon_state = "acid2-weak"
-	density = 0
-	opacity = 0
-	anchored = 1
-	layer = ABOVE_OBJ_LAYER
-	mouse_opacity = 0
 
-/obj/effect/xenomorph/spray/weak/New(loc, var/acid_level = 1, var/new_source_name, var/new_source_mob) //Self-deletes
-	..(loc)
-	if(new_source_mob)
-		source_mob = new_source_mob
-	if(new_source_name)
-		source_name = new_source_name
-	else
-		source_name = initial(name)
-	for(var/atom/atm in loc)
-		if(istype(atm, /obj/flamer_fire))
-			var/obj/flamer_fire/FF = atm
-			if(FF.firelevel > 6)
-				FF.firelevel -= 6
-				FF.updateicon()
-			else
-				qdel(atm)
-			continue
-		if(isliving(atm)) //For extinguishing mobs on fire
-			var/mob/living/M = atm
-			M.ExtinguishMob()
-			for(var/obj/item/clothing/mask/cigarette/C in M.contents)
-				if(C.item_state == C.icon_on)
-					C.die()
-	acid_strength = acid_level
-	processing_objects.Add(src)
-	spawn(25 + rand(0, 10))
-		processing_objects.Remove(src)
-		qdel(src)
+	stun_duration = 1
+	damage_amount = 25
+	damage_variance = 5
+	fire_level_to_extinguish = 6
+
+/obj/effect/xenomorph/spray/spitter
+	name = "weak splatter"
+	desc = "It burns! It burns, but not as much!"
+	icon_state = "acid2-weak"
+
+	stun_duration = 1
+	damage_amount = 10
+	damage_variance = 2
+	fire_level_to_extinguish = 6
+	time_to_live = 6
+
+	var/bonus_damage = 20
+
+/obj/effect/xenomorph/spray/spitter/apply_spray(mob/living/carbon/human/H)
+	if(!istype(H))
 		return
 
-/obj/effect/xenomorph/spray/weak/Crossed(AM as mob|obj)
-	if(ishuman(AM))
-		var/mob/living/carbon/human/H = AM
-		if(!H.lying)
-			to_chat(H, SPAN_DANGER("Your feet scald and burn!"))
-			H.emote("pain")
-			H.KnockDown(0.1)
-			var/obj/limb/affecting = H.get_limb("l_foot")
-			H.last_damage_mob = source_mob
-			H.last_damage_source = source_name
-			if(istype(affecting) && affecting.take_damage(0, acid_strength*rand(2, 7)))
-				H.UpdateDamageIcon()
-			affecting = H.get_limb("r_foot")
-			if(istype(affecting) && affecting.take_damage(0, acid_strength*rand(2, 7)))
-				H.UpdateDamageIcon()
-			H.updatehealth()
-		else
-			H.adjustFireLoss(acid_strength*rand(2, 5)) //This is ticking damage!
-			to_chat(H, SPAN_DANGER("You are scalded by the hot acid!"))
+	var/damage = damage_amount
+
+	var/should_stun = FALSE
+	for (var/datum/effects/acid/A in H.effects_list)
+		should_stun = TRUE
+		damage += (-1*(A.duration - A.original_duration))*(A.damage_in_total/A.original_duration)
+		damage += bonus_damage
+
+		qdel(A)
+		break
+
+	to_chat(H, SPAN_DANGER("Your feet scald and burn! Argh!"))
+	H.emote("pain")
+	if (should_stun && !H.lying)
+		H.KnockDown(stun_duration)
+	H.last_damage_mob = source_mob
+	H.last_damage_source = source_name
+	var/obj/limb/affecting = H.get_limb(pick("l_foot", "r_foot"))
+	if(istype(affecting) && affecting.take_damage(0, rand(damage-damage_variance, damage + damage_variance)))
+		H.UpdateDamageIcon()
+	H.updatehealth()
+
+
+/obj/effect/xenomorph/spray/praetorian
+	name = "splatter"
+	desc = "It burns! It burns like hygiene!"
+	icon_state = "acid2"
+
+	stun_duration = 0
+
+/obj/effect/xenomorph/spray/praetorian/apply_spray(mob/living/carbon/human/H)
+	if(!istype(H))
+		return
+
+	var/found = FALSE
+	for (var/datum/effects/prae_acid_stacks/PAS in H.effects_list)
+		PAS.increment_stack_count()
+		found = TRUE
+		break
+
+	if (!found)
+		new /datum/effects/prae_acid_stacks(H)
+
+	if(!H.lying)
+		to_chat(H, SPAN_DANGER("Your feet scald and burn! Argh!"))
+		H.emote("pain")
+		H.last_damage_mob = source_mob
+		H.last_damage_source = source_name
+		var/obj/limb/affecting = H.get_limb(pick("l_foot", "r_foot"))
+		if(istype(affecting) && affecting.take_damage(0, rand(damage_amount-damage_variance, damage_amount + damage_variance)))
+			H.UpdateDamageIcon()
+		H.updatehealth()
+	else
+		H.adjustFireLoss(damage_amount*0.33) //This is ticking damage!
+		to_chat(H, SPAN_DANGER("You are scalded by the burning acid!"))
 
 //Medium-strength acid
 /obj/effect/xenomorph/acid
@@ -256,3 +303,110 @@
 
 	sleep(rand(200,300) * (acid_strength))
 	.()
+
+
+
+/obj/effect/xenomorph/boiler_bombard
+	name = "???"
+	desc = ""
+	icon_state = "boiler_bombard"
+	mouse_opacity = 0
+
+	// Config-ish values
+	var/damage = 15
+	var/time_before_smoke = 35
+	var/time_before_damage = 25
+	var/smoke_duration = 9
+	var/smoke_type = /obj/effect/particle_effect/smoke/xeno_burn
+
+/obj/effect/xenomorph/boiler_bombard/New(loc)
+	// Hopefully we don't get insantiated in these places anyway..
+	if (isturf(loc))
+		var/turf/T = loc
+		if (!T.density)
+			..(loc)
+		else
+			qdel(src)
+	else
+		qdel(src)
+
+	add_timer(CALLBACK(src, .proc/damage_humans), time_before_damage)
+	add_timer(CALLBACK(src, .proc/make_smoke), time_before_smoke)
+
+/obj/effect/xenomorph/boiler_bombard/proc/damage_humans()
+	if (!istype(src) || !isturf(loc))
+		qdel(src)
+		return
+	for (var/mob/living/carbon/human/H in loc)
+		if (!H.stat)
+			H.adjustFireLoss(damage)
+			animation_flash_color(H)
+			to_chat(H, SPAN_XENODANGER("You are scalded by acid as a massive glob explodes nearby!"))
+
+	icon_state = "boiler_bombard_heavy"
+
+/obj/effect/xenomorph/boiler_bombard/proc/make_smoke()
+	var/obj/effect/particle_effect/smoke/S = new smoke_type(loc)
+	S.time_to_live = smoke_duration
+	S.spread_speed = smoke_duration + 5 // No spreading
+	qdel(src)
+
+/obj/effect/xenomorph/xeno_telegraph
+	name = "???"
+	desc = ""
+	icon_state = "xeno_telegraph_red"
+	mouse_opacity = 0
+
+/obj/effect/xenomorph/xeno_telegraph/New(loc, ttl = 10)
+	..(loc)
+	QDEL_IN(src, ttl)
+
+/obj/effect/xenomorph/xeno_telegraph/red
+	icon_state = "xeno_telegraph_red"
+
+/obj/effect/xenomorph/xeno_telegraph/brown
+	icon_state = "xeno_telegraph_brown"
+
+
+
+/obj/effect/xenomorph/acid_damage_delay
+	name = "???"
+	desc = ""
+	icon_state = "boiler_bombard"
+	mouse_opacity = 0
+
+	var/damage = 20
+	var/message = null
+	var/linked_xeno = null
+
+/obj/effect/xenomorph/acid_damage_delay/New(loc, damage = 20, delay = 10, message = null, linked_xeno = null)
+	..(loc)
+	add_timer(CALLBACK(src, .proc/die), delay)
+	src.damage = damage
+	src.message = message
+	src.linked_xeno = linked_xeno
+
+/obj/effect/xenomorph/acid_damage_delay/proc/deal_damage()
+	for (var/mob/living/carbon/human/H in loc)
+		if (H.stat == DEAD)
+			continue
+
+		animation_flash_color(H)
+		H.adjustFireLoss(damage)
+		if (message)
+			to_chat(H, SPAN_XENODANGER(message))
+		
+		. = TRUE
+
+/obj/effect/xenomorph/acid_damage_delay/proc/die()
+	deal_damage()
+	qdel(src)
+
+/obj/effect/xenomorph/acid_damage_delay/boiler_landmine
+
+/obj/effect/xenomorph/acid_damage_delay/boiler_landmine/deal_damage()
+	for (var/obj/structure/barricade/B in loc)
+		B.take_damage(damage*0.6)
+
+	return ..()
+

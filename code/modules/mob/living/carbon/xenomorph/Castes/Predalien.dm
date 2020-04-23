@@ -19,9 +19,6 @@
 	tacklemax = 10
 	tackle_chance = 80
 	is_intelligent = TRUE
-	charge_type = 4
-	bite_chance = 25
-	tail_chance = 25
 	tier = 1
 	attack_delay = -2
 	can_be_queen_healed = 0
@@ -39,10 +36,7 @@
 	melee_damage_upper = 175
 	tackle_chance = 90
 	is_intelligent = TRUE
-	charge_type = 4
 	armor_deflection = 60
-	bite_chance = 50
-	tail_chance = 40
 	attack_delay = -3
 	speed = -2.3
 	upgrade = 4
@@ -75,8 +69,8 @@
 	#define PREDALIEN_BUTCHER_COOLDOWN 140 //14 seconds.
 	#define PREDALIEN_BUTCHER_WAIT_TIME 120 //12 seconds.
 	actions = list(
-		/datum/action/xeno_action/xeno_resting,
-		/datum/action/xeno_action/regurgitate,
+		/datum/action/xeno_action/onclick/xeno_resting,
+		/datum/action/xeno_action/onclick/regurgitate,
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/activable/pounce,
 		)

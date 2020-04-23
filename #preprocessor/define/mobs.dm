@@ -122,7 +122,7 @@
 // slowdowns
 #define XENO_SLOWED_AMOUNT 0.7
 #define XENO_SUPERSLOWED_AMOUNT 1.5
-#define HUMAN_SLOWED_AMOUNT 1.5
+#define HUMAN_SLOWED_AMOUNT 2.0
 #define HUMAN_SUPERSLOWED_AMOUNT 4.0
 
 //=================================================
@@ -251,9 +251,6 @@
 
 // xeno abilities cooldown
 
-#define CRUSHER_STOMP_COOLDOWN 200
-#define CRUSHER_EARTHQUAKE_COOLDOWN 400
-
 #define CANNOT_HOLD_EGGS 0
 #define CAN_HOLD_TWO_HANDS 1
 #define CAN_HOLD_ONE_HAND 2
@@ -289,8 +286,7 @@
 
 // Boiler strain flags
 #define BOILER_NORMAL		"Normal"
-#define BOILER_RAILGUN		"Railgun"
-#define BOILER_SHATTER  	"Shatter"
+#define BOILER_TRAPPER 		"Trapper"
 
 // Runner strain flags
 #define RUNNER_NORMAL		"Normal"
@@ -302,6 +298,7 @@
 #define RAVAGER_NORMAL 		"Normal"
 #define RAVAGER_VETERAN 	"Veteran"
 #define RAVAGER_HEDGEHOG 	"Hedgehog"
+#define RAVAGER_BERSERKER   "Berserker"
 
 // Defender strain flags
 #define DEFENDER_NORMAL 	"Normal"
@@ -316,15 +313,10 @@
 
 // Praetorian strain flags
 #define PRAETORIAN_NORMAL	  "Normal"
-#define PRAETORIAN_ROYALGUARD "Royal Guard"
+#define PRAETORIAN_VANGUARD "Vanguard"
 #define PRAETORIAN_DANCER	  "Dancer"
+#define PRAETORIAN_WARDEN 	  "Warden"
 #define PRAETORIAN_OPPRESSOR  "Oppressor"
-
-// Praetorian strain flags
-#define PRAE_SCREECH_BUFFED  	1
-#define PRAE_DANCER_STATSBUFFED 2
-#define PRAE_DANCER_TAILATTACK_TYPE	4 // 0 = damage, 1 = pull/abduct
-#define PRAE_ROYALGUARD_ACIDSPRAY_TYPE 4 // 0 = cone, 1 = line
 
 var/list/default_onmob_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/items_lefthand_0.dmi',

@@ -1,7 +1,7 @@
 #define DELETE_TIME	1800
 
 /mob/living/carbon/Xenomorph/death(var/cause, var/gibbed)
-	var/msg = !caste.is_robotic ? "lets out a waning guttural screech, green blood bubbling from its maw." : "begins to shudder, and the lights go out in its eyes as it lies still."
+	var/msg = "lets out a waning guttural screech, green blood bubbling from its maw."
 	. = ..(cause, gibbed, msg)
 	if(!.) 
 		return //If they're already dead, it will return.

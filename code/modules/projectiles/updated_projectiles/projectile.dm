@@ -375,6 +375,21 @@
 				T.bullet_act(src)
 			else if(L && L.loc && (L.bullet_act(src) != -1))
 				ammo.on_hit_mob(L,src)
+
+				// If we are a xeno shooting something
+				if (istype(ammo, /datum/ammo/xeno) && istype(firer, /mob/living/carbon/Xenomorph))
+					var/mob/living/carbon/Xenomorph/X = firer
+					if (X.behavior_delegate)
+						var/datum/behavior_delegate/MD = X.behavior_delegate
+						MD.ranged_attack_additional_effects_target(L)
+						MD.ranged_attack_additional_effects_self()
+
+				// If the thing we're hitting is a Xeno
+				if (istype(L, /mob/living/carbon/Xenomorph))
+					var/mob/living/carbon/Xenomorph/X = L
+					if (X.behavior_delegate)
+						X.behavior_delegate.on_hitby_projectile(ammo)
+
 			return TRUE
 		else if(!L.lying)
 			animatation_displace_reset(L)
@@ -385,10 +400,10 @@
 
 
 //----------------------------------------------------------
-		    	//				    	\\
-			    //  HITTING THE TARGET  \\
-			    //						\\
-			    //						\\
+				//				    	\\
+				//  HITTING THE TARGET  \\
+				//						\\
+				//						\\
 //----------------------------------------------------------
 
 
@@ -802,10 +817,6 @@
 
 	if(damage > 0 && !(ammo_flags & AMMO_IGNORE_ARMOR))
 		var/armor = armor_deflection + armor_deflection_buff
-		if(isXenoQueen(src) || isXenoCrusher(src)) //Charging and crest resistances. Charging Xenos get a lot of extra armor, currently Crushers and Queens
-			var/mob/living/carbon/Xenomorph/charger = src
-			if(P.dir == reverse_direction(charger.dir)) armor += round(armor_deflection * (charger.charge_speed/charger.charge_speed_max) / 2) //Some armor deflection when charging.
-			//Otherwise use the standard armor deflection for crushers.
 
 		damage_result = armor_damage_reduction(config.xeno_ranged, damage, armor, P.ammo.penetration, P.ammo.pen_armor_punch, P.ammo.damage_armor_punch, armor_integrity)
 		var/armor_punch = armor_break_calculation(config.xeno_ranged, damage, armor, P.ammo.penetration, P.ammo.pen_armor_punch, P.ammo.damage_armor_punch, armor_integrity)

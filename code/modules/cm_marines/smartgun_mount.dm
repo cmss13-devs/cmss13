@@ -727,9 +727,7 @@
 	..()
 
 	if(istype(AM, /mob/living/carbon/Xenomorph/Crusher))
-		var/mob/living/carbon/Xenomorph/Crusher/C = AM
-
-		update_health(C.charge_speed * 400)
+		update_health(400)
 
 
 /obj/structure/machinery/m56d_hmg/mg_turret //Our mapbound version with stupid amounts of ammo.

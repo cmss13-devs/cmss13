@@ -518,7 +518,6 @@
 				<A href='?src=\ref[src];simplemake=boiler;mob=\ref[M]'>Boiler</A> |
 				<A href='?src=\ref[src];simplemake=crusher;mob=\ref[M]'>Crusher</A>
 				<br>Alien Tier 4: <A href='?src=\ref[src];simplemake=queen;mob=\ref[M]'>Queen</A>
-				<br>Alien Specials: <A href='?src=\ref[src];simplemake=ravenger;mob=\ref[M]'>Ravenger</A> |
 				<A href='?src=\ref[src];simplemake=predalien;mob=\ref[M]'>Predalien</A>
 				<br>Misc: <A href='?src=\ref[src];makeai=\ref[M]'>AI</A> | <A href='?src=\ref[src];simplemake=cat;mob=\ref[M]'>Cat</A> |
 				<A href='?src=\ref[src];simplemake=corgi;mob=\ref[M]'>Corgi</A> |

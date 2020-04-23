@@ -22,8 +22,20 @@
 #define XENO_ACTION_ACTIVATE 1 // Actually use the action SHOULD ONLY BE USED ON ACTIVABLE ACTIONS OR ELSE WILL NOT WORK
 #define XENO_ACTION_QUEUE 2 // Tell the action handler to queue the action for next click
 
-#define XENO_MAXOVERHEAL_OF_MAXHEALTH 0.9 //Determines the max overheal of xenos, based on a procentage of max health.
-#define XENO_ENEMIES_FOR_MAXOVERHEAL 6 //Amount of enemies required to get max overheal
+#define XENO_NOT_PRIMARY_ACTION -1       // NO primacy (never selected by default ability macros)
+#define XENO_PRIMARY_ACTION_1 0          // Is this action a "primary" action?
+#define XENO_PRIMARY_ACTION_2 1          // Second primary action
+#define XENO_PRIMARY_ACTION_3 2          // Tertiary primary action
+#define XENO_PRIMARY_ACTION_4 3          // 4th primary action (rarely used)
+
+#define ACID_SPRAY_LINE 0
+#define ACID_SPRAY_CONE 1
+
+#define XENOZOOM_NO_MOVEMENT_HANDLER 69420
+
+#define WARDEN_HEAL_SHIELD 0
+#define WARDEN_HEAL_HP 1
+#define WARDEN_HEAL_DEBUFFS 2
 
 #define HUD_PAIN_STATES_XENO   4
 #define HUD_HEALTH_STATES_XENO 16
@@ -113,8 +125,7 @@
 #define XENO_HEALTH_HIGHMEDIUM 325 * XENO_UNIVERSAL_HPMULT
 #define XENO_HEALTH_LOWHIGH 400 * XENO_UNIVERSAL_HPMULT
 #define XENO_HEALTH_HIGH 450 * XENO_UNIVERSAL_HPMULT
-#define XENO_HEALTH_PRAE 475 * XENO_UNIVERSAL_HPMULT
-#define XENO_HEALTH_VERYHIGH 525 * XENO_UNIVERSAL_HPMULT
+#define XENO_HEALTH_VERYHIGH 500 * XENO_UNIVERSAL_HPMULT
 #define XENO_HEALTH_ULTRAHIGH 750 * XENO_UNIVERSAL_HPMULT
 #define XENO_HEALTH_IMMORTAL 1200 * XENO_UNIVERSAL_HPMULT
 
@@ -146,6 +157,7 @@
 #define XENO_ARMOR_FACTOR_MEDIUM 30
 #define XENO_ARMOR_FACTOR_HIGH 35
 #define XENO_ARMOR_FACTOR_VERYHIGH 40
+#define XENO_ARMOR_FACTOR_CRUSHER 200
 
 // Evasion
 #define XENO_EVASION_NONE 0
@@ -155,11 +167,14 @@
 
 // Speeds
 #define XENO_SPEED_SLOW 0.7
+#define XENO_SPEED_SLOWMEDIUM 0.5
 #define XENO_SPEED_MEDIUM 0.3
+#define XENO_SPEED_BASE 0.0
 #define XENO_SPEED_MEDHIGH -0.2
 #define XENO_SPEED_LOWHIGH -0.4
 #define XENO_SPEED_HIGH -0.5
 #define XENO_SPEED_HIGHFAST -0.8
+#define XENO_SPEED_LOWFAST -1.3
 #define XENO_SPEED_FAST -1.6
 #define XENO_SPEED_SANICFAST -1.9
 
@@ -272,7 +287,7 @@
 //
 /////////////////////////////////////////////////////////////////////////////////////
 
-#define XENO_MULTIPLIER_HEALTH_YOUNG 0.6
+#define XENO_MULTIPLIER_HEALTH_YOUNG 1.0
 #define XENO_MULTIPLIER_HEALTH_MATURE 1.25
 #define XENO_MULTIPLIER_HEALTH_ELDER 1.4
 #define XENO_MULTIPLIER_HEALTH_ANCIENT 1.5
@@ -385,6 +400,18 @@
 #define RESIN_TRAP_ACID1 3
 #define RESIN_TRAP_ACID2 4
 #define RESIN_TRAP_ACID3 5
+
+// Xeno shield HUD scale factor (1.5x so its easier to see, most times)
+#define XENO_SHIELD_HUD_SCALE_FACTOR 1.5
+
+// Xeno shield sources
+#define XENO_SHIELD_SOURCE_GENERIC 0
+#define XENO_SHIELD_SOURCE_RAVAGER 1
+#define XENO_SHIELD_SOURCE_HEDGE_RAV 2
+#define XENO_SHIELD_SOURCE_VANGUARD_PRAE 3
+#define XENO_SHIELD_SOURCE_CRUSHER 4
+#define XENO_SHIELD_SOURCE_WARDEN_PRAE 5
+#define XENO_SHIELD_SOURCE_SHAMAN 6
 
 // Caste name defines
 #define CASTE_LARVA "Larva"

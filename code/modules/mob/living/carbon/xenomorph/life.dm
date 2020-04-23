@@ -10,13 +10,8 @@
 
 	..()
 
-	if(is_zoomed)
-		if(zoom_turf)
-			if(loc != zoom_turf)
-				zoom_out()
-
-		if(stat || lying)
-			zoom_out()
+	if(is_zoomed && (stat || lying))
+		zoom_out()
 
 	if(stat != DEAD) //Stop if dead. Performance boost
 
@@ -31,6 +26,12 @@
 		update_canmove()
 		update_icons()
 		handle_luminosity()
+
+		if (behavior_delegate)
+			var/datum/behavior_delegate/MD = behavior_delegate
+			MD.on_life()
+
+
 		if(loc)
 			handle_environment()
 		if(client)
@@ -141,11 +142,6 @@
 	frenzy_new = 0
 	warding_new = 0
 	recovery_new = 0
-
-	armor_bonus = 0
-
-	// if(warding_aura > 0)
-	// 	armor_bonus = warding_aura * 3 //Bonus armor from pheromones, no matter what the armor was previously. Was 5
 
 /mob/living/carbon/Xenomorph/handle_regular_status_updates(regular_update = TRUE)
 	if(regular_update && health <= 0 && (!caste || caste.fire_immune || !on_fire)) //Sleeping Xenos are also unconscious, but all crit Xenos are under 0 HP. Go figure
@@ -333,7 +329,7 @@ updatehealth()
 	if(isXenoRunner(src) && layer != initial(layer))
 		is_runner_hiding = 1
 
-	if(caste && !caste.is_robotic) //Robot no heal
+	if(caste)
 		if(caste.innate_healing || check_weeds_for_healing())
 			plasma_stored += plasma_gain * plasma_max / 100
 			if(recovery_aura)
@@ -419,11 +415,14 @@ updatehealth()
 	if(status_flags & GODMODE)
 		health = 100
 		stat = CONSCIOUS
-	health = maxHealth - getFireLoss() - getBruteLoss()
+	else if(xeno_shields.len != 0)
+		overlay_shields()
+		health = maxHealth - getFireLoss() - getBruteLoss()
+	else
+		health = maxHealth - getFireLoss() - getBruteLoss() //Xenos can only take brute and fire damage.
 
 	recalculate_move_delay = TRUE
-	
-	overlay_overheal()
+
 	med_hud_set_health()
 	med_hud_set_armor()
 

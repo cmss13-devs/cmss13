@@ -18,7 +18,7 @@
 	C.mutation_type = CARRIER_SHAMAN
 	C.ignores_pheromones = TRUE
 	mutator_update_actions(C)
-	MS.recalculate_actions(description)
+	MS.recalculate_actions(description, flavor_description)
 	return TRUE
 
 /datum/action/xeno_action/activable/sacrifice_egg
@@ -155,8 +155,7 @@
 		
 		// give overheal
 		var/to_heal = min(X.maxHealth * heal_percent / 100, action_def.heal_strength_max)
-		X.set_overheal(to_heal) //force set value
-		add_timer(CALLBACK(X, /mob/living/carbon/Xenomorph.proc/set_overheal, 0), SECONDS_30) // this will force ravagers to lose their overheal. This is expected
+		add_xeno_shield(to_heal, XENO_SHIELD_SOURCE_SHAMAN)
 
 		if(X.armor_deflection && X.armor_integrity < 100)
 			var/to_armor = armor_percent

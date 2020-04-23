@@ -32,8 +32,7 @@
 	var/pick = input("Which strain would you like to purchase?") as null|anything in mutators_for_purchase
 	if(!pick)
 		return FALSE
-	if(alert(usr, "[xeno_mutator_list[pick].description]\n\nConfirm mutation?", "Strain purchase", "Yes", "No") == "No")
-		return
+	if(alert(usr, "[xeno_mutator_list[pick].description]\n\nConfirm mutation?", "Strain purchase", "Yes", "No") == "No")		return
 	if(xeno_mutator_list[pick].apply_mutator(src))
 		to_chat(usr, "Mutation complete!")
 		return TRUE
@@ -189,21 +188,10 @@
 //Mutators applying to an individual xeno
 /datum/mutator_set/individual_mutators
 	var/mob/living/carbon/Xenomorph/xeno
-	var/gas_boost_level = 0
 	var/pull_multiplier = 1.0
 	var/egg_laying_multiplier = 1.0
-	var/pounce_boost = 0
-	var/egg_sac = FALSE
-	var/acid_claws = FALSE
 	var/need_weeds = TRUE
-	var/charge_speed_buildup_multiplier = 1.0
-	var/charge_turfs_to_charge_delta = 0
-	var/gas_life_multiplier = 1.0
 	//Strains Below
-	//Boiler
-	var/bombard_cooldown = 30
-	var/min_bombard_dist = 5
-	var/datum/new_ammo_type = /datum/ammo/xeno/boiler_gas
 	remaining_points = 6
 
 
@@ -242,25 +230,13 @@
 		return FALSE //We are not on the whitelist
 	return TRUE
 
-/datum/mutator_set/individual_mutators/recalculate_everything(var/description)
-	xeno.recalculate_everything()
-	to_chat(xeno, SPAN_XENOANNOUNCE("[description]"))
-	xeno.xeno_jitter(15)
-/datum/mutator_set/individual_mutators/recalculate_stats(var/description)
-	xeno.recalculate_stats()
-	to_chat(xeno, SPAN_XENOANNOUNCE("[description]"))
-	xeno.xeno_jitter(15)
-/datum/mutator_set/individual_mutators/recalculate_actions(var/description)
+/datum/mutator_set/individual_mutators/recalculate_actions(var/description, var/flavor_description = null)
 	xeno.recalculate_actions()
 	to_chat(xeno, SPAN_XENOANNOUNCE("[description]"))
+	if (flavor_description != null)
+		to_chat(xeno, SPAN_XENOLEADER("[flavor_description]"))
 	xeno.xeno_jitter(15)
-/datum/mutator_set/individual_mutators/recalculate_pheromones(var/description)
-	xeno.recalculate_pheromones()
-	to_chat(xeno, SPAN_XENOANNOUNCE("[description]"))
-	xeno.xeno_jitter(15)
-/datum/mutator_set/individual_mutators/give_feedback(var/description)
-	to_chat(xeno, SPAN_XENOANNOUNCE("[description]"))
-	xeno.xeno_jitter(15)
+
 
 /mob/living/carbon/Xenomorph/Queen/verb/purchase_hive_mutators()
 	set name = "Purchase Hive Mutators"

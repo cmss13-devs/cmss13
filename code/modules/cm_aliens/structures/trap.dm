@@ -142,7 +142,7 @@
 			clear_tripwires()
 		if(RESIN_TRAP_ACID1, RESIN_TRAP_ACID2, RESIN_TRAP_ACID3)
 			trap_type_name = "acid"
-			new /obj/effect/xenomorph/spray(loc, , source_name, source_mob)
+			new /obj/effect/xenomorph/spray(loc, source_name, source_mob)
 			for(var/turf/T in range(1,loc))
 				var/obj/effect/xenomorph/spray/SP = new (T, trap_type-RESIN_TRAP_ACID1+1, source_name, source_mob) //adding extra acid damage for better acid types
 				for(var/mob/living/carbon/human/H in T)
@@ -188,10 +188,6 @@
 		if(isXenoBoiler(X))
 			var/mob/living/carbon/Xenomorph/Boiler/B = X
 
-			if(B.bomb_cooldown)
-				to_chat(B, SPAN_XENOWARNING("You must wait to produce enough acid to pressurise this trap."))
-				return
-
 			if(!B.check_plasma(200))
 				to_chat(B, SPAN_XENOWARNING("You must produce more plasma before doing this."))
 				return
@@ -201,9 +197,6 @@
 				return
 
 			if(trap_type != RESIN_TRAP_EMPTY)
-				return
-
-			if(B.used_acid_spray)
 				return
 
 			if(!B.check_plasma(200))

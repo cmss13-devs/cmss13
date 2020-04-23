@@ -22,6 +22,6 @@
 	S.ammo = ammo_list[/datum/ammo/xeno/toxin/shotgun]
 
 	mutator_update_actions(S)
-	MS.recalculate_actions(description)
+	MS.recalculate_actions(description, flavor_description)
 	S.recalculate_everything()
 

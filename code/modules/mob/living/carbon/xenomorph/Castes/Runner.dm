@@ -14,11 +14,9 @@
 	evasion = XENO_EVASION_HIGH
 	speed = XENO_SPEED_SANICFAST
 	speed_mod = XENO_SPEED_MOD_LARGE
-	charge_type = 1 //Pounce - Runner
 	attack_delay = -4
 	evolves_to = list("Lurker")
 	deevolves_to = "Larva"
-	pounce_delay = 35
 	xeno_explosion_resistance = XENO_LOW_EXPLOSIVE_ARMOR
 
 /datum/caste_datum/runner/mature
@@ -33,7 +31,6 @@
 	tacklemin = 3
 	tacklemax = 4
 	tackle_chance = 40
-	pounce_delay = 30
 
 /datum/caste_datum/runner/ancient
 	upgrade_name = "Ancient"
@@ -42,7 +39,6 @@
 	tacklemin = 3
 	tacklemax = 4
 	tackle_chance = 45
-	pounce_delay = 25
 
 /mob/living/carbon/Xenomorph/Runner
 	caste_name = "Runner"
@@ -57,17 +53,17 @@
 	tier = 1
 	pixel_x = -16  //Needed for 2x2
 	old_x = -16
-	pull_speed = -1
-	viewsize = 8 // runner scouting, can look 3 tiles (2 offset + 1 increased size) ahead when stationary
-	tileoffset = 2
-
+	pull_speed = -0.5
+	viewsize = 9
+	
 	actions = list(
-		/datum/action/xeno_action/xeno_resting,
-		/datum/action/xeno_action/regurgitate,
+		/datum/action/xeno_action/onclick/xeno_resting,
+		/datum/action/xeno_action/onclick/regurgitate,
 		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/xenohide,
-		/datum/action/xeno_action/activable/pounce,
-		/datum/action/xeno_action/toggle_long_range/runner,
+		/datum/action/xeno_action/onclick/xenohide,
+		/datum/action/xeno_action/activable/pounce/runner,
+		/datum/action/xeno_action/activable/runner_skillshot,
+		/datum/action/xeno_action/onclick/toggle_long_range/runner,
 		)
 	inherent_verbs = list(
 		/mob/living/carbon/Xenomorph/proc/vent_crawl,

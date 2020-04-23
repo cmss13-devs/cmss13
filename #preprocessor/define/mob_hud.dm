@@ -10,17 +10,23 @@
 #define IMPCHEM_HUD			"6" // chemical implant
 #define IMPTRACK_HUD		"7" // tracking implant
 #define SPECIALROLE_HUD 	"8" // AntagHUD image
-#define STATUS_HUD_OOC		"9" // STATUS_HUD without virus db check for someone being ill.
-#define STATUS_HUD_XENO_INFECTION		"10" // STATUS_HUD without virus db check for someone being ill.
-#define HEALTH_HUD_XENO		"11" // health HUD for xenos
-#define SQUAD_HUD			"12" // squad hud showing who's leader, medic, etc for each squad.
-#define PLASMA_HUD			"13" // indicates the plasma level of xenos.
-#define PHEROMONE_HUD		"14" // indicates which pheromone is active on a xeno.
-#define QUEEN_OVERWATCH_HUD	"15" // indicates which xeno the queen is overwatching.
-#define XENO_STATUS_HUD     "16" // Whether xeno is a leader and its current upgrade level
-#define ARMOR_HUD_XENO		"17" // health HUD for xenos
-#define ORDER_HUD			"18" // If humans are affected by orders or not
-#define XENO_BANISHED_HUD   "19" // indicates that the xeno is banished
+#define SQUAD_HUD			"9" // squad hud showing who's leader, medic, etc for each squad.
+#define STATUS_HUD_OOC		"10" // STATUS_HUD without virus db check for someone being ill.
+#define STATUS_HUD_XENO_INFECTION		"11" // STATUS_HUD without virus db check for someone being ill.
+#define XENO_HOSTILE_ACID   "12" // acid 'stacks' index
+#define XENO_HOSTILE_SLOW   "13" // xeno-inflicted slow. used by a bunch of MOBA xenos stuff
+#define XENO_HOSTILE_TAG    "14" // dancer prae 'tag'
+#define XENO_HOSTILE_FREEZE "15" // Any xeno-inflifcted root
+
+#define HEALTH_HUD_XENO		"16" // health HUD for xenos
+#define PLASMA_HUD			"17" // indicates the plasma level of xenos.
+#define PHEROMONE_HUD		"18" // indicates which pheromone is active on a xeno.
+#define QUEEN_OVERWATCH_HUD	"19" // indicates which xeno the queen is overwatching.
+#define ARMOR_HUD_XENO		"20" // armor HUD for xenos
+#define XENO_STATUS_HUD     "21" // Whether xeno is a leader and its current upgrade level
+#define ORDER_HUD			"22" // If humans are affected by orders or not
+#define XENO_BANISHED_HUD   "23" // indicates that the xeno is banished
+
 
 
 //data HUD (medhud, sechud) defines
@@ -32,4 +38,5 @@
 #define MOB_HUD_XENO_INFECTION		6
 #define MOB_HUD_XENO_STATUS			7
 #define MOB_HUD_SQUAD				8
+#define MOB_HUD_XENO_HOSTILE		9
 

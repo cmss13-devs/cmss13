@@ -16,7 +16,7 @@
 	var/mob/living/carbon/Xenomorph/Burrower/B = MS.xeno
 	B.mutation_type = BURROWER_TREMOR
 	mutator_update_actions(B)
-	MS.recalculate_actions(description)
+	MS.recalculate_actions(description, flavor_description)
 
 /*
 	TREMOR

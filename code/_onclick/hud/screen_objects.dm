@@ -53,14 +53,10 @@
 	icon = 'icons/mob/hud/actions.dmi'
 	icon_state = "template"
 	var/datum/action/source_action
-	var/click_delay = 6 // if you want stuff to have a different delay, change this var in the action's New() with button.click_delay = xxx
 
 /obj/screen/action_button/clicked(var/mob/user)
 	if(!user || !source_action)
 		return TRUE
-	if(user.next_move >= world.time)
-		return TRUE
-	user.next_move = world.time + click_delay
 
 	if(source_action.can_use_action())
 		source_action.action_activate()

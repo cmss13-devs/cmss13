@@ -139,9 +139,9 @@
 
 	if(isXenoCrusher(A) && health <= 0)
 		var/mob/living/carbon/Xenomorph/Crusher/C = A
-		if(C.charge_speed < C.charge_speed_max)
+		if(!C.throwing)
 			return
 
-		try_move(C.charge_dir, force=TRUE)
+		try_move(C.dir, force=TRUE)
 		playsound(loc, 'sound/effects/metal_crash.ogg', 35)
 		visible_message(SPAN_DANGER("The sheer force of the impact makes \the [src] slide back!"))

@@ -15,10 +15,6 @@
 	var/melee_damage_upper = 20
 	var/evasion = XENO_EVASION_NONE
 
-	var/bite_chance = 5 //Chance of doing a special bite attack in place of a claw. Set to 0 to disable.
-	var/tail_chance = 10 //Chance of doing a special tail attack in place of a claw. Set to 0 to disable.
-	var/rng_min_interval = 70 // 7 seconds
-
 	var/speed = XENO_SPEED_SANICFAST
 	var/speed_mod = XENO_SPEED_MOD_LARGE
 
@@ -42,14 +38,11 @@
 	var/is_intelligent = 0 //If they can use consoles, etc. Set on Queen
 	var/caste_desc = null
 
-	var/charge_type = 0 //0: normal. 1: warrior/hunter style pounce. 2: ravager free attack.
 	var/armor_deflection = 0 //Chance of deflecting projectiles.
 	var/armor_hardiness_mult = XENO_ARMOR_FACTOR_LOW //so our armor is stronger
 	var/fire_immune = 0 //Boolean
 
 	var/spit_delay = 60 //Delay timer for spitting
-
-	var/is_robotic = 0 //Robots use charge, not plasma (same thing sort of), and can only be healed with welders.
 
 	var/aura_strength = 0 //The strength of our aura. Zero means we can't emit one
 	var/aura_allowed = list("frenzy", "warding", "recovery") //"Evolving" removed for the time being
@@ -60,21 +53,15 @@
 
 	var/attack_delay = 0 //Bonus or pen to time in between attacks. + makes slashes slower.
 
-	var/pounce_delay = 40
-
 	var/agility_speed_increase = 0 // this opens up possibilities for balancing
-	var/lunge_cooldown = 40
-	var/fling_cooldown = 40
-	var/punch_cooldown = 40
-	var/jab_cooldown = 40
-	var/toggle_agility_cooldown = 5
+
+	// The type of mutator delegate to instantiate on the base caste. Will 
+	// be replaced when the Xeno chooses a strain.
+	var/behavior_delegate_type = /datum/behavior_delegate
 
 	// Resin building-related vars
 	var/build_time = BUILD_TIME_XENO // Default build time and build distance
 	var/max_build_dist = 0
-
-	//Boiler vars
-	var/bomb_strength = 0 //Multiplier to the effectiveness of the boiler glob. Improves by 0.5 per upgrade
 
 	//Carrier vars
 	var/huggers_max = 0
@@ -101,30 +88,12 @@
 	var/widen_cooldown = 100
 	var/tremor_cooldown = 450 //Big strong ability, big cooldown.
 
-
-	var/headbutt_cooldown = 40
-	var/tail_sweep_cooldown = 120
-	var/crest_defense_cooldown = 150
-	var/fortify_cooldown = 200
-
 	var/innate_healing = FALSE //whether the xeno heals even outside weeds.
 
-	var/acid_spray_range = 3
-	var/acid_spray_cooldown = 90 //9 seconds delay on acid. Reduced by -1 per upgrade down to 5 seconds
 	var/acid_level = 0
 	var/weed_level = 0
 
-	var/pounce_speed = SPEED_VERY_FAST
-
-	var/charge_speed = 0.5
-	var/charge_distance = 6
-
-	//New variables for how charges work, max speed, speed buildup, all that jazz
-	var/charge_speed_max = 1.5 //Can only gain this much speed before capping
-	var/charge_speed_buildup = 0.15 //POSITIVE amount of speed built up during a charge each step
-	var/charge_turfs_to_charge = 5 //Amount of turfs to build up before a charge begins
-
-	var/acid_splash_cooldown = SECONDS_5 //Time it takes between acid splash retaliate procs. Variable per caste, for if we want future castes that are acid bombs
+	var/acid_splash_cooldown = SECONDS_3 //Time it takes between acid splash retaliate procs. Variable per caste, for if we want future castes that are acid bombs
 
 	/////////////////////////////////////////////////////////////////////////
 	//
@@ -735,9 +704,8 @@
 	if(!effective_total)
 		return slots
 
-	// Tier 3 slots are always 25% of the total xenos in the hive
-	slots[2] = max(0, Ceiling(0.25 * tier_slot_multiplier * totalXenos.len) - tier_3_xenos.len)
-
+	// Tier 3 slots are always 20% of the total xenos in the hive
+	slots[2] = max(0, Ceiling(0.20 * tier_slot_multiplier * totalXenos.len) - tier_3_xenos.len)
 	// Tier 2 slots are between 25% and 50% of the hive, depending
 	// on how many T3s there are.
 	slots[1] = max(0, Ceiling(effective_total * (0.5 - tier_3_xenos.len / effective_total) * tier_slot_multiplier) - tier_2_xenos.len)

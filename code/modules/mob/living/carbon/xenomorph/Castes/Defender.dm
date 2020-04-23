@@ -10,9 +10,9 @@
 	max_health = XENO_HEALTH_MEDIUM
 	plasma_gain = XENO_PLASMA_GAIN_VERYHIGH
 	plasma_max = XENO_PLASMA_LOW
-	xeno_explosion_resistance = XENO_HEAVY_EXPLOSIVE_ARMOR
-	armor_deflection = XENO_HEAVY_ARMOR - XENO_ARMOR_MOD_VERYSMALL
-	armor_hardiness_mult = XENO_ARMOR_FACTOR_MEDIUM
+	xeno_explosion_resistance = XENO_LOWULTRA_EXPLOSIVE_ARMOR
+	armor_deflection = XENO_HEAVY_ARMOR
+	armor_hardiness_mult = XENO_ARMOR_FACTOR_CRUSHER
 	evasion = XENO_EVASION_NONE
 	speed = XENO_SPEED_HIGH
 	speed_mod = XENO_SPEED_MOD_LARGE
@@ -48,13 +48,13 @@
 	old_x = -16
 	tier = 1
 	actions = list(
-		/datum/action/xeno_action/xeno_resting,
-		/datum/action/xeno_action/regurgitate,
+		/datum/action/xeno_action/onclick/xeno_resting,
+		/datum/action/xeno_action/onclick/regurgitate,
 		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/activable/toggle_crest_defense,
+		/datum/action/xeno_action/onclick/toggle_crest_defense,
 		/datum/action/xeno_action/activable/fortify,
 		/datum/action/xeno_action/activable/headbutt,
-		/datum/action/xeno_action/activable/tail_sweep
+		/datum/action/xeno_action/onclick/tail_sweep
 	)
 	mutation_type = DEFENDER_NORMAL
 

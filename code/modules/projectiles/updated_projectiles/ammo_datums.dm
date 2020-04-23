@@ -726,7 +726,7 @@
 	accuracy_var_high = config.high_proj_variance
 	accurate_range = config.min_shell_range
 	max_range = config.close_shell_range
-	damage = config.buckshot_hit_damage
+	damage = config.mhigh_hit_damage
 	damage_var_low = config.low_proj_variance
 	damage_var_high = config.low_proj_variance
 	damage_falloff = config.buckshot_v2_damage_falloff
@@ -757,7 +757,7 @@
 	accuracy_var_high = config.med_proj_variance
 	accurate_range = config.min_shell_range
 	max_range = config.close_shell_range
-	damage = config.buckshot_hit_damage
+	damage = config.mhigh_hit_damage
 	damage_var_low = config.low_proj_variance
 	damage_var_high = config.low_proj_variance
 	damage_falloff = config.buckshot_v2_damage_falloff
@@ -916,7 +916,7 @@
 	accurate_range = config.norm_shell_range
 	accuracy = config.med_hit_accuracy
 	damage_falloff = config.tactical_damage_falloff
-	damage = config.lmed_hit_damage
+	damage = config.lmed_plus_hit_damage
 	penetration = 0
 
 /datum/ammo/bullet/smartgun/armor_piercing
@@ -1695,51 +1695,104 @@
 
 /datum/ammo/xeno/acid/medium/New()
 	..()
-	damage = config.hlow_hit_damage
+	damage = 22.5
 	shell_speed = config.fast_shell_speed
+	accuracy = config.high_hit_accuracy*3
+	max_range = config.near_shell_range
 
-/datum/ammo/xeno/acid/heavy
+/datum/ammo/xeno/acid/praetorian
 	name = "acid splash"
-	added_spit_delay = 20
 
-/datum/ammo/xeno/acid/heavy/New()
+/datum/ammo/xeno/acid/praetorian/New()
 	..()
-	damage_falloff = config.buckshot_damage_falloff
-	accuracy = config.high_hit_accuracy
-	max_range = config.short_shell_range
-	damage = config.med_hit_damage
+	damage_falloff = config.med_damage_falloff
+	accuracy = config.high_hit_accuracy*3
+	max_range = config.near_shell_range
+	damage = config.lmed_hit_damage
 	damage_var_low = config.med_proj_variance
 	damage_var_high = config.high_proj_variance
 	shell_speed = config.reg_shell_speed
+	added_spit_delay = 0
 
 /datum/ammo/xeno/acid/dot
 	name = "acid spit"
 
-/datum/ammo/xeno/acid/dot/New()
-	..()
-	damage = 5
-
-/datum/ammo/xeno/acid/dot/on_hit_mob(mob/M, obj/item/projectile/P)
-	new /datum/effects/acid(M, P.weapon_source_mob, P.weapon_source, P.def_zone)
-	..()
-
-/datum/ammo/xeno/acid/dot/on_hit_obj(obj/O, obj/item/projectile/P)
-	new /datum/effects/acid(O, P.weapon_source_mob, P.weapon_source)
-
-
-/datum/ammo/xeno/acid/shatter // Used by boiler shatter glob strain
+/datum/ammo/xeno/acid/prae_nade // Used by base prae's acid nade
 	name = "acid spatter"
 
-/datum/ammo/xeno/acid/shatter/New()
+/datum/ammo/xeno/acid/prae_nade/New()
 	..()
-	accuracy = config.med_hit_accuracy
+	accuracy = config.high_hit_accuracy
 	accurate_range = config.max_shell_range
-	max_range = config.close_shell_range
-	damage = config.mlow_hit_damage
+	max_range = config.close_shell_range - 1
+	damage = config.hlmed_hit_damage
 	damage_falloff = config.buckshot_damage_falloff
 	shell_speed = config.slow_shell_speed
 	scatter = config.med_scatter_value
 
+/datum/ammo/xeno/acid/prae_nade/on_hit_mob(mob/M, obj/item/projectile/P)
+	if (!ishuman(M))
+		return
+
+	var/mob/living/carbon/human/H = M
+
+	var/datum/effects/prae_acid_stacks/PAS = null 
+	for (var/datum/effects/prae_acid_stacks/prae_acid_stacks in H.effects_list)
+		PAS = prae_acid_stacks
+		break
+
+	if (PAS == null)
+		PAS = new /datum/effects/prae_acid_stacks(H)
+	else
+		PAS.increment_stack_count()
+
+/datum/ammo/xeno/prae_skillshot
+	name = "blob of acid"
+	icon_state = "boiler_gas2"
+	ping = "ping_x"
+	flags_ammo_behavior = AMMO_XENO_TOX|AMMO_SKIPS_ALIENS|AMMO_EXPLOSIVE|AMMO_IGNORE_RESIST
+
+/datum/ammo/xeno/prae_skillshot/New()
+	..()
+	accuracy = config.high_hit_accuracy
+	accurate_range = config.max_shell_range
+	max_range = config.close_shell_range + 2
+	damage = config.mlow_hit_damage
+	damage_falloff = config.reg_damage_falloff
+	shell_speed = config.slow_shell_speed
+	scatter = config.min_scatter_value
+
+/datum/ammo/xeno/prae_skillshot/on_hit_mob(mob/M, obj/item/projectile/P)
+	acid_stacks_aoe(get_turf(P))
+
+/datum/ammo/xeno/prae_skillshot/on_hit_obj(obj/O, obj/item/projectile/P)
+	acid_stacks_aoe(get_turf(P))
+
+/datum/ammo/xeno/prae_skillshot/on_hit_turf(turf/T, obj/item/projectile/P)
+	acid_stacks_aoe(get_turf(P))
+
+/datum/ammo/xeno/prae_skillshot/do_at_max_range(obj/item/projectile/P)
+	acid_stacks_aoe(get_turf(P))
+
+/datum/ammo/xeno/prae_skillshot/proc/acid_stacks_aoe(var/turf/T)
+
+	if (!istype(T))
+		return
+
+	for (var/mob/living/carbon/human/H in orange(1, T))
+		to_chat(H, SPAN_XENODANGER("You are spattered with acid!"))
+		animation_flash_color(H)
+		var/datum/effects/prae_acid_stacks/PAS = null 
+		for (var/datum/effects/prae_acid_stacks/prae_acid_stacks in H.effects_list)
+			PAS = prae_acid_stacks
+			break
+
+		if (PAS == null)
+			PAS = new /datum/effects/prae_acid_stacks(H)
+			PAS.increment_stack_count()
+		else
+			PAS.increment_stack_count()
+			PAS.increment_stack_count()
 
 /datum/ammo/xeno/boiler_gas
 	name = "glob of gas"
@@ -1786,9 +1839,6 @@
 	var/amount = 4
 	var/lifetime_mult = 1.0
 	if(isXenoBoiler(P.firer))
-		var/mob/living/carbon/Xenomorph/Boiler/B = P.firer
-		amount += B.gas_level
-		lifetime_mult = B.gas_life_multiplier
 		smoke_system.source = P.weapon_source
 		smoke_system.source_mob = P.weapon_source_mob
 	smoke_system.set_up(amount, 0, T)
@@ -1796,69 +1846,6 @@
 	smoke_system.start()
 	T.visible_message(SPAN_DANGER("A glob of acid lands with a splat and explodes into noxious fumes!"))
 
-/datum/ammo/xeno/boiler_gas/corrosive
-	name = "glob of acid"
-	icon_state = "boiler_gas"
-	sound_hit 	 = "acid_hit"
-	sound_bounce	= "acid_bounce"
-	debilitate = list(1,1,0,0,1,1,0,0)
-	flags_ammo_behavior = AMMO_XENO_ACID|AMMO_SKIPS_ALIENS|AMMO_EXPLOSIVE|AMMO_IGNORE_ARMOR
-
-/datum/ammo/xeno/boiler_gas/corrosive/New()
-	..()
-	damage = config.med_hit_damage
-	damage_var_high = config.max_proj_variance
-	damage_type = BURN
-
-/datum/ammo/xeno/boiler_gas/corrosive/on_shield_block(mob/M, obj/item/projectile/P)
-	burst(M,P,damage_type)
-
-/datum/ammo/xeno/boiler_gas/corrosive/set_xeno_smoke(obj/item/projectile/P)
-	smoke_system = new /datum/effect_system/smoke_spread/xeno_acid()
-
-/datum/ammo/xeno/boiler_gas/corrosive/drop_nade(turf/T, obj/item/projectile/P)
-	var/amount = 3
-	var/lifetime_mult = 1.0
-	if(isXenoBoiler(P.firer))
-		var/mob/living/carbon/Xenomorph/Boiler/B = P.firer
-		amount += B.gas_level
-		lifetime_mult = B.gas_life_multiplier
-	smoke_system.set_up(amount, 0, T)
-	smoke_system.lifetime = 12 * lifetime_mult
-	smoke_system.start()
-	T.visible_message(SPAN_DANGER("A glob of acid lands with a splat and explodes into corrosive bile!"))
-
-/datum/ammo/xeno/boiler_gas/shatter
-	name = "glob of neurotoxin"
-	icon_state = "boiler_shatter2"
-	ping = "ping_x"
-	sound_hit = "acid_hit"
-	sound_bounce = "acid_bounce"
-	debilitate = list(19,21,0,0,11,12,0,0)
-	flags_ammo_behavior = AMMO_XENO_TOX|AMMO_SKIPS_ALIENS|AMMO_EXPLOSIVE|AMMO_IGNORE_RESIST
-	var/shrapnel_xeno = /datum/ammo/xeno/toxin/shatter
-	var/shrapnel_amount = 32
-
-/datum/ammo/xeno/boiler_gas/shatter/drop_nade(turf/T, obj/item/projectile/P)
-	create_shrapnel(T, shrapnel_amount, , ,shrapnel_xeno, P.weapon_source, P.weapon_source_mob)
-	T.visible_message(SPAN_DANGER("A huge ball of neurotoxin splashes down, sending drops and splashes in every direction!"))
-	playsound(T, 'sound/effects/squelch1.ogg', 25, 1)
-
-/datum/ammo/xeno/boiler_gas/shatter/acid
-	name = "glob of acid"
-	icon_state = "boiler_shatter"
-	ping = "ping_x"
-	sound_hit = "acid_hit"
-	sound_bounce = "acid_bounce"
-	debilitate = list(1,1,0,0,1,1,0,0)
-	flags_ammo_behavior = AMMO_XENO_TOX|AMMO_SKIPS_ALIENS|AMMO_EXPLOSIVE|AMMO_IGNORE_RESIST
-	shrapnel_xeno = /datum/ammo/xeno/acid/shatter
-	shrapnel_amount = 32
-
-/datum/ammo/xeno/boiler_gas/shatter/acid/drop_nade(turf/T, obj/item/projectile/P)
-	create_shrapnel(T, shrapnel_amount, , ,shrapnel_xeno, P.weapon_source, P.weapon_source_mob)
-	T.visible_message(SPAN_DANGER("A huge ball of acid splashes down, sending drops and splashes in every direction!"))
-	playsound(T, 'sound/effects/squelch1.ogg', 25, 1)
 
 /datum/ammo/xeno/bone_chips
 	name = "bone chips"
@@ -1875,23 +1862,47 @@
 
 /datum/ammo/xeno/bone_chips/New()
 	..()
-	damage = 5
+	damage = 10
+	max_range = 6
 	damage_type = BRUTE
 	accuracy = config.max_hit_accuracy
 	accuracy_var_low = config.med_proj_variance
 	accuracy_var_high = config.med_proj_variance
-	max_range = config.short_shell_range
 	bonus_projectiles_amount = config.high_proj_extra
 	shrapnel_type = /obj/item/shard/shrapnel/bone_chips
-	shrapnel_chance = 100
+	shrapnel_chance = 60
 
 /datum/ammo/xeno/bone_chips/spread
 	name = "small bone chips"
 
 /datum/ammo/xeno/bone_chips/spread/New()
 	..()
-	scatter = 50 // We want a wild scatter angle
+	scatter = 30 // We want a wild scatter angle
+	max_range = 6
 	bonus_projectiles_amount = 0
+
+/datum/ammo/xeno/bone_chips/spread/short_range
+    name = "small bone chips"
+
+/datum/ammo/xeno/bone_chips/spread/short_range/New()
+    ..()
+    max_range = 3 // Very short range
+
+/datum/ammo/xeno/bone_chips/spread/runner_skillshot
+    name = "bone chips"
+
+/datum/ammo/xeno/bone_chips/spread/runner_skillshot/New()
+    ..()
+    scatter = 0
+    max_range = 5
+    damage = 12
+    shrapnel_chance = 0    
+
+/datum/ammo/xeno/bone_chips/spread/runner/on_hit_mob(mob/M, obj/item/projectile/P)
+    if(isHumanStrict(M))
+        playsound(M, 'sound/effects/spike_hit.ogg', 25, 1, 1)
+        if(M.slowed < 5)
+            M.AdjustSlowed(4)
 
 /*
 //================================================

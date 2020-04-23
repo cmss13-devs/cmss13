@@ -78,23 +78,29 @@
 
 	if(stat == DEAD) return
 
-	if (temp_health)
-		if (temp_health >= damage)
-			temp_health -= damage
-			return
-		else
-			temp_health = 0
-			damage -= temp_health
+	if (xeno_shields.len != 0)
+		for(var/datum/xeno_shield/XS in xeno_shields)
+			var/datum/xeno_shield_hit_result/XSHR = XS.on_hit(damage)
 
-	if(overheal > 0)
-		apply_overheal_damage(damage)
-	else
-		switch(damagetype)
-			if(BRUTE)
-				adjustBruteLoss(damage)
-			if(BURN)
-				adjustFireLoss(damage)
+			damage = XSHR.damage_carryover
+			
+			if(!XSHR.shield_survived)
+				XS.on_removal()
+				xeno_shields -= XS
+				qdel(XS)
+				XS = null
+			
+			if(damage == 0)
+				return
+			
+		overlay_shields()
 
+	switch(damagetype)
+		if(BRUTE)
+			adjustBruteLoss(damage)
+		if(BURN)
+			adjustFireLoss(damage)
+	
 	updatehealth()
 	return 1
 
@@ -182,9 +188,3 @@
 					victim.emote("scream") //Topkek
 				victim.take_limb_damage(0, rand(8, 12)) //Sizzledam! This automagically burns a random existing body part.
 				acid_splash_last = world.time
-
-/mob/living/carbon/Xenomorph/proc/apply_overheal_damage(var/damage)
-	overheal -= damage
-	if(overheal < 0)
-		adjustBruteLoss(-overheal)
-		overheal = 0

@@ -4,69 +4,52 @@
 	tier = 3
 	upgrade = 0
 
-	melee_damage_lower = XENO_DAMAGE_MEDIUMLOW
-	melee_damage_upper = XENO_DAMAGE_MEDIUM
-	max_health = XENO_HEALTH_VERYHIGH
+	melee_damage_lower = XENO_DAMAGE_MEDIUMHIGH
+	melee_damage_upper = XENO_DAMAGE_MEDIUMHIGH
+	max_health = XENO_HEALTH_VERYHIGH + XENO_HEALTH_MOD_MED
 	plasma_gain = XENO_PLASMA_GAIN_VERYHIGH
 	plasma_max = XENO_PLASMA_LOW
-	xeno_explosion_resistance = XENO_LOWULTRA_EXPLOSIVE_ARMOR
-	armor_deflection = XENO_MEDIUM_ARMOR + XENO_ARMOR_MOD_VERYSMALL
-	armor_hardiness_mult = XENO_ARMOR_FACTOR_MEDIUM
+	xeno_explosion_resistance = XENO_ULTRA_EXPLOSIVE_ARMOR
+	armor_deflection = XENO_MEDIUM_ARMOR
+	armor_hardiness_mult = XENO_ARMOR_FACTOR_CRUSHER
 	evasion = XENO_EVASION_NONE
 	speed = XENO_SPEED_MEDIUM
-	speed_mod = XENO_SPEED_MOD_MED
+	speed_mod = XENO_SPEED_MOD_LARGE
 
-	tacklemin = 3
-	tacklemax = 4
-	tackle_chance = 40
+	tackle_chance = 35
+	
 	evolution_allowed = FALSE
 	deevolves_to = "Lurker"
 	caste_desc = "A brutal, devastating front-line attacker."
-	charge_type = 3 //Claw at end of charge
 	fire_immune = 1
-	attack_delay = -2
-	pounce_delay = 120
-	charge_distance = 4 //shorter than regular charges
+	attack_delay = -1
 
-	// Strain variables
+	behavior_delegate_type = /datum/behavior_delegate/ravager_base
 
-	// Vanilla
-	var/empower_cooldown = 300
-
-	// Spike shed variables
-	var/spike_shed_cooldown = 100 
-
-	// Spin slash variables
-	var/spin_cooldown = 250;
-	var/spin_damage_offset = 15;	   // Bonus damage considered by armor
-	var/spin_damage_ignore_armor = 10; // Bonus damage that ignores armor 
 
 /datum/caste_datum/ravager/mature
 	upgrade_name = "Mature"
 	caste_desc = "A brutal, devastating front-line attacker. It looks a little more dangerous."
 	upgrade = 1
-
-	tacklemin = 4
-	tacklemax = 5
-	tackle_chance = 45
+	tackle_chance = 40
 
 /datum/caste_datum/ravager/elder
 	upgrade_name = "Elder"
 	caste_desc = "A brutal, devastating front-line attacker. It looks pretty strong."
 	upgrade = 2
 
-	tacklemin = 5
-	tacklemax = 6
-	tackle_chance = 58
+	tacklemin = 4
+	tacklemax = 5
+	tackle_chance = 45
 
 /datum/caste_datum/ravager/ancient
 	upgrade_name = "Ancient"
 	caste_desc = "As I walk through the valley of the shadow of death"
 	upgrade = 3
 
-	tacklemin = 6
-	tacklemax = 7
-	tackle_chance = 60
+	tacklemin = 4
+	tacklemax = 5
+	tackle_chance = 50
 
 /datum/caste_datum/ravager/primordial
 	upgrade_name = "Primordial"
@@ -86,7 +69,6 @@
 	icon_state = "Ravager Walking"
 	plasma_types = list(PLASMA_CATECHOLAMINE)
 	var/used_charge = 0
-	var/tail_stab_ready = 0
 	mob_size = MOB_SIZE_BIG
 	drag_delay = 6 //pulling a big dead xeno is hard
 	tier = 3
@@ -95,165 +77,55 @@
 	mutation_type = RAVAGER_NORMAL
 
 	actions = list(
-		/datum/action/xeno_action/xeno_resting,
-		/datum/action/xeno_action/regurgitate,
+		/datum/action/xeno_action/onclick/xeno_resting,
+		/datum/action/xeno_action/onclick/regurgitate,
 		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/activable/empower
+		/datum/action/xeno_action/activable/empower,
+		/datum/action/xeno_action/activable/pounce/charge,
+		/datum/action/xeno_action/activable/scissor_cut
 		)
 
-/mob/living/carbon/Xenomorph/Ravager/New()
-	..()
-	ammo = ammo_list[/datum/ammo/xeno/bone_chips]
+// Mutator delegate for base ravager
+/datum/behavior_delegate/ravager_base
+	var/damage_per_shield_hp = 0.05
+	var/shield_decay_time = 150 // Time in deciseconds before our shield decays
+	var/slash_charge_cdr = 20 // Amount to reduce charge cooldown by per slash
+	var/min_shield_buffed_abilities = 150
+	var/knockdown_amount = 2
+	var/fling_distance = 3
 
-//Chance of insta limb amputation after a melee attack.
-/mob/living/carbon/Xenomorph/Ravager/proc/delimb(var/mob/living/carbon/human/H, var/obj/limb/O)
-	if(!iszombie(H) && prob(isYautja(H)?20:40)) // lets halve this for preds
-		O = H.get_limb(check_zone(zone_selected))
-		if(O.body_part != BODY_FLAG_CHEST && O.body_part != BODY_FLAG_GROIN && O.body_part != BODY_FLAG_HEAD && O.brute_dam >= 5) //Only limbs.
-			visible_message(SPAN_DANGER("The limb is sliced clean off!"),SPAN_DANGER("You slice off a limb!"))
-			O.droplimb(0, 0, initial(name))
-			return TRUE
-	return FALSE
+/datum/behavior_delegate/ravager_base/melee_attack_modify_damage(original_damage, atom/A = null)
+	var/shield_total = 0
+	for (var/datum/xeno_shield/XS in bound_xeno.xeno_shields)
+		if (XS.shield_source == XENO_SHIELD_SOURCE_RAVAGER) 
+			shield_total += XS.amount
+	
+	return original_damage + damage_per_shield_hp*shield_total
 
-/mob/living/carbon/Xenomorph/Ravager/proc/shrapnel_embed(var/mob/living/carbon/human/H, var/obj/limb/organ)
-	if(isHumanStrict(H))
-		if(!istype(organ))
-			return
-			
-		var/chance = 100
-		var/attacked_armor = H.getarmor(zone_selected, ARMOR_MELEE)
-		if(attacked_armor > 29) // Medium armor
-			chance = 50
-		if(attacked_armor > 34) // Heavy armor
-			chance = 30
-			
-		if(!prob(chance))
-			return
+/datum/behavior_delegate/ravager_base/melee_attack_additional_effects_self()
+	var/datum/action/xeno_action/activable/pounce/charge/cAction = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/activable/pounce/charge)
+	if (!cAction.action_cooldown_check())
+		cAction.reduce_cooldown(slash_charge_cdr)
 
-		var/obj/item/shard/shrapnel/shrap = new /obj/item/shard/shrapnel/bone_chips()
-		shrap.on_embed(H, organ)
+/datum/behavior_delegate/ravager_base/append_to_stat()
+	var/shield_total = 0
+	for (var/datum/xeno_shield/XS in bound_xeno.xeno_shields)
+		if (XS.shield_source == XENO_SHIELD_SOURCE_RAVAGER) 
+			shield_total += XS.amount
 
-		if(!stat && !(H.species && H.species.flags & NO_PAIN))
-			to_chat(H, SPAN_DANGER("Bits of bone and shrapnel embed themselves in the wound! It hurts like hell!"))
+	stat("Empower Shield:", "[shield_total]")
+	stat("Bonus Slash Damage:", "[shield_total*damage_per_shield_hp]")
 
-/mob/living/carbon/Xenomorph/Ravager/proc/tail_stab(var/mob/living/carbon/human/H, var/damage)
-	if(tail_stab_ready)
-		return FALSE
+/datum/behavior_delegate/ravager_base/on_life()
+	var/datum/xeno_shield/rav_shield 
+	for (var/datum/xeno_shield/XS in bound_xeno.xeno_shields)
+		if (XS.shield_source == XENO_SHIELD_SOURCE_RAVAGER) 
+			rav_shield = XS
+			break 
 
-	var/tail_stab_cooldown = 70 // 7 seconds
-	tail_stab_ready = TRUE
-
-	tail_attack(H, damage)
-
-	spawn(tail_stab_cooldown)
-		tail_stab_ready = FALSE
-		to_chat(src, SPAN_WARNING("You feel you tail is ready to strike again!"))
-	return TRUE
-
-/datum/caste_datum/ravager/ravenger
-	caste_name = "Ravenger"
-	is_intelligent = 1
-	melee_damage_lower = 70
-	melee_damage_upper = 90
-	tacklemin = 3
-	tacklemax = 6
-	tackle_chance = 85
-	max_health = 600
-	plasma_gain = 15
-	plasma_max = 200
-	upgrade = 3
-	can_be_queen_healed = 0
-
-//Super hacky firebreathing Halloween rav.
-/mob/living/carbon/Xenomorph/Ravager/ravenger
-	name = "Ravenger"
-	caste_name = "Ravenger"
-	desc = "It's a goddamn dragon! Run! RUUUUN!"
-	hardcore = 1
-	health = 600
-	maxHealth = 600
-	plasma_stored = 200
-	upgrade = 3
-	var/used_fire_breath = 0
-	actions = list(
-		/datum/action/xeno_action/xeno_resting,
-		/datum/action/xeno_action/activable/breathe_fire,
-		)
-
-	New()
-		..()
-		verbs -= /mob/living/carbon/Xenomorph/verb/hive_status
-		spawn(15) name = "Ravenger"
-
-/mob/living/carbon/Xenomorph/Ravager/ravenger/update_icons()
-	if(stat == DEAD)
-		icon_state = "Ravager Dead"
-	else if(lying)
-		if((resting || sleeping) && (!knocked_down && !knocked_out && health > 0))
-			icon_state = "Ravager Sleeping"
-		else
-			icon_state = "Ravager Knocked Down"
-	else
-		if(m_intent == MOVE_INTENT_RUN)
-			icon_state = "Ravager Running"
-		else
-			icon_state = "Ravager Walking"
-
-	update_fire() //the fire overlay depends on the xeno's stance, so we must update it.
-
-/mob/living/carbon/Xenomorph/Ravager/ravenger/proc/breathe_fire(atom/A)
-	set waitfor = 0
-	if(world.time <= used_fire_breath + 75)
-		return
-	var/list/turf/turfs = getline2(src, A)
-	var/distance = 0
-	var/obj/structure/window/W
-	var/turf/T
-	playsound(src, 'sound/weapons/gun_flamethrower2.ogg', 50, 1)
-	visible_message(SPAN_XENOWARNING("\The [src] sprays out a stream of flame from its mouth!"), \
-	SPAN_XENOWARNING("You unleash a spray of fire on your enemies!"))
-	used_fire_breath = world.time
-	for(T in turfs)
-		if(T == loc)
-			continue
-		if(distance >= 5)
-			break
-		if(DirBlocked(T, dir))
-			break
-		else if(DirBlocked(T, turn(dir, 180)))
-			break
-		if(locate(/turf/closed/wall/resin, T) || locate(/obj/structure/mineral_door/resin, T))
-			break
-		W = locate() in T
-		if(W)
-			if(W.is_full_window())
-				break
-			if(W.dir == dir)
-				break
-		flame_turf(T)
-		distance++
-		sleep(1)
-
-/mob/living/carbon/Xenomorph/Ravager/ravenger/proc/flame_turf(turf/T)
-	if(!istype(T))
-		return
-	if(!locate(/obj/flamer_fire) in T) // No stacking flames!
-		new/obj/flamer_fire(T, initial(name), src)
-	else
-		return
-
-	for(var/mob/living/carbon/M in T) //Deal bonus damage if someone's caught directly in initial stream
-		if(M.stat == DEAD)
-			continue
-		if(isXeno(M))
-			var/mob/living/carbon/Xenomorph/X = M
-			if(X.caste.fire_immune)
-				continue
-		else if(ishuman(M))
-			var/mob/living/carbon/human/H = M
-			if(istype(H.wear_suit, /obj/item/clothing/suit/fire))
-				continue
-
-		M.adjustFireLoss(rand(20, 50)) //Fwoom!
-		var/msg = "Augh! You are roasted by the flames!"
-		to_chat(M, "[isXeno(M) ? SPAN_XENODANGER(msg) : SPAN_DANGER(msg)]")
+	if (rav_shield && ((rav_shield.last_damage_taken + shield_decay_time) < world.time))
+		bound_xeno.xeno_shields -= rav_shield
+		qdel(rav_shield)
+		rav_shield = null
+		to_chat(bound_xeno, SPAN_XENODANGER("You feel your shield decay!"))
+		bound_xeno.overlay_shields()

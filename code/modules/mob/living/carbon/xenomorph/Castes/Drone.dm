@@ -8,8 +8,8 @@
 	plasma_gain = XENO_PLASMA_GAIN_HIGHMED
 	plasma_max = XENO_PLASMA_VERYHIGH
 	crystal_max = XENO_CRYSTAL_LOW
-	armor_deflection = XENO_NO_ARMOR
-	max_health = XENO_HEALTH_LOWMEDIUM
+	armor_deflection = XENO_LOW_ARMOR
+	max_health = XENO_HEALTH_MEDIUM
 	armor_hardiness_mult = XENO_ARMOR_FACTOR_LOW
 	evasion = XENO_EVASION_MEDIUM
 	speed = XENO_SPEED_HIGHFAST
@@ -32,7 +32,7 @@
 	upgrade = 1
 	tacklemin = 3
 	tacklemax = 4
-	tackle_chance = 40
+	tackle_chance = 30
 	aura_strength = 1.5
 
 /datum/caste_datum/drone/elder
@@ -41,7 +41,7 @@
 	upgrade = 2
 	tacklemin = 3
 	tacklemax = 4
-	tackle_chance = 45
+	tackle_chance = 35
 	aura_strength = 2
 
 /datum/caste_datum/drone/ancient
@@ -50,7 +50,7 @@
 	upgrade = 3
 	tacklemin = 4
 	tacklemax = 5
-	tackle_chance = 50
+	tackle_chance = 40
 	aura_strength = 2.2
 
 /mob/living/carbon/Xenomorph/Drone
@@ -65,16 +65,16 @@
 	pixel_x = -12
 	old_x = -12
 	actions = list(
-		/datum/action/xeno_action/xeno_resting,
-		/datum/action/xeno_action/regurgitate,
+		/datum/action/xeno_action/onclick/xeno_resting,
+		/datum/action/xeno_action/onclick/regurgitate,
 		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/plant_weeds,
-		/datum/action/xeno_action/choose_resin,
+		/datum/action/xeno_action/onclick/plant_weeds,
+		/datum/action/xeno_action/onclick/choose_resin,
 		/datum/action/xeno_action/activable/secrete_resin,
 		/datum/action/xeno_action/activable/place_construction,
 		/datum/action/xeno_action/activable/transfer_plasma,
 		/datum/action/xeno_action/activable/corrosive_acid/drone,
-		/datum/action/xeno_action/emit_pheromones
+		/datum/action/xeno_action/onclick/emit_pheromones
 		)
 	inherent_verbs = list(
 		/mob/living/carbon/Xenomorph/proc/vent_crawl

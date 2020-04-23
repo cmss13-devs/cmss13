@@ -126,6 +126,12 @@
 	if(!mob.canmove || mob.is_mob_incapacitated(TRUE) || !mob.on_movement())
 		return
 
+	// run mob move event if it is carbon
+	if(istype(mob,/mob/living/carbon))
+		var/mob/living/carbon/carbon_mob = mob
+		if(!carbon_mob.on_movement())
+			return //something blocked us from moving
+
 	//Check if you are being grabbed and if so attemps to break it
 	if(mob.pulledby)
 		if(mob.is_mob_restrained(0))

@@ -1435,7 +1435,7 @@
 
 
 /obj/item/weapon/yautja_chain/New()
-	force = config.buckshot_hit_damage
+	force = config.mhigh_hit_damage
 	throwforce = config.base_hit_damage
 
 /obj/item/weapon/yautja_chain/attack(mob/target, mob/living/user)

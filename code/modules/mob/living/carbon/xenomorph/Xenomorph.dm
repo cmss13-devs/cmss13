@@ -4,7 +4,7 @@
 //Just about ALL the procs are tied to the parent, not to the children
 //This is so they can be easily transferred between them without copypasta
 
-//All this stuff was written by Absynth.
+//All this stuff was written by Absynth.... and god help us
 //Edited by Apop - 11JUN16
 
 #define DEBUG_XENO 0
@@ -27,6 +27,7 @@
 #undef DEBUG_XENO
 
 /mob/living/carbon/Xenomorph
+	//// ALL OLD SS13 VARS
 	name = "Drone"
 	desc = "What the hell is THAT?"
 	icon = 'icons/mob/xenos/1x1_Xenos.dmi'
@@ -50,52 +51,30 @@
 	unacidable = TRUE
 	rebounds = TRUE
 	faction = FACTION_XENOMORPH
-	var/hivenumber = XENO_HIVE_NORMAL
+	gender = NEUTER
 	var/icon_size = 48
-	var/datum/mutator_set/individual_mutators/mutators = new
+	var/obj/item/clothing/suit/wear_suit = null
+	var/obj/item/clothing/head/head = null
+	var/obj/item/r_store = null
+	var/obj/item/l_store = null
 
-	// Mutatotion types/Strain names
-	var/mutation_type = null
-
-	// Armor
-	var/armor_deflection_buff = 0
-	var/armor_explosive_buff = 0
-	var/armor_integrity = 100
-	var/armor_integrity_max = 100
-	var/armor_integrity_last_damage_time = 0
-	var/armor_integrity_immunity_time = 0
-
-	//Stagger for predator weapons. Prevents hivemind usage, queen overwatching, etc.
-	var/interference = 0
-
-	// Overwatched xeno for xeno hivemind vision
-	var/mob/living/carbon/Xenomorph/observed_xeno
-
-	//Variables that can be mutated
+	//////////////////////////////////////////////////////////////////
+	//
+	//		Core Stats
+	//
+	// 		Self-Explanatory.
+	//
+	//////////////////////////////////////////////////////////////////
+	var/datum/caste_datum/caste // Used to extract determine ALL Xeno stats.
 	health = 5
 	maxHealth = 5
-	speed = -0.5 //Speed bonus/penalties. Positive makes you go slower. (1.5 is equivalent to FAT mutation)
-	var/speed_multiplier = 1.0 //For speed mutator
-	var/ability_speed_modifier = 0.0 //Things that add on top of our base speed, based on what powers we are using
+	var/crit_health = -100 // What negative healthy they die in.
+	var/gib_chance  = 5 // % chance of them exploding when taking damage. Goes up with damage inflicted.
+	speed = -0.5 // Speed. Positive makes you go slower. (1.5 is equivalent to FAT mutation)
 	melee_damage_lower = 5
 	melee_damage_upper = 10
 	var/burn_damage_lower = 0
 	var/burn_damage_upper = 0
-	var/armor_deflection = 10
-	var/evasion = 0
-	var/list/plasma_types = list() //The types of plasma the caste contains
-	var/extra_build_dist = 0 // For drones/hivelords. Extends the maximum build range they have
-
-	// Action to perform on the next click.
-	var/datum/action/xeno_action/activable/queued_action
-
-	// Temporary HP.
-	var/temp_health = 0 // As dumb as it sounds, literally just an HP buffer. Should be reset to 0 by whatever adds it to begin with.
-
-	// Overheal - Gives you temporary extra health
-	var/overheal = 0
-	var/max_overheal = 0
-
 	var/plasma_stored = 10
 	var/plasma_max = 10
 	var/plasma_gain = 5
@@ -104,65 +83,50 @@
 	var/crystal_stored = 0
 	var/crystal_max = 0
 
-	var/aura_strength = 0
+	var/evasion = 0   // RNG "Armor"
+
+	// Armor
+	var/armor_deflection = 10 // Most important: "max armor"
+	var/armor_deflection_buff = 0 // temp buffs to armor
+	var/armor_explosive_buff = 0  // temp buffs to explosive armor
+	var/armor_integrity = 100     // Current health % of our armor
+	var/armor_integrity_max = 100
+	var/armor_integrity_last_damage_time = 0
+	var/armor_integrity_immunity_time = 0
+	var/tacklemin = 2
+	var/tacklemax = 3
+	var/tackle_chance = 35
+	var/pull_multiplier = 1.0
+	var/aura_strength = 0 // Pheromone strength
 	var/weed_level = 1
 	var/acid_level = 0
-	var/gas_level = 0
-	var/gas_life_multiplier = 1.0
 
+	// Mutator-related and other important vars
+	var/mutation_type = null
+	var/datum/mutator_set/individual_mutators/mutators = new
+
+	// Hive-related vars
+	var/datum/hive_status/hive
+	var/hivenumber = XENO_HIVE_NORMAL
+	var/hive_pos = NORMAL_XENO // The position of the xeno in the hive (0 = normal xeno; 1 = queen; 2+ = hive leader)
+
+	// Variables that can be mutated
+	var/ability_speed_modifier = 0.0 //Things that add on top of our base speed, based on what powers we are using
+
+	// Progression-related
 	var/upgrade_threshold = 200
 	var/evolution_threshold = 200
-	var/pull_multiplier = 1.0
-
-	var/datum/caste_datum/caste
-	var/datum/hive_status/hive
-
-	var/obj/item/clothing/suit/wear_suit = null
-	var/obj/item/clothing/head/head = null
-	var/obj/item/r_store = null
-	var/obj/item/l_store = null
-	var/amount_grown = 0
-	var/time_of_birth
-	var/max_grown = 200
-	var/evolution_stored = 0 //How much evolution they have stored
-
 	var/upgrade_stored = 0 //How much upgrade points they have stored.
 	var/upgrade = -1  //This will track their upgrade level. -1 means cannot upgrade
+	var/max_grown = 200
+	var/evolution_stored = 0 //How much evolution they have stored
+	var/tier = 1 //This will track their "tier" to restrict/limit evolutions
+	var/amount_grown = 0 // for some fucking reason larva use their own variable here, who knows why
+	var/time_of_birth
 
-	var/has_spat = 0
-	var/armor_bonus = 0 //Extra chance of deflecting projectiles due to temporary effects
-	var/has_screeched = 0
-
-	var/devour_timer = 0
-
-	var/last_rng_attack = 0
-
-	var/obj/structure/tunnel/start_dig = null
-	var/tunnel_delay = 0
-	var/datum/ammo/xeno/ammo = null //The ammo datum for our spit projectiles. We're born with this, it changes sometimes.
 	var/pslash_delay = 0
 
-	var/current_aura = null //"claw", "armor", "regen", "speed"
-	var/frenzy_aura = 0 //Strength of aura we are affected by. NOT THE ONE WE ARE EMITTING
-	var/warding_aura = 0
-	var/recovery_aura = 0
-
-	var/is_zoomed = 0
-	var/zoom_turf = null
-	var/autopsied = 0
-
-	var/tier = 1 //This will track their "tier" to restrict/limit evolutions
 	var/hardcore = 0 //Set to 1 in New() when Whiskey Outpost is active. Prevents healing and queen evolution
-	var/crit_health = -100 // What negative healthy they die in.
-	var/gib_chance  = 5 // % chance of them exploding when taking damage. Goes up with damage inflicted.
-
-	var/fortify_timer = 60
-	var/burrow_timer = 200
-	var/tunnel_timer = 20
-
-	var/datum/action/xeno_action/activable/selected_ability
-	var/selected_resin = RESIN_WALL //which resin structure to build when we secrete resin
-	var/selected_construction = XENO_STRUCTURE_CORE //which special structure to build when we place constructions
 
 	//Naming variables
 	var/caste_name = "Drone"
@@ -173,79 +137,9 @@
 	//It should add them properly on New() and should reset/readd them on evolves
 	var/list/inherent_verbs = list()
 
-	//Lord forgive me for this horror, but Life code is awful
-	//These are tally vars, yep. Because resetting the aura value directly leads to fuckups
-	var/frenzy_new = 0
-	var/warding_new = 0
-	var/recovery_new = 0
-
-	var/xeno_mobhud = FALSE //whether the xeno mobhud is activated or not.
-
-	//Old crusher specific vars, moved here so the Queen can use charge, and potential future Xenos
-	var/charge_dir = 0 //Stores initial charge dir to immediately cut out any direction change shenanigans
-	var/charge_timer = 0 //Has a small charge window. has to keep moving to build speed.
-	var/turf/lastturf = null
-	var/noise_timer = 0 // Makes a mech footstep, but only every 3 turfs.
-	var/has_moved = 0
-	var/is_charging = 0 //Will the mob charge when moving ? You need the charge verb to change this
-	var/weedwalking_activated = 0 //Hivelord's weedwalking
-	var/last_charge_move = 0 //Time of the last time the Crusher moved while charging. If it's too far apart, the charge is broken
-
-	//Burrower Vars
-	var/used_tremor = 0
-
-	//Pounce vars
-	var/used_pounce = 0
-
-	// Warrior vars
-	var/agility = 0		// 0 - upright, 1 - all fours
-	var/ripping_limb = 0
-
-	var/used_lunge = 0
-	var/used_fling = 0
-	var/used_punch = 0
-	var/used_toggle_agility = 0
-
-	var/used_jab = 0
-
-	// Defender vars
-	var/fortify = 0
-	var/crest_defense = 0
-
-	var/used_headbutt = 0
-	var/used_tail_sweep = 0
-	var/used_crest_defense = 0
-	var/used_fortify = 0
-
-	// Burrowers
-	var/used_burrow = 0
-	var/used_tunnel = 0
-	var/used_widen = 0
-
-	var/tunnel = 0
-	var/burrow = 0
-
-	//Praetorian vars
-	var/used_acid_spray = 0
-	var/prae_status_flags = 0 // Used to store praetorian status flags so we don't stack screech buffs
-
-	//Carrier vars
-	var/threw_a_hugger = 0
-	var/huggers_cur = 0
-	var/eggs_cur = 0
-	var/huggers_max = 0
-	var/eggs_max = 0
-	var/used_shaman_ability = 0
-
 	//Leader vars
 	var/leader_aura_strength = 0 //Pheromone strength inherited from Queen
 	var/leader_current_aura = "" //Pheromone type inherited from Queen
-
-	// Related to zooming out (primarily queen and boiler)
-	var/tileoffset = 0
-	var/viewsize = 0
-
-	gender = NEUTER
 
 	//////////////////////////////////////////////////////////////////
 	//
@@ -269,46 +163,103 @@
 	var/acid_modifier = 0
 	var/weed_modifier = 0
 	var/evasion_modifier = 0
+	var/attack_speed_modifier = 0
+	var/armor_integrity_modifier = 0
 
-	// TODO: move this to caste-specific
-	var/tacklemin = 2
-	var/tacklemax = 3
-	var/tackle_chance = 35
-	var/need_weeds = TRUE
-
-	//Defender
-	var/spiked = FALSE
-
-	//Warrior
-	var/boxer = FALSE
-
-	//Pouncing Castes
-	var/pounce_slash = FALSE
-
-	//Strain Variables
-	//Boiler
-	// TODO: move this to caste-specific
-	var/bombard_cooldown = 30
-	var/min_bombard_dist = 5
-
-	var/acid_spray_activation_time = 12
-
+	//////////////////////////////////////////////////////////////////
+	//
+	//		Intrinsic State - well-ish modularized
+	//
+	// 		State used by all Xeno mobs.
+	//
+	//////////////////////////////////////////////////////////////////
+	var/xeno_mobhud = FALSE //whether the xeno mobhud is activated or not.
+	var/xeno_hostile_hud = FALSE // 'Hostile' HUD - the verb Xenos use to see tags, etc on humans
+	var/list/plasma_types = list() //The types of plasma the caste contains
+	var/list/xeno_shields = list() // List of /datum/xeno_shield that holds all active shields on the Xeno.
 	var/acid_splash_cooldown = SECONDS_5 //Time it takes between acid splash retaliate procs
 	var/acid_splash_last //Last recorded time that an acid splash procced
+	var/interference = 0 // Stagger for predator weapons. Prevents hivemind usage, queen overwatching, etc.
+	var/mob/living/carbon/Xenomorph/observed_xeno // Overwatched xeno for xeno hivemind vision
+	var/need_weeds = TRUE // Do we need weeds to regen HP?
+	var/datum/behavior_delegate/behavior_delegate = null // Holds behavior delegate. Governs all 'unique' hooked behavior of the Xeno. Set by caste datums and strains.
+	var/current_aura = null //"claw", "armor", "regen", "speed"
+	var/frenzy_new = 0 // Tally vars used in Xeno Life() for Pheromones
+	var/warding_new = 0
+	var/recovery_new = 0
+	var/frenzy_aura = 0 //Strength of aura we are affected by. NOT THE ONE WE ARE EMITTING
+	var/warding_aura = 0
+	var/recovery_aura = 0
+	var/datum/action/xeno_action/activable/selected_ability // Our currently selected ability
+	var/datum/action/xeno_action/activable/queued_action // Action to perform on the next click.
+	var/ignores_pheromones = FALSE // title
+	var/is_zoomed = FALSE
+	var/tileoffset = 0 // Zooming-out related vars
+	var/viewsize = 0
+	var/banished = FALSE // Banished xenos can be attacked by all other xenos
 
-	//New variables for how charges work, max speed, speed buildup, all that jazz
-	// TODO: move this to caste-specific if possible (this one's tricky)
-	var/charge_speed_max = 1.5 //Can only gain this much speed before capping
-	var/charge_speed_buildup = 0.15 //POSITIVE amount of speed built up during a charge each step
-	var/charge_turfs_to_charge = 5 //Amount of turfs to build up before a charge begins
-	var/charge_speed = 0 //Modifier on base move delay as charge builds up
-	var/charge_roar = 0 //Did we roar in our charge yet?
 
-	var/hive_pos = NORMAL_XENO // The position of the xeno in the hive (0 = normal xeno; 1 = queen; 2+ = hive leader)
-	var/ignores_pheromones = FALSE
+	//////////////////////////////////////////////////////////////////
+	//
+	//		Misc. State - poorly modularized
+	//
+	// 		This is a messy section comprising state that really shouldn't
+	//      exist on the base Xeno type, but is anyway due to the messy
+	//  	way the game's interaction system was architected.
+	//		Suffice it to say, the alternative to storing all this here
+	// 		is a bunch of messy typecasts and/or snowflake checks in many, many procs
+	// 		affected integrally by this state, instead of being defined in
+	// 		an easily modularizable way. So, here you go.
+	//
+	//////////////////////////////////////////////////////////////////
+	var/weedwalking_activated = 0 //Hivelord's weedwalking
+	var/tunnel = 0
+	var/burrow = 0
+	var/fortify = 0
+	var/crest_defense = 0
+	var/agility = 0		// 0 - upright, 1 - all fours
+	var/ripping_limb = 0
+	// Related to zooming out (primarily queen and boiler)
+	var/devour_timer = 0 // The world.time at which we will regurgitate our currently-vored victim
+	var/extra_build_dist = 0 // For drones/hivelords. Extends the maximum build range they have
+	var/selected_resin = RESIN_WALL //which resin structure to build when we secrete resin
+	var/selected_construction = XENO_STRUCTURE_CORE //which special structure to build when we place constructions
+	var/datum/ammo/xeno/ammo = null //The ammo datum for our spit projectiles. We're born with this, it changes sometimes.
+	var/obj/structure/tunnel/start_dig = null
+	var/tunnel_delay = 0
+	var/spiked = FALSE
 
-	// Banished xenos can be attacked by all other xenos
-	var/banished = FALSE
+
+	//////////////////////////////////////////////////////////////////
+	//
+	//		Vars that should be deleted
+	//
+	//////////////////////////////////////////////////////////////////
+	var/burrow_timer = 200
+	var/tunnel_timer = 20
+
+	///// BELOW HERE LIE COOLDOWN VARS
+	var/has_spat = 0
+	var/has_screeched = 0
+	//Burrower Vars
+	var/used_tremor = 0
+	// Defender vars
+	var/used_headbutt = 0
+	var/used_fortify = 0
+	// Burrowers
+	var/used_burrow = 0
+	var/used_tunnel = 0
+
+	var/used_shaman_ability = FALSE
+
+	//Carrier vars
+	var/threw_a_hugger = 0
+	var/huggers_cur = 0
+	var/eggs_cur = 0
+	var/huggers_max = 0
+	var/eggs_max = 0
+	var/laid_egg = 0
+
 
 /mob/living/carbon/Xenomorph/New(var/new_loc, var/mob/living/carbon/Xenomorph/oldXeno)
 	var/area/A = get_area(src)
@@ -371,20 +322,16 @@
 
 	regenerate_icons()
 	toggle_xeno_mobhud() //This is a verb, but fuck it, it just werks
+	toggle_xeno_hostilehud()
 
 	if(oldXeno)
-		if(xeno_mobhud)
-			var/datum/mob_hud/H = huds[MOB_HUD_XENO_STATUS]
-			H.add_hud_to(src) //keep our mobhud choice
-			xeno_mobhud = TRUE
-
 		a_intent_change(oldXeno.a_intent)//Keep intent
 		if(oldXeno.m_intent != MOVE_INTENT_RUN)
 			toggle_mov_intent()//Keep move intent
 
 		if(oldXeno.layer == XENO_HIDING_LAYER)
 			//We are hiding, let's keep hiding if we can!
-			for(var/datum/action/xeno_action/xenohide/hide in actions)
+			for(var/datum/action/xeno_action/onclick/xenohide/hide in actions)
 				if(istype(hide))
 					layer = XENO_HIDING_LAYER
 
@@ -396,8 +343,12 @@
 		if(IS_XENO_LEADER(oldXeno))
 			hive.replace_hive_leader(oldXeno, src)
 
-	// Set the maximum overheal to % of the xeno's max health
-	max_overheal = round(maxHealth*XENO_MAXOVERHEAL_OF_MAXHEALTH)
+	if (caste)
+		behavior_delegate = new caste.behavior_delegate_type()
+		behavior_delegate.bound_xeno = src
+	else
+		CRASH("Xenomorph [src] has no caste datum! Tell the devs!")
+
 
 	if(round_statistics && !statistic_exempt)
 		round_statistics.track_new_participant(faction, 1)
@@ -406,7 +357,7 @@
 	// This can happen if a xeno gets made before the game starts
 	if (hive && hive.hive_ui)
 		hive.hive_ui.update_all_xeno_data()
-		
+
 	job = "Xenomorph"
 
 /mob/living/carbon/Xenomorph/proc/update_caste()
@@ -569,7 +520,7 @@
 	var/atom/A = AM.handle_barriers(src)
 	if(A != AM)
 		A.attack_alien(src)
-		next_move = world.time + (10 + caste.attack_delay)
+		next_move = world.time + (10 + caste.attack_delay + attack_speed_modifier)
 		return FALSE
 	return ..()
 
@@ -602,10 +553,11 @@
 	var/datum/mob_hud/MH = huds[MOB_HUD_XENO_INFECTION]
 	MH.add_hud_to(src)
 
-/mob/living/carbon/Xenomorph/lay_down()
-	if(burrow)
+/mob/living/carbon/Xenomorph/Burrower/lay_down()
+	if (burrow)
 		return
 	..()
+
 
 
 /mob/living/carbon/Xenomorph/point_to_atom(atom/A, turf/T)
@@ -676,19 +628,12 @@
 	recalculate_speed()
 	recalculate_armor()
 	recalculate_damage()
-	recalculate_charge()
 	recalculate_evasion()
 
 /mob/living/carbon/Xenomorph/proc/recalculate_tackle()
 	tacklemin = caste.tacklemin + mutators.tackle_strength_bonus + hive.mutators.tackle_strength_bonus
 	tacklemax = caste.tacklemax + mutators.tackle_strength_bonus + hive.mutators.tackle_strength_bonus
 	tackle_chance = round(caste.tackle_chance * mutators.tackle_chance_multiplier * hive.mutators.tackle_chance_multiplier + 0.5)
-
-
-/mob/living/carbon/Xenomorph/proc/recalculate_charge()
-	charge_speed_max = caste.charge_speed_max
-	charge_speed_buildup = caste.charge_speed_buildup * mutators.charge_speed_buildup_multiplier
-	charge_turfs_to_charge = caste.charge_turfs_to_charge + mutators.charge_turfs_to_charge_delta
 
 /mob/living/carbon/Xenomorph/proc/recalculate_health()
 	var/new_max_health = health_modifier + caste.max_health
@@ -742,7 +687,6 @@
 /mob/living/carbon/Xenomorph/proc/recalculate_actions()
 	recalculate_acid()
 	recalculate_weeds()
-	recalculate_gas()
 	pull_multiplier = mutators.pull_multiplier
 	if(isXenoRunner(src))
 		//Xeno runners need a small nerf to dragging speed mutator
@@ -783,11 +727,6 @@
 	else
 		caste.aura_strength = 0
 
-/mob/living/carbon/Xenomorph/proc/recalculate_gas()
-	gas_level = mutators.gas_boost_level
-	gas_life_multiplier = mutators.gas_life_multiplier
-	bombard_cooldown = mutators.bombard_cooldown
-	min_bombard_dist = mutators.min_bombard_dist
 
 /mob/living/carbon/Xenomorph/proc/recalculate_maturation()
 	upgrade_threshold =  caste.upgrade_threshold

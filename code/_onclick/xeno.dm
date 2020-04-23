@@ -27,7 +27,7 @@
 	target = target.handle_barriers(src) // Checks if target will be attacked by the current alien OR if the blocker will be attacked
 	target.attack_alien(src)
 	track_slashes(caste_name)
-	next_move = world.time + (10 + (caste ? caste.attack_delay : 0)) //Adds some lag to the 'attack'
+	next_move = world.time + (10 + caste.attack_delay + attack_speed_modifier) //Adds some lag to the 'attack'
 	return TRUE
 
 /mob/living/carbon/Xenomorph/RangedAttack(var/atom/A)
@@ -46,11 +46,6 @@
 	if (queued_action)
 		handle_queued_action(A)
 		return TRUE
-
-	if(mods["middle"] && !mods["shift"])
-		if(selected_ability && client && client.prefs && client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK)
-			selected_ability.use_ability(A)
-			return TRUE
 
 	if (mods["alt"] && mods["shift"])
 		if (istype(A, /mob/living/carbon/Xenomorph))
@@ -76,61 +71,14 @@
 		if(selected_ability && client && client.prefs && !(client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK))
 			selected_ability.use_ability(A)
 			return TRUE
-
-	if(next_move >= world.time)
-		return 1
-
-	return ..()
-
-/mob/living/carbon/Xenomorph/Boiler/click(var/atom/A, var/list/mods)
-	if(!istype(A,/obj/screen))
-		if(is_zoomed && !is_bombarding)
-			zoom_out()
-			return 1
-
-		if(is_bombarding)
-			if(isturf(A))
-				bomb_turf(A)
-			else if(isturf(get_turf(A)))
-				bomb_turf(get_turf(A))
-			if(client)
-				client.mouse_pointer_icon = initial(client.mouse_pointer_icon)
-			return 1
-
-	if (queued_action)
-		handle_queued_action()
-		return 1
-
-	if(mods["middle"] && !mods["shift"])
-		if (selected_ability && client && client.prefs && client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK)
-			selected_ability.use_ability(A)
-			return 1
-
-	if(mods["shift"])
-		if (selected_ability && client && client.prefs && !client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK)
-			selected_ability.use_ability(A)
-			return 1
-
-	return ..()
-
-/mob/living/carbon/Xenomorph/Crusher/click(var/atom/A, var/list/mods)
-	if(!istype(A, /obj/screen))
-		if(is_charging)
-			stop_momentum(charge_dir)
-
-	if (queued_action)
-		handle_queued_action()
-		return 1
-
+	
 	if(mods["middle"] && !mods["shift"])
 		if(selected_ability && client && client.prefs && client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK)
 			selected_ability.use_ability(A)
-			return 1
+			return TRUE
 
-	if(mods["shift"])
-		if(selected_ability && client && client.prefs && !client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK)
-			selected_ability.use_ability(A)
-			return 1
+	if(next_move >= world.time)
+		return TRUE
 
 	return ..()
 

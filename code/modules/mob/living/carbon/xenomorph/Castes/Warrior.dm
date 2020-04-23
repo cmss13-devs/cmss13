@@ -16,9 +16,11 @@
 	speed = XENO_SPEED_HIGH
 	speed_mod = XENO_SPEED_MOD_LARGE
 
+	behavior_delegate_type = /datum/behavior_delegate/warrior_base
+
 	evolves_to = list("Praetorian", "Crusher")
 	deevolves_to = "Defender"
-	tackle_chance = 40
+	tackle_chance = 30
 	caste_desc = "A powerful front line combatant."
 	agility_speed_increase = -0.7
 	can_vent_crawl = 0
@@ -28,7 +30,7 @@
 	caste_desc = "An alien with an armored carapace. It looks a little more dangerous."
 	upgrade = 1
 
-	tackle_chance = 40
+	tackle_chance = 30
 	agility_speed_increase = -0.8
 
 /datum/caste_datum/warrior/elder
@@ -36,7 +38,7 @@
 	caste_desc = "An alien with an armored carapace. It looks pretty strong."
 	upgrade = 2
 
-	tackle_chance = 45
+	tackle_chance = 35
 	agility_speed_increase = -0.9
 
 /datum/caste_datum/warrior/ancient
@@ -44,7 +46,7 @@
 	caste_desc = "An hulking beast capable of effortlessly breaking and tearing through its enemies."
 	upgrade = 3
 
-	tackle_chance = 48
+	tackle_chance = 40
 	agility_speed_increase = -0.9
 
 /datum/caste_datum/warrior/primordial
@@ -74,18 +76,15 @@
 	tier = 2
 
 	actions = list(
-		/datum/action/xeno_action/xeno_resting,
-		/datum/action/xeno_action/regurgitate,
+		/datum/action/xeno_action/onclick/xeno_resting,
+		/datum/action/xeno_action/onclick/regurgitate,
 		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/activable/toggle_agility,
+		/datum/action/xeno_action/onclick/toggle_agility,
 		/datum/action/xeno_action/activable/fling,
 		/datum/action/xeno_action/activable/lunge,
-		/datum/action/xeno_action/activable/punch
-		)
-
-	new_actions = list(
-		/datum/action/xeno_action/activable/jab,
+		/datum/action/xeno_action/activable/warrior_punch
 	)
+	
 	mutation_type = WARRIOR_NORMAL
 
 /mob/living/carbon/Xenomorph/Warrior/update_icons()
@@ -117,7 +116,7 @@
 	..()
 
 
-/mob/living/carbon/Xenomorph/Warrior/start_pulling(atom/movable/AM, lunge, no_msg)
+/mob/living/carbon/Xenomorph/Warrior/start_pulling(atom/movable/AM, lunge)
 	if (!check_state() || agility)
 		return FALSE
 
@@ -126,43 +125,40 @@
 	var/mob/living/L = AM
 	var/should_neckgrab = isHumanStrict(L)
 
-	if(L.pulledby && L) //override pull of other mobs
+	if(L && L.pulledby && L != src ) //override pull of other mobs
 		visible_message(SPAN_WARNING("[src] has broken [L.pulledby]'s grip on [L]!"), null, null, 5)
 		L.pulledby.stop_pulling()
 
-	if(!isXeno(L))
-		if (used_lunge && !lunge)
-			to_chat(src, SPAN_XENOWARNING("You must gather your strength before neckgrabbing again."))
-			return FALSE
-
-		if (!check_plasma(10))
-			return FALSE
-
-	. = ..(L, lunge, should_neckgrab) //no_msg = true because we don't want to show the defaul pull message
+	. = ..(L, lunge, should_neckgrab)
 
 	if(.) //successful pull
 		if(should_neckgrab)
-			use_plasma(10)
-			used_lunge = 1
 			grab_level = GRAB_NECK
 			L.drop_held_items()
-			L.Stun(2.5)
+			L.Stun(0.5)
 			L.pulledby = src
 			visible_message(SPAN_XENOWARNING("\The [src] grabs [L] by the throat!"), \
 			SPAN_XENOWARNING("You grab [L] by the throat!"))
-
-	if(used_lunge)
-		used_lunge = 2 // sanity checking
-		add_timer(CALLBACK(src, .proc/lunge_cooldown), caste.lunge_cooldown)
-
-/mob/living/carbon/Xenomorph/Warrior/proc/lunge_cooldown()
-	used_lunge = 0
-	to_chat(src, SPAN_NOTICE("You get ready to lunge again."))
-	for(var/X in actions)
-		var/datum/action/act = X
-		act.update_button_icon()
 
 /mob/living/carbon/Xenomorph/Warrior/hitby(atom/movable/AM)
 	if(ishuman(AM))
 		return
 	..()
+
+/datum/behavior_delegate/warrior_base
+	name = "Base Warrior Behavior Delegate"
+	
+	var/stored_shield_max = 160
+	var/stored_shield_per_slash = 40
+	var/stored_shield = 0
+
+/datum/behavior_delegate/warrior_base/melee_attack_additional_effects_self()
+	if (stored_shield == stored_shield_max)
+		bound_xeno.add_xeno_shield(stored_shield, XENO_SHIELD_SOURCE_GENERIC)
+		to_chat(bound_xeno, SPAN_XENOHIGHDANGER("You feel your rage increase your resiliency to damage!"))
+		stored_shield = 0
+	else
+		stored_shield += stored_shield_per_slash
+
+/datum/behavior_delegate/warrior_base/append_to_stat()
+	stat("Stored Shield", "[stored_shield]/[stored_shield_max]")

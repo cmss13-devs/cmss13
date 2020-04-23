@@ -1,11 +1,11 @@
 /datum/effects/acid
 	effect_name = "acid"
-	duration = 20
+	duration = 10
 	icon_path = 'icons/effects/status_effects.dmi'
 	obj_icon_state_path = "+acid"
 	mob_icon_state_path = "human_acid"
 	var/original_duration = 50			//Set to 50 for safety reasons if something fails
-	var/damage_in_total = 40
+	var/damage_in_total = 30
 	var/acid_multiplier = 1
 
 /datum/effects/acid/New(var/atom/A, var/zone = "chest")

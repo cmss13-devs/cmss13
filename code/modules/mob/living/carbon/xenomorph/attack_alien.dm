@@ -73,6 +73,16 @@
 			if(M.burn_damage_lower)
 				acid_damage = rand(M.burn_damage_lower, M.burn_damage_upper)
 
+			// Bonus damage for base praetorian acid
+			var/datum/effects/prae_acid_stacks/PAS = null
+			for (var/datum/effects/prae_acid_stacks/found in effects_list)
+				PAS = found
+				break 
+
+			if (istype(PAS) && PAS.stack_count >= PAS.max_stacks)
+				PAS.on_proc()
+
+
 			//Frenzy auras stack in a way, then the raw value is multipled by two to get the additive modifier
 			if(M.frenzy_aura > 0)
 				damage += (M.frenzy_aura * 2)
@@ -80,24 +90,6 @@
 					acid_damage += (M.frenzy_aura * 2)
 
 			M.animation_attack_on(src)
-
-			//Check for a special bite attack
-			if(M.caste && prob(M.caste.bite_chance))
-				M.bite_attack(src, damage)
-				return TRUE
-
-			//Check for a special tail attack
-			if(M.caste && prob(M.caste.tail_chance))
-				M.tail_attack(src, damage)
-				return TRUE
-
-
-			// Check for guaranteed Ravager tail stab
-			if(isXenoRavager(M))
-				var/mob/living/carbon/Xenomorph/Ravager/R = M
-				if(R.mutation_type == RAVAGER_NORMAL)
-					if(R.tail_stab(src, damage))
-						return TRUE
 
 			//Somehow we will deal no damage on this attack
 			if(!damage)
@@ -155,29 +147,11 @@
 				M.attack_log += text("\[[time_stamp()]\] <font color='red'>slashed [key_name(src)]</font>")
 			log_attack("[key_name(M)] slashed [key_name(src)]")
 
-			if(isXenoRavager(M))
-				var/mob/living/carbon/Xenomorph/Ravager/R = M
-				if(R.mutation_type == RAVAGER_VETERAN)
-					if(R.delimb(src, affecting))
-						return TRUE
-				if(R.mutation_type == RAVAGER_NORMAL)
-					R.shrapnel_embed(src, affecting)
-
-			// Snowflake code for Praetorian, unfortunately there's no place to put this other than here. Fortunately its very cheap
-			if(isXenoPraetorian(M))
-				var/mob/living/carbon/Xenomorph/Praetorian/P = M
-				var/datum/caste_datum/praetorian/pCaste = P.caste
-				if(P.prae_status_flags & PRAE_DANCER_STATSBUFFED && P.mutation_type == PRAETORIAN_DANCER)
-					damage += 15 // Only slightly stronger than a normal attack, Praes should be using impale here
-					to_chat(P, SPAN_WARNING("You expend your dance to empower your attack!"))
-					P.speed_modifier += pCaste.dance_speed_buff
-					P.evasion_modifier -= pCaste.dance_evasion_buff
-					P.recalculate_speed()
-					P.recalculate_evasion()
-					P.prae_status_flags &= ~PRAE_DANCER_STATSBUFFED
-
-
 			var/n_damage = armor_damage_reduction(config.marine_melee, damage, armor_block)
+
+			if(M.behavior_delegate)
+				n_damage = M.behavior_delegate.melee_attack_modify_damage(n_damage, src)
+
 			//nice messages so people know that armor works
 			if(n_damage <= 0.34*damage)
 				show_message(SPAN_WARNING("Your armor absorbs the blow!"), null, null, null, CHAT_TYPE_ARMOR_DAMAGE)
@@ -195,6 +169,11 @@
 				else if(n_acid_damage <= 0.67*acid_damage)
 					show_message(SPAN_WARNING("Your armor reduces the effect of the acid!"), null, null, null, CHAT_TYPE_ARMOR_DAMAGE)
 				apply_damage(n_acid_damage, BURN, affecting, 0) //Burn damage
+
+			if(M.behavior_delegate)
+				var/datum/behavior_delegate/MD = M.behavior_delegate
+				MD.melee_attack_additional_effects_target(src)
+				MD.melee_attack_additional_effects_self()
 
 			updatehealth()
 

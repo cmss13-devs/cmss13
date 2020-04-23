@@ -68,7 +68,9 @@
 	update_icon()
 	new /obj/effect/overlay/temp/acid_pool_splash(loc)
 	playsound(src, 'sound/effects/slosh.ogg', 25, 1)
+	
 	linked_hive.stored_larva += 1
+	
 	melt_body()
 
 /obj/effect/alien/resin/special/pool/process()

@@ -155,6 +155,10 @@
 /datum/event_handler/xeno_overwatch_onmovement/New(mob/living/carbon/Xenomorph/X)
 	src.X = X
 
+/datum/event_handler/xeno_overwatch_onmovement/Dispose()
+	X = null 
+	return ..()
+	
 /datum/event_handler/xeno_overwatch_onmovement/handle(sender, datum/event_args/ev_args)
 	var/datum/event_args/mob_movement/event_args = ev_args
 	var/isMoving = event_args.moving

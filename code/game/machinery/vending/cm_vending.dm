@@ -1733,7 +1733,7 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 		list("Explosives", -1, null, null),
 		list("M15 Fragmentation Grenade", round(scale * 2), /obj/item/explosive/grenade/HE/m15, "black"),
 		list("M20 Claymore Anti-Personnel Mine", round(scale * 2), /obj/item/explosive/mine, "black"),
-		list("M40 HEDP Grenade Box", round(scale * 2), /obj/item/storage/box/nade_box, "black"),
+		list("M40 HEDP Grenade Box", round(scale * 1), /obj/item/storage/box/nade_box, "black"),
 		list("M40 HEFA Grenade Box", round(scale * 2), /obj/item/storage/box/nade_box/frag, "black"),
 		list("M40 HIDP Incendiary Grenade", round(scale * 2), /obj/item/explosive/grenade/incendiary, "black"),
 		list("M40 HSDP Smoke Grenade", round(scale * 5), /obj/item/explosive/grenade/smokebomb, "black"),

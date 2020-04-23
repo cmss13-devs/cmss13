@@ -29136,7 +29136,6 @@
 	name = "Secure Racks";
 	req_access = list(19)
 	},
-/obj/item/explosive/grenade/xeno_neuro_grenade,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "purplewhite"

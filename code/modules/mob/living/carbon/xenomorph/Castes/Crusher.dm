@@ -4,23 +4,24 @@
 	tier = 3
 	upgrade = 0
 
-	melee_damage_lower = XENO_DAMAGE_LOWPLUS
-	melee_damage_upper = XENO_DAMAGE_MEDIUMLOW
-	max_health = XENO_HEALTH_HIGH
+	melee_damage_lower = XENO_DAMAGE_MEDIUM
+	melee_damage_upper = XENO_DAMAGE_MEDIUM
+	max_health = XENO_HEALTH_HIGHMEDIUM + XENO_HEALTH_MOD_SMALL
 	plasma_gain = XENO_PLASMA_GAIN_HIGHMED
 	plasma_max = XENO_PLASMA_MEDIUM
 	xeno_explosion_resistance = XENO_GIGA_EXPLOSIVE_ARMOR
-	armor_deflection = XENO_ULTRA_ARMOR
-	armor_hardiness_mult = XENO_ARMOR_FACTOR_HIGH
+	armor_deflection = XENO_HEAVY_ARMOR
+	armor_hardiness_mult = XENO_ARMOR_FACTOR_CRUSHER
 	evasion = XENO_EVASION_NONE
-	speed = XENO_SPEED_MEDHIGH
-	speed_mod = XENO_SPEED_MOD_SMALL
+	speed = XENO_SPEED_MEDIUM
+	speed_mod = XENO_SPEED_MOD_LARGE
+
+	behavior_delegate_type = /datum/behavior_delegate/crusher_base
 
 	tackle_chance = 15
 	evolution_allowed = FALSE
 	deevolves_to = "Warrior"
 	caste_desc = "A huge tanky xenomorph."
-	tail_chance = 0 //Inherited from old code. Tail's too big
 
 /datum/caste_datum/crusher/mature
 	upgrade_name = "Mature"
@@ -66,397 +67,143 @@
 
 	mob_size = MOB_SIZE_BIG
 
-	is_charging = 1 //Crushers start with charging enabled
-
 	pixel_x = -16
 	pixel_y = -3
 	old_x = -16
 	old_y = -3
 
-	actions = list(
-		/datum/action/xeno_action/xeno_resting,
-		/datum/action/xeno_action/regurgitate,
-		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/activable/stomp,
-		/datum/action/xeno_action/ready_charge,
-		)
+	rebounds = FALSE // no more fucking pinball crooshers
 
-	new_actions = list(
-		/datum/action/xeno_action/activable/earthquake,
+	actions = list(
+		/datum/action/xeno_action/onclick/xeno_resting,
+		/datum/action/xeno_action/onclick/regurgitate,
+		/datum/action/xeno_action/watch_xeno,
+		/datum/action/xeno_action/activable/pounce/crusher_charge,
+		/datum/action/xeno_action/onclick/crusher_stomp,
+		/datum/action/xeno_action/onclick/crusher_shield
 	)
+
 	mutation_type = CRUSHER_NORMAL
 
-	next_delay_delay = 2 // they need it for charge
-
-/mob/living/carbon/Xenomorph/Crusher/proc/stomp()
-	if(!check_state()) return
-
-	if(world.time < has_screeched + CRUSHER_STOMP_COOLDOWN) //Sure, let's use this.
-		to_chat(src, SPAN_XENOWARNING("You are not ready to stomp again."))
-		return FALSE
-
-	if(legcuffed)
-		to_chat(src, SPAN_XENODANGER("You can't rear up to stomp with that thing on your leg!"))
-		return
-
-	if(!check_plasma(50)) return
-	has_screeched = world.time
-	use_plasma(50)
-
-	playsound(loc, 'sound/effects/bang.ogg', 25, 0)
-	visible_message(SPAN_XENODANGER("[src] smashes into the ground!"), \
-	SPAN_XENODANGER("You smash into the ground!"))
-	create_stomp() //Adds the visual effect. Wom wom wom
-
-	var/i = 5
-	for(var/mob/living/M in range(1,loc))
-		if(!i) break
-		if(!isXeno(M))
-			if(M.loc == loc)
-				if(M.stat == DEAD)
-					continue
-				if(!(M.status_flags & XENO_HOST) && !istype(M.buckled, /obj/structure/bed/nest))
-					M.take_overall_damage(40) //The same as a full charge, but no more than that.
-					M.last_damage_source = initial(name)
-					M.last_damage_mob = src
-					M.attack_log += text("\[[time_stamp()]\] <font color='orange'>was xeno stomped by [src] ([ckey])</font>")
-					attack_log += text("\[[time_stamp()]\] <font color='red'>xeno stomped [M.name] ([M.ckey])</font>")
-					log_attack("[src] ([ckey]) xeno stomped [M.name] ([M.ckey])")
-				M.KnockDown(rand(2, 3))
-				to_chat(M, SPAN_HIGHDANGER("You are stomped on by [src]!"))
-			shake_camera(M, 2, 2)
-		i--
-
-/mob/living/carbon/Xenomorph/Crusher/proc/earthquake()
-
-	if(!check_state()) return
-
-	if(world.time < has_screeched + CRUSHER_EARTHQUAKE_COOLDOWN) //Sure, let's use this.
-		to_chat(src, SPAN_XENOWARNING("You are not ready to cause an earthquake yet."))
-		return FALSE
-
-	if(legcuffed)
-		to_chat(src, SPAN_XENODANGER("You can't rear up to stomp the ground with that thing on your leg!"))
-		return
-
-	if(!check_plasma(100)) return
-	has_screeched = world.time
-	use_plasma(100)
-
-	playsound(loc, 'sound/effects/bang.ogg', 25, 0)
-	visible_message(SPAN_XENODANGER("[src] smashes into the ground, causing a violent earthquake!"), \
-	SPAN_XENODANGER("You smash into the ground, causing a violent earthquake!"))
-	create_stomp() //Adds the visual effect. Wom wom wom
-
-	var/i = 5
-	for(var/mob/living/M in range(1,loc))
-		if(!i) break
-		if(!isXeno(M))
-			if(M.loc == loc)
-				if(M.stat == DEAD)
-					continue
-				if(!(M.status_flags & XENO_HOST) && !istype(M.buckled, /obj/structure/bed/nest))
-					M.take_overall_damage(40) //The same as a full charge, but no more than that.
-					M.last_damage_source = initial(name)
-					M.last_damage_mob = src
-					M.attack_log += text("\[[time_stamp()]\] <font color='orange'>was xeno stomped by [src] ([ckey])</font>")
-					attack_log += text("\[[time_stamp()]\] <font color='red'>xeno stomped [M.name] ([M.ckey])</font>")
-					log_attack("[src] ([ckey]) xeno stomped [M.name] ([M.ckey])")
-				M.KnockDown(rand(2, 3))
-				to_chat(M, SPAN_HIGHDANGER("You are stomped on by [src]!"))
-			shake_camera(M, 2, 2)
-		i--
-
-	for(var/mob/living/carbon/human/M in range(5, loc))
-		to_chat(M, SPAN_WARNING("You struggle to remain on your feet as the ground shakes beneath your feet!"))
-		shake_camera(M, 3, 3)
-
-	for(var/mob/living/carbon/human/H in range(2, loc))
-		to_chat(H, SPAN_WARNING("You are knocked down by the violent earthquake beneath your feet!"))
-		H.KnockDown(3)
-
-//The atom collided with is passed to this proc, all types of collisions are dealt with here.
-//The atom does not tell the Crusher how to handle a collision, the Crusher is an independant
-//Xeno who don't need no atom. ~Bmc777
+// Refactored to handle all of crusher's interactions with object during charge.
 /mob/living/carbon/Xenomorph/proc/handle_collision(atom/target)
 	if(!target)
 		return FALSE
 
 	//Barricade collision
-	if(istype(target, /obj/structure/barricade))
+	else if (istype(target, /obj/structure/barricade))
 		var/obj/structure/barricade/B = target
-		if(charge_speed > charge_speed_buildup * charge_turfs_to_charge)
-			visible_message(SPAN_DANGER("[src] rams into [B] and skids to a halt!"),
-			SPAN_XENOWARNING("You ram into [B] and skid to a halt!"))
-			flags_pass = NO_FLAGS
-			update_icons()
-			B.Collided(src)
-			stop_momentum(charge_dir)
-			return TRUE
-		else
-			stop_momentum(charge_dir)
-			return FALSE
+		visible_message(SPAN_DANGER("[src] rams into [B] and skids to a halt!"), SPAN_XENOWARNING("You ram into [B] and skid to a halt!"))
+		
+		flags_pass = NO_FLAGS
+		B.Collided(src)
+		. =  FALSE
 
-	else if(istype(target, /obj/vehicle/multitile))
-		var/obj/vehicle/multitile/H = target
-		if(charge_speed > charge_speed_buildup * charge_turfs_to_charge)
-			visible_message(SPAN_DANGER("[src] rams into [H] and skids to a halt!"),
-			SPAN_XENOWARNING("You ram into [H] and skid to a halt!"))
-			flags_pass = NO_FLAGS
-			update_icons()
-			H.Collided(src)
-			stop_momentum(charge_dir)
-			return TRUE
-		else
-			stop_momentum(charge_dir)
-			return FALSE
+	else if (istype(target, /obj/vehicle/multitile))
+		var/obj/vehicle/multitile/M = target
+		visible_message(SPAN_DANGER("[src] rams into [M] and skids to a halt!"), SPAN_XENOWARNING("You ram into [M] and skid to a halt!"))
+		flags_pass = NO_FLAGS
+		M.Collided(src)
+		. = FALSE
 
-	else if(istype(target, /obj/structure/machinery/m56d_hmg))
+	else if (istype(target, /obj/structure/machinery/m56d_hmg))
 		var/obj/structure/machinery/m56d_hmg/HMG = target
-		if(charge_speed > charge_speed_buildup * charge_turfs_to_charge)
-			visible_message(SPAN_DANGER("[src] rams [HMG]!"),
-				SPAN_XENODANGER("You ram [HMG]!"))
+		visible_message(SPAN_DANGER("[src] rams [HMG]!"), SPAN_XENODANGER("You ram [HMG]!"))
+		playsound(loc, "punch", 25, 1)
+		HMG.Collided()
+		. =  FALSE
+
+	else if (istype(target, /obj/structure/window))	
+		var/obj/structure/window/W = target
+		if (W.unacidable)
+			. = FALSE
+		else
+			W.shatter_window(1)
+			. =  TRUE // Continue throw
+
+	else if (istype(target, /obj/structure/machinery/door/airlock))
+		var/obj/structure/machinery/door/airlock/A = target
+
+		if (A.unacidable)
+			. = FALSE
+		else
+			A.destroy_airlock()
+
+	else if (istype(target, /obj/structure/grille))
+		var/obj/structure/grille/G = target
+		if(G.unacidable)
+			. =  FALSE
+		else 
+			G.health -=  80 //Usually knocks it down.
+			G.healthcheck()
+			. = TRUE
+
+	else if (istype(target, /obj/structure/table))
+		var/obj/structure/table/T = target
+		T.Crossed(src)
+		. = TRUE
+
+	else if (istype(target, /obj/structure/machinery/defenses))
+		var/obj/structure/machinery/defenses/DF = target
+		visible_message(SPAN_DANGER("[src] rams [DF]!"), SPAN_XENODANGER("You ram [DF]!"))
+		
+		if (!DF.unacidable)
 			playsound(loc, "punch", 25, 1)
-			update_icons()
-			HMG.Collided()
-			stop_momentum(charge_dir)
-			return TRUE
+			DF.stat = 1
+			DF.update_icon()
+			DF.update_health(40)
+		
+		. =  FALSE
+
+	else if (istype(target, /obj/structure/machinery/vending))
+		var/obj/structure/machinery/vending/V = target
+
+		if (unacidable)
+			. = FALSE
 		else
-			stop_momentum(charge_dir)
-			return FALSE
+			visible_message(SPAN_DANGER("[src] smashes straight into [V]!"), SPAN_XENODANGER("You smash straight into [V]!"))
+			playsound(loc, "punch", 25, 1)
+			V.tip_over()
 
-/atom/proc/charge_act(mob/living/carbon/Xenomorph/X)
-	return TRUE
+			var/impact_range = 1
+			var/turf/TA = get_diagonal_step(V, dir)
+			TA = get_step_away(TA, src)
+			var/launch_speed = 2
+			launch_towards(TA, impact_range, launch_speed)
 
-//Catch-all, basically. Collide() isn't going to catch anything non-dense, so this is fine.
-/obj/charge_act(mob/living/carbon/Xenomorph/X)
-	. = ..()
-	if(.)
-		if(unacidable)
-			X.stop_momentum(X.charge_dir)
-			return FALSE
+			. =  TRUE
 
-		if(anchored)
-			if(X.charge_speed < X.charge_speed_buildup * X.charge_turfs_to_charge)
-				X.stop_momentum(X.charge_dir)
-				return FALSE
-			else
-				X.visible_message(SPAN_DANGER("[X] crushes [src]!"),
-				SPAN_XENODANGER("You crush [src]!"))
-				if(contents.len) //Hopefully won't auto-delete things inside crushed stuff.
+	// Anything else?
+	else 
+		if (isobj(target))
+			var/obj/O = target
+			if (O.unacidable)
+				. = FALSE
+			else if (O.anchored)
+				visible_message(SPAN_DANGER("[src] crushes [O]!"), SPAN_XENODANGER("You crush [O]!"))
+				if(O.contents.len) //Hopefully won't auto-delete things inside crushed stuff.
 					var/turf/T = get_turf(src)
-					for(var/atom/movable/S in contents) S.loc = T
-				qdel(src)
-				X.charge_speed -= X.charge_speed_buildup * 3 //Lose three turfs worth of speed
-		else
-			if(X.charge_speed > X.charge_speed_buildup * X.charge_turfs_to_charge)
-				if(buckled_mob)
-					unbuckle()
-				X.visible_message(SPAN_WARNING("[X] knocks [src] aside!"),
-				SPAN_XENOWARNING("You knock [src] aside.")) //Canisters, crates etc. go flying.
+					for(var/atom/movable/S in T.contents) S.loc = T
+			
+				qdel(O)
+				. = TRUE 
+			
+			else 
+				if(O.buckled_mob)
+					O.unbuckle()
+				visible_message(SPAN_WARNING("[src] knocks [O] aside!"), SPAN_XENOWARNING("You knock [O] aside.")) //Canisters, crates etc. go flying.
 				playsound(loc, "punch", 25, 1)
-				var/impact_range = min(round(X.charge_speed) + 1, 3)
-				var/turf/TA = X.get_diagonal_step(src, X.dir)
-				TA = get_step_away(TA, X)
-				var/launch_speed = X.charge_speed
+			
+				var/impact_range = 2
+				var/turf/TA = get_diagonal_step(O, dir)
+				TA = get_step_away(TA, src)
+				var/launch_speed = 2
 				launch_towards(TA, impact_range, launch_speed)
-				X.charge_speed -= X.charge_speed_buildup * 2 //Lose two turfs worth of speed
-			else
-				X.stop_momentum(X.charge_dir)
-				return FALSE
 
-//Beginning special object overrides.
+				. = TRUE
 
-//**READ ME**
-//NO MORE SPECIAL OBJECT OVERRIDES! Do not create another charge_act.
-//For all future collisions, add to the body of handle_collision().
-//We do not want to add Crusher specific procs to objects, all Crusher
-//related code should be handled by Crusher code. The object collided with
-//should handle it's own damage (and deletion if needed) through it's
-//Collided() proc. ~Bmc777
-
-/obj/structure/window/charge_act(mob/living/carbon/Xenomorph/X)
-	if(unacidable)
-		X.stop_momentum(X.charge_dir)
-		return FALSE
-	if(X.charge_speed < X.charge_speed_buildup * X.charge_turfs_to_charge)
-		X.stop_momentum(X.charge_dir)
-		return FALSE
-	health -= X.charge_speed * 80 //Should generally smash it unless not moving very fast.
-	healthcheck(user = X)
-
-	X.charge_speed -= X.charge_speed_buildup * 2 //Lose two turfs worth of speed
-
-	return TRUE
-
-/obj/structure/machinery/door/airlock/charge_act(mob/living/carbon/Xenomorph/X)
-	if(unacidable)
-		X.stop_momentum(X.charge_dir)
-		return FALSE
-	if(X.charge_speed < X.charge_speed_buildup * X.charge_turfs_to_charge)
-		X.stop_momentum(X.charge_dir)
-		return FALSE
-
-	destroy_airlock()
-	X.charge_speed -= X.charge_speed_buildup * 2 //Lose two turfs worth of speed
-	return TRUE
-
-/obj/structure/grille/charge_act(mob/living/carbon/Xenomorph/X)
-	if(unacidable)
-		X.stop_momentum(X.charge_dir)
-		return FALSE
-	if(X.charge_speed < X.charge_speed_buildup * X.charge_turfs_to_charge)
-		X.stop_momentum(X.charge_dir)
-		return FALSE
-	health -= X.charge_speed * 40 //Usually knocks it down.
-	healthcheck()
-
-	X.charge_speed -= X.charge_speed_buildup //Lose one turf worth of speed
-
-	return TRUE
-
-/obj/structure/machinery/vending/charge_act(mob/living/carbon/Xenomorph/X)
-	if(X.charge_speed > X.charge_speed_max/2) //Halfway to full speed or more
-		if(unacidable)
-			X.stop_momentum(X.charge_dir, TRUE)
-			return FALSE
-		X.visible_message(SPAN_DANGER("[X] smashes straight into [src]!"),
-		SPAN_XENODANGER("You smash straight into [src]!"))
-		playsound(loc, "punch", 25, 1)
-		tip_over()
-		var/impact_range = 1
-		var/turf/TA = X.get_diagonal_step(src, X.dir)
-		TA = get_step_away(TA, X)
-		var/launch_speed = X.charge_speed
-		launch_towards(TA, impact_range, launch_speed)
-		X.charge_speed -= X.charge_speed_buildup * 2 //Lose two turfs worth of speed
-		return TRUE
-	else
-		X.stop_momentum(X.charge_dir)
-		return FALSE
-
-/obj/structure/machinery/defenses/sentry/charge_act(mob/living/carbon/Xenomorph/X)
-	if(unacidable)
-		X.stop_momentum(X.charge_dir, TRUE)
-		return FALSE
-	if(X.charge_speed < X.charge_speed_buildup * X.charge_turfs_to_charge)
-		X.stop_momentum(X.charge_dir)
-		return FALSE
-	X.visible_message(SPAN_DANGER("[X] rams [src]!"),
-	SPAN_XENODANGER("You ram [src]!"))
-	playsound(loc, "punch", 25, 1)
-	stat = 1
-	turned_on = FALSE
-	update_icon()
-	update_health(X.charge_speed * 20)
-	X.charge_speed -= X.charge_speed_buildup * 3 //Lose three turfs worth of speed
-	return TRUE
-
-/obj/structure/mineral_door/resin/charge_act(mob/living/carbon/Xenomorph/X)
-	TryToSwitchState(X)
-
-	if(X.charge_speed < X.charge_speed_buildup * X.charge_turfs_to_charge)
-		X.stop_momentum(X.charge_dir)
-		return FALSE
-	else
-		X.charge_speed -= X.charge_speed_buildup * 2 //Lose two turfs worth of speed
-		return TRUE
-
-/obj/structure/table/charge_act(mob/living/carbon/Xenomorph/X)
-	Crossed(X)
-	return TRUE
-
-/mob/living/carbon/charge_act(mob/living/carbon/Xenomorph/X)
-	. = ..()
-	if(. && X.charge_speed > X.charge_speed_buildup * X.charge_turfs_to_charge)
-		if(anchored)
-			X.stop_momentum(X.charge_dir)
-			return FALSE
-		playsound(loc, "punch", 25, 1)
-		if(stat == DEAD)
-			var/count = 0
-			var/turf/TU = get_turf(src)
-			for(var/mob/living/carbon/C in TU)
-				if(C.stat == DEAD)
-					count++
-			if(count)
-				X.charge_speed -= X.charge_speed_buildup / (count * 2) // half normal slowdown regardless of number of corpses.
-		else if(!(status_flags & XENO_HOST) && !istype(buckled, /obj/structure/bed/nest))
-			src.attack_log += text("\[[time_stamp()]\] <font color='orange'>was xeno charged by [X.name] ([X.ckey])</font>")
-			X.attack_log += text("\[[time_stamp()]\] <font color='red'>xeno charged [src.name] ([src.ckey])</font>")
-			log_attack("[X.name] ([X.ckey]) xeno charged [src.name] ([src.ckey])")
-			apply_damage(X.charge_speed * 40, BRUTE)
-			X.visible_message(SPAN_DANGER("[X] rams [src]!"),
-			SPAN_XENODANGER("You ram [src]!"))
-		KnockDown(X.charge_speed * 4)
-		animation_flash_color(src)
-		var/impact_range = min(round(X.charge_speed) + 1, 2)
-		var/turf/TA = X.get_diagonal_step(src, X.dir)
-		TA = get_step_away(TA, X)
-		var/launch_speed = X.charge_speed
-		launch_towards(TA, impact_range, launch_speed) // Distance and speed of being thrown to the side are dependent on speed of crusher
-		X.charge_speed -= X.charge_speed_buildup //Lose one turf worth of speed
-		return TRUE
-
-//Special override case.
-/mob/living/carbon/Xenomorph/charge_act(mob/living/carbon/Xenomorph/X)
-	if(X.charge_speed > X.charge_speed_buildup * X.charge_turfs_to_charge)
-		playsound(loc, "punch", 25, 1)
-		if(hivenumber != X.hivenumber)
-			src.attack_log += text("\[[time_stamp()]\] <font color='orange'>was xeno charged by [X.name] ([X.ckey])</font>")
-			X.attack_log += text("\[[time_stamp()]\] <font color='red'>xeno charged [src.name] ([src.ckey])</font>")
-			log_attack("[X.name] ([X.ckey]) xeno charged [src.name] ([src.ckey])")
-			apply_damage(X.charge_speed * 20, BRUTE) // half damage to avoid sillyness
-		if(anchored) //Ovipositor queen can't be pushed
-			X.stop_momentum(X.charge_dir, TRUE)
-			return TRUE
-		var/impact_range = 1
-		var/turf/TA = X.get_diagonal_step(src, X.dir)
-		launch_towards(TA, impact_range, SPEED_INSTANT)
-		X.charge_speed -= X.charge_speed_buildup * 2 //Lose two turfs worth of speed
-		return TRUE
-	else
-		X.stop_momentum(X.charge_dir)
-		return FALSE
-
-/turf/charge_act(mob/living/carbon/Xenomorph/X)
-	. = ..()
-	if(. && density) //We don't care if it's non dense.
-		if(X.charge_speed < X.charge_speed_max)
-			X.stop_momentum(X.charge_dir)
-			return FALSE
-		else
-			ex_act(EXPLOSION_THRESHOLD_MEDIUM) //Should dismantle, or at least heavily damage it.
-			X.stop_momentum(X.charge_dir)
-			return TRUE
-
-//Custom bump for crushers. This overwrites normal bumpcode from carbon.dm
-/mob/living/carbon/Xenomorph/Crusher/Collide(atom/A)
-	set waitfor = 0
-
-	if(charge_speed < charge_speed_buildup * charge_turfs_to_charge || !is_charging)
-		return ..()
-
-	if(stat || !istype(A) || A == src)
-		return FALSE
-
-	if(now_pushing)
-		return FALSE // Just a plain ol turf, let's return.
-
-	if(dir != charge_dir) //We aren't facing the way we're charging.
-		stop_momentum()
-		return ..()
-
-	if(!handle_collision(A))
-		if(!A.charge_act(src)) //charge_act is depricated and only here to handle cases that have not been refactored as of yet.
-			return ..()
-
-	var/turf/T = get_step(src, dir)
-	if(!T || !get_step_to(src, T)) //If it still exists, try to push it.
-		return ..()
-
-	lastturf = null //Reset this so we can properly continue with momentum.
-	return TRUE
+	if (!.)
+		update_icons()
 
 /mob/living/carbon/Xenomorph/Crusher/update_icons()
 	if(stat == DEAD)
@@ -468,7 +215,7 @@
 			icon_state = "Crusher Knocked Down"
 	else
 		if(m_intent == MOVE_INTENT_RUN)
-			if(charge_speed > charge_speed_buildup * charge_turfs_to_charge) //Let it build up a bit so we're not changing icons every single turf
+			if(throwing) //Let it build up a bit so we're not changing icons every single turf
 				icon_state = "Crusher Charging"
 			else
 				icon_state = "Crusher Running"
@@ -477,3 +224,72 @@
 			icon_state = "Crusher Walking"
 
 	update_fire() //the fire overlay depends on the xeno's stance, so we must update it.
+
+// Mutator delegate for base ravager
+/datum/behavior_delegate/crusher_base
+	name = "Base Crusher Behavior Delegate"
+
+	var/aoe_slash_damage_reduction = 0.66
+
+/datum/behavior_delegate/crusher_base/melee_attack_additional_effects_target(atom/A)
+
+	if (!ishuman(A))
+		return
+
+	new /datum/effects/xeno_slow(A, bound_xeno, , , 25)
+
+	var/damage = bound_xeno.melee_damage_upper * aoe_slash_damage_reduction
+
+	for (var/mob/living/carbon/human/H in orange(1, A))
+		if (H.stat == DEAD)
+			continue
+
+		bound_xeno.visible_message(SPAN_DANGER("[bound_xeno] slashes [H]!"), \
+			SPAN_DANGER("You slash [H]!"), null, null, CHAT_TYPE_XENO_COMBAT)
+
+		bound_xeno.flick_attack_overlay(H, "slash")
+		
+		var/obj/limb/affecting
+		affecting = H.get_limb(ran_zone(bound_xeno.zone_selected, 70))
+		if(!affecting) //No organ, just get a random one
+			affecting = H.get_limb(ran_zone(null, 0))
+		if(!affecting) //Still nothing??
+			affecting = H.get_limb("chest") //Gotta have a torso?!
+
+		var/armor_block = H.getarmor(affecting, ARMOR_MELEE)
+
+		H.last_damage_source = initial(bound_xeno.name)
+		H.last_damage_mob = bound_xeno
+
+		//Logging, including anti-rulebreak logging
+		if(H.status_flags & XENO_HOST && H.stat != DEAD)
+			if(istype(H.buckled, /obj/structure/bed/nest)) //Host was buckled to nest while infected, this is a rule break
+				H.attack_log += text("\[[time_stamp()]\] <font color='orange'><B>was slashed by [key_name(bound_xeno)] while they were infected and nested</B></font>")
+				bound_xeno.attack_log += text("\[[time_stamp()]\] <font color='red'><B>slashed [key_name(H)] while they were infected and nested</B></font>")
+				msg_admin_ff("[key_name(bound_xeno)] slashed [key_name(H)] while they were infected and nested.") //This is a blatant rulebreak, so warn the admins
+			else //Host might be rogue, needs further investigation
+				H.attack_log += text("\[[time_stamp()]\] <font color='orange'>was slashed by [key_name(bound_xeno)] while they were infected</font>")
+				bound_xeno.attack_log += text("\[[time_stamp()]\] <font color='red'>slashed [key_name(src)] while they were infected</font>")
+		else //Normal xenomorph friendship with benefits
+			H.attack_log += text("\[[time_stamp()]\] <font color='orange'>was slashed by [key_name(bound_xeno)]</font>")
+			bound_xeno.attack_log += text("\[[time_stamp()]\] <font color='red'>slashed [key_name(H)]</font>")
+		log_attack("[key_name(bound_xeno)] slashed [key_name(H)]")
+
+		var/n_damage = armor_damage_reduction(config.marine_melee, damage, armor_block)
+
+		//nice messages so people know that armor works
+		if(n_damage <= 0.34*damage)
+			H.show_message(SPAN_WARNING("Your armor absorbs the blow!"), null, null, null, CHAT_TYPE_ARMOR_DAMAGE)
+		else if(n_damage <= 0.67*damage)
+			H.show_message(SPAN_WARNING("Your armor softens the blow!"), null, null, null, CHAT_TYPE_ARMOR_DAMAGE)
+
+		H.apply_damage(n_damage, BRUTE, affecting, 0, sharp = 1, edge = 1) //This should slicey dicey
+		new /datum/effects/xeno_slow(H, bound_xeno, , , 25)
+
+/datum/behavior_delegate/crusher_base/append_to_stat()
+	var/shield_total = 0
+	for (var/datum/xeno_shield/XS in bound_xeno.xeno_shields)
+		if (XS.shield_source == XENO_SHIELD_SOURCE_CRUSHER) 
+			shield_total += XS.amount
+
+	stat("Shield:", "[shield_total]")

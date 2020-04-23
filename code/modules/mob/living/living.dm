@@ -38,10 +38,6 @@
 		for(var/datum/action/A in actions)
 			qdel(A)
 		actions = null
-	if(new_actions)
-		for(var/datum/action/A in new_actions)
-			qdel(A)
-		new_actions = null
 
 //This proc is used for mobs which are affected by pressure to calculate the amount of pressure that actually
 //affects them once clothing is factored in. ~Errorage
@@ -207,7 +203,7 @@
 
 /mob/living/resist_grab(moving_resist)
 	if(pulledby.grab_level)
-		if(prob(30/pulledby.grab_level))
+		if(prob(60/pulledby.grab_level))
 			playsound(src.loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
 			visible_message(SPAN_DANGER("[src] has broken free of [pulledby]'s grip!"), null, null, 5)
 			pulledby.stop_pulling()

@@ -19,5 +19,5 @@
 	D.spiked = TRUE
 	if(D.fortify)
 		D.ability_speed_modifier += 2.5
-	MS.recalculate_actions(description)
+	MS.recalculate_actions(description, flavor_description)
 	D.recalculate_stats()

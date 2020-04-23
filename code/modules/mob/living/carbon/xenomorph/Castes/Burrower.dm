@@ -83,15 +83,15 @@
 	tier = 2
 	upgrade = 0
 	actions = list(
-		/datum/action/xeno_action/xeno_resting,
-		/datum/action/xeno_action/regurgitate,
+		/datum/action/xeno_action/onclick/xeno_resting,
+		/datum/action/xeno_action/onclick/regurgitate,
 		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/plant_weeds,
 		/datum/action/xeno_action/activable/place_construction,
+		/datum/action/xeno_action/onclick/plant_weeds,
 		/datum/action/xeno_action/activable/corrosive_acid,
 		/datum/action/xeno_action/activable/burrow,
-		/datum/action/xeno_action/build_tunnel,
-		/datum/action/xeno_action/place_trap
+		/datum/action/xeno_action/onclick/build_tunnel,
+		/datum/action/xeno_action/onclick/place_trap
 		)
 	inherent_verbs = list(
 		/mob/living/carbon/Xenomorph/proc/vent_crawl,

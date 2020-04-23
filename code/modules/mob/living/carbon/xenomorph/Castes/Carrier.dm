@@ -55,7 +55,7 @@
 	tacklemin = 4
 	tacklemax = 5
 	tackle_chance = 50
-	aura_strength = 2	
+	aura_strength = 2
 	hugger_delay = 20
 	egg_cooldown = 250
 
@@ -89,15 +89,15 @@
 	old_x = -16
 
 	actions = list(
-		/datum/action/xeno_action/xeno_resting,
-		/datum/action/xeno_action/regurgitate,
+		/datum/action/xeno_action/onclick/xeno_resting,
+		/datum/action/xeno_action/onclick/regurgitate,
 		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/plant_weeds,
+		/datum/action/xeno_action/onclick/plant_weeds,
 		/datum/action/xeno_action/activable/place_construction,
-		/datum/action/xeno_action/emit_pheromones,
+		/datum/action/xeno_action/onclick/emit_pheromones,
 		/datum/action/xeno_action/activable/throw_hugger,
 		/datum/action/xeno_action/activable/retrieve_egg,
-		/datum/action/xeno_action/place_trap
+		/datum/action/xeno_action/onclick/place_trap
 		)
 	mutation_type = CARRIER_NORMAL
 

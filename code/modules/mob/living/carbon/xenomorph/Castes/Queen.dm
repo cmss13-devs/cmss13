@@ -131,20 +131,20 @@
 	viewsize = 12
 
 	actions = list(
-		/datum/action/xeno_action/xeno_resting,
-		/datum/action/xeno_action/regurgitate,
+		/datum/action/xeno_action/onclick/xeno_resting,
+		/datum/action/xeno_action/onclick/regurgitate,
 		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/plant_weeds,
-		/datum/action/xeno_action/choose_resin,
+		/datum/action/xeno_action/onclick/plant_weeds,
+		/datum/action/xeno_action/onclick/choose_resin,
 		/datum/action/xeno_action/activable/secrete_resin,
 		/datum/action/xeno_action/activable/place_construction,
-		/datum/action/xeno_action/grow_ovipositor,
+		/datum/action/xeno_action/onclick/grow_ovipositor,
 		/datum/action/xeno_action/activable/screech,
 		/datum/action/xeno_action/activable/corrosive_acid,
-		/datum/action/xeno_action/emit_pheromones,
+		/datum/action/xeno_action/onclick/emit_pheromones,
 		/datum/action/xeno_action/activable/gut,
-		/datum/action/xeno_action/psychic_whisper,
-		/datum/action/xeno_action/shift_spits,
+		/datum/action/xeno_action/onclick/psychic_whisper,
+		/datum/action/xeno_action/onclick/shift_spits,
 		/datum/action/xeno_action/activable/xeno_spit,
 		)
 
@@ -156,20 +156,20 @@
 		)
 
 	var/list/mobile_abilities = list(
-		/datum/action/xeno_action/xeno_resting,
-		/datum/action/xeno_action/regurgitate,
+		/datum/action/xeno_action/onclick/xeno_resting,
+		/datum/action/xeno_action/onclick/regurgitate,
 		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/plant_weeds,
-		/datum/action/xeno_action/choose_resin,
+		/datum/action/xeno_action/onclick/plant_weeds,
+		/datum/action/xeno_action/onclick/choose_resin,
 		/datum/action/xeno_action/activable/secrete_resin,
 		/datum/action/xeno_action/activable/place_construction,
-		/datum/action/xeno_action/grow_ovipositor,
+		/datum/action/xeno_action/onclick/grow_ovipositor,
 		/datum/action/xeno_action/activable/screech,
 		/datum/action/xeno_action/activable/corrosive_acid,
-		/datum/action/xeno_action/emit_pheromones,
+		/datum/action/xeno_action/onclick/emit_pheromones,
 		/datum/action/xeno_action/activable/gut,
-		/datum/action/xeno_action/psychic_whisper,
-		/datum/action/xeno_action/shift_spits,
+		/datum/action/xeno_action/onclick/psychic_whisper,
+		/datum/action/xeno_action/onclick/shift_spits,
 		/datum/action/xeno_action/activable/xeno_spit,
 			)
 	mutation_type = QUEEN_NORMAL
@@ -243,7 +243,7 @@
 //Custom bump for crushers. This overwrites normal bumpcode from carbon.dm
 /mob/living/carbon/Xenomorph/Queen/Collide(atom/A)
 	set waitfor = 0
-	
+
 	if(stat || !istype(A) || A == src)
 		return FALSE
 
@@ -254,7 +254,6 @@
 	if(!T || !get_step_to(src, T)) //If it still exists, try to push it.
 		return ..()
 
-	lastturf = null //Reset this so we can properly continue with momentum.
 	return TRUE
 
 /mob/living/carbon/Xenomorph/Queen/proc/set_orders()
@@ -297,7 +296,9 @@
 
 	xeno_announcement(input, hivenumber)
 
-	log_admin("[key_name_admin(src)] has created a Word of the Queen report: [input]")
+	log_admin("[key_name(src)] has created a Word of the Queen report: <br>")
+	log_admin("[input]")
+	message_admins("[key_name_admin(src)] has created a Word of the Queen report.", 1)
 
 
 /mob/living/carbon/Xenomorph/proc/claw_toggle()
@@ -337,7 +338,7 @@
 
 /mob/living/carbon/Xenomorph/proc/do_claw_toggle_cooldown()
 	pslash_delay = FALSE
-	
+
 /mob/living/carbon/Xenomorph/proc/construction_toggle()
 	set name = "Permit/Disallow Construction Placement"
 	set desc = "Allows you to permit the hive to place construction nodes freely."
@@ -395,7 +396,6 @@
 	playsound(loc, screech_sound_effect, 75, 0, status = 0)
 	visible_message(SPAN_XENOHIGHDANGER("[src] emits an ear-splitting guttural roar!"))
 	create_shriekwave() //Adds the visual effect. Wom wom wom
-	//stop_momentum(charge_dir) //Screech kills a charge
 
 	for(var/mob/M in view())
 		if(M && M.client)
@@ -466,7 +466,7 @@
 	if(!check_plasma(200))
 		return
 	use_plasma(200)
-	last_special = world.time + 50
+	last_special = world.time + MINUTES_15
 
 	visible_message(SPAN_XENOWARNING("[src] begins slowly lifting [victim] into the air."), \
 	SPAN_XENOWARNING("You begin focusing your anger as you slowly lift [victim] into the air."))
@@ -491,24 +491,24 @@
 	for(var/datum/action/A in actions)
 		qdel(A)
 
-	var/list/immobile_abilities = list(
-		/datum/action/xeno_action/regurgitate,
-		/datum/action/xeno_action/remove_eggsac,
-		/datum/action/xeno_action/activable/screech,
-		/datum/action/xeno_action/emit_pheromones,
-		/datum/action/xeno_action/psychic_whisper,
-		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/toggle_queen_zoom,
-		/datum/action/xeno_action/set_xeno_lead,
-		/datum/action/xeno_action/queen_heal,
-		/datum/action/xeno_action/queen_give_plasma,
-		/datum/action/xeno_action/queen_order,
-		/datum/action/xeno_action/activable/place_construction,
-		/datum/action/xeno_action/deevolve,
-		/datum/action/xeno_action/show_minimap,
-		/datum/action/xeno_action/banish,
-		/datum/action/xeno_action/readmit,
-	)
+	var/list/immobile_abilities = list(\
+		/datum/action/xeno_action/onclick/regurgitate,\
+		/datum/action/xeno_action/onclick/remove_eggsac,\
+		/datum/action/xeno_action/activable/screech,\
+		/datum/action/xeno_action/onclick/emit_pheromones,\
+		/datum/action/xeno_action/onclick/psychic_whisper,\
+		/datum/action/xeno_action/watch_xeno,\
+		/datum/action/xeno_action/onclick/toggle_queen_zoom,\
+		/datum/action/xeno_action/onclick/set_xeno_lead,\
+		/datum/action/xeno_action/onclick/queen_heal,\
+		/datum/action/xeno_action/onclick/queen_give_plasma,\
+		/datum/action/xeno_action/onclick/queen_order,\
+		/datum/action/xeno_action/activable/place_construction,\
+		/datum/action/xeno_action/onclick/deevolve, \
+		/datum/action/xeno_action/onclick/show_minimap, \
+		/datum/action/xeno_action/onclick/banish, \
+		/datum/action/xeno_action/onclick/readmit, \
+		)
 
 	for(var/path in immobile_abilities)
 		var/datum/action/xeno_action/A = new path()
@@ -537,7 +537,7 @@
 
 	if(!ovipositor)
 		return
-	
+
 	ovipositor = FALSE
 	map_view = 0
 	close_browser(src, "queenminimap")
@@ -590,9 +590,6 @@
 			icon_state = "Queen Knocked Down"
 	else
 		if(m_intent == MOVE_INTENT_RUN)
-			/*if(charge_speed > charge_speed_buildup * charge_turfs_to_charge) //Let it build up a bit so we're not changing icons every single turf
-				icon_state = "Queen Charging"
-			else*/
 			icon_state = "Queen Running"
 		else
 			icon_state = "Queen Walking"

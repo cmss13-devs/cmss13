@@ -174,7 +174,7 @@
 	desc = "A heavily modified suit of M2 MP Armor used to supress riots from buckethead marines. Slows you down a lot."
 	icon_state = "riot"
 	item_state = "swat_suit"
-	slowdown = SLOWDOWN_ARMOR_HEAVIER
+	slowdown = SLOWDOWN_ARMOR_LOWHEAVY
 	armor_melee = CLOTHING_ARMOR_HIGH
 	armor_bullet = CLOTHING_ARMOR_HIGH
 	armor_laser = CLOTHING_ARMOR_LOW

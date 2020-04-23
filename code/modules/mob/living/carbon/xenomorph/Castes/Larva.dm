@@ -38,9 +38,9 @@
 	gib_chance = 25
 	mob_size = 0
 	actions = list(
-		/datum/action/xeno_action/xeno_resting,
+		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/xenohide,
+		/datum/action/xeno_action/onclick/xenohide,
 		)
 	inherent_verbs = list(
 		/mob/living/carbon/Xenomorph/proc/vent_crawl
@@ -70,11 +70,20 @@
 
 //Larva Progression.. Most of this stuff is obsolete.
 /mob/living/carbon/Xenomorph/Larva/update_progression()
+	var/progress_amount = 1
+
+	if(world.time < XENO_ROUNDSTART_PROGRESS_TIME_1) //xenos have a progression bonus at roundstart
+		progress_amount = XENO_ROUNDSTART_PROGRESS_AMOUNT
+
+	else if (world.time < XENO_ROUNDSTART_PROGRESS_TIME_2) //gradually decrease to no bonus
+		progress_amount = 1 + (1 - XENO_ROUNDSTART_PROGRESS_AMOUNT) * (world.time-XENO_ROUNDSTART_PROGRESS_TIME_2)/(XENO_ROUNDSTART_PROGRESS_TIME_2-XENO_ROUNDSTART_PROGRESS_TIME_1)
+
+	if(ticker && ticker.mode && ticker.mode.xeno_evo_speed)
+		progress_amount = ticker.mode.xeno_evo_speed
+
 	if(amount_grown < max_grown)
-		amount_grown++
-	if(!isnull(src.loc) && amount_grown < max_grown)
-		if(locate(/obj/effect/alien/weeds) in loc)
-			amount_grown++ //Double growth on weeds.
+		amount_grown = min(max_grown, amount_grown + progress_amount)
+
 	if(amount_grown >= max_grown)	// to avoid spam
 		if(upgrade < 0)
 			to_chat(src, SPAN_XENODANGER("Strength ripples through your small form. You are ready to be shaped to the Queen's will."))

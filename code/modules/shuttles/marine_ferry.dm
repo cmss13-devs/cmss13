@@ -202,7 +202,6 @@
 	var/list/turfs_src = get_shuttle_turfs(T_src, info_datums) //Which turfs are we moving?
 
 	playsound(turfs_src[sound_target], sound_takeoff, 100, 0)
-	//playsound_area(get_area(turfs_src[sound_target]),'sound/effects/drums.ogg',100)
 
 	sleep(warmup_time) //Warming up
 

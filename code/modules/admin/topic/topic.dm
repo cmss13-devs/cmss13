@@ -195,7 +195,6 @@
 			if("burrower")			M.change_mob_type( /mob/living/carbon/Xenomorph/Burrower , null, null, delmob )
 			if("crusher")			M.change_mob_type( /mob/living/carbon/Xenomorph/Crusher , null, null, delmob )
 			if("queen")				M.change_mob_type( /mob/living/carbon/Xenomorph/Queen , null, null, delmob )
-			if("ravenger")			M.change_mob_type( /mob/living/carbon/Xenomorph/Ravager/ravenger , null, null, delmob )
 			if("predalien")			M.change_mob_type( /mob/living/carbon/Xenomorph/Predalien , null, null, delmob )
 
 			if("human")				M.change_mob_type( /mob/living/carbon/human , null, null, delmob, href_list["species"])

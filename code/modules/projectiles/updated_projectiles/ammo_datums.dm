@@ -646,6 +646,7 @@
 	..()
 	max_range = config.short_shell_range
 	shrapnel_chance = 0
+	damage = config.no_hit_damage
 	accuracy = config.med_hit_accuracy
 	shell_speed = config.fast_shell_speed
 

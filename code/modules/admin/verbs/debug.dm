@@ -31,7 +31,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 		targetselected = 0
 		if(alert("Proc owned by something?",,"Yes","No") == "Yes")
 			targetselected = 1
-			var/list/options = list("Obj","Mob","Area or Turf","Client")
+			var/list/options = list("Obj","Mob","Area or Turf","Client", "World")
 			if(admin_holder && admin_holder.marked_datums.len)
 				options += "Marked datum"
 
@@ -51,6 +51,8 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 				if("Marked datum")
 					var/datum/D = input_marked_datum(admin_holder.marked_datums)
 					target = D
+				if("World")
+					target = world
 				else
 					return
 

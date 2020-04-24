@@ -257,6 +257,8 @@ var/world_topic_spam_protect_time = world.timeofday
 				for(var/client/C in clients)
 					C.mapVote()
 
+				load_maps_for_vote()
+
 			ticker.delay_end = TRUE
 			message_admins("World/Topic() call (likely MapDaemon.exe) has delayed the round end.", 1)
 			return "SUCCESS"
@@ -276,64 +278,104 @@ var/world_topic_spam_protect_time = world.timeofday
 			return "WILL DO" //Yessir!
 
 		else if(command == "mapdaemon_receive_votes")
+			return count_votes()
 
-			var/list/L = list()
+var/list/datum/entity/map_vote/all_votes
 
-			var/i
-			for(i in NEXT_MAP_CANDIDATES)
-				L[i] = 0 //Initialize it
+/world/proc/load_maps_for_vote()
+	SSentity_manager.filter_then(/datum/entity/map_vote, null, CALLBACK(world, /world.proc/load_maps_for_vote_callback))
 
-			var/forced = 0
-			var/force_result = ""
-			i = null //Sanitize for safety
-			var/j
-			for(i in player_votes)
-				j = player_votes[i]
-				if(i == "}}}") //Special invalid ckey for forcing the next map
-					forced = 1
-					force_result = j
-					continue
-				L[j] = L[j] + 1 //Just number of votes indexed by map name
+/world/proc/load_maps_for_vote_callback(var/list/datum/entity/map_vote/votes)
+	all_votes = list()
+	for(var/i in DEFAULT_NEXT_MAP_CANDIDATES)
+		var/found = FALSE
+		var/datum/entity/map_vote/vote
+		for(var/datum/entity/map_vote/in_vote in votes)
+			if(in_vote.map_name == i)
+				found = TRUE
+				vote = in_vote
+				break
+		
+		if(!found)
+			vote = SSentity_manager.select(/datum/entity/map_vote)
+			vote.map_name = i
+			vote.total_votes = 0
+			vote.save()
 
-			i = null
-			var/most_votes = -1
-			var/next_map = ""
-			for(i in L)
-				if(L[i] > most_votes)
-					most_votes = L[i]
-					next_map = i
+		all_votes[i] = vote
+		
+/world/proc/count_votes()
+	var/list/L = list()
 
-			if(!enable_map_vote && ticker && ticker.mode)
-				next_map = ticker.mode.name
-			else if(enable_map_vote && forced)
-				next_map = force_result
+	var/i
+	for(i in NEXT_MAP_CANDIDATES)
+		if(all_votes && all_votes[i]) // safety check
+			L[i] = all_votes[i].total_votes
+		else
+			L[i] = 0 //Initialize it
 
-			var/text = ""
-			text += "<font color='#00CC00'>"
+	var/forced = 0
+	var/force_result = ""
+	i = null //Sanitize for safety
+	var/j
+	for(i in player_votes)
+		j = player_votes[i]
+		if(i == "}}}") //Special invalid ckey for forcing the next map
+			forced = 1
+			force_result = j
+			continue
+		L[j] = L[j] + 1 //Just number of votes indexed by map name
 
-			var/log_text = ""
-			log_text += "\[[time2text(world.realtime, "DD Month YYYY")]\] Winner: [next_map] ("
+	i = null
+	var/most_votes = -1
+	var/next_map = ""
+	for(i in L)
+		if(L[i] > most_votes && (!all_votes || !all_votes[i] || L[i] != all_votes[i].total_votes)) // so if it didn't get any new votes (due to being out of rotation or shit or broken) it is not picked
+			most_votes = L[i]
+			next_map = i
 
-			text += "The voting results were:<br>"
-			for(var/name in L)
-				text += "[name] - [L[name]]<br>"
-				log_text += "[name] - [L[name]],"
+	if(!enable_map_vote && ticker && ticker.mode)
+		next_map = ticker.mode.name
+	else if(enable_map_vote && forced)
+		next_map = force_result
 
-			log_text += ")\n"
+	var/text = ""
+	text += "<font color='#00CC00'>"
 
-			if(forced) text += "<b>An admin has forced the next map.</b><br>"
+	var/log_text = ""
+	log_text += "\[[time2text(world.realtime, "DD Month YYYY")]\] Winner: [next_map] ("
+
+	text += "The voting results were:<br>"
+	for(var/name in L)
+		var/item_text = "[name] - [L[name]]"
+		if(!forced && all_votes && all_votes[name])
+			var/new_votes = L[name] - all_votes[name].total_votes
+			if(!new_votes)
+				continue
+			item_text += " ([new_votes] new)"
+			if(next_map != name)
+				all_votes[name].total_votes = L[name]
 			else
-				text2file(log_text, "data/map_votes.txt")
+				all_votes[name].total_votes = 0
+			all_votes[name].save()
+		
+		text += item_text + "<br>"
+		log_text += item_text + ","
 
-			text += "<b>The next map will be on [forced ? force_result : next_map].</b>"
+	log_text += ")\n"
 
-			text += "</font>"
+	if(forced) 
+		text += "<b>An admin has forced the next map.</b><br>"
+	else
+		text2file(log_text, "data/map_votes.txt")
 
-			to_world(text)
+	text += "<b>The next map will be on [forced ? force_result : next_map].</b>"
 
-			return next_map
+	text += "</font>"
 
+	to_world(text)
 
+	return next_map
 
 /world/Reboot(var/reason)
 	/*spawn(0)

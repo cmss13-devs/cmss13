@@ -671,6 +671,7 @@
 /mob/living/carbon/Xenomorph/proc/recalculate_armor()
 	//We are calculating it in a roundabout way not to give anyone 100% armor deflection, so we're dividing the differences
 	armor_deflection = armor_modifier + round(100 - (100 - caste.armor_deflection))
+	armor_explosive_buff = explosivearmor_modifier
 
 /mob/living/carbon/Xenomorph/proc/recalculate_damage()
 	melee_damage_lower = damage_modifier

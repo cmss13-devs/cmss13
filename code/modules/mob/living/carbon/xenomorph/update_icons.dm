@@ -155,7 +155,7 @@
 	overlays_standing[X_HEAD_LAYER] = image("icon"='icons/mob/xenos/xenomorph_64x64.dmi', "icon_state" = "empower")
 	overlays_standing[X_HEAD_LAYER].color = rgb(87, 73, 144)
 	apply_overlay(X_HEAD_LAYER)
-	add_timer(CALLBACK(src, .proc/remove_overlay, X_SUIT_LAYER), 20)
+	add_timer(CALLBACK(src, .proc/remove_overlay, X_HEAD_LAYER), 20)
 
 //Xeno Overlays Indexes//////////
 #undef X_HEAD_LAYER

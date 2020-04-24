@@ -57,7 +57,7 @@
 
 	H.frozen = TRUE // cleaned up by the xeno freeze effect anyway
 	H.update_canmove()
-	new /datum/effects/xeno_freeze(H, bound_xeno, , , 25)
+	new /datum/effects/xeno_freeze(H, bound_xeno, , , 17.5)
 	to_chat(bound_xeno, SPAN_XENOHIGHDANGER("You feel one of your traps capture a tallhost!"))
 	to_chat(H, SPAN_XENOHIGHDANGER("You are caught by a trap made of foul resin!"))
 	delete_trap()

@@ -40,7 +40,7 @@
 /mob/living/carbon/Xenomorph/proc/update_progression()
 	var/progress_amount = 1
 
-	if(hive.living_xeno_queen.ovipositor || (ticker.game_start_time + XENO_HIVE_EVOLUTION_FREETIME) >= world.time)
+	if((hive.living_xeno_queen && hive.living_xeno_queen.ovipositor) || (ticker.game_start_time + XENO_HIVE_EVOLUTION_FREETIME) >= world.time)
 		progress_amount = SSxevolution.boost_power
 
 	if(upgrade != -1 && upgrade < 3 && (hive && !hive.living_xeno_queen || hive && hive.living_xeno_queen.loc.z == loc.z)) //upgrade possible

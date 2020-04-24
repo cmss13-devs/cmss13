@@ -362,7 +362,6 @@
 
 	var/list/hive_structures = list() //Stringref list of structures that have been built
 	var/list/hive_constructions = list() //Stringref list of structures that are being built
-	var/list/datum/mind/spawn_list = list() //List of minds that are waiting to be respawned
 
 	var/datum/hive_status_ui/hive_ui = new
 
@@ -778,7 +777,6 @@
 	return TRUE
 
 /datum/hive_status/proc/remove_all_special_structures()
-	clear_spawn_list()
 	for(var/name_ref in hive_structures)
 		for(var/obj/effect/alien/resin/special/S in hive_structures[name_ref])
 			hive_structures[name_ref] -= S
@@ -788,36 +786,6 @@
 	if(!name_ref || !hive_structures[name_ref] || !hive_structures[name_ref].len)
 		return 0
 	return hive_structures[name_ref].len
-
-/datum/hive_status/proc/queue_spawn(var/mob/M)
-	if(!M || !M.mind)
-		return
-	if(!living_xeno_queen)
-		to_chat(M, SPAN_WARNING("The hivemind is disrupted! Your conciousness was lost to the void..."))
-		return
-	if(!has_special_structure(XENO_STRUCTURE_POOL))
-		to_chat(M, SPAN_WARNING("There is no [XENO_STRUCTURE_POOL]! Your conciousness was lost to the void..."))
-		return
-	to_chat(M, SPAN_XENONOTICE("Your conciousness is recovered as you depart your body! You will be reborn soon..."))
-	spawn_list.Add(M.mind)
-
-/datum/hive_status/proc/clear_spawn_list()
-	if(!spawn_list.len)
-		return
-	for(var/datum/mind/picked_mind in spawn_list)
-		var/mind_ckey = picked_mind.ckey
-		if(!directory[mind_ckey])
-			return
-		var/client/C = directory[mind_ckey]
-		var/mob/M = C.mob
-		to_chat(M, SPAN_WARNING("The hivemind has been disrupted! Your conciousness was lost to the void..."))
-	spawn_list = list()
-
-/datum/hive_status/proc/pick_from_spawn_list()
-	if(!spawn_list.len)
-		return null
-	var/datum/mind/M = pick(spawn_list)
-	return M
 
 /datum/hive_status/corrupted
 	hivenumber = XENO_HIVE_CORRUPTED

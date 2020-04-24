@@ -1,4 +1,3 @@
-
 /*
 /turf
 
@@ -33,7 +32,7 @@
 	var/old_turf = "" //The previous turf's path as text. Used when deconning on LV --MadSnailDisease
 
 	var/list/datum/automata_cell/autocells = list()
-
+	var/list/dirt_overlays = list()
 
 /turf/New()
 	..()
@@ -295,14 +294,6 @@
 	else
 		return get_dist(src,t)
 
-//Blood stuff------------
-/turf/proc/AddTracks(var/typepath, var/comingdir, var/goingdir, var/bloodcolor="#A10808")
-	if(!can_bloody)
-		return
-	var/obj/effect/decal/cleanable/blood/tracks/tracks = locate(typepath) in src
-	if(!tracks)
-		tracks = new typepath(src)
-	tracks.AddTracks(comingdir,goingdir,bloodcolor)
 
 //for xeno corrosive acid, 0 for unmeltable, 1 for regular, 2 for strong walls that require strong acid and more time.
 /turf/proc/can_be_dissolved()

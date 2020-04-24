@@ -12,6 +12,7 @@ var/global/list/image/splatter_cache=list()
 	icon = 'icons/effects/blood.dmi'
 	icon_state = "mfloor1"
 	random_icon_states = list("mfloor1", "mfloor2", "mfloor3", "mfloor4", "mfloor5", "mfloor6", "mfloor7")
+	dirt_type = DIRT_SPLATTER
 	var/base_icon = 'icons/effects/blood.dmi'
 	var/list/viruses = list()
 	var/basecolor= "#830303" // Color when wet.
@@ -25,7 +26,6 @@ var/global/list/image/splatter_cache=list()
 	return GC_HINT_IWILLGC
 
 /obj/effect/decal/cleanable/blood/New(location, b_color)
-	..()
 	if(b_color)
 		basecolor = b_color
 	update_icon()
@@ -38,6 +38,7 @@ var/global/list/image/splatter_cache=list()
 
 	if(drying_blood)
 		add_timer(CALLBACK(src, .proc/dry), DRYING_TIME * (amount+1))
+	..()
 
 /obj/effect/decal/cleanable/blood/update_icon()
 	if(basecolor == "rainbow")
@@ -107,6 +108,7 @@ var/global/list/image/splatter_cache=list()
 	icon_state = "gibbl5"
 	random_icon_states = list("gib1", "gib2", "gib3", "gib4", "gib5", "gib6")
 	drying_blood = FALSE
+	dirt_type = DIRT_JUNK
 	var/fleshcolor = "#830303"
 
 /obj/effect/decal/cleanable/blood/gibs/update_icon()

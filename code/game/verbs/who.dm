@@ -10,6 +10,7 @@
 							"Infected humans" = 0,
 							FACTION_MARINE = 0,
 							"USCM Marines" = 0,
+							"Lobby" = 0,
 
 							FACTION_YAUTJA = 0,
 							"Infected preds" = 0,
@@ -47,6 +48,7 @@
 			if(C.mob)	//Juuuust in case
 				if(istype(C.mob, /mob/new_player))
 					entry += " - In Lobby"
+					counted_humanoids["Lobby"]++
 				else
 					entry += " - Playing as [C.mob.real_name]"
 				
@@ -88,7 +90,8 @@
 								counted_humanoids[C.mob.faction]++
 						if(isXeno(C.mob))
 							var/mob/living/carbon/Xenomorph/X = C.mob
-							counted_xenos[X.hivenumber]++
+							if(counted_xenos[X.hivenumber])		//to prevent runtimes from non-standard hivenumbers.
+								counted_xenos[X.hivenumber]++
 							if(X.faction == FACTION_PREDALIEN)
 								counted_xenos[6]++
 							entry += " - <b><font color='red'>Xenomorph</font></b>"
@@ -99,13 +102,16 @@
 		for(var/line in sortList(Lines))
 			msg += "[line]\n"
 		msg += "<b>Total Players: [length(Lines)]</b>"
+		msg += "<br><b style='color:#777'>In Lobby: [counted_humanoids["Lobby"]]</b>"
 		msg += "<br><b style='color:#777'>Observers: [counted_humanoids["Observers"]] players and [counted_humanoids["Admin observers"]] staff members</b>"
 		msg += "<br><b style='color:#2C7EFF'>Humans: [counted_humanoids["Humans"]]</b> <b style='color:#F00'>(Infected: [counted_humanoids["Infected humans"]])</b>"
-		msg += "<br><b style='color:#2C7EFF'>USCM personnel: [counted_humanoids[FACTION_MARINE]]</b> <b style='color:#688944'>(Squad Marines: [counted_humanoids["USCM Marines"]])</b>"
-		msg += "<br><b style='color:#7ABA19'>Predators: [counted_humanoids[FACTION_YAUTJA]]</b> [counted_humanoids["Infected preds"] ? "<b style='color:#F00'>(Infected: [counted_humanoids["Infected preds"]])</b>" : ""]"
+		if(counted_humanoids[FACTION_MARINE])
+			msg += "<br><b style='color:#2C7EFF'>USCM personnel: [counted_humanoids[FACTION_MARINE]]</b> <b style='color:#688944'>(Squad Marines: [counted_humanoids["USCM Marines"]])</b>"
+		if(counted_humanoids[FACTION_YAUTJA])
+			msg += "<br><b style='color:#7ABA19'>Predators: [counted_humanoids[FACTION_YAUTJA]]</b> [counted_humanoids["Infected preds"] ? "<b style='color:#F00'>(Infected: [counted_humanoids["Infected preds"]])</b>" : ""]"
 
 		var/show_fact = TRUE
-		for(var/i = 9;i < LAZYLEN(counted_humanoids) - 1; i++)
+		for(var/i in 10 to LAZYLEN(counted_humanoids) - 2)
 			if(counted_humanoids[counted_humanoids[i]])
 				if(show_fact)
 					msg += "<br><br>Other factions:"

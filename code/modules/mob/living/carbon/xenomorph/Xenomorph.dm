@@ -472,8 +472,7 @@
 	SStracking.stop_tracking("hive_[hivenumber]", src)
 
 	if(hive)
-		hive.remove_xeno(src, TRUE)
-		hive = null
+		hive.remove_xeno(src)
 
 	remove_from_all_mob_huds()
 

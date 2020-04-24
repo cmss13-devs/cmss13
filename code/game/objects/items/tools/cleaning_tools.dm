@@ -17,11 +17,17 @@
 	. = ..()
 	create_reagents(5)
 
+/turf/proc/clean_dirt()
+	for(var/i in dirt_overlays)
+		overlays -= dirt_overlays[i]
+		dirt_overlays[i] = null	
+
 /turf/proc/clean(atom/source)
 	if(source.reagents.has_reagent("water", 1))
-		for(var/obj/effect/O in src)
-			if(istype(O,/obj/effect/decal/cleanable) || istype(O,/obj/effect/overlay))
-				qdel(O)
+		for(var/i in dirt_overlays)
+			overlays -= dirt_overlays[i]
+			dirt_overlays[i] = null
+
 	source.reagents.reaction(src, TOUCH, 10)	//10 is the multiplier for the reaction effect. probably needed to wet the floor properly.
 	source.reagents.remove_any(1)				//reaction() doesn't use up the reagents
 
@@ -107,6 +113,10 @@
 	else if(istype(target,/obj/effect/decal/cleanable))
 		to_chat(user, SPAN_NOTICE("You scrub \the [target.name] out."))
 		qdel(target)
+	else if(isturf(target))
+		var/turf/T = target
+		T.clean_dirt()
+		to_chat(user, SPAN_NOTICE("You scrub all dirt out of \the [target.name]."))
 	else
 		to_chat(user, SPAN_NOTICE("You clean \the [target.name]."))
 		target.clean_blood()

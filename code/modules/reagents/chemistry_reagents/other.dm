@@ -667,10 +667,8 @@
 				O.clean_blood()
 
 	reaction_turf(var/turf/T, var/volume)
-		if(volume >= 1)
-			for(var/obj/effect/decal/cleanable/C in T.contents)
-				src.reaction_obj(C, volume)
-				qdel(C)
+		if(volume >= 1 && istype(T))
+			T.clean_dirt()
 
 	reaction_mob(var/mob/M, var/method=TOUCH, var/volume)
 		if(iscarbon(M))

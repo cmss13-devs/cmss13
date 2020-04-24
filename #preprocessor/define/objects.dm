@@ -145,3 +145,7 @@ var/list/RESTRICTED_CAMERA_NETWORKS = list( //Those networks can only be accesse
 #define FLAMESHAPE_STAR				2
 #define FLAMESHAPE_MINORSTAR		3
 #define FLAMESHAPE_IRREGULAR		4
+
+#define DIRT_SPLATTER "splatter" //Blood, vomit, oil 
+#define DIRT_JUNK "junk" //Gibs, Robot debris, etcetera
+#define DIRT_MISC "misc" //Anything else

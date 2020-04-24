@@ -56,69 +56,6 @@ var/global/list/image/fluidtrack_cache=list()
 	// List of laid tracks and their colors.
 	var/list/datum/fluidtrack/stack=list()
 
-	/**
-	* Add tracks to an existing trail.
-	*
-	* @param DNA bloodDNA to add to collection.
-	* @param comingdir Direction tracks come from, or 0.
-	* @param goingdir Direction tracks are going to (or 0).
-	* @param bloodcolor Color of the blood when wet.
-	*/
-/obj/effect/decal/cleanable/blood/tracks/proc/AddTracks(var/comingdir, var/goingdir, var/bloodcolor="#A10808")
-	var/updated=0
-	// Shift our goingdir 4 spaces to the left so it's in the GOING bitblock.
-	var/realgoing=goingdir<<4
-
-	// Current bit
-	var/b=0
-
-	// When tracks will start to dry out
-	var/t=world.time + TRACKS_CRUSTIFY_TIME
-
-	var/datum/fluidtrack/track
-
-	// Process 4 bits
-	for(var/bi=0;bi<4;bi++)
-		b=1<<bi
-		// COMING BIT
-		// If setting
-		if(comingdir&b)
-			// If not wet or not set
-			if(dirs&b)
-				var/sid=setdirs["[b]"]
-				track=stack[sid]
-				if(track.wet==t && track.basecolor==bloodcolor)
-					continue
-				// Remove existing stack entry
-				stack.Remove(track)
-			track=new /datum/fluidtrack(b,bloodcolor,t)
-			stack.Add(track)
-			setdirs["[b]"]=stack.Find(track)
-			updatedtracks |= b
-			updated=1
-
-		// GOING BIT (shift up 4)
-		b=b<<4
-		if(realgoing&b)
-			// If not wet or not set
-			if(dirs&b)
-				var/sid=setdirs["[b]"]
-				track=stack[sid]
-				if(track.wet==t && track.basecolor==bloodcolor)
-					continue
-				// Remove existing stack entry
-				stack.Remove(track)
-			track=new /datum/fluidtrack(b,bloodcolor,t)
-			stack.Add(track)
-			setdirs["[b]"]=stack.Find(track)
-			updatedtracks |= b
-			updated=1
-
-	dirs |= comingdir|realgoing
-	if(updated)
-		update_icon()
-
-
 
 /obj/effect/decal/cleanable/blood/tracks/update_icon()
 	overlays.Cut()

@@ -6,49 +6,6 @@
 	var/slayer = 0 //snow layer
 	var/wet = 0 //whether the turf is wet (only used by floors).
 
-
-/turf/open/Entered(atom/A, atom/OL)
-	if(iscarbon(A))
-		var/mob/living/carbon/C = A
-		if(!C.lying && !(C.buckled && istype(C.buckled,/obj/structure/bed/chair)))
-			if(ishuman(C))
-				var/mob/living/carbon/human/H = C
-
-				// Tracking blood
-				var/bloodcolor=""
-				if(H.shoes)
-					var/obj/item/clothing/shoes/S = H.shoes
-					if(S.shoes_blood_amt && S.blood_color)
-						bloodcolor = S.blood_color
-						S.shoes_blood_amt--
-				else
-					if(H.feet_blood_amt && H.feet_blood_color)
-						bloodcolor = H.feet_blood_color
-						H.feet_blood_amt--
-
-				if (bloodcolor)
-					src.AddTracks(/obj/effect/decal/cleanable/blood/tracks/footprints,H.dir,0,bloodcolor) // Coming
-					var/turf/from = get_step(H,reverse_direction(H.dir))
-					if(istype(from) && from)
-						from.AddTracks(/obj/effect/decal/cleanable/blood/tracks/footprints,0,H.dir,bloodcolor) // Going
-
-
-
-			switch (wet)
-				if(FLOOR_WET_WATER)
-					if(!C.slip(null, 5, 3, TRUE))
-						C.inertia_dir = 0
-
-				if(FLOOR_WET_ICE) // Ice
-					if(!C.slip("icy floor", 4, 3, FALSE, TRUE, 1))
-						C.inertia_dir = 0
-
-
-	..()
-
-
-
-
 /turf/open/examine(mob/user)
 	..()
 	ceiling_desc(user)

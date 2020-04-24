@@ -159,5 +159,8 @@
 			break
 
 	if (istype(found))
+		X.xeno_shields -= found
 		qdel(found)
 		to_chat(X, SPAN_XENOHIGHDANGER("You feel your enhanced shield end!"))
+
+	X.overlay_shields()

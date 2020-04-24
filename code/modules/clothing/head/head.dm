@@ -257,7 +257,7 @@
 /obj/item/clothing/head/beret/marine/mp
 	name = "\improper USCM MP beret"
 	icon_state = "beretred"
-	desc = "A reinforced beret with the military police insignia emblazoned on it."
+	desc = "A kevlar reinforced beret with the USCM military police insignia emblazoned on it. This durable headwear provides comparable protection to an M10 helmet, but in a much more stylish package."
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bullet = CLOTHING_ARMOR_LOW
 	armor_laser = CLOTHING_ARMOR_LOW
@@ -273,7 +273,7 @@
 
 /obj/item/clothing/head/beret/marine/mp/cmp
 	name = "\improper USCM chief MP beret"
-	desc = "A reinforced beret with a military police lieutenant insignia emblazoned on it. It shines with the glow of corrupt authority and a smudge of doughnut."
+	desc = "A kevlar reinforced beret with the USCM military police lieutenant insignia emblazoned on it. This durable headwear provides comparable protection to an M10 helmet, but in a much more stylish package. It shines with the glow of corrupt authority and a smudge of doughnut."
 	icon_state = "beretwo"
 
 /obj/item/clothing/head/beret/marine/commander

@@ -190,10 +190,10 @@ var/datum/subsystem/entity_manager/SSentity_manager
 	var/datum/entity/ET = meta.make_new_by_key(key)
 	if(!ET.__key_synced)
 		ET.__key_synced = TRUE
-		adapter.read_filter(meta.table_name, DB_EQUALS(meta.key_field, key), CALLBACK(src, /datum/subsystem/entity_manager.proc/after_select_by_key, ET, meta))
+		adapter.read_filter(meta.table_name, DB_COMP(meta.key_field, DB_EQUALS, key), CALLBACK(src, /datum/subsystem/entity_manager.proc/after_select_by_key, ET, meta))
 	return ET
 
-/datum/subsystem/entity_manager/proc/after_select_by_key(var/datum/entity/ET, var/datum/entity_meta/meta, var/list/results)
+/datum/subsystem/entity_manager/proc/after_select_by_key(var/datum/entity/ET, var/datum/entity_meta/meta, quid, var/list/results)
 	var/r_len = length(results)
 	if(!r_len) // safe to insert
 		meta.to_insert |= ET

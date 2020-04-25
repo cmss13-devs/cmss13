@@ -18,7 +18,7 @@
 		if(is_complete && !errored)
 			if(!query.last_result)
 				status = DB_QUERY_FINISHED
-				query.Del()
+				del(query)
 				query = null
 				return
 			status = DB_QUERY_READING
@@ -27,7 +27,7 @@
 			return
 		if(is_complete && errored)
 			status = DB_QUERY_BROKEN
-			query.Del()
+			del(query)
 			query = null
 			return
 	status = DB_QUERY_STARTED

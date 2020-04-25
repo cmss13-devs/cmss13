@@ -20,15 +20,18 @@
 	return TRUE
 
 
-/datum/db/adapter/bsql_adapter/read_table(table_name, var/list/ids, var/datum/callback/CB)
+/datum/db/adapter/bsql_adapter/read_table(table_name, var/list/ids, var/datum/callback/CB, sync=FALSE)
 	var/query_gettable = getquery_select_table(table_name, ids)
-	SSdatabase.create_query(query_gettable, CB)
+	if(sync)
+		SSdatabase.create_query_sync(query_gettable, CB)
+	else
+		SSdatabase.create_query(query_gettable, CB)
 
-/datum/db/adapter/bsql_adapter/update_table(table_name, var/list/values, var/datum/callback/CB)
+/datum/db/adapter/bsql_adapter/update_table(table_name, var/list/values, var/datum/callback/CB, sync=FALSE)
 	var/query_updatetable = getquery_update_table(table_name, values)
 	SSdatabase.create_query(query_updatetable, CB)
 
-/datum/db/adapter/bsql_adapter/insert_table(table_name, var/list/values, var/datum/callback/CB)
+/datum/db/adapter/bsql_adapter/insert_table(table_name, var/list/values, var/datum/callback/CB, sync=FALSE)
 	set waitfor = 0
 	var/length = values.len
 	var/startid = internal_request_insert_allocation(table_name, length)
@@ -36,15 +39,24 @@
 	if(!CB.arguments)
 		CB.arguments = list()
 	CB.arguments.Add(startid)
-	SSdatabase.create_query(query_inserttable, CB)
+	if(sync)
+		SSdatabase.create_query_sync(query_inserttable, CB)
+	else
+		SSdatabase.create_query(query_inserttable, CB)
 
-/datum/db/adapter/bsql_adapter/delete_table(table_name, var/list/ids, var/datum/callback/CB)
+/datum/db/adapter/bsql_adapter/delete_table(table_name, var/list/ids, var/datum/callback/CB, sync=FALSE)
 	var/query_deletetable = getquery_delete_table(table_name, ids)
-	SSdatabase.create_query(query_deletetable, CB)
+	if(sync)
+		SSdatabase.create_query_sync(query_deletetable, CB)
+	else
+		SSdatabase.create_query(query_deletetable, CB)
 
-/datum/db/adapter/bsql_adapter/read_filter(table_name, var/datum/db/filter, var/datum/callback/CB)
+/datum/db/adapter/bsql_adapter/read_filter(table_name, var/datum/db/filter, var/datum/callback/CB, sync=FALSE)
 	var/query_gettable = getquery_filter_table(table_name, filter)
-	SSdatabase.create_query(query_gettable, CB)
+	if(sync)
+		SSdatabase.create_query_sync(query_gettable, CB)
+	else
+		SSdatabase.create_query(query_gettable, CB)
 
 /datum/db/adapter/bsql_adapter/sync_table(type_name, table_name, var/list/field_types)
 	var/query_gettable = getquery_systable_gettable(table_name)

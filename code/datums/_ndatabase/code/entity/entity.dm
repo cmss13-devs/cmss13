@@ -2,8 +2,12 @@
 	var/id
 	var/status
 	var/datum/entity_meta/metadata
+	var/__key_synced = FALSE
 
-/datum/entity/proc/save()
+/datum/entity/proc/save()	
+	if(__key_synced && !id)
+		status = DB_ENTITY_STATE_ADD_OR_SELECT
+		return
 	if(!id)
 		status = DB_ENTITY_STATE_ADDED
 		metadata.to_insert |= src
@@ -13,8 +17,10 @@
 
 /datum/entity/proc/delete()
 	if(!id)
+		qdel(src)
 		return
 	status = DB_ENTITY_STATE_DELETED
+	metadata.managed -= src
 	metadata.to_delete |= src
 
 /datum/entity/proc/invalidate()
@@ -25,20 +31,22 @@
 
 /datum/entity/proc/detach()
 	metadata.to_read -= src
-	metadata.to_delete -= src
-	metadata.to_insert -= src
+	metadata.to_delete -= src	
 	metadata.to_update -= src
 	metadata.managed -= src
+	if(!id)
+		status = DB_ENTITY_STATE_ADD_DETACH
 
 /datum/entity/Dispose()
 	detach()
 
 /datum/entity/proc/sync()
 	while(status > DB_ENTITY_STATE_SYNCED)
-		sleep(5)
+		stoplag()
 
 /datum/entity/proc/sync_then(var/datum/callback/CB)
 	set waitfor = 0
 	while(status > DB_ENTITY_STATE_SYNCED)
-		sleep(5)
-	CB.Invoke(src)
+		stoplag()
+	if(CB)
+		CB.Invoke(src)

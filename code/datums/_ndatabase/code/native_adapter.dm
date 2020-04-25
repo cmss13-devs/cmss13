@@ -19,19 +19,23 @@
 	return TRUE
 
 
-/datum/db/adapter/native_adapter/read_table(table_name, var/list/ids, var/datum/callback/CB)
+/datum/db/adapter/native_adapter/read_table(table_name, var/list/ids, var/datum/callback/CB, sync = FALSE)
 	var/query_gettable = getquery_select_table(table_name, ids)
-	SSdatabase.create_query(query_gettable, CB)
+	if(sync)
+		SSdatabase.create_query_sync(query_gettable, CB)
+	else
+		SSdatabase.create_query(query_gettable, CB)
 
-/datum/db/adapter/native_adapter/update_table(table_name, var/list/values, var/datum/callback/CB)
-	set waitfor = 0
+/datum/db/adapter/native_adapter/update_table(table_name, var/list/values, var/datum/callback/CB, sync = FALSE)
+	if(!sync)
+		set waitfor = 0
+	
 	for(var/list/vals in values)
 		var/list/qpars = list()
 		var/query_updaterow = getquery_update_row(table_name, vals, qpars)
-		SSdatabase.create_parametric_query_sync(query_updaterow, qpars)
-	CB.Invoke(null, list())
+		SSdatabase.create_parametric_query_sync(query_updaterow, qpars, CB)
 
-/datum/db/adapter/native_adapter/insert_table(table_name, var/list/values, var/datum/callback/CB)
+/datum/db/adapter/native_adapter/insert_table(table_name, var/list/values, var/datum/callback/CB, sync = FALSE)
 	set waitfor = 0
 	var/length = values.len
 	var/startid = internal_request_insert_allocation(table_name, length)
@@ -40,16 +44,25 @@
 	if(!CB.arguments)
 		CB.arguments = list()
 	CB.arguments.Add(startid)
-	SSdatabase.create_parametric_query(query_inserttable, qpars, CB)
+	if(sync)
+		SSdatabase.create_parametric_query_sync(query_inserttable, qpars, CB)
+	else
+		SSdatabase.create_parametric_query(query_inserttable, qpars, CB)
 
-/datum/db/adapter/native_adapter/delete_table(table_name, var/list/ids, var/datum/callback/CB)
+/datum/db/adapter/native_adapter/delete_table(table_name, var/list/ids, var/datum/callback/CB, sync = FALSE)
 	var/query_deletetable = getquery_delete_table(table_name, ids)
-	SSdatabase.create_query(query_deletetable, CB)
+	if(sync)
+		SSdatabase.create_query_sync(query_deletetable, CB)
+	else
+		SSdatabase.create_query(query_deletetable, CB)
 
-/datum/db/adapter/native_adapter/read_filter(table_name, var/datum/db/filter, var/datum/callback/CB)
+/datum/db/adapter/native_adapter/read_filter(table_name, var/datum/db/filter, var/datum/callback/CB, sync = FALSE)
 	var/list/qpars = list()
 	var/query_gettable = getquery_filter_table(table_name, filter, qpars)
-	SSdatabase.create_parametric_query(query_gettable, qpars, CB)
+	if(sync)
+		SSdatabase.create_parametric_query_sync(query_gettable, qpars, CB)
+	else
+		SSdatabase.create_parametric_query(query_gettable, qpars, CB)
 
 /datum/db/adapter/native_adapter/sync_table(type_name, table_name, var/list/field_types)
 	var/list/qpars = list()

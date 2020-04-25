@@ -39,6 +39,12 @@
 #define DB_ENTITY_STATE_PROCESSING 5
 // Something is wrong
 #define DB_ENTITY_STATE_BROKEN 6
+// We want to add this record to database.
+// But then we want to detach from this record
+#define DB_ENTITY_STATE_ADD_DETACH 7
+// We are unsure what is this animal. Does it exist? If it does, we add it. In any case, it should be handled somewhere else (in entity manager)
+// Since this status is bigger than SYNCED, this means sync() will wait till someone handles it, which is exactly what we need
+#define DB_ENTITY_STATE_ADD_OR_SELECT 8
 
 //field types
 #define DB_FIELDTYPE_INT 1
@@ -91,6 +97,8 @@
 #undef DB_CAN_VV_GET
 
 #define DB_ENTITY SSentity_manager.select
+#define DB_EKEY SSentity_manager.select_by_key
 #define DB_FILTER SSentity_manager.filter_then
+#define DB_FILTER_LOCAL SSentity_manager.filter_local
 #define DB_META SSentity_manager.tables
-#define WAIT_DB_READY while(!SSentity_manager.ready) {sleep(10);}
+#define WAIT_DB_READY while(!SSentity_manager.ready) {stoplag();}

@@ -320,6 +320,15 @@
 		to_chat(X, SPAN_XENODANGER("You cannot see that target!"))
 		return
 
+	for (var/turf/T in getline2(X, A, FALSE))
+		if (T.density)
+			to_chat(X, SPAN_XENODANGER("You cannot shoot through [T]!"))
+			return
+		for (var/obj/O in T)
+			if (O.density && !istype(O, /obj/structure/barricade))
+				to_chat(X, SPAN_XENODANGER("You cannot shoot through [O]!"))
+				return
+
 	if (!check_and_use_plasma_owner())
 		return
 

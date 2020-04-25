@@ -90,7 +90,7 @@
 								counted_humanoids[C.mob.faction]++
 						if(isXeno(C.mob))
 							var/mob/living/carbon/Xenomorph/X = C.mob
-							if(counted_xenos[X.hivenumber])		//to prevent runtimes from non-standard hivenumbers.
+							if(X.hivenumber > 0 && X.hivenumber <= 5)	//hard check to prevent admin version of who runtiming from non-standard hivenumbers created by bugs/admins
 								counted_xenos[X.hivenumber]++
 							if(X.faction == FACTION_PREDALIEN)
 								counted_xenos[6]++

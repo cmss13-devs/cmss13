@@ -369,15 +369,15 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 
 
 
-/datum/entity/player/proc/on_read_notes(var/list/datum/entity/player_note/notes)
+/datum/entity/player/proc/on_read_notes(var/list/datum/entity/player_note/_notes)
 	notes_loaded = TRUE
 	if(notes)
-		notes = notes
+		notes = _notes
 
-/datum/entity/player/proc/on_read_job_bans(var/list/datum/entity/player_job_ban/job_bans)
+/datum/entity/player/proc/on_read_job_bans(var/list/datum/entity/player_job_ban/_job_bans)
 	jobbans_loaded = TRUE
-	if(job_bans)
-		for(var/datum/entity/player_job_ban/JB in job_bans)
+	if(_job_bans)
+		for(var/datum/entity/player_job_ban/JB in _job_bans)
 			var/safe_job_name = ckey(JB.role)
 			job_bans[safe_job_name] = JB
 	

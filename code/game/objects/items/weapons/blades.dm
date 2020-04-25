@@ -162,14 +162,21 @@
 	var/no_shards = TRUE
 	for (var/obj/item/shard/S in embedded_human.embedded_items)
 		var/obj/limb/organ = S.embedded_organ
-		to_chat(embedded_human, SPAN_NOTICE("You remove [S] from the [organ.display_name]."))
+		if(S.count > 1)
+			to_chat(embedded_human, SPAN_NOTICE("You remove all the [S] stuck in the [organ.display_name]."))
+		else
+			to_chat(embedded_human, SPAN_NOTICE("You remove [S] from the [organ.display_name]."))
 		S.loc = embedded_human.loc
 		organ.implants -= S
 		embedded_human.embedded_items -= S
 		no_shards = FALSE
 		organ = null
-		QDEL_IN(S, 300)
+		for(var/i in 1 to S.count-1)
+			H_user.count_niche_stat(STATISTICS_NICHE_SURGERY_SHRAPNEL)
+			var/shrapnel = new S.type(S.loc)
+			QDEL_IN(shrapnel, 300)
 		H_user.count_niche_stat(STATISTICS_NICHE_SURGERY_SHRAPNEL)
+		QDEL_IN(S, 300)
 
 	if(no_shards)
 		to_chat(H_user, SPAN_NOTICE("You couldn't find any shrapnel."))

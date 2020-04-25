@@ -15,6 +15,7 @@
 	attack_verb = list("stabbed", "slashed", "sliced", "cut")
 	var/source_sheet_type = /obj/item/stack/sheet/glass
 	var/shardsize
+	var/count = 1
 
 /obj/item/shard/attack(mob/living/carbon/M, mob/living/carbon/user)
 	. = ..()
@@ -87,7 +88,7 @@
 	if(ishuman(embedded_mob) && !isYautja(embedded_mob))
 		var/obj/limb/organ = embedded_organ
 		if(istype(organ))
-			organ.take_damage(damage_on_move, 0, 0)
+			organ.take_damage(damage_on_move * count, 0, 0)
 
 
 /obj/item/shard/shrapnel/bone_chips

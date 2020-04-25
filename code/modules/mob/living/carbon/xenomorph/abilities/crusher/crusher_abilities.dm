@@ -51,4 +51,4 @@
 	cooldowns = list(240, 230, 220, 210)
 	plasma_cost = 20
 
-	var/shield_amount = 200
+	var/shield_amount = 150

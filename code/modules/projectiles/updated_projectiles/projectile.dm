@@ -778,9 +778,18 @@
 			if(ammo_flags && AMMO_SPECIAL_EMBED)
 				P.ammo.on_embed(src, organ)
 
-			var/obj/item/shard/shrapnel/embedded = new P.ammo.shrapnel_type
-			if(istype(embedded))
-				embedded.on_embed(src, organ)
+			var/obj/item/shard/shrapnel/new_embed = new P.ammo.shrapnel_type
+			if(istype(new_embed))
+				var/found_one = FALSE
+				for(var/obj/item/shard/shrapnel/S in embedded_items)
+					if(S.name == new_embed.name)
+						S.count++
+						qdel(new_embed)
+						found_one = TRUE
+						break
+					
+				if(!found_one)
+					new_embed.on_embed(src, organ)
 
 				if(!stat && !(species && species.flags & NO_PAIN))
 					emote("scream")

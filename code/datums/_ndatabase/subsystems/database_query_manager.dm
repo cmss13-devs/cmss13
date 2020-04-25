@@ -109,18 +109,19 @@ var/datum/subsystem/database_query_manager/SSdatabase
 		all_queries += qr
 
 // Do not use this if you don't know why this exists
-/datum/subsystem/database_query_manager/proc/create_query_sync(query_text, wait_attempts = 20, wait_timer = 1)
+/datum/subsystem/database_query_manager/proc/create_query_sync(query_text, success_callback, fail_callback)
 	var/datum/db/query_response/qr = new()
 	qr.query = connection.query(query_text)
 	qr.query_text = query_text
+	qr.success_callback = success_callback
+	qr.fail_callback = fail_callback
 	if(debug_mode)
 		all_queries += qr
-	var/wait_tally = 0
-	while(wait_tally++ <= wait_attempts && !qr.process())
-		sleep(wait_timer)
+	while(!qr.process())
+		stoplag()
 	return qr
 
-/datum/subsystem/database_query_manager/proc/create_parametric_query_sync(query_text, parameters, wait_attempts = 20, wait_timer = 1)
+/datum/subsystem/database_query_manager/proc/create_parametric_query_sync(query_text, parameters, success_callback, fail_callback)
 	var/datum/db/query_response/qr = new()
 	var/list/prs = list()
 	prs += query_text
@@ -128,12 +129,16 @@ var/datum/subsystem/database_query_manager/SSdatabase
 		prs += parameters
 	qr.query = connection.query(arglist(prs))
 	qr.query_text = query_text
+	qr.success_callback = success_callback
+	qr.fail_callback = fail_callback
 	if(debug_mode)
 		all_queries += qr
-	var/wait_tally = 0
-	while(wait_tally++ <= wait_attempts && !qr.process())
-		sleep(wait_timer)
+	while(!qr.process())
+		stoplag()
 	return qr
+
+/datum/subsystem/database_query_manager/proc/get_query_text(qid)
+	to_chat(usr, queries[qid].query)
 
 /proc/loadsql(filename)
 	var/list/Lines = file2list(filename)

@@ -117,7 +117,7 @@
 		to_world(SPAN_ANNOUNCEMENT_HEADER_BLUE(" <b>[usr.client.admin_holder.fakekey ? "Administrator" : usr.key] Announces:</b>\n \t [message]"))
 		log_admin("Announce: [key_name(usr)] : [message]")
 
-/datum/admins/proc/player_notes_show(var/key as text)
+/datum/admins/proc/player_notes_show(var/key as text, debug_mode = FALSE)
 	set name = "D: Player Notes Show"
 	set category = "Admin"
 
@@ -129,30 +129,41 @@
 	var/dat = "<html>"
 	dat += "<body>"
 
-	var/savefile/info = new("data/player_saves/[copytext(key, 1, 2)]/[key]/info.sav")
-	var/list/infos
-	info >> infos
-	if(!infos)
+	var/datum/entity/player/P = get_player_from_key(key)
+	if(!P)
+		to_chat(usr, "Wrong CKEY [key]")
+		return
+	if(debug_mode)
+		dat += " ID: [P.id], P-ref: \ref[P]"
+	if(!P.refs_loaded)
+		P.load_refs()
+		sleep(10)
+	if(!P.notes || !P.notes.len)
 		dat += "No information found on the given key.<br>"
 	else
-		var/update_file = 0
 		var/i = 0
-		for(var/datum/player_info/I in infos)
+		for(var/datum/entity/player_note/N in P.notes)
 			i += 1
-			if(!I.timestamp)
-				I.timestamp = "Pre-4/3/2012"
-				update_file = 1
-			if(!I.rank)
-				I.rank = "N/A"
-				update_file = 1
-			dat += "<font color=#008800>[I.content]</font> <i>by [I.author] ([I.rank])</i> on <i><font color=blue>[I.timestamp]</i></font> "
-			if(I.author == usr.key || I.author == "Adminbot" || ishost(usr))
+			if(debug_mode)
+				dat += " ID: [N.id], N-ref: \ref[N]"
+			var/admin_ckey = "~~LOADING~~"
+			if(N.admin && N.admin.ckey)
+				admin_ckey = N.admin.ckey
+			var/confidential_text = N.is_confidential ? " \[CONFIDENTIALLY\]" : ""
+			if(N.is_ban)
+				var/time_d = N.ban_time ? "Banned for [N.ban_time] minutes | " : ""
+				var/color = N.is_confidential ? "#880000" : "#5555AA"
+				dat += "<font color=[color]>[time_d][N.text]</font> <i>by [admin_ckey] ([N.admin_rank])</i>[confidential_text] on <i><font color=blue>[N.date]</i></font> "
+			else
+				var/color = N.is_confidential ? "#AA0055" : "#008800"
+				dat += "<font color=[color]>[N.text]</font> <i>by [admin_ckey] ([N.admin_rank])</i>[confidential_text] on <i><font color=blue>[N.date]</i></font> "
+			if(admin_ckey == usr.ckey || admin_ckey == "Adminbot" || ishost(usr))
 				dat += "<A href='?src=\ref[src];remove_player_info=[key];remove_index=[i]'>Remove</A>"
 			dat += "<br><br>"
-		if(update_file) info << infos
 
 	dat += "<br>"
-	dat += "<A href='?src=\ref[src];add_player_info=[key]'>Add Comment</A><br>"
+	dat += "<A href='?src=\ref[src];add_player_info=[key]'>Add Note</A><br>"
+	dat += "<A href='?src=\ref[src];add_player_info_confidential=[key]'>Add Confidential Note</A><br>"
 	dat += "<A href='?src=\ref[src];player_notes_copy=[key]'>Copy Player Notes</A><br>"
 
 	dat += "</body></html>"

@@ -97,6 +97,10 @@ var/savefile/Banlist
 
 
 /proc/AddBan(ckey, computerid, reason, bannedby, temp, minutes, address)
+	if(!Banlist)		// if Banlist cannot be located for some reason
+		LoadBans()		// try to load the bans
+		if(!Banlist)	// uh oh, can't find bans!
+			return 0	// ABORT ABORT ABORT
 
 	var/bantimestamp
 
@@ -106,10 +110,7 @@ var/savefile/Banlist
 
 	Banlist.cd = "/base"
 	if ( Banlist.dir.Find("[ckey][computerid]"))
-		if(alert(usr, "Ban already exists. Proceed?", "Confirmation", "Yes", "No") != "Yes")
-			return 0
-		else
-			RemoveBan("[ckey][computerid]") //have to remove dirs before processing
+		RemoveBan("[ckey][computerid]") //have to remove dirs before processing
 
 	Banlist.dir.Add("[ckey][computerid]")
 	Banlist.cd = "/base/[ckey][computerid]"
@@ -124,6 +125,11 @@ var/savefile/Banlist
 	return 1
 
 /proc/RemoveBan(foldername)
+	if(!Banlist)		// if Banlist cannot be located for some reason
+		LoadBans()		// try to load the bans
+		if(!Banlist)	// uh oh, can't find bans!
+			return 0	// ABORT ABORT ABORT
+
 	var/key
 	var/id
 

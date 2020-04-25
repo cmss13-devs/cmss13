@@ -3,8 +3,10 @@
 	var/table_name
 	var/list/field_types
 	var/active_entity = TRUE
+	var/key_field = null
 
 	var/list/datum/entity/managed
+	var/list/datum/entity/key_managed
 	var/list/datum/entity/to_read
 	var/list/datum/entity/to_insert
 	var/list/datum/entity/to_update
@@ -18,10 +20,12 @@
 	to_update = list()
 	to_delete = list()
 	inserting = list()
+	key_managed = list()
 
 // redefine this for faster operations
 /datum/entity_meta/proc/map(var/datum/entity/ET, var/list/values)
-	ET.id = values["id"]
+	var/strid = "[values["id"]]"
+	ET.id = strid
 	for(var/F in field_types)
 		ET.vars[F] = values[F]
 
@@ -34,7 +38,6 @@
 		values[F] = ET.vars[F]
 	return values
 
-// redefine this for default values
 /datum/entity_meta/proc/make_new(id = null, invalidate = TRUE)
 	var/strid = "[id]"
 	if(managed[strid])
@@ -47,6 +50,20 @@
 		if(invalidate)
 			ET.invalidate()
 
+	return ET
+
+/datum/entity_meta/proc/make_new_by_key(key_value)
+	if(!key_field)
+		CRASH("Attempted to create entity on table without key field. Entity is [type]")
+	if(!key_value)
+		CRASH("Attempted to create entity without ley value. Entity is [type]")
+	var/strval = "[key_value]"
+	if(key_managed[strval])
+		return key_managed[strval]
+	var/datum/entity/ET = new entity_type()	
+	ET.metadata = src
+	ET.vars[key_field] = key_value
+	key_managed[strval] = ET
 	return ET
 
 /datum/entity_meta/proc/on_read(var/datum/entity/ET)
@@ -70,6 +87,13 @@
 	for(var/item in EL)
 		if(get_filter(item, F))
 			results.Add(item)
+	return results
+
+/datum/entity_meta/proc/filter_assoc_list(var/list/datum/entity/EL, var/datum/db/filter/F)
+	var/list/results = list()
+	for(var/item in EL)
+		if(get_filter(EL[item], F))
+			results.Add(EL[item])
 	return results
 	
 /datum/entity_meta/proc/get_filter_comparison(var/datum/entity/E, var/datum/db/filter/comparison/filter)

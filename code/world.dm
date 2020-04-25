@@ -177,18 +177,23 @@ var/world_topic_spam_protect_time = world.timeofday
 	else if(copytext(T,1,6) == "notes")
 		if(addr != "127.0.0.1")
 			return "Nah ah ah, you didn't say the magic word"
+		if(!SSdatabase.connection.connection_ready())
+			return "Database is not yet ready. Please wait."
 		var/input[] = params2list(T)
 		var/ckey = trim(input["ckey"])
 		var/dat = "Notes for [ckey]:<br/><br/>"
-		var/savefile/info = new("data/player_saves/[copytext(ckey, 1, 2)]/[ckey]/info.sav")
-		var/list/infos
-		info >> infos
-		if(!infos)
-			return "No information found on the given key."
-		else
-			for(var/datum/player_info/I in infos)
-				dat += "[I.content]<br/>by [I.author] ([I.rank]) on [I.timestamp]<br/><br/>"
-
+		var/datum/entity/player/P = get_player_from_key(ckey)
+		if(!P)
+			return ""
+		P.load_refs()
+		if(!P.notes || !P.notes.len)
+			return dat + "No information found on the given key."
+		
+		for(var/datum/entity/player_note/N in P.notes)
+			var/admin_name = (N.admin && N.admin.ckey) ? "[N.admin.ckey]" : "-LOADING-"
+			var/ban_text = N.ban_time ? "Banned for [N.ban_time] minutes | " : ""
+			var/confidential_text = N.is_confidential ? " \[CONFIDENTIALLY\]" : ""
+			dat += "[ban_text][N.text]<br/>by [admin_name] ([N.admin_rank])[confidential_text] on [N.date]<br/><br/>"
 		return dat
 
 

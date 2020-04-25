@@ -90,3 +90,36 @@ HELP TO PROC TYPEPATH SHORTCUTS (Purely based on the path in the code)
 	if (object == GLOBAL_PROC)
 		return call(delegate)(arglist(calling_arguments))
 	return call(object, delegate)(arglist(calling_arguments))
+
+// DYNAMIC callbacks. Certainly will be loved by the NDatabase
+// The difference is simple. Object is NEVER passed in constructor. First parameter of any INVOKE is our object
+/datum/callback/dynamic/New(proctocall, ...)
+	object = null
+	delegate = proctocall
+	if (length(args) > 1)
+		arguments = args.Copy(2)
+
+/datum/callback/dynamic/Invoke(...)	
+	var/list/calling_arguments = arguments
+	if (length(args))
+		object = args[1]
+		if (length(arguments))
+			calling_arguments = calling_arguments + args.Copy(2)
+		else
+			calling_arguments = args.Copy(2)
+	if (!object)
+		return
+	return call(object, delegate)(arglist(calling_arguments))
+
+/datum/callback/dynamic/InvokeAsync(...)	
+	set waitfor = FALSE
+	var/list/calling_arguments = arguments
+	if (length(args))
+		object = args[1]
+		if (length(arguments))
+			calling_arguments = calling_arguments + args.Copy(2)
+		else
+			calling_arguments = args.Copy(2)
+	if (!object)
+		return
+	return call(object, delegate)(arglist(calling_arguments))

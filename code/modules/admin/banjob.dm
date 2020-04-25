@@ -82,13 +82,16 @@ var/jobban_keylist[0]		//to store the keys & ranks
 //returns a reason if M is banned from rank, returns 0 otherwise
 /proc/jobban_isbanned(mob/M, rank)
 	if(M && rank)
-		rank = check_jobban_path(rank)
+		rank = ckey(rank)
+		if(!M.client || !M.client.player_data || !M.client.player_data.job_bans)
+			return "Not yet loaded"
 		if(guest_jobbans(rank))
 			if(config.guest_jobban && IsGuestKey(M.key))
 				return "Guest Job-ban"
 			if(config.usewhitelist && !check_whitelist(M))
 				return "Whitelisted Job"
-		return jobban_keylist[rank][M.ckey]
+		var/datum/entity/player_job_ban/PJB = M.client.player_data.job_bans[rank]
+		return PJB ? PJB.text : null
 
 /hook/startup/proc/loadJobBans()
 	jobban_loadbanfile()

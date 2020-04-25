@@ -73,20 +73,17 @@ var/global/floorIsLava = 0
 		return
 	var/dat = "<html>"
 	dat += "<body>"
-	var/savefile/info = new("data/player_saves/[copytext(key, 1, 2)]/[key]/info.sav")
-	var/list/infos
-	info >> infos
-	if(!infos)
-		dat += "No information found on the given key.<br>"
-	else
-		dat += "Some notes might need to be omitted for security/privacy reasons!<br><hr>"
-		var/i = 0
-		for(var/datum/player_info/I in infos)
-			i += 1
-			if(!I.timestamp)
-				I.timestamp = "Pre-4/3/2012"
-			dat += "<font color=#008800>[I.content]</font> | <i><font color=blue>[I.timestamp]</i></font>"
-			dat += "<br><br>"
+
+	var/datum/entity/player/P = get_player_from_key(key)
+	if(!P.notes || !P.notes.len)
+		dat += "No information found on the given key."
+	
+	for(var/datum/entity/player_note/N in P.notes)
+		if(N.is_confidential)
+			continue
+		var/ban_text = N.ban_time ? "Banned for [N.ban_time] | " : ""
+		dat += "[ban_text][N.text]<br/>on [N.date]<br/><br/>"
+
 	dat += "</body></html>"
 	// Using regex to remove the note author for bans done in admin/topic.dm
 	var/regex/remove_author = new("(?=Banned by).*?(?=\\|)", "g")

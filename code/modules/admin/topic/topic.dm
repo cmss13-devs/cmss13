@@ -215,21 +215,11 @@
 
 	/////////////////////////////////////new ban stuff
 	else if(href_list["unbanf"])
-		if(!check_rights(R_BAN))	return
-
-		var/banfolder = href_list["unbanf"]
-		Banlist.cd = "/base/[banfolder]"
-		var/key = Banlist["key"]
-		if(alert(usr, "Are you sure you want to unban [key]?", "Confirmation", "Yes", "No") == "Yes")
-			if((Banlist["minutes"] - CMinutes) > 10080)
-				if(!check_rights(R_ADMIN)) return
-				ban_unban_log_save("[key_name(usr)] removed [key]'s permaban.")
-				message_admins(SPAN_NOTICE("[key_name_admin(usr)] removed [key]'s permaban."), 1)
-			if(RemoveBan(banfolder))
-				unbanpanel()
-			else
-				alert(usr, "This ban has already been lifted / does not exist.", "Error", "Ok")
-				unbanpanel()
+		var/mob/M = locate(href_list["mob"])
+		var/datum/entity/player/P = get_player_from_key(M.ckey)
+		if(P.remove_timed_ban())
+			alert(usr, "This ban has already been lifted / does not exist.", "Error", "Ok")
+		unbanpanel()
 
 	else if(href_list["warn"])
 		usr.client.warn(href_list["warn"])
@@ -574,61 +564,36 @@
 			else
 				joblist += href_list["jobban3"]
 
-		//Create a list of unbanned jobs within joblist
 		var/list/notbannedlist = list()
 		for(var/job in joblist)
 			if(!jobban_isbanned(M, job))
 				notbannedlist += job
 
 		//Banning comes first
-		if(notbannedlist.len) //at least 1 unbanned job exists in joblist so we have stuff to ban.
+		if(notbannedlist.len)
 			if(!check_rights(R_BAN))  return
 			var/reason = input(usr,"Reason?","Please State Reason","") as text|null
 			if(reason)
-				var/msg
-				for(var/job in notbannedlist)
-					ban_unban_log_save("[key_name(usr)] perma-jobbanned [key_name(M)] from [job]. reason: [reason]")
-					log_admin("[key_name(usr)] perma-banned [key_name(M)] from [job]")
-					 
-					jobban_fullban(M, job, "[reason]; By [usr.ckey] on [time2text(world.realtime)]")
-					if(!msg)	msg = job
-					else		msg += ", [job]"
-				notes_add(M.ckey, "Banned  from [msg] - [reason]")
-				message_admins(SPAN_NOTICE("[key_name_admin(usr)] banned [key_name_admin(M)] from [msg]"), 1)
-				to_chat(M, SPAN_WARNING("<BIG><B>You have been jobbanned by [usr.client.ckey] from: [msg].</B></BIG>"))
-				to_chat(M, SPAN_WARNING("<B>The reason is: [reason]</B>"))
-				to_chat(M, SPAN_WARNING("Jobban can be lifted only upon request."))
-				jobban_savebanfile()
+				var/datum/entity/player/P = get_player_from_key(M.ckey)
+				P.add_job_ban(reason, notbannedlist)
+				
 				href_list["jobban2"] = 1 // lets it fall through and refresh
 				return 1
-				// if("Cancel")
-				// 	return
 
 		//Unbanning joblist
 		//all jobs in joblist are banned already OR we didn't give a reason (implying they shouldn't be banned)
-		if(joblist.len) //at least 1 banned job exists in joblist so we have stuff to unban.
-			if(!config.ban_legacy_system)
-				to_chat(usr, "Unfortunately, database based unbanning cannot be done through this panel")
-				return
-			var/msg
+		if(joblist.len) //at least 1 banned job exists in joblist so we have stuff to unban.			
 			for(var/job in joblist)
 				var/reason = jobban_isbanned(M, job)
 				if(!reason) continue //skip if it isn't jobbanned anyway
 				switch(alert("Job: '[job]' Reason: '[reason]' Un-jobban?","Please Confirm","Yes","No"))
-					if("Yes")
-						ban_unban_log_save("[key_name(usr)] unjobbanned [key_name(M)] from [job]")
-						log_admin("[key_name(usr)] unbanned [key_name(M)] from [job]")
-						 
-						jobban_unban(M, job)
-						if(!msg)	msg = job
-						else		msg += ", [job]"
+					if("Yes")						
+						var/datum/entity/player/P = get_player_from_key(M.ckey)
+						P.remove_job_ban(job)
 					else
 						continue
-			if(msg)
-				message_admins(SPAN_NOTICE("[key_name_admin(usr)] unbanned [key_name_admin(M)] from [msg]"), 1)
-				to_chat(M, SPAN_WARNING("<BIG><B>You have been un-jobbanned by [usr.client.ckey] from [msg].</B></BIG>"))
-				href_list["jobban2"] = 1 // lets it fall through and refresh
-			jobban_savebanfile()
+			href_list["jobban2"] = 1 // lets it fall through and refresh
+			
 			return 1
 		return 0 //we didn't do anything!
 
@@ -669,9 +634,6 @@
 			to_chat(usr, SPAN_DANGER("<B>Warning: Mob ckey for [M.name] not found.</b>"))
 			return
 		var/mob_key = M.ckey
-		var/mob_id = M.computer_id
-		var/mob_ip = M.lastKnownIP
-		var/client/mob_client = M.client
 		var/mins = input(usr,"How long (in minutes)? \n 1440 = 1 day \n 4320 = 3 days \n 10080 = 7 days","Ban time",1440) as num|null
 		if(!mins)
 			return
@@ -679,17 +641,10 @@
 		var/reason = input(usr,"Reason? \n\nPress 'OK' to finalize the ban.","reason","Griefer") as message|null
 		if(!reason)
 			return
-		if (AddBan(mob_key, mob_id, reason, usr.ckey, 1, mins, mob_ip))
-			ban_unban_log_save("[usr.client.ckey] has banned [mob_key]|Duration: [mins] minutes|Reason: [sanitize(reason)]")
-			to_chat_forced(M, SPAN_WARNING("<BIG><B>You have been banned by [usr.client.ckey].\nReason: [sanitize(reason)].</B></BIG>"))
-			to_chat_forced(M, SPAN_WARNING("This is a temporary ban, it will be removed in [mins] minutes."))
-			if(config.banappeals)
-				to_chat_forced(M, SPAN_WARNING("To try to resolve this matter head to [config.banappeals]"))
-			else
-				to_chat_forced(M, SPAN_WARNING("No ban appeals URL has been set."))
-			message_admins("\blue[usr.client.ckey] has banned [mob_key].\nReason: [sanitize(reason)]\nThis will be removed in [mins] minutes.")
-			notes_add(mob_key, "Banned by [usr.client.ckey]|Duration: [mins] minutes|Reason: [sanitize(reason)]", usr)
-		qdel(mob_client)
+		var/datum/entity/player/P = get_player_from_key(mob_key) // you may not be logged in, but I will find you and I will ban you
+		if(P.is_time_banned && alert(usr, "Ban already exists. Proceed?", "Confirmation", "Yes", "No") != "Yes")
+			return
+		P.add_timed_ban(reason, mins)
 
 	else if(href_list["eorgban"])
 		if(!check_rights(R_MOD,0) && !check_rights(R_BAN))  return
@@ -711,20 +666,10 @@
 				reason = "EORG"
 			if("No")
 				return
-		AddBan(M.ckey, M.computer_id, reason, usr.ckey, 1, mins)
-		ban_unban_log_save("[usr.client.ckey] has banned [M.ckey]|Duration: [mins] minutes|Reason: [reason]")
-		to_chat_forced(M, SPAN_WARNING("<BIG><B>You have been banned by [usr.client.ckey].\nReason: [reason].</B></BIG>"))
-		to_chat_forced(M, SPAN_WARNING("This is a temporary ban, it will be removed in [mins] minutes."))
-		to_chat_forced(M, SPAN_NOTICE(" This ban was made using a one-click ban system. If you think an error has been made, please visit our forums' ban appeal section."))
-		to_chat_forced(M, SPAN_NOTICE(" If you make sure to mention that this was a one-click ban, MadSnailDisease will personally double-check this code for you."))
-		if(config.banappeals)
-			to_chat_forced(M, SPAN_NOTICE(" The ban appeal forums are located here: [config.banappeals]"))
-		else
-			to_chat_forced(M, SPAN_NOTICE(" Unfortunately, no ban appeals URL has been set."))
-		log_admin("[usr.client.ckey] has banned [M.ckey]|Duration: [mins] minutes|Reason: [reason]")
-		message_admins("\blue[usr.client.ckey] has banned [M.ckey].\nReason: [reason]\nThis will be removed in [mins] minutes.")
-		notes_add(M.ckey, "Banned by [usr.client.ckey]|Duration: [mins] minutes|Reason: [reason]", usr)
-		qdel(M.client)
+		var/datum/entity/player/P = get_player_from_key(M.ckey) // you may not be logged in, but I will find you and I will ban you
+		if(P.is_time_banned && alert(usr, "Ban already exists. Proceed?", "Confirmation", "Yes", "No") != "Yes")
+			return
+		P.add_timed_ban(reason, mins)
 
 	else if(href_list["xenoresetname"])
 		if(!check_rights(R_MOD,0) && !check_rights(R_BAN))
@@ -1802,14 +1747,26 @@
 		if(!add) 
 			return
 
-		notes_add(key,add,usr)
+		var/datum/entity/player/P = get_player_from_key(key)
+		P.add_note(add, FALSE)
+		player_notes_show(key)
+
+	if(href_list["add_player_info_confidential"])
+		var/key = href_list["add_player_info_confidential"]
+		var/add = input("Add Confidential Player Info") as null|message
+		if(!add) 
+			return
+
+		var/datum/entity/player/P = get_player_from_key(key)
+		P.add_note(add, TRUE)
 		player_notes_show(key)
 
 	if(href_list["remove_player_info"])
 		var/key = href_list["remove_player_info"]
 		var/index = text2num(href_list["remove_index"])
 
-		notes_del(key, index)
+		var/datum/entity/player/P = get_player_from_key(key)
+		P.remove_note(index)
 		player_notes_show(key)
 
 	if(href_list["notes"])

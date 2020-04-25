@@ -121,6 +121,8 @@
 	var/python_path = "" //Path to the python executable.  Defaults to "python" on windows and "/usr/bin/env python2" on unix
 	var/use_lib_nudge = 0 //Use the C library nudge instead of the python nudge.
 
+	var/duplicate_notes_to_file = FALSE
+
 /datum/configuration/New()
 	var/list/L = typesof(/datum/game_mode) - /datum/game_mode
 	for (var/T in L)
@@ -482,6 +484,9 @@
 
 		if("max_maint_drones")
 			config.max_maint_drones = text2num(value)
+
+		if ("duplicate_notes_to_file")
+			config.duplicate_notes_to_file = TRUE
 
 		else
 			log_misc("Unknown setting in configuration: '[name]'")

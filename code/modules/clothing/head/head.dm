@@ -236,6 +236,23 @@
 		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
 	)
 
+/obj/item/clothing/head/mppeaked
+	name = "\improper Military Police Peaked Cap"
+	desc = "A peaked cap worn by the USCM's Military Police. Something about it reminds you of an event you once read about in a history book."
+	icon = 'icons/obj/items/clothing/cm_hats.dmi'
+	icon_state = "mppeaked"
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
+	)
+
+/obj/item/clothing/head/mpcap
+	name = "\improper Military Police cap"
+	desc = "A ball-cap worn by the more casual of the USCM's Military Police."
+	icon = 'icons/obj/items/clothing/cm_hats.dmi'
+	icon_state = "mpcap"
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
+	)
 
 //============================//BERETS\\=================================\\
 //=======================================================================\\

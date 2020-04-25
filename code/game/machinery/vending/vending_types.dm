@@ -254,6 +254,9 @@
 					/obj/item/device/flash = 5,
 					/obj/item/reagent_container/food/snacks/donut/normal = 12,
 					/obj/item/storage/box/evidence = 6,
+					/obj/item/clothing/head/helmet/marine/MP = 6,
+					/obj/item/clothing/head/mppeaked = 6,
+					/obj/item/clothing/head/mpcap = 6,
 					/obj/item/clothing/glasses/sunglasses/sechud = 3,
 					/obj/item/device/radio/headset = 6)
 	contraband = list(/obj/item/clothing/glasses/sunglasses = 2,/obj/item/storage/donut_box = 2)

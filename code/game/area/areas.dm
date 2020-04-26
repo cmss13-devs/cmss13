@@ -305,42 +305,29 @@
 
 
 /area/Entered(A,atom/OldLoc)
-
-	if(istype(A, /obj/structure/machinery))
-		master.area_machines += A
-		return
-
 	if(ismob(A))	
 		var/mob/M = A
-		if(!M.lastarea)
-			M.lastarea = src
 			
 		if(isliving(M))
-			var/mob/living/L = M
-			if((!M.lastarea.has_gravity) && (has_gravity) && (L.m_intent == MOVE_INTENT_RUN)) // Being ready when you change areas gives you a chance to avoid falling all together.
-				thunk(L)
-				L.make_floating(0)
-
 			// Update all our weather vars and trackers
-			L.update_weather()
+			INVOKE_ASYNC(M,/mob/living.proc/update_weather)
 
 		if(!M.client)	
 			return
 
 		if(M.client.soundOutput)
-			M.client.soundOutput.update_ambience(src)
+			INVOKE_ASYNC(M.client.soundOutput, /datum/soundOutput.proc/update_ambience, src)
 
-/area/Exited(A)
-	
+		return
+
+	if(istype(A, /obj/structure/machinery))
+		master.area_machines += A
+		return
+
+/area/Exited(A)	
 	if(istype(A, /obj/structure/machinery))
 		master.area_machines -= A
 		return
-	if(ismob(A))
-		var/mob/M = A
-		M.lastarea = src	
-	
-
-
 
 /area/proc/gravitychange(var/gravitystate = 0, var/area/A)
 

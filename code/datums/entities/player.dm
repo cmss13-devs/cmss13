@@ -426,7 +426,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		.["reason"]	= "ckey/id"
 		return .
 	if(is_time_banned)
-		var/time_left = MINUTES_STAMP - time_ban_expiration
+		var/time_left = time_ban_expiration - MINUTES_STAMP
 		if(time_left < 0)
 			return FALSE
 		time_ban_admin.sync()
@@ -437,9 +437,9 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 			timeleftstring = "[round(time_left / 60, 0.1)] Hours"
 		else
 			timeleftstring = "[time_left] Minutes"
-		log_access("Failed Login: [ckey] [last_known_cid] [last_known_ip] - Banned [permaban_reason]")
-		message_admins(SPAN_NOTICE("Failed Login: [ckey] id:[last_known_cid] ip:[last_known_ip] - Banned [permaban_reason]"))		
-		.["desc"]	= "\nReason: [permaban_reason]\nExpires: [timeleftstring]\nBy: [time_ban_admin.ckey][appeal]"
+		log_access("Failed Login: [ckey] [last_known_cid] [last_known_ip] - Banned [time_ban_reason]")
+		message_admins(SPAN_NOTICE("Failed Login: [ckey] id:[last_known_cid] ip:[last_known_ip] - Banned [time_ban_reason]"))		
+		.["desc"]	= "\nReason: [time_ban_reason]\nExpires: [timeleftstring]\nBy: [time_ban_admin.ckey][appeal]"
 		.["reason"]	= "ckey/id"
 		return .
 	// shouldn't be here

@@ -188,18 +188,6 @@
 	for(var/datum/automata_cell/explosion/E in autocells)
 		E.on_turf_entered(A)
 
-	if(ismob(A))
-		var/mob/M = A
-		if(!M.lastarea)
-			M.lastarea = get_area(M.loc)
-		if(M.lastarea && M.lastarea.has_gravity == 0)
-			inertial_drift(M)
-
-		else if(!istype(src, /turf/open/space))
-			M.inertia_dir = 0
-			M.make_floating(0)
-		..()
-
 /turf/proc/is_plating()
 	return 0
 /turf/proc/is_asteroid_floor()

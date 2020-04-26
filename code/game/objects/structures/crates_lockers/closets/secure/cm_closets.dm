@@ -275,6 +275,7 @@
 	new /obj/item/clothing/glasses/sunglasses(src)
 	new /obj/item/device/radio/headset/almayer/mcom/cdrcom(src)
 	new /obj/item/clothing/suit/storage/jacket/marine/dress/officer(src)
+	new /obj/item/clothing/head/helmet/formalcaptain(src)
 
 /obj/structure/closet/secure_closet/securecom
 	name = "commanding officer's secure box"

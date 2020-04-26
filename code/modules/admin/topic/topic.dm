@@ -313,6 +313,8 @@
 			to_chat(usr, "The Role Authority is not set up!")
 			return
 
+		var/datum/entity/player/P = get_player_from_key(M.ckey)
+
 		var/dat = ""
 		var/body
 		var/jobs = ""
@@ -332,14 +334,14 @@
 			var/datum/job/job = RoleAuthority.roles_by_name[jobPos]
 			if(!job) continue
 
-			if(jobban_isbanned(M, job.title))
+			if(jobban_isbanned(M, job.title, P))
 				jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=[job.title];jobban4=\ref[M]'><font color=red>[replacetext(job.title, " ", "&nbsp")]</font></a></td>"
 				counter++
 			else
 				jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=[job.title];jobban4=\ref[M]'>[replacetext(job.title, " ", "&nbsp")]</a></td>"
 				counter++
 
-			if(counter >= 6) //So things dont get squiiiiished!
+			if(counter >= 5) //So things dont get squiiiiished!
 				jobs += "</tr><tr>"
 				counter = 0
 		jobs += "</tr></table>"
@@ -354,7 +356,7 @@
 			var/datum/job/job = RoleAuthority.roles_by_name[jobPos]
 			if(!job) continue
 
-			if(jobban_isbanned(M, job.title))
+			if(jobban_isbanned(M, job.title, P))
 				jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=[job.title];jobban4=\ref[M]'><font color=red>[replacetext(job.title, " ", "&nbsp")]</font></a></td>"
 				counter++
 			else
@@ -375,7 +377,7 @@
 			var/datum/job/job = RoleAuthority.roles_by_name[jobPos]
 			if(!job) continue
 
-			if(jobban_isbanned(M, job.title))
+			if(jobban_isbanned(M, job.title, P))
 				jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=[job.title];jobban4=\ref[M]'><font color=red>[replacetext(job.title, " ", "&nbsp")]</font></a></td>"
 				counter++
 			else
@@ -396,7 +398,7 @@
 			var/datum/job/job = RoleAuthority.roles_by_name[jobPos]
 			if(!job) continue
 
-			if(jobban_isbanned(M, job.title))
+			if(jobban_isbanned(M, job.title, P))
 				jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=[job.title];jobban4=\ref[M]'><font color=red>[replacetext(job.title, " ", "&nbsp")]</font></a></td>"
 				counter++
 			else
@@ -417,7 +419,7 @@
 			var/datum/job/job = RoleAuthority.roles_by_name[jobPos]
 			if(!job) continue
 
-			if(jobban_isbanned(M, job.title))
+			if(jobban_isbanned(M, job.title, P))
 				jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=[job.title];jobban4=\ref[M]'><font color=red>[replacetext(job.title, " ", "&nbsp")]</font></a></td>"
 				counter++
 			else
@@ -430,75 +432,37 @@
 		jobs += "</tr></table>"
 
 	//Antagonist (Orange)
-		var/isbanned_dept = jobban_isbanned(M, "Syndicate")
+		var/isbanned_dept = jobban_isbanned(M, "Syndicate", P)
 		jobs += "<table cellpadding='1' cellspacing='0' width='100%'>"
 		jobs += "<tr bgcolor='ffeeaa'><th colspan='10'><a href='?src=\ref[src];jobban3=Syndicate;jobban4=\ref[M]'>Antagonist Positions</a></th></tr><tr align='center'>"
 
-		//Traitor
-		if(jobban_isbanned(M, "traitor") || isbanned_dept)
-			jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=traitor;jobban4=\ref[M]'><font color=red>[replacetext("Traitor", " ", "&nbsp")]</font></a></td>"
-		else
-			jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=traitor;jobban4=\ref[M]'>[replacetext("Traitor", " ", "&nbsp")]</a></td>"
-
-		//Changeling
-		if(jobban_isbanned(M, "changeling") || isbanned_dept)
-			jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=changeling;jobban4=\ref[M]'><font color=red>[replacetext("Changeling", " ", "&nbsp")]</font></a></td>"
-		else
-			jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=changeling;jobban4=\ref[M]'>[replacetext("Changeling", " ", "&nbsp")]</a></td>"
-
-		//Nuke Operative
-		if(jobban_isbanned(M, "operative") || isbanned_dept)
-			jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=operative;jobban4=\ref[M]'><font color=red>[replacetext("Nuke Operative", " ", "&nbsp")]</font></a></td>"
-		else
-			jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=operative;jobban4=\ref[M]'>[replacetext("Nuke Operative", " ", "&nbsp")]</a></td>"
-
-		//Revolutionary
-		if(jobban_isbanned(M, "revolutionary") || isbanned_dept)
-			jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=revolutionary;jobban4=\ref[M]'><font color=red>[replacetext("Revolutionary", " ", "&nbsp")]</font></a></td>"
-		else
-			jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=revolutionary;jobban4=\ref[M]'>[replacetext("Revolutionary", " ", "&nbsp")]</a></td>"
-
-		jobs += "</tr><tr align='center'>" //Breaking it up so it fits nicer on the screen every 5 entries
-
-		//Cultist
-		if(jobban_isbanned(M, "cultist") || isbanned_dept)
-			jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=cultist;jobban4=\ref[M]'><font color=red>[replacetext("Cultist", " ", "&nbsp")]</font></a></td>"
-		else
-			jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=cultist;jobban4=\ref[M]'>[replacetext("Cultist", " ", "&nbsp")]</a></td>"
-
-		//Wizard
-		if(jobban_isbanned(M, "wizard") || isbanned_dept)
-			jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=wizard;jobban4=\ref[M]'><font color=red>[replacetext("Wizard", " ", "&nbsp")]</font></a></td>"
-		else
-			jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=wizard;jobban4=\ref[M]'>[replacetext("Wizard", " ", "&nbsp")]</a></td>"
-
 		//ERT
-		if(jobban_isbanned(M, "Emergency Response Team") || isbanned_dept)
+		if(jobban_isbanned(M, "Emergency Response Team", P) || isbanned_dept)
 			jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=Emergency Response Team;jobban4=\ref[M]'><font color=red>Emergency Response Team</font></a></td>"
 		else
 			jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=Emergency Response Team;jobban4=\ref[M]'>Emergency Response Team</a></td>"
 
 		//Xenos
-		if(jobban_isbanned(M, "Alien") || isbanned_dept)
+		if(jobban_isbanned(M, "Alien", P) || isbanned_dept)
 			jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=Alien;jobban4=\ref[M]'><font color=red>Alien</font></a></td>"
 		else
 			jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=Alien;jobban4=\ref[M]'>Alien</a></td>"
 
 		//Queen
-		if(jobban_isbanned(M, "Queen") || isbanned_dept)
+		if(jobban_isbanned(M, "Queen", P) || isbanned_dept)
 			jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=Queen;jobban4=\ref[M]'><font color=red>Queen</font></a></td>"
 		else
 			jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=Queen;jobban4=\ref[M]'>Queen</a></td>"
 
 
 		//Survivor
-		if(jobban_isbanned(M, "Survivor") || isbanned_dept)
+		if(jobban_isbanned(M, "Survivor", P) || isbanned_dept)
 			jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=Survivor;jobban4=\ref[M]'><font color=red>Survivor</font></a></td>"
 		else
 			jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=Survivor;jobban4=\ref[M]'>Survivor</a></td>"
 
 		//Whiskey Outpost Role
-		if(jobban_isbanned(M, "WO Role") || isbanned_dept)
+		if(jobban_isbanned(M, "WO Role", P) || isbanned_dept)
 			jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=WO Role;jobban4=\ref[M]'><font color=red>WO Role</font></a></td>"
 		else
 			jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=WO Role;jobban4=\ref[M]'>WO Role</a></td>"
@@ -527,6 +491,8 @@
 		if(!RoleAuthority)
 			to_chat(usr, "Role Authority has not been set up!")
 			return
+
+		var/datum/entity/player/P1 = get_player_from_key(M.ckey)
 
 		//get jobs for department if specified, otherwise just returnt he one job in a list.
 		var/list/joblist = list()
@@ -566,7 +532,7 @@
 
 		var/list/notbannedlist = list()
 		for(var/job in joblist)
-			if(!jobban_isbanned(M, job))
+			if(!jobban_isbanned(M, job, P1))
 				notbannedlist += job
 
 		//Banning comes first
@@ -584,7 +550,7 @@
 		//all jobs in joblist are banned already OR we didn't give a reason (implying they shouldn't be banned)
 		if(joblist.len) //at least 1 banned job exists in joblist so we have stuff to unban.			
 			for(var/job in joblist)
-				var/reason = jobban_isbanned(M, job)
+				var/reason = jobban_isbanned(M, job, P1)
 				if(!reason) continue //skip if it isn't jobbanned anyway
 				switch(alert("Job: '[job]' Reason: '[reason]' Un-jobban?","Please Confirm","Yes","No"))
 					if("Yes")						

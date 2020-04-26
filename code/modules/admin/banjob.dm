@@ -80,19 +80,18 @@ var/jobban_keylist[0]		//to store the keys & ranks
 	jobban_keylist[rank][ckey] = "Reason Unspecified"
 
 //returns a reason if M is banned from rank, returns 0 otherwise
-/proc/jobban_isbanned(mob/M, rank)
-	if(M && rank)
-		rank = ckey(rank)
-		if(!M.client)
-			// asking for a friend
-			var/datum/entity/player/P = get_player_from_key(M.ckey)
-			if(!P)
-				return "Bad Ckey"
-			if(!P.jobbans_loaded)
-				return "Not yet loaded"
-			var/datum/entity/player_job_ban/PJB = P.job_bans[rank]
-			return PJB ? PJB.text : null
-		if(!M.client.player_data || !M.client.player_data.jobbans_loaded)
+/proc/jobban_isbanned(mob/M, rank, var/datum/entity/player/P = null)	
+	if(!rank)
+		return "Non-existant job"
+	rank = ckey(rank)
+	if(P)
+		// asking for a friend
+		if(!P.jobbans_loaded)
+			return "Not yet loaded"
+		var/datum/entity/player_job_ban/PJB = P.job_bans[rank]
+		return PJB ? PJB.text : null
+	if(M)	
+		if(!M.client || !M.client.player_data || !M.client.player_data.jobbans_loaded)
 			return "Not yet loaded"
 		if(guest_jobbans(rank))
 			if(config.guest_jobban && IsGuestKey(M.key))

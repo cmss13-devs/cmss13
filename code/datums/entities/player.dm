@@ -289,7 +289,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 /datum/entity/player/proc/auto_unban()
 	if(!is_time_banned)
 		return
-	var/time_left = MINUTES_STAMP - time_ban_expiration
+	var/time_left = time_ban_expiration - MINUTES_STAMP
 	if(time_left < 0)
 		time_ban_date = null
 		time_ban_expiration = null
@@ -301,7 +301,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 /datum/entity/player/proc/auto_unjobban()
 	for(var/key in job_bans)
 		var/datum/entity/player_job_ban/value = job_bans[key]
-		var/time_left = MINUTES_STAMP - value.expiration
+		var/time_left = value.expiration - MINUTES_STAMP
 		if(value.ban_time && time_left < 0)
 			value.delete()
 			job_bans -= value		

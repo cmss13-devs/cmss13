@@ -344,12 +344,14 @@
 /obj/item/device/flashlight/flare/signal/proc/activate_signal(mob/living/carbon/human/user)
 	if(faction && cas_groups[faction])
 		signal = new(src)
-		signal.target_id = cas_tracking_id_increment++
+		signal.target_id = ++cas_tracking_id_increment
 		name = "[user.assigned_squad ? user.assigned_squad.name : "X"]-[signal.target_id] flare"
 		signal.name = name
 		cas_groups[user.faction].add_signal(signal)
 		anchored = TRUE
 		visible_message(SPAN_DANGER("[src]'s flame reaches full strength. It's fully active now."), null, 5)
+		message_admins("[src] has been activated by [key_name(user, 1)] at ([x], [y], [z]). (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP</a>)")
+		log_game("[src] has been activated by [key_name(user, 1)] at ([x], [y], [z]).")
 
 /obj/item/device/flashlight/flare/signal/attack_hand(mob/user)
 	if (!user) return

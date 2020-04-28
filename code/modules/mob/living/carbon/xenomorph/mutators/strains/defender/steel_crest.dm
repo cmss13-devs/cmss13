@@ -14,6 +14,7 @@
 	var/mob/living/carbon/Xenomorph/Defender/D = MS.xeno
 	D.mutation_type = DEFENDER_STEELCREST
 	D.remove_action("Tail Sweep")
+	D.armor_modifier -= XENO_ARMOR_MOD_SMALL
 	D.speed_modifier += XENO_SPEED_MOD_SMALL
 	D.damage_modifier -= XENO_DAMAGE_MOD_VERYSMALL
 	D.spiked = TRUE

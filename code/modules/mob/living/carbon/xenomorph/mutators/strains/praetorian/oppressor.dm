@@ -18,13 +18,13 @@
 	
 	var/mob/living/carbon/Xenomorph/Praetorian/P = MS.xeno
 	
-	P.armor_modifier += XENO_ARMOR_MOD_SMALL;
-	P.explosivearmor_modifier += XENO_EXPOSIVEARMOR_MOD_LARGE;
+	P.armor_modifier += XENO_ARMOR_MOD_SMALL
+	P.explosivearmor_modifier += XENO_EXPOSIVEARMOR_MOD_LARGE
 	P.damage_modifier -= XENO_DAMAGE_MOD_SMALL
-	P.speed_modifier += XENO_SPEED_MOD_ULTRA;
-	P.plasma_types = list(PLASMA_NEUROTOXIN,PLASMA_CHITIN)
+	P.speed_modifier += XENO_SPEED_MOD_ULTRA
+	P.plasma_types = list(PLASMA_NEUROTOXIN, PLASMA_CHITIN)
 	
-	mutator_update_actions(P);
+	mutator_update_actions(P)
 	
 	MS.recalculate_actions(description, flavor_description)
 

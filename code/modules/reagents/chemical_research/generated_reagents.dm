@@ -344,7 +344,10 @@
 						has_addiction = TRUE
 						break
 				if(!has_addiction)
-					M.contract_disease(new /datum/disease/addiction(id,potency), 1)
+					var/datum/disease/addiction/D = new /datum/disease/addiction()
+					D.chemical_id = id
+					D.addiction_multiplier = potency
+					M.contract_disease(D, TRUE)
 				if(is_OD)
 					M.adjustBrainLoss(potency)
 					if(is_COD)

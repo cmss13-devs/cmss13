@@ -51,32 +51,34 @@
 	set waitfor = 0
 	var/turf/spawn_loc = get_spawn_point()
 
-	if(!istype(spawn_loc)) return //Didn't find a useable spawn point.
+	if(!istype(spawn_loc))
+		return //Didn't find a useable spawn point.
 
-	var/mob/living/carbon/human/mob = new(spawn_loc)
-	mob.key = M.key
-	if(mob.client) mob.client.change_view(world.view)
-	ticker.mode.traitors += mob.mind
+	var/mob/living/carbon/human/H = new(spawn_loc)
+	H.key = M.key
+	if(H.client)
+		H.client.change_view(world.view)
+	ticker.mode.traitors += H.mind
 	if(!leader)       //First one spawned is always the leader.
-		leader = mob
-		arm_equipment(mob, "UPP Soldier (Leader)", TRUE, TRUE)
-		to_chat(mob, SPAN_WARNING(FONT_SIZE_BIG("You are an officer of the Union of Progressive People, a powerful socialist state that rivals the United Americas!")))
+		leader = H
+		arm_equipment(H, "UPP Soldier (Leader)", TRUE, TRUE)
+		to_chat(H, SPAN_WARNING(FONT_SIZE_BIG("You are an officer of the Union of Progressive People, a powerful socialist state that rivals the United Americas!")))
 	else if(medics < max_medics)
-		to_chat(mob, SPAN_WARNING(FONT_SIZE_BIG("You are a medic of the Union of Progressive People, a powerful socialist state that rivals the United Americas!")))
-		arm_equipment(mob, "UPP Soldier (Medic)", TRUE, TRUE)
+		to_chat(H, SPAN_WARNING(FONT_SIZE_BIG("You are a medic of the Union of Progressive People, a powerful socialist state that rivals the United Americas!")))
+		arm_equipment(H, "UPP Soldier (Medic)", TRUE, TRUE)
 		medics++
 	else if(heavies < max_heavies)
-		to_chat(mob, SPAN_WARNING(FONT_SIZE_BIG("You are a soldier of the Union of Progressive People, a powerful socialist state that rivals the United Americas!")))
-		arm_equipment(mob, "UPP Soldier (Heavy)", TRUE, TRUE)
+		to_chat(H, SPAN_WARNING(FONT_SIZE_BIG("You are a soldier of the Union of Progressive People, a powerful socialist state that rivals the United Americas!")))
+		arm_equipment(H, "UPP Soldier (Heavy)", TRUE, TRUE)
 		heavies++
 	else
-		to_chat(mob, SPAN_WARNING(FONT_SIZE_BIG("You are a soldier of the Union of Progressive People, a powerful socialist state that rivals the United Americas!")))
-		arm_equipment(mob, "UPP Soldier (Standard)", TRUE, TRUE)
+		to_chat(H, SPAN_WARNING(FONT_SIZE_BIG("You are a soldier of the Union of Progressive People, a powerful socialist state that rivals the United Americas!")))
+		arm_equipment(H, "UPP Soldier (Standard)", TRUE, TRUE)
 
-	print_backstory(mob)
+	print_backstory(H)
 
 	sleep(10)
-	to_chat(mob, "<B>Objectives:</b> [objectives]")
+	to_chat(H, "<B>Objectives:</b> [objectives]")
 
 
 

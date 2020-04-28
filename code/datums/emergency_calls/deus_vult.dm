@@ -13,32 +13,34 @@
 	set waitfor = 0
 	var/turf/spawn_loc = get_spawn_point()
 
-	if(!istype(spawn_loc)) return //Didn't find a useable spawn point.
+	if(!istype(spawn_loc))
+		return //Didn't find a useable spawn point.
 
-	var/mob/living/carbon/human/mob = new(spawn_loc)
-	mob.key = M.key
-	if(mob.client) mob.client.change_view(world.view)
-	ticker.mode.traitors += mob.mind
+	var/mob/living/carbon/human/H = new(spawn_loc)
+	H.key = M.key
+	if(H.client)
+		H.client.change_view(world.view)
+	ticker.mode.traitors += H.mind
 
 	if(!leader)       //First one spawned is always the leader.
-		leader = mob
-		arm_equipment(mob, "Gladiator Leader", TRUE, TRUE)
-		to_chat(mob, "<font size='3'>\red You are the leader of these holy warriors!</font>")
-		to_chat(mob, "<B> You must clear out any traces of the unholy from this wretched place!</b>")
-		to_chat(mob, "<B> Follow any orders directly from the Higher Power!</b>")
+		leader = H
+		arm_equipment(H, "Gladiator Leader", TRUE, TRUE)
+		to_chat(H, "<font size='3'>\red You are the leader of these holy warriors!</font>")
+		to_chat(H, "<B> You must clear out any traces of the unholy from this wretched place!</b>")
+		to_chat(H, "<B> Follow any orders directly from the Higher Power!</b>")
 	else if(heavies < max_heavies)
-		arm_equipment(mob, "Gladiator Champion", TRUE, TRUE)
-		to_chat(mob, "<font size='3'>\red You are a champion of the holy warriors!</font>")
-		to_chat(mob, "<B> You must clear out any traces of the unholy from this wretched place!</b>")
-		to_chat(mob, "<B> Follow any orders directly from the Higher Power!</b>")
+		arm_equipment(H, "Gladiator Champion", TRUE, TRUE)
+		to_chat(H, "<font size='3'>\red You are a champion of the holy warriors!</font>")
+		to_chat(H, "<B> You must clear out any traces of the unholy from this wretched place!</b>")
+		to_chat(H, "<B> Follow any orders directly from the Higher Power!</b>")
 		heavies++
 	else
-		arm_equipment(mob, "Gladiator", TRUE, TRUE)
-		to_chat(mob, "<font size='3'>\red You are a holy warrior!</font>")
-		to_chat(mob, "<B> You must clear out any traces of the unholy from this wretched place!</b>")
-		to_chat(mob, "<B> Follow any orders directly from the Higher Power!</b>")
+		arm_equipment(H, "Gladiator", TRUE, TRUE)
+		to_chat(H, "<font size='3'>\red You are a holy warrior!</font>")
+		to_chat(H, "<B> You must clear out any traces of the unholy from this wretched place!</b>")
+		to_chat(H, "<B> Follow any orders directly from the Higher Power!</b>")
 
 	sleep(10)
-	to_chat(M, "<B>Objectives:</b> [objectives]")
+	to_chat(H, "<B>Objectives:</b> [objectives]")
 
 	return

@@ -12,20 +12,22 @@
 	set waitfor = 0
 	var/turf/spawn_loc = get_spawn_point()
 
-	if(!istype(spawn_loc)) return //Didn't find a useable spawn point.
+	if(!istype(spawn_loc))
+		return //Didn't find a useable spawn point.
 
-	var/mob/living/carbon/human/mob = new(spawn_loc)
-	mob.key = M.key
-	if(mob.client) mob.client.change_view(world.view)
-	ticker.mode.traitors += mob.mind
+	var/mob/living/carbon/human/H = new(spawn_loc)
+	H.key = M.key
+	if(H.client)
+		H.client.change_view(world.view)
+	ticker.mode.traitors += H.mind
 
-	arm_equipment(mob, "Souto Man", TRUE, TRUE)
+	arm_equipment(H, "Souto Man", TRUE, TRUE)
 
-	to_chat(mob, "<font size='3'>\red You are Souto Man! You should bring awareness to souto!</font>")
-	to_chat(mob, "Your job is to deliver your souto. Shoot those marines!")
+	to_chat(H, "<font size='3'>\red You are Souto Man! You should bring awareness to souto!</font>")
+	to_chat(H, "Your job is to deliver your souto. Shoot those marines!")
 
 	sleep(10)
-	to_chat(M, "<B>Objectives:</b> [objectives]")
+	to_chat(H, "<B>Objectives:</b> [objectives]")
 
 /datum/emergency_call/souto/cryo
 	name = "Souto Man (Cryo)"

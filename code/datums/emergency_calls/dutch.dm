@@ -13,22 +13,24 @@
 	set waitfor = 0
 	var/turf/spawn_loc = get_spawn_point()
 
-	if(!istype(spawn_loc)) return //Didn't find a useable spawn point.
+	if(!istype(spawn_loc))
+		return //Didn't find a useable spawn point.
 
-	var/mob/living/carbon/human/mob = new(spawn_loc)
-	mob.key = M.key
-	if(mob.client) mob.client.change_view(world.view)
-	ticker.mode.traitors += mob.mind
+	var/mob/living/carbon/human/H = new(spawn_loc)
+	H.key = M.key
+	if(H.client)
+		H.client.change_view(world.view)
+	ticker.mode.traitors += H.mind
 
 	if(!leader)       //First one spawned is always the leader.
-		leader = mob
-		arm_equipment(mob, "Dutch's Dozen - Arnold", TRUE, TRUE)
+		leader = H
+		arm_equipment(H, "Dutch's Dozen - Arnold", TRUE, TRUE)
 	else if(heavies < max_heavies)
-		arm_equipment(mob, "Dutch's Dozen - Minigun", TRUE, TRUE)
+		arm_equipment(H, "Dutch's Dozen - Minigun", TRUE, TRUE)
 		heavies++
 	else
-		arm_equipment(mob, "Dutch's Dozen - Soldier", TRUE, TRUE)
+		arm_equipment(H, "Dutch's Dozen - Soldier", TRUE, TRUE)
 	sleep(10)
-	to_chat(M, "<B>Objectives:</b> [objectives]")
+	to_chat(H, "<B>Objectives:</b> [objectives]")
 
 	return

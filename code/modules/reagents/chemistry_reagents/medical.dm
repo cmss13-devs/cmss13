@@ -226,7 +226,7 @@
 	description = "Advanced medicine used to treat severe burn trauma. Enables the body to restore even the direst heat-damaged tissue. Overdosing on dermaline can cause severe internal tissue damage."
 	reagent_state = LIQUID
 	color = "#F8C57C"
-	overdose = LOWH_REAGENTS_OVERDOSE 
+	overdose = LOWH_REAGENTS_OVERDOSE
 	overdose_critical = LOWH_REAGENTS_OVERDOSE_CRITICAL
 	scannable = 1
 	chemclass = CHEM_CLASS_UNCOMMON
@@ -689,7 +689,7 @@
 	ingestible = FALSE
 	color = "FFE703" // Yellow-ish
 	overdose = LOWM_REAGENTS_OVERDOSE
-	overdose_critical = LOWM_REAGENTS_OVERDOSE_CRITICAL 
+	overdose_critical = LOWM_REAGENTS_OVERDOSE_CRITICAL
 	scannable = 1
 	custom_metabolism = 0.4
 	chemclass = CHEM_CLASS_COMMON
@@ -716,7 +716,7 @@
 		var/datum/internal_organ/heart/E = H.internal_organs_by_name["heart"]
 		if(E)
 			E.damage += 1
-		
+
 /datum/reagent/hyperzine
 	name = "Hyperzine"
 	id = "hyperzine"
@@ -788,7 +788,9 @@
 			has_addiction = TRUE
 			break
 	if(!has_addiction)
-		M.contract_disease(new /datum/disease/addiction(id), 1)
+		var/datum/disease/addiction/D = new /datum/disease/addiction()
+		D.chemical_id = id
+		M.contract_disease(D, 1)
 
 /datum/reagent/ultrazine/on_overdose(mob/living/M)
 	if(ishuman(M))

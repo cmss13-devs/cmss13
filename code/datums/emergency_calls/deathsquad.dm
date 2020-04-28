@@ -21,37 +21,39 @@
 	set waitfor = 0
 	var/turf/spawn_loc = get_spawn_point()
 
-	if(!istype(spawn_loc)) return //Didn't find a useable spawn point.
+	if(!istype(spawn_loc))
+		return //Didn't find a useable spawn point.
 
-	var/mob/living/carbon/human/mob = new(spawn_loc)
-	mob.key = M.key
-	if(mob.client) mob.client.change_view(world.view)
-	ticker.mode.traitors += mob.mind
-	mob.set_skills(/datum/skills/commando/deathsquad)
+	var/mob/living/carbon/human/H = new(spawn_loc)
+	H.key = M.key
+	if(H.client)
+		H.client.change_view(world.view)
+	ticker.mode.traitors += H.mind
+	H.set_skills(/datum/skills/commando/deathsquad)
 
 	if(!leader)       //First one spawned is always the leader.
-		leader = mob
-		to_chat(mob, SPAN_WARNING(FONT_SIZE_BIG("You are the Deathsquad Leader!")))
-		to_chat(mob, "<B> You must clear out any traces of the infestation and its survivors.</b>")
-		to_chat(mob, "<B> Follow any orders directly from Weston-Yamada!</b>")
-		arm_equipment(mob, "Weston-Yamada Deathsquad Leader", TRUE, TRUE)
+		leader = H
+		to_chat(H, SPAN_WARNING(FONT_SIZE_BIG("You are the Deathsquad Leader!")))
+		to_chat(H, "<B> You must clear out any traces of the infestation and its survivors.</b>")
+		to_chat(H, "<B> Follow any orders directly from Weston-Yamada!</b>")
+		arm_equipment(H, "Weston-Yamada Deathsquad Leader", TRUE, TRUE)
 	else if(medics < max_medics)
-		to_chat(mob, SPAN_WARNING(FONT_SIZE_BIG("You are a Deathsquad Medic!")))
-		to_chat(mob, "<B> You must clear out any traces of the infestation and its survivors.</b>")
-		to_chat(mob, "<B> Follow any orders directly from Weston-Yamada!</b>")
-		arm_equipment(mob, "Weston-Yamada Deathsquad Medic", TRUE, TRUE)
+		to_chat(H, SPAN_WARNING(FONT_SIZE_BIG("You are a Deathsquad Medic!")))
+		to_chat(H, "<B> You must clear out any traces of the infestation and its survivors.</b>")
+		to_chat(H, "<B> Follow any orders directly from Weston-Yamada!</b>")
+		arm_equipment(H, "Weston-Yamada Deathsquad Medic", TRUE, TRUE)
 		medics++
 	else if(heavies < max_heavies)
-		to_chat(mob, SPAN_WARNING(FONT_SIZE_BIG("You are a Deathsquad Terminator!")))
-		to_chat(mob, "<B> You must clear out any traces of the infestation and its survivors.</b>")
-		to_chat(mob, "<B> Follow any orders directly from Weston-Yamada!</b>")
-		arm_equipment(mob, "Weston-Yamada Deathsquad Terminator", TRUE, TRUE)
+		to_chat(H, SPAN_WARNING(FONT_SIZE_BIG("You are a Deathsquad Terminator!")))
+		to_chat(H, "<B> You must clear out any traces of the infestation and its survivors.</b>")
+		to_chat(H, "<B> Follow any orders directly from Weston-Yamada!</b>")
+		arm_equipment(H, "Weston-Yamada Deathsquad Terminator", TRUE, TRUE)
 		heavies++
 	else
-		to_chat(mob, SPAN_WARNING(FONT_SIZE_BIG("You are a Deathsquad Commando!")))
-		to_chat(mob, "<B> You must clear out any traces of the infestation and its survivors.</b>")
-		to_chat(mob, "<B> Follow any orders directly from Weston-Yamada!</b>")
-		arm_equipment(mob, "Weston-Yamada Deathsquad", TRUE, TRUE)
+		to_chat(H, SPAN_WARNING(FONT_SIZE_BIG("You are a Deathsquad Commando!")))
+		to_chat(H, "<B> You must clear out any traces of the infestation and its survivors.</b>")
+		to_chat(H, "<B> Follow any orders directly from Weston-Yamada!</b>")
+		arm_equipment(H, "Weston-Yamada Deathsquad", TRUE, TRUE)
 
 	sleep(10)
-	to_chat(M, "<B>Objectives:</b> [objectives]")
+	to_chat(H, "<B>Objectives:</b> [objectives]")

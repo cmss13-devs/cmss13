@@ -41,25 +41,27 @@
 	set waitfor = 0
 	var/turf/spawn_loc = get_spawn_point()
 
-	if(!istype(spawn_loc)) return //Didn't find a useable spawn point.
+	if(!istype(spawn_loc))
+		return //Didn't find a useable spawn point.
 
-	var/mob/living/carbon/human/mob = new(spawn_loc)
-	mob.key = M.key
-	if(mob.client) mob.client.change_view(world.view)
-	ticker.mode.traitors += mob.mind
+	var/mob/living/carbon/human/H = new(spawn_loc)
+	H.key = M.key
+	if(H.client)
+		H.client.change_view(world.view)
+	ticker.mode.traitors += H.mind
 	if(!leader)       //First one spawned is always the leader.
-		leader = mob
-		arm_equipment(mob, "UPP Commando (Leader)", TRUE, TRUE)
-		to_chat(mob, SPAN_WARNING(FONT_SIZE_BIG("You are a commando squad leader of the Union of Progressive People, a powerful socialist state that rivals the United Americas!")))
+		leader = H
+		arm_equipment(H, "UPP Commando (Leader)", TRUE, TRUE)
+		to_chat(H, SPAN_WARNING(FONT_SIZE_BIG("You are a commando squad leader of the Union of Progressive People, a powerful socialist state that rivals the United Americas!")))
 	else if(medics < max_medics)
-		to_chat(mob, SPAN_WARNING(FONT_SIZE_BIG("You are a commando medic of the Union of Progressive People, a powerful socialist state that rivals the United Americas!")))
-		arm_equipment(mob, "UPP Commando (Medic)", TRUE, TRUE)
+		to_chat(H, SPAN_WARNING(FONT_SIZE_BIG("You are a commando medic of the Union of Progressive People, a powerful socialist state that rivals the United Americas!")))
+		arm_equipment(H, "UPP Commando (Medic)", TRUE, TRUE)
 		medics++
 	else
-		to_chat(mob, SPAN_WARNING(FONT_SIZE_BIG("You are a commando of the Union of Progressive People, a powerful socialist state that rivals the United Americas!")))
-		arm_equipment(mob, "UPP Commando (Standard)", TRUE, TRUE)
-	print_backstory(mob)
+		to_chat(H, SPAN_WARNING(FONT_SIZE_BIG("You are a commando of the Union of Progressive People, a powerful socialist state that rivals the United Americas!")))
+		arm_equipment(H, "UPP Commando (Standard)", TRUE, TRUE)
+	print_backstory(H)
 
 	sleep(10)
-	to_chat(mob, "<B>Objectives:</b> [objectives]")
+	to_chat(H, "<B>Objectives:</b> [objectives]")
 

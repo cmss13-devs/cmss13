@@ -102,7 +102,7 @@
 					chemical_research_data.update_credits(10)
 					message_admins(SPAN_NOTICE("The research department has discovered DNA_Disintegrating in [S.name] adding [OBJECTIVE_ABSOLUTE_VALUE * 2] bonus DEFCON points."), 1)
 					objectives_controller.add_admin_points(OBJECTIVE_ABSOLUTE_VALUE * 2)
-					ai_announcement("NOTICE: $[OBJECTIVE_ABSOLUTE_VALUE * 2 * DEFCON_TO_MONEY_MULTIPLIER] received from USCSS Royse. Shuttle inbound.")
+					ai_announcement("NOTICE: $20000 received from USCSS Royce. Shuttle inbound.")
 				else
 					return
 			chemical_research_data.update_credits(2)

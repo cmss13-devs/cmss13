@@ -20,37 +20,39 @@
 	set waitfor = 0
 	var/turf/spawn_loc = get_spawn_point()
 
-	if(!istype(spawn_loc)) return //Didn't find a useable spawn point.
+	if(!istype(spawn_loc))
+		return //Didn't find a useable spawn point.
 
-	var/mob/living/carbon/human/mob = new(spawn_loc)
-	mob.key = M.key
-	if(mob.client) mob.client.change_view(world.view)
+	var/mob/living/carbon/human/H = new(spawn_loc)
+	H.key = M.key
+	if(H.client)
+		H.client.change_view(world.view)
 
-	ticker.mode.traitors += mob.mind
+	ticker.mode.traitors += H.mind
 
 	if(!leader)       //First one spawned is always the leader.
-		leader = mob
-		to_chat(mob, SPAN_WARNING(FONT_SIZE_BIG("You are a Weston-Yamada SCP PMC squad leader!")))
-		arm_equipment(mob, "Weston-Yamada SCP PMC (Leader)", TRUE, TRUE)
+		leader = H
+		to_chat(H, SPAN_WARNING(FONT_SIZE_BIG("You are a Weston-Yamada SCP PMC squad leader!")))
+		arm_equipment(H, "Weston-Yamada SCP PMC (Leader)", TRUE, TRUE)
 	else if(medics < max_medics)
-		to_chat(mob, SPAN_WARNING(FONT_SIZE_BIG("You are a Weston-Yamada SCP PMC medic!")))
-		arm_equipment(mob, "Weston-Yamada SCP PMC (Medic)", TRUE, TRUE)
+		to_chat(H, SPAN_WARNING(FONT_SIZE_BIG("You are a Weston-Yamada SCP PMC medic!")))
+		arm_equipment(H, "Weston-Yamada SCP PMC (Medic)", TRUE, TRUE)
 		medics++
 	else if(heavies < max_heavies*ERT_PMC_GUNNER_FRACTION)
-		to_chat(mob, SPAN_WARNING(FONT_SIZE_BIG("You are a Weston-Yamada SCP PMC heavy gunner!")))
-		arm_equipment(mob, "Weston-Yamada SCP PMC (Gunner)", TRUE, TRUE)
+		to_chat(H, SPAN_WARNING(FONT_SIZE_BIG("You are a Weston-Yamada SCP PMC heavy gunner!")))
+		arm_equipment(H, "Weston-Yamada SCP PMC (Gunner)", TRUE, TRUE)
 		heavies++
 	else if(heavies < max_heavies)
-		to_chat(mob, SPAN_WARNING(FONT_SIZE_BIG("You are a Weston-Yamada SCP PMC sniper!")))
-		arm_equipment(mob, "Weston-Yamada SCP PMC (Sniper)", TRUE, TRUE)
+		to_chat(H, SPAN_WARNING(FONT_SIZE_BIG("You are a Weston-Yamada SCP PMC sniper!")))
+		arm_equipment(H, "Weston-Yamada SCP PMC (Sniper)", TRUE, TRUE)
 		heavies++
 	else
-		to_chat(mob, SPAN_WARNING(FONT_SIZE_BIG("You are a Weston-Yamada SCP PMC mercenary!")))
-		arm_equipment(mob, "Weston-Yamada SCP PMC (Standard)", TRUE, TRUE)
-	print_backstory(mob)
+		to_chat(H, SPAN_WARNING(FONT_SIZE_BIG("You are a Weston-Yamada SCP PMC mercenary!")))
+		arm_equipment(H, "Weston-Yamada SCP PMC (Standard)", TRUE, TRUE)
+	print_backstory(H)
 
 	sleep(10)
-	to_chat(M, "<B>Objectives:</b> [objectives]")
+	to_chat(H, "<B>Objectives:</b> [objectives]")
 
 
 /datum/emergency_call/scp/print_backstory(mob/living/carbon/human/M)

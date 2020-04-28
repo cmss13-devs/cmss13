@@ -12,24 +12,26 @@
 	set waitfor = 0
 	var/turf/spawn_loc = get_spawn_point()
 
-	if(!istype(spawn_loc)) return //Didn't find a useable spawn point.
+	if(!istype(spawn_loc))
+		return //Didn't find a useable spawn point.
 
-	var/mob/living/carbon/human/mob = new(spawn_loc)
-	mob.key = M.key
-	if(mob.client) mob.client.change_view(world.view)
-	ticker.mode.traitors += mob.mind
+	var/mob/living/carbon/human/H = new(spawn_loc)
+	H.key = M.key
+	if(H.client)
+		H.client.change_view(world.view)
+	ticker.mode.traitors += H.mind
 
 	if(!leader)       //First one spawned is always the leader.
-		leader = mob
-		arm_equipment(mob, "Fun - Pirate Captain", TRUE, TRUE)
-		to_chat(mob, "<font size='3'>\red You are the leader of these jolly pirates!</font>")
-		to_chat(mob, "<B> Loot this place for all its worth! Take everything of value that's not nailed down!</b>")
+		leader = H
+		arm_equipment(H, "Fun - Pirate Captain", TRUE, TRUE)
+		to_chat(H, "<font size='3'>\red You are the leader of these jolly pirates!</font>")
+		to_chat(H, "<B> Loot this place for all its worth! Take everything of value that's not nailed down!</b>")
 	else
-		arm_equipment(mob, "Fun - Pirate", TRUE, TRUE)
-		to_chat(mob, "<font size='3'>\red You are a jolly pirate! Yarr!</font>")
-		to_chat(mob, "<B> Loot this place for all its worth! Take everything of value that's not nailed down!</b>")
+		arm_equipment(H, "Fun - Pirate", TRUE, TRUE)
+		to_chat(H, "<font size='3'>\red You are a jolly pirate! Yarr!</font>")
+		to_chat(H, "<B> Loot this place for all its worth! Take everything of value that's not nailed down!</b>")
 
 	sleep(10)
-	to_chat(M, "<B>Objectives:</b> [objectives]")
+	to_chat(H, "<B>Objectives:</b> [objectives]")
 
 	return

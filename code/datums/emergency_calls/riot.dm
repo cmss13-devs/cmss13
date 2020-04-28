@@ -34,7 +34,7 @@
 		to_chat(H, "<B> You only answer to your superior, the Marine Law and the High Command!</b>")
 
 	sleep(10)
-	to_chat(M, "<B>Objectives:</b> [objectives]")
+	to_chat(H, "<B>Objectives:</b> [objectives]")
 
 
 /datum/emergency_call/riot/spawn_items()

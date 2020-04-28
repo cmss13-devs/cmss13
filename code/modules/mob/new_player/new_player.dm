@@ -1,4 +1,13 @@
 //This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:33
+#define FLAG_SHOW_CIC			1
+#define FLAG_SHOW_TECH_SUPPORT	2
+#define FLAG_SHOW_MISC			4
+#define FLAG_SHOW_POLICE		8
+#define FLAG_SHOW_ENGINEERING	16
+#define FLAG_SHOW_REQUISITION	32
+#define FLAG_SHOW_MEDICAL		64
+#define FLAG_SHOW_MARINES		128
+#define FLAG_SHOW_ALL			FLAG_SHOW_CIC|FLAG_SHOW_TECH_SUPPORT|FLAG_SHOW_MISC|FLAG_SHOW_POLICE|FLAG_SHOW_ENGINEERING|FLAG_SHOW_REQUISITION|FLAG_SHOW_MEDICAL|FLAG_SHOW_MARINES
 
 /mob/new_player
 	var/ready = FALSE
@@ -301,6 +310,8 @@
 			if(EVACUATION_STATUS_COMPLETE) dat += "<font color='red'>The [MAIN_SHIP_NAME] has undergone evacuation.</font><br>"
 
 	dat += "Choose from the following open positions:<br>"
+	var/roles_show = FLAG_SHOW_ALL
+
 	var/datum/job/J
 	var/i
 	for(i in RoleAuthority.roles_for_mode)
@@ -311,10 +322,42 @@
 		for(var/mob/M in player_list)
 			if(M.client && M.job == J.title && M.client.inactivity <= 10 * 60 * 10)
 				active++
+		if(roles_show & FLAG_SHOW_CIC && ROLES_CIC.Find(J.title))
+			dat += "Command:<br>"
+			roles_show ^= FLAG_SHOW_CIC
+
+		else if(roles_show & FLAG_SHOW_TECH_SUPPORT && ROLES_TECH_SUPPORT.Find(J.title))
+			dat += "<hr>Auxiliary Combat Support:<br>"
+			roles_show ^= FLAG_SHOW_TECH_SUPPORT
+
+		else if(roles_show & FLAG_SHOW_MISC && ROLES_MISC.Find(J.title))
+			dat += "<hr>Other:<br>"
+			roles_show ^= FLAG_SHOW_MISC
+
+		else if(roles_show & FLAG_SHOW_POLICE && ROLES_POLICE.Find(J.title))
+			dat += "<hr>Military Police:<br>"
+			roles_show ^= FLAG_SHOW_POLICE
+
+		else if(roles_show & FLAG_SHOW_ENGINEERING && ROLES_ENGINEERING.Find(J.title))
+			dat += "<hr>Engineering:<br>"
+			roles_show ^= FLAG_SHOW_ENGINEERING
+
+		else if(roles_show & FLAG_SHOW_REQUISITION && ROLES_REQUISITION.Find(J.title))
+			dat += "<hr>Requisitions:<br>"
+			roles_show ^= FLAG_SHOW_REQUISITION
+
+		else if(roles_show & FLAG_SHOW_MEDICAL && ROLES_MEDICAL.Find(J.title))
+			dat += "<hr>Medbay:<br>"
+			roles_show ^= FLAG_SHOW_MEDICAL
+
+		else if(roles_show & FLAG_SHOW_MARINES && ROLES_MARINES.Find(J.title))
+			dat += "<hr>Squad Marine:<br>"
+			roles_show ^= FLAG_SHOW_MARINES
+
 		dat += "<a href='byond://?src=\ref[src];lobby_choice=SelectedJob;job_selected=[J.title]'>[J.disp_title] ([J.current_positions]) (Active: [active])</a><br>"
 
 	dat += "</center>"
-	show_browser(src, dat, "Late Join", "latechoices")
+	show_browser(src, dat, "Late Join", "latechoices", "size = 230x600")
 
 
 /mob/new_player/proc/create_character()
@@ -425,3 +468,13 @@
 
 /mob/new_player/hear_radio(var/message, var/verb="says", var/datum/language/language=null, var/part_a, var/part_b, var/mob/speaker = null, var/hard_to_hear = 0)
 	return
+
+#undef FLAG_SHOW_CIC
+#undef FLAG_SHOW_TECH_SUPPORT
+#undef FLAG_SHOW_MISC
+#undef FLAG_SHOW_POLICE
+#undef FLAG_SHOW_ENGINEERING
+#undef FLAG_SHOW_REQUISITION
+#undef FLAG_SHOW_MEDICAL
+#undef FLAG_SHOW_MARINES
+#undef FLAG_SHOW_ALL

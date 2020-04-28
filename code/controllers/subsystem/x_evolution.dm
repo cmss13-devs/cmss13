@@ -26,6 +26,9 @@ var/datum/subsystem/xevolution/SSxevolution
 	var/num_humans = living_player_list[1]
 	var/time_frame = world.time / (10 MINUTES)
 
+	if(total_xenos == 0)
+		return
+
 	var/number_boost = (100+100*human_xeno_ratio_modifier*num_humans/total_xenos)*(100+100*time_ratio_modifier*time_frame)
 
 	var/larva_boost = (number_boost * larva_spec) / (total_xenos * 10000)

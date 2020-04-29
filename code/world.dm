@@ -388,9 +388,12 @@ var/list/datum/entity/map_vote/all_votes
 		*/
 
 	Master.Shutdown()
-	
+	var/round_extra_data = ""
 	// Notify helper daemon of reboot, regardless of reason.
-	world.Export("http://127.0.0.1:8888/?rebooting=1")
+	if(ticker && ticker.mode)
+		round_extra_data = "&message=[ticker.mode.end_round_message()]"
+		
+	world.Export("http://127.0.0.1:8888/?rebooting=1[round_extra_data]")
 	for(var/client/C in clients)
 		var/datum/chatOutput/chat = C.chatOutput
 		if(chat)

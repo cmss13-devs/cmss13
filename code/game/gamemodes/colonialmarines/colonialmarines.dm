@@ -257,13 +257,10 @@
 		round_finished = MODE_INFESTATION_M_MINOR //Nuke went off, ending the round.
 	if(EvacuationAuthority.dest_status < NUKE_EXPLOSION_IN_PROGRESS) //If the nuke ISN'T in progress. We do not want to end the round before it detonates.
 		if(!num_humans && num_xenos) //No humans remain alive.
-			if(EvacuationAuthority.evac_status > EVACUATION_STATUS_STANDING_BY)
-				round_finished = MODE_INFESTATION_X_MINOR //Evacuation successfully took place. //TODO Find out if anyone made it on.
-			else
-				round_finished = MODE_INFESTATION_X_MAJOR //Evacuation did not take place. Everyone died.
+			round_finished = MODE_INFESTATION_X_MAJOR //Evacuation did not take place. Everyone died.
 		else if(num_humans && !num_xenos)
 			if(EvacuationAuthority.evac_status > EVACUATION_STATUS_STANDING_BY)
-				round_finished = MODE_INFESTATION_M_MINOR //Evacuation successfully took place.
+				round_finished = MODE_INFESTATION_X_MINOR //Evacuation successfully took place.
 			else
 				round_finished = MODE_INFESTATION_M_MAJOR //Humans destroyed the xenomorphs.
 		else if(!num_humans && !num_xenos)
@@ -321,3 +318,18 @@
 	declare_random_fact()
 
 	return 1
+
+// for the toolbox
+/datum/game_mode/colonialmarines/end_round_message()
+	switch(round_finished)
+		if(MODE_INFESTATION_X_MAJOR)
+			return "Round has ended. Xeno Major Victory."
+		if(MODE_INFESTATION_M_MAJOR)
+			return "Round has ended. Marine Major Victory."
+		if(MODE_INFESTATION_X_MINOR)
+			return "Round has ended. Xeno Minor Victory."
+		if(MODE_INFESTATION_M_MINOR)
+			return "Round has ended. Marine Minor Victory."
+		if(MODE_INFESTATION_DRAW_DEATH)
+			return "Round has ended. Draw."
+	return "Round has ended in a strange way."

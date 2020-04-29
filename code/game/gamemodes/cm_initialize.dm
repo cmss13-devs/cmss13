@@ -910,3 +910,7 @@ Additional game mode variables.
 		// Chose an arbitrary node group and setup its resource amount
 		var/obj/effect/landmark/resource_node_activator/node_activator = pick(node_group_pool)
 		node_activator.amount = node_resources
+
+// for the toolbox
+/datum/game_mode/proc/end_round_message()
+	return "Extended round has ended."

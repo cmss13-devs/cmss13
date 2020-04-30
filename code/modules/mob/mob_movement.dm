@@ -162,7 +162,7 @@
 		mob.cur_speed = Clamp(10/(move_delay + 0.5), MIN_SPEED, MAX_SPEED)
 		//We are now going to move
 		moving = 1
-
+		mob.move_intentionally = TRUE
 		if(mob.confused)
 			mob.Move(get_step(mob, pick(cardinal)))
 		else
@@ -175,6 +175,7 @@
 			mob.life_steps_total += 1
 			if(mob.clone != null)
 				mob.update_clone()
+		mob.move_intentionally = FALSE
 		moving = 0
 		next_movement = world.time + move_delay
 	return

@@ -78,7 +78,7 @@ var/datum/subsystem/entity_manager/SSentity_manager
 		meta.on_action(IE)
 		currid++
 		if(IE.status == DB_ENTITY_STATE_ADD_DETACH)
-			del(IE)
+			qdel(IE)
 			continue
 		IE.status = DB_ENTITY_STATE_SYNCED
 		meta.managed["[IE.id]"] = IE				

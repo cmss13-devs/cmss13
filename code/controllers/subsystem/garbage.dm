@@ -21,6 +21,7 @@ var/datum/subsystem/garbage/SSgarbage
 	var/hard_del_count = 0
 	var/list/hard_del_profiling = list()
 
+	var/can_hard_del = FALSE
 
 
 /datum/subsystem/garbage/New()
@@ -106,7 +107,7 @@ var/datum/subsystem/garbage/SSgarbage
 
 		if(remainingForceDelPerTick <= 0)
 			break
-
+		
 		if(world.cpu > 50)
 			continue // no time to harddel
 
@@ -150,7 +151,8 @@ var/datum/subsystem/garbage/SSgarbage
 		else
 			hard_del_profiling[D.type] = 1
 
-		del(D)
+		if(can_hard_del)
+			del(D)
 		gc_count++
 		hard_del_count++
 		remainingForceDelPerTick--

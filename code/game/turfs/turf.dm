@@ -117,50 +117,52 @@
 			mover.Collide(A)
 			return FALSE
 
-	// Check objects in adjacent turf EAST/WEST
-	if(mover.diagonal_movement == DIAG_MOVE_DEFAULT && \
-		fd1 && fd1 != fdir
-	)
-		T = get_step(mover, fd1)
-		if (T.BlockedExitDirs(mover, fd2) || T.BlockedPassDirs(mover, fd1))
-			blocking_dir |= fd1
-			if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
-				mover.Collide(T)
-				return FALSE
-		for(obstacle in T)
-			if(forget == obstacle)
-				continue
-			if (!isStructure(obstacle) && !ismob(obstacle) && !isVehicle(obstacle))
-				continue
-			A = obstacle
-			if (A.BlockedExitDirs(mover, fd2) || A.BlockedPassDirs(mover, fd1))
+	// if we are thrown, moved, dragged, or in any other way abused by code - check our diagonals
+	if(!mover.move_intentionally)
+		// Check objects in adjacent turf EAST/WEST
+		if(mover.diagonal_movement == DIAG_MOVE_DEFAULT && \
+			fd1 && fd1 != fdir
+		)
+			T = get_step(mover, fd1)
+			if (T.BlockedExitDirs(mover, fd2) || T.BlockedPassDirs(mover, fd1))
 				blocking_dir |= fd1
 				if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
-					mover.Collide(A)
+					mover.Collide(T)
 					return FALSE
+			for(obstacle in T)
+				if(forget == obstacle)
+					continue
+				if (!isStructure(obstacle) && !ismob(obstacle) && !isVehicle(obstacle))
+					continue
+				A = obstacle
+				if (A.BlockedExitDirs(mover, fd2) || A.BlockedPassDirs(mover, fd1))
+					blocking_dir |= fd1
+					if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
+						mover.Collide(A)
+						return FALSE
 
-	// Check for borders in adjacent turf NORTH/SOUTH
-	if(mover.diagonal_movement == DIAG_MOVE_DEFAULT && \
-		fd2 && fd2 != fdir
-	)
-		T = get_step(mover, fd2)
-		if (T.BlockedExitDirs(mover, fd1) || T.BlockedPassDirs(mover, fd2))
-			blocking_dir |= fd2
-			if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
-				mover.Collide(T)
-				return FALSE
-		for(obstacle in T)
-			if(forget == obstacle)
-				continue
-			if (!isStructure(obstacle) && !ismob(obstacle) && !isVehicle(obstacle))
-				continue
-			A = obstacle
-			if (A.BlockedExitDirs(mover, fd1) || A.BlockedPassDirs(mover, fd2))
+		// Check for borders in adjacent turf NORTH/SOUTH
+		if(mover.diagonal_movement == DIAG_MOVE_DEFAULT && \
+			fd2 && fd2 != fdir
+		)
+			T = get_step(mover, fd2)
+			if (T.BlockedExitDirs(mover, fd1) || T.BlockedPassDirs(mover, fd2))
 				blocking_dir |= fd2
 				if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
-					mover.Collide(A)
+					mover.Collide(T)
 					return FALSE
-				break
+			for(obstacle in T)
+				if(forget == obstacle)
+					continue
+				if (!isStructure(obstacle) && !ismob(obstacle) && !isVehicle(obstacle))
+					continue
+				A = obstacle
+				if (A.BlockedExitDirs(mover, fd1) || A.BlockedPassDirs(mover, fd2))
+					blocking_dir |= fd2
+					if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
+						mover.Collide(A)
+						return FALSE
+					break
 	
 	//Next, check the turf itself
 	blocking_dir |= BlockedPassDirs(mover, fdir)

@@ -117,10 +117,9 @@
 		to_world(SPAN_ANNOUNCEMENT_HEADER_BLUE(" <b>[usr.client.admin_holder.fakekey ? "Administrator" : usr.key] Announces:</b>\n \t [message]"))
 		log_admin("Announce: [key_name(usr)] : [message]")
 
-/datum/admins/proc/player_notes_show(var/key as text, debug_mode = FALSE)
+/datum/admins/proc/player_notes_show(var/key as text)
 	set name = "D: Player Notes Show"
 	set category = "Admin"
-
 	if (!istype(src,/datum/admins))
 		src = usr.client.admin_holder
 	if (!istype(src,/datum/admins) || !(src.rights & R_MOD))
@@ -133,8 +132,6 @@
 	if(!P)
 		to_chat(usr, "Wrong CKEY [key]")
 		return
-	if(debug_mode)
-		dat += " ID: [P.id], P-ref: \ref[P]"
 	if(!P.refs_loaded)
 		P.load_refs()
 		sleep(10)
@@ -144,8 +141,6 @@
 		var/i = 0
 		for(var/datum/entity/player_note/N in P.notes)
 			i += 1
-			if(debug_mode)
-				dat += " ID: [N.id], N-ref: \ref[N]"
 			var/admin_ckey = "~~LOADING~~"
 			if(N.admin && N.admin.ckey)
 				admin_ckey = N.admin.ckey

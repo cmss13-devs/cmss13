@@ -17,11 +17,15 @@
 /obj/structure/interior_exit/attack_hand(var/mob/M)
 	to_chat(M, SPAN_NOTICE("You start climbing out of \the [interior.exterior]."))
 	if(!do_after(M, SECONDS_2, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
+		to_chat(M, SPAN_WARNING("Something has interrupted you."))
 		return
 
 	// Dragged stuff comes with
 	if(istype(M.get_inactive_hand(), /obj/item/grab))
 		var/obj/item/grab/G = M.get_inactive_hand()
+		interior.exit(G.grabbed_thing)
+	if(istype(M.get_active_hand(), /obj/item/grab))
+		var/obj/item/grab/G = M.get_active_hand()
 		interior.exit(G.grabbed_thing)
 
 	interior.exit(M)
@@ -29,9 +33,13 @@
 /obj/structure/interior_exit/attack_alien(var/mob/living/carbon/Xenomorph/M, var/dam_bonus)
 	to_chat(M, SPAN_NOTICE("You start climbing out of \the [interior.exterior]."))
 	if(!do_after(M, SECONDS_2, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
+		to_chat(M, SPAN_WARNING("Something has interrupted you."))
 		return
 
 	interior.exit(M)
+
+/obj/structure/interior_exit/vehicle/attackby(var/obj/item/O, var/mob/M)
+	attack_hand(M)
 
 /obj/structure/interior_exit/attack_ghost(mob/dead/observer/user)
 	if(!interior)
@@ -71,6 +79,7 @@
 /obj/structure/interior_exit/vehicle/attack_hand(var/mob/M)
 	to_chat(M, SPAN_NOTICE("You start climbing out of \the [interior.exterior]."))
 	if(!do_after(M, SECONDS_2, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
+		to_chat(M, SPAN_WARNING("Something has interrupted you."))
 		return
 
 	var/turf/exit_turf = get_exit_turf()
@@ -79,12 +88,17 @@
 	if(istype(M.get_inactive_hand(), /obj/item/grab))
 		var/obj/item/grab/G = M.get_inactive_hand()
 		interior.exit(G.grabbed_thing, exit_turf)
+	else if(istype(M.get_active_hand(), /obj/item/grab))
+		var/obj/item/grab/G = M.get_active_hand()
+		interior.exit(G.grabbed_thing, exit_turf)
 
 	interior.exit(M, exit_turf)
+
 
 /obj/structure/interior_exit/vehicle/attack_alien(var/mob/living/carbon/Xenomorph/M, var/dam_bonus)
 	to_chat(M, SPAN_NOTICE("You start climbing out of \the [interior.exterior]."))
 	if(!do_after(M, SECONDS_2, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
+		to_chat(M, SPAN_WARNING("Something has interrupted you."))
 		return
 
 	interior.exit(M, get_exit_turf())

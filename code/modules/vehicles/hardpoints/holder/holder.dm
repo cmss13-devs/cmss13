@@ -25,8 +25,15 @@
 
 /obj/item/hardpoint/holder/examine(var/mob/user)
 	for(var/obj/item/hardpoint/H in hardpoints)
-		to_chat(user, "There is a [H] installed on \the [src].")
+		to_chat(user, "There is a [H] module installed on \the [src].")
 		H.examine(user, TRUE)
+
+/obj/item/hardpoint/holder/get_hardpoint_info()
+	..()
+	var/dat = ""
+	for(var/obj/item/hardpoint/H in hardpoints)
+		dat += H.get_hardpoint_info()
+	return dat
 
 /obj/item/hardpoint/holder/take_damage(var/damage)
 	..()

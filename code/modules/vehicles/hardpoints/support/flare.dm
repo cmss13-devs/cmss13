@@ -1,5 +1,5 @@
 /obj/item/hardpoint/gun/flare_launcher
-	name = "mounted flare launcher"
+	name = "Mounted Flare Launcher"
 	desc = "A support module for APCs that shoots flares"
 	icon = 'icons/obj/vehicles/hardpoints/apc.dmi'
 

@@ -47,6 +47,15 @@
 
 	. = ..()
 
+/obj/item/hardpoint/gun/get_hardpoint_info()
+	var/dat = "<hr>"
+	dat += "[name]<br>"
+	if(health <= 0)
+		dat += "Integrity: <font color=\"red\">\[DESTROYED\]</font>"
+	else
+		dat += "Integrity: [round(get_integrity_percent())]% | Ammo: [ammo ? (ammo.current_rounds ? ammo.current_rounds : "<font color=\"red\">0</font>") : "<font color=\"red\">0</font>"]/[ammo ? ammo.max_rounds : "<font color=\"red\">0</font>"] | Mags: [LAZYLEN(backup_clips) ? LAZYLEN(backup_clips) : "<font color=\"red\">0</font>"]/[max_clips]"
+	return dat
+
 /obj/item/hardpoint/gun/activate(var/mob/user, var/atom/A)
 	..()
 	fire(user, A)

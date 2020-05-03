@@ -59,6 +59,10 @@
 
 		return
 
+	if(user.a_intent != HARM_INTENT)
+		handle_player_entrance(user)
+		return
+
 	take_damage_type(O.force * 0.05, "blunt", user) //Melee weapons from people do very little damage
 	. = ..()
 
@@ -190,24 +194,48 @@
 	healthcheck()
 
 /obj/vehicle/multitile/handle_click(var/mob/living/user, var/atom/A, var/list/mods)
+
 	var/seat
 	for(var/vehicle_seat in seats)
 		if(seats[vehicle_seat] == user)
 			seat = vehicle_seat
 			break
 
-	if (mods["shift"] || mods["alt"] || istype(A, /obj/screen) || !seat)
+	if(istype(A, /obj/screen) || !seat)
 		return
 
-	var/obj/item/hardpoint/HP = active_hp[seat]
-	if(!HP)
-		to_chat(user, SPAN_WARNING("Please select an active hardpoint first."))
-		return
+	if(seat == VEHICLE_DRIVER)
+		if(mods["shift"] && !mods["alt"])
+			A.examine(user)
+			return
 
-	if(!HP.can_activate(user, A))
-		return
+	if(seat == VEHICLE_GUNNER)
+		if(mods["shift"] && !mods["middle"])
+			if(vehicle_flags & TOGGLE_SHIFT_CLICK_GUNNER)
+				shoot_other_weapon(user, seat, A)
+			else
+				A.examine(user)
+			return
+		if(mods["middle"] && !mods["shift"])
+			if(!(vehicle_flags & TOGGLE_SHIFT_CLICK_GUNNER))
+				shoot_other_weapon(user, seat, A)
+			return
+		if(mods["alt"])
+			toggle_gyrostabilizer()
+			return
+		if(mods["ctrl"])
+			activate_support_module(user, seat, A)
+			return
 
-	HP.activate(user, A)
+		var/obj/item/hardpoint/HP = active_hp[seat]
+		if(!HP)
+			to_chat(user, SPAN_WARNING("Please select an active hardpoint first."))
+			return
+
+		if(!HP.can_activate(user, A))
+			return
+
+		HP.activate(user, A)
 
 /obj/vehicle/multitile/proc/handle_player_entrance(var/mob/M)
 	if(!M || M.client == null) return
@@ -237,7 +265,7 @@
 		enter_msg = "You start prying away loose plates, squeezing into \the [src]..."
 
 	to_chat(M, SPAN_NOTICE(enter_msg))
-	if(!do_after(M, SECONDS_2, INTERRUPT_ALL_OUT_OF_RANGE, BUSY_ICON_GENERIC))
+	if(!do_after(M, SECONDS_2, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 		return
 
 	if(mob_x != M.x - src.x || mob_y != M.y - src.y)
@@ -247,6 +275,9 @@
 	var/atom/dragged_atom
 	if(istype(M.get_inactive_hand(), /obj/item/grab))
 		var/obj/item/grab/G = M.get_inactive_hand()
+		dragged_atom = G.grabbed_thing
+	else if(istype(M.get_active_hand(), /obj/item/grab))
+		var/obj/item/grab/G = M.get_active_hand()
 		dragged_atom = G.grabbed_thing
 
 	// Transfer them to the interior

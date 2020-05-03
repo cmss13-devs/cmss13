@@ -56,4 +56,16 @@
 			to_chat(user, SPAN_NOTICE("You have no idea how to operate the weapons on this thing!"))
 		return FALSE
 
+	for(var/obj/item/I in user.contents)		//prevents shooting while zoomed in, but zoom can still be activated and used without shooting
+		if(I.zoom)
+			I.zoom(user)
+
 	return ..()
+
+/obj/structure/bed/chair/comfy/vehicle/gunner/afterbuckle(mob/M)
+	..()
+	if(buckled_mob != M && M.client)		//regards from artillery module. Not sure if this can be done less snowflakey
+		M.client.change_view(7)
+		M.client.pixel_x = 0
+		M.client.pixel_y = 0
+

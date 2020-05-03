@@ -36,3 +36,5 @@
 #define INTERIOR_BOUND_SIZE 25 //How big we want each vehicle interior instance to be, including padding
 
 #define HDPT_OFFSET_EMPTY list(NORTH = list(0, 0), SOUTH = list(0, 0), EAST = list(0, 0), WEST = list(0, 0))
+
+#define TOGGLE_SHIFT_CLICK_GUNNER			1 	// Toggle between Shift click and MMB click for gunner

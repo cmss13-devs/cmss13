@@ -93,13 +93,13 @@
 	..()
 
 //gyro ON locks the turret in one direction, OFF will make turret turning when tank turns
-/obj/item/hardpoint/holder/tank_turret/proc/toggle_gyro()
+/obj/item/hardpoint/holder/tank_turret/proc/toggle_gyro(var/mob/user)
 	if(health <= 0)
-		to_chat(usr, SPAN_WARNING("\The [src]'s stabilization systems are busted!"))
+		to_chat(user, SPAN_WARNING("\The [src]'s stabilization systems are busted!"))
 		return
 
 	gyro = !gyro
-	to_chat(usr, SPAN_NOTICE("You toggle \the [src]'s gyroscopic stabilizer [gyro ? "on" :"off"]."))
+	to_chat(user, SPAN_NOTICE("You toggle \the [src]'s gyroscopic stabilizer [gyro ? "ON" :"OFF"]."))
 
 /obj/item/hardpoint/holder/tank_turret/activate()
 	gyro = TRUE
@@ -130,3 +130,27 @@
 		return
 
 	..(deg)
+
+	var/obj/vehicle/multitile/tank/C = owner
+	var/obj/item/hardpoint/artillery_module/AM
+	for(var/obj/item/hardpoint/artillery_module/A in C.hardpoints)
+		AM = A
+	if(AM && AM.is_active)
+		var/mob/user = C.seats[VEHICLE_GUNNER]
+		if(user && user.client)
+			user = C.seats[VEHICLE_GUNNER]
+			user.client.change_view(AM.view_buff)
+
+			switch(dir)
+				if(NORTH)
+					user.client.pixel_x = 0
+					user.client.pixel_y = AM.view_tile_offset * 32
+				if(SOUTH)
+					user.client.pixel_x = 0
+					user.client.pixel_y = -1 * AM.view_tile_offset * 32
+				if(EAST)
+					user.client.pixel_x = AM.view_tile_offset * 32
+						user.client.pixel_y = 0
+				if(WEST)
+					user.client.pixel_x = -1 * AM.view_tile_offset * 32
+					user.client.pixel_y = 0

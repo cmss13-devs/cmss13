@@ -148,6 +148,7 @@
 		if(E.tag == entrance_used)
 			A.forceMove(get_turf(E))
 			return TRUE
+
 	return FALSE
 
 // Moves the atom to the exterior

@@ -66,37 +66,50 @@
 	add_hardpoint(new /obj/item/hardpoint/holder/tank_turret)
 
 /obj/vehicle/multitile/tank/add_seated_verbs(var/mob/living/M, var/seat)
+	if(!M.client)
+		return
+	M.client.verbs += /obj/vehicle/multitile/proc/get_status_info
+	M.client.verbs += /obj/vehicle/multitile/proc/open_controls_guide
 	if(seat == VEHICLE_DRIVER)
 		M.client.verbs += /obj/vehicle/multitile/proc/toggle_door_lock
 	else if(seat == VEHICLE_GUNNER)
 		M.client.verbs += /obj/vehicle/multitile/proc/switch_hardpoint
 		M.client.verbs += /obj/vehicle/multitile/proc/cycle_hardpoint
-		M.client.verbs += /obj/vehicle/multitile/tank/proc/toggle_gyrostabilizer
+		M.client.verbs += /obj/vehicle/multitile/proc/toggle_gyrostabilizer
+		M.client.verbs += /obj/vehicle/multitile/proc/toggle_shift_click
+
 
 /obj/vehicle/multitile/tank/remove_seated_verbs(var/mob/living/M, var/seat)
+	if(!M.client)
+		return
+	M.client.verbs -= /obj/vehicle/multitile/proc/get_status_info
+	M.client.verbs -= /obj/vehicle/multitile/proc/open_controls_guide
 	if(seat == VEHICLE_DRIVER)
 		M.client.verbs -= /obj/vehicle/multitile/proc/toggle_door_lock
 	else if(seat == VEHICLE_GUNNER)
 		M.client.verbs -= /obj/vehicle/multitile/proc/switch_hardpoint
 		M.client.verbs -= /obj/vehicle/multitile/proc/cycle_hardpoint
-		M.client.verbs -= /obj/vehicle/multitile/tank/proc/toggle_gyrostabilizer
+		M.client.verbs -= /obj/vehicle/multitile/proc/toggle_gyrostabilizer
+		M.client.verbs -= /obj/vehicle/multitile/proc/toggle_shift_click
 
-/obj/vehicle/multitile/tank/proc/toggle_gyrostabilizer()
-	set category = "Vehicle"
-	set name = "Toggle Turret Gyrostabilizer"
+
+/obj/vehicle/multitile/tank/toggle_gyrostabilizer()
 
 	var/mob/M = usr
 	if(!M || !istype(M))
 		return
 
 	var/obj/vehicle/multitile/V = M.interactee
-	if(!V || !istype(V))
+	if(!istype(V))
 		return
 
-	var/obj/item/hardpoint/holder/tank_turret/T = locate() in V.hardpoints
+	var/obj/item/hardpoint/holder/tank_turret/T = null
+	for(var/obj/item/hardpoint/holder/tank_turret/TT in V.hardpoints)
+		T = TT
+		break
 	if(!T)
 		return
-	T.toggle_gyro()
+	T.toggle_gyro(usr)
 
 //Called when players try to move vehicle
 //Another wrapper for try_move()
@@ -107,7 +120,10 @@
 	if(user != seats[VEHICLE_GUNNER])
 		return FALSE
 
-	var/obj/item/hardpoint/holder/tank_turret/T = locate() in hardpoints
+	var/obj/item/hardpoint/holder/tank_turret/T = null
+	for(var/obj/item/hardpoint/holder/tank_turret/TT in hardpoints)
+		T = TT
+		break
 	if(!T)
 		return FALSE
 

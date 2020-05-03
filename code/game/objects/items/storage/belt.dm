@@ -841,7 +841,7 @@
 		return ..()
 
 /obj/item/storage/belt/tank
-	name = "\improper M103 pattern Tank-Ammo rig" //Carn: utility belt is nicer, but it bamboozles the text parsing.
+	name = "\improper M103 pattern Vehicle-Ammo rig" //Carn: utility belt is nicer, but it bamboozles the text parsing.
 	desc = "The M103 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. Made specially for Crewmen for store their ammunition."
 	icon_state = "tankbelt"
 	item_state = "tankbelt"
@@ -857,7 +857,9 @@
 		/obj/item/ammo_magazine/hardpoint/towlauncher,
 		/obj/item/ammo_magazine/hardpoint/m56_cupola,
 		/obj/item/ammo_magazine/hardpoint/tank_glauncher,
-		/obj/item/ammo_magazine/hardpoint/tank_slauncher
+		/obj/item/ammo_magazine/hardpoint/tank_slauncher,
+		/obj/item/ammo_magazine/hardpoint/boyars_dualcannon,
+		/obj/item/ammo_magazine/hardpoint/flare_launcher
 	)
 
 

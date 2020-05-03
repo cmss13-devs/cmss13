@@ -96,15 +96,20 @@
 		return FALSE
 	return activatable
 
-/obj/item/hardpoint/examine(mob/user, var/integrity_only)
-	if(integrity_only)
-		if(health <= 0)
-			to_chat(user, "It's busted!")
-		else if(isobserver(user) || (ishuman(user) && skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI)))
-			to_chat(user, "It's at [round(get_integrity_percent(), 1)]% integrity!")
-		return
+/obj/item/hardpoint/examine(mob/user, var/integrity_only = null)
+	if(!integrity_only)
+		..()
+	if(health <= 0)
+		to_chat(user, "It's busted!")
+	else if(isobserver(user) || (ishuman(user) && skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI)))
+		to_chat(user, "It's at [round(get_integrity_percent(), 1)]% integrity!")
 
-	..()
+//for status window
+/obj/item/hardpoint/proc/get_hardpoint_info()
+	var/dat = "<hr>"
+	dat += "[name]<br>"
+	dat += "Integrity: [health <= 0 ? "<font color=\"red\">\[DESTROYED\]</font>" : "[round(get_integrity_percent())]%"]"
+	return dat
 
 // Returns an image for the hardpoint
 /obj/item/hardpoint/proc/get_hardpoint_image()

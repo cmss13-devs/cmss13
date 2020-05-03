@@ -58,6 +58,9 @@ var/global/list/all_multi_vehicles = list()
 	//List of all hardpoints you can attach to this vehicle
 	var/list/hardpoints_allowed = list()
 
+
+	var/vehicle_flags = NO_FLAGS		//variable for various flags
+
 	// References to the active/chosen hardpoint for each seat
 	var/active_hp = list(
 		VEHICLE_DRIVER = null
@@ -189,10 +192,12 @@ var/global/list/all_multi_vehicles = list()
 	..()
 
 	for(var/obj/item/hardpoint/H in hardpoints)
-		to_chat(user, "There is a [H] installed.")
+		to_chat(user, "There is a [H] module installed.")
 		H.examine(user, TRUE)
 	if(clamped)
 		to_chat(user, "There is a vehicle clamp attached.")
+	if(isXeno(user) && interior && interior.humans_inside > 0)
+		to_chat(user, "You can sense approximately [interior.humans_inside] hosts inside.")
 
 /obj/vehicle/multitile/proc/load_hardpoints()
 	return
@@ -278,7 +283,7 @@ var/global/list/all_multi_vehicles = list()
 //Used to swap which module a position is using
 //e.g. swapping primary gunner from the minigun to the smoke launcher
 /obj/vehicle/multitile/proc/switch_hardpoint()
-	set name = "Change Active Hardpoint"
+	set name = "A: Change Active Hardpoint"
 	set category = "Vehicle"
 
 	var/mob/M = usr
@@ -306,7 +311,7 @@ var/global/list/all_multi_vehicles = list()
 	to_chat(M, SPAN_NOTICE("You select \the [HP]."))
 
 /obj/vehicle/multitile/proc/cycle_hardpoint()
-	set name = "Cycle Active Hardpoint"
+	set name = "A: Cycle Active Hardpoint"
 	set category = "Vehicle"
 
 	var/mob/M = usr
@@ -314,7 +319,7 @@ var/global/list/all_multi_vehicles = list()
 		return
 
 	var/obj/vehicle/multitile/V = M.interactee
-	if(!V || !istype(V))
+	if(!istype(V))
 		return
 
 	var/seat = V.get_mob_seat(M)
@@ -335,11 +340,11 @@ var/global/list/all_multi_vehicles = list()
 		return
 
 	V.active_hp[seat] = HP
-	to_chat(M, SPAN_NOTICE("You select \the [HP]."))	
+	to_chat(M, SPAN_NOTICE("You select \the [HP]."))
 
 // Used to lock/unlock the vehicle doors to anyone without proper access
 /obj/vehicle/multitile/proc/toggle_door_lock()
-	set name = "Toggle Door Locks"
+	set name = "G: Toggle Door Locks"
 	set category = "Vehicle"
 
 	var/mob/M = usr
@@ -347,7 +352,7 @@ var/global/list/all_multi_vehicles = list()
 		return
 
 	var/obj/vehicle/multitile/V = M.interactee
-	if(!V || !istype(V))
+	if(!istype(V))
 		return
 
 	var/seat = V.get_mob_seat(M)
@@ -358,6 +363,97 @@ var/global/list/all_multi_vehicles = list()
 
 	V.door_locked = !V.door_locked
 	to_chat(M, SPAN_NOTICE("You [V.door_locked ? "lock" : "unlock"] the vehicle doors."))
+
+/obj/vehicle/multitile/proc/toggle_shift_click()
+	set name = "G: Toggle Middle/Shift Clicking"
+	set desc = "Toggles between using Middle Mouse Button click and Shift + Click to fire not currently selected weapon if possible."
+	set category = "Vehicle"
+
+	var/obj/vehicle/multitile/V = usr.interactee
+	if(!istype(V))
+		return
+	var/seat
+	for(var/vehicle_seat in V.seats)
+		if(V.seats[vehicle_seat] == usr)
+			seat = vehicle_seat
+			break
+	if(seat == VEHICLE_GUNNER)
+		V.vehicle_flags ^= TOGGLE_SHIFT_CLICK_GUNNER
+		to_chat(usr, SPAN_NOTICE("You will fire not selected weapon with [(V.vehicle_flags & TOGGLE_SHIFT_CLICK_GUNNER) ? "Shift + Click" : "Middle Mouse Button click"] now, if possible."))
+	return
+
+//Status window
+/obj/vehicle/multitile/proc/get_status_info()
+	set name = "I: Get Status Info"
+	set desc = "Shows all available information about your vehicle."
+	set category = "Vehicle"
+
+	var/mob/user = usr
+	if(!istype(user))
+		return
+
+	var/obj/vehicle/multitile/V = user.interactee
+	if(!istype(V))
+		return
+
+	var/seat
+	for(var/vehicle_seat in V.seats)
+		if(V.seats[vehicle_seat] == user)
+			seat = vehicle_seat
+			break
+	if(!seat)
+		return
+
+	var/dat = "[V]<br>"
+	for(var/obj/item/hardpoint/H in V.hardpoints)
+		dat += H.get_hardpoint_info()
+
+	show_browser(user, dat, "Vehicle Status Info", "vehicle_info")
+	onclose(user, "vehicle_info")
+	return
+
+/obj/vehicle/multitile/proc/open_controls_guide()
+	set name = "I: Vehicle Controls Guide"
+	set desc = "MANDATORY FOR FIRST PLAY AS VEHICLE CREWMAN."
+	set category = "Vehicle"
+
+	var/mob/user = usr
+	if(!istype(user))
+		return
+
+	var/obj/vehicle/multitile/V = user.interactee
+	if(!istype(V))
+		return
+
+	var/seat
+	for(var/vehicle_seat in V.seats)
+		if(V.seats[vehicle_seat] == user)
+			seat = vehicle_seat
+			break
+	if(!seat)
+		return
+
+	var/dat = "<b><i>Common verbs:</i></b><br>1. <b>\"I: Get Status Info\"</b> - brings up \"Vehicle Status Info\" window with all available information about your vehicle.<br> \
+	<b><i>Driver verbs:</i></b><br> 1. <b>\"G: Toggle Door Locks\"</b> - toggles vehicle's access restrictions. Crewman, Brig and Command accesses bypass these restrictions.<br> \
+	<b><i>Gunner verbs:</i></b><br> 1. <b>\"A: Change Active Hardpoint\"</b> - brings up a list of all not destroyed activatable hardpoints you have access to and allows you to switch your current active hardpoint to one from the list. To activate currently selected hardpoint, click on your target. <b>MAKE SURE NOT TO HIT MARINES</b>.<br>\
+	 2. <b>\"A: Cycle Active Hardpoint\"</b> - works similarly to one above, except it automatically switches to next hardpoint in a list allowing you to switch faster.<br> \
+	 3. <b>\"G: Toggle Middle/Shift Clicking\"</b> - toggles between using <i>Middle Mouse Button</i> click and <i>Shift + Click</i> to fire not currently selected weapon if possible.<br> \
+	 4. <b>\"G: Toggle Turret Gyrostabilizer\"</b> - toggles Turret Gyrostabilizer allowing it to keep current direction ignoring hull turning. <i>(Exists only on vehicles with rotating turret, e.g. M34A2 Longstreet Light Tank)</i><br> \
+	<b><i>Gunner shortcuts:</i></b><br> 1. <b>\"SHIFT + Click\"</b> - examines target as usual, unless <i>\"G: Toggle Middle/Shift Clicking\"</i> verb was used to toggle <i>SHIFT + Click</i> firing ON. In this case, it will fire currently not selected weapon if possible.<br> \
+	 2. <b>\"Middle Mouse Button Click (MMB)\"</b> - default shortcut to shoot currently not selected weapon if possible. Won't work if <i>SHIFT + Click</i> firing is toggled ON.<br> \
+	 3. <b>\"CTRL + Click\"</b> - activates not destroyed activatable support module.<br> \
+	 4. <b>\"ALT + Click\"</b> - toggles Turret Gyrostabilizer. <i>(Exists only on vehicles with rotating turret, e.g. M34A2 Longstreet Light Tank)</i><br>"
+
+	show_browser(user, dat, "Vehicle Controls Guide", "vehicle_help", "size=900x500")
+	onclose(user, "vehicle_help")
+	return
+
+/obj/vehicle/multitile/proc/toggle_gyrostabilizer()
+	set category = "Vehicle"
+	set name = "G: Toggle Turret Gyrostabilizer"
+	set desc = "Toggles Turret Gyrostabilizer allowing it independant movement regardless of hull direction."
+
+	return
 
 // Returns all hardpoints that are attached to the vehicle, including ones held by holder hardpoints (e.g. turrets)
 /obj/vehicle/multitile/proc/get_hardpoints()

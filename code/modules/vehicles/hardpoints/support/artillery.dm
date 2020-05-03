@@ -31,11 +31,15 @@
 		is_active = FALSE
 		return
 
+	var/atom/holder = owner
+	for(var/obj/item/hardpoint/holder/tank_turret/T in owner.hardpoints)
+		holder = T
+		break
+
 	user.client.change_view(view_buff)
 	is_active = TRUE
 
-	var/obj/vehicle/multitile/tank/C = owner
-	switch(C.dir)
+	switch(holder.dir)
 		if(NORTH)
 			user.client.pixel_x = 0
 			user.client.pixel_y = view_tile_offset * 32

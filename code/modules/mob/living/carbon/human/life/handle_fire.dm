@@ -10,4 +10,4 @@
 		bodytemperature += BODYTEMP_HEATING_MAX
 		recalculate_move_delay = TRUE
 		var/dmg = armor_damage_reduction(config.marine_fire, 5)
-		adjustFireLoss(dmg)
+		apply_damage(dmg, BURN)

@@ -85,7 +85,7 @@
 		gib(source)
 		return
 
-	adjustBruteLoss(severity)
+	apply_damage(severity, BRUTE)
 	updatehealth()
 
 	var/knock_value = min( round( severity*0.1 ,1) ,10)

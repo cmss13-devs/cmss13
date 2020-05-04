@@ -131,7 +131,7 @@
 	else
 		if(prob(20))
 			M.drop_held_item()
-		M.adjustOxyLoss(1)
+		M.apply_damage(1, OXY)
 		if(M.coughedtime != 1)
 			M.coughedtime = 1
 			if(ishuman(M)) //Humans only to avoid issues
@@ -210,7 +210,7 @@
 	else
 		if(prob(20))
 			M.drop_held_item()
-		M.adjustOxyLoss(1)
+		M.apply_damage(1, OXY)
 		M.updatehealth()
 		if(M.coughedtime != 1)
 			M.coughedtime = 1
@@ -280,8 +280,8 @@
 	M.last_damage_source = source
 	M.last_damage_mob = source_mob
 
-	M.adjustOxyLoss(3) //Basic oxyloss from "can't breathe"
-	M.adjustFireLoss(amount*rand(8, 10)) //Inhalation damage
+	M.apply_damage(3, OXY) //Basic oxyloss from "can't breathe"
+	M.apply_damage(amount*rand(8, 10), BURN) //Inhalation damage
 	if(M.coughedtime != 1 && !M.stat) //Coughing/gasping
 		M.coughedtime = 1
 		if(prob(50))
@@ -295,7 +295,7 @@
 	to_chat(M, SPAN_DANGER("Your skin feels like it is melting away!"))
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
-		H.adjustFireLoss(amount*rand(15, 20)) //Burn damage, randomizes between various parts //Amount corresponds to upgrade level, 1 to 2.5
+		H.apply_damage(amount*rand(15, 20), BURN) //Burn damage, randomizes between various parts //Amount corresponds to upgrade level, 1 to 2.5
 	else
 		M.burn_skin(5) //Failsafe for non-humans
 	M.updatehealth()
@@ -329,7 +329,7 @@
 
 	var/effect_amt = round(6 + amount*6)
 
-	M.adjustOxyLoss(9) //Causes even more oxyloss damage due to neurotoxin locking up respiratory system
+	M.apply_damage(9, OXY) //Causes even more oxyloss damage due to neurotoxin locking up respiratory system
 	M.ear_deaf = max(M.ear_deaf, round(effect_amt*1.5)) //Paralysis of hearing system, aka deafness
 	if(!M.eye_blind) //Eye exposure damage
 		to_chat(M, SPAN_DANGER("Your eyes sting. You can't see!"))
@@ -383,7 +383,7 @@
 
 	var/effect_amt = round(6 + amount*6)
 
-	M.adjustOxyLoss(9) // MUCH harsher
+	M.apply_damage(9, OXY) // MUCH harsher
 	M.ear_deaf = max(M.ear_deaf, round(effect_amt*1.5)) //Paralysis of hearing system, aka deafness
 	if(!M.eye_blind) //Eye exposure damage
 		to_chat(M, SPAN_DANGER("Your eyes sting. You can't see!"))

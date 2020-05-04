@@ -484,7 +484,7 @@ Additional game mode variables.
 	original.first_xeno = TRUE
 	original.stat = 1
 	transform_survivor(ghost_mind) //Create a new host
-	original.adjustBruteLoss(50) //Do some damage to the host
+	original.apply_damage(50, BRUTE)
 	original.spawned_corpse = TRUE
 
 	var/obj/structure/bed/nest/start_nest = new /obj/structure/bed/nest(original.loc) //Create a new nest for the host

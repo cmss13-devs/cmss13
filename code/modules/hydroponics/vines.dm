@@ -136,7 +136,7 @@
 
 				var/damage = rand(round(seed.potency/2),seed.potency)
 				if(!istype(H))
-					H.adjustBruteLoss(damage)
+					H.apply_damage(damage, BRUTE)
 					return
 
 				var/obj/limb/affecting = H.get_limb(pick("l_foot","r_foot","l_leg","r_leg","l_hand","r_hand","l_arm", "r_arm","head","chest","groin"))
@@ -146,7 +146,7 @@
 					if(affecting.parent)
 						affecting.parent.add_autopsy_data("[plant_damage_noun]", damage)
 				else
-					H.adjustBruteLoss(damage)
+					H.apply_damage(damage, BRUTE)
 
 				H.UpdateDamageIcon()
 				H.updatehealth()

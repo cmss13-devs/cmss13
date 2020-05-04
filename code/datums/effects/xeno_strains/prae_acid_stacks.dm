@@ -67,7 +67,7 @@
 		return
 
 	var/mob/living/carbon/human/H = affected_atom
-	H.adjustFireLoss(proc_damage)
+	H.apply_damage(proc_damage, BURN)
 	to_chat(H, SPAN_XENODANGER("You feel acid eat into your skin as you are slashed!"))
 	qdel(src)
 	return

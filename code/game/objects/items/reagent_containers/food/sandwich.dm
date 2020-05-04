@@ -96,5 +96,5 @@
 
 	if(H && shard && M == user) //This needs a check for feeding the food to other people, but that could be abusable.
 		to_chat(H, SPAN_DANGER("You lacerate your mouth on a [shard.name] in the sandwich!"))
-		H.adjustBruteLoss(5) //TODO: Target head if human.
+		H.apply_damage(5, BRUTE)
 	..()

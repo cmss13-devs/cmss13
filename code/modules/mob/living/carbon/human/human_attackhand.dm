@@ -42,7 +42,7 @@
 			if(do_after(M, HUMAN_STRIP_DELAY, INTERRUPT_ALL, BUSY_ICON_GENERIC, src, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
 				if(health > config.health_threshold_dead && health < config.health_threshold_crit)
 					var/suff = min(getOxyLoss(), 10) //Pre-merge level, less healing, more prevention of dieing.
-					adjustOxyLoss(-suff)
+					apply_damage(-suff, OXY)
 					updatehealth()
 					src.affected_message(M,
 						SPAN_HELPFUL("You feel a <b>breath of fresh air</b> enter your lungs. It feels good."),

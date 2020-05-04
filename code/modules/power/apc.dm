@@ -619,7 +619,7 @@
 				s.set_up(3, 1, src)
 				s.start()
 				to_chat(H, SPAN_DANGER("The APC's power currents surge eratically, damaging your chassis!"))
-				H.adjustFireLoss(10,0)
+				H.apply_damage(10,0, BURN)
 			else if(cell && cell.charge > 0)
 				if(!istype(H.back, /obj/item/storage/backpack/marine/smartpack))
 					return

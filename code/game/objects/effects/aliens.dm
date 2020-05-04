@@ -96,7 +96,7 @@
 			M.ExtinguishMob()
 			if (ishuman(M))
 				apply_spray(M)
-				M.adjustFireLoss(damage_amount) // Deal extra damage when first placing ourselves down.
+				M.apply_damage(damage_amount, BURN) // Deal extra damage when first placing ourselves down.
 
 			continue
 			
@@ -128,7 +128,7 @@
 			H.UpdateDamageIcon()
 		H.updatehealth()
 	else
-		H.adjustFireLoss(damage_amount*0.33) //This is ticking damage!
+		H.apply_damage(damage_amount*0.33, BURN) //This is ticking damage!
 		to_chat(H, SPAN_DANGER("You are scalded by the burning acid!"))
 
 /obj/effect/xenomorph/spray/process()
@@ -220,7 +220,7 @@
 			H.UpdateDamageIcon()
 		H.updatehealth()
 	else
-		H.adjustFireLoss(damage_amount*0.33) //This is ticking damage!
+		H.apply_damage(damage_amount*0.33, BURN) //This is ticking damage!
 		to_chat(H, SPAN_DANGER("You are scalded by the burning acid!"))
 
 //Medium-strength acid
@@ -339,7 +339,7 @@
 		return
 	for (var/mob/living/carbon/human/H in loc)
 		if (!H.stat)
-			H.adjustFireLoss(damage)
+			H.apply_damage(damage, BURN)
 			animation_flash_color(H)
 			to_chat(H, SPAN_XENODANGER("You are scalded by acid as a massive glob explodes nearby!"))
 
@@ -392,7 +392,7 @@
 			continue
 
 		animation_flash_color(H)
-		H.adjustFireLoss(damage)
+		H.apply_damage(damage, BURN)
 		if (message)
 			to_chat(H, SPAN_XENODANGER(message))
 		

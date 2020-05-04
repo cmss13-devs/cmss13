@@ -37,7 +37,7 @@ Bonus
 
 	if(M.getFireLoss() < M.getMaxHealth() || M.getBruteLoss() < M.getMaxHealth())
 		var/get_damage = rand(1, 2)
-		M.adjustFireLoss(-get_damage)
-		M.adjustBruteLoss(-get_damage)
-		M.adjustToxLoss(get_damage)
+		M.apply_damage(-get_damage, BURN)
+		M.apply_damage(-get_damage, BRUTE)
+		M.apply_damage(get_damage, TOX)
 		return 1

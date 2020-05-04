@@ -120,7 +120,7 @@
 			var/damage = O.force
 			if (O.damtype == HALLOSS)
 				damage = 0
-			adjustBruteLoss(damage)
+			apply_damage(damage, BRUTE)
 			for(var/mob/M in viewers(src, null))
 				if ((M.client && !( M.blinded )))
 					M.show_message(SPAN_DANGER("\b [src] has been attacked with the [O] by [user]. "))

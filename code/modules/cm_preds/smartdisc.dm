@@ -134,7 +134,7 @@
 	if(!Proj || Proj.damage <= 0)
 		return 0
 
-	adjustBruteLoss(Proj.damage)
+	apply_damage(Proj.damage, BRUTE)
 	return 1
 
 /mob/living/simple_animal/hostile/smartdisc/death()

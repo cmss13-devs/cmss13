@@ -186,7 +186,7 @@
 
 /obj/structure/ship_ammo/laser_battery/proc/laser_burn(turf/T)
 	for(var/mob/living/L in T)
-		L.adjustFireLoss(60)
+		L.apply_damage(60, BURN)
 		L.adjust_fire_stacks(10)
 		L.IgniteMob()
 	if(!locate(/obj/flamer_fire) in T)

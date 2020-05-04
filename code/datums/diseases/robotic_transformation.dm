@@ -49,7 +49,7 @@
 				to_chat(affected_mob, SPAN_DANGER("You can feel... something...inside you."))
 		if(5)
 			to_chat(affected_mob, SPAN_DANGER("Your skin feels as if it's about to burst off..."))
-			affected_mob.adjustToxLoss(10)
+			affected_mob.apply_damage(10, TOX)
 			affected_mob.updatehealth()
 			if(prob(40)) //So everyone can feel like robot Seth Brundle
 				if(src.gibbed != 0) return 0

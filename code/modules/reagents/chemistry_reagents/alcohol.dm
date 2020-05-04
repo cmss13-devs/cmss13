@@ -70,10 +70,10 @@
 			var/mob/living/carbon/human/H = M
 			var/datum/internal_organ/liver/L = H.internal_organs_by_name["liver"]
 			if(!L)
-				H.adjustToxLoss(5)
+				H.apply_damage(5, TOX)
 			else if(istype(L))
 				L.take_damage(0.1, 1)
-			H.adjustToxLoss(0.1)
+			H.apply_damage(0.1, TOX)
 
 /datum/reagent/ethanol/reaction_obj(var/obj/O, var/volume)
 	if(istype(O,/obj/item/paper))
@@ -306,7 +306,7 @@
 			M.make_dizzy(4)
 			M.druggy = max(M.druggy, 60)
 			if(prob(10)) M.emote(pick("twitch","giggle"))
-			if(prob(30)) M.adjustToxLoss(2)
+			if(prob(30)) M.apply_damage(2, TOX)
 		if(150 to 300)
 			if(!M.stuttering) M.stuttering = 1
 			M.hallucination = max(M.hallucination, 60)
@@ -314,7 +314,7 @@
 			M.make_dizzy(4)
 			M.druggy = max(M.druggy, 60)
 			if(prob(10)) M.emote(pick("twitch","giggle"))
-			if(prob(30)) M.adjustToxLoss(2)
+			if(prob(30)) M.apply_damage(2, TOX)
 			if(prob(5)) if(ishuman(M))
 				var/mob/living/carbon/human/H = M
 				var/datum/internal_organ/heart/L = H.internal_organs_by_name["heart"]

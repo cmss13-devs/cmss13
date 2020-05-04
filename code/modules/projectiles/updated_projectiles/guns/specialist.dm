@@ -1197,7 +1197,7 @@
 	playsound(src, 'sound/weapons/gun_rocketlauncher.ogg', 100, 1, 7)
 	for(var/mob/living/carbon/C in backblast_loc)
 		if(!C.lying) //Have to be standing up to get the fun stuff
-			C.adjustBruteLoss(15) //The shockwave hurts, quite a bit. It can knock unarmored targets unconscious in real life
+			C.apply_damage(15, BRUTE) //The shockwave hurts, quite a bit. It can knock unarmored targets unconscious in real life
 			C.Stun(4) //For good measure
 			C.emote("pain")
 

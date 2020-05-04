@@ -360,16 +360,13 @@ This function restores all limbs.
 		damage = round(damage * ((15 - protection_aura) / 15))
 
 	//Handle other types of damage
-	if((damagetype != BRUTE) && (damagetype != BURN))
+	if(damage < 0 || (damagetype != BRUTE) && (damagetype != BURN))
 		if(damagetype == HALLOSS && !(species.flags & NO_PAIN))
 			if((damage > 25 && prob(20)) || (damage > 50 && prob(60)))
 				emote("pain")
 
 		..(damage, damagetype, def_zone, blocked)
 		return TRUE
-
-	//Handle BRUTE and BURN damage
-	handle_suit_punctures(damagetype, damage)
 
 	if(blocked >= 2)	
 		return FALSE

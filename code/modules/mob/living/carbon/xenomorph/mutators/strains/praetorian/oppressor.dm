@@ -65,5 +65,5 @@
 
 
 	next_slash_buffed = FALSE
-	H.adjustBruteLoss(total_bonus_damage)
+	H.apply_damage(total_bonus_damage, BRUTE)
 	return

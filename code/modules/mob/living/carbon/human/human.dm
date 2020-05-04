@@ -900,7 +900,7 @@
 					location.add_vomit_floor(src, 1)
 
 				nutrition -= 40
-				adjustToxLoss(-3)
+				apply_damage(-3, TOX)
 				spawn(350)	//wait 35 seconds before next volley
 					lastpuke = 0
 
@@ -1124,7 +1124,7 @@
 	var/turf/T = get_turf(src)
 	visible_message(SPAN_DANGER("[src] vomits on the floor!"), null, null, 5)
 	nutrition -= 20
-	adjustToxLoss(-3)
+	apply_damage(-3, TOX)
 	playsound(T, 'sound/effects/splat.ogg', 25, 1, 7)
 	T.add_vomit_floor(src)
 

@@ -189,19 +189,19 @@
 			// Ethanol and all drinks are bad.K
 			if(istype(R, /datum/reagent/ethanol))
 				if(filter_effect < 3)
-					owner.adjustToxLoss(0.1 * PROCESS_ACCURACY)
+					owner.apply_damage(0.1 * PROCESS_ACCURACY, TOX)
 				owner.reagents.remove_reagent(R.id, R.custom_metabolism*filter_effect)
 
 		//Heal toxin damage slowly if not damaged
 		if(damage < 5 && prob(25))
-			owner.adjustToxLoss(-0.5)
+			owner.apply_damage(-0.5, TOX)
 
 		//Deal toxin damage if damaged
 		if(!owner.reagents.has_reagent("peridaxon"))
 			if(is_bruised() && prob(25))
-				owner.adjustToxLoss(0.1 * (damage/2))
+				owner.apply_damage(0.1 * (damage/2), TOX)
 			else if(is_broken() && prob(50))
-				owner.adjustToxLoss(0.3 * (damage/2))
+				owner.apply_damage(0.3 * (damage/2), TOX)
 
 /datum/internal_organ/liver/prosthetic
 	robotic = ORGAN_ROBOT
@@ -218,9 +218,9 @@
 	//Deal toxin damage if damaged
 	if(!owner.reagents.has_reagent("peridaxon"))
 		if(is_bruised() && prob(25))
-			owner.adjustToxLoss(0.1 * (damage/3))
+			owner.apply_damage(0.1 * (damage/3), TOX)
 		else if(is_broken() && prob(50))
-			owner.adjustToxLoss(0.2 * (damage/3))
+			owner.apply_damage(0.2 * (damage/3), TOX)
 
 /datum/internal_organ/kidneys/prosthetic
 	robotic = ORGAN_ROBOT

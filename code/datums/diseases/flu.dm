@@ -36,7 +36,7 @@
 			if(prob(1))
 				to_chat(affected_mob, SPAN_DANGER("Your stomach hurts."))
 				if(prob(20))
-					affected_mob.adjustToxLoss(1)
+					affected_mob.apply_damage(1, TOX)
 					affected_mob.updatehealth()
 
 		if(3)
@@ -61,6 +61,6 @@
 			if(prob(1))
 				to_chat(affected_mob, SPAN_DANGER("Your stomach hurts."))
 				if(prob(20))
-					affected_mob.adjustToxLoss(1)
+					affected_mob.apply_damage(1, TOX)
 					affected_mob.updatehealth()
 	return

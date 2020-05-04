@@ -66,10 +66,10 @@
 	//They heal quickly.
 	see_in_dark = 8
 	if(regular_update)
-		adjustBruteLoss(-5)
-		adjustFireLoss(-5)
-		adjustOxyLoss(-10)
-		adjustToxLoss(-50)
+		apply_damage(-5, BRUTE)
+		apply_damage(-5, BURN)
+		apply_damage(-10, OXY)
+		apply_damage(-50, TOX)
 		if(knocked_down) knocked_down -= 2
 		if(knocked_down < 0) knocked_down = 0 //Just to be sure.
 		if(stunned) stunned = 0
@@ -80,7 +80,7 @@
 			if(health <= 10 && prob(1))
 				INVOKE_ASYNC(src, /mob.proc/emote, "gasp")
 			if(!reagents.has_reagent("inaprovaline"))
-				adjustOxyLoss(11)
+				apply_damage(11, OXY)
 			KnockOut(3)
 
 	if(knocked_out)

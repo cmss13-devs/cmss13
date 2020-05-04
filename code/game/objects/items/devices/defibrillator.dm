@@ -200,18 +200,18 @@
 			return
 			
 		//At this point, the defibrillator is ready to work
-		H.adjustBruteLoss(-defib_heal_amt)
-		H.adjustFireLoss(-defib_heal_amt)
-		H.adjustToxLoss(-defib_heal_amt)
-		H.adjustCloneLoss(-defib_heal_amt)
-		H.adjustOxyLoss(-H.getOxyLoss())
+		H.apply_damage(-defib_heal_amt, BRUTE)
+		H.apply_damage(-defib_heal_amt, BURN)
+		H.apply_damage(-defib_heal_amt, TOX)
+		H.apply_damage(-defib_heal_amt, CLONE)
+		H.apply_damage(-H.getOxyLoss(), OXY)
 		H.updatehealth() //Needed for the check to register properly
 
 		if(H.reagents.has_reagent("adrenaline", 1)) //Adrenaline helps greatly at restarting the heart
 			H.reagents.remove_reagent("adrenaline", 1)
-			H.adjustBruteLoss(-defib_heal_amt)
-			H.adjustFireLoss(-defib_heal_amt)
-			H.adjustToxLoss(-defib_heal_amt)
+			H.apply_damage(-defib_heal_amt, BRUTE)
+			H.apply_damage(-defib_heal_amt, BURN)
+			H.apply_damage(-defib_heal_amt, TOX)
 			H.updatehealth()
 
 		if(H.health > config.health_threshold_dead)

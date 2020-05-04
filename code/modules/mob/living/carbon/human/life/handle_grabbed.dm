@@ -8,5 +8,5 @@
 		losebreath = min(losebreath + 2, 3)
 
 	if(pulledby.grab_level >= GRAB_KILL)
-		adjustOxyLoss(3)
+		apply_damage(3, OXY)
 

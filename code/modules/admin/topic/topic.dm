@@ -1287,7 +1287,7 @@
 		if(M.health == 1)
 			M.gib()
 		else
-			M.adjustBruteLoss( min( 99 , (M.health - 1) )    )
+			M.apply_damage( min( 99 , (M.health - 1) )    , BRUTE)
 			M.Stun(20)
 			M.KnockDown(20)
 			M.stuttering = 20

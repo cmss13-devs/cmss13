@@ -139,7 +139,7 @@
 		return H
 	else if(isliving(target_mob))
 		var/mob/living/L = target_mob
-		L.adjustBruteLoss(damage)
+		L.apply_damage(damage, BRUTE)
 		return L
 
 

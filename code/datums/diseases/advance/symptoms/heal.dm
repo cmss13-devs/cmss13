@@ -36,5 +36,5 @@ Bonus
 /datum/symptom/heal/proc/Heal(var/mob/living/M)
 
 	var/get_damage = rand(1, 2)
-	M.adjustToxLoss(-get_damage)
+	M.apply_damage(-get_damage, TOX)
 	return 1

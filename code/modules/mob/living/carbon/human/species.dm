@@ -396,10 +396,10 @@
 		//if(prob(25)) animation_horror_flick(H)
 
 		//Organ damage will likely still take them down eventually.
-		H.adjustBruteLoss(-3)
-		H.adjustFireLoss(-3)
-		H.adjustOxyLoss(-15)
-		H.adjustToxLoss(-15)
+		H.apply_damage(-3, BRUTE)
+		H.apply_damage(-3, BURN)
+		H.apply_damage(-15, OXY)
+		H.apply_damage(-15, TOX)
 
 
 /datum/species/human/spook/handle_post_spawn(mob/living/carbon/human/H)

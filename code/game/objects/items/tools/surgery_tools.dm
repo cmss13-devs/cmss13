@@ -282,7 +282,7 @@
 		T.health = T.maxHealth*2 //It's hulk levels of angry.
 		active = 0
 		spawn (1000) //Around 10 seconds
-			T.adjustBruteLoss(5000) //to make sure it's DEAD after it's hyper-boost
+			T.apply_damage(5000, BRUTE) //to make sure it's DEAD after it's hyper-boost
 		return
 
 	switch(T.butchery_progress)

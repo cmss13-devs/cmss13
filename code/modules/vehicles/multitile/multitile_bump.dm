@@ -60,7 +60,7 @@
 			damage_percentage = max(damage_percentage, VEHICLE_TRAMPLE_DAMAGE_MIN)
 
 			if(takes_damage)
-				X.adjustBruteLoss(round((X.maxHealth / 100) * damage_percentage))
+				X.apply_damage(round((X.maxHealth / 100) * damage_percentage), BRUTE)
 		else
 			if(is_knocked_down)
 				L.KnockDown(3, 1)

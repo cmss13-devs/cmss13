@@ -127,7 +127,7 @@
 				continue 
 
 			X.flick_attack_overlay(H, "slash")
-			H.adjustBruteLoss(damage)
+			H.apply_damage(damage, BRUTE)
 
 			if (should_daze)
 				H.Daze(daze_duration)
@@ -321,7 +321,7 @@
 			else
 				X.visible_message(SPAN_XENODANGER("[X] claws [H]!"), SPAN_XENODANGER("You claw [H]!"))
 				
-			H.adjustBruteLoss(damage)
+			H.apply_damage(damage, BRUTE)
 
 	X.frozen = 0
 	X.anchored = 0

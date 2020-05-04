@@ -78,7 +78,7 @@
 
 	if(stat == DEAD) return
 
-	if (xeno_shields.len != 0)
+	if(xeno_shields.len != 0 && damage > 0)
 		for(var/datum/xeno_shield/XS in xeno_shields)
 			var/datum/xeno_shield_hit_result/XSHR = XS.on_hit(damage)
 

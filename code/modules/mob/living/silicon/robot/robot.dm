@@ -469,7 +469,7 @@ var/list/robot_verbs_default = list(
 			return
 		var/obj/item/tool/weldingtool/WT = W
 		if (WT.remove_fuel(0))
-			adjustBruteLoss(-30)
+			apply_damage(-30, BRUTE)
 			updatehealth()
 			add_fingerprint(user)
 			for(var/mob/O in viewers(user, null))
@@ -484,7 +484,7 @@ var/list/robot_verbs_default = list(
 			return
 		var/obj/item/stack/cable_coil/coil = W
 		if (coil.use(1))
-			adjustFireLoss(-30)
+			apply_damage(-30, BURN)
 			updatehealth()
 			for(var/mob/O in viewers(user, null))
 				O.show_message(text(SPAN_DANGER("[user] has fixed some of the burnt wires on [src]!")), 1)
@@ -635,7 +635,7 @@ var/list/robot_verbs_default = list(
 		M.attack_log += text("\[[time_stamp()]\] <font color='red'>attacked [key_name(src)]</font>")
 		src.attack_log += text("\[[time_stamp()]\] <font color='orange'>was attacked by [key_name(M)]</font>")
 		var/damage = rand(M.melee_damage_lower, M.melee_damage_upper)
-		adjustBruteLoss(damage)
+		apply_damage(damage, BRUTE)
 		updatehealth()
 
 

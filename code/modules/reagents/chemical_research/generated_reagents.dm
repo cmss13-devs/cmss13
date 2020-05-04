@@ -195,21 +195,21 @@
 				if(is_OD)
 					//overdose stuff
 					M.apply_damages(potency, 0, potency)
-					M.adjustOxyLoss(5*potency)
+					M.apply_damage(5*potency, OXY)
 					if(is_COD)
 						//critical overdose stuff
 						M.apply_damages(potency*5, 0, 2*potency)
 				else
 					//normal stuff
-					M.adjustOxyLoss(2*potency)
+					M.apply_damage(2*potency, OXY)
 				if(prob(10)) M.emote("gasp")
 			if(PROPERTY_TOXIC) //toxin damage
 				if(is_OD)
-					M.adjustToxLoss(2*potency)
+					M.apply_damage(2*potency, TOX)
 					if(is_COD)
-						M.adjustToxLoss(potency*4)
+						M.apply_damage(potency*4, TOX)
 				else
-					M.adjustToxLoss(potency)
+					M.apply_damage(potency, TOX)
 			if(PROPERTY_CORROSIVE) //burn damage
 				if(is_OD)
 					M.take_limb_damage(0,2*potency)
@@ -235,7 +235,7 @@
 							M.recalculate_move_delay = TRUE
 							if(prob(10)) M.emote(pick("yawn","gasp"))
 							if(is_COD)
-								M.adjustOxyLoss(4*potency)
+								M.apply_damage(4*potency, OXY)
 						else
 							C.blood_volume = max(C.blood_volume-4*potency,0)
 			if(PROPERTY_HEMORRAGING) //internal bleeding
@@ -273,9 +273,9 @@
 					if(L)
 						if(is_OD)
 							L.damage += 2*potency
-							M.adjustToxLoss(2*potency)
+							M.apply_damage(2*potency, TOX)
 							if(is_COD)
-								M.adjustToxLoss(5*potency)
+								M.apply_damage(5*potency, TOX)
 						else
 							L.damage += 0.75*potency
 			if(PROPERTY_NEPHROTOXIC) //kidney damage
@@ -285,9 +285,9 @@
 					if(L)
 						if(is_OD)
 							L.damage += 2*potency
-							M.adjustToxLoss(2*potency)
+							M.apply_damage(2*potency, TOX)
 							if(is_COD)
-								M.adjustToxLoss(5*potency)
+								M.apply_damage(5*potency, TOX)
 						else
 							L.damage += 0.75*potency
 			if(PROPERTY_PNEUMOTOXIC) //lung damage
@@ -297,9 +297,9 @@
 					if(L)
 						if(is_OD)
 							L.damage += 2*potency
-							M.adjustOxyLoss(2*potency)
+							M.apply_damage(2*potency, OXY)
 							if(is_COD)
-								M.adjustOxyLoss(5*potency)
+								M.apply_damage(5*potency, OXY)
 						else
 							L.damage += 0.75*potency
 			if(PROPERTY_OCULOTOXIC) //eye damage
@@ -320,9 +320,9 @@
 					if(L)
 						if(is_OD)
 							L.damage += 2*potency
-							M.adjustOxyLoss(2*potency)
+							M.apply_damage(2*potency, OXY)
 							if(is_COD)
-								M.adjustOxyLoss(5*potency)
+								M.apply_damage(5*potency, OXY)
 						else
 							L.damage += 0.75*potency
 			if(PROPERTY_NEUROTOXIC) //brain damage
@@ -361,7 +361,7 @@
 			if(PROPERTY_KETOGENIC) //weight loss
 				if(is_OD)
 					M.nutrition = max(M.nutrition - 10*potency, 0)
-					M.adjustToxLoss(potency)
+					M.apply_damage(potency, TOX)
 					if(prob(5*potency))
 						if(ishuman(M))
 							var/mob/living/carbon/human/H = M
@@ -407,7 +407,7 @@
 				if(is_OD)
 					M.confused += min(M.confused + potency*2,20*potency)
 					M.drowsyness += min(M.drowsyness + potency*2,30*potency)
-					M.adjustToxLoss(0.5*potency)
+					M.apply_damage(0.5*potency, TOX)
 					if(ishuman(M))
 						var/mob/living/carbon/human/H = M
 						var/datum/internal_organ/liver/L = H.internal_organs_by_name["liver"]
@@ -416,7 +416,7 @@
 							if(is_COD)
 								L.damage += 2*potency
 					if(is_COD)
-						M.adjustOxyLoss(4*potency)
+						M.apply_damage(4*potency, OXY)
 						M.knocked_out = max(M.knocked_out, 20)
 				else
 					M.confused = min(M.confused + potency,10*potency)
@@ -446,7 +446,7 @@
 						//heart stops beating, lungs stop working
 						if(prob(15*potency))
 							M.KnockOut(potency)
-						M.adjustOxyLoss(potency)
+						M.apply_damage(potency, OXY)
 						if(prob(5)) to_chat(M, SPAN_WARNING("You can hardly breathe!"))
 						if(ishuman(M))
 							var/mob/living/carbon/human/H = M
@@ -511,7 +511,7 @@
 				if(is_OD)
 					if(prob(5*potency)) M.emote("collapse") //ROFL
 					if(is_COD)
-						M.adjustOxyLoss(3*potency)
+						M.apply_damage(3*potency, OXY)
 						M.emote(pick("laugh","giggle","chuckle","grin","smile","twitch"))
 						to_chat(M, SPAN_WARNING("You are laughing so much you can't breathe!"))
 				if(!is_COD && prob(5*potency)) M.emote(pick("laugh","giggle","chuckle","grin","smile","twitch"))
@@ -521,9 +521,9 @@
 					var/mob/living/carbon/human/H = M
 					if(H)
 						if(is_OD)
-							M.adjustToxLoss(0.5*potency)
+							M.apply_damage(0.5*potency, TOX)
 							if(is_COD)
-								M.adjustToxLoss(0.5*potency)
+								M.apply_damage(0.5*potency, TOX)
 						if(prob(volume*potency))
 							H.vomit() //vomit() already has a timer on in
 			if(PROPERTY_PSYCHOSTIMULATING) //calming messages
@@ -582,7 +582,7 @@
 				if(is_OD)
 					M.AdjustKnockedout(potency)
 					if(is_COD)
-						M.adjustOxyLoss(5*potency)
+						M.apply_damage(5*potency, OXY)
 			if(PROPERTY_HYPERTHROTTLING)
 				if(!ishuman(M))
 					continue
@@ -611,7 +611,7 @@
 						if(is_COD)
 							E.damage += 2*potency
 				else
-					M.adjustToxLoss(-(0.25+potency))
+					M.apply_damage(-(0.25+potency), TOX)
 			if(PROPERTY_ANTICORROSIVE) //burn healing
 				if(is_OD)
 					M.apply_damages(2*potency, 0, potency) //Mixed brute/tox damage
@@ -628,9 +628,9 @@
 					M.heal_limb_damage(0.25+potency, 0)
 			if(PROPERTY_REPAIRING) //cybernetic repairing
 				if(is_OD)
-					M.adjustToxLoss(2*potency)
+					M.apply_damage(2*potency, TOX)
 					if(is_COD)
-						M.adjustToxLoss(4*potency)
+						M.apply_damage(4*potency, TOX)
 				else
 					var/mob/living/carbon/human/C = M
 					if(C)
@@ -645,12 +645,12 @@
 						C.blood_volume = min(C.blood_volume+2*potency,BLOOD_VOLUME_MAXIMUM+100)
 						M.nutrition = max(M.nutrition - 5*potency, 0)
 						if(is_COD)
-							M.adjustToxLoss(2*potency)
+							M.apply_damage(2*potency, TOX)
 					else
 						C.blood_volume = min(C.blood_volume+potency,BLOOD_VOLUME_MAXIMUM+100)
 					if(C.blood_volume > BLOOD_VOLUME_MAXIMUM) //Too many red blood cells thickens the blood and leads to clotting
 						M.take_limb_damage(potency)
-						M.adjustOxyLoss(2*potency)
+						M.apply_damage(2*potency, OXY)
 						M.reagent_move_delay_modifier += potency
 						M.recalculate_move_delay = TRUE
 			if(PROPERTY_NERVESTIMULATING) //stun decrease
@@ -705,9 +705,9 @@
 					if(L)
 						if(is_OD)
 							L.damage += 2*potency
-							M.adjustToxLoss(2*potency)
+							M.apply_damage(2*potency, TOX)
 							if(is_COD)
-								M.adjustToxLoss(5*potency)
+								M.apply_damage(5*potency, TOX)
 						else
 							L.damage = max(L.damage - 0.5*potency, 0)
 			if(PROPERTY_NEPHROPEUTIC) //kidney healing
@@ -717,9 +717,9 @@
 					if(L)
 						if(is_OD)
 							L.damage += 2*potency
-							M.adjustToxLoss(2*potency)
+							M.apply_damage(2*potency, TOX)
 							if(is_COD)
-								M.adjustToxLoss(5*potency)
+								M.apply_damage(5*potency, TOX)
 						else
 							L.damage = max(L.damage - 0.5*potency, 0)
 			if(PROPERTY_PNEUMOPEUTIC) //lung healing
@@ -729,14 +729,14 @@
 					if(L)
 						if(is_OD)
 							L.damage += 2*potency
-							M.adjustOxyLoss(2*potency)
+							M.apply_damage(2*potency, OXY)
 							if(is_COD)
-								M.adjustOxyLoss(5*potency)
+								M.apply_damage(5*potency, OXY)
 						else
 							L.damage = max(L.damage - 0.5*potency, 0)
 							if(L.damage < 1)
 								L.rejuvenate()
-							H.adjustOxyLoss(-2*potency)
+							H.apply_damage(-2*potency, OXY)
 			if(PROPERTY_OCULOPEUTIC) //eye healing
 				if(ishuman(M))
 					var/mob/living/carbon/human/H = M
@@ -758,9 +758,9 @@
 					if(L)
 						if(is_OD)
 							L.damage += 2*potency
-							M.adjustOxyLoss(2*potency)
+							M.apply_damage(2*potency, OXY)
 							if(is_COD)
-								M.adjustOxyLoss(5*potency)
+								M.apply_damage(5*potency, OXY)
 						else
 							L.damage = max(L.damage - 0.5*potency, 0)
 			if(PROPERTY_NEUROPEUTIC) //brain healing
@@ -816,9 +816,9 @@
 									L.implants -= implanted_object
 			if(PROPERTY_ANTIPARASITIC) //potency 1 is enough to pause embryo growth. Higher will degrade it)
 				if(is_OD)
-					M.adjustToxLoss(2*potency)
+					M.apply_damage(2*potency, TOX)
 					if(is_COD)
-						M.adjustToxLoss(4*potency)
+						M.apply_damage(4*potency, TOX)
 				else
 					var/mob/living/carbon/human/H = M
 					if(H)
@@ -902,7 +902,7 @@
 			if(PROPERTY_DEFIBRILLATING)
 				if(is_OD)
 					M.reagent_pain_modifier += 30*potency
-					M.adjustOxyLoss(2*potency)
+					M.apply_damage(2*potency, OXY)
 					if(is_COD && ishuman(M))
 						var/mob/living/carbon/human/H = M
 						var/datum/internal_organ/heart/L = H.internal_organs_by_name["heart"]
@@ -944,7 +944,7 @@
 				M.setCloneLoss(0)
 				M.setOxyLoss(0)
 				M.heal_limb_damage(5,5)
-				M.adjustToxLoss(-5)
+				M.apply_damage(-5, TOX)
 				M.hallucination = 0
 				M.setBrainLoss(0)
 				M.disabilities = 0

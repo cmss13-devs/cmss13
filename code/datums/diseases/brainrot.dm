@@ -36,7 +36,7 @@
 				if(prob(2))
 					to_chat(affected_mob, SPAN_DANGER("Your try to remember something important...but can't."))
 /*			if(prob(10))
-				affected_mob.adjustToxLoss(3)
+				affected_mob.apply_damage(3, TOX)
 				affected_mob.updatehealth()
 				if(prob(2))
 					to_chat(affected_mob, SPAN_DANGER("Your head hurts.")) */
@@ -46,7 +46,7 @@
 			if(prob(2))
 				affected_mob.emote("drool")
 /*			if(prob(15))
-				affected_mob.adjustToxLoss(4)
+				affected_mob.apply_damage(4, TOX)
 				affected_mob.updatehealth()
 				if(prob(2))
 					to_chat(affected_mob, SPAN_DANGER("Your head hurts.")) */

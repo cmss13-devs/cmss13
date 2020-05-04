@@ -114,11 +114,11 @@
 	var/dam_amt = 2
 
 	if(istype(tool, /obj/item/stack/medical/advanced/bruise_pack))
-		target.adjustToxLoss(5)
+		target.apply_damage(5, TOX)
 
 	else if(istype(tool, /obj/item/stack/medical/bruise_pack))
 		dam_amt = 5
-		target.adjustToxLoss(10)
+		target.apply_damage(10, TOX)
 		affected.createwound(CUT, 5)
 
 	for(var/datum/internal_organ/I in affected.internal_organs)
@@ -167,7 +167,7 @@
 	user.visible_message(SPAN_WARNING("[user]'s hand slips, gumming up the mechanisms inside of [target]'s [affected.display_name] with \the [tool]!"), \
 	SPAN_WARNING("Your hand slips, gumming up the mechanisms inside of [target]'s [affected.display_name] with \the [tool]!"))
 
-	target.adjustToxLoss(5)
+	target.apply_damage(5, TOX)
 	affected.createwound(CUT, 5)
 
 	for(var/datum/internal_organ/I in affected.internal_organs)

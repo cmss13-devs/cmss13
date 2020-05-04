@@ -490,7 +490,7 @@
 				emote(pick("pecks [H]'s [affecting]", "cuts [H]'s [affecting] with its talons"))
 
 			else
-				L.adjustBruteLoss(damage)
+				L.apply_damage(damage, BRUTE)
 				emote(pick("pecks at [L]", "claws [L]"))
 			return
 

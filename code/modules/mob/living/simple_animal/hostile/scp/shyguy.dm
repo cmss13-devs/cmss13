@@ -38,7 +38,7 @@
 
 	check_los()
 	staggered = max(staggered/8 - 1, 0)
-	adjustBruteLoss(-5)
+	apply_damage(-5, BRUTE)
 
 	if(screaming) //we're still screaming
 		return
@@ -473,5 +473,5 @@
 
 /mob/living/simple_animal/scp/shyguy/ex_act(var/severity)
 	visible_message(SPAN_DANGER("[src] is caught in the explosion!"))
-	adjustBruteLoss(severity)
+	apply_damage(severity, BRUTE)
 	return 1

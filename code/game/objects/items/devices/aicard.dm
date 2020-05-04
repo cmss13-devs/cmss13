@@ -88,7 +88,7 @@
 					for(var/mob/living/silicon/ai/A in src)
 						to_chat(A, "Your core files are being wiped!")
 						while (A.stat != 2)
-							A.adjustOxyLoss(2)
+							A.apply_damage(2, OXY)
 							A.updatehealth()
 							sleep(10)
 						flush = 0

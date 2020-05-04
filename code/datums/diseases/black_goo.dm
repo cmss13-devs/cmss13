@@ -70,10 +70,10 @@
 				if(H.stat != DEAD)
 					var/healamt = H.stat ? 5 : 1
 					if(H.health < H.maxHealth)
-						H.adjustFireLoss(-healamt)
-						H.adjustBruteLoss(-healamt)
-						H.adjustToxLoss(-healamt)
-						H.adjustOxyLoss(-healamt)
+						H.apply_damage(-healamt, BURN)
+						H.apply_damage(-healamt, BRUTE)
+						H.apply_damage(-healamt, TOX)
+						H.apply_damage(-healamt, OXY)
 				H.nutrition = NUTRITION_MAX //never hungry
 				if(goo_message_cooldown < world.time)
 					goo_message_cooldown = world.time + 100

@@ -42,7 +42,7 @@
 			continue 
 
 		X.flick_attack_overlay(H, "slash")
-		H.adjustBruteLoss(damage)
+		H.apply_damage(damage, BRUTE)
 
 	if (target_mobs.len >= shield_regen_threshold)
 		if (X.mutation_type == PRAETORIAN_VANGUARD)
@@ -92,7 +92,7 @@
 			continue 
 
 		X.flick_attack_overlay(H, "slash")
-		H.adjustBruteLoss(damage)
+		H.apply_damage(damage, BRUTE)
 
 	if (target_mobs.len >= shield_regen_threshold)
 		if (X.mutation_type == PRAETORIAN_VANGUARD)
@@ -361,7 +361,7 @@
 			H.show_message(SPAN_WARNING("Your armor absorbs the blow!"))
 		else if (n_damage <= 0.67*damage)
 			H.show_message(SPAN_WARNING("Your armor softens the blow!"))
-		H.adjustBruteLoss(n_damage) // Stolen from attack_alien. thanks Neth
+		H.apply_damage(n_damage, BRUTE) // Stolen from attack_alien. thanks Neth
 		playsound(get_turf(A), "alien_claw_flesh", 30, 1)
 		
 		// Reroll damage
@@ -379,7 +379,7 @@
 		H.show_message(SPAN_WARNING("Your armor softens the blow!"))
 	H.last_damage_mob = X
 	H.last_damage_source = initial(X.caste_name)
-	H.adjustBruteLoss(n_damage)
+	H.apply_damage(n_damage, BRUTE)
 	playsound(get_turf(A), "alien_claw_flesh", 30, 1)
 
 	apply_cooldown()

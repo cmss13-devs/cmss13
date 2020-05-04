@@ -59,10 +59,10 @@
 		src.active = 1
 		src.overlays += image('icons/obj/structures/machinery/computer.dmi', "ai-fixer-on")
 		while (src.occupant.health < 100)
-			src.occupant.adjustOxyLoss(-1)
-			src.occupant.adjustFireLoss(-1)
-			src.occupant.adjustToxLoss(-1)
-			src.occupant.adjustBruteLoss(-1)
+			src.occupant.apply_damage(-1, OXY)
+			src.occupant.apply_damage(-1, BURN)
+			src.occupant.apply_damage(-1, TOX)
+			src.occupant.apply_damage(-1, BRUTE)
 			src.occupant.updatehealth()
 			if (src.occupant.health >= 0 && src.occupant.stat == DEAD)
 				src.occupant.stat = CONSCIOUS

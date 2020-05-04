@@ -23,7 +23,7 @@
 		to_chat(affected_mob, SPAN_WARNING(effect_message))
 
 	var/calculated_damage = isXeno(affected_mob) ? damage_per_tick*3 : damage_per_tick
-	affected_mob.adjustFireLoss(calculated_damage)
+	affected_mob.apply_damage(calculated_damage, BURN)
 
 	affected_mob.last_damage_source = "Exposure"
 	affected_mob.last_damage_mob = null

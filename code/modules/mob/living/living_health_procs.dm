@@ -89,28 +89,28 @@
 
 // heal ONE limb, organ gets randomly selected from damaged ones.
 /mob/living/proc/heal_limb_damage(var/brute, var/burn)
-	adjustBruteLoss(-brute)
-	adjustFireLoss(-burn)
+	apply_damage(-brute, BRUTE)
+	apply_damage(-burn, BURN)
 	src.updatehealth()
 
 // damage ONE limb, organ gets randomly selected from damaged ones.
 /mob/living/proc/take_limb_damage(var/brute, var/burn)
 	if(status_flags & GODMODE)	return 0	//godmode
-	adjustBruteLoss(brute)
-	adjustFireLoss(burn)
+	apply_damage(brute, BRUTE)
+	apply_damage(burn, BURN)
 	src.updatehealth()
 
 // heal MANY limbs, in random order
 /mob/living/proc/heal_overall_damage(var/brute, var/burn)
-	adjustBruteLoss(-brute)
-	adjustFireLoss(-burn)
+	apply_damage(-brute, BRUTE)
+	apply_damage(-burn, BURN)
 	src.updatehealth()
 
 // damage MANY limbs, in random order
 /mob/living/proc/take_overall_damage(var/brute, var/burn, var/used_weapon = null)
 	if(status_flags & GODMODE)	return 0	//godmode
-	adjustBruteLoss(brute)
-	adjustFireLoss(burn)
+	apply_damage(brute, BRUTE)
+	apply_damage(burn, BURN)
 	src.updatehealth()
 
 /mob/living/proc/restore_all_organs()

@@ -56,12 +56,12 @@
 			blinded = 1
 			stat = UNCONSCIOUS
 			if(regular_update && halloss > 0)
-				adjustHalLoss(-3)
+				apply_damage(-3, HALLOSS)
 		else if(sleeping)
 			speech_problem_flag = 1
 			if(regular_update)
 				handle_dreams()
-				adjustHalLoss(-3)
+				apply_damage(-3, HALLOSS)
 				if(mind)
 					if((mind.active && client != null) || immune_to_ssd) //This also checks whether a client is connected, if not, sleep is not reduced.
 						sleeping = max(sleeping - 1, 0)
@@ -111,11 +111,11 @@
 		if(resting)
 			dizziness = max(0, dizziness - 15)
 			jitteriness = max(0, jitteriness - 15)
-			adjustHalLoss(-3)
+			apply_damage(-3, HALLOSS)
 		else
 			dizziness = max(0, dizziness - 3)
 			jitteriness = max(0, jitteriness - 3)
-			adjustHalLoss(-1)
+			apply_damage(-1, HALLOSS)
 
 		//Other
 		handle_statuses()

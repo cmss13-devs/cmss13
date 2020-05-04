@@ -1409,7 +1409,7 @@
 		else
 			M.KnockDown(stun_time, 1)
 
-		M.adjustFireLoss(rand(20, 30))
+		M.apply_damage(rand(20, 30), BURN)
 
 
 

@@ -76,9 +76,9 @@
 
 	if(!air_info)
 		if(health > config.health_threshold_crit)
-			adjustOxyLoss(HUMAN_MAX_OXYLOSS)
+			apply_damage(HUMAN_MAX_OXYLOSS, OXY)
 		else
-			adjustOxyLoss(HUMAN_CRIT_MAX_OXYLOSS)
+			apply_damage(HUMAN_CRIT_MAX_OXYLOSS, OXY)
 
 		oxygen_alert = max(oxygen_alert, 1)
 
@@ -96,5 +96,5 @@
 				else if(SA_pp > 1)	// There is sleeping gas in their lungs, but only a little, so give them a bit of a warning
 					if(prob(20))
 						spawn(0) emote(pick("giggle", "laugh"))
-	adjustOxyLoss(-2)
+	apply_damage(-2, OXY)
 	return 1

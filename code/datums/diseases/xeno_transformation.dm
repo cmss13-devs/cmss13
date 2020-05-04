@@ -42,7 +42,7 @@
 				to_chat(affected_mob, SPAN_DANGER("You can feel... something...inside you."))
 		if(5)
 			to_chat(affected_mob, SPAN_DANGER("Your skin feels impossibly calloused..."))
-			affected_mob.adjustToxLoss(10)
+			affected_mob.apply_damage(10, TOX)
 			affected_mob.updatehealth()
 			if(prob(40))
 				var/turf/T = find_loc(affected_mob)

@@ -71,7 +71,7 @@
 			drop_inv_item_on_ground(G)
 		if(!caste || !caste.fire_immune)
 			var/dmg = armor_damage_reduction(config.xeno_fire, fire_stacks * 2 + 4.5)
-			adjustFireLoss(dmg)
+			apply_damage(dmg, BURN)
 
 /mob/living/carbon/Xenomorph/proc/handle_pheromones()
 	//Rollercoaster of fucking stupid because Xeno life ticks aren't synchronised properly and values reset just after being applied
@@ -148,9 +148,9 @@
 		var/turf/T = loc
 		if(istype(T))
 			if(!check_weeds_for_healing()) //In crit, damage is maximal if you're caught off weeds
-				adjustBruteLoss(2.5 - warding_aura*0.5) //Warding can heavily lower the impact of bleedout. Halved at 2.5 phero, stopped at 5 phero
+				apply_damage(2.5 - warding_aura*0.5, BRUTE) //Warding can heavily lower the impact of bleedout. Halved at 2.5 phero, stopped at 5 phero
 			else
-				adjustBruteLoss(-warding_aura)
+				apply_damage(-warding_aura, BRUTE)
 
 	updatehealth()
 
@@ -191,10 +191,10 @@
 			blinded = 1
 			stat = UNCONSCIOUS
 			if(regular_update && halloss > 0)
-				adjustHalLoss(-3)
+				apply_damage(-3, HALLOSS)
 		else if(sleeping)
 			if(regular_update && halloss > 0)
-				adjustHalLoss(-3)
+				apply_damage(-3, HALLOSS)
 			if(regular_update && mind)
 				if((mind.active && client != null) || immune_to_ssd)
 					sleeping = max(sleeping - 1, 0)
@@ -205,9 +205,9 @@
 			stat = CONSCIOUS
 			if(regular_update && halloss > 0)
 				if(resting)
-					adjustHalLoss(-3)
+					apply_damage(-3, HALLOSS)
 				else
-					adjustHalLoss(-1)
+					apply_damage(-1, HALLOSS)
 
 		if(regular_update)
 			handle_statuses()//natural decrease of stunned, knocked_down, etc...
@@ -303,10 +303,10 @@ hmmmm, this is probably unnecessary
 Make sure their actual health updates immediately.*/
 
 #define XENO_HEAL_WOUNDS(m, recov) \
-adjustBruteLoss(-((maxHealth / 70) + 0.5 + (maxHealth / 70) * recov/2)*(m)); \
-adjustFireLoss(-(maxHealth / 60 + 0.5 + (maxHealth / 60) * recov/2)*(m)); \
-adjustOxyLoss(-(maxHealth * 0.1 + 0.5 + (maxHealth * 0.1) * recov/2)*(m)); \
-adjustToxLoss(-(maxHealth / 5 + 0.5 + (maxHealth / 5) * recov/2)*(m)); \
+apply_damage(-((maxHealth / 70) + 0.5 + (maxHealth / 70) * recov/2)*(m), BRUTE); \
+apply_damage(-(maxHealth / 60 + 0.5 + (maxHealth / 60) * recov/2)*(m), BURN); \
+apply_damage(-(maxHealth * 0.1 + 0.5 + (maxHealth * 0.1) * recov/2)*(m), OXY); \
+apply_damage(-(maxHealth / 5 + 0.5 + (maxHealth / 5) * recov/2)*(m), TOX); \
 updatehealth()
 
 
@@ -316,7 +316,7 @@ updatehealth()
 	var/env_temperature = loc.return_temperature()
 	if(caste && !caste.fire_immune)
 		if(env_temperature > (T0C + 66))
-			adjustFireLoss((env_temperature - (T0C + 66)) / 5) //Might be too high, check in testing.
+			apply_damage((env_temperature - (T0C + 66)) / 5, BURN) //Might be too high, check in testing.
 			updatehealth() //Make sure their actual health updates immediately
 			if(prob(20))
 				to_chat(src, SPAN_WARNING("You feel a searing heat!"))

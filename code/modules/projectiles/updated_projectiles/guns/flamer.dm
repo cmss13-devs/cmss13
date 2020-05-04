@@ -579,7 +579,7 @@
 		M.last_damage_mob = weapon_source_mob
 		M.adjust_fire_stacks(rand(5,burn_lvl*2))
 		M.IgniteMob()
-		M.adjustFireLoss(rand(burn_lvl,(burn_lvl*2))) // Make it so its the amount of heat or twice it for the initial blast.
+		M.apply_damage(rand(burn_lvl,(burn_lvl*2)), BURN) // Make it so its the amount of heat or twice it for the initial blast.
 		if(weapon_source_mob)
 			var/mob/SM = weapon_source_mob
 			SM.track_shot_hit(weapon_source)
@@ -607,7 +607,7 @@
 					Z.IgniteMob()
 			if(istype(H.wear_suit, /obj/item/clothing/suit/storage/marine/M35) || istype(H.wear_suit, /obj/item/clothing/suit/fire))
 				H.show_message(text("Your suit protects you from the flames."),1)
-				H.adjustFireLoss(burnlevel*0.25) //Does small burn damage to a person wearing one of the suits.
+				H.apply_damage(burnlevel*0.25, BURN) //Does small burn damage to a person wearing one of the suits.
 				return
 		if(isXeno(M))
 			var/mob/living/carbon/Xenomorph/X = M
@@ -624,7 +624,7 @@
 		else
 			M.last_damage_source = initial(name)
 		M.last_damage_mob = weapon_source_mob
-		M.adjustFireLoss(round(burnlevel*0.5)) //This makes fire stronk.
+		M.apply_damage(round(burnlevel*0.5), BURN) //This makes fire stronk.
 		to_chat(M, SPAN_DANGER("You are burned!"))
 		if(isXeno(M)) M.updatehealth()
 
@@ -666,7 +666,7 @@
 				var/mob/living/carbon/human/M = I
 				if(istype(M.wear_suit, /obj/item/clothing/suit/storage/marine/M35) || istype(M.wear_suit, /obj/item/clothing/suit/fire))
 					M.show_message(text("Your suit protects you from the flames."),1)
-					M.adjustFireLoss(rand(0 ,burnlevel*0.25)) //Does small burn damage to a person wearing one of the suits.
+					M.apply_damage(rand(0 ,burnlevel*0.25), BURN) //Does small burn damage to a person wearing one of the suits.
 					continue
 			if(isXenoQueen(I))
 				var/mob/living/carbon/Xenomorph/Queen/X = I
@@ -686,7 +686,7 @@
 				continue
 			I.adjust_fire_stacks(burnlevel) //If i stand in the fire i deserve all of this. Also Napalm stacks quickly.
 			if(prob(firelevel)) I.IgniteMob()
-			//I.adjustFireLoss(rand(10 ,burnlevel)) //Including the fire should be way stronger.
+			//I.apply_damage(rand(10 ,burnlevel), BURN) //Including the fire should be way stronger.
 			I.show_message(text(SPAN_WARNING("You are burned!")),1)
 			if(isXeno(I)) //Have no fucken idea why the Xeno thing was there twice.
 				var/mob/living/carbon/Xenomorph/X = I

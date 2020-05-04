@@ -29,10 +29,10 @@
 		// Handle power damage (oxy)
 		if(src:aiRestorePowerRoutine != 0)
 			// Lost power
-			adjustOxyLoss(1)
+			apply_damage(1, OXY)
 		else
 			// Gain Power
-			adjustOxyLoss(-1)
+			apply_damage(-1, OXY)
 
 		// Handle EMP-stun
 		handle_stunned()

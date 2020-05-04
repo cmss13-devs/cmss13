@@ -347,7 +347,7 @@ var/list/ai_verbs_default = list(
 		M.attack_log += text("\[[time_stamp()]\] <font color='red'>attacked [src.name] ([src.ckey])</font>")
 		src.attack_log += text("\[[time_stamp()]\] <font color='orange'>was attacked by [M.name] ([M.ckey])</font>")
 		var/damage = rand(M.melee_damage_lower, M.melee_damage_upper)
-		adjustBruteLoss(damage)
+		apply_damage(damage, BRUTE)
 		updatehealth()
 
 /mob/living/silicon/ai/reset_view(atom/A)

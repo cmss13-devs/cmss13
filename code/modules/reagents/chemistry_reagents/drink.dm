@@ -47,7 +47,7 @@
 	on_mob_life(mob/living/M)
 		. = ..()
 		if(!.) return
-		if(M.getOxyLoss() && prob(30)) M.adjustOxyLoss(-1)
+		if(M.getOxyLoss() && prob(30)) M.apply_damage(-1, OXY)
 
 /datum/reagent/drink/tomatojuice
 	name = "Tomato Juice"
@@ -69,7 +69,7 @@
 	on_mob_life(mob/living/M)
 		. = ..()
 		if(!.) return
-		if(M.getToxLoss() && prob(20)) M.adjustToxLoss(-1*REM)
+		if(M.getToxLoss() && prob(20)) M.apply_damage(-1*REM, TOX)
 
 /datum/reagent/drink/carrotjuice
 	name = "Carrot juice"
@@ -112,7 +112,7 @@
 	on_mob_life(mob/living/M)
 		. = ..()
 		if(!.) return
-		M.adjustToxLoss(1)
+		M.apply_damage(1, TOX)
 
 /datum/reagent/drink/watermelonjuice
 	name = "Watermelon Juice"
@@ -417,7 +417,7 @@
 		. = ..()
 		if(!.) return
 		if(M.getToxLoss() && prob(20))
-			M.adjustToxLoss(-1)
+			M.apply_damage(-1, TOX)
 
 /datum/reagent/drink/tea/icetea
 	name = "Iced Tea"
@@ -536,7 +536,7 @@
 				M.sleeping += 1
 			if(201 to INFINITY)
 				M.sleeping += 1
-				M.adjustToxLoss(2)
+				M.apply_damage(2, TOX)
 
 /datum/reagent/gargle_blaster
 	name = "Pan-Galactic Gargle Blaster"
@@ -559,7 +559,7 @@
 		else if(data >=55)
 			M.druggy = max(M.druggy, 55)
 		else if(data >=200)
-			M.adjustToxLoss(2)
+			M.apply_damage(2, TOX)
 
 /datum/reagent/neurotoxin
 	name = "Neurotoxin"
@@ -583,7 +583,7 @@
 		else if(data >=55)
 			M.druggy = max(M.druggy, 55)
 		else if(data >=200)
-			M.adjustToxLoss(2)
+			M.apply_damage(2, TOX)
 
 /datum/reagent/hippies_delight
 	name = "Hippies' Delight"
@@ -621,7 +621,7 @@
 				M.make_dizzy(60)
 				M.druggy = max(M.druggy, 75)
 				if(prob(40)) M.emote(pick("twitch","giggle"))
-				if(prob(30)) M.adjustToxLoss(2)
+				if(prob(30)) M.apply_damage(2, TOX)
 		holder.remove_reagent(src.id, 0.2)
 
 /datum/reagent/drink/cold/rewriter
@@ -648,10 +648,10 @@
 		if(!.) return
 		M:nutrition += nutriment_factor
 		holder.remove_reagent(src.id, FOOD_METABOLISM)
-		if(M:getOxyLoss() && prob(50)) M:adjustOxyLoss(-2)
+		if(M:getOxyLoss() && prob(50)) M:apply_damage(-2, OXY)
 		if(M:getBruteLoss() && prob(60)) M:heal_limb_damage(2,0)
 		if(M:getFireLoss() && prob(50)) M:heal_limb_damage(0,2)
-		if(M:getToxLoss() && prob(50)) M:adjustToxLoss(-2)
+		if(M:getToxLoss() && prob(50)) M:apply_damage(-2, TOX)
 		if(M.dizziness !=0) M.dizziness = max(0,M.dizziness-15)
 		if(M.confused !=0) M.confused = max(0,M.confused - 5)
 

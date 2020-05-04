@@ -91,9 +91,9 @@
 		W.registered_name = M.real_name
 		M.equip_to_slot_or_del(W, WEAR_ID)
 	if(xenovictim)
-		M.adjustBruteLoss(100)
-		M.adjustBruteLoss(100)
-		M.adjustBruteLoss(100)
+		M.apply_damage(100, BRUTE)
+		M.apply_damage(100, BRUTE)
+		M.apply_damage(100, BRUTE)
 		var/datum/internal_organ/O
 		var/i
 		for(i in list("heart","lungs"))

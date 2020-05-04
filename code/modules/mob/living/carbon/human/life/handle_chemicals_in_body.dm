@@ -72,7 +72,7 @@
 						revive_grace_period += SECONDS_5 * potency
 				if(PROPERTY_DEFIBRILLATING)
 					R.holder.remove_reagent(R.id, R.custom_metabolism)
-					adjustOxyLoss(-getOxyLoss())
+					apply_damage(-getOxyLoss(), OXY)
 					if(check_tod() && is_revivable() && health > config.health_threshold_dead)
 						to_chat(src, SPAN_NOTICE("You feel your heart struggling as you suddenly feel a spark, making it desperately try to continue pumping."))
 						playsound_client(src.client, 'sound/effects/Heart Beat Short.ogg', 35)

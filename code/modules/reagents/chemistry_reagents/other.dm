@@ -154,7 +154,7 @@
 		. = ..()
 		if(!.) return
 		// Toxins are really weak, but without being treated, last very long.
-		M.adjustToxLoss(0.2)
+		M.apply_damage(0.2, TOX)
 
 /datum/reagent/space_drugs
 	name = "Space drugs"
@@ -368,7 +368,7 @@
 	on_mob_life(mob/living/M)
 		. = ..()
 		if(!.) return
-		M.adjustToxLoss(REM)
+		M.apply_damage(REM, TOX)
 
 	on_overdose(mob/living/M)
 		M.apply_damage(1, TOX) //Overdose starts getting bad
@@ -499,7 +499,7 @@
 /datum/reagent/thermite/on_mob_life(mob/living/M)
 		. = ..()
 		if(!.) return
-		M.adjustFireLoss(1)
+		M.apply_damage(1, BURN)
 
 /datum/reagent/thermite/reaction_turf(turf/T, volume)
 	src = null
@@ -635,7 +635,7 @@
 	on_mob_life(mob/living/M)
 		. = ..()
 		if(!.) return
-		M.adjustToxLoss(1)
+		M.apply_damage(1, TOX)
 
 	reaction_mob(var/mob/living/M, var/method=TOUCH, var/volume)//Splashing people with welding fuel to make them easy to ignite!
 		if(!istype(M, /mob/living))
@@ -902,8 +902,8 @@
 	. = ..()
 	M.adjust_fire_stacks(max(M.fire_stacks, 15))
 	M.IgniteMob()
-	M.adjustFireLoss(rand(20, 30))
-	M.adjustToxLoss(rand(10, 20))
+	M.apply_damage(rand(20, 30), BURN)
+	M.apply_damage(rand(10, 20), TOX)
 	to_chat(M, SPAN_DANGER("It burns! It burns worse than you could ever have imagined!"))
 
 /datum/reagent/chlorinetrifluoride/reaction_mob(var/mob/M, var/method = TOUCH, var/volume) // Spilled on you? Not good either, but not /as/ bad.
@@ -931,7 +931,7 @@
 
 /datum/reagent/methane/on_mob_life(var/mob/living/M)
 	. = ..()
-	M.adjustToxLoss(1)
+	M.apply_damage(1, TOX)
 
 ///////////////////////////////////////////Explosives////////////////////////////////////////////////////////////
 
@@ -988,7 +988,7 @@
 
 /datum/reagent/cyclonite/on_mob_life(var/mob/living/M)
 	. = ..()
-	M.adjustToxLoss(1)
+	M.apply_damage(1, TOX)
 
 /datum/reagent/octogen
 	name = "Octogen"
@@ -1101,7 +1101,7 @@
 	if(!.) return
 
 	M.adjustBrainLoss(0.5)
-	M.adjustToxLoss(1)
+	M.apply_damage(1, TOX)
 	if(prob(20))
 		apply_neuro(M, 4, FALSE)
 

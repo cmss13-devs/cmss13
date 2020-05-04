@@ -26,10 +26,10 @@
 	SetKnockedout(min(knocked_out, 30))
 //	SetKnockeddown(min(knocked_down, 20))
 	sleeping = 0
-	adjustBruteLoss(0)
-	adjustToxLoss(0)
-	adjustOxyLoss(0)
-	adjustFireLoss(0)
+	apply_damage(0, BRUTE)
+	apply_damage(0, TOX)
+	apply_damage(0, OXY)
+	apply_damage(0, BURN)
 
 /mob/living/silicon/robot/proc/use_power()
 	// Debug only

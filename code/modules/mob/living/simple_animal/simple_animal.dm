@@ -181,12 +181,12 @@
 
 	//Atmos effect
 	if(bodytemperature < minbodytemp)
-		adjustBruteLoss(cold_damage_per_tick)
+		apply_damage(cold_damage_per_tick, BRUTE)
 	else if(bodytemperature > maxbodytemp)
-		adjustBruteLoss(heat_damage_per_tick)
+		apply_damage(heat_damage_per_tick, BRUTE)
 
 	if(!atmos_suitable)
-		adjustBruteLoss(unsuitable_atoms_damage)
+		apply_damage(unsuitable_atoms_damage, BRUTE)
 	return 1
 
 /mob/living/simple_animal/Collided(atom/movable/AM)
@@ -247,7 +247,7 @@
 		M.attack_log += text("\[[time_stamp()]\] <font color='red'>attacked [src.name] ([src.ckey])</font>")
 		src.attack_log += text("\[[time_stamp()]\] <font color='orange'>was attacked by [M.name] ([M.ckey])</font>")
 		var/damage = rand(M.melee_damage_lower, M.melee_damage_upper)
-		adjustBruteLoss(damage)
+		apply_damage(damage, BRUTE)
 
 
 /mob/living/simple_animal/attack_hand(mob/living/carbon/human/M as mob)
@@ -269,7 +269,7 @@
 			return 1
 
 		if("hurt", "disarm")
-			adjustBruteLoss(harm_intent_damage)
+			apply_damage(harm_intent_damage, BRUTE)
 			for(var/mob/O in viewers(src, null))
 				if ((O.client && !( O.blinded )))
 					O.show_message(SPAN_DANGER("[M] [response_harm] [src]"))
@@ -284,7 +284,7 @@
 			var/obj/item/stack/medical/MED = O
 			if(health < maxHealth)
 				if(MED.get_amount() >= 1)
-					adjustBruteLoss(-MED.heal_brute)
+					apply_damage(-MED.heal_brute, BRUTE)
 					MED.use(1)
 					for(var/mob/M in viewers(src, null))
 						if ((M.client && !( M.blinded )))
@@ -327,7 +327,7 @@
 		gib()
 		return
 
-	adjustBruteLoss(severity)
+	apply_damage(severity, BRUTE)
 	updatehealth()
 
 	var/knock_value = min( round( severity*0.1 ,1) ,10)

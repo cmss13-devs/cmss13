@@ -88,8 +88,8 @@
 			return
 		if(surgery)
 			// keep them alive
-			occupant.adjustToxLoss(-1 * REM) // pretend they get IV dylovene
-			occupant.adjustOxyLoss(-occupant.getOxyLoss()) // keep them breathing, pretend they get IV dexplus
+			occupant.apply_damage(-1 * REM, TOX) // pretend they get IV dylovene
+			occupant.apply_damage(-occupant.getOxyLoss(), OXY) // keep them breathing, pretend they get IV dexplus
 			if(filtering)
 				var/filtered = 0
 				for(var/datum/reagent/x in occupant.reagents.reagent_list)
@@ -133,7 +133,7 @@
 					visible_message("[htmlicon(src, viewers(src))] \The <b>[src]</b> speaks: Skin grafts complete.")
 			if(heal_toxin)
 				if(occupant.getToxLoss() > 0)
-					occupant.adjustToxLoss(-3)
+					occupant.apply_damage(-3, TOX)
 					if(prob(10))
 						visible_message("\The [src] whirrs and gurgles as it kelates the occupant.")
 						to_chat(occupant, SPAN_INFO("You feel slighly less ill."))

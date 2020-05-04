@@ -17,7 +17,7 @@
 		if(!.) return
 		if(alien == IS_YAUTJA) return 0 //immunity to toxin reagents
 		if(toxpwr)
-			M.adjustToxLoss(toxpwr*REM)
+			M.apply_damage(toxpwr*REM, TOX)
 			if(alien) holder.remove_reagent(id, custom_metabolism) //Kind of a catch-all for aliens without kidneys.
 			///I don't know what this is supposed to do, since aliens generally have kidneys, but I'm leaving it alone pending rework. /N
 
@@ -44,7 +44,7 @@
 	on_mob_life(mob/living/M,alien)
 		. = ..()
 		if(!.) return
-		M.adjustOxyLoss(1)
+		M.apply_damage(1, OXY)
 
 
 /datum/reagent/toxin/amatoxin
@@ -111,7 +111,7 @@
 			return
 		if(prob(33))
 			M.take_limb_damage(1*REM, 0)
-		M.adjustOxyLoss(3)
+		M.apply_damage(3, OXY)
 		if(prob(20)) M.emote("gasp")
 
 	on_overdose(mob/living/M)
@@ -134,7 +134,7 @@
 	on_mob_life(mob/living/M)
 		. = ..()
 		if(!.) return
-		M.adjustOxyLoss(4*REM)
+		M.apply_damage(4*REM, OXY)
 		M.sleeping += 1
 
 /datum/reagent/toxin/minttoxin
@@ -170,7 +170,7 @@
 		. = ..()
 		if(!.) return
 		M.status_flags |= FAKEDEATH
-		M.adjustOxyLoss(0.5*REM)
+		M.apply_damage(0.5*REM, OXY)
 		M.KnockDown(10)
 		M.silent = max(M.silent, 10)
 		M.tod = worldtime2text()
@@ -273,7 +273,7 @@
 		if(iscarbon(M))
 			var/mob/living/carbon/C = M
 			if(!C.wear_mask) // If not wearing a mask
-				C.adjustToxLoss(2) // 4 toxic damage per application, doubled for some reason
+				C.apply_damage(2, TOX) // 4 toxic damage per application, doubled for some reason
 
 /datum/reagent/toxin/stoxin
 	name = "Soporific"
@@ -370,7 +370,7 @@
 			if(volume >= overdose)
 				if(H.losebreath >= 10)
 					H.losebreath = max(10, H.losebreath-10)
-				H.adjustOxyLoss(2)
+				H.apply_damage(2, OXY)
 				H.KnockDown(10)
 
 /datum/reagent/toxin/potassium_chlorophoride
@@ -392,7 +392,7 @@
 			if(H.stat != 1)
 				if(H.losebreath >= 10)
 					H.losebreath = max(10, M.losebreath-10)
-				H.adjustOxyLoss(2)
+				H.apply_damage(2, OXY)
 				H.KnockDown(10)
 
 /datum/reagent/toxin/beer2	//disguised as normal beer for use by emagged brobots
@@ -417,7 +417,7 @@
 				M.sleeping += 1
 			if(51 to INFINITY)
 				M.sleeping += 1
-				M.adjustToxLoss((data - 50)*REM)
+				M.apply_damage((data - 50)*REM, TOX)
 		data++
 
 	on_overdose(mob/living/M)

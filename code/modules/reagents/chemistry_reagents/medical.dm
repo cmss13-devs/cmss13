@@ -264,7 +264,7 @@
 		return  //See above, down and around. --Agouri
 
 	if(!alien)
-		M.adjustOxyLoss(-2*REM)
+		M.apply_damage(-2*REM, OXY)
 
 	holder.remove_reagent("lexorin", 2 * REM)
 
@@ -292,7 +292,7 @@
 		return
 
 	if(!alien)
-		M.adjustOxyLoss(-M.getOxyLoss())
+		M.apply_damage(-M.getOxyLoss(), OXY)
 
 	holder.remove_reagent("lexorin", 2*REM)
 
@@ -320,10 +320,10 @@
 	if(M.stat == DEAD)
 		return
 	if(!alien)
-		if(M.getOxyLoss()) M.adjustOxyLoss(-REM)
+		if(M.getOxyLoss()) M.apply_damage(-REM, OXY)
 		if(M.getBruteLoss() && prob(80)) M.heal_limb_damage(REM, 0)
 		if(M.getFireLoss() && prob(80)) M.heal_limb_damage(0, REM)
-		if(M.getToxLoss() && prob(80)) M.adjustToxLoss(-REM)
+		if(M.getToxLoss() && prob(80)) M.apply_damage(-REM, TOX)
 
 /datum/reagent/tricordrazine/on_overdose(mob/living/M)
 	M.make_jittery(5)
@@ -352,7 +352,7 @@
 		M.reagents.remove_all_type(/datum/reagent/toxin, REM, 0, 1)
 		M.drowsyness = max(M.drowsyness- 2 * REM, 0)
 		M.hallucination = max(0, M.hallucination -  5 * REM)
-		M.adjustToxLoss(-2 * REM)
+		M.apply_damage(-2 * REM, TOX)
 
 /datum/reagent/anti_toxin/on_overdose(mob/living/M)
 	if(ishuman(M))
@@ -383,7 +383,7 @@
 	M.setCloneLoss(0)
 	M.setOxyLoss(0)
 	M.heal_limb_damage(5,5)
-	M.adjustToxLoss(-5)
+	M.apply_damage(-5, TOX)
 	M.hallucination = 0
 	M.setBrainLoss(0)
 	M.disabilities = 0
@@ -431,11 +431,11 @@
 
 	if(M.getBruteLoss() && prob(80)) M.heal_limb_damage(1*REM,0)
 	if(M.getFireLoss() && prob(80)) M.heal_limb_damage(0,1*REM)
-	if(M.getToxLoss() && prob(80)) M.adjustToxLoss(-1*REM)
+	if(M.getToxLoss() && prob(80)) M.apply_damage(-1*REM, TOX)
 	M.reagents.remove_all_type(/datum/reagent/toxin, 5*REM, 0, 1)
 	M.setCloneLoss(0)
 	M.setOxyLoss(0)
-	M.adjustToxLoss(-5)
+	M.apply_damage(-5, TOX)
 	M.hallucination = 0
 	M.setBrainLoss(0)
 	M.disabilities = 0
@@ -480,7 +480,7 @@
 	M.AdjustKnockeddown(-1)
 	holder.remove_reagent("mindbreaker", 5)
 	M.hallucination = max(0, M.hallucination - 10)
-	if(prob(80))	M.adjustToxLoss(1)
+	if(prob(80))	M.apply_damage(1, TOX)
 
 /datum/reagent/synaptizine/on_overdose(mob/living/M)
 	M.apply_damage(2, TOX)
@@ -531,7 +531,7 @@
 	if(!.) return
 	if(M.stat == DEAD)
 		return
-	M.adjustToxLoss(-1*REM)
+	M.apply_damage(-1*REM, TOX)
 	if(prob(15))
 		M.take_limb_damage(1, 0)
 
@@ -555,7 +555,7 @@
 /datum/reagent/russianred/on_mob_life(mob/living/M)
 	. = ..()
 	if(!.) return
-	M.adjustToxLoss(-1*REM)
+	M.apply_damage(-1*REM, TOX)
 	if(prob(50))
 		M.take_limb_damage(3, 0)
 
@@ -825,9 +825,9 @@
 	if(!.) return
 	if(M.bodytemperature < 170)
 		M.adjustCloneLoss(-1)
-		M.adjustOxyLoss(-1)
+		M.apply_damage(-1, OXY)
 		M.heal_limb_damage(1,1)
-		M.adjustToxLoss(-1)
+		M.apply_damage(-1, TOX)
 
 /datum/reagent/clonexadone
 	name = "Clonexadone"
@@ -844,9 +844,9 @@
 	if(!.) return
 	if(M.bodytemperature < 170)
 		M.adjustCloneLoss(-3)
-		M.adjustOxyLoss(-3)
+		M.apply_damage(-3, OXY)
 		M.heal_limb_damage(3,3)
-		M.adjustToxLoss(-3)
+		M.apply_damage(-3, TOX)
 
 /datum/reagent/rezadone
 	name = "Rezadone"
@@ -875,7 +875,7 @@
 				var/mob/living/carbon/human/H = M
 				H.name = H.get_visible_name()
 		if(35 to INFINITY)
-			M.adjustToxLoss(1)
+			M.apply_damage(1, TOX)
 			M.make_dizzy(5)
 			M.make_jittery(5)
 

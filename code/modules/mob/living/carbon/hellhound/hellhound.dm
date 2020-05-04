@@ -157,7 +157,7 @@
 				playsound(loc, "punch", 25, 1)
 				var/damage = rand(3, 7)
 
-				adjustBruteLoss(damage)
+				apply_damage(damage, BRUTE)
 
 				M.last_damage_source = initial(name)
 				M.last_damage_mob = src
@@ -203,7 +203,7 @@
 		M.attack_log += text("\[[time_stamp()]\] <font color='red'>attacked [key_name(src)]</font>")
 		src.attack_log += text("\[[time_stamp()]\] <font color='orange'>was attacked by [key_name(M)]</font>")
 		var/damage = rand(M.melee_damage_lower, M.melee_damage_upper)
-		adjustBruteLoss(damage)
+		apply_damage(damage, BRUTE)
 		updatehealth()
 
 /mob/living/carbon/hellhound/IsAdvancedToolUser()

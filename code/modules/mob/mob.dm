@@ -436,13 +436,12 @@
 	if(throwing || is_mob_incapacitated())
 		return
 
-	recalculate_move_delay = TRUE
-
 	if(pulling)
 		var/pulling_old = pulling
 		stop_pulling()
 		// Are we pulling the same thing twice? Just stop pulling.
 		if(pulling_old == AM)
+			client.recalculate_move_delay()
 			return
 
 	var/mob/M
@@ -461,7 +460,9 @@
 	var/obj/item/grab/G = new /obj/item/grab()
 	G.grabbed_thing = AM
 	if(!put_in_hands(G)) //placing the grab in hand failed, grab is dropped, deleted, and we stop pulling automatically.
+		recalculate_move_delay = TRUE
 		return
+	client.recalculate_move_delay()
 
 	if(M)
 		playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)

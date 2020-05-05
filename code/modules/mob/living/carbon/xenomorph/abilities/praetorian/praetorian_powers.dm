@@ -551,6 +551,10 @@
 		to_chat(X, SPAN_XENODANGER("You cannot heal yourself!"))
 		return
 
+	if (A.z != X.z)
+		to_chat(X, SPAN_XENODANGER("That Sister is too far away!"))
+		return
+
 	var/mob/living/carbon/Xenomorph/targetXeno = A
 
 	if (!check_plasma_owner())
@@ -574,9 +578,15 @@
 			if (!BD.use_internal_hp_ability(bonus_shield))
 				bonus_shield = 0
 
+		var/total_shield_amount = shield_amount + bonus_shield
+
+		if (X.observed_xeno != null)
+			to_chat(X, SPAN_XENOHIGHDANGER("You cannot heal [targetXeno] as effectively over distance!"))
+			total_shield_amount = total_shield_amount/4
+
 		to_chat(X, SPAN_XENODANGER("You bolster the defenses of [targetXeno]!"))
 		to_chat(targetXeno, SPAN_XENOHIGHDANGER("You feel your defenses bolstered by [X]!"))
-		targetXeno.add_xeno_shield(shield_amount + bonus_shield, XENO_SHIELD_SOURCE_WARDEN_PRAE)
+		targetXeno.add_xeno_shield(total_shield_amount, XENO_SHIELD_SOURCE_WARDEN_PRAE)
 		use_plasma = TRUE
 
 	else if (curr_effect_type == WARDEN_HEAL_HP)
@@ -605,6 +615,10 @@
 		use_plasma = TRUE
 
 	else if (curr_effect_type == WARDEN_HEAL_DEBUFFS)
+		if (X.observed_xeno != null)
+			to_chat(X, SPAN_XENOHIGHDANGER("You cannot rejuvenate targets through overwatch!"))
+			return
+
 		if (X.mutation_type == PRAETORIAN_WARDEN)
 			var/datum/behavior_delegate/praetorian_warden/BD = X.behavior_delegate
 			if (!istype(BD))

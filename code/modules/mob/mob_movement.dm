@@ -95,6 +95,9 @@
 			mob.control_object.loc = get_step(mob.control_object,direct)
 	return
 
+/client/proc/recalculate_move_delay()
+	move_delay = mob.movement_delay()
+	mob.next_delay_update = world.time + mob.next_delay_delay
 
 /client/Move(n, direct)
 	if(world.time < next_movement)
@@ -151,9 +154,8 @@
 		return O.relaymove(mob, direct)
 	else
 		move_delay = mob.move_delay
-		if(mob.recalculate_move_delay && mob.next_delay_update <= world.time)
-			move_delay = mob.movement_delay()
-			mob.next_delay_update = world.time + mob.next_delay_delay
+		if(mob.recalculate_move_delay)// && mob.next_delay_update <= world.time)
+			recalculate_move_delay()
 		if(mob.next_move_slowdown)
 			move_delay += mob.next_move_slowdown
 			mob.next_move_slowdown = 0

@@ -301,13 +301,12 @@
 	set name = "Stop Pulling"
 	set category = "IC"
 
-	recalculate_move_delay = TRUE
-
 	if(pulling)
 		var/mob/M = pulling
 		pulling.pulledby = null
 		pulling = null
 		grab_level = 0
+		client.recalculate_move_delay()
 		if(hud_used && hud_used.pull_icon)
 			hud_used.pull_icon.icon_state = "pull0"
 		if(istype(r_hand, /obj/item/grab))

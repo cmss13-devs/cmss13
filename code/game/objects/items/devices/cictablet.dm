@@ -259,7 +259,7 @@
                 if(world.time < cooldown_message + COOLDOWN_COMM_MESSAGE)
                     to_chat(usr, SPAN_WARNING("Please wait [(COOLDOWN_COMM_MESSAGE + cooldown_message - world.time)*0.1] second\s before making your next announcement."))
                     return FALSE
-                var/input = input(usr, "Please write a message to announce to the station crew.", "Priority Announcement", "") as message|null
+                var/input = strip_html(input(usr, "Please write a message to announce to the station crew.", "Priority Announcement", "") as message|null)
                 if(!input || authenticated != 2 || world.time < cooldown_message + COOLDOWN_COMM_MESSAGE || !(usr in view(1, src)))
                     return FALSE
 

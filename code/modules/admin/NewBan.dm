@@ -190,7 +190,7 @@ var/savefile/Banlist
 			expiry = GetExp(Banlist["minutes"])
 			if(!expiry)		expiry = "Removal Pending"
 		else				expiry = "Permaban"
-		var/unban_link = "<A href='?src=[ref];unbanf=[key][id]'>(U)</A><A href='?src=[ref];unbane=[key][id]'>(E)</A>"
+		var/unban_link = "<A href='?src=[ref];unbanf=[key]'>(U)</A><A href='?src=[ref];unbane=[key][id]'>(E)</A>"
 		var/perma_links = ""
 		if(!Banlist["temp"])
 			unban_link = ""

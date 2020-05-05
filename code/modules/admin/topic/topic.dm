@@ -215,8 +215,7 @@
 
 	/////////////////////////////////////new ban stuff
 	else if(href_list["unbanf"])
-		var/mob/M = locate(href_list["mob"])
-		var/datum/entity/player/P = get_player_from_key(M.ckey)
+		var/datum/entity/player/P = get_player_from_key(href_list["unbanf"])
 		if(P.remove_timed_ban())
 			alert(usr, "This ban has already been lifted / does not exist.", "Error", "Ok")
 		unbanpanel()

@@ -183,8 +183,8 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	if(config.duplicate_notes_to_file)
 		message_admins(SPAN_WARNING("CANNOT REMOVE BANS FROM OLD BAN MANAGER. If you see this during test period - reapply unban after test round is done."), 1)
 	
-	ban_unban_log_save("[key_name(admin)] removed [ckey]'s permaban.")
-	message_admins(SPAN_NOTICE("[key_name_admin(admin)] removed [ckey]'s permaban."), 1)
+	ban_unban_log_save("[key_name(admin)] removed [ckey]'s ban.")
+	message_admins(SPAN_NOTICE("[key_name_admin(admin)] removed [ckey]'s ban."), 1)
 
 	time_ban_date = null
 	time_ban_expiration = null

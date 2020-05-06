@@ -95,7 +95,7 @@
 	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is a less common configuration, designed to transport medical supplies, and light ammunitions."
 	icon_state = "medicalbelt"
 	item_state = "medical"
-	storage_slots = 14 //can hold about 3 "rows" of very limited medical equipment and ammo.
+	storage_slots = 14
 	max_w_class = SIZE_MEDIUM
 	max_storage_space = 28
 	var/mode = 0 //Pill picking mode
@@ -125,7 +125,7 @@
 	    /obj/item/roller
 	)
 
-/obj/item/storage/belt/medical/New()
+/obj/item/storage/belt/medical/full/New()
 	new /obj/item/storage/pill_bottle/bicaridine(src)
 	new /obj/item/storage/pill_bottle/dexalin(src)
 	new /obj/item/storage/pill_bottle/antitox(src)
@@ -154,7 +154,7 @@
 	new /obj/item/device/healthanalyzer(src)
 	..()
 
-/obj/item/storage/belt/medical/combatLifesaver
+/obj/item/storage/belt/medical/lifesaver
 	name = "\improper M276 pattern lifesaver bag"
 	desc = "The M276 is the standard load-bearing equipment of the USCM. This configuration mounts a duffel bag filled with a range of injectors and light medical supplies and is common among medics."
 	icon_state = "medicbag"
@@ -173,20 +173,22 @@
 		/obj/item/reagent_container/hypospray/autoinjector,
 		/obj/item/stack/medical
 	)
-	var/has_gamemode_skin = TRUE //whether it has a sprite for each gamemode.
+	var/has_gamemode_skin = TRUE
 
-/obj/item/storage/belt/medical/combatLifesaver/New()  //The belt, with all it's magic inside!
+/obj/item/storage/belt/medical/lifesaver/New()
+	if(has_gamemode_skin)
+		select_gamemode_skin(type)
+	..()
+
+/obj/item/storage/belt/medical/lifesaver/full/New()
 	new /obj/item/stack/medical/advanced/bruise_pack(src)
 	new /obj/item/stack/medical/advanced/ointment(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/adrenaline(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/dexalinp(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/oxycodone(src)
-
-	if(has_gamemode_skin)
-		select_gamemode_skin(type)
 	..()
 
-/obj/item/storage/belt/medical/combatLifesaver/upp
+/obj/item/storage/belt/medical/lifesaver/upp
 	name = "\improper Type 41 pattern lifesaver bag"
 	desc = "The Type 41 load rig is the standard load-bearing equipment of the UPP military. This configuration mounts a duffel bag filled with a range of injectors and light medical supplies and is common among medics."
 	icon_state = "medicbag_u"
@@ -194,6 +196,19 @@
 	has_gamemode_skin = FALSE
 	storage_slots = 42
 	max_storage_space = 82
+
+/obj/item/storage/belt/medical/lifesaver/upp/full/New()
+	new /obj/item/stack/medical/advanced/bruise_pack(src)
+	new /obj/item/stack/medical/advanced/bruise_pack(src)
+	new /obj/item/stack/medical/advanced/ointment(src)
+	new /obj/item/stack/medical/advanced/ointment(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/adrenaline(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/dexalinp(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/oxycodone(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/adrenaline(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/dexalinp(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/oxycodone(src)
+	..()
 
 /obj/item/storage/belt/security
 	name = "\improper M276 pattern security rig"
@@ -841,7 +856,7 @@
 		return ..()
 
 /obj/item/storage/belt/tank
-	name = "\improper M103 pattern Vehicle-Ammo rig" //Carn: utility belt is nicer, but it bamboozles the text parsing.
+	name = "\improper M103 pattern Vehicle-Ammo rig"
 	desc = "The M103 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. Made specially for Crewmen for store their ammunition."
 	icon_state = "tankbelt"
 	item_state = "tankbelt"

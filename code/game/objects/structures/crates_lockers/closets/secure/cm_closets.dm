@@ -199,7 +199,7 @@
 
 /obj/structure/closet/secure_closet/marine/medic/New()
 	..()
-	new /obj/item/storage/belt/medical/combatLifesaver(src)
+	new /obj/item/storage/belt/medical/lifesaver/full(src)
 	new /obj/item/clothing/glasses/hud/health(src)
 	new /obj/item/clothing/accessory/storage/webbing(src)
 	new /obj/item/roller/medevac(src)
@@ -496,7 +496,7 @@
 	if(z != 1) new /obj/item/device/radio/headset/almayer/doc(src)
 	new /obj/item/clothing/shoes/white(src)
 	new /obj/item/clothing/shoes/white(src)
-	new /obj/item/storage/belt/medical(src)
+	new /obj/item/storage/belt/medical/full(src)
 	new /obj/item/clothing/under/rank/medical/green(src)
 	new /obj/item/clothing/under/rank/medical/green(src)
 	new /obj/item/clothing/mask/surgical(src)

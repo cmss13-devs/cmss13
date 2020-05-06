@@ -430,7 +430,7 @@
 						/obj/item/storage/backpack/marine/medic = 4,
 						/obj/item/storage/backpack/marine/satchel/medic = 4,
 						/obj/item/device/encryptionkey/med = 4,
-						/obj/item/storage/belt/medical = 4,
+						/obj/item/storage/belt/medical/full = 4,
 						/obj/item/bodybag/cryobag = 4,
 						/obj/item/device/healthanalyzer = 4,
 						/obj/item/clothing/glasses/hud/health = 4,

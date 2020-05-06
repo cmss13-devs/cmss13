@@ -49599,7 +49599,7 @@
 /area/desert_dam/building/medical/garage)
 "cIB" = (
 /obj/structure/table/reinforced,
-/obj/item/storage/belt/medical/combatLifesaver,
+/obj/item/storage/belt/medical/lifesaver/full,
 /turf/open/floor/plating,
 /area/desert_dam/building/medical/garage)
 "cIC" = (

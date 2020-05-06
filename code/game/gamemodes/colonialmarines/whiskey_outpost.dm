@@ -87,7 +87,7 @@
 	var/mob/M
 	for(var/obj/effect/landmark/start/S in world)
 		if(!istype(S, /obj/effect/landmark/start/whiskey))
-			qdel(S) 
+			qdel(S)
 
 	if(config) config.remove_gun_restrictions = 1
 
@@ -646,19 +646,19 @@ var/global/spawn_next_wo_wave = 0
 								/obj/item/storage/firstaid/adv,
 								/obj/item/bodybag/cryobag,
 								/obj/item/bodybag/cryobag,
-								/obj/item/storage/belt/medical/combatLifesaver,
-								/obj/item/storage/belt/medical/combatLifesaver,
+								/obj/item/storage/belt/medical/lifesaver/full,
+								/obj/item/storage/belt/medical/lifesaver/full,
 								/obj/item/clothing/glasses/hud/health,
 								/obj/item/clothing/glasses/hud/health,
 								/obj/item/device/defibrillator)
 
 			if(26 to 30)//Random Medical Items 10% as well. Made the list have less small junk
 				crate = new /obj/structure/closet/crate/medical(T)
-				spawnitems = list(/obj/item/storage/belt/medical/combatLifesaver,
-								/obj/item/storage/belt/medical/combatLifesaver,
-								/obj/item/storage/belt/medical/combatLifesaver,
-								/obj/item/storage/belt/medical/combatLifesaver,
-								/obj/item/storage/belt/medical/combatLifesaver)
+				spawnitems = list(/obj/item/storage/belt/medical/lifesaver/full,
+								/obj/item/storage/belt/medical/lifesaver/full,
+								/obj/item/storage/belt/medical/lifesaver/full,
+								/obj/item/storage/belt/medical/lifesaver/full,
+								/obj/item/storage/belt/medical/lifesaver/full)
 
 			if(31 to 35)//Random explosives Crate 10% because the lord commeth and said let there be explosives.
 				crate = new /obj/structure/closet/crate/ammo(T)

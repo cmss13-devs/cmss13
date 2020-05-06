@@ -18628,12 +18628,12 @@
 /area/almayer/medical/lower_medical)
 "bba" = (
 /obj/structure/table/almayer,
-/obj/item/storage/belt/medical/combatLifesaver,
-/obj/item/storage/belt/medical/combatLifesaver,
-/obj/item/storage/belt/medical/combatLifesaver,
-/obj/item/storage/belt/medical/combatLifesaver,
-/obj/item/storage/belt/medical/combatLifesaver,
-/obj/item/storage/belt/medical/combatLifesaver,
+/obj/item/storage/belt/medical/lifesaver/full,
+/obj/item/storage/belt/medical/lifesaver/full,
+/obj/item/storage/belt/medical/lifesaver/full,
+/obj/item/storage/belt/medical/lifesaver/full,
+/obj/item/storage/belt/medical/lifesaver/full,
+/obj/item/storage/belt/medical/lifesaver/full,
 /obj/item/clothing/glasses/hud/health,
 /obj/item/clothing/glasses/hud/health,
 /obj/item/clothing/glasses/hud/health,
@@ -51674,10 +51674,10 @@
 /area/almayer/squads/req)
 "sgj" = (
 /obj/structure/table/almayer,
-/obj/item/storage/belt/medical,
-/obj/item/storage/belt/medical,
-/obj/item/storage/belt/medical,
-/obj/item/storage/belt/medical,
+/obj/item/storage/belt/medical/full,
+/obj/item/storage/belt/medical/full,
+/obj/item/storage/belt/medical/full,
+/obj/item/storage/belt/medical/full,
 /obj/item/roller/medevac,
 /obj/item/roller/medevac,
 /obj/item/roller/medevac,

@@ -78,7 +78,7 @@
 	spawn_merc_helmet(H)
 
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch, WEAR_EAR)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/medical, WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/medical/full, WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/stick, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/defibrillator, WEAR_IN_BACK)

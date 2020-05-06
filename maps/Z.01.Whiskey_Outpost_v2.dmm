@@ -8891,7 +8891,7 @@
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
-/obj/item/storage/belt/medical/combatLifesaver,
+/obj/item/storage/belt/medical/lifesaver/full,
 /obj/structure/table/reinforced/prison,
 /turf/open/floor{
 	tag = "icon-whitegreen (NORTH)";

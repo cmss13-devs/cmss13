@@ -3201,7 +3201,7 @@
 	name = "DistressItem"
 	},
 /obj/item/storage/firstaid/regular,
-/obj/item/storage/belt/medical/combatLifesaver,
+/obj/item/storage/belt/medical/lifesaver/full,
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin15";
 	icon_state = "rasputin15"
@@ -3230,7 +3230,7 @@
 	name = "Distress_PMCItem"
 	},
 /obj/item/storage/firstaid/regular,
-/obj/item/storage/belt/medical/combatLifesaver,
+/obj/item/storage/belt/medical/lifesaver/full,
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin15";
 	icon_state = "rasputin15"
@@ -3259,7 +3259,7 @@
 	name = "Distress_UPPItem"
 	},
 /obj/item/storage/firstaid/regular,
-/obj/item/storage/belt/medical/combatLifesaver,
+/obj/item/storage/belt/medical/lifesaver/full,
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin15";
 	icon_state = "rasputin15"
@@ -3280,7 +3280,7 @@
 "ju" = (
 /obj/structure/rack,
 /obj/item/storage/firstaid/regular,
-/obj/item/storage/belt/medical/combatLifesaver,
+/obj/item/storage/belt/medical/lifesaver/full,
 /obj/effect/landmark{
 	name = "Distress_UPPItem"
 	},
@@ -3808,8 +3808,8 @@
 /obj/item/storage/pouch/medkit,
 /obj/item/storage/pouch/medical,
 /obj/item/storage/pouch/medical,
-/obj/item/storage/belt/medical/combatLifesaver,
-/obj/item/storage/belt/medical/combatLifesaver,
+/obj/item/storage/belt/medical/lifesaver/full,
+/obj/item/storage/belt/medical/lifesaver/full,
 /obj/item/reagent_container/spray/cleaner{
 	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
 	name = "Surgery Cleaner"
@@ -3978,7 +3978,7 @@
 "ln" = (
 /obj/structure/rack,
 /obj/item/storage/firstaid/regular,
-/obj/item/storage/belt/medical/combatLifesaver,
+/obj/item/storage/belt/medical/lifesaver/full,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -7826,10 +7826,10 @@
 	icon_state = "tube1";
 	dir = 8
 	},
-/obj/item/storage/belt/medical/combatLifesaver,
-/obj/item/storage/belt/medical/combatLifesaver,
-/obj/item/storage/belt/medical/combatLifesaver/upp,
-/obj/item/storage/belt/medical/combatLifesaver/upp,
+/obj/item/storage/belt/medical/lifesaver/full,
+/obj/item/storage/belt/medical/lifesaver/full,
+/obj/item/storage/belt/medical/lifesaver/upp/full,
+/obj/item/storage/belt/medical/lifesaver/upp/full,
 /turf/open/floor/almayer{
 	tag = "icon-sterile_green_side (WEST)";
 	icon_state = "sterile_green_side";
@@ -9670,8 +9670,8 @@
 /obj/structure/table/reinforced,
 /obj/item/device/defibrillator,
 /obj/item/device/defibrillator,
-/obj/item/storage/belt/medical/combatLifesaver,
-/obj/item/storage/belt/medical/combatLifesaver,
+/obj/item/storage/belt/medical/lifesaver/full,
+/obj/item/storage/belt/medical/lifesaver/full,
 /obj/item/storage/firstaid/adv{
 	pixel_x = 2;
 	pixel_y = -5

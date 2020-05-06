@@ -228,7 +228,7 @@
 "D" = (
 /obj/effect/landmark/corpsespawner/prison_security,
 /obj/item/weapon/gun/rifle/m16,
-/obj/item/storage/belt/medical,
+/obj/item/storage/belt/medical/full,
 /turf/open/floor/prison{
 	tag = "icon-floor_marked (SOUTHWEST)";
 	icon_state = "floor_marked";
@@ -309,7 +309,7 @@
 "M" = (
 /obj/effect/landmark/corpsespawner/prison_security,
 /obj/item/weapon/gun/rifle/m16,
-/obj/item/storage/belt/medical,
+/obj/item/storage/belt/medical/full,
 /turf/open/floor/prison{
 	tag = "icon-floor (SOUTHWEST)";
 	icon_state = "floor";

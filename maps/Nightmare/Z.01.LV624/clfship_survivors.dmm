@@ -1099,7 +1099,7 @@
 	},
 /area/lv624/lazarus/crashed_ship)
 "cI" = (
-/obj/item/storage/belt/medical,
+/obj/item/storage/belt/medical/full,
 /obj/item/ammo_magazine/shotgun/slugs,
 /turf/open/floor{
 	dir = 8;

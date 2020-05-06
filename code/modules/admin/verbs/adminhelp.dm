@@ -51,7 +51,7 @@ var/global/list/ahelp_msgs = list()
 
 	//clean the input msg
 	if(!msg)	return
-	msg = sanitize(copytext(msg,1,MAX_MESSAGE_LEN))
+	msg = strip_html(msg)
 	if(!msg)	return
 	var/original_msg = msg
 

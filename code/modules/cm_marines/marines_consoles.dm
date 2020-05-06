@@ -269,7 +269,7 @@
 			if (authenticated)
 				var/t1 = href_list["assign_target"]
 				if(t1 == "Custom")
-					var/temp_t = copytext(sanitize(input("Enter a custom job assignment.","Assignment")),1,MAX_MESSAGE_LEN)
+					var/temp_t = strip_html(input("Enter a custom job assignment.","Assignment"))
 					//let custom jobs function as an impromptu alt title, mainly for sechuds
 					if(temp_t && ID_to_modify)
 						ID_to_modify.assignment = temp_t

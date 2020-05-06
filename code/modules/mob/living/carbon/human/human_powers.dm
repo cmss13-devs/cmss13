@@ -157,7 +157,7 @@
 
 	text = input("What would you like to say?", "Speak to creature", null, null)
 
-	text = trim(copytext(sanitize(text), 1, MAX_MESSAGE_LEN))
+	text = trim(strip_html(text))
 
 	if(!text)
 		return
@@ -183,7 +183,7 @@
 	set desc = "Whisper silently to someone over a distance."
 	set category = "Abilities"
 
-	var/msg = sanitize(input("Message:", "Psychic Whisper") as text|null)
+	var/msg = strip_html(input("Message:", "Psychic Whisper") as text|null)
 	if(msg)
 		log_say("PsychicWhisper: [key_name(src)]->[M.key] : [msg]")
 		to_chat(M, SPAN_XENOWARNING(" You hear a strange, alien voice in your head... \italic [msg]"))

@@ -102,7 +102,7 @@
 /obj/structure/machinery/status_display/examine(mob/user)
 	..()
 	if(mode != STATUS_DISPLAY_BLANK && mode != STATUS_DISPLAY_ALERT)
-		to_chat(user, "The display says:<br>\t[sanitize(message1)]<br>\t[sanitize(message2)]")
+		to_chat(user, "The display says:<br>\t[strip_html(message1)]<br>\t[strip_html(message2)]")
 
 /obj/structure/machinery/status_display/proc/set_message(m1, m2)
 	if(m1)

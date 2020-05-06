@@ -46,7 +46,7 @@
 	if(stat || !message) 
 		return FALSE
 
-	message = trim(copytext(sanitize(message), 1, MAX_MESSAGE_LEN))
+	message = trim(strip_html(message))
 
 	var/message_mode = parse_message_mode(message) //I really prefer my rewrite of all this.
 

@@ -22,7 +22,7 @@
 
 	stafftype = "[admin_holder.rank]"
 
-	msg = copytext(sanitize(msg), 1, MAX_MESSAGE_LEN)
+	msg = strip_html(msg)
 	log_admin("[key_name(src)] : [msg]")
 
 	if (!msg)

@@ -153,7 +153,7 @@
 	if(!istype(T))
 		return
 
-	var/new_name = copytext(sanitize(input("Change the description of the tunnel:", "Tunnel Description") as text|null), 1, MAX_MESSAGE_LEN)
+	var/new_name = strip_html(input("Change the description of the tunnel:", "Tunnel Description") as text|null)
 	if(new_name)
 		new_name = "[new_name] ([get_area_name(T)])"
 		log_admin("[key_name(src)] has renamed the tunnel \"[T.tunnel_desc]\" as \"[new_name]\".")

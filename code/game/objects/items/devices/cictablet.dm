@@ -401,11 +401,11 @@
             interact(usr)
 
         if("setmsg1")
-            stat_msg1 = reject_bad_text(trim(copytext(sanitize(input("Line 1", "Enter Message Text", stat_msg1) as text|null), 1, 40)), 40)
+            stat_msg1 = reject_bad_text(trim(strip_html(input("Line 1", "Enter Message Text", stat_msg1) as text|null)), 40)
             updateDialog()
 
         if("setmsg2")
-            stat_msg2 = reject_bad_text(trim(copytext(sanitize(input("Line 2", "Enter Message Text", stat_msg2) as text|null), 1, 40)), 40)
+            stat_msg2 = reject_bad_text(trim(strip_html(input("Line 2", "Enter Message Text", stat_msg2) as text|null)), 40)
             updateDialog()
 
         if("messageUSCM")

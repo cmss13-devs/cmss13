@@ -22,7 +22,7 @@
 	return
 
 /obj/item/implant/neurostim/hear(var/msg)
-	msg = sanitize(msg)
+	msg = strip_html(msg)
 	if(findtext(msg,phrase))
 		activate(0)
 
@@ -69,7 +69,7 @@
 
 
 /obj/item/implant/neurostim/implanted(mob/source, mob/user)
-	var/p = sanitize(input(user, "Choose activation phrase:"))
+	var/p = strip_html(input(user, "Choose activation phrase:"))
 	if(!p)
 		return 0
 	phrase = p

@@ -85,7 +85,7 @@
 	set category = "Object"
 	set src in usr
 
-	var/n_name = copytext(sanitize(input(usr, "What would you like to label the paper?", "Paper Labelling", null)  as text), 1, MAX_NAME_LEN)
+	var/n_name = strip_html(input(usr, "What would you like to label the paper?", "Paper Labelling", null)  as text)
 	close_browser(usr, name)
 	if((loc == usr && usr.stat == 0))
 		name = "[(n_name ? text("[n_name]") : "paper")]"

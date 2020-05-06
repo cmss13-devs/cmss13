@@ -57,7 +57,7 @@ proc/NewStutter(phrase,stunned)
 
 		split_phrase[index] = word
 
-	return sanitize(jointext(split_phrase," "))
+	return strip_html(jointext(split_phrase," "))
 
 proc/DazedText(phrase)
 	phrase = html_decode(phrase)

@@ -594,7 +594,7 @@
 	if(txt == "" || !current_squad || !operator)
 		return //Logic
 
-	var/text = copytext(sanitize(txt), 1, MAX_MESSAGE_LEN)
+	var/text = strip_html(txt)
 	var/nametext = ""
 	if(plus_name)
 		nametext = "[usr.name] transmits: "

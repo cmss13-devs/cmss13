@@ -18,6 +18,6 @@
 				spawn(0) R.radio.hear_talk(src, sanitize(message))
 		..()
 	else //dead brains should can always talk in dead chat.
-		message =  trim(copytext(sanitize(message), 1, MAX_MESSAGE_LEN))
+		message =  trim(strip_html(message))
 		return say_dead(message)
 

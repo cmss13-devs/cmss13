@@ -29,7 +29,7 @@ var/global/list/medal_awards = list()
 	var/posthumous = 1
 	var/medal_type = input("What type of medal do you want to award?", "Medal Type", null) in list("distinguished conduct medal", "bronze heart medal","medal of valor", "medal of exceptional heroism")
 	if(!medal_type) return
-	var/citation = copytext(sanitize(input("What should the medal citation read?","Medal Citation", null) as text|null), 1, MAX_PAPER_MESSAGE_LEN)
+	var/citation = strip_html(input("What should the medal citation read?","Medal Citation", null) as text|null, MAX_PAPER_MESSAGE_LEN)
 	if(!citation) return
 	var/recipient_ckey
 	for(var/mob/M in mob_list)

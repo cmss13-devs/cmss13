@@ -42,7 +42,7 @@
 		else if(istype(W, /obj/item/tool/pen))
 			switch(alert("What would you like to alter?",,"Title","Description", "Cancel"))
 				if("Title")
-					var/str = trim(copytext(sanitize(input(usr,"Label text?","Set label","")),1,MAX_NAME_LEN))
+					var/str = trim(strip_html(input(usr,"Label text?","Set label","")))
 					if(!str || !length(str))
 						to_chat(usr, SPAN_WARNING(" Invalid text."))
 						return
@@ -56,7 +56,7 @@
 					else
 						nameset = 1
 				if("Description")
-					var/str = trim(copytext(sanitize(input(usr,"Label text?","Set label","")),1,MAX_MESSAGE_LEN))
+					var/str = trim(strip_html(input(usr,"Label text?","Set label","")))
 					if(!str || !length(str))
 						to_chat(usr, SPAN_DANGER("Invalid text."))
 						return
@@ -150,7 +150,7 @@
 		else if(istype(W, /obj/item/tool/pen))
 			switch(alert("What would you like to alter?",,"Title","Description", "Cancel"))
 				if("Title")
-					var/str = trim(copytext(sanitize(input(usr,"Label text?","Set label","")),1,MAX_NAME_LEN))
+					var/str = trim(strip_html(input(usr,"Label text?","Set label","")))
 					if(!str || !length(str))
 						to_chat(usr, SPAN_WARNING(" Invalid text."))
 						return
@@ -165,7 +165,7 @@
 						nameset = 1
 
 				if("Description")
-					var/str = trim(copytext(sanitize(input(usr,"Label text?","Set label","")),1,MAX_MESSAGE_LEN))
+					var/str = trim(strip_html(input(usr,"Label text?","Set label","")))
 					if(!str || !length(str))
 						to_chat(usr, SPAN_DANGER("Invalid text."))
 						return

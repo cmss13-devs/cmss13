@@ -259,7 +259,7 @@
                 if(world.time < cooldown_message + COOLDOWN_COMM_MESSAGE)
                     to_chat(usr, SPAN_WARNING("Please wait [(COOLDOWN_COMM_MESSAGE + cooldown_message - world.time)*0.1] second\s before making your next announcement."))
                     return FALSE
-                var/input = strip_html(input(usr, "Please write a message to announce to the station crew.", "Priority Announcement", "") as message|null)
+                var/input = stripped_multiline_input(usr, "Please write a message to announce to the station crew.", "Priority Announcement", "") as message|null
                 if(!input || authenticated != 2 || world.time < cooldown_message + COOLDOWN_COMM_MESSAGE || !(usr in view(1, src)))
                     return FALSE
 
@@ -401,11 +401,11 @@
             interact(usr)
 
         if("setmsg1")
-            stat_msg1 = reject_bad_text(trim(copytext(sanitize(input("Line 1", "Enter Message Text", stat_msg1) as text|null), 1, 40)), 40)
+            stat_msg1 = reject_bad_text(trim(strip_html(input("Line 1", "Enter Message Text", stat_msg1) as text|null)), 40)
             updateDialog()
 
         if("setmsg2")
-            stat_msg2 = reject_bad_text(trim(copytext(sanitize(input("Line 2", "Enter Message Text", stat_msg2) as text|null), 1, 40)), 40)
+            stat_msg2 = reject_bad_text(trim(strip_html(input("Line 2", "Enter Message Text", stat_msg2) as text|null)), 40)
             updateDialog()
 
         if("messageUSCM")

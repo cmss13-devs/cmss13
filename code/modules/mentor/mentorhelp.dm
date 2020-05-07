@@ -57,7 +57,7 @@
 
 // Logs the mentorhelp message to admin logs
 /datum/mentorhelp/proc/log_message(var/msg, var/from_key, var/to_key)
-	msg = sanitize(copytext(msg, 1, MAX_MESSAGE_LEN))
+	msg = strip_html(msg)
 	var/log_msg = msg
 	if(from_key && to_key)
 		log_msg = "[from_key] -> [to_key]: [msg]"
@@ -149,7 +149,7 @@
 
 	// Sanitize the message first
 	if(!raw)
-		message = sanitize(copytext(message, 1, MAX_MESSAGE_LEN))
+		message = strip_html(message)
 
 	// Wrap the message with some fluffy colors and links
 	var/wrapped_message = wrap_message(message, sender)

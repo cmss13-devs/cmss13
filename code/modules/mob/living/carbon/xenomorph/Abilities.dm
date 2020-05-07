@@ -144,7 +144,7 @@
 	spawn(2400)
 		to_chat(X, SPAN_NOTICE("You are ready to dig a tunnel again."))
 		X.tunnel_delay = 0
-	var/msg = copytext(sanitize(input("Add a description to the tunnel:", "Tunnel Description") as text|null), 1, MAX_MESSAGE_LEN)
+	var/msg = strip_html(input("Add a description to the tunnel:", "Tunnel Description") as text|null)
 	if(msg)
 		msg = "[msg] ([get_area_name(X.start_dig)])"
 		log_admin("[key_name(X)] has named a new tunnel \"[msg]\".")
@@ -205,7 +205,7 @@
 	if(!X.check_state())
 		return
 
-	var/msg = sanitize(input("Message:", "Psychic Whisper") as text|null)
+	var/msg = strip_html(input("Message:", "Psychic Whisper") as text|null)
 	if(msg)
 		log_say("PsychicWhisper: [key_name(X)]->[M.key] : [msg]")
 		to_chat(M, SPAN_XENO("You hear a strange, alien voice in your head. \"[msg]\""))

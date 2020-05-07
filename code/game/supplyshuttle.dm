@@ -281,7 +281,7 @@ var/list/mechtoys = list(
 /obj/structure/machinery/computer/supply_drop_console/proc/send_to_squad(var/txt = "", var/plus_name = 0, var/only_leader = 0)
 	if(txt == "" || !current_squad) return //Logic
 
-	var/text = copytext(sanitize(txt), 1, MAX_MESSAGE_LEN)
+	var/text = strip_html(txt)
 	var/nametext = ""
 	if(plus_name)
 		nametext = "[usr.name] transmits: "
@@ -637,7 +637,7 @@ var/list/mechtoys = list(
 		if(!istype(P))	return
 
 		var/timeout = world.time + 600
-		var/reason = copytext(sanitize(input(usr,"Reason:","Why do you require this item?","") as null|text),1,MAX_MESSAGE_LEN)
+		var/reason = strip_html(input(usr,"Reason:","Why do you require this item?","") as null|text)
 		if(world.time > timeout)	return
 		if(!reason)	return
 

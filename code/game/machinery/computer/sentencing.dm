@@ -423,7 +423,7 @@
 			var/list/L = incident.witnesses
 			var/W = locate(href_list["choice"])
 
-			var/notes = sanitize((input(usr, "Summarize what the witness said:","Witness Report", html_decode(L[W])) as message), 1, MAX_PAPER_MESSAGE_LEN)
+			var/notes = strip_html((input(usr, "Summarize what the witness said:","Witness Report", html_decode(L[W])) as message), MAX_PAPER_MESSAGE_LEN)
 			if(notes != null)
 				L[W] = notes
 
@@ -432,7 +432,7 @@
 			var/list/L = incident.evidence
 			var/E = locate(href_list["choice"])
 
-			var/notes = sanitize((input(usr, "Describe the relevance of this evidence:","Evidence Report", html_decode(L[E])) as message), 1, MAX_PAPER_MESSAGE_LEN)
+			var/notes = strip_html((input(usr, "Describe the relevance of this evidence:","Evidence Report", html_decode(L[E])) as message), MAX_PAPER_MESSAGE_LEN)
 			if(notes != null)
 				L[E] = notes
 
@@ -441,7 +441,7 @@
 			if(!incident)
 				return
 
-			var/incident_notes = sanitize(input(usr, "Describe the incident here:","Incident Report", html_decode(incident.notes)) as message, 1, MAX_PAPER_MESSAGE_LEN)
+			var/incident_notes = strip_html(input(usr, "Describe the incident here:","Incident Report", html_decode(incident.notes)) as message, 1, MAX_PAPER_MESSAGE_LEN)
 			if(incident_notes != null && incident)
 				incident.notes = incident_notes
 

@@ -25,7 +25,7 @@ var/global/normal_ooc_colour = "#1c52f5"
 		to_chat(src, "Guests may not use OOC.")
 		return
 
-	msg = trim(copytext(sanitize(msg), 1, MAX_MESSAGE_LEN))
+	msg = trim(strip_html(msg))
 	if(!msg)	return
 
 	if(!(prefs.toggles_chat & CHAT_OOC))
@@ -114,7 +114,7 @@ var/global/normal_ooc_colour = "#1c52f5"
 		to_chat(src, "Guests may not use LOOC.")
 		return
 
-	msg = trim(copytext(sanitize(msg), 1, MAX_MESSAGE_LEN))
+	msg = trim(strip_html(msg))
 	if(!msg)	return
 
 	if(!(prefs.toggles_chat & CHAT_LOOC))

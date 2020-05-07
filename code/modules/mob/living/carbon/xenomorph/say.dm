@@ -8,7 +8,7 @@
 			to_chat(src, SPAN_WARNING("You cannot speak in IC (Muted)."))
 			return
 
-	message =  trim(copytext(sanitize(message), 1, MAX_MESSAGE_LEN))
+	message =  trim(strip_html(message))
 
 	if(stat == DEAD)
 		return say_dead(message)

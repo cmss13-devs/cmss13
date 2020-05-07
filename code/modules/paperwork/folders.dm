@@ -50,7 +50,7 @@
 			to_chat(user, SPAN_NOTICE("You put the [W] into \the [src]."))
 			update_icon()
 	else if(istype(W, /obj/item/tool/pen))
-		var/n_name = copytext(sanitize(input(usr, "What would you like to label the folder?", "Folder Labelling", null)  as text), 1, MAX_NAME_LEN)
+		var/n_name = strip_html(input(usr, "What would you like to label the folder?", "Folder Labelling", null)  as text)
 		if((loc == usr && usr.stat == 0))
 			name = "folder[(n_name ? text("- '[n_name]'") : null)]"
 

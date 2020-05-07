@@ -990,7 +990,7 @@ var/const/MAX_SAVE_SLOTS = 10
 				if("metadata")
 					var/new_metadata = input(user, "Enter any information you'd like others to see, such as Roleplay-preferences:", "Game Preference" , metadata)  as message|null
 					if(new_metadata)
-						metadata = sanitize(copytext(new_metadata,1,MAX_MESSAGE_LEN))
+						metadata = strip_html(new_metadata)
 
 				if("hair")
 					if(species == "Human")
@@ -1199,7 +1199,7 @@ var/const/MAX_SAVE_SLOTS = 10
 					if(choice == "Other")
 						var/raw_choice = input(user, "Please enter a religon.")  as text|null
 						if(raw_choice)
-							religion = sanitize(copytext(raw_choice,1,MAX_MESSAGE_LEN))
+							religion = strip_html(raw_choice)
 						return
 					religion = choice
 		else
@@ -1345,10 +1345,10 @@ var/const/MAX_SAVE_SLOTS = 10
 	character.flavor_texts["legs"] = flavor_texts["legs"]
 	character.flavor_texts["feet"] = flavor_texts["feet"]
 
-	character.med_record = med_record
-	character.sec_record = sec_record
-	character.gen_record = gen_record
-	character.exploit_record = exploit_record
+	character.med_record = strip_html(med_record)
+	character.sec_record = strip_html(sec_record)
+	character.gen_record = strip_html(gen_record)
+	character.exploit_record = strip_html(exploit_record)
 
 	character.age = age
 	character.gender = gender

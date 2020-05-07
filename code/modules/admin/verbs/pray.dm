@@ -2,7 +2,7 @@
 	set category = "IC"
 	set name = "Pray"
 
-	msg = copytext(sanitize(msg), 1, MAX_MESSAGE_LEN)
+	msg = strip_html(msg)
 	if(!msg)	return
 
 	if(usr.client)

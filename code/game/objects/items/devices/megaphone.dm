@@ -30,7 +30,7 @@
 		to_chat(user, SPAN_DANGER("\The [src] needs to recharge!"))
 		return
 
-	var/message = copytext(sanitize(input(user, "Shout a message?", "Megaphone", null)  as text),1,MAX_MESSAGE_LEN)
+	var/message = strip_html(input(user, "Shout a message?", "Megaphone", null)  as text)
 	if(!message)
 		return
 	message = capitalize(message)

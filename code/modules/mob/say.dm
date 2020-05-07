@@ -49,7 +49,7 @@
 		usr.chatWarn++
 		return
 
-	message = trim(copytext(sanitize(message), 1, MAX_EMOTE_LEN))
+	message = trim(strip_html(message, MAX_EMOTE_LEN))
 
 	set_typing_indicator(0)
 	if(use_me)

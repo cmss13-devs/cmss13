@@ -24,7 +24,7 @@
 		if(!newname)
 			return
 		else
-			name = ("bookcase ([sanitize(newname)])")
+			name = ("bookcase ([strip_html(newname)])")
 	else
 		..()
 

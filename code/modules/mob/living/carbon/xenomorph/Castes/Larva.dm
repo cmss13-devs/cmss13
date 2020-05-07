@@ -72,14 +72,8 @@
 /mob/living/carbon/Xenomorph/Larva/update_progression()
 	var/progress_amount = 1
 
-	if(world.time < XENO_ROUNDSTART_PROGRESS_TIME_1) //xenos have a progression bonus at roundstart
-		progress_amount = XENO_ROUNDSTART_PROGRESS_AMOUNT
-
-	else if (world.time < XENO_ROUNDSTART_PROGRESS_TIME_2) //gradually decrease to no bonus
-		progress_amount = 1 + (1 - XENO_ROUNDSTART_PROGRESS_AMOUNT) * (world.time-XENO_ROUNDSTART_PROGRESS_TIME_2)/(XENO_ROUNDSTART_PROGRESS_TIME_2-XENO_ROUNDSTART_PROGRESS_TIME_1)
-
-	if(ticker && ticker.mode && ticker.mode.xeno_evo_speed)
-		progress_amount = ticker.mode.xeno_evo_speed
+	if(hive && hive.has_special_structure(XENO_STRUCTURE_EVOPOD))
+		progress_amount += (0.2 * hive.has_special_structure(XENO_STRUCTURE_EVOPOD))
 
 	if(amount_grown < max_grown)
 		amount_grown = min(max_grown, amount_grown + progress_amount)
@@ -92,7 +86,6 @@
 
 //Larva code is just a mess, so let's get it over with
 /mob/living/carbon/Xenomorph/Larva/update_icons()
-
 	var/progress = "" //Naming convention, three different names
 	var/state = "" //Icon convention, two different sprite sets
 

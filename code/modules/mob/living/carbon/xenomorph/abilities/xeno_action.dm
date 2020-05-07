@@ -261,6 +261,26 @@
 			return XA
 	return null
 
+// Helper proc to check if there is anything blocking the way from mob M to the atom A
+// Max distance can be supplied to check some of the way instead of the whole way.
+/proc/check_clear_path_to_target(var/mob/M, var/atom/A, var/smash_windows = TRUE, var/max_distance = 1000)
+	var/list/turf/path = getline2(M, A, include_from_atom = FALSE)
+	var/distance = 0
+	for(var/turf/T in path)
+		if(distance >= max_distance)
+			break
+		distance++
 
+		if(T.density || T.opacity)
+			return FALSE
 
-	
+		for(var/obj/structure/S in T)
+			if(istype(S, /obj/structure/window/framed) && smash_windows)
+				var/obj/structure/window/framed/W = S
+				if(!W.unslashable)
+					W.shatter_window(TRUE)
+
+			if(S.opacity)
+				return FALSE
+
+	return TRUE

@@ -377,7 +377,7 @@
 				ammo.on_hit_mob(L,src)
 
 				// If we are a xeno shooting something
-				if (istype(ammo, /datum/ammo/xeno) && istype(firer, /mob/living/carbon/Xenomorph))
+				if (istype(ammo, /datum/ammo/xeno) && isXeno(firer) && L.stat != DEAD)
 					var/mob/living/carbon/Xenomorph/X = firer
 					if (X.behavior_delegate)
 						var/datum/behavior_delegate/MD = X.behavior_delegate

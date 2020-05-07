@@ -50,7 +50,7 @@
 			INVOKE_ASYNC(src, .proc/upgrade_xeno, (upgrade + 1))
 
 	//Add on any bonuses from evopods after applying upgrade progress
-	if(hive && hive.has_special_structure(XENO_STRUCTURE_EVOPOD) && check_weeds_for_healing())
+	if(hive && hive.has_special_structure(XENO_STRUCTURE_EVOPOD))
 		progress_amount += (0.2 * hive.has_special_structure(XENO_STRUCTURE_EVOPOD))
 
 	if(caste && caste.evolution_allowed && evolution_stored < evolution_threshold && hive.living_xeno_queen && (hive.living_xeno_queen.ovipositor || (ticker.game_start_time + XENO_HIVE_EVOLUTION_FREETIME) >= world.time))

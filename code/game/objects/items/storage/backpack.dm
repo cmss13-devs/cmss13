@@ -338,8 +338,8 @@
 	if(!ishuman(usr))
 		return
 	var/mob/living/carbon/human/H = usr
-
-	if(H.species.name == "Zombie")
+	if(!skillcheck(H, SKILL_SPEC_WEAPONS, SKILL_SPEC_TRAINED) && H.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_SCOUT)
+		to_chat(H, SPAN_WARNING("You don't seem to know how to use [src]..."))
 		return
 
 	if(H.back != src)

@@ -1,7 +1,7 @@
 /datum/action/xeno_action/activable/bombard/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
 
-	if (!X.check_state() || !action_cooldown_check())
+	if (!X.check_state() || !action_cooldown_check() || X.action_busy)
 		return
 
 	if (istype(A, /turf/closed))
@@ -13,15 +13,6 @@
 	if (!can_see(X, A, range))
 		to_chat(X, SPAN_XENODANGER("You cannot see that target!"))
 		return
-
-	for (var/turf/T in getline2(X, A, FALSE))
-		if (T.density)
-			to_chat(X, SPAN_XENODANGER("You cannot shoot through [T]!"))
-			return
-		for (var/obj/O in T)
-			if (O.density && !istype(O, /obj/structure/barricade))
-				to_chat(X, SPAN_XENODANGER("You cannot shoot through [O]!"))
-				return
 
 	if (get_dist(get_turf(X), get_turf(A)) > range)
 		to_chat(X, SPAN_XENODANGER("That is too far away!"))
@@ -104,12 +95,17 @@
 		var/damage = base_damage + stacks*damage_per_stack
 		var/turfs_visited = 0
 		for (var/turf/T in getline2(get_turf(X), A))
-			if (istype(T, /turf/closed))
+			if(T.density || T.opacity)
 				break
 
 			var/should_stop = FALSE
-			for (var/atom/tempA in T)
-				if (tempA.density && tempA != X)
+			for(var/obj/structure/S in T)
+				if(istype(S, /obj/structure/window/framed))
+					var/obj/structure/window/framed/W = S
+					if(!W.unslashable)
+						W.shatter_window(TRUE)
+
+				if(S.opacity)
 					should_stop = TRUE
 					break
 
@@ -316,18 +312,9 @@
 	if(!A || A.layer >= FLY_LAYER || !isturf(X.loc)) 
 		return
 
-	if (!can_see(X, A, 10))
-		to_chat(X, SPAN_XENODANGER("You cannot see that target!"))
+	if(!check_clear_path_to_target(X, A, TRUE, 10))
+		to_chat(X, SPAN_XENOWARNING("Something is in the way!"))
 		return
-
-	for (var/turf/T in getline2(X, A, FALSE))
-		if (T.density)
-			to_chat(X, SPAN_XENODANGER("You cannot shoot through [T]!"))
-			return
-		for (var/obj/O in T)
-			if (O.density && !istype(O, /obj/structure/barricade))
-				to_chat(X, SPAN_XENODANGER("You cannot shoot through [O]!"))
-				return
 
 	if (!check_and_use_plasma_owner())
 		return

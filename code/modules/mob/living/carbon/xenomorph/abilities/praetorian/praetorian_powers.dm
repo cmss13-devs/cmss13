@@ -19,16 +19,30 @@
 	var/turf/T = X.loc
 	var/turf/temp = X.loc
 
-	for (var/x in 0 to 2)
+	for(var/x in 0 to 2)
 		temp = get_step(T, facing)
-		if (!temp || istype(temp, /turf/closed))
+		if(!temp || temp.density || temp.opacity)
 			break
+
+		var/blocked = FALSE
+		for(var/obj/structure/S in temp)
+			if(istype(S, /obj/structure/window/framed))
+				var/obj/structure/window/framed/W = S
+				if(!W.unslashable)
+					W.shatter_window(TRUE)
+
+			if(S.opacity)
+				blocked = TRUE
+				break
+		if(blocked)
+			break
+
 		T = temp
 		target_turfs += T
 
-	for (var/turf/target_turf in target_turfs)
-		for (var/mob/living/carbon/human/H in target_turf)
-			if (!(H in target_mobs))
+	for(var/turf/target_turf in target_turfs)
+		for(var/mob/living/carbon/human/H in target_turf)
+			if(!(H in target_mobs))
 				target_mobs += H
 
 	X.visible_message(SPAN_XENODANGER("[X] slashes its claws through the area in front of it!"), SPAN_XENODANGER("You slash your claws through the area in front of you!"))
@@ -112,7 +126,7 @@
 	if (!check_and_use_plasma_owner())
 		return
 
-	if (!istype(A, /mob/living/carbon/human))
+	if (!ishuman(A))
 		to_chat(X, SPAN_XENODANGER("You must target a human!"))
 		return
 
@@ -162,13 +176,13 @@
 	if(!A || A.layer >= FLY_LAYER || !isturf(X.loc)) 
 		return
 
-	if (!action_cooldown_check())
+	if(!action_cooldown_check() || X.action_busy)
 		return
 
-	if (!X.check_state())
+	if(!X.check_state())
 		return
 
-	if (!check_and_use_plasma_owner())
+	if(!check_and_use_plasma_owner())
 		return
 
 	X.visible_message(SPAN_XENODANGER("[X] rears up and readies a massive stomp!"), SPAN_XENODANGER("You rear up and ready a massive stomp!"))
@@ -180,10 +194,19 @@
 	var/facing = get_dir(X, A)
 	var/turf/T = X.loc
 	var/turf/temp = X.loc
-	for (var/x in 0 to max_distance)
+	for(var/x in 0 to max_distance)
 		temp = get_step(T, facing)
-		if (!temp)
+		if(!temp || temp.density || temp.opacity)
 			break
+
+		var/blocked = FALSE
+		for(var/obj/structure/S in temp)
+			if(S.opacity)
+				blocked = TRUE
+				break
+		if(blocked)
+			break
+
 		T = temp
 		turflist += T
 		facing = get_dir(T, A)
@@ -430,7 +453,7 @@
 	if (!istype(X) || !X.check_state())
 		return
 
-	if (!istype(A, /mob/living/carbon/human))
+	if (!ishuman(A))
 		to_chat(X, SPAN_XENODANGER("You must target a human!"))
 		apply_cooldown_override(click_miss_cooldown)
 		return
@@ -501,7 +524,7 @@
 
 /datum/action/xeno_action/activable/prae_acid_ball/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
-	if (!X.check_state())
+	if (!X.check_state() || X.action_busy)
 		return
 
 	if (!action_cooldown_check() && check_and_use_plasma_owner())

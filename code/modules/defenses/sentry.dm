@@ -352,6 +352,7 @@
 	immobile = TRUE
 	turned_on = TRUE
 	icon_state = "sentry_on"
+	static = TRUE
 
 /obj/structure/machinery/defenses/sentry/premade/power_on()
 	return

@@ -108,8 +108,22 @@
 
 	for (var/x in 0 to 3)
 		temp = get_step(T, facing)
-		if (!temp || istype(temp, /turf/closed))
+		if(!temp || temp.density || temp.opacity)
 			break
+
+		var/blocked = FALSE
+		for(var/obj/structure/S in temp)
+			if(istype(S, /obj/structure/window/framed))
+				var/obj/structure/window/framed/W = S
+				if(!W.unslashable)
+					W.shatter_window(TRUE)
+
+			if(S.opacity)
+				blocked = TRUE
+				break
+		if(blocked)
+			break
+
 		T = temp
 		target_turfs += T
 
@@ -150,7 +164,7 @@
 	if (!X.check_state())
 		return
 	
-	if (!istype(A, /mob/living/carbon/human))
+	if (!ishuman(A))
 		to_chat(X, SPAN_XENOWARNING("You must target a human!"))
 		return
 
@@ -214,7 +228,7 @@
 	if (!X.check_state())
 		return
 	
-	if (!istype(A, /mob/living/carbon/human))
+	if (!ishuman(A))
 		to_chat(X, SPAN_XENOWARNING("You must target a human!"))
 		return
 
@@ -274,10 +288,10 @@
 /datum/action/xeno_action/activable/eviscerate/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
 
-	if (!action_cooldown_check())
+	if(!action_cooldown_check() || X.action_busy)
 		return
 
-	if (!X.check_state())
+	if(!X.check_state())
 		return
 
 	var/damage = base_damage
@@ -312,6 +326,9 @@
 
 		for (var/mob/living/carbon/human/H in orange(X, range))
 			if (H.stat == DEAD)
+				continue
+
+			if(!check_clear_path_to_target(X, H))
 				continue
 
 			if (range > 1)

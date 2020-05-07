@@ -48,7 +48,7 @@
 					return
 			if(isXeno(M))
 				return
-			if(huggers_to_grow >= huggers_to_grow_max)
+			if(huggers_to_grow >= huggers_to_grow_max || stored_huggers >= huggers_to_grow_max)
 				to_chat(user, SPAN_XENOWARNING("\The [src] is already full! Using this one now would be a waste..."))
 				return
 			if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_GENERIC))

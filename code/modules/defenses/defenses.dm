@@ -17,6 +17,7 @@
 	var/defense_icon = "uac_sentry"
 	var/handheld_type = /obj/item/defenses/handheld
 	var/disassemble_time = 20
+	var/static = FALSE
 
 /obj/structure/machinery/defenses/New(var/loc, var/faction)
 	..(loc)
@@ -77,6 +78,10 @@
 
 		if(health < health_max)
 			to_chat(user, SPAN_WARNING("[src] is too damaged to disassemble. Repair it with a welder first."))
+			return
+
+		if(static)
+			to_chat(user, SPAN_WARNING("[src] is not meant to be removed."))
 			return
 
 		user.visible_message(SPAN_NOTICE("[user] begins disassembling [src]."), SPAN_NOTICE("You begin disassembling [src]."))

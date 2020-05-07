@@ -78,7 +78,7 @@
 		return
 
 	for(var/mob/living/carbon/Xenomorph/Larva/L in range(2, src))
-		if(!L.ckey)
+		if(!L.ckey && !L.disposed)
 			visible_message(SPAN_XENODANGER("[L] quickly dives into the pool."))
 			linked_hive.stored_larva++
 			linked_hive.hive_ui.update_pooled_larva()

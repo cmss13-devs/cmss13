@@ -406,7 +406,7 @@
 
 /obj/effect/xenomorph/acid_damage_delay/boiler_landmine/deal_damage()
 	for (var/obj/structure/barricade/B in loc)
-		B.take_damage(damage*0.6)
+		B.take_acid_damage(damage*0.7)
 
 	return ..()
 

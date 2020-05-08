@@ -20,7 +20,7 @@
 	R.mutation_type = RAVAGER_HEDGEHOG
 	
 	R.speed_modifier += XENO_SPEED_MOD_LARGE
-	R.armor_integrity_modifier += 20 // Take drastically reduced armor damage
+	R.armor_modifier += XENO_ARMOR_MOD_SMALL
 
 	apply_behavior_holder(R)
 

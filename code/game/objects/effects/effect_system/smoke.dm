@@ -254,7 +254,7 @@
 /obj/effect/particle_effect/smoke/xeno_burn/apply_smoke_effect(turf/T)
 	..()
 	for(var/obj/structure/barricade/B in T)
-		B.acid_smoke_damage(src)
+		B.take_acid_damage(XENO_ACID_BARRICADE_DAMAGE)
 
 	for(var/obj/vehicle/multitile/R in T)
 		R.take_damage_type(20, "acid")

@@ -19,6 +19,7 @@
 
 	var/mob/living/carbon/Xenomorph/Ravager/R = MS.xeno
 	R.mutation_type = RAVAGER_BERSERKER
+	R.health_modifier += XENO_HEALTH_MOD_SMALL
 	
 	mutator_update_actions(R)
 	MS.recalculate_actions(description, flavor_description)

@@ -56,11 +56,11 @@
 	if(!X.fortify)
 		to_chat(X, SPAN_XENOWARNING("You tuck yourself into a defensive stance."))
 		if(X.spiked)
-			X.armor_deflection_buff += 20
-			X.armor_explosive_buff += 40
-			X.ability_speed_modifier += 2.5
+			X.armor_deflection_buff += 25
+			X.armor_explosive_buff += 60
+			X.ability_speed_modifier += 3
 		else
-			X.armor_deflection_buff += 30
+			X.armor_deflection_buff += 35
 			X.armor_explosive_buff += 60
 			X.frozen = TRUE
 			X.anchored = TRUE
@@ -72,11 +72,11 @@
 		X.frozen = FALSE
 		X.anchored = FALSE
 		if(X.spiked)
-			X.armor_deflection_buff -= 20
+			X.armor_deflection_buff -= 25
 			X.armor_explosive_buff -= 40
-			X.ability_speed_modifier -= 2.5
+			X.ability_speed_modifier -= 3
 		else
-			X.armor_deflection_buff -= 30
+			X.armor_deflection_buff -= 35
 			X.armor_explosive_buff -= 60	
 		X.update_canmove()
 		X.update_icons()

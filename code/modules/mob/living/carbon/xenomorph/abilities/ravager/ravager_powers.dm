@@ -161,7 +161,7 @@
 	if (!action_cooldown_check())
 		return
 
-	if (!X.check_state())
+	if (!X.check_state() || X.action_busy)
 		return
 	
 	if (!ishuman(A))
@@ -190,6 +190,7 @@
 
 	H.targeted_by = X
 	H.target_locked = image("icon" = 'icons/effects/Targeted.dmi', "icon_state" = "locking")
+	new /datum/effects/xeno_slow(H, X, null, null, 20)
 	H.update_targeted()
 
 	if (!do_after(X, windup_duration, INTERRUPT_ALL & ~INTERRUPT_MOVED, BUSY_ICON_HOSTILE))

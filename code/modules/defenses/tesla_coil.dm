@@ -10,6 +10,8 @@
 	var/last_fired = 0
 	handheld_type = /obj/item/defenses/handheld/tesla_coil
 	disassemble_time = 10
+	health = 150
+	health_max = 150
 
 /obj/structure/machinery/defenses/tesla_coil/Initialize()
 	. = ..()
@@ -69,7 +71,7 @@
 
 		targets += M
 	
-	for(var/obj/structure/machinery/defenses/D in oview(round(TESLA_COIL_RANGE * 0.5), src))
+	for(var/obj/structure/machinery/defenses/D in oview(TESLA_COIL_RANGE, src))
 		if(D.turned_on)
 			targets += D
 

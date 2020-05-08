@@ -87,7 +87,7 @@
 
 	// list of atoms that we cannot apply a DoT effect to
 	var/list/dot_cooldown_atoms = list()
-	var/dot_cooldown_duration = 150 // every 12 seconds
+	var/dot_cooldown_duration = 120 // every 12 seconds
 
 /datum/behavior_delegate/spitter_base/ranged_attack_additional_effects_target(atom/A)
 	if (istype(A, /mob/living/carbon/human))

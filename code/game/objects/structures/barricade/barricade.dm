@@ -315,6 +315,9 @@ obj/structure/barricade/proc/take_damage(var/damage)
 
 	update_health(damage)
 
+/obj/structure/barricade/proc/take_acid_damage(var/damage)
+	take_damage(damage * burn_multiplier)
+
 /obj/structure/barricade/update_health(damage, nomessage)
 	health -= damage
 	health = Clamp(health, 0, maxhealth)
@@ -335,9 +338,6 @@ obj/structure/barricade/proc/take_damage(var/damage)
 		if(25 to 50) damage_state = BARRICADE_DMG_MODERATE
 		if(50 to 75) damage_state = BARRICADE_DMG_SLIGHT
 		if(75 to INFINITY) damage_state = BARRICADE_DMG_NONE
-
-/obj/structure/barricade/proc/acid_smoke_damage(var/obj/effect/particle_effect/smoke/S)
-	take_damage(XENO_ACID_BARRICADE_DAMAGE * burn_multiplier)
 
 /obj/structure/barricade/verb/rotate()
 	set name = "Rotate Barricade Counter-Clockwise"

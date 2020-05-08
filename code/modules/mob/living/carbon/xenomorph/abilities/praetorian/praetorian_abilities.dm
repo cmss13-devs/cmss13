@@ -201,7 +201,7 @@
 	plasma_cost = 10
 
 	// Config options
-	distance = 5				
+	distance = 4			
 	knockdown = FALSE				
 	slash = FALSE					
 	freeze_self = FALSE				

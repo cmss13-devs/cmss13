@@ -21,7 +21,7 @@
 	windup_duration = 12
 	windup_interruptable = FALSE
 	should_destroy_objects = TRUE
-	throw_speed = SPEED_AVERAGE
+	throw_speed = SPEED_FAST
 	tracks_target = FALSE
 
 

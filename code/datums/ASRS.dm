@@ -134,14 +134,12 @@
 /datum/supply_packs/metal50/asrs/
 	group = "Utility"
 	buyable = 0
+	cost = ASRS_LOW_WEIGHT
 
 /datum/supply_packs/plas50/asrs/
 	group = "Utility"
 	buyable = 0
-
-/datum/supply_packs/m56d_hmg/asrs/
-	group = "Utility"
-	buyable = 0
+	cost = ASRS_LOW_WEIGHT
 
 //===================================
 // Mortar ammo

@@ -75,7 +75,7 @@
 	var/coord_row_offset = 26
 	return "EAST[coord_col]:[coord_col_offset],NORTH[coord_row]:[coord_row_offset]"
 
-/datum/custom_hud/proc/special_behaviour(var/datum/hud/element)
+/datum/custom_hud/proc/special_behaviour(var/datum/hud/element, var/ui_alpha = 255, var/ui_color = "#ffffff")
 	return
 
 /datum/custom_hud/old
@@ -105,12 +105,15 @@
 	var/coord_row_offset = -8
 	return "EAST[coord_col]:[coord_col_offset],NORTH[coord_row]:[coord_row_offset]"
 
-/datum/custom_hud/dark/special_behaviour(var/datum/hud/element)
+/datum/custom_hud/dark/special_behaviour(var/datum/hud/element, var/ui_alpha = 255, var/ui_color = "#ffffff")
 	element.frame_hud = new /obj/screen()
 	element.frame_hud.icon = ui_frame_icon
 	element.frame_hud.icon_state = "dark"
 	element.frame_hud.screen_loc = UI_FRAME_LOC
 	element.frame_hud.layer = ABOVE_HUD_LAYER
+	element.frame_hud.mouse_opacity = 0
+	element.frame_hud.alpha = ui_alpha
+	element.frame_hud.color = ui_color
 	element.static_inventory += element.frame_hud
 
 	element.pulse_line = new /obj/screen()
@@ -118,6 +121,7 @@
 	element.pulse_line.icon_state = "pulse_good"
 	element.pulse_line.screen_loc = UI_FRAME_LOC
 	element.pulse_line.layer = ABOVE_HUD_LAYER
+	element.pulse_line.mouse_opacity = 0
 	element.static_inventory += element.pulse_line
 
 /datum/custom_hud/alien

@@ -66,14 +66,14 @@
 	draw_toggle_inv(ui_datum, ui_alpha, ui_color)
 
 	//Drawing frame HUD for specific HYD styles
-	ui_datum.special_behaviour(src)
+	ui_datum.special_behaviour(src, ui_alpha, ui_color)
 
 	// Draw the attack intent dialogue.
 	draw_act_intent(ui_datum, ui_alpha)
 	draw_mov_intent(ui_datum, ui_alpha, ui_color)
 	draw_resist(ui_datum, ui_alpha, ui_color)
 	if(!iszombie(owner))
-		draw_drop(ui_datum, ui_alpha)
+		draw_drop(ui_datum, ui_alpha, ui_color)
 		draw_throw(ui_datum, ui_alpha, ui_color)
 	draw_pull(ui_datum)
 	draw_right_hand(ui_datum, ui_alpha, ui_color)

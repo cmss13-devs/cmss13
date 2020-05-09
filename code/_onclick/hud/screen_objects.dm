@@ -535,6 +535,7 @@
 	name = "health"
 	icon_state = "health0"
 	icon = 'icons/mob/hud/human_midnight.dmi'
+	mouse_opacity = 0
 
 /obj/screen/pull
 	name = "stop pulling"

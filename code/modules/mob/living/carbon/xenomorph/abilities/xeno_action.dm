@@ -274,6 +274,10 @@
 		if(T.density || T.opacity)
 			return FALSE
 
+		// H'yup, it's the snowflake check for dropships
+		if(istype(T, /turf/closed/shuttle/))
+			return FALSE
+
 		for(var/obj/structure/S in T)
 			if(istype(S, /obj/structure/window/framed) && smash_windows)
 				var/obj/structure/window/framed/W = S

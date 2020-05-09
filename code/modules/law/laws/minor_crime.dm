@@ -15,7 +15,7 @@
 
 /datum/law/minor_law/insubordination
 	name = "Insubordination"
-	desc = "Failing to follow a lawful order from a superior which is not personally directed at you."
+	desc = "Failing to follow a lawful order from a superior which is not personally directed at you. Additionally, disrespecting someone of higher rank or position that is not an officer."
 	brig_time = 7.5
 
 /datum/law/minor_law/interference

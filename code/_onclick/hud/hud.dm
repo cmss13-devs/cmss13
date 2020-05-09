@@ -248,12 +248,14 @@
 	static_inventory += using
 	move_intent = using
 
-/datum/hud/proc/draw_drop(var/datum/custom_hud/ui_datum, var/ui_alpha)
+/datum/hud/proc/draw_drop(var/datum/custom_hud/ui_datum, var/ui_alpha, var/ui_color)
 	var/obj/screen/using = new /obj/screen/drop()
 	using.icon = ui_datum.ui_style_icon
 	using.screen_loc = ui_datum.ui_drop_throw
 	if(ui_alpha)
 		using.alpha = ui_alpha
+	if(ui_color)
+		using.color = ui_color
 	static_inventory += using
 
 /datum/hud/proc/draw_throw(var/datum/custom_hud/ui_datum, var/ui_alpha, var/ui_color)

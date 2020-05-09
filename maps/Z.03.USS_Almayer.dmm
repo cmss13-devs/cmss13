@@ -41216,8 +41216,8 @@
 /turf/open/floor/plating,
 /area/almayer/shipboard/chief_mp_office)
 "ffI" = (
-/obj/structure/machinery/bodyscanner,
 /obj/structure/machinery/light/small,
+/obj/structure/machinery/body_scanconsole,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side";
 	tag = "icon-sterile"
@@ -52370,6 +52370,15 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/carpet,
 /area/almayer/command/cichallway)
+"sTM" = (
+/obj/structure/table/almayer,
+/obj/structure/machinery/faxmachine,
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "red";
+	tag = "icon-red (EAST)"
+	},
+/area/almayer/shipboard/brig)
 "sUj" = (
 /obj/structure/table/almayer,
 /obj/item/storage/donut_box,
@@ -55275,16 +55284,11 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/repair_bay)
 "wDb" = (
-/obj/structure/rack,
-/obj/item/storage/box/gloves{
-	pixel_x = 3;
-	pixel_y = 3
-	},
-/obj/item/storage/box/masks,
 /obj/structure/machinery/light/small{
 	dir = 1;
 	tag = "icon-bulb1 (NORTH)"
 	},
+/obj/structure/machinery/cm_vending/sorted/medical/blood,
 /turf/open/floor/almayer{
 	dir = 9;
 	icon_state = "sterile_green_side";
@@ -55894,7 +55898,7 @@
 /turf/open/floor/almayer,
 /area/almayer/shipboard/starboard_point_defense)
 "xkY" = (
-/obj/structure/machinery/cm_vending/sorted/medical/blood,
+/obj/structure/machinery/bodyscanner,
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_corner";
@@ -89109,7 +89113,7 @@ bpb
 bpb
 bpb
 yfJ
-bpb
+sTM
 khB
 mCQ
 wCs

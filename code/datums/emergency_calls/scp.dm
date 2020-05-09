@@ -35,17 +35,17 @@
 		to_chat(H, SPAN_WARNING(FONT_SIZE_BIG("You are a Weston-Yamada SCP PMC squad leader!")))
 		arm_equipment(H, "Weston-Yamada SCP PMC (Leader)", TRUE, TRUE)
 	else if(medics < max_medics)
+		medics++
 		to_chat(H, SPAN_WARNING(FONT_SIZE_BIG("You are a Weston-Yamada SCP PMC medic!")))
 		arm_equipment(H, "Weston-Yamada SCP PMC (Medic)", TRUE, TRUE)
-		medics++
 	else if(heavies < max_heavies*ERT_PMC_GUNNER_FRACTION)
+		heavies++
 		to_chat(H, SPAN_WARNING(FONT_SIZE_BIG("You are a Weston-Yamada SCP PMC heavy gunner!")))
 		arm_equipment(H, "Weston-Yamada SCP PMC (Gunner)", TRUE, TRUE)
-		heavies++
 	else if(heavies < max_heavies)
+		heavies++
 		to_chat(H, SPAN_WARNING(FONT_SIZE_BIG("You are a Weston-Yamada SCP PMC sniper!")))
 		arm_equipment(H, "Weston-Yamada SCP PMC (Sniper)", TRUE, TRUE)
-		heavies++
 	else
 		to_chat(H, SPAN_WARNING(FONT_SIZE_BIG("You are a Weston-Yamada SCP PMC mercenary!")))
 		arm_equipment(H, "Weston-Yamada SCP PMC (Standard)", TRUE, TRUE)

@@ -64,13 +64,13 @@
 		arm_equipment(H, "UPP Soldier (Leader)", TRUE, TRUE)
 		to_chat(H, SPAN_WARNING(FONT_SIZE_BIG("You are an officer of the Union of Progressive People, a powerful socialist state that rivals the United Americas!")))
 	else if(medics < max_medics)
+		medics++
 		to_chat(H, SPAN_WARNING(FONT_SIZE_BIG("You are a medic of the Union of Progressive People, a powerful socialist state that rivals the United Americas!")))
 		arm_equipment(H, "UPP Soldier (Medic)", TRUE, TRUE)
-		medics++
 	else if(heavies < max_heavies)
+		heavies++
 		to_chat(H, SPAN_WARNING(FONT_SIZE_BIG("You are a soldier of the Union of Progressive People, a powerful socialist state that rivals the United Americas!")))
 		arm_equipment(H, "UPP Soldier (Heavy)", TRUE, TRUE)
-		heavies++
 	else
 		to_chat(H, SPAN_WARNING(FONT_SIZE_BIG("You are a soldier of the Union of Progressive People, a powerful socialist state that rivals the United Americas!")))
 		arm_equipment(H, "UPP Soldier (Standard)", TRUE, TRUE)

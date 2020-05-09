@@ -28,6 +28,7 @@
 		arm_equipment(mob, "Dust Raider Squad Leader", TRUE, TRUE)
 		to_chat(mob, "<font size='3'>\red You are a Squad leader in the USCM, your squad is here to assist in the defence of the [map_tag]. </B>")
 	else if (heavies < max_heavies)
+		heavies++
 		if(prob(40))
 			arm_equipment(mob, "Dust Raider Smartgunner", TRUE, TRUE)
 			to_chat(mob, "<font size='3'>\red You are a smartgunner in the USCM, your squad is here to assist in the defence of the [map_tag]. Listen to [leader.name] they are your (acting) squad leader. </B>")
@@ -37,11 +38,10 @@
 		else
 			arm_equipment(mob, "Dust Raider Engineer", TRUE, TRUE)
 			to_chat(mob, "<font size='3'>\red You are an engineer in the USCM, your squad is here to assist in the defence of the [map_tag]. Listen to [leader.name] they are your (acting) squad leader. </B>")
-		heavies ++
 	else if (medics < max_medics)
+		medics++
 		arm_equipment(mob, "Dust Raider Medic", TRUE, TRUE)
 		to_chat(mob, "<font size='3'>\red You are a medic in the USCM, your squad is here to assist in the defence of the [map_tag]. Listen to [leader.name] they are your (acting) squad leader. </B>")
-		medics ++
 	else
 		arm_equipment(mob,"Dust Raider Private", TRUE, TRUE)
 		to_chat(mob, "<font size='3'>\red You are a private in the USCM, your squad is here to assist in the defence of [map_tag]. Listen to [leader.name] they are your (acting) squad leader. </B>")

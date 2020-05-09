@@ -135,7 +135,10 @@
 	if(damage >= EXPLOSION_THRESHOLD_GIB)
 		var/oldloc = loc
 		gib(source)
-		create_shrapnel(oldloc, rand(16, 24), , , /datum/ammo/bullet/shrapnel/light/human, source, source_mob)
+		create_shrapnel(oldloc, rand(5, 9), direction, 45, /datum/ammo/bullet/shrapnel/light/human, source, source_mob)
+		sleep(1)
+		create_shrapnel(oldloc, rand(5, 9), direction, 30, /datum/ammo/bullet/shrapnel/light/human/var1, source, source_mob)
+		create_shrapnel(oldloc, rand(5, 9), direction, 45, /datum/ammo/bullet/shrapnel/light/human/var2, source, source_mob)
 		return
 
 	if(!istype(wear_ear, /obj/item/clothing/ears/earmuffs))

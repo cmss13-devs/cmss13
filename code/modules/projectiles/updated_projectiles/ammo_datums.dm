@@ -1967,6 +1967,12 @@
 	shrapnel_chance = 50
 	shrapnel_type = /obj/item/shard/shrapnel/bone_chips/human
 
+/datum/ammo/bullet/shrapnel/light/human/var1 // sprite variants
+	icon_state = "shrapnel_human1"
+
+/datum/ammo/bullet/shrapnel/light/human/var2 // sprite variants
+	icon_state = "shrapnel_human2"
+
 /datum/ammo/bullet/shrapnel/light/xeno
 	name = "alien bone fragments"
 	icon_state = "shrapnel_xeno"

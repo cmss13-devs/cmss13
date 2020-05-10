@@ -22,17 +22,18 @@
 
 	var/mob/living/carbon/human/H = new(spawn_loc)
 	H.key = M.key
-	if(H.client) H.client.change_view(world.view)
+	if(H.client) 
+		H.client.change_view(world.view)
 
 	sleep(5)
 	if (medics < max_medics)
+		medics++
 		arm_equipment(H, "USCM (Cryo) Squad Medic", TRUE, TRUE)
 		to_chat(H, "<font size='3'>\red You are a medic in the USCM, you are here to assist in the defence of the [map_tag]. Listen to the chain of command. </B>")
-		medics ++
 	else if (heavies < max_heavies)
+		heavies++
 		arm_equipment(H, "USCM (Cryo) Squad Engineer", TRUE, TRUE)
 		to_chat(H, "<font size='3'>\red You are an engineer in the USCM, you are here to assist in the defence of the [map_tag]. Listen to the chain of command. </B>")
-		heavies ++
 	else
 		arm_equipment(H, "USCM (Cryo) Squad Marine (PFC)", TRUE, TRUE)
 		to_chat(H, "<font size='3'>\red You are a private in the USCM, you are here to assist in the defence of the [map_tag]. Listen to the chain of command. </B>")

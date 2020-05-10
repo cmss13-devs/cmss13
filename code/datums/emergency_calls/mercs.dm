@@ -45,8 +45,8 @@
 		to_chat(H, SPAN_WARNING(FONT_SIZE_BIG("You are the Freelancer leader!")))
 
 	else if(medics < max_medics)
-		arm_equipment(H, "Freelancer (Medic)", TRUE, TRUE)
 		medics++
+		arm_equipment(H, "Freelancer (Medic)", TRUE, TRUE)
 		to_chat(H, SPAN_WARNING(FONT_SIZE_BIG("You are a Freelancer medic!")))
 	else
 		arm_equipment(H, "Freelancer (Standard)", TRUE, TRUE)

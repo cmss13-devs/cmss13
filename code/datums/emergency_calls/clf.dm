@@ -41,13 +41,13 @@
 	ticker.mode.traitors += H.mind
 
 	if(!leader)       //First one spawned is always the leader.
+		leader = H
 		to_chat(H, SPAN_WARNING(FONT_SIZE_BIG("You are a leader of the local resistance group, the Colonial Liberation Front!")))
 		arm_equipment(H, "CLF Fighter (Leader)", TRUE, TRUE)
-		leader = H
 	else if(medics < max_medics)
+		medics++
 		to_chat(H, SPAN_WARNING(FONT_SIZE_BIG("You are a medic of the local resistance group, the Colonial Liberation Front!")))
 		arm_equipment(H, "CLF Fighter (Medic)", TRUE, TRUE)
-		medics++
 	else
 		to_chat(H, SPAN_WARNING(FONT_SIZE_BIG("You are a member of the local resistance group, the Colonial Liberation Front!")))
 		arm_equipment(H, "CLF Fighter (Standard)", TRUE, TRUE)

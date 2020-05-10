@@ -38,17 +38,17 @@
 		to_chat(H, "<B> Follow any orders directly from Weston-Yamada!</b>")
 		arm_equipment(H, "Weston-Yamada Deathsquad Leader", TRUE, TRUE)
 	else if(medics < max_medics)
+		medics++
 		to_chat(H, SPAN_WARNING(FONT_SIZE_BIG("You are a Deathsquad Medic!")))
 		to_chat(H, "<B> You must clear out any traces of the infestation and its survivors.</b>")
 		to_chat(H, "<B> Follow any orders directly from Weston-Yamada!</b>")
 		arm_equipment(H, "Weston-Yamada Deathsquad Medic", TRUE, TRUE)
-		medics++
 	else if(heavies < max_heavies)
+		heavies++
 		to_chat(H, SPAN_WARNING(FONT_SIZE_BIG("You are a Deathsquad Terminator!")))
 		to_chat(H, "<B> You must clear out any traces of the infestation and its survivors.</b>")
 		to_chat(H, "<B> Follow any orders directly from Weston-Yamada!</b>")
 		arm_equipment(H, "Weston-Yamada Deathsquad Terminator", TRUE, TRUE)
-		heavies++
 	else
 		to_chat(H, SPAN_WARNING(FONT_SIZE_BIG("You are a Deathsquad Commando!")))
 		to_chat(H, "<B> You must clear out any traces of the infestation and its survivors.</b>")

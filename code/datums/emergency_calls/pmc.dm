@@ -35,17 +35,17 @@
 		to_chat(mob, SPAN_WARNING(FONT_SIZE_BIG("You are a Weston-Yamada squad leader!")))
 		arm_equipment(mob, "Weston-Yamada PMC (Leader)", TRUE, TRUE)
 	else if(medics < max_medics)
+		medics++
 		to_chat(mob, SPAN_WARNING(FONT_SIZE_BIG("You are a Weston-Yamada medic!")))
 		arm_equipment(mob, "Weston-Yamada PMC (Medic)", TRUE, TRUE)
-		medics++
 	else if(heavies < max_heavies*ERT_PMC_GUNNER_FRACTION)
+		heavies++
 		to_chat(mob, SPAN_WARNING(FONT_SIZE_BIG("You are a Weston-Yamada heavy gunner!")))
 		arm_equipment(mob, "Weston-Yamada PMC (Gunner)", TRUE, TRUE)
-		heavies++
 	else if(heavies < max_heavies)
+		heavies++
 		to_chat(mob, SPAN_WARNING(FONT_SIZE_BIG("You are a Weston-Yamada sniper!")))
 		arm_equipment(mob, "Weston-Yamada PMC (Sniper)", TRUE, TRUE)
-		heavies++
 	else
 		to_chat(mob, SPAN_WARNING(FONT_SIZE_BIG("You are a Weston-Yamada mercenary!")))
 		arm_equipment(mob, "Weston-Yamada PMC (Standard)", TRUE, TRUE)
@@ -113,13 +113,13 @@
 		to_chat(H, SPAN_WARNING(FONT_SIZE_BIG("You are a Weston-Yamada squad leader!")))
 		arm_equipment(H, "Weston-Yamada PMC (Lead Investigator)", TRUE, TRUE)
 	else if(medics < max_medics)
+		medics++
 		to_chat(H, SPAN_WARNING(FONT_SIZE_BIG("You are a Weston-Yamada medical investigator!")))
 		arm_equipment(H, "Weston-Yamada PMC (Medical Investigator)", TRUE, TRUE)
-		medics++
 	else if(heavies < max_heavies)
+		heavies++
 		to_chat(H, SPAN_WARNING(FONT_SIZE_BIG("You are a Weston-Yamada heavy gunner!")))
 		arm_equipment(H, "Weston-Yamada PMC (Gunner)", TRUE, TRUE)
-		heavies++
 	else
 		to_chat(H, SPAN_WARNING(FONT_SIZE_BIG("You are a Weston-Yamada detainer!")))
 		arm_equipment(H, "Weston-Yamada PMC (Detainer)", TRUE, TRUE)

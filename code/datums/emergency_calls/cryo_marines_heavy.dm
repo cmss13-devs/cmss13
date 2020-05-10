@@ -32,6 +32,7 @@
 		arm_equipment(H, "USCM Cryo Squad Leader (Equipped)", TRUE, TRUE)
 		to_chat(H, SPAN_WARNING("You are a Squad leader in the USCM, your squad is here to assist in the defence of the [map_tag]. </B>"))
 	else if (heavies < max_heavies)
+		heavies++
 		if(prob(40))
 			arm_equipment(H, "USCM Cryo Smartgunner (Equipped)", TRUE, TRUE)
 			to_chat(H, SPAN_WARNING("You are a smartgunner in the USCM, your squad is here to assist in the defence of the [map_tag]. Listen to [leader.name] they are your (acting) squad leader. </B>"))
@@ -41,11 +42,10 @@
 		else
 			arm_equipment(H, "USCM Cryo Engineer (Equipped)", TRUE, TRUE)
 			to_chat(H, SPAN_WARNING("You are an engineer in the USCM, your squad is here to assist in the defence of the [map_tag]. Listen to [leader.name] they are your (acting) squad leader. </B>"))
-		heavies ++
 	else if (medics < max_medics)
+		medics++
 		arm_equipment(H, "USCM Cryo Medic (Equipped)", TRUE, TRUE)
 		to_chat(H, SPAN_WARNING("You are a medic in the USCM, your squad is here to assist in the defence of the [map_tag]. Listen to [leader.name] they are your (acting) squad leader. </B>"))
-		medics ++
 	else
 		arm_equipment(H,"USCM Cryo Private (Equipped)", TRUE, TRUE)
 		to_chat(H, SPAN_WARNING("You are a private in the USCM, your squad is here to assist in the defence of [map_tag]. Listen to [leader.name] they are your (acting) squad leader. </B>"))

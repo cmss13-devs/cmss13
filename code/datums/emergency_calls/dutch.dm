@@ -26,8 +26,8 @@
 		leader = H
 		arm_equipment(H, "Dutch's Dozen - Arnold", TRUE, TRUE)
 	else if(heavies < max_heavies)
-		arm_equipment(H, "Dutch's Dozen - Minigun", TRUE, TRUE)
 		heavies++
+		arm_equipment(H, "Dutch's Dozen - Minigun", TRUE, TRUE)
 	else
 		arm_equipment(H, "Dutch's Dozen - Soldier", TRUE, TRUE)
 	sleep(10)

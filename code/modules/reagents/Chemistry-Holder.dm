@@ -12,6 +12,8 @@ var/const/INGEST = 2
 	var/atom/my_atom = null
 	var/trigger_volatiles = FALSE
 	var/exploded = FALSE
+	var/source_mob
+
 	var/max_ex_power = 175
 	var/base_ex_falloff = 75
 	var/max_ex_shards = 32
@@ -171,9 +173,9 @@ var/const/INGEST = 2
 	QDEL_IN(B, SECONDS_10)
 	return amount
 
-/datum/reagents/proc/set_source_mob(var/source_mob)
+/datum/reagents/proc/set_source_mob(var/new_source_mob)
 	for(var/datum/reagent/R in reagent_list)
-		R.last_source_mob = source_mob
+		R.last_source_mob = new_source_mob
 
 /datum/reagents/proc/copy_to(var/obj/target, var/amount=1, var/multiplier=1, var/preserve_data=1, var/safety = 0)
 	if(!target)
@@ -604,12 +606,12 @@ var/const/INGEST = 2
 	
 	var/shards = 4 // Because explosions are messy
 	var/shard_type = /datum/ammo/bullet/shrapnel
-	var/source_mob
+	var/reaction_source
 
 	if(ishuman(my_atom))
 		var/mob/living/carbon/human/H = my_atom
-		source_mob = H
-		msg_admin_niche("WARNING: Ingestion based explosion attempted in containing mob [key_name(H)] in area [sourceturf.loc] at ([H.loc.x],[H.loc.y],[H.loc.z]) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[H.loc.x];Y=[H.loc.y];Z=[H.loc.z]'>JMP</a>)")
+		reaction_source = H
+		msg_admin_niche("WARNING: Ingestion based explosion attempted in containing mob [key_name(H)] made by [key_name(source_mob)] in area [sourceturf.loc] at ([H.loc.x],[H.loc.y],[H.loc.z]) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[H.loc.x];Y=[H.loc.y];Z=[H.loc.z]'>JMP</a>)")
 		exploded = TRUE
 		return
 
@@ -632,18 +634,18 @@ var/const/INGEST = 2
 
 		//Note: No need to log here as that is done in cell_explosion()
 
-		create_shrapnel(sourceturf, shards, , ,shard_type, "chemical reaction", source_mob)
+		create_shrapnel(sourceturf, shards, , ,shard_type, "chemical explosion", source_mob)
 		sleep(2) // So mobs aren't knocked down before getting hit by shrapnel
 		if((istype(my_atom, /obj/item/explosive/plastique) || istype(my_atom, /obj/item/explosive/grenade)) && (ismob(my_atom.loc) || isStructure(my_atom.loc)))
 			my_atom.loc.ex_act(ex_power)
 			ex_power = ex_power / 2
-		cell_explosion(sourceturf, ex_power, ex_falloff, null, "chemical reaction", source_mob)
+		cell_explosion(sourceturf, ex_power, ex_falloff, null, "chemical explosion", source_mob)
 
 		exploded = TRUE // clears reagents after all reactions processed
 
 	return exploded
 
-/datum/reagents/proc/combust(var/turf/sourceturf, var/radius, var/intensity, var/duration, var/supplemented, var/firecolor, var/smokerad, var/mob/user)
+/datum/reagents/proc/combust(var/turf/sourceturf, var/radius, var/intensity, var/duration, var/supplemented, var/firecolor, var/smokerad)
 	if(!sourceturf)
 		return
 	if(sourceturf.chemexploded)
@@ -684,7 +686,7 @@ var/const/INGEST = 2
 
 	msg_admin_attack("Chemical fire with Intensity: [intensity], Duration: [duration], Radius: [radius] in [sourceturf.loc.name] ([sourceturf.x],[sourceturf.y],[sourceturf.z]).", sourceturf.x, sourceturf.y, sourceturf.z)
 
-	new /obj/flamer_fire(sourceturf, "chemical fire", user, duration, intensity, firecolor, radius, FALSE, flameshape)
+	new /obj/flamer_fire(sourceturf, "chemical fire", source_mob, duration, intensity, firecolor, radius, FALSE, flameshape)
 	sleep(5)
 	playsound(sourceturf, 'sound/weapons/gun_flamethrower1.ogg', 25, 1)
 

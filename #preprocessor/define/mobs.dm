@@ -268,6 +268,7 @@
 
 // Hivelord strain flags
 #define HIVELORD_NORMAL		"Normal"
+#define HIVELORD_RESIN_WHISPERER "Resin Whisperer"
 
 // Carrier strain flags
 #define CARRIER_NORMAL 		"Normal"
@@ -282,7 +283,6 @@
 
 // Spitter strain flags
 #define SPITTER_NORMAL		"Normal"
-#define SPITTER_VOMITER		"Vomiter"
 
 // Boiler strain flags
 #define BOILER_NORMAL		"Normal"
@@ -296,7 +296,6 @@
 
 // Ravager strain flags
 #define RAVAGER_NORMAL 		"Normal"
-#define RAVAGER_VETERAN 	"Veteran"
 #define RAVAGER_HEDGEHOG 	"Hedgehog"
 #define RAVAGER_BERSERKER   "Berserker"
 
@@ -313,7 +312,7 @@
 
 // Praetorian strain flags
 #define PRAETORIAN_NORMAL	  "Normal"
-#define PRAETORIAN_VANGUARD "Vanguard"
+#define PRAETORIAN_VANGUARD	"Vanguard"
 #define PRAETORIAN_DANCER	  "Dancer"
 #define PRAETORIAN_WARDEN 	  "Warden"
 #define PRAETORIAN_OPPRESSOR  "Oppressor"

@@ -67,7 +67,7 @@
 	caste_name = "Warrior"
 	name = "Warrior"
 	desc = "A beefy, alien with an armored carapace."
-	icon = 'icons/mob/xenos/xenomorph_64x64.dmi'
+	icon = 'icons/mob/xenos/boiler.dmi'
 	icon_size = 64
 	icon_state = "Warrior Walking"
 	plasma_types = list(PLASMA_CATECHOLAMINE)
@@ -89,19 +89,19 @@
 
 /mob/living/carbon/Xenomorph/Warrior/update_icons()
 	if (stat == DEAD)
-		icon_state = "Warrior Dead"
+		icon_state = "[mutation_type] Warrior Dead"
 	else if (lying)
 		if ((resting || sleeping) && (!knocked_down && !knocked_out && health > 0))
-			icon_state = "Warrior Sleeping"
+			icon_state = "[mutation_type] Warrior Sleeping"
 		else
-			icon_state = "Warrior Knocked Down"
+			icon_state = "[mutation_type] Warrior Knocked Down"
 	else if (agility)
-		icon_state = "Warrior Agility"
+		icon_state = "[mutation_type] Warrior Agility"
 	else
 		if (m_intent == MOVE_INTENT_RUN)
-			icon_state = "Warrior Running"
+			icon_state = "[mutation_type] Warrior Running"
 		else
-			icon_state = "Warrior Walking"
+			icon_state = "[mutation_type] Warrior Walking"
 
 	update_fire() //the fire overlay depends on the xeno's stance, so we must update it.
 

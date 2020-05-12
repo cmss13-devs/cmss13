@@ -40,7 +40,7 @@
 	caste_name = "Defender"
 	name = "Defender"
 	desc = "A alien with an armored head crest."
-	icon = 'icons/mob/xenos/xenomorph_64x64.dmi'
+	icon = 'icons/mob/xenos/defender.dmi'
 	icon_size = 64
 	icon_state = "Defender Walking"
 	plasma_types = list(PLASMA_CHITIN)
@@ -60,20 +60,20 @@
 
 /mob/living/carbon/Xenomorph/Defender/update_icons()
 	if (stat == DEAD)
-		icon_state = "Defender Dead"
+		icon_state = "[mutation_type] Defender Dead"
 	else if (lying)
 		if ((resting || sleeping) && (!knocked_down && !knocked_out && health > 0))
-			icon_state = "Defender Sleeping"
+			icon_state = "[mutation_type] Defender Sleeping"
 		else
-			icon_state = "Defender Knocked Down"
+			icon_state = "[mutation_type] Defender Knocked Down"
 	else if (fortify)
-		icon_state = "Defender Fortify"
+		icon_state = "[mutation_type] Defender Fortify"
 	else if (crest_defense)
-		icon_state = "Defender Crest"
+		icon_state = "[mutation_type] Defender Crest"
 	else
 		if (m_intent == MOVE_INTENT_RUN)
-			icon_state = "Defender Running"
+			icon_state = "[mutation_type] Defender Running"
 		else
-			icon_state = "Defender Walking"
+			icon_state = "[mutation_type] Defender Walking"
 
 	update_fire() //the fire overlay depends on the xeno's stance, so we must update it.

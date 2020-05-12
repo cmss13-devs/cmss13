@@ -71,7 +71,7 @@
 	caste_name = "Praetorian"
 	name = "Praetorian"
 	desc = "A huge, looming beast of an alien."
-	icon = 'icons/mob/xenos/xenomorph_64x64.dmi'
+	icon = 'icons/mob/xenos/praetorian.dmi'
 	icon_size = 64
 	icon_state = "Praetorian Walking"
 	plasma_types = list(PLASMA_PHEROMONE,PLASMA_NEUROTOXIN)

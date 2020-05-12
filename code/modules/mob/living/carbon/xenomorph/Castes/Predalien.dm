@@ -45,7 +45,7 @@
 	caste_name = "Predalien"
 	name = "Abomination"
 	desc = "A strange looking creature with fleshy strands on its head. It appears like a mixture of armor and flesh, smooth, but well carapaced."
-	icon = 'icons/mob/xenos/2x2_Xenos.dmi'
+	icon = 'icons/mob/xenos_old/2x2_Xenos.dmi'
 	icon_state = "Predalien Walking"
 	plasma_types = list(PLASMA_CATECHOLAMINE)
 	faction = FACTION_PREDALIEN

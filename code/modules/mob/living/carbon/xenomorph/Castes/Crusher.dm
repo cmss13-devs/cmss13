@@ -58,7 +58,7 @@
 	caste_name = "Crusher"
 	name = "Crusher"
 	desc = "A huge alien with an enormous armored head crest."
-	icon = 'icons/mob/xenos/2x2_Xenos.dmi'
+	icon = 'icons/mob/xenos/crusher.dmi'
 	icon_size = 64
 	icon_state = "Crusher Walking"
 	plasma_types = list(PLASMA_CHITIN)
@@ -207,21 +207,21 @@
 
 /mob/living/carbon/Xenomorph/Crusher/update_icons()
 	if(stat == DEAD)
-		icon_state = "Crusher Dead"
+		icon_state = "[mutation_type] Crusher Dead"
 	else if(lying)
 		if((resting || sleeping) && (!knocked_down && !knocked_out && health > 0))
-			icon_state = "Crusher Sleeping"
+			icon_state = "[mutation_type] Crusher Sleeping"
 		else
-			icon_state = "Crusher Knocked Down"
+			icon_state = "[mutation_type] Crusher Knocked Down"
 	else
 		if(m_intent == MOVE_INTENT_RUN)
 			if(throwing) //Let it build up a bit so we're not changing icons every single turf
-				icon_state = "Crusher Charging"
+				icon_state = "[mutation_type] Crusher Charging"
 			else
-				icon_state = "Crusher Running"
+				icon_state = "[mutation_type] Crusher Running"
 
 		else
-			icon_state = "Crusher Walking"
+			icon_state = "[mutation_type] Crusher Walking"
 
 	update_fire() //the fire overlay depends on the xeno's stance, so we must update it.
 

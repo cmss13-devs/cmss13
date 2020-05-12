@@ -21,6 +21,7 @@
 
 /mob/living/carbon/Xenomorph/Larva
 	name = "Bloody Larva"
+	icon = 'icons/mob/xenos/larva.dmi'
 	caste_name = "Bloody Larva"
 	speak_emote = list("hisses")
 	icon_state = "Bloody Larva"
@@ -61,6 +62,7 @@
 
 
 /mob/living/carbon/Xenomorph/Larva/predalien
+	icon = 'icons/mob/xenos_old/1x1_Xenos.dmi'
 	icon_state = "Predalien Larva"
 	caste_name = "Predalien Larva"
 

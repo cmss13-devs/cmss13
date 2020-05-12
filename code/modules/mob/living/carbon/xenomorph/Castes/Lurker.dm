@@ -58,7 +58,7 @@
 	caste_name = "Lurker"
 	name = "Lurker"
 	desc = "A beefy, fast alien with sharp claws."
-	icon = 'icons/mob/xenos/xenomorph_48x48.dmi'
+	icon = 'icons/mob/xenos/lurker.dmi'
 	icon_size = 48
 	icon_state = "Lurker Walking"
 	plasma_types = list(PLASMA_CATECHOLAMINE)
@@ -82,21 +82,21 @@
 	if(!caste)
 		return
 	if(stat == DEAD)
-		icon_state = "[caste.caste_name] Dead"
+		icon_state = "[mutation_type] [caste.caste_name] Dead"
 	else if(lying)
 		if((resting || sleeping) && (!knocked_down && !knocked_out && health > 0))
-			icon_state = "[caste.caste_name] Sleeping"
+			icon_state = "[mutation_type] [caste.caste_name] Sleeping"
 		else
-			icon_state = "[caste.caste_name] Knocked Down"
+			icon_state = "[mutation_type] [caste.caste_name] Knocked Down"
 	else
 		var/datum/action/xeno_action/onclick/lurker_invisibility/LIA = get_xeno_action_by_type(src, /datum/action/xeno_action/onclick/lurker_invisibility)
 		if (istype(LIA) && LIA.is_invisible)
-			icon_state = "[caste.caste_name] Invisible"
+			icon_state = "[mutation_type] [caste.caste_name] Invisible"
 		else
 			if(m_intent == MOVE_INTENT_RUN)
-				icon_state = "[caste.caste_name] Running"
+				icon_state = "[mutation_type] [caste.caste_name] Running"
 			else
-				icon_state = "[caste.caste_name] Walking"
+				icon_state = "[mutation_type] [caste.caste_name] Walking"
 
 	update_fire()
 

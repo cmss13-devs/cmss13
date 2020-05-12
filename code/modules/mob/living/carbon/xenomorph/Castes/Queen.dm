@@ -97,9 +97,9 @@
 	caste_name = "Queen"
 	name = "Queen"
 	desc = "A huge, looming alien creature. The biggest and the baddest."
-	icon = 'icons/mob/xenos/xenomorph_64x64.dmi'
+	icon = 'icons/mob/xenos/queen.dmi'
 	icon_size = 64
-	var/icon_body = 'icons/mob/xenos/xenomorph_64x64.dmi'
+	var/icon_body = 'icons/mob/xenos/queen.dmi'
 	var/icon_ovi = 'icons/mob/xenos/Ovipositor.dmi'
 	icon_state = "Queen Walking"
 	plasma_types = list(PLASMA_ROYAL,PLASMA_CHITIN,PLASMA_PHEROMONE,PLASMA_NEUROTOXIN)
@@ -579,20 +579,20 @@
 /mob/living/carbon/Xenomorph/Queen/update_icons()
 	icon = icon_body
 	if(stat == DEAD)
-		icon_state = "Queen Dead"
+		icon_state = "[mutation_type] Queen Dead"
 	else if(ovipositor)
 		icon = icon_ovi
-		icon_state = "Queen Ovipositor"
+		icon_state = "[mutation_type] Queen Ovipositor"
 	else if(lying)
 		if((resting || sleeping) && (!knocked_down && !knocked_out && health > 0))
-			icon_state = "Queen Sleeping"
+			icon_state = "[mutation_type] Queen Sleeping"
 		else
-			icon_state = "Queen Knocked Down"
+			icon_state = "[mutation_type] Queen Knocked Down"
 	else
 		if(m_intent == MOVE_INTENT_RUN)
-			icon_state = "Queen Running"
+			icon_state = "[mutation_type] Queen Running"
 		else
-			icon_state = "Queen Walking"
+			icon_state = "[mutation_type] Queen Walking"
 
 	update_fire() //the fire overlay depends on the xeno's stance, so we must update it.
 

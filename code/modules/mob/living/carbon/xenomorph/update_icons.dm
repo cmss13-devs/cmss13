@@ -141,6 +141,9 @@
 	apply_overlay(X_SUIT_LAYER)
 	add_timer(CALLBACK(src, .proc/remove_overlay, X_SUIT_LAYER), duration)
 
+/mob/living/carbon/Xenomorph/proc/remove_suit_layer()
+	remove_overlay(X_SUIT_LAYER)
+
 /mob/living/carbon/Xenomorph/update_fire()
 	remove_overlay(X_FIRE_LAYER)
 	if(on_fire)

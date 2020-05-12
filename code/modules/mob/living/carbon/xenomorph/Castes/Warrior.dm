@@ -67,7 +67,7 @@
 	caste_name = "Warrior"
 	name = "Warrior"
 	desc = "A beefy, alien with an armored carapace."
-	icon = 'icons/mob/xenos/boiler.dmi'
+	icon = 'icons/mob/xenos/warrior.dmi'
 	icon_size = 64
 	icon_state = "Warrior Walking"
 	plasma_types = list(PLASMA_CATECHOLAMINE)

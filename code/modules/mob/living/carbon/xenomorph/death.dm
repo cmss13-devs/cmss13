@@ -130,12 +130,15 @@
 
 /mob/living/carbon/Xenomorph/gib_animation()
 	var/to_flick = "gibbed-a"
+	var/icon_path = 'icons/mob/xenos_old/xenomorph_48x48.dmi'
+	if(mob_size == MOB_SIZE_BIG)
+		icon_path = 'icons/mob/xenos_old/xenomorph_64x64.dmi'
 	switch(caste.caste_name)
 		if("Runner")
 			to_flick = "gibbed-a-runner"
 		if("Bloody Larva","Predalien Larva")
 			to_flick = "larva_gib"
-	new /obj/effect/overlay/temp/gib_animation/xeno(loc, src, to_flick, icon)
+	new /obj/effect/overlay/temp/gib_animation/xeno(loc, src, to_flick, icon_path)
 
 /mob/living/carbon/Xenomorph/spawn_gibs()
 	xgibs(get_turf(src))

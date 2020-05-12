@@ -14,6 +14,12 @@
     last_proc_time = world.time
     create_shrapnel(get_turf(owner), shrapnel_amount, null, null, ammo_type, null, owner, TRUE)
     owner.visible_message(SPAN_XENODANGER("Damaging the shield of [owner] sprays bone quills everywhere!"))
+
+/datum/xeno_shield/hedgehog_shield/on_removal()
+	. = ..()
+	if(owner)
+		// Remove the shield overlay early
+		owner.remove_suit_layer()
     
 
 

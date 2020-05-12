@@ -1,5 +1,3 @@
-#define SENTINEL_SCATTERSPIT "Scatterspitter"
-
 /datum/xeno_mutator/scatterspit
 	name = "STRAIN: Sentinel - Scatterspitter"
 	description = "You exchange your spit varieties, corrosive acid and some speed to gain a bit of armor and a potent, shotgun-like neurotoxic spit."

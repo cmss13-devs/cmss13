@@ -250,7 +250,7 @@
 		to_chat(X, SPAN_XENOWARNING("You can't [ability_name] from here!"))
 		return
 
-	if(!X.check_state())
+	if(!X.check_state() || X.action_busy)
 		return
 
 	if (activation_delay)

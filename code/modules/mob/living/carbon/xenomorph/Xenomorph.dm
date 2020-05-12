@@ -30,7 +30,7 @@
 	//// ALL OLD SS13 VARS
 	name = "Drone"
 	desc = "What the hell is THAT?"
-	icon = 'icons/mob/xenos/1x1_Xenos.dmi'
+	icon = 'icons/mob/xenos_old/1x1_Xenos.dmi'
 	icon_state = "Drone Walking"
 	layer = BIG_XENO_LAYER
 	voice_name = "xenomorph"

@@ -72,7 +72,7 @@
 	caste_name = "Burrower"
 	name = "Burrower"
 	desc = "A beefy, alien with sharp claws."
-	icon = 'icons/mob/xenos/xenomorph_64x64.dmi'
+	icon = 'icons/mob/xenos/burrower.dmi'
 	icon_size = 64
 	icon_state = "Burrower Walking"
 	layer = MOB_LAYER
@@ -132,18 +132,18 @@
 
 /mob/living/carbon/Xenomorph/Burrower/update_icons()
 	if (stat == DEAD)
-		icon_state = "Burrower Dead"
+		icon_state = "[mutation_type] Burrower Dead"
 	else if (lying)
 		if ((resting || sleeping) && (!knocked_down && !knocked_out && health > 0))
-			icon_state = "Burrower Sleeping"
+			icon_state = "[mutation_type] Burrower Sleeping"
 		else
-			icon_state = "Burrower Knocked Down"
+			icon_state = "[mutation_type] Burrower Knocked Down"
 	else if (burrow)
-		icon_state = "Burrower Burrowed"
+		icon_state = "[mutation_type] Burrower Burrowed"
 	else
 		if (m_intent == MOVE_INTENT_RUN)
-			icon_state = "Burrower Running"
+			icon_state = "[mutation_type] Burrower Running"
 		else
-			icon_state = "Burrower Walking"
+			icon_state = "[mutation_type] Burrower Walking"
 
 	update_fire() //the fire overlay depends on the xeno's stance, so we must update it.

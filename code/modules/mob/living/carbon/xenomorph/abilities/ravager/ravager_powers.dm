@@ -320,7 +320,18 @@
 	X.anchored = 1
 	X.update_canmove()
 	
+	var/list/telegraph_atom_list = list()
+	for(var/turf/T in oview(range))
+		if(T == get_turf(X))
+			continue
+		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/brown(T, activation_delay)
+
+
 	if (do_after(X, activation_delay, INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
+
+		for(var/obj/effect/xenomorph/xeno_telegraph/XT in telegraph_atom_list)
+			telegraph_atom_list -= XT
+			qdel(XT)
 
 		X.emote("roar")
 		X.spin_circle()
@@ -381,6 +392,7 @@
 		XS.shrapnel_amount = shield_shrapnel_amount
 		X.overlay_shields()
 
+	X.create_shield(shield_duration)
 	shield_active = TRUE
 	add_timer(CALLBACK(src, .proc/remove_shield), shield_duration)
 

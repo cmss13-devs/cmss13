@@ -52,7 +52,7 @@
 	caste_name = "Sentinel"
 	name = "Sentinel"
 	desc = "A slithery, spitting kind of alien."
-	icon = 'icons/mob/xenos/xenomorph_48x48.dmi'
+	icon = 'icons/mob/xenos/sentinel.dmi'
 	icon_size = 48
 	icon_state = "Sentinel Walking"
 	plasma_types = list(PLASMA_NEUROTOXIN)

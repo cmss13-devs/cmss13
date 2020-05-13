@@ -223,6 +223,26 @@
 		for(var/i=1 to max_storage_space)
 			new pill_type_to_fill(src)
 
+/obj/item/storage/pill_bottle/examine(mob/user)
+	..()
+	var/pills_amount = contents.len
+	if(pills_amount)
+		var/percentage_filled = round(pills_amount/max_storage_space * 100)
+		switch(percentage_filled)
+			if(80 to 101)
+				to_chat(user, SPAN_INFO("The [src] seems fairly full."))
+			if(60 to 79)
+				to_chat(user, SPAN_INFO("The [src] feels more than half full."))
+			if(40 to 59)
+				to_chat(user, SPAN_INFO("The [src] seems to be around half full."))
+			if(20 to 39)
+				to_chat(user, SPAN_INFO("The [src] feels less than half full."))
+			if(0 to 19)
+				to_chat(user, SPAN_INFO("The [src] feels like it's nearly empty!"))
+	else
+		to_chat(user, SPAN_INFO("The [src] is empty."))
+				
+
 /obj/item/storage/pill_bottle/attack_self(mob/living/user)
 	if(skilllock && !skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
 		to_chat(user, SPAN_NOTICE("It must have some kind of ID lock..."))

@@ -14,3 +14,16 @@
 	if(ammo.current_rounds == 0)
 		visible_message("[htmlicon(src, viewers(src))] <span class='warning'>The [name] beeps steadily and its ammo light blinks red.</span>")
 		playsound(loc, 'sound/weapons/smg_empty_alarm.ogg', 25, 1)
+
+/obj/structure/machinery/defenses/sentry/flamer/destroyed_action()
+	visible_message("[htmlicon(src, viewers(src))] [SPAN_WARNING("The [name] starts spitting out sparks and smoke!")]")
+	playsound(loc, 'sound/mecha/critdestrsyndi.ogg', 25, 1)
+	for(var/i = 1 to 6)
+		dir = pick(NORTH, EAST, SOUTH, WEST)
+		sleep(2)
+
+	if(ammo.current_rounds != 0)
+		new /obj/flamer_fire(loc, "sentry explosion", null, 20, 35, "blue", 2)
+	cell_explosion(loc, 10, 10, null, "sentry explosion")
+	if(!disposed)
+		qdel(src)

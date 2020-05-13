@@ -134,8 +134,11 @@ There are several things that need to be remembered:
 	lying_prev = lying
 	if(lying)
 		var/matrix/M = matrix()
-		M.Turn(90)
-		M.Translate(1,-6)
+		if(prob(50))
+			M.Turn(90)
+		else
+			M.Turn(270)
+		M.Translate(rand(-10,10),rand(-10,10))
 		apply_transform(M)
 	else
 		var/matrix/M = matrix()

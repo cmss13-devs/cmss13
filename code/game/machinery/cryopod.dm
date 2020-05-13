@@ -221,7 +221,7 @@ var/global/list/frozen_items = list(SQUAD_NAME_1 = list(), SQUAD_NAME_2 = list()
 			var/list/deleteall = list(/obj/item/clothing/mask/cigarette, \
 			/obj/item/clothing/glasses/sunglasses, \
 			/obj/item/clothing/glasses/mgoggles, \
-			/obj/item/clothing/head/beret/marine/mp, \
+			/obj/item/clothing/head/helmet/beret/marine/mp, \
 			/obj/item/clothing/gloves/black, \
 			/obj/item/weapon/baton, \
 			/obj/item/weapon/gun/energy/taser, \

@@ -405,7 +405,7 @@
 
 /obj/structure/closet/secure_closet/military_police/New()
 	..()
-	new /obj/item/clothing/head/beret/marine/mp(src)
+	new /obj/item/clothing/head/helmet/beret/marine/mp(src)
 	new /obj/item/clothing/gloves/black(src)
 	new /obj/item/clothing/accessory/holster/armpit(src)
 	new /obj/item/clothing/shoes/marine(src)
@@ -437,7 +437,7 @@
 
 /obj/structure/closet/secure_closet/warrant_officer/New()
 	..()
-	new /obj/item/clothing/head/beret/marine/mp/cmp(src)
+	new /obj/item/clothing/head/helmet/beret/marine/mp/cmp(src)
 	new /obj/item/clothing/accessory/holster/armpit(src)
 	new /obj/item/clothing/shoes/marine(src)
 	new /obj/item/clothing/under/marine/officer/warrant(src)

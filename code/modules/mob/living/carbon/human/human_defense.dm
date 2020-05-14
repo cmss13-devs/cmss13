@@ -88,23 +88,58 @@ Contains most of the procs that are called when a mob is attacked by something
 
 /mob/living/carbon/human/proc/check_shields(var/damage = 0, var/attack_text = "the attack", var/combistick=0)
 	if(l_hand && istype(l_hand, /obj/item/weapon))//Current base is the prob(50-d/3)
-		if(combistick && istype(l_hand,/obj/item/weapon/combistick))
+		if(combistick && istype(l_hand,/obj/item/weapon/combistick) && prob(66))
 			var/obj/item/weapon/combistick/C = l_hand
 			if(C.on)
 				return TRUE
+
+		if(l_hand.IsShield() && istype(l_hand,/obj/item/weapon/shield)) // Activable shields
+			var/obj/item/weapon/shield/S = l_hand
+			var/shield_blocked_l = FALSE
+			if(S.shield_readied && prob(S.readied_block)) // User activated his shield before the attack. Lower if it blocks.
+				S.lower_shield(src)
+				shield_blocked_l = TRUE
+			else if(prob(S.passive_block))
+				shield_blocked_l = TRUE
+
+			if(shield_blocked_l)
+				visible_message(SPAN_DANGER("<B>[src] blocks [attack_text] with the [l_hand.name]!</B>"), null, null, 5)
+				return TRUE 
+			// We cannot return FALSE on fail here, because we haven't checked r_hand yet. Dual-wielding shields perhaps!
+
 		var/obj/item/weapon/I = l_hand
-		if(I.IsShield() && (prob(50 - round(damage / 3))))
+		if(I.IsShield() && !istype(I, /obj/item/weapon/shield) && (prob(50 - round(damage / 3)))) // 'other' shields, like predweapons. Make sure that item/weapon/shield does not apply here, no double-rolls.
 			visible_message(SPAN_DANGER("<B>[src] blocks [attack_text] with the [l_hand.name]!</B>"), null, null, 5)
 			return TRUE
+
 	if(r_hand && istype(r_hand, /obj/item/weapon))
-		if(combistick && istype(r_hand,/obj/item/weapon/combistick))
+		if(combistick && istype(r_hand,/obj/item/weapon/combistick) && prob(66))
 			var/obj/item/weapon/combistick/C = r_hand
 			if(C.on)
 				return TRUE
+				
+		if(r_hand.IsShield() && istype(r_hand,/obj/item/weapon/shield)) // Activable shields
+			var/obj/item/weapon/shield/S = r_hand
+			var/shield_blocked_r = FALSE
+			if(S.shield_readied && prob(S.readied_block)) // User activated his shield before the attack. Lower if it blocks.
+				shield_blocked_r = TRUE
+				S.lower_shield(src)
+			else if(prob(S.passive_block))
+				shield_blocked_r = TRUE
+
+			if(shield_blocked_r)
+				visible_message(SPAN_DANGER("<B>[src] blocks [attack_text] with the [r_hand.name]!</B>"), null, null, 5)
+				return TRUE 
+
 		var/obj/item/weapon/I = r_hand
-		if(I.IsShield() && (prob(50 - round(damage / 3))))
+		if(I.IsShield() && !istype(I, /obj/item/weapon/shield) && (prob(50 - round(damage / 3)))) // other shields. Don't doublecheck activable here.
 			visible_message(SPAN_DANGER("<B>[src] blocks [attack_text] with the [r_hand.name]!</B>"), null, null, 5)
 			return TRUE
+
+	if(back && istype(back, /obj/item/weapon/shield/riot) && prob(20))
+		visible_message(SPAN_DANGER("<B>The [back] on [src]'s back blocks [attack_text]!</B>"), null, null, 5)
+		return TRUE
+
 	if(attack_text == "the pounce" && wear_suit && wear_suit.flags_inventory & BLOCK_KNOCKDOWN)
 		visible_message(SPAN_DANGER("<B>[src] withstands [attack_text] with their [wear_suit.name]!</B>"), null, null, 5)
 		return TRUE

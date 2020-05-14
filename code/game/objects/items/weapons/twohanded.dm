@@ -144,7 +144,7 @@
 	flags_equip_slot = SLOT_BACK
 	flags_atom = FPRINT|CONDUCT
 	flags_item = TWOHANDED
-	force_wielded = 45
+	force_wielded = 60
 	attack_verb = list("attacked", "chopped", "cleaved", "torn", "cut")
 
 /obj/item/weapon/twohanded/fireaxe/wield(mob/user)
@@ -169,7 +169,7 @@
 	icon_state = "sledgehammer"
 	item_state = "sledgehammer"
 	force = 20
-	force_wielded = 50
+	force_wielded = 60
 	sharp = null
 	edge = 0
 	w_class = SIZE_LARGE
@@ -198,7 +198,7 @@
 	throw_speed = SPEED_FAST
 	throw_range = 5
 	w_class = SIZE_SMALL
-	force_wielded = 70
+	force_wielded = 75
 	wieldsound = 'sound/weapons/saberon.ogg'
 	unwieldsound = 'sound/weapons/saberoff.ogg'
 	flags_atom = FPRINT|NOBLOODY
@@ -234,11 +234,11 @@
 	desc = "A haphazardly-constructed yet still deadly weapon of ancient design."
 	icon_state = "spearglass"
 	item_state = "spearglass"
-	force = 14
+	force = 20
 	w_class = SIZE_LARGE
 	flags_equip_slot = SLOT_BACK
-	force_wielded = 24
-	throwforce = 30
+	force_wielded = 45
+	throwforce = 35
 	throw_speed = SPEED_VERY_FAST
 	edge = 1
 	sharp = IS_SHARP_ITEM_SIMPLE

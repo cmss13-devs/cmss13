@@ -196,6 +196,10 @@
 		src.buckled_mob = target
 		src.add_fingerprint(user)
 		afterbuckle(target)
+		if(buckle_lying) // Make sure buckling to beds/nests etc only turns, and doesn't give a random offset
+			var/matrix/M = matrix()
+			M.Turn(90)
+			target.apply_transform(M)
 		return TRUE
 
 /obj/proc/send_buckling_message(mob/M, mob/user)

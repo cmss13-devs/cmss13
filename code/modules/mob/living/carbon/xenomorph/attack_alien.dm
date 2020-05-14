@@ -26,7 +26,7 @@
 			if(M == src || anchored || buckled)
 				return FALSE
 
-			if(check_shields(0, M.name) && prob(66)) //Bit of a bonus
+			if(check_shields(0, M.name)) // Blocking check
 				M.visible_message(SPAN_DANGER("[M]'s grab is blocked by [src]'s shield!"), \
 				SPAN_DANGER("Your grab was blocked by [src]'s shield!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 				playsound(loc, 'sound/weapons/alien_claw_block.ogg', 25, 1) //Feedback
@@ -62,9 +62,10 @@
 							to_chat(M, SPAN_WARNING("You should not harm this host! It has a sister inside."))
 							return FALSE
 
-			if(check_shields(0, M.name) && prob(66)) //Bit of a bonus
+			if(check_shields(0, M.name)) // Blocking check
 				M.visible_message(SPAN_DANGER("[M]'s slash is blocked by [src]'s shield!"), \
 				SPAN_DANGER("Your slash is blocked by [src]'s shield!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+				playsound(loc, 'sound/weapons/alien_claw_block.ogg', 25, 1) //Feedback
 				return FALSE
 
 			//From this point, we are certain a full attack will go out. Calculate damage and modifiers
@@ -182,9 +183,10 @@
 				to_chat(M, SPAN_XENODANGER("You don't have the dexterity to tackle the headhunter with that thing on your leg!"))
 				return FALSE
 			M.animation_attack_on(src)
-			if(check_shields(0, M.name) && prob(66)) //Bit of a bonus
+			if(check_shields(0, M.name)) // Blocking check
 				M.visible_message(SPAN_DANGER("[M]'s tackle is blocked by [src]'s shield!"), \
 				SPAN_DANGER("Your tackle is blocked by [src]'s shield!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+				playsound(loc, 'sound/weapons/alien_claw_block.ogg', 25, 1) //Feedback
 				return FALSE
 			M.flick_attack_overlay(src, "disarm")
 			if(knocked_down)

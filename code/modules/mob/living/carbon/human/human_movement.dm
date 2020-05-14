@@ -82,6 +82,9 @@
 		temporary_slowdown = max(temporary_slowdown - 1, 0)
 		reducible_tally += 2 //Temporary slowdown slows hard
 
+	if(shield_slowdown)
+		reducible_tally += shield_slowdown
+
 	//Compile reducible tally and send it to total tally. Cannot go more than 1 units faster from the reducible tally!
 	. += max(-0.7, reducible_tally)
 

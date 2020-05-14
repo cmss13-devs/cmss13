@@ -5,7 +5,7 @@
 	item_state = "claymore"
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
-	force = 40
+	force = 60
 	throwforce = 10
 	sharp = IS_SHARP_ITEM_BIG
 	edge = 1
@@ -18,7 +18,7 @@
 	desc = "A dusty sword commonly seen in historical museums. Where you got this is a mystery, for sure. Only a mercenary would be nuts enough to carry one of these. Sharpened to deal massive damage."
 	icon_state = "mercsword"
 	item_state = "machete"
-	force = 39
+	force = 60
 
 
 /obj/item/weapon/claymore/mercsword/ceremonial
@@ -26,13 +26,13 @@
 	desc = "A fancy ceremonial sword passed down from generation to generation. Despite this, it has been very well cared for, and is in top condition."
 	icon_state = "ceremonial"
 	item_state = "machete"
-	force = 25
+	force = 70
 
 /obj/item/weapon/claymore/mercsword/machete
 	name = "\improper M2132 machete"
 	desc = "Latest issue of the USCM Machete. Great for clearing out jungle or brush on outlying colonies. Found commonly in the hands of scouts and trackers, but difficult to carry with the usual kit."
 	icon_state = "machete"
-	force = 35
+	force = 55
 	w_class = SIZE_LARGE
 
 /obj/item/weapon/katana
@@ -40,7 +40,7 @@
 	desc = "A finely made Japanese sword, with a well sharpened blade. The blade has been filed to a molecular edge, and is extremely deadly. Commonly found in the hands of mercenaries and yakuza."
 	icon_state = "katana"
 	flags_atom = FPRINT|CONDUCT
-	force = 50
+	force = 65
 	throwforce = 10
 	sharp = IS_SHARP_ITEM_BIG
 	edge = 1
@@ -81,6 +81,9 @@
 	icon_state = "unathiknife"
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("ripped", "torn", "cut")
+	force = 35
+	throwforce = 35
+	edge = 1
 
 
 /obj/item/weapon/pizza_cutter

@@ -4,8 +4,9 @@
 	desc = "The name isn't descriptive enough?"
 	icon = 'icons/obj/structures/machinery/kitchen.dmi'
 	icon_state = "grinder"
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
+	wrenchable = TRUE
 	var/operating = 0 //Is it on?
 	var/dirty = 0 // Does it need cleaning?
 	var/gibtime = 40 // Time from starting until meat appears
@@ -13,6 +14,12 @@
 	use_power = 1
 	idle_power_usage = 2
 	active_power_usage = 500
+
+/obj/structure/machinery/gibber/BlockedPassDirs(atom/movable/mover, target_turf)
+	if(istype(mover, /obj/item) && mover.throwing)
+		return FALSE
+	else
+		return ..()
 
 //auto-gibs anything that bumps into it
 /obj/structure/machinery/gibber/autogibber
@@ -77,11 +84,15 @@
 		src.startgibbing(user)
 
 /obj/structure/machinery/gibber/attackby(obj/item/grab/G as obj, mob/user as mob)
-	if(src.occupant)
+	if(occupant)
 		to_chat(user, SPAN_WARNING("The gibber is full, empty it first!"))
 		return
 
-	if( !(istype(G, /obj/item/grab)) )
+	if(iswrench(G))
+		. = ..()
+		return
+
+	if(!(istype(G, /obj/item/grab)) )
 		to_chat(user, SPAN_WARNING("This item is not suitable for the gibber!"))
 		return
 

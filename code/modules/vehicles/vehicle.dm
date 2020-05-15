@@ -117,6 +117,12 @@
 /obj/vehicle/attack_ai(mob/user as mob)
 	return
 
+/obj/vehicle/BlockedPassDirs(atom/movable/mover, target_turf)
+	if(istype(mover, /obj/item) && mover.throwing)
+		return FALSE
+	else
+		return ..()
+
 //-------------------------------------------
 // Vehicle procs
 //-------------------------------------------

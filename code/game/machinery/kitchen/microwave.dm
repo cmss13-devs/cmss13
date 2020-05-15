@@ -4,8 +4,9 @@
 	icon = 'icons/obj/structures/machinery/kitchen.dmi'
 	icon_state = "mw"
 	layer = ABOVE_TABLE_LAYER
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
+	wrenchable = TRUE
 	use_power = 1
 	idle_power_usage = 5
 	active_power_usage = 100
@@ -53,8 +54,11 @@
 ********************/
 
 /obj/structure/machinery/microwave/attackby(var/obj/item/O as obj, var/mob/user as mob)
-	if(src.broken > 0)
-		if(src.broken == 2 && istype(O, /obj/item/tool/screwdriver)) // If it's broken and they're using a screwdriver
+	if(iswrench(O))
+		. = ..()
+		return
+	if(broken > 0)
+		if(broken == 2 && istype(O, /obj/item/tool/screwdriver)) // If it's broken and they're using a screwdriver
 			user.visible_message( \
 				SPAN_NOTICE("[user] starts to fix part of the microwave."), \
 				SPAN_NOTICE("You start to fix part of the microwave.") \
@@ -82,7 +86,7 @@
 		else
 			to_chat(user, SPAN_DANGER("It's broken!"))
 			return 1
-	else if(src.dirty==100) // The microwave is all dirty so can't be used!
+	else if(dirty==100) // The microwave is all dirty so can't be used!
 		if(istype(O, /obj/item/reagent_container/spray/cleaner)) // If they're trying to clean it then let them
 			user.visible_message( \
 				SPAN_NOTICE("[user] starts to clean the microwave."), \
@@ -369,3 +373,9 @@
 		if ("dispose")
 			dispose()
 	return
+
+/obj/structure/machinery/microwave/BlockedPassDirs(atom/movable/mover, target_turf)
+	if(istype(mover, /obj/item) && mover.throwing)
+		return FALSE
+	else
+		return ..()

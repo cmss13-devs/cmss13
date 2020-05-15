@@ -1,8 +1,8 @@
 /obj/structure/machinery/computer
 	name = "computer"
 	icon = 'icons/obj/structures/machinery/computer.dmi'
-	density = 1
-	anchored = 1.0
+	density = TRUE
+	anchored = TRUE
 	use_power = 1
 	layer = BELOW_OBJ_LAYER
 	idle_power_usage = 300
@@ -136,3 +136,9 @@
 
 /obj/structure/machinery/computer/fixer/New()
 	all_configs = config
+
+/obj/structure/machinery/computer/BlockedPassDirs(atom/movable/mover, target_turf)
+	if(istype(mover, /obj/item) && mover.throwing)
+		return FALSE
+	else
+		return ..()

@@ -1,13 +1,13 @@
 //This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:33
 #define FLAG_SHOW_CIC			1
-#define FLAG_SHOW_TECH_SUPPORT	2
+#define FLAG_SHOW_AUXIL_SUPPORT	2
 #define FLAG_SHOW_MISC			4
 #define FLAG_SHOW_POLICE		8
 #define FLAG_SHOW_ENGINEERING	16
 #define FLAG_SHOW_REQUISITION	32
 #define FLAG_SHOW_MEDICAL		64
 #define FLAG_SHOW_MARINES		128
-#define FLAG_SHOW_ALL			FLAG_SHOW_CIC|FLAG_SHOW_TECH_SUPPORT|FLAG_SHOW_MISC|FLAG_SHOW_POLICE|FLAG_SHOW_ENGINEERING|FLAG_SHOW_REQUISITION|FLAG_SHOW_MEDICAL|FLAG_SHOW_MARINES
+#define FLAG_SHOW_ALL			FLAG_SHOW_CIC|FLAG_SHOW_AUXIL_SUPPORT|FLAG_SHOW_MISC|FLAG_SHOW_POLICE|FLAG_SHOW_ENGINEERING|FLAG_SHOW_REQUISITION|FLAG_SHOW_MEDICAL|FLAG_SHOW_MARINES
 
 /mob/new_player
 	var/ready = FALSE
@@ -326,9 +326,9 @@
 			dat += "Command:<br>"
 			roles_show ^= FLAG_SHOW_CIC
 
-		else if(roles_show & FLAG_SHOW_TECH_SUPPORT && ROLES_TECH_SUPPORT.Find(J.title))
+		else if(roles_show & FLAG_SHOW_AUXIL_SUPPORT && ROLES_AUXIL_SUPPORT.Find(J.title))
 			dat += "<hr>Auxiliary Combat Support:<br>"
-			roles_show ^= FLAG_SHOW_TECH_SUPPORT
+			roles_show ^= FLAG_SHOW_AUXIL_SUPPORT
 
 		else if(roles_show & FLAG_SHOW_MISC && ROLES_MISC.Find(J.title))
 			dat += "<hr>Other:<br>"
@@ -357,7 +357,7 @@
 		dat += "<a href='byond://?src=\ref[src];lobby_choice=SelectedJob;job_selected=[J.title]'>[J.disp_title] ([J.current_positions]) (Active: [active])</a><br>"
 
 	dat += "</center>"
-	show_browser(src, dat, "Late Join", "latechoices", "size = 230x600")
+	show_browser(src, dat, "Late Join", "latechoices", "size=420x700")
 
 
 /mob/new_player/proc/create_character()
@@ -418,10 +418,10 @@
 
 /mob/new_player/proc/ViewManifest()
 	var/dat = "<html><body>"
-	dat += "<h4>Crew Manifest:</h4>"
-	dat += data_core.get_manifest(OOC = 1)
+	dat += "<h4><center>Crew Manifest:</center></h4>"
+	dat += data_core.get_manifest(FALSE, TRUE)
 
-	show_browser(src, dat, "Crew Manifest", "manifest")
+	show_browser(src, dat, "Crew Manifest", "manifest", "size=400x750")
 
 /mob/new_player/Move()
 	return 0
@@ -470,7 +470,7 @@
 	return
 
 #undef FLAG_SHOW_CIC
-#undef FLAG_SHOW_TECH_SUPPORT
+#undef FLAG_SHOW_AUXIL_SUPPORT
 #undef FLAG_SHOW_MISC
 #undef FLAG_SHOW_POLICE
 #undef FLAG_SHOW_ENGINEERING

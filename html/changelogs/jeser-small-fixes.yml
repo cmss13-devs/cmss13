@@ -1,0 +1,11 @@
+author: Jeser
+
+delete-after: True
+
+changes: 
+  - bugfix: "Fixed Follow by Faction/Hive not actually filtering mobs of other Factions/Hives. [Tyrfull Games]"
+  - bugfix: "Fixed being able to toggle MD range modes through space and time. [csd]"
+  - bugfix: "Fixed colony Synthetics appearing in Crew Manifest."
+  - tweak: "Tweaked Join the USCM and Crew Manifest windows size."
+  - tweak: "Improved Crew Manifest: now it uses same categories as Join the USCM window, is centered in window, long roles and names won't be taking two lines and squad marines are now sorted by rank for easier navigation."
+  - tweak: "View Crew Manifest verb for humans now works only if you belong to USCM, PMC or Death Squad factions."

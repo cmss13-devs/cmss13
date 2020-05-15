@@ -343,19 +343,22 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		if("Mobs by Faction")
 			choices = FACTION_LIST_HUMANOID
 			input = input("Please, select a Faction:", "Follow", null, null) as null|anything in choices
+
 			targets = gethumans()
-			for(var/mob/M in targets)
-				if(M.faction != choices[input])
-					targets.Remove(M)
+			for(var/name in targets)
+				var/mob/living/carbon/human/M = targets[name]
+				if(!istype(M) || M.faction != input)
+					targets.Remove(name)
 
 		if("Xenos by Hive")
 			choices = list("Regular Hive" = XENO_HIVE_NORMAL, "Corrupted Hive" = XENO_HIVE_CORRUPTED, "Alpha Hive" = XENO_HIVE_ALPHA, "Beta Hive" = XENO_HIVE_BETA, "Zeta Hive" = XENO_HIVE_ZETA)
 			input = input("Please, select a Hive:", "Follow", null, null) as null|anything in choices
-			targets = getxenos()
-			for(var/mob/living/carbon/Xenomorph/X in targets)
-				if(X.hivenumber != choices[input])
-					targets.Remove(X)
 
+			targets = getxenos()
+			for(var/name in targets)
+				var/mob/living/carbon/Xenomorph/X = targets[name]
+				if(!istype(X) || X.hivenumber != choices[input])
+					targets.Remove(name)
 
 	if(!LAZYLEN(targets))
 		to_chat(usr, SPAN_WARNING("There aren't any targets in [input] category to follow."))
@@ -481,7 +484,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 	var/dat = data_core.get_manifest()
 
-	show_browser(src, dat, "Crew Manifest", "manifest", "size=375x420")
+	show_browser(src, dat, "Crew Manifest", "manifest", "size=400x750")
 
 /mob/dead/verb/hive_status()
 	set name = "Hive Status"

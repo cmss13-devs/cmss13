@@ -227,28 +227,28 @@
 				nutriment_factor = potency
 			if(PROPERTY_FUELING)
 				chemfiresupp = TRUE
-				durationmod = 0.4 * potency
-				intensitymod = 0.2 * potency
+				durationmod += 0.4 * potency
+				intensitymod -= 0.2 * potency
 			if(PROPERTY_OXIDIZING)
 				chemfiresupp = TRUE
-				durationmod = 0.2 * potency
-				intensitymod = 0.4 * potency
+				durationmod -= 0.2 * potency
+				intensitymod += 0.4 * potency
 			if(PROPERTY_FLOWING)
 				chemfiresupp = TRUE
-				radiusmod = 0.05 * potency
-				durationmod = 0.1 * potency
-				intensitymod = 0.1 * potency
+				radiusmod += 0.05 * potency
+				durationmod -= 0.1 * potency
+				intensitymod -= 0.1 * potency
 			if(PROPERTY_VISCOUS)
 				chemfiresupp = TRUE
-				radiusmod = 0.05 * potency
-				durationmod = 0.1 * potency
-				intensitymod = 0.1 * potency
+				radiusmod -= 0.05 * potency
+				durationmod += 0.1 * potency
+				intensitymod += 0.1 * potency
 			if(PROPERTY_EXPLOSIVE)
 				explosive = TRUE
 				power = potency
-				falloff_modifier =  2 / potency
+				falloff_modifier =  -3 / potency
 			if(PROPERTY_HYPOMETABOLIC)
-				custom_metabolism = max(custom_metabolism - 0.05 * potency, 0.005)
+				custom_metabolism = max(custom_metabolism - 0.025 * potency, 0.005)
 			if(PROPERTY_HYPERMETABOLIC)
 				custom_metabolism = custom_metabolism + 0.05 * potency
 
@@ -267,7 +267,8 @@
 										PROPERTY_PNEUMOTOXIC = "Toxic substance which causes damage to connective tissue that forms the support structure (the interstitium) of the alveoli in the lungs.",\
 										PROPERTY_OCULOTOXIC = "Damages the photoreceptive cells in the eyes impairing neural transmissions to the brain, resulting in loss of sight or blindness.",\
 										PROPERTY_CARDIOTOXIC = "Attacks cardiomyocytes when passing through the heart in the bloodstream. This disrupts the cardiac cycle and can lead to cardiac arrest.",\
-										PROPERTY_NEUROTOXIC = "Breaks down neurons causing widespread damage to the central nervous system and brain functions.")
+										PROPERTY_NEUROTOXIC = "Breaks down neurons causing widespread damage to the central nervous system and brain functions.",\
+										PROPERTY_HYPERMETABOLIC = "Takes less time for this chemical to metabolize, resulting in it being in the bloodstream for less time per unit.")
 	if(special_properties)
 		negative_properties += list(	PROPERTY_ADDICTIVE = "Causes addiction. Higher potency results in a higher chance of causing an addiction when metabolized.",\
 										PROPERTY_DNA_DISINTEGRATING = "Immediately disintegrates the DNA of all organic cells it comes into contact with. WY has sent additional resources to assist your operation for the discovery of this property. Weston-Yamada PMC team has been dispatched to collect all samples of this chemical. Failure to cooperate will result in the termination of this research department.")									
@@ -299,7 +300,6 @@
 										PROPERTY_VISCOUS = "The chemical is thick and gooey due to high surface tension. It will not spread very far when spilled. This would decrease the radius of a chemical fire.",\
 										PROPERTY_EXCRETING = "Excretes all chemicals contained in the blood stream by using the kidneys to turn it into urine.",\
 										PROPERTY_HYPOMETABOLIC = "Takes longer for this chemical to metabolize, resulting in it being in the bloodstream for more time per unit.",\
-										PROPERTY_HYPERMETABOLIC = "Takes less for this chemical to metabolize, resulting in it being in the bloodstream for less time per unit.",\
 										PROPERTY_SEDATIVE = "Causes the body to release melatonin resulting in increased sleepiness.",\
 										PROPERTY_ANTIHALLUCINOGENIC = "Stabilizes perseptive abnormalities such as hallucinations caused by mindbreaker toxin.")
 	if(special_properties)

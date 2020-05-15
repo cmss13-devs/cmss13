@@ -166,9 +166,9 @@
 				if(M.bodytemperature > 170)
 					return
 			if(PROPERTY_THANATOMETABOL)
-				if(M.oxyloss <  50 && round(M.blood_volume) > BLOOD_VOLUME_BAD)
+				if(M.stat != DEAD && M.oxyloss <  50 && round(M.blood_volume) > BLOOD_VOLUME_BAD)
 					return
-				effectiveness = max(0.1 * potency, 0.1)
+				effectiveness = min(max(max(M.oxyloss / 10, M.blood_volume / BLOOD_VOLUME_NORMAL) * 0.1 * potency, 0.1), 1)
 			if(PROPERTY_REGULATING)
 				can_OD = FALSE
 			if(PROPERTY_EXCRETING)

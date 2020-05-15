@@ -1,0 +1,9 @@
+author: Jeser
+
+delete-after: True
+
+changes: 
+  - rscadd: "Added 3 more announcement warnings for nuke: half of timer left, 1 minute left and 10 seconds left. [#11219]"
+  - tweak: "All nuke announcements now work for other factions, such as CLF and UPP."
+  - tweak: "Tweaked nuclear bomb's sprites."
+  - tweak: "Changed nuke's Control Panel NanoUI window from W-Y to USCM style."

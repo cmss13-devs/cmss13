@@ -4,7 +4,7 @@ var/bomb_set = FALSE
 	name = "\improper Nuclear Fission Explosive"
 	desc = "Nuke the entire site from orbit, it's the only way to be sure. Too bad we don't have any orbital nukes."
 	icon = 'icons/obj/structures/machinery/nuclearbomb.dmi'
-	icon_state = "nuclearbomb0"
+	icon_state = "nuke"
 	density = 1
 	unslashable = TRUE
 	unacidable = TRUE
@@ -16,10 +16,26 @@ var/bomb_set = FALSE
 	var/safety = TRUE
 	var/being_used = FALSE
 	var/end_round = TRUE
+	var/timer_announcements_flags = NUKE_SHOW_TIMER_ALL
 	pixel_x = -16
 	use_power = 0
 	req_access = list(ACCESS_MARINE_PREP)
 	flags_atom = FPRINT
+
+/obj/structure/machinery/nuclearbomb/update_icon()
+	overlays.Cut()
+	if(anchored)
+		var/image/I = image(icon, "+deployed")
+		overlays += I
+	if(!safety)
+		var/image/I = image(icon, "+unsafe")
+		overlays += I
+	if(timing)
+		var/image/I = image(icon, "+timing")
+		overlays += I
+	if(timing == -1)
+		var/image/I = image(icon, "+activation")
+		overlays += I
 
 /obj/structure/machinery/nuclearbomb/power_change()
 	return
@@ -31,6 +47,24 @@ var/bomb_set = FALSE
 		timeleft = explosion_time - world.time
 		if(world.time >= explosion_time)
 			explode()
+		//3 warnings: 1. Halfway through, 2. 1 minute left, 3. 10 seconds left.
+		//this structure allows varedits to var/timeleft without losing or spamming warnings.
+		else if(timer_announcements_flags)
+			if(timer_announcements_flags & NUKE_SHOW_TIMER_HALF)
+				if(timeleft <= initial(timeleft) / 2 && timeleft >= initial(timeleft) / 2 - 30)
+					announce_to_players(NUKE_SHOW_TIMER_HALF)
+					timer_announcements_flags &= ~NUKE_SHOW_TIMER_HALF
+					return
+			if(timer_announcements_flags & NUKE_SHOW_TIMER_MINUTE)
+				if(timeleft <= 600 && timeleft >= 570)
+					announce_to_players(NUKE_SHOW_TIMER_MINUTE)
+					timer_announcements_flags = NUKE_SHOW_TIMER_TEN_SEC
+					return
+			if(timer_announcements_flags & NUKE_SHOW_TIMER_TEN_SEC)
+				if(timeleft <= 100 && timeleft >= 70)
+					announce_to_players(NUKE_SHOW_TIMER_TEN_SEC)
+					timer_announcements_flags = 0
+					return
 	else
 		stop_processing()
 
@@ -115,13 +149,12 @@ var/bomb_set = FALSE
 		if (deployable)
 			deployable = FALSE
 			anchored = FALSE
-			icon_state = "nuclearbomb0"
 		else
 			deployable = TRUE
 			anchored = TRUE
-			icon_state = "nuclearbomb1"
 		playsound(src.loc, 'sound/items/Deconstruct.ogg', 100, 1)
 	being_used = FALSE
+	update_icon()
 
 /obj/structure/machinery/nuclearbomb/Topic(href, href_list)
 	..()
@@ -158,21 +191,15 @@ var/bomb_set = FALSE
 			if(do_after(usr, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 				timing = !timing
 				if(timing)
-					icon_state = "nuclearbomb2"
 					if(!safety)
 						bomb_set = TRUE
 						explosion_time = world.time + timeleft
 						start_processing()
-						var/name = "[MAIN_AI_SYSTEM] Nuclear Tracker"
-						var/input = "ALERT.\n\nNUCLEAR EXPLOSIVE ORDNANCE ACTIVATED.\n\nDETONATION IN [timeleft/10] SECONDS."
-						marine_announcement(input, name, 'sound/misc/notice1.ogg')
-						announce_xenos()
-						announce_yautja()
+						announce_to_players()
 						message_admins("[src] has been activated by [key_name(usr, 1)](<A HREF='?_src_=admin_holder;adminplayerobservejump=[usr]'>JMP</A>)")
 					else
 						bomb_set = FALSE
 				else
-					icon_state = "nuclearbomb1"
 					disable()
 					message_admins("[src] has been deactivated by [key_name(usr, 1)](<A HREF='?_src_=admin_holder;adminplayerobservejump=[usr]'>JMP</A>)")
 				playsound(src.loc, 'sound/effects/thud.ogg', 100, 1)
@@ -211,21 +238,76 @@ var/bomb_set = FALSE
 				anchored = !anchored
 			being_used = FALSE
 
+	update_icon()
 	add_fingerprint(usr)
 	for(var/mob/M in viewers(1, src))
 		if ((M.client && M.interactee == src))
 			attack_hand(M)
 
-/obj/structure/machinery/nuclearbomb/proc/announce_yautja()
-	var/t_left = duration2text_sec(rand(timeleft - timeleft / 10, timeleft + timeleft / 10))
-	if(timing)
-		yautja_announcement(SPAN_YAUTJABOLDBIG("WARNING!<br>A human Purification Device has been detected. You have approximately [t_left] to abandon the hunting grounds before it activates."))
-	else
-		yautja_announcement(SPAN_YAUTJABOLDBIG("WARNING!<br>The human Purification Device's signature has disappeared."))
+//unified all announcements to one proc
+/obj/structure/machinery/nuclearbomb/proc/announce_to_players(var/timer_warning)
+	if(timer_warning)	//we check for timer warnings first
+		//humans part
+		var/list/humans_other = human_mob_list + dead_mob_list
+		var/list/humans_USCM = list()
+		for(var/mob/M in humans_other)
+			var/mob/living/carbon/human/H = M
+			if(istype(H))							//if it's unconsious human or yautja, we remove them
+				if(H.stat != CONSCIOUS || isYautja(H))
+					humans_other.Remove(M)
+					continue
+			if(M.faction == FACTION_MARINE || M.faction == FACTION_SURVIVOR)			//separating marines from other factions. Survs go here too
+				humans_USCM += M
+				humans_other -= M
+		announcement_helper("WARNING.\n\nDETONATION IN [round(timeleft/10)] SECONDS.", "[MAIN_AI_SYSTEM] Nuclear Tracker", humans_USCM, 'sound/misc/notice1.ogg')
+		announcement_helper("WARNING.\n\nDETONATION IN [round(timeleft/10)] SECONDS.", "HQ Intel Division", humans_other, 'sound/misc/notice1.ogg')
+		//preds part
+		var/t_left = duration2text_sec(round(rand(timeleft - timeleft / 10, timeleft + timeleft / 10)))
+		yautja_announcement(SPAN_YAUTJABOLDBIG("WARNING!\n\nYou have approximately [t_left] seconds to abandon the hunting grounds before activation of human Purification Device."))
+		//xenos part
+		var/warning
+		if(timer_warning & NUKE_SHOW_TIMER_HALF)
+			warning = "Hive killer is halfway through preparation cycle!"
+		else if(timer_warning & NUKE_SHOW_TIMER_MINUTE)
+			warning = "Hive killer is almost ready to trigger!"
+		else
+			warning = "DISABLE IT! NOW!"
+		for(var/datum/hive_status/hive in hive_datum)
+			if(!hive.totalXenos.len)
+				return
+			xeno_announcement(SPAN_XENOANNOUNCE(warning), hive.hivenumber, XENO_GENERAL_ANNOUNCE)
+		return
 
-/obj/structure/machinery/nuclearbomb/proc/announce_xenos()
-	for(var/datum/hive_status/hive in hive_datum)
-		hive.handle_nuke_alert(timing, get_area(loc))
+	//deal with start/stop announcements for players
+	var/list/humans_other = human_mob_list + dead_mob_list
+	var/list/humans_USCM = list()
+	for(var/mob/M in humans_other)
+		var/mob/living/carbon/human/H = M
+		if(istype(H))							//if it's unconsious human or yautja, we remove them
+			if(H.stat != CONSCIOUS || isYautja(H))
+				humans_other.Remove(M)
+				continue
+		if(M.faction == FACTION_MARINE || M.faction == FACTION_SURVIVOR)			//separating marines from other factions. Survs go here too
+			humans_USCM += M
+			humans_other -= M
+	if(timing)
+		announcement_helper("ALERT.\n\nNUCLEAR EXPLOSIVE ORDNANCE ACTIVATED.\n\nDETONATION IN [round(timeleft/10)] SECONDS.", "[MAIN_AI_SYSTEM] Nuclear Tracker", humans_USCM, 'sound/misc/notice1.ogg')
+		announcement_helper("ALERT.\n\nNUCLEAR EXPLOSIVE ORDNANCE ACTIVATED.\n\nDETONATION IN [round(timeleft/10)] SECONDS.", "HQ Nuclear Tracker", humans_other, 'sound/misc/notice1.ogg')
+		var/t_left = duration2text_sec(round(rand(timeleft - timeleft / 10, timeleft + timeleft / 10)))
+		yautja_announcement(SPAN_YAUTJABOLDBIG("WARNING!<br>A human Purification Device has been detected. You have approximately [t_left] to abandon the hunting grounds before it activates."))
+		for(var/datum/hive_status/hive in hive_datum)
+			if(!hive.totalXenos.len)
+				continue
+			xeno_announcement(SPAN_XENOANNOUNCE("The tallhosts have deployed a hive killer at [get_area(loc).name]! Stop it at all costs!"), hive.hivenumber, XENO_GENERAL_ANNOUNCE)
+	else
+		announcement_helper("ALERT.\n\nNUCLEAR EXPLOSIVE ORDNANCE DEACTIVATED.", "[MAIN_AI_SYSTEM] Nuclear Tracker", humans_USCM, 'sound/misc/notice1.ogg')
+		announcement_helper("ALERT.\n\nNUCLEAR EXPLOSIVE ORDNANCE DEACTIVATED.", "HQ Intel Division", humans_other, 'sound/misc/notice1.ogg')
+		yautja_announcement(SPAN_YAUTJABOLDBIG("WARNING!<br>The human Purification Device's signature has disappeared."))
+		for(var/datum/hive_status/hive in hive_datum)
+			if(!hive.totalXenos.len)
+				continue
+			xeno_announcement(SPAN_XENOANNOUNCE("The hive killer has been disabled! Rejoice!"), hive.hivenumber, XENO_GENERAL_ANNOUNCE)
+	return
 
 /obj/structure/machinery/nuclearbomb/ex_act(severity)
 	return
@@ -235,20 +317,17 @@ var/bomb_set = FALSE
 	bomb_set = FALSE
 	timeleft = explosion_time - world.time
 	explosion_time = null
-	var/name = "[MAIN_AI_SYSTEM] Nuclear Tracker"
-	var/input = "ALERT.\n\nNUCLEAR EXPLOSIVE ORDNANCE DEACTIVATED"
-	marine_announcement(input, name, 'sound/misc/notice1.ogg')
-	announce_xenos()
-	announce_yautja()
+	announce_to_players()
 
 /obj/structure/machinery/nuclearbomb/proc/explode()
 	if(safety)
 		timing = FALSE
 		stop_processing()
+		update_icon()
 		return FALSE
 	timing = -1
+	update_icon()
 	safety = TRUE
-	icon_state = "nuclearbomb3"
 
 	EvacuationAuthority.trigger_self_destruct(list(z), src, FALSE, NUKE_EXPLOSION_GROUND_FINISHED, FALSE, end_round)
 
@@ -256,6 +335,13 @@ var/bomb_set = FALSE
 	cell_explosion(loc, 500, 150, null, initial(name))
 	qdel(src)
 	return TRUE
+
+/obj/structure/machinery/nuclearbomb/Dispose()
+	if(timing != -1)
+		message_admins("[src] has been unexpectedly deleted at ([x],[y],[x]). (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP</a>)")
+		log_game("[src] has been unexpectedly deleted at ([x],[y],[x]).")
+	bomb_set = FALSE
+	..()
 
 /obj/item/disk/nuclear/Dispose()
 	if(blobstart.len > 0)

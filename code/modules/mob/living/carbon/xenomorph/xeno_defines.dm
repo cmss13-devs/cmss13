@@ -524,15 +524,6 @@
 	for(var/mob/living/carbon/Xenomorph/L in xeno_leader_list)
 		L.handle_xeno_leader_pheromones()
 
-/datum/hive_status/proc/handle_nuke_alert(var/timing, var/area/loc)
-	if (!totalXenos.len) //sanity check!
-		return
-
-	if(timing)
-		xeno_announcement(SPAN_XENOANNOUNCE("The tallhosts have deployed a hive killer at [loc.name]! Stop it at all costs!"), hivenumber, XENO_GENERAL_ANNOUNCE)
-	else
-		xeno_announcement(SPAN_XENOANNOUNCE("The hive killer has been disabled! Rejoice!"), hivenumber, XENO_GENERAL_ANNOUNCE)
-
 /*
  *    Helper procs for the Hive Status UI
  *    These are all called by the hive status UI manager to update its data

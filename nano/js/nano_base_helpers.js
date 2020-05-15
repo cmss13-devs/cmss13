@@ -15,7 +15,7 @@ NanoBaseHelpers = function ()
 
 				return '';
 			},
-			squadMode: function() {
+			USCMMode: function() {
 				$('body').css("background-color","#0C0E1E");
 				$('body').css("background-image","url('uiBackground-Squad.png')");
 				$('body').css("background-position","50% 0");

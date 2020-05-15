@@ -149,3 +149,9 @@ var/list/RESTRICTED_CAMERA_NETWORKS = list( //Those networks can only be accesse
 #define DIRT_SPLATTER "splatter" //Blood, vomit, oil 
 #define DIRT_JUNK "junk" //Gibs, Robot debris, etcetera
 #define DIRT_MISC "misc" //Anything else
+
+//For nuke announcements
+#define NUKE_SHOW_TIMER_TEN_SEC	1
+#define NUKE_SHOW_TIMER_MINUTE	2
+#define NUKE_SHOW_TIMER_HALF	4
+#define NUKE_SHOW_TIMER_ALL		(NUKE_SHOW_TIMER_TEN_SEC|NUKE_SHOW_TIMER_MINUTE|NUKE_SHOW_TIMER_HALF)

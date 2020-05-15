@@ -111,6 +111,8 @@
 	color = "#0064C8" // rgb: 0, 100, 200
 	custom_metabolism = 0.01
 	chemclass = CHEM_CLASS_BASIC
+	chemfiresupp = TRUE
+	intensitymod = -3
 
 	reaction_turf(var/turf/T, var/volume)
 		if(!istype(T)) return
@@ -1112,6 +1114,8 @@
 	color = "#afffc9"
 	chemclass = CHEM_CLASS_SPECIAL
 	objective_value = OBJECTIVE_MEDIUM_VALUE
+	overdose = REAGENTS_OVERDOSE
+	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 
 /datum/reagent/plasma/antineurotoxin/on_mob_life(var/mob/living/M)
 	. = ..()

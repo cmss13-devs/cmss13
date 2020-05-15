@@ -81,6 +81,7 @@
 #define PROPERTY_OCULOTOXIC 		"oculotoxic"
 #define PROPERTY_CARDIOTOXIC 		"cardiotoxic"
 #define PROPERTY_NEUROTOXIC			"neurotoxic"
+#define PROPERTY_HYPERMETABOLIC		"hypermetabolic"
 //Neutral
 #define PROPERTY_KETOGENIC			"ketogenic"
 #define PROPERTY_PAINING 			"paining"
@@ -100,7 +101,6 @@
 #define PROPERTY_ANTIHALLUCINOGENIC	"anti-hallucinogenic"
 #define PROPERTY_EXCRETING			"excreting"
 #define PROPERTY_HYPOMETABOLIC		"hypometabolic"
-#define PROPERTY_HYPERMETABOLIC		"hypermetabolic"
 #define PROPERTY_SEDATIVE			"sedative"
 //Positive
 #define PROPERTY_NUTRITIOUS 		"nutritious"
@@ -126,7 +126,7 @@
 #define PROPERTY_DEFIBRILLATING		"defibrillating"
 #define PROPERTY_THANATOMETABOL		"thanatometabolizing"
 #define PROPERTY_HYPERDENSIFICATING	"hyperdensificating"
-#define PROPERTY_HYPERTHROTTLING	"hyper throttling"
+#define PROPERTY_HYPERTHROTTLING	"hyperthrottling"
 #define PROPERTY_NEUROSHIELDING		"neuroshielding"
 #define PROPERTY_ANTIADDICTIVE		"anti-addictive"
 #define PROPERTY_ADDICTIVE			"addictive"

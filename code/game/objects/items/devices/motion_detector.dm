@@ -57,6 +57,9 @@
 	toggle_mode(usr)
 
 /obj/item/device/motiondetector/proc/toggle_mode(mob/user)
+	if(isobserver(user) || isXeno(user) || !Adjacent(user))
+		return
+
 	detector_mode = !detector_mode
 	if(detector_mode)
 		to_chat(user, SPAN_NOTICE("You switch [src] to short range mode."))

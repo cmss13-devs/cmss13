@@ -128,14 +128,14 @@
 		return
 	var/mob/M = selection.mob
 
-	if(!src.mob)
+	if(!mob || !istype(M) || !M.loc)
 		return
-	
-	if(!isobserver(mob))
-		src.admin_ghost()
 
-	src.mob.on_mob_jump()
-	src.mob.loc = M.loc
+	if(!isobserver(mob))
+		admin_ghost()
+
+	mob.on_mob_jump()
+	mob.loc = M.loc
 	message_staff("[usr.ckey] jumped to ckey [key_name(M)] in [get_area(M)] ([M.loc.x],[M.loc.y],[M.loc.z]).", M.loc.x, M.loc.y, M.loc.z)
 
 /client/proc/Getmob(var/mob/M)

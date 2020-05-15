@@ -15,6 +15,7 @@
 	G.fields["home_system"]	= "Unknown"
 	G.fields["citizenship"]	= "Unknown"
 	G.fields["faction"]		= "Unknown"
+	G.fields["mob_faction"]	= "Unknown"
 	G.fields["religion"]	= "Unknown"
 	data_core.general += G
 

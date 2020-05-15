@@ -1030,9 +1030,12 @@
 	set name = "View Crew Manifest"
 	set category = "IC"
 
+	if(faction != FACTION_MARINE && faction != FACTION_PMC && faction != FACTION_DEATHSQUAD)
+		to_chat(usr, SPAN_WARNING("You have no access to [MAIN_SHIP_NAME] crew manifest."))
+		return
 	var/dat = data_core.get_manifest()
 
-	show_browser(src, dat, "Crew Manifest", "manifest", "size=375x420")
+	show_browser(src, dat, "Crew Manifest", "manifest", "size=400x750")
 
 /mob/living/carbon/human/proc/set_species(var/new_species, var/default_colour)
 	if(!new_species)

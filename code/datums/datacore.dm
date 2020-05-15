@@ -2,11 +2,6 @@
 	data_core = new /obj/effect/datacore()
 	return 1
 
-
-
-
-
-
 /obj/effect/datacore
 	name = "datacore"
 	var/medical[] = list()
@@ -15,18 +10,20 @@
 	//This list tracks characters spawned in the world and cannot be modified in-game. Currently referenced by respawn_character().
 	var/locked[] = list()
 
-
-
 /obj/effect/datacore/proc/get_manifest(monochrome, OOC)
+	var/list/cic = new()
+	var/list/auxil = new()
+	var/list/misc = new()
+	var/list/mp = new()
 	var/list/eng = new()
-	var/list/med = new()
 	var/list/req = new()
+	var/list/med = new()
 	var/list/mar = new()
-	var/list/heads = new()
 	var/list/isactive = new()
 	var/list/squads = new()
 
 	var/dat = {"
+	<div align='center'>
 	<head><style>
 		.manifest {border-collapse:collapse;}
 		.manifest td, th {border:1px solid [monochrome?"black":"#DEF; background-color:white; color:black"]; padding:.25em}
@@ -35,7 +32,7 @@
 		.manifest td:first-child {text-align:right}
 		.manifest tr.alt td {[monochrome?"border-top-width: 2px":"background-color: #DEF"]}
 	</style></head>
-	<table class="manifest" width='350px'>
+	<table class="manifest">
 	<tr class='head'><th>Name</th><th>Rank</th><th>Activity</th></tr>
 	"}
 
@@ -43,6 +40,9 @@
 	// sort mobs
 
 	for(var/datum/data/record/t in data_core.general)
+		if(t.fields["mob_faction"] != FACTION_MARINE)	//we process only USCM humans
+			continue
+
 		var/name = t.fields["name"]
 		var/rank = t.fields["rank"]
 		var/real_rank = t.fields["real_rank"]
@@ -58,23 +58,60 @@
 		else
 			isactive[name] = t.fields["p_stat"]
 			//cael - to prevent multiple appearances of a player/job combination, add a continue after each line
-		if(real_rank in ROLES_COMMAND)
-			heads[name] = rank
-		if(real_rank in ROLES_ENGINEERING)
+
+		if(real_rank in ROLES_CIC)
+			cic[name] = rank
+		else if(real_rank in ROLES_AUXIL_SUPPORT)
+			auxil[name] = rank
+		else if(real_rank in ROLES_MISC)
+			misc[name] = rank
+		else if(real_rank in ROLES_POLICE)
+			mp[name] = rank
+		else if(real_rank in ROLES_ENGINEERING)
 			eng[name] = rank
-		if(real_rank in ROLES_MEDICAL)
-			med[name] = rank
-		if(real_rank in ROLES_REQUISITION)
+		else if(real_rank in ROLES_REQUISITION)
 			req[name] = rank
-		if(real_rank in ROLES_MARINES)
+		else if(real_rank in ROLES_MEDICAL)
+			med[name] = rank
+		else if(real_rank in ROLES_MARINES)
 			squads[name] = squad_name
 			mar[name] = rank
-	if(heads.len > 0)
-		dat += "<tr><th colspan=3>Command Staff</th></tr>"
-		for(name in heads)
-			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[heads[name]]</td><td>[isactive[name]]</td></tr>"
+
+	//here we sort marines
+	var/mar_sl = list()
+	var/mar_spc = list()
+	var/mar_sg = list()
+	var/mar_med = list()
+	var/mar_eng = list()
+	var/mar_pfc = list()
+	for(var/i in mar)
+		if(mar[i] == JOB_SQUAD_LEADER)
+			mar_sl[i] = mar[i]
+		else if(mar[i] == JOB_SQUAD_SPECIALIST)
+			mar_spc[i] = mar[i]
+		else if(mar[i] == JOB_SQUAD_SMARTGUN)
+			mar_sg[i] = mar[i]
+		else if(mar[i] == JOB_SQUAD_MEDIC)
+			mar_med[i] = mar[i]
+		else if(mar[i] == JOB_SQUAD_ENGI)
+			mar_eng[i] = mar[i]
+		else if(mar[i] == JOB_SQUAD_MARINE)
+			mar_pfc[i] = mar[i]
+	mar.Cut()
+	mar = mar_sl + mar_spc + mar_sg + mar_med + mar_eng + mar_pfc
+
+	//here we fill manifest
+	if(LAZYLEN(cic))
+		dat += "<tr><th colspan=3>Command</th></tr>"
+		for(name in cic)
+			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[cic[name]]</td><td>[isactive[name]]</td></tr>"
 			even = !even
-	if(mar.len > 0)
+	if(LAZYLEN(auxil))
+		dat += "<tr><th colspan=3>Auxiliary Combat Support</th></tr>"
+		for(name in auxil)
+			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[auxil[name]]</td><td>[isactive[name]]</td></tr>"
+			even = !even
+	if(LAZYLEN(mar))
 		dat += "<tr><th colspan=3>Marines</th></tr>"
 		for(var/j in list(SQUAD_NAME_1, SQUAD_NAME_2, SQUAD_NAME_3, SQUAD_NAME_4))
 			dat += "<tr><th colspan=3>[j]</th></tr>"
@@ -82,29 +119,36 @@
 				if(squads[name] == j)
 					dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[mar[name]]</td><td>[isactive[name]]</td></tr>"
 					even = !even
-	if(eng.len > 0)
+	if(LAZYLEN(mp))
+		dat += "<tr><th colspan=3>Military Police</th></tr>"
+		for(name in mp)
+			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[mp[name]]</td><td>[isactive[name]]</td></tr>"
+			even = !even
+	if(LAZYLEN(eng))
 		dat += "<tr><th colspan=3>Engineering</th></tr>"
 		for(name in eng)
 			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[eng[name]]</td><td>[isactive[name]]</td></tr>"
 			even = !even
-	if(req.len)
+	if(LAZYLEN(req))
 		dat += "<tr><th colspan=3>Requisition</th></tr>"
 		for(name in req)
 			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[req[name]]</td><td>[isactive[name]]</td></tr>"
 			even = !even
-	if(med.len > 0)
-		dat += "<tr><th colspan=3>Medical</th></tr>"
+	if(LAZYLEN(med))
+		dat += "<tr><th colspan=3>Medbay</th></tr>"
 		for(name in med)
 			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[med[name]]</td><td>[isactive[name]]</td></tr>"
 			even = !even
+	if(LAZYLEN(misc))
+		dat += "<tr><th colspan=3>Other</th></tr>"
+		for(name in misc)
+			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[misc[name]]</td><td>[isactive[name]]</td></tr>"
+			even = !even
 
-	dat += "</table>"
+	dat += "</table></div>"
 	dat = replacetext(dat, "\n", "") // so it can be placed on paper correctly
 	dat = replacetext(dat, "\t", "")
-
 	return dat
-
-
 
 /obj/effect/datacore/proc/manifest(var/nosleep = 0)
 	spawn()
@@ -155,6 +199,7 @@
 	G.fields["home_system"]	= H.home_system
 	G.fields["citizenship"]	= H.citizenship
 	G.fields["faction"]		= H.personal_faction
+	G.fields["mob_faction"]	= H.faction
 	G.fields["religion"]	= H.religion
 	//G.fields["photo_front"]	= front
 	//G.fields["photo_side"]	= side

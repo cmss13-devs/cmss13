@@ -160,6 +160,19 @@
 	var/gun_rounds = 0 //Did the gun come with any ammo?
 	health = 50
 
+/obj/structure/machinery/m56d_post/BlockedPassDirs(atom/movable/mover, target_turf)
+	if(istype(mover, /obj/item) && mover.throwing)
+		return FALSE
+	else
+		return ..()
+
+//Making so rockets don't hit M56D
+/obj/structure/machinery/m56d_post/calculate_cover_hit_boolean(obj/item/projectile/P, var/distance = 0, var/cade_direction_correct = FALSE)
+	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
+	if(ammo_flags & AMMO_ROCKET)
+		return 0
+	..()
+
 /obj/structure/machinery/m56d_post/update_health(damage)
 	health -= damage
 	if(health <= 0)
@@ -338,6 +351,19 @@
 	var/icon_empty = "M56D_e" //Empty
 	var/zoom = 0 // 0 is it doesn't zoom, 1 is that it zooms.
 	var/damage_state = M56D_DMG_NONE
+
+//Making so rockets don't hit M56D
+/obj/structure/machinery/m56d_hmg/calculate_cover_hit_boolean(obj/item/projectile/P, var/distance = 0, var/cade_direction_correct = FALSE)
+	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
+	if(ammo_flags & AMMO_ROCKET)
+		return 0
+	..()
+
+/obj/structure/machinery/m56d_hmg/BlockedPassDirs(atom/movable/mover, target_turf)
+	if(istype(mover, /obj/item) && mover.throwing)
+		return FALSE
+	else
+		return ..()
 
 /obj/structure/machinery/m56d_hmg/New()
 	ammo = ammo_list[ammo] //dunno how this works but just sliding this in from sentry-code.

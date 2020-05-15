@@ -1,0 +1,12 @@
+author: Jeser
+
+delete-after: True
+
+changes: 
+  - tweak: "M56D and it's mount don't block RPG rockets now."
+  - tweak: "Specialist's M92 Grenade Launcher now adds HIGH TOSS effect to it's grenades, allowing you to shoot grenades over vendors and some other objects."
+  - tweak: "You can throw items over simple vehicles. You can throw items over multitile vehicles using High Toss."
+  - tweak: "You can throw items over: M56D and it's mount, computers, gibbers, microwaves, food processors, biogenerators, fax machines, laptop vendors, mech bay recharge ports, mech part fabricators, cyborg recharging stations, showcases, ore boxes, xenoautopsy jar shelves and all 5 types of xenoautopsy cryo tanks (these can be found on some maps in research facilities)."
+  - tweak: "You can throw items over smartfridges, megaseed servitors and other smart storages with High Toss."
+  - tweak: "Gibbers, microwaves, food processors, biogenerators, juicers and smartfridges became wrenchable."
+  - experiment: "Reminder: to activate High Toss, CTRL + Click the throw button."

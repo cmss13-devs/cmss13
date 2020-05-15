@@ -9,8 +9,9 @@
 	icon = 'icons/obj/structures/machinery/vending.dmi'
 	icon_state = "smartfridge"
 	layer = BELOW_OBJ_LAYER
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
+	wrenchable = TRUE
 	use_power = 1
 	idle_power_usage = 5
 	active_power_usage = 100
@@ -28,6 +29,12 @@
 	var/locked = 0
 	var/panel_open = 0 //Hacking a smartfridge
 	var/wires = 7
+
+/obj/structure/machinery/smartfridge/BlockedPassDirs(atom/movable/mover, target_turf)
+	if(istype(mover, /obj/item) && mover.throwing && !((mover.flags_pass|mover.flags_pass_temp) & PASS_HIGH_OVER))
+		return FALSE
+	else
+		return ..()
 
 /obj/structure/machinery/smartfridge/proc/accept_check(var/obj/item/O as obj)
 	if(istype(O,/obj/item/reagent_container/food/snacks/grown/) || istype(O,/obj/item/seeds/))
@@ -59,6 +66,10 @@
 ********************/
 
 /obj/structure/machinery/smartfridge/attackby(var/obj/item/O as obj, var/mob/user as mob)
+	if(iswrench(O))
+		. = ..()
+		return
+
 	if(istype(O, /obj/item/tool/screwdriver))
 		panel_open = !panel_open
 		to_chat(user, "You [panel_open ? "open" : "close"] the maintenance panel.")
@@ -73,7 +84,7 @@
 			attack_hand(user)
 		return
 
-	if(!src.ispowered)
+	if(!ispowered)
 		to_chat(user, SPAN_NOTICE("\The [src] is unpowered and useless."))
 		return
 

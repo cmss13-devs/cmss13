@@ -57,6 +57,11 @@
 	desc = "A shooting target with a threatening silhouette."
 	health = 6500
 
+/obj/structure/target/BlockedPassDirs(atom/movable/mover, target_turf)
+	if(istype(mover, /obj/item) && mover.throwing)
+		return FALSE
+	else
+		return ..()
 
 /obj/structure/monorail
 	name = "monorail track"
@@ -122,7 +127,11 @@ obj/item/alienjar
 		pixel_x += rand(-3,3)
 		pixel_y += rand(-3,3)
 
-
+obj/structure/xenoautopsy/BlockedPassDirs(atom/movable/mover, target_turf)
+	if(istype(mover, /obj/item) && mover.throwing)
+		return FALSE
+	else
+		return ..()
 
 
 //stairs
@@ -149,6 +158,11 @@ obj/item/alienjar
 	density = 1
 	anchored = 0
 
+/obj/structure/ore_box/BlockedPassDirs(atom/movable/mover, target_turf)
+	if(istype(mover, /obj/item) && mover.throwing)
+		return FALSE
+	else
+		return ..()
 
 /obj/structure/computer3frame
 	density = 1

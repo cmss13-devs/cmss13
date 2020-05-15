@@ -2,8 +2,8 @@
 	name = "cyborg recharging station"
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "borgcharger0"
-	density = 1
-	anchored = 1.0
+	density = TRUE
+	anchored = TRUE
 	use_power = 1
 	idle_power_usage = 50
 	active_power_usage = 50
@@ -187,3 +187,9 @@
 	build_icon()
 	update_use_power(1)
 	return
+
+/obj/structure/machinery/recharge_station/BlockedPassDirs(atom/movable/mover, target_turf)
+	if(istype(mover, /obj/item) && mover.throwing)
+		return FALSE
+	else
+		return ..()

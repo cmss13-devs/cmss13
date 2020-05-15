@@ -3,15 +3,20 @@
 	icon = 'icons/obj/structures/machinery/kitchen.dmi'
 	icon_state = "processor"
 	layer = ABOVE_TABLE_LAYER
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
+	wrenchable = TRUE
 	var/broken = 0
 	var/processing = 0
 	use_power = 1
 	idle_power_usage = 5
 	active_power_usage = 50
 
-
+/obj/structure/machinery/processor/BlockedPassDirs(atom/movable/mover, target_turf)
+	if(istype(mover, /obj/item) && mover.throwing)
+		return FALSE
+	else
+		return ..()
 
 /datum/food_processor_process
 	var/input
@@ -62,12 +67,15 @@
 	return 0
 
 /obj/structure/machinery/processor/attackby(var/obj/item/O as obj, var/mob/user as mob)
-	if(src.processing)
+	if(processing)
 		to_chat(user, SPAN_DANGER("The processor is in the process of processing."))
 		return 1
-	if(src.contents.len > 0) //TODO: several items at once? several different items?
+	if(contents.len > 0) //TODO: several items at once? several different items?
 		to_chat(user, SPAN_DANGER("Something is already in the processing chamber."))
 		return 1
+	if(iswrench(O))
+		. = ..()
+		return
 	var/obj/what = O
 	if (istype(O, /obj/item/grab))
 		var/obj/item/grab/G = O

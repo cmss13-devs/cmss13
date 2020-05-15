@@ -3,11 +3,17 @@
 	desc = ""
 	icon = 'icons/obj/structures/machinery/biogenerator.dmi'
 	icon_state = "biogen-stand"
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
+	wrenchable = TRUE
 	use_power = 1
 	idle_power_usage = 40
 
+/obj/structure/machinery/biogenerator/BlockedPassDirs(atom/movable/mover, target_turf)
+	if(istype(mover, /obj/item) && mover.throwing)
+		return FALSE
+	else
+		return ..()
 
 var/list/obj/structure/machinery/faxmachine/allfaxes = list()
 var/list/alldepartments = list()
@@ -17,8 +23,8 @@ var/list/alldepartments = list()
 	name = "computer"
 	icon = 'icons/obj/structures/machinery/computer3.dmi'
 	icon_state = "frame"
-	density = 1
-	anchored = 1.0
+	density = TRUE
+	anchored = TRUE
 	projectile_coverage = PROJECTILE_COVERAGE_LOW
 
 	idle_power_usage	= 20
@@ -39,14 +45,19 @@ var/list/alldepartments = list()
 /obj/structure/machinery/computer3/powermonitor
 	icon_state = "frame-eng"
 
+/obj/structure/machinery/computer3/BlockedPassDirs(atom/movable/mover, target_turf)
+	if(istype(mover, /obj/item) && mover.throwing)
+		return FALSE
+	else
+		return ..()
 
 /obj/structure/machinery/faxmachine
 	name = "fax machine"
 	icon = 'icons/obj/structures/machinery/library.dmi'
 	icon_state = "fax"
 //	req_one_access = list(ACCESS_MARINE_BRIDGE) //Warden needs to be able to Fax solgov too.
-	anchored = 1
-	density = 1
+	anchored = TRUE
+	density = TRUE
 	use_power = 1
 	idle_power_usage = 30
 	active_power_usage = 200
@@ -221,6 +232,12 @@ var/list/alldepartments = list()
 		to_chat(user, SPAN_NOTICE("You [anchored ? "wrench" : "unwrench"] \the [src]."))
 	return
 
+/obj/structure/machinery/faxmachine/BlockedPassDirs(atom/movable/mover, target_turf)
+	if(istype(mover, /obj/item) && mover.throwing)
+		return FALSE
+	else
+		return ..()
+
 /proc/Centcomm_fax(var/originfax, var/sent, var/sentname, var/mob/Sender)
 	var/faxcontents = "[sent]"
 	fax_contents += faxcontents
@@ -312,27 +329,44 @@ proc/SendFax(var/sent, var/sentname, var/mob/Sender, var/dpt)
 	icon = 'icons/obj/structures/machinery/vending.dmi'
 	icon_state = "robotics"
 	layer = BELOW_OBJ_LAYER
-	anchored = 1
-	density = 1
+	anchored = TRUE
+	density = TRUE
 
+/obj/structure/machinery/lapvend/BlockedPassDirs(atom/movable/mover, target_turf)
+	if(istype(mover, /obj/item) && mover.throwing)
+		return FALSE
+	else
+		return ..()
 
 /obj/structure/machinery/mech_bay_recharge_port
 	name = "Mech Bay Power Port"
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 	icon = 'icons/obj/structures/props/mech.dmi'
 	icon_state = "recharge_port"
+
+/obj/structure/machinery/mech_bay_recharge_port/BlockedPassDirs(atom/movable/mover, target_turf)
+	if(istype(mover, /obj/item) && mover.throwing)
+		return FALSE
+	else
+		return ..()
 
 /obj/structure/machinery/mecha_part_fabricator
 	icon = 'icons/obj/structures/machinery/robotics.dmi'
 	icon_state = "fab-idle"
 	name = "Exosuit Fabricator"
 	desc = "Nothing is being built."
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 	use_power = 1
 	idle_power_usage = 20
 	active_power_usage = 5000
+
+/obj/structure/machinery/mecha_part_fabricator/BlockedPassDirs(atom/movable/mover, target_turf)
+	if(istype(mover, /obj/item) && mover.throwing)
+		return FALSE
+	else
+		return ..()
 
 /obj/structure/machinery/computer/mecha
 	name = "Exosuit Control"

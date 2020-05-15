@@ -4,8 +4,9 @@
 	icon = 'icons/obj/structures/machinery/kitchen.dmi'
 	icon_state = "juicer1"
 	layer = ABOVE_TABLE_LAYER
-	density = 0
-	anchored = 0
+	density = FALSE
+	anchored = FALSE
+	wrenchable = TRUE
 	use_power = 1
 	idle_power_usage = 5
 	active_power_usage = 100
@@ -33,6 +34,8 @@
 
 
 /obj/structure/machinery/juicer/attackby(var/obj/item/O as obj, var/mob/user as mob)
+	if(iswrench(O))
+		. = ..()
 	if (istype(O,/obj/item/reagent_container/glass) || \
 		istype(O,/obj/item/reagent_container/food/drinks/drinkingglass))
 		if (beaker)

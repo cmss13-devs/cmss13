@@ -352,6 +352,9 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 		else if (display_freq == INTEL_FREQ)
 			part_a = "<span class='intelradio'><span class='name'>"
 
+		else if (display_freq == WY_FREQ)
+			part_a = "<span class='wyradio'><span class='name'>"
+
 
 		else if (display_freq == ALPHA_FREQ)
 			part_a = "<span class='alpharadio'><span class='name'>"

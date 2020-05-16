@@ -533,6 +533,8 @@
 	return TRUE
 
 /mob/living/carbon/Xenomorph/resist_grab(moving_resist)
+	if(!pulledby)
+		return
 	if(pulledby.grab_level)
 		visible_message(SPAN_DANGER("[src] has broken free of [pulledby]'s grip!"), null, null, 5)
 	pulledby.stop_pulling()
@@ -736,8 +738,9 @@
 	if(stat == DEAD && !disposed)
 		living_xeno_list += src
 
-		hive.add_xeno(src)
-		hive.hive_ui.update_all_xeno_data()
+		if(hive)
+			hive.add_xeno(src)
+			hive.hive_ui.update_all_xeno_data()
 
 		if(caste_name == "Queen")
 			New()

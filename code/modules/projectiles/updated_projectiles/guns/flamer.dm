@@ -158,6 +158,8 @@
 	var/burnlevel
 	var/burntime
 	var/fire_color = "red"
+	if(!current_mag)
+		return
 
 	switch(current_mag.caliber)
 		if("UT-Napthal Fuel") //This isn't actually Napalm actually
@@ -363,6 +365,8 @@
 	if(!link_fuelpack(user))
 		to_chat(user, "You must equip the specialized Broiler-T back harness to use this incinerator unit!")
 		click_empty(user)
+		return
+	if(!current_mag || !fuelpack)
 		return
 	// Check we're actually firing the right fuel tank
 	if(current_mag != fuelpack.active_fuel)

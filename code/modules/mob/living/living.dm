@@ -202,6 +202,8 @@
 	return //returning 1 means we successfully broke free
 
 /mob/living/resist_grab(moving_resist)
+	if(!pulledby)
+		return
 	if(pulledby.grab_level)
 		if(prob(60/pulledby.grab_level))
 			playsound(src.loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)

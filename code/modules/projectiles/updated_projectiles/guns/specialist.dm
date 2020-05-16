@@ -436,6 +436,8 @@
 
 
 /obj/item/weapon/gun/smartgun/delete_bullet(obj/item/projectile/projectile_to_fire, refund = 0)
+	if(!current_mag)
+		return
 	qdel(projectile_to_fire)
 	if(refund) current_mag.current_rounds++
 	return 1
@@ -1093,6 +1095,8 @@
 
 /obj/item/weapon/gun/launcher/rocket/examine(mob/user)
 	..()
+	if(!current_mag)
+		return
 	if(current_mag.current_rounds > 0)
 		to_chat(user, "It has an 84mm [ammo.name] loaded.")
 
@@ -1120,11 +1124,15 @@
 	return 1
 
 /obj/item/weapon/gun/launcher/rocket/delete_bullet(obj/item/projectile/projectile_to_fire, refund = 0)
+	if(!current_mag)
+		return
 	qdel(projectile_to_fire)
 	if(refund) current_mag.current_rounds++
 	return 1
 
 /obj/item/weapon/gun/launcher/rocket/proc/make_rocket(mob/user, drop_override = 0, empty = 1)
+	if(!current_mag)
+		return
 	var/obj/item/ammo_magazine/rocket/r = new current_mag.type()
 	if(empty)
 		r.current_rounds = 0
@@ -1134,6 +1142,8 @@
 	r.update_icon()
 
 /obj/item/weapon/gun/launcher/rocket/reload(mob/user, obj/item/ammo_magazine/rocket)
+	if(!current_mag)
+		return
 	if(flags_gun_features & GUN_BURST_FIRING)
 		return
 
@@ -1173,7 +1183,7 @@
 	return 1
 
 /obj/item/weapon/gun/launcher/rocket/unload(mob/user,  reload_override = 0, drop_override = 0)
-	if(user)
+	if(user && current_mag)
 		if(current_mag.current_rounds <= 0)
 			to_chat(user, SPAN_WARNING("[src] is already empty!"))
 			return
@@ -1281,7 +1291,7 @@
 		if(istype(F, /obj/item/device/flashlight/flare/signal))
 			to_chat(user, SPAN_WARNING("You can't load a signal flare in [src]!"))
 			return
-		if(current_mag.current_rounds == 0)
+		if(current_mag && current_mag.current_rounds == 0)
 			playsound(user, reload_sound, 25, 1)
 			to_chat(user, SPAN_NOTICE("You load \the [F] into [src]."))
 			current_mag.current_rounds++

@@ -844,6 +844,8 @@
 
 	if(species && !species.has_organ["eyes"]) return 2//No eyes, can't hurt them.
 
+	if(!internal_organs_by_name)
+		return 2
 	var/datum/internal_organ/eyes/I = internal_organs_by_name["eyes"]
 	if(I)
 		if(I.cut_away)

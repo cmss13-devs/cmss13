@@ -23,7 +23,8 @@ can cause issues with ammo types getting mixed up during the burst.
 
 /obj/item/weapon/gun/shotgun/New()
 	..()
-	replace_tube(current_mag.current_rounds) //Populate the chamber.
+	if(current_mag)
+		replace_tube(current_mag.current_rounds) //Populate the chamber.
 
 /obj/item/weapon/gun/shotgun/set_gun_config_values()
 	..()
@@ -38,6 +39,8 @@ can cause issues with ammo types getting mixed up during the burst.
 	recoil_unwielded = config.high_recoil_value
 
 /obj/item/weapon/gun/shotgun/proc/replace_tube(number_to_replace)
+	if(!current_mag)
+		return
 	current_mag.chamber_contents = list()
 	current_mag.chamber_contents.len = current_mag.max_rounds
 	var/i
@@ -46,6 +49,8 @@ can cause issues with ammo types getting mixed up during the burst.
 	current_mag.chamber_position = current_mag.current_rounds //The position is always in the beginning [1]. It can move from there.
 
 /obj/item/weapon/gun/shotgun/proc/add_to_tube(mob/user,selection) //Shells are added forward.
+	if(!current_mag)
+		return
 	current_mag.chamber_position++ //We move the position up when loading ammo. New rounds are always fired next, in order loaded.
 	current_mag.chamber_contents[current_mag.chamber_position] = selection //Just moves up one, unless the mag is full.
 	if(current_mag.current_rounds == 1 && !in_chamber) //The previous proc in the reload() cycle adds ammo, so the best workaround here,
@@ -56,6 +61,8 @@ can cause issues with ammo types getting mixed up during the burst.
 	return 1
 
 /obj/item/weapon/gun/shotgun/proc/empty_chamber(mob/user)
+	if(!current_mag)
+		return
 	if(current_mag.current_rounds <= 0)
 		if(in_chamber)
 			in_chamber = null
@@ -70,6 +77,8 @@ can cause issues with ammo types getting mixed up during the burst.
 	if(!current_mag.current_rounds && !in_chamber) update_icon()
 
 /obj/item/weapon/gun/shotgun/proc/unload_shell(mob/user)
+	if(!current_mag)
+		return
 	var/obj/item/ammo_magazine/handful/new_handful = retrieve_shell(current_mag.chamber_contents[current_mag.chamber_position])
 
 	if(user)
@@ -116,6 +125,8 @@ can cause issues with ammo types getting mixed up during the burst.
 	empty_chamber(user)
 
 /obj/item/weapon/gun/shotgun/proc/ready_shotgun_tube()
+	if(!current_mag)
+		return
 	if(current_mag.current_rounds > 0)
 		ammo = ammo_list[current_mag.chamber_contents[current_mag.chamber_position]]
 		in_chamber = create_bullet(ammo, initial(name))
@@ -289,6 +300,8 @@ can cause issues with ammo types getting mixed up during the burst.
 
 /obj/item/weapon/gun/shotgun/double/examine(mob/user)
 	..()
+	if(!current_mag)
+		return
 	if(current_mag.chamber_closed) to_chat(user, "It's closed.")
 	else to_chat(user, "It's open with [current_mag.current_rounds] shell\s loaded.")
 
@@ -298,10 +311,14 @@ can cause issues with ammo types getting mixed up during the burst.
 	open_chamber(user)
 
 /obj/item/weapon/gun/shotgun/double/check_chamber_position()
+	if(!current_mag)
+		return
 	if(current_mag.chamber_closed) return
 	return 1
 
 /obj/item/weapon/gun/shotgun/double/add_to_tube(mob/user,selection) //Load it on the go, nothing chambered.
+	if(!current_mag)
+		return
 	current_mag.chamber_position++
 	current_mag.chamber_contents[current_mag.chamber_position] = selection
 	playsound(user, reload_sound, 25, 1)
@@ -310,11 +327,15 @@ can cause issues with ammo types getting mixed up during the burst.
 /obj/item/weapon/gun/shotgun/double/able_to_fire(mob/user)
 	. = ..()
 	if(. && istype(user))
+		if(!current_mag)
+			return
 		if(!current_mag.chamber_closed)
 			to_chat(user, SPAN_DANGER("Close the chamber!"))
 			return 0
 
 /obj/item/weapon/gun/shotgun/double/empty_chamber(mob/user)
+	if(!current_mag)
+		return
 	if(current_mag.chamber_closed)
 		open_chamber(user)
 	else
@@ -324,6 +345,8 @@ can cause issues with ammo types getting mixed up during the burst.
 	//Trimming down the unnecessary stuff.
 	//This doesn't chamber, creates a bullet on the go.
 
+	if(!current_mag)
+		return
 	if(current_mag.current_rounds > 0)
 		ammo = ammo_list[current_mag.chamber_contents[current_mag.chamber_position]]
 		in_chamber = create_bullet(ammo, initial(name))
@@ -334,16 +357,22 @@ can cause issues with ammo types getting mixed up during the burst.
 
 /obj/item/weapon/gun/shotgun/double/delete_bullet(obj/item/projectile/projectile_to_fire, refund = 0)
 	qdel(projectile_to_fire)
+	if(!current_mag)
+		return
 	if(refund) current_mag.current_rounds++
 	return 1
 
 /obj/item/weapon/gun/shotgun/double/reload_into_chamber(mob/user)
+	if(!current_mag)
+		return
 	in_chamber = null
 	current_mag.chamber_contents[current_mag.chamber_position] = "empty"
 	current_mag.chamber_position--
 	return 1
 
 /obj/item/weapon/gun/shotgun/double/proc/open_chamber(mob/user)
+	if(!current_mag)
+		return
 	current_mag.chamber_closed = !current_mag.chamber_closed
 	update_icon()
 	playsound(user, reload_sound, 25, 1) //replace me with unique break open sound!
@@ -491,6 +520,8 @@ can cause issues with ammo types getting mixed up during the burst.
 
 //Same as double barrel. We don't want to do anything else here.
 /obj/item/weapon/gun/shotgun/pump/add_to_tube(mob/user, selection) //Load it on the go, nothing chambered.
+	if(!current_mag)
+		return
 	current_mag.chamber_position++
 	current_mag.chamber_contents[current_mag.chamber_position] = selection
 	playsound(user, reload_sound, 25, 1)
@@ -523,6 +554,8 @@ can cause issues with ammo types getting mixed up during the burst.
 
 
 /obj/item/weapon/gun/shotgun/pump/reload_into_chamber(mob/user)
+	if(!current_mag)
+		return
 	if(!active_attachable)
 		pumped = FALSE //It was fired, so let's unlock the pump.
 		in_chamber = null

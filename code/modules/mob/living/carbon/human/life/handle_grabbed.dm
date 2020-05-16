@@ -1,6 +1,8 @@
 
 
 /mob/living/carbon/proc/handle_grabbed()
+	if(!pulledby)
+		return
 	if(pulledby.grab_level >= GRAB_AGGRESSIVE)
 		drop_held_items()
 

@@ -142,6 +142,8 @@
 	var/obj/item/weapon/gun/launcher/in_hand = M.get_active_hand()
 	if(!in_hand || !istype(in_hand))
 		return
+	if(!in_hand.current_mag)
+		return
 	var/obj/item/weapon/twohanded/offhand/off_hand = M.get_inactive_hand()
 	if(!off_hand || !istype(off_hand))
 		to_chat(user, SPAN_WARNING("\the [M] needs to be wielding \the [in_hand] in order to reload!"))

@@ -40,6 +40,10 @@
 	if(owner) return TRUE
 
 /datum/action/proc/give_action(mob/living/L)
+	if(!L)
+		return
+	if(!L.actions)
+		L.actions = list()
 	if(owner)
 		if(owner == L)
 			return

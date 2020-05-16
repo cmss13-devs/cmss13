@@ -107,3 +107,36 @@
 
 	message_admins("[usr.ckey] manually reloaded the role whitelist.")
 	RoleAuthority.load_whitelist()
+
+/client/proc/bulk_fetcher()
+	set name = "D: Bulk Fetch Items"
+	set category = "Debug"
+
+	if (admin_holder)
+		admin_holder.bulk_fetcher_panel()
+
+/datum/admins/proc/bulk_fetcher_panel()
+	if(!check_rights(R_DEBUG,0))	
+		return
+
+	var/dat = {"
+		<B>Fetch Objectives</B><BR>
+		<A href='?src=\ref[src];debug=bulkfetchdisks'>Disks</A><BR>
+		<A href='?src=\ref[src];debug=bulkfetchtechmanuals'>Technical Manuals</A><BR>
+		<A href='?src=\ref[src];debug=bulkfetchprogressreports'>Progress Reports</A><BR>
+		<A href='?src=\ref[src];debug=bulkfetchpaperscraps'>Paper Scraps</A><BR>
+		<A href='?src=\ref[src];debug=bulkfetchfolders'>Folders</A><BR>
+		<A href='?src=\ref[src];debug=bulkfetchexpdevices'>Experimental Devices</A><BR>
+		<BR>
+		<B>Research</B><BR>
+		<A href='?src=\ref[src];debug=bulkfetchvials'>Vials</A><BR>
+		<A href='?src=\ref[src];debug=bulkfetchresearchnotes'>Research Notes</A><BR>
+		<BR>
+		<B>Bodies</B><BR>
+		<A href='?src=\ref[src];debug=bulkfetchhumancorpses'>Human corpses</A><BR>
+		<A href='?src=\ref[src];debug=bulkfetchxenocorpses'>Xeno corpses</A><BR>
+		<BR>
+		"}
+
+	show_browser(usr, dat, "Bulk Fetcher Panel", "debug")
+	return

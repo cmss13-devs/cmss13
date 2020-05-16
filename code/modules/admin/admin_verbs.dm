@@ -102,7 +102,8 @@ var/list/admin_verbs_debug = list(
 	/client/proc/run_individual_test,
 	/client/proc/toggle_log_hrefs,
 	/client/proc/matrix_editor,
-	/client/proc/generate_sound_queues
+	/client/proc/generate_sound_queues,
+	/client/proc/bulk_fetcher
 )
 
 var/list/debug_verbs = list(
@@ -116,7 +117,7 @@ var/list/debug_verbs = list(
     /client/proc/view_power_update_stats_area,
     /client/proc/view_power_update_stats_machines,
     /client/proc/toggle_power_update_profiling,
-	/client/proc/nanomapgen_DumpImage
+	/client/proc/nanomapgen_DumpImage,
 )
 
 var/list/admin_verbs_paranoid_debug = list(

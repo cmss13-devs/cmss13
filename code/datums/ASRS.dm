@@ -20,10 +20,6 @@
 	group = "Munition"
 	cost = ASRS_LOWEST_WEIGHT
 
-/datum/supply_packs/explosives_plastique/asrs/
-	buyable = 0
-	group = "Utility"
-
 /datum/supply_packs/ammo_rounds_box_smg/asrs/
 	buyable = 0
 	group = "Munition"
@@ -50,21 +46,6 @@
 	cost = ASRS_LOW_WEIGHT
 
 /datum/supply_packs/ammo_m4a3_mag_box_ap/asrs/
-	buyable = 0
-	group = "Munition"
-	cost = ASRS_VERY_LOW_WEIGHT
-
-/datum/supply_packs/ammo_mod88_mag_box_ap/asrs/
-	buyable = 0
-	group = "Munition"
-	cost = ASRS_LOW_WEIGHT
-
-/datum/supply_packs/ammo_m44_mag_box/asrs/
-	buyable = 0
-	group = "Munition"
-	cost = ASRS_LOW_WEIGHT
-
-/datum/supply_packs/ammo_m44_mag_box_ap/asrs/
 	buyable = 0
 	group = "Munition"
 	cost = ASRS_VERY_LOW_WEIGHT
@@ -118,10 +99,12 @@
 /datum/supply_packs/ammo_sentry/asrs/
 	buyable = 0
 	group = "Munition"
+	cost = ASRS_VERY_LOW_WEIGHT
 
 /datum/supply_packs/ammo_sentry_flamer/asrs/
 	buyable = 0
 	group = "Munition"
+	cost = ASRS_VERY_LOW_WEIGHT
 
 /datum/supply_packs/ammo_napalm/asrs/
 	buyable = 0
@@ -155,15 +138,3 @@
 	buyable = 0
 	group = "Munition"
 //===================================
-
-/datum/supply_packs/motiondetector/asrs/
-	name = "Motion Detector (x2)"
-	contains = list(
-		/obj/item/device/motiondetector,
-		/obj/item/device/motiondetector
-					)
-	cost = ASRS_MEDIUM_WEIGHT
-	containertype = /obj/structure/closet/crate/supply
-	containername = "Motion Detector crate"
-	group = "Utility"
-	buyable = 0

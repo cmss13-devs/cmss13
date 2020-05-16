@@ -300,7 +300,7 @@
 	name = "supply radio headset"
 	desc = "Used by the lowly Cargo Technicians of the USCM, light weight and portable. To access the supply channel, use :u."
 	icon_state = "req_headset"
-	keyslot1 = new /obj/item/device/encryptionkey/req
+	keyslot1 = new /obj/item/device/encryptionkey/req/ct
 
 /obj/item/device/radio/headset/almayer/ro
 	desc = "A headset used by the RO for controlling their slave(s). Channels are as follows: :u - requisitions, :v - marine command, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad."
@@ -338,9 +338,9 @@
 
 /obj/item/device/radio/headset/almayer/mcl
 	name = "corporate liaison radio headset"
-	desc = "Used by the CL to convince people to sign NDAs. Channels are as follows: :v - marine command, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :e - engineering, :m - medbay, :u - requisitions, :j - JTAC, :z - intelligence."
+	desc = "Used by the CL to convince people to sign NDAs. Channels are as follows: :v - marine command, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :e - engineering, :m - medbay, :u - requisitions, :j - JTAC, :z - intelligence, :y for WY."
 	icon_state = "wy_headset"
-	keyslot1 = new /obj/item/device/encryptionkey/mcom
+	keyslot1 = new /obj/item/device/encryptionkey/mcom/cl
 
 /obj/item/device/radio/headset/almayer/mcom/cdrcom
 	name = "marine commanding officer headset"

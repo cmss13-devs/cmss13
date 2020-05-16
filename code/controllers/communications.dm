@@ -104,6 +104,7 @@ On the map:
 var/const/SYND_FREQ 	= 1213
 var/const/YAUT_FREQ 	= 1214
 var/const/PMC_FREQ 		= 1235
+var/const/WY_FREQ 		= 1236
 var/const/DUT_FREQ 		= 1340
 var/const/ERT_FREQ 		= 1342
 var/const/RUS_FREQ		= 1338
@@ -139,6 +140,7 @@ var/list/radiochannels = list(
 	"Response Team" = ERT_FREQ,
 	"Syndicate" 	= SYND_FREQ,
 	"Yautja" 		= YAUT_FREQ,
+	"WY" 			= WY_FREQ,
 	"WY PMC" 		= PMC_FREQ,
 	"SpecOps" 		= DTH_FREQ,
 	"UPP" 			= RUS_FREQ,
@@ -172,7 +174,7 @@ var/list/CENT_FREQS = list(ERT_FREQ, DTH_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ)
 var/list/ANTAG_FREQS = list(SYND_FREQ, RUS_FREQ)
 
 //Depts - just used for colors in headset.dm
-var/list/DEPT_FREQS = list(MED_FREQ, ENG_FREQ, SEC_FREQ, ERT_FREQ, SYND_FREQ, DTH_FREQ, CIV_GEN_FREQ, CIV_COMM_FREQ, ALPHA_FREQ, BRAVO_FREQ,CHARLIE_FREQ, DELTA_FREQ, SUP_FREQ, JTAC_FREQ, INTEL_FREQ)
+var/list/DEPT_FREQS = list(MED_FREQ, ENG_FREQ, SEC_FREQ, ERT_FREQ, SYND_FREQ, DTH_FREQ, CIV_GEN_FREQ, CIV_COMM_FREQ, ALPHA_FREQ, BRAVO_FREQ,CHARLIE_FREQ, DELTA_FREQ, SUP_FREQ, JTAC_FREQ, INTEL_FREQ, WY_FREQ)
 
 #define TRANSMISSION_WIRE	0
 #define TRANSMISSION_RADIO	1

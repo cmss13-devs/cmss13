@@ -64,28 +64,34 @@
 // --------------------------------------------
 // *** Get a mob to an area/level ***
 // --------------------------------------------
-#define MOB_CAN_DIE 0
-#define MOB_ALIVE_TO_COMPLETE 1
+#define MOB_CAN_COMPLETE_AFTER_DEATH 1
 #define MOB_FAILS_ON_DEATH 2
 
 /datum/cm_objective/move_mob
 	var/area/destination
 	var/mob/living/target
-	var/mob_can_die = MOB_CAN_DIE
-	objective_flags = OBJ_DO_NOT_TREE
+	var/mob_can_die = MOB_CAN_COMPLETE_AFTER_DEATH
+	objective_flags = OBJ_DO_NOT_TREE | OBJ_FAILABLE
+
+
+/datum/cm_objective/move_mob/New(var/mob/living/H)
+	if(istype(H, /mob/living))
+		target = H
+	. = ..()
 
 /datum/cm_objective/move_mob/check_completion()
 	. = ..()
-	if(target.stat == DEAD && mob_can_die == MOB_FAILS_ON_DEATH)
-		fail()
-		return 0
-	if(target.stat == DEAD && mob_can_die == MOB_ALIVE_TO_COMPLETE && ishuman(target))
-		var/mob/living/carbon/human/H = target
-		if(!H.check_tod()) // they went unrevivable
+	if(target.stat == DEAD && mob_can_die & MOB_FAILS_ON_DEATH)
+		if(ishuman(target))
+			var/mob/living/carbon/human/H = target
+			if(!H.check_tod() || !H.is_revivable()) // they went unrevivable
+				fail()
+				return 0
+		else
 			fail()
 			return 0
 	if(istype(get_area(target),destination))
-		if(target.stat != DEAD || mob_can_die != MOB_ALIVE_TO_COMPLETE)
+		if(target.stat != DEAD || mob_can_die & MOB_CAN_COMPLETE_AFTER_DEATH)
 			complete()
 			return 1
 
@@ -94,20 +100,28 @@
 
 /datum/cm_objective/move_mob/almayer/survivor
 	name = "Rescue the Survivor"
-	mob_can_die = MOB_ALIVE_TO_COMPLETE
-	priority = OBJECTIVE_LOW_VALUE
+	mob_can_die = MOB_FAILS_ON_DEATH
+	priority = OBJECTIVE_ABSOLUTE_VALUE
 	display_category = "Rescue the Survivors"
 
 /datum/cm_objective/move_mob/almayer/vip
 	name = "Rescue the VIP"
 	mob_can_die = MOB_FAILS_ON_DEATH
-	priority = OBJECTIVE_EXTREME_VALUE
+	priority = OBJECTIVE_ABSOLUTE_VALUE
+	display_category = "Rescue the VIP"
+	objective_flags = OBJ_DO_NOT_TREE | OBJ_FAILABLE | OBJ_CAN_BE_UNCOMPLETED
 
 /mob/living/carbon/human/vip
 
 /mob/living/carbon/human/vip/New()
 	..()
 	new /datum/cm_objective/move_mob/almayer/vip(src)
+
+/mob/living/carbon/human/survivor
+
+/mob/living/carbon/human/survivor/New()
+	..()
+	new /datum/cm_objective/move_mob/almayer/survivor(src)
 
 // --------------------------------------------
 // *** Minimise losses ***

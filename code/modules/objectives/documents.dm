@@ -19,16 +19,19 @@
 	initial_area = get_area(document)
 	important = rand(0,1)
 
+/datum/cm_objective/document/get_related_label()
+	return document.label
+
 /datum/cm_objective/document/complete()
 	if(..())
-		for(var/datum/cm_objective/C in enables_objectives)
-			C.activate()
 		if(important)
 			if(objectives_controller)
-				objectives_controller.add_objective(new /datum/cm_objective/retrieve_item/almayer(document))
+				var/datum/cm_objective/O = new /datum/cm_objective/retrieve_item/almayer(document)
+				O.priority = priority //retrieving item gets you double the points for whatever the item is worth, rather than EXTREME value each time
+				objectives_controller.add_objective(O)
 
 /datum/cm_objective/document/get_clue()
-	return "[document.name] in [initial_area]"
+	return SPAN_DANGER("[document.name] in [initial_area]")
 
 /datum/cm_objective/document/check_completion()
 	. = ..()
@@ -46,13 +49,17 @@
 	display_flags = 0
 	var/color
 
+/datum/cm_objective/document/progress_report
+	priority = OBJECTIVE_MEDIUM_VALUE
+	prerequisites_required = PREREQUISITES_NONE
+	display_flags = 0
+
 /datum/cm_objective/document/folder/get_clue()
 	return SPAN_DANGER("A [color] folder in [initial_area], labelled [document.label]")
 
 /datum/cm_objective/document/technical_manual
-	priority = OBJECTIVE_MEDIUM_VALUE
-	prerequisites_required = PREREQUISITES_ONE
-	objective_flags = OBJ_PROCESS_ON_DEMAND | OBJ_DEAD_END | OBJ_DO_NOT_TREE
+	priority = OBJECTIVE_HIGH_VALUE
+	prerequisites_required = PREREQUISITES_NONE
 	display_flags = 0
 
 // --------------------------------------------
@@ -72,6 +79,7 @@
 	unacidable = TRUE
 	indestructible = 1
 	var/label // label on the document
+	var/renamed = FALSE //Once someone reads a document the item gets renamed based on the objective they are linked to)
 
 /obj/item/document_objective/New()
 	..()
@@ -87,12 +95,25 @@
 /obj/item/document_objective/proc/display_read_message(mob/living/user)
 	if(user && user.mind)
 		user.mind.store_objective(objective)
+	var/related_labels = ""
+	for(var/datum/cm_objective/D in objective.enables_objectives)
+		to_chat(user, SPAN_NOTICE("You make out something about [D.get_clue()]."))
+		if (related_labels != "")
+			related_labels+=","
+		related_labels+=D.get_related_label()
+	to_chat(user, SPAN_INFO("You finish reading \the [src]."))
+	if (!renamed)
+		src.name+= " ([related_labels])"
+		renamed = TRUE
 
 /obj/item/document_objective/proc/display_fail_message(mob/living/user)
-	for(var/datum/cm_objective/C in objective.required_objectives)
-		if(C.is_complete())
-			to_chat(user, SPAN_WARNING("You aren't entirely sure what you're meant to be looking for in this document."))
-			return
+	var/dependants_complete = TRUE
+	for(var/datum/cm_objective/C in objective.enables_objectives)
+		if(!C.is_complete())
+			dependants_complete = FALSE
+	if (dependants_complete)
+		to_chat(user, SPAN_WARNING("The objectives relating to this document are already complete."))
+		return
 	if(objective)
 		to_chat(user, SPAN_NOTICE("You don't notice anything useful. You probably need to find its instructions on a paper scrap."))
 	else
@@ -117,14 +138,11 @@
 	if(!do_after(user, reading_time, INTERRUPT_INCAPACITATED|INTERRUPT_NEEDHAND, BUSY_ICON_GENERIC)) // Can move while reading intel
 		to_chat(user, SPAN_WARNING("You get distracted and lose your train of thought, you'll have to start over reading this."))
 		return 0
-	if(!objective.is_active())
-		var/fail = TRUE
-		for(var/datum/cm_objective/OJ in objective.enables_objectives)
-			if(OJ.is_active())
-				fail = FALSE
-		if(fail)
-			display_fail_message(user)
-			return 0
+
+	if(!objective.is_active() && !objective.is_complete())
+		display_fail_message(user)
+		return 0
+	
 	read = 1
 	objective.check_completion()
 	display_read_message(user)
@@ -139,24 +157,14 @@
 	icon_state = "paper_words"
 	w_class = SIZE_TINY
 
-/obj/item/document_objective/paper/display_read_message(mob/living/user)
-	..()
-	for(var/datum/cm_objective/document/D in objective.enables_objectives)
-		to_chat(user, SPAN_NOTICE("You make out something about [D.get_clue()]."))
-	to_chat(user, SPAN_INFO("You finish examining \the [src]."))
-
 /obj/item/document_objective/report
 	name = "Progress report"
 	desc = "A written report from someone for their supervisor about the status of some kind of project."
 	icon = 'icons/obj/items/paper.dmi'
-	icon_state = "paper_words"
+	icon_state = "paper_p_words"
 	w_class = SIZE_TINY
-
-/obj/item/document_objective/report/display_read_message(mob/living/user)
-	..()
-	for(var/datum/cm_objective/retrieve_item/device/D in objective.enables_objectives)
-		to_chat(user, SPAN_NOTICE("You make out something about [D.get_clue()]."))
-	to_chat(user, SPAN_INFO("You finish examining \the [src]."))
+	reading_time = 100
+	objective_type = /datum/cm_objective/document/progress_report
 
 /obj/item/document_objective/folder
 	name = "intel folder"
@@ -181,11 +189,6 @@
 	if(get_dist(user, src) < 2 && ishuman(user))
 		to_chat(user, SPAN_INFO("\The [src] is labelled [label]."))
 
-/obj/item/document_objective/folder/display_read_message(mob/living/user)
-	..()
-	for(var/datum/cm_objective/D in objective.enables_objectives)
-		to_chat(user, SPAN_NOTICE("You see a reference to [D.get_clue()]."))
-	to_chat(user, SPAN_INFO("You finish sifting through the documents."))
 
 /obj/item/document_objective/technical_manual
 	name = "Technical Manual"
@@ -195,8 +198,6 @@
 	reading_time = 300
 	objective_type = /datum/cm_objective/document/technical_manual
 
-/obj/item/document_objective/technical_manual/display_read_message(mob/living/user)
+/obj/item/document_objective/technical_manual/New()
 	..()
-	for(var/datum/cm_objective/document/D in objective.enables_objectives)
-		to_chat(user, SPAN_NOTICE("You see a reference to [D.get_clue()]."))
-	to_chat(user, SPAN_INFO("You finish reading the technical manual."))
+	name = "[initial(name)] ([label])"

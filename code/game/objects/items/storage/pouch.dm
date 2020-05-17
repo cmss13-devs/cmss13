@@ -469,6 +469,7 @@
 	storage_slots = 21
 	max_w_class = SIZE_MEDIUM
 	max_storage_space = 21
+	storage_flags = STORAGE_FLAGS_POUCH|STORAGE_CLICK_GATHER
 	can_hold = list(
 		/obj/item/paper,
 		/obj/item/clipboard,

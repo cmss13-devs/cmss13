@@ -64,13 +64,16 @@
 	initial_location = get_area(data_source)
 	..()
 
+/datum/cm_objective/retrieve_data/terminal/get_related_label()
+	return data_source.label
+
 /datum/cm_objective/retrieve_data/terminal/complete()
 	if(..())
 		data_source.visible_message(SPAN_NOTICE("[data_source] pings softly as it finishes the upload."))
 		playsound(data_source, 'sound/machines/screen_output1.ogg', 25, 1)
 
 /datum/cm_objective/retrieve_data/terminal/get_clue()
-	return "Upload data from [data_source] in [get_area(data_source)], the password is [decryption_password]"
+	return SPAN_DANGER("Upload data from [data_source] in [get_area(data_source)], the password is [decryption_password]")
 
 /datum/cm_objective/retrieve_data/terminal/data_is_avaliable()
 	. = ..()
@@ -94,6 +97,9 @@
 	initial_location = get_area(disk)
 	..()
 
+/datum/cm_objective/retrieve_data/disk/get_related_label()
+	return disk.label
+
 /datum/cm_objective/retrieve_data/disk/complete()
 	if(..())
 		if(istype(disk.loc,/obj/structure/machinery/computer/disk_reader))
@@ -107,7 +113,7 @@
 	return 0
 
 /datum/cm_objective/retrieve_data/disk/get_clue()
-	return SPAN_NOTICE("Retrieving	 [disk] in [initial_location], decryption password is [decryption_password]")
+	return SPAN_DANGER("Retrieving [disk] in [initial_location], decryption password is [decryption_password]")
 
 /datum/cm_objective/retrieve_data/disk/data_is_avaliable()
 	. = ..()
@@ -125,6 +131,7 @@
 // --------------------------------------------
 /obj/item/disk/objective
 	name = "computer disk"
+	var/label = ""
 	desc = "A boring looking computer disk.  The name label is just a gibberish collection of letters and numbers."
 	var/data_amount = 500
 	var/read_speed = 50
@@ -154,7 +161,8 @@
 		if (15)
 			diskcol = "bloddied blue"
 
-	name = "[diskcol] computer disk [pick(letters)]-[rand(100,999)]"
+	label = "[pick(letters)]-[rand(100,999)]"
+	name = "[diskcol] computer disk [label]"
 	objective = new /datum/cm_objective/retrieve_data/disk(src)
 	pixel_y = rand(-8, 8)
 	pixel_x = rand(-9, 9)
@@ -170,6 +178,7 @@
 // --------------------------------------------
 /obj/structure/machinery/computer/objective
 	name = "data terminal"
+	var/label = ""
 	desc = "A computer data terminal with an incomprehensible label."
 	var/uploading = 0
 	icon_state = "medlaptop"
@@ -180,7 +189,8 @@
 /obj/structure/machinery/computer/objective/New()
 	..()
 	var/letters = list("Alpha","Beta","Gamma","Delta","Epsilon","Zeta","Eta","Theta","Iota","Kappa","Lambda","Mu","Nu","Xi","Omicron","Pi","Rho","Sigma","Tau","Upsilon","Phi","Chi","Psi","Omega")
-	name = "data terminal [pick(letters)]-[rand(100,999)]"
+	label = "[pick(letters)]-[rand(100,999)]"
+	name = "data terminal [label]"
 	objective = new /datum/cm_objective/retrieve_data/terminal(src)
 
 /obj/structure/machinery/computer/objective/Dispose()

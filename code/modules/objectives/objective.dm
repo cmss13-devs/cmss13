@@ -7,8 +7,8 @@
 	var/failed = 0
 	var/active = 0
 	var/priority = OBJECTIVE_NO_VALUE
-	var/list/required_objectives = list()
-	var/list/enables_objectives = list()
+	var/list/required_objectives = list() //List of objectives that are required to complete this objectives
+	var/list/enables_objectives = list() //List of objectives that require this objective to complete
 	var/prerequisites_required = PREREQUISITES_ONE
 	var/objective_flags = 0 // functionality related flags
 	var/display_flags = 0 // display related flags
@@ -55,6 +55,10 @@
 /datum/cm_objective/proc/get_clue() //TODO: change this to an formatted list like above -spookydonut
 	return
 
+/datum/cm_objective/proc/get_related_label()
+	//For returning labels of related items (folders, discs, etc.)
+	return
+
 /datum/cm_objective/proc/process()
 	if(!is_prerequisites_completed())
 		deactivate()
@@ -71,6 +75,8 @@
 	complete = 1
 	if(can_be_deactivated() && !(objective_flags & OBJ_PROCESS_ON_DEMAND))
 		deactivate()
+	for(var/datum/cm_objective/O in enables_objectives)
+		O.activate()
 	return 1
 
 /datum/cm_objective/proc/uncomplete()
@@ -129,14 +135,18 @@
 
 /datum/cm_objective/proc/can_be_activated()
 	if(is_active())
-		return 0
+		return 0 //Objective is already active!
 	if(is_failed())
-		return 0
+		return 0 //Objective is failed, can't re-activate!
 	if(!is_prerequisites_completed())
-		return 0
+		return 0 //Prerequisites are not complete yet!
+	if(is_complete() && !(objective_flags & OBJ_CAN_BE_UNCOMPLETED))
+		return 0 //Objective is already complete and can't be uncompleted!
 	return 1
 
 /datum/cm_objective/proc/can_be_deactivated()
+	if (is_failed())
+		return 1
 	if(objective_flags & OBJ_CAN_BE_UNCOMPLETED)
 		return 0
 	return 1
@@ -150,10 +160,13 @@
 		if(PREREQUISITES_NONE)
 			return 1
 		if(PREREQUISITES_ONE)
-			if(prereq_complete)
+			if(prereq_complete || (required_objectives.len == 0))
+				return 1
+		if(PREREQUISITES_QUARTER)
+			if(prereq_complete >= (required_objectives.len/4)) // quarter or more
 				return 1
 		if(PREREQUISITES_MAJORITY)
-			if(prereq_complete > (required_objectives.len/2)) // more than half
+			if(prereq_complete >= (required_objectives.len/2)) // half or more
 				return 1
 		if(PREREQUISITES_ALL)
 			if(prereq_complete >= required_objectives.len)

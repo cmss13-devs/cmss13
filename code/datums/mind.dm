@@ -9,7 +9,7 @@
 	var/roundstart_picked = FALSE
 
 	var/memory
-	var/list/objective_memory = list() //a list of objectives you have knowledge about
+	var/datum/objective_memory_storage/objective_memory = new() //a list of objectives you have knowledge about
 
 	var/datum/entity/player_entity/player_entity = null
 
@@ -65,43 +65,15 @@
 //this is an objective that the player has just completed
 //and we want to store the objective clues generated based on it -spookydonut
 /datum/mind/proc/store_objective(var/datum/cm_objective/O)
-	for(var/datum/cm_objective/R in O.enables_objectives)
-		if(!(R in objective_memory))
-			objective_memory += R
+	if(objective_memory)
+		objective_memory.store_objective(O)
 
 /datum/mind/proc/view_objective_memories(mob/recipient)
-	var/output
-	
-	// Do we have DEFCON?
-	if(objectives_controller)
-		output += "<b>DEFCON [defcon_controller.current_defcon_level]:</b> [defcon_controller.check_defcon_percentage()]%"
-		
-		output += "<br>"
-		output += "<hr>"
-		output += "<br>"
-			
-		for(var/datum/cm_objective/O in objective_memory)
-			if(!O)
-				continue
-			if(!O.is_prerequisites_completed() || !O.is_active())
-				continue
-			if(O.display_flags & OBJ_DISPLAY_HIDDEN)
-				continue
-			if(O.is_complete())
-				continue
-			output += "[O.get_clue()]<BR>"
-
-		output += "<br>"
-		output += "<hr>"
-		output += "<br>"
-
-		// Item and body retrieval %, power, etc.
-		output += objectives_controller.get_objectives_progress()
-	var/window_name = "objective clues"
-	if(ismob(current))
-		window_name = "[current.real_name]'s objective clues"
-
-	show_browser(recipient, output, window_name, "objectivesmemory")
+	if(objective_memory)
+		if(ismob(current))
+			objective_memory.view_objective_memories(recipient, current.real_name)
+		else
+			objective_memory.view_objective_memories(recipient, null)
 
 /datum/mind/Topic(href, href_list)
 	if(!check_rights(R_ADMIN))	

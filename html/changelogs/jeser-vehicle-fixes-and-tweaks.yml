@@ -1,0 +1,8 @@
+author: Jeser
+
+delete-after: True
+
+changes: 
+  - bugfix: "Fixed closing Vehicle Status Info and Vehicle Controls Guide windows causing problems with vehicles."
+  - bugfix: "Fixed being unable to shoot vehicle weapons while having barricades/platforms or similar objects within 2 tiles on line of fire."
+  - tweak: "Slightly increased arc of fire for vehicle weaponry (Roughly +1 tile on both sides)."

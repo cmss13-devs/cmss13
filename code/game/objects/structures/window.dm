@@ -97,7 +97,7 @@
 			playsound(loc, 'sound/effects/Glasshit.ogg', 25, 1)
 		return
 	if(health <= 0)
-		if(user)
+		if(user && istype(user))
 			user.count_niche_stat(STATISTICS_NICHE_DESCTRUCTION_WINDOWS, 1)
 			user.visible_message(SPAN_DANGER("[user] smashes through [src][AM ? " with [AM]":""]!"))
 		if(make_shatter_sound)

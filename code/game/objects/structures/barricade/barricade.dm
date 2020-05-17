@@ -97,7 +97,7 @@
 
 /obj/structure/barricade/hitby(atom/movable/AM)
 	if(AM.throwing && is_wired)
-		if(iscarbon(AM))
+		if(iscarbon(AM) && !isXenoCrusher(AM))
 			var/mob/living/carbon/C = AM
 			C.visible_message(SPAN_DANGER("The barbed wire slices into [C]!"),
 			SPAN_DANGER("The barbed wire slices into you!"))

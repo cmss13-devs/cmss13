@@ -5,7 +5,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_crusher_charge
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1
-	cooldowns = list(200, 190, 180, 170)
+	cooldowns = list(100, 95, 90, 85)
 	plasma_cost = 20
 
 	var/direct_hit_damage = 70
@@ -23,6 +23,13 @@
 	should_destroy_objects = TRUE
 	throw_speed = SPEED_FAST
 	tracks_target = FALSE
+
+	// Object types that dont reduce cooldown when hit
+	var/list/not_reducing_objects = list()
+	
+/datum/action/xeno_action/activable/pounce/crusher_charge/New()
+	. = ..()
+	not_reducing_objects = typesof(/obj/structure/barricade) + typesof(/obj/structure/machinery/defenses)
 
 
 /datum/action/xeno_action/onclick/crusher_stomp

@@ -13,7 +13,7 @@
 		return
 	
 	var/mob/living/carbon/Xenomorph/Sentinel/S = MS.xeno
-	S.speed_modifier += XENO_SPEED_MOD_VERYLARGE
+	S.speed_modifier += XENO_SPEED_MODIFIER_SLOWER
 	S.mutation_type = SENTINEL_SCATTERSPIT
 	S.armor_modifier += XENO_ARMOR_MOD_MED
 	S.explosivearmor_modifier += XENO_EXPOSIVEARMOR_MOD_VERYSMALL

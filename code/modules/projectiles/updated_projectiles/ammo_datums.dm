@@ -1864,8 +1864,8 @@
 
 /datum/ammo/xeno/bone_chips/New()
 	..()
-	damage = 10
-	max_range = 6
+	damage = 5
+	max_range = 5
 	damage_type = BRUTE
 	accuracy = config.max_hit_accuracy
 	accuracy_var_low = config.med_proj_variance
@@ -1880,7 +1880,7 @@
 /datum/ammo/xeno/bone_chips/spread/New()
 	..()
 	scatter = 30 // We want a wild scatter angle
-	max_range = 6
+	max_range = 5
 	bonus_projectiles_amount = 0
 
 /datum/ammo/xeno/bone_chips/spread/short_range

@@ -178,6 +178,14 @@
 #define XENO_SPEED_FAST -1.6
 #define XENO_SPEED_SANICFAST -1.9
 
+// Speed mods for each maturity (these will be rolled into the xeno's total speed)
+#define XENO_SPEED_MOD_SMALL      0.05
+#define XENO_SPEED_MOD_MED        0.09
+#define XENO_SPEED_MOD_LARGE      0.1
+#define XENO_SPEED_MOD_VERYLARGE  0.25
+#define XENO_SPEED_MOD_LOWULTRA	  0.375
+#define XENO_SPEED_MOD_ULTRA	  0.5
+
 // Xeno damage categories
 #define XENO_DAMAGE_WEAK 10 * XENO_UNIVERSAL_DAMAGEMULT
 #define XENO_DAMAGE_LOW 20 * XENO_UNIVERSAL_DAMAGEMULT
@@ -241,13 +249,13 @@
 #define XENO_PLASMAGAIN_MOD_MED   0.2
 #define XENO_PLASMAGAIN_MOD_LARGE 0.3
 
-// Speed mods (these will be rolled into the xeno's total speed)
-#define XENO_SPEED_MOD_SMALL      0.05
-#define XENO_SPEED_MOD_MED        0.09
-#define XENO_SPEED_MOD_LARGE      0.1
-#define XENO_SPEED_MOD_VERYLARGE  0.25
-#define XENO_SPEED_MOD_LOWULTRA	  0.375
-#define XENO_SPEED_MOD_ULTRA	  0.5
+// Speed modifiers
+#define XENO_SPEED_MODIFIER_SLOW       	0.15
+#define XENO_SPEED_MODIFIER_SLOWER      0.25
+#define XENO_SPEED_MODIFIER_SLOWEST     0.5
+#define XENO_SPEED_MODIFIER_FAST  		-0.15
+#define XENO_SPEED_MODIFIER_FASTER		-0.25
+#define XENO_SPEED_MODIFIER_FASTEST	  	-0.5
 
 // Pheremone strength modifiers
 #define XENO_PHERO_MOD_VERYSMALL  0.25

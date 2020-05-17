@@ -6,7 +6,7 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1
 	cooldowns = list(40, 35, 30, 25)
-	plasma_cost = 10
+	plasma_cost = 0
 
 	// Config options
 	knockdown = TRUE				// Should we knock down the target?
@@ -28,6 +28,6 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
 	cooldowns = list(130, 120, 110, 100)
-	plasma_cost = 30
+	plasma_cost = 0
 
 	var/ammo_type = /datum/ammo/xeno/bone_chips/spread/runner_skillshot

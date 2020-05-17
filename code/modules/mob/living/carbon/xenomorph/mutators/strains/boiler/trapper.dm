@@ -26,7 +26,7 @@
 	B.mutation_type = BOILER_TRAPPER
 	B.plasma_types -= PLASMA_NEUROTOXIN
 
-	B.speed_modifier -= XENO_SPEED_MOD_LARGE
+	B.speed_modifier += XENO_SPEED_MODIFIER_FAST
 	B.recalculate_everything()
 
 	apply_behavior_holder(B)

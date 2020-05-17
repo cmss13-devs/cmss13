@@ -161,7 +161,7 @@
 	fire_level_to_extinguish = 6
 	time_to_live = 6
 
-	var/bonus_damage = 20
+	var/bonus_damage = 30
 
 /obj/effect/xenomorph/spray/spitter/apply_spray(mob/living/carbon/human/H)
 	if(!istype(H))

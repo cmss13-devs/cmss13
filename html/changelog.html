@@ -64,6 +64,90 @@
 		</td>
 	</tr>
 </table>
+			<h2 class="date">18 May 2020</h2>
+			<h3 class="author">Frans_Feiffer updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="imageadd">Resprited a set of donor gear upon request.</li>
+			</ul>
+			<h3 class="author">Jeser updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Added 3 more announcement warnings for nuke: half of timer left, 1 minute left and 10 seconds left. [#11219]</li>
+				<li class="tweak">All nuke announcements now work for other factions, such as CLF and UPP.</li>
+				<li class="tweak">Tweaked nuclear bomb's sprites.</li>
+				<li class="tweak">Changed nuke's Control Panel NanoUI window from W-Y to USCM style.</li>
+				<li class="bugfix">Fixed Follow by Faction/Hive not actually filtering mobs of other Factions/Hives. [Tyrfull Games]</li>
+				<li class="bugfix">Fixed being able to toggle MD range modes through space and time. [csd]</li>
+				<li class="bugfix">Fixed colony Synthetics appearing in Crew Manifest.</li>
+				<li class="tweak">Tweaked Join the USCM and Crew Manifest windows size.</li>
+				<li class="tweak">Improved Crew Manifest: now it uses same categories as Join the USCM window, is centered in window, long roles and names won't be taking two lines and squad marines are now sorted by rank for easier navigation.</li>
+				<li class="tweak">View Crew Manifest verb for humans now works only if you belong to USCM, PMC or Death Squad factions.</li>
+				<li class="tweak">M56D and it's mount don't block RPG rockets now.</li>
+				<li class="tweak">Specialist's M92 Grenade Launcher now adds HIGH TOSS effect to it's grenades, allowing you to shoot grenades over vendors and some other objects.</li>
+				<li class="tweak">You can throw items over simple vehicles. You can throw items over multitile vehicles using High Toss.</li>
+				<li class="tweak">You can throw items over: M56D and it's mount, computers, gibbers, microwaves, food processors, biogenerators, fax machines, laptop vendors, mech bay recharge ports, mech part fabricators, cyborg recharging stations, showcases, ore boxes, xenoautopsy jar shelves and all 5 types of xenoautopsy cryo tanks (these can be found on some maps in research facilities).</li>
+				<li class="tweak">You can throw items over smartfridges, megaseed servitors and other smart storages with High Toss.</li>
+				<li class="tweak">Gibbers, microwaves, food processors, biogenerators, juicers and smartfridges became wrenchable.</li>
+				<li class="experiment">Reminder: to activate High Toss, CTRL + Click the throw button.</li>
+				<li class="bugfix">Fixed closing Vehicle Status Info and Vehicle Controls Guide windows causing problems with vehicles.</li>
+				<li class="bugfix">Fixed being unable to shoot vehicle weapons while having barricades/platforms or similar objects within 2 tiles on line of fire.</li>
+				<li class="tweak">Slightly increased arc of fire for vehicle weaponry (Roughly +1 tile on both sides).</li>
+			</ul>
+			<h3 class="author">Neth updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="tweak">Hedgehog shield spikes activation rate is now tied to upgrade level. Once per second at young, and close to current rate at ancient.</li>
+				<li class="tweak">Scatterspitter's range is now equal to normal spit range. Reduced Scatterspitter's shotgun spit cooldown by half a second.</li>
+				<li class="tweak">Reduced round start PO slots from 4 to 2. Reduced total PO slots from 4 to 3</li>
+			</ul>
+			<h3 class="author">Ranged66 updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="tweak">Buffed the damage of the machete, fireaxe (wielded), and most of the sword lineup. (event swords mostly, claymore, katana etc)</li>
+				<li class="rscadd">Changed riot shield functionality. You can now activate it to raise/lower your blocking stance. This slows your movementspeed, but greatly increases the block chance. A successful block will make you lower the shield.</li>
+				<li class="tweak">Riot shield on your back now has a small chance to block damage.</li>
+				<li class="tweak">Lowered the bonus damage% of the melee skill somewhat.</li>
+			</ul>
+			<h3 class="author">ThePiachu updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">All objective items are now solvable.</li>
+				<li class="bugfix">Survivor rescue objective is now fixed. To complete it a survivor needs to get onto Almayer. After that they can do anything not to confine them to the ship.</li>
+				<li class="bugfix">Retrieving processed intel items now works properly as an objective.</li>
+				<li class="imageadd">Added a slight variation for the Progress Report sprite.</li>
+				<li class="tweak">Progress Reports now take longer to read, but generate clues directly for Disks.</li>
+				<li class="tweak">Technical Manuals now generate clues directly for item retrieval.</li>
+				<li class="tweak">Papers, manuals, folders, etc. that generate clues now are renamed after the first read with the name of what they have clues about.</li>
+				<li class="tweak">Technical Manuals, retrievable items now have unique names.</li>
+				<li class="tweak">Item retrieval objectives are now more lenient with areas they accept as destination.</li>
+				<li class="tweak">Objective clues are now displayed more prominently in chat.</li>
+				<li class="tweak">Document pouch now can sweep all documents from the floor.</li>
+				<li class="rscadd">Added a dev tool for bulk fetching of objective items and corpses.</li>
+				<li class="tweak">Since CTs can basically get their hands on most comms, they received upgraded encryption key to put them on par with the RO.</li>
+				<li class="tweak">RO and CTs can now access Engineering comms.</li>
+				<li class="rscadd">CL received exclusive WY comms encryption key (:y). They can also give it out to their mooks using their special briefcase. WY PMCs can also access this channel. Have fun scheeming!</li>
+				<li class="rscdel">ASRS will stop sending motion detectors, plastic explosives, Mod 88, M44 crates on its own.</li>
+				<li class="tweak">Sentry ammo and fuel tanks have a lower priority in ASRS automatic dispensing now.</li>
+				<li class="bugfix">Squashing some runtime errors.</li>
+			</ul>
+			<h3 class="author">TobiNerd updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Fixed chemical fire properties not additive to each other, but were rather overwriting each other.</li>
+				<li class="bugfix">Fixed the explosive property using a positive falloff modifier rather than a negative. A higher explosive level results in a falloff modifier closer to 0, while a low explosive level is closer to -3.</li>
+				<li class="tweak">Water now has a -3 modifier to fire intensity.</li>
+				<li class="tweak">Made hypermetabolic a negative property.</li>
+				<li class="tweak">Halved how powerful hypometabolic is per level.</li>
+				<li class="tweak">Tweaked how thanatometabolic affects effectiveness.</li>
+				<li class="spellcheck">Hypermetabolic code is called EMB not EBM.</li>
+			</ul>
+			<h3 class="author">UnwaveringGrey updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Fixed MP berets not giving decap protection.</li>
+			</ul>
+			<h3 class="author">Vampmare updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="imageadd">Ravager and Praetorian now visually change with strain choice. The sprites are subject to change.</li>
+				<li class="imageadd">Ravager Hedgehog Shield will now have a visual sprite when active. Sprite is subject to change.</li>
+				<li class="tweak">Ravager Berserker Eviscerate is now telegraphed.</li>
+				<li class="tweak">Xenos no longer examine on shift click if its their ability button and they have an ability active.</li>
+			</ul>
+
 			<h2 class="date">13 May 2020</h2>
 			<h3 class="author">Frans_Feiffer updated:</h3>
 			<ul class="changes bgimages16">
@@ -602,89 +686,6 @@
 			<ul class="changes bgimages16">
 				<li class="rscadd">Medical - Operation Tables now notify doctors of the following conditions: patient is unconscious (surgery can be started), patient has low blood (hook up those IVs!), patient has a low nutrition level.</li>
 				<li class="rscadd">Medical - ChemMasters can now transfer pill bottles to nearby smartfridges.</li>
-			</ul>
-
-			<h2 class="date">16 March 2020</h2>
-			<h3 class="author">Awan updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">The smart disc timer is now separate from the create crystal timer.</li>
-				<li class="bugfix">Big self-destruct should now work properly.</li>
-				<li class="tweak">Increased harpoon throwing damage.</li>
-				<li class="tweak">Hunting traps take time to setup now.</li>
-			</ul>
-			<h3 class="author">Cakey updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">Xenos who are not fire immune will no longer recover health when on fire.</li>
-				<li class="rscadd">Xenomorph Hive Structures have been added to the game. Special construction nodes can be built by builder castes, leaders, or the queen depending on the desired restriction set by the queen at any time. Most structures require special hive weeds to be built and require Plasmagas as a construction resource, which can be gathered and delivered to construction nodes by builder castes.</li>
-				<li class="rscadd">Added Plasmagas to the game. Plasmagas is a resource found on key locations of the map and can be gathered by both factions to give them advantages on the field.</li>
-				<li class="rscadd">Added hive collectors, built by the resin construction ability when targetting a resource node or a tile with a resource node present. Gathers 1 resource per 10 seconds and puts it into the hive resource pool.</li>
-				<li class="rscadd">Plasmagas nodes will span in three categories, Hive, LZ, and Primary nodes will spawn depending on events triggered during the round.</li>
-				<li class="rscadd">Hive resource nodes will appear after the first hive core has been built, selecting whichever node is closest to the hive position.</li>
-				<li class="rscadd">LZ resource nodes will appear next to whichever landing zone was picked by the marines at the start of the round, after the takeoff cooldown has passed.</li>
-				<li class="rscadd">Primary resource nodes will appear in central and key positions in the map, and will start appearing after 25 minutes have passed. Once a primary node has been depleted, depending on the player population, a new primary node will appear closer to whichever faction has gathered the least resources.</li>
-				<li class="rscadd">Added the ability to see resource node locations via the hive and command tacmaps.</li>
-				<li class="rscadd">Added the hive core, a hive structure that acts as a centrepiece to all hives by growing hive weeds and stockpiling Plasmagas.</li>
-				<li class="rscadd">Added the hive pylon, a remote structure that also grows hive weeds in a smaller radius as well as acting as a remote location from the hive to build hive structures and access the hive Plasmagas stockpile.</li>
-				<li class="rscadd">Hive pylons and cores will strengthen celings above them by 1 to 2 levels if the area they encompass is already rooved. This will stop air support from being effective around hive locations.</li>
-				<li class="rscadd">Added the spawn pool, a hive structure that can be fed bursted corpses in order to respawn a single xenomorph that was killed in action. Spawning can be disrupted by either killing the queen or destroying the pool.</li>
-				<li class="rscadd">Added the egg morpher, a hive structure that can be fed bursted corpses in order to generate a total of 6 facehuggers (per corpse) gradually without the need of an egg. Also fires at intruders in a larger radius than normal eggs.</li>
-				<li class="rscadd">Added the evolution pod, a hive structure that offers a bonus of 0.2 evolution per tick to all xenomorphs on weeds.</li>
-				<li class="rscadd">Added the recovery node, a hive structure that slowly recovers oen xenomorph at a time when resting adjacent to it.</li>
-				<li class="rscadd">Hives will now have a reduced rate of burrowed larvae after 25 minutes into the round. You will need to gain captures in order to efficiently grow your hive.</li>
-				<li class="tweak">Default monkey spawns have been reduced from 25 to 5. Extra monkies from survivor spawns have been removed.</li>
-				<li class="tweak">Young xenomorphs have been made significantly weaker. Later maturations have remained the same stat-wise.</li>
-				<li class="rscdel">Xenomorph acid splashback no longer stacks and has a cooldown applied before the next splashback can occur.</li>
-				<li class="rscdel">Multibursting has been removed.</li>
-			</ul>
-			<h3 class="author">DingleFlop updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">SMG recoil with the foldable stock was excessive when one handed and extended. #9824</li>
-				<li class="bugfix">Wrapping paper can no longer be exploited to store large items. #8795</li>
-				<li class="bugfix">The pistol rig can no longer hold the smartpistol. #9361</li>
-				<li class="bugfix">WestonMed plus will now vend tricord autoinjectors, isntead of incorrectly vending tricord hyposprays. #10257</li>
-				<li class="tweak">Revert an unintentional change where hyposprays vended empty.</li>
-				<li class="tweak">Allows SMG on the back (new onmob icons added)</li>
-				<li class="tweak">Allows SMG to be stored in M39 holster belt with an unfolded/full stock OR with a folded/no stock and a grip.</li>
-			</ul>
-			<h3 class="author">Frans_Feiffer updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="imageadd">Resprited the CO tablet.</li>
-				<li class="imageadd">Resprited the MPs uniform and MP/CMPs armor to fit with the current armor sets.</li>
-				<li class="imageadd">Resprited overalls for Synths.</li>
-				<li class="imageadd">Resprited the MTs uniform. The CE and a couple of others will be getting a resprite as well once the fashion department comes to an agreement.</li>
-				<li class="imageadd">Resprited webbing, brown webbing vests, and black webbing vests.</li>
-				<li class="imageadd">Resprited the gas mask.</li>
-				<li class="imageadd">Resprited the hazard vest.</li>
-			</ul>
-			<h3 class="author">Jeser updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Added regular binoculars to Demolitionist, Pyrotechnician and Heavy Grenadier Specialist Kits.</li>
-			</ul>
-			<h3 class="author">Neth updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">Changed how body is rendered. Instead of server blending all the bodyparts together for every body, it sends every limb to client and client builds the body themselves</li>
-				<li class="tweak">Removed previews from Police Records and ID. They will be back when we have less issues building them. Changed how the Character preview works.</li>
-			</ul>
-			<h3 class="author">TobiNerd updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Fixed an exploit that allowed research to duplicate research credits.</li>
-				<li class="bugfix">Synthesis Simulator should no longer create recipes containing unknown emissions.</li>
-				<li class="bugfix">Synthesis Simulations should no longer randomly go corrupt.</li>
-			</ul>
-			<h3 class="author">Vampmare updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Jurisdictional Automated System implemented. All arrests will have to go through this machine. An incident report is made on this machine with the criminals ID. Take their ID off, click on the button in JAS with the ID in hand, they get added. Print the incident when done and bring it to the Brig Cells. Insert the incident into the Brig System</li>
-				<li class="rscadd">Brig System implemented. This handles the release of prisoners. Multiple reports can be inserted into and activated at the same time. The selected report will show up as a timer. When it is time for release, ARES will notify all MPs.</li>
-				<li class="rscadd">Forensic Scanner, when things are broken or hacked on Almayer they sometimes leave behind a set of prints. Scan them with the Forensic Scanner and insert the scanner in the Security Records computer. Read Fingerprint to see who did the crime and clear the scanner to scan new prints.</li>
-				<li class="rscadd">Structural damage done to Almayer will now be announced for the whole ship. Destroying walls and windows. It is in our best interest to keep the ship whole.</li>
-				<li class="tweak">Increased the accuracy of the Taser immensely.</li>
-				<li class="tweak">Flashbang resistance and pepperspray resistance is now based on MP skill.</li>
-				<li class="bugfix">A propelled chair will no longer stun xenos.</li>
-			</ul>
-			<h3 class="author">Vicacrov updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Vendors - Re-added pill bottles to WestonMed.</li>
-				<li class="tweak">Vendors - Colony WestonMeds and WestonChem Pluses need no access anymore. The ability to hack the Almayer ones will be added later, as it needs a complete rework.</li>
 			</ul>
 </div>
 </body>

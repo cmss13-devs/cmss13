@@ -201,7 +201,7 @@
 	Less clear vars:
 	*	impact_name: name of an "impact icon." For now, is only relevant for projectiles but can be expanded to apply to melee weapons with special impact sprites.
 */
-/obj/limb/proc/take_damage(brute, burn, sharp, edge, used_weapon = null, list/forbidden_limbs = list(), no_limb_loss, impact_name = null, var/damage_source = "dismemberment")
+/obj/limb/proc/take_damage(brute, burn, sharp, edge, used_weapon = null, list/forbidden_limbs = list(), no_limb_loss, impact_name = null, var/damage_source = "dismemberment", var/mob/attack_source = null)
 	if((brute <= 0) && (burn <= 0))
 		return 0
 
@@ -219,11 +219,15 @@
 		brute *= brmod //~2/3 damage for ROBOLIMBS
 		burn *= bumod //~2/3 damage for ROBOLIMBS
 
+	var/is_ff = FALSE
+	if(istype(attack_source) && attack_source.faction == owner.faction)
+		is_ff = TRUE
+
 	//High brute damage or sharp objects may damage internal organs
-	if(take_damage_organ_damage(brute, sharp))
+	if(!is_ff && take_damage_organ_damage(brute, sharp))
 		brute /= 2
 
-	if(config.bones_can_break && !(status & LIMB_ROBOT))
+	if(!is_ff && config.bones_can_break && !(status & LIMB_ROBOT))
 		take_damage_bone_break(brute)
 
 	if(status & LIMB_BROKEN && prob(40) && brute > 10)
@@ -237,11 +241,11 @@
 	if((brute_dam + burn_dam + brute + burn) < max_damage || !config.limbs_can_break)
 		if(brute)
 			if(can_cut)
-				createwound(CUT, brute, impact_name)
+				createwound(CUT, brute, impact_name, is_ff = is_ff)
 			else
-				createwound(BRUISE, brute, impact_name)
+				createwound(BRUISE, brute, impact_name, is_ff = is_ff)
 		if(burn)
-			createwound(BURN, burn, impact_name)
+			createwound(BURN, burn, impact_name, is_ff = is_ff)
 	else
 		//If we can't inflict the full amount of damage, spread the damage in other ways
 		//How much damage can we actually cause?
@@ -252,9 +256,9 @@
 			if(brute > 0)
 				//Inflict all brute damage we can
 				if(can_cut)
-					createwound(CUT, min(brute, can_inflict), impact_name)
+					createwound(CUT, min(brute, can_inflict), impact_name, is_ff = is_ff)
 				else
-					createwound(BRUISE, min(brute, can_inflict), impact_name)
+					createwound(BRUISE, min(brute, can_inflict), impact_name, is_ff = is_ff)
 				var/temp = can_inflict
 				//How much more damage can we inflict
 				can_inflict = max(0, can_inflict - brute)
@@ -263,7 +267,7 @@
 
 			if(burn > 0 && can_inflict)
 				//Inflict all burn damage we can
-				createwound(BURN, min(burn,can_inflict), impact_name)
+				createwound(BURN, min(burn,can_inflict), impact_name, is_ff = is_ff)
 				//How much burn damage is left to inflict
 				remain_burn = max(0, burn - can_inflict)
 
@@ -280,14 +284,14 @@
 			if(possible_points.len)
 				//And pass the damage around, but not the chance to cut the limb off.
 				var/obj/limb/target = pick(possible_points)
-				target.take_damage(remain_brute, remain_burn, sharp, edge, used_weapon, forbidden_limbs + src, TRUE)
+				target.take_damage(remain_brute, remain_burn, sharp, edge, used_weapon, forbidden_limbs + src, TRUE, attack_source = attack_source)
 
 
 	//Sync the organ's damage with its wounds
 	src.update_damages()
 
 	//If limb took enough damage, try to cut or tear it off
-	if(body_part != BODY_FLAG_CHEST && body_part != BODY_FLAG_GROIN && !no_limb_loss)
+	if(!is_ff && body_part != BODY_FLAG_CHEST && body_part != BODY_FLAG_GROIN && !no_limb_loss)
 		var/obj/item/clothing/head/helmet/H = owner.head
 		if(!(body_part == BODY_FLAG_HEAD && istype(H) && !isSynth(owner)) \
 			&& config.limbs_can_break && brute_dam >= max_damage * config.organ_health_multiplier
@@ -378,16 +382,16 @@ This function completely restores a damaged organ to perfect condition.
 		wounds += I
 		owner.custom_pain("You feel something rip in your [display_name]!", 1)
 
-/obj/limb/proc/createwound(var/type = CUT, var/damage, var/impact_name)
+/obj/limb/proc/createwound(var/type = CUT, var/damage, var/impact_name, var/is_ff = FALSE)
 	if(!damage)
 		return
 
 	//moved this before the open_wound check so that having many small wounds for example doesn't somehow protect you from taking internal damage (because of the return)
 	//Possibly trigger an internal wound, too.
-	if(type != BURN && !(status & LIMB_ROBOT))
+	if(!is_ff && type != BURN && !(status & LIMB_ROBOT))
 		take_damage_internal_bleeding(damage)
 
-	if(status & LIMB_SPLINTED && damage > 5 && prob(50 + damage * 2.5)) //If they have it splinted, the splint won't hold.
+	if(!is_ff && status & LIMB_SPLINTED && damage > 5 && prob(50 + damage * 2.5)) //If they have it splinted, the splint won't hold.
 		status &= ~LIMB_SPLINTED
 		to_chat(owner, SPAN_DANGER("The splint on your [display_name] comes apart!"))
 		owner.update_med_icon()

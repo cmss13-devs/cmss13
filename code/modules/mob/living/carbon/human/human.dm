@@ -170,7 +170,7 @@
 
 	//Focus half the blast on one organ
 	var/obj/limb/take_blast = pick(limbs)
-	update |= take_blast.take_damage(b_loss * 0.5, f_loss * 0.5, used_weapon = "Explosive blast")
+	update |= take_blast.take_damage(b_loss * 0.5, f_loss * 0.5, used_weapon = "Explosive blast", attack_source = source_mob)
 
 	//Distribute the remaining half all limbs equally
 	b_loss *= 0.5
@@ -181,25 +181,25 @@
 	for(var/obj/limb/temp in limbs)
 		switch(temp.name)
 			if("head")
-				update |= temp.take_damage(b_loss * 0.2, f_loss * 0.2, used_weapon = weapon_message)
+				update |= temp.take_damage(b_loss * 0.2, f_loss * 0.2, used_weapon = weapon_message, attack_source = source_mob)
 			if("chest")
-				update |= temp.take_damage(b_loss * 0.4, f_loss * 0.4, used_weapon = weapon_message)
+				update |= temp.take_damage(b_loss * 0.4, f_loss * 0.4, used_weapon = weapon_message, attack_source = source_mob)
 			if("l_arm")
-				update |= temp.take_damage(b_loss * 0.05, f_loss * 0.05, used_weapon = weapon_message)
+				update |= temp.take_damage(b_loss * 0.05, f_loss * 0.05, used_weapon = weapon_message, attack_source = source_mob)
 			if("r_arm")
-				update |= temp.take_damage(b_loss * 0.05, f_loss * 0.05, used_weapon = weapon_message)
+				update |= temp.take_damage(b_loss * 0.05, f_loss * 0.05, used_weapon = weapon_message, attack_source = source_mob)
 			if("l_leg")
-				update |= temp.take_damage(b_loss * 0.05, f_loss * 0.05, used_weapon = weapon_message)
+				update |= temp.take_damage(b_loss * 0.05, f_loss * 0.05, used_weapon = weapon_message, attack_source = source_mob)
 			if("r_leg")
-				update |= temp.take_damage(b_loss * 0.05, f_loss * 0.05, used_weapon = weapon_message)
+				update |= temp.take_damage(b_loss * 0.05, f_loss * 0.05, used_weapon = weapon_message, attack_source = source_mob)
 			if("r_foot")
-				update |= temp.take_damage(b_loss * 0.05, f_loss * 0.05, used_weapon = weapon_message)
+				update |= temp.take_damage(b_loss * 0.05, f_loss * 0.05, used_weapon = weapon_message, attack_source = source_mob)
 			if("l_foot")
-				update |= temp.take_damage(b_loss * 0.05, f_loss * 0.05, used_weapon = weapon_message)
+				update |= temp.take_damage(b_loss * 0.05, f_loss * 0.05, used_weapon = weapon_message, attack_source = source_mob)
 			if("r_arm")
-				update |= temp.take_damage(b_loss * 0.05, f_loss * 0.05, used_weapon = weapon_message)
+				update |= temp.take_damage(b_loss * 0.05, f_loss * 0.05, used_weapon = weapon_message, attack_source = source_mob)
 			if("l_arm")
-				update |= temp.take_damage(b_loss * 0.05, f_loss * 0.05, used_weapon = weapon_message)
+				update |= temp.take_damage(b_loss * 0.05, f_loss * 0.05, used_weapon = weapon_message, attack_source = source_mob)
 	if(update)	UpdateDamageIcon()
 	return TRUE
 

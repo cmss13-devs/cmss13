@@ -354,7 +354,7 @@ This function restores all limbs.
 */
 /mob/living/carbon/human/apply_damage(var/damage = 0, var/damagetype = BRUTE, var/def_zone = null, \
 	var/blocked = 0, var/sharp = 0, var/edge = 0, var/obj/used_weapon = null, var/no_limb_loss = FALSE, \
-	var/impact_name = null, var/impact_limbs = null, var/permanent_kill = FALSE
+	var/impact_name = null, var/impact_limbs = null, var/permanent_kill = FALSE, var/mob/firer = null
 )
 	if(protection_aura)
 		damage = round(damage * ((15 - protection_aura) / 15))
@@ -392,7 +392,7 @@ This function restores all limbs.
 			var/temp_impact_name = null
 			if(organ.body_part & impact_limbs)
 				temp_impact_name = impact_name
-			if(organ.take_damage(damage, 0, sharp, edge, used_weapon, no_limb_loss = no_limb_loss, impact_name = temp_impact_name))
+			if(organ.take_damage(damage, 0, sharp, edge, used_weapon, no_limb_loss = no_limb_loss, impact_name = temp_impact_name, attack_source = firer))
 				UpdateDamageIcon()
 		if(BURN)
 			damageoverlaytemp = 20
@@ -401,7 +401,7 @@ This function restores all limbs.
 			var/temp_impact_name = null
 			if(organ.body_part & impact_limbs)
 				temp_impact_name = impact_name
-			if(organ.take_damage(0, damage, sharp, edge, used_weapon, no_limb_loss = no_limb_loss, impact_name = temp_impact_name))
+			if(organ.take_damage(0, damage, sharp, edge, used_weapon, no_limb_loss = no_limb_loss, impact_name = temp_impact_name, attack_source = firer))
 				UpdateDamageIcon()
 
 	if(permanent_kill)

@@ -347,6 +347,8 @@
 		C = chemical_reagents_list[C.id]
 		print(C.id)
 		return
+	if(C.overdose < 1) //to prevent chems that start at 0 OD to become un-OD-able
+		C.overdose = 1
 	simulations += C.id //Remember we've simulated this
 	chemical_research_data.update_credits(property_costs[target_property] * -1) //Pay
 	//Determined rarity of new components

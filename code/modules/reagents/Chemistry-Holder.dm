@@ -34,7 +34,7 @@ var/const/INGEST = 2
 		for(var/i=0;i<=1;i++)
 			for(var/path in paths)
 				var/datum/reagent/D = new path()
-				D.save_chemclass() 
+				D.save_chemclass()
 				chemical_reagents_list[D.id] = D
 			if(i==0)
 				paths = typesof(/datum/reagent/generated) - /datum/reagent/generated //Generated chemicals should be initialized last
@@ -54,7 +54,7 @@ var/const/INGEST = 2
 				var/datum/chemical_reaction/D = new path()
 
 				chemical_reactions_list[D.id] = D
-				
+
 				var/filter_id = D.get_filter()
 				if(filter_id)
 					chemical_reactions_filtered_list[filter_id] += D  // We don't have to bother adding ourselves to other reagent ids, it is redundant.
@@ -225,8 +225,7 @@ var/const/INGEST = 2
 	return amount
 
 /datum/reagents/proc/metabolize(var/mob/M,var/alien)
-	for(var/A in reagent_list)
-		var/datum/reagent/R = A
+	for(var/datum/reagent/R in reagent_list)
 		if(M && R)
 			R.on_mob_life(M,alien)
 	update_total()
@@ -312,7 +311,7 @@ var/const/INGEST = 2
 
 					var/created_volume = C.result_amount*multiplier
 					if(C.result)
-						 
+
 						multiplier = max(multiplier, 1) //this shouldnt happen ...
 						add_reagent(C.result, C.result_amount*multiplier)
 						set_data(C.result, preserved_data)
@@ -341,19 +340,17 @@ var/const/INGEST = 2
 	return FALSE
 
 /datum/reagents/proc/isolate_reagent(var/reagent)
-	for(var/A in reagent_list)
-		var/datum/reagent/R = A
+	for(var/datum/reagent/R in reagent_list)
 		if(R.id != reagent)
 			del_reagent(R.id)
 			update_total()
 
 /datum/reagents/proc/del_reagent(var/reagent)
 	if(!my_atom) return
-	for(var/A in reagent_list)
-		var/datum/reagent/R = A
+	for(var/datum/reagent/R in reagent_list)
 		if(R.id == reagent)
-			reagent_list -= A
-			qdel(A)
+			reagent_list -= R
+			qdel(R)
 			update_total()
 			my_atom.on_reagent_change()
 			return FALSE
@@ -390,6 +387,8 @@ var/const/INGEST = 2
 /datum/reagents/proc/add_reagent(var/reagent, var/amount, var/list/data, var/safety = 0)
 	if(!reagent || !isnum(amount))
 		return TRUE
+	if(!istype(reagent, /datum/reagent))
+		CRASH("[reagent] is not of type /datum/reagent") //So we can track down what is causing errors in reagent lists...
 
 	update_total()
 	if(total_volume + amount > maximum_volume)
@@ -400,8 +399,7 @@ var/const/INGEST = 2
 		for(var/index in data)
 			new_data[index] = data[index]
 
-	for(var/A in reagent_list)
-		var/datum/reagent/R = A
+	for(var/datum/reagent/R in reagent_list)
 		if(R.id == reagent)
 			R.volume += amount
 			update_total()
@@ -463,8 +461,7 @@ var/const/INGEST = 2
 	if(!isnum(amount))
 		return TRUE
 
-	for(var/A in reagent_list)
-		var/datum/reagent/R = A
+	for(var/datum/reagent/R in reagent_list)
 		if(R.id == reagent)
 			R.volume -= amount
 			update_total()
@@ -476,8 +473,7 @@ var/const/INGEST = 2
 	return TRUE
 
 /datum/reagents/proc/has_reagent(var/reagent, var/amount = -1)
-	for(var/A in reagent_list)
-		var/datum/reagent/R = A
+	for(var/datum/reagent/R in reagent_list)
 		if(R.id == reagent)
 			if(!amount)
 				return R
@@ -489,11 +485,10 @@ var/const/INGEST = 2
 	return FALSE
 
 /datum/reagents/proc/get_reagent_amount(var/reagent)
-	for(var/A in reagent_list)
-		var/datum/reagent/R = A
+	for(var/datum/reagent/R in reagent_list)
 		if(R.id == reagent)
 			return R.volume
-	return FALSE
+	return 0
 
 /datum/reagents/proc/get_reagents()
 	var/res = ""
@@ -603,7 +598,7 @@ var/const/INGEST = 2
 		return
 	if(sourceturf.chemexploded)
 		return // Has recently exploded, so no explosion this time. Prevents instagib satchel charges.
-	
+
 	var/shards = 4 // Because explosions are messy
 	var/shard_type = /datum/ammo/bullet/shrapnel
 
@@ -648,9 +643,9 @@ var/const/INGEST = 2
 		return
 	if(sourceturf.chemexploded)
 		return // Has recently exploded, so no explosion this time. Prevents instagib satchel charges.
-	
+
 	var/flameshape = FLAMESHAPE_DEFAULT
-	
+
 	// some upper and lower limits
 	if(radius <= min_fire_rad)
 		radius = min_fire_rad
@@ -672,7 +667,7 @@ var/const/INGEST = 2
 	if(supplemented < 0 && intensity < 15)
 		flameshape = FLAMESHAPE_IRREGULAR
 		radius += 2 //  to make up for tiles lost to irregular shape
-	
+
 	// smoke
 	if(smokerad)
 		var/datum/effect_system/smoke_spread/phosphorus/smoke = new /datum/effect_system/smoke_spread/phosphorus
@@ -690,7 +685,7 @@ var/const/INGEST = 2
 
 turf/proc/reset_chemexploded()
 	chemexploded = FALSE
-	
+
 
 ///////////////////////////////////////////////////////////////////////////////////
 

@@ -1590,7 +1590,7 @@
 	name = "neurotoxic droplet"
 	flags_ammo_behavior = AMMO_XENO_TOX|AMMO_IGNORE_RESIST
 	spit_cost = 30
-	added_spit_delay = 20
+	added_spit_delay = 15
 	effect_power = 1.5
 	bonus_projectiles_type = /datum/ammo/xeno/toxin/shotgun/additional
 
@@ -1599,7 +1599,7 @@
 	accuracy_var_low = config.med_proj_variance
 	accuracy_var_high = config.med_proj_variance
 	accurate_range = config.min_shell_range
-	max_range = config.close_shell_range
+	max_range = config.near_shell_range
 	scatter = config.giga_scatter_value
 	bonus_projectiles_amount = config.low_proj_extra
 

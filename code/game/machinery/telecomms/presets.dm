@@ -48,6 +48,9 @@
 	..()
 	playsound(src, 'sound/machines/tcomms_on.ogg', 75)
 
+/obj/structure/machinery/telecomms/relay/preset/tower/powered()
+	return on && health > 0
+
 /obj/structure/machinery/telecomms/relay/preset/tower/get_explosion_resistance()
 	return 1000000
 

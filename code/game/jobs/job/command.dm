@@ -91,8 +91,8 @@
 /datum/job/command/pilot
 	title = JOB_PILOT
 	flag = ROLE_PILOT_OFFICER
-	total_positions = 4
-	spawn_positions = 4
+	total_positions = 3
+	spawn_positions = 2
 	allow_additional = 1
 	scaled = 1
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE

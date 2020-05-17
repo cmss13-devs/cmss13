@@ -387,8 +387,6 @@ var/const/INGEST = 2
 /datum/reagents/proc/add_reagent(var/reagent, var/amount, var/list/data, var/safety = 0)
 	if(!reagent || !isnum(amount))
 		return TRUE
-	if(!istype(reagent, /datum/reagent))
-		CRASH("[reagent] is not of type /datum/reagent") //So we can track down what is causing errors in reagent lists...
 
 	update_total()
 	if(total_volume + amount > maximum_volume)

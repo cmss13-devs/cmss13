@@ -3,7 +3,7 @@
 // --------------------------------------------
 /datum/cm_objective/retrieve_item
 	var/obj/item/target_item
-	var/area/target_area
+	var/list/area/target_areas
 	var/area/initial_location
 	objective_flags = OBJ_CAN_BE_UNCOMPLETED | OBJ_FAILABLE
 	display_category = "Item Retrieval"
@@ -15,7 +15,7 @@
 		initial_location = get_area(target_item)
 
 /datum/cm_objective/retrieve_item/get_clue()
-	return "[target_item] in [initial_location]"
+	return SPAN_DANGER("[target_item] in [initial_location]")
 
 /datum/cm_objective/retrieve_item/check_completion()
 	. = ..()
@@ -25,12 +25,18 @@
 	if(target_item.is_damaged())
 		uncomplete()
 		return 0
-	if(istype(get_area(target_item), target_area))
-		complete()
-		return 1
+	for(var/T in target_areas)
+		var/area/target_area = T //not sure why the cast is necessary (rather than casting in the loop), but it doesn't work without it... ~ThePiachu
+		if(istype(get_area(target_item), target_area))
+			complete()
+			return 1
 
 /datum/cm_objective/retrieve_item/almayer
-	target_area = /area/almayer/command/securestorage
+	target_areas = list(
+		/area/almayer/command/securestorage,
+		/area/almayer/command/computerlab,
+		/area/almayer/medical/medical_science
+	)
 	priority = OBJECTIVE_EXTREME_VALUE
 
 // --------------------------------------------

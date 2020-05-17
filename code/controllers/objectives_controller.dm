@@ -81,12 +81,24 @@ var/global/datum/objectives_controller/objectives_controller
 	return dat
 
 /datum/objectives_controller/proc/setup_tree()
+	//Sets up the objective interdependance tree
+	//Every objective that is not a dead end enables an objective of a higher tier
+	//Every objective that needs prerequisites gets them from objectives of lower tier
+	//If an objective doesn't need prerequisites, it can't be picked by lower tiers
+	//If an objective is a dead end, it can't be picked by higher tiers
+
 	var/list/no_value = list()
 	var/list/low_value = list()
+	var/list/low_value_with_prerequisites = list()
 	var/list/med_value = list()
+	var/list/med_value_with_prerequisites = list()
 	var/list/high_value = list()
+	var/list/high_value_with_prerequisites = list()
 	var/list/extreme_value = list()
+	var/list/extreme_value_with_prerequisites = list()
 	var/list/absolute_value = list()
+	var/list/absolute_value_with_prerequisites = list()
+
 	for(var/datum/cm_objective/O in objectives)
 		if(O.objective_flags & OBJ_DO_NOT_TREE)
 			continue // exempt from the tree
@@ -95,82 +107,102 @@ var/global/datum/objectives_controller/objectives_controller
 				no_value += O
 			if(OBJECTIVE_LOW_VALUE)
 				low_value += O
+				if(O.prerequisites_required != PREREQUISITES_NONE)
+					low_value_with_prerequisites += O
 			if(OBJECTIVE_MEDIUM_VALUE)
 				med_value += O
+				if(O.prerequisites_required != PREREQUISITES_NONE)
+					med_value_with_prerequisites += O
 			if(OBJECTIVE_HIGH_VALUE)
 				high_value += O
+				if(O.prerequisites_required != PREREQUISITES_NONE)
+					high_value_with_prerequisites += O
 			if(OBJECTIVE_EXTREME_VALUE)
 				extreme_value += O
+				if(O.prerequisites_required != PREREQUISITES_NONE)
+					extreme_value_with_prerequisites += O
 			if(OBJECTIVE_ABSOLUTE_VALUE)
 				absolute_value += O
+				if(O.prerequisites_required != PREREQUISITES_NONE)
+					absolute_value_with_prerequisites += O
 
 	var/datum/cm_objective/enables
 	for(var/datum/cm_objective/N in no_value)
-		if(!low_value || !low_value.len)
+		if(!low_value_with_prerequisites || !low_value_with_prerequisites.len)
 			break
 		if(N.objective_flags & OBJ_DEAD_END)
 			no_value -= N // stop it being picked
 			continue
-		enables = pick(low_value)
+		enables = pick(low_value_with_prerequisites)
 		if(!enables)
 			break
 		N.enables_objectives += enables
 		enables.required_objectives += N
 	for(var/datum/cm_objective/L in low_value)
 		if(!L.required_objectives.len && no_value.len)
-			L.required_objectives += pick(no_value)
-		if(!med_value || !med_value.len)
+			var/datum/cm_objective/req = pick(no_value)
+			L.required_objectives += req
+			req.enables_objectives += L
+		if(!med_value_with_prerequisites || !med_value_with_prerequisites.len)
 			break
 		if(L.objective_flags & OBJ_DEAD_END)
 			low_value -= L
 			continue
-		enables = pick(med_value)
+		enables = pick(med_value_with_prerequisites)
 		if(!enables)
 			break
 		L.enables_objectives += enables
 		enables.required_objectives += L
 	for(var/datum/cm_objective/M in med_value)
 		if(!M.required_objectives.len && low_value.len)
-			M.required_objectives += pick(low_value)
-		if(!high_value || !high_value.len)
+			var/datum/cm_objective/req = pick(low_value)
+			M.required_objectives += req
+			req.enables_objectives += M
+		if(!high_value_with_prerequisites || !high_value_with_prerequisites.len)
 			break
 		if(M.objective_flags & OBJ_DEAD_END)
 			med_value -= M
 			continue
-		enables = pick(high_value)
+		enables = pick(high_value_with_prerequisites)
 		if(!enables)
 			break
 		M.enables_objectives += enables
 		enables.required_objectives += M
 	for(var/datum/cm_objective/H in high_value)
 		if(!H.required_objectives.len && med_value.len)
-			H.required_objectives += pick(med_value)
-		if(!extreme_value || !extreme_value.len)
+			var/datum/cm_objective/req = pick(med_value)
+			H.required_objectives += req
+			req.enables_objectives += H
+		if(!extreme_value_with_prerequisites || !extreme_value_with_prerequisites.len)
 			break
 		if(H.objective_flags & OBJ_DEAD_END)
 			high_value -= H
 			continue
-		enables = pick(extreme_value)
+		enables = pick(extreme_value_with_prerequisites)
 		if(!enables)
 			break
 		H.enables_objectives += enables
 		enables.required_objectives += H
 	for(var/datum/cm_objective/E in extreme_value)
 		if(!E.required_objectives.len && high_value.len)
-			E.required_objectives += pick(high_value)
-		if(!absolute_value || !absolute_value.len)
+			var/datum/cm_objective/req = pick(high_value)
+			E.required_objectives += req
+			req.enables_objectives += E
+		if(!absolute_value_with_prerequisites || !absolute_value_with_prerequisites.len)
 			break
 		if(E.objective_flags & OBJ_DEAD_END)
 			extreme_value -= E
 			continue
-		enables = pick(absolute_value)
+		enables = pick(absolute_value_with_prerequisites)
 		if(!enables)
 			break
 		E.enables_objectives += enables
 		enables.required_objectives += E
 	for(var/datum/cm_objective/A in absolute_value)
 		if(!A.required_objectives.len && extreme_value.len)
-			A.required_objectives += pick(extreme_value)
+			var/datum/cm_objective/req = pick(extreme_value)
+			A.required_objectives += req
+			req.enables_objectives += A
 
 /datum/objectives_controller/proc/add_objective(var/datum/cm_objective/O)
 	if(!(O in objectives))
@@ -179,6 +211,7 @@ var/global/datum/objectives_controller/objectives_controller
 		non_processing_objectives += O
 	else if(!(O in inactive_objectives))
 		inactive_objectives += O
+		O.activate()
 
 /datum/objectives_controller/proc/remove_objective(var/datum/cm_objective/O)
 	objectives -= O

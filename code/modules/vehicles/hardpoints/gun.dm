@@ -108,8 +108,8 @@
 	if(!T)
 		return FALSE
 
-	var/dx = T.x - (owner.x + origins[1])
-	var/dy = T.y - (owner.y + origins[2])
+	var/dx = T.x - (owner.x + origins[1]/2)
+	var/dy = T.y - (owner.y + origins[2]/2)
 
 	var/deg = 0
 	switch(dir)
@@ -153,17 +153,16 @@
 			if(!O.density)
 				continue
 
-			// Make sure we can pass objects on borders
-			if(O.flags_atom & ON_BORDER)
-				// If we're behind the object, check the behind pass flags
-				if(dir == O.dir && !(flags_can_pass_behind & PASS_OVER))
+			// Make sure we can pass object from all directions
+			if(!(O.flags_can_pass_all & PASS_OVER_THROW_ITEM))
+				if(!(O.flags_atom & ON_BORDER))
 					return FALSE
-				// If we're in front, check front pass flags
-				else if(dir == turn(O.dir, 180) && !(flags_can_pass_front & PASS_OVER))
+				//If we're behind the object, check the behind pass flags
+				else if(dir == O.dir && !(O.flags_can_pass_behind & PASS_OVER_THROW_ITEM))
 					return FALSE
-			// If it's not a border object we need PASS_OVER from all directions
-			else if(!(O.flags_can_pass_all & PASS_OVER))
-				return FALSE
+				//If we're in front, check front pass flags
+				else if(dir == turn(O.dir, 180) && !(O.flags_can_pass_front & PASS_OVER_THROW_ITEM))
+					return FALSE
 
 		// Trace back towards the vehicle
 		checking_turf = get_step(checking_turf, turn(dir,180))

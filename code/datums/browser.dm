@@ -195,8 +195,8 @@
 
 	// no atomref specified (or not found)
 	// so just reset the user mob's machine var
-	if(src && src.mob)
-		src.mob.unset_interaction()
+	if(mob && !isVehicle(mob.interactee))
+		mob.unset_interaction()
 	return
 
 /proc/show_browser(var/target, var/browser_content, var/browser_name, var/id = null, var/window_options = null)

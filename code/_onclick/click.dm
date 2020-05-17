@@ -148,8 +148,17 @@
 /atom/proc/clicked(var/mob/user, var/list/mods)
 	if (mods["shift"] && !mods["middle"])
 		if(user.client && user.client.eye == user)
-			examine(user)
+			// If the user is not a xeno (with active ability) with the shift click pref on, we examine. God forgive me for snowflake
+			var/do_examine = TRUE
+			if(isXeno(user) && user.client.prefs && !(user.client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK))
+				var/mob/living/carbon/Xenomorph/X = user
+				if(X.selected_ability)
+					do_examine = FALSE
+
+			if(do_examine)
+				examine(user)
 			user.face_atom(src)
+
 		if(isAI(user))
 			examine(user)
 		return TRUE

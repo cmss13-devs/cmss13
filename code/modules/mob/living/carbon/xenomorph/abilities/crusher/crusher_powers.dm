@@ -44,10 +44,10 @@
 // This ties the pounce/throwing backend into the old collision backend
 /mob/living/carbon/Xenomorph/Crusher/obj_launch_collision(var/obj/O)
 	var/datum/action/xeno_action/activable/pounce/crusher_charge/CCA = get_xeno_action_by_type(src, /datum/action/xeno_action/activable/pounce/crusher_charge)
-	if (istype(CCA) && !CCA.action_cooldown_check())
-		CCA.reduce_cooldown(80)
+	if (istype(CCA) && !CCA.action_cooldown_check() && !(O.type in CCA.not_reducing_objects))
+		CCA.reduce_cooldown(50)
 
-	src.gain_plasma(10)
+	gain_plasma(10)
 
 	if (!handle_collision(O)) // Check old backend
 		..(O)

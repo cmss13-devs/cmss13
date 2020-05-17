@@ -3,20 +3,33 @@
 
 /datum/action/xeno_action/activable/empower/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
-
-	if (!action_cooldown_check())
+	if(!istype(X) || !X.check_state())
 		return
 
-	if (!X.check_state())
+	if(!activated_once && !action_cooldown_check())
 		return
 
-	if (!check_and_use_plasma_owner())
+	if(!activated_once)
+		if (!check_and_use_plasma_owner())
+			return
+
+		X.visible_message(SPAN_XENODANGER("[X] starts empowering!"), SPAN_XENODANGER("You start empowering yourself!"))
+		activated_once = TRUE
+		get_inital_shield()
+		add_timer(CALLBACK(src, .proc/timeout), time_until_timeout)
+		apply_cooldown()
+		return ..()
+	else
+		actual_empower(X)
+
+/datum/action/xeno_action/activable/empower/proc/actual_empower(var/mob/living/carbon/Xenomorph/X)
+	if(!istype(X))
 		return
 
+	activated_once = FALSE
 	X.visible_message(SPAN_XENOWARNING("[X] gets empowered by the surrounding enemies!"), SPAN_XENOWARNING("You feel a rush of power from the surrounding enemies!"))
-
 	X.create_empower()
-
+	
 	var/list/mobs_in_range = orange(empower_range, X)
 	// Spook patrol
 	X.emote("tail")
@@ -25,20 +38,34 @@
 	for(var/mob/living/carbon/human/H in mobs_in_range)
 		if(H.stat == DEAD || istype(H.buckled, /obj/structure/bed/nest))
 			continue
-
 		accumulative_health += shield_per_human
-
 		shake_camera(H, 2, 1)
 
 	accumulative_health = min(max_shield, accumulative_health)
 	accumulative_health += baseline_shield
-		
+	
 	X.add_xeno_shield(accumulative_health, XENO_SHIELD_SOURCE_RAVAGER)
 	X.overlay_shields()
 
-	apply_cooldown()
-	..()
-	return
+/datum/action/xeno_action/activable/empower/proc/get_inital_shield()
+	var/mob/living/carbon/Xenomorph/X = owner
+	if(!istype(X))
+		return
+
+	if(!activated_once)
+		return
+
+	X.add_xeno_shield(initial_shield, XENO_SHIELD_SOURCE_RAVAGER)
+	X.overlay_shields()
+
+/datum/action/xeno_action/activable/empower/proc/timeout()
+	if(!activated_once)
+		return
+	
+	var/mob/living/carbon/Xenomorph/X = owner
+	if(!istype(X))
+		return
+	actual_empower(X)
 
 // Supplemental behavior for our charge
 /datum/action/xeno_action/activable/pounce/charge/additional_effects(mob/living/L)
@@ -297,8 +324,7 @@
 
 	var/damage = base_damage
 	var/range = 1
-
-	apply_cooldown()
+	var/windup_reduction = 0
 
 	if (X.mutation_type == RAVAGER_BERSERKER)
 		var/datum/behavior_delegate/ravager_berserker/BD = X.behavior_delegate
@@ -310,6 +336,9 @@
 				BD.decrement_rage(BD.rage)
 			damage = damage_at_rage_levels[Clamp(BD.rage+1, 1, BD.max_rage)]
 			range = range_at_rage_levels[Clamp(BD.rage+1, 1, BD.max_rage)]
+			windup_reduction = windup_reduction_at_rage_levels[Clamp(BD.rage+1, 1, BD.max_rage)]
+
+		apply_cooldown()
 	
 	if (range > 1)
 		X.visible_message(SPAN_XENOHIGHDANGER("[X] begins digging in for a massive strike!"), SPAN_XENOHIGHDANGER("You begin digging in for a massive strike!"))
@@ -319,20 +348,8 @@
 	X.frozen = 1
 	X.anchored = 1
 	X.update_canmove()
-	
-	var/list/telegraph_atom_list = list()
-	for(var/turf/T in oview(range))
-		if(T == get_turf(X))
-			continue
-		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/brown(T, activation_delay)
 
-
-	if (do_after(X, activation_delay, INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
-
-		for(var/obj/effect/xenomorph/xeno_telegraph/XT in telegraph_atom_list)
-			telegraph_atom_list -= XT
-			qdel(XT)
-
+	if (do_after(X, (activation_delay - windup_reduction), INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
 		X.emote("roar")
 		X.spin_circle()
 

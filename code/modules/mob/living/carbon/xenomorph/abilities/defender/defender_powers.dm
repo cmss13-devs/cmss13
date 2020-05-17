@@ -130,6 +130,8 @@
 	if(!X.Adjacent(H))
 		return
 
+	apply_cooldown()
+
 	H.last_damage_mob = X
 	H.last_damage_source = initial(X.caste_name)
 	X.visible_message(SPAN_XENOWARNING("[X] rams [H] with its armored crest!"), \
@@ -154,7 +156,6 @@
 	H.launch_towards(T, headbutt_distance, SPEED_SLOW, src)
 	playsound(H,'sound/weapons/alien_claw_block.ogg', 50, 1)
 
-	apply_cooldown()
 	..()
 	return
 

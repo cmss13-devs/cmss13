@@ -21,7 +21,7 @@
 	P.armor_modifier += XENO_ARMOR_MOD_SMALL
 	P.explosivearmor_modifier += XENO_EXPOSIVEARMOR_MOD_LARGE
 	P.damage_modifier -= XENO_DAMAGE_MOD_SMALL
-	P.speed_modifier += XENO_SPEED_MOD_ULTRA
+	P.speed_modifier += XENO_SPEED_MODIFIER_SLOWEST
 	P.plasma_types = list(PLASMA_NEUROTOXIN, PLASMA_CHITIN)
 	
 	mutator_update_actions(P)

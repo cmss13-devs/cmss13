@@ -14,6 +14,11 @@
 	var/max_shield = 300
 	var/baseline_shield = 75
 	var/shield_per_human = 50
+	var/initial_shield = 100
+	var/time_until_timeout = 100
+
+	// State
+	var/activated_once = FALSE
 
 // Rav charge
 /datum/action/xeno_action/activable/pounce/charge
@@ -97,6 +102,7 @@
 	var/base_damage = 30
 	var/damage_at_rage_levels = list(5, 10, 25, 50, 80)
 	var/range_at_rage_levels = list(1, 1, 1, 2, 2)
+	var/windup_reduction_at_rage_levels = list(0, 2, 4, 6, 10)
 
 
 ////// HEDGEHOG ABILITIES
@@ -109,10 +115,10 @@
 	action_type = XENO_ACTION_ACTIVATE
 	ability_primacy = XENO_PRIMARY_ACTION_1
 	plasma_cost = 0
-	cooldowns = list(240, 230, 220, 210)
+	cooldowns = list(260, 250, 240, 230)
 
 	// Config values
-	var/shield_duration = 120  		// Shield lasts 12 seconds by default.
+	var/shield_duration = 100  		// Shield lasts 10 seconds by default.
 	var/shield_amount = 200 		// Shield HP amount
 	var/shield_shrapnel_amount = 7  // How much shrapnel each shield hit should spawn
 	var/shard_cost = 200 			// Minimum spikes to use this ability

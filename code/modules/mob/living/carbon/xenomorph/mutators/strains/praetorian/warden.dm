@@ -19,7 +19,7 @@
 	var/mob/living/carbon/Xenomorph/Praetorian/P = MS.xeno
 	
 	// Make a 'halftank'
-	P.speed_modifier += XENO_SPEED_MOD_VERYLARGE
+	P.speed_modifier += XENO_SPEED_MODIFIER_SLOWER
 	P.damage_modifier -= XENO_DAMAGE_MOD_SMALL
 	P.armor_modifier += XENO_ARMOR_MOD_VERYSMALL
 

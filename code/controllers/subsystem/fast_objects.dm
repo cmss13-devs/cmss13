@@ -8,7 +8,7 @@ var/list/fast_objects = list()
 	priority      = SS_PRIORITY_FAST_OBJECTS
 	wait          = SS_WAIT_FAST_OBJECTS
 	flags         = SS_NO_INIT
-	var/list/currentrun
+	var/list/currentrun = list()
 
 /datum/subsystem/fast_obj/New()
 	NEW_SS_GLOBAL(SSfast_obj)

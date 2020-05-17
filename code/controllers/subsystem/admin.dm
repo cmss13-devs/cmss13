@@ -5,7 +5,7 @@ var/datum/subsystem/admin/SSadmin
 	wait          = SS_WAIT_ADMIN
 	flags		  = SS_FIRE_IN_LOBBY | SS_NO_INIT | SS_KEEP_TIMING
 
-	var/list/currentrun
+	var/list/currentrun = list()
 	var/times_repeated = 0
 
 /datum/subsystem/admin/New()

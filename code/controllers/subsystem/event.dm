@@ -9,7 +9,7 @@ var/list/events = list()
 	flags    = SS_NO_INIT | SS_KEEP_TIMING
 	priority = SS_PRIORITY_EVENT
 
-	var/list/currentrun
+	var/list/currentrun = list()
 
 
 /datum/subsystem/event/New()

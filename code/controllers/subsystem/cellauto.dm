@@ -8,7 +8,7 @@ var/list/cellauto_cells = list()
 	priority = SS_PRIORITY_CELLAUTO
 	flags    = SS_NO_INIT | SS_NO_TICK_CHECK
 
-	var/list/currentrun
+	var/list/currentrun = list()
 
 /datum/subsystem/cellauto/New()
 	NEW_SS_GLOBAL(SSevent)

@@ -14,7 +14,7 @@ var/list/datum/powernet/powernets_by_name = list() //Holds all powernet datums i
 	priority      = SS_PRIORITY_MACHINERY
 	display_order = SS_DISPLAY_MACHINERY
 
-	var/list/currentrunmachines
+	var/list/currentrunmachines = list()
 
 /datum/subsystem/machinery/New()
 	NEW_SS_GLOBAL(SSmachinery)

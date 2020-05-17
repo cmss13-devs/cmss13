@@ -10,10 +10,10 @@ var/list/power_machines = list()
 	flags         = SS_DISABLE_FOR_TESTING
 	wait          = 2 SECONDS
 
-	var/list/currentrun_cables
-	var/list/currentrun_powerents
-	var/list/currentrun_power_machines
-	var/list/currentrun_areas
+	var/list/currentrun_cables = list()
+	var/list/currentrun_powerents = list()
+	var/list/currentrun_power_machines = list()
+	var/list/currentrun_areas = list()
 
 
 /datum/subsystem/power/New()

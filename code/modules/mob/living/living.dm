@@ -390,7 +390,7 @@
 
 	var/new_icon = attack_icon.icon_state
 	var/new_pix_x = attack_icon.pixel_x
-	var/new_pix_y = attack_icon.pixel_x
+	var/new_pix_y = attack_icon.pixel_y
 	attack_icon.icon_state = old_icon //necessary b/c the attack_icon can change sprite during the sleep.
 	attack_icon.pixel_x = old_pix_x
 	attack_icon.pixel_y = old_pix_y

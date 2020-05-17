@@ -9,7 +9,7 @@ var/list/active_diseases = list()
 	flags    = SS_NO_INIT | SS_KEEP_TIMING | SS_DISABLE_FOR_TESTING
 	priority = SS_PRIORITY_DISEASE
 
-	var/list/currentrun
+	var/list/currentrun = list()
 
 
 /datum/subsystem/disease/New()

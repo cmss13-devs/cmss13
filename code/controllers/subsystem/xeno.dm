@@ -8,7 +8,7 @@ var/datum/subsystem/xeno/SSxeno
 	priority      = SS_PRIORITY_XENO
 	display_order = SS_DISPLAY_XENO
 
-	var/list/currentrun
+	var/list/currentrun = list()
 
 
 /datum/subsystem/xeno/New()

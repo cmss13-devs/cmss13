@@ -159,7 +159,7 @@ for(var/obj/structure/machinery/cryopod/evacuation/C in cryo_cells) C.go_out()
 You could potentially make stuff like crypods in these, but they should generally not be allowed to build inside pods.
 This can probably be done a lot more elegantly either way, but it'll suffice for now.
 */
-/datum/shuttle/ferry/marine/evacuation_pod/proc/check_passengers(msg)
+/datum/shuttle/ferry/marine/evacuation_pod/proc/check_passengers(var/msg = "")
 	. = TRUE
 	var/n = 0 //Generic counter.
 	var/mob/M

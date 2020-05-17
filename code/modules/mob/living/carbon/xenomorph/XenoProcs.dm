@@ -63,7 +63,7 @@
 		stat("Evolve Progress:", "NO QUEEN")
 	else if(hive && !hive.living_xeno_queen.ovipositor && !caste_name == "Queen")
 		stat("Evolve Progress:", "NO OVIPOSITOR")
-	else if(caste.evolution_allowed)
+	else if(caste && caste.evolution_allowed)
 		stat("Evolve Progress:", "[round(evolution_stored)]/[evolution_threshold]")
 
 	if(upgrade != -1 && upgrade < 3) //upgrade possible

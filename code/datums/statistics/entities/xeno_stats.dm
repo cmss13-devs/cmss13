@@ -119,7 +119,7 @@
 		R.track_personal_abilities_used(ability, amount)
 
 /mob/living/carbon/Xenomorph/proc/track_ability_usage(var/ability, var/caste, var/amount = 1)
-	if(statistic_exempt || (!client && !mind))
+	if(statistic_exempt || !client || !mind)
 		return
 	var/datum/entity/player_stats/xeno/S = mind.setup_xeno_stats()
 	if(caste_name && !isnull(S))
@@ -133,7 +133,7 @@
 		R.steps_walked += amount
 
 /mob/living/carbon/Xenomorph/track_steps_walked(var/amount = 1)
-	if(statistic_exempt || (!client && !mind))
+	if(statistic_exempt || !client || !mind)
 		return
 	var/datum/entity/player_stats/xeno/S = mind.setup_xeno_stats()
 	if(isnull(S))
@@ -150,7 +150,7 @@
 		R.total_hits += amount
 
 /mob/living/carbon/Xenomorph/proc/track_slashes(var/caste, var/amount = 1)
-	if(statistic_exempt || (!client && !mind))
+	if(statistic_exempt || !client || !mind)
 		return
 	var/datum/entity/player_stats/xeno/S = mind.setup_xeno_stats()
 	if(isnull(S))

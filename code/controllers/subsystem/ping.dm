@@ -6,7 +6,7 @@ var/datum/subsystem/ping/SSping
 	wait = 3 SECONDS
 	flags = SS_NO_INIT | SS_FIRE_IN_LOBBY | SS_DISABLE_FOR_TESTING
 
-	var/list/currentrun
+	var/list/currentrun = list()
 
 /datum/subsystem/ping/New()
 	NEW_SS_GLOBAL(SSping)

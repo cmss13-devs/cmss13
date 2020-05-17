@@ -304,7 +304,7 @@
 	// If the mob is inside a vehicle interior, send the message from the vehicle's z, not the interior z
 	if(interior_manager && transmit_z == interior_manager.interior_z)
 		var/datum/interior/I = interior_manager.get_interior_by_coords(position.x, position.y)
-		if(I)
+		if(I && I.exterior)
 			transmit_z = I.exterior.z
 	if(src.ignore_z == TRUE)
 		transmit_z = ADMIN_Z_LEVEL //this area always has comms
@@ -462,7 +462,7 @@
 		// Use vehicle's z if we're inside a vehicle interior
 		if(interior_manager && position.z == interior_manager.interior_z)
 			var/datum/interior/I = interior_manager.get_interior_by_coords(position.x, position.y)
-			if(I)
+			if(I && I.exterior)
 				receive_z = I.exterior.z
 		if(src.ignore_z == TRUE)
 			receive_z = ADMIN_Z_LEVEL //this area always has comms

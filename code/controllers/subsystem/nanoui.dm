@@ -7,7 +7,7 @@ var/datum/subsystem/nano/SSnano
 	wait     = 2 SECONDS
 	priority = SS_PRIORITY_NANOUI
 
-	var/list/currentrun
+	var/list/currentrun = list()
 
 
 /datum/subsystem/nano/New()

@@ -8,7 +8,7 @@ var/datum/subsystem/mob/SSmob
 	priority      = SS_PRIORITY_MOB
 	display_order = SS_DISPLAY_MOB
 
-	var/list/currentrun
+	var/list/currentrun = list()
 
 
 /datum/subsystem/mob/New()

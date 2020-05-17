@@ -61,7 +61,7 @@
 	var/t_has = "has"
 	var/t_is = "is"
 
-	var/id_paygrade
+	var/id_paygrade = ""
 	var/obj/item/card/id/I = get_idcard()
 	if(I)
 		id_paygrade = I.paygrade

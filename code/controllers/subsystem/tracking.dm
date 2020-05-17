@@ -18,7 +18,7 @@ var/datum/subsystem/tracking/SStracking
 	// A list of leaders mapped to their respective list
 	var/list/leaders = list()
 
-	var/list/currentrun
+	var/list/currentrun = list()
 
 /datum/subsystem/tracking/New()
 	NEW_SS_GLOBAL(SStracking)

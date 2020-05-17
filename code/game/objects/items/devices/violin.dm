@@ -366,7 +366,7 @@
 			spawn()
 				var/list/lines = splittext(t, "\n")
 				var/tempo = 5
-				if(!lines.len)
+				if(!lines || !lines.len)
 					return
 				if(copytext(lines[1],1,6) == "BPM: ")
 					tempo = text2num(copytext(lines[1],6))

@@ -9,7 +9,7 @@ var/list/processing_objects = list()
 	priority      = SS_PRIORITY_OBJECTS
 	wait          = 2 SECONDS
 
-	var/list/currentrun
+	var/list/currentrun = list()
 
 /datum/subsystem/obj/New()
 	NEW_SS_GLOBAL(SSobj)

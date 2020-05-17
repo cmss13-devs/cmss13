@@ -114,7 +114,7 @@
 		if("O8") . = size ? "VADM " : "Vice Admiral"
 		if("O9") . = size ? "ADM " : "Admiral"
 		if("O9E") . = size ? "SMR " : "Sky Marshal"
-		else . = paygrade + " " //custom paygrade
+		else . = "[paygrade] " //custom paygrade
 
 /proc/get_rank_pins(paygrade)
 	if(!paygrade) return null

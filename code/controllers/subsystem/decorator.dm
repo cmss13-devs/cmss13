@@ -16,7 +16,7 @@ var/datum/subsystem/decorator/SSdecorator
 
 	can_fire = FALSE
 
-	var/list/currentrun
+	var/list/currentrun = list()
 	var/list/decoratable
 	var/list/registered_decorators
 	var/list/datum/decorator/active_decorators

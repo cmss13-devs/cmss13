@@ -8,7 +8,7 @@ var/datum/subsystem/human/SShuman
 	priority      = SS_PRIORITY_HUMAN
 	display_order = SS_DISPLAY_HUMAN
 
-	var/list/currentrun
+	var/list/currentrun = list()
 
 
 /datum/subsystem/human/New()

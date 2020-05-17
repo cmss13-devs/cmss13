@@ -8,7 +8,7 @@
 	name = "Soundscape"
 	wait = 1 SECOND
 	priority = SS_PRIORITY_SOUNDSCAPE
-	var/list/currentrun
+	var/list/currentrun = list()
 
 /datum/subsystem/soundscape/fire(resumed = FALSE)
 	if(!resumed)

@@ -104,7 +104,7 @@
 
 /mob/proc/show_message(msg, type, alt, alt_type, message_flags = CHAT_TYPE_OTHER)//Message, type of message (1 or 2), alternative message, alt message type (1 or 2)
 
-	if(!client)	return
+	if(!client || !client.prefs)	return
 
 	if (type)
 		if(type & 1 && (sdisabilities & BLIND || blinded) )//Vision related

@@ -9,7 +9,7 @@ var/list/active_smoke_effects = list()
 	flags    = SS_NO_INIT | SS_KEEP_TIMING
 	priority = SS_PRIORITY_OBJECTS
 
-	var/list/currentrun
+	var/list/currentrun = list()
 
 
 /datum/subsystem/smoke_effects/New()

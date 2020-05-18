@@ -772,8 +772,19 @@
 	bullet_message(P) //We still want this, regardless of whether or not the bullet did damage. For griefers and such.
 
 	if(damage || (ammo_flags && AMMO_SPECIAL_EMBED))
-		apply_damage(damage_result, P.ammo.damage_type, P.def_zone, impact_name = P.ammo.impact_name, impact_limbs = P.ammo.impact_limbs)
+		apply_damage(damage_result, P.ammo.damage_type, P.def_zone, impact_name = P.ammo.impact_name, impact_limbs = P.ammo.impact_limbs, firer = P.firer)
 		P.play_damage_effect(src)
+		
+		if(ammo_flags & AMMO_INCENDIARY)
+			adjust_fire_stacks(rand(6,11))
+			IgniteMob()
+			if(!stat && !(species.flags & NO_PAIN))
+				emote("scream")
+				to_chat(src, SPAN_HIGHDANGER("You burst into flames!! Stop drop and roll!"))
+
+		var/mob/firer = P.firer
+		if(istype(firer) && firer.faction == faction)
+			return TRUE
 		if(P.ammo.shrapnel_chance > 0 && prob(P.ammo.shrapnel_chance + round(damage / 10)))
 			if(ammo_flags && AMMO_SPECIAL_EMBED)
 				P.ammo.on_embed(src, organ)
@@ -795,12 +806,6 @@
 					emote("scream")
 					to_chat(src, SPAN_HIGHDANGER("You scream in pain as the impact sends <B>shrapnel</b> into the wound!"))
 
-		if(ammo_flags & AMMO_INCENDIARY)
-			adjust_fire_stacks(rand(6,11))
-			IgniteMob()
-			if(!stat && !(species.flags & NO_PAIN))
-				emote("scream")
-				to_chat(src, SPAN_HIGHDANGER("You burst into flames!! Stop drop and roll!"))
 		return TRUE
 
 //Deal with xeno bullets.

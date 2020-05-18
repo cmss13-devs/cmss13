@@ -1223,7 +1223,7 @@ This function completely restores a damaged organ to perfect condition.
 		var/icon/lips = new /icon('icons/mob/humans/onmob/human_face.dmi', "camo_[owner.lip_style]_s")
 		overlays += lips
 
-/obj/limb/head/take_damage(brute, burn, sharp, edge, used_weapon = null, list/forbidden_limbs = list(), no_limb_loss, impact_name = null)
+/obj/limb/head/take_damage(brute, burn, sharp, edge, used_weapon = null, list/forbidden_limbs = list(), no_limb_loss, impact_name = null, var/mob/attack_source = null)
 	. = ..()
 	if (!disfigured)
 		if (brute_dam > 50 || brute_dam > 40 && prob(50))

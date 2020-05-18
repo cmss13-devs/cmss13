@@ -432,6 +432,8 @@ var/const/INGEST = 2
 
 	var/datum/reagent/D = chemical_reagents_list[reagent]
 	if(D)
+		if(!istype(D, /datum/reagent))
+			CRASH("Not REAGENT - [reagent] - chemical_reagents_list[reagent]")
 
 		var/datum/reagent/R = new D.type()
 		if(D.type == /datum/reagent/generated)

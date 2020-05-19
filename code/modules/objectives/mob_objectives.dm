@@ -222,16 +222,23 @@
 	objective_flags = OBJ_PROCESS_ON_DEMAND | OBJ_DO_NOT_TREE
 	var/points_per_corpse = 5
 	var/area/recovery_area = /area/almayer/medical/morgue
+	//We count how many corpses we recovered and are not processing anymore
+	//So we can cremate them and so on rather than turn the morgue trays into a clown car
+	var/recovered_corpses_count = 0
 
 /datum/cm_objective/recover_corpses/get_point_value()
 	var/points = 0
 	for(var/mob/H in corpses)
 		if(istype(get_area(H),recovery_area))
-			points++
-	return points * points_per_corpse
+			if(objective_flags & OBJ_CAN_BE_UNCOMPLETED)
+				points++
+			else
+				recovered_corpses_count++
+				corpses -= H
+	return (recovered_corpses_count + points) * points_per_corpse
 
 /datum/cm_objective/recover_corpses/total_point_value()
-	return corpses.len * points_per_corpse
+	return (corpses.len + recovered_corpses_count) * points_per_corpse
 
 /datum/cm_objective/recover_corpses/get_completion_status()
 	var/percentage = 0

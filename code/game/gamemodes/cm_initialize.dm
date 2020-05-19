@@ -710,7 +710,8 @@ Additional game mode variables.
 				survivors -= H.mind
 
 		if(spawner.make_objective)
-			new /datum/cm_objective/move_mob/almayer/survivor(H)
+			if(!H.first_xeno) //Starting xeno burst "survivors" don't count for the objectives
+				new /datum/cm_objective/move_mob/almayer/survivor(H)
 
 /datum/game_mode/proc/survivor_non_event_transform(var/mob/living/carbon/human/H, var/loc, var/is_synth = FALSE)
 	H.loc = loc

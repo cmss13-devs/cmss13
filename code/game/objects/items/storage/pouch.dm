@@ -326,7 +326,7 @@
 		return ..()
 
 /obj/item/storage/pouch/explosive/full/New()
-	new /obj/item/explosive/grenade/HE/frag(src)
+	new /obj/item/explosive/grenade/HE(src)
 	new /obj/item/explosive/grenade/HE(src)
 	new /obj/item/explosive/grenade/HE(src)
 	..()

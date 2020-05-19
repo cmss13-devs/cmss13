@@ -32,7 +32,6 @@
 		list("M39 AP magazine (10x20mm)", 6, /obj/item/ammo_magazine/smg/m39/ap , null, "black"),
 		list("M39 extended magazine (10x20mm)", 6, /obj/item/ammo_magazine/smg/m39/extended , null, "black"),
 		list("M40 HEDP grenade", 9, /obj/item/explosive/grenade/HE, null, "black"),
-		list("M40 HEFA grenade", 9, /obj/item/explosive/grenade/HE/frag , null, "black"),
 		list("M41A AP magazine (10x24mm)", 6, /obj/item/ammo_magazine/rifle/ap , null, "black"),
 		list("M41A extended magazine (10x24mm)", 6, /obj/item/ammo_magazine/rifle/extended , null, "black"),
 		list("L42A AP magazine (10x24mm)", 6, /obj/item/ammo_magazine/rifle/l42a/ap, null, "black"),

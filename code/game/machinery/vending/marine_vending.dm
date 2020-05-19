@@ -165,7 +165,6 @@
 		/obj/item/explosive/grenade/HE/m15 = round(scale * 2),
 		/obj/item/explosive/mine = round(scale * 2),
 		/obj/item/storage/box/nade_box = round(scale * 1),
-		/obj/item/storage/box/nade_box/frag = round(scale * 2),
 		/obj/item/explosive/grenade/incendiary = round(scale * 2),
 		/obj/item/explosive/grenade/smokebomb = round(scale * 5),
 

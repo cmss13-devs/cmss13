@@ -369,9 +369,6 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 	spawn(1)
 		new /obj/item/storage/belt/grenade/full(src)
 		new /obj/item/storage/pouch/explosive(src)
-		new /obj/item/explosive/grenade/HE/frag(src)
-		new /obj/item/explosive/grenade/HE/frag(src)
-		new /obj/item/explosive/grenade/HE/frag(src)
 
 /obj/item/storage/box/kit/self_defense
 	name = "\improper Personal Self Defense Kit"

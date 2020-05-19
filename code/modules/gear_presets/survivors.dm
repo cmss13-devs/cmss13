@@ -35,7 +35,6 @@
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_RESEARCH)
 
 /datum/equipment_preset/survivor/scientist/load_gear(mob/living/carbon/human/H)
-
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/colonist(H), WEAR_BODY)
 	if(map_tag in MAPS_COLD_TEMP)
 		add_ice_colony_survivor_equipment(H)
@@ -67,7 +66,6 @@
 
 
 /datum/equipment_preset/survivor/doctor/load_gear(mob/living/carbon/human/H)
-
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/medical(H), WEAR_BODY)
 
 	if(map_tag in MAPS_COLD_TEMP)
@@ -98,7 +96,6 @@
 	access = list(ACCESS_CIVILIAN_PUBLIC)
 
 /datum/equipment_preset/survivor/corporate/load_gear(mob/living/carbon/human/H)
-
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit(H), WEAR_BODY)
 	if(map_tag in MAPS_COLD_TEMP)
 		add_ice_colony_survivor_equipment(H)
@@ -127,7 +124,6 @@
 
 
 /datum/equipment_preset/survivor/security/load_gear(mob/living/carbon/human/H)
-
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/security/corp(H), WEAR_BODY)
 	if(map_tag in MAPS_COLD_TEMP)
 		add_ice_colony_survivor_equipment(H)
@@ -154,7 +150,6 @@
 	access = list(ACCESS_CIVILIAN_PUBLIC)
 
 /datum/equipment_preset/survivor/prisoner/load_gear(mob/living/carbon/human/H)
-
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/color/orange(H), WEAR_BODY)
 
 	if(map_tag in MAPS_COLD_TEMP)
@@ -181,7 +176,6 @@
 	access = list(ACCESS_CIVILIAN_PUBLIC)
 
 /datum/equipment_preset/survivor/assistant/load_gear(mob/living/carbon/human/H)
-
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/colonist(H), WEAR_BODY)
 
 	if(map_tag in MAPS_COLD_TEMP)
@@ -209,7 +203,6 @@
 	access = list(ACCESS_CIVILIAN_PUBLIC)
 
 /datum/equipment_preset/survivor/civilian/load_gear(mob/living/carbon/human/H)
-
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/pj/red(H), WEAR_BODY)
 
 	if(map_tag in MAPS_COLD_TEMP)
@@ -237,7 +230,6 @@
 	access = list(ACCESS_CIVILIAN_PUBLIC)
 
 /datum/equipment_preset/survivor/chef/load_gear(mob/living/carbon/human/H)
-
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/colonist(H), WEAR_BODY)
 
 	if(map_tag in MAPS_COLD_TEMP)
@@ -268,8 +260,6 @@
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_RESEARCH)
 
 /datum/equipment_preset/survivor/botanist/load_gear(mob/living/carbon/human/H)
-	//TODO: add backpacks and satchels
-
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/colonist(H), WEAR_BODY)
 
 	if(map_tag in MAPS_COLD_TEMP)
@@ -278,6 +268,7 @@
 		H.equip_to_slot_or_del(new /obj/item/clothing/suit/apron(H), WEAR_JACKET)
 		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/tool/hatchet(H), WEAR_L_HAND)
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/hyd(H), WEAR_BACK)
 
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(H), WEAR_L_STORE)
@@ -299,7 +290,6 @@
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_ENGINEERING, ACCESS_CIVILIAN_LOGISTICS)
 
 /datum/equipment_preset/survivor/atmos_tech/load_gear(mob/living/carbon/human/H)
-
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/colonist(H), WEAR_BODY)
 
 	if(map_tag in MAPS_COLD_TEMP)

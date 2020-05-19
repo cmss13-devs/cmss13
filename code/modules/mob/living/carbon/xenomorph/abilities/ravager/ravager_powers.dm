@@ -6,7 +6,7 @@
 	if(!istype(X) || !X.check_state())
 		return
 
-	if(!activated_once && !action_cooldown_check())
+	if(!action_cooldown_check())
 		return
 
 	if(!activated_once)
@@ -66,6 +66,14 @@
 	if(!istype(X))
 		return
 	actual_empower(X)
+
+/datum/action/xeno_action/activable/empower/action_cooldown_check()
+	if (cooldown_timer_id == TIMER_ID_NULL)
+		return TRUE
+	else if (activated_once)
+		return TRUE
+	else
+		return FALSE
 
 // Supplemental behavior for our charge
 /datum/action/xeno_action/activable/pounce/charge/additional_effects(mob/living/L)

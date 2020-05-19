@@ -480,7 +480,6 @@
 		list("M39 AP magazine (10x20mm)", 15, /obj/item/ammo_magazine/smg/m39/ap , null, "black"),
 		list("M39 extended magazine (10x20mm)", 15, /obj/item/ammo_magazine/smg/m39/extended , null, "black"),
 		list("M40 HEDP grenade", 10, /obj/item/explosive/grenade/HE, null, "black"),
-		list("M40 HEFA grenade", 10, /obj/item/explosive/grenade/HE/frag , null, "black"),
 		list("M41A AP magazine (10x24mm)", 15, /obj/item/ammo_magazine/rifle/ap , null, "black"),
 		list("M41A extended magazine (10x24mm)", 15, /obj/item/ammo_magazine/rifle/extended , null, "black"),
 		list("L42A AP magazine (10x24mm)", 10, /obj/item/ammo_magazine/rifle/l42a/ap, null, "black"),
@@ -959,7 +958,6 @@
 		list("M39 AP magazine (10x20mm)", 6, /obj/item/ammo_magazine/smg/m39/ap , null, "black"),
 		list("M39 extended magazine (10x20mm)", 6, /obj/item/ammo_magazine/smg/m39/extended , null, "black"),
 		list("M40 HEDP grenade", 9, /obj/item/explosive/grenade/HE, null, "black"),
-		list("M40 HEFA grenade", 9, /obj/item/explosive/grenade/HE/frag , null, "black"),
 		list("M41A AP magazine (10x24mm)", 6, /obj/item/ammo_magazine/rifle/ap , null, "black"),
 		list("M41A extended magazine (10x24mm)", 6, /obj/item/ammo_magazine/rifle/extended , null, "black"),
 		list("L42A AP magazine (10x24mm)", 6, /obj/item/ammo_magazine/rifle/l42a/ap, null, "black"),
@@ -1045,7 +1043,6 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 
 		list("EXTRA GRENADES", 0, null, null, null),
 		list("M40 HEDP grenade x6", 15, /obj/effect/essentials_set/hedp_6_pack, null, "black"),
-		list("M40 HEFA grenade x6", 15, /obj/effect/essentials_set/hefa_6_pack, null, "black"),
 		list("M40 HIDP incendiary grenade x6", 15, /obj/effect/essentials_set/hidp_6_pack, null, "black"),
 
 		list("EXTRA FLAMETHROWER TANKS", 0, null, null, null),
@@ -1734,7 +1731,6 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 		list("M15 Fragmentation Grenade", round(scale * 2), /obj/item/explosive/grenade/HE/m15, "black"),
 		list("M20 Claymore Anti-Personnel Mine", round(scale * 2), /obj/item/explosive/mine, "black"),
 		list("M40 HEDP Grenade Box", round(scale * 1), /obj/item/storage/box/nade_box, "black"),
-		list("M40 HEFA Grenade Box", round(scale * 2), /obj/item/storage/box/nade_box/frag, "black"),
 		list("M40 HIDP Incendiary Grenade", round(scale * 2), /obj/item/explosive/grenade/incendiary, "black"),
 		list("M40 HSDP Smoke Grenade", round(scale * 5), /obj/item/explosive/grenade/smokebomb, "black"),
 

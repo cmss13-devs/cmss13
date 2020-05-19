@@ -227,7 +227,7 @@
 	if(!is_ff && take_damage_organ_damage(brute, sharp))
 		brute /= 2
 
-	if(!is_ff && config.bones_can_break && !(status & LIMB_ROBOT))
+	if(config.bones_can_break && !(status & LIMB_ROBOT))
 		take_damage_bone_break(brute)
 
 	if(status & LIMB_BROKEN && prob(40) && brute > 10)
@@ -391,7 +391,7 @@ This function completely restores a damaged organ to perfect condition.
 	if(!is_ff && type != BURN && !(status & LIMB_ROBOT))
 		take_damage_internal_bleeding(damage)
 
-	if(!is_ff && status & LIMB_SPLINTED && damage > 5 && prob(50 + damage * 2.5)) //If they have it splinted, the splint won't hold.
+	if(status & LIMB_SPLINTED && damage > 5 && prob(50 + damage * 2.5)) //If they have it splinted, the splint won't hold.
 		status &= ~LIMB_SPLINTED
 		to_chat(owner, SPAN_DANGER("The splint on your [display_name] comes apart!"))
 		owner.update_med_icon()

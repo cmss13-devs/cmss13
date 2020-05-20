@@ -33,6 +33,7 @@
 		if (computer)
 			computer.table = src
 			break
+	anes_tank = new(src)
 
 /obj/structure/machinery/optable/Dispose()
 	if(anes_tank)

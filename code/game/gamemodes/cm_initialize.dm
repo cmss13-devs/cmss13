@@ -710,17 +710,16 @@ Additional game mode variables.
 				survivors -= H.mind
 
 		if(spawner.make_objective)
-			if(!H.first_xeno) //Starting xeno burst "survivors" don't count for the objectives
-				new /datum/cm_objective/move_mob/almayer/survivor(H)
+			new /datum/cm_objective/move_mob/almayer/survivor(H)
 
 /datum/game_mode/proc/survivor_non_event_transform(var/mob/living/carbon/human/H, var/loc, var/is_synth = FALSE)
 	H.loc = loc
 	survivor_old_equipment(H, is_synth)
 	H.name = H.get_visible_name()
-	new /datum/cm_objective/move_mob/almayer/survivor(H)
 
 	//Give them some information
 	if(!H.first_xeno) //Only give objectives/back-stories to uninfected survivors
+		new /datum/cm_objective/move_mob/almayer/survivor(H)
 		spawn(4)
 			to_chat(H, "<h2>You are a survivor!</h2>")
 			switch(map_tag)

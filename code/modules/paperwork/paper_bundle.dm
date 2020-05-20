@@ -44,6 +44,8 @@
 	else
 		if(istype(W, /obj/item/tool/pen) || istype(W, /obj/item/toy/crayon))
 			close_browser(usr, name) //Closes the dialog
+		if(page < contents.len)
+			page = contents.len
 		P = contents[page]
 		P.attackby(W, user)
 
@@ -143,6 +145,8 @@
 			page--
 			playsound(src.loc, "pageturn", 15, 1)
 		if(href_list["remove"])
+			if(contents.len < page)
+				page = contents.len
 			var/obj/item/W = contents[page]
 			usr.put_in_hands(W)
 			to_chat(usr, SPAN_NOTICE("You remove the [W.name] from the bundle."))

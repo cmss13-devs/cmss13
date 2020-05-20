@@ -30,6 +30,8 @@
 // Any strain or caste-specific state should be stored on behavior_delegate objects
 // which use_ability invocations can modify using typechecks and typecasts where appropriate.
 /datum/action/xeno_action/proc/use_ability(atom/A)
+	if(!owner)
+		return
 	track_xeno_ability_stats()
 	for(var/X in owner.actions)
 		var/datum/action/act = X
@@ -38,12 +40,16 @@
 
 // Track statistics for this ability
 /datum/action/xeno_action/proc/track_xeno_ability_stats()
+	if(!owner)
+		return
 	var/mob/living/carbon/Xenomorph/X = owner
 	if (ability_name && round_statistics)
 		round_statistics.track_ability_usage(ability_name)
 		X.track_ability_usage(ability_name, X.caste_name)
 
 /datum/action/xeno_action/can_use_action()
+	if(!owner)
+		return
 	var/mob/living/carbon/Xenomorph/X = owner
 	if(X && !X.is_mob_incapacitated() && !X.dazed && !X.lying && !X.buckled && X.plasma_stored >= plasma_cost)
 		return TRUE
@@ -73,11 +79,15 @@
 // Checks the host Xeno's plasma. Returns TRUE if the amount of plasma
 // is sufficient to use the ability and FALSE otherwise.
 /datum/action/xeno_action/proc/check_plasma_owner()
+	if(!owner)
+		return
 	var/mob/living/carbon/Xenomorph/X = owner
 	return X.check_plasma(plasma_cost)
 
 // Uses plasma on the owner.
 /datum/action/xeno_action/proc/use_plasma_owner()
+	if(!owner)
+		return
 	var/mob/living/carbon/Xenomorph/X = owner
 	X.use_plasma(plasma_cost)
 
@@ -89,6 +99,8 @@
 // For non-activable Xeno actions, this is used to 
 // actually DO the action. 
 /datum/action/xeno_action/activable/action_activate()
+	if(!owner)
+		return
 	var/mob/living/carbon/Xenomorph/X = owner
 	if(X.selected_ability == src)
 		to_chat(X, "You will no longer use [ability_name] with \
@@ -128,6 +140,8 @@
 // THIS PROC SHOULD NEVER BE OVERRIDDEN BY CHILDREN
 // AND SHOULD __ALWAYS__ BE CALLED IN USE_ABILITY
 /datum/action/xeno_action/proc/apply_cooldown()
+	if(!owner)
+		return
 	// Uh oh! STINKY! already on cooldown
 	if (cooldown_timer_id != TIMER_ID_NULL)
 		log_debug("Xeno action [src] tried to go on cooldown while already on cooldown.")
@@ -243,6 +257,8 @@
 // for all cases, so people that don't understand this code can more 
 // easily use it
 /datum/action/xeno_action/proc/ability_cooldown_over()
+	if(!owner)
+		return
 	for(var/X in owner.actions)
 		var/datum/action/act = X
 		act.update_button_icon()

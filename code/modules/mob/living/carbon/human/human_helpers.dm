@@ -24,6 +24,9 @@
 			if ("groin")
 				return "[ethnicity]_[limb_name]_[get_gender_name(gender)]"
 
+			if("synthetic head")
+				return "head_[get_gender_name(gender)]"
+
 			if ("r_arm")
 				return "[ethnicity]_right_arm"
 
@@ -88,6 +91,9 @@
 
 			if ("groin")
 				return "[limb_name]_[get_gender_name(gender)]"
+				
+			if("synthetic head")
+				return "head_[get_gender_name(gender)]"
 
 			if ("r_arm")
 				return "[limb_name]"

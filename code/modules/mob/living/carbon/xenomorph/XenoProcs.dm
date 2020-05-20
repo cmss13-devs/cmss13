@@ -110,29 +110,37 @@
 
 	stat(null,"")
 
-	if(hive && !hive.living_xeno_queen)
-		stat("Queen's Location:", "NO QUEEN")
-	else if(hive && !(caste_name == "Queen"))
-		stat("Queen's Location:", "[hive.living_xeno_queen.loc.loc.name]")
+	if(hive)
+		if(!hive.living_xeno_queen)
+			stat("Queen's Location:", "NO QUEEN")
+		else if(!(caste_name == "Queen"))
+			stat("Queen's Location:", "[hive.living_xeno_queen.loc.loc.name]")
 
-	if(hive && hive.slashing_allowed == 1)
-		stat("Slashing:", "PERMITTED")
-	else if(hive && hive.slashing_allowed == 2)
-		stat("Slashing:", "LIMITED")
-	else
-		stat("Slashing:", "FORBIDDEN")
+		if(hive.slashing_allowed == 1)
+			stat("Slashing:", "PERMITTED")
+		else if(hive.slashing_allowed == 2)
+			stat("Slashing:", "LIMITED")
+		else
+			stat("Slashing:", "FORBIDDEN")
 
-	if(hive && hive.construction_allowed == 1)
-		stat("Construction Placement:", "LEADERS")
-	else if(hive && hive.construction_allowed == 2)
-		stat("Construction Placement:", "ANYONE")
-	else
-		stat("Construction Placement:", "QUEEN")
+		if(hive.construction_allowed == XENO_LEADER)
+			stat("Construction Placement:", "LEADERS")
+		else if(hive.construction_allowed == NORMAL_XENO)
+			stat("Construction Placement:", "ANYONE")
+		else
+			stat("Construction Placement:", "QUEEN")
 
-	if(hive && hive.hive_orders)
-		stat("Hive Orders:", "[hive.hive_orders]")
-	else
-		stat("Hive Orders:", "-")
+		if(hive.destruction_allowed == XENO_LEADER)
+			stat("Special Structure Destruction:", "LEADERS")
+		else if(hive.destruction_allowed == NORMAL_XENO)
+			stat("Special Structure Destruction:", "BUILDERS and LEADERS")
+		else
+			stat("Special Structure Destruction:", "QUEEN")
+
+		if(hive.hive_orders)
+			stat("Hive Orders:", "[hive.hive_orders]")
+		else
+			stat("Hive Orders:", "-")
 
 	stat("")
 	return TRUE

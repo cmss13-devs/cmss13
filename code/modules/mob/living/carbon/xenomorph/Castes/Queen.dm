@@ -151,6 +151,7 @@
 	inherent_verbs = list(
 		/mob/living/carbon/Xenomorph/proc/claw_toggle,
 		/mob/living/carbon/Xenomorph/proc/construction_toggle,
+		/mob/living/carbon/Xenomorph/proc/destruction_toggle,
 		/mob/living/carbon/Xenomorph/Queen/proc/set_orders,
 		/mob/living/carbon/Xenomorph/Queen/proc/hive_Message
 		)
@@ -353,15 +354,39 @@
 	if(choice == "Anyone")
 		to_chat(src, SPAN_XENONOTICE("You allow construction placement to all builder castes."))
 		xeno_message("The Queen has <b>permitted</b> the placement of construction nodes to all builder castes!")
-		hive.construction_allowed = 2
+		hive.construction_allowed = NORMAL_XENO
 	else if(choice == "Leaders")
 		to_chat(src, SPAN_XENONOTICE("You restrict construction placement to leaders only."))
 		xeno_message("The Queen has <b>restricted</b> the placement of construction nodes to leading builder castes only.")
-		hive.construction_allowed = 1
+		hive.construction_allowed = XENO_LEADER
 	else if(choice == "Queen")
 		to_chat(src, SPAN_XENONOTICE("You forbid construction placement entirely."))
 		xeno_message("The Queen has <b>forbidden</b> the placement of construction nodes to herself.")
-		hive.construction_allowed = 0
+		hive.construction_allowed = XENO_QUEEN
+
+/mob/living/carbon/Xenomorph/proc/destruction_toggle()
+	set name = "Permit/Disallow Special Structure Destruction"
+	set desc = "Allows you to permit the hive to destroy special structures freely."
+	set category = "Alien"
+
+	if(stat)
+		to_chat(src, SPAN_WARNING("You can't do that now."))
+		return
+
+	var/choice = input("Choose which level of destruction freedom to permit to your hive.","Harming") as null|anything in list("Queen", "Leaders", "Anyone")
+
+	if(choice == "Anyone")
+		to_chat(src, SPAN_XENONOTICE("You allow special structure destruction to all builder castes and leaders."))
+		xeno_message("The Queen has <b>permitted</b> the special structure destruction to all builder castes and leaders!")
+		hive.destruction_allowed = NORMAL_XENO
+	else if(choice == "Leaders")
+		to_chat(src, SPAN_XENONOTICE("You restrict special structure destruction to leaders only."))
+		xeno_message("The Queen has <b>restricted</b> the special structure destruction to leaders only.")
+		hive.destruction_allowed = XENO_LEADER
+	else if(choice == "Queen")
+		to_chat(src, SPAN_XENONOTICE("You forbid special structure destruction entirely."))
+		xeno_message("The Queen has <b>forbidden</b> the special structure destruction to anyone but herself.")
+		hive.destruction_allowed = XENO_QUEEN
 
 /mob/living/carbon/Xenomorph/Queen/proc/queen_screech()
 	if(!check_state())

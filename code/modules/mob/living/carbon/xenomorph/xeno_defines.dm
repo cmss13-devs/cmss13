@@ -316,7 +316,8 @@
 	var/mob/living/carbon/Xenomorph/Queen/living_xeno_queen
 	var/egg_planting_range = 15
 	var/slashing_allowed = 1 //This initial var allows the queen to turn on or off slashing. Slashing off means harm intent does much less damage.
-	var/construction_allowed = 0 //Who can place construction nodes for special structures. 0 for Queen, 1 for Leaders, 2 for all.
+	var/construction_allowed = XENO_QUEEN //Who can place construction nodes for special structures
+	var/destruction_allowed = XENO_LEADER //Who can destroy special structures
 	var/queen_time = 300 //5 minutes between queen deaths
 	var/xeno_queen_timer
 	var/hive_orders = "" //What orders should the hive have

@@ -16,8 +16,14 @@
 	return FALSE
 
 /mob/living/carbon/Xenomorph/proc/can_destroy_special()
-	if(IS_XENO_LEADER(src))
-		return TRUE
+	if(hive)
+		if(IS_XENO_LEADER(src))
+			if(hive.destruction_allowed == NORMAL_XENO || hive.destruction_allowed == XENO_LEADER)
+				return TRUE
+		if(hive.destruction_allowed == NORMAL_XENO && isXenoBuilder(src))
+			return TRUE
+		if(isXenoQueen(src))
+			return TRUE
 		
 	return FALSE
 

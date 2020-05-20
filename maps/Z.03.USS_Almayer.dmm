@@ -19864,7 +19864,6 @@
 /area/almayer/medical/operating_room_two)
 "beu" = (
 /obj/structure/machinery/optable,
-/obj/item/tank/anesthetic,
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
 	tag = "icon-sterile"
@@ -23499,7 +23498,6 @@
 /area/almayer/squads/bravo)
 "bru" = (
 /obj/structure/machinery/optable,
-/obj/item/tank/anesthetic,
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
 	tag = "icon-sterile"
@@ -54876,7 +54874,6 @@
 /area/almayer/squads/bravo/req)
 "wev" = (
 /obj/structure/machinery/optable,
-/obj/item/tank/anesthetic,
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
 	tag = "icon-sterile"
@@ -55005,7 +55002,6 @@
 /area/almayer/hallways/port_hallway)
 "wkp" = (
 /obj/structure/machinery/optable,
-/obj/item/tank/anesthetic,
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
 	tag = "icon-sterile"

@@ -788,8 +788,7 @@
 			has_addiction = TRUE
 			break
 	if(!has_addiction)
-		var/datum/disease/addiction/D = new /datum/disease/addiction()
-		D.chemical_id = id
+		var/datum/disease/addiction/D = new /datum/disease/addiction(id, 1)
 		M.contract_disease(D, 1)
 
 /datum/reagent/ultrazine/on_overdose(mob/living/M)

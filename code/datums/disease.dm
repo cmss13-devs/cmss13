@@ -175,7 +175,7 @@ var/list/diseases = typesof(/datum/disease) - /datum/disease
 
 
 
-/datum/disease/New(process=1, datum/disease/D)//process = 1 - adding the object to global list. List is processed by master controller.
+/datum/disease/New(var/process=TRUE)//process = 1 - adding the object to global list. List is processed by master controller.
 	cure_list = list(cure_id) // to add more cures, add more vars to this list in the actual disease's New()
 	if(process)				 // Viruses in list are considered active.
 		active_diseases += src
@@ -186,8 +186,8 @@ var/list/diseases = typesof(/datum/disease) - /datum/disease
 		return 1
 	return 0
 
-/datum/disease/proc/Copy(var/process = 0)
-	return new type(process, src)
+/datum/disease/proc/Copy(var/process = TRUE)
+	return new type(process)
 
 
 /datum/disease/Dispose()

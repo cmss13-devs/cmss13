@@ -67,6 +67,12 @@
 		return
 	actual_empower(X)
 
+/datum/action/xeno_action/activable/empower/can_use_action()
+	if (activated_once)
+		return TRUE
+	else
+		return ..()
+
 /datum/action/xeno_action/activable/empower/action_cooldown_check()
 	if (cooldown_timer_id == TIMER_ID_NULL)
 		return TRUE

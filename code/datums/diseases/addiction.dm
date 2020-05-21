@@ -24,7 +24,7 @@
 /datum/disease/addiction/New(var/chem_id, var/potency = 1)
 	addiction_multiplier = potency
 	chemical_id = chem_id
-	..()
+	..(TRUE)
 
 /datum/disease/addiction/stage_act()
 	..()

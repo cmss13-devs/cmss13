@@ -10,6 +10,7 @@
 	objective_flags = OBJ_FAILABLE
 	var/decryption_password
 	display_category = "Data Retrieval"
+	number_of_clues_to_generate = 2
 
 /datum/cm_objective/retrieve_data/New()
 	..()

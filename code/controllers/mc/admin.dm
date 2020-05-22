@@ -50,12 +50,16 @@
 
 /proc/get_world_controllers()
 	var/list/controllers = new
-	for(var/global/datum/controller/gc in world.vars)
-		controllers += gc
-	for(var/datum/controller/c in world.vars)
-		controllers += c
+
+	for(var/v in world.vars)
+		if(istype(world.vars[v], /datum/controller))
+			controllers += world.vars[v]
+	for(var/v in global.vars)
+		if(istype(global.vars[v], /datum/controller))
+			controllers += global.vars[v]
 	for(var/datum/subsystem/ss in Master.subsystems)
 		controllers += ss
+
 	return controllers
 
 /client/proc/debug_controller(controller in get_world_controllers())

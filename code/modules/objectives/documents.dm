@@ -48,6 +48,7 @@
 	prerequisites_required = PREREQUISITES_ONE
 	display_flags = 0
 	var/color
+	number_of_clues_to_generate = 2
 
 /datum/cm_objective/document/progress_report
 	priority = OBJECTIVE_MEDIUM_VALUE

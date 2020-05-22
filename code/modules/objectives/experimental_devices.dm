@@ -4,6 +4,7 @@
 /datum/cm_objective/retrieve_item/almayer/device
 	objective_flags = OBJ_DEAD_END
 	prerequisites_required = PREREQUISITES_MAJORITY
+	number_of_clues_to_generate = 8
 
 /datum/cm_objective/retrieve_item/almayer/device/New(var/obj/item/device/D)
 	if(istype(D))

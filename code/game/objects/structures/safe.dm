@@ -49,6 +49,10 @@ FLOOR SAFES
 	tumbler_2_pos = 0
 	tumbler_2_open = (rand(0,10) * 5)
 
+	if(loc.z == SURFACE_Z_LEVEL)
+		//adding an objective for cracking open the safe
+		new /datum/cm_objective/crack_safe(src)
+
 	spawn(5)
 		if(loc && spawnkey)
 			new /obj/item/paper/safe_key(loc) //Spawn the key on top of the safe.

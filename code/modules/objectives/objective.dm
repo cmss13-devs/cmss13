@@ -13,6 +13,7 @@
 	var/objective_flags = 0 // functionality related flags
 	var/display_flags = 0 // display related flags
 	var/display_category // group objectives for round end display
+	var/number_of_clues_to_generate = 1 //how many clues we generate for the objective(aka how many things will point to this objective)
 
 /datum/cm_objective/New()
 	cm_objectives += src

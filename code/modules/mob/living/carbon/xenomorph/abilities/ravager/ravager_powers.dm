@@ -277,6 +277,9 @@
 	var/fling_distance = fling_dist_base
 	var/debilitate = TRUE // Do we apply neg. status effects to the target?
 
+	if (H.stat == DEAD)
+		return
+
 	// All strain-specific behavior
 	if (X.mutation_type == RAVAGER_BERSERKER)
 		var/datum/behavior_delegate/ravager_berserker/BD = X.behavior_delegate

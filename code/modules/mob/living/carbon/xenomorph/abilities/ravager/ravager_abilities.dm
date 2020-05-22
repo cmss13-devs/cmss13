@@ -108,20 +108,20 @@
 ////// HEDGEHOG ABILITIES
 
 /datum/action/xeno_action/activable/spike_shield
-	name = "Spike Shield (200 shards)"
+	name = "Spike Shield (150 shards)"
 	action_icon_state = "rav_shard_shield"
 	ability_name = "spike shield"
 	macro_path = /datum/action/xeno_action/verb/verb_spike_shield
 	action_type = XENO_ACTION_ACTIVATE
 	ability_primacy = XENO_PRIMARY_ACTION_1
 	plasma_cost = 0
-	cooldowns = list(260, 250, 240, 230)
+	cooldowns = list(130, 120, 110, 100)
 
 	// Config values
-	var/shield_duration = 100  		// Shield lasts 10 seconds by default.
-	var/shield_amount = 200 		// Shield HP amount
+	var/shield_duration = 20  		// Shield lasts 2 seconds by default.
+	var/shield_amount = 500 		// Shield HP amount
 	var/shield_shrapnel_amount = 7  // How much shrapnel each shield hit should spawn
-	var/shard_cost = 200 			// Minimum spikes to use this ability
+	var/shard_cost = 150 			// Minimum spikes to use this ability
 	var/shield_active = FALSE 		// Is our shield active.
 	var/real_hp_per_shield_hp = 0.5	// How many real HP we get for each shield HP
 

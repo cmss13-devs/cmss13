@@ -39,6 +39,9 @@
 	var/damage = 35
 	var/shield_regen_threshold = 3
 
+	var/activated_once = FALSE
+	var/time_until_timeout = 20
+
 /datum/action/xeno_action/activable/cleave
 	name = "Cleave"
 	action_icon_state = "prae_cleave_action"
@@ -181,6 +184,7 @@
 
 	// Config
 	var/range = 2
+	var/slow_duration = 3
 	var/stun_duration_default = 0.1
 	var/daze_duration_default = 1
 	var/stun_duration_buffed = 1

@@ -85,7 +85,9 @@
 		if(ishuman(target))
 			var/mob/living/carbon/human/H = target
 			if(!H.check_tod() || !H.is_revivable()) // they went unrevivable
-				fail()
+				//Synths can (almost) always be revived, so don't fail their objective...
+				if(!isSynth(H))
+					fail()
 				return 0
 		else
 			fail()

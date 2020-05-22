@@ -1390,6 +1390,7 @@
 #include "code\modules\objectives\objective.dm"
 #include "code\modules\objectives\objective_memory_storage.dm"
 #include "code\modules\objectives\power_objectives.dm"
+#include "code\modules\objectives\safe_cracking.dm"
 #include "code\modules\organs\limb_objects.dm"
 #include "code\modules\organs\limbs.dm"
 #include "code\modules\organs\organ_alien.dm"

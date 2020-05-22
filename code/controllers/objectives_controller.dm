@@ -1,7 +1,8 @@
 
-var/global/datum/objectives_controller/objectives_controller
+var/global/datum/controller/objectives_controller/objectives_controller
 
-/datum/objectives_controller
+/datum/controller/objectives_controller
+	name = "Objectives controller"
 	var/list/objectives = list()
 	var/list/active_objectives = list()
 	var/list/inactive_objectives = list()
@@ -14,7 +15,7 @@ var/global/datum/objectives_controller/objectives_controller
 
 	var/nextDChatAnnouncement = MINUTES_5 //5 minutes in
 
-/datum/objectives_controller/New()
+/datum/controller/objectives_controller/New()
 	for(var/datum/cm_objective/C in cm_objectives)
 		if(!(C in objectives))
 			objectives += C
@@ -32,15 +33,15 @@ var/global/datum/objectives_controller/objectives_controller
 		objectives_controller.post_round_start()
 	return 1
 
-/datum/objectives_controller/proc/pre_round_start()
+/datum/controller/objectives_controller/proc/pre_round_start()
 	for(var/datum/cm_objective/O in objectives)
 		O.pre_round_start()
 
-/datum/objectives_controller/proc/post_round_start()
+/datum/controller/objectives_controller/proc/post_round_start()
 	for(var/datum/cm_objective/O in objectives)
 		O.post_round_start()
 
-/datum/objectives_controller/proc/get_objectives_progress()
+/datum/controller/objectives_controller/proc/get_objectives_progress()
 	var/point_total = 0
 	var/complete = 0
 
@@ -80,7 +81,7 @@ var/global/datum/objectives_controller/objectives_controller
 
 	return dat
 
-/datum/objectives_controller/proc/setup_tree()
+/datum/controller/objectives_controller/proc/setup_tree()
 	//Sets up the objective interdependance tree
 	//Every objective that is not a dead end enables an objective of a higher tier
 	//Every objective that needs prerequisites gets them from objectives of lower tier
@@ -139,8 +140,10 @@ var/global/datum/objectives_controller/objectives_controller
 		N.enables_objectives += enables
 		enables.required_objectives += N
 	for(var/datum/cm_objective/L in low_value)
-		if(!L.required_objectives.len && no_value.len)
+		while(L.required_objectives.len < L.number_of_clues_to_generate && no_value.len)
 			var/datum/cm_objective/req = pick(no_value)
+			if(req in L.required_objectives)
+				continue //don't want to pick the same thing twice
 			L.required_objectives += req
 			req.enables_objectives += L
 		if(!med_value_with_prerequisites || !med_value_with_prerequisites.len)
@@ -154,8 +157,10 @@ var/global/datum/objectives_controller/objectives_controller
 		L.enables_objectives += enables
 		enables.required_objectives += L
 	for(var/datum/cm_objective/M in med_value)
-		if(!M.required_objectives.len && low_value.len)
+		while(M.required_objectives.len < M.number_of_clues_to_generate && low_value.len)
 			var/datum/cm_objective/req = pick(low_value)
+			if(req in M.required_objectives)
+				continue //don't want to pick the same thing twice
 			M.required_objectives += req
 			req.enables_objectives += M
 		if(!high_value_with_prerequisites || !high_value_with_prerequisites.len)
@@ -169,8 +174,10 @@ var/global/datum/objectives_controller/objectives_controller
 		M.enables_objectives += enables
 		enables.required_objectives += M
 	for(var/datum/cm_objective/H in high_value)
-		if(!H.required_objectives.len && med_value.len)
+		while(H.required_objectives.len < H.number_of_clues_to_generate && med_value.len)
 			var/datum/cm_objective/req = pick(med_value)
+			if(req in H.required_objectives)
+				continue //don't want to pick the same thing twice
 			H.required_objectives += req
 			req.enables_objectives += H
 		if(!extreme_value_with_prerequisites || !extreme_value_with_prerequisites.len)
@@ -184,8 +191,10 @@ var/global/datum/objectives_controller/objectives_controller
 		H.enables_objectives += enables
 		enables.required_objectives += H
 	for(var/datum/cm_objective/E in extreme_value)
-		if(!E.required_objectives.len && high_value.len)
+		while(E.required_objectives.len < E.number_of_clues_to_generate && high_value.len)
 			var/datum/cm_objective/req = pick(high_value)
+			if(req in E.required_objectives)
+				continue //don't want to pick the same thing twice
 			E.required_objectives += req
 			req.enables_objectives += E
 		if(!absolute_value_with_prerequisites || !absolute_value_with_prerequisites.len)
@@ -199,12 +208,14 @@ var/global/datum/objectives_controller/objectives_controller
 		E.enables_objectives += enables
 		enables.required_objectives += E
 	for(var/datum/cm_objective/A in absolute_value)
-		if(!A.required_objectives.len && extreme_value.len)
+		while(A.required_objectives.len < A.number_of_clues_to_generate && extreme_value.len)
 			var/datum/cm_objective/req = pick(extreme_value)
+			if(req in A.required_objectives)
+				continue //don't want to pick the same thing twice
 			A.required_objectives += req
 			req.enables_objectives += A
 
-/datum/objectives_controller/proc/add_objective(var/datum/cm_objective/O)
+/datum/controller/objectives_controller/proc/add_objective(var/datum/cm_objective/O)
 	if(!(O in objectives))
 		objectives += O
 	if((O.objective_flags & OBJ_PROCESS_ON_DEMAND) && !(O in non_processing_objectives))
@@ -213,14 +224,14 @@ var/global/datum/objectives_controller/objectives_controller
 		inactive_objectives += O
 		O.activate()
 
-/datum/objectives_controller/proc/remove_objective(var/datum/cm_objective/O)
+/datum/controller/objectives_controller/proc/remove_objective(var/datum/cm_objective/O)
 	objectives -= O
 	non_processing_objectives -= O
 	inactive_objectives -= O
 	active_objectives -= O
 
 /hook/startup/proc/create_objectives_controller()
-	objectives_controller = new /datum/objectives_controller
+	objectives_controller = new /datum/controller/objectives_controller
 	// Setup some global objectives
 	objectives_controller.power = new /datum/cm_objective/establish_power
 	objectives_controller.comms = new /datum/cm_objective/communications
@@ -232,7 +243,7 @@ var/global/datum/objectives_controller/objectives_controller
 	objectives_controller.active_objectives += objectives_controller.comms
 	return 1
 
-/datum/objectives_controller/proc/get_total_points()
+/datum/controller/objectives_controller/proc/get_total_points()
 	var/total_points = 0
 
 	for(var/datum/cm_objective/L in objectives)
@@ -246,7 +257,7 @@ var/global/datum/objectives_controller/objectives_controller
 
 	return total_points
 
-/datum/objectives_controller/proc/get_scored_points()
+/datum/controller/objectives_controller/proc/get_scored_points()
 	var/scored_points = 0 + bonus_admin_points//bonus points only apply to scored points, not to total, to make admin lives easier
 
 	for(var/datum/cm_objective/L in objectives)
@@ -262,7 +273,7 @@ var/global/datum/objectives_controller/objectives_controller
 
 	return scored_points
 
-/datum/objectives_controller/proc/get_objective_completion_stats()
+/datum/controller/objectives_controller/proc/get_objective_completion_stats()
 	var/total_points = get_total_points()
 	var/scored_points = get_scored_points()
 
@@ -283,6 +294,6 @@ var/global/datum/objectives_controller/objectives_controller
 
 	return answer
 
-/datum/objectives_controller/proc/add_admin_points(var/amount)
+/datum/controller/objectives_controller/proc/add_admin_points(var/amount)
 	bonus_admin_points += amount
 	defcon_controller.check_defcon_level()

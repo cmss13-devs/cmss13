@@ -4,7 +4,7 @@
 /datum/xeno_shield/crusher/on_hit(damage)
 	damage -= 12.5
 	if (damage <= 0)
-		return
+		return 0
 	return ..(damage)
 
 	

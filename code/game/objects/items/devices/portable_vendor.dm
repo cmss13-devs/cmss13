@@ -248,4 +248,12 @@
 		list("Sake", 5, /obj/item/reagent_container/food/drinks/bottle/sake, "white", "Weston-Yamada Sake, for a proper business dinner."),
 		list("Beer", 5, /obj/item/reagent_container/food/drinks/cans/aspen, "white", "Weston-Yamada Aspen Beer, for a more casual night."),
 		list("Drinking Glass", 1, /obj/item/reagent_container/food/drinks/drinkingglass, "white", "A Drinking Glass, because you have class."),
+
+		list("SATIONARY", 0, null, null, null),
+		list("WY pen, black", 1, /obj/item/tool/pen/clicky, "white", "A WY pen, for writing formally on the go."),
+		list("WY pen, blue", 1, /obj/item/tool/pen/blue/clicky, "white", "A WY pen, for writing with a flourish on the go."),
+		list("WY pen, red", 1, /obj/item/tool/pen/red/clicky, "white", "A WY pen, for writing angrily on the go."),
+		list("Paper", 1, /obj/item/paper, "white", "A fresh piece of paper, for writing on."),
+		list("Carbon Paper", 1, /obj/item/paper/carbon, "white", "A piece of carbon paper, to double the writing output."),
+		list("Clipboard", 1, /obj/item/clipboard, "white", "A clipboard, for storing all that writing."),
 	)

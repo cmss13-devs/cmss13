@@ -11,7 +11,6 @@
 	item_state = "paper"
 	throwforce = 0
 	w_class = SIZE_TINY
-	throw_range = 1
 	throw_speed = SPEED_FAST
 	flags_equip_slot = SLOT_HEAD
 	flags_armor_protection = BODY_FLAG_HEAD
@@ -379,6 +378,11 @@
 		user.put_in_hands(B)
 
 	else if(istype(P, /obj/item/tool/pen) || istype(P, /obj/item/toy/crayon))
+		if(istype(P, /obj/item/tool/pen))
+			var/obj/item/tool/pen/p = P
+			if(!p.on)
+				to_chat(user, SPAN_NOTICE("Your pen is not on!"))
+				return
 		if ( istype(P, /obj/item/tool/pen/robopen) && P:mode == 2 )
 			P:RenamePaper(user,src)
 		else
@@ -537,7 +541,7 @@
 	var/random_chem
 	if(tier)
 		random_chem = pick(chemical_gen_classes_list[tier])
-	else 
+	else
 		if(note_type == "test")
 			random_chem = pick(chemical_gen_classes_list["T4"])
 		else

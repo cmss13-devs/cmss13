@@ -86,22 +86,47 @@
 	throw_range = 15
 	matter = list("metal" = 10)
 	var/colour = "black"	//what colour the ink is!
+	var/on = TRUE
+	var/clicky = FALSE
 
+/obj/item/tool/pen/attack_self(mob/living/carbon/human/user)
+	on = !on
+	to_chat(user, SPAN_WARNING("You click the pen [on? "on": "off"]."))
+	if(clicky)
+		playsound(user.loc, "sound/items/pen_click_[on? "on": "off"].ogg", 100, 1, 5)
+	update_pen_state()
 
+/obj/item/tool/pen/New()
+	update_pen_state()
+
+/obj/item/tool/pen/proc/update_pen_state()
+	icon_state = "pen_[colour]_[on? "on": "off"]"
+
+/obj/item/tool/pen/clicky
+	desc = "It's a WY brand extra clicky black ink pen."
+	name = "WY pen"
+	clicky = TRUE
 
 /obj/item/tool/pen/blue
 	desc = "It's a normal blue ink pen."
-	icon_state = "pen_blue"
 	colour = "blue"
+
+/obj/item/tool/pen/blue/clicky
+	desc = "It's a WY brand extra clicky blue ink pen."
+	name = "WY blue pen"
+	clicky = TRUE
 
 /obj/item/tool/pen/red
 	desc = "It's a normal red ink pen."
-	icon_state = "pen_red"
 	colour = "red"
+
+/obj/item/tool/pen/red/clicky
+	desc = "It's a WY brand extra clicky red ink pen."
+	name = "WY red pen"
+	clicky = TRUE
 
 /obj/item/tool/pen/invisible
 	desc = "It's an invisble pen marker."
-	icon_state = "pen"
 	colour = "white"
 
 
@@ -125,7 +150,7 @@
 	desc = "It's a black ink pen with a sharp point and a carefully engraved \"Waffle Co.\""
 	flags_atom = FPRINT|OPENCONTAINER
 	flags_equip_slot = SLOT_WAIST
-	
+
 
 
 /obj/item/tool/pen/sleepypen/New()
@@ -153,7 +178,7 @@
  /obj/item/tool/pen/paralysis
 	flags_atom = FPRINT|OPENCONTAINER
 	flags_equip_slot = SLOT_WAIST
-	
+
 
 
 /obj/item/tool/pen/paralysis/attack(mob/living/M as mob, mob/user as mob)

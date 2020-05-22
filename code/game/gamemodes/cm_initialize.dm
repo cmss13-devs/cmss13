@@ -353,7 +353,7 @@ Additional game mode variables.
 	for(var/mob/living/carbon/Xenomorph/X in living_xeno_list)
 		if(X.z == ADMIN_Z_LEVEL) continue //xenos on admin z level don't count
 		if(istype(X) && !X.client)
-			if(X.away_timer >= 300) available_xenos_non_ssd += X
+			if(X.away_timer >= 300 || isXenoLarva(X)) available_xenos_non_ssd += X
 			available_xenos += X
 
 	var/obj/effect/alien/resin/special/pool/SP = hive.spawn_pool
@@ -379,15 +379,15 @@ Additional game mode variables.
 			return FALSE
 		new_xeno = userInput
 
+		if(!xeno_candidate) //
+			return 0
+
 		if(!(new_xeno in living_mob_list) || new_xeno.stat == DEAD)
 			to_chat(xeno_candidate, SPAN_WARNING("You cannot join if the xenomorph is dead."))
 			return 0
 
 		if(new_xeno.client)
 			to_chat(xeno_candidate, SPAN_WARNING("That xenomorph has been occupied."))
-			return 0
-
-		if(!xeno_candidate) //
 			return 0
 
 		if(!xeno_bypass_timer)
@@ -402,7 +402,7 @@ Additional game mode variables.
 				to_chat(xeno_candidate, message)
 				to_chat(xeno_candidate, SPAN_WARNING("You must wait 5 minutes before rejoining the game!"))
 				return 0
-			if(new_xeno.away_timer < SECONDS_30) //We do not want to occupy them if they've only been gone for a little bit.
+			if(new_xeno.away_timer < SECONDS_30 && !isXenoLarva(new_xeno)) //We do not want to occupy them if they've only been gone for a little bit.
 				to_chat(xeno_candidate, SPAN_WARNING("That player hasn't been away long enough. Please wait [SECONDS_30 - new_xeno.away_timer] second\s longer."))
 				return 0
 
@@ -669,16 +669,16 @@ Additional game mode variables.
 	var/not_a_xenomorph = TRUE
 	if(H.first_xeno)
 		not_a_xenomorph = FALSE
-	if(spawner.roundstart_damage_max>0)
-		while(spawner.roundstart_damage_times>0)
-			H.take_limb_damage(rand(spawner.roundstart_damage_min,spawner.roundstart_damage_max), 0)
-			spawner.roundstart_damage_times--
 	if(!spawner.equipment || is_synth)
 		survivor_old_equipment(H, is_synth)
 	else
 		if(arm_equipment(H, spawner.equipment, FALSE, not_a_xenomorph) == -1)
 			to_chat(H, "SET02: Something went wrong, tell a coder. You may ask admin to spawn you as a survivor.")
 			return
+	if(spawner.roundstart_damage_max>0)
+		while(spawner.roundstart_damage_times>0)
+			H.take_limb_damage(rand(spawner.roundstart_damage_min,spawner.roundstart_damage_max), 0)
+			spawner.roundstart_damage_times--
 	H.name = H.get_visible_name()
 
 	if(!H.first_xeno) //Only give objectives/back-stories to uninfected survivors

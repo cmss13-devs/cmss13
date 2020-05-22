@@ -306,7 +306,8 @@
 		pulling.pulledby = null
 		pulling = null
 		grab_level = 0
-		client.recalculate_move_delay()
+		if(client)
+			client.recalculate_move_delay()
 		if(hud_used && hud_used.pull_icon)
 			hud_used.pull_icon.icon_state = "pull0"
 		if(istype(r_hand, /obj/item/grab))

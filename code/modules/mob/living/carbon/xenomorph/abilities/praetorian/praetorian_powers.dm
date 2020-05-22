@@ -68,19 +68,21 @@
 	..()
 	return
 
-/datum/action/xeno_action/activable/pounce/prae_dash/additional_effects_always()
-	var/mob/living/carbon/Xenomorph/X = owner
-
-	if (!istype(X))
+/datum/action/xeno_action/activable/pounce/prae_dash/use_ability(atom/A)
+	if(!activated_once && !action_cooldown_check() || owner.throwing)
 		return
 
-	var/datum/action/xeno_action/activable/pierce/pAction = get_xeno_action_by_type(X, /datum/action/xeno_action/activable/pierce)
-
-	if (istype(pAction) && pAction.action_cooldown_check())
+	if(!activated_once)
+		. = ..()
+		activated_once = TRUE
+		add_timer(CALLBACK(src, .proc/timeout), time_until_timeout)
+	else
 		damage_nearby_targets()
-		pAction.apply_cooldown()
 
-	return ..()
+/datum/action/xeno_action/activable/pounce/prae_dash/proc/timeout()
+	if (activated_once)
+		activated_once = FALSE
+		damage_nearby_targets()
 
 /datum/action/xeno_action/activable/pounce/prae_dash/ability_cooldown_over()
 	update_button_icon()
@@ -91,6 +93,8 @@
 
 	if (!X.check_state())
 		return
+
+	activated_once = FALSE
 
 	var/list/target_mobs = list()
 	var/list/L = orange(1, X)
@@ -107,6 +111,7 @@
 
 		X.flick_attack_overlay(H, "slash")
 		H.apply_damage(damage, BRUTE)
+		playsound(get_turf(H), "alien_claw_flesh", 30, 1)
 
 	if (target_mobs.len >= shield_regen_threshold)
 		if (X.mutation_type == PRAETORIAN_VANGUARD)
@@ -500,6 +505,9 @@
 
 	// Hmm today I will kill a marine while looking away from them
 	X.face_atom(T)
+
+	if (!buffed)
+		new /datum/effects/xeno_slow(T, X, null, null, slow_duration)
 
 	var/stun_duration = stun_duration_default
 	var/daze_duration = 0

@@ -8,16 +8,12 @@
 
 
 /datum/xeno_shield/vanguard/on_hit(damage)
-
 	notify_xeno()
 
 	if (!hit_yet)
-		var/datum/xeno_shield_hit_result/XSHR = new /datum/xeno_shield_hit_result()
-		XSHR.shield_survived = TRUE
-		XSHR.damage_carryover = 0
 		hit_yet = TRUE
 		decay()
-
+		return 0
 	else 
 		return ..(damage)
 

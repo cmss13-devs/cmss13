@@ -7,12 +7,6 @@
 // They are all stored in a list on Xenos that gets iterated through whenever the Xeno 
 // takes damage
 
-// Data class for holding the results of a hit
-/datum/xeno_shield_hit_result
-    var/shield_survived = TRUE  // Should we get deleted by whatever called on_hit?
-    var/damage_carryover = 0    // Any damage that we didn't block
-    
-
 /datum/xeno_shield
     var/shield_source = XENO_SHIELD_SOURCE_GENERIC  // Unique so that you can only get one shield from a given source at a time
     var/amount = 0                                  // How much damage the shield will protect
@@ -21,16 +15,13 @@
 // Handle a hit. return a new shield hit result class
 // indicating the outcome.
 /datum/xeno_shield/proc/on_hit(damage)
-    var/datum/xeno_shield_hit_result/XSHR = new /datum/xeno_shield_hit_result()
     last_damage_taken = world.time
 
     apply_damage(damage)
     
     if (amount <= 0)
-        XSHR.shield_survived = FALSE
-        XSHR.damage_carryover = -amount
-    
-    return XSHR
+        return -amount
+    return 0
 
 // Actually calculate how much the damage reduces our amount
 /datum/xeno_shield/proc/apply_damage(damage)

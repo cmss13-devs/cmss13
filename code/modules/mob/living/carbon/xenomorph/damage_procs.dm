@@ -80,11 +80,9 @@
 
 	if(xeno_shields.len != 0 && damage > 0)
 		for(var/datum/xeno_shield/XS in xeno_shields)
-			var/datum/xeno_shield_hit_result/XSHR = XS.on_hit(damage)
-
-			damage = XSHR.damage_carryover
+			damage = XS.on_hit(damage)
 			
-			if(!XSHR.shield_survived)
+			if(damage > 0)
 				XS.on_removal()
 				xeno_shields -= XS
 				qdel(XS)

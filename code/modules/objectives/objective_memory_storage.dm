@@ -12,29 +12,49 @@ datum/objective_memory_storage
 //and we want to store the objective clues generated based on it -spookydonut
 /datum/objective_memory_storage/proc/store_objective(var/datum/cm_objective/O)
 	for(var/datum/cm_objective/R in O.enables_objectives)
-		if(istype(R, /datum/cm_objective/document/folder))
-			if(!(R in folders))
-				folders += R
-		else if(istype(R, /datum/cm_objective/document/progress_report))
-			if(!(R in progress_reports))
-				progress_reports += R
-		else if(istype(R, /datum/cm_objective/document/technical_manual))
-			if(!(R in technical_manuals))
-				technical_manuals += R
-		else if(istype(R, /datum/cm_objective/retrieve_data/terminal))
-			if(!(R in terminals))
-				terminals += R
-		else if(istype(R, /datum/cm_objective/retrieve_data/disk))
-			if(!(R in disks))
-				disks += R
-		else if(istype(R, /datum/cm_objective/retrieve_item))
-			if(!(R in retrieve_items))
-				retrieve_items += R
-		else if(!(R in other))
-			other += R
+		store_single_objective(R)
 
+/datum/objective_memory_storage/proc/store_single_objective(var/datum/cm_objective/O)
+	if(!istype(O))
+		return
+	if (O.is_finalised())
+		//We don't need to store the objective, it is either completed or failed and won't be coming back
+		return
+	if(istype(O, /datum/cm_objective/document/folder))
+		addToListNoDupe(folders, O)
+	else if(istype(O, /datum/cm_objective/document/progress_report))
+		addToListNoDupe(progress_reports, O)
+	else if(istype(O, /datum/cm_objective/document/technical_manual))
+		addToListNoDupe(technical_manuals, O)
+	else if(istype(O, /datum/cm_objective/retrieve_data/terminal))
+		addToListNoDupe(terminals, O)
+	else if(istype(O, /datum/cm_objective/retrieve_data/disk))
+		addToListNoDupe(disks, O)
+	else if(istype(O, /datum/cm_objective/retrieve_item))
+		addToListNoDupe(retrieve_items, O)
+	else
+		addToListNoDupe(other, O)
+
+//returns TRUE if we have the objective already
+/datum/objective_memory_storage/proc/has_objective(var/datum/cm_objective/O)
+	if(O in folders)
+		return TRUE
+	if(O in progress_reports)
+		return TRUE
+	if(O in technical_manuals)
+		return TRUE
+	if(O in terminals)
+		return TRUE
+	if(O in disks)
+		return TRUE
+	if(O in retrieve_items)
+		return TRUE
+	if(O in other)
+		return TRUE
+	return FALSE
 
 /datum/objective_memory_storage/proc/view_objective_memories(mob/recipient, var/real_name)
+	synchronize_objectives()
 	var/output
 	
 	// Do we have DEFCON?
@@ -82,3 +102,163 @@ datum/objective_memory_storage
 	if (something_to_display)
 		output = "<br><hr><b>[category]</b>" + output
 	return output
+
+/datum/objective_memory_storage/proc/clean_objectives()
+	for(var/datum/cm_objective/O in folders)
+		if(O.is_finalised())
+			folders -= O
+	for(var/datum/cm_objective/O in progress_reports)
+		if(O.is_finalised())
+			progress_reports -= O
+	for(var/datum/cm_objective/O in technical_manuals)
+		if(O.is_finalised())
+			technical_manuals -= O
+	for(var/datum/cm_objective/O in terminals)
+		if(O.is_finalised())
+			terminals -= O
+	for(var/datum/cm_objective/O in disks)
+		if(O.is_finalised())
+			disks -= O
+	for(var/datum/cm_objective/O in retrieve_items)
+		if(O.is_finalised())
+			retrieve_items -= O
+	for(var/datum/cm_objective/O in other)
+		if(O.is_finalised())
+			other -= O
+
+/datum/objective_memory_storage/proc/synchronize_objectives()
+	clean_objectives()
+	if(!intel_system || !intel_system.oms)
+		return
+	intel_system.oms.clean_objectives()
+
+	for(var/datum/cm_objective/O in intel_system.oms.folders)
+		addToListNoDupe(folders, O)
+	for(var/datum/cm_objective/O in intel_system.oms.progress_reports)
+		addToListNoDupe(progress_reports, O)
+	for(var/datum/cm_objective/O in intel_system.oms.technical_manuals)
+		addToListNoDupe(technical_manuals, O)
+	for(var/datum/cm_objective/O in intel_system.oms.terminals)
+		addToListNoDupe(terminals, O)
+	for(var/datum/cm_objective/O in intel_system.oms.disks)
+		addToListNoDupe(disks, O)
+	for(var/datum/cm_objective/O in intel_system.oms.retrieve_items)
+		addToListNoDupe(retrieve_items, O)
+	for(var/datum/cm_objective/O in intel_system.oms.other)
+		addToListNoDupe(other, O)
+
+var/global/datum/intel_system/intel_system = new()
+
+/datum/intel_system
+	var/datum/objective_memory_storage/oms = new()
+
+/datum/intel_system/proc/store_objective(var/datum/cm_objective/O)
+	oms.store_objective(O)
+
+/datum/intel_system/proc/store_single_objective(var/datum/cm_objective/O)
+	oms.store_single_objective(O)
+
+
+// --------------------------------------------
+// *** Upload clues with the computer ***
+// --------------------------------------------
+/obj/structure/machinery/computer/intel
+	name = "Intel Computer"
+	var/label = ""
+	desc = "An USCM Intel Computer for data cataloguing and distribution."
+	icon_state = "terminal1_old"
+	unslashable = TRUE
+	unacidable = TRUE
+	var/typing_time = 20
+
+
+/obj/structure/machinery/computer/intel/attack_hand(mob/living/user)
+	if(!user || !istype(user) || !user.mind || !user.mind.objective_memory)
+		return 0
+	if(!powered())
+		to_chat(user, SPAN_WARNING("This computer has no power!"))
+		return 0
+	if(!intel_system)
+		to_chat(user, SPAN_WARNING("The computer doesn't seem to be connected to anything..."))
+		return 0
+	if(user.action_busy)
+		return 0
+
+	to_chat(user, SPAN_NOTICE("You start typing in intel into the computer..."))
+
+	var/total_transferred = 0
+	var/outcome = 0 //outcome of an individual upload - if something interrupts us, we cancel the rest
+
+	for(var/datum/cm_objective/O in user.mind.objective_memory.folders)
+		outcome = transfer_intel(user, O)
+		if(outcome < 0)
+			return 0
+		if(outcome > 0)
+			total_transferred++
+
+	for(var/datum/cm_objective/O in user.mind.objective_memory.progress_reports)
+		outcome = transfer_intel(user, O)
+		if(outcome < 0)
+			return 0
+		if(outcome > 0)
+			total_transferred++
+
+	for(var/datum/cm_objective/O in user.mind.objective_memory.technical_manuals)
+		outcome = transfer_intel(user, O)
+		if(outcome < 0)
+			return 0
+		if(outcome > 0)
+			total_transferred++
+
+	for(var/datum/cm_objective/O in user.mind.objective_memory.terminals)
+		outcome = transfer_intel(user, O)
+		if(outcome < 0)
+			return 0
+		if(outcome > 0)
+			total_transferred++
+
+	for(var/datum/cm_objective/O in user.mind.objective_memory.disks)
+		outcome = transfer_intel(user, O)
+		if(outcome < 0)
+			return 0
+		if(outcome > 0)
+			total_transferred++
+
+	for(var/datum/cm_objective/O in user.mind.objective_memory.retrieve_items)
+		outcome = transfer_intel(user, O)
+		if(outcome < 0)
+			return 0
+		if(outcome > 0)
+			total_transferred++
+
+	for(var/datum/cm_objective/O in user.mind.objective_memory.other)
+		outcome = transfer_intel(user, O)
+		if(outcome < 0)
+			return 0
+		if(outcome > 0)
+			total_transferred++
+
+	if(total_transferred > 0)
+		to_chat(user, SPAN_NOTICE("...and done! You uploaded [total_transferred] entries!"))
+	else
+		to_chat(user, SPAN_NOTICE("...and you have nothing new to add..."))
+
+	return 1
+
+/obj/structure/machinery/computer/intel/proc/transfer_intel(mob/living/user, var/datum/cm_objective/O)
+	if(!intel_system || !intel_system.oms)
+		return 0
+	if(intel_system.oms.has_objective(O))
+		return 0
+	if(user.action_busy)
+		return 0
+
+	playsound(user, pick('sound/machines/computer_typing4.ogg', 'sound/machines/computer_typing5.ogg', 'sound/machines/computer_typing6.ogg'), 5, 1)
+
+	if(!do_after(user, typing_time, INTERRUPT_ALL, BUSY_ICON_GENERIC)) // Can't move from the spot
+		to_chat(user, SPAN_WARNING("You get distracted and lose your train of thought, you'll have to start the typing over..."))
+		return -1
+
+	to_chat(user, SPAN_NOTICE("...something about \"[O.get_clue()]\"..."))
+	intel_system.store_single_objective(O)
+	return 1

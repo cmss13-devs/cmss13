@@ -188,3 +188,11 @@
 
 /datum/cm_objective/proc/total_point_value()
 	return priority
+
+//Returns true if an objective will never be active again
+/datum/cm_objective/proc/is_finalised()
+	if(complete && objective_flags & OBJ_CAN_BE_UNCOMPLETED)
+		return 1
+	if(failed)
+		return 1
+	return 0

@@ -38,16 +38,8 @@
 
 /datum/cm_objective/retrieve_data/complete()
 	if(..())
-		var/name = "[MAIN_AI_SYSTEM]"
-		var/input = "Data analysis complete. The following leads have been generated:\n"
-		var/clues = 0
-		for(var/datum/cm_objective/O in enables_objectives)
-			if(O.is_prerequisites_completed())
-				O.activate()
-				input += "[O.get_clue()]\n"
-				clues++
-		if(clues)
-			marine_announcement(input, name, 'sound/AI/commandreport.ogg')
+		if(intel_system)
+			intel_system.store_objective(src)
 		return 1
 	return 0
 

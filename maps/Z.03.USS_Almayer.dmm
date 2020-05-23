@@ -24037,7 +24037,7 @@
 /area/almayer/living/cafeteria_starboard)
 "bti" = (
 /obj/structure/table/reinforced,
-/obj/structure/machinery/computer/emails{
+/obj/structure/machinery/computer/intel{
 	dir = 4
 	},
 /turf/open/floor/almayer{

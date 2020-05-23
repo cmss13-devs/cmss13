@@ -113,16 +113,13 @@ var/global/datum/defcon/defcon_controller
 	//text2file("DEFCON lists began initialization","data/defcon_log.txt")
 	//text2file("Map tag: [map_tag]", "data/defcon_log.txt")
 	if (map_tag == MAP_BIG_RED || map_tag == MAP_PRISON_STATION || map_tag == MAP_SOROKYNE_STRATA)
-		// 0%, 10%, 20%, 30%, and 45%
-		defcon_level_triggers = list(0.45, 0.30, 0.2, 0.1, 0.0)
+		defcon_level_triggers = list(0.60, 0.40, 0.25, 0.15, 0.0)
 	else if (map_tag == MAP_ICE_COLONY || map_tag == MAP_DESERT_DAM || map_tag == MAP_CORSAT)
-		// 0%, 7.5%, 15%, 25%, and 40%
-		defcon_level_triggers = list(0.40, 0.25, 0.15, 0.075, 0.0)
+		defcon_level_triggers = list(0.60, 0.40, 0.25, 0.10, 0.0)
 	else 
 		// Defaults 
 		// Currently just LV 
-		// 0%, 10%, 20%, 30%, and 50%
-		defcon_level_triggers = list(0.5, 0.3, 0.2, 0.1, 0.0)
+		defcon_level_triggers = list(0.70, 0.45, 0.30, 0.15, 0.0)
 	//text2file("Listing level triggers:","data/defcon_log.txt")
 	//for (var/i in defcon_level_triggers)
 		//text2file("Defcon level trigger: [i]","data/defcon_log.txt")

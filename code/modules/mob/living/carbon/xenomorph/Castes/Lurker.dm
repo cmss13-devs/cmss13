@@ -90,7 +90,7 @@
 			icon_state = "[mutation_type] [caste.caste_name] Knocked Down"
 	else
 		var/datum/action/xeno_action/onclick/lurker_invisibility/LIA = get_xeno_action_by_type(src, /datum/action/xeno_action/onclick/lurker_invisibility)
-		if (istype(LIA) && LIA.is_invisible)
+		if (LIA && istype(LIA) && LIA.is_invisible)
 			icon_state = "[mutation_type] [caste.caste_name] Invisible"
 		else
 			if(m_intent == MOVE_INTENT_RUN)
@@ -141,7 +141,7 @@
 /datum/behavior_delegate/lurker_base/melee_attack_additional_effects_self()
 
 	var/datum/action/xeno_action/onclick/lurker_invisibility/LIA = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/onclick/lurker_invisibility)
-	if (istype(LIA))
+	if (LIA && istype(LIA))
 		LIA.invisibility_off()
 
 	return
@@ -149,7 +149,7 @@
 // What to do when we go invisible
 /datum/behavior_delegate/lurker_base/proc/on_invisibility()
 	var/datum/action/xeno_action/activable/pounce/lurker/LPA = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/activable/pounce/lurker)
-	if (istype(LPA))
+	if (LPA && istype(LPA))
 		LPA.knockdown = TRUE // pounce knocks down
 		LPA.freeze_self = TRUE
 	can_go_invisible = FALSE
@@ -157,7 +157,7 @@
 
 /datum/behavior_delegate/lurker_base/proc/on_invisibility_off()
 	var/datum/action/xeno_action/activable/pounce/lurker/LPA = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/activable/pounce/lurker)
-	if (istype(LPA))
+	if (LPA && istype(LPA))
 		LPA.knockdown = FALSE // pounce no longer knocks down
 		LPA.freeze_self = FALSE
 
@@ -172,8 +172,10 @@
 		return
 
 	can_go_invisible = TRUE
-	var/datum/action/xeno_action/onclick/lurker_invisibility/LIA = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/onclick/lurker_invisibility)
-	LIA.end_cooldown()
+	if(bound_xeno)
+		var/datum/action/xeno_action/onclick/lurker_invisibility/LIA = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/onclick/lurker_invisibility)
+		if(LIA && istype(LIA))
+			LIA.end_cooldown()
 	
 /datum/behavior_delegate/lurker_base/append_to_stat()
 	var/invis_message = (invis_start_time == -1) ? "N/A" : "[(invis_duration-(world.time - invis_start_time))/10] seconds."

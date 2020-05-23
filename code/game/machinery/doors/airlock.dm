@@ -84,7 +84,7 @@
 	damage = max(0, damage + dam)
 
 	if(damage >= damage_cap)
-		if(M)
+		if(M && istype(M))
 			M.count_niche_stat(STATISTICS_NICHE_DESCTRUCTION_DOORS, 1)
 		destroy_airlock()
 		return TRUE

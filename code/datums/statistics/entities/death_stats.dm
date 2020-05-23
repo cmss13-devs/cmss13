@@ -15,13 +15,15 @@
 	var/z = 1 // ground-side, in transit, or on almayer?
 
 /datum/entity/death_stats/proc/count_player_death(var/mob/M)
+	if (!M || !M.mind)
+		return
 	var/datum/mind/D = M.mind
 	D.player_entity.death_stats.Insert(1, src)
 	if(ishuman(M))
 		// Update base human stats
 		var/datum/entity/player_stats/human/human_stats = D.setup_human_stats()
 		human_stats.total_deaths += 1
-		
+
 		// Update job-specific stats
 		var/job_name = get_actual_job_name(M)
 		if(job_name)
@@ -42,7 +44,7 @@
 			D.setup_xeno_stats()
 		var/datum/entity/player_stats/xeno/xeno_stats = D.player_entity.player_stats["xeno"]
 		xeno_stats.total_deaths += 1
-		
+
 		// Update caste-specific stats
 		if(X.caste_name)
 			var/datum/entity/player_stats/caste/caste_stats
@@ -147,7 +149,8 @@
 		return
 	if(mind)
 		var/datum/entity/player_stats/human/human_stats = mind.setup_human_stats()
-		human_stats.death_list.Insert(1, .)
+		if(human_stats && human_stats.death_list)
+			human_stats.death_list.Insert(1, .)
 	if(cause_mob)
 		if(!ismob(cause_mob))
 			return
@@ -170,9 +173,8 @@
 		return
 	if(mind)
 		var/datum/entity/player_stats/xeno/xeno_stats = mind.setup_xeno_stats()
-		if(isnull(xeno_stats))
-			return
-		xeno_stats.death_list.Insert(1, .)
+		if(xeno_stats && xeno_stats.death_list)
+			xeno_stats.death_list.Insert(1, .)
 	if(cause_mob)
 		if(!ismob(cause_mob))
 			return

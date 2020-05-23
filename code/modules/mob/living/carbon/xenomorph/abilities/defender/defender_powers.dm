@@ -198,7 +198,7 @@
 		H.apply_damage(10)
 		shake_camera(H, 2, 1)
 
-		H.KnockDown(2, 1)
+		H.KnockDown(1, 1)
 
 		to_chat(H, SPAN_XENOWARNING("You are struck by [src]'s tail sweep!"))
 		playsound(H,'sound/weapons/alien_claw_block.ogg', 50, 1)

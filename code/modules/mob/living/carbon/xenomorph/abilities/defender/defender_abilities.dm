@@ -29,7 +29,7 @@
 	ability_primacy = XENO_PRIMARY_ACTION_3
 
 	plasma_cost = 10
-	cooldowns = list(100, 100, 100, 100)
+	cooldowns = list(150, 130, 110, 100)
 
 /datum/action/xeno_action/activable/headbutt
 	name = "Headbutt"

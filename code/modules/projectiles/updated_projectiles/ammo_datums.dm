@@ -1598,8 +1598,8 @@
 	..()
 	accuracy_var_low = config.med_proj_variance
 	accuracy_var_high = config.med_proj_variance
-	accurate_range = config.min_shell_range
-	max_range = config.near_shell_range
+	accurate_range = config.close_shell_range
+	max_range = config.close_shell_range
 	scatter = config.giga_scatter_value
 	bonus_projectiles_amount = config.low_proj_extra
 

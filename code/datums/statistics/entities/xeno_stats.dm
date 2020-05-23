@@ -39,6 +39,8 @@
 	if(statistic_exempt || statistic_tracked || !mind || !mind.player_entity)
 		return
 	var/datum/entity/player_stats/xeno/xeno_stats = mind.setup_xeno_stats()
+	if(isnull(xeno_stats))
+		return
 	if(!xeno_stats.round_played)
 		xeno_stats.total_rounds_played += 1
 		xeno_stats.round_played = TRUE
@@ -121,9 +123,9 @@
 /mob/living/carbon/Xenomorph/proc/track_ability_usage(var/ability, var/caste, var/amount = 1)
 	if(statistic_exempt || !client || !mind)
 		return
-	var/datum/entity/player_stats/xeno/S = mind.setup_xeno_stats()
-	if(caste_name && !isnull(S))
-		S.track_personal_abilities_used(caste_name, ability, amount)
+	var/datum/entity/player_stats/xeno/xeno_stats = mind.setup_xeno_stats()
+	if(caste_name && !isnull(xeno_stats))
+		xeno_stats.track_personal_abilities_used(caste_name, ability, amount)
 
 /datum/entity/player_stats/xeno/count_personal_steps_walked(var/caste, var/amount = 1)
 	var/datum/entity/player_stats/caste/S = setup_caste_stats(caste)
@@ -135,12 +137,12 @@
 /mob/living/carbon/Xenomorph/track_steps_walked(var/amount = 1)
 	if(statistic_exempt || !client || !mind)
 		return
-	var/datum/entity/player_stats/xeno/S = mind.setup_xeno_stats()
-	if(isnull(S))
+	var/datum/entity/player_stats/xeno/xeno_stats = mind.setup_xeno_stats()
+	if(isnull(xeno_stats))
 		return
-	S.steps_walked += amount
+	xeno_stats.steps_walked += amount
 	if(caste_name)
-		S.count_personal_steps_walked(caste_name, amount)
+		xeno_stats.count_personal_steps_walked(caste_name, amount)
 
 /datum/entity/player_stats/xeno/proc/count_personal_slashes(var/caste, var/amount = 1)
 	var/datum/entity/player_stats/caste/S = setup_caste_stats(caste)
@@ -152,11 +154,11 @@
 /mob/living/carbon/Xenomorph/proc/track_slashes(var/caste, var/amount = 1)
 	if(statistic_exempt || !client || !mind)
 		return
-	var/datum/entity/player_stats/xeno/S = mind.setup_xeno_stats()
-	if(isnull(S))
+	var/datum/entity/player_stats/xeno/xeno_stats = mind.setup_xeno_stats()
+	if(isnull(xeno_stats))
 		return
-	S.total_hits += amount
+	xeno_stats.total_hits += amount
 	if(caste_name)
-		S.count_personal_slashes(caste_name, amount)
+		xeno_stats.count_personal_slashes(caste_name, amount)
 	if(round_statistics)
 		round_statistics.total_slashes += amount

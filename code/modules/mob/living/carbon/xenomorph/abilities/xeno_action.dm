@@ -60,6 +60,8 @@
 		L.verbs += macro_path
 
 /datum/action/xeno_action/update_button_icon()
+	if(!button)
+		return
 	if(!can_use_action())
 		button.color = rgb(128,0,0,128)
 	else if(!action_cooldown_check())

@@ -2,14 +2,14 @@
 	name = "metal barricade"
 	desc = "A sturdy and easily assembled barricade made of metal plates, often used for quick fortifications. Use a blowtorch to repair."
 	icon_state = "metal_0"
-	health = 315
-	maxhealth = 315
+	health = 450
+	maxhealth = 450
 	crusher_resistant = TRUE
 	barricade_resistance = 10
 	stack_type = /obj/item/stack/sheet/metal
 	debris = list(/obj/item/stack/sheet/metal)
-	stack_amount = 4
-	destroyed_stack_amount = 2
+	stack_amount = 15
+	destroyed_stack_amount = 5
 	barricade_hitsound = "sound/effects/metalhit.ogg"
 	barricade_type = "metal"
 	can_wire = TRUE
@@ -56,16 +56,18 @@
 			to_chat(user, SPAN_WARNING("[src] doesn't need repairs."))
 			return
 
-		if(WT.remove_fuel(0, user))
+		if(WT.remove_fuel(2, user))
 			user.visible_message(SPAN_NOTICE("[user] begins repairing damage to [src]."),
 			SPAN_NOTICE("You begin repairing the damage to [src]."))
 			playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
-			if(do_after(user, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, src))
+			if(do_after(user, 50, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, src))
 				user.visible_message(SPAN_NOTICE("[user] repairs some damage on [src]."),
 				SPAN_NOTICE("You repair [src]."))
 				user.count_niche_stat(STATISTICS_NICHE_REPAIR_CADES)
-				update_health(-150)
+				update_health(-200)
 				playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
+			else
+				WT.remove_fuel(-2)
 		return
 
 	switch(build_state)
@@ -199,7 +201,7 @@
 				user.visible_message(SPAN_NOTICE("[user] starts unseating [src]'s panels."),
 				SPAN_NOTICE("You start unseating [src]'s panels."))
 				playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
-				if(do_after(user, 50, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
+				if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
 					user.visible_message(SPAN_NOTICE("[user] takes [src]'s panels apart."),
 					SPAN_NOTICE("You take [src]'s panels apart."))
 					playsound(loc, 'sound/items/Deconstruct.ogg', 25, 1)
@@ -210,8 +212,6 @@
 
 
 /obj/structure/barricade/metal/wired/New()
-	maxhealth += 50
-	update_health(-50)
 	can_wire = FALSE
 	is_wired = TRUE
 	flags_can_pass_front &= ~(PASS_OVER_THROW_MOB)

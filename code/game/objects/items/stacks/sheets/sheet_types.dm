@@ -12,7 +12,7 @@
  */
 var/global/list/datum/stack_recipe/metal_recipes = list ( \
 	new/datum/stack_recipe("barbed wire", /obj/item/stack/barbed_wire, 2, 1, 20, time = 10, skill_req = SKILL_CONSTRUCTION_METAL), \
-	new/datum/stack_recipe("metal barricade", /obj/structure/barricade/metal, 4, time = 40, one_per_turf = 2, on_floor = 1, skill_req = SKILL_CONSTRUCTION_METAL), \
+	new/datum/stack_recipe("metal barricade", /obj/structure/barricade/metal, 15, time = 20, one_per_turf = 2, on_floor = 1, skill_req = SKILL_CONSTRUCTION_METAL), \
 	new/datum/stack_recipe("handrail", /obj/structure/barricade/handrail, 2, time = 40, one_per_turf = 2, on_floor = 1, skill_req = SKILL_CONSTRUCTION_METAL), \
 	null, \
 	new/datum/stack_recipe("apc frame", /obj/item/frame/apc, 2), \
@@ -94,7 +94,7 @@ var/global/list/datum/stack_recipe/metal_recipes = list ( \
  * Plasteel
  */
 var/global/list/datum/stack_recipe/plasteel_recipes = list ( \
-	new/datum/stack_recipe("plasteel barricade", /obj/structure/barricade/plasteel, 5, time = 40, one_per_turf = 1, on_floor = 1, skill_req = SKILL_CONSTRUCTION_PLASTEEL),
+	new/datum/stack_recipe("plasteel barricade", /obj/structure/barricade/plasteel, 10, time = 40, one_per_turf = 1, on_floor = 1, skill_req = SKILL_CONSTRUCTION_PLASTEEL),
 	null, \
 	new/datum/stack_recipe("plasteel rod", /obj/item/stack/rods/plasteel, 1, 1, 30),
 	new/datum/stack_recipe("metal crate", /obj/structure/closet/crate, 5, time = 50, one_per_turf = 1), \
@@ -133,7 +133,7 @@ var/global/list/datum/stack_recipe/wood_recipes = list ( \
 	new/datum/stack_recipe("table parts", /obj/item/frame/table/wood, 2), \
 	 */
 	new/datum/stack_recipe("wooden chair", /obj/structure/bed/chair/wood/normal, 1, time = 10, one_per_turf = 1, on_floor = 1), \
-	new/datum/stack_recipe("wooden barricade", /obj/structure/barricade/wooden, 5, time = 50, one_per_turf = 2, on_floor = 1), \
+	new/datum/stack_recipe("wooden barricade", /obj/structure/barricade/wooden, 10, time = 50, one_per_turf = 2, on_floor = 1), \
 
 	new/datum/stack_recipe("wooden door", /obj/structure/mineral_door/wood, 10, time = 20, one_per_turf = 1, on_floor = 1), \
 	new/datum/stack_recipe("coffin", /obj/structure/closet/coffin, 5, time = 15, one_per_turf = 1, on_floor = 1), \

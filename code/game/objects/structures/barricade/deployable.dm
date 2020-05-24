@@ -29,19 +29,17 @@
 			to_chat(user, SPAN_WARNING("[src] doesn't need repairs."))
 			return
 
-		if(WT.remove_fuel(0, user))
+		if(WT.remove_fuel(2, user))
 			user.visible_message(SPAN_NOTICE("[user] begins repairing damage to [src]."),
 			SPAN_NOTICE("You begin repairing the damage to [src]."))
 			playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
-			if(do_after(user, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, src))
+			if(do_after(user, 50, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, src))
 				user.visible_message(SPAN_NOTICE("[user] repairs some damage on [src]."),
 				SPAN_NOTICE("You repair [src]."))
-				if(health < maxhealth)
-					maxhealth -= 50
-					user.visible_message(SPAN_NOTICE("[src]'s structural integrity weakens."))
-
-				update_health(-(maxhealth*0.4))
+				update_health(-100)
 				playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
+			else
+				WT.remove_fuel(-2)
 		return
 	else if(iswrench(W))
 		if(user.action_busy)
@@ -127,7 +125,7 @@
 	user.visible_message(SPAN_NOTICE("[user] begins deploying [src]."),
 			SPAN_NOTICE("You begin deploying [src]."))
 	playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
-	if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+	if(!do_after(user, 5, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		return
 	user.visible_message(SPAN_NOTICE("[user] has finished deploying [src]."),
 			SPAN_NOTICE("You finish deploying [src]."))
@@ -135,4 +133,5 @@
 	cade.dir = user.dir
 	cade.health = health
 	cade.maxhealth = maxhealth
+	cade.flags_can_pass_front &= ~(PASS_OVER_THROW_MOB)
 	qdel(src)

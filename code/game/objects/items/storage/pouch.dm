@@ -137,7 +137,7 @@
 	new /obj/item/tool/crowbar/red(src)
 	new /obj/item/reagent_container/pill/tramadol(src)
 	new /obj/item/stack/medical/bruise_pack (src, 3)
-	new /obj/item/stack/sheet/metal(src, 20)
+	new /obj/item/stack/sheet/metal(src, 60)
 	..()
 
 

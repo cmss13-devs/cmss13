@@ -2,14 +2,14 @@
 	name = "plasteel barricade"
 	desc = "A very sturdy barricade made out of plasteel panels, the pinnacle of strongpoints. Use a blowtorch to repair. Can be flipped down to create a path."
 	icon_state = "plasteel_closed_0"
-	health = 600
-	maxhealth = 600
+	health = 800
+	maxhealth = 800
 	crusher_resistant = TRUE
 	barricade_resistance = 20
 	stack_type = /obj/item/stack/sheet/plasteel
 	debris = list(/obj/item/stack/sheet/plasteel)
-	stack_amount = 5
-	destroyed_stack_amount = 2
+	stack_amount = 15
+	destroyed_stack_amount = 5
 	barricade_hitsound = "sound/effects/metalhit.ogg"
 	barricade_type = "plasteel"
 	density = 0
@@ -74,18 +74,20 @@
 			to_chat(user, SPAN_WARNING("[src] doesn't need repairs."))
 			return
 
-		if(WT.remove_fuel(0, user))
+		if(WT.remove_fuel(5, user))
 			user.visible_message(SPAN_NOTICE("[user] begins repairing damage to [src]."),
 			SPAN_NOTICE("You begin repairing the damage to [src]."))
 			playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
 			busy = 1
-			if(do_after(user, 50, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, src))
+			if(do_after(user, 50, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, src))
 				busy = 0
 				user.visible_message(SPAN_NOTICE("[user] repairs some damage on [src]."),
 				SPAN_NOTICE("You repair [src]."))
-				update_health(-150)
+				update_health(-200)
 				playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
-			else busy = 0
+			else
+				busy = 0
+				WT.remove_fuel(-5)
 		return
 
 	switch(build_state)
@@ -248,8 +250,6 @@
 
 
 /obj/structure/barricade/plasteel/wired/New()
-	maxhealth += 50
-	update_health(-50)
 	can_wire = FALSE
 	is_wired = TRUE
 	flags_can_pass_front &= ~(PASS_OVER_THROW_MOB)

@@ -235,17 +235,21 @@
 	var/atom/acid_t
 	var/ticks = 0
 	var/acid_strength = 1 //100% speed, normal
+	var/barricade_damage = 40
+	var/barricade_damage_ticks = 10 // tick is once per 5 seconds. This tells us how many times it will try damaging barricades
 
 //Sentinel weakest acid
 /obj/effect/xenomorph/acid/weak
 	name = "weak acid"
 	acid_strength = 2.5 //250% normal speed
+	barricade_damage = 20
 	icon_state = "acid_weak"
 
 //Superacid
 /obj/effect/xenomorph/acid/strong
 	name = "strong acid"
 	acid_strength = 0.4 //20% normal speed
+	barricade_damage = 100
 	icon_state = "acid_strong"
 
 /obj/effect/xenomorph/acid/New(loc, target)
@@ -258,11 +262,27 @@
 	acid_t = null
 	. = ..()
 
+/obj/effect/xenomorph/acid/proc/handle_barricade()
+	var/obj/structure/barricade/cade = acid_t
+	if(istype(cade))
+		cade.take_acid_damage(barricade_damage)
+
 /obj/effect/xenomorph/acid/proc/tick(strength_t)
 	set waitfor = 0
 	if(!acid_t || !acid_t.loc)
 		qdel(src)
 		return
+
+	if(istype(acid_t,/obj/structure/barricade))
+		if(++ticks >= barricade_damage_ticks)
+			visible_message(SPAN_XENOWARNING("Acid on \The [acid_t] subsides!"))
+			qdel(src)
+			return
+		handle_barricade()
+		sleep(50)
+		.()
+		return
+	
 	if(++ticks >= strength_t)
 		visible_message(SPAN_XENODANGER("[acid_t] collapses under its own weight into a puddle of goop and undigested debris!"))
 		playsound(src, "acid_hit", 25)

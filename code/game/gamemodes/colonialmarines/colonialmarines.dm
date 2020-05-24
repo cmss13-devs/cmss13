@@ -259,7 +259,7 @@
 		if(!num_humans && num_xenos) //No humans remain alive.
 			round_finished = MODE_INFESTATION_X_MAJOR //Evacuation did not take place. Everyone died.
 		else if(num_humans && !num_xenos)
-			if(EvacuationAuthority.evac_status > EVACUATION_STATUS_STANDING_BY)
+			if(ticker && ticker.mode && ticker.mode.is_in_endgame)
 				round_finished = MODE_INFESTATION_X_MINOR //Evacuation successfully took place.
 			else
 				round_finished = MODE_INFESTATION_M_MAJOR //Humans destroyed the xenomorphs.

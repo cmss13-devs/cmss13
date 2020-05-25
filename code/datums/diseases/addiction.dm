@@ -125,3 +125,6 @@
 
 	if(prob(2))
 		affected_mob.emote(pick("twitch","blink_r","shiver"))
+
+/datum/disease/addiction/Copy()
+	return new type(chemical_id, addiction_multiplier)

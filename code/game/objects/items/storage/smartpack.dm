@@ -5,7 +5,7 @@
 
 /obj/item/storage/backpack/marine/smartpack
 	name = "\improper S-V42 prototype smartpack"
-	desc = "A joint project between the USCM and W-Y. It is said to be top-class engineering and state of the art technology. Given to USCM deployed Synthetic units and the intended usage involve assisting in battlefield support. WARNING - User is advised to take precautions."
+	desc = "A joint project between the USCM and W-Y. It is said to be top-class engineering and state of the art technology. Given to USCM deployed Synthetic units and the intended usage involve assisting in battlefield support. Can be recharged by grabbing onto an APC and completing the circuit with one's fingers (procedure not advised for non-synthetic personel). WARNING - User is advised to take precautions."
 	item_state = "smartpack"
 	icon_state = "smartpack"
 	has_gamemode_skin = FALSE

@@ -10,9 +10,10 @@
 #define DEFCON_POINT_GAIN_PER_LEVEL 2
 #define DEFCON_MAX_LEVEL 5
 
-var/global/datum/defcon/defcon_controller
+var/global/datum/controller/defcon/defcon_controller
 
-/datum/defcon
+/datum/controller/defcon
+	name = "DEFCON Level Accounting"
 	var/current_defcon_level = 5 //IRL DEFCON goes from 5 to 1, so we preserve it here
 	var/last_objectives_scored_points = 0
 	var/last_objectives_total_points = 0
@@ -29,7 +30,7 @@ var/global/datum/defcon/defcon_controller
 	//Starts with a few points to enable a bit of fun
 	var/remaining_reward_points = DEFCON_POINT_GAIN_PER_LEVEL
 
-/datum/defcon/proc/check_defcon_percentage()
+/datum/controller/defcon/proc/check_defcon_percentage()
 	if(current_defcon_level == 1)
 		return "MAXIMUM"
 	else
@@ -39,14 +40,14 @@ var/global/datum/defcon/defcon_controller
 		return percentage
 
 
-/datum/defcon/proc/decrease_defcon_level()
+/datum/controller/defcon/proc/decrease_defcon_level()
 	if(current_defcon_level > 1)
 		current_defcon_level--
 		remaining_reward_points += DEFCON_POINT_GAIN_PER_LEVEL + (DEFCON_POINT_GAIN_PER_LEVEL * (DEFCON_MAX_LEVEL - current_defcon_level))
 		chemical_research_data.update_credits((6 - current_defcon_level)*2)
 		announce_defcon_level()
 
-/datum/defcon/proc/check_defcon_level()
+/datum/controller/defcon/proc/check_defcon_level()
 	var/list/objectives_status = objectives_controller.get_objective_completion_stats()
 	last_objectives_scored_points = objectives_status["scored_points"]
 	last_objectives_total_points = objectives_status["total_points"]
@@ -60,13 +61,13 @@ var/global/datum/defcon/defcon_controller
 		round_statistics.objective_points = last_objectives_scored_points
 		round_statistics.total_objective_points = last_objectives_total_points
 
-/datum/defcon/proc/announce_defcon_level()
+/datum/controller/defcon/proc/announce_defcon_level()
 	//Send ARES message about new DEFCON level
 	var/name = "ALMAYER DEFCON LEVEL LOWERED"
 	var/input = "THREAT ASSESSMENT LEVEL INCREASED TO [last_objectives_completion_percentage*100]%.\n\nShip DEFCON level lowered to [current_defcon_level]. Additional assets have been authorised to handle the situation."
 	marine_announcement(input, name, 'sound/AI/commandreport.ogg')
 
-/datum/defcon/proc/list_and_purchase_rewards()
+/datum/controller/defcon/proc/list_and_purchase_rewards()
 	var/list/rewards_for_purchase = available_rewards()
 	if(rewards_for_purchase.len == 0)
 		to_chat(usr, "No additional assets have been authorised at this point. Increase the threat assessment level to enable further assets.")
@@ -81,7 +82,7 @@ var/global/datum/defcon/defcon_controller
 	return
 
 //Lists rewards available for purchase
-/datum/defcon/proc/available_rewards()
+/datum/controller/defcon/proc/available_rewards()
 	var/list/can_purchase = list()
 	if(!remaining_reward_points) //No points - can't buy anything
 		return can_purchase
@@ -92,7 +93,7 @@ var/global/datum/defcon/defcon_controller
 
 	return can_purchase
 
-/datum/defcon/proc/can_purchase_reward(var/datum/defcon_reward/dr)
+/datum/controller/defcon/proc/can_purchase_reward(var/datum/defcon_reward/dr)
 	if(current_defcon_level > dr.minimum_defcon_level)
 		return FALSE //required DEFCON level not reached
 	if(remaining_reward_points < dr.cost)
@@ -102,7 +103,7 @@ var/global/datum/defcon/defcon_controller
 			return FALSE //unique reward already purchased
 	return TRUE
 
-/datum/defcon/proc/initialize_level_triggers_by_map()
+/datum/controller/defcon/proc/initialize_level_triggers_by_map()
 	// Sometimes map_tag won't be populated 
 	if (!map_tag)
 		return FALSE 
@@ -143,7 +144,7 @@ var/global/datum/defcon/defcon_controller
 	. = ..()
 	name = "($[cost * DEFCON_TO_MONEY_MULTIPLIER]) [name]"
 
-/datum/defcon_reward/proc/apply_reward(var/datum/defcon/d)
+/datum/defcon_reward/proc/apply_reward(var/datum/controller/defcon/d)
 	if(d.remaining_reward_points < cost)
 		return 0
 	d.remaining_reward_points -= cost
@@ -156,7 +157,7 @@ var/global/datum/defcon/defcon_controller
 	minimum_defcon_level = 5
 	announcement_message = "Additional Supply Budget has been authorised for this operation."
 
-/datum/defcon_reward/supply_points/apply_reward(var/datum/defcon/d)
+/datum/defcon_reward/supply_points/apply_reward(var/datum/controller/defcon/d)
 	. = ..()
 	if(. == 0)
 		return
@@ -168,7 +169,7 @@ var/global/datum/defcon/defcon_controller
 	minimum_defcon_level = 5
 	announcement_message = "Additional Dropship Part Fabricator Points have been authorised for this operation."
 
-/datum/defcon_reward/dropship_part_fabricator_points/apply_reward(var/datum/defcon/d)
+/datum/defcon_reward/dropship_part_fabricator_points/apply_reward(var/datum/controller/defcon/d)
 	. = ..()
 	if(. == 0)
 		return
@@ -180,7 +181,7 @@ var/global/datum/defcon/defcon_controller
 	minimum_defcon_level = 5
 	announcement_message = "Additional Orbital Bombardment ornaments (HE, count:2) have been delivered to Requisitions' ASRS."
 
-/datum/defcon_reward/ob_he/apply_reward(var/datum/defcon/d)
+/datum/defcon_reward/ob_he/apply_reward(var/datum/controller/defcon/d)
 	. = ..()
 	if(. == 0)
 		return
@@ -199,7 +200,7 @@ var/global/datum/defcon/defcon_controller
 	minimum_defcon_level = 5
 	announcement_message = "Additional Orbital Bombardment ornaments (Cluster, count:2) have been delivered to Requisitions' ASRS."
 
-/datum/defcon_reward/ob_cluster/apply_reward(var/datum/defcon/d)
+/datum/defcon_reward/ob_cluster/apply_reward(var/datum/controller/defcon/d)
 	. = ..()
 	if(. == 0)
 		return
@@ -218,7 +219,7 @@ var/global/datum/defcon/defcon_controller
 	minimum_defcon_level = 5
 	announcement_message = "Additional Orbital Bombardment ornaments (Incendiary, count:2) have been delivered to Requisitions' ASRS."
 
-/datum/defcon_reward/ob_incendiary/apply_reward(var/datum/defcon/d)
+/datum/defcon_reward/ob_incendiary/apply_reward(var/datum/controller/defcon/d)
 	. = ..()
 	if(. == 0)
 		return
@@ -238,7 +239,7 @@ var/global/datum/defcon/defcon_controller
 	unique = TRUE
 	announcement_message = "Additional troops are being taken out of cryo."
 
-/datum/defcon_reward/cryo_squad/apply_reward(var/datum/defcon/d)
+/datum/defcon_reward/cryo_squad/apply_reward(var/datum/controller/defcon/d)
 	if (!ticker  || !ticker.mode)
 		return
 
@@ -255,7 +256,7 @@ var/global/datum/defcon/defcon_controller
 	unique = TRUE
 	announcement_message = "Additional Tank Part Fabricator Points have been authorised for this operation."
 
-/datum/defcon_reward/tank_points/apply_reward(var/datum/defcon/d)
+/datum/defcon_reward/tank_points/apply_reward(var/datum/controller/defcon/d)
 	. = ..()
 	if(. == 0)
 		return
@@ -268,7 +269,7 @@ var/global/datum/defcon/defcon_controller
 	unique = TRUE
 	announcement_message = "Specialist kits have been delievered to Requisitions' ASRS."
 
-/datum/defcon_reward/spec_kits/apply_reward(var/datum/defcon/d)
+/datum/defcon_reward/spec_kits/apply_reward(var/datum/controller/defcon/d)
 	. = ..()
 	if(. == 0)
 		return
@@ -288,7 +289,7 @@ var/global/datum/defcon/defcon_controller
 	unique = TRUE
 	announcement_message = "Planetary nuke has been been delivered to Requisitions' ASRS."
 
-/datum/defcon_reward/nuke/apply_reward(var/datum/defcon/d)
+/datum/defcon_reward/nuke/apply_reward(var/datum/controller/defcon/d)
 	. = ..()
 	if(. == 0)
 		return

@@ -37,7 +37,7 @@
 	if(skip_this == 1)
 		//if(src.virus)				< -- this used to replace the current disease. Not anymore!
 			//src.virus.cure(0)
-		var/datum/disease/v = new virus.type(1, virus, 0)
+		var/datum/disease/v = virus.Copy()
 		src.viruses += v
 		v.affected_mob = src
 		v.strain_data = v.strain_data.Copy()

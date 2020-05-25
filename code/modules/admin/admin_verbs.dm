@@ -25,7 +25,6 @@ var/list/admin_verbs_admin = list(
 	/client/proc/toggleprayers,			/*toggles prayers on/off*/
 	/client/proc/toggle_hear_radio,		/*toggles whether we hear the radio*/
 	/client/proc/event_panel,
-	/client/proc/game_panel,			/*game panel, allows to change game-mode etc*/
 	/client/proc/cmd_admin_say,			/*admin-only ooc chat*/
 	/client/proc/free_slot,				/*frees slot for chosen job*/
 	/client/proc/modify_slot,
@@ -58,7 +57,8 @@ var/list/admin_verbs_fun = list(
 	/client/proc/construct_env
 )
 var/list/admin_verbs_spawn = list(
-	/datum/admins/proc/spawn_atom
+	/datum/admins/proc/spawn_atom,
+	/client/proc/game_panel,
 )
 var/list/admin_verbs_server = list(
 	/client/proc/Set_Holiday,

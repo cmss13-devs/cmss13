@@ -70,7 +70,7 @@
 						if(L)
 							Blood = L
 							break
-					var/list/res = Blood.data["resistances"]
+					var/list/res = Blood.data_properties["resistances"]
 					spawn(res.len*200)
 						wait = null
 		else
@@ -162,16 +162,16 @@
 			dat += "The beaker is empty<BR>"
 		else if(!Blood)
 			dat += "No blood sample found in beaker"
-		else if(!Blood.data)
+		else if(!Blood.data_properties)
 			dat += "No blood data found in beaker."
 		else
 			dat += "<h3>Blood sample data:</h3>"
-			dat += "<b>Blood Type:</b> [(Blood.data["blood_type"]||"none")]<BR>"
+			dat += "<b>Blood Type:</b> [(Blood.data_properties["blood_type"]||"none")]<BR>"
 
-			if(Blood.data["viruses"])
-				var/list/vir = Blood.data["viruses"]
+			if(Blood.data_properties["viruses"])
+				var/list/vir = Blood.data_properties["viruses"]
 				if(vir.len)
-					for(var/datum/disease/D in Blood.data["viruses"])
+					for(var/datum/disease/D in Blood.data_properties["viruses"])
 						if(!D.hidden[PANDEMIC])
 
 							if(!(D.type in discovered_diseases))
@@ -205,11 +205,11 @@
 
 
 			dat += "<BR><b>Contains antibodies to:</b> "
-			if(Blood.data["resistances"])
-				var/list/res = Blood.data["resistances"]
+			if(Blood.data_properties["resistances"])
+				var/list/res = Blood.data_properties["resistances"]
 				if(res.len)
 					dat += "<ul>"
-					for(var/type in Blood.data["resistances"])
+					for(var/type in Blood.data_properties["resistances"])
 						var/disease_name = "Unknown"
 
 						if(!ispath(type))

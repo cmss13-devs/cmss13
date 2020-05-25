@@ -125,7 +125,7 @@
 					amount_to_transfer = R.volume
 
 				//Transfer to the vial
-				V.reagents.add_reagent(R.id,amount_to_transfer,R.data)
+				V.reagents.add_reagent(R.id,amount_to_transfer,R.data_properties)
 				input_container.reagents.remove_reagent(R.id,amount_to_transfer)
 				V.update_icon()
 
@@ -142,7 +142,7 @@
 				A.name = "autoinjector (" + A.reagents.reagent_list[1].name + ")"
 				A.uses_left = 3
 				A.update_icon()
-		else	
+		else
 			if(!(V.reagents.reagent_list.len) || (V.reagents.reagent_list.len > 1))
 				V.name = "vial"
 			else

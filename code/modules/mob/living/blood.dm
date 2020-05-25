@@ -109,12 +109,12 @@
 
 	for(var/datum/reagent/blood/B in container.reagents.reagent_list)
 		if(B.id == b_id)
-			if(b_id == "blood" && B.data && !(B.data["blood_type"] in get_safe_blood(blood_type)))
+			if(b_id == "blood" && B.data_properties && !(B.data_properties["blood_type"] in get_safe_blood(blood_type)))
 				reagents.add_reagent("toxin", amount * 0.5)
 			else
 				blood_volume = min(blood_volume + round(amount, 0.1), BLOOD_VOLUME_MAXIMUM)
 		else
-			reagents.add_reagent(B.id, amount, B.data)
+			reagents.add_reagent(B.id, amount, B.data_properties)
 			reagents.update_total()
 
 		container.reagents.remove_reagent(B.id, amount)
@@ -126,7 +126,7 @@
 	var/datum/reagent/blood/B = locate() in container.reagents.reagent_list
 
 	if(species && species.flags & NO_BLOOD)
-		reagents.add_reagent(B.id, amount, B.data)
+		reagents.add_reagent(B.id, amount, B.data_properties)
 		reagents.update_total()
 		container.reagents.remove_reagent(B.id, amount)
 		return

@@ -6,15 +6,15 @@
 	description = "Blood is classified as a connective tissue and consists of two main components: Plasma, which is a clear extracellular fluid. Formed elements, which are made up of the blood cells and platelets."
 	reagent_state = LIQUID
 	color = "#A10808"
-	data = new/list("blood_type"=null,"blood_colour"= "#A10808","viruses"=null,"resistances"=null)
+	data_properties = new/list("blood_type"=null,"blood_colour"= "#A10808","viruses"=null,"resistances"=null)
 	chemclass = CHEM_CLASS_RARE
 
 
 /datum/reagent/blood/reaction_mob(var/mob/M, var/method=TOUCH, var/volume)
 	var/datum/reagent/blood/self = src
 	src = null
-	if(self.data && self.data["viruses"])
-		for(var/datum/disease/D in self.data["viruses"])
+	if(self.data_properties && self.data_properties["viruses"])
+		for(var/datum/disease/D in self.data_properties["viruses"])
 			//var/datum/disease/virus = new D.type(0, D, 1)
 			// We don't spread.
 			if(D.spread_type == SPECIAL || D.spread_type == NON_CONTAGIOUS) continue
@@ -89,17 +89,17 @@
 		if(has_species(M,"Horror")) return
 		var/datum/reagent/vaccine/self = src
 		src = null
-		if(self.data&&method == INGEST)
+		if(self.data_properties && method == INGEST)
 			for(var/datum/disease/D in M.viruses)
 				if(istype(D, /datum/disease/advance))
 					var/datum/disease/advance/A = D
-					if(A.GetDiseaseID() == self.data)
+					if(A.GetDiseaseID() == self.data_properties)
 						D.cure()
 				else
-					if(D.type == self.data)
+					if(D.type == self.data_properties)
 						D.cure()
 
-			M.resistances += self.data
+			M.resistances += self.data_properties
 		return
 
 

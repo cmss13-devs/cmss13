@@ -404,10 +404,10 @@ var/const/INGEST = 2
 			my_atom.on_reagent_change()
 
 			// mix dem viruses
-			if(R.data && data)
-				if(R.data["viruses"] || new_data["viruses"])
+			if(R.data_properties && data)
+				if(R.data_properties["viruses"] || new_data["viruses"])
 
-					var/list/mix1 = R.data["viruses"]
+					var/list/mix1 = R.data_properties["viruses"]
 					var/list/mix2 = new_data["viruses"]
 
 					// Stop issues with the list changing during mixing.
@@ -421,10 +421,10 @@ var/const/INGEST = 2
 					var/datum/disease/advance/AD = Advance_Mix(to_mix)
 					if(AD)
 						var/list/preserve = list(AD)
-						for(var/D in R.data["viruses"])
+						for(var/D in R.data_properties["viruses"])
 							if(!istype(D, /datum/disease/advance))
 								preserve += D
-						R.data["viruses"] = preserve
+						R.data_properties["viruses"] = preserve
 
 			if(!safety)
 				handle_reactions()
@@ -439,10 +439,10 @@ var/const/INGEST = 2
 		if(D.type == /datum/reagent/generated)
 			R.make_alike(D)
 			R.update_stats()
-		reagent_list += R
 		R.holder = src
 		R.volume = amount
 		SetViruses(R, new_data) // Includes setting data
+		reagent_list += R
 
 		update_total()
 		my_atom.on_reagent_change()
@@ -524,20 +524,20 @@ var/const/INGEST = 2
 /datum/reagents/proc/get_data(var/reagent_id)
 	for(var/datum/reagent/D in reagent_list)
 		if(D.id == reagent_id)
-			return D.data
+			return D.data_properties
 
 /datum/reagents/proc/set_data(var/reagent_id, var/new_data)
 	for(var/datum/reagent/D in reagent_list)
 		if(D.id == reagent_id)
-			D.data = new_data
+			D.data_properties = new_data
 
 /datum/reagents/proc/copy_data(var/datum/reagent/current_reagent)
-	if(!current_reagent || !current_reagent.data)
+	if(!current_reagent || !current_reagent.data_properties)
 		return null
-	if(!istype(current_reagent.data, /list))
-		return current_reagent.data
+	if(!istype(current_reagent.data_properties, /list))
+		return current_reagent.data_properties
 
-	var/list/trans_data = current_reagent.data.Copy()
+	var/list/trans_data = current_reagent.data_properties.Copy()
 
 	return trans_data
 

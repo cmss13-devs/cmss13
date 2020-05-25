@@ -152,7 +152,7 @@
 		if (14)
 			diskcol = "cracked blue"
 		if (15)
-			diskcol = "bloddied blue"
+			diskcol = "bloodied blue"
 
 	label = "[pick(letters)]-[rand(100,999)]"
 	name = "[diskcol] computer disk [label]"

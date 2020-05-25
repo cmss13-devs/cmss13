@@ -28,3 +28,6 @@
 
 /datum/cm_objective/crack_safe/get_clue()
 	return SPAN_DANGER("Crack open a safe in [initial_location], the combination lock is [target.tumbler_1_open]|[target.tumbler_2_open]")
+
+/datum/cm_objective/crack_safe/get_related_label()
+	return "Safe"

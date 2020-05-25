@@ -142,7 +142,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	// this is here for a short transition period when we still are testing DB notes and constantly deleting the file
 	if(config.duplicate_notes_to_file)
 		AddBan(ckey, last_known_cid, ban_text, admin.ckey, 1, duration, last_known_ip)
-		notes_add(ckey, "Banned by [admin.ckey]|Duration: [duration] minutes|Reason: [sanitize(ban_text)]", admin)
+		notes_add(ckey, "Banned by [admin.ckey]|Duration: [duration] minutes|Reason: [sanitize(ban_text)]", usr)
 	
 	message_admins("\blue[admin.ckey] has banned [ckey].\nReason: [sanitize(ban_text)]\nThis will be removed in [duration] minutes.")
 	ban_unban_log_save("[admin.ckey] has banned [ckey]|Duration: [duration] minutes|Reason: [sanitize(ban_text)]")

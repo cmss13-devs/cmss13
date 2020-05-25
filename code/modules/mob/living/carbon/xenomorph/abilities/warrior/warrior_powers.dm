@@ -157,10 +157,11 @@
 		L.status &= ~LIMB_SPLINTED
 		to_chat(H, SPAN_DANGER("The splint on your [L.display_name] comes apart!"))
 
+	var/damage = rand(base_damage, base_damage + damage_variance)
 	if(isYautja(H))
-		L.take_damage(rand(base_punch_damage_pred, base_punch_damage_pred + damage_variance))
+		damage = rand(base_punch_damage_pred, base_punch_damage_pred + damage_variance)
 	else if(L.status & LIMB_ROBOT)
-		L.take_damage(rand(base_punch_damage_synth, base_punch_damage_synth + damage_variance), 0, 0) // just do more damage
+		damage = rand(base_punch_damage_synth, base_punch_damage_synth + damage_variance)
 	else
 		var/fracture_chance = 100
 		switch(L.body_part)
@@ -171,25 +172,28 @@
 			if(BODY_FLAG_GROIN)
 				fracture_chance = 40
 		
-		L.take_damage(rand(base_damage,base_damage+damage_variance), 0, 0)
 		if(prob(fracture_chance))
 			L.fracture()
+			
+	H.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE, L.name)
 	
 	shake_camera(H, 2, 1)
 	step_away(H, X, 2)
 
 /datum/action/xeno_action/activable/warrior_punch/proc/do_boxer_punch(mob/living/carbon/human/H, obj/limb/L)
 	var/mob/living/carbon/Xenomorph/X = owner
+
+	var/damage = rand(boxer_punch_damage, boxer_punch_damage + damage_variance)
 	if(isYautja(H))
-		L.take_damage(rand(boxer_punch_damage_pred, boxer_punch_damage_pred + damage_variance))
+		damage = rand(boxer_punch_damage_pred, boxer_punch_damage_pred + damage_variance)
 	else if(L.status & LIMB_ROBOT)
-		L.take_damage(rand(boxer_punch_damage_synth, boxer_punch_damage_synth + damage_variance), 0, 0) // just do more damage
+		damage = rand(boxer_punch_damage_synth, boxer_punch_damage_synth + damage_variance)
 	else
-		L.take_damage(rand(boxer_punch_damage, boxer_punch_damage + damage_variance), 0, 0)
 		if(L.body_part == BODY_FLAG_HEAD)
 			var/knockdown_chance = 14
 			if(prob(knockdown_chance))
 				H.KnockDown(1)
+	H.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE, L.name)
 
 	shake_camera(H, 3, 1)
 

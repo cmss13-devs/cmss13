@@ -14,7 +14,7 @@
 	plasma_cost = 20
 
 	// Config
-	var/damage = 40
+	var/damage = 50
 	var/shield_regen_threshold = 3
 	var/should_spin_instead = FALSE
 
@@ -36,7 +36,7 @@
 	should_pass_mobs = TRUE		// used to pass over mobs
 
 	var/buff_duration = 12
-	var/damage = 35
+	var/damage = 45
 	var/shield_regen_threshold = 3
 
 	var/activated_once = FALSE

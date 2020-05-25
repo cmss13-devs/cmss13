@@ -182,7 +182,8 @@
 				continue 
 
 			X.flick_attack_overlay(H, "slash")
-			H.apply_damage(damage, BRUTE)
+			H.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE)
+			playsound(get_turf(H), "alien_claw_flesh", 30, 1)
 
 			if (should_daze)
 				H.Daze(daze_duration)
@@ -303,8 +304,8 @@
 
 	// Damage
 	var/obj/limb/head/head = H.get_limb("head")
-	if (head)
-		head.take_damage(damage, 0, FALSE, FALSE)
+	if(head)
+		H.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE, "head")
 
 	// Heal
 	X.gain_health(heal_amount)
@@ -380,11 +381,13 @@
 			if (range > 1)
 				X.visible_message(SPAN_XENOHIGHDANGER("[X] rips open the guts of [H]!"), SPAN_XENOHIGHDANGER("You rip open the guts of [H]!"))
 				H.spawn_gibs()
+				playsound(get_turf(H), 'sound/effects/gibbed.ogg', 30, 1)
 				H.KnockDown(1)
 			else
 				X.visible_message(SPAN_XENODANGER("[X] claws [H]!"), SPAN_XENODANGER("You claw [H]!"))
-				
-			H.apply_damage(damage, BRUTE)
+				playsound(get_turf(H), "alien_claw_flesh", 30, 1)
+	
+			H.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE, "chest", 20)
 
 	X.frozen = 0
 	X.anchored = 0

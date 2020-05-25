@@ -138,8 +138,8 @@
 	SPAN_XENOWARNING("You ram [H] with your armored crest!"))
 
 	if(H.stat != DEAD && (!(H.status_flags & XENO_HOST) || !istype(H.buckled, /obj/structure/bed/nest)) )
-		var/h_damage = 20 + (X.spiked * 5)
-		H.apply_damage(h_damage)
+		var/h_damage = 25 + (X.spiked * 5)
+		H.apply_armoured_damage(h_damage, ARMOR_MELEE, BRUTE)
 		shake_camera(H, 2, 1)
 
 	var/facing = get_dir(X, H)
@@ -195,7 +195,7 @@
 		step_away(H, X, sweep_range, 2)
 		H.last_damage_mob = X
 		H.last_damage_source = initial(X.caste_name)
-		H.apply_damage(10)
+		H.apply_armoured_damage(15, ARMOR_MELEE, BRUTE)
 		shake_camera(H, 2, 1)
 
 		H.KnockDown(1, 1)

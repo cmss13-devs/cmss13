@@ -159,7 +159,7 @@
 			else if(n_damage <= 0.67*damage)
 				show_message(SPAN_WARNING("Your armor softens the blow!"), null, null, null, CHAT_TYPE_ARMOR_DAMAGE)
 
-			apply_damage(n_damage, BRUTE, affecting, 0, sharp = 1, edge = 1) //This should slicey dicey
+			apply_damage(n_damage, BRUTE, affecting, sharp = 1, edge = 1) //This should slicey dicey
 			if(acid_damage)
 				playsound(loc, "acid_hit", 25, 1)
 				var/armor_block_acid = getarmor(affecting, ARMOR_BIO)
@@ -169,7 +169,7 @@
 					show_message(SPAN_WARNING("Your armor protects your from acid!"), null, null, null, CHAT_TYPE_ARMOR_DAMAGE)
 				else if(n_acid_damage <= 0.67*acid_damage)
 					show_message(SPAN_WARNING("Your armor reduces the effect of the acid!"), null, null, null, CHAT_TYPE_ARMOR_DAMAGE)
-				apply_damage(n_acid_damage, BURN, affecting, 0) //Burn damage
+				apply_damage(n_acid_damage, BURN, affecting) //Burn damage
 
 			if(M.behavior_delegate)
 				var/datum/behavior_delegate/MD = M.behavior_delegate

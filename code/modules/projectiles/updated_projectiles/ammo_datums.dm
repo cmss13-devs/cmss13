@@ -1409,7 +1409,7 @@
 		else
 			M.KnockDown(stun_time, 1)
 
-		M.apply_damage(rand(20, 30), BURN)
+		M.apply_armoured_damage(rand(20, 30), ARMOR_ENERGY, BURN)
 
 
 

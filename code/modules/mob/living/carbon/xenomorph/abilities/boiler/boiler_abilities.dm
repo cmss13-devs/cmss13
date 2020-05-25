@@ -33,8 +33,8 @@
 	var/stack_time = 10
 	var/base_range = 6
 	var/range_per_stack = 1
-	var/base_damage = 30
-	var/damage_per_stack = 10
+	var/base_damage = 40
+	var/damage_per_stack = 15
 	var/movespeed_per_stack = 1.25
 
 	var/time_after_max_before_end = 25
@@ -89,7 +89,7 @@
 	ability_primacy = XENO_PRIMARY_ACTION_2
 	cooldowns = list(60, 60, 55, 55)
 
-	var/damage = 40
+	var/damage = 50
 	var/delay = 15
 
 /datum/action/xeno_action/activable/acid_shotgun

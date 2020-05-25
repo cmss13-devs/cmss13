@@ -56,13 +56,13 @@
 	cooldowns = list(60, 50, 40, 35)
 
 	// Configurables
-	var/base_damage = 15
-	var/boxer_punch_damage = 25
+	var/base_damage = 20
+	var/boxer_punch_damage = 50
 	var/base_punch_damage_synth = 30
 	var/boxer_punch_damage_synth = 40
-	var/base_punch_damage_pred = 8
-	var/boxer_punch_damage_pred = 15
-	var/damage_variance = 5
+	var/base_punch_damage_pred = 25
+	var/boxer_punch_damage_pred = 35
+	var/damage_variance = 10
 
 /datum/action/xeno_action/activable/jab
 	name = "Jab"

@@ -345,6 +345,27 @@ This function restores all limbs.
 	return (locate(limb_types_by_name[zone]) in limbs)
 
 
+/mob/living/carbon/human/apply_armoured_damage(var/damage = 0, var/armour_type = ARMOR_MELEE, var/damage_type = BRUTE, var/def_zone = null, var/penetration = 0, var/armour_break_pr_pen = 0, var/armour_break_flat = 0)
+	if(damage <= 0)
+		return ..(damage, armour_type, damage_type, def_zone)
+
+	var/obj/limb/target_limb = null
+	if(def_zone)
+		target_limb = get_limb(check_zone(def_zone))
+	else
+		target_limb = get_limb(check_zone(ran_zone()))
+	if(isnull(target_limb))
+		return FALSE
+
+	var/armor = getarmor(target_limb, armour_type)
+
+	var/armour_config = config.marine_ranged
+	if(armour_type == ARMOR_MELEE)
+		armour_config = config.marine_melee
+
+	var/modified_damage = armor_damage_reduction(armour_config, damage, armor, penetration, 0, 0)
+	apply_damage(modified_damage, damage_type, target_limb)
+
 /*
 	Describes how human mobs get damage applied.
 	Less clear vars:
@@ -353,7 +374,7 @@ This function restores all limbs.
 	*	permanent_kill: whether this attack causes human to become irrevivable
 */
 /mob/living/carbon/human/apply_damage(var/damage = 0, var/damagetype = BRUTE, var/def_zone = null, \
-	var/blocked = 0, var/sharp = 0, var/edge = 0, var/obj/used_weapon = null, var/no_limb_loss = FALSE, \
+	var/sharp = 0, var/edge = 0, var/obj/used_weapon = null, var/no_limb_loss = FALSE, \
 	var/impact_name = null, var/impact_limbs = null, var/permanent_kill = FALSE, var/mob/firer = null
 )
 	if(protection_aura)
@@ -365,11 +386,8 @@ This function restores all limbs.
 			if((damage > 25 && prob(20)) || (damage > 50 && prob(60)))
 				emote("pain")
 
-		..(damage, damagetype, def_zone, blocked)
+		..(damage, damagetype, def_zone)
 		return TRUE
-
-	if(blocked >= 2)	
-		return FALSE
 
 	var/obj/limb/organ = null
 	if(isorgan(def_zone))
@@ -380,9 +398,6 @@ This function restores all limbs.
 		organ = get_limb(check_zone(def_zone))
 	if(!organ)
 		return FALSE
-
-	if(blocked)
-		damage = (damage/(blocked+1))
 
 	switch(damagetype)
 		if(BRUTE)

@@ -292,7 +292,7 @@
 	to_chat(M, SPAN_DANGER("Your skin feels like it is melting away!"))
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
-		H.apply_damage(amount*rand(15, 20), BURN) //Burn damage, randomizes between various parts //Amount corresponds to upgrade level, 1 to 2.5
+		H.apply_armoured_damage(amount*rand(15, 20), ARMOR_BIO, BURN) //Burn damage, randomizes between various parts //Amount corresponds to upgrade level, 1 to 2.5
 	else
 		M.burn_skin(5) //Failsafe for non-humans
 	M.updatehealth()

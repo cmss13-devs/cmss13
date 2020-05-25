@@ -248,15 +248,6 @@
 			SPAN_DANGER("You slash [H]!"), null, null, CHAT_TYPE_XENO_COMBAT)
 
 		bound_xeno.flick_attack_overlay(H, "slash")
-		
-		var/obj/limb/affecting
-		affecting = H.get_limb(ran_zone(bound_xeno.zone_selected, 70))
-		if(!affecting) //No organ, just get a random one
-			affecting = H.get_limb(ran_zone(null, 0))
-		if(!affecting) //Still nothing??
-			affecting = H.get_limb("chest") //Gotta have a torso?!
-
-		var/armor_block = H.getarmor(affecting, ARMOR_MELEE)
 
 		H.last_damage_source = initial(bound_xeno.name)
 		H.last_damage_mob = bound_xeno
@@ -275,15 +266,7 @@
 			bound_xeno.attack_log += text("\[[time_stamp()]\] <font color='red'>slashed [key_name(H)]</font>")
 		log_attack("[key_name(bound_xeno)] slashed [key_name(H)]")
 
-		var/n_damage = armor_damage_reduction(config.marine_melee, damage, armor_block)
-
-		//nice messages so people know that armor works
-		if(n_damage <= 0.34*damage)
-			H.show_message(SPAN_WARNING("Your armor absorbs the blow!"), null, null, null, CHAT_TYPE_ARMOR_DAMAGE)
-		else if(n_damage <= 0.67*damage)
-			H.show_message(SPAN_WARNING("Your armor softens the blow!"), null, null, null, CHAT_TYPE_ARMOR_DAMAGE)
-
-		H.apply_damage(n_damage, BRUTE, affecting, 0, sharp = 1, edge = 1) //This should slicey dicey
+		H.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE, bound_xeno.zone_selected)
 		new /datum/effects/xeno_slow(H, bound_xeno, , , 25)
 
 /datum/behavior_delegate/crusher_base/append_to_stat()

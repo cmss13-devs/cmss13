@@ -702,7 +702,7 @@
 
 	if(damage)
 		bullet_message(P)
-		apply_damage(damage, P.ammo.damage_type, P.def_zone, 0, 0, 0, P)
+		apply_damage(damage, P.ammo.damage_type, P.def_zone, 0, 0, P)
 		P.play_damage_effect(src)
 		if(ammo_flags & AMMO_INCENDIARY)
 			adjust_fire_stacks(rand(6,10))

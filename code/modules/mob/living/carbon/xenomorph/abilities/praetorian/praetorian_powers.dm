@@ -56,7 +56,7 @@
 			continue 
 
 		X.flick_attack_overlay(H, "slash")
-		H.apply_damage(damage, BRUTE)
+		H.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE, null, 20)
 
 	if (target_mobs.len >= shield_regen_threshold)
 		if (X.mutation_type == PRAETORIAN_VANGUARD)
@@ -110,7 +110,7 @@
 			continue 
 
 		X.flick_attack_overlay(H, "slash")
-		H.apply_damage(damage, BRUTE)
+		H.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE)
 		playsound(get_turf(H), "alien_claw_flesh", 30, 1)
 
 	if (target_mobs.len >= shield_regen_threshold)
@@ -336,7 +336,7 @@
 	if (!X.check_state())
 		return
 
-	if (!istype(A, /mob/living/carbon/human))
+	if (!ishuman(A))
 		to_chat(X, SPAN_XENODANGER("You must target a human!"))
 		apply_cooldown_override(click_miss_cooldown)
 		return
@@ -373,7 +373,6 @@
 	X.face_atom(A)
 
 	var/damage = rand(X.melee_damage_lower, X.melee_damage_upper)
-	var/armor_block = H.getarmor(H.get_limb("chest"), ARMOR_MELEE)
 
 	X.visible_message(SPAN_DANGER("\The [X] violently slices [A] with its tail[buffed?" twice":""]!"), \
 					SPAN_DANGER("You slice [A] with your tail[buffed?" twice":""]!"))
@@ -384,12 +383,7 @@
 		X.flick_attack_overlay(A, "slash")
 		X.emote("roar") // Feedback for the player that we got the magic double impale
 		
-		var/n_damage = armor_damage_reduction(config.marine_melee, damage, armor_block)
-		if (n_damage <= 0.34*damage)
-			H.show_message(SPAN_WARNING("Your armor absorbs the blow!"))
-		else if (n_damage <= 0.67*damage)
-			H.show_message(SPAN_WARNING("Your armor softens the blow!"))
-		H.apply_damage(n_damage, BRUTE) // Stolen from attack_alien. thanks Neth
+		H.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE, "chest", 10)
 		playsound(get_turf(A), "alien_claw_flesh", 30, 1)
 		
 		// Reroll damage
@@ -400,14 +394,9 @@
 	X.animation_attack_on(A)
 	X.flick_attack_overlay(A, "slash")
 				
-	var/n_damage = armor_damage_reduction(config.marine_melee, damage, armor_block)
-	if (n_damage <= 0.34*damage)
-		H.show_message(SPAN_WARNING("Your armor absorbs the blow!"))
-	else if (n_damage <= 0.67*damage)
-		H.show_message(SPAN_WARNING("Your armor softens the blow!"))
 	H.last_damage_mob = X
 	H.last_damage_source = initial(X.caste_name)
-	H.apply_damage(n_damage, BRUTE)
+	H.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE, "chest", 10)
 	playsound(get_turf(A), "alien_claw_flesh", 30, 1)
 
 	apply_cooldown()

@@ -163,7 +163,7 @@ Your health meter will not regenerate normally, so kill and die for the hive!</s
 	if(do_after(src, PREDALIEN_BUTCHER_WAIT_TIME, INTERRUPT_ALL, BUSY_ICON_HOSTILE) && Adjacent(H))
 		var/obj/limb/head/O = H.get_limb("head")
 		if(!(O.status & LIMB_DESTROYED))
-			H.apply_damage(150, BRUTE, "head", FALSE, TRUE, TRUE)
+			H.apply_damage(150, BRUTE, "head", TRUE, TRUE)
 			if(!(O.status & LIMB_DESTROYED)) O.droplimb(0, 0, initial(name)) //Still not actually detached?
 			visible_message(SPAN_DANGER("[src] reaches down and rips off [H]'s spinal cord and skull!"),
 			SPAN_XENODANGER("You slice and pull on [H]'s head until it comes off in a bloody arc!"))
@@ -178,7 +178,7 @@ Your health meter will not regenerate normally, so kill and die for the hive!</s
 			emote("growl")
 			var/i = 4
 			while(i--)
-				H.apply_damage(100, BRUTE, pick("r_leg","l_leg","r_arm","l_arm"), FALSE, TRUE, TRUE)
+				H.apply_damage(100, BRUTE, pick("r_leg","l_leg","r_arm","l_arm"), TRUE, TRUE)
 
 	#undef PREDALIEN_BUTCHER_COOLDOWN
 	#undef PREDALIEN_BUTCHER_WAIT_TIME

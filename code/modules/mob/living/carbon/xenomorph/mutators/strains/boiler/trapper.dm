@@ -74,7 +74,7 @@
 			break
 
 	if (found)
-		H.apply_damage(bonus_damage_shotgun_trapped, BURN)
+		H.apply_armoured_damage(bonus_damage_shotgun_trapped, ARMOR_BIO, BURN)
 	else
 		H.AdjustSlowed(2)
 

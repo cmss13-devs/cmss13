@@ -131,7 +131,7 @@
 
 					M.flick_attack_overlay(src, "slash")
 					playsound(loc, "alien_claw_flesh", 25, 1)
-					apply_damage(damage, BRUTE)
+					apply_armoured_damage(damage, ARMOR_MELEE, BRUTE)
 
 			if("disarm")
 				M.animation_attack_on(src)

@@ -82,7 +82,7 @@
 
 	// Config values
 	var/heal_per_rage = 200
-	var/damage = 10
+	var/damage = 20
 	var/fling_dist_base = 4
 	var/daze_amount = 2
 

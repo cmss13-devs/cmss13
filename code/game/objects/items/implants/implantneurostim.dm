@@ -62,7 +62,7 @@
 		M.stunned += 10
 		M.KnockDown(10)
 		M.apply_damage(100, HALLOSS, part)
-		M.apply_damage(5, BURN, part, 0, 0, 0, src)
+		M.apply_damage(5, BURN, part, 0, 0, src)
 
 	else
 		playsound(src, 'sound/machines/twobeep.ogg', 60, 1)

@@ -219,9 +219,7 @@
 		var/damage = rand(M.melee_damage_lower, M.melee_damage_upper)
 		var/dam_zone = pick("chest", "l_hand", "r_hand", "l_leg", "r_leg")
 		var/obj/limb/affecting = get_limb(ran_zone(dam_zone))
-		var/armor = run_armor_check(affecting, ARMOR_MELEE)
-		apply_damage(damage, BRUTE, affecting, armor)
-		if(armor >= 2)	return
+		apply_damage(damage, BRUTE, affecting)
 
 
 /mob/living/carbon/human/proc/implant_loyalty(mob/living/carbon/human/M, override = FALSE) // Won't override by default.

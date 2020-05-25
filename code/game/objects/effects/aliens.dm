@@ -50,8 +50,7 @@
 	var/source_name
 
 	var/stun_duration = 1
-	var/damage_amount = 20
-	var/damage_variance = 3
+	var/damage_amount = 30
 	var/fire_level_to_extinguish = 13
 	
 	var/time_to_live = 10
@@ -96,7 +95,7 @@
 			M.ExtinguishMob()
 			if (ishuman(M))
 				apply_spray(M)
-				M.apply_damage(damage_amount, BURN) // Deal extra damage when first placing ourselves down.
+				M.apply_armoured_damage(damage_amount, ARMOR_BIO, BURN) // Deal extra damage when first placing ourselves down.
 
 			continue
 			
@@ -123,12 +122,12 @@
 		H.KnockDown(stun_duration)
 		H.last_damage_mob = source_mob
 		H.last_damage_source = source_name
-		var/obj/limb/affecting = H.get_limb(pick("l_foot", "r_foot"))
-		if(istype(affecting) && affecting.take_damage(0, rand(damage_amount-damage_variance, damage_amount + damage_variance)))
-			H.UpdateDamageIcon()
+		H.apply_armoured_damage(damage_amount * 0.5, ARMOR_BIO, BURN, "l_foot")
+		H.apply_armoured_damage(damage_amount * 0.5, ARMOR_BIO, BURN, "r_foot")
+		H.UpdateDamageIcon()
 		H.updatehealth()
 	else
-		H.apply_damage(damage_amount*0.33, BURN) //This is ticking damage!
+		H.apply_armoured_damage(damage_amount*0.33, ARMOR_BIO, BURN) //This is ticking damage!
 		to_chat(H, SPAN_DANGER("You are scalded by the burning acid!"))
 
 /obj/effect/xenomorph/spray/process()
@@ -140,24 +139,13 @@
 	for(var/mob/living/carbon/human/H in loc)
 		apply_spray(H)
 
-/obj/effect/xenomorph/spray/weak //Weaker spitter acid spray.
-	name = "weak splatter"
-	desc = "It burns! It burns, but not as much!"
-	icon_state = "acid2-weak"
-
-	stun_duration = 1
-	damage_amount = 25
-	damage_variance = 5
-	fire_level_to_extinguish = 6
-
 /obj/effect/xenomorph/spray/spitter
 	name = "weak splatter"
 	desc = "It burns! It burns, but not as much!"
 	icon_state = "acid2-weak"
 
 	stun_duration = 1
-	damage_amount = 10
-	damage_variance = 2
+	damage_amount = 20
 	fire_level_to_extinguish = 6
 	time_to_live = 6
 
@@ -172,7 +160,7 @@
 	var/should_stun = FALSE
 	for (var/datum/effects/acid/A in H.effects_list)
 		should_stun = TRUE
-		damage += (-1*(A.duration - A.original_duration))*(A.damage_in_total/A.original_duration)
+		damage += (-1*(A.duration - A.original_duration))*(A.damage_in_total_human/A.original_duration)
 		damage += bonus_damage
 
 		qdel(A)
@@ -184,9 +172,9 @@
 		H.KnockDown(stun_duration)
 	H.last_damage_mob = source_mob
 	H.last_damage_source = source_name
-	var/obj/limb/affecting = H.get_limb(pick("l_foot", "r_foot"))
-	if(istype(affecting) && affecting.take_damage(0, rand(damage-damage_variance, damage + damage_variance)))
-		H.UpdateDamageIcon()
+	H.apply_armoured_damage(damage_amount * 0.5, ARMOR_BIO, BURN, "l_foot", 50)
+	H.apply_armoured_damage(damage_amount * 0.5, ARMOR_BIO, BURN, "r_foot", 50)
+	H.UpdateDamageIcon()
 	H.updatehealth()
 
 
@@ -215,12 +203,12 @@
 		H.emote("pain")
 		H.last_damage_mob = source_mob
 		H.last_damage_source = source_name
-		var/obj/limb/affecting = H.get_limb(pick("l_foot", "r_foot"))
-		if(istype(affecting) && affecting.take_damage(0, rand(damage_amount-damage_variance, damage_amount + damage_variance)))
-			H.UpdateDamageIcon()
+		H.apply_armoured_damage(damage_amount * 0.5, ARMOR_BIO, BURN, "l_foot", 50)
+		H.apply_armoured_damage(damage_amount * 0.5, ARMOR_BIO, BURN, "r_foot", 50)
+		H.UpdateDamageIcon()
 		H.updatehealth()
 	else
-		H.apply_damage(damage_amount*0.33, BURN) //This is ticking damage!
+		H.apply_armoured_damage(damage_amount*0.33, ARMOR_BIO, BURN) //This is ticking damage!
 		to_chat(H, SPAN_DANGER("You are scalded by the burning acid!"))
 
 //Medium-strength acid
@@ -313,7 +301,7 @@
 	mouse_opacity = 0
 
 	// Config-ish values
-	var/damage = 15
+	var/damage = 20
 	var/time_before_smoke = 35
 	var/time_before_damage = 25
 	var/smoke_duration = 9
@@ -339,7 +327,7 @@
 		return
 	for (var/mob/living/carbon/human/H in loc)
 		if (!H.stat)
-			H.apply_damage(damage, BURN)
+			H.apply_armoured_damage(damage, ARMOR_BIO, BURN)
 			animation_flash_color(H)
 			to_chat(H, SPAN_XENODANGER("You are scalded by acid as a massive glob explodes nearby!"))
 
@@ -392,7 +380,7 @@
 			continue
 
 		animation_flash_color(H)
-		H.apply_damage(damage, BURN)
+		H.apply_armoured_damage(damage, ARMOR_BIO, BURN)
 		if (message)
 			to_chat(H, SPAN_XENODANGER(message))
 		

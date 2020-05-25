@@ -8,7 +8,7 @@
 	cooldowns = list(100, 95, 90, 85)
 	plasma_cost = 20
 
-	var/direct_hit_damage = 70
+	var/direct_hit_damage = 80
 
 	// Config options
 	distance = 9

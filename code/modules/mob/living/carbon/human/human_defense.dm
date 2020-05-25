@@ -189,7 +189,6 @@ Contains most of the procs that are called when a mob is attacked by something
 		visible_message(SPAN_DANGER("<B>[src] has been attacked in the [hit_area] with [I.name] by [user]!</B>"), null, null, 5)
 
 	var/armor = getarmor(affecting, ARMOR_MELEE)
-	var/armor_block = run_armor_check(affecting, ARMOR_MELEE, "Your armor has protected your [hit_area].", "Your armor has softened hit to your [hit_area].")
 
 	var/weapon_sharp = is_sharp(I)
 	var/weapon_edge = has_edge(I)
@@ -205,7 +204,7 @@ Contains most of the procs that are called when a mob is attacked by something
 		user.flick_attack_overlay(src, "punch")
 
 	var/damage = armor_damage_reduction(config.marine_melee, I.force, armor, (weapon_sharp?30:0) + (weapon_edge?10:0)) // no penetration frm punches
-	apply_damage(damage, I.damtype, affecting, 0, sharp=weapon_sharp, edge=weapon_edge, used_weapon=I)
+	apply_damage(damage, I.damtype, affecting, sharp=weapon_sharp, edge=weapon_edge, used_weapon=I)
 
 	var/bloody = 0
 	if((I.damtype == BRUTE || I.damtype == HALLOSS) && prob(I.force*2 + 25))
@@ -238,7 +237,7 @@ Contains most of the procs that are called when a mob is attacked by something
 
 			if("chest")//Easier to score a stun but lasts less time
 				if(prob((I.force + 10)))
-					apply_effect(6, WEAKEN, armor_block)
+					apply_effect(6, WEAKEN)
 					visible_message(SPAN_DANGER("<B>[src] has been knocked down!</B>"), null, null, 5)
 
 				if(bloody)
@@ -248,7 +247,7 @@ Contains most of the procs that are called when a mob is attacked by something
 	if (I.damtype == BRUTE && !I.is_robot_module() && !(I.flags_item & (NODROP|DELONDROP)))
 		damage = I.force
 		if(damage > 40) damage = 40  //Some sanity, mostly for yautja weapons. CONSTANT STICKY ICKY
-		if (!armor_block && weapon_sharp && prob(3) && !isYautja(user)) // make yautja less likely to get their weapon stuck
+		if (weapon_sharp && prob(3) && !isYautja(user)) // make yautja less likely to get their weapon stuck
 			affecting.embed(I)
 
 	return 1
@@ -309,7 +308,7 @@ Contains most of the procs that are called when a mob is attacked by something
 	var/weapon_edge = has_edge(O)
 
 	var/damage = armor_damage_reduction(config.marine_melee, impact_damage, armor, (weapon_sharp?30:0) + (weapon_edge?10:0))
-	apply_damage(damage, dtype, affecting, 0, sharp=weapon_sharp, edge=weapon_edge, used_weapon=O)
+	apply_damage(damage, dtype, affecting, sharp=weapon_sharp, edge=weapon_edge, used_weapon=O)
 
 	if (damage > 5)
 		last_damage_source = initial(AM.name)

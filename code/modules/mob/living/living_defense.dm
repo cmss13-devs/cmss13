@@ -1,37 +1,4 @@
 
-/*
-	run_armor_check(a,b)
-	args
-	a:def_zone - What part is getting hit, if null will check entire body
-	b:attack_flag - What type of attack, bullet, laser, energy, melee
-
-	Returns
-	0 - no block
-	1 - halfblock
-	2 - fullblock
-*/
-/mob/living/proc/run_armor_check(var/def_zone = null, var/attack_flag = ARMOR_MELEE, var/absorb_text = null, var/soften_text = null)
-	var/armor = getarmor(def_zone, attack_flag)
-	var/absorb = 0
-	if(prob(armor))
-		absorb += 1
-	if(prob(armor))
-		absorb += 1
-	if(absorb >= 2)
-		if(absorb_text)
-			show_message("[absorb_text]")
-		else
-			show_message(SPAN_DANGER("Your armor absorbs the blow!"))
-		return 2
-	if(absorb == 1)
-		if(absorb_text)
-			show_message("[soften_text]")
-		else
-			show_message(SPAN_DANGER("Your armor softens the blow!"))
-		return 1
-	return 0
-
-
 //if null is passed for def_zone, then this should return something appropriate for all zones (e.g. area effect damage)
 /mob/living/proc/getarmor(var/def_zone, var/type)
 	return 0
@@ -47,7 +14,7 @@
 		apply_effect(EYE_BLUR, stun_amount)
 
 	if (agony_amount)
-		apply_damage(agony_amount, HALLOSS, def_zone, 0, used_weapon)
+		apply_damage(agony_amount, HALLOSS, def_zone, used_weapon)
 		apply_effect(STUTTER, agony_amount/10)
 		apply_effect(EYE_BLUR, agony_amount/10)
 
@@ -82,10 +49,7 @@
 		return
 
 	src.visible_message(SPAN_DANGER("[src] has been hit by [O]."), null, null, 5)
-	var/armor = run_armor_check(null, ARMOR_MELEE)
-
-	if(armor < 2)
-		apply_damage(impact_damage, dtype, null, armor, is_sharp(O), has_edge(O), O)
+	apply_damage(impact_damage, dtype, null, is_sharp(O), has_edge(O), O)
 
 	O.throwing = 0		//it hit, so stop moving
 

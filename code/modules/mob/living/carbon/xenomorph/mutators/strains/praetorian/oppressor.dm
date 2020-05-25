@@ -65,5 +65,5 @@
 
 
 	next_slash_buffed = FALSE
-	H.apply_damage(total_bonus_damage, BRUTE)
+	H.apply_armoured_damage(total_bonus_damage, ARMOR_MELEE, BRUTE)
 	return

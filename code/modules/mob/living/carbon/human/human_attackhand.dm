@@ -96,18 +96,17 @@
 
 			var/obj/limb/affecting = get_limb(ran_zone(M.zone_selected))
 			var/armor = getarmor(affecting, ARMOR_MELEE)
-			var/armor_block = run_armor_check(affecting, ARMOR_MELEE)
 
 			playsound(loc, attack.attack_sound, 25, 1)
 
 			visible_message(SPAN_DANGER("[M] [pick(attack.attack_verb)]ed [src]!"), null, null, 5)
 			if(damage >= 5 && prob(50))
 				visible_message(SPAN_DANGER("[M] has weakened [src]!"), null, null, 5)
-				apply_effect(3, WEAKEN, armor_block)
+				apply_effect(3, WEAKEN)
 
 			damage += attack.damage
 			damage = armor_damage_reduction(config.marine_melee, damage, armor, 0) // no penetration frm punches
-			apply_damage(damage, BRUTE, affecting, 0, sharp=attack.sharp, edge=attack.edge)
+			apply_damage(damage, BRUTE, affecting, sharp=attack.sharp, edge=attack.edge)
 
 
 		if("disarm")
@@ -121,7 +120,6 @@
 
 			if(w_uniform)
 				w_uniform.add_fingerprint(M)
-			var/obj/limb/affecting = get_limb(ran_zone(M.zone_selected))
 
 			//Accidental gun discharge
 			if(!skillcheck(M, SKILL_CQC, SKILL_CQC_MP))
@@ -160,7 +158,7 @@
 
 
 			if (randn <= 25)
-				apply_effect(3, WEAKEN, run_armor_check(affecting, ARMOR_MELEE))
+				apply_effect(3, WEAKEN)
 				playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
 				visible_message(SPAN_DANGER("<B>[M] has pushed [src]!</B>"), null, null, 5)
 				return

@@ -29,7 +29,7 @@
 			to_chat(user, SPAN_WARNING("[src] doesn't need repairs."))
 			return
 
-		if(WT.remove_fuel(2, user))
+		if(WT.remove_fuel(1, user))
 			user.visible_message(SPAN_NOTICE("[user] begins repairing damage to [src]."),
 			SPAN_NOTICE("You begin repairing the damage to [src]."))
 			playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
@@ -39,7 +39,7 @@
 				update_health(-100)
 				playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
 			else
-				WT.remove_fuel(-2)
+				WT.remove_fuel(-1)
 		return
 	else if(iswrench(W))
 		if(user.action_busy)

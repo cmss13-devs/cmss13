@@ -303,8 +303,6 @@
 	// We just did a short sleep because of a change, do another to render quickly, but flip the flag back.
 	if (stat_fast_update)
 		stat_fast_update = 0
-		Stat()
-		return 0
 
 	last_statpanel = statpanel
 
@@ -314,10 +312,10 @@
 	if (statpanel != last_statpanel || stat_force_fast_update)
 		stat_fast_update = 1
 		stat_force_fast_update = 0
-		return .
 
-	// Nothing happening, long sleep
-	sleep(20)
+	if(!stat_fast_update)
+		// Nothing happening, long sleep
+		sleep(20)
 	return .
 
 /proc/setup_player_entity(var/ckey)

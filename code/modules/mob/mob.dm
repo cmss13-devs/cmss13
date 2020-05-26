@@ -82,14 +82,6 @@
 			stat(tile_contents)
 			return 0
 
-	if (client.statpanel != "Stats")
-		statpanel("Stats")
-		if (statpanel("Stats"))
-			client.statpanel = "Stats"
-			stat("Time:","[worldtime2text()]")
-		client.stat_force_fast_update = 1
-		return 1
-
 	if (statpanel("Stats"))
 		return 1
 

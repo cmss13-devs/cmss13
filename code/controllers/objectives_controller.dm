@@ -11,6 +11,7 @@ var/global/datum/controller/objectives_controller/objectives_controller
 	var/datum/cm_objective/establish_power/power
 	var/datum/cm_objective/recover_corpses/marines/marines
 	var/datum/cm_objective/recover_corpses/xenos/xenos
+	var/datum/cm_objective/contain/contain
 	var/bonus_admin_points = 0 //bonus points given by admins, doesn't increase the point cap, but does increase points for easier rewards
 
 	var/nextDChatAnnouncement = MINUTES_5 //5 minutes in
@@ -237,6 +238,7 @@ var/global/datum/controller/objectives_controller/objectives_controller
 	objectives_controller.comms = new /datum/cm_objective/communications
 	objectives_controller.marines = new /datum/cm_objective/recover_corpses/marines
 	objectives_controller.xenos = new /datum/cm_objective/recover_corpses/xenos
+	objectives_controller.contain = new /datum/cm_objective/contain
 	//objectives_controller.add_objective(new /datum/cm_objective/minimise_losses/squad_marines)
 	objectives_controller.add_objective(new /datum/cm_objective/recover_corpses/colonists)
 	objectives_controller.active_objectives += objectives_controller.power

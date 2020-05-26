@@ -197,6 +197,18 @@
 			if (F.id == id)
 				targets += F
 
+/obj/structure/machinery/door_display/research_cell/Dispose()
+	//Opening doors and shutters
+	ion_act()
+	..()
+
+/obj/structure/machinery/door_display/research_cell/proc/ion_act()
+	//Open the doors up to let the xenos out
+	//Otherwise there isn't a way to get them out
+	//And they deserve a rampage after being locked up for so long
+	open_shutter(TRUE)
+	open_door(TRUE)
+
 /obj/structure/machinery/door_display/update_icon()
 	return
 
@@ -264,14 +276,14 @@
 
 
 // Opens and locks doors, power check
-/obj/structure/machinery/door_display/research_cell/open_door()
-	if(stat & (NOPOWER|BROKEN))	return 0
+/obj/structure/machinery/door_display/research_cell/open_door(var/force = FALSE)
+	if(stat & (NOPOWER|BROKEN) && !force)	return 0
 
 	for(var/obj/structure/machinery/door/airlock/D in targets)
 		if(!D.density) continue
 		spawn(0)
-			D.unlock()
-			D.open()
+			D.unlock(force)
+			D.open(force)
 
 	return 1
 
@@ -288,8 +300,8 @@
 	return 1
 
 // Opens and locks doors, power check
-/obj/structure/machinery/door_display/research_cell/proc/open_shutter()
-	if(stat & (NOPOWER|BROKEN))	return 0
+/obj/structure/machinery/door_display/research_cell/proc/open_shutter(var/force = FALSE)
+	if(stat & (NOPOWER|BROKEN) && !force)	return 0
 
 	for(var/obj/structure/machinery/door/poddoor/D in targets)
 		if(!D.density) continue

@@ -518,6 +518,11 @@
 
 	open_doors_crashed(turfs_trg) //And now open the doors
 
+
+	for (var/obj/structure/machinery/door_display/research_cell/d in machines)
+		if(d.z == MAIN_SHIP_Z_LEVEL || d.z == LOW_ORBIT_Z_LEVEL)
+			d.ion_act() //Breaking xenos out of containment
+
 	//Stolen from events.dm. WARNING: This code is old as hell
 	for (var/obj/structure/machinery/power/apc/APC in machines)
 		if(APC.z == MAIN_SHIP_Z_LEVEL || APC.z == LOW_ORBIT_Z_LEVEL)

@@ -397,8 +397,8 @@
 			O.organ_data.transplant_data["blood_type"] = target.blood_type
 		else
 			O.organ_data.transplant_data = list()
-			O.organ_data.transplant_data["species"]    = transplant_blood.data["species"]
-			O.organ_data.transplant_data["blood_type"] = transplant_blood.data["blood_type"]
+			O.organ_data.transplant_data["species"]    = transplant_blood.data_properties["species"]
+			O.organ_data.transplant_data["blood_type"] = transplant_blood.data_properties["blood_type"]
 
 		O.organ_data.organ_holder = null
 		O.organ_data.owner = target

@@ -360,11 +360,11 @@ var/list/advance_cures = 	list(
 		if(istype(data) && data["viruses"])
 			for(var/datum/disease/A in data["viruses"])
 				preserve += A.Copy()
-			R.data = data.Copy()
+			R.data_properties = data.Copy()
 		else
-			R.data = data
+			R.data_properties = data
 		if(preserve.len)
-			R.data["viruses"] = preserve
+			R.data_properties["viruses"] = preserve
 
 /proc/AdminCreateVirus(var/mob/user)
 	var/i = 5

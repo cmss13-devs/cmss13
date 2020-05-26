@@ -9,7 +9,8 @@
 	var/description = ""
 	var/datum/reagents/holder = null
 	var/reagent_state = SOLID
-	var/list/data = list("blood_type" = null, "blood_colour" = "#A10808", "viruses" = null, "resistances" = null)
+	var/data = 0 //Scratchpad for random chemicals to do their own thing TODO: unify this somehow?
+	var/list/data_properties = list("blood_type" = null, "blood_colour" = "#A10808", "viruses" = null, "resistances" = null) //mostly for viruses...
 	var/volume = 0
 	var/nutriment_factor = 0
 	var/custom_metabolism = REAGENTS_METABOLISM

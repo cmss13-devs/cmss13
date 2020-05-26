@@ -8,7 +8,7 @@
 	barricade_resistance = 20
 	stack_type = /obj/item/stack/sheet/plasteel
 	debris = list(/obj/item/stack/sheet/plasteel)
-	stack_amount = 15
+	stack_amount = 10
 	destroyed_stack_amount = 5
 	barricade_hitsound = "sound/effects/metalhit.ogg"
 	barricade_type = "plasteel"

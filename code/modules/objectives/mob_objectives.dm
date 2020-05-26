@@ -294,15 +294,45 @@
 	points_per_corpse = 50
 	recovery_area = /area/almayer/medical/containment/cell
 
-/datum/cm_objective/recover_corpses/xenos/proc/add_xeno(var/mob/living/carbon/Xenomorph/X)
+/datum/cm_objective/recover_corpses/xenos/proc/add_xeno(var/mob/living/X)
 	if(!(X in corpses))
 		corpses += X
 
-/datum/cm_objective/recover_corpses/xenos/proc/remove_xeno(var/mob/living/carbon/Xenomorph/X)
+/datum/cm_objective/recover_corpses/xenos/proc/remove_xeno(var/mob/living/X)
 	corpses -= X
 
-/hook/death/proc/handle_xeno_deaths(var/mob/living/carbon/Xenomorph/X, var/gibbed)
+/hook/death/proc/handle_xeno_deaths(var/mob/living/X, var/gibbed)
 	if(!istype(X) || gibbed || !objectives_controller)
 		return 1
-	objectives_controller.xenos.add_xeno(X)
+	if(isXeno(X) || isYautja(X))
+		objectives_controller.xenos.add_xeno(X)
 	return 1
+
+/datum/cm_objective/contain
+	name = "Contain alien specimens"
+	objective_flags = OBJ_DO_NOT_TREE
+	display_flags = OBJ_DISPLAY_AT_END
+	var/points_per_specimen = 75
+	var/area/recovery_area = /area/almayer/medical/containment/cell
+	var/contained_specimen_count = 0
+
+/datum/cm_objective/contain/process()
+	contained_specimen_count = 0
+	for (var/mob/living/carbon/Xenomorph/X in living_xeno_list)
+		if(istype(get_area(X),recovery_area))
+			contained_specimen_count++
+	for(var/mob/living/carbon/human/Y in yautja_mob_list)
+		if(Y.stat == DEAD) continue
+		if(istype(get_area(Y),recovery_area))
+			contained_specimen_count++
+
+/datum/cm_objective/contain/get_point_value()
+	return contained_specimen_count * points_per_specimen
+
+/datum/cm_objective/contain/total_point_value()
+	//This objective is always 100% since tracking it otherwise would be really hard
+	//Plus getting it is hard enough, so why not?
+	return contained_specimen_count * points_per_specimen
+
+/datum/cm_objective/contain/get_completion_status()
+	return "[get_point_value()]pts Contained"

@@ -141,8 +141,8 @@
 	plasma_cost = 50
 
 	// Config
-	var/fling_dist = 3
-	var/windup = 5
+	var/fling_dist = 5
+	var/windup = 3
 
 ////////// Dancer Abilities
 

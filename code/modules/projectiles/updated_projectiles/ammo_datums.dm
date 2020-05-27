@@ -1710,9 +1710,9 @@
 	damage_falloff = config.med_damage_falloff
 	accuracy = config.high_hit_accuracy*3
 	max_range = config.near_shell_range
-	damage = config.lmed_hit_damage
+	damage = config.hlow_hit_damage
 	damage_var_low = config.med_proj_variance
-	damage_var_high = config.high_proj_variance
+	damage_var_high = config.low_proj_variance
 	shell_speed = config.reg_shell_speed
 	added_spit_delay = 0
 

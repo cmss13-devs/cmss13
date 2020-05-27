@@ -34,7 +34,6 @@
 	var/shuttle_id = "Distress" //Empty shuttle ID means we're not using shuttles (aka spawn straight into cryo)
 	var/auto_shuttle_launch = FALSE
 
-
 /datum/game_mode/proc/initialize_emergency_calls()
 	if(all_calls.len) //It's already been set up.
 		return
@@ -51,16 +50,20 @@
 
 //Randomizes and chooses a call datum.
 /datum/game_mode/proc/get_random_call()
-	var/chance = rand(1,100)
 	var/add_prob = 0
 	var/datum/emergency_call/chosen_call
+	var/total_probablity = 0
+
+	//Ensure that if someone messed up the math we still get the good probability
+	for(var/datum/emergency_call/E in all_calls)
+		total_probablity += E.probability
+	var/chance = rand(1, total_probablity)
 
 	for(var/datum/emergency_call/E in all_calls) //Loop through all potential candidates
 		if(chance >= E.probability + add_prob) //Tally up probabilities till we find which one we landed on
 			add_prob += E.probability
 			continue
 		chosen_call = E //Our random chance found one.
-		E.hostility = pick(75;0,25;1)
 		break
 
 	if(!istype(chosen_call))
@@ -153,7 +156,7 @@
 	if(mob_max > 0)
 		ticker.mode.waiting_for_candidates = TRUE
 	show_join_message() //Show our potential candidates the message to let them join.
-	message_admins("Distress beacon: '[name]' activated. Looking for candidates.")
+	message_admins("Distress beacon: '[name]' activated [src.hostility? "[SPAN_WARNING("(THEY ARE HOSTILE)")]":"(they are friendly)"]. Looking for candidates.")
 
 	if(announce)
 		marine_announcement("A distress beacon has been launched from the [MAIN_SHIP_NAME].", "Priority Alert", 'sound/AI/distressbeacon.ogg')
@@ -204,6 +207,12 @@
 			marine_announcement(dispatch_message, "Distress Beacon", 'sound/AI/distressreceived.ogg') //Announcement that the Distress Beacon has been answered, does not hint towards the chosen ERT
 
 		message_admins("Distress beacon: [src.name] finalized, setting up candidates.")
+
+		//Let the deadchat know what's up since they are usually curious
+		for(var/mob/dead/observer/M in player_list)
+			if(M.client)
+				to_chat(M, SPAN_NOTICE("Distress beacon: [src.name] finalized."))
+
 		var/datum/shuttle/ferry/shuttle = shuttle_controller.shuttles[shuttle_id]
 		if(!shuttle || !istype(shuttle))
 			if(shuttle_id) //Cryo distress doesn't have a shuttle

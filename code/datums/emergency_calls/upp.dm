@@ -7,8 +7,9 @@
 	probability = 10
 	shuttle_id = "Distress_UPP"
 	name_of_spawn = "Distress_UPP"
+	hostility = TRUE
 
-	New()
+/datum/emergency_call/upp/New()
 		..()
 		arrival_message = "T*is i* UP* d^sp^*ch`. STr*&e teaM, #*u are cLe*% for a*pr*%^h. Pr*mE a*l wE*p^ns )0r c|*$e @u*r*r$ c0m&*t."
 		objectives = "Eliminate the UA Forces to ensure the UPP prescence in this sector is continued. Listen to your superior officers and take over the [MAIN_SHIP_NAME] at all costs."

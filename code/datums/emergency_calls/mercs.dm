@@ -7,9 +7,14 @@
 	mob_max = 8
 	probability = 25
 
-	New()
-		..()
-		arrival_message = "[MAIN_SHIP_NAME], this is Freelancer shuttle MC-98 responding to your distress call. Prepare for boarding."
+
+/datum/emergency_call/mercs/New()
+	. = ..()
+	hostility = pick(75;FALSE,25;TRUE)
+	arrival_message = "[MAIN_SHIP_NAME], this is Freelancer shuttle MC-98 responding to your distress call. Prepare for boarding."
+	if(hostility)
+		objectives = "Ransack the [MAIN_SHIP_NAME] and kill anyone who gets in your way. Do what your Captain says. Ensure your survival at all costs."
+	else
 		objectives = "Help the crew of the [MAIN_SHIP_NAME] in exchange for payment, and choose your payment well. Do what your Captain says. Ensure your survival at all costs."
 
 /datum/emergency_call/mercs/print_backstory(mob/living/carbon/human/H)
@@ -18,11 +23,11 @@
 	to_chat(H, "<B> Taking up arms as a mercenary, the Freelancers have become a powerful force of order in the system.</b>")
 	to_chat(H, "<B> While they are motivated primarily by money, many colonists see the Freelancers as the main forces of order in Tychon's Rift.</b>")
 	if(hostility)
-		to_chat(H, "<B> Despite this, you have been tasked to ransack the [MAIN_SHIP_NAME] and kill anyone who gets in your way.</b>")
-		to_chat(H, "<B> Any UPP, CLF or WY forces also responding are to be considered neutral parties unless proven hostile.</b>")
+		to_chat(H, SPAN_NOTICE("<B> Despite this, you have been tasked to ransack the [MAIN_SHIP_NAME] and kill anyone who gets in your way.</b>"))
+		to_chat(H, SPAN_NOTICE("<B> Any UPP, CLF or WY forces also responding are to be considered neutral parties unless proven hostile.</b>"))
 	else
-		to_chat(H, "<B> To this end, you have been contacted by Weston-Yamada of the USCSS Royce to assist the [MAIN_SHIP_NAME]..</b>")
-		to_chat(H, "<B> Ensure they are not destroyed.</b>")
+		to_chat(H, SPAN_NOTICE("<B> To this end, you have been contacted by Weston-Yamada of the USCSS Royce to assist the [MAIN_SHIP_NAME]..</b>"))
+		to_chat(H, SPAN_NOTICE("<B> Ensure they are not destroyed.</b>"))
 
 /datum/emergency_call/mercs/create_member(datum/mind/M)
 	set waitfor = 0
@@ -54,7 +59,7 @@
 	print_backstory(H)
 
 	sleep(10)
-	to_chat(H, "<B>Objectives:</b> [objectives]")
+	to_chat(H, SPAN_NOTICE("<B>Objectives:</b> [objectives]"))
 
 
 

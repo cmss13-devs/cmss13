@@ -7,6 +7,7 @@
 	arrival_message = "Intercepted Transmission: 'What shall we do with a drunken sailor? What shall we do with a drunken sailor? What shall we do with a drunken sailor early in the morning?'"
 	objectives = "Pirate! Loot! Ransom!"
 	probability = 0
+	hostility = TRUE
 
 /datum/emergency_call/pirates/create_member(datum/mind/M)
 	set waitfor = 0

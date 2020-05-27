@@ -8,6 +8,7 @@
 	arrival_message = "Intercepted Transmission: 'Deus le volt. Deus le volt! DEUS LE VOLT!!'"
 	objectives = "Clense the place of all that is unholy! Die in glory!"
 	probability = 0
+	hostility = TRUE
 
 /datum/emergency_call/deus_vult/create_member(datum/mind/M)
 	set waitfor = 0

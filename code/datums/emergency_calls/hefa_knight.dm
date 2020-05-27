@@ -6,6 +6,7 @@
 	arrival_message = "Intercepted Transmission: 'Prepaerth to surrender thine HEFAs unto the order!'"
 	objectives = "You are a Brother of the Order of HEFA! You and your fellow brothers must retrieve as many HEFAs as possible!"
 	probability = 0
+	hostility = TRUE
 
 /datum/emergency_call/hefa_knight/create_member(datum/mind/M)
 	set waitfor = 0

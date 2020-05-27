@@ -170,6 +170,12 @@
 	for(var/mob/M in viewers(view_dist, src))
 		M.show_message(message, 1, blind_message, 2, message_flags)
 
+/atom/proc/ranged_message(message, blind_message, max_distance, message_flags = CHAT_TYPE_OTHER)
+	var/view_dist = 7
+	if(max_distance) view_dist = max_distance
+	for(var/mob/M in orange(view_dist, src))
+		M.show_message(message, 1, blind_message, 2, message_flags)
+
 
 /mob/proc/findname(msg)
 	for(var/mob/M in mob_list)

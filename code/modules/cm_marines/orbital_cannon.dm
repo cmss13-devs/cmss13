@@ -220,11 +220,11 @@ var/list/ob_type_fuel_requirements
 	var/cancellation_token = rand(0,32000)
 	message_staff(FONT_SIZE_XL("<A HREF='?_src_=admin_holder;admincancelob=1;cancellation=[cancellation_token]'>CLICK TO CANCEL THIS OB</a>"))
 	orbital_cannon_cancellation["[cancellation_token]"] = src
-	target.visible_message(SPAN_HIGHDANGER("The sky erupts into flames!"), SPAN_HIGHDANGER("You hear a very loud sound coming from above!"), 30)
+	target.ranged_message(SPAN_HIGHDANGER("The sky erupts into flames!"), SPAN_HIGHDANGER("You hear a very loud sound coming from above!"), 30)
 	sleep(OB_TRAVEL_TIMING/3)
-	target.visible_message(SPAN_HIGHDANGER("The sky roars louder!"), SPAN_HIGHDANGER("The sound becomes louder!"), 25)
+	target.ranged_message(SPAN_HIGHDANGER("The sky roars louder!"), SPAN_HIGHDANGER("The sound becomes louder!"), 25)
 	sleep(OB_TRAVEL_TIMING/3)
-	target.visible_message(SPAN_HIGHDANGER("OH GOD THE SKY WILL EXPLODE!!!"), SPAN_HIGHDANGER("YOU SHOULDN'T BE HERE!"), 15)
+	target.ranged_message(SPAN_HIGHDANGER("OH GOD THE SKY WILL EXPLODE!!!"), SPAN_HIGHDANGER("YOU SHOULDN'T BE HERE!"), 15)
 	sleep(OB_TRAVEL_TIMING/3)
 	if(orbital_cannon_cancellation["[cancellation_token]"]) // the cancelling notification is in the topic		
 		target.ceiling_debris_check(5)

@@ -64,6 +64,52 @@
 		</td>
 	</tr>
 </table>
+			<h2 class="date">27 May 2020</h2>
+			<h3 class="author">Neth updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="tweak">metal barricade repair fuel cost 2 -> 1</li>
+				<li class="tweak">plasteel barricade repair fuel cost 5 -> 1</li>
+				<li class="tweak">folding barricade repair fuel cost 2 -> 1</li>
+				<li class="tweak">Acid now deal DOT damage to barricades once per 5 seconds for 50 seconds (10 procs). After that acid is removed and barricade stands (if it still has health)</li>
+				<li class="tweak">medium acid - 40 damage per 5 seconds per stack - 400 damage total</li>
+				<li class="tweak">strong acid - 100 damage per 5 seconds per stack - 1000 damage total</li>
+				<li class="tweak">Added variables so that admins can customize OB warheads more easily</li>
+				<li class="tweak">Green blinking laser will appear 1 second before OB strike, so you can say "OH FUCK" before you get gibbed</li>
+				<li class="tweak">Incendiary and HE Warheads will clear impact location with immense damage in radius 2. Whatever is there will get gibbed</li>
+				<li class="tweak">HE Warhead now spawns two waves (effectively doubling the damage) in the same radius with small delay between waves</li>
+				<li class="tweak">HE Warhead will try to find open terrain in radius 2 from impact to prevent bad hits into cave walls</li>
+				<li class="tweak">Incendiary Warhead radius buffed from 12 to 18</li>
+				<li class="tweak">Cluster OB now bombards in radius 12 for 30 seconds, firing 6 bombs every second</li>
+			</ul>
+			<h3 class="author">ThePiachu updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Fixed a runtime error with chemistry holders mixing some odd chemicals.</li>
+				<li class="bugfix">Fixed a CPU hog issue caused by Stat() proc being called a bit too often when not needed.</li>
+				<li class="rscadd">Added a new objective - alien containment. Works like retrieving xeno corpses, but for living aliens. Put them in your containment cell, keep them alive and they will be worth more points than corpses!</li>
+				<li class="tweak">Yautja now also count for containment and corpse retrieval. Happy hunting!</li>
+				<li class="tweak">On the flip side, the research containment will now open if the related terminal gets destroyed, or in an event of a dropship crash. This is to let xenos in containment be rescued without admin intervention, as well as give contained players an opportunity for revenge. .</li>
+				<li class="bugfix">Fixed a wrong var being passed to an admin function.</li>
+				<li class="bugfix">Fixed a runtime error around addiction.</li>
+				<li class="tweak">Changed DEFCON level accounting to a controller type for easier debugging.</li>
+				<li class="tweak">Added a description for synth smartpack recharging method (use grab intent on an APC to recharge your smartpack. I bet you were today years old when you learned you could've been doing that since November).</li>
+				<li class="tweak">Paper scraps with a safe clue get renamed properly</li>
+				<li class="spellcheck">Disks are now 'bloodied', instead of 'bloddied'.</li>
+			</ul>
+			<h3 class="author">Vampmare updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="tweak">All xeno abilities now consider marine armour when attacking. Even acid, which will consider the acid resistance of the armour. This will result in xenos doing less damage than before for the initial stage, but it will be rebalanced over time.</li>
+				<li class="tweak">Adjusted most ability damage values slightly to compensate for the armour.</li>
+				<li class="tweak">Removed the RNG chance of marine armour blocking attacks.</li>
+				<li class="tweak">Berserker Eviscarate and Vanguard Pierce now ignores 20% of the target armour and Dancer Impale ignores 10%.</li>
+				<li class="tweak">Heavy armour no longer cover feet and hands.</li>
+				<li class="bugfix">Fixed Spitter acid spit not applying DoT to barricades.</li>
+				<li class="tweak">Upped Spitter DoT barricade damage slightly.</li>
+				<li class="tweak">Decreased Prae acid spit damage.</li>
+				<li class="tweak">Decreased Spitter acid DoT damage. Increased duration of Spitter acid DoT.</li>
+				<li class="tweak">Decreased acid spray damage slightly across the board when standing up.</li>
+				<li class="tweak">Lowered Oppressor Tail Lash windup. It now has a telegraph. Increased throw range to 5 tiles.</li>
+			</ul>
+
 			<h2 class="date">24 May 2020</h2>
 			<h3 class="author">Neth updated:</h3>
 			<ul class="changes bgimages16">

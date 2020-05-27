@@ -278,8 +278,43 @@
 	if (!check_and_use_plasma_owner())
 		return
 
+	// Transient turf list
+	var/list/target_turfs = list()
+	var/list/temp_turfs = list()
+	var/list/telegraph_atom_list = list()
+
+	// Code to get a 2x3 area of turfs
+	var/facing = get_dir(X, A)
+	var/turf/infront = get_step(get_turf(X), facing)
+	var/turf/infront_left = get_step(infront, turn(facing, 90))
+	var/turf/infront_right = get_step(infront, turn(facing, -90))
+	temp_turfs += infront
+	temp_turfs += infront_left
+	temp_turfs += infront_right
+
+	for(var/turf/T in temp_turfs)
+		if (!istype(T))
+			continue 
+
+		if (T.density)
+			continue 
+
+		target_turfs += T
+		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/brown(T, windup)
+
+		var/turf/next_turf = get_step(T, facing)
+		if (!istype(next_turf) || next_turf.density)
+			continue
+
+		target_turfs += next_turf
+		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/brown(next_turf, windup)
+
 	if(!do_after(X, windup, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 		to_chat(X, SPAN_XENOWARNING("You cancel your tail lash."))
+
+		for(var/obj/effect/xenomorph/xeno_telegraph/XT in telegraph_atom_list)
+			telegraph_atom_list -= XT
+			qdel(XT)
 		return
 
 	if (!action_cooldown_check())
@@ -288,34 +323,8 @@
 	apply_cooldown()
 
 	X.visible_message(SPAN_XENODANGER("[X] lashes its tail furiously, hitting everything in front of it!"), SPAN_XENODANGER("You lash your tail furiously, hitting everything in front of you!"))
-	
-	// Transient turf list
-	var/list/target_turfs = list()
-
-	// Code to get a 2x3 area of turfs
-	var/facing = get_dir(X, A)
-	var/turf/infront = get_step(get_turf(X), facing)
-	target_turfs += infront
-	target_turfs += get_step(infront, turn(facing, 90))
-	target_turfs += get_step(infront, turn(facing, -90))
 
 	for (var/turf/T in target_turfs)
-		if (!istype(T))
-			continue 
-
-		if (T.density)
-			continue 
-
-		var/turf/next_turf = get_step(T, facing)
-		if (!istype(next_turf) || next_turf.density)
-			continue
-		
-		for (var/mob/living/carbon/human/H in next_turf)
-			if (H.stat == DEAD)
-				continue 
-
-			xeno_throw_human(H, X, facing, fling_dist)
-	
 		for (var/mob/living/carbon/human/H in T)
 			if (H.stat == DEAD)
 				continue 

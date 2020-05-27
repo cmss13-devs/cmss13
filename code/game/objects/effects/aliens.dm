@@ -122,8 +122,8 @@
 		H.KnockDown(stun_duration)
 		H.last_damage_mob = source_mob
 		H.last_damage_source = source_name
-		H.apply_armoured_damage(damage_amount * 0.5, ARMOR_BIO, BURN, "l_foot")
-		H.apply_armoured_damage(damage_amount * 0.5, ARMOR_BIO, BURN, "r_foot")
+		H.apply_armoured_damage(damage_amount * 0.4, ARMOR_BIO, BURN, "l_foot")
+		H.apply_armoured_damage(damage_amount * 0.4, ARMOR_BIO, BURN, "r_foot")
 		H.UpdateDamageIcon()
 		H.updatehealth()
 	else

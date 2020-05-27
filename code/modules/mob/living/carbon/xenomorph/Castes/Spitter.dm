@@ -90,7 +90,7 @@
 	var/dot_cooldown_duration = 120 // every 12 seconds
 
 /datum/behavior_delegate/spitter_base/ranged_attack_additional_effects_target(atom/A)
-	if (istype(A, /mob/living/carbon/human))
+	if (ishuman(A))
 		var/mob/living/carbon/human/H = A
 		if (H.stat == DEAD)
 			return
@@ -102,13 +102,12 @@
 	dot_cooldown_atoms += A
 	add_timer(CALLBACK(src, .proc/dot_cooldown_up, A), dot_cooldown_duration)
 	
-	if (isobj(A) || ismob(A))
-		new /datum/effects/acid(A, bound_xeno, initial(bound_xeno.caste_name))
+	new /datum/effects/acid(A, bound_xeno, initial(bound_xeno.caste_name))
 
-		if (ismob(A))
-			var/datum/action/xeno_action/onclick/spitter_frenzy/SFA = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/onclick/spitter_frenzy)
-			if (istype(SFA) && !SFA.action_cooldown_check())
-				SFA.end_cooldown()
+	if (ismob(A))
+		var/datum/action/xeno_action/onclick/spitter_frenzy/SFA = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/onclick/spitter_frenzy)
+		if (istype(SFA) && !SFA.action_cooldown_check())
+			SFA.end_cooldown()
 
 /datum/behavior_delegate/spitter_base/proc/dot_cooldown_up(var/atom/A)
 	if (A != null && !disposed)

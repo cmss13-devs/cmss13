@@ -332,6 +332,14 @@
 	if( hit_chance ) // Calculated from combination of both ammo accuracy and gun accuracy
 		var/ammo_flags = ammo.flags_ammo_behavior | projectile_override_flags
 
+		// If we are a xeno shooting something
+		if (istype(ammo, /datum/ammo/xeno) && isXeno(firer))
+			var/mob/living/carbon/Xenomorph/X = firer
+			if (X.behavior_delegate)
+				var/datum/behavior_delegate/MD = X.behavior_delegate
+				MD.ranged_attack_additional_effects_target(O)
+				MD.ranged_attack_additional_effects_self()
+
 		// If the ammo should hit the surface of the target and there is an object blocking
 		// The current turf is the "surface" of the target
 		if(ammo_flags & AMMO_STRIKES_SURFACE)

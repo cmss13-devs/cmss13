@@ -32,8 +32,8 @@
 /proc/Centcomm_announce(var/text , var/mob/Sender , var/iamessage)
 	var/msg = copytext(sanitize(text), 1, MAX_MESSAGE_LEN)
 	msg = "<b>[SPAN_NOTICE("<font color=orange>USCM[iamessage ?  "IA" : ""]:</font>")][key_name(Sender, 1)] (<A HREF='?_src_=admin_holder;ccmark=\ref[Sender]'>Mark</A>) (<A HREF='?_src_=admin_holder;ahelp=adminplayeropts;extra=\ref[Sender]'>PP</A>) (<A HREF='?_src_=vars;Vars=\ref[Sender]'>VV</A>) (<A HREF='?_src_=admin_holder;subtlemessage=\ref[Sender]'>SM</A>) (<A HREF='?_src_=admin_holder;adminplayerobservejump=\ref[Sender]'>JMP</A>) (<A HREF='?_src_=admin_holder;BlueSpaceArtillery=\ref[Sender]'>BSA</A>) (<A HREF='?_src_=admin_holder;CentcommReply=\ref[Sender]'>RPLY</A>):</b> [msg]"
+	log_admin(msg)
 	for(var/client/C in admins)
-		log_admin(msg)
 		if((R_ADMIN|R_MOD) & C.admin_holder.rights)
 			to_chat(C, msg)
 			C << 'sound/effects/sos-morse-code.ogg'

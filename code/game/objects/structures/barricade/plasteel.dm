@@ -53,11 +53,6 @@
 			to_chat(user, SPAN_INFO("The protection panel has been removed and the anchor bolts loosened. It's ready to be taken apart."))
 
 /obj/structure/barricade/plasteel/attackby(obj/item/W, mob/user)
-	for(var/obj/effect/xenomorph/acid/A in src.loc)
-		if(A.acid_t == src)
-			to_chat(user, "You can't get near that, it's melting!")
-			return
-
 	if(iswelder(W))
 		if(busy || tool_cooldown > world.time)
 			return
@@ -89,6 +84,11 @@
 				busy = 0
 				WT.remove_fuel(-1)
 		return
+
+	for(var/obj/effect/xenomorph/acid/A in src.loc)
+		if(A.acid_t == src)
+			to_chat(user, "You can't get near that, it's melting!")
+			return
 
 	switch(build_state)
 		if(2) //Fully constructed step. Use screwdriver to remove the protection panels to reveal the bolts

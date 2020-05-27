@@ -36,11 +36,6 @@
 			to_chat(user, SPAN_NOTICE("The cade is protected by an explosive upgrade."))
 
 /obj/structure/barricade/metal/attackby(obj/item/W, mob/user)
-	for(var/obj/effect/xenomorph/acid/A in src.loc)
-		if(A.acid_t == src)
-			to_chat(user, "You can't get near that, it's melting!")
-			return
-
 	if(iswelder(W))
 		if(user.action_busy)
 			return
@@ -69,6 +64,11 @@
 			else
 				WT.remove_fuel(-1)
 		return
+
+	for(var/obj/effect/xenomorph/acid/A in src.loc)
+		if(A.acid_t == src)
+			to_chat(user, "You can't get near that, it's melting!")
+			return
 
 	switch(build_state)
 		if(BARRICADE_BSTATE_SECURED) //Fully constructed step. Use screwdriver to remove the protection panels to reveal the bolts

@@ -386,26 +386,60 @@ var/list/ob_type_fuel_requirements
 	name = "\improper HE orbital warhead"
 	warhead_kind = "explosive"
 	icon_state = "ob_warhead_1"
+	var/clear_power = 1200
+	var/clear_falloff = 400
+	var/standard_power = 600
+	var/standard_falloff = 30
+	var/clear_delay = 3
+	var/double_explosion_delay = 6
 
 /obj/structure/ob_ammo/warhead/explosive/warhead_impact(turf/target, inaccuracy_amt = 0)
-	cell_explosion(target, 600, 30, null, initial(name), source_mob) //massive boom
-
-
+	new /obj/effect/overlay/temp/blinking_laser (target)
+	sleep(10)
+	cell_explosion(target, clear_power, clear_falloff, null, initial(name), source_mob) //break shit around
+	sleep(clear_delay)
+	//ACTUALLY BLOW SHIT UP
+	if(!target.density)
+		cell_explosion(target, standard_power, standard_falloff, null, initial(name), source_mob)
+		sleep(double_explosion_delay)
+		cell_explosion(target, standard_power, standard_falloff, null, initial(name), source_mob)
+		return
+	
+	for(var/turf/T in range(2, target))
+		if(!T.density)
+			cell_explosion(target, standard_power, standard_falloff, null, initial(name), source_mob)
+			sleep(double_explosion_delay)
+			cell_explosion(target, standard_power, standard_falloff, null, initial(name), source_mob)
+			return
 
 /obj/structure/ob_ammo/warhead/incendiary
 	name = "\improper Incendiary orbital warhead"
 	warhead_kind = "incendiary"
 	icon_state = "ob_warhead_2"
+	var/clear_power = 1200
+	var/clear_falloff = 400
+	var/clear_delay = 3
+	var/distance = 18
+	var/fire_level = 70
+	var/burn_level = 80
+	var/fire_color = "white"
 
 /obj/structure/ob_ammo/warhead/incendiary/warhead_impact(turf/target, inaccuracy_amt = 0)
-	fire_spread(target, initial(name), source_mob, 12, 70, 85, "blue")
+	new /obj/effect/overlay/temp/blinking_laser (target)
+	sleep(10)
+	cell_explosion(target, clear_power, clear_falloff, null, initial(name), source_mob) //break shit around
+	sleep(clear_delay)
+	fire_spread(target, initial(name), source_mob, distance, fire_level, burn_level, fire_color)
 
 
 /obj/structure/ob_ammo/warhead/cluster
 	name = "\improper Cluster orbital warhead"
 	warhead_kind = "cluster"
 	icon_state = "ob_warhead_3"
-	var/total_amount = 25 
+	var/total_amount = 60
+	var/instant_amount = 3
+	var/explosion_power = 300
+	var/explosion_falloff = 150
 
 /obj/structure/ob_ammo/warhead/cluster/warhead_impact(turf/target, inaccuracy_amt = 0)
 	set waitfor = 0
@@ -415,11 +449,16 @@ var/list/ob_type_fuel_requirements
 	for(var/turf/T in range(range_num,target))
 		turf_list += T
 	for(var/i = 1 to total_amount)
-		var/turf/U = pick_n_take(turf_list)
-		playsound(U, 'sound/weapons/gun_flare.ogg', 50, 1)
-		sleep(pick(3,5,7))
-		cell_explosion(U, 300, 150, null, initial(name), source_mob) //rocket barrage
+		for(var/k = 1 to instant_amount)
+			var/turf/U = pick(turf_list)
+			fire_in_a_hole(U)
+		sleep(5)
 
+/obj/structure/ob_ammo/warhead/cluster/proc/fire_in_a_hole(var/turf/loc)
+	set waitfor = 0
+	new /obj/effect/overlay/temp/blinking_laser (loc)
+	sleep(10)
+	cell_explosion(loc, explosion_power, explosion_falloff, null, initial(name), source_mob)
 
 
 /obj/structure/ob_ammo/ob_fuel

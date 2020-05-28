@@ -37569,10 +37569,6 @@
 /obj/item/trash/syndi_cakes,
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/disposals)
-"caz" = (
-/obj/item/ectoplasm,
-/turf/open/floor/plating,
-/area/desert_dam/interior/dam_interior/disposals)
 "caB" = (
 /turf/open/asphalt/cement{
 	icon_state = "cement3"
@@ -78407,7 +78403,7 @@ bXS
 bYy
 bYY
 bZR
-caz
+ccy
 cbe
 cbO
 ccy

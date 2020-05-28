@@ -25,6 +25,7 @@
 	var/muzzle_flash_lum = 3 //muzzle flash brightness
 
 	var/fire_sound 		= 'sound/weapons/Gunshot.ogg'
+	var/fire_rattle		= null //Does our gun have a unique empty mag sound? If so use instead of pitch shifting.
 	var/unload_sound 	= 'sound/weapons/flipblade.ogg'
 	var/empty_sound 	= 'sound/weapons/smg_empty_alarm.ogg'
 	var/reload_sound 	= null					//We don't want these for guns that don't have them.
@@ -1077,7 +1078,6 @@ and you're good to go.
 		if(isliving(user)) projectile_to_fire.def_zone = user.zone_selected
 		//Guns with low ammo have their firing sound
 		var/firing_sndfreq = (current_mag && (current_mag.current_rounds / current_mag.max_rounds) > GUN_LOW_AMMO_PERCENTAGE) ? FALSE : SOUND_FREQ_HIGH
-
 		//firing from an attachment
 		if(active_attachable && active_attachable.flags_attach_features & ATTACH_PROJECTILE)
 			if(active_attachable.fire_sound) //If we're firing from an attachment, use that noise instead.
@@ -1086,8 +1086,11 @@ and you're good to go.
 			if(current_mag && flags_gun_features & GUN_AMMO_COUNTER && bullets_fired == 1)
 				to_chat(user, SPAN_DANGER("[current_mag.current_rounds] / [current_mag.max_rounds] ROUNDS REMAINING"))
 			if(!(flags_gun_features & GUN_SILENCED))
-				playsound(user, actual_sound, 60, firing_sndfreq)
-			else
+				if (firing_sndfreq && fire_rattle)
+					playsound(user, fire_rattle, 60, FALSE)//if the gun has a unique 'mag rattle' SFX play that instead of pitch shifting.
+				else
+					playsound(user, actual_sound, 60, firing_sndfreq)
+			else 
 				playsound(user, actual_sound, 25, firing_sndfreq)
 
 	return 1

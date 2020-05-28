@@ -211,12 +211,6 @@
 	)
 	result = /obj/item/reagent_container/food/snacks/tofuburger
 
-/datum/recipe/ghostburger
-	items = list(
-		/obj/item/reagent_container/food/snacks/bun,
-		/obj/item/ectoplasm //where do you even find this stuff
-	)
-	result = /obj/item/reagent_container/food/snacks/ghostburger
 
 /datum/recipe/clownburger
 	items = list(

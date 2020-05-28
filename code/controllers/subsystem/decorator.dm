@@ -27,6 +27,9 @@ var/datum/subsystem/decorator/SSdecorator
 	registered_decorators = list()
 	active_decorators = list()
 
+	NEW_SS_GLOBAL(SSdecorator)
+
+/datum/subsystem/decorator/Initialize()	
 	var/list/all_decors = typesof(/datum/decorator) - list(/datum/decorator) - typesof(/datum/decorator/manual)
 	for(var/decor_type in all_decors)
 		var/datum/decorator/decor = new decor_type()
@@ -44,9 +47,6 @@ var/datum/subsystem/decorator/SSdecorator
 	for(var/i in registered_decorators)		
 		registered_decorators[i] = sortDecorators(registered_decorators[i])
 
-	NEW_SS_GLOBAL(SSdecorator)
-
-/datum/subsystem/decorator/Initialize()	
 	for(var/atom/object in world)
 		object.Decorate()
 		CHECK_TICK

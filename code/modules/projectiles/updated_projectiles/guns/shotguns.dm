@@ -12,7 +12,8 @@ can cause issues with ammo types getting mixed up during the burst.
 	fire_sound = 'sound/weapons/gun_shotgun.ogg'
 	reload_sound = 'sound/weapons/gun_shotgun_shell_insert.ogg'
 	cocked_sound = 'sound/weapons/gun_shotgun_reload.ogg'
-	var/opened_sound = 'sound/weapons/gun_shotgun_open2.ogg'
+	var/break_sound = 'sound/weapons/handling/gun_mou_open.ogg'
+	var/seal_sound = 'sound/weapons/handling/gun_mou_close.ogg'
 	accuracy_mult = 1.15
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG
 	aim_slowdown = SLOWDOWN_ADS_SHOTGUN
@@ -268,6 +269,8 @@ can cause issues with ammo types getting mixed up during the burst.
 
 	current_mag = /obj/item/ammo_magazine/internal/shotgun/double
 	fire_sound = 'sound/weapons/gun_shotgun_heavy.ogg'
+	break_sound = 'sound/weapons/handling/gun_mou_open.ogg'
+	seal_sound = 'sound/weapons/handling/gun_mou_close.ogg'//replace w/ uniques
 	cocked_sound = null //We don't want this.
 	attachable_allowed = list(
 						/obj/item/attachable/bayonet,
@@ -375,7 +378,12 @@ can cause issues with ammo types getting mixed up during the burst.
 		return
 	current_mag.chamber_closed = !current_mag.chamber_closed
 	update_icon()
-	playsound(user, reload_sound, 25, 1) //replace me with unique break open sound!
+
+	if (current_mag.chamber_closed)
+		playsound(user, break_sound, 25, 1)
+	else
+		playsound(user, seal_sound, 25, 1)
+	
 
 /obj/item/weapon/gun/shotgun/double/sawn
 	name = "sawn-off shotgun"
@@ -410,6 +418,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	var/max_rounds = 3
 	var/current_rounds = 0
 	fire_sound = 'sound/weapons/gun_mou53.ogg'
+	reload_sound = 'sound/weapons/handling/gun_mou_reload.ogg'//unique shell insert
 	flags_equip_slot = SLOT_BACK
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG
 	current_mag = /obj/item/ammo_magazine/internal/shotgun/double/mou53 //Take care, she comes loaded!
@@ -427,13 +436,10 @@ can cause issues with ammo types getting mixed up during the burst.
 						/obj/item/attachable/gyro,
 						/obj/item/attachable/lasersight,
 						/obj/item/attachable/stock/mou53)
-
-/obj/item/weapon/gun/shotgun/double/mou53/New()
-	select_gamemode_skin(/obj/item/weapon/gun/shotgun/double/mou53)
-	..()
+	map_specific_decoration = TRUE
 
 /obj/item/weapon/gun/shotgun/double/mou53/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18,"rail_x" = 11, "rail_y" = 22, "under_x" = 17, "under_y" = 15, "stock_x" = 10, "stock_y" = 9) //Weird stock values, make sure any new stock matches the old sprite placement in the .dmi
+	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18,"rail_x" = 11, "rail_y" = 21, "under_x" = 17, "under_y" = 15, "stock_x" = 10, "stock_y" = 9) //Weird stock values, make sure any new stock matches the old sprite placement in the .dmi
 
 
 /obj/item/weapon/gun/shotgun/double/mou53/set_gun_config_values()
@@ -488,15 +494,15 @@ can cause issues with ammo types getting mixed up during the burst.
 						/obj/item/attachable/magnetic_harness,
 						/obj/item/attachable/attached_gun/flamer,
 						/obj/item/attachable/stock/shotgun)
+	map_specific_decoration = TRUE
 
 /obj/item/weapon/gun/shotgun/pump/New()
-	select_gamemode_skin(/obj/item/weapon/gun/shotgun/pump)
 	..()
 	pump_delay = config.max_fire_delay*2
 
 
 /obj/item/weapon/gun/shotgun/pump/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18,"rail_x" = 10, "rail_y" = 21, "under_x" = 20, "under_y" = 14, "stock_x" = 20, "stock_y" = 14)
+	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18,"rail_x" = 10, "rail_y" = 20, "under_x" = 20, "under_y" = 14, "stock_x" = 20, "stock_y" = 14)
 
 
 /obj/item/weapon/gun/shotgun/pump/set_gun_config_values()
@@ -590,6 +596,7 @@ can cause issues with ammo types getting mixed up during the burst.
 						/obj/item/attachable/scope/mini,
 						/obj/item/attachable/magnetic_harness,
 						/obj/item/attachable/attached_gun/flamer)
+	map_specific_decoration = FALSE
 
 
 /obj/item/weapon/gun/shotgun/pump/cmb/New()

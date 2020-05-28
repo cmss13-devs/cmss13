@@ -298,7 +298,7 @@
 	var/folded = FALSE // Used for the stock attachment, to check if we can shoot or not
 
 /obj/item/weapon/gun/revolver/m44/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 27, "muzzle_y" = 21,"rail_x" = 12, "rail_y" = 23, "under_x" = 21, "under_y" = 18, "stock_x" = 16, "stock_y" = 20)
+	attachable_offset = list("muzzle_x" = 29, "muzzle_y" = 21,"rail_x" = 12, "rail_y" = 23, "under_x" = 21, "under_y" = 18, "stock_x" = 16, "stock_y" = 20)
 
 /obj/item/weapon/gun/revolver/m44/set_gun_config_values()
 	..()
@@ -318,6 +318,23 @@
 		return 0
 	else
 		return ..()
+	
+/obj/item/weapon/gun/revolver/m44/custom//accuracy and damage bonus
+	name = "\improper M44 custom combat revolver"
+	desc = "A bulky revolver, occasionally carried by assault troops and officers in the Colonial Marines, as well civilian law enforcement. Fires .44 Magnum rounds."
+	icon_state = "m44rc"
+	item_state = "m44rc"
+
+/obj/item/weapon/gun/revolver/m44/custom/set_gun_config_values()
+	..()
+	fire_delay = config.mhigh_fire_delay
+	accuracy_mult = config.base_hit_accuracy_mult
+	accuracy_mult_unwielded = config.base_hit_accuracy_mult - config.med_hit_accuracy_mult
+	scatter = config.low_scatter_value
+	scatter_unwielded = config.high_scatter_value
+	damage_mult = config.base_hit_damage_mult + config.low_hit_damage_mult
+	recoil = config.min_recoil_value
+	recoil_unwielded = config.med_recoil_value
 
 //-------------------------------------------------------
 //RUSSIAN REVOLVER //Based on the 7.62mm Russian revolvers.
@@ -489,11 +506,8 @@
 	name = "\improper Mateba autorevolver special"
 	desc = "The Mateba is a powerful, fast-firing revolver that uses its own recoil to rotate the cylinders. It uses heavy .454 rounds. This version is a limited edition produced for the USCM, and issued in extremely small amounts. Was a mail-order item back in 2172, and is highly sought after by officers across many different battalions. This one is stamped 'Major Ike Saker, 7th 'Falling Falcons' Battalion.'"
 	icon_state = "cmateba"
-	item_state = "cmateba"
-
-/obj/item/weapon/gun/revolver/mateba/cmateba/New()
-	select_gamemode_skin(/obj/item/weapon/gun/revolver/mateba/cmateba)
-	..()
+	item_state = "cmateba"	
+	map_specific_decoration = TRUE
 
 //-------------------------------------------------------
 //MARSHALS REVOLVER //Spearhead exists in Alien cannon.

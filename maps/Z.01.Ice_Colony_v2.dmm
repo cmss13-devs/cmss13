@@ -8942,7 +8942,6 @@
 /turf/open/floor/plating,
 /area/ice_colony/surface/disposals)
 "axg" = (
-/obj/item/ectoplasm,
 /turf/open/floor/plating,
 /area/ice_colony/surface/disposals)
 "axh" = (
@@ -37350,16 +37349,6 @@
 	dir = 1
 	},
 /area/ice_colony/underground/crew/disposals)
-"bQq" = (
-/obj/item/ectoplasm,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/turf/open/floor/plating{
-	icon_state = "warnplate";
-	dir = 1
-	},
-/area/ice_colony/underground/crew/disposals)
 "bQr" = (
 /obj/structure/machinery/door/window/northright{
 	name = "Disposals Chute"
@@ -58566,7 +58555,7 @@ bNY
 bOH
 bPd
 bPM
-bQq
+bQp
 bQU
 bNt
 bRJ

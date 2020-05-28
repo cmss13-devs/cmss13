@@ -130,12 +130,6 @@
 	
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 
-/obj/item/tool/kitchen/knife/ritual
-	name = "ritual knife"
-	desc = "The unearthly energies that once powered this blade are now dormant."
-	icon = 'icons/obj/items/wizard.dmi'
-	icon_state = "render"
-
 /*
  * Bucher's cleaver
  */

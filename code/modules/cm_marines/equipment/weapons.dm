@@ -39,7 +39,6 @@
 	var/reloading = 0
 
 /obj/item/smartgun_powerpack/New()
-	select_gamemode_skin(/obj/item/smartgun_powerpack)
 	..()
 	pcell = new /obj/item/cell/high(src)
 
@@ -86,7 +85,7 @@
 	return FALSE
 
 /obj/item/smartgun_powerpack/snow
-	icon_state = "s_powerpack"
+	icon_state = "powerpack"
 
 /obj/item/smartgun_powerpack/fancy
 	icon_state = "powerpackw"

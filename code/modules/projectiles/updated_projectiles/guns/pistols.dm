@@ -45,7 +45,7 @@
 //M4A3 PISTOL
 
 /obj/item/weapon/gun/pistol/m4a3
-	name = "\improper M4A3 service pistol"
+	name = "\improper M4A3 service pistol"//1911
 	desc = "An M4A3 Service Pistol, the standard issue sidearm of the Colonial Marines. Fires 9mm pistol rounds."
 	icon_state = "m4a3"
 	item_state = "m4a3"
@@ -62,13 +62,8 @@
 						/obj/item/attachable/heavy_barrel,
 						/obj/item/attachable/burstfire_assembly)
 
-/obj/item/weapon/gun/pistol/m4a3/New()
-		select_gamemode_skin(/obj/item/weapon/gun/pistol/m4a3)
-		..()
-
-
 /obj/item/weapon/gun/pistol/m4a3/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 28, "muzzle_y" = 20,"rail_x" = 10, "rail_y" = 22, "under_x" = 21, "under_y" = 17, "stock_x" = 21, "stock_y" = 17)
+	attachable_offset = list("muzzle_x" = 28, "muzzle_y" = 20,"rail_x" = 10, "rail_y" = 21, "under_x" = 21, "under_y" = 17, "stock_x" = 21, "stock_y" = 17)
 
 
 /obj/item/weapon/gun/pistol/m4a3/set_gun_config_values()
@@ -88,11 +83,6 @@
 	icon_state = "m4a3c"
 	item_state = "m4a3c"
 
-/obj/item/weapon/gun/pistol/m4a3/custom/New()
-	select_gamemode_skin(/obj/item/weapon/gun/pistol/m4a3/custom)
-	..()
-
-
 /obj/item/weapon/gun/pistol/m4a3/custom/set_gun_config_values()
 	..()
 	fire_delay = config.min_fire_delay
@@ -106,6 +96,7 @@
 
 //-------------------------------------------------------
 //M4A3 45 //Inspired by the 1911
+//deprecated
 
 /obj/item/weapon/gun/pistol/m1911
 	name = "\improper M1911 service pistol"
@@ -378,7 +369,7 @@
 
 
 /obj/item/weapon/gun/pistol/mod88/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 25, "muzzle_y" = 20,"rail_x" = 12, "rail_y" = 22, "under_x" = 18, "under_y" = 15, "stock_x" = 18, "stock_y" = 15)
+	attachable_offset = list("muzzle_x" = 27, "muzzle_y" = 21,"rail_x" = 8, "rail_y" = 22, "under_x" = 18, "under_y" = 15, "stock_x" = 18, "stock_y" = 15)
 
 
 /obj/item/weapon/gun/pistol/mod88/set_gun_config_values()
@@ -421,7 +412,7 @@
 
 
 /obj/item/weapon/gun/pistol/vp78/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 25, "muzzle_y" = 19,"rail_x" = 10, "rail_y" = 22, "under_x" = 18, "under_y" = 14, "stock_x" = 18, "stock_y" = 14)
+	attachable_offset = list("muzzle_x" = 29, "muzzle_y" = 21,"rail_x" = 10, "rail_y" = 23, "under_x" = 18, "under_y" = 14, "stock_x" = 18, "stock_y" = 14)
 
 
 /obj/item/weapon/gun/pistol/vp78/set_gun_config_values()
@@ -510,7 +501,9 @@ It is a modified Beretta 93R, and can fire three round burst or single fire. Whe
 	item_state = "smartpistol"
 	force = 8
 	current_mag = /obj/item/ammo_magazine/pistol/smart
-	fire_sound = 'sound/weapons/gun_glock.ogg'
+	fire_sound = 'sound/weapons/gun_su6.ogg'
+	reload_sound = 'sound/weapons/handling/gun_su6_reload.ogg'
+	unload_sound = 'sound/weapons/handling/gun_su6_unload.ogg'
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
 
 /obj/item/weapon/gun/pistol/smart/set_gun_attachment_offsets()

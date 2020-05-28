@@ -72,11 +72,7 @@
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 	starting_attachment_types = list(/obj/item/attachable/attached_gun/grenade)
-
-/obj/item/weapon/gun/rifle/m41a/New()
-	select_gamemode_skin(/obj/item/weapon/gun/rifle/m41a)
-	..()
-
+	map_specific_decoration = TRUE
 
 /obj/item/weapon/gun/rifle/m41a/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 18,"rail_x" = 12, "rail_y" = 23, "under_x" = 24, "under_y" = 13, "stock_x" = 24, "stock_y" = 13)
@@ -99,10 +95,6 @@
 //variant without ugl attachment
 /obj/item/weapon/gun/rifle/m41a/stripped
 	starting_attachment_types = list()
-
-/obj/item/weapon/gun/rifle/m41a/stripped/New()
-	select_gamemode_skin(/obj/item/weapon/gun/rifle/m41a/stripped)
-	. = ..()
 
 //-------------------------------------------------------
 //M41A PMC VARIANT
@@ -287,8 +279,10 @@
 	desc = "A cheap, reliable assault rifle chambered in 7.62x39mm. Commonly found in the hands of criminals or mercenaries, or in the hands of the UPP or Iron Bears."
 	icon_state = "mar40"
 	item_state = "mar40"
-
 	fire_sound = 'sound/weapons/gun_mar40.ogg'
+	reload_sound = 'sound/weapons/handling/gun_mar40_reload.ogg'
+	unload_sound = 'sound/weapons/handling/gun_mar40_unload.ogg'
+
 	current_mag = /obj/item/ammo_magazine/rifle/mar40
 	attachable_allowed = list(
 						/obj/item/attachable/suppressor,
@@ -303,7 +297,6 @@
 						/obj/item/attachable/compensator,
 						/obj/item/attachable/burstfire_assembly,
 						/obj/item/attachable/magnetic_harness,
-						/obj/item/attachable/stock/slavic,
 						/obj/item/attachable/attached_gun/grenade,
 						/obj/item/attachable/attached_gun/flamer,
 						/obj/item/attachable/attached_gun/shotgun,
@@ -332,16 +325,13 @@
 							/obj/item/attachable/extended_barrel,
 							/obj/item/attachable/compensator,
 								)
-	random_spawn_stock = list(
-							/obj/item/attachable/stock/slavic
-								)
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK
 
 
 
 /obj/item/weapon/gun/rifle/mar40/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 17,"rail_x" = 13, "rail_y" = 19, "under_x" = 24, "under_y" = 15, "stock_x" = 24, "stock_y" = 13)
+	attachable_offset = list("muzzle_x" = 28, "muzzle_y" = 17,"rail_x" = 16, "rail_y" = 20, "under_x" = 24, "under_y" = 15, "stock_x" = 24, "stock_y" = 13)
 
 
 /obj/item/weapon/gun/rifle/mar40/set_gun_config_values()
@@ -365,6 +355,9 @@
 	icon_state = "mar30"
 	item_state = "mar30"
 	fire_sound = 'sound/weapons/gun_mar40.ogg'
+	reload_sound = 'sound/weapons/handling/gun_mar40_reload.ogg'
+	unload_sound = 'sound/weapons/handling/gun_mar40_unload.ogg'
+
 	aim_slowdown = SLOWDOWN_ADS_SMG //Carbine is more lightweight
 	wield_delay = WIELD_DELAY_FAST
 	attachable_allowed = list(
@@ -426,7 +419,10 @@
 	icon_state = "m16"
 	item_state = "m16"
 
-	fire_sound = 'sound/weapons/gun_mar40.ogg'
+	fire_sound = 'sound/weapons/gun_m16.ogg'
+	reload_sound = 'sound/weapons/handling/gun_m16_reload.ogg'
+	unload_sound = 'sound/weapons/handling/gun_m16_unload.ogg'
+
 	current_mag = /obj/item/ammo_magazine/rifle/m16
 	attachable_allowed = list(
 						/obj/item/attachable/suppressor,
@@ -496,7 +492,9 @@
 	desc = "A modified M16 employed by Dutch's Dozen mercenaries. It has 'CLOAKER KILLER' printed on a label on the side. Chambered in 5.56x45mm."
 	icon_state = "m16"
 	item_state = "m16"
-	fire_sound = 'sound/weapons/gun_mar40.ogg'
+	fire_sound = 'sound/weapons/gun_m16.ogg'
+	reload_sound = 'sound/weapons/handling/gun_m16_reload.ogg'
+	unload_sound = 'sound/weapons/handling/gun_m16_unload.ogg'
 	current_mag = /obj/item/ammo_magazine/rifle/m16/ap
 	attachable_allowed = list(
 						/obj/item/attachable/suppressor,
@@ -568,7 +566,7 @@
 	gun_skill_category = SKILL_HEAVY_WEAPONS
 
 /obj/item/weapon/gun/rifle/lmg/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 19,"rail_x" = 10, "rail_y" = 23, "under_x" = 23, "under_y" = 16, "stock_x" = 24, "stock_y" = 12)
+	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 19,"rail_x" = 10, "rail_y" = 23, "under_x" = 23, "under_y" = 12, "stock_x" = 24, "stock_y" = 12)
 
 
 /obj/item/weapon/gun/rifle/lmg/set_gun_config_values()
@@ -768,13 +766,10 @@
 	wield_delay = WIELD_DELAY_VERY_FAST
 	aim_slowdown = SLOWDOWN_ADS_SMG
 	starting_attachment_types = list(/obj/item/attachable/stock/carbine)
-
-/obj/item/weapon/gun/rifle/l42a/New()
-	select_gamemode_skin(/obj/item/weapon/gun/rifle/l42a)
-	..()
+	map_specific_decoration = TRUE
 
 /obj/item/weapon/gun/rifle/l42a/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 31, "muzzle_y" = 17,"rail_x" = 7, "rail_y" = 19, "under_x" = 16, "under_y" = 14, "stock_x" = 22, "stock_y" = 10)
+	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 19,"rail_x" = 7, "rail_y" = 19, "under_x" = 16, "under_y" = 14, "stock_x" = 22, "stock_y" = 10)
 
 
 /obj/item/weapon/gun/rifle/l42a/set_gun_config_values()

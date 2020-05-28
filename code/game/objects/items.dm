@@ -79,6 +79,8 @@
 	var/list/equip_sounds = list() //Sounds played when this item is equipped
 	var/list/unequip_sounds = list() //Same but when unequipped
 
+	var/map_specific_decoration = FALSE
+
 /obj/item/proc/on_dropped()
 	if(event_dropped)
 		event_dropped.fire_event(src)
@@ -197,6 +199,9 @@ cases. Override_icon_state should be a list.*/
 			if(MAP_WHISKEY_OUTPOST, MAP_DESERT_DAM, MAP_BIG_RED)
 				icon_state = new_icon_state ? new_icon_state : "d_" + icon_state
 				item_state = new_item_state ? new_item_state : "d_" + item_state
+			if(MAP_PRISON_STATION)
+				icon_state = new_icon_state ? new_icon_state : "c_" + icon_state
+				item_state = new_item_state ? new_item_state : "c_" + item_state
 		if(new_protection) 
 			min_cold_protection_temperature = new_protection
 	else return

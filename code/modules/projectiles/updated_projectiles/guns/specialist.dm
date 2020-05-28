@@ -33,10 +33,7 @@
 	attachable_allowed = list(/obj/item/attachable/bipod)
 	starting_attachment_types = list(/obj/item/attachable/sniperbarrel)
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_AMMO_COUNTER
-
-/obj/item/weapon/gun/rifle/sniper/M42A/New()
-	select_gamemode_skin(/obj/item/weapon/gun/rifle/sniper/M42A) //use j_ for legacy variant via VV
-	..()
+	map_specific_decoration = TRUE
 
 /obj/item/weapon/gun/rifle/sniper/M42A/handle_starting_attachment()
 	..()
@@ -313,11 +310,12 @@
 
 	gun_skill_category = SKILL_SMARTGUN
 	attachable_allowed = list(
-						/obj/item/attachable/heavy_barrel,
+						/obj/item/attachable/smartbarrel,
 						/obj/item/attachable/burstfire_assembly,
 						/obj/item/attachable/flashlight)
 
 	flags_gun_features = GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
+	starting_attachment_types = list(/obj/item/attachable/smartbarrel)
 
 
 /obj/item/weapon/gun/smartgun/New()
@@ -798,10 +796,10 @@
 
 	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
 	gun_skill_category = SKILL_SPEC_WEAPONS
+	map_specific_decoration = TRUE
 
 /obj/item/weapon/gun/launcher/m92/New()
 	..()
-	select_gamemode_skin(/obj/item/weapon/gun/launcher/m92)
 	grenades += new /obj/item/explosive/grenade/HE(src)
 	grenades += new /obj/item/explosive/grenade/HE(src)
 	grenades += new /obj/item/explosive/grenade/HE(src)

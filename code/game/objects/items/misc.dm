@@ -65,28 +65,6 @@
 	item_state = "gift"
 	w_class = SIZE_LARGE
 
-
-
-
-/obj/item/staff
-	name = "wizards staff"
-	desc = "Apparently a staff used by the wizard."
-	icon = 'icons/obj/items/wizard.dmi'
-	icon_state = "staff"
-	force = 3.0
-	throwforce = 5.0
-	throw_speed = SPEED_FAST
-	throw_range = 5
-	w_class = SIZE_SMALL
-	flags_item = NOSHIELD
-	attack_verb = list("bludgeoned", "whacked", "disciplined")
-
-/obj/item/staff/broom
-	name = "broom"
-	desc = "Used for sweeping, and flying into the night while cackling. Black cat not included."
-	icon = 'icons/obj/items/wizard.dmi'
-	icon_state = "broom"
-
 /obj/item/staff/gentcane
 	name = "Gentlemans Cane"
 	desc = "An ebony cane with an ivory tip."
@@ -107,21 +85,12 @@
 	w_class = SIZE_SMALL
 	flags_item = NOSHIELD
 
-
-/obj/item/ectoplasm
-	name = "ectoplasm"
-	desc = "spooky"
-	gender = PLURAL
-	icon = 'icons/obj/items/wizard.dmi'
-	icon_state = "ectoplasm"
-
 /obj/item/research//Makes testing much less of a pain -Sieve
 	name = "research"
 	icon = 'icons/obj/items/stock_parts.dmi'
 	icon_state = "capacitor"
 	desc = "A debug item for research."
 	
-
 /obj/item/moneybag
 	icon = 'icons/obj/items/storage.dmi'
 	name = "Money bag"

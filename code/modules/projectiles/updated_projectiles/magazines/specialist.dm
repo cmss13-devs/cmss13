@@ -90,13 +90,13 @@
 	name = "smartgun drum"
 	caliber = "10x28mm"
 	max_rounds = 500 //Should be 500 in total.
-	icon_state = "m57"
+	icon_state = "m56_drum"
 	w_class = SIZE_MEDIUM
 	default_ammo = /datum/ammo/bullet/smartgun/marine
 	gun_type = /obj/item/weapon/gun/smartgun
 
 /obj/item/ammo_magazine/smartgun/dirty
-	icon_state = "m57_dirty"
+	icon_state = "m56_drum_dirty"
 	default_ammo = /datum/ammo/bullet/smartgun/dirty
 	gun_type = /obj/item/weapon/gun/smartgun/dirty
 

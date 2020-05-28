@@ -58,6 +58,7 @@
 			check = TRUE
 		args[1] = check
 		if(SSatoms.initalize_atom(src, args))
+			Decorate()
 			return
 
 	Decorate()

@@ -1406,11 +1406,6 @@
 	dir = 8;
 	health = 80
 	},
-/obj/structure/window/reinforced,
-/obj/item/teleportation_scroll{
-	desc = "A scroll written in some ancient language. One can only guess what it orignally said.";
-	name = "ancient scroll"
-	},
 /turf/open/floor/holofloor{
 	icon_state = "cult";
 	dir = 2

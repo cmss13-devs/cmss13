@@ -368,10 +368,12 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	name = "\improper M3 pattern captain armor"
 	desc = "A well-crafted suit of M3 Pattern Armor typically found in the hands of higher-ranking officers. Useful for letting your men know who is in charge when taking to the field"
 	uniform_restricted = list(/obj/item/clothing/under/marine/officer, /obj/item/clothing/under/rank/ro_suit)
-	flags_atom = null
+	flags_atom = NO_SNOW_TYPE
 	armor_bullet = CLOTHING_ARMOR_HIGH
 	specialty = "M3 pattern captain"
 	item_state_slots = list(WEAR_JACKET = "co_officer")
+	
+
 
 /obj/item/clothing/suit/storage/marine/smartgunner
 	name = "M56 combat harness"

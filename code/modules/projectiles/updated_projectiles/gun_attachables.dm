@@ -67,8 +67,8 @@ Defined in conflicts.dm of the #defines folder.
 	var/wield_delay_mod	= 0 //How long ADS takes (time before firing)
 	var/movement_acc_penalty_mod = 0 //Modifies accuracy/scatter penalty when firing onehanded while moving.
 
-	var/activation_sound = 'sound/machines/click.ogg'
-	var/deactivation_sound = 'sound/machines/click.ogg'
+	var/activation_sound = 'sound/weapons/handling/gun_underbarrel_activate.ogg'
+	var/deactivation_sound = 'sound/weapons/handling/gun_underbarrel_deactivate.ogg'
 
 	var/flags_attach_features = ATTACH_REMOVABLE
 
@@ -337,10 +337,11 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/smartbarrel
 	name = "smartgun barrel"
-	icon_state = "smartbarrel"
-	desc = "A heavy rotating barrel. CANNOT BE REMOVED."
+	icon_state = "m56_barrel"
+	desc = "The very end of the M56 smart gun, featuring a compensator. CANNOT BE REMOVED."
 	slot = "muzzle"
 	flags_attach_features = NO_FLAGS
+	pixel_shift_x = 14
 
 // Mateba barrels
 
@@ -722,6 +723,8 @@ Defined in conflicts.dm of the #defines folder.
 	slot = "stock"
 	icon_state = "stock"
 	wield_delay_mod = WIELD_DELAY_FAST
+	pixel_shift_x = 32
+	pixel_shift_y = 15
 
 /obj/item/attachable/stock/shotgun/New()
 	..()
@@ -811,14 +814,14 @@ Defined in conflicts.dm of the #defines folder.
 	scatter_unwielded_mod = config.low_scatter_value
 
 /obj/item/attachable/stock/rifle
-	name = "\improper M41A skeleton stock"
-	desc = "A rare stock distributed in small numbers to USCM forces. Compatible with the M41A, this stock reduces recoil and improves accuracy, but at a reduction to handling and agility. Seemingly a bit more effective in a brawl"
+	name = "\improper M41A solid stock"
+	desc = "A rare stock distributed in small numbers to USCM forces. Compatible with the M41A, this stock reduces recoil and improves accuracy, but at a reduction to handling and agility. Also enhances the thwacking of things with the stock-end of the rifle."
 	slot = "stock"
 	melee_mod = 5
 	size_mod = 1
 	icon_state = "riflestock"
 	attach_icon = "riflestock_a"
-	pixel_shift_x = 41
+	pixel_shift_x = 40
 	pixel_shift_y = 10
 	wield_delay_mod = WIELD_DELAY_FAST
 
@@ -843,8 +846,8 @@ Defined in conflicts.dm of the #defines folder.
 	size_mod = 1
 	icon_state = "l42stock"
 	attach_icon = "l42stock_a"
-	pixel_shift_x = 41
-	pixel_shift_y = 10
+	pixel_shift_x = 37
+	pixel_shift_y = 8
 	wield_delay_mod = WIELD_DELAY_NORMAL
 
 /obj/item/attachable/stock/carbine/New()
@@ -875,7 +878,7 @@ Defined in conflicts.dm of the #defines folder.
 	size_mod = 1
 	icon_state = "smgstock"
 	attach_icon = "smgstock_a"
-	pixel_shift_x = 39
+	pixel_shift_x = 42
 	pixel_shift_y = 11
 	wield_delay_mod = WIELD_DELAY_FAST
 
@@ -897,7 +900,7 @@ Defined in conflicts.dm of the #defines folder.
 	size_mod = 1
 	icon_state = "smgstockc"
 	attach_icon = "smgstockc_a"
-	pixel_shift_x = 39
+	pixel_shift_x = 43
 	pixel_shift_y = 11
 	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION
 	attachment_action_type = /datum/action/item_action/toggle
@@ -980,7 +983,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/stock/smg/brace
 	name = "\improper submachinegun arm brace"
-	desc = "A specialized stock for use on an M39 submachine gun. It makes one handing more accurate at the expense of fire rate. Wielding guns with this stock is very uncomfortable and inaccurate."
+	desc = "A specialized stock for use on an M39 submachine gun. It makes one handing more accurate at the expense of fire rate. Wielding the weapon with this stock attached confers a major inaccuracy and recoil debuff."
 	size_mod = 1
 	icon_state = "smg_brace"
 	attach_icon = "smg_brace_a"
@@ -1237,6 +1240,7 @@ Defined in conflicts.dm of the #defines folder.
 	max_range = 4
 	slot = "under"
 	fire_sound = 'sound/weapons/gun_flamethrower3.ogg'
+	activation_sound = 'sound/weapons/handling/gun_underbarrel_flamer_activate.ogg'
 	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION|ATTACH_RELOADABLE|ATTACH_WEAPON
 
 /obj/item/attachable/attached_gun/flamer/New()
@@ -1325,6 +1329,7 @@ Defined in conflicts.dm of the #defines folder.
 	ammo = /datum/ammo/bullet/shotgun/buckshot/masterkey
 	slot = "under"
 	fire_sound = 'sound/weapons/gun_shotgun_u7.ogg'
+	activation_sound = 'sound/weapons/handling/gun_u7_activate.ogg'
 	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION|ATTACH_PROJECTILE|ATTACH_RELOADABLE|ATTACH_WEAPON
 
 /obj/item/attachable/attached_gun/shotgun/New()

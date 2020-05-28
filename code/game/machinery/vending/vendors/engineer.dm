@@ -44,7 +44,7 @@
 		list("Laser sight", 6, /obj/item/attachable/lasersight, null, "black"),
 		list("Masterkey shotgun", 6, /obj/item/attachable/attached_gun/shotgun, null, "black"),
 		list("M37 wooden stock", 6, /obj/item/attachable/stock/shotgun, null, "black"),
-		list("M41A skeleton stock", 6, /obj/item/attachable/stock/rifle, null, "black"),
+		list("M41A solid stock", 6, /obj/item/attachable/stock/rifle, null, "black"),
 		list("Quickfire adapter", 6, /obj/item/attachable/quickfire, null, "black"),
 		list("Recoil compensator", 6, /obj/item/attachable/compensator, null, "black"),
 		list("Red-dot sight", 6, /obj/item/attachable/reddot, null, "black"),

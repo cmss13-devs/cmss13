@@ -302,6 +302,7 @@
 			if(ishuman(target))
 				H = target
 				H.disable_lights()
+				H.disable_special_items()
 				if(isHumanStrict(target))
 					playsound(loc, (target.gender == "male"?'sound/misc/facehugged_male.ogg' : 'sound/misc/facehugged_female.ogg') , 25, 0)
 			if(!sterile)

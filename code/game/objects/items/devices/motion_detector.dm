@@ -88,13 +88,15 @@
 	active = !old_active	
 	if(active)
 		update_icon()
-		to_chat(user, SPAN_NOTICE("You activate [src]."))
+		if(user)
+			to_chat(user, SPAN_NOTICE("You activate [src]."))
 		playsound(loc, 'sound/items/detector_turn_on.ogg', 30, 0, 5, 2)
 		processing_objects.Add(src)
 	else
 		scanning = FALSE // safety if MD runtimes in scan and stops scanning
 		icon_state = "[initial(icon_state)]"
-		to_chat(user, SPAN_NOTICE("You deactivate [src]."))
+		if(user)
+			to_chat(user, SPAN_NOTICE("You deactivate [src]."))
 		playsound(loc, 'sound/items/detector_turn_off.ogg', 30, 0, 5, 2)
 		processing_objects.Remove(src)
 
@@ -106,6 +108,8 @@
 	..()
 
 /obj/item/device/motiondetector/process()
+	if(isturf(loc))
+		toggle_active(null, TRUE)
 	if(!active)
 		processing_objects.Remove(src)
 		return

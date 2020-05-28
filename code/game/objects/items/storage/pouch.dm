@@ -463,7 +463,7 @@
 	..()
 
 /obj/item/storage/pouch/document
-	name = "document pouch"
+	name = "large document pouch"
 	desc = "It can contain papers and clipboards."
 	icon_state = "document"
 	storage_slots = 21
@@ -481,6 +481,7 @@
 	)
 
 /obj/item/storage/pouch/document/small
+	name = "small document pouch"
 	storage_slots = 7
 
 /obj/item/storage/pouch/flare

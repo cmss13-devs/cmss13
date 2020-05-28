@@ -16,6 +16,10 @@
 	var/list/ingredients = list()
 
 /obj/item/reagent_container/food/snacks/csandwich/attackby(obj/item/W as obj, mob/user as mob)
+	if(istype(W, /obj/item/reagent_container/food/snacks/csandwich))
+		//No sandwitch inception, it causes some bugs...
+		to_chat(user, SPAN_NOTICE(" You can't put a [W] in the [src]."))
+		return
 
 	var/sandwich_limit = 4
 	for(var/obj/item/O in ingredients)
@@ -33,7 +37,8 @@
 	else if(istype(W,/obj/item/reagent_container/food/snacks))
 		to_chat(user, SPAN_NOTICE(" You layer [W] over \the [src]."))
 		var/obj/item/reagent_container/F = W
-		F.reagents.trans_to(src, F.reagents.total_volume)
+		if(F.reagents)
+			F.reagents.trans_to(src, F.reagents.total_volume)
 		user.drop_inv_item_to_loc(W, src)
 		ingredients += W
 		update()

@@ -54,7 +54,9 @@
 	add_timer(CALLBACK(src, /obj/structure/machinery/reagent_analyzer/proc/finish_reagent_process), SECONDS_4)
 
 /obj/structure/machinery/reagent_analyzer/proc/finish_reagent_process()
-	if(sample && sample.reagents.total_volume < 30 || sample.reagents.reagent_list.len > 1)
+	if(!sample || !sample.reagents || sample.reagents.total_volume < 30 || sample.reagents.reagent_list.len > 1)
+		if(!sample || !sample.reagents)
+			print_report(0, "SAMPLE EMPTY.")
 		if(sample.reagents.total_volume < 30)
 			print_report(0, "SAMPLE SIZE INSUFFICIENT;<BR>\n<I>A sample size of 30 units is required for analysis.</I>")
 		else if(sample.reagents.reagent_list.len > 1)

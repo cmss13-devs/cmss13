@@ -147,10 +147,9 @@
 
 	for(var/mob/living/carbon/human/M in oviewers(3, null))
 		if(prob(50))
-			if (locate(/obj/item/device/cloaking_device, M))
-				for(var/obj/item/device/cloaking_device/S in M)
-					S.active = 0
-					S.icon_state = "shield0"
+			if (locate(/obj/item/device/chameleon, M))
+				for(var/obj/item/device/chameleon/S in M)
+					S.disrupt(M)
 		M.flash_eyes()
 		M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been AoE flashed (attempt) with [src.name] by [key_name(user)] in [src.loc.name] ([src.loc.x],[src.loc.y],[src.loc.z])</font>")
 		msg_admin_attack("[key_name(M)] has been AoE flashed with [src.name] by [key_name(user)] in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)

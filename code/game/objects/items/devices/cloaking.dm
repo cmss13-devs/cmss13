@@ -1,9 +1,8 @@
-
 //chameleon projector
-//cloaking device
 
 /obj/item/device/chameleon
 	name = "chameleon-projector"
+	desc = "Use this to become invisible to the human eyesocket."
 	icon_state = "shield0"
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
@@ -44,13 +43,16 @@
 	playsound(get_turf(src), 'sound/effects/pop.ogg', 25, 1, 3)
 	chameleon_on = !chameleon_on
 	chameleon_cooldown = world.time + 20
+	src.add_fingerprint(user)
 	if(chameleon_on)
 		user.alpha = 25
 		to_chat(user, SPAN_NOTICE("You activate the [src]."))
 		spark_system.start()
+		src.icon_state = "shield1"
 	else
 		user.alpha = initial(user.alpha)
 		to_chat(user, SPAN_NOTICE("You deactivate the [src]."))
+		src.icon_state = "shield0"
 		spark_system.start()
 
 /obj/item/device/chameleon/proc/disrupt(mob/user)
@@ -59,36 +61,4 @@
 		user.alpha = initial(user.alpha)
 		chameleon_cooldown = world.time + 50
 		chameleon_on = FALSE
-
-
-
-
-/obj/item/device/cloaking_device
-	name = "cloaking device"
-	desc = "Use this to become invisible to the human eyesocket."
-	icon_state = "shield0"
-	var/active = 0.0
-	flags_atom = FPRINT|CONDUCT
-	item_state = "electronic"
-	throwforce = 10.0
-	throw_speed = SPEED_FAST
-	throw_range = 10
-	w_class = SIZE_SMALL
-	
-
-
-/obj/item/device/cloaking_device/attack_self(mob/user as mob)
-	src.active = !( src.active )
-	if (src.active)
-		to_chat(user, SPAN_NOTICE(" The cloaking device is now active."))
-		src.icon_state = "shield1"
-	else
-		to_chat(user, SPAN_NOTICE(" The cloaking device is now inactive."))
 		src.icon_state = "shield0"
-	src.add_fingerprint(user)
-	return
-
-/obj/item/device/cloaking_device/emp_act(severity)
-	active = 0
-	icon_state = "shield0"
-	..()

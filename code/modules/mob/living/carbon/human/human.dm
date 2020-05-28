@@ -484,7 +484,9 @@
 			attack_log += text("\[[time_stamp()]\] <font color='orange'>Has had their sensors toggled by [key_name(usr)]</font>")
 			usr.attack_log += text("\[[time_stamp()]\] <font color='red'>Attempted to toggle [key_name(src)]'s' sensors</font>")
 			var/obj/item/clothing/under/U = w_uniform
-			if(U.has_sensor >= 2)
+			if(isnull(U))
+				to_chat(usr, "You're not wearing a uniform!.")
+			else if(U.has_sensor >= 2)
 				to_chat(usr, "The controls are locked.")
 			else
 				var/oldsens = U.has_sensor

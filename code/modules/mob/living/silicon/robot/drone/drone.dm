@@ -223,9 +223,8 @@
 		return 0
 
 	spawn(0)
-		var/list/namelist = list("Alpha","Beta","Gamma","Delta","Epsilon","Zeta","Eta","Theta","Iota","Kappa","Lambda","Mu","Nu","Xi","Omicron","Pi","Rho","Sigma","Tau","Upsilon","Phi","Chi","Psi","Omega")
 		var/newname
-		newname = input(src,"You are drone. Pick a name, no duplicates allowed.", null, null) in namelist
+		newname = input(src,"You are drone. Pick a name, no duplicates allowed.", null, null) in greek_letters
 		if(custom_name)
 			return 0
 

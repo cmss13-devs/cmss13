@@ -128,3 +128,12 @@
 
 	sleep(10)
 	to_chat(H, "<B>Objectives:</b> [objectives]")
+
+/datum/emergency_call/pmc/chem_retrieval/spawn_items()
+	var/turf/drop_spawn
+
+	//Giving them plenty of document pouches for those papers
+	for(var/i=0; i<6; i++)
+		drop_spawn = get_spawn_point(1)
+		new /obj/item/storage/pouch/document(drop_spawn)
+		new /obj/item/storage/pouch/document(drop_spawn)

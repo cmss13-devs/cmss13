@@ -77,6 +77,7 @@
 		/datum/action/xeno_action/onclick/emit_pheromones
 		)
 	inherent_verbs = list(
-		/mob/living/carbon/Xenomorph/proc/vent_crawl
+		/mob/living/carbon/Xenomorph/proc/vent_crawl,
+		/mob/living/carbon/Xenomorph/proc/rename_tunnel,
 		)
 	mutation_type = DRONE_NORMAL

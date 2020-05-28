@@ -25,7 +25,7 @@ var/list/obj/structure/tunnel/global_tunnel_list = list()
 /obj/structure/tunnel/New()
 	..()
 	var/turf/L = get_turf(src)
-	tunnel_desc = L.loc.name + " ([loc.x], [loc.y])"//Default tunnel desc is the <area name> (x, y)
+	tunnel_desc = L.loc.name + " ([loc.x], [loc.y]) [pick(greek_letters)]"//Default tunnel desc is the <area name> (x, y) <Greek letter>
 	global_tunnel_list |= src
 
 /obj/structure/tunnel/Dispose()
@@ -93,7 +93,7 @@ var/list/obj/structure/tunnel/global_tunnel_list = list()
 			return FALSE
 
 		if(!(X in contents))
-			//Xeno moved out of the tunel before they picked a destination
+			//Xeno moved out of the tunnel before they picked a destination
 			//No teleporting!
 			return FALSE
 

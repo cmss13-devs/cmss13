@@ -379,9 +379,9 @@
 	//A.randomize_appearance(mob)
 	var/random_name
 	if(H.gender == MALE)
-		random_name = "[pick(first_names_deathsquad)]"
+		random_name = "[pick(greek_letters)]"
 	else
-		random_name = "[pick(first_names_deathsquad)]"
+		random_name = "[pick(greek_letters)]"
 	H.change_real_name(H, random_name)
 	H.age = rand(17,45)
 

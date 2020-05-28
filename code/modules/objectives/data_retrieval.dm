@@ -14,8 +14,7 @@
 
 /datum/cm_objective/retrieve_data/New()
 	..()
-	var/list/letters = list("A","B","C","D","E","F","G","H","J","K","L","M","N","P","Q","R","T","U","V","X","Y","Z") // please find a better way to do this
-	decryption_password = "[pick(letters)][rand(100,999)][pick(letters)][rand(10,99)]"
+	decryption_password = "[pick(alphabet_uppercase)][rand(100,999)][pick(alphabet_uppercase)][rand(10,99)]"
 
 /datum/cm_objective/retrieve_data/check_completion()
 	. = ..()
@@ -134,7 +133,6 @@
 /obj/item/disk/objective/New()
 	..()
 	var/diskcol
-	var/letters = list("Alpha","Beta","Gamma","Delta","Epsilon","Zeta","Eta","Theta","Iota","Kappa","Lambda","Mu","Nu","Xi","Omicron","Pi","Rho","Sigma","Tau","Upsilon","Phi","Chi","Psi","Omega")
 	var/diskvar = rand(1,15)
 	icon_state = "disk_[diskvar]"
 
@@ -154,7 +152,7 @@
 		if (15)
 			diskcol = "bloodied blue"
 
-	label = "[pick(letters)]-[rand(100,999)]"
+	label = "[pick(greek_letters)]-[rand(100,999)]"
 	name = "[diskcol] computer disk [label]"
 	objective = new /datum/cm_objective/retrieve_data/disk(src)
 	pixel_y = rand(-8, 8)
@@ -181,8 +179,7 @@
 
 /obj/structure/machinery/computer/objective/New()
 	..()
-	var/letters = list("Alpha","Beta","Gamma","Delta","Epsilon","Zeta","Eta","Theta","Iota","Kappa","Lambda","Mu","Nu","Xi","Omicron","Pi","Rho","Sigma","Tau","Upsilon","Phi","Chi","Psi","Omega")
-	label = "[pick(letters)]-[rand(100,999)]"
+	label = "[pick(greek_letters)]-[rand(100,999)]"
 	name = "data terminal [label]"
 	objective = new /datum/cm_objective/retrieve_data/terminal(src)
 

@@ -71,7 +71,7 @@
 		var/drawtype = input("Choose what you'd like to draw.", "Crayon scribbles") in list("graffiti","rune","letter")
 		switch(drawtype)
 			if("letter")
-				drawtype = input("Choose the letter.", "Crayon scribbles") in list("a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z")
+				drawtype = input("Choose the letter.", "Crayon scribbles") in alphabet_lowercase
 				to_chat(user, "You start drawing a letter on the [target.name].")
 			if("graffiti")
 				to_chat(user, "You start drawing graffiti on the [target.name].")

@@ -231,6 +231,9 @@
 		if(SC.camo_active)
 			SC.deactivate_camouflage(src)
 			return
+	var/list/cont = contents_recursive()
+	for(var/obj/item/device/motiondetector/md in cont)
+		md.toggle_active(src, TRUE)
 
 /mob/living/carbon/human/proc/disable_detectors()
 	for(var/obj/I in src)

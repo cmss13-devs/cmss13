@@ -153,7 +153,8 @@
 		/mob/living/carbon/Xenomorph/proc/construction_toggle,
 		/mob/living/carbon/Xenomorph/proc/destruction_toggle,
 		/mob/living/carbon/Xenomorph/Queen/proc/set_orders,
-		/mob/living/carbon/Xenomorph/Queen/proc/hive_Message
+		/mob/living/carbon/Xenomorph/Queen/proc/hive_Message,
+		/mob/living/carbon/Xenomorph/proc/rename_tunnel,
 		)
 
 	var/list/mobile_abilities = list(

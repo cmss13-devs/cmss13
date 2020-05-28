@@ -103,8 +103,10 @@
 //				<A href='byond://?src=\ref[src];freq=10'>+</A><BR>
 //				"}
 
+	dat += "<table>"
 	for (var/ch_name in channels)
 		dat+=text_sec_channel(ch_name, channels[ch_name])
+	dat += "</table>"
 	dat+={"[text_wires()]</TT></body></html>"}
 	show_browser(user, dat, name, "radio")
 	return
@@ -128,8 +130,8 @@
 			channel_key = key
 			break
 	return {"
-			<B>[chan_name]</B>	[channel_key]<br>
-			Speaker: <A href='byond://?src=\ref[src];ch_name=[chan_name];listen=[!list]'>[list ? "Engaged" : "Disengaged"]</A><BR>
+			<tr><td><B>[chan_name]</B>	[channel_key]</td>
+			<td><A href='byond://?src=\ref[src];ch_name=[chan_name];listen=[!list]'>[list ? "Engaged" : "Disengaged"]</A></td></tr>
 			"}
 
 /obj/item/device/radio/Topic(href, href_list)

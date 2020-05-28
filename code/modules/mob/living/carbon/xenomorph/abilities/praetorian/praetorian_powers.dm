@@ -91,7 +91,7 @@
 /datum/action/xeno_action/activable/pounce/prae_dash/proc/damage_nearby_targets()
 	var/mob/living/carbon/Xenomorph/X = owner
 
-	if (!X.check_state())
+	if (isnull(X) || !X.check_state())
 		return
 
 	activated_once = FALSE

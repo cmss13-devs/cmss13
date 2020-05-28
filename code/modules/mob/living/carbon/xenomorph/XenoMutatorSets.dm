@@ -245,6 +245,8 @@
 	if(hardcore)
 		to_chat(usr, SPAN_WARNING("No time for that, must KILL!"))
 		return
+	if(!src.hive || !src.hive.mutators)
+		return //For some reason we don't have mutators
 	src.hive.mutators.list_and_purchase_mutators()
 
 /mob/living/carbon/Xenomorph/verb/purchase_strains()
@@ -256,6 +258,8 @@
 		return
 	if(is_dead())
 		return //Dead xenos can't mutate!
+	if(!src.mutators)
+		return //For some reason we don't have mutators
 	src.mutators.list_and_purchase_mutators()
 
 /mob/living/carbon/Xenomorph/verb/list_mutators()

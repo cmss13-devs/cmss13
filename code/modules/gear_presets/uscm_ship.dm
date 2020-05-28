@@ -487,6 +487,11 @@
 	service_hat = list(/obj/item/clothing/head/cmcap, /obj/item/clothing/head/drillhat)
 
 /datum/equipment_preset/uscm_ship/sea/load_gear(mob/living/carbon/human/H)
+	var/backItem = /obj/item/storage/backpack/satchel
+	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
+		backItem = /obj/item/storage/backpack/marine
+	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
+
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom(H), WEAR_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/bridge(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/dress(H), WEAR_FEET)

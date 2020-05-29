@@ -431,7 +431,7 @@
 
 /obj/structure/machinery/bot/medbot/explode()
 	src.on = 0
-	visible_message(SPAN_DANGER("<B>[src] blows apart!</B>"), 1)
+	visible_message(SPAN_DANGER("<B>[src] blows apart!</B>"), null, null, 1)
 	var/turf/Tsec = get_turf(src)
 
 	new /obj/item/storage/firstaid(Tsec)

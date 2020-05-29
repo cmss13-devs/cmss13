@@ -420,6 +420,8 @@
 	event_zoomout.fire_event(src, ev_args)
 
 /mob/living/proc/add_zoomout_handler(datum/event_handler/handler)
+	if(isnull(event_zoomout))
+		event_zoomout = new /datum/event()
 	event_zoomout.add_handler(handler)
 
 /mob/living/proc/remove_zoomout_handler(datum/event_handler/handler)
@@ -438,6 +440,8 @@
 	return ev_args.continue_movement
 
 /mob/living/proc/add_movement_handler(datum/event_handler/handler)
+	if(isnull(event_movement))
+		event_movement = new /datum/event()
 	event_movement.add_handler(handler)
 
 /mob/living/proc/remove_movement_handler(datum/event_handler/handler)

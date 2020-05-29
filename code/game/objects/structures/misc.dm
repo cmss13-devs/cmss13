@@ -15,7 +15,7 @@
 	return 1
 
 /obj/structure/showcase/proc/explode()
-	src.visible_message(SPAN_DANGER("<B>[src] blows apart!</B>"), 1)
+	src.visible_message(SPAN_DANGER("<B>[src] blows apart!</B>"), null, null, 1)
 	var/turf/Tsec = get_turf(src)
 
 	new /obj/item/stack/sheet/metal(Tsec)

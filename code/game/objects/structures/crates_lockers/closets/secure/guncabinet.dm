@@ -66,7 +66,7 @@
 	else
 		if(locked)
 			locked = FALSE
-	visible_message(SPAN_NOTICE("[src] [locked ? "locks" : "unlocks"] itself."), null, 3)
+	visible_message(SPAN_NOTICE("[src] [locked ? "locks" : "unlocks"] itself."), null, null, 3)
 	update_icon()
 
 /obj/structure/closet/secure_closet/guncabinet/mp_armory

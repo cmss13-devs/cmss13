@@ -385,7 +385,7 @@
 
 				if(authenticated == 2)
 					dat += "<BR>Primary LZ"
-					if(ticker.mode.active_lz)
+					if(!isnull(ticker) && !isnull(ticker.mode) && !isnull(ticker.mode.active_lz) && !isnull(ticker.mode.active_lz.loc))
 						dat += "<BR>[ticker.mode.active_lz.loc.loc]"
 					else
 						dat += "<BR><A HREF='?src=\ref[src];operation=selectlz'>Select primary LZ</A>"

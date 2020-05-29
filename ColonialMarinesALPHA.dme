@@ -1388,6 +1388,7 @@
 #include "code\modules\objectives\experimental_devices.dm"
 #include "code\modules\objectives\mob_objectives.dm"
 #include "code\modules\objectives\objective.dm"
+#include "code\modules\objectives\objective_landmarks.dm"
 #include "code\modules\objectives\objective_memory_storage.dm"
 #include "code\modules\objectives\power_objectives.dm"
 #include "code\modules\objectives\safe_cracking.dm"

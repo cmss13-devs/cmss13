@@ -16,7 +16,135 @@ var/global/datum/controller/objectives_controller/objectives_controller
 
 	var/nextDChatAnnouncement = MINUTES_5 //5 minutes in
 
-/datum/controller/objectives_controller/New()
+/datum/controller/objectives_controller/proc/generate_objectives()
+	if(objective_spawn_close.len == 0 || objective_spawn_medium.len == 0 || objective_spawn_far.len == 0 || objective_spawn_science.len == 0)
+		//The map doesn't have the correct landmarks, so we generate nothing, hoping the map has normal objectives
+		return
+
+	//roughly the numbers LV has:
+	var/paper_scraps = 40
+	var/progress_reports = 15
+	var/folders = 30
+	var/technical_manuals = 10
+	var/disks = 30
+	var/experimental_devices = 15
+
+	var/research_papers = 15
+	var/vial_boxes = 20
+
+	//A stub of tweaking item spawns based on map
+	switch(map_tag)
+		if(MAP_CORSAT)
+			vial_boxes = 30
+			research_papers = 30
+			experimental_devices = 20
+
+	//Calculating document ratios so we don't end up with filing cabinets holding 10 documents because there are few filing cabinets
+	var/relative_document_ratio_close = objective_spawn_close_documents.len / objective_spawn_close.len
+	var/relative_document_ratio_medium = objective_spawn_medium_documents.len / objective_spawn_medium.len
+	var/relative_document_ratio_far = objective_spawn_far_documents.len / objective_spawn_far.len
+	var/relative_document_ratio_science = objective_spawn_science_documents.len / objective_spawn_science.len
+
+	//Intel
+	for(var/i=0;i<paper_scraps;i++)
+		var/dest = pick(20;"close", 5;"medium", 2;"far", 10;"science", 40*relative_document_ratio_close;"close_documents", 10*relative_document_ratio_medium;"medium_documents", 3*relative_document_ratio_far;"far_documents", 10*relative_document_ratio_science;"science_documents")
+		spawn_objective_at_landmark(dest, /obj/item/document_objective/paper)
+	for(var/i=0;i<progress_reports;i++)
+		var/dest = pick(10;"close", 55;"medium", 3;"far", 10;"science", 20*relative_document_ratio_close;"close_documents", 30*relative_document_ratio_medium;"medium_documents", 3*relative_document_ratio_far;"far_documents", 10*relative_document_ratio_science;"science_documents")
+		spawn_objective_at_landmark(dest, /obj/item/document_objective/report)
+	for(var/i=0;i<folders;i++)
+		var/dest = pick(20;"close", 5;"medium", 2;"far", 10;"science", 40*relative_document_ratio_close;"close_documents", 10*relative_document_ratio_medium;"medium_documents", 3*relative_document_ratio_far;"far_documents", 10*relative_document_ratio_science;"science_documents")
+		spawn_objective_at_landmark(dest, /obj/item/document_objective/folder)
+	for(var/i=0;i<technical_manuals;i++)
+		var/dest = pick(20;"close", 40;"medium", 20;"far", 20;"science")
+		spawn_objective_at_landmark(dest, /obj/item/document_objective/technical_manual)
+	for(var/i=0;i<disks;i++)
+		var/dest = pick(20;"close", 40;"medium", 20;"far", 20;"science")
+		spawn_objective_at_landmark(dest, /obj/item/disk/objective)
+	for(var/i=0;i<experimental_devices;i++)
+		var/dest = pick(10;"close", 20;"medium", 40;"far", 30;"science")
+		var/ex_dev = pick(
+			/obj/item/device/mass_spectrometer/adv/objective,
+			/obj/item/device/reagent_scanner/adv/objective,
+			/obj/item/device/healthanalyzer/objective,
+			/obj/item/device/autopsy_scanner/objective,
+		)
+		spawn_objective_at_landmark(dest, ex_dev)
+
+	//Research
+	for(var/i=0;i<research_papers;i++)
+		var/dest = pick(10;"close", 8;"medium", 2;"far", 20;"science", 15;"close_documents", 12;"medium_documents", 3;"far_documents", 30;"science_documents")
+		spawn_objective_at_landmark(dest, /obj/item/paper/research_notes)
+	for(var/i=0;i<vial_boxes;i++)
+		var/dest = pick(15;"close", 30;"medium", 5;"far", 50;"science")
+		spawn_objective_at_landmark(dest, /obj/item/storage/fancy/vials/random)
+	clear_objective_landmarks()
+	connect_objectives()
+
+/datum/controller/objectives_controller/proc/clear_objective_landmarks()
+	//Don't need them anymore, so we remove them
+	objective_spawn_close = null
+	objective_spawn_medium = null
+	objective_spawn_far = null
+	objective_spawn_science = null
+	objective_spawn_close_documents = null
+	objective_spawn_medium_documents = null
+	objective_spawn_far_documents = null
+	objective_spawn_science_documents = null
+
+/datum/controller/objectives_controller/proc/spawn_objective_at_landmark(var/dest, var/obj/item/it)
+	var/picked_locaton
+	switch(dest)
+		if("close")
+			picked_locaton = pick(objective_spawn_close)
+		if("medium")
+			picked_locaton = pick(objective_spawn_medium)
+		if("far")
+			picked_locaton = pick(objective_spawn_far)
+		if("science")
+			picked_locaton = pick(objective_spawn_science)
+
+		if("close_documents")
+			if(objective_spawn_close_documents.len)
+				picked_locaton = pick(objective_spawn_close_documents)
+			if(!picked_locaton)
+				picked_locaton = pick(objective_spawn_close)
+		if("medium_documents")
+			if(objective_spawn_medium_documents.len)
+				picked_locaton = pick(objective_spawn_medium_documents)
+			if(!picked_locaton)
+				picked_locaton = pick(objective_spawn_medium)
+		if("far_documents")
+			if(objective_spawn_far_documents.len)
+				picked_locaton = pick(objective_spawn_far_documents)
+			if(!picked_locaton)
+				picked_locaton = pick(objective_spawn_far)
+		if("science_documents")
+			if(objective_spawn_science_documents.len)
+				picked_locaton = pick(objective_spawn_science_documents)
+			if(!picked_locaton)
+				picked_locaton = pick(objective_spawn_science)
+
+	if(!picked_locaton)
+		CRASH("Unable to pick a location at [dest] for [it]")
+
+	var/generated = FALSE
+	for(var/obj/O in picked_locaton)
+		if(istype(O, /obj/structure/closet) || istype(O, /obj/structure/safe) || istype(O, /obj/structure/filingcabinet))
+			if(istype(O, /obj/structure/closet))
+				var/obj/structure/closet/c = O
+				if(c.opened)
+					continue //container is open, don't put stuff into it
+			var/obj/item/IT = new it(O)
+			O.contents += IT
+			generated = TRUE
+			break
+
+	if(!generated)
+		new it(picked_locaton)
+
+
+/datum/controller/objectives_controller/proc/connect_objectives()
 	for(var/datum/cm_objective/C in cm_objectives)
 		if(!(C in objectives))
 			objectives += C
@@ -233,6 +361,7 @@ var/global/datum/controller/objectives_controller/objectives_controller
 
 /hook/startup/proc/create_objectives_controller()
 	objectives_controller = new /datum/controller/objectives_controller
+	objectives_controller.generate_objectives()
 	// Setup some global objectives
 	objectives_controller.power = new /datum/cm_objective/establish_power
 	objectives_controller.comms = new /datum/cm_objective/communications

@@ -460,7 +460,6 @@
 	},
 /area/bigredv2/outside/chapel)
 "aY" = (
-/obj/item/ectoplasm,
 /turf/open/floor{
 	tag = "icon-darkish";
 	icon_state = "darkish";
@@ -469,7 +468,6 @@
 /area/bigredv2/outside/chapel)
 "aZ" = (
 /obj/structure/table/woodentable,
-/obj/item/ectoplasm,
 /turf/open/floor{
 	icon_state = "cult";
 	dir = 2
@@ -560,7 +558,6 @@
 /area/bigredv2/outside/chapel)
 "bl" = (
 /obj/structure/machinery/light,
-/obj/item/ectoplasm,
 /turf/open/floor{
 	tag = "icon-darkish";
 	icon_state = "darkish";

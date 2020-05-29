@@ -100,6 +100,7 @@
 	current_mag = /obj/item/ammo_magazine/smg/m39/ap
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_WY_RESTRICTED
 	wield_delay =  WIELD_DELAY_VERY_FAST
+	map_specific_decoration = FALSE
 
 	random_spawn_chance = 100
 	random_spawn_rail = list(

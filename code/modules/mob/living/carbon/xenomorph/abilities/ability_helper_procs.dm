@@ -20,6 +20,13 @@
 
 	var/wait_time = 10
 
+	var/turf/T = get_turf(O)
+
+	for(var/obj/effect/xenomorph/acid/A in T)
+		if(acid_type == A.type && A.acid_t == O)
+			to_chat(src, SPAN_WARNING("[A] is already drenched in acid."))
+			return
+
 	var/obj/I
 	//OBJ CHECK
 	if(isobj(O))
@@ -39,7 +46,6 @@
 
 	//TURF CHECK
 	else if(isturf(O))
-		var/turf/T = O
 
 		if(istype(O, /turf/closed/wall))
 			var/turf/closed/wall/wall_target = O
@@ -69,6 +75,12 @@
 	if(!do_after(src, wait_time, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 		return
 
+	// AGAIN BECAUSE SOMETHING COULD'VE ACIDED THE PLACE
+	for(var/obj/effect/xenomorph/acid/A in T)
+		if(acid_type == A.type && A.acid_t == O)
+			to_chat(src, SPAN_WARNING("[A] is already drenched in acid."))
+			return
+
 	if(!check_state())
 		return
 
@@ -90,7 +102,7 @@
 
 	use_plasma(plasma_cost)
 
-	var/obj/effect/xenomorph/acid/A = new acid_type(get_turf(O), O)
+	var/obj/effect/xenomorph/acid/A = new acid_type(T, O)
 
 	if(istype(O, /obj/vehicle/multitile))
 		var/obj/vehicle/multitile/R = O

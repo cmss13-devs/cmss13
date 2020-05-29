@@ -89,7 +89,7 @@
 		stat("Security Level:","[uppertext(get_security_level())]")
 		stat("DEFCON Level:","[defcon_controller.current_defcon_level]")
 
-		if(ticker && ticker.mode && ticker.mode.active_lz)
+		if(!isnull(ticker) && !isnull(ticker.mode) && !isnull(ticker.mode.active_lz) && !isnull(ticker.mode.active_lz.loc) && !isnull(ticker.mode.active_lz.loc.loc))
 			stat("Primary LZ: ", ticker.mode.active_lz.loc.loc.name)
 
 		if(assigned_squad)
@@ -926,7 +926,10 @@
 		O.reset_limb_surgeries()
 
 	var/obj/limb/head/h = get_limb("head")
-	h.disfigured = 0
+	if(isnull(h))
+		h = get_limb("synthetic head")
+	if(!isnull(h))
+		h.disfigured = 0
 	name = get_visible_name()
 
 	if(species && !(species.flags & NO_BLOOD))

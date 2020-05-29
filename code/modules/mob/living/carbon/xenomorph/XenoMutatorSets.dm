@@ -270,7 +270,7 @@
 		to_chat(usr, SPAN_WARNING("No time for that, must KILL!"))
 		return
 	to_chat(src, SPAN_XENOANNOUNCE("Strain:"))
-	if(!src.mutators.purchased_mutators || !src.mutators.purchased_mutators.len)
+	if(isnull(src.mutators) || isnull(src.mutators.purchased_mutators) || !src.mutators.purchased_mutators.len)
 		to_chat(src, "-")
 	else
 		for(var/m in src.mutators.purchased_mutators)

@@ -143,6 +143,8 @@
 	falloff_modifier =  C.falloff_modifier
 
 /datum/chemical_reaction/proc/make_alike(var/datum/chemical_reaction/C)
+	if(!C)
+		return
 	id = C.id
 	gen_tier = C.gen_tier
 	required_reagents = C.required_reagents.Copy()

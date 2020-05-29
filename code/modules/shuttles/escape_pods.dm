@@ -364,7 +364,7 @@ As such, a new tracker datum must be constructed to follow proper child inherita
 			to_chat(user, SPAN_WARNING("The cryo pod is not responding to commands!"))
 			return FALSE
 
-		visible_message(SPAN_WARNING("[user] starts climbing into the cryo pod."), 3)
+		visible_message(SPAN_WARNING("[user] starts climbing into the cryo pod."), null, null, 3)
 
 		if(do_after(user, 20, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 			user.stop_pulling()
@@ -380,7 +380,7 @@ As such, a new tracker datum must be constructed to follow proper child inherita
 			return FALSE
 
 		being_forced = !being_forced
-		visible_message(SPAN_WARNING("[user] begins to pry the [src]'s cover!"), 3)
+		visible_message(SPAN_WARNING("[user] begins to pry the [src]'s cover!"), null, null, 3)
 		playsound(src,'sound/effects/metal_creaking.ogg', 25, 1)
 		if(do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_HOSTILE)) go_out() //Force the occupant out.
 		being_forced = !being_forced

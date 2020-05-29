@@ -57,7 +57,7 @@
 	if(!sample || !sample.reagents || sample.reagents.total_volume < 30 || sample.reagents.reagent_list.len > 1)
 		if(!sample || !sample.reagents)
 			print_report(0, "SAMPLE EMPTY.")
-		if(sample.reagents.total_volume < 30)
+		else if(sample.reagents.total_volume < 30)
 			print_report(0, "SAMPLE SIZE INSUFFICIENT;<BR>\n<I>A sample size of 30 units is required for analysis.</I>")
 		else if(sample.reagents.reagent_list.len > 1)
 			print_report(0, "SAMPLE CONTAMINATED;<BR>\n<I>A pure sample is required for analysis.</I>")

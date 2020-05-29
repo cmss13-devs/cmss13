@@ -62,7 +62,7 @@
 	worn_state = "marine_tanker"
 	rollable_sleeves = FALSE
 	specialty = "USCM tanker"
-	flags_atom = NO_SNOW_TYPE
+	flags_atom = NO_SNOW_TYPE//it has object sprites but no on mobbies, someone get around to fixing this
 
 /*
 /obj/item/clothing/under/marine/tanker/New(loc,expected_type 		= type,

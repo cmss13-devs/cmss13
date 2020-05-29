@@ -605,7 +605,7 @@ can cause issues with ammo types getting mixed up during the burst.
 
 
 /obj/item/weapon/gun/shotgun/pump/cmb/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 30, "muzzle_y" = 20,"rail_x" = 10, "rail_y" = 23, "under_x" = 19, "under_y" = 17, "stock_x" = 19, "stock_y" = 17)
+	attachable_offset = list("muzzle_x" = 31, "muzzle_y" = 15,"rail_x" = 7, "rail_y" = 18, "under_x" = 19, "under_y" = 13, "stock_x" = 19, "stock_y" = 17)
 
 
 /obj/item/weapon/gun/shotgun/pump/cmb/set_gun_config_values()

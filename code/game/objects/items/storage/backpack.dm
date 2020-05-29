@@ -250,7 +250,7 @@
 	desc = "The standard-issue pack of the USCM forces. Designed to lug gear into the battlefield."
 	icon_state = "marinepack"
 	item_state = "marinepack"
-	var/has_gamemode_skin = TRUE
+	var/has_gamemode_skin = TRUE //replace this with the atom_flag NO_SNOW_TYPE at some point, just rename it to like, NO_MAP_VARIANT_SKIN
 
 	New()
 		if(has_gamemode_skin)
@@ -305,6 +305,7 @@
 	desc = "Specially designed bags made to hold rockets."
 	icon_state = "rocketpack"
 	worn_accessible = TRUE
+	has_gamemode_skin = FALSE //monkeysfist101 never sprited a snowtype but included duplicate icons. Why?? Recolor and touch up sprite at a later date.
 
 // Scout Cloak
 /obj/item/storage/backpack/marine/satchel/scout_cloak

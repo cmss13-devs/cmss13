@@ -2,7 +2,7 @@
 //They can't, however, activate any of the special functions.
 
 /proc/add_to_missing_pred_gear(var/obj/item/W)
-	if(!(W in yautja_gear))
+	if(!(W in yautja_gear) && !(W in untracked_yautja_gear) && !(W.z in ADMIN_Z_LEVEL))
 		yautja_gear += W
 
 /proc/remove_from_missing_pred_gear(var/obj/item/W)
@@ -38,6 +38,7 @@
 	flags_cold_protection = BODY_FLAG_HEAD
 	flags_inventory = COVEREYES|COVERMOUTH|NOPRESSUREDMAGE|ALLOWINTERNALS|ALLOWREBREATH|BLOCKGASEFFECT|BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDEEYES|HIDEFACE|HIDELOWHAIR
+	flags_item = ITEM_PREDATOR
 	filtered_gases = list("phoron", "sleeping_agent", "carbon_dioxide")
 	gas_filter_strength = 3
 	eye_protection = 2
@@ -93,37 +94,39 @@
 	if(M.species && M.species.name != "Yautja")
 		to_chat(M, SPAN_WARNING("You have no idea how to work these things!"))
 		return
-	var/obj/item/clothing/gloves/yautja/Y = M.gloves //Doesn't actually reduce power, but needs the bracers anyway.
-	if(!Y || !istype(Y))
-		to_chat(M, SPAN_WARNING("You must be wearing your bracers, as they have the power source."))
-		return
-	var/obj/item/G = M.glasses
-	if(G)
-		if(!istype(G,/obj/item/clothing/glasses/night/yautja) && !istype(G,/obj/item/clothing/glasses/meson/yautja) && !istype(G,/obj/item/clothing/glasses/thermal/yautja))
-			to_chat(M, SPAN_WARNING("You need to remove your glasses first. Why are you even wearing these?"))
-			return
-		M.temp_drop_inv_item(G) //Get rid of ye existinge gogglors
-		qdel(G)
-	switch(current_goggles)
-		if(0)
-			M.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/yautja(M), WEAR_EYES)
-			to_chat(M, SPAN_NOTICE("Low-light vision module: activated."))
-			if(prob(50)) playsound(src,'sound/effects/pred_vision.ogg', 15, 1)
-		if(1)
-			M.equip_to_slot_or_del(new /obj/item/clothing/glasses/thermal/yautja(M), WEAR_EYES)
-			to_chat(M, SPAN_NOTICE("Thermal sight module: activated."))
-			if(prob(50)) playsound(src,'sound/effects/pred_vision.ogg', 15, 1)
-		if(2)
-			M.equip_to_slot_or_del(new /obj/item/clothing/glasses/meson/yautja(M), WEAR_EYES)
-			to_chat(M, SPAN_NOTICE("Material vision module: activated."))
-			if(prob(50)) playsound(src,'sound/effects/pred_vision.ogg', 15, 1)
-		if(3)
-			to_chat(M, SPAN_NOTICE("You deactivate your visor."))
-			if(prob(50)) playsound(src,'sound/effects/pred_vision.ogg', 15, 1)
-	M.update_inv_glasses()
 	current_goggles++
 	if(current_goggles > 3) current_goggles = 0
+	add_vision(M)
 
+/obj/item/clothing/mask/gas/yautja/proc/add_vision(mob/living/carbon/human/user)
+	var/obj/item/clothing/gloves/yautja/Y = user.gloves //Doesn't actually reduce power, but needs the bracers anyway.
+	if(!Y || !istype(Y))
+		to_chat(user, SPAN_WARNING("You must be wearing your bracers, as they have the power source."))
+		return
+	var/obj/item/G = user.glasses
+	if(G)
+		if(!istype(G,/obj/item/clothing/glasses/night/yautja) && !istype(G,/obj/item/clothing/glasses/meson/yautja) && !istype(G,/obj/item/clothing/glasses/thermal/yautja))
+			to_chat(user, SPAN_WARNING("You need to remove your glasses first. Why are you even wearing these?"))
+			return
+		user.temp_drop_inv_item(G) //Get rid of ye existinge gogglors
+		qdel(G)
+	switch(current_goggles)
+		if(1)
+			user.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/yautja(user), WEAR_EYES)
+			to_chat(user, SPAN_NOTICE("Low-light vision module: activated."))
+			if(prob(50)) playsound(src,'sound/effects/pred_vision.ogg', 15, 1)
+		if(2)
+			user.equip_to_slot_or_del(new /obj/item/clothing/glasses/thermal/yautja(user), WEAR_EYES)
+			to_chat(user, SPAN_NOTICE("Thermal sight module: activated."))
+			if(prob(50)) playsound(src,'sound/effects/pred_vision.ogg', 15, 1)
+		if(3)
+			user.equip_to_slot_or_del(new /obj/item/clothing/glasses/meson/yautja(user), WEAR_EYES)
+			to_chat(user, SPAN_NOTICE("Material vision module: activated."))
+			if(prob(50)) playsound(src,'sound/effects/pred_vision.ogg', 15, 1)
+		if(0)
+			to_chat(user, SPAN_NOTICE("You deactivate your visor."))
+			if(prob(50)) playsound(src,'sound/effects/pred_vision.ogg', 15, 1)
+	user.update_inv_glasses()
 
 /obj/item/clothing/mask/gas/yautja/equipped(mob/living/carbon/human/user, slot)
 	if(slot == WEAR_FACE)
@@ -131,6 +134,7 @@
 		H.add_hud_to(user)
 		H = huds[MOB_HUD_XENO_STATUS]
 		H.add_hud_to(user)
+		add_vision(user)
 	..()
 
 /obj/item/clothing/mask/gas/yautja/dropped(mob/living/carbon/human/mob) //Clear the gogglors if the helmet is removed.
@@ -241,6 +245,7 @@
 	desc = "A suit of armor with heavy padding. It looks old, yet functional."
 	icon_state = "fullarmor"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_HEAD|BODY_FLAG_LEGS
+	flags_item = ITEM_PREDATOR
 	armor_melee = CLOTHING_ARMOR_HIGH
 	armor_bullet = CLOTHING_ARMOR_HIGHPLUS
 	armor_laser = CLOTHING_ARMOR_HIGH
@@ -250,7 +255,19 @@
 	armor_rad = CLOTHING_ARMOR_HIGH
 	armor_internaldamage = CLOTHING_ARMOR_HIGH
 	slowdown = 1
+	var/speed_timer = 0
 	item_state_slots = list(WEAR_JACKET = "fullarmor")
+	allowed = list(/obj/item/weapon/harpoon,
+			/obj/item/weapon/gun/launcher/spike,
+			/obj/item/weapon/gun/energy/plasmarifle,
+			/obj/item/weapon/gun/energy/plasmapistol,
+			/obj/item/weapon/yautja_chain,
+			/obj/item/weapon/yautja_knife,
+			/obj/item/weapon/yautja_sword,
+			/obj/item/weapon/yautja_scythe,
+			/obj/item/weapon/combistick,
+			/obj/item/storage/backpack/yautja,
+			/obj/item/weapon/twohanded/glaive)
 
 /obj/item/clothing/suit/armor/yautja/full/New(location)
 	. = ..(location, 0)
@@ -268,6 +285,7 @@
 	remove_from_missing_pred_gear(src)
 	..()
 
+
 /obj/item/clothing/cape
 
 /obj/item/clothing/cape/eldercape
@@ -277,6 +295,7 @@
 	icon_state = "cape_elder"
 	flags_equip_slot = SLOT_BACK
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS
+	flags_item = ITEM_PREDATOR
 	armor_melee = CLOTHING_ARMOR_LOW
 	armor_bullet = CLOTHING_ARMOR_LOW
 	armor_laser = CLOTHING_ARMOR_LOW
@@ -328,6 +347,7 @@
 	permeability_coefficient = 0.01
 	flags_inventory = NOSLIPPING
 	flags_armor_protection = BODY_FLAG_FEET|BODY_FLAG_LEGS|BODY_FLAG_GROIN
+	flags_item = ITEM_PREDATOR
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_laser = CLOTHING_ARMOR_MEDIUMHIGH
@@ -371,6 +391,7 @@
 	icon_state = "mesh_shirt"
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_ARMS|BODY_FLAG_FEET|BODY_FLAG_HANDS //Does not cover the head though.
 	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_ARMS|BODY_FLAG_FEET|BODY_FLAG_HANDS
+	flags_item = ITEM_PREDATOR
 	has_sensor = 0
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
@@ -404,7 +425,7 @@
 
 	siemens_coefficient = 0
 	permeability_coefficient = 0.05
-	flags_item = 0
+	flags_item = ITEM_PREDATOR
 	flags_armor_protection = BODY_FLAG_HANDS
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
@@ -430,7 +451,7 @@
 	var/disc_timer = 0
 	var/cloak_timer = 0
 	var/upgrades = 0 //Set to two, so admins can give preds shittier ones for young blood events or whatever. //Changed it back to 0 since it was breaking spawn-equipment and the translator -retrokinesis
-	var/explosion_type = 0 //0 is BIG explosion, 1 ONLY gibs the user.
+	var/explosion_type = 1 //0 is BIG explosion, 1 ONLY gibs the user.
 	var/combistick_cooldown = 0 //Let's add a cooldown for Yank Combistick so that it can't be spammed.
 	var/notification_sound = TRUE	// Whether the bracer pings when a message comes or not
 
@@ -449,7 +470,7 @@
 /obj/item/clothing/gloves/yautja/equipped(mob/user, slot)
 	..()
 	if(slot == WEAR_HANDS)
-		flags_item = NODROP
+		flags_item ^= NODROP
 		processing_objects.Add(src)
 		if(isYautja(user))
 			to_chat(user, SPAN_WARNING("The bracer clamps securely around your forearm and beeps in a comfortable, familiar way."))
@@ -526,8 +547,8 @@
 		M.KnockDown(2)
 		M.emote("scream")
 		//Apply a bit of burn damage
-		M.apply_damage(5, BURN, "l_arm", 0, 0, src)
-		M.apply_damage(5, BURN, "r_arm", 0, 0, src)
+		M.apply_damage(5, BURN, "l_arm", 0, 0, 0, src)
+		M.apply_damage(5, BURN, "r_arm", 0, 0, 0, src)
 
 
 /obj/item/clothing/gloves/yautja/examine(mob/user)
@@ -558,8 +579,7 @@
 			. = call_combi(TRUE)
 		else
 			. = delimb_user()
-			//Council did not want this to ever happen
-			//activate_suicide_internal(TRUE)
+			
 	return
 
 //We use this to determine whether we should activate the given verb, or a random verb
@@ -883,8 +903,6 @@
 		return
 
 	exploding = 1
-	var/mob/user = usr
-	var/source_mob = user
 
 	playsound(src, 'sound/effects/pred_countdown.ogg', 100, 0, 17, status = 0)
 	message_staff(FONT_SIZE_XL("<A HREF='?_src_=admin_holder;admincancelpredsd=1;bracer=\ref[src];victim=\ref[victim]'>CLICK TO CANCEL THIS PRED SD</a>"))
@@ -895,9 +913,9 @@
 		victim.apply_damage(50,BRUTE,"chest")
 		if(victim) victim.gib() //Let's make sure they actually gib.
 		if(explosion_type == 0 && z in SURFACE_Z_LEVELS)
-			cell_explosion(T, 600, 50, null, "yautja self destruct", source_mob) //Dramatically BIG explosion.
+			cell_explosion(T, 600, 50, null, "yautja self destruct", src) //Dramatically BIG explosion.
 		else
-			cell_explosion(T, 800, 550, null, "yautja self destruct", source_mob)
+			cell_explosion(T, 800, 550, null, "yautja self destruct", src)
 
 /obj/item/clothing/gloves/yautja/verb/activate_suicide()
 	set name = "Final Countdown (!)"
@@ -961,7 +979,7 @@
 				to_chat(M, SPAN_WARNING("Your fallen comrade does not have a bracer. <b>Report this to your elder so that it's fixed.</b>"))
 			return
 
-	if(M.gloves != src)
+	if(M.gloves != src && !forced)
 		return
 
 	if(exploding)
@@ -1081,6 +1099,57 @@
 	for(var/obj/item/explosive/grenade/spawnergrenade/smartdisc/D in range(10))
 		D.launch_towards(usr, 10, SPEED_FAST, usr)
 	return 1
+
+/obj/item/clothing/gloves/yautja/verb/remove_tracked_item()
+	set name = "Remove item from tracker"
+	set category = "Yautja"
+	set desc = "Removes an item from all yautja tracking."
+	. = remove_tracked_item_internal(FALSE)
+
+/obj/item/clothing/gloves/yautja/proc/remove_tracked_item_internal(var/forced = FALSE)
+	if(usr.is_mob_incapacitated())
+		return 0
+
+	if(!forced && !isYautja(usr))
+		var/option = should_activate_random_or_this_function()
+		if (option == 0)
+			to_chat(usr, SPAN_WARNING("You fiddle with the buttons but nothing happens..."))
+			return
+		if (option == 1)
+			. = activate_random_verb()
+			return
+	if(!yautja_gear.len)
+		return
+	var/obj/item/pickeditem = input("item to remove") as null|anything in yautja_gear
+	if(pickeditem && !(pickeditem in untracked_yautja_gear))
+		untracked_yautja_gear += pickeditem
+		remove_from_missing_pred_gear(pickeditem)
+
+	
+/obj/item/clothing/gloves/yautja/verb/add_tracked_item()
+	set name = "Add item to tracker"
+	set category = "Yautja"
+	set desc = "Adds an item to all yautja tracking."
+	. = add_tracked_item_internal(FALSE)
+
+/obj/item/clothing/gloves/yautja/proc/add_tracked_item_internal(var/forced = FALSE)
+	if(usr.is_mob_incapacitated())
+		return 0
+
+	if(!forced && !isYautja(usr))
+		var/option = should_activate_random_or_this_function()
+		if (option == 0)
+			to_chat(usr, SPAN_WARNING("You fiddle with the buttons but nothing happens..."))
+			return
+		if (option == 1)
+			. = activate_random_verb()
+			return
+	if(!untracked_yautja_gear.len)
+		return
+	var/obj/item/pickeditem = input("item to add") as null|anything in untracked_yautja_gear
+	if(pickeditem && !(pickeditem in yautja_gear))
+		untracked_yautja_gear -= pickeditem
+		add_to_missing_pred_gear(pickeditem)
 
 /obj/item/clothing/gloves/yautja/verb/call_combi()
 	set name = "Yank Combi-stick"
@@ -1221,6 +1290,7 @@
 	icon_state = "beltbag"
 	flags_equip_slot = SLOT_WAIST
 	max_w_class = SIZE_MEDIUM
+	flags_item = ITEM_PREDATOR
 	storage_slots = 10
 	max_storage_space = 30
 
@@ -1243,7 +1313,7 @@
 	desc = "A device covered in sacred text. It whirrs and beeps every couple of seconds."
 	icon = 'icons/obj/items/weapons/predator.dmi'
 	icon_state = "teleporter"
-
+	flags_item = ITEM_PREDATOR
 	flags_atom = FPRINT|CONDUCT
 	w_class = SIZE_TINY
 	force = 1
@@ -1296,6 +1366,7 @@
 		return
 	var/mob/living/carbon/human/H = user
 	var/sure = alert("Really trigger it?","Sure?","Yes","No")
+	if(sure == "No" || !sure) return
 	if(!isYautja(H))
 		to_chat(user, SPAN_WARNING("The screen angrily flashes three times!"))
 		playsound(user, 'sound/effects/EMPulse.ogg', 25, 1)
@@ -1307,8 +1378,6 @@
 				user.temp_drop_inv_item(src)
 			qdel(src)
 		return
-
-	if(sure == "No" || !sure) return
 	playsound(src,'sound/ambience/signal.ogg', 25, 1)
 	timer = 1
 	user.visible_message(SPAN_INFO("[user] starts becoming shimmery and indistinct..."))
@@ -1334,6 +1403,21 @@
 		sleep(10)
 		if(loc) timer = 0
 
+/obj/item/device/yautja_teleporter/verb/add_tele_loc()
+	set name = "Add Teleporter Destination"
+	set desc = "Adds this location to the teleporter."
+	set category = "Yautja"
+
+	if(!usr || usr.stat || usr.z != SURFACE_Z_LEVEL)
+		return
+	if(loc && istype(usr.loc, /turf))
+		var/turf/location = usr.loc
+		yautja_teleport_loc += location
+		var/name = input("What would you like to name this location?", "Text") as null|text
+		if(!name)
+			return
+		yautja_teleport_desc += name + " ([x], [y], [z])"
+		to_chat(usr, SPAN_WARNING("You can now teleport to this location!"))
 //=================//\\=================\\
 //======================================\\
 
@@ -1467,6 +1551,8 @@
 	flags_equip_slot = SLOT_BACK
 	sharp = 1
 	edge = 1
+	var/on = FALSE
+	var/timer = FALSE
 	embeddable = FALSE
 	w_class = SIZE_LARGE
 	hitsound = 'sound/weapons/bladeslice.ogg'
@@ -1495,11 +1581,7 @@
 			var/mob/living/carbon/Xenomorph/X = target
 			X.interference = 30
 		force = config.med_hit_damage
-		if(prob(22) && !target.lying)
-			user.visible_message(SPAN_DANGER("[user] slashes [target] so hard, they go flying!"))
-			playsound(loc, 'sound/weapons/punchmiss.ogg', 25, 1)
-			target.KnockDown(3)
-			step_away(target,user,1)
+
 	else
 		to_chat(user, SPAN_WARNING("You aren't strong enough to swing the sword properly!"))
 		force = round(config.med_hit_damage/2)
@@ -1513,6 +1595,32 @@
 		remove_from_missing_pred_gear(src)
 	..()
 
+/obj/item/weapon/yautja_sword/unique_action(mob/living/user)
+	if(user.get_active_hand() != src)
+		return
+	if(timer) return
+	if(!on)
+		on = !on
+		timer = TRUE
+		add_timer(CALLBACK(src, .proc/stop_parry), SECONDS_3)
+		to_chat(user, SPAN_NOTICE("You get ready to parry with the [src]."))
+		add_timer(CALLBACK(src, .proc/parry_cooldown), SECONDS_8)
+
+	add_fingerprint(user)
+	return
+
+/obj/item/weapon/yautja_sword/proc/stop_parry()
+	if(on)
+		on = !on
+		if(isYautja(src.loc))
+			var/mob/living/user = loc
+			to_chat(user, SPAN_NOTICE("You lower the [src]."))
+
+/obj/item/weapon/yautja_sword/proc/parry_cooldown()
+	timer = FALSE
+	if(isYautja(src.loc))
+		var/mob/living/user = loc
+		to_chat(user, SPAN_NOTICE("You lower the [src]."))
 /obj/item/weapon/yautja_scythe
 	name = "double war scythe"
 	desc = "A huge, incredibly sharp double blade used for hunting dangerous prey. This weapon is commonly carried by Yautja who wish to disable and slice apart their foes.."
@@ -1559,19 +1667,12 @@
 		X.interference = 30
 	if(ishuman(target)) //Slicey dicey!
 		if(prob(14))
-			var/obj/limb/affecting
-			var/mob/living/carbon/human/H = target
-			affecting = H.get_limb(ran_zone(user.zone_selected,60))
-			if(!affecting)
-				affecting = H.get_limb(ran_zone(user.zone_selected,90)) //No luck? Try again.
-			if(affecting)
-				if(affecting.body_part != BODY_FLAG_CHEST && affecting.body_part != BODY_FLAG_GROIN) //as hilarious as it is
-					user.visible_message(SPAN_DANGER("The limb is sliced clean off!"),SPAN_DANGER("You slice off a limb!"))
-					affecting.droplimb(1, 0, initial(name)) //the second 1 is  amputation. This amputates.
-	else //Probably an alien
-		if(prob(14))
-			..() //Do it again! CRIT!
-
+			user.visible_message(SPAN_DANGER("An opening in combat presents itself!"),SPAN_DANGER("You manage to strike at your foe once more!"))
+			..() //Do it again! CRIT! This will be replaced by a bleed effect.
+	else 
+		if(prob(20))
+			user.visible_message(SPAN_DANGER("An opening in combat presents itself!"),SPAN_DANGER("You manage to strike at your foe once more!"))
+			..() //Do it again! CRIT! This will be replaced by a bleed effect.
 	return
 
 //Combistick

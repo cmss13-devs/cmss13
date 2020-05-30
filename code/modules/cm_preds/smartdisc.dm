@@ -3,17 +3,19 @@
 	spawner_type = /mob/living/simple_animal/hostile/smartdisc
 	deliveryamt = 1
 	desc = "A strange piece of alien technology. It has many jagged, whirring blades and bizarre writing."
+	flags_item = ITEM_PREDATOR
 	icon = 'icons/obj/items/weapons/predator.dmi'
 	icon_state = "disk"
 	item_state = "pred_disk"
-	force = 15
-	throwforce = 35
 	w_class = SIZE_TINY
 	det_time = 30
 	unacidable = TRUE
+	embeddable = FALSE
 
 /obj/item/explosive/grenade/spawnergrenade/smartdisc/New()
 	..()
+	force = config.min_hit_damage
+	throwforce = config.hlow_hit_damage
 	if(!isYautja(loc))
 		add_to_missing_pred_gear(src)
 
@@ -24,6 +26,45 @@
 /obj/item/explosive/grenade/spawnergrenade/smartdisc/dropped(mob/user)
 	add_to_missing_pred_gear(src)
 	..()
+	
+/obj/item/explosive/grenade/spawnergrenade/smartdisc/launch_towards(var/atom/target, var/range, var/speed = 0, var/atom/thrower, var/spin, var/launch_type = NORMAL_LAUNCH, var/pass_flags = NO_FLAGS)
+	..()
+	var/mob/user = usr
+	if(!active && isYautja(user) && (icon_state == initial(icon_state)))
+		boomerang(user)
+		
+/obj/item/explosive/grenade/spawnergrenade/smartdisc/proc/boomerang(mob/user)
+	var/mob/living/L = find_target(user)
+	icon_state = initial(icon_state) + "_active"
+	if(L)
+		launch_towards(L.loc, 4, SPEED_FAST, usr)
+	launch_towards(usr, 12, SPEED_SLOW, usr)
+	add_timer(CALLBACK(src, .proc/clear_boomerang), SECONDS_3)
+
+/obj/item/explosive/grenade/spawnergrenade/smartdisc/proc/clear_boomerang()
+	icon_state = initial(icon_state)
+	
+/obj/item/explosive/grenade/spawnergrenade/smartdisc/proc/find_target(mob/user)
+	var/atom/T = null
+	for(var/mob/living/A in listtargets(4))
+		if(A == src)
+			continue
+		if(isliving(A))
+			var/mob/living/L = A
+			if(L.faction == user.faction)
+				continue
+			else if(isYautja(L))
+				continue
+			else if (L.stat == DEAD)
+				continue
+			else
+				T = L
+				break
+	return T
+
+/obj/item/explosive/grenade/spawnergrenade/smartdisc/proc/listtargets(var/dist = 3)
+	var/list/L = hearers(src, dist)
+	return L
 
 /obj/item/explosive/grenade/spawnergrenade/smartdisc/pickup(mob/living/user)
 	if(isYautja(user))
@@ -98,8 +139,6 @@
 	mob_size = MOB_SIZE_SMALL
 
 	harm_intent_damage = 10
-	melee_damage_lower = 15
-	melee_damage_upper = 30
 	attacktext = "slices"
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 
@@ -121,6 +160,11 @@
 	var/lifetime = 8 //About 15 seconds.
 	var/time_idle = 0
 
+
+/mob/living/simple_animal/hostile/smartdisc/New()
+	melee_damage_lower = config.min_hit_damage
+	melee_damage_upper = config.low_hit_damage
+	..()
 /mob/living/simple_animal/hostile/smartdisc/Process_Spacemove(var/check_drift = 0)
 	return 1
 
@@ -161,7 +205,7 @@
 
 		if(isliving(A))
 			var/mob/living/L = A
-			if(L.faction == src.faction && !attack_same)
+			if(L.faction == faction)
 				continue
 			else if(L in friends)
 				continue

@@ -539,4 +539,6 @@ var/list/wood_icons = list("wood", "wood-broken")
 		icon_state = "light_off"
 		SetLuminosity(0)
 
-
+/turf/open/floor/sandstone
+	name = "sandstone floor"
+	icon_state = "whiteyellowfull"

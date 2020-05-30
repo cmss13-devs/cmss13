@@ -937,7 +937,7 @@
 	damage = 3
 
 /datum/unarmed_attack/punch/strong
-	attack_verb = list("punch","bust","jab")
+	attack_verb = list("punch","bust","skewer")
 	damage = 10
 
 /datum/unarmed_attack/claws

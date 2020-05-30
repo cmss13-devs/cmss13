@@ -89,7 +89,7 @@
 	var/charge_time = 0
 	var/last_regen = 0
 	flags_gun_features = GUN_UNUSUAL_DESIGN
-
+	flags_item = ITEM_PREDATOR
 
 /obj/item/weapon/gun/energy/plasmarifle/New()
 	..()
@@ -204,7 +204,8 @@
 	w_class = SIZE_MEDIUM
 	var/charge_time = 40
 	flags_gun_features = GUN_UNUSUAL_DESIGN
-
+	flags_item = ITEM_PREDATOR
+	
 /obj/item/weapon/gun/energy/plasmapistol/Dispose()
 	remove_from_missing_pred_gear(src)
 	..()

@@ -100,8 +100,14 @@
 		if("yautja_teleport_loc")
 			if(z == MAIN_SHIP_Z_LEVEL)
 				yautja_almayer_loc += loc
+				if(loc && istype(loc, /turf))
+					var/turf/location = loc
+					yautja_almayer_desc += location.loc_to_string()
 			else
 				yautja_teleport_loc += loc
+				if(loc && istype(loc, /turf))
+					var/turf/location = loc
+					yautja_teleport_desc += location.loc_to_string()
 			qdel(src)
 
 

@@ -1361,13 +1361,13 @@
 /datum/ammo/energy/yautja/caster/sphere
 	name = "plasma eradication sphere"
 	icon_state = "bluespace"
-	flags_ammo_behavior = AMMO_EXPLOSIVE|AMMO_ENERGY
+	flags_ammo_behavior = AMMO_EXPLOSIVE|AMMO_ENERGY|AMMO_HITS_TARGET_TURF
 	var/stun_range = 4 // Big
 	var/stun_time = 6
 
 /datum/ammo/energy/yautja/caster/sphere/New()
 	..()
-	damage = 1
+	damage = 0
 	shell_speed = config.super_shell_speed
 	accuracy = config.max_hit_accuracy
 	accurate_range = config.max_shell_range
@@ -1409,7 +1409,6 @@
 		else
 			M.KnockDown(stun_time, 1)
 
-		M.apply_armoured_damage(rand(20, 30), ARMOR_ENERGY, BURN)
 
 
 

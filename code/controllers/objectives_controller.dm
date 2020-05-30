@@ -79,7 +79,6 @@ var/global/datum/controller/objectives_controller/objectives_controller
 		var/dest = pick(15;"close", 30;"medium", 5;"far", 50;"science")
 		spawn_objective_at_landmark(dest, /obj/item/storage/fancy/vials/random)
 	clear_objective_landmarks()
-	connect_objectives()
 
 /datum/controller/objectives_controller/proc/clear_objective_landmarks()
 	//Don't need them anymore, so we remove them
@@ -362,6 +361,7 @@ var/global/datum/controller/objectives_controller/objectives_controller
 /hook/startup/proc/create_objectives_controller()
 	objectives_controller = new /datum/controller/objectives_controller
 	objectives_controller.generate_objectives()
+	objectives_controller.connect_objectives()
 	// Setup some global objectives
 	objectives_controller.power = new /datum/cm_objective/establish_power
 	objectives_controller.comms = new /datum/cm_objective/communications

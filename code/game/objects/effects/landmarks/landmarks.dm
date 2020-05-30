@@ -102,12 +102,12 @@
 				yautja_almayer_loc += loc
 				if(loc && istype(loc, /turf))
 					var/turf/location = loc
-					yautja_almayer_desc += location.loc_to_string()
+					yautja_almayer_desc += loc.name + location.loc_to_string()
 			else
 				yautja_teleport_loc += loc
 				if(loc && istype(loc, /turf))
 					var/turf/location = loc
-					yautja_teleport_desc += location.loc_to_string()
+					yautja_teleport_desc += loc.name + location.loc_to_string()
 			qdel(src)
 
 

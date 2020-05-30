@@ -121,7 +121,7 @@
 					var/obj/item/reagent_container/food/snacks/xenomeat = new /obj/item/reagent_container/food/snacks/xenomeat(T.loc)
 					xenomeat.name = "raw [xeno_victim.caste.upgrade_name] [xeno_victim.caste_name] steak"
 				else if(victim && isturf(victim.loc))
-					victim.apply_damage(100,BRUTE,pick("r_leg","l_leg","r_arm","l_arm"),1,1) //Basically just rips off a random limb.
+					victim.apply_damage(100,BRUTE,pick("r_leg","l_leg","r_arm","l_arm"),0,1,1) //Basically just rips off a random limb.
 					var/obj/item/reagent_container/food/snacks/meat/meat = new /obj/item/reagent_container/food/snacks/meat(victim.loc)
 					meat.name = "raw [victim.name] steak"
 				T.butchery_progress = 3
@@ -138,6 +138,8 @@
 				else if(victim && isturf(T.loc))
 					var/obj/item/reagent_container/food/snacks/meat/meat = new /obj/item/reagent_container/food/snacks/meat(victim.loc)
 					meat.name = "raw [victim.name] tenderloin"
+	//				T.apply_damage(100,BRUTE,"chest",0,0,0) //Does random serious damage, so we make sure they're dead.
+	//				Why was this even in here?
 				T.butchery_progress = 4
 				playsound(loc, 'sound/weapons/wristblades_hit.ogg', 25)
 			else
@@ -260,8 +262,8 @@
 	var/sure = alert("An array of powerful weapons are displayed to you. Pick your gear carefully. If you cancel at any point, you will not claim your equipment.","Sure?","Begin the Hunt","No, not now")
 	if(sure == "Begin the Hunt")
 		var/list/melee = list("The Lumbering Glaive", "The Rending Chain-Whip","The Piercing Hunting Sword","The Cleaving War-Scythe", "The Adaptive Combi-Stick")
-		var/list/other = list("The Fleeting Spike Launcher", "The Swift Plasma Pistol", "The Brutal Plasma Rifle", "The Purifying Smart-Disc", "The Formidable Plate Armor")//, "The Clever Hologram")
-		var/list/restricted = list("The Fleeting Spike Launcher", "The Swift Plasma Pistol", "The Brutal Plasma Rifle", "The Formidable Plate Armor") //Can only select them once each.
+		var/list/other = list("The Fleeting Spike Launcher", "The Swift Plasma Pistol", "The Purifying Smart-Disc", "The Formidable Plate Armor")//, "The Clever Hologram")
+		var/list/restricted = list("The Fleeting Spike Launcher", "The Swift Plasma Pistol", "The Formidable Plate Armor") //Can only select them once each.
 
 		var/msel = input("Which weapon shall you use on your hunt?:","Melee Weapon") as null|anything in melee
 		if(!msel) return //We don't want them to cancel out then get nothing.
@@ -294,8 +296,6 @@
 					new /obj/item/weapon/gun/launcher/spike(src.loc)
 				if("The Swift Plasma Pistol")
 					new /obj/item/weapon/gun/energy/plasmapistol(src.loc)
-				if("The Brutal Plasma Rifle")
-					new /obj/item/weapon/gun/energy/plasmarifle(src.loc)
 				if("The Purifying Smart-Disc")
 					new /obj/item/explosive/grenade/spawnergrenade/smartdisc(src.loc)
 				if("The Formidable Plate Armor")

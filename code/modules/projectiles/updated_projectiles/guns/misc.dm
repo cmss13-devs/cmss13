@@ -119,7 +119,8 @@
 	var/max_spikes = 12
 	var/last_regen
 	flags_gun_features = GUN_UNUSUAL_DESIGN
-
+	flags_item = ITEM_PREDATOR
+	
 /obj/item/weapon/gun/launcher/spike/dropped(mob/living/user)
 	add_to_missing_pred_gear(src)
 	..()

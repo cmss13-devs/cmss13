@@ -185,7 +185,7 @@
 	desc = "A poultice made of soft leaves that is rubbed on bruises."
 	icon = 'icons/obj/items/harvest.dmi'
 	icon_state = "shandp"
-	heal_brute = 7
+	heal_brute = 15
 	stack_id = "Hand leaf"
 
 /obj/item/stack/medical/ointment/tajaran
@@ -194,7 +194,7 @@
 	desc = "A poultice made of cold, blue petals that is rubbed on burns."
 	icon = 'icons/obj/items/harvest.dmi'
 	icon_state = "mtearp"
-	heal_burn = 7
+	heal_burn = 15
 	stack_id = "Tear petals"
 
 /obj/item/stack/medical/advanced/ointment

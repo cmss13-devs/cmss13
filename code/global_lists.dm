@@ -96,6 +96,7 @@ var/global/list/grenade_antigrief_exempt_areas = list(
 )
 
 var/global/list/yautja_gear = list() // list of loose pred gear
+var/global/list/untracked_yautja_gear = list() // List of untracked loose pred gear
 
 var/global/list/gun_cabinets = list()
 

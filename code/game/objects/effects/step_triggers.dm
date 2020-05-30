@@ -153,6 +153,10 @@
 
 	if(istype(A,/obj/effect) || A.anchored)
 		return
+	var/mob/User = A
+	var/mob/M
+	if(isliving(User))
+		M = User.pulling
 
 	if(teleport_x && teleport_y && teleport_z)
 		/* TODO: replace this -spookydonut
@@ -168,6 +172,10 @@
 			A.x = teleport_x
 			A.y = teleport_y
 			A.z = teleport_z
+		if(M && M.loc)
+			M.x = teleport_x
+			M.y = teleport_y
+			M.z = teleport_z
 			/*
 			switch(teleportation_type)
 				if(1)
@@ -180,12 +188,19 @@
 /* Predator Ship Teleporter - set in each individual gamemode */
 
 /obj/effect/step_trigger/teleporter/yautja_ship/Trigger(atom/movable/A)
+	var/turf/destination
 	if(yautja_teleport_loc.len)	//We have some possible locations.
-		var/turf/destination = pick(yautja_teleport_loc)	//Pick one of them at random.
-		teleport_x = destination.x	//Configure the destination locations.
-		teleport_y = destination.y
-		teleport_z = destination.z
-		..(A, 1)	//Run the parent proc for teleportation. Tell it to play the animation.
+		var/turf/pick = input("Where do you want to go today?", "Locations") as null|anything in yautja_teleport_desc	//Pick one of them in the list.
+		for(var/turf/T in yautja_teleport_loc)
+			if(T.loc_to_string() == pick)
+				destination = T
+				break	
+	if(!destination || (A.loc != loc)) 
+		return
+	teleport_x = destination.x	//Configure the destination locations.
+	teleport_y = destination.y
+	teleport_z = destination.z
+	..(A, 1)	//Run the parent proc for teleportation. Tell it to play the animation.
 
 /* Random teleporter, teleports atoms to locations ranging from teleport_x - teleport_x_offset, etc */
 

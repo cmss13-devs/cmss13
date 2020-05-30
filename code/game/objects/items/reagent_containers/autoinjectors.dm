@@ -161,6 +161,11 @@
 	volume = REAGENTS_OVERDOSE
 	uses_left = 1
 
+/obj/item/reagent_container/hypospray/autoinjector/yautja/attack(mob/M as mob, mob/user as mob)
+	if(isYautja(user))
+		..()
+	else 
+		to_chat(user, SPAN_DANGER("You have no idea where to inject [src]."))
 
 /obj/item/reagent_container/hypospray/autoinjector/skillless
 	name = "first-aid autoinjector"

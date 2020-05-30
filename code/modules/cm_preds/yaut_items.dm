@@ -1416,7 +1416,7 @@
 		var/name = input("What would you like to name this location?", "Text") as null|text
 		if(!name)
 			return
-		yautja_teleport_desc += name + " ([x], [y], [z])"
+		yautja_teleport_desc += name + location.loc_to_string()
 		to_chat(usr, SPAN_WARNING("You can now teleport to this location!"))
 //=================//\\=================\\
 //======================================\\

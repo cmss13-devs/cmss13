@@ -67,7 +67,7 @@
 
 /turf/proc/loc_to_string()
 	var/text
-	text = loc.name + " ([x], [y], [z])"// Desc is the <area name> (x, y)
+	text = " ( [x], [y], [z])"// Desc is the <area name> (x, y)
 	return text
 
 /turf/process()

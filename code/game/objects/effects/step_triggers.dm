@@ -192,7 +192,7 @@
 	if(yautja_teleport_loc.len)	//We have some possible locations.
 		var/turf/pick = input("Where do you want to go today?", "Locations") as null|anything in yautja_teleport_desc	//Pick one of them in the list.
 		for(var/turf/T in yautja_teleport_loc)
-			if(T.loc_to_string() == pick)
+			if(findtext(pick,(T.loc_to_string())))
 				destination = T
 				break	
 	if(!destination || (A.loc != loc)) 

@@ -70,7 +70,7 @@
 	bypass_w_limit = list(/obj/item/tool/shovel/etool)
 
 
-/obj/item/storage/belt/utility/full/New()
+/obj/item/storage/belt/utility/full/Initialize()
 	new /obj/item/tool/screwdriver(src)
 	new /obj/item/tool/wrench(src)
 	new /obj/item/tool/weldingtool(src)
@@ -81,7 +81,7 @@
 	..()
 
 
-/obj/item/storage/belt/utility/atmostech/New()
+/obj/item/storage/belt/utility/atmostech/Initialize()
 	new /obj/item/tool/screwdriver(src)
 	new /obj/item/tool/wrench(src)
 	new /obj/item/tool/weldingtool(src)
@@ -125,7 +125,7 @@
 	    /obj/item/roller
 	)
 
-/obj/item/storage/belt/medical/full/New()
+/obj/item/storage/belt/medical/full/Initialize()
 	new /obj/item/storage/pill_bottle/bicaridine(src)
 	new /obj/item/storage/pill_bottle/dexalin(src)
 	new /obj/item/storage/pill_bottle/antitox(src)
@@ -149,7 +149,7 @@
 
 /obj/item/storage/belt/medical/with_defib_and_analyzer
 
-/obj/item/storage/belt/medical/with_defib_and_analyzer/New()
+/obj/item/storage/belt/medical/with_defib_and_analyzer/Initialize()
 	new /obj/item/device/defibrillator(src)
 	new /obj/item/device/healthanalyzer(src)
 	..()
@@ -175,12 +175,12 @@
 	)
 	var/has_gamemode_skin = TRUE
 
-/obj/item/storage/belt/medical/lifesaver/New()
+/obj/item/storage/belt/medical/lifesaver/Initialize()
 	if(has_gamemode_skin)
 		select_gamemode_skin(type)
 	..()
 
-/obj/item/storage/belt/medical/lifesaver/full/New()
+/obj/item/storage/belt/medical/lifesaver/full/Initialize()
 	new /obj/item/stack/medical/advanced/bruise_pack(src)
 	new /obj/item/stack/medical/advanced/bruise_pack(src)
 	new /obj/item/stack/medical/advanced/ointment(src)
@@ -208,7 +208,7 @@
 	storage_slots = 42
 	max_storage_space = 82
 
-/obj/item/storage/belt/medical/lifesaver/upp/full/New()
+/obj/item/storage/belt/medical/lifesaver/upp/full/Initialize()
 	new /obj/item/stack/medical/advanced/bruise_pack(src)
 	new /obj/item/stack/medical/advanced/bruise_pack(src)
 	new /obj/item/stack/medical/advanced/ointment(src)
@@ -280,7 +280,7 @@
 	max_storage_space = 30
 
 
-/obj/item/storage/belt/security/MP/full/New()
+/obj/item/storage/belt/security/MP/full/Initialize()
 	new /obj/item/weapon/gun/energy/taser(src)
 	new /obj/item/device/flash(src)
 	new /obj/item/weapon/baton(src)
@@ -318,12 +318,12 @@
 	)
 	var/has_gamemode_skin = TRUE //whether it has a sprite for each gamemode.
 
-/obj/item/storage/belt/marine/New()
+/obj/item/storage/belt/marine/Initialize()
 	if(has_gamemode_skin)
 		select_gamemode_skin(type)
 	..()
 
-/obj/item/storage/belt/marine/m41a/New()
+/obj/item/storage/belt/marine/m41a/Initialize()
 	new /obj/item/ammo_magazine/rifle (src)
 	new /obj/item/ammo_magazine/rifle (src)
 	new /obj/item/ammo_magazine/rifle (src)
@@ -331,7 +331,7 @@
 	new /obj/item/ammo_magazine/rifle (src)
 	..()
 
-/obj/item/storage/belt/marine/m41amk1/New()
+/obj/item/storage/belt/marine/m41amk1/Initialize()
 	new /obj/item/ammo_magazine/rifle/m41aMK1 (src)
 	new /obj/item/ammo_magazine/rifle/m41aMK1 (src)
 	new /obj/item/ammo_magazine/rifle/m41aMK1 (src)
@@ -339,7 +339,7 @@
 	new /obj/item/ammo_magazine/rifle/m41aMK1 (src)
 	..()
 
-/obj/item/storage/belt/marine/m39/New()
+/obj/item/storage/belt/marine/m39/Initialize()
 	new /obj/item/ammo_magazine/smg/m39 (src)
 	new /obj/item/ammo_magazine/smg/m39 (src)
 	new /obj/item/ammo_magazine/smg/m39 (src)
@@ -362,7 +362,7 @@
 	has_gamemode_skin = FALSE
 
 //version full of type 71 mags
-/obj/item/storage/belt/marine/upp/full/New()
+/obj/item/storage/belt/marine/upp/full/Initialize()
 	new /obj/item/ammo_magazine/rifle/type71(src)
 	new /obj/item/ammo_magazine/rifle/type71(src)
 	new /obj/item/ammo_magazine/rifle/type71(src)
@@ -391,11 +391,11 @@
 	max_storage_space = 28
 	can_hold = list(/obj/item/ammo_magazine/handful)
 
-/obj/item/storage/belt/shotgun/New()
+/obj/item/storage/belt/shotgun/Initialize()
 	select_gamemode_skin(type)
 	..()
 
-/obj/item/storage/belt/shotgun/full/New()
+/obj/item/storage/belt/shotgun/full/Initialize()
 	for(var/i=1; i <= storage_slots; i++)
 		var/obj/item/ammo_magazine/handful/H = new(src)
 		H.generate_handful(/datum/ammo/bullet/shotgun/slug, "12g", 5, 5, /obj/item/weapon/gun/shotgun)
@@ -419,7 +419,7 @@
 	max_storage_space = 6
 	can_hold=list(/obj/item/weapon/throwing_knife)
 
-/obj/item/storage/belt/knifepouch/New()
+/obj/item/storage/belt/knifepouch/Initialize()
 	select_gamemode_skin(type)
 	item_state = "marinebelt" //PLACEHOLDER. Override, since it has no unique state.
 	new /obj/item/weapon/throwing_knife(src)
@@ -442,7 +442,7 @@
 	can_hold = list(/obj/item/explosive/grenade)
 
 
-/obj/item/storage/belt/grenade/full/New()
+/obj/item/storage/belt/grenade/full/Initialize()
 	new /obj/item/explosive/grenade/incendiary(src)
 	new /obj/item/explosive/grenade/incendiary(src)
 	new /obj/item/explosive/grenade/incendiary(src)
@@ -464,7 +464,7 @@
 	storage_slots = 18
 	max_storage_space = 54
 
-/obj/item/storage/belt/grenade/large/full/New()
+/obj/item/storage/belt/grenade/large/full/Initialize()
 	new /obj/item/explosive/grenade/incendiary(src)
 	new /obj/item/explosive/grenade/incendiary(src)
 	new /obj/item/explosive/grenade/incendiary(src)
@@ -495,7 +495,7 @@
 	icon_state="g8pouch"
 	item_state="g8pouch"
 
-/obj/item/storage/sparepouch/New()
+/obj/item/storage/sparepouch/Initialize()
 	select_gamemode_skin(type)
 	..()
 
@@ -627,11 +627,11 @@
 		/obj/item/ammo_magazine/pistol/smart
 	)
 
-/obj/item/storage/belt/gun/m4a3/New()
+/obj/item/storage/belt/gun/m4a3/Initialize()
 	select_gamemode_skin(type)
 	..()
 
-/obj/item/storage/belt/gun/m4a3/full/New()
+/obj/item/storage/belt/gun/m4a3/full/Initialize()
 	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/pistol/m4a3(src)
 	new /obj/item/ammo_magazine/pistol(src)
 	new /obj/item/ammo_magazine/pistol(src)
@@ -642,7 +642,7 @@
 	new_gun.on_enter_storage(src)
 	..()
 
-/obj/item/storage/belt/gun/m4a3/commander/New()
+/obj/item/storage/belt/gun/m4a3/commander/Initialize()
 	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/pistol/m4a3/custom(src)
 	new /obj/item/ammo_magazine/pistol/ap(src)
 	new /obj/item/ammo_magazine/pistol/ap(src)
@@ -653,7 +653,7 @@
 	new_gun.on_enter_storage(src)
 	..()
 
-/obj/item/storage/belt/gun/m4a3/mod88/New()
+/obj/item/storage/belt/gun/m4a3/mod88/Initialize()
 	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/pistol/mod88(src)
 	new /obj/item/ammo_magazine/pistol/mod88(src)
 	new /obj/item/ammo_magazine/pistol/mod88(src)
@@ -664,7 +664,7 @@
 	new_gun.on_enter_storage(src)
 	..()
 
-/obj/item/storage/belt/gun/m4a3/vp78/New()
+/obj/item/storage/belt/gun/m4a3/vp78/Initialize()
 	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/pistol/vp78(src)
 	new /obj/item/ammo_magazine/pistol/vp78(src)
 	new /obj/item/ammo_magazine/pistol/vp78(src)
@@ -687,11 +687,11 @@
 		/obj/item/ammo_magazine/revolver
 	)
 
-/obj/item/storage/belt/gun/m44/New()
+/obj/item/storage/belt/gun/m44/Initialize()
 	select_gamemode_skin(type)
 	..()
 
-/obj/item/storage/belt/gun/m44/full/New()
+/obj/item/storage/belt/gun/m44/full/Initialize()
 	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/revolver/m44(src)
 	new /obj/item/ammo_magazine/revolver/marksman(src)
 	new /obj/item/ammo_magazine/revolver/marksman(src)
@@ -725,7 +725,7 @@
 		/obj/item/ammo_magazine/revolver/mateba
 	)
 
-/obj/item/storage/belt/gun/mateba/full/New()
+/obj/item/storage/belt/gun/mateba/full/Initialize()
 	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/revolver/mateba(src)
 	new /obj/item/ammo_magazine/revolver/mateba(src)
 	new /obj/item/ammo_magazine/revolver/mateba(src)
@@ -741,11 +741,11 @@
 	icon_state = "cmateba_holster"
 	item_state = "cmateba_holster"
 
-/obj/item/storage/belt/gun/mateba/cmateba/New()
+/obj/item/storage/belt/gun/mateba/cmateba/Initialize()
 	select_gamemode_skin(type)
 	..()
 
-/obj/item/storage/belt/gun/mateba/cmateba/full/New()
+/obj/item/storage/belt/gun/mateba/cmateba/full/Initialize()
 	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/revolver/mateba/cmateba(src)
 	new /obj/item/ammo_magazine/revolver/mateba(src)
 	new /obj/item/ammo_magazine/revolver/mateba(src)
@@ -755,7 +755,7 @@
 	new_gun.on_enter_storage(src)
 	..()
 
-/obj/item/storage/belt/gun/mateba/admiral/New()
+/obj/item/storage/belt/gun/mateba/admiral/Initialize()
 	icon_state = "amateba_holster"
 	item_state = "amateba_holster"
 	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/revolver/mateba/admiral(src)
@@ -778,7 +778,7 @@
 		/obj/item/ammo_magazine/pistol/c99t
 	)
 
-/obj/item/storage/belt/gun/korovin/standard/New()
+/obj/item/storage/belt/gun/korovin/standard/Initialize()
 	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/pistol/c99/upp(src)
 	new /obj/item/ammo_magazine/pistol/c99(src)
 	new /obj/item/ammo_magazine/pistol/c99(src)
@@ -787,7 +787,7 @@
 	new_gun.on_enter_storage(src)
 	..()
 
-/obj/item/storage/belt/gun/korovin/tranq/New()
+/obj/item/storage/belt/gun/korovin/tranq/Initialize()
 	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/pistol/c99/upp/tranq(src)
 	new /obj/item/ammo_magazine/pistol/c99t(src)
 	new /obj/item/ammo_magazine/pistol/c99t(src)
@@ -810,11 +810,11 @@
 	)
 	var/has_gamemode_skin = TRUE
 
-/obj/item/storage/belt/gun/smartpistol/New()
+/obj/item/storage/belt/gun/smartpistol/Initialize()
 	select_gamemode_skin(type)
 	..()
 
-/obj/item/storage/belt/gun/smartpistol/full/New()
+/obj/item/storage/belt/gun/smartpistol/full/Initialize()
 	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/pistol/smart(src)
 	new /obj/item/ammo_magazine/pistol/smart(src)
 	new /obj/item/ammo_magazine/pistol/smart(src)
@@ -836,7 +836,7 @@
 		/obj/item/device/flashlight/flare
 	)
 
-/obj/item/storage/belt/gun/flaregun/full/New()
+/obj/item/storage/belt/gun/flaregun/full/Initialize()
 	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/flare(src)
 	new /obj/item/device/flashlight/flare(src)
 	new /obj/item/device/flashlight/flare(src)
@@ -857,7 +857,7 @@
 	new_gun.on_enter_storage(src)
 	..()
 
-/obj/item/storage/belt/gun/flaregun/full_nogun/New()
+/obj/item/storage/belt/gun/flaregun/full_nogun/Initialize()
 	new /obj/item/device/flashlight/flare(src)
 	new /obj/item/device/flashlight/flare(src)
 	new /obj/item/device/flashlight/flare(src)
@@ -921,11 +921,11 @@
 		/obj/item/ammo_magazine/smartgun
 	)
 
-/obj/item/storage/belt/gun/smartgunner/New()
+/obj/item/storage/belt/gun/smartgunner/Initialize()
 	select_gamemode_skin(type)
 	..()
 
-/obj/item/storage/belt/gun/smartgunner/full/New()
+/obj/item/storage/belt/gun/smartgunner/full/Initialize()
 	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/pistol/m4a3(src)
 	new /obj/item/ammo_magazine/pistol/hp(src)
 	new /obj/item/ammo_magazine/smartgun(src)
@@ -933,7 +933,7 @@
 	new_gun.on_enter_storage(src)
 	..()
 
-/obj/item/storage/belt/gun/smartgunner/pmc/full/New()
+/obj/item/storage/belt/gun/smartgunner/pmc/full/Initialize()
 	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/pistol/vp78(src)
 	new /obj/item/ammo_magazine/pistol/vp78(src)
 	new /obj/item/ammo_magazine/smartgun/dirty(src)

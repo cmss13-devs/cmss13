@@ -107,11 +107,15 @@
 
 	return 1
 
+/obj/item/reagent_container/hypospray/Initialize()
+	..()
+	mag = new /obj/item/reagent_container/glass/beaker/vial(src)
+
 /obj/item/reagent_container/hypospray/tricordrazine
 	desc = "The DeForest Medical Corporation hypospray is a sterile, air-needle autoinjector for rapid administration of drugs to patients. Contains tricordrazine."
 	volume = 30
 
-/obj/item/reagent_container/hypospray/tricordrazine/New()
+/obj/item/reagent_container/hypospray/tricordrazine/Initialize()
 	..()
 	mag = new /obj/item/reagent_container/glass/beaker/vial/tricordrazine(src)
 
@@ -120,6 +124,6 @@
 	desc = "The DeForest Medical Corporation hypospray is a sterile, air-needle autoinjector for rapid administration of drugs to patients. Contains sedatives."
 	volume = 30
 
-/obj/item/reagent_container/hypospray/sedative/New()
+/obj/item/reagent_container/hypospray/sedative/Initialize()
 	..()
 	mag = new /obj/item/reagent_container/glass/beaker/vial/sedative(src)

@@ -18,7 +18,7 @@
 		src.pixel_x = rand(-5.0, 5)
 		src.pixel_y = rand(-5.0, 5)
 
-/obj/item/reagent_container/food/snacks/grown/New()
+/obj/item/reagent_container/food/snacks/grown/Initialize()
 	..()
 
 	//Handle some post-spawn var stuff.

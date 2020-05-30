@@ -9,11 +9,9 @@
 	anchored = 1
 	smokeranking = SMOKE_RANK_HIGH
 
-/obj/effect/particle_effect/smoke/chem/New()
+/obj/effect/particle_effect/smoke/chem/Initialize()
 	..()
-	var/datum/reagents/R = new/datum/reagents(500)
-	reagents = R
-	R.my_atom = src
+	create_reagents(500)
 
 
 
@@ -30,9 +28,7 @@
 /datum/effect_system/smoke_spread/chem/New()
 	..()
 	chemholder = new/obj()
-	var/datum/reagents/R = new/datum/reagents(500)
-	chemholder.reagents = R
-	R.my_atom = chemholder
+	chemholder.create_reagents(500)
 
 //------------------------------------------
 //Sets up the chem smoke effect

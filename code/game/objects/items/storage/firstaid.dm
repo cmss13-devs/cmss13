@@ -22,7 +22,7 @@
 	var/icon_full //icon state to use when kit is full
 	var/possible_icons_full
 
-/obj/item/storage/firstaid/New()
+/obj/item/storage/firstaid/Initialize()
 	..()
 
 	if(possible_icons_full)
@@ -163,7 +163,7 @@
 
 /obj/item/storage/syringe_case/regular
 
-	New()
+/obj/item/storage/syringe_case/regular/Initialize()
 		..()
 		new /obj/item/reagent_container/syringe( src )
 		new /obj/item/reagent_container/glass/bottle/inaprovaline( src )
@@ -171,7 +171,7 @@
 
 /obj/item/storage/syringe_case/burn
 
-	New()
+/obj/item/storage/syringe_case/burn/Initialize()
 		..()
 		new /obj/item/reagent_container/syringe( src )
 		new /obj/item/reagent_container/glass/bottle/kelotane( src )
@@ -179,7 +179,7 @@
 
 /obj/item/storage/syringe_case/tox
 
-	New()
+/obj/item/storage/syringe_case/tox/Initialize()
 		..()
 		new /obj/item/reagent_container/syringe( src )
 		new /obj/item/reagent_container/glass/bottle/antitoxin( src )
@@ -187,7 +187,7 @@
 
 /obj/item/storage/syringe_case/oxy
 
-	New()
+/obj/item/storage/syringe_case/oxy/Initialize()
 		..()
 		new /obj/item/reagent_container/syringe( src )
 		new /obj/item/reagent_container/glass/bottle/inaprovaline( src )
@@ -215,9 +215,9 @@
 	use_sound = null
 	max_storage_space = 16
 	var/skilllock = 1
-	var/pill_type_to_fill //type of pill to use to fill in the bottle in New()
+	var/pill_type_to_fill //type of pill to use to fill in the bottle in /Initialize()
 
-/obj/item/storage/pill_bottle/New()
+/obj/item/storage/pill_bottle/Initialize()
 	..()
 	if(pill_type_to_fill)
 		for(var/i=1 to max_storage_space)

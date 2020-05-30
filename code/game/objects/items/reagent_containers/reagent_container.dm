@@ -25,7 +25,7 @@
 	if (N)
 		R.amount_per_transfer_from_this = N
 
-/obj/item/reagent_container/New()
+/obj/item/reagent_container/Initialize()
 	..()
 	if (!possible_transfer_amounts)
 		src.verbs -= /obj/item/reagent_container/verb/set_APTFT //which objects actually uses it?

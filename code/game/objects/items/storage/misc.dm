@@ -2,7 +2,7 @@
 	name = "pack of dice"
 	desc = "It's a small container with dice inside."
 
-	New()
+/obj/item/storage/pill_bottle/dice/Initialize()
 		..()
 		new /obj/item/toy/dice( src )
 		new /obj/item/toy/dice/d20( src )
@@ -22,7 +22,7 @@
 	can_hold = list(/obj/item/reagent_container/food/snacks/donut)
 	foldable = /obj/item/stack/sheet/cardboard
 
-/obj/item/storage/donut_box/New()
+/obj/item/storage/donut_box/Initialize()
 	..()
 	for(var/i=1; i <= startswith; i++)
 		new /obj/item/reagent_container/food/snacks/donut/normal(src)
@@ -66,7 +66,7 @@
 	storage_slots = 4
 	can_hold = list(/obj/item/attachable/mateba, /obj/item/weapon/gun/revolver/mateba, /obj/item/weapon/mateba_key)
 
-/obj/item/storage/mateba_case/New()
+/obj/item/storage/mateba_case/Initialize()
 	..()
 	new /obj/item/attachable/mateba/short(src)
 	new /obj/item/attachable/mateba/long(src)

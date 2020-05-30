@@ -3,10 +3,10 @@
 	icon_state = "honeycomb"
 	desc = "Dripping with sugary sweetness."
 
-	New()
+/obj/item/reagent_container/food/snacks/honeycomb/Initialize()
 		..()
 
-/obj/item/reagent_container/food/snacks/honeycomb/New()
+/obj/item/reagent_container/food/snacks/honeycomb/Initialize()
 	..()
 	reagents.add_reagent("honey",10)
 	reagents.add_reagent("nutriment", 0.5)

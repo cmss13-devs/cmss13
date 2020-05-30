@@ -331,6 +331,6 @@
 	anchored = 1
 	density = 0
 
-	New()
+/obj/effect/syringe_gun_dummy/Initialize()
 		create_reagents(15)
 		..()

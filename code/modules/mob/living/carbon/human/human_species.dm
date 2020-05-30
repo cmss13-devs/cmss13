@@ -2,7 +2,7 @@
 // might be worth adapting the bugs into a feature and using these
 // subtypes as a basis for non-common-speaking alien foreigners. ~ Z
 
-/mob/living/carbon/human/dummy/New(var/new_loc)
+/mob/living/carbon/human/dummy/Initialize(var/new_loc)
 	set_species()
 	change_real_name(src, "Test Dummy")
 	status_flags = GODMODE|CANPUSH
@@ -36,11 +36,11 @@
 /mob/living/carbon/human/dummy/add_to_all_mob_huds()
 	return
 
-/mob/living/carbon/human/synthetic/New(var/new_loc)
+/mob/living/carbon/human/synthetic/Initialize(var/new_loc)
 	..(new_loc, "Synthetic")
 
-/mob/living/carbon/human/synthetic_old/New(var/new_loc)
+/mob/living/carbon/human/synthetic_old/Initialize(var/new_loc)
 	..(new_loc, "Early Synthetic")
 
-/mob/living/carbon/human/synthetic_2nd_gen/New(var/new_loc)
+/mob/living/carbon/human/synthetic_2nd_gen/Initialize(var/new_loc)
 	..(new_loc, "Second Generation Synthetic")

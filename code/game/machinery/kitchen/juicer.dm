@@ -25,7 +25,7 @@
 		/obj/item/reagent_container/food/snacks/grown/poisonberries = "poisonberryjuice",
 	)
 
-/obj/structure/machinery/juicer/New()
+/obj/structure/machinery/juicer/Initialize()
 	beaker = new /obj/item/reagent_container/glass/beaker/large(src)
 
 /obj/structure/machinery/juicer/update_icon()
@@ -157,7 +157,8 @@
 			break
 
 /obj/structure/closet/crate/juice
-	New()
+
+/obj/structure/closet/crate/juice/Initialize()
 		..()
 		new/obj/structure/machinery/juicer(src)
 		new/obj/item/reagent_container/food/snacks/grown/tomato(src)

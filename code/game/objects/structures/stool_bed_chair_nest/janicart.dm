@@ -15,7 +15,7 @@
 	var/callme = "pimpin' ride"	//how do people refer to it?
 	var/move_delay = 2
 
-/obj/structure/bed/chair/janicart/New()
+/obj/structure/bed/chair/janicart/Initialize()
 	handle_rotation()
 	create_reagents(100)
 

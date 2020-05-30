@@ -11,9 +11,7 @@
 /obj/item/grown/Initialize()
 	. = ..()
 
-	var/datum/reagents/R = new/datum/reagents(50)
-	reagents = R
-	R.my_atom = src
+	create_reagents(50)
 
 	// Fill the object up with the appropriate reagents.
 	if(!isnull(plantname))

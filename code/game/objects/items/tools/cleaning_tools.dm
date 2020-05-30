@@ -13,7 +13,7 @@
 	var/mopcount = 0
 
 
-/obj/item/tool/mop/New()
+/obj/item/tool/mop/Initialize()
 	. = ..()
 	create_reagents(5)
 
@@ -135,7 +135,7 @@
 /obj/item/tool/soap/deluxe
 	icon_state = "soapdeluxe"
 
-/obj/item/tool/soap/deluxe/New()
+/obj/item/tool/soap/deluxe/Initialize()
 	. = ..()
 	desc = "A deluxe Waffle Co. brand bar of soap. Smells of [pick("lavender", "vanilla", "strawberry", "chocolate" ,"space")]."
 

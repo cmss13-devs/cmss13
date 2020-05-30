@@ -27,7 +27,7 @@ var/global/list/cached_icons = list()
 	else
 		return ..()
 
-/obj/item/reagent_container/glass/paint/New()
+/obj/item/reagent_container/glass/paint/Initialize()
 	if(paint_type == "remover")
 		name = "paint remover bucket"
 	else if(paint_type && length(paint_type) > 0)

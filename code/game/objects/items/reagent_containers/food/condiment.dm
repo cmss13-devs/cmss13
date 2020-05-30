@@ -41,7 +41,7 @@
 			SPAN_HELPFUL("You <b>start feeding</b> [user == M ? "yourself" : "[M]"] <b>[src]</b>."),
 			SPAN_HELPFUL("[user] <b>starts feeding</b> you <b>[src]</b>."),
 			SPAN_NOTICE("[user] starts feeding [user == M ? "themselves" : "[M]"] [src]."))
-				
+
 		if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, M)) return
 		user.affected_message(M,
 			SPAN_HELPFUL("You <b>fed</b> [user == M ? "yourself" : "[M]"] <b>[src]</b>."),
@@ -158,12 +158,14 @@
 	name = "Universal Enzyme"
 	desc = "Used in cooking various dishes."
 	icon_state = "enzyme"
-	New()
+
+/obj/item/reagent_container/food/condiment/enzyme/Initialize()
 		..()
 		reagents.add_reagent("enzyme", 50)
 
 /obj/item/reagent_container/food/condiment/sugar
-	New()
+
+/obj/item/reagent_container/food/condiment/sugar/Initialize()
 		..()
 		reagents.add_reagent("sugar", 50)
 
@@ -174,7 +176,8 @@
 	possible_transfer_amounts = list(1,20) //for clown turning the lid off
 	amount_per_transfer_from_this = 1
 	volume = 20
-	New()
+
+/obj/item/reagent_container/food/condiment/saltshaker/Initialize()
 		..()
 		reagents.add_reagent("sodiumchloride", 20)
 
@@ -185,6 +188,7 @@
 	possible_transfer_amounts = list(1,20) //for clown turning the lid off
 	amount_per_transfer_from_this = 1
 	volume = 20
-	New()
+
+/obj/item/reagent_container/food/condiment/peppermill/Initialize()
 		..()
 		reagents.add_reagent("blackpepper", 20)

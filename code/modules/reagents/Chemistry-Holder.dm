@@ -26,6 +26,9 @@ var/const/INGEST = 2
 
 /datum/reagents/New(maximum=100)
 	maximum_volume = maximum
+	global_prepare_reagents()
+
+/proc/global_prepare_reagents()
 	//I dislike having these here but map-objects are initialised before world/New() is called. >_>
 	if(!chemical_reagents_list)
 		//Chemical Reagents - Initialises all /datum/reagent into a list indexed by reagent id

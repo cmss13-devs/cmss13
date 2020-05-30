@@ -202,7 +202,7 @@
 /obj/structure/closet/crate/hydroponics/prespawned
 	//This exists so the prespawned hydro crates spawn with their contents.
 
-	New()
+/obj/structure/closet/crate/hydroponics/prespawned/Initialize()
 		..()
 		new /obj/item/reagent_container/spray/plantbgone(src)
 		new /obj/item/reagent_container/spray/plantbgone(src)
@@ -233,7 +233,7 @@
 	name = "RCD crate"
 	desc = "A crate for the storage of the RCD."
 
-/obj/structure/closet/crate/rcd/New()
+/obj/structure/closet/crate/rcd/Initialize()
 	..()
 	new /obj/item/ammo_rcd(src)
 	new /obj/item/ammo_rcd(src)
@@ -244,7 +244,7 @@
 	desc = "A crate of emergency rations."
 	name = "Emergency Rations"
 
-/obj/structure/closet/crate/freezer/rations/New()
+/obj/structure/closet/crate/freezer/rations/Initialize()
 	..()
 	new /obj/item/storage/box/donkpockets(src)
 	new /obj/item/storage/box/donkpockets(src)
@@ -265,7 +265,7 @@
 	icon_opened = "open_radioactive"
 	icon_closed = "closed_radioactive"
 
-/obj/structure/closet/crate/radiation/New()
+/obj/structure/closet/crate/radiation/Initialize()
 	..()
 	new /obj/item/clothing/suit/radiation(src)
 	new /obj/item/clothing/head/radiation(src)

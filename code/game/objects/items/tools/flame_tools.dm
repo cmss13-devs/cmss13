@@ -188,7 +188,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	var/smoketime = 300
 	var/chem_volume = 15
 
-/obj/item/clothing/mask/cigarette/New()
+/obj/item/clothing/mask/cigarette/Initialize()
 	..()
 	flags_atom |= NOREACT // so it doesn't react until you light it
 	create_reagents(chem_volume) // making the cigarrete a chemical holder with a maximum volume of 15
@@ -406,7 +406,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	smoketime = 1500
 	chem_volume = 20
 
-	New()
+/obj/item/clothing/mask/cigarette/cigar/Initialize()
 		..()
 		reagents.add_reagent("nicotine",10)
 
@@ -591,7 +591,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	icon_off = "zippo"
 
 /obj/item/tool/lighter/random
-	New()
+
+/obj/item/tool/lighter/random/Initialize()
 		. = ..()
 		clr = pick("r","c","y","g")
 		icon_on = "lighter_[clr]_on"

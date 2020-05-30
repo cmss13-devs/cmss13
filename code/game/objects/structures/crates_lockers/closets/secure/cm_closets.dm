@@ -12,7 +12,7 @@
 	icon = 'icons/obj/structures/marine_closet.dmi'
 	var/closet_squad //which squad this closet belong to
 
-/obj/structure/closet/secure_closet/marine/New()
+/obj/structure/closet/secure_closet/marine/Initialize()
 	..()
 	new /obj/item/clothing/shoes/marine(src)
 
@@ -43,7 +43,7 @@
 	req_access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_ALPHA)
 	closet_squad = "alpha"
 
-/obj/structure/closet/secure_closet/marine/standard/alpha/New()
+/obj/structure/closet/secure_closet/marine/standard/alpha/Initialize()
 	..()
 	new /obj/item/device/radio/headset/almayer/marine/alpha(src)
 	new /obj/item/clothing/gloves/marine/alpha(src)
@@ -53,7 +53,7 @@
 	req_access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_BRAVO)
 	closet_squad = "bravo"
 
-/obj/structure/closet/secure_closet/marine/standard/bravo/New()
+/obj/structure/closet/secure_closet/marine/standard/bravo/Initialize()
 	..()
 	new /obj/item/device/radio/headset/almayer/marine/bravo(src)
 	new /obj/item/clothing/gloves/marine/bravo(src)
@@ -63,7 +63,7 @@
 	req_access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_CHARLIE)
 	closet_squad = "charlie"
 
-/obj/structure/closet/secure_closet/marine/standard/charlie/New()
+/obj/structure/closet/secure_closet/marine/standard/charlie/Initialize()
 	..()
 	new /obj/item/device/radio/headset/almayer/marine/charlie(src)
 	new /obj/item/clothing/gloves/marine/charlie(src)
@@ -73,7 +73,7 @@
 	req_access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_DELTA)
 	closet_squad = "delta"
 
-/obj/structure/closet/secure_closet/marine/standard/delta/New()
+/obj/structure/closet/secure_closet/marine/standard/delta/Initialize()
 	..()
 	new /obj/item/device/radio/headset/almayer/marine/delta(src)
 	new /obj/item/clothing/gloves/marine/delta(src)
@@ -93,7 +93,7 @@
 	req_access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_ALPHA, ACCESS_MARINE_LEADER)
 	closet_squad = "alpha"
 
-/obj/structure/closet/secure_closet/marine/leader/alpha/New()
+/obj/structure/closet/secure_closet/marine/leader/alpha/Initialize()
 	..()
 	new /obj/item/clothing/gloves/marine/alpha(src)
 	new /obj/item/device/radio/headset/almayer/marine/alpha/lead(src)
@@ -103,7 +103,7 @@
 	req_access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_BRAVO, ACCESS_MARINE_LEADER)
 	closet_squad = "bravo"
 
-/obj/structure/closet/secure_closet/marine/leader/bravo/New()
+/obj/structure/closet/secure_closet/marine/leader/bravo/Initialize()
 	..()
 	new /obj/item/clothing/gloves/marine/bravo(src)
 	new /obj/item/device/radio/headset/almayer/marine/bravo/lead(src)
@@ -113,7 +113,7 @@
 	req_access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_CHARLIE, ACCESS_MARINE_LEADER)
 	closet_squad = "charlie"
 
-/obj/structure/closet/secure_closet/marine/leader/charlie/New()
+/obj/structure/closet/secure_closet/marine/leader/charlie/Initialize()
 	..()
 	new /obj/item/clothing/gloves/marine/charlie(src)
 	new /obj/item/device/radio/headset/almayer/marine/charlie/lead(src)
@@ -123,7 +123,7 @@
 	req_access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_DELTA, ACCESS_MARINE_LEADER)
 	closet_squad = "delta"
 
-/obj/structure/closet/secure_closet/marine/leader/delta/New()
+/obj/structure/closet/secure_closet/marine/leader/delta/Initialize()
 	..()
 	new /obj/item/clothing/gloves/marine/delta(src)
 	new /obj/item/device/radio/headset/almayer/marine/delta/lead(src)
@@ -137,7 +137,7 @@
 	slotlocktype = "engi"
 	health = 100000 // just no
 
-/obj/structure/closet/secure_closet/marine/engi/New()
+/obj/structure/closet/secure_closet/marine/engi/Initialize()
 	..()
 	new /obj/item/storage/belt/utility/full(src)
 	new /obj/item/clothing/glasses/welding(src)
@@ -154,7 +154,7 @@
 	req_access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_ALPHA, ACCESS_MARINE_ENGPREP)
 	closet_squad = "alpha"
 
-/obj/structure/closet/secure_closet/marine/engi/alpha/New()
+/obj/structure/closet/secure_closet/marine/engi/alpha/Initialize()
 	..()
 	new /obj/item/clothing/gloves/marine/alpha/insulated(src)
 	new /obj/item/device/radio/headset/almayer/marine/alpha/engi(src)
@@ -164,7 +164,7 @@
 	req_access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_BRAVO, ACCESS_MARINE_ENGPREP)
 	closet_squad = "bravo"
 
-/obj/structure/closet/secure_closet/marine/engi/bravo/New()
+/obj/structure/closet/secure_closet/marine/engi/bravo/Initialize()
 	..()
 	new /obj/item/clothing/gloves/marine/bravo/insulated(src)
 	new /obj/item/device/radio/headset/almayer/marine/bravo/engi(src)
@@ -174,7 +174,7 @@
 	req_access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_CHARLIE, ACCESS_MARINE_ENGPREP)
 	closet_squad = "charlie"
 
-/obj/structure/closet/secure_closet/marine/engi/charlie/New()
+/obj/structure/closet/secure_closet/marine/engi/charlie/Initialize()
 	..()
 	new /obj/item/clothing/gloves/marine/charlie/insulated(src)
 	new /obj/item/device/radio/headset/almayer/marine/charlie/engi(src)
@@ -184,7 +184,7 @@
 	req_access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_DELTA, ACCESS_MARINE_ENGPREP)
 	closet_squad = "delta"
 
-/obj/structure/closet/secure_closet/marine/engi/delta/New()
+/obj/structure/closet/secure_closet/marine/engi/delta/Initialize()
 	..()
 	new /obj/item/clothing/gloves/marine/delta/insulated(src)
 	new /obj/item/device/radio/headset/almayer/marine/delta/engi(src)
@@ -197,7 +197,7 @@
 	slotlocktype = "medic"
 	health = 100000 // just no
 
-/obj/structure/closet/secure_closet/marine/medic/New()
+/obj/structure/closet/secure_closet/marine/medic/Initialize()
 	..()
 	new /obj/item/storage/belt/medical/lifesaver/full(src)
 	new /obj/item/clothing/glasses/hud/health(src)
@@ -216,7 +216,7 @@
 	req_access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_ALPHA, ACCESS_MARINE_MEDPREP)
 	closet_squad = "alpha"
 
-/obj/structure/closet/secure_closet/marine/medic/alpha/New()
+/obj/structure/closet/secure_closet/marine/medic/alpha/Initialize()
 	..()
 	new /obj/item/clothing/gloves/marine/alpha(src)
 	new /obj/item/device/radio/headset/almayer/marine/alpha/med(src)
@@ -226,7 +226,7 @@
 	req_access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_BRAVO, ACCESS_MARINE_MEDPREP)
 	closet_squad = "bravo"
 
-/obj/structure/closet/secure_closet/marine/medic/bravo/New()
+/obj/structure/closet/secure_closet/marine/medic/bravo/Initialize()
 	..()
 	new /obj/item/clothing/gloves/marine/bravo(src)
 	new /obj/item/device/radio/headset/almayer/marine/bravo/med(src)
@@ -236,7 +236,7 @@
 	req_access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_CHARLIE, ACCESS_MARINE_MEDPREP)
 	closet_squad = "charlie"
 
-/obj/structure/closet/secure_closet/marine/medic/charlie/New()
+/obj/structure/closet/secure_closet/marine/medic/charlie/Initialize()
 	..()
 	new /obj/item/clothing/gloves/marine/charlie(src)
 	new /obj/item/device/radio/headset/almayer/marine/charlie/med(src)
@@ -246,7 +246,7 @@
 	req_access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_DELTA, ACCESS_MARINE_MEDPREP)
 	closet_squad = "delta"
 
-/obj/structure/closet/secure_closet/marine/medic/delta/New()
+/obj/structure/closet/secure_closet/marine/medic/delta/Initialize()
 	..()
 	new /obj/item/clothing/gloves/marine/delta(src)
 	new /obj/item/device/radio/headset/almayer/marine/delta/med(src)
@@ -268,7 +268,7 @@
 	icon_broken = "secure_locked_commander"
 	icon_off = "secure_closed_commander"
 
-/obj/structure/closet/secure_closet/commander/New()
+/obj/structure/closet/secure_closet/commander/Initialize()
 	..()
 	new /obj/item/storage/mateba_case(src)
 	new /obj/item/storage/backpack/mcommander(src)
@@ -297,7 +297,7 @@
 	icon_broken = "secure_locked_staff"
 	icon_off = "secure_closed_staff"
 
-/obj/structure/closet/secure_closet/staff_officer/gear/New()
+/obj/structure/closet/secure_closet/staff_officer/gear/Initialize()
 	..()
 	new /obj/item/clothing/head/beret/cm(src)
 	new /obj/item/clothing/head/beret/cm(src)
@@ -318,7 +318,7 @@
 /obj/structure/closet/secure_closet/staff_officer/armory
 	name = "staff officer's armory locker"
 
-/obj/structure/closet/secure_closet/staff_officer/armory/New()
+/obj/structure/closet/secure_closet/staff_officer/armory/Initialize()
 	..()
 	new /obj/item/clothing/head/helmet/marine(src)
 	new /obj/item/clothing/head/helmet/marine(src)
@@ -329,12 +329,12 @@
 	new /obj/item/clothing/gloves/marine(src)
 	new /obj/item/clothing/gloves/marine(src)
 
-/obj/structure/closet/secure_closet/staff_officer/armory/m4a1/New()
+/obj/structure/closet/secure_closet/staff_officer/armory/m4a1/Initialize()
 	..()
 	new /obj/item/storage/belt/marine(src)
 	new /obj/item/storage/belt/marine(src)
 
-/obj/structure/closet/secure_closet/staff_officer/armory/shotgun/New()
+/obj/structure/closet/secure_closet/staff_officer/armory/shotgun/Initialize()
 	..()
 	new /obj/item/storage/belt/shotgun(src)
 	new /obj/item/storage/belt/shotgun(src)
@@ -342,7 +342,7 @@
 /obj/structure/closet/secure_closet/staff_officer/intel
 	name = "intelligence officer's locker"
 
-/obj/structure/closet/secure_closet/staff_officer/intel/New()
+/obj/structure/closet/secure_closet/staff_officer/intel/Initialize()
 	..()
 	new /obj/item/clothing/head/beret/cm(src)
 	new /obj/item/clothing/head/beret/cm/tan(src)
@@ -375,7 +375,7 @@
 	icon_broken = "secure_locked_pilot"
 	icon_off = "secure_closed_pilot"
 
-/obj/structure/closet/secure_closet/pilot_officer/New()
+/obj/structure/closet/secure_closet/pilot_officer/Initialize()
 	..()
 	new /obj/item/clothing/head/helmet/marine/pilot(src)
 	new /obj/item/device/radio/headset/almayer/mcom(src)
@@ -403,7 +403,7 @@
 	icon_broken = "secure_broken_police"
 	icon_off = "secure_closed_police"
 
-/obj/structure/closet/secure_closet/military_police/New()
+/obj/structure/closet/secure_closet/military_police/Initialize()
 	..()
 	new /obj/item/clothing/head/helmet/beret/marine/mp(src)
 	new /obj/item/clothing/gloves/black(src)
@@ -435,7 +435,7 @@
 	icon_broken = "secure_locked_warrant"
 	icon_off = "secure_closed_warrant"
 
-/obj/structure/closet/secure_closet/warrant_officer/New()
+/obj/structure/closet/secure_closet/warrant_officer/Initialize()
 	..()
 	new /obj/item/clothing/head/helmet/beret/marine/mp/cmp(src)
 	new /obj/item/clothing/accessory/holster/armpit(src)
@@ -464,7 +464,7 @@
 	icon_broken = "secure_locked_warrant"
 	icon_off = "secure_closed_warrant"
 
-/obj/structure/closet/secure_closet/military_officer_spare/New()
+/obj/structure/closet/secure_closet/military_officer_spare/Initialize()
 	..()
 	new /obj/item/clothing/accessory/holster/armpit(src)
 	new /obj/item/storage/backpack/security(src)
@@ -490,7 +490,7 @@
 	icon_broken = "secure_broken_medical"
 	icon_off = "secure_closed_medical"
 
-/obj/structure/closet/secure_closet/medical_doctor/New()
+/obj/structure/closet/secure_closet/medical_doctor/Initialize()
 	..()
 	new /obj/item/storage/backpack/marine/satchel(src)
 	if(z != 1) new /obj/item/device/radio/headset/almayer/doc(src)
@@ -518,7 +518,7 @@
 	icon_broken = "secure_closed_medical_white"
 	icon_off = "secure_closed_medical_white"
 
-/obj/structure/closet/secure_closet/hydroresearch/New()
+/obj/structure/closet/secure_closet/hydroresearch/Initialize()
 	..()
 	new /obj/item/reagent_container/spray/hydro(src)
 	new /obj/item/reagent_container/spray/hydro(src)
@@ -546,7 +546,7 @@
 	icon_broken = "secure_broken_cargo"
 	icon_off = "secure_off_cargo"
 
-/obj/structure/closet/secure_closet/req_officer/New()
+/obj/structure/closet/secure_closet/req_officer/Initialize()
 	..()
 	new /obj/item/device/radio/headset/almayer/ro(src)
 	new /obj/item/clothing/under/rank/ro_suit(src)
@@ -566,7 +566,7 @@
 	icon_broken = "secure_broken_cargo"
 	icon_off = "secure_off_cargo"
 
-/obj/structure/closet/secure_closet/cargotech/New()
+/obj/structure/closet/secure_closet/cargotech/Initialize()
 	..()
 	new /obj/item/clothing/under/rank/cargotech(src)
 	new /obj/item/clothing/shoes/marine(src)
@@ -587,7 +587,7 @@
 	icon_broken = "secure_locked_commander"
 	icon_off = "secure_closed_commander"
 
-/obj/structure/closet/secure_closet/sea/New()
+/obj/structure/closet/secure_closet/sea/Initialize()
 	..()
 	new /obj/item/device/whistle(src)
 	new /obj/item/device/binoculars/range(src)

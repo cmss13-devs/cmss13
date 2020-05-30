@@ -9,7 +9,7 @@
 	icon_off = "cabinetdetective_broken"
 
 
-	New()
+/obj/structure/closet/secure_closet/bar/Initialize()
 		..()
 		sleep(2)
 		new /obj/item/reagent_container/food/drinks/cans/beer( src )

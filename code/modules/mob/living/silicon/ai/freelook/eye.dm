@@ -68,7 +68,7 @@
 	var/obj/structure/machinery/hologram/holopad/holo = null
 
 // Intiliaze the eye by assigning it's "ai" variable to us. Then set it's loc to us.
-/mob/living/silicon/ai/New()
+/mob/living/silicon/ai/Initialize()
 	..()
 	if(eyeobj)
 		eyeobj.ai = src

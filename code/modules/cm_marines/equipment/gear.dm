@@ -71,27 +71,27 @@
 	desc = "<B>Instructions:</B> Extract food using maximum firepower. Eat.\n\nOn the box is a picture of a shouting Squad Leader. \n\"YOU WILL EAT YOUR NUTRIENT GOO AND YOU WILL ENJOY IT, MAGGOT.\""
 	icon_state = "mre1"
 
-	New()
-		..()
-		pixel_y = rand(-3,3)
-		pixel_x = rand(-3,3)
-		for(var/i = 0,i < 6,i++)
-			var/rand_type = rand(0,8)
-			switch(rand_type)
-				if(0 to 2)
-					new /obj/item/reagent_container/food/snacks/protein_pack(src)
-				if(3)
-					new /obj/item/reagent_container/food/snacks/mre_pack/meal1(src)
-				if(4)
-					new /obj/item/reagent_container/food/snacks/mre_pack/meal2(src)
-				if(5)
-					new /obj/item/reagent_container/food/snacks/mre_pack/meal3(src)
-				if(6)
-					new /obj/item/reagent_container/food/snacks/mre_pack/meal4(src)
-				if(7)
-					new /obj/item/reagent_container/food/snacks/mre_pack/meal5(src)
-				if(8)
-					new /obj/item/reagent_container/food/snacks/mre_pack/meal6(src)
+/obj/item/storage/box/uscm_mre/Initialize()
+	..()
+	pixel_y = rand(-3,3)
+	pixel_x = rand(-3,3)
+	for(var/i = 0,i < 6,i++)
+		var/rand_type = rand(0,8)
+		switch(rand_type)
+			if(0 to 2)
+				new /obj/item/reagent_container/food/snacks/protein_pack(src)
+			if(3)
+				new /obj/item/reagent_container/food/snacks/mre_pack/meal1(src)
+			if(4)
+				new /obj/item/reagent_container/food/snacks/mre_pack/meal2(src)
+			if(5)
+				new /obj/item/reagent_container/food/snacks/mre_pack/meal3(src)
+			if(6)
+				new /obj/item/reagent_container/food/snacks/mre_pack/meal4(src)
+			if(7)
+				new /obj/item/reagent_container/food/snacks/mre_pack/meal5(src)
+			if(8)
+				new /obj/item/reagent_container/food/snacks/mre_pack/meal6(src)
 
 
 /obj/item/reagent_container/food/snacks/protein_pack
@@ -101,10 +101,10 @@
 	filling_color = "#ED1169"
 	w_class = SIZE_TINY
 
-	New()
-		..()
-		reagents.add_reagent("nutriment", 8)
-		bitesize = 4
+/obj/item/reagent_container/food/snacks/protein_pack/Initialize()
+	..()
+	reagents.add_reagent("nutriment", 8)
+	bitesize = 4
 
 
 /obj/item/reagent_container/food/snacks/mre_pack
@@ -119,115 +119,115 @@
 	icon_state = "MREa"
 	filling_color = "#ED1169"
 
-	New()
-		..()
-		reagents.add_reagent("nutriment", 9)
-		bitesize = 3
+/obj/item/reagent_container/food/snacks/mre_pack/meal1/Initialize()
+	..()
+	reagents.add_reagent("nutriment", 9)
+	bitesize = 3
 
 /obj/item/reagent_container/food/snacks/mre_pack/meal2
 	name = "\improper USCM Prepared Meal (pork)"
 	desc = "A tray of standard USCM food. Partially raw pork, goopy corn and some water mashed potatos fill this tray."
 	icon_state = "MREb"
 
-	New()
-		..()
-		reagents.add_reagent("nutriment", 9)
-		bitesize = 2
+/obj/item/reagent_container/food/snacks/mre_pack/meal2/Initialize()
+	..()
+	reagents.add_reagent("nutriment", 9)
+	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/mre_pack/meal3
 	name = "\improper USCM Prepared Meal (pasta)"
 	desc = "A tray of standard USCM food. Overcooked spaghetti, waterlogged carrots and two french fries fill this tray."
 	icon_state = "MREc"
 
-	New()
-		..()
-		reagents.add_reagent("nutriment", 9)
-		bitesize = 3
+/obj/item/reagent_container/food/snacks/mre_pack/meal3/Initialize()
+	..()
+	reagents.add_reagent("nutriment", 9)
+	bitesize = 3
 
 /obj/item/reagent_container/food/snacks/mre_pack/meal4
 	name = "\improper USCM Prepared Meal (pizza)"
 	desc = "A tray of standard USCM food. Cold pizza, wet greenbeans and a shitty egg fill this tray. Get something other than pizza, lardass."
 	icon_state = "MREd"
 
-	New()
-		..()
-		reagents.add_reagent("nutriment", 8)
-		bitesize = 1
+/obj/item/reagent_container/food/snacks/mre_pack/meal4/Initialize()
+	..()
+	reagents.add_reagent("nutriment", 8)
+	bitesize = 1
 
 /obj/item/reagent_container/food/snacks/mre_pack/meal5
 	name = "\improper USCM Prepared Meal (chicken)"
 	desc = "A tray of standard USCM food. Moist chicken, dry rice and a mildly depressed piece of broccoli fill this tray."
 	icon_state = "MREe"
 
-	New()
-		..()
-		reagents.add_reagent("nutriment", 10)
-		bitesize = 3
+/obj/item/reagent_container/food/snacks/mre_pack/meal5/Initialize()
+	..()
+	reagents.add_reagent("nutriment", 10)
+	bitesize = 3
 
 /obj/item/reagent_container/food/snacks/mre_pack/meal6
 	name = "\improper USCM Prepared Meal (tofu)"
 	desc = "The USCM doesn't serve tofu you grass sucking hippie. The flag signifies your defeat."
 	icon_state = "MREf"
 
-	New()
-		..()
-		reagents.add_reagent("nutriment", 2)
-		bitesize = 1
+/obj/item/reagent_container/food/snacks/mre_pack/meal6/Initialize()
+	..()
+	reagents.add_reagent("nutriment", 2)
+	bitesize = 1
 
 /obj/item/reagent_container/food/snacks/mre_pack/xmas1
 	name = "\improper Xmas Prepared Meal:sugar cookies"
 	desc = "Delicious Sugar Cookies"
 	icon_state = "mreCookies"
 
-	New()
-		..()
-		reagents.add_reagent("nutriment", 10)
-		bitesize = 2
+/obj/item/reagent_container/food/snacks/mre_pack/xmas1/Initialize()
+	..()
+	reagents.add_reagent("nutriment", 10)
+	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/mre_pack/xmas2
 	name = "\improper Xmas Prepared Meal:gingerbread cookie"
 	desc = "A cookie without a soul."
 	icon_state = "mreGingerbread"
 
-	New()
-		..()
-		reagents.add_reagent("nutriment", 10)
-		bitesize = 2
+/obj/item/reagent_container/food/snacks/mre_pack/xmas2/Initialize()
+	..()
+	reagents.add_reagent("nutriment", 10)
+	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/mre_pack/xmas3
 	name = "\improper Xmas Prepared Meal:fruitcake"
 	desc = "Also known as ''the Commander''."
 	icon_state = "mreFruitcake"
 
-	New()
-		..()
-		reagents.add_reagent("nutriment", 10)
-		bitesize = 2
+/obj/item/reagent_container/food/snacks/mre_pack/xmas3/Initialize()
+	..()
+	reagents.add_reagent("nutriment", 10)
+	bitesize = 2
 
 /obj/item/storage/box/pizza
 	name = "food delivery box"
 	desc = "A space-age food storage device, capable of keeping food extra fresh. Actually, it's just a box."
 
-	New()
-		..()
-		pixel_y = rand(-3,3)
-		pixel_x = rand(-3,3)
-		new /obj/item/reagent_container/food/snacks/donkpocket(src)
-		new /obj/item/reagent_container/food/snacks/donkpocket(src)
-		var/randsnack
-		for(var/i = 1 to 3)
-			randsnack = rand(0,5)
-			switch(randsnack)
-				if(0)
-					new /obj/item/reagent_container/food/snacks/fries(src)
-				if(1)
-					new /obj/item/reagent_container/food/snacks/cheesyfries(src)
-				if(2)
-					new /obj/item/reagent_container/food/snacks/bigbiteburger(src)
-				if(4)
-					new /obj/item/reagent_container/food/snacks/taco(src)
-				if(5)
-					new /obj/item/reagent_container/food/snacks/hotdog(src)
+/obj/item/storage/box/pizza/Initialize()
+	..()
+	pixel_y = rand(-3,3)
+	pixel_x = rand(-3,3)
+	new /obj/item/reagent_container/food/snacks/donkpocket(src)
+	new /obj/item/reagent_container/food/snacks/donkpocket(src)
+	var/randsnack
+	for(var/i = 1 to 3)
+		randsnack = rand(0,5)
+		switch(randsnack)
+			if(0)
+				new /obj/item/reagent_container/food/snacks/fries(src)
+			if(1)
+				new /obj/item/reagent_container/food/snacks/cheesyfries(src)
+			if(2)
+				new /obj/item/reagent_container/food/snacks/bigbiteburger(src)
+			if(4)
+				new /obj/item/reagent_container/food/snacks/taco(src)
+			if(5)
+				new /obj/item/reagent_container/food/snacks/hotdog(src)
 
 /obj/item/paper/janitor
 	name = "crumbled paper"
@@ -243,23 +243,23 @@
 	can_hold = list("/obj/item/reagent_container/food/snacks")
 	w_class = SIZE_LARGE
 
-	New()
-		..()
-		pixel_y = rand(-3,3)
-		pixel_x = rand(-3,3)
-		new /obj/item/reagent_container/food/snacks/donkpocket(src)
-		new /obj/item/reagent_container/food/snacks/donkpocket(src)
-		new /obj/item/reagent_container/food/snacks/donkpocket(src)
-		new /obj/item/reagent_container/food/drinks/coffee(src)
-		var/randsnack = rand(0,5)
-		switch(randsnack)
-			if(0)
-				new /obj/item/reagent_container/food/snacks/cheesiehonkers(src)
-			if(1)
-				new /obj/item/reagent_container/food/snacks/no_raisin(src)
-			if(2)
-				new /obj/item/reagent_container/food/snacks/spacetwinkie(src)
-			if(4)
-				new /obj/item/reagent_container/food/snacks/cookie(src)
-			if(5)
-				new /obj/item/reagent_container/food/snacks/chocolatebar(src)
+/obj/item/storage/box/wy_mre/Initialize()
+	..()
+	pixel_y = rand(-3,3)
+	pixel_x = rand(-3,3)
+	new /obj/item/reagent_container/food/snacks/donkpocket(src)
+	new /obj/item/reagent_container/food/snacks/donkpocket(src)
+	new /obj/item/reagent_container/food/snacks/donkpocket(src)
+	new /obj/item/reagent_container/food/drinks/coffee(src)
+	var/randsnack = rand(0,5)
+	switch(randsnack)
+		if(0)
+			new /obj/item/reagent_container/food/snacks/cheesiehonkers(src)
+		if(1)
+			new /obj/item/reagent_container/food/snacks/no_raisin(src)
+		if(2)
+			new /obj/item/reagent_container/food/snacks/spacetwinkie(src)
+		if(4)
+			new /obj/item/reagent_container/food/snacks/cookie(src)
+		if(5)
+			new /obj/item/reagent_container/food/snacks/chocolatebar(src)

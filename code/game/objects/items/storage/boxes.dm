@@ -34,24 +34,26 @@
 	w_class = SIZE_LARGE //Changed becuase of in-game abuse
 	storage_flags = STORAGE_FLAGS_BOX
 
-/obj/item/storage/box/survival/
-	New()
-		..()
-		contents = list()
-		sleep(1)
-		new /obj/item/clothing/mask/breath( src )
-		new /obj/item/tank/emergency_oxygen( src )
-		w_class = SIZE_MEDIUM
-		return
+/obj/item/storage/box/survival
 
-/obj/item/storage/box/engineer/
-	New()
-		..()
-		contents = list()
-		sleep(1)
-		new /obj/item/clothing/mask/breath( src )
-		new /obj/item/tank/emergency_oxygen/engi( src )
-		return
+/obj/item/storage/box/survival/Initialize()
+	..()
+	contents = list()
+	sleep(1)
+	new /obj/item/clothing/mask/breath( src )
+	new /obj/item/tank/emergency_oxygen( src )
+	w_class = SIZE_MEDIUM
+	return
+
+/obj/item/storage/box/engineer
+
+/obj/item/storage/box/engineer/Initialize()
+	..()
+	contents = list()
+	sleep(1)
+	new /obj/item/clothing/mask/breath( src )
+	new /obj/item/tank/emergency_oxygen/engi( src )
+	return
 
 
 /obj/item/storage/box/gloves
@@ -62,15 +64,15 @@
 	w_class = SIZE_SMALL
 
 
-	New()
-		..()
-		new /obj/item/clothing/gloves/latex(src)
-		new /obj/item/clothing/gloves/latex(src)
-		new /obj/item/clothing/gloves/latex(src)
-		new /obj/item/clothing/gloves/latex(src)
-		new /obj/item/clothing/gloves/latex(src)
-		new /obj/item/clothing/gloves/latex(src)
-		new /obj/item/clothing/gloves/latex(src)
+/obj/item/storage/box/gloves/Initialize()
+	..()
+	new /obj/item/clothing/gloves/latex(src)
+	new /obj/item/clothing/gloves/latex(src)
+	new /obj/item/clothing/gloves/latex(src)
+	new /obj/item/clothing/gloves/latex(src)
+	new /obj/item/clothing/gloves/latex(src)
+	new /obj/item/clothing/gloves/latex(src)
+	new /obj/item/clothing/gloves/latex(src)
 
 /obj/item/storage/box/masks
 	name = "box of sterile masks"
@@ -79,15 +81,15 @@
 	can_hold = list(/obj/item/clothing/mask/surgical)
 	w_class = SIZE_SMALL
 
-	New()
-		..()
-		new /obj/item/clothing/mask/surgical(src)
-		new /obj/item/clothing/mask/surgical(src)
-		new /obj/item/clothing/mask/surgical(src)
-		new /obj/item/clothing/mask/surgical(src)
-		new /obj/item/clothing/mask/surgical(src)
-		new /obj/item/clothing/mask/surgical(src)
-		new /obj/item/clothing/mask/surgical(src)
+/obj/item/storage/box/masks/Initialize()
+	..()
+	new /obj/item/clothing/mask/surgical(src)
+	new /obj/item/clothing/mask/surgical(src)
+	new /obj/item/clothing/mask/surgical(src)
+	new /obj/item/clothing/mask/surgical(src)
+	new /obj/item/clothing/mask/surgical(src)
+	new /obj/item/clothing/mask/surgical(src)
+	new /obj/item/clothing/mask/surgical(src)
 
 
 /obj/item/storage/box/syringes
@@ -98,15 +100,15 @@
 	icon_state = "syringe"
 	w_class = SIZE_SMALL
 
-	New()
-		..()
-		new /obj/item/reagent_container/syringe(src)
-		new /obj/item/reagent_container/syringe(src)
-		new /obj/item/reagent_container/syringe(src)
-		new /obj/item/reagent_container/syringe(src)
-		new /obj/item/reagent_container/syringe(src)
-		new /obj/item/reagent_container/syringe(src)
-		new /obj/item/reagent_container/syringe(src)
+/obj/item/storage/box/syringes/Initialize()
+	..()
+	new /obj/item/reagent_container/syringe(src)
+	new /obj/item/reagent_container/syringe(src)
+	new /obj/item/reagent_container/syringe(src)
+	new /obj/item/reagent_container/syringe(src)
+	new /obj/item/reagent_container/syringe(src)
+	new /obj/item/reagent_container/syringe(src)
+	new /obj/item/reagent_container/syringe(src)
 		
 
 /obj/item/storage/box/beakers
@@ -115,15 +117,15 @@
 	can_hold = list(/obj/item/reagent_container/glass/beaker)
 	w_class = SIZE_MEDIUM
 
-	New()
-		..()
-		new /obj/item/reagent_container/glass/beaker(src)
-		new /obj/item/reagent_container/glass/beaker(src)
-		new /obj/item/reagent_container/glass/beaker(src)
-		new /obj/item/reagent_container/glass/beaker(src)
-		new /obj/item/reagent_container/glass/beaker(src)
-		new /obj/item/reagent_container/glass/beaker(src)
-		new /obj/item/reagent_container/glass/beaker(src)
+/obj/item/storage/box/beakers/Initialize()
+	..()
+	new /obj/item/reagent_container/glass/beaker(src)
+	new /obj/item/reagent_container/glass/beaker(src)
+	new /obj/item/reagent_container/glass/beaker(src)
+	new /obj/item/reagent_container/glass/beaker(src)
+	new /obj/item/reagent_container/glass/beaker(src)
+	new /obj/item/reagent_container/glass/beaker(src)
+	new /obj/item/reagent_container/glass/beaker(src)
 
 /obj/item/storage/box/sprays
 	name = "box of empty spray bottles"
@@ -131,15 +133,15 @@
 	can_hold = list(/obj/item/reagent_container/spray)
 	w_class = SIZE_MEDIUM
 
-	New()
-		..()
-		new /obj/item/reagent_container/spray(src)
-		new /obj/item/reagent_container/spray(src)
-		new /obj/item/reagent_container/spray(src)
-		new /obj/item/reagent_container/spray(src)
-		new /obj/item/reagent_container/spray(src)
-		new /obj/item/reagent_container/spray(src)
-		new /obj/item/reagent_container/spray(src)
+/obj/item/storage/box/sprays/Initialize()
+	..()
+	new /obj/item/reagent_container/spray(src)
+	new /obj/item/reagent_container/spray(src)
+	new /obj/item/reagent_container/spray(src)
+	new /obj/item/reagent_container/spray(src)
+	new /obj/item/reagent_container/spray(src)
+	new /obj/item/reagent_container/spray(src)
+	new /obj/item/reagent_container/spray(src)
 
 /obj/item/storage/box/flashbangs
 	name = "box of flashbangs (WARNING)"
@@ -147,28 +149,29 @@
 	icon_state = "flashbang"
 	can_hold = list(/obj/item/explosive/grenade/flashbang)
 	w_class = SIZE_MEDIUM
-	New()
-		..()
-		new /obj/item/explosive/grenade/flashbang(src)
-		new /obj/item/explosive/grenade/flashbang(src)
-		new /obj/item/explosive/grenade/flashbang(src)
-		new /obj/item/explosive/grenade/flashbang(src)
-		new /obj/item/explosive/grenade/flashbang(src)
-		new /obj/item/explosive/grenade/flashbang(src)
-		new /obj/item/explosive/grenade/flashbang(src)
+
+/obj/item/storage/box/flashbangs/Initialize()
+	..()
+	new /obj/item/explosive/grenade/flashbang(src)
+	new /obj/item/explosive/grenade/flashbang(src)
+	new /obj/item/explosive/grenade/flashbang(src)
+	new /obj/item/explosive/grenade/flashbang(src)
+	new /obj/item/explosive/grenade/flashbang(src)
+	new /obj/item/explosive/grenade/flashbang(src)
+	new /obj/item/explosive/grenade/flashbang(src)
 
 /obj/item/storage/box/emps
 	name = "box of emp grenades"
 	desc = "A box with 5 emp grenades."
 	icon_state = "flashbang"
 
-	New()
-		..()
-		new /obj/item/explosive/grenade/empgrenade(src)
-		new /obj/item/explosive/grenade/empgrenade(src)
-		new /obj/item/explosive/grenade/empgrenade(src)
-		new /obj/item/explosive/grenade/empgrenade(src)
-		new /obj/item/explosive/grenade/empgrenade(src)
+/obj/item/storage/box/emps/Initialize()
+	..()
+	new /obj/item/explosive/grenade/empgrenade(src)
+	new /obj/item/explosive/grenade/empgrenade(src)
+	new /obj/item/explosive/grenade/empgrenade(src)
+	new /obj/item/explosive/grenade/empgrenade(src)
+	new /obj/item/explosive/grenade/empgrenade(src)
 
 
 /obj/item/storage/box/trackimp
@@ -176,30 +179,30 @@
 	desc = "Box full of scum-bag tracking utensils."
 	icon_state = "implant"
 
-	New()
-		..()
-		new /obj/item/implantcase/tracking(src)
-		new /obj/item/implantcase/tracking(src)
-		new /obj/item/implantcase/tracking(src)
-		new /obj/item/implantcase/tracking(src)
-		new /obj/item/implanter(src)
-		new /obj/item/implantpad(src)
-		new /obj/item/device/locator(src)
+/obj/item/storage/box/trackimp/Initialize()
+	..()
+	new /obj/item/implantcase/tracking(src)
+	new /obj/item/implantcase/tracking(src)
+	new /obj/item/implantcase/tracking(src)
+	new /obj/item/implantcase/tracking(src)
+	new /obj/item/implanter(src)
+	new /obj/item/implantpad(src)
+	new /obj/item/device/locator(src)
 
 /obj/item/storage/box/chemimp
 	name = "boxed chemical implant kit"
 	desc = "Box of stuff used to implant chemicals."
 	icon_state = "implant"
 
-	New()
-		..()
-		new /obj/item/implantcase/chem(src)
-		new /obj/item/implantcase/chem(src)
-		new /obj/item/implantcase/chem(src)
-		new /obj/item/implantcase/chem(src)
-		new /obj/item/implantcase/chem(src)
-		new /obj/item/implanter(src)
-		new /obj/item/implantpad(src)
+/obj/item/storage/box/chemimp/Initialize()
+	..()
+	new /obj/item/implantcase/chem(src)
+	new /obj/item/implantcase/chem(src)
+	new /obj/item/implantcase/chem(src)
+	new /obj/item/implantcase/chem(src)
+	new /obj/item/implantcase/chem(src)
+	new /obj/item/implanter(src)
+	new /obj/item/implantpad(src)
 
 
 
@@ -210,28 +213,28 @@
 	can_hold = list(/obj/item/clothing/glasses/regular)
 	w_class = SIZE_MEDIUM
 
-	New()
-		..()
-		new /obj/item/clothing/glasses/regular(src)
-		new /obj/item/clothing/glasses/regular(src)
-		new /obj/item/clothing/glasses/regular(src)
-		new /obj/item/clothing/glasses/regular(src)
-		new /obj/item/clothing/glasses/regular(src)
-		new /obj/item/clothing/glasses/regular(src)
-		new /obj/item/clothing/glasses/regular(src)
+/obj/item/storage/box/rxglasses/Initialize()
+	..()
+	new /obj/item/clothing/glasses/regular(src)
+	new /obj/item/clothing/glasses/regular(src)
+	new /obj/item/clothing/glasses/regular(src)
+	new /obj/item/clothing/glasses/regular(src)
+	new /obj/item/clothing/glasses/regular(src)
+	new /obj/item/clothing/glasses/regular(src)
+	new /obj/item/clothing/glasses/regular(src)
 
 /obj/item/storage/box/drinkingglasses
 	name = "box of drinking glasses"
 	desc = "It has a picture of drinking glasses on it."
 
-	New()
-		..()
-		new /obj/item/reagent_container/food/drinks/drinkingglass(src)
-		new /obj/item/reagent_container/food/drinks/drinkingglass(src)
-		new /obj/item/reagent_container/food/drinks/drinkingglass(src)
-		new /obj/item/reagent_container/food/drinks/drinkingglass(src)
-		new /obj/item/reagent_container/food/drinks/drinkingglass(src)
-		new /obj/item/reagent_container/food/drinks/drinkingglass(src)
+/obj/item/storage/box/drinkingglasses/Initialize()
+	..()
+	new /obj/item/reagent_container/food/drinks/drinkingglass(src)
+	new /obj/item/reagent_container/food/drinks/drinkingglass(src)
+	new /obj/item/reagent_container/food/drinks/drinkingglass(src)
+	new /obj/item/reagent_container/food/drinks/drinkingglass(src)
+	new /obj/item/reagent_container/food/drinks/drinkingglass(src)
+	new /obj/item/reagent_container/food/drinks/drinkingglass(src)
 
 /obj/item/storage/box/cdeathalarm_kit
 	name = "Death Alarm Kit"
@@ -239,43 +242,44 @@
 	icon_state = "implant"
 	item_state = "syringe_kit"
 
-	New()
-		..()
-		new /obj/item/implanter(src)
-		new /obj/item/implantcase/death_alarm(src)
-		new /obj/item/implantcase/death_alarm(src)
-		new /obj/item/implantcase/death_alarm(src)
-		new /obj/item/implantcase/death_alarm(src)
-		new /obj/item/implantcase/death_alarm(src)
-		new /obj/item/implantcase/death_alarm(src)
+/obj/item/storage/box/cdeathalarm_kit/Initialize()
+	..()
+	new /obj/item/implanter(src)
+	new /obj/item/implantcase/death_alarm(src)
+	new /obj/item/implantcase/death_alarm(src)
+	new /obj/item/implantcase/death_alarm(src)
+	new /obj/item/implantcase/death_alarm(src)
+	new /obj/item/implantcase/death_alarm(src)
+	new /obj/item/implantcase/death_alarm(src)
 
 /obj/item/storage/box/condimentbottles
 	name = "box of condiment bottles"
 	desc = "It has a large ketchup smear on it."
 
-	New()
-		..()
-		new /obj/item/reagent_container/food/condiment(src)
-		new /obj/item/reagent_container/food/condiment(src)
-		new /obj/item/reagent_container/food/condiment(src)
-		new /obj/item/reagent_container/food/condiment(src)
-		new /obj/item/reagent_container/food/condiment(src)
-		new /obj/item/reagent_container/food/condiment(src)
+/obj/item/storage/box/condimentbottles/Initialize()
+	..()
+	new /obj/item/reagent_container/food/condiment(src)
+	new /obj/item/reagent_container/food/condiment(src)
+	new /obj/item/reagent_container/food/condiment(src)
+	new /obj/item/reagent_container/food/condiment(src)
+	new /obj/item/reagent_container/food/condiment(src)
+	new /obj/item/reagent_container/food/condiment(src)
 
 
 
 /obj/item/storage/box/cups
 	name = "box of paper cups"
 	desc = "It has pictures of paper cups on the front."
-	New()
-		..()
-		new /obj/item/reagent_container/food/drinks/sillycup( src )
-		new /obj/item/reagent_container/food/drinks/sillycup( src )
-		new /obj/item/reagent_container/food/drinks/sillycup( src )
-		new /obj/item/reagent_container/food/drinks/sillycup( src )
-		new /obj/item/reagent_container/food/drinks/sillycup( src )
-		new /obj/item/reagent_container/food/drinks/sillycup( src )
-		new /obj/item/reagent_container/food/drinks/sillycup( src )
+
+/obj/item/storage/box/cups/Initialize()
+	..()
+	new /obj/item/reagent_container/food/drinks/sillycup( src )
+	new /obj/item/reagent_container/food/drinks/sillycup( src )
+	new /obj/item/reagent_container/food/drinks/sillycup( src )
+	new /obj/item/reagent_container/food/drinks/sillycup( src )
+	new /obj/item/reagent_container/food/drinks/sillycup( src )
+	new /obj/item/reagent_container/food/drinks/sillycup( src )
+	new /obj/item/reagent_container/food/drinks/sillycup( src )
 
 
 /obj/item/storage/box/donkpockets
@@ -285,64 +289,68 @@
 	can_hold = list(/obj/item/reagent_container/food/snacks)
 	w_class = SIZE_MEDIUM
 
-	New()
-		..()
-		new /obj/item/reagent_container/food/snacks/donkpocket(src)
-		new /obj/item/reagent_container/food/snacks/donkpocket(src)
-		new /obj/item/reagent_container/food/snacks/donkpocket(src)
-		new /obj/item/reagent_container/food/snacks/donkpocket(src)
-		new /obj/item/reagent_container/food/snacks/donkpocket(src)
-		new /obj/item/reagent_container/food/snacks/donkpocket(src)
+/obj/item/storage/box/donkpockets/Initialize()
+	..()
+	new /obj/item/reagent_container/food/snacks/donkpocket(src)
+	new /obj/item/reagent_container/food/snacks/donkpocket(src)
+	new /obj/item/reagent_container/food/snacks/donkpocket(src)
+	new /obj/item/reagent_container/food/snacks/donkpocket(src)
+	new /obj/item/reagent_container/food/snacks/donkpocket(src)
+	new /obj/item/reagent_container/food/snacks/donkpocket(src)
 
 /obj/item/storage/box/monkeycubes
 	name = "monkey cube box"
 	desc = "Drymate brand monkey cubes. Just add water!"
 	icon = 'icons/obj/items/food.dmi'
 	icon_state = "monkeycubebox"
-	New()
-		..()
-		if(src.type == /obj/item/storage/box/monkeycubes)
-			for(var/i = 1; i <= 5; i++)
-				new /obj/item/reagent_container/food/snacks/monkeycube/wrapped(src)
+
+/obj/item/storage/box/monkeycubes/Initialize()
+	..()
+	if(src.type == /obj/item/storage/box/monkeycubes)
+		for(var/i = 1; i <= 5; i++)
+			new /obj/item/reagent_container/food/snacks/monkeycube/wrapped(src)
 
 /obj/item/storage/box/monkeycubes/farwacubes
 	name = "farwa cube box"
 	desc = "Drymate brand farwa cubes, shipped from Ahdomai. Just add water!"
-	New()
-		..()
-		for(var/i = 1; i <= 5; i++)
-			new /obj/item/reagent_container/food/snacks/monkeycube/wrapped/farwacube(src)
+
+/obj/item/storage/box/monkeycubes/farwacubes/Initialize()
+	..()
+	for(var/i = 1; i <= 5; i++)
+		new /obj/item/reagent_container/food/snacks/monkeycube/wrapped/farwacube(src)
 
 /obj/item/storage/box/monkeycubes/stokcubes
 	name = "stok cube box"
 	desc = "Drymate brand stok cubes, shipped from Moghes. Just add water!"
-	New()
-		..()
-		for(var/i = 1; i <= 5; i++)
-			new /obj/item/reagent_container/food/snacks/monkeycube/wrapped/stokcube(src)
+
+/obj/item/storage/box/monkeycubes/stokcubes/Initialize()
+	..()
+	for(var/i = 1; i <= 5; i++)
+		new /obj/item/reagent_container/food/snacks/monkeycube/wrapped/stokcube(src)
 
 /obj/item/storage/box/monkeycubes/neaeracubes
 	name = "neaera cube box"
 	desc = "Drymate brand neaera cubes, shipped from Jargon 4. Just add water!"
-	New()
-		..()
-		for(var/i = 1; i <= 5; i++)
-			new /obj/item/reagent_container/food/snacks/monkeycube/wrapped/neaeracube(src)
+
+/obj/item/storage/box/monkeycubes/neaeracubes/Initialize()
+	..()
+	for(var/i = 1; i <= 5; i++)
+		new /obj/item/reagent_container/food/snacks/monkeycube/wrapped/neaeracube(src)
 
 /obj/item/storage/box/ids
 	name = "box of spare IDs"
 	desc = "Has so many empty IDs."
 	icon_state = "id"
 
-	New()
-		..()
-		new /obj/item/card/id(src)
-		new /obj/item/card/id(src)
-		new /obj/item/card/id(src)
-		new /obj/item/card/id(src)
-		new /obj/item/card/id(src)
-		new /obj/item/card/id(src)
-		new /obj/item/card/id(src)
+/obj/item/storage/box/ids/Initialize()
+	..()
+	new /obj/item/card/id(src)
+	new /obj/item/card/id(src)
+	new /obj/item/card/id(src)
+	new /obj/item/card/id(src)
+	new /obj/item/card/id(src)
+	new /obj/item/card/id(src)
+	new /obj/item/card/id(src)
 
 
 /obj/item/storage/box/handcuffs
@@ -350,15 +358,15 @@
 	desc = "A box full of handcuffs."
 	icon_state = "handcuff"
 
-	New()
-		..()
-		new /obj/item/handcuffs(src)
-		new /obj/item/handcuffs(src)
-		new /obj/item/handcuffs(src)
-		new /obj/item/handcuffs(src)
-		new /obj/item/handcuffs(src)
-		new /obj/item/handcuffs(src)
-		new /obj/item/handcuffs(src)
+/obj/item/storage/box/handcuffs/Initialize()
+	..()
+	new /obj/item/handcuffs(src)
+	new /obj/item/handcuffs(src)
+	new /obj/item/handcuffs(src)
+	new /obj/item/handcuffs(src)
+	new /obj/item/handcuffs(src)
+	new /obj/item/handcuffs(src)
+	new /obj/item/handcuffs(src)
 
 
 /obj/item/storage/box/zipcuffs
@@ -366,22 +374,22 @@
 	desc = "A box full of zip cuffs."
 	icon_state = "handcuff"
 
-	New()
-		..()
-		new /obj/item/handcuffs/zip(src)
-		new /obj/item/handcuffs/zip(src)
-		new /obj/item/handcuffs/zip(src)
-		new /obj/item/handcuffs/zip(src)
-		new /obj/item/handcuffs/zip(src)
-		new /obj/item/handcuffs/zip(src)
-		new /obj/item/handcuffs/zip(src)
-		new /obj/item/handcuffs/zip(src)
-		new /obj/item/handcuffs/zip(src)
-		new /obj/item/handcuffs/zip(src)
-		new /obj/item/handcuffs/zip(src)
-		new /obj/item/handcuffs/zip(src)
-		new /obj/item/handcuffs/zip(src)
-		new /obj/item/handcuffs/zip(src)
+/obj/item/storage/box/zipcuffs/Initialize()
+	..()
+	new /obj/item/handcuffs/zip(src)
+	new /obj/item/handcuffs/zip(src)
+	new /obj/item/handcuffs/zip(src)
+	new /obj/item/handcuffs/zip(src)
+	new /obj/item/handcuffs/zip(src)
+	new /obj/item/handcuffs/zip(src)
+	new /obj/item/handcuffs/zip(src)
+	new /obj/item/handcuffs/zip(src)
+	new /obj/item/handcuffs/zip(src)
+	new /obj/item/handcuffs/zip(src)
+	new /obj/item/handcuffs/zip(src)
+	new /obj/item/handcuffs/zip(src)
+	new /obj/item/handcuffs/zip(src)
+	new /obj/item/handcuffs/zip(src)
 
 
 /obj/item/storage/box/mousetraps
@@ -389,28 +397,28 @@
 	desc = "<B><FONT color='red'>WARNING:</FONT></B> <I>Keep out of reach of children</I>."
 	icon_state = "mousetraps"
 
-	New()
-		..()
-		new /obj/item/device/assembly/mousetrap( src )
-		new /obj/item/device/assembly/mousetrap( src )
-		new /obj/item/device/assembly/mousetrap( src )
-		new /obj/item/device/assembly/mousetrap( src )
-		new /obj/item/device/assembly/mousetrap( src )
-		new /obj/item/device/assembly/mousetrap( src )
+/obj/item/storage/box/mousetraps/Initialize()
+	..()
+	new /obj/item/device/assembly/mousetrap( src )
+	new /obj/item/device/assembly/mousetrap( src )
+	new /obj/item/device/assembly/mousetrap( src )
+	new /obj/item/device/assembly/mousetrap( src )
+	new /obj/item/device/assembly/mousetrap( src )
+	new /obj/item/device/assembly/mousetrap( src )
 
 /obj/item/storage/box/pillbottles
 	name = "box of pill bottles"
 	desc = "It has pictures of pill bottles on its front."
 
-	New()
-		..()
-		new /obj/item/storage/pill_bottle( src )
-		new /obj/item/storage/pill_bottle( src )
-		new /obj/item/storage/pill_bottle( src )
-		new /obj/item/storage/pill_bottle( src )
-		new /obj/item/storage/pill_bottle( src )
-		new /obj/item/storage/pill_bottle( src )
-		new /obj/item/storage/pill_bottle( src )
+/obj/item/storage/box/pillbottles/Initialize()
+	..()
+	new /obj/item/storage/pill_bottle( src )
+	new /obj/item/storage/pill_bottle( src )
+	new /obj/item/storage/pill_bottle( src )
+	new /obj/item/storage/pill_bottle( src )
+	new /obj/item/storage/pill_bottle( src )
+	new /obj/item/storage/pill_bottle( src )
+	new /obj/item/storage/pill_bottle( src )
 
 
 /obj/item/storage/box/snappops
@@ -419,10 +427,11 @@
 	icon = 'icons/obj/items/toy.dmi'
 	icon_state = "spbox"
 	max_storage_space = 8
-	New()
-		..()
-		for(var/i=1; i <= 8; i++)
-			new /obj/item/toy/snappop(src)
+
+/obj/item/storage/box/snappops/Initialize()
+	..()
+	for(var/i=1; i <= 8; i++)
+		new /obj/item/toy/snappop(src)
 
 /obj/item/storage/box/matches
 	name = "matchbox"
@@ -434,24 +443,25 @@
 	flags_equip_slot = SLOT_WAIST
 	can_hold = list(/obj/item/tool/match)
 
-	New()
-		..()
-		for(var/i=1; i <= 14; i++)
-			new /obj/item/tool/match(src)
+/obj/item/storage/box/matches/Initialize()
+	..()
+	for(var/i=1; i <= 14; i++)
+		new /obj/item/tool/match(src)
 
-	attackby(obj/item/tool/match/W as obj, mob/user as mob)
-		if(istype(W) && !W.heat_source && !W.burnt)
-			W.light_match()
+/obj/item/storage/box/matches/attackby(obj/item/tool/match/W as obj, mob/user as mob)
+	if(istype(W) && !W.heat_source && !W.burnt)
+		W.light_match()
 
 
 /obj/item/storage/box/quickclot
 	name = "box of quickclot injectors"
 	desc = "Contains quickclot autoinjectors."
 	icon_state = "syringe"
-	New()
-		..()
-		for (var/i; i < 7; i++)
-			new /obj/item/reagent_container/hypospray/autoinjector/quickclot(src)
+
+/obj/item/storage/box/quickclot/Initialize()
+	..()
+	for (var/i; i < 7; i++)
+		new /obj/item/reagent_container/hypospray/autoinjector/quickclot(src)
 
 /obj/item/storage/box/lights
 	name = "box of replacement bulbs"
@@ -467,7 +477,7 @@
 	max_storage_space = 42	//holds 21 items of w_class 2
 	storage_flags = STORAGE_FLAGS_BOX|STORAGE_CLICK_GATHER
 
-/obj/item/storage/box/lights/bulbs/New()
+/obj/item/storage/box/lights/bulbs/Initialize()
 	..()
 	for(var/i = 0; i < 21; i++)
 		new /obj/item/light_bulb/bulb(src)
@@ -477,7 +487,7 @@
 	icon_state = "lighttube"
 	w_class = SIZE_MEDIUM
 
-/obj/item/storage/box/lights/tubes/New()
+/obj/item/storage/box/lights/tubes/Initialize()
 	..()
 	for(var/i = 0; i < 21; i++)
 		new /obj/item/light_bulb/tube/large(src)
@@ -486,7 +496,7 @@
 	name = "box of replacement lights"
 	icon_state = "lightmixed"
 
-/obj/item/storage/box/lights/mixed/New()
+/obj/item/storage/box/lights/mixed/Initialize()
 	..()
 	for(var/i = 0; i < 14; i++)
 		new /obj/item/light_bulb/tube/large(src)
@@ -498,7 +508,7 @@
 	name = "box of autoinjectors"
 	icon_state = "syringe"
 
-/obj/item/storage/box/autoinjectors/New()
+/obj/item/storage/box/autoinjectors/Initialize()
 	..()
 	for(var/i = 0; i < 7; i++)
 		new /obj/item/reagent_container/hypospray/autoinjector/empty(src)
@@ -515,7 +525,7 @@
 	max_storage_space = 8
 	can_hold = list(/obj/item/explosive/mine)
 
-/obj/item/storage/box/explosive_mines/New()
+/obj/item/storage/box/explosive_mines/Initialize()
 	..()
 	contents = list()
 	sleep(1)
@@ -536,7 +546,7 @@
 	max_storage_space = 8
 	can_hold = list(/obj/item/device/flashlight/flare,/obj/item/device/flashlight/flare/signal)
 
-/obj/item/storage/box/m94/New()
+/obj/item/storage/box/m94/Initialize()
 	..()
 	contents = list()
 	var/i = 0
@@ -558,7 +568,7 @@
 	max_storage_space = 10
 	can_hold = list(/obj/item/device/flashlight/flare,/obj/item/device/flashlight/flare/signal)
 
-/obj/item/storage/box/m94/signal/New()
+/obj/item/storage/box/m94/signal/Initialize()
 	..()
 	contents = list()
 	new /obj/item/device/flashlight/flare/signal(src)
@@ -588,7 +598,7 @@
 	var/nade_box_icon
 	var/grenade_type = /obj/item/explosive/grenade/HE
 
-/obj/item/storage/box/nade_box/New()
+/obj/item/storage/box/nade_box/Initialize()
 	..()
 	select_gamemode_skin(/obj/item/storage/box/nade_box)
 	nade_box_icon = icon_state
@@ -639,29 +649,29 @@
 	icon_state = "lightstick"
 	can_hold = list(/obj/item/lightstick)
 
-	New()
-		..()
-		new /obj/item/lightstick(src)
-		new /obj/item/lightstick(src)
-		new /obj/item/lightstick(src)
-		new /obj/item/lightstick(src)
-		new /obj/item/lightstick(src)
-		new /obj/item/lightstick(src)
-		new /obj/item/lightstick(src)
+/obj/item/storage/box/lightstick/Initialize()
+	..()
+	new /obj/item/lightstick(src)
+	new /obj/item/lightstick(src)
+	new /obj/item/lightstick(src)
+	new /obj/item/lightstick(src)
+	new /obj/item/lightstick(src)
+	new /obj/item/lightstick(src)
+	new /obj/item/lightstick(src)
 
 /obj/item/storage/box/lightstick/red
 	desc = "Contains red lightsticks."
 	icon_state = "lightstick2"
 
-	New()
-		..()
-		new /obj/item/lightstick/red(src)
-		new /obj/item/lightstick/red(src)
-		new /obj/item/lightstick/red(src)
-		new /obj/item/lightstick/red(src)
-		new /obj/item/lightstick/red(src)
-		new /obj/item/lightstick/red(src)
-		new /obj/item/lightstick/red(src)
+/obj/item/storage/box/lightstick/red/Initialize()
+	..()
+	new /obj/item/lightstick/red(src)
+	new /obj/item/lightstick/red(src)
+	new /obj/item/lightstick/red(src)
+	new /obj/item/lightstick/red(src)
+	new /obj/item/lightstick/red(src)
+	new /obj/item/lightstick/red(src)
+	new /obj/item/lightstick/red(src)
 
 
 
@@ -676,9 +686,9 @@
 	max_w_class = 0
 	var/isopened = 0
 
-/obj/item/storage/box/MRE/New()
-		..()
-		pickflavor()
+/obj/item/storage/box/MRE/Initialize()
+	..()
+	pickflavor()
 
 /obj/item/storage/box/MRE/proc/pickflavor()
 	var/main = pick("boneless pork ribs", "grilled chicken", "pizza square", "spaghetti chunks", "chicken tender")

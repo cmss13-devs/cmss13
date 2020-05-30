@@ -178,9 +178,10 @@
 	icon_state = "milk"
 	item_state = "carton"
 	center_of_mass = "x=16;y=9"
-	New()
-		..()
-		reagents.add_reagent("milk", 50)
+
+/obj/item/reagent_container/food/drinks/milk/Initialize()
+	..()
+	reagents.add_reagent("milk", 50)
 
 /* Flour is no longer a reagent
 /obj/item/reagent_container/food/drinks/flour
@@ -189,7 +190,8 @@
 	icon = 'icons/obj/items/food.dmi'
 	icon_state = "flour"
 	item_state = "flour"
-	New()
+
+/obj/item/reagent_container/food/drinks/flour/Initialize()
 		..()
 		reagents.add_reagent("flour", 30)
 		src.pixel_x = rand(-10.0, 10)
@@ -202,7 +204,8 @@
 	icon_state = "soymilk"
 	item_state = "carton"
 	center_of_mass = "x=16;y=9"
-	New()
+
+/obj/item/reagent_container/food/drinks/soymilk/Initialize()
 		..()
 		reagents.add_reagent("soymilk", 50)
 
@@ -211,9 +214,10 @@
 	desc = "Careful, the beverage you're about to enjoy is extremely hot."
 	icon_state = "coffee"
 	center_of_mass = "x=15;y=10"
-	New()
-		..()
-		reagents.add_reagent("coffee", 20)
+
+/obj/item/reagent_container/food/drinks/coffee/Initialize()
+	..()
+	reagents.add_reagent("coffee", 20)
 
 /obj/item/reagent_container/food/drinks/tea
 	name = "\improper Duke Purple Tea"
@@ -221,18 +225,20 @@
 	icon_state = "teacup"
 	item_state = "coffee"
 	center_of_mass = "x=16;y=14"
-	New()
-		..()
-		reagents.add_reagent("tea", 30)
+
+/obj/item/reagent_container/food/drinks/tea/Initialize()
+	..()
+	reagents.add_reagent("tea", 30)
 
 /obj/item/reagent_container/food/drinks/ice
 	name = "ice cup"
 	desc = "Careful, cold ice, do not chew."
 	icon_state = "coffee"
 	center_of_mass = "x=15;y=10"
-	New()
-		..()
-		reagents.add_reagent("ice", 30)
+
+/obj/item/reagent_container/food/drinks/ice/Initialize()
+	..()
+	reagents.add_reagent("ice", 30)
 
 /obj/item/reagent_container/food/drinks/h_chocolate
 	name = "\improper Dutch hot coco"
@@ -240,18 +246,20 @@
 	icon_state = "hot_coco"
 	item_state = "coffee"
 	center_of_mass = "x=15;y=13"
-	New()
-		..()
-		reagents.add_reagent("hot_coco", 30)
+
+/obj/item/reagent_container/food/drinks/h_chocolate/Initialize()
+	..()
+	reagents.add_reagent("hot_coco", 30)
 
 /obj/item/reagent_container/food/drinks/dry_ramen
 	name = "cup ramen"
 	desc = "Just add 10ml water, self heats! A taste that reminds you of your school years."
 	icon_state = "ramen"
 	center_of_mass = "x=16;y=11"
-	New()
-		..()
-		reagents.add_reagent("dry_ramen", 30)
+
+/obj/item/reagent_container/food/drinks/dry_ramen/Initialize()
+	..()
+	reagents.add_reagent("dry_ramen", 30)
 
 
 /obj/item/reagent_container/food/drinks/sillycup
@@ -261,13 +269,15 @@
 	possible_transfer_amounts = null
 	volume = 10
 	center_of_mass = "x=16;y=12"
-	New()
-		..()
-	on_reagent_change()
-		if(reagents.total_volume)
-			icon_state = "water_cup"
-		else
-			icon_state = "water_cup_e"
+
+/obj/item/reagent_container/food/drinks/sillycup/Initialize()
+	..()
+
+/obj/item/reagent_container/food/drinks/sillycup/on_reagent_change()
+	if(reagents.total_volume)
+		icon_state = "water_cup"
+	else
+		icon_state = "water_cup_e"
 
 
 //////////////////////////drinkingglass and shaker//
@@ -296,10 +306,11 @@
 	icon_state = "flask_uscm"
 	volume = 60
 	center_of_mass = "x=17;y=8"
-	New()
-		..()
-		reagents.add_reagent("water", 59)
-		reagents.add_reagent("hooch", 1)
+
+/obj/item/reagent_container/food/drinks/flask/marine/Initialize()
+	..()
+	reagents.add_reagent("water", 59)
+	reagents.add_reagent("hooch", 1)
 
 /obj/item/reagent_container/food/drinks/flask/detflask
 	name = "detective's flask"

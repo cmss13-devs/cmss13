@@ -51,7 +51,7 @@
 	max_storage_space = 24
 	can_hold = list(/obj/item/reagent_container/food/snacks/egg)
 
-/obj/item/storage/fancy/egg_box/New()
+/obj/item/storage/fancy/egg_box/Initialize()
 	..()
 	for(var/i=1; i <= storage_slots; i++)
 		new /obj/item/reagent_container/food/snacks/egg(src)
@@ -73,7 +73,7 @@
 	flags_equip_slot = SLOT_WAIST
 
 
-/obj/item/storage/fancy/candle_box/New()
+/obj/item/storage/fancy/candle_box/Initialize()
 	..()
 	for(var/i=1; i <= storage_slots; i++)
 		new /obj/item/tool/candle(src)
@@ -93,7 +93,7 @@
 	icon_type = "crayon"
 	can_hold = list(/obj/item/toy/crayon)
 
-/obj/item/storage/fancy/crayons/New()
+/obj/item/storage/fancy/crayons/Initialize()
 	..()
 	new /obj/item/toy/crayon/red(src)
 	new /obj/item/toy/crayon/orange(src)
@@ -138,7 +138,7 @@
 	icon_type = "cigarette"
 	var/default_cig_type=/obj/item/clothing/mask/cigarette
 
-/obj/item/storage/fancy/cigarettes/New()
+/obj/item/storage/fancy/cigarettes/Initialize()
 	..()
 	flags_atom |= NOREACT
 	for(var/i = 1 to storage_slots)
@@ -228,7 +228,7 @@
 	can_hold = list(/obj/item/clothing/mask/cigarette/cigar)
 	icon_type = "cigar"
 
-/obj/item/storage/fancy/cigar/New()
+/obj/item/storage/fancy/cigar/Initialize()
 	..()
 	flags_atom |= NOREACT
 	for(var/i = 1 to storage_slots)
@@ -274,7 +274,7 @@
 	var/is_random
 
 
-/obj/item/storage/fancy/vials/New()
+/obj/item/storage/fancy/vials/Initialize()
 	..()
 	if(is_random)
 		var/spawns = rand(1,4)
@@ -318,7 +318,7 @@
 	storage_slots = 6
 	req_access = list(ACCESS_MARINE_MEDBAY)
 
-/obj/item/storage/lockbox/vials/New()
+/obj/item/storage/lockbox/vials/Initialize()
 	..()
 	update_icon()
 

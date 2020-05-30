@@ -223,7 +223,7 @@ var/list/global/item_storage_box_cache = list()
 		var/matrix/M = matrix()
 		M.Scale((storage_width-storage_cap_width*2+3)/32,1)
 		storage_continue.apply_transform(M)
-		
+
 	if(!opened) //initialize background box
 		storage_start.screen_loc = "4:16,2:16"
 		storage_continue.screen_loc = "4:[round(storage_cap_width+(storage_width-storage_cap_width*2)/2+2)],2:16"
@@ -533,7 +533,7 @@ var/list/global/item_storage_box_cache = list()
 	var/mob/living/carbon/human/H = usr
 	if (!ishuman(H) || loc != H || H.is_mob_restrained())
 		return
-	
+
 	empty(H, get_turf(H))
 
 /obj/item/storage/proc/empty(var/mob/user, var/turf/T)
@@ -541,23 +541,23 @@ var/list/global/item_storage_box_cache = list()
 		return
 	if (!(storage_flags & STORAGE_ALLOW_EMPTY))
 		return
-	
+
 	if (!isturf(T) || get_dist(src, T) > 1)
 		T = get_turf(src)
 
-		
+
 	if (!(storage_flags & STORAGE_QUICK_EMPTY))
 		user.visible_message(SPAN_NOTICE("[user] starts to empty \the [src]..."),
 			SPAN_NOTICE("You start to empty \the [src]..."))
 		if (!do_after(user, SECONDS_2, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 			return
-	
+
 	hide_from(user)
 	for (var/obj/item/I in contents)
 		remove_from_storage(I, T)
 	user.visible_message(SPAN_NOTICE("[user] empties \the [src]."),
 		SPAN_NOTICE("You empty \the [src]."))
-	
+
 
 /obj/item/storage/proc/dump_into(obj/item/storage/M, mob/user)
 	if(istype(M,/obj/item/ammo_magazine/shotgun)) //for inserting handfuls of shotgun shells
@@ -606,7 +606,7 @@ var/list/global/item_storage_box_cache = list()
 			to_chat(user, SPAN_WARNING("[M] is empty."))
 	return TRUE
 
-/obj/item/storage/New()
+/obj/item/storage/Initialize()
 	..()
 	if (!(storage_flags & STORAGE_QUICK_GATHER))
 		verbs -= /obj/item/storage/verb/toggle_gathering_mode
@@ -698,7 +698,7 @@ var/list/global/item_storage_box_cache = list()
 	qdel(src)
 
 /obj/item/storage/afterattack(atom/target, mob/user, proximity)
-	if(!proximity) 
+	if(!proximity)
 		return
 
 	if(isturf(target) && get_dist(src, target) <= 1 && storage_flags & STORAGE_CLICK_EMPTY)

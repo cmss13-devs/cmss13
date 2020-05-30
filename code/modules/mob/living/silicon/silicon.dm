@@ -17,7 +17,7 @@
 	var/sec_hud = MOB_HUD_SECURITY_ADVANCED //Determines the sec hud to use
 	var/list/HUD_toggled = list(0,0,0)
 
-/mob/living/silicon/New()
+/mob/living/silicon/Initialize()
 	..()
 	living_misc_mobs += src
 	add_language("English")

@@ -8,7 +8,7 @@
 	icon_broken = "wardensecurebroken"
 	icon_off = "wardensecureoff"
 
-/obj/structure/closet/secure_closet/warden/New()
+/obj/structure/closet/secure_closet/warden/Initialize()
 	..()
 	sleep(2)
 	if(prob(50))
@@ -40,7 +40,7 @@
 	icon_off = "secure_closed_warrant"
 
 
-/obj/structure/closet/secure_closet/marshal/New()
+/obj/structure/closet/secure_closet/marshal/Initialize()
 	..()
 	new /obj/item/clothing/suit/storage/CMB(src)
 	new /obj/item/clothing/under/CM_uniform(src)
@@ -58,7 +58,7 @@
 	icon_broken = "secure_broken_police"
 	icon_off = "secure_closed_police"
 
-/obj/structure/closet/secure_closet/security/New()
+/obj/structure/closet/secure_closet/security/Initialize()
 	..()
 	sleep(2)
 	if(prob(50))
@@ -80,20 +80,20 @@
 	new /obj/item/clothing/under/rank/security/corp(src)
 
 
-/obj/structure/closet/secure_closet/security/cargo/New()
+/obj/structure/closet/secure_closet/security/cargo/Initialize()
 	..()
 	new /obj/item/clothing/accessory/armband/cargo(src)
 
-/obj/structure/closet/secure_closet/security/engine/New()
+/obj/structure/closet/secure_closet/security/engine/Initialize()
 	..()
 	new /obj/item/clothing/accessory/armband/engine(src)
 	new /obj/item/device/encryptionkey/engi(src)
 
-/obj/structure/closet/secure_closet/security/science/New()
+/obj/structure/closet/secure_closet/security/science/Initialize()
 	..()
 	new /obj/item/clothing/accessory/armband/science(src)
 
-/obj/structure/closet/secure_closet/security/med/New()
+/obj/structure/closet/secure_closet/security/med/Initialize()
 	..()
 	new /obj/item/clothing/accessory/armband/medgreen(src)
 	new /obj/item/device/encryptionkey/med(src)
@@ -122,7 +122,7 @@
 	icon_broken = "cabinetdetective_broken"
 	icon_off = "cabinetdetective_broken"
 
-/obj/structure/closet/secure_closet/detective/New()
+/obj/structure/closet/secure_closet/detective/Initialize()
 	..()
 	sleep(2)
 	new /obj/item/clothing/under/det(src)
@@ -156,7 +156,7 @@
 	name = "Lethal Injections"
 	req_access = list(ACCESS_MARINE_COMMANDER)
 
-/obj/structure/closet/secure_closet/injection/New()
+/obj/structure/closet/secure_closet/injection/Initialize()
 	..()
 	sleep(2)
 	new /obj/item/reagent_container/ld50_syringe/choral(src)
@@ -169,7 +169,7 @@
 	locked = TRUE
 	var/id = null
 
-/obj/structure/closet/secure_closet/brig/New()
+/obj/structure/closet/secure_closet/brig/Initialize()
 	..()
 	new /obj/item/clothing/under/color/orange(src)
 	new /obj/item/clothing/shoes/orange(src)
@@ -180,7 +180,7 @@
 	name = "Courtroom Locker"
 	req_access = list(ACCESS_MARINE_BRIG)
 
-/obj/structure/closet/secure_closet/courtroom/New()
+/obj/structure/closet/secure_closet/courtroom/Initialize()
 	..()
 	sleep(2)
 	new /obj/item/clothing/shoes/brown(src)

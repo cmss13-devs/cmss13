@@ -14,7 +14,7 @@
 	var/uses_left = 3
 	var/mixed_chem = FALSE
 
-/obj/item/reagent_container/hypospray/autoinjector/New()
+/obj/item/reagent_container/hypospray/autoinjector/Initialize()
 	..()
 	if(mixed_chem)
 		return
@@ -82,7 +82,7 @@
 	volume = 30
 	mixed_chem = TRUE
 
-/obj/item/reagent_container/hypospray/autoinjector/chloralhydrate/New()
+/obj/item/reagent_container/hypospray/autoinjector/chloralhydrate/Initialize()
 	..()
 	reagents.add_reagent("chloralhydrate", 1*3)
 	reagents.add_reagent("stoxin", 9*3)
@@ -131,7 +131,7 @@
 	volume = 30
 	mixed_chem = TRUE
 
-/obj/item/reagent_container/hypospray/autoinjector/suxamorycin/New()
+/obj/item/reagent_container/hypospray/autoinjector/suxamorycin/Initialize()
 	..()
 	reagents.add_reagent("suxamorycin", volume)
 	update_icon()
@@ -145,7 +145,7 @@
 	mixed_chem = TRUE
 	uses_left = 1
 
-/obj/item/reagent_container/hypospray/autoinjector/emergency/New()
+/obj/item/reagent_container/hypospray/autoinjector/emergency/Initialize()
 	..()
 	reagents.add_reagent("bicaridine", REAGENTS_OVERDOSE-1)
 	reagents.add_reagent("kelotane", REAGENTS_OVERDOSE-1)

@@ -45,7 +45,7 @@
 		/obj/item/reagent_container/hypospray,
 		/obj/structure/machinery/constructable_frame)
 
-	New()
+/obj/item/reagent_container/glass/Initialize()
 		..()
 		base_name = name
 
@@ -263,7 +263,7 @@
 /obj/item/reagent_container/glass/beaker/vial/tricordrazine
 	name = "tricordrazine vial"
 
-/obj/item/reagent_container/glass/beaker/vial/tricordrazine/New()
+/obj/item/reagent_container/glass/beaker/vial/tricordrazine/Initialize()
 	..()
 	reagents.add_reagent("tricordrazine", 30)
 	update_icon()
@@ -271,41 +271,42 @@
 /obj/item/reagent_container/glass/beaker/vial/sedative
 	name = "suxamorycin vial"
 
-/obj/item/reagent_container/glass/beaker/vial/sedative/New()
+/obj/item/reagent_container/glass/beaker/vial/sedative/Initialize()
 	..()
 	reagents.add_reagent("suxamorycin", 30)
 	update_icon()
 
 /obj/item/reagent_container/glass/beaker/vial/random
 	var/tier
-	New()
-		..()
-		var/random_chem
-		if(tier)
-			random_chem = pick(chemical_gen_classes_list[tier])
-		else
-			random_chem = pick(	prob(3);pick(chemical_gen_classes_list["C1"]),\
-								prob(5);pick(chemical_gen_classes_list["C2"]),\
-								prob(7);pick(chemical_gen_classes_list["C3"]),\
-								prob(10);pick(chemical_gen_classes_list["C4"]),\
-								prob(15);pick(chemical_gen_classes_list["C5"]),\
-								prob(25);pick(chemical_gen_classes_list["T1"]),\
-								prob(15);pick(chemical_gen_classes_list["T2"]),\
-								prob(10);pick(chemical_gen_classes_list["T3"]),\
-								prob(5);pick(chemical_gen_classes_list["T4"]),\
-								prob(15);"")
-		if(random_chem)
-			reagents.add_reagent(random_chem, 30)
-			update_icon()
 
-/obj/item/reagent_container/glass/beaker/vial/random/good/New()
+/obj/item/reagent_container/glass/beaker/vial/random/Initialize()
+	..()
+	var/random_chem
+	if(tier)
+		random_chem = pick(chemical_gen_classes_list[tier])
+	else
+		random_chem = pick(	prob(3);pick(chemical_gen_classes_list["C1"]),\
+							prob(5);pick(chemical_gen_classes_list["C2"]),\
+							prob(7);pick(chemical_gen_classes_list["C3"]),\
+							prob(10);pick(chemical_gen_classes_list["C4"]),\
+							prob(15);pick(chemical_gen_classes_list["C5"]),\
+							prob(25);pick(chemical_gen_classes_list["T1"]),\
+							prob(15);pick(chemical_gen_classes_list["T2"]),\
+							prob(10);pick(chemical_gen_classes_list["T3"]),\
+							prob(5);pick(chemical_gen_classes_list["T4"]),\
+							prob(15);"")
+	if(random_chem)
+		reagents.add_reagent(random_chem, 30)
+		update_icon()
+
+/obj/item/reagent_container/glass/beaker/vial/random/good/Initialize()
 	tier = pick("C5","T4")
 	. = ..()
 
 /obj/item/reagent_container/glass/beaker/cryoxadone
 	name = "cryoxadone beaker"
 
-/obj/item/reagent_container/glass/beaker/cryoxadone/New()
+/obj/item/reagent_container/glass/beaker/cryoxadone/Initialize()
 	. = ..()
 	reagents.add_reagent("cryoxadone", 30)
 	update_icon()
@@ -313,7 +314,7 @@
 /obj/item/reagent_container/glass/beaker/cryopredmix
 	name = "cryomix beaker"
 
-/obj/item/reagent_container/glass/beaker/cryopredmix/New()
+/obj/item/reagent_container/glass/beaker/cryopredmix/Initialize()
 	..()
 	reagents.add_reagent("cryoxadone", 30)
 	reagents.add_reagent("clonexadone", 30)
@@ -322,7 +323,7 @@
 /obj/item/reagent_container/glass/beaker/sulphuric
 	name = "sulphuric acid beaker"
 
-/obj/item/reagent_container/glass/beaker/sulphuric/New()
+/obj/item/reagent_container/glass/beaker/sulphuric/Initialize()
 	..()
 	reagents.add_reagent("sacid", 60)
 	update_icon()
@@ -330,7 +331,7 @@
 /obj/item/reagent_container/glass/beaker/ethanol
 	name = "ethanol beaker"
 
-/obj/item/reagent_container/glass/beaker/ethanol/New()
+/obj/item/reagent_container/glass/beaker/ethanol/Initialize()
 	..()
 	reagents.add_reagent("ethanol", 60)
 	update_icon()
@@ -338,7 +339,7 @@
 /obj/item/reagent_container/glass/beaker/large/phosphorus
 	name = "phosphorus beaker"
 
-/obj/item/reagent_container/glass/beaker/large/phosphorus/New()
+/obj/item/reagent_container/glass/beaker/large/phosphorus/Initialize()
 	..()
 	reagents.add_reagent("phosphorus", 120)
 	update_icon()
@@ -346,7 +347,7 @@
 /obj/item/reagent_container/glass/beaker/large/lithium
 	name = "lithium beaker"
 
-/obj/item/reagent_container/glass/beaker/large/lithium/New()
+/obj/item/reagent_container/glass/beaker/large/lithium/Initialize()
 	..()
 	reagents.add_reagent("lithium", 120)
 	update_icon()
@@ -354,7 +355,7 @@
 /obj/item/reagent_container/glass/beaker/large/sodiumchloride
 	name = "sodium chloride beaker"
 
-/obj/item/reagent_container/glass/beaker/large/sodiumchloride/New()
+/obj/item/reagent_container/glass/beaker/large/sodiumchloride/Initialize()
 	..()
 	reagents.add_reagent("sodiumchloride", 120)
 	update_icon()
@@ -362,7 +363,7 @@
 /obj/item/reagent_container/glass/beaker/large/potassiumchloride
 	name = "potassium chloride beaker"
 
-/obj/item/reagent_container/glass/beaker/large/potassiumchloride/New()
+/obj/item/reagent_container/glass/beaker/large/potassiumchloride/Initialize()
 	..()
 	reagents.add_reagent("potassium_chloride", 120)
 	update_icon()
@@ -378,7 +379,7 @@
 	volume = 400
 	var/reagent = "hydrogen"
 
-/obj/item/reagent_container/glass/canister/New()
+/obj/item/reagent_container/glass/canister/Initialize()
 	..()
 	reagents.add_reagent(reagent, 400)
 

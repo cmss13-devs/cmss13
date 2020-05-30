@@ -31,12 +31,10 @@
 	max_water = 30
 	sprite_name = "miniFE"
 
-/obj/item/tool/extinguisher/New()
+/obj/item/tool/extinguisher/Initialize()
 	. = ..()
-	var/datum/reagents/R = new/datum/reagents(max_water)
-	reagents = R
-	R.my_atom = src
-	R.add_reagent("water", max_water)
+	create_reagents(max_water)
+	reagents.add_reagent("water", max_water)
 
 /obj/item/tool/extinguisher/examine(mob/user)
 	..()
@@ -145,9 +143,7 @@
 /obj/item/tool/extinguisher/proc/release_liquid(var/turf/target)
 	var/turf/T = get_turf(src)
 	var/obj/effect/particle_effect/water/W = new /obj/effect/particle_effect/water(T)
-	var/datum/reagents/R = new/datum/reagents(5)
-	W.reagents = R
-	R.my_atom = W
+	W.create_reagents(5)
 	reagents.trans_to(W, 1)
 	for(var/b in 0 to (5-1))
 		step_towards(W, target)

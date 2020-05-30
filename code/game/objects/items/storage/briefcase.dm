@@ -11,7 +11,7 @@
 	max_w_class = SIZE_MEDIUM
 	max_storage_space = 16
 
-/obj/item/storage/briefcase/New()
+/obj/item/storage/briefcase/Initialize()
 	..()
 
 /obj/item/storage/briefcase/attack(mob/living/M as mob, mob/living/user as mob)

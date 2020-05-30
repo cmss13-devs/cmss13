@@ -17,7 +17,7 @@
 	// Which node is responsible for keeping this weed patch alive?
 	var/obj/effect/alien/weeds/node/parent = null
 
-/obj/effect/alien/weeds/New(pos, obj/effect/alien/weeds/node/node)
+/obj/effect/alien/weeds/Initialize(pos, obj/effect/alien/weeds/node/node)
 	..()
 	if(node)
 		weed_strength = node.weed_strength
@@ -264,12 +264,16 @@
 	name = "purple sac"
 	desc = "A weird, pulsating node."
 	icon_state = "weednode"
-	reagents = list("purpleplasma" = 30)
 	health = NODE_HEALTH_STANDARD
 	flags_atom = OPENCONTAINER
 
 	// Which weeds are being kept alive by this node?
 	var/list/obj/effect/alien/weeds/children = list()
+
+/obj/effect/alien/weeds/node/Initialize()
+	. = ..()
+	create_reagents(30)
+	reagents.add_reagent(PLASMA_PURPLE, 30)
 
 /obj/effect/alien/weeds/node/proc/add_child(var/obj/effect/alien/weeds/weed)
 	if(!weed || !istype(weed))
@@ -293,7 +297,7 @@
 	..()
 	overlays += "weednode"
 
-/obj/effect/alien/weeds/node/New(loc, obj/effect/alien/weeds/node/node, mob/living/carbon/Xenomorph/X)
+/obj/effect/alien/weeds/node/Initialize(loc, obj/effect/alien/weeds/node/node, mob/living/carbon/Xenomorph/X)
 	..(loc, src)
 
 	create_reagents(30)

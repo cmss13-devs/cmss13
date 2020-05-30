@@ -153,12 +153,10 @@
 
 
 
-/obj/item/tool/pen/sleepypen/New()
+/obj/item/tool/pen/sleepypen/Initialize()
 	. = ..()
-	var/datum/reagents/R = new/datum/reagents(30) //Used to be 300
-	reagents = R
-	R.my_atom = src
-	R.add_reagent("chloralhydrate", 22)	//Used to be 100 sleep toxin//30 Chloral seems to be fatal, reducing it to 22./N
+	create_reagents(30) //Used to be 300
+	reagents.add_reagent("chloralhydrate", 22)	//Used to be 100 sleep toxin//30 Chloral seems to be fatal, reducing it to 22./N
 	..()
 	return
 
@@ -189,13 +187,11 @@
 		if(reagents.total_volume)
 			if(M.reagents) reagents.trans_to(M, 50)
 
-/obj/item/tool/pen/paralysis/New()
+/obj/item/tool/pen/paralysis/Initialize()
 	. = ..()
-	var/datum/reagents/R = new/datum/reagents(50)
-	reagents = R
-	R.my_atom = src
-	R.add_reagent("zombiepowder", 10)
-	R.add_reagent("cryptobiolin", 15)
+	create_reagents(50)
+	reagents.add_reagent("zombiepowder", 10)
+	reagents.add_reagent("cryptobiolin", 15)
 	..()
 
 /obj/item/tool/stamp

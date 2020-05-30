@@ -49,7 +49,7 @@
 	var/has_loot = 1
 	faction = "malf_drone"
 
-/mob/living/simple_animal/hostile/retaliate/malf_drone/New()
+/mob/living/simple_animal/hostile/retaliate/malf_drone/Initialize()
 	..()
 	if(prob(5))
 		projectiletype = /obj/item/projectile/beam/pulse/drone

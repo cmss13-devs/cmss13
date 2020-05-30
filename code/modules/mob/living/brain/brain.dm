@@ -9,10 +9,8 @@
 	icon = 'icons/obj/items/organs.dmi'
 	icon_state = "brain1"
 
-/mob/living/brain/New()
-	var/datum/reagents/R = new/datum/reagents(1000)
-	reagents = R
-	R.my_atom = src
+/mob/living/brain/Initialize()
+	create_reagents(1000)
 	..()
 
 /mob/living/brain/Dispose()

@@ -14,7 +14,7 @@
 	idle_power_usage = 30
 	active_power_usage = 2500
 
-/obj/structure/machinery/r_n_d/circuit_imprinter/New()
+/obj/structure/machinery/r_n_d/circuit_imprinter/Initialize()
 		..()
 		component_parts = list()
 		component_parts += new /obj/item/circuitboard/machine/circuit_imprinter(src)
@@ -33,7 +33,7 @@
 	req_access = list(ACCESS_MARINE_CMO) //Only the R&D can change server settings.
 
 
-/obj/structure/machinery/r_n_d/server/New()
+/obj/structure/machinery/r_n_d/server/Initialize()
 	..()
 	component_parts = list()
 	component_parts += new /obj/item/circuitboard/machine/rdserver(src)
@@ -64,7 +64,7 @@
 	idle_power_usage = 30
 	active_power_usage = 2500
 
-/obj/structure/machinery/r_n_d/destructive_analyzer/New()
+/obj/structure/machinery/r_n_d/destructive_analyzer/Initialize()
 	..()
 	component_parts = list()
 	component_parts += new /obj/item/circuitboard/machine/destructive_analyzer(src)
@@ -82,7 +82,7 @@
 	idle_power_usage = 30
 	active_power_usage = 5000
 
-/obj/structure/machinery/r_n_d/protolathe/New()
+/obj/structure/machinery/r_n_d/protolathe/Initialize()
 	..()
 	component_parts = list()
 	component_parts += new /obj/item/circuitboard/machine/protolathe(src)
@@ -103,7 +103,7 @@
 	idle_power_usage = 800
 	req_access = list(ACCESS_MARINE_CMO) //Only the R&D can change server settings.
 
-/obj/structure/machinery/r_n_d/server/New()
+/obj/structure/machinery/r_n_d/server/Initialize()
 	..()
 	component_parts = list()
 	component_parts += new /obj/item/circuitboard/machine/rdserver(src)
@@ -156,7 +156,7 @@
 	idle_power_usage = 30
 	active_power_usage = 2500
 
-/obj/structure/machinery/r_n_d/organic_analyzer/New()
+/obj/structure/machinery/r_n_d/organic_analyzer/Initialize()
 	..()
 	component_parts = list()
 	component_parts += new /obj/item/circuitboard/machine/destructive_analyzer(src) //We'll need it's own board one day.
@@ -174,7 +174,7 @@
 	idle_power_usage = 30
 	active_power_usage = 5000
 
-/obj/structure/machinery/r_n_d/bioprinter/New()
+/obj/structure/machinery/r_n_d/bioprinter/Initialize()
 	..()
 	component_parts = list()
 	component_parts += new /obj/item/circuitboard/machine/protolathe(src) //We'll need to make our own board one day

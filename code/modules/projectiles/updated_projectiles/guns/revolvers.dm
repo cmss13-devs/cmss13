@@ -321,7 +321,7 @@
 	
 /obj/item/weapon/gun/revolver/m44/custom//accuracy and damage bonus
 	name = "\improper M44 custom combat revolver"
-	desc = "A bulky revolver, occasionally carried by assault troops and officers in the Colonial Marines, as well civilian law enforcement. Fires .44 Magnum rounds."
+	desc = "A bulky combat revolver. The handle has been polished to a pearly perfection, and the body is silver plated. Fires .44 Magnum rounds."
 	icon_state = "m44rc"
 	item_state = "m44rc"
 
@@ -412,7 +412,7 @@
 
 /obj/item/weapon/gun/revolver/mateba
 	name = "\improper Mateba autorevolver"
-	desc = "The Mateba is a powerful, fast-firing revolver that uses its own recoil to rotate the cylinders. It uses heavy .454 rounds."
+	desc = "The Mateba is a powerful, fast-firing revolver that uses its own recoil to rotate the cylinders. It fires heavy .454 rounds."
 	icon_state = "mateba"
 	item_state = "mateba"
 
@@ -480,7 +480,7 @@
 
 
 /obj/item/weapon/gun/revolver/mateba/admiral
-	name = "\improper Mateba autorevolver custom++"
+	name = "\improper engraved Mateba autorevolver custom"
 	desc = "The Mateba is a powerful, fast-firing revolver that uses its own recoil to rotate the cylinders. This version is snubnosed, engraved with gold, tinted black, and highly customized for a high-ranking admiral. It uses heavy .454 rounds."
 	icon_state = "amateba"
 	item_state = "amateba"
@@ -497,13 +497,13 @@
 	starting_attachment_types = list(/obj/item/attachable/mateba/dark)
 
 /obj/item/weapon/gun/revolver/mateba/engraved
-	name = "\improper Mateba autorevolver engraved"
+	name = "\improper engraved Mateba autorevolver"
 	desc = "The Mateba is a powerful, fast-firing revolver that uses its own recoil to rotate the cylinders. We have all heard of it, but on this version you glance a scratched engraving, barely readable. Is it your name?"
 	icon_state = "aamateba"
 	item_state = "aamateba"
 
 /obj/item/weapon/gun/revolver/mateba/cmateba
-	name = "\improper Mateba autorevolver special"
+	name = "\improper Mateba autorevolver custom"
 	desc = "The Mateba is a powerful, fast-firing revolver that uses its own recoil to rotate the cylinders. It uses heavy .454 rounds. This version is a limited edition produced for the USCM, and issued in extremely small amounts. Was a mail-order item back in 2172, and is highly sought after by officers across many different battalions. This one is stamped 'Major Ike Saker, 7th 'Falling Falcons' Battalion.'"
 	icon_state = "cmateba"
 	item_state = "cmateba"	

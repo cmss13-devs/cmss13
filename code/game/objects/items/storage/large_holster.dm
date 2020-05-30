@@ -102,7 +102,7 @@
 	name = "ceremonial sword scabbard"
 	desc = "A large, vibrantly colored scabbard used to carry a ceremonial sword."
 	base_icon = "ceremonial_sword_holster"
-	icon_state = "ceremonial_sword_holster"
+	icon_state = "ceremonial_sword_holster"//object icon is duplicate of katana holster, needs new icon at some point.
 	force = 12
 	flags_equip_slot = SLOT_WAIST
 	can_hold = list(/obj/item/weapon/claymore/mercsword/ceremonial)

@@ -145,7 +145,8 @@
 	desc = "A strange bottle of unknown origin."
 	icon = 'icons/obj/items/black_goo_stuff.dmi'
 	icon_state = "blackgoo"
-	New()
+
+/obj/item/reagent_container/food/drinks/bottle/black_goo/Initialize()
 		..()
 		reagents.add_reagent("blackgoo", 30)
 
@@ -155,7 +156,8 @@
 	desc = "A bottle of black labeled CURE..."
 	icon = 'icons/obj/items/black_goo_stuff.dmi'
 	icon_state = "blackgoo"
-	New()
+
+/obj/item/reagent_container/food/drinks/bottle/black_goo_cure/Initialize()
 		..()
 		reagents.add_reagent("antiZed", 30)
 
@@ -198,7 +200,7 @@
 			to_chat(user, "There are [src.contents.len] bottles inside the container.")
 
 
-/obj/item/storage/fancy/blackgoo/New()
+/obj/item/storage/fancy/blackgoo/Initialize()
 	..()
 	for(var/i=1; i <= storage_slots; i++)
 		new /obj/item/reagent_container/food/drinks/bottle/black_goo(src)

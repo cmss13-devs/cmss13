@@ -7,7 +7,7 @@
 	flags_atom = CAN_BE_SYRINGED
 	var/filling_color = "#FFFFFF" //Used by sandwiches.
 
-/obj/item/reagent_container/food/New()
+/obj/item/reagent_container/food/Initialize()
 	..()
 	if (!pixel_x && !pixel_y)
 		src.pixel_x = rand(-6.0, 6) //Randomizes postion

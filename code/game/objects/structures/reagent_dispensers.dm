@@ -18,10 +18,8 @@
 /obj/structure/reagent_dispensers/attackby(obj/item/W as obj, mob/user as mob)
 	return
 
-/obj/structure/reagent_dispensers/New()
-	var/datum/reagents/R = new/datum/reagents(1000)
-	reagents = R
-	R.my_atom = src
+/obj/structure/reagent_dispensers/Initialize()
+	create_reagents(1000)
 	if(!possible_transfer_amounts)
 		src.verbs -= /obj/structure/reagent_dispensers/verb/set_APTFT
 	if(chemical)

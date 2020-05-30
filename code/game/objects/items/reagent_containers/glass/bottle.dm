@@ -28,7 +28,7 @@
 	..()
 	update_icon()
 
-/obj/item/reagent_container/glass/bottle/New()
+/obj/item/reagent_container/glass/bottle/Initialize()
 	..()
 	if(!icon_state)
 		icon_state = "bottle-[rand(1.4)]"
@@ -63,7 +63,7 @@
 	icon_state = "bottle19"
 	amount_per_transfer_from_this = 60
 
-/obj/item/reagent_container/glass/bottle/inaprovaline/New()
+/obj/item/reagent_container/glass/bottle/inaprovaline/Initialize()
 	..()
 	reagents.add_reagent("inaprovaline", 60)
 
@@ -74,7 +74,7 @@
 	icon_state = "bottle16"
 	amount_per_transfer_from_this = 60
 
-/obj/item/reagent_container/glass/bottle/kelotane/New()
+/obj/item/reagent_container/glass/bottle/kelotane/Initialize()
 	..()
 	reagents.add_reagent("kelotane", 60)
 
@@ -85,7 +85,7 @@
 	icon_state = "bottle10"
 	amount_per_transfer_from_this = 60
 
-/obj/item/reagent_container/glass/bottle/dexalin/New()
+/obj/item/reagent_container/glass/bottle/dexalin/Initialize()
 	..()
 	reagents.add_reagent("dexalin", 60)
 
@@ -96,7 +96,7 @@
 	icon_state = "bottle8"
 	amount_per_transfer_from_this = 60
 
-/obj/item/reagent_container/glass/bottle/spaceacillin/New()
+/obj/item/reagent_container/glass/bottle/spaceacillin/Initialize()
 	..()
 	reagents.add_reagent("spaceacillin", 60)
 
@@ -106,7 +106,7 @@
 	icon = 'icons/obj/items/chemistry.dmi'
 	icon_state = "bottle12"
 
-/obj/item/reagent_container/glass/bottle/toxin/New()
+/obj/item/reagent_container/glass/bottle/toxin/Initialize()
 	..()
 	reagents.add_reagent("toxin", 60)
 
@@ -116,7 +116,7 @@
 	icon = 'icons/obj/items/chemistry.dmi'
 	icon_state = "bottle12"
 
-/obj/item/reagent_container/glass/bottle/cyanide/New()
+/obj/item/reagent_container/glass/bottle/cyanide/Initialize()
 	..()
 	reagents.add_reagent("cyanide", 60)
 
@@ -127,7 +127,7 @@
 	icon_state = "bottle20"
 	amount_per_transfer_from_this = 60
 
-/obj/item/reagent_container/glass/bottle/stoxin/New()
+/obj/item/reagent_container/glass/bottle/stoxin/Initialize()
 	..()
 	reagents.add_reagent("stoxin", 60)
 
@@ -137,7 +137,7 @@
 	icon = 'icons/obj/items/chemistry.dmi'
 	icon_state = "bottle20"
 
-/obj/item/reagent_container/glass/bottle/chloralhydrate/New()
+/obj/item/reagent_container/glass/bottle/chloralhydrate/Initialize()
 	..()
 	reagents.add_reagent("chloralhydrate", 30)		//Intentionally low since it is so strong. Still enough to knock someone out.
 
@@ -147,7 +147,7 @@
 	icon = 'icons/obj/items/chemistry.dmi'
 	icon_state = "bottle20"
 
-/obj/item/reagent_container/glass/bottle/suxamorycin/New()
+/obj/item/reagent_container/glass/bottle/suxamorycin/Initialize()
 	..()
 	reagents.add_reagent("suxamorycin", 30)
 
@@ -158,7 +158,7 @@
 	icon_state = "bottle7"
 	amount_per_transfer_from_this = 60
 
-/obj/item/reagent_container/glass/bottle/antitoxin/New()
+/obj/item/reagent_container/glass/bottle/antitoxin/Initialize()
 	..()
 	reagents.add_reagent("anti_toxin", 60)
 
@@ -168,7 +168,7 @@
 	icon = 'icons/obj/items/chemistry.dmi'
 	icon_state = "bottle7"
 
-/obj/item/reagent_container/glass/bottle/mutagen/New()
+/obj/item/reagent_container/glass/bottle/mutagen/Initialize()
 	..()
 	reagents.add_reagent("mutagen", 60)
 
@@ -178,7 +178,7 @@
 	icon = 'icons/obj/items/chemistry.dmi'
 	icon_state = "bottle20"
 
-/obj/item/reagent_container/glass/bottle/ammonia/New()
+/obj/item/reagent_container/glass/bottle/ammonia/Initialize()
 	..()
 	reagents.add_reagent("ammonia", 60)
 
@@ -188,7 +188,7 @@
 	icon = 'icons/obj/items/chemistry.dmi'
 	icon_state = "bottle17"
 
-/obj/item/reagent_container/glass/bottle/diethylamine/New()
+/obj/item/reagent_container/glass/bottle/diethylamine/Initialize()
 	..()
 	reagents.add_reagent("diethylamine", 60)
 
@@ -198,7 +198,7 @@
 	icon = 'icons/obj/items/chemistry.dmi'
 	icon_state = "bottle3"
 	
-/obj/item/reagent_container/glass/bottle/flu_virion/New()
+/obj/item/reagent_container/glass/bottle/flu_virion/Initialize()
 	..()
 	var/datum/disease/F = new /datum/disease/advance/flu(0)
 	var/list/data = list("viruses"= list(F))
@@ -210,7 +210,7 @@
 	icon = 'icons/obj/items/chemistry.dmi'
 	icon_state = "bottle3"
 	
-/obj/item/reagent_container/glass/bottle/epiglottis_virion/New()
+/obj/item/reagent_container/glass/bottle/epiglottis_virion/Initialize()
 	..()
 	var/datum/disease/F = new /datum/disease/advance/voice_change(0)
 	var/list/data = list("viruses"= list(F))
@@ -222,7 +222,7 @@
 	icon = 'icons/obj/items/chemistry.dmi'
 	icon_state = "bottle3"
 	
-/obj/item/reagent_container/glass/bottle/liver_enhance_virion/New()
+/obj/item/reagent_container/glass/bottle/liver_enhance_virion/Initialize()
 	..()
 	var/datum/disease/F = new /datum/disease/advance/heal(0)
 	var/list/data = list("viruses"= list(F))
@@ -234,7 +234,7 @@
 	icon = 'icons/obj/items/chemistry.dmi'
 	icon_state = "bottle3"
 	
-/obj/item/reagent_container/glass/bottle/hullucigen_virion/New()
+/obj/item/reagent_container/glass/bottle/hullucigen_virion/Initialize()
 	..()
 	var/datum/disease/F = new /datum/disease/advance/hullucigen(0)
 	var/list/data = list("viruses"= list(F))
@@ -245,7 +245,8 @@
 	desc = "A small bottle. Contains H0NI<42 virion culture in synthblood medium."
 	icon = 'icons/obj/items/chemistry.dmi'
 	icon_state = "bottle3"
-	New()
+
+/obj/item/reagent_container/glass/bottle/pierrot_throat/Initialize()
 		..()
 		var/datum/disease/F = new /datum/disease/pierrot_throat(0)
 		var/list/data = list("viruses"= list(F))
@@ -257,7 +258,7 @@
 	icon = 'icons/obj/items/chemistry.dmi'
 	icon_state = "bottle3"
 	
-/obj/item/reagent_container/glass/bottle/cold/New()
+/obj/item/reagent_container/glass/bottle/cold/Initialize()
 	..()
 	var/datum/disease/advance/F = new /datum/disease/advance/cold(0)
 	var/list/data = list("viruses"= list(F))
@@ -269,7 +270,7 @@
 	icon = 'icons/obj/items/chemistry.dmi'
 	icon_state = "bottle3"
 	
-/obj/item/reagent_container/glass/bottle/random/New()
+/obj/item/reagent_container/glass/bottle/random/Initialize()
 	..()
 	var/datum/disease/advance/F = new(0)
 	var/list/data = list("viruses"= list(F))
@@ -282,13 +283,11 @@
 	icon_state = "bottle3"
 	amount_per_transfer_from_this = 5
 
-/obj/item/reagent_container/glass/bottle/gbs/New()
-	var/datum/reagents/R = new/datum/reagents(20)
-	reagents = R
-	R.my_atom = src
+/obj/item/reagent_container/glass/bottle/gbs/Initialize()
+	create_reagents(20)
 	var/datum/disease/F = new /datum/disease/gbs
 	var/list/data = list("virus"= F)
-	R.add_reagent("blood", 20, data)
+	reagents.add_reagent("blood", 20, data)
 
 /obj/item/reagent_container/glass/bottle/fake_gbs
 	name = "\improper GBS culture bottle"
@@ -296,7 +295,7 @@
 	icon = 'icons/obj/items/chemistry.dmi'
 	icon_state = "bottle3"
 	
-/obj/item/reagent_container/glass/bottle/fake_gbs/New()
+/obj/item/reagent_container/glass/bottle/fake_gbs/Initialize()
 	..()
 	var/datum/disease/F = new /datum/disease/fake_gbs(0)
 	var/list/data = list("viruses"= list(F))
@@ -324,7 +323,7 @@
 	icon = 'icons/obj/items/chemistry.dmi'
 	icon_state = "bottle3"
 	
-/obj/item/reagent_container/glass/bottle/brainrot/New()
+/obj/item/reagent_container/glass/bottle/brainrot/Initialize()
 	..()
 	var/datum/disease/F = new /datum/disease/brainrot(0)
 	var/list/data = list("viruses"= list(F))
@@ -336,7 +335,7 @@
 	icon = 'icons/obj/items/chemistry.dmi'
 	icon_state = "bottle3"
 	
-/obj/item/reagent_container/glass/bottle/magnitis/New()
+/obj/item/reagent_container/glass/bottle/magnitis/Initialize()
 	..()
 	var/datum/disease/F = new /datum/disease/magnitis(0)
 	var/list/data = list("viruses"= list(F))
@@ -348,7 +347,7 @@
 	icon = 'icons/obj/items/chemistry.dmi'
 	icon_state = "bottle17"
 	
-/obj/item/reagent_container/glass/bottle/pacid/New()
+/obj/item/reagent_container/glass/bottle/pacid/Initialize()
 	..()
 	reagents.add_reagent("pacid", 60)
 
@@ -358,7 +357,7 @@
 	icon = 'icons/obj/items/drinks.dmi'
 	icon_state = "holyflask"
 	
-/obj/item/reagent_container/glass/bottle/adminordrazine/New()
+/obj/item/reagent_container/glass/bottle/adminordrazine/Initialize()
 	..()
 	reagents.add_reagent("adminordrazine", 60)
 
@@ -368,7 +367,7 @@
 	icon = 'icons/obj/items/chemistry.dmi'
 	icon_state = "bottle3"
 	
-/obj/item/reagent_container/glass/bottle/capsaicin/New()
+/obj/item/reagent_container/glass/bottle/capsaicin/Initialize()
 	..()
 	reagents.add_reagent("capsaicin", 60)
 
@@ -378,7 +377,7 @@
 	icon = 'icons/obj/items/chemistry.dmi'
 	icon_state = "bottle17"
 
-/obj/item/reagent_container/glass/bottle/frostoil/New()
+/obj/item/reagent_container/glass/bottle/frostoil/Initialize()
 	..()
 	reagents.add_reagent("frostoil", 60)
 
@@ -389,7 +388,7 @@
 	icon_state = "bottle17"
 	amount_per_transfer_from_this = 60
 
-/obj/item/reagent_container/glass/bottle/bicaridine/New()
+/obj/item/reagent_container/glass/bottle/bicaridine/Initialize()
 	..()
 	reagents.add_reagent("bicaridine", 60)
 
@@ -401,7 +400,7 @@
 	volume = 20
 	amount_per_transfer_from_this = 20
 
-/obj/item/reagent_container/glass/bottle/peridaxon/New()
+/obj/item/reagent_container/glass/bottle/peridaxon/Initialize()
 	..()
 	reagents.add_reagent("peridaxon", 20)
 
@@ -413,7 +412,7 @@
 	volume = 20
 	amount_per_transfer_from_this = 20
 
-/obj/item/reagent_container/glass/bottle/tramadol/New()
+/obj/item/reagent_container/glass/bottle/tramadol/Initialize()
 	..()
 	reagents.add_reagent("tramadol", 20)
 
@@ -424,7 +423,7 @@
 	icon_state = "bottle2"
 	volume = 10
 
-/obj/item/reagent_container/glass/bottle/oxycodone/New()
+/obj/item/reagent_container/glass/bottle/oxycodone/Initialize()
 	..()
 	reagents.add_reagent("oxycodone", 10)
 
@@ -435,6 +434,6 @@
 	icon_state = "bottle18"
 	volume = 30
 
-/obj/item/reagent_container/glass/bottle/tricordrazine/New()
+/obj/item/reagent_container/glass/bottle/tricordrazine/Initialize()
 	..()
 	reagents.add_reagent("tricordrazine", 30)

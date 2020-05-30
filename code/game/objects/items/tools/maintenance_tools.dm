@@ -47,7 +47,7 @@
 	matter = list("metal" = 75)
 	attack_verb = list("stabbed")
 
-/obj/item/tool/screwdriver/New()
+/obj/item/tool/screwdriver/Initialize()
 	. = ..()
 	switch(pick("red","blue","purple","brown","green","cyan","yellow"))
 		if ("red")
@@ -153,7 +153,7 @@
 	var/max_fuel = 20 	//The max amount of fuel the welder can hold
 	var/weld_tick = 0	//Used to slowly deplete the fuel when the tool is left on.
 
-/obj/item/tool/weldingtool/New()
+/obj/item/tool/weldingtool/Initialize()
 	. = ..()
 	create_reagents(max_fuel)
 	reagents.add_reagent("fuel", max_fuel)
@@ -458,12 +458,10 @@
 	w_class = SIZE_LARGE
 	var/max_fuel = 600 //Because the marine backpack can carry 260, and still allows you to take items, there should be a reason to still use this one.
 
-/obj/item/tool/weldpack/New()
+/obj/item/tool/weldpack/Initialize()
 	. = ..()
-	var/datum/reagents/R = new/datum/reagents(max_fuel) //Lotsa refills
-	reagents = R
-	R.my_atom = src
-	R.add_reagent("fuel", max_fuel)
+	create_reagents(max_fuel) //Lotsa refills
+	reagents.add_reagent("fuel", max_fuel)
 
 /obj/item/tool/weldpack/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/tool/weldingtool))

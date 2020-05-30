@@ -9,7 +9,7 @@
 
 
 
-/mob/living/New()
+/mob/living/Initialize()
 	..()
 
 	event_zoomout = new /datum/event()

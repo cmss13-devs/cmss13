@@ -21,11 +21,9 @@
 	var/max_pill_count = 20
 	var/obj/structure/machinery/smartfridge/chemistry/connected
 
-/obj/structure/machinery/chem_master/New()
+/obj/structure/machinery/chem_master/Initialize()
 	..()
-	var/datum/reagents/R = new/datum/reagents(240)
-	reagents = R
-	R.my_atom = src
+	create_reagents(240)
 	connect_smartfridge()
 
 /obj/structure/machinery/bodyscanner/Dispose()

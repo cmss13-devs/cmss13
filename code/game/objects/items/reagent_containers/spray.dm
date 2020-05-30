@@ -19,7 +19,7 @@
 	volume = 250
 
 
-/obj/item/reagent_container/spray/New()
+/obj/item/reagent_container/spray/Initialize()
 	..()
 	src.verbs -= /obj/item/reagent_container/verb/set_APTFT
 
@@ -98,7 +98,7 @@
 	desc = "BLAM!-brand non-foaming space cleaner!"
 	volume = 50
 
-/obj/item/reagent_container/spray/cleaner/New()
+/obj/item/reagent_container/spray/cleaner/Initialize()
 	..()
 	reagents.add_reagent("cleaner", src.volume)
 //pepperspray
@@ -112,7 +112,7 @@
 	safety = TRUE
 
 
-/obj/item/reagent_container/spray/pepper/New()
+/obj/item/reagent_container/spray/pepper/Initialize()
 	..()
 	reagents.add_reagent("condensedcapsaicin", 40)
 
@@ -136,7 +136,7 @@
 	possible_transfer_amounts = null
 	volume = 10
 
-/obj/item/reagent_container/spray/waterflower/New()
+/obj/item/reagent_container/spray/waterflower/Initialize()
 	..()
 	reagents.add_reagent("water", 10)
 
@@ -200,7 +200,7 @@
 	volume = 100
 
 
-/obj/item/reagent_container/spray/plantbgone/New()
+/obj/item/reagent_container/spray/plantbgone/Initialize()
 	..()
 	reagents.add_reagent("plantbgone", 100)
 
@@ -215,6 +215,6 @@
 	desc = "A spray used in hydroponics initially containing ammonia."
 	icon_state = "hydrospray"
 
-/obj/item/reagent_container/spray/hydro/New()
+/obj/item/reagent_container/spray/hydro/Initialize()
 	..()
 	reagents.add_reagent("ammonia", src.volume)

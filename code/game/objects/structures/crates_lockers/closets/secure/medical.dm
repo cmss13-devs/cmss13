@@ -9,19 +9,19 @@
 	icon_off = "secure_closed_medical_white"
 	req_access = list(ACCESS_MARINE_MEDBAY)
 
-	New()
-		..()
-		sleep(2)
-		new /obj/item/storage/box/syringes(src)
-		new /obj/item/reagent_container/dropper(src)
-		new /obj/item/reagent_container/dropper(src)
-		new /obj/item/reagent_container/glass/beaker(src)
-		new /obj/item/reagent_container/glass/beaker(src)
-		new /obj/item/reagent_container/glass/bottle/inaprovaline(src)
-		new /obj/item/reagent_container/glass/bottle/antitoxin(src)
-		new /obj/item/storage/box/pillbottles(src)
-		new /obj/item/storage/box/pillbottles(src)
-		return
+/obj/structure/closet/secure_closet/medical1/Initialize()
+	..()
+	sleep(2)
+	new /obj/item/storage/box/syringes(src)
+	new /obj/item/reagent_container/dropper(src)
+	new /obj/item/reagent_container/dropper(src)
+	new /obj/item/reagent_container/glass/beaker(src)
+	new /obj/item/reagent_container/glass/beaker(src)
+	new /obj/item/reagent_container/glass/bottle/inaprovaline(src)
+	new /obj/item/reagent_container/glass/bottle/antitoxin(src)
+	new /obj/item/storage/box/pillbottles(src)
+	new /obj/item/storage/box/pillbottles(src)
+	return
 
 /obj/structure/closet/secure_closet/medical2
 	name = "anesthetic closet"
@@ -34,16 +34,16 @@
 	icon_off = "secure_closed_medical_white"
 	req_access = list(ACCESS_MARINE_MEDBAY)
 
-	New()
-		..()
-		sleep(2)
-		new /obj/item/tank/anesthetic(src)
-		new /obj/item/tank/anesthetic(src)
-		new /obj/item/tank/anesthetic(src)
-		new /obj/item/clothing/mask/breath/medical(src)
-		new /obj/item/clothing/mask/breath/medical(src)
-		new /obj/item/clothing/mask/breath/medical(src)
-		return
+/obj/structure/closet/secure_closet/medical2/Initialize()
+	..()
+	sleep(2)
+	new /obj/item/tank/anesthetic(src)
+	new /obj/item/tank/anesthetic(src)
+	new /obj/item/tank/anesthetic(src)
+	new /obj/item/clothing/mask/breath/medical(src)
+	new /obj/item/clothing/mask/breath/medical(src)
+	new /obj/item/clothing/mask/breath/medical(src)
+	return
 
 /obj/structure/closet/secure_closet/medical3
 	name = "medical doctor's locker"
@@ -55,26 +55,26 @@
 	icon_broken = "secure_closed_medical_white"
 	icon_off = "secure_closed_medical_white"
 
-	New()
-		..()
-		sleep(2)
-		new /obj/item/storage/belt/medical/full(src)
-		new /obj/item/storage/belt/medical/full(src)
-		new /obj/item/storage/backpack/marine/satchel(src)
-		new /obj/item/clothing/under/rank/medical/green(src)
-		new /obj/item/clothing/shoes/white(src)
-		new /obj/item/storage/pouch/medical(src)
-		new /obj/item/storage/pouch/medical(src)
-		new /obj/item/storage/pouch/syringe(src)
-		new /obj/item/storage/pouch/medkit(src)
-		new /obj/item/storage/pouch/medkit(src)
-		new /obj/item/storage/pouch/chem(src)
-		new /obj/item/storage/pouch/chem(src)
-		new /obj/item/storage/pouch/vials(src)
-		new /obj/item/storage/pouch/vials(src)
-		if(z == MAIN_SHIP_Z_LEVEL)
-			new /obj/item/device/radio/headset/almayer/doc(src)
-		return
+/obj/structure/closet/secure_closet/medical3/Initialize()
+	..()
+	sleep(2)
+	new /obj/item/storage/belt/medical/full(src)
+	new /obj/item/storage/belt/medical/full(src)
+	new /obj/item/storage/backpack/marine/satchel(src)
+	new /obj/item/clothing/under/rank/medical/green(src)
+	new /obj/item/clothing/shoes/white(src)
+	new /obj/item/storage/pouch/medical(src)
+	new /obj/item/storage/pouch/medical(src)
+	new /obj/item/storage/pouch/syringe(src)
+	new /obj/item/storage/pouch/medkit(src)
+	new /obj/item/storage/pouch/medkit(src)
+	new /obj/item/storage/pouch/chem(src)
+	new /obj/item/storage/pouch/chem(src)
+	new /obj/item/storage/pouch/vials(src)
+	new /obj/item/storage/pouch/vials(src)
+	if(z == MAIN_SHIP_Z_LEVEL)
+		new /obj/item/device/radio/headset/almayer/doc(src)
+	return
 
 /obj/structure/closet/secure_closet/CMO
 	name = "chief medical officer's locker"
@@ -86,25 +86,25 @@
 	icon_broken = "cmosecurebroken"
 	icon_off = "cmosecureoff"
 
-	New()
-		..()
-		sleep(2)
-		new /obj/item/clothing/suit/radiation(src)
-		new /obj/item/clothing/head/radiation(src)
-		new /obj/item/clothing/shoes/white(src)
-		new /obj/item/clothing/gloves/latex(src)
-		new /obj/item/clothing/under/rank/medical/green(src)
-		new /obj/item/clothing/head/surgery/green(src)
-		new /obj/item/clothing/suit/storage/labcoat(src)
-		new /obj/item/clothing/mask/surgical(src)
-		new /obj/item/clothing/mask/breath(src)
-		new /obj/item/clothing/head/cmo(src)
-		new /obj/item/device/radio/headset/almayer/cmo(src)
-		new /obj/item/reagent_container/hypospray/tricordrazine(src)
-		new /obj/item/device/flash(src)
-		new /obj/item/storage/pouch/medical(src)
-		new /obj/item/storage/pouch/syringe(src)
-		new /obj/item/storage/pouch/medkit(src)
+/obj/structure/closet/secure_closet/CMO/Initialize()
+	..()
+	sleep(2)
+	new /obj/item/clothing/suit/radiation(src)
+	new /obj/item/clothing/head/radiation(src)
+	new /obj/item/clothing/shoes/white(src)
+	new /obj/item/clothing/gloves/latex(src)
+	new /obj/item/clothing/under/rank/medical/green(src)
+	new /obj/item/clothing/head/surgery/green(src)
+	new /obj/item/clothing/suit/storage/labcoat(src)
+	new /obj/item/clothing/mask/surgical(src)
+	new /obj/item/clothing/mask/breath(src)
+	new /obj/item/clothing/head/cmo(src)
+	new /obj/item/device/radio/headset/almayer/cmo(src)
+	new /obj/item/reagent_container/hypospray/tricordrazine(src)
+	new /obj/item/device/flash(src)
+	new /obj/item/storage/pouch/medical(src)
+	new /obj/item/storage/pouch/syringe(src)
+	new /obj/item/storage/pouch/medkit(src)
 
 /obj/structure/closet/secure_closet/chemical
 	name = "chemical closet"
@@ -117,12 +117,12 @@
 	icon_off = "secure_closed_medical_white"
 	req_access = list(ACCESS_MARINE_CHEMISTRY)
 
-	New()
-		..()
-		sleep(2)
-		for(var/i = 0, i < 4, i++)
-			new /obj/item/storage/box/pillbottles(src)
-		return
+/obj/structure/closet/secure_closet/chemical/Initialize()
+	..()
+	sleep(2)
+	for(var/i = 0, i < 4, i++)
+		new /obj/item/storage/box/pillbottles(src)
+	return
 
 /obj/structure/closet/secure_closet/medical_wall
 	name = "first aid closet"

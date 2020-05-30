@@ -100,7 +100,8 @@
 	desc = "In theory, Mango flavored root beer sounds like a pretty good idea. Weston-Yamada has disproved yet another theory with its latest line of cola. Canned by the Weston-Yamada Corporation."
 	icon_state = "fruit_beer"
 	center_of_mass = "x=16;y=10"
-	New()
+
+/obj/item/reagent_container/food/drinks/cans/cola/Initialize()
 		..()
 		reagents.add_reagent("cola", 30)
 
@@ -109,7 +110,8 @@
 	desc = "Overpriced 'Spring' water. Bottled by the Weston-Yamada Corporation."
 	icon_state = "wy_water"
 	center_of_mass = "x=15;y=8"
-	New()
+
+/obj/item/reagent_container/food/drinks/cans/waterbottle/Initialize()
 		..()
 		reagents.add_reagent("water", 30)
 
@@ -118,7 +120,8 @@
 	desc = "Beer. You've dialed in your target. Time to fire for effect."
 	icon_state = "beer"
 	center_of_mass = "x=16;y=12"
-	New()
+
+/obj/item/reagent_container/food/drinks/cans/beer/Initialize()
 		..()
 		reagents.add_reagent("beer", 30)
 
@@ -128,7 +131,8 @@
 	icon_state = "alebottle"
 	item_state = "beer"
 	center_of_mass = "x=16;y=10"
-	New()
+
+/obj/item/reagent_container/food/drinks/cans/ale/Initialize()
 		..()
 		reagents.add_reagent("ale", 30)
 
@@ -138,7 +142,8 @@
 	desc = "Blows right through you like a space wind."
 	icon_state = "space_mountain_wind"
 	center_of_mass = "x=16;y=10"
-	New()
+
+/obj/item/reagent_container/food/drinks/cans/space_mountain_wind/Initialize()
 		..()
 		reagents.add_reagent("spacemountainwind", 30)
 
@@ -147,7 +152,8 @@
 	desc = "The CMO has advised crew members that consumption of Thirteen Loko may result in seizures, blindness, drunkeness, or even death. Please Drink Responsibly."
 	icon_state = "thirteen_loko"
 	center_of_mass = "x=16;y=8"
-	New()
+
+/obj/item/reagent_container/food/drinks/cans/thirteenloko/Initialize()
 		..()
 		reagents.add_reagent("thirteenloko", 30)
 
@@ -156,7 +162,8 @@
 	desc = "A delicious mixture of 42 different flavors of chemicals that you can't pronoounce."
 	icon_state = "dr_gibb"
 	center_of_mass = "x=16;y=10"
-	New()
+
+/obj/item/reagent_container/food/drinks/cans/dr_gibb/Initialize()
 		..()
 		reagents.add_reagent("dr_gibb", 30)
 
@@ -165,7 +172,8 @@
 	desc = "The taste of a star in liquid form. And, a bit of tuna...?"
 	icon_state = "starkist"
 	center_of_mass = "x=16;y=10"
-	New()
+
+/obj/item/reagent_container/food/drinks/cans/starkist/Initialize()
 		..()
 		reagents.add_reagent("cola", 15)
 		reagents.add_reagent("orangejuice", 15)
@@ -175,7 +183,8 @@
 	desc = "Tastes like a hull breach in your mouth."
 	icon_state = "space-up"
 	center_of_mass = "x=16;y=10"
-	New()
+
+/obj/item/reagent_container/food/drinks/cans/space_up/Initialize()
 		..()
 		reagents.add_reagent("space_up", 30)
 
@@ -184,16 +193,18 @@
 	desc = "You wanted ORANGE. It gave you Lemon Lime."
 	icon_state = "lemon-lime"
 	center_of_mass = "x=16;y=10"
-	New()
+
+/obj/item/reagent_container/food/drinks/cans/lemon_lime/Initialize()
 		..()
 		reagents.add_reagent("lemon_lime", 30)
 
-/obj/item/reagent_container/food/drinks/cans/iced_tea
+/obj/item/reagent_container/food/drinks/cans/lemon_lime
 	name = "iced tea can"
 	desc = "Just like the squad redneck's grandmother used to buy."
 	icon_state = "ice_tea_can"
 	center_of_mass = "x=16;y=10"
-	New()
+
+/obj/item/reagent_container/food/drinks/cans/lemon_lime/Initialize()
 		..()
 		reagents.add_reagent("icetea", 30)
 
@@ -202,7 +213,8 @@
 	desc = "A can of probably not grape juice."
 	icon_state = "purple_can"
 	center_of_mass = "x=16;y=10"
-	New()
+
+/obj/item/reagent_container/food/drinks/cans/grape_juice/Initialize()
 		..()
 		reagents.add_reagent("grapejuice", 30)
 
@@ -211,7 +223,8 @@
 	desc = "Step One: Tonic. Check. Step Two: Gin."
 	icon_state = "tonic"
 	center_of_mass = "x=16;y=10"
-	New()
+
+/obj/item/reagent_container/food/drinks/cans/tonic/Initialize()
 		..()
 		reagents.add_reagent("tonic", 50)
 
@@ -220,7 +233,8 @@
 	desc = "A can of soda water. Tap water's more refreshing cousin...according to those Europe-folk."
 	icon_state = "sodawater"
 	center_of_mass = "x=16;y=10"
-	New()
+
+/obj/item/reagent_container/food/drinks/cans/sodawater/Initialize()
 		..()
 		reagents.add_reagent("sodawater", 50)
 
@@ -232,7 +246,7 @@
 	center_of_mass = "x=16;y=10"
 	embeddable = 1
 
-/obj/item/reagent_container/food/drinks/cans/souto/New()
+/obj/item/reagent_container/food/drinks/cans/souto/Initialize()
 		..()
 
 /obj/item/reagent_container/food/drinks/cans/souto/diet
@@ -240,7 +254,8 @@
 	desc = "Now with 0% fruit juice! Canned in Havana"
 	icon_state = "souto_diet_classic"
 	item_state = "souto_diet_classic"
-	New()
+
+/obj/item/reagent_container/food/drinks/cans/souto/diet/Initialize()
 		..()
 		reagents.add_reagent("water", 25)
 
@@ -249,7 +264,8 @@
 	desc = "The can boldly proclaims it to be tangerine flavored. You can't help but think that's a lie. Canned in Havana."
 	icon_state = "souto_classic"
 	item_state = "souto_classic"
-	New()
+
+/obj/item/reagent_container/food/drinks/cans/souto/classic/Initialize()
 		..()
 		reagents.add_reagent("souto_classic", 50)
 
@@ -258,7 +274,8 @@
 	desc = "Now with 0% fruit juice! Canned in Havana"
 	icon_state = "souto_diet_classic"
 	item_state = "souto_diet_classic"
-	New()
+
+/obj/item/reagent_container/food/drinks/cans/souto/diet/classic/Initialize()
 		..()
 		reagents.add_reagent("souto_classic", 25)
 
@@ -267,7 +284,8 @@
 	desc = "Now with more artificial flavors! Canned in Havana"
 	icon_state = "souto_cherry"
 	item_state = "souto_cherry"
-	New()
+
+/obj/item/reagent_container/food/drinks/cans/souto/cherry/Initialize()
 		..()
 		reagents.add_reagent("souto_cherry", 50)
 
@@ -276,7 +294,8 @@
 	desc = "It's neither diet nor cherry flavored. Canned in Havanna."
 	icon_state = "souto_diet_cherry"
 	item_state = "souto_diet_cherry"
-	New()
+
+/obj/item/reagent_container/food/drinks/cans/souto/diet/cherry/Initialize()
 		..()
 		reagents.add_reagent("souto_cherry", 25)
 
@@ -285,7 +304,8 @@
 	desc = "It's not bad. It's not good either, but it's not bad. Canned in Havana."
 	icon_state = "souto_lime"
 	item_state = "souto_lime"
-	New()
+
+/obj/item/reagent_container/food/drinks/cans/souto/lime/Initialize()
 		..()
 		reagents.add_reagent("souto_lime", 50)
 
@@ -294,7 +314,8 @@
 	desc = "Ten kinds of acid, two cups of fake sugar, almost a full tank of carbon dioxide, and about 210 kPs all crammed into an aluminum can. What's not to love? Canned in Havana."
 	icon_state = "souto_diet_lime"
 	item_state = "souto_diet_lime"
-	New()
+
+/obj/item/reagent_container/food/drinks/cans/souto/diet/lime/Initialize()
 		..()
 		reagents.add_reagent("souto_lime", 25)
 
@@ -303,7 +324,8 @@
 	desc = "An old standby for soda flavors. This, however, tastes like grape flavored cough syrup. Canned in Havana."
 	icon_state = "souto_grape"
 	item_state = "souto_grape"
-	New()
+
+/obj/item/reagent_container/food/drinks/cans/souto/grape/Initialize()
 		..()
 		reagents.add_reagent("souto_grape", 50)
 
@@ -312,7 +334,8 @@
 	desc = "You're fairly certain that this is just grape cough syrup and carbonated water. Canned in Havana."
 	icon_state = "souto_diet_grape"
 	item_state = "souto_diet_grape"
-	New()
+
+/obj/item/reagent_container/food/drinks/cans/souto/diet/grape/Initialize()
 		..()
 		reagents.add_reagent("souto_grape", 25)
 
@@ -321,7 +344,8 @@
 	desc = "It tastes like the color blue. Technology really is amazing. Canned in Havana."
 	icon_state = "souto_blueraspberry"
 	item_state = "souto_blueraspberry"
-	New()
+
+/obj/item/reagent_container/food/drinks/cans/souto/blue/Initialize()
 		..()
 		reagents.add_reagent("souto_blueraspberry", 50)
 
@@ -330,7 +354,8 @@
 	desc = "WHAT A SCAM! It doesn't even taste like blue! At best, it tastes like cyan. Canned in Havana."
 	icon_state = "souto_diet_blueraspberry"
 	item_state = "souto_diet_blueraspberry"
-	New()
+
+/obj/item/reagent_container/food/drinks/cans/souto/diet/blue/Initialize()
 		..()
 		reagents.add_reagent("souto_blueraspberry", 25)
 
@@ -339,7 +364,8 @@
 	desc = "On one hand, it tastes pretty good. On the other hand, you think you can hear a peach pit rattling on the inside. Canned in Havana."
 	icon_state = "souto_peach"
 	item_state = "souto_peach"
-	New()
+
+/obj/item/reagent_container/food/drinks/cans/souto/peach/Initialize()
 		..()
 		reagents.add_reagent("souto_peach", 50)
 
@@ -348,7 +374,8 @@
 	desc = "On one hand, it tastes pretty good. On the other hand, you think you can hear half of a peach pit rattling on the inside. Canned in Havana."
 	icon_state = "souto_diet_peach"
 	item_state = "souto_diet_peach"
-	New()
+
+/obj/item/reagent_container/food/drinks/cans/souto/diet/peach/Initialize()
 		..()
 		reagents.add_reagent("souto_peach", 25)
 
@@ -357,7 +384,8 @@
 	desc = "On closer inspection, the can reads, 'CRAMberry Souto.' What the Hell is a Cramberry? Canned in Havana."
 	icon_state = "souto_cranberry"
 	item_state = "souto_cranberry"
-	New()
+
+/obj/item/reagent_container/food/drinks/cans/souto/cranberry/Initialize()
 		..()
 		reagents.add_reagent("souto_cranberry", 50)
 
@@ -366,7 +394,8 @@
 	desc = "This tastes more like prunes than cranberries. It's not bad; it's just wrong. Canned in Havana."
 	icon_state = "souto_diet_cranberry"
 	item_state = "souto_diet_cranberry"
-	New()
+
+/obj/item/reagent_container/food/drinks/cans/souto/diet/cranberry/Initialize()
 		..()
 		reagents.add_reagent("souto_cranberry", 25)
 		reagents.add_reagent("water", 25)
@@ -376,6 +405,7 @@
 	desc = "Pretty good when you get past the fact that it tastes like piss. Canned by the Weston-Yamada Corporation."
 	icon_state = "6_pack_1"
 	center_of_mass = "x=16;y=10"
-	New()
+
+/obj/item/reagent_container/food/drinks/cans/aspen/Initialize()
 		..()
 		reagents.add_reagent("beer", 50)

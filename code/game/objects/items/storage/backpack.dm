@@ -193,9 +193,10 @@
 	max_storage_space = 15
 
 /obj/item/storage/backpack/satchel/withwallet
-	New()
-		..()
-		new /obj/item/storage/wallet/random( src )
+
+/obj/item/storage/backpack/satchel/withwallet/Initialize()
+	..()
+	new /obj/item/storage/wallet/random( src )
 
 /obj/item/storage/backpack/satchel/norm
 	name = "satchel"
@@ -252,10 +253,10 @@
 	item_state = "marinepack"
 	var/has_gamemode_skin = TRUE //replace this with the atom_flag NO_SNOW_TYPE at some point, just rename it to like, NO_MAP_VARIANT_SKIN
 
-	New()
-		if(has_gamemode_skin)
-			select_gamemode_skin(type)
-		..()
+/obj/item/storage/backpack/marine/Initialize()
+	if(has_gamemode_skin)
+		select_gamemode_skin(type)
+	..()
 
 /obj/item/storage/backpack/marine/medic
 	name = "\improper USCM medic backpack"
@@ -415,11 +416,9 @@
 	storage_slots = null
 	has_gamemode_skin = TRUE
 
-/obj/item/storage/backpack/marine/engineerpack/New()
-	var/datum/reagents/R = new/datum/reagents(max_fuel) //Lotsa refills
-	reagents = R
-	R.my_atom = src
-	R.add_reagent("fuel", max_fuel)
+/obj/item/storage/backpack/marine/engineerpack/Initialize()
+	create_reagents(max_fuel) //Lotsa refills
+	reagents.add_reagent("fuel", max_fuel)
 	..()
 
 

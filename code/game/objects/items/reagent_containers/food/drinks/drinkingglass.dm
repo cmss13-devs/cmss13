@@ -626,7 +626,7 @@
 	name = "soda glass"
 	desc = "A drinking glass for soda."
 
-	New()
+/obj/item/reagent_container/food/drinks/drinkingglass/soda/Initialize()
 		..()
 		reagents.add_reagent("sodawater", 50)
 		on_reagent_change()
@@ -635,7 +635,7 @@
 	name = "cola glass"
 	desc = "A drinking glass for cola."
 
-	New()
+/obj/item/reagent_container/food/drinks/drinkingglass/cola/Initialize()
 		..()
 		reagents.add_reagent("cola", 50)
 		on_reagent_change()

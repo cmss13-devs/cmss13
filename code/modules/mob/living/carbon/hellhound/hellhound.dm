@@ -15,10 +15,8 @@
 	speed = -0.6
 	var/attack_timer = 0
 
-/mob/living/carbon/hellhound/New()
-	var/datum/reagents/R = new/datum/reagents(1000)
-	reagents = R
-	R.my_atom = src
+/mob/living/carbon/hellhound/Initialize()
+	create_reagents(1000)
 
 	add_language("Sainja") //They can only understand it though.
 

@@ -29,7 +29,7 @@
 	clear_fullscreens()
 	return ..()
 
-/mob/New()
+/mob/Initialize()
 	mob_list += src
 	if(stat == DEAD)
 		dead_mob_list += src

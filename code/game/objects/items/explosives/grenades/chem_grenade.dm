@@ -36,7 +36,7 @@
 	assembly_stage = ASSEMBLY_LOCKED
 	harmful = FALSE
 
-/obj/item/explosive/grenade/custom/metalfoam/New()
+/obj/item/explosive/grenade/custom/metalfoam/Initialize()
 	..()
 	var/obj/item/reagent_container/glass/beaker/B1 = new(src)
 	var/obj/item/reagent_container/glass/beaker/B2 = new(src)
@@ -57,7 +57,7 @@
 	desc = "Used for clearing rooms of living things."
 	assembly_stage = ASSEMBLY_LOCKED
 
-/obj/item/explosive/grenade/custom/incendiary/New()
+/obj/item/explosive/grenade/custom/incendiary/Initialize()
 	..()
 	var/obj/item/reagent_container/glass/beaker/B1 = new(src)
 	var/obj/item/reagent_container/glass/beaker/B2 = new(src)
@@ -81,7 +81,7 @@
 	assembly_stage = ASSEMBLY_LOCKED
 	harmful = FALSE
 
-/obj/item/explosive/grenade/custom/antiweed/New()
+/obj/item/explosive/grenade/custom/antiweed/Initialize()
 	..()
 	var/obj/item/reagent_container/glass/beaker/B1 = new(src)
 	var/obj/item/reagent_container/glass/beaker/B2 = new(src)
@@ -104,7 +104,7 @@
 	assembly_stage = ASSEMBLY_LOCKED
 	harmful = FALSE
 
-/obj/item/explosive/grenade/custom/cleaner/New()
+/obj/item/explosive/grenade/custom/cleaner/Initialize()
 	..()
 	var/obj/item/reagent_container/glass/beaker/B1 = new(src)
 	var/obj/item/reagent_container/glass/beaker/B2 = new(src)
@@ -128,7 +128,7 @@
 	assembly_stage = ASSEMBLY_LOCKED
 	harmful = FALSE
 
-/obj/item/explosive/grenade/custom/teargas/New()
+/obj/item/explosive/grenade/custom/teargas/Initialize()
 	..()
 	var/obj/item/reagent_container/glass/beaker/B1 = new(src)
 	var/obj/item/reagent_container/glass/beaker/B2 = new(src)
@@ -158,7 +158,7 @@
 	desc = "An improvised chemical explosive grenade. Designed to kill through fragmentation."
 	assembly_stage = ASSEMBLY_LOCKED
 
-/obj/item/explosive/grenade/custom/ied/New()
+/obj/item/explosive/grenade/custom/ied/Initialize()
 	..()
 	var/obj/item/reagent_container/glass/beaker/B1 = new(src)
 	var/obj/item/reagent_container/glass/beaker/B2 = new(src)
@@ -181,7 +181,7 @@
 	desc = "An improvised chemical explosive grenade. Designed spray incendiary shrapnel across a wide area."
 	assembly_stage = ASSEMBLY_LOCKED
 
-/obj/item/explosive/grenade/custom/ied_incendiary/New()
+/obj/item/explosive/grenade/custom/ied_incendiary/Initialize()
 	..()
 	var/obj/item/reagent_container/glass/beaker/B1 = new(src)
 	var/obj/item/reagent_container/glass/beaker/B2 = new(src)

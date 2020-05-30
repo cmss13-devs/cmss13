@@ -10,7 +10,7 @@
 
 	var/list/synthetic_HUD_toggled = list(FALSE,FALSE)
 
-/mob/living/carbon/human/New(var/new_loc, var/new_species = null)
+/mob/living/carbon/human/Initialize(var/new_loc, var/new_species = null)
 	blood_type = pick(7;"O-", 38;"O+", 6;"A-", 34;"A+", 2;"B-", 9;"B+", 1;"AB-", 3;"AB+")
 	human_mob_list += src
 	living_human_list += src
@@ -22,9 +22,7 @@
 		else
 			set_species()
 
-	var/datum/reagents/R = new/datum/reagents(1000)
-	reagents = R
-	R.my_atom = src
+	create_reagents(1000)
 	change_real_name(src, "unknown")
 
 	..()
@@ -1357,22 +1355,22 @@
 			else
 				to_chat(HS, SPAN_WARNING("There are no splints to remove."))
 
-/mob/living/carbon/human/yautja/New()
+/mob/living/carbon/human/yautja/Initialize()
 	..(new_species = "Yautja")
 
-/mob/living/carbon/human/monkey/New()
+/mob/living/carbon/human/monkey/Initialize()
 	..(new_species = "Monkey")
 
-/mob/living/carbon/human/farwa/New()
+/mob/living/carbon/human/farwa/Initialize()
 	..(new_species = "Farwa")
 
-/mob/living/carbon/human/neaera/New()
+/mob/living/carbon/human/neaera/Initialize()
 	..(new_species = "Neaera")
 
-/mob/living/carbon/human/stok/New()
+/mob/living/carbon/human/stok/Initialize()
 	..(new_species = "Stok")
 
-/mob/living/carbon/human/yiren/New()
+/mob/living/carbon/human/yiren/Initialize()
 	..(new_species = "Yiren")
 
 

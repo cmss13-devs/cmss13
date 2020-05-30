@@ -119,7 +119,7 @@
 	icon_state = "ginbottle"
 	center_of_mass = "x=16;y=4"
 
-/obj/item/reagent_container/food/drinks/bottle/gin/New()
+/obj/item/reagent_container/food/drinks/bottle/gin/Initialize()
 	..()
 	reagents.add_reagent("gin", 100)
 
@@ -129,7 +129,7 @@
 	icon_state = "whiskeybottle"
 	center_of_mass = "x=16;y=3"
 
-/obj/item/reagent_container/food/drinks/bottle/whiskey/New()
+/obj/item/reagent_container/food/drinks/bottle/whiskey/Initialize()
 	..()
 	reagents.add_reagent("whiskey", 100)
 
@@ -139,7 +139,7 @@
 	icon_state = "sakebottle"
 	center_of_mass = "x=17;y=7"
 
-/obj/item/reagent_container/food/drinks/bottle/sake/New()
+/obj/item/reagent_container/food/drinks/bottle/sake/Initialize()
 	..()
 	reagents.add_reagent("sake", 100)
 
@@ -149,7 +149,7 @@
 	icon_state = "red_star_vodka"
 	center_of_mass = "x=17;y=3"
 
-/obj/item/reagent_container/food/drinks/bottle/vodka/New()
+/obj/item/reagent_container/food/drinks/bottle/vodka/Initialize()
 	..()
 	reagents.add_reagent("vodka", 100)
 
@@ -159,7 +159,7 @@
 	icon_state = "tequillabottle"
 	center_of_mass = "x=16;y=3"
 
-/obj/item/reagent_container/food/drinks/bottle/tequilla/New()
+/obj/item/reagent_container/food/drinks/bottle/tequilla/Initialize()
 	..()
 	reagents.add_reagent("tequilla", 100)
 
@@ -169,7 +169,7 @@
 	icon_state = "davenport"
 	center_of_mass = "x=16;y=3"
 
-/obj/item/reagent_container/food/drinks/bottle/davenport/New()
+/obj/item/reagent_container/food/drinks/bottle/davenport/Initialize()
 	..()
 	reagents.add_reagent("specialwhiskey", 50)
 
@@ -179,7 +179,7 @@
 	icon_state = "bottleofnothing"
 	center_of_mass = "x=17;y=5"
 
-/obj/item/reagent_container/food/drinks/bottle/bottleofnothing/New()
+/obj/item/reagent_container/food/drinks/bottle/bottleofnothing/Initialize()
 	..()
 	reagents.add_reagent("nothing", 100)
 
@@ -189,7 +189,7 @@
 	icon_state = "patronbottle"
 	center_of_mass = "x=16;y=6"
 
-/obj/item/reagent_container/food/drinks/bottle/patron/New()
+/obj/item/reagent_container/food/drinks/bottle/patron/Initialize()
 	..()
 	reagents.add_reagent("patron", 100)
 
@@ -199,7 +199,7 @@
 	icon_state = "rumbottle"
 	center_of_mass = "x=16;y=8"
 
-/obj/item/reagent_container/food/drinks/bottle/rum/New()
+/obj/item/reagent_container/food/drinks/bottle/rum/Initialize()
 	..()
 	reagents.add_reagent("rum", 100)
 
@@ -209,7 +209,7 @@
 	icon_state = "holyflask"
 	center_of_mass = "x=17;y=10"
 
-/obj/item/reagent_container/food/drinks/bottle/holywater/New()
+/obj/item/reagent_container/food/drinks/bottle/holywater/Initialize()
 	..()
 	reagents.add_reagent("holywater", 100)
 
@@ -219,7 +219,7 @@
 	icon_state = "vermouthbottle"
 	center_of_mass = "x=17;y=3"
 
-/obj/item/reagent_container/food/drinks/bottle/vermouth/New()
+/obj/item/reagent_container/food/drinks/bottle/vermouth/Initialize()
 	..()
 	reagents.add_reagent("vermouth", 100)
 
@@ -229,7 +229,7 @@
 	icon_state = "kahluabottle"
 	center_of_mass = "x=17;y=3"
 
-/obj/item/reagent_container/food/drinks/bottle/kahlua/New()
+/obj/item/reagent_container/food/drinks/bottle/kahlua/Initialize()
 	..()
 	reagents.add_reagent("kahlua", 100)
 
@@ -239,7 +239,7 @@
 	icon_state = "goldschlagerbottle"
 	center_of_mass = "x=15;y=3"
 
-/obj/item/reagent_container/food/drinks/bottle/goldschlager/New()
+/obj/item/reagent_container/food/drinks/bottle/goldschlager/Initialize()
 	..()
 	reagents.add_reagent("goldschlager", 100)
 
@@ -249,7 +249,7 @@
 	icon_state = "cognacbottle"
 	center_of_mass = "x=16;y=6"
 
-/obj/item/reagent_container/food/drinks/bottle/cognac/New()
+/obj/item/reagent_container/food/drinks/bottle/cognac/Initialize()
 	..()
 	reagents.add_reagent("cognac", 100)
 
@@ -258,9 +258,10 @@
 	desc = "A faint aura of unease and asspainery surrounds the bottle."
 	icon_state = "winebottle"
 	center_of_mass = "x=16;y=4"
-	New()
-		..()
-		reagents.add_reagent("wine", 100)
+
+/obj/item/reagent_container/food/drinks/bottle/wine/Initialize()
+	..()
+	reagents.add_reagent("wine", 100)
 
 /obj/item/reagent_container/food/drinks/bottle/absinthe
 	name = "Jailbreaker Verte"
@@ -268,7 +269,7 @@
 	icon_state = "absinthebottle"
 	center_of_mass = "x=16;y=6"
 
-/obj/item/reagent_container/food/drinks/bottle/absinthe/New()
+/obj/item/reagent_container/food/drinks/bottle/absinthe/Initialize()
 	..()
 	reagents.add_reagent("absinthe", 100)
 
@@ -278,7 +279,7 @@
 	icon_state = "alco-green" //Placeholder.
 	center_of_mass = "x=16;y=6"
 
-/obj/item/reagent_container/food/drinks/bottle/melonliquor/New()
+/obj/item/reagent_container/food/drinks/bottle/melonliquor/Initialize()
 	..()
 	reagents.add_reagent("melonliquor", 100)
 
@@ -288,7 +289,7 @@
 	icon_state = "alco-blue" //Placeholder.
 	center_of_mass = "x=16;y=6"
 
-/obj/item/reagent_container/food/drinks/bottle/bluecuracao/New()
+/obj/item/reagent_container/food/drinks/bottle/bluecuracao/Initialize()
 	..()
 	reagents.add_reagent("bluecuracao", 100)
 
@@ -298,7 +299,7 @@
 	icon_state = "grenadinebottle"
 	center_of_mass = "x=16;y=6"
 
-/obj/item/reagent_container/food/drinks/bottle/grenadine/New()
+/obj/item/reagent_container/food/drinks/bottle/grenadine/Initialize()
 	..()
 	reagents.add_reagent("grenadine", 100)
 
@@ -308,7 +309,7 @@
 	icon_state = "pwinebottle"
 	center_of_mass = "x=16;y=4"
 
-/obj/item/reagent_container/food/drinks/bottle/pwine/New()
+/obj/item/reagent_container/food/drinks/bottle/pwine/Initialize()
 	..()
 	reagents.add_reagent("pwine", 100)
 
@@ -322,7 +323,7 @@
 	center_of_mass = "x=16;y=7"
 	isGlass = 0
 
-/obj/item/reagent_container/food/drinks/bottle/orangejuice/New()
+/obj/item/reagent_container/food/drinks/bottle/orangejuice/Initialize()
 	..()
 	reagents.add_reagent("orangejuice", 100)
 
@@ -334,7 +335,7 @@
 	center_of_mass = "x=16;y=8"
 	isGlass = 0
 
-/obj/item/reagent_container/food/drinks/bottle/cream/New()
+/obj/item/reagent_container/food/drinks/bottle/cream/Initialize()
 	..()
 	reagents.add_reagent("cream", 100)
 
@@ -346,7 +347,7 @@
 	center_of_mass = "x=16;y=8"
 	isGlass = 0
 
-/obj/item/reagent_container/food/drinks/bottle/tomatojuice/New()
+/obj/item/reagent_container/food/drinks/bottle/tomatojuice/Initialize()
 	..()
 	reagents.add_reagent("tomatojuice", 100)
 
@@ -357,7 +358,7 @@
 	item_state = "carton"
 	center_of_mass = "x=16;y=8"
 	isGlass = 0
-	
-/obj/item/reagent_container/food/drinks/bottle/limejuice/New()
+
+/obj/item/reagent_container/food/drinks/bottle/limejuice/Initialize()
 	..()
 	reagents.add_reagent("limejuice", 100)

@@ -276,12 +276,6 @@ the implant may become unstable and either pre-maturely inject the subject or si
 		return dat
 
 
-	New()
-		..()
-		var/datum/reagents/R = new/datum/reagents(50)
-		reagents = R
-		R.my_atom = src
-
 
 	trigger(emote, source as mob)
 		if(emote == "deathgasp")
@@ -315,6 +309,10 @@ the implant may become unstable and either pre-maturely inject the subject or si
 
 		spawn(20)
 			malfunction--
+
+/obj/item/implant/chem/Initialize()
+	..()
+	create_reagents(50)
 
 /obj/item/implant/loyalty
 	name = "loyalty implant"

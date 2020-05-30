@@ -261,7 +261,7 @@
 	var/laid_egg = 0
 
 
-/mob/living/carbon/Xenomorph/New(var/new_loc, var/mob/living/carbon/Xenomorph/oldXeno)
+/mob/living/carbon/Xenomorph/Initialize(var/new_loc, var/mob/living/carbon/Xenomorph/oldXeno)
 	var/area/A = get_area(src)
 	if(A && A.statistic_exempt)
 		statistic_exempt = TRUE
@@ -308,9 +308,7 @@
 	if(caste && caste.spit_types && caste.spit_types.len)
 		ammo = ammo_list[caste.spit_types[1]]
 
-	var/datum/reagents/R = new/datum/reagents(100)
-	reagents = R
-	R.my_atom = src
+	create_reagents(100)
 
 	living_xeno_list += src
 	xeno_mob_list += src

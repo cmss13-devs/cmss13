@@ -19,7 +19,7 @@
 	var/nicknumber = 0
 
 	// We need to keep track of a few module items so we don't need to do list operations
-	// every time we need them. These get set in New() after the module is chosen.
+	// every time we need them. These get set in Initialize() after the module is chosen.
 	var/obj/item/stack/sheet/metal/cyborg/stack_metal = null
 	var/obj/item/stack/sheet/wood/cyborg/stack_wood = null
 	var/obj/item/stack/sheet/glass/cyborg/stack_glass = null
@@ -31,7 +31,7 @@
 
 	holder_type = /obj/item/holder/drone
 
-/mob/living/silicon/robot/drone/New()
+/mob/living/silicon/robot/drone/Initialize()
 
 	nicknumber = rand(100,999)
 

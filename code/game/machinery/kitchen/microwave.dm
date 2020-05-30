@@ -26,9 +26,9 @@
 *   Initialising
 ********************/
 
-/obj/structure/machinery/microwave/New()
+/obj/structure/machinery/microwave/Initialize()
 	..()
-	reagents = new/datum/reagents(100)
+	create_reagents(100)
 	reagents.my_atom = src
 	if (!available_recipes)
 		available_recipes = new

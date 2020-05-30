@@ -23,11 +23,9 @@
 	. = ..()
 	if(!customizable)
 		return
-	var/datum/reagents/R = new/datum/reagents(1000)
-	reagents = R
+	create_reagents(1000)
 	for(var/limit in reaction_limits)
-		R.vars[limit] = reaction_limits[limit]
-	R.my_atom = src
+		reagents.vars[limit] = reaction_limits[limit]
 
 /obj/item/explosive/Dispose()
 	source_mob = null

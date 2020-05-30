@@ -63,10 +63,55 @@
 	desc = "Because you really needed another excuse to punch your crewmates."
 	icon_state = "boxing"
 	item_state = "boxing"
+	force = 0//don't actually deal damage
+	attack_verb = list("boxes","punches","jabs","strikes","uppercuts", "fisticuffs", "bashes")
+	var/pain_dam = 20
+	var/box_sound = list('sound/weapons/punch1.ogg')//placeholder
+	var/knockout_sound = 'sound/effects/knockout.ogg'
+
+
+/obj/item/clothing/gloves/boxing/Touch(atom/A, proximity)
+	var/mob/living/M = loc
+	var/painforce = pain_dam
+	var/boxing_verb = pick(attack_verb)
+	if (skillcheck(M, SKILL_CQC, SKILL_CQC_WEAK))
+		painforce *= 0.5 //their arms are weak and pathetic like tiny little baby man
+	if (A in range(1, M))
+		if(isliving(A) && M.a_intent == HARM_INTENT)
+			if(isYautja(A))
+				return 0
+			if (isXeno(A))
+				var/mob/living/carbon/Xenomorph/X = A
+				if (X.mutation_type == WARRIOR_BOXER)
+					M.visible_message(SPAN_DANGER("[M] boxes with [A]!"))
+					var/fisticuff_phrase = pick("Have at ye!", "En guard fuckboy!", "Huttah!", "Take this uncultured cur!", "Have at you little man!")
+					M.say(fisticuff_phrase)//this is probably going to trigger spam filter, but I don't care?
+					return 0
+				else
+					return 0
+			if (ishuman(A))
+				var/mob/living/carbon/human/L = A
+				var/boxing_icon = pick("boxing_up","boxing_down","boxing_left","boxing_right")
+				if (!istype(L.gloves, /obj/item/clothing/gloves/boxing))
+					to_chat(M, SPAN_WARNING("You can't box with [A], they're not wearing boxing gloves!"))
+					return 1
+				if (L.halloss > 100)
+					playsound(loc, knockout_sound, 50, FALSE)
+					M.show_message(FONT_SIZE_LARGE(SPAN_WARNING("KNOCKOUT!")))
+					return 1
+				if (L.lying == 1 || L.stat == UNCONSCIOUS)//Can't beat 'em while they're down.
+					to_chat(M, SPAN_WARNING("You can't box with [A], they're already down!"))
+					return 1
+				M.visible_message(SPAN_DANGER("[M] [boxing_verb] [A]!"))
+				L.apply_effect(painforce, AGONY)
+				M.animation_attack_on(L)
+				M.flick_attack_overlay(L, boxing_icon)
+				playsound(loc, pick(box_sound), 25, 1)
+				return 1
 
 /obj/item/clothing/gloves/boxing/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/tool/wirecutters) || istype(W, /obj/item/tool/surgery/scalpel))
-		to_chat(user, SPAN_NOTICE("That won't work."))	//Nope
+		to_chat(user, SPAN_NOTICE("It would be a great dishonor to cut open these fine boxing gloves."))	//Nope
 		return
 	..()
 

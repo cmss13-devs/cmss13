@@ -215,7 +215,7 @@
 	icon_state = "datadetector"
 	item_state = "data_detector"
 	blip_type = "data"
-	var/objects_to_detect = list(/obj/item/document_objective, /obj/item/disk/objective, /obj/item/device/mass_spectrometer/adv/objective, /obj/item/device/reagent_scanner/adv/objective, /obj/item/device/healthanalyzer/objective, /obj/item/device/autopsy_scanner/objective, /obj/item/device/autopsy_scanner/objective, /obj/item/paper/research_notes, /obj/item/reagent_container/glass/beaker/vial/random)
+	var/objects_to_detect = list(/obj/item/document_objective, /obj/item/disk/objective, /obj/item/device/mass_spectrometer/adv/objective, /obj/item/device/reagent_scanner/adv/objective, /obj/item/device/healthanalyzer/objective, /obj/item/device/autopsy_scanner/objective, /obj/item/device/autopsy_scanner/objective, /obj/item/paper/research_notes, /obj/item/reagent_container/glass/beaker/vial/random, /obj/structure/machinery/computer/objective)
 
 /obj/item/device/motiondetector/intel/update_icon()
 	if (active)

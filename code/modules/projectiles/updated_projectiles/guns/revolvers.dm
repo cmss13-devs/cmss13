@@ -314,7 +314,7 @@
 
 /obj/item/weapon/gun/revolver/m44/able_to_fire(mob/user)
 	if (folded)
-		to_chat(user, SPAN_NOTICE("You need to unfold the stock to fire!"))
+		to_chat(user, SPAN_NOTICE("You need to unfold the stock to fire!"))//this is stupid
 		return 0
 	else
 		return ..()
@@ -328,8 +328,8 @@
 /obj/item/weapon/gun/revolver/m44/custom/set_gun_config_values()
 	..()
 	fire_delay = config.mhigh_fire_delay
-	accuracy_mult = config.base_hit_accuracy_mult
-	accuracy_mult_unwielded = config.base_hit_accuracy_mult - config.med_hit_accuracy_mult
+	accuracy_mult = config.base_hit_accuracy_mult + config.med_hit_accuracy_mult
+	accuracy_mult_unwielded = config.base_hit_accuracy_mult 
 	scatter = config.low_scatter_value
 	scatter_unwielded = config.high_scatter_value
 	damage_mult = config.base_hit_damage_mult + config.low_hit_damage_mult

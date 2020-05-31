@@ -252,6 +252,15 @@ should be alright.
 /obj/item/weapon/gun/attackby(obj/item/I, mob/user)
 	if(flags_gun_features & GUN_BURST_FIRING)
 		return
+	
+	if(istype(I, /obj/item/prop/helmetgarb/gunoil))
+		var/oil_verb = pick("lubes", "oils", "cleans", "tends to", "gently strokes")
+		if(do_after(user, 30, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, user, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
+			user.visible_message("[user] [oil_verb] [src]. It shines like new.", "You oil up and immaculately clean [src]. It shines like new.")
+			src.clean_blood()
+		else
+			return
+		
 
 	if(istype(I,/obj/item/attachable))
 		if(check_inactive_hand(user)) attach_to_gun(user,I)

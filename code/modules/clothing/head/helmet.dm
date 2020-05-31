@@ -395,8 +395,22 @@
 		..()
 
 /obj/item/clothing/head/helmet/marine/attackby(obj/item/W, mob/user)
-	..()
-	return pockets.attackby(W, user)
+	if(istype(W, /obj/item/ammo_magazine))
+		var/obj/item/ammo_magazine/M = W
+		var/ammo_level = "somewhat"
+		playsound(user, 'sound/items/trayhit1.ogg', 15, FALSE)
+		if(M.current_rounds > (M.max_rounds/2))
+			ammo_level = "more than half full."
+		if(M.current_rounds < (M.max_rounds/2))
+			ammo_level = "less than half full."
+		if(M.current_rounds < (M.max_rounds/6))
+			ammo_level = "almost empty."
+		if(M.current_rounds == 0)
+			ammo_level = "empty. Uh oh."
+		user.visible_message("[user] bashes [M] against their helmet", "You bash [M] against your helmet. It is [ammo_level]")
+	else
+		..()
+		return pockets.attackby(W, user)
 
 /obj/item/clothing/head/helmet/marine/on_pocket_insertion()
 	update_icon()

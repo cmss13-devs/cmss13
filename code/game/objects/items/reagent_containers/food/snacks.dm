@@ -2962,7 +2962,7 @@
 
 /obj/item/reagent_container/food/snacks/packaged_burrito/Initialize()
 	..()
-	reagents.add_reagent("nutriment", 5)
+	reagents.add_reagent("nutriment", 10)
 
 /obj/item/reagent_container/food/snacks/packaged_burrito/attack_self(mob/user as mob)
 	if(package)
@@ -2980,7 +2980,7 @@
 
 /obj/item/reagent_container/food/snacks/packaged_burger/Initialize()
 	..()
-	reagents.add_reagent("nutriment", 5)
+	reagents.add_reagent("nutriment", 10)
 	reagents.add_reagent("sodiumchloride", 2)
 
 
@@ -3039,8 +3039,8 @@
 
 
 /obj/item/reagent_container/food/snacks/eat_bar
-	name = "EAT Bar"
-	desc = "Packed full of nutrients you can't pronounce."
+	name = "MEAT Bar"
+	desc = "It is a vacuum sealed tube of suspicious meat. Artificially packed full of nutrients you can't pronounce."
 	icon_state = "eat_bar"
 	bitesize = 2
 	w_class = SIZE_TINY
@@ -3048,19 +3048,20 @@
 
 /obj/item/reagent_container/food/snacks/eat_bar/Initialize()
 	..()
-	reagents.add_reagent("nutriment", 3)
+	reagents.add_reagent("nutriment", 8)
 
 
 /obj/item/reagent_container/food/snacks/kepler_crisps
 	name = "Kepler Crisps"
-	desc = "'They're disturbingly good!' Now with 0% trans fat."
+	desc = "'They're disturbingly good!' Now with 0% trans fat and added genuine sea salts."
 	icon_state = "kepler"
 	bitesize = 2
 	trash = /obj/item/trash/kepler
 
 /obj/item/reagent_container/food/snacks/kepler_crisps/Initialize()
 	..()
-	reagents.add_reagent("nutriment", 3)
+	reagents.add_reagent("nutriment", 4)
+	reagents.add_reagent("sodiumchloride", 12)
 
 //Wrapped candy bars
 
@@ -3078,7 +3079,7 @@
 		icon_state = "[initial(icon_state)]-o"
 		package = 0
 
-
+//CM SNACKS
 /obj/item/reagent_container/food/snacks/wrapped/booniebars
 	name = "Boonie Bars"
 	desc = "Two delicious bars of minty chocolate. <i>\"Sometimes things are just... out of reach.\"</i>"
@@ -3088,7 +3089,7 @@
 
 /obj/item/reagent_container/food/snacks/wrapped/booniebars/Initialize()
 	..()
-	reagents.add_reagent("nutriment", 4)
+	reagents.add_reagent("nutriment", 6)
 	reagents.add_reagent("coco", 4)
 
 /obj/item/reagent_container/food/snacks/wrapped/chunk
@@ -3101,7 +3102,7 @@
 
 /obj/item/reagent_container/food/snacks/wrapped/chunk/Initialize()
 	..()
-	reagents.add_reagent("nutriment", 5)
+	reagents.add_reagent("nutriment", 7)
 	reagents.add_reagent("coco", 10)
 
 /obj/item/reagent_container/food/snacks/wrapped/barcardine
@@ -3112,8 +3113,8 @@
 
 /obj/item/reagent_container/food/snacks/wrapped/barcardine/Initialize()
 	..()
-	reagents.add_reagent("nutriment", 3)
-	reagents.add_reagent("coco", 1)
+	reagents.add_reagent("nutriment", 4)
+	reagents.add_reagent("coco", 2)
 	reagents.add_reagent("tramadol", 1) //May be powergamed but it's a single unit.
 //MREs
 

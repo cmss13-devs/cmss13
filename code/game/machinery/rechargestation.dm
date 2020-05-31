@@ -1,5 +1,5 @@
 /obj/structure/machinery/recharge_station
-	name = "cyborg recharging station"
+	name = "cyborg recharging and repair station"
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "borgcharger0"
 	density = TRUE
@@ -7,7 +7,7 @@
 	use_power = 1
 	idle_power_usage = 50
 	active_power_usage = 50
-	var/mob/occupant = null
+	var/mob/living/occupant = null
 	var/max_internal_charge = 15000 		// Two charged borgs in a row with default cell
 	var/current_internal_charge = 15000 	// Starts charged, to prevent power surges on round start
 	var/charging_cap_active = 25000			// Active Cap - When cyborg is inside
@@ -119,6 +119,7 @@
 
 /obj/structure/machinery/recharge_station/proc/process_occupant()
 	if(src.occupant)
+		var/doing_stuff = FALSE
 		if (isrobot(occupant))
 			var/mob/living/silicon/robot/R = occupant
 			if(R.module)
@@ -130,8 +131,22 @@
 				diff = min(diff, current_internal_charge) 				// No over-discharging
 				R.cell.give(diff)
 				current_internal_charge -= diff
+				to_chat(occupant, "Recharging...")
+				doing_stuff = TRUE
 			else
 				update_use_power(1)
+		if (isrobot(occupant) || isSynth(occupant))
+			if(occupant.getBruteLoss() > 0 || occupant.getFireLoss() > 0)
+				occupant.heal_overall_damage(10, 10, TRUE)
+				current_internal_charge -= 500
+				to_chat(occupant, "Repairing...")
+				doing_stuff = TRUE
+			else
+				update_use_power(1)
+		if(!doing_stuff)
+			to_chat(occupant, "Maintenance complete! Have a nice day!")
+			go_out()
+
 
 /obj/structure/machinery/recharge_station/proc/go_out()
 	if(!( src.occupant ))
@@ -151,6 +166,8 @@
 
 /obj/structure/machinery/recharge_station/verb/move_eject()
 	set category = "Object"
+	set name = "Eject"
+
 	set src in oview(1)
 	if (usr.stat != 0)
 		return
@@ -160,17 +177,19 @@
 
 /obj/structure/machinery/recharge_station/verb/move_inside()
 	set category = "Object"
+	set name = "Move Inside"
+
 	set src in oview(1)
 	if (usr.stat == 2)
 		//Whoever had it so that a borg with a dead cell can't enter this thing should be shot. --NEO
 		return
-	if (!(istype(usr, /mob/living/silicon/)))
-		to_chat(usr, SPAN_NOTICE(" <B>Only non-organics may enter the recharger!</B>"))
+	if (!isrobot(usr) && !isSynth(usr))
+		to_chat(usr, SPAN_NOTICE(" <B>Only non-organics may enter the recharge and repair station!</B>"))
 		return
 	if (src.occupant)
 		to_chat(usr, SPAN_NOTICE(" <B>The cell is already occupied!</B>"))
 		return
-	if (!usr:cell)
+	if (isrobot(usr) && !usr:cell)
 		usr<<SPAN_NOTICE("Without a powercell, you can't be recharged.")
 		//Make sure they actually HAVE a cell, now that they can get in while powerless. --NEO
 		return

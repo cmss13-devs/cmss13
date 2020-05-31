@@ -342,6 +342,7 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 		new /obj/item/storage/pouch/document/small(src)
 		new /obj/item/device/motiondetector/intel(src)
 		new /obj/item/device/encryptionkey/intel(src)
+		new /obj/item/pamphlet/reading_basic(src)
 
 /obj/item/storage/box/kit/veteran_enlist
 	name = "\improper Veteran Enlisted Assault Kit"

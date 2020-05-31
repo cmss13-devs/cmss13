@@ -22,6 +22,7 @@
 #define SKILL_POWERLOADER    "powerloader"
 #define SKILL_VEHICLE        "vehicles"
 #define SKILL_SURVIVAL       "survival"
+#define SKILL_READING        "reading"
 
 //firearms skill (general knowledge of guns) (hidden skill)
 //increase or decrase accuracy, recoil, and firing delay of rifles and smgs.
@@ -188,3 +189,8 @@
 #define SKILL_SURVIVAL_NONE     0
 #define SKILL_SURVIVAL_NOVICE   1
 #define SKILL_SURVIVAL_SURVIVOR 2
+//reading skill
+//for faster intel processing
+#define SKILL_READING_NONE		0
+#define SKILL_READING_TRAINED	1
+#define SKILL_READING_EXPERT	2

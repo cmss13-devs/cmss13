@@ -253,9 +253,15 @@ var/global/datum/intel_system/intel_system = new()
 	if(user.action_busy)
 		return 0
 
+	var/time_to_type = typing_time
+	if(skillcheck(user, SKILL_READING, SKILL_READING_EXPERT))
+		time_to_type *= 0.5
+	else if(skillcheck(user, SKILL_READING, SKILL_READING_TRAINED))
+		time_to_type *= 0.75
+
 	playsound(user, pick('sound/machines/computer_typing4.ogg', 'sound/machines/computer_typing5.ogg', 'sound/machines/computer_typing6.ogg'), 5, 1)
 
-	if(!do_after(user, typing_time, INTERRUPT_ALL, BUSY_ICON_GENERIC)) // Can't move from the spot
+	if(!do_after(user, time_to_type, INTERRUPT_ALL, BUSY_ICON_GENERIC)) // Can't move from the spot
 		to_chat(user, SPAN_WARNING("You get distracted and lose your train of thought, you'll have to start the typing over..."))
 		return -1
 

@@ -107,19 +107,14 @@
 		renamed = TRUE
 
 /obj/item/document_objective/proc/display_fail_message(mob/living/user)
-	var/dependants_complete = TRUE
-	for(var/datum/cm_objective/C in objective.enables_objectives)
-		if(!C.is_complete())
-			dependants_complete = FALSE
-	if (dependants_complete)
-		to_chat(user, SPAN_WARNING("The objectives relating to this document are already complete."))
-		return
 	if(objective)
 		to_chat(user, SPAN_NOTICE("You don't notice anything useful. You probably need to find its instructions on a paper scrap."))
 	else
 		to_chat(user, SPAN_NOTICE("You don't notice anything useful."))
 
 /obj/item/document_objective/attack_self(mob/living/carbon/human/user)
+	if(!objective.is_active())
+		objective.activate() //Trying to rejig it just in case
 	switch(skill_required)
 		if(DOCUMENT_SKILL_SURGERY)
 			if(!skillcheck(user, SKILL_SURGERY, SKILL_SURGERY_BEGINNER))

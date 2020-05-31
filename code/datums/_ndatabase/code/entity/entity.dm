@@ -50,3 +50,8 @@
 		stoplag()
 	if(CB)
 		CB.Invoke(src)
+
+/datum/entity/proc/assign_values(var/list/values)
+	for(var/F in metadata.field_types)
+		if(values[F])
+			vars[F] = values[F]

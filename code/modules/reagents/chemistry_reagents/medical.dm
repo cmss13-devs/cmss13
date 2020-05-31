@@ -13,7 +13,7 @@
 	overdose_critical = HIGH_REAGENTS_OVERDOSE_CRITICAL
 	scannable = 1
 	chemclass = CHEM_CLASS_COMMON
-	properties = list(PROPERTY_PAINKILLING = 2)
+	properties = list(PROPERTY_PAINKILLING = 1)
 
 /datum/reagent/inaprovaline/on_mob_life(mob/living/M, alien)
 	. = ..()
@@ -78,7 +78,7 @@
 	overdose = HIGH_REAGENTS_OVERDOSE
 	overdose_critical = HIGH_REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_UNCOMMON
-	properties = list(PROPERTY_PAINKILLING = 4)
+	properties = list(PROPERTY_PAINKILLING = 2)
 
 /datum/reagent/paracetamol/on_mob_life(mob/living/M)
 	. = ..()
@@ -104,7 +104,7 @@
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_COMMON
-	properties = list(PROPERTY_PAINKILLING = 6)
+	properties = list(PROPERTY_PAINKILLING = 3)
 
 /datum/reagent/tramadol/on_mob_life(mob/living/M)
 	. = ..()
@@ -133,7 +133,7 @@
 	overdose = MED_REAGENTS_OVERDOSE
 	overdose_critical = MED_REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_UNCOMMON
-	properties = list(PROPERTY_PAINKILLING = 8)
+	properties = list(PROPERTY_PAINKILLING = 4)
 
 /datum/reagent/oxycodone/on_mob_life(mob/living/M)
 	. = ..()
@@ -576,7 +576,7 @@
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	scannable = 1
 	chemclass = CHEM_CLASS_UNCOMMON
-	properties = list(PROPERTY_PAINKILLING = 1, PROPERTY_NEUROPEUTIC = 2)
+	properties = list(PROPERTY_PAINKILLING = 0.5, PROPERTY_NEUROPEUTIC = 2)
 
 /datum/reagent/alkysine/on_mob_life(mob/living/M)
 	. = ..()
@@ -693,7 +693,7 @@
 	scannable = 1
 	custom_metabolism = 0.4
 	chemclass = CHEM_CLASS_COMMON
-	properties = list(PROPERTY_PAINKILLING = 3, PROPERTY_MUSCLESTIMULATING = 1)
+	properties = list(PROPERTY_PAINKILLING = 1.5, PROPERTY_MUSCLESTIMULATING = 1)
 
 /datum/reagent/adrenaline/on_mob_life(mob/living/M)
 	. = ..()
@@ -817,7 +817,7 @@
 	color = "#C8A5DC" // rgb: 200, 165, 220
 	scannable = 1
 	chemclass = CHEM_CLASS_UNCOMMON
-	properties = list(PROPERTY_CRYOMETABOLIZING = 3, PROPERTY_NEOGENETIC = 2, PROPERTY_ANTICORROSIVE = 2, PROPERTY_ANTITOXIC = 2)
+	properties = list(PROPERTY_CRYOMETABOLIZING = 2, PROPERTY_NEOGENETIC = 1, PROPERTY_ANTICORROSIVE = 1, PROPERTY_ANTITOXIC = 1)
 
 /datum/reagent/cryoxadone/on_mob_life(mob/living/M)
 	. = ..()
@@ -836,7 +836,7 @@
 	color = "#C8A5DC" // rgb: 200, 165, 220
 	scannable = 1
 	chemclass = CHEM_CLASS_UNCOMMON
-	properties = list(PROPERTY_CRYOMETABOLIZING = 6, PROPERTY_NEOGENETIC = 6, PROPERTY_ANTICORROSIVE = 6, PROPERTY_ANTITOXIC = 6)
+	properties = list(PROPERTY_CRYOMETABOLIZING = 6, PROPERTY_NEOGENETIC = 3, PROPERTY_ANTICORROSIVE = 3, PROPERTY_ANTITOXIC = 3)
 
 /datum/reagent/clonexadone/on_mob_life(mob/living/M)
 	. = ..()

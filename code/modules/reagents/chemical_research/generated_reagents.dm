@@ -29,7 +29,6 @@
 	make_alike(chemical_reactions_list[id])
 
 /////////Tier 1
-//alpha
 /datum/chemical_reaction/generated/alpha
 	id = "alpha"
 	result = "alpha"
@@ -103,7 +102,7 @@
 	id = "theta"
 	gen_tier = 2
 
-/////////Tier 3 zeta
+/////////Tier 3
 /datum/chemical_reaction/generated/iota
 	id = "iota"
 	result = "iota"
@@ -165,10 +164,11 @@
 			if(PROPERTY_CRYOMETABOLIZING)
 				if(M.bodytemperature > 170)
 					return
+				boost += 0.5 * potency
 			if(PROPERTY_THANATOMETABOL)
 				if(M.stat != DEAD && M.oxyloss <  50 && round(M.blood_volume) > BLOOD_VOLUME_BAD)
 					return
-				effectiveness = min(max(max(M.oxyloss / 10, M.blood_volume / BLOOD_VOLUME_NORMAL) * 0.1 * potency, 0.1), 1)
+				effectiveness = min(max(max(M.oxyloss / 10, M.blood_volume / BLOOD_VOLUME_NORMAL) * 0.1 * potency, 0.1), effectiveness)
 			if(PROPERTY_REGULATING)
 				can_OD = FALSE
 			if(PROPERTY_EXCRETING)
@@ -695,7 +695,7 @@
 							if(L)
 								L.damage += 3*potency
 				else
-					M.reagent_pain_modifier += -30*potency
+					M.reagent_pain_modifier += -60*potency
 			if(PROPERTY_HEPATOPEUTIC) //liver healing
 				if(ishuman(M))
 					var/mob/living/carbon/human/H = M

@@ -1,7 +1,14 @@
 /datum/admins/proc/topic_chems(var/href)
 	switch(href)
 		if("view_reagent")
-			var/target = input(usr,"Enter the ID of the chemical reagent you wish to view:")
+			var/response = alert(usr,"Enter ID or select ID from list?",null, "Enter ID","Select from list")
+			var/target
+			if(response == "Select from list")
+				var/list/pool = chemical_reagents_list
+				pool = sortAssoc(pool)
+				target = input(usr,"Select the ID of the chemical reagent you wish to view:") as null|anything in pool
+			else if(response == "Enter ID")
+				target = input(usr,"Enter the ID of the chemical reagent you wish to view:")
 			if(!target)
 				return
 			var/datum/reagent/R = chemical_reagents_list[target]
@@ -74,7 +81,7 @@
 			var/datum/reagent/generated/R = new /datum/reagent/generated
 			R.id = target
 			R.gen_tier = tier
-			R.chemclass = CHEM_CLASS_RARE
+			R.chemclass = CHEM_CLASS_ULTRA
 			R.save_chemclass() 
 			R.properties = list()
 			R.generate_name()
@@ -89,21 +96,11 @@
 						if(chemical_reactions_list[target])
 							to_chat(usr,SPAN_WARNING("This ID is already in use."))
 							return
-						var/datum/chemical_reaction/generated/G = new /datum/chemical_reaction/generated
-						G.id = target
-						G.result = target
-						G.name = R.name
-						G.gen_tier = tier
-						G.generate_recipe()
-						//Save our reaction
-						chemical_reactions_list[target] = G
+						R.generate_assoc_recipe()
 						if(!chemical_reactions_list[target])
 							to_chat(usr,SPAN_WARNING("Something went wrong when saving the reaction. The associated reagent has been deleted."))
 							chemical_reagents_list[target] -= R
 							return
-						var/filter_id = G.get_filter()
-						if(filter_id)
-							chemical_reactions_filtered_list[filter_id] += G
 						response = alert(usr,"Do you want to do anything else?",null,"View my reaction","View my reagent","Finish")
 					if("View my reagent")
 						if(chemical_reagents_list[target])

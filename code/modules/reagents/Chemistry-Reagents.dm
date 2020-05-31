@@ -181,6 +181,9 @@
 				chemical_gen_classes_list["T3"] += id
 			if(4)
 				chemical_gen_classes_list["T4"] += id
+			if(5)
+				chemical_gen_classes_list["T5"] += id
+
 
 /datum/reagent/proc/has_property(var/property)
 	for(var/P in properties)

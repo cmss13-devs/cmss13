@@ -73,11 +73,14 @@
 			show_browser(user, "<BODY class='paper'>[stars(info)][stamps]</BODY>", name, name)
 			onclose(user, name)
 		else
-			show_browser(user, "<BODY class='paper'>[info][stamps]</BODY>", name, name)
-			onclose(user, name)
+			read_paper(user)
 	else
 		to_chat(user, SPAN_NOTICE("It is too far away."))
 	return
+
+/obj/item/paper/proc/read_paper(mob/user)
+	show_browser(user, "<BODY class='paper'>[info][stamps]</BODY>", name, name)
+	onclose(user, name)
 
 /obj/item/paper/verb/rename()
 	set name = "Rename paper"
@@ -433,6 +436,25 @@
 	add_fingerprint(user)
 	return
 
+/obj/item/paper/proc/convert_to_chem_report()
+	if(istype(src, /obj/item/paper/research_report))
+		return src
+	var/obj/item/paper/research_report/CR = new /obj/item/paper/research_report
+	if(istype(src, /obj/item/paper/research_notes))
+		var/obj/item/paper/research_notes/N = src
+		if(N.note_type == "synthesis")
+			CR.data = N.data
+			if(N.full_report)
+				CR.completed = TRUE				
+	CR.info = info
+	CR.info_links = info_links
+	CR.stamps = stamps
+	CR.fields = fields
+	CR.name = name
+	CR.loc = loc
+	qdel(src)
+	return CR
+
 /*
  * Premade paper
  */
@@ -526,6 +548,7 @@
 /obj/item/paper/research_notes
 	icon_state = "paper_wy_words"
 	unacidable = TRUE
+	var/datum/reagent/data
 	var/tier
 	var/note_type
 	var/full_report
@@ -538,75 +561,132 @@
 /obj/item/paper/research_notes/proc/generate()
 	if(!note_type)
 		note_type = pick(prob(50);"synthesis",prob(35);"grant",prob(15);"test")
-	var/random_chem
-	if(tier)
-		random_chem = pick(chemical_gen_classes_list[tier])
-	else
-		if(note_type == "test")
-			random_chem = pick(chemical_gen_classes_list["T4"])
+	var/datum/reagent/generated/C = data
+	if(!C)
+		var/random_chem
+		if(tier)
+			random_chem = pick(chemical_gen_classes_list[tier])
 		else
-			random_chem = pick(	prob(55);pick(chemical_gen_classes_list["T2"]),
-								prob(30);pick(chemical_gen_classes_list["T3"]),
-								prob(15);pick(chemical_gen_classes_list["T4"]))
-	if(!random_chem)
-		random_chem = pick(chemical_gen_classes_list["T1"])
-	var/data = "<center><img src = wylogo.png><HR><I><B>Official Weston-Yamada Document</B><BR>Experiment Notes</I><HR><H2>"
-	var/datum/reagent/C = chemical_reagents_list["[random_chem]"]
+			if(note_type == "test")
+				random_chem = pick(chemical_gen_classes_list["T4"])
+			else
+				random_chem = pick(	prob(55);pick(chemical_gen_classes_list["T2"]),
+									prob(30);pick(chemical_gen_classes_list["T3"]),
+									prob(15);pick(chemical_gen_classes_list["T4"]))
+		if(!random_chem)
+			random_chem = pick(chemical_gen_classes_list["T1"])
+		C = chemical_reagents_list["[random_chem]"]
+	var/txt = "<center><img src = wylogo.png><HR><I><B>Official Weston-Yamada Document</B><BR>Experiment Notes</I><HR><H2>"
 	switch(note_type)
 		if("synthesis")
 			var/datum/chemical_reaction/G = chemical_reactions_list[C.id]
 			name = "Synthesis of [C.name]"
-			data += "[name] </H2></center>"
-			data += "During experiment <I>[pick("C","Q","V","W","X","Y","Z")][rand(100,999)][pick("a","b","c")]</I> the theorized compound identified as [C.name], was successfully synthesized using the following formula:<BR>\n<BR>\n"
+			txt += "[name] </H2></center>"
+			txt += "During experiment <I>[pick("C","Q","V","W","X","Y","Z")][rand(100,999)][pick("a","b","c")]</I> the theorized compound identified as [C.name], was successfully synthesized using the following formula:<BR>\n<BR>\n"
 			for(var/I in G.required_reagents)
 				var/datum/reagent/R = chemical_reagents_list["[I]"]
 				var/U = G.required_reagents[I]
-				data += "<font size = \"2\"><I> - [U] [R.name]</I></font><BR>\n"
+				txt += "<font size = \"2\"><I> - [U] [R.name]</I></font><BR>\n"
 			if(G.required_catalysts && G.required_catalysts.len)
-				data += "<BR>\nWhile using the following catalysts: <BR>\n<BR>\n"
+				txt += "<BR>\nWhile using the following catalysts: <BR>\n<BR>\n"
 				for(var/I in G.required_catalysts)
 					var/datum/reagent/R = chemical_reagents_list["[I]"]
 					var/U = G.required_catalysts[I]
-					data += "<font size = \"2\"><I> - [U] [R.name]</I></font><BR>\n"
+					txt += "<font size = \"2\"><I> - [U] [R.name]</I></font><BR>\n"
 			if(full_report)
-				data += "<BR>The following properties have been discovered during tests:<BR><font size = \"2.5\">[C.description]\n"
-				data += "<BR>Overdoses at: [C.overdose] units</font><BR>\n"
+				txt += "<BR>The following properties have been discovered during tests:<BR><font size = \"2.5\">[C.description]\n"
+				txt += "<BR>Overdoses at: [C.overdose] units</font><BR>\n"
 			else
-				data += "<BR>\nTesting for chemical properties is currently pending.<BR>\n"
+				txt += "<BR>\nTesting for chemical properties is currently pending.<BR>\n"
 			if(C.has_property(PROPERTY_EXPLOSIVE))
-				data += "<BR><B>\nWARNING: UNSTABLE REAGENT. MIX CAREFULLY.</B><BR>\n"
-			data += "<BR>\n<HR> - <I>Weston-Yamada</I>"
+				txt += "<BR><B>\nWARNING: UNSTABLE REAGENT. MIX CAREFULLY.</B><BR>\n"
+			txt += "<BR>\n<HR> - <I>Weston-Yamada</I>"
 		if("test")
-			name = "Experiment [pick("C","Q","V","W","X","Y","Z")][rand(100,999)][pick("a","b","c")]"
-			data += "Note for [name]</H2></center>"
-			data += "Subject <I>[rand(10000,99999)]</I> experienced [pick(C.properties)] effects during testing of [C.name]. <BR>\nTesting for additional chemical properties is currently pending. <BR>\n"
-			data += "<BR>\n<HR> - <I>Weston-Yamada</I>"
+			txt = "Experiment [pick("C","Q","V","W","X","Y","Z")][rand(100,999)][pick("a","b","c")]"
+			txt += "Note for [name]</H2></center>"
+			txt += "Subject <I>[rand(10000,99999)]</I> experienced [pick(C.properties)] effects during testing of [C.name]. <BR>\nTesting for additional chemical properties is currently pending. <BR>\n"
+			txt += "<BR>\n<HR> - <I>Weston-Yamada</I>"
 		if("grant")
-			grant = rand(2,4)
+			if(!grant)
+				grant = rand(2,4)
 			name = "Research Grant"
-			data += "Weston-Yamada Research Grant</H2></center>"
-			data += "Dear valued researcher from [map_tag]. Weston-Yamada has taken high interest of your recent scientific reports. To further support your research progress we have sent you this research grant of [grant] credits. Please scan at your local Weston-Yamada research data terminal to receive the benefits.<BR>\n"
-			data += "<BR>\n<HR> - <I>Weston-Yamada</I>"
-	info = data
+			txt += "Weston-Yamada Research Grant</H2></center>"
+			txt += "Dear valued researcher. Weston-Yamada has taken high interest of your recent scientific progress. To further support your work we have sent you this research grant of [grant] credits. Please scan at your local Weston-Yamada research data terminal to receive the benefits.<BR>\n"
+			txt += "<BR>\n<HR> - <I>Weston-Yamada</I>"
+	info = txt
 
 /obj/item/paper/research_notes/bad
 	note_type = "synthesis"
 	tier = "T1"
+
+/obj/item/paper/research_notes/decent
+	note_type = "synthesis"
+	tier = "T2"
+	full_report = TRUE
 
 /obj/item/paper/research_notes/good
 	note_type = "synthesis"
 	full_report = TRUE
 
 /obj/item/paper/research_notes/good/Initialize()
-	tier = pick("T3","T4")
+	var/list/L = list("T3", "T4")
+	if(length(chemical_gen_classes_list["omega"]))//If we have chems from the previous round we can pick from the omega list
+		L += "omega"
+	tier = pick(L)
 	. = ..()
 
-/obj/item/paper/chem_report
+/obj/item/paper/research_notes/unique
+	note_type = "synthesis"
+	full_report = TRUE
+	var/gen_tier
+
+/obj/item/paper/research_notes/unique/tier_one
+	gen_tier = 1
+
+/obj/item/paper/research_notes/unique/tier_two
+	gen_tier = 2
+
+/obj/item/paper/research_notes/unique/tier_three
+	gen_tier = 3
+
+/obj/item/paper/research_notes/unique/tier_four
+	gen_tier = 4
+
+/obj/item/paper/research_notes/unique/tier_five
+	gen_tier = 5
+
+/obj/item/paper/research_notes/unique/Initialize()
+	//Each one of these get a new unique chem
+	var/datum/reagent/generated/C = new /datum/reagent/generated
+	C.id = "tau-[length(chemical_gen_classes_list["tau"])]"
+	C.generate_name()
+	C.chemclass = CHEM_CLASS_RARE
+	if(gen_tier)
+		C.gen_tier = gen_tier
+	else
+		C.gen_tier = chemical_research_data.clearance_level
+	C.generate_stats()
+	C.update_stats()
+	chemical_gen_classes_list["tau"] += C.id //Because each unique_vended should be unique, we do not save the chemclass anywhere but in the tau list
+	chemical_reagents_list[C.id] = C
+	C.generate_assoc_recipe()
+	data = C
+	message_admins("New reagent with id [C.id], name [C.name], level [C.gen_tier], generated and printed at [loc] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[loc.x];Y=[loc.y];Z=[loc.z]'>JMP</a>).")
+	. = ..()
+
+/obj/item/paper/research_notes/grant
+	note_type = "grant"
+
+/obj/item/paper/research_notes/grant/high
+	note_type = "grant"
+	grant = 4
+
+/obj/item/paper/research_report
 	icon_state = "paper_wy_words"
 	var/datum/reagent/data
 	var/completed = FALSE
 
-/obj/item/paper/chem_report/proc/generate(var/datum/reagent/S)
+/obj/item/paper/research_report/proc/generate(var/datum/reagent/S)
 	if(!S)
 		return
 	info += "<B>ID:</B> <I>[S.name]</I><BR><BR>\n"

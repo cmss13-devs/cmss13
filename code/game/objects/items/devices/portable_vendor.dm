@@ -235,6 +235,10 @@
 	req_access = list(ACCESS_WY_CORPORATE)
 	req_role = "Corporate Liaison"
 	listed_products = list(
+		list("RESEARCH", 0, null, null, null),
+		list("Chemical Report", 50, /obj/item/paper/research_notes/unique, "white", "A brand new chemical report downloaded from the WY research database. The chemical will have a level equal to the current clearance access of the Almayer research department."),
+		list("Research Grant", 25, /obj/item/paper/research_notes/grant/high, "white", "A research grant worth 4 research credits."),
+
 		list("INCENTIVES", 0, null, null, null),
 		list("Neurostimulator Implant", 30, /obj/item/implanter/neurostim, "white", "Implant which regulates nociception and sensory function. Benefits include pain reduction, improved balance, and improved resistance to overstimulation and disoritentation. To encourage compliance, negative stimulus is applied if the implant hears a (non-radio) spoken codephrase. Implant will be degraded by the body's immune system over time, and thus malfunction with gradually increasing frequency. Personal use not recommended."),
 		list("Ultrazine Pills", 20, /obj/item/storage/pill_bottle/ultrazine, "white", "Highly-addictive stimulant. Enhances short-term physical performance, particularly running speed. Effects last approximately 10 minutes per pill. More than two pills at a time will result in overdose. Withdrawal causes extreme discomfort and hallucinations. Long-term use results in halluciations and organ failure. Conditional distribution secures subject compliance. Not for personal use."),

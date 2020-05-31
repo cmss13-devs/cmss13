@@ -26,44 +26,46 @@ var/const/INGEST = 2
 
 /datum/reagents/New(maximum=100)
 	maximum_volume = maximum
-	global_prepare_reagents()
+	if(!chemical_reagents_list || !chemical_reactions_filtered_list)
+		global_prepare_reagents()
 
 /proc/global_prepare_reagents()
 	//I dislike having these here but map-objects are initialised before world/New() is called. >_>
-	if(!chemical_reagents_list)
-		//Chemical Reagents - Initialises all /datum/reagent into a list indexed by reagent id
-		var/paths = typesof(/datum/reagent) - /datum/reagent - /datum/reagent/generated
-		chemical_reagents_list = list()
-		for(var/i=0;i<=1;i++)
-			for(var/path in paths)
-				var/datum/reagent/D = new path()
-				D.save_chemclass()
-				chemical_reagents_list[D.id] = D
-			if(i==0)
-				paths = typesof(/datum/reagent/generated) - /datum/reagent/generated //Generated chemicals should be initialized last
-	if(!chemical_reactions_filtered_list)
-		//Chemical Reactions - Initialises all /datum/chemical_reaction into a list
-		// It is filtered into multiple lists within a list.
-		// For example:
-		// chemical_reaction_list["phoron"] is a list of all reactions relating to phoron
+	set waitfor = 0
+	//Chemical Reagents - Initialises all /datum/reagent into a list indexed by reagent id
+	var/paths = typesof(/datum/reagent) - /datum/reagent - /datum/reagent/generated
+	chemical_reagents_list = list()
+	for(var/i=0;i<=1;i++)
+		for(var/path in paths)
+			var/datum/reagent/D = new path()
+			D.save_chemclass()
+			chemical_reagents_list[D.id] = D
+		if(i==0)
+			paths = typesof(/datum/reagent/generated) - /datum/reagent/generated //Generated chemicals should be initialized last
+	
+	chemical_research_data.initialize_saved_chem_data() //load and initialize chems that have been saved to DB
+	
+	//Chemical Reactions - Initialises all /datum/chemical_reaction into a list
+	// It is filtered into multiple lists within a list.
+	// For example:
+	// chemical_reaction_list["phoron"] is a list of all reactions relating to phoron
+	paths = typesof(/datum/chemical_reaction) - /datum/chemical_reaction - /datum/chemical_reaction/generated
+	chemical_reactions_filtered_list = list()
+	chemical_reactions_list = list()
 
-		var/paths = typesof(/datum/chemical_reaction) - /datum/chemical_reaction - /datum/chemical_reaction/generated
-		chemical_reactions_filtered_list = list()
-		chemical_reactions_list = list()
+	for(var/i=0;i<=1;i++)
+		for(var/path in paths)
 
-		for(var/i=0;i<=1;i++)
-			for(var/path in paths)
+			var/datum/chemical_reaction/D = new path()
 
-				var/datum/chemical_reaction/D = new path()
+			chemical_reactions_list[D.id] = D
 
-				chemical_reactions_list[D.id] = D
+			var/filter_id = D.get_filter()
+			if(filter_id)
+				chemical_reactions_filtered_list[filter_id] += D  // We don't have to bother adding ourselves to other reagent ids, it is redundant.
 
-				var/filter_id = D.get_filter()
-				if(filter_id)
-					chemical_reactions_filtered_list[filter_id] += D  // We don't have to bother adding ourselves to other reagent ids, it is redundant.
-
-			if(i==0)
-				paths = typesof(/datum/chemical_reaction/generated) - /datum/chemical_reaction/generated //Generated chemicals should be initialized last
+		if(i==0)
+			paths = typesof(/datum/chemical_reaction/generated) - /datum/chemical_reaction/generated //Generated chemicals should be initialized last
 
 /datum/reagents/Dispose()
 	. = ..()

@@ -85,7 +85,7 @@
 	return
 
 /obj/structure/machinery/reagent_analyzer/proc/print_report(var/result, var/reason)
-	var/obj/item/paper/chem_report/report = new /obj/item/paper/chem_report/(loc)
+	var/obj/item/paper/research_report/report = new /obj/item/paper/research_report/(loc)
 	report.name = "Analysis of "
 	if(result)
 		var/datum/reagent/S = sample.reagents.reagent_list[1]

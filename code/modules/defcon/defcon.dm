@@ -36,7 +36,7 @@ var/global/datum/controller/defcon/defcon_controller
 	else
 		if (!defcon_level_triggers)
 			return 0
-		var/percentage = last_objectives_completion_percentage / defcon_level_triggers[current_defcon_level -1] * 100
+		var/percentage = last_objectives_scored_points / defcon_level_triggers[current_defcon_level -1] * 100
 		return percentage
 
 
@@ -54,7 +54,7 @@ var/global/datum/controller/defcon/defcon_controller
 	last_objectives_completion_percentage = last_objectives_scored_points / last_objectives_total_points
 
 	if(current_defcon_level > 1)
-		if(last_objectives_completion_percentage > defcon_level_triggers[current_defcon_level - 1])
+		if(last_objectives_scored_points > defcon_level_triggers[current_defcon_level - 1])
 			decrease_defcon_level()
 	if(round_statistics)
 		round_statistics.defcon_level = current_defcon_level
@@ -114,13 +114,13 @@ var/global/datum/controller/defcon/defcon_controller
 	//text2file("DEFCON lists began initialization","data/defcon_log.txt")
 	//text2file("Map tag: [map_tag]", "data/defcon_log.txt")
 	if (map_tag == MAP_BIG_RED || map_tag == MAP_PRISON_STATION || map_tag == MAP_SOROKYNE_STRATA)
-		defcon_level_triggers = list(0.60, 0.40, 0.25, 0.15, 0.0)
+		defcon_level_triggers = list(3500, 2300, 1450, 875, 0.0)
 	else if (map_tag == MAP_ICE_COLONY || map_tag == MAP_DESERT_DAM || map_tag == MAP_CORSAT)
-		defcon_level_triggers = list(0.60, 0.40, 0.25, 0.10, 0.0)
+		defcon_level_triggers = list(3500, 2300, 1450, 580, 0.0)
 	else 
 		// Defaults 
 		// Currently just LV 
-		defcon_level_triggers = list(0.70, 0.45, 0.30, 0.15, 0.0)
+		defcon_level_triggers = list(3500, 2500, 1700, 900, 0.0)
 	//text2file("Listing level triggers:","data/defcon_log.txt")
 	//for (var/i in defcon_level_triggers)
 		//text2file("Defcon level trigger: [i]","data/defcon_log.txt")

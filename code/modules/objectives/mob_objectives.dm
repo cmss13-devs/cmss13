@@ -103,7 +103,7 @@
 /datum/cm_objective/move_mob/almayer/survivor
 	name = "Rescue the Survivor"
 	mob_can_die = MOB_FAILS_ON_DEATH
-	priority = OBJECTIVE_ABSOLUTE_VALUE
+	priority = OBJECTIVE_EXTREME_VALUE
 	display_category = "Rescue the Survivors"
 
 /datum/cm_objective/move_mob/almayer/vip
@@ -222,25 +222,56 @@
 	name = "Recover the Dead"
 	var/list/corpses = list()
 	objective_flags = OBJ_PROCESS_ON_DEMAND | OBJ_DO_NOT_TREE
-	var/points_per_corpse = 5
 	var/area/recovery_area = /area/almayer/medical/morgue
 	//We count how many corpses we recovered and are not processing anymore
 	//So we can cremate them and so on rather than turn the morgue trays into a clown car
-	var/recovered_corpses_count = 0
+	var/recovered_corpse_points = 0
+
+	var/points_per_corpse_tier_0 = 5
+	var/points_per_corpse_tier_1 = 25
+	var/points_per_corpse_tier_2 = 50
+	var/points_per_corpse_tier_3 = 75
+	var/points_per_corpse_tier_4 = 100
+
+/datum/cm_objective/recover_corpses/proc/get_points_per_corpse(var/mob/H)
+	if(isXeno(H))
+		var/mob/living/carbon/Xenomorph/X = H
+		switch(X.tier)
+			if(1)
+				if(isXenoPredalien(X))
+					return points_per_corpse_tier_4
+				return points_per_corpse_tier_1
+			if(2)
+				return points_per_corpse_tier_2
+			if(3)
+				return points_per_corpse_tier_3
+			else
+				if(isXenoQueen(X)) //Queen is Tier 0 for some reason...
+					return points_per_corpse_tier_4
+				else
+					return points_per_corpse_tier_0
+
+	else if(isYautja(H))
+		return points_per_corpse_tier_4
+	else
+		return points_per_corpse_tier_0
 
 /datum/cm_objective/recover_corpses/get_point_value()
 	var/points = 0
 	for(var/mob/H in corpses)
 		if(istype(get_area(H),recovery_area))
 			if(objective_flags & OBJ_CAN_BE_UNCOMPLETED)
-				points++
+				points += get_points_per_corpse(H)
 			else
-				recovered_corpses_count++
+				recovered_corpse_points += get_points_per_corpse(H)
 				corpses -= H
-	return (recovered_corpses_count + points) * points_per_corpse
+	return (recovered_corpse_points + points)
 
 /datum/cm_objective/recover_corpses/total_point_value()
-	return (corpses.len + recovered_corpses_count) * points_per_corpse
+	var/points = 0
+	for(var/mob/H in corpses)
+		points += get_points_per_corpse(H)
+	return (recovered_corpse_points + points)
 
 /datum/cm_objective/recover_corpses/get_completion_status()
 	var/percentage = 0
@@ -252,7 +283,6 @@
 
 /datum/cm_objective/recover_corpses/colonists
 	name = "Recover Colonist Bodies"
-	points_per_corpse = 5
 	display_flags = OBJ_DISPLAY_AT_END
 
 /datum/cm_objective/recover_corpses/colonists/post_round_start()
@@ -291,7 +321,6 @@
 /datum/cm_objective/recover_corpses/xenos
 	name = "Recover Xeno corpse specimens"
 	display_flags = OBJ_DISPLAY_AT_END
-	points_per_corpse = 50
 	recovery_area = /area/almayer/medical/containment/cell
 
 /datum/cm_objective/recover_corpses/xenos/proc/add_xeno(var/mob/living/X)
@@ -300,6 +329,9 @@
 
 /datum/cm_objective/recover_corpses/xenos/proc/remove_xeno(var/mob/living/X)
 	corpses -= X
+
+/datum/cm_objective/recover_corpses/xenos/get_completion_status()
+	return "[get_point_value()]pts Recovered"
 
 /hook/death/proc/handle_xeno_deaths(var/mob/living/X, var/gibbed)
 	if(!istype(X) || gibbed || !objectives_controller)
@@ -312,27 +344,48 @@
 	name = "Contain alien specimens"
 	objective_flags = OBJ_DO_NOT_TREE
 	display_flags = OBJ_DISPLAY_AT_END
-	var/points_per_specimen = 75
 	var/area/recovery_area = /area/almayer/medical/containment/cell
-	var/contained_specimen_count = 0
+	var/contained_specimen_points = 0
+
+	var/points_per_specimen_tier_0 = 10
+	var/points_per_specimen_tier_1 = 50
+	var/points_per_specimen_tier_2 = 100
+	var/points_per_specimen_tier_3 = 150
+	var/points_per_specimen_tier_4 = 200
 
 /datum/cm_objective/contain/process()
-	contained_specimen_count = 0
+	contained_specimen_points = 0
 	for (var/mob/living/carbon/Xenomorph/X in living_xeno_list)
 		if(istype(get_area(X),recovery_area))
-			contained_specimen_count++
+			switch(X.tier)
+				if(1)
+					if(isXenoPredalien(X))
+						contained_specimen_points += points_per_specimen_tier_4
+					else
+						contained_specimen_points += points_per_specimen_tier_1
+				if(2)
+					contained_specimen_points += points_per_specimen_tier_2
+				if(3)
+					contained_specimen_points += points_per_specimen_tier_3
+				else
+					if(isXenoQueen(X)) //Queen is Tier 0 for some reason...
+						contained_specimen_points += points_per_specimen_tier_4
+					else
+						contained_specimen_points += points_per_specimen_tier_0
+
+
 	for(var/mob/living/carbon/human/Y in yautja_mob_list)
 		if(Y.stat == DEAD) continue
 		if(istype(get_area(Y),recovery_area))
-			contained_specimen_count++
+			contained_specimen_points += points_per_specimen_tier_4
 
 /datum/cm_objective/contain/get_point_value()
-	return contained_specimen_count * points_per_specimen
+	return contained_specimen_points
 
 /datum/cm_objective/contain/total_point_value()
 	//This objective is always 100% since tracking it otherwise would be really hard
 	//Plus getting it is hard enough, so why not?
-	return contained_specimen_count * points_per_specimen
+	return contained_specimen_points
 
 /datum/cm_objective/contain/get_completion_status()
 	return "[get_point_value()]pts Contained"

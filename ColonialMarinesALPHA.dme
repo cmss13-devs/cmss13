@@ -264,6 +264,7 @@
 #include "code\datums\emergency_calls\whiskey_outpost.dm"
 #include "code\datums\emergency_calls\xenos.dm"
 #include "code\datums\emergency_calls\zombie.dm"
+#include "code\datums\entities\chemical_information.dm"
 #include "code\datums\entities\login_triplets.dm"
 #include "code\datums\entities\map_votes.dm"
 #include "code\datums\entities\player.dm"

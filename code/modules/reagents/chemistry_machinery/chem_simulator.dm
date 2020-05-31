@@ -12,8 +12,8 @@
 	density = 1
 	bound_x = 32
 
-	var/obj/item/paper/chem_report/target
-	var/obj/item/paper/chem_report/reference
+	var/obj/item/paper/research_report/target
+	var/obj/item/paper/research_report/reference
 	var/list/simulations = list()
 	var/list/dictionary = list("negative","neutral","positive","all")
 	var/list/property_codings = list(
@@ -65,7 +65,14 @@
 	if(!skillcheck(user, SKILL_RESEARCH, SKILL_RESEARCH_TRAINED))
 		to_chat(user, SPAN_WARNING("You have no idea how to use this."))
 		return
-	if(istype(B, /obj/item/paper/chem_report))
+	if(istype(B, /obj/item/paper/research_notes))
+		var/obj/item/paper/research_notes/N = B
+		if(!target || (mode == MODE_RELATE && !reference))
+			B = N.convert_to_chem_report()
+		else
+			to_chat(user, SPAN_WARNING("Chemical data already inserted."))
+			return
+	if(istype(B, /obj/item/paper/research_report))
 		if(!target)
 			target = B
 			ready = check_ready()
@@ -76,13 +83,14 @@
 		else
 			to_chat(user, SPAN_WARNING("Chemical data already inserted."))
 			return
-		user.drop_inv_item_to_loc(B, src)
-		to_chat(user, SPAN_NOTICE("You insert [B] into the [src]."))
-		flick("[icon_state]_reading",src)
-		update_costs()
-		nanomanager.update_uis(src) // update all UIs attached to src
 	else 
 		to_chat(user, SPAN_WARNING("The [src] refuses the [B]."))
+		return
+	user.drop_inv_item_to_loc(B, src)
+	to_chat(user, SPAN_NOTICE("You insert [B] into the [src]."))
+	flick("[icon_state]_reading",src)
+	update_costs()
+	nanomanager.update_uis(src) // update all UIs attached to src
 
 /obj/structure/machinery/chem_simulator/attack_hand(mob/user as mob)
 	if(stat & (BROKEN|NOPOWER))
@@ -240,6 +248,22 @@
 		if(!target.data)
 			status_bar = "DATA CORRUPTION DETECTED, RESCAN CHEMICAL"
 			return FALSE
+		if(target.data.chemclass < CHEM_CLASS_COMMON)
+			status_bar = "TARGET CAN NOT BE ALTERED"
+			return FALSE
+		//Safety check in case of irregular papers
+		var/datum/chemical_reaction/C = chemical_reactions_list[target.data.id]
+		if(C)
+			for(var/component in C.required_reagents)
+				var/datum/reagent/R = chemical_reagents_list[component]
+				if(R && R.chemclass >= CHEM_CLASS_SPECIAL && !chemical_identified_list[R.id])
+					status_bar = "UNREGISTERED COMPONENTS DETECTED"
+					return FALSE
+			for(var/catalyst in C.required_catalysts)
+				var/datum/reagent/R = chemical_reagents_list[catalyst]
+				if(R && R.chemclass >= CHEM_CLASS_SPECIAL && !chemical_identified_list[R.id])
+					status_bar = "UNREGISTERED CATALYSTS DETECTED"
+					return FALSE
 	if(property_costs[target_property] > chemical_research_data.rsc_credits)
 		status_bar = "INSUFFICIENT FUNDS"
 		return FALSE
@@ -248,7 +272,7 @@
 			status_bar = "INCOMPLETE DATA DETECTED IN REFERENCE"
 			return FALSE
 		if(target && target.data.properties.len < 2)
-			status_bar = "TARGET COMPLEXITY INSUFFICIENT FOR RELATION"
+			status_bar = "TARGET COMPLEXITY IMPROPER FOR RELATION"
 			return FALSE
 		if(reference && target)
 			if(target.data.has_property(reference_property))
@@ -264,7 +288,7 @@
 	playsound(loc, 'sound/machines/fax.ogg', 15, 1)
 	flick("[icon_state]_printing",src)
 	sleep(10)
-	var/obj/item/paper/chem_report/report = new /obj/item/paper/chem_report/(loc)
+	var/obj/item/paper/research_report/report = new /obj/item/paper/research_report/(loc)
 	var/datum/reagent/D = chemical_reagents_list[id]
 	report.name = "Simulation result for [D.name]"
 	report.info += "<center><img src = wylogo.png><HR><I><B>Official Company Document</B><BR>Simulated Synthesis Report</I><HR><H2>Result for [D.name]</H2></center>"
@@ -355,8 +379,11 @@
 	C.gen_tier = max(min(C.chemclass, CHEM_CLASS_COMMON),C.gen_tier,1)
 	//Change a single component of the reaction
 	var/datum/chemical_reaction/generated/R = new /datum/chemical_reaction/generated
-	R.make_alike(chemical_reactions_list[target.data.id])
-	R.gen_tier = max(min(C.chemclass, CHEM_CLASS_COMMON),C.gen_tier,1)
+	var/datum/chemical_reaction/generated/assoc_R = chemical_reactions_list[target.data.id]
+	if(!assoc_R)
+		assoc_R = C.generate_assoc_recipe()
+	R.make_alike(assoc_R)
+	R.gen_tier = C.gen_tier
 	var/list/old_reaction = R.required_reagents.Copy()
 	R.required_reagents -= pick(R.required_reagents)
 	for(var/i = 0, i <= 5, i++)

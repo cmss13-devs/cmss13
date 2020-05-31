@@ -1,18 +1,62 @@
-<div>
-	<h2><b>Research Credits Available:</b> {{:data.rsc_credits}}</h2>
-	<h2><b>Current Clearance Access:</b> Level {{:data.clearance_level}}</h2>
-</div>
-
-{{:helper.link('Broker Clearance for ' + data.broker_cost + ' credits', null, {'broker_clearance' : 1})}}
-<br>
-<h2>Research Data</h2>
-<div>
-	{{props data.research_documents :documents:type}}
-		<h3>{{:type}}</h3>
-		{{props data.research_documents[type] :document:title}}
-			<b>{{:title}}</b>
-			{{:helper.link('Print', 'print', {'print_type' : type, 'print_title' : title})}}
-			<br><br>
+{{if data.terminal_view == 1 }}
+	<div>
+		<h2><b>Research Credits Available:</b> {{:data.rsc_credits}}</h2>
+		<h2><b>Current Clearance Access:</b> Level {{:data.clearance_level}}</h2>
+	</div>
+	{{:helper.link('Purchase Clearance for ' + data.broker_cost + ' credits', null, {'broker_clearance' : 1})}}
+	<br><br>
+	<h3>Purchase Report Access</h3>
+		{{:helper.link('Level 1 for 6 rc', 'arrowthickstop-1-s', {'purchase_document' : 1})}}
+		{{if data.clearance_level >= 2 }}
+			{{:helper.link('Level 2 for 9 rc', 'arrowthickstop-1-s', {'purchase_document' : 2})}}
+		{{/if}}
+		{{if data.clearance_level >= 3 }}
+			{{:helper.link('Level 3 for 14 rc', 'arrowthickstop-1-s', {'purchase_document' : 3})}}
+		{{/if}}
+		{{if data.clearance_level >= 4 }}
+			{{:helper.link('Level 4 for 21 rc', 'arrowthickstop-1-s', {'purchase_document' : 4})}}
+		{{/if}}
+		{{if data.clearance_level >= 5 }}
+			{{:helper.link('Level 5 for 30 rc', 'arrowthickstop-1-s', {'purchase_document' : 5})}}
+		{{/if}}
+	<br><br>
+	<h2>Research Data</h2>
+{{else}}
+	<h2>Research Publications</h2>
+{{/if}}
+{{if data.terminal_view == 1 }}
+	<div>
+		{{props data.research_documents :documents:type}}
+			<h3>{{:type}}</h3>
+			{{props data.research_documents[type] :document:title}}
+				<p><b>{{:title}}</b></p>
+				{{:helper.link('Read', null, {'read_document' : 1, 'print_type' : type, 'print_title' : title})}}
+				{{:helper.link('Print', 'print', {'print' : 1, 'print_type' : type, 'print_title' : title})}}
+				{{:helper.link('Transmit', 'arrowthickstop-1-n', {'transmit' : 1, 'print_type' : type, 'print_title' : title})}}
+				{{if data.main_terminal == 1 }}
+					{{if data.published_documents[type] }}
+						{{if data.published_documents[type][title] }}
+							{{:helper.link('Unpublish', 'arrowthickstop-1-w', {'unpublish_document' : 1, 'print_type' : type, 'print_title' : title})}}
+						{{else}}
+							{{:helper.link('Publish', 'arrowthickstop-1-e', {'publish_document' : 1, 'print_type' : type, 'print_title' : title})}}
+						{{/if}}
+					{{else}}
+						{{:helper.link('Publish', 'arrowthickstop-1-e', {'publish_document' : 1, 'print_type' : type, 'print_title' : title})}}
+					{{/if}}
+				{{/if}}
+				<hr><br>
+			{{/props}}
 		{{/props}}
-	{{/props}}
-</div>
+	</div>
+{{else}}
+	<div>
+		{{props data.published_documents :documents:type}}
+			<h3>{{:type}}</h3>
+			{{props data.published_documents[type] :document:title}}
+				<p><b>{{:title}}</b></p>
+				{{:helper.link('Read', null, {'read_document' : 1, 'print_type' : type, 'print_title' : title})}}
+				<br><br>
+			{{/props}}
+		{{/props}}
+	</div>
+{{/if}}

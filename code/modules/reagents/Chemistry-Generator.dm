@@ -168,6 +168,7 @@
 	name = gen_name
 	return name
 
+//////////////////////////////REAGENT GENERATOR//////////////////////////////
 /datum/reagent/proc/generate_stats(var/no_properties)
 	..()
 	//Properties
@@ -293,7 +294,7 @@
 										PROPERTY_BALDING = "Damages the hair follicles in the skin causing extreme alopecia, also refered to as baldness.",\
 										PROPERTY_FLUFFING = "Accelerates cell division in the hair follicles resulting in random and excessive hairgrowth.",\
 										PROPERTY_ALLERGENIC = "Creates a hyperactive immune response in the body, resulting in irritation.",\
-										PROPERTY_CRYOMETABOLIZING = "The chemical is passively metabolized with no other effects in temperatures above 170 kelvin.",\
+										PROPERTY_CRYOMETABOLIZING = "The chemical is passively metabolized with no other effects in temperatures above 170 kelvin. Below however, the chemical will metabolize with increased effect.",\
 										PROPERTY_EUPHORIC = "Causes the release of endorphin hormones resulting intense excitement and happiness.",\
 										PROPERTY_EMETIC = "Acts on the enteric nervous system to induce emesis, the forceful emptying of the stomach.",\
 										PROPERTY_PSYCHOSTIMULATING = "Stimulates psychological functions causing increased awareness, focus and anti-depressing effects.",\
@@ -508,3 +509,40 @@
 		else if(P == PROPERTY_EXPLOSIVE)
 			info += "<I>WARNING: Mixing too much at a time can cause spontanous explosion! Do not mix more than the OD threshold!</I>"
 	description = info
+
+/datum/reagent/proc/calculate_gen_tier(var/value)
+	gen_tier = min(max(round(value / 4 - 1), 1), 4)
+
+/datum/reagent/proc/calculate_value()
+	var/list/negative_properties = get_negative_chem_properties()
+	var/list/neutral_properties = get_neutral_chem_properties()
+	var/list/positive_properties = get_positive_chem_properties()
+	var/list/special_properties = get_negative_chem_properties(TRUE, FALSE, FALSE) + get_neutral_chem_properties(TRUE, FALSE, FALSE) + get_positive_chem_properties(TRUE, FALSE, FALSE)
+	var/list/admin_properties = get_negative_chem_properties(FALSE, TRUE, FALSE) + get_neutral_chem_properties(FALSE, TRUE, FALSE) + get_positive_chem_properties(FALSE, TRUE, FALSE)
+	var/value = 0
+	for(var/P in properties)
+		var/potency = properties[P]
+		if(negative_properties.Find(P))
+			value += potency * -1
+		else if(neutral_properties.Find(P))
+			value += round(-1 * potency / 2)
+		else if(positive_properties.Find(P))
+			value += potency
+		else if(special_properties.Find(P))
+			value += potency * 5
+		else if(admin_properties.Find(P))
+			value += potency * 1000 //shouldn't ever be possible
+	return value
+
+/datum/reagent/proc/generate_assoc_recipe()
+	var/datum/chemical_reaction/generated/C = new /datum/chemical_reaction/generated
+	C.id = id
+	C.result = id
+	C.name = name
+	C.gen_tier = gen_tier
+	C.generate_recipe()
+	chemical_reactions_list[C.id] = C
+	var/filter_id = C.get_filter()
+	if(filter_id)
+		chemical_reactions_filtered_list[filter_id] += C
+	return C

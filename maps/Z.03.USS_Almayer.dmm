@@ -720,13 +720,13 @@
 	},
 /area/almayer/squads/bravo)
 "abU" = (
-/obj/structure/pipes/standard/manifold/hidden/supply{
-	dir = 1
-	},
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "orange";
 	tag = "icon-orange (WEST)"
+	},
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 1
 	},
 /turf/open/floor/almayer,
 /area/almayer/engineering/engineering_workshop)
@@ -8957,7 +8957,7 @@
 /turf/open/floor/almayer,
 /area/almayer/living/officer_rnr)
 "awj" = (
-/obj/structure/machinery/computer/med_data,
+/obj/structure/machinery/photocopier,
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_side";
@@ -40440,6 +40440,9 @@
 "eij" = (
 /obj/structure/table/almayer,
 /obj/structure/pipes/vents/pump,
+/obj/item/clipboard,
+/obj/item/clothing/glasses/hud/health,
+/obj/item/device/healthanalyzer,
 /turf/open/floor/wood,
 /area/almayer/medical/upper_medical)
 "eiw" = (
@@ -44963,7 +44966,11 @@
 /turf/open/floor/plating,
 /area/almayer/evacuation/pod17)
 "jUG" = (
-/obj/structure/machinery/computer/crew,
+/obj/structure/table/almayer,
+/obj/structure/machinery/computer/research/main_terminal{
+	icon_state = "research";
+	dir = 4
+	},
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_side";
@@ -45926,16 +45933,13 @@
 	},
 /area/almayer/hallways/repair_bay)
 "lhv" = (
-/obj/structure/table/almayer,
-/obj/item/paper,
-/obj/item/clothing/glasses/hud/health,
-/obj/item/clipboard,
 /obj/structure/machinery/door_control{
 	id = "CMO Shutters";
 	name = "Office Shutters";
 	pixel_y = -20;
 	req_access = list(5)
 	},
+/obj/structure/machinery/computer/crew,
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "sterile_green_corner";
@@ -47280,8 +47284,8 @@
 /turf/open/floor/wood,
 /area/almayer/medical/medical_science)
 "mID" = (
-/obj/structure/machinery/photocopier,
 /obj/structure/machinery/light,
+/obj/structure/machinery/computer/med_data,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side";
 	tag = "icon-sterile"
@@ -51720,9 +51724,12 @@
 	},
 /area/almayer/engineering/ce_room)
 "skl" = (
-/obj/structure/bed/chair/office/dark,
 /obj/effect/landmark/start{
 	name = "Chief Medical Officer"
+	},
+/obj/structure/bed/chair/office/dark{
+	icon_state = "officechair_dark";
+	dir = 8
 	},
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
@@ -52419,9 +52426,6 @@
 	},
 /area/almayer/medical/medical_science)
 "sXB" = (
-/obj/structure/table/almayer,
-/obj/item/clipboard,
-/obj/item/device/healthanalyzer,
 /obj/structure/machinery/door_control{
 	id = "containmentlockdown_S";
 	name = "Containment Exterior Lockdown";
@@ -52429,6 +52433,12 @@
 	range = 20;
 	req_one_access = list(19,14)
 	},
+/obj/structure/filingcabinet/filingcabinet,
+/obj/item/clipboard,
+/obj/item/clipboard,
+/obj/item/folder/black,
+/obj/item/folder/black,
+/obj/item/folder/white,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side";
 	tag = "icon-sterile"

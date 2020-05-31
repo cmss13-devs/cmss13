@@ -64,7 +64,7 @@ var/global/list/chemical_reagents_list				//List of all /datum/reagent datums in
 var/global/list/chemical_objective_list	 = list()	//List of all objective reagents indexed by ID associated with the objective value
 var/global/list/chemical_identified_list = list()	//List of all identified objective reagents indexed by ID associated with the objective value
 //List of all id's from classed /datum/reagent datums indexed by class or tier. Used by chemistry generator and chem spawners.
-var/global/list/chemical_gen_classes_list = list("C" = list(),"C1" = list(),"C2" = list(),"C3" = list(),"C4" = list(),"C5" = list(),"C6" = list(),"T1" = list(),"T2" = list(),"T3" = list(),"T4" = list())
+var/global/list/chemical_gen_classes_list = list("C" = list(),"C1" = list(),"C2" = list(),"C3" = list(),"C4" = list(),"C5" = list(),"C6" = list(),"T1" = list(),"T2" = list(),"T3" = list(),"T4" = list(),"omega" = list(),"tau" = list())
 
 var/global/list/landmarks_list = list()				//List of all landmarks created
 var/global/list/surgery_steps = list()				//List of all surgery steps  |BS12

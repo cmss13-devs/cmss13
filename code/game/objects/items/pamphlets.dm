@@ -40,3 +40,17 @@
 	icon_state = "pamphlet_construction"
 	skill_to_increment = SKILL_CONSTRUCTION
 	secondary_skill = SKILL_ENGINEER
+
+/obj/item/pamphlet/reading_basic
+	name = "reading instructional pamphlet"
+	desc = "A pamphlet used to quickly impart vital knowledge. This one has a reading insignia. The title reads 'Speed reading and comprehension for dum-dums.'"
+	icon_state = "pamphlet_written"
+	skill_to_increment = SKILL_READING
+	skill_increment = SKILL_READING_TRAINED
+
+/obj/item/pamphlet/reading_advanced
+	name = "reading instructional pamphlet, advanced"
+	desc = "A pamphlet used to quickly impart vital knowledge. This one has a reading insignia. The title reads 'Reading between the lines - a guide for aspiring spies.'"
+	icon_state = "pamphlet_written"
+	skill_to_increment = SKILL_READING
+	skill_increment = SKILL_READING_EXPERT

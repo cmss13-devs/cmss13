@@ -135,7 +135,15 @@
 				to_chat(user, SPAN_WARNING("You can't understand this."))
 				return 0
 	to_chat(user, SPAN_NOTICE("You start reading \the [src]."))
-	if(!do_after(user, reading_time, INTERRUPT_INCAPACITATED|INTERRUPT_NEEDHAND, BUSY_ICON_GENERIC)) // Can move while reading intel
+
+	var/time_to_read = reading_time
+	if(skillcheck(user, SKILL_READING, SKILL_READING_EXPERT))
+		time_to_read *= 0.5
+	else if(skillcheck(user, SKILL_READING, SKILL_READING_TRAINED))
+		time_to_read *= 0.75
+
+
+	if(!do_after(user, time_to_read, INTERRUPT_INCAPACITATED|INTERRUPT_NEEDHAND, BUSY_ICON_GENERIC)) // Can move while reading intel
 		to_chat(user, SPAN_WARNING("You get distracted and lose your train of thought, you'll have to start over reading this."))
 		return 0
 

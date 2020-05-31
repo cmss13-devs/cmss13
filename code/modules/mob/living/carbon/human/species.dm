@@ -458,7 +458,7 @@
 	deform = 'icons/mob/humans/species/r_synthetic.dmi'
 
 	rarity_value = 1.5
-	slowdown = 1.3 //Slower than later synths
+	//slowdown = 1.3 //Slower than later synths
 	total_health = 200 //But more durable
 	insulated = 1
 

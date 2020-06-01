@@ -532,7 +532,7 @@
 			value += potency * 5
 		else if(admin_properties.Find(P))
 			value += potency * 1000 //shouldn't ever be possible
-	return value
+	return max(value, 3)
 
 /datum/reagent/proc/generate_assoc_recipe()
 	var/datum/chemical_reaction/generated/C = new /datum/chemical_reaction/generated

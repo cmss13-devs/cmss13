@@ -39,6 +39,7 @@
 	var/gen_tier = 0 //Decides the chance of the chem being good during generation
 	var/objective_value // How valuable it is to identify the chemical. (Only works on chemclass SPECIAL or ULTRA)
 	var/list/properties = list() //Decides properties
+	var/properties_text //bandaid fix for runtime in assign_values(), this var isn't really used for anything
 	var/original_type //For tracing back
 
 /datum/reagent/proc/reaction_mob(var/mob/M, var/method=TOUCH, var/volume) //By default we have a chance to transfer some

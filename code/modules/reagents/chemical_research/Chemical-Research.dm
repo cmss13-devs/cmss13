@@ -61,6 +61,9 @@ var/global/datum/chemical_research_data/chemical_research_data = new /datum/chem
 			if(V != "properties_text")
 				R.vars[V] = data.vars[V]
 		R.properties = data.properties
+		for(var/P in R.properties)
+			var/V = R.properties[P]
+			R.properties[P] = text2num(V) //because properties are stored as strings in DB
 		R.generate_name()
 		R.id = "omega-[i]"
 		R.generate_description()

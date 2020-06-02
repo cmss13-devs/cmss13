@@ -1891,8 +1891,13 @@
 	},
 /area/strata/ug/interior/jungle/deep/structures/res)
 "aff" = (
-/turf/open/ice,
-/area/strata/ug/interior)
+/obj/item/lightstick{
+	anchored = 1;
+	icon_state = "lightstick_blue1";
+	luminosity = 2
+	},
+/turf/closed/wall/strata_ice,
+/area/strata/ag/exterior)
 "afg" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	req_access = null;
@@ -11996,14 +12001,6 @@
 	icon_state = "multi_tiles"
 	},
 /area/strata/ag/interior/outpost/canteen/janitors)
-"aFC" = (
-/obj/item/lightstick{
-	anchored = 1;
-	icon_state = "lightstick_blue1";
-	luminosity = 2
-	},
-/turf/open/ice,
-/area/strata/ug/interior)
 "aFD" = (
 /turf/closed/wall/strata_ice/jungle,
 /area/strata/ag/interior/outpost/maint/canteen_e_1)
@@ -32682,10 +32679,6 @@
 	},
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh/water)
-"cuo" = (
-/obj/effect/blocker/sorokyne_cold_water,
-/turf/open/ice,
-/area/strata/ag/exterior/marsh/river)
 "cup" = (
 /obj/structure/flora/grass/tallgrass/ice/corner{
 	dir = 5
@@ -44695,15 +44688,6 @@
 	icon_state = "cement4"
 	},
 /area/strata/ug/interior/jungle/platform/south)
-"rkN" = (
-/obj/structure/ladder{
-	icon_state = "ladderdown";
-	id = "easteregg_ladder"
-	},
-/turf/open/floor/strata{
-	icon_state = "blue1"
-	},
-/area/strata/ag/exterior)
 "rma" = (
 /obj/structure/barricade/handrail/strata,
 /turf/open/floor/strata{
@@ -46656,14 +46640,6 @@
 	},
 /turf/open/ice,
 /area/strata/ag/exterior/nearlz2)
-"tKo" = (
-/obj/structure/ladder{
-	height = 1;
-	icon_state = "ladderup";
-	id = "easteregg_ladder"
-	},
-/turf/open/snow/layer0,
-/area/strata/ug/interior)
 "tKz" = (
 /obj/structure/flora/grass/tallgrass/ice,
 /turf/open/snow/layer2,
@@ -51632,7 +51608,7 @@ bQB
 cwN
 cih
 cmh
-cuo
+crN
 crN
 hYQ
 bQD
@@ -58513,9 +58489,9 @@ aac
 aac
 aac
 aac
-aff
-boT
-aff
+aac
+aac
+aac
 bCd
 acX
 acX
@@ -58705,10 +58681,10 @@ aac
 aac
 aac
 aac
-aff
-boT
-tKo
-aff
+aac
+aac
+aac
+aac
 bCd
 acX
 acX
@@ -58898,10 +58874,10 @@ aac
 aac
 aac
 aac
-boT
-boT
-boT
-aff
+aac
+aac
+aac
+aac
 bCd
 acX
 acX
@@ -59090,10 +59066,10 @@ aac
 aac
 aac
 aac
-aff
-boT
-boT
-aff
+aac
+aac
+aac
+aac
 aac
 jbI
 bDE
@@ -59283,9 +59259,9 @@ aac
 aac
 aac
 aac
-boT
-boT
-aff
+aac
+aac
+aac
 aac
 aac
 aac
@@ -59475,9 +59451,9 @@ aac
 aac
 aac
 aac
-aff
-boT
-bzj
+aac
+aac
+aac
 aac
 aac
 aac
@@ -59668,9 +59644,9 @@ aac
 aac
 aac
 aac
-aff
-boT
-boT
+aac
+aac
+aac
 aac
 aac
 aac
@@ -59861,10 +59837,10 @@ aac
 aac
 aac
 aac
-aFC
-boT
-boT
-aff
+aac
+aac
+aac
+aac
 aac
 aac
 aac
@@ -60055,9 +60031,9 @@ aac
 aac
 aac
 aac
-boT
-boT
-boT
+aac
+aac
+aac
 aac
 aac
 aac
@@ -60249,8 +60225,8 @@ aac
 aac
 aac
 aac
-boT
-boT
+aac
+aac
 aac
 aac
 aac
@@ -60442,8 +60418,8 @@ aac
 aac
 aac
 aac
-boT
-boT
+aac
+aac
 aac
 aac
 aac
@@ -60634,9 +60610,9 @@ aac
 aac
 aac
 aac
-bzi
-boT
-bzj
+aac
+aac
+aac
 aac
 aac
 aac
@@ -60827,9 +60803,9 @@ aac
 aac
 aac
 aac
-bzi
-boT
-boT
+aac
+aac
+aac
 aac
 aac
 aac
@@ -61020,9 +60996,9 @@ aac
 aac
 aac
 aac
-bzi
-boT
-bzi
+aac
+aac
+aac
 aac
 aac
 aac
@@ -61214,9 +61190,9 @@ aac
 aac
 aac
 aac
-clt
-boT
-bzi
+aff
+aac
+aac
 aac
 aac
 aac
@@ -61407,11 +61383,11 @@ aac
 aac
 aac
 aac
-bzi
-bzi
-boT
-wVF
-clt
+aac
+aac
+aac
+aac
+aac
 aac
 aac
 aac
@@ -61601,9 +61577,9 @@ aac
 aac
 aac
 aac
-bzi
-bzi
-bzi
+aac
+aac
+aac
 bzi
 bzi
 wVF
@@ -79561,8 +79537,8 @@ bBI
 aac
 aac
 aac
-bME
-bME
+aac
+aac
 bPf
 bPf
 bkZ
@@ -79754,8 +79730,8 @@ bBI
 aac
 aac
 aac
-bME
-rkN
+aac
+aac
 bPf
 bPX
 bQS
@@ -79947,8 +79923,8 @@ bBI
 aac
 aac
 aac
-bME
-bME
+aac
+aac
 bPf
 ajx
 bkZ

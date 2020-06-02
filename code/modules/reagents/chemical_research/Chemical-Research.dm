@@ -61,9 +61,23 @@ var/global/datum/chemical_research_data/chemical_research_data = new /datum/chem
 			if(V != "properties_text")
 				R.vars[V] = data.vars[V]
 		R.properties = data.properties
+		//I hate doing this, but until the DB converts stuff into proper types we have to do this ourselves
 		for(var/P in R.properties)
 			var/V = R.properties[P]
-			R.properties[P] = text2num(V) //because properties are stored as strings in DB
+			R.properties[P] = text2num(V)
+		R.nutriment_factor = text2num(R.nutriment_factor)
+		R.custom_metabolism = text2num(R.custom_metabolism)
+		R.overdose = text2num(R.overdose)
+		R.overdose_critical = text2num(R.overdose_critical)
+		R.explosive = text2num(R.explosive)
+		R.power = text2num(R.power)
+		R.falloff_modifier = text2num(R.falloff_modifier)
+		R.chemfiresupp = text2num(R.chemfiresupp)
+		R.intensitymod = text2num(R.intensitymod)
+		R.durationmod = text2num(R.durationmod)
+		R.radiusmod = text2num(R.radiusmod)
+		R.burncolormod = text2num(R.burncolormod)
+		//And the final generation part
 		R.generate_name()
 		R.id = "omega-[i]"
 		R.generate_description()

@@ -1,25 +1,3 @@
-
-
-/obj/item
-	var/blood_color = "" //color of the blood on us if there's any.
-	appearance_flags = KEEP_TOGETHER
-
-
-/mob/living/carbon/human
-	var/hands_blood_color = "" //color of the blood on our hands if there's any.
-	var/hands_blood_amt = 0
-	var/feet_blood_color = "" //color of the blood on our feet if there's any
-	var/feet_blood_amt = 0
-
-/obj/item/clothing/gloves
-	var/gloves_blood_amt = 0
-
-/obj/item/clothing/shoes
-	var/shoes_blood_amt = 0
-
-
-
-
 //to add blood from a mob onto something, and transfer their dna info and blood color
 /atom/proc/add_mob_blood(mob/living/M)
 	var/b_color = M.get_blood_color()
@@ -28,14 +6,7 @@
 
 	return add_blood(b_color)
 
-
-
-
 /////// add_blood ///////////////////
-
-/obj/item
-	var/global/list/blood_overlay_cache = list()
-
 //to add blood onto something, with blood dna info to include.
 /atom/proc/add_blood(b_color = "#830303")
 	return 0

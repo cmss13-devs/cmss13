@@ -10,8 +10,6 @@
 #define HANDLE_CLICK_UNHANDLED 0
 #define HANDLE_CLICK_HANDLED 1
 
-/mob/living/carbon/human
-	var/last_chew = 0
 
 /mob/living/carbon/human/click(var/atom/A, var/list/mods)
 	if(interactee)

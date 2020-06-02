@@ -198,7 +198,7 @@
 	attack_verb = list("challenged")
 	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/humans/species/monkeys/onmob/hands_monkey.dmi')
 	blood_overlay_type = "hands"
-
+	var/gloves_blood_amt = 0 //taken from blood.dm
 
 /obj/item/clothing/gloves/update_clothing_icon()
 	if (ismob(src.loc))
@@ -322,7 +322,8 @@
 	blood_overlay_type = "feet"
 	var/obj/item/stored_item
 	var/list/items_allowed
-
+	var/shoes_blood_amt = 0
+	
 /obj/item/clothing/shoes/update_clothing_icon()
 	if (ismob(src.loc))
 		var/mob/M = src.loc

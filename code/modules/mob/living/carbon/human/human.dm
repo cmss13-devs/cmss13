@@ -1,15 +1,3 @@
-/mob/living/carbon/human
-	directional_lum = 0 				//humans carrying light sources only illuminate the area in front of themselves
-	hud_possible = list(HEALTH_HUD,STATUS_HUD, STATUS_HUD_OOC, STATUS_HUD_XENO_INFECTION,ID_HUD,WANTED_HUD,IMPLOYAL_HUD,IMPCHEM_HUD,IMPTRACK_HUD, SPECIALROLE_HUD, SQUAD_HUD, ORDER_HUD, XENO_HOSTILE_ACID, XENO_HOSTILE_SLOW, XENO_HOSTILE_TAG, XENO_HOSTILE_FREEZE)
-	var/embedded_flag	  				//To check if we've need to roll for damage on movement while an item is imbedded in us.
-	var/regenZ = 1 						//Temp zombie thing until I write a better method ~Apop
-	var/allow_gun_usage = TRUE
-	var/has_used_pamphlet = FALSE 		//Has this person used a pamphlet?
-	var/list/embedded_items = list() 	//A list of all the shrapnel currently embedded in the human
-	var/yautja_hunted_prey
-
-	var/list/synthetic_HUD_toggled = list(FALSE,FALSE)
-
 /mob/living/carbon/human/Initialize(var/new_loc, var/new_species = null)
 	blood_type = pick(7;"O-", 38;"O+", 6;"A-", 34;"A+", 2;"B-", 9;"B+", 1;"AB-", 3;"AB+")
 	human_mob_list += src

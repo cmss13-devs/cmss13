@@ -527,9 +527,9 @@
 		else if(neutral_properties.Find(P))
 			value += round(-1 * potency / 2)
 		else if(positive_properties.Find(P))
-			value += potency
+			value += potency * 2
 		else if(special_properties.Find(P))
-			value += potency * 5
+			value += potency * 6
 		else if(admin_properties.Find(P))
 			value += potency * 1000 //shouldn't ever be possible
 	return max(value, 3)

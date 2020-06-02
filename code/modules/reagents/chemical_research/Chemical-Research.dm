@@ -36,8 +36,9 @@ var/global/datum/chemical_research_data/chemical_research_data = new /datum/chem
 	
 	var/datum/entity/chemical_information/CI = DB_ENTITY(/datum/entity/chemical_information)
 
-	CI.assign_values(R.vars)
+	CI.assign_values(R.vars, list("properties_text", "spent_chemical"))
 	CI.properties = R.properties
+	CI.spent_chemical = FALSE
 
 	CI.save()
 
@@ -49,7 +50,7 @@ var/global/datum/chemical_research_data/chemical_research_data = new /datum/chem
 	set waitfor = 0
 	while(!SSentity_manager.ready)
 		stoplag()
-	SSentity_manager.filter_then(/datum/entity/chemical_information, null, CALLBACK(GLOBAL_PROC, /proc/initialize_saved_chem_data_callback), TRUE)
+	DB_FILTER(/datum/entity/chemical_information, DB_COMP("spent_chemical", DB_EQUALS, 0), CALLBACK(GLOBAL_PROC, /proc/initialize_saved_chem_data_callback), TRUE)
 
 /proc/initialize_saved_chem_data_callback(var/list/datum/entity/chemical_information/chemicals)
 	var/i = 0
@@ -58,7 +59,7 @@ var/global/datum/chemical_research_data/chemical_research_data = new /datum/chem
         
 		//Make the reagent
 		for(var/V in data.metadata.field_types)
-			if(V != "properties_text")
+			if(V != "properties_text" && V != "spent_chemical")
 				R.vars[V] = data.vars[V]
 		R.properties = data.properties
 		//I hate doing this, but until the DB converts stuff into proper types we have to do this ourselves
@@ -88,5 +89,6 @@ var/global/datum/chemical_research_data/chemical_research_data = new /datum/chem
 		//Make a new recipe
 		R.generate_assoc_recipe()
 
-		data.delete() // and delete it so it doesn't appear next round
+		data.spent_chemical = TRUE //so it doesn't appear next round
+		data.save()
 		i++

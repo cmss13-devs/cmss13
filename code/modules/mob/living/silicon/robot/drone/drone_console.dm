@@ -3,7 +3,7 @@
 	desc = "Used to monitor the station's drone population and the assembler that services them."
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "power"
-	req_access = list(ACCESS_MARINE_ENGINEERING)
+	req_one_access = list(ACCESS_MARINE_ENGINEERING, ACCESS_CIVILIAN_ENGINEERING)
 	circuit = "/obj/item/circuitboard/computer/drone_control"
 
 	//Used when pinging drones.

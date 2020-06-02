@@ -1,12 +1,6 @@
 /****************************************************
 				BLOOD SYSTEM
 ****************************************************/
-/mob/living
-	var/blood_volume = 0 //how much blood the mob has
-
-/mob/living/carbon
-	blood_volume = BLOOD_VOLUME_NORMAL
-
 
 /mob/living/proc/handle_blood()
 	return

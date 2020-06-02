@@ -80,7 +80,9 @@
 	var/list/unequip_sounds = list() //Same but when unequipped
 
 	var/map_specific_decoration = FALSE
-
+	var/blood_color = "" //color of the blood on us if there's any.
+	appearance_flags = KEEP_TOGETHER //taken from blood.dm
+	var/global/list/blood_overlay_cache = list() //taken from blood.dm
 /obj/item/proc/on_dropped()
 	if(event_dropped)
 		event_dropped.fire_event(src)

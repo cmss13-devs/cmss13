@@ -8,10 +8,6 @@
 			return FALSE
 	return TRUE
 
-// Vent crawling whitelisted items, whoo
-/mob/living
-	var/canEnterVentWith = "/obj/item/implant=0&/obj/item/clothing/mask/facehugger=0&/obj/item/device/radio/borg=0&/obj/structure/machinery/camera=0&/obj/item/verbs=0"
-
 /mob/living/click(var/atom/A, var/list/mods)
 	if(..())
 		return TRUE

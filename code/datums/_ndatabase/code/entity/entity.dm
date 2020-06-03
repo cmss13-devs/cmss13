@@ -51,7 +51,7 @@
 	if(CB)
 		CB.Invoke(src)
 
-/datum/entity/proc/assign_values(var/list/values)
+/datum/entity/proc/assign_values(var/list/values, var/list/ignore = list())
 	for(var/F in metadata.field_types)
-		if(values[F])
+		if(!(ignore.Find(F)))
 			vars[F] = values[F]

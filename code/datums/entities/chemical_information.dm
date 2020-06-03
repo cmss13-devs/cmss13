@@ -14,6 +14,7 @@
 	var/burncolor
 	var/burncolormod
 	var/properties_text
+	var/spent_chemical
 
 	var/list/properties
 
@@ -35,7 +36,8 @@
 		"radiusmod" = DB_FIELDTYPE_DECIMAL,
 		"burncolor" = DB_FIELDTYPE_STRING_SMALL,
 		"burncolormod" = DB_FIELDTYPE_INT,
-		"properties_text" = DB_FIELDTYPE_STRING_MAX)
+		"properties_text" = DB_FIELDTYPE_STRING_MAX,
+		"spent_chemical" = DB_FIELDTYPE_INT)
 
 /datum/entity_meta/chemical_information/map(var/datum/entity/chemical_information/ET, var/list/values)
 	..()

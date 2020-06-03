@@ -38,10 +38,10 @@
 	if(document)
 		if(document.read)
 			complete()
-			return 1
+			return TRUE
 	else
 		fail()
-		return 0
+		return FALSE
 
 /datum/cm_objective/document/folder
 	priority = OBJECTIVE_MEDIUM_VALUE
@@ -119,16 +119,16 @@
 		if(DOCUMENT_SKILL_SURGERY)
 			if(!skillcheck(user, SKILL_SURGERY, SKILL_SURGERY_BEGINNER))
 				to_chat(user, SPAN_WARNING("You can't understand this."))
-				return 0
+				return FALSE
 		if(DOCUMENT_SKILL_ENGINEERING)
 			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_OT))
 				to_chat(user, SPAN_WARNING("You can't understand this."))
-				return 0
+				return FALSE
 		if(DOCUMENT_SKILL_WEAPONS)
 			// Needs skill in any spec weapon
 			if(!skillcheck(user, SKILL_SPEC_WEAPONS, 1))
 				to_chat(user, SPAN_WARNING("You can't understand this."))
-				return 0
+				return FALSE
 	to_chat(user, SPAN_NOTICE("You start reading \the [src]."))
 
 	var/time_to_read = reading_time
@@ -140,18 +140,18 @@
 
 	if(!do_after(user, time_to_read, INTERRUPT_INCAPACITATED|INTERRUPT_NEEDHAND, BUSY_ICON_GENERIC)) // Can move while reading intel
 		to_chat(user, SPAN_WARNING("You get distracted and lose your train of thought, you'll have to start over reading this."))
-		return 0
+		return FALSE
 
 	if(!objective.is_active() && !objective.is_complete())
 		display_fail_message(user)
-		return 0
+		return FALSE
 	
 	read = 1
 	objective.check_completion()
 	display_read_message(user)
 	if(objective.important && objective.is_complete())
 		to_chat(user, SPAN_NOTICE("You feel this document is important and should be returned to the [MAIN_SHIP_NAME]."))
-	return 1
+	return TRUE
 
 /obj/item/document_objective/paper
 	name = "Paper scrap"

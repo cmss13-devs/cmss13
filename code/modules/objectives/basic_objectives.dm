@@ -21,15 +21,15 @@
 	. = ..()
 	if(!target_item)
 		fail()
-		return 0
+		return FALSE
 	if(target_item.is_damaged())
 		uncomplete()
-		return 0
+		return FALSE
 	for(var/T in target_areas)
 		var/area/target_area = T //not sure why the cast is necessary (rather than casting in the loop), but it doesn't work without it... ~ThePiachu
 		if(istype(get_area(target_item), target_area))
 			complete()
-			return 1
+			return TRUE
 
 /datum/cm_objective/retrieve_item/almayer
 	target_areas = list(
@@ -61,9 +61,9 @@
 		if(!T.powered())
 			continue
 		complete()
-		return 1
+		return TRUE
 	uncomplete()
-	return 0
+	return FALSE
 
 /datum/cm_objective/establish_power/get_point_value()
 	return complete * priority

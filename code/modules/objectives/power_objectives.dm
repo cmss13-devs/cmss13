@@ -30,9 +30,9 @@
 	last_power_output = total_power_output
 	if(total_power_output >= minimum_power_required)
 		complete()
-		return 1
+		return TRUE
 	uncomplete()
-	return 0
+	return FALSE
 
 /datum/cm_objective/establish_power/get_point_value()
 	check_completion()

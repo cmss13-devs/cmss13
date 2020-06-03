@@ -31,7 +31,7 @@
 				objectives_controller.add_objective(O)
 
 /datum/cm_objective/document/get_clue()
-	return SPAN_DANGER("[document.name] in [initial_area]")
+	return SPAN_DANGER("[document.name] in <u>[initial_area]</u>")
 
 /datum/cm_objective/document/check_completion()
 	. = ..()
@@ -48,6 +48,7 @@
 	prerequisites_required = PREREQUISITES_ONE
 	display_flags = 0
 	var/color
+	var/display_color = "white"
 	number_of_clues_to_generate = 2
 
 /datum/cm_objective/document/progress_report
@@ -56,7 +57,7 @@
 	display_flags = 0
 
 /datum/cm_objective/document/folder/get_clue()
-	return SPAN_DANGER("A [color] folder in [initial_area], labelled [document.label]")
+	return SPAN_DANGER("A <font color=[display_color]><u>[color]</u></font> folder <b>[document.label]</b> in <u>[initial_area]</u>.")
 
 /datum/cm_objective/document/technical_manual
 	priority = OBJECTIVE_HIGH_VALUE
@@ -174,6 +175,7 @@
 	desc = "A folder with some documents inside."
 	icon = 'icons/obj/items/paper.dmi'
 	icon_state = "folder"
+	var/folder_color = "white" //display color
 	reading_time = 50
 	objective_type = /datum/cm_objective/document/folder
 	w_class = SIZE_TINY
@@ -182,9 +184,21 @@
 	..()
 	var/datum/cm_objective/document/folder/F = objective
 	var/col = pick("red", "black", "blue", "yellow", "white")
+	switch(col)
+		if ("red")
+			folder_color = "#ed5353"
+		if ("black")
+			folder_color = "#8f9494" //can't display black on black!
+		if ("blue")
+			folder_color = "#5296e3"
+		if ("yellow")
+			folder_color = "#e3cd52"
+		if ("white")
+			folder_color = "#e8eded"
 	icon_state = "folder_[col]"
 	if(istype(F))
 		F.color = col
+		F.display_color = folder_color
 	name = "[initial(name)] ([label])"
 
 /obj/item/document_objective/folder/examine(mob/living/user)

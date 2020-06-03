@@ -13,7 +13,7 @@
 		error("DO001: no device found for an objective.")
 
 /datum/cm_objective/retrieve_item/almayer/device/get_clue()
-	return SPAN_DANGER("Retrieve [target_item] in [initial_location].")
+	return SPAN_DANGER("Retrieve <u>[target_item]</u> in <u>[initial_location]</u>.")
 
 /datum/cm_objective/retrieve_item/almayer/device/get_related_label()
 	var/obj/item/device/D = target_item

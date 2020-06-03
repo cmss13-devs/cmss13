@@ -459,6 +459,7 @@
 
 		if(round_statistics && !new_xeno.statistic_exempt)
 			round_statistics.track_new_participant(T.faction, -1) //so an evolved xeno doesn't count as two.
+		SSround_recording.recorder.track_player(new_xeno)
 		qdel(T)
 		X.use_plasma(plasma_cost)
 

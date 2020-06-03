@@ -30,6 +30,9 @@
 	return ..()
 
 /mob/Initialize()
+	last_mob_gid++
+	gid = last_mob_gid
+
 	mob_list += src
 	if(stat == DEAD)
 		dead_mob_list += src

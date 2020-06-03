@@ -103,7 +103,8 @@ var/list/admin_verbs_debug = list(
 	/client/proc/toggle_log_hrefs,
 	/client/proc/matrix_editor,
 	/client/proc/generate_sound_queues,
-	/client/proc/bulk_fetcher
+	/client/proc/bulk_fetcher,
+	/client/proc/debug_game_history
 )
 
 var/list/debug_verbs = list(

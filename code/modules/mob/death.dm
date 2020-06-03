@@ -5,6 +5,10 @@
 	gib_animation()
 	if (map_tag != MAP_WHISKEY_OUTPOST)
 		spawn_gibs()
+
+	// You're not coming back from being gibbed. Stop tracking here
+	SSround_recording.recorder.stop_tracking(src)
+
 	qdel(src)
 
 

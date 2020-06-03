@@ -20,7 +20,7 @@
 	. = ..()
 	if(data_retrieved >= data_total)
 		complete()
-		return 1
+		return TRUE
 
 /datum/cm_objective/retrieve_data/process()
 	if(..())
@@ -30,17 +30,17 @@
 /datum/cm_objective/retrieve_data/proc/data_is_avaliable()
 	if(objective_flags & OBJ_REQUIRES_COMMS)
 		if(objectives_controller && objectives_controller.comms && objectives_controller.comms.is_complete())
-			return 1
+			return TRUE
 		else
-			return 0
-	return 1
+			return FALSE
+	return TRUE
 
 /datum/cm_objective/retrieve_data/complete()
 	if(..())
 		if(intel_system)
 			intel_system.store_objective(src)
-		return 1
-	return 0
+		return TRUE
+	return FALSE
 
 // --------------------------------------------
 // *** Upload data from a terminal ***
@@ -70,9 +70,9 @@
 /datum/cm_objective/retrieve_data/terminal/data_is_avaliable()
 	. = ..()
 	if(!data_source.powered())
-		return 0
+		return FALSE
 	if(!data_source.uploading)
-		return 0
+		return FALSE
 
 // --------------------------------------------
 // *** Retrieve a disk and upload it ***
@@ -101,8 +101,8 @@
 			disk.forceMove(reader.loc)
 			disk.name = "[disk.name] (complete)"
 			reader.disk = null
-		return 1
-	return 0
+		return TRUE
+	return FALSE
 
 /datum/cm_objective/retrieve_data/disk/get_clue()
 	return SPAN_DANGER("Retrieving <font color=[disk.display_color]><u>[disk.disk_color]</u></font> computer disk <b>[disk.label]</b> in <u>[initial_location]</u>, decryption password is <b>[decryption_password]</b>")
@@ -110,12 +110,12 @@
 /datum/cm_objective/retrieve_data/disk/data_is_avaliable()
 	. = ..()
 	if(!istype(disk.loc,/obj/structure/machinery/computer/disk_reader))
-		return 0
+		return FALSE
 	var/obj/structure/machinery/computer/disk_reader/reader = disk.loc
 	if(!reader.powered())
-		return 0
+		return FALSE
 	if(reader.z != MAIN_SHIP_Z_LEVEL)
-		return 0
+		return FALSE
 
 // --------------------------------------------
 // *** Mapping objects ***
@@ -199,32 +199,32 @@
 /obj/structure/machinery/computer/objective/attack_hand(mob/living/user)
 	if(!powered())
 		to_chat(user, SPAN_WARNING("This terminal has no power!"))
-		return 0
+		return FALSE
 	if(objective.objective_flags & OBJ_REQUIRES_COMMS)
 		if(!objectives_controller || !objectives_controller.comms || !objectives_controller.comms.is_complete())
 			to_chat(user, SPAN_WARNING("The terminal flashes a network connection error."))
-			return 0
+			return FALSE
 	if(objective.is_complete())
 		to_chat(user, SPAN_WARNING("There's a message on the screen that the data upload finished successfully."))
-		return 1
+		return TRUE
 	if(uploading)
 		to_chat(user, SPAN_WARNING("Looks like the terminal is already uploading, better make sure nothing interupts it!"))
-		return 1
+		return TRUE
 	if(input(user,"Enter the password","Password","") != objective.decryption_password)
 		to_chat(user, SPAN_WARNING("The terminal rejects the password."))
-		return 0
+		return FALSE
 	if(!objective.is_active())
 		objective.activate(1) // force it active now, we have the password
 	if(!powered())
 		to_chat(user, SPAN_WARNING("This terminal has no power!"))
-		return 0
+		return FALSE
 	if(objective.objective_flags & OBJ_REQUIRES_COMMS)
 		if(!objectives_controller || !objectives_controller.comms || !objectives_controller.comms.is_complete())
 			to_chat(user, SPAN_WARNING("The terminal flashes a network connection error."))
-			return 0
+			return FALSE
 	if(uploading)
 		to_chat(user, SPAN_WARNING("Looks like the terminal is already uploading, better make sure nothing interupts it!"))
-		return 1
+		return TRUE
 	uploading = 1
 	to_chat(user, SPAN_NOTICE("You start uploading the data."))
 	user.count_niche_stat(STATISTICS_NICHE_UPLOAD)
@@ -255,22 +255,22 @@
 	if(istype(W, /obj/item/disk/objective))
 		if(istype(disk))
 			to_chat(user, SPAN_WARNING("There is a disk in the drive being uploaded already!"))
-			return 0
+			return FALSE
 		var/obj/item/disk/objective/newdisk = W
 		if(newdisk.objective.is_complete())
 			to_chat(user, SPAN_WARNING("The reader displays a message stating this disk has already been read and refuses to accept it."))
-			return 0
+			return FALSE
 		if(input(user,"Enter the encryption key","Encryption key","") != newdisk.objective.decryption_password)
 			to_chat(user, SPAN_WARNING("The reader asks for the encryption key for this disk, not having the correct key you eject the disk."))
-			return 0
+			return FALSE
 		if(!newdisk.objective.is_active())
 			newdisk.objective.activate(1) // force it active now, we have the password
 		if(istype(disk))
 			to_chat(user, SPAN_WARNING("There is a disk in the drive being uploaded already!"))
-			return 0
+			return FALSE
 
 		if(!(newdisk in user.contents))
-			return 0
+			return FALSE
 
 		user.drop_inv_item_to_loc(W, src)
 		disk = W

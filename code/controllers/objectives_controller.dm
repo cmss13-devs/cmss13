@@ -12,6 +12,7 @@ var/global/datum/controller/objectives_controller/objectives_controller
 	var/datum/cm_objective/recover_corpses/marines/marines
 	var/datum/cm_objective/recover_corpses/xenos/xenos
 	var/datum/cm_objective/contain/contain
+	var/datum/cm_objective/analyze_chems/chems
 	var/bonus_admin_points = 0 //bonus points given by admins, doesn't increase the point cap, but does increase points for easier rewards
 
 	var/nextDChatAnnouncement = MINUTES_5 //5 minutes in
@@ -368,6 +369,7 @@ var/global/datum/controller/objectives_controller/objectives_controller
 	objectives_controller.marines = new /datum/cm_objective/recover_corpses/marines
 	objectives_controller.xenos = new /datum/cm_objective/recover_corpses/xenos
 	objectives_controller.contain = new /datum/cm_objective/contain
+	objectives_controller.chems = new /datum/cm_objective/analyze_chems
 	//objectives_controller.add_objective(new /datum/cm_objective/minimise_losses/squad_marines)
 	objectives_controller.add_objective(new /datum/cm_objective/recover_corpses/colonists)
 	objectives_controller.active_objectives += objectives_controller.power
@@ -380,12 +382,6 @@ var/global/datum/controller/objectives_controller/objectives_controller
 	for(var/datum/cm_objective/L in objectives)
 		total_points += L.total_point_value()
 
-	for(var/L in chemical_gen_classes_list["C5"])
-		total_points += chemical_objective_list[L]
-
-	for(var/L in chemical_gen_classes_list["C6"])
-		total_points += chemical_objective_list[L]
-
 	return total_points
 
 /datum/controller/objectives_controller/proc/get_scored_points()
@@ -393,14 +389,6 @@ var/global/datum/controller/objectives_controller/objectives_controller
 
 	for(var/datum/cm_objective/L in objectives)
 		scored_points += L.get_point_value()
-
-	for(var/L in chemical_gen_classes_list["C5"])
-		if(chemical_identified_list[L])
-			scored_points += chemical_identified_list[L]
-
-	for(var/L in chemical_gen_classes_list["C6"])
-		if(chemical_identified_list[L])
-			scored_points += chemical_identified_list[L]
 
 	return scored_points
 

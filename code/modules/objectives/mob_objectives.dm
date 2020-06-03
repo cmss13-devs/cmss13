@@ -14,8 +14,8 @@
 
 /datum/cm_objective/eliminate/proc/is_valid_mob(mob/living/M)
 	if(!istype(M, mob_type))
-		return 0
-	return 1
+		return FALSE
+	return TRUE
 
 /datum/cm_objective/eliminate/check_completion()
 	. = ..()
@@ -36,10 +36,10 @@
 					continue
 	if(mob_count > 0)
 		uncomplete()
-		return 0
+		return FALSE
 	else
 		complete()
-		return 1
+		return TRUE
 
 /datum/cm_objective/eliminate/xenomorph
 	mob_type = /mob/living/carbon/Xenomorph
@@ -48,7 +48,7 @@
 /datum/cm_objective/eliminate/xenomorph/is_valid_mob(mob/living/carbon/Xenomorph/X)
 	. = ..()
 	if(X.hivenumber != hivenumber)
-		return 0
+		return FALSE
 
 /datum/cm_objective/eliminate/xenomorph/queen
 	mob_type = /mob/living/carbon/Xenomorph/Queen
@@ -88,14 +88,14 @@
 				//Synths can (almost) always be revived, so don't fail their objective...
 				if(!isSynth(H))
 					fail()
-				return 0
+				return FALSE
 		else
 			fail()
-			return 0
+			return FALSE
 	if(istype(get_area(target),destination))
 		if(target.stat != DEAD || mob_can_die & MOB_CAN_COMPLETE_AFTER_DEATH)
 			complete()
-			return 1
+			return TRUE
 
 /datum/cm_objective/move_mob/almayer
 	destination = /area/almayer
@@ -308,15 +308,15 @@
 
 /hook/death/proc/handle_marine_deaths(var/mob/living/carbon/human/H, var/gibbed)
 	if(!istype(H))
-		return 1
+		return TRUE
 	if(!istype(H.assigned_squad) || gibbed || !objectives_controller)
-		return 1
+		return TRUE
 	objectives_controller.marines.add_marine(H)
-	return 1
+	return TRUE
 
 /hook/clone/proc/handle_marine_revival(var/mob/living/carbon/human/H)
 	objectives_controller.marines.remove_marine(H)
-	return 1
+	return TRUE
 
 /datum/cm_objective/recover_corpses/xenos
 	name = "Recover Xeno corpse specimens"
@@ -335,10 +335,10 @@
 
 /hook/death/proc/handle_xeno_deaths(var/mob/living/X, var/gibbed)
 	if(!istype(X) || gibbed || !objectives_controller)
-		return 1
+		return TRUE
 	if(isXeno(X) || isYautja(X))
 		objectives_controller.xenos.add_xeno(X)
-	return 1
+	return TRUE
 
 /datum/cm_objective/contain
 	name = "Contain alien specimens"

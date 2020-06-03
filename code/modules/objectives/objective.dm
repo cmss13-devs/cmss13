@@ -3,9 +3,9 @@
 // --------------------------------------------
 /datum/cm_objective/
 	var/name = "An objective to complete"
-	var/complete = 0
-	var/failed = 0
-	var/active = 0
+	var/complete = FALSE
+	var/failed = FALSE
+	var/active = FALSE
 	var/priority = OBJECTIVE_NO_VALUE
 	var/list/required_objectives = list() //List of objectives that are required to complete this objectives
 	var/list/enables_objectives = list() //List of objectives that require this objective to complete
@@ -63,35 +63,35 @@
 /datum/cm_objective/proc/process()
 	if(!is_prerequisites_completed())
 		deactivate()
-		return 0
+		return FALSE
 	check_completion()
-	return 1
+	return TRUE
 
 /datum/cm_objective/proc/is_complete()
 	return complete
 
 /datum/cm_objective/proc/complete()
 	if(is_complete())
-		return 0
-	complete = 1
+		return FALSE
+	complete = TRUE
 	if(can_be_deactivated() && !(objective_flags & OBJ_PROCESS_ON_DEMAND))
 		deactivate()
 	for(var/datum/cm_objective/O in enables_objectives)
 		O.activate()
-	return 1
+	return TRUE
 
 /datum/cm_objective/proc/uncomplete()
 	if(!(objective_flags & OBJ_CAN_BE_UNCOMPLETED) || !complete)
 		return
-	complete = 0
+	complete = FALSE
 	if(can_be_activated())
 		activate()
 
 /datum/cm_objective/proc/check_completion()
 	if(is_failed())
-		return 0
+		return FALSE
 	if(complete && !(objective_flags & OBJ_CAN_BE_UNCOMPLETED))
-		return 1
+		return TRUE
 	return complete
 
 /datum/cm_objective/proc/is_in_progress()
@@ -102,7 +102,7 @@
 		return
 	if(complete && !(objective_flags & OBJ_CAN_BE_UNCOMPLETED))
 		return
-	failed = 1
+	failed = TRUE
 	uncomplete()
 	deactivate()
 	for(var/datum/cm_objective/O in enables_objectives)
@@ -111,16 +111,16 @@
 
 /datum/cm_objective/proc/is_failed()
 	if(!(objective_flags & OBJ_FAILABLE))
-		return 0
+		return FALSE
 	if(complete && !(objective_flags & OBJ_CAN_BE_UNCOMPLETED))
-		return 0
+		return FALSE
 	return failed
 
 /datum/cm_objective/proc/activate(var/force = 0)
 	if(force)
 		prerequisites_required = PREREQUISITES_NONE // somehow we got the terminal password etc force us active
 	if(can_be_activated())
-		active = 1
+		active = TRUE
 		if(!(objective_flags & OBJ_PROCESS_ON_DEMAND))
 			if(!(src in objectives_controller.active_objectives))
 				objectives_controller.active_objectives += src
@@ -128,7 +128,7 @@
 
 /datum/cm_objective/proc/deactivate()
 	if(can_be_deactivated())
-		active = 0
+		active = FALSE
 		if(!(objective_flags & OBJ_PROCESS_ON_DEMAND))
 			objectives_controller.active_objectives -= src
 			if(!(src in objectives_controller.inactive_objectives))
@@ -136,21 +136,21 @@
 
 /datum/cm_objective/proc/can_be_activated()
 	if(is_active())
-		return 0 //Objective is already active!
+		return FALSE //Objective is already active!
 	if(is_failed())
-		return 0 //Objective is failed, can't re-activate!
+		return FALSE //Objective is failed, can't re-activate!
 	if(!is_prerequisites_completed())
-		return 0 //Prerequisites are not complete yet!
+		return FALSE //Prerequisites are not complete yet!
 	if(is_complete() && !(objective_flags & OBJ_CAN_BE_UNCOMPLETED))
-		return 0 //Objective is already complete and can't be uncompleted!
-	return 1
+		return FALSE //Objective is already complete and can't be uncompleted!
+	return TRUE
 
 /datum/cm_objective/proc/can_be_deactivated()
 	if (is_failed())
-		return 1
+		return TRUE
 	if(objective_flags & OBJ_CAN_BE_UNCOMPLETED)
-		return 0
-	return 1
+		return FALSE
+	return TRUE
 
 /datum/cm_objective/proc/is_prerequisites_completed()
 	var/prereq_complete = 0
@@ -159,32 +159,32 @@
 			prereq_complete++
 	switch(prerequisites_required)
 		if(PREREQUISITES_NONE)
-			return 1
+			return TRUE
 		if(PREREQUISITES_ONE)
 			if(prereq_complete || (required_objectives.len == 0))
-				return 1
+				return TRUE
 		if(PREREQUISITES_QUARTER)
 			if(prereq_complete >= (required_objectives.len/4)) // quarter or more
-				return 1
+				return TRUE
 		if(PREREQUISITES_MAJORITY)
 			if(prereq_complete >= (required_objectives.len/2)) // half or more
-				return 1
+				return TRUE
 		if(PREREQUISITES_ALL)
 			if(prereq_complete >= required_objectives.len)
-				return 1
-	return 0
+				return TRUE
+	return FALSE
 
 /datum/cm_objective/proc/is_active()
 	if(complete && !(objective_flags & OBJ_CAN_BE_UNCOMPLETED))
-		return 0
+		return FALSE
 	return active
 
 /datum/cm_objective/proc/get_point_value()
 	if(is_failed())
-		return 0
+		return FALSE
 	if(is_complete())
 		return priority
-	return 0
+	return FALSE
 
 /datum/cm_objective/proc/total_point_value()
 	return priority
@@ -192,7 +192,7 @@
 //Returns true if an objective will never be active again
 /datum/cm_objective/proc/is_finalised()
 	if(complete && objective_flags & OBJ_CAN_BE_UNCOMPLETED)
-		return 1
+		return TRUE
 	if(failed)
-		return 1
-	return 0
+		return TRUE
+	return FALSE

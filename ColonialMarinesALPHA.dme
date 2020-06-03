@@ -1383,6 +1383,7 @@
 #include "code\modules\nano\nanomanager.dm"
 #include "code\modules\nano\nanomapgen.dm"
 #include "code\modules\nano\nanoui.dm"
+#include "code\modules\objectives\analyze_chems.dm"
 #include "code\modules\objectives\basic_objectives.dm"
 #include "code\modules\objectives\data_retrieval.dm"
 #include "code\modules\objectives\documents.dm"

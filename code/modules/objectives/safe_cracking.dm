@@ -22,7 +22,7 @@
 	if(target.open)
 		complete()
 	else if(objective_flags & OBJ_CAN_BE_UNCOMPLETED)
-		complete = 0
+		complete = FALSE
 	. = ..()
 	return
 

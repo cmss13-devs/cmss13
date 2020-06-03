@@ -174,15 +174,15 @@ var/global/datum/intel_system/intel_system = new()
 
 /obj/structure/machinery/computer/intel/attack_hand(mob/living/user)
 	if(!user || !istype(user) || !user.mind || !user.mind.objective_memory)
-		return 0
+		return FALSE
 	if(!powered())
 		to_chat(user, SPAN_WARNING("This computer has no power!"))
-		return 0
+		return FALSE
 	if(!intel_system)
 		to_chat(user, SPAN_WARNING("The computer doesn't seem to be connected to anything..."))
-		return 0
+		return FALSE
 	if(user.action_busy)
-		return 0
+		return FALSE
 
 	to_chat(user, SPAN_NOTICE("You start typing in intel into the computer..."))
 
@@ -192,49 +192,49 @@ var/global/datum/intel_system/intel_system = new()
 	for(var/datum/cm_objective/O in user.mind.objective_memory.folders)
 		outcome = transfer_intel(user, O)
 		if(outcome < 0)
-			return 0
+			return FALSE
 		if(outcome > 0)
 			total_transferred++
 
 	for(var/datum/cm_objective/O in user.mind.objective_memory.progress_reports)
 		outcome = transfer_intel(user, O)
 		if(outcome < 0)
-			return 0
+			return FALSE
 		if(outcome > 0)
 			total_transferred++
 
 	for(var/datum/cm_objective/O in user.mind.objective_memory.technical_manuals)
 		outcome = transfer_intel(user, O)
 		if(outcome < 0)
-			return 0
+			return FALSE
 		if(outcome > 0)
 			total_transferred++
 
 	for(var/datum/cm_objective/O in user.mind.objective_memory.terminals)
 		outcome = transfer_intel(user, O)
 		if(outcome < 0)
-			return 0
+			return FALSE
 		if(outcome > 0)
 			total_transferred++
 
 	for(var/datum/cm_objective/O in user.mind.objective_memory.disks)
 		outcome = transfer_intel(user, O)
 		if(outcome < 0)
-			return 0
+			return FALSE
 		if(outcome > 0)
 			total_transferred++
 
 	for(var/datum/cm_objective/O in user.mind.objective_memory.retrieve_items)
 		outcome = transfer_intel(user, O)
 		if(outcome < 0)
-			return 0
+			return FALSE
 		if(outcome > 0)
 			total_transferred++
 
 	for(var/datum/cm_objective/O in user.mind.objective_memory.other)
 		outcome = transfer_intel(user, O)
 		if(outcome < 0)
-			return 0
+			return FALSE
 		if(outcome > 0)
 			total_transferred++
 
@@ -243,7 +243,7 @@ var/global/datum/intel_system/intel_system = new()
 	else
 		to_chat(user, SPAN_NOTICE("...and you have nothing new to add..."))
 
-	return 1
+	return TRUE
 
 /obj/structure/machinery/computer/intel/proc/transfer_intel(mob/living/user, var/datum/cm_objective/O)
 	if(!intel_system || !intel_system.oms)

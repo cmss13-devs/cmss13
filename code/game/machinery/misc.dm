@@ -372,5 +372,5 @@ proc/SendFax(var/sent, var/sentname, var/mob/Sender, var/dpt)
 	name = "Exosuit Control"
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "mecha"
-	req_access = list(ACCESS_MARINE_ENGINEERING)
+	req_one_access = list(ACCESS_MARINE_ENGINEERING, ACCESS_CIVILIAN_ENGINEERING)
 	circuit = "/obj/item/circuitboard/computer/mecha_control"

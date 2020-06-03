@@ -15,7 +15,7 @@
 		initial_location = get_area(target_item)
 
 /datum/cm_objective/retrieve_item/get_clue()
-	return SPAN_DANGER("[target_item] in [initial_location]")
+	return SPAN_DANGER("[target_item] in <u>[initial_location]</u>")
 
 /datum/cm_objective/retrieve_item/check_completion()
 	. = ..()

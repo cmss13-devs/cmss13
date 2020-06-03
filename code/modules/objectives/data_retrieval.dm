@@ -65,7 +65,7 @@
 		playsound(data_source, 'sound/machines/screen_output1.ogg', 25, 1)
 
 /datum/cm_objective/retrieve_data/terminal/get_clue()
-	return SPAN_DANGER("Upload data from [data_source] in [get_area(data_source)], the password is [decryption_password]")
+	return SPAN_DANGER("Upload data from data terminal <b>[data_source.label]</b> in <u>[get_area(data_source)]</u>, the password is <b>[decryption_password]</b>")
 
 /datum/cm_objective/retrieve_data/terminal/data_is_avaliable()
 	. = ..()
@@ -105,7 +105,7 @@
 	return 0
 
 /datum/cm_objective/retrieve_data/disk/get_clue()
-	return SPAN_DANGER("Retrieving [disk] in [initial_location], decryption password is [decryption_password]")
+	return SPAN_DANGER("Retrieving <font color=[disk.display_color]><u>[disk.disk_color]</u></font> computer disk <b>[disk.label]</b> in <u>[initial_location]</u>, decryption password is <b>[decryption_password]</b>")
 
 /datum/cm_objective/retrieve_data/disk/data_is_avaliable()
 	. = ..()
@@ -124,36 +124,44 @@
 /obj/item/disk/objective
 	name = "computer disk"
 	var/label = ""
-	desc = "A boring looking computer disk.  The name label is just a gibberish collection of letters and numbers."
+	desc = "A boring looking computer disk. The name label is just a gibberish collection of letters and numbers."
 	var/data_amount = 500
 	var/read_speed = 50
 	unacidable = TRUE
 	var/datum/cm_objective/retrieve_data/disk/objective
+	var/display_color = "white"
+	var/disk_color = "white"
 
 /obj/item/disk/objective/New()
 	..()
-	var/diskcol
 	var/diskvar = rand(1,15)
 	icon_state = "disk_[diskvar]"
 
 	switch(diskvar)
 		if (1,2)
-			diskcol = "grey"
+			disk_color = "grey"
+			display_color = "#8f9494"
 		if (3 to 5)
-			diskcol = "white"	
+			disk_color = "white"
+			display_color = "#e8eded"
 		if (6,7)
-			diskcol = "green"
+			disk_color = "green"
+			display_color = "#64c242"
 		if (8 to 10)
-			diskcol = "red"
+			disk_color = "red"
+			display_color = "#ed5353"
 		if (11 to 13)
-			diskcol = "blue"
+			disk_color = "blue"
+			display_color = "#5296e3"
 		if (14)
-			diskcol = "cracked blue"
+			disk_color = "cracked blue"
+			display_color = "#5296e3"
 		if (15)
-			diskcol = "bloodied blue"
+			disk_color = "bloodied blue"
+			display_color = "#5296e3"
 
 	label = "[pick(greek_letters)]-[rand(100,999)]"
-	name = "[diskcol] computer disk [label]"
+	name = "[disk_color] computer disk [label]"
 	objective = new /datum/cm_objective/retrieve_data/disk(src)
 	pixel_y = rand(-8, 8)
 	pixel_x = rand(-9, 9)

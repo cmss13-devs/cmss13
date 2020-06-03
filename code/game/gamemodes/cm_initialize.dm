@@ -449,6 +449,8 @@ Additional game mode variables.
 	new_xeno.mind.player_entity = setup_player_entity(xeno_candidate_mind.ckey)
 	new_xeno.statistic_tracked = FALSE
 
+	// Let the round recorder know that the key has changed
+	SSround_recording.recorder.update_key(new_xeno)
 	if(new_xeno.client)
 		new_xeno.client.change_view(world.view)
 
@@ -468,6 +470,8 @@ Additional game mode variables.
 	var/mob/living/carbon/Xenomorph/new_queen = new /mob/living/carbon/Xenomorph/Queen (pick(xeno_spawn))
 	ghost_mind.transfer_to(new_queen) //The mind is fine, since we already labeled them as a xeno. Away they go.
 	ghost_mind.name = ghost_mind.current.name
+
+	SSround_recording.recorder.track_player(new_queen)
 
 	to_chat(new_queen, "<B>You are now the alien queen!</B>")
 	to_chat(new_queen, "<B>Your job is to spread the hive.</B>")

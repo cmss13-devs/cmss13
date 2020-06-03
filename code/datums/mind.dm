@@ -32,7 +32,7 @@
 	else
 		key = new_character.key
 
-	if(new_character.mind) 
+	if(new_character.mind)
 		new_character.mind.current = null //remove any mind currently in our new body's mind variable
 
 	current = new_character		//link ourself to our new body
@@ -40,6 +40,7 @@
 
 	if(active || force)
 		new_character.key = key		//now transfer the key to link the client to our new body
+		SSround_recording.recorder.update_key(new_character)
 		if(new_character.client)
 			new_character.client.change_view(world.view) //reset view range to default.
 			new_character.client.pixel_x = 0

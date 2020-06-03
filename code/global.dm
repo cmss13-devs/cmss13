@@ -232,3 +232,6 @@ var/list/lobby_art_authors = list(
 	"LightCrabPress",
 	"Redsting"
 )
+
+// Last global ID that was assigned to a mob
+var/last_mob_gid = 0

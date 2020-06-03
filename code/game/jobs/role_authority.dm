@@ -506,6 +506,8 @@ roles willy nilly.
 		H.sec_hud_set_implants()
 		H.hud_set_squad()
 
+		SSround_recording.recorder.track_player(H)
+
 	return 1
 
 //Find which squad has the least population. If all 4 squads are equal it should just use a random one

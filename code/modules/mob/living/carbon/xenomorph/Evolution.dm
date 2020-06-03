@@ -252,6 +252,7 @@
 		
 		if(new_xeno.mind && round_statistics)
 			round_statistics.track_new_participant(new_xeno.faction, -1) //so an evolved xeno doesn't count as two.
+		SSround_recording.recorder.track_player(new_xeno)
 
 	else
 		to_chat(src, SPAN_WARNING("You quiver, but nothing happens. Hold still while evolving."))
@@ -352,4 +353,5 @@
 
 	if(round_statistics && !new_xeno.statistic_exempt)
 		round_statistics.track_new_participant(faction, -1) //so an evolved xeno doesn't count as two.
+	SSround_recording.recorder.track_player(new_xeno)
 	qdel(src)

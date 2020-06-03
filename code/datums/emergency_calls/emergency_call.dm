@@ -132,7 +132,8 @@
 		usr.mind.active = 1
 		usr.mind.current = usr
 		usr.mind_initialize()
-	if(usr.mind.key != usr.key) usr.mind.key = usr.key //Sigh. This can happen when admin-switching people into afking people, leading to runtime errors for a clientless key.
+	if(usr.mind.key != usr.key)
+		usr.mind.key = usr.key //Sigh. This can happen when admin-switching people into afking people, leading to runtime errors for a clientless key.
 
 	if(!usr.client || !usr.mind)
 		return //Somehow

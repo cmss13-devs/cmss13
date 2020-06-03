@@ -1,0 +1,4 @@
+# Set this to 1 to enable round recordings
+# Recorded rounds are saved to data/round_recordings
+
+record_rounds 1

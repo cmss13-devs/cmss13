@@ -18,8 +18,11 @@ world/IsBanned(key,address,computer_id, type)
 		return list("reason"="guest", "desc"="\nReason: Guests not allowed. Please sign in with a byond account.")
 	
 	WAIT_DB_READY
-	if(ckey in admin_datums && !isnull(admin_datums[ckey]) && (admin_datums[ckey].rights & R_MOD))
+	if(admin_datums[ckey] && (admin_datums[ckey].rights & R_MOD))
 		return ..()
+
+	if(config.limit_players && config.limit_players < clients.len)
+		return list("reason"="POP CAPPED", "desc"="\nReason: Server is pop capped at the moment at [config.limit_players] players. Attempt reconnection in 2-3 minutes.")
 	
 	var/datum/entity/player/P = get_player_from_key(ckey)
 

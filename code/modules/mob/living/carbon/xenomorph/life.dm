@@ -38,19 +38,21 @@
 			handle_regular_hud_updates()
 
 /mob/living/carbon/Xenomorph/proc/update_progression()
+	if(isnull(hive))
+		return
 	var/progress_amount = 1
 
 	if(SSxevolution && ((hive.living_xeno_queen && hive.living_xeno_queen.ovipositor) || (ticker.game_start_time + XENO_HIVE_EVOLUTION_FREETIME) >= world.time))
 		progress_amount = SSxevolution.boost_power
 
-	if(upgrade != -1 && upgrade < 3 && (hive && !hive.living_xeno_queen || hive && hive.living_xeno_queen.loc.z == loc.z)) //upgrade possible
+	if(upgrade != -1 && upgrade < 3 && (!hive.living_xeno_queen || hive.living_xeno_queen.loc.z == loc.z)) //upgrade possible
 		upgrade_stored = min(upgrade_stored + progress_amount, upgrade_threshold)
 
 		if(upgrade_stored >= upgrade_threshold && !is_mob_incapacitated() && !handcuffed && !legcuffed && map_tag != MAP_WHISKEY_OUTPOST)
 			INVOKE_ASYNC(src, .proc/upgrade_xeno, (upgrade + 1))
 
 	//Add on any bonuses from evopods after applying upgrade progress
-	if(hive && hive.has_special_structure(XENO_STRUCTURE_EVOPOD))
+	if(hive.has_special_structure(XENO_STRUCTURE_EVOPOD))
 		progress_amount += (0.2 * hive.has_special_structure(XENO_STRUCTURE_EVOPOD))
 
 	if(caste && caste.evolution_allowed && evolution_stored < evolution_threshold && hive.living_xeno_queen && (hive.living_xeno_queen.ovipositor || (ticker.game_start_time + XENO_HIVE_EVOLUTION_FREETIME) >= world.time))

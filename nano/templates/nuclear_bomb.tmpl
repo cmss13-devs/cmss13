@@ -54,4 +54,14 @@
 			{{/if}}
 		</td>
 	</tr>
+	<tr>
+		<td>Command lockout:</td>
+		<td>
+			{{if data.command_lockout}}
+				{{:helper.link('ACTIVE', 'alert', {'command' : 'toggleCommandLockout'}, null, 'dangerButton')}}
+			{{else}}
+				{{:helper.link('ENABLE', 'alert', {'command' : 'toggleCommandLockout'})}}
+			{{/if}}
+		</td>
+	</tr>
 </table>

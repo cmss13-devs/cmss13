@@ -10,7 +10,8 @@
 	var/spawn_cooldown = SECONDS_20
 	var/stored_huggers = 0
 	var/huggers_to_grow = 0
-	var/huggers_to_grow_max = 6
+	var/huggers_per_corpse = 6
+	var/huggers_to_grow_max = 12
 	var/mob/captured_mob
 	var/datum/shape/rectangle/range_bounds
 	appearance_flags = KEEP_TOGETHER
@@ -20,6 +21,18 @@
 	range_bounds = RECT(x, y, EGGMORPG_RANGE, EGGMORPG_RANGE)
 
 /obj/effect/alien/resin/special/eggmorph/Dispose()
+	if (stored_huggers)
+		//Hugger explosion, like a carrier
+		var/obj/item/clothing/mask/facehugger/F
+		var/chance = 60
+		visible_message(SPAN_XENOWARNING("The chittering mass of tiny aliens is trying to escape [src]!"))
+		for(var/i in 0 to stored_huggers)
+			if(prob(chance))
+				F = new(loc)
+				if(!isnull(linked_hive))
+					F.hivenumber = linked_hive.hivenumber
+				step_away(F,src,1)
+
 	vis_contents.Cut()
 	if(captured_mob)
 		qdel(captured_mob)
@@ -48,13 +61,16 @@
 					return
 			if(isXeno(M))
 				return
-			if(huggers_to_grow >= huggers_to_grow_max || stored_huggers >= huggers_to_grow_max)
+			if(huggers_to_grow + stored_huggers >= huggers_to_grow_max)
 				to_chat(user, SPAN_XENOWARNING("\The [src] is already full! Using this one now would be a waste..."))
 				return
 			if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_GENERIC))
 				return
 			visible_message(SPAN_DANGER("\The [src] churns as it begins digest \the [M], spitting out foul smelling fumes!"))
 			playsound(src, "alien_drool", 25)
+			if(captured_mob)
+				//Get rid of what we have there, we're overwriting it
+				qdel(captured_mob)
 			captured_mob = M
 			captured_mob.dir = SOUTH
 			captured_mob.loc = null
@@ -63,7 +79,7 @@
 			captured_mob.pixel_x = 16
 			captured_mob.pixel_y = 16
 			vis_contents += captured_mob
-			huggers_to_grow = huggers_to_grow_max
+			huggers_to_grow += huggers_per_corpse
 			update_icon()
 		return
 	if(istype(I, /obj/item/clothing/mask/facehugger))

@@ -166,6 +166,12 @@ var/global/list/deployed_fultons = list()
 		attached_atom.x = return_turf.x
 		attached_atom.y = return_turf.y
 		playsound(attached_atom.loc,'sound/effects/bamf.ogg', 50, 1)
+
+	if(intel_system)
+		//Giving marines an objective to retrieve that fulton (so they'd know what they lost and where)
+		var/datum/cm_objective/retrieve_item/fulton/objective = new /datum/cm_objective/retrieve_item/fulton(attached_atom)
+		intel_system.store_single_objective(objective)
+
 	qdel(src)
 	return
 

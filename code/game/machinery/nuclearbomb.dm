@@ -21,6 +21,7 @@ var/bomb_set = FALSE
 	use_power = 0
 	req_access = list(ACCESS_MARINE_PREP)
 	flags_atom = FPRINT
+	var/command_lockout = FALSE //If set to TRUE, only command staff would be able to disable the nuke
 
 /obj/structure/machinery/nuclearbomb/update_icon()
 	overlays.Cut()
@@ -115,7 +116,8 @@ var/bomb_set = FALSE
 		"anchor" = anchored,
 		"safety" = safety,
 		"timing" = timing,
-		"timeleft" = timer
+		"timeleft" = timer,
+		"command_lockout" = command_lockout,
 	)
 
 	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
@@ -206,6 +208,9 @@ var/bomb_set = FALSE
 			being_used = FALSE
 
 		if ("toggleSafety")
+			if(!allowed(usr))
+				to_chat(usr, SPAN_DANGER("Access denied!"))
+				return
 			if (timing)
 				to_chat(usr, SPAN_DANGER("Disengage first!"))
 				return
@@ -221,6 +226,33 @@ var/bomb_set = FALSE
 			if(safety)
 				timing = FALSE
 				bomb_set = FALSE
+
+		if ("toggleCommandLockout")
+			if(!ishuman(usr))
+				return
+			if(!allowed(usr))
+				to_chat(usr, SPAN_DANGER("Access denied!"))
+				return
+			if(command_lockout)
+				command_lockout = FALSE
+				req_one_access = list()
+				to_chat(usr, SPAN_DANGER("Command lockout disengaged."))
+			else
+				//Check if they have command access
+				var/list/acc = list()
+				var/mob/living/carbon/human/H = usr
+				if(H.wear_id)
+					acc += H.wear_id.GetAccess()
+				if(H.get_active_hand())
+					acc += H.get_active_hand().GetAccess()
+				if(!(ACCESS_MARINE_BRIDGE in acc))
+					to_chat(usr, SPAN_DANGER("Access denied!"))
+					return
+
+				command_lockout = TRUE
+				req_one_access = list(ACCESS_MARINE_BRIDGE)
+				to_chat(usr, SPAN_DANGER("Command lockout engaged."))
+
 		if ("toggleAnchor")
 			if (timing)
 				to_chat(usr, SPAN_DANGER("Disengage first!"))
@@ -315,7 +347,7 @@ var/bomb_set = FALSE
 /obj/structure/machinery/nuclearbomb/proc/disable()
 	timing = FALSE
 	bomb_set = FALSE
-	timeleft = explosion_time - world.time
+	timeleft = initial(timeleft)
 	explosion_time = null
 	announce_to_players()
 

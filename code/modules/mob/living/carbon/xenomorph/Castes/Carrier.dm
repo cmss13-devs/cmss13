@@ -116,12 +116,11 @@
 				eggs_cur--
 		if (huggers_cur)
 			visible_message(SPAN_XENOWARNING("The chittering mass of tiny aliens is trying to escape [src]!"))
-			while(huggers_cur)
+			for(var/i in 0 to huggers_cur)
 				if(prob(chance))
 					F = new(loc)
 					F.hivenumber = hivenumber
 					step_away(F,src,1)
-				huggers_cur--
 
 
 /mob/living/carbon/Xenomorph/Carrier/Stat()

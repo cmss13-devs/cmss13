@@ -161,14 +161,24 @@
 	icon_state = "paper_words"
 	w_class = SIZE_TINY
 
+/obj/item/document_objective/paper/New()
+	. = ..()
+	pixel_y = rand(-8, 8)
+	pixel_x = rand(-9, 9)
+
 /obj/item/document_objective/report
 	name = "Progress report"
 	desc = "A written report from someone for their supervisor about the status of some kind of project."
 	icon = 'icons/obj/items/paper.dmi'
 	icon_state = "paper_p_words"
 	w_class = SIZE_TINY
-	reading_time = 100
+	reading_time = 80
 	objective_type = /datum/cm_objective/document/progress_report
+
+/obj/item/document_objective/report/New()
+	. = ..()
+	pixel_y = rand(-8, 8)
+	pixel_x = rand(-9, 9)
 
 /obj/item/document_objective/folder
 	name = "intel folder"
@@ -200,6 +210,8 @@
 		F.color = col
 		F.display_color = folder_color
 	name = "[initial(name)] ([label])"
+	pixel_y = rand(-8, 8)
+	pixel_x = rand(-9, 9)
 
 /obj/item/document_objective/folder/examine(mob/living/user)
 	..()
@@ -212,7 +224,7 @@
 	desc = "A highly specified technical manual, may be of use to someone in the relevant field."
 	icon = 'icons/obj/items/books.dmi'
 	icon_state = "book"
-	reading_time = 300
+	reading_time = 200
 	objective_type = /datum/cm_objective/document/technical_manual
 
 /obj/item/document_objective/technical_manual/New()

@@ -147,9 +147,9 @@
 		mode = !mode
 		to_chat(usr, SPAN_NOTICE("You will now [mode ? "take pills directly from bottles": "no longer take pills directly from bottles"]."))
 
-/obj/item/storage/belt/medical/with_defib_and_analyzer
+/obj/item/storage/belt/medical/full/with_defib_and_analyzer
 
-/obj/item/storage/belt/medical/with_defib_and_analyzer/Initialize()
+/obj/item/storage/belt/medical/full/with_defib_and_analyzer/Initialize()
 	new /obj/item/device/defibrillator(src)
 	new /obj/item/device/healthanalyzer(src)
 	..()

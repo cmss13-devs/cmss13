@@ -481,8 +481,8 @@
 
 
 /obj/item/weapon/gun/smartgun/proc/link_powerpack(var/mob/user)
-	if(user.back)
-		if(istype(user.back,/obj/item/smartgun_powerpack))
+	if(!isnull(user) && !isnull(user.back))
+		if(istype(user.back, /obj/item/smartgun_powerpack))
 			src.powerpack = user.back
 			return TRUE
 	return FALSE

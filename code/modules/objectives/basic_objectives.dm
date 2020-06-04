@@ -2,13 +2,13 @@
 // *** Basic retrieve item and get it to an area ***
 // --------------------------------------------
 /datum/cm_objective/retrieve_item
-	var/obj/item/target_item
+	var/target_item
 	var/list/area/target_areas
 	var/area/initial_location
 	objective_flags = OBJ_CAN_BE_UNCOMPLETED | OBJ_FAILABLE
 	display_category = "Item Retrieval"
 
-/datum/cm_objective/retrieve_item/New(var/obj/item/T)
+/datum/cm_objective/retrieve_item/New(var/T)
 	..()
 	if(T)
 		target_item = T
@@ -21,9 +21,6 @@
 	. = ..()
 	if(!target_item)
 		fail()
-		return FALSE
-	if(target_item.is_damaged())
-		uncomplete()
 		return FALSE
 	for(var/T in target_areas)
 		var/area/target_area = T //not sure why the cast is necessary (rather than casting in the loop), but it doesn't work without it... ~ThePiachu
@@ -70,3 +67,25 @@
 
 /datum/cm_objective/establish_power/total_point_value()
 	return priority
+
+
+/datum/cm_objective/retrieve_item/fulton
+	name = "Restore Colony Communications"
+	priority = OBJECTIVE_NO_VALUE
+	target_areas = list(
+		/area/almayer,
+	)
+
+/datum/cm_objective/retrieve_item/fulton/get_clue()
+	return SPAN_DANGER("Retrieve lost fulton of [target_item] in [initial_location]")
+
+
+/datum/cm_objective/retrieve_item/fulton/fail()
+	. = ..()
+	//Objective is failed, doesn't need to be here anymore
+	qdel(src)
+
+/datum/cm_objective/retrieve_item/fulton/complete()
+	. = ..()
+	//Objective is complete, doesn't need to be here anymore
+	qdel(src)

@@ -630,9 +630,6 @@ cases. Override_icon_state should be a list.*/
 	if(I && !(I.flags_item & ITEM_ABSTRACT))
 		I.showoff(src)
 
-/obj/item/proc/is_damaged()
-	return 0
-
 /datum/event_handler/event_gun_zoom
 	var/obj/item/zooming_item
 	var/mob/living/calee

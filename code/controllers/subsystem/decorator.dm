@@ -70,7 +70,9 @@ var/datum/subsystem/decorator/SSdecorator
 		registered_decorators[app_type] += decor
 
 	for(var/i in registered_decorators)		
-		registered_decorators[i] = sortDecorators(registered_decorators[i])	
+		registered_decorators[i] = sortDecorators(registered_decorators[i])
+
+	return decor
 
 /datum/subsystem/decorator/proc/force_update()
 	// OH GOD YOU BETTER NOT DO THIS IF YOU VALUE YOUR TIME
@@ -119,3 +121,8 @@ var/datum/subsystem/decorator/SSdecorator
 	if(Li <= L.len)
 		return (result + L.Copy(Li, 0))
 	return (result + R.Copy(Ri, 0))
+
+/datum/subsystem/decorator/var/list/debugged_var
+/datum/subsystem/decorator/proc/debug_type(T)
+	var/tt = text2path(T)
+	debugged_var = registered_decorators[tt]

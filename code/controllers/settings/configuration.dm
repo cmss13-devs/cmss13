@@ -123,6 +123,8 @@
 
 	var/duplicate_notes_to_file = FALSE
 
+	var/limit_players = 0
+
 /datum/configuration/New()
 	var/list/L = typesof(/datum/game_mode) - /datum/game_mode
 	for (var/T in L)
@@ -487,6 +489,9 @@
 
 		if ("duplicate_notes_to_file")
 			config.duplicate_notes_to_file = TRUE
+
+		if ("limit_players")
+			config.limit_players = text2num(value)
 
 		else
 			log_misc("Unknown setting in configuration: '[name]'")

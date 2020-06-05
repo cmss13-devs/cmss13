@@ -37,7 +37,7 @@
 	set category = "Event"
 	set name = "Construct Environment"
 
-	if(!admin_holder || !(admin_holder.rights & R_MOD))
+	if(!admin_holder || !(admin_holder.rights & R_ADMIN))
 		to_chat(usr, "Only administrators may use this command.")
 		return
 

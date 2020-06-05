@@ -113,10 +113,12 @@ var/global/datum/controller/defcon/defcon_controller
 	// as this code can sometimes execute before world initialization.
 	//text2file("DEFCON lists began initialization","data/defcon_log.txt")
 	//text2file("Map tag: [map_tag]", "data/defcon_log.txt")
-	if (map_tag == MAP_BIG_RED || map_tag == MAP_PRISON_STATION || map_tag == MAP_SOROKYNE_STRATA)
+	if (map_tag == MAP_PRISON_STATION || map_tag == MAP_SOROKYNE_STRATA)
 		defcon_level_triggers = list(3500, 2300, 1450, 875, 0.0)
 	else if (map_tag == MAP_ICE_COLONY || map_tag == MAP_DESERT_DAM || map_tag == MAP_CORSAT)
 		defcon_level_triggers = list(3500, 2300, 1450, 580, 0.0)
+	else if (map_tag == MAP_BIG_RED)
+		defcon_level_triggers = list(4000, 3000, 2000, 1000, 0.0)
 	else 
 		// Defaults 
 		// Currently just LV 

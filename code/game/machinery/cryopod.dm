@@ -419,7 +419,7 @@ var/global/list/frozen_items = list(SQUAD_NAME_1 = list(), SQUAD_NAME_2 = list()
 			go_in_cryopod(M)
 
 			//Book keeping!
-			var/turf/location = get_turf(src)
+			var/location = get_area_name(src)
 			message_admins(SPAN_NOTICE("[key_name_admin(M)] has entered a stasis pod at [location]."))
 
 			//Despawning occurs when process() is called with an occupant without a client.

@@ -1,6 +1,6 @@
 /obj/structure/closet/secure_closet/warden
 	name = "Warden's Locker"
-	req_access = list(ACCESS_MARINE_BRIG, ACCESS_CIVILIAN_BRIG)
+	req_one_access = list(ACCESS_MARINE_BRIG, ACCESS_CIVILIAN_BRIG)
 	icon_state = "wardensecure1"
 	icon_closed = "wardensecure"
 	icon_locked = "wardensecure1"
@@ -31,7 +31,7 @@
 
 /obj/structure/closet/secure_closet/marshal
 	name = "Marshal's Locker"
-	req_access = list(ACCESS_MARINE_BRIG, ACCESS_CIVILIAN_BRIG)
+	req_one_access = list(ACCESS_MARINE_BRIG, ACCESS_CIVILIAN_BRIG)
 	icon_state = "secure_locked_warrant"
 	icon_closed = "secure_unlocked_warrant"
 	icon_locked = "secure_locked_warrant"
@@ -50,7 +50,7 @@
 
 /obj/structure/closet/secure_closet/security
 	name = "Security Officer's Locker"
-	req_access = list(ACCESS_MARINE_BRIG, ACCESS_CIVILIAN_BRIG)
+	req_one_access = list(ACCESS_MARINE_BRIG, ACCESS_CIVILIAN_BRIG)
 	icon_state = "secure_locked_police"
 	icon_closed = "secure_closed_police"
 	icon_locked = "secure_locked_police"
@@ -100,7 +100,7 @@
 
 /obj/structure/closet/secure_closet/security_empty
 	name = "Security Officer's Locker"
-	req_access = list(ACCESS_MARINE_BRIG, ACCESS_CIVILIAN_BRIG)
+	req_one_access = list(ACCESS_MARINE_BRIG, ACCESS_CIVILIAN_BRIG)
 	icon_state = "secure_open_police"
 	icon_closed = "secure_closed_police"
 	icon_locked = "secure_locked_police"
@@ -114,7 +114,7 @@
 
 /obj/structure/closet/secure_closet/detective
 	name = "Detective's Cabinet"
-	req_access = list(ACCESS_MARINE_BRIG, ACCESS_CIVILIAN_BRIG)
+	req_one_access = list(ACCESS_MARINE_BRIG, ACCESS_CIVILIAN_BRIG)
 	icon_state = "cabinetdetective_locked"
 	icon_closed = "cabinetdetective"
 	icon_locked = "cabinetdetective_locked"
@@ -164,7 +164,7 @@
 
 /obj/structure/closet/secure_closet/brig
 	name = "Brig Locker"
-	req_access = list(ACCESS_MARINE_BRIG, ACCESS_CIVILIAN_BRIG)
+	req_one_access = list(ACCESS_MARINE_BRIG, ACCESS_CIVILIAN_BRIG)
 	anchored = TRUE
 	locked = TRUE
 	var/id = null
@@ -178,7 +178,7 @@
 
 /obj/structure/closet/secure_closet/courtroom
 	name = "Courtroom Locker"
-	req_access = list(ACCESS_MARINE_BRIG, ACCESS_CIVILIAN_BRIG)
+	req_one_access = list(ACCESS_MARINE_BRIG, ACCESS_CIVILIAN_BRIG)
 
 /obj/structure/closet/secure_closet/courtroom/Initialize()
 	..()

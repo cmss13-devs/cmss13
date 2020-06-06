@@ -17,8 +17,8 @@
 	var/flush = 0 //True if flush handle is pulled
 	var/obj/structure/disposalpipe/trunk/trunk = null //The attached pipe trunk
 	var/flushing = 0 //True if flushing in progress
-	var/flush_every_ticks = 30 //Every 30 ticks it will look whether it is ready to flush
-	var/flush_count = 0 //This var adds 1 once per tick. When it reaches flush_every_ticks it resets and tries to flush.
+	var/flush_after_ticks = 10 //After 10 ticks it will look whether it is ready to flush
+	var/flush_count = 0 //This var adds 1 once per tick. When it reaches flush_after_ticks it resets and tries to flush.
 	var/last_sound = 0
 	active_power_usage = 3500 //The pneumatic pump power. 3 HP ~ 2200W
 	idle_power_usage = 100
@@ -120,6 +120,8 @@
 	if(user.drop_inv_item_to_loc(I, src))
 		user.visible_message(SPAN_NOTICE("[user] places [I] into [src]."),
 		SPAN_NOTICE("You place [I] into [src]."))
+		//Something to dispose!
+		start_processing()
 	update()
 
 //Mouse drop another mob or self
@@ -330,7 +332,7 @@
 		return
 
 	flush_count++
-	if(flush_count >= flush_every_ticks)
+	if(flush_count >= flush_after_ticks)
 		if(contents.len)
 			if(mode == 2)
 				spawn(0)
@@ -347,6 +349,9 @@
 	else if(disposal_pressure >= SEND_PRESSURE)
 		mode = 2 //If full enough, switch to ready mode
 		update()
+		if(!contents.len)
+			//Full and nothing to flush - stop processing!
+			stop_processing()
 	else
 		pressurize() //Otherwise charge
 
@@ -427,6 +432,8 @@
 	if (prob(75))
 		mover.forceMove(src)
 		visible_message(SPAN_NOTICE("[mover] lands into [src]."))
+		//Something to flush, start processing!
+		start_processing()
 	else
 		visible_message(SPAN_WARNING("[mover] bounces off of [src]'s rim!"))
 

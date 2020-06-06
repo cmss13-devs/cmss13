@@ -10,6 +10,7 @@
 	var/timing = 0.0
 	var/time = 30.0
 	var/title = "Mass Driver Controls"
+	processing = TRUE
 
 
 /obj/structure/machinery/computer/pod/New()

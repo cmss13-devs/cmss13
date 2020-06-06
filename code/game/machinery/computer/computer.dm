@@ -10,12 +10,13 @@
 	projectile_coverage = PROJECTILE_COVERAGE_LOW
 	unslashable = TRUE
 	var/circuit = null //The path to the circuit board type. If circuit==null, the computer can't be disassembled.
-	var/processing = 0
+	var/processing = FALSE //Set to true if computer needs to do /process()
 	var/exproof = 0
 
 /obj/structure/machinery/computer/New()
 	..()
-	start_processing()
+	if(processing)
+		start_processing()
 
 
 /obj/structure/machinery/computer/Initialize()

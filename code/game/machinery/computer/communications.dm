@@ -47,6 +47,7 @@
 	var/status_display_freq = "1435"
 	var/stat_msg1
 	var/stat_msg2
+	processing = TRUE
 
 /obj/structure/machinery/computer/communications/New()
 	..()

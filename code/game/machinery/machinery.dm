@@ -131,7 +131,7 @@ Class Procs:
 /obj/structure/machinery/proc/start_processing()
 	if(!machine_processing)
 		machine_processing = 1
-		processing_machines += src
+		addToListNoDupe(processing_machines, src)
 
 /obj/structure/machinery/proc/stop_processing()
 	if(machine_processing)
@@ -141,7 +141,7 @@ Class Procs:
 /obj/structure/machinery/proc/start_processing_power()
 	if(!machine_processing)
 		machine_processing = 1
-		power_machines += src
+		addToListNoDupe(power_machines, src)
 
 /obj/structure/machinery/proc/stop_processing_power()
 	if(machine_processing)

@@ -8,6 +8,7 @@
 	circuit = "/obj/item/circuitboard/computer/operating"
 	var/mob/living/carbon/human/victim = null
 	var/obj/structure/machinery/optable/table = null
+	processing = TRUE
 
 /obj/structure/machinery/computer/operating/New()
 	..()

@@ -17,7 +17,7 @@
 	var/obj/structure/machinery/disposal/D = src.loc
 	if(istype(D))
 		to_chat(src, SPAN_NOTICE(" \The [D] acknowledges your signal."))
-		D.flush_count = D.flush_every_ticks
+		D.flush_count = D.flush_after_ticks
 
 	return
 

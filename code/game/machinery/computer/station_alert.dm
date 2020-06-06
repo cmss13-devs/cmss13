@@ -5,6 +5,7 @@
 	icon_state = "atmos"
 	circuit = "/obj/item/circuitboard/computer/stationalert"
 	var/alarms = list("Fire"=list(), "Atmosphere"=list(), "Power"=list())
+	processing = TRUE
 
 
 /obj/structure/machinery/computer/station_alert/attack_ai(mob/user)

@@ -84,7 +84,7 @@
 	if(has_power)
 		if(machine_processing)
 			if(stat & NOPOWER)
-				processing_machines += src // power interupted us, start processing again
+				addToListNoDupe(processing_machines, src) // power interupted us, start processing again
 		stat &= ~NOPOWER
 
 	else

@@ -18,6 +18,8 @@ obj/structure/machinery/door/airlock/process()
 	..()
 	if (arePowerSystemsOn())
 		execute_current_command()
+	else
+		stop_processing()
 
 obj/structure/machinery/door/airlock/receive_signal(datum/signal/signal)
 	if (!arePowerSystemsOn()) return //no power
@@ -29,18 +31,24 @@ obj/structure/machinery/door/airlock/receive_signal(datum/signal/signal)
 	if(id_tag != signal.data["tag"] || !signal.data["command"]) return
 
 	cur_command = signal.data["command"]
+	start_processing()
 	INVOKE_ASYNC(src, .proc/execute_current_command)
 
 obj/structure/machinery/door/airlock/proc/execute_current_command()
 	if(operating)
 		return //emagged or busy doing something else
 
-	if (!cur_command)
+	if (isnull(cur_command) || inoperable())
+		//Nothing to do, stop processing!
+		//Or power out, in case we also stop doing stuff
+		stop_processing()
 		return
 
 	do_command(cur_command)
 	if (command_completed(cur_command))
 		cur_command = null
+		//Nothing to do, stop processing!
+		stop_processing()
 
 obj/structure/machinery/door/airlock/proc/do_command(var/command)
 	switch(command)

@@ -12,6 +12,7 @@
 	var/timeleft = 60
 	var/stop = 0.0
 	var/screen = 0 // 0 - No Access Denied, 1 - Access allowed
+	processing = TRUE
 
 
 /obj/structure/machinery/computer/prisoner/attack_ai(var/mob/user as mob)

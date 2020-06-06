@@ -10,6 +10,7 @@
 	var/list/minor_alarms = list()
 	var/receive_frequency = 1437
 	var/datum/radio_frequency/radio_connection
+	processing = TRUE
 
 
 /obj/structure/machinery/computer/atmos_alert/Initialize()

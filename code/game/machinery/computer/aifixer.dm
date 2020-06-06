@@ -6,6 +6,7 @@
 	req_one_access = list(ACCESS_CIVILIAN_ENGINEERING)
 	var/mob/living/silicon/ai/occupant = null
 	var/active = 0
+	processing = TRUE
 
 /obj/structure/machinery/computer/aifixer/New()
 	src.overlays += image('icons/obj/structures/machinery/computer.dmi', "ai-fixer-empty")

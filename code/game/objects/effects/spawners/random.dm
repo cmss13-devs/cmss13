@@ -1,8 +1,8 @@
 /obj/effect/spawner/random
 	name = "Random Object"
 	desc = "This item type is used to spawn random objects at round-start"
-	icon = 'icons/old_stuff/mark.dmi'
-	icon_state = "rup"
+	icon = 'icons/landmarks.dmi'
+	icon_state = "x3"
 	var/spawn_nothing_percentage = 0 // this variable determines the likelyhood that this random object will not spawn anything
 
 
@@ -30,8 +30,7 @@
 /obj/effect/spawner/random/tool
 	name = "Random Tool"
 	desc = "This is a random tool"
-	icon = 'icons/obj/items/items.dmi'
-	icon_state = "welder"
+	icon_state = "random_tool"
 	item_to_spawn()
 		return pick(/obj/item/tool/screwdriver,\
 					/obj/item/tool/wirecutters,\
@@ -55,8 +54,7 @@
 /obj/effect/spawner/random/powercell
 	name = "Random Powercell"
 	desc = "This is a random powercell."
-	icon = 'icons/obj/structures/machinery/power.dmi'
-	icon_state = "cell"
+	icon_state = "random_cell_battery"
 	item_to_spawn()
 		return pick(prob(10);/obj/item/cell/crap,\
 					prob(40);/obj/item/cell,\
@@ -80,8 +78,7 @@
 /obj/effect/spawner/random/toolbox
 	name = "Random Toolbox"
 	desc = "This is a random toolbox."
-	icon = 'icons/obj/items/storage.dmi'
-	icon_state = "red"
+	icon_state = "random_toolbox"
 	item_to_spawn()
 		return pick(prob(3);/obj/item/storage/toolbox/mechanical,\
 					prob(2);/obj/item/storage/toolbox/electrical,\
@@ -110,8 +107,7 @@
 /obj/effect/spawner/random/attachment
 	name = "Random Attachment"
 	desc = "This is a random attachment"
-	icon = 'icons/obj/items/weapons/guns/attachments.dmi'
-	icon_state = "hbarrel"
+	icon_state = "random_attachment"
 	item_to_spawn()
 		return pick(prob(3);/obj/item/attachable/flashlight,\
 					prob(3);/obj/item/attachable/reddot,\
@@ -130,8 +126,7 @@
 /obj/effect/spawner/random/supply_kit
 	name = "Random Supply Kit"
 	desc = "This is a random kit."
-	icon = 'icons/obj/items/pro_case.dmi'
-	icon_state = "pro_case_mini"
+	icon_state = "random_kit"
 	item_to_spawn()
 		return pick(prob(3);/obj/item/storage/box/kit/pursuit,\
 					prob(3);/obj/item/storage/box/kit/mini_intel,\

@@ -19,6 +19,8 @@
 	var/list/gibdirections = list() //of lists
 	var/fleshcolor //Used for gibbed humans.
 	var/bloodcolor //Used for gibbed humans.
+	icon = 'icons/landmarks.dmi'
+	icon_state = "landmark_gibs"
 
 /obj/effect/spawner/gibspawner/New(location, var/list/viruses, var/mob/living/ml, var/fleshcolor, var/bloodcolor)
 	..()

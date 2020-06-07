@@ -32,6 +32,10 @@
 	return
 
 /obj/item/reagent_container/food/snacks/attack_self(mob/user as mob)
+	if (world.time <= user.next_move)
+		return
+	attack(user, user, "head")//zone does not matter
+	user.next_move += attack_speed
 	return
 
 /obj/item/reagent_container/food/snacks/attack(mob/M, mob/user, def_zone)

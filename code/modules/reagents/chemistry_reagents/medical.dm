@@ -417,7 +417,6 @@
 /datum/reagent/thwei/on_mob_life(mob/living/carbon/M,alien)
 	. = ..()
 	if(!.) return
-	if(!isYautja(M)) return
 	var/mob/living/carbon/human/Y = M
 	for(var/obj/limb/L in Y.limbs)
 		if(L.time_to_knit && (L.status & LIMB_BROKEN))

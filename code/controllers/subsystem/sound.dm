@@ -6,8 +6,8 @@ var/datum/subsystem/sound/SSsound
 
 /datum/subsystem/sound
 	name          = "Sound"
-	flags 		  =  SS_TICKER
-	wait          = 1
+	flags 		  = SS_FIRE_IN_LOBBY | SS_POST_FIRE_TIMING
+	wait		  = 2
 	priority      = SS_PRIORITY_SOUND
 
 	var/list/template_queue = list()

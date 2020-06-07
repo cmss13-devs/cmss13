@@ -8,8 +8,8 @@ var/datum/subsystem/chat/SSchat
 
 /datum/subsystem/chat
 	name = "Chat"
-	flags = SS_TICKER
-	wait = 1
+	flags = SS_FIRE_IN_LOBBY | SS_POST_FIRE_TIMING
+	wait = 2
 	priority = SS_PRIORITY_CHAT
 	init_order = SS_INIT_CHAT
 

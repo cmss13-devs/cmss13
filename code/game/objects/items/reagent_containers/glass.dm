@@ -260,6 +260,11 @@
 	possible_transfer_amounts = list(5,10,15,25)
 	flags_atom = FPRINT|OPENCONTAINER
 
+/obj/item/reagent_container/glass/beaker/vial/New()
+	. = ..()
+	pixel_y = rand(-8, 8)
+	pixel_x = rand(-9, 9)
+
 /obj/item/reagent_container/glass/beaker/vial/tricordrazine
 	name = "tricordrazine vial"
 

@@ -192,7 +192,6 @@
 	create_reagents(50)
 	reagents.add_reagent("zombiepowder", 10)
 	reagents.add_reagent("cryptobiolin", 15)
-	..()
 
 /obj/item/tool/stamp
 	name = "rubber stamp"

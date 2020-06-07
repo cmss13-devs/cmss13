@@ -44,13 +44,13 @@
 /obj/item/pamphlet/reading_basic
 	name = "reading instructional pamphlet"
 	desc = "A pamphlet used to quickly impart vital knowledge. This one has a reading insignia. The title reads 'A quick guide to military codes, cyphers, key phrases and intel gathering for aspiring IOs.'"
-	icon_state = "pamphlet_written"
+	icon_state = "pamphlet_reading"
 	skill_to_increment = SKILL_READING
 	skill_increment = SKILL_READING_TRAINED
 
 /obj/item/pamphlet/reading_advanced
 	name = "reading instructional pamphlet, advanced"
 	desc = "A pamphlet used to quickly impart vital knowledge. This one has a reading insignia. The title reads 'Speed reading between the lines - a guide for aspiring spies.'"
-	icon_state = "pamphlet_written"
+	icon_state = "pamphlet_reading"
 	skill_to_increment = SKILL_READING
 	skill_increment = SKILL_READING_EXPERT

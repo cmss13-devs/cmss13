@@ -125,7 +125,7 @@
 	var/mob/living/L = AM
 	var/should_neckgrab = isHumanStrict(L)
 
-	if(L && L.pulledby && L != src ) //override pull of other mobs
+	if(!isnull(L) && !isnull(L.pulledby) && L != src ) //override pull of other mobs
 		visible_message(SPAN_WARNING("[src] has broken [L.pulledby]'s grip on [L]!"), null, null, 5)
 		L.pulledby.stop_pulling()
 

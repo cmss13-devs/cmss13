@@ -250,8 +250,6 @@
 	var/used_burrow = 0
 	var/used_tunnel = 0
 
-	var/used_shaman_ability = FALSE
-
 	//Carrier vars
 	var/threw_a_hugger = 0
 	var/huggers_cur = 0

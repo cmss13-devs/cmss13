@@ -5,8 +5,20 @@
 	individual_only = TRUE
 	caste_whitelist = list("Carrier") 
 	mutator_actions_to_remove = list("Use/Throw Facehugger","Emit Pheromones (30)","Plant Weeds (75)","Place resin hole (200)")
-	mutator_actions_to_add = list(/datum/action/xeno_action/activable/sacrifice_egg/radius_heal, /datum/action/xeno_action/activable/sacrifice_egg/radius_scream, /datum/action/xeno_action/activable/sacrifice_egg/radius_pheromones)
+	mutator_actions_to_add = list(/datum/action/xeno_action/activable/sacrifice_egg/radius_remember, /datum/action/xeno_action/activable/sacrifice_egg/radius_heal, /datum/action/xeno_action/activable/sacrifice_egg/radius_scream, /datum/action/xeno_action/activable/sacrifice_egg/radius_pheromones)
+	behavior_delegate_type = /datum/behavior_delegate/carrier_shaman
 	keystone = TRUE
+
+/datum/behavior_delegate/carrier_shaman
+	var/used_shaman_ability = FALSE
+	var/remembered_count = 0
+
+/datum/behavior_delegate/carrier_shaman/append_to_stat()
+    stat("Remembered:", "[remembered_count]")
+
+/datum/behavior_delegate/carrier_shaman/proc/reset_shaman_ability()
+	used_shaman_ability = FALSE
+	to_chat(bound_xeno, SPAN_XENOWARNING("Hive is ready for another sacrifice."))
 
 /datum/xeno_mutator/shaman/apply_mutator(datum/mutator_set/individual_mutators/MS)
 	. = ..()
@@ -17,6 +29,7 @@
 		return FALSE
 	C.mutation_type = CARRIER_SHAMAN
 	C.ignores_pheromones = TRUE
+	apply_behavior_holder(C)
 	mutator_update_actions(C)
 	MS.recalculate_actions(description, flavor_description)
 	return TRUE
@@ -29,9 +42,10 @@
 
 /datum/action/xeno_action/activable/sacrifice_egg/action_cooldown_check()
 	var/mob/living/carbon/Xenomorph/Carrier/X = owner
-	if(!istype(X))
+	var/datum/behavior_delegate/carrier_shaman/BD = X.behavior_delegate
+	if(!istype(BD))
 		return FALSE
-	return !X.used_shaman_ability
+	return !BD.used_shaman_ability
 
 /datum/action/xeno_action/activable/sacrifice_egg/proc/get_cooldown()
 	var/mob/living/carbon/Xenomorph/Carrier/X = owner
@@ -52,7 +66,10 @@
 	if(X.eggs_cur <=0)
 		to_chat(X, SPAN_XENOWARNING("You need an egg in your storage to sacrifice."))
 		return FALSE
-	if(X.used_shaman_ability)
+	var/datum/behavior_delegate/carrier_shaman/BD = X.behavior_delegate
+	if(!istype(BD))
+		return FALSE
+	if(BD.used_shaman_ability)
 		to_chat(X, SPAN_XENOWARNING("Hive is not ready for death of another little one."))
 		return FALSE
 	return TRUE
@@ -87,10 +104,6 @@
 		return
 	X.egg_sacr_heal(src)
 
-/mob/living/carbon/Xenomorph/Carrier/proc/reset_shaman_ability()
-	used_shaman_ability = FALSE
-	to_chat(src, SPAN_XENOWARNING("Hive is ready for another sacrifice."))
-
 /mob/living/carbon/Xenomorph/Carrier/proc/egg_sacr_heal(var/datum/action/xeno_action/activable/sacrifice_egg/radius_heal/action_def)
 	if(!check_state())
 		return
@@ -101,10 +114,13 @@
 	visible_message(SPAN_XENONOTICE("\The [src] takes alien egg into their hand and prepares to crush it with its own hands!"), \
 		SPAN_XENONOTICE("You take alien egg from storage into you hand and prepare to crush it with your own hands trying to inflict as much suffering as possible!"), null, 5)
 
-	used_shaman_ability = TRUE	
+	var/datum/behavior_delegate/carrier_shaman/BD = behavior_delegate
+	if(!istype(BD))
+		return FALSE
+	BD.used_shaman_ability = TRUE	
 
 	if(!do_after(src, action_def.windup_delay, INTERRUPT_ALL, ACTION_GREEN_POWER_UP))
-		used_shaman_ability = FALSE
+		BD.used_shaman_ability = FALSE
 		return
 
 	plasma_stored -= 100
@@ -134,13 +150,16 @@
 		
 		effect_power++
 	
-	add_timer(CALLBACK(src, /mob/living/carbon/Xenomorph/Carrier.proc/reset_shaman_ability), action_def.get_cooldown())
+	add_timer(CALLBACK(BD, /datum/behavior_delegate/carrier_shaman.proc/reset_shaman_ability), action_def.get_cooldown())
+
+	if(effect_power < BD.remembered_count)
+		to_chat(src, SPAN_XENOWARNING("You use stored pain memory."))
+		effect_power = BD.remembered_count
+		BD.remembered_count = 0
 
 	if(effect_power == 0)
 		to_chat(src, SPAN_XENOWARNING("Pointless sacrifice... Noone trusted you."))
 		return
-
-	to_chat(src, SPAN_XENOWARNING("You were able to gather [effect_power] feeling ones around you!"))
 
 	var/heal_percent =  min(((effect_power - 1) * action_def.heal_strength_gain) + action_def.heal_strength_base, action_def.heal_strength_max)
 	var/armor_percent =  min(((effect_power - 1) * action_def.armor_strength_gain) + action_def.armor_strength_base, action_def.armor_strength_max)
@@ -210,10 +229,13 @@
 	visible_message(SPAN_XENONOTICE("\The [src] takes alien egg into their hand and prepares to crush it with its own hands!"), \
 		SPAN_XENONOTICE("You take alien egg from storage into you hand and prepare to crush it with your own hands trying to inflict as much suffering as possible!"), null, 8)
 
-	used_shaman_ability = TRUE
+	var/datum/behavior_delegate/carrier_shaman/BD = behavior_delegate
+	if(!istype(BD))
+		return FALSE
+	BD.used_shaman_ability = TRUE
 
 	if(!do_after(src, action_def.windup_delay, INTERRUPT_ALL, ACTION_RED_POWER_UP))
-		used_shaman_ability = FALSE
+		BD.used_shaman_ability = FALSE
 		return
 
 	plasma_stored -= 300
@@ -238,13 +260,16 @@
 
 		effect_power++	
 	
-	add_timer(CALLBACK(src, /mob/living/carbon/Xenomorph/Carrier.proc/reset_shaman_ability), action_def.get_cooldown())
+	add_timer(CALLBACK(BD, /datum/behavior_delegate/carrier_shaman.proc/reset_shaman_ability), action_def.get_cooldown())
+
+	if(effect_power < BD.remembered_count)
+		to_chat(src, SPAN_XENOWARNING("You use stored pain memory."))
+		effect_power = BD.remembered_count
+		BD.remembered_count = 0
 
 	if(effect_power == 0)
 		to_chat(src, SPAN_XENOWARNING("Pointless sacrifice... Noone felt this death."))
 		return
-
-	to_chat(src, SPAN_XENOWARNING("You were able to gather [effect_power] feeling ones around you!"))
 
 	visible_message(SPAN_XENONOTICE("\The [src] squashes ovomorph into a pulp."), \
 		SPAN_XENONOTICE("You squash the egg into a mess of acid blood and gore! The psychic scream is trully a thing to behold."), null, 8)
@@ -323,10 +348,13 @@
 	visible_message(SPAN_XENONOTICE("\The [src] takes alien egg into their hand and prepares to crush it with its own hands!"), \
 		SPAN_XENONOTICE("You take alien egg from storage into you hand and prepare to crush it with your own hands trying to inflict as much suffering as possible!"), null, 8)
 
-	used_shaman_ability = TRUE
+	var/datum/behavior_delegate/carrier_shaman/BD = behavior_delegate
+	if(!istype(BD))
+		return FALSE
+	BD.used_shaman_ability = TRUE
 
 	if(!do_after(src, action_def.windup_delay, INTERRUPT_ALL, ACTION_BLUE_POWER_UP))
-		used_shaman_ability = FALSE
+		BD.used_shaman_ability = FALSE
 		return
 
 	plasma_stored -= 300
@@ -355,13 +383,16 @@
 		
 		effect_power++
 	
-	add_timer(CALLBACK(src, /mob/living/carbon/Xenomorph/Carrier.proc/reset_shaman_ability), action_def.get_cooldown())
+	add_timer(CALLBACK(BD, /datum/behavior_delegate/carrier_shaman.proc/reset_shaman_ability), action_def.get_cooldown())
+
+	if(effect_power < BD.remembered_count)
+		to_chat(src, SPAN_XENOWARNING("You use stored pain memory."))
+		effect_power = BD.remembered_count
+		BD.remembered_count = 0
 
 	if(effect_power == 0)
 		to_chat(src, SPAN_XENOWARNING("Pointless sacrifice... Noone trusted you."))
 		return
-
-	to_chat(src, SPAN_XENOWARNING("You were able to gather [effect_power] feeling ones around you!"))
 
 	var/effect = min(((effect_power - 1) * action_def.pheromone_strength_per_xeno) + action_def.pheromone_strength_base, 5)
 
@@ -382,3 +413,82 @@
 	aura_strength = 0
 	visible_message(SPAN_XENOWARNING("\The [src] stops to emitting madness-inducing pheromones."), \
 		SPAN_XENOWARNING("You cease the madness."), null, 5)
+
+/datum/action/xeno_action/activable/sacrifice_egg/radius_remember
+	name = "Remember Pain (300)"
+	action_icon_state = "xeno_readmit"
+	ability_name = "adrenal pheromones"
+	macro_path = /datum/action/xeno_action/verb/radius_remember
+	action_type = XENO_ACTION_ACTIVATE
+	var/pheromone_strength_per_xeno = 0.5
+	var/pheromone_strength_base = 1
+	var/gather_range = 3
+	var/pheromone_time = 300
+	var/windup_delay = 25
+
+/datum/action/xeno_action/verb/radius_remember()
+	set category = "Alien"
+	set name = "Remember Pain (300)"
+	set hidden = 1
+	var/action_name = "Remember Pain (300)"
+	handle_xeno_macro(src, action_name)
+
+/datum/action/xeno_action/activable/sacrifice_egg/radius_remember/use_ability()
+	var/mob/living/carbon/Xenomorph/Carrier/X = owner
+	if(!..())
+		return
+	X.egg_sacr_remember_pain(src)
+
+/mob/living/carbon/Xenomorph/Carrier/proc/egg_sacr_remember_pain(var/datum/action/xeno_action/activable/sacrifice_egg/radius_remember/action_def)
+	if(!check_state())
+		return
+
+	if(!check_plasma(300))
+		return
+
+	visible_message(SPAN_XENONOTICE("\The [src] takes alien egg into their hand and prepares to crush it with its own hands!"), \
+		SPAN_XENONOTICE("You take alien egg from storage into you hand and prepare to crush it with your own hands trying to inflict as much suffering as possible!"), null, 8)
+
+	var/datum/behavior_delegate/carrier_shaman/BD = behavior_delegate
+	if(!istype(BD))
+		return FALSE
+	BD.used_shaman_ability = TRUE
+
+	if(!do_after(src, action_def.windup_delay, INTERRUPT_ALL, ACTION_BLUE_POWER_UP))
+		BD.used_shaman_ability = FALSE
+		return
+
+	plasma_stored -= 300
+
+	eggs_cur--
+
+	var/effect_power = 0
+
+	var/image/effect_overlay = get_busy_icon(ACTION_BLUE_POWER_UP)
+	
+	visible_message(SPAN_XENONOTICE("\The [src] squashes ovomorph into a pulp."), \
+		SPAN_XENONOTICE("You squash the egg into a mess of acid blood and gore! Others seem to channel their energy to you. They consider you their savior."), null, 8)
+
+	for(var/mob/living/carbon/Xenomorph/X in range(src, action_def.get_gather_range()))
+		if(X.hive != hive)
+			continue
+		if(X == src)
+			continue
+		if(X.mutation_type == CARRIER_SHAMAN) // Shamans are disconnected from the effect
+			continue
+		
+		to_chat(X, SPAN_XENOWARNING("The little ones are dying! Do something!"))
+
+		effect_overlay.flick_overlay(X, 20)
+		
+		effect_power++
+	
+	add_timer(CALLBACK(BD, /datum/behavior_delegate/carrier_shaman.proc/reset_shaman_ability), action_def.get_cooldown())
+
+	if(effect_power == 0)
+		to_chat(src, SPAN_XENOWARNING("Pointless sacrifice... Noone trusted you."))
+		return
+
+	to_chat(src, SPAN_XENOWARNING("You remember the pain of [effect_power] feeling ones around you!"))
+
+	BD.remembered_count = effect_power

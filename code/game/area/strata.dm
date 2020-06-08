@@ -58,6 +58,9 @@ However, this might break the tacmap. This entire system might be replaced by Sl
 	is_resin_allowed = FALSE
 	flags_atom = AREA_NOTUNNEL
 
+/area/strata/ag/interior/restricted/devroom
+	name = "Super Secret Credits Room"
+
 /area/strata/ug
 	name = "Under Ground Area"
 	icon_state = "ug"

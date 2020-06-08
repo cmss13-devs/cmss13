@@ -22358,7 +22358,7 @@
 /area/strata/ag/interior/outpost/med/hall)
 "boT" = (
 /turf/open/snow/layer0,
-/area/strata/ug/interior)
+/area/strata/ag/interior/restricted/devroom)
 "boU" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 6
@@ -24198,7 +24198,7 @@
 /area/strata/ag/interior)
 "bzi" = (
 /turf/open/snow/layer1,
-/area/strata/ug/interior)
+/area/strata/ag/interior/restricted/devroom)
 "bzj" = (
 /obj/item/lightstick{
 	anchored = 1;
@@ -24206,7 +24206,7 @@
 	luminosity = 2
 	},
 /turf/open/snow/layer0,
-/area/strata/ug/interior)
+/area/strata/ag/interior/restricted/devroom)
 "bzk" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 2;
@@ -31234,7 +31234,7 @@
 	luminosity = 2
 	},
 /turf/open/snow/layer1,
-/area/strata/ug/interior)
+/area/strata/ag/interior/restricted/devroom)
 "clu" = (
 /obj/structure/platform/strata/metal{
 	dir = 4
@@ -31449,11 +31449,11 @@
 /area/strata/ag/interior/landingzone_checkpoint)
 "cmo" = (
 /turf/closed/wall/strata_outpost_ribbed,
-/area/strata/ug/interior)
+/area/strata/ag/interior/restricted/devroom)
 "cmp" = (
 /obj/structure/prop/almayer/sensor_computer1,
 /turf/closed/wall/strata_outpost_ribbed,
-/area/strata/ug/interior)
+/area/strata/ag/interior/restricted/devroom)
 "cmq" = (
 /turf/open/floor/greengrid,
 /area/strata/ag/interior/landingzone_checkpoint)
@@ -34051,7 +34051,7 @@
 	dir = 4
 	},
 /turf/open/snow/layer0,
-/area/strata/ug/interior)
+/area/strata/ag/interior/restricted/devroom)
 "dsp" = (
 /turf/open/snow/layer1,
 /area/strata/ag/exterior/marsh/center)
@@ -34382,7 +34382,7 @@
 "dOG" = (
 /obj/structure/prop/almayer/sensor_computer3,
 /turf/closed/wall/strata_outpost_ribbed,
-/area/strata/ug/interior)
+/area/strata/ag/interior/restricted/devroom)
 "dOO" = (
 /turf/closed/wall/strata_outpost_bare,
 /area/strata/ag/interior/engi_shed/two)
@@ -34489,7 +34489,7 @@
 /turf/open/floor/strata{
 	icon_state = "floor2"
 	},
-/area/strata/ug/interior)
+/area/strata/ag/interior/restricted/devroom)
 "dUP" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -35661,7 +35661,7 @@
 	dir = 1
 	},
 /turf/open/snow/layer1,
-/area/strata/ug/interior)
+/area/strata/ag/interior/restricted/devroom)
 "flK" = (
 /obj/structure/machinery/vending/wallmed1,
 /turf/closed/wall/strata_outpost_ribbed,
@@ -35750,7 +35750,7 @@
 	dir = 1
 	},
 /turf/open/snow/layer1,
-/area/strata/ug/interior)
+/area/strata/ag/interior/restricted/devroom)
 "frL" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/strata{
@@ -35942,7 +35942,7 @@
 	dir = 9
 	},
 /turf/open/snow/layer1,
-/area/strata/ug/interior)
+/area/strata/ag/interior/restricted/devroom)
 "fAb" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/strata,
@@ -36781,7 +36781,7 @@
 "gDg" = (
 /obj/structure/prop/almayer/sensor_computer2,
 /turf/closed/wall/strata_outpost_ribbed,
-/area/strata/ug/interior)
+/area/strata/ag/interior/restricted/devroom)
 "gDl" = (
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/strata{
@@ -36791,7 +36791,7 @@
 "gDE" = (
 /obj/structure/largecrate/random,
 /turf/open/snow/layer0,
-/area/strata/ug/interior)
+/area/strata/ag/interior/restricted/devroom)
 "gEa" = (
 /obj/item/lightstick/red{
 	anchored = 1;
@@ -38280,7 +38280,7 @@
 	dir = 1
 	},
 /turf/open/snow/layer1,
-/area/strata/ag/exterior/restricted)
+/area/strata/ag/interior/restricted)
 "iAA" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
@@ -38437,7 +38437,7 @@
 	dir = 8
 	},
 /turf/open/snow/layer1,
-/area/strata/ug/interior)
+/area/strata/ag/interior/restricted/devroom)
 "iKI" = (
 /obj/effect/alien/weeds/node,
 /turf/open/gm/grass/weedable,
@@ -38776,7 +38776,7 @@
 	dir = 8
 	},
 /turf/open/snow/layer1,
-/area/strata/ag/exterior/restricted)
+/area/strata/ag/interior/restricted)
 "jit" = (
 /turf/open/asphalt/cement{
 	icon_state = "cement2"
@@ -38954,7 +38954,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/strata_decals/catwalk/prison,
 /turf/open/floor/greengrid,
-/area/strata/ug/interior)
+/area/strata/ag/interior/restricted/devroom)
 "jvS" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -39056,7 +39056,7 @@
 	dir = 6
 	},
 /turf/open/snow/layer1,
-/area/strata/ug/interior)
+/area/strata/ag/interior/restricted/devroom)
 "jBO" = (
 /obj/structure/machinery/light/small,
 /turf/open/floor/strata{
@@ -39250,7 +39250,7 @@
 	dir = 4
 	},
 /turf/open/snow/layer1,
-/area/strata/ug/interior)
+/area/strata/ag/interior/restricted/devroom)
 "jMV" = (
 /turf/open/floor/strata{
 	dir = 10;
@@ -39260,7 +39260,7 @@
 "jNH" = (
 /obj/structure/largecrate/random,
 /turf/open/snow/layer1,
-/area/strata/ug/interior)
+/area/strata/ag/interior/restricted/devroom)
 "jNJ" = (
 /obj/structure/machinery/disposal,
 /turf/open/floor/strata{
@@ -39443,7 +39443,7 @@
 	dir = 8
 	},
 /turf/open/snow/layer1,
-/area/strata/ug/interior)
+/area/strata/ag/interior/restricted/devroom)
 "kaP" = (
 /obj/effect/alien/weeds/node,
 /obj/structure/pipes/standard/simple/hidden/cyan,
@@ -41533,7 +41533,7 @@
 	dir = 4
 	},
 /turf/open/snow/layer1,
-/area/strata/ag/exterior/restricted)
+/area/strata/ag/interior/restricted)
 "myr" = (
 /turf/open/floor/strata{
 	dir = 8;
@@ -44292,7 +44292,7 @@
 	dir = 6;
 	icon_state = "multi_tiles"
 	},
-/area/strata/ug/interior)
+/area/strata/ag/interior/restricted/devroom)
 "qiY" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/snow/layer0,
@@ -44566,7 +44566,7 @@
 	dir = 10
 	},
 /turf/open/snow/layer1,
-/area/strata/ug/interior)
+/area/strata/ag/interior/restricted/devroom)
 "qCv" = (
 /obj/structure/pipes/standard/manifold/fourway/hidden/cyan,
 /turf/open/floor/strata{
@@ -44603,7 +44603,7 @@
 /turf/open/floor/strata{
 	icon_state = "floor2"
 	},
-/area/strata/ug/interior)
+/area/strata/ag/interior/restricted/devroom)
 "qFY" = (
 /obj/structure/machinery/door/airlock/prison{
 	dir = 2
@@ -44913,7 +44913,7 @@
 /turf/open/floor/strata{
 	icon_state = "floor2"
 	},
-/area/strata/ug/interior)
+/area/strata/ag/interior/restricted/devroom)
 "qXx" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/snow/layer0,
@@ -45058,7 +45058,7 @@
 	dir = 8
 	},
 /turf/open/ice,
-/area/strata/ag/exterior/restricted)
+/area/strata/ag/interior/restricted)
 "rhg" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -45462,7 +45462,7 @@
 	dir = 1
 	},
 /turf/open/snow/layer0,
-/area/strata/ug/interior)
+/area/strata/ag/interior/restricted/devroom)
 "rGM" = (
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/strata{
@@ -45840,7 +45840,7 @@
 "sjE" = (
 /obj/effect/decal/strata_decals/rocks/ice/ice1,
 /turf/open/snow/layer1,
-/area/strata/ug/interior)
+/area/strata/ag/interior/restricted/devroom)
 "ski" = (
 /obj/structure/table/reinforced/prison,
 /obj/item/storage/toolbox/mechanical,
@@ -45972,7 +45972,7 @@
 "sri" = (
 /obj/structure/machinery/space_heater,
 /turf/open/snow/layer1,
-/area/strata/ag/exterior/restricted)
+/area/strata/ag/interior/restricted)
 "srk" = (
 /turf/closed/wall/strata_outpost_bare,
 /area/strata/ug/interior/jungle/platform/east/scrub)
@@ -46774,7 +46774,7 @@
 /turf/open/floor/strata{
 	icon_state = "floor2"
 	},
-/area/strata/ug/interior)
+/area/strata/ag/interior/restricted/devroom)
 "tmB" = (
 /obj/structure/table/reinforced/prison,
 /obj/structure/machinery/microwave,
@@ -46881,7 +46881,7 @@
 /area/strata/ag/exterior/research_decks/north)
 "ttQ" = (
 /turf/open/ice,
-/area/strata/ag/exterior/restricted)
+/area/strata/ag/interior/restricted)
 "tuj" = (
 /obj/effect/alien/weeds/node,
 /turf/open/gm/dirtgrassborder/weedable{
@@ -47067,7 +47067,7 @@
 "tEC" = (
 /obj/structure/sign/nosmoking_1,
 /turf/closed/wall/strata_outpost_ribbed,
-/area/strata/ug/interior)
+/area/strata/ag/interior/restricted/devroom)
 "tEM" = (
 /obj/structure/bed/chair{
 	dir = 1;
@@ -47707,7 +47707,7 @@
 	luminosity = 2
 	},
 /turf/open/snow/layer1,
-/area/strata/ag/exterior/restricted)
+/area/strata/ag/interior/restricted)
 "uph" = (
 /obj/structure/closet/fireaxecabinet,
 /turf/closed/wall/strata_outpost_bare,
@@ -47795,7 +47795,7 @@
 /turf/open/floor/strata{
 	icon_state = "floor2"
 	},
-/area/strata/ug/interior)
+/area/strata/ag/interior/restricted/devroom)
 "uul" = (
 /obj/structure/largecrate/guns/russian,
 /turf/open/asphalt/cement,
@@ -47880,7 +47880,7 @@
 "uyS" = (
 /obj/structure/machinery/power/port_gen/pacman/super,
 /turf/open/snow/layer1,
-/area/strata/ug/interior)
+/area/strata/ag/interior/restricted/devroom)
 "uzb" = (
 /obj/structure/stairs,
 /turf/open/floor/strata,
@@ -47939,7 +47939,7 @@
 "uBZ" = (
 /obj/structure/stairs,
 /turf/open/snow/layer0,
-/area/strata/ug/interior)
+/area/strata/ag/interior/restricted/devroom)
 "uCc" = (
 /obj/structure/machinery/floodlight/landing,
 /obj/structure/machinery/landinglight/ds1/delayone{
@@ -47965,7 +47965,7 @@
 /turf/open/floor/strata{
 	icon_state = "floor2"
 	},
-/area/strata/ug/interior)
+/area/strata/ag/interior/restricted/devroom)
 "uDU" = (
 /obj/structure/stairs,
 /obj/structure/platform/strata/metal{
@@ -48000,7 +48000,7 @@
 /turf/open/floor/strata{
 	icon_state = "floor2"
 	},
-/area/strata/ug/interior)
+/area/strata/ag/interior/restricted/devroom)
 "uHa" = (
 /obj/structure/machinery/light/small{
 	dir = 4
@@ -48016,7 +48016,7 @@
 "uHX" = (
 /obj/effect/decal/cleanable/cobweb2,
 /turf/open/floor/carpet,
-/area/strata/ug/interior)
+/area/strata/ag/interior/restricted/devroom)
 "uJm" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -48104,7 +48104,7 @@
 "uNi" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/carpet,
-/area/strata/ug/interior)
+/area/strata/ag/interior/restricted/devroom)
 "uNp" = (
 /obj/structure/flora/grass/tallgrass/ice/corner{
 	dir = 4
@@ -48665,7 +48665,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/item/device/camera,
 /turf/open/floor/carpet,
-/area/strata/ug/interior)
+/area/strata/ag/interior/restricted/devroom)
 "vwx" = (
 /obj/structure/closet/bodybag,
 /obj/effect/decal/cleanable/blood/gibs/core,
@@ -48682,7 +48682,7 @@
 /area/strata/ag/interior/tcomms)
 "vwN" = (
 /turf/open/snow/layer1,
-/area/strata/ag/exterior/restricted)
+/area/strata/ag/interior/restricted)
 "vwV" = (
 /obj/structure/platform/strata/metal{
 	dir = 8
@@ -49063,7 +49063,7 @@
 	},
 /obj/structure/largecrate/random,
 /turf/open/snow/layer1,
-/area/strata/ug/interior)
+/area/strata/ag/interior/restricted/devroom)
 "vYC" = (
 /obj/structure/flora/grass/tallgrass/ice,
 /turf/open/snow/layer3,
@@ -49704,7 +49704,7 @@
 	dir = 5
 	},
 /turf/open/snow/layer1,
-/area/strata/ug/interior)
+/area/strata/ag/interior/restricted/devroom)
 "wVU" = (
 /obj/structure/machinery/power/geothermal,
 /turf/open/floor/strata{
@@ -49734,7 +49734,7 @@
 /area/strata/ag/interior/dorms/south)
 "wYx" = (
 /turf/open/floor/carpet,
-/area/strata/ug/interior)
+/area/strata/ag/interior/restricted/devroom)
 "wZM" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/closed/wall/strata_outpost_bare,

@@ -987,8 +987,8 @@ Defined in conflicts.dm of the #defines folder.
 	size_mod = 1
 	icon_state = "smg_brace"
 	attach_icon = "smg_brace_a"
-	pixel_shift_x = 39
-	pixel_shift_y = 16
+	pixel_shift_x = 43
+	pixel_shift_y = 11
 	flags_attach_features = ATTACH_REMOVABLE
 
 /obj/item/attachable/stock/smg/brace/New()

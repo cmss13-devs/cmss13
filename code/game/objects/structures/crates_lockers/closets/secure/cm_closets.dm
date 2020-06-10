@@ -162,6 +162,7 @@
 	new /obj/item/weapon/baton(src)
 	new /obj/item/device/flash(src)
 	new /obj/item/handcuffs(src)
+	new /obj/item/reagent_container/spray/pepper(src)
 	new /obj/item/storage/pouch/general/medium(src)
 	if(prob(50))
 		new /obj/item/storage/backpack/security(src)
@@ -194,6 +195,7 @@
 	new /obj/item/storage/backpack/security (src)
 	new /obj/item/storage/backpack/satchel/sec(src)
 	new /obj/item/device/flash(src)
+	new /obj/item/reagent_container/spray/pepper(src)
 	new /obj/item/handcuffs(src)
 	new /obj/item/storage/pouch/general/large(src)
 

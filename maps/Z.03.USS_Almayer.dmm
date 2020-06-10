@@ -720,13 +720,13 @@
 	},
 /area/almayer/squads/bravo)
 "abU" = (
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 1
+	},
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "orange";
 	tag = "icon-orange (WEST)"
-	},
-/obj/structure/pipes/standard/manifold/hidden/supply{
-	dir = 1
 	},
 /turf/open/floor/almayer,
 /area/almayer/engineering/engineering_workshop)
@@ -4491,7 +4491,9 @@
 /area/almayer/living/commandbunks)
 "alu" = (
 /obj/structure/table/almayer,
-/obj/structure/machinery/faxmachine,
+/obj/structure/machinery/faxmachine{
+	department = "Commander"
+	},
 /obj/structure/machinery/light,
 /turf/open/floor/almayer,
 /area/almayer/living/commandbunks)
@@ -4813,7 +4815,6 @@
 /area/almayer/command/self_destruct)
 "amr" = (
 /obj/structure/closet/secure_closet/military_police,
-/obj/item/reagent_container/spray/pepper,
 /turf/open/floor/almayer{
 	icon_state = "cargo";
 	tag = "icon-bluecorner (NORTH)"
@@ -39986,6 +39987,13 @@
 	tag = "icon-green (NORTH)"
 	},
 /area/almayer/hallways/starboard_hallway)
+"dFF" = (
+/obj/structure/machinery/faxmachine{
+	department = "SEA"
+	},
+/obj/structure/table/almayer,
+/turf/open/floor/wood,
+/area/almayer/shipboard/sea_office)
 "dGB" = (
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
@@ -42095,10 +42103,7 @@
 	},
 /area/almayer/shipboard/starboard_point_defense)
 "gol" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_21";
-	tag = "icon-plant-10"
-	},
+/obj/structure/machinery/computer/crew,
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "red";
@@ -43564,7 +43569,9 @@
 	},
 /area/almayer/shipboard/brig)
 "iiZ" = (
-/obj/structure/machinery/faxmachine,
+/obj/structure/machinery/faxmachine{
+	department = "CIC"
+	},
 /obj/structure/table/almayer,
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -44968,7 +44975,6 @@
 "jUG" = (
 /obj/structure/table/almayer,
 /obj/structure/machinery/computer/research/main_terminal{
-	icon_state = "research";
 	dir = 4
 	},
 /turf/open/floor/almayer{
@@ -51728,7 +51734,6 @@
 	name = "Chief Medical Officer"
 	},
 /obj/structure/bed/chair/office/dark{
-	icon_state = "officechair_dark";
 	dir = 8
 	},
 /turf/open/floor/almayer{
@@ -52377,7 +52382,9 @@
 /area/almayer/command/cichallway)
 "sTM" = (
 /obj/structure/table/almayer,
-/obj/structure/machinery/faxmachine,
+/obj/structure/machinery/faxmachine{
+	department = "Brig"
+	},
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "red";
@@ -52646,7 +52653,9 @@
 /area/almayer/squads/req)
 "tjP" = (
 /obj/structure/table/almayer,
-/obj/structure/machinery/faxmachine,
+/obj/structure/machinery/faxmachine{
+	department = "CMP"
+	},
 /turf/open/floor/almayer{
 	icon_state = "red";
 	tag = "icon-red"
@@ -52699,7 +52708,6 @@
 /area/almayer/shipboard/firing_range_north)
 "toH" = (
 /obj/structure/closet/secure_closet/warrant_officer,
-/obj/item/reagent_container/spray/pepper,
 /turf/open/floor/wood,
 /area/almayer/shipboard/chief_mp_office)
 "tpa" = (
@@ -54921,7 +54929,6 @@
 /area/almayer/living/offices)
 "wfm" = (
 /obj/structure/closet/secure_closet/military_police,
-/obj/item/reagent_container/spray/pepper,
 /obj/structure/machinery/light{
 	dir = 4
 	},
@@ -102520,8 +102527,8 @@ rQt
 gYe
 skn
 bTx
-bTx
 bOU
+dFF
 qlz
 bGm
 bCM

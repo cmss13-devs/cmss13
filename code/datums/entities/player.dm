@@ -279,7 +279,6 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	var/datum/entity/player_job_ban/PJB = job_bans[safe_rank]
 	job_bans[safe_rank] = null
 	PJB.delete()
-	qdel(PJB)
 
 	ban_unban_log_save("[key_name(admin)] unjobbanned [ckey] from [safe_rank]")
 	log_admin("[key_name(admin)] unbanned [ckey] from [safe_rank]")

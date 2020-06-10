@@ -57,7 +57,7 @@
 	var/mob/living/carbon/Xenomorph/Carrier/X = owner
 	if(X.upgrade == 0)
 		return 3
-	return 3.5 - (X.upgrade - 1) * 0.25
+	return 3.5 + (X.upgrade - 1) * 0.25
 
 /datum/action/xeno_action/activable/sacrifice_egg/use_ability()
 	var/mob/living/carbon/Xenomorph/Carrier/X = owner

@@ -915,7 +915,7 @@ Turn() or Shift() as there is virtually no overhead. ~N
 			var/obj/item/ammo_magazine/AM = pick(item_box.contents)
 			item_box.contents -= AM
 			user.put_in_hands(AM)
-			to_chat(user, SPAN_NOTICE("You retrieve a [AM] from \the [src], it has [AM.current_rounds] rounds remaining in the magazine."))
+			to_chat(user, SPAN_NOTICE("You retrieve a [AM] from \the [src]."))
 		else
 			var/obj/item/ammo_magazine/AM = locate(/obj/item/ammo_magazine) in item_box.contents
 			if(AM)
@@ -1209,3 +1209,27 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	B.bullet_amount = 0
 	B.update_icon()
 	return INITIALIZE_HINT_QDEL
+
+//Misc
+
+/obj/item/ammo_box/magazine/misc
+	name = "miscellaneous equipment box"
+	desc = "A box for miscellaneous equipment."
+	icon_state = "supply_crate"
+	overlay_ammo_type = "blank"
+	overlay_gun_type = "blank"
+	overlay_content = ""
+
+/obj/item/ammo_box/magazine/misc/mre
+	name = "box of MREs"
+	desc = "A box of MREs. Nutritious, but not delicious."
+	magazine_type = /obj/item/storage/box/MRE
+	num_of_magazines = 12
+	overlay_content = "_mre"
+
+/obj/item/ammo_box/magazine/misc/flares
+	name = "box of M94 marking flare packs"
+	desc = "A box of M94 marking flare packs, to brighten up your day."
+	magazine_type = /obj/item/storage/box/m94
+	num_of_magazines = 10
+	overlay_content = "_flares"

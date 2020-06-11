@@ -7,26 +7,8 @@ OPERATIONS
 /datum/supply_packs/flares
 	name = "flare packs crate (x20)"
 	contains = list(
-					/obj/item/storage/box/m94,
-					/obj/item/storage/box/m94,
-					/obj/item/storage/box/m94,
-					/obj/item/storage/box/m94,
-					/obj/item/storage/box/m94,
-					/obj/item/storage/box/m94,
-					/obj/item/storage/box/m94,
-					/obj/item/storage/box/m94,
-					/obj/item/storage/box/m94,
-					/obj/item/storage/box/m94,
-					/obj/item/storage/box/m94,
-					/obj/item/storage/box/m94,
-					/obj/item/storage/box/m94,
-					/obj/item/storage/box/m94,
-					/obj/item/storage/box/m94,
-					/obj/item/storage/box/m94,
-					/obj/item/storage/box/m94,
-					/obj/item/storage/box/m94,
-					/obj/item/storage/box/m94,
-					/obj/item/storage/box/m94
+					/obj/item/ammo_box/magazine/misc/flares,
+					/obj/item/ammo_box/magazine/misc/flares,
 					)
 	cost = RO_PRICE_NORMAL
 	containertype = /obj/structure/closet/crate/ammo

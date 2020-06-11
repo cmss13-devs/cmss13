@@ -116,28 +116,10 @@ SUPPLIES
 
 
 /datum/supply_packs/mre
-	name = "USCM MRE crate (x20)"
+	name = "USCM MRE crate (x24)"
 	contains = list(
-					/obj/item/storage/box/MRE,
-					/obj/item/storage/box/MRE,
-					/obj/item/storage/box/MRE,
-					/obj/item/storage/box/MRE,
-					/obj/item/storage/box/MRE,
-					/obj/item/storage/box/MRE,
-					/obj/item/storage/box/MRE,
-					/obj/item/storage/box/MRE,
-					/obj/item/storage/box/MRE,
-					/obj/item/storage/box/MRE,
-					/obj/item/storage/box/MRE,
-					/obj/item/storage/box/MRE,
-					/obj/item/storage/box/MRE,
-					/obj/item/storage/box/MRE,
-					/obj/item/storage/box/MRE,
-					/obj/item/storage/box/MRE,
-					/obj/item/storage/box/MRE,
-					/obj/item/storage/box/MRE,
-					/obj/item/storage/box/MRE,
-					/obj/item/storage/box/MRE
+					/obj/item/ammo_box/magazine/misc/mre,
+					/obj/item/ammo_box/magazine/misc/mre,
 					)
 	cost = RO_PRICE_VERY_CHEAP
 	containertype = /obj/structure/closet/crate/freezer

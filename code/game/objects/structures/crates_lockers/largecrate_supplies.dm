@@ -212,9 +212,9 @@
 	icon_state = "secure_crate"
 
 /obj/structure/largecrate/supply/supplies/flares
-	name = "Flare supply crate (x100)"
-	desc = "A supply crate containing twenty five-flare boxes."
-	supplies = list(/obj/item/storage/box/m94 = 10)
+	name = "Flare supply crate (x200)"
+	desc = "A supply crate containing two crates of flares."
+	supplies = list(/obj/item/ammo_box/magazine/misc/flares = 2)
 
 /obj/structure/largecrate/supply/supplies/metal
 	name = "metal sheets supply crate (x200)"
@@ -237,9 +237,9 @@
 	supplies = list(/obj/item/frame/table = 10, /obj/item/frame/rack = 10)
 
 /obj/structure/largecrate/supply/supplies/mre
-	name = "\improper USCM MRE crate (x50)"
-	desc = "A supply crate containing fifty USCM MRE packets."
-	supplies = list(/obj/item/storage/box/MRE = 50)
+	name = "\improper USCM MRE crate (x60)"
+	desc = "A supply crate containing sixty USCM MRE packets."
+	supplies = list(/obj/item/ammo_box/magazine/misc/mre = 5)
 
 /obj/structure/largecrate/supply/supplies/water
 	name = "\improper WY Bottled Water crate (x50)"

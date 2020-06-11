@@ -150,7 +150,6 @@
 	// Sanitize the message first
 	if(!raw)
 		message = strip_html(message)
-
 	// Wrap the message with some fluffy colors and links
 	var/wrapped_message = wrap_message(message, sender)
 
@@ -164,6 +163,7 @@
 			message_staff(wrapped_message, TRUE)
 			log_message(message, sender.key, "All mentors")
 			to_chat(sender, "<font color='#009900'><b>Message to mentors:</b> </font>" + message)
+			add_timer(CALLBACK(src, .proc/repeat_message, sender, message, 1), MINUTES_5) //since the message has been sanitized we can set raw to 1 here.
 			return
 	else if(sender == mentor)
 		recipient = author
@@ -177,6 +177,9 @@
 	// Staff gets to eavesdrop on every message
 	message_only_staff(SPAN_NOTICE(message), FALSE, TRUE, sender, recipient)
 
+/datum/mentorhelp/proc/repeat_message(var/client/sender, var/message, var/raw=FALSE)
+	if(!mentor && open)
+		send_message(sender, message, raw)
 // Makes the sender input a message and sends it
 /datum/mentorhelp/proc/input_message(var/client/sender)
 	if(!sender)
@@ -199,7 +202,6 @@
 
 	var/message = input("Please enter your message:", "Mentor Help", null, null) as message|null
 	if(!message)
-		open = FALSE
 		return
 
 	send_message(sender, message)

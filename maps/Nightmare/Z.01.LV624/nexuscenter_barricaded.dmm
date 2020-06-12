@@ -227,9 +227,7 @@
 	},
 /area/lv624/lazarus/main_hall)
 "aD" = (
-/obj/effect/landmark/corpsespawner/engineer{
-	name = "Menno Lweski"
-	},
+/obj/effect/landmark/corpsespawner/engineer,
 /turf/open/floor,
 /area/lv624/lazarus/main_hall)
 "aE" = (
@@ -353,9 +351,7 @@
 /area/lv624/lazarus/main_hall)
 "aS" = (
 /obj/effect/decal/cleanable/blood/splatter/animated,
-/obj/effect/landmark/corpsespawner/doctor{
-	name = "Frank Nimdal"
-	},
+/obj/effect/landmark/corpsespawner/doctor,
 /obj/item/frame/table,
 /obj/item/ammo_casing,
 /turf/open/floor,
@@ -673,9 +669,7 @@
 	},
 /area/lv624/lazarus/main_hall)
 "bE" = (
-/obj/effect/landmark/corpsespawner/chef{
-	name = "Gordon Oliver"
-	},
+/obj/effect/landmark/corpsespawner/chef,
 /obj/structure/table{
 	dir = 4;
 	flipped = 1

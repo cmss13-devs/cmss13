@@ -1471,12 +1471,7 @@
 	icon_state = "gib6";
 	tag = "icon-gib6"
 	},
-/obj/effect/landmark/corpsespawner/security{
-	corpsebelt = /obj/item/weapon/gun/revolver/cmb;
-	corpsesuit = /obj/item/clothing/suit/storage/CMB;
-	corpseuniform = /obj/item/clothing/under/CM_uniform;
-	name = "Marshal Logan Bills"
-	},
+/obj/effect/landmark/corpsespawner/security,
 /obj/structure/window_frame/solaris/reinforced,
 /turf/open/floor/plating,
 /area/bigredv2/outside/marshall_office)
@@ -12271,12 +12266,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/landmark/corpsespawner/doctor{
-	corpseback = null;
-	corpsegloves = /obj/item/clothing/gloves/latex;
-	corpseidjob = "Doctor";
-	name = "Colonist Ted Koso"
-	},
+/obj/effect/landmark/corpsespawner/doctor,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -23973,10 +23963,7 @@
 /turf/open/floor/plating,
 /area/shuttle/drop2/BigRed)
 "biK" = (
-/obj/effect/landmark/corpsespawner/security{
-	corpseuniform = /obj/item/clothing/under/colonist;
-	name = "Colonist Ethan Peser"
-	},
+/obj/effect/landmark/corpsespawner/security,
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "biL" = (
@@ -25166,13 +25153,7 @@
 /area/bigredv2/outside/engineering)
 "bmX" = (
 /obj/structure/bed/chair/office/dark,
-/obj/effect/landmark/corpsespawner/engineer{
-	corpseback = /obj/item/storage/backpack;
-	corpsehelmet = /obj/item/clothing/head/welding;
-	corpseidjob = "Engineer";
-	corpseshoes = /obj/item/clothing/shoes/black;
-	name = "Colonist Ted Jarka"
-	},
+/obj/effect/landmark/corpsespawner/engineer,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bmZ" = (
@@ -25711,13 +25692,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bpm" = (
-/obj/effect/landmark/corpsespawner/engineer{
-	corpseback = /obj/item/storage/backpack;
-	corpsehelmet = /obj/item/clothing/head/welding;
-	corpseidjob = "Engineer";
-	corpseshoes = /obj/item/clothing/shoes/black;
-	name = "Colonist Ted Jarka"
-	},
+/obj/effect/landmark/corpsespawner/engineer,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bpn" = (

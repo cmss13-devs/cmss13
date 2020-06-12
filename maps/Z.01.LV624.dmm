@@ -352,22 +352,12 @@
 /area/lv624/ground/caves/east1)
 "aby" = (
 /obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/scientist{
-	corpseback = null;
-	corpseshoes = /obj/item/clothing/shoes/black;
-	corpseuniform = /obj/item/clothing/under/colonist;
-	name = "Colonist Evan Kark"
-	},
+/obj/effect/landmark/corpsespawner/scientist,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west1)
 "abz" = (
 /obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/doctor{
-	corpseback = null;
-	corpsegloves = /obj/item/clothing/gloves/latex;
-	corpseidjob = "Doctor";
-	name = "Colonist Drew Bellel"
-	},
+/obj/effect/landmark/corpsespawner/doctor,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west1)
 "abA" = (
@@ -375,20 +365,12 @@
 /area/lv624/ground/caves/central1)
 "abB" = (
 /obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/security{
-	corpseuniform = /obj/item/clothing/under/colonist;
-	name = "Colonist Jac Mester"
-	},
+/obj/effect/landmark/corpsespawner/security,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west1)
 "abC" = (
 /obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/security{
-	corpsebelt = /obj/item/weapon/gun/revolver/cmb;
-	corpsesuit = /obj/item/clothing/suit/storage/CMB;
-	corpseuniform = /obj/item/clothing/under/CM_uniform;
-	name = "Deputy Maxwell Ligis"
-	},
+/obj/effect/landmark/corpsespawner/security,
 /obj/item/weapon/gun/shotgun/pump/cmb,
 /obj/effect/alien/weeds/node,
 /obj/effect/alien/weeds/node,
@@ -399,21 +381,12 @@
 /area/lv624/ground/sand4)
 "abE" = (
 /obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/scientist{
-	corpseback = null;
-	corpseshoes = /obj/item/clothing/shoes/black;
-	corpseuniform = /obj/item/clothing/under/colonist;
-	name = "Colonist Ellis Bark"
-	},
+/obj/effect/landmark/corpsespawner/scientist,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west1)
 "abF" = (
 /obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/miner{
-	corpseback = null;
-	corpseidjob = "Laborer";
-	name = "Colonist Olgin Vekin"
-	},
+/obj/effect/landmark/corpsespawner/miner,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west1)
 "abG" = (
@@ -467,12 +440,7 @@
 /area/lv624/ground/caves/west1)
 "abP" = (
 /obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/engineer{
-	corpseback = /obj/item/storage/backpack;
-	corpseidjob = "Engineer";
-	corpseshoes = /obj/item/clothing/shoes/black;
-	name = "Colonist Everett Mison"
-	},
+/obj/effect/landmark/corpsespawner/engineer,
 /obj/effect/alien/weeds/node,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west1)
@@ -496,12 +464,7 @@
 /area/lv624/ground/caves/west1)
 "abV" = (
 /obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/engineer{
-	corpseback = /obj/item/storage/backpack;
-	corpseidjob = "Engineer";
-	corpseshoes = /obj/item/clothing/shoes/black;
-	name = "Colonist Wes Uvin"
-	},
+/obj/effect/landmark/corpsespawner/engineer,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west1)
 "abW" = (
@@ -512,13 +475,7 @@
 /area/lv624/ground/caves/central1)
 "abX" = (
 /obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/engineer{
-	corpseback = /obj/item/storage/backpack;
-	corpsehelmet = /obj/item/clothing/head/welding;
-	corpseidjob = "Engineer";
-	corpseshoes = /obj/item/clothing/shoes/black;
-	name = "Colonist Ted Jarka"
-	},
+/obj/effect/landmark/corpsespawner/engineer,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west1)
 "abY" = (
@@ -546,23 +503,12 @@
 /area/lv624/lazarus/chapel)
 "acd" = (
 /obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/scientist{
-	corpseback = null;
-	corpsehelmet = /obj/item/clothing/head/cmcap/req;
-	corpseshoes = /obj/item/clothing/shoes/black;
-	corpseuniform = /obj/item/clothing/under/colonist;
-	name = "Colonist Lee Hesto"
-	},
+/obj/effect/landmark/corpsespawner/scientist,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west1)
 "ace" = (
 /obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/doctor{
-	corpseback = null;
-	corpsegloves = /obj/item/clothing/gloves/latex;
-	corpseidjob = "Doctor";
-	name = "Colonist Ted Koso"
-	},
+/obj/effect/landmark/corpsespawner/doctor,
 /obj/effect/alien/weeds/node,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west1)
@@ -577,12 +523,7 @@
 /area/lv624/ground/caves/west1)
 "aci" = (
 /obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/scientist{
-	corpseback = null;
-	corpseshoes = /obj/item/clothing/shoes/black;
-	corpseuniform = /obj/item/clothing/under/colonist;
-	name = "Colonist Chang Lin"
-	},
+/obj/effect/landmark/corpsespawner/scientist,
 /obj/item/weapon/gun/pistol/holdout,
 /obj/effect/alien/weeds/node,
 /turf/open/gm/dirt,
@@ -813,11 +754,7 @@
 	},
 /area/lv624/ground/sand6)
 "acV" = (
-/obj/effect/landmark/corpsespawner/security{
-	corpsesuit = /obj/item/clothing/suit/storage/CMB;
-	corpseuniform = /obj/item/clothing/under/CM_uniform;
-	name = "Deputy Edgar Nogi"
-	},
+/obj/effect/landmark/corpsespawner/security,
 /turf/open/shuttle{
 	icon_state = "floor4"
 	},
@@ -2612,11 +2549,7 @@
 	},
 /area/lv624/ground/sand9)
 "aiu" = (
-/obj/effect/landmark/corpsespawner/miner{
-	corpseback = /obj/item/storage/backpack;
-	corpseidjob = "Laborer";
-	name = "Colonist Roester Kalin"
-	},
+/obj/effect/landmark/corpsespawner/miner,
 /turf/open/floor{
 	icon_state = "redyellowfull"
 	},
@@ -6469,12 +6402,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 8
 	},
-/obj/effect/landmark/corpsespawner/scientist{
-	corpseback = null;
-	corpseshoes = /obj/item/clothing/shoes/black;
-	corpseuniform = /obj/item/clothing/under/colonist;
-	name = "Colonist Tevin Marks"
-	},
+/obj/effect/landmark/corpsespawner/scientist,
 /obj/effect/decal/cleanable/blood/splatter/animated,
 /turf/open/floor{
 	dir = 5;
@@ -7646,11 +7574,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/compound/ne)
 "axx" = (
-/obj/effect/landmark/corpsespawner/chef{
-	corpsesuit = null;
-	corpseuniform = /obj/item/clothing/under/colonist;
-	name = "Colonist Jed Willis"
-	},
+/obj/effect/landmark/corpsespawner/chef,
 /obj/effect/decal/cleanable/blood/splatter/animated,
 /obj/item/weapon/harpoon,
 /turf/open/gm/river,
@@ -8069,11 +7993,7 @@
 	name = "????";
 	stat = 2
 	},
-/obj/effect/landmark/corpsespawner/scientist{
-	corpseshoes = /obj/item/clothing/shoes/black;
-	corpseuniform = /obj/item/clothing/under/colonist;
-	name = "Colonist Jan Horris"
-	},
+/obj/effect/landmark/corpsespawner/scientist,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	icon_state = "freezerfloor"
@@ -13359,11 +13279,7 @@
 	},
 /area/lv624/lazarus/internal_affairs)
 "aNx" = (
-/obj/effect/landmark/corpsespawner/bridgeofficer{
-	corpseidjob = "Bridge Officer";
-	corpseuniform = /obj/item/clothing/under/waiter;
-	name = "Mr. Johnson Telovin"
-	},
+/obj/effect/landmark/corpsespawner/bridgeofficer/johnson,
 /obj/item/tool/crowbar,
 /obj/effect/decal/cleanable/blood{
 	layer = 3;

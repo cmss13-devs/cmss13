@@ -96,12 +96,7 @@
 	},
 /area/lv624/ground/caves/central1)
 "ao" = (
-/obj/effect/landmark/corpsespawner/security{
-	corpsebelt = null;
-	corpsesuit = /obj/item/clothing/suit/storage/CMB;
-	corpseuniform = /obj/item/clothing/under/CM_uniform;
-	name = "Deputy Edgar Nogi"
-	},
+/obj/effect/landmark/corpsespawner/security,
 /turf/open/shuttle{
 	icon_state = "floor4"
 	},

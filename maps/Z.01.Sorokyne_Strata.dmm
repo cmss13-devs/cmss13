@@ -283,12 +283,7 @@
 /area/strata/ag/interior/paths/cabin_area/central)
 "aaU" = (
 /obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/doctor{
-	corpseback = null;
-	corpsegloves = /obj/item/clothing/gloves/latex;
-	corpseidjob = "Doctor";
-	name = "Colonist Ted Koso"
-	},
+/obj/effect/landmark/corpsespawner/doctor,
 /turf/open/snow/layer0,
 /area/strata/ag/interior/paths/cabin_area/cave)
 "aaV" = (
@@ -297,12 +292,7 @@
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "aaW" = (
 /obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/doctor{
-	corpseback = null;
-	corpsegloves = /obj/item/clothing/gloves/latex;
-	corpseidjob = "Doctor";
-	name = "Colonist Drew Bellel"
-	},
+/obj/effect/landmark/corpsespawner/doctor,
 /turf/open/snow/layer0,
 /area/strata/ag/interior/paths/cabin_area/cave)
 "aaX" = (
@@ -2310,25 +2300,14 @@
 /area/strata/ug/interior/jungle/deep/structures/res)
 "agb" = (
 /obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/scientist{
-	corpseback = null;
-	corpseshoes = /obj/item/clothing/shoes/black;
-	corpseuniform = /obj/item/clothing/under/colonist;
-	name = "Colonist Evan Kark"
-	},
+/obj/effect/landmark/corpsespawner/scientist,
 /turf/open/floor/strata{
 	icon_state = "multi_tiles"
 	},
 /area/strata/ag/interior/dorms/hive)
 "agd" = (
 /obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/scientist{
-	corpseback = null;
-	corpsehelmet = /obj/item/clothing/head/cmcap/req;
-	corpseshoes = /obj/item/clothing/shoes/black;
-	corpseuniform = /obj/item/clothing/under/colonist;
-	name = "Colonist Lee Hesto"
-	},
+/obj/effect/landmark/corpsespawner/scientist,
 /turf/open/floor/strata{
 	icon_state = "multi_tiles"
 	},
@@ -2485,12 +2464,7 @@
 /area/strata/ag/interior/dorms/flight_control)
 "agA" = (
 /obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/doctor{
-	corpseback = null;
-	corpsegloves = /obj/item/clothing/gloves/latex;
-	corpseidjob = "Doctor";
-	name = "Colonist Ted Koso"
-	},
+/obj/effect/landmark/corpsespawner/doctor,
 /turf/open/floor/strata{
 	icon_state = "multi_tiles"
 	},
@@ -2574,12 +2548,7 @@
 	pixel_x = 6;
 	pixel_y = -4
 	},
-/obj/effect/landmark/corpsespawner/scientist{
-	corpseback = null;
-	corpseshoes = /obj/item/clothing/shoes/black;
-	corpseuniform = /obj/item/clothing/under/colonist;
-	name = "Colonist Evan Kark"
-	},
+/obj/effect/landmark/corpsespawner/scientist,
 /turf/open/floor/strata{
 	icon_state = "multi_tiles"
 	},
@@ -2873,13 +2842,7 @@
 	pixel_x = 6;
 	pixel_y = -4
 	},
-/obj/effect/landmark/corpsespawner/scientist{
-	corpseback = null;
-	corpsehelmet = /obj/item/clothing/head/cmcap/req;
-	corpseshoes = /obj/item/clothing/shoes/black;
-	corpseuniform = /obj/item/clothing/under/colonist;
-	name = "Colonist Lee Hesto"
-	},
+/obj/effect/landmark/corpsespawner/scientist,
 /turf/open/floor/strata{
 	icon_state = "multi_tiles"
 	},
@@ -3356,13 +3319,7 @@
 /area/strata/ag/interior/dorms/hive)
 "aiE" = (
 /obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/security{
-	corpsebelt = /obj/item/weapon/gun/revolver/cmb;
-	corpsesuit = /obj/item/clothing/suit/storage/CMB;
-	corpseuniform = /obj/item/clothing/under/CM_uniform;
-	mobname = "Marshal Arthur Bannick";
-	name = "Marshal Arthur Bannick"
-	},
+/obj/effect/landmark/corpsespawner/security,
 /turf/open/floor/strata{
 	icon_state = "multi_tiles"
 	},
@@ -3787,11 +3744,7 @@
 /area/strata/ag/interior/dorms/hive)
 "ajN" = (
 /obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/security{
-	corpsesuit = /obj/item/clothing/suit/storage/CMB;
-	corpseuniform = /obj/item/clothing/under/CM_uniform;
-	name = "Deputy Edgar Nogi"
-	},
+/obj/effect/landmark/corpsespawner/security,
 /turf/open/floor/strata{
 	icon_state = "multi_tiles"
 	},
@@ -9778,13 +9731,7 @@
 /area/strata/ag/interior/dorms/north)
 "azH" = (
 /obj/structure/machinery/optable,
-/obj/effect/landmark/corpsespawner/security{
-	corpsebelt = /obj/item/weapon/gun/revolver/cmb;
-	corpsesuit = /obj/item/clothing/suit/storage/CMB;
-	corpseuniform = /obj/item/clothing/under/CM_uniform;
-	mobname = "Marshal Arthur Bannick";
-	name = "Marshal Arthur Bannick"
-	},
+/obj/effect/landmark/corpsespawner/security,
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood{
 	icon_state = "xgib2";
@@ -14913,12 +14860,7 @@
 /area/strata/ag/interior/outpost/admin/records)
 "aNp" = (
 /obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/scientist{
-	corpseback = null;
-	corpseshoes = /obj/item/clothing/shoes/black;
-	corpseuniform = /obj/item/clothing/under/colonist;
-	name = "Colonist Evan Kark"
-	},
+/obj/effect/landmark/corpsespawner/scientist,
 /turf/open/snow/layer0,
 /area/strata/ag/interior/paths/cabin_area/cave)
 "aNq" = (
@@ -15524,12 +15466,7 @@
 /area/strata/ag/interior/nearlz1)
 "aOZ" = (
 /obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/scientist{
-	corpseback = null;
-	corpseshoes = /obj/item/clothing/shoes/black;
-	corpseuniform = /obj/item/clothing/under/colonist;
-	name = "Colonist Ellis Bark"
-	},
+/obj/effect/landmark/corpsespawner/scientist,
 /turf/open/snow/layer0,
 /area/strata/ag/interior/paths/cabin_area/cave)
 "aPa" = (
@@ -19261,22 +19198,12 @@
 /area/strata/ag/interior/outpost/gen/foyer)
 "baX" = (
 /obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/scientist{
-	corpseback = null;
-	corpsehelmet = /obj/item/clothing/head/cmcap/req;
-	corpseshoes = /obj/item/clothing/shoes/black;
-	corpseuniform = /obj/item/clothing/under/colonist;
-	name = "Colonist Lee Hesto"
-	},
+/obj/effect/landmark/corpsespawner/scientist,
 /turf/open/snow/layer0,
 /area/strata/ag/interior/paths/cabin_area/cave)
 "baY" = (
 /obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/scientist{
-	corpseshoes = /obj/item/clothing/shoes/black;
-	corpseuniform = /obj/item/clothing/under/colonist;
-	name = "Colonist Jan Horris"
-	},
+/obj/effect/landmark/corpsespawner/scientist,
 /turf/open/snow/layer0,
 /area/strata/ag/interior/paths/cabin_area/cave)
 "bbb" = (
@@ -21360,12 +21287,7 @@
 /area/strata/ag/exterior/paths/north_outpost)
 "bke" = (
 /obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/security{
-	corpsebelt = /obj/item/weapon/gun/revolver/cmb;
-	corpsesuit = /obj/item/clothing/suit/storage/CMB;
-	corpseuniform = /obj/item/clothing/under/CM_uniform;
-	name = "Deputy Maxwell Ligis"
-	},
+/obj/effect/landmark/corpsespawner/security,
 /turf/open/snow/layer0,
 /area/strata/ag/interior/paths/cabin_area/cave)
 "bko" = (
@@ -23650,10 +23572,7 @@
 /area/strata/ag/interior/outpost/engi/drome)
 "bvS" = (
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/corpsespawner/security{
-	corpseuniform = /obj/item/clothing/under/colonist;
-	name = "Colonist Jac Mester"
-	},
+/obj/effect/landmark/corpsespawner/security,
 /turf/open/snow/layer0,
 /area/strata/ag/exterior/paths/cabin_area)
 "bwc" = (
@@ -26526,12 +26445,7 @@
 /area/strata/ug/interior/jungle/deep/structures/engi)
 "bLL" = (
 /obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/doctor{
-	corpseback = null;
-	corpsegloves = /obj/item/clothing/gloves/latex;
-	corpseidjob = "Doctor";
-	name = "Colonist Drew Bellel"
-	},
+/obj/effect/landmark/corpsespawner/doctor,
 /turf/open/floor/strata{
 	icon_state = "multi_tiles"
 	},
@@ -27114,12 +27028,7 @@
 /area/strata/ag/interior/dorms/canteen)
 "bPw" = (
 /obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/scientist{
-	corpseback = null;
-	corpseshoes = /obj/item/clothing/shoes/black;
-	corpseuniform = /obj/item/clothing/under/colonist;
-	name = "Colonist Ellis Bark"
-	},
+/obj/effect/landmark/corpsespawner/scientist,
 /turf/open/floor/strata{
 	icon_state = "multi_tiles"
 	},
@@ -27862,13 +27771,7 @@
 /obj/structure/toilet{
 	dir = 4
 	},
-/obj/effect/landmark/corpsespawner/security{
-	corpsebelt = /obj/item/weapon/gun/revolver/cmb;
-	corpsesuit = /obj/item/clothing/suit/storage/CMB;
-	corpseuniform = /obj/item/clothing/under/CM_uniform;
-	mobname = "Marshal Arthur Bannick";
-	name = "Marshal Arthur Bannick"
-	},
+/obj/effect/landmark/corpsespawner/security,
 /turf/open/floor/strata{
 	dir = 8;
 	icon_state = "white_cyan2"
@@ -40087,13 +39990,7 @@
 /area/strata/ag/interior/outpost/med/autopsy)
 "kRb" = (
 /obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/security{
-	corpsebelt = /obj/item/weapon/gun/revolver/cmb;
-	corpsesuit = /obj/item/clothing/suit/storage/CMB;
-	corpseuniform = /obj/item/clothing/under/CM_uniform;
-	mobname = "Marshal Arthur Bannick";
-	name = "Marshal Arthur Bannick"
-	},
+/obj/effect/landmark/corpsespawner/security,
 /obj/item/explosive/grenade/incendiary{
 	pixel_x = -4;
 	pixel_y = -2
@@ -46578,12 +46475,7 @@
 /area/strata/ug/interior/jungle/platform/south)
 "taZ" = (
 /obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/scientist{
-	corpseback = null;
-	corpseshoes = /obj/item/clothing/shoes/black;
-	corpseuniform = /obj/item/clothing/under/colonist;
-	name = "Colonist Tevin Marks"
-	},
+/obj/effect/landmark/corpsespawner/scientist,
 /turf/open/floor/strata{
 	icon_state = "multi_tiles"
 	},
@@ -46688,12 +46580,7 @@
 /turf/open/snow/layer2,
 /area/strata/ag/exterior/paths/southresearch)
 "tjo" = (
-/obj/effect/landmark/corpsespawner/doctor{
-	corpseback = null;
-	corpsegloves = /obj/item/clothing/gloves/latex;
-	corpseidjob = "Doctor";
-	name = "Colonist Ted Koso"
-	},
+/obj/effect/landmark/corpsespawner/doctor,
 /turf/open/floor/strata,
 /area/strata/ug/interior/outpost/jung/dorms/sec1)
 "tjD" = (
@@ -49012,12 +48899,7 @@
 	dir = 1;
 	pixel_y = 24
 	},
-/obj/effect/landmark/corpsespawner/doctor{
-	corpseback = null;
-	corpsegloves = /obj/item/clothing/gloves/latex;
-	corpseidjob = "Doctor";
-	name = "Colonist Drew Bellel"
-	},
+/obj/effect/landmark/corpsespawner/doctor,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/strata{
 	dir = 8;
@@ -49609,12 +49491,7 @@
 	icon_state = "abed"
 	},
 /obj/item/bedsheet/brown,
-/obj/effect/landmark/corpsespawner/doctor{
-	corpseback = null;
-	corpsegloves = /obj/item/clothing/gloves/latex;
-	corpseidjob = "Doctor";
-	name = "Colonist Drew Bellel"
-	},
+/obj/effect/landmark/corpsespawner/doctor,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/snow/layer1,
 /area/strata/ag/exterior/paths/southresearch)

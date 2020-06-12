@@ -21127,13 +21127,7 @@
 /area/desert_dam/exterior/river/filtration_a)
 "bes" = (
 /obj/structure/bed/chair/comfy/black,
-/obj/effect/landmark/corpsespawner/security{
-	corpsebelt = /obj/item/weapon/gun/revolver/cmb;
-	corpsesuit = /obj/item/clothing/suit/storage/CMB;
-	corpseuniform = /obj/item/clothing/under/CM_uniform;
-	mobname = "Marshal Arthur Bannick";
-	name = "Marshal Arthur Bannick"
-	},
+/obj/effect/landmark/corpsespawner/security/cmb,
 /turf/open/floor/interior/wood/alt,
 /area/desert_dam/building/security/marshals_office)
 "bet" = (
@@ -27846,13 +27840,7 @@
 /area/desert_dam/interior/dam_interior/hangar_storage)
 "byp" = (
 /obj/structure/table/woodentable/fancy,
-/obj/effect/landmark/corpsespawner/security{
-	corpseshoes = /obj/item/clothing/shoes/laceup;
-	corpsesuit = /obj/item/clothing/suit/storage/internalaffairs;
-	corpseuniform = /obj/item/clothing/under/lawyer/bluesuit;
-	mobname = "Mister Markus Fluss";
-	name = "Mister Markus Fluss"
-	},
+/obj/effect/landmark/corpsespawner/security/lawyer,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
 	tag = "icon-carpet15-15 (WEST)";
@@ -65479,14 +65467,7 @@
 /area/desert_dam/building/water_treatment_one/garage)
 "dVD" = (
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/corpsespawner/engineer{
-	corpseback = /obj/item/storage/backpack;
-	corpsehelmet = /obj/item/clothing/head/welding;
-	corpseidjob = "Engineer";
-	corpseshoes = /obj/item/clothing/shoes/black;
-	corpseuniform = /obj/item/clothing/under/colonist;
-	name = "Colonist Joachim Miziri"
-	},
+/obj/effect/landmark/corpsespawner/engineer,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
@@ -66854,11 +66835,7 @@
 	},
 /area/desert_dam/building/water_treatment_one/hallway)
 "ebi" = (
-/obj/effect/landmark/corpsespawner/security{
-	corpseuniform = /obj/item/clothing/under/colonist;
-	mobname = "olonist Jay Gatsby";
-	name = "Colonist Jay Gatsby"
-	},
+/obj/effect/landmark/corpsespawner/security,
 /turf/open/gm/river{
 	color = "#990000";
 	name = "pool"

@@ -508,10 +508,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "bz" = (
-/obj/effect/landmark/corpsespawner/security{
-	corpseuniform = /obj/item/clothing/under/colonist;
-	name = "Colonist Ethan Peser"
-	},
+/obj/effect/landmark/corpsespawner/security,
 /obj/structure/machinery/light{
 	tag = "icon-tube1 (EAST)";
 	icon_state = "tube1";

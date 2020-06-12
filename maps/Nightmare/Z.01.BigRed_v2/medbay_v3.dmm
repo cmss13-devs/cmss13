@@ -1641,13 +1641,7 @@
 	dir = 4;
 	layer = 2.4
 	},
-/obj/effect/landmark/corpsespawner/doctor{
-	corpseback = null;
-	corpsegloves = /obj/item/clothing/gloves/latex;
-	corpseidjob = "Doctor";
-	corpseuniform = /obj/item/clothing/under/colonist;
-	name = "Colonist Ted Koso"
-	},
+/obj/effect/landmark/corpsespawner/doctor,
 /turf/open/floor{
 	icon_state = "white"
 	},

@@ -194,14 +194,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "aO" = (
-/obj/effect/landmark/corpsespawner/engineer{
-	corpseback = /obj/item/storage/backpack;
-	corpsehelmet = /obj/item/clothing/head/welding;
-	corpseidjob = "Engineer";
-	corpseshoes = /obj/item/clothing/shoes/black;
-	corpseuniform = /obj/item/clothing/under/colonist;
-	name = "Colonist Ted Jarka"
-	},
+/obj/effect/landmark/corpsespawner/engineer,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "aP" = (

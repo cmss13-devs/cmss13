@@ -182,14 +182,7 @@
 "ax" = (
 /obj/structure/machinery/optable,
 /obj/item/tool/surgery/scalpel/manager,
-/obj/effect/landmark/corpsespawner/scientist{
-	corpseback = null;
-	corpsehelmet = /obj/item/clothing/head/cmcap/req;
-	corpseshoes = /obj/item/clothing/shoes/black;
-	corpsesuit = /obj/item/clothing/suit/storage/labcoat;
-	corpseuniform = /obj/item/clothing/under/colonist;
-	name = "Colonist Lee Hesto"
-	},
+/obj/effect/landmark/corpsespawner/scientist,
 /turf/open/floor{
 	dir = 2;
 	icon_state = "whitebluecorner";
@@ -301,13 +294,7 @@
 	},
 /area/lv624/lazarus/medbay)
 "aI" = (
-/obj/effect/landmark/corpsespawner/doctor{
-	corpseback = null;
-	corpsegloves = /obj/item/clothing/gloves/latex;
-	corpseuniform = /obj/item/clothing/under/colonist;
-	mobname = "";
-	name = "Colonist Mio Linno"
-	},
+/obj/effect/landmark/corpsespawner/doctor,
 /turf/open/floor{
 	dir = 2;
 	icon_state = "whitebluecorner";
@@ -644,11 +631,7 @@
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
-/obj/effect/landmark/corpsespawner/security{
-	corpsehelmet = /obj/item/clothing/head/helmet/riot;
-	corpseuniform = /obj/item/clothing/under/colonist;
-	name = "Colonist Fors Ilin"
-	},
+/obj/effect/landmark/corpsespawner/security,
 /turf/open/floor{
 	dir = 2;
 	icon_state = "whitebluecorner";

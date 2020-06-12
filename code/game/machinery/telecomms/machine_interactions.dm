@@ -123,7 +123,7 @@
 		if(!istype(user.get_active_hand(), /obj/item/device/multitool))
 			return
 
-	if(stat & (BROKEN|NOPOWER))
+	if(inoperable())
 		return
 
 	user.set_interaction(src)
@@ -291,7 +291,7 @@
 		if(!istype(usr.get_active_hand(), /obj/item/device/multitool))
 			return
 
-	if(stat & (BROKEN|NOPOWER))
+	if(inoperable())
 		return
 
 	if(href_list["input"])

@@ -353,7 +353,7 @@ What a mess.*/
 	return
 
 /obj/structure/machinery/computer/skills/emp_act(severity)
-	if(stat & (BROKEN|NOPOWER))
+	if(inoperable())
 		..(severity)
 		return
 

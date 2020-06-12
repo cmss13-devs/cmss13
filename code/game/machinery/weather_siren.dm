@@ -9,7 +9,6 @@
 	unslashable = 1
 	use_power = 0
 	health = 0
-	processable = 0
 
 /obj/structure/machinery/weather_siren/Initialize()
 	weather_notify_objects += src

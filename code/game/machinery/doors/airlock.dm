@@ -12,7 +12,7 @@
 	name = "airlock"
 	icon = 'icons/obj/structures/doors/Doorint.dmi'
 	icon_state = "door_closed"
-	power_channel = ENVIRON
+	power_channel = POWER_CHANNEL_ENVIRON
 
 	var/secondsMainPowerLost = 0 //The number of seconds until power is restored.
 	var/secondsBackupPowerLost = 0 //The number of seconds until power is restored.

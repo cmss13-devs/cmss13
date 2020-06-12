@@ -24,13 +24,14 @@
 
 	var/obj/item/fuelCell/fusion_cell = new //Starts with a fuel cell loaded in.  Maybe replace with the plasma tanks in the future and have it consume plasma?  Possibly remove this later if it's irrelevent...
 	var/fuel_rate = 0.00 //Rate at which fuel is used.  Based mostly on how long the generator has been running.
+	power_machine = TRUE
 
 /obj/structure/machinery/power/fusion_engine/New()
 	fusion_cell.fuel_amount = 100
 	update_icon()
 	connect_to_network() //Should start with a cable piece underneath, if it doesn't, something's messed up in mapping
 	..()
-	start_processing_power()
+	start_processing()
 
 /obj/structure/machinery/power/fusion_engine/power_change()
 	return
@@ -41,7 +42,7 @@
 			is_on = FALSE
 			power_gen_percent = 0
 			update_icon()
-			stop_processing_power()
+			stop_processing()
 		return 0
 	if (fusion_cell.fuel_amount <= 0)
 		visible_message("[htmlicon(src, viewers(src))] <b>[src]</b> flashes that the fuel cell is empty as the engine seizes.")
@@ -51,7 +52,7 @@
 		power_gen_percent = 0
 		fail_rate+=2 //Each time the engine is allowed to seize up it's fail rate for the future increases because reasons.
 		update_icon()
-		stop_processing_power()
+		stop_processing()
 		return FALSE
 
 	if(!check_failure())
@@ -95,7 +96,7 @@
 		power_gen_percent = 0
 		cur_tick = 0
 		update_icon()
-		stop_processing_power()
+		stop_processing()
 		return TRUE
 
 	if(!fusion_cell)
@@ -114,7 +115,7 @@
 	is_on = 1
 	cur_tick = 0
 	update_icon()
-	start_processing_power()
+	start_processing()
 	return TRUE
 
 
@@ -304,7 +305,7 @@
 		is_on = 0
 		power_gen_percent = 0
 		update_icon()
-		stop_processing_power()
+		stop_processing()
 		return 1
 	else
 		return 0

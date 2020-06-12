@@ -45,7 +45,7 @@
 	set_picture("default")
 
 /obj/structure/machinery/status_display/emp_act(severity)
-	if(stat & (BROKEN|NOPOWER))
+	if(inoperable())
 		..(severity)
 		return
 	set_picture("ai_bsod")
@@ -164,7 +164,7 @@
 	var/emotion = "Neutral"
 
 /obj/structure/machinery/ai_status_display/emp_act(severity)
-	if(stat & (BROKEN|NOPOWER))
+	if(inoperable())
 		..(severity)
 		return
 	set_picture("ai_bsod")

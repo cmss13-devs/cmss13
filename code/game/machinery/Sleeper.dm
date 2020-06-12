@@ -39,7 +39,7 @@
 
 
 /obj/structure/machinery/sleep_console/process()
-	if(stat & (NOPOWER|BROKEN))
+	if(inoperable())
 		return
 	updateUsrDialog()
 
@@ -60,10 +60,10 @@
 /obj/structure/machinery/sleep_console/attack_hand(mob/living/user)
 	if(..())
 		return
-	if(stat & (NOPOWER|BROKEN))
+	if(inoperable())
 		return
 	var/dat = ""
-	if (!connected || (connected.stat & (NOPOWER|BROKEN)))
+	if (!connected || (connected.inoperable()))
 		dat += "This console is not connected to a sleeper or the sleeper is non-functional."
 	else
 		var/mob/living/occupant = connected.occupant
@@ -239,7 +239,7 @@
 		beaker = null
 
 /obj/structure/machinery/sleeper/process()
-	if (stat & (NOPOWER|BROKEN))
+	if (inoperable())
 		return
 
 	if(filtering > 0)
@@ -304,7 +304,7 @@
 /obj/structure/machinery/sleeper/emp_act(severity)
 	if(filtering)
 		toggle_filter()
-	if(stat & (BROKEN|NOPOWER))
+	if(inoperable())
 		..(severity)
 		return
 	if(occupant)

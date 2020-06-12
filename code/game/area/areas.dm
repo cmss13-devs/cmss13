@@ -2,6 +2,34 @@
 
 // ===
 /area
+	var/atmos = 1
+	var/atmosalm = 0
+	var/poweralm = 1
+
+	level = null
+	name = "Unknown"
+	icon = 'icons/turf/areas.dmi'
+	icon_state = "unknown"
+	layer = AREAS_LAYER
+	mouse_opacity = 0
+	invisibility = INVISIBILITY_LIGHTING
+	var/lightswitch = 1
+
+	var/flags_alarm_state = NO_FLAGS
+
+	var/has_gravity = 1
+	var/list/apc = list()
+	var/list/area_machines = list() // list of machines only for master areas
+	var/no_air = null
+	var/area/master				// master area used for power calcluations
+								// (original area before splitting due to sd_DAL)
+	var/list/related			// the other areas of the same type as this
+//	var/list/lights				// list of all lights on this area
+	var/list/all_doors = list()		//Added by Strumpetplaya - Alarm Change - Contains a list of doors adjacent to this area
+	var/air_doors_activated = 0
+	var/list/ambience = list('sound/ambience/ambigen1.ogg','sound/ambience/ambigen3.ogg','sound/ambience/ambigen4.ogg','sound/ambience/ambigen5.ogg','sound/ambience/ambigen6.ogg','sound/ambience/ambigen7.ogg','sound/ambience/ambigen8.ogg','sound/ambience/ambigen9.ogg','sound/ambience/ambigen10.ogg','sound/ambience/ambigen11.ogg','sound/ambience/ambigen12.ogg','sound/ambience/ambigen14.ogg')
+	var/statistic_exempt = FALSE
+
 	var/global/global_uid = 0
 	var/uid
 	var/can_hellhound_enter = 1
@@ -12,14 +40,13 @@
 	var/pressure = ONE_ATMOSPHERE
 	var/can_build_special = FALSE
 	var/is_resin_allowed = TRUE	// can xenos weed, place resin holes or dig tunnels at said areas
-	var/powernet_name = "default" //Default powernet name. Change to something else to make completely separate powernets
-	
+
 	// Weather
 	var/weather_enabled = TRUE	// Manual override for weather if set to false
 
 	// Ambience sounds
 	var/ambience_exterior 	= null //The sound that plays as ambience
-	var/sound_environment 	= 2 //Reverberation applied to ALL sounds that a client in this area hears  
+	var/sound_environment 	= 2 //Reverberation applied to ALL sounds that a client in this area hears
 								//Full list of environments in the BYOND reference http://www.byond.com/docs/ref/#/sound/var/environment
 								//Also, diferent environments affect muffling differently
 	var/list/soundscape_playlist = list() //Clients in this area will hear one of the sounds in this list from time to time
@@ -28,6 +55,26 @@
 	var/base_muffle = 0 //Ambience will always be muffled by this ammount at minimum
 						//NOTE: Values from 0 to -10000 ONLY. The rest won't work
 
+
+	var/music = null
+
+	//Power stuff
+	var/powernet_name = "default" //Default powernet name. Change to something else to make completely separate powernets
+	var/debug = 0
+	var/requires_power = 1
+	var/unlimited_power = 0
+	var/always_unpowered = 0	//this gets overriden to 1 for space in area/New()
+
+	//which channels are powered
+	var/power_equip = TRUE
+	var/power_light = TRUE
+	var/power_environ = TRUE
+
+	//how much each channel is draining power
+	var/used_equip = 0
+	var/used_light = 0
+	var/used_environ = 0
+	var/used_oneoff = 0 //one-off power usage
 
 
 /area/New()
@@ -47,14 +94,14 @@
 	if(requires_power)
 		luminosity = 0
 		if(override_power) //Reset everything if you want to override.
-			power_light = 1
-			power_equip = 1
-			power_environ = 1
+			power_light = TRUE
+			power_equip = TRUE
+			power_environ = TRUE
 			SetDynamicLighting()
 	else
-		power_light = 0			//rastaf0
-		power_equip = 0			//rastaf0
-		power_environ = 0		//rastaf0
+		power_light = FALSE			//rastaf0
+		power_equip = FALSE			//rastaf0
+		power_environ = FALSE		//rastaf0
 		luminosity = 1
 		lighting_use_dynamic = 0
 
@@ -94,7 +141,7 @@
 	//Check all the alarms before lowering atmosalm. Raising is perfectly fine.
 	for (var/area/RA in related)
 		for (var/obj/structure/machinery/alarm/AA in RA)
-			if ( !(AA.stat & (NOPOWER|BROKEN)) && !AA.shorted)
+			if ( !(AA.inoperable()) && !AA.shorted)
 				danger_level = max(danger_level, AA.danger_level)
 
 	if(danger_level != atmosalm)
@@ -242,77 +289,85 @@
 
 	if(icon_state != I) icon_state = I //If the icon state changed, change it. Otherwise do nothing.
 
-/*
-#define EQUIP 1
-#define LIGHT 2
-#define ENVIRON 3
-*/
-
 /area/proc/powered(var/chan)		// return true if the area has power to given channel
-
 	if(!master.requires_power)
 		return 1
 	if(master.always_unpowered)
 		return 0
 	switch(chan)
-		if(EQUIP)
+		if(POWER_CHANNEL_EQUIP)
 			return master.power_equip
-		if(LIGHT)
+		if(POWER_CHANNEL_LIGHT)
 			return master.power_light
-		if(ENVIRON)
+		if(POWER_CHANNEL_ENVIRON)
 			return master.power_environ
 
 	return 0
 
-// called when power status changes
+/area/proc/update_power_channels(var/equip, var/light, var/environ)
+	if(!master)
+		CRASH("CALLED update_power_channels on non-master channel!")
+	var/changed = FALSE
+	if(master.power_equip != equip)
+		master.power_equip = equip
+		changed = TRUE
+	if(master.power_light != light)
+		master.power_light = light
+		changed = TRUE
+	if(master.power_environ != environ)
+		master.power_environ = environ
+		changed = TRUE
+	if(changed) //Something got changed power-wise, time for an update!
+		power_change()
 
+// called when power status changes
 /area/proc/power_change()
-	master.powerupdate = 2
 	for(var/area/RA in related)
 		for(var/obj/structure/machinery/M in RA)	// for each machine in the area
 			M.power_change()				// reverify power status (to update icons etc.)
 		if(flags_alarm_state)
 			RA.updateicon()
 
-/area/proc/usage(var/chan)
+/area/proc/usage(var/chan, var/reset_oneoff = FALSE)
 	var/used = 0
 	switch(chan)
-		if(LIGHT)
+		if(POWER_CHANNEL_LIGHT)
 			used += master.used_light
-		if(EQUIP)
+		if(POWER_CHANNEL_EQUIP)
 			used += master.used_equip
-		if(ENVIRON)
+		if(POWER_CHANNEL_ENVIRON)
 			used += master.used_environ
-		if(TOTAL)
-			used += master.used_light + master.used_equip + master.used_environ
+		if(POWER_CHANNEL_ONEOFF)
+			used += master.used_oneoff
+			if(reset_oneoff)
+				master.used_oneoff = 0
+		if(POWER_CHANNEL_TOTAL)
+			used += master.used_light + master.used_equip + master.used_environ + master.used_oneoff
+			if(reset_oneoff)
+				master.used_oneoff = 0
 
 	return used
 
-/area/proc/clear_usage()
-	master.used_equip = 0
-	master.used_light = 0
-	master.used_environ = 0
-
 /area/proc/use_power(var/amount, var/chan)
-
 	switch(chan)
-		if(EQUIP)
+		if(POWER_CHANNEL_EQUIP)
 			master.used_equip += amount
-		if(LIGHT)
+		if(POWER_CHANNEL_LIGHT)
 			master.used_light += amount
-		if(ENVIRON)
+		if(POWER_CHANNEL_ENVIRON)
 			master.used_environ += amount
-
+		if(POWER_CHANNEL_ONEOFF)
+			master.used_oneoff += amount
 
 /area/Entered(A,atom/OldLoc)
-	if(ismob(A))	
+	if(ismob(A))
 		var/mob/M = A
-			
+
 		if(isliving(M))
 			// Update all our weather vars and trackers
 			INVOKE_ASYNC(M,/mob/living.proc/update_weather)
 
-		if(!M.client)	
+		if(!M.client)
 			return
 
 		if(M.client.soundOutput)
@@ -321,13 +376,22 @@
 		return
 
 	if(istype(A, /obj/structure/machinery))
-		master.area_machines += A
-		return
+		add_machine(A)
 
-/area/Exited(A)	
+/area/Exited(A)
 	if(istype(A, /obj/structure/machinery))
-		master.area_machines -= A
-		return
+		remove_machine(A)
+
+/area/proc/add_machine(var/obj/structure/machinery/M)
+	if(istype(M))
+		master.area_machines += M
+		use_power(M.calculate_current_power_usage(), M.power_channel)
+		M.power_change()
+
+/area/proc/remove_machine(var/obj/structure/machinery/M)
+	if(istype(M))
+		master.area_machines -= M
+		use_power(-M.calculate_current_power_usage(), M.power_channel)
 
 /area/proc/gravitychange(var/gravitystate = 0, var/area/A)
 

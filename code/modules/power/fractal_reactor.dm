@@ -13,12 +13,13 @@
 	directwired = 1
 	var/power_generation_rate = 2000000 //Defaults to 2MW of power. Should be enough to run SMES charging on full 2 times.
 	var/powernet_connection_failed = 0
+	power_machine = TRUE
 
 	// This should be only used on Dev for testing purposes.
 /obj/structure/machinery/power/fractal_reactor/New()
 	..()
 	to_world("<b>\red WARNING: \black Map testing power source activated at: X:[src.loc.x] Y:[src.loc.y] Z:[src.loc.z]</b>")
-	start_processing_power()
+	start_processing()
 
 /obj/structure/machinery/power/fractal_reactor/power_change()
 	return

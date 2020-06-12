@@ -234,7 +234,7 @@
 	return
 	
 /obj/structure/machinery/cryo_cell/proc/put_mob(mob/living/carbon/M as mob)
-	if (stat & (NOPOWER|BROKEN))
+	if (inoperable())
 		to_chat(usr, SPAN_DANGER("The cryo cell is not functioning."))
 		return
 	if (!istype(M))

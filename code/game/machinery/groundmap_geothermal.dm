@@ -16,6 +16,7 @@
 	var/fail_rate = 10 //% chance of failure each fail_tick check
 	var/fail_check_ticks = 100 //Check for failure every this many ticks
 	var/cur_tick = 0 //Tick updater
+	power_machine = TRUE
 
 //We don't want to cut/update the power overlays every single proc. Just when it actually changes. This should save on CPU cycles. Efficiency!
 /obj/structure/machinery/power/geothermal/update_icon()
@@ -59,7 +60,7 @@
 		if(!connect_to_network())
 			powernet_connection_failed = 1 //God damn it, where'd our network go
 			is_on = 0
-			stop_processing_power()
+			stop_processing()
 			spawn(150) // Error! Check again in 15 seconds. Someone could have blown/acided or snipped a cable
 				powernet_connection_failed = 0
 	else if(powernet) //All good! Let's fire it up!
@@ -91,7 +92,7 @@
 		power_gen_percent = 0
 		update_icon()
 		cur_tick = 0
-		stop_processing_power()
+		stop_processing()
 		return 1
 	return 0 //Nope, all fine
 
@@ -123,13 +124,13 @@
 		power_gen_percent = 0
 		cur_tick = 0
 		icon_state = "off"
-		stop_processing_power()
+		stop_processing()
 		return 1
 	visible_message("[htmlicon(src, viewers(src))] [SPAN_WARNING("<b>[src]</b> beeps loudly as [usr] turns on the turbines and the generator begins spinning up.")]")
 	icon_state = "on10"
 	is_on = 1
 	cur_tick = 0
-	start_processing_power()
+	start_processing()
 	return 1
 
 /obj/structure/machinery/power/geothermal/attackby(var/obj/item/O as obj, var/mob/user as mob)
@@ -208,6 +209,7 @@
 	unslashable = TRUE
 	unacidable = TRUE
 	var/list/floodlist = list() // This will save our list of floodlights on the map
+	power_machine = TRUE
 
 /obj/structure/machinery/colony_floodlight_switch/New() //Populate our list of floodlights so we don't need to scan for them ever again
 	sleep(5) //let's make sure it exists first..
@@ -215,7 +217,7 @@
 		floodlist += F
 		F.fswitch = src
 	..()
-	start_processing_power()
+	start_processing()
 
 /obj/structure/machinery/colony_floodlight_switch/update_icon()
 	if(!ispowered)

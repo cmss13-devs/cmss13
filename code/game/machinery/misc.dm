@@ -61,7 +61,7 @@ var/list/alldepartments = list()
 	use_power = 1
 	idle_power_usage = 30
 	active_power_usage = 200
-	power_channel = EQUIP
+	power_channel = POWER_CHANNEL_EQUIP
 
 	var/obj/item/card/id/scan = null // identification
 	var/authenticated = 0
@@ -293,7 +293,7 @@ proc/SendFax(var/sent, var/sentname, var/mob/Sender, var/dpt)
 
 	for(var/obj/structure/machinery/faxmachine/F in allfaxes)
 		if( F.department == dpt )
-			if(! (F.stat & (BROKEN|NOPOWER) ) )
+			if(! (F.inoperable() ) )
 
 				flick("faxreceive", F)
 

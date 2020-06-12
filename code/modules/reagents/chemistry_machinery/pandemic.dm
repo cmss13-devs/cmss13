@@ -31,7 +31,7 @@
 
 
 /obj/structure/machinery/computer/pandemic/Topic(href, href_list)
-	if(stat & (NOPOWER|BROKEN))
+	if(inoperable())
 		return
 	if(!ishuman(usr))
 		return
@@ -122,7 +122,7 @@
 		return
 	else if(href_list["name_disease"])
 		var/new_name = stripped_input(user, "Name the Disease", "New Name", "", MAX_NAME_LEN)
-		if(stat & (NOPOWER|BROKEN)) return
+		if(inoperable()) return
 		if(user.stat || user.is_mob_restrained()) return
 		if(!in_range(src, user)) return
 		var/id = href_list["name_disease"]
@@ -237,7 +237,7 @@
 
 /obj/structure/machinery/computer/pandemic/attackby(obj/item/I, mob/living/user)
 	if(istype(I, /obj/item/reagent_container/glass))
-		if(stat & (NOPOWER|BROKEN))
+		if(inoperable())
 			return
 		if(beaker)
 			to_chat(user, SPAN_WARNING("A beaker is already loaded into the machine."))

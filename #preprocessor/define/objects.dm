@@ -23,10 +23,11 @@
 #define ATMOS_DEFAULT_VOLUME_PIPE	70	//L
 
 // channel numbers for power
-#define EQUIP	1
-#define LIGHT	2
-#define ENVIRON	3
-#define TOTAL	4	//for total power used only
+#define POWER_CHANNEL_EQUIP		1
+#define POWER_CHANNEL_LIGHT		2
+#define POWER_CHANNEL_ENVIRON	3
+#define POWER_CHANNEL_ONEOFF  	4   //One-off power usage
+#define POWER_CHANNEL_TOTAL		5	//for total power used only
 
 // bitflags for machine stat variable
 #define FULLY_REPAIRED			0

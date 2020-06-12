@@ -72,7 +72,7 @@
 			var/area/home = get_area(src)
 			if(!home)	return//something to do with malf fucking things up I guess. <-- aisat is gone. is this still necessary? ~Carn
 			if(home.powered(EQUIP))
-				home.use_power(1000, EQUIP)
+				home.use_power(1000)
 */
 
 			if (src:aiRestorePowerRoutine==2)

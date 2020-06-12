@@ -61,7 +61,7 @@ obj/structure/machinery/recharger/attack_hand(mob/user as mob)
 		update_icon()
 
 obj/structure/machinery/recharger/process()
-	if(stat & (NOPOWER|BROKEN) || !anchored)
+	if(inoperable() || !anchored)
 		update_use_power(0)
 		update_icon()
 		return
@@ -150,7 +150,7 @@ obj/structure/machinery/recharger/process()
 	update_icon()
 
 obj/structure/machinery/recharger/emp_act(severity)
-	if(stat & (NOPOWER|BROKEN) || !anchored)
+	if(inoperable() || !anchored)
 		..(severity)
 		return
 /*
@@ -167,7 +167,7 @@ obj/structure/machinery/recharger/emp_act(severity)
 
 obj/structure/machinery/recharger/update_icon()	//we have an update_icon() in addition to the stuff in process to make it feel a tiny bit snappier.
 	src.overlays = 0
-	if((stat & (NOPOWER|BROKEN)))
+	if((inoperable()))
 		return
 	else if(!charging)
 		overlays += "recharger-power"

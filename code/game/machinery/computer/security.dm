@@ -64,7 +64,7 @@
 
 //Someone needs to break down the dat += into chunks instead of long ass lines.
 /obj/structure/machinery/computer/secure_data/attack_hand(mob/user as mob)
-	if(..() || !allowed(usr) || stat & (NOPOWER|BROKEN))
+	if(..() || !allowed(usr) || inoperable())
 		return
 
 	if(!z == MAIN_SHIP_Z_LEVEL)
@@ -550,7 +550,7 @@ What a mess.*/
 			return selection.fields["img"]
 
 /obj/structure/machinery/computer/secure_data/emp_act(severity)
-	if(stat & (BROKEN|NOPOWER))
+	if(inoperable())
 		..(severity)
 		return
 

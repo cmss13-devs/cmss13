@@ -57,7 +57,7 @@
 
 /obj/structure/machinery/chem_simulator/power_change()
 	..()
-	if(stat & (BROKEN|NOPOWER))
+	if(inoperable())
 		icon_state = "modifier_off"
 	nanomanager.update_uis(src) // update all UIs attached to src
 
@@ -93,7 +93,7 @@
 	nanomanager.update_uis(src) // update all UIs attached to src
 
 /obj/structure/machinery/chem_simulator/attack_hand(mob/user as mob)
-	if(stat & (BROKEN|NOPOWER))
+	if(inoperable())
 		return
 	if(!skillcheck(user, SKILL_RESEARCH, SKILL_RESEARCH_TRAINED))
 		to_chat(user, SPAN_WARNING("You have no idea how to use this."))
@@ -141,7 +141,7 @@
 		ui.open()
 
 /obj/structure/machinery/chem_simulator/Topic(href, href_list)
-	if(stat & (BROKEN|NOPOWER) || !ishuman(usr))
+	if(inoperable() || !ishuman(usr))
 		return
 	var/mob/living/carbon/human/user = usr
 	if(user.stat || user.is_mob_restrained() || !in_range(src, user))
@@ -200,7 +200,7 @@
 	nanomanager.update_uis(src)
 
 /obj/structure/machinery/chem_simulator/process()
-	if(stat & (BROKEN|NOPOWER))
+	if(inoperable())
 		return
 	if(simulating)
 		simulating--

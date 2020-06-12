@@ -219,7 +219,7 @@
 ************************************/
 
 /obj/structure/machinery/microwave/proc/cook()
-	if(stat & (NOPOWER|BROKEN))
+	if(inoperable())
 		return
 	start()
 	if (reagents.total_volume==0 && !(locate(/obj) in contents)) //dry run
@@ -277,7 +277,7 @@
 
 /obj/structure/machinery/microwave/proc/wzhzhzh(var/seconds as num)
 	for (var/i=1 to seconds)
-		if (stat & (NOPOWER|BROKEN))
+		if (inoperable())
 			return 0
 		use_power(500)
 		sleep(10)

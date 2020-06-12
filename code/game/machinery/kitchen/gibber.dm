@@ -60,7 +60,7 @@
 	overlays.Cut()
 	if (dirty)
 		src.overlays += image('icons/obj/structures/machinery/kitchen.dmi', "grbloody")
-	if(stat & (NOPOWER|BROKEN))
+	if(inoperable())
 		return
 	if (!occupant)
 		src.overlays += image('icons/obj/structures/machinery/kitchen.dmi', "grjam")
@@ -75,7 +75,7 @@
 
 
 /obj/structure/machinery/gibber/attack_hand(mob/user as mob)
-	if(stat & (NOPOWER|BROKEN))
+	if(inoperable())
 		return
 	if(operating)
 		to_chat(user, SPAN_DANGER("It's locked and running"))

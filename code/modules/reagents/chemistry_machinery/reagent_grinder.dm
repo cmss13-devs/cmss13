@@ -155,7 +155,7 @@
 	[processing_chamber]<br>
 	[beaker_contents]<hr>
 	"}
-		if(is_beaker_ready && !is_chamber_empty && !(stat & (NOPOWER|BROKEN)))
+		if(is_beaker_ready && !is_chamber_empty && !(inoperable()))
 			dat += "<A href='?src=\ref[src];action=grind'>Grind the reagents</a><BR>"
 			dat += "<A href='?src=\ref[src];action=juice'>Juice the reagents</a><BR><BR>"
 		if(holdingitems && holdingitems.len > 0)
@@ -253,7 +253,7 @@
 
 /obj/structure/machinery/reagentgrinder/proc/juice()
 	power_change()
-	if(stat & (NOPOWER|BROKEN))
+	if(inoperable())
 		return
 	if(!beaker || (beaker && beaker.reagents.total_volume >= beaker.reagents.maximum_volume))
 		return
@@ -286,7 +286,7 @@
 /obj/structure/machinery/reagentgrinder/proc/grind()
 
 	power_change()
-	if(stat & (NOPOWER|BROKEN))
+	if(inoperable())
 		return
 	if(!beaker || (beaker && beaker.reagents.total_volume >= beaker.reagents.maximum_volume))
 		return

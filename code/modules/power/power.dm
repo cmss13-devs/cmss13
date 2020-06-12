@@ -59,16 +59,13 @@
 
 // increment the power usage stats for an area
 
-/obj/structure/machinery/proc/use_power(var/amount, var/chan = -1, var/autocalled = 0) // defaults to power_channel
+/obj/structure/machinery/proc/use_power(var/amount, var/chan = POWER_CHANNEL_ONEOFF, var/autocalled = 0) // defaults to one-off power charge, not constant power change
 	var/area/A = get_area(src)		// make sure it's in an area
 	if(!A || !isarea(A) || !A.master)
 		return
-	if(chan == -1)
-		chan = power_channel
 	A.master.use_power(amount, chan)
 	if(!autocalled)
 		log_power_update_request(A.master, src)
-		A.master.powerupdate = 2	// Decremented by 2 each GC tick, since it's not auto power change we're going to update power twice.
 	return 1
 
 //The master_area optional argument can be used to save on a lot of processing if the master area is already known. This is mainly intended for when this proc is called by the master controller.

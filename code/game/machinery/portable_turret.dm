@@ -413,7 +413,7 @@ Status: []<BR>"},
 			src.cover = new /obj/structure/machinery/porta_turret_cover(src.loc) // if the turret has no cover and is anchored, give it a cover
 			src.cover.Parent_Turret = src // assign the cover its Parent_Turret, which would be this (src)
 
-	if(stat & (NOPOWER|BROKEN))
+	if(inoperable())
 		// if the turret has no power or is broken, make the turret pop down if it hasn't already
 		popDown()
 		return

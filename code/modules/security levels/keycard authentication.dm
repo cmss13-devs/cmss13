@@ -20,14 +20,14 @@
 	use_power = 1
 	idle_power_usage = 2
 	active_power_usage = 6
-	power_channel = ENVIRON
+	power_channel = POWER_CHANNEL_ENVIRON
 
 /obj/structure/machinery/keycard_auth/attack_ai(mob/user as mob)
 	to_chat(user, "The station AI is not to interact with these devices.")
 	return
 
 /obj/structure/machinery/keycard_auth/attackby(obj/item/W as obj, mob/user as mob)
-	if(stat & (NOPOWER|BROKEN))
+	if(inoperable())
 		to_chat(user, "This device is not powered.")
 		return
 	if(istype(W,/obj/item/card/id))
@@ -48,7 +48,7 @@
 		icon_state = "auth_off"
 
 /obj/structure/machinery/keycard_auth/attack_hand(mob/user as mob)
-	if(user.stat || stat & (NOPOWER|BROKEN))
+	if(user.stat || inoperable())
 		to_chat(user, "This device is not powered.")
 		return
 	if(busy)
@@ -83,7 +83,7 @@
 	if(busy)
 		to_chat(usr, "This device is busy.")
 		return
-	if(usr.stat || stat & (BROKEN|NOPOWER))
+	if(usr.stat || inoperable())
 		to_chat(usr, "This device is without power.")
 		return
 	if(href_list["triggerevent"])
@@ -122,7 +122,7 @@
 	reset()
 
 /obj/structure/machinery/keycard_auth/proc/receive_request(var/obj/structure/machinery/keycard_auth/source)
-	if(stat & (BROKEN|NOPOWER))
+	if(inoperable())
 		return
 	event_source = source
 	busy = 1
@@ -189,7 +189,7 @@ var/global/maint_all_access = 0
 	window_desc = "This device is used to override the security lockdown. It requires both of the authentication disks, which can be found in the security offices of various cell blocks around the station."
 
 /obj/structure/machinery/keycard_auth/lockdown/attackby(obj/item/W as obj, mob/user as mob)
-	if(stat & (NOPOWER|BROKEN))
+	if(inoperable())
 		to_chat(user, "This device is not powered.")
 		return
 	if(!istype(W, card_type))
@@ -230,7 +230,7 @@ var/global/maint_all_access = 0
 	reset()
 
 /obj/structure/machinery/keycard_auth/lockdown/attack_hand(mob/user as mob)
-	if(user.stat || stat & (NOPOWER|BROKEN))
+	if(user.stat || inoperable())
 		to_chat(user, "This device is not powered.")
 		return
 	if(busy)

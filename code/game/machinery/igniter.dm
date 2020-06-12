@@ -107,7 +107,7 @@
 	return 1
 
 /obj/structure/machinery/sparker/emp_act(severity)
-	if(stat & (BROKEN|NOPOWER))
+	if(inoperable())
 		..(severity)
 		return
 	ignite()
@@ -117,7 +117,7 @@
 	return attack_hand(user)
 
 /obj/structure/machinery/ignition_switch/attack_hand(mob/user as mob)
-	if(stat & (NOPOWER|BROKEN))
+	if(inoperable())
 		return
 	if(active)
 		return

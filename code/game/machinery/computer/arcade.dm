@@ -181,7 +181,7 @@
 	return
 
 /obj/structure/machinery/computer/arcade/emp_act(severity)
-	if(stat & (NOPOWER|BROKEN))
+	if(inoperable())
 		..(severity)
 		return
 	var/empprize = null

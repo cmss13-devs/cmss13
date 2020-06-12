@@ -518,12 +518,6 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 	for(var/mob/M in xeno_mob_list)
 		individual_counts["[M.type]"]++
 
-	for(var/area/A in active_areas)
-		if(A.master == A)
-			if(A.powerupdate)
-				for(var/obj/structure/machinery/M in A.area_machines)
-					individual_counts["[M.type]"]++
-
 	var/str = ""
 	for(var/tmp in individual_counts)
 		str += "[tmp],[individual_counts[tmp]]<BR>"

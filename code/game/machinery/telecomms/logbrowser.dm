@@ -16,7 +16,7 @@
 	req_access = list(ACCESS_MARINE_BRIDGE)
 
 	attack_hand(mob/user as mob)
-		if(stat & (BROKEN|NOPOWER))
+		if(inoperable())
 			return
 		user.set_interaction(src)
 		var/dat = "<TITLE>Telecommunication Server Monitor</TITLE><center><b>Telecommunications Server Monitor</b></center>"

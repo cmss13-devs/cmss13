@@ -153,7 +153,7 @@
 	update_icon()
 
 /obj/structure/machinery/optable/update_icon()
-	if(stat & (NOPOWER|BROKEN))
+	if(inoperable())
 		icon_state = "table2-idle"
 	else if(!ishuman(buckled_mob))
 		icon_state = "table2-idle"

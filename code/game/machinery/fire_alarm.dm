@@ -18,8 +18,7 @@ FIRE ALARM
 	use_power = 1
 	idle_power_usage = 2
 	active_power_usage = 6
-	power_channel = ENVIRON
-	processable = 0
+	power_channel = POWER_CHANNEL_ENVIRON
 	var/last_process = 0
 	var/wiresexposed = 0
 	var/buildstage = 2 // 2 = complete, 1 = no wires,  0 = circuit gone
@@ -126,7 +125,7 @@ FIRE ALARM
 	add_timer(CALLBACK(src, .proc/update_icon), rand(0,15))
 
 /obj/structure/machinery/firealarm/attack_hand(mob/user as mob)
-	if(user.stat || stat & (NOPOWER|BROKEN))
+	if(user.stat || inoperable())
 		return
 
 	if (buildstage != 2)
@@ -169,7 +168,7 @@ FIRE ALARM
 
 /obj/structure/machinery/firealarm/Topic(href, href_list)
 	..()
-	if (usr.stat || stat & (BROKEN|NOPOWER))
+	if (usr.stat || inoperable())
 		return
 
 	if (buildstage != 2)

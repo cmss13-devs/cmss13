@@ -2,7 +2,7 @@
 	// Metadata; you should define these.
 	var/name = "fire ivory tower"              // Name of the subsystem.
 	var/init_order = SS_INIT_UNSPECIFIED       // Order of initialization. Higher numbers are initialized first, lower numbers later. Can be decimal and negative values.
-	var/wait = 20                              // Time to wait (in deciseconds) between each call to fire(). Must be a positive integer.
+	var/wait = 2 SECONDS                       // Time to wait (in deciseconds) between each call to fire(). Must be a positive integer.
 	var/display_order = SS_DISPLAY_UNSPECIFIED // Display affects the order the subsystem is displayed in the MC tab.
 	var/priority = SS_PRIORITY_UNSPECIFIED     // When mutiple subsystems need to run in the same tick, higher priority subsystems will run first and be given a higher share of the tick before MC_TICK_CHECK triggers a sleep.
 

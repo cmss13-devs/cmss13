@@ -490,7 +490,7 @@
 	return
 
 /obj/structure/machinery/computer/med_data/emp_act(severity)
-	if(stat & (BROKEN|NOPOWER))
+	if(inoperable())
 		..(severity)
 		return
 

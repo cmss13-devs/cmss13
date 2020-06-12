@@ -10,7 +10,7 @@
 
 /obj/structure/machinery/computer/station_alert/attack_ai(mob/user)
 	add_fingerprint(user)
-	if(stat & (BROKEN|NOPOWER))
+	if(inoperable())
 		return
 	interact(user)
 	return
@@ -18,7 +18,7 @@
 
 /obj/structure/machinery/computer/station_alert/attack_hand(mob/user)
 	add_fingerprint(user)
-	if(stat & (BROKEN|NOPOWER))
+	if(inoperable())
 		return
 	interact(user)
 	return
@@ -96,7 +96,7 @@
 
 
 /obj/structure/machinery/computer/station_alert/process()
-	if(stat & (BROKEN|NOPOWER))
+	if(inoperable())
 		icon_state = "atmos0"
 		return
 	var/active_alarms = 0

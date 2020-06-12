@@ -20,7 +20,7 @@
 	var/temp = ""				// temporary feedback messages
 
 	attack_hand(mob/user as mob)
-		if(stat & (BROKEN|NOPOWER))
+		if(inoperable())
 			return
 		user.set_interaction(src)
 		var/dat = "<TITLE>Telecommunications Monitor</TITLE><center><b>Telecommunications Monitor</b></center>"

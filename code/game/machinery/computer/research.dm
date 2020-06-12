@@ -86,7 +86,7 @@
 	return
 
 /obj/structure/machinery/computer/research/attack_hand(mob/user as mob)
-	if(stat & (BROKEN|NOPOWER))
+	if(inoperable())
 		return
 	ui_interact(user)
 
@@ -109,7 +109,7 @@
 		ui.open()
 
 /obj/structure/machinery/computer/research/Topic(href, href_list)
-	if(stat & (BROKEN|NOPOWER) || !ishuman(usr))
+	if(inoperable() || !ishuman(usr))
 		return
 	var/mob/living/carbon/human/user = usr
 	if(user.stat || user.is_mob_restrained() || !in_range(src, user))

@@ -89,7 +89,7 @@
 
 
 /obj/structure/machinery/flasher/emp_act(severity)
-	if(stat & (BROKEN|NOPOWER))
+	if(inoperable())
 		..(severity)
 		return
 	if(prob(75/severity))
@@ -126,7 +126,7 @@
 
 /obj/structure/machinery/flasher_button/attack_hand(mob/user as mob)
 
-	if(stat & (NOPOWER|BROKEN))
+	if(inoperable())
 		return
 	if(active)
 		return

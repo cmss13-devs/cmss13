@@ -57,7 +57,7 @@
 /obj/structure/machinery/light_switch/power_change()
 
 	if(!otherarea)
-		if(powered(LIGHT))
+		if(powered(POWER_CHANNEL_LIGHT))
 			stat &= ~NOPOWER
 		else
 			stat |= NOPOWER
@@ -65,7 +65,7 @@
 		updateicon()
 
 /obj/structure/machinery/light_switch/emp_act(severity)
-	if(stat & (BROKEN|NOPOWER))
+	if(inoperable())
 		..(severity)
 		return
 	power_change()

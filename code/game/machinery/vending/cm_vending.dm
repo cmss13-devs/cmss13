@@ -26,7 +26,7 @@
 	var/list/listed_products = list()
 
 /obj/structure/machinery/cm_vending/attack_hand(mob/user)
-	if(stat & (BROKEN|NOPOWER))
+	if(inoperable())
 		return
 
 	if(!ishuman(user))
@@ -202,7 +202,7 @@
 
 
 /obj/structure/machinery/cm_vending/Topic(href, href_list)
-	if(stat & (BROKEN|NOPOWER))
+	if(inoperable())
 		return
 	if(usr.is_mob_incapacitated())
 		return
@@ -1482,7 +1482,7 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 
 /obj/structure/machinery/cm_vending/sorted/attack_hand(mob/user)
 
-	if(stat & (BROKEN|NOPOWER))
+	if(inoperable())
 		return
 
 	if(!ishuman(user))
@@ -1533,7 +1533,7 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 	return loc
 
 /obj/structure/machinery/cm_vending/sorted/Topic(href, href_list)
-	if(stat & (BROKEN|NOPOWER))
+	if(inoperable())
 		return
 	if(usr.is_mob_incapacitated())
 		return
@@ -1600,7 +1600,7 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 
 /obj/structure/machinery/cm_vending/sorted/MouseDrop_T(var/atom/movable/A, mob/user)
 
-	if(stat & (BROKEN|NOPOWER))
+	if(inoperable())
 		return
 
 	if(user.stat || user.is_mob_restrained() || user.lying)

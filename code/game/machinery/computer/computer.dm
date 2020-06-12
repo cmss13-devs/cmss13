@@ -24,7 +24,7 @@
 	power_change()
 
 /obj/structure/machinery/computer/process()
-	if(stat & (NOPOWER|BROKEN))
+	if(inoperable())
 		return 0
 	return 1
 

@@ -49,7 +49,7 @@ var/global/list/frozen_items = list(SQUAD_NAME_1 = list(), SQUAD_NAME_2 = list()
 	src.attack_hand()
 
 /obj/structure/machinery/computer/cryopod/attack_hand(mob/user = usr)
-	if(stat & (NOPOWER|BROKEN))
+	if(inoperable())
 		return
 
 	user.set_interaction(src)

@@ -135,8 +135,7 @@
 	use_power = 2
 	idle_power_usage = 2
 	active_power_usage = 20
-	processable = 0
-	power_channel = LIGHT //Lights are calc'd via area so they dont need to be in the machine list
+	power_channel = POWER_CHANNEL_LIGHT //Lights are calc'd via area so they dont need to be in the machine list
 	var/on = 0					// 1 if on, 0 if off
 	var/on_gs = 0
 	var/brightness = 8			// luminosity when on, also used in power calculation
@@ -259,10 +258,10 @@
 					on = 0
 					SetLuminosity(0)
 			else
-				use_power = 2
+				update_use_power(2)
 				SetLuminosity(brightness)
 	else
-		use_power = 1
+		update_use_power(1)
 		SetLuminosity(0)
 
 	active_power_usage = (luminosity * 10)
@@ -674,7 +673,7 @@
 	use_power = 2
 	idle_power_usage = 2
 	active_power_usage = 20
-	power_channel = LIGHT //Lights are calc'd via area so they dont need to be in the machine list
+	power_channel = POWER_CHANNEL_LIGHT //Lights are calc'd via area so they dont need to be in the machine list
 	unslashable = TRUE
 	unacidable = TRUE
 

@@ -381,7 +381,7 @@
 		customname = "USCM Update"
 	if(faction == FACTION_MARINE)
 		for(var/obj/structure/machinery/computer/communications/C in machines)
-			if(!(C.stat & (BROKEN|NOPOWER)))
+			if(!(C.inoperable()))
 				var/obj/item/paper/P = new /obj/item/paper( C.loc )
 				P.name = "'[command_name] Update.'"
 				P.info = input
@@ -431,7 +431,7 @@
 		return FALSE
 	if(ai_announcement(input))
 		for(var/obj/structure/machinery/computer/communications/C in machines)
-			if(!(C.stat & (BROKEN|NOPOWER)))
+			if(!(C.inoperable()))
 				var/obj/item/paper/P = new /obj/item/paper(C.loc)
 				P.name = "'[MAIN_AI_SYSTEM] Update.'"
 				P.info = input
@@ -454,7 +454,7 @@
 		return FALSE
 
 	for(var/obj/structure/machinery/computer/communications/C in machines)
-		if(!(C.stat & (BROKEN|NOPOWER)))
+		if(!(C.inoperable()))
 			var/obj/item/paper/P = new /obj/item/paper(C.loc)
 			P.name = "'[MAIN_AI_SYSTEM] Update.'"
 			P.info = input

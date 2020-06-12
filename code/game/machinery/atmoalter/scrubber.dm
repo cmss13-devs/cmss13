@@ -13,7 +13,7 @@
 	cell = new/obj/item/cell(src)
 
 /obj/structure/machinery/portable_atmospherics/powered/scrubber/emp_act(severity)
-	if(stat & (BROKEN|NOPOWER))
+	if(inoperable())
 		..(severity)
 		return
 
@@ -61,7 +61,7 @@
 /obj/structure/machinery/portable_atmospherics/powered/scrubber/huge/update_icon()
 	src.overlays = 0
 
-	if(on && !(stat & (NOPOWER|BROKEN)))
+	if(on && !(inoperable()))
 		icon_state = "scrubber:1"
 	else
 		icon_state = "scrubber:0"

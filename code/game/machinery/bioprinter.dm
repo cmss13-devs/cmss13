@@ -23,7 +23,7 @@
 		)
 
 /obj/structure/machinery/bioprinter/attack_hand(mob/user)
-	if(stat & (BROKEN|NOPOWER))
+	if(inoperable())
 		return
 
 	if(working)

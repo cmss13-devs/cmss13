@@ -33,6 +33,7 @@
 	var/input_level_max = 200000
 	var/output_level_max = 200000
 	var/should_be_mapped = 0 // If this is set to 0 it will send out warning on New()
+	power_machine = TRUE
 
 /obj/structure/machinery/power/smes/Initialize()
 	. = ..()
@@ -53,7 +54,7 @@
 	if(!terminal.powernet)
 		terminal.connect_to_network()
 	updateicon()
-	start_processing_power()
+	start_processing()
 
 	if(!should_be_mapped)
 		warning("Non-buildable or Non-magical SMES at [src.x]X [src.y]Y [src.z]Z")
@@ -302,10 +303,6 @@
 
 	if (!istype(src.loc, /turf) && !istype(usr, /mob/living/silicon/))
 		return 0 // Do not update ui
-
-	for(var/area/A in active_areas)
-		A.master.powerupdate = 3
-
 
 	if( href_list["cmode"] )
 		chargemode = !chargemode

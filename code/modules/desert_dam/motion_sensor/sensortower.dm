@@ -41,7 +41,7 @@
 /obj/structure/machinery/sensortower/process()
 	if(!is_on || buildstate || !anchored) //Default logic checking
 		return 0
-	if(stat & (BROKEN|NOPOWER))
+	if(inoperable())
 		return 0
 	checkfailure()
 

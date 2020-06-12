@@ -25,7 +25,7 @@
 
 
 /obj/structure/machinery/computer/pod/proc/alarm()
-	if(stat & (NOPOWER|BROKEN))
+	if(inoperable())
 		return
 
 	if(!( connected ))

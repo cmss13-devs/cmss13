@@ -48,15 +48,6 @@ Class Procs:
 
    Dispose()                     'game/machinery/machine.dm'
 
-   auto_use_power()            'game/machinery/machine.dm'
-      This proc determines how power mode power is deducted by the machine.
-      'auto_use_power()' is called by the 'master_controller' game_controller every
-      tick.
-
-      Return Value:
-         return:1 -- if object is powered
-         return:0 -- if object is not powered.
-
       Default definition uses 'use_power', 'power_channel', 'active_power_usage',
       'idle_power_usage', 'powered()', and 'use_power()' implement behavior.
 
@@ -95,13 +86,9 @@ Class Procs:
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	var/stat = 0
 	var/use_power = 1
-	var/processable = 1
-		//0 = dont run the auto
-		//1 = run auto, use idle
-		//2 = run auto, use active
 	var/idle_power_usage = 0
 	var/active_power_usage = 0
-	var/power_channel = EQUIP
+	var/power_channel = POWER_CHANNEL_EQUIP
 	var/mob/living/carbon/human/operator = null //Had no idea where to put this so I put this here. Used for operating machines with RELAY_CLICK
 		//EQUIP,ENVIRON or LIGHT
 	var/list/component_parts = list() //list of all the parts used to build it, if made from certain kinds of frames.
@@ -111,13 +98,14 @@ Class Procs:
 	throwpass = 1
 	projectile_coverage = PROJECTILE_COVERAGE_MEDIUM
 	flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND
+	var/power_machine = FALSE //Whether the machine should process on power, or normal processor
 
 /obj/structure/machinery/New()
 	..()
 	machines += src
 	var/area/A = get_area(src)
-	if(processable && A)
-		A.master.area_machines += src
+	if(A)
+		A.add_machine(src) //takes care of adding machine's power usage
 
 /obj/structure/machinery/Dispose()
 	machines -= src
@@ -125,27 +113,21 @@ Class Procs:
 	power_machines -= src
 	var/area/A = get_area(src)
 	if(A)
-		A.master.area_machines -= src
+		A.remove_machine(src) //takes care of removing machine from power usage
 	. = ..()
 
 /obj/structure/machinery/proc/start_processing()
 	if(!machine_processing)
 		machine_processing = 1
-		addToListNoDupe(processing_machines, src)
+		if(power_machine)
+			addToListNoDupe(power_machines, src)
+		else
+			addToListNoDupe(processing_machines, src)
 
 /obj/structure/machinery/proc/stop_processing()
 	if(machine_processing)
 		machine_processing = 0
 		processing_machines -= src
-
-/obj/structure/machinery/proc/start_processing_power()
-	if(!machine_processing)
-		machine_processing = 1
-		addToListNoDupe(power_machines, src)
-
-/obj/structure/machinery/proc/stop_processing_power()
-	if(machine_processing)
-		machine_processing = 0
 		power_machines -= src
 
 /obj/structure/machinery/process()//If you dont use process or power why are you here
@@ -155,7 +137,7 @@ Class Procs:
 	..()
 	if (!stat)
 		return
-	
+
 	to_chat(user, "It does not appear to be working.")
 	var/msg = get_repair_move_text(FALSE)
 	if(msg && skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
@@ -184,28 +166,25 @@ Class Procs:
 	return
 
 //sets the use_power var and then forces an area power update
-/obj/structure/machinery/proc/update_use_power(var/new_use_power, var/force_update = 0)
-	if ((new_use_power == use_power) && !force_update)
+/obj/structure/machinery/proc/update_use_power(var/new_use_power)
+	if (new_use_power == use_power)
 		return	//don't need to do anything
 
+	var/delta_power = 0 //figuring how much our power delta is
+	delta_power -= calculate_current_power_usage() //current usage
 	use_power = new_use_power
+	delta_power += calculate_current_power_usage() //updated usage
 
-	//force area power update
-	force_power_update()
+	//we're updating our power over time amount, not just using one-off power usage, hence why we're passing the channel
+	use_power(delta_power, power_channel)
 
-/obj/structure/machinery/proc/force_power_update()
-	var/area/A = get_area(src)
-	if(A && A.master)
-		A.master.powerupdate = 1
-
-/obj/structure/machinery/proc/auto_use_power()
-	if(!powered(power_channel))
-		return 0
-	if(src.use_power == 1)
-		use_power(idle_power_usage,power_channel, 1)
-	else if(src.use_power >= 2)
-		use_power(active_power_usage,power_channel, 1)
-	return 1
+/obj/structure/machinery/proc/calculate_current_power_usage()
+	switch(use_power)
+		if(1)
+			return idle_power_usage
+		if(2)
+			return idle_power_usage + active_power_usage
+	return 0
 
 /obj/structure/machinery/proc/operable(var/additional_flags = 0)
 	return !inoperable(additional_flags)
@@ -226,10 +205,6 @@ Class Procs:
 		return 1
 
 	src.add_fingerprint(usr)
-
-	var/area/A = get_area(src)
-	if(A)
-		A.master.powerupdate = 1
 
 	return 0
 
@@ -267,9 +242,6 @@ Class Procs:
 			return 1
 
 	src.add_fingerprint(user)
-
-	var/area/A = get_area(src)
-	A.master.powerupdate = 1
 
 	return 0
 

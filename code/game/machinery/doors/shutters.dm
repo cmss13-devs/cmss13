@@ -2,8 +2,7 @@
 	name = "\improper Shutters"
 	icon = 'icons/obj/structures/doors/rapid_pdoor.dmi'
 	icon_state = "shutter1"
-	power_channel = ENVIRON
-	processable = 0
+	power_channel = POWER_CHANNEL_ENVIRON
 
 /obj/structure/machinery/door/poddoor/shutters/New()
 	..()

@@ -22,7 +22,7 @@
 	"copper","mercury","radium","water","ethanol","sugar","sacid")
 
 /obj/structure/machinery/chem_dispenser/proc/recharge()
-	if(stat & (BROKEN|NOPOWER))
+	if(inoperable())
 		return
 	var/addenergy = 10
 	var/oldenergy = energy
@@ -75,7 +75,7 @@
   * @return nothing
   */
 /obj/structure/machinery/chem_dispenser/ui_interact(mob/user, ui_key = "main",var/datum/nanoui/ui = null, var/force_open = 0)
-	if(stat & (BROKEN|NOPOWER))
+	if(inoperable())
 		return
 	if(user.stat || user.is_mob_restrained())
 		return
@@ -122,7 +122,7 @@
 		ui.open()
 
 /obj/structure/machinery/chem_dispenser/Topic(href, href_list)
-	if(stat & (NOPOWER|BROKEN))
+	if(inoperable())
 		return FALSE // don't update UIs attached to this object
 
 	if(href_list["amount"])

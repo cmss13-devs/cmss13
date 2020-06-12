@@ -584,7 +584,7 @@
 		to_chat(usr, SPAN_NOTICE("\The [src] is already occupied!"))
 		return
 
-	if(stat & (NOPOWER|BROKEN))
+	if(inoperable())
 		to_chat(usr, SPAN_NOTICE("\The [src] is non-functional!"))
 		return
 
@@ -648,7 +648,7 @@
 			to_chat(user, SPAN_NOTICE("\The [src] is already occupied!"))
 			return
 
-		if(stat & (NOPOWER|BROKEN))
+		if(inoperable())
 			to_chat(user, SPAN_NOTICE("\The [src] is non-functional!"))
 			return
 
@@ -724,7 +724,7 @@
 	if(..())
 		return
 	var/dat = ""
-	if(!connected || (connected.stat & (NOPOWER|BROKEN)))
+	if(!connected || (connected.inoperable()))
 		dat += "This console is not connected to a Med-Pod or the Med-Pod is non-functional."
 		to_chat(user, "This console seems to be powered down.")
 	else

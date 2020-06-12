@@ -57,7 +57,7 @@
 		ui.set_auto_update(1)
 
 /obj/structure/machinery/cm_vending/clothes_personal/Topic(href, href_list)
-	if(stat & (BROKEN|NOPOWER))
+	if(inoperable())
 		return
 	if(usr.is_mob_incapacitated())
 		return

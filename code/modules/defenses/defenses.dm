@@ -7,7 +7,7 @@
 	unacidable = TRUE
 	density = TRUE
 	layer = ABOVE_MOB_LAYER //So you can't hide it under corpses
-	use_power = FALSE
+	use_power = 0
 	stat = DEFENSE_FUNCTIONAL
 	health = 200
 	var/belonging_to_faction = list(FACTION_MARINE)

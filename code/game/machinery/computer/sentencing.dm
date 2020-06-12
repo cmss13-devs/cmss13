@@ -11,7 +11,7 @@
 	var/paper_counter = 0
 
 /obj/structure/machinery/computer/sentencing/attack_hand(mob/user as mob)
-	if(..() || !allowed(usr) || stat & (NOPOWER|BROKEN))
+	if(..() || !allowed(usr) || inoperable())
 		return
 
 	ui_interact(user)
@@ -354,7 +354,7 @@
 	if(..())
 		return
 
-	if(stat & (NOPOWER|BROKEN))
+	if(inoperable())
 		return FALSE
 
 	usr.set_interaction(src)

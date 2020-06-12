@@ -245,7 +245,7 @@
 		return src.attack_hand(user)
 
 	attack_hand(mob/user as mob)
-		if(stat & (BROKEN|NOPOWER))
+		if(inoperable())
 			return
 		user.set_interaction(src)
 		var/dat = "<B>Magnetic Control Console</B><BR><BR>"
@@ -272,7 +272,7 @@
 		show_browser(user, dat, name, "magnet", "size=400x500")
 
 	Topic(href, href_list)
-		if(stat & (BROKEN|NOPOWER))
+		if(inoperable())
 			return
 		usr.set_interaction(src)
 		src.add_fingerprint(usr)
@@ -339,7 +339,7 @@
 
 		while(moving && rpath.len >= 1)
 
-			if(stat & (BROKEN|NOPOWER))
+			if(inoperable())
 				break
 
 			looping = 1

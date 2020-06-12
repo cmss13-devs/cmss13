@@ -7,14 +7,14 @@
 	use_power = 1
 	idle_power_usage = 5
 	active_power_usage = 40000	//40 kW. (this the power drawn when charging)
-	power_channel = EQUIP
+	power_channel = POWER_CHANNEL_EQUIP
 	var/obj/item/cell/charging = null
 	var/chargelevel = -1
 
 /obj/structure/machinery/cell_charger/proc/updateicon()
 	icon_state = "ccharger[charging ? 1 : 0]"
 
-	if(charging && !(stat & (BROKEN|NOPOWER)) )
+	if(charging && !(inoperable()) )
 
 		var/newlevel = 	round(charging.percent() * 4.0 / 99)
 
@@ -80,7 +80,7 @@
 	return
 
 /obj/structure/machinery/cell_charger/emp_act(severity)
-	if(stat & (BROKEN|NOPOWER))
+	if(inoperable())
 		return
 	if(charging)
 		charging.emp_act(severity)
@@ -88,7 +88,7 @@
 
 
 /obj/structure/machinery/cell_charger/process()
-	if((stat & (BROKEN|NOPOWER)) || !anchored)
+	if((inoperable()) || !anchored)
 		update_use_power(0)
 		return
 

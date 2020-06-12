@@ -118,9 +118,9 @@
 	A.tagbase = "[A.type]_[md5(str)]" // without this dynamic light system ruin everithing
 	//var/ma
 	//ma = A.master ? "[A.master]" : "(null)"
-	A.power_equip = 0
-	A.power_light = 0
-	A.power_environ = 0
+	A.power_equip = FALSE
+	A.power_light = FALSE
+	A.power_environ = FALSE
 	A.always_unpowered = 0
 	move_turfs_to_area(turfs, A)
 

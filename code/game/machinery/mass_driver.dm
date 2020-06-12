@@ -17,7 +17,7 @@
 
 
 /obj/structure/machinery/mass_driver/proc/drive(amount)
-	if(stat & (BROKEN|NOPOWER))
+	if(inoperable())
 		return
 	use_power(500)
 	var/O_limit
@@ -34,7 +34,7 @@
 	return
 
 /obj/structure/machinery/mass_driver/emp_act(severity)
-	if(stat & (BROKEN|NOPOWER))
+	if(inoperable())
 		return
 	drive()
 	..(severity)

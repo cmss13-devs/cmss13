@@ -273,7 +273,7 @@ var/global/east_riverstart = 0
 
 /obj/structure/machinery/filtration_button/attack_hand(mob/user as mob)
 
-	if(stat & (NOPOWER|BROKEN))
+	if(inoperable())
 		return
 	if(active)
 		return

@@ -978,7 +978,7 @@ var/list/mechtoys = list(
 	var/spent = FALSE
 
 /obj/structure/machinery/computer/supplycomp/vehicle/attack_hand(var/mob/living/carbon/human/H as mob)
-	if(stat & (BROKEN|NOPOWER))
+	if(inoperable())
 		return
 
 	if(z != MAIN_SHIP_Z_LEVEL)

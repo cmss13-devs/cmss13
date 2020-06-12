@@ -5,7 +5,7 @@
 	icon_state = "meterX"
 	var/obj/structure/pipes/standard/target = null
 	anchored = 1.0
-	power_channel = ENVIRON
+	power_channel = POWER_CHANNEL_ENVIRON
 	use_power = 0
 
 /obj/structure/machinery/meter/New()
@@ -28,7 +28,7 @@
 	if(get_dist(user, src) > 3 && !(isAI(user) || istype(user, /mob/dead)))
 		t += SPAN_NOTICE("<B>You are too far away to read it.</B>")
 
-	else if(stat & (NOPOWER|BROKEN))
+	else if(inoperable())
 		t += SPAN_DANGER("<B>The display is off.</B>")
 
 	else if(target)

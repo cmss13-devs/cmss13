@@ -91,7 +91,7 @@
 				source.reagents.trans_id_to(dest, reagent_id, amount)
 
 /obj/structure/machinery/chem_master/Topic(href, href_list)
-	if(stat & (BROKEN|NOPOWER))
+	if(inoperable())
 		return
 	if(!ishuman(usr))
 		return

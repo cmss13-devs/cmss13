@@ -56,6 +56,7 @@ display round(lastgen) and phorontank amount
 	var/open = 0
 	var/recent_fault = 0
 	var/power_output = 1
+	power_machine = TRUE
 
 /obj/structure/machinery/power/port_gen/proc/HasFuel() //Placeholder for fuel check.
 	return 1
@@ -80,7 +81,7 @@ display round(lastgen) and phorontank amount
 
 	else
 		active = 0
-		stop_processing_power()
+		stop_processing()
 		icon_state = initial(icon_state)
 		handleInactive()
 
@@ -303,13 +304,13 @@ display round(lastgen) and phorontank amount
 		if(href_list["action"] == "enable")
 			if(!active && HasFuel() && !crit_fail)
 				active = 1
-				start_processing_power()
+				start_processing()
 				icon_state = "portgen1"
 				src.updateUsrDialog()
 		if(href_list["action"] == "disable")
 			if (active)
 				active = 0
-				stop_processing_power()
+				stop_processing()
 				icon_state = "portgen0"
 				src.updateUsrDialog()
 		if(href_list["action"] == "eject")

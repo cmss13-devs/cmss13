@@ -62,32 +62,3 @@ var/list/power_machines = list()
 
 		if (MC_TICK_CHECK)
 			return
-
-	while (currentrun_areas.len)
-		var/area/A = currentrun_areas[currentrun_areas.len]
-		currentrun_areas.len--
-
-		if(A.master == A)
-			if(A.powerupdate)
-				A.powerupdate -= 1
-				A.clear_usage()
-				for(var/obj/structure/machinery/M in A.area_machines) // should take it to O(n^2) and hopefully less expensive.
-					if(M)
-						//check if the area has power for M's channel
-						//this will keep stat updated in case the machine is moved from one area to another.
-						if(!M.processable)
-							A.area_machines -= M
-						M.power_change(A)	//we've already made sure A is a master area, above.
-
-						if(!(M.stat & NOPOWER) && M.use_power)
-							M.auto_use_power()
-
-			if(A.apc.len)
-				if (MC_TICK_CHECK)
-					return
-				continue
-
-		A.powerupdate = 0
-
-		if (MC_TICK_CHECK)
-			return

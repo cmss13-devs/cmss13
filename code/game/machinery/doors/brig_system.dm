@@ -44,7 +44,7 @@
 	update_icon()
 
 /obj/structure/machinery/brig_cell/process()
-	if(stat & (NOPOWER|BROKEN))	
+	if(inoperable())	
 		return
 
 	if(!incident_reports)
@@ -126,7 +126,7 @@
 	current_menu = "main_menu"
 
 /obj/structure/machinery/brig_cell/proc/timer_start(var/mob/living/user)
-	if(stat & (NOPOWER|BROKEN)  || !current_report)	
+	if(inoperable()  || !current_report)	
 		return FALSE
 
 	var/datum/crime_incident/C = current_report.incident
@@ -149,7 +149,7 @@
 		ai_silent_announcement("BRIG REPORT: [C.criminal_name] has been jailed for [C.charges_to_string()].")
 
 /obj/structure/machinery/brig_cell/proc/timer_end(var/obj/item/paper/incident/I)
-	if(stat & (NOPOWER|BROKEN) || (!I && !current_report))	
+	if(inoperable() || (!I && !current_report))	
 		return FALSE
 
 	var/datum/crime_incident/C

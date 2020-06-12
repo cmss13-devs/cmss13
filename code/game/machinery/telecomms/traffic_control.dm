@@ -66,7 +66,7 @@
 
 
 /obj/structure/machinery/computer/telecomms/traffic/attack_hand(mob/user as mob)
-	if(stat & (BROKEN|NOPOWER))
+	if(inoperable())
 		return
 	user.set_interaction(src)
 	var/dat = "<TITLE>Telecommunication Traffic Control</TITLE><center><b>Telecommunications Traffic Control</b></center>"

@@ -25,7 +25,7 @@
 			transform(AM)
 
 /obj/structure/machinery/transformer/proc/transform(var/mob/living/carbon/human/H)
-	if(stat & (BROKEN|NOPOWER))
+	if(inoperable())
 		return
 	if(!transform_dead && H.stat == DEAD)
 		playsound(src.loc, 'sound/machines/buzz-sigh.ogg', 50, 0)

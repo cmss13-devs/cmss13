@@ -9,7 +9,7 @@
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "doorctrl0"
 	desc = "A remote control-switch for a door."
-	power_channel = ENVIRON
+	power_channel = POWER_CHANNEL_ENVIRON
 	unslashable = TRUE
 	unacidable = TRUE
 	var/id = null
@@ -156,7 +156,7 @@
 	add_fingerprint(user)
 	if(istype(user,/mob/living/carbon/Xenomorph))
 		return
-	if(stat & (NOPOWER|BROKEN))
+	if(inoperable())
 		to_chat(user, SPAN_WARNING("[src] doesn't seem to be working."))
 		return
 
@@ -198,7 +198,7 @@
 /obj/structure/machinery/driver_button/attack_hand(mob/user as mob)
 
 	src.add_fingerprint(usr)
-	if(stat & (NOPOWER|BROKEN))
+	if(inoperable())
 		return
 	if(active)
 		return
@@ -274,7 +274,7 @@
 	add_fingerprint(user)
 	if(istype(user,/mob/living/carbon/Xenomorph))
 		return
-	if(stat & (NOPOWER|BROKEN))
+	if(inoperable())
 		to_chat(user, SPAN_WARNING("[src] doesn't seem to be working."))
 		return
 

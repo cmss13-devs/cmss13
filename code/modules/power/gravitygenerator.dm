@@ -68,7 +68,7 @@
 	user.set_interaction(src)
 	add_fingerprint(user)
 
-	if(stat & (BROKEN|NOPOWER))
+	if(inoperable())
 		return
 
 	updatemodules()

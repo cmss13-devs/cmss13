@@ -222,10 +222,10 @@
 /obj/structure/machinery/body_scanconsole/attack_hand(var/mob/living/user)
 	if(..())
 		return
-	if(stat & (NOPOWER|BROKEN))
+	if(inoperable())
 		to_chat(user, SPAN_WARNING("This console is not functional."))
 		return
-	if(!connected || (connected.stat & (NOPOWER|BROKEN)))
+	if(!connected || (connected.inoperable()))
 		to_chat(user, SPAN_WARNING("This console is not connected to a functioning body scanner."))
 		return
 

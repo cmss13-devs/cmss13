@@ -61,7 +61,7 @@ var/global/river_activated = 0
 
 /obj/structure/machinery/filtration/console/Topic(href, href_list)
 	..()
-	if (usr.stat || stat & (BROKEN|NOPOWER))
+	if (usr.stat || inoperable())
 		return
 
 	//if (buildstage != 2)

@@ -54,7 +54,7 @@
 
 	if(idle_power_usage != charge_diff) // Force update, but only when our power usage changed this tick.
 		idle_power_usage = charge_diff
-		update_use_power(1,1)
+		update_use_power(1)
 
 	current_internal_charge = min((current_internal_charge + ((charge_diff - 50) * CELLRATE)), max_internal_charge)
 
@@ -83,7 +83,7 @@
 	return
 
 /obj/structure/machinery/recharge_station/emp_act(severity)
-	if(stat & (BROKEN|NOPOWER))
+	if(inoperable())
 		..(severity)
 		return
 	if(occupant)
@@ -109,7 +109,7 @@
 			overlays += image('icons/obj/objects.dmi', "statn_c100")
 
 /obj/structure/machinery/recharge_station/proc/build_icon()
-	if(NOPOWER|BROKEN)
+	if(inoperable())
 		if(src.occupant)
 			icon_state = "borgcharger1"
 		else

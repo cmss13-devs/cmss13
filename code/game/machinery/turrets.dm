@@ -195,7 +195,7 @@
 
 
 /obj/structure/machinery/turret/process()
-	if(stat & (NOPOWER|BROKEN))
+	if(inoperable())
 		return
 	if(src.cover==null)
 		src.cover = new /obj/structure/machinery/turretcover(src.loc)

@@ -62,7 +62,7 @@
 			update_icon()
 
 /obj/structure/machinery/fuelcell_recycler/process()
-	if(stat & (BROKEN|NOPOWER))
+	if(inoperable())
 		update_use_power(0)
 		update_icon()
 		return
@@ -96,7 +96,7 @@
 /obj/structure/machinery/fuelcell_recycler/update_icon()
 	src.overlays.Cut()
 
-	if(stat & (BROKEN|NOPOWER))
+	if(inoperable())
 		icon_state = "recycler0"
 		if(cell_left != null)
 			src.overlays += "recycler-left-cell"

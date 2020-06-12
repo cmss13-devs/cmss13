@@ -502,7 +502,7 @@
 
 /obj/structure/machinery/computer/crew/attack_hand(mob/living/user)
 	add_fingerprint(user)
-	if(stat & (BROKEN|NOPOWER))
+	if(inoperable())
 		return
 	ui_interact(user)
 
@@ -536,7 +536,7 @@
 	ui_interact(user)
 
 /obj/structure/machinery/computer/crew/ui_interact(mob/living/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
-	if(stat & (BROKEN|NOPOWER))
+	if(inoperable())
 		return
 	user.set_interaction(src)
 	scan()

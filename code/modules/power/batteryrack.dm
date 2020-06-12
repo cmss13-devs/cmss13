@@ -16,6 +16,7 @@
 	icon_state = "gsmes"
 	var/cells_amount = 0
 	var/capacitors_amount = 0
+	power_machine = TRUE
 
 	// Smaller capacity, but higher I/O
 	// Starts fully charged, as it's used in substations. This replaces Engineering SMESs round start charge.
@@ -44,7 +45,7 @@
 	..()
 	add_parts()
 	RefreshParts()
-	start_processing_power()
+	start_processing()
 	return
 
 

@@ -13,51 +13,6 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 */
 
-
-
-/area
-	var/atmos = 1
-	var/atmosalm = 0
-	var/poweralm = 1
-
-	level = null
-	name = "Unknown"
-	icon = 'icons/turf/areas.dmi'
-	icon_state = "unknown"
-	layer = AREAS_LAYER
-	mouse_opacity = 0
-	invisibility = INVISIBILITY_LIGHTING
-	var/lightswitch = 1
-
-	var/flags_alarm_state = NO_FLAGS
-
-	var/debug = 0
-	var/powerupdate = 10		//We give everything 10 ticks to settle out it's power usage.
-	var/requires_power = 1
-	var/unlimited_power = 0
-	var/always_unpowered = 0	//this gets overriden to 1 for space in area/New()
-
-	var/power_equip = 1
-	var/power_light = 1
-	var/power_environ = 1
-	var/music = null
-	var/used_equip = 0
-	var/used_light = 0
-	var/used_environ = 0
-
-	var/has_gravity = 1
-	var/list/apc = list()
-	var/list/area_machines = list() // list of machines only for master areas
-	var/no_air = null
-	var/area/master				// master area used for power calcluations
-								// (original area before splitting due to sd_DAL)
-	var/list/related			// the other areas of the same type as this
-//	var/list/lights				// list of all lights on this area
-	var/list/all_doors = list()		//Added by Strumpetplaya - Alarm Change - Contains a list of doors adjacent to this area
-	var/air_doors_activated = 0
-	var/list/ambience = list('sound/ambience/ambigen1.ogg','sound/ambience/ambigen3.ogg','sound/ambience/ambigen4.ogg','sound/ambience/ambigen5.ogg','sound/ambience/ambigen6.ogg','sound/ambience/ambigen7.ogg','sound/ambience/ambigen8.ogg','sound/ambience/ambigen9.ogg','sound/ambience/ambigen10.ogg','sound/ambience/ambigen11.ogg','sound/ambience/ambigen12.ogg','sound/ambience/ambigen14.ogg')
-	var/statistic_exempt = FALSE
-
 /*Adding a wizard area teleport list because motherfucking lag -- Urist*/
 /*I am far too lazy to make it a proper list of areas so I'll just make it run the usual telepot routine at the start of the game*/
 var/list/teleportlocs = list()
@@ -98,9 +53,9 @@ var/list/ghostteleportlocs = list()
 	requires_power = 1
 	always_unpowered = 1
 	lighting_use_dynamic = 0
-	power_light = 0
-	power_equip = 0
-	power_environ = 0
+	power_light = FALSE
+	power_equip = FALSE
+	power_environ = FALSE
 	ambience = list('sound/ambience/ambispace.ogg')
 	temperature = TCMB
 	pressure = 0

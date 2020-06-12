@@ -1386,7 +1386,7 @@
 
 		for(var/obj/structure/machinery/faxmachine/F in machines)
 			if(F == fax)
-				if(!(F.stat & (BROKEN|NOPOWER)))
+				if(!(F.inoperable()))
 
 					// animate! it's alive!
 					flick("faxreceive", F)
@@ -1467,7 +1467,7 @@
 
 		for(var/obj/structure/machinery/faxmachine/F in machines)
 			if(F == fax)
-				if(!(F.stat & (BROKEN|NOPOWER)))
+				if(!(F.inoperable()))
 
 					// animate! it's alive!
 					flick("faxreceive", F)

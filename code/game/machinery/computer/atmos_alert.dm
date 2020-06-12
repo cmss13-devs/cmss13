@@ -53,7 +53,7 @@
 
 /obj/structure/machinery/computer/atmos_alert/update_icon()
 	..()
-	if(stat & (NOPOWER|BROKEN))
+	if(inoperable())
 		return
 	if(priority_alarms.len)
 		icon_state = "alert:2"

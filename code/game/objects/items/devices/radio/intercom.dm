@@ -63,7 +63,7 @@
 			if(!A || !isarea(A) || !A.master)
 				on = 0
 			else
-				on = A.master.powered(EQUIP) // set "on" to the power status
+				on = A.master.powered(POWER_CHANNEL_EQUIP) // set "on" to the power status
 
 		if(!on)
 			icon_state = "intercom-p"

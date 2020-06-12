@@ -23,11 +23,11 @@
 
 
 /obj/structure/machinery/recycler/update_icon()
-	icon_state = "separator-AO[(stat & (BROKEN|NOPOWER)) ? "0":"1"]"
+	icon_state = "separator-AO[(inoperable()) ? "0":"1"]"
 
 
 /obj/structure/machinery/recycler/Collided(atom/movable/AM)
-	if(stat & (BROKEN|NOPOWER))
+	if(inoperable())
 		return
 	var/move_dir = get_dir(loc, AM.loc)
 	if(!AM.anchored && move_dir == recycle_dir)

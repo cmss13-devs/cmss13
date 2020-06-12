@@ -47,7 +47,7 @@
 
 // Opens and locks doors, power check
 /obj/structure/machinery/door_display/proc/open_door()
-	if(stat & (NOPOWER|BROKEN))	return 0
+	if(inoperable())	return 0
 
 	for(var/obj/structure/machinery/door/D in targets)
 		if(!D.density)	continue
@@ -58,7 +58,7 @@
 
 // Closes and unlocks doors, power check
 /obj/structure/machinery/door_display/proc/close_door()
-	if(stat & (NOPOWER|BROKEN))	return 0
+	if(inoperable())	return 0
 
 	for(var/obj/structure/machinery/door/D in targets)
 		if(D.density)	continue
@@ -277,7 +277,7 @@
 
 // Opens and locks doors, power check
 /obj/structure/machinery/door_display/research_cell/open_door(var/force = FALSE)
-	if(stat & (NOPOWER|BROKEN) && !force)	return 0
+	if(inoperable() && !force)	return 0
 
 	for(var/obj/structure/machinery/door/airlock/D in targets)
 		if(!D.density) continue
@@ -289,7 +289,7 @@
 
 // Closes and unlocks doors, power check
 /obj/structure/machinery/door_display/research_cell/close_door()
-	if(stat & (NOPOWER|BROKEN))	return 0
+	if(inoperable())	return 0
 
 	for(var/obj/structure/machinery/door/airlock/D in targets)
 		if(D.density)	continue
@@ -301,7 +301,7 @@
 
 // Opens and locks doors, power check
 /obj/structure/machinery/door_display/research_cell/proc/open_shutter(var/force = FALSE)
-	if(stat & (NOPOWER|BROKEN) && !force)	return 0
+	if(inoperable() && !force)	return 0
 
 	for(var/obj/structure/machinery/door/poddoor/D in targets)
 		if(!D.density) continue
@@ -311,7 +311,7 @@
 
 // Closes and unlocks doors, power check
 /obj/structure/machinery/door_display/research_cell/proc/close_shutter()
-	if(stat & (NOPOWER|BROKEN))	return 0
+	if(inoperable())	return 0
 
 	for(var/obj/structure/machinery/door/poddoor/D in targets)
 		if(D.density)	continue

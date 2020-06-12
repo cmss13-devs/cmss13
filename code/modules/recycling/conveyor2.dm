@@ -83,7 +83,7 @@
 	// machine process
 	// move items to the target location
 /obj/structure/machinery/conveyor/process()
-	if(stat & (BROKEN|NOPOWER))
+	if(inoperable())
 		return
 	if(!operating)
 		return

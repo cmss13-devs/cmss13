@@ -36,9 +36,6 @@ var/list/datum/powernet/powernets_by_name = list() //Holds all powernet datums i
 		if (!M || M.disposed)
 			continue
 
-		if(!M.processable)
-			processing_machines -= M
-
 		M.process()
 		//if (M.process() == PROCESS_KILL)
 			//M.inMachineList = FALSE

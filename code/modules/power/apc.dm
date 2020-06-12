@@ -90,6 +90,7 @@
 	var/lastused_light = 0
 	var/lastused_equip = 0
 	var/lastused_environ = 0
+	var/lastused_oneoff = 0
 	var/lastused_total = 0
 	var/main_status = 0
 
@@ -115,6 +116,9 @@
 	var/global/list/status_overlays_lighting
 	var/global/list/status_overlays_environ
 
+	var/printout = FALSE
+	power_machine = TRUE
+
 /obj/structure/machinery/power/apc/New(turf/loc, var/ndir, var/building=0)
 	..()
 
@@ -139,7 +143,7 @@
 		update_icon()
 		add_timer(CALLBACK(src, .proc/update), 5)
 
-	start_processing_power()
+	start_processing()
 
 	sleep(0) //Break few ACPs on the colony
 
@@ -691,7 +695,7 @@
 		"powerCellStatus" = cell ? cell.percent() : null,
 		"chargeMode" = chargemode,
 		"chargingStatus" = charging,
-		"totalLoad" = round(lastused_equip + lastused_light + lastused_environ),
+		"totalLoad" = round(lastused_total),
 		"coverLocked" = coverlocked,
 		"siliconUser" = issilicon(user),
 
@@ -753,18 +757,13 @@
 		ui.set_auto_update(1)
 
 /obj/structure/machinery/power/apc/proc/report()
-	return "[area.name] : [equipment]/[lighting]/[environ] ([lastused_equip+lastused_light+lastused_environ]) : [cell? cell.percent() : "N/C"] ([charging])"
+	return "[area.name] : [equipment]/[lighting]/[environ] ([lastused_total]) : [cell? cell.percent() : "N/C"] ([charging])"
 
 /obj/structure/machinery/power/apc/proc/update()
 	if(operating && !shorted)
-		area.power_light = (lighting > 1)
-		area.power_equip = (equipment > 1)
-		area.power_environ = (environ > 1)
+		area.update_power_channels((equipment > 1), (lighting > 1), (environ > 1))
 	else
-		area.power_light = 0
-		area.power_equip = 0
-		area.power_environ = 0
-	area.power_change()
+		area.update_power_channels(FALSE, FALSE, FALSE)
 
 /obj/structure/machinery/power/apc/proc/get_wire_descriptions()
 	return list(
@@ -984,16 +983,16 @@
 		return 0
 
 /obj/structure/machinery/power/apc/process()
-
 	if(stat & (BROKEN|MAINT))
 		return
 	if(!area.requires_power)
 		return
 
-	lastused_light = area.usage(LIGHT)
-	lastused_equip = area.usage(EQUIP)
-	lastused_environ = area.usage(ENVIRON)
-	lastused_total = lastused_light + lastused_equip + lastused_environ
+	lastused_light = area.usage(POWER_CHANNEL_LIGHT)
+	lastused_equip = area.usage(POWER_CHANNEL_EQUIP)
+	lastused_environ = area.usage(POWER_CHANNEL_ENVIRON)
+	lastused_oneoff = area.usage(POWER_CHANNEL_ONEOFF, TRUE) //getting the one-off power usage and resetting it to 0 for the next processing tick
+	lastused_total = lastused_light + lastused_equip + lastused_environ + lastused_oneoff
 
 	//store states to update icon if any change
 	var/last_lt = lighting
@@ -1010,9 +1009,6 @@
 
 	if(debug)
 		log_debug( "Status: [main_status] - Excess: [excess] - Last Equip: [lastused_equip] - Last Light: [lastused_light]")
-
-		if(area.powerupdate)
-			log_debug("power update in [area.name] / [name]")
 
 	if(cell && !shorted)
 		var/cell_maxcharge = cell.maxcharge

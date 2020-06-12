@@ -29,7 +29,7 @@
 		to_chat(user, "Processors are currently cooling.")
 
 /obj/structure/machinery/computer/demo_sim/attackby(obj/item/B, mob/living/user)
-	if(stat & (BROKEN|NOPOWER))
+	if(inoperable())
 		return
 	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_OT))
 		to_chat(user, SPAN_WARNING("You don't know how to configure [src]."))
@@ -47,7 +47,7 @@
 		to_chat(user, "[src] is not compatible with [B].")
 
 /obj/structure/machinery/computer/demo_sim/attack_hand(mob/user as mob)
-	if(stat & (BROKEN|NOPOWER))
+	if(inoperable())
 		return
 	start_watching(user)
 

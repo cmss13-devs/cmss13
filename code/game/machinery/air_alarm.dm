@@ -66,7 +66,7 @@
 	use_power = 1
 	idle_power_usage = 80
 	active_power_usage = 1000 //For heating/cooling rooms. 1000 joules equates to about 1 degree every 2 seconds for a single tile of air.
-	power_channel = ENVIRON
+	power_channel = POWER_CHANNEL_ENVIRON
 	req_one_access = list(ACCESS_CIVILIAN_ENGINEERING)
 	var/alarm_id = null
 	var/breach_detection = 1 // Whether to use automatic breach detection or not
@@ -189,7 +189,7 @@
 
 
 /obj/structure/machinery/alarm/proc/master_is_operating()
-	return alarm_area && alarm_area.master_air_alarm && !(alarm_area.master_air_alarm.stat & (NOPOWER|BROKEN))
+	return alarm_area && alarm_area.master_air_alarm && !(alarm_area.master_air_alarm.inoperable())
 
 
 /obj/structure/machinery/alarm/proc/elect_master()
@@ -197,7 +197,7 @@
 		return 0
 	for (var/area/A in alarm_area.related)
 		for (var/obj/structure/machinery/alarm/AA in A)
-			if (!(AA.stat & (NOPOWER|BROKEN)))
+			if (!(AA.inoperable()))
 				alarm_area.master_air_alarm = AA
 				return 1
 	return 0
@@ -213,12 +213,12 @@
 	if(wiresexposed)
 		icon_state = "alarmx"
 		return
-	if((stat & (NOPOWER|BROKEN)) || shorted)
+	if((inoperable()) || shorted)
 		icon_state = "alarmp"
 		return
 
 	var/icon_level = danger_level
-	if (alarm_area.atmosalm)
+	if (!isnull(alarm_area) && alarm_area.atmosalm)
 		icon_level = max(icon_level, 1)	//if there's an atmos alarm but everything is okay locally, no need to go past yellow
 
 	switch(icon_level)
@@ -230,7 +230,7 @@
 			icon_state = "alarm1"
 
 /obj/structure/machinery/alarm/receive_signal(datum/signal/signal)
-	if(stat & (NOPOWER|BROKEN))
+	if(inoperable())
 		return
 	if (alarm_area.master_air_alarm != src)
 		if (master_is_operating())
@@ -535,7 +535,7 @@
 				t1 += "<a href='?src=\ref[src];pulse=[wirecolors[wiredesc]]'>Pulse</a> "
 
 			t1 += "<br>"
-		t1 += text("<br>\n[(locked ? "The Air Alarm is locked." : "The Air Alarm is unlocked.")]<br>\n[((shorted || (stat & (NOPOWER|BROKEN))) ? "The Air Alarm is offline." : "The Air Alarm is working properly!")]<br>\n[(aidisabled ? "The 'AI control allowed' light is off." : "The 'AI control allowed' light is on.")]")
+		t1 += text("<br>\n[(locked ? "The Air Alarm is locked." : "The Air Alarm is unlocked.")]<br>\n[((shorted || (inoperable())) ? "The Air Alarm is offline." : "The Air Alarm is working properly!")]<br>\n[(aidisabled ? "The 'AI control allowed' light is off." : "The 'AI control allowed' light is on.")]")
 		t1 += text("<p><a href='?src=\ref[src];close2=1'>Close</a></p></body></html>")
 		show_browser(user, t1, name, "AAlarmwires")
 
@@ -959,7 +959,7 @@ table tr:first-child th:first-child { border: none;}
 				return attack_hand(user)
 
 			if(istype(W, /obj/item/card/id))// trying to unlock the interface with an ID card
-				if(stat & (NOPOWER|BROKEN))
+				if(inoperable())
 					to_chat(user, "It does nothing")
 					return
 				else

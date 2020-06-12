@@ -22,11 +22,10 @@
 	layer = FIREDOOR_OPEN_LAYER
 	open_layer = FIREDOOR_OPEN_LAYER // Just below doors when open
 	closed_layer = FIREDOOR_CLOSED_LAYER // Just above doors when closed
-	power_channel = ENVIRON
+	power_channel = POWER_CHANNEL_ENVIRON
 	use_power = 1
 	idle_power_usage = 5
-	processable = 0
-	
+
 	var/blocked = 0
 	var/lockdown = 0 // When the door has detected a problem, it locks.
 	var/pdiff_alert = 0
@@ -140,7 +139,7 @@
 	if(user.is_mob_incapacitated() || (!user.canmove && !isAI(user)) || (get_dist(src, user) > 1  && !isAI(user)))
 		to_chat(user, "Sorry, you must remain able bodied and close to \the [src] in order to use it.")
 		return
-	if(density && (stat & (BROKEN|NOPOWER))) //can still close without power
+	if(density && (inoperable())) //can still close without power
 		to_chat(user, "\The [src] is not functioning, you'll have to force it open manually.")
 		return
 
@@ -252,7 +251,7 @@
 
 /obj/structure/machinery/door/firedoor/open(var/forced = FALSE)
 	if(!forced)
-		if(stat & (BROKEN|NOPOWER))
+		if(inoperable())
 			return //needs power to open unless it was forced
 		else
 			use_power(360)

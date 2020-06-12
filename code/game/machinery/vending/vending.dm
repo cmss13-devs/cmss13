@@ -411,7 +411,7 @@
 			flip_back()
 		return
 
-	if(stat & (BROKEN|NOPOWER))
+	if(inoperable())
 		return
 
 	user.set_interaction(src)
@@ -468,7 +468,7 @@
 		ui.set_auto_update(1)
 
 /obj/structure/machinery/vending/Topic(href, href_list)
-	if(stat & (BROKEN|NOPOWER))
+	if(inoperable())
 		return
 	if(usr.is_mob_incapacitated())
 		return
@@ -627,7 +627,7 @@
 
 /obj/structure/machinery/vending/MouseDrop_T(var/atom/movable/A, mob/user)
 
-	if(stat & (BROKEN|NOPOWER))
+	if(inoperable())
 		return
 
 	if(user.stat || user.is_mob_restrained() || user.lying)
@@ -676,7 +676,7 @@
 			return //We found our item, no reason to go on.
 
 /obj/structure/machinery/vending/process()
-	if(stat & (BROKEN|NOPOWER))
+	if(inoperable())
 		return
 
 	if(!src.active)

@@ -10,11 +10,11 @@
 	macro_path = /datum/action/xeno_action/verb/verb_pierce
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1
-	cooldowns = list(100, 100, 100, 100)
+	cooldowns = list(45, 35, 30, 25)
 	plasma_cost = 20
 
 	// Config
-	var/damage = 50
+	var/damage = 60
 	var/shield_regen_threshold = 3
 	var/should_spin_instead = FALSE
 

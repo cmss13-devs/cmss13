@@ -205,7 +205,7 @@
 	if(!pulledby)
 		return
 	if(pulledby.grab_level)
-		if(prob(60/pulledby.grab_level))
+		if(prob(50))
 			playsound(src.loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
 			visible_message(SPAN_DANGER("[src] has broken free of [pulledby]'s grip!"), null, null, 5)
 			pulledby.stop_pulling()

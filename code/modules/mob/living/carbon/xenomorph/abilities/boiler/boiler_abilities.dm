@@ -89,7 +89,7 @@
 	ability_primacy = XENO_PRIMARY_ACTION_2
 	cooldowns = list(60, 60, 55, 55)
 
-	var/damage = 50
+	var/damage = 60
 	var/delay = 15
 
 /datum/action/xeno_action/activable/acid_shotgun

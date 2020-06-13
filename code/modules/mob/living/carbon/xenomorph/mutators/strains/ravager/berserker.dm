@@ -19,20 +19,21 @@
 
 	var/mob/living/carbon/Xenomorph/Ravager/R = MS.xeno
 	R.mutation_type = RAVAGER_BERSERKER
-	R.health_modifier += XENO_HEALTH_MOD_SMALL
-	R.speed_modifier += XENO_SPEED_MODIFIER_FASTER
+	R.armor_modifier += XENO_ARMOR_MOD_VERYSMALL
+	R.speed_modifier += XENO_SPEED_MODIFIER_FAST
 	
 	mutator_update_actions(R)
 	MS.recalculate_actions(description, flavor_description)
 
 	apply_behavior_holder(R)
 
-
 	R.recalculate_everything()
 
 // Mutator delegate for Berserker ravager
 /datum/behavior_delegate/ravager_berserker
 	name = "Berserker Ravager Behavior Delegate"
+
+	var/hp_vamp_ratio = 0.5
 	
 	// Rage config
 	var/max_rage = 5
@@ -55,6 +56,7 @@
 
 
 /datum/behavior_delegate/ravager_berserker/melee_attack_additional_effects_self()
+	
 	if (rage != max_rage && !rage_cooldown_start_time)
 		rage = rage + 1
 		bound_xeno.armor_modifier += armor_buff_per_rage
@@ -68,6 +70,8 @@
 			rage_lock()
 			to_chat(bound_xeno, SPAN_XENOHIGHDANGER("You feel a euphoric rush as you reach max rage! You are LOCKED at max Rage!"))
 
+	// HP vamp
+	bound_xeno.gain_health((0.05*rage + hp_vamp_ratio)*((bound_xeno.melee_damage_upper - bound_xeno.melee_damage_lower)/2 + bound_xeno.melee_damage_lower))
 
 /datum/behavior_delegate/ravager_berserker/append_to_stat()
 	stat("Rage:", "[rage]/[max_rage]")

@@ -81,7 +81,7 @@
 	cooldowns = list(160, 150, 140, 140)
 
 	// Config values
-	var/heal_per_rage = 200
+	var/heal_per_rage = 150
 	var/damage = 20
 	var/fling_dist_base = 4
 	var/daze_amount = 2

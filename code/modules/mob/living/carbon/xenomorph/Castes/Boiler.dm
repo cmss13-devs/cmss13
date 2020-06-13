@@ -71,7 +71,7 @@
 	var/obj/item/explosive/grenade/grenade_type = "/obj/item/explosive/grenade/xeno"
 
 	tileoffset = 0
-	viewsize = 14
+	viewsize = 16
 
 	var/datum/effect_system/smoke_spread/xeno_acid/smoke
 

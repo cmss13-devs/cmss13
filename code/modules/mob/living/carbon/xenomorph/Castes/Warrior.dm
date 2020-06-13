@@ -130,9 +130,8 @@
 
 	if(.) //successful pull
 		if(should_neckgrab)
-			grab_level = GRAB_NECK
 			L.drop_held_items()
-			L.Stun(0.5)
+			L.KnockDown(2)
 			L.pulledby = src
 			visible_message(SPAN_XENOWARNING("\The [src] grabs [L] by the throat!"), \
 			SPAN_XENOWARNING("You grab [L] by the throat!"))

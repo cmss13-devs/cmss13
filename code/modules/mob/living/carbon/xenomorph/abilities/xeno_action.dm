@@ -272,7 +272,7 @@
 // Used to interact with abilities from the outside
 /proc/get_xeno_action_by_type(mob/living/carbon/Xenomorph/X, var/typepath)
 	if (!istype(X))
-		CRASH("xeno_action.dm@256: get_xeno_action_by_type invoked with non-xeno first argument.")
+		CRASH("xeno_action.dm: get_xeno_action_by_type invoked with non-xeno first argument.")
 
 	for (var/datum/action/xeno_action/XA in X.actions)
 		if (istype(XA, typepath))

@@ -110,19 +110,6 @@
 	buyable = 0
 	group = "Munition"
 
-/datum/supply_packs/sandbags/asrs/
-	buyable = 0
-	group = "Utility"
-
-/datum/supply_packs/metal50/asrs/
-	group = "Utility"
-	buyable = 0
-	cost = ASRS_LOW_WEIGHT
-
-/datum/supply_packs/plas50/asrs/
-	group = "Utility"
-	buyable = 0
-	cost = ASRS_LOW_WEIGHT
 
 //===================================
 // Mortar ammo

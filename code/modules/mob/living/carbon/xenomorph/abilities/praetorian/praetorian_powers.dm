@@ -231,7 +231,8 @@
 	for (var/turf/target_turf in turflist)
 		for (var/mob/living/carbon/human/H in target_turf)
 			to_chat(H, SPAN_XENOHIGHDANGER("You are knocked over as the ground shakes underneath you!"))
-			H.KnockDown(2)
+			H.KnockDown(1)
+			new /datum/effects/xeno_freeze(H, X, , , 20)
 			
 	apply_cooldown()
 	..()
@@ -330,6 +331,9 @@
 				continue 
 
 			xeno_throw_human(H, X, facing, fling_dist)
+
+			H.KnockDown(0.5)
+			new /datum/effects/xeno_slow(H, X, , , 20)
 
 	..()
 	return

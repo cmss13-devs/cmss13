@@ -21,7 +21,6 @@
 	// Make a 'halftank'
 	P.speed_modifier += XENO_SPEED_MODIFIER_SLOWER
 	P.damage_modifier -= XENO_DAMAGE_MOD_SMALL
-	P.armor_modifier += XENO_ARMOR_MOD_VERYSMALL
 
 	mutator_update_actions(P)
 	MS.recalculate_actions(description, flavor_description)
@@ -36,10 +35,10 @@
 
 	// Config
 	var/internal_hitpoints_max = 325
-	var/internal_hitpoints_per_attack = 40
+	var/internal_hitpoints_per_attack = 75
 	var/percent_hp_to_self_heal = 0.2
 	var/internal_hp_selfheal_size = 50
-	var/internal_hp_per_life = 10
+	var/internal_hp_per_life = 5 
 
 	// State
 	var/internal_hitpoints = 0

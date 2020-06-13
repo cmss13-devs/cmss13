@@ -14,7 +14,7 @@
 	armor_hardiness_mult = XENO_ARMOR_FACTOR_CRUSHER
 	evasion = XENO_EVASION_NONE
 	speed = XENO_SPEED_MEDIUM
-	speed_mod = XENO_SPEED_MOD_LARGE
+	speed_mod = XENO_SPEED_MOD_SMALL
 
 	behavior_delegate_type = /datum/behavior_delegate/crusher_base
 
@@ -225,7 +225,7 @@
 /datum/behavior_delegate/crusher_base
 	name = "Base Crusher Behavior Delegate"
 
-	var/aoe_slash_damage_reduction = 0.66
+	var/aoe_slash_damage_reduction = 0.60
 
 /datum/behavior_delegate/crusher_base/melee_attack_additional_effects_target(atom/A)
 
@@ -236,9 +236,12 @@
 
 	var/damage = bound_xeno.melee_damage_upper * aoe_slash_damage_reduction
 
+	var/cdr_amount = 10
 	for (var/mob/living/carbon/human/H in orange(1, A))
 		if (H.stat == DEAD)
 			continue
+
+		cdr_amount += 5
 
 		bound_xeno.visible_message(SPAN_DANGER("[bound_xeno] slashes [H]!"), \
 			SPAN_DANGER("You slash [H]!"), null, null, CHAT_TYPE_XENO_COMBAT)
@@ -264,6 +267,14 @@
 
 		H.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE, bound_xeno.zone_selected)
 		new /datum/effects/xeno_slow(H, bound_xeno, , , 25)
+
+	var/datum/action/xeno_action/activable/pounce/crusher_charge/cAction = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/activable/pounce/crusher_charge)
+	if (!cAction.action_cooldown_check())
+		cAction.reduce_cooldown(cdr_amount)
+
+	var/datum/action/xeno_action/onclick/crusher_shield/sAction = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/onclick/crusher_shield)
+	if (!sAction.action_cooldown_check())
+		sAction.reduce_cooldown(cdr_amount)
 
 /datum/behavior_delegate/crusher_base/append_to_stat()
 	var/shield_total = 0

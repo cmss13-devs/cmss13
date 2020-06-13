@@ -408,10 +408,6 @@
 	if (!X.check_state())
 		return
 
-	if (shield_active)
-		remove_shield(TRUE)
-		return
-
 	if (X.mutation_type == RAVAGER_HEDGEHOG)
 		var/datum/behavior_delegate/ravager_hedgehog/BD = X.behavior_delegate
 		if (istype(BD))
@@ -451,7 +447,7 @@
 	else
 		return shield_active
 
-/datum/action/xeno_action/activable/spike_shield/proc/remove_shield(should_heal = FALSE)
+/datum/action/xeno_action/activable/spike_shield/proc/remove_shield()
 	var/mob/living/carbon/Xenomorph/X = owner
 
 	if (!istype(X))
@@ -465,11 +461,6 @@
 	for (var/datum/xeno_shield/XS in X.xeno_shields)
 		if (XS.shield_source == XENO_SHIELD_SOURCE_HEDGE_RAV)
 			X.xeno_shields -= XS
-
-			if (should_heal)
-				X.gain_health(XS.amount * real_hp_per_shield_hp)
-				to_chat(owner, SPAN_XENODANGER("You feel your shard shield restore your strength!"))
-
 			qdel(XS)
 			break 
 

@@ -283,7 +283,7 @@
 	if(ticker.mode.latejoin_larva_drop && ticker.mode.latejoin_tally >= ticker.mode.latejoin_larva_drop)
 		ticker.mode.latejoin_tally -= ticker.mode.latejoin_larva_drop
 		for(var/datum/hive_status/hs in hive_datum)
-			if(hs.living_xeno_queen) //Only give larva to hives that actually exist not to throw off the bioscans for dchat
+			if (hs.living_xeno_queen)
 				hs.stored_larva++
 				hs.hive_ui.update_pooled_larva()
 

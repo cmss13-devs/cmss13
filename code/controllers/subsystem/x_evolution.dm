@@ -1,5 +1,9 @@
 var/datum/subsystem/xevolution/SSxevolution
 
+#define BOOST_POWER_MAX 20
+#define BOOST_POWER_MIN 1
+#define EVOLUTION_INCREMENT_TIME MINUTES_30 // Evolution increases by 1 every 25 minutes.
+
 /datum/subsystem/xevolution
 	name = "Evilution"
 	wait = 1 MINUTES
@@ -10,7 +14,7 @@ var/datum/subsystem/xevolution/SSxevolution
 
 	var/boost_power = 1
 	var/boost_power_new = 1
-	var/force_boost_power = FALSE
+	var/force_boost_power = FALSE // Debugging only
 
 /datum/subsystem/xevolution/New()
 	NEW_SS_GLOBAL(SSxevolution)
@@ -19,27 +23,23 @@ var/datum/subsystem/xevolution/SSxevolution
 	var/datum/hive_status/HS = hive_datum[XENO_HIVE_NORMAL]
 	if(!HS)
 		return
-	var/total_xenos = HS.totalXenos.len
-	var/total_larva = HS.stored_larva
-	var/larva_spec = min(total_larva, sqrt(4*total_larva))
-	var/living_player_list[] = ticker.mode.count_humans_and_xenos(EvacuationAuthority.get_affected_zlevels())
-	var/num_humans = living_player_list[1]
-	var/time_frame = world.time / (10 MINUTES)
 
-	if(total_xenos == 0)
-		return
+	var/boost_power_new
+	// Minimum of 5 evo until 10 minutes have passed.
+	if((world.time - ticker.game_start_time) < XENO_ROUNDSTART_PROGRESS_TIME_2)
+		boost_power_new = max(boost_power_new, 3) 
+	else
+		boost_power_new = Floor((world.time - XENO_ROUNDSTART_PROGRESS_TIME_2 - ticker.game_start_time)/EVOLUTION_INCREMENT_TIME)
 
-	var/number_boost = (100+100*human_xeno_ratio_modifier*num_humans/total_xenos)*(100+100*time_ratio_modifier*time_frame)
+		//Add on any bonuses from evopods after applying upgrade progress
+		if(HS.has_special_structure(XENO_STRUCTURE_EVOPOD))
+			boost_power_new += (0.2 * HS.has_special_structure(XENO_STRUCTURE_EVOPOD))
 
-	var/larva_boost = (number_boost * larva_spec) / (total_xenos * 10000)
-
-	boost_power_new = 1 + larva_boost
-
-	if(boost_power_new > 20)
-		boost_power_new = 20
-
-	if(boost_power_new < 2 && ticker.game_start_time + world.time < XENO_ROUNDSTART_PROGRESS_TIME_2)
-		boost_power_new = 2
+	boost_power_new = Clamp(boost_power_new, BOOST_POWER_MIN, BOOST_POWER_MAX)
 
 	if(!force_boost_power)
 		boost_power = boost_power_new
+
+#undef EVOLUTION_INCREMENT_TIME
+#undef BOOST_POWER_MIN
+#undef BOOST_POWER_MAX

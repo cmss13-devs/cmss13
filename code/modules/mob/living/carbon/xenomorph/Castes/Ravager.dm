@@ -87,7 +87,7 @@
 
 // Mutator delegate for base ravager
 /datum/behavior_delegate/ravager_base
-	var/damage_per_shield_hp = 0.05
+	var/damage_per_shield_hp = 0.10
 	var/shield_decay_time = 150 // Time in deciseconds before our shield decays
 	var/slash_charge_cdr = 20 // Amount to reduce charge cooldown by per slash
 	var/min_shield_buffed_abilities = 150

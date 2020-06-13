@@ -7,7 +7,7 @@
 		drop_held_items()
 
 	if(pulledby.grab_level >= GRAB_NECK)
-		losebreath = min(losebreath + 2, 3)
+		apply_damage(3, OXY)
 
 	if(pulledby.grab_level >= GRAB_KILL)
 		apply_damage(3, OXY)

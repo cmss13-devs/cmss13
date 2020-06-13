@@ -17,7 +17,6 @@
 
 	var/mob/living/carbon/Xenomorph/Praetorian/P = MS.xeno
 	P.speed_modifier += XENO_SPEED_MODIFIER_FAST
-	P.health_modifier -= XENO_HEALTH_MOD_SMALL
 	mutator_update_actions(P)
 	MS.recalculate_actions(description, flavor_description)
 	P.recalculate_everything()

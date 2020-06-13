@@ -5,7 +5,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_crusher_charge
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1
-	cooldowns = list(100, 95, 90, 85)
+	cooldowns = list(150, 145, 140, 135)
 	plasma_cost = 20
 
 	var/direct_hit_damage = 80
@@ -46,7 +46,7 @@
 
 	var/distance = 2
 	var/effect_type_base = /datum/effects/xeno_slow/superslow
-	var/effect_duration = 30
+	var/effect_duration = 15 
 
 /datum/action/xeno_action/onclick/crusher_shield
 	name = "Defensive Shield"
@@ -55,7 +55,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_crusher_charge
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
-	cooldowns = list(240, 230, 220, 210)
+	cooldowns = list(280, 270, 260, 250)
 	plasma_cost = 20
 
 	var/shield_amount = 150

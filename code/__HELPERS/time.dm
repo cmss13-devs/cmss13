@@ -33,6 +33,7 @@
 #define MINUTES_4 		2400
 #define MINUTES_5 		3000
 #define MINUTES_6 		3600
+#define MINUTES_8		4800
 #define MINUTES_10 		6000
 #define MINUTES_15 		9000
 #define MINUTES_20 		12000

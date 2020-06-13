@@ -26,22 +26,27 @@
 	return ..()
 
 /datum/xeno_shield/vanguard/proc/decay()
-	while (amount > 0)
-		amount *= 0.75
-		amount -= 20
+	amount *= 0.70
+	amount -= 50
 
-		if (amount > 0)
-			add_timer(CALLBACK(src, /datum/xeno_shield/vanguard/proc/decay), 5, TIMER_UNIQUE)
-		else 
-			if (linked_xeno && istype(linked_xeno, /mob/living/carbon/Xenomorph))
-				var/mob/living/carbon/Xenomorph/X = linked_xeno
-				X.xeno_shields -= src
-				qdel(src)
-				X.overlay_shields()
+	notify_xeno()
 
-				var/datum/action/xeno_action/activable/cleave/cAction = get_xeno_action_by_type(linked_xeno, /datum/action/xeno_action/activable/cleave)
-				if (istype(cAction))
-					add_timer(CALLBACK(cAction, /datum/action/xeno_action/activable/cleave/proc/remove_buff), 7, TIMER_UNIQUE)
+	if (amount > 0)
+		add_timer(CALLBACK(src, /datum/xeno_shield/vanguard/proc/decay), 2, TIMER_UNIQUE)
+	else
+		if (linked_xeno && istype(linked_xeno, /mob/living/carbon/Xenomorph))
+			var/mob/living/carbon/Xenomorph/X = linked_xeno
+
+			if (isnull(X) || !istype(X))
+				return
+
+			X.xeno_shields -= src
+			qdel(src)
+			X.overlay_shields()
+
+			var/datum/action/xeno_action/activable/cleave/cAction = get_xeno_action_by_type(linked_xeno, /datum/action/xeno_action/activable/cleave)
+			if (istype(cAction))
+				add_timer(CALLBACK(cAction, /datum/action/xeno_action/activable/cleave/proc/remove_buff), 7, TIMER_UNIQUE)
 
 /datum/xeno_shield/vanguard/proc/notify_xeno()
 	var/mob/living/carbon/Xenomorph/X = linked_xeno

@@ -145,26 +145,28 @@
 
 // Dump the game history to a data file
 /datum/round_recorder/proc/export_data()
-	var/list/full_data = list(
-		"history_meta" = list(
-			"snapshots" = snapshots,
-			"start" = game_start,
-			"end" = game_end
-		),
-		"game_info" = list(
-			"name" = round_name,
-			"gamemode" = gamemode,
-			"map" = map,
-			"outcome" = outcome
-		),
-		"snapshot_deltas" = snapshot_deltas,
+	var/list/meta_data = list(
+		"snapshots" = snapshots,
+		"start" = game_start,
+		"end" = game_end,
+		"name" = round_name,
+		"gamemode" = gamemode,
+		"map" = map,
+		"outcome" = outcome
+	)
+	var/meta_json = json_encode(meta_data)
+
+	var/list/game_data = list(
 		"player_infos" = player_info,
 		"player_history" = player_history
 	)
-	var/data_json = json_encode(full_data)
+	var/data_json = json_encode(game_data)
 
 	var/date_string = time2text(world.realtime, "YYYY/MM-Month/DD-Day")
 	var/game_files = flist("data/recorded_rounds/[date_string]/")
-	var/data_file = file("data/recorded_rounds/[date_string]/game[length(game_files)].json")
 
+	var/meta_file = file("data/recorded_rounds/[date_string]/game[length(game_files)]_meta.json")
+	var/data_file = file("data/recorded_rounds/[date_string]/game[length(game_files)]_data.json")
+
+	meta_file << meta_json
 	data_file << data_json

@@ -563,7 +563,7 @@
 					visible_message("[htmlicon(src, viewers(src))] [SPAN_BOLDNOTICE("Stopping helmet cam view of [cam_target].")]")
 					cam = null
 					usr.reset_view(null)
-				else if(usr.client.view != world.view)
+				else if(usr.client.view != world_view_size)
 					to_chat(usr, SPAN_WARNING("You're too busy peering through binoculars."))
 				else
 					cam = new_cam

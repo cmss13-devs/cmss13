@@ -2144,7 +2144,7 @@
 			if(P.contents.len == 1)
 				for(var/obj/item/reagent_container/food/drinks/cans/souto/S in P.contents)
 					M.put_in_active_hand(S)
-					for(var/mob/O in viewers(world.view, P)) //find all people in view.
+					for(var/mob/O in viewers(world_view_size, P)) //find all people in view.
 						O.show_message(SPAN_DANGER("[M] catches the [S]!"), 1) //Tell them the can was caught.
 					return //Can was caught.
 	if(ishuman(M))

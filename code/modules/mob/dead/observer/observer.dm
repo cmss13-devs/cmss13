@@ -161,7 +161,7 @@ Works together with spawning an observer, noted above.
 	mind = null
 
 	if(ghost.client)
-		ghost.client.change_view(world.view) //reset view range to default
+		ghost.client.change_view(world_view_size) //reset view range to default
 		ghost.client.pixel_x = 0 //recenters our view
 		ghost.client.pixel_y = 0
 		if(ghost.client.soundOutput)
@@ -463,8 +463,8 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set category = "Ghost"
 
 	if(client)
-		if(client.view != world.view)
-			client.change_view(world.view)
+		if(client.view != world_view_size)
+			client.change_view(world_view_size)
 		else
 			client.change_view(14)
 
@@ -576,7 +576,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			Z.ghostize(0) //Make sure previous owner does not get a free respawn.
 			Z.ckey = usr.ckey
 			if(Z.client) //so players don't keep their ghost zoom view.
-				Z.client.change_view(world.view)
+				Z.client.change_view(world_view_size)
 
 			msg_admin_niche("[key_name(usr)] has joined as a [Z].")
 
@@ -655,7 +655,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		var/mob/ghostmob = usr.client.mob
 		msg_admin_niche("[key_name(usr)] has joined as a [L].")
 		L.ckey = usr.ckey
-		if(L.client) L.client.change_view(world.view)
+		if(L.client) L.client.change_view(world_view_size)
 
 		if( isobserver(ghostmob) )
 			qdel(ghostmob)

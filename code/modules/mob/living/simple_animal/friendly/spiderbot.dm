@@ -135,7 +135,7 @@
 		src.mind = M.brainmob.mind
 		src.mind.key = M.brainmob.key
 		src.ckey = M.brainmob.ckey
-		if(client) client.change_view(world.view)
+		if(client) client.change_view(world_view_size)
 		src.name = "Spider-bot ([M.brainmob.name])"
 
 /mob/living/simple_animal/spiderbot/proc/explode(var/cause = "exploding") //When emagged.

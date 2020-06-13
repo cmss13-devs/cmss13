@@ -731,7 +731,7 @@ keep_zoom - do we keep zoom during movement. be careful with setting this to 1
 
 	//General reset in case anything goes wrong, the view will always reset to default unless zooming in.
 	if(user.client)
-		user.client.change_view(world.view)
+		user.client.change_view(world_view_size)
 		user.client.pixel_x = 0
 		user.client.pixel_y = 0
 

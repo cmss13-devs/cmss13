@@ -244,6 +244,8 @@
 
 	load_player_data()
 
+	view = world_view_size
+
 	//////////////
 	//DISCONNECT//
 	//////////////

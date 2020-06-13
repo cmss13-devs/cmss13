@@ -13,7 +13,7 @@
 
 	//non-verbal languages are garbled if you can't see the speaker. Yes, this includes if they are inside a closet.
 	if (language && (language.flags & NONVERBAL))
-		if (!speaker || (src.sdisabilities & BLIND || src.blinded) || !(speaker.z == z && get_dist(speaker, src) <= world.view))
+		if (!speaker || (src.sdisabilities & BLIND || src.blinded) || !(speaker.z == z && get_dist(speaker, src) <= world_view_size))
 			message = stars(message)
 
 	if(!say_understands(speaker,language))
@@ -45,7 +45,7 @@
 			to_chat(src, "<span class='prefix'>[comm_paygrade][speaker_name]</span>[alt_name] talks but you cannot hear \him.")
 	else
 		to_chat(src, "<span class='prefix'>[comm_paygrade][speaker_name]</span>[alt_name] [verb], <span class='[style]'>\"[message]\"</span>")
-		if (speech_sound && (get_dist(speaker, src) <= world.view && src.z == speaker.z))
+		if (speech_sound && (get_dist(speaker, src) <= world_view_size && src.z == speaker.z))
 			var/turf/source = speaker? get_turf(speaker) : get_turf(src)
 			playsound_client(src.client, speech_sound, source, sound_vol, GET_RANDOM_FREQ)
 

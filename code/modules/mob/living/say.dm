@@ -87,7 +87,7 @@ var/list/department_radio_keys = list(
 	qdel(speech_bubble)
 
 
-/mob/living/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/italics=0, var/message_range = world.view, var/sound/speech_sound, var/sound_vol, var/nolog = 0, var/message_mode = null)
+/mob/living/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/italics=0, var/message_range = world_view_size, var/sound/speech_sound, var/sound_vol, var/nolog = 0, var/message_mode = null)
 	var/turf/T
 
 	for(var/dst=0; dst<=1; dst++) //Will run twice if src has a clone

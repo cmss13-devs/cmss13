@@ -142,7 +142,7 @@
 				mind.transfer_to(observer, TRUE)
 
 				if(observer.client) 
-					observer.client.change_view(world.view)
+					observer.client.change_view(world_view_size)
 
 					if(observer.client.prefs)
 						var/datum/mob_hud/H
@@ -412,7 +412,7 @@
 
 	new_character.key = key		//Manually transfer the key to log them in
 	if(new_character.client) 
-		new_character.client.change_view(world.view)
+		new_character.client.change_view(world_view_size)
 
 	return new_character
 

@@ -20,7 +20,7 @@
 
 	var/mob/living/carbon/human/H = new(spawn_loc)
 	H.key = M.key
-	if(H.client) H.client.change_view(world.view)
+	if(H.client) H.client.change_view(world_view_size)
 
 	sleep(5)
 	arm_equipment(H, "USCM Vehicle Crewman (CRMN)", TRUE, TRUE)

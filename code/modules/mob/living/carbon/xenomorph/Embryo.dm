@@ -169,7 +169,7 @@
 		new_xeno.key = picked.key
 
 		if(new_xeno.client)
-			new_xeno.client.change_view(world.view)
+			new_xeno.client.change_view(world_view_size)
 
 		SSround_recording.recorder.track_player(new_xeno)
 

@@ -2,7 +2,7 @@
 
 	var/verb = "says"
 	var/alt_name = ""
-	var/message_range = world.view
+	var/message_range = world_view_size
 	var/italics = 0
 
 	if(client)

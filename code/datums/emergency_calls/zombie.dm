@@ -17,7 +17,7 @@
 
 	var/mob/living/carbon/human/H = new(T)
 	H.key = M.key
-	if(H.client) H.client.change_view(world.view)
+	if(H.client) H.client.change_view(world_view_size)
 	ticker.mode.traitors += H.mind
 	arm_equipment(H, "Zombie", TRUE, TRUE)
 

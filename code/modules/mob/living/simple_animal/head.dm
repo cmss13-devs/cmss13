@@ -45,7 +45,7 @@
 		Die()
 	else if(health > maxHealth)
 		health = maxHealth
-	for(var/mob/A in viewers(world.view,src))
+	for(var/mob/A in viewers(world_view_size,src))
 		if(A.ckey)
 			say_something(A)
 /mob/living/simple_animal/head/proc/say_something(mob/A)

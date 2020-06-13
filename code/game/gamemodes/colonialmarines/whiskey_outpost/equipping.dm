@@ -244,7 +244,7 @@ You just gotta get out of this jungle to tell the tale!"}
 	if(!H.loc)
 		var/T = pick(latewhiskey)
 		H.loc = T
-	if(H.client) H.client.change_view(world.view)
+	if(H.client) H.client.change_view(world_view_size)
 	if(!H.mind)
 		H.mind = new(H.key)
 		H.mind_initialize()

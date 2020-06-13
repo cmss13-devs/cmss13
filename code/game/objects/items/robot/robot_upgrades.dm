@@ -72,7 +72,7 @@
 		for(var/mob/dead/observer/ghost in player_list)
 			if(ghost.mind && ghost.mind.current == R)
 				R.key = ghost.key
-				if(R.client) R.client.change_view(world.view)
+				if(R.client) R.client.change_view(world_view_size)
 				break
 
 	R.stat = CONSCIOUS

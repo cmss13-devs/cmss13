@@ -23,7 +23,7 @@
 	var/mob/living/carbon/human/H = new(spawn_loc)
 	H.key = M.key
 	if(H.client) 
-		H.client.change_view(world.view)
+		H.client.change_view(world_view_size)
 
 	sleep(5)
 	if (medics < max_medics)

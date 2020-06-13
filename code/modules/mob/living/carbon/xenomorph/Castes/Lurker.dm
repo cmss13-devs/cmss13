@@ -93,10 +93,7 @@
 		if (LIA && istype(LIA) && LIA.is_invisible)
 			icon_state = "[mutation_type] [caste.caste_name] Invisible"
 		else
-			if(m_intent == MOVE_INTENT_RUN)
-				icon_state = "[mutation_type] [caste.caste_name] Running"
-			else
-				icon_state = "[mutation_type] [caste.caste_name] Walking"
+			icon_state = "[mutation_type] [caste.caste_name] Running"
 
 	update_fire()
 

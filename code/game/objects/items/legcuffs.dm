@@ -33,19 +33,18 @@
 				if(ishuman(AM))
 					if(isturf(src.loc))
 						var/mob/living/carbon/H = AM
-						if(H.m_intent == MOVE_INTENT_RUN)
-							if(!H.legcuffed)
-								H.legcuffed = src
-								forceMove(H)
-								H.legcuff_update()
-							armed = 0
-							icon_state = "beartrap0"
-							playsound(loc, 'sound/effects/snap.ogg', 25, 1)
-							to_chat(H, SPAN_DANGER("<B>You step on \the [src]!</B>"))
-							for(var/mob/O in viewers(H, null))
-								if(O == H)
-									continue
-								O.show_message(SPAN_DANGER("<B>[H] steps on \the [src].</B>"), 1)
+						if(!H.legcuffed)
+							H.legcuffed = src
+							forceMove(H)
+							H.legcuff_update()
+						armed = 0
+						icon_state = "beartrap0"
+						playsound(loc, 'sound/effects/snap.ogg', 25, 1)
+						to_chat(H, SPAN_DANGER("<B>You step on \the [src]!</B>"))
+						for(var/mob/O in viewers(H, null))
+							if(O == H)
+								continue
+							O.show_message(SPAN_DANGER("<B>[H] steps on \the [src].</B>"), 1)
 				if(isanimal(AM) && !istype(AM, /mob/living/simple_animal/parrot))
 					armed = 0
 					var/mob/living/simple_animal/SA = AM
@@ -136,12 +135,11 @@
 						if(isYautja(H))
 							to_chat(H, SPAN_NOTICE("You carefully avoid stepping on the trap."))
 							return
-						if(H.m_intent == MOVE_INTENT_RUN)
-							trapMob(H)
-							for(var/mob/O in viewers(H, null))
-								if(O == H)
-									continue
-								O.show_message(SPAN_WARNING("[htmlicon(src, O)] <B>[H] gets caught in \the [src].</B>"), 1)
+						trapMob(H)
+						for(var/mob/O in viewers(H, null))
+							if(O == H)
+								continue
+							O.show_message(SPAN_WARNING("[htmlicon(src, O)] <B>[H] gets caught in \the [src].</B>"), 1)
 				if(isanimal(AM) && !istype(AM, /mob/living/simple_animal/parrot))
 					armed = 0
 					var/mob/living/simple_animal/SA = AM

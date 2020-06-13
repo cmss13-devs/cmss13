@@ -157,9 +157,6 @@
 		else
 			I.lower_aim()
 			return
-//		if(m_intent == MOVE_INTENT_RUN && T.client.target_can_move == 1 && T.client.target_can_run == 0)
-//			to_chat(src, SPAN_DANGER("Your move intent is now set to walk, as your targeter permits it."))  //Self explanitory.
-//			set_m_intent(MOVE_INTENT_WALK)
 
 		//Processing the aiming. Should be probably in separate object with process() but lasy.
 		while(targeted_by && T.client)
@@ -169,7 +166,7 @@
 					I.lock_time = world.time + 5
 				I.lock_time = world.time + 5
 				I.last_moved_mob = src
-			else if(last_move_intent > I.lock_time + 10 && !T.target_can_run && m_intent == MOVE_INTENT_RUN) //If the target ran while targeted
+			else if(last_move_intent > I.lock_time + 10 && !T.target_can_run) //If the target ran while targeted
 				I.TargetActed(src)
 				if(I.last_moved_mob == src) //If they were the last ones to move, give them more of a grace period, so that an automatic weapon can hold down a room better.
 					I.lock_time = world.time + 5
@@ -266,20 +263,10 @@
 					to_chat(M, "Your character may now <b>walk</b> at the discretion of their targeter.")
 					if(!target_can_run)
 						to_chat(M, SPAN_WARNING("Your move intent is now set to walk, as your targeter permits it."))
-						M.set_m_intent(MOVE_INTENT_WALK)
 				else
 					to_chat(M, SPAN_DANGER("Your character will now be shot if they move."))
 
-/mob/proc/set_m_intent(var/intent)
-	if (intent != MOVE_INTENT_WALK && intent != MOVE_INTENT_RUN)
-		return 0
-	m_intent = intent
-	if(hud_used)
-		if (hud_used.move_intent)
-			hud_used.move_intent.icon_state = intent == MOVE_INTENT_WALK ? "walking" : "running"
-
 /mob/proc/AllowTargetRun()
-
 	//Changing client's permissions
 	target_can_run = !target_can_run
 	if(target_can_run)

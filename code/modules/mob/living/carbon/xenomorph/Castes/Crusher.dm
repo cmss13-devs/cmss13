@@ -214,14 +214,10 @@
 		else
 			icon_state = "[mutation_type] Crusher Knocked Down"
 	else
-		if(m_intent == MOVE_INTENT_RUN)
-			if(throwing) //Let it build up a bit so we're not changing icons every single turf
-				icon_state = "[mutation_type] Crusher Charging"
-			else
-				icon_state = "[mutation_type] Crusher Running"
-
+		if(throwing) //Let it build up a bit so we're not changing icons every single turf
+			icon_state = "[mutation_type] Crusher Charging"
 		else
-			icon_state = "[mutation_type] Crusher Walking"
+			icon_state = "[mutation_type] Crusher Running"
 
 	update_fire() //the fire overlay depends on the xeno's stance, so we must update it.
 

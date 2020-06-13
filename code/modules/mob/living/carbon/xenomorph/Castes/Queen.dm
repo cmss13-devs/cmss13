@@ -615,10 +615,7 @@
 		else
 			icon_state = "[mutation_type] Queen Knocked Down"
 	else
-		if(m_intent == MOVE_INTENT_RUN)
-			icon_state = "[mutation_type] Queen Running"
-		else
-			icon_state = "[mutation_type] Queen Walking"
+		icon_state = "[mutation_type] Queen Running"
 
 	update_fire() //the fire overlay depends on the xeno's stance, so we must update it.
 

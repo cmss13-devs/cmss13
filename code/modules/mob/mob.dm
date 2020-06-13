@@ -187,11 +187,10 @@
 	return 0
 
 /mob/proc/movement_delay()
-	switch(m_intent)
-		if(MOVE_INTENT_RUN)
-			. = 2 + config.run_speed
-		if(MOVE_INTENT_WALK)
-			. = 7 + config.walk_speed	
+	if(!legcuffed)
+		. = 2 + config.run_speed
+	else
+		. = 7 + config.walk_speed
 	. += speed
 	move_delay = .
 

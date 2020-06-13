@@ -156,16 +156,15 @@
 /obj/item/toy/snappop/Crossed(H as mob|obj)
 	if((ishuman(H))) //i guess carp and shit shouldn't set them off
 		var/mob/living/carbon/M = H
-		if(M.m_intent == MOVE_INTENT_RUN)
-			to_chat(M, SPAN_WARNING("You step on the snap pop!"))
+		to_chat(M, SPAN_WARNING("You step on the snap pop!"))
 
-			var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-			s.set_up(2, 0, src)
-			s.start()
-			new /obj/effect/decal/cleanable/ash(src.loc)
-			src.visible_message(SPAN_DANGER("The [src.name] explodes!"),SPAN_DANGER("You hear a snap!"))
-			playsound(src, 'sound/effects/snap.ogg', 25, 1)
-			qdel(src)
+		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
+		s.set_up(2, 0, src)
+		s.start()
+		new /obj/effect/decal/cleanable/ash(src.loc)
+		src.visible_message(SPAN_DANGER("The [src.name] explodes!"),SPAN_DANGER("You hear a snap!"))
+		playsound(src, 'sound/effects/snap.ogg', 25, 1)
+		qdel(src)
 
 /*
  * Water flower

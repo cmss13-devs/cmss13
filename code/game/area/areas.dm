@@ -424,7 +424,7 @@
 	if(istype(get_turf(mob), /turf/open/space)) // Can't fall onto nothing.
 		return
 
-	if((istype(mob,/mob/living/carbon/human/)) && (mob:m_intent == MOVE_INTENT_RUN)) // Only clumbsy humans can fall on their asses.
+	if(istype(mob,/mob/living/carbon/human/)) // Only clumbsy humans can fall on their asses.
 		mob:AdjustStunned(5)
 		mob:AdjustKnockeddown(5)
 

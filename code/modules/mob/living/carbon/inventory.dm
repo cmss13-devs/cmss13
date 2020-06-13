@@ -7,16 +7,6 @@
 	update_inv_handcuffed()
 
 /mob/living/carbon/proc/legcuff_update()
-	if(legcuffed)
-		if(m_intent != MOVE_INTENT_WALK)
-			m_intent = MOVE_INTENT_WALK
-			if(hud_used && hud_used.move_intent)
-				hud_used.move_intent.icon_state = "walking"
-	else
-		if(m_intent != MOVE_INTENT_RUN)
-			m_intent = MOVE_INTENT_RUN
-			if(hud_used && hud_used.move_intent)
-				hud_used.move_intent.icon_state = "running"
 	recalculate_move_delay = TRUE
 	update_inv_legcuffed()
 

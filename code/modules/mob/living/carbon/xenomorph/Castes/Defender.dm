@@ -71,9 +71,6 @@
 	else if (crest_defense)
 		icon_state = "[mutation_type] Defender Crest"
 	else
-		if (m_intent == MOVE_INTENT_RUN)
-			icon_state = "[mutation_type] Defender Running"
-		else
-			icon_state = "[mutation_type] Defender Walking"
+		icon_state = "[mutation_type] Defender Running"
 
 	update_fire() //the fire overlay depends on the xeno's stance, so we must update it.

@@ -1495,7 +1495,7 @@
 
 		if(ishuman(M))
 			var/mob/living/carbon/human/H = M
-			if((!H.wear_suit || H.wear_suit.slowdown == 0) && H.m_intent == MOVE_INTENT_RUN)
+			if(!H.wear_suit || H.wear_suit.slowdown == 0)
 				no_clothes_neuro = TRUE
 
 		if(M.dazed || pass_down_the_line || no_clothes_neuro)

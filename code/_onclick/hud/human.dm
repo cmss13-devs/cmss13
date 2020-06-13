@@ -70,7 +70,6 @@
 
 	// Draw the attack intent dialogue.
 	draw_act_intent(ui_datum, ui_alpha)
-	draw_mov_intent(ui_datum, ui_alpha, ui_color)
 	draw_resist(ui_datum, ui_alpha, ui_color)
 	if(!iszombie(owner))
 		draw_drop(ui_datum, ui_alpha, ui_color)

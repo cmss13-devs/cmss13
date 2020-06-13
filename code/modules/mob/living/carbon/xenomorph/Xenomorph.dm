@@ -322,8 +322,6 @@
 
 	if(oldXeno)
 		a_intent_change(oldXeno.a_intent)//Keep intent
-		if(oldXeno.m_intent != MOVE_INTENT_RUN)
-			toggle_mov_intent()//Keep move intent
 
 		if(oldXeno.layer == XENO_HIDING_LAYER)
 			//We are hiding, let's keep hiding if we can!

@@ -52,7 +52,7 @@
 #define ATTACH_PROJECTILE	4 //for attachments that fire bullets
 #define ATTACH_RELOADABLE	8
 #define ATTACH_WEAPON		16 //is a weapon that fires stuff
-
+#define ATTACH_MELEE        32 //This attachment should activate if you attack() with it attached.
 //Ammo magazine defines, for flags_magazine
 #define AMMUNITION_REFILLABLE	1
 #define AMMUNITION_HANDFUL		2

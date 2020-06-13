@@ -22,7 +22,8 @@
 
 	attachable_allowed = list( //give it some flexibility.
 						/obj/item/attachable/flashlight,
-						/obj/item/attachable/magnetic_harness)
+						/obj/item/attachable/magnetic_harness,
+						/obj/item/attachable/attached_gun/extinguisher)
 	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_WIELDED_FIRING_ONLY
 	gun_skill_category = SKILL_HEAVY_WEAPONS
 
@@ -353,6 +354,7 @@
 	indestructible = 1
 	current_mag = null
 	var/obj/item/storage/large_holster/fuelpack/fuelpack
+	starting_attachment_types = list(/obj/item/attachable/attached_gun/extinguisher)
 
 /obj/item/weapon/gun/flamer/M240T/Dispose()
 	if(fuelpack)

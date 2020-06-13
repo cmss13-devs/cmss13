@@ -341,7 +341,10 @@
 			if("stock") 	dat += "It has [htmlicon(R)] [R.name] for a stock.<br>"
 			if("under")
 				dat += "It has [htmlicon(R)] [R.name]"
-				if(R.flags_attach_features & ATTACH_WEAPON)
+				if(istype(R, /obj/item/attachable/attached_gun/extinguisher))
+					var/obj/item/attachable/attached_gun/extinguisher/E = R
+					dat += " ([E.internal_extinguisher.reagents.total_volume]/[E.internal_extinguisher.max_water])"
+				else if(R.flags_attach_features & ATTACH_WEAPON)
 					dat += " ([R.current_rounds]/[R.max_rounds])"
 				dat += " mounted underneath.<br>"
 			else dat += "It has [htmlicon(R)] [R.name] attached.<br>"
@@ -565,6 +568,8 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 //----------------------------------------------------------
 
 /obj/item/weapon/gun/afterattack(atom/A, mob/living/user, flag, params)
+	if(active_attachable && (active_attachable.flags_attach_features & ATTACH_MELEE)) //this is expected to do something in melee.
+		return active_attachable.fire_attachment(A, src, user)
 	if(flag)
 		return ..() //It's adjacent, is the user, or is on the user's person
 	if(!istype(A))

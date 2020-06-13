@@ -198,6 +198,8 @@ ATTACHMENTS
 					/obj/item/attachable/attached_gun/shotgun,
 					/obj/item/attachable/attached_gun/flamer,
 					/obj/item/attachable/attached_gun/flamer,
+					/obj/item/attachable/attached_gun/extinguisher,
+					/obj/item/attachable/attached_gun/extinguisher,
 					/obj/item/attachable/burstfire_assembly,
 					/obj/item/attachable/burstfire_assembly
 					)
@@ -256,6 +258,19 @@ ATTACHMENTS
 					/obj/item/attachable/attached_gun/shotgun,
 					/obj/item/attachable/attached_gun/shotgun,
 					/obj/item/attachable/attached_gun/shotgun
+					)
+	cost = RO_PRICE_CHEAP
+	containertype = /obj/structure/closet/crate
+	containername = "shotgun attachment crate"
+	group = "Attachments"
+
+/datum/supply_packs/underbarrel_extinguisher
+	name = "underbarrel extinguisher attachment crate (x4)"
+	contains = list(
+					/obj/item/attachable/attached_gun/extinguisher,
+					/obj/item/attachable/attached_gun/extinguisher,
+					/obj/item/attachable/attached_gun/extinguisher,
+					/obj/item/attachable/attached_gun/extinguisher
 					)
 	cost = RO_PRICE_CHEAP
 	containertype = /obj/structure/closet/crate

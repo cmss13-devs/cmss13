@@ -492,6 +492,7 @@ can cause issues with ammo types getting mixed up during the burst.
 						/obj/item/attachable/heavy_barrel,
 						/obj/item/attachable/compensator,
 						/obj/item/attachable/magnetic_harness,
+						/obj/item/attachable/attached_gun/extinguisher,
 						/obj/item/attachable/attached_gun/flamer,
 						/obj/item/attachable/stock/shotgun)
 	map_specific_decoration = TRUE
@@ -595,6 +596,7 @@ can cause issues with ammo types getting mixed up during the burst.
 						/obj/item/attachable/compensator,
 						/obj/item/attachable/scope/mini,
 						/obj/item/attachable/magnetic_harness,
+						/obj/item/attachable/attached_gun/extinguisher,
 						/obj/item/attachable/attached_gun/flamer)
 	map_specific_decoration = FALSE
 

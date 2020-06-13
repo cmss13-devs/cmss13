@@ -258,13 +258,14 @@ Contains most of the procs that are called when a mob is attacked by something
 		return
 
 	var/obj/O = AM
+	if ((O.flags_atom & ITEM_UNCATCHABLE) && !isYautja(src))
+		visible_message(SPAN_WARNING("[src] fails to catch [O]!"), null, null, 5)
+		toggle_throw_mode(THROW_MODE_OFF)
 
 	//empty active hand and we're in throw mode
 	if (throw_mode && !get_active_hand() && cur_speed <= SPEED_VERY_FAST && \
 		!is_mob_incapacitated() && isturf(O.loc) && put_in_active_hand(O)
 	)
-		if ((O.flags_atom & ITEM_UNCATCHABLE) && !isYautja(src))
-			return
 		visible_message(SPAN_WARNING("[src] catches [O]!"), null, null, 5)
 		toggle_throw_mode(THROW_MODE_OFF)
 		return

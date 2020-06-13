@@ -462,48 +462,6 @@
 		L.resist()
 		return 1
 
-/obj/screen/mov_intent
-	name = "run/walk toggle"
-	icon = 'icons/mob/hud/human_midnight.dmi'
-	icon_state = "running"
-
-/obj/screen/mov_intent/clicked(mob/living/user)
-	if (..())
-		return 1
-	user.toggle_mov_intent()
-
-/mob/living/verb/mov_intent()
-	set category = "IC"
-	set name = "Toggle Move Intent"
-	toggle_mov_intent()
-
-/mob/living/proc/toggle_mov_intent()
-	switch(m_intent)
-		if(MOVE_INTENT_RUN)
-			m_intent = MOVE_INTENT_WALK
-			if(hud_used && hud_used.move_intent)
-				hud_used.move_intent.icon_state = "walking"
-		if(MOVE_INTENT_WALK)
-			m_intent = MOVE_INTENT_RUN
-			if(hud_used && hud_used.move_intent)
-				hud_used.move_intent.icon_state = "running"
-	recalculate_move_delay = TRUE
-	return 1
-
-/mob/living/carbon/toggle_mov_intent()
-	if(legcuffed)
-		to_chat(src, SPAN_NOTICE("You are legcuffed! You cannot run until you get [legcuffed] removed!"))
-		m_intent = MOVE_INTENT_WALK	//Just incase
-		if(hud_used && hud_used.move_intent)
-			hud_used.move_intent.icon_state = "walking"
-		return 0
-	. = ..()
-
-/mob/living/carbon/Xenomorph/toggle_mov_intent()
-	if(..())
-		update_icons()
-		return 1
-
 /obj/screen/act_intent
 	name = "intent"
 	icon_state = "intent_help"

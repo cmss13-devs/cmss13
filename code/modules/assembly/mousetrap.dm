@@ -86,9 +86,8 @@
 	if(armed)
 		if(ishuman(AM))
 			var/mob/living/carbon/H = AM
-			if(H.m_intent == MOVE_INTENT_RUN)
-				triggered(H)
-				H.visible_message(SPAN_WARNING("[H] accidentally steps on [src]."),SPAN_WARNING("You accidentally step on [src]"))
+			triggered(H)
+			H.visible_message(SPAN_WARNING("[H] accidentally steps on [src]."),SPAN_WARNING("You accidentally step on [src]"))
 		if(ismouse(AM))
 			triggered(AM)
 	..()

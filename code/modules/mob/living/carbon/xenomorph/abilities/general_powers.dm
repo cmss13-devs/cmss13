@@ -191,9 +191,6 @@
 	if(X.layer == XENO_HIDING_LAYER) //Xeno is currently hiding, unhide him
 		X.layer = MOB_LAYER
 
-	if(X.m_intent == MOVE_INTENT_WALK && isXenoLurker(X)) //Hunter that is currently using its stealth ability, need to unstealth him
-		X.toggle_mov_intent()
-
 	if(isXenoRavager(X))
 		X.emote("roar")
 

@@ -486,7 +486,7 @@
 	if(istype(O, /mob/living/))
 		var/mob/living/M = O
 		//slip in the murky water if we try to run through it
-		if(prob(10 + (M.m_intent == MOVE_INTENT_RUN ? 40 : 0)))
+		if(prob(50))
 			to_chat(M, pick(SPAN_NOTICE("You slip on something slimy."),SPAN_NOTICE("You fall over into the murk.")))
 			M.Stun(2)
 			M.KnockDown(1)

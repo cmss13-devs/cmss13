@@ -28,9 +28,7 @@
 	. = ..()
 	if(.)
 		if(nutrition && stat != DEAD)
-			nutrition -= HUNGER_FACTOR/10
-			if(m_intent == MOVE_INTENT_RUN)
-				nutrition -= HUNGER_FACTOR/10
+			nutrition -= HUNGER_FACTOR/5
 
 /mob/living/carbon/relaymove(mob/user, direction)
 	if(user.is_mob_incapacitated(TRUE)) return
@@ -404,7 +402,6 @@
 /mob/living/carbon/slip(slip_source_name, stun_level, weaken_level, run_only, override_noslip, slide_steps)
 	set waitfor = 0
 	if(buckled) return FALSE //can't slip while buckled
-	if(run_only && (m_intent != MOVE_INTENT_RUN)) return FALSE
 	if(lying) return FALSE //can't slip if already lying down.
 	stop_pulling()
 	to_chat(src, SPAN_WARNING("You slipped on \the [slip_source_name? slip_source_name : "floor"]!"))

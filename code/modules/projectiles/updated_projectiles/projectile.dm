@@ -662,10 +662,7 @@
 		var/mob/living/carbon/human/shooter_human = P.firer
 		if(istype(shooter_human))
 			if(shooter_human.faction == faction)
-				var/bonus_evade = 0
-				if(m_intent == MOVE_INTENT_WALK)
-					bonus_evade += 60
-				. -= FF_hit_evade + bonus_evade
+				. -= FF_hit_evade
 
 
 /mob/living/carbon/Xenomorph/get_projectile_hit_chance(obj/item/projectile/P)

@@ -1,3 +1,6 @@
+#define MOVE_INTENT_WALK 1
+#define MOVE_INTENT_RUN 2
+
 /mob/dead
 	var/voted_this_drop = 0
 	recalculate_move_delay = FALSE
@@ -13,7 +16,7 @@
 	anchored = 1	//  don't get pushed around
 	invisibility = INVISIBILITY_OBSERVER
 	layer = ABOVE_FLY_LAYER
-	m_intent = MOVE_INTENT_WALK
+	var/m_intent = MOVE_INTENT_WALK
 	stat = DEAD
 	var/adminlarva = 0
 	var/can_reenter_corpse
@@ -768,3 +771,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(href_list["preference"])
 		if(client)
 			client.prefs.process_link(src, href_list)
+
+#undef MOVE_INTENT_WALK
+#undef MOVE_INTENT_RUN

@@ -141,9 +141,6 @@
 	else if (burrow)
 		icon_state = "[mutation_type] Burrower Burrowed"
 	else
-		if (m_intent == MOVE_INTENT_RUN)
-			icon_state = "[mutation_type] Burrower Running"
-		else
-			icon_state = "[mutation_type] Burrower Walking"
+		icon_state = "[mutation_type] Burrower Running"
 
 	update_fire() //the fire overlay depends on the xeno's stance, so we must update it.

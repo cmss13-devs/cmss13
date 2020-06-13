@@ -101,8 +101,7 @@
 		return
 
 	if(istype(AM, /mob/living/carbon))
-		var/mob/living/carbon/M = AM
-		if ((M.m_intent != MOVE_INTENT_WALK) && (src.anchored))
+		if (src.anchored)
 			src.flash()
 
 /obj/structure/machinery/flasher/portable/attackby(obj/item/W as obj, mob/user as mob)
@@ -150,5 +149,5 @@
 	active = 0
 
 	msg_admin_attack("[key_name(user)] used the [src.name] to flash everyone in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
-	
+
 	return

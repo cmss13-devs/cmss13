@@ -276,10 +276,10 @@
 /datum/cm_objective/recover_corpses/get_completion_status()
 	var/percentage = 0
 	var/total = total_point_value()
+	var/value = get_point_value()
 	if(total)
-		var/value = get_point_value()
 		percentage = value*100.0/total
-	return "[percentage]% Recovered"
+	return "[value]pts ([percentage]% Recovered)"
 
 /datum/cm_objective/recover_corpses/colonists
 	name = "Recover Colonist Bodies"

@@ -45,7 +45,6 @@
 	living_human_list -= src
 	if(!gibbed) 
 		disable_special_flags()
-		disable_detectors()
 		disable_lights()
 		disable_special_items()
 		disable_headsets() //Disable radios for dead people to reduce load

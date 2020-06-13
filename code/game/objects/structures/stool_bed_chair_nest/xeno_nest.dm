@@ -133,6 +133,12 @@
 	if(!M.mind || !ishuman(M))
 		return
 
+	//Disabling motion detectors and other stuff they might be carrying
+	var/mob/living/carbon/human/H = M
+	H.disable_special_flags()
+	H.disable_lights()
+	H.disable_special_items()
+
 	var/choice = alert(M, "You have no possibility of escaping unless freed by your fellow marines, do you wish to Ghost? If you are freed while ghosted, you will be given the choice to return to your body.", ,"Ghost", "Remain")
 	if(choice == "Ghost")
 		ghost_of_buckled_mob = M.ghostize(FALSE)

@@ -112,7 +112,6 @@
 		M.create_hud()
 		
 	arm_equipment(M, dresscode, FALSE, count_participant)
-	M.regenerate_icons()
 	if(!no_logs)
 		message_admins(SPAN_NOTICE("[key_name_admin(usr)] changed the equipment of [key_name_admin(M)] to [dresscode]."), 1)
 	return

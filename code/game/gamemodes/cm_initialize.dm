@@ -254,7 +254,6 @@ Additional game mode variables.
 			to_chat(new_predator, SPAN_NOTICE("Hunt at your discretion, yet be observant rather than violent."))
 			to_chat(new_predator, SPAN_NOTICE("And above all, listen to your Elders!"))
 
-	new_predator.regenerate_icons()
 	initialize_predator(new_predator)
 	new_predator.set_skills(/datum/skills/yautja/warrior)
 	return new_predator

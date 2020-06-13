@@ -131,6 +131,7 @@
 	load_vanity(H)
 	if(round_statistics && count_participant)
 		round_statistics.track_new_participant(faction)
+	H.regenerate_icons()
 
 /datum/equipment_preset/proc/load_vanity(mob/living/carbon/human/H)
 	if(!H.client || !H.client.prefs || !H.client.prefs.gear)

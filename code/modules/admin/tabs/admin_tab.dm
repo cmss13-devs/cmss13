@@ -97,7 +97,7 @@
 	if(body && !body.key)
 		body.key = "@[key]"	//Haaaaaaaack. But the people have spoken. If it breaks; blame adminbus
 		if(body.client) 
-			body.client.change_view(world.view) //reset view range to default.
+			body.client.change_view(world_view_size) //reset view range to default.
 
 		//re-open STUI
 	if(new_STUI)

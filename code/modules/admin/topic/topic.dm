@@ -907,7 +907,7 @@
 
 		var/mob/new_player/NP = new()
 		NP.ckey = M.ckey
-		if(NP.client) NP.client.change_view(world.view)
+		if(NP.client) NP.client.change_view(world_view_size)
 		qdel(M)
 
 	else if(href_list["tdome1"])
@@ -1086,7 +1086,7 @@
 				H.mind.transfer_to(M)
 			else
 				M.key = H.key
-				if(M.client) M.client.change_view(world.view)
+				if(M.client) M.client.change_view(world_view_size)
 
 			if(M.skills)
 				qdel(M.skills)

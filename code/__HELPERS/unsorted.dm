@@ -1659,7 +1659,7 @@ proc/get_perpen_dir(var/dir)
 proc/anyprob(value)
 	return (rand(1,value)==value)
 
-proc/view_or_range(distance = world.view , center = usr , type)
+proc/view_or_range(distance = world_view_size , center = usr , type)
 	switch(type)
 		if("view")
 			. = view(distance,center)
@@ -1667,7 +1667,7 @@ proc/view_or_range(distance = world.view , center = usr , type)
 			. = range(distance,center)
 	return
 
-proc/oview_or_orange(distance = world.view , center = usr , type)
+proc/oview_or_orange(distance = world_view_size , center = usr , type)
 	switch(type)
 		if("view")
 			. = oview(distance,center)

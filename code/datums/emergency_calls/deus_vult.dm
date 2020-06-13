@@ -20,7 +20,7 @@
 	var/mob/living/carbon/human/H = new(spawn_loc)
 	H.key = M.key
 	if(H.client)
-		H.client.change_view(world.view)
+		H.client.change_view(world_view_size)
 	ticker.mode.traitors += H.mind
 
 	if(!leader)       //First one spawned is always the leader.

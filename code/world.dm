@@ -7,6 +7,8 @@ var/global/datum/global_init/init = new ()
 	load_configuration()
 	makeDatumRefLists()
 
+var/world_view_size = 7
+
 /world
 	mob = /mob/new_player
 	turf = /turf/open/space
@@ -497,5 +499,10 @@ proc/setup_database_connection()
 
 	sleep(30)
 	world.Reboot() //Whatever this is the important part
+
+/proc/set_global_view(view_size)
+	world_view_size = view_size
+	for(var/client/c in clients)
+		c.view = world_view_size
 
 #undef FAILED_DB_CONNECTION_CUTOFF

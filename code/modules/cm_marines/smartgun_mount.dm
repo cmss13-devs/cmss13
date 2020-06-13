@@ -728,7 +728,7 @@
 	user.status_flags &= ~IMMOBILE_ACTION
 	user.reset_view(null)
 	if(zoom && user.client)
-		user.client.change_view(world.view)
+		user.client.change_view(world_view_size)
 		user.client.pixel_x = 0
 		user.client.pixel_y = 0
 	if(operator == user)

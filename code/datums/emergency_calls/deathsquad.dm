@@ -27,7 +27,7 @@
 	var/mob/living/carbon/human/H = new(spawn_loc)
 	H.key = M.key
 	if(H.client)
-		H.client.change_view(world.view)
+		H.client.change_view(world_view_size)
 	ticker.mode.traitors += H.mind
 	H.set_skills(/datum/skills/commando/deathsquad)
 

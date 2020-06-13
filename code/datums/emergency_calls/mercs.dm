@@ -40,7 +40,7 @@
 	H.name = H.real_name
 	H.key = M.key
 	if(H.client)
-		H.client.change_view(world.view)
+		H.client.change_view(world_view_size)
 	H.job = "Mercenary"
 	ticker.mode.traitors += H.mind
 

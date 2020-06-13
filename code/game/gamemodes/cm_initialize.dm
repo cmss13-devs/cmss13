@@ -224,7 +224,7 @@ Additional game mode variables.
 	new_predator.statistic_exempt = TRUE
 
 	if(new_predator.client)
-		new_predator.client.change_view(world.view)
+		new_predator.client.change_view(world_view_size)
 
 	if(!new_predator.client.prefs)
 		new_predator.client.prefs = new /datum/preferences(new_predator.client) //Let's give them one.
@@ -452,7 +452,7 @@ Additional game mode variables.
 	// Let the round recorder know that the key has changed
 	SSround_recording.recorder.update_key(new_xeno)
 	if(new_xeno.client)
-		new_xeno.client.change_view(world.view)
+		new_xeno.client.change_view(world_view_size)
 
 	msg_admin_niche("[new_xeno.key] has joined as [new_xeno].")
 	if(isXeno(new_xeno)) //Dear lord

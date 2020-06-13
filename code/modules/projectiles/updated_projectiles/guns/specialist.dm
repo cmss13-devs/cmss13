@@ -887,7 +887,7 @@
 /obj/item/weapon/gun/launcher/m92/proc/fire_grenade(atom/target, mob/user)
 	set waitfor = 0
 	last_fired = world.time
-	for(var/mob/O in viewers(world.view, user))
+	for(var/mob/O in viewers(world_view_size, user))
 		O.show_message(SPAN_DANGER("[user] fired a grenade!"), 1)
 	to_chat(user, SPAN_WARNING("You fire the grenade launcher!"))
 	var/obj/item/explosive/grenade/F = grenades[1]

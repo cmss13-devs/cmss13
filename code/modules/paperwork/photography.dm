@@ -253,7 +253,7 @@
 	var/viewer = user
 	if(user.client)		//To make shooting through security cameras possible
 		viewer = user.client.eye
-	var/can_see = (dummy in viewers(world.view, viewer)) != null
+	var/can_see = (dummy in viewers(world_view_size, viewer)) != null
 
 	dummy.loc = null
 	dummy = null	//Alas, nameless creature	//garbage collect it instead

@@ -194,7 +194,7 @@
 		else if(playing == 1)
 			playing = 0
 			var/turf/T = get_turf(src)
-			for(var/mob/O in hearers(world.view-1, T))
+			for(var/mob/O in hearers(world_view_size-1, T))
 				O.show_message("<font color=Maroon><B>[src]</B>: Playback stopped.</font>",2)
 			icon_state = "taperecorderidle"
 			return

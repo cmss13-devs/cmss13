@@ -26,7 +26,7 @@
 	var/mob/living/carbon/human/mob = new(spawn_loc)
 	mob.key = M.key
 	if(mob.client)
-		mob.client.change_view(world.view)
+		mob.client.change_view(world_view_size)
 
 	ticker.mode.traitors += mob.mind
 
@@ -104,7 +104,7 @@
 	var/mob/living/carbon/human/H = new(spawn_loc)
 	H.key = M.key
 	if(H.client)
-		H.client.change_view(world.view)
+		H.client.change_view(world_view_size)
 
 	ticker.mode.traitors += H.mind
 

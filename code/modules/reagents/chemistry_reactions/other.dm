@@ -162,7 +162,7 @@
 		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 		s.set_up(2, 1, location)
 		s.start()
-		for(var/mob/living/carbon/M in viewers(world.view, location))
+		for(var/mob/living/carbon/M in viewers(world_view_size, location))
 			switch(get_dist(M, location))
 				if(0 to 3)
 					if(M.flash_eyes())

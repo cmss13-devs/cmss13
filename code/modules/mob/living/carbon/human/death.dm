@@ -48,6 +48,7 @@
 		disable_detectors()
 		disable_lights()
 		disable_special_items()
+		disable_headsets() //Disable radios for dead people to reduce load
 	if(pulledby && isXeno(pulledby)) // Xenos lose grab on dead humans
 		pulledby.stop_pulling()
 	//Handle species-specific deaths.

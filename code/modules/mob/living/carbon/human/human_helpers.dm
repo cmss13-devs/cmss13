@@ -248,6 +248,12 @@
 		var/obj/item/device/motiondetector/motionD = I
 		motionD.toggle_active(src, 1)
 
+/mob/living/carbon/human/proc/disable_headsets()
+	//Disable all radios to reduce radio spam for dead people
+	var/list/cont = contents_recursive()
+	for(var/obj/item/device/radio/headset/h in cont)
+		h.on = FALSE
+
 /mob/living/carbon/human/proc/disable_lights(var/armor = 1, var/guns = 1, var/flares = 1, var/misc = 1)
 	var/light_off = 0
 	var/goes_out = 0

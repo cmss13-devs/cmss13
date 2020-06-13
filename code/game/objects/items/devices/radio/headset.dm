@@ -31,6 +31,10 @@
 
 	return ..()
 
+/obj/item/device/radio/headset/attack_self(mob/user as mob)
+	on = TRUE //Turn it on if it was off
+	. = ..()
+
 /obj/item/device/radio/headset/receive_range(freq, level, aiOverride = 0)
 	if (aiOverride)
 		return ..(freq, level)

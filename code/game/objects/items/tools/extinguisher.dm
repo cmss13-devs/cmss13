@@ -54,7 +54,7 @@
 		return ..()
 
 /obj/item/tool/extinguisher/afterattack(atom/target, mob/user , flag)
-	if(istype(target, /obj/structure/reagent_dispensers/watertank) && get_dist(src,target) <= 1)
+	if(istype(target, /obj/structure/reagent_dispensers/watertank) && get_dist(user,target) <= 1)
 		var/obj/o = target
 		o.reagents.trans_to(src, 50)
 		to_chat(user, SPAN_NOTICE(" \The [src] is now refilled"))
@@ -75,42 +75,42 @@
 
 	playsound(src.loc, 'sound/effects/extinguish.ogg', 52, 1, 7)
 
-	var/direction = get_dir(src, target)
+	var/direction = get_dir(user, target)
 
-	if(usr.buckled && isobj(usr.buckled) && !usr.buckled.anchored)
+	if(user.buckled && isobj(user.buckled) && !user.buckled.anchored)
 		spawn(0)
 			var/obj/structure/bed/chair/C = null
-			if(istype(usr.buckled, /obj/structure/bed/chair))
-				C = usr.buckled
-			var/obj/B = usr.buckled
+			if(istype(user.buckled, /obj/structure/bed/chair))
+				C = user.buckled
+			var/obj/B = user.buckled
 			var/movementdirection = turn(direction,180)
 			if(C)
 				C.propelled = 4
-			B.Move(get_step(usr,movementdirection), movementdirection)
+			B.Move(get_step(user,movementdirection), movementdirection)
 			sleep(1)
-			B.Move(get_step(usr,movementdirection), movementdirection)
+			B.Move(get_step(user,movementdirection), movementdirection)
 			if(C)
 				C.propelled = 3
 			sleep(1)
-			B.Move(get_step(usr,movementdirection), movementdirection)
+			B.Move(get_step(user,movementdirection), movementdirection)
 			sleep(1)
-			B.Move(get_step(usr,movementdirection), movementdirection)
+			B.Move(get_step(user,movementdirection), movementdirection)
 			if(C)
 				C.propelled = 2
 			sleep(2)
-			B.Move(get_step(usr,movementdirection), movementdirection)
+			B.Move(get_step(user,movementdirection), movementdirection)
 			if(C)
 				C.propelled = 1
 			sleep(2)
-			B.Move(get_step(usr,movementdirection), movementdirection)
+			B.Move(get_step(user,movementdirection), movementdirection)
 			if(C)
 				C.propelled = 0
 			sleep(3)
-			B.Move(get_step(usr,movementdirection), movementdirection)
+			B.Move(get_step(user,movementdirection), movementdirection)
 			sleep(3)
-			B.Move(get_step(usr,movementdirection), movementdirection)
+			B.Move(get_step(user,movementdirection), movementdirection)
 			sleep(3)
-			B.Move(get_step(usr,movementdirection), movementdirection)
+			B.Move(get_step(user,movementdirection), movementdirection)
 
 	if(target == user)
 		if(!isliving(user))
@@ -133,15 +133,15 @@
 			unpicked_targets += targets
 		var/turf/TT = pick(unpicked_targets)
 		unpicked_targets -= TT
-		INVOKE_ASYNC(src, .proc/release_liquid, TT)
+		INVOKE_ASYNC(src, .proc/release_liquid, TT, user)
 
-	if(istype(usr.loc, /turf/open/space) || (usr.lastarea && usr.lastarea.has_gravity == 0))
+	if(istype(user.loc, /turf/open/space) || (user.lastarea && user.lastarea.has_gravity == 0))
 		user.inertia_dir = get_dir(target, user)
 		step(user, user.inertia_dir)
 	return
 
-/obj/item/tool/extinguisher/proc/release_liquid(var/turf/target)
-	var/turf/T = get_turf(src)
+/obj/item/tool/extinguisher/proc/release_liquid(var/turf/target, var/mob/user)
+	var/turf/T = get_turf(user)
 	var/obj/effect/particle_effect/water/W = new /obj/effect/particle_effect/water(T)
 	W.create_reagents(5)
 	reagents.trans_to(W, 1)

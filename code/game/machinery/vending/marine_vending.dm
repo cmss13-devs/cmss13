@@ -554,6 +554,7 @@
 		/obj/item/attachable/lasersight = round(scale * 9),
 		/obj/item/attachable/attached_gun/flamer = round(scale * 4),
 		/obj/item/attachable/attached_gun/shotgun = round(scale * 4),
+		/obj/item/attachable/attached_gun/extinguisher = round(scale * 4),
 		/obj/item/attachable/attached_gun/grenade = round(scale * 5),
 		/obj/item/attachable/flashlight/grip = round(scale * 9),
 		/obj/item/attachable/verticalgrip = round(scale * 9),

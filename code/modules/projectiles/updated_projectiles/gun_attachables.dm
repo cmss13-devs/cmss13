@@ -1319,7 +1319,7 @@ Defined in conflicts.dm of the #defines folder.
 
 
 /obj/item/attachable/attached_gun/shotgun
-	name = "U7 underbarrel shotgun"
+	name = "\improper U7 underbarrel shotgun"
 	icon_state = "masterkey"
 	attach_icon = "masterkey_a"
 	desc = "An ARMAT U7 tactical shotgun. Attaches to the underbarrel of most weapons. Only capable of loading up to three buckshot shells."
@@ -1358,7 +1358,43 @@ Defined in conflicts.dm of the #defines folder.
 			return
 	to_chat(user, SPAN_WARNING("[src] only accepts shotgun buckshot."))
 
+/obj/item/attachable/attached_gun/extinguisher
+	name = "underbarrel extinguisher"
+	icon_state = "extinguisher"
+	attach_icon = "extinguisher_a"
+	desc = "A Taiho-Technologies HME-12 underbarrel extinguisher. Attaches to the underbarrel of most weapons. Point at flame before applying pressure."
+	w_class = SIZE_MEDIUM
+	slot = "under"
+	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION|ATTACH_WEAPON|ATTACH_MELEE
+	var/obj/item/tool/extinguisher/mini/internal_extinguisher
+	current_rounds = 1 //This has to be done to pass the fire_attachment check.
 
+/obj/item/attachable/attached_gun/extinguisher/examine(mob/user)
+	..()
+	if(internal_extinguisher)
+		to_chat(user, "It contains [internal_extinguisher.reagents.total_volume] units of water left!")
+		return
+	to_chat(user, "It's empty.")
+
+/obj/item/attachable/attached_gun/extinguisher/afterattack(atom/target, mob/user , flag)
+	if(istype(target, /obj/structure/reagent_dispensers/watertank) && get_dist(user,target) <= 1)
+		var/obj/o = target
+		o.reagents.trans_to(src, 50)
+		to_chat(user, SPAN_NOTICE(" \The [src] is now refilled"))
+		playsound(src.loc, 'sound/effects/refill.ogg', 25, 1, 3)
+		return
+
+/obj/item/attachable/attached_gun/extinguisher/New()
+	..()
+	internal_extinguisher = new /obj/item/tool/extinguisher/mini()
+	internal_extinguisher.safety = FALSE
+	internal_extinguisher.create_reagents(internal_extinguisher.max_water)
+	internal_extinguisher.reagents.add_reagent("water", internal_extinguisher.max_water)
+
+/obj/item/attachable/attached_gun/extinguisher/fire_attachment(atom/target, obj/item/weapon/gun/gun, mob/living/user)
+	if(!internal_extinguisher)
+		return
+	return internal_extinguisher.afterattack(target, user)
 
 /obj/item/attachable/verticalgrip
 	name = "vertical grip"

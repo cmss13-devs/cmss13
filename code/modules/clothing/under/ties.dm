@@ -470,8 +470,7 @@
 	. = ..()
 
 /obj/item/clothing/accessory/storage/attack_hand(mob/user as mob)
-
-	if (hold.handle_attack_hand(user))
+	if (!isnull(hold) && hold.handle_attack_hand(user))
 		..(user)
 
 /obj/item/clothing/accessory/storage/MouseDrop(obj/over_object as obj)

@@ -477,8 +477,6 @@ var/global/list/obj/structure/machinery/telecomms/telecomms_list = list()
 
 /obj/structure/machinery/telecomms/server/New()
 	..()
-	Compiler = new()
-	Compiler.Holder = src
 	server_radio = new()
 
 /obj/structure/machinery/telecomms/server/receive_information(datum/signal/signal, obj/structure/machinery/telecomms/machine_from)
@@ -499,10 +497,6 @@ var/global/list/obj/structure/machinery/telecomms/telecomms_list = list()
 	if(t)
 		if(istext(t))
 			rawcode = t
-
-/obj/structure/machinery/telecomms/server/proc/compile()
-	if(Compiler)
-		return Compiler.Compile(rawcode)
 
 /obj/structure/machinery/telecomms/server/proc/update_logs()
 	// start deleting the very first log entry

@@ -122,3 +122,8 @@ var/list/sqrtTable = list(1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 
 	rotated_point[2] = rotated_point[2] + axis[2]
 
 	return rotated_point
+
+// Round up
+proc/n_ceil(var/num)
+	if(isnum(num))
+		return round(num)+1

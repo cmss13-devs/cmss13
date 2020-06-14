@@ -3143,7 +3143,8 @@
 		desc = "The contents of a USCM Standard issue MRE. This one is " + flavor + "."
 		icon_state = flavor
 		package = 0
-
+		return
+	..()
 /obj/item/reagent_container/food/snacks/packaged_meal/proc/determinetype(newflavor)
 	name = "\improper MRE component" + " (" + newflavor + ")"
 	flavor = newflavor

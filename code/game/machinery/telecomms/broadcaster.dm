@@ -69,7 +69,7 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 
 			/* ###### Broadcast a message using signal.data ###### */
 			Broadcast_SimpleMessage(signal.data["name"], signal.frequency,
-								  signal.data["message"],null, null,
+								  signal.data["message"], null, null,
 								  signal.data["compression"], listening_level)
 
 

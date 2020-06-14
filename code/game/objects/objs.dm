@@ -14,15 +14,19 @@
 	var/can_buckle = FALSE
 
 	var/projectile_coverage = 0 //an object's "projectile_coverage" var indicates the maximum probability of blocking a projectile, assuming density and throwpass. Used by barricades, tables and window frames
+	var/garbage = FALSE //set to true if the item is garbage and should be deleted after awhile
 
 /obj/New()
 	..()
 	object_list += src
+	if(garbage)
+		add_to_garbage(src)
 
 /obj/Dispose()
 	if(buckled_mob) 
 		unbuckle()
 	. = ..()
+	remove_from_garbage(src)
 	object_list -= src
 
 

@@ -145,6 +145,7 @@
 	desc = "A strange bottle of unknown origin."
 	icon = 'icons/obj/items/black_goo_stuff.dmi'
 	icon_state = "blackgoo"
+	garbage = FALSE
 
 /obj/item/reagent_container/food/drinks/bottle/black_goo/Initialize()
 		..()

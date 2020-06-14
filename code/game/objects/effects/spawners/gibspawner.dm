@@ -21,6 +21,7 @@
 	var/bloodcolor //Used for gibbed humans.
 	icon = 'icons/landmarks.dmi'
 	icon_state = "landmark_gibs"
+	garbage = TRUE
 
 /obj/effect/spawner/gibspawner/New(location, var/list/viruses, var/mob/living/ml, var/fleshcolor, var/bloodcolor)
 	..()

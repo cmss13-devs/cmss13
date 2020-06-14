@@ -4,6 +4,7 @@ var/global/list/cleanable_decal_cache = list()
 	var/list/random_icon_states = list()
 	var/targeted_by = null			// Used so cleanbots can't claim a mess.
 	var/dirt_type = DIRT_MISC//What kind of dirt is this
+	garbage = TRUE
 
 /obj/effect/decal/cleanable/New()
 	set waitfor = 0

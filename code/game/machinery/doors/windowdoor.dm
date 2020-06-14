@@ -14,16 +14,17 @@
 	var/obj/item/circuitboard/airlock/electronics = null
 	air_properties_vary_with_direction = 1
 
-	New()
-		add_timer(CALLBACK(src, .proc/update_icon), 0)
-		if (src.req_access && src.req_access.len)
-			src.icon_state = "[src.icon_state]"
-			src.base_state = src.icon_state
+/obj/structure/machinery/door/window/New()
+	. = ..()
+	add_timer(CALLBACK(src, .proc/update_icon), 0)
+	if (src.req_access && src.req_access.len)
+		src.icon_state = "[src.icon_state]"
+		src.base_state = src.icon_state
 
-	Dispose()
-		density = 0
-		playsound(src, "shatter", 50, 1)
-		. = ..()
+/obj/structure/machinery/door/window/Dispose()
+	density = 0
+	playsound(src, "shatter", 50, 1)
+	. = ..()
 
 //Enforces perspective layering like it's contemporary; windows.
 /obj/structure/machinery/door/window/update_icon(loc, direction)

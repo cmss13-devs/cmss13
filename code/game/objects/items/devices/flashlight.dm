@@ -224,6 +224,7 @@
 		turn_off()
 		if(!fuel)
 			icon_state = "[initial(icon_state)]-empty"
+			add_to_garbage(src)
 		processing_objects -= src
 
 /obj/item/device/flashlight/flare/proc/turn_off()

@@ -37,6 +37,8 @@
 	overlays.Cut()
 	if(uses_left)
 		overlays += "[chemname]_[uses_left]"
+	else
+		add_to_garbage(src)
 
 /obj/item/reagent_container/hypospray/autoinjector/examine(mob/user)
 	..()

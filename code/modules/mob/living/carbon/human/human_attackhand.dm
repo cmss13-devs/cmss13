@@ -61,8 +61,13 @@
 			return 1
 
 		if("grab")
-			if(M == src || anchored)
+			if(M == src)
+				check_for_injuries()
+				return 1
+
+			if(anchored)
 				return 0
+
 			if(w_uniform)
 				w_uniform.add_fingerprint(M)
 
@@ -110,6 +115,10 @@
 
 
 		if("disarm")
+			if(M == src)
+				check_for_injuries()
+				return 1
+
 			M.attack_log += text("\[[time_stamp()]\] <font color='red'>Disarmed [key_name(src)]</font>")
 			src.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been disarmed by [key_name(M)]</font>")
 
@@ -182,9 +191,6 @@
 /mob/living/carbon/human/proc/afterattack(atom/target as mob|obj|turf|area, mob/living/user as mob|obj, inrange, params)
 	return
 
-
-
-
 /mob/living/carbon/human/help_shake_act(mob/living/carbon/M)
 	if(health < config.health_threshold_crit)
 		return
@@ -197,49 +203,7 @@
 			visible_message(SPAN_NOTICE("[src] removes the holo card on [gender==MALE?"himself":"herself"]."), \
 				SPAN_NOTICE("You remove the holo card on yourself."), null, 3)
 			return
-		visible_message(SPAN_NOTICE("[src] examines [gender==MALE?"himself":"herself"]."), \
-			SPAN_NOTICE("You check yourself for injuries."), null, 3)
-
-		for(var/obj/limb/org in limbs)
-			var/status = ""
-			var/brutedamage = org.brute_dam
-			var/burndamage = org.burn_dam
-			if(org.status & LIMB_DESTROYED)
-				status = "MISSING!"
-			else
-				if(org.status & LIMB_MUTATED)
-					if(status)
-						status += " and "
-					status += "weirdly shapen"
-				if(halloss > 0)
-					if(status)
-						status += " and "
-					status += "tingling"
-				if(brutedamage > 0)
-					if(status)
-						status += " and "
-					if(brutedamage > 40)
-						status += "mangled"
-					else if(brutedamage > 20)
-						status += "battered"
-					else
-						status += "bruised"
-				if(burndamage > 0)
-					if(status)
-						status += " and "
-					if(burndamage > 40)
-						status += "peeling away"
-					else if(burndamage > 10)
-						status += "blistered"
-					else
-						status += "numb"
-
-			if(!status)
-				status = "OK"
-			if(org.status & LIMB_SPLINTED) 
-				status += " <b>(SPLINTED)</b>"
-
-			to_chat(src, "\t My [org.display_name] is [status=="OK"?SPAN_NOTICE(status):SPAN_WARNING(status)]")
+		check_for_injuries()
 		return
 
 	//Target is not us
@@ -274,3 +238,48 @@
 	AdjustKnockeddown(-3)
 
 	playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
+
+/mob/living/carbon/human/proc/check_for_injuries()
+	visible_message(SPAN_NOTICE("[src] examines [gender==MALE?"himself":"herself"]."), \
+	SPAN_NOTICE("You check yourself for injuries."), null, 3)
+
+	for(var/obj/limb/org in limbs)
+		var/status = ""
+		var/brutedamage = org.brute_dam
+		var/burndamage = org.burn_dam
+		if(org.status & LIMB_DESTROYED)
+			status = "MISSING!"
+		else
+			if(org.status & LIMB_MUTATED)
+				if(status)
+					status += " and "
+				status += "weirdly shapen"
+			if(halloss > 0)
+				if(status)
+					status += " and "
+				status += "tingling"
+			if(brutedamage > 0)
+				if(status)
+					status += " and "
+				if(brutedamage > 40)
+					status += "mangled"
+				else if(brutedamage > 20)
+					status += "battered"
+				else
+					status += "bruised"
+			if(burndamage > 0)
+				if(status)
+					status += " and "
+				if(burndamage > 40)
+					status += "peeling away"
+				else if(burndamage > 10)
+					status += "blistered"
+				else
+					status += "numb"
+
+		if(!status)
+			status = "OK"
+		if(org.status & LIMB_SPLINTED)
+			status += " <b>(SPLINTED)</b>"
+
+		to_chat(src, "\t My [org.display_name] is [status=="OK"?SPAN_NOTICE(status):SPAN_WARNING(status)]")

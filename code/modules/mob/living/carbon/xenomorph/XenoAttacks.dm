@@ -39,6 +39,9 @@
 			if(M == src || anchored)
 				return 0
 
+			if(stat != DEAD && isHumanStrict(M))
+				return 0
+
 			M.start_pulling(src)
 
 		else

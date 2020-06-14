@@ -398,6 +398,7 @@
 	attack_verb = list("diced")
 
 /obj/item/toy/dice/New()
+	. = ..()
 	icon_state = "[name][rand(sides)]"
 
 /obj/item/toy/dice/d20

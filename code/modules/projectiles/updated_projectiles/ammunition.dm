@@ -43,6 +43,7 @@ They're all essentially identical when it comes to getting the job done.
 	if(current_rounds <= 0) 
 		icon_state = base_mag_icon + "_e"
 		item_state = base_mag_item + "_e"
+		add_to_garbage(src)
 	else if(current_rounds - round_diff <= 0)
 		icon_state = base_mag_icon
 		item_state = base_mag_item //to-do, unique magazine inhands for majority firearms.
@@ -242,6 +243,7 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	var/max_casings = 16
 	var/current_icon = 0
 	var/number_of_states = 10 //How many variations of this item there are.
+	garbage = TRUE
 
 /obj/item/ammo_casing/New()
 	..()

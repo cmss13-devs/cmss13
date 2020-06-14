@@ -12,6 +12,7 @@
 	flags_equip_slot = SLOT_WAIST
 
 /obj/item/clipboard/New()
+	. = ..()
 	update_icon()
 
 /obj/item/clipboard/MouseDrop(obj/over_object as obj) //Quick clipboard fix. -Agouri

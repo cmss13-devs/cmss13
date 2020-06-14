@@ -13,6 +13,7 @@
 	max_amount = 60
 	attack_verb = list("hit", "bludgeoned", "whacked")
 	stack_id = "metal rod"
+	garbage = TRUE
 
 /obj/item/stack/rods/attackby(obj/item/W as obj, mob/user as mob)
 	..()

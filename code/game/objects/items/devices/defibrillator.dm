@@ -26,6 +26,7 @@
 	return FALSE
 
 /obj/item/device/defibrillator/New()
+	. = ..()
 	sparks.set_up(5, 0, src)
 	sparks.attach(src)
 	dcell = new/obj/item/cell(src)

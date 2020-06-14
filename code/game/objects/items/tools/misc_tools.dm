@@ -97,6 +97,7 @@
 	update_pen_state()
 
 /obj/item/tool/pen/New()
+	. = ..()
 	update_pen_state()
 
 /obj/item/tool/pen/proc/update_pen_state()

@@ -583,6 +583,7 @@
 /obj/item/storage/box/m94/signal/update_icon()
 	if(!contents.len)
 		icon_state = "m89_e"
+		qdel(src) //No reason to keep it - nobody will reuse it...
 	else
 		icon_state = "m89"
 
@@ -608,6 +609,7 @@
 /obj/item/storage/box/nade_box/update_icon()
 	if(!contents.len)
 		icon_state = "[nade_box_icon]_e"
+		qdel(src) //No reason to keep it - nobody will reuse it...
 	else
 		icon_state = nade_box_icon
 

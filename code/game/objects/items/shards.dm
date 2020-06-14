@@ -16,6 +16,7 @@
 	var/source_sheet_type = /obj/item/stack/sheet/glass
 	var/shardsize
 	var/count = 1
+	garbage = TRUE
 
 /obj/item/shard/attack(mob/living/carbon/M, mob/living/carbon/user)
 	. = ..()

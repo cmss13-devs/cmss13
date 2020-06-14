@@ -31,10 +31,11 @@
 	icon_state = "folder_black_green"
 
 /obj/item/folder/black_random/New()
-	..()
+	. = ..()
 	icon_state = "folder_black[pick("_red", "_green", "_blue", "_yellow", "_white")]"
 
 /obj/item/folder/New()
+	. = ..()
 	if(updateicon)
 		update_icon()
 

@@ -4,6 +4,7 @@
 	icon = 'icons/obj/items/trash.dmi'
 	w_class = SIZE_SMALL
 	desc = "This is rubbish."
+	garbage = TRUE
 
 /obj/item/trash/raisins
 	name = "4no raisins"

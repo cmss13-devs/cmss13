@@ -10,9 +10,11 @@
 	icon = 'icons/obj/items/stock_parts.dmi'
 	w_class = SIZE_SMALL
 	var/rating = 1
-	New()
-		src.pixel_x = rand(-5.0, 5)
-		src.pixel_y = rand(-5.0, 5)
+
+/obj/item/stock_parts/New()
+	. = ..()
+	src.pixel_x = rand(-5.0, 5)
+	src.pixel_y = rand(-5.0, 5)
 
 //Rank 1
 

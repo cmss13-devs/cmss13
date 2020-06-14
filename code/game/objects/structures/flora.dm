@@ -40,6 +40,7 @@ PLANT_CUT_MACHETE = 3 = Needs at least a machete to be cut down
 	var/center = TRUE //Determine if we want less or more ash when burned
 
 /obj/structure/flora/New()
+	. = ..()
 	if(icon_tag)
 		icon_state = "[icon_tag]_[rand(1,variations)]"
 
@@ -168,7 +169,8 @@ ICE GRASS
 	var/overlay_type = "tallgrass_overlay"
 
 /obj/structure/flora/grass/tallgrass/New()
-    update_icon()
+	..()
+	update_icon()
 
 /obj/structure/flora/grass/tallgrass/update_icon()
 	..()
@@ -444,6 +446,7 @@ ICE GRASS
 	variations = 6
 
 /obj/structure/flora/jungle/vines/heavy/New()
+	..()
 	icon_state = pick("heavy_1","heavy_2","heavy_3","heavy_4","heavy_5","heavy_6")
 
 /obj/structure/flora/jungle/thickbush

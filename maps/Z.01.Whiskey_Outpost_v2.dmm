@@ -1011,7 +1011,7 @@
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/cic)
 "cK" = (
-/obj/structure/flora/ausbushes/grassybush,
+/obj/structure/flora/bush/ausbushes/grassybush,
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/north)
 "cN" = (
@@ -2059,7 +2059,7 @@
 	},
 /area/whiskey_outpost/inside/hospital)
 "eU" = (
-/obj/structure/flora/ausbushes/reedbush,
+/obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/river,
 /area/whiskey_outpost/outside/river/east)
 "eW" = (
@@ -2248,7 +2248,7 @@
 	},
 /area/whiskey_outpost/inside/cic)
 "fu" = (
-/obj/structure/flora/ausbushes/reedbush,
+/obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/river,
 /area/whiskey_outpost/outside/river)
 "fv" = (
@@ -2312,7 +2312,7 @@
 	},
 /area/whiskey_outpost/outside/river/east)
 "fD" = (
-/obj/structure/flora/ausbushes/stalkybush,
+/obj/structure/flora/bush/ausbushes/var3/stalkybush,
 /turf/open/gm/river,
 /area/whiskey_outpost/outside/river/east)
 "fE" = (
@@ -2339,7 +2339,7 @@
 	},
 /area/whiskey_outpost/inside/cic)
 "fG" = (
-/obj/structure/flora/ausbushes/stalkybush,
+/obj/structure/flora/bush/ausbushes/var3/stalkybush,
 /turf/open/gm/river,
 /area/whiskey_outpost/outside/river)
 "fH" = (
@@ -2444,7 +2444,7 @@
 	},
 /area/whiskey_outpost/outside/north)
 "fU" = (
-/obj/structure/flora/ausbushes/sparsegrass,
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/north/beach)
 "fV" = (
@@ -2490,7 +2490,7 @@
 /turf/open/gm/coast,
 /area/whiskey_outpost/outside/river)
 "gd" = (
-/obj/structure/flora/ausbushes/grassybush,
+/obj/structure/flora/bush/ausbushes/grassybush,
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/north/beach)
 "ge" = (
@@ -2501,7 +2501,7 @@
 	},
 /area/whiskey_outpost/outside/river)
 "gf" = (
-/obj/structure/jungle/plantbot1{
+/obj/structure/flora/jungle/plantbot1{
 	icon_state = "alienplant1";
 	luminosity = 2
 	},
@@ -2596,7 +2596,7 @@
 	},
 /area/whiskey_outpost/inside/hospital)
 "go" = (
-/obj/structure/jungle/plantbot1{
+/obj/structure/flora/jungle/plantbot1{
 	icon_state = "alienplant1";
 	luminosity = 2
 	},
@@ -2880,7 +2880,7 @@
 	},
 /area/whiskey_outpost/outside/lane/four_south)
 "gX" = (
-/obj/structure/flora/ausbushes/stalkybush,
+/obj/structure/flora/bush/ausbushes/var3/stalkybush,
 /turf/open/gm/river,
 /area/whiskey_outpost/outside/lane/four_south)
 "gY" = (
@@ -2918,7 +2918,7 @@
 	},
 /area/whiskey_outpost/inside/supply)
 "hb" = (
-/obj/structure/jungle/plantbot1{
+/obj/structure/flora/jungle/plantbot1{
 	icon_state = "alienplant1";
 	luminosity = 2
 	},
@@ -3007,7 +3007,7 @@
 /area/whiskey_outpost/outside/river/east)
 "ho" = (
 /obj/structure/rack,
-/obj/effect/landmark/wo_supplies/storage/sentry,
+/obj/item/ammo_magazine/sentry,
 /turf/open/floor/prison{
 	tag = "icon-floor_plate";
 	icon_state = "floor_plate";
@@ -3136,7 +3136,7 @@
 	},
 /area/whiskey_outpost/outside/river/east)
 "hH" = (
-/obj/structure/flora/ausbushes/reedbush,
+/obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/river,
 /area/whiskey_outpost/outside/lane/four_south)
 "hI" = (
@@ -3544,7 +3544,7 @@
 	},
 /area/whiskey_outpost/inside/bunker)
 "iJ" = (
-/obj/structure/flora/ausbushes/leafybush,
+/obj/structure/flora/bush/ausbushes/var3/leafybush,
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/lane/four_south)
 "iK" = (
@@ -3622,7 +3622,7 @@
 /turf/open/gm/river,
 /area/whiskey_outpost/outside/lane/four_north)
 "iT" = (
-/obj/structure/flora/ausbushes/stalkybush,
+/obj/structure/flora/bush/ausbushes/var3/stalkybush,
 /turf/open/gm/river,
 /area/whiskey_outpost/outside/lane/four_north)
 "iU" = (
@@ -3657,7 +3657,7 @@
 /turf/open/gm/river,
 /area/whiskey_outpost/outside/lane/four_north)
 "ja" = (
-/obj/structure/flora/ausbushes/reedbush,
+/obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/river,
 /area/whiskey_outpost/outside/lane/four_north)
 "jb" = (
@@ -3719,7 +3719,7 @@
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/bunker)
 "ji" = (
-/obj/structure/jungle/plantbot1{
+/obj/structure/flora/jungle/plantbot1{
 	icon_state = "alienplant1";
 	luminosity = 2
 	},
@@ -4769,7 +4769,7 @@
 	},
 /area/whiskey_outpost/outside/lane/two_south)
 "lU" = (
-/obj/structure/flora/ausbushes/stalkybush,
+/obj/structure/flora/bush/ausbushes/var3/stalkybush,
 /obj/effect/landmark/start/whiskey{
 	name = "Marine"
 	},
@@ -4946,7 +4946,7 @@
 /turf/open/gm/coast,
 /area/whiskey_outpost/outside/river)
 "mw" = (
-/obj/structure/flora/ausbushes/grassybush,
+/obj/structure/flora/bush/ausbushes/grassybush,
 /obj/effect/landmark/start/whiskey{
 	name = "Marine"
 	},
@@ -5018,7 +5018,7 @@
 	},
 /area/whiskey_outpost/outside/south)
 "mI" = (
-/obj/structure/jungle/plantbot1{
+/obj/structure/flora/jungle/plantbot1{
 	icon_state = "alienplant1";
 	luminosity = 2
 	},
@@ -5159,7 +5159,7 @@
 	},
 /area/whiskey_outpost/outside/north/platform)
 "na" = (
-/obj/structure/flora/ausbushes/reedbush,
+/obj/structure/flora/bush/ausbushes/reedbush,
 /obj/effect/landmark/start/whiskey{
 	name = "Marine"
 	},
@@ -5369,7 +5369,7 @@
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/bunker)
 "nB" = (
-/obj/structure/flora/ausbushes/reedbush,
+/obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/coast,
 /area/whiskey_outpost/outside/river)
 "nC" = (
@@ -5548,7 +5548,7 @@
 	},
 /area/whiskey_outpost/outside/lane/three_south)
 "ob" = (
-/obj/structure/jungle/plantbot1{
+/obj/structure/flora/jungle/plantbot1{
 	icon_state = "alienplant1";
 	luminosity = 2
 	},
@@ -6392,7 +6392,7 @@
 	},
 /area/whiskey_outpost/inside/hospital)
 "pH" = (
-/obj/structure/flora/ausbushes/grassybush,
+/obj/structure/flora/bush/ausbushes/grassybush,
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/north/northwest)
 "pJ" = (
@@ -6538,7 +6538,7 @@
 	},
 /area/whiskey_outpost/inside/bunker)
 "qa" = (
-/obj/structure/flora/ausbushes/sparsegrass,
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /obj/effect/landmark/start/whiskey{
 	name = "Marine"
 	},
@@ -6861,7 +6861,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/whiskey_outpost/inside/bunker)
 "qM" = (
-/obj/structure/flora/ausbushes/sparsegrass,
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /obj/structure/machinery/defenses/sentry/premade{
 	icon_state = "sentry_on";
 	dir = 8
@@ -7046,7 +7046,7 @@
 /turf/open/jungle,
 /area/whiskey_outpost/outside/lane/three_south)
 "ro" = (
-/obj/structure/flora/ausbushes/sparsegrass,
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/north)
 "rp" = (
@@ -7104,7 +7104,7 @@
 	},
 /area/whiskey_outpost/outside/north/northwest)
 "rv" = (
-/obj/structure/flora/ausbushes/leafybush,
+/obj/structure/flora/bush/ausbushes/var3/leafybush,
 /turf/open/gm/grass,
 /area/whiskey_outpost/outside/north/northwest)
 "rw" = (
@@ -7384,7 +7384,7 @@
 /area/whiskey_outpost/outside/north/platform)
 "sa" = (
 /obj/structure/rack,
-/obj/item/magazine_box/incen,
+/obj/item/ammo_box/rounds/smg/incen,
 /obj/item/storage/box/m94,
 /turf/open/floor/prison{
 	tag = "icon-floor_plate";
@@ -7592,7 +7592,7 @@
 /area/whiskey_outpost/outside/north)
 "sw" = (
 /obj/structure/rack,
-/obj/item/magazine_box,
+/obj/structure/magazine_box,
 /obj/item/storage/box/m94,
 /turf/open/floor/prison{
 	tag = "icon-floor_plate";
@@ -7601,7 +7601,7 @@
 	},
 /area/whiskey_outpost/inside/bunker)
 "sx" = (
-/obj/structure/flora/ausbushes/sparsegrass,
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -7739,7 +7739,7 @@
 	},
 /area/whiskey_outpost/outside/north/beach)
 "sN" = (
-/obj/structure/flora/ausbushes/stalkybush,
+/obj/structure/flora/bush/ausbushes/var3/stalkybush,
 /turf/open/gm/river,
 /area/whiskey_outpost/outside/lane/one_north)
 "sO" = (
@@ -7888,7 +7888,7 @@
 /area/whiskey_outpost/inside/supply)
 "te" = (
 /obj/structure/rack,
-/obj/item/magazine_box/m39/ap,
+/obj/item/ammo_box/magazine/type71/ap,
 /obj/item/storage/box/m94,
 /turf/open/floor/prison{
 	tag = "icon-floor_plate";
@@ -8016,16 +8016,6 @@
 	},
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/north/northwest)
-"tt" = (
-/obj/structure/rack,
-/obj/item/magazine_box/ap,
-/obj/item/storage/box/m94,
-/turf/open/floor/prison{
-	tag = "icon-floor_plate";
-	icon_state = "floor_plate";
-	dir = 2
-	},
-/area/whiskey_outpost/inside/bunker)
 "tu" = (
 /obj/structure/machinery/power/apc/almayer{
 	dir = 1
@@ -8058,16 +8048,6 @@
 	dir = 4
 	},
 /area/whiskey_outpost/inside/supply)
-"tx" = (
-/obj/structure/rack,
-/obj/item/magazine_box/ext,
-/obj/item/storage/box/m94,
-/turf/open/floor/prison{
-	tag = "icon-floor_plate";
-	icon_state = "floor_plate";
-	dir = 2
-	},
-/area/whiskey_outpost/inside/bunker)
 "ty" = (
 /obj/structure/disposalpipe/segment,
 /turf/closed/wall/r_wall,
@@ -8169,7 +8149,7 @@
 /area/whiskey_outpost/outside/north/northeast)
 "tM" = (
 /obj/structure/rack,
-/obj/item/magazine_box/m39/ext,
+/obj/item/ammo_box/magazine/ext,
 /obj/item/storage/box/m94,
 /turf/open/floor/prison{
 	tag = "icon-floor_plate";
@@ -8330,7 +8310,7 @@
 /area/whiskey_outpost/outside/north/beach)
 "ui" = (
 /obj/structure/rack,
-/obj/item/magazine_box/shotgun,
+/obj/item/ammo_box/magazine/shotgun,
 /obj/item/storage/box/m94,
 /turf/open/floor/prison{
 	tag = "icon-floor_plate";
@@ -8465,7 +8445,7 @@
 /area/whiskey_outpost/outside/north/platform)
 "uw" = (
 /obj/structure/rack,
-/obj/item/magazine_box/m39,
+/obj/structure/largecrate/supply/weapons/m39,
 /obj/item/storage/box/m94,
 /obj/item/tool/hand_labeler,
 /turf/open/floor/prison{
@@ -8659,7 +8639,7 @@
 /area/whiskey_outpost/outside/lane/two_north)
 "uU" = (
 /obj/structure/rack,
-/obj/item/magazine_box/shotgun/buckshot,
+/obj/item/ammo_magazine/shotgun/buckshot,
 /obj/item/storage/box/m94,
 /obj/structure/disposalpipe/segment{
 	dir = 8;
@@ -8749,7 +8729,7 @@
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/north/beach)
 "vc" = (
-/obj/structure/flora/ausbushes/sparsegrass,
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /obj/effect/landmark/start/whiskey{
 	name = "Marine"
 	},
@@ -9084,7 +9064,7 @@
 	},
 /area/whiskey_outpost/outside/river)
 "vT" = (
-/obj/structure/flora/ausbushes/leafybush,
+/obj/structure/flora/bush/ausbushes/var3/leafybush,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -9199,11 +9179,11 @@
 	},
 /area/whiskey_outpost/outside/north)
 "wh" = (
-/obj/structure/flora/ausbushes/leafybush,
+/obj/structure/flora/bush/ausbushes/var3/leafybush,
 /turf/open/gm/dirtgrassborder,
 /area/whiskey_outpost/outside/north)
 "wi" = (
-/obj/structure/flora/ausbushes/leafybush,
+/obj/structure/flora/bush/ausbushes/var3/leafybush,
 /turf/open/gm/dirtgrassborder{
 	dir = 1;
 	icon_state = "grassdirt_corner2"
@@ -9290,7 +9270,7 @@
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/lane/four_south)
 "wv" = (
-/obj/structure/flora/ausbushes/reedbush,
+/obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/river,
 /area/whiskey_outpost/outside/lane/one_south)
 "ww" = (
@@ -9303,18 +9283,18 @@
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/lane/four_south)
 "wy" = (
-/obj/structure/jungle/plantbot1{
+/obj/structure/flora/jungle/plantbot1{
 	icon_state = "alienplant1";
 	luminosity = 2
 	},
 /turf/open/gm/river,
 /area/whiskey_outpost/outside/lane/one_south)
 "wz" = (
-/obj/structure/flora/ausbushes/leafybush,
+/obj/structure/flora/bush/ausbushes/var3/leafybush,
 /turf/open/jungle,
 /area/whiskey_outpost/outside/lane/four_south)
 "wA" = (
-/obj/structure/flora/ausbushes/stalkybush,
+/obj/structure/flora/bush/ausbushes/var3/stalkybush,
 /turf/open/gm/river,
 /area/whiskey_outpost/outside/lane/one_south)
 "wB" = (
@@ -9662,7 +9642,7 @@
 	},
 /area/whiskey_outpost/inside/bunker/bunker/front)
 "xt" = (
-/obj/structure/flora/ausbushes/stalkybush,
+/obj/structure/flora/bush/ausbushes/var3/stalkybush,
 /obj/effect/landmark/start/whiskey{
 	name = "Marine"
 	},
@@ -9832,7 +9812,7 @@
 /turf/open/jungle,
 /area/whiskey_outpost/outside/lane/one_south)
 "xS" = (
-/obj/structure/flora/ausbushes/reedbush,
+/obj/structure/flora/bush/ausbushes/reedbush,
 /obj/effect/landmark/start/whiskey{
 	name = "Marine"
 	},
@@ -9889,7 +9869,7 @@
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/lane/three_north)
 "xY" = (
-/obj/structure/jungle/plantbot1{
+/obj/structure/flora/jungle/plantbot1{
 	icon_state = "alienplant1";
 	luminosity = 2
 	},
@@ -9987,20 +9967,6 @@
 /obj/structure/stairs,
 /turf/open/floor,
 /area/whiskey_outpost/outside/north/platform)
-"ym" = (
-/obj/structure/bed/chair/dropship/passenger{
-	tag = "icon-shuttle_chair (WEST)";
-	icon_state = "shuttle_chair";
-	dir = 8
-	},
-/obj/effect/landmark/start/whiskey{
-	name = "Marine"
-	},
-/turf/open/shuttle/dropship{
-	tag = "icon-rasputin15";
-	icon_state = "rasputin15"
-	},
-/area/whiskey_outpost/outside/lane/four_south)
 "yn" = (
 /obj/structure/machinery/colony_floodlight,
 /turf/open/jungle{
@@ -10114,7 +10080,7 @@
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/lane/two_south)
 "yD" = (
-/obj/structure/flora/ausbushes/stalkybush,
+/obj/structure/flora/bush/ausbushes/var3/stalkybush,
 /obj/effect/landmark/start/whiskey{
 	name = "Marine"
 	},
@@ -11030,7 +10996,7 @@
 	},
 /area/whiskey_outpost/outside/lane/three_north)
 "AO" = (
-/obj/structure/flora/ausbushes/leafybush,
+/obj/structure/flora/bush/ausbushes/var3/leafybush,
 /turf/open/gm/grass,
 /area/whiskey_outpost/outside/north)
 "AP" = (
@@ -11078,7 +11044,7 @@
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/north)
 "AU" = (
-/obj/structure/flora/ausbushes/sparsegrass,
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/lane/four_north)
 "AV" = (
@@ -11218,11 +11184,6 @@
 	},
 /area/whiskey_outpost/outside/lane/four_north)
 "Bq" = (
-/turf/open/floor/plating{
-	icon_state = "platebot"
-	},
-/area/whiskey_outpost/outside/lane/one_north)
-"Br" = (
 /turf/open/floor/plating{
 	icon_state = "platebot"
 	},
@@ -11446,7 +11407,7 @@
 	},
 /area/whiskey_outpost/outside/lane/four_north)
 "Cb" = (
-/obj/structure/flora/ausbushes/leafybush,
+/obj/structure/flora/bush/ausbushes/var3/leafybush,
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/lane/four_north)
 "Cc" = (
@@ -11837,14 +11798,14 @@
 /turf/open/gm/dirt,
 /area/whiskey_outpost/inside/caves/caverns/west)
 "Dj" = (
-/obj/structure/jungle/plantbot1{
+/obj/structure/flora/jungle/plantbot1{
 	icon_state = "alienplant1";
 	luminosity = 2
 	},
 /turf/open/gm/river,
 /area/whiskey_outpost/outside/river/west)
 "Dk" = (
-/obj/structure/flora/ausbushes/reedbush,
+/obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/river,
 /area/whiskey_outpost/outside/river/west)
 "Dl" = (
@@ -11860,7 +11821,7 @@
 	},
 /area/whiskey_outpost/inside/hospital/triage)
 "Dm" = (
-/obj/structure/flora/ausbushes/stalkybush,
+/obj/structure/flora/bush/ausbushes/var3/stalkybush,
 /turf/open/gm/river,
 /area/whiskey_outpost/outside/river/west)
 "Dn" = (
@@ -22317,7 +22278,7 @@ Ak
 Ak
 Ak
 Bc
-Br
+Bq
 Cf
 Cw
 CD
@@ -30559,7 +30520,7 @@ hW
 oK
 fj
 fj
-tt
+te
 fj
 fj
 Ax
@@ -35004,7 +34965,7 @@ GX
 ue
 uU
 ss
-tx
+tM
 fj
 AM
 rQ
@@ -42915,7 +42876,7 @@ kG
 vd
 vd
 yb
-ym
+vd
 vF
 vF
 kG

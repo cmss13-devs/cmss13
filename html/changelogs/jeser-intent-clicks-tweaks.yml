@@ -1,0 +1,8 @@
+author: Jeser
+
+delete-after: True
+
+changes: 
+  - tweak: "Clicking alive xenomorphs with empty hand on GRAB intent as a human won't result in attempt to grab xenomorph and getting stunned. Yautja and Synths are unchanged. CTRL + Clicking is unchanged."
+  - tweak: "Clicking yourself with empty hand on DISARM or GRAB intents as a human will check yourself for injuries now."
+  - tweak: "Point Blanks trigger only on HARM intent now."

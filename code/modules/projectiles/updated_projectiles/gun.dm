@@ -875,7 +875,7 @@ and you're good to go.
 
 		flags_gun_features ^= GUN_CAN_POINTBLANK //Reset this.
 		return
-	else if(user.a_intent == HELP_INTENT) //Thwack them
+	else if(user.a_intent != HARM_INTENT) //Thwack them
 		return ..()
 
 	if(M.stat == UNCONSCIOUS && user.a_intent in list(GRAB_INTENT, DISARM_INTENT)) //Execution

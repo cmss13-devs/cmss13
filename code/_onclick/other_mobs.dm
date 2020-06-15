@@ -9,8 +9,12 @@
 		return 1
 
 	if (mods["middle"])
-		swap_hand()
-		return 1
+		if (isStructure(A) && get_dist(src, A) <= 1)
+			var/obj/structure/S = A
+			S.do_climb(src)
+		else
+			swap_hand()
+		return TRUE
 
 	return ..()
 

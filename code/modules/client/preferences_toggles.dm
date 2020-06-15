@@ -125,15 +125,22 @@
 	set category = "Preferences"
 	set desc = "Toggles a specific toggleable preference"
 
-	var/dat = {"
-		<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_ignore_self'>Toggle the Ability to Hurt Yourself</a><br>
-		<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_help_intent_safety'>Toggle Help Intent Safety</a><br>
-		<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_auto_eject'>Toggle Guns Auto-Ejecting Magazines</a><br>
-		<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_auto_eject_to_hand'>Toggle Guns Auto-Ejecting Magazines to Your Hands</a><br>
-		<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_eject_to_hand'>Toggle 'Unload Weapon' Ejecting Magazines to Your Hands</a><br>
-	"}
+	var/list/pref_buttons = list(
+		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_ignore_self'>Toggle the Ability to Hurt Yourself</a><br>",
+		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_help_intent_safety'>Toggle Help Intent Safety</a><br>",
+		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_auto_eject'>Toggle Guns Auto-Ejecting Magazines</a><br>",
+		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_auto_eject_to_hand'>Toggle Guns Auto-Ejecting Magazines to Your Hands</a><br>",
+		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_eject_to_hand'>Toggle 'Unload Weapon' Ejecting Magazines to Your Hands</a><br>",
+		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_automatic_punctuation'>Toggle Automatic Punctuation</a><br>"
+	)
 
-	show_browser(src, dat, "Toggle Preferences", "togglepreferences", "size=475x200")
+	var/dat = ""
+	for (var/pref_button in pref_buttons)
+		dat += "[pref_button]\n"
+
+	var/height = 50+22*length(pref_buttons)
+
+	show_browser(src, dat, "Toggle Preferences", "togglepreferences", "size=475x[height]")
 
 /client/proc/toggle_ignore_self() // Toggle whether anything will happen when you click yourself in non-help intent
 	prefs.toggle_prefs ^= TOGGLE_IGNORE_SELF
@@ -181,6 +188,14 @@
 		to_chat(src, "The 'Unload Weapon' verb will put magazines in your offhand.")
 	else
 		to_chat(src, "The 'Unload Weapon' verb will no longer put magazines in your offhand.")
+	prefs.save_preferences()
+
+/client/proc/toggle_automatic_punctuation() // Toggle whether your sentences are automatically punctuated
+	prefs.toggle_prefs ^= TOGGLE_AUTOMATIC_PUNCTUATION
+	if(prefs.toggle_prefs & TOGGLE_AUTOMATIC_PUNCTUATION)
+		to_chat(src, "Your messages will automatically be punctuated if they are not punctuated already.")
+	else
+		to_chat(src, "Your messages will no longer be automatically punctuated if they are not punctuated already.")
 	prefs.save_preferences()
 
 

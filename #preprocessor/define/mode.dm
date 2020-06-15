@@ -61,6 +61,7 @@
 												// MUTUALLY EXCLUSIVE TO TOGGLE_AUTO_EJECT_MAGAZINE
 #define TOGGLE_EJECT_MAGAZINE_TO_HAND		64	// This toggles whether manuallyejecting magazines from guns will cause you to unwield your gun 
 												// and put the empty magazine in your hand
+#define TOGGLE_AUTOMATIC_PUNCTUATION		128 // Whether your sentences will automatically be punctuated with a period
 
 //=================================================
 

@@ -73,7 +73,6 @@
 		
 	if (found_shield)
 		X.xeno_shields -= found_shield
-		found_shield.linked_xeno = null
 		qdel(found_shield)
 
 		var/datum/xeno_shield/vanguard/new_shield = X.add_xeno_shield(800, XENO_SHIELD_SOURCE_VANGUARD_PRAE, /datum/xeno_shield/vanguard)

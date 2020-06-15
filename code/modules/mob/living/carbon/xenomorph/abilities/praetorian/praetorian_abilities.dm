@@ -14,8 +14,8 @@
 	plasma_cost = 20
 
 	// Config
-	var/damage = 60
-	var/shield_regen_threshold = 3
+	var/damage = 50
+	var/shield_regen_threshold = 2
 	var/should_spin_instead = FALSE
 
 /datum/action/xeno_action/activable/pounce/prae_dash
@@ -37,7 +37,7 @@
 
 	var/buff_duration = 12
 	var/damage = 45
-	var/shield_regen_threshold = 3
+	var/shield_regen_threshold = 2
 
 	var/activated_once = FALSE
 	var/time_until_timeout = 20
@@ -52,8 +52,8 @@
 	cooldowns = list(80, 75, 70, 70)
 
 	// Root config
-	var/root_duration_unbuffed = 15
-	var/root_duration_buffed = 25
+	var/root_duration_unbuffed = 5
+	var/root_duration_buffed = 12.5
 
 	// Fling config
 	var/fling_dist_unbuffed = 3

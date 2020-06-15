@@ -55,8 +55,6 @@ var/global/list/dead_hardcore_xeno_list = list() // mostly for WO clean up
 
 var/global/list/xeno_datum_list = list() // multi-d list of xeno datums
 
-var/global/list/whiskey_outpost_waves = list()
-
 //Chem Stuff
 var/global/list/chemical_reactions_filtered_list	//List of all /datum/chemical_reaction datums filtered by reaction components. Used during chemical reactions
 var/global/list/chemical_reactions_list				//List of all /datum/chemical_reaction datums indexed by reaction id. Used to search for the result instead of the components.
@@ -308,14 +306,6 @@ var/global/list/paramslist_cache = list()
 		defcon_reward_list[DR.name] = DR
 	defcon_reward_list = sortAssoc(defcon_reward_list)
 
-	//  WO waves
-	paths = typesof(/datum/whiskey_outpost_wave) - /datum/whiskey_outpost_wave - typesof(/datum/whiskey_outpost_wave/random)
-	whiskey_outpost_waves = list()
-	for(var/T in paths)
-		var/datum/whiskey_outpost_wave/WOW = new T
-		if(WOW.wave_number > 0)
-			whiskey_outpost_waves += WOW.wave_number
-			whiskey_outpost_waves[WOW.wave_number] = WOW
 	return 1
 
 /* // Uncomment to debug chemical reaction list.

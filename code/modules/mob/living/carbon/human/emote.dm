@@ -228,10 +228,8 @@
 					show_speech_bubble("hmedic")
 
 					if(src.gender == "male")
-						if(rand(0,100) < 95)
-							playsound(src.loc, 'sound/voice/human_male_medic.ogg', 25, 0)
-						else
-							playsound(src.loc, 'sound/voice/human_male_medic2.ogg', 25, 0)
+						var/medic_sound = pick('sound/voice/human_male_medic.ogg', 5;'sound/voice/human_male_medic_rare_1.ogg', 5;'sound/voice/human_male_medic_rare_2.ogg')
+						playsound(src.loc, medic_sound, 25, 0)
 					else
 						playsound(src.loc, 'sound/voice/human_female_medic.ogg', 25, 0)
 					if(player_caused)
@@ -431,7 +429,7 @@
 		if("warcry")
 			if(recent_audio_emote)
 				to_chat(src, "You just did an audible emote. Wait a while.")
-				return
+				//return
 			
 			message = "<B>[comm_paygrade][src]</B> shouts an inspiring cry!"
 			m_type = 2

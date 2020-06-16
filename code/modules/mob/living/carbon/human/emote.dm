@@ -429,7 +429,7 @@
 		if("warcry")
 			if(recent_audio_emote)
 				to_chat(src, "You just did an audible emote. Wait a while.")
-				//return
+				return
 			
 			message = "<B>[comm_paygrade][src]</B> shouts an inspiring cry!"
 			m_type = 2

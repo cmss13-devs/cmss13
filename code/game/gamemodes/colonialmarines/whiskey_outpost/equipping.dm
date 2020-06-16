@@ -234,12 +234,12 @@ You just gotta get out of this jungle to tell the tale!"}
 	H = M
 	for(var/obj/effect/landmark/start/whiskey/W in world)
 		if(W.name == "Marine")
-			spawns += W
+			spawns += W.loc
 	for(var/L in latewhiskey)
 		spawns += L
 	if(spawns.len > 0)
-		var/obj/P = pick(spawns)
-		H.loc = P.loc
+		var/turf/P = pick(spawns)
+		H.loc = P
 		H.key = M.key
 	if(!H.loc)
 		var/T = pick(latewhiskey)

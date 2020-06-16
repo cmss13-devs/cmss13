@@ -421,7 +421,29 @@ qdel(src)
 /obj/effect/landmark/shuttle_loc/marine_crs/dropship/link_loc()
 	sleep(50)
 	..()
-	shuttle_controller.locs_crash[get_turf(src)] = rotation
+
+	// Sort the crash location into the ship section it belongs to
+	var/ship_section = ""
+	// determine upper/lower deck first
+	if(y > ALMAYER_DECK_BOUNDARY)
+		ship_section = UPPER_DECK
+	else if(y < ALMAYER_DECK_BOUNDARY)
+		ship_section = LOWER_DECK
+
+	ship_section += " "
+
+	// then fore/mid/aftship
+	if (x <= ALMAYER_FORE_BOUNDARY)
+		ship_section += FORESHIP
+	else if(x >= ALMAYER_AFT_BOUNDARY)
+		ship_section += AFTSHIP
+	else
+		ship_section += MIDSHIP
+
+	if(isnull(shuttle_controller.locs_crash[ship_section]))
+		shuttle_controller.locs_crash[ship_section] = list()
+
+	shuttle_controller.locs_crash[ship_section][get_turf(src)] = rotation
 	qdel(src)
 
 #undef SHUTTLE_LINK_LOCATIONS

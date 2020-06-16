@@ -380,3 +380,20 @@ var/static/list/scarySounds = list('sound/weapons/thudswoosh.ogg','sound/weapons
 #define QUADTREE_BOUNDARY_MINIMUM_HEIGHT 15
 #define QTREE_EXCLUDE_OBSERVER 1
 #define QTREE_SCAN_MOBS 2 //Return mob list instead of client list
+
+// Ship section bounds
+
+#define UPPER_DECK "Upper deck"
+#define LOWER_DECK "Lower deck"
+#define FORESHIP "Foreship"
+#define MIDSHIP "Midship"
+#define AFTSHIP "Aftship"
+
+// Anything above the deck boundary is the upper deck, anything below is the lower deck
+// This is exclusive, so anything ON the boundary is an edge case that's neither on the upper nor the lower deck
+#define ALMAYER_DECK_BOUNDARY 101
+
+// These are inclusive bounds. Anything between them is regarded as the midship
+// I.e. the foreship is x = 0 to and including ALMAYER_FORE_BOUNDARY
+#define ALMAYER_FORE_BOUNDARY 121
+#define ALMAYER_AFT_BOUNDARY 197

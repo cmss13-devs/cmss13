@@ -46,7 +46,8 @@
 
 /datum/equipment_preset/corpse/realpirate
 	name = "Corpse - Pirate"
-	
+	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_LOGISTICS, ACCESS_CIVILIAN_ENGINEERING, ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_BRIG, ACCESS_CIVILIAN_MEDBAY,ACCESS_ILLEGAL_PIRATE)
+
 /datum/equipment_preset/corpse/realpirate/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/pirate(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/jackboots(H), WEAR_FEET)
@@ -67,6 +68,7 @@
 
 /datum/equipment_preset/corpse/russian
 	name = "Corpse - Russian"
+	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_LOGISTICS, ACCESS_CIVILIAN_ENGINEERING, ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_BRIG, ACCESS_CIVILIAN_MEDBAY)
 
 /datum/equipment_preset/corpse/russian
 
@@ -94,6 +96,7 @@
 /datum/equipment_preset/corpse/chef
 	name = "Corpse - Chef"
 	assignment = "Chef"
+	access = list(ACCESS_CIVILIAN_PUBLIC)
 
 /datum/equipment_preset/corpse/chef/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/chef(H), WEAR_BODY)
@@ -108,6 +111,7 @@
 	name = "Corpse - Doctor"
 	assignment = "Medical Doctor"
 	xenovictim = TRUE
+	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_MEDBAY)
 
 /datum/equipment_preset/corpse/doctor/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/colonist(H), WEAR_BODY)
@@ -123,6 +127,7 @@
 	name = "Corpse - Engineer"
 	assignment = "Station Engineer"
 	xenovictim = TRUE
+	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_LOGISTICS, ACCESS_CIVILIAN_ENGINEERING)
 
 /datum/equipment_preset/corpse/engineer/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/colonist(H), WEAR_BODY)
@@ -138,6 +143,11 @@
 	name = "Corpse - Clown"
 	assignment = "Clown"
 	uses_special_name = TRUE
+
+/datum/equipment_preset/corpse/clown/New()
+	. = ..()
+	//As a joke, clown has all access so they can clown everywhere...
+	access = get_all_accesses()
 
 /datum/equipment_preset/corpse/clown/load_name(mob/living/carbon/human/H, var/randomise)
 	. = ..() //To load gender, randomise appearance, etc.
@@ -156,6 +166,7 @@
 	name = "Corpse - Scientist"
 	assignment = "Scientist"
 	xenovictim = TRUE
+	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_LOGISTICS, ACCESS_CIVILIAN_ENGINEERING, ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_MEDBAY)
 
 /datum/equipment_preset/corpse/scientist/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/researcher(H), WEAR_BODY)
@@ -169,6 +180,7 @@
 	name = "Corpse - Shaft Miner"
 	assignment = "Shaft Miner"
 	xenovictim = TRUE
+	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_LOGISTICS, ACCESS_CIVILIAN_ENGINEERING)
 
 /datum/equipment_preset/corpse/miner/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/colonist(H), WEAR_BODY)
@@ -182,6 +194,7 @@
 	name = "Corpse - Security"
 	assignment = "Deputy"
 	xenovictim = TRUE
+	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_BRIG, ACCESS_CIVILIAN_MEDBAY)
 
 /datum/equipment_preset/corpse/security/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/PMC(H), WEAR_BODY)
@@ -194,6 +207,14 @@
 	name = "Corpse - Marshal"
 	assignment = "Marshal"
 	xenovictim = TRUE
+	access = list(
+		ACCESS_CIVILIAN_PUBLIC,
+		ACCESS_CIVILIAN_LOGISTICS,
+		ACCESS_CIVILIAN_ENGINEERING,
+		ACCESS_CIVILIAN_RESEARCH,
+		ACCESS_CIVILIAN_BRIG,
+		ACCESS_CIVILIAN_MEDBAY,
+	)
 
 /datum/equipment_preset/corpse/security/marshal/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/CM_uniform(H), WEAR_BODY)
@@ -208,6 +229,14 @@
 	assignment = "Lawyer"
 	xenovictim = TRUE
 	paygrade = "WY1"
+	access = list(
+		ACCESS_CIVILIAN_PUBLIC,
+		ACCESS_CIVILIAN_LOGISTICS,
+		ACCESS_CIVILIAN_ENGINEERING,
+		ACCESS_CIVILIAN_RESEARCH,
+		ACCESS_CIVILIAN_BRIG,
+		ACCESS_CIVILIAN_MEDBAY,
+	)
 
 /datum/equipment_preset/corpse/security/lawyer/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/lawyer/bluesuit(H), WEAR_BODY)
@@ -220,6 +249,14 @@
 /datum/equipment_preset/corpse/prison_security
 	name = "Corpse - Prison Guard"
 	assignment = "Prison Guard"
+	access = list(
+		ACCESS_CIVILIAN_PUBLIC,
+		ACCESS_CIVILIAN_LOGISTICS,
+		ACCESS_CIVILIAN_ENGINEERING,
+		ACCESS_CIVILIAN_RESEARCH,
+		ACCESS_CIVILIAN_BRIG,
+		ACCESS_CIVILIAN_MEDBAY,
+	)
 
 /datum/equipment_preset/corpse/prison_security/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/security(H), WEAR_BODY)
@@ -234,6 +271,14 @@
 	name = "Corpse - Staff Officer"
 	idtype = /obj/item/card/id/admiral
 	assignment = "Staff Officer"
+	access = list(
+		ACCESS_CIVILIAN_PUBLIC,
+		ACCESS_CIVILIAN_LOGISTICS,
+		ACCESS_CIVILIAN_ENGINEERING,
+		ACCESS_CIVILIAN_RESEARCH,
+		ACCESS_CIVILIAN_BRIG,
+		ACCESS_CIVILIAN_MEDBAY,
+	)
 
 /datum/equipment_preset/corpse/bridgeofficer/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/centcom_officer(H), WEAR_BODY)
@@ -248,6 +293,21 @@
 	assignment = "Bridge Officer"
 	uses_special_name = TRUE
 	paygrade = "WY1"
+	access = list(
+		ACCESS_CIVILIAN_PUBLIC,
+		ACCESS_CIVILIAN_LOGISTICS,
+		ACCESS_CIVILIAN_ENGINEERING,
+		ACCESS_CIVILIAN_RESEARCH,
+		ACCESS_CIVILIAN_BRIG,
+		ACCESS_CIVILIAN_MEDBAY,
+		ACCESS_WY_PMC_GREEN,
+		ACCESS_WY_PMC_ORANGE,
+		ACCESS_WY_PMC_RED,
+		ACCESS_WY_PMC_BLACK,
+		ACCESS_WY_PMC_WHITE,
+		ACCESS_WY_CORPORATE,
+		ACCESS_IFF_PMC,
+	)
 
 /datum/equipment_preset/corpse/bridgeofficer/johnson/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/waiter(H), WEAR_BODY)
@@ -262,6 +322,14 @@
 	name = "Corpse - Commanding Officer"
 	idtype = /obj/item/card/id/admiral
 	assignment = "Commanding Officer"
+	access = list(
+		ACCESS_CIVILIAN_PUBLIC,
+		ACCESS_CIVILIAN_LOGISTICS,
+		ACCESS_CIVILIAN_ENGINEERING,
+		ACCESS_CIVILIAN_RESEARCH,
+		ACCESS_CIVILIAN_BRIG,
+		ACCESS_CIVILIAN_MEDBAY,
+	)
 
 /datum/equipment_preset/corpse/commander/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/centcom_commander(H), WEAR_BODY)
@@ -279,6 +347,21 @@
 	name = "Corpse - Private Security Officer"
 	idtype = /obj/item/card/id/pmc
 	assignment = "Private Security Officer"
+	access = list(
+		ACCESS_CIVILIAN_PUBLIC,
+		ACCESS_CIVILIAN_LOGISTICS,
+		ACCESS_CIVILIAN_ENGINEERING,
+		ACCESS_CIVILIAN_RESEARCH,
+		ACCESS_CIVILIAN_BRIG,
+		ACCESS_CIVILIAN_MEDBAY,
+		ACCESS_WY_PMC_GREEN,
+		ACCESS_WY_PMC_ORANGE,
+		ACCESS_WY_PMC_RED,
+		ACCESS_WY_PMC_BLACK,
+		ACCESS_WY_PMC_WHITE,
+		ACCESS_WY_CORPORATE,
+		ACCESS_IFF_PMC,
+	)
 
 /datum/equipment_preset/corpse/PMC/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/PMC(H), WEAR_BODY)

@@ -589,7 +589,6 @@
 #include "code\game\objects\items\ore.dm"
 #include "code\game\objects\items\paint.dm"
 #include "code\game\objects\items\pamphlets.dm"
-#include "code\game\objects\items\power_cells.dm"
 #include "code\game\objects\items\shards.dm"
 #include "code\game\objects\items\stock_parts.dm"
 #include "code\game\objects\items\trash.dm"

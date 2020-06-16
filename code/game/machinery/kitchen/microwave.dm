@@ -352,7 +352,8 @@
 			if (id)
 				amount+=O.reagents.get_reagent_amount(id)
 		qdel(O)
-	src.reagents.clear_reagents()
+	if(src.reagents)
+		src.reagents.clear_reagents()
 	ffuu.reagents.add_reagent("carbon", amount)
 	ffuu.reagents.add_reagent("toxin", amount/10)
 	return ffuu

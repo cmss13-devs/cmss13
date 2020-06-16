@@ -13,6 +13,8 @@
 	var/charging_cap_active = 25000			// Active Cap - When cyborg is inside
 	var/charging_cap_passive = 2500			// Passive Cap - Recharging internal capacitor when no cyborg is inside
 	var/icon_update_tick = 0				// Used to update icon only once every 10 ticks
+	unslashable = TRUE
+	unacidable = TRUE
 
 
 
@@ -25,7 +27,10 @@
 	if(stat & (BROKEN))
 		return
 
-	if((stat & (NOPOWER)) && !current_internal_charge) // No Power.
+	if(current_internal_charge <= 0)
+		if(occupant)
+			to_chat(occupant, SPAN_NOTICE(" <B>The [name] is currently out of power. Please come back later!</B>"))
+			go_out()
 		return
 
 	var/chargemode = 0
@@ -109,13 +114,14 @@
 			overlays += image('icons/obj/objects.dmi', "statn_c100")
 
 /obj/structure/machinery/recharge_station/proc/build_icon()
-	if(inoperable())
+	if(!inoperable())
 		if(src.occupant)
 			icon_state = "borgcharger1"
 		else
 			icon_state = "borgcharger0"
 	else
 		icon_state = "borgcharger0"
+	update_icon()
 
 /obj/structure/machinery/recharge_station/proc/process_occupant()
 	if(src.occupant)
@@ -136,13 +142,17 @@
 			else
 				update_use_power(1)
 		if (isrobot(occupant) || isSynth(occupant))
-			if(occupant.getBruteLoss() > 0 || occupant.getFireLoss() > 0)
+			if(occupant.getBruteLoss() > 0 || occupant.getFireLoss() > 0 || occupant.getBrainLoss() > 0)
 				occupant.heal_overall_damage(10, 10, TRUE)
+				occupant.adjustBrainLoss(-10)
 				current_internal_charge -= 500
 				to_chat(occupant, "Repairing...")
 				doing_stuff = TRUE
-			else
-				update_use_power(1)
+			if(!doing_stuff && occupant.blood_volume < initial(occupant.blood_volume))
+				occupant.blood_volume = min(occupant.blood_volume + 10, initial(occupant.blood_volume))
+				to_chat(occupant, "Refreshing liquids...")
+				doing_stuff = TRUE
+
 		if(!doing_stuff)
 			to_chat(occupant, "Maintenance complete! Have a nice day!")
 			go_out()
@@ -175,6 +185,27 @@
 	add_fingerprint(usr)
 	return
 
+/obj/structure/machinery/recharge_station/verb/move_mob_inside(var/mob/living/M)
+	if (!isrobot(M) && !isSynth(M))
+		return
+	if (occupant)
+		return
+	if (isrobot(M))
+		var/mob/living/silicon/robot/R = M
+		if(isnull(R.cell))
+			return
+	M.stop_pulling()
+	if(M && M.client)
+		M.client.perspective = EYE_PERSPECTIVE
+		M.client.eye = src
+	M.loc = src
+	src.occupant = M
+	start_processing()
+	src.add_fingerprint(usr)
+	build_icon()
+	update_use_power(1)
+
+
 /obj/structure/machinery/recharge_station/verb/move_inside()
 	set category = "Object"
 	set name = "Move Inside"
@@ -189,22 +220,13 @@
 	if (src.occupant)
 		to_chat(usr, SPAN_NOTICE(" <B>The cell is already occupied!</B>"))
 		return
-	if (isrobot(usr) && !usr:cell)
-		usr<<SPAN_NOTICE("Without a powercell, you can't be recharged.")
-		//Make sure they actually HAVE a cell, now that they can get in while powerless. --NEO
-		return
-	usr.stop_pulling()
-	if(usr && usr.client)
-		usr.client.perspective = EYE_PERSPECTIVE
-		usr.client.eye = src
-	usr.loc = src
-	src.occupant = usr
-	start_processing()
-	/*for(var/obj/O in src)
-		O.loc = src.loc*/
-	src.add_fingerprint(usr)
-	build_icon()
-	update_use_power(1)
+	if (isrobot(usr))
+		var/mob/living/silicon/robot/R = usr
+		if(isnull(R.cell))
+			to_chat(usr, SPAN_NOTICE("Without a powercell, you can't be recharged."))
+			//Make sure they actually HAVE a cell, now that they can get in while powerless. --NEO
+			return
+	move_mob_inside(usr)
 	return
 
 /obj/structure/machinery/recharge_station/BlockedPassDirs(atom/movable/mover, target_turf)
@@ -212,3 +234,29 @@
 		return FALSE
 	else
 		return ..()
+
+
+/obj/structure/machinery/recharge_station/attackby(var/obj/item/W, var/mob/living/user)
+	if(istype(W, /obj/item/grab))
+		if(isXeno(user)) return
+		var/obj/item/grab/G = W
+		if(!ismob(G.grabbed_thing))
+			return
+		if(!isSynth(G.grabbed_thing) && !isrobot(G.grabbed_thing))
+			return
+
+		if(occupant)
+			to_chat(user, SPAN_NOTICE("The [name] is already occupied!"))
+			return
+
+		visible_message(SPAN_NOTICE("[user] starts putting [G.grabbed_thing] into the sleeper."), null, null, 3)
+
+		if(do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+			if(occupant)
+				to_chat(user, SPAN_NOTICE("The sleeper is already occupied!"))
+				return
+			if(!G || !G.grabbed_thing) return
+			var/mob/M = G.grabbed_thing
+			user.stop_pulling()
+			move_mob_inside(M)
+			add_fingerprint(user)

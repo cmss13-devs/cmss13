@@ -15651,6 +15651,7 @@
 	},
 /area/desert_dam/building/warehouse/loading)
 "aOO" = (
+/obj/structure/machinery/recharge_station,
 /turf/open/floor{
 	tag = "icon-darkyellow2 (NORTHEAST)";
 	icon_state = "darkyellow2";
@@ -24932,6 +24933,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
+/obj/structure/machinery/recharge_station,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "darkbrown2"
@@ -69499,6 +69501,14 @@
 /obj/structure/machinery/colony_floodlight,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_labs)
+"qyD" = (
+/obj/structure/machinery/recharge_station,
+/turf/open/floor/prison{
+	tag = "icon-floor (SOUTHWEST)";
+	icon_state = "floor";
+	dir = 10
+	},
+/area/desert_dam/interior/dam_interior/hangar_storage)
 "qDb" = (
 /turf/open/floor/plating,
 /area/desert_dam/exterior/valley/valley_cargo{
@@ -70284,6 +70294,10 @@
 	dir = 5
 	},
 /area/desert_dam/exterior/valley/valley_labs)
+"xab" = (
+/obj/structure/machinery/recharge_station,
+/turf/open/floor/prison,
+/area/desert_dam/building/substation/west)
 "xaB" = (
 /obj/effect/decal/warning_stripes{
 	tag = "icon-W";
@@ -73232,7 +73246,7 @@ dTs
 dTs
 cgm
 cgm
-cih
+xab
 cih
 cjg
 cgm
@@ -75482,7 +75496,7 @@ agP
 afc
 byr
 bhu
-bzi
+qyD
 bzi
 bBh
 bCe

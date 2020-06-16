@@ -119,7 +119,7 @@
 	to_world(SPAN_ROUNDBODY("Hold out for as long as you can."))
 	world << sound('sound/effects/siren.ogg')
 
-	sleep(50)
+	sleep(10)
 	switch(map_locale) //Switching it up.
 		if(0)
 			marine_announcement("This is Captain Hans Naiche, commander of the 3rd Battalion 'Dust Raiders' forces here on LV-624. In our attempts to establish a base on this planet, several of our patrols were wiped out by hostile creatures.  We're setting up a distress call, but we need you to hold [map_tag] in order for our engineers to set up the relay. We're prepping several M402 mortar units to provide fire support. If they overrun your positon, we will be wiped out with no way to call for help. Hold the line or we all die.", "Captain Naich, 3rd Battalion Command, LV-624 Garrison")
@@ -151,7 +151,7 @@
 		has_started_timer--
 
 	if(checkwin_counter >= 10) //Only check win conditions every 10 ticks.
-		if(!finished)
+		if(!finished && round_should_check_for_win)
 			check_win()
 		checkwin_counter = 0
 	return 0

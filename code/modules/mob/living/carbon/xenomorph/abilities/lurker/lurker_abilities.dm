@@ -41,6 +41,7 @@
 	plasma_cost = 10
 
 	var/duration = 300 			// 30 seconds base
+	var/invis_timer_id = TIMER_ID_NULL
 	var/is_invisible = FALSE    // Are we currently invisible?
 	var/speed_buff = 0
 

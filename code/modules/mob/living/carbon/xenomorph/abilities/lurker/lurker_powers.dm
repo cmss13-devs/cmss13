@@ -42,7 +42,7 @@
 			BD.on_invisibility()
 
 	// if we go off early, this also works fine.
-	add_timer(CALLBACK(src, .proc/invisibility_off), duration)
+	invis_timer_id = add_timer(CALLBACK(src, .proc/invisibility_off), duration, TIMER_STOPPABLE)
 
 	// Only resets when invisibility ends
 	apply_cooldown_override(1000000000)
@@ -53,6 +53,11 @@
 	if (!is_invisible)
 		return
 	is_invisible = FALSE
+
+	if (invis_timer_id != TIMER_ID_NULL)
+		delete_timer(invis_timer_id)
+		invis_timer_id = TIMER_ID_NULL
+	
 	var/mob/living/carbon/Xenomorph/X = owner
 	if (istype(X))
 

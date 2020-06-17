@@ -5,7 +5,7 @@ var/list/events = list()
 
 /datum/subsystem/event
 	name     = "Event"
-	wait     = 2 SECONDS
+	wait     = MINUTES_10
 	flags    = SS_NO_INIT | SS_KEEP_TIMING
 	priority = SS_PRIORITY_EVENT
 

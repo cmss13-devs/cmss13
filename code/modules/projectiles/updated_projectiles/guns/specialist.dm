@@ -6,7 +6,6 @@
 //Note that this means that snipers will have a slowdown of 3, due to the scope
 /obj/item/weapon/gun/rifle/sniper
 	aim_slowdown = SLOWDOWN_ADS_SPECIALIST
-	gun_skill_category = SKILL_SPEC_WEAPONS
 	wield_delay = WIELD_DELAY_SLOW
 
 	able_to_fire(mob/living/user)
@@ -225,7 +224,6 @@
 						/obj/item/attachable/compensator)
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
-	gun_skill_category = SKILL_SPEC_WEAPONS
 	starting_attachment_types = list(/obj/item/attachable/stock/rifle/marksman)
 
 /obj/item/weapon/gun/rifle/m4ra/handle_starting_attachment()
@@ -308,7 +306,6 @@
 	unacidable = 1
 	indestructible = 1
 
-	gun_skill_category = SKILL_SMARTGUN
 	attachable_allowed = list(
 						/obj/item/attachable/smartbarrel,
 						/obj/item/attachable/burstfire_assembly,
@@ -425,7 +422,7 @@
 	if(.)
 		if(!ishuman(user)) return 0
 		var/mob/living/carbon/human/H = user
-		if(!skillcheck(user, SKILL_SMARTGUN, SKILL_SMART_USE))
+		if(!skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_SMARTGUN) && !skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_TRAINED))
 			to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 			return 0
 		if ( !istype(H.wear_suit,/obj/item/clothing/suit/storage/marine/smartgunner) || !istype(H.back,/obj/item/smartgun_powerpack))
@@ -795,7 +792,6 @@
 	attachable_allowed = list(/obj/item/attachable/magnetic_harness, /obj/item/attachable/scope/mini)
 
 	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
-	gun_skill_category = SKILL_SPEC_WEAPONS
 	map_specific_decoration = TRUE
 
 /obj/item/weapon/gun/launcher/m92/New()
@@ -926,7 +922,6 @@
 	cocked_sound = 'sound/weapons/gun_m92_cocked.ogg'
 	aim_slowdown = SLOWDOWN_ADS_SPECIALIST
 	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
-	gun_skill_category = SKILL_SPEC_WEAPONS
 	var/grenade
 	var/grenade_type_allowed = /obj/item/explosive/grenade
 	var/riot_version
@@ -1069,7 +1064,6 @@
 						/obj/item/attachable/scope/mini)
 
 	flags_gun_features = GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
-	gun_skill_category = SKILL_SPEC_WEAPONS
 	var/datum/effect_system/smoke_spread/smoke
 
 /obj/item/weapon/gun/launcher/rocket/New()

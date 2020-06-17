@@ -11,7 +11,7 @@
 
 /obj/item/stack
 	gender = PLURAL
-	
+
 	var/list/datum/stack_recipe/recipes
 	var/singular_name
 	var/amount = 1
@@ -144,7 +144,7 @@
 			if(usr.action_busy) return
 			usr.visible_message(SPAN_NOTICE("[usr] starts assembling \a [R.title]."), \
 				SPAN_NOTICE("You start assembling \a [R.title]."))
-			if(!do_after(usr, R.time, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+			if(!do_after(usr, R.time * usr.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				return
 		//We want to check this again for girder stacking
 		if(R.one_per_turf == 1 && (locate(R.result_type) in usr.loc))

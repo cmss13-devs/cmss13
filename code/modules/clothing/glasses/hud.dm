@@ -79,7 +79,7 @@
 	hud_type = MOB_HUD_MEDICAL_BASIC
 	actions_types = list(/datum/action/item_action/toggle)
 	req_skill = SKILL_MEDICAL
-	req_skill_level = SKILL_MEDICAL_CHEM
+	req_skill_level = SKILL_MEDICAL_TRAINED
 
 /obj/item/clothing/glasses/hud/security
 	name = "\improper PatrolMate HUD"

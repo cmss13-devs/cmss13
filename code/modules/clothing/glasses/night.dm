@@ -56,8 +56,8 @@
 	actions_types = list(/datum/action/item_action/toggle)
 	vision_flags = SEE_TURFS
 	fullscreen_vision = null
-	req_skill = SKILL_SMARTGUN
-	req_skill_level = SKILL_SMART_USE
+	req_skill = SKILL_SPEC_WEAPONS
+	req_skill_level = SKILL_SPEC_SMARTGUN
 
 /obj/item/clothing/glasses/night/m56_goggles/mob_can_equip(mob/user, slot)
 	if(slot == WEAR_EYES)

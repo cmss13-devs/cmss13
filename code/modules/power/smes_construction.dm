@@ -213,7 +213,7 @@
 
 			playsound(get_turf(src), 'sound/items/Crowbar.ogg', 25, 1)
 			to_chat(user, SPAN_WARNING("You begin to disassemble the [src]!"))
-			if (do_after(usr, 100 * cur_coils, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD)) // More coils = takes longer to disassemble. It's complex so largest one with 5 coils will take 50s
+			if (do_after(usr, 100 * cur_coils * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD)) // More coils = takes longer to disassemble. It's complex so largest one with 5 coils will take 50s
 
 				if (failure_probability && prob(failure_probability))
 					total_system_failure(failure_probability, user)

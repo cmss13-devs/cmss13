@@ -538,7 +538,7 @@
 	stored_material =  list("metal" = 56250, "plastic" = 20000) //15 metal and 10 plastic sheets
 
 /obj/structure/machinery/autolathe/armylathe/attack_hand(var/mob/user)
-	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_OT))
+	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 		to_chat(user, SPAN_WARNING("You have no idea how to operate the [name]."))
 		return 0
 	. = ..()

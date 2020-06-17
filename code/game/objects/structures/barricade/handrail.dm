@@ -77,7 +77,7 @@
 			if(iswrench(W)) // Make unsecure
 				if(user.action_busy)
 					return
-				if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_METAL))
+				if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_TRAINED))
 					to_chat(user, SPAN_WARNING("You are not trained to unsecure [src]..."))
 					return
 				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
@@ -91,7 +91,7 @@
 			if(istype(W, /obj/item/stack/sheet/metal)) // Start reinforcing
 				if(user.action_busy)
 					return
-				if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_METAL))
+				if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_TRAINED))
 					to_chat(user, SPAN_WARNING("You are not trained to reinforce [src]..."))
 					return
 				var/obj/item/stack/sheet/metal/M = W
@@ -109,7 +109,7 @@
 			if(iswrench(W)) // Secure again
 				if(user.action_busy)
 					return
-				if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_METAL))
+				if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_TRAINED))
 					to_chat(user, SPAN_WARNING("You are not trained to secure [src]..."))
 					return
 				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
@@ -123,7 +123,7 @@
 			if(isscrewdriver(W)) // Disassemble into metal
 				if(user.action_busy)
 					return
-				if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_METAL))
+				if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_TRAINED))
 					to_chat(user, SPAN_WARNING("You are not trained to disassemble [src]..."))
 					return
 				user.visible_message(SPAN_NOTICE("[user] starts unscrewing [src]'s panels."),
@@ -141,7 +141,7 @@
 				if(iscrowbar(W)) // Un-reinforce
 					if(user.action_busy)
 						return
-					if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_METAL))
+					if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_TRAINED))
 						to_chat(user, SPAN_WARNING("You are not trained to unreinforce [src]..."))
 						return
 					playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
@@ -155,7 +155,7 @@
 				if(iswelder(W))	// Finish reinforcing
 					if(user.action_busy)
 						return
-					if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_METAL))
+					if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_TRAINED))
 						to_chat(user, SPAN_WARNING("You are not trained to reinforce [src]..."))
 						return
 					playsound(src.loc, 'sound/items/Welder.ogg', 25, 1)

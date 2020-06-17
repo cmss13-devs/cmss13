@@ -23,7 +23,7 @@
 		attack_hand(user)
 
 	else
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_OT))
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 			to_chat(user, SPAN_WARNING("You stare at [src] cluelessly..."))
 			return 0
 
@@ -78,7 +78,7 @@
 			if(istype(P, /obj/item/tool/crowbar))
 				to_chat(user, "You begin prying out the circuit board other components...")
 				playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
-				if(do_after(user,60, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+				if(do_after(user, 60, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					to_chat(user, "You finish prying out the components.")
 
 					// Drop all the component stuff
@@ -116,7 +116,7 @@
 
 	// You need a multitool to use this, or be silicon
 	if(!ishighersilicon(user))
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_OT))
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 			to_chat(user, SPAN_WARNING("You stare at [src] cluelessly..."))
 			return
 		// istype returns false if the value is null

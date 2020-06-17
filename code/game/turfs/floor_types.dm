@@ -313,7 +313,7 @@
 		user.visible_message(SPAN_NOTICE("[user] starts removing [src]'s protective cover."),
 		SPAN_NOTICE("You start removing [src]'s protective cover."))
 		playsound(src, 'sound/items/Ratchet.ogg', 25, 1)
-		if(do_after(user, 30, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+		if(do_after(user, 30 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			new /obj/item/stack/rods(src, 2)
 			ChangeTurf(/turf/open/floor)
 			var/turf/open/floor/F = src

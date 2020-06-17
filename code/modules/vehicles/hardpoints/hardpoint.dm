@@ -143,7 +143,7 @@
 			to_chat(user, SPAN_WARNING("You need to refill \the [WT] first."))
 			return
 		being_repaired = TRUE
-		if(do_after(user, 8 SECONDS, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
+		if(do_after(user, 8 SECONDS * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 			WT.remove_fuel(10, user)
 			health += round(0.10 * initial(health))
 			health = Clamp(health, 0, initial(health))
@@ -197,7 +197,7 @@
 	user.visible_message(SPAN_NOTICE("[user] starts repairing \the [src]."),
 		SPAN_NOTICE("You start repairing \the [src]."))
 
-	if(!do_after(user, 30*num_delays, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, numticks = num_delays))
+	if(!do_after(user, 30*num_delays * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL, BUSY_ICON_FRIENDLY, numticks = num_delays))
 		user.visible_message(SPAN_NOTICE("[user] stops repairing \the [src]."),
 			SPAN_NOTICE("You stop repairing \the [src]."))
 		return

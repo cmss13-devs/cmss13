@@ -6,14 +6,13 @@
 	desc = "An enormous multi-barreled rotating gatling gun. This thing will no doubt pack a punch."
 	icon_state = "painless"
 	item_state = "painless"
-	
+
 	fire_sound = 'sound/weapons/gun_minigun.ogg'
 	cocked_sound = 'sound/weapons/gun_minigun_cocked.ogg'
 	current_mag = /obj/item/ammo_magazine/minigun
 	w_class = SIZE_HUGE
 	force = 20
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_BURST_ON|GUN_WIELDED_FIRING_ONLY|GUN_AMMO_COUNTER
-	gun_skill_category = SKILL_HEAVY_WEAPONS
 
 /obj/item/weapon/gun/minigun/New(loc, spawn_empty)
 	..()
@@ -44,7 +43,7 @@
 	. = ..()
 	if(!. || !istype(user)) //Let's check all that other stuff first.
 		return 0
-	if(!skillcheck(user, SKILL_HEAVY_WEAPONS, SKILL_HEAVY_WEAPONS_TRAINED))
+	if(!skillcheck(user, SKILL_FIREARMS, SKILL_FIREARMS_DEFAULT))
 		to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 		return 0
 
@@ -63,7 +62,7 @@
 	desc = "The M60. The Pig. The Action Hero's wet dream."
 	icon_state = "m60"
 	item_state = "m60"
-	
+
 	fire_sound = 'sound/weapons/gun_m60.ogg'
 	cocked_sound = 'sound/weapons/gun_m60_cocked.ogg'
 	current_mag = /obj/item/ammo_magazine/m60
@@ -109,7 +108,7 @@
 	icon_state = "spikelauncher"
 	item_state = "spikelauncher"
 	muzzle_flash = null // TO DO, add a decent one.
-	
+
 	unacidable = TRUE
 	fire_sound = 'sound/effects/woodhit.ogg' // TODO: Decent THWOK noise.
 	ammo = /datum/ammo/alloy_spike
@@ -120,7 +119,7 @@
 	var/last_regen
 	flags_gun_features = GUN_UNUSUAL_DESIGN
 	flags_item = ITEM_PREDATOR
-	
+
 /obj/item/weapon/gun/launcher/spike/dropped(mob/living/user)
 	add_to_missing_pred_gear(src)
 	..()
@@ -312,7 +311,7 @@
 
 			sleep(1)
 
-		if(D) 
+		if(D)
 			QDEL_IN(D, 10)
 
 		return

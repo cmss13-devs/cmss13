@@ -141,12 +141,12 @@
 				if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 					user.visible_message(SPAN_NOTICE("[user] fumbles around figuring out [src]'s internals."),
 					SPAN_NOTICE("You fumble around figuring out [src]'s internals."))
-					var/fumbling_time = 100 - 20 * user.skills.get_skill_level(SKILL_ENGINEER)
+					var/fumbling_time = 50
 					if(!do_after(user, fumbling_time, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD)) return
 				playsound(loc, 'sound/items/weldingtool_weld.ogg', 25)
 				user.visible_message(SPAN_NOTICE("[user] starts welding [src]'s internal damage."),
 				SPAN_NOTICE("You start welding [src]'s internal damage."))
-				if(do_after(user, 200, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+				if(do_after(user, 200 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					if(buildstate != 1 || is_on || !WT.isOn()) 
 						return FALSE
 					playsound(loc, 'sound/items/Welder2.ogg', 25, 1)
@@ -163,12 +163,12 @@
 			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 				user.visible_message(SPAN_NOTICE("[user] fumbles around figuring out [src]'s wiring."),
 				SPAN_NOTICE("You fumble around figuring out [src]'s wiring."))
-				var/fumbling_time = 100 - 20 * user.skills.get_skill_level(SKILL_ENGINEER)
+				var/fumbling_time = 50
 				if(!do_after(user, fumbling_time, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD)) return
 			playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
 			user.visible_message(SPAN_NOTICE("[user] starts securing [src]'s wiring."),
 			SPAN_NOTICE("You start securing [src]'s wiring."))
-			if(do_after(user, 120, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, numticks = 12))
+			if(do_after(user, 120 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, numticks = 12))
 				if(buildstate != 2 || is_on) 
 					return FALSE
 				playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
@@ -182,12 +182,12 @@
 			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 				user.visible_message(SPAN_NOTICE("[user] fumbles around figuring out [src]'s tubing and plating."),
 				SPAN_NOTICE("You fumble around figuring out [src]'s tubing and plating."))
-				var/fumbling_time = 100 - 20 * user.skills.get_skill_level(SKILL_ENGINEER)
+				var/fumbling_time = 50
 				if(!do_after(user, fumbling_time, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD)) return
 			playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 			user.visible_message(SPAN_NOTICE("[user] starts repairing [src]'s tubing and plating."),
 			SPAN_NOTICE("You start repairing [src]'s tubing and plating."))
-			if(do_after(user, 150, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+			if(do_after(user, 150 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				if(buildstate != 3 || is_on) 
 					return FALSE
 				playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
@@ -210,12 +210,12 @@
 			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 				user.visible_message(SPAN_WARNING("[user] fumbles around figuring out [src]'s fuel receptacle."),
 				SPAN_WARNING("You fumble around figuring out [src]'s fuel receptacle."))
-				var/fumbling_time = 100 - 20 * user.skills.get_skill_level(SKILL_ENGINEER)
+				var/fumbling_time = 50
 				if(!do_after(user, fumbling_time, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD)) return
 			playsound(loc, 'sound/items/Crowbar.ogg', 25, 1)
 			user.visible_message(SPAN_NOTICE("[user] starts prying [src]'s fuel receptacle open."),
 			SPAN_NOTICE("You start prying [src]'s fuel receptacle open."))
-			if(do_after(user, 100, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+			if(do_after(user, 100 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				if(buildstate != 0 || is_on || !fusion_cell) 
 					return FALSE
 				user.visible_message(SPAN_NOTICE("[user] pries [src]'s fuel receptacle open and removes the cell."),
@@ -248,7 +248,7 @@
 			to_chat(user, SPAN_INFO("The power gauge reads: [power_gen_percent]%"))
 		if(fusion_cell)
 			to_chat(user, SPAN_INFO("You can see a fuel cell in the receptacle."))
-			if(skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_OT))
+			if(skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 				switch(fusion_cell.get_fuel_percent())
 					if(0 to 10)
 						to_chat(user, SPAN_DANGER("The fuel cell is critically low."))

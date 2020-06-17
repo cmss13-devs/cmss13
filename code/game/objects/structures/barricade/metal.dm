@@ -39,7 +39,7 @@
 	if(iswelder(W))
 		if(user.action_busy)
 			return
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_METAL))
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You're not trained to repair [src]..."))
 			return
 		var/obj/item/tool/weldingtool/WT = W
@@ -55,7 +55,7 @@
 			user.visible_message(SPAN_NOTICE("[user] begins repairing damage to [src]."),
 			SPAN_NOTICE("You begin repairing the damage to [src]."))
 			playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
-			if(do_after(user, 50, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, src))
+			if(do_after(user, 50 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, src))
 				user.visible_message(SPAN_NOTICE("[user] repairs some damage on [src]."),
 				SPAN_NOTICE("You repair [src]."))
 				user.count_niche_stat(STATISTICS_NICHE_REPAIR_CADES)
@@ -73,7 +73,7 @@
 	switch(build_state)
 		if(BARRICADE_BSTATE_SECURED) //Fully constructed step. Use screwdriver to remove the protection panels to reveal the bolts
 			if(isscrewdriver(W))
-				if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_METAL))
+				if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_TRAINED))
 					to_chat(user, SPAN_WARNING("You are not trained to touch [src]..."))
 					return
 				if(user.action_busy)
@@ -87,7 +87,7 @@
 				return
 
 			if(istype(W, /obj/item/stack/sheet/metal))
-				if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_METAL))
+				if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_TRAINED))
 					to_chat(user, SPAN_WARNING("You are not trained to touch [src]..."))
 					return
 				if(upgraded)
@@ -129,7 +129,7 @@
 				return
 
 			if(ismultitool(W))
-				if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_METAL))
+				if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_TRAINED))
 					to_chat(user, SPAN_WARNING("You are not trained to touch [src]..."))
 					return
 				if(user.action_busy || !upgraded)
@@ -150,7 +150,7 @@
 			if(isscrewdriver(W))
 				if(user.action_busy)
 					return
-				if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_METAL))
+				if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_TRAINED))
 					to_chat(user, SPAN_WARNING("You are not trained to assemble [src]..."))
 					return
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
@@ -162,7 +162,7 @@
 			if(iswrench(W))
 				if(user.action_busy)
 					return
-				if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_METAL))
+				if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_TRAINED))
 					to_chat(user, SPAN_WARNING("You are not trained to disassemble [src]..."))
 					return
 				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
@@ -177,7 +177,7 @@
 			if(iswrench(W))
 				if(user.action_busy)
 					return
-				if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_METAL))
+				if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_TRAINED))
 					to_chat(user, SPAN_WARNING("You are not trained to assemble [src]..."))
 					return
 				for(var/obj/structure/barricade/B in loc)
@@ -195,7 +195,7 @@
 			if(iscrowbar(W))
 				if(user.action_busy)
 					return
-				if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_METAL))
+				if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_TRAINED))
 					to_chat(user, SPAN_WARNING("You are not trained to disassemble [src]..."))
 					return
 				user.visible_message(SPAN_NOTICE("[user] starts unseating [src]'s panels."),

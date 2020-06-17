@@ -33,7 +33,7 @@
 	. = ..()
 
 /obj/item/explosive/plastique/attack_self(mob/user)
-	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_METAL))
+	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 		to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 		return
 	
@@ -54,7 +54,7 @@
 /obj/item/explosive/plastique/afterattack(atom/target, mob/user, flag)
 	if(user.action_busy || !flag)
 		return
-	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_METAL))
+	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 		to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 		return
 	if(!can_place(user, target))

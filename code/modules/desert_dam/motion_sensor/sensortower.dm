@@ -114,7 +114,7 @@
 				playsound(loc, 'sound/items/weldingtool_weld.ogg', 25)
 				user.visible_message(SPAN_NOTICE("[user] starts welding [src]'s internal damage."),
 				SPAN_NOTICE("You start welding [src]'s internal damage."))
-				if(do_after(user, 200, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+				if(do_after(user, 200 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					if(buildstate != 1 || is_on || !WT.isOn()) 
 						return FALSE
 					playsound(loc, 'sound/items/Welder2.ogg', 25, 1)
@@ -134,7 +134,7 @@
 			playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
 			user.visible_message(SPAN_NOTICE("[user] starts securing [src]'s wiring."),
 			SPAN_NOTICE("You start securing [src]'s wiring."))
-			if(do_after(user, 120, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, numticks = 12))
+			if(do_after(user, 120 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, numticks = 12))
 				if(buildstate != 2 || is_on) 
 					return FALSE
 				playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
@@ -151,7 +151,7 @@
 			playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 			user.visible_message(SPAN_NOTICE("[user] starts repairing [src]'s tubing and plating."),
 			SPAN_NOTICE("You start repairing [src]'s tubing and plating."))
-			if(do_after(user, 150, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+			if(do_after(user, 150 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				if(buildstate != 3 || is_on) 
 					return FALSE
 				playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)

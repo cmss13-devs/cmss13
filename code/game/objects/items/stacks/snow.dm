@@ -31,7 +31,7 @@
 			else
 				to_chat(user, SPAN_NOTICE("You start taking snow from [src]."))
 				playsound(user.loc, 'sound/effects/thud.ogg', 40, 1, 6)
-				if(!do_after(user, ET.shovelspeed, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+				if(!do_after(user, ET.shovelspeed * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					to_chat(user, SPAN_NOTICE("You stop taking snow from [src]."))
 					return
 				var/transf_amt = ET.dirt_amt_per_dig

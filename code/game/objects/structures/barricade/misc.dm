@@ -38,7 +38,7 @@
 			to_chat(user, SPAN_WARNING("You are already shoveling!"))
 			return
 		user.visible_message("[user.name] starts clearing out \the [src].","You start removing \the [src].")
-		if(!do_after(user, ET.shovelspeed, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
+		if(!do_after(user, ET.shovelspeed * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
 			return
 		if(!ET.folded)
 			user.visible_message(SPAN_NOTICE("\The [user] removes \the [src]."))

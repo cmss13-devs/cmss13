@@ -3,7 +3,7 @@
 	dead_mob_list -= src
 	living_mob_list -= src
 	player_list -= src
-	
+
 	if(mind)
 		if(mind.current == src)
 			mind.current = null
@@ -228,22 +228,22 @@
 		else if(!disable_warning)
 			to_chat(src, SPAN_WARNING("You are unable to equip that.")) //Only print if del_on_fail is false
 		return FALSE
-	
+
 	var/start_loc = W.loc
 
 	if(W.time_to_equip && !ignore_delay)
 		INVOKE_ASYNC(src, .proc/equip_to_slot_timed, W, slot, redraw_mob, permanent, start_loc)
 		return TRUE
-	
+
 	equip_to_slot(W, slot, redraw_mob) //This proc should not ever fail.
 	if(permanent)
 		W.flags_inventory |= CANTSTRIP
 		W.flags_item |= NODROP
 	if(W.loc == start_loc && get_active_hand() != W)
 		//They moved it from hands to an inv slot or vice versa. This will unzoom and unwield items -without- triggering lights.
-		if(W.zoom) 
+		if(W.zoom)
 			W.zoom(src)
-		if(W.flags_item & TWOHANDED) 
+		if(W.flags_item & TWOHANDED)
 			W.unwield(src)
 	return TRUE
 
@@ -382,9 +382,9 @@
 		'html/changelog.css',
 		'html/changelog.js',
 	)
-	
+
 	var/changelog_html = file2text('html/changelog.html')
-	
+
 	show_browser(src, changelog_html, null, "changes", "size=675x650")
 	if(prefs.lastchangelog != changelog_hash)
 		prefs.lastchangelog = changelog_hash
@@ -462,7 +462,7 @@
 	if(!put_in_hands(G)) //placing the grab in hand failed, grab is dropped, deleted, and we stop pulling automatically.
 		recalculate_move_delay = TRUE
 		return
-		
+
 	if(client)
 		client.recalculate_move_delay()
 
@@ -746,7 +746,7 @@ mob/proc/yank_out_object()
 			return FALSE
 		to_chat(usr, SPAN_WARNING("You attempt to get a good grip on [selection] in [src]'s body."))
 
-	if(!do_after(usr, 80, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
+	if(!do_after(usr, 80 * usr.get_skill_duration_multiplier(), INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 		return
 	if(!selection || !src || !usr || !istype(selection))
 		return

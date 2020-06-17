@@ -14,7 +14,7 @@
 //Putting on hardpoints
 //Similar to repairing stuff, down to the time delay
 /obj/vehicle/multitile/proc/install_hardpoint(var/obj/item/O, var/mob/user)
-	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_OT))
+	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 		to_chat(user, SPAN_WARNING("You don't know what to do with [O] on \the [src]."))
 		return
 
@@ -56,7 +56,7 @@
 		if(HDPT_ARMOR) num_delays = 10
 		if(HDPT_TREADS || HDPT_WHEELS) num_delays = 7
 
-	if(!do_after(user, 30*num_delays, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, numticks = num_delays))
+	if(!do_after(user, 30*num_delays * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL, BUSY_ICON_FRIENDLY, numticks = num_delays))
 		user.visible_message(SPAN_WARNING("[user] stops installing \the [HP] on \the [src]."), SPAN_WARNING("You stop installing \the [HP] on \the [src]."))
 		return
 
@@ -76,7 +76,7 @@
 //User-orientated proc for taking of hardpoints
 //Again, similar to the above ones
 /obj/vehicle/multitile/proc/uninstall_hardpoint(var/obj/item/O, var/mob/user)
-	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_OT))
+	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 		to_chat(user, SPAN_WARNING("You don't know what to do with \the [O] on \the [src]."))
 		return
 
@@ -121,7 +121,7 @@
 		if(HDPT_ARMOR) num_delays = 10
 		if(HDPT_TREADS) num_delays = 7
 
-	if(!do_after(user, 30*num_delays, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, numticks = num_delays))
+	if(!do_after(user, 30*num_delays * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL, BUSY_ICON_FRIENDLY, numticks = num_delays))
 		user.visible_message(SPAN_WARNING("[user] stops removing \the [old] on \the [src]."), SPAN_WARNING("You stop removing \the [old] on \the [src]."))
 		return
 

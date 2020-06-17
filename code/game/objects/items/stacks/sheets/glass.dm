@@ -65,7 +65,7 @@
 	if(!user.IsAdvancedToolUser())
 		to_chat(user, SPAN_DANGER("You don't have the dexterity to do this!"))
 		return 0
-	if(ishuman(user) && !skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_PLASTEEL))
+	if(ishuman(user) && !skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_ENGI))
 		to_chat(user, SPAN_WARNING("You are not trained to build with [src]..."))
 		return 0
 	var/title = "Sheet-[name]"

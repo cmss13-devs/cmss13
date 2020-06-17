@@ -282,7 +282,7 @@ FORENSIC SCANNER
 	if(!(istype(user, /mob/living/carbon/human) || ticker) && ticker.mode.name != "monkey")
 		to_chat(user, SPAN_DANGER("You don't have the dexterity to do this!"))
 		return
-	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_OT))
+	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 		to_chat(user, SPAN_WARNING("You do not know how to use the [name]."))
 		return
 	if(!istype(O))

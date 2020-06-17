@@ -102,7 +102,7 @@
 	if(iswelder(I))
 		if(user.action_busy)
 			return
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_METAL))
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You're not trained to repair [src]..."))
 			return
 		var/obj/item/tool/weldingtool/WT = I

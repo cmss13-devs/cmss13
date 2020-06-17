@@ -68,7 +68,7 @@
 		if(!ET.folded)
 			user.visible_message(SPAN_NOTICE("[user] starts disassembling [src]."), \
 			SPAN_NOTICE("You start disassembling [src]."))
-			if(do_after(user, ET.shovelspeed, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
+			if(do_after(user, ET.shovelspeed * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
 				user.visible_message(SPAN_NOTICE("[user] disassembles [src]."),
 				SPAN_NOTICE("You disassemble [src]."))
 				destroy(TRUE)

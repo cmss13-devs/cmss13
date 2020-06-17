@@ -113,7 +113,7 @@ var/global/list/deployed_fultons = list()
 	if(can_attach)
 		user.visible_message(SPAN_WARNING("[user] begins attaching [src] onto [target_atom]."), \
 					SPAN_WARNING("You begin to attach [src] onto [target_atom]."))
-		if(do_after(user, 50, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+		if(do_after(user, 50 * user.get_skill_duration_multiplier(), INTERRUPT_ALL, BUSY_ICON_GENERIC))
 			if(!amount || get_dist(target_atom,user) > 1)
 				return
 			for(var/obj/item/stack/fulton/F in get_turf(target_atom))

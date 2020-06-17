@@ -111,7 +111,7 @@
 			playsound(src.loc, 'sound/items/weldingtool_weld.ogg', 25)
 			user.visible_message(SPAN_NOTICE("[user] starts welding [src]'s damage."), \
 				SPAN_NOTICE("You start welding [src]'s damage."))
-			if(do_after(user, 200, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+			if(do_after(user, 200 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				playsound(get_turf(src), 'sound/items/Welder2.ogg', 25, 1)
 				if(!src || !WT.isOn()) return
 				damaged = 0

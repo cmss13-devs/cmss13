@@ -82,7 +82,7 @@
 						return
 				to_chat(user, SPAN_NOTICE("You start digging."))
 				playsound(user.loc, 'sound/effects/thud.ogg', 40, 1, 6)
-				if(!do_after(user, shovelspeed, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+				if(!do_after(user, shovelspeed * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					to_chat(user, SPAN_NOTICE("You stop digging."))
 					return
 				var/transf_amt = dirt_amt_per_dig

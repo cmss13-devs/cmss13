@@ -265,7 +265,7 @@
 	SPAN_NOTICE("You start to weld [src]."))
 	playsound(loc, 'sound/items/weldingtool_weld.ogg', 25)
 	WT.eyecheck(user)
-	if(do_after(user, 50, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+	if(do_after(user, 50 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		if(!WT.isOn())
 			return 0
 		playsound(loc, 'sound/items/Welder2.ogg', 25, 1)

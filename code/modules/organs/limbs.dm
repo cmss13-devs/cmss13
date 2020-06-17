@@ -1014,7 +1014,7 @@ This function completely restores a damaged organ to perfect condition.
 /obj/limb/proc/apply_splints(obj/item/stack/medical/splint/S, mob/living/user, mob/living/carbon/human/target)
 	if(!(status & LIMB_DESTROYED) && !(status & LIMB_SPLINTED))
 		if (target != user)
-			if(do_after(user, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
+			if(do_after(user, 50 * user.get_skill_duration_multiplier(SKILL_MEDICAL), INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
 				var/possessive = "[user == target ? "your" : "[target]'s"]"
 				var/possessive_their = "[user == target ? "their" : "[target]'s"]"
 				user.affected_message(target,
@@ -1026,7 +1026,7 @@ This function completely restores a damaged organ to perfect condition.
 				owner.update_med_icon()
 		else
 			user.visible_message(SPAN_WARNING("[user] fumbles with the [S]"), SPAN_WARNING("You fumble with the [S]..."))
-			if(do_after(user, 150, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
+			if(do_after(user, 150 * user.get_skill_duration_multiplier(SKILL_MEDICAL), INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
 				user.visible_message(
 				SPAN_WARNING("[user] successfully applies [S] to their [display_name]."),
 				SPAN_NOTICE("You successfully apply [S] to your [display_name]."))

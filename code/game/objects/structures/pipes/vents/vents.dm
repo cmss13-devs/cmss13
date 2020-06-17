@@ -78,7 +78,7 @@
 			user.visible_message(SPAN_NOTICE("[user] starts welding [src] with [WT]."), \
 			SPAN_NOTICE("You start welding [src] with [WT]."))
 			playsound(loc, 'sound/items/weldingtool_weld.ogg', 25)
-			if(do_after(user, 50, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+			if(do_after(user, 50 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				if(!src || !WT.isOn()) return 0
 				playsound(get_turf(src), 'sound/items/Welder2.ogg', 25, 1)
 				if(!welded)
@@ -112,7 +112,7 @@
 	playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 	user.visible_message(SPAN_NOTICE("[user] begins unfastening [src]."),
 	SPAN_NOTICE("You begin unfastening [src]."))
-	if(do_after(user, 40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+	if(do_after(user, 40 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 		user.visible_message(SPAN_NOTICE("[user] unfastens [src]."),
 		SPAN_NOTICE("You unfasten [src]."))

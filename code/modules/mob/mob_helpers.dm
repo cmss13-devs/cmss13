@@ -446,3 +446,40 @@ var/list/intents = list("help","disarm","grab","hurt")
 		to_chat(src, SPAN_NOTICE("You may now speak again."))
 	if(increase_warn)
 		chatWarn++
+
+#define SYNTH_DURATION_MULTIPLIER 0.25
+/mob/proc/get_skill_duration_multiplier(var/skill)
+	//Gets a multiplier for various tasks, based on the skill
+	. = 1.0
+	if(!skills)
+		return
+	switch(skill)
+		//if(SKILL_CQC)
+		//if(SKILL_MELEE_WEAPONS)
+		//if(SKILL_FIREARMS)
+		//if(SKILL_SPEC_WEAPONS)
+		//if(SKILL_ENDURANCE)
+		if(SKILL_ENGINEER)
+			if(skillcheck(src, SKILL_ENGINEER, SKILL_ENGINEER_MASTER))
+				return SYNTH_DURATION_MULTIPLIER
+		if(SKILL_CONSTRUCTION)
+			if(skillcheck(src, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_MASTER))
+				return SYNTH_DURATION_MULTIPLIER
+		//if(SKILL_LEADERSHIP)
+		if(SKILL_MEDICAL)
+			if(skillcheck(src, SKILL_MEDICAL, SKILL_MEDICAL_MASTER))
+				return SYNTH_DURATION_MULTIPLIER
+		if(SKILL_SURGERY)
+			if(skillcheck(src, SKILL_SURGERY, SKILL_SURGERY_EXPERT))
+				return SYNTH_DURATION_MULTIPLIER
+		//if(SKILL_RESEARCH)
+		//if(SKILL_PILOT)
+		//if(SKILL_POLICE)
+		//if(SKILL_POWERLOADER)
+		//if(SKILL_VEHICLE)
+		if(SKILL_READING)
+			if(skillcheck(src, SKILL_READING, SKILL_READING_EXPERT))
+				return SYNTH_DURATION_MULTIPLIER
+		else
+			if(isYautja(src) || (isSynth(src) && !isEarlySynthetic(src)))
+				return SYNTH_DURATION_MULTIPLIER //Acceleration for things that don't fall under skills

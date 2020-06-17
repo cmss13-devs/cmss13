@@ -307,15 +307,15 @@
 /mob/living/carbon/human/proc/get_paygrade(size = 1)
 	if(!species)
 		return ""
-		
+
 	switch(species.name)
 		if("Human","Human Hero")
 			var/obj/item/card/id/id = wear_id
-			if(istype(id)) 
+			if(istype(id))
 				. = get_paygrades(id.paygrade, size, gender)
-		else 
+		else
 			return ""
-	
+
 
 //repurposed proc. Now it combines get_id_name() and get_face_name() to determine a mob's name variable. Made into a seperate proc as it'll be useful elsewhere
 /mob/living/carbon/human/proc/get_visible_name()
@@ -1247,12 +1247,6 @@
 		dat += "CQC: [usr.skills.get_skill_level(SKILL_CQC)]<br/>"
 		dat += "Melee: [usr.skills.get_skill_level(SKILL_MELEE_WEAPONS)]<br/>"
 		dat += "Firearms: [usr.skills.get_skill_level(SKILL_FIREARMS)]<br/>"
-		dat += "Pistols: [usr.skills.get_skill_level(SKILL_PISTOLS)]<br/>"
-		dat += "Shotguns: [usr.skills.get_skill_level(SKILL_SHOTGUNS)]<br/>"
-		dat += "Rifles: [usr.skills.get_skill_level(SKILL_RIFLES)]<br/>"
-		dat += "SMGs: [usr.skills.get_skill_level(SKILL_SMGS)]<br/>"
-		dat += "Heavy Weapons: [usr.skills.get_skill_level(SKILL_HEAVY_WEAPONS)]<br/>"
-		dat += "Smartgun: [usr.skills.get_skill_level(SKILL_SMARTGUN)]<br/>"
 		dat += "Specialist Weapons: [usr.skills.get_skill_level(SKILL_SPEC_WEAPONS)]<br/>"
 		dat += "Endurance: [usr.skills.get_skill_level(SKILL_ENDURANCE)]<br/>"
 		dat += "Engineer: [usr.skills.get_skill_level(SKILL_ENGINEER)]<br/>"

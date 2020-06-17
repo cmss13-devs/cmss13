@@ -25,7 +25,6 @@
 						/obj/item/attachable/magnetic_harness,
 						/obj/item/attachable/attached_gun/extinguisher)
 	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_WIELDED_FIRING_ONLY
-	gun_skill_category = SKILL_HEAVY_WEAPONS
 
 /obj/item/weapon/gun/flamer/New()
 	..()

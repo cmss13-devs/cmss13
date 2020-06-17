@@ -139,7 +139,7 @@
 
 	if(istype(O, ammo))
 		var/obj/item/ammo_magazine/M = O
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_PLASTEEL) || user.action_busy)
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI) || user.action_busy)
 			return
 
 		if(ammo.current_rounds)
@@ -148,7 +148,7 @@
 
 		user.visible_message(SPAN_NOTICE("[user] begins swapping a new [O.name] into [src]."),
 		SPAN_NOTICE("You begin swapping a new [O.name] into [src]."))
-		if(!do_after(user, 70, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, src))
+		if(!do_after(user, 70 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL, BUSY_ICON_FRIENDLY, src))
 			return
 
 		playsound(loc, 'sound/weapons/unload.ogg', 25, 1)

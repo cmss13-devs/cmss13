@@ -72,7 +72,7 @@
 		return
 
 	if(ismultitool(O))
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_METAL))
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You don't have the training to do this."))
 			return
 
@@ -86,7 +86,7 @@
 
 		user.visible_message(SPAN_NOTICE("[user] begins disassembling [src]."), SPAN_NOTICE("You begin disassembling [src]."))
 
-		if(!do_after(user, disassemble_time, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
+		if(!do_after(user, disassemble_time * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
 			return
 		
 		user.visible_message(SPAN_NOTICE("[user] disassembles [src]."), SPAN_NOTICE("You disassemble [src]."))
@@ -105,7 +105,7 @@
 			user.visible_message(SPAN_NOTICE("[user] begins unanchoring [src] from the ground."),
 			SPAN_NOTICE("You begin unanchoring [src] from the ground."))
 
-			if(!do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
+			if(!do_after(user, 20 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
 				return
 			user.visible_message(SPAN_NOTICE("[user] unanchors [src] from the ground."),
 			SPAN_NOTICE("You unanchor [src] from the ground."))
@@ -116,7 +116,7 @@
 			user.visible_message(SPAN_NOTICE("[user] begins securing [src] to the ground."),
 			SPAN_NOTICE("You begin securing [src] to the ground."))
 
-			if(!do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
+			if(!do_after(user, 20 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
 				return
 			user.visible_message(SPAN_NOTICE("[user] secures [src] to the ground."),
 			SPAN_NOTICE("You secure [src] to the ground."))
@@ -137,7 +137,7 @@
 		if(WT.remove_fuel(0, user))
 			user.visible_message(SPAN_NOTICE("[user] begins repairing [src]."),
 			SPAN_NOTICE("You begin repairing [src]."))
-			if(do_after(user, 40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, src))
+			if(do_after(user, 40 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, src))
 				user.visible_message(SPAN_NOTICE("[user] repairs [src]."),
 				SPAN_NOTICE("You repair [src]."))
 				if(stat == DEFENSE_DAMAGED)
@@ -149,7 +149,7 @@
 	return TRUE
 
 /obj/structure/machinery/defenses/attack_hand(var/mob/user)
-	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_PLASTEEL))
+	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 		to_chat(user, SPAN_WARNING("You don't have the training to do this."))
 		return
 

@@ -107,8 +107,6 @@
 
 	var/flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK
 
-	var/gun_skill_category //used to know which job knowledge this gun is linked to
-
 	var/base_gun_icon //the default gun icon_state. change to reskin the gun
 	var/has_empty_icon = TRUE // whether gun has icon state of (base_gun_icon)_e
 	var/has_open_icon = FALSE // whether gun has icon state of (base_gun_icon)_o
@@ -392,22 +390,7 @@
 		if(user.skills.get_skill_level(SKILL_FIREARMS) == 0) //no training in any firearms
 			wield_time += 3
 		else
-			var/skill_value = 0
-			switch(gun_skill_category)
-				if(SKILL_PISTOLS)
-					skill_value = user.skills.get_skill_level(SKILL_PISTOLS)
-				if(SKILL_SMGS)
-					skill_value = user.skills.get_skill_level(SKILL_SMGS)
-				if(SKILL_RIFLES)
-					skill_value = user.skills.get_skill_level(SKILL_RIFLES)
-				if(SKILL_SHOTGUNS)
-					skill_value = user.skills.get_skill_level(SKILL_SHOTGUNS)
-				if(SKILL_HEAVY_WEAPONS)
-					skill_value = user.skills.get_skill_level(SKILL_HEAVY_WEAPONS)
-				if(SKILL_SMARTGUN)
-					skill_value = user.skills.get_skill_level(SKILL_SMARTGUN)
-			if(skill_value)
-				wield_time -= 2*skill_value
+			wield_time -= 2*user.skills.get_skill_level(SKILL_FIREARMS)
 	return 1
 
 /obj/item/weapon/gun/unwield(var/mob/user)
@@ -752,7 +735,7 @@ and you're good to go.
 				var/obj/item/IH = user.get_inactive_hand()
 				if(istype(IH, /obj/item/weapon/gun))
 					var/obj/item/weapon/gun/OG = IH
-					if(!(OG.flags_gun_features & GUN_WIELDED_FIRING_ONLY) && OG.gun_skill_category == gun_skill_category)
+					if(!(OG.flags_gun_features & GUN_WIELDED_FIRING_ONLY))
 						OG.Fire(target,user,params, 0, TRUE)
 						dual_wield = TRUE
 						recoil_comp++
@@ -985,14 +968,6 @@ and you're good to go.
 			if(user && user.skills)
 				if(user.skills.get_skill_level(SKILL_FIREARMS) == 0) //no training in any firearms
 					added_delay += config.low_fire_delay //untrained humans fire more slowly.
-				else
-					switch(gun_skill_category)
-						if(SKILL_HEAVY_WEAPONS)
-							if(fire_delay > 10) //long delay to fire
-								added_delay = max(fire_delay - 3*user.skills.get_skill_level(SKILL_HEAVY_WEAPONS), 6)
-						if(SKILL_SMARTGUN)
-							if(!skillcheck(user, SKILL_SMARTGUN, SKILL_SMART_TRAINED))
-								added_delay += 2*user.skills.get_skill_level(SKILL_SMARTGUN)
 		if(world.time >= last_fired + added_delay + extra_delay) //check the last time it was fired.
 			extra_delay = 0
 		else
@@ -1024,12 +999,8 @@ and you're good to go.
 		gun_scatter += max(0, movement_acc_penalty_mult * config.min_scatter_value)
 
 	if(dual_wield) //akimbo firing gives terrible accuracy
-		if(gun_skill_category == SKILL_SMGS)
-			gun_accuracy_mult = max(0.1, gun_accuracy_mult - 0.1*rand(2,4))
-			gun_scatter += config.med_scatter_value
-		else
-			gun_accuracy_mult = max(0.1, gun_accuracy_mult - 0.1*rand(3,5))
-			gun_scatter += config.high_scatter_value
+		gun_accuracy_mult = max(0.1, gun_accuracy_mult - 0.1*rand(3,5))
+		gun_scatter += config.high_scatter_value
 
 	// Apply any skill-based bonuses to accuracy
 	if(user && user.mind && user.skills)
@@ -1037,19 +1008,7 @@ and you're good to go.
 		if(user.skills.get_skill_level(SKILL_FIREARMS) == 0) //no training in any firearms
 			skill_accuracy = -1
 		else
-			switch(gun_skill_category)
-				if(SKILL_PISTOLS)
-					skill_accuracy = user.skills.get_skill_level(SKILL_PISTOLS)
-				if(SKILL_SMGS)
-					skill_accuracy = user.skills.get_skill_level(SKILL_SMGS)
-				if(SKILL_RIFLES)
-					skill_accuracy = user.skills.get_skill_level(SKILL_RIFLES)
-				if(SKILL_SHOTGUNS)
-					skill_accuracy = user.skills.get_skill_level(SKILL_SHOTGUNS)
-				if(SKILL_HEAVY_WEAPONS)
-					skill_accuracy = user.skills.get_skill_level(SKILL_HEAVY_WEAPONS)
-				if(SKILL_SMARTGUN)
-					skill_accuracy = user.skills.get_skill_level(SKILL_SMARTGUN)
+			skill_accuracy = user.skills.get_skill_level(SKILL_FIREARMS)
 		if(skill_accuracy)
 			gun_accuracy_mult += skill_accuracy * config.low_hit_accuracy_mult // Accuracy mult increase/decrease per level is equal to attaching/removing a red dot sight
 
@@ -1129,22 +1088,7 @@ and you're good to go.
 		if(user.skills.get_skill_level(SKILL_FIREARMS) == 0) //no training in any firearms
 			total_scatter_angle += config.low_scatter_value
 		else
-			var/scatter_tweak = 0
-			switch(gun_skill_category)
-				if(SKILL_PISTOLS)
-					scatter_tweak = user.skills.get_skill_level(SKILL_PISTOLS)
-				if(SKILL_SMGS)
-					scatter_tweak = user.skills.get_skill_level(SKILL_SMGS)
-				if(SKILL_RIFLES)
-					scatter_tweak = user.skills.get_skill_level(SKILL_RIFLES)
-				if(SKILL_SHOTGUNS)
-					scatter_tweak = user.skills.get_skill_level(SKILL_SHOTGUNS)
-				if(SKILL_HEAVY_WEAPONS)
-					scatter_tweak = user.skills.get_skill_level(SKILL_HEAVY_WEAPONS)
-				if(SKILL_SMARTGUN)
-					scatter_tweak = user.skills.get_skill_level(SKILL_SMARTGUN)
-			if(scatter_tweak)
-				total_scatter_angle -= scatter_tweak*config.low_scatter_value
+			total_scatter_angle -= user.skills.get_skill_level(SKILL_FIREARMS)*config.low_scatter_value
 
 
 	//Not if the gun doesn't scatter at all, or negative scatter.
@@ -1165,26 +1109,11 @@ and you're good to go.
 			total_recoil += 1
 
 	if(user && user.mind && user.skills)
-
 		if(user.skills.get_skill_level(SKILL_FIREARMS) == 0) //no training in any firearms
 			total_recoil += config.min_recoil_value
 		else
-			var/recoil_tweak
-			switch(gun_skill_category)
-				if(SKILL_PISTOLS)
-					recoil_tweak = user.skills.get_skill_level(SKILL_PISTOLS)
-				if(SKILL_SMGS)
-					recoil_tweak = user.skills.get_skill_level(SKILL_SMGS)
-				if(SKILL_RIFLES)
-					recoil_tweak = user.skills.get_skill_level(SKILL_RIFLES)
-				if(SKILL_SHOTGUNS)
-					recoil_tweak = user.skills.get_skill_level(SKILL_SHOTGUNS)
-				if(SKILL_HEAVY_WEAPONS)
-					recoil_tweak = user.skills.get_skill_level(SKILL_HEAVY_WEAPONS)
-				if(SKILL_SMARTGUN)
-					recoil_tweak = user.skills.get_skill_level(SKILL_SMARTGUN)
-			if(recoil_tweak)
-				total_recoil -= recoil_tweak*config.min_recoil_value
+			total_recoil -= user.skills.get_skill_level(SKILL_FIREARMS)*config.min_recoil_value
+				
 	if(total_recoil > 0 && ishuman(user))
 		shake_camera(user, total_recoil + 1, total_recoil)
 		return 1

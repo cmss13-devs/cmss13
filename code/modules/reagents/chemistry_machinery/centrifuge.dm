@@ -44,7 +44,6 @@
 	if(input_container && output_container)
 		to_chat(user, SPAN_NOTICE("You insert [B] and start configuring the [src]."))
 		updateUsrDialog()
-		if(!do_after(user, 15, INTERRUPT_ALL, BUSY_ICON_GENERIC)) return
 		icon_state = "centrifuge_spinning"
 		processing = 1
 		playsound(loc, 'sound/machines/centrifuge.ogg', 30)

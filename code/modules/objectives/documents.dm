@@ -67,16 +67,11 @@
 // --------------------------------------------
 // *** Mapping objects ***
 // --------------------------------------------
-#define DOCUMENT_SKILL_NONE 0
-#define DOCUMENT_SKILL_SURGERY 1
-#define DOCUMENT_SKILL_ENGINEERING 2
-#define DOCUMENT_SKILL_WEAPONS 3
 
 /obj/item/document_objective
 	var/datum/cm_objective/document/objective
 	var/read = 0
 	var/reading_time = 10
-	var/skill_required = DOCUMENT_SKILL_NONE
 	var/objective_type = /datum/cm_objective/document
 	unacidable = TRUE
 	indestructible = 1
@@ -116,20 +111,6 @@
 /obj/item/document_objective/attack_self(mob/living/carbon/human/user)
 	if(!objective.is_active())
 		objective.activate() //Trying to rejig it just in case
-	switch(skill_required)
-		if(DOCUMENT_SKILL_SURGERY)
-			if(!skillcheck(user, SKILL_SURGERY, SKILL_SURGERY_BEGINNER))
-				to_chat(user, SPAN_WARNING("You can't understand this."))
-				return FALSE
-		if(DOCUMENT_SKILL_ENGINEERING)
-			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_OT))
-				to_chat(user, SPAN_WARNING("You can't understand this."))
-				return FALSE
-		if(DOCUMENT_SKILL_WEAPONS)
-			// Needs skill in any spec weapon
-			if(!skillcheck(user, SKILL_SPEC_WEAPONS, 1))
-				to_chat(user, SPAN_WARNING("You can't understand this."))
-				return FALSE
 	to_chat(user, SPAN_NOTICE("You start reading \the [src]."))
 
 	var/time_to_read = reading_time

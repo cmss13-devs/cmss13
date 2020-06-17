@@ -22,7 +22,7 @@ var/global/list/datum/stack_recipe/sandstone_recipes = list ( \
 
 var/global/list/datum/stack_recipe/silver_recipes = list ( \
 	new/datum/stack_recipe("silver door", /obj/structure/mineral_door/silver, 10, one_per_turf = 1, on_floor = 1), \
-	new/datum/stack_recipe("silver beaker", /obj/item/reagent_container/glass/beaker/silver, 3, time = 30, skill_req = SKILL_CONSTRUCTION_METAL), \
+	new/datum/stack_recipe("silver beaker", /obj/item/reagent_container/glass/beaker/silver, 3, time = 30, skill_req = SKILL_CONSTRUCTION_TRAINED), \
 	)
 
 var/global/list/datum/stack_recipe/diamond_recipes = list ( \

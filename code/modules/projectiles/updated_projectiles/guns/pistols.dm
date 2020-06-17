@@ -13,7 +13,6 @@
 	movement_acc_penalty_mult = 3
 	wield_delay = WIELD_DELAY_VERY_FAST //If you modify your pistol to be two-handed, it will still be fast to aim
 	fire_sound = 'sound/weapons/gun_servicepistol.ogg'
-	gun_skill_category = SKILL_PISTOLS
 	attachable_allowed = list(
 						/obj/item/attachable/suppressor,
 						/obj/item/attachable/reddot,
@@ -475,7 +474,6 @@ It is a modified Beretta 93R, and can fire three round burst or single fire. Whe
 	fire_sound = 'sound/weapons/gun_chimp70.ogg'
 	w_class = SIZE_MEDIUM
 	force = 8
-	gun_skill_category = SKILL_PISTOLS
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_WY_RESTRICTED
 
 /obj/item/weapon/gun/pistol/chimp/set_gun_config_values()

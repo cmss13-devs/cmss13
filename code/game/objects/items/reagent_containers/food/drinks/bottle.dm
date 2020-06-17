@@ -86,12 +86,6 @@
 	if(!reagents || !reagents.reagent_list.len)
 		to_chat(user, SPAN_NOTICE("[src] is empty..."))
 		return
-	if(!reagents || !reagents.reagent_list.len)
-		to_chat(user, SPAN_NOTICE("[src] is empty..."))
-		return
-	if(!skillcheck(usr, SKILL_SURVIVAL, SKILL_SURVIVAL_NOVICE))
-		to_chat(user, SPAN_WARNING("You're not experienced enough to do this! This is too dangerous!"))
-		return
 	var/alcohol_potency = 0
 	for(var/datum/reagent/R in reagents.reagent_list)
 		if(R.intensitymod)

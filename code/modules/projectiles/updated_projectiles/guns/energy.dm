@@ -19,7 +19,6 @@
 	var/obj/item/cell/high/cell //10000 power.
 	var/charge_cost = 100 //100 shots.
 	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_CAN_POINTBLANK
-	gun_skill_category = SKILL_PISTOLS
 
 /obj/item/weapon/gun/energy/taser/New()
 	..()

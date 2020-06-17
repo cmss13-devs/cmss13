@@ -31,7 +31,7 @@
 /obj/structure/machinery/computer/demo_sim/attackby(obj/item/B, mob/living/user)
 	if(inoperable())
 		return
-	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_OT))
+	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 		to_chat(user, SPAN_WARNING("You don't know how to configure [src]."))
 		return
 	if(configuration)

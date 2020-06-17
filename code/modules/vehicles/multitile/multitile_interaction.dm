@@ -86,7 +86,7 @@
 		user.visible_message(SPAN_WARNING("[user] begins welding structural struts back in place on \the [src]."), SPAN_NOTICE("You begin welding structural struts back in place on \the [src]."))
 		playsound(get_turf(user), 'sound/items/weldingtool_weld.ogg', 25)
 
-		if(!do_after(user, 50, INTERRUPT_ALL, BUSY_ICON_BUILD))
+		if(!do_after(user, 50 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL, BUSY_ICON_BUILD))
 			user.visible_message(SPAN_WARNING("[user] stops welding on \the [src]."), SPAN_NOTICE("You stop welding on \the [src]."))
 			return
 
@@ -104,7 +104,7 @@
 
 		user.visible_message(SPAN_WARNING("[user] begins tightening various nuts and bolts on \the [src]."), SPAN_NOTICE("You begin tightening various nuts and bolts on \the [src]."))
 
-		if(!do_after(user, 60, INTERRUPT_ALL|INTERRUPT_CLICK, BUSY_ICON_BUILD))
+		if(!do_after(user, 60 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|INTERRUPT_CLICK, BUSY_ICON_BUILD))
 			user.visible_message(SPAN_WARNING("[user] stops tightening nuts and bolts on \the [src]."), SPAN_NOTICE("You stop tightening nuts and bolts on \the [src]."))
 			return
 

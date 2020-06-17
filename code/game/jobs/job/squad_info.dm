@@ -74,10 +74,10 @@
 		var/Med = FALSE
 		var/Eng = FALSE
 		if(H.has_used_pamphlet)
-			if(skillcheck(H, SKILL_MEDICAL, SKILL_MEDICAL_CHEM))
+			if(skillcheck(H, SKILL_MEDICAL, SKILL_MEDICAL_TRAINED))
 				Med = TRUE
 			else
-				if(skillcheck(H, SKILL_ENGINEER, SKILL_ENGINEER_METAL))
+				if(skillcheck(H, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 					Eng = TRUE
 		ID = H.get_idcard()
 		squad_info_data["fireteams"][team]["tl"] = list(
@@ -149,10 +149,10 @@
 			var/Med = FALSE
 			var/Eng = FALSE
 			if(H.has_used_pamphlet)
-				if(skillcheck(H, SKILL_MEDICAL, SKILL_MEDICAL_CHEM))
+				if(skillcheck(H, SKILL_MEDICAL, SKILL_MEDICAL_TRAINED))
 					Med = TRUE
 				else
-					if(skillcheck(H, SKILL_ENGINEER, SKILL_ENGINEER_METAL))
+					if(skillcheck(H, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 						Eng = TRUE
 			mar[H.real_name] = list(
 					"name" = H.real_name,
@@ -192,10 +192,10 @@
 			var/Med = FALSE
 			var/Eng = FALSE
 			if(H.has_used_pamphlet)
-				if(skillcheck(H, SKILL_MEDICAL, SKILL_MEDICAL_CHEM))
+				if(skillcheck(H, SKILL_MEDICAL, SKILL_MEDICAL_TRAINED))
 					Med = TRUE
 				else
-					if(skillcheck(H, SKILL_ENGINEER, SKILL_ENGINEER_METAL))
+					if(skillcheck(H, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 						Eng = TRUE
 			mar[H.real_name] = list(
 				"name" = H.real_name,

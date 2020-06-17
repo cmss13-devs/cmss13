@@ -14,7 +14,7 @@
 	var/list/req_components = null
 	var/list/req_component_names = null
 	var/state = CONSTRUCTION_STATE_BEGIN
-	var/required_skill = SKILL_CONSTRUCTION_MASTER
+	var/required_skill = SKILL_CONSTRUCTION_ENGI
 	var/required_dismantle_skill = SKILL_ENGINEER_ENGI
 
 /obj/structure/machinery/constructable_frame/New()

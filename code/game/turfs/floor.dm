@@ -434,7 +434,7 @@ var/list/wood_icons = list("wood", "wood-broken")
 				to_chat(user, SPAN_WARNING("You need more rods."))
 				return
 			to_chat(user, SPAN_NOTICE("Reinforcing the floor."))
-			if(do_after(user, 30, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD) && is_plating())
+			if(do_after(user, 30 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD) && is_plating())
 				if(!R) return
 				if(R.use(2))
 					ChangeTurf(/turf/open/floor/engine)

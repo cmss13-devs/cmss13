@@ -111,7 +111,7 @@
 	has_mount = TRUE
 	rounds = 700
 
-/obj/item/device/m56d_post_frame 
+/obj/item/device/m56d_post_frame
 	name = "\improper M56D folded mount frame"
 	desc = "A flimsy frame of plasteel and metal. Still needs to be <b>welded</b> together."
 	unacidable = TRUE
@@ -207,7 +207,7 @@
 	update_health(rand(M.melee_damage_lower,M.melee_damage_upper))
 
 /obj/structure/machinery/m56d_post/MouseDrop(over_object, src_location, over_location) //Drag the tripod onto you to fold it.
-	if(!ishuman(usr)) 
+	if(!ishuman(usr))
 		return
 	var/mob/living/carbon/human/user = usr //this is us
 	if(over_object == user && in_range(src, user))
@@ -243,7 +243,7 @@
 			to_chat(user, SPAN_WARNING("[src] must be anchored! Use a screwdriver!"))
 			return
 		to_chat(user, "You begin mounting [MG]...")
-		if(do_after(user,30, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD) && !gun_mounted && anchored)
+		if(do_after(user, 30 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD) && !gun_mounted && anchored)
 			playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 			user.visible_message(SPAN_NOTICE("[user] installs [MG] into place."),SPAN_NOTICE("You install [MG] into place."))
 			gun_mounted = 1
@@ -258,7 +258,7 @@
 			to_chat(user, SPAN_WARNING("There is no gun mounted."))
 			return
 		to_chat(user, "You begin dismounting [src]'s gun...")
-		if(do_after(user,30, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD) && gun_mounted)
+		if(do_after(user, 30 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD) && gun_mounted)
 			playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
 			user.visible_message(SPAN_NOTICE("[user] removes [src]'s gun."),SPAN_NOTICE("You remove [src]'s gun."))
 			var/obj/item/device/m56d_gun/G = new(loc)
@@ -272,12 +272,12 @@
 	if(istype(O,/obj/item/tool/screwdriver))
 		if(gun_mounted)
 			to_chat(user, "You're securing the M56D into place...")
-			
+
 			var/disassemble_time = 30
-			if(skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_METAL))
+			if(skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 				disassemble_time = 5
 
-			if(do_after(user, disassemble_time, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+			if(do_after(user, disassemble_time * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				playsound(src.loc, 'sound/items/Deconstruct.ogg', 25, 1)
 				user.visible_message(SPAN_NOTICE("[user] screws the M56D into the mount."),SPAN_NOTICE("You finalize the M56D heavy machine gun."))
 				var/obj/structure/machinery/m56d_hmg/G = new(src.loc) //Here comes our new turret.
@@ -306,7 +306,7 @@
 				to_chat(user, "You begin screwing [src] into place...")
 
 			var/old_anchored = anchored
-			if(do_after(user,20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD) && anchored == old_anchored)
+			if(do_after(user, 20 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD) && anchored == old_anchored)
 				anchored = !anchored
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 				if(anchored)
@@ -429,10 +429,10 @@
 			to_chat(user, "You begin disassembling [src]...")
 
 			var/disassemble_time = 30
-			if(skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_METAL))
+			if(skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 				disassemble_time = 5
 
-			if(do_after(user, disassemble_time, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+			if(do_after(user, disassemble_time * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				user.visible_message(SPAN_NOTICE(" [user] disassembles [src]! "),SPAN_NOTICE(" You disassemble [src]!"))
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 				var/obj/item/device/m56d_gun/HMG = new(src.loc) //Here we generate our disassembled mg.
@@ -444,12 +444,12 @@
 
 	if(istype(O, /obj/item/ammo_magazine/m56d)) // RELOADING DOCTOR FREEMAN.
 		var/obj/item/ammo_magazine/m56d/M = O
-		if(!skillcheck(user, SKILL_HEAVY_WEAPONS, SKILL_HEAVY_WEAPONS_TRAINED))
+		if(!skillcheck(user, SKILL_FIREARMS, SKILL_FIREARMS_DEFAULT))
 			if(rounds)
 				to_chat(user, SPAN_WARNING("You only know how to swap the ammo drum when it's empty."))
 				return
 			if(user.action_busy) return
-			if(!do_after(user, 25, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
+			if(!do_after(user, 25 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 				return
 		user.visible_message(SPAN_NOTICE(" [user] loads [src]! "),SPAN_NOTICE(" You load [src]!"))
 		playsound(loc, 'sound/weapons/gun_minigun_cocked.ogg', 25, 1)
@@ -465,7 +465,7 @@
 	if(iswelder(O))
 		if(user.action_busy)
 			return
-		
+
 		var/obj/item/tool/weldingtool/WT = O
 
 		if(health == health_max)
@@ -476,7 +476,7 @@
 			user.visible_message(SPAN_NOTICE("[user] begins repairing damage to [src]."), \
 				SPAN_NOTICE("You begin repairing the damage to [src]."))
 			playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
-			if(do_after(user, SECONDS_5, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, src))
+			if(do_after(user, SECONDS_5 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL, BUSY_ICON_FRIENDLY, src))
 				user.visible_message(SPAN_NOTICE("[user] repairs some damage on [src]."), \
 					SPAN_NOTICE("You repair [src]."))
 				update_health(-round(health_max*0.2))
@@ -671,11 +671,11 @@
 	I.flick_overlay(src, 3)
 
 /obj/structure/machinery/m56d_hmg/MouseDrop(over_object, src_location, over_location) //Drag the MG to us to man it.
-	if(!ishuman(usr)) 
+	if(!ishuman(usr))
 		return
 	var/mob/living/carbon/human/user = usr //this is us
 
-	if(!Adjacent(user)) 
+	if(!Adjacent(user))
 		return
 	src.add_fingerprint(usr)
 	if((over_object == user && (in_range(src, user) || locate(src) in user))) //Make sure its on ourselves

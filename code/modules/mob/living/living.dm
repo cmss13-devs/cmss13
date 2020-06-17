@@ -543,7 +543,7 @@
 
 			var/org_incision = (open_incision?" <span class='scanner'>Open surgical incision</span>":"")
 			var/org_advice = ""
-			if(!skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_DOCTOR))
+			if(!skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
 				switch(org.name)
 					if("head")
 						fracture_info = ""

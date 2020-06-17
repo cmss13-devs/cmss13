@@ -32,7 +32,7 @@ var/global/list/faction_phoron_stored_list = list(
 			return
 
 		user.visible_message(SPAN_NOTICE("[user] starts setting up [I]."), SPAN_NOTICE("You start setting up [I]."))
-		if(!do_after(user, 40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, src))
+		if(!do_after(user, 40 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, src))
 			return
 		user.visible_message(SPAN_NOTICE("[user] assembles [I]."), SPAN_NOTICE("You assemble [I]."))
 
@@ -88,7 +88,7 @@ var/global/list/faction_phoron_stored_list = list(
 	if(iscrowbar(O))
 		user.visible_message(SPAN_NOTICE("[user] begins pulling apart [src]."), SPAN_NOTICE("You begin pulling apart [src]."))
 
-		if(!do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
+		if(!do_after(user, 20 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
 			return
 
 		user.visible_message(SPAN_NOTICE("[user] pulls [src] apart."), SPAN_NOTICE("You pull [src] apart."))
@@ -110,7 +110,7 @@ var/global/list/faction_phoron_stored_list = list(
 
 		if(WT.remove_fuel(0, user))
 			user.visible_message(SPAN_NOTICE("[user] begins repairing [src]."), SPAN_NOTICE("You begin repairing [src]."))
-			if(!do_after(user, 40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, src))
+			if(!do_after(user, 40 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, src))
 				return
 			user.visible_message(SPAN_NOTICE("[user] repairs [src]."), SPAN_NOTICE("You repair [src]."))
 

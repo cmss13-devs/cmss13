@@ -8,7 +8,7 @@
 
 //Used for logging people entering cryosleep and important items they are carrying.
 var/global/list/frozen_crew = list()
-var/global/list/frozen_items = list(SQUAD_NAME_1 = list(), SQUAD_NAME_2 = list(), SQUAD_NAME_3 = list(), SQUAD_NAME_4 = list(), "MP" = list(), "REQ" = list(), "Eng" = list(), "Med" = list())
+var/global/list/frozen_items = list(SQUAD_NAME_1 = list(), SQUAD_NAME_2 = list(), SQUAD_NAME_3 = list(), SQUAD_NAME_4 = list(), "MP" = list(), "REQ" = list(), "Eng" = list(), "Med" = list(), "Yautja" = list())
 
 //Main cryopod console.
 
@@ -44,6 +44,9 @@ var/global/list/frozen_items = list(SQUAD_NAME_1 = list(), SQUAD_NAME_2 = list()
 
 /obj/structure/machinery/computer/cryopod/delta
 	cryotype = SQUAD_NAME_4
+
+/obj/structure/machinery/computer/cryopod/yautja
+	cryotype = "Yautja"
 
 /obj/structure/machinery/computer/cryopod/attack_ai()
 	src.attack_hand()
@@ -215,6 +218,8 @@ var/global/list/frozen_items = list(SQUAD_NAME_1 = list(), SQUAD_NAME_2 = list()
 						dept_console = frozen_items["Med"]
 					if("Ordnance Techician","Chief Engineer")
 						dept_console = frozen_items["Eng"]
+					if("Predator")
+						dept_console = frozen_items["Yautja"]
 
 			var/list/deleteempty = list(/obj/item/storage/backpack/marine/satchel)
 
@@ -236,7 +241,7 @@ var/global/list/frozen_items = list(SQUAD_NAME_1 = list(), SQUAD_NAME_2 = list()
 
 			item_loop:
 				for(var/obj/item/W in items)
-					if((W.flags_inventory & CANTSTRIP) || (W.flags_item & NODROP)) //We don't keep donor items and undroppable/unremovable items
+					if(((W.flags_inventory & CANTSTRIP) || (W.flags_item & NODROP)) && !isYautja(occupant)) //We don't keep donor items and undroppable/unremovable items
 						if(istype(W, /obj/item/clothing/suit/storage))
 							var/obj/item/clothing/suit/storage/SS = W
 							for(var/obj/item/I in SS.pockets) //But we keep stuff inside them
@@ -364,8 +369,8 @@ var/global/list/frozen_items = list(SQUAD_NAME_1 = list(), SQUAD_NAME_2 = list()
 
 			//Make an announcement and log the person entering storage.
 			frozen_crew += "[occupant.real_name]"
-
-			announce.autosay("[occupant.real_name] has entered long-term hypersleep storage. Belongings moved to hypersleep inventory.", "Hypersleep Storage System")
+			if(!isYautja(occupant))
+				announce.autosay("[occupant.real_name] has entered long-term hypersleep storage. Belongings moved to hypersleep inventory.", "Hypersleep Storage System")
 			visible_message(SPAN_NOTICE("[src] hums and hisses as it moves [occupant.real_name] into hypersleep storage."))
 
 			//Delete the mob.

@@ -290,11 +290,6 @@
 /obj/item/fuelCell,
 /turf/open/ice,
 /area/strata/ag/interior/outpost/gen/bball/nest)
-"aaW" = (
-/obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/doctor,
-/turf/open/snow/layer0,
-/area/strata/ag/interior/paths/cabin_area/cave)
 "aaX" = (
 /obj/structure/table/reinforced/prison,
 /obj/item/storage/surgical_tray,
@@ -2305,13 +2300,6 @@
 	icon_state = "multi_tiles"
 	},
 /area/strata/ag/interior/dorms/hive)
-"agd" = (
-/obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/scientist,
-/turf/open/floor/strata{
-	icon_state = "multi_tiles"
-	},
-/area/strata/ag/interior/dorms/hive)
 "agf" = (
 /obj/structure/bedsheetbin,
 /turf/open/floor/strata{
@@ -2462,13 +2450,6 @@
 	icon_state = "floor3"
 	},
 /area/strata/ag/interior/dorms/flight_control)
-"agA" = (
-/obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/doctor,
-/turf/open/floor/strata{
-	icon_state = "multi_tiles"
-	},
-/area/strata/ag/interior/dorms/hive)
 "agB" = (
 /obj/effect/alien/weeds/node,
 /obj/structure/pipes/vents/pump{
@@ -2531,13 +2512,6 @@
 /obj/structure/pipes/standard/manifold/hidden/cyan{
 	dir = 4
 	},
-/turf/open/floor/strata{
-	icon_state = "multi_tiles"
-	},
-/area/strata/ag/interior/dorms/hive)
-"agH" = (
-/obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/scientist,
 /turf/open/floor/strata{
 	icon_state = "multi_tiles"
 	},
@@ -3738,13 +3712,6 @@
 	tag = "icon-xgib4"
 	},
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/floor/strata{
-	icon_state = "multi_tiles"
-	},
-/area/strata/ag/interior/dorms/hive)
-"ajN" = (
-/obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/security,
 /turf/open/floor/strata{
 	icon_state = "multi_tiles"
 	},
@@ -7356,6 +7323,7 @@
 /obj/structure/machinery/camera/autoname{
 	dir = 4
 	},
+/obj/structure/machinery/recharge_station,
 /turf/open/asphalt/cement,
 /area/strata/ag/interior/engi_shed/three)
 "atu" = (
@@ -15464,11 +15432,6 @@
 	icon_state = "floor3"
 	},
 /area/strata/ag/interior/nearlz1)
-"aOZ" = (
-/obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/scientist,
-/turf/open/snow/layer0,
-/area/strata/ag/interior/paths/cabin_area/cave)
 "aPa" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/strata,
@@ -19196,16 +19159,6 @@
 	icon_state = "fake_wood"
 	},
 /area/strata/ag/interior/outpost/gen/foyer)
-"baX" = (
-/obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/scientist,
-/turf/open/snow/layer0,
-/area/strata/ag/interior/paths/cabin_area/cave)
-"baY" = (
-/obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/scientist,
-/turf/open/snow/layer0,
-/area/strata/ag/interior/paths/cabin_area/cave)
 "bbb" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -24532,6 +24485,7 @@
 /area/strata/ag/interior/outpost/med/lounge)
 "bAS" = (
 /obj/effect/decal/cleanable/blood/oil,
+/obj/structure/machinery/recharge_station,
 /turf/open/floor/strata{
 	dir = 4;
 	icon_state = "floor3"
@@ -24684,13 +24638,6 @@
 	icon_state = "multi_tiles"
 	},
 /area/strata/ag/interior/outpost/med/reception)
-"bCa" = (
-/obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/security,
-/turf/open/floor/strata{
-	icon_state = "multi_tiles"
-	},
-/area/strata/ag/interior/dorms/hive)
 "bCd" = (
 /obj/structure/platform/strata{
 	dir = 1
@@ -25125,11 +25072,6 @@
 /area/strata/ag/exterior/marsh/water)
 "bEl" = (
 /obj/effect/decal/cleanable/blood,
-/turf/open/snow/layer0,
-/area/strata/ag/exterior/paths/cabin_area)
-"bEn" = (
-/obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/corpsespawner/security,
 /turf/open/snow/layer0,
 /area/strata/ag/exterior/paths/cabin_area)
 "bEq" = (
@@ -26443,13 +26385,6 @@
 	icon_state = "multi_tiles"
 	},
 /area/strata/ug/interior/jungle/deep/structures/engi)
-"bLL" = (
-/obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/doctor,
-/turf/open/floor/strata{
-	icon_state = "multi_tiles"
-	},
-/area/strata/ag/interior/dorms/hive)
 "bLM" = (
 /obj/structure/barricade/snow{
 	dir = 1
@@ -27026,13 +26961,6 @@
 	icon_state = "cyan2"
 	},
 /area/strata/ag/interior/dorms/canteen)
-"bPw" = (
-/obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/scientist,
-/turf/open/floor/strata{
-	icon_state = "multi_tiles"
-	},
-/area/strata/ag/interior/dorms/hive)
 "bPy" = (
 /obj/structure/window/framed/strata,
 /turf/open/floor/strata{
@@ -37691,6 +37619,12 @@
 	},
 /turf/open/snow/layer0,
 /area/strata/ag/exterior/marsh/center)
+"hYl" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/landmark/objective_landmark/medium,
+/obj/structure/machinery/recharge_station,
+/turf/open/asphalt/cement,
+/area/strata/ag/interior/engi_shed/five)
 "hYu" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 9
@@ -42292,6 +42226,7 @@
 /area/strata/ag/exterior/paths/southresearch)
 "nQk" = (
 /obj/effect/decal/cleanable/blood/oil,
+/obj/structure/machinery/recharge_station,
 /turf/open/floor/strata{
 	dir = 4;
 	icon_state = "floor3"
@@ -44753,6 +44688,7 @@
 /area/strata/ug/interior/outpost/jung/dorms/med2)
 "qTV" = (
 /obj/effect/decal/cleanable/blood/oil,
+/obj/structure/machinery/recharge_station,
 /turf/open/floor/strata{
 	dir = 4;
 	icon_state = "floor3"
@@ -46473,13 +46409,6 @@
 	icon_state = "cement9"
 	},
 /area/strata/ug/interior/jungle/platform/south)
-"taZ" = (
-/obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/scientist,
-/turf/open/floor/strata{
-	icon_state = "multi_tiles"
-	},
-/area/strata/ag/interior/dorms/hive)
 "tcR" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/gm/grass/weedable,
@@ -49631,6 +49560,12 @@
 	icon_state = "grassdirt_corner2"
 	},
 /area/strata/ug/interior/jungle/platform/east/scrub)
+"xaR" = (
+/obj/structure/machinery/recharge_station,
+/turf/open/floor/strata{
+	icon_state = "floor3"
+	},
+/area/strata/ag/interior/engi_shed/seven)
 "xbF" = (
 /obj/structure/platform/strata{
 	dir = 1
@@ -49879,6 +49814,13 @@
 	icon_state = "multi_tiles"
 	},
 /area/strata/ag/exterior/research_decks/south)
+"xqT" = (
+/obj/structure/machinery/recharge_station,
+/turf/open/floor/strata{
+	dir = 4;
+	icon_state = "floor3"
+	},
+/area/strata/ag/interior/engi_shed/four)
 "xrx" = (
 /obj/structure/stairs{
 	dir = 4
@@ -55106,11 +55048,11 @@ aac
 clp
 cnO
 bjY
-agA
-bLL
+aeG
+aeG
 cmB
 bjY
-bCa
+aiE
 exO
 cnO
 clp
@@ -55690,7 +55632,7 @@ cnO
 cnO
 aiD
 bjY
-ajN
+aiE
 cnO
 clp
 bwl
@@ -55877,9 +55819,9 @@ aac
 aac
 clp
 afB
-taZ
+agb
 agD
-bPw
+agb
 cnO
 aiE
 bjY
@@ -56070,9 +56012,9 @@ aac
 aac
 clp
 afC
-agd
+agb
 agE
-agH
+agb
 cnO
 coc
 ajl
@@ -57036,7 +56978,7 @@ aeG
 cnO
 afF
 clp
-agH
+agb
 aht
 cnO
 cfr
@@ -57417,13 +57359,13 @@ aac
 aac
 clp
 cnO
-bCa
-bCa
+aiE
+aiE
 cnO
 afE
 clp
 agI
-taZ
+agb
 cnO
 wGx
 bPu
@@ -66174,7 +66116,7 @@ tSy
 xdr
 elE
 hPK
-fEW
+hYl
 xdr
 aac
 aac
@@ -66331,7 +66273,7 @@ aGg
 aIO
 aGg
 aLB
-aGg
+xqT
 aNT
 cez
 aQK
@@ -75799,7 +75741,7 @@ aWU
 aYR
 aYM
 bdF
-bfY
+xaR
 bdH
 bdH
 bdH
@@ -77667,7 +77609,7 @@ gMa
 gMa
 aLK
 bke
-aaW
+aaU
 aLK
 cdo
 bpm
@@ -78239,7 +78181,7 @@ aac
 aac
 aac
 aLK
-baX
+aNp
 aNj
 beb
 aaI
@@ -78432,7 +78374,7 @@ aac
 aac
 aac
 aLK
-baY
+aNp
 aNk
 beb
 beb
@@ -78820,7 +78762,7 @@ aac
 aac
 aLK
 aNp
-aOZ
+aNp
 aLK
 aLK
 gMa
@@ -80383,7 +80325,7 @@ acX
 acX
 bdM
 byQ
-bEn
+bvS
 eVW
 adK
 bBI

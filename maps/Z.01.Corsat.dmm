@@ -5186,6 +5186,7 @@
 	},
 /area/corsat/gamma/sigmaremote)
 "anW" = (
+/obj/structure/machinery/recharge_station,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "brown"
@@ -15307,6 +15308,7 @@
 	},
 /area/corsat/gamma/hangar)
 "aOs" = (
+/obj/structure/machinery/recharge_station,
 /turf/open/floor/corsat{
 	dir = 5;
 	icon_state = "red"
@@ -24992,6 +24994,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
+/obj/structure/machinery/recharge_station,
 /turf/open/floor/corsat{
 	dir = 9;
 	icon_state = "darkgreen"

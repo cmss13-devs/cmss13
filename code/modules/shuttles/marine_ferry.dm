@@ -42,6 +42,11 @@
 	var/list/main_doors = list() //Used to check failure
 	var/fail_flavortext = "<span class='warning'>Could not launch the dropship due to blockage in the rear door.</span>"
 
+	// The ship section of the almayer that the dropship is aiming to crash into. Random if null
+	var/crash_target_section = null
+	// Used during the jump crash to announce if the AA system threw the dropship off course
+	var/true_crash_target_section = null
+
 
 //Full documentation 650-700 lines down by the copy for elevators
 /datum/shuttle/ferry/marine/preflight_checks()
@@ -334,13 +339,21 @@
 	var/turf/T_src = pick(locs_dock)
 	var/src_rot = locs_dock[T_src]
 	var/turf/T_int = pick(locs_move)//int stands for interim
-	var/turf/T_trg = pick(shuttle_controller.locs_crash)
+
+
+	var/target_section = crash_target_section
+	if(isnull(target_section))
+		var/list/potential_crash_sections = almayer_ship_sections.Copy()
+		potential_crash_sections -= almayer_aa_cannon.protecting_section
+		target_section = pick(potential_crash_sections)
+
+	var/turf/T_trg = pick(shuttle_controller.locs_crash[target_section])
 
 	for(var/X in equipments)
 		var/obj/structure/dropship_equipment/E = X
 		if(istype(E, /obj/structure/dropship_equipment/adv_comp/docking))
 			var/list/crash_turfs = list()
-			for(var/turf/TU in shuttle_controller.locs_crash)
+			for(var/turf/TU in shuttle_controller.locs_crash[target_section])
 				if(istype(get_area(TU), /area/almayer/hallways/hangar))
 					crash_turfs += TU
 			if(crash_turfs.len) T_trg = pick(crash_turfs)
@@ -350,7 +363,7 @@
 	if(!istype(T_src) || !istype(T_int) || !istype(T_trg))
 		message_admins(SPAN_WARNING("Error with shuttles: Reference turfs not correctly instantiated. Code: MSD04.\n WARNING: DROPSHIP LAUNCH WILL FAIL"))
 
-	shuttle_controller.locs_crash -= T_trg
+	shuttle_controller.locs_crash[target_section] -= T_trg
 
 	//END: Heavy lifting backend
 
@@ -431,8 +444,25 @@
 		qdel(hive.spawn_pool)
 
 	in_transit_time_left = travel_time
-	while(in_transit_time_left>0)
-		in_transit_time_left-=10
+	while(in_transit_time_left > 0)
+		// At halftime, we announce whether or not the AA forced the dropship to divert
+		// The rounding is because transit time is decreased by 10 each loop. Travel time, however, might not be a multiple of 10
+		if(in_transit_time_left == round(travel_time / 2, 10) && true_crash_target_section != crash_target_section)
+			marine_announcement("A hostile aircraft on course for the [true_crash_target_section] has been successfully deterred.", "IX-50 MGAD System")
+
+			var/area/shuttle_area
+			for(var/turf/T in turfs_int)
+				if(!shuttle_area)
+					shuttle_area = get_area(T)
+
+				for(var/mob/M in T)
+					to_chat(M, SPAN_DANGER("The ship jostles violently as explosions rock the ship!"))
+					to_chat(M, SPAN_DANGER("You feel the ship turning sharply as it adjusts its course!"))
+					shake_camera(M, 60, 2)
+
+			playsound_area(shuttle_area, 'sound/effects/antiair_explosions.ogg')
+
+		in_transit_time_left -= 10
 		sleep(10)
 
 	in_transit_time_left = 0

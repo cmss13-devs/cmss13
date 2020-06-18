@@ -395,30 +395,6 @@
 	layer = ABOVE_TURF_LAYER
 
 
-
-
-/obj/structure/prop/almayer/anti_air_cannon
-	name = "\improper Anti-air Cannon"
-	desc = "An anti-air cannon for shooting spaceships. It looks broken."
-	icon = 'icons/effects/128x128.dmi'
-	icon_state = "anti_air_cannon"
-	density = 1
-	anchored = 1
-	layer = LADDER_LAYER
-	bound_width = 128
-	bound_height = 64
-	bound_y = 64
-	unslashable = TRUE
-	unacidable = TRUE
-
-
-/obj/structure/prop/almayer/anti_air_cannon/ex_act()
-	return
-
-/obj/structure/prop/almayer/anti_air_cannon/bullet_act()
-	return
-
-
 /obj/structure/prop/almayer/cannon_cables
 	name = "\improper Cannon cables"
 	desc = "Some large cables."

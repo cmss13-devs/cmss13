@@ -198,33 +198,64 @@
 
 			//Alert code is the Queen is the one calling it, the shuttle is on the ground and the shuttle still allows alerts
 			if(isXenoQueen(M) && shuttle.location == 1 && shuttle.alerts_allowed && onboard && !shuttle.iselevator)
+				// Allow the queen to choose the ship section to crash into
+				var/crash_target = input("Choose a ship section to target","Hijack",null) as null|anything in almayer_ship_sections + list("Cancel")
+				if(crash_target == "Cancel")
+					return
+
 				var/i = alert("Warning: Once you launch the shuttle you will not be able to bring it back. Confirm anyways?", "WARNING", "Yes", "No")
-				if(shuttle.moving_status != SHUTTLE_IDLE || shuttle.locked || shuttle.location != 1 || !shuttle.alerts_allowed || !shuttle.queen_locked || shuttle.recharging) return
-				if(istype(shuttle, /datum/shuttle/ferry/marine) && src.z == 1 && i == "Yes") //Shit's about to kick off now
+				if(i == "No")
+					return
+
+				if(shuttle.moving_status != SHUTTLE_IDLE || shuttle.locked || shuttle.location != 1 || !shuttle.alerts_allowed || !shuttle.queen_locked || shuttle.recharging)
+					return
+
+				//Shit's about to kick off now
+				if(istype(shuttle, /datum/shuttle/ferry/marine) && src.z == 1)
 					var/datum/shuttle/ferry/marine/shuttle1 = shuttle
+
+					shuttle1.true_crash_target_section = crash_target
+
+					// If the AA is protecting the target area, pick any other section to crash into at random
+					if(almayer_aa_cannon.protecting_section == crash_target)
+						var/list/potential_crash_sections = almayer_ship_sections.Copy()
+						potential_crash_sections -= almayer_aa_cannon.protecting_section
+						crash_target = pick(potential_crash_sections)
+
+					shuttle1.crash_target_section = crash_target
 					shuttle1.transit_gun_mission = 0
 					shuttle1.launch_crash()
+
 					if(round_statistics)
 						round_statistics.track_hijack()
+
 					marine_announcement("Unscheduled dropship departure detected from operational area. Hijack likely. Shutting down autopilot.", "Dropship Alert", 'sound/AI/hijack.ogg')
 					shuttle.alerts_allowed--
+
 					to_chat(M, SPAN_DANGER("A loud alarm erupts from [src]! The fleshy hosts must know that you can access it!"))
-					var/mob/living/carbon/Xenomorph/Queen/Q = M // typechecked above
+					// typechecked above
+					var/mob/living/carbon/Xenomorph/Queen/Q = M
 					xeno_message(SPAN_XENOANNOUNCE("The Queen has commanded the metal bird to depart for the metal hive in the sky! Rejoice!"),3,Q.hivenumber)
+
 					// Notify the yautja too so they stop the hunt
 					message_all_yautja("The serpent Queen has commanded the landing shuttle to depart.")
 					playsound(src, 'sound/misc/queen_alarm.ogg')
+
 					M.count_niche_stat(STATISTICS_NICHE_FLIGHT)
+
 					if(Q.hive)
 						Q.hive.remove_all_special_structures()
+
 					if(bomb_set)
 						for(var/obj/structure/machinery/nuclearbomb/bomb in world)
 							bomb.end_round = FALSE
+
 					if(almayer_orbital_cannon)
 						almayer_orbital_cannon.is_disabled = TRUE
 						add_timer(CALLBACK(almayer_orbital_cannon, .obj/structure/orbital_cannon/proc/enable), MINUTES_10, TIMER_UNIQUE)
-				else if(i == "No")
-					return
+
+					if(almayer_aa_cannon)
+						almayer_aa_cannon.is_disabled = TRUE
 				else
 					if(shuttle.require_link)
 						update_use_power(4080)

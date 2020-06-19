@@ -221,8 +221,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		if(M.heat_source)
 			light(SPAN_NOTICE("[user] lights their [name] with their [W]."))
 
-	else if(istype(W, /obj/item/weapon/energy/sword))
-		var/obj/item/weapon/energy/sword/S = W
+	else if(istype(W, /obj/item/weapon/melee/energy/sword))
+		var/obj/item/weapon/melee/energy/sword/S = W
 		if(S.active)
 			light(SPAN_WARNING("[user] swings their [W], barely missing their nose. They light their [name] in the process."))
 
@@ -447,8 +447,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		if(M.heat_source)
 			light(SPAN_NOTICE("[user] lights their [name] with their [W]."))
 
-	else if(istype(W, /obj/item/weapon/energy/sword))
-		var/obj/item/weapon/energy/sword/S = W
+	else if(istype(W, /obj/item/weapon/melee/energy/sword))
+		var/obj/item/weapon/melee/energy/sword/S = W
 		if(S.active)
 			light(SPAN_WARNING("[user] swings their [W], barely missing their nose. They light their [name] in the process."))
 

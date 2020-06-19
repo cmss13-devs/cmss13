@@ -4045,8 +4045,8 @@
 /area/prison/research/secret)
 "aja" = (
 /obj/structure/rack,
-/obj/item/weapon/baton,
-/obj/item/weapon/baton,
+/obj/item/weapon/melee/baton,
+/obj/item/weapon/melee/baton,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison,
 /area/prison/research/secret)
@@ -16023,7 +16023,7 @@
 /obj/structure/closet,
 /obj/item/handcuffs,
 /obj/item/clothing/mask/muzzle,
-/obj/item/weapon/chainofcommand,
+/obj/item/weapon/melee/chainofcommand,
 /turf/open/floor/prison{
 	dir = 9;
 	icon_state = "blue"
@@ -18017,7 +18017,7 @@
 /area/prison/command/secretary_office)
 "aRX" = (
 /obj/structure/rack,
-/obj/item/weapon/katana/replica,
+/obj/item/weapon/melee/katana/replica,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/wood,
 /area/prison/command/office)
@@ -40853,7 +40853,7 @@
 /area/prison/cellblock/highsec/south/south)
 "bYD" = (
 /obj/structure/rack,
-/obj/item/weapon/telebaton,
+/obj/item/weapon/melee/telebaton,
 /obj/effect/landmark/item_pool_spawner/prison_lock,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison,
@@ -43763,8 +43763,8 @@
 /area/prison/security/head)
 "chb" = (
 /obj/structure/rack,
-/obj/item/weapon/classic_baton,
-/obj/item/weapon/classic_baton,
+/obj/item/weapon/melee/classic_baton,
+/obj/item/weapon/melee/classic_baton,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison,
 /area/prison/security/armory/riot)

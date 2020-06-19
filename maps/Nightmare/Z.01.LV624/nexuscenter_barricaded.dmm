@@ -109,7 +109,7 @@
 	},
 /area/lv624/lazarus/main_hall)
 "ap" = (
-/obj/item/weapon/twohanded/fireaxe,
+/obj/item/weapon/melee/twohanded/fireaxe,
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
 /turf/open/floor{

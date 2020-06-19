@@ -142,7 +142,7 @@
 	H.equip_to_slot_or_del(new backItem, WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full, WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full, WEAR_L_STORE)
-	H.equip_to_slot_or_del(new /obj/item/weapon/twohanded/fireaxe, WEAR_L_HAND)
+	H.equip_to_slot_or_del(new /obj/item/weapon/melee/twohanded/fireaxe, WEAR_L_HAND)
 
 	add_random_survivor_equipment(H)
 

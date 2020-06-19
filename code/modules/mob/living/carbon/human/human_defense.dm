@@ -88,8 +88,8 @@ Contains most of the procs that are called when a mob is attacked by something
 
 /mob/living/carbon/human/proc/check_shields(var/damage = 0, var/attack_text = "the attack", var/combistick=0)
 	if(l_hand && istype(l_hand, /obj/item/weapon))//Current base is the prob(50-d/3)
-		if(combistick && istype(l_hand,/obj/item/weapon/combistick) && prob(66))
-			var/obj/item/weapon/combistick/C = l_hand
+		if(combistick && istype(l_hand,/obj/item/weapon/melee/combistick) && prob(66))
+			var/obj/item/weapon/melee/combistick/C = l_hand
 			if(C.on)
 				return TRUE
 
@@ -113,8 +113,8 @@ Contains most of the procs that are called when a mob is attacked by something
 			return TRUE
 
 	if(r_hand && istype(r_hand, /obj/item/weapon))
-		if(combistick && istype(r_hand,/obj/item/weapon/combistick) && prob(66))
-			var/obj/item/weapon/combistick/C = r_hand
+		if(combistick && istype(r_hand,/obj/item/weapon/melee/combistick) && prob(66))
+			var/obj/item/weapon/melee/combistick/C = r_hand
 			if(C.on)
 				return TRUE
 				

@@ -9392,7 +9392,7 @@
 /area/desert_dam/interior/lab_northeast/east_lab_RND)
 "ayC" = (
 /obj/structure/table,
-/obj/item/weapon/harpoon/yautja{
+/obj/item/weapon/melee/harpoon/yautja{
 	name = "Alien Harpoon"
 	},
 /turf/open/floor{
@@ -10699,7 +10699,7 @@
 /area/desert_dam/interior/caves/east_caves)
 "aBV" = (
 /obj/structure/table,
-/obj/item/weapon/harpoon,
+/obj/item/weapon/melee/harpoon,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whiteyellowfull"
@@ -21432,7 +21432,7 @@
 /area/desert_dam/interior/dam_interior/north_tunnel)
 "bfk" = (
 /obj/item/handcuffs,
-/obj/item/weapon/baton,
+/obj/item/weapon/melee/baton,
 /obj/structure/table/woodentable/fancy,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/interior/wood/alt,
@@ -23820,7 +23820,7 @@
 /area/desert_dam/interior/dam_interior/tech_storage)
 "bmo" = (
 /obj/structure/safe,
-/obj/item/weapon/katana/replica,
+/obj/item/weapon/melee/katana/replica,
 /obj/item/reagent_container/food/drinks/bottle/absinthe,
 /obj/structure/machinery/light{
 	dir = 1
@@ -59884,8 +59884,8 @@
 	},
 /area/desert_dam/building/dorms/restroom)
 "dBC" = (
-/obj/item/weapon/baseballbat/metal,
-/obj/item/weapon/baseballbat/metal{
+/obj/item/weapon/melee/baseballbat/metal,
+/obj/item/weapon/melee/baseballbat/metal{
 	pixel_x = 5
 	},
 /obj/structure/rack{
@@ -62995,7 +62995,7 @@
 /area/desert_dam/building/medical/morgue)
 "dOA" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/weapon/broken_bottle,
+/obj/item/weapon/melee/broken_bottle,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "darkbrown2"
@@ -63737,7 +63737,7 @@
 /area/desert_dam/building/medical/lobby)
 "dQE" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/weapon/broken_bottle,
+/obj/item/weapon/melee/broken_bottle,
 /turf/open/floor/prison{
 	tag = "icon-sterile_white (WEST)";
 	icon_state = "sterile_white";
@@ -64317,7 +64317,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/weapon/broken_bottle,
+/obj/item/weapon/melee/broken_bottle,
 /turf/open/floor/prison{
 	dir = 2;
 	icon_state = "whitegreen"
@@ -64705,7 +64705,7 @@
 /area/desert_dam/building/medical/virology_wing)
 "dTb" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/weapon/broken_bottle,
+/obj/item/weapon/melee/broken_bottle,
 /turf/open/floor/prison{
 	tag = "icon-whitegreenfull (SOUTHWEST)";
 	icon_state = "whitegreenfull";

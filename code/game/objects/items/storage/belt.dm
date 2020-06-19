@@ -249,7 +249,7 @@
 		/obj/item/ammo_magazine/handful,
 		/obj/item/reagent_container/food/snacks/donut/normal,
 		/obj/item/reagent_container/food/snacks/donut/jelly,
-		/obj/item/weapon/baton,
+		/obj/item/weapon/melee/baton,
 		/obj/item/weapon/gun/energy/taser,
 		/obj/item/tool/lighter/zippo,
 		/obj/item/storage/fancy/cigarettes,
@@ -283,7 +283,7 @@
 /obj/item/storage/belt/security/MP/full/Initialize()
 	new /obj/item/weapon/gun/energy/taser(src)
 	new /obj/item/device/flash(src)
-	new /obj/item/weapon/baton(src)
+	new /obj/item/weapon/melee/baton(src)
 	new /obj/item/handcuffs(src)
 	new /obj/item/reagent_container/spray/pepper(src)
 	new /obj/item/device/clue_scanner(src)
@@ -417,17 +417,17 @@
 	storage_slots = 6
 	max_w_class = SIZE_TINY
 	max_storage_space = 6
-	can_hold=list(/obj/item/weapon/throwing_knife)
+	can_hold=list(/obj/item/weapon/melee/throwing_knife)
 
 /obj/item/storage/belt/knifepouch/Initialize()
 	select_gamemode_skin(type)
 	item_state = "marinebelt" //PLACEHOLDER. Override, since it has no unique state.
-	new /obj/item/weapon/throwing_knife(src)
-	new /obj/item/weapon/throwing_knife(src)
-	new /obj/item/weapon/throwing_knife(src)
-	new /obj/item/weapon/throwing_knife(src)
-	new /obj/item/weapon/throwing_knife(src)
-	new /obj/item/weapon/throwing_knife(src)
+	new /obj/item/weapon/melee/throwing_knife(src)
+	new /obj/item/weapon/melee/throwing_knife(src)
+	new /obj/item/weapon/melee/throwing_knife(src)
+	new /obj/item/weapon/melee/throwing_knife(src)
+	new /obj/item/weapon/melee/throwing_knife(src)
+	new /obj/item/weapon/melee/throwing_knife(src)
 	..()
 
 /obj/item/storage/belt/grenade

@@ -576,14 +576,14 @@
 /obj/item/clothing/accessory/storage/knifeharness/New()
 	..()
 	hold.max_storage_space = 4
-	hold.can_hold = list("/obj/item/weapon/unathiknife",\
+	hold.can_hold = list("/obj/item/weapon/melee/unathiknife",\
 	"/obj/item/tool/kitchen/utensil/knife",\
 	"/obj/item/tool/kitchen/utensil/pknife",\
 	"/obj/item/tool/kitchen/knife",\
 	"/obj/item/tool/kitchen/knife/ritual")
 
-	new /obj/item/weapon/unathiknife(hold)
-	new /obj/item/weapon/unathiknife(hold)
+	new /obj/item/weapon/melee/unathiknife(hold)
+	new /obj/item/weapon/melee/unathiknife(hold)
 
 
 

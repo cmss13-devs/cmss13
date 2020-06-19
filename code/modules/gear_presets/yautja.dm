@@ -47,7 +47,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/chainshirt(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/yautja(H), WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/yautja(H), WEAR_EAR)
-	H.equip_to_slot_or_del(new /obj/item/weapon/yautja_knife(H), WEAR_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/weapon/melee/yautja_knife(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/device/yautja_teleporter(H),WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/yautja(H), WEAR_WAIST)
 
@@ -94,7 +94,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/chainshirt(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/yautja(H), WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/yautja(H), WEAR_EAR)
-	H.equip_to_slot_or_del(new /obj/item/weapon/yautja_knife(H), WEAR_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/weapon/melee/yautja_knife(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/device/yautja_teleporter(H),WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/yautja(H), WEAR_WAIST)
 
@@ -147,14 +147,14 @@
 	bracer.upgrades = 1
 	H.equip_to_slot_or_del((bracer), WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/yautja(H), WEAR_EAR)
-	H.equip_to_slot_or_del(new /obj/item/weapon/yautja_knife(H), WEAR_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/weapon/melee/yautja_knife(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/device/yautja_teleporter(H),WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/yautja(H), WEAR_FACE)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/yautja(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/yautja(H), WEAR_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/yautja(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/yautja(H), WEAR_WAIST)
-	H.equip_to_slot_or_del(new /obj/item/weapon/yautja_sword(H), WEAR_L_HAND)
+	H.equip_to_slot_or_del(new /obj/item/weapon/melee/yautja_sword(H), WEAR_L_HAND)
 	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/spawnergrenade/smartdisc(H), WEAR_R_HAND)
 
 /*****************************************************************************************************/
@@ -173,12 +173,12 @@
 	bracer.upgrades = 2
 	H.equip_to_slot_or_del((bracer), WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/yautja(H), WEAR_EAR)
-	H.equip_to_slot_or_del(new /obj/item/weapon/yautja_knife(H), WEAR_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/weapon/melee/yautja_knife(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/device/yautja_teleporter(H),WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/yautja(H), WEAR_FACE)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/yautja(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/yautja(H), WEAR_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/yautja/full(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/yautja(H), WEAR_WAIST)
-	H.equip_to_slot_or_del(new /obj/item/weapon/twohanded/glaive(H), WEAR_L_HAND)
+	H.equip_to_slot_or_del(new /obj/item/weapon/melee/twohanded/glaive(H), WEAR_L_HAND)
 	H.equip_to_slot_or_del(new /obj/item/weapon/gun/energy/plasmarifle(H), WEAR_R_HAND)

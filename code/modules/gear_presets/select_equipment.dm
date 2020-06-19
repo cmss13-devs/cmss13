@@ -281,8 +281,8 @@
 
 	//no guns in sidearms list, we don't want players spawning with a gun in hand.
 	var/list/rebel_sidearms = list(
-		/obj/item/weapon/twohanded/lungemine = null,
-		/obj/item/weapon/twohanded/lungemine = null,
+		/obj/item/weapon/melee/twohanded/lungemine = null,
+		/obj/item/weapon/melee/twohanded/lungemine = null,
 		/obj/item/attachable/bayonet = null,
 		/obj/item/attachable/bayonet/upp = null,
 		/obj/item/explosive/grenade/custom/ied = null,
@@ -303,10 +303,10 @@
 		/obj/item/storage/belt/utility/full = null,
 		/obj/item/storage/belt/utility/full = null,
 		/obj/item/storage/bible = null,
-		/obj/item/weapon/baseballbat = null,
-		/obj/item/weapon/baseballbat = null,
-		/obj/item/weapon/baseballbat = null,
-		/obj/item/weapon/baseballbat/metal = null,
+		/obj/item/weapon/melee/baseballbat = null,
+		/obj/item/weapon/melee/baseballbat = null,
+		/obj/item/weapon/melee/baseballbat = null,
+		/obj/item/weapon/melee/baseballbat/metal = null,
 		/obj/item/explosive/grenade/empgrenade = null,
 		/obj/item/explosive/grenade/smokebomb = null,
 		/obj/item/explosive/grenade/smokebomb = null,
@@ -320,8 +320,8 @@
 		/obj/item/clothing/glasses/night/m42_night_goggles/upp = null,
 		/obj/item/storage/box/handcuffs = null,
 		/obj/item/storage/pill_bottle/happy = null,
-		/obj/item/weapon/twohanded/fireaxe = null,
-		/obj/item/weapon/twohanded/spear = null
+		/obj/item/weapon/melee/twohanded/fireaxe = null,
+		/obj/item/weapon/melee/twohanded/spear = null
 		)
 
 	var/gunpath = sidearm? pick(rebel_sidearms) : pick(rebel_firearms)
@@ -453,7 +453,7 @@
 		if(5)
 			H.equip_to_slot_or_del(new /obj/item/stack/medical/bruise_pack(H), WEAR_R_HAND)
 		if(6)
-			H.equip_to_slot_or_del(new /obj/item/weapon/butterfly/switchblade(H), WEAR_R_HAND)
+			H.equip_to_slot_or_del(new /obj/item/weapon/melee/butterfly/switchblade(H), WEAR_R_HAND)
 		if(7)
 			H.equip_to_slot_or_del(new /obj/item/tool/kitchen/knife(H), WEAR_R_HAND)
 		if(8)

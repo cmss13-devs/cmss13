@@ -123,7 +123,7 @@
 	if(istype(I, /obj/item/stack/rods))
 		var/obj/item/stack/rods/R = I
 		if (R.use(1))
-			var/obj/item/weapon/wirerod/W = new /obj/item/weapon/wirerod
+			var/obj/item/weapon/melee/wirerod/W = new /obj/item/weapon/melee/wirerod
 
 			user.put_in_hands(W)
 			to_chat(user, SPAN_NOTICE("You wrap the cable restraint around the top of the rod."))

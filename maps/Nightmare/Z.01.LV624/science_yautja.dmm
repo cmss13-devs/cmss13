@@ -386,8 +386,8 @@
 /area/lv624/lazarus/research)
 "bb" = (
 /obj/structure/table,
-/obj/item/weapon/yautja_scythe,
-/obj/item/weapon/combistick,
+/obj/item/weapon/melee/yautja_scythe,
+/obj/item/weapon/melee/combistick,
 /turf/open/floor{
 	dir = 5;
 	icon_state = "whitepurple"
@@ -430,7 +430,7 @@
 /area/lv624/ground/jungle9)
 "bi" = (
 /obj/structure/table,
-/obj/item/weapon/yautja_knife,
+/obj/item/weapon/melee/yautja_knife,
 /turf/open/floor{
 	dir = 5;
 	icon_state = "whitepurple"

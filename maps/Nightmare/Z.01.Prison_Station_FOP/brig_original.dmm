@@ -2117,7 +2117,7 @@
 /area/prison/security/head)
 "caP" = (
 /obj/structure/rack,
-/obj/item/weapon/telebaton,
+/obj/item/weapon/melee/telebaton,
 /turf/open/floor/prison,
 /area/prison/security/head)
 "caQ" = (
@@ -3599,8 +3599,8 @@
 /area/prison/security/armory/riot)
 "cji" = (
 /obj/structure/rack,
-/obj/item/weapon/classic_baton,
-/obj/item/weapon/classic_baton,
+/obj/item/weapon/melee/classic_baton,
+/obj/item/weapon/melee/classic_baton,
 /turf/open/floor/prison,
 /area/prison/security/armory/riot)
 "cjj" = (

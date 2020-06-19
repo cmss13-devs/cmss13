@@ -4,10 +4,12 @@
 	but only these items and guns benefit from it. ~N
 	####################################################################*/
 
-/obj/item/weapon/twohanded
+/obj/item/weapon/melee/twohanded
 	var/force_wielded 	= 0
 	var/wieldsound 		= null
 	var/unwieldsound 	= null
+	force = MELEE_FORCE_NORMAL
+	force_wielded = MELEE_FORCE_VERY_STRONG
 	flags_item = TWOHANDED
 
 	update_icon()
@@ -57,7 +59,7 @@
 /obj/item/proc/place_offhand(var/mob/user,item_name)
 	to_chat(user, SPAN_NOTICE("You grab [item_name] with both hands."))
 	user.recalculate_move_delay = TRUE
-	var/obj/item/weapon/twohanded/offhand/offhand = new /obj/item/weapon/twohanded/offhand(user)
+	var/obj/item/weapon/melee/twohanded/offhand/offhand = new /obj/item/weapon/melee/twohanded/offhand(user)
 	offhand.name = "[item_name] - offhand"
 	offhand.desc = "Your second grip on the [item_name]."
 	offhand.flags_item |= WIELDED
@@ -68,26 +70,26 @@
 /obj/item/proc/remove_offhand(var/mob/user)
 	to_chat(user, SPAN_NOTICE("You are now carrying [name] with one hand."))
 	user.recalculate_move_delay = TRUE
-	var/obj/item/weapon/twohanded/offhand/offhand = user.get_inactive_hand()
+	var/obj/item/weapon/melee/twohanded/offhand/offhand = user.get_inactive_hand()
 	if(istype(offhand)) offhand.unwield(user)
 	user.update_inv_l_hand(0)
 	user.update_inv_r_hand()
 
-/obj/item/weapon/twohanded/wield(mob/user)
+/obj/item/weapon/melee/twohanded/wield(mob/user)
 	. = ..()
 	if(!.) return
 	user.recalculate_move_delay = TRUE
 	if(wieldsound) playsound(user, wieldsound, 15, 1)
 	force 		= force_wielded
 
-/obj/item/weapon/twohanded/unwield(mob/user)
+/obj/item/weapon/melee/twohanded/unwield(mob/user)
 	. = ..()
 	if(!.) return
 	user.recalculate_move_delay = TRUE
 	if(unwieldsound) playsound(user, unwieldsound, 15, 1)
 	force 	 	= initial(force)
 
-/obj/item/weapon/twohanded/attack_self(mob/user)
+/obj/item/weapon/melee/twohanded/attack_self(mob/user)
 	..()
 	if(ismonkey(user))
 		to_chat(user, SPAN_WARNING("It's too heavy for you to wield fully!"))
@@ -97,7 +99,7 @@
 	else 				wield(user)
 
 ///////////OFFHAND///////////////
-/obj/item/weapon/twohanded/offhand
+/obj/item/weapon/melee/twohanded/offhand
 	w_class = SIZE_HUGE
 	icon_state = "offhand"
 	name = "offhand"
@@ -132,44 +134,40 @@
 /*
  * Fireaxe
  */
-/obj/item/weapon/twohanded/fireaxe
+/obj/item/weapon/melee/twohanded/fireaxe
 	name = "fire axe"
 	desc = "Truly, the weapon of a madman. Who would think to fight fire with an axe?"
 	icon_state = "fireaxe"
 	item_state = "fireaxe"
-	force = 20
 	sharp = IS_SHARP_ITEM_BIG
 	edge = 1
 	w_class = SIZE_LARGE
 	flags_equip_slot = SLOT_BACK
 	flags_atom = FPRINT|CONDUCT
 	flags_item = TWOHANDED
-	force_wielded = 60
 	attack_verb = list("attacked", "chopped", "cleaved", "torn", "cut")
 
-/obj/item/weapon/twohanded/fireaxe/wield(mob/user)
+/obj/item/weapon/melee/twohanded/fireaxe/wield(mob/user)
 	. = ..()
 	if(!.) return
 	pry_capable = IS_PRY_CAPABLE_SIMPLE
 
-/obj/item/weapon/twohanded/fireaxe/unwield(mob/user)
+/obj/item/weapon/melee/twohanded/fireaxe/unwield(mob/user)
 	. = ..()
 	if(!.) return
 	pry_capable = 0
 
-/obj/item/weapon/twohanded/fireaxe/afterattack(atom/A as mob|obj|turf|area, mob/user as mob, proximity)
+/obj/item/weapon/melee/twohanded/fireaxe/afterattack(atom/A as mob|obj|turf|area, mob/user as mob, proximity)
 	if(!proximity) return
 	..()
 	if(A && (flags_item & WIELDED) && istype(A,/obj/structure/grille)) //destroys grilles in one hit
 		qdel(A)
 
-/obj/item/weapon/twohanded/sledgehammer
+/obj/item/weapon/melee/twohanded/sledgehammer
 	name = "sledgehammer"
 	desc = "a large block of metal on the end of a pole. Smashing!"
 	icon_state = "sledgehammer"
 	item_state = "sledgehammer"
-	force = 20
-	force_wielded = 60
 	sharp = null
 	edge = 0
 	w_class = SIZE_LARGE
@@ -179,7 +177,7 @@
 	attack_verb = list("smashed", "beaten", "slammed", "struck", "smashed", "battered", "cracked")
 
 //The following is copypasta and not the sledge being a child of the fireaxe due to the fire axe being able to crowbar airlocks
-/obj/item/weapon/twohanded/sledgehammer/afterattack(atom/A as mob|obj|turf|area, mob/user as mob, proximity)
+/obj/item/weapon/melee/twohanded/sledgehammer/afterattack(atom/A as mob|obj|turf|area, mob/user as mob, proximity)
 	if(!proximity) return
 	..()
 	if(A && (flags_item & WIELDED) && istype(A,/obj/structure/grille)) //destroys grilles in one hit
@@ -188,7 +186,7 @@
 /*
  * Double-Bladed Energy Swords - Cheridan
  */
-/obj/item/weapon/twohanded/dualsaber
+/obj/item/weapon/melee/twohanded/dualsaber
 	name = "double-bladed energy sword"
 	desc = "Handle with care."
 	icon_state = "dualsaber"
@@ -208,7 +206,7 @@
 	sharp = IS_SHARP_ITEM_BIG
 	edge = 1
 
-/obj/item/weapon/twohanded/dualsaber/attack(target as mob, mob/living/user as mob)
+/obj/item/weapon/melee/twohanded/dualsaber/attack(target as mob, mob/living/user as mob)
 	..()
 	if((flags_item & WIELDED) && prob(50))
 		spawn(0)
@@ -216,28 +214,26 @@
 				user.dir = i
 				sleep(1)
 
-/obj/item/weapon/twohanded/dualsaber/IsShield()
+/obj/item/weapon/melee/twohanded/dualsaber/IsShield()
 	if(flags_item & WIELDED) return 1
 
-/obj/item/weapon/twohanded/dualsaber/wield(mob/user)
+/obj/item/weapon/melee/twohanded/dualsaber/wield(mob/user)
 	. = ..()
 	if(!.) return
 	icon_state += "_w"
 
-/obj/item/weapon/twohanded/dualsaber/unwield(mob/user)
+/obj/item/weapon/melee/twohanded/dualsaber/unwield(mob/user)
 	. = ..()
 	if(!.) return
 	icon_state 	= copytext(icon_state,1,-2)
 
-/obj/item/weapon/twohanded/spear
+/obj/item/weapon/melee/twohanded/spear
 	name = "spear"
 	desc = "A haphazardly-constructed yet still deadly weapon of ancient design."
 	icon_state = "spearglass"
 	item_state = "spearglass"
-	force = 20
 	w_class = SIZE_LARGE
 	flags_equip_slot = SLOT_BACK
-	force_wielded = 45
 	throwforce = 35
 	throw_speed = SPEED_VERY_FAST
 	edge = 1
@@ -248,7 +244,7 @@
 
 
 
-/obj/item/weapon/twohanded/glaive
+/obj/item/weapon/melee/twohanded/glaive
 	name = "war glaive"
 	icon = 'icons/obj/items/weapons/predator.dmi'
 	icon_state = "glaive"
@@ -270,20 +266,20 @@
 	unacidable = TRUE
 	attack_speed = 12 //Default is 7.
 
-/obj/item/weapon/twohanded/glaive/Dispose()
+/obj/item/weapon/melee/twohanded/glaive/Dispose()
 	remove_from_missing_pred_gear(src)
 	..()
 
-/obj/item/weapon/twohanded/glaive/dropped(mob/living/user)
+/obj/item/weapon/melee/twohanded/glaive/dropped(mob/living/user)
 	add_to_missing_pred_gear(src)
 	..()
 
-/obj/item/weapon/twohanded/glaive/pickup(mob/living/user)
+/obj/item/weapon/melee/twohanded/glaive/pickup(mob/living/user)
 	if(isYautja(user))
 		remove_from_missing_pred_gear(src)
 	..()
 
-/obj/item/weapon/two_handed/glaive/attack(mob/living/target, mob/living/carbon/human/user)
+/obj/item/weapon/melee/two_handed/glaive/attack(mob/living/target, mob/living/carbon/human/user)
 	. = ..()
 	if(!.)
 		return
@@ -291,19 +287,18 @@
 		var/mob/living/carbon/Xenomorph/X = target
 		X.interference = 30
 
-/obj/item/weapon/twohanded/glaive/damaged
+/obj/item/weapon/melee/twohanded/glaive/damaged
 	name = "war glaive"
 	desc = "A huge, powerful blade on a metallic pole. Mysterious writing is carved into the weapon. This one is ancient and has suffered serious acid damage, making it near-useless."
-	force = 18
-	force_wielded = 28
+	force = MELEE_FORCE_NORMAL
+	force_wielded = MELEE_FORCE_STRONG
 
-
-/obj/item/weapon/twohanded/lungemine
+/obj/item/weapon/melee/twohanded/lungemine
 	name = "lunge mine"
 	icon_state = "lungemine"
 	item_state = "lungemine"
 	desc = "A crude but intimidatingly bulky shaped explosive charge, fixed to the end of a pole. To use it, one must grasp it firmly in both hands, and thrust the prongs of the shaped charge into the target. That the resulting explosion occurs directly in front of the user's face was not an apparent concern of the designer. A true hero's weapon."
-	force = 15
+	force = MELEE_FORCE_WEAK
 	force_wielded = 1
 	attack_verb = list("whacked")
 	hitsound = "swing_hit"
@@ -314,28 +309,28 @@
 	var/unwielded_attack_verb = list("whacked")
 	var/unwielded_hitsound = "swing_hit"
 
-/obj/item/weapon/twohanded/lungemine/wield(mob/user)
+/obj/item/weapon/melee/twohanded/lungemine/wield(mob/user)
 	. = ..()
 	if(!.) return
 	attack_verb = wielded_attack_verb
 	hitsound = wielded_hitsound
 
-/obj/item/weapon/twohanded/lungemine/unwield(mob/user)
+/obj/item/weapon/melee/twohanded/lungemine/unwield(mob/user)
 	. = ..()
 	if(!.) return
 	attack_verb = unwielded_attack_verb
 	hitsound = unwielded_hitsound
 
-/obj/item/weapon/twohanded/lungemine/attack(mob/living/M, mob/living/user)
+/obj/item/weapon/melee/twohanded/lungemine/attack(mob/living/M, mob/living/user)
 	. = ..()
 	detonate_check(M, user)
 
-/obj/item/weapon/twohanded/lungemine/afterattack(atom/target, mob/user, proximity_flag)
+/obj/item/weapon/melee/twohanded/lungemine/afterattack(atom/target, mob/user, proximity_flag)
 	. = ..()
 	if(proximity_flag)
 		detonate_check(target, user)
 
-/obj/item/weapon/twohanded/lungemine/proc/detonate_check(atom/target, mob/user)
+/obj/item/weapon/melee/twohanded/lungemine/proc/detonate_check(atom/target, mob/user)
 	if(detonating) //don't detonate twice
 		return
 

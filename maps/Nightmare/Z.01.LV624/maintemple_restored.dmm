@@ -45,7 +45,7 @@
 /area/lv624/ground/caves/east1)
 "h" = (
 /obj/structure/table,
-/obj/item/weapon/harpoon,
+/obj/item/weapon/melee/harpoon,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whiteyellowfull"
@@ -104,7 +104,7 @@
 /area/lv624/ground/sand6)
 "q" = (
 /obj/structure/table,
-/obj/item/weapon/harpoon/yautja{
+/obj/item/weapon/melee/harpoon/yautja{
 	name = "Alien Harpoon"
 	},
 /turf/open/floor{
@@ -151,7 +151,7 @@
 /area/lv624/ground/sand6)
 "v" = (
 /obj/structure/table,
-/obj/item/weapon/harpoon/yautja{
+/obj/item/weapon/melee/harpoon/yautja{
 	name = "Alien Harpoon"
 	},
 /obj/effect/landmark{

@@ -71,7 +71,7 @@
 		src.modules += new /obj/item/tool/crowbar(src)
 		src.modules += new /obj/item/device/healthanalyzer(src)
 		src.modules += new /obj/item/robot/stun(src)
-		src.emag = new /obj/item/weapon/energy/sword(src)
+		src.emag = new /obj/item/weapon/melee/energy/sword(src)
 		return
 
 /obj/item/circuitboard/robot_module/surgeon
@@ -312,7 +312,7 @@
 /obj/item/circuitboard/robot_module/syndicate/Initialize()
 	src.modules += new /obj/item/device/flashlight(src)
 	src.modules += new /obj/item/device/flash(src)
-	src.modules += new /obj/item/weapon/energy/sword(src)
+	src.modules += new /obj/item/weapon/melee/energy/sword(src)
 //	src.modules += new /obj/item/weapon/gun/energy/pulse_rifle/destroyer(src)
 	return
 

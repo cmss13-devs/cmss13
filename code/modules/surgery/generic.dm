@@ -66,7 +66,7 @@
 	/obj/item/tool/surgery/scalpel/laser3 = 95, \
 	/obj/item/tool/surgery/scalpel/laser2 = 85, \
 	/obj/item/tool/surgery/scalpel/laser1 = 75, \
-	/obj/item/weapon/energy/sword = 5
+	/obj/item/weapon/melee/energy/sword = 5
 	)
 
 	min_duration = INCISION_MANAGER_MIN_DURATION
@@ -104,8 +104,8 @@
 	/obj/item/tool/kitchen/knife = 75,     \
 	/obj/item/shard = 50,            \
 	/obj/item/attachable/bayonet = 25,     \
-	/obj/item/weapon/throwing_knife = 15,   \
-	/obj/item/weapon/claymore/mercsword = 1
+	/obj/item/weapon/melee/throwing_knife = 15,   \
+	/obj/item/weapon/melee/claymore/mercsword = 1
 	)
 
 	min_duration = SCALPEL_MIN_DURATION

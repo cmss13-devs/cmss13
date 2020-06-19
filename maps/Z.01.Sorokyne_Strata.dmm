@@ -8043,7 +8043,7 @@
 	},
 /area/strata/ag/interior/dorms/lobby)
 "avr" = (
-/obj/item/weapon/wirerod,
+/obj/item/weapon/melee/wirerod,
 /obj/effect/decal/strata_decals/catwalk/prison,
 /turf/open/floor/greengrid,
 /area/strata/ag/interior/dorms/north)
@@ -22108,7 +22108,7 @@
 	icon_state = "gib6";
 	tag = "icon-gib6"
 	},
-/obj/item/weapon/harpoon,
+/obj/item/weapon/melee/harpoon,
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/strata{
 	dir = 4;

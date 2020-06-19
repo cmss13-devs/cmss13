@@ -2170,7 +2170,7 @@ obj/structure/machinery/cm_vending/sorted/uniform_supply
 
 		list("Utilities", -1, null, null),
 		list("M5 Bayonet", round(scale * 25), /obj/item/attachable/bayonet, "black"),
-		list("M11 Throwing Knife", round(scale * 10), /obj/item/weapon/throwing_knife, "black"),
+		list("M11 Throwing Knife", round(scale * 10), /obj/item/weapon/melee/throwing_knife, "black"),
 		list("M94 Marking Flare Pack", round(scale * 10), /obj/item/storage/box/m94, "black"),
 	)
 
@@ -2217,7 +2217,7 @@ obj/structure/machinery/cm_vending/sorted/uniform_supply
 
 		list("Utilities", -1, null, null),
 		list("M5 Bayonet", round(scale * 12), /obj/item/attachable/bayonet, "black"),
-		list("M11 Throwing Knife", round(scale * 5), /obj/item/weapon/throwing_knife, "black"),
+		list("M11 Throwing Knife", round(scale * 5), /obj/item/weapon/melee/throwing_knife, "black"),
 		list("M94 Marking Flare pack", round(scale * 5), /obj/item/storage/box/m94, "black")
 	)
 

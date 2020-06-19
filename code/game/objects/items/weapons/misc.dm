@@ -1,23 +1,23 @@
-/obj/item/weapon/chainofcommand
+/obj/item/weapon/melee/chainofcommand
 	name = "chain of command"
 	desc = "A tool used by great men to placate the frothing masses."
 	icon_state = "chain"
 	item_state = "chain"
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
-	force = 10
-	throwforce = 7
+	force = MELEE_FORCE_WEAK
+	throwforce = MELEE_FORCE_WEAK
 	w_class = SIZE_MEDIUM
 	
 	attack_verb = list("flogged", "whipped", "lashed", "disciplined")
 
-/obj/item/weapon/broken_bottle
+/obj/item/weapon/melee/broken_bottle
 	name = "Broken Bottle"
 	desc = "A bottle with a sharp broken bottom."
 	icon = 'icons/obj/items/drinks.dmi'
 	icon_state = "broken_bottle"
-	force = 9.0
-	throwforce = 5.0
+	force = MELEE_FORCE_WEAK
+	throwforce = MELEE_FORCE_WEAK
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 5
 	item_state = "broken_beer"

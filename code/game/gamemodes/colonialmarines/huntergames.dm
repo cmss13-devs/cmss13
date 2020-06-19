@@ -1,22 +1,22 @@
 #define HUNTER_BEST_ITEM  pick(\
 								75; list(/obj/item/clothing/glasses/night, /obj/item/storage/backpack/holding, /obj/item/storage/belt/grenade/full, /obj/item/weapon/gun/flamer), \
-								100; list(/obj/item/weapon/twohanded/glaive, /obj/item/clothing/mask/gas/yautja, /obj/item/clothing/suit/armor/yautja,/obj/item/clothing/shoes/yautja), \
-								50; list(/obj/item/weapon/combistick, /obj/item/clothing/mask/gas/yautja, /obj/item/clothing/suit/armor/yautja/full,/obj/item/clothing/shoes/yautja), \
+								100; list(/obj/item/weapon/melee/twohanded/glaive, /obj/item/clothing/mask/gas/yautja, /obj/item/clothing/suit/armor/yautja,/obj/item/clothing/shoes/yautja), \
+								50; list(/obj/item/weapon/melee/combistick, /obj/item/clothing/mask/gas/yautja, /obj/item/clothing/suit/armor/yautja/full,/obj/item/clothing/shoes/yautja), \
 								150; list(/obj/item/stack/medical/advanced/ointment, /obj/item/stack/medical/advanced/bruise_pack, /obj/item/storage/belt/medical/lifesaver/full), \
 								50; list(/obj/item/clothing/under/marine/veteran/PMC/commando, /obj/item/clothing/suit/storage/marine/veteran/PMC/commando, /obj/item/clothing/gloves/marine/veteran/PMC/commando, /obj/item/clothing/shoes/veteran/PMC/commando, /obj/item/clothing/head/helmet/marine/veteran/PMC/commando), \
-								125; list(/obj/item/weapon/yautja_chain, /obj/item/weapon/yautja_knife, /obj/item/weapon/yautja_scythe, /obj/item/legcuffs/yautja, /obj/item/legcuffs/yautja), \
+								125; list(/obj/item/weapon/yautja_chain, /obj/item/weapon/melee/yautja_knife, /obj/item/weapon/melee/yautja_scythe, /obj/item/legcuffs/yautja, /obj/item/legcuffs/yautja), \
 								75; list(/obj/item/weapon/gun/revolver/mateba/admiral, /obj/item/ammo_magazine/revolver/mateba, /obj/item/ammo_magazine/revolver/mateba, /obj/item/clothing/mask/balaclava/tactical), \
-								50; list(/obj/item/weapon/shield/energy, /obj/item/weapon/energy/axe, /obj/item/clothing/under/gladiator, /obj/item/clothing/head/helmet/gladiator) \
+								50; list(/obj/item/weapon/shield/energy, /obj/item/weapon/melee/energy/axe, /obj/item/clothing/under/gladiator, /obj/item/clothing/head/helmet/gladiator) \
 								)
 
 #define HUNTER_GOOD_ITEM  pick(\
 								50; /obj/item/weapon/shield/riot, \
-								100; /obj/item/weapon/claymore, \
-								100; /obj/item/weapon/katana, \
-								100; /obj/item/weapon/harpoon/yautja, \
-								150; /obj/item/weapon/claymore/mercsword, \
-								200; /obj/item/weapon/claymore/mercsword/machete, \
-								125; /obj/item/weapon/twohanded/fireaxe, \
+								100; /obj/item/weapon/melee/claymore, \
+								100; /obj/item/weapon/melee/katana, \
+								100; /obj/item/weapon/melee/harpoon/yautja, \
+								150; /obj/item/weapon/melee/claymore/mercsword, \
+								200; /obj/item/weapon/melee/claymore/mercsword/machete, \
+								125; /obj/item/weapon/melee/twohanded/fireaxe, \
 \
 								100; /obj/item/device/binoculars, \
 \
@@ -45,17 +45,17 @@
 
 #define HUNTER_OKAY_ITEM  pick(\
 								300; /obj/item/tool/crowbar, \
-								200; /obj/item/weapon/baseballbat, \
-								100; /obj/item/weapon/baseballbat/metal, \
-								100; /obj/item/weapon/butterfly, \
+								200; /obj/item/weapon/melee/baseballbat, \
+								100; /obj/item/weapon/melee/baseballbat/metal, \
+								100; /obj/item/weapon/melee/butterfly, \
 								300; /obj/item/tool/hatchet, \
 								100; /obj/item/tool/scythe, \
 								100; /obj/item/tool/kitchen/knife/butcher, \
-								50; /obj/item/weapon/katana/replica, \
-								100; /obj/item/weapon/harpoon, \
+								50; /obj/item/weapon/melee/katana/replica, \
+								100; /obj/item/weapon/melee/harpoon, \
 								75; /obj/item/attachable/bayonet, \
-								200; /obj/item/weapon/throwing_knife, \
-								400; /obj/item/weapon/twohanded/spear, \
+								200; /obj/item/weapon/melee/throwing_knife, \
+								400; /obj/item/weapon/melee/twohanded/spear, \
 \
 								250; /obj/item/device/flashlight/flare, \
 								75; /obj/item/device/flashlight, \

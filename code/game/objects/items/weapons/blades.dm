@@ -1,47 +1,83 @@
-/obj/item/weapon/claymore
+/obj/item/weapon/melee/claymore
 	name = "claymore"
 	desc = "What are you standing around staring at this for? Get to killing!"
 	icon_state = "claymore"
 	item_state = "claymore"
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
-	force = 60
-	throwforce = 10
+	force = MELEE_FORCE_STRONG
+	throwforce = MELEE_FORCE_WEAK
 	sharp = IS_SHARP_ITEM_BIG
 	edge = 1
 	w_class = SIZE_MEDIUM
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 
-/obj/item/weapon/claymore/mercsword
+/obj/item/weapon/melee/claymore/mercsword
 	name = "combat sword"
 	desc = "A dusty sword commonly seen in historical museums. Where you got this is a mystery, for sure. Only a mercenary would be nuts enough to carry one of these. Sharpened to deal massive damage."
 	icon_state = "mercsword"
 	item_state = "machete"
-	force = 60
 
-
-/obj/item/weapon/claymore/mercsword/ceremonial
+/obj/item/weapon/melee/claymore/mercsword/ceremonial
 	name = "Ceremonial Sword"
 	desc = "A fancy ceremonial sword passed down from generation to generation. Despite this, it has been very well cared for, and is in top condition."
 	icon_state = "ceremonial"
 	item_state = "machete"
-	force = 70
 
-/obj/item/weapon/claymore/mercsword/machete
+/obj/item/weapon/melee/claymore/mercsword/machete
 	name = "\improper M2132 machete"
 	desc = "Latest issue of the USCM Machete. Great for clearing out jungle or brush on outlying colonies. Found commonly in the hands of scouts and trackers, but difficult to carry with the usual kit."
 	icon_state = "machete"
-	force = 55
 	w_class = SIZE_LARGE
 
-/obj/item/weapon/katana
+/obj/item/weapon/melee/claymore/hefa
+	name = "HEFA sword"
+	icon_state = "hefasword"
+	item_state = "hefasword"
+	desc = "A blade known to be used by the Order of the HEFA, this highly dangerous blade blows up in a shower of shrapnel on impact."
+	attack_verb = list("bapped", "smacked", "clubbed")
+
+	var/primed = FALSE
+
+/obj/item/weapon/melee/claymore/hefa/proc/apply_explosion_overlay()
+	var/obj/effect/overlay/O = new /obj/effect/overlay(loc)
+	O.name = "grenade"
+	O.icon = 'icons/effects/explosion.dmi'
+	flick("grenade", O)
+	QDEL_IN(O, 7)
+	return
+
+/obj/item/weapon/melee/claymore/hefa/attack_self(var/mob/user)
+	..()
+
+	primed = !primed
+	var/msg = "You prime \the [src]! It will now explode when you strike someone."
+	if(!primed)
+		msg = "You de-activate \the [src]!"
+	to_chat(user, SPAN_NOTICE(msg))
+
+/obj/item/weapon/melee/claymore/hefa/attack(var/mob/target, var/mob/user)
+	. = ..()
+	if(!primed)
+		return
+
+	var/turf/epicenter = get_turf(user)
+	epicenter = get_step(epicenter, user.dir)
+
+	create_shrapnel(epicenter, 48, dir, , /datum/ammo/bullet/shrapnel, initial(name), user)
+	sleep(2) //so that mobs are not knocked down before being hit by shrapnel. shrapnel might also be getting deleted by explosions?
+	apply_explosion_overlay()
+	cell_explosion(epicenter, 40, 18, user.dir, initial(name), user)
+	qdel(src)
+
+/obj/item/weapon/melee/katana
 	name = "katana"
 	desc = "A finely made Japanese sword, with a well sharpened blade. The blade has been filed to a molecular edge, and is extremely deadly. Commonly found in the hands of mercenaries and yakuza."
 	icon_state = "katana"
 	flags_atom = FPRINT|CONDUCT
-	force = 65
-	throwforce = 10
+	force = MELEE_FORCE_VERY_STRONG
+	throwforce = MELEE_FORCE_WEAK
 	sharp = IS_SHARP_ITEM_BIG
 	edge = 1
 	w_class = SIZE_MEDIUM
@@ -49,13 +85,13 @@
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 
 //To do: replace the toys.
-/obj/item/weapon/katana/replica
+/obj/item/weapon/melee/katana/replica
 	name = "replica katana"
 	desc = "A cheap knock-off commonly found in regular knife stores. Can still do some damage."
-	force = 27
+	force = MELEE_FORCE_WEAK
 	throwforce = 7
 
-/obj/item/weapon/throwing_knife
+/obj/item/weapon/melee/throwing_knife
 	name ="\improper M11 throwing knife"
 	icon='icons/obj/items/weapons/weapons.dmi'
 	icon_state = "throwing_knife"
@@ -63,9 +99,9 @@
 	desc="A military knife designed to be thrown at the enemy. Much quieter than a firearm, but requires a steady hand to be used effectively."
 	flags_atom = FPRINT|CONDUCT
 	sharp = IS_SHARP_ITEM_ACCURATE
-	force = 10
+	force = MELEE_FORCE_WEAK
 	w_class = SIZE_TINY
-	throwforce = 35
+	throwforce = MELEE_FORCE_STRONG
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 7
 	hitsound = 'sound/weapons/slash.ogg'
@@ -74,30 +110,30 @@
 	flags_armor_protection = SLOT_FACE
 
 
-/obj/item/weapon/unathiknife
+/obj/item/weapon/melee/unathiknife
 	name = "duelling knife"
 	desc = "A length of leather-bound wood studded with razor-sharp teeth. How crude."
 	icon = 'icons/obj/items/weapons/weapons.dmi'
 	icon_state = "unathiknife"
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("ripped", "torn", "cut")
-	force = 35
-	throwforce = 35
+	force = MELEE_FORCE_STRONG
+	throwforce = MELEE_FORCE_STRONG
 	edge = 1
 
 
-/obj/item/weapon/pizza_cutter
+/obj/item/weapon/melee/pizza_cutter
 	name = "\improper PIZZA TIME"
 	icon = 'icons/obj/items/weapons/weapons.dmi'
 	icon_state = "pizza_cutter"
 	item_state = "pizza_cutter"
 	desc = "Before you is holy relic of a bygone era when the great Pizza Lords reigned supreme. You know either that or it's just a big damn pizza cutter."
 	sharp = IS_SHARP_ITEM_ACCURATE
-	force = 50
+	force = MELEE_FORCE_VERY_STRONG
 	edge = 1
 
 
-/obj/item/weapon/yautja_knife
+/obj/item/weapon/melee/yautja_knife
 	name = "ceremonial dagger"
 	desc = "A viciously sharp dagger enscribed with ancient Yautja markings. Smells thickly of blood. Carried by some hunters."
 	icon = 'icons/obj/items/weapons/predator.dmi'
@@ -107,9 +143,9 @@
 	flags_item = ITEM_PREDATOR
 	flags_equip_slot = SLOT_STORE
 	sharp = IS_SHARP_ITEM_ACCURATE
-	force = 24
+	force = MELEE_FORCE_STRONG
 	w_class = SIZE_TINY
-	throwforce = 28
+	throwforce = MELEE_FORCE_STRONG
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 6
 	hitsound = 'sound/weapons/slash.ogg'
@@ -117,7 +153,7 @@
 	actions_types = list(/datum/action/item_action)
 	unacidable = TRUE
 
-/obj/item/weapon/yautja_knife/attack_self(mob/living/carbon/human/user)
+/obj/item/weapon/melee/yautja_knife/attack_self(mob/living/carbon/human/user)
 	if(!isYautja(user))
 		return
 	if(!hasorgans(user))
@@ -125,7 +161,7 @@
 
 	dig_out_shrapnel(user)
 
-/obj/item/weapon/yautja_knife/dropped(mob/living/user)
+/obj/item/weapon/melee/yautja_knife/dropped(mob/living/user)
 	add_to_missing_pred_gear(src)
 	..()
 
@@ -186,45 +222,3 @@
 		return
 
 	to_chat(H_user, SPAN_NOTICE("You dig out all the shrapnel you can find."))
-
-
-/obj/item/weapon/claymore/hefa
-	name = "HEFA sword"
-	icon_state = "hefasword"
-	item_state = "hefasword"
-	desc = "A blade known to be used by the Order of the HEFA, this highly dangerous blade blows up in a shower of shrapnel on impact."
-	attack_verb = list("bapped", "smacked", "clubbed")
-
-	var/primed = FALSE
-
-/obj/item/weapon/claymore/hefa/proc/apply_explosion_overlay()
-	var/obj/effect/overlay/O = new /obj/effect/overlay(loc)
-	O.name = "grenade"
-	O.icon = 'icons/effects/explosion.dmi'
-	flick("grenade", O)
-	QDEL_IN(O, 7)
-	return
-
-/obj/item/weapon/claymore/hefa/attack_self(var/mob/user)
-	..()
-
-	primed = !primed
-	var/msg = "You prime \the [src]! It will now explode when you strike someone."
-	if(!primed)
-		msg = "You de-activate \the [src]!"
-	to_chat(user, SPAN_NOTICE(msg))
-
-/obj/item/weapon/claymore/hefa/attack(var/mob/target, var/mob/user)
-	. = ..()
-	if(!primed)
-		return
-
-	var/turf/epicenter = get_turf(user)
-	epicenter = get_step(epicenter, user.dir)
-
-	create_shrapnel(epicenter, 48, dir, , /datum/ammo/bullet/shrapnel, initial(name), user)
-	sleep(2) //so that mobs are not knocked down before being hit by shrapnel. shrapnel might also be getting deleted by explosions?
-	apply_explosion_overlay()
-	cell_explosion(epicenter, 40, 18, user.dir, initial(name), user)
-	qdel(src)
-

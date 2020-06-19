@@ -92,7 +92,7 @@
 /obj/item/clothing/suit/bomb_suit/security
 	icon_state = "bombsuitsec"
 	item_state = "bombsuitsec"
-	allowed = list(/obj/item/weapon/gun,/obj/item/weapon/baton,/obj/item/handcuffs)
+	allowed = list(/obj/item/weapon/gun,/obj/item/weapon/melee/baton,/obj/item/handcuffs)
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_FEET|BODY_FLAG_ARMS|BODY_FLAG_HANDS
 
 /*

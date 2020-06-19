@@ -261,7 +261,7 @@
 "afm" = (/turf/open/floor/almayer_hull{dir = 6; icon_state = "outerhull_dir"; tag = "icon-outerhull_dir (SOUTHEAST)"},/area/space)
 "afn" = (/turf/open/floor/wood,/area/almayer/living/commandbunks)
 "afo" = (/obj/structure/machinery/light{dir = 1; tag = "icon-tube1 (NORTH)"},/turf/open/floor/almayer{icon_state = "plate"; tag = "icon-sterile"},/area/almayer/living/commandbunks)
-"afp" = (/obj/structure/safe,/obj/item/moneybag,/obj/item/clothing/glasses/monocle,/obj/item/weapon/telebaton,/obj/item/book/codebook,/turf/open/floor/almayer,/area/almayer/living/commandbunks)
+"afp" = (/obj/structure/safe,/obj/item/moneybag,/obj/item/clothing/glasses/monocle,/obj/item/weapon/melee/telebaton,/obj/item/book/codebook,/turf/open/floor/almayer,/area/almayer/living/commandbunks)
 "afq" = (/obj/effect/decal/warning_stripes{icon_state = "NW-out"; layer = 2.5; tag = "icon-NW-out"},/turf/open/floor/plating/plating_catwalk,/area/almayer/hallways/aft_hallway)
 "afr" = (/obj/structure/machinery/door/firedoor/border_only/almayer{dir = 2},/turf/open/floor/almayer{icon_state = "test_floor4"; tag = "icon-test_floor4"},/area/almayer/hallways/aft_hallway)
 "afs" = (/turf/open/floor/almayer{icon_state = "plate"; tag = "icon-sterile"},/area/almayer/living/basketball)

@@ -379,8 +379,8 @@
 /area/prison/research/secret)
 "alS" = (
 /obj/structure/rack,
-/obj/item/weapon/baton,
-/obj/item/weapon/baton,
+/obj/item/weapon/melee/baton,
+/obj/item/weapon/melee/baton,
 /turf/open/floor/prison,
 /area/prison/research/secret)
 "alT" = (

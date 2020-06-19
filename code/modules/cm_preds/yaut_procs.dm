@@ -278,15 +278,15 @@
 
 		switch(msel)
 			if("The Lumbering Glaive")
-				new /obj/item/weapon/twohanded/glaive(src.loc)
+				new /obj/item/weapon/melee/twohanded/glaive(src.loc)
 			if("The Rending Chain-Whip")
 				new /obj/item/weapon/yautja_chain(src.loc)
 			if("The Piercing Hunting Sword")
-				new /obj/item/weapon/yautja_sword(src.loc)
+				new /obj/item/weapon/melee/yautja_sword(src.loc)
 			if("The Cleaving War-Scythe")
-				new /obj/item/weapon/yautja_scythe(src.loc)
+				new /obj/item/weapon/melee/yautja_scythe(src.loc)
 			if("The Adaptive Combi-Stick")
-				new /obj/item/weapon/combistick(src.loc)
+				new /obj/item/weapon/melee/combistick(src.loc)
 
 		var/choice = mother_0
 		var/i = 0

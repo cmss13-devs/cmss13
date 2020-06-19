@@ -1118,7 +1118,7 @@
 /area/lv624/ground/caves/east1)
 "adZ" = (
 /obj/structure/table,
-/obj/item/weapon/harpoon,
+/obj/item/weapon/melee/harpoon,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whiteyellowfull"
@@ -1206,7 +1206,7 @@
 	icon_state = "yaut";
 	name = "alien sarcophagus"
 	},
-/obj/item/weapon/twohanded/glaive/damaged,
+/obj/item/weapon/melee/twohanded/glaive/damaged,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whiteyellowfull"
@@ -1242,7 +1242,7 @@
 /area/lv624/ground/sand6)
 "aeq" = (
 /obj/structure/table,
-/obj/item/weapon/harpoon/yautja{
+/obj/item/weapon/melee/harpoon/yautja{
 	name = "Alien Harpoon"
 	},
 /obj/effect/landmark/objective_landmark/far,
@@ -1561,7 +1561,7 @@
 /area/lv624/ground/sand2)
 "afq" = (
 /obj/structure/table,
-/obj/item/weapon/harpoon/yautja{
+/obj/item/weapon/melee/harpoon/yautja{
 	name = "Alien Harpoon"
 	},
 /obj/effect/landmark{
@@ -1662,7 +1662,7 @@
 /turf/closed/wall/cult,
 /area/lv624/ground/sand2)
 "afE" = (
-/obj/item/weapon/twohanded/spear{
+/obj/item/weapon/melee/twohanded/spear{
 	pixel_x = -6;
 	pixel_y = -6
 	},
@@ -2626,7 +2626,7 @@
 /turf/open/floor/plating,
 /area/lv624/ground/sand8)
 "aiF" = (
-/obj/item/weapon/butterfly/switchblade,
+/obj/item/weapon/melee/butterfly/switchblade,
 /turf/open/floor/plating,
 /area/lv624/ground/sand8)
 "aiG" = (
@@ -2858,7 +2858,7 @@
 /turf/open/gm/coast,
 /area/lv624/ground/river2)
 "ajt" = (
-/obj/item/weapon/broken_bottle,
+/obj/item/weapon/melee/broken_bottle,
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/coast,
 /area/lv624/ground/river2)
@@ -7576,7 +7576,7 @@
 "axx" = (
 /obj/effect/landmark/corpsespawner/chef,
 /obj/effect/decal/cleanable/blood/splatter/animated,
-/obj/item/weapon/harpoon,
+/obj/item/weapon/melee/harpoon,
 /turf/open/gm/river,
 /area/lv624/ground/jungle6)
 "axy" = (
@@ -8043,8 +8043,8 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/compound/c)
 "ayO" = (
-/obj/item/weapon/baseballbat/metal,
-/obj/item/weapon/baseballbat/metal{
+/obj/item/weapon/melee/baseballbat/metal,
+/obj/item/weapon/melee/baseballbat/metal{
 	pixel_x = 5
 	},
 /obj/structure/rack,
@@ -8636,7 +8636,7 @@
 /area/lv624/lazarus/sleep_male)
 "aAx" = (
 /obj/structure/closet,
-/obj/item/weapon/baseballbat,
+/obj/item/weapon/melee/baseballbat,
 /obj/item/clothing/head/beret/jan,
 /obj/item/stack/medical/splint,
 /obj/structure/machinery/light{
@@ -16740,7 +16740,7 @@
 /obj/structure/foamedmetal{
 	layer = 3.1
 	},
-/obj/item/weapon/baseballbat/metal,
+/obj/item/weapon/melee/baseballbat/metal,
 /obj/item/device/lightreplacer,
 /turf/open/floor{
 	icon_state = "dark"
@@ -17140,7 +17140,7 @@
 /area/lv624/ground/sand7)
 "aZc" = (
 /obj/structure/table,
-/obj/item/weapon/twohanded/fireaxe,
+/obj/item/weapon/melee/twohanded/fireaxe,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
 	dir = 9;

@@ -1,4 +1,4 @@
-/obj/item/weapon/baton
+/obj/item/weapon/melee/baton
 	name = "stunbaton"
 	desc = "A stun baton for incapacitating people with."
 	icon_state = "stunbaton"
@@ -19,23 +19,23 @@
 	var/hitcost = 1000	//oh god why do power cells carry so much charge? We probably need to make a distinction between "industrial" sized power cells for APCs and power cells for everything else.
 	var/has_user_lock = TRUE //whether the baton prevents people without correct access from using it.
 
-/obj/item/weapon/baton/suicide_act(mob/user)
+/obj/item/weapon/melee/baton/suicide_act(mob/user)
 	user.visible_message("<span class='suicide'>[user] is putting the live [name] in \his mouth! It looks like \he's trying to commit suicide.</span>")
 	return (FIRELOSS)
 
-/obj/item/weapon/baton/New()
+/obj/item/weapon/melee/baton/New()
 	..()
 	bcell = new/obj/item/cell/high(src) //Fuckit lets givem all the good cells
 	update_icon()
 	return
 
-/obj/item/weapon/baton/loaded/New() //this one starts with a cell pre-installed.
+/obj/item/weapon/melee/baton/loaded/New() //this one starts with a cell pre-installed.
 	..()
 	bcell = new/obj/item/cell/high(src)
 	update_icon()
 	return
 
-/obj/item/weapon/baton/proc/deductcharge(var/chrgdeductamt)
+/obj/item/weapon/melee/baton/proc/deductcharge(var/chrgdeductamt)
 	if(bcell)
 		if(bcell.use(chrgdeductamt))
 			return 1
@@ -44,7 +44,7 @@
 			update_icon()
 			return 0
 
-/obj/item/weapon/baton/update_icon()
+/obj/item/weapon/melee/baton/update_icon()
 	if(status)
 		icon_state = "[initial(name)]_active"
 	else if(!bcell)
@@ -52,25 +52,25 @@
 	else
 		icon_state = "[initial(name)]"
 
-/obj/item/weapon/baton/examine(mob/user)
+/obj/item/weapon/melee/baton/examine(mob/user)
 	..()
 	if(bcell)
 		to_chat(user, SPAN_NOTICE("The baton is [round(bcell.percent())]% charged."))
 	else
 		to_chat(user, SPAN_WARNING("The baton does not have a power source installed."))
 
-/obj/item/weapon/baton/attack_hand(mob/user)
+/obj/item/weapon/melee/baton/attack_hand(mob/user)
 	if(check_user_auth(user))
 		..()
 
 
-/obj/item/weapon/baton/equipped(mob/user, slot)
+/obj/item/weapon/melee/baton/equipped(mob/user, slot)
 	..()
 	check_user_auth(user)
 
 
 //checks if the mob touching the baton has proper access
-/obj/item/weapon/baton/proc/check_user_auth(mob/user)
+/obj/item/weapon/melee/baton/proc/check_user_auth(mob/user)
 	if(!has_user_lock)
 		return TRUE
 	var/mob/living/carbon/human/H = user
@@ -85,10 +85,10 @@
 			return FALSE
 	return TRUE
 
-/obj/item/weapon/baton/pull_response(mob/puller)
+/obj/item/weapon/melee/baton/pull_response(mob/puller)
 	return check_user_auth(puller)
 
-/obj/item/weapon/baton/attackby(obj/item/W, mob/user)
+/obj/item/weapon/melee/baton/attackby(obj/item/W, mob/user)
 
 	if(istype(W, /obj/item/cell))
 		if(!bcell)
@@ -111,7 +111,7 @@
 			return
 		..()
 
-/obj/item/weapon/baton/attack_self(mob/user)
+/obj/item/weapon/melee/baton/attack_self(mob/user)
 	if(has_user_lock && !skillcheck(user, SKILL_POLICE, SKILL_POLICE_MP))
 		to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 		return
@@ -129,7 +129,7 @@
 	add_fingerprint(user)
 
 
-/obj/item/weapon/baton/attack(mob/M, mob/user)
+/obj/item/weapon/melee/baton/attack(mob/M, mob/user)
 	if(has_user_lock && !skillcheck(user, SKILL_POLICE, SKILL_POLICE_MP))
 		to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 		return
@@ -191,24 +191,24 @@
 
 	return 1
 
-/obj/item/weapon/baton/emp_act(severity)
+/obj/item/weapon/melee/baton/emp_act(severity)
 	if(bcell)
 		bcell.emp_act(severity)	//let's not duplicate code everywhere if we don't have to please.
 	..()
 
 //secborg stun baton module
-/obj/item/weapon/baton/robot/attack_self(mob/user)
+/obj/item/weapon/melee/baton/robot/attack_self(mob/user)
 	//try to find our power cell
 	var/mob/living/silicon/robot/R = loc
 	if (istype(R))
 		bcell = R.cell
 	return ..()
 
-/obj/item/weapon/baton/robot/attackby(obj/item/W, mob/user)
+/obj/item/weapon/melee/baton/robot/attackby(obj/item/W, mob/user)
 	return
 
 //Makeshift stun baton. Replacement for stun gloves.
-/obj/item/weapon/baton/cattleprod
+/obj/item/weapon/melee/baton/cattleprod
 	name = "stunprod"
 	desc = "An improvised stun baton."
 	icon_state = "stunprod_nocell"

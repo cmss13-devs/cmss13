@@ -184,16 +184,16 @@
 	min_cold_protection_temperature = ARMOR_min_cold_protection_temperature
 	max_heat_protection_temperature = ARMOR_max_heat_protection_temperature
 	siemens_coefficient = 0.1
-	allowed = list(/obj/item/weapon/harpoon,
+	allowed = list(/obj/item/weapon/melee/harpoon,
 			/obj/item/weapon/gun/launcher/spike,
 			/obj/item/weapon/gun/energy/plasmarifle,
 			/obj/item/weapon/gun/energy/plasmapistol,
 			/obj/item/weapon/yautja_chain,
-			/obj/item/weapon/yautja_knife,
-			/obj/item/weapon/yautja_sword,
-			/obj/item/weapon/yautja_scythe,
-			/obj/item/weapon/combistick,
-			/obj/item/weapon/twohanded/glaive)
+			/obj/item/weapon/melee/yautja_knife,
+			/obj/item/weapon/melee/yautja_sword,
+			/obj/item/weapon/melee/yautja_scythe,
+			/obj/item/weapon/melee/combistick,
+			/obj/item/weapon/melee/twohanded/glaive)
 	unacidable = TRUE
 	item_state_slots = list(WEAR_JACKET = "halfarmor1")
 
@@ -258,17 +258,17 @@
 	slowdown = 1
 	var/speed_timer = 0
 	item_state_slots = list(WEAR_JACKET = "fullarmor")
-	allowed = list(/obj/item/weapon/harpoon,
+	allowed = list(/obj/item/weapon/melee/harpoon,
 			/obj/item/weapon/gun/launcher/spike,
 			/obj/item/weapon/gun/energy/plasmarifle,
 			/obj/item/weapon/gun/energy/plasmapistol,
 			/obj/item/weapon/yautja_chain,
-			/obj/item/weapon/yautja_knife,
-			/obj/item/weapon/yautja_sword,
-			/obj/item/weapon/yautja_scythe,
-			/obj/item/weapon/combistick,
+			/obj/item/weapon/melee/yautja_knife,
+			/obj/item/weapon/melee/yautja_sword,
+			/obj/item/weapon/melee/yautja_scythe,
+			/obj/item/weapon/melee/combistick,
 			/obj/item/storage/backpack/yautja,
-			/obj/item/weapon/twohanded/glaive)
+			/obj/item/weapon/melee/twohanded/glaive)
 
 /obj/item/clothing/suit/armor/yautja/full/New(location)
 	. = ..(location, 0)
@@ -360,7 +360,7 @@
 	siemens_coefficient = 0.2
 	min_cold_protection_temperature = SHOE_min_cold_protection_temperature
 	max_heat_protection_temperature = SHOE_max_heat_protection_temperature
-	items_allowed = list(/obj/item/weapon/yautja_knife, /obj/item/weapon/gun/energy/plasmapistol)
+	items_allowed = list(/obj/item/weapon/melee/yautja_knife, /obj/item/weapon/gun/energy/plasmapistol)
 	var/bootnumber = 1
 
 /obj/item/clothing/shoes/yautja/New(location, boot_number = rand(1,3))
@@ -1177,7 +1177,7 @@
 
 
 
-	for(var/obj/item/weapon/combistick/C in range(7))
+	for(var/obj/item/weapon/melee/combistick/C in range(7))
 		if(usr.get_active_hand() == C || usr.get_inactive_hand() == C) //Check if THIS combistick is in our hands already.
 			continue
 		else if(usr.put_in_active_hand(C))//Try putting it in our active hand, or, if it's full...
@@ -1429,7 +1429,7 @@
 //======================================\\
 //=================\\//=================\\
 
-/obj/item/weapon/harpoon/yautja
+/obj/item/weapon/melee/harpoon/yautja
 	name = "large harpoon"
 	desc = "A huge metal spike, with a hook at the end. It's carved with mysterious alien writing."
 	icon = 'icons/obj/items/weapons/predator.dmi'
@@ -1442,7 +1442,7 @@
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	sharp = IS_SHARP_ITEM_BIG
 
-/obj/item/weapon/harpoon/yautja/New()
+/obj/item/weapon/melee/harpoon/yautja/New()
 	force = config.min_hit_damage
 	throwforce = config.high_hit_damage
 	
@@ -1542,7 +1542,7 @@
 	..()
 
 
-/obj/item/weapon/yautja_sword
+/obj/item/weapon/melee/yautja_sword
 	name = "clan sword"
 	desc = "An expertly crafted Yautja blade carried by hunters who wish to fight up close. Razor sharp, and capable of cutting flesh into ribbons. Commonly carried by aggresive and lethal hunters."
 	icon = 'icons/obj/items/weapons/predator.dmi'
@@ -1561,19 +1561,19 @@
 	attack_speed = 9
 	unacidable = TRUE
 
-/obj/item/weapon/yautja_sword/New()
+/obj/item/weapon/melee/yautja_sword/New()
 	force = config.med_hit_damage //More damage than other weapons like it. Considering how "strong" this sword is supposed to be, 38 damage was laughable.
 	throwforce = config.min_hit_damage
 
-/obj/item/weapon/yautja_sword/Dispose()
+/obj/item/weapon/melee/yautja_sword/Dispose()
 	remove_from_missing_pred_gear(src)
 	..()
 
-/obj/item/weapon/yautja_sword/dropped(mob/living/user)
+/obj/item/weapon/melee/yautja_sword/dropped(mob/living/user)
 	add_to_missing_pred_gear(src)
 	..()
 
-/obj/item/weapon/yautja_sword/attack(mob/living/target, mob/living/carbon/human/user)
+/obj/item/weapon/melee/yautja_sword/attack(mob/living/target, mob/living/carbon/human/user)
 	. = ..()
 	if(!.)
 		return
@@ -1588,7 +1588,7 @@
 		force = round(config.med_hit_damage/2)
 		if(prob(50)) user.make_dizzy(80)
 
-/obj/item/weapon/yautja_sword/pickup(mob/living/user as mob)
+/obj/item/weapon/melee/yautja_sword/pickup(mob/living/user as mob)
 	if(!isYautja(user))
 		to_chat(user, SPAN_WARNING("You struggle to pick up the huge, unwieldy sword. It makes you dizzy just trying to hold it!"))
 		user.make_dizzy(50)
@@ -1596,7 +1596,7 @@
 		remove_from_missing_pred_gear(src)
 	..()
 
-/obj/item/weapon/yautja_sword/unique_action(mob/living/user)
+/obj/item/weapon/melee/yautja_sword/unique_action(mob/living/user)
 	if(user.get_active_hand() != src)
 		return
 	if(timer) return
@@ -1610,19 +1610,19 @@
 	add_fingerprint(user)
 	return
 
-/obj/item/weapon/yautja_sword/proc/stop_parry()
+/obj/item/weapon/melee/yautja_sword/proc/stop_parry()
 	if(on)
 		on = !on
 		if(isYautja(src.loc))
 			var/mob/living/user = loc
 			to_chat(user, SPAN_NOTICE("You lower the [src]."))
 
-/obj/item/weapon/yautja_sword/proc/parry_cooldown()
+/obj/item/weapon/melee/yautja_sword/proc/parry_cooldown()
 	timer = FALSE
 	if(isYautja(src.loc))
 		var/mob/living/user = loc
 		to_chat(user, SPAN_NOTICE("You lower the [src]."))
-/obj/item/weapon/yautja_scythe
+/obj/item/weapon/melee/yautja_scythe
 	name = "double war scythe"
 	desc = "A huge, incredibly sharp double blade used for hunting dangerous prey. This weapon is commonly carried by Yautja who wish to disable and slice apart their foes.."
 	icon = 'icons/obj/items/weapons/predator.dmi'
@@ -1638,25 +1638,25 @@
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	unacidable = TRUE
 
-/obj/item/weapon/yautja_scythe/New()
+/obj/item/weapon/melee/yautja_scythe/New()
 	icon_state = pick("predscythe","predscythe_alt")
 	force = config.hmed_hit_damage
 	throwforce = config.mlow_hit_damage
 
-/obj/item/weapon/yautja_scythe/Dispose()
+/obj/item/weapon/melee/yautja_scythe/Dispose()
 	remove_from_missing_pred_gear(src)
 	..()
 
-/obj/item/weapon/yautja_scythe/dropped(mob/living/user)
+/obj/item/weapon/melee/yautja_scythe/dropped(mob/living/user)
 	add_to_missing_pred_gear(src)
 	..()
 
-/obj/item/weapon/yautja_scythe/pickup(mob/living/user)
+/obj/item/weapon/melee/yautja_scythe/pickup(mob/living/user)
 	if(isYautja(user))
 		remove_from_missing_pred_gear(src)
 	..()
 
-/obj/item/weapon/yautja_scythe/attack(mob/living/target as mob, mob/living/carbon/human/user as mob)
+/obj/item/weapon/melee/yautja_scythe/attack(mob/living/target as mob, mob/living/carbon/human/user as mob)
 	if(!isYautja(user))
 		if(prob(20))
 			user.visible_message(SPAN_WARNING("[src] slips out of your hands!"))
@@ -1677,7 +1677,7 @@
 	return
 
 //Combistick
-/obj/item/weapon/combistick
+/obj/item/weapon/melee/combistick
 	name = "combi-stick"
 	desc = "A compact yet deadly personal weapon. Can be concealed when folded. Functions well as a throwing weapon or defensive tool. A common sight in Yautja packs due to its versatility."
 	icon = 'icons/obj/items/weapons/predator.dmi'
@@ -1695,44 +1695,44 @@
 	var/on = 1
 	var/timer = 0
 
-/obj/item/weapon/combistick/New()
+/obj/item/weapon/melee/combistick/New()
 	throwforce = config.med_hit_damage
 	force = config.hlmed_hit_damage
 
-/obj/item/weapon/combistick/IsShield()
+/obj/item/weapon/melee/combistick/IsShield()
 	return on
 
-/obj/item/weapon/combistick/Dispose()
+/obj/item/weapon/melee/combistick/Dispose()
 	remove_from_missing_pred_gear(src)
 	..()
 
-/obj/item/weapon/combistick/dropped(mob/living/user)
+/obj/item/weapon/melee/combistick/dropped(mob/living/user)
 	add_to_missing_pred_gear(src)
 	..()
 
-/obj/item/weapon/combistick/pickup(mob/living/user)
+/obj/item/weapon/melee/combistick/pickup(mob/living/user)
 	if(isYautja(user))
 		remove_from_missing_pred_gear(src)
 	..()
 
-/obj/item/weapon/combistick/wield(var/mob/user)
+/obj/item/weapon/melee/combistick/wield(var/mob/user)
 	..()
 	force = config.lmed_plus_hit_damage
 	update_icon()
 
-/obj/item/weapon/combistick/unwield(mob/user)
+/obj/item/weapon/melee/combistick/unwield(mob/user)
 	..()
 	force = config.hlmed_hit_damage
 	update_icon()
 
-/obj/item/weapon/combistick/verb/use_unique_action()
+/obj/item/weapon/melee/combistick/verb/use_unique_action()
 	set category = "Weapons"
 	set name = "Unique Action"
 	set desc = "Activate or deactivate the combistick."
 
 	unique_action(usr)
 
-/obj/item/weapon/combistick/attack_self(mob/user)
+/obj/item/weapon/melee/combistick/attack_self(mob/user)
 	..()
 	if(on)
 		if(flags_item & WIELDED) unwield(user)
@@ -1740,12 +1740,12 @@
 	else
 		to_chat(user, SPAN_WARNING("You need to extend the combi-stick before you can wield it."))
 
-/obj/item/weapon/combistick/update_icon()
+/obj/item/weapon/melee/combistick/update_icon()
 	if(flags_item & WIELDED)
 		item_state = "combistick_w"
 	else item_state = "combistick"
 
-/obj/item/weapon/combistick/unique_action(mob/living/user)
+/obj/item/weapon/melee/combistick/unique_action(mob/living/user)
 	if(user.get_active_hand() != src)
 		return
 	if(timer) return
@@ -1794,20 +1794,20 @@
 
 	return
 
-/obj/item/weapon/combistick/attack(mob/living/target as mob, mob/living/carbon/human/user as mob)
+/obj/item/weapon/melee/combistick/attack(mob/living/target as mob, mob/living/carbon/human/user as mob)
 	if(isYautja(user) && isXeno(target))
 		var/mob/living/carbon/Xenomorph/X = target
 		X.interference = 30
 	..()
 
-/obj/item/weapon/combistick/attack_hand(mob/user) //Prevents marines from instantly picking it up via pickup macros.
+/obj/item/weapon/melee/combistick/attack_hand(mob/user) //Prevents marines from instantly picking it up via pickup macros.
 	if(!isYautja(user))
 		user.visible_message(SPAN_NOTICE("You start to untangle the chain on \the [src]..."))
 		if(do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_HOSTILE, src, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
 			..()
 	else ..()
 
-/obj/item/weapon/combistick/launch_impact(atom/hit_atom)
+/obj/item/weapon/melee/combistick/launch_impact(atom/hit_atom)
 	if(isYautja(hit_atom))
 		var/mob/living/carbon/human/H = hit_atom
 		if(H.put_in_hands(src))

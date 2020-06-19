@@ -103,7 +103,7 @@
 	name = "bayonet sheath"
 	desc = "A pouch for your knives."
 	can_hold = list(
-		/obj/item/weapon/throwing_knife,
+		/obj/item/weapon/melee/throwing_knife,
 		/obj/item/attachable/bayonet
 	)
 	icon_state = "bayonet"

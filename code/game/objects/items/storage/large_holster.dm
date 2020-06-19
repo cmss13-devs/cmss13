@@ -75,13 +75,13 @@
 	icon_state = "machete_holster"
 	item_state = "machete_holster"
 	flags_equip_slot = SLOT_WAIST|SLOT_BACK
-	can_hold = list(/obj/item/weapon/claymore/mercsword/machete)
+	can_hold = list(/obj/item/weapon/melee/claymore/mercsword/machete)
 
 /obj/item/storage/large_holster/machete/full/Initialize()
 	..()
 	icon_state = "machete_holster_full"
 	item_state = "machete_holster_full"
-	new /obj/item/weapon/claymore/mercsword/machete(src)
+	new /obj/item/weapon/melee/claymore/mercsword/machete(src)
 
 /obj/item/storage/large_holster/katana
 	name = "\improper katana scabbard"
@@ -91,12 +91,12 @@
 	force = 12
 	attack_verb = list("bludgeoned", "struck", "cracked")
 	flags_equip_slot = SLOT_WAIST|SLOT_BACK
-	can_hold = list(/obj/item/weapon/katana)
+	can_hold = list(/obj/item/weapon/melee/katana)
 
 /obj/item/storage/large_holster/katana/full/Initialize()
 	..()
 	icon_state = "katana_holster_full"
-	new /obj/item/weapon/katana(src)
+	new /obj/item/weapon/melee/katana(src)
 
 /obj/item/storage/large_holster/ceremonial_sword
 	name = "ceremonial sword scabbard"
@@ -105,12 +105,12 @@
 	icon_state = "ceremonial_sword_holster"//object icon is duplicate of katana holster, needs new icon at some point.
 	force = 12
 	flags_equip_slot = SLOT_WAIST
-	can_hold = list(/obj/item/weapon/claymore/mercsword/ceremonial)
+	can_hold = list(/obj/item/weapon/melee/claymore/mercsword/ceremonial)
 
 /obj/item/storage/large_holster/ceremonial_sword/full/Initialize()
 	..()
 	icon_state = "ceremonial_sword_holster_full"
-	new /obj/item/weapon/claymore/mercsword/ceremonial(src)
+	new /obj/item/weapon/melee/claymore/mercsword/ceremonial(src)
 
 /obj/item/storage/large_holster/m39
 	name = "\improper M276 pattern M39 holster rig"

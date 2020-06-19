@@ -126,8 +126,8 @@
 		var/obj/item/tool/match/M = W
 		if(M.heat_source)
 			L = 1
-	else if(istype(W, /obj/item/weapon/energy/sword))
-		var/obj/item/weapon/energy/sword/S = W
+	else if(istype(W, /obj/item/weapon/melee/energy/sword))
+		var/obj/item/weapon/melee/energy/sword/S = W
 		if(S.active)
 			L = 1
 	else if(istype(W, /obj/item/device/assembly/igniter))

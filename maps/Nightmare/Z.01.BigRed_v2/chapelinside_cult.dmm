@@ -244,7 +244,7 @@
 /area/bigredv2/outside/chapel)
 "aD" = (
 /obj/structure/table/woodentable,
-/obj/item/weapon/chainofcommand,
+/obj/item/weapon/melee/chainofcommand,
 /turf/open/floor{
 	icon_state = "cult";
 	dir = 2

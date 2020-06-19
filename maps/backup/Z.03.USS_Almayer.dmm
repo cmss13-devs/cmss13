@@ -2054,7 +2054,7 @@
 /obj/structure/safe,
 /obj/item/moneybag,
 /obj/item/clothing/glasses/monocle,
-/obj/item/weapon/telebaton,
+/obj/item/weapon/melee/telebaton,
 /obj/item/book/codebook,
 /turf/open/floor/almayer,
 /area/almayer/living/commandbunks)

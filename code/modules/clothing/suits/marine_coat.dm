@@ -22,7 +22,7 @@
 	/obj/item/device/flashlight,
 	/obj/item/storage/fancy/cigarettes,
 	/obj/item/tool/lighter,
-	/obj/item/weapon/baton,
+	/obj/item/weapon/melee/baton,
 	/obj/item/handcuffs,
 	/obj/item/device/binoculars,
 	/obj/item/attachable/bayonet,

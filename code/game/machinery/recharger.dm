@@ -10,7 +10,7 @@ obj/structure/machinery/recharger
 	active_power_usage = 15000	//15 kW
 	var/obj/item/charging = null
 	var/percent_charge_complete = 0
-	var/list/allowed_devices = list(/obj/item/weapon/baton, /obj/item/cell, /obj/item/weapon/gun/energy/taser, /obj/item/device/defibrillator)
+	var/list/allowed_devices = list(/obj/item/weapon/melee/baton, /obj/item/cell, /obj/item/weapon/gun/energy/taser, /obj/item/device/defibrillator)
 
 obj/structure/machinery/recharger/attackby(obj/item/G as obj, mob/user as mob)
 	if(istype(user,/mob/living/silicon))
@@ -84,8 +84,8 @@ obj/structure/machinery/recharger/process()
 				update_icon()
 			return
 
-		if(istype(charging, /obj/item/weapon/baton))
-			var/obj/item/weapon/baton/B = charging
+		if(istype(charging, /obj/item/weapon/melee/baton))
+			var/obj/item/weapon/melee/baton/B = charging
 			if(B.bcell)
 				if(!B.bcell.fully_charged())
 					B.bcell.give(active_power_usage*CELLRATE)
@@ -159,8 +159,8 @@ obj/structure/machinery/recharger/emp_act(severity)
 		if(E.power_supply)
 			E.power_supply.emp_act(severity)
 */
-	if(istype(charging, /obj/item/weapon/baton))
-		var/obj/item/weapon/baton/B = charging
+	if(istype(charging, /obj/item/weapon/melee/baton))
+		var/obj/item/weapon/melee/baton/B = charging
 		if(B.bcell)
 			B.bcell.charge = 0
 	..(severity)
@@ -186,7 +186,7 @@ obj/structure/machinery/recharger/update_icon()	//we have an update_icon() in ad
 
 	if(istype(charging, /obj/item/weapon/gun/energy/taser))
 		overlays += "recharger-taser"
-	else if(istype(charging, /obj/item/weapon/baton))
+	else if(istype(charging, /obj/item/weapon/melee/baton))
 		overlays += "recharger-baton"
 
 /*
@@ -195,7 +195,7 @@ obj/structure/machinery/recharger/wallcharger
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "wrecharger0"
 	active_power_usage = 25000	//25 kW , It's more specialized than the standalone recharger (guns and batons only) so make it more powerful
-	allowed_devices = list(/obj/item/weapon/gun/energy, /obj/item/weapon/baton)
+	allowed_devices = list(/obj/item/weapon/gun/energy, /obj/item/weapon/melee/baton)
 	icon_state_charged = "wrecharger2"
 	icon_state_idle = "wrecharger0"
 	icon_state_charging = "wrecharger1"

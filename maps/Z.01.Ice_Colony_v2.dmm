@@ -15290,7 +15290,7 @@
 /turf/open/floor/wood,
 /area/ice_colony/surface/bar/bar)
 "aMP" = (
-/obj/item/weapon/broken_bottle,
+/obj/item/weapon/melee/broken_bottle,
 /turf/open/floor/wood,
 /area/ice_colony/surface/bar/bar)
 "aMQ" = (
@@ -32133,7 +32133,7 @@
 /area/ice_colony/underground/storage/highsec)
 "bCS" = (
 /obj/structure/safe,
-/obj/item/weapon/katana/replica,
+/obj/item/weapon/melee/katana/replica,
 /obj/item/reagent_container/food/drinks/bottle/absinthe,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
@@ -35076,7 +35076,7 @@
 	},
 /area/ice_colony/underground/research)
 "bJP" = (
-/obj/item/weapon/baton,
+/obj/item/weapon/melee/baton,
 /turf/open/floor{
 	tag = "icon-dark2";
 	icon_state = "dark2"
@@ -40886,7 +40886,7 @@
 "bXR" = (
 /obj/structure/table/woodentable,
 /obj/item/handcuffs,
-/obj/item/weapon/baton,
+/obj/item/weapon/melee/baton,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/wood,
 /area/ice_colony/underground/security/marshal)

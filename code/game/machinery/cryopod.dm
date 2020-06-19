@@ -228,7 +228,7 @@ var/global/list/frozen_items = list(SQUAD_NAME_1 = list(), SQUAD_NAME_2 = list()
 			/obj/item/clothing/glasses/mgoggles, \
 			/obj/item/clothing/head/helmet/beret/marine/mp, \
 			/obj/item/clothing/gloves/black, \
-			/obj/item/weapon/baton, \
+			/obj/item/weapon/melee/baton, \
 			/obj/item/weapon/gun/energy/taser, \
 			/obj/item/clothing/glasses/sunglasses/sechud, \
 			/obj/item/device/radio/headset/almayer, \

@@ -510,8 +510,8 @@
 	},
 /area/lv624/lazarus/fitness)
 "bU" = (
-/obj/item/weapon/baseballbat/metal,
-/obj/item/weapon/baseballbat/metal{
+/obj/item/weapon/melee/baseballbat/metal,
+/obj/item/weapon/melee/baseballbat/metal{
 	pixel_x = 5
 	},
 /obj/structure/rack{

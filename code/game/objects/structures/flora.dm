@@ -518,9 +518,9 @@ ICE GRASS
 
 /obj/structure/flora/jungle/thickbush/attackby(var/obj/I as obj, var/mob/user as mob)
 	//hatchets and shiet can clear away undergrowth
-	if(I && (istype(I, /obj/item/tool/hatchet) || istype(I, /obj/item/attachable/bayonet) || istype(I, /obj/item/weapon/claymore/mercsword) && !stump))
+	if(I && (istype(I, /obj/item/tool/hatchet) || istype(I, /obj/item/attachable/bayonet) || istype(I, /obj/item/weapon/melee/claymore/mercsword) && !stump))
 		var/damage = rand(2,5)
-		if(istype(I,/obj/item/weapon/claymore/mercsword))
+		if(istype(I,/obj/item/weapon/melee/claymore/mercsword))
 			damage = rand(8,18)
 		if(indestructable)
 			//this bush marks the edge of the map, you can't destroy it

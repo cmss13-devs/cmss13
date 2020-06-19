@@ -700,7 +700,7 @@
 /area/yautja)
 "cI" = (
 /obj/structure/rack,
-/obj/item/weapon/twohanded/spear,
+/obj/item/weapon/melee/twohanded/spear,
 /turf/open/floor{
 	tag = "icon-floor4";
 	icon_state = "floor4"
@@ -815,7 +815,7 @@
 /obj/structure/table/reinforced{
 	layer = 2.69
 	},
-/obj/item/weapon/yautja_knife,
+/obj/item/weapon/melee/yautja_knife,
 /turf/open/floor/holofloor{
 	icon_state = "cult";
 	dir = 2
@@ -1351,7 +1351,7 @@
 /area/yautja)
 "ef" = (
 /obj/structure/table/reinforced,
-/obj/item/weapon/twohanded/dualsaber,
+/obj/item/weapon/melee/twohanded/dualsaber,
 /obj/structure/window/reinforced{
 	dir = 8;
 	health = 80
@@ -1367,7 +1367,7 @@
 /area/yautja)
 "eg" = (
 /obj/structure/table/reinforced,
-/obj/item/weapon/katana,
+/obj/item/weapon/melee/katana,
 /obj/structure/window/reinforced{
 	dir = 4
 	},
@@ -1599,7 +1599,7 @@
 /area/shuttle/distress/transit_big)
 "eK" = (
 /obj/structure/rack,
-/obj/item/weapon/yautja_knife,
+/obj/item/weapon/melee/yautja_knife,
 /obj/item/reagent_container/hypospray/autoinjector/yautja,
 /obj/structure/machinery/light/small{
 	tag = "icon-bulb1 (WEST)";
@@ -1614,7 +1614,7 @@
 /area/yautja)
 "eL" = (
 /obj/structure/rack,
-/obj/item/weapon/yautja_knife,
+/obj/item/weapon/melee/yautja_knife,
 /obj/item/reagent_container/hypospray/autoinjector/yautja,
 /obj/structure/machinery/light/small{
 	tag = "icon-bulb1 (EAST)";
@@ -1671,19 +1671,19 @@
 /area/yautja)
 "eQ" = (
 /obj/structure/rack,
-/obj/item/weapon/harpoon/yautja{
+/obj/item/weapon/melee/harpoon/yautja{
 	pixel_y = -2
 	},
-/obj/item/weapon/harpoon/yautja,
-/obj/item/weapon/harpoon/yautja{
+/obj/item/weapon/melee/harpoon/yautja,
+/obj/item/weapon/melee/harpoon/yautja{
 	pixel_x = 4;
 	pixel_y = 6
 	},
-/obj/item/weapon/harpoon/yautja{
+/obj/item/weapon/melee/harpoon/yautja{
 	pixel_x = 4;
 	pixel_y = 6
 	},
-/obj/item/weapon/harpoon/yautja{
+/obj/item/weapon/melee/harpoon/yautja{
 	pixel_x = -4;
 	pixel_y = -3
 	},
@@ -1694,17 +1694,17 @@
 /area/yautja)
 "eR" = (
 /obj/structure/rack,
-/obj/item/weapon/harpoon/yautja{
+/obj/item/weapon/melee/harpoon/yautja{
 	pixel_x = -4;
 	pixel_y = -3
 	},
-/obj/item/weapon/harpoon/yautja{
+/obj/item/weapon/melee/harpoon/yautja{
 	pixel_x = 4;
 	pixel_y = 6
 	},
-/obj/item/weapon/harpoon/yautja,
-/obj/item/weapon/harpoon/yautja,
-/obj/item/weapon/harpoon/yautja,
+/obj/item/weapon/melee/harpoon/yautja,
+/obj/item/weapon/melee/harpoon/yautja,
+/obj/item/weapon/melee/harpoon/yautja,
 /turf/open/floor/holofloor{
 	icon_state = "cult";
 	dir = 2
@@ -2315,8 +2315,8 @@
 /obj/structure/table/reinforced,
 /obj/item/device/assembly/voice,
 /obj/item/device/assembly/voice,
-/obj/item/weapon/baton/cattleprod,
-/obj/item/weapon/baton/cattleprod,
+/obj/item/weapon/melee/baton/cattleprod,
+/obj/item/weapon/melee/baton/cattleprod,
 /turf/open/floor/holofloor{
 	icon_state = "cult";
 	dir = 2
@@ -2476,12 +2476,12 @@
 	dir = 4
 	},
 /obj/structure/table/reinforced,
-/obj/item/weapon/claymore/mercsword,
-/obj/item/weapon/claymore/mercsword,
-/obj/item/weapon/claymore/mercsword,
-/obj/item/weapon/claymore/mercsword,
-/obj/item/weapon/claymore/mercsword,
-/obj/item/weapon/claymore/mercsword,
+/obj/item/weapon/melee/claymore/mercsword,
+/obj/item/weapon/melee/claymore/mercsword,
+/obj/item/weapon/melee/claymore/mercsword,
+/obj/item/weapon/melee/claymore/mercsword,
+/obj/item/weapon/melee/claymore/mercsword,
+/obj/item/weapon/melee/claymore/mercsword,
 /turf/open/floor/holofloor{
 	icon_state = "cult";
 	dir = 2

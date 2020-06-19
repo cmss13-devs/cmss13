@@ -275,7 +275,7 @@
 /obj/structure/safe,
 /obj/item/moneybag,
 /obj/item/clothing/glasses/monocle,
-/obj/item/weapon/telebaton,
+/obj/item/weapon/melee/telebaton,
 /turf/open/floor/prison{
 	tag = "icon-floor_plate";
 	icon_state = "floor_plate";
@@ -4079,7 +4079,7 @@
 /area/whiskey_outpost/inside/caves/caverns)
 "kg" = (
 /obj/structure/table,
-/obj/item/weapon/harpoon/yautja,
+/obj/item/weapon/melee/harpoon/yautja,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whiteyellowfull"

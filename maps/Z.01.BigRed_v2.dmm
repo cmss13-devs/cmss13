@@ -9914,7 +9914,7 @@
 	},
 /area/bigredv2/outside/medical)
 "ayP" = (
-/obj/item/weapon/broken_bottle,
+/obj/item/weapon/melee/broken_bottle,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	icon_state = "white"
@@ -25530,7 +25530,7 @@
 "bov" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/weapon/twohanded/fireaxe,
+/obj/item/weapon/melee/twohanded/fireaxe,
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "box" = (
@@ -26456,7 +26456,7 @@
 /area/bigredv2/outside/filtration_plant)
 "brW" = (
 /obj/structure/table,
-/obj/item/weapon/baton,
+/obj/item/weapon/melee/baton,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)

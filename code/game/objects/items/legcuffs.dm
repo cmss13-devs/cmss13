@@ -81,7 +81,7 @@
 /obj/item/legcuffs/yautja/attack_self(mob/user as mob)
 	..()
 	if(ishuman(user) && !user.stat && !user.is_mob_restrained())
-		if(!do_after(user, rand(30, 100), INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+		if(!do_after(user, rand(10, 30), INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 			return
 		armed =TRUE
 		anchored = TRUE

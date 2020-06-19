@@ -229,8 +229,9 @@ var/list/lobby_art_authors = list(
 	"Triiodine",
 	"Triiodine",
 	"Unknown",
-	"LightCrabPress",
-	"Redsting"
+	"LightCrabPress", // originally for TGMC, asked author if we could use it too
+	"Redsting", // originally drawing for discord banner
+	"Substance20", // commissioned by Neth
 )
 
 // Last global ID that was assigned to a mob (for round recording purposes)

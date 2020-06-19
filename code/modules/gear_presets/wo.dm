@@ -552,9 +552,7 @@
 	rank = JOB_SQUAD_SPECIALIST
 	paygrade = "E5"
 	role_comm_title = "Spc"
-
-/datum/equipment_preset/wo/marine/spec/load_skills(mob/living/carbon/human/H)
-	H.set_skills(/datum/skills/specialist)
+	skills = /datum/skills/specialist
 
 /datum/equipment_preset/wo/marine/spec/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/marine/satchel

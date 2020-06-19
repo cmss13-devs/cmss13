@@ -14,6 +14,8 @@
 			if (R.fields["name"] == real_name)
 				R.fields["p_stat"] = "*Deceased*"
 		processable_human_list -= src
+		if(hardcore)
+			qdel(src) //We just delete the corpse on WO to keep things simple and lag-free
 		return
 
 	..()

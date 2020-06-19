@@ -113,14 +113,7 @@
 		objective.activate() //Trying to rejig it just in case
 	to_chat(user, SPAN_NOTICE("You start reading \the [src]."))
 
-	var/time_to_read = reading_time
-	if(skillcheck(user, SKILL_READING, SKILL_READING_EXPERT))
-		time_to_read *= 0.5
-	else if(skillcheck(user, SKILL_READING, SKILL_READING_TRAINED))
-		time_to_read *= 0.75
-
-
-	if(!do_after(user, time_to_read, INTERRUPT_INCAPACITATED|INTERRUPT_NEEDHAND, BUSY_ICON_GENERIC)) // Can move while reading intel
+	if(!do_after(user, reading_time * user.get_skill_duration_multiplier(), INTERRUPT_INCAPACITATED|INTERRUPT_NEEDHAND, BUSY_ICON_GENERIC)) // Can move while reading intel
 		to_chat(user, SPAN_WARNING("You get distracted and lose your train of thought, you'll have to start over reading this."))
 		return FALSE
 
@@ -153,7 +146,7 @@
 	icon = 'icons/obj/items/paper.dmi'
 	icon_state = "paper_p_words"
 	w_class = SIZE_TINY
-	reading_time = 80
+	reading_time = 60
 	objective_type = /datum/cm_objective/document/progress_report
 
 /obj/item/document_objective/report/New()
@@ -167,7 +160,7 @@
 	icon = 'icons/obj/items/paper.dmi'
 	icon_state = "folder"
 	var/folder_color = "white" //display color
-	reading_time = 50
+	reading_time = 40
 	objective_type = /datum/cm_objective/document/folder
 	w_class = SIZE_TINY
 

@@ -28,12 +28,12 @@
 					/datum/job/logistics/tech/maint/whiskey,
 					/datum/job/logistics/tech/cargo/whiskey,
 					/datum/job/civilian/liaison/whiskey,
-					/datum/job/marine/leader/equipped,
-					/datum/job/marine/specialist/equipped,
-					/datum/job/marine/smartgunner/equipped,
-					/datum/job/marine/medic/equipped,
-					/datum/job/marine/engineer/equipped,
-					/datum/job/marine/standard/equipped
+					/datum/job/marine/leader/equipped/whiskey,
+					/datum/job/marine/specialist/equipped/whiskey,
+					/datum/job/marine/smartgunner/equipped/whiskey,
+					/datum/job/marine/medic/equipped/whiskey,
+					/datum/job/marine/engineer/equipped/whiskey,
+					/datum/job/marine/standard/equipped/whiskey
 )
 
 
@@ -45,7 +45,7 @@
 	var/finished = 0
 	var/has_started_timer = 10 //This is a simple timer so we don't accidently check win conditions right in post-game
 	var/randomovertime = 0 //This is a simple timer so we can add some random time to the game mode.
-	var/spawn_next_wave = 1200 //Spawn first batch at ~15 minutes
+	var/spawn_next_wave = MINUTES_10 //Spawn first batch at ~10 minutes
 	var/xeno_wave = 1 //Which wave is it
 
 	var/wave_ticks_passed = 0 //Timer for xeno waves
@@ -60,7 +60,7 @@
 			//This will get populated with spawn_xenos() proc
 	var/list/spawnxeno = list()
 
-	var/next_supply = 1 //At which wave does the next supply drop come?
+	var/next_supply = MINUTES_10 //At which wave does the next supply drop come?
 
 	var/ticks_passed = 0
 	var/lobby_time = 0 //Lobby time does not count for marine 1h win condition
@@ -95,6 +95,8 @@
 
 /datum/game_mode/whiskey_outpost/post_setup()
 	set waitfor = 0
+	update_controllers()
+	initialize_post_marine_gear_list()
 	lobby_time = world.time
 	randomovertime = pickovertime()
 	var/mob/M
@@ -124,6 +126,21 @@
 		if(0)
 			marine_announcement("This is Captain Hans Naiche, commander of the 3rd Battalion 'Dust Raiders' forces here on LV-624. In our attempts to establish a base on this planet, several of our patrols were wiped out by hostile creatures.  We're setting up a distress call, but we need you to hold [map_tag] in order for our engineers to set up the relay. We're prepping several M402 mortar units to provide fire support. If they overrun your positon, we will be wiped out with no way to call for help. Hold the line or we all die.", "Captain Naich, 3rd Battalion Command, LV-624 Garrison")
 
+/datum/game_mode/whiskey_outpost/proc/update_controllers()
+	//Update controllers while we're on this mode
+	if(SSitem_cleanup)
+		//Cleaning stuff more aggresively
+		SSitem_cleanup.start_processing_time = 0
+		SSitem_cleanup.percentage_of_garbage_to_delete = 1.0
+		SSitem_cleanup.wait = MINUTES_1
+	if(SSdefcon)
+		//Don't need DEFCON
+		SSdefcon.wait = MINUTES_30
+	if(SSxenocon)
+		//Don't need XENOCON
+		SSxenocon.wait = MINUTES_30
+
+
 //PROCCESS
 /datum/game_mode/whiskey_outpost/process()
 	. = ..()
@@ -150,6 +167,10 @@
 	if(has_started_timer > 0) //Initial countdown, just to be safe, so that everyone has a chance to spawn before we check anything.
 		has_started_timer--
 
+	if(world.time > next_supply)
+		place_whiskey_outpost_drop()
+		next_supply += MINUTES_5
+
 	if(checkwin_counter >= 10) //Only check win conditions every 10 ticks.
 		if(!finished && round_should_check_for_win)
 			check_win()
@@ -161,6 +182,15 @@
 	var/wave = pick(whiskey_outpost_waves[xeno_wave])
 	xeno_wave = min(xeno_wave + 1, WO_MAX_WAVE)
 	spawn_whiskey_outpost_xenos(wave)
+	announce_xeno_wave(wave)
+
+/datum/game_mode/whiskey_outpost/proc/announce_xeno_wave(var/datum/whiskey_outpost_wave/wave_data)
+	if(!istype(wave_data))
+		return
+	if(wave_data.command_announcement.len > 0)
+		marine_announcement(wave_data.command_announcement[1], wave_data.command_announcement[2])
+	if(wave_data.sound_effect.len > 0)
+		playsound_z(SURFACE_Z_LEVEL, pick(wave_data.sound_effect))
 
 //CHECK WIN
 /datum/game_mode/whiskey_outpost/check_win()
@@ -168,7 +198,7 @@
 
 	if(C[1] == 0)
 		finished = 1 //Alien win
-	else if(world.time > 36000 + lobby_time + initial(spawn_next_wave) + randomovertime)//one hour or so, plus lobby time, plus the setup time marines get
+	else if(world.time > HOURS_1 + lobby_time + initial(spawn_next_wave) + randomovertime)//one hour or so, plus lobby time, plus the setup time marines get
 		finished = 2 //Marine win
 
 /datum/game_mode/whiskey_outpost/proc/disablejoining()
@@ -187,8 +217,8 @@
 	return xeno_count
 
 /datum/game_mode/whiskey_outpost/proc/pickovertime()
-	var/randomtime = ((rand(0,6)+rand(0,6)+rand(0,6)+rand(0,6))*1000)
-	var/maxovertime = 24000
+	var/randomtime = ((rand(0,6)+rand(0,6)+rand(0,6)+rand(0,6))*SECONDS_100)
+	var/maxovertime = MINUTES_40
 	if (randomtime >= maxovertime)
 		return maxovertime
 	return randomtime
@@ -249,8 +279,8 @@
 /datum/game_mode/proc/auto_declare_completion_whiskey_outpost()
 	return
 
-/proc/place_whiskey_outpost_drop(var/turf/T,var/OT) //Art revamping spawns 13JAN17
-	if(!istype(T)) return
+/datum/game_mode/whiskey_outpost/proc/place_whiskey_outpost_drop(var/OT = "sup") //Art revamping spawns 13JAN17
+	var/turf/T = pick(supply_spawns)
 	var/randpick
 	var/list/randomitems = list()
 	var/list/spawnitems = list()

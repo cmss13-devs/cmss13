@@ -17,6 +17,9 @@
 
 	prev_gender = gender // Debug for plural genders
 
+	if(map_tag == MAP_WHISKEY_OUTPOST)
+		hardcore = TRUE //For WO disposing of corpses
+
 /mob/living/carbon/human/prepare_huds()
 	..()
 	//updating all the mob's hud images

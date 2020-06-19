@@ -91,14 +91,13 @@
 		hive_datum[hivenumber].stored_larva++
 		hive_datum[hivenumber].hive_ui.update_pooled_larva()
 
-	if(hardcore)
-		dead_hardcore_xeno_list += src
-
 	if(hive)
 		hive.remove_xeno(src)
 		if(hive.totalXenos.len == 1)
 			xeno_message(SPAN_XENOANNOUNCE("Your carapace rattles with dread. You are all that remains of the hive!"),3, hivenumber)
 
+	if(hardcore)
+		qdel(src)
 
 	callHook("death", list(src, gibbed))
 

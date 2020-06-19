@@ -82,6 +82,7 @@ var/global/datum/controller/gameticker/ticker = new()
 	else
 		if(map_tag == MAP_WHISKEY_OUTPOST)
 			src.mode = config.pick_mode("Whiskey Outpost")
+			RoleAuthority.replace_jobs(src.mode.roles_for_mode)
 		else
 			src.mode = config.pick_mode(master_mode)
 	if (!src.mode.can_start())

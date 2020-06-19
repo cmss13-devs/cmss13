@@ -1,5 +1,6 @@
 #define BICAOD_BLOOD_REDUCTION 0.67 //15 OD ticks to heal 1 blood loss
 #define CRYO_BLOOD_REDUCTION 0.67
+#define THWEI_BLOOD_REDUCTION 0.75
 #define BLOOD_ADD_PENALTY	1.5
 
 /datum/effects/bleeding
@@ -91,7 +92,7 @@
 		blood_loss -= BICAOD_BLOOD_REDUCTION
 
 	if (affected_mob.reagents && affected_mob.reagents.get_reagent_amount("thwei"))
-		blood_loss--
+		blood_loss -= THWEI_BLOOD_REDUCTION
 		
 	if(affected_mob.reagents && affected_mob.reagents.get_reagent_amount("quickclot")) // Annoying QC check
 		return FALSE

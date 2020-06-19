@@ -91,7 +91,8 @@
 		if(!(get_dist(src, src.attached) <= 1 && isturf(src.attached.loc)))
 			visible_message("The needle is ripped out of [src.attached], doesn't that hurt?")
 			attached.apply_damage(3, BRUTE, pick("r_arm", "l_arm"))
-			attached.emote("scream")
+			if(!(attached.species && (attached.species.flags & NO_PAIN)))
+				attached.emote("scream")
 			attached = null
 			update_icon()
 			stop_processing()

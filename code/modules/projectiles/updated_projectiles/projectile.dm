@@ -712,7 +712,8 @@
 		if(ammo_flags & AMMO_INCENDIARY)
 			adjust_fire_stacks(rand(6,10))
 			IgniteMob()
-			emote("scream")
+			if(isHumanStrict(src))
+				emote("scream")
 			to_chat(src, SPAN_HIGHDANGER("You burst into flames!! Stop drop and roll!"))
 	return TRUE
 
@@ -785,7 +786,7 @@
 			IgniteMob()
 			if(!stat && !(species.flags & NO_PAIN))
 				emote("scream")
-				to_chat(src, SPAN_HIGHDANGER("You burst into flames!! Stop drop and roll!"))
+			to_chat(src, SPAN_HIGHDANGER("You burst into flames!! Stop drop and roll!"))
 
 		if(P.ammo.shrapnel_chance > 0 && prob(P.ammo.shrapnel_chance + round(damage / 10)))
 			if(ammo_flags && AMMO_SPECIAL_EMBED)

@@ -369,7 +369,7 @@
 		for(var/mob/M in viewers(src, null))
 			shake_camera(M, 40, 1)
 
-		if(ishuman(T))
+		if(isHumanStrict(T))
 			T.emote("scream")
 		playsound(T.loc, pick(murder_sound), 50, 1)
 
@@ -378,7 +378,7 @@
 		animation_flash_color(T)
 		T.anchored = 0
 		T.pixel_y = original_y
-		if(ishuman(T))
+		if(isHumanStrict(T))
 			T.emote("scream")
 
 		murdering = 0

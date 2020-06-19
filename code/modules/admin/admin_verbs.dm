@@ -84,6 +84,7 @@ var/list/admin_verbs_debug = list(
     /client/proc/getruntimelog,                     /*allows us to access runtime logs to somebody*/
 	/client/proc/cmd_debug_make_powernets,
 	/client/proc/debug_controller,
+	/client/proc/debug_game_mode,
 	/client/proc/cmd_debug_mob_lists,
 	/client/proc/cmd_debug_list_processing_items,
 	/client/proc/cmd_admin_delete,
@@ -127,7 +128,8 @@ var/list/debug_verbs = list(
 var/list/admin_verbs_paranoid_debug = list(
 	/client/proc/advproccall,
 	/client/proc/callatomproc,
-	/client/proc/debug_controller
+	/client/proc/debug_controller,
+	/client/proc/debug_game_mode,
 )
 
 var/list/admin_verbs_possess = list(

@@ -72,3 +72,20 @@
 
 	debug_variables(controller)
 	message_admins("Admin [key_name_admin(usr)] is debugging the [controller] controller.")
+
+/client/proc/debug_game_mode()
+	set category = "Debug"
+	set name = "B: Debug Game Mode"
+	set desc = "debug the various periodic loop controllers for the game (be careful!)."
+
+	if (!admin_holder || !(usr.client.admin_holder.rights & R_DEBUG))
+		return
+
+	if(!isnull(ticker) && !isnull(ticker.mode))
+		debug_variables(ticker.mode)
+	else
+		if(isnull(ticker))
+			to_chat(usr, SPAN_WARNING("ticker is null!"))
+		else
+			to_chat(usr, SPAN_WARNING("ticker.mode is null!"))
+	message_admins("Admin [key_name_admin(usr)] is debugging the Game Mode.")

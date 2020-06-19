@@ -1,7 +1,7 @@
 //Skills
 
 /datum/skills/honor_guard
-	name = "Honor Guard"
+	name = "Honor Guard" //MP
 	skills = list(
 		SKILL_VEHICLE = SKILL_VEHICLE_CREWMAN,
 		SKILL_POWERLOADER = SKILL_POWERLOADER_MASTER,
@@ -10,7 +10,7 @@
 	)
 
 /datum/skills/honor_guard/vet
-	name = "Honor Guard Verteran"
+	name = "Honor Guard Verteran" //SO
 	skills = list(
 		SKILL_VEHICLE = SKILL_VEHICLE_CREWMAN,
 		SKILL_POWERLOADER = SKILL_POWERLOADER_MASTER,
@@ -18,7 +18,7 @@
 	)
 
 /datum/skills/honor_guard/spec
-	name = "Honor Guard Specialist"
+	name = "Honor Guard Specialist" //Tank crew
 	skills = list(
 		SKILL_VEHICLE = SKILL_VEHICLE_CREWMAN,
 		SKILL_POWERLOADER = SKILL_POWERLOADER_MASTER,

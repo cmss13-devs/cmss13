@@ -114,6 +114,15 @@ var/list/departments = list("Command", "Medical", "Engineering", "Security", "Ci
 
 	load_whitelist()
 
+
+/datum/authority/branch/role/proc/replace_jobs(var/list/jobs)
+	//Replaces one set of jobs with another - used for WO
+	for(var/i in jobs)
+		var/datum/job/J = new i
+		roles_for_mode[J.title] = J
+		roles_by_name[J.title] = J
+
+
 /datum/authority/branch/role/proc/load_whitelist(filename = "config/role_whitelist.txt")
 	var/L[] = file2list(filename)
 	var/P[]
@@ -198,7 +207,7 @@ var/list/departments = list("Command", "Medical", "Engineering", "Security", "Ci
 	//PART II: Setting up our player variables and lists, to see if we have anyone to destribute.
 
 	unassigned_players  = new
-	
+
 	var/good_age_min = 20//Best command candidates are in the 25 to 40 range.
 	var/good_age_max = 50
 	for(var/mob/new_player/M in player_list) //Get all players who are ready.
@@ -253,7 +262,7 @@ var/list/departments = list("Command", "Medical", "Engineering", "Security", "Ci
 	// if we don't have at least one thing - abort
 	if(!P || !G || !hive || P.roundstart_picked)
 		return
-	
+
 	if(hive.stored_larva)
 		hive.stored_larva--
 		G.transform_xeno(P)
@@ -451,10 +460,10 @@ roles willy nilly.
 */
 
 /datum/authority/branch/role/proc/equip_role(mob/living/M, datum/job/J, turf/late_join)
-	if(!istype(M) || !istype(J)) 
+	if(!istype(M) || !istype(J))
 		return
 	//If they didn't join late, we want to move them to the start position for their role.
-	if(late_join) 
+	if(late_join)
 		M.loc = late_join //If they late joined, we passed on the location from the parent proc.
 	else //If they didn't, we need to find a suitable spawn location for them.
 		var/i
@@ -465,9 +474,9 @@ roles willy nilly.
 			if(L && L.name == J.title && !locate(/mob/living) in L.loc)
 				S = L
 				break
-		if(!S) 
+		if(!S)
 			S = locate("start*[J.title]") //Old type spawn.
-		if(istype(S) && istype(S.loc, /turf)) 
+		if(istype(S) && istype(S.loc, /turf))
 			M.loc = S.loc
 		else
 			to_world(SPAN_DEBUG("Error setting up character. No spawn location could be found."))
@@ -520,7 +529,7 @@ roles willy nilly.
 	//we make a list of squad that is randomized so alpha isn't always lowest squad.
 	var/list/squads_copy = squads.Copy()
 	var/list/mixed_squads = list()
-	
+
 	for(var/i= 1 to squads_copy.len)
 		var/datum/squad/S = pick_n_take(squads_copy)
 		if (S.usable)
@@ -562,7 +571,7 @@ roles willy nilly.
 
 //This proc is a bit of a misnomer, since there's no actual randomization going on.
 /datum/authority/branch/role/proc/randomize_squad(var/mob/living/carbon/human/H, var/skip_limit = FALSE)
-	if(!H) 
+	if(!H)
 		return
 
 	if(!squads.len)

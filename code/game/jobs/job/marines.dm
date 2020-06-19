@@ -35,6 +35,11 @@
 
 /datum/job/marine/leader/equipped
 	flags_startup_parameters = ROLE_ADD_TO_SQUAD
+	gear_preset = "USCM Cryo Squad Leader (Equipped)"
+
+/datum/job/marine/leader/equipped/whiskey
+	flags_startup_parameters = ROLE_ADD_TO_SQUAD
+	gear_preset = "WO Dust Raider Squad Leader"
 
 /datum/job/marine/engineer
 	title = JOB_SQUAD_ENGI
@@ -62,6 +67,11 @@
 
 /datum/job/marine/engineer/equipped
 	flags_startup_parameters = ROLE_ADD_TO_SQUAD
+	gear_preset = "USCM Cryo Engineer (Equipped)"
+
+/datum/job/marine/engineer/equipped/whiskey
+	flags_startup_parameters = ROLE_ADD_TO_SQUAD
+	gear_preset = "WO Dust Raider Squad Engineer"
 
 /datum/job/marine/medic
 	title = JOB_SQUAD_MEDIC
@@ -89,6 +99,11 @@
 
 /datum/job/marine/medic/equipped
 	flags_startup_parameters = ROLE_ADD_TO_SQUAD
+	gear_preset = "USCM Cryo Medic (Equipped)"
+
+/datum/job/marine/medic/equipped/whiskey
+	flags_startup_parameters = ROLE_ADD_TO_SQUAD
+	gear_preset = "WO Dust Raider Squad Medic"
 
 /datum/job/marine/specialist
 	title = JOB_SQUAD_SPECIALIST
@@ -115,6 +130,11 @@
 
 /datum/job/marine/specialist/equipped
 	flags_startup_parameters = ROLE_ADD_TO_SQUAD
+	gear_preset = "USCM Cryo Specialist (Equipped)"
+
+/datum/job/marine/specialist/equipped/whiskey
+	flags_startup_parameters = ROLE_ADD_TO_SQUAD
+	gear_preset = "WO Dust Raider Squad Specialist"
 
 /datum/job/marine/smartgunner
 	title = JOB_SQUAD_SMARTGUN
@@ -141,6 +161,11 @@
 
 /datum/job/marine/smartgunner/equipped
 	flags_startup_parameters = ROLE_ADD_TO_SQUAD
+	gear_preset = "USCM Smartgunner"
+
+/datum/job/marine/smartgunner/equipped/whiskey
+	flags_startup_parameters = ROLE_ADD_TO_SQUAD
+	gear_preset = "WO Dust Raider Squad Smartgunner"
 
 /datum/job/marine/standard
 	title = JOB_SQUAD_MARINE
@@ -159,3 +184,8 @@
 
 /datum/job/marine/standard/equipped
 	flags_startup_parameters = ROLE_ADD_TO_SQUAD
+	gear_preset = "USCM PFC (Pulse Rifle)"
+
+/datum/job/marine/standard/equipped/whiskey
+	flags_startup_parameters = ROLE_ADD_TO_SQUAD
+	gear_preset = "WO Dust Raider Squad Marine (PFC)"

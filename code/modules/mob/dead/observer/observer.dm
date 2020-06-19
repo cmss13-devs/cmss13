@@ -31,6 +31,7 @@
 							)
 	universal_speak = 1
 	var/atom/movable/following = null
+	alpha = 127
 
 /mob/dead/observer/New(mob/body)
 	sight |= SEE_TURFS|SEE_MOBS|SEE_OBJS|SEE_SELF
@@ -59,8 +60,6 @@
 		else
 			icon = body.icon
 			icon_state = body.icon_state
-
-		alpha = 127
 
 		gender = body.gender
 		if(body.mind && body.mind.name)
@@ -480,6 +479,15 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		see_invisible = SEE_INVISIBLE_OBSERVER
 	else
 		see_invisible = SEE_INVISIBLE_OBSERVER_NOLIGHTING
+
+/mob/dead/observer/verb/toggle_self_visibility()
+	set name = "Toggle Self Visibility"
+	set category = "Ghost"
+
+	if (alpha)
+		alpha = 0
+	else
+		alpha = initial(alpha)
 
 /mob/dead/observer/verb/view_manifest()
 	set name = "View Crew Manifest"

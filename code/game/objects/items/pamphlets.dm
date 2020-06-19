@@ -41,16 +41,8 @@
 	skill_to_increment = SKILL_CONSTRUCTION
 	secondary_skill = SKILL_ENGINEER
 
-/obj/item/pamphlet/reading_basic
-	name = "reading instructional pamphlet"
-	desc = "A pamphlet used to quickly impart vital knowledge. This one has a reading insignia. The title reads 'A quick guide to military codes, cyphers, key phrases and intel gathering for aspiring IOs.'"
-	icon_state = "pamphlet_reading"
-	skill_to_increment = SKILL_READING
-	skill_increment = SKILL_READING_TRAINED
-
-/obj/item/pamphlet/reading_advanced
-	name = "reading instructional pamphlet, advanced"
-	desc = "A pamphlet used to quickly impart vital knowledge. This one has a reading insignia. The title reads 'Speed reading between the lines - a guide for aspiring spies.'"
-	icon_state = "pamphlet_reading"
-	skill_to_increment = SKILL_READING
-	skill_increment = SKILL_READING_EXPERT
+/obj/item/pamphlet/powerloader
+	name = "powerloader instructional pamphlet"
+	desc = "A pamphlet used to quickly impart vital knowledge. This one has a powerloader insignia. The title reads 'Moving freight and squishing heads - a practical guide to Caterpillar P-5000 Work Loader'."
+	skill_to_increment = SKILL_POWERLOADER
+	skill_increment = SKILL_POWERLOADER_TRAINED

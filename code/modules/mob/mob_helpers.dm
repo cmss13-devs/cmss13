@@ -477,9 +477,6 @@ var/list/intents = list("help","disarm","grab","hurt")
 		//if(SKILL_POLICE)
 		//if(SKILL_POWERLOADER)
 		//if(SKILL_VEHICLE)
-		if(SKILL_READING)
-			if(skillcheck(src, SKILL_READING, SKILL_READING_EXPERT))
-				return SYNTH_DURATION_MULTIPLIER
 		else
 			if(isYautja(src) || (isSynth(src) && !isEarlySynthetic(src)))
 				return SYNTH_DURATION_MULTIPLIER //Acceleration for things that don't fall under skills

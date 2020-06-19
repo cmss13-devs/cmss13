@@ -15,7 +15,6 @@
 #define SKILL_POLICE         "police"
 #define SKILL_POWERLOADER    "powerloader"
 #define SKILL_VEHICLE        "vehicles"
-#define SKILL_READING        "reading"
 
 //firearms skill (general knowledge of guns) (hidden skill)
 //increase or decrase accuracy, recoil, and firing delay of rifles and smgs.
@@ -130,10 +129,3 @@
 #define SKILL_VEHICLE_LARGE   2
 //Can drive all vehicles and man their guns
 #define SKILL_VEHICLE_CREWMAN 3
-
-
-//reading skill
-//for faster intel processing
-#define SKILL_READING_NONE		0
-#define SKILL_READING_TRAINED	1
-#define SKILL_READING_EXPERT	2

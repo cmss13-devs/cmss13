@@ -151,10 +151,6 @@
 			return FALSE
 
 	if(resin_to_build == RESIN_NEST)
-		if(hive && src == hive.living_xeno_queen)
-			to_chat(src, SPAN_WARNING("You don't bother with such small affairs as building nests."))
-			return 
-
 		if(!(alien_weeds.weed_strength >= WEED_LEVEL_HIVE))
 			to_chat(src, SPAN_WARNING("These weeds are not strong enough to hold the nest."))
 			return

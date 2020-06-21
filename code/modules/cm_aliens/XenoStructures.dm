@@ -271,5 +271,5 @@
 
 /obj/structure/mineral_door/resin/thick
 	name = "thick resin door"
-	health = 160
+	health = HEALTH_DOOR_XENO_THICK
 	hardness = 2.0

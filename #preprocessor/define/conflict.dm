@@ -156,8 +156,9 @@
 #define HEALTH_WALL_XENO_MEMBRANE 			300
 #define HEALTH_WALL_XENO_MEMBRANE_THICK 	600
 
-#define HEALTH_DOOR 		2000
-#define HEALTH_DOOR_XENO 	600
+#define HEALTH_DOOR 		    2000
+#define HEALTH_DOOR_XENO 	    600
+#define HEALTH_DOOR_XENO_THICK 	900
 
 #define THROWFORCE_COEFF            0.02 // Coefficient of throwforce when calculating damage from an atom colliding with a mob
 #define MOB_SIZE_COEFF              20 // Coefficient of mobsize when calculating damage from a mob colliding with a dense atom

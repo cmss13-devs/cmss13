@@ -666,6 +666,7 @@
 /datum/equipment_preset/uscm_ship/cmp
 	name = "USCM Chief MP (CMP)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	idtype = /obj/item/card/id/silver
 
 	access = list(
 		ACCESS_IFF_MARINE,

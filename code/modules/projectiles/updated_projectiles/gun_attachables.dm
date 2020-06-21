@@ -210,7 +210,7 @@ Defined in conflicts.dm of the #defines folder.
 	flags_armor_protection = SLOT_FACE
 
 	attach_icon = "bayonet_a"
-	melee_mod = 35
+	melee_mod = 20
 	slot = "muzzle"
 	pixel_shift_x = 14 //Below the muzzle.
 	pixel_shift_y = 18

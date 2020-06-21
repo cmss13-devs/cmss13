@@ -2368,7 +2368,7 @@
 	dir = 1;
 	name = "Laundry Unit";
 	req_access = list();
-	req_one_access = list(0)
+	req_one_access = null
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat{
@@ -3144,7 +3144,7 @@
 /obj/structure/machinery/door/window/brigdoor/westleft{
 	dir = 1;
 	name = "Identification Desk";
-	req_access = list(13)
+	req_access = list(104)
 	},
 /turf/open/floor/corsat{
 	icon_state = "plate"
@@ -4431,7 +4431,7 @@
 /obj/structure/machinery/door/window/brigdoor/westleft{
 	dir = 1;
 	name = "Cargo Desk";
-	req_access = list(13)
+	req_access = list(101)
 	},
 /turf/open/floor/corsat{
 	icon_state = "plate"
@@ -5794,7 +5794,7 @@
 /area/corsat/omega/cargo)
 "apH" = (
 /obj/structure/machinery/computer/telecomms/monitor{
-	req_one_access = list(19,200)
+	req_one_access = list(19,200,104)
 	},
 /obj/structure/machinery/light{
 	dir = 8
@@ -5853,7 +5853,7 @@
 	dir = 1;
 	name = "\improper Toilet Unit";
 	req_access = list();
-	req_one_access = list(0)
+	req_one_access = null
 	},
 /turf/open/floor/corsat{
 	dir = 10;
@@ -8053,7 +8053,7 @@
 /obj/structure/machinery/door/window/brigdoor/westleft{
 	dir = 1;
 	name = "Identification Desk";
-	req_access = list(13)
+	req_access = list(104)
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	density = 0;
@@ -9503,7 +9503,7 @@
 /obj/structure/machinery/light,
 /obj/structure/closet/secure_closet{
 	name = "secure evidence locker";
-	req_access = list(3)
+	req_access = list(104)
 	},
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/corsat{
@@ -9519,7 +9519,7 @@
 "azS" = (
 /obj/structure/closet/secure_closet{
 	name = "secure evidence locker";
-	req_access = list(3)
+	req_access = list(104)
 	},
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/corsat{
@@ -12499,7 +12499,7 @@
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "\improper Toilet Unit";
 	req_access = list();
-	req_one_access = list(0)
+	req_one_access = null
 	},
 /turf/open/floor/corsat{
 	dir = 10;
@@ -13028,7 +13028,7 @@
 /obj/structure/machinery/door/window/brigdoor/westleft{
 	dir = 1;
 	name = "Administration Desk";
-	req_access = list(13)
+	req_access = list(104)
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	density = 0;
@@ -14016,7 +14016,7 @@
 "aLb" = (
 /obj/structure/closet/secure_closet{
 	name = "secure evidence locker";
-	req_access = list(3)
+	req_access = list(104)
 	},
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/corsat{
@@ -14035,7 +14035,7 @@
 "aLd" = (
 /obj/structure/closet/secure_closet{
 	name = "secure evidence locker";
-	req_access = list(3)
+	req_access = list(104)
 	},
 /obj/structure/machinery/light{
 	dir = 8
@@ -14411,7 +14411,7 @@
 /obj/structure/machinery/door/window/brigdoor/westleft{
 	dir = 1;
 	name = "Identification Desk";
-	req_access = list(13)
+	req_access = list(104)
 	},
 /turf/open/floor/corsat{
 	icon_state = "plate"
@@ -15026,7 +15026,7 @@
 /obj/item/clothing/glasses/material,
 /obj/structure/machinery/door/window/eastright{
 	name = "Prototype Racks";
-	req_access = list(19)
+	req_access = list(103)
 	},
 /obj/structure/window/reinforced/toughened,
 /obj/structure/machinery/light{
@@ -15090,7 +15090,7 @@
 /obj/item/clothing/glasses/night,
 /obj/structure/machinery/door/window/eastright{
 	name = "Prototype Racks";
-	req_access = list(19)
+	req_access = list(103)
 	},
 /obj/structure/window/reinforced/toughened,
 /obj/effect/landmark/objective_landmark/science,
@@ -15910,7 +15910,7 @@
 /obj/structure/machinery/door/window/brigdoor/westleft{
 	dir = 1;
 	name = "Identification Desk";
-	req_access = list(13)
+	req_access = list(104)
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	density = 0;
@@ -16449,7 +16449,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 1;
 	name = "Chemistry";
-	req_access = list(14);
+	req_access = null;
 	req_one_access = list(103)
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -18990,7 +18990,7 @@
 /area/corsat/omega/airlocknorth)
 "aXo" = (
 /obj/structure/machinery/computer/telecomms/server{
-	req_one_access = list(19,200)
+	req_one_access = list(19,200,102)
 	},
 /turf/open/floor/almayer{
 	icon_plating = "tcomms";
@@ -19324,7 +19324,7 @@
 /obj/structure/machinery/shower,
 /obj/structure/machinery/door/window/southleft{
 	opacity = 1;
-	req_access = list(19)
+	req_access = null
 	},
 /obj/item/tool/soap,
 /obj/structure/machinery/light/small{
@@ -19339,7 +19339,7 @@
 /obj/structure/machinery/shower,
 /obj/structure/machinery/door/window/southleft{
 	opacity = 1;
-	req_access = list(19)
+	req_access = null
 	},
 /obj/structure/machinery/light/small{
 	dir = 8
@@ -20690,7 +20690,7 @@
 /obj/structure/machinery/door/window/brigdoor/westleft{
 	dir = 1;
 	name = "Identification Desk";
-	req_access = list(13)
+	req_access = list(104)
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	density = 0;
@@ -20793,7 +20793,7 @@
 /obj/structure/machinery/door/window/brigdoor/westleft{
 	dir = 1;
 	name = "Identification Desk";
-	req_access = list(13)
+	req_access = list(104)
 	},
 /turf/open/floor/corsat{
 	icon_state = "plate"
@@ -24460,7 +24460,7 @@
 /obj/structure/machinery/door/window/brigdoor/westleft{
 	dir = 1;
 	name = "Identification Desk";
-	req_access = list(13)
+	req_access = list(104)
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	density = 0;
@@ -29356,7 +29356,7 @@
 /obj/structure/machinery/door/window/brigdoor/westleft{
 	dir = 1;
 	name = "Identification Desk";
-	req_access = list(13)
+	req_access = list(104)
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	density = 0;
@@ -29381,7 +29381,7 @@
 "bzq" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "Research Complex Theta";
-	req_access = list(14);
+	req_access = null;
 	req_one_access = list(103)
 	},
 /turf/open/floor/corsat{
@@ -29392,7 +29392,7 @@
 /obj/structure/machinery/door/airlock/almayer/maint{
 	name = "Autopsy Storage";
 	req_access = list(103);
-	req_one_access = list(0)
+	req_one_access = null
 	},
 /turf/open/floor/corsat{
 	icon_state = "retrosquareslight"
@@ -29482,7 +29482,7 @@
 /obj/structure/machinery/door/window/eastright{
 	dir = 2;
 	name = "Secure Racks";
-	req_access = list(19)
+	req_access = list(103)
 	},
 /obj/item/tool/weedkiller/triclopyr,
 /obj/item/tool/weedkiller/lindane,
@@ -29517,7 +29517,7 @@
 /obj/structure/machinery/door/window/eastright{
 	dir = 2;
 	name = "Secure Racks";
-	req_access = list(19)
+	req_access = list(103)
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -29804,7 +29804,7 @@
 /obj/structure/machinery/door/window/eastright{
 	dir = 1;
 	name = "Secure Racks";
-	req_access = list(19)
+	req_access = list(103)
 	},
 /obj/item/XenoItem/AntiAcid,
 /turf/open/floor/corsat{
@@ -29835,7 +29835,7 @@
 /obj/structure/machinery/door/window/eastright{
 	dir = 1;
 	name = "Secure Racks";
-	req_access = list(19)
+	req_access = list(103)
 	},
 /obj/item/XenoItem/ResinPaste,
 /turf/open/floor/corsat{
@@ -29883,7 +29883,7 @@
 /obj/structure/machinery/door/window/eastright{
 	dir = 1;
 	name = "Secure Racks";
-	req_access = list(19)
+	req_access = list(103)
 	},
 /turf/open/floor/corsat{
 	dir = 6;
@@ -30371,7 +30371,7 @@
 /obj/structure/machinery/door/window/eastright{
 	dir = 2;
 	name = "Secure Racks";
-	req_access = list(19)
+	req_access = list(103)
 	},
 /obj/item/XenoBio/Blood,
 /turf/open/floor/corsat{
@@ -30394,7 +30394,7 @@
 /obj/structure/machinery/door/window/eastright{
 	dir = 1;
 	name = "Secure Racks";
-	req_access = list(19)
+	req_access = list(103)
 	},
 /turf/open/floor/corsat{
 	icon_state = "purplewhite"
@@ -30563,7 +30563,7 @@
 /obj/item/clothing/glasses/thermal,
 /obj/structure/machinery/door/window/eastright{
 	name = "Prototype Racks";
-	req_access = list(19)
+	req_access = list(103)
 	},
 /obj/structure/window/reinforced/toughened,
 /obj/effect/landmark/objective_landmark/science,
@@ -35375,7 +35375,7 @@
 "bRr" = (
 /obj/structure/closet/secure_closet{
 	name = "secure evidence locker";
-	req_access = list(3)
+	req_access = list(104)
 	},
 /obj/structure/machinery/light{
 	dir = 4
@@ -35635,7 +35635,7 @@
 	},
 /obj/structure/closet/secure_closet{
 	name = "secure evidence locker";
-	req_access = list(3)
+	req_access = list(104)
 	},
 /turf/open/floor/corsat{
 	dir = 10;
@@ -35645,7 +35645,7 @@
 "bSp" = (
 /obj/structure/closet/secure_closet{
 	name = "secure evidence locker";
-	req_access = list(3)
+	req_access = list(104)
 	},
 /turf/open/floor/corsat{
 	dir = 8;
@@ -36069,7 +36069,7 @@
 /obj/item/clothing/glasses/welding/superior,
 /obj/structure/machinery/door/window/eastright{
 	name = "Prototype Racks";
-	req_access = list(19)
+	req_access = list(103)
 	},
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/corsat{
@@ -37764,7 +37764,7 @@
 /obj/structure/machinery/door/airlock/almayer/research/glass{
 	dir = 1;
 	name = "Weapons Development";
-	req_access = list(14);
+	req_access = null;
 	req_one_access = list(103)
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -38531,7 +38531,7 @@
 /obj/structure/machinery/door/window/eastright{
 	dir = 2;
 	name = "Secure Racks";
-	req_access = list(19)
+	req_access = list(103)
 	},
 /turf/open/floor/corsat{
 	dir = 5;
@@ -39102,7 +39102,7 @@
 /area/corsat/sigma/hangar/checkpoint)
 "cMw" = (
 /obj/structure/machinery/computer/telecomms/traffic{
-	req_one_access = list(19,200)
+	req_one_access = list(19,200,102)
 	},
 /turf/open/floor/almayer{
 	icon_plating = "tcomms";
@@ -45538,7 +45538,7 @@
 "hpC" = (
 /obj/structure/closet/secure_closet{
 	name = "secure evidence locker";
-	req_access = list(3)
+	req_access = list(104)
 	},
 /turf/open/floor/corsat{
 	dir = 4;
@@ -46037,7 +46037,8 @@
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
 	name = "Firing Range";
-	req_access = list(200);
+	req_one_access = list(200,102,103);
+	req_access = null;
 	use_power = 0
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -51320,7 +51321,7 @@
 /obj/structure/machinery/door/airlock/almayer/research/glass{
 	dir = 1;
 	name = "Teleportation Lab";
-	req_access = list(14);
+	req_access = list();
 	req_one_access = list(103)
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -53850,8 +53851,8 @@
 /obj/structure/machinery/door/airlock/almayer/research/glass{
 	dir = 1;
 	name = "Teleportation Chamber";
-	req_access = list(14);
-	req_one_access = list(101)
+	req_access = null;
+	req_one_access = list(101,103)
 	},
 /turf/open/floor/corsat{
 	icon_state = "lightplate"
@@ -53900,7 +53901,8 @@
 "nqd" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
 	name = "Administration";
-	req_access = list(200)
+	req_one_access = list(200,104);
+	req_access = null
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat{
@@ -61750,8 +61752,8 @@
 "sRK" = (
 /obj/structure/table/reinforced,
 /obj/structure/machinery/computer/secure_data{
-	req_access = list(201);
-	req_one_access = null
+	req_one_access = list(201,104);
+	req_access = null
 	},
 /turf/open/floor/corsat{
 	dir = 8;
@@ -67506,7 +67508,7 @@
 /obj/structure/machinery/door/window/brigdoor/westleft{
 	dir = 1;
 	name = "Identification Desk";
-	req_access = list(13)
+	req_access = list(104)
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	density = 0;

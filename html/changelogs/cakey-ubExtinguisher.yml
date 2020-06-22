@@ -1,7 +1,0 @@
-author: Cakey
-
-delete-after: True
-
-changes: 
-  - rscadd: "Added the underbarrel fire extinguisher. Carries the same amount as a mini extinguisher, and can be attached to most weapons."
-  - rscadd: "Flamethrower spec's flamer will now spawn with a default attached UB extinguisher."

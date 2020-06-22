@@ -72,6 +72,8 @@ def generate_changelogs(pid, branch, pat):
 
             # Check if this MR was merged later than the current most lately merged MR
             latest_mr_date = dateparser.parse(working_branch.get_latest_mr_date())
+            if merge_request.get("merged_at") is None:
+                continue
             mr_merged_date = dateparser.parse(merge_request.get("merged_at"))
 
             # This can happen if someone updates the MR between the script being run

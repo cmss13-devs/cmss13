@@ -83,8 +83,12 @@ class Branch:
         # being merged, but it is technically possible, so better safe than sorry
         for merge_request in mrs:
             mr_merged_at = merge_request.get("merged_at")
-
+            
+            if mr_merged_at is None:
+                continue
+                       
             latest_date = dateparser.parse(self.latest_mr_date)
+            
             mr_merged_date = dateparser.parse(mr_merged_at)
 
             # If this has happened, remove the troublemaker from the list of MRs

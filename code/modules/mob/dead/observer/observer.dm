@@ -94,6 +94,7 @@
 
 /mob/dead/observer/Dispose()
 	following = null
+	langchat_detach()
 	return ..()
 
 /mob/dead/observer/MouseDrop(atom/A)
@@ -163,6 +164,7 @@ Works together with spawning an observer, noted above.
 	mind = null
 
 	if(ghost.client)
+		ghost.client.langchat_ghost_setup()
 		ghost.client.change_view(world_view_size) //reset view range to default
 		ghost.client.pixel_x = 0 //recenters our view
 		ghost.client.pixel_y = 0

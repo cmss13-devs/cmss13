@@ -269,8 +269,6 @@
 	return
 
 /datum/species/proc/handle_post_spawn(var/mob/living/carbon/human/H) //Handles anything not already covered by basic species assignment.
-	if(!H.languages || H.languages.len == 0)
-		H.set_languages(list("English"))
 	add_inherent_verbs(H)
 
 /datum/species/proc/handle_death(var/mob/living/carbon/human/H) //Handles any species-specific death events.

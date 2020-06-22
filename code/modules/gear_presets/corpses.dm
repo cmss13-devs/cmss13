@@ -5,11 +5,14 @@
 	assignment = JOB_COLONIST
 	rank = JOB_COLONIST
 	faction = FACTION_COLONIST
-
+	languages = list()
 	access = list(ACCESS_CIVILIAN_PUBLIC)
 	skills = /datum/skills/civilian
 	idtype = /obj/item/card/id/lanyard
 	var/xenovictim = FALSE //Set to true to make the corpse spawn as a victim of a xeno burst
+
+/datum/equipment_preset/corpse/load_languages(mob/living/carbon/human/H)
+	return
 
 /datum/equipment_preset/corpse/load_status(mob/living/carbon/human/H)
 	. = ..(H)

@@ -61,6 +61,19 @@
 	else
 		to_chat(src, "You have 'Play Admin Midis' disabled in your Character Setup, so this verb is useless to you.")
 
+/client/verb/togglechat()
+	set name = "Toggle Abovehead Chat"
+	set category = "Preferences"
+	set desc = "Toggles abovehead chat until you change body"
+
+	prefs.lang_chat_disabled = ~prefs.lang_chat_disabled
+	prefs.save_preferences()
+	to_chat(src, "You will [(!prefs.lang_chat_disabled) ? "now" : "no longer"] see messages above head.")
+	if(prefs.lang_chat_disabled)
+		unsetup_lang_text()
+	else
+		setup_lang_text()
+
 /client/verb/listen_ooc()
 	set name = "Show/Hide OOC"
 	set category = "Preferences"

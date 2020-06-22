@@ -65,6 +65,8 @@
 	living_human_list -= src
 	processable_human_list -= src
 
+	langchat_detach()
+
 	. = ..()
 
 	species = null

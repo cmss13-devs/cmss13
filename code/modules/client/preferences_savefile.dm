@@ -81,6 +81,8 @@
 	S["pred_armor_type"]	>> predator_armor_type
 	S["pred_boot_type"]		>> predator_boot_type
 
+	S["lang_chat_disabled"]	>> lang_chat_disabled
+
 	//Sanitize
 	ooccolor		= sanitize_hexcolor(ooccolor, initial(ooccolor))
 	lastchangelog	= sanitize_text(lastchangelog, initial(lastchangelog))
@@ -147,6 +149,8 @@
 	S["pred_mask_type"] 	<< predator_mask_type
 	S["pred_armor_type"] 	<< predator_armor_type
 	S["pred_boot_type"] 	<< predator_boot_type
+
+	S["lang_chat_disabled"] << lang_chat_disabled
 
 	return 1
 

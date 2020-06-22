@@ -506,3 +506,11 @@ proc/setup_database_connection()
 		c.view = world_view_size
 
 #undef FAILED_DB_CONNECTION_CUTOFF
+
+/proc/give_image_to_client(var/obj/O, icon_text)	
+	var/image/I = image(null, O)
+	I.maptext = icon_text
+	for(var/client/c in clients)
+		if(!ishuman(c.mob))
+			continue
+		c.images += I

@@ -156,6 +156,8 @@ var/const/MAX_SAVE_SLOTS = 10
 
 	var/stylesheet = "Modern"
 
+	var/lang_chat_disabled = FALSE
+
 /datum/preferences/New(client/C)
 	if(istype(C))
 		owner = C

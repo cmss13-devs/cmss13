@@ -280,6 +280,7 @@
 #include "code\datums\helper_datums\global_iterator.dm"
 #include "code\datums\helper_datums\teleport.dm"
 #include "code\datums\helper_datums\topic_input.dm"
+#include "code\datums\langchat\langchat.dm"
 #include "code\datums\statistics\entities\caste_stats.dm"
 #include "code\datums\statistics\entities\death_stats.dm"
 #include "code\datums\statistics\entities\human_stats.dm"

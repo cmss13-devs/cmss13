@@ -72,6 +72,7 @@
 			playsound(loc, 'sound/voice/predalien_click.ogg', 25, 1)
 		else
 			playsound(loc, "alien_talk", 25, 1)
+		langchat_say("Xenomorph", message, null, LANGCHAT_DEFAULT_POP)
 		..(message, speaking, verb, null, null, message_range, null)
 	else
 		hivemind_talk(message)

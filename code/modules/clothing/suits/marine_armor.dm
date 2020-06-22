@@ -31,6 +31,7 @@ var/list/armormarkings_sql = list()
 var/list/helmetmarkings = list()
 var/list/helmetmarkings_sql = list()
 var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), rgb(65,72,200), rgb(103,214,146))
+var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150,255), rgb(130,140,255), rgb(103,214,146))
 
 /proc/initialize_marine_armor()
 	var/i

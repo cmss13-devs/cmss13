@@ -49,7 +49,7 @@
 	// put ourselves into mob list for that language
 	new_language.lang_mob_list += src
 	// read all images that already exist for this language (this will add our own image too)
-	if(!client || client.prefs.lang_chat_disabled)
+	if(!client || !client.prefs || client.prefs.lang_chat_disabled)
 		return
 	client.images |= new_language.lang_image_list
 	client.langchat_list |= new_language.lang_image_list
@@ -82,7 +82,7 @@
 	// clear old icons
 	images -= langchat_list
 	langchat_list.Cut()
-	if(prefs.lang_chat_disabled)
+	if(prefs && prefs.lang_chat_disabled)
 		return
 	if(!istype(M))
 		M = mob
@@ -101,7 +101,7 @@
 	langchat_list.Cut()
 
 /client/proc/langchat_add_watcher(language)
-	if(prefs.lang_chat_disabled)
+	if(prefs && prefs.lang_chat_disabled)
 		return
 	var/datum/language/new_language = all_languages[language]
 	if(!istype(new_language))

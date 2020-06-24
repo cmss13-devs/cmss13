@@ -23,7 +23,6 @@
 	aura_strength = 1 //Hivelord's aura is not extremely strong, but better than Drones. At the top, it's just a bit above a young Queen. Climbs by 0.5 to 2.5
 	can_hold_facehuggers = 1
 	can_hold_eggs = CAN_HOLD_TWO_HANDS
-	can_denest_hosts = 1
 	acid_level = 2
 	aura_strength = 1.5
 	weed_level = 2 //Starts with wider weeds by default

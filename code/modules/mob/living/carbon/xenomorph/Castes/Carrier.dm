@@ -28,7 +28,6 @@
 	hugger_delay = 30
 	can_hold_facehuggers = 1
 	can_hold_eggs = CAN_HOLD_ONE_HAND
-	can_denest_hosts = 1
 	weed_level = 1
 	egg_cooldown = 300
 

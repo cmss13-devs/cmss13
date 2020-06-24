@@ -29,7 +29,6 @@
 	spit_types = list(/datum/ammo/xeno/toxin/queen, /datum/ammo/xeno/acid/medium)
 	can_hold_facehuggers = 0
 	can_hold_eggs = CAN_HOLD_ONE_HAND
-	can_denest_hosts = 1
 	acid_level = 2
 	weed_level = 3
 
@@ -152,6 +151,7 @@
 		/mob/living/carbon/Xenomorph/proc/claw_toggle,
 		/mob/living/carbon/Xenomorph/proc/construction_toggle,
 		/mob/living/carbon/Xenomorph/proc/destruction_toggle,
+		/mob/living/carbon/Xenomorph/proc/toggle_unnesting,
 		/mob/living/carbon/Xenomorph/Queen/proc/set_orders,
 		/mob/living/carbon/Xenomorph/Queen/proc/hive_Message,
 		/mob/living/carbon/Xenomorph/proc/rename_tunnel,
@@ -388,6 +388,24 @@
 		to_chat(src, SPAN_XENONOTICE("You forbid special structure destruction entirely."))
 		xeno_message("The Queen has <b>forbidden</b> the special structure destruction to anyone but herself.")
 		hive.destruction_allowed = XENO_QUEEN
+
+/mob/living/carbon/Xenomorph/proc/toggle_unnesting()
+	set name = "Permit/Disallow Unnesting"
+	set desc = "Allows you to restrict unnesting to drones."
+	set category = "Alien"
+
+	if(stat)
+		to_chat(src, SPAN_WARNING("You can't do that now."))
+		return
+
+	hive.unnesting_allowed = !hive.unnesting_allowed
+
+	if(hive.unnesting_allowed)
+		to_chat(src, SPAN_XENONOTICE("You have allowed everyone to unnest hosts."))
+		xeno_message("The Queen has allowed everyone to unnest hosts.")
+	else
+		to_chat(src, SPAN_XENONOTICE("You have forbidden anyone to unnest hosts, except for the drone caste."))
+		xeno_message("The Queen has forbidden anyone to unnest hosts, except for the drone caste.")
 
 /mob/living/carbon/Xenomorph/Queen/proc/queen_screech()
 	if(!check_state())

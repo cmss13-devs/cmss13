@@ -122,9 +122,6 @@
 	var/mob/living/carbon/human/H = A
 	if(H.stat == DEAD) return
 	if(istype(H.buckled, /obj/structure/bed/nest)) return
-	if(H.status_flags & XENO_HOST)
-		to_chat(X, SPAN_XENOWARNING("This would harm the embryo!"))
-		return
 
 	var/obj/limb/L = H.get_limb(check_zone(X.zone_selected))
 

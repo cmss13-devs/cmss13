@@ -46,7 +46,7 @@
 
 	if(isXeno(user))
 		var/mob/living/carbon/Xenomorph/X = user
-		if(!X.caste.can_denest_hosts)
+		if(!X.hive.unnesting_allowed && !isXenoBuilder(X))
 			to_chat(X, SPAN_XENOWARNING("You shouldn't interfere with the nest, leave that to the drones."))
 			return
 

@@ -79,7 +79,6 @@
 	var/can_be_queen_healed = 1
 
 	var/can_vent_crawl = 1
-	var/can_denest_hosts = 0
 	
 	var/caste_luminosity = 0
 
@@ -318,6 +317,7 @@
 	var/slashing_allowed = 1 //This initial var allows the queen to turn on or off slashing. Slashing off means harm intent does much less damage.
 	var/construction_allowed = XENO_QUEEN //Who can place construction nodes for special structures
 	var/destruction_allowed = XENO_LEADER //Who can destroy special structures
+	var/unnesting_allowed = FALSE
 	var/queen_time = 300 //5 minutes between queen deaths
 	var/xeno_queen_timer
 	var/hive_orders = "" //What orders should the hive have

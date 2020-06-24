@@ -81,7 +81,7 @@
 		to_chat(user, SPAN_NOTICE("You flip out your [src]."))
 		playsound(user, 'sound/weapons/flipblade.ogg', 15, 1)
 		force = MELEE_FORCE_STRONG //bay adjustments
-		throwforce = 12
+		throwforce = MELEE_FORCE_NORMAL
 		edge = 1
 		sharp = IS_SHARP_ITEM_ACCURATE
 		hitsound = 'sound/weapons/bladeslice.ogg'

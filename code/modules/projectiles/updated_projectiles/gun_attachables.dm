@@ -200,8 +200,8 @@ Defined in conflicts.dm of the #defines folder.
 	item_state = "combat_knife"
 	desc = "The standard-issue bayonet of the Colonial Marines. You can slide this knife into your boots, or attach it to the end of a rifle."
 	sharp = IS_SHARP_ITEM_ACCURATE
-	force = 25
-	throwforce = 20
+	force = MELEE_FORCE_NORMAL
+	throwforce = MELEE_FORCE_NORMAL
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 6
 	hitsound = 'sound/weapons/slash.ogg'
@@ -236,7 +236,7 @@ Defined in conflicts.dm of the #defines folder.
 	icon_state = "upp_bayonet"
 	item_state = "combat_knife"
 	desc = "The standard-issue bayonet of the UPP, the Type 80 is balanced to also function as an effective throwing knife."
-	throwforce = 35
+	throwforce = MELEE_FORCE_STRONG
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 7
 

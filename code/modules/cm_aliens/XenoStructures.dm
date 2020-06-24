@@ -164,6 +164,16 @@
 	healthcheck()
 	return 1
 
+/obj/structure/mineral_door/resin/attackby(obj/item/W, mob/living/user)
+	if(!(W.flags_item & NOBLUDGEON) && W.force)
+		user.animation_attack_on(src)
+		health -= W.force*RESIN_MELEE_DAMAGE_MULTIPLIER
+		to_chat(user, "You hit the [name] with your [W.name]!")
+		playsound(loc, "alien_resin_move", 25)
+		healthcheck()
+	else
+		return attack_hand(user)
+
 /obj/structure/mineral_door/resin/TryToSwitchState(atom/user)
 	if(isXenoLarva(user))
 		var/mob/living/carbon/Xenomorph/Larva/L = user

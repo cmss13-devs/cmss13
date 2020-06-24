@@ -49,15 +49,45 @@
 
 
 
-/mob/living/carbon/Xenomorph/proc/build_resin(atom/A, resin_plasma_cost, thick=FALSE, message=TRUE)
+/mob/living/carbon/Xenomorph/proc/build_resin(atom/A, thick=FALSE, message=TRUE)
+
+	var/base_resin_cost = 50
+	var/additional_resin_cost = 0
+	var/total_resin_cost = 0
+
+	var/resin_to_build = selected_resin
+
+	switch(resin_to_build)
+		if(RESIN_DOOR)
+			if(thick)
+				additional_resin_cost = 125
+			else
+				additional_resin_cost = 100//total 150 & 175 thick
+		if(RESIN_WALL)
+			if(thick)
+				additional_resin_cost = 150
+			else
+				additional_resin_cost = 100//total 150 & 200 thick
+		if(RESIN_MEMBRANE)
+			if(thick)
+				additional_resin_cost = 100
+			else
+				additional_resin_cost = 75//total cost 125 & 150 thick
+		if(RESIN_NEST)
+			additional_resin_cost = 75//total 125
+		if(RESIN_STICKY)
+			additional_resin_cost = 35//total 85
+		if(RESIN_FAST)
+			additional_resin_cost = 15//total 65
+
+	total_resin_cost = base_resin_cost + additional_resin_cost//live, diet, shit code, repeat
+
 	if(action_busy)
 		return FALSE
 	if(!check_state())
 		return FALSE
-	if(!check_plasma(resin_plasma_cost))
+	if(!check_plasma(total_resin_cost))
 		return FALSE
-
-	var/resin_to_build = selected_resin
 
 	var/turf/current_turf = get_turf(A)
 
@@ -106,8 +136,8 @@
 		if(thickened)
 			if(message)
 				visible_message(SPAN_XENONOTICE("[src] regurgitates a thick substance and thickens [A]."), \
-					SPAN_XENONOTICE("You regurgitate some resin and thicken [A]."), null, 5)
-				use_plasma(resin_plasma_cost)
+					SPAN_XENONOTICE("You regurgitate some resin and thicken [A], using [total_resin_cost] plasma"), null, 5)
+				use_plasma(total_resin_cost)
 				playsound(loc, "alien_resin_build", 25)
 			A.add_hiddenprint(src) //so admins know who thickened the walls
 			return TRUE
@@ -175,7 +205,7 @@
 
 	if(!check_state())
 		return FALSE
-	if(!check_plasma(resin_plasma_cost))
+	if(!check_plasma(total_resin_cost))
 		return FALSE
 
 	if(!istype(current_turf) || !current_turf.is_weedable())
@@ -207,10 +237,10 @@
 			to_chat(src, SPAN_WARNING("Resin doors need a wall or resin door next to them to stand up."))
 			return FALSE
 
-	use_plasma(resin_plasma_cost)
+	use_plasma(total_resin_cost)
 	if(message)
 		visible_message(SPAN_XENONOTICE("[src] regurgitates a thick substance and shapes it into \a [resin2text(resin_to_build, thick)]!"), \
-			SPAN_XENONOTICE("You regurgitate some resin and shape it into \a [resin2text(resin_to_build, thick)]."), null, 5)
+			SPAN_XENONOTICE("You regurgitate some resin and shape it into \a [resin2text(resin_to_build, thick)], using a total [total_resin_cost] plasma."), null, 5)
 		playsound(loc, "alien_resin_build", 25)
 
 	var/atom/new_resin

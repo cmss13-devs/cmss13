@@ -4,7 +4,7 @@
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
 	caste_whitelist = list("Hivelord")
-	mutator_actions_to_remove = list("Secrete Resin (200)", "Corrosive Acid (100)")
+	mutator_actions_to_remove = list("Secrete Thick Resin", "Corrosive Acid (100)")
 	mutator_actions_to_add = list(
 		/datum/action/xeno_action/activable/secrete_resin/remote,
 		/datum/action/xeno_action/onclick/toggle_long_range,
@@ -37,7 +37,6 @@
 	name = "Coerce Resin (100)"
 	action_icon_state = "secrete_resin"
 	ability_name = "coerce resin"
-	resin_plasma_cost = 100
 	var/last_use = 0
 	cooldown = 20
 	thick = FALSE

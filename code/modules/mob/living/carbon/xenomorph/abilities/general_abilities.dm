@@ -66,18 +66,16 @@
 
 // Secrete Resin
 /datum/action/xeno_action/activable/secrete_resin
-	name = "Secrete Resin (150)"
+	name = "Secrete Resin"
 	action_icon_state = "secrete_resin"
 	ability_name = "secrete resin"
-	var/resin_plasma_cost = 150
 	var/thick = FALSE
 	var/make_message = TRUE
 	macro_path = /datum/action/xeno_action/verb/verb_secrete_resin
 	action_type = XENO_ACTION_CLICK
 
 /datum/action/xeno_action/activable/secrete_resin/hivelord
-	name = "Secrete Resin (200)"
-	resin_plasma_cost = 200
+	name = "Secrete Thick Resin"
 	thick = TRUE
 
 

@@ -35,7 +35,7 @@
 	return 1
 
 /obj/effect/alien/resin/ex_act(severity)
-	health -= severity
+	health -= (severity * RESIN_EXPLOSIVE_MULTIPLIER)
 	healthcheck()
 	return
 
@@ -103,7 +103,7 @@
 	icon_state = "sticky"
 	density = 0
 	opacity = 0
-	health = 36
+	health = HEALTH_RESIN_XENO_STICKY
 	layer = RESIN_STRUCTURE_LAYER
 	var/slow_amt = 8
 
@@ -125,7 +125,8 @@
 	name = "fast resin"
 	desc = "A layer of disgusting sleek slime."
 	icon_state = "fast"
-	var/speed_amt = 0.5
+	health = HEALTH_RESIN_XENO_FAST
+	var/speed_amt = 0.7
 
 	Crossed(atom/movable/AM)
 		return
@@ -248,7 +249,7 @@
 	if(!density)
 		severity *= EXPLOSION_DAMAGE_MODIFIER_DOOR_OPEN
 
-	health -= severity
+	health -= (severity * RESIN_EXPLOSIVE_MULTIPLIER)
 	healthcheck()
 
 	if(src)

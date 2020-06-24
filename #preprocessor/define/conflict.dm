@@ -106,6 +106,8 @@
 //Melee weapons do more damage to resin structures
 #define RESIN_MELEE_DAMAGE_MULTIPLIER	8.2
 
+#define RESIN_EXPLOSIVE_MULTIPLIER 0.8
+
 //Projectile block probabilities for different types of cover
 #define PROJECTILE_COVERAGE_LOW			35
 #define PROJECTILE_COVERAGE_MEDIUM		60
@@ -159,6 +161,9 @@
 #define HEALTH_DOOR 		    2000
 #define HEALTH_DOOR_XENO 	    600
 #define HEALTH_DOOR_XENO_THICK 	900
+
+#define HEALTH_RESIN_XENO_STICKY 45
+#define HEALTH_RESIN_XENO_FAST 30
 
 #define THROWFORCE_COEFF            0.02 // Coefficient of throwforce when calculating damage from an atom colliding with a mob
 #define MOB_SIZE_COEFF              20 // Coefficient of mobsize when calculating damage from a mob colliding with a dense atom

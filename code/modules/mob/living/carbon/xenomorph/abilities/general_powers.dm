@@ -120,7 +120,7 @@
 // Resin
 /datum/action/xeno_action/activable/secrete_resin/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
-	. = X.build_resin(A, resin_plasma_cost, thick, make_message)
+	. = X.build_resin(A, thick, make_message)
 	..()
 	return
 

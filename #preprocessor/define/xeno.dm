@@ -90,7 +90,7 @@
 #define WEED_HEALTH_STANDARD 1
 #define WEED_HEALTH_HIVE     15
 
-#define NODE_HEALTH_STANDARD 15
+#define NODE_HEALTH_STANDARD 10
 #define NODE_HEALTH_HIVE     30
 
 /////////////////////////////////////////////////////////////////////////////////////

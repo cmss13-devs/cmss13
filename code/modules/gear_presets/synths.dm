@@ -46,12 +46,12 @@
 	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
 		backItem = /obj/item/storage/backpack/industrial
 
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/cdrcom, WEAR_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/synthetic, WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/white, WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full, WEAR_WAIST)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow, WEAR_HANDS)
-	H.equip_to_slot_or_del(new backItem, WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/cdrcom(H), WEAR_EAR)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/synthetic(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/white(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(H), WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(H), WEAR_HANDS)
+	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 
 /*****************************************************************************************************/
 
@@ -60,21 +60,18 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO
 
 /datum/equipment_preset/synth/uscm/wo/load_gear(mob/living/carbon/human/H)
-	var/backItem = /obj/item/storage/backpack/marine/satchel
-	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
-		backItem = /obj/item/storage/backpack/industrial
 
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/beret/cm, WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/cdrcom, WEAR_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/synthetic, WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/RO, WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/brown, WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full, WEAR_WAIST)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow, WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/black_vest/brown_vest, WEAR_ACCESSORY)
-	H.equip_to_slot_or_del(new backItem, WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/construction/full, WEAR_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/medium, WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/beret/cm(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/cdrcom(H), WEAR_EAR)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/synthetic(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/RO(H), WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/brown(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(H), WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(H), WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/black_vest/brown_vest(H), WEAR_ACCESSORY)
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/smartpack/tan(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/construction/full(H), WEAR_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/medium(H), WEAR_L_STORE)
 
 /*****************************************************************************************************/
 
@@ -103,14 +100,14 @@
 	L.anti_hug = 99
 
 	H.equip_to_slot_or_del(L, WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/smartgunner, WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/smartgunner/full, WEAR_WAIST)
-	H.equip_to_slot_or_del(new /obj/item/smartgun_powerpack, WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife, WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/weapon/gun/smartgun, WEAR_J_STORE)
-	H.equip_to_slot_or_del(new /obj/item/attachable/bayonet, WEAR_L_HAND)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine, WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/m56_goggles, WEAR_EYES)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/smartgunner(H), WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/smartgunner/full(H), WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/smartgun_powerpack(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/weapon/gun/smartgun(H), WEAR_J_STORE)
+	H.equip_to_slot_or_del(new /obj/item/attachable/bayonet(H), WEAR_L_HAND)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine(H), WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/m56_goggles(H), WEAR_EYES)
 
 	H.allow_gun_usage = TRUE
 
@@ -137,12 +134,12 @@
 	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
 		backItem = /obj/item/storage/backpack/industrial
 
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/synthetic/joe, WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife, WEAR_FEET)
-	H.equip_to_slot_or_del(new backItem, WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full, WEAR_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full, WEAR_L_STORE)
-	H.equip_to_slot_or_del(new /obj/item/weapon/melee/twohanded/fireaxe, WEAR_L_HAND)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/synthetic/joe(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(H), WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/weapon/melee/twohanded/fireaxe(H), WEAR_L_HAND)
 
 	add_random_survivor_equipment(H)
 
@@ -169,11 +166,11 @@
 	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
 		backItem = /obj/item/storage/backpack/industrial
 
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/synthetic/joe, WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife, WEAR_FEET)
-	H.equip_to_slot_or_del(new backItem, WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full, WEAR_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full, WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/synthetic/joe(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(H), WEAR_L_STORE)
 
 	add_random_survivor_equipment(H)
 

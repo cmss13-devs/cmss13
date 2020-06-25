@@ -152,8 +152,8 @@
 /obj/item/clothing/under/marine/officer/exec
 	name = "executive officer uniform"
 	desc = "A uniform typically worn by a first-lieutenant Executive Officer in the USCM. It has shards of light Kevlar to help protect against stabbing weapons, bullets, and shrapnel from explosions, a small EMF distributor to help null energy-based weapons, and a hazmat chemical filter weave to ward off biological and radiation hazards."
-	icon_state = "XO_jumpsuit"
-	worn_state = "XO_jumpsuit"
+	icon_state = "BO_jumpsuit"
+	worn_state = "BO_jumpsuit"
 	specialty = "executive officer"
 
 /obj/item/clothing/under/marine/officer/command

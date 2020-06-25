@@ -97,7 +97,7 @@
 			xeno_message(SPAN_XENOANNOUNCE("Your carapace rattles with dread. You are all that remains of the hive!"),3, hivenumber)
 
 	if(hardcore)
-		qdel(src)
+		QDEL_IN(src, 3 SECONDS)
 
 	callHook("death", list(src, gibbed))
 

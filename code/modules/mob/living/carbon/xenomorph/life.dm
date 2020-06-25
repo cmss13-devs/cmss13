@@ -161,10 +161,7 @@
 
 	else if(health <= 0) //in crit
 		if(hardcore)
-			if(prob(gib_chance))
-				gib(last_damage_source)
-			else
-				death(last_damage_source)
+			gib(last_damage_source)
 		else
 			stat = UNCONSCIOUS
 			blinded = 1

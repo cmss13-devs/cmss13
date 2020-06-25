@@ -45,7 +45,7 @@
 	var/finished = 0
 	var/has_started_timer = 10 //This is a simple timer so we don't accidently check win conditions right in post-game
 	var/randomovertime = 0 //This is a simple timer so we can add some random time to the game mode.
-	var/spawn_next_wave = MINUTES_10 //Spawn first batch at ~10 minutes
+	var/spawn_next_wave = MINUTES_10 / SECONDS_2 //Spawn first batch at ~10 minutes (we divide it by the game ticker time of 2 seconds)
 	var/xeno_wave = 1 //Which wave is it
 
 	var/wave_ticks_passed = 0 //Timer for xeno waves
@@ -60,7 +60,7 @@
 			//This will get populated with spawn_xenos() proc
 	var/list/spawnxeno = list()
 
-	var/next_supply = MINUTES_10 //At which wave does the next supply drop come?
+	var/next_supply = MINUTES_1 //At which wave does the next supply drop come?
 
 	var/ticks_passed = 0
 	var/lobby_time = 0 //Lobby time does not count for marine 1h win condition
@@ -82,7 +82,7 @@
 
 
 	//  WO waves
-	var/list/paths = typesof(/datum/whiskey_outpost_wave) - /datum/whiskey_outpost_wave - typesof(/datum/whiskey_outpost_wave/random)
+	var/list/paths = typesof(/datum/whiskey_outpost_wave) - /datum/whiskey_outpost_wave - /datum/whiskey_outpost_wave/random
 	for(var/i in 1 to WO_MAX_WAVE)
 		whiskey_outpost_waves += i
 		whiskey_outpost_waves[i] = list()
@@ -151,15 +151,10 @@
 	if(wave_ticks_passed >= spawn_next_wave)
 		if(count_xenos() < 50)//Checks braindead too, so we don't overpopulate! Also make sure its less than twice us in the world, so we advance waves/get more xenos the more marines survive.
 			wave_ticks_passed = 0
-
-			if(spawn_next_wave > 40)
-				spawn_next_wave -= 5
-
 			spawn_next_wo_wave = TRUE
 		else
-			wave_ticks_passed -= 200 //Wait 20 ticks and try again
+			wave_ticks_passed -= 50 //Wait 50 ticks and try again
 			wave_times_delayed++
-			//delete_old_xenos(xeno_wave)
 
 	if(spawn_next_wo_wave)
 		spawn_next_xeno_wave()
@@ -169,7 +164,7 @@
 
 	if(world.time > next_supply)
 		place_whiskey_outpost_drop()
-		next_supply += MINUTES_5
+		next_supply += MINUTES_2
 
 	if(checkwin_counter >= 10) //Only check win conditions every 10 ticks.
 		if(!finished && round_should_check_for_win)
@@ -180,9 +175,13 @@
 /datum/game_mode/whiskey_outpost/proc/spawn_next_xeno_wave()
 	spawn_next_wo_wave = FALSE
 	var/wave = pick(whiskey_outpost_waves[xeno_wave])
-	xeno_wave = min(xeno_wave + 1, WO_MAX_WAVE)
 	spawn_whiskey_outpost_xenos(wave)
 	announce_xeno_wave(wave)
+	if(xeno_wave == 7)
+		//Wave when Marines get reinforcements!
+		get_specific_call("Marine Reinforcements (Squad)", TRUE, FALSE)
+	xeno_wave = min(xeno_wave + 1, WO_MAX_WAVE)
+
 
 /datum/game_mode/whiskey_outpost/proc/announce_xeno_wave(var/datum/whiskey_outpost_wave/wave_data)
 	if(!istype(wave_data))
@@ -613,9 +612,11 @@
 							/obj/item/ammo_magazine/rocket/wp,
 							/obj/item/ammo_magazine/rocket/wp,
 							/obj/item/ammo_magazine/rocket/wp)
-		if(2) //4 power packs is basically 1000 extra rounds. Should last them enough.
+		if(2) //Smartgun supplies
 			spawnitems = list(/obj/item/smartgun_powerpack,
-							/obj/item/smartgun_powerpack)
+					/obj/item/ammo_magazine/smartgun,
+					/obj/item/ammo_magazine/smartgun,
+				)
 		if(3) //Full Sniper ammo loadout.
 			spawnitems = list(/obj/item/ammo_magazine/sniper,
 							/obj/item/ammo_magazine/sniper,

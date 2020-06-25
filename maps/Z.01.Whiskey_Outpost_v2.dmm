@@ -276,6 +276,7 @@
 /obj/item/moneybag,
 /obj/item/clothing/glasses/monocle,
 /obj/item/weapon/melee/telebaton,
+/obj/item/weapon/gun/rifle/m46c,
 /turf/open/floor/prison{
 	tag = "icon-floor_plate";
 	icon_state = "floor_plate";
@@ -1126,8 +1127,6 @@
 /area/whiskey_outpost/inside/living)
 "dc" = (
 /obj/structure/machinery/optable,
-/obj/item/tank/anesthetic,
-/obj/item/clothing/mask/breath/medical,
 /obj/structure/machinery/light/small{
 	tag = "icon-bulb1 (WEST)";
 	icon_state = "bulb1";
@@ -1412,8 +1411,6 @@
 /area/whiskey_outpost/inside/cic)
 "dE" = (
 /obj/structure/machinery/optable,
-/obj/item/tank/anesthetic,
-/obj/item/clothing/mask/breath/medical,
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
@@ -5621,8 +5618,6 @@
 /area/whiskey_outpost/inside/hospital)
 "oi" = (
 /obj/structure/machinery/optable,
-/obj/item/tank/anesthetic,
-/obj/item/clothing/mask/breath/medical,
 /turf/open/floor{
 	tag = "icon-whitegreenfull";
 	icon_state = "whitegreenfull";
@@ -6201,6 +6196,7 @@
 /area/whiskey_outpost/inside/hospital)
 "pm" = (
 /obj/structure/table/reinforced/prison,
+/obj/item/reagent_container/glass/beaker/bluespace,
 /turf/open/floor{
 	tag = "icon-whitegreencorner";
 	icon_state = "whitegreen";
@@ -6725,6 +6721,7 @@
 	icon_state = "toilet00";
 	dir = 8
 	},
+/obj/item/device/cotablet,
 /turf/open/floor/prison{
 	tag = "icon-kitchen";
 	icon_state = "kitchen"
@@ -8603,6 +8600,10 @@
 	dir = 1
 	},
 /area/whiskey_outpost/outside/north/platform)
+"uP" = (
+/obj/structure/machinery/cryopod,
+/turf/open/floor/prison,
+/area/whiskey_outpost/inside/living)
 "uQ" = (
 /obj/effect/landmark/start/whiskey{
 	name = "Marine"
@@ -10014,9 +10015,7 @@
 	},
 /area/whiskey_outpost/outside/lane/three_north)
 "yu" = (
-/obj/effect/landmark/start/whiskey{
-	name = "Marine"
-	},
+/obj/structure/machinery/recharge_station,
 /turf/open/floor{
 	tag = "icon-whitegreen (SOUTHWEST)";
 	icon_state = "whitegreen";
@@ -10066,9 +10065,7 @@
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/lane/one_north)
 "yA" = (
-/obj/effect/landmark/start/whiskey{
-	name = "Marine"
-	},
+/obj/structure/machinery/recharge_station,
 /turf/open/floor{
 	tag = "icon-whitegreen (SOUTHEAST)";
 	icon_state = "whitegreen";
@@ -13285,6 +13282,21 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/whiskey_outpost/inside/bunker)
+"Oi" = (
+/obj/structure/machinery/optable,
+/obj/item/storage/surgical_tray,
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/whiskey_outpost/inside/hospital/triage)
+"Ys" = (
+/obj/structure/machinery/recharge_station,
+/turf/open/floor{
+	tag = "icon-asteroidfloor (NORTH)";
+	icon_state = "asteroidfloor";
+	dir = 1
+	},
+/area/whiskey_outpost)
 
 (1,1,1) = {"
 aa
@@ -28675,7 +28687,7 @@ li
 li
 li
 li
-an
+Ys
 an
 iK
 an
@@ -32785,7 +32797,7 @@ vf
 xh
 uq
 uq
-xK
+Oi
 uq
 uq
 zF
@@ -33391,7 +33403,7 @@ vf
 xh
 uq
 uq
-xK
+Oi
 uq
 uq
 zF
@@ -33709,8 +33721,8 @@ li
 li
 li
 ad
-aF
-aF
+uP
+uP
 aF
 aF
 aF
@@ -34517,8 +34529,8 @@ li
 li
 li
 ad
-aF
-aF
+uP
+uP
 aF
 aF
 aF
@@ -35325,8 +35337,8 @@ li
 li
 li
 ad
-aF
-aF
+uP
+uP
 aF
 aF
 aF

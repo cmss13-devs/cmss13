@@ -128,7 +128,6 @@
 	wave_type = WO_STATIC_WAVE
 	number_of_xenos = 0
 	command_announcement = list("Major Ike Saker speaking, The Captain is still trying to try and get off world contact. An engineer platoon managed to destroy the main entrance into this valley this should give you a short break while the aliens find another way in. I have also recieved word that the 7th 'Falling Falcons' Battalion. Should be near. I used to be stationed with them they are top notch!", "Major Ike Saker, 3rd Battalion Command, LV-624 Garrison")
-	wave_delay = 200
 
 /datum/whiskey_outpost_wave/wave8
 	wave_number = 8
@@ -142,7 +141,6 @@
 					/mob/living/carbon/Xenomorph/Defender,
 					/mob/living/carbon/Xenomorph/Drone,
 					/mob/living/carbon/Xenomorph/Warrior)
-	wave_delay = 200 //Slow down now, strong castes introduced next wave
 	sound_effect = list()
 	command_announcement = list("Captain Naiche speaking, we've been unsuccessful in establishing offworld communication for the moment. We're prepping our M402 mortars to destroy the inbound xeno force on the main road. Standby for fire support.", "Captain Naich, 3rd Battalion Command, LV-624 Garrison")
 
@@ -164,7 +162,6 @@
 					/mob/living/carbon/Xenomorph/Drone,
 					/mob/living/carbon/Xenomorph/Drone/mature,
 					/mob/living/carbon/Xenomorph/Warrior)
-	wave_delay = 100 //Speed it up again. After the period of grace.
 	sound_effect = list('sound/voice/alien_queen_command.ogg')
 	command_announcement = list("Our garrison forces are reaching seventy percent casualties, we are losing our grip on LV-624. It appears that vanguard of the hostile force is still approaching, and most of the other Dust Raider platoons have been shattered. We're counting on you to keep holding.", "Captain Naich, 3rd Battalion Command, LV-624 Garrison")
 
@@ -186,7 +183,6 @@
 					/mob/living/carbon/Xenomorph/Drone,
 					/mob/living/carbon/Xenomorph/Drone/mature,
 					/mob/living/carbon/Xenomorph/Warrior)
-	wave_delay = 100 //Speed it up again. After the period of grace.
 
 /datum/whiskey_outpost_wave/wave11
 	wave_number = 11
@@ -308,7 +304,6 @@
 	wave_type = WO_STATIC_WAVE
 	wave_number = 15
 	number_of_xenos = 50
-	wave_delay = 250
 
 /datum/whiskey_outpost_wave/random/wave1 //Runner madness
 	wave_castes = list(/mob/living/carbon/Xenomorph/Runner,

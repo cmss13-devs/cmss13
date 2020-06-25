@@ -41,6 +41,10 @@
 	var/list/properties = list() //Decides properties
 	var/original_type //For tracing back
 
+/datum/reagent/New()
+	if(properties)
+		properties = properties_to_datums()
+
 /datum/reagent/proc/reaction_mob(var/mob/M, var/method=TOUCH, var/volume) //By default we have a chance to transfer some
 	if(!istype(M, /mob/living))	return 0
 	var/datum/reagent/self = src
@@ -85,26 +89,68 @@
 	return
 
 /datum/reagent/proc/on_mob_life(mob/living/M, alien)
-	if(!isliving(M) || alien == IS_HORROR || !holder) return //Noticed runtime errors from pacid trying to damage ghosts, this should fix. --NEO
-	//We do not horrors to metabolize anything.
-	var/overdose_message = "[name] overdose"
+	if(alien == IS_HORROR || !holder)
+		return
 	holder.remove_reagent(id, custom_metabolism) //By default it slowly disappears.
-	if(overdose && volume >= overdose)
-		on_overdose(M, alien, overdose_message) //Small OD
-		M.last_damage_source = overdose_message
-		M.last_damage_mob = last_source_mob
 
-	if(overdose_critical && volume > overdose_critical)
-		on_overdose_critical(M, alien, overdose_message) //Big OD
-		M.last_damage_source = overdose_message
-		M.last_damage_mob = last_source_mob
-	return 1
+	var/list/mods = handle_pre_processing(M)
 
-/datum/reagent/proc/on_overdose(mob/living/M, alien)
-	return
+	if(mods[REAGENT_CANCEL])
+		return
+	
+	if((!isliving(M) || alien == IS_YAUTJA) && !mods[REAGENT_FORCE])
+		return
+	
+	handle_processing(M, mods)
 
-/datum/reagent/proc/on_overdose_critical(mob/living/M, alien)
-	return
+	return TRUE
+
+//Pre-processing
+/datum/reagent/proc/handle_pre_processing(mob/living/M)
+	var/list/mods = list(	REAGENT_EFFECT	= TRUE,
+							REAGENT_CAN_OD 	= TRUE,
+							REAGENT_BOOST 	= FALSE,
+							REAGENT_PURGE 	= FALSE,
+							REAGENT_FORCE 	= FALSE,
+							REAGENT_CANCEL	= FALSE)
+	
+	for(var/datum/chem_property/P in properties)
+		var/list/A = P.pre_process(M)
+		if(!A)
+			continue
+		for(var/mod in A)
+			mods[mod] += A[mod]
+
+	return mods
+
+//Main Processing
+/datum/reagent/proc/handle_processing(mob/living/M, var/list/mods)
+	for(var/datum/chem_property/P in properties)
+		//A level of 1 == 0.5 potency, which is equal to REM (0.2/0.4) in the old system
+		//That means the level of the property by default is the number of REMs the effect had in the old system
+		var/potency = mods[REAGENT_EFFECT] * (P.level * 0.5 + mods[REAGENT_BOOST])
+		if(potency <= 0)
+			continue
+		P.process(M, potency)
+		if(overdose && volume >= overdose && mods[REAGENT_CAN_OD])
+			P.process_overdose(M, potency)
+			if(overdose_critical && volume > overdose_critical)
+				P.process_critical(M, potency)
+			var/overdose_message = "[name] overdose"
+			M.last_damage_source = overdose_message
+			M.last_damage_mob = last_source_mob
+
+	if(mods[REAGENT_PURGE])
+		holder.remove_all_type(/datum/reagent,2*mods[REAGENT_PURGE])
+
+//Dead Processing, see /mob/living/carbon/human/proc/handle_necro_chemicals_in_body()
+/datum/reagent/proc/handle_dead_processing(mob/living/M, var/list/mods)
+	for(var/datum/chem_property/P in properties)
+		var/potency = mods[REAGENT_EFFECT] * (P.level * 0.5 + mods[REAGENT_BOOST])
+		if(potency <= 0)
+			continue
+		if(P.process_dead(M, potency))
+			holder.remove_reagent(id, custom_metabolism)
 
 /datum/reagent/proc/on_move(var/mob/M)
 	return
@@ -185,8 +231,53 @@
 				chemical_gen_classes_list["T5"] += id
 
 
-/datum/reagent/proc/has_property(var/property)
+/datum/reagent/proc/properties_to_datums()
+	var/new_properties = list()
 	for(var/P in properties)
-		if(P == property)
-			return TRUE
+		if(istype(P, /datum/chem_property))
+			new_properties += P
+			continue
+		var/datum/chem_property/D = chemical_properties_list[P]
+		if(D)
+			D = new D.type()
+			D.level = properties[P]
+			D.holder = src
+			new_properties += D
+	return new_properties
+
+/datum/reagent/proc/properties_to_assoc()
+	var/new_properties = list()
+	for(var/P in properties)
+		if(!istype(P, /datum/chem_property))
+			continue
+		var/datum/chem_property/D = P
+		var/list/property_level[0]
+		property_level["[D.name]"] = D.level
+		new_properties += property_level
+	return new_properties
+
+/datum/reagent/proc/get_property(var/property_name)
+	var/i = 1
+	for(var/datum/chem_property/P in properties)
+		if(P.name == property_name)
+			return properties[i]
+		i++
 	return FALSE
+
+/datum/reagent/proc/relevel_property(var/property_name, var/new_level = 1)
+	var/i = 1
+	var/datum/chem_property/R
+	for(var/datum/chem_property/P in properties)
+		if(P.name == property_name)
+			R = new P.type()
+			break
+		i++
+		if(i > properties.len)
+			return FALSE
+	R.level = new_level
+	R.update_reagent(src)
+	properties[i] = R
+	return TRUE
+
+/datum/reagent/proc/remove_property(var/datum/chem_property/property)
+	properties -= list(property)

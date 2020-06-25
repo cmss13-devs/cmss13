@@ -26,8 +26,35 @@ var/const/INGEST = 2
 
 /datum/reagents/New(maximum=100)
 	maximum_volume = maximum
-	if(!chemical_reagents_list || !chemical_reactions_filtered_list)
+	if(!chemical_reagents_list || !chemical_reactions_filtered_list || !chemical_properties_list)
+		global_prepare_properties()
 		global_prepare_reagents()
+
+/proc/global_prepare_properties()
+	//Chemical Properties - Initialises all /datum/chem_property into a list indexed by property name
+	var/paths = typesof(/datum/chem_property)
+	chemical_properties_list = list()
+	//Some filters
+	chemical_properties_list["negative"] = list()
+	chemical_properties_list["neutral"] = list()
+	chemical_properties_list["positive"] = list()
+	chemical_properties_list["rare"] = list()
+	//Save
+	for(var/path in paths)
+		var/datum/chem_property/P = new path()
+		if(!P.name)
+			continue
+		chemical_properties_list[P.name] = P
+		if(P.rarity > PROPERTY_DISABLED)
+			//Filters for the generator picking properties
+			if(isNegativeProperty(P))
+				chemical_properties_list["negative"][P.name] = P
+			else if(isNeutralProperty(P))
+				chemical_properties_list["neutral"][P.name] = P
+			else if(isPositiveProperty(P))
+				chemical_properties_list["positive"][P.name] = P
+			else if(P.rarity == PROPERTY_RARE || P.rarity == PROPERTY_LEGENDARY)
+				chemical_properties_list["rare"][P.name] = P
 
 /proc/global_prepare_reagents()
 	//I dislike having these here but map-objects are initialised before world/New() is called. >_>
@@ -443,7 +470,6 @@ var/const/INGEST = 2
 		var/datum/reagent/R = new D.type()
 		if(D.type == /datum/reagent/generated)
 			R.make_alike(D)
-			R.update_stats()
 		R.holder = src
 		R.volume = amount
 		SetViruses(R, new_data) // Includes setting data

@@ -1,0 +1,50 @@
+################################
+# Example Changelog File
+#
+# Note: This file, and files beginning with ".", and files that don't end in ".yml" will not be read. If you change this file, you will look really dumb.
+#
+# Your changelog will be merged with a master changelog. (New stuff added only, and only on the date entry for the day it was merged.)
+# When it is, any changes listed below will disappear.
+#
+# Valid Prefixes: 
+#   bugfix
+#   wip (For works in progress)
+#   tweak
+#   soundadd
+#   sounddel
+#   rscadd (general adding of nice things)
+#   rscdel (general deleting of nice things)
+#   imageadd
+#   imagedel
+#   maptweak
+#   spellcheck (typo fixes)
+#   experiment
+#################################
+
+# Your name.  
+author: TobiNerd
+
+# Optional: Remove this file after generating master changelog.  Useful for PR changelogs that won't get used again.
+delete-after: True
+
+# Any changes you've made.  See valid prefix list above.
+# INDENT WITH TWO SPACES.  NOT TABS.  SPACES.
+# SCREW THIS UP AND IT WON'T WORK.
+# Also, all entries are changed into a single [] after a master changelog generation. Just remove the brackets when you add new entries.
+# Please surround your changes in  double quotes ("), as certain characters otherwise screws up compiling. The quotes will not show up in the changelog.
+changes: 
+  - experiment: "Reworked the chemical property system backend. All chemicals are now processed using properties, not just research chems. On the frontend chemicals should be basically unaffected by this, but some chemicals and some properties have still received minor tweaks as a result of the rework for the purpose of standardization."
+  - rscadd: "Added the properties hemositic, thermostabilizing, focusing, cardiostabilizing, aiding, oxygenating, anticarcinogenic and ciphering. These are tied to specific chemicals and do do not spawn during random generation, but they can still be used with the simulator if so desired."
+  - rscadd: "Also added the property electrogenetic, a common positive type."
+  - rscadd: "Properties now have categories in addition to type and rarity, these are medicine, toxicant, stimulant, reactant, irritant, metabolite, and anomalous."
+  - rscadd: "Research can now obtain clearance level X access at clearance level 5 for an additional 5 credits."
+  - tweak: "The synthesis simulator now displays the property type."
+  - tweak: "The boosting property now only affects properties that have an effect inside the body."
+  - tweak: "Many chemicals have received slightly different overdose effects as these are tied to the properties."
+  - tweak: "Overdosing on a painkiller now gives you +50% painkilling, plus the additional nasty overdose stuff."
+  - tweak: "Synthesis targeting a rare property on relation mode now cost 3 times as much. Changing anomalous properties costs 10 times as much."
+  - tweak: "Alkysine is no longer a painkiller."
+  - tweak: "Halved the gain from the musclestimulating property per level."
+  - tweak: "Having only positive properties in a chemical now increase all Synthesis Simulator operation costs by 1."
+  - bugfix: "Fixed some inconsistency in how properties were combining."
+  - bugfix: "CL setting clearance to max no longer decrease it when clearance has been bought #12239."

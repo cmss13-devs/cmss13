@@ -598,7 +598,7 @@
 				txt += "<BR>Overdoses at: [C.overdose] units</font><BR>\n"
 			else
 				txt += "<BR>\nTesting for chemical properties is currently pending.<BR>\n"
-			if(C.has_property(PROPERTY_EXPLOSIVE))
+			if(C.get_property(PROPERTY_EXPLOSIVE))
 				txt += "<BR><B>\nWARNING: UNSTABLE REAGENT. MIX CAREFULLY.</B><BR>\n"
 			txt += "<BR>\n<HR> - <I>Weston-Yamada</I>"
 		if("test")
@@ -666,7 +666,6 @@
 	else
 		C.gen_tier = chemical_research_data.clearance_level
 	C.generate_stats()
-	C.update_stats()
 	chemical_gen_classes_list["tau"] += C.id //Because each unique_vended should be unique, we do not save the chemclass anywhere but in the tau list
 	chemical_reagents_list[C.id] = C
 	C.generate_assoc_recipe()
@@ -699,7 +698,7 @@
 			completed = TRUE
 		else
 			info += "CLASSIFIED:<I> Clearance level [S.gen_tier] required to read the database entry.</I><BR>\n"
-	else if(S.chemclass >= CHEM_CLASS_SPECIAL)
+	else if(S.chemclass == CHEM_CLASS_SPECIAL && !chemical_research_data.clearance_x_access)
 		info += "CLASSIFIED:<I> Clearance level <B>X</B> required to read the database entry.</I><BR>\n"
 	else if(S.description)
 		info += "<font size = \"2.5\">[S.description]\n"
@@ -738,6 +737,8 @@
 		completed = FALSE
 	if(!S.properties) //Safety for empty reagents
 		completed = FALSE
+	if(S.chemclass == CHEM_CLASS_SPECIAL && chemical_research_data.clearance_x_access)
+		completed = TRUE
 	data = S
 
 /obj/item/paper/incident

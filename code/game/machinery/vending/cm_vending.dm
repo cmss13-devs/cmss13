@@ -1719,7 +1719,7 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 		list("88 Mod 4 Combat Pistol", round(scale * 15), /obj/item/weapon/gun/pistol/mod88, "black"),
 		list("M44 Combat Revolver", round(scale * 10), /obj/item/weapon/gun/revolver/m44, "black"),
 		list("M39 Submachinegun", round(scale * 15), /obj/item/weapon/gun/smg/m39, "black"),
-		list("L42 Pulse Carbine MK1", round(scale * 20), /obj/item/weapon/gun/rifle/l42a, "black"),
+		list("L42A Battle Rifle", round(scale * 20), /obj/item/weapon/gun/rifle/l42a, "black"),
 		list("M41A Pulse Rifle MK2", round(scale * 20), /obj/item/weapon/gun/rifle/m41a, "black"),
 		list("M37A2 Pump Shotgun", round(scale * 10), /obj/item/weapon/gun/shotgun/pump, "black"),
 

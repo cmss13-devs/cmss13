@@ -180,7 +180,6 @@
 
 //----------------------------------------------
 //Special gun for the CO to replace the smartgun
-//Attachment points need fixing
 
 /obj/item/weapon/gun/rifle/m46c
 	name = "\improper M46C pulse rifle"
@@ -250,7 +249,7 @@
 
 
 /obj/item/weapon/gun/rifle/m46c/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 17, "rail_x" = 12, "rail_y" = 18, "under_x" = 24, "under_y" = 12, "stock_x" = 24, "stock_y" = 13)
+	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 17, "rail_x" = 11, "rail_y" = 19, "under_x" = 24, "under_y" = 12, "stock_x" = 24, "stock_y" = 13)
 
 
 /obj/item/weapon/gun/rifle/m46c/set_gun_config_values()
@@ -270,7 +269,8 @@
 /obj/item/weapon/gun/rifle/m46c/proc/name_after_co(var/mob/living/carbon/human/H, var/obj/item/weapon/gun/rifle/m46c/I)
 	I.desc = "A prototype M46C, an experimental rifle platform built to outperform the standard M41A. Back issue only. Uses standard MK1 & MK2 rifle magazines. Property of [H.real_name]"
 
-
+/obj/item/weapon/gun/rifle/m46c/stripped
+	random_spawn_chance = 0//no extra attachies on spawn, still gets its stock though.
 
 //-------------------------------------------------------
 //MAR-40 AK CLONE //AK47 and FN FAL together as one.
@@ -743,7 +743,7 @@
 
 //-------------------------------------------------------
 //-------------------------------------------------------
-//L42 MK1 Pulse Carbine
+//L42A Battle Rifle
 
 /obj/item/weapon/gun/rifle/l42a
 	name = "\improper L42A battle rifle"
@@ -777,7 +777,7 @@
 	map_specific_decoration = TRUE
 
 /obj/item/weapon/gun/rifle/l42a/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 19,"rail_x" = 7, "rail_y" = 19, "under_x" = 18, "under_y" = 16, "stock_x" = 22, "stock_y" = 10)
+	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 19,"rail_x" = 6, "rail_y" = 20, "under_x" = 18, "under_y" = 16, "stock_x" = 22, "stock_y" = 10)
 
 
 /obj/item/weapon/gun/rifle/l42a/set_gun_config_values()

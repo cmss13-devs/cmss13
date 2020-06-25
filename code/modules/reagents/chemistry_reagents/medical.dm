@@ -13,33 +13,7 @@
 	overdose_critical = HIGH_REAGENTS_OVERDOSE_CRITICAL
 	scannable = 1
 	chemclass = CHEM_CLASS_COMMON
-	properties = list(PROPERTY_PAINKILLING = 1)
-
-/datum/reagent/inaprovaline/on_mob_life(mob/living/M, alien)
-	. = ..()
-	if(!.) return
-
-	M.reagent_shock_modifier += PAIN_REDUCTION_LIGHT
-
-	if(M.losebreath >= 10)
-		M.losebreath = max(10, M.losebreath-5)
-
-	holder.remove_reagent(src.id, 0.5 * REAGENTS_METABOLISM)
-
-/datum/reagent/inaprovaline/on_overdose(mob/living/M, alien)
-	if(alien == IS_YAUTJA) return
-	M.make_jittery(5) //Overdose causes a spasm
-	M.knocked_out = max(M.knocked_out, 20)
-
-/datum/reagent/inaprovaline/on_overdose_critical(mob/living/M, alien)
-	if(alien == IS_YAUTJA) return
-	M.drowsyness = max(M.drowsyness, 20)
-	if(ishuman(M)) //Critical overdose causes total blackout and heart damage. Too much stimulant
-		var/mob/living/carbon/human/H = M
-		var/datum/internal_organ/heart/E = H.internal_organs_by_name["heart"]
-		E.damage += 0.5
-		if(prob(10))
-			M.emote(pick("twitch","blink_r","shiver"))
+	properties = list(PROPERTY_CARDIOSTABILIZING = 2)
 
 /datum/reagent/ryetalyn
 	name = "Ryetalyn"
@@ -50,22 +24,7 @@
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_UNCOMMON
-
-/datum/reagent/ryetalyn/on_mob_life(mob/living/M)
-	. = ..()
-	if(!.) return
-
-	M.disabilities = 0
-	M.sdisabilities = 0
-
-/datum/reagent/ryetalyn/on_overdose(mob/living/M)
-	M.confused = max(M.confused, 20) //Confusion and some toxins
-	M.apply_damage(1, TOX)
-
-/datum/reagent/ryetalyn/on_overdose_critical(mob/living/M)
-	M.knocked_out = max(M.knocked_out, 20) //Total DNA collapse
-	M.apply_damage(1, TOX)
-	M.apply_damage(3, CLONE)
+	properties = list(PROPERTY_AIDING = 2)
 
 /datum/reagent/paracetamol
 	name = "Paracetamol"
@@ -78,20 +37,7 @@
 	overdose = HIGH_REAGENTS_OVERDOSE
 	overdose_critical = HIGH_REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_UNCOMMON
-	properties = list(PROPERTY_PAINKILLING = 2)
-
-/datum/reagent/paracetamol/on_mob_life(mob/living/M)
-	. = ..()
-	if(!.) return
-	M.reagent_pain_modifier += PAIN_REDUCTION_HEAVY
-
-/datum/reagent/paracetamol/on_overdose(mob/living/M)
-	M.hallucination = max(M.hallucination, 2) //Hallucinations and tox damage
-	M.apply_damage(1, TOX)
-
-/datum/reagent/paracetamol/on_overdose_critical(mob/living/M)
-	M.apply_damage(4, TOX) //Massive liver damage
-
+	properties = list(PROPERTY_PAINKILLING = 1.5)
 
 /datum/reagent/tramadol
 	name = "Tramadol"
@@ -104,23 +50,7 @@
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_COMMON
-	properties = list(PROPERTY_PAINKILLING = 3)
-
-/datum/reagent/tramadol/on_mob_life(mob/living/M)
-	. = ..()
-	if(!.) return
-	M.reagent_pain_modifier += PAIN_REDUCTION_VERY_HEAVY
-
-
-/datum/reagent/tramadol/on_overdose(mob/living/M)
-	M.apply_damage(1, OXY)
-	M.apply_damage(1, TOX)
-
-/datum/reagent/tramadol/on_overdose_critical(mob/living/M)
-	M.apply_damage(3, OXY)
-	M.apply_damage(2, TOX)
-	M.adjustBrainLoss(1)
-
+	properties = list(PROPERTY_PAINKILLING = 2)
 
 /datum/reagent/oxycodone
 	name = "Oxycodone"
@@ -133,30 +63,7 @@
 	overdose = MED_REAGENTS_OVERDOSE
 	overdose_critical = MED_REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_UNCOMMON
-	properties = list(PROPERTY_PAINKILLING = 4)
-
-/datum/reagent/oxycodone/on_mob_life(mob/living/M)
-	. = ..()
-	if(!.) return
-	M.reagent_pain_modifier += PAIN_REDUCTION_FULL
-
-/datum/reagent/oxycodone/on_overdose(mob/living/M)
-	M.apply_damage(1, OXY)
-	M.apply_damage(1, TOX)
-
-/datum/reagent/oxycodone/on_overdose_critical(mob/living/M)
-	M.apply_damage(3, OXY)
-	M.apply_damage(2, TOX)
-	M.adjustBrainLoss(1)
-
-/datum/reagent/oxycodone/on_overdose(mob/living/M)
-	M.apply_damage(1, OXY)
-	M.apply_damage(1, TOX)
-
-/datum/reagent/oxycodone/on_overdose_critical(mob/living/M)
-	M.apply_damage(3, OXY)
-	M.apply_damage(2, TOX)
-	M.adjustBrainLoss(1)
+	properties = list(PROPERTY_PAINKILLING = 6)
 
 /datum/reagent/sterilizine
 	name = "Sterilizine"
@@ -176,24 +83,7 @@
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_UNCOMMON
-
-/datum/reagent/leporazine/on_mob_life(mob/living/M)
-	. = ..()
-	if(!.) return
-	if(M.bodytemperature > 310)
-		M.bodytemperature = max(310, M.bodytemperature - (40 * TEMPERATURE_DAMAGE_COEFFICIENT))
-		M.recalculate_move_delay = TRUE
-	else if(M.bodytemperature < 311)
-		M.bodytemperature = min(310, M.bodytemperature + (40 * TEMPERATURE_DAMAGE_COEFFICIENT))
-		M.recalculate_move_delay = TRUE
-
-/datum/reagent/leporazine/on_overdose(mob/living/M, alien)
-	if(alien == IS_YAUTJA) return
-	M.knocked_out = max(M.knocked_out, 20)
-
-/datum/reagent/leporazine/on_overdose_critical(mob/living/M, alien)
-	if(alien == IS_YAUTJA) return
-	M.drowsyness  = max(M.drowsyness, 30)
+	properties = list(PROPERTY_THERMOSTABILIZING = 2)
 
 /datum/reagent/kelotane
 	name = "Kelotane"
@@ -207,19 +97,6 @@
 	chemclass = CHEM_CLASS_COMMON
 	properties = list(PROPERTY_ANTICORROSIVE = 2)
 
-/datum/reagent/kelotane/on_mob_life(var/mob/living/M)
-	. = ..()
-	if(!.) return
-	if(M.stat == DEAD)
-		return
-	M.heal_limb_damage(0, 2 * REM)
-
-/datum/reagent/kelotane/on_overdose(mob/living/M)
-	M.apply_damages(1, 0, 1) //Mixed brute/tox damage
-
-/datum/reagent/kelotane/on_overdose_critical(mob/living/M)
-	M.apply_damages(4, 0, 4) //Massive brute/tox damage
-
 /datum/reagent/dermaline
 	name = "Dermaline"
 	id = "dermaline"
@@ -230,21 +107,7 @@
 	overdose_critical = LOWH_REAGENTS_OVERDOSE_CRITICAL
 	scannable = 1
 	chemclass = CHEM_CLASS_UNCOMMON
-	properties = list(PROPERTY_ANTICORROSIVE = 4)
-
-/datum/reagent/dermaline/on_mob_life(mob/living/M, alien)
-	. = ..()
-	if(!.) return
-	if(M.stat == DEAD) //THE GUY IS **DEAD**! BEREFT OF ALL LIFE HE RESTS IN PEACE etc etc. He does NOT metabolise shit anymore, god DAMN
-		return
-	if(!alien)
-		M.heal_limb_damage(0, 3 * REM)
-
-/datum/reagent/dermaline/on_overdose(mob/living/M)
-	M.apply_damages(1, 0, 1) //Mixed brute/tox damage
-
-/datum/reagent/dermaline/on_overdose_critical(mob/living/M)
-	M.apply_damages(4, 0, 4) //Massive brute/tox damage
+	properties = list(PROPERTY_ANTICORROSIVE = 3)
 
 /datum/reagent/dexalin
 	name = "Dexalin"
@@ -256,23 +119,7 @@
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	scannable = 1
 	chemclass = CHEM_CLASS_COMMON
-
-/datum/reagent/dexalin/on_mob_life(mob/living/M,alien)
-	. = ..()
-	if(!.) return
-	if(M.stat == DEAD)
-		return  //See above, down and around. --Agouri
-
-	if(!alien)
-		M.apply_damage(-2*REM, OXY)
-
-	holder.remove_reagent("lexorin", 2 * REM)
-
-/datum/reagent/dexalin/on_overdose(mob/living/M)
-	M.apply_damage(1, TOX) //Mixed brute/tox damage
-
-/datum/reagent/dexalin/on_overdose_critical(mob/living/M)
-	M.apply_damages(2, 0, 4) //Massive brute/tox damage
+	properties = list(PROPERTY_OXYGENATING = 4)
 
 /datum/reagent/dexalinp
 	name = "Dexalin Plus"
@@ -284,23 +131,7 @@
 	overdose_critical = LOWH_REAGENTS_OVERDOSE_CRITICAL
 	scannable = 1
 	chemclass = CHEM_CLASS_UNCOMMON
-
-/datum/reagent/dexalinp/on_mob_life(mob/living/M,alien)
-	. = ..()
-	if(!.) return
-	if(M.stat == DEAD)
-		return
-
-	if(!alien)
-		M.apply_damage(-M.getOxyLoss(), OXY)
-
-	holder.remove_reagent("lexorin", 2*REM)
-
-/datum/reagent/dexalinp/on_overdose(mob/living/M)
-	M.apply_damage(1, TOX) //Mixed brute/tox damage
-
-/datum/reagent/dexalinp/on_overdose_critical(mob/living/M)
-	M.apply_damages(2, 0, 4) //Massive brute/tox damage
+	properties = list(PROPERTY_OXYGENATING = 6)
 
 /datum/reagent/tricordrazine
 	name = "Tricordrazine"
@@ -312,26 +143,7 @@
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_UNCOMMON
-	properties = list(PROPERTY_NEOGENETIC = 1, PROPERTY_ANTICORROSIVE = 1, PROPERTY_ANTITOXIC = 1)
-
-/datum/reagent/tricordrazine/on_mob_life(mob/living/M, alien)
-	. = ..()
-	if(!.) return
-	if(M.stat == DEAD)
-		return
-	if(!alien)
-		if(M.getOxyLoss()) M.apply_damage(-REM, OXY)
-		if(M.getBruteLoss() && prob(80)) M.heal_limb_damage(REM, 0)
-		if(M.getFireLoss() && prob(80)) M.heal_limb_damage(0, REM)
-		if(M.getToxLoss() && prob(80)) M.apply_damage(-REM, TOX)
-
-/datum/reagent/tricordrazine/on_overdose(mob/living/M)
-	M.make_jittery(5)
-	M.adjustBrainLoss(1)
-
-/datum/reagent/tricordrazine/on_overdose_critical(mob/living/M)
-	M.apply_damages(5, 5, 5) //Massive damage bounceback if abused
-	M.adjustBrainLoss(1)
+	properties = list(PROPERTY_NEOGENETIC = 1, PROPERTY_ANTICORROSIVE = 1, PROPERTY_ANTITOXIC = 1, PROPERTY_OXYGENATING = 1)
 
 /datum/reagent/anti_toxin
 	name = "Dylovene"
@@ -343,31 +155,7 @@
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_COMMON
-	properties = list(PROPERTY_ANTITOXIC = 2)
-
-/datum/reagent/anti_toxin/on_mob_life(mob/living/M,alien)
-	. = ..()
-	if(!.) return
-	if(!alien)
-		M.reagents.remove_all_type(/datum/reagent/toxin, REM, 0, 1)
-		M.drowsyness = max(M.drowsyness- 2 * REM, 0)
-		M.hallucination = max(0, M.hallucination -  5 * REM)
-		M.apply_damage(-2 * REM, TOX)
-
-/datum/reagent/anti_toxin/on_overdose(mob/living/M)
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		var/datum/internal_organ/eyes/E = H.internal_organs_by_name["eyes"]
-		if(E)
-			E.damage += 0.41 //blurry after slightly more than 10u of overdose, blindness after ~15 or so
-
-/datum/reagent/anti_toxin/on_overdose_critical(mob/living/M)
-	M.apply_damages(3, 3) //Starts detoxing, hard
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		var/datum/internal_organ/eyes/E = H.internal_organs_by_name["eyes"]
-		if(E)
-			E.damage += 0.82
+	properties = list(PROPERTY_ANTITOXIC = 2, PROPERTY_ANTIHALLUCINOGENIC = 2)
 
 /datum/reagent/adminordrazine //An OP chemical for admins
 	name = "Adminordrazine"
@@ -375,36 +163,7 @@
 	description = "A magical substance created by gods to dissolve extreme amounts of salt."
 	reagent_state = LIQUID
 	color = "#C8A5DC" // rgb: 200, 165, 220
-
-/datum/reagent/adminordrazine/on_mob_life(mob/living/carbon/M)
-	. = ..()
-	if(!.) return
-	M.reagents.remove_all_type(/datum/reagent/toxin, 5*REM, 0, 1)
-	M.setCloneLoss(0)
-	M.setOxyLoss(0)
-	M.heal_limb_damage(5,5)
-	M.apply_damage(-5, TOX)
-	M.hallucination = 0
-	M.setBrainLoss(0)
-	M.disabilities = 0
-	M.sdisabilities = 0
-	M.eye_blurry = 0
-	M.eye_blind = 0
-	M.SetKnockeddown(0)
-	M.SetStunned(0)
-	M.SetKnockedout(0)
-	M.silent = 0
-	M.dizziness = 0
-	M.drowsyness = 0
-	M.stuttering = 0
-	M.confused = 0
-	M.sleeping = 0
-	M.jitteriness = 0
-	for(var/datum/disease/D in M.viruses)
-		D.spread = "Remissive"
-		D.stage--
-		if(D.stage < 1)
-			D.cure()
+	properties = list(PROPERTY_OMNIPOTENT = 2)
 
 /datum/reagent/thwei //OP yautja chem
 	name = "Thwei"
@@ -413,48 +172,17 @@
 	reagent_state = LIQUID
 	color = "#C8A5DC" // rgb: 200, 165, 220
 	chemclass = CHEM_CLASS_SPECIAL
-
-/datum/reagent/thwei/on_mob_life(mob/living/carbon/M,alien)
-	. = ..()
-	if(!.) return
-	var/mob/living/carbon/human/Y = M
-	for(var/obj/limb/L in Y.limbs)
-		if(L.time_to_knit && (L.status & LIMB_BROKEN))
-			if(L.knitting_time > 0) break // only one knits at a time
-			if(L.knitting_time == -1)
-				var/total_knitting_time = world.time + L.time_to_knit/2
-				L.knitting_time = total_knitting_time
-				L.start_processing()
-				to_chat(Y, SPAN_NOTICE("You feel the bones in your [L.display_name] start to knit together."))
-				break
-
-	if(M.getBruteLoss() && prob(80)) M.heal_limb_damage(1*REM,0)
-	if(M.getFireLoss() && prob(80)) M.heal_limb_damage(0,1*REM)
-	if(M.getToxLoss() && prob(80)) M.apply_damage(-1*REM, TOX)
-	M.reagents.remove_all_type(/datum/reagent/toxin, 5*REM, 0, 1)
-	M.setCloneLoss(0)
-	M.setOxyLoss(0)
-	M.apply_damage(-5, TOX)
-	M.hallucination = 0
-	M.setBrainLoss(0)
-	M.disabilities = 0
-	M.sdisabilities = 0
-	M.eye_blurry = 0
-	M.eye_blind = 0
-	M.silent = 0
-	M.dizziness = 0
-	M.drowsyness = 0
-	M.stuttering = 0
-	M.confused = 0
-	M.jitteriness = 0
-	for(var/datum/internal_organ/I in M.internal_organs)
-		if(I.damage > 0)
-			I.damage = max(I.damage - 1, 0)
-	for(var/datum/disease/D in M.viruses)
-		D.spread = "Remissive"
-		D.stage--
-		if(D.stage < 1)
-			D.cure()
+	properties = list(	PROPERTY_CROSSMETABOLIZING = 1,
+						PROPERTY_HYPERGENETIC = 2,
+						PROPERTY_ANTICORROSIVE = 1,
+						PROPERTY_ANTITOXIC = 1,
+						PROPERTY_OXYGENATING = 6,
+						PROPERTY_ANTICARCINOGENIC = 6,
+						PROPERTY_BONEMENDING = 6,
+						PROPERTY_AIDING = 1,
+						PROPERTY_ANTIHALLUCINOGENIC = 2,
+						PROPERTY_FOCUSING = 6,
+						PROPERTY_CURING = 4)
 
 /datum/reagent/synaptizine
 	name = "Synaptizine"
@@ -467,25 +195,7 @@
 	overdose_critical = LOW_REAGENTS_OVERDOSE_CRITICAL
 	scannable = 1
 	chemclass = CHEM_CLASS_UNCOMMON
-	properties = list(PROPERTY_NERVESTIMULATING = 2)
-
-/datum/reagent/synaptizine/on_mob_life(mob/living/M)
-	. = ..()
-	if(!.) return
-	M.reagent_shock_modifier += PAIN_REDUCTION_MEDIUM
-	M.drowsyness = max(M.drowsyness-5, 0)
-	M.AdjustKnockedout(-1)
-	M.AdjustStunned(-1)
-	M.AdjustKnockeddown(-1)
-	holder.remove_reagent("mindbreaker", 5)
-	M.hallucination = max(0, M.hallucination - 10)
-	if(prob(80))	M.apply_damage(1, TOX)
-
-/datum/reagent/synaptizine/on_overdose(mob/living/M)
-	M.apply_damage(2, TOX)
-
-/datum/reagent/synaptizine/on_overdose_critical(mob/living/M)
-	M.apply_damages(1, 1, 3)
+	properties = list(PROPERTY_PAINKILLING = 1, PROPERTY_NERVESTIMULATING = 2, PROPERTY_ANTIHALLUCINOGENIC = 2, PROPERTY_TOXIC = 1)
 
 /datum/reagent/neuraline //injected by neurostimulator implant
 	name = "Neuraline"
@@ -500,19 +210,6 @@
 	chemclass = CHEM_CLASS_RARE
 	properties = list(PROPERTY_NERVESTIMULATING = 5)
 
-/datum/reagent/neuraline/on_mob_life(mob/living/M)
-	. = ..()
-	if(!.) return
-	M.reagent_shock_modifier += PAIN_REDUCTION_FULL
-	M.drowsyness = max(M.drowsyness-5, 0)
-	M.dizziness = max(M.dizziness-5, 0)
-	M.stuttering = max(M.stuttering-5, 0)
-	M.confused = max(M.confused-5, 0)
-	M.eye_blurry = max(M.eye_blurry-5, 0)
-	M.AdjustKnockedout(-2)
-	M.AdjustStunned(-2)
-	M.AdjustKnockeddown(-1)
-
 /datum/reagent/arithrazine
 	name = "Arithrazine"
 	id = "arithrazine"
@@ -525,21 +222,6 @@
 	chemclass = CHEM_CLASS_UNCOMMON
 	properties = list(PROPERTY_ANTITOXIC = 1, PROPERTY_BIOCIDIC = 1)
 
-/datum/reagent/arithrazine/on_mob_life(mob/living/M)
-	. = ..()
-	if(!.) return
-	if(M.stat == DEAD)
-		return
-	M.apply_damage(-1*REM, TOX)
-	if(prob(15))
-		M.take_limb_damage(1, 0)
-
-/datum/reagent/arithrazine/on_overdose(mob/living/M)
-	M.apply_damage(2, TOX)
-
-/datum/reagent/arithrazine/on_overdose_critical(mob/living/M)
-	M.apply_damages(1, 1, 3)
-
 /datum/reagent/russianred
 	name = "Russian Red"
 	id = "russianred"
@@ -550,19 +232,7 @@
 	overdose = MED_REAGENTS_OVERDOSE
 	overdose_critical = MED_REAGENTS_OVERDOSE_CRITICAL
 	scannable = 1
-
-/datum/reagent/russianred/on_mob_life(mob/living/M)
-	. = ..()
-	if(!.) return
-	M.apply_damage(-1*REM, TOX)
-	if(prob(50))
-		M.take_limb_damage(3, 0)
-
-/datum/reagent/russianred/on_overdose(mob/living/M)
-	M.apply_damages(1, 0, 0)
-
-/datum/reagent/russianred/on_overdose_critical(mob/living/M)
-	M.apply_damages(1, 2, 2)
+	properties = list(PROPERTY_ANTITOXIC = 1, PROPERTY_BIOCIDIC = 2)
 
 /datum/reagent/alkysine
 	name = "Alkysine"
@@ -575,19 +245,7 @@
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	scannable = 1
 	chemclass = CHEM_CLASS_UNCOMMON
-	properties = list(PROPERTY_PAINKILLING = 0.5, PROPERTY_NEUROPEUTIC = 2)
-
-/datum/reagent/alkysine/on_mob_life(mob/living/M)
-	. = ..()
-	if(!.) return
-	M.reagent_shock_modifier += PAIN_REDUCTION_VERY_LIGHT
-	M.adjustBrainLoss(-3 * REM)
-
-/datum/reagent/alkysine/on_overdose(mob/living/M)
-	M.apply_damage(2, TOX)
-
-/datum/reagent/alkysine/on_overdose_critical(mob/living/M)
-	M.apply_damages(1, 1, 3)
+	properties = list(PROPERTY_NEUROPEUTIC = 2)
 
 /datum/reagent/imidazoline
 	name = "Imidazoline"
@@ -599,25 +257,7 @@
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	scannable = 1
 	chemclass = CHEM_CLASS_UNCOMMON
-	properties = list(PROPERTY_OCULOPEUTIC = 1)
-
-/datum/reagent/imidazoline/on_mob_life(mob/living/M)
-	. = ..()
-	if(!.) return
-	M.eye_blurry = max(M.eye_blurry-5 , 0)
-	M.eye_blind = max(M.eye_blind-5 , 0)
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		var/datum/internal_organ/eyes/E = H.internal_organs_by_name["eyes"]
-		if(E && istype(E))
-			if(E.damage > 0)
-				E.damage = max(E.damage - 1, 0)
-
-/datum/reagent/imidazoline/on_overdose(mob/living/M)
-		M.apply_damage(2, TOX)
-
-/datum/reagent/imidazoline/on_overdose_critical(mob/living/M)
-		M.apply_damages(1, 1, 3)
+	properties = list(PROPERTY_OCULOPEUTIC = 2)
 
 /datum/reagent/peridaxon
 	name = "Peridaxon"
@@ -630,14 +270,9 @@
 	custom_metabolism = 0.05
 	scannable = 1
 	chemclass = CHEM_CLASS_COMMON
+	properties = list(PROPERTY_UNKNOWN = 4) //handled by organ code
 
-/datum/reagent/peridaxon/on_overdose(mob/living/M)
-	M.apply_damage(2, BRUTE)
-
-/datum/reagent/peridaxon/on_overdose_critical(mob/living/M)
-	M.apply_damages(3, 3, 3)
-
-/datum/reagent/bicaridine
+/datum/reagent/bicaridine // yes it cures IB, it's located in some other part of wound code for whatever reason
 	name = "Bicaridine"
 	id = "bicaridine"
 	description = "Bicaridine is an analgesic medication and can be used to treat severe external blunt trauma and to stabilize patients. Overdosing will cause caustic burns, but can mend internal broken bloodvessels."
@@ -648,19 +283,6 @@
 	scannable = 1
 	chemclass = CHEM_CLASS_COMMON
 	properties = list(PROPERTY_NEOGENETIC = 2)
-
-/datum/reagent/bicaridine/on_mob_life(mob/living/M, alien)
-	. = ..()
-	if(!.) return
-	if(M.stat == DEAD)
-		return
-	M.heal_limb_damage(2*REM,0)
-
-/datum/reagent/bicaridine/on_overdose(mob/living/M) // yes it cures IB, it's located in some other part of wound code for whatever reason
-	M.apply_damage(1, BURN)
-
-/datum/reagent/bicaridine/on_overdose_critical(mob/living/M)
-	M.apply_damages(0, 4, 2)
 
 /datum/reagent/quickclot
 	name = "Quick Clot"
@@ -673,12 +295,7 @@
 	scannable = 1 //scannable now.  HUZZAH.
 	custom_metabolism = 0.05
 	chemclass = CHEM_CLASS_UNCOMMON
-
-/datum/reagent/quickclot/on_overdose(mob/living/M)
-	M.apply_damage(3, BRUTE)
-
-/datum/reagent/quickclot/on_overdose_critical(mob/living/M)
-	M.apply_damages(2, 3, 3)
+	properties = list(PROPERTY_UNKNOWN = 6) //handled by blood code
 
 /datum/reagent/adrenaline
 	name = "Epinephrine"
@@ -692,29 +309,7 @@
 	scannable = 1
 	custom_metabolism = 0.4
 	chemclass = CHEM_CLASS_COMMON
-	properties = list(PROPERTY_PAINKILLING = 1.5, PROPERTY_MUSCLESTIMULATING = 1)
-
-/datum/reagent/adrenaline/on_mob_life(mob/living/M)
-	. = ..()
-	if(!.) return
-
-	M.reagent_move_delay_modifier -= 0.2
-	M.reagent_shock_modifier += PAIN_REDUCTION_MEDIUM // half of tramadol
-	M.recalculate_move_delay = TRUE
-
-/datum/reagent/adrenaline/on_overdose(mob/living/M)
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		var/datum/internal_organ/heart/E = H.internal_organs_by_name["heart"]
-		if(E)
-			E.damage += 0.25
-
-/datum/reagent/adrenaline/on_overdose_critical(mob/living/M, alien)
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		var/datum/internal_organ/heart/E = H.internal_organs_by_name["heart"]
-		if(E)
-			E.damage += 1
+	properties = list(PROPERTY_PAINKILLING = 1.5, PROPERTY_MUSCLESTIMULATING = 1, PROPERTY_ELECTROGENETIC = 4)
 
 /datum/reagent/hyperzine
 	name = "Hyperzine"
@@ -726,40 +321,7 @@
 	overdose = LOW_REAGENTS_OVERDOSE
 	overdose_critical = LOW_REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_UNCOMMON
-	properties = list(PROPERTY_MUSCLESTIMULATING = 1, PROPERTY_CARDIOTOXIC = 1)
-
-/datum/reagent/hyperzine/on_mob_life(mob/living/M)
-	. = ..()
-	if(!.) return
-
-	M.reagent_move_delay_modifier -= 0.5
-	M.recalculate_move_delay = TRUE
-
-	if(prob(1))
-		M.emote(pick("twitch","blink_r","shiver"))
-		if(ishuman(M))
-			var/mob/living/carbon/human/H = M
-			var/datum/internal_organ/heart/F = H.internal_organs_by_name["heart"]
-			F.damage += 1
-			M.emote(pick("twitch","blink_r","shiver"))
-
-/datum/reagent/hyperzine/on_overdose(mob/living/M)
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		var/datum/internal_organ/heart/E = H.internal_organs_by_name["heart"]
-		if(E)
-			E.damage += 0.5
-		if(prob(10))
-			M.emote(pick("twitch", "blink_r", "shiver"))
-
-/datum/reagent/hyperzine/on_overdose_critical(mob/living/M)
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		var/datum/internal_organ/heart/E = H.internal_organs_by_name["heart"]
-		if(E)
-			E.damage += 2
-		if(prob(25))
-			M.emote(pick("twitch", "blink_r", "shiver"))
+	properties = list(PROPERTY_MUSCLESTIMULATING = 2, PROPERTY_CARDIOTOXIC = 1)
 
 /datum/reagent/ultrazine
 	name = "Ultrazine"
@@ -771,42 +333,7 @@
 	overdose = LOWM_REAGENTS_OVERDOSE
 	overdose_critical = LOWM_REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_RARE
-
-/datum/reagent/ultrazine/on_mob_life(mob/living/M)
-	. = ..()
-	if(!.) return
-
-	M.reagent_move_delay_modifier -= 10
-	M.recalculate_move_delay = TRUE
-
-	var/has_addiction
-
-	for(var/datum/disease/addiction/D in M.viruses)
-		if(D.chemical_id == id)
-			D.handle_chem()
-			has_addiction = TRUE
-			break
-	if(!has_addiction)
-		var/datum/disease/addiction/D = new /datum/disease/addiction(id, 1)
-		M.contract_disease(D, 1)
-
-/datum/reagent/ultrazine/on_overdose(mob/living/M)
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		var/datum/internal_organ/heart/E = H.internal_organs_by_name["heart"]
-		if(E)
-			E.damage += 0.5
-		if(prob(10))
-			M.emote(pick("twitch", "blink_r", "shiver"))
-
-/datum/reagent/ultrazine/on_overdose_critical(mob/living/M)
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		var/datum/internal_organ/heart/E = H.internal_organs_by_name["heart"]
-		if(E)
-			E.damage += 2
-		if(prob(25))
-			M.emote(pick("twitch", "blink_r", "shiver"))
+	properties = list(PROPERTY_MUSCLESTIMULATING = 40, PROPERTY_ADDICTIVE = 8)
 
 /datum/reagent/cryoxadone
 	name = "Cryoxadone"
@@ -816,7 +343,7 @@
 	color = "#C8A5DC" // rgb: 200, 165, 220
 	scannable = 1
 	chemclass = CHEM_CLASS_UNCOMMON
-	properties = list(PROPERTY_CRYOMETABOLIZING = 2, PROPERTY_NEOGENETIC = 1, PROPERTY_ANTICORROSIVE = 1, PROPERTY_ANTITOXIC = 1)
+	properties = list(PROPERTY_CRYOMETABOLIZING = 2, PROPERTY_NEOGENETIC = 1, PROPERTY_ANTICORROSIVE = 1, PROPERTY_ANTITOXIC = 1, PROPERTY_ANTICARCINOGENIC = 1)
 
 /datum/reagent/cryoxadone/on_mob_life(mob/living/M)
 	. = ..()
@@ -835,16 +362,7 @@
 	color = "#C8A5DC" // rgb: 200, 165, 220
 	scannable = 1
 	chemclass = CHEM_CLASS_UNCOMMON
-	properties = list(PROPERTY_CRYOMETABOLIZING = 6, PROPERTY_NEOGENETIC = 3, PROPERTY_ANTICORROSIVE = 3, PROPERTY_ANTITOXIC = 3)
-
-/datum/reagent/clonexadone/on_mob_life(mob/living/M)
-	. = ..()
-	if(!.) return
-	if(M.bodytemperature < 170)
-		M.adjustCloneLoss(-3)
-		M.apply_damage(-3, OXY)
-		M.heal_limb_damage(3,3)
-		M.apply_damage(-3, TOX)
+	properties = list(PROPERTY_CRYOMETABOLIZING = 6, PROPERTY_NEOGENETIC = 3, PROPERTY_ANTICORROSIVE = 3, PROPERTY_ANTITOXIC = 3, PROPERTY_ANTICARCINOGENIC = 3)
 
 /datum/reagent/rezadone
 	name = "Rezadone"
@@ -855,33 +373,7 @@
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	scannable = 1
-
-/datum/reagent/rezadone/on_mob_life(mob/living/M)
-	. = ..()
-	if(!.) return
-	if(!data) data = 1
-	data++
-	switch(data)
-		if(1 to 15)
-			M.adjustCloneLoss(-1)
-			M.heal_limb_damage(1,1)
-		if(15 to 35)
-			M.adjustCloneLoss(-2)
-			M.heal_limb_damage(2,1)
-			M.status_flags &= ~DISFIGURED
-			if(ishuman(M))
-				var/mob/living/carbon/human/H = M
-				H.name = H.get_visible_name()
-		if(35 to INFINITY)
-			M.apply_damage(1, TOX)
-			M.make_dizzy(5)
-			M.make_jittery(5)
-
-/datum/reagent/rezadone/on_overdose(mob/living/M)
-		M.apply_damage(2, TOX)
-
-/datum/reagent/rezadone/on_overdose_critical(mob/living/M)
-		M.apply_damage(3, TOX)
+	properties = list(PROPERTY_NEOGENETIC = 1, PROPERTY_AIDING = 3, PROPERTY_TOXIC = 2, PROPERTY_ANTICARCINOGENIC = 2)
 
 /datum/reagent/spaceacillin
 	name = "Spaceacillin"
@@ -893,12 +385,7 @@
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	scannable = 1
-
-/datum/reagent/spaceacillin/on_overdose(mob/living/M)
-	M.apply_damage(1, TOX)
-
-/datum/reagent/spaceacillin/on_overdose_critical(mob/living/M)
-	M.apply_damage(4, TOX)
+	properties = list(PROPERTY_UNKNOWN = 1)
 
 /datum/reagent/ethylredoxrazine	// FUCK YOU, ALCOHOL
 	name = "Ethylredoxrazine"
@@ -909,26 +396,9 @@
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_UNCOMMON
-
-/datum/reagent/ethylredoxrazine/on_mob_life(mob/living/M)
-	. = ..()
-	if(!.) return
-	M.dizziness = 0
-	M.drowsyness = 0
-	M.stuttering = 0
-	M.confused = 0
-	M.reagents.remove_all_type(/datum/reagent/ethanol, REM, 0, 1)
-
-/datum/reagent/ethylredoxrazine/on_overdose(mob/living/M)
-	M.apply_damage(1, TOX)
-
-/datum/reagent/ethylredoxrazine/on_overdose_critical(mob/living/M)
-	M.apply_damage(4, TOX)
+	properties = list(PROPERTY_FOCUSING = 3)
 
 ///////ANTIDEPRESSANTS///////
-
-#define ANTIDEPRESSANT_MESSAGE_DELAY 5*60*10
-
 /datum/reagent/antidepressant/methylphenidate
 	name = "Methylphenidate"
 	id = "methylphenidate"
@@ -938,18 +408,7 @@
 	custom_metabolism = 0.01
 	data = 0
 	chemclass = CHEM_CLASS_UNCOMMON
-	properties = list(PROPERTY_PSYCHOSTIMULATING = 1)
-
-/datum/reagent/antidepressant/methylphenidate/on_mob_life(mob/living/M)
-	. = ..()
-	if(!.) return
-	if(src.volume <= 0.1) if(data != -1)
-		data = -1
-		to_chat(M, SPAN_WARNING("You lose focus."))
-	else
-		if(world.time > data + ANTIDEPRESSANT_MESSAGE_DELAY)
-			data = world.time
-			to_chat(M, SPAN_NOTICE("Your mind feels focused and undivided."))
+	properties = list(PROPERTY_PSYCHOSTIMULATING = 4)
 
 /datum/reagent/antidepressant/citalopram
 	name = "Citalopram"
@@ -962,18 +421,6 @@
 	chemclass = CHEM_CLASS_UNCOMMON
 	properties = list(PROPERTY_PSYCHOSTIMULATING = 2)
 
-/datum/reagent/antidepressant/citalopram/on_mob_life(mob/living/M)
-	. = ..()
-	if(!.) return
-	if(volume <= 0.1) if(data != -1)
-		data = -1
-		to_chat(M, SPAN_WARNING("Your mind feels a little less stable..."))
-	else
-		if(world.time > data + ANTIDEPRESSANT_MESSAGE_DELAY)
-			data = world.time
-			to_chat(M, SPAN_NOTICE("Your mind feels stable.. a little stable."))
-
-
 /datum/reagent/antidepressant/paroxetine
 	name = "Paroxetine"
 	id = "paroxetine"
@@ -983,22 +430,7 @@
 	custom_metabolism = 0.01
 	data = 0
 	chemclass = CHEM_CLASS_UNCOMMON
-	properties = list(PROPERTY_PSYCHOSTIMULATING = 4, PROPERTY_HALLUCINOGENIC = 3)
-
-/datum/reagent/antidepressant/paroxetine/on_mob_life(mob/living/M)
-	. = ..()
-	if(!.) return
-	if(volume <= 0.1) if(data != -1)
-		data = -1
-		to_chat(M, SPAN_WARNING("Your mind feels much less stable..."))
-	else
-		if(world.time > data + ANTIDEPRESSANT_MESSAGE_DELAY)
-			data = world.time
-			if(prob(90))
-				to_chat(M, SPAN_NOTICE("Your mind feels much more stable."))
-			else
-				to_chat(M, SPAN_WARNING("Your mind breaks apart..."))
-				M.hallucination += 200
+	properties = list(PROPERTY_PSYCHOSTIMULATING = 6, PROPERTY_HALLUCINOGENIC = 6)
 
 /datum/reagent/antized
 	name = "Anti-Zed"
@@ -1008,10 +440,7 @@
 	color = "#C8A5DC"
 	custom_metabolism = 0.01
 	data = 0
-
-/datum/reagent/antized/on_mob_life(mob/living/carbon/human/M)
-	M.regenZ = 0
-	. = ..()
+	properties = list(PROPERTY_CURING = 2)
 
 // Surgery muscle relaxant & painkiller in one
 // Uses paralyze - cannot move, talk, or emote but can hear; patient is safe to operate on
@@ -1028,23 +457,3 @@
 	data = 0
 	chemclass = CHEM_CLASS_COMMON
 	properties = list(PROPERTY_SEDATIVE = 4, PROPERTY_HALLUCINOGENIC = 1)
-
-/datum/reagent/suxamorycin/on_mob_life(mob/living/M)
-	. = ..()
-	if(!.) return
-	if(!data) data = 1
-	data++
-	switch(data)
-		if(1 to 3)
-			M.druggy = max(M.druggy, 35)
-		if(4 to INFINITY)
-			M.KnockDown(2)	// move this to paralyzed, adjust the number
-			M.druggy = max(M.druggy, 35)
-			M.paralyzed += 2
-			M.confused += 2.2
-
-/datum/reagent/suxamorycin/on_overdose(mob/living/M)
-	M.apply_damage(5, OXY)
-
-/datum/reagent/suxamorycin/on_overdose_critical(mob/living/M)
-	M.apply_damage(10, OXY)

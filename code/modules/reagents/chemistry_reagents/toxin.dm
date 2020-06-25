@@ -8,44 +8,26 @@
 	description = "General identification for many similar toxins, sometimes created as a byproduct through chemical reactions."
 	reagent_state = LIQUID
 	color = "#CF3600" // rgb: 207, 54, 0
-	var/toxpwr = 0.7 // Toxins are really weak, but without being treated, last very long.
 	custom_metabolism = 0.1
-	properties = list(PROPERTY_TOXIC = 1)
-
-	on_mob_life(mob/living/M,alien)
-		. = ..()
-		if(!.) return
-		if(alien == IS_YAUTJA) return 0 //immunity to toxin reagents
-		if(toxpwr)
-			M.apply_damage(toxpwr*REM, TOX)
-			if(alien) holder.remove_reagent(id, custom_metabolism) //Kind of a catch-all for aliens without kidneys.
-			///I don't know what this is supposed to do, since aliens generally have kidneys, but I'm leaving it alone pending rework. /N
+	properties = list(PROPERTY_TOXIC = 1)// Toxins are really weak, but without being treated, last very long.
 
 /datum/reagent/toxin/hptoxin
 	name = "Toxin"
 	id = "hptoxin"
 	description = "A toxic chemical."
 	custom_metabolism = 1
-	toxpwr = 1
 
 /datum/reagent/toxin/pttoxin
 	name = "Toxin"
 	id = "pttoxin"
 	description = "A toxic chemical."
 	custom_metabolism = 1
-	toxpwr = 1
 
 /datum/reagent/toxin/sdtoxin
 	name = "Toxin"
 	id = "sdtoxin"
 	description = "A toxic chemical."
-	custom_metabolism = 1
-	toxpwr = 0
-	on_mob_life(mob/living/M,alien)
-		. = ..()
-		if(!.) return
-		M.apply_damage(1, OXY)
-
+	properties = list(PROPERTY_HYPOXEMIC = 2)
 
 /datum/reagent/toxin/amatoxin
 	name = "Amatoxin"
@@ -53,7 +35,6 @@
 	description = "A powerful poison derived from certain species of mushroom."
 	reagent_state = LIQUID
 	color = "#792300" // rgb: 121, 35, 0
-	toxpwr = 1
 	chemclass = CHEM_CLASS_RARE
 
 /datum/reagent/toxin/mutagen
@@ -62,15 +43,8 @@
 	description = "Mutagenic compound used for in experimental botany. Can cause unpredictable mutations in plants, but very lethal to humans. Keep away from children."
 	reagent_state = LIQUID
 	color = "#13BC5E" // rgb: 19, 188, 94
-	toxpwr = 0
 	chemclass = CHEM_CLASS_UNCOMMON
-	properties = list(PROPERTY_TOXIC = 4, PROPERTY_CARCINOGENIC = 1)
-
-	on_mob_life(mob/living/carbon/M)
-		. = ..()
-		if(!.) return
-		if(!istype(M))	return
-		M.apply_effect(10,IRRADIATE,0)
+	properties = list(PROPERTY_CARCINOGENIC = 1)
 
 /datum/reagent/toxin/phoron
 	name = "Phoron"
@@ -84,13 +58,8 @@
 	radiusmod = 0.05
 	burncolor = "#e01e1e"
 	burncolormod = 3
-	toxpwr = 3
 	chemclass = CHEM_CLASS_RARE
-
-	on_mob_life(mob/living/M)
-		. = ..()
-		if(!.) return
-		holder.remove_reagent("inaprovaline", 2*REM)
+	properties = list(PROPERTY_TOXIC = 3)
 
 /datum/reagent/toxin/lexorin
 	name = "Lexorin"
@@ -98,27 +67,10 @@
 	description = "Lexorin is an extremely dangerous compound that damages tissue and paralyzes the lungs, effectively stopping respiration. Can be deadly in even small doses. Lexorin is effectively countered by variants of dexalin."
 	reagent_state = LIQUID
 	color = "#C8A5DC" // rgb: 200, 165, 220
-	toxpwr = 0
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_UNCOMMON
 	properties = list(PROPERTY_HYPOXEMIC = 8, PROPERTY_BIOCIDIC = 1)
-
-	on_mob_life(mob/living/M)
-		. = ..()
-		if(!.) return
-		if(M.stat == DEAD)
-			return
-		if(prob(33))
-			M.take_limb_damage(1*REM, 0)
-		M.apply_damage(3, OXY)
-		if(prob(20)) M.emote("gasp")
-
-	on_overdose(mob/living/M)
-		M.apply_damages(2, 0, 2) //Overdose starts getting bad
-
-	on_overdose_critical(mob/living/M)
-		M.apply_damages(3, 0, 3) //Overdose starts getting bad
 
 /datum/reagent/toxin/cyanide //Fast and Lethal
 	name = "Cyanide"
@@ -126,16 +78,9 @@
 	description = "Cyanide is a naturally occuring toxic chemical, that has been used as a mean of killing for centuries because of its immediate effects. Symptoms include nausea, weakness, and difficulty breathing."
 	reagent_state = LIQUID
 	color = "#CF3600" // rgb: 207, 54, 0
-	toxpwr = 4
 	custom_metabolism = 0.4
 	chemclass = CHEM_CLASS_RARE
-	properties = list(PROPERTY_HYPOXEMIC = 2)
-
-	on_mob_life(mob/living/M)
-		. = ..()
-		if(!.) return
-		M.apply_damage(4*REM, OXY)
-		M.sleeping += 1
+	properties = list(PROPERTY_HYPOXEMIC = 4, PROPERTY_SEDATIVE = 1)
 
 /datum/reagent/toxin/minttoxin
 	name = "Mint Toxin"
@@ -143,12 +88,6 @@
 	description = "Useful for dealing with undesirable customers."
 	reagent_state = LIQUID
 	color = "#CF3600" // rgb: 207, 54, 0
-	toxpwr = 0
-
-	on_mob_life(mob/living/M)
-		. = ..()
-		if(!.) 
-			return
 
 /datum/reagent/toxin/carpotoxin
 	name = "Carpotoxin"
@@ -156,7 +95,7 @@
 	description = "A deadly neurotoxin produced by the dreaded space carp."
 	reagent_state = LIQUID
 	color = "#003333" // rgb: 0, 51, 51
-	toxpwr = 2
+	properties = list(PROPERTY_TOXIC = 2)
 
 /datum/reagent/toxin/zombiepowder
 	name = "Zombie Powder"
@@ -164,22 +103,22 @@
 	description = "A strong neurotoxin that puts the subject into a death-like state."
 	reagent_state = SOLID
 	color = "#669900" // rgb: 102, 153, 0
-	toxpwr = 0.5
+	properties = list(PROPERTY_TOXIC = 1)
 
-	on_mob_life(mob/living/carbon/M)
-		. = ..()
-		if(!.) return
-		M.status_flags |= FAKEDEATH
-		M.apply_damage(0.5*REM, OXY)
-		M.KnockDown(10)
-		M.silent = max(M.silent, 10)
-		M.tod = worldtime2text()
+/datum/reagent/toxin/zombiepowder/on_mob_life(mob/living/carbon/M)
+	. = ..()
+	if(!.) return
+	M.status_flags |= FAKEDEATH
+	M.apply_damage(0.5*REM, OXY)
+	M.KnockDown(10)
+	M.silent = max(M.silent, 10)
+	M.tod = worldtime2text()
 
-	Dispose()
-		if(holder && ismob(holder.my_atom))
-			var/mob/M = holder.my_atom
-			M.status_flags &= ~FAKEDEATH
-		. = ..()
+/datum/reagent/toxin/zombiepowder/Dispose()
+	if(holder && ismob(holder.my_atom))
+		var/mob/M = holder.my_atom
+		M.status_flags &= ~FAKEDEATH
+	. = ..()
 
 /datum/reagent/toxin/mindbreaker
 	name = "Mindbreaker Toxin"
@@ -187,29 +126,10 @@
 	description = "A powerful hallucinogenic compound that is illegal under space law. Causes extreme hallucinations and is very addictive. Formerly known as LSD."
 	reagent_state = LIQUID
 	color = "#B31008" // rgb: 139, 166, 233
-	toxpwr = 0
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_UNCOMMON
 	properties = list(PROPERTY_HALLUCINOGENIC = 8)
-
-	on_mob_life(mob/living/M)
-		. = ..()
-		if(!.) return
-		M.hallucination += 10
-
-	on_overdose(mob/living/M, alien)
-		if(alien == IS_YAUTJA)  return
-		M.apply_damage(1, TOX) //Overdose starts getting bad
-		M.make_jittery(5)
-		M.knocked_out = max(M.knocked_out, 20)
-
-	on_overdose_critical(mob/living/M, alien)
-		if(alien == IS_YAUTJA)  return
-		M.apply_damage(4, TOX) //Overdose starts getting bad
-		M.make_jittery(10)
-		M.knocked_out = max(M.knocked_out, 20)
-		M.drowsyness = max(M.drowsyness, 30)
 
 //Reagents used for plant fertilizers.
 /datum/reagent/toxin/fertilizer
@@ -217,8 +137,8 @@
 	id = "fertilizer"
 	description = "Industrial grade inorganic plant fertilizer."
 	reagent_state = LIQUID
-	toxpwr = 0.2 //It's not THAT poisonous.
 	color = "#664330" // rgb: 102, 67, 48
+	properties = list(PROPERTY_TOXIC = 0.5)
 
 /datum/reagent/toxin/fertilizer/eznutrient
 	name = "EZ Nutrient"
@@ -244,36 +164,35 @@
 	description = "A harmful toxic mixture used to kill plantlife. Very toxic to animals."
 	reagent_state = LIQUID
 	color = "#49002E" // rgb: 73, 0, 46
-	toxpwr = 1
 
-	reaction_obj(var/obj/O, var/volume)
-		if(istype(O,/obj/effect/alien/weeds/))
-			var/obj/effect/alien/weeds/alien_weeds = O
-			alien_weeds.health -= rand(15,35) // Kills alien weeds pretty fast
-			alien_weeds.healthcheck()
-		else if(istype(O,/obj/effect/glowshroom)) //even a small amount is enough to kill it
-			qdel(O)
-		else if(istype(O,/obj/effect/plantsegment))
-			if(prob(50)) qdel(O) //Kills kudzu too.
-		else if(istype(O,/obj/structure/machinery/portable_atmospherics/hydroponics))
-			var/obj/structure/machinery/portable_atmospherics/hydroponics/tray = O
+/datum/reagent/toxin/plantbgone/reaction_obj(var/obj/O, var/volume)
+	if(istype(O,/obj/effect/alien/weeds/))
+		var/obj/effect/alien/weeds/alien_weeds = O
+		alien_weeds.health -= rand(15,35) // Kills alien weeds pretty fast
+		alien_weeds.healthcheck()
+	else if(istype(O,/obj/effect/glowshroom)) //even a small amount is enough to kill it
+		qdel(O)
+	else if(istype(O,/obj/effect/plantsegment))
+		if(prob(50)) qdel(O) //Kills kudzu too.
+	else if(istype(O,/obj/structure/machinery/portable_atmospherics/hydroponics))
+		var/obj/structure/machinery/portable_atmospherics/hydroponics/tray = O
 
-			if(tray.seed)
-				tray.health -= rand(30,50)
-				if(tray.pestlevel > 0)
-					tray.pestlevel -= 2
-				if(tray.weedlevel > 0)
-					tray.weedlevel -= 3
-				tray.toxins += 4
-				tray.check_level_sanity()
-				tray.update_icon()
+		if(tray.seed)
+			tray.health -= rand(30,50)
+			if(tray.pestlevel > 0)
+				tray.pestlevel -= 2
+			if(tray.weedlevel > 0)
+				tray.weedlevel -= 3
+			tray.toxins += 4
+			tray.check_level_sanity()
+			tray.update_icon()
 
-	reaction_mob(var/mob/living/M, var/method=TOUCH, var/volume)
-		src = null
-		if(iscarbon(M))
-			var/mob/living/carbon/C = M
-			if(!C.wear_mask) // If not wearing a mask
-				C.apply_damage(2, TOX) // 4 toxic damage per application, doubled for some reason
+/datum/reagent/toxin/plantbgone/reaction_mob(var/mob/living/M, var/method=TOUCH, var/volume)
+	src = null
+	if(iscarbon(M))
+		var/mob/living/carbon/C = M
+		if(!C.wear_mask) // If not wearing a mask
+			C.apply_damage(2, TOX) // 4 toxic damage per application, doubled for some reason
 
 /datum/reagent/toxin/stoxin
 	name = "Soporific"
@@ -281,39 +200,12 @@
 	description = "An effective hypnotic used to treat insomnia. Concentrated soporific is used as a surgical anesthetic."
 	reagent_state = LIQUID
 	color = "#E895CC" // rgb: 232, 149, 204
-	toxpwr = 0
 	custom_metabolism = 0.1
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	scannable = 1
 	chemclass = CHEM_CLASS_COMMON
-	properties = list(PROPERTY_RELAXING = 1)
-
-	on_mob_life(mob/living/M)
-		. = ..()
-		if(!.) return
-		if(!data) data = 1
-		switch(data)
-			if(1 to 12)
-				if(prob(5))	M.emote("yawn")
-			if(12 to 15)
-				M.eye_blurry = max(M.eye_blurry, 10)
-			if(15 to 49)
-				if(prob(50))
-					M.KnockDown(2)
-				M.drowsyness  = max(M.drowsyness, 20)
-			if(50 to INFINITY)
-				M.KnockDown(20)
-				M.drowsyness  = max(M.drowsyness, 30)
-		data++
-
-		M.reagent_pain_modifier += PAIN_REDUCTION_FULL
-
-	on_overdose(mob/living/M)
-		M.apply_damages(0, 0, 1, 2) //Overdose starts getting bad
-
-	on_overdose_critical(mob/living/M)
-		M.apply_damages(0, 0, 2, 3) //Overdose starts getting bad
+	properties = list(PROPERTY_SEDATIVE = 2, PROPERTY_PAINKILLING = 8)
 
 /datum/reagent/toxin/chloralhydrate
 	name = "Chloral Hydrate"
@@ -321,32 +213,11 @@
 	description = "Chloral hydrate was the first synthetically produced sedative-hypnotic drug. It is a powerful sedative which causes near instant sleepiness, but can be deadly in large quantities. Often used together with other anesthetics for surgical procedures."
 	reagent_state = SOLID
 	color = "#000067" // rgb: 0, 0, 103
-	toxpwr = 1
 	custom_metabolism = 0.1 //Default 0.2
 	overdose = REAGENTS_OVERDOSE/2
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL/2
 	chemclass = CHEM_CLASS_UNCOMMON
-	properties = list(PROPERTY_RELAXING = 6)
-
-	on_mob_life(mob/living/M)
-		. = ..()
-		if(!.) return
-		if(!data) data = 1
-		data++
-		switch(data)
-			if(1)
-				M.confused += 2
-				M.drowsyness += 2
-			if(2 to 199)
-				M.KnockDown(30)
-			if(200 to INFINITY)
-				M.sleeping += 1
-
-	on_overdose(mob/living/M)
-		M.apply_damages(0, 0, 2, 3) //Overdose starts getting bad
-
-	on_overdose_critical(mob/living/M)
-		M.apply_damages(0, 0, 3, 2) //Overdose starts getting bad
+	properties = list(PROPERTY_SEDATIVE = 6, PROPERTY_TOXIC = 1)
 
 /datum/reagent/toxin/potassium_chloride
 	name = "Potassium Chloride"
@@ -358,20 +229,9 @@
 	intensitymod = 0.1
 	burncolor = "#800080"
 	burncolormod = 5
-	toxpwr = 0
 	overdose = 30
 	chemclass = CHEM_CLASS_UNCOMMON
-
-	on_mob_life(mob/living/carbon/M)
-		. = ..()
-		if(!.) return
-		var/mob/living/carbon/human/H = M
-		if(H.stat != 1)
-			if(volume >= overdose)
-				if(H.losebreath >= 10)
-					H.losebreath = max(10, H.losebreath-10)
-				H.apply_damage(2, OXY)
-				H.KnockDown(10)
+	properties = list(PROPERTY_HYPOXEMIC = 2, PROPERTY_RELAXING = 4)
 
 /datum/reagent/toxin/potassium_chlorophoride
 	name = "Potassium Chlorophoride"
@@ -379,21 +239,9 @@
 	description = "A specific chemical based on Potassium Chloride used to stop the heart for surgery. Causes instant cardiac arrest. Not safe to eat!"
 	reagent_state = SOLID
 	color = "#FFFFFF" // rgb: 255,255,255
-	toxpwr = 2
 	overdose = 20
 	chemclass = CHEM_CLASS_UNCOMMON
-	properties = list(PROPERTY_RELAXING = 8, PROPERTY_HYPOXEMIC = 4)
-
-	on_mob_life(mob/living/carbon/M)
-		. = ..()
-		if(!.) return
-		if(ishuman(M))
-			var/mob/living/carbon/human/H = M
-			if(H.stat != 1)
-				if(H.losebreath >= 10)
-					H.losebreath = max(10, M.losebreath-10)
-				H.apply_damage(2, OXY)
-				H.KnockDown(10)
+	properties = list(PROPERTY_RELAXING = 8, PROPERTY_HYPOXEMIC = 4, PROPERTY_TOXIC = 2)
 
 /datum/reagent/toxin/beer2	//disguised as normal beer for use by emagged brobots
 	name = "Beer"
@@ -404,27 +252,7 @@
 	custom_metabolism = 0.15 // Sleep toxins should always be consumed pretty fast
 	overdose = REAGENTS_OVERDOSE/2
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL/2
-
-	on_mob_life(mob/living/M)
-		. = ..()
-		if(!.) return
-		if(!data) data = 1
-		switch(data)
-			if(1)
-				M.confused += 2
-				M.drowsyness += 2
-			if(2 to 50)
-				M.sleeping += 1
-			if(51 to INFINITY)
-				M.sleeping += 1
-				M.apply_damage((data - 50)*REM, TOX)
-		data++
-
-	on_overdose(mob/living/M)
-		M.apply_damages(0, 0, 2, 3) //Overdose starts getting bad
-
-	on_overdose_critical(mob/living/M)
-		M.apply_damages(0, 0, 3, 2) //Overdose starts getting bad
+	properties = list(PROPERTY_ALCOHOLIC = 2, PROPERTY_TOXIC = 6)
 
 /datum/reagent/toxin/acid
 	name = "Sulphuric acid"
@@ -433,75 +261,68 @@
 	reagent_state = LIQUID
 	spray_warning = TRUE
 	color = "#DB5008" // rgb: 219, 80, 8
-	toxpwr = 1
 	var/meltprob = 10
 	chemclass = CHEM_CLASS_BASIC
 	properties = list(PROPERTY_TOXIC = 1, PROPERTY_CORROSIVE = 1)
 
-	on_mob_life(mob/living/M)
-		. = ..()
-		if(!.) return
-		M.take_limb_damage(0, 1*REM)
-
-	reaction_mob(var/mob/living/M, var/method=TOUCH, var/volume)//magic numbers everywhere
-		if(!istype(M, /mob/living))
-			return
-		if(method == TOUCH)
-			if(ishuman(M))
-				var/mob/living/carbon/human/H = M
-
-				if(H.head)
-					if(prob(meltprob) && !H.head.unacidable)
-						to_chat(H, SPAN_DANGER("Your headgear melts away but protects you from the acid!"))
-						qdel(H.head)
-						H.update_inv_head(0)
-						H.update_hair(0)
-					else
-						to_chat(H, SPAN_WARNING("Your headgear protects you from the acid."))
-					return
-
-				if(H.wear_mask)
-					if(prob(meltprob) && !H.wear_mask.unacidable)
-						to_chat(H, SPAN_DANGER("Your mask melts away but protects you from the acid!"))
-						qdel(H.wear_mask)
-						H.update_inv_wear_mask(0)
-						H.update_hair(0)
-					else
-						to_chat(H, SPAN_WARNING("Your mask protects you from the acid."))
-					return
-
-				if(H.glasses) //Doesn't protect you from the acid but can melt anyways!
-					if(prob(meltprob) && !H.glasses.unacidable)
-						to_chat(H, SPAN_DANGER("Your glasses melts away!"))
-						qdel(H.glasses)
-						H.update_inv_glasses(0)
-
-			if(!M.unacidable)
-				if(istype(M, /mob/living/carbon/human) && volume >= 10)
-					var/mob/living/carbon/human/H = M
-					var/obj/limb/affecting = H.get_limb("head")
-					if(affecting)
-						if(affecting.take_damage(4*toxpwr, 2*toxpwr))
-							H.UpdateDamageIcon()
-						if(prob(meltprob)) //Applies disfigurement
-							if(!(H.species && (H.species.flags & NO_PAIN)))
-								H.emote("scream")
-							H.status_flags |= DISFIGURED
-							H.name = H.get_visible_name()
+/datum/reagent/toxin/acid/reaction_mob(var/mob/living/M, var/method=TOUCH, var/volume)//magic numbers everywhere
+	if(!istype(M, /mob/living))
+		return
+	if(method == TOUCH)
+		if(ishuman(M))
+			var/mob/living/carbon/human/H = M
+			if(H.head)
+				if(prob(meltprob) && !H.head.unacidable)
+					to_chat(H, SPAN_DANGER("Your headgear melts away but protects you from the acid!"))
+					qdel(H.head)
+					H.update_inv_head(0)
+					H.update_hair(0)
 				else
-					M.take_limb_damage(min(6*toxpwr, volume * toxpwr)) // uses min() and volume to make sure they aren't being sprayed in trace amounts (1 unit != insta rape) -- Doohl
-		else
-			if(!M.unacidable)
-				M.take_limb_damage(min(6*toxpwr, volume * toxpwr))
+					to_chat(H, SPAN_WARNING("Your headgear protects you from the acid."))
+				return
 
-	reaction_obj(var/obj/O, var/volume)
-		if((istype(O,/obj/item) || istype(O,/obj/effect/glowshroom)) && prob(meltprob * 3))
-			if(!O.unacidable)
-				var/obj/effect/decal/cleanable/molten_item/I = new/obj/effect/decal/cleanable/molten_item(O.loc)
-				I.desc = "Looks like this was \an [O] some time ago."
-				for(var/mob/M in viewers(5, O))
-					to_chat(M, SPAN_WARNING("\the [O] melts."))
-				qdel(O)
+			if(H.wear_mask)
+				if(prob(meltprob) && !H.wear_mask.unacidable)
+					to_chat(H, SPAN_DANGER("Your mask melts away but protects you from the acid!"))
+					qdel(H.wear_mask)
+					H.update_inv_wear_mask(0)
+					H.update_hair(0)
+				else
+					to_chat(H, SPAN_WARNING("Your mask protects you from the acid."))
+				return
+
+			if(H.glasses) //Doesn't protect you from the acid but can melt anyways!
+				if(prob(meltprob) && !H.glasses.unacidable)
+					to_chat(H, SPAN_DANGER("Your glasses melts away!"))
+					qdel(H.glasses)
+					H.update_inv_glasses(0)
+
+		if(!M.unacidable)
+			if(istype(M, /mob/living/carbon/human) && volume >= 10)
+				var/mob/living/carbon/human/H = M
+				var/obj/limb/affecting = H.get_limb("head")
+				if(affecting)
+					if(affecting.take_damage(4, 2))
+						H.UpdateDamageIcon()
+					if(prob(meltprob)) //Applies disfigurement
+						if(!(H.species && (H.species.flags & NO_PAIN)))
+							H.emote("scream")
+						H.status_flags |= DISFIGURED
+						H.name = H.get_visible_name()
+			else
+				M.take_limb_damage(min(6, volume)) // uses min() and volume to make sure they aren't being sprayed in trace amounts (1 unit != insta rape) -- Doohl
+	else
+		if(!M.unacidable)
+			M.take_limb_damage(min(6, volume))
+
+/datum/reagent/toxin/acid/reaction_obj(var/obj/O, var/volume)
+	if((istype(O,/obj/item) || istype(O,/obj/effect/glowshroom)) && prob(meltprob * 3))
+		if(!O.unacidable)
+			var/obj/effect/decal/cleanable/molten_item/I = new/obj/effect/decal/cleanable/molten_item(O.loc)
+			I.desc = "Looks like this was \an [O] some time ago."
+			for(var/mob/M in viewers(5, O))
+				to_chat(M, SPAN_WARNING("\the [O] melts."))
+			qdel(O)
 
 /datum/reagent/toxin/acid/polyacid
 	name = "Polytrinic acid"
@@ -510,35 +331,24 @@
 	reagent_state = LIQUID
 	spray_warning = TRUE
 	color = "#8E18A9" // rgb: 142, 24, 169
-	toxpwr = 2
 	meltprob = 30
 	chemclass = CHEM_CLASS_UNCOMMON
-	properties = list(PROPERTY_TOXIC = 1, PROPERTY_CORROSIVE = 2)
+	properties = list(PROPERTY_TOXIC = 2, PROPERTY_CORROSIVE = 3)
 
 /datum/reagent/toxin/formaldehyde
 	name = "Formaldehyde"
 	id = "formaldehyde"
 	description = "Formaldehyde is a toxic organic gas that is mostly used in making resins, polymers and explosives. It is known to be a natural carcinogen."
 	color = "#808080" // rgb: 128, 128, 128
-	toxpwr = 1
 	reagent_state = GAS
 	chemclass = CHEM_CLASS_UNCOMMON
 	properties = list(PROPERTY_TOXIC = 1, PROPERTY_CARCINOGENIC = 1)
-
-/datum/reagent/toxin/formaldehyde/on_mob_life(mob/living/M,alien)
-	. = ..()
-	if(!.)
-		return
-	M.adjustCloneLoss(0.2)
-	if(prob(10))
-		M.emote(pick("blink","cough"))
 
 /datum/reagent/toxin/paraformaldehyde
 	name = "Paraformaldehyde"
 	id = "paraformaldehyde"
 	description = "A polymerized form of formaldehyde, that is slowly formed in a cold aqueous solution."
 	color = "#E0E0E0"
-	toxpwr = 1
 	reagent_state = SOLID
 	chemclass = CHEM_CLASS_UNCOMMON
 	properties = list(PROPERTY_TOXIC = 1)

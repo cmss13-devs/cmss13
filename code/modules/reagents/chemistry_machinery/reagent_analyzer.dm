@@ -7,7 +7,6 @@
 
 	var/mob/last_used
 	var/obj/item/reagent_container/sample = null //Object containing our sample
-	var/clearance_level = 1
 	var/sample_number = 1 //Just for printing fluff
 	var/processing = FALSE
 	var/status = 0
@@ -98,13 +97,10 @@
 		if(S.chemclass >= CHEM_CLASS_SPECIAL && !chemical_identified_list[S.id])
 			if(last_used)
 				last_used.count_niche_stat(STATISTICS_NICHE_CHEMS)
-			if(S.has_property(PROPERTY_DNA_DISINTEGRATING))
+			var/datum/chem_property/P = S.get_property(PROPERTY_DNA_DISINTEGRATING)
+			if(P)
 				if(chemical_research_data.clearance_level >= S.gen_tier)
-					ticker.mode.get_specific_call("Weston-Yamada PMC (Chemical Investigation Squad)", TRUE, FALSE, S.name)
-					chemical_research_data.update_credits(10)
-					message_admins(SPAN_NOTICE("The research department has discovered DNA_Disintegrating in [S.name] adding [OBJECTIVE_ABSOLUTE_VALUE * 2] bonus DEFCON points."), 1)
-					objectives_controller.add_admin_points(OBJECTIVE_ABSOLUTE_VALUE * 2)
-					ai_announcement("NOTICE: $20000 received from USCSS Royce. Shuttle inbound.")
+					P.trigger()
 				else
 					return
 			chemical_research_data.update_credits(2)

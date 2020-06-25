@@ -214,296 +214,172 @@
 	generate_description()
 	return TRUE
 
-//For properties that change stats
-/datum/reagent/proc/update_stats()
-	if(!properties)
-		return
-	var/boost = 0
-	if(has_property(PROPERTY_BOOSTING))
-		boost = properties[PROPERTY_BOOSTING]
-	for(var/P in properties)
-		var/potency = properties[P] * 0.5 + boost
-		switch(P)
-			if(PROPERTY_NUTRITIOUS)
-				nutriment_factor = potency
-			if(PROPERTY_FUELING)
-				chemfiresupp = TRUE
-				durationmod += 0.4 * potency
-				intensitymod -= 0.2 * potency
-			if(PROPERTY_OXIDIZING)
-				chemfiresupp = TRUE
-				durationmod -= 0.2 * potency
-				intensitymod += 0.4 * potency
-			if(PROPERTY_FLOWING)
-				chemfiresupp = TRUE
-				radiusmod += 0.05 * potency
-				durationmod -= 0.1 * potency
-				intensitymod -= 0.1 * potency
-			if(PROPERTY_VISCOUS)
-				chemfiresupp = TRUE
-				radiusmod -= 0.05 * potency
-				durationmod += 0.1 * potency
-				intensitymod += 0.1 * potency
-			if(PROPERTY_EXPLOSIVE)
-				explosive = TRUE
-				power = potency
-				falloff_modifier =  -3 / potency
-			if(PROPERTY_HYPOMETABOLIC)
-				custom_metabolism = max(custom_metabolism - 0.025 * potency, 0.005)
-			if(PROPERTY_HYPERMETABOLIC)
-				custom_metabolism = custom_metabolism + 0.05 * potency
-
-/proc/get_negative_chem_properties(var/special_properties, var/admin_properties, var/normal_properties = TRUE)
-	var/list/negative_properties = list()
-	if(normal_properties)
-		negative_properties += list(	PROPERTY_HYPOXEMIC = "Reacts with hemoglobin in red blood cells preventing oxygen from being absorbed, resulting in hypoxemia.",\
-										PROPERTY_TOXIC = "Poisonous substance which causes harm on contact with or through absorption by organic tissues, resulting in bad health or severe illness.",\
-										PROPERTY_CORROSIVE = "Damages or destroys other substances on contact through a chemical reaction. Causes chemical burns on contact with living tissue.",\
-										PROPERTY_BIOCIDIC = "Ruptures cell membranes on contact, destroying most types of organic tissue.",\
-										PROPERTY_HEMOLYTIC = "Causes intravascular hemolysis, resulting in the destruction of erythrocytes (red blood cells) in the bloodstream. This can result in Hemoglobinemia, where a high concentration of hemoglobin is released into the blood plasma.",\
-										PROPERTY_HEMORRAGING = "Ruptures endothelial cells making up bloodvessels, causing blood to escape from the circulatory system.",\
-										PROPERTY_CARCINOGENIC = "Penetrates the cell nucleus causing direct damage to the deoxyribonucleic acid in cells resulting in cancer and abnormal cell proliferation. In extreme cases causing hyperactive apoptosis and potentially atrophy.",\
-										PROPERTY_HEPATOTOXIC = "Damages hepatocytes in the liver, resulting in liver deterioration and eventually liver failure.",\
-										PROPERTY_NEPHROTOXIC = "Causes deterioration and damage to podocytes in the kidney resulting in potential kidney failure.",\
-										PROPERTY_PNEUMOTOXIC = "Toxic substance which causes damage to connective tissue that forms the support structure (the interstitium) of the alveoli in the lungs.",\
-										PROPERTY_OCULOTOXIC = "Damages the photoreceptive cells in the eyes impairing neural transmissions to the brain, resulting in loss of sight or blindness.",\
-										PROPERTY_CARDIOTOXIC = "Attacks cardiomyocytes when passing through the heart in the bloodstream. This disrupts the cardiac cycle and can lead to cardiac arrest.",\
-										PROPERTY_NEUROTOXIC = "Breaks down neurons causing widespread damage to the central nervous system and brain functions.",\
-										PROPERTY_HYPERMETABOLIC = "Takes less time for this chemical to metabolize, resulting in it being in the bloodstream for less time per unit.")
-	if(special_properties)
-		negative_properties += list(	PROPERTY_ADDICTIVE = "Causes addiction. Higher potency results in a higher chance of causing an addiction when metabolized.",\
-										PROPERTY_DNA_DISINTEGRATING = "Immediately disintegrates the DNA of all organic cells it comes into contact with. WY has sent additional resources to assist your operation for the discovery of this property. Weston-Yamada PMC team has been dispatched to collect all samples of this chemical. Failure to cooperate will result in the termination of this research department.")									
-	if(admin_properties)
-		negative_properties += list(	PROPERTY_EMBRYONIC = "The chemical agent carries causes an infection of type REDACTED parasitic embryonic organism.",\
-										PROPERTY_TRANSFORMING = "The chemical agent carries REDACTED, altering the host psychologically and physically.",\
-										PROPERTY_RAVENING = "The chemical agent carries the X-65 biological organism.")
-	return negative_properties
-
-/proc/get_neutral_chem_properties(var/special_properties, var/admin_properties, var/normal_properties = TRUE)
-	var/list/neutral_properties = list()
-	if(normal_properties)
-		neutral_properties += list(		PROPERTY_NUTRITIOUS = "The compound can be used as, or be broken into, nutrition for cell metabolism.",\
-										PROPERTY_KETOGENIC = "Activates ketosis causing the liver to rapidly burn fatty acids and alcohols in the body, resulting in weight loss. Can cause ketoacidosis in high concentrations, resulting in a buildup of acids and lowered pH levels in the blood.",\
-										PROPERTY_PAINING = "Activates the somatosensory system causing neuropathic pain all over the body. Unlike nociceptive pain, this is not caused to any tissue damage and is solely perceptive.",\
-										PROPERTY_NEUROINHIBITING = "Inhibits neurological processes in the brain such to sight, hearing and speech which can result in various associated disabilities. Restoration will require surgery.",\
-										PROPERTY_ALCOHOLIC = "Binds to glutamate neurotransmitters and gamma aminobutyric acid (GABA), slowing brain functions response to stimuli. This effect is also known as intoxication.",\
-										PROPERTY_HALLUCINOGENIC = "Causes perception-like experiences that occur without an external stimulus, which are vivid and clear, with the full force and impact of normal perceptions, though not under voluntary control.",\
-										PROPERTY_RELAXING = "Has a sedative effect on neuromuscular junctions depressing the force of muscle contractions. High concentrations can cause respiratory failure and cardiac arrest.",\
-										PROPERTY_HYPERTHERMIC = "Causes an exothermic reaction when metabolized in the body, increasing internal body temperature. Warning: this can ignite chemicals on reaction.",\
-										PROPERTY_HYPOTHERMIC = "Causes an endothermic reaction when metabolized in the body, decreasing internal body temperature.",\
-										PROPERTY_BALDING = "Damages the hair follicles in the skin causing extreme alopecia, also refered to as baldness.",\
-										PROPERTY_FLUFFING = "Accelerates cell division in the hair follicles resulting in random and excessive hairgrowth.",\
-										PROPERTY_ALLERGENIC = "Creates a hyperactive immune response in the body, resulting in irritation.",\
-										PROPERTY_CRYOMETABOLIZING = "The chemical is passively metabolized with no other effects in temperatures above 170 kelvin. Below however, the chemical will metabolize with increased effect.",\
-										PROPERTY_EUPHORIC = "Causes the release of endorphin hormones resulting intense excitement and happiness.",\
-										PROPERTY_EMETIC = "Acts on the enteric nervous system to induce emesis, the forceful emptying of the stomach.",\
-										PROPERTY_PSYCHOSTIMULATING = "Stimulates psychological functions causing increased awareness, focus and anti-depressing effects.",\
-										PROPERTY_VISCOUS = "The chemical is thick and gooey due to high surface tension. It will not spread very far when spilled. This would decrease the radius of a chemical fire.",\
-										PROPERTY_EXCRETING = "Excretes all chemicals contained in the blood stream by using the kidneys to turn it into urine.",\
-										PROPERTY_HYPOMETABOLIC = "Takes longer for this chemical to metabolize, resulting in it being in the bloodstream for more time per unit.",\
-										PROPERTY_SEDATIVE = "Causes the body to release melatonin resulting in increased sleepiness.",\
-										PROPERTY_ANTIHALLUCINOGENIC = "Stabilizes perseptive abnormalities such as hallucinations caused by mindbreaker toxin.")
-	if(special_properties)
-		neutral_properties += list(		PROPERTY_THANATOMETABOL = "This chemical requires either low oxygen levels or low bloodflow to function. The potency of this property will affect the efficiency of other properties.",\
-										PROPERTY_HYPERTHROTTLING = "Causes the brain to operate at several thousand times the normal speed. For some reason, this allows one to understand all languages spoken before them, even without knowing the language.")
-	if(admin_properties)
-		neutral_properties += list(		PROPERTY_CROSSMETABOLIZING = "The chemical can be metabolized in other humanoid lifeforms.")
-	return neutral_properties
-
-/proc/get_positive_chem_properties(var/special_properties, var/admin_properties, var/normal_properties = TRUE)
-	var/list/positive_properties = list()
-	if(normal_properties)
-		positive_properties += list(	PROPERTY_ANTITOXIC = "Absorbs and neutralizes toxic chemicals in the bloodstream and allowing them to be excreted safely.",\
-										PROPERTY_ANTICORROSIVE = "Accelerates cell division around corroded areas in order to replace the lost tissue. Excessive use can trigger apoptosis.",\
-										PROPERTY_NEOGENETIC = "Regenerates ruptured membranes resulting in the repair of damaged organic tissue. High concentrations can corrode the cell membranes.",\
-										PROPERTY_REPAIRING = "Repairs cybernetic organs by <B>REDACTED</B>.",\
-										PROPERTY_HEMOGENIC = "Increases the production of erythrocytes (red blood cells) in the bonemarrow, leading to polycythemia, an elevated volume of erythrocytes in the blood.",\
-										PROPERTY_NERVESTIMULATING = "Increases neuron communication speed across synapses resulting in improved reaction time, awareness and muscular control.",\
-										PROPERTY_MUSCLESTIMULATING = "Stimulates neuromuscular junctions increasing the force of muscle contractions, resulting in increased strength. High doses might exhaust the cardiac muscles.",\
-										PROPERTY_PAINKILLING = "Binds to opioid receptors in the brain and spinal cord reducing the amount of pain signals being sent to the brain.",\
-										PROPERTY_HEPATOPEUTIC = "Treats deteriorated hepatocytes and damaged tissues in the liver, restoring organ functions.",\
-										PROPERTY_NEPHROPEUTIC = "Heals damaged and deteriorated podocytes in the kidney, restoring organ functions.",\
-										PROPERTY_PNEUMOPEUTIC = "Mends the interstitium tissue of the alveoli restoring respiratory functions in the lungs.",\
-										PROPERTY_OCULOPEUTIC = "Restores sensory capabilities of photoreceptive cells in the eyes returning lost vision.",\
-										PROPERTY_CARDIOPEUTIC = "Regenerates damaged cardiomyocytes and recovers a correct cardiac cycle and heart functionality.",\
-										PROPERTY_NEUROPEUTIC = "Rebuilds damaged and broken neurons in the central nervous system re-establishing brain functionality.",\
-										PROPERTY_BONEMENDING = "Rapidly increases the production of osteoblasts and chondroblasts while also accelerating the process of endochondral ossification. This allows broken bone tissue to be re-wowen and restored quickly if the bone is correctly positioned. Overdosing may result in the bone structure growing abnormally and can have adverse effects on the skeletal structure.",\
-										PROPERTY_FLUXING = "Liquifies large crystalline and metallic structures under bodytemperature in the body and allows it to migrate to and be excreted through the skin.",\
-										PROPERTY_NEUROCRYOGENIC = "Causes a temporal freeze of all neurological processes and cellular respirations in the brain. This allows the brain to be preserved for long periods of time.",\
-										PROPERTY_ANTIPARASITIC = "Antimicrobial property specifically targeting parasitic pathogens in the body disrupting their growth and potentially killing them.",\
-										PROPERTY_FUELING = "The chemical can be burned as a fuel, expanding the burn time of a chemical fire. However, this also lowers heat intensity.",\
-										PROPERTY_OXIDIZING = "The chemical is oxidizing, increasing the intensity of chemical fires. However, the fuel is also burned faster because of it.",\
-										PROPERTY_FLOWING = "The chemical is the opposite of viscous, and it tends to spill everywhere. This could probably be used to expand the radius of a chemical fire.",\
-										PROPERTY_EXPLOSIVE = "The chemical is highly explosive. Do not ignite. Careful when handling, sensitivity is based off the OD threshold, which can lead to spontanous detonation.")
-	if(special_properties)
-		positive_properties += list(	PROPERTY_DEFIBRILLATING = "Causes an electrochemical reaction in the cardiac muscles, forcing the heart to continue pumping. May cause irregular heart rhythms.",\
-										PROPERTY_HYPERDENSIFICATING = "Causes the muscles and bones to become super dense, providing superior resistance towards the bones fracturing.",\
-										PROPERTY_NEUROSHIELDING = "Protects the brain from neurological damage caused by toxins.",\
-										PROPERTY_ANTIADDICTIVE = "Stops all bodily cravings towards addictive chemical substances.",
-										PROPERTY_HYPERGENETIC = "Regenerates all types of cell membranes mending damage in all organs and limbs.",
-										PROPERTY_BOOSTING = "Boosts the potency of all other properties in this chemical.",
-										PROPERTY_REGULATING = "The chemical regulates its own metabolization and can thus never cause overdosis.")
-	if(admin_properties)
-		positive_properties += list(	PROPERTY_OMNIPOTENT = "Fully revitalizes all bodily functions.",\
-										PROPERTY_CURING = "Binds to and neutralizes the X-65 biological organism.")
-	return positive_properties
-
-/datum/reagent/proc/add_property(var/my_property, var/my_potency, var/value_offset = 0, var/make_rare = FALSE)
-	..()
-	var/list/negative_properties = get_negative_chem_properties(make_rare,FALSE,!make_rare)
-	var/list/neutral_properties = get_neutral_chem_properties(make_rare,FALSE,!make_rare)
-	var/list/positive_properties = get_positive_chem_properties(make_rare,FALSE,!make_rare)
-	
-	//Determine potency modifier
-	var/potency
-	if(my_potency)
-		potency = my_potency
+/datum/reagent/proc/add_property(var/my_property, var/my_level, var/value_offset = 0, var/make_rare = FALSE)
+	//Determine level modifier
+	var/level
+	if(my_level)
+		level = my_level
 	else
-		potency = rand(0,100)
-		if(potency<=25)
-			potency = 1 //25%
-		else if(potency<=46)
-			potency = 2 //21%
-		else if(potency<=64)
-			potency = 3 //18%
-		else if(potency<=79)
-			potency = 4 //15%
-		else if(potency<=89)
-			potency = 5 //10%
-		else if(potency<=95)
-			potency = 6 //7%
-		else if(potency<=98)
-			potency = 7 //3%
+		level = rand(0,100)
+		if(level<=25)
+			level = 1 //25%
+		else if(level<=46)
+			level = 2 //21%
+		else if(level<=64)
+			level = 3 //18%
+		else if(level<=79)
+			level = 4 //15%
+		else if(level<=89)
+			level = 5 //10%
+		else if(level<=95)
+			level = 6 //7%
+		else if(level<=98)
+			level = 7 //3%
 		else
-			potency = 8 //2%
+			level = 8 //2%
 		//We limit how potent chems can be. So something that is just level 8 healing doesn't spawn too regularly.
-		potency = min(potency, gen_tier + 2)
+		level = min(level, gen_tier + 2)
 
 	//Determine properties
-	var/roll = rand(1,100)
-	var/property
 	if(my_property)
-		property = my_property
+		return insert_property(my_property, level)
+
+	var/property
+	var/roll = rand(1,100)
+	if(make_rare)
+		property = pick(chemical_properties_list["rare"])
+	//Pick the property by value and roll
 	else if(value_offset > 0) //Balance the value of our chemical
-		property = pick(positive_properties)
+		property = pick(chemical_properties_list["positive"])
 	else if(value_offset < 0)
 		if(roll <= gen_tier*10)
-			property = pick(negative_properties)
+			property = pick(chemical_properties_list["negative"])
 		else
-			property = pick(neutral_properties)
+			property = pick(chemical_properties_list["neutral"])
 	else
 		switch(gen_tier)
 			if(1)
 				if(roll<=35)
-					property = pick(negative_properties)
+					property = pick(chemical_properties_list["negative"])
 				else if (roll<=75)
-					property = pick(neutral_properties)
+					property = pick(chemical_properties_list["neutral"])
 				else
-					property = pick(positive_properties)
+					property = pick(chemical_properties_list["positive"])
 			if(2)
 				if(roll<=30)
-					property = pick(negative_properties)
+					property = pick(chemical_properties_list["negative"])
 				else if (roll<=65)
-					property = pick(neutral_properties)
+					property = pick(chemical_properties_list["neutral"])
 				else
-					property = pick(positive_properties)
+					property = pick(chemical_properties_list["positive"])
 			if(3)
 				if(roll<=20)
-					property = pick(negative_properties)
+					property = pick(chemical_properties_list["negative"])
 				else if (roll<=50)
-					property = pick(neutral_properties)
+					property = pick(chemical_properties_list["neutral"])
 				else
-					property = pick(positive_properties)
+					property = pick(chemical_properties_list["positive"])
 			else
 				if(roll<=15)
-					property = pick(negative_properties)
+					property = pick(chemical_properties_list["negative"])
 				else if (roll<=40)
-					property = pick(neutral_properties)
+					property = pick(chemical_properties_list["neutral"])
 				else
-					property = pick(positive_properties)
+					property = pick(chemical_properties_list["positive"])
 	
-	//Calculate what our chemical value is with our potency
+	var/datum/chem_property/P = chemical_properties_list[property]
+	//Calculate what our chemical value is with our level
 	var/new_value
-	if(negative_properties.Find(property))
-		new_value = -1 * potency
-	else if(neutral_properties.Find(property))
-		new_value = round(-1 * potency / 2)
+	if(isNegativeProperty(P))
+		new_value = -1 * level
+	else if(isNeutralProperty(P))
+		new_value = round(-1 * level / 2)
 	else
-		new_value = potency
+		new_value = level
 
-	insert_property(property, potency)
+	insert_property(property, level)
 	return new_value
 
 /////////////////////////GENERATOR HELPER PROCS/////////////////////////
 
-/datum/reagent/proc/insert_property(var/property, var/potency)
-	if(properties)
-		//The list below defines what properties should override each other.
-		var/list/conflicting_properties = list(	PROPERTY_NUTRITIOUS = PROPERTY_HEMORRAGING,		PROPERTY_NUTRITIOUS = PROPERTY_HEMOLYTIC,		PROPERTY_TOXIC = PROPERTY_ANTITOXIC,\
-												PROPERTY_CORROSIVE = PROPERTY_ANTICORROSIVE,	PROPERTY_BIOCIDIC = PROPERTY_NEOGENETIC,		PROPERTY_HYPERTHERMIC = PROPERTY_HYPOTHERMIC,\
-												PROPERTY_NUTRITIOUS = PROPERTY_KETOGENIC,		PROPERTY_PAINING = PROPERTY_PAINKILLING,		PROPERTY_HALLUCINOGENIC = PROPERTY_ANTIHALLUCINOGENIC,\
-												PROPERTY_HEPATOTOXIC = PROPERTY_HEPATOPEUTIC,	PROPERTY_NEPHROTOXIC = PROPERTY_NEPHROPEUTIC,	PROPERTY_PNEUMOTOXIC = PROPERTY_PNEUMOPEUTIC,\
-												PROPERTY_OCULOTOXIC = PROPERTY_OCULOPEUTIC, 	PROPERTY_CARDIOTOXIC = PROPERTY_CARDIOPEUTIC,	PROPERTY_NEUROTOXIC = PROPERTY_NEUROPEUTIC,\
-												PROPERTY_FLUXING = PROPERTY_REPAIRING, 			PROPERTY_RELAXING = PROPERTY_MUSCLESTIMULATING,	PROPERTY_HEMOGENIC = PROPERTY_HEMOLYTIC,\
-												PROPERTY_HEMOGENIC = PROPERTY_HEMORRAGING,		PROPERTY_NUTRITIOUS = PROPERTY_EMETIC, 			PROPERTY_FLOWING = PROPERTY_VISCOUS,\
-												PROPERTY_HYPERGENETIC = PROPERTY_NEOGENETIC, 	PROPERTY_HYPERGENETIC = PROPERTY_HEPATOPEUTIC,	PROPERTY_HYPERGENETIC = PROPERTY_NEPHROPEUTIC,\
-												PROPERTY_HYPERGENETIC = PROPERTY_PNEUMOPEUTIC,	PROPERTY_HYPERGENETIC = PROPERTY_OCULOPEUTIC, 	PROPERTY_HYPERGENETIC = PROPERTY_CARDIOPEUTIC,\
-												PROPERTY_HYPERGENETIC = PROPERTY_NEUROPEUTIC,	PROPERTY_ADDICTIVE = PROPERTY_ANTIADDICTIVE,	PROPERTY_NEUROSHIELDING = PROPERTY_NEUROTOXIC,\
-												PROPERTY_HYPOMETABOLIC = PROPERTY_HYPERMETABOLIC, PROPERTY_HYPERTHROTTLING = PROPERTY_NEUROINHIBITING)
-		//The list below defines which properties should be combined into a combo property
-		var/list/combining_properties = list(	PROPERTY_DEFIBRILLATING 	= list(PROPERTY_MUSCLESTIMULATING, PROPERTY_CARDIOPEUTIC),\
-												PROPERTY_THANATOMETABOL 	= list(PROPERTY_HYPOXEMIC, PROPERTY_CRYOMETABOLIZING, PROPERTY_NEUROCRYOGENIC),\
-												PROPERTY_HYPERDENSIFICATING = list(PROPERTY_MUSCLESTIMULATING, PROPERTY_BONEMENDING, PROPERTY_CARCINOGENIC),\
-												PROPERTY_HYPERTHROTTLING 	= list(PROPERTY_PSYCHOSTIMULATING, PROPERTY_HALLUCINOGENIC),\
-												PROPERTY_NEUROSHIELDING 	= list(PROPERTY_ALCOHOLIC, PROPERTY_BALDING),\
-												PROPERTY_ANTIADDICTIVE		= list(PROPERTY_PSYCHOSTIMULATING, PROPERTY_ANTIHALLUCINOGENIC),\
-												PROPERTY_ADDICTIVE 			= list(PROPERTY_PSYCHOSTIMULATING, PROPERTY_NEUROTOXIC))
-		var/match
-		for(var/P in properties)
-			if(P == property)
-				match = P
-			else
-				//Handle properties that combine
-				for(var/C in combining_properties)
-					var/list/combo = combining_properties[C]
-					if(combo.Find(property))
-						for(var/piece in combo)
-							if(has_property(piece))
-								property = C
-								potency = max(potency - properties[P], properties[P] - potency, 1)
-								properties -= P
-								break
-				//Handle properties that conflict
-				for(var/C in conflicting_properties)
-					if(property == C && P == conflicting_properties[C])
-						match = P
-						break
-					else if (property == conflicting_properties[C] && C == P)
-						match = P
-						break
-			if(match)
-				//Handle changes in potency
-				if(properties[match] > potency) //Decrease
-					properties[match] -= potency
-					return FALSE
-				else if(properties[match] < potency) //Override
-					potency -= properties[match]
-					properties -= match
-				else //Cancelled out
-					properties -= match
-					return FALSE
-				break
-		//Add the property
-		var/list/property_potency[0]
-		property_potency["[property]"] = potency
-		properties += property_potency
-		return TRUE
+/datum/reagent/proc/insert_property(var/property, var/level)
+	//The list below defines what properties should override each other.
+	var/list/conflicting_properties = list(	PROPERTY_NUTRITIOUS = PROPERTY_HEMORRAGING,		PROPERTY_NUTRITIOUS = PROPERTY_HEMOLYTIC,		PROPERTY_TOXIC = PROPERTY_ANTITOXIC,\
+											PROPERTY_CORROSIVE = PROPERTY_ANTICORROSIVE,	PROPERTY_BIOCIDIC = PROPERTY_NEOGENETIC,		PROPERTY_HYPERTHERMIC = PROPERTY_HYPOTHERMIC,\
+											PROPERTY_NUTRITIOUS = PROPERTY_KETOGENIC,		PROPERTY_PAINING = PROPERTY_PAINKILLING,		PROPERTY_HALLUCINOGENIC = PROPERTY_ANTIHALLUCINOGENIC,\
+											PROPERTY_HEPATOTOXIC = PROPERTY_HEPATOPEUTIC,	PROPERTY_NEPHROTOXIC = PROPERTY_NEPHROPEUTIC,	PROPERTY_PNEUMOTOXIC = PROPERTY_PNEUMOPEUTIC,\
+											PROPERTY_OCULOTOXIC = PROPERTY_OCULOPEUTIC, 	PROPERTY_CARDIOTOXIC = PROPERTY_CARDIOPEUTIC,	PROPERTY_NEUROTOXIC = PROPERTY_NEUROPEUTIC,\
+											PROPERTY_FLUXING = PROPERTY_REPAIRING, 			PROPERTY_RELAXING = PROPERTY_MUSCLESTIMULATING,	PROPERTY_HEMOGENIC = PROPERTY_HEMOLYTIC,\
+											PROPERTY_HEMOGENIC = PROPERTY_HEMORRAGING,		PROPERTY_NUTRITIOUS = PROPERTY_EMETIC, 			PROPERTY_FLOWING = PROPERTY_VISCOUS,\
+											PROPERTY_HYPERGENETIC = PROPERTY_NEOGENETIC, 	PROPERTY_HYPERGENETIC = PROPERTY_HEPATOPEUTIC,	PROPERTY_HYPERGENETIC = PROPERTY_NEPHROPEUTIC,\
+											PROPERTY_HYPERGENETIC = PROPERTY_PNEUMOPEUTIC,	PROPERTY_HYPERGENETIC = PROPERTY_OCULOPEUTIC, 	PROPERTY_HYPERGENETIC = PROPERTY_CARDIOPEUTIC,\
+											PROPERTY_HYPERGENETIC = PROPERTY_NEUROPEUTIC,	PROPERTY_ADDICTIVE = PROPERTY_ANTIADDICTIVE,	PROPERTY_NEUROSHIELDING = PROPERTY_NEUROTOXIC,\
+											PROPERTY_HYPOMETABOLIC = PROPERTY_HYPERMETABOLIC, PROPERTY_HYPERTHROTTLING = PROPERTY_NEUROINHIBITING,
+											PROPERTY_FOCUSING = PROPERTY_NERVESTIMULATING, 	PROPERTY_THERMOSTABILIZING = PROPERTY_HYPERTHERMIC, PROPERTY_THERMOSTABILIZING = PROPERTY_HYPOTHERMIC,
+											PROPERTY_AIDING = PROPERTY_NEUROINHIBITING, 	PROPERTY_OXYGENATING = PROPERTY_HYPOXEMIC,		PROPERTY_ANTICARCINOGENIC = PROPERTY_CARCINOGENIC)
+	//The list below defines which properties should be combined into a combo property
+	var/list/combining_properties = list(	PROPERTY_DEFIBRILLATING 	= list(PROPERTY_MUSCLESTIMULATING, PROPERTY_CARDIOPEUTIC),\
+											PROPERTY_THANATOMETABOL 	= list(PROPERTY_HYPOXEMIC, PROPERTY_CRYOMETABOLIZING, PROPERTY_NEUROCRYOGENIC),\
+											PROPERTY_HYPERDENSIFICATING = list(PROPERTY_MUSCLESTIMULATING, PROPERTY_BONEMENDING, PROPERTY_CARCINOGENIC),\
+											PROPERTY_HYPERTHROTTLING 	= list(PROPERTY_PSYCHOSTIMULATING, PROPERTY_HALLUCINOGENIC),\
+											PROPERTY_NEUROSHIELDING 	= list(PROPERTY_ALCOHOLIC, PROPERTY_BALDING),\
+											PROPERTY_ANTIADDICTIVE		= list(PROPERTY_PSYCHOSTIMULATING, PROPERTY_ANTIHALLUCINOGENIC),\
+											PROPERTY_ADDICTIVE 			= list(PROPERTY_PSYCHOSTIMULATING, PROPERTY_NEUROTOXIC))
+	var/datum/chem_property/match
+	for(var/datum/chem_property/P in properties)
+		if(P.name == property)
+			match = P
+		else
+			//Handle properties that combine
+			for(var/C in combining_properties)
+				var/list/combo = combining_properties[C]
+				if(!combo.Find(property))
+					continue
+				var/pieces = 0
+				for(var/piece in combo)
+					if(piece == property || get_property(piece))
+						pieces++
+				if(pieces >= length(combo))
+					property = C
+					level = max(level - P.level, P.level - level, 1)
+					for(var/datum/chem_property/R in properties)
+						if(combo.Find(R.name))
+							R.level -= level
+							if(R.level <= 0)
+								properties.Remove(R)
+					break
+			//Handle properties that conflict
+			for(var/C in conflicting_properties)
+				if(property == C && P.name == conflicting_properties[C])
+					match = P
+					break
+				else if (property == conflicting_properties[C] && C == P.name)
+					match = P
+					break
+		if(match)
+			//Handle changes in level
+			if(match.level > level) //Decrease
+				match.level -= level
+				return FALSE
+			else if(match.level < level) //Override
+				level -= match.level
+				remove_property(match)
+			else //Cancelled out
+				remove_property(match)
+				return FALSE
+			break
+	//Insert the property
+	var/datum/chem_property/P = chemical_properties_list[property]
+	P = new P.type()
+	P.level = level
+	P.update_reagent(src)
+	properties += P
+	return TRUE
 
 /datum/reagent/proc/generate_description()
-	var/list/all_properties = get_negative_chem_properties(TRUE) + get_neutral_chem_properties(TRUE) + get_positive_chem_properties(TRUE)
 	var/info
-	for(var/P in properties)
-		info += "<BR><B>[capitalize(P)] Level [properties[P]]</B> - [all_properties[P]]<BR>"
+	for(var/datum/chem_property/P in properties)
+		info += "<BR><B>[capitalize(P.name)] Level [P.level]</B> - [P.description]<BR>"
 		if(P == PROPERTY_HYPERTHERMIC)
 			info += "<I>WARNING: Mixing too much at a time can cause spontanous ignition! Beware mixing more than the OD threshold!</I>"
 		else if(P == PROPERTY_EXPLOSIVE)
@@ -514,24 +390,9 @@
 	gen_tier = min(max(round(value / 4 - 1), 1), 4)
 
 /datum/reagent/proc/calculate_value()
-	var/list/negative_properties = get_negative_chem_properties()
-	var/list/neutral_properties = get_neutral_chem_properties()
-	var/list/positive_properties = get_positive_chem_properties()
-	var/list/special_properties = get_negative_chem_properties(TRUE, FALSE, FALSE) + get_neutral_chem_properties(TRUE, FALSE, FALSE) + get_positive_chem_properties(TRUE, FALSE, FALSE)
-	var/list/admin_properties = get_negative_chem_properties(FALSE, TRUE, FALSE) + get_neutral_chem_properties(FALSE, TRUE, FALSE) + get_positive_chem_properties(FALSE, TRUE, FALSE)
 	var/value = 0
-	for(var/P in properties)
-		var/potency = properties[P]
-		if(negative_properties.Find(P))
-			value += potency * -1
-		else if(neutral_properties.Find(P))
-			value += round(-1 * potency / 2)
-		else if(positive_properties.Find(P))
-			value += potency * 2
-		else if(special_properties.Find(P))
-			value += potency * 6
-		else if(admin_properties.Find(P))
-			value += potency * 1000 //shouldn't ever be possible
+	for(var/datum/chem_property/P in properties)
+		value += P.value * P.level
 	return max(value, 3)
 
 /datum/reagent/proc/generate_assoc_recipe()

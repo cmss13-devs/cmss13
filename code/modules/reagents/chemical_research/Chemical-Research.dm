@@ -3,6 +3,7 @@ var/global/datum/chemical_research_data/chemical_research_data = new /datum/chem
 /datum/chemical_research_data/
 	var/rsc_credits = 2
 	var/clearance_level = 1
+	var/clearance_x_access = FALSE
 	var/list/research_documents = list()
 	var/list/research_publications = list()
 	var/list/transmitted_data = list()
@@ -26,7 +27,7 @@ var/global/datum/chemical_research_data/chemical_research_data = new /datum/chem
 
 /datum/chemical_research_data/proc/unpublish_document(var/document_type, var/title)
 	if(research_publications["[document_type]"]["[title]"])
-		research_publications["[document_type]"] -= research_publications["[document_type]"]["[title]"]
+		research_publications["[document_type]"] -= list(research_publications["[document_type]"]["[title]"])
 		return TRUE
 
 //For research sending DeLorean mail to the WY of next round
@@ -37,7 +38,7 @@ var/global/datum/chemical_research_data/chemical_research_data = new /datum/chem
 	var/datum/entity/chemical_information/CI = DB_ENTITY(/datum/entity/chemical_information)
 
 	CI.assign_values(R.vars, list("properties_text", "spent_chemical"))
-	CI.properties = R.properties
+	CI.properties = R.properties_to_assoc()
 	CI.spent_chemical = FALSE
 
 	CI.save()
@@ -62,10 +63,10 @@ var/global/datum/chemical_research_data/chemical_research_data = new /datum/chem
 			if(V != "properties_text" && V != "spent_chemical")
 				R.vars[V] = data.vars[V]
 		R.properties = data.properties
+		R.properties = R.properties_to_datums()
 		//I hate doing this, but until the DB converts stuff into proper types we have to do this ourselves
-		for(var/P in R.properties)
-			var/V = R.properties[P]
-			R.properties[P] = text2num(V)
+		for(var/datum/chem_property/P in R.properties)
+			P.level = text2num(P.level)
 		R.nutriment_factor = text2num(R.nutriment_factor)
 		R.custom_metabolism = text2num(R.custom_metabolism)
 		R.overdose = text2num(R.overdose)

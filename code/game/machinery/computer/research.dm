@@ -77,7 +77,7 @@
 			if(chemical_research_data.clearance_level < clearance_allowance)
 				chemical_research_data.clearance_level = min(5,chemical_research_data.clearance_level + 1)
 		if("Set to maximum")
-			chemical_research_data.clearance_level = clearance_allowance
+			chemical_research_data.clearance_level = max(clearance_allowance, chemical_research_data.clearance_level)
 		if("Set to minimum")
 			chemical_research_data.clearance_level = 1
 
@@ -99,7 +99,8 @@
 		"research_documents" = chemical_research_data.research_documents,
 		"published_documents" = chemical_research_data.research_publications,
 		"main_terminal" = main_terminal,
-		"terminal_view" = TRUE
+		"terminal_view" = TRUE,
+		"clearance_x_access" = chemical_research_data.clearance_x_access
 	)
 
 	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
@@ -200,6 +201,15 @@
 		var/title = href_list["print_title"]
 		if(chemical_research_data.unpublish_document(href_list["print_type"], title))
 			to_chat(usr, SPAN_NOTICE("Removed the publication for [title]."))
-
+	else if(href_list["request_clearance_x_access"])
+		var/purchase_cost = 5
+		if(alert(usr,"Are you sure you wish request clearance level X access for [purchase_cost] credits?","Warning","Yes","No") != "Yes")
+			return
+		if(purchase_cost <= chemical_research_data.rsc_credits)
+			chemical_research_data.clearance_x_access = TRUE
+			chemical_research_data.update_credits(purchase_cost * -1)
+			visible_message(SPAN_NOTICE("Clearance Level X Acquired."))
+		else
+			to_chat(usr, SPAN_WARNING("Insufficient funds."))
 	playsound(loc, pick('sound/machines/computer_typing1.ogg','sound/machines/computer_typing2.ogg','sound/machines/computer_typing3.ogg'), 5, 1)
 	nanomanager.update_uis(src)

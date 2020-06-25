@@ -64,11 +64,7 @@
 	description = "A corrosive blood like substance. Makeup appears to be made out of acids and blood plasma."
 	chemclass = CHEM_CLASS_SPECIAL
 	objective_value = OBJECTIVE_HIGH_VALUE
-
-/datum/reagent/blood/xeno_blood/on_mob_life(mob/living/M)
-	. = ..()
-	if(!.) return
-	M.take_limb_damage(0, 3*REM)
+	properties = list(PROPERTY_CORROSIVE = 3)
 
 /datum/reagent/blood/xeno_blood/royal
 	name = "Dark Acidic Blood"
@@ -76,7 +72,7 @@
 	color = "#bbb900"
 	chemclass = CHEM_CLASS_SPECIAL
 	objective_value = OBJECTIVE_EXTREME_VALUE
-
+	properties = list(PROPERTY_CORROSIVE = 6)
 
 /datum/reagent/vaccine
 	//data must contain virus type
@@ -84,24 +80,25 @@
 	id = "vaccine"
 	reagent_state = LIQUID
 	color = "#C81040" // rgb: 200, 16, 64
+	properties = list(PROPERTY_CURING = 4)
 
-	reaction_mob(var/mob/M, var/method=TOUCH, var/volume)
-		if(has_species(M,"Horror")) return
-		var/datum/reagent/vaccine/self = src
-		src = null
-		if(self.data_properties && method == INGEST)
-			for(var/datum/disease/D in M.viruses)
-				if(istype(D, /datum/disease/advance))
-					var/datum/disease/advance/A = D
-					if(A.GetDiseaseID() == self.data_properties)
-						D.cure()
-				else
-					if(D.type == self.data_properties)
-						D.cure()
-
-			M.resistances += self.data_properties
+/datum/reagent/vaccine/reaction_mob(var/mob/M, var/method=TOUCH, var/volume)
+	if(has_species(M,"Horror"))
 		return
+	var/datum/reagent/vaccine/self = src
+	src = null
+	if(self.data_properties && method == INGEST)
+		for(var/datum/disease/D in M.viruses)
+			if(istype(D, /datum/disease/advance))
+				var/datum/disease/advance/A = D
+				if(A.GetDiseaseID() == self.data_properties)
+					D.cure()
+			else
+				if(D.type == self.data_properties)
+					D.cure()
 
+		M.resistances += self.data_properties
+	return
 
 /datum/reagent/water
 	name = "Water"
@@ -114,28 +111,28 @@
 	chemfiresupp = TRUE
 	intensitymod = -3
 
-	reaction_turf(var/turf/T, var/volume)
-		if(!istype(T)) return
-		src = null
-		if(volume >= 3)
-			T.wet_floor(FLOOR_WET_WATER)
+/datum/reagent/water/reaction_turf(var/turf/T, var/volume)
+	if(!istype(T)) return
+	src = null
+	if(volume >= 3)
+		T.wet_floor(FLOOR_WET_WATER)
 
-	reaction_obj(var/obj/O, var/volume)
-		src = null
-		if(istype(O,/obj/item/reagent_container/food/snacks/monkeycube))
-			var/obj/item/reagent_container/food/snacks/monkeycube/cube = O
-			if(!cube.package)
-				cube.Expand()
+/datum/reagent/water/reaction_obj(var/obj/O, var/volume)
+	src = null
+	if(istype(O,/obj/item/reagent_container/food/snacks/monkeycube))
+		var/obj/item/reagent_container/food/snacks/monkeycube/cube = O
+		if(!cube.package)
+			cube.Expand()
 
-	reaction_mob(var/mob/living/M, var/method=TOUCH, var/volume)//Splashing people with water can help put them out!
-		if(!istype(M, /mob/living))
-			return
+/datum/reagent/water/reaction_mob(var/mob/living/M, var/method=TOUCH, var/volume)//Splashing people with water can help put them out!
+	if(!istype(M, /mob/living))
 		return
-		if(method == TOUCH)
-			M.adjust_fire_stacks(-(volume / 10))
-			if(M.fire_stacks <= 0)
-				M.ExtinguishMob()
-			return
+	return
+	if(method == TOUCH)
+		M.adjust_fire_stacks(-(volume / 10))
+		if(M.fire_stacks <= 0)
+			M.ExtinguishMob()
+		return
 
 /datum/reagent/water/holywater
 	name = "Holy Water"
@@ -151,12 +148,7 @@
 	reagent_state = LIQUID
 	color = "#CF3600" // rgb: 207, 54, 0
 	custom_metabolism = 0.01
-
-	on_mob_life(mob/living/M)
-		. = ..()
-		if(!.) return
-		// Toxins are really weak, but without being treated, last very long.
-		M.apply_damage(0.2, TOX)
+	properties = list(PROPERTY_TOXIC = 1)
 
 /datum/reagent/space_drugs
 	name = "Space drugs"
@@ -169,25 +161,6 @@
 	chemclass = CHEM_CLASS_UNCOMMON
 	properties = list(PROPERTY_HALLUCINOGENIC = 2)
 
-	on_mob_life(mob/living/M)
-		. = ..()
-		if(!.) return
-		M.druggy = max(M.druggy, 15)
-		if(isturf(M.loc) && !istype(M.loc, /turf/open/space))
-			if(M.canmove && !M.is_mob_restrained())
-				if(prob(10)) step(M, pick(cardinal))
-		if(prob(7)) M.emote(pick("twitch","drool","moan","giggle"))
-		holder.remove_reagent(src.id, 0.5 * REAGENTS_METABOLISM)
-
-	on_overdose(mob/living/M)
-		M.apply_damage(1, TOX) //Overdose starts getting bad
-		M.knocked_out = max(M.knocked_out, 20)
-
-	on_overdose_critical(mob/living/M)
-		M.apply_damage(4, TOX) //Overdose starts getting bad
-		M.knocked_out = max(M.knocked_out, 20)
-		M.drowsyness = max(M.drowsyness, 30)
-
 /datum/reagent/serotrotium
 	name = "Serotrotium"
 	id = "serotrotium"
@@ -196,22 +169,7 @@
 	color = "#202040" // rgb: 20, 20, 40
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
-
-	on_mob_life(mob/living/M)
-		. = ..()
-		if(!.) return
-		if(ishuman(M))
-			if(prob(7)) M.emote(pick("twitch","drool","moan","gasp"))
-			holder.remove_reagent(src.id, 0.25 * REAGENTS_METABOLISM)
-
-	on_overdose(mob/living/M)
-		M.apply_damage(1, TOX) //Overdose starts getting bad
-		M.knocked_out = max(M.knocked_out, 20)
-
-	on_overdose_critical(mob/living/M)
-		M.apply_damage(4, TOX) //Overdose starts getting bad
-		M.knocked_out = max(M.knocked_out, 20)
-		M.drowsyness = max(M.drowsyness, 30)
+	properties = list(PROPERTY_ALLERGENIC = 2)
 
 /datum/reagent/oxygen
 	name = "Oxygen"
@@ -291,14 +249,6 @@
 	chemclass = CHEM_CLASS_BASIC
 	properties = list(PROPERTY_NEUROTOXIC = 4)
 
-	on_mob_life(mob/living/M)
-		. = ..()
-		if(!.) return
-		if(M.canmove && !M.is_mob_restrained() && istype(M.loc, /turf/open/space))
-			step(M, pick(cardinal))
-		if(prob(5)) M.emote(pick("twitch","drool","moan"))
-		M.adjustBrainLoss(2)
-
 /datum/reagent/sulfur
 	name = "Sulfur"
 	id = "sulfur"
@@ -324,15 +274,15 @@
 
 	custom_metabolism = 0.01
 
-	reaction_turf(var/turf/T, var/volume)
-		src = null
-		if(!istype(T, /turf/open/space))
-			var/obj/effect/decal/cleanable/dirt/dirtoverlay = locate(/obj/effect/decal/cleanable/dirt, T)
-			if(!dirtoverlay)
-				dirtoverlay = new/obj/effect/decal/cleanable/dirt(T)
-				dirtoverlay.alpha = volume*30
-			else
-				dirtoverlay.alpha = min(dirtoverlay.alpha+volume*30, 255)
+/datum/reagent/carbon/reaction_turf(var/turf/T, var/volume)
+	src = null
+	if(!istype(T, /turf/open/space))
+		var/obj/effect/decal/cleanable/dirt/dirtoverlay = locate(/obj/effect/decal/cleanable/dirt, T)
+		if(!dirtoverlay)
+			dirtoverlay = new/obj/effect/decal/cleanable/dirt(T)
+			dirtoverlay.alpha = volume*30
+		else
+			dirtoverlay.alpha = min(dirtoverlay.alpha+volume*30, 255)
 
 /datum/reagent/chlorine
 	name = "Chlorine"
@@ -345,17 +295,6 @@
 	chemclass = CHEM_CLASS_BASIC
 	properties = list(PROPERTY_BIOCIDIC = 1)
 
-	on_mob_life(mob/living/M)
-		. = ..()
-		if(!.) return
-		M.take_limb_damage(REM, 0)
-
-	on_overdose(mob/living/M)
-		M.apply_damage(1, TOX) //Overdose starts getting bad
-
-	on_overdose_critical(mob/living/M)
-		M.apply_damage(4, TOX) //Overdose starts getting bad
-
 /datum/reagent/fluorine
 	name = "Fluorine"
 	id = "fluorine"
@@ -366,17 +305,6 @@
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_BASIC
 	properties = list(PROPERTY_TOXIC = 1)
-
-	on_mob_life(mob/living/M)
-		. = ..()
-		if(!.) return
-		M.apply_damage(REM, TOX)
-
-	on_overdose(mob/living/M)
-		M.apply_damage(1, TOX) //Overdose starts getting bad
-
-	on_overdose_critical(mob/living/M)
-		M.apply_damage(4, TOX) //Overdose starts getting bad
 
 /datum/reagent/sodium
 	name = "Sodium"
@@ -418,20 +346,7 @@
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_BASIC
-	properties = list(PROPERTY_OXIDIZING = 1)
-
-	on_mob_life(mob/living/M)
-		. = ..()
-		if(!.) return
-		if(M.canmove && !M.is_mob_restrained() && istype(M.loc, /turf/open/space))
-			step(M, pick(cardinal))
-		if(prob(5)) M.emote(pick("twitch","drool","moan"))
-
-	on_overdose(mob/living/M)
-		M.apply_damage(1, TOX) //Overdose starts getting bad
-
-	on_overdose_critical(mob/living/M)
-		M.apply_damage(4, TOX) //Overdose starts getting bad
+	properties = list(PROPERTY_OXIDIZING = 1, PROPERTY_PSYCHOSTIMULATING = 1)
 
 /datum/reagent/sugar
 	name = "Sugar"
@@ -441,12 +356,6 @@
 	color = "#FFFFFF" // rgb: 255, 255, 255
 	chemclass = CHEM_CLASS_BASIC
 	properties = list(PROPERTY_NUTRITIOUS = 1)
-
-	on_mob_life(mob/living/M)
-		. = ..()
-		if(!.) return
-		M.nutrition += 1*REM
-
 
 /datum/reagent/glycerol
 	name = "Glycerol"
@@ -465,21 +374,7 @@
 	reagent_state = SOLID
 	color = "#C7C7C7" // rgb: 199,199,199
 	chemclass = CHEM_CLASS_BASIC
-	properties = list(PROPERTY_TOXIC = 2)
-
-	on_mob_life(mob/living/M)
-		. = ..()
-		if(!.) return
-		M.apply_effect(2*REM,IRRADIATE,0)
-
-	reaction_turf(var/turf/T, var/volume)
-		src = null
-		if(volume >= 3)
-			if(!istype(T, /turf/open/space))
-				var/obj/effect/decal/cleanable/greenglow/glow = locate(/obj/effect/decal/cleanable/greenglow, T)
-				if(!glow)
-					new /obj/effect/decal/cleanable/greenglow(T)
-				return
+	properties = list(PROPERTY_CARCINOGENIC = 2)
 
 /datum/reagent/thermite
 	name = "Thermite"
@@ -496,12 +391,7 @@
 	power = 0.5
 	falloff_modifier = 1
 	chemclass = CHEM_CLASS_UNCOMMON
-	properties = list(PROPERTY_FUELING = 4, PROPERTY_OXIDIZING = 1, PROPERTY_VISCOUS = 4)
-
-/datum/reagent/thermite/on_mob_life(mob/living/M)
-		. = ..()
-		if(!.) return
-		M.apply_damage(1, BURN)
+	properties = list(PROPERTY_FUELING = 4, PROPERTY_OXIDIZING = 1, PROPERTY_VISCOUS = 4, PROPERTY_CORROSIVE = 2)
 
 /datum/reagent/thermite/reaction_turf(turf/T, volume)
 	src = null
@@ -509,7 +399,6 @@
 		var/turf/closed/wall/W = T
 		W.thermite += volume
 		W.overlays += image('icons/effects/effects.dmi',icon_state = "#673910")
-
 
 /datum/reagent/virus_food
 	name = "Virus Food"
@@ -519,12 +408,7 @@
 	nutriment_factor = 2 * REAGENTS_METABOLISM
 	color = "#899613" // rgb: 137, 150, 19
 	chemclass = CHEM_CLASS_RARE
-
-/datum/reagent/virus_food/on_mob_life(mob/living/M)
-	. = ..()
-	if(!.) return
-	M.nutrition += nutriment_factor*REM
-
+	properties = list(PROPERTY_NUTRITIOUS = 2)
 
 /datum/reagent/iron
 	name = "Iron"
@@ -536,22 +420,7 @@
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_BASIC
-	properties = list(PROPERTY_HEMOGENIC = 2)
-
-/datum/reagent/iron/on_overdose(mob/living/M)
-	M.apply_damages(1, 0, 1) //Overdose starts getting bad
-
-/datum/reagent/iron/on_overdose_critical(mob/living/M)
-	M.apply_damages(2, 0, 2) //Overdose starts getting bad
-
-/datum/reagent/iron/on_mob_life(mob/living/M)
-	. = ..()
-	if(!.) return
-	if(iscarbon(M))
-		var/mob/living/carbon/C = M
-		if(C.blood_volume < BLOOD_VOLUME_NORMAL)
-			C.blood_volume += 0.8
-
+	properties = list(PROPERTY_HEMOGENIC = 3)
 
 /datum/reagent/gold
 	name = "Gold"
@@ -576,19 +445,15 @@
 	reagent_state = SOLID
 	color = "#B8B8C0" // rgb: 184, 184, 192
 	chemclass = CHEM_CLASS_RARE
+	properties = list(PROPERTY_CARCINOGENIC = 2)
 
-	on_mob_life(mob/living/M)
-		. = ..()
-		if(!.) return
-		M.apply_effect(1,IRRADIATE,0)
-
-	reaction_turf(var/turf/T, var/volume)
-		src = null
-		if(volume >= 3)
-			if(!istype(T, /turf/open/space))
-				var/obj/effect/decal/cleanable/greenglow/glow = locate(/obj/effect/decal/cleanable/greenglow, T)
-				if(!glow)
-					new /obj/effect/decal/cleanable/greenglow(T)
+/datum/reagent/uranium/reaction_turf(var/turf/T, var/volume)
+	src = null
+	if(volume >= 3)
+		if(!istype(T, /turf/open/space))
+			var/obj/effect/decal/cleanable/greenglow/glow = locate(/obj/effect/decal/cleanable/greenglow, T)
+			if(!glow)
+				new /obj/effect/decal/cleanable/greenglow(T)
 
 /datum/reagent/aluminum
 	name = "Aluminum"
@@ -623,33 +488,22 @@
 	falloff_modifier = -0.1
 	burncolor = "#ff9900"
 	chemclass = CHEM_CLASS_RARE
-	properties = list(PROPERTY_FUELING = 4, PROPERTY_OXIDIZING = 1, PROPERTY_VISCOUS = 3)
+	properties = list(PROPERTY_FUELING = 4, PROPERTY_OXIDIZING = 1, PROPERTY_VISCOUS = 3, PROPERTY_TOXIC = 1)
 
-	reaction_obj(var/obj/O, var/volume)
-		var/turf/the_turf = get_turf(O)
-		if(!the_turf)
-			return //No sense trying to start a fire if you don't have a turf to set on fire. --NEO
-		new /obj/effect/decal/cleanable/liquid_fuel(the_turf, volume)
+/datum/reagent/fuel/reaction_obj(var/obj/O, var/volume)
+	var/turf/the_turf = get_turf(O)
+	if(!the_turf)
+		return //No sense trying to start a fire if you don't have a turf to set on fire. --NEO
+	new /obj/effect/decal/cleanable/liquid_fuel(the_turf, volume)
 
-	reaction_turf(var/turf/T, var/volume)
-		new /obj/effect/decal/cleanable/liquid_fuel(T, volume)
+/datum/reagent/fuel/reaction_turf(var/turf/T, var/volume)
+	new /obj/effect/decal/cleanable/liquid_fuel(T, volume)
 
-	on_mob_life(mob/living/M)
-		. = ..()
-		if(!.) return
-		M.apply_damage(1, TOX)
-
-	reaction_mob(var/mob/living/M, var/method=TOUCH, var/volume)//Splashing people with welding fuel to make them easy to ignite!
-		if(!istype(M, /mob/living))
-			return
-		if(method == TOUCH)
-			M.adjust_fire_stacks(volume / 10)
-
-	on_overdose(mob/living/M)
-		M.apply_damage(2, TOX) //Overdose starts getting bad
-
-	on_overdose_critical(mob/living/M)
-		M.apply_damage(3, TOX) //Overdose starts getting bad
+/datum/reagent/fuel/reaction_mob(var/mob/living/M, var/method=TOUCH, var/volume)//Splashing people with welding fuel to make them easy to ignite!
+	if(!istype(M, /mob/living))
+		return
+	if(method == TOUCH)
+		M.adjust_fire_stacks(volume / 10)
 
 /datum/reagent/space_cleaner
 	name = "Space cleaner"
@@ -661,75 +515,55 @@
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_UNCOMMON
 
-	reaction_obj(var/obj/O, var/volume)
-		if(istype(O,/obj/effect/decal/cleanable))
-			qdel(O)
-		else
-			if(O)
-				O.clean_blood()
+/datum/reagent/space_cleaner/reaction_obj(var/obj/O, var/volume)
+	if(istype(O,/obj/effect/decal/cleanable))
+		qdel(O)
+	else
+		if(O)
+			O.clean_blood()
 
-	reaction_turf(var/turf/T, var/volume)
-		if(volume >= 1 && istype(T))
-			T.clean_dirt()
+/datum/reagent/space_cleaner/reaction_turf(var/turf/T, var/volume)
+	if(volume >= 1 && istype(T))
+		T.clean_dirt()
 
-	reaction_mob(var/mob/M, var/method=TOUCH, var/volume)
-		if(iscarbon(M))
-			var/mob/living/carbon/C = M
-			if(C.r_hand)
-				C.r_hand.clean_blood()
-			if(C.l_hand)
-				C.l_hand.clean_blood()
-			if(C.wear_mask)
-				if(C.wear_mask.clean_blood())
-					C.update_inv_wear_mask(0)
-			if(ishuman(M))
-				var/mob/living/carbon/human/H = C
-				if(H.head)
-					if(H.head.clean_blood())
-						H.update_inv_head(0)
-				if(H.wear_suit)
-					if(H.wear_suit.clean_blood())
-						H.update_inv_wear_suit(0)
-				else if(H.w_uniform)
-					if(H.w_uniform.clean_blood())
-						H.update_inv_w_uniform(0)
-				if(H.shoes)
-					if(H.shoes.clean_blood())
-						H.update_inv_shoes(0)
-				else
-					H.clean_blood(1)
-					return
-			M.clean_blood()
-
-	on_overdose(mob/living/M)
-		M.apply_damage(2, TOX) //Overdose starts getting bad
-
-	on_overdose_critical(mob/living/M)
-		M.apply_damage(3, TOX) //Overdose starts getting bad
+/datum/reagent/space_cleaner/reaction_mob(var/mob/M, var/method=TOUCH, var/volume)
+	if(iscarbon(M))
+		var/mob/living/carbon/C = M
+		if(C.r_hand)
+			C.r_hand.clean_blood()
+		if(C.l_hand)
+			C.l_hand.clean_blood()
+		if(C.wear_mask)
+			if(C.wear_mask.clean_blood())
+				C.update_inv_wear_mask(0)
+		if(ishuman(M))
+			var/mob/living/carbon/human/H = C
+			if(H.head)
+				if(H.head.clean_blood())
+					H.update_inv_head(0)
+			if(H.wear_suit)
+				if(H.wear_suit.clean_blood())
+					H.update_inv_wear_suit(0)
+			else if(H.w_uniform)
+				if(H.w_uniform.clean_blood())
+					H.update_inv_w_uniform(0)
+			if(H.shoes)
+				if(H.shoes.clean_blood())
+					H.update_inv_shoes(0)
+			else
+				H.clean_blood(1)
+				return
+		M.clean_blood()
 
 /datum/reagent/cryptobiolin
 	name = "Cryptobiolin"
 	id = "cryptobiolin"
-	description = "A component to making spaceacilin. Causes confusion and dizziness when digested."
+	description = "A component to making spaceacilin."
 	reagent_state = LIQUID
 	color = "#C8A5DC" // rgb: 200, 165, 220
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_UNCOMMON
-
-	on_mob_life(mob/living/M)
-		. = ..()
-		if(!.) return
-		M.make_dizzy(1)
-		if(!M.confused) M.confused = 1
-		M.confused = max(M.confused, 20)
-		holder.remove_reagent(src.id, 0.5 * REAGENTS_METABOLISM)
-
-	on_overdose(mob/living/M)
-		M.apply_damage(2, TOX) //Overdose starts getting bad
-
-	on_overdose_critical(mob/living/M)
-		M.apply_damage(3, TOX) //Overdose starts getting bad
 
 /datum/reagent/impedrezene
 	name = "Impedrezene"
@@ -740,22 +574,7 @@
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_UNCOMMON
-	properties = list(PROPERTY_NEUROTOXIC = 2)
-
-	on_mob_life(mob/living/M)
-		. = ..()
-		if(!.) return
-		M.jitteriness = max(M.jitteriness - 5,0)
-		if(prob(80)) M.adjustBrainLoss(REM)
-		if(prob(50)) M.drowsyness = max(M.drowsyness, 3)
-		if(prob(10)) M.emote("drool")
-
-	on_overdose(mob/living/M)
-		M.apply_damage(2, TOX) //Overdose starts getting bad
-
-	on_overdose_critical(mob/living/M)
-		M.apply_damage(3, TOX) //Overdose starts getting bad
-
+	properties = list(PROPERTY_NEUROTOXIC = 2, PROPERTY_RELAXING = 1)
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -766,10 +585,10 @@
 	reagent_state = LIQUID
 	color = "#535E66" // rgb: 83, 94, 102
 
-	reaction_mob(var/mob/M, var/method=TOUCH, var/volume)
-		src = null
-		if( (prob(10) && method==TOUCH) || method==INGEST)
-			M.contract_disease(new /datum/disease/robotic_transformation(0),1)
+/datum/reagent/nanites/reaction_mob(var/mob/M, var/method=TOUCH, var/volume)
+	src = null
+	if((prob(10) && method==TOUCH) || method==INGEST)
+		M.contract_disease(new /datum/disease/robotic_transformation(0),1)
 
 /datum/reagent/xenomicrobes
 	name = "Xenomicrobes"
@@ -778,10 +597,10 @@
 	reagent_state = LIQUID
 	color = "#535E66" // rgb: 83, 94, 102
 
-	reaction_mob(var/mob/M, var/method=TOUCH, var/volume)
-		src = null
-		if( (prob(10) && method==TOUCH) || method==INGEST)
-			M.contract_disease(new /datum/disease/xeno_transformation(0),1)
+/datum/reagent/xenomicrobes/reaction_mob(var/mob/M, var/method=TOUCH, var/volume)
+	src = null
+	if((prob(10) && method==TOUCH) || method==INGEST)
+		M.contract_disease(new /datum/disease/xeno_transformation(0),1)
 
 /datum/reagent/fluorosurfactant//foam precursor
 	name = "Fluorosurfactant"
@@ -841,8 +660,6 @@
 	color = "#604030" // rgb: 96, 64, 48
 	chemclass = CHEM_CLASS_UNCOMMON
 
-
-
 /datum/reagent/blackgoo
 	name = "Black goo"
 	id = "blackgoo"
@@ -850,25 +667,19 @@
 	reagent_state = LIQUID
 	color = "#222222"
 	custom_metabolism = 100 //disappears immediately
+	properties = list(PROPERTY_RAVENING = 1)
 
-	on_mob_life(mob/living/M)
-		if(ishuman(M))
-			var/mob/living/carbon/human/H = M
-			if(H.species.name == "Human")
-				H.contract_disease(new /datum/disease/black_goo, 1)
-		. = ..()
+/datum/reagent/blackgoo/reaction_mob(var/mob/M, var/method=TOUCH, var/volume)
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		if(H.species.name == "Human")
+			H.contract_disease(new /datum/disease/black_goo)
 
-	reaction_mob(var/mob/M, var/method=TOUCH, var/volume)
-		if(ishuman(M))
-			var/mob/living/carbon/human/H = M
-			if(H.species.name == "Human")
-				H.contract_disease(new /datum/disease/black_goo)
-
-	reaction_turf(var/turf/T, var/volume)
-		if(!istype(T)) return
-		if(volume < 3) return
-		if(!(locate(/obj/effect/decal/cleanable/blackgoo) in T))
-			new /obj/effect/decal/cleanable/blackgoo(T)
+/datum/reagent/blackgoo/reaction_turf(var/turf/T, var/volume)
+	if(!istype(T)) return
+	if(volume < 3) return
+	if(!(locate(/obj/effect/decal/cleanable/blackgoo) in T))
+		new /obj/effect/decal/cleanable/blackgoo(T)
 
 
 // Chemfire supplements
@@ -904,8 +715,6 @@
 	. = ..()
 	M.adjust_fire_stacks(max(M.fire_stacks, 15))
 	M.IgniteMob()
-	M.apply_damage(rand(20, 30), BURN)
-	M.apply_damage(rand(10, 20), TOX)
 	to_chat(M, SPAN_DANGER("It burns! It burns worse than you could ever have imagined!"))
 
 /datum/reagent/chlorinetrifluoride/reaction_mob(var/mob/M, var/method = TOUCH, var/volume) // Spilled on you? Not good either, but not /as/ bad.
@@ -930,10 +739,6 @@
 	power = 0.15
 	chemclass = CHEM_CLASS_COMMON
 	properties = list(PROPERTY_TOXIC = 2, PROPERTY_FLOWING = 4)
-
-/datum/reagent/methane/on_mob_life(var/mob/living/M)
-	. = ..()
-	M.apply_damage(1, TOX)
 
 ///////////////////////////////////////////Explosives////////////////////////////////////////////////////////////
 
@@ -1009,7 +814,7 @@
 /datum/reagent/plasma
 	name = "plasma"
 	id = "plasma"
-	description = "A clear clear extracellular fluid separated from blood."
+	description = "A clear extracellular fluid separated from blood."
 	reagent_state = LIQUID
 	color = "#f1e8cf"
 	custom_metabolism = 0.4
@@ -1019,72 +824,57 @@
 	id = PLASMA_PHEROMONE
 	description = "A funny smelling plasma..."
 	color = "#a2e7d6"
+	overdose = REAGENTS_OVERDOSE
+	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_SPECIAL
 	objective_value = OBJECTIVE_EXTREME_VALUE
-
-/datum/reagent/plasma/pheromone/on_mob_life(var/mob/living/M)
-	. = ..()
-	if(!.) return
-	M.hallucination += 10
-	M.make_jittery(5)
+	properties = list(PROPERTY_HALLUCINOGENIC = 8, PROPERTY_NERVESTIMULATING = 6)
 
 /datum/reagent/plasma/chitin
 	name = "Chitin Plasma"
 	id = PLASMA_CHITIN
 	description = "A very thick fibrous plasma..."
 	color = "#6d7694"
+	overdose = REAGENTS_OVERDOSE
+	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_SPECIAL
 	objective_value = OBJECTIVE_EXTREME_VALUE
+	properties = list(PROPERTY_HYPERDENSIFICATING = 1)
 
 /datum/reagent/plasma/catecholamine
 	name = "Catecholamine Plasma"
 	id = PLASMA_CATECHOLAMINE
 	description = "A red-ish plasma..."
 	color = "#cf7551"
+	overdose = REAGENTS_OVERDOSE
+	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_SPECIAL
 	objective_value = OBJECTIVE_EXTREME_VALUE
-
-/datum/reagent/plasma/catecholamine/on_mob_life(var/mob/living/M)
-	. = ..()
-	if(!.) return
-	M.reagent_move_delay_modifier -= 0.3
-	M.reagent_shock_modifier -= PAIN_REDUCTION_MEDIUM // causes pain instead
+	properties = list(PROPERTY_PAINING = 2, PROPERTY_MUSCLESTIMULATING = 6)
 
 /datum/reagent/plasma/egg
 	name = "Egg Plasma"
 	id = PLASMA_EGG
-	description = "A white-ish plasma high in protein..."
+	description = "A white-ish plasma high with a high concentration of protein..."
 	color = "#c3c371"
 	overdose = 80
 	overdose_critical = 100
 	chemclass = CHEM_CLASS_SPECIAL
 	objective_value = OBJECTIVE_EXTREME_VALUE
+	properties = list(PROPERTY_HEMOSITIC = 4)
 
 /datum/reagent/plasma/egg/on_mob_life(var/mob/living/M)
 	. = ..()
-	if(!.) return
+	if(!.)
+		return
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if((locate(/obj/item/alien_embryo) in H.contents) || (H.species.flags & IS_SYNTHETIC))
 			volume = 0
 			return
-		var/mob/living/carbon/C = M
-		C.blood_volume = max(C.blood_volume-10,0)
-		volume++ //parasitic plasma
-
-/datum/reagent/plasma/egg/on_overdose(mob/living/M) // plasma start to grow faster
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		if(H.species.flags & IS_SYNTHETIC)
+		if(volume < overdose_critical)
 			return
-		H.blood_volume = max(H.blood_volume-20,0)
-		volume += 2
-
-/datum/reagent/plasma/egg/on_overdose_critical(mob/living/M) // it turns into an actual embryo at this point
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		if(H.species.flags & IS_SYNTHETIC)
-			return
+		//it turns into an actual embryo at this point
 		volume = 0
 		var/obj/item/alien_embryo/embryo = new /obj/item/alien_embryo(H)
 		embryo.hivenumber = XENO_HIVE_NORMAL
@@ -1095,17 +885,11 @@
 	id = PLASMA_NEUROTOXIN
 	description = "A plasma containing an unknown but potent neurotoxin."
 	color = "#ba8216"
+	overdose = REAGENTS_OVERDOSE
+	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_SPECIAL
 	objective_value = OBJECTIVE_EXTREME_VALUE
-
-/datum/reagent/plasma/neurotoxin/on_mob_life(var/mob/living/M)
-	. = ..()
-	if(!.) return
-
-	M.adjustBrainLoss(0.5)
-	M.apply_damage(1, TOX)
-	if(prob(20))
-		apply_neuro(M, 4, FALSE)
+	properties = list(PROPERTY_NEUROTOXIC = 4, PROPERTY_TOXIC = 1, PROPERTY_HALLUCINOGENIC = 6)
 
 /datum/reagent/plasma/antineurotoxin
 	name = "Anti-Neurotoxin"
@@ -1116,37 +900,26 @@
 	objective_value = OBJECTIVE_MEDIUM_VALUE
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
-
-/datum/reagent/plasma/antineurotoxin/on_mob_life(var/mob/living/M)
-	. = ..()
-	if(!.) return
-
-	M.adjustBrainLoss(0.5)
-	if(prob(20))
-		apply_neuro(M, -2, FALSE)
+	properties = list(PROPERTY_NEUROSHIELDING = 1)
 
 /datum/reagent/plasma/purple
 	name = "Purple Plasma"
 	id = PLASMA_PURPLE
 	description = "A purple-ish plasma..."
 	color = "#a65d7f"
+	overdose = REAGENTS_OVERDOSE
+	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_SPECIAL
 	objective_value = OBJECTIVE_EXTREME_VALUE
-
-/datum/reagent/plasma/purple/on_mob_life(var/mob/living/M)
-	. = ..()
-	if(!.) return
-	M.take_limb_damage(REM*2, 0)
+	properties = list(PROPERTY_BIOCIDIC = 2)
 
 /datum/reagent/plasma/royal
 	name = "Royal Plasma"
 	id = PLASMA_ROYAL
 	description = "A dark purple-ish plasma..."
 	color = "#ffeb9c"
+	overdose = REAGENTS_OVERDOSE
+	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_SPECIAL
 	objective_value = OBJECTIVE_ABSOLUTE_VALUE
-
-/datum/reagent/plasma/royal/on_mob_life(var/mob/living/M)
-	. = ..()
-	if(!.) return
-	M.take_limb_damage(REM*4, 0)
+	properties = list(PROPERTY_BIOCIDIC = 4, PROPERTY_ADDICTIVE = 1, PROPERTY_HALLUCINOGENIC = 4, PROPERTY_CIPHERING = 1)

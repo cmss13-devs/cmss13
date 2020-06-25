@@ -1,9 +1,12 @@
 {{if data.terminal_view == 1 }}
 	<div>
 		<h2><b>Research Credits Available:</b> {{:data.rsc_credits}}</h2>
-		<h2><b>Current Clearance Access:</b> Level {{:data.clearance_level}}</h2>
+		<h2><b>Current Clearance Access:</b> Level {{:data.clearance_level}} {{if data.clearance_x_access == 1}}<b>X</b>{{/if}}</h2>
 	</div>
 	{{:helper.link('Purchase Clearance for ' + data.broker_cost + ' credits', null, {'broker_clearance' : 1})}}
+	{{if data.clearance_level >= 5 && data.clearance_x_access == 0}}
+		{{:helper.link('Request Clearance X access for 5 credits', null, {'request_clearance_x_access' : 1})}}
+	{{/if}}
 	<br><br>
 	<h3>Purchase Report Access</h3>
 		{{:helper.link('Level 1 for 6 rc', 'arrowthickstop-1-s', {'purchase_document' : 1})}}

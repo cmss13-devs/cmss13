@@ -6,6 +6,8 @@
 #define LIQUID 2
 #define GAS 3
 
+#define ANTIDEPRESSANT_MESSAGE_DELAY 5*60*10
+
 // OVERDOSES for Chems
 #define LOW_REAGENTS_OVERDOSE 6
 #define LOW_REAGENTS_OVERDOSE_CRITICAL 10
@@ -42,6 +44,13 @@
 #define NUTRITION_LOW		250
 #define NUTRITION_VERYLOW	50
 
+//Metabolization mods
+#define REAGENT_EFFECT			"effectiveness"
+#define REAGENT_CAN_OD 			"can_OD"
+#define REAGENT_BOOST			"boost"
+#define REAGENT_PURGE			"purge"
+#define REAGENT_FORCE			"force"
+#define REAGENT_CANCEL			"cancel"
 
 //Reagent generation classifications
 #define CHEM_CLASS_NONE             0 //Default. Chemicals not used in the chem generator
@@ -66,7 +75,9 @@
 #define PLASMA_NEUROTOXIN 		"neurotoxinplasma"
 #define PLASMA_ROYAL 			"royalplasma"
 
-//Chemical properties
+/*
+	properties defines
+*/
 //Negative
 #define PROPERTY_HYPOXEMIC 			"hypoxemic"
 #define PROPERTY_TOXIC 				"toxic"
@@ -83,6 +94,7 @@
 #define PROPERTY_NEUROTOXIC			"neurotoxic"
 #define PROPERTY_HYPERMETABOLIC		"hypermetabolic"
 //Neutral
+#define PROPERTY_NUTRITIOUS 		"nutritious"
 #define PROPERTY_KETOGENIC			"ketogenic"
 #define PROPERTY_PAINING 			"paining"
 #define PROPERTY_NEUROINHIBITING 	"neuroinhibiting"
@@ -103,7 +115,6 @@
 #define PROPERTY_HYPOMETABOLIC		"hypometabolic"
 #define PROPERTY_SEDATIVE			"sedative"
 //Positive
-#define PROPERTY_NUTRITIOUS 		"nutritious"
 #define PROPERTY_ANTITOXIC			"anti-toxic"
 #define PROPERTY_ANTICORROSIVE		"anti-corrosive"
 #define PROPERTY_NEOGENETIC			"neogenetic"
@@ -122,7 +133,8 @@
 #define PROPERTY_FLUXING 			"fluxing"
 #define PROPERTY_NEUROCRYOGENIC		"neurocryogenic"
 #define PROPERTY_ANTIPARASITIC		"anti-parasitic"
-//Combo, made by combining other properties
+#define PROPERTY_ELECTROGENETIC		"electrogenetic"
+//Rare Combo, made by combining other properties
 #define PROPERTY_DEFIBRILLATING		"defibrillating"
 #define PROPERTY_THANATOMETABOL		"thanatometabolizing"
 #define PROPERTY_HYPERDENSIFICATING	"hyperdensificating"
@@ -130,11 +142,12 @@
 #define PROPERTY_NEUROSHIELDING		"neuroshielding"
 #define PROPERTY_ANTIADDICTIVE		"anti-addictive"
 #define PROPERTY_ADDICTIVE			"addictive"
-//Rare, only in gen_tier 3+
+//Legendary, only in gen_tier 3+
 #define PROPERTY_HYPERGENETIC		"hypergenetic"
 #define PROPERTY_BOOSTING			"boosting"
 #define PROPERTY_DNA_DISINTEGRATING	"DNA-Disintegrating"
 #define PROPERTY_REGULATING			"regulating"
+#define PROPERTY_CIPHERING			"ciphering"
 //Admin Only Properties
 #define PROPERTY_CROSSMETABOLIZING	"cross-metabolizing"
 #define PROPERTY_EMBRYONIC			"embryonic"
@@ -148,4 +161,31 @@
 #define PROPERTY_FLOWING			"flowing"
 #define PROPERTY_VISCOUS			"viscous"
 #define PROPERTY_EXPLOSIVE			"explosive"
+//Generation Disabled Properties
+#define PROPERTY_CARDIOSTABILIZING	"cardio-stabilizing"
+#define PROPERTY_AIDING				"aiding"
+#define PROPERTY_THERMOSTABILIZING	"themo-stabilizing"
+#define PROPERTY_OXYGENATING		"oxygenating"
+#define PROPERTY_FOCUSING			"focusing"
+#define PROPERTY_ANTICARCINOGENIC	"anti-carcinogenic"
+#define PROPERTY_UNKNOWN			"unknown" //just has an OD effect
+#define PROPERTY_HEMOSITIC			"hemositic"
 
+
+//Property rarity
+#define PROPERTY_DISABLED			0 //the property is disabled and can't spawn anywhere, however is still functional
+#define PROPERTY_COMMON				1 //can be generated anywhere and available in round start chems
+#define PROPERTY_UNCOMMON			2 //can be generated anywhere, but not available in round start chems
+#define PROPERTY_RARE				3 //can only be generated at specific gen_tiers, but can also be made through specific property combinations
+#define PROPERTY_LEGENDARY			4 //can strictly only be generated at specific gen_tiers
+#define PROPERTY_ADMIN				5 //can only be spawned through admin powers
+
+//Property category
+#define PROPERTY_TYPE_MEDICINE			1
+#define PROPERTY_TYPE_TOXICANT			2 
+#define PROPERTY_TYPE_STIMULANT			4
+#define PROPERTY_TYPE_REACTANT			8
+#define PROPERTY_TYPE_IRRITANT			16
+#define PROPERTY_TYPE_METABOLITE		32
+#define PROPERTY_TYPE_ANOMALOUS			64
+#define PROPERTY_TYPE_UNADJUSTABLE		128

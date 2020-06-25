@@ -15,45 +15,14 @@
 	var/obj/item/paper/research_report/target
 	var/obj/item/paper/research_report/reference
 	var/list/simulations = list()
-	var/list/dictionary = list("negative","neutral","positive","all")
-	var/list/property_codings = list(
-		//Negative
-		PROPERTY_HYPOXEMIC = "HPX", 		PROPERTY_TOXIC = "TXC", 			PROPERTY_CORROSIVE = "CRS", 		PROPERTY_BIOCIDIC = "BCD", 			PROPERTY_HEMOLYTIC = "HML",\
-		PROPERTY_HEMORRAGING = "HMR",		PROPERTY_CARCINOGENIC = "CRG", 		PROPERTY_HEPATOTOXIC = "HPT", 		PROPERTY_NEPHROTOXIC = "NPT", 		PROPERTY_PNEUMOTOXIC = "PNT",\
-		PROPERTY_OCULOTOXIC = "OCT", 		PROPERTY_CARDIOTOXIC = "CDT",		PROPERTY_NEUROTOXIC = "NRT", 		PROPERTY_EMBRYONIC = "MYO", 		PROPERTY_TRANSFORMING = "TRF",\
-		PROPERTY_HYPERMETABOLIC = "EMB",	PROPERTY_RAVENING = "RAV",			PROPERTY_ADDICTIVE = "ADT",\
-		//Neutral
-		PROPERTY_NUTRITIOUS = "NTR", 		PROPERTY_KETOGENIC = "KTG", 		PROPERTY_PAINING = "PNG", 			PROPERTY_NEUROINHIBITING = "NIH", 	PROPERTY_ALCOHOLIC = "AOL",\
-		PROPERTY_HALLUCINOGENIC = "HLG",	PROPERTY_RELAXING = "RLX", 			PROPERTY_HYPERTHERMIC = "HPR",		PROPERTY_HYPOTHERMIC = "HPO", 		PROPERTY_BALDING = "BLD",\
-		PROPERTY_FLUFFING = "FLF", 			PROPERTY_ALLERGENIC = "ALG",		PROPERTY_CRYOMETABOLIZING = "CMB", 	PROPERTY_EUPHORIC = "EPH",			PROPERTY_EMETIC = "EME",\
-		PROPERTY_PSYCHOSTIMULATING = "PST",	PROPERTY_ANTIHALLUCINOGENIC = "AHL",PROPERTY_CROSSMETABOLIZING = "XMB", PROPERTY_EXCRETING = "EXT",			PROPERTY_HYPOMETABOLIC = "OMB",\
-		PROPERTY_SEDATIVE = "SDT",			PROPERTY_THANATOMETABOL = "TMB", 	PROPERTY_HYPERTHROTTLING = "HTR",\
-		//Positive
-		PROPERTY_ANTITOXIC = "ATX", 		PROPERTY_ANTICORROSIVE = "ACR", 	PROPERTY_NEOGENETIC = "NGN", 		PROPERTY_REPAIRING = "REP", 		PROPERTY_HEMOGENIC = "HMG",\
-		PROPERTY_NERVESTIMULATING = "NST", 	PROPERTY_MUSCLESTIMULATING = "MST",	PROPERTY_PAINKILLING = "PNK",		PROPERTY_HEPATOPEUTIC = "HPP", 		PROPERTY_NEPHROPEUTIC = "NPP",\
-		PROPERTY_PNEUMOPEUTIC = "PNP", 		PROPERTY_OCULOPEUTIC = "OCP", 		PROPERTY_CARDIOPEUTIC = "CDP", 		PROPERTY_NEUROPEUTIC = "NRP",		PROPERTY_BONEMENDING = "BNM",\
-		PROPERTY_FLUXING = "FLX", 			PROPERTY_NEUROCRYOGENIC = "NRC", 	PROPERTY_ANTIPARASITIC = "APS", 	PROPERTY_DEFIBRILLATING ="DFB",		PROPERTY_ANTIADDICTIVE = "AAD",\
-		PROPERTY_OMNIPOTENT = "OMN", 		PROPERTY_CURING = "CUR", 			PROPERTY_FUELING = "FUL",			PROPERTY_OXIDIZING = "OXI",			PROPERTY_FLOWING = "FLW",\
-		PROPERTY_EXPLOSIVE = "EXP", 		PROPERTY_VISCOUS = "VIS", 			PROPERTY_NEUROSHIELDING = "NRS", 	PROPERTY_HYPERDENSIFICATING = "HDN",\
-		//Rare
-		PROPERTY_HYPERGENETIC = "HGN",		PROPERTY_BOOSTING = "BST",			PROPERTY_DNA_DISINTEGRATING = "DDI",PROPERTY_REGULATING = "REG")
 
 	var/mode = MODE_AMPLIFY
-	var/target_property = ""
-	var/target_info = ""
-	var/reference_property = ""
-	var/reference_info = ""
+	var/datum/chem_property/target_property
+	var/datum/chem_property/reference_property
 	var/list/property_costs = list()
 	var/simulating = 0
 	var/status_bar = "READY"
 	var/ready = FALSE
-
-/obj/structure/machinery/chem_simulator/Initialize()
-	. = ..()
-	dictionary["negative"] = get_negative_chem_properties(TRUE,TRUE)
-	dictionary["neutral"] = get_neutral_chem_properties(TRUE,TRUE)
-	dictionary["positive"] = get_positive_chem_properties(TRUE,TRUE)
-	dictionary["all"] = dictionary["negative"] + dictionary["neutral"] + dictionary["positive"]
 
 /obj/structure/machinery/chem_simulator/power_change()
 	..()
@@ -106,34 +75,33 @@
 		"target" = target,
 		"reference" = reference,
 		"mode" = mode,
-		"target_property" = target_property,
 		"property_costs" = property_costs,
-		"reference_property" = reference_property,
 		"simulating" = simulating,
 		"status_bar" = status_bar,
 		"ready" = ready,
 		"simulating" = simulating,
-		"dictionary" = dictionary,
-		"property_codings" = property_codings
+		"property_codings" = list()
 	)
-	
 	if(target && target.data && target.completed)
-		data["target_property_list"] = target.data.properties
+		data["target_property_list"] = target.data.properties_to_assoc()
+		for(var/datum/chem_property/P in target.data.properties)
+			data["property_codings"][P.name] = P.code
 	if(reference && reference.data && reference.completed)
-		data["reference_property_list"] = reference.data.properties
-	
+		data["reference_property_list"] = reference.data.properties_to_assoc()
+		for(var/datum/chem_property/P in reference.data.properties)
+			data["property_codings"][P.name] = P.code
 	if(target_property)
-		if(dictionary["all"].Find(target_property))
-			data["target_info"] = dictionary["all"][target_property]
+		data["target_property"] = target_property.name
+		data["target_info"] = target_property.description
+		data["target_categories"] = target_property.categories_to_string()
 	else
-		target_info = ""
-	
+		data["target_info"] = ""
 	if(reference_property)
-		if(dictionary["all"].Find(reference_property))
-			data["reference_info"] = dictionary["all"][reference_property]
+		data["reference_property"] = reference_property.name
+		data["reference_info"] = reference_property.description
+		data["reference_categories"] = reference_property.categories_to_string()
 	else
-		reference_info = ""
-
+		data["reference_info"] = ""
 	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if(!ui)
 		ui = new(user, src, ui_key, "chem_simulator.tmpl", "Synthesis Simulator", 800, 480)
@@ -157,7 +125,7 @@
 			if(!user.put_in_active_hand(target))
 				target.forceMove(loc)
 			target = null
-		target_property = ""
+		target_property = null
 		stop_processing()
 		simulating = 0
 		flick("[icon_state]_printing",src)
@@ -166,7 +134,7 @@
 			if(!user.put_in_active_hand(reference))
 				reference.forceMove(loc)
 			reference = null
-		reference_property = ""
+		reference_property = null
 		stop_processing()
 		simulating = 0
 		flick("[icon_state]_printing",src)
@@ -180,13 +148,13 @@
 				mode = MODE_RELATE
 		update_costs()
 	else if(href_list["set_target"])
-		target_property = href_list["set_target"]
+		target_property = target.data.get_property(href_list["set_target"])
 		if(simulating)
 			stop_processing()
 			icon_state = "modifier"
 			simulating = 0
 	else if(href_list["set_reference"])
-		reference_property = href_list["set_reference"]
+		reference_property = reference.data.get_property(href_list["set_reference"])
 		if(simulating)
 			stop_processing()
 			icon_state = "modifier"
@@ -230,15 +198,27 @@
 
 /obj/structure/machinery/chem_simulator/proc/update_costs()
 	property_costs = list()
+	var/only_positive = TRUE
 	if(target && target.data && target.completed)
-		for(var/P in target.data.properties)
+		for(var/datum/chem_property/P in target.data.properties)
+			if(!isPositiveProperty(P))
+				only_positive = FALSE
+			if(P.category & PROPERTY_TYPE_ANOMALOUS)
+				property_costs[P.name] = P.level * 10
+				continue
 			switch(mode)
 				if(MODE_AMPLIFY)
-					property_costs[P] = max(min(target.data.properties[P] - 1, 5), 1)
+					property_costs[P.name] = max(min(P.level - 1, 5), 1)
 				if(MODE_SUPPRESS)
-					property_costs[P] = 2
+					property_costs[P.name] = 2
 				if(MODE_RELATE)
-					property_costs[P] = target.data.properties[P]
+					if(P.rarity < PROPERTY_RARE)
+						property_costs[P.name] = P.level
+					else
+						property_costs[P.name] = P.level * 3
+		if(only_positive)
+			for(var/P in property_costs)
+				property_costs[P] = property_costs[P] + 1
 
 /obj/structure/machinery/chem_simulator/proc/check_ready()
 	if(target)
@@ -264,23 +244,32 @@
 				if(R && R.chemclass >= CHEM_CLASS_SPECIAL && !chemical_identified_list[R.id])
 					status_bar = "UNREGISTERED CATALYSTS DETECTED"
 					return FALSE
-	if(property_costs[target_property] > chemical_research_data.rsc_credits)
-		status_bar = "INSUFFICIENT FUNDS"
-		return FALSE
+		if(target_property)
+			if(property_costs[target_property.name] > chemical_research_data.rsc_credits)
+				status_bar = "INSUFFICIENT FUNDS"
+				return FALSE
+			if(target_property.category & PROPERTY_TYPE_UNADJUSTABLE)
+				status_bar = "TARGET PROPERTY CAN NOT BE SIMULATED"
+				return FALSE
 	if(mode == MODE_RELATE)
-		if(reference && !reference.completed)
-			status_bar = "INCOMPLETE DATA DETECTED IN REFERENCE"
-			return FALSE
 		if(target && target.data.properties.len < 2)
 			status_bar = "TARGET COMPLEXITY IMPROPER FOR RELATION"
 			return FALSE
 		if(reference && target)
-			if(target.data.has_property(reference_property))
-				status_bar = "REFERENCE PROPERTY ALREADY IN TARGET"
+			if(!reference.completed)
+				status_bar = "INCOMPLETE DATA DETECTED IN REFERENCE"
 				return FALSE
-			if(target_property && reference_property && target.data.properties[target_property] != reference.data.properties[reference_property])
-				status_bar = "REFERENCE AND TARGET PROPERTY MUST BE OF EQUAL LEVELS"
-				return FALSE
+			if(reference_property)
+				if(target.data.get_property(reference_property.name))
+					status_bar = "REFERENCE PROPERTY ALREADY IN TARGET"
+					return FALSE
+				if(target_property)
+					if(target_property.level != reference_property.level)
+						status_bar = "REFERENCE AND TARGET PROPERTY MUST BE OF EQUAL LEVELS"
+						return FALSE
+					if(reference_property.category & PROPERTY_TYPE_UNADJUSTABLE)
+						status_bar = "REFERENCE PROPERTY CAN NOT BE SIMULATED"
+						return FALSE
 	status_bar = "READY"
 	return TRUE
 
@@ -301,65 +290,70 @@
 /obj/structure/machinery/chem_simulator/proc/encode_reagent(var/datum/reagent/C)
 	var/datum/reagent/O = new C.original_type //So make the new name based on the Original
 	var/suffix = " "
-	for(var/P in C.properties)
-		if(P in O.properties) //This property was amplified or suppressed
-			if(C.properties[P] > O.properties[P] || C.properties[P] < O.properties[P])
-				suffix += property_codings[P] + "[C.properties[P]]"
+	for(var/datum/chem_property/P in C.properties)
+		if(O.properties.Find(P))
+			var/datum/chem_property/OP = O.get_property(P.name)
+			if(P.level != OP.level)//This property was amplified or suppressed
+				suffix += P.code + "[P.level]"
 		else //This property was added through relation
-			suffix += property_codings[P] + "[C.properties[P]]"
+			suffix += P.code + "[P.level]"
 	return O.name + suffix
 
 /obj/structure/machinery/chem_simulator/proc/amplify()
-	if(target && target_property)
-		var/datum/reagent/generated/C = new /datum/reagent/generated
-		C.make_alike(target.data)
-		//Change the reagent
-		C.properties[target_property] += 1
-		if(dictionary["positive"].Find(target_property))
-			if(C.overdose <= 5)
-				C.overdose = max(C.overdose - 1,1)
-			else
-				C.overdose = max(5, C.overdose - 5)
-			C.overdose_critical = max(10, C.overdose_critical - 5)
-		else if(dictionary["negative"].Find(target_property))
-			C.overdose += 5
-			C.overdose_critical += 5
-		end_simulation(C)
+	if(!target || !target_property)
+		return
+	var/datum/reagent/generated/C = new /datum/reagent/generated
+	C.make_alike(target.data)
+	//Change the reagent
+	C.relevel_property(target_property.name, target_property.level + 1)
+	if(isPositiveProperty(target_property))
+		if(C.overdose <= 5)
+			C.overdose = max(C.overdose - 1,1)
+		else
+			C.overdose = max(5, C.overdose - 5)
+		C.overdose_critical = max(10, C.overdose_critical - 5)
+	else if(isNegativeProperty(target_property))
+		C.overdose += 5
+		C.overdose_critical += 5
+	end_simulation(C)
 
 /obj/structure/machinery/chem_simulator/proc/suppress()
-	if(target && target_property)
-		var/datum/reagent/generated/C = new /datum/reagent/generated
-		C.make_alike(target.data)
-		//Change the reagent
-		C.properties[target_property] = max(C.properties[target_property]-1,0)
-		if(dictionary["positive"].Find(target_property))
-			C.overdose += 5
-			C.overdose_critical += 5
-		else if(dictionary["negative"].Find(target_property))
-			if(C.overdose <= 5)
-				C.overdose = max(C.overdose - 1,1)
-			else
-				C.overdose = max(5, C.overdose - 5)
-			C.overdose_critical = max(10, C.overdose_critical - 5)
-		end_simulation(C)
+	if(!target || !target_property)
+		return
+	var/datum/reagent/generated/C = new /datum/reagent/generated
+	C.make_alike(target.data)
+	//Change the reagent
+	C.relevel_property(target_property.name, max(target_property.level - 1, 0))
+	if(isPositiveProperty(target_property))
+		C.overdose += 5
+		C.overdose_critical += 5
+	else if(isNegativeProperty(target_property))
+		if(C.overdose <= 5)
+			C.overdose = max(C.overdose - 1,1)
+		else
+			C.overdose = max(5, C.overdose - 5)
+		C.overdose_critical = max(10, C.overdose_critical - 5)
+	end_simulation(C)
 
 /obj/structure/machinery/chem_simulator/proc/relate()
-	if(target && reference && target_property && reference_property)
-		var/datum/reagent/generated/C = new /datum/reagent/generated
-		C.make_alike(target.data)
-		//Override the target with the reference
-		C.properties -= target_property
-		C.insert_property(reference_property, reference.data.properties[reference_property])
-		if(dictionary["positive"].Find(reference_property))
-			if(C.overdose <= 5)
-				C.overdose = max(C.overdose - 1,1)
-			else
-				C.overdose = max(5, C.overdose - 5)
-			C.overdose_critical = max(10, C.overdose_critical - 5)
-		else if(dictionary["negative"].Find(reference_property))
-			C.overdose += 5
-			C.overdose_critical += 5
-		end_simulation(C)
+	if(!target || !reference || !target_property || !reference_property)
+		return
+	var/datum/reagent/generated/C = new /datum/reagent/generated
+	C.make_alike(target.data)
+	//Override the target with the reference
+	target_property.update_reagent(C, -1) //-1 makes it undo the update
+	C.remove_property(target_property)
+	C.insert_property(reference_property.name, reference_property.level)
+	if(isPositiveProperty(reference_property))
+		if(C.overdose <= 5)
+			C.overdose = max(C.overdose - 1,1)
+		else
+			C.overdose = max(5, C.overdose - 5)
+		C.overdose_critical = max(10, C.overdose_critical - 5)
+	else if(isNegativeProperty(reference_property))
+		C.overdose += 5
+		C.overdose_critical += 5
+	end_simulation(C)
 
 /obj/structure/machinery/chem_simulator/proc/end_simulation(var/datum/reagent/C)
 	if(!C.original_type)
@@ -374,9 +368,11 @@
 	if(C.overdose < 1) //to prevent chems that start at 0 OD to become un-OD-able
 		C.overdose = 1
 	simulations += C.id //Remember we've simulated this
-	chemical_research_data.update_credits(property_costs[target_property] * -1) //Pay
+	chemical_research_data.update_credits(property_costs[target_property.name] * -1) //Pay
 	//Determined rarity of new components
 	C.gen_tier = max(min(C.chemclass, CHEM_CLASS_COMMON),C.gen_tier,1)
+	if(C.chemclass == CHEM_CLASS_SPECIAL)
+		C.gen_tier = 4
 	//Change a single component of the reaction
 	var/datum/chemical_reaction/generated/R = new /datum/chemical_reaction/generated
 	var/datum/chemical_reaction/generated/assoc_R = chemical_reactions_list[target.data.id]
@@ -400,7 +396,6 @@
 			continue
 		break
 	//Save the reagent
-	C.update_stats()
 	C.generate_description()
 	C.chemclass = CHEM_CLASS_RARE //So that we can always scan this in the future, don't generate defcon, and don't get a loop of making credits
 	chemical_reagents_list[C.id] = C

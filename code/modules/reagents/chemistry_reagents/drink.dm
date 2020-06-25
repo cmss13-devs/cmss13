@@ -17,20 +17,24 @@
 	var/adj_sleepy = 0
 	var/adj_temp = 0
 
-	on_mob_life(mob/living/M)
-		. = ..()
-		if(!.) return
-		M.nutrition += nutriment_factor
-		holder.remove_reagent(src.id, FOOD_METABOLISM)
-		// Drinks should be used up faster than other reagents.
-		holder.remove_reagent(src.id, FOOD_METABOLISM)
-		if(adj_dizzy) M.dizziness = max(0,M.dizziness + adj_dizzy)
-		if(adj_drowsy)	M.drowsyness = max(0,M.drowsyness + adj_drowsy)
-		if(adj_sleepy) M.sleeping = max(0,M.sleeping + adj_sleepy)
-		if(adj_temp)
-			if(M.bodytemperature < 310)//310 is the normal bodytemp. 310.055
-				M.bodytemperature = min(310, M.bodytemperature + (adj_temp * TEMPERATURE_DAMAGE_COEFFICIENT))
-				M.recalculate_move_delay = TRUE
+/datum/reagent/drink/on_mob_life(mob/living/M, alien)
+	//This is all way too snowflake to accurately transition to the property system so it stays here
+	if(alien == IS_YAUTJA || alien == IS_HORROR || !holder)
+		return
+	M.nutrition += nutriment_factor
+	holder.remove_reagent(src.id, FOOD_METABOLISM)
+	// Drinks should be used up faster than other reagents.
+	holder.remove_reagent(src.id, FOOD_METABOLISM)
+	if(adj_dizzy)
+		M.dizziness = max(0,M.dizziness + adj_dizzy)
+	if(adj_drowsy)
+		M.drowsyness = max(0,M.drowsyness + adj_drowsy)
+	if(adj_sleepy)
+		M.sleeping = max(0,M.sleeping + adj_sleepy)
+	if(adj_temp && M.bodytemperature < 310) //310 is the normal bodytemp. 310.055
+		M.bodytemperature = min(310, M.bodytemperature + (adj_temp * TEMPERATURE_DAMAGE_COEFFICIENT))
+		M.recalculate_move_delay = TRUE
+
 /datum/reagent/drink/cold
 	name = "Cold drink"
 	adj_temp = -5
@@ -331,38 +335,27 @@
 	adj_temp = 25
 	chemclass = CHEM_CLASS_UNCOMMON
 
-	on_mob_life(mob/living/M)
-		. = ..()
-		if(!.) return
-		M.make_jittery(5)
-		if(adj_temp > 0)
-			holder.remove_reagent("frostoil", 10*REAGENTS_METABOLISM)
+/datum/reagent/drink/coffee/on_mob_life(mob/living/M)
+	. = ..()
+	if(!.) return
+	M.make_jittery(5)
+	if(adj_temp > 0)
+		holder.remove_reagent("frostoil", 10*REAGENTS_METABOLISM)
 
-		holder.remove_reagent(src.id, 0.1)
-
-	on_overdose(mob/living/M, alien)
-		if(alien == IS_YAUTJA)  return
-		M.apply_damage(1, TOX) //Overdose starts getting bad
-		M.make_jittery(5)
-		if(ishuman(M))
-			if(prob(5))
-				var/mob/living/carbon/human/H = M
-				var/datum/internal_organ/heart/E = H.internal_organs_by_name["heart"]
-				if(E)
-					E.damage += 0.1
-				M.emote(pick("twitch", "blink_r", "shiver"))
-
-	on_overdose_critical(mob/living/M, alien)
-		if(alien == IS_YAUTJA)  return
-		M.apply_damage(2, TOX) //Overdose starts getting bad
-		M.make_jittery(10)
-		M.knocked_out = max(M.knocked_out, 20)
-		if(ishuman(M))
-			if(prob(10))
-				var/mob/living/carbon/human/H = M
-				var/datum/internal_organ/heart/E = H.internal_organs_by_name["heart"]
-				if(E)
-					E.damage += 0.5
+	if(volume > overdose)
+		if(!ishuman(M))
+			return
+		var/mob/living/carbon/human/H = M
+		var/datum/internal_organ/heart/E = H.internal_organs_by_name["heart"]
+		if(prob(5) && E)
+			E.damage += 0.1
+			M.emote(pick("twitch", "blink_r", "shiver"))
+		if(volume > overdose_critical)
+			M.apply_damage(2, TOX) //Overdose starts getting bad
+			M.make_jittery(10)
+			M.knocked_out = max(M.knocked_out, 20)
+			if(prob(10) && E)
+				E.damage += 0.5
 				M.emote(pick("twitch", "blink_r", "shiver"))
 
 /datum/reagent/drink/coffee/icecoffee
@@ -442,44 +435,11 @@
 	reagent_state = LIQUID
 	color = "#d1001c" // rgb: 209, 0, 28
 	chemclass = CHEM_CLASS_RARE
+	custom_metabolism = RAPID_METABOLISM
 
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
-
-/datum/reagent/machosauce/on_overdose(mob/living/M)
-	M.confused = max(M.confused, 20)
-	if(prob(10))
-		M.emote(pick("sigh","grumble","frown"))
-
-/datum/reagent/machosauce/on_overdose_critical(mob/living/M)
-	M.make_jittery(5)
-	M.knocked_out = max(M.knocked_out, 20)
-	if(prob(10))
-		M.emote(pick("cry","moan","pain"))
-
-/datum/reagent/machosauce/on_mob_life(mob/living/M)
-	. = ..()
-	if(!.) return
-	if(!M)
-		M = holder.my_atom
-	if(!data)
-		data = 1
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		if(H.species && !(H.species.flags & (NO_PAIN|IS_SYNTHETIC)) )
-			switch(data)
-				if(1)
-					to_chat(H, "SPAN_WARNING(You feel like your insides are burning!)")
-					M.make_dizzy(10)
-				if(2 to INFINITY)
-					H.apply_effect(4,AGONY,0)
-					if(prob(5))
-						H.visible_message(SPAN_WARNING("[H] [pick("dry heaves!","coughs!","splutters!")]"))
-						to_chat(H, "SPAN_WARNING(You feel like your insides are burning!)")
-						M.make_dizzy(20)
-	holder.remove_reagent("frostoil", 5)
-	holder.remove_reagent(src.id, RAPID_METABOLISM)
-	data++
+	properties = list(PROPERTY_HYPERTHERMIC = 8)
 
 /datum/reagent/drink/cold/tonic
 	name = "Tonic Water"

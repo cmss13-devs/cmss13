@@ -323,7 +323,7 @@
 
 /datum/chemical_reaction/lipozine
 	name = "Lipozine"
-	id = "Lipozine"
+	id = "lipozine"
 	result = "lipozine"
 	required_reagents = list("sodiumchloride" = 1, "ethanol" = 1, "radium" = 1)
 	result_amount = 3

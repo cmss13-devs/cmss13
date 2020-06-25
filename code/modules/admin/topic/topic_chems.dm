@@ -173,25 +173,27 @@
 					if("Add property")
 						response = alert(usr,"A specific property or a specific number of random properties?","Custom reagent [target]","Specific property","Specific number","No more properties")
 					if("Specific property")
-						var/property_type = alert(usr,"What kind?","Custom reagent [target]","Negative","Neutral","Positive")
-						var/list/pool
-						switch(property_type)
-							if("Negative")
-								pool = get_negative_chem_properties(TRUE,TRUE)
-							if("Neutral")
-								pool = get_neutral_chem_properties(TRUE,TRUE)
-							if("Positive")
-								pool = get_positive_chem_properties(TRUE,TRUE)
-							else
-								response = alert(usr,"No? Then..","Custom reagent [target]","Specific property","Specific number","No more properties")
+						response = alert(usr,"Select Input Type","Custom reagent [target]","Manual Input","Select","No more properties")
+					if("Manual Input")
+						var/input = input(usr,"Enter the name of the chemical property you wish to add:")
+						var/datum/chem_property/P = chemical_properties_list[input]
+						if(!P)
+							to_chat(usr,SPAN_WARNING("Property not found, did you spell it right?"))
+							response = "Specific property"
+						else
+							var/level = input(usr,"Choose the level (this is a strength modifier, ought to be between 1-8)") as num
+							R.insert_property(P.name,level)
+							response = alert(usr,"Done. Add more?","Custom reagent [target]","Specific property","Specific number","No more properties")
+					if("Select")
+						var/list/pool = chemical_properties_list
 						pool = sortAssoc(pool)
-						var/property = input(usr,"Which property do you want?") as null|anything in pool
-						var/potency = input(usr,"Choose the potency (this is a strength modifier, ought to be between 1-4)") as num
-						R.insert_property(property,potency)
+						var/P = input(usr,"Which property do you want?") as null|anything in pool
+						var/level = input(usr,"Choose the level (this is a strength modifier, ought to be between 1-8)") as num
+						R.insert_property(P,level)
 						response = alert(usr,"Done. Add more?","Custom reagent [target]","Specific property","Specific number","No more properties")
 					if("Specific number")
 						var/number = input(usr,"How many properties?") as num
-						R.gen_tier = input(usr,"Enter the generation tier. This will affect how potent the properties can be. Must be between 1-4.") as num
+						R.gen_tier = input(usr,"Enter the generation tier. This will affect how potent the properties can be. Must be between 1-5.") as num
 						if(number > 10) number = 10
 						for(var/i=1,i<=number,i++)
 							R.add_property()

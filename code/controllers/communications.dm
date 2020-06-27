@@ -211,6 +211,22 @@ var/global/datum/controller/radio/radio_controller = new()
 /datum/controller/radio
 	var/list/datum/radio_frequency/frequencies = list()
 
+	//Keeping a list of tcomm machines to see which Z level has comms
+	var/list/tcomm_machines_ground = list()
+	var/list/tcomm_machines_almayer = list()
+
+/datum/controller/radio/New()
+	. = ..()
+	spawn(10)
+		//Need to run this after New
+		//Otherwise tcomm machines won't be able to add themselves...
+		connect_tcomms()
+
+/datum/controller/radio/proc/connect_tcomms()
+	for(var/obj/structure/machinery/telecomms/i in telecomms_list)
+		//Calling the proc on the machine to add itself if its conditions are met
+		i.add_tcomm_machine()
+
 /datum/controller/radio/proc/add_object(obj/device as obj, var/new_frequency as num, var/filter = null as text|null)
 	var/f_text = num2text(new_frequency)
 	var/datum/radio_frequency/frequency = frequencies[f_text]
@@ -246,6 +262,26 @@ var/global/datum/controller/radio/radio_controller = new()
 		frequencies[f_text] = frequency
 
 	return frequency
+
+/datum/controller/radio/proc/get_available_tcomm_zs()
+	//Returns lists of Z levels that have comms
+	var/list/target_zs = list(ADMIN_Z_LEVEL) //Admin level always has comms
+	if(tcomm_machines_ground.len > 0)
+		target_zs += SURFACE_Z_LEVEL
+	if(tcomm_machines_almayer.len > 0)
+		target_zs += MAIN_SHIP_Z_LEVEL
+		target_zs += LOW_ORBIT_Z_LEVEL
+	return target_zs
+
+/datum/controller/radio/proc/add_tcomm_machine(var/obj/machine)
+	if(machine.z == SURFACE_Z_LEVEL)
+		addToListNoDupe(tcomm_machines_ground, machine)
+	if(machine.z == MAIN_SHIP_Z_LEVEL)
+		addToListNoDupe(tcomm_machines_almayer, machine)
+
+/datum/controller/radio/proc/remove_tcomm_machine(var/obj/machine)
+	tcomm_machines_ground -= machine
+	tcomm_machines_almayer -= machine
 
 /datum/radio_frequency
 	var/frequency as num

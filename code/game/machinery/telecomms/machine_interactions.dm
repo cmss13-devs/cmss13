@@ -298,7 +298,6 @@
 		switch(href_list["input"])
 
 			if("toggle")
-
 				src.toggled = !src.toggled
 				temp = "<font color = #666633>-% [src] has been [src.toggled ? "activated" : "deactivated"].</font color>"
 				update_power()

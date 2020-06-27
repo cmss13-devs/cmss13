@@ -73,7 +73,7 @@
 
 /obj/item/device/radio/Initialize()
 	. = ..()
-	
+
 	set_frequency(frequency)
 
 	for (var/ch_name in channels)
@@ -265,37 +265,26 @@
 	// ||-- The mob's name identity --||
 	var/displayname = M.name	// grab the display name (name you get when you hover over someone's icon)
 	var/real_name = M.real_name // mob's real name
-	var/mobkey = "none" // player key associated with mob
 	var/voicemask = 0 // the speaker is wearing a voice mask
-	if(M.client)
-		mobkey = M.key // assign the mob's key
-
 
 	var/jobname // the mob's "job"
-
 	// --- Human: use their actual job ---
 	if(ishuman(M))
 		jobname = M:get_assignment()
-
 	// --- Carbon Nonhuman ---
 	else if(iscarbon(M)) // Nonhuman carbon mob
 		jobname = "No id"
-
 	// --- AI ---
 	else if(isAI(M))
 		jobname = "AI"
-
 	// --- Cyborg ---
 	else if(isrobot(M))
 		jobname = "Cyborg"
-
 	// --- Unidentifiable mob ---
 	else
 		jobname = "Unknown"
 
-
 	// --- Modifications to the mob's identity ---
-
 	// The mob is disguising their identity:
 	if(ishuman(M) && M.GetVoice() != real_name)
 		displayname = M.GetVoice()
@@ -311,124 +300,53 @@
 	if(src.ignore_z == TRUE)
 		transmit_z = ADMIN_Z_LEVEL //this area always has comms
 
-  /* ###### Radio headsets can only broadcast through subspace ###### */
-
+	var/list/target_zs = list(transmit_z)
+	/* ###### Intercoms and station-bounced radios ###### */
+	var/filter_type = RADIO_FILTER_TYPE_INTERCOM_AND_BOUNCER
 	if(subspace_transmission)
-		// First, we want to generate a new radio signal
-		var/datum/signal/signal = new
-		signal.transmission_method = 2 // 2 would be a subspace transmission.
-									   // transmission_method could probably be enumerated through #define. Would be neater.
-
-		// --- Finally, tag the actual signal with the appropriate values ---
-		signal.data = list(
-		  // Identity-associated tags:
-			"mob" = M, // store a reference to the mob
-			"mobtype" = M.type, 	// the mob's type
-			"realname" = real_name, // the mob's real name
-			"name" = displayname,	// the mob's display name
-			"job" = jobname,		// the mob's job
-			"key" = mobkey,			// the mob's key
-			"vmessage" = pick(M.speak_emote), // the message to display if the voice wasn't understood
-			"vname" = M.voice_name, // the name to display if the voice wasn't understood
-			"vmask" = voicemask,	// 1 if the mob is using a voice gas mask
-
-			// We store things that would otherwise be kept in the actual mob
-			// so that they can be logged even AFTER the mob is deleted or something
-
-		  // Other tags:
-			"compression" = rand(45,50), // compressed radio signal
-			"message" = message, // the actual sent message
-			"connection" = connection, // the radio connection to use
-			"radio" = src, // stores the radio used for transmission
-			"slow" = 0, // how much to sleep() before broadcasting - simulates net lag
-			"traffic" = 0, // dictates the total traffic sum that the signal went through
-			"type" = 0, // determines what type of radio input it is: normal broadcast
-			"server" = null, // the last server to log this signal
-			"reject" = 0,	// if nonzero, the signal will not be accepted by any broadcasting machinery
-			"level" = transmit_z, // The source's z level
-			"language" = speaking,
-			"verb" = verb
-		)
-		signal.frequency = connection.frequency // Quick frequency set
-
-	  //#### Sending the signal to all subspace receivers ####//
-
-		for(var/obj/structure/machinery/telecomms/receiver/R in telecomms_list)
-			R.receive_signal(signal)
-
-		// Allinone can act as receivers.
-		for(var/obj/structure/machinery/telecomms/allinone/R in telecomms_list)
-			R.receive_signal(signal)
-
-		// Receiving code can be located in Telecommunications.dm
-		return
-
-
-  /* ###### Intercoms and station-bounced radios ###### */
-
-	var/filter_type = 2
+		filter_type = RADIO_FILTER_TYPE_ALL
+		if(!src.ignore_z)
+			target_zs = get_target_zs()
+			if (isnull(target_zs))
+				//We don't have a radio connection on our Z-level, abort!
+				return
 
 	/* --- Intercoms can only broadcast to other intercoms, but bounced radios can broadcast to bounced radios and intercoms --- */
 	if(istype(src, /obj/item/device/radio/intercom))
-		filter_type = 1
+		filter_type = RADIO_FILTER_TYPE_INTERCOM
 
-
-	var/datum/signal/signal = new
-	signal.transmission_method = 2
-
-
-	/* --- Try to send a normal subspace broadcast first */
-
-	signal.data = list(
-
-		"mob" = M, // store a reference to the mob
-		"mobtype" = M.type, 	// the mob's type
-		"realname" = real_name, // the mob's real name
-		"name" = displayname,	// the mob's display name
-		"job" = jobname,		// the mob's job
-		"key" = mobkey,			// the mob's key
-		"vmessage" = pick(M.speak_emote), // the message to display if the voice wasn't understood
-		"vname" = M.voice_name, // the name to display if the voice wasn't understood
-		"vmask" = voicemask,	// 1 if the mob is using a voice gas mas
-
-		"compression" = 0, // uncompressed radio signal
-		"message" = message, // the actual sent message
-		"connection" = connection, // the radio connection to use
-		"radio" = src, // stores the radio used for transmission
-		"slow" = 0,
-		"traffic" = 0,
-		"type" = 0,
-		"server" = null,
-		"reject" = 0,
-		"level" = transmit_z,
-		"language" = speaking,
-		"verb" = verb
-	)
-	signal.frequency = connection.frequency // Quick frequency set
-
-	for(var/obj/structure/machinery/telecomms/receiver/R in telecomms_list)
-		R.receive_signal(signal)
-
-
-	sleep(10) // wait a little...
-
-	if(signal.data["done"] && transmit_z in signal.data["level"])
-		// we're done here.
-		return
-
-	// Oh my god; the comms are down or something because the signal hasn't been broadcasted yet in our level.
-	// Send a mundane broadcast with limited targets:
-
-	//THIS IS TEMPORARY. YEAH RIGHT
-	if(!connection)	return	//~Carn
 
 	Broadcast_Message(connection, M, voicemask, pick(M.speak_emote),
 					  src, message, displayname, jobname, real_name, M.voice_name,
-					  filter_type, signal.data["compression"], list(transmit_z), connection.frequency,verb,speaking)
+					  filter_type, 0, target_zs, connection.frequency, verb, speaking)
 
+
+/obj/item/device/radio/proc/get_target_zs()
+	var/turf/position = get_turf(src)
+	if(isnull(position))
+		return
+
+	var/transmit_z = position.z
+	// If the mob is inside a vehicle interior, send the message from the vehicle's z, not the interior z
+	if(interior_manager && transmit_z == interior_manager.interior_z)
+		var/datum/interior/I = interior_manager.get_interior_by_coords(position.x, position.y)
+		if(I && I.exterior)
+			transmit_z = I.exterior.z
+	if(src.ignore_z == TRUE)
+		transmit_z = ADMIN_Z_LEVEL //this area always has comms
+
+	var/list/target_zs = list(transmit_z)
+
+	if(subspace_transmission)
+		if(!src.ignore_z)
+			if(radio_controller)
+				target_zs = radio_controller.get_available_tcomm_zs()
+				if(!(transmit_z in target_zs))
+					//We don't have a connection ourselves!
+					return null
+	return target_zs
 
 /obj/item/device/radio/hear_talk(mob/M as mob, msg, var/verb = "says", var/datum/language/speaking = null)
-
 	if (broadcasting)
 		if(get_dist(src, M) <= canhear_range)
 			talk_into(M, msg,null,verb,speaking)
@@ -468,7 +386,7 @@
 				receive_z = I.exterior.z
 		if(src.ignore_z == TRUE)
 			receive_z = ADMIN_Z_LEVEL //this area always has comms
-	
+
 		if(!position || !(receive_z in level))
 			return -1
 	if(freq in ANTAG_FREQS)
@@ -492,7 +410,6 @@
 	return canhear_range
 
 /obj/item/device/radio/proc/send_hear(freq, level)
-
 	var/range = receive_range(freq, level)
 	if(range > -1)
 		return get_mobs_in_view(canhear_range, src)

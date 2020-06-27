@@ -28,7 +28,7 @@
 	//We dont want anyone to mess with it
 /obj/structure/machinery/telecomms/relay/preset/ice_colony/attackby()
 	return
-		
+
 /obj/structure/machinery/telecomms/relay/preset/tower
 	name = "TC-4T telecommunications tower"
 	icon = 'icons/obj/structures/machinery/comm_tower2.dmi'
@@ -43,10 +43,16 @@
 	unslashable = FALSE
 	unacidable = TRUE
 	health = 450
+	tcomms_machine = TRUE
 
 /obj/structure/machinery/telecomms/relay/preset/tower/New()
 	..()
 	playsound(src, 'sound/machines/tcomms_on.ogg', 75)
+	add_tcomm_machine()
+
+/obj/structure/machinery/telecomms/relay/preset/tower/add_tcomm_machine()
+	if(powered() && radio_controller)
+		radio_controller.add_tcomm_machine(src)
 
 /obj/structure/machinery/telecomms/relay/preset/tower/powered()
 	return on && health > 0
@@ -69,9 +75,11 @@
 /obj/structure/machinery/telecomms/relay/preset/tower/update_power()
 	if(health <= 0)
 		on = FALSE
+		remove_tcomm_machine()
 	else
 		if(!on)
 			playsound(src, 'sound/machines/tcomms_on.ogg', 75)
+			add_tcomm_machine()
 		on = TRUE
 
 /obj/structure/machinery/telecomms/relay/preset/tower/update_health(var/damage = 0)
@@ -83,7 +91,7 @@
 		desc = "[initial(desc)] [SPAN_WARNING(" It is damaged and needs a welder for repairs!")]"
 	else if(health >= (initial(health) / 2))
 		toggled = TRUE
-	
+
 	if(health < initial(health))
 		desc = "[initial(desc)] [SPAN_WARNING(" It is damaged and needs a welder for repairs!")]"
 	else
@@ -121,7 +129,7 @@
 				update_health(-150)
 				playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
 		return
-		
+
 		if(ismultitool(I))
 			return
 	else return ..()
@@ -355,41 +363,3 @@
 	name = "Message Intercept Mainframe"
 	intercept = 1
 	freq_listening = list(SYND_FREQ, RUS_FREQ)
-
-/obj/structure/machinery/telecomms/allinone/receive_signal(datum/signal/signal)
-
-	if(!on) // has to be on to receive messages
-		return
-
-	if(is_freq_listening(signal)) // detect subspace signals
-
-		signal.data["done"] = 1 // mark the signal as being broadcasted
-		signal.data["compression"] = 0
-
-		// Search for the original signal and mark it as done as well
-		var/datum/signal/original = signal.data["original"]
-		if(original)
-			original.data["done"] = 1
-
-		if(signal.data["slow"] > 0)
-			sleep(signal.data["slow"]) // simulate the network lag if necessary
-
-		/* ###### Broadcast a message using signal.data ###### */
-
-		var/datum/radio_frequency/connection = signal.data["connection"]
-
-		if(connection.frequency in ANTAG_FREQS) // if antag broadcast, just
-			Broadcast_Message(signal.data["connection"], signal.data["mob"],
-							  signal.data["vmask"], signal.data["vmessage"],
-							  signal.data["radio"], signal.data["message"],
-							  signal.data["name"], signal.data["job"],
-							  signal.data["realname"], signal.data["vname"],, signal.data["compression"], list(0), connection.frequency,
-							  signal.data["verb"], signal.data["language"])
-		else
-			if(intercept)
-				Broadcast_Message(signal.data["connection"], signal.data["mob"],
-							  signal.data["vmask"], signal.data["vmessage"],
-							  signal.data["radio"], signal.data["message"],
-							  signal.data["name"], signal.data["job"],
-							  signal.data["realname"], signal.data["vname"], 3, signal.data["compression"], list(0), connection.frequency,
-							  signal.data["verb"], signal.data["language"])

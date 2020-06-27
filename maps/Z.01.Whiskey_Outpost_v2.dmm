@@ -804,9 +804,7 @@
 /turf/open/floor/wood,
 /area/whiskey_outpost/inside/cic)
 "cd" = (
-/obj/structure/machinery/telecomms/relay/preset/ice_colony{
-	idle_power_usage = 100
-	},
+/obj/structure/machinery/telecomms/relay/preset/tower,
 /turf/open/floor{
 	tag = "icon-asteroidfloor (NORTH)";
 	icon_state = "asteroidfloor";

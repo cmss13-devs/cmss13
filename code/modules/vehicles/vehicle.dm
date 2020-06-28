@@ -229,6 +229,17 @@
 		M.pixel_y = initial(buckled_mob.pixel_y)
 		M.old_y = initial(buckled_mob.pixel_y)
 
+/obj/vehicle/afterbuckle(var/mob/M)
+	..()
+	to_world("/obj/vehicle/afterbuckle()")
+	if(seats[VEHICLE_DRIVER] == null)
+		seats[VEHICLE_DRIVER] = M
+
+/obj/vehicle/unbuckle()
+	..()
+	to_world("/obj/vehicle/unbuckle()")
+	seats[VEHICLE_DRIVER] = null
+
 /obj/vehicle/Dispose()
 	SetLuminosity(0)
 	. = ..()
@@ -261,6 +272,6 @@
 	else ..()
 
 /obj/vehicle/souto/relaymove(mob/user, direction)
-	if(user.job == "Souto Man")
-		playsound(src.loc, "smash.ogg", 25, 1)
-		..()
+	if(user.is_mob_incapacitated()) return
+	if(world.time > l_move_time + move_delay)
+		. = step(src, direction)

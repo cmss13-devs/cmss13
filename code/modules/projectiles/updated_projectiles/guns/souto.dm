@@ -28,7 +28,7 @@
 			return
 	if(soutopack)
 		if(!current_mag)
-			return
+			current_mag = soutopack.internal_mag
 		// Check we're actually firing the right fuel tank
 		if(current_mag != soutopack.internal_mag)
 			current_mag = soutopack.internal_mag

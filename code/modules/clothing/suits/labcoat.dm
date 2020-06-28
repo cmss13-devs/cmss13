@@ -11,13 +11,18 @@
 		/obj/item/reagent_container/dropper,
 		/obj/item/reagent_container/syringe,
 		/obj/item/reagent_container/hypospray,
-		/obj/item/device/healthanalyzer,
-		/obj/item/device/flashlight,
 		/obj/item/reagent_container/glass/bottle,
 		/obj/item/reagent_container/glass/beaker,
 		/obj/item/reagent_container/pill,
 		/obj/item/storage/pill_bottle,
 		/obj/item/paper,
+
+		/obj/item/device/flashlight,
+		/obj/item/device/healthanalyzer,
+		/obj/item/device/radio,
+		/obj/item/tank/emergency_oxygen,
+		/obj/item/tool/crowbar,
+		/obj/item/tool/pen,
 	)
 	armor_melee = CLOTHING_ARMOR_NONE
 	armor_bullet = CLOTHING_ARMOR_NONE
@@ -225,7 +230,6 @@
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
 	blood_overlay_type = "armor"
 	siemens_coefficient = 0.7
-	allowed = list (/obj/item/device/flashlight, /obj/item/tank/emergency_oxygen)
 
 /obj/item/clothing/suit/storage/snow_suit/doctor
 	name = "doctor's snow suit"

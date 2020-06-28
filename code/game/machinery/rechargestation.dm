@@ -15,6 +15,7 @@
 	var/icon_update_tick = 0				// Used to update icon only once every 10 ticks
 	unslashable = TRUE
 	unacidable = TRUE
+	can_buckle = TRUE
 
 
 
@@ -185,15 +186,18 @@
 	add_fingerprint(usr)
 	return
 
+/obj/structure/machinery/recharge_station/do_buckle(mob/target, mob/user)
+	return move_mob_inside(target)
+
 /obj/structure/machinery/recharge_station/verb/move_mob_inside(var/mob/living/M)
 	if (!isrobot(M) && !isSynth(M))
-		return
+		return FALSE
 	if (occupant)
-		return
+		return FALSE
 	if (isrobot(M))
 		var/mob/living/silicon/robot/R = M
 		if(isnull(R.cell))
-			return
+			return FALSE
 	M.stop_pulling()
 	if(M && M.client)
 		M.client.perspective = EYE_PERSPECTIVE
@@ -204,7 +208,7 @@
 	src.add_fingerprint(usr)
 	build_icon()
 	update_use_power(1)
-
+	return TRUE
 
 /obj/structure/machinery/recharge_station/verb/move_inside()
 	set category = "Object"

@@ -17,19 +17,26 @@
 	armor_bio = CLOTHING_ARMOR_NONE
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_LOW
-	allowed = list(/obj/item/weapon/gun/,
-	/obj/item/tank/emergency_oxygen,
-	/obj/item/device/flashlight,
-	/obj/item/storage/fancy/cigarettes,
-	/obj/item/tool/lighter,
-	/obj/item/weapon/melee/baton,
-	/obj/item/handcuffs,
-	/obj/item/device/binoculars,
-	/obj/item/attachable/bayonet,
-	/obj/item/storage/belt/gun/m4a3,
-	/obj/item/storage/belt/gun/m44,
-	/obj/item/storage/belt/gun/mateba,
-	/obj/item/storage/belt/gun/smartpistol,)
+	allowed = list(
+		/obj/item/weapon/gun/,
+		/obj/item/storage/fancy/cigarettes,
+		/obj/item/tool/lighter,
+		/obj/item/weapon/melee/baton,
+		/obj/item/handcuffs,
+		/obj/item/device/binoculars,
+		/obj/item/attachable/bayonet,
+		/obj/item/storage/belt/gun/m4a3,
+		/obj/item/storage/belt/gun/m44,
+		/obj/item/storage/belt/gun/mateba,
+		/obj/item/storage/belt/gun/smartpistol,
+		
+		/obj/item/device/flashlight,
+		/obj/item/device/healthanalyzer,
+		/obj/item/device/radio,
+		/obj/item/tank/emergency_oxygen,
+		/obj/item/tool/crowbar,
+		/obj/item/tool/pen,
+	)
 	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_RANK, ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_MEDAL)
 	restricted_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_RANK)
 

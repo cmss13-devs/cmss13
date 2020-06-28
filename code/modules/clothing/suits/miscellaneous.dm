@@ -15,7 +15,16 @@
 	item_state = "bluetag"
 	blood_overlay_type = "armor"
 	flags_armor_protection = BODY_FLAG_CHEST
-	allowed = list (/obj/item/weapon/gun)
+	allowed = list(
+		/obj/item/weapon/gun,
+		
+		/obj/item/device/flashlight,
+		/obj/item/device/healthanalyzer,
+		/obj/item/device/radio,
+		/obj/item/tank/emergency_oxygen,
+		/obj/item/tool/crowbar,
+		/obj/item/tool/pen,
+	)
 	siemens_coefficient = 3.0
 
 /obj/item/clothing/suit/redtag
@@ -25,7 +34,16 @@
 	item_state = "redtag"
 	blood_overlay_type = "armor"
 	flags_armor_protection = BODY_FLAG_CHEST
-	allowed = list (/obj/item/weapon/gun)
+	allowed = list (
+		/obj/item/weapon/gun,
+		
+		/obj/item/device/flashlight,
+		/obj/item/device/healthanalyzer,
+		/obj/item/device/radio,
+		/obj/item/tank/emergency_oxygen,
+		/obj/item/tool/crowbar,
+		/obj/item/tool/pen,
+	)
 	siemens_coefficient = 3.0
 
 /*
@@ -92,7 +110,17 @@
 	icon_state = "judge"
 	item_state = "judge"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_ARMS
-	allowed = list(/obj/item/storage/fancy/cigarettes,/obj/item/spacecash)
+	allowed = list(
+		/obj/item/storage/fancy/cigarettes,
+		/obj/item/spacecash,
+
+		/obj/item/device/flashlight,
+		/obj/item/device/healthanalyzer,
+		/obj/item/device/radio,
+		/obj/item/tank/emergency_oxygen,
+		/obj/item/tool/crowbar,
+		/obj/item/tool/pen,
+	)
 	flags_inv_hide = HIDEJUMPSUIT
 
 /obj/item/clothing/suit/wcoat
@@ -118,7 +146,16 @@
 	item_state = "space_suit_syndicate"
 	desc = "A plastic replica of the syndicate space suit, you'll look just like a real murderous syndicate agent in this! This is a toy, it is not made for use in space!"
 	w_class = SIZE_MEDIUM
-	allowed = list(/obj/item/device/flashlight,/obj/item/tank/emergency_oxygen,/obj/item/toy)
+	allowed = list(
+		/obj/item/toy,
+		
+		/obj/item/device/flashlight,
+		/obj/item/device/healthanalyzer,
+		/obj/item/device/radio,
+		/obj/item/tank/emergency_oxygen,
+		/obj/item/tool/crowbar,
+		/obj/item/tool/pen,
+	)
 	flags_inv_hide = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_HANDS|BODY_FLAG_LEGS|BODY_FLAG_FEET
 

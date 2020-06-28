@@ -234,6 +234,9 @@
 
 	premium = list()
 
+	//Rebuild the vendor's inventory to make our changes apply
+	build_inventory(products)
+
 /obj/structure/machinery/vending/marine/cargo_guns/select_gamemode_equipment(gamemode)
 	return
 
@@ -342,6 +345,9 @@
 		/obj/item/smartgun_powerpack = round(scale * 5),
 		/obj/item/ammo_magazine/smartgun = round(scale * 5)
 	)
+	
+	//Rebuild the vendor's inventory to make our changes apply
+	build_inventory(products)
 
 /obj/structure/machinery/vending/marine/cargo_ammo/select_gamemode_equipment(gamemode)
 	return

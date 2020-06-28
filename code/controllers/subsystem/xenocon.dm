@@ -8,7 +8,9 @@ var/datum/subsystem/inactivity/SSxenocon
 	var/rewarded = FALSE
 
 /datum/subsystem/xenocon/New()
+	. = ..()
 	NEW_SS_GLOBAL(SSxenocon)
+	SSxenocon = src
 
 /datum/subsystem/xenocon/fire(resumed = FALSE)
 	if(rewarded)

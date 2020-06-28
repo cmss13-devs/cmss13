@@ -12,6 +12,7 @@ var/datum/subsystem/defcon/SSdefcon
 	NEW_SS_GLOBAL(SSdefcon)
 	if(!defcon_controller)
 		defcon_controller = new /datum/controller/defcon()
+	SSdefcon = src
 
 /datum/subsystem/defcon/Initialize(start_timeofday)
 	//text2file("DEFCON initialization started","data/defcon_log.txt")

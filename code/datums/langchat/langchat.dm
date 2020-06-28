@@ -42,7 +42,7 @@
 	// tell everyone in language knowers that we have new person that can talk
 	for(var/mob/M in new_language.lang_mob_list)
 		// no client? you should get it when you come back
-		if(!M.client || M.client.prefs.lang_chat_disabled)
+		if(!M.client || !M.client.prefs || M.client.prefs.lang_chat_disabled)
 			continue
 		M.client.images |= lang_image
 		M.client.langchat_list |= lang_image
@@ -81,7 +81,10 @@
 /client/proc/setup_lang_text(var/mob/M)
 	// clear old icons
 	images -= langchat_list
-	langchat_list.Cut()
+	if(langchat_list)
+		langchat_list.Cut()
+	else
+		langchat_list = list()
 	if(prefs && prefs.lang_chat_disabled)
 		return
 	if(!istype(M))
@@ -98,7 +101,10 @@
 /client/proc/unsetup_lang_text()
 	// clear old icons
 	images -= langchat_list
-	langchat_list.Cut()
+	if(langchat_list)
+		langchat_list.Cut()
+	else
+		langchat_list = list()
 
 /client/proc/langchat_add_watcher(language)
 	if(prefs && prefs.lang_chat_disabled)
@@ -109,8 +115,8 @@
 	if(!new_language.langchat_supported)
 		return
 	new_language.lang_mob_list += mob
-	images |= new_language.lang_image_list
-	langchat_list |= new_language.lang_image_list
+	images += new_language.lang_image_list
+	langchat_list += new_language.lang_image_list
 
 /mob/proc/langchat_clear(language)
 	if(!lang_text[language])

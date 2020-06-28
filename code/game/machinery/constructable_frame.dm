@@ -57,7 +57,7 @@
 				playsound(loc, 'sound/items/Deconstruct.ogg', 25, 1)
 				user.visible_message(SPAN_NOTICE("[user] starts adding cables to [src]."),
 				SPAN_NOTICE("You start adding cables to [src]."))
-				if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD) && state == 0)
+				if(do_after(user, 20 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD) && state == 0)
 					if(C && istype(C) && C.use(5))
 						user.visible_message(SPAN_NOTICE("[user] adds cables to [src]."),
 						SPAN_NOTICE("You add cables to [src]."))
@@ -76,7 +76,7 @@
 				if(!skillcheck(user, SKILL_CONSTRUCTION, required_skill))
 					to_chat(user, SPAN_WARNING("You are not trained to build machines..."))
 					return
-				if(!do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+				if(!do_after(user, 20 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					return
 				playsound(src.loc, 'sound/items/Deconstruct.ogg', 25, 1)
 				to_chat(user, SPAN_NOTICE(" You add the circuit board to the frame."))
@@ -113,7 +113,7 @@
 				if(!skillcheck(user, SKILL_ENGINEER, required_dismantle_skill))
 					to_chat(user, SPAN_WARNING("You are not trained to dismantle machines..."))
 					return
-				if(!do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+				if(!do_after(user, 20 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					return
 				playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
 				state = CONSTRUCTION_STATE_BEGIN
@@ -154,7 +154,7 @@
 					return
 				for(var/I in req_components)
 					if(istype(P, text2path(I)) && (req_components[I] > 0))
-						if(!do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+						if(!do_after(user, 20 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 							return
 						playsound(src.loc, 'sound/items/Deconstruct.ogg', 25, 1)
 						if(istype(P, /obj/item/stack/cable_coil))

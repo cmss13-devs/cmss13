@@ -1308,7 +1308,7 @@
 
 		var/msg = "" // Have to use this because there are issues with the to_chat macros and text macros and quotation marks
 		if(to_splint.len)
-			if(do_after(HS, HUMAN_STRIP_DELAY, INTERRUPT_ALL, BUSY_ICON_GENERIC, HT, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
+			if(do_after(HS, HUMAN_STRIP_DELAY * source.get_skill_duration_multiplier(SKILL_MEDICAL), INTERRUPT_ALL, BUSY_ICON_GENERIC, HT, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
 				var/can_reach_splints = TRUE
 				var/amount_removed = 0
 				if(wear_suit && istype(wear_suit,/obj/item/clothing/suit/space))

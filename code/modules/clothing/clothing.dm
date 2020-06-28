@@ -142,7 +142,14 @@
 	name = "suit"
 	var/fire_resist = T0C+100
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS
-	allowed = list(/obj/item/tank/emergency_oxygen)
+	allowed = list(
+		/obj/item/device/flashlight,
+		/obj/item/device/healthanalyzer,
+		/obj/item/device/radio,
+		/obj/item/tank/emergency_oxygen,
+		/obj/item/tool/crowbar,
+		/obj/item/tool/pen,
+	)
 	armor_melee = 0
 	armor_bullet = 0
 	armor_laser = 0

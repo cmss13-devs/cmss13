@@ -344,6 +344,7 @@
 	var/obj/vehicle/souto/V = new
 	V.loc = H.loc
 	V.buckle_mob(H, H)
+
 /*****************************************************************************************************/
 
 /datum/equipment_preset/other/zombie
@@ -474,3 +475,57 @@
 
 	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/holy_hand_grenade, WEAR_L_STORE)
 	H.equip_to_slot_or_del(lantern, WEAR_R_STORE)
+
+/*****************************************************************************************************/
+
+/datum/equipment_preset/other/xeno_cultist
+	name = "Fun - Xeno Cultist"
+	faction = FACTION_XENOMORPH
+	flags = EQUIPMENT_PRESET_EXTRA
+	idtype = /obj/item/card/id/lanyard
+	skills = /datum/skills/civilian/survivor
+
+/datum/equipment_preset/other/xeno_cultist/New()
+	. = ..()
+	access = get_antagonist_pmc_access()
+
+/datum/equipment_preset/other/xeno_cultist/load_gear(mob/living/carbon/human/H)
+	var/backItem = /obj/item/storage/backpack/marine/satchel
+	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
+		backItem = /obj/item/storage/backpack/marine
+
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/chaplain(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(H), WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/chaplain_hoodie(H), WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/chaplain_hood(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(H), WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch(H), WEAR_EAR)
+
+/*****************************************************************************************************/
+
+/datum/equipment_preset/other/xeno_cultist/patriarch
+	name = "Fun - Xeno Cultist Patriarch"
+	uses_special_name = TRUE
+	flags = EQUIPMENT_PRESET_EXTRA
+	skills = /datum/skills/civilian/survivor
+
+/datum/equipment_preset/other/xeno_cultist/patriarch/load_gear(mob/living/carbon/human/H)
+	var/backItem = /obj/item/storage/backpack/marine/satchel
+	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
+		backItem = /obj/item/storage/backpack/marine
+
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/chaplain(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(H), WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/xenos(H), WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/collectable/xenom(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(H), WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch(H), WEAR_EAR)
+
+/datum/equipment_preset/other/xeno_cultist/patriarch/load_name(mob/living/carbon/human/H, var/randomise)
+	H.change_real_name(H, "Patriarch")

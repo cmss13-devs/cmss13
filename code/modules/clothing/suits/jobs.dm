@@ -10,7 +10,19 @@
 	item_state = "apron"
 	blood_overlay_type = "armor"
 	flags_armor_protection = 0
-	allowed = list (/obj/item/reagent_container/spray/plantbgone,/obj/item/device/analyzer/plant_analyzer,/obj/item/seeds,/obj/item/reagent_container/glass/fertilizer,/obj/item/tool/minihoe)
+	allowed = list (
+		/obj/item/reagent_container/spray/plantbgone,
+		/obj/item/device/analyzer/plant_analyzer,
+		/obj/item/seeds,/obj/item/reagent_container/glass/fertilizer,
+		/obj/item/tool/minihoe,
+		
+		/obj/item/device/flashlight,
+		/obj/item/device/healthanalyzer,
+		/obj/item/device/radio,
+		/obj/item/tank/emergency_oxygen,
+		/obj/item/tool/crowbar,
+		/obj/item/tool/pen,
+	)
 //Captain
 /obj/item/clothing/suit/captunic
 	name = "captain's parade tunic"
@@ -54,7 +66,17 @@
 	gas_transfer_coefficient = 0.90
 	permeability_coefficient = 0.50
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
-	allowed = list (/obj/item/tool/kitchen/knife,/obj/item/tool/kitchen/knife/butcher)
+	allowed = list (
+		/obj/item/tool/kitchen/knife,
+		/obj/item/tool/kitchen/knife/butcher,
+		
+		/obj/item/device/flashlight,
+		/obj/item/device/healthanalyzer,
+		/obj/item/device/radio,
+		/obj/item/tank/emergency_oxygen,
+		/obj/item/tool/crowbar,
+		/obj/item/tool/pen,
+	)
 
 //Chef
 /obj/item/clothing/suit/chef/classic
@@ -95,7 +117,23 @@
 	item_state = "det_suit"
 	blood_overlay_type = "coat"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
-	allowed = list(/obj/item/tank/emergency_oxygen, /obj/item/device/flashlight,/obj/item/weapon/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/weapon/melee/baton,/obj/item/handcuffs,/obj/item/storage/fancy/cigarettes,/obj/item/tool/lighter,/obj/item/device/taperecorder)
+	allowed = list(
+		/obj/item/weapon/gun,
+		/obj/item/ammo_magazine,
+		/obj/item/ammo_casing,
+		/obj/item/weapon/melee/baton,
+		/obj/item/handcuffs,
+		/obj/item/storage/fancy/cigarettes,
+		/obj/item/tool/lighter,
+		/obj/item/device/taperecorder,
+		
+		/obj/item/device/flashlight,
+		/obj/item/device/healthanalyzer,
+		/obj/item/device/radio,
+		/obj/item/tank/emergency_oxygen,
+		/obj/item/tool/crowbar,
+		/obj/item/tool/pen,
+	)
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
 	armor_laser = CLOTHING_ARMOR_MEDIUMLOW
@@ -114,7 +152,21 @@
 	desc = "A forensics technician jacket."
 	item_state = "det_suit"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
-	allowed = list(/obj/item/tank/emergency_oxygen, /obj/item/device/flashlight,/obj/item/weapon/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/weapon/melee/baton,/obj/item/handcuffs,/obj/item/device/taperecorder)
+	allowed = list(
+		/obj/item/weapon/gun,
+		/obj/item/ammo_magazine,
+		/obj/item/ammo_casing,
+		/obj/item/weapon/melee/baton,
+		/obj/item/handcuffs,
+		/obj/item/device/taperecorder,
+		
+		/obj/item/device/flashlight,
+		/obj/item/device/healthanalyzer,
+		/obj/item/device/radio,
+		/obj/item/tank/emergency_oxygen,
+		/obj/item/tool/crowbar,
+		/obj/item/tool/pen,
+	)
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
 	armor_laser = CLOTHING_ARMOR_MEDIUMLOW
@@ -143,7 +195,6 @@
 	blood_overlay_type = "armor"
 	allowed = list (
 		/obj/item/device/analyzer,
-		/obj/item/device/flashlight,
 		/obj/item/device/multitool,
 		/obj/item/device/pipe_painter,
 		/obj/item/device/radio,
@@ -153,8 +204,14 @@
 		/obj/item/tool/weldingtool,
 		/obj/item/tool/wirecutters,
 		/obj/item/tool/wrench,
-		/obj/item/tank/emergency_oxygen,
 		/obj/item/clothing/mask/gas,
+		
+		/obj/item/device/flashlight,
+		/obj/item/device/healthanalyzer,
+		/obj/item/device/radio,
+		/obj/item/tank/emergency_oxygen,
+		/obj/item/tool/crowbar,
+		/obj/item/tool/pen,
 	)
 	flags_armor_protection = BODY_FLAG_CHEST
 
@@ -211,8 +268,20 @@
 	icon_state = "fr_jacket_open"
 	item_state = "fr_jacket"
 	blood_overlay_type = "armor"
-	allowed = list(/obj/item/stack/medical, /obj/item/reagent_container/dropper, /obj/item/reagent_container/hypospray, /obj/item/reagent_container/syringe, \
-	/obj/item/device/healthanalyzer, /obj/item/device/flashlight, /obj/item/device/radio, /obj/item/tank/emergency_oxygen)
+	allowed = list(
+		/obj/item/stack/medical,
+		/obj/item/reagent_container/dropper,
+		/obj/item/reagent_container/hypospray,
+		/obj/item/reagent_container/syringe,
+		/obj/item/device/healthanalyzer,
+		
+		/obj/item/device/flashlight,
+		/obj/item/device/healthanalyzer,
+		/obj/item/device/radio,
+		/obj/item/tank/emergency_oxygen,
+		/obj/item/tool/crowbar,
+		/obj/item/tool/pen,
+	)
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
 
 	verb/toggle()

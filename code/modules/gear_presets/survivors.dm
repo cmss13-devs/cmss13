@@ -5,7 +5,7 @@
 	assignment = JOB_SURVIVOR
 	rank = JOB_SURVIVOR
 
-	skills = /datum/skills/civilian
+	skills = /datum/skills/civilian/survivor
 	languages = list("English")
 	paygrade = "C"
 	idtype = /obj/item/card/id/lanyard

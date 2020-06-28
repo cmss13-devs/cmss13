@@ -12,19 +12,19 @@
 	force_wielded = MELEE_FORCE_VERY_STRONG
 	flags_item = TWOHANDED
 
-	update_icon()
-		return
+/obj/item/weapon/melee/twohanded/update_icon()
+	return
 
-	mob_can_equip(mob/user)
-		unwield(user)
-		return ..()
+/obj/item/weapon/melee/twohanded/mob_can_equip(mob/user)
+	unwield(user)
+	return ..()
 
-	dropped(mob/user)
-		..()
-		unwield(user)
+/obj/item/weapon/melee/twohanded/dropped(mob/user)
+	..()
+	unwield(user)
 
-	pickup(mob/user)
-		unwield(user)
+/obj/item/weapon/melee/twohanded/pickup(mob/user)
+	unwield(user)
 
 /obj/item/proc/wield(var/mob/user)
 	if( !(flags_item & TWOHANDED) || flags_item & WIELDED ) return
@@ -105,32 +105,32 @@
 	name = "offhand"
 	flags_item = DELONDROP|TWOHANDED|WIELDED
 
-	unwield(var/mob/user)
-		if(flags_item & WIELDED)
-			flags_item &= ~WIELDED
-			user.temp_drop_inv_item(src)
-			qdel(src)
+/obj/item/weapon/melee/twohanded/offhand/unwield(var/mob/user)
+	if(flags_item & WIELDED)
+		flags_item &= ~WIELDED
+		user.temp_drop_inv_item(src)
+		qdel(src)
 
-	wield()
-		qdel(src) //This shouldn't even happen.
+/obj/item/weapon/melee/twohanded/offhand/wield()
+	qdel(src) //This shouldn't even happen.
 
-	Dispose()
-		..()
-		return GC_HINT_RECYCLE //So we can recycle this garbage.
+/obj/item/weapon/melee/twohanded/offhand/Dispose()
+	..()
+	return GC_HINT_RECYCLE //So we can recycle this garbage.
 
-	dropped(mob/user)
-		..()
-		//This hand should be holding the main weapon. If everything worked correctly, it should not be wielded.
-		//If it is, looks like we got our hand torn off or something.
-		var/obj/item/main_hand = user.get_active_hand()
-		if(main_hand) main_hand.unwield(user)
+/obj/item/weapon/melee/twohanded/offhand/dropped(mob/user)
+	..()
+	//This hand should be holding the main weapon. If everything worked correctly, it should not be wielded.
+	//If it is, looks like we got our hand torn off or something.
+	var/obj/item/main_hand = user.get_active_hand()
+	if(main_hand) main_hand.unwield(user)
 
 	//mute both events. otherwise we are stuck in the loop
-	on_unwield()
-		return 0
+/obj/item/weapon/melee/twohanded/offhand/on_unwield()
+	return 0
 
-	on_dropped()
-		return 0
+/obj/item/weapon/melee/twohanded/offhand/on_dropped()
+	return 0
 /*
  * Fireaxe
  */
@@ -279,7 +279,7 @@
 		remove_from_missing_pred_gear(src)
 	..()
 
-/obj/item/weapon/melee/two_handed/glaive/attack(mob/living/target, mob/living/carbon/human/user)
+/obj/item/weapon/melee/twohanded/glaive/attack(mob/living/target, mob/living/carbon/human/user)
 	. = ..()
 	if(!.)
 		return

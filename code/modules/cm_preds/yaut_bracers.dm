@@ -495,9 +495,9 @@
 		victim.apply_damage(50,BRUTE,"chest")
 		if(victim) victim.gib() //Let's make sure they actually gib.
 		if(explosion_type == 0 && z in SURFACE_Z_LEVELS)
-			cell_explosion(T, 600, 50, null, "yautja self destruct", src) //Dramatically BIG explosion.
+			cell_explosion(T, 600, 50, null, "yautja self destruct", victim) //Dramatically BIG explosion.
 		else
-			cell_explosion(T, 800, 550, null, "yautja self destruct", src)
+			cell_explosion(T, 800, 550, null, "yautja self destruct", victim)
 
 /obj/item/clothing/gloves/yautja/verb/activate_suicide()
 	set name = "Final Countdown (!)"

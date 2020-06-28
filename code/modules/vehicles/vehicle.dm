@@ -231,13 +231,11 @@
 
 /obj/vehicle/afterbuckle(var/mob/M)
 	..()
-	to_world("/obj/vehicle/afterbuckle()")
 	if(seats[VEHICLE_DRIVER] == null)
 		seats[VEHICLE_DRIVER] = M
 
 /obj/vehicle/unbuckle()
 	..()
-	to_world("/obj/vehicle/unbuckle()")
 	seats[VEHICLE_DRIVER] = null
 
 /obj/vehicle/Dispose()

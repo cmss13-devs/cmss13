@@ -133,6 +133,10 @@
 		SSitem_cleanup.start_processing_time = 0
 		SSitem_cleanup.percentage_of_garbage_to_delete = 1.0
 		SSitem_cleanup.wait = MINUTES_1
+		SSitem_cleanup.next_fire = MINUTES_1
+		spawn(0)
+			//Deleting Almayer, for performance!
+			SSitem_cleanup.delete_almayer()
 	if(SSdefcon)
 		//Don't need DEFCON
 		SSdefcon.wait = MINUTES_30
@@ -197,7 +201,7 @@
 
 	if(C[1] == 0)
 		finished = 1 //Alien win
-	else if(world.time > HOURS_1 + lobby_time + initial(spawn_next_wave) + randomovertime)//one hour or so, plus lobby time, plus the setup time marines get
+	else if(world.time > HOURS_1 + MINUTES_20 + lobby_time + initial(spawn_next_wave) + randomovertime)//one hour or so, plus lobby time, plus the setup time marines get
 		finished = 2 //Marine win
 
 /datum/game_mode/whiskey_outpost/proc/disablejoining()
@@ -216,8 +220,8 @@
 	return xeno_count
 
 /datum/game_mode/whiskey_outpost/proc/pickovertime()
-	var/randomtime = ((rand(0,6)+rand(0,6)+rand(0,6)+rand(0,6))*SECONDS_100)
-	var/maxovertime = MINUTES_40
+	var/randomtime = ((rand(0,6)+rand(0,6)+rand(0,6)+rand(0,6))*SECONDS_50)
+	var/maxovertime = MINUTES_20
 	if (randomtime >= maxovertime)
 		return maxovertime
 	return randomtime
@@ -513,13 +517,52 @@
 	var/supply_drop = 0 //0 = Regular ammo, 1 = Rocket, 2 = Smartgun, 3 = Sniper, 4 = Explosives + GL
 
 /obj/item/device/whiskey_supply_beacon/attack_self(mob/user)
-	if(activated)
-		to_chat(user, "Toss it to get supplies!")
-		return
-
 	if(!ishuman(user)) return
 	if(!user.mind)
 		to_chat(user, "It doesn't seem to do anything for you.")
+		return
+
+	playsound(src,'sound/machines/click.ogg', 15, 1)
+
+	var/list/supplies = list(
+		"10x24mm, slugs, buckshot, and 10x20mm rounds",
+		"Explosives and grenades",
+		"Rocket ammo",
+		"Sniper ammo",
+		"Pyrotechnician tanks",
+		"Scout ammo",
+		"Smartgun ammo",
+	)
+
+	var/supply_drop_choice = input(user, "Which supplies to call down?") as null|anything in supplies
+
+	switch(supply_drop_choice)
+		if("10x24mm, slugs, buckshot, and 10x20mm rounds")
+			supply_drop = 0
+			to_chat(usr, SPAN_NOTICE("10x24mm, slugs, buckshot, and 10x20mm rounds will now drop!"))
+		if("Rocket ammo")
+			supply_drop = 1
+			to_chat(usr, SPAN_NOTICE("Rocket ammo will now drop!"))
+		if("Smartgun ammo")
+			supply_drop = 2
+			to_chat(usr, SPAN_NOTICE("Smartgun ammo will now drop!"))
+		if("Sniper ammo")
+			supply_drop = 3
+			to_chat(usr, SPAN_NOTICE("Sniper ammo will now drop!"))
+		if("Explosives and grenades")
+			supply_drop = 4
+			to_chat(usr, SPAN_NOTICE("Explosives and grenades will now drop!"))
+		if("Pyrotechnician tanks")
+			supply_drop = 5
+			to_chat(usr, SPAN_NOTICE("Pyrotechnician tanks will now drop!"))
+		if("Scout ammo")
+			supply_drop = 6
+			to_chat(usr, SPAN_NOTICE("Scout ammo will now drop!"))
+		else
+			return
+
+	if(activated)
+		to_chat(user, "Toss it to get supplies!")
 		return
 
 	if(user.z != 1)
@@ -532,50 +575,16 @@
 	icon_state = "[icon_activated]"
 	playsound(src, 'sound/machines/twobeep.ogg', 15, 1)
 	to_chat(user, "You activate the [src]. Now toss it, the supplies will arrive in a moment!")
+
+	var/mob/living/carbon/C = user
+	if(istype(C) && !C.throw_mode)
+		C.toggle_throw_mode(THROW_MODE_NORMAL)
+
 	sleep(100) //10 seconds should be enough.
 	var/turf/T = get_turf(src) //Make sure we get the turf we're tossing this on.
 	drop_supplies(T, supply_drop)
 	playsound(src,'sound/effects/bamf.ogg', 50, 1)
 	qdel(src)
-	return
-
-/obj/item/device/whiskey_supply_beacon/verb/switch_supplies()
-	set category = "Object"
-	set name = "Change Ammo Drop"
-	set desc = "This will change the supplies that drop."
-	set src in usr
-
-	playsound(src,'sound/machines/click.ogg', 15, 1)
-
-	switch(supply_drop)
-		if(0)
-			supply_drop = 1
-			to_chat(usr, SPAN_NOTICE("Rocket ammo will now drop!"))
-			return
-		if(1)
-			supply_drop = 2
-			to_chat(usr, SPAN_NOTICE("Smartgun ammo will now drop!"))
-			return
-		if(2)
-			supply_drop = 3
-			to_chat(usr, SPAN_NOTICE("Sniper ammo will now drop!"))
-			return
-		if(3)
-			supply_drop = 4
-			to_chat(usr, SPAN_NOTICE("Explosives and grenades will now drop!"))
-			return
-		if(4)
-			supply_drop = 5
-			to_chat(usr, SPAN_NOTICE("Pyrotechnician tanks will now drop!"))
-			return
-		if(5)
-			supply_drop = 6
-			to_chat(usr, SPAN_NOTICE("Scout ammo will now drop!"))
-			return
-		if(6)
-			supply_drop = 0
-			to_chat(usr, SPAN_NOTICE("10x24mm, slugs, buckshot, and 10x20mm rounds will now drop!"))
-			return
 	return
 
 /obj/item/device/whiskey_supply_beacon/proc/drop_supplies(var/turf/T,var/SD)
@@ -613,7 +622,9 @@
 							/obj/item/ammo_magazine/rocket/wp,
 							/obj/item/ammo_magazine/rocket/wp)
 		if(2) //Smartgun supplies
-			spawnitems = list(/obj/item/smartgun_powerpack,
+			spawnitems = list(
+					/obj/item/cell/high,
+					/obj/item/ammo_magazine/smartgun,
 					/obj/item/ammo_magazine/smartgun,
 					/obj/item/ammo_magazine/smartgun,
 				)

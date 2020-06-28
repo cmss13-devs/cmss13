@@ -105,10 +105,6 @@
 	idtype = /obj/item/card/id/silver
 
 /datum/equipment_preset/wo/cmp/load_gear(mob/living/carbon/human/H)
-	var/backItem = /obj/item/storage/backpack/satchel/sec
-	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
-		backItem = /obj/item/storage/backpack/security
-
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom(H), WEAR_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/bridge(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
@@ -116,12 +112,11 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/smartgunner/full(H), WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/smartgunner(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/beret/marine/chiefofficer(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/smartgun_powerpack(H), WEAR_L_HAND)
+	H.equip_to_slot_or_del(new /obj/item/smartgun_powerpack(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/bayonet/full(H), WEAR_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/pmc_m39(H), WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/weapon/gun/smartgun(H), WEAR_J_STORE)
-	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/m56_goggles(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/m56_goggles(H), WEAR_EYES)
 
 /*****************************************************************************************************/
 
@@ -338,9 +333,11 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/medkit/full_advanced(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/surgery/green(H), WEAR_HEAD)
 	//H.equip_to_slot_or_del(new /obj/item/clothing/head/cmo(H), WEAR_HEAD)//2.10.2018 Will want to work on this a bit more, it doesn't quite fit. - Joshuu
-	H.equip_to_slot_or_del(new /obj/item/device/healthanalyzer(H), WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/device/flashlight/pen(H), WEAR_J_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/firstaid/adv(H), WEAR_L_HAND)
+
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/medical/lifesaver/full(H), WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/device/healthanalyzer(H.back), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/device/defibrillator(H.back), WEAR_IN_BACK)
 
 /*****************************************************************************************************/
 
@@ -370,8 +367,10 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/medical(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/medkit/full_advanced(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/surgery/green(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/device/healthanalyzer(H), WEAR_WAIST)
-	H.equip_to_slot_or_del(new /obj/item/storage/firstaid/adv(H), WEAR_L_HAND)
+
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/medical/lifesaver/full(H), WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/device/healthanalyzer(H.back), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/device/defibrillator(H.back), WEAR_IN_BACK)
 
 /*****************************************************************************************************/
 
@@ -401,6 +400,10 @@
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/medical(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/medkit/full_advanced(H), WEAR_L_STORE)
+
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/medical/lifesaver/full(H), WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/device/healthanalyzer(H.back), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/device/defibrillator(H.back), WEAR_IN_BACK)
 
 /*****************************************************************************************************/
 
@@ -590,19 +593,11 @@
 	skills = /datum/skills/smartgunner
 
 /datum/equipment_preset/wo/marine/sg/load_gear(mob/living/carbon/human/H)
-	var/backItem = /obj/item/storage/backpack/marine/satchel
-	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
-		backItem = /obj/item/storage/backpack/marine
-
-	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
-
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/smartgunner(H), WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/smartgun_powerpack(H), WEAR_R_HAND)
-	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/m56_goggles(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/smartgun_powerpack(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/m56_goggles(H), WEAR_EYES)
 	H.equip_to_slot_or_del(new /obj/item/weapon/gun/smartgun(H), WEAR_J_STORE)
-
-	//Backup SMG Weapon
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/smartgunner/full(H), WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full(H), WEAR_L_STORE)

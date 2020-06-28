@@ -395,7 +395,8 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 
 	Dispose()
 		. = ..()
-		EvacuationAuthority.dest_rods -= src
+		if(EvacuationAuthority && EvacuationAuthority.dest_rods)
+			EvacuationAuthority.dest_rods -= src
 
 	lock_or_unlock(lock)
 		playsound(src, 'sound/machines/hydraulics_2.ogg', 25, 1)

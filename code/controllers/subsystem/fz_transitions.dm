@@ -24,6 +24,9 @@ var/list/clones_t = list()
 
 /datum/subsystem/fz_transitions/fire(resumed = FALSE)
 	for(var/obj/effect/projector/P in projectors)
+		if(!P || !P.loc)
+			projectors -= P
+			continue
 		if(!P.loc.clone)
 			P.loc.create_clone(P.vector_x, P.vector_y)
 

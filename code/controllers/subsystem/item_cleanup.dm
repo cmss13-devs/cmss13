@@ -13,6 +13,10 @@ var/global/list/item_cleanup_list = list()
 	//And delete them during the next iteration
 	var/list/items_to_clean_up = list()
 
+/datum/subsystem/item_cleanup/New()
+	..()
+	NEW_SS_GLOBAL(SSitem_cleanup)
+	SSitem_cleanup = src
 
 /datum/subsystem/item_cleanup/fire()
 	set background = 1

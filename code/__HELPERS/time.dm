@@ -21,6 +21,7 @@
 #define SECONDS_30 		300
 #define SECONDS_40 		400
 #define SECONDS_45      450
+#define SECONDS_50      500
 #define SECONDS_55 		550
 #define SECONDS_60 		600
 #define SECONDS_90 		900

@@ -58,7 +58,7 @@
 		var/nade_sound = user.gender == FEMALE ? get_sfx("female_fragout") : get_sfx("male_fragout")
 		playsound(user, nade_sound, 35)
 
-			
+
 	var/mob/living/carbon/C = user
 	if(istype(C) && !C.throw_mode)
 		C.toggle_throw_mode(THROW_MODE_NORMAL)

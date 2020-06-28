@@ -49,12 +49,14 @@
 	rarity = PROPERTY_COMMON
 	category = PROPERTY_TYPE_METABOLITE
 
-/datum/chem_property/neutral/nutritious/process(mob/living/M, var/potency = 1)
-	M.nutrition += holder.nutriment_factor * potency
+/datum/chem_property/neutral/nutritious/pre_process(mob/living/M)
+	if(M.stat == DEAD)
+		return
+	M.nutrition += holder.nutriment_factor * level
 	if(iscarbon(M))
 		var/mob/living/carbon/C = M
 		if(C.blood_volume < BLOOD_VOLUME_NORMAL)
-			C.blood_volume = max(0.2 * potency,BLOOD_VOLUME_NORMAL)
+			C.blood_volume = max(0.2 * level,BLOOD_VOLUME_NORMAL)
 
 /datum/chem_property/neutral/nutritious/update_reagent(var/datum/reagent/R, var/direction = 1)
 	..()

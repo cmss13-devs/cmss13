@@ -230,12 +230,12 @@
 		M.old_y = initial(buckled_mob.pixel_y)
 
 /obj/vehicle/afterbuckle(var/mob/M)
-	..()
+	. = ..()
 	if(seats[VEHICLE_DRIVER] == null)
 		seats[VEHICLE_DRIVER] = M
 
 /obj/vehicle/unbuckle()
-	..()
+	. = ..()
 	seats[VEHICLE_DRIVER] = null
 
 /obj/vehicle/Dispose()

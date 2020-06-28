@@ -78,7 +78,7 @@
 			if(istype(P, /obj/item/tool/crowbar))
 				to_chat(user, "You begin prying out the circuit board other components...")
 				playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
-				if(do_after(user, 60, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+				if(do_after(user, 60 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					to_chat(user, "You finish prying out the components.")
 
 					// Drop all the component stuff

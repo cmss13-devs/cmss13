@@ -11,7 +11,7 @@
 	w_class = SIZE_MEDIUM
 
 	var/ready = 0
-	var/damage_threshold = 8 //This is the maximum non-oxy damage the defibrillator will heal to get a patient above -100, in all categories
+	var/damage_threshold = 12 //This is the maximum non-oxy damage the defibrillator will heal to get a patient above -100, in all categories
 	var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread
 	var/charge_cost = 66 //How much energy is used.
 	var/obj/item/cell/dcell = null
@@ -101,15 +101,11 @@
 	if(user.action_busy) //Currently deffibing
 		return
 
-	var/defib_heal_amt = damage_threshold
-
 	//job knowledge requirement
 	if(user.skills)
 		if(!skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
 			to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 			return
-		else
-			defib_heal_amt *= user.skills.get_skill_level(SKILL_MEDICAL)*0.5 //more healing power when used by a doctor
 
 	if(!ishuman(H) || isYautja(H))
 		to_chat(user, SPAN_WARNING("You can't defibrilate [H]. You don't even know where to put the paddles!"))
@@ -150,7 +146,8 @@
 		SPAN_HELPFUL("You start <b>setting up</b> the paddles on <b>[H]</b>'s chest."))
 	playsound(get_turf(src),'sound/items/defib_charge.ogg', 25, 0) //Do NOT vary this tune, it needs to be precisely 7 seconds
 
-	if(do_after(user, 70 * user.get_skill_duration_multiplier(SKILL_MEDICAL), INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, H, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
+	//Taking square root not to make defibs too fast...
+	if(do_after(user, 70 * sqrt(user.get_skill_duration_multiplier(SKILL_MEDICAL)), INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, H, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
 
 		//Do this now, order doesn't matter
 		sparks.start()
@@ -199,10 +196,10 @@
 			return
 			
 		//At this point, the defibrillator is ready to work
-		H.apply_damage(-defib_heal_amt, BRUTE)
-		H.apply_damage(-defib_heal_amt, BURN)
-		H.apply_damage(-defib_heal_amt, TOX)
-		H.apply_damage(-defib_heal_amt, CLONE)
+		H.apply_damage(-damage_threshold, BRUTE)
+		H.apply_damage(-damage_threshold, BURN)
+		H.apply_damage(-damage_threshold, TOX)
+		H.apply_damage(-damage_threshold, CLONE)
 		H.apply_damage(-H.getOxyLoss(), OXY)
 		H.updatehealth() //Needed for the check to register properly
 

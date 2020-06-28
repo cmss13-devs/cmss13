@@ -123,7 +123,7 @@
 			user.visible_message(SPAN_NOTICE("[user] begins repairing damage to [src]."),
 			SPAN_NOTICE("You begin repairing the damage to [src]."))
 			playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
-			if(do_after(user, 50, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, src))
+			if(do_after(user, 50 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL, BUSY_ICON_FRIENDLY, src))
 				user.visible_message(SPAN_NOTICE("[user] repairs some damage on [src]."),
 				SPAN_NOTICE("You repair [src]."))
 				update_health(-150)

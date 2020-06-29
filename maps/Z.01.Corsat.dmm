@@ -5794,7 +5794,7 @@
 /area/corsat/omega/cargo)
 "apH" = (
 /obj/structure/machinery/computer/telecomms/monitor{
-	req_one_access = list(19,200,104)
+	req_one_access = list(19,106,104)
 	},
 /obj/structure/machinery/light{
 	dir = 8
@@ -7225,7 +7225,7 @@
 "aum" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
 	name = "Administration";
-	req_access = list(200)
+	req_access = list(106)
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	density = 0;
@@ -10584,6 +10584,7 @@
 	},
 /obj/structure/table/almayer,
 /obj/effect/landmark/objective_landmark/close,
+/obj/item/pamphlet/powerloader,
 /turf/open/floor/corsat{
 	dir = 10;
 	icon_state = "brown"
@@ -11203,7 +11204,7 @@
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
 	name = "Firing Range";
-	req_access = list(200);
+	req_access = list(106);
 	use_power = 0
 	},
 /turf/open/floor{
@@ -11537,7 +11538,7 @@
 "aET" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
 	name = "Administration";
-	req_access = list(200)
+	req_access = list(106)
 	},
 /turf/open/floor/corsat{
 	icon_state = "officesquares"
@@ -12361,7 +12362,7 @@
 /obj/structure/machinery/door/airlock/almayer/command{
 	dir = 1;
 	name = "Data Laboratory";
-	req_access = list(200,102,103)
+	req_access = list(106,102,103)
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat{
@@ -12473,7 +12474,7 @@
 /obj/structure/machinery/door/airlock/almayer/command{
 	dir = 1;
 	name = "Administration";
-	req_access = list(200)
+	req_access = list(106)
 	},
 /turf/open/floor/corsat{
 	icon_state = "officesquares"
@@ -12519,7 +12520,7 @@
 "aHh" = (
 /obj/structure/machinery/door/airlock/almayer/command{
 	name = "Administration";
-	req_access = list(200)
+	req_access = list(106)
 	},
 /turf/open/floor/corsat{
 	icon_state = "officesquares"
@@ -12528,7 +12529,7 @@
 "aHi" = (
 /obj/structure/machinery/door/airlock/almayer/command{
 	name = "Administration";
-	req_access = list(200)
+	req_access = list(106)
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -14911,7 +14912,7 @@
 /obj/structure/machinery/door/airlock/almayer/command{
 	dir = 1;
 	name = "Administration";
-	req_access = list(200)
+	req_access = list(106)
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat{
@@ -14922,7 +14923,7 @@
 /obj/structure/machinery/door/airlock/almayer/command{
 	dir = 1;
 	name = "Administration";
-	req_access = list(200)
+	req_access = list(106)
 	},
 /turf/open/floor/corsat{
 	icon_state = "officesquares"
@@ -14950,7 +14951,7 @@
 "aNu" = (
 /obj/structure/machinery/door/airlock/almayer/command{
 	name = "Data Laboratory";
-	req_access = list(200,102,103)
+	req_access = list(106,102,103)
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -18825,7 +18826,7 @@
 "aWT" = (
 /obj/structure/machinery/faxmachine{
 	density = 0;
-	req_one_access = list(200)
+	req_one_access = list(106)
 	},
 /obj/structure/table/woodentable/fancy,
 /obj/effect/landmark/objective_landmark/far,
@@ -18990,7 +18991,7 @@
 /area/corsat/omega/airlocknorth)
 "aXo" = (
 /obj/structure/machinery/computer/telecomms/server{
-	req_one_access = list(19,200,102)
+	req_one_access = list(19,106,102)
 	},
 /turf/open/floor/almayer{
 	icon_plating = "tcomms";
@@ -28902,7 +28903,7 @@
 /obj/structure/machinery/door/airlock/almayer/command{
 	dir = 1;
 	name = "Gamma Director's Office";
-	req_access = list(200)
+	req_access = list(106)
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/wood,
@@ -28971,7 +28972,7 @@
 /obj/structure/machinery/door/airlock/almayer/command{
 	dir = 1;
 	name = "Omega Director's Office";
-	req_access = list(200)
+	req_access = list(106)
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/wood,
@@ -28980,7 +28981,7 @@
 /obj/structure/machinery/door/airlock/almayer/command{
 	dir = 1;
 	name = "Theta Director's Office";
-	req_access = list(200)
+	req_access = list(106)
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/wood,
@@ -28989,7 +28990,7 @@
 /obj/structure/machinery/door/airlock/almayer/command{
 	dir = 1;
 	name = "Sigma Director's Office";
-	req_access = list(200)
+	req_access = list(106)
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/wood,
@@ -34085,6 +34086,7 @@
 	network = list("gamma")
 	},
 /obj/effect/landmark/objective_landmark/close,
+/obj/item/pamphlet/powerloader,
 /turf/open/floor/corsat{
 	icon_state = "brown"
 	},
@@ -34264,6 +34266,7 @@
 /area/corsat/omega/cargo)
 "bOC" = (
 /obj/structure/table/almayer,
+/obj/item/pamphlet/powerloader,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -34627,6 +34630,7 @@
 "bPw" = (
 /obj/structure/table/almayer,
 /obj/effect/landmark/objective_landmark/close,
+/obj/item/pamphlet/powerloader,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -34703,6 +34707,7 @@
 /obj/item/paper_bin,
 /obj/item/tool/pen,
 /obj/effect/landmark/objective_landmark/close,
+/obj/item/pamphlet/powerloader,
 /turf/open/floor/corsat{
 	icon_state = "brown"
 	},
@@ -35884,7 +35889,7 @@
 "bTw" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "Testing Grounds";
-	req_access = list(200);
+	req_access = list(106);
 	use_power = 0
 	},
 /turf/open/floor{
@@ -38176,7 +38181,7 @@
 /obj/structure/machinery/door_control{
 	id = "OmegaO";
 	name = "Dome Lockdown";
-	req_one_access = list(200,103);
+	req_one_access = list(106,103);
 	use_power = 0
 	},
 /turf/open/floor/corsat{
@@ -39102,7 +39107,7 @@
 /area/corsat/sigma/hangar/checkpoint)
 "cMw" = (
 /obj/structure/machinery/computer/telecomms/traffic{
-	req_one_access = list(19,200,102)
+	req_one_access = list(19,106,102)
 	},
 /turf/open/floor/almayer{
 	icon_plating = "tcomms";
@@ -42534,6 +42539,13 @@
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
 /turf/open/gm/grass,
 /area/corsat/gamma/foyer)
+"flt" = (
+/obj/vehicle/train/cargo/trolley,
+/obj/item/pamphlet/powerloader,
+/turf/open/floor/corsat{
+	icon_state = "cargo"
+	},
+/area/corsat/gamma/cargo)
 "flB" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
@@ -46037,7 +46049,7 @@
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
 	name = "Firing Range";
-	req_one_access = list(200,102,103);
+	req_one_access = list(106,102,103);
 	req_access = null;
 	use_power = 0
 	},
@@ -48475,6 +48487,13 @@
 	icon_state = "tan"
 	},
 /area/corsat/gamma/residential/west)
+"jsK" = (
+/obj/item/pamphlet/powerloader,
+/turf/open/floor/corsat{
+	dir = 8;
+	icon_state = "brown"
+	},
+/area/corsat/gamma/cargo)
 "jtY" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -49862,7 +49881,7 @@
 /obj/structure/machinery/door/airlock/almayer/command{
 	dir = 1;
 	name = "Hangar Office";
-	req_access = list(200)
+	req_access = list(106)
 	},
 /turf/open/floor/corsat{
 	icon_state = "retrosquares"
@@ -51133,6 +51152,12 @@
 	icon_state = "squareswood"
 	},
 /area/corsat/gamma/rnr/arcade)
+"lqX" = (
+/obj/item/pamphlet/powerloader,
+/turf/open/floor/corsat{
+	icon_state = "plate"
+	},
+/area/corsat/sigma/cargo)
 "lsc" = (
 /turf/open/floor/corsat{
 	dir = 4;
@@ -53577,6 +53602,13 @@
 	icon_state = "retrosquareslight"
 	},
 /area/corsat/gamma/biodome/complex)
+"ncW" = (
+/obj/item/pamphlet/powerloader,
+/turf/open/floor/corsat{
+	dir = 4;
+	icon_state = "brown"
+	},
+/area/corsat/omega/cargo)
 "nde" = (
 /obj/structure/barricade/handrail{
 	dir = 8
@@ -53901,7 +53933,7 @@
 "nqd" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
 	name = "Administration";
-	req_one_access = list(200,104);
+	req_one_access = list(106,104);
 	req_access = null
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -58795,7 +58827,7 @@
 /obj/structure/machinery/door/airlock/almayer/command{
 	dir = 1;
 	name = "Hangar Office";
-	req_access = list(200)
+	req_access = list(106)
 	},
 /turf/open/floor/corsat{
 	icon_state = "retrosquares"
@@ -61395,7 +61427,7 @@
 /obj/structure/machinery/door/airlock/almayer/command{
 	dir = 1;
 	name = "Administration";
-	req_access = list(200)
+	req_access = list(106)
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat{
@@ -63056,7 +63088,7 @@
 "tPk" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
 	name = "Administration";
-	req_access = list(200)
+	req_access = list(106)
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	density = 0;
@@ -67373,6 +67405,14 @@
 	icon_state = "green"
 	},
 /area/corsat/gamma/medbay/morgue)
+"wRH" = (
+/obj/vehicle/train/cargo/trolley,
+/obj/effect/landmark/objective_landmark/close,
+/obj/item/pamphlet/powerloader,
+/turf/open/floor/corsat{
+	icon_state = "cargo"
+	},
+/area/corsat/sigma/cargo)
 "wSb" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /turf/open/gm/dirtgrassborder{
@@ -85750,7 +85790,7 @@ bOx
 aVs
 bOw
 bOw
-sbJ
+ncW
 bOF
 ahn
 fIY
@@ -95187,7 +95227,7 @@ vMP
 afg
 agK
 ajg
-hqA
+jsK
 faT
 alj
 awC
@@ -95681,7 +95721,7 @@ aAy
 aAy
 alj
 awC
-awJ
+flt
 awF
 lzc
 ann
@@ -128829,7 +128869,7 @@ oHs
 cOf
 boR
 ajx
-boR
+wRH
 ajx
 ajx
 ajx
@@ -129569,7 +129609,7 @@ anZ
 aor
 aUh
 bJk
-anZ
+lqX
 oHs
 anZ
 wrR

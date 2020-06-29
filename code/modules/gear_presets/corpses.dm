@@ -49,7 +49,16 @@
 
 /datum/equipment_preset/corpse/realpirate
 	name = "Corpse - Pirate"
-	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_LOGISTICS, ACCESS_CIVILIAN_ENGINEERING, ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_BRIG, ACCESS_CIVILIAN_MEDBAY,ACCESS_ILLEGAL_PIRATE)
+	access = list(
+		ACCESS_CIVILIAN_PUBLIC,
+		ACCESS_CIVILIAN_LOGISTICS,
+		ACCESS_CIVILIAN_ENGINEERING,
+		ACCESS_CIVILIAN_RESEARCH,
+		ACCESS_CIVILIAN_BRIG,
+		ACCESS_CIVILIAN_MEDBAY,
+		ACCESS_CIVILIAN_COMMAND,
+		ACCESS_ILLEGAL_PIRATE,
+	)
 
 /datum/equipment_preset/corpse/realpirate/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/pirate(H), WEAR_BODY)
@@ -71,7 +80,15 @@
 
 /datum/equipment_preset/corpse/russian
 	name = "Corpse - Russian"
-	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_LOGISTICS, ACCESS_CIVILIAN_ENGINEERING, ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_BRIG, ACCESS_CIVILIAN_MEDBAY)
+	access = list(
+		ACCESS_CIVILIAN_PUBLIC,
+		ACCESS_CIVILIAN_LOGISTICS,
+		ACCESS_CIVILIAN_ENGINEERING,
+		ACCESS_CIVILIAN_RESEARCH,
+		ACCESS_CIVILIAN_BRIG,
+		ACCESS_CIVILIAN_MEDBAY,
+		ACCESS_CIVILIAN_COMMAND,
+	)
 
 /datum/equipment_preset/corpse/russian
 
@@ -197,7 +214,7 @@
 	name = "Corpse - Security"
 	assignment = "Deputy"
 	xenovictim = TRUE
-	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_BRIG, ACCESS_CIVILIAN_MEDBAY)
+	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_BRIG, ACCESS_CIVILIAN_MEDBAY, ACCESS_CIVILIAN_COMMAND)
 
 /datum/equipment_preset/corpse/security/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/PMC(H), WEAR_BODY)
@@ -217,6 +234,7 @@
 		ACCESS_CIVILIAN_RESEARCH,
 		ACCESS_CIVILIAN_BRIG,
 		ACCESS_CIVILIAN_MEDBAY,
+		ACCESS_CIVILIAN_COMMAND,
 	)
 
 /datum/equipment_preset/corpse/security/marshal/load_gear(mob/living/carbon/human/H)
@@ -239,6 +257,7 @@
 		ACCESS_CIVILIAN_RESEARCH,
 		ACCESS_CIVILIAN_BRIG,
 		ACCESS_CIVILIAN_MEDBAY,
+		ACCESS_CIVILIAN_COMMAND,
 	)
 
 /datum/equipment_preset/corpse/security/lawyer/load_gear(mob/living/carbon/human/H)
@@ -259,6 +278,7 @@
 		ACCESS_CIVILIAN_RESEARCH,
 		ACCESS_CIVILIAN_BRIG,
 		ACCESS_CIVILIAN_MEDBAY,
+		ACCESS_CIVILIAN_COMMAND,
 	)
 
 /datum/equipment_preset/corpse/prison_security/load_gear(mob/living/carbon/human/H)
@@ -281,6 +301,7 @@
 		ACCESS_CIVILIAN_RESEARCH,
 		ACCESS_CIVILIAN_BRIG,
 		ACCESS_CIVILIAN_MEDBAY,
+		ACCESS_CIVILIAN_COMMAND,
 	)
 
 /datum/equipment_preset/corpse/bridgeofficer/load_gear(mob/living/carbon/human/H)
@@ -303,6 +324,7 @@
 		ACCESS_CIVILIAN_RESEARCH,
 		ACCESS_CIVILIAN_BRIG,
 		ACCESS_CIVILIAN_MEDBAY,
+		ACCESS_CIVILIAN_COMMAND,
 		ACCESS_WY_PMC_GREEN,
 		ACCESS_WY_PMC_ORANGE,
 		ACCESS_WY_PMC_RED,
@@ -332,6 +354,7 @@
 		ACCESS_CIVILIAN_RESEARCH,
 		ACCESS_CIVILIAN_BRIG,
 		ACCESS_CIVILIAN_MEDBAY,
+		ACCESS_CIVILIAN_COMMAND,
 	)
 
 /datum/equipment_preset/corpse/commander/load_gear(mob/living/carbon/human/H)
@@ -357,6 +380,7 @@
 		ACCESS_CIVILIAN_RESEARCH,
 		ACCESS_CIVILIAN_BRIG,
 		ACCESS_CIVILIAN_MEDBAY,
+		ACCESS_CIVILIAN_COMMAND,
 		ACCESS_WY_PMC_GREEN,
 		ACCESS_WY_PMC_ORANGE,
 		ACCESS_WY_PMC_RED,

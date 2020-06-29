@@ -42,6 +42,7 @@ most of them are tied into map-placed objects. This should be reworked in the fu
 #define ACCESS_CIVILIAN_RESEARCH	103
 #define ACCESS_CIVILIAN_BRIG		104
 #define ACCESS_CIVILIAN_MEDBAY		105
+#define ACCESS_CIVILIAN_COMMAND		106
 
 //Special access levels. Should be alright to modify these.
 #define ACCESS_WY_PMC_GREEN 		180

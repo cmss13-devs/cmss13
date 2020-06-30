@@ -164,10 +164,6 @@
 	// Update bioluminescence.
 	if(seed.biolum)
 		SetLuminosity(1+round(seed.potency/10))
-		if(seed.biolum_colour)
-			l_color = seed.biolum_colour
-		else
-			l_color = null
 		return
 	else
 		SetLuminosity(0)

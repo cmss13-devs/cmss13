@@ -427,10 +427,6 @@
 	if(seed)
 		if(seed.biolum)
 			SetLuminosity(round(seed.potency/10))
-			if(seed.biolum_colour)
-				l_color = seed.biolum_colour
-			else
-				l_color = null
 			return
 
 	SetLuminosity(0)

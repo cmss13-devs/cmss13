@@ -168,7 +168,8 @@
 		statclick = new/obj/effect/statclick/debug("Initializing...", src)
 
 	if(can_fire && !(flags & SS_NO_FIRE))
-		msg = "[round(cost,1)]ms|[round(tick_usage,1)]%|[round(ticks,0.1)]\t[msg]"
+		var/cost_to_2s = cost * 20 / wait
+		msg = "[round(cost_to_2s,1)]ms|[round(tick_usage,1)]%|[round(ticks,0.1)]\t[msg]"
 	else
 		msg = "OFFLINE\t[msg]"
 

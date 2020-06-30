@@ -26,6 +26,8 @@
 	if(source_mob)
 		last_damage_mob = source_mob
 
+	last_hit_time = world.time
+
 	if (damage >= health && damage >= EXPLOSION_THRESHOLD_GIB)
 		var/oldloc = loc
 		gib(source)
@@ -122,6 +124,9 @@
 			adjustFireLoss(damage)
 	
 	updatehealth()
+
+	last_hit_time = world.time
+	
 	return 1
 
 #define XENO_ARMOR_BREAK_PASS_TIME SECONDS_1 / 2

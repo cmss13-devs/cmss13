@@ -94,6 +94,13 @@
 
 	var/acid_splash_cooldown = SECONDS_3 //Time it takes between acid splash retaliate procs. Variable per caste, for if we want future castes that are acid bombs
 
+	// regen vars
+
+	var/heal_delay_time = 0 SECONDS
+	var/heal_resting = 1
+	var/heal_standing = 0.4
+	var/heal_knocked_out = 0.33
+
 	/////////////////////////////////////////////////////////////////////////
 	//
 	//    Scalars

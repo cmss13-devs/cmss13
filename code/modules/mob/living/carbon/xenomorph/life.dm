@@ -329,18 +329,14 @@ updatehealth()
 			plasma_stored += plasma_gain * plasma_max / 100
 			if(recovery_aura)
 				plasma_stored += round(plasma_gain * plasma_max / 100 * recovery_aura/4) //Divided by four because it gets massive fast. 1 is equivalent to weed regen! Only the strongest pheromones should bypass weeds
-			if(health < maxHealth && !hardcore)
-				//var/datum/hive_status/hive = hive_datum[hivenumber]
-				//if(caste.innate_healing || !hive.living_xeno_queen || hive.living_xeno_queen.loc.z == loc.z)
+			if(health < maxHealth && !hardcore && last_hit_time + caste.heal_delay_time <= world.time)
 				if(lying || resting)
-					if(health > -100 && health < 0) //Unconscious
-						XENO_HEAL_WOUNDS(0.33,recoveryActual) //Healing is much slower. Warding pheromones make up for the rest if you're curious
+					if(health < 0) //Unconscious
+						XENO_HEAL_WOUNDS(caste.heal_knocked_out,recoveryActual) //Healing is much slower. Warding pheromones make up for the rest if you're curious
 					else
-						XENO_HEAL_WOUNDS(1,recoveryActual)
-				else if(isXenoCrusher(src) || isXenoRavager(src))
-					XENO_HEAL_WOUNDS(0.66,recoveryActual)
-				else
-					XENO_HEAL_WOUNDS(0.40,recoveryActual) //Healing nerf if standing
+						XENO_HEAL_WOUNDS(caste.heal_resting,recoveryActual)
+				else 
+					XENO_HEAL_WOUNDS(caste.heal_standing,recoveryActual)				
 				updatehealth()
 
 			if(armor_integrity < armor_integrity_max && armor_deflection > 0 && world.time > armor_integrity_last_damage_time + XENO_ARMOR_REGEN_DELAY)

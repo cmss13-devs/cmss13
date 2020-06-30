@@ -340,6 +340,10 @@
 					new /obj/item/ore(pick(turfs))
 
 /turf/proc/ceiling_desc(mob/user)
+
+	if (is_turf_protected_by_pylon(src))
+		to_chat(user, "The ceiling above is made of resin.")
+
 	var/area/A = get_area(src)
 	switch(A.ceiling)
 		if(CEILING_NONE)

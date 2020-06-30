@@ -5,7 +5,7 @@
 	individual_only = TRUE
 	caste_whitelist = list("Warrior")
 	mutator_actions_to_remove = list("Fling","Lunge")
-	mutator_actions_to_add = list(/datum/action/xeno_action/activable/jab)
+	mutator_actions_to_add = list(/datum/action/xeno_action/activable/jab, /datum/action/xeno_action/onclick/toggle_agility)
 	keystone = TRUE
 
 /datum/xeno_mutator/boxer/apply_mutator(datum/mutator_set/individual_mutators/MS)

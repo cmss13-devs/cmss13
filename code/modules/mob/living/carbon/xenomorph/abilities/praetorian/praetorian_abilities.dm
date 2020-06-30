@@ -115,7 +115,8 @@
 
 	// Config
 	var/max_distance = 5
-	var/windup = 5
+	var/windup = 3
+	var/knockdown_power = 1
 
 
 // This one is more tightly coupled than I'd like, but oh well

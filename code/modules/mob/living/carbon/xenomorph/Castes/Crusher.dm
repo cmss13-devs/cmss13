@@ -232,7 +232,7 @@
 	if (!ishuman(A))
 		return
 
-	new /datum/effects/xeno_slow(A, bound_xeno, , , 25)
+	new /datum/effects/xeno_slow(A, bound_xeno, , , 20)
 
 	var/damage = bound_xeno.melee_damage_upper * aoe_slash_damage_reduction
 

@@ -4,7 +4,7 @@
 	name = XENO_STRUCTURE_PYLON
 	desc = "A towering spike of resin. Its base pulsates with large tendrils."
 	icon_state = "pylon"
-	health = 1200
+	health = 1800
 	luminosity = 2
 	var/cover_range = WEED_RANGE_PYLON
 	var/ceiling_buff_amount = CEILING_RESIN
@@ -74,7 +74,7 @@
 	name = XENO_STRUCTURE_CORE
 	desc = "A giant pulsating mound of mass. It looks very much alive."
 	icon_state = "core"
-	health = 1500
+	health = 1200
 	luminosity = 4
 	cover_range = WEED_RANGE_CORE
 	node_type = /obj/effect/alien/weeds/node/pylon/core
@@ -100,3 +100,13 @@
 		linked_hive.hive_location = null
 
 	. = ..()
+
+// Kinda expensive check to see if a turf is protected by a pylon
+// If you think of a better way to do this feel free, but it's kinda tricky
+/proc/is_turf_protected_by_pylon(var/turf/T)
+	for (var/datum/hive_status/HS in hive_datum)
+		for (var/P in HS.hive_structures[XENO_STRUCTURE_PYLON])
+			if (get_dist(P, T) <= XENO_HIVE_PYLON_PROTECTION_RANGE)
+				return TRUE
+
+	return FALSE

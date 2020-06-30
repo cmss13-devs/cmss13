@@ -242,6 +242,7 @@ We don't really use the higher values, but they're there.
 	var/lshort_shell_range = 9
 	var/short_shell_range = 11
 	var/hshort_shell_range = 13
+	var/moderate_shell_range = 16
 	var/lnorm_shell_range = 19
 	var/norm_shell_range = 22
 	var/hnorm_shell_range = 25
@@ -282,7 +283,7 @@ We don't really use the higher values, but they're there.
 	var/weapon_settle_scatter_multiplier = 2 //How quickly scatter settles after firing.
 
 	//roundstart stuff
-	var/xeno_number_divider = 5 //What weight do we want to give towards considering roundstart survivors & xenos from readied players.
+	var/xeno_number_divider = 4 //What weight do we want to give towards considering roundstart survivors & xenos from readied players.
 	var/surv_number_divider = 20
 
 	var/datum/combat_configuration/marine_melee //This is all used in the new fancy xeno & marine armor code. See Neth's documentation on what these do.

@@ -217,7 +217,8 @@
 		facing = get_dir(T, A)
 		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/brown(T, windup)
 
-	if(!do_after(X, windup, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
+	// Need a more granular do_after
+	if(!do_after(X, windup, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, null, null, FALSE, 1, FALSE, 1))
 		to_chat(X, SPAN_XENOWARNING("You cancel your stomp."))
 
 		for (var/obj/effect/xenomorph/xeno_telegraph/XT in telegraph_atom_list)
@@ -231,7 +232,7 @@
 	for (var/turf/target_turf in turflist)
 		for (var/mob/living/carbon/human/H in target_turf)
 			to_chat(H, SPAN_XENOHIGHDANGER("You are knocked over as the ground shakes underneath you!"))
-			H.KnockDown(1)
+			H.KnockDown(knockdown_power)
 			new /datum/effects/xeno_freeze(H, X, , , 20)
 			
 	apply_cooldown()
@@ -259,7 +260,7 @@
 	if (istype(BD))
 		BD.next_slash_buffed = TRUE
 
-	X.next_move = world.time + 2 // Autoattack reset
+	X.next_move = world.time + 1 // Autoattack reset
 	to_chat(X, SPAN_XENOHIGHDANGER("Your click delay has been reset and your next slash will deal additional damage!"))
 
 

@@ -132,7 +132,7 @@
 	category = PROPERTY_TYPE_STIMULANT
 
 /datum/chem_property/positive/musclestimulating/process(mob/living/M, var/potency = 1)
-	M.reagent_move_delay_modifier -= 0.5 * potency
+	M.reagent_move_delay_modifier -= 0.25 * potency
 	M.recalculate_move_delay = TRUE
 	if(prob(10))
 		M.emote(pick("twitch","blink_r","shiver"))

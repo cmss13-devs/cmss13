@@ -18,10 +18,10 @@
 	
 	var/mob/living/carbon/Xenomorph/Praetorian/P = MS.xeno
 	
-	P.armor_modifier += XENO_ARMOR_MOD_SMALL
-	P.explosivearmor_modifier += XENO_EXPOSIVEARMOR_MOD_LARGE
+	P.armor_modifier += XENO_ARMOR_MOD_VERYSMALL
 	P.damage_modifier -= XENO_DAMAGE_MOD_SMALL
-	P.speed_modifier += XENO_SPEED_MODIFIER_SLOWEST
+	P.explosivearmor_modifier += XENO_EXPOSIVEARMOR_MOD_LARGE
+	P.speed_modifier += XENO_SPEED_MODIFIER_SLOWER
 	P.plasma_types = list(PLASMA_NEUROTOXIN, PLASMA_CHITIN)
 	
 	mutator_update_actions(P)
@@ -37,7 +37,7 @@
 	name = "Oppressor Praetorian Behavior Delegate"
 
 	// Config
-	var/additional_damage_vs_prone = 15
+	var/additional_damage_vs_prone = 20
 	var/crush_additional_damage = 15
 	var/root_duration = 25
 	

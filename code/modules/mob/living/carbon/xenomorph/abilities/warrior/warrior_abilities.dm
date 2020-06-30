@@ -6,7 +6,6 @@
 	ability_name = "toggle agility"
 	macro_path = /datum/action/xeno_action/verb/verb_toggle_agility
 	action_type = XENO_ACTION_CLICK
-	ability_primacy = XENO_PRIMARY_ACTION_1
 	cooldowns = list(10, 10, 10, 10)
 
 /datum/action/xeno_action/onclick/toggle_agility/can_use_action()
@@ -21,13 +20,13 @@
 	ability_name = "Fling"
 	macro_path = /datum/action/xeno_action/verb/verb_fling
 	action_type = XENO_ACTION_CLICK
-	ability_primacy = XENO_PRIMARY_ACTION_2
-	cooldowns = list(60, 50, 40, 35)
+	ability_primacy = XENO_PRIMARY_ACTION_1
+	cooldowns = list(65, 60, 55, 50)
 
 	// Configurables
 	var/fling_distance = 4
 	var/stun_power = 1
-	var/weaken_power = 2
+	var/weaken_power = 1
 
 
 // Warrior Lunge
@@ -37,8 +36,8 @@
 	ability_name = "lunge"
 	macro_path = /datum/action/xeno_action/verb/verb_lunge
 	action_type = XENO_ACTION_CLICK
-	ability_primacy = XENO_PRIMARY_ACTION_3
-	cooldowns = list(60, 50, 40, 35)
+	ability_primacy = XENO_PRIMARY_ACTION_2
+	cooldowns = list(120, 110, 100, 90)
 	
 	// Configurables
 	var/grab_range = 6
@@ -52,7 +51,7 @@
 	ability_name = "punch"
 	macro_path = /datum/action/xeno_action/verb/verb_punch
 	action_type = XENO_ACTION_CLICK
-	ability_primacy = XENO_PRIMARY_ACTION_4
+	ability_primacy = XENO_PRIMARY_ACTION_3
 	cooldowns = list(60, 50, 40, 35)
 
 	// Configurables

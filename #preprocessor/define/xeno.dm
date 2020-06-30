@@ -159,6 +159,7 @@
 #define XENO_ARMOR_FACTOR_MEDIUM 30
 #define XENO_ARMOR_FACTOR_HIGH 35
 #define XENO_ARMOR_FACTOR_VERYHIGH 40
+#define XENO_ARMOR_FACTOR_SUPER 75
 #define XENO_ARMOR_FACTOR_CRUSHER 200
 
 // Evasion
@@ -287,6 +288,9 @@
 
 // Weed boost (same as above)
 #define XENO_WEED_BOOST 1
+
+// Hive Pylon protection range
+#define XENO_HIVE_PYLON_PROTECTION_RANGE 8
 
 /////////////////////////////////////////////////////////////////////////////////////
 //

@@ -280,6 +280,10 @@
 				if(!is_outside && !cavebreaker) //cavebreaker doesn't care
 					to_chat(usr, SPAN_WARNING("INVALID TARGET: target must be visible from high altitude."))
 					return
+				if (is_turf_protected_by_pylon(TU))
+					to_chat(usr, SPAN_WARNING("INVALID TARGET: biological-pattern interference with signal."))
+					return
+
 				DEW.open_fire(LT.loc)
 				break
 

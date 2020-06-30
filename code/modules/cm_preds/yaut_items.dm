@@ -149,21 +149,12 @@
 /obj/item/clothing/cape
 
 /obj/item/clothing/cape/eldercape
-	name = "clan elder cape"
-	desc = "A dusty, yet powerful cape worn and passed down by elder Yautja."
+	name = "\improper Yautja Cape"
+	desc = "A battle-worn cape passed down by elder Yautja. Councillors who've proven themselves worthy may also be rewarded with one of these capes."
 	icon = 'icons/obj/items/weapons/predator.dmi'
 	icon_state = "cape_elder"
 	flags_equip_slot = SLOT_BACK
-	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS
 	flags_item = ITEM_PREDATOR
-	armor_melee = CLOTHING_ARMOR_LOW
-	armor_bullet = CLOTHING_ARMOR_LOW
-	armor_laser = CLOTHING_ARMOR_LOW
-	armor_energy = CLOTHING_ARMOR_LOW
-	armor_bomb = CLOTHING_ARMOR_LOW
-	armor_bio = CLOTHING_ARMOR_LOW
-	armor_rad = CLOTHING_ARMOR_LOW
-	armor_internaldamage = CLOTHING_ARMOR_LOW
 	unacidable = TRUE
 
 /obj/item/clothing/cape/eldercape/New(location, cape_number)

@@ -15,6 +15,7 @@
 	evasion = XENO_EVASION_NONE
 	speed = XENO_SPEED_MEDIUM
 	speed_mod = XENO_SPEED_MOD_LARGE
+	heal_standing = 0.66
 
 	tackle_chance = 35
 	

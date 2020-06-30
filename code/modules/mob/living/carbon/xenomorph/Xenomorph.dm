@@ -78,6 +78,8 @@
 	var/plasma_max = 10
 	var/plasma_gain = 5
 
+	var/last_hit_time = 0
+
 	//Amount of construction resources stored internally
 	var/crystal_stored = 0
 	var/crystal_max = 0

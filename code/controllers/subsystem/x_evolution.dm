@@ -13,7 +13,6 @@ var/datum/subsystem/xevolution/SSxevolution
 	var/time_ratio_modifier = 0.4
 
 	var/boost_power = 1
-	var/boost_power_new = 1
 	var/force_boost_power = FALSE // Debugging only
 
 /datum/subsystem/xevolution/New()
@@ -27,7 +26,7 @@ var/datum/subsystem/xevolution/SSxevolution
 	var/boost_power_new
 	// Minimum of 5 evo until 10 minutes have passed.
 	if((world.time - ticker.game_start_time) < XENO_ROUNDSTART_PROGRESS_TIME_2)
-		boost_power_new = max(boost_power_new, 3) 
+		boost_power_new = max(boost_power_new, XENO_ROUNDSTART_PROGRESS_AMOUNT) 
 	else
 		boost_power_new = Floor((world.time - XENO_ROUNDSTART_PROGRESS_TIME_2 - ticker.game_start_time)/EVOLUTION_INCREMENT_TIME)
 

@@ -106,7 +106,7 @@
 //Melee weapons do more damage to resin structures
 #define RESIN_MELEE_DAMAGE_MULTIPLIER	8.2
 
-#define RESIN_EXPLOSIVE_MULTIPLIER 0.8
+#define RESIN_EXPLOSIVE_MULTIPLIER 0.5
 
 //Projectile block probabilities for different types of cover
 #define PROJECTILE_COVERAGE_LOW			35

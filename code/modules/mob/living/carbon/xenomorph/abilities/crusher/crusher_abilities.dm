@@ -46,7 +46,7 @@
 
 	var/distance = 2
 	var/effect_type_base = /datum/effects/xeno_slow/superslow
-	var/effect_duration = 15 
+	var/effect_duration = 10
 
 /datum/action/xeno_action/onclick/crusher_shield
 	name = "Defensive Shield"

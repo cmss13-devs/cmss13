@@ -134,7 +134,7 @@
 				target.apply_effect(0.3, DAZE)
 				target.apply_effect(2, SLOW)
 				return
-			target.apply_effect(0.8, WEAKEN) // 1 second stun
+			target.apply_effect(0.5, WEAKEN)
 			target.apply_effect(4, DAZE)
 			target.apply_effect(2, SUPERSLOW)
 			target.apply_effect(5, SLOW)
@@ -505,7 +505,7 @@
 
 /datum/ammo/bullet/rifle/New()
 	..()
-	accurate_range = config.norm_shell_range
+	accurate_range = config.moderate_shell_range
 	damage = config.hmed_hit_damage
 	accuracy = config.hmed_hit_accuracy
 	scatter = config.min_scatter_value
@@ -628,6 +628,7 @@
 
 /datum/ammo/bullet/shotgun/slug/New()
 	..()
+	accurate_range = config.short_shell_range
 	max_range = config.short_shell_range*1.4
 	damage = config.high_hit_damage
 	penetration = config.mlow_armor_penetration
@@ -726,12 +727,12 @@
 	accuracy_var_low = config.high_proj_variance
 	accuracy_var_high = config.high_proj_variance
 	accurate_range = config.min_shell_range
-	max_range = config.close_shell_range
+	max_range = config.close_shell_range - 1
 	damage = config.mhigh_hit_damage
 	damage_var_low = config.low_proj_variance
 	damage_var_high = config.low_proj_variance
 	damage_falloff = config.buckshot_v2_damage_falloff
-	penetration	= config.vlow_armor_penetration
+	penetration	= 0
 	bonus_projectiles_amount = config.low_proj_extra
 	shell_speed = config.reg_shell_speed
 	damage_armor_punch = 0
@@ -762,7 +763,7 @@
 	damage_var_low = config.low_proj_variance
 	damage_var_high = config.low_proj_variance
 	damage_falloff = config.buckshot_v2_damage_falloff
-	penetration = config.vlow_armor_penetration
+	penetration = config.min_armor_penetration
 	shell_speed = config.reg_shell_speed
 	scatter = config.super_scatter_value
 	damage_armor_punch = 0
@@ -792,7 +793,7 @@
 	accurate_range = config.max_shell_range
 	max_range = config.max_shell_range
 	scatter = 0
-	damage = config.mhigh_hit_damage
+	damage = config.max_hit_damage
 	penetration= config.max_armor_penetration
 	shell_speed = config.ultra_shell_speed
 	damage_falloff = 0
@@ -821,7 +822,7 @@
 	..()
 	accuracy = config.max_hit_accuracy
 	scatter = config.low_scatter_value
-	damage = config.mhigh_hit_damage
+	damage = config.high_hit_damage
 	damage_var_high = config.low_proj_variance
 	penetration= 0
 
@@ -914,7 +915,7 @@
 
 /datum/ammo/bullet/smartgun/New()
 	..()
-	accurate_range = config.norm_shell_range
+	max_range = config.hshort_shell_range
 	accuracy = config.med_hit_accuracy
 	damage_falloff = config.tactical_damage_falloff
 	damage = config.lmed_plus_hit_damage

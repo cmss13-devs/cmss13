@@ -248,7 +248,6 @@
 	color = "#86B028" //Mostly green?
 	anchored = 1
 	spread_speed = 7
-	amount = 1 //Amount depends on Boiler upgrade!
 	smokeranking = SMOKE_RANK_BOILER
 
 /obj/effect/particle_effect/smoke/xeno_burn/apply_smoke_effect(turf/T)
@@ -278,7 +277,7 @@
 	M.last_damage_mob = source_mob
 
 	M.apply_damage(3, OXY) //Basic oxyloss from "can't breathe"
-	M.apply_damage(amount*rand(8, 10), BURN) //Inhalation damage
+	M.apply_damage(20, BURN) //Inhalation damage
 	if(M.coughedtime != 1 && !M.stat) //Coughing/gasping
 		M.coughedtime = 1
 		if(prob(50))

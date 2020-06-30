@@ -765,14 +765,14 @@
 		hive_structures[name_ref] = list()
 	if(hive_structures[name_ref].len >= hive_structures_limit[name_ref])
 		return FALSE
-	hive_structures[name_ref] += src
+	hive_structures[name_ref] += S
 	return TRUE
 
 /datum/hive_status/proc/remove_special_structure(var/obj/effect/alien/resin/special/S)
 	if(!S)
 		return FALSE
 	var/name_ref = initial(S.name)
-	hive_structures[name_ref] -= src
+	hive_structures[name_ref] -= S
 	return TRUE
 
 /datum/hive_status/proc/remove_all_special_structures()

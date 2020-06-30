@@ -12,7 +12,7 @@
 	crystal_max = XENO_CRYSTAL_MEDIUM
 	xeno_explosion_resistance = XENO_GIGA_EXPLOSIVE_ARMOR
 	armor_deflection = XENO_MEDIUM_ARMOR
-	armor_hardiness_mult = XENO_ARMOR_FACTOR_VERYHIGH
+	armor_hardiness_mult = XENO_ARMOR_FACTOR_SUPER
 	evasion = XENO_EVASION_NONE
 	speed = XENO_SPEED_SLOW
 	speed_mod = XENO_SPEED_MOD_LARGE

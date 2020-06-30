@@ -13,7 +13,7 @@
 	armor_deflection = XENO_LOW_ARMOR
 	armor_hardiness_mult = XENO_ARMOR_FACTOR_MEDIUM
 	evasion = XENO_EVASION_LOW
-	speed = XENO_SPEED_HIGH
+	speed = XENO_SPEED_HIGHFAST
 	speed_mod = XENO_SPEED_MOD_LARGE
 
 	behavior_delegate_type = /datum/behavior_delegate/warrior_base
@@ -74,12 +74,12 @@
 	pixel_x = -16
 	old_x = -16
 	tier = 2
+	pull_speed = 2.0 // about what it was before, slightly faster
 
 	actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/regurgitate,
 		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/onclick/toggle_agility,
 		/datum/action/xeno_action/activable/fling,
 		/datum/action/xeno_action/activable/lunge,
 		/datum/action/xeno_action/activable/warrior_punch

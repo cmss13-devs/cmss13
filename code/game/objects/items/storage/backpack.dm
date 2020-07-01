@@ -290,8 +290,8 @@
 	icon_state = "marinesatch_techi"
 
 /obj/item/storage/backpack/marine/satchel/intel
-	name = "\improper USCM intelligence officer pack"
-	desc = "A heavy-duty backpack that slings around easily, and can quickly be accessed with only one hand. Issued only to USCM Intelligence Officers."
+	name = "\improper USCM lightweight expedition pack"
+	desc = "A heavy-duty IMP based backpack that can be slung around the front or to the side, and can quickly be accessed with only one hand. Usually issued to USCM intelligence officers."
 	icon_state = "marinesatch_io"
 	max_storage_space = 20
 
@@ -302,8 +302,8 @@
 	worn_accessible = TRUE
 
 /obj/item/storage/backpack/marine/rocketpack
-	name = "\improper M22 rocket bags"
-	desc = "Specially designed bags made to hold rockets."
+	name = "\improper USCM IMP M22 rocket bags"
+	desc = "A specially designed backpack that fits to the IMP mounting frame on standard USCM pattern M3 armors. It's made of two water proofed reinforced tubes and one smaller satchel slung at the bottom. The two silos are for rockets, but no one is stopping you from cramming other things in there."
 	icon_state = "rocketpack"
 	worn_accessible = TRUE
 	has_gamemode_skin = FALSE //monkeysfist101 never sprited a snowtype but included duplicate icons. Why?? Recolor and touch up sprite at a later date.

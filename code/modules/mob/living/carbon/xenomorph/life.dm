@@ -43,7 +43,7 @@
 	var/progress_amount = 1
 
 	if(SSxevolution && ((hive.living_xeno_queen && hive.living_xeno_queen.ovipositor) || (ticker.game_start_time + XENO_HIVE_EVOLUTION_FREETIME) >= world.time))
-		progress_amount = SSxevolution.boost_power
+		progress_amount = SSxevolution.get_evolution_boost_power(hive.hivenumber)
 
 	if(upgrade != -1 && upgrade < 3 && (!hive.living_xeno_queen || hive.living_xeno_queen.loc.z == loc.z)) //upgrade possible
 		upgrade_stored = min(upgrade_stored + progress_amount, upgrade_threshold)

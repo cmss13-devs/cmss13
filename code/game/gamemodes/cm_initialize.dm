@@ -352,7 +352,7 @@ Additional game mode variables.
 	for(var/mob/living/carbon/Xenomorph/X in living_xeno_list)
 		if(X.z == ADMIN_Z_LEVEL) continue //xenos on admin z level don't count
 		if(istype(X) && !X.client)
-			if(X.away_timer >= 300 || isXenoLarva(X)) available_xenos_non_ssd += X
+			if(X.away_timer >= SECONDS_30 || (isXenoLarva(X) && X.away_timer >= 10) ) available_xenos_non_ssd += X
 			available_xenos += X
 
 	var/obj/effect/alien/resin/special/pool/SP = hive.spawn_pool
@@ -401,8 +401,11 @@ Additional game mode variables.
 				to_chat(xeno_candidate, message)
 				to_chat(xeno_candidate, SPAN_WARNING("You must wait 5 minutes before rejoining the game!"))
 				return 0
-			if(new_xeno.away_timer < SECONDS_30 && !isXenoLarva(new_xeno)) //We do not want to occupy them if they've only been gone for a little bit.
-				to_chat(xeno_candidate, SPAN_WARNING("That player hasn't been away long enough. Please wait [SECONDS_30 - new_xeno.away_timer] second\s longer."))
+			if((!isXenoLarva(new_xeno) && new_xeno.away_timer < SECONDS_30) || (isXenoLarva(new_xeno) && new_xeno.away_timer < 10))
+				var/to_wait = SECONDS_30 - new_xeno.away_timer
+				if(isXenoLarva(new_xeno))
+					to_wait = 10 - new_xeno.away_timer
+				to_chat(xeno_candidate, SPAN_WARNING("That player hasn't been away long enough. Please wait [to_wait] second\s longer."))
 				return 0
 
 		if(alert(xeno_candidate, "Everything checks out. Are you sure you want to transfer yourself into [new_xeno]?", "Confirm Transfer", "Yes", "No") == "Yes")

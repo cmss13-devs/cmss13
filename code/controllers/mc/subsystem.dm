@@ -17,6 +17,9 @@
 	var/last_fire = 0       // Last world.time we called fire()
 	var/next_fire = 0       // Scheduled world.time for next fire()
 	var/cost = 0            // Average time to execute
+	var/slow_cost = 0
+	var/slow_multiplier = 0.8
+	var/item_multiplier = 0.2
 	var/tick_usage = 0      // Average tick usage
 	var/state = SS_IDLE     // Tracks the current state of the ss. Running, paused, etc.
 	var/paused_ticks = 0    // Ticks this ss is taking to run right now.
@@ -168,8 +171,7 @@
 		statclick = new/obj/effect/statclick/debug("Initializing...", src)
 
 	if(can_fire && !(flags & SS_NO_FIRE))
-		var/cost_to_2s = cost * 20 / wait
-		msg = "[round(cost_to_2s,1)]ms|[round(tick_usage,1)]%|[round(ticks,0.1)]\t[msg]"
+		msg = "[round(slow_cost,1)]ms|[round(tick_usage,1)]%|[round(ticks,0.1)]\t[msg]"
 	else
 		msg = "OFFLINE\t[msg]"
 

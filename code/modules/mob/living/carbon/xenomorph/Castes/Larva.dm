@@ -74,7 +74,7 @@
 /mob/living/carbon/Xenomorph/Larva/update_progression()
 	var/progress_amount = 1
 
-	if(hive && hive.has_special_structure(XENO_STRUCTURE_EVOPOD))
+	if(hive)
 		progress_amount += (0.2 * hive.has_special_structure(XENO_STRUCTURE_EVOPOD))
 
 	if(amount_grown < max_grown)
@@ -134,3 +134,16 @@
 
 /mob/living/carbon/Xenomorph/Larva/pull_response(mob/puller)
 	return TRUE
+
+/proc/spawn_hivenumber_larva(var/atom/A, var/hivenumber)
+	switch(hivenumber)
+		if(XENO_HIVE_NORMAL)
+			return new /mob/living/carbon/Xenomorph/Larva(A)
+		if(XENO_HIVE_CORRUPTED)
+			return new /mob/living/carbon/Xenomorph/Larva/Corrupted(A)
+		if(XENO_HIVE_ALPHA)
+			return new /mob/living/carbon/Xenomorph/Larva/Alpha(A)
+		if(XENO_HIVE_BETA)
+			return new /mob/living/carbon/Xenomorph/Larva/Beta(A)
+		if(XENO_HIVE_ZETA)
+			return new /mob/living/carbon/Xenomorph/Larva/Zeta(A)

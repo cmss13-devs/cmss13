@@ -44,7 +44,7 @@
 		powerfactor_value = min(powerfactor_value,20)
 		if(powerfactor_value > 0 && total_explosive_resistance < 60)
 			KnockDown(powerfactor_value/5)
-			KnockOut(powerfactor_value/5)			
+			KnockOut(powerfactor_value/5)
 			if(mob_size != MOB_SIZE_BIG)
 				Slow(powerfactor_value)
 				Superslow(powerfactor_value/2)
@@ -63,27 +63,17 @@
 
 /mob/living/carbon/Xenomorph/apply_armoured_damage(var/damage = 0, var/armour_type = ARMOR_MELEE, var/damage_type = BRUTE, var/def_zone = null, var/penetration = 0, var/armour_break_pr_pen = 0, var/armour_break_flat = 0)
 	if(damage <= 0)
-		return ..(damage, armour_type, damage_type, def_zone)	
-	
-	var/obj/limb/target_limb = null
-	if(def_zone)
-		target_limb = get_limb(check_zone(def_zone))
-	else
-		target_limb = get_limb(check_zone(ran_zone()))
-	if(isnull(target_limb))
-		return FALSE
-
-	var/armor = getarmor(target_limb, armour_type)
+		return ..(damage, armour_type, damage_type, def_zone)
 
 	var/armour_config = config.xeno_ranged
 	if(armour_type == ARMOR_MELEE)
 		armour_config = config.xeno_melee
 
-	var/modified_damage = armor_damage_reduction(armour_config, damage, armor, penetration, armour_break_pr_pen, armour_break_flat)
-	var/armor_punch = armor_break_calculation(armour_config, damage, armor, penetration, armour_break_pr_pen, armour_break_flat, armor_integrity)
+	var/modified_damage = armor_damage_reduction(armour_config, damage, null, penetration, armour_break_pr_pen, armour_break_flat)
+	var/armor_punch = armor_break_calculation(armour_config, damage, null, penetration, armour_break_pr_pen, armour_break_flat, armor_integrity)
 	apply_armorbreak(armor_punch)
 
-	apply_damage(modified_damage, damage_type, target_limb)
+	apply_damage(modified_damage, damage_type)
 
 /mob/living/carbon/Xenomorph/apply_damage(damage = 0, damagetype = BRUTE, def_zone = null, used_weapon = null, sharp = 0, edge = 0)
 	if(!damage) return
@@ -105,16 +95,16 @@
 	if(xeno_shields.len != 0 && damage > 0)
 		for(var/datum/xeno_shield/XS in xeno_shields)
 			damage = XS.on_hit(damage)
-			
+
 			if(damage > 0)
 				XS.on_removal()
 				xeno_shields -= XS
 				qdel(XS)
 				XS = null
-			
+
 			if(damage == 0)
 				return
-			
+
 		overlay_shields()
 
 	switch(damagetype)
@@ -122,7 +112,7 @@
 			adjustBruteLoss(damage)
 		if(BURN)
 			adjustFireLoss(damage)
-	
+
 	updatehealth()
 
 	last_hit_time = world.time

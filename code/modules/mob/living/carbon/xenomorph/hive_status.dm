@@ -76,7 +76,7 @@
 /datum/hive_status_ui/proc/update_pooled_larva()
 	data["pooled_larva"] = assoc_hive.stored_larva
 	if(SSxevolution)
-		data["evilution_level"] = SSxevolution.boost_power
+		data["evilution_level"] = SSxevolution.get_evolution_boost_power(assoc_hive.hivenumber)
 	else
 		data["evilution_level"] = 1
 

@@ -47,14 +47,14 @@ var/const/INGEST = 2
 		chemical_properties_list[P.name] = P
 		if(P.rarity > PROPERTY_DISABLED)
 			//Filters for the generator picking properties
-			if(isNegativeProperty(P))
+			if(P.rarity == PROPERTY_RARE || P.rarity == PROPERTY_LEGENDARY)
+				chemical_properties_list["rare"][P.name] = P
+			else if(isNegativeProperty(P))
 				chemical_properties_list["negative"][P.name] = P
 			else if(isNeutralProperty(P))
 				chemical_properties_list["neutral"][P.name] = P
 			else if(isPositiveProperty(P))
 				chemical_properties_list["positive"][P.name] = P
-			else if(P.rarity == PROPERTY_RARE || P.rarity == PROPERTY_LEGENDARY)
-				chemical_properties_list["rare"][P.name] = P
 
 /proc/global_prepare_reagents()
 	//I dislike having these here but map-objects are initialised before world/New() is called. >_>

@@ -203,7 +203,7 @@
 		H.apply_damage(-H.getOxyLoss(), OXY)
 		H.updatehealth() //Needed for the check to register properly
 
-		for(var/datum/reagent/R in H.reagents)
+		for(var/datum/reagent/R in H.reagents.reagent_list)
 			var/datum/chem_property/P = R.get_property(PROPERTY_ELECTROGENETIC)//Adrenaline helps greatly at restarting the heart
 			if(P)
 				P.trigger(H)

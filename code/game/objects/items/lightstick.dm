@@ -7,7 +7,6 @@
 	desc = "You can stick them in the ground"
 	icon = 'icons/obj/items/lighting.dmi'
 	icon_state = "lightstick_blue0"
-	l_color = "#47A3FF" //Blue
 	var/s_color = "blue"
 
 	Crossed(var/mob/living/O)
@@ -57,6 +56,5 @@
 //Red
 /obj/item/lightstick/red
 	name = "red lightstick"
-	l_color = "#CC3300"
 	icon_state = "lightstick_red0"
 	s_color = "red"

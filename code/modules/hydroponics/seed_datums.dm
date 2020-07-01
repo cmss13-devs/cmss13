@@ -603,8 +603,6 @@ proc/populate_seed_list()
 				product.desc += " On second thought, something about this one looks strange."
 
 			if(biolum)
-				if(biolum_colour)
-					product.l_color = biolum_colour
 				product.SetLuminosity(biolum)
 
 			//Handle spawning in living, mobile products (like dionaea).

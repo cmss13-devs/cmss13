@@ -46,37 +46,10 @@
 	var/__y = 0		//y coordinate at last update
 	var/__z = 0		//z coordinate at last update
 
-	var/_l_color //do not use directly, only used as reference for updating
-	var/col_r
-	var/col_g
-	var/col_b
+#define turf_update_lumcount(T, amount) \
+	T.lighting_lumcount += amount; if(!T.lighting_changed){ SSlighting.changed_turfs += T; T.lighting_changed = 1;}
 
-#define turf_update_lumcount(T, amount, col_r, col_g, col_b, removing) \
-	T.lighting_lumcount += amount; \
-	if(!isnull(col_r)){ \
-		if(removing){ \
-			T.light_col_sources--; \
-			T.lumcount_r -= col_r; \
-			T.lumcount_g -= col_g; \
-			T.lumcount_b -= col_b;} \
-		else{ \
-			T.light_col_sources++; \
-			T.lumcount_r += col_r; \
-			T.lumcount_g += col_g; \
-			T.lumcount_b += col_b;} \
-		if(T.light_col_sources){ \
-			var/r_avg = max(0, min(255, round(T.lumcount_r / T.light_col_sources, 16) + 15)); \
-			var/g_avg = max(0, min(255, round(T.lumcount_g / T.light_col_sources, 16) + 15)); \
-			var/b_avg = max(0, min(255, round(T.lumcount_b / T.light_col_sources, 16) + 15)); \
-			T.l_color = rgb(r_avg, g_avg, b_avg);} \
-		else \
-			T.l_color = null; \
-		T.color_lighting_lumcount = max(T.color_lighting_lumcount + amount, 0);} \
-	if(!T.lighting_changed){ \
-		SSlighting.changed_turfs += T; \
-		T.lighting_changed = 1;}
-
-#define ls_remove_effect(ls) for(var/turf/T in ls.effect){ turf_update_lumcount(T, -ls.effect[T], ls.col_r, ls.col_g, ls.col_b, 1); } ls.effect.Cut();
+#define ls_remove_effect(ls) for(var/turf/T in ls.effect){ turf_update_lumcount(T, -ls.effect[T]); } ls.effect.Cut();
 
 #define ls_lum(ls, T) \
 	var/dist; \
@@ -90,20 +63,10 @@
 	var/delta_lumen = owner.luminosity - dist; \
 	if(delta_lumen > 0){ \
 		ls.effect[T] = delta_lumen; \
-		turf_update_lumcount(T, delta_lumen, ls.col_r, ls.col_g, ls.col_b, 0);}
-
-#define ls_readrgb(ls, col) \
-	ls._l_color = col; \
-	if(col){ \
-		col_r = GetRedPart(col); \
-		col_g = GetGreenPart(col); \
-		col_b = GetBluePart(col);}
-	else \
-		col_r = null;
+		turf_update_lumcount(T, delta_lumen);}
 
 #define ls_add_effect(ls) \
 	if(ls.owner.loc && ls.owner.luminosity > 0) { \
-		ls_readrgb(ls, ls.owner.l_color); \
 		effect = list(); \
 		for(var/turf/T in view(ls.owner.luminosity,owner)){ \
 			ls_lum(ls, T) } \
@@ -117,7 +80,6 @@
 		CRASH("The first argument to the light object's constructor must be the atom that is the light source. Expected atom, received '[A]' instead.")
 	..()
 	owner = A
-	ls_readrgb(src, owner.l_color)
 	__x = owner.x
 	__y = owner.y
 	__z = owner.z
@@ -133,10 +95,6 @@
 
 	if(owner.luminosity > 8)
 		owner.luminosity = 8
-
-	if (owner.l_color != _l_color)
-		ls_readrgb(src, owner.l_color)
-		changed = 1
 
 	if(changed)
 		changed = 0
@@ -157,14 +115,13 @@
 /datum/light_source/proc/remove_effect()
 	// before we apply the effect we remove the light's current effect.
 	for(var/turf/T in effect)	// negate the effect of this light source
-		turf_update_lumcount(T, -effect[T], col_r, col_g, col_b, 1)
+		turf_update_lumcount(T, -effect[T])
 	effect.Cut()					// clear the effect list
 
 /atom
 	var/datum/light_source/light
 	var/trueLuminosity = 0  // Typically 'luminosity' squared.  The builtin luminosity must remain linear.
 	                        // We may read it, but NEVER set it directly.
-	var/l_color
 	var/directional_lum = 0
 
 //Turfs with opacity when they are constructed will trigger nearby lights to update
@@ -277,38 +234,11 @@
 	var/color_lighting_lumcount = 0
 	var/chemexploded = FALSE
 
-	var/lumcount_r = 0
-	var/lumcount_g = 0
-	var/lumcount_b = 0
-	var/light_col_sources = 0
-
 /turf/open/space
 	lighting_lumcount = 4		//starlight
 
-/turf/proc/update_lumcount(amount, col_r, col_g, col_b, removing = 0)
+/turf/proc/update_lumcount(amount, removing = 0)
 	lighting_lumcount += amount
-
-	if(!isnull(col_r)) //col_r is the "key" var, if it's null so will the rest
-		if(removing)
-			light_col_sources--
-			lumcount_r -= col_r
-			lumcount_g -= col_g
-			lumcount_b -= col_b
-		else
-			light_col_sources++
-			lumcount_r += col_r
-			lumcount_g += col_g
-			lumcount_b += col_b
-
-		if(light_col_sources)
-			var/r_avg = max(0, min(255, round(lumcount_r / light_col_sources, 16) + 15))
-			var/g_avg = max(0, min(255, round(lumcount_g / light_col_sources, 16) + 15))
-			var/b_avg = max(0, min(255, round(lumcount_b / light_col_sources, 16) + 15))
-			l_color = rgb(r_avg, g_avg, b_avg)
-		else
-			l_color = null
-
-		color_lighting_lumcount = max(color_lighting_lumcount + amount, 0) // Minimum of 0.
 
 	if(!lighting_changed)
 		SSlighting.changed_turfs += src
@@ -318,7 +248,7 @@
 	var/area/A = loc
 	return A.tagbase + "sd_L[level]"
 
-/turf/proc/build_lighting_area(const/tag, const/level, const/color_light)
+/turf/proc/build_lighting_area(const/tag, const/level)
 	var/area/Area = loc
 	var/area/A = new Area.type()    // create area if it wasn't found
 	// replicate vars
@@ -333,10 +263,7 @@
 	A.lighting_subarea = 1
 	A.lighting_space = 0 // in case it was copied from a space subarea
 
-	if (l_color != A.l_color)
-		A.l_color = l_color
-
-	A.SetLightLevel(level, color_light)
+	A.SetLightLevel(level)
 	Area.related += A
 	return A
 
@@ -349,20 +276,11 @@
 	var/level = min(max(round(lighting_lumcount,1),0),LIGHTING_STATES)
 	var/new_tag = lighting_tag(level)
 
-	// pomf - If we have a lighting color that is not null, apply the new tag to seperate the areas.
-	if (l_color)
-		// pomf - We append the (rounded!) color lighting lumcount so we can have colored lights.
-		new_tag += "[l_color][min(max(round(color_lighting_lumcount,1),0),LIGHTING_STATES)]"
-
 	if(Area.tag!=new_tag)	//skip if already in this area
 		var/area/A = locate(new_tag)	// find an appropriate area
-		var/color_light = min(max(round(color_lighting_lumcount,1),0),LIGHTING_STATES)
 
 		if (!A)
-			A = build_lighting_area(new_tag, level, color_light)
-		else if (l_color != A.l_color)
-			A.l_color = l_color
-			A.SetLightLevel(level, color_light)
+			A = build_lighting_area(new_tag, level)
 
 		A.contents += src	// move the turf into the area
 
@@ -388,7 +306,7 @@
 	var/tagbase
 	var/image/color_overlay //Tracks the color image.
 
-/area/proc/SetLightLevel(light, color_light = 0)
+/area/proc/SetLightLevel(light)
 	if(!src) return
 	if(light <= 0)
 		light = 0
@@ -402,57 +320,13 @@
 		lighting_overlay.icon_state = "[light]"
 	else
 		lighting_overlay = image(LIGHTING_ICON,,num2text(light),LIGHTING_LAYER)
-
-	if (color_overlay)
-		overlays.Remove(color_overlay)
-		color_overlay.icon_state = "5"
-	else
-		if (l_color)
-			color_overlay = image('icons/effects/effects.dmi', ,"5", 10.1)
-			//color_overlay = image('icons/effects/effects.dmi', ,"white", 10.1)
-
-	if (istype(color_overlay))
-		color_overlay.color = l_color
-
-
-		switch (color_light)
-			if (6)
-				color_overlay.icon_state = "5"
-				//color_overlay.alpha = 180
-			if (5)
-				color_overlay.icon_state = "4"
-				//color_overlay.alpha = 150
-			if (4)
-				color_overlay.icon_state = "3"
-				//color_overlay.alpha = 120
-			if (3)
-				color_overlay.icon_state = "2"
-				//color_overlay.alpha = 90
-			if (2)
-				color_overlay.icon_state = "1"
-				//color_overlay.alpha = 60
-			if (1)
-				color_overlay.icon_state = "1"
-				color_overlay.alpha = 200
-				//color_overlay.alpha = 30
-			if (-INFINITY to 0)
-				color_overlay.alpha = 0
-			else
-				color_overlay.alpha = 180
-
-		color_overlay.blend_mode = BLEND_ADD
-		if (color_overlay.color)
-			overlays.Add(color_overlay)
-
-	if (isnull(color_overlay))
-		overlays.Add(lighting_overlay)
-	else if (light < 6)
+	if (light < 6)
 		overlays.Add(lighting_overlay)
 
 /area/proc/SetDynamicLighting()
 	src.lighting_use_dynamic = 1
 	for(var/turf/T in src.contents)
-		turf_update_lumcount(T, 0, 0, 0, 0, 0)
+		turf_update_lumcount(T, 0)
 
 /area/proc/InitializeLighting()	//TODO: could probably improve this bit ~Carn
 	tagbase = "[type]"

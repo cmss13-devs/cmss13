@@ -44,6 +44,12 @@
 	while(status > DB_ENTITY_STATE_SYNCED)
 		stoplag()
 
+/datum/entity/proc/sync_new()
+	if(id)
+		return
+	while(status > DB_ENTITY_STATE_SYNCED)
+		stoplag()
+
 /datum/entity/proc/sync_then(var/datum/callback/CB)
 	set waitfor = 0
 	while(status > DB_ENTITY_STATE_SYNCED)

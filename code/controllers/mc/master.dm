@@ -190,6 +190,13 @@ var/CURRENT_TICKLIMIT = TICK_LIMIT_RUNNING
 		var/datum/subsystem/SS = thing
 		if (SS.flags & SS_NO_FIRE)
 			continue
+		
+		var/calc_ratio = SS.wait / 20
+		if(calc_ratio > 1)
+			SS.slow_multiplier = 0.8 / calc_ratio		
+		else
+			SS.slow_multiplier = 0.8 + 0.2 * (1 - calc_ratio)
+		SS.item_multiplier = (1-SS.slow_multiplier) / calc_ratio
 		SS.queued_time = 0
 		SS.queue_next = null
 		SS.queue_prev = null
@@ -410,6 +417,7 @@ var/CURRENT_TICKLIMIT = TICK_LIMIT_RUNNING
 			queue_node.tick_usage = MC_AVERAGE_FAST(queue_node.tick_usage, tick_usage)
 
 			queue_node.cost = MC_AVERAGE_FAST(queue_node.cost, TICK_DELTA_TO_MS(tick_usage))
+			queue_node.slow_cost = queue_node.slow_multiplier * queue_node.slow_cost + queue_node.item_multiplier * TICK_DELTA_TO_MS(tick_usage)
 			queue_node.paused_ticks = 0
 			queue_node.paused_tick_usage = 0
 

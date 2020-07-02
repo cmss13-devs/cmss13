@@ -213,7 +213,7 @@
 		user.visible_message("\The [user] deals a card to \himself.")
 	else
 		user.visible_message("\The [user] deals a card to \the [target].")
-	H.launch_towards(get_step(target,target.dir), 10, SPEED_VERY_FAST, H)
+	H.throw_atom(get_step(target,target.dir), 10, SPEED_VERY_FAST, H)
 
 /obj/item/toy/deck/attack_self(var/mob/user as mob)
 	var/list/newcards = list()

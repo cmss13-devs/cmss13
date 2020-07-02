@@ -14,42 +14,37 @@
 	use_power = 1
 	idle_power_usage = 2
 	active_power_usage = 500
-
-/obj/structure/machinery/gibber/BlockedPassDirs(atom/movable/mover, target_turf)
-	if(istype(mover, /obj/item) && mover.throwing)
-		return FALSE
-	else
-		return ..()
+	flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND|PASS_OVER_THROW_ITEM
 
 //auto-gibs anything that bumps into it
 /obj/structure/machinery/gibber/autogibber
 	var/turf/input_plate
 
-	New()
-		..()
-		spawn(5)
-			for(var/i in cardinal)
-				var/obj/structure/machinery/mineral/input/input_obj = locate( /obj/structure/machinery/mineral/input, get_step(src.loc, i) )
-				if(input_obj)
-					if(isturf(input_obj.loc))
-						input_plate = input_obj.loc
-						qdel(input_obj)
-						break
+/obj/structure/machinery/gibber/autogibber/New()
+	..()
+	spawn(5)
+		for(var/i in cardinal)
+			var/obj/structure/machinery/mineral/input/input_obj = locate( /obj/structure/machinery/mineral/input, get_step(src.loc, i) )
+			if(input_obj)
+				if(isturf(input_obj.loc))
+					input_plate = input_obj.loc
+					qdel(input_obj)
+					break
 
-			if(!input_plate)
-				log_misc("a [src] didn't find an input plate.")
-				return
+		if(!input_plate)
+			log_misc("a [src] didn't find an input plate.")
+			return
 
-	Collided(var/atom/A)
-		if(!input_plate) return
+/obj/structure/machinery/gibber/autogibber/Collided(var/atom/A)
+	if(!input_plate) return
 
-		if(ismob(A))
-			var/mob/M = A
+	if(ismob(A))
+		var/mob/M = A
 
-			if(M.loc == input_plate
-			)
-				M.loc = src
-				M.gib()
+		if(M.loc == input_plate
+		)
+			M.loc = src
+			M.gib()
 
 
 /obj/structure/machinery/gibber/New()
@@ -227,7 +222,7 @@
 			var/obj/item/meatslab = allmeat[i]
 			var/turf/Tx = locate(src.x - i, src.y, src.z)
 			meatslab.loc = src.loc
-			meatslab.launch_towards(Tx, i, SPEED_FAST, src)
+			meatslab.throw_atom(Tx, i, SPEED_FAST, src)
 			if (!Tx.density)
 				new /obj/effect/decal/cleanable/blood/gibs(Tx)
 		src.operating = 0

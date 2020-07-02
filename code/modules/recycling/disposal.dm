@@ -22,6 +22,7 @@
 	var/last_sound = 0
 	active_power_usage = 3500 //The pneumatic pump power. 3 HP ~ 2200W
 	idle_power_usage = 100
+	flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND
 	var/disposal_pressure = 0
 
 //Create a new disposal, find the attached trunk (if present) and init gas resvr.
@@ -417,14 +418,8 @@
 			if(!istype(AM, /mob/living/silicon/robot/drone)) //Poor drones kept smashing windows and taking system damage being fired out of disposals. ~Z
 				spawn(1)
 					if(AM)
-						AM.launch_towards(target, 5, SPEED_FAST)
+						AM.throw_atom(target, 5, SPEED_FAST)
 		qdel(H)
-
-/obj/structure/machinery/disposal/BlockedPassDirs(atom/movable/mover, target_turf)
-	if(istype(mover, /obj/item) && mover.throwing && !((mover.flags_pass|mover.flags_pass_temp) & PASS_HIGH_OVER))
-		return FALSE
-	else
-		return ..()
 
 /obj/structure/machinery/disposal/hitby(atom/movable/mover)
 	if (!istype(mover, /obj/item))
@@ -702,7 +697,7 @@
 				AM.pipe_eject(direction)
 				spawn(1)
 					if(AM)
-						AM.launch_towards(target, 100, SPEED_FAST)
+						AM.throw_atom(target, 100, SPEED_FAST)
 			qdel(H)
 
 	else //No specified direction, so throw in random direction
@@ -716,7 +711,7 @@
 				AM.pipe_eject(0)
 				spawn(1)
 					if(AM)
-						AM.launch_towards(target, 5, SPEED_FAST)
+						AM.throw_atom(target, 5, SPEED_FAST)
 
 			qdel(H)
 
@@ -1337,7 +1332,7 @@
 			AM.pipe_eject(dir)
 			if(!istype(AM, /mob/living/silicon/robot/drone)) //Drones keep smashing windows from being fired out of chutes. Bad for the station. ~Z
 				spawn(5)
-					AM.launch_towards(target, 3, SPEED_FAST)
+					AM.throw_atom(target, 3, SPEED_FAST)
 		qdel(H)
 
 /obj/structure/disposaloutlet/attackby(var/obj/item/I, var/mob/user)

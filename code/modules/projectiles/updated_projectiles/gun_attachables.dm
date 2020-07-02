@@ -1225,7 +1225,7 @@ Defined in conflicts.dm of the #defines folder.
 	G.throw_range = max_range
 	G.activate(user)
 	G.forceMove(get_turf(gun))
-	G.launch_towards(target, max_range, SPEED_VERY_FAST, user)
+	G.throw_atom(target, max_range, SPEED_VERY_FAST, user)
 	current_rounds--
 	loaded_grenades.Cut(1,2)
 

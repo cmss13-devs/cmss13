@@ -138,14 +138,17 @@ Quick adjacency (to turf):
 	return TRUE
 
 /*
- *	handle_barriers checks if src is going to be attacked by M, or if M will instead attack a barrier. For now only considers
+ *	handle_barriers checks if src is going to be attacked by A, or if A will instead attack a barrier. For now only considers
  *	a single barrier on each direction.
  *
  *	I am considering making it so that handle_barriers will loop through ALL blocking objects, though this requires testing
  *	for performance impact.
  *	Assumes dist <= 1
  */
-/atom/proc/handle_barriers(var/atom/A, var/list/atom/ignore = list())
+/atom/proc/handle_barriers(var/atom/A, var/list/atom/ignore = list(), var/pass_flags)
+	ignore |= src // Make sure that you ignore your target
+	A.add_temp_pass_flags(pass_flags)
+
 	var/rdir = get_dir(src, A)
 	var/fdir = get_dir(A, src)
 
@@ -167,7 +170,7 @@ Quick adjacency (to turf):
 			if (!isStructure(potential_blocker) && !ismob(potential_blocker) && !isVehicle(potential_blocker))
 				continue
 			var/atom/PB = potential_blocker
-			if (!(PB.flags_atom & ON_BORDER) || !PB.density)
+			if (!(PB.flags_atom & ON_BORDER) || !PB.BlockedExitDirs(A, fd1) || !PB.BlockedExitDirs(A, fd2))
 				continue
 			if (PB.dir & fd1)
 				blockers["fd1"] += PB
@@ -178,8 +181,8 @@ Quick adjacency (to turf):
 	if (fd1 && fd1 != fdir) // Check any obstacles blocking from the turf to the EAST/WEST of attacker
 		var/turf/fd1loc = get_step(A, fd1)
 		var/fd1dir_a = get_dir(fd1loc, A) // inverse direction for attacker
-		var/fd1dir_d = get_dir(fd1loc, src) // inverse direction for attackee
-		if (fd1loc.density)
+		var/fd1dir_d = get_dir(fd1loc, src) // inverse direction for target
+		if (fd1loc.BlockedPassDirs(A, fd1))
 			dense_blockers += fd1loc
 		for (var/potential_blocker in fd1loc)
 			if (potential_blocker in ignore)
@@ -188,12 +191,12 @@ Quick adjacency (to turf):
 				continue
 			var/atom/PB = potential_blocker
 			if (!(PB.flags_atom & ON_BORDER))
-				if(PB.density) // If there is a solid object (e.g. a vendor) blocking
+				if(PB.BlockedPassDirs(A, fd1)) // If there is a solid object (e.g. a vendor) blocking
 					dense_blockers += PB
 				continue
-			if (PB.dir & fd1dir_a)
+			if (PB.dir & fd1dir_a && PB.BlockedPassDirs(A, fd1))
 				blockers["fd1"] += PB
-			if (PB.dir & fd1dir_d)
+			else if (PB.dir & fd1dir_d && PB.BlockedExitDirs(A, fd2))
 				blockers["fd1"] += PB
 		blockers["fd1"] += dense_blockers
 
@@ -202,8 +205,8 @@ Quick adjacency (to turf):
 	if (fd2 && fd2 != fdir) // Check any obstacles blocking from the turf to the NORTH/SOUTH of attacker
 		var/turf/fd2loc = get_step(A, fd2)
 		var/fd2dir_a = get_dir(fd2loc, A) // inverse direction for attacker
-		var/fd2dir_d = get_dir(fd2loc, src) // inverse direction for attackee
-		if (fd2loc.density)
+		var/fd2dir_d = get_dir(fd2loc, src) // inverse direction for target
+		if (fd2loc.BlockedPassDirs(A, fd2))
 			dense_blockers += fd2loc
 		for (var/potential_blocker in fd2loc)
 			if (potential_blocker in ignore)
@@ -212,35 +215,38 @@ Quick adjacency (to turf):
 				continue
 			var/atom/PB = potential_blocker
 			if (!(PB.flags_atom & ON_BORDER))
-				if (PB.density) // If there is a solid object (e.g. a vendor) blocking
+				if (PB.BlockedPassDirs(A, fd2)) // If there is a solid object (e.g. a vendor) blocking
 					dense_blockers += PB
 				continue
-			if (PB.dir & fd2dir_a)
+			if (PB.dir & fd2dir_a && PB.BlockedPassDirs(A, fd2))
 				blockers["fd2"] += PB
-			if (PB.dir & fd2dir_d)
+			else if (PB.dir & fd2dir_d && PB.BlockedExitDirs(A, fd1))
 				blockers["fd2"] += PB
 		blockers["fd2"] += dense_blockers
 
 	dense_blockers = null
 
-	for (var/potential_blocker in get_turf(src)) // Check if there are any barricades blocking attacker from the attackee's current loc (or attackee itself if it's a turf)
+	for (var/potential_blocker in get_turf(src)) // Check if there are any barricades blocking attacker from the target's current loc (or target itself if it's a turf)
 		if (potential_blocker in ignore)
 			continue
 		if (!isStructure(potential_blocker) && !ismob(potential_blocker) && !isVehicle(potential_blocker))
 			continue
 		var/atom/PB = potential_blocker
-		if (!(PB.flags_atom & ON_BORDER) || !PB.density)
+		if (!(PB.flags_atom & ON_BORDER))
 			continue
-		if (PB.dir & rd1)
+		if (PB.dir & rd1 && PB.BlockedPassDirs(A, fd1))
 			if (fd1 && fd2)
 				blockers["fd2"] += PB
 			else
 				blockers["fd1"] += PB
-		if (PB.dir & rd2)
+		if (PB.dir & rd2 && PB.BlockedPassDirs(A, fd2))
 			if (fd1 && fd2)
 				blockers["fd1"] += PB
 			else
 				blockers["fd2"] += PB
+
+	// Make sure pass flags are removed
+	A.remove_temp_pass_flags(pass_flags)
 
 	if (!!blockers["fd1"].len^!!fd1 || !!blockers["fd2"].len^!!fd2) // This means that for a given direction it did not have a blocker
 		return src

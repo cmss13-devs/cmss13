@@ -34,19 +34,10 @@
 	overlays += I
 	..()
 
-/obj/structure/platform/BlockedExitDirs(atom/movable/mover, target_dir)
-	if(mover && mover.throwing)
-		return NO_BLOCKED_MOVEMENT
-
-	return ..()
-
 /obj/structure/platform/BlockedPassDirs(atom/movable/mover, target_dir)
-	if(mover && mover.throwing)
-		return NO_BLOCKED_MOVEMENT
-
 	var/obj/structure/S = locate(/obj/structure) in get_turf(mover)
 	if(S && S.climbable && !(S.flags_atom & ON_BORDER) && climbable && isliving(mover)) //Climbable objects allow you to universally climb over others
-		return 1
+		return NO_BLOCKED_MOVEMENT
 
 	return ..()
 

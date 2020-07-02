@@ -111,7 +111,7 @@
 						break
 					T = temp
 
-				H.launch_towards(T, BD.fling_distance, SPEED_VERY_FAST, X, TRUE)
+				H.throw_atom(T, BD.fling_distance, SPEED_VERY_FAST, X, TRUE)
 
 	else
 		return
@@ -256,7 +256,7 @@
 
 	to_chat(X, SPAN_XENOHIGHDANGER("You attempt to pull yourself to [H]!"))
 	to_chat(H, SPAN_XENOHIGHDANGER("[X] pulls itself towards you!"))
-	X.launch_towards(get_step_towards(A, X), max_distance, SPEED_FAST, X)
+	X.throw_atom(get_step_towards(A, X), max_distance, SPEED_FAST, X)
 
 	..()
 	return
@@ -321,7 +321,7 @@
 			break
 		T = temp
 
-	H.launch_towards(T, fling_distance, SPEED_VERY_FAST, X, TRUE)
+	H.throw_atom(T, fling_distance, SPEED_VERY_FAST, X, TRUE)
 
 	// Negative stat effects
 	if (debilitate)
@@ -465,6 +465,7 @@
 			break 
 
 	to_chat(X, SPAN_XENODANGER("You feel your shard shield dissipate!"))
+	X.remove_suit_layer()
 	X.overlay_shields()
 	return
 

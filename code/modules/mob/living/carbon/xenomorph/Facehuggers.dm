@@ -141,7 +141,7 @@
 	if(stat == CONSCIOUS && CanHug(AM))
 		Attach(AM)
 
-/obj/item/clothing/mask/facehugger/launch_towards(var/atom/target, var/range, var/speed = 0, var/atom/thrower, var/spin, var/launch_type = NORMAL_LAUNCH, var/pass_flags = NO_FLAGS)
+/obj/item/clothing/mask/facehugger/throw_atom(var/atom/target, var/range, var/speed = 0, var/atom/thrower, var/spin, var/launch_type = NORMAL_LAUNCH, var/pass_flags = NO_FLAGS)
 	..()
 	if(stat == CONSCIOUS)
 		icon_state = "[initial(icon_state)]_thrown"
@@ -193,8 +193,8 @@
 		if(CanHug(M))
 			M.visible_message(SPAN_WARNING("\The scuttling [src] leaps at [M]!"), \
 			SPAN_WARNING("The scuttling [src] leaps at [M]!"))
-			leaping = 1
-			launch_towards(M, 3, SPEED_FAST)
+			leaping = TRUE
+			throw_atom(M, 3, SPEED_FAST)
 			break
 
 	if(attached) //Didn't hit anything?
@@ -214,7 +214,8 @@
 	attached++
 	reset_attach_status()
 	M.visible_message(SPAN_DANGER("[src] leaps at [M]'s face!"))
-	if(throwing) throwing = 0
+	if(throwing) 
+		throwing = FALSE
 
 	if(isXeno(loc)) //Being carried? Drop it
 		var/mob/living/carbon/Xenomorph/X = loc

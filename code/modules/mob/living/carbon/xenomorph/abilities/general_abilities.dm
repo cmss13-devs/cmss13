@@ -194,10 +194,20 @@
 
 	var/can_be_shield_blocked = FALSE	// Some legacy stuff, self explanatory
 	var/should_destroy_objects = FALSE  // Only used for ravager charge
-	var/should_pass_mobs = FALSE		// used to pass over mobs
+	var/pounce_pass_flags = PASS_OVER_THROW_MOB	// Pounce flags to customize what pounce can go over/through
 	var/throw_speed = SPEED_FAST        // Throw speed
 	var/tracks_target = TRUE					// Does it track the target atom?
-	
+
+	var/list/pounce_callbacks = null	// Specific callbacks to invoke when a pounce lands on an atom of a specific type
+										// (note that if a collided atom does not match any of the key types, defaults to the appropriate X_launch_collision proc)
+
+/datum/action/xeno_action/activable/pounce/New()
+	. = ..()
+	pounce_callbacks = list()
+	pounce_callbacks[/mob] = DYNAMIC(/mob/living/carbon/Xenomorph/proc/pounced_mob_wrapper)
+	pounce_callbacks[/obj] = DYNAMIC(/mob/living/carbon/Xenomorph/proc/pounced_obj_wrapper)
+	pounce_callbacks[/turf] = DYNAMIC(/mob/living/carbon/Xenomorph/proc/pounced_turf_wrapper)
+
 
 // Any additional effects to apply to the target
 // is called if and only if we actually hit a human target

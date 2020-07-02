@@ -224,7 +224,16 @@
 	// what happens next is if we hit anything
 	// a callback occurs to either the mob_launch_collision or obj_launch_collision procs.
 	// those procs poll our action to see if we are 'pouncing'
-	X.launch_towards(A, distance, throw_speed, X, 0, , should_pass_mobs ? PASS_MOB : NO_FLAGS) //Victim, distance, speed
+	var/datum/launch_metadata/LM = new()
+	LM.target = A
+	LM.range = distance
+	LM.speed = throw_speed
+	LM.thrower = X
+	LM.spin = FALSE
+	LM.pass_flags = pounce_pass_flags
+	LM.collision_callbacks = pounce_callbacks
+	
+	X.launch_towards(LM) //Victim, distance, speed
 
 	additional_effects_always()
 	..()

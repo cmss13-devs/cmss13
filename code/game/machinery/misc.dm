@@ -8,12 +8,7 @@
 	wrenchable = TRUE
 	use_power = 1
 	idle_power_usage = 40
-
-/obj/structure/machinery/biogenerator/BlockedPassDirs(atom/movable/mover, target_turf)
-	if(istype(mover, /obj/item) && mover.throwing)
-		return FALSE
-	else
-		return ..()
+	flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND|PASS_OVER_THROW_ITEM
 
 var/list/obj/structure/machinery/faxmachine/allfaxes = list()
 var/list/alldepartments = list()
@@ -26,6 +21,7 @@ var/list/alldepartments = list()
 	density = TRUE
 	anchored = TRUE
 	projectile_coverage = PROJECTILE_COVERAGE_LOW
+	flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND|PASS_OVER_THROW_ITEM
 
 	idle_power_usage	= 20
 	active_power_usage	= 50
@@ -45,12 +41,6 @@ var/list/alldepartments = list()
 /obj/structure/machinery/computer3/powermonitor
 	icon_state = "frame-eng"
 
-/obj/structure/machinery/computer3/BlockedPassDirs(atom/movable/mover, target_turf)
-	if(istype(mover, /obj/item) && mover.throwing)
-		return FALSE
-	else
-		return ..()
-
 /obj/structure/machinery/faxmachine
 	name = "fax machine"
 	icon = 'icons/obj/structures/machinery/library.dmi'
@@ -62,6 +52,7 @@ var/list/alldepartments = list()
 	idle_power_usage = 30
 	active_power_usage = 200
 	power_channel = POWER_CHANNEL_EQUIP
+	flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND|PASS_OVER_THROW_ITEM
 
 	var/obj/item/card/id/scan = null // identification
 	var/authenticated = 0
@@ -232,12 +223,6 @@ var/list/alldepartments = list()
 		to_chat(user, SPAN_NOTICE("You [anchored ? "wrench" : "unwrench"] \the [src]."))
 	return
 
-/obj/structure/machinery/faxmachine/BlockedPassDirs(atom/movable/mover, target_turf)
-	if(istype(mover, /obj/item) && mover.throwing)
-		return FALSE
-	else
-		return ..()
-
 /proc/Centcomm_fax(var/originfax, var/sent, var/sentname, var/mob/Sender)
 	var/faxcontents = "[sent]"
 	fax_contents += faxcontents
@@ -331,12 +316,7 @@ proc/SendFax(var/sent, var/sentname, var/mob/Sender, var/dpt)
 	layer = BELOW_OBJ_LAYER
 	anchored = TRUE
 	density = TRUE
-
-/obj/structure/machinery/lapvend/BlockedPassDirs(atom/movable/mover, target_turf)
-	if(istype(mover, /obj/item) && mover.throwing)
-		return FALSE
-	else
-		return ..()
+	flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND|PASS_OVER_THROW_ITEM
 
 /obj/structure/machinery/mech_bay_recharge_port
 	name = "Mech Bay Power Port"
@@ -344,12 +324,7 @@ proc/SendFax(var/sent, var/sentname, var/mob/Sender, var/dpt)
 	anchored = TRUE
 	icon = 'icons/obj/structures/props/mech.dmi'
 	icon_state = "recharge_port"
-
-/obj/structure/machinery/mech_bay_recharge_port/BlockedPassDirs(atom/movable/mover, target_turf)
-	if(istype(mover, /obj/item) && mover.throwing)
-		return FALSE
-	else
-		return ..()
+	flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND|PASS_OVER_THROW_ITEM
 
 /obj/structure/machinery/mecha_part_fabricator
 	icon = 'icons/obj/structures/machinery/robotics.dmi'
@@ -361,12 +336,7 @@ proc/SendFax(var/sent, var/sentname, var/mob/Sender, var/dpt)
 	use_power = 1
 	idle_power_usage = 20
 	active_power_usage = 5000
-
-/obj/structure/machinery/mecha_part_fabricator/BlockedPassDirs(atom/movable/mover, target_turf)
-	if(istype(mover, /obj/item) && mover.throwing)
-		return FALSE
-	else
-		return ..()
+	flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND|PASS_OVER_THROW_ITEM
 
 /obj/structure/machinery/computer/mecha
 	name = "Exosuit Control"

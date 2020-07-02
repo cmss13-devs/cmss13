@@ -560,7 +560,7 @@
 	var/obj/item/explosive/grenade/xeno_acid_grenade/grenade = new /obj/item/explosive/grenade/xeno_acid_grenade
 	grenade.source_mob = X
 	grenade.loc = get_turf(X)
-	grenade.launch_towards(A, 5, SPEED_SLOW, X, TRUE)
+	grenade.throw_atom(A, 5, SPEED_SLOW, X, TRUE)
 	add_timer(CALLBACK(grenade, /obj/item/explosive/proc/prime), prime_delay)
 
 	..()

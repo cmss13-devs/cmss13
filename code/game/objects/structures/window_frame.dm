@@ -28,9 +28,6 @@
 	for(var/obj/structure/S in get_turf(mover))
 		if(S && S.climbable && !(S.flags_atom & ON_BORDER) && climbable && isliving(mover)) //Climbable non-border objects allow you to universally climb over others
 			return NO_BLOCKED_MOVEMENT
-
-	if(mover?.throwing) // Thrown objects can go through. If leaping, can go through if not barbed.
-		return NO_BLOCKED_MOVEMENT
 	
 	return ..()
 

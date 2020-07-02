@@ -27,7 +27,7 @@
 	add_to_missing_pred_gear(src)
 	..()
 	
-/obj/item/explosive/grenade/spawnergrenade/smartdisc/launch_towards(var/atom/target, var/range, var/speed = 0, var/atom/thrower, var/spin, var/launch_type = NORMAL_LAUNCH, var/pass_flags = NO_FLAGS)
+/obj/item/explosive/grenade/spawnergrenade/smartdisc/throw_atom(var/atom/target, var/range, var/speed = 0, var/atom/thrower, var/spin, var/launch_type = NORMAL_LAUNCH, var/pass_flags = NO_FLAGS)
 	..()
 	var/mob/user = usr
 	if(!active && isYautja(user) && (icon_state == initial(icon_state)))
@@ -37,8 +37,8 @@
 	var/mob/living/L = find_target(user)
 	icon_state = initial(icon_state) + "_active"
 	if(L)
-		launch_towards(L.loc, 4, SPEED_FAST, usr)
-	launch_towards(usr, 12, SPEED_SLOW, usr)
+		throw_atom(L.loc, 4, SPEED_FAST, usr)
+	throw_atom(usr, 12, SPEED_SLOW, usr)
 	add_timer(CALLBACK(src, .proc/clear_boomerang), SECONDS_3)
 
 /obj/item/explosive/grenade/spawnergrenade/smartdisc/proc/clear_boomerang()

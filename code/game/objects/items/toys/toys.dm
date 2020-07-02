@@ -385,7 +385,7 @@
 
 /obj/item/toy/beach_ball/afterattack(atom/target as mob|obj|turf|area, mob/user as mob)
 	user.drop_held_item()
-	launch_towards(target, throw_range, throw_speed, user)
+	throw_atom(target, throw_range, throw_speed, user)
 
 
 /obj/item/toy/dice

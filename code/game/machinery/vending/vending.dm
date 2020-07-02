@@ -753,7 +753,7 @@
 		break
 	if (!throw_item)
 		return 0
-	INVOKE_ASYNC(throw_item, /atom/movable/proc/launch_towards, target, 16, SPEED_AVERAGE, src)
+	INVOKE_ASYNC(throw_item, /atom/movable/proc/throw_atom, target, 16, SPEED_AVERAGE, src)
 	src.visible_message(SPAN_WARNING("[src] launches [throw_item.name] at [target]!"))
 	return 1
 

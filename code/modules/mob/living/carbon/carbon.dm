@@ -108,7 +108,7 @@
 			var/obj/O = A
 			if(O.unacidable)
 				O.forceMove(get_turf(loc))
-				O.launch_towards(pick(range(get_turf(loc), 1)), 1, SPEED_FAST)
+				O.throw_atom(pick(range(get_turf(loc), 1)), 1, SPEED_FAST)
 
 	. = ..(cause)
 
@@ -334,10 +334,10 @@
 				to_chat(src, SPAN_WARNING("You need to set up the high toss!"))
 				return
 			drop_inv_item_on_ground(I, TRUE)
-			thrown_thing.launch_towards(target, min(4, thrown_thing.throw_range), SPEED_SLOW, src, spin_throw, HIGH_LAUNCH)
+			thrown_thing.throw_atom(target, thrown_thing.throw_range, SPEED_SLOW, src, spin_throw, HIGH_LAUNCH)
 		else
 			drop_inv_item_on_ground(I, TRUE)
-			thrown_thing.launch_towards(target, thrown_thing.throw_range, thrown_thing.throw_speed, src, spin_throw)
+			thrown_thing.throw_atom(target, thrown_thing.throw_range, thrown_thing.throw_speed, src, spin_throw)
 
 /mob/living/carbon/fire_act(exposed_temperature, exposed_volume)
 	..()

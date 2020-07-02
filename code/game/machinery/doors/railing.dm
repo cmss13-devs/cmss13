@@ -21,18 +21,6 @@
 		if(SOUTH) layer = closed_layer_south
 		else layer = closed_layer
 
-/obj/structure/machinery/door/poddoor/railing/BlockedExitDirs(atom/movable/mover, target_dir)
-	if(mover && mover.throwing)
-		return NO_BLOCKED_MOVEMENT
-
-	return ..()
-
-/obj/structure/machinery/door/poddoor/railing/BlockedPassDirs(atom/movable/mover, target_dir)
-	if(mover && mover.throwing)
-		return NO_BLOCKED_MOVEMENT
-
-	return ..()
-
 /obj/structure/machinery/door/poddoor/railing/open()
 	if (src.operating == 1) //doors can still open when emag-disabled
 		return 0

@@ -15,6 +15,7 @@
 	// Flags for what an atom can pass through
 	var/flags_pass = NO_FLAGS
 	var/flags_pass_temp = NO_FLAGS
+	var/list/temp_flag_counter
 
 	// Flags for what can pass through an atom
 	var/flags_can_pass_all = NO_FLAGS // Use for objects that are not ON_BORDER or for general pass characteristics of an atom
@@ -481,3 +482,33 @@ Parameters are passed from New.
 /atom/proc/remove_weather_effects()
 	for(var/datum/effects/weather/W in effects_list)
 		qdel(W)
+
+// Movement
+/atom/proc/add_temp_pass_flags(var/flags)
+	if (isnull(temp_flag_counter))
+		temp_flag_counter = list()
+	 
+	for (var/flag in pass_flags_list)
+		if (!(flags & flag))
+			continue
+		var/flag_str = "[flag]"
+		if (temp_flag_counter[flag_str])
+			temp_flag_counter[flag_str] += 1
+		else
+			temp_flag_counter[flag_str] = 1
+			flags_pass_temp |= flag
+
+/atom/proc/remove_temp_pass_flags(var/flags)
+	if (isnull(temp_flag_counter))
+		temp_flag_counter = list()
+		return
+	
+	for (var/flag in pass_flags_list)
+		if (!(flags & flag))
+			continue
+		var/flag_str = "[flag]"
+		if (temp_flag_counter[flag_str])
+			temp_flag_counter[flag_str] -= 1
+			if (temp_flag_counter[flag_str] == 0)
+				temp_flag_counter -= flag_str
+				flags_pass_temp &= ~flag

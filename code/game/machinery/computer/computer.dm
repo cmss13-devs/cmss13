@@ -9,6 +9,7 @@
 	active_power_usage = 300
 	projectile_coverage = PROJECTILE_COVERAGE_LOW
 	unslashable = TRUE
+	flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND|PASS_OVER_THROW_ITEM
 	var/circuit = null //The path to the circuit board type. If circuit==null, the computer can't be disassembled.
 	var/processing = FALSE //Set to true if computer needs to do /process()
 	var/exproof = 0
@@ -137,9 +138,3 @@
 
 /obj/structure/machinery/computer/fixer/New()
 	all_configs = config
-
-/obj/structure/machinery/computer/BlockedPassDirs(atom/movable/mover, target_turf)
-	if(istype(mover, /obj/item) && mover.throwing)
-		return FALSE
-	else
-		return ..()

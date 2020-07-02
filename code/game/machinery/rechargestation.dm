@@ -7,6 +7,7 @@
 	use_power = 1
 	idle_power_usage = 50
 	active_power_usage = 50
+	flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND|PASS_OVER_THROW_ITEM
 	var/mob/living/occupant = null
 	var/max_internal_charge = 15000 		// Two charged borgs in a row with default cell
 	var/current_internal_charge = 15000 	// Starts charged, to prevent power surges on round start
@@ -232,13 +233,6 @@
 			return
 	move_mob_inside(usr)
 	return
-
-/obj/structure/machinery/recharge_station/BlockedPassDirs(atom/movable/mover, target_turf)
-	if(istype(mover, /obj/item) && mover.throwing)
-		return FALSE
-	else
-		return ..()
-
 
 /obj/structure/machinery/recharge_station/attackby(var/obj/item/W, var/mob/living/user)
 	if(istype(W, /obj/item/grab))

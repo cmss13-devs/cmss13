@@ -895,7 +895,7 @@
 	if(is_lobbing)
 		pass_flags |= PASS_MOB|PASS_HIGH_OVER
 
-	F.launch_towards(target, 20, SPEED_VERY_FAST, user, null, NORMAL_LAUNCH, pass_flags)
+	F.throw_atom(target, 20, SPEED_VERY_FAST, user, null, NORMAL_LAUNCH, pass_flags)
 	if(F && F.loc) //Apparently it can get deleted before the next thing takes place, so it runtimes.
 		message_admins("[key_name_admin(user)] fired a grenade ([F.name]) from \a ([name]).")
 		log_game("[key_name_admin(user)] used a grenade ([name]).")
@@ -1019,7 +1019,7 @@
 	grenade = null
 	F.loc = user.loc
 	F.throw_range = 20
-	F.launch_towards(target, 20, SPEED_VERY_FAST, user)
+	F.throw_atom(target, 20, SPEED_VERY_FAST, user)
 	if(F && F.loc) //Apparently it can get deleted before the next thing takes place, so it runtimes.
 		message_admins("[key_name_admin(user)] fired a grenade ([F.name]) from \a ([name]).")
 		log_game("[key_name_admin(user)] used a grenade ([name]).")

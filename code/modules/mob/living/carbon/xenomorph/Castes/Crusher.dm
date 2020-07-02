@@ -170,7 +170,7 @@
 			var/turf/TA = get_diagonal_step(V, dir)
 			TA = get_step_away(TA, src)
 			var/launch_speed = 2
-			launch_towards(TA, impact_range, launch_speed)
+			throw_atom(TA, impact_range, launch_speed)
 
 			. =  TRUE
 
@@ -199,7 +199,7 @@
 				var/turf/TA = get_diagonal_step(O, dir)
 				TA = get_step_away(TA, src)
 				var/launch_speed = 2
-				launch_towards(TA, impact_range, launch_speed)
+				throw_atom(TA, impact_range, launch_speed)
 
 				. = TRUE
 

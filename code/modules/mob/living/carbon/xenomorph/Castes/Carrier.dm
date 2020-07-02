@@ -190,7 +190,7 @@
 			var/datum/action/A = X
 			A.update_button_icon()
 		drop_inv_item_on_ground(F)
-		F.launch_towards(T, 4, caste.throwspeed)
+		F.throw_atom(T, 4, caste.throwspeed)
 		visible_message(SPAN_XENOWARNING("\The [src] throws something towards \the [T]!"), \
 			SPAN_XENOWARNING("You throw a facehugger towards \the [T]!"))
 		spawn(caste.hugger_delay)

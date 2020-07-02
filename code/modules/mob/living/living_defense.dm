@@ -33,16 +33,14 @@
 		return
 
 	var/obj/O = AM
+	var/datum/launch_metadata/LM = O.launch_metadata
 	var/dtype = BRUTE
-	if(istype(O,/obj/item/weapon))
+	if(istype(O, /obj/item/weapon))
 		var/obj/item/weapon/W = O
 		dtype = W.damtype
 	var/impact_damage = (1 + O.throwforce*THROWFORCE_COEFF)*O.throwforce*THROW_SPEED_IMPACT_COEFF*O.cur_speed
 
-	var/miss_chance = 15
-	if (O.throw_source)
-		var/distance = get_dist(O.throw_source, loc)
-		miss_chance = min(15*(distance-2), 0)
+	var/miss_chance = min(15*(LM.dist-2), 0)
 
 	if (prob(miss_chance))
 		visible_message(SPAN_NOTICE("\The [O] misses [src] narrowly!"), null, null, 5)
@@ -53,8 +51,8 @@
 
 	O.throwing = 0		//it hit, so stop moving
 
-	if(ismob(O.thrower))
-		var/mob/M = O.thrower
+	if(ismob(LM.thrower))
+		var/mob/M = LM.thrower
 		var/client/assailant = M.client
 		if(assailant)
 			src.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been hit with a [O], thrown by [key_name(M)]</font>")

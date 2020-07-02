@@ -83,7 +83,7 @@
 
 	visible_message(SPAN_WARNING("<b>[src]</b> leaps at [T]!"))
 	var/target = get_step(get_turf(T), get_turf(src))
-	launch_towards(target, 5, SPEED_VERY_FAST, src)
+	throw_atom(target, 5, SPEED_VERY_FAST, src)
 	playsound(loc, 'sound/voice/shriek1.ogg', 25, 1)
 
 	add_timer(CALLBACK(src, /mob/living/carbon/human/proc/finish_leap, T), 5)

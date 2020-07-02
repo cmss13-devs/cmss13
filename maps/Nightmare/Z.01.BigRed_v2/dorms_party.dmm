@@ -56,7 +56,6 @@
 	},
 /area/bigredv2/outside/dorms)
 "am" = (
-/obj/item/device/violin,
 /turf/open/floor{
 	icon_state = "grimy"
 	},

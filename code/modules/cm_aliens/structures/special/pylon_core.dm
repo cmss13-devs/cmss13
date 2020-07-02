@@ -7,20 +7,21 @@
 	health = 1800
 	luminosity = 2
 	var/cover_range = WEED_RANGE_PYLON
-	var/ceiling_buff_amount = CEILING_RESIN
 	var/node_type = /obj/effect/alien/weeds/node/pylon
+	var/linked_turfs = list()
 
 /obj/effect/alien/resin/special/pylon/New(loc, var/hive_ref)
 	replace_node()
-	var/area/A = get_area(loc)
-	A.ceiling = CEILING_RESIN
+	for(var/turf/A in range(cover_range, loc))
+		A.linked_pylons += src
+		linked_turfs += A
 	..(loc, hive_ref)
 
 /obj/effect/alien/resin/special/pylon/Dispose()
-	var/area/A = get_area(loc)
-	var/obj/effect/alien/resin/special/pylon/P = locate() in A
-	if(!P)
-		A.ceiling = initial(A.ceiling)
+
+	for (var/turf/A in linked_turfs)
+		A.linked_pylons -= src
+
 	var/obj/effect/alien/weeds/node/pylon/W = locate() in loc
 	if(W)
 		qdel(W)
@@ -100,13 +101,3 @@
 		linked_hive.hive_location = null
 
 	. = ..()
-
-// Kinda expensive check to see if a turf is protected by a pylon
-// If you think of a better way to do this feel free, but it's kinda tricky
-/proc/is_turf_protected_by_pylon(var/turf/T)
-	for (var/datum/hive_status/HS in hive_datum)
-		for (var/P in HS.hive_structures[XENO_STRUCTURE_PYLON])
-			if (get_dist(P, T) <= XENO_HIVE_PYLON_PROTECTION_RANGE)
-				return TRUE
-
-	return FALSE

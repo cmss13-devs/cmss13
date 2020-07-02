@@ -53,6 +53,13 @@
 #undef k1
 #undef k2
 
+// more efficient get_dist, doesn't sqrt
+
+/proc/get_dist_sqrd(atom/Loc1 as turf|mob|obj, atom/Loc2 as turf|mob|obj)
+	var/dx = abs(Loc1.x - Loc2.x)
+	var/dy = abs(Loc1.y - Loc2.y)
+	return (dx * dx) + (dy * dy)
+
 /proc/circlerange(center=usr,radius=3)
 
 	var/turf/centerturf = get_turf(center)

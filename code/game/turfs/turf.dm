@@ -30,6 +30,7 @@
 	var/intact_tile = 1 //used by floors to distinguish floor with/without a floortile(e.g. plating).
 	var/can_bloody = TRUE //Can blood spawn on this turf?
 	var/old_turf = "" //The previous turf's path as text. Used when deconning on LV --MadSnailDisease
+	var/linked_pylons = list()
 
 	var/list/datum/automata_cell/autocells = list()
 	var/list/dirt_overlays = list()
@@ -249,7 +250,11 @@
 	if(src.type == new_turf_path)
 		return
 
+	var/pylons = linked_pylons
+
 	var/turf/W = new new_turf_path( locate(src.x, src.y, src.z) )
+
+	W.linked_pylons = pylons
 
 	if(!forget_old_turf)	//e.g. if an admin spawn a new wall on a wall tile, we don't
 		W.old_turf = path	//want the new wall to change into the old wall when destroyed
@@ -341,13 +346,12 @@
 
 /turf/proc/ceiling_desc(mob/user)
 
-	if (is_turf_protected_by_pylon(src))
+	if (protected_by_pylon())
 		to_chat(user, "The ceiling above is made of resin.")
+		return
 
 	var/area/A = get_area(src)
 	switch(A.ceiling)
-		if(CEILING_NONE)
-			to_chat(user, "It is in the open.")
 		if(CEILING_GLASS)
 			to_chat(user, "The ceiling above is glass.")
 		if(CEILING_METAL)
@@ -362,8 +366,8 @@
 			to_chat(user, "It is deep underground. The ceiling above is metal.")
 		if(CEILING_REINFORCED_METAL)
 			to_chat(user, "The ceiling above is heavy reinforced metal. Nothing is getting through that.")
-		if(CEILING_RESIN)
-			to_chat(user, "The ceiling above is made of resin.")
+		else
+			to_chat(user, "It is in the open.")
 
 /turf/proc/wet_floor()
 	return
@@ -474,4 +478,15 @@
 
 //whether the turf cancels a crusher charge
 /turf/proc/stop_crusher_charge()
+	return FALSE
+
+// Kinda expensive check to see if a turf is protected by a pylon
+// If you think of a better way to do this feel free, but it's kinda tricky
+/turf/proc/protected_by_pylon()
+	for (var/atom/pylon in linked_pylons)
+		if (pylon.loc != null)
+			return TRUE
+		else 
+			linked_pylons -= pylon
+
 	return FALSE

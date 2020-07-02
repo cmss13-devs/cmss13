@@ -258,6 +258,7 @@ Contains most of the procs that are called when a mob is attacked by something
 		return
 
 	var/obj/O = AM
+	var/datum/launch_metadata/LM = O.launch_metadata
 	if ((O.flags_atom & ITEM_UNCATCHABLE) && !isYautja(src))
 		visible_message(SPAN_WARNING("[src] fails to catch [O]!"), null, null, 5)
 		toggle_throw_mode(THROW_MODE_OFF)
@@ -271,31 +272,27 @@ Contains most of the procs that are called when a mob is attacked by something
 		return
 
 	var/dtype = BRUTE
-	if (istype(O,/obj/item/weapon))
+	if (istype(O, /obj/item/weapon))
 		var/obj/item/weapon/W = O
 		dtype = W.damtype
 	var/impact_damage = (1 + O.throwforce*THROWFORCE_COEFF)*O.throwforce*THROW_SPEED_IMPACT_COEFF*O.cur_speed
 
 	var/zone
-	if (istype(O.thrower, /mob/living))
-		var/mob/living/L = O.thrower
+	if (istype(LM.thrower, /mob/living))
+		var/mob/living/L = LM.thrower
 		zone = check_zone(L.zone_selected)
 	else
-		zone = ran_zone("chest",75)	//Hits a random part of the body, geared towards the chest
+		zone = ran_zone("chest", 75)	//Hits a random part of the body, geared towards the chest
 
 	//check if we hit
-	if (O.throw_source)
-		var/distance = get_dist(O.throw_source, loc)
-		zone = get_zone_with_miss_chance(zone, src, min(15*(distance-2), 0))
-	else
-		zone = get_zone_with_miss_chance(zone, src, 15)
+	zone = get_zone_with_miss_chance(zone, src, min(15*(LM.dist-2), 0))
 
 	if (!zone)
 		visible_message(SPAN_NOTICE("\The [O] misses [src] narrowly!"), null, null, 5)
 		return
-	O.throwing = 0		//it hit, so stop moving
+	O.throwing = FALSE		//it hit, so stop moving
 
-	if ((O.thrower != src) && check_shields(impact_damage, "[O]"))
+	if ((LM.thrower != src) && check_shields(impact_damage, "[O]"))
 		return
 
 	var/obj/limb/affecting = get_limb(zone)
@@ -313,9 +310,9 @@ Contains most of the procs that are called when a mob is attacked by something
 
 	if (damage > 5)
 		last_damage_source = initial(AM.name)
-
-	if (ismob(O.thrower))
-		var/mob/M = O.thrower
+	
+	if (ismob(LM.thrower))
+		var/mob/M = LM.thrower
 		var/client/assailant = M.client
 		if (damage > 5)
 			last_damage_mob = M

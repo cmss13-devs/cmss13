@@ -29,7 +29,7 @@
 					to_chat(M, SPAN_NOTICE(" The mass driver lets out a screech, it mustn't be able to handle any more items."))
 				break
 			use_power(500)
-			INVOKE_ASYNC(O, /atom/movable.proc/launch_towards, target, drive_range * power, 100/power)
+			INVOKE_ASYNC(O, /atom/movable.proc/throw_atom, target, drive_range * power, 100/power)
 	flick("mass_driver1", src)
 	return
 

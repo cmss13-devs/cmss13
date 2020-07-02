@@ -14,7 +14,7 @@
 	var/turf/targ = get_step(M, owner.dir)
 	targ = get_step(M, owner.dir)
 	targ = get_step(M, owner.dir)
-	M.launch_towards(targ, 4, SPEED_FAST, src, 1)
+	M.throw_atom(targ, 4, SPEED_FAST, src, 1)
 	M.apply_damage(7 + rand(0, 3), BRUTE)
 
 /obj/item/hardpoint/buff/armor/snowplow/on_move(var/turf/old, var/turf/new_turf, var/move_dir)

@@ -30,12 +30,6 @@
 	var/panel_open = 0 //Hacking a smartfridge
 	var/wires = 7
 
-/obj/structure/machinery/smartfridge/BlockedPassDirs(atom/movable/mover, target_turf)
-	if(istype(mover, /obj/item) && mover.throwing && !((mover.flags_pass|mover.flags_pass_temp) & PASS_HIGH_OVER))
-		return FALSE
-	else
-		return ..()
-
 /obj/structure/machinery/smartfridge/proc/accept_check(var/obj/item/O as obj)
 	if(istype(O,/obj/item/reagent_container/food/snacks/grown/) || istype(O,/obj/item/seeds/))
 		return 1
@@ -335,7 +329,7 @@
 		break
 	if(!throw_item)
 		return 0
-	INVOKE_ASYNC(throw_item, /atom/movable/proc/launch_towards, target, 16, SPEED_AVERAGE, src)
+	INVOKE_ASYNC(throw_item, /atom/movable/proc/throw_atom, target, 16, SPEED_AVERAGE, src)
 	src.visible_message(SPAN_DANGER("<b>[src] launches [throw_item.name] at [target.name]!</b>"))
 	return 1
 

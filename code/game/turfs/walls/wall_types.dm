@@ -505,10 +505,11 @@
 	var/tforce = 0
 	if(ismob(AM))
 		tforce = 10
-	else
-		tforce = AM:throwforce
+	else if (isobj(AM))
+		var/obj/O = AM
+		tforce = O.throwforce
 	playsound(src, "alien_resin_break", 25)
-	take_damage(max(0, damage_cap - tforce))
+	take_damage(tforce)
 
 
 /turf/closed/wall/resin/attack_alien(mob/living/carbon/Xenomorph/M)

@@ -12,6 +12,7 @@
 
 	// Config options
 	distance = 9
+	pounce_pass_flags = NO_FLAGS
 
 	knockdown = TRUE
 	knockdown_duration = 2

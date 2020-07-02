@@ -193,12 +193,6 @@
 
 	healthcheck()
 
-/obj/vehicle/multitile/BlockedPassDirs(atom/movable/mover, target_turf)
-	if(istype(mover, /obj/item) && mover.throwing && !((mover.flags_pass|mover.flags_pass_temp) & PASS_HIGH_OVER))
-		return FALSE
-	else
-		return ..()
-
 /obj/vehicle/multitile/handle_click(var/mob/living/user, var/atom/A, var/list/mods)
 
 	var/seat

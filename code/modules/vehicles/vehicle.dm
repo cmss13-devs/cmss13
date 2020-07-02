@@ -7,6 +7,7 @@
 	animate_movement = 1
 	luminosity = 2
 	can_buckle = TRUE
+	flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_OVER_THROW_ITEM
 
 	// The mobs that are in each position/seat of the vehicle
 	var/list/seats = list(
@@ -116,12 +117,6 @@
 
 /obj/vehicle/attack_ai(mob/user as mob)
 	return
-
-/obj/vehicle/BlockedPassDirs(atom/movable/mover, target_turf)
-	if(istype(mover, /obj/item) && mover.throwing)
-		return FALSE
-	else
-		return ..()
 
 //-------------------------------------------
 // Vehicle procs

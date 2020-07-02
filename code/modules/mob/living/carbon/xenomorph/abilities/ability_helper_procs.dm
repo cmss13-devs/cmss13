@@ -152,7 +152,7 @@
 			break
 		T = temp
 
-	H.launch_towards(T, distance, SPEED_VERY_FAST, X, TRUE)
+	H.throw_atom(T, distance, SPEED_VERY_FAST, X, TRUE)
 	shake_camera(H, 10, 1)
 
 /mob/living/carbon/Xenomorph/proc/zoom_in(movement_handler_type = /datum/event_handler/xeno_zoom_onmovement)

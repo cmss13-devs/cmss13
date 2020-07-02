@@ -11,12 +11,7 @@
 	use_power = 1
 	idle_power_usage = 5
 	active_power_usage = 50
-
-/obj/structure/machinery/processor/BlockedPassDirs(atom/movable/mover, target_turf)
-	if(istype(mover, /obj/item) && mover.throwing)
-		return FALSE
-	else
-		return ..()
+	flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND|PASS_OVER_THROW_ITEM
 
 /datum/food_processor_process
 	var/input

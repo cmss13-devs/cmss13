@@ -11,6 +11,7 @@
 	idle_power_usage = 5
 	active_power_usage = 100
 	flags_atom = OPENCONTAINER|NOREACT
+	flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND|PASS_OVER_THROW_ITEM
 	var/operating = 0 // Is it on?
 	var/dirty = 0 // = {0..100} Does it need cleaning?
 	var/broken = 0 // ={0,1,2} How broken is it???
@@ -374,9 +375,3 @@
 		if ("dispose")
 			dispose()
 	return
-
-/obj/structure/machinery/microwave/BlockedPassDirs(atom/movable/mover, target_turf)
-	if(istype(mover, /obj/item) && mover.throwing)
-		return FALSE
-	else
-		return ..()

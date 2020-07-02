@@ -125,7 +125,7 @@
 		return
 
 	if(distance > 1)
-		X.launch_towards(get_step_towards(H, X), 3, SPEED_SLOW, X)
+		X.throw_atom(get_step_towards(H, X), 3, SPEED_SLOW, X)
 
 	if(!X.Adjacent(H))
 		return
@@ -153,7 +153,7 @@
 			break
 		T = temp
 
-	H.launch_towards(T, headbutt_distance, SPEED_SLOW, src)
+	H.throw_atom(T, headbutt_distance, SPEED_SLOW, src)
 	playsound(H,'sound/weapons/alien_claw_block.ogg', 50, 1)
 
 	..()

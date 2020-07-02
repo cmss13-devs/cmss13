@@ -27,7 +27,7 @@
 
 	X.visible_message(SPAN_XENOWARNING("\The [X] lunges towards [H]!"), SPAN_XENOWARNING("You lunge at [H]!"))
 
-	X.launch_towards(get_step_towards(A, X), grab_range, SPEED_FAST, X)
+	X.throw_atom(get_step_towards(A, X), grab_range, SPEED_FAST, X)
 
 	if (X.Adjacent(H))
 		X.start_pulling(H,1)
@@ -98,7 +98,7 @@
 			break
 		T = temp
 
-	H.launch_towards(T, fling_distance, SPEED_VERY_FAST, X, TRUE)
+	H.throw_atom(T, fling_distance, SPEED_VERY_FAST, X, TRUE)
 
 	apply_cooldown()
 	..()

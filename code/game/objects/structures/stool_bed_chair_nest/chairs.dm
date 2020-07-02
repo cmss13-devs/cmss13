@@ -98,7 +98,7 @@
 		unbuckle()
 
 		var/def_zone = ran_zone()
-		occupant.launch_towards(A, 3, propelled)
+		occupant.throw_atom(A, 3, propelled)
 		occupant.apply_effect(6, STUN)
 		occupant.apply_effect(6, WEAKEN)
 		occupant.apply_effect(6, STUTTER)

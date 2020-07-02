@@ -33,6 +33,7 @@
 	icon = 'icons/mob/xenos_old/1x1_Xenos.dmi'
 	icon_state = "Drone Walking"
 	layer = BIG_XENO_LAYER
+	flags_can_pass_all = PASS_MOB_XENO|PASS_AROUND|PASS_HIGH_OVER_ONLY
 	voice_name = "xenomorph"
 	speak_emote = list("hisses")
 	attacktext = "claws"

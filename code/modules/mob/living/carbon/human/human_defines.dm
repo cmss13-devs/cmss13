@@ -131,5 +131,6 @@
 	//Taken from update_icons
 	var/list/overlays_standing[TOTAL_LAYERS]
 	var/previous_damage_appearance // store what the body last looked like, so we only have to update it if something changed
-	appearance_flags = KEEP_TOGETHER
 	var/hardcore = FALSE //If TRUE, removes the body upon unrevivable death (for WO)
+	appearance_flags = KEEP_TOGETHER
+	flags_can_pass_all = PASS_MOB_HUMAN|PASS_AROUND|PASS_HIGH_OVER_ONLY

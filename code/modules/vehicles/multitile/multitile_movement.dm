@@ -298,4 +298,4 @@
 
 			// YOU'RE LIKE A CAR CRASH IN SLOW MOTION!
 			// IT'S LIKE I'M WATCHIN' YA FLY THROUGH A WINDSHIELD!		
-			A.launch_towards(target, fling_distance, SPEED_VERY_FAST, src, TRUE)
+			A.throw_atom(target, fling_distance, SPEED_VERY_FAST, src, TRUE)

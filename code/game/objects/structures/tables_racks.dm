@@ -426,7 +426,7 @@
 	for(var/atom/movable/A in get_turf(src))
 		if(!A.anchored)
 			spawn(0)
-				A.launch_towards(pick(targets), 1, SPEED_FAST)
+				A.throw_atom(pick(targets), 1, SPEED_FAST)
 
 	projectile_coverage = flipped_projectile_coverage
 

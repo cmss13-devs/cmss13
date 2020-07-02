@@ -18,15 +18,35 @@
 #define PASS_OVER_ACID_SPRAY		32		// For atoms that allow xeno acid spray to go over them
 #define PASS_UNDER					64		// For atoms that have some space underneath for things to pass through
 #define PASS_GLASS					128		// For atoms that are made of glass or have hollow sections filled with glass
-#define PASS_MOB					256		// For mobs (i.e. atoms that explicitly ignore mobs in movement)
-#define PASS_TYPE_CRAWLER			512		// For mobs that crawl/climb over stuff (runners/larva), more for "whitelisting" crawlers to pass
-#define PASS_HIGH_OVER_ONLY			1024 	// For atoms that require a high toss to go over it, should only really be using this for flags_can_pass_x vars
-#define PASS_BUILDING_ONLY			2048 	// For throwing stuff over walls (that lead to open ceilings)
+#define PASS_MOB_XENO				256		// For xenos
+#define PASS_MOB_HUMAN				512		// For humans
+#define PASS_MOB_OTHER				1024	// For every other mob
+#define PASS_TYPE_CRAWLER			2048	// For mobs that crawl/climb over stuff (runners/larva), more for "whitelisting" crawlers to pass
+#define PASS_HIGH_OVER_ONLY			4096 	// For atoms that require a high toss to go over it, should only really be using this for flags_can_pass_x vars
+#define PASS_BUILDING_ONLY			8192 	// For throwing stuff over walls (that lead to open ceilings)
+
+var/global/list/pass_flags_list = list (
+	PASS_THROUGH,
+	PASS_AROUND,
+	PASS_OVER_THROW_ITEM,
+	PASS_OVER_THROW_MOB,
+	PASS_OVER_FIRE,
+	PASS_OVER_ACID_SPRAY,
+	PASS_UNDER,
+	PASS_GLASS,
+	PASS_MOB_XENO,
+	PASS_MOB_HUMAN,
+	PASS_MOB_OTHER,
+	PASS_TYPE_CRAWLER,
+	PASS_HIGH_OVER_ONLY,
+	PASS_BUILDING_ONLY	
+)
 
 // Pass flag groups
 #define PASS_OVER					(PASS_OVER_THROW_ITEM|PASS_OVER_THROW_MOB|PASS_OVER_FIRE|PASS_OVER_ACID_SPRAY)
 #define PASS_HIGH_OVER				(PASS_HIGH_OVER_ONLY|PASS_OVER)
 #define PASS_BUILDING				(PASS_HIGH_OVER|PASS_BUILDING_ONLY)
+#define PASS_MOB					(PASS_MOB_XENO|PASS_MOB_HUMAN|PASS_MOB_OTHER)
 #define PASS_ALL					(PASS_THROUGH|PASS_AROUND|PASS_OVER|PASS_UNDER|PASS_GLASS|PASS_MOB|PASS_HIGH_OVER_ONLY|PASS_BUILDING_ONLY|PASS_TYPE_CRAWLER)
 
 // Short-hand pass flags for very specific things

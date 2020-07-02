@@ -254,13 +254,12 @@
 /mob/living/carbon/Xenomorph/show_inv(mob/user)
 	return
 
-/mob/living/carbon/Xenomorph/mob_launch_collision(var/mob/living/L)
-	
+/mob/living/carbon/Xenomorph/proc/pounced_mob(var/mob/living/L)
+	// This should only be called back by a mob that has pounce, so no need to check
 	var/datum/action/xeno_action/activable/pounce/pounceAction = get_xeno_action_by_type(src, /datum/action/xeno_action/activable/pounce)
 
-	// Incapable of pouncing, unconscious or dead, or not throwing but used pounce.
-	// A bit hacky because we assume that the xeno has a pounce action
-	if(!pounceAction || !check_state() || (!throwing && !pounceAction.action_cooldown_check())) 
+	// Unconscious or dead, or not throwing but used pounce.
+	if(!check_state() || (!throwing && !pounceAction.action_cooldown_check())) 
 		..()
 		return
 
@@ -309,17 +308,19 @@
 
 	throwing = FALSE //Reset throwing since something was hit.
 
+/mob/living/carbon/Xenomorph/proc/pounced_mob_wrapper(var/mob/living/L)
+	pounced_mob(L)
+
 /mob/living/carbon/Xenomorph/proc/charge_unfreeze()
 	frozen = FALSE
 	update_canmove()
 
-/mob/living/carbon/Xenomorph/obj_launch_collision(var/obj/O)
+/mob/living/carbon/Xenomorph/proc/pounced_obj(var/obj/O)
 	var/datum/action/xeno_action/activable/pounce/pounceAction = get_xeno_action_by_type(src, /datum/action/xeno_action/activable/pounce)
 
-	// Incapable of pouncing, unconscious or dead, or not throwing but used pounce.
-	// A bit hacky because we assume that 
-	if(!pounceAction || !check_state() || (!throwing && !pounceAction.action_cooldown_check())) 
-		..()
+	// Unconscious or dead, or not throwing but used pounce
+	if(!check_state() || (!throwing && !pounceAction.action_cooldown_check())) 
+		obj_launch_collision(O)
 		return
 
 	if (pounceAction.should_destroy_objects)
@@ -333,7 +334,14 @@
 		if(!istype(O, /obj/structure/table) && !istype(O, /obj/structure/rack))
 			O.hitby(src) //This resets throwing.
 
+/mob/living/carbon/Xenomorph/proc/pounced_obj_wrapper(var/obj/O)
+	pounced_obj(O)
 
+/mob/living/carbon/Xenomorph/proc/pounced_turf(var/turf/T)
+	turf_launch_collision(T)
+
+/mob/living/carbon/Xenomorph/proc/pounced_turf_wrapper(var/turf/T)
+	pounced_turf(T)
 
 //Bleuugh
 /mob/living/carbon/Xenomorph/proc/empty_gut()

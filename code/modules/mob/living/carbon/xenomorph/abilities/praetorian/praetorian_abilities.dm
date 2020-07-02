@@ -33,7 +33,7 @@
 	knockdown = FALSE				
 	slash = FALSE					
 	freeze_self = FALSE				
-	should_pass_mobs = TRUE		// used to pass over mobs
+	pounce_pass_flags = PASS_MOB|PASS_OVER_THROW_MOB
 
 	var/buff_duration = 12
 	var/damage = 45
@@ -209,7 +209,7 @@
 	distance = 4			
 	knockdown = FALSE				
 	slash = FALSE					
-	freeze_self = FALSE				
+	freeze_self = FALSE		
 
 /datum/action/xeno_action/activable/prae_acid_ball
 	name = "Acid Ball"

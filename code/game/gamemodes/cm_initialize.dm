@@ -367,7 +367,8 @@ Additional game mode variables.
 	if(!instant_join)
 		var/userInput = input("Available Xenomorphs") as null|anything in available_xenos
 
-		if(userInput == "pooled larva" && SP.can_spawn_larva())
+		// isnull() is checked here, in case the spawn pool gets destroyed while the menu is open.
+		if(userInput == "pooled larva" && !isnull(SP) && SP.can_spawn_larva())
 			if(isnewplayer(xeno_candidate))
 				var/mob/new_player/N = xeno_candidate
 				N.close_spawn_windows()

@@ -47182,7 +47182,6 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_cargo)
 "cBX" = (
-/obj/structure/device/piano,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
@@ -49925,7 +49924,6 @@
 /turf/open/floor/plating,
 /area/desert_dam/building/church)
 "cJg" = (
-/obj/structure/device/piano,
 /turf/open/floor{
 	icon_state = "dark"
 	},

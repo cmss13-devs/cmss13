@@ -16851,10 +16851,6 @@
 	},
 /area/ice_colony/surface/bar/bar)
 "aQv" = (
-/obj/structure/device/piano{
-	tag = "icon-pianobroken";
-	icon_state = "pianobroken"
-	},
 /turf/open/floor/wood,
 /area/ice_colony/surface/bar/bar)
 "aQw" = (

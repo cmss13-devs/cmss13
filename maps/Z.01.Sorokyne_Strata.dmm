@@ -14604,10 +14604,6 @@
 	},
 /area/strata/ag/interior/nearlz1)
 "aMB" = (
-/obj/structure/device/piano{
-	icon_state = "pianobroken";
-	tag = "icon-pianobroken"
-	},
 /turf/open/floor/strata{
 	icon_state = "orange_tile"
 	},

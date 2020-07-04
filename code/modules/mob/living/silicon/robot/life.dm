@@ -227,19 +227,15 @@
 		else
 			clear_fullscreen("blind")
 
-			if (disabilities & NEARSIGHTED)
-				overlay_fullscreen("nearsighted", /obj/screen/fullscreen/impaired, 1)
-			else
-				clear_fullscreen("nearsighted")
+		if (eye_blurry)
+			overlay_fullscreen("eye_blurry", /obj/screen/fullscreen/impaired, 5)
+		else
+			clear_fullscreen("eye_blurry")
 
-			if(eye_blurry)
-				overlay_fullscreen("blurry", /obj/screen/fullscreen/blurry)
-			else
-				clear_fullscreen("blurry")
-			if(druggy)
-				overlay_fullscreen("high", /obj/screen/fullscreen/high)
-			else
-				clear_fullscreen("high")
+		if(druggy)
+			overlay_fullscreen("high", /obj/screen/fullscreen/high)
+		else
+			clear_fullscreen("high")
 
 
 		if(interactee)

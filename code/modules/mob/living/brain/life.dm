@@ -171,9 +171,9 @@
 			clear_fullscreen("blind")
 
 			if(eye_blurry)
-				overlay_fullscreen("blurry", /obj/screen/fullscreen/blurry)
+				overlay_fullscreen("eye_blurry", /obj/screen/fullscreen/impaired, 5)
 			else
-				clear_fullscreen("blurry")
+				clear_fullscreen("eye_blurry")
 
 			if(druggy)
 				overlay_fullscreen("high", /obj/screen/fullscreen/high)

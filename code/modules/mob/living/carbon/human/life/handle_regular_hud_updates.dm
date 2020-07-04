@@ -62,27 +62,10 @@
 		else
 			clear_fullscreen("blind")
 
-		if (disabilities & NEARSIGHTED)
-			if(glasses)
-				var/obj/item/clothing/glasses/G = glasses
-				if(!G.prescription)
-					overlay_fullscreen("nearsighted", /obj/screen/fullscreen/impaired, 1)
-				else
-					clear_fullscreen("nearsighted")
-			else
-				overlay_fullscreen("nearsighted", /obj/screen/fullscreen/impaired, 1)
+		if(eye_blurry || dazed)
+			overlay_fullscreen("eye_blurry", /obj/screen/fullscreen/impaired, 5)
 		else
-			clear_fullscreen("nearsighted")
-
-		if(eye_blurry)
-			overlay_fullscreen("blurry", /obj/screen/fullscreen/blurry)
-		else
-			clear_fullscreen("blurry")
-
-		if(dazed)
-			overlay_fullscreen("dazed", /obj/screen/fullscreen/blurry)
-		else
-			clear_fullscreen("dazed")
+			clear_fullscreen("eye_blurry")
 
 		if(druggy)
 			overlay_fullscreen("high", /obj/screen/fullscreen/high)

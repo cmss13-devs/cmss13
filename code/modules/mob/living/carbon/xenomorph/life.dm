@@ -260,7 +260,7 @@
 		reset_view(null)
 
 	if(dazed)
-		overlay_fullscreen("dazed", /obj/screen/fullscreen/blurry)
+		overlay_fullscreen("dazed", /obj/screen/fullscreen/impaired, 5)
 	else
 		clear_fullscreen("dazed")
 

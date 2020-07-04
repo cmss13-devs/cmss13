@@ -1,6 +1,0 @@
-author: Vicacrov
-
-delete-after: True
-
-changes: 
-  - tweak: "The white, semi-transparent overlay induced by eye damage was replaced with the vision impairment (black square) effect. Currently, it's not scaling with eye damage: you either have it or not. This will be probably changed in the future."

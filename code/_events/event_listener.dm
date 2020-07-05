@@ -3,13 +3,21 @@
 	event listeners allow you to register arbitrary listener callbacks on any datum.
 
 	If you want to register a listener for an event, use registerListener.
+
 	If you want to raise an event, use raiseEvent. Note that event callbacks are invoked asynchronously.
+
 	If you need to raise events synchronously, e.g. because call order is important or it's important that only
 	one hook runs at a time, you can use raiseEventSync.
-
-	When raising events synchronously, event listeners can return true to stop execution of the event,
+	When raising events synchronously, event listeners can return halt execution of the event.
 	meaning none of the remaining event listener procs in queue will execute.
-	Useful if you
+	Useful if you want to string event listeners together in an "and"-like fashion to perform logic with events.
+
+	If you want to raise events in a specific order, you can use raiseEventOrdered. You must provide a sorting function
+	to determine the ordering in which the event listeners are invoked. By necessity, these listeners are invoked synchronously
+	and you can return true from any listener to halt execution of the remainder of the event.
+
+	If you're here to make changes, you should know there are 3 different proc signatures because it keeps the parameters simple,
+	and they clearly communicate how the event will be raised internally. Please don't merge them into one blobbed raiseEvent proc.
 */
 
 /datum
@@ -108,6 +116,51 @@ var/global/datum/global_event_handler/GLOBAL_EVENT = new()
 
 	var/has_arguments = (length(args) > 2)
 	for(var/id in speaker.event_listeners[event])
+		var/datum/callback/C = speaker.event_listeners[event][id]
+		if(isnull(C))
+			continue
+
+		var/halt_event = FALSE
+		if(has_arguments)
+			halt_event = C.Invoke(arglist(args.Copy(3)))
+		else
+			halt_event = C.Invoke()
+
+		if(halt_event)
+			break
+	return TRUE
+
+// Raises the event and invokes all the callbacks synchronously and in order using the given args.
+// Listeners can return true to stop remaining listeners from executing, and listeners are executed in sorted order.
+/*
+	speaker : The datum to raise an event on. For global events, use GLOBAL_EVENT.
+	event   : The name of the event to raise.
+	sort    : A callback to a sorting function. The callback is passed two IDs, a and b. Return true to place a before b
+	...     : Arguments to be passed to every invoked listener.
+*/
+/proc/raiseEventOrdered(var/datum/speaker, var/event, var/datum/callback/sort, ...)
+	if(!speaker || !istype(speaker))
+		CRASH("attempt to raise event \"[event]\" but no speaker was given")
+		return FALSE
+
+	if(!LAZYLEN(LAZYACCESS(speaker.event_listeners, event)))
+		return FALSE
+
+	var/list/to_execute = list()
+	// idk if dm would pass the callback datums or the id to the sorting function but this way i'm damn sure
+	for(var/id in speaker.event_listeners[event])
+		to_execute += id
+
+	// No listeners to execute
+	if(!to_execute.len)
+		return FALSE
+
+	// Mergesort to sort order of invocation (if desired)
+	if(sort && to_execute.len > 0)
+		to_execute = custom_mergesort(to_execute, sort)
+
+	var/has_arguments = (length(args) > 2)
+	for(var/id in to_execute)
 		var/datum/callback/C = speaker.event_listeners[event][id]
 		if(isnull(C))
 			continue

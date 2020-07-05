@@ -716,3 +716,40 @@ proc/print_list(list/L)
    list_str = copytext(list_str, 1, length(list_str))
    to_world(list_str)
    return list_str
+
+// Mergesorts a list, using the sort callback to determine ordering
+/proc/custom_mergesort(var/list/L, var/datum/callback/sort)
+	if(!L)
+		return L
+
+	if(!sort)
+		return L
+
+	if(L.len <= 1)
+		return L
+
+	var/middle = Floor(L.len / 2)
+	var/list/left = custom_mergesort(L.Copy(1, middle + 1))
+	var/list/right = custom_mergesort(L.Copy(middle + 1))
+	var/list/result = list()
+
+	while(left.len > 0 && right.len > 0)
+		var/a = left[1]
+		var/b = right[1]
+
+		if(sort.Invoke(a, b))
+			result += a
+			left.Cut(1,2)
+		else
+			result += b
+			right.Cut(1,2)
+
+	while(left.len > 0)
+		result += left[1]
+		left.Cut(1,2)
+
+	while(right.len > 0)
+		result += right[1]
+		right.Cut(1,2)
+
+	return result

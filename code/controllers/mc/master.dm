@@ -494,4 +494,4 @@ var/CURRENT_TICKLIMIT = TICK_LIMIT_RUNNING
 		statclick = new/obj/effect/statclick/debug("Initializing...", src)
 
 
-	stat("Master Controller:", statclick.update("(TickRate:[Master.processing]) (TickDrift:[round(Master.tickdrift)]) (Iteration:[Master.iteration])"))
+	stat("Master Controller:", statclick.update("(TickRate:[Master.processing]) (TickDrift:[round(Master.tickdrift)]) (Iteration:[Master.iteration]) (ITU: [internal_tick_usage*1000]ms - [MAPTICK_LAST_INTERNAL_TICK_USAGE]%)"))

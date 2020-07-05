@@ -15,8 +15,6 @@
 		last_move_dir = get_dir(oldloc, loc)
 	if (.)
 		Moved(oldloc,direct)
-	else if(directional_lum && light && dir != old_dir) //for objects with directional light that were blocked from moving, but still rotated
-		light.changed()
 
 /atom/movable/proc/Collide(atom/A)
 	if (throwing)

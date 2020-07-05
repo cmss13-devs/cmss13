@@ -8,7 +8,7 @@ var/global/datum/global_init/init = new ()
 	makeDatumRefLists()
 
 var/world_view_size = 7
-
+var/internal_tick_usage = 0
 /world
 	mob = /mob/new_player
 	turf = /turf/open/space
@@ -18,7 +18,9 @@ var/world_view_size = 7
 	hub = "Exadv1.spacestation13"
 
 /world/New()
-	
+	internal_tick_usage = 0.2 * world.tick_lag
+	extools_initialize()
+	maptick_initialize()
 	hub_password = "[config.hub_password]"
 
 	//logs

@@ -118,12 +118,14 @@ var/datum/subsystem/timer/SStimer
 			var/datum/callback/callBack = timer.callBack
 			if (!callBack)
 				log_debug("Invalid timer: [timer] timer.time_to_run=[timer.time_to_run]||timer=[timer]||world.time=[world.time]||head_offset=[head_offset]||practical_offset=[practical_offset]||timer.spent=[timer.spent]")
-				var/bad_timer = timer
+				var/datum/timed_event/bad_timer = timer
 				timer = timer.next
 				if(log_bad_timers)
 					bad_timerlist += bad_timer
+					bad_timer.cleanup_timer()
 				else
 					qdel(bad_timer)
+				continue
 				
 			if (!timer.spent)
 				spent += timer
@@ -311,9 +313,14 @@ var/datum/subsystem/timer/SStimer
 
 /datum/timed_event/Dispose()
 	..()
+	cleanup_timer()
+
+	return GC_HINT_IWILLGC
+
+// Clean up for storing a timer for logging and disposing
+/datum/timed_event/proc/cleanup_timer()
 	if (flags & TIMER_UNIQUE)
 		SStimer.hashes -= hash
-
 
 	if (callBack && callBack.object && callBack.object != GLOBAL_PROC && callBack.object.active_timers)
 		callBack.object.active_timers -= src
@@ -357,8 +364,6 @@ var/datum/subsystem/timer/SStimer
 			next.prev = prev
 	next = null
 	prev = null
-
-	return GC_HINT_IWILLGC
 
 /datum/timed_event/proc/getcallingtype()
 	. = "ERROR"

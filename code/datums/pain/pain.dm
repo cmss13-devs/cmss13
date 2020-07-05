@@ -71,8 +71,6 @@
 
 	var/percentage = round(((current_pain - reduction_pain) / max_pain) * 100)
 	if(percentage < 0)
-		log_debug("[source_mob] has a pain percentage under 0. Current pain: [current_pain], Reduction pain: [reduction_pain], Max pain: [max_pain]")
-		CRASH("Pain percentage was under 0 for a mob")
 		return 0
 	else
 		return percentage

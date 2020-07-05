@@ -34,13 +34,26 @@
 
 /obj/item/clothing/head/beanie
 	name = "beanie"
-	desc = "A standard military beanie, often worn by non-combat military personnel and support crews, though the occasional one finds its way to the front line. Popular due to being comfortable and snug."
+	desc = "A standard military beanie, often worn by non-combat military personnel and support crews, though it is not uncommon to see combat personnel who no longer care about self-preservation wearing one of these as well. Popular due to being comfortable and snug."
 	icon = 'icons/obj/items/clothing/cm_hats.dmi'
 	icon_state = "beanie_cargo"
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
 	)
 
+/obj/item/clothing/head/beanie/New()
+	select_gamemode_skin(/obj/item/clothing/head/beanie)
+	..()
+
+/obj/item/clothing/head/beanie/green
+	icon_state = "beaniegreen"
+
+/obj/item/clothing/head/beanie/gray
+	icon_state = "beaniegray"
+
+/obj/item/clothing/head/beanie/tan
+	icon_state = "beanietan"
+	
 /obj/item/clothing/head/beret/cm
 	name = "\improper USCM beret"
 	desc = "A hat typically worn by the field-officers of the USCM. Occasionally they find their way down the ranks into the hands of squad-leaders and decorated grunts."

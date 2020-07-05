@@ -191,7 +191,7 @@
 		var/obj/item/clothing/mask/facehugger/F = I
 		if(F.stat != DEAD && !F.sterile && !(status_flags & XENO_HOST)) //Huggered but not impregnated, deal damage.
 			visible_message(SPAN_DANGER("[F] frantically claws at [src]'s face!"),SPAN_DANGER("[F] frantically claws at your face! Auugh!"))
-			adjustBruteLossByPart(25,"head")
+			apply_damage(25, BRUTE, "head")
 	name = get_visible_name() // doing this without a check, still cheaper than doing it every Life() tick -spookydonut
 	if(I.flags_inv_hide & (HIDEALLHAIR|HIDETOPHAIR|HIDELOWHAIR))
 		update_hair()	//rebuild hair

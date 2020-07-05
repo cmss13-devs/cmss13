@@ -170,7 +170,7 @@
 					SPAN_HELPFUL("[user] <b>cleans and seals</b> the wounds on your <b>[affecting.display_name]</b> with bioglue."),
 					SPAN_NOTICE("[user] cleans and seals the wounds on [possessive_their] [affecting.display_name] with bioglue."))
 			if(bandaged)
-				affecting.heal_damage(heal_amt, 0)
+				H.apply_damage(-heal_amt, BRUTE, affecting)
 				use(1)
 		else
 			if(H.can_be_operated_on())        //Checks if mob is lying down on table for surgery
@@ -234,7 +234,8 @@
 					SPAN_HELPFUL("You <b>cover the wounds</b> on [possessive] <b>[affecting.display_name]</b> with regenerative membrane."),
 					SPAN_HELPFUL("[user] <b>covers the wounds</b> on your <b>[affecting.display_name]</b> with regenerative membrane."),
 					SPAN_NOTICE("[user] covers the wounds on [possessive_their] [affecting.display_name] with regenerative membrane."))
-				affecting.heal_damage(0, heal_amt)
+
+				H.apply_damage(-heal_amt, BURN, affecting)
 				use(1)
 		else
 			if(H.can_be_operated_on()) //Checks if mob is lying down on table for surgery

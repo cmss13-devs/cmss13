@@ -104,15 +104,13 @@ proc/do_surgery(mob/living/carbon/M, mob/living/user, obj/item/tool)
 						multipler -= SURGERY_MULTIPLIER_MEDIUM
 					if(M.stat == CONSCIOUS)//If not on anesthetics or not unconsious
 						multipler -= SURGERY_MULTIPLIER_LARGE
-						switch(M.reagent_pain_modifier)
+						switch(M.pain.reduction_pain)
 							if(PAIN_REDUCTION_MEDIUM to PAIN_REDUCTION_HEAVY)
 								multipler += SURGERY_MULTIPLIER_SMALL
 							if(PAIN_REDUCTION_HEAVY to PAIN_REDUCTION_VERY_HEAVY)
 								multipler += SURGERY_MULTIPLIER_MEDIUM
 							if(PAIN_REDUCTION_VERY_HEAVY to PAIN_REDUCTION_FULL)
 								multipler += SURGERY_MULTIPLIER_LARGE
-						if(M.shock_stage > 100) //Being near to unconsious is good in this case
-							multipler += SURGERY_MULTIPLIER_MEDIUM
 					if(istype(M.loc, /turf/open/shuttle/dropship))
 						multipler -= SURGERY_MULTIPLIER_HUGE
 					multipler = Clamp(multipler, 0, 1)
@@ -132,7 +130,7 @@ proc/do_surgery(mob/living/carbon/M, mob/living/user, obj/item/tool)
 					if(M.stat == CONSCIOUS && !M.paralyzed) //If not on anesthetics, muscle relaxants, or not unconscious, warn player
 						if(ishuman(M))
 							var/mob/living/carbon/human/H = M
-							if(!(H.species.flags & NO_PAIN))
+							if(H.pain.feels_pain)
 								M.emote("pain")
 						to_chat(user, SPAN_DANGER("[M] moved during the surgery! Use anesthetics!"))
 					S.fail_step(user, M, user.zone_selected, tool, affected) //Malpractice

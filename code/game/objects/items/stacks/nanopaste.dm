@@ -35,6 +35,7 @@
 			if (S && (S.status & LIMB_ROBOT))
 				if(S.get_damage())
 					S.heal_damage(15, 15, robo_repair = 1)
+					H.pain.recalculate_pain()
 					H.updatehealth()
 					use(1)
 					var/others_msg = "\The [user] applies some nanite paste at[user != M ? " \the [M]'s" : " \the"] [S.display_name] with \the [src]." // Needs to create vars for these messages because macro doesn't work otherwise

@@ -1211,12 +1211,6 @@ var/global/image/action_blue_power_up
 		)
 			. = FALSE
 			break
-		if(user_flags & INTERRUPT_UNCONSCIOUS && L.health < config.health_threshold_crit || \
-			target_is_mob && (target_flags & INTERRUPT_UNCONSCIOUS && T.health < config.health_threshold_crit)
-		)
-			//health check for catching mobs below crit level but haven't had their stat var updated
-			. = FALSE
-			break
 		if(user_flags & INTERRUPT_KNOCKED_DOWN && L.knocked_down || \
 			target_is_mob && (target_flags & INTERRUPT_KNOCKED_DOWN && T.knocked_down)
 		)

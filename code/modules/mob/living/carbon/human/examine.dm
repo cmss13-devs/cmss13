@@ -173,7 +173,7 @@
 		distance = 1
 	if (stat)
 		msg += SPAN_WARNING("[t_He] [t_is]n't responding to anything around [t_him] and seems to be asleep.\n")
-		if((stat == 2 || health < config.health_threshold_crit) && distance <= 3)
+		if(stat == DEAD && distance <= 3)
 			msg += SPAN_WARNING("[t_He] does not appear to be breathing.\n")
 		if(paralyzed > 1 && distance <= 3)
 			msg += SPAN_WARNING("[t_He] seems to be completely still.\n")

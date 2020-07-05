@@ -231,7 +231,7 @@
 		take_damage_bone_break(brute)
 
 	if(status & LIMB_BROKEN && prob(40) && brute > 10)
-		if(!(owner.species && (owner.species.flags & NO_PAIN)))
+		if(owner.pain.feels_pain)
 			owner.emote("scream") //Getting hit on broken hand hurts
 	if(used_weapon)
 		add_autopsy_data("[used_weapon]", brute + burn)
@@ -327,6 +327,7 @@
 			burn = W.heal_damage(burn)
 
 	if(internal)
+		owner.pain.apply_pain(-PAIN_BONE_BREAK)
 		status &= ~LIMB_BROKEN
 		status |= LIMB_REPAIRED
 		perma_injury = 0
@@ -363,7 +364,8 @@ This function completely restores a damaged organ to perfect condition.
 			implants -= implanted_object
 			if(is_sharp(implanted_object) || istype(implanted_object, /obj/item/shard/shrapnel))
 				owner.embedded_items -= implanted_object
-
+				
+	owner.pain.recalculate_pain()
 	owner.updatehealth()
 	update_icon()
 
@@ -394,6 +396,7 @@ This function completely restores a damaged organ to perfect condition.
 	if(status & LIMB_SPLINTED && damage > 5 && prob(50 + damage * 2.5)) //If they have it splinted, the splint won't hold.
 		status &= ~LIMB_SPLINTED
 		to_chat(owner, SPAN_DANGER("The splint on your [display_name] comes apart!"))
+		owner.pain.apply_pain(PAIN_BONE_BREAK_SPLINTED)
 		owner.update_med_icon()
 
 	// first check whether we can widen an existing wound
@@ -511,6 +514,7 @@ This function completely restores a damaged organ to perfect condition.
 	if(knitting_time > 0)
 		if(world.time > knitting_time)
 			to_chat(owner, SPAN_WARNING("The bones in your [display_name] feel fully knitted."))
+			owner.pain.apply_pain(-PAIN_BONE_BREAK)
 			status &= ~LIMB_BROKEN //Let it be known that this code never unbroke the limb.
 			knitting_time = -1
 
@@ -561,6 +565,14 @@ This function completely restores a damaged organ to perfect condition.
 			heal_amt = heal_amt / (wounds.len + 1)
 			// making it look prettier on scanners
 			heal_amt = round(heal_amt,0.1)
+
+			if(istype(W, /datum/wound/bruise) || istype(W, /datum/wound/cut))
+				owner.pain.apply_pain(-heal_amt, BRUTE)
+			else if(istype(W, /datum/wound/burn))
+				owner.pain.apply_pain(-heal_amt, BURN)
+			else
+				owner.pain.recalculate_pain()
+
 			W.heal_damage(heal_amt)
 
 	// sync the organ's damage with its wounds
@@ -696,6 +708,7 @@ This function completely restores a damaged organ to perfect condition.
 			status = LIMB_DESTROYED|LIMB_ROBOT
 		else
 			status = LIMB_DESTROYED
+			owner.pain.apply_pain(PAIN_BONE_BREAK)
 		if(amputation)
 			status |= LIMB_AMPUTATED
 		for(var/i in implants)
@@ -896,38 +909,16 @@ This function completely restores a damaged organ to perfect condition.
 		SPAN_HIGHDANGER("You hear a sickening crack!"))
 	var/F = pick('sound/effects/bone_break1.ogg','sound/effects/bone_break2.ogg','sound/effects/bone_break3.ogg','sound/effects/bone_break4.ogg','sound/effects/bone_break5.ogg','sound/effects/bone_break6.ogg','sound/effects/bone_break7.ogg')
 	playsound(owner,F, 45, 1)
-	if(owner.species && !(owner.species.flags & NO_PAIN))
+	if(owner.pain.feels_pain)
 		owner.emote("scream")
 
 	start_processing()
 
 	status |= LIMB_BROKEN
 	status &= ~LIMB_REPAIRED
+	owner.pain.apply_pain(PAIN_BONE_BREAK)
 	broken_description = pick("broken","fracture","hairline fracture")
 	perma_injury = brute_dam
-
-	// Fractures have a chance of getting you out of restraints
-	if (prob(25))
-		release_restraints()
-
-	// This is mostly for the ninja suit to stop ninja being so crippled by breaks.
-	// TODO: consider moving this to a suit proc or process() or something during
-	// hardsuit rewrite.
-	if(!(status & LIMB_SPLINTED) && istype(owner,/mob/living/carbon/human))
-
-		var/mob/living/carbon/human/H = owner
-
-		if(H.wear_suit && istype(H.wear_suit,/obj/item/clothing/suit/space))
-
-			var/obj/item/clothing/suit/space/suit = H.wear_suit
-
-			if(isnull(suit.supporting_limbs))
-				return
-
-			to_chat(owner, "You feel [suit] constrict about your [display_name], supporting it.")
-			status |= LIMB_SPLINTED
-			suit.supporting_limbs |= src
-	return
 
 /obj/limb/proc/robotize()
 	status &= ~LIMB_BROKEN
@@ -977,7 +968,7 @@ This function completely restores a damaged organ to perfect condition.
 		if(prob(15))
 			owner.drop_inv_item_on_ground(c_hand)
 			var/emote_scream = pick("screams in pain and", "lets out a sharp cry and", "cries out and")
-			owner.emote("me", 1, "[(owner.species && owner.species.flags & NO_PAIN) ? "" : emote_scream ] drops what they were holding in their [hand_name]!")
+			owner.emote("me", 1, "[(!owner.pain.feels_pain) ? "" : emote_scream ] drops what they were holding in their [hand_name]!")
 	if(is_malfunctioning())
 		if(prob(10))
 			owner.drop_inv_item_on_ground(c_hand)
@@ -1022,6 +1013,7 @@ This function completely restores a damaged organ to perfect condition.
 					SPAN_HELPFUL("[user] finishes applying <b>[S]</b> to your [display_name]."),
 					SPAN_NOTICE("[user] finish applying [S] to [possessive_their] [display_name]."))
 				status |= LIMB_SPLINTED
+				owner.pain.apply_pain(-PAIN_BONE_BREAK_SPLINTED)
 				. = 1
 				owner.update_med_icon()
 		else
@@ -1031,6 +1023,7 @@ This function completely restores a damaged organ to perfect condition.
 				SPAN_WARNING("[user] successfully applies [S] to their [display_name]."),
 				SPAN_NOTICE("You successfully apply [S] to your [display_name]."))
 				status |= LIMB_SPLINTED
+				owner.pain.apply_pain(-PAIN_BONE_BREAK_SPLINTED)
 				. = 1
 				owner.update_med_icon()
 

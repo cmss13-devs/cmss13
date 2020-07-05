@@ -33,6 +33,8 @@
 	//and display them
 	add_to_all_mob_huds()
 
+/mob/living/carbon/human/initialize_pain()
+	pain = new /datum/pain/human(src)
 
 /mob/living/carbon/human/Dispose()
 	if(assigned_squad)
@@ -162,36 +164,42 @@
 	//Focus half the blast on one organ
 	var/obj/limb/take_blast = pick(limbs)
 	update |= take_blast.take_damage(b_loss * 0.5, f_loss * 0.5, used_weapon = "Explosive blast", attack_source = source_mob)
+	pain.apply_pain(b_loss * 0.5, BRUTE)
+	pain.apply_pain(f_loss * 0.5, BURN)
 
 	//Distribute the remaining half all limbs equally
 	b_loss *= 0.5
 	f_loss *= 0.5
 
 	var/weapon_message = "Explosive Blast"
-
+	var/limb_multiplier = 0.05
 	for(var/obj/limb/temp in limbs)
 		switch(temp.name)
 			if("head")
-				update |= temp.take_damage(b_loss * 0.2, f_loss * 0.2, used_weapon = weapon_message, attack_source = source_mob)
+				limb_multiplier = 0.2
 			if("chest")
-				update |= temp.take_damage(b_loss * 0.4, f_loss * 0.4, used_weapon = weapon_message, attack_source = source_mob)
+				limb_multiplier = 0.4
 			if("l_arm")
-				update |= temp.take_damage(b_loss * 0.05, f_loss * 0.05, used_weapon = weapon_message, attack_source = source_mob)
+				limb_multiplier = 0.05
 			if("r_arm")
-				update |= temp.take_damage(b_loss * 0.05, f_loss * 0.05, used_weapon = weapon_message, attack_source = source_mob)
+				limb_multiplier = 0.05
 			if("l_leg")
-				update |= temp.take_damage(b_loss * 0.05, f_loss * 0.05, used_weapon = weapon_message, attack_source = source_mob)
+				limb_multiplier = 0.05
 			if("r_leg")
-				update |= temp.take_damage(b_loss * 0.05, f_loss * 0.05, used_weapon = weapon_message, attack_source = source_mob)
+				limb_multiplier = 0.05
 			if("r_foot")
-				update |= temp.take_damage(b_loss * 0.05, f_loss * 0.05, used_weapon = weapon_message, attack_source = source_mob)
+				limb_multiplier = 0.05
 			if("l_foot")
-				update |= temp.take_damage(b_loss * 0.05, f_loss * 0.05, used_weapon = weapon_message, attack_source = source_mob)
+				limb_multiplier = 0.05
 			if("r_arm")
-				update |= temp.take_damage(b_loss * 0.05, f_loss * 0.05, used_weapon = weapon_message, attack_source = source_mob)
+				limb_multiplier = 0.05
 			if("l_arm")
-				update |= temp.take_damage(b_loss * 0.05, f_loss * 0.05, used_weapon = weapon_message, attack_source = source_mob)
-	if(update)	UpdateDamageIcon()
+				limb_multiplier = 0.05
+		update |= temp.take_damage(b_loss * limb_multiplier, f_loss * limb_multiplier, used_weapon = weapon_message, attack_source = source_mob)
+		pain.apply_pain(b_loss * limb_multiplier, BRUTE)
+		pain.apply_pain(f_loss * limb_multiplier, BURN)
+	if(update)	
+		UpdateDamageIcon()
 	return TRUE
 
 
@@ -944,6 +952,8 @@
 				continue
 			virus.cure(0)
 
+	pain.recalculate_pain()
+
 	undefibbable = FALSE
 	..()
 
@@ -1323,6 +1333,7 @@
 					W.add_fingerprint(HS)
 					for(var/obj/limb/l in to_splint)
 						amount_removed += 1
+						pain.apply_pain(PAIN_BONE_BREAK_SPLINTED)
 						l.status &= ~LIMB_SPLINTED
 						if(!W.add(1))
 							W = new /obj/item/stack/medical/splint(HS.loc)//old stack is dropped, time for new one
@@ -1345,20 +1356,56 @@
 /mob/living/carbon/human/yautja/Initialize()
 	..(new_species = "Yautja")
 
+/mob/living/carbon/human/yautja/initialize_pain()
+	pain = new /datum/pain/yautja(src)
+
 /mob/living/carbon/human/monkey/Initialize()
 	..(new_species = "Monkey")
+
+/mob/living/carbon/human/monkey/initialize_pain()
+	pain = new /datum/pain/monkey(src)
 
 /mob/living/carbon/human/farwa/Initialize()
 	..(new_species = "Farwa")
 
+/mob/living/carbon/human/farwa/initialize_pain()
+	pain = new /datum/pain/monkey(src)
+
 /mob/living/carbon/human/neaera/Initialize()
 	..(new_species = "Neaera")
+
+/mob/living/carbon/human/neaera/initialize_pain()
+	pain = new /datum/pain/monkey(src)
 
 /mob/living/carbon/human/stok/Initialize()
 	..(new_species = "Stok")
 
+/mob/living/carbon/human/stok/initialize_pain()
+	pain = new /datum/pain/monkey(src)
+
 /mob/living/carbon/human/yiren/Initialize()
 	..(new_species = "Yiren")
+
+/mob/living/carbon/human/yiren/initialize_pain()
+	pain = new /datum/pain/monkey(src)
+
+/mob/living/carbon/human/synthetic/Initialize(var/new_loc)
+	..(new_loc, "Synthetic")
+
+/mob/living/carbon/human/synthetic/initialize_pain()
+	pain = new /datum/pain/synthetic(src)
+
+/mob/living/carbon/human/synthetic_old/Initialize(var/new_loc)
+	..(new_loc, "Early Synthetic")
+
+/mob/living/carbon/human/synthetic_old/initialize_pain()
+	pain = new /datum/pain/synthetic(src)
+
+/mob/living/carbon/human/synthetic_2nd_gen/Initialize(var/new_loc)
+	..(new_loc, "Second Generation Synthetic")
+
+/mob/living/carbon/human/synthetic_2nd_gen/initialize_pain()
+	pain = new /datum/pain/synthetic(src)
 
 
 /mob/living/carbon/human/resist_fire()
@@ -1480,9 +1527,3 @@
 	if(species)
 		slot_equipment_priority = species.slot_equipment_priority
 	return ..(W,ignore_delay,slot_equipment_priority)
-
-/mob/living/carbon/human/updateshock()
-	if(species && species.flags & NO_PAIN)
-		traumatic_shock = FALSE
-		return
-	return . = ..()

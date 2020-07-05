@@ -155,11 +155,22 @@
 	rarity = PROPERTY_COMMON
 	category = PROPERTY_TYPE_STIMULANT
 
+/datum/chem_property/positive/painkilling/on_delete(mob/living/M)
+	..()
+
+	M.pain.reset_pain_reduction()
+
 /datum/chem_property/positive/painkilling/process(mob/living/M, var/potency = 1)
-	M.reagent_pain_modifier += -60*potency
+	if(!..())
+		return
+
+	M.pain.apply_pain_reduction(PAIN_REDUCTION_MULTIPLIER * potency)
 
 /datum/chem_property/positive/painkilling/process_overdose(mob/living/M, var/potency = 1)
-	M.reagent_pain_modifier += -30*potency
+	if(!..())
+		return
+
+	M.pain.apply_pain_reduction(PAIN_REDUCTION_MULTIPLIER * potency)
 	M.hallucination = max(M.hallucination, potency) //Hallucinations and tox damage
 	M.apply_damage(potency, TOX)
 
@@ -276,8 +287,13 @@
 	description = "Regenerates damaged cardiomyocytes and recovers a correct cardiac cycle and heart functionality."
 	rarity = PROPERTY_UNCOMMON
 
+/datum/chem_property/positive/cardiopeutic/on_delete(mob/living/M)
+	..()
+
+	M.pain.recalculate_pain()
+
 /datum/chem_property/positive/cardiopeutic/process(mob/living/M, var/potency = 1)
-	if(!ishuman(M))
+	if(!ishuman(M) || !(..()))
 		return
 	var/mob/living/carbon/human/H = M
 	var/datum/internal_organ/heart/L = H.internal_organs_by_name["heart"]
@@ -288,7 +304,10 @@
 	M.apply_damage(2*potency, OXY)
 
 /datum/chem_property/positive/cardiopeutic/process_critical(mob/living/M, var/potency = 1)
-	M.reagent_pain_modifier += 100*potency
+	if(!(..()))
+		return
+
+	M.pain.apply_pain(PROPERTY_CARDIOPEUTIC_PAIN_CRITICAL)
 
 /datum/chem_property/positive/neuropeutic
 	name = PROPERTY_NEUROPEUTIC
@@ -460,12 +479,20 @@
 	category = PROPERTY_TYPE_REACTANT
 	value = 3
 
+/datum/chem_property/positive/defibrillating/on_delete(mob/living/M)
+	..()
+
+	M.pain.recalculate_pain()
+
 /datum/chem_property/positive/defibrillating/process(mob/living/M, var/potency = 1)
 	if(prob(10))
 		M.emote("twitch")
 
 /datum/chem_property/positive/defibrillating/process_overdose(mob/living/M, var/potency = 1)
-	M.reagent_pain_modifier += 30*potency
+	if(!(..()))
+		return
+
+	M.pain.apply_pain(PROPERTY_DEFIBRILLATING_PAIN_OD)
 	M.apply_damage(2*potency, OXY)
 
 /datum/chem_property/positive/defibrillating/process_critical(mob/living/M, var/potency = 1)
@@ -481,7 +508,7 @@
 		return
 	var/mob/living/carbon/human/H = M
 	H.apply_damage(-H.getOxyLoss(), OXY)
-	if(H.check_tod() && H.is_revivable() && H.health > config.health_threshold_dead)
+	if(H.check_tod() && H.is_revivable() && H.health > HEALTH_THRESHOLD_DEAD)
 		to_chat(H, SPAN_NOTICE("You feel your heart struggling as you suddenly feel a spark, making it desperately try to continue pumping."))
 		playsound_client(H.client, 'sound/effects/Heart Beat Short.ogg', 35)
 		add_timer(CALLBACK(H, /mob/living/carbon/human.proc/handle_revive), 50, TIMER_UNIQUE)
@@ -625,8 +652,16 @@
 	rarity = PROPERTY_DISABLED
 	category = PROPERTY_TYPE_STIMULANT
 
+/datum/chem_property/positive/cardiostabilizing/on_delete(mob/living/M)
+	..()
+
+	M.pain.reset_pain_reduction()
+
 /datum/chem_property/positive/cardiostabilizing/process(mob/living/M, var/potency = 1)
-	M.reagent_shock_modifier += PAIN_REDUCTION_LIGHT * potency
+	if(!..())
+		return
+
+	M.pain.apply_pain_reduction(PAIN_REDUCTION_MULTIPLIER * potency)
 
 	if(M.losebreath >= 10)
 		M.losebreath = max(10, M.losebreath-5*potency)

@@ -8,21 +8,39 @@
 	var/level = 1 //used to calculate potency
 	var/value //how much value per level? Negative properties should have a high negative value, neutral should have a value near zero, and positive ones should have a high value
 	var/updates_stats = FALSE //should the property change other variables in the reagent when added or removed?
+	var/deleted = FALSE
 
 /datum/chem_property/proc/pre_process(mob/living/M) //used for properties that need special checks before processing starts, such as cryometabolization
 	return
 
-/datum/chem_property/proc/process(mob/living/M, var/potency = 1)
+/datum/chem_property/proc/on_delete(mob/living/M) //used for properties that do something on delete
+	deleted = TRUE
+
 	return
+
+/datum/chem_property/proc/process(mob/living/M, var/potency = 1)
+	if(deleted)
+		return FALSE
+
+	return TRUE
 
 /datum/chem_property/proc/process_overdose(mob/living/M, var/potency = 1)
-	return
+	if(deleted)
+		return FALSE
+
+	return TRUE
 
 /datum/chem_property/proc/process_critical(mob/living/M, var/potency = 1)
-	return
+	if(deleted)
+		return FALSE
+
+	return TRUE
 
 /datum/chem_property/proc/process_dead(mob/living/M, var/potency = 1)
-	return
+	if(deleted)
+		return FALSE
+
+	return TRUE
 
 /datum/chem_property/proc/trigger(var/A) //used for properties that needs something to trigger outside of where process is usually called
 	return

@@ -37,7 +37,7 @@
 	overdose = HIGH_REAGENTS_OVERDOSE
 	overdose_critical = HIGH_REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_UNCOMMON
-	properties = list(PROPERTY_PAINKILLING = 1.5)
+	properties = list(PROPERTY_PAINKILLING = 2)
 
 /datum/reagent/tramadol
 	name = "Tramadol"
@@ -50,7 +50,7 @@
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_COMMON
-	properties = list(PROPERTY_PAINKILLING = 2)
+	properties = list(PROPERTY_PAINKILLING = 5)
 
 /datum/reagent/oxycodone
 	name = "Oxycodone"
@@ -63,7 +63,7 @@
 	overdose = MED_REAGENTS_OVERDOSE
 	overdose_critical = MED_REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_UNCOMMON
-	properties = list(PROPERTY_PAINKILLING = 6)
+	properties = list(PROPERTY_PAINKILLING = 10)
 
 /datum/reagent/sterilizine
 	name = "Sterilizine"

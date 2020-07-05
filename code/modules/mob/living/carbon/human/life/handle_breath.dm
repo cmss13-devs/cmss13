@@ -13,10 +13,6 @@
 
 	var/list/air_info
 
-	// HACK NEED CHANGING LATER
-	if(health < config.health_threshold_crit && !reagents.has_reagent("inaprovaline"))
-		losebreath++
-
 	if(losebreath > 0) //Suffocating so do not take a breath
 		losebreath--
 		if(prob(20)) //Gasp per 5 ticks? Sounds about right.
@@ -75,11 +71,8 @@
 		return
 
 	if(!air_info)
-		if(health > config.health_threshold_crit)
-			apply_damage(HUMAN_MAX_OXYLOSS, OXY)
-		else
-			apply_damage(HUMAN_CRIT_MAX_OXYLOSS, OXY)
-
+		apply_damage(HUMAN_MAX_OXYLOSS, OXY)
+		
 		oxygen_alert = max(oxygen_alert, 1)
 
 		return 0

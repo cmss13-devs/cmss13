@@ -771,9 +771,8 @@ mob/proc/yank_out_object()
 		affected.implants -= selection
 		H.embedded_items -= selection
 
-		if(!isYautja(H) && !isSynth(H))
-			H.shock_stage+=20
 		affected.take_damage((selection.w_class * 3), 0, 0, 1, "Embedded object extraction")
+		H.pain.apply_pain(selection.w_class * 3)
 
 		if(prob(selection.w_class * 5) && !(affected.status & LIMB_ROBOT))
 			var/datum/wound/internal_bleeding/I = new (0)

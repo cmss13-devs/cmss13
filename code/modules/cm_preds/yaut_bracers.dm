@@ -126,7 +126,7 @@
 		//Stun and knock out, scream in pain
 		M.Stun(2)
 		M.KnockDown(2)
-		if(!(M.species && (M.species.flags & NO_PAIN)))
+		if(M.pain.feels_pain)
 			M.emote("scream")
 		//Apply a bit of burn damage
 		M.apply_damage(5, BURN, "l_arm", 0, 0, 0, src)

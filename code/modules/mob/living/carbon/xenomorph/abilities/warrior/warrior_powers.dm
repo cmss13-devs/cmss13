@@ -153,6 +153,7 @@
 	if(L.status & LIMB_SPLINTED) //If they have it splinted, the splint won't hold.
 		L.status &= ~LIMB_SPLINTED
 		to_chat(H, SPAN_DANGER("The splint on your [L.display_name] comes apart!"))
+		H.pain.apply_pain(PAIN_BONE_BREAK_SPLINTED)
 
 	var/damage = rand(base_damage, base_damage + damage_variance)
 	if(isYautja(H))

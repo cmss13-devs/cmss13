@@ -328,6 +328,7 @@
 					return
 
 			S.heal_damage(0,15,0,1)
+			H.pain.recalculate_pain()
 			user.visible_message(SPAN_DANGER("\The [user] repairs some burn damage on \the [M]'s [S.display_name] with \the [src]."))
 			return
 		else

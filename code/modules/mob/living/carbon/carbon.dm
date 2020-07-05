@@ -213,7 +213,7 @@
 		swap_hand()
 
 /mob/living/carbon/proc/help_shake_act(mob/living/carbon/M)
-	if(health < config.health_threshold_crit || src == M)
+	if(src == M)
 		return
 	var/t_him = "it"
 	if(gender == MALE)

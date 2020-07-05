@@ -274,6 +274,7 @@
 		if(COMMAND_ORDER_HOLD)
 			protection_aura_count++
 			protection_aura = max(protection_aura, strength)
+			pain.apply_pain_reduction(protection_aura * PAIN_REDUCTION_AURA)
 		if(COMMAND_ORDER_FOCUS)
 			marksman_aura_count++
 			marksman_aura = max(marksman_aura, strength)
@@ -296,6 +297,7 @@
 			if(protection_aura_count > 1)
 				protection_aura_count--
 			else
+				pain.reset_pain_reduction()
 				protection_aura_count = 0
 				protection_aura = 0
 		if(COMMAND_ORDER_FOCUS)

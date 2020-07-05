@@ -784,7 +784,7 @@
 		if(ammo_flags & AMMO_INCENDIARY)
 			adjust_fire_stacks(rand(6,11))
 			IgniteMob()
-			if(!stat && !(species.flags & NO_PAIN))
+			if(!stat && pain.feels_pain)
 				emote("scream")
 			to_chat(src, SPAN_HIGHDANGER("You burst into flames!! Stop drop and roll!"))
 
@@ -805,7 +805,7 @@
 				if(!found_one)
 					new_embed.on_embed(src, organ)
 
-				if(!stat && !(species && species.flags & NO_PAIN))
+				if(!stat && pain.feels_pain)
 					emote("scream")
 					to_chat(src, SPAN_HIGHDANGER("You scream in pain as the impact sends <B>shrapnel</b> into the wound!"))
 

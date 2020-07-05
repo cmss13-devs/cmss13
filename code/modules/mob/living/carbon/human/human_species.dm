@@ -35,12 +35,3 @@
 
 /mob/living/carbon/human/dummy/add_to_all_mob_huds()
 	return
-
-/mob/living/carbon/human/synthetic/Initialize(var/new_loc)
-	..(new_loc, "Synthetic")
-
-/mob/living/carbon/human/synthetic_old/Initialize(var/new_loc)
-	..(new_loc, "Early Synthetic")
-
-/mob/living/carbon/human/synthetic_2nd_gen/Initialize(var/new_loc)
-	..(new_loc, "Second Generation Synthetic")

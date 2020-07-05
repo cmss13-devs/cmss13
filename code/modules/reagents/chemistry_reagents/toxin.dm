@@ -205,7 +205,7 @@
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	scannable = 1
 	chemclass = CHEM_CLASS_COMMON
-	properties = list(PROPERTY_SEDATIVE = 2, PROPERTY_PAINKILLING = 8)
+	properties = list(PROPERTY_SEDATIVE = 2, PROPERTY_PAINKILLING = 10)
 
 /datum/reagent/toxin/chloralhydrate
 	name = "Chloral Hydrate"
@@ -305,7 +305,7 @@
 					if(affecting.take_damage(4, 2))
 						H.UpdateDamageIcon()
 					if(prob(meltprob)) //Applies disfigurement
-						if(!(H.species && (H.species.flags & NO_PAIN)))
+						if(H.pain.feels_pain)
 							H.emote("scream")
 						H.status_flags |= DISFIGURED
 						H.name = H.get_visible_name()

@@ -370,7 +370,7 @@
 	brute_mod = 0.15
 	burn_mod = 1.50
 	reagent_tag = IS_HORROR
-	flags = HAS_SKIN_COLOR|NO_BREATHE|NO_POISON|HAS_LIPS|NO_PAIN|NO_SCAN|NO_POISON|NO_BLOOD|NO_SLIP|NO_CHEM_METABOLIZATION
+	flags = HAS_SKIN_COLOR|NO_BREATHE|NO_POISON|HAS_LIPS|NO_SCAN|NO_POISON|NO_BLOOD|NO_SLIP|NO_CHEM_METABOLIZATION
 	unarmed_type = /datum/unarmed_attack/punch/strong
 	secondary_unarmed_type = /datum/unarmed_attack/bite/strong
 	death_message = "doubles over, unleashes a horrible, ear-shattering scream, then falls motionless and still..."
@@ -427,7 +427,7 @@
 
 	body_temperature = 350
 
-	flags = IS_WHITELISTED|NO_BREATHE|NO_SCAN|NO_BLOOD|NO_POISON|NO_PAIN|IS_SYNTHETIC|NO_CHEM_METABOLIZATION
+	flags = IS_WHITELISTED|NO_BREATHE|NO_SCAN|NO_BLOOD|NO_POISON|IS_SYNTHETIC|NO_CHEM_METABOLIZATION
 
 	blood_color = "#EEEEEE"
 
@@ -442,6 +442,12 @@
 	inherent_verbs = list(
 		/mob/living/carbon/human/synthetic/verb/toggle_HUD
 		)
+
+/datum/species/synthetic/handle_post_spawn(mob/living/carbon/human/H)
+	H.set_languages(list("English", "Russian", "Tradeband", "Sainja", "Xenomorph"))
+	living_human_list -= H
+	H.pain = new /datum/pain/synthetic(H) // Has to be here, cause of stupid spawn code
+	return ..()
 
 /datum/species/synthetic/second_gen_synthetic
 	name = "Second Generation Synthetic"
@@ -475,7 +481,7 @@
 	icobase = 'icons/mob/humans/species/r_goo_zed.dmi'
 	deform = 'icons/mob/humans/species/r_goo_zed.dmi'
 	death_message = "seizes up and falls limp... But is it dead?"
-	flags = NO_PAIN|NO_BREATHE|NO_SCAN|NO_POISON
+	flags = NO_BREATHE|NO_SCAN|NO_POISON
 	brute_mod = 0.25 //EXTREME BULLET RESISTANCE
 	burn_mod = 2 //IT BURNS
 	speech_chance  = 5
@@ -548,12 +554,6 @@
 
 		spawn(30)
 			H.jitteriness = 0
-
-/datum/species/synthetic/handle_post_spawn(mob/living/carbon/human/H)
-	H.set_languages(list("English", "Russian", "Tradeband", "Sainja", "Xenomorph"))
-	living_human_list -= H
-	return ..()
-
 
 /datum/species/yautja
 	name = "Yautja"
@@ -677,6 +677,7 @@
 	var/datum/mob_hud/medical/advanced/A = huds[MOB_HUD_MEDICAL_ADVANCED]
 	A.remove_from_hud(H)
 	H.set_languages(list("Sainja"))
+	H.pain = new /datum/pain/yautja(H) // Has to be here, cause of stupid spawn code
 
 	return ..()
 
@@ -756,18 +757,6 @@
 
 	if(prob(1))
 		H.emote(pick("chimper","scratch","jump","roll","tail"))
-
-	if(H.shock_stage < 40 && prob(3))
-		H.custom_emote("chimpers pitifully")
-
-	if(H.shock_stage > 10 && prob(3))
-		H.emote(pick("cry","whimper"))
-
-	if(H.shock_stage >= 40 && prob(3))
-		H.emote("scream")
-
-	if(!H.buckled && H.lying && H.shock_stage >= 60 && prob(3))
-		H.custom_emote("thrashes in agony")
 
 /datum/species/monkey/yiren
 	name = "Yiren"

@@ -242,6 +242,7 @@
 	playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
 	battery_charge -= REPAIR_COST
 	H.heal_overall_damage(50, 50, TRUE)
+	H.pain.recalculate_pain()
 	to_chat(user, SPAN_INFO("The current charge reads [battery_charge]/[SMARTPACK_MAX_POWER_STORED]"))
 	H.visible_message(SPAN_DANGER("[name] beeps, \"Completed the repairing process. Charge now reads [battery_charge]/[SMARTPACK_MAX_POWER_STORED].\""))
 

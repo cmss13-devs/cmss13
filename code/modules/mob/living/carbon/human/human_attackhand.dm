@@ -21,7 +21,8 @@
 					ExtinguishMob()
 				return 1
 
-			if(health >= config.health_threshold_crit && stat != DEAD)
+			// If unconcious with oxygen damage, do CPR. If dead, we do CPR 
+			if(!(stat == UNCONSCIOUS && getOxyLoss() > 0) && !(stat == DEAD))
 				help_shake_act(M)
 				return 1
 
@@ -40,7 +41,7 @@
 				SPAN_HELPFUL("You start <b>performing CPR</b> on <b>[src]</b>."))
 
 			if(do_after(M, HUMAN_STRIP_DELAY * M.get_skill_duration_multiplier(SKILL_MEDICAL), INTERRUPT_ALL, BUSY_ICON_GENERIC, src, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
-				if(health > config.health_threshold_dead && health < config.health_threshold_crit)
+				if(stat != DEAD)
 					var/suff = min(getOxyLoss(), 10) //Pre-merge level, less healing, more prevention of dieing.
 					apply_damage(-suff, OXY)
 					updatehealth()
@@ -192,9 +193,6 @@
 	return
 
 /mob/living/carbon/human/help_shake_act(mob/living/carbon/M)
-	if(health < config.health_threshold_crit)
-		return
-
 	//Target is us
 	if(src == M)
 		if(holo_card_color) //if we have a triage holocard printed on us, we remove it.

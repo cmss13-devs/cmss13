@@ -246,10 +246,14 @@
 //It automatically updates health status
 /mob/living/carbon/human/heal_limb_damage(var/brute, var/burn)
 	var/list/obj/limb/parts = get_damaged_limbs(brute,burn)
-	if(!parts.len)	return
+	if(!parts.len)	
+		return
 	var/obj/limb/picked = pick(parts)
-	if(picked.heal_damage(brute,burn))
-		UpdateDamageIcon()
+	if(brute != 0)
+		apply_damage(-brute, BRUTE, picked)
+	if(burn != 0)
+		apply_damage(-burn, BURN, picked)
+	UpdateDamageIcon()
 	updatehealth()
 
 
@@ -382,7 +386,7 @@ This function restores all limbs.
 
 	//Handle other types of damage
 	if(damage < 0 || (damagetype != BRUTE) && (damagetype != BURN))
-		if(damagetype == HALLOSS && !(species.flags & NO_PAIN))
+		if(damagetype == HALLOSS && pain.feels_pain)
 			if((damage > 25 && prob(20)) || (damage > 50 && prob(60)))
 				emote("pain")
 
@@ -418,6 +422,8 @@ This function restores all limbs.
 				temp_impact_name = impact_name
 			if(organ.take_damage(0, damage, sharp, edge, used_weapon, no_limb_loss = no_limb_loss, impact_name = temp_impact_name, attack_source = firer))
 				UpdateDamageIcon()
+
+	pain.apply_pain(damage, damagetype)
 
 	if(permanent_kill)
 		status_flags |= PERMANENTLY_DEAD

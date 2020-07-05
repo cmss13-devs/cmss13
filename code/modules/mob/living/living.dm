@@ -17,6 +17,7 @@
 
 	attack_icon = image("icon" = 'icons/effects/attacks.dmi',"icon_state" = "", "layer" = 0)
 
+	initialize_pain()
 
 
 /mob/living/Dispose()
@@ -44,6 +45,8 @@
 /mob/living/proc/calculate_affecting_pressure(var/pressure)
 	return
 
+/mob/living/proc/initialize_pain()
+	pain = new /datum/pain(src)
 
 //sort of a legacy burn method for /electrocute, /shock, and the e_chair
 /mob/living/proc/burn_skin(burn_amount)
@@ -670,8 +673,13 @@
 				advice += "<span class='scanner'>Administer a single dose of bicaridine.</span>\n"
 			if(H.health < 0 && reagents_in_body["inaprovaline"] < 5)
 				advice += "<span class='scanner'>Administer a single dose of inaprovaline.</span>\n"
-			var/shock_number = H.traumatic_shock
-			if(shock_number > 30 && shock_number < 120 && reagents_in_body["tramadol"] < 3 && !reagents_in_body["paracetamol"])
+
+			var/has_pain = FALSE
+			for(var/datum/effects/pain/P in H.effects_list)
+				has_pain = TRUE
+				break
+
+			if(has_pain && reagents_in_body["tramadol"] < 3 && !reagents_in_body["paracetamol"])
 				advice += "<span class='scanner'>Administer a single dose of tramadol.</span>\n"
 			if(advice != "")
 				dat += "\t<span class='scanner'> <b>Medication Advice:</b></span>\n"

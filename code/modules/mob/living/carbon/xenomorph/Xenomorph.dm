@@ -356,6 +356,9 @@
 
 	job = "Xenomorph"
 
+/mob/living/carbon/Xenomorph/initialize_pain()
+	pain = new /datum/pain/xeno(src)
+
 /mob/living/carbon/Xenomorph/proc/update_caste()
 	if(caste_name && xeno_datum_list[caste_name] && xeno_datum_list[caste_name][max(1,upgrade+1)])
 		caste = xeno_datum_list[caste_name][max(1,upgrade+1)]

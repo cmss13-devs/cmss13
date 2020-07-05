@@ -1,9 +1,5 @@
 /datum/configuration
 	//game_options.txt configs
-	var/health_threshold_softcrit = 0
-	var/health_threshold_crit = 0
-	var/health_threshold_dead = -100
-
 	var/organ_health_multiplier = 1
 	var/organ_regeneration_multiplier = 1
 
@@ -33,12 +29,6 @@
 /datum/configuration/proc/initialize_game_options(name,value)
 	value = text2num(value)
 	switch(name)
-		if("health_threshold_crit")
-			config.health_threshold_crit = value
-		if("health_threshold_softcrit")
-			config.health_threshold_softcrit = value
-		if("health_threshold_dead")
-			config.health_threshold_dead = value
 		if("revival_pod_plants")
 			config.revival_pod_plants = value
 		if("revival_cloning")

@@ -80,7 +80,7 @@
 				to_chat(victim, SPAN_WARNING("Your training protects you from the pepperspray!"))
 				return
 
-			if(!(victim.species && (victim.species.flags & NO_PAIN)))
+			if(victim.pain.feels_pain)
 				victim.emote("scream")
 				to_chat(victim, SPAN_WARNING("You're sprayed directly in the eyes with pepperspray!"))
 				victim.eye_blurry = max(M.eye_blurry, 25)

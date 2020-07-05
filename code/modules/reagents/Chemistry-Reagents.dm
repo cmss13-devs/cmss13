@@ -40,6 +40,8 @@
 	var/objective_value // How valuable it is to identify the chemical. (Only works on chemclass SPECIAL or ULTRA)
 	var/list/properties = list() //Decides properties
 	var/original_type //For tracing back
+	
+	var/deleted = FALSE //If the reagent was deleted
 
 /datum/reagent/New()
 	if(properties)
@@ -152,14 +154,15 @@
 		if(P.process_dead(M, potency))
 			holder.remove_reagent(id, custom_metabolism)
 
-/datum/reagent/proc/on_move(var/mob/M)
-	return
+/datum/reagent/proc/on_delete()
+	if(!holder || !holder.my_atom || !isliving(holder.my_atom))
+		return
 
-	// Called after add_reagents creates a new reagent.
-/datum/reagent/proc/on_new(var/data)
-	return
+	var/mob/living/M = holder.my_atom
 
-/datum/reagent/proc/on_update(var/atom/A)
+	for(var/datum/chem_property/P in properties)
+		P.on_delete(M)
+
 	return
 
 /datum/reagent/proc/make_alike(var/datum/reagent/C)
@@ -281,3 +284,8 @@
 
 /datum/reagent/proc/remove_property(var/datum/chem_property/property)
 	properties -= list(property)
+
+/datum/reagent/proc/reset_pain_reduction()
+	if(holder && holder.my_atom && ishuman(holder.my_atom))
+		var/mob/living/carbon/human/H = holder.my_atom
+		H.pain.reset_pain_reduction()

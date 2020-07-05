@@ -15,24 +15,7 @@
 	var/reducible_tally = 0 //Tally elements that can be reduced are put here, then we apply hyperzine effects
 	var/wear_slowdown_reduction = 0
 
-	// All pain is now handled based off of traumatic_shock and scales based off it instead of being a flat effect.
-	// There are levels here just like the levels used to scale pain effects:
-	// Keep in mind 1 damage = 1.2 traumatic_shock
-	// After trauma_highmed, scaling picks up real quick and you fall over
-	if(!(species && (species.flags & NO_PAIN)))
-		if (traumatic_shock >= TRAUMA_HIGH) 
-			reducible_tally += PAIN_SPEED_VERYSLOW
-		else if (traumatic_shock >= TRAUMA_HIGHMED)
-			reducible_tally += PAIN_SPEED_SLOW
-		else if (traumatic_shock >= TRAUMA_MED) 
-			reducible_tally += PAIN_SPEED_MED
-		else if (traumatic_shock >= TRAUMA_LOWMED)
-			reducible_tally += PAIN_SPEED_LOWMED
-		else if (traumatic_shock >= TRAUMA_LOW) 
-			reducible_tally += PAIN_SPEED_LOW
-		
-		if(species.pain_mod != 1) //Lower the reducible tally based on species mod.
-			reducible_tally *= species.pain_mod
+	reducible_tally += pain.pain_slowdown
 
 	// Limb break/loss slowdown
 	// Wheelchairs depend on different limbs than walking, which is...cute

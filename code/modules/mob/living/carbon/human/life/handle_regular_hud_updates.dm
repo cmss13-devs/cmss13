@@ -9,7 +9,7 @@
 
 		update_sight()
 
-		if(stat == UNCONSCIOUS && health <= config.health_threshold_crit)
+		if(stat == UNCONSCIOUS)
 			var/severity = 0
 			switch(health)
 				if(-20 to -10) severity = 1
@@ -92,26 +92,19 @@
 
 		if(hud_used)
 			if(hud_used.healths)
-				if(analgesic)
-					hud_used.healths.icon_state = "health_health_numb"
-				else
-					switch(hal_screwyhud)
-						if(1)	hud_used.healths.icon_state = "health6"
-						if(2)	hud_used.healths.icon_state = "health7"
-						else
-
-							var/percieved_shock = traumatic_shock
-							if(species && species.flags & NO_PAIN)
-								percieved_shock = 0
-
-							switch(percieved_shock)
-								if(160 to INFINITY)		hud_used.healths.icon_state = "health6"
-								if(140 to 159)			hud_used.healths.icon_state = "health5"
-								if(100 to 139)			hud_used.healths.icon_state = "health4"
-								if(60 to 99)			hud_used.healths.icon_state = "health3"
-								if(20 to 59)			hud_used.healths.icon_state = "health2"
-								if(1 to 19)				hud_used.healths.icon_state = "health1"
-								else					hud_used.healths.icon_state = "health0"
+				switch(hal_screwyhud)
+					if(1)	hud_used.healths.icon_state = "health6"
+					if(2)	hud_used.healths.icon_state = "health7"
+					else
+						var/pain_percentage = pain.get_pain_percentage()
+						switch(pain_percentage)
+							if(80 to 100)			hud_used.healths.icon_state = "health6"
+							if(60 to 80)			hud_used.healths.icon_state = "health5"
+							if(50 to 60)			hud_used.healths.icon_state = "health4"
+							if(40 to 50)			hud_used.healths.icon_state = "health3"
+							if(20 to 40)			hud_used.healths.icon_state = "health2"
+							if(1 to 20)				hud_used.healths.icon_state = "health1"
+							else					hud_used.healths.icon_state = "health0"
 
 			if(hud_used.nutrition_icon)
 				switch(nutrition)
@@ -128,14 +121,11 @@
 			check_status_effects()
 
 			if(hud_used.pulse_line)
-				var/percieved_shock = traumatic_shock
-				if(species && species.flags & NO_PAIN)
-					percieved_shock = 0
-
-				switch(percieved_shock)
-					if(100 to INFINITY)			
+				var/pain_percentage = pain.get_pain_percentage()
+				switch(pain_percentage)
+					if(70 to INFINITY)			
 						hud_used.pulse_line.icon_state = "pulse_dying"
-					if(20 to 99)				
+					if(20 to 70)				
 						hud_used.pulse_line.icon_state = "pulse_hurt"
 					else					
 						hud_used.pulse_line.icon_state = "pulse_good"

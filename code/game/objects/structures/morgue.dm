@@ -204,7 +204,7 @@
 					M.emote("scream")
 				else
 					var/mob/living/carbon/human/H = M
-					if(!(H.species && (H.species.flags & NO_PAIN)))
+					if(H.pain.feels_pain)
 						H.emote("scream")
 
 			user.attack_log +="\[[time_stamp()]\] Cremated <b>[key_name(M)]</b>"

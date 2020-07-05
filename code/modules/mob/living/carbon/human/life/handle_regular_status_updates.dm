@@ -13,15 +13,13 @@
 
 		recalculate_move_delay = TRUE
 
-		if(health <= config.health_threshold_dead || (species.has_organ["brain"] && !has_brain()))
+		if(health <= HEALTH_THRESHOLD_DEAD || (species.has_organ["brain"] && !has_brain()))
 			death(last_damage_source)
 			blinded = 1
 			silent = 0
 			return 1
 
-		//The analgesic effect wears off slowly
 		if(regular_update)
-			analgesic = max(0, analgesic - 1)
 			if(hallucination)
 				if(hallucination >= 20)
 					if(prob(3))
@@ -47,7 +45,7 @@
 					setHalLoss(99)
 
 		//UNCONSCIOUS. NO-ONE IS HOME
-		if(regular_update && ((getOxyLoss() > 50) || (config.health_threshold_crit > health)))
+		if(regular_update && ((getOxyLoss() > 50)))
 			KnockOut(3)		
 
 		if(knocked_out)
@@ -126,7 +124,7 @@
 			silent = 1
 			blinded = 1
 			use_me = 0
-			reagent_pain_modifier += PAIN_REDUCTION_FULL
+			pain.apply_pain_reduction(PAIN_REDUCTION_FULL)
 			paralyzed--
 
 		if(drowsyness)

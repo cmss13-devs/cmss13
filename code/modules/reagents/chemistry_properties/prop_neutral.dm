@@ -93,11 +93,22 @@
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_STIMULANT
 
+/datum/chem_property/neutral/paining/on_delete(mob/living/M)
+	..()
+
+	M.pain.recalculate_pain()
+
 /datum/chem_property/neutral/paining/process(mob/living/M, var/potency = 1)
-	M.reagent_pain_modifier += 50*potency
+	if(!(..()))
+		return
+
+	M.pain.apply_pain(PROPERTY_PAINING_PAIN)
 
 /datum/chem_property/neutral/paining/process_overdose(mob/living/M, var/potency = 1)
-	M.reagent_pain_modifier += 100*potency
+	if(!(..()))
+		return
+
+	M.pain.apply_pain(PROPERTY_PAINING_PAIN_OD)
 	M.take_limb_damage(potency)
 
 /datum/chem_property/neutral/paining/process_critical(mob/living/M, var/potency = 1)
@@ -326,8 +337,16 @@
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_STIMULANT
 
+/datum/chem_property/neutral/euphoric/on_delete(mob/living/M)
+	..()
+	
+	M.pain.reset_pain_reduction()
+
 /datum/chem_property/neutral/euphoric/process(mob/living/M, var/potency = 1)
-	M.reagent_pain_modifier += 20*potency //Endorphins are natural painkillers
+	if(!..())
+		return
+
+	M.pain.apply_pain_reduction(PAIN_REDUCTION_MULTIPLIER * potency) //Endorphins are natural painkillers
 	if(prob(5*potency))
 		M.emote(pick("laugh","giggle","chuckle","grin","smile","twitch"))
 

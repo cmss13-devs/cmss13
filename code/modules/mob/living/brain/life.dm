@@ -50,8 +50,6 @@
 /mob/living/brain/proc/handle_chemicals_in_body()
 
 	reagent_move_delay_modifier = 0
-	reagent_shock_modifier = 0
-	reagent_pain_modifier = 0
 
 	if(reagents) reagents.metabolize(src)
 
@@ -74,7 +72,7 @@
 		blinded = 1
 		silent = 0
 	else				//ALIVE. LIGHTS ARE ON
-		if( !container && (health < config.health_threshold_dead || ((world.time - timeofhostdeath) > config.revival_brain_life)) )
+		if( !container && (health < HEALTH_THRESHOLD_DEAD || ((world.time - timeofhostdeath) > config.revival_brain_life)) )
 			death(last_damage_source)
 			blinded = 1
 			silent = 0

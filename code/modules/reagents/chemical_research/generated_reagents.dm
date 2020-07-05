@@ -7,6 +7,7 @@
 	chemclass = CHEM_CLASS_ULTRA
 	objective_value = 10
 	scannable = 1
+	var/apply_once_check = FALSE //This hurts to do, snowflake
 
 /datum/reagent/generated/New()
 	//Generate stats
@@ -129,8 +130,7 @@
 /datum/reagent/generated/lambda
 	id = "lambda"
 	gen_tier = 4
-
-
+		
 /datum/chemical_reaction/generated/on_reaction(var/datum/reagents/holder, var/created_volume)
 	var/datum/reagent/R = holder.reagent_list[id]
 	if(!R || !R.properties)

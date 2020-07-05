@@ -31,8 +31,6 @@
 /mob/living/carbon/hellhound/proc/handle_chemicals_in_body()
 
 	reagent_move_delay_modifier = 0
-	reagent_shock_modifier = 0
-	reagent_pain_modifier = 0
 
 	recalculate_move_delay = TRUE
 

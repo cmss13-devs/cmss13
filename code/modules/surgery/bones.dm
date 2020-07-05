@@ -72,6 +72,7 @@
 	affected.status |= LIMB_REPAIRED
 	affected.bone_repair_stage = 0
 	affected.perma_injury = 0
+	target.pain.recalculate_pain()
 
 /datum/surgery_step/bone/set_bone/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
 	if(affected.body_part == BODY_FLAG_HEAD)

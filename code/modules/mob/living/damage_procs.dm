@@ -30,6 +30,7 @@
 			adjustCloneLoss(damage)
 		if(HALLOSS)
 			adjustHalLoss(damage)
+	pain.apply_pain(damage, damagetype)
 	updatehealth()
 	return 1
 

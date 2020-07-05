@@ -19,11 +19,6 @@
 
 	var/last_special = 0 //Used by the resist verb, likely used to prevent players from bypassing next_move by logging in/out.
 
-	var/t_phoron = null
-	var/t_oxygen = null
-	var/t_sl_gas = null
-	var/t_n2 = null
-
 	var/now_pushing = null
 
 	var/cameraFollow = null
@@ -65,8 +60,6 @@
 	var/do_bump_delay = 0	// Flag to tell us to delay movement because of being bumped
 
 	var/reagent_move_delay_modifier = 0 //negative values increase movement speed
-	var/reagent_shock_modifier = 0 //negative values reduce shock/pain
-	var/reagent_pain_modifier = 0 //same as above, except can potentially mask damage
 
 	var/datum/event/event_zoomout = null
 	var/datum/event/event_movement = null
@@ -78,3 +71,5 @@
 	var/canEnterVentWith = "/obj/item/implant=0&/obj/item/clothing/mask/facehugger=0&/obj/item/device/radio/borg=0&/obj/structure/machinery/camera=0&/obj/item/verbs=0"
 	//blood.dm
 	var/blood_volume = 0 //how much blood the mob has
+
+	var/datum/pain/pain	//Pain datum for the mob, set on New()

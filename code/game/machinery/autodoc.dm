@@ -71,8 +71,12 @@
 	var/obj/limb/picked = pick(parts)
 	if(LIMB_ROBOT)
 		picked.heal_damage(brute, burn, 0, 1)
+		human.pain.apply_pain(-brute, BRUTE)
+		human.pain.apply_pain(-burn, BURN)
 	else
-		picked.heal_damage(brute,burn)
+		human.apply_damage(-brute, BRUTE, picked)
+		human.apply_damage(-burn, BURN, picked)
+		
 	human.UpdateDamageIcon()
 	human.updatehealth()
 
@@ -386,6 +390,7 @@
 						S.limb_ref.status &= ~LIMB_SPLINTED
 						S.limb_ref.status |= LIMB_REPAIRED
 						S.limb_ref.perma_injury = 0
+						H.pain.recalculate_pain()
 						close_incision(H,S.limb_ref)
 
 					if("missing")
@@ -497,6 +502,7 @@
 		sleep(20)
 		if(prob(5)) visible_message("[htmlicon(src, viewers(src))] \The <b>[src]</b> beeps as it continues working.");
 
+	H.pain.recalculate_pain()
 	visible_message("[htmlicon(src, viewers(src))] \The <b>[src]</b> clicks and opens up having finished the requested operations.")
 	surgery = 0
 	go_out()

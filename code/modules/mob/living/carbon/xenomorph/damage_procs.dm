@@ -200,7 +200,7 @@
 				i++
 				victim.visible_message(SPAN_DANGER("\The [victim] is scalded with hissing green blood!"), \
 				SPAN_DANGER("You are splattered with sizzling blood! IT BURNS!"))
-				if(prob(60) && !victim.stat && !(victim.species.flags & NO_PAIN))
+				if(prob(60) && !victim.stat && pain.feels_pain)
 					victim.emote("scream") //Topkek
 				victim.take_limb_damage(0, rand(8, 12)) //Sizzledam! This automagically burns a random existing body part.
 				acid_splash_last = world.time

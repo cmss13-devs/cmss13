@@ -1,3 +1,5 @@
+#define HEALTH_THRESHOLD_DEAD -100
+
 //Some mob defines below
 #define AI_CAMERA_LUMINOSITY 6
 
@@ -155,17 +157,15 @@
 #define NO_BLOOD 1
 #define NO_BREATHE 2
 #define NO_SCAN 4
-#define NO_PAIN 8
-#define NO_SLIP 16
-#define NO_POISON 32
-#define NO_CHEM_METABOLIZATION 64 //Prevents reagents from acting on_mob_life().
-#define HAS_SKIN_TONE 128
-#define HAS_SKIN_COLOR 256
-#define HAS_LIPS 512
-#define HAS_UNDERWEAR 1024
-#define IS_PLANT 2048
-#define IS_WHITELISTED 4096
-#define IS_SYNTHETIC 8192
+#define NO_SLIP 8
+#define NO_POISON 16
+#define NO_CHEM_METABOLIZATION 32 //Prevents reagents from acting on_mob_life().
+#define HAS_SKIN_TONE 64
+#define HAS_SKIN_COLOR 128
+#define HAS_LIPS 256
+#define HAS_UNDERWEAR 512
+#define IS_WHITELISTED 1024
+#define IS_SYNTHETIC 2048
 
 //=================================================
 

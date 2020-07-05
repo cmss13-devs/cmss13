@@ -683,7 +683,7 @@
 				M.SetKnockeddown(5)
 				if(ishuman(M))
 					var/mob/living/carbon/human/H = M
-					if(!(H.species && (H.species.flags & NO_PAIN)))
+					if(H.pain.feels_pain)
 						M.emote("pain")
 			var/turf/location = loc
 			if(istype(location, /turf))

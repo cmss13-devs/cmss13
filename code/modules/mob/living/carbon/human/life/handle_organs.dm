@@ -24,7 +24,9 @@
 				if (E.is_broken() && E.internal_organs && prob(15))
 					var/datum/internal_organ/I = pick(E.internal_organs)
 					custom_pain("You feel broken bones moving in your [E.display_name]!", 1)
-					I.take_damage(rand(3,5))
+					var/damage = rand(3,5)
+					I.take_damage(damage)
+					pain.apply_pain(damage * PAIN_ORGAN_DAMAGE_MULTIPLIER)
 
 			if(E.name in list("l_leg","l_foot","r_leg","r_foot") && !lying)
 				if (!E.is_usable() || E.is_malfunctioning() || (E.is_broken() && !(E.status & LIMB_SPLINTED)))
@@ -32,7 +34,7 @@
 
 	// standing is poor
 	if(leg_tally <= 0 && !knocked_out && !lying && prob(5))
-		if(!(species && (species.flags & NO_PAIN)))
+		if(pain.feels_pain)
 			emote("pain")
 		emote("collapse")
 		knocked_out = 10

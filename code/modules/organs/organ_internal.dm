@@ -192,10 +192,6 @@
 					owner.apply_damage(0.1 * PROCESS_ACCURACY, TOX)
 				owner.reagents.remove_reagent(R.id, R.custom_metabolism*filter_effect)
 
-		//Heal toxin damage slowly if not damaged
-		if(damage < 5 && prob(25))
-			owner.apply_damage(-0.5, TOX)
-
 		//Deal toxin damage if damaged
 		if(!owner.reagents.has_reagent("peridaxon"))
 			if(is_bruised() && prob(25))

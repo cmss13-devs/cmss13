@@ -75,7 +75,7 @@
 	if(regular_update && src.resting)
 		KnockDown(5)
 
-	if(health < config.health_threshold_dead && src.stat != 2) //die only once
+	if(health < HEALTH_THRESHOLD_DEAD && stat != DEAD) //die only once
 		death()
 
 	if (stat != DEAD) //Alive.

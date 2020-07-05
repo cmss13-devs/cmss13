@@ -259,17 +259,7 @@ var/const/INGEST = 2
 /datum/reagents/proc/metabolize(var/mob/M,var/alien)
 	for(var/datum/reagent/R in reagent_list)
 		if(M && R)
-			R.on_mob_life(M,alien)
-	update_total()
-
-/datum/reagents/proc/conditional_update_move(var/atom/A, var/Running = 0)
-	for(var/datum/reagent/R in reagent_list)
-		R.on_move (A, Running)
-	update_total()
-
-/datum/reagents/proc/conditional_update(var/atom/A, )
-	for(var/datum/reagent/R in reagent_list)
-		R.on_update (A)
+			R.on_mob_life(M, alien)
 	update_total()
 
 /datum/reagents/proc/handle_reactions()
@@ -378,9 +368,11 @@ var/const/INGEST = 2
 			update_total()
 
 /datum/reagents/proc/del_reagent(var/reagent)
-	if(!my_atom) return
+	if(!my_atom) 
+		return
 	for(var/datum/reagent/R in reagent_list)
 		if(R.id == reagent)
+			R.on_delete()
 			reagent_list -= R
 			qdel(R)
 			update_total()
@@ -390,10 +382,12 @@ var/const/INGEST = 2
 
 	return TRUE
 
+// Returns FALSE if the reagent is getting deleted
 /datum/reagents/proc/update_total()
 	total_volume = 0
 	for(var/datum/reagent/R in reagent_list)
 		if(R.volume < 0.1)
+			R.deleted = TRUE
 			del_reagent(R.id)
 		else
 			total_volume += R.volume

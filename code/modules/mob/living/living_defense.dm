@@ -106,7 +106,7 @@
 /mob/living/carbon/human/IgniteMob()
 	. = ..()
 	if(.)
-		if(!stat && !(species.flags & NO_PAIN))
+		if(!stat && pain.feels_pain)
 			emote("scream")
 
 /mob/living/proc/ExtinguishMob()

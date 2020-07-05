@@ -170,6 +170,30 @@
 	resting = max(resting + amount,0)
 	return
 
+/mob/proc/EyeBlur(amount)
+	eye_blurry = max(max(eye_blurry, amount), 0)
+	return
+
+/mob/proc/SetEyeBlur(amount)
+	eye_blurry = max(amount, 0)
+	return
+
+/mob/proc/AdjustEyeBlur(amount)
+	eye_blurry = max(eye_blurry + amount, 0)
+	return
+
+/mob/proc/TalkStutter(amount)
+	stuttering = max(max(stuttering, amount), 0)
+	return
+
+/mob/proc/SetTalkStutter(amount)
+	stuttering = max(amount, 0)
+	return
+
+/mob/proc/AdjustTalkStutter(amount)
+	stuttering = max(stuttering + amount,0)
+	return
+
 /mob/proc/getBruteLoss()
 	return
 

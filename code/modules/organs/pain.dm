@@ -9,9 +9,10 @@ mob/var/next_pain_time = 0
 // partname is the name of a body part
 // amount is a num from 1 to 100
 mob/living/carbon/proc/pain(var/partname, var/amount, var/force, var/burning = 0)
-	if(stat >= DEAD || (world.time < next_pain_time && !force)) return
-	if(reagent_pain_modifier < 0) return //any pain reduction
-	if(analgesic) return
+	if(stat >= DEAD || (world.time < next_pain_time && !force)) 
+		return
+	if(pain.reduction_pain < 0) 
+		return //any pain reduction
 
 	var/msg
 	if(amount > 10 && ishuman(src))
@@ -59,10 +60,12 @@ mob/living/carbon/proc/pain(var/partname, var/amount, var/force, var/burning = 0
 // message is the custom message to be displayed
 // flash_strength is 0 for weak pain flash, 1 for strong pain flash
 mob/living/carbon/human/proc/custom_pain(message, flash_strength)
-	if(stat >= UNCONSCIOUS) return
-	if(species && species.flags & NO_PAIN) return
-	if(reagent_pain_modifier <= PAIN_REDUCTION_HEAVY) return //anything as or more powerful than tramadol
-	if(analgesic) return
+	if(stat >= UNCONSCIOUS) 
+		return
+	if(!pain.feels_pain) 
+		return
+	if(pain.reduction_pain <= PAIN_REDUCTION_HEAVY) 
+		return //anything as or more powerful than tramadol
 
 	var/msg = SPAN_DANGER("[message]")
 	if(flash_strength >= 1) msg = SPAN_HIGHDANGER("[message]")
@@ -74,10 +77,12 @@ mob/living/carbon/human/proc/custom_pain(message, flash_strength)
 	next_pain_time = world.time + 100
 
 mob/living/carbon/human/proc/handle_pain()
-	if(stat >= UNCONSCIOUS) return 	// not when sleeping
-	if(species && species.flags & NO_PAIN) return
-	if(reagent_pain_modifier <= PAIN_REDUCTION_HEAVY) return //anything as or more powerful than tramadol
-	if(analgesic) return
+	if(stat >= UNCONSCIOUS) 
+		return 	// not when sleeping
+	if(!pain.feels_pain) 
+		return
+	if(pain.reduction_pain <= PAIN_REDUCTION_HEAVY) 
+		return //anything as or more powerful than tramadol
 
 	var/maxdam = 0
 	var/dam

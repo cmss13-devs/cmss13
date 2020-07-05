@@ -23,7 +23,7 @@
 /mob/living/silicon/decoy/Life()
 	if(stat == DEAD) 
 		return FALSE
-	if(health <= config.health_threshold_dead && stat != DEAD) 
+	if(health <= HEALTH_THRESHOLD_DEAD && stat != DEAD) 
 		death()
 
 /mob/living/silicon/decoy/updatehealth()

@@ -209,7 +209,7 @@
 				P.trigger(H)
 				H.reagents.remove_reagent(R.id, P.level)
 				break
-		if(H.health > config.health_threshold_dead)
+		if(H.health > HEALTH_THRESHOLD_DEAD)
 			user.visible_message(SPAN_NOTICE("[htmlicon(src, viewers(src))] \The [src] beeps: Defibrillation successful."))
 			user.track_life_saved(user.job)
 			H.handle_revive()

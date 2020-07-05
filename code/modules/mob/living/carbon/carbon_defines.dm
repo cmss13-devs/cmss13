@@ -3,8 +3,6 @@
 	var/list/stomach_contents = list()
 
 	var/life_tick = 0      // The amount of life ticks that have processed on this mob.
-	var/analgesic = 0 // when this is set, the mob isn't affected by shock or pain
-					  // life should decrease this by 1 every tick
 
 	var/obj/item/handcuffs/handcuffed = null //Whether or not the mob is handcuffed
 	//Active emote/pose

@@ -213,6 +213,7 @@
 					return
 
 			S.heal_damage(15,0,0,1)
+			H.pain.recalculate_pain()
 			H.UpdateDamageIcon()
 			user.visible_message(SPAN_WARNING("\The [user] patches some dents on \the [H]'s [S.display_name] with \the [src]."), \
 								SPAN_WARNING("You patch some dents on \the [H]'s [S.display_name] with \the [src]."))

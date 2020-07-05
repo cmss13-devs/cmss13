@@ -38,7 +38,7 @@
 	//No need to update all of these procs if the guy is dead.
 	if(!in_stasis)
 		if(stat != DEAD)
-			if(life_tick % 3 == 0 || failed_last_breath || (health < config.health_threshold_crit)) //First, resolve location and get a breath
+			if(life_tick % 3 == 0 || failed_last_breath) //First, resolve location and get a breath
 				breathe() //Only try to take a breath every 3 ticks, unless suffocating
 
 			//Chemicals in the body
@@ -63,8 +63,6 @@
 			if(was_deafened && !ear_deaf && client)
 				client.setup_lang_text()
 				was_deafened = FALSE
-
-			handle_shock()
 
 			handle_pain()
 

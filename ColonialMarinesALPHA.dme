@@ -12,6 +12,7 @@
 // END_PREFERENCES
 // BEGIN_INCLUDE
 #include "#preprocessor\define\__game.dm"
+#include "#preprocessor\define\_extools_api.dm"
 #include "#preprocessor\define\_macros.dm"
 #include "#preprocessor\define\_math.dm"
 #include "#preprocessor\define\access.dm"
@@ -40,6 +41,7 @@
 #include "#preprocessor\define\objects.dm"
 #include "#preprocessor\define\pain.dm"
 #include "#preprocessor\define\skills.dm"
+#include "#preprocessor\define\socket.dm"
 #include "#preprocessor\define\sounds.dm"
 #include "#preprocessor\define\STUI.dm"
 #include "#preprocessor\define\subsystem.dm"

@@ -67,7 +67,6 @@
 
 #define ls_add_effect(ls) \
 	if(ls.owner.loc && ls.owner.luminosity > 0) { \
-		effect = list(); \
 		for(var/turf/T in view(ls.owner.luminosity,owner)){ \
 			ls_lum(ls, T) } \
 		return 0; } \
@@ -86,8 +85,7 @@
 	// the lighting object maintains a list of all light sources
 	SSlighting.lights.Add(src)
 
-
-	//Check a light to see if its effect needs reprocessing. If it does, remove any old effect and create a new one
+//Check a light to see if its effect needs reprocessing. If it does, remove any old effect and create a new one
 /datum/light_source/proc/check()
 	if(!owner)
 		ls_remove_effect(src)
@@ -100,6 +98,7 @@
 		changed = 0
 		ls_remove_effect(src)
 		ls_add_effect(src)
+		
 	return 0
 
 /datum/light_source/proc/changed()

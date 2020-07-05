@@ -669,8 +669,6 @@ note dizziness decrements automatically in the mob's Life() proc.
 	if(istype(mliv))
 		if(newdir)
 			mliv.on_movement(0)
-		if(light)
-			light.changed()
 	return 1
 
 

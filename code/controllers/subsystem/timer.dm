@@ -24,6 +24,10 @@ var/datum/subsystem/timer/SStimer
 
 	var/list/clienttime_timers = list() //timers that run on "client time"
 
+	var/log_bad_timers = FALSE
+
+	var/list/bad_timerlist = list()
+
 	var/last_invoke_tick = 0
 	var/static/last_invoke_warning = 0
 	var/static/bucket_auto_reset = TRUE
@@ -113,10 +117,14 @@ var/datum/subsystem/timer/SStimer
 		do
 			var/datum/callback/callBack = timer.callBack
 			if (!callBack)
-				qdel(timer)
-				bucket_resolution = null //force bucket recreation
-				CRASH("Invalid timer: [timer] timer.time_to_run=[timer.time_to_run]||timer=[timer]||world.time=[world.time]||head_offset=[head_offset]||practical_offset=[practical_offset]||timer.spent=[timer.spent]")
-
+				log_debug("Invalid timer: [timer] timer.time_to_run=[timer.time_to_run]||timer=[timer]||world.time=[world.time]||head_offset=[head_offset]||practical_offset=[practical_offset]||timer.spent=[timer.spent]")
+				var/bad_timer = timer
+				timer = timer.next
+				if(log_bad_timers)
+					bad_timerlist += bad_timer
+				else
+					qdel(bad_timer)
+				
 			if (!timer.spent)
 				spent += timer
 				timer.spent = TRUE

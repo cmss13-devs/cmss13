@@ -244,11 +244,11 @@
 				
 
 /obj/item/storage/pill_bottle/attack_self(mob/living/user)
-	if(skilllock && !skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
-		to_chat(user, SPAN_NOTICE("It must have some kind of ID lock..."))
-		return
 	if(user.get_inactive_hand())
 		to_chat(user, SPAN_WARNING("You need an empty hand to take out a pill."))
+		return
+	if(skilllock && !skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
+		error_idlock(user)
 		return
 	if(contents.len)
 		var/obj/item/I = contents[1]
@@ -266,18 +266,16 @@
 
 /obj/item/storage/pill_bottle/open(mob/user)
 	if(skilllock && !skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
-		to_chat(user, SPAN_NOTICE("It must have some kind of ID lock..."))
+		error_idlock(user)
 		return
 	..()
-
-
 
 /obj/item/storage/pill_bottle/can_be_inserted(obj/item/W, stop_messages = 0)
 	. = ..()
 	if(.)
 		if(skilllock && !skillcheck(usr, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
-			to_chat(usr, SPAN_NOTICE("You can't open [src], it has some kind of lock."))
-			return 0
+			error_idlock(usr)
+			return
 
 /obj/item/storage/pill_bottle/clicked(var/mob/user, var/list/mods)
 	if(..())
@@ -287,8 +285,8 @@
 			var/obj/item/storage/belt/medical/M = loc
 			if(M.mode)
 				if(skilllock && !skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
-					to_chat(user, SPAN_NOTICE("It must have some kind of ID lock..."))
-					return 0
+					error_idlock(user)
+					return
 				if(user.get_active_hand())
 					return 0
 				var/mob/living/carbon/C = user
@@ -306,6 +304,15 @@
 					return 0
 			else
 				return 0
+
+/obj/item/storage/pill_bottle/empty(var/mob/user, var/turf/T)
+	if(skilllock && !skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
+		error_idlock(user)
+		return
+	..()
+
+/obj/item/storage/pill_bottle/proc/error_idlock(mob/user)
+	to_chat(user, SPAN_WARNING("It must have some kind of ID lock..."))
 
 /obj/item/storage/pill_bottle/kelotane
 	name = "\improper Kelotane pill bottle"

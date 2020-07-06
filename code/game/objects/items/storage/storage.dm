@@ -545,6 +545,9 @@ var/list/global/item_storage_box_cache = list()
 	if (!isturf(T) || get_dist(src, T) > 1)
 		T = get_turf(src)
 
+	if(!allowed(user))
+		to_chat(user, SPAN_WARNING("Access denied."))
+		return
 
 	if (!(storage_flags & STORAGE_QUICK_EMPTY))
 		user.visible_message(SPAN_NOTICE("[user] starts to empty \the [src]..."),

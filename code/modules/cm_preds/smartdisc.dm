@@ -27,7 +27,7 @@
 	add_to_missing_pred_gear(src)
 	..()
 	
-/obj/item/explosive/grenade/spawnergrenade/smartdisc/throw_atom(var/atom/target, var/range, var/speed = 0, var/atom/thrower, var/spin, var/launch_type = NORMAL_LAUNCH, var/pass_flags = NO_FLAGS)
+/obj/item/explosive/grenade/spawnergrenade/smartdisc/launch_towards(var/datum/launch_metadata/LM)
 	..()
 	var/mob/user = usr
 	if(!active && isYautja(user) && (icon_state == initial(icon_state)))

@@ -12,7 +12,7 @@
 
 	// Config options
 	distance = 9
-	pounce_pass_flags = NO_FLAGS
+	pounce_pass_flags = PASS_TYPE_CRAWLER
 
 	knockdown = TRUE
 	knockdown_duration = 2

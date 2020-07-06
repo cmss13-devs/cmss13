@@ -141,12 +141,12 @@
 	if(stat == CONSCIOUS && CanHug(AM))
 		Attach(AM)
 
-/obj/item/clothing/mask/facehugger/throw_atom(var/atom/target, var/range, var/speed = 0, var/atom/thrower, var/spin, var/launch_type = NORMAL_LAUNCH, var/pass_flags = NO_FLAGS)
+/obj/item/clothing/mask/facehugger/launch_towards(var/datum/launch_metadata/LM)
 	..()
 	if(stat == CONSCIOUS)
 		icon_state = "[initial(icon_state)]_thrown"
-		reset_thrown_icon(range)
-		if(range < 2)
+		reset_thrown_icon(LM.range)
+		if(LM.range < 2)
 			if(check_lifecycle()) GoIdle() //To prevent throwing huggers, then having them leap out.
 			//Otherwise it will just die.
 

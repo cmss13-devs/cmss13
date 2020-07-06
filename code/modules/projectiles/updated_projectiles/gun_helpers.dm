@@ -127,9 +127,9 @@ DEFINES in setup.dm, referenced here.
 	else
 		..()
 
-/obj/item/weapon/gun/throw_atom(var/atom/target, var/range, var/speed = 0, var/atom/thrower, var/spin, var/launch_type = NORMAL_LAUNCH, var/pass_flags = NO_FLAGS)
+/obj/item/weapon/gun/launch_towards(var/datum/launch_metadata/LM)
 	if(harness_check(thrower))
-		to_chat(thrower, SPAN_WARNING("\The [src] clanks on the ground."))
+		to_chat(LM.thrower, SPAN_WARNING("\The [src] clanks on the ground."))
 	else
 		..()
 

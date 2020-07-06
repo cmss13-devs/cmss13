@@ -195,7 +195,7 @@
 
 		if(!active_lz && world.time > lz_selection_timer)
 			for(var/obj/structure/machinery/computer/shuttle_control/dropship1/default_console in machines)
-				if(default_console.z == 1 && !default_console.onboard)
+				if(default_console.z == SURFACE_Z_LEVEL && !default_console.onboard)
 					select_lz(default_console)
 					break
 

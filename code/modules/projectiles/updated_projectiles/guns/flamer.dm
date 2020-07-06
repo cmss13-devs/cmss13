@@ -620,9 +620,8 @@
 				return
 			if(X.burrow)
 				return
-		M.adjust_fire_stacks(burnlevel) //Make it possible to light them on fire later.
-		if (prob(firelevel + 2*M.fire_stacks)) //the more soaked in fire you are, the likelier to be ignited
-			M.IgniteMob()
+		M.adjust_fire_stacks(burnlevel) //Make it possible to light them on fire later
+		M.IgniteMob()
 
 		if(weapon_source)
 			M.last_damage_source = weapon_source
@@ -690,7 +689,7 @@
 					if(rand(1,100) < 70) X.emote("roar")
 				continue
 			I.adjust_fire_stacks(burnlevel) //If i stand in the fire i deserve all of this. Also Napalm stacks quickly.
-			if(prob(firelevel)) I.IgniteMob()
+			I.IgniteMob()
 			//I.apply_damage(rand(10 ,burnlevel), BURN) //Including the fire should be way stronger.
 			I.show_message(text(SPAN_WARNING("You are burned!")),1)
 			if(isXeno(I)) //Have no fucken idea why the Xeno thing was there twice.

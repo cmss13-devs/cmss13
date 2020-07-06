@@ -75,6 +75,15 @@
 
 	playsound(src.loc, 'sound/effects/extinguish.ogg', 52, 1, 7)
 
+	if(target == user)
+		if(!isliving(user))
+			return
+		var/mob/living/M = user
+		M.ExtinguishMob()
+		new /obj/effect/particle_effect/water(get_turf(user))
+		reagents.total_volume -= EXTINGUISHER_WATER_USE_AMT
+		return
+
 	var/direction = get_dir(user, target)
 
 	if(user.buckled && isobj(user.buckled) && !user.buckled.anchored)
@@ -111,15 +120,6 @@
 			B.Move(get_step(user,movementdirection), movementdirection)
 			sleep(3)
 			B.Move(get_step(user,movementdirection), movementdirection)
-
-	if(target == user)
-		if(!isliving(user))
-			return
-		var/mob/living/M = user
-		M.ExtinguishMob()
-		new /obj/effect/particle_effect/water(get_turf(user))
-		reagents.total_volume -= EXTINGUISHER_WATER_USE_AMT
-		return
 
 	var/turf/T = get_turf(target)
 	var/turf/T1 = get_step(T,turn(direction, 90))

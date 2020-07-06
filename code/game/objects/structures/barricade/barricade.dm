@@ -8,7 +8,7 @@
 	throwpass = TRUE //You can throw objects over this, despite its density.
 	layer = BELOW_OBJ_LAYER
 	flags_can_pass_all = NO_FLAGS
-	flags_can_pass_front = PASS_OVER & ~(PASS_OVER_FIRE|PASS_OVER_ACID_SPRAY)
+	flags_can_pass_front = PASS_OVER & ~(PASS_OVER_ACID_SPRAY)
 	flags_can_pass_behind = PASS_OVER & ~(PASS_OVER_ACID_SPRAY)
 	flags_atom = ON_BORDER
 	climb_delay = 20 //Leaping a barricade is universally much faster than clumsily climbing on a table or rack

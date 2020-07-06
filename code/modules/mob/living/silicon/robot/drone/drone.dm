@@ -8,7 +8,7 @@
 	universal_speak = 0
 	universal_understand = 1
 	gender = NEUTER
-	flags_pass = PASS_MOB|PASS_FLAGS_CRAWLER
+	flags_pass = PASS_MOB_THRU|PASS_FLAGS_CRAWLER
 	braintype = "Robot"
 	lawupdate = 0
 	density = 1

@@ -30,7 +30,7 @@
 	amount_grown = 0
 	max_grown = 60
 	see_in_dark = 8
-	flags_pass = PASS_MOB|PASS_FLAGS_CRAWLER
+	flags_pass = PASS_MOB_THRU|PASS_FLAGS_CRAWLER
 	flags_can_pass_all = PASS_ALL & ~PASS_OVER_THROW_ITEM
 	away_timer = 300
 	tier = 0  //Larva's don't count towards Pop limits

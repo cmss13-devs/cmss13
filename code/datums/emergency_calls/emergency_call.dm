@@ -185,20 +185,20 @@
 		//Trim down the list
 		var/list/datum/mind/picked_candidates = list()
 		if(mob_max > 0)
-			for(var/i in 1 to mob_max)
-				if(!candidates.len) 
-					break//We ran out of candidates, maybe they alienized. Use what we have.
+			var/mob_count = 0
+			while (mob_count < mob_max && candidates.len)
 				var/datum/mind/M = pick(candidates) //Get a random candidate, then remove it from the candidates list.
-				if(isXeno(M.current) && M.current.stat != DEAD)
-					candidates.Remove(M) //Strip them from the list, they aren't dead anymore.
-					if(!candidates.len) 
-						break //NO picking from empty lists
-					M = pick(candidates)
 				if(!istype(M))//Something went horrifically wrong
 					candidates.Remove(M)
 					continue //Lets try this again
+				if(M.current.stat != DEAD)
+					candidates.Remove(M) //Strip them from the list, they aren't dead anymore.
+					if(!candidates.len) 
+						break //NO picking from empty lists
+					continue
 				picked_candidates.Add(M)
 				candidates.Remove(M)
+				mob_count++
 			if(candidates.len)
 				for(var/datum/mind/I in candidates)
 					if(I.current)
@@ -237,7 +237,7 @@
 		ticker.mode.waiting_for_candidates = FALSE
 
 /datum/emergency_call/proc/add_candidate(var/mob/M)
-	if(!M.client || (M.mind && M.mind in candidates) || istype(M,/mob/living/carbon/Xenomorph))
+	if(!M.client || (M.mind && M.mind in candidates) || istype(M, /mob/living/carbon/Xenomorph))
 		return FALSE //Not connected or already there or something went wrong.
 	if(M.mind)
 		candidates += M.mind

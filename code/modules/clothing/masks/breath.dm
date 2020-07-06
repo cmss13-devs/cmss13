@@ -62,20 +62,10 @@
 	flags_inv_hide = HIDEALLHAIR|HIDEEARS
 	flags_cold_protection = BODY_FLAG_HEAD
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
-
-/obj/item/clothing/mask/rebreather/scarf/tacticalmask
-	name = "tactical bandana"
-	desc = "A tactical bandana used by soldiers to conceal their face."
-	icon_state = "scarf_gray"
-	item_state = "scarf_gray"
-	flags_inventory = COVERMOUTH|ALLOWREBREATH|ALLOWCPR
-	flags_inv_hide = HIDEFACE|HIDELOWHAIR
-	flags_cold_protection = BODY_FLAG_HEAD
-	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
 	var/pulled = FALSE
-	var/original_state = "scarf_gray"
+	var/original_state = "coif"
 
-/obj/item/clothing/mask/rebreather/scarf/tacticalmask/verb/pull_down()
+/obj/item/clothing/mask/rebreather/scarf/verb/pull_down()
 	set name = "Pull Up/Down"
 	set category = "Object"
 
@@ -94,6 +84,34 @@
 
 
 	update_clothing_icon(src) //Update the on-mob icon.
+
+/obj/item/clothing/mask/rebreather/scarf/green
+	name = "Green Balaclava"
+	icon_state = "balaclava_green"
+	item_state = "balaclava_green"
+	original_state = "balaclava_green"
+
+/obj/item/clothing/mask/rebreather/scarf/tan
+	name = "Tan Balaclava"
+	icon_state = "balaclava_tan"
+	item_state = "balaclava_tan"
+	original_state = "balaclava_tan"
+
+/obj/item/clothing/mask/rebreather/scarf/gray
+	name = "Gray Balaclava"
+	icon_state = "balaclava_gray"
+	item_state = "balacvlava_gray"
+	original_state = "balaclava_gray"
+
+/obj/item/clothing/mask/rebreather/scarf/tacticalmask
+	name = "tactical bandana"
+	desc = "A tactical bandana used by soldiers to conceal their face."
+	icon_state = "scarf_gray"
+	item_state = "scarf_gray"
+	flags_inventory = COVERMOUTH|ALLOWREBREATH|ALLOWCPR
+	flags_inv_hide = HIDEFACE|HIDELOWHAIR
+	flags_cold_protection = BODY_FLAG_HEAD
+	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
 
 /obj/item/clothing/mask/rebreather/scarf/tacticalmask/red
 	icon_state = "scarf_red"

@@ -29,6 +29,20 @@ var/global/list/gear_datums = list()
 	cost = 3
 	slot = WEAR_HEAD
 
+/datum/gear/cmbeanie
+	display_name = "USCM Beanie (gray)"
+	path = /obj/item/clothing/head/beanie/gray
+	cost = 3
+	slot = WEAR_HEAD
+
+/datum/gear/cmbeanie/green
+	display_name = "USCM Beanie (green)"
+	path = /obj/item/clothing/head/beanie/green
+
+/datum/gear/cmbeanie/tan
+	display_name = "USCM Beanie (tan)"
+	path = /obj/item/clothing/head/beanie/tan	
+
 /datum/gear/cmberet
 	display_name = "USCM Beret (Green)"
 	path = /obj/item/clothing/head/beret/cm
@@ -112,6 +126,24 @@ var/global/list/gear_datums = list()
 	path = /obj/item/clothing/mask/cigarette
 	slot = WEAR_FACE
 	cost = 1
+
+/datum/gear/cmbalaclava
+	display_name = "USCM Balaclava (Green)"
+	path = /obj/item/clothing/mask/rebreather/scarf/green
+	cost = 2
+	slot = WEAR_FACE
+
+/datum/gear/cmbalaclava/tan
+	display_name = "USCM Balaclava (Tan)"
+	path = /obj/item/clothing/mask/rebreather/scarf/tan
+	cost = 2
+	slot = WEAR_FACE
+
+/datum/gear/cmbalaclava/gray
+	display_name = "USCM Balaclava (Gray)"
+	path = /obj/item/clothing/mask/rebreather/scarf/gray
+	cost = 2
+	slot = WEAR_FACE	
 
 /datum/gear/cmgoggles
 	display_name = "Ballistic Goggles"

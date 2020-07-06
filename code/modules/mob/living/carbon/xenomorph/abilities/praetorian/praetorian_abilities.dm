@@ -33,7 +33,7 @@
 	knockdown = FALSE				
 	slash = FALSE					
 	freeze_self = FALSE				
-	pounce_pass_flags = PASS_MOB|PASS_OVER_THROW_MOB
+	pounce_pass_flags = PASS_MOB_THRU|PASS_OVER_THROW_MOB
 
 	var/buff_duration = 12
 	var/damage = 45

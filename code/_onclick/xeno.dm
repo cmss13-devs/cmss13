@@ -24,7 +24,7 @@
 			break
 		if (target == T && alt)
 			target = alt
-	target = target.handle_barriers(src, , PASS_MOB_XENO) // Checks if target will be attacked by the current alien OR if the blocker will be attacked
+	target = target.handle_barriers(src, , PASS_MOB_THRU_XENO) // Checks if target will be attacked by the current alien OR if the blocker will be attacked
 	target.attack_alien(src)
 	track_slashes(caste_name)
 	next_move = world.time + (10 + caste.attack_delay + attack_speed_modifier) //Adds some lag to the 'attack'

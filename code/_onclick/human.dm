@@ -17,7 +17,7 @@
 		if(result != HANDLE_CLICK_PASS_THRU)
 			return result
 
-	if (mods["middle"] && ishuman(A) && get_dist(src, A) <= 1)
+	if (mods["middle"] && !mods["shift"] && ishuman(A) && get_dist(src, A) <= 1)
 		var/mob/living/carbon/human/H = A
 		H.receive_from(src)
 		return TRUE

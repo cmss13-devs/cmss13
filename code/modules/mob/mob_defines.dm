@@ -1,7 +1,8 @@
 /mob
 	density = 1
 	layer = MOB_LAYER
-	flags_can_pass_all = PASS_MOB_OTHER|PASS_AROUND|PASS_HIGH_OVER_ONLY
+	flags_pass = PASS_MOB_IS_OTHER
+	flags_can_pass_all = PASS_MOB_THRU_OTHER|PASS_AROUND|PASS_HIGH_OVER_ONLY
 	animate_movement = 2
 	rebounds = TRUE
 //	flags = NOREACT

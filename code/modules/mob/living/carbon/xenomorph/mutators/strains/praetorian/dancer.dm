@@ -56,8 +56,8 @@
 	else 
 		slash_evasion_timer = add_timer(CALLBACK(src, .proc/remove_evasion_buff), evasion_buff_ttl, TIMER_STOPPABLE | TIMER_OVERRIDE_UNIQUE)
 
-	if (X.flags_pass & PASS_MOB)
-		X.flags_pass ^= PASS_MOB
+	if (X.flags_pass & PASS_MOB_THRU)
+		X.flags_pass ^= PASS_MOB_THRU
 		X.speed_modifier += 0.5
 		X.recalculate_speed()
 		to_chat(X, SPAN_XENOHIGHDANGER("You can no longer move through creatures!"))

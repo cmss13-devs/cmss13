@@ -6,7 +6,7 @@
 /mob/living/carbon/click(var/atom/A, var/list/mods)
 	if (mods["shift"] && mods["middle"])
 		point_to(A)
-		return 1
+		return TRUE
 
 	if (mods["middle"])
 		if (isStructure(A) && get_dist(src, A) <= 1)

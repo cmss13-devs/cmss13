@@ -167,9 +167,9 @@
 		var/turf/T = get_turf(src)
 		if(T && user.TurfAdjacent(T) && T.contents.len)
 			user.tile_contents = T.contents.Copy()
+			user.tile_contents += T
 
-			var/atom/A
-			for (A in user.tile_contents)
+			for (var/atom/A in user.tile_contents)
 				if (A.invisibility > user.see_invisible)
 					user.tile_contents -= A
 

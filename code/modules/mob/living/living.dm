@@ -340,14 +340,14 @@
 			var/oldloc = loc
 			var/oldLloc = L.loc
 
-			L.add_temp_pass_flags(PASS_MOB)
-			add_temp_pass_flags(PASS_MOB)
+			L.add_temp_pass_flags(PASS_MOB_THRU)
+			add_temp_pass_flags(PASS_MOB_THRU)
 
 			L.Move(oldloc)
 			Move(oldLloc)
 
-			remove_temp_pass_flags(PASS_MOB)
-			L.remove_temp_pass_flags(PASS_MOB)
+			remove_temp_pass_flags(PASS_MOB_THRU)
+			L.remove_temp_pass_flags(PASS_MOB_THRU)
 
 			now_pushing = FALSE
 			return
@@ -359,8 +359,8 @@
 
 	..()
 
-/mob/living/throw_atom(var/atom/target, var/range, var/speed = 0, var/atom/thrower, var/spin, var/launch_type = NORMAL_LAUNCH, var/pass_flags = NO_FLAGS)
-	if(!target || !src || buckled)
+/mob/living/launch_towards(var/datum/launch_metadata/LM)
+	if(!LM.target || !src || buckled)
 		return
 	if(pulling)
 		stop_pulling() //being thrown breaks pulls.

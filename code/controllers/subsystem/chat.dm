@@ -63,11 +63,14 @@ var/datum/subsystem/chat/SSchat
 	if (istype(target, /client))
 		C = target
 	else if (istype(target, /mob))
-		C = target:client
-	else if (istype(target, /datum/mind) && target:current)
-		C = target:current:client
+		var/mob/M = target
+		C = M.client
+	else if (istype(target, /datum/mind))
+		var/datum/mind/M = target
+		if (M.current)
+			C = M.current.client
 
-	if(!C || !istype(C))
+	if(!istype(C))
 		return
 
 	if(C.chatOutput && C.chatOutput.oldChat || !C.chatOutput)

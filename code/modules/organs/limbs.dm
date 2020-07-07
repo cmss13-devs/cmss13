@@ -207,17 +207,6 @@
 
 	if(status & LIMB_DESTROYED)
 		return 0
-	if(status & LIMB_ROBOT)
-
-		var/brmod = 0.66
-		var/bumod = 0.66
-
-		if(owner.species && owner.species.flags & IS_SYNTHETIC)
-			brmod = owner.species.brute_mod
-			bumod = owner.species.burn_mod
-
-		brute *= brmod //~2/3 damage for ROBOLIMBS
-		burn *= bumod //~2/3 damage for ROBOLIMBS
 
 	var/is_ff = FALSE
 	if(istype(attack_source) && attack_source.faction == owner.faction)

@@ -379,7 +379,8 @@ This function restores all limbs.
 */
 /mob/living/carbon/human/apply_damage(var/damage = 0, var/damagetype = BRUTE, var/def_zone = null, \
 	var/sharp = 0, var/edge = 0, var/obj/used_weapon = null, var/no_limb_loss = FALSE, \
-	var/impact_name = null, var/impact_limbs = null, var/permanent_kill = FALSE, var/mob/firer = null
+	var/impact_name = null, var/impact_limbs = null, var/permanent_kill = FALSE, var/mob/firer = null, \
+	var/force = FALSE
 )
 	if(protection_aura)
 		damage = round(damage * ((15 - protection_aura) / 15))
@@ -406,7 +407,7 @@ This function restores all limbs.
 	switch(damagetype)
 		if(BRUTE)
 			damageoverlaytemp = 20
-			if(species.brute_mod)
+			if(species.brute_mod && !force)
 				damage = damage*species.brute_mod
 			var/temp_impact_name = null
 			if(organ.body_part & impact_limbs)
@@ -415,7 +416,7 @@ This function restores all limbs.
 				UpdateDamageIcon()
 		if(BURN)
 			damageoverlaytemp = 20
-			if(species.burn_mod)
+			if(species.burn_mod && !force)
 				damage = damage*species.burn_mod
 			var/temp_impact_name = null
 			if(organ.body_part & impact_limbs)

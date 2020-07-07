@@ -172,7 +172,6 @@
 	item_state = "grenade_smoke"
 	underslug_launchable = TRUE
 	var/datum/effect_system/smoke_spread/bad/smoke
-	harmful = FALSE
 
 /obj/item/explosive/grenade/smokebomb/New()
 	..()

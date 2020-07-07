@@ -2,7 +2,7 @@
 	name = "\improper G-11 geothermal generator"
 	icon = 'icons/obj/structures/machinery/geothermal.dmi'
 	icon_state = "weld"
-	desc = "A thermoelectric generator sitting atop a plasma-filled borehole. This one is heavily damaged. Use a blowtorch, wrench, then wirecutters to repair it."
+	desc = "A thermoelectric generator sitting atop a plasma-filled borehole. This one is heavily damaged. Use a blowtorch, wirecutters, then wrench to repair it."
 	anchored = 1
 	density = 1
 	directwired = 0     //Requires a cable directly underneath

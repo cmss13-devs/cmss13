@@ -8568,13 +8568,6 @@
 	tag = "icon-darkpurplecorners2 (EAST)"
 	},
 /area/bigredv2/caves/lambda/breakroom)
-"avq" = (
-/turf/open/floor{
-	dir = 4;
-	icon_state = "darkpurplecorners2";
-	tag = "icon-darkpurplecorners2 (EAST)"
-	},
-/area/bigredv2/caves/lambda/breakroom)
 "avr" = (
 /obj/structure/window_frame/solaris,
 /turf/open/floor/plating,
@@ -28673,7 +28666,6 @@
 "bzJ" = (
 /obj/structure/closet/secure_closet/guncabinet,
 /obj/item/weapon/gun/smg/m39/elite,
-/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "redfull"
@@ -75522,7 +75514,7 @@ tQw
 tQw
 amk
 auD
-avq
+eJE
 anw
 aao
 aao

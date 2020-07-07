@@ -60,7 +60,12 @@
 	for (var/obj/effect/xenomorph/boiler_bombard/BB in T)
 		return
 
-	new effect_type(T)
+	var/mob/living/carbon/Xenomorph/X = owner
+
+	if(!istype(owner))
+		return
+
+	new effect_type(T, X)
 
 
 /datum/action/xeno_action/activable/acid_lance/use_ability(atom/A)
@@ -117,7 +122,7 @@
 
 			turfs_visited++
 			
-			new /obj/effect/xenomorph/acid_damage_delay(T, damage, 7, "You are blasted with a stream of high-velocity acid!")
+			new /obj/effect/xenomorph/acid_damage_delay(T, damage, 7, "You are blasted with a stream of high-velocity acid!", X)
 
 		X.visible_message(SPAN_XENODANGER("[X] fires a massive blast of acid at [A]!"), SPAN_XENODANGER("You fire a massive blast of acid at [A]!"))
 		remove_stack_effects("You feel your speed return to normal!")
@@ -230,7 +235,7 @@
 		return
 
 	if (X && !X.disposed)
-		var/obj/effect/particle_effect/smoke/S = new /obj/effect/particle_effect/smoke/xeno_burn(get_turf(X))
+		var/obj/effect/particle_effect/smoke/S = new /obj/effect/particle_effect/smoke/xeno_burn(get_turf(X), 1, X, X)
 		S.time_to_live = smoke_duration
 		S.spread_speed = spread_speed
 	else
@@ -322,10 +327,10 @@
 	var/turf/T = get_turf(A)
 	X.visible_message("[X] fires a bolt of acid at [A]!", "You fire a bolt of acid at [A]!")
 
-	new /obj/effect/xenomorph/acid_damage_delay/boiler_landmine(T, damage, delay, "You are blasted with a bolt of acid!")
+	new /obj/effect/xenomorph/acid_damage_delay/boiler_landmine(T, damage, delay, "You are blasted with a bolt of acid!", X)
 
 	for (var/turf/targetTurf in orange(1, T))
-		new /obj/effect/xenomorph/acid_damage_delay/boiler_landmine(targetTurf, damage, delay, "You are blasted with a bolt of acid!")
+		new /obj/effect/xenomorph/acid_damage_delay/boiler_landmine(targetTurf, damage, delay, "You are blasted with a bolt of acid!", X)
 
 	apply_cooldown()
 	..()
@@ -361,7 +366,7 @@
 /datum/ammo/xeno/acid_shotgun
 	name = "acid ball"
 	ping = null
-	flags_ammo_behavior = AMMO_SKIPS_ALIENS|AMMO_STOPPED_BY_COVER|AMMO_IGNORE_ARMOR
+	flags_ammo_behavior = AMMO_SKIPS_ALIENS|AMMO_STOPPED_BY_COVER|AMMO_IGNORE_ARMOR|AMMO_XENO_ACID
 	bonus_projectiles_type = /datum/ammo/xeno/acid_shotgun/spread
 
 /datum/ammo/xeno/acid_shotgun/New()

@@ -70,6 +70,7 @@
 			playsound(loc, "alien_resin_move", 25)
 		else
 			playsound(loc, "alien_resin_break", 25)
+		
 		health -= (M.melee_damage_upper + 50) //Beef up the damage a bit
 		healthcheck()
 
@@ -106,13 +107,24 @@
 	health = HEALTH_RESIN_XENO_STICKY
 	layer = RESIN_STRUCTURE_LAYER
 	var/slow_amt = 8
+	var/hivenumber = XENO_HIVE_NORMAL
+
+/obj/effect/alien/resin/sticky/Initialize(loc, hive)
+	..()
+	if (hive)
+		hivenumber = hive
+	set_hive_data(src, hivenumber)
 
 /obj/effect/alien/resin/sticky/Crossed(atom/movable/AM)
 	. = ..()
 	var/mob/living/carbon/human/H = AM
 	if(istype(H) && !H.lying)
-		var/new_slowdown = H.next_move_slowdown + slow_amt
-		H.next_move_slowdown = new_slowdown
+		H.next_move_slowdown = H.next_move_slowdown + slow_amt
+		return .
+	var/mob/living/carbon/Xenomorph/X = AM
+	if(istype(X) && X.hivenumber != hivenumber)
+		X.next_move_slowdown = X.next_move_slowdown + (slow_amt * WEED_XENO_SPEED_MULT)
+		return .
 
 // Praetorian Sticky Resin spit uses this.
 /obj/effect/alien/resin/sticky/thin
@@ -140,20 +152,24 @@
 	hardness = 1.5
 	health = HEALTH_DOOR_XENO
 	var/close_delay = 100
+	var/hivenumber = XENO_HIVE_NORMAL
 
 	tiles_with = list(/obj/structure/mineral_door/resin)
 
-/obj/structure/mineral_door/resin/New()
+/obj/structure/mineral_door/resin/Initialize(loc, hive)
 	spawn(0)
 		relativewall()
 		relativewall_neighbours()
-		if(!locate(/obj/effect/alien/weeds) in loc)
-			new /obj/effect/alien/weeds(loc)
-
 		for(var/turf/closed/wall/W in orange(1))
 			W.update_connections()
 			W.update_icon()
+
+		set_hive_data(src, hivenumber)
+
 	..()
+
+	if (hive)
+		hivenumber = hive
 
 /obj/structure/mineral_door/resin/flamer_fire_act(var/dam = config.min_burnlevel)
 	health -= dam
@@ -178,10 +194,13 @@
 /obj/structure/mineral_door/resin/TryToSwitchState(atom/user)
 	if(isXenoLarva(user))
 		var/mob/living/carbon/Xenomorph/Larva/L = user
-		L.scuttle(src)
+		if (L.hivenumber == hivenumber)
+			L.scuttle(src)
 		return
 	if(isXeno(user))
-		return ..()
+		var/mob/living/carbon/Xenomorph/X = user
+		if (hivenumber == X.hivenumber)
+			return ..()
 
 /obj/structure/mineral_door/resin/Open()
 	if(state || !loc) return //already open

@@ -546,6 +546,8 @@
 	window_frame = /obj/structure/window_frame/almayer/white
 
 /obj/structure/window/framed/almayer/white/hull
+	name = "research window"
+	desc = "An ultra-reinforced window designed to keep research a secure area. This one was made out of exotic materials to prevent hull breaches. No way to get through here."
 	not_damageable = 1
 	not_deconstructable = 1
 	unslashable = TRUE

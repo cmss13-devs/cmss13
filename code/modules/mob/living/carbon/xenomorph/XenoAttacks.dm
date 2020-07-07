@@ -111,7 +111,10 @@
 				else
 					// copypasted from attack_alien.dm
 					//From this point, we are certain a full attack will go out. Calculate damage and modifiers
-					var/damage = rand(M.melee_damage_lower, M.melee_damage_upper)
+					var/damage = get_xeno_damage_slash(src, rand(M.melee_damage_lower, M.melee_damage_upper))
+
+					if(M.behavior_delegate)
+						damage = M.behavior_delegate.melee_attack_modify_damage(damage, src)
 
 					//Frenzy auras stack in a way, then the raw value is multipled by two to get the additive modifier
 					if(M.frenzy_aura > 0)
@@ -135,6 +138,11 @@
 					M.flick_attack_overlay(src, "slash")
 					playsound(loc, "alien_claw_flesh", 25, 1)
 					apply_armoured_damage(damage, ARMOR_MELEE, BRUTE)
+
+					if(M.behavior_delegate)
+						var/datum/behavior_delegate/MD = M.behavior_delegate
+						MD.melee_attack_additional_effects_target(src)
+						MD.melee_attack_additional_effects_self()
 
 			if("disarm")
 				M.animation_attack_on(src)

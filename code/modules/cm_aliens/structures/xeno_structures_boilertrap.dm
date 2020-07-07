@@ -12,6 +12,8 @@
 	health = 5
 	layer = RESIN_STRUCTURE_LAYER
 	var/list/tripwires = list()
+	var/hivenumber = XENO_HIVE_NORMAL
+
 	var/mob/living/carbon/Xenomorph/bound_xeno // Boiler linked to this trap
 	
 /obj/effect/alien/resin/boilertrap/New(loc, mob/living/carbon/Xenomorph/X, ttl = 300)
@@ -21,7 +23,10 @@
 		return
 
 	bound_xeno = X
+	hivenumber = X.hivenumber
 	add_timer(CALLBACK(src, .proc/delete_trap), ttl)
+
+	set_hive_data(src, hivenumber)
 	..()
 
 /obj/effect/alien/resin/boilertrap/examine(mob/user)
@@ -48,7 +53,7 @@
 	clear_tripwires()
 	qdel(src)
 
-/obj/effect/alien/resin/boilertrap/proc/trigger_trap(mob/living/carbon/human/H)
+/obj/effect/alien/resin/boilertrap/proc/trigger_trap(mob/living/carbon/H)
 	if (!istype(H))
 		return
 	
@@ -81,7 +86,11 @@
 		tripwires += HT
 
 /obj/effect/alien/resin/boilertrap/Crossed(atom/A)
-	if(ishuman(A))
+	if (isXeno(A))
+		var/mob/living/carbon/Xenomorph/X = A
+		if (X.hivenumber != hivenumber)
+			trigger_trap(A)
+	else if(ishuman(A))
 		trigger_trap(A)
 
 	return ..()

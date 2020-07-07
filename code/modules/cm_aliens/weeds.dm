@@ -14,22 +14,29 @@
 	var/node_range = WEED_RANGE_STANDARD
 	var/secreting = FALSE
 
+	var/hibernate = FALSE
+
+	var/datum/hive_status/linked_hive = null
+
 	// Which node is responsible for keeping this weed patch alive?
 	var/obj/effect/alien/weeds/node/parent = null
 
 /obj/effect/alien/weeds/Initialize(pos, obj/effect/alien/weeds/node/node)
 	..()
 	if(node)
+		linked_hive = node.linked_hive
 		weed_strength = node.weed_strength
 		node_range = node.node_range
 		if(weed_strength >= WEED_LEVEL_HIVE)
-			name = "hive weeds"
+			name = "hive [name]"
 			health = WEED_HEALTH_HIVE
 		node.add_child(src)
 
+		set_hive_data(src, linked_hive.hivenumber)
+
 	update_icon()
 	update_neighbours()
-	if(node && node.loc && (get_dist(node, src) < node.node_range))
+	if(node && node.loc && (get_dist(node, src) < node.node_range) && !hibernate)
 		spawn(rand(150, 200) / weed_strength) //stronger weeds expand faster
 			if(loc && node && node.loc)
 				weed_expand(node)
@@ -49,12 +56,16 @@
 	if(istype(T, /turf/open))
 		T.ceiling_desc(user)
 
+
 /obj/effect/alien/weeds/Crossed(atom/movable/AM)
 	if (ishuman(AM))
 		var/mob/living/carbon/human/H = AM
 		if (!isYautja(H)) // predators are immune to weed slowdown effect
-			var/new_slowdown = H.next_move_slowdown + weed_strength
-			H.next_move_slowdown = new_slowdown
+			H.next_move_slowdown = H.next_move_slowdown + weed_strength
+	else if (isXeno(AM))
+		var/mob/living/carbon/Xenomorph/X = AM
+		if (X.hivenumber != linked_hive.hivenumber)
+			X.next_move_slowdown = X.next_move_slowdown + (weed_strength*WEED_XENO_SPEED_MULT)
 
 // Uh oh, we might be dying!
 // I know this is bad proc naming but it was too good to pass on and it's only used in this file anyways
@@ -83,16 +94,17 @@
 		
 		var/obj/effect/alien/weeds/W = locate() in T
 		if(W)
-			if(W.weed_strength >= node.weed_strength)
+			if(W.weed_strength >= WEED_LEVEL_HIVE)
+				continue
+			else if (W.linked_hive == node.linked_hive && W.weed_strength == node.weed_strength)
 				continue
 			qdel(W)
-
 
 		if(istype(T, /turf/closed/wall/resin))
 			continue
 
 		if(istype(T, /turf/closed/wall))
-			new /obj/effect/alien/weeds/weedwall(T)
+			new /obj/effect/alien/weeds/weedwall(T, node)
 			continue
 
 		if(istype(T.loc, /area/arrival))
@@ -114,10 +126,10 @@
 				return FALSE
 
 		if(istype(O, /obj/structure/window/framed))
-			new /obj/effect/alien/weeds/weedwall/window(T)
+			new /obj/effect/alien/weeds/weedwall/window(T, parent)
 			return FALSE
 		else if(istype(O, /obj/structure/window_frame))
-			new /obj/effect/alien/weeds/weedwall/frame(T)
+			new /obj/effect/alien/weeds/weedwall/frame(T, parent)
 			return FALSE
 		else if(istype(O, /obj/structure/machinery/door) && O.density && (!(O.flags_atom & ON_BORDER) || O.dir != direction))
 			return FALSE
@@ -191,6 +203,18 @@
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			qdel(src)
 
+/obj/effect/alien/weeds/attack_alien(mob/living/carbon/Xenomorph/X)
+	if(X.hivenumber != linked_hive.hivenumber)
+		X.animation_attack_on(src)
+
+		X.visible_message(SPAN_DANGER("\The [X] slashes [src]!"), \
+		SPAN_DANGER("You slash [src]!"), null, 5)
+		playsound(loc, "alien_resin_break", 25)
+		health -= X.melee_damage_lower*WEED_XENO_DAMAGE
+		healthcheck()
+		
+
+
 /obj/effect/alien/weeds/attackby(obj/item/W, mob/living/user)
 	if(!W || !user || isnull(W) || (W.flags_item & NOBLUDGEON))
 		return 0
@@ -232,6 +256,7 @@
 	layer = RESIN_STRUCTURE_LAYER
 	icon_state = "weedwall"
 	var/list/wall_connections = list("0", "0", "0", "0")
+	hibernate = TRUE
 
 /obj/effect/alien/weeds/weedwall/update_icon()
 	if(istype(loc, /turf/closed/wall))
@@ -270,11 +295,6 @@
 	// Which weeds are being kept alive by this node?
 	var/list/obj/effect/alien/weeds/children = list()
 
-/obj/effect/alien/weeds/node/Initialize()
-	. = ..()
-	create_reagents(30)
-	reagents.add_reagent(PLASMA_PURPLE, 30)
-
 /obj/effect/alien/weeds/node/proc/add_child(var/obj/effect/alien/weeds/weed)
 	if(!weed || !istype(weed))
 		return
@@ -297,18 +317,16 @@
 	..()
 	overlays += "weednode"
 
-/obj/effect/alien/weeds/node/Initialize(loc, obj/effect/alien/weeds/node/node, mob/living/carbon/Xenomorph/X)
-	..(loc, src)
+/obj/effect/alien/weeds/node/Initialize(pos, obj/effect/alien/weeds/node/node, mob/living/carbon/Xenomorph/X, datum/hive_status/hive)
+	if (istype(hive))
+		linked_hive = hive
+	else if (istype(X) && X.hive)
+		linked_hive = X.hive
+	else 
+		linked_hive = hive_datum[XENO_HIVE_NORMAL]
 
-	create_reagents(30)
-	reagents.add_reagent("purpleplasma",30)
-	for(var/obj/effect/alien/weeds/W in loc)
-		if(W != src)
-			if(W.weed_strength > weed_strength)
-				qdel(src)
-				return
-			qdel(W) //replaces the previous weed
-			break
+	
+	. = ..(pos, src)
 
 	overlays += "weednode"
 	if(X)
@@ -316,9 +334,20 @@
 		weed_strength = X.weed_level
 		if (weed_strength < WEED_LEVEL_STANDARD)
 			weed_strength = WEED_LEVEL_STANDARD
+			
 		node_range = node_range + weed_strength - 1//stronger weeds expand further!
 		if(weed_strength >= WEED_LEVEL_HIVE)
 			name = "hive node sac"
+
+	create_reagents(30)
+	reagents.add_reagent(PLASMA_PURPLE,30)
+	for(var/obj/effect/alien/weeds/W in loc)
+		if(W != src)
+			if(W.weed_strength > WEED_LEVEL_HIVE)
+				qdel(src)
+				return
+			qdel(W) //replaces the previous weed
+			break
 
 /obj/effect/alien/weeds/node/Dispose()
 	// When the node is removed, weeds should start dying out
@@ -331,7 +360,6 @@
 	. = ..()
 
 /obj/effect/alien/weeds/node/pylon
-	name = "hive node sac"
 	health = WEED_HEALTH_HIVE
 	weed_strength = WEED_LEVEL_HIVE
 	node_range = WEED_RANGE_PYLON

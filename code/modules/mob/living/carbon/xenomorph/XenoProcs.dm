@@ -233,13 +233,15 @@
 	if(agility)
 		. += caste.agility_speed_increase
 
-	if(weedwalking_activated)
-		if(locate(/obj/effect/alien/weeds) in loc)
-			. -= 1.5
+	var/obj/effect/alien/weeds/W = locate(/obj/effect/alien/weeds) in loc
+	if (W)
+		if (W.linked_hive.hivenumber == hivenumber)
+			if(weedwalking_activated)
+				. -= 1.5
+			. *= 0.95
 
-	if(locate(/obj/effect/alien/weeds) in loc)
-		. *= 0.95
-	if(locate(/obj/effect/alien/resin/sticky/fast) in loc)
+	var/obj/effect/alien/resin/sticky/fast/FR = locate(/obj/effect/alien/resin/sticky/fast) in loc
+	if (FR && FR.hivenumber == hivenumber)
 		. *= 0.8
 
 	if(superslowed)
@@ -264,7 +266,7 @@
 		return
 
 	var/mob/living/carbon/M = L
-	if(M.stat || isXeno(M))
+	if(M.stat || M.mob_size >= MOB_SIZE_BIG || matches_hivemind(L, src))
 		throwing = FALSE
 		return
 
@@ -391,9 +393,6 @@
 		if(istype(O, /obj/effect/alien/egg))
 			to_chat(src, SPAN_WARNING("There's already an egg."))
 			return
-		if(locate(/obj/effect/alien/resin/special) in range(1, src))
-			to_chat(src, SPAN_WARNING("There is an important structure too close to you."))
-			return
 		if(istype(O, /obj/structure/mineral_door) || istype(O, /obj/effect/alien/resin))
 			has_obstacle = TRUE
 			break
@@ -416,6 +415,10 @@
 		if(O.density && !(O.flags_atom & ON_BORDER))
 			has_obstacle = TRUE
 			break
+
+	if(locate(/obj/effect/alien/resin/special) in range(1, current_turf))
+		to_chat(src, SPAN_WARNING("There is an important structure too close here."))
+		return
 
 	if(current_turf.density || has_obstacle)
 		to_chat(src, SPAN_WARNING("There's something built here already."))

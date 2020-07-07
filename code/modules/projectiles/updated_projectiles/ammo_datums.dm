@@ -1506,18 +1506,17 @@
 					M.visible_message(SPAN_DANGER("[M] falls prone."))
 			pass_down_the_line = TRUE
 
-	if(M.superslowed || pass_down_the_line)
-		if(M.dazed < 6)
-			M.AdjustDazed(3 * power) // Daze them a bit more
-			if(!pass_down_the_line)
-				M.visible_message(SPAN_DANGER("[M] is visibly confused."))
-		pass_down_the_line = TRUE
+		if(M.superslowed || pass_down_the_line)
+			if(M.dazed < 6)
+				M.AdjustDazed(3 * power) // Daze them a bit more
+				if(!pass_down_the_line)
+					M.visible_message(SPAN_DANGER("[M] is visibly confused."))
+			pass_down_the_line = TRUE
 
 	if(M.superslowed < 10)
 		M.AdjustSuperslowed(3 * power) // Superslow them a bit more
 		if(!pass_down_the_line)
 			M.visible_message(SPAN_DANGER("[M] movements are slowed."))
-
 
 /proc/neuro_flak(turf/T,obj/item/projectile/P , power, insta_neuro, radius)
 	if(!T) return FALSE
@@ -1857,7 +1856,7 @@
 	bonus_projectiles_type = /datum/ammo/xeno/bone_chips/spread
 
 /datum/ammo/xeno/bone_chips/on_hit_mob(mob/M, obj/item/projectile/P)
-	if(isHumanStrict(M))
+	if(isHumanStrict(M) || isXeno(M))
 		playsound(M, 'sound/effects/spike_hit.ogg', 25, 1, 1)
 		if(M.slowed < 7)
 			M.AdjustSlowed(6)
@@ -1901,7 +1900,7 @@
     shrapnel_chance = 0    
 
 /datum/ammo/xeno/bone_chips/spread/runner/on_hit_mob(mob/M, obj/item/projectile/P)
-    if(isHumanStrict(M))
+    if(isHumanStrict(M) || isXeno(M))
         playsound(M, 'sound/effects/spike_hit.ogg', 25, 1, 1)
         if(M.slowed < 5)
             M.AdjustSlowed(4)

@@ -14,11 +14,16 @@
 	var/resisting_ready = 0
 	var/nest_resist_time = 1200
 	var/mob/dead/observer/ghost_of_buckled_mob =  null
+	var/hivenumber = XENO_HIVE_NORMAL
 	layer = RESIN_STRUCTURE_LAYER
 
-/obj/structure/bed/nest/New()
+/obj/structure/bed/nest/Initialize(loc, hive)
 	..()
-	if(!locate(/obj/effect/alien/weeds) in loc) new /obj/effect/alien/weeds(loc)
+
+	if (hive)
+		hivenumber = hive
+
+	set_hive_data(src, hivenumber)
 
 /obj/structure/bed/nest/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/grab))
@@ -46,7 +51,7 @@
 
 	if(isXeno(user))
 		var/mob/living/carbon/Xenomorph/X = user
-		if(!X.hive.unnesting_allowed && !isXenoBuilder(X))
+		if(!X.hive.unnesting_allowed && !isXenoBuilder(X) && X.hivenumber == hivenumber)
 			to_chat(X, SPAN_XENOWARNING("You shouldn't interfere with the nest, leave that to the drones."))
 			return
 

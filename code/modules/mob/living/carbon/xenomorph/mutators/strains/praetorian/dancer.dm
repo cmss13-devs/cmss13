@@ -64,10 +64,10 @@
 
 
 /datum/behavior_delegate/praetorian_dancer/melee_attack_additional_effects_target(atom/A)
-	if (!istype(A, /mob/living/carbon/human))
+	if (!isXenoOrHuman(A))
 		return 
 	
-	var/mob/living/carbon/human/H = A
+	var/mob/living/carbon/H = A
 	if (H.stat)
 		return 
 
@@ -76,7 +76,10 @@
 		qdel(DT)
 		
 	new /datum/effects/dancer_tag(H, bound_xeno, , , 35)
-	H.update_xeno_hostile_hud()
+
+	if(ishuman(H))
+		var/mob/living/carbon/human/Hu = H
+		Hu.update_xeno_hostile_hud()
 
 /datum/behavior_delegate/praetorian_dancer/proc/remove_evasion_buff()
 	if (slash_evasion_timer == TIMER_ID_NULL || !slash_evasion_buffed)

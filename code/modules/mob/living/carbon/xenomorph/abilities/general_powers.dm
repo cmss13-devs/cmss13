@@ -22,6 +22,11 @@
 		to_chat(X, SPAN_WARNING("There's a pod here already!"))
 		return
 
+	var/obj/effect/alien/weeds/W = locate(/obj/effect/alien/weeds) in T
+	if (W && W.weed_strength >= WEED_LEVEL_HIVE)
+		to_chat(X, SPAN_WARNING("These weeds are too strong to plant a node on!"))
+		return
+
 	var/area/AR = get_area(T)
 
 	if(!(AR.is_resin_allowed))
@@ -32,6 +37,7 @@
 		X.visible_message(SPAN_XENONOTICE("\The [X] regurgitates a pulsating node and plants it on the ground!"), \
 		SPAN_XENONOTICE("You regurgitate a pulsating node and plant it on the ground!"), null, 5)
 		new /obj/effect/alien/weeds/node(X.loc, src, X)
+
 		playsound(X.loc, "alien_resin_build", 25)
 		
 	..()
@@ -328,6 +334,10 @@
 
 	if(!alien_weeds)
 		to_chat(X, SPAN_WARNING("You can only shape on weeds. Find some resin before you start building!"))
+		return
+
+	if(alien_weeds.linked_hive.hivenumber != X.hivenumber)
+		to_chat(X, SPAN_WARNING("These weeds don't belong to your hive!"))
 		return
 
 	if(!X.check_alien_construction(T))

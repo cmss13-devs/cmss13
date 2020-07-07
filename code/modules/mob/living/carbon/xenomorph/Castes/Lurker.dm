@@ -112,26 +112,26 @@
 	var/can_go_invisible = TRUE
 
 /datum/behavior_delegate/lurker_base/melee_attack_modify_damage(original_damage, atom/A = null)
-	if (!ishuman(A))
+	if (!isXenoOrHuman(A))
 		return original_damage
 
-	var/mob/living/carbon/human/H = A
+	var/mob/living/carbon/H = A
 	if (next_slash_buffed)
 		to_chat(bound_xeno, SPAN_XENOHIGHDANGER("You significantly strengthen your attack, slowing [H]!"))
 		to_chat(H, SPAN_XENOHIGHDANGER("You feel a sharp pain as [bound_xeno] slashes you, slowing you down!"))
 		original_damage *= buffed_slash_damage_ratio
-		H.SetSuperslowed(3)
+		H.SetSuperslowed(get_xeno_stun_duration(H, 3))
 		next_slash_buffed = FALSE
 
 	return original_damage
 
 /datum/behavior_delegate/lurker_base/melee_attack_additional_effects_target(atom/A)
-	if (!ishuman(A))
+	if (!isXenoOrHuman(A))
 		return 
 
-	var/mob/living/carbon/human/H = A
+	var/mob/living/carbon/H = A
 	if (H.knocked_down)
-		new /datum/effects/xeno_slow(H, bound_xeno, null, null, slash_slow_duration)
+		new /datum/effects/xeno_slow(H, bound_xeno, null, null, get_xeno_stun_duration(slash_slow_duration))
 
 	return 
 

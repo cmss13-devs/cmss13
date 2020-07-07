@@ -77,6 +77,14 @@
 #define XENO_UNIVERSAL_PLASMAMULT 1.0	// Use to unilaterally buff every caste's total PLASMA.
 #define XENO_UNIVERSAL_DAMAGEMULT 1.0	// Use to unilaterally buff every caste's DAMAGE.
 
+#define XVX_UNIVERSAL_DAMAGEMULT 1.5 // Use to unilaterally buff every caste's DAMAGE against other xenos.
+
+#define XVX_SLASH_DAMAGEMULT 1 * XVX_UNIVERSAL_DAMAGEMULT // Applies to any abilities that uses brute damage or slash damage
+#define XVX_ACID_DAMAGEMULT 1.5 * XVX_UNIVERSAL_DAMAGEMULT // Applies to any abilities that apply acid damage (not including projectiles)
+#define XVX_PROJECTILE_DAMAGEMULT 1.75 * XVX_UNIVERSAL_DAMAGEMULT // Applies to any abilities that use projectiles
+
+#define XVX_STUN_LENGTHMULT 1.25
+
 // Weed defines
 #define WEED_LEVEL_STANDARD  1
 #define WEED_LEVEL_QUEEN     4
@@ -87,11 +95,15 @@
 #define WEED_RANGE_PYLON     5
 #define WEED_RANGE_CORE      7
 
+#define WEED_XENO_DAMAGE    0.25 //Multiplicative. The amount of damage xenos do to weeds
+#define WEED_XENO_SPEED_MULT 0.5 //Multiplicative. The slowdown that other xenos from different hives suffer. Also applies to sticky resin
+
 #define WEED_HEALTH_STANDARD 1
 #define WEED_HEALTH_HIVE     15
 
 #define NODE_HEALTH_STANDARD 10
 #define NODE_HEALTH_HIVE     30
+
 
 /////////////////////////////////////////////////////////////////////////////////////
 //

@@ -131,16 +131,19 @@
 	SPAN_XENOWARNING("You vomit globs of vile stuff all over [O]. It begins to sizzle and melt under the bubbling mess of acid!"), null, 5)
 	playsound(loc, "sound/bullets/acid_impact1.ogg", 25)
 
-/proc/unroot_human(mob/living/carbon/human/H)
-	if (!istype(H))
+/proc/unroot_human(mob/living/carbon/H)
+	if (!isXenoOrHuman(H))
 		return
 
 	H.frozen = 0
 	H.update_canmove()
-	H.update_xeno_hostile_hud()
+
+	if(ishuman(H))
+		var/mob/living/carbon/human/T = H
+		T.update_xeno_hostile_hud()
 	to_chat(H, SPAN_XENOHIGHDANGER("You can move again!"))
 
-/proc/xeno_throw_human(mob/living/carbon/human/H, mob/living/carbon/Xenomorph/X, direction, distance)
+/proc/xeno_throw_human(mob/living/carbon/H, mob/living/carbon/Xenomorph/X, direction, distance)
 	if (!istype(H) || !istype(X) ||  !direction || !distance)
 		return
 

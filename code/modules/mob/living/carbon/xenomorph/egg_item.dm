@@ -11,20 +11,27 @@
 	layer = MOB_LAYER
 	var/hivenumber = XENO_HIVE_NORMAL
 
-/obj/item/xeno_egg/Initialize()
+/obj/item/xeno_egg/Initialize(loc, hive)
 	pixel_x = rand(-3,3)
 	pixel_y = rand(-3,3)
 	create_reagents(60)
 	reagents.add_reagent("eggplasma",60)
-	..()
+	
+
+	if (hive)
+		hivenumber = hive
+	
+	set_hive_data(src, hivenumber)
+	. = ..()
 
 
 /obj/item/xeno_egg/examine(mob/user)
 	..()
 	if(isXeno(user))
 		to_chat(user, "A queen egg, it needs to be planted on weeds to start growing.")
-		if(hivenumber == XENO_HIVE_CORRUPTED)
-			to_chat(user, "This one appears to have been laid by a corrupted Queen.")
+		if(hivenumber != XENO_HIVE_NORMAL)
+			var/datum/hive_status/hive = hive_datum[hivenumber]
+			to_chat(user, "This one appears to belong to the [hive.prefix]hive")
 
 /obj/item/xeno_egg/afterattack(atom/target, mob/user, proximity)
 	if(isXeno(user))
@@ -49,9 +56,8 @@
 	for (var/obj/O in T)
 		if (!istype(O,/obj/structure/machinery/light/small))
 			return
-	var/obj/effect/alien/egg/newegg = new /obj/effect/alien/egg(T)
+	var/obj/effect/alien/egg/newegg = new /obj/effect/alien/egg(T, hivenumber)
 	newegg.add_hiddenprint(user)
-	newegg.hivenumber = hivenumber
 	playsound(T, 'sound/effects/splat.ogg', 15, 1)
 	qdel(src)
 
@@ -66,14 +72,15 @@
 	if(!user.check_plasma(30))
 		return
 
-	var/found_hive_weeds = FALSE
+	var/obj/effect/alien/weeds/hive_weeds = null
 	for(var/obj/effect/alien/weeds/W in T)
-		if(W.weed_strength >= WEED_LEVEL_HIVE)
-			found_hive_weeds = TRUE
+		if(W.weed_strength >= WEED_LEVEL_HIVE && W.linked_hive.hivenumber == hivenumber)
+			hive_weeds = W
 			break
 
-	if(!found_hive_weeds)
-		to_chat(user, SPAN_XENOWARNING("[src] can only be planted on hive weeds."))
+	if(!hive_weeds)
+		var/datum/hive_status/hive = hive_datum[hivenumber]
+		to_chat(user, SPAN_XENOWARNING("[src] can only be planted on [lowertext(hive.prefix)]hive weeds."))
 		return
 
 	user.visible_message(SPAN_XENONOTICE("[user] starts planting [src]."), SPAN_XENONOTICE("You start planting [src]."), null, 5)
@@ -93,9 +100,8 @@
 	for(var/obj/effect/alien/weeds/W in T)
 		if(W.weed_strength >= WEED_LEVEL_HIVE)
 			user.use_plasma(30)
-			var/obj/effect/alien/egg/newegg = new /obj/effect/alien/egg(T)
+			var/obj/effect/alien/egg/newegg = new /obj/effect/alien/egg(T, hivenumber)
 			newegg.add_hiddenprint(user)
-			newegg.hivenumber = hivenumber
 			playsound(T, 'sound/effects/splat.ogg', 15, 1)
 			qdel(src)
 			break

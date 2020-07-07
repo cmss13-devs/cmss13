@@ -49,6 +49,8 @@
 	var/source_mob
 	var/source_name
 
+	var/hivenumber = XENO_HIVE_NORMAL
+
 	var/stun_duration = 1
 	var/damage_amount = 30
 	var/fire_level_to_extinguish = 13
@@ -61,6 +63,9 @@
 	// Stats tracking
 	if(new_source_mob)
 		source_mob = new_source_mob
+		if (isXeno(source_mob))
+			var/mob/living/carbon/Xenomorph/X = source_mob
+			hivenumber = X.hivenumber
 	if(new_source_name)
 		source_name = new_source_name
 	else
@@ -93,7 +98,10 @@
 		if(isliving(atm)) //For extinguishing mobs on fire
 			var/mob/living/M = atm
 			M.ExtinguishMob()
-			if (ishuman(M))
+			if (ishuman(M) || isXeno(M))
+				var/mob/living/carbon/Xenomorph/X = M
+				if (istype(X) && X.hivenumber == hivenumber)
+					continue
 				apply_spray(M)
 				M.apply_armoured_damage(damage_amount, ARMOR_BIO, BURN) // Deal extra damage when first placing ourselves down.
 
@@ -111,19 +119,32 @@
 	..()
 	if(ishuman(AM))
 		apply_spray(AM)
+	else if (isXeno(AM))
+		var/mob/living/carbon/Xenomorph/X = AM
+		if (X.hivenumber != hivenumber)
+			apply_spray(AM)
 
 //damages human that comes in contact
-/obj/effect/xenomorph/spray/proc/apply_spray(mob/living/carbon/human/H)
-	if(!istype(H))
-		return
+/obj/effect/xenomorph/spray/proc/apply_spray(mob/living/carbon/H, should_stun = TRUE)
+
 	if(!H.lying)
 		to_chat(H, SPAN_DANGER("Your feet scald and burn! Argh!"))
-		H.emote("pain")
-		H.KnockDown(stun_duration)
+		if(ishuman(H))
+			H.emote("pain")
+			if(should_stun)
+				H.KnockDown(stun_duration)
+			H.apply_armoured_damage(damage_amount * 0.4, ARMOR_BIO, BURN, "l_foot")
+			H.apply_armoured_damage(damage_amount * 0.4, ARMOR_BIO, BURN, "r_foot")
+
+		else if (isXeno(H))
+			var/mob/living/carbon/Xenomorph/X = H
+			if (X.mob_size < MOB_SIZE_BIG && should_stun)
+				X.KnockDown(stun_duration)
+			X.emote("hiss")
+			H.apply_armoured_damage(damage_amount * 0.4 * XVX_ACID_DAMAGEMULT, ARMOR_BIO, BURN)
+
 		H.last_damage_mob = source_mob
 		H.last_damage_source = source_name
-		H.apply_armoured_damage(damage_amount * 0.4, ARMOR_BIO, BURN, "l_foot")
-		H.apply_armoured_damage(damage_amount * 0.4, ARMOR_BIO, BURN, "r_foot")
 		H.UpdateDamageIcon()
 		H.updatehealth()
 	else
@@ -151,32 +172,33 @@
 
 	var/bonus_damage = 30
 
-/obj/effect/xenomorph/spray/spitter/apply_spray(mob/living/carbon/human/H)
-	if(!istype(H))
-		return
+/obj/effect/xenomorph/spray/spitter/apply_spray(mob/living/carbon/M)
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
 
-	var/damage = damage_amount
+		var/damage = damage_amount
 
-	var/should_stun = FALSE
-	for (var/datum/effects/acid/A in H.effects_list)
-		should_stun = TRUE
-		damage += (-1*(A.duration - A.original_duration))*(A.damage_in_total_human/A.original_duration)
-		damage += bonus_damage
+		var/should_stun = FALSE
+		for (var/datum/effects/acid/A in H.effects_list)
+			should_stun = TRUE
+			damage += (-1*(A.duration - A.original_duration))*(A.damage_in_total_human/A.original_duration)
+			damage += bonus_damage
 
-		qdel(A)
-		break
+			qdel(A)
+			break
 
-	to_chat(H, SPAN_DANGER("Your feet scald and burn! Argh!"))
-	H.emote("pain")
-	if (should_stun && !H.lying)
-		H.KnockDown(stun_duration)
-	H.last_damage_mob = source_mob
-	H.last_damage_source = source_name
-	H.apply_armoured_damage(damage_amount * 0.5, ARMOR_BIO, BURN, "l_foot", 50)
-	H.apply_armoured_damage(damage_amount * 0.5, ARMOR_BIO, BURN, "r_foot", 50)
-	H.UpdateDamageIcon()
-	H.updatehealth()
-
+		to_chat(H, SPAN_DANGER("Your feet scald and burn! Argh!"))
+		H.emote("pain")
+		if (should_stun && !H.lying)
+			H.KnockDown(stun_duration)
+		H.last_damage_mob = source_mob
+		H.last_damage_source = source_name
+		H.apply_armoured_damage(damage_amount * 0.5, ARMOR_BIO, BURN, "l_foot", 50)
+		H.apply_armoured_damage(damage_amount * 0.5, ARMOR_BIO, BURN, "r_foot", 50)
+		H.UpdateDamageIcon()
+		H.updatehealth()
+	else if (isXeno(M))
+		..(M, FALSE)
 
 /obj/effect/xenomorph/spray/praetorian
 	name = "splatter"
@@ -185,31 +207,33 @@
 
 	stun_duration = 0
 
-/obj/effect/xenomorph/spray/praetorian/apply_spray(mob/living/carbon/human/H)
-	if(!istype(H))
-		return
+/obj/effect/xenomorph/spray/praetorian/apply_spray(mob/living/carbon/M)
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
 
-	var/found = FALSE
-	for (var/datum/effects/prae_acid_stacks/PAS in H.effects_list)
-		PAS.increment_stack_count()
-		found = TRUE
-		break
+		var/found = FALSE
+		for (var/datum/effects/prae_acid_stacks/PAS in H.effects_list)
+			PAS.increment_stack_count()
+			found = TRUE
+			break
 
-	if (!found)
-		new /datum/effects/prae_acid_stacks(H)
+		if (!found)
+			new /datum/effects/prae_acid_stacks(H)
 
-	if(!H.lying)
-		to_chat(H, SPAN_DANGER("Your feet scald and burn! Argh!"))
-		H.emote("pain")
-		H.last_damage_mob = source_mob
-		H.last_damage_source = source_name
-		H.apply_armoured_damage(damage_amount * 0.5, ARMOR_BIO, BURN, "l_foot", 50)
-		H.apply_armoured_damage(damage_amount * 0.5, ARMOR_BIO, BURN, "r_foot", 50)
-		H.UpdateDamageIcon()
-		H.updatehealth()
-	else
-		H.apply_armoured_damage(damage_amount*0.33, ARMOR_BIO, BURN) //This is ticking damage!
-		to_chat(H, SPAN_DANGER("You are scalded by the burning acid!"))
+		if(!H.lying)
+			to_chat(H, SPAN_DANGER("Your feet scald and burn! Argh!"))
+			H.emote("pain")
+			H.last_damage_mob = source_mob
+			H.last_damage_source = source_name
+			H.apply_armoured_damage(damage_amount * 0.5, ARMOR_BIO, BURN, "l_foot", 50)
+			H.apply_armoured_damage(damage_amount * 0.5, ARMOR_BIO, BURN, "r_foot", 50)
+			H.UpdateDamageIcon()
+			H.updatehealth()
+		else
+			H.apply_armoured_damage(damage_amount*0.33, ARMOR_BIO, BURN) //This is ticking damage!
+			to_chat(H, SPAN_DANGER("You are scalded by the burning acid!"))
+	else if (isXeno(M))
+		..(M)
 
 //Medium-strength acid
 /obj/effect/xenomorph/acid
@@ -327,8 +351,14 @@
 	var/smoke_duration = 9
 	var/smoke_type = /obj/effect/particle_effect/smoke/xeno_burn
 
-/obj/effect/xenomorph/boiler_bombard/New(loc)
+	var/mob/living/carbon/Xenomorph/source_xeno = null
+
+/obj/effect/xenomorph/boiler_bombard/New(loc, source_xeno = null)
 	// Hopefully we don't get insantiated in these places anyway..
+
+	if (isXeno(source_xeno))
+		src.source_xeno = source_xeno
+
 	if (isturf(loc))
 		var/turf/T = loc
 		if (!T.density)
@@ -338,14 +368,22 @@
 	else
 		qdel(src)
 
-	add_timer(CALLBACK(src, .proc/damage_humans), time_before_damage)
+	add_timer(CALLBACK(src, .proc/damage_mobs), time_before_damage)
 	add_timer(CALLBACK(src, .proc/make_smoke), time_before_smoke)
 
-/obj/effect/xenomorph/boiler_bombard/proc/damage_humans()
+/obj/effect/xenomorph/boiler_bombard/proc/damage_mobs()
 	if (!istype(src) || !isturf(loc))
 		qdel(src)
 		return
-	for (var/mob/living/carbon/human/H in loc)
+	for (var/mob/living/carbon/H in loc)
+		if (isXeno(H))
+			if(!source_xeno)
+				continue
+
+			var/mob/living/carbon/Xenomorph/X = H
+			if (X.hivenumber == source_xeno.hivenumber)
+				continue
+
 		if (!H.stat)
 			H.apply_armoured_damage(damage, ARMOR_BIO, BURN)
 			animation_flash_color(H)
@@ -354,9 +392,10 @@
 	icon_state = "boiler_bombard_heavy"
 
 /obj/effect/xenomorph/boiler_bombard/proc/make_smoke()
-	var/obj/effect/particle_effect/smoke/S = new smoke_type(loc)
+	var/obj/effect/particle_effect/smoke/S = new smoke_type(loc, 1, source_xeno, source_xeno)
 	S.time_to_live = smoke_duration
 	S.spread_speed = smoke_duration + 5 // No spreading
+	
 	qdel(src)
 
 /obj/effect/xenomorph/xeno_telegraph
@@ -385,22 +424,35 @@
 
 	var/damage = 20
 	var/message = null
-	var/linked_xeno = null
+	var/mob/living/carbon/Xenomorph/linked_xeno = null
+	var/hivenumber = XENO_HIVE_NORMAL
 
-/obj/effect/xenomorph/acid_damage_delay/New(loc, damage = 20, delay = 10, message = null, linked_xeno = null)
+/obj/effect/xenomorph/acid_damage_delay/New(loc, damage = 20, delay = 10, message = null, mob/living/carbon/Xenomorph/linked_xeno = null)
 	..(loc)
 	add_timer(CALLBACK(src, .proc/die), delay)
 	src.damage = damage
 	src.message = message
 	src.linked_xeno = linked_xeno
+	if(src.linked_xeno)
+		hivenumber = src.linked_xeno.hivenumber
 
 /obj/effect/xenomorph/acid_damage_delay/proc/deal_damage()
-	for (var/mob/living/carbon/human/H in loc)
+	for (var/mob/living/carbon/H in loc)
 		if (H.stat == DEAD)
 			continue
 
+		if(isXeno(H))
+			var/mob/living/carbon/Xenomorph/X = H
+			if (X.hivenumber == hivenumber)
+				continue
+
 		animation_flash_color(H)
-		H.apply_armoured_damage(damage, ARMOR_BIO, BURN)
+
+		if(isXeno(H))
+			H.apply_armoured_damage(damage * XVX_ACID_DAMAGEMULT, ARMOR_BIO, BURN)
+		else
+			H.apply_armoured_damage(damage, ARMOR_BIO, BURN)
+
 		if (message)
 			to_chat(H, SPAN_XENODANGER(message))
 		

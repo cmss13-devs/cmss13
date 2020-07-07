@@ -14,11 +14,11 @@
 	if (!X.check_state() || X.agility)
 		return
 
-	if(!isHumanStrict(A) && !ismonkey(A))
+	if((!isXeno(A) || matches_hivemind(A, X)) && (!isHumanStrict(A) || !ismonkey(A))) // Can't do isXenoOrHuman because it checks for whether it is strictly human
 		apply_cooldown_override(click_miss_cooldown)
 		return
 
-	var/mob/living/carbon/human/H = A
+	var/mob/living/carbon/H = A
 	if(H.stat == DEAD)
 		return
 
@@ -63,7 +63,7 @@
 	if (!action_cooldown_check())
 		return
 
-	if (!A || !istype(A, /mob/living/carbon/human))
+	if (!isXenoOrHuman(A) || matches_hivemind(A, X))
 		return
 
 	if (!X.check_state() || X.agility)
@@ -72,9 +72,13 @@
 	if (!X.Adjacent(A))
 		return
 
-	var/mob/living/carbon/human/H = A
+	var/mob/living/carbon/H = A
 	if(H.stat == DEAD) return
 	if(istype(H.buckled, /obj/structure/bed/nest))
+		return
+
+	if(H.mob_size >= MOB_SIZE_BIG)
+		to_chat(X, SPAN_XENOWARNING("[H] is too big for you to fling!"))
 		return
 
 	if (!check_and_use_plasma_owner())
@@ -82,7 +86,7 @@
 
 	X.visible_message(SPAN_XENOWARNING("\The [X] effortlessly flings [H] to the side!"), SPAN_XENOWARNING("You effortlessly fling [H] to the side!"))
 	playsound(H,'sound/weapons/alien_claw_block.ogg', 75, 1)
-	H.apply_effect(stun_power, STUN)
+	H.apply_effect(get_xeno_stun_duration(H, stun_power), STUN)
 	H.apply_effect(weaken_power, WEAKEN)
 	H.last_damage_mob = X
 	H.last_damage_source = initial(X.caste_name)
@@ -110,7 +114,7 @@
 	if (!action_cooldown_check())
 		return
 
-	if (!A || !ishuman(A))
+	if (!isXenoOrHuman(A) || matches_hivemind(A, X))
 		return
 
 	if (!X.check_state() || X.agility)
@@ -119,13 +123,13 @@
 	if (!X.Adjacent(A))
 		return
 
-	var/mob/living/carbon/human/H = A
+	var/mob/living/carbon/H = A
 	if(H.stat == DEAD) return
 	if(istype(H.buckled, /obj/structure/bed/nest)) return
 
 	var/obj/limb/L = H.get_limb(check_zone(X.zone_selected))
 
-	if (!L || (L.status & LIMB_DESTROYED))
+	if (ishuman(H) && (!L || (L.status & LIMB_DESTROYED)))
 		return
 
 	
@@ -135,8 +139,8 @@
 	H.last_damage_mob = X
 	H.last_damage_source = initial(X.caste_name)
 
-	X.visible_message(SPAN_XENOWARNING("\The [X] hits [H] in the [L.display_name] with a devastatingly powerful punch!"), \
-	SPAN_XENOWARNING("You hit [H] in the [L.display_name] with a devastatingly powerful punch!"))
+	X.visible_message(SPAN_XENOWARNING("\The [X] hits [H] in the [L? L.display_name : "chest"] with a devastatingly powerful punch!"), \
+	SPAN_XENOWARNING("You hit [H] in the [L? L.display_name : "chest"] with a devastatingly powerful punch!"))
 	var/S = pick('sound/weapons/punch1.ogg','sound/weapons/punch2.ogg','sound/weapons/punch3.ogg','sound/weapons/punch4.ogg')
 	playsound(H,S, 50, 1)
 
@@ -148,62 +152,69 @@
 	apply_cooldown()
 	..()
 
-/datum/action/xeno_action/activable/warrior_punch/proc/do_base_warrior_punch(mob/living/carbon/human/H, obj/limb/L)
+/datum/action/xeno_action/activable/warrior_punch/proc/do_base_warrior_punch(mob/living/carbon/H, obj/limb/L)
 	var/mob/living/carbon/Xenomorph/X = owner
-	if(L.status & LIMB_SPLINTED) //If they have it splinted, the splint won't hold.
-		L.status &= ~LIMB_SPLINTED
-		to_chat(H, SPAN_DANGER("The splint on your [L.display_name] comes apart!"))
-		H.pain.apply_pain(PAIN_BONE_BREAK_SPLINTED)
-
 	var/damage = rand(base_damage, base_damage + damage_variance)
-	if(isYautja(H))
-		damage = rand(base_punch_damage_pred, base_punch_damage_pred + damage_variance)
-	else if(L.status & LIMB_ROBOT)
-		damage = rand(base_punch_damage_synth, base_punch_damage_synth + damage_variance)
-	else
-		var/fracture_chance = 100
-		switch(L.body_part)
-			if(BODY_FLAG_HEAD)
-				fracture_chance = 20
-			if(BODY_FLAG_CHEST)
-				fracture_chance = 30
-			if(BODY_FLAG_GROIN)
-				fracture_chance = 40
-		
-		if(prob(fracture_chance))
-			L.fracture()
+
+	if(ishuman(H))
+		if(L.status & LIMB_SPLINTED) //If they have it splinted, the splint won't hold.
+			L.status &= ~LIMB_SPLINTED
+			to_chat(H, SPAN_DANGER("The splint on your [L.display_name] comes apart!"))
+			H.pain.apply_pain(PAIN_BONE_BREAK_SPLINTED)
+
+		if(isYautja(H))
+			damage = rand(base_punch_damage_pred, base_punch_damage_pred + damage_variance)
+		else if(L.status & LIMB_ROBOT)
+			damage = rand(base_punch_damage_synth, base_punch_damage_synth + damage_variance)
+		else
+			var/fracture_chance = 100
+			switch(L.body_part)
+				if(BODY_FLAG_HEAD)
+					fracture_chance = 20
+				if(BODY_FLAG_CHEST)
+					fracture_chance = 30
+				if(BODY_FLAG_GROIN)
+					fracture_chance = 40
 			
-	H.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE, L.name)
+			if(prob(fracture_chance))
+				L.fracture()
+
+			
+	H.apply_armoured_damage(get_xeno_damage_slash(H, damage), ARMOR_MELEE, BRUTE, L? L.name : "chest")
 	
 	shake_camera(H, 2, 1)
 	step_away(H, X, 2)
 
-/datum/action/xeno_action/activable/warrior_punch/proc/do_boxer_punch(mob/living/carbon/human/H, obj/limb/L)
+/datum/action/xeno_action/activable/warrior_punch/proc/do_boxer_punch(mob/living/carbon/H, obj/limb/L)
 	var/mob/living/carbon/Xenomorph/X = owner
 
 	var/damage = rand(boxer_punch_damage, boxer_punch_damage + damage_variance)
-	if(isYautja(H))
-		damage = rand(boxer_punch_damage_pred, boxer_punch_damage_pred + damage_variance)
-	else if(L.status & LIMB_ROBOT)
-		damage = rand(boxer_punch_damage_synth, boxer_punch_damage_synth + damage_variance)
-	else
-		if(L.body_part == BODY_FLAG_HEAD)
-			var/knockdown_chance = 14
-			if(prob(knockdown_chance))
-				H.KnockDown(1)
-	H.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE, L.name)
+
+	if(ishuman(H))
+		if(isYautja(H))
+			damage = rand(boxer_punch_damage_pred, boxer_punch_damage_pred + damage_variance)
+		else if(L.status & LIMB_ROBOT)
+			damage = rand(boxer_punch_damage_synth, boxer_punch_damage_synth + damage_variance)
+		else
+			if(L.body_part == BODY_FLAG_HEAD)
+				var/knockdown_chance = 14
+				if(prob(knockdown_chance))
+					H.KnockDown(1)
+	
+	H.apply_armoured_damage(get_xeno_damage_slash(H, damage), ARMOR_MELEE, BRUTE, L? L.name : "chest")
 
 	shake_camera(H, 3, 1)
 
 	if(H.lying)
 		step_away(H, X, 3)
-		H.KnockDown(1)
+		if(H.mob_size < MOB_SIZE_BIG)
+			H.KnockDown(get_xeno_stun_duration(H, 1))
 	else
 		step_away(H, X, 2)
 
 /datum/action/xeno_action/activable/jab/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
-	if (!A || !ishuman(A))
+	if (!isXenoOrHuman(A) || matches_hivemind(A, X))
 		return
 
 	if (!action_cooldown_check())
@@ -217,12 +228,9 @@
 	if (distance > 2)
 		return
 
-	var/mob/living/carbon/human/H = A
+	var/mob/living/carbon/H = A
 	if(H.stat == DEAD) return
 	if(istype(H.buckled, /obj/structure/bed/nest)) return
-	if(H.status_flags & XENO_HOST)
-		to_chat(X, SPAN_XENOWARNING("This would harm the embryo!"))
-		return
 
 	if (!check_and_use_plasma_owner())
 		return
@@ -241,7 +249,7 @@
 	playsound(H,S, 50, 1)
 
 	if(!isYautja(H))
-		H.KnockDown(0.1)
+		H.KnockDown(get_xeno_stun_duration(H, 0.1))
 
 	// Check actions list for a warrior punch and reset it's cooldown if it's there
 	var/datum/action/xeno_action/activable/warrior_punch/punch_action = null

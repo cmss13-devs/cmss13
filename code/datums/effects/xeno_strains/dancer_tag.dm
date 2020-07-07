@@ -14,8 +14,8 @@
 		H.update_xeno_hostile_hud()
 
 
-/datum/effects/dancer_tag/validate_atom(mob/living/carbon/human/H)
-	if (!ishuman(H) || H.stat == DEAD)
+/datum/effects/dancer_tag/validate_atom(mob/living/carbon/H)
+	if (!isXenoOrHuman(H) || H.stat == DEAD)
 		return FALSE
 	return ..()
 

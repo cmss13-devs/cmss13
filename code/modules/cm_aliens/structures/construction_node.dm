@@ -14,9 +14,11 @@
 	var/datum/construction_template/xenomorph/template //What we're building
 	var/datum/hive_status/linked_hive //Who gets what we build
 
-/obj/effect/alien/resin/construction/New(loc, var/hive_ref)
+/obj/effect/alien/resin/construction/Initialize(loc, var/hive_ref)
 	..()
 	linked_hive = hive_ref
+	if (linked_hive.color)
+		color = linked_hive.color
 
 /obj/effect/alien/resin/construction/Dispose()
 	if(template && linked_hive && (template.crystals_stored < template.crystals_required))

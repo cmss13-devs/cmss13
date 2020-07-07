@@ -56,7 +56,7 @@
 
 			if(hive && hive.living_xeno_queen == src)
 				xeno_message(SPAN_XENOANNOUNCE("A sudden tremor ripples through the hive... the Queen has been slain! Vengeance!"),3, hivenumber)
-				xeno_message(SPAN_XENOANNOUNCE("The slashing of hosts is now permitted."),2)
+				xeno_message(SPAN_XENOANNOUNCE("The slashing of hosts is now permitted."),2, hivenumber)
 				hive.slashing_allowed = 1
 				hive.set_living_xeno_queen(null)
 				//on the off chance there was somehow two queen alive

@@ -35,7 +35,9 @@
 	X.emote("tail")
 
 	var/accumulative_health = 0
-	for(var/mob/living/carbon/human/H in mobs_in_range)
+	for(var/mob/living/carbon/H in mobs_in_range)
+		if(!isXenoOrHuman(H) || matches_hivemind(X, H)) 
+			continue
 		if(H.stat == DEAD || istype(H.buckled, /obj/structure/bed/nest))
 			continue
 		accumulative_health += shield_per_human
@@ -177,10 +179,12 @@
 
 	// Loop through our turfs, finding any humans there and dealing damage to them
 	for (var/turf/target_turf in target_turfs)
-		for (var/mob/living/carbon/human/H in target_turf)
+		for (var/mob/living/carbon/H in target_turf)
 			if (H.stat)
 				continue 
 
+			if(matches_hivemind(X, H))
+				continue
 			X.flick_attack_overlay(H, "slash")
 			H.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE)
 			playsound(get_turf(H), "alien_claw_flesh", 30, 1)
@@ -206,15 +210,15 @@
 	if (!X.check_state() || X.action_busy)
 		return
 	
-	if (!ishuman(A))
-		to_chat(X, SPAN_XENOWARNING("You must target a human!"))
+	if (!isXenoOrHuman(A) | matches_hivemind(A, X))
+		to_chat(X, SPAN_XENOWARNING("You must target a hostile!"))
 		return
 
 	if (get_dist(A, X) > max_distance)
 		to_chat(X, SPAN_XENOWARNING("[A] is too far away!"))
 		return
 
-	var/mob/living/carbon/human/H = A
+	var/mob/living/carbon/H = A
 
 	if (H.stat == DEAD)
 		to_chat(X, SPAN_XENOWARNING("[H] is dead, you can't pull yourself to it!"))
@@ -232,7 +236,7 @@
 
 	H.targeted_by = X
 	H.target_locked = image("icon" = 'icons/effects/Targeted.dmi', "icon_state" = "locking")
-	new /datum/effects/xeno_slow(H, X, null, null, 20)
+	new /datum/effects/xeno_slow(H, X, null, null, get_xeno_stun_duration(H, 20))
 	H.update_targeted()
 
 	if (!do_after(X, windup_duration, INTERRUPT_ALL & ~INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
@@ -270,19 +274,23 @@
 
 	if (!X.check_state())
 		return
-	
-	if (!ishuman(A))
-		to_chat(X, SPAN_XENOWARNING("You must target a human!"))
+
+	if (!isXenoOrHuman(A) || matches_hivemind(A, X))
+		to_chat(X, SPAN_XENOWARNING("You must target a hostile!"))
 		return
 
 	if (!X.Adjacent(A))
 		to_chat(X, SPAN_XENOWARNING("You must be adjacent to your target!"))
 		return
 
-	var/mob/living/carbon/human/H = A
+	var/mob/living/carbon/H = A
 	var/heal_amount = heal_per_rage
 	var/fling_distance = fling_dist_base
 	var/debilitate = TRUE // Do we apply neg. status effects to the target?
+
+	if (H.mob_size >= MOB_SIZE_BIG)
+		to_chat(X, SPAN_XENOWARNING("This creature is too massive to target"))
+		return
 
 	if (H.stat == DEAD)
 		return
@@ -304,8 +312,10 @@
 
 	// Damage
 	var/obj/limb/head/head = H.get_limb("head")
-	if(head)
+	if(ishuman(H) && head)
 		H.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE, "head")
+	else
+		H.apply_armoured_damage(get_xeno_damage_slash(H, damage), ARMOR_MELEE, BRUTE) // just for consistency
 
 	// Heal
 	X.gain_health(heal_amount)
@@ -371,7 +381,10 @@
 		X.emote("roar")
 		X.spin_circle()
 
-		for (var/mob/living/carbon/human/H in orange(X, range))
+		for (var/mob/living/carbon/H in orange(X, range))
+			if(!isXenoOrHuman(H) || matches_hivemind(X, H))
+				continue
+
 			if (H.stat == DEAD)
 				continue
 
@@ -382,12 +395,12 @@
 				X.visible_message(SPAN_XENOHIGHDANGER("[X] rips open the guts of [H]!"), SPAN_XENOHIGHDANGER("You rip open the guts of [H]!"))
 				H.spawn_gibs()
 				playsound(get_turf(H), 'sound/effects/gibbed.ogg', 30, 1)
-				H.KnockDown(1)
+				H.KnockDown(get_xeno_stun_duration(H, 1))
 			else
 				X.visible_message(SPAN_XENODANGER("[X] claws [H]!"), SPAN_XENODANGER("You claw [H]!"))
 				playsound(get_turf(H), "alien_claw_flesh", 30, 1)
 	
-			H.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE, "chest", 20)
+			H.apply_armoured_damage(get_xeno_damage_slash(H, damage), ARMOR_MELEE, BRUTE, "chest", 20)
 
 	X.frozen = 0
 	X.anchored = 0

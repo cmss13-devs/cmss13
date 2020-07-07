@@ -46,10 +46,10 @@
 	var/next_slash_buffed = FALSE
 
 /datum/behavior_delegate/oppressor_praetorian/melee_attack_additional_effects_target(atom/A)
-	if (!istype(A, /mob/living/carbon/human))
+	if (!isXenoOrHuman(A))
 		return 
 
-	var/mob/living/carbon/human/H = A 
+	var/mob/living/carbon/H = A 
 	if (H.stat)
 		return
 
@@ -65,5 +65,5 @@
 
 
 	next_slash_buffed = FALSE
-	H.apply_armoured_damage(total_bonus_damage, ARMOR_MELEE, BRUTE)
+	H.apply_armoured_damage(get_xeno_damage_slash(total_bonus_damage), ARMOR_MELEE, BRUTE)
 	return

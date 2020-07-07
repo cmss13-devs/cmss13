@@ -113,10 +113,12 @@ var/global/datum/controller/gameticker/ticker = new()
 		src.mode.announce()
 
 	//Configure mode and assign player to special mode stuff
-	RoleAuthority.setup_candidates_and_roles() //Distribute jobs
-	create_characters() //Create player characters and transfer them
+	if (!(mode.flags_round_type & MODE_NO_SPAWN))
+		RoleAuthority.setup_candidates_and_roles() //Distribute jobs
+		create_characters() //Create player characters and transfer them
+		equip_characters()
+	
 	collect_minds()
-	equip_characters()
 	data_core.manifest()
 
 	spawn(2)

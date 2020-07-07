@@ -112,12 +112,15 @@
 		return max(0, damage - round((distance_travelled - effective_range_max) * damage_falloff)) 
 	return damage
 
-// Target, firer, shot from (i.e. the gun), projectile range, projectile speed, original target (who was aimed at, not where projectile is going towards)
-/obj/item/projectile/proc/fire_at(atom/target, atom/F, atom/S, range = 30, speed = 1, atom/original_override)
+// Target, firer, shot from (i.e. the gun), projectile range, projectile speed, original target (who was aimed at, not where projectile is going towards), is_shrapnel (whether it should miss the firer or not)
+/obj/item/projectile/proc/fire_at(atom/target, atom/F, atom/S, range = 30, speed = 1, atom/original_override, is_shrapnel = FALSE)
 	if(!original) 
 		original = istype(original_override) ? original_override : target
 	if(!loc) 
-		loc = get_turf(F)
+		if (!is_shrapnel)
+			loc = get_turf(F)
+		else
+			loc = get_turf(S)
 	starting = get_turf(src)
 	if(starting != loc) 
 		loc = starting //Put us on the turf, if we're not.
@@ -126,8 +129,11 @@
 		qdel(src)
 		return
 	firer = F
-	if(F) 
+	if(F && !is_shrapnel) 
 		permutated += F //Don't hit the shooter (firer)
+	else if (S && is_shrapnel)
+		permutated += S
+
 	permutated += src //Don't try to hit self.
 	shot_from = S
 	in_flight = 1
@@ -291,7 +297,13 @@
 				if(ammo_flags & AMMO_SKIPS_HUMANS && ishuman(dL))
 					continue
 				if(ammo_flags & AMMO_SKIPS_ALIENS && isXeno(dL))
-					continue
+					var/mob/living/carbon/Xenomorph/X = dL
+					var/mob/living/carbon/Xenomorph/F = firer
+
+					if (!istype(F))
+						continue
+					if (X.hivenumber == F.hivenumber)
+						continue
 				remote_detonation = 1
 				kill_proj = ammo.on_near_target(T, src)
 				break
@@ -670,7 +682,12 @@
 	if(.)
 		var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
 		if(ammo_flags & AMMO_SKIPS_ALIENS)
-			return FALSE
+			var/mob/living/carbon/Xenomorph/X = P.firer
+			if(!istype(X))
+				return FALSE
+			if(X.hivenumber == hivenumber)
+				return FALSE
+
 		if(mob_size == MOB_SIZE_BIG)	. += 10
 		if(evasion > 0)
 			. -= evasion
@@ -815,22 +832,25 @@
 /mob/living/carbon/Xenomorph/bullet_act(obj/item/projectile/P)
 	if(!P || !istype(P))
 		return
+
+	var/damage = P.calculate_damage()
+	var/damage_result = damage
+
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
-	if(ammo_flags & (AMMO_XENO_ACID|AMMO_XENO_TOX) ) //Aliens won't be harming aliens.
-		//separate if to improve readability
-		var/mob/living/carbon/Xenomorph/XNO = P.firer
-		if(!istype(XNO) || XNO.hivenumber == hivenumber)
+
+	if(isXeno(P.firer))
+		if(matches_hivemind(P.firer, src))
 			bullet_ping(P)
 			return -1
+		else
+			damage *= XVX_PROJECTILE_DAMAGEMULT
+			damage_result = damage
 
 	if(ismob(P.weapon_source_mob))
 		var/mob/M = P.weapon_source_mob
 		M.track_shot_hit(P.weapon_source, src)
 
 	flash_weak_pain()
-
-	var/damage = P.calculate_damage()
-	var/damage_result = damage
 
 	if(damage > 0 && !(ammo_flags & AMMO_IGNORE_ARMOR))
 		var/armor = armor_deflection + armor_deflection_buff

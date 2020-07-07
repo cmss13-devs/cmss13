@@ -318,6 +318,8 @@
 	armor_hardiness_mult = armor_hardiness_mult * armorfactor_scalar
 
 /datum/hive_status
+	var/name = "Normal Hive"
+
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/mob/living/carbon/Xenomorph/Queen/living_xeno_queen
 	var/egg_planting_range = 15
@@ -787,21 +789,25 @@
 	return hive_structures[name_ref].len
 
 /datum/hive_status/corrupted
+	name = "Corrupted Hive"
 	hivenumber = XENO_HIVE_CORRUPTED
 	prefix = "Corrupted "
 	color = "#00ff80"
 
 /datum/hive_status/alpha
+	name = "Alpha Hive"
 	hivenumber = XENO_HIVE_ALPHA
 	prefix = "Alpha "
 	color = "#cccc00"
 
 /datum/hive_status/beta
+	name = "Beta Hive"
 	hivenumber = XENO_HIVE_BETA
 	prefix = "Beta "
 	color = "#9999ff"
 
 /datum/hive_status/zeta
+	name = "Zeta Hive"
 	hivenumber = XENO_HIVE_ZETA
 	prefix = "Zeta "
 	color = "#606060"

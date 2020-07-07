@@ -110,15 +110,13 @@
 
 		while (eggs_cur > 0)
 			if(prob(chance))
-				E = new(loc)
-				E.hivenumber = hivenumber
+				new E(loc, hivenumber)
 				eggs_cur--
 		if (huggers_cur)
 			visible_message(SPAN_XENOWARNING("The chittering mass of tiny aliens is trying to escape [src]!"))
 			for(var/i in 0 to huggers_cur)
 				if(prob(chance))
-					F = new(loc)
-					F.hivenumber = hivenumber
+					F = new(loc, hivenumber)
 					step_away(F,src,1)
 
 
@@ -131,6 +129,10 @@
 	return 1
 
 /mob/living/carbon/Xenomorph/Carrier/proc/store_hugger(obj/item/clothing/mask/facehugger/F)
+	if(F.hivenumber != hivenumber)
+		to_chat(src, SPAN_WARNING("This hugger is tainted!"))
+		return
+
 	if(huggers_max > 0 && huggers_cur < huggers_max)
 		if(F.stat != DEAD && !F.sterile)
 			huggers_cur++
@@ -173,8 +175,7 @@
 			to_chat(src, SPAN_WARNING("Retrieving a stored facehugger while you're on fire would burn it!"))
 			return
 
-		F = new()
-		F.hivenumber = hivenumber
+		F = new(src, hivenumber)
 		huggers_cur--
 		put_in_active_hand(F)
 		to_chat(src, SPAN_XENONOTICE("You grab one of the facehugger in your storage. Now sheltering: [huggers_cur] / [huggers_max]."))
@@ -185,7 +186,7 @@
 		return
 
 	if(!threw_a_hugger)
-		threw_a_hugger = 1
+		threw_a_hugger = TRUE
 		for(var/X in actions)
 			var/datum/action/A = X
 			A.update_button_icon()
@@ -235,8 +236,7 @@
 		if(eggs_cur <= 0)
 			to_chat(src, SPAN_WARNING("You don't have any egg to use!"))
 			return
-		E = new()
-		E.hivenumber = hivenumber
+		E = new(src, hivenumber)
 		eggs_cur--
 		put_in_active_hand(E)
 		to_chat(src, SPAN_XENONOTICE("You grab one of the eggs in your storage. Now sheltering: [eggs_cur] / [eggs_max]."))

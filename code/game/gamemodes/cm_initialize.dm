@@ -267,7 +267,7 @@ Additional game mode variables.
 
 //If we are selecting xenomorphs, we NEED them to play the round. This is the expected behavior.
 //If this is an optional behavior, just override this proc or make an override here.
-/datum/game_mode/proc/initialize_starting_xenomorph_list()
+/datum/game_mode/proc/initialize_starting_xenomorph_list(hivenumber = XENO_HIVE_NORMAL)
 	var/list/datum/mind/possible_xenomorphs = get_players_for_role(BE_ALIEN)
 	var/list/datum/mind/possible_queens = get_players_for_role(BE_QUEEN)
 	if(possible_xenomorphs.len < xeno_required_num) //We don't have enough aliens, we don't consider people rolling for only Queen.
@@ -289,7 +289,7 @@ Additional game mode variables.
 			picked_queen = new_queen
 			possible_xenomorphs -= new_queen
 
-	var/datum/hive_status/hive = hive_datum[XENO_HIVE_NORMAL]
+	var/datum/hive_status/hive = hive_datum[hivenumber]
 
 	for(var/datum/mind/A in possible_xenomorphs)
 		if(A.roundstart_picked)

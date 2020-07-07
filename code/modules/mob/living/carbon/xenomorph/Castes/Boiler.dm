@@ -90,6 +90,7 @@
 	..()
 	smoke = new /datum/effect_system/smoke_spread/xeno_acid
 	smoke.attach(src)
+	smoke.source_mob = src
 	see_in_dark = 20
 	ammo = ammo_list[/datum/ammo/xeno/boiler_gas]
 

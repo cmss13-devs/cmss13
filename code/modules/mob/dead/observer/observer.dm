@@ -504,7 +504,26 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set desc = "Check the status of the hive."
 	set category = "Ghost"
 
-	hive_datum[XENO_HIVE_NORMAL].hive_ui.open_hive_status(src)
+	var/list/hives = list()
+	var/datum/hive_status/last_hive_checked
+
+	for(var/datum/hive_status/hive in hive_datum)
+		if(hive.totalXenos.len > 0)
+			hives += list("[hive.name]" = hive.hivenumber)
+			last_hive_checked = hive
+
+	if(!hives.len)
+		to_chat(src, SPAN_ALERT("There seem to be no living hives at the moment"))
+		return
+	else if(hives.len == 1) // Only one hive, don't need an input menu for that
+		last_hive_checked.hive_ui.open_hive_status(src)
+	else
+		faction = input(src, "Select which hive status menu to open up", "Hive Choice", "") as null|anything in hives
+		if(!faction)
+			to_chat(src, SPAN_ALERT("Hive choice error. Aborting."))
+			return
+
+		hive_datum[hives[faction]].hive_ui.open_hive_status(src)
 
 /mob/dead/verb/join_as_alien()
 	set category = "Ghost"

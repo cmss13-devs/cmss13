@@ -93,7 +93,7 @@
 	if (!istype(X))
 		return
 
-	if(!A || !istype(A, /mob/living/carbon/human))
+	if(!isXenoOrHuman(A) || matches_hivemind(A, X))
 		return
 
 	if(!X.check_state())
@@ -113,7 +113,7 @@
 		to_chat(X, SPAN_XENOWARNING("You cannot use abilities with your crest lowered."))
 		return
 
-	var/mob/living/carbon/human/H = A
+	var/mob/living/carbon/H = A
 	if(H.stat == DEAD)
 		return
 
@@ -139,7 +139,7 @@
 
 	if(H.stat != DEAD && (!(H.status_flags & XENO_HOST) || !istype(H.buckled, /obj/structure/bed/nest)) )
 		var/h_damage = 25 + (X.spiked * 5)
-		H.apply_armoured_damage(h_damage, ARMOR_MELEE, BRUTE)
+		H.apply_armoured_damage(get_xeno_damage_slash(H, h_damage), ARMOR_MELEE, BRUTE)
 		shake_camera(H, 2, 1)
 
 	var/facing = get_dir(X, H)
@@ -188,17 +188,20 @@
 	X.spin_circle()
 
 	var/sweep_range = 1
-	for(var/mob/living/carbon/human/H in orange(sweep_range, get_turf(X)))
+	for(var/mob/living/carbon/H in orange(sweep_range, get_turf(X)))
+		if (!isXenoOrHuman(H) || matches_hivemind(X, H)) continue
+
 		if(H != H.handle_barriers(X)) continue
 		if(H.stat == DEAD) continue
 		if(istype(H.buckled, /obj/structure/bed/nest)) continue
 		step_away(H, X, sweep_range, 2)
 		H.last_damage_mob = X
 		H.last_damage_source = initial(X.caste_name)
-		H.apply_armoured_damage(15, ARMOR_MELEE, BRUTE)
+		H.apply_armoured_damage(get_xeno_damage_slash(H, 15), ARMOR_MELEE, BRUTE)
 		shake_camera(H, 2, 1)
 
-		H.KnockDown(1, 1)
+		if(H.mob_size < MOB_SIZE_BIG)
+			H.KnockDown(get_xeno_stun_duration(H, 1), 1)
 
 		to_chat(H, SPAN_XENOWARNING("You are struck by [src]'s tail sweep!"))
 		playsound(H,'sound/weapons/alien_claw_block.ogg', 50, 1)

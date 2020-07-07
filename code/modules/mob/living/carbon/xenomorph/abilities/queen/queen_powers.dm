@@ -10,6 +10,10 @@
 	var/mob/living/carbon/Xenomorph/T = X.observed_xeno
 	if(!X.check_plasma(plasma_cost)) return
 
+	if(T.hivenumber != X.hivenumber)
+		to_chat(X, SPAN_XENOWARNING("[T] doesn't belong to your hive!"))
+		return 
+
 	if(T.is_ventcrawling)
 		to_chat(X, SPAN_XENOWARNING("[T] can't be deevolved here."))
 		return
@@ -156,6 +160,10 @@
 		to_chat(X, SPAN_XENOWARNING("You need to be on resin to grow an ovipositor."))
 		return
 
+	if(alien_weeds.linked_hive.hivenumber != X.hivenumber)
+		to_chat(X, SPAN_XENOWARNING("These weeds don't belong to your hive! You can't grow an ovipositor here."))
+		return 
+
 	if(!X.check_alien_construction(current_turf))
 		return
 
@@ -268,6 +276,10 @@
 
 		if(T.banished)
 			to_chat(X, SPAN_XENOWARNING("This xenomorph is already banished!"))
+			return
+
+		if(T.hivenumber != X.hivenumber)
+			to_chat(X, SPAN_XENOWARNING("This xenomorph doesn't belong to your hive!"))
 			return
 
 		// No banishing critted xenos

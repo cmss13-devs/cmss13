@@ -650,8 +650,13 @@
 			M.visible_message(SPAN_XENONOTICE("[M] claws [src]!"), \
 			SPAN_XENONOTICE("You claw [src]."), null, null, CHAT_TYPE_XENO_COMBAT)
 			playsound(loc, "alien_resin_break", 25)
-			health -= Ceiling(HEALTH_DOOR_XENO/3) // takes three hits
-		qdel(src)
+
+		M.animation_attack_on(src)
+		if (hivenumber == M.hivenumber)
+			qdel(src)
+		else
+			health -= M.melee_damage_lower * RESIN_XENO_DAMAGE_MULTIPLIER
+			healthcheck()
 
 
 /obj/structure/attack_alien(mob/living/carbon/Xenomorph/M)

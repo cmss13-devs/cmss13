@@ -19,7 +19,7 @@
 
 
 /datum/effects/xeno_freeze/validate_atom(var/atom/A)
-	if (!ishuman(A) && !isXeno(A))
+	if (!isXenoOrHuman(A))
 		return FALSE
 
 	var/mob/M = A

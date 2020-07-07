@@ -15,9 +15,14 @@
 	var/on_fire = FALSE
 	var/hivenumber = XENO_HIVE_NORMAL
 
-/obj/effect/alien/egg/New()
+/obj/effect/alien/egg/Initialize(loc, var/hive)
 	..()
 	create_egg_triggers()
+	if (hive)
+		hivenumber = hive
+	
+	set_hive_data(src, hivenumber)
+	update_icon()
 	Grow()
 
 /obj/effect/alien/egg/Dispose()
@@ -117,7 +122,7 @@
 		sleep(10)
 		if(loc && status != EGG_DESTROYED)
 			status = EGG_BURST
-			var/obj/item/clothing/mask/facehugger/child = new(loc)
+			var/obj/item/clothing/mask/facehugger/child = new(loc, hivenumber)
 			child.hivenumber = hivenumber
 			if(X && X.caste.can_hold_facehuggers && (!X.l_hand || !X.r_hand))	//sanity checks
 				X.put_in_hands(child)
@@ -139,10 +144,7 @@
 
 /obj/effect/alien/egg/update_icon()
 	overlays.Cut()
-	if(hivenumber && hivenumber <= hive_datum.len)
-		var/datum/hive_status/hive = hive_datum[hivenumber]
-		if(hive.color)
-			color = hive.color
+
 	if(on_fire)
 		overlays += "alienegg_fire"
 

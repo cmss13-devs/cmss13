@@ -26,6 +26,7 @@
 #define AMMO_STRIKES_SURFACE    262144 // If the projectile hits a dense turf it'll do on_hit_turf on the turf just in front of the turf instead of on the turf itself
 #define AMMO_HITS_TARGET_TURF   524288 // Whether or not the bullet hits the target that was clicked or if it keeps travelling
 
+
 //Gun defines for gun related thing. More in the projectile folder.
 #define GUN_CAN_POINTBLANK		1
 #define GUN_TRIGGER_SAFETY		2
@@ -103,8 +104,9 @@
 //Additional explosion damage modifier for open doors
 #define EXPLOSION_DAMAGE_MODIFIER_DOOR_OPEN		0.5
 
-//Melee weapons do more damage to resin structures
+//Melee weapons and xenos do more damage to resin structures
 #define RESIN_MELEE_DAMAGE_MULTIPLIER	8.2
+#define RESIN_XENO_DAMAGE_MULTIPLIER    4
 
 #define RESIN_EXPLOSIVE_MULTIPLIER 0.5
 

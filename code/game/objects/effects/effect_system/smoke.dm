@@ -250,6 +250,19 @@
 	spread_speed = 7
 	smokeranking = SMOKE_RANK_BOILER
 
+	var/hivenumber = XENO_HIVE_NORMAL
+	var/gas_damage = 20
+
+/obj/effect/particle_effect/smoke/xeno_burn/Initialize(loc, amount, source, source_mob)
+	var/mob/living/carbon/Xenomorph/X = source_mob
+	if (istype(X) && X.hivenumber)
+		hivenumber = X.hivenumber
+
+		set_hive_data(src, hivenumber)
+
+	. = ..()
+	
+
 /obj/effect/particle_effect/smoke/xeno_burn/apply_smoke_effect(turf/T)
 	..()
 	for(var/obj/structure/barricade/B in T)
@@ -265,7 +278,10 @@
 /obj/effect/particle_effect/smoke/xeno_burn/affect(var/mob/living/carbon/M)
 	..()
 	if(isXeno(M))
-		return
+		var/mob/living/carbon/Xenomorph/X = M
+		if(X.hivenumber == hivenumber)
+			return
+
 	if(isYautja(M) && prob(75))
 		return
 	if(M.stat == DEAD)
@@ -277,8 +293,13 @@
 	M.last_damage_mob = source_mob
 
 	M.apply_damage(3, OXY) //Basic oxyloss from "can't breathe"
-	M.apply_damage(20, BURN) //Inhalation damage
-	if(M.coughedtime != 1 && !M.stat) //Coughing/gasping
+
+	if(isXeno(M))
+		M.apply_damage(gas_damage * XVX_ACID_DAMAGEMULT, BURN) //Inhalation damage
+	else
+		M.apply_damage(gas_damage, BURN) //Inhalation damage
+
+	if(M.coughedtime != 1 && !M.stat && ishuman(M)) //Coughing/gasping
 		M.coughedtime = 1
 		if(prob(50))
 			M.emote("cough")

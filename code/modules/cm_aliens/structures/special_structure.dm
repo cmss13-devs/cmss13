@@ -35,9 +35,13 @@
 	..()
 	if(hive_ref)
 		linked_hive = hive_ref
+		set_hive_data(src, linked_hive.hivenumber)
+
 		if(!linked_hive.add_special_structure(src))
 			qdel(src)
 			return
+	else
+		linked_hive = hive_datum[XENO_HIVE_NORMAL]
 	fast_objects.Add(src)
 	update_icon()
 
@@ -51,5 +55,5 @@
 	. = ..()
 
 /obj/effect/alien/resin/special/attack_alien(mob/living/carbon/Xenomorph/M)
-	if(M.can_destroy_special())
+	if(M.can_destroy_special() || M.hivenumber != linked_hive.hivenumber)
 		return ..()

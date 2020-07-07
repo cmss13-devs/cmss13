@@ -316,7 +316,6 @@
 		return FALSE
 
 	var/structure_type = X.hive.hive_structure_types[choice]
-	var/area/current_area = get_area(T)
 	var/datum/construction_template/xenomorph/structure_template = new structure_type()
 
 	if(!X.hive.can_build_structure(structure_template.name) && !(choice == XENO_STRUCTURE_CORE))
@@ -324,10 +323,22 @@
 		qdel(structure_template)
 		return FALSE
 
-	if(isnull(T) || !current_area.can_build_special || !T.is_weedable())
+	if (isnull(T))
 		to_chat(X, SPAN_WARNING("You cannot build here!"))
 		qdel(structure_template)
 		return FALSE
+
+	var/queen_on_zlevel = !X.hive.living_xeno_queen || X.hive.living_xeno_queen.z == T.z
+	if(!queen_on_zlevel)
+		to_chat(X, SPAN_WARNING("Your link to the Queen is too weak here. She is on another world."))
+		qdel(structure_template)
+		return FALSE
+
+	if(!T.is_weedable())
+		to_chat(X, SPAN_WARNING("It's too early to be placing [structure_template.name] here!"))
+		qdel(structure_template)
+		return FALSE
+
 
 	if(structure_template.requires_node)
 		for(var/turf/TA in (range(T, 1)))
@@ -336,8 +347,8 @@
 				qdel(structure_template)
 				return FALSE
 			var/obj/effect/alien/weeds/alien_weeds = locate() in T
-			if(!alien_weeds || alien_weeds.weed_strength < WEED_LEVEL_HIVE)
-				to_chat(X, SPAN_WARNING("You can only shape on hive weeds. Find a hive node or core before you start building!"))
+			if(!alien_weeds || alien_weeds.weed_strength < WEED_LEVEL_HIVE || alien_weeds.linked_hive.hivenumber != X.hivenumber)
+				to_chat(X, SPAN_WARNING("You can only shape on [lowertext(hive_datum[X.hivenumber].prefix)]hive weeds. Find a hive node or core before you start building!"))
 				qdel(structure_template)
 				return FALSE
 

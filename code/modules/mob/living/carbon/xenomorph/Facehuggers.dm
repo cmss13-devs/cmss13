@@ -30,15 +30,19 @@
 	var/leaping = 0 //Is actually attacking someone?
 	var/hivenumber = XENO_HIVE_NORMAL
 
-	New()
-		..()
-		GoActive()
+/obj/item/clothing/mask/facehugger/Initialize(loc, hive)
+	. = ..()
+	if (hive)
+		hivenumber = hive
 
-	Dispose()
-		. = ..()
-		if(iscarbon(loc))
-			var/mob/living/carbon/M = loc
-			M.temp_drop_inv_item(src)
+	set_hive_data(src, hivenumber)
+	GoActive()
+
+/obj/item/clothing/mask/facehugger/Dispose()
+	. = ..()
+	if(iscarbon(loc))
+		var/mob/living/carbon/M = loc
+		M.temp_drop_inv_item(src)
 
 /obj/item/clothing/mask/facehugger/ex_act(severity)
 	Die()

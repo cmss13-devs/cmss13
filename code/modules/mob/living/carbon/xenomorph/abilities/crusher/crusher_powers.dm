@@ -4,15 +4,18 @@
 	if (!istype(X))
 		return
 
-	for (var/mob/living/carbon/human/H in orange(1, get_turf(X)))
+	for (var/mob/living/carbon/H in orange(1, get_turf(X)))
+		if(matches_hivemind(X, H))
+			continue
+
 		new /datum/effects/xeno_slow(H, X, null, null, 35)
 		to_chat(H, SPAN_XENODANGER("You are slowed as the impact of [X] shakes the ground!"))
 
 /datum/action/xeno_action/activable/pounce/crusher_charge/additional_effects(mob/living/L)
-	if (!ishuman(L))
+	if (!isXenoOrHuman(L))
 		return
 
-	var/mob/living/carbon/human/H = L 
+	var/mob/living/carbon/H = L 
 	if (H.stat == DEAD)
 		return
 	
@@ -24,7 +27,7 @@
 	L.KnockDown(2)
 	X.visible_message(SPAN_XENODANGER("[X] overruns [H], brutally trampling them underfoot!"), SPAN_XENODANGER("You brutalize [H] as you crush them underfoot!"))
 
-	H.apply_armoured_damage(direct_hit_damage, ARMOR_MELEE, BRUTE)
+	H.apply_armoured_damage(get_xeno_damage_slash(H, direct_hit_damage), ARMOR_MELEE, BRUTE)
 	xeno_throw_human(H, X, X.dir, 3)
 
 	L.last_damage_mob = X
@@ -64,20 +67,27 @@
 	X.visible_message(SPAN_XENODANGER("[X] smashes into the ground!"), SPAN_XENODANGER("You smash into the ground!"))
 	X.create_stomp()
 
-	for (var/mob/living/carbon/human/H in get_turf(X))
-		if (H.stat == DEAD)
+	for (var/mob/living/carbon/H in get_turf(X))
+		if (H.stat == DEAD || matches_hivemind(X, H))
 			continue
-		new effect_type_base(H, X, , , effect_duration)
+		
+		new effect_type_base(H, X, , , get_xeno_stun_duration(H, effect_duration))
 		to_chat(H, SPAN_XENOHIGHDANGER("You are slowed as [X] knocks you off balance!"))
-		H.KnockDown(0.2)
 
-		H.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE)
+		if(H.mob_size < MOB_SIZE_BIG)
+			H.KnockDown(get_xeno_stun_duration(H, 0.2))
+
+		H.apply_armoured_damage(get_xeno_damage_slash(H, damage), ARMOR_MELEE, BRUTE)
 		H.last_damage_mob = X
 		H.last_damage_source = initial(X.caste_name)
 
-	for (var/mob/living/carbon/human/H in orange(distance, get_turf(X)))
-		new effect_type_base(H, X, , , effect_duration)
-		H.KnockDown(0.2)
+	for (var/mob/living/carbon/H in orange(distance, get_turf(X)))
+		if (H.stat == DEAD || matches_hivemind(X, H))
+			continue
+
+		new effect_type_base(H, X, , , get_xeno_stun_duration(H, effect_duration))
+		if(H.mob_size < MOB_SIZE_BIG)
+			H.KnockDown(get_xeno_stun_duration(H, 0.2))
 		to_chat(H, SPAN_XENOHIGHDANGER("You are slowed as [X] knocks you off balance!"))
 
 	apply_cooldown()

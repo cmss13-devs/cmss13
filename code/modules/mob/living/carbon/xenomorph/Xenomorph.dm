@@ -48,7 +48,7 @@
 	see_in_dark = 8
 	recovery_constant = 1.5
 	see_invisible = SEE_INVISIBLE_MINIMUM
-	hud_possible = list(HEALTH_HUD_XENO, PLASMA_HUD, PHEROMONE_HUD, QUEEN_OVERWATCH_HUD, ARMOR_HUD_XENO, XENO_STATUS_HUD, XENO_BANISHED_HUD)
+	hud_possible = list(HEALTH_HUD_XENO, PLASMA_HUD, PHEROMONE_HUD, QUEEN_OVERWATCH_HUD, ARMOR_HUD_XENO, XENO_STATUS_HUD, XENO_BANISHED_HUD, XENO_HOSTILE_ACID, XENO_HOSTILE_SLOW, XENO_HOSTILE_TAG, XENO_HOSTILE_FREEZE)
 	unacidable = TRUE
 	rebounds = TRUE
 	faction = FACTION_XENOMORPH
@@ -101,7 +101,7 @@
 	var/tackle_chance = 35
 	var/pull_multiplier = 1.0
 	var/aura_strength = 0 // Pheromone strength
-	var/weed_level = 1
+	var/weed_level = WEED_LEVEL_STANDARD
 	var/acid_level = 0
 
 	// Mutator-related and other important vars
@@ -552,6 +552,7 @@
 	med_hud_set_armor()
 	hud_set_plasma()
 	hud_set_pheromone()
+	
 	//and display them
 	add_to_all_mob_huds()
 	var/datum/mob_hud/MH = huds[MOB_HUD_XENO_INFECTION]

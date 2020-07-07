@@ -11,11 +11,12 @@
 	var/linked_turfs = list()
 
 /obj/effect/alien/resin/special/pylon/New(loc, var/hive_ref)
+	. = ..(loc, hive_ref)
+
 	replace_node()
 	for(var/turf/A in range(cover_range, loc))
 		A.linked_pylons += src
 		linked_turfs += A
-	..(loc, hive_ref)
 
 /obj/effect/alien/resin/special/pylon/Dispose()
 
@@ -37,7 +38,7 @@
 	var/obj/effect/alien/weeds/node/pylon/W = locate() in loc
 	if(W)
 		return
-	new node_type(loc)
+	new node_type(loc, null, null, linked_hive)
 
 /obj/effect/alien/resin/special/pylon/attack_alien(mob/living/carbon/Xenomorph/M)
 	if(!linked_hive || !M.crystal_max || M.a_intent == HARM_INTENT)

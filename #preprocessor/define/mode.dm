@@ -38,6 +38,7 @@
 #define MODE_FOG_ACTIVATED 		16
 #define MODE_INFECTION			32
 #define MODE_HUMAN_ANTAGS		64
+#define MODE_NO_SPAWN 			128 // Disables marines from spawning in normally
 
 #define ROUNDSTATUS_FOG_DOWN 		1
 #define ROUNDSTATUS_PODDOORS_OPEN	2

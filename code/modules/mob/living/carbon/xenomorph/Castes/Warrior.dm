@@ -110,6 +110,7 @@
 	if(isliving(pulling))
 		var/mob/living/L = pulling
 		L.SetStunned(0)
+		L.SetKnockeddown(0)
 	..()
 
 
@@ -120,18 +121,19 @@
 	if(!isliving(AM))
 		return FALSE
 	var/mob/living/L = AM
-	var/should_neckgrab = isHumanStrict(L)
+	var/should_neckgrab = isHumanStrict(L) || (isXeno(L) && !matches_hivemind(L, src) )
 
 	if(!isnull(L) && !isnull(L.pulledby) && L != src ) //override pull of other mobs
 		visible_message(SPAN_WARNING("[src] has broken [L.pulledby]'s grip on [L]!"), null, null, 5)
 		L.pulledby.stop_pulling()
+		return // Warrior should not-regrab the victim to reset the knockdown
 
 	. = ..(L, lunge, should_neckgrab)
 
 	if(.) //successful pull
-		if(should_neckgrab)
+		if(should_neckgrab && L.mob_size < MOB_SIZE_BIG)
 			L.drop_held_items()
-			L.KnockDown(2)
+			L.KnockDown(get_xeno_stun_duration(L, 2))
 			L.pulledby = src
 			visible_message(SPAN_XENOWARNING("\The [src] grabs [L] by the throat!"), \
 			SPAN_XENOWARNING("You grab [L] by the throat!"))

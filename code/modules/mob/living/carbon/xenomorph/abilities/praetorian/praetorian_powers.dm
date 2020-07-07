@@ -41,7 +41,10 @@
 		target_turfs += T
 
 	for(var/turf/target_turf in target_turfs)
-		for(var/mob/living/carbon/human/H in target_turf)
+		for(var/mob/living/carbon/H in target_turf)
+			if (!isXenoOrHuman(H) || matches_hivemind(H, X))
+				continue
+
 			if(!(H in target_mobs))
 				target_mobs += H
 
@@ -51,12 +54,15 @@
 	X.emote("roar")
 
 	// Loop through our turfs, finding any humans there and dealing damage to them
-	for (var/mob/living/carbon/human/H in target_mobs)
+	for (var/mob/living/carbon/H in target_mobs)
+		if (!isXenoOrHuman(H) || matches_hivemind(H, X))
+			continue
+
 		if (H.stat)
 			continue 
 
 		X.flick_attack_overlay(H, "slash")
-		H.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE, null, 20)
+		H.apply_armoured_damage(get_xeno_damage_slash(H, damage), ARMOR_MELEE, BRUTE, null, 20)
 
 	if (target_mobs.len >= shield_regen_threshold)
 		if (X.mutation_type == PRAETORIAN_VANGUARD)
@@ -98,19 +104,26 @@
 
 	var/list/target_mobs = list()
 	var/list/L = orange(1, X)
-	for (var/mob/living/carbon/human/H in L)
+	for (var/mob/living/carbon/H in L)
+		if (!isXenoOrHuman(H) || matches_hivemind(H, X))
+			continue
+
 		if (!(H in target_mobs))
 			target_mobs += H
 
 	X.visible_message(SPAN_XENODANGER("[X] slashes its claws through the area around it!"), SPAN_XENODANGER("You slash your claws through the area around you!"))
 	X.spin_circle()
 
-	for (var/mob/living/carbon/human/H in target_mobs)
+	for (var/mob/living/carbon/H in target_mobs)
 		if (H.stat)
 			continue 
+		
+		if (!isXenoOrHuman(H) || matches_hivemind(H, X))
+			continue
+	
 
 		X.flick_attack_overlay(H, "slash")
-		H.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE)
+		H.apply_armoured_damage(get_xeno_damage_slash(H, damage), ARMOR_MELEE, BRUTE)
 		playsound(get_turf(H), "alien_claw_flesh", 30, 1)
 
 	if (target_mobs.len >= shield_regen_threshold)
@@ -131,11 +144,11 @@
 	if (!check_and_use_plasma_owner())
 		return
 
-	if (!ishuman(A))
-		to_chat(X, SPAN_XENODANGER("You must target a human!"))
+	if (!isXenoOrHuman(A) || matches_hivemind(A, X))
+		to_chat(X, SPAN_XENODANGER("You must target a hostile!"))
 		return
 
-	var/mob/living/carbon/human/H = A
+	var/mob/living/carbon/H = A
 
 	if (!X.Adjacent(H))
 		to_chat(X, SPAN_XENOWARNING("You must be adjacent to your target!"))
@@ -157,13 +170,19 @@
 
 		H.frozen = 1
 		H.update_canmove()
-		H.update_xeno_hostile_hud()
-		add_timer(CALLBACK(GLOBAL_PROC, .proc/unroot_human, H), root_duration)
+
+		if (ishuman(H))
+			var/mob/living/carbon/human/Hu
+			Hu.update_xeno_hostile_hud()
+
+		add_timer(CALLBACK(GLOBAL_PROC, .proc/unroot_human, H), get_xeno_stun_duration(H, root_duration))
 		to_chat(H, SPAN_XENOHIGHDANGER("[X] has pinned you to the ground! You cannot move!"))
 
 	else
 		var/fling_distance = buffed ? fling_dist_buffed : fling_dist_unbuffed
 
+		if(H.mob_size >= MOB_SIZE_BIG)
+			fling_distance *= 0.1
 		X.visible_message(SPAN_XENODANGER("[X] deals [A] a massive blow, sending them flying!"), SPAN_XENOHIGHDANGER("You deal [A] a massive blow, sending them flying!"))
 		xeno_throw_human(H, X, get_dir(X, A) ,fling_distance)
 
@@ -230,10 +249,14 @@
 	playsound(get_turf(X), 'sound/effects/bang.ogg', 25, 0)
 
 	for (var/turf/target_turf in turflist)
-		for (var/mob/living/carbon/human/H in target_turf)
+		for (var/mob/living/carbon/H in target_turf)
+			if(!isXenoOrHuman(H) || matches_hivemind(H, X))
+				continue
+			
 			to_chat(H, SPAN_XENOHIGHDANGER("You are knocked over as the ground shakes underneath you!"))
-			H.KnockDown(knockdown_power)
-			new /datum/effects/xeno_freeze(H, X, , , 20)
+			if(H.mob_size < MOB_SIZE_BIG)
+				H.KnockDown(get_xeno_stun_duration(H, knockdown_power))
+			new /datum/effects/xeno_freeze(H, X, , , get_xeno_stun_duration(H, knockdown_power))
 			
 	apply_cooldown()
 	..()
@@ -327,14 +350,20 @@
 	X.visible_message(SPAN_XENODANGER("[X] lashes its tail furiously, hitting everything in front of it!"), SPAN_XENODANGER("You lash your tail furiously, hitting everything in front of you!"))
 
 	for (var/turf/T in target_turfs)
-		for (var/mob/living/carbon/human/H in T)
+		for (var/mob/living/carbon/H in T)
 			if (H.stat == DEAD)
 				continue 
+				
+			if(!isXenoOrHuman(H) || matches_hivemind(H, X))
+				continue
+
+			if(H.mob_size >= MOB_SIZE_BIG)
+				continue
 
 			xeno_throw_human(H, X, facing, fling_dist)
 
-			H.KnockDown(0.5)
-			new /datum/effects/xeno_slow(H, X, , , 20)
+			H.KnockDown(get_xeno_stun_duration(H, 0.5))
+			new /datum/effects/xeno_slow(H, X, , , get_xeno_stun_duration(H, 20))
 
 	..()
 	return
@@ -350,8 +379,8 @@
 	if (!X.check_state())
 		return
 
-	if (!ishuman(A))
-		to_chat(X, SPAN_XENODANGER("You must target a human!"))
+	if (!isXenoOrHuman(A) || matches_hivemind(A, X))
+		to_chat(X, SPAN_XENODANGER("You must target a hostile!"))
 		apply_cooldown_override(click_miss_cooldown)
 		return
 
@@ -360,7 +389,7 @@
 		apply_cooldown_override(click_miss_cooldown)
 		return
 
-	var/mob/living/carbon/human/H = A
+	var/mob/living/carbon/H = A
 
 	if (H.stat == DEAD)
 		to_chat(X, SPAN_XENOWARNING("[A] is dead, why would you want to attack it?"))
@@ -381,12 +410,14 @@
 
 		buffed = found
 
-	H.update_xeno_hostile_hud()
+	if(ishuman(H))
+		var/mob/living/carbon/human/Hu = H
+		Hu.update_xeno_hostile_hud()
 
 	// Hmm today I will kill a marine while looking away from them
 	X.face_atom(A)
 
-	var/damage = rand(X.melee_damage_lower, X.melee_damage_upper)
+	var/damage = get_xeno_damage_slash(H, rand(X.melee_damage_lower, X.melee_damage_upper))
 
 	X.visible_message(SPAN_DANGER("\The [X] violently slices [A] with its tail[buffed?" twice":""]!"), \
 					SPAN_DANGER("You slice [A] with your tail[buffed?" twice":""]!"))
@@ -401,7 +432,7 @@
 		playsound(get_turf(A), "alien_claw_flesh", 30, 1)
 		
 		// Reroll damage
-		damage = rand(X.melee_damage_lower,  X.melee_damage_upper)
+		damage = get_xeno_damage_slash(H, rand(X.melee_damage_lower, X.melee_damage_upper))
 		sleep(4) // Short sleep so the animation and sounds will be distinct, but this creates some strange effects if the prae runs away 
 				 // not entirely happy with this, but I think its benefits outweigh its drawbacks
 
@@ -461,12 +492,12 @@
 	if (!istype(X) || !X.check_state())
 		return
 
-	if (!ishuman(A))
-		to_chat(X, SPAN_XENODANGER("You must target a human!"))
+	if (!isXenoOrHuman(A) || matches_hivemind(A, X))
+		to_chat(X, SPAN_XENODANGER("You must target a hostile!"))
 		apply_cooldown_override(click_miss_cooldown)
 		return
 
-	var/mob/living/carbon/human/T = A
+	var/mob/living/carbon/T = A
 
 	if (T.stat == DEAD)
 		to_chat(X, SPAN_XENOWARNING("[A] is dead, why would you want to attack it?"))
@@ -487,7 +518,9 @@
 
 		buffed = found
 
-	T.update_xeno_hostile_hud()
+	if(ishuman(T))
+		var/mob/living/carbon/human/Hu = T
+		Hu.update_xeno_hostile_hud()
 	
 	var/dist = get_dist(X, T)
 
@@ -510,7 +543,7 @@
 	X.face_atom(T)
 
 	if (!buffed)
-		new /datum/effects/xeno_slow(T, X, null, null, slow_duration)
+		new /datum/effects/xeno_slow(T, X, null, null, get_xeno_stun_duration(T, slow_duration))
 
 	var/stun_duration = stun_duration_default
 	var/daze_duration = 0
@@ -519,15 +552,24 @@
 		stun_duration = stun_duration_buffed
 		daze_duration = daze_duration_buffed
 
-	if (stun_duration > 0)
-		T.KnockDown(stun_duration)
+	var/xeno_smashed = FALSE
+
+	if(isXeno(T))
+		var/mob/living/carbon/Xenomorph/Xeno = T
+		if(Xeno.mob_size >= MOB_SIZE_BIG)
+			xeno_smashed = TRUE
+			shake_camera(Xeno, 10, 1)
+			X.visible_message(SPAN_XENODANGER("[X] smashes [Xeno] with it's tail!"), SPAN_XENODANGER("You smash [Xeno] with your tail!"))
+			to_chat(Xeno, SPAN_XENOHIGHDANGER("You feel dizzy as [X] smashes you with their tail!"))
+	
+	if(!xeno_smashed)
+		if (stun_duration > 0)
+			T.KnockDown(stun_duration)
+		X.visible_message(SPAN_XENODANGER("[X] trips [A] with it's tail!"), SPAN_XENODANGER("You trip [A] with your tail!"))
+		to_chat(T, SPAN_XENOHIGHDANGER("You are swept off your feet by [X]!"))
 
 	if (daze_duration > 0)
 		T.Daze(daze_duration)
-
-	shake_camera(T, 10, 1)
-	X.visible_message(SPAN_XENODANGER("[X] trips [A] with it's tail!"), SPAN_XENODANGER("You trip [A] with your tail!"))
-	to_chat(T, SPAN_XENOHIGHDANGER("You are swept off your feet by [X]!"))
 
 	apply_cooldown()
 	..()
@@ -577,7 +619,7 @@
 	if(!A || A.layer >= FLY_LAYER || !isturf(X.loc) || !X.check_state()) 
 		return
 
-	if (!isXeno(A))
+	if (!isXeno(A) || !matches_hivemind(A, X))
 		to_chat(X, SPAN_XENODANGER("You must target one of your sisters!"))
 		return
 

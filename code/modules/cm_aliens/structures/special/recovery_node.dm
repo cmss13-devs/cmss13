@@ -20,7 +20,7 @@
 		return
 	var/list/heal_candidates = list()
 	for(var/mob/living/carbon/Xenomorph/X in orange(src, 1))
-		if(X.health >= X.maxHealth || !X.resting)
+		if(X.health >= X.maxHealth || !X.resting || X.hivenumber != linked_hive.hivenumber)
 			continue
 		heal_candidates += X
 	last_healed = world.time

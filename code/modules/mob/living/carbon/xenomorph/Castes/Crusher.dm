@@ -230,7 +230,7 @@
 
 /datum/behavior_delegate/crusher_base/melee_attack_additional_effects_target(atom/A)
 
-	if (!ishuman(A))
+	if (!isXenoOrHuman(A))
 		return
 
 	new /datum/effects/xeno_slow(A, bound_xeno, , , 20)
@@ -238,8 +238,11 @@
 	var/damage = bound_xeno.melee_damage_upper * aoe_slash_damage_reduction
 
 	var/cdr_amount = 10
-	for (var/mob/living/carbon/human/H in orange(1, A))
+	for (var/mob/living/carbon/H in orange(1, A))
 		if (H.stat == DEAD)
+			continue
+
+		if(!isXenoOrHuman(H) || matches_hivemind(bound_xeno, H))
 			continue
 
 		cdr_amount += 5
@@ -266,8 +269,9 @@
 			bound_xeno.attack_log += text("\[[time_stamp()]\] <font color='red'>slashed [key_name(H)]</font>")
 		log_attack("[key_name(bound_xeno)] slashed [key_name(H)]")
 
-		H.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE, bound_xeno.zone_selected)
-		new /datum/effects/xeno_slow(H, bound_xeno, , , 25)
+
+		H.apply_armoured_damage(get_xeno_damage_slash(H, damage), ARMOR_MELEE, BRUTE, bound_xeno.zone_selected)
+		new /datum/effects/xeno_slow(H, bound_xeno, , , get_xeno_stun_duration(H, 25))
 
 	var/datum/action/xeno_action/activable/pounce/crusher_charge/cAction = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/activable/pounce/crusher_charge)
 	if (!cAction.action_cooldown_check())

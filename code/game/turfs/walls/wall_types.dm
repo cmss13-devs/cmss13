@@ -57,6 +57,8 @@
 	icon_state = "wwall"
 
 /turf/closed/wall/almayer/white/hull
+	name = "research hull"
+	desc = "An extremely reinforced metal wall used to isolate potentially dangerous areas"
 	hull = 1
 
 /turf/closed/wall/almayer/research/can_be_dissolved()
@@ -447,11 +449,7 @@
 	layer = RESIN_STRUCTURE_LAYER
 	blend_turfs = list(/turf/closed/wall/resin)
 	blend_objects = list(/obj/structure/mineral_door/resin)
-
-/turf/closed/wall/resin/Initialize()
-	. = ..()
-	if(!locate(/obj/effect/alien/weeds) in loc)
-		new /obj/effect/alien/weeds(loc)
+	var/hivenumber = XENO_HIVE_NORMAL
 
 /turf/closed/wall/resin/flamer_fire_act(var/dam = config.min_burnlevel)
 	take_damage(dam)
@@ -522,7 +520,10 @@
 		M.visible_message(SPAN_XENONOTICE("\The [M] claws \the [src]!"), \
 		SPAN_XENONOTICE("You claw \the [src]."))
 		playsound(src, "alien_resin_break", 25)
-		take_damage(Ceiling(HEALTH_WALL_XENO/4)) //Four hits for a regular wall
+		if (M.hivenumber == hivenumber)
+			take_damage(Ceiling(HEALTH_WALL_XENO/4)) //Four hits for a regular wall
+		else
+			take_damage(M.melee_damage_lower*RESIN_XENO_DAMAGE_MULTIPLIER)
 
 
 /turf/closed/wall/resin/attack_animal(mob/living/M)
@@ -548,6 +549,7 @@
 	qdel(src) //ChangeTurf is called by Dispose()
 
 /turf/closed/wall/resin/ChangeTurf(newtype)
+	var/hive = hivenumber
 	. = ..()
 	if(.)
 		var/turf/T
@@ -556,6 +558,11 @@
 			if(!istype(T)) continue
 			for(var/obj/structure/mineral_door/resin/R in T)
 				R.check_resin_support()
+		
+		var/turf/closed/wall/resin/W = .
+		if (istype(W))
+			W.hivenumber = hive
+			set_hive_data(W, W.hivenumber)
 
 
 

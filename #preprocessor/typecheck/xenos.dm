@@ -1,6 +1,8 @@
 //Xenomorph Hud Test APOPHIS 22MAY2015
 #define isXeno(A) (istype(A, /mob/living/carbon/Xenomorph))
 
+#define isXenoOrHuman(A) (isXeno(A) || ishuman(A))
+
 #define isXenoBoiler(A) (istype(A, /mob/living/carbon/Xenomorph/Boiler))
 #define isXenoCarrier(A) (istype(A, /mob/living/carbon/Xenomorph/Carrier))
 #define isXenoCrusher(A) (istype(A, /mob/living/carbon/Xenomorph/Crusher))
@@ -22,3 +24,27 @@
 #define isXenoBurrower(A) (istype(A, /mob/living/carbon/Xenomorph/Burrower))
 
 #define isXenoBuilder(A) (isXenoDrone(A) || isXenoHivelord(A) || isXenoCarrier(A) || isXenoBurrower(A) || isXenoQueen(A))
+
+/proc/matches_hivemind(var/mob/A, var/mob/B)
+	if(!(isXeno(A) && isXeno(B)))
+		return FALSE
+	var/mob/living/carbon/Xenomorph/Xa = A
+	var/mob/living/carbon/Xenomorph/Xb = B
+	return Xa.hivenumber == Xb.hivenumber
+
+// need this to set the data for walls/eggs/huggers when they are initialized
+/proc/set_hive_data(var/atom/A, hivenumber)
+	var/datum/hive_status/hive = hive_datum[hivenumber]
+	if (hive.color)
+		A.color = hive.color
+	A.name = "[lowertext(hive.prefix)][A.name]"
+
+/proc/get_xeno_stun_duration(var/mob/A, duration)
+	if(isXeno(A))
+		return duration * XVX_STUN_LENGTHMULT
+	return duration
+
+/proc/get_xeno_damage_slash(var/mob/A, damage)
+	if(isXeno(A))
+		return damage * XVX_SLASH_DAMAGEMULT
+	return damage

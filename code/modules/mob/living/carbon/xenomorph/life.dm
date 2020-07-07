@@ -466,7 +466,10 @@ updatehealth()
 //Returns TRUE if xeno is off weeds AND doesn't need weeds for healing AND is not on Almayer UNLESS Queen is also on Almayer (aka - no solo Lurker Almayer hero)
 /mob/living/carbon/Xenomorph/proc/check_weeds_for_healing()
 	var/turf/T = loc
-	if(locate(/obj/effect/alien/weeds) in T)
+
+	var/obj/effect/alien/weeds/W = locate(/obj/effect/alien/weeds) in T
+
+	if(W && W.linked_hive.hivenumber == hivenumber)
 		return TRUE //weeds, yes!
 	if(need_weeds)
 		return FALSE //needs weeds, doesn't have any

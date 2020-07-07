@@ -109,6 +109,10 @@
 		var/thickened = FALSE
 		if(istype(A, /turf/closed/wall/resin))
 			var/turf/closed/wall/resin/WR = A
+			if (WR.hivenumber != hivenumber)
+				to_chat(src, SPAN_XENOWARNING("[WR] doesn't belong to your hive!"))
+				return FALSE
+
 			if(WR.walltype == WALL_RESIN)
 				var/prev_old_turf = WR.old_turf
 				WR.ChangeTurf(/turf/closed/wall/resin/thick)
@@ -124,10 +128,14 @@
 
 		else if(istype(A, /obj/structure/mineral_door/resin))
 			var/obj/structure/mineral_door/resin/DR = A
+			if (DR.hivenumber != hivenumber)
+				to_chat(src, SPAN_XENOWARNING("[DR] doesn't belong to your hive!"))
+				return FALSE
+
 			if(DR.hardness == 1.5) //non thickened
 				var/oldloc = DR.loc
 				qdel(DR)
-				new /obj/structure/mineral_door/resin/thick (oldloc)
+				new /obj/structure/mineral_door/resin/thick (oldloc, DR.hivenumber)
 			else
 				to_chat(src, SPAN_XENOWARNING("[DR] can't be made thicker."))
 				return FALSE
@@ -160,6 +168,10 @@
 
 	if(!alien_weeds)
 		to_chat(src, SPAN_WARNING("You can only shape on weeds. Find some resin before you start building!"))
+		return FALSE
+	
+	if (alien_weeds.linked_hive.hivenumber != hivenumber)
+		to_chat(src, SPAN_WARNING("These weeds do not belong to your hive!"))
 		return FALSE
 
 	if(resin_to_build != RESIN_COLLECTOR && !check_alien_construction(current_turf))
@@ -248,9 +260,9 @@
 	switch(resin_to_build)
 		if(RESIN_DOOR)
 			if(thick)
-				new_resin = new /obj/structure/mineral_door/resin/thick(current_turf)
+				new_resin = new /obj/structure/mineral_door/resin/thick(current_turf, hivenumber)
 			else
-				new_resin = new /obj/structure/mineral_door/resin(current_turf)
+				new_resin = new /obj/structure/mineral_door/resin(current_turf, hivenumber)
 		if(RESIN_WALL)
 			if(thick)
 				current_turf.ChangeTurf(/turf/closed/wall/resin/thick)
@@ -264,14 +276,19 @@
 				current_turf.ChangeTurf(/turf/closed/wall/resin/membrane)
 			new_resin = current_turf
 		if(RESIN_NEST)
-			new_resin = new /obj/structure/bed/nest(current_turf)
+			new_resin = new /obj/structure/bed/nest(current_turf, hivenumber)
 		if(RESIN_STICKY)
-			new_resin = new /obj/effect/alien/resin/sticky(current_turf)
+			new_resin = new /obj/effect/alien/resin/sticky(current_turf, hivenumber)
 		if(RESIN_FAST)
-			new_resin = new /obj/effect/alien/resin/sticky/fast(current_turf)
+			new_resin = new /obj/effect/alien/resin/sticky/fast(current_turf, hivenumber)
 		// Xeno ressource collection
 		/*if(RESIN_COLLECTOR)
 			new_resin = new /obj/effect/alien/resin/collector(current_turf, hive, target_node)*/
+
+	var/turf/closed/wall/resin/W = new_resin
+	if (istype(W))
+		W.hivenumber = hivenumber
+		set_hive_data(W, hivenumber)
 
 	new_resin.add_hiddenprint(src) //so admins know who placed it
 	return TRUE

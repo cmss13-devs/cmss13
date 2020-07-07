@@ -12,7 +12,7 @@
 	health = 5
 	layer = RESIN_STRUCTURE_LAYER
 	var/list/tripwires = list()
-	var/hivenumber //Hivenumber of the xeno that planted it OR the last Facehugger that was placed (essentially taking over the hole)
+	var/hivenumber = XENO_HIVE_NORMAL //Hivenumber of the xeno that planted it OR the last Facehugger that was placed (essentially taking over the hole)
 	var/trap_type = RESIN_TRAP_EMPTY
 	var/armed = 0
 	var/created_by // ckey
@@ -27,6 +27,8 @@
 		hivenumber = X.hivenumber
 		source_name = X.caste_name
 		source_mob = X
+
+	set_hive_data(src, hivenumber)
 	..()
 
 /obj/effect/alien/resin/trap/examine(mob/user)
@@ -66,9 +68,10 @@
 	..()
 
 /obj/effect/alien/resin/trap/bullet_act(obj/item/projectile/P)
-	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
-	if(ammo_flags & (AMMO_XENO_ACID|AMMO_XENO_TOX))
+	var/mob/living/carbon/Xenomorph/X = P.firer
+	if(istype(X) && X.hivenumber == hivenumber)
 		return
+	
 	. = ..()
 
 /obj/effect/alien/resin/trap/HasProximity(atom/movable/AM)
@@ -88,6 +91,10 @@
 				if(H.stat == DEAD || H.lying)
 					return
 				trigger_trap()
+			if(isXeno(AM))
+				var/mob/living/carbon/Xenomorph/X = AM
+				if(X.hivenumber != hivenumber)
+					trigger_trap()
 
 /obj/effect/alien/resin/trap/proc/set_state(var/state = RESIN_TRAP_EMPTY)
 	switch(state)
@@ -144,8 +151,12 @@
 			trap_type_name = "acid"
 			new /obj/effect/xenomorph/spray(loc, source_name, source_mob)
 			for(var/turf/T in range(1,loc))
-				var/obj/effect/xenomorph/spray/SP = new (T, trap_type-RESIN_TRAP_ACID1+1, source_name, source_mob) //adding extra acid damage for better acid types
-				for(var/mob/living/carbon/human/H in T)
+				var/obj/effect/xenomorph/spray/SP = new (T, source_name, source_mob) //adding extra acid damage for better acid types
+				for(var/mob/living/carbon/H in T)
+					if (isXeno(H))
+						var/mob/living/carbon/Xenomorph/X = H
+						if(X.hivenumber == hivenumber)
+							continue
 					SP.apply_spray(H)
 			set_state()
 			clear_tripwires()
@@ -163,6 +174,10 @@
 		qdel(HT)
 
 /obj/effect/alien/resin/trap/attack_alien(mob/living/carbon/Xenomorph/X)
+	if(X.hivenumber != hivenumber)
+		..()
+		return
+
 	var/trap_acid_level = 0
 	if(trap_type >= RESIN_TRAP_ACID1)
 		trap_acid_level = 1 + trap_type - RESIN_TRAP_ACID1
@@ -170,8 +185,7 @@
 		if(trap_type == RESIN_TRAP_HUGGER)
 			if(X.caste.can_hold_facehuggers)
 				set_state()
-				var/obj/item/clothing/mask/facehugger/F = new ()
-				F.hivenumber = hivenumber
+				var/obj/item/clothing/mask/facehugger/F = new (loc, hivenumber)
 				X.put_in_active_hand(F)
 				to_chat(X, SPAN_XENONOTICE("You remove the facehugger from [src]."))
 			else
@@ -213,7 +227,6 @@
 			set_state(RESIN_TRAP_GAS)
 			B.visible_message(SPAN_XENOWARNING("\The [B] pressurises the resin hole with acid gas!"), \
 			SPAN_XENOWARNING("You pressurise the resin hole with acid gas!"), null, 5)
-			hivenumber = X.hivenumber //Taking over the hole
 			return
 		else
 			//Non-boiler acid types
@@ -240,7 +253,6 @@
 			set_state(RESIN_TRAP_ACID1 + X.acid_level - 1)
 			X.visible_message(SPAN_XENOWARNING("\The [X] pressurises the resin hole with acid!"), \
 			SPAN_XENOWARNING("You pressurise the resin hole with acid!"), null, 5)
-			hivenumber = X.hivenumber //Taking over the hole
 			return
 	else if(trap_type == RESIN_TRAP_EMPTY)
 		..()
@@ -264,7 +276,18 @@
 	if(FH.stat == DEAD)
 		to_chat(user, SPAN_XENOWARNING("You can't put a dead facehugger in [src]."))
 	else
-		hivenumber = FH.hivenumber //Taking over the hole
+		var/mob/living/carbon/Xenomorph/X = user
+		if (!istype(X))
+			return
+
+		if (X.hivenumber != hivenumber)
+			to_chat(user, SPAN_XENOWARNING("This resin hole doesn't belong to your hive!"))
+			return
+
+		if (FH.hivenumber != hivenumber)
+			to_chat(user, SPAN_XENOWARNING("This facehugger is tainted."))
+			return
+
 		set_state(RESIN_TRAP_HUGGER)
 		to_chat(user, SPAN_XENONOTICE("You place a facehugger in [src]."))
 		qdel(FH)
@@ -303,5 +326,5 @@
 		qdel(src)
 		return
 
-	if(ishuman(A))
+	if(ishuman(A) || isXeno(A))
 		linked_trap.HasProximity(A)

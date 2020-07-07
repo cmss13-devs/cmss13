@@ -226,8 +226,7 @@
 					var/turf/T = loc
 					if(T.contents.len <= 25) //so we don't end up with a million object on that turf.
 						egg_amount--
-						var/obj/item/xeno_egg/newegg = new /obj/item/xeno_egg(loc)
-						newegg.hivenumber = hivenumber
+						new /obj/item/xeno_egg(loc, hivenumber)
 
 		// Update vitals for all xenos in the Queen's hive
 		if(hive)
@@ -327,15 +326,15 @@
 
 	if(choice == "Allowed")
 		to_chat(src, SPAN_XENONOTICE("You allow slashing."))
-		xeno_message("The Queen has <b>permitted</b> the harming of hosts! Go hog wild!")
+		xeno_message(SPAN_XENOANNOUNCE("The Queen has <b>permitted</b> the harming of hosts! Go hog wild!"), 2, hivenumber)
 		hive.slashing_allowed = 1
 	else if(choice == "Restricted - Less Damage")
 		to_chat(src, SPAN_XENONOTICE("You restrict slashing."))
-		xeno_message("The Queen has <b>restricted</b> the harming of hosts. You will only slash when hurt.")
+		xeno_message(SPAN_XENOANNOUNCE("The Queen has <b>restricted</b> the harming of hosts. You will only slash when hurt."), 2, hivenumber)
 		hive.slashing_allowed = 2
 	else if(choice == "Forbidden")
 		to_chat(src, SPAN_XENONOTICE("You forbid slashing entirely."))
-		xeno_message("The Queen has <b>forbidden</b> the harming of hosts. You can no longer slash your enemies.")
+		xeno_message(SPAN_XENOANNOUNCE("The Queen has <b>forbidden</b> the harming of hosts. You can no longer slash your enemies."), 2, hivenumber)
 		hive.slashing_allowed = 0
 
 /mob/living/carbon/Xenomorph/proc/do_claw_toggle_cooldown()
@@ -448,21 +447,27 @@
 			else
 				shake_camera(M, 30, 1) //50 deciseconds, SORRY 5 seconds was way too long. 3 seconds now
 
-	for(var/mob/living/carbon/human/M in oview(7, src))
-		if(istype(M.wear_ear, /obj/item/clothing/ears/earmuffs))
+	for(var/mob/living/carbon/M in oview(7, src))
+		var/mob/living/carbon/human/H = M
+		if(istype(H) && istype(H.wear_ear, /obj/item/clothing/ears/earmuffs))
 			continue
+		
+		var/mob/living/carbon/Xenomorph/X = M
+		if(istype(X) && (X.hivenumber == hivenumber || istype(X, /mob/living/carbon/Xenomorph/Queen)))
+			continue 
+
 		M.scream_stun_timeout = SECONDS_20
-		var/dist = get_dist(src,M)
-		if(dist <= 4)
+		var/dist = get_dist_sqrd(src, M)
+		if(dist <= 4*4)
 			to_chat(M, SPAN_DANGER("An ear-splitting guttural roar shakes the ground beneath your feet!"))
 			M.stunned += 4 //Seems the effect lasts between 3-8 seconds.
 			M.KnockDown(4)
 			if(!M.ear_deaf)
 				M.ear_deaf += 8 //Deafens them temporarily
-		else if(dist >= 5 && dist < 7)
+		else if(dist >= 5*5 && dist < 7*7)
 			M.stunned += 3
 			to_chat(M, SPAN_DANGER("The roar shakes your body to the core, freezing you in place!"))
-
+		
 /mob/living/carbon/Xenomorph/Queen/proc/queen_gut(atom/A)
 
 	if(!iscarbon(A))

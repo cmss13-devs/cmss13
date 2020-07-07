@@ -7,7 +7,6 @@
 	chemclass = CHEM_CLASS_ULTRA
 	objective_value = 10
 	scannable = 1
-	var/apply_once_check = FALSE //This hurts to do, snowflake
 
 /datum/reagent/generated/New()
 	//Generate stats

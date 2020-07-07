@@ -74,6 +74,34 @@
 /datum/chem_property/negative/biocidic/process_critical(mob/living/M, var/potency = 1)
 	M.take_limb_damage(4*potency)
 
+/datum/chem_property/negative/paining
+	name = PROPERTY_PAINING
+	code = "PNG"
+	description = "Activates the somatosensory system causing neuropathic pain all over the body. Unlike nociceptive pain, this is not caused to any tissue damage and is solely perceptive."
+	rarity = PROPERTY_UNCOMMON
+	category = PROPERTY_TYPE_STIMULANT
+
+/datum/chem_property/negative/paining/on_delete(mob/living/M)
+	..()
+
+	M.pain.recalculate_pain()
+
+/datum/chem_property/negative/paining/process(mob/living/M, var/potency = 1)
+	if(!(..()))
+		return
+
+	M.pain.apply_pain(PROPERTY_PAINING_PAIN * potency)
+
+/datum/chem_property/negative/paining/process_overdose(mob/living/M, var/potency = 1)
+	if(!(..()))
+		return
+
+	M.pain.apply_pain(PROPERTY_PAINING_PAIN_OD * potency)
+	M.take_limb_damage(potency)
+
+/datum/chem_property/negative/paining/process_critical(mob/living/M, var/potency = 1)
+	M.take_limb_damage(2*potency)
+
 /datum/chem_property/negative/hemolytic
 	name = PROPERTY_HEMOLYTIC
 	code = "HML"

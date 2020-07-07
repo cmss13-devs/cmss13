@@ -565,8 +565,8 @@
 	rarity = PROPERTY_DISABLED
 	category = PROPERTY_TYPE_ANOMALOUS|PROPERTY_TYPE_UNADJUSTABLE
 
-/datum/chem_property/neutral/peridaxing/process_overdose(mob/living/M, var/potency = 1)
+/datum/chem_property/neutral/unknown/process_overdose(mob/living/M, var/potency = 1)
 	M.apply_damage(potency, BRUTE)
 
-/datum/chem_property/neutral/peridaxing/process_critical(mob/living/M, var/potency = 1)
+/datum/chem_property/neutral/unknown/process_critical(mob/living/M, var/potency = 1)
 	M.apply_damages(3*potency, 3*potency, 3*potency)

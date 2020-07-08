@@ -45,10 +45,8 @@
 /datum/chem_property/proc/trigger(var/A) //used for properties that needs something to trigger outside of where process is usually called
 	return
 
-/datum/chem_property/proc/update_reagent(var/datum/reagent/R, var/direction = 1) //used for changing other variables in the reagent, set direction to -1 to remove the update
-	if(direction == 1)
-		holder = R
-	else
+/datum/chem_property/proc/update_reagent(var/update = TRUE) //used for changing other variables in the reagent, set update to FALSE to remove the update
+	if(!update)
 		holder = null
 
 /datum/chem_property/proc/categories_to_string()

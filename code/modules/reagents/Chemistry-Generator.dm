@@ -372,7 +372,8 @@
 	var/datum/chem_property/P = chemical_properties_list[property]
 	P = new P.type()
 	P.level = level
-	P.update_reagent(src)
+	P.holder = src
+	P.update_reagent()
 	properties += P
 	return TRUE
 

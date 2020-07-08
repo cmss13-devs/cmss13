@@ -39,7 +39,7 @@
 	var/gen_tier = 0 //Decides the chance of the chem being good during generation
 	var/objective_value // How valuable it is to identify the chemical. (Only works on chemclass SPECIAL or ULTRA)
 	var/list/properties = list() //Decides properties
-	var/original_type //For tracing back
+	var/original_id //For tracing back
 	
 	var/deleted = FALSE //If the reagent was deleted
 
@@ -181,7 +181,7 @@
 	scannable = C.scannable
 	ingestible = C.ingestible
 	objective_value = C.objective_value
-	original_type = C.original_type
+	original_id = C.original_id
 	chemfiresupp = C.chemfiresupp
 	radiusmod = C.radiusmod
 	durationmod = C.durationmod
@@ -278,7 +278,8 @@
 		if(i > properties.len)
 			return FALSE
 	R.level = new_level
-	R.update_reagent(src)
+	R.holder = src
+	R.update_reagent()
 	properties[i] = R
 	return TRUE
 

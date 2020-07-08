@@ -73,6 +73,10 @@
 
 	species = null
 
+	if(pain && pain.source_mob == src)
+		pain.source_mob = null
+		qdel(pain)
+
 /mob/living/carbon/human/Stat()
 	if(!..())
 		return FALSE

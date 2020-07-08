@@ -10,7 +10,7 @@
 
 	// Config
 	var/duration = 35
-	var/speed_buff_amount = 1.0 // Go from shit slow to superfast
+	var/speed_buff_amount = 1.2 // Go from shit slow to superfast
 
 	var/buffs_active = FALSE
 

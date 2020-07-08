@@ -175,7 +175,6 @@
 	else
 		if (repair_state == 0)
 			if(istype(W, /obj/item/stack/sheet/metal))
-
 				var/obj/item/stack/sheet/metal/M = W
 				if(M.amount < 2)
 					return ..()

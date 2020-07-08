@@ -37,7 +37,8 @@
 
 	var/mob/living/carbon/affected_mob = affected_atom
 	affected_mob.EyeBlur(0.2)
-	affected_mob.TalkStutter(2)
+	if(affected_mob.pain && affected_mob.pain.feels_pain)
+		affected_mob.TalkStutter(2)
 
 	return TRUE
 
@@ -57,8 +58,9 @@
 		do_once = FALSE
 
 	affected_mob.EyeBlur(0.5)
-	affected_mob.TalkStutter(2)
-	if(!affected_mob.reagents.has_reagent("inaprovaline"))
+	if(affected_mob.pain && affected_mob.pain.feels_pain)
+		affected_mob.TalkStutter(2)
+	if(!affected_mob.reagents || !affected_mob.reagents.has_reagent("inaprovaline"))
 		affected_mob.apply_damage(0.5, OXY)
 
 	return TRUE
@@ -75,9 +77,10 @@
 
 	var/mob/living/carbon/affected_mob = affected_atom
 	affected_mob.EyeBlur(2)
-	affected_mob.TalkStutter(2)
+	if(affected_mob.pain && affected_mob.pain.feels_pain)
+		affected_mob.TalkStutter(2)
 	affected_mob.KnockOut(2)
-	if(!affected_mob.reagents.has_reagent("inaprovaline"))
+	if(!affected_mob.reagents || !affected_mob.reagents.has_reagent("inaprovaline"))
 		affected_mob.apply_damage(3, OXY)
 
 	return TRUE

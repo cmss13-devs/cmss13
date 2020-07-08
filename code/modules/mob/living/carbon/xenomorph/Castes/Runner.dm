@@ -8,10 +8,10 @@
 	plasma_max = XENO_PLASMA_TIER_2
 	xeno_explosion_resistance = XENO_LOW_EXPLOSIVE_ARMOR
 	armor_deflection = XENO_NO_ARMOR
-	max_health = XENO_HEALTH_TIER_2
+	max_health = XENO_HEALTH_RUNNER
 	armor_hardiness_mult = XENO_ARMOR_FACTOR_LOW
 	evasion = XENO_EVASION_HIGH
-	speed = XENO_SPEED_TIER_10
+	speed = XENO_SPEED_RUNNER
 	attack_delay = -4
 	evolves_to = list("Lurker")
 	deevolves_to = "Larva"

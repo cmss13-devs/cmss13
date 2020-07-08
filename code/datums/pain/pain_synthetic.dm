@@ -1,5 +1,5 @@
 /datum/pain/synthetic
-	max_pain 			= 200
+	max_pain 			= 250
 
 	threshold_mild 		= null
 	threshold_moderate 	= null

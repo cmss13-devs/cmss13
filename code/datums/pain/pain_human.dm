@@ -3,9 +3,9 @@
 
 	threshold_mild 		= 20
 	threshold_moderate 	= 30
-	threshold_modsevere	= 40
-	threshold_severe 	= 55
-	threshold_very_severe = 70
+	threshold_modsevere	= 50
+	threshold_severe 	= 70
+	threshold_very_severe = 85
 
 /datum/pain/human/recalculate_pain()
 	. = ..()

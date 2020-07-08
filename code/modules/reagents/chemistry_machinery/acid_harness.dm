@@ -58,7 +58,7 @@
 	. = ..()
 
 /obj/item/clothing/accessory/storage/black_vest/acid_harness/attackby(obj/item/B, mob/living/user)
-	if(ismultitool(B) && skillcheck(user, SKILL_RESEARCH, SKILL_RESEARCH_TRAINED))
+	if(ismultitool(B))
 		ui_interact(user)
 		return
 	. = ..()
@@ -134,7 +134,9 @@
 	var/mob/living/carbon/human/user = usr
 	if(user.stat || user.is_mob_restrained())
 		return
-	
+	if(!skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
+		to_chat(user, "You do not know how to configure these settings.")
+		return
 	if(href_list["inject_amount"])
 		acid_core.inject_amount = input("Set inject amount:","[src]") as num
 	else if(href_list["inject_damage_threshold"])
@@ -378,7 +380,7 @@
 		condition_scan |= ACID_SCAN_CONDITION_BLEEDING_INTERNAL
 		if(!(last_condition_scan & ACID_SCAN_CONDITION_BLEEDING_INTERNAL))
 			voice(ACID_SCAN_CONDITION_BLEEDING_INTERNAL)
-	if(inject_conditions & ACID_SCAN_CONDITION_BLOODLOSS_HIGH && user.blood_volume < BLOOD_VOLUME_BAD)
+	if(inject_conditions & ACID_SCAN_CONDITION_BLOODLOSS_HIGH && user.blood_volume < BLOOD_VOLUME_OKAY)
 		condition_scan |= ACID_SCAN_CONDITION_BLOODLOSS_HIGH
 		if(!(last_condition_scan & ACID_SCAN_CONDITION_BLOODLOSS_HIGH))
 			voice(ACID_SCAN_CONDITION_BLOODLOSS_HIGH)

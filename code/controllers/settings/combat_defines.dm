@@ -1,3 +1,5 @@
+#define HUMAN_UNIVERSAL_DAMAGEMULT 1.0
+
 /* THE SOOPER SEKRIT WEAPON CONFIG.
 
 ////PART 1: UNDERSTANDING HOW TO READ THE VARIABLES.////
@@ -111,23 +113,23 @@ As such, don't expect any values assigned to common firearms to even consider ho
 .../update_projectiles/guns/code.dm
 
 */
-	var/no_hit_damage = 0
-	var/base_hit_damage = 10 //Self evident.
-	var/min_hit_damage = 16
-	var/mlow_hit_damage = 22
-	var/low_hit_damage = 29
-	var/hlow_hit_damage = 31
-	var/hlmed_hit_damage = 34
-	var/lmed_hit_damage = 38
-	var/lmed_plus_hit_damage = 43
-	var/med_hit_damage = 47 // Old M41 damage
-	var/hmed_hit_damage = 51 //  M41A-MK2 (Stock Pulse Rifle) for reference
-	var/lhigh_hit_damage = 58 // Minigun
-	var/high_hit_damage = 68
-	var/mhigh_hit_damage = 76
-	var/max_hit_damage = 88
-	var/super_hit_damage = 121
-	var/ultra_hit_damage = 153
+	var/no_hit_damage = 0 * HUMAN_UNIVERSAL_DAMAGEMULT
+	var/base_hit_damage = 10 * HUMAN_UNIVERSAL_DAMAGEMULT//Self evident.
+	var/min_hit_damage = 15 * HUMAN_UNIVERSAL_DAMAGEMULT
+	var/mlow_hit_damage = 18 * HUMAN_UNIVERSAL_DAMAGEMULT
+	var/low_hit_damage = 23 * HUMAN_UNIVERSAL_DAMAGEMULT
+	var/hlow_hit_damage = 25 * HUMAN_UNIVERSAL_DAMAGEMULT
+	var/hlmed_hit_damage = 27 * HUMAN_UNIVERSAL_DAMAGEMULT
+	var/lmed_hit_damage = 30 * HUMAN_UNIVERSAL_DAMAGEMULT
+	var/lmed_plus_hit_damage = 34 * HUMAN_UNIVERSAL_DAMAGEMULT
+	var/med_hit_damage = 37 * HUMAN_UNIVERSAL_DAMAGEMULT // Old M41 damage
+	var/hmed_hit_damage = 41 * HUMAN_UNIVERSAL_DAMAGEMULT //  M41A-MK2 (Stock Pulse Rifle) for reference
+	var/lhigh_hit_damage = 46 * HUMAN_UNIVERSAL_DAMAGEMULT // Minigun
+	var/high_hit_damage = 54 * HUMAN_UNIVERSAL_DAMAGEMULT
+	var/mhigh_hit_damage = 61 * HUMAN_UNIVERSAL_DAMAGEMULT
+	var/max_hit_damage = 70 * HUMAN_UNIVERSAL_DAMAGEMULT
+	var/super_hit_damage = 97 * HUMAN_UNIVERSAL_DAMAGEMULT
+	var/ultra_hit_damage = 122 * HUMAN_UNIVERSAL_DAMAGEMULT
 
 	var/base_hit_damage_mult = 1 //Multiplication settings for damage. Only ever add or subtract from the base value.
 	var/min_hit_damage_mult = 0.06
@@ -144,11 +146,11 @@ Burn time = How long do we want our flames to last?
 */
 
 
-	var/min_burnlevel = 10
-	var/low_burnlevel = 16
-	var/med_burnlevel = 24 //This tickles aliens, really hurts humans.
-	var/high_burnlevel = 48
-	var/max_burnlevel = 60
+	var/min_burnlevel = 10 * HUMAN_UNIVERSAL_DAMAGEMULT
+	var/low_burnlevel = 13 * HUMAN_UNIVERSAL_DAMAGEMULT
+	var/med_burnlevel = 19 * HUMAN_UNIVERSAL_DAMAGEMULT //This tickles aliens, really hurts humans.
+	var/high_burnlevel = 39 * HUMAN_UNIVERSAL_DAMAGEMULT
+	var/max_burnlevel = 48 * HUMAN_UNIVERSAL_DAMAGEMULT
 
 	var/instant_burntime = 1 //For gel fuel.
 	var/min_burntime = 10

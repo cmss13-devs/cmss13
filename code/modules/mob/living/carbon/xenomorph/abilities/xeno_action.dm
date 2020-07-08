@@ -7,16 +7,11 @@
 	var/ability_primacy = XENO_NOT_PRIMARY_ACTION // Determines how the default ability macros handle this.
 
 	// Cooldown
-	var/list/cooldowns = null   // Initialize this when you want to use age cooldowns. 
-								// How this list works: each index is the cooldown. Each index in this list MUCH be used.
-								// If this list is not initialized (which it should be) the ability will attempt to fall back to using the cooldown var
-								// after printing an error message to log_debug. 
-								// Should always be 4 items long: (3, 2, 2, 1) means to use 3 deciseconds at young-, 2 deciseconds at mature/elder, and 1 decisecond at ancient.
-								// Note that this can be initialized on subtypes or mutated, depending on your preference/requirements
+	var/xeno_cooldown = null   // Cooldown of the ability
 	
 	var/cooldown_timer_id = TIMER_ID_NULL // holds our timer ID
 
-	// Track state so we can effectively REDUCE cooldowns by removing and replacing timers.
+	// Track state so we can effectively REDUCE xeno_cooldown by removing and replacing timers.
 	var/current_cooldown_start_time = 0
 	var/current_cooldown_duration = 0
 
@@ -24,7 +19,7 @@
 // Actually applies the effects of the action. 
 // Circa 1/2020, effects for even non-activable abilities are moved
 // under this proc.
-// __MUST__ call apply_cooldown if cooldowns are desired.
+// __MUST__ call apply_cooldown if xeno_cooldown are desired.
 // Should where possible modify no state on the host Xenos besides
 // state intrinsic to all Xenos.
 // Any strain or caste-specific state should be stored on behavior_delegate objects
@@ -153,19 +148,8 @@
 	// First determine the appopriate cooldown
 	var/cooldown_to_apply = cooldown // Use this as fallback
 
-	// Determine the age of our owner
-	var/mob/living/carbon/Xenomorph/X = owner
-
-	if (cooldowns && cooldowns.len)
-		var/index_to_use
-		if (X.upgrade == -1)
-			index_to_use = 1
-		else if (X.upgrade == 4)
-			index_to_use = 4
-		else 
-			index_to_use = X.upgrade + 1
-		
-		cooldown_to_apply = cooldowns[index_to_use]
+	if(xeno_cooldown)
+		cooldown_to_apply = xeno_cooldown
 
 	// Add a unique timer
 	cooldown_timer_id = add_timer(CALLBACK(src, .proc/on_cooldown_end), cooldown_to_apply, TIMER_UNIQUE | TIMER_STOPPABLE)
@@ -178,7 +162,7 @@
 	return
 
 // Call when you absolutely MUST have a cooldown of the passed duration
-// Useful for things like abilities with 2 cooldowns
+// Useful for things like abilities with 2 xeno_cooldown
 // Otherwise identical to apply_cooldown, but likewise should not be overridden
 /datum/action/xeno_action/proc/apply_cooldown_override(cooldown_duration)
 

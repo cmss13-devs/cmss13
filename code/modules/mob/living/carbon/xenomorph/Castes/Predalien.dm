@@ -2,17 +2,16 @@
 	caste_name = "Predalien"
 	display_name = "Abomination"
 
-	melee_damage_lower = XENO_DAMAGE_MEDIUM
-	melee_damage_upper = XENO_DAMAGE_HIGH
+	melee_damage_lower = XENO_DAMAGE_TIER_4
+	melee_damage_upper = XENO_DAMAGE_TIER_7
 	max_health = XENO_HEALTH_IMMORTAL
 	plasma_gain = XENO_PLASMA_GAIN_ULTRAHIGH
-	plasma_max = XENO_PLASMA_HIGHMEDIUM
+	plasma_max = XENO_PLASMA_TIER_3
 	xeno_explosion_resistance = XENO_GIGA_EXPLOSIVE_ARMOR
-	armor_deflection = XENO_MEDIUM_ARMOR
+	armor_deflection = XENO_ARMOR_TIER_3
 	armor_hardiness_mult = XENO_ARMOR_FACTOR_LOW
 	evasion = XENO_EVASION_NONE
-	speed = XENO_SPEED_SANICFAST
-	speed_mod = XENO_SPEED_MOD_LARGE
+	speed = XENO_SPEED_TIER_10
 
 	evolution_allowed = FALSE
 	tacklemin = 6
@@ -22,24 +21,6 @@
 	tier = 1
 	attack_delay = -2
 	can_be_queen_healed = 0
-	upgrade = -1
-
-/datum/caste_datum/predalien/primordial
-	upgrade_name = "Primordial"
-	display_name = "Primordial Abomination"
-	caste_desc = "This is it. This is the final boss. There's nothing more powerful than this."
-	max_health = XENO_UNIVERSAL_HPMULT * 1000
-	plasma_gain = 0.084
-	plasma_max = 400
-	evolution_allowed = FALSE
-	melee_damage_lower = 150
-	melee_damage_upper = 175
-	tackle_chance = 90
-	is_intelligent = TRUE
-	armor_deflection = 60
-	attack_delay = -3
-	speed = -2.3
-	upgrade = 4
 
 /mob/living/carbon/Xenomorph/Predalien
 	caste_name = "Predalien"
@@ -61,7 +42,7 @@
 	old_x = -16
 	mob_size = MOB_SIZE_BIG
 	tier = 1
-	upgrade = -1 //Predaliens are already in their ultimate form, they don't get even better
+	age = -1 //Predaliens are already in their ultimate form, they don't get even better
 
 	var/butchered_last //world.time to prevent spam.
 	var/butchered_sum = 0 //The number of people butchered. Lowers the health gained.
@@ -95,7 +76,7 @@
 			if(M.current && M.current.stat != DEAD && z != ADMIN_Z_LEVEL)
 				to_chat(M.current, "<span class='event_announcement'>An abomination to your people has been brought onto the world at [get_area(src)]! Hunt it down and destroy it!</span>")
 				M.current.emote("roar")
-	if(upgrade == 4)
+	if(age == 4)
 		desc = "Nothing matches this force of destruction. Good luck killing it, mortal."
 		color = "#FE0202"
 		if(z != ADMIN_Z_LEVEL)

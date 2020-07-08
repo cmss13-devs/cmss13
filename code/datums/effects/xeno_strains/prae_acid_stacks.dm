@@ -9,7 +9,7 @@
 	var/time_between_decrements = 40
 	var/last_increment_time = 0
 	var/increment_grace_time = 50
-	var/proc_damage = 35
+	var/proc_damage = 30
 
 /datum/effects/prae_acid_stacks/New(mob/living/carbon/human/H, var/mob/from = null, var/last_dmg_source = null, var/zone = "chest")
 	last_decrement_time = world.time

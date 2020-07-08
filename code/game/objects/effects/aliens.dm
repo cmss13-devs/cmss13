@@ -52,7 +52,7 @@
 	var/hivenumber = XENO_HIVE_NORMAL
 
 	var/stun_duration = 1
-	var/damage_amount = 30
+	var/damage_amount = 25
 	var/fire_level_to_extinguish = 13
 	
 	var/time_to_live = 10
@@ -170,7 +170,7 @@
 	fire_level_to_extinguish = 6
 	time_to_live = 6
 
-	var/bonus_damage = 30
+	var/bonus_damage = 25
 
 /obj/effect/xenomorph/spray/spitter/apply_spray(mob/living/carbon/M)
 	if(ishuman(M))

@@ -1,44 +1,24 @@
 /datum/caste_datum/runner
 	caste_name = "Runner"
-	upgrade_name = "Young"
 	caste_desc = "A fast, four-legged terror, but weak in sustained combat."
 	tier = 1
-	upgrade = 0
-	melee_damage_lower = XENO_DAMAGE_LOW
-	melee_damage_upper = XENO_DAMAGE_LOWPLUS
+	melee_damage_lower = XENO_DAMAGE_TIER_1
+	melee_damage_upper = XENO_DAMAGE_TIER_2
 	plasma_gain = XENO_PLASMA_GAIN_LOW
-	plasma_max = XENO_PLASMA_LOWMEDIUM
+	plasma_max = XENO_PLASMA_TIER_2
+	xeno_explosion_resistance = XENO_LOW_EXPLOSIVE_ARMOR
 	armor_deflection = XENO_NO_ARMOR
-	max_health = XENO_HEALTH_VERYLOW
+	max_health = XENO_HEALTH_TIER_2
 	armor_hardiness_mult = XENO_ARMOR_FACTOR_LOW
 	evasion = XENO_EVASION_HIGH
-	speed = XENO_SPEED_SANICFAST
-	speed_mod = XENO_SPEED_MOD_LARGE
+	speed = XENO_SPEED_TIER_10
 	attack_delay = -4
 	evolves_to = list("Lurker")
 	deevolves_to = "Larva"
-	xeno_explosion_resistance = XENO_LOW_EXPLOSIVE_ARMOR
 
-/datum/caste_datum/runner/mature
-	upgrade_name = "Mature"
-	caste_desc = "A fast, four-legged terror, but weak in sustained combat. It looks a little more dangerous."
-	upgrade = 1
-
-/datum/caste_datum/runner/elder
-	upgrade_name = "Elder"
-	caste_desc = "A fast, four-legged terror, but weak in sustained combat. It looks pretty strong."
-	upgrade = 2
 	tacklemin = 3
 	tacklemax = 4
 	tackle_chance = 40
-
-/datum/caste_datum/runner/ancient
-	upgrade_name = "Ancient"
-	caste_desc = "Not what you want to run into in a dark alley. It looks fucking deadly."
-	upgrade = 3
-	tacklemin = 3
-	tacklemax = 4
-	tackle_chance = 45
 
 /mob/living/carbon/Xenomorph/Runner
 	caste_name = "Runner"

@@ -6,7 +6,7 @@
 	ability_name = "toggle agility"
 	macro_path = /datum/action/xeno_action/verb/verb_toggle_agility
 	action_type = XENO_ACTION_CLICK
-	cooldowns = list(10, 10, 10, 10)
+	xeno_cooldown = 10
 
 /datum/action/xeno_action/onclick/toggle_agility/can_use_action()
 	var/mob/living/carbon/Xenomorph/X = owner
@@ -21,7 +21,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_fling
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1
-	cooldowns = list(65, 60, 55, 50)
+	xeno_cooldown = 55
 
 	// Configurables
 	var/fling_distance = 4
@@ -37,7 +37,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_lunge
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
-	cooldowns = list(120, 110, 100, 90)
+	xeno_cooldown = 100
 	
 	// Configurables
 	var/grab_range = 6
@@ -52,7 +52,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_punch
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
-	cooldowns = list(60, 50, 40, 35)
+	xeno_cooldown = 40
 
 	// Configurables
 	var/base_damage = 20
@@ -69,5 +69,5 @@
 	ability_name = "jab"
 	macro_path = /datum/action/xeno_action/verb/verb_jab
 	action_type = XENO_ACTION_CLICK
-	cooldowns = list(60, 50, 40, 35)
+	xeno_cooldown = 40
 

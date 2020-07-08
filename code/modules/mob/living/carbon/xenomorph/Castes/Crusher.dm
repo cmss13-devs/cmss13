@@ -1,59 +1,25 @@
 /datum/caste_datum/crusher
 	caste_name = "Crusher"
-	upgrade_name = "Young"
 	tier = 3
-	upgrade = 0
 
-	melee_damage_lower = XENO_DAMAGE_MEDIUM
-	melee_damage_upper = XENO_DAMAGE_MEDIUM
-	max_health = XENO_HEALTH_HIGH
-	plasma_gain = XENO_PLASMA_GAIN_HIGHMED
-	plasma_max = XENO_PLASMA_MEDIUM
+	melee_damage_lower = XENO_DAMAGE_TIER_5
+	melee_damage_upper = XENO_DAMAGE_TIER_5
+	max_health = XENO_HEALTH_TIER_7
+	plasma_gain = XENO_PLASMA_GAIN_VERYHIGH
+	plasma_max = XENO_PLASMA_TIER_2
 	xeno_explosion_resistance = XENO_GIGA_EXPLOSIVE_ARMOR
-	armor_deflection = XENO_HEAVY_ARMOR
+	armor_deflection = XENO_ARMOR_TIER_4
 	armor_hardiness_mult = XENO_ARMOR_FACTOR_CRUSHER
 	evasion = XENO_EVASION_NONE
-	speed = XENO_SPEED_MEDIUM
-	speed_mod = XENO_SPEED_MOD_SMALL
+	speed = XENO_SPEED_TIER_2
 	heal_standing = 0.66
 
 	behavior_delegate_type = /datum/behavior_delegate/crusher_base
 
-	tackle_chance = 15
+	tackle_chance = 25
 	evolution_allowed = FALSE
 	deevolves_to = "Warrior"
 	caste_desc = "A huge tanky xenomorph."
-
-/datum/caste_datum/crusher/mature
-	upgrade_name = "Mature"
-	caste_desc = "A huge tanky xenomorph. It looks a little more dangerous."
-	upgrade = 1
-	tackle_chance = 20
-
-/datum/caste_datum/crusher/elder
-	upgrade_name = "Elder"
-	caste_desc = "A huge tanky xenomorph. It looks pretty strong."
-	upgrade = 2
-	tackle_chance = 25
-
-/datum/caste_datum/crusher/ancient
-	upgrade_name = "Ancient"
-	caste_desc = "It always has the right of way."
-	upgrade = 3
-	tackle_chance = 28
-
-/datum/caste_datum/crusher/primordial
-	upgrade_name = "Primordial"
-	caste_desc = "This thing could cause a tsunami just by walking. It's a literal freight train."
-	upgrade = 4
-	melee_damage_lower = 35
-	melee_damage_upper = 45
-	tackle_chance = 30
-	plasma_gain = 0.080
-	plasma_max = 600
-	armor_deflection = 90
-	max_health = XENO_UNIVERSAL_HPMULT * 400
-	speed = -0.5
 
 /mob/living/carbon/Xenomorph/Crusher
 	caste_name = "Crusher"

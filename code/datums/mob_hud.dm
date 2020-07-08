@@ -438,8 +438,8 @@ var/datum/mob_hud/huds = list(
 	if (IS_XENO_LEADER(src))
 		var/image/I = image('icons/mob/hud/hud.dmi',src, "hudxenoleader")
 		holder.overlays += I
-	if (upgrade)
-		var/image/J = image('icons/mob/hud/hud.dmi',src, "hudxenoupgrade[upgrade]")
+	if (age)
+		var/image/J = image('icons/mob/hud/hud.dmi',src, "hudxenoupgrade[age]")
 		holder.overlays += J
 
 //Sec HUDs

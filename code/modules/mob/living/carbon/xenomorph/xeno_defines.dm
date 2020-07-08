@@ -3,9 +3,7 @@
 /datum/caste_datum
 	var/caste_name = ""
 	var/display_name = ""
-	var/upgrade_name = "Young"
 	var/tier = 0
-	var/upgrade = 0
 	var/dead_icon = "Drone Dead"
 	var/language = "Xenomorph"
 
@@ -15,8 +13,7 @@
 	var/melee_damage_upper = 20
 	var/evasion = XENO_EVASION_NONE
 
-	var/speed = XENO_SPEED_SANICFAST
-	var/speed_mod = XENO_SPEED_MOD_LARGE
+	var/speed = XENO_SPEED_TIER_10
 
 	var/plasma_max = 10
 	var/plasma_gain = 5
@@ -27,8 +24,6 @@
 
 	var/evolution_allowed = 1 //Are they allowed to evolve (and have their evolution progress group)
 	var/evolution_threshold = 0 //Threshold to next evolution
-
-	var/upgrade_threshold = 0
 
 	var/list/evolves_to = list() //This is where you add castes to evolve into. "Seperated", "by", "commas"
 	var/deevolves_to // what caste to de-evolve to.
@@ -101,28 +96,9 @@
 	var/heal_standing = 0.4
 	var/heal_knocked_out = 0.33
 
-	/////////////////////////////////////////////////////////////////////////
-	//
-	//    Scalars
-	//
-	//	These define custom scaling for different age level on a per-caste
-	//  basis. If the value isn't defined on the caste datum, it will take
-	//  the default scaling value.
-	//
-	/////////////////////////////////////////////////////////////////////////
-	var/melee_damage_scalar
-	var/max_health_scalar
-	var/plasma_gain_scalar
-	var/plasma_max_scalar
-	var/crystal_max_scalar
-	var/explosion_armor_scalar
-	var/armor_scalar
-	var/armorfactor_scalar
-	var/evasion_scalar
 
 /datum/caste_datum/New()
 	. = ..()
-	apply_scalars_and_speed()
 
 	//Initialise evolution and upgrade thresholds in one place, once and for all
 	evolution_threshold = 0
@@ -133,42 +109,6 @@
 			if(2)
 				evolution_threshold = 500
 			//Other tiers (T3, Queen, etc.) can't evolve anyway
-
-	upgrade_threshold = 0
-
-	switch(tier)
-		if(1)
-			switch(upgrade)
-				if(0)
-					upgrade_threshold = 100
-				if(1)
-					upgrade_threshold = 200
-				if(2)
-					upgrade_threshold = 400
-		if(2)
-			switch(upgrade)
-				if(0)
-					upgrade_threshold = 250
-				if(1)
-					upgrade_threshold = 500
-				if(2)
-					upgrade_threshold = 1000
-		if(3)
-			switch(upgrade)
-				if(0)
-					upgrade_threshold = 400
-				if(1)
-					upgrade_threshold = 800
-				if(2)
-					upgrade_threshold = 1600
-	if(caste_name == "Queen")
-		switch(upgrade)
-			if(0)
-				upgrade_threshold = 800
-			if(1)
-				upgrade_threshold = 1600
-			if(2)
-				upgrade_threshold = 3200
 
 /datum/caste_datum/proc/can_play_caste(var/client/client)
 	if(!config.use_timelocks)
@@ -188,134 +128,6 @@
 		if(selected_entity.get_playtime(STATISTIC_XENO, prereq) < minimum_playtimes[prereq])
 			return_requirements["[prereq]"] = minimum_playtimes[prereq] - selected_entity.get_playtime(STATISTIC_XENO, prereq)
 	return return_requirements
-
-// Populates all the default scaling values on a caste datum
-// if they aren't already set.
-// Scaling vars should be defined on each
-/datum/caste_datum/proc/apply_scalars_and_speed()
-
-	// I'm so sorry for this code but its necessary to have these all in defines, which is very desired
-	// Formula
-	// final_value_on_xeno = modifier + caste_base_value * (caste_scaler_val ? caste_scaler_val : default_val)
-
-	// All the scalars currently implemented:
-	//var/melee_damage_scalar
-	//var/max_health_scalar
-	//var/plasma_gain_scalar
-	//var/plasma_max_scalar
-	//var/crystal_max_scalar
-	//var/explosion_armor_scalar
-	//var/armor_scalar
-	//var/evasion_scalar
-	//var/armorfactor_scalar
-
-	speed = speed - speed_mod * upgrade
-	// Armor we can set here because it's not age-dependent unless we make it so by setting scalars
-	if (!armor_scalar)
-		armor_scalar = 1.0
-	if (!explosion_armor_scalar)
-		explosion_armor_scalar = 1.0
-
-	switch(upgrade)
-		if (0) // Yung
-
-			if (!melee_damage_scalar)
-				melee_damage_scalar = XENO_MULTIPLIER_DAMAGE_YOUNG
-			if (!max_health_scalar)
-				max_health_scalar = XENO_MULTIPLIER_HEALTH_YOUNG
-			if (!plasma_gain_scalar)
-				plasma_gain_scalar = XENO_MULTIPLIER_PLASMA_GAIN_YOUNG
-			if (!plasma_max_scalar)
-				plasma_max_scalar = XENO_MULTIPLIER_PLASMA_YOUNG
-			if (!crystal_max_scalar)
-				crystal_max_scalar = XENO_MULTIPLIER_PLASMA_YOUNG
-			if (!evasion_scalar)
-				evasion_scalar = XENO_MULTIPLIER_EVASION_YOUNG
-			if (!armorfactor_scalar)
-				armorfactor_scalar = XENO_MULTIPLIER_ARMOR_FACTOR_YOUNG
-
-		if (1) // Mature
-			if (!melee_damage_scalar)
-				melee_damage_scalar = XENO_MULTIPLIER_DAMAGE_MATURE
-			if (!max_health_scalar)
-				max_health_scalar = XENO_MULTIPLIER_HEALTH_MATURE
-			if (!plasma_gain_scalar)
-				plasma_gain_scalar = XENO_MULTIPLIER_PLASMA_GAIN_MATURE
-			if (!plasma_max_scalar)
-				plasma_max_scalar = XENO_MULTIPLIER_PLASMA_MATURE
-			if (!crystal_max_scalar)
-				crystal_max_scalar = XENO_MULTIPLIER_PLASMA_MATURE
-			if (!evasion_scalar)
-				evasion_scalar = XENO_MULTIPLIER_EVASION_MATURE
-			if (!armorfactor_scalar)
-				armorfactor_scalar = XENO_MULTIPLIER_ARMOR_FACTOR_MATURE
-
-		if (2) // Elder/Elite
-			if (!melee_damage_scalar)
-				melee_damage_scalar = XENO_MULTIPLIER_DAMAGE_ELDER
-			if (!max_health_scalar)
-				max_health_scalar = XENO_MULTIPLIER_HEALTH_ELDER
-			if (!plasma_gain_scalar)
-				plasma_gain_scalar = XENO_MULTIPLIER_PLASMA_GAIN_ELDER
-			if (!plasma_max_scalar)
-				plasma_max_scalar = XENO_MULTIPLIER_PLASMA_ELDER
-			if (!crystal_max_scalar)
-				crystal_max_scalar = XENO_MULTIPLIER_PLASMA_ELDER
-			if (!evasion_scalar)
-				evasion_scalar = XENO_MULTIPLIER_EVASION_ELDER
-			if (!armorfactor_scalar)
-				armorfactor_scalar = XENO_MULTIPLIER_ARMOR_FACTOR_ELDER
-
-		if (3) // Ancient
-			if (!melee_damage_scalar)
-				melee_damage_scalar = XENO_MULTIPLIER_DAMAGE_ANCIENT
-			if (!max_health_scalar)
-				max_health_scalar = XENO_MULTIPLIER_HEALTH_ANCIENT
-			if (!plasma_gain_scalar)
-				plasma_gain_scalar = XENO_MULTIPLIER_PLASMA_GAIN_ANCIENT
-			if (!plasma_max_scalar)
-				plasma_max_scalar = XENO_MULTIPLIER_PLASMA_ANCIENT
-			if (!crystal_max_scalar)
-				crystal_max_scalar = XENO_MULTIPLIER_PLASMA_ANCIENT
-			if (!evasion_scalar)
-				evasion_scalar = XENO_MULTIPLIER_EVASION_ANCIENT
-			if (!armorfactor_scalar)
-				armorfactor_scalar = XENO_MULTIPLIER_ARMOR_FACTOR_ANCIENT
-
-		if (4) // Primordial
-			if (!melee_damage_scalar)
-				melee_damage_scalar = XENO_MULTIPLIER_DAMAGE_PRIMORDIAL
-			if (!max_health_scalar)
-				max_health_scalar = XENO_MULTIPLIER_HEALTH_PRIMORDIAL
-			if (!plasma_gain_scalar)
-				plasma_gain_scalar = XENO_MULTIPLIER_PLASMA_PRIMORDIAL
-			if (!plasma_max_scalar)
-				plasma_max_scalar = XENO_MULTIPLIER_PLASMA_PRIMORDIAL
-			if (!crystal_max_scalar)
-				crystal_max_scalar = XENO_MULTIPLIER_PLASMA_PRIMORDIAL
-			if (!evasion_scalar)
-				evasion_scalar = XENO_MULTIPLIER_EVASION_PRIMORDIAL
-			if (!armorfactor_scalar)
-				armorfactor_scalar = XENO_MULTIPLIER_ARMOR_FACTOR_PRIMORDIAL
-		else
-			melee_damage_scalar = 1
-			max_health_scalar = 1
-			plasma_gain_scalar = 1
-			plasma_max_scalar = 1
-			crystal_max_scalar = 1
-			evasion_scalar = 1
-			armorfactor_scalar = 1
-
-	melee_damage_lower = melee_damage_lower * melee_damage_scalar
-	melee_damage_upper = melee_damage_upper * melee_damage_scalar
-	plasma_gain = plasma_gain * plasma_gain_scalar
-	plasma_max = plasma_max * plasma_max_scalar
-	crystal_max = crystal_max * crystal_max_scalar
-	armor_deflection = armor_deflection * armor_scalar
-	xeno_explosion_resistance = xeno_explosion_resistance * explosion_armor_scalar
-	max_health = max_health * max_health_scalar
-	evasion = evasion * evasion_scalar
-	armor_hardiness_mult = armor_hardiness_mult * armorfactor_scalar
 
 /datum/hive_status
 	var/name = "Normal Hive"
@@ -444,7 +256,6 @@
 		SStracking.delete_leader("hive_[hivenumber]")
 		SStracking.stop_tracking("hive_[hivenumber]", living_xeno_queen)
 	else
-		mutators.user_levelled_up(M.upgrade)
 		SStracking.set_leader("hive_[hivenumber]", M)
 
 	living_xeno_queen = M
@@ -455,7 +266,7 @@
 	if (!living_xeno_queen)
 		queen_leader_limit = 0 //No leaders for a Hive without a Queen!
 	else
-		queen_leader_limit = 2 + living_xeno_queen.upgrade + mutators.leader_count_boost
+		queen_leader_limit = 4 + mutators.leader_count_boost
 
 	if (xeno_leader_list.len > queen_leader_limit)
 		var/diff = 0

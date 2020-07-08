@@ -1,22 +1,18 @@
 /datum/caste_datum/drone
 	caste_name = "Drone"
-	upgrade_name = "Young"
 	tier = 1
-	upgrade = 0
-	melee_damage_lower = XENO_DAMAGE_LOW
-	melee_damage_upper = XENO_DAMAGE_LOWPLUS
-	plasma_gain = XENO_PLASMA_GAIN_HIGHMED
-	plasma_max = XENO_PLASMA_VERYHIGH
+	melee_damage_lower = XENO_DAMAGE_TIER_1
+	melee_damage_upper = XENO_DAMAGE_TIER_2
+	max_health = XENO_HEALTH_TIER_3
+	plasma_gain = XENO_PLASMA_GAIN_VERYHIGH
+	plasma_max = XENO_PLASMA_TIER_10
 	crystal_max = XENO_CRYSTAL_LOW
-	armor_deflection = XENO_LOW_ARMOR
-	max_health = XENO_HEALTH_MEDIUM
+	xeno_explosion_resistance = XENO_NO_EXPLOSIVE_ARMOR
+	armor_deflection = XENO_ARMOR_TIER_1
 	armor_hardiness_mult = XENO_ARMOR_FACTOR_LOW
 	evasion = XENO_EVASION_MEDIUM
-	speed = XENO_SPEED_HIGHFAST
-	speed_mod = XENO_SPEED_MOD_MED
-	xeno_explosion_resistance = XENO_NO_EXPLOSIVE_ARMOR
+	speed = XENO_SPEED_TIER_7
 
-	aura_strength = 0.5 //Drone's aura is the weakest. At the top of their evolution, it's equivalent to a Young Queen Climbs by 0.5 to 2
 	caste_desc = "A builder of hives. Only drones may evolve into Queens."
 	evolves_to = list("Queen", "Burrower", "Carrier", "Hivelord") //Add more here seperated by commas
 	deevolves_to = "Larva"
@@ -25,32 +21,10 @@
 	acid_level = 1
 	weed_level = 1
 
-/datum/caste_datum/drone/mature
-	upgrade_name = "Mature"
-	caste_desc = "The workhorse of the hive. It looks a little more dangerous."
-	upgrade = 1
-	tacklemin = 3
-	tacklemax = 4
-	tackle_chance = 30
-	aura_strength = 1.5
-
-/datum/caste_datum/drone/elder
-	upgrade_name = "Elder"
-	caste_desc = "The workhorse of the hive. It looks a little more dangerous."
-	upgrade = 2
 	tacklemin = 3
 	tacklemax = 4
 	tackle_chance = 35
 	aura_strength = 2
-
-/datum/caste_datum/drone/ancient
-	upgrade_name = "Ancient"
-	caste_desc = "A very mean architect."
-	upgrade = 3
-	tacklemin = 4
-	tacklemax = 5
-	tackle_chance = 40
-	aura_strength = 2.2
 
 /mob/living/carbon/Xenomorph/Drone
 	caste_name = "Drone"

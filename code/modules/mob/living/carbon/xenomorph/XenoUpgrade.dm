@@ -1,26 +1,17 @@
-
-
-/mob/living/carbon/Xenomorph/proc/upgrade_xeno(newlevel)
+/mob/living/carbon/Xenomorph/proc/age_xeno(newlevel)
 	visible_message(SPAN_XENONOTICE("\The [src] begins to twist and contort."), \
 	SPAN_XENONOTICE("You begin to twist and contort."))
 	xeno_jitter(SECONDS_2)
-	add_timer(CALLBACK(src, /mob/living/carbon/Xenomorph/proc/upgrade_xeno_finish, newlevel), SECONDS_2)
+	add_timer(CALLBACK(src, /mob/living/carbon/Xenomorph/proc/age_xeno_finish, newlevel), SECONDS_2)
 
-/mob/living/carbon/Xenomorph/proc/upgrade_xeno_finish(newlevel)
+/mob/living/carbon/Xenomorph/proc/age_xeno_finish(newlevel)
 	if(stat == DEAD || !caste || disposed)
 		return
 
-	upgrade = newlevel
-	upgrade_stored = 0
+	age = newlevel
+	age_stored = 0
 
-	switch(upgrade)
-		//FIRST UPGRADE
-		if(1)
-			to_chat(src, SPAN_XENODANGER("You feel a bit stronger."))
-		//SECOND UPGRADE
-		if(2)
-			to_chat(src, SPAN_XENODANGER("You feel a whole lot stronger."))
-		//Final UPGRADE
+	switch(age)
 		if(3)
 			switch(caste.caste_name)
 				if("Runner")
@@ -68,11 +59,27 @@
 				if("Warrior")
 					to_chat(src, SPAN_XENOANNOUNCE("Your muscles could deadlift a military base without flinching. You've become the true definition of a one xeno army."))
 
-	update_caste()
+	switch(age)
+		if(0)
+			age_prefix = ""
+		if(1)
+			age_prefix = "Mature "
+		if(2)
+			age_prefix = "Elder "
+		if(3)
+			age_prefix = "Ancient "
+
+	switch(age)
+		if(0)
+			age_threshold = 1000
+		if(1)
+			age_threshold = 2000
+		if(2)
+			age_threshold = 3000
 
 	generate_name() //Give them a new name now
 
-	hud_update() //update the upgrade level insignia on our xeno hud.
+	hud_update() //update the age level insignia on our xeno hud.
 
 	// Update the hive status
 	if(hive)
@@ -80,185 +87,3 @@
 
 	//One last shake for the sake of it
 	xeno_jitter(25)
-
-//Tiered spawns.
-/mob/living/carbon/Xenomorph/Runner/mature/New()
-	..()
-	upgrade_xeno(1)
-
-/mob/living/carbon/Xenomorph/Runner/elite/New()
-	..()
-	upgrade_xeno(2)
-
-/mob/living/carbon/Xenomorph/Runner/ancient/New()
-	..()
-	upgrade_xeno(3)
-
-/mob/living/carbon/Xenomorph/Drone/mature/New()
-	..()
-	upgrade_xeno(1)
-
-/mob/living/carbon/Xenomorph/Drone/elite/New()
-	..()
-	upgrade_xeno(2)
-
-/mob/living/carbon/Xenomorph/Drone/ancient/New()
-	..()
-	upgrade_xeno(3)
-
-/mob/living/carbon/Xenomorph/Carrier/mature/New()
-	..()
-	upgrade_xeno(1)
-
-/mob/living/carbon/Xenomorph/Carrier/elite/New()
-	..()
-	upgrade_xeno(2)
-
-/mob/living/carbon/Xenomorph/Carrier/ancient/New()
-	..()
-	upgrade_xeno(3)
-
-/mob/living/carbon/Xenomorph/Hivelord/mature/New()
-	..()
-	upgrade_xeno(1)
-
-/mob/living/carbon/Xenomorph/Hivelord/elite/New()
-	..()
-	upgrade_xeno(2)
-
-/mob/living/carbon/Xenomorph/Hivelord/ancient/New()
-	..()
-	upgrade_xeno(3)
-
-/mob/living/carbon/Xenomorph/Praetorian/mature/New()
-	..()
-	upgrade_xeno(1)
-
-/mob/living/carbon/Xenomorph/Praetorian/elite/New()
-	..()
-	upgrade_xeno(2)
-
-/mob/living/carbon/Xenomorph/Praetorian/ancient/New()
-	..()
-	upgrade_xeno(3)
-
-/mob/living/carbon/Xenomorph/Ravager/mature/New()
-	..()
-	upgrade_xeno(1)
-
-/mob/living/carbon/Xenomorph/Ravager/elite/New()
-	..()
-	upgrade_xeno(2)
-
-/mob/living/carbon/Xenomorph/Ravager/ancient/New()
-	..()
-	upgrade_xeno(3)
-
-/mob/living/carbon/Xenomorph/Sentinel/mature/New()
-	..()
-	upgrade_xeno(1)
-
-/mob/living/carbon/Xenomorph/Sentinel/elite/New()
-	..()
-	upgrade_xeno(2)
-
-/mob/living/carbon/Xenomorph/Sentinel/ancient/New()
-	..()
-	upgrade_xeno(3)
-
-/mob/living/carbon/Xenomorph/Spitter/mature/New()
-	..()
-	upgrade_xeno(1)
-
-/mob/living/carbon/Xenomorph/Spitter/elite/New()
-	..()
-	upgrade_xeno(2)
-
-/mob/living/carbon/Xenomorph/Spitter/ancient/New()
-	..()
-	upgrade_xeno(3)
-
-/mob/living/carbon/Xenomorph/Lurker/mature/New()
-	..()
-	upgrade_xeno(1)
-
-/mob/living/carbon/Xenomorph/Lurker/elite/New()
-	..()
-	upgrade_xeno(2)
-
-/mob/living/carbon/Xenomorph/Lurker/ancient/New()
-	..()
-	upgrade_xeno(3)
-
-/mob/living/carbon/Xenomorph/Queen/mature/New()
-	..()
-	upgrade_xeno(1)
-
-/mob/living/carbon/Xenomorph/Queen/elite/New()
-	..()
-	upgrade_xeno(2)
-
-/mob/living/carbon/Xenomorph/Queen/ancient/New()
-	..()
-	upgrade_xeno(3)
-
-/mob/living/carbon/Xenomorph/Crusher/mature/New()
-	..()
-	upgrade_xeno(1)
-
-/mob/living/carbon/Xenomorph/Crusher/elite/New()
-	..()
-	upgrade_xeno(2)
-
-/mob/living/carbon/Xenomorph/Crusher/ancient/New()
-	..()
-	upgrade_xeno(3)
-
-/mob/living/carbon/Xenomorph/Boiler/mature/New()
-	..()
-	upgrade_xeno(1)
-
-/mob/living/carbon/Xenomorph/Boiler/elite/New()
-	..()
-	upgrade_xeno(2)
-
-/mob/living/carbon/Xenomorph/Boiler/ancient/New()
-	..()
-	upgrade_xeno(3)
-
-/mob/living/carbon/Xenomorph/Defender/mature/New()
-	..()
-	upgrade_xeno(1)
-
-/mob/living/carbon/Xenomorph/Defender/elite/New()
-	..()
-	upgrade_xeno(2)
-
-/mob/living/carbon/Xenomorph/Defender/ancient/New()
-	..()
-	upgrade_xeno(3)
-
-
-/mob/living/carbon/Xenomorph/Warrior/mature/New()
-	..()
-	upgrade_xeno(1)
-
-/mob/living/carbon/Xenomorph/Warrior/elite/New()
-	..()
-	upgrade_xeno(2)
-
-/mob/living/carbon/Xenomorph/Warrior/ancient/New()
-	..()
-	upgrade_xeno(3)
-
-/mob/living/carbon/Xenomorph/Burrower/mature/New()
-	..()
-	upgrade_xeno(1)
-
-/mob/living/carbon/Xenomorph/Burrower/elite/New()
-	..()
-	upgrade_xeno(2)
-
-/mob/living/carbon/Xenomorph/Burrower/ancient/New()
-	..()
-	upgrade_xeno(3)

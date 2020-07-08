@@ -1,40 +1,22 @@
 /datum/caste_datum/defender
 	caste_name = "Defender"
-	upgrade_name = "Young"
 	caste_desc = "A sturdy front line combatant."
 	tier = 1
-	upgrade = 0
 
-	melee_damage_lower = XENO_DAMAGE_LOWPLUS
-	melee_damage_upper = XENO_DAMAGE_MEDIUMLOW
-	max_health = XENO_HEALTH_MEDIUM
-	plasma_gain = XENO_PLASMA_GAIN_VERYHIGH
-	plasma_max = XENO_PLASMA_LOW
+	melee_damage_lower = XENO_DAMAGE_TIER_2
+	melee_damage_upper = XENO_DAMAGE_TIER_3
+	max_health = XENO_HEALTH_TIER_3
+	plasma_gain = XENO_PLASMA_GAIN_ULTRAHIGH
+	plasma_max = XENO_PLASMA_TIER_1
 	xeno_explosion_resistance = XENO_LOWULTRA_EXPLOSIVE_ARMOR
-	armor_deflection = XENO_HEAVY_ARMOR
+	armor_deflection = XENO_ARMOR_TIER_4
 	armor_hardiness_mult = XENO_ARMOR_FACTOR_CRUSHER
 	evasion = XENO_EVASION_NONE
-	speed = XENO_SPEED_HIGH
-	speed_mod = XENO_SPEED_MOD_LARGE
+	speed = XENO_SPEED_TIER_6
 	
 	evolves_to = list("Warrior")
 	deevolves_to = "Larva"
 	can_vent_crawl = 0
-
-/datum/caste_datum/defender/mature
-	upgrade_name = "Mature"
-	caste_desc = "An alien with an armored head crest. It looks a little more dangerous."
-	upgrade = 1
-
-/datum/caste_datum/defender/elder
-	upgrade_name = "Elder"
-	caste_desc = "An alien with an armored head crest. It looks pretty strong."
-	upgrade = 2
-
-/datum/caste_datum/defender/ancient
-	upgrade_name = "Ancient"
-	caste_desc = "An unstoppable force that remains when others would fall."
-	upgrade = 3
 
 /mob/living/carbon/Xenomorph/Defender
 	caste_name = "Defender"

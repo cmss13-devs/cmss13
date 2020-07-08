@@ -31,7 +31,7 @@
 		new_xeno = new /mob/living/carbon/Xenomorph/Ravager(spawn_loc)
 		leader = new_xeno
 	else
-		var/picked = pick(/mob/living/carbon/Xenomorph/Drone/elite, /mob/living/carbon/Xenomorph/Spitter/mature, /mob/living/carbon/Xenomorph/Lurker/mature)
+		var/picked = pick(/mob/living/carbon/Xenomorph/Drone, /mob/living/carbon/Xenomorph/Spitter, /mob/living/carbon/Xenomorph/Lurker)
 		new_xeno = new picked(spawn_loc)
 
 	M.transfer_to(new_xeno, TRUE)

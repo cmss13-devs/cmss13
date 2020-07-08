@@ -1,17 +1,13 @@
 /datum/caste_datum/larva
 	caste_name = "Bloody Larva"
 	tier = 0
-	upgrade = -1
 	plasma_gain = 0.1
 	plasma_max = 10
 	melee_damage_lower = 0
 	melee_damage_upper = 0
 	max_health = XENO_HEALTH_LARVA
-	plasma_max_scalar = 1.0
-	max_health_scalar = 1.0
 	caste_desc = "D'awwwww, so cute!"
-	speed = XENO_SPEED_SANICFAST
-	speed_mod = XENO_SPEED_MOD_SMALL
+	speed = XENO_SPEED_TIER_10
 	innate_healing = TRUE //heals even outside weeds so you're not stuck unable to evolve when hiding on the ship wounded.
 	evolves_to = list("Drone", "Runner", "Sentinel", "Defender") //Add sentinel etc here
 
@@ -34,7 +30,7 @@
 	flags_can_pass_all = PASS_ALL & ~PASS_OVER_THROW_ITEM
 	away_timer = 300
 	tier = 0  //Larva's don't count towards Pop limits
-	upgrade = -1
+	age = -1
 	crit_health = -25
 	gib_chance = 25
 	mob_size = 0
@@ -81,10 +77,10 @@
 		amount_grown = min(max_grown, amount_grown + progress_amount)
 
 	if(amount_grown >= max_grown)	// to avoid spam
-		if(upgrade < 0)
+		if(age < 0)
 			to_chat(src, SPAN_XENODANGER("Strength ripples through your small form. You are ready to be shaped to the Queen's will."))
 			src << sound('sound/effects/xeno_evolveready.ogg')
-			upgrade++
+			age++
 
 //Larva code is just a mess, so let's get it over with
 /mob/living/carbon/Xenomorph/Larva/update_icons()

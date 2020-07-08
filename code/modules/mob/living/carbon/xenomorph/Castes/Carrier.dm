@@ -1,54 +1,28 @@
 /datum/caste_datum/carrier
 	caste_name = "Carrier"
-	upgrade_name = "Young"
 	caste_desc = "A carrier of huggies."
 	tier = 2
-	upgrade = 0
 
-	melee_damage_lower = XENO_DAMAGE_LOWPLUS
-	melee_damage_upper = XENO_DAMAGE_MEDIUMLOW
-	max_health = XENO_HEALTH_HIGH
-	plasma_gain = XENO_PLASMA_GAIN_MED
-	plasma_max = XENO_PLASMA_HIGHMEDIUM
+	melee_damage_lower = XENO_DAMAGE_TIER_2
+	melee_damage_upper = XENO_DAMAGE_TIER_4
+	max_health = XENO_HEALTH_TIER_8
+	plasma_gain = XENO_PLASMA_GAIN_HIGH
+	plasma_max = XENO_PLASMA_TIER_4
 	crystal_max = XENO_CRYSTAL_LOW
 	xeno_explosion_resistance = XENO_LOW_EXPLOSIVE_ARMOR
-	armor_deflection = XENO_LOW_ARMOR
-	armor_hardiness_mult = XENO_ARMOR_FACTOR_LOW
+	armor_deflection = XENO_ARMOR_TIER_1
+	armor_hardiness_mult = XENO_ARMOR_FACTOR_MEDIUM
 	evasion = XENO_EVASION_NONE
-	speed = XENO_SPEED_MEDHIGH
-	speed_mod = XENO_SPEED_MOD_SMALL
+	speed = XENO_SPEED_TIER_4
 
-	tackle_chance = 40
 	evolution_allowed = FALSE
 	deevolves_to = "Drone"
 	aura_strength = 1 //Carrier's pheromones are equivalent to Hivelord. Climbs 0.5 up to 2.5
-	huggers_max = 10
 	eggs_max = 5
 	throwspeed = 1
-	hugger_delay = 30
 	can_hold_facehuggers = 1
 	can_hold_eggs = CAN_HOLD_ONE_HAND
 	weed_level = 1
-	egg_cooldown = 300
-
-/datum/caste_datum/carrier/mature
-	upgrade_name = "Mature"
-	caste_desc = "A portable Love transport. It looks a little more dangerous."
-	upgrade = 1
-	huggers_max = 13
-	eggs_max = 6
-	tacklemin = 3
-	tacklemax = 4
-	tackle_chance = 45
-	throwspeed = 1
-	hugger_delay = 30
-	aura_strength = 1.5
-	egg_cooldown = 300
-
-/datum/caste_datum/carrier/elder
-	upgrade_name = "Elder"
-	caste_desc = "A portable Love transport. It looks pretty strong."
-	upgrade = 2
 	huggers_max = 16
 	eggs_max = 7
 	tacklemin = 4
@@ -57,19 +31,6 @@
 	aura_strength = 2
 	hugger_delay = 20
 	egg_cooldown = 250
-
-/datum/caste_datum/carrier/ancient
-	upgrade_name = "Ancient"
-	upgrade = 3
-	huggers_max = 20
-	eggs_max = 8
-	caste_desc = "It's literally crawling with 20 huggers."
-	tacklemin = 4
-	tacklemax = 5
-	tackle_chance = 50
-	aura_strength = 2
-	hugger_delay = 20
-	egg_cooldown = 220
 
 /mob/living/carbon/Xenomorph/Carrier
 	caste_name = "Carrier"

@@ -1696,7 +1696,7 @@
 
 /datum/ammo/xeno/acid/medium/New()
 	..()
-	damage = 22.5
+	damage = 20
 	shell_speed = config.fast_shell_speed
 	accuracy = config.high_hit_accuracy*3
 	max_range = config.near_shell_range
@@ -1896,7 +1896,7 @@
     ..()
     scatter = 0
     max_range = 5
-    damage = 12
+    damage = 10
     shrapnel_chance = 0    
 
 /datum/ammo/xeno/bone_chips/spread/runner/on_hit_mob(mob/M, obj/item/projectile/P)

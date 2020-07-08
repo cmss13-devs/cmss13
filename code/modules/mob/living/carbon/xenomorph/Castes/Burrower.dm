@@ -1,51 +1,25 @@
 //burrower is COMBAT support
 /datum/caste_datum/burrower
 	caste_name = "Burrower"
-	upgrade_name = "Young"
 	tier = 2
-	upgrade = 0
 
-	melee_damage_lower = XENO_DAMAGE_LOW
-	melee_damage_upper = XENO_DAMAGE_LOWPLUS
-	max_health = XENO_HEALTH_HIGHMEDIUM
-	plasma_gain = XENO_PLASMA_GAIN_MED
-	plasma_max = XENO_PLASMA_HIGHMEDIUM
+	melee_damage_lower = XENO_DAMAGE_TIER_2
+	melee_damage_upper = XENO_DAMAGE_TIER_3
+	max_health = XENO_HEALTH_TIER_5
+	plasma_gain = XENO_PLASMA_GAIN_HIGH
+	plasma_max = XENO_PLASMA_TIER_4
 	crystal_max = XENO_CRYSTAL_LOW
 	xeno_explosion_resistance = XENO_HEAVY_EXPLOSIVE_ARMOR
-	armor_deflection = XENO_MEDIUM_ARMOR
-	armor_hardiness_mult = XENO_ARMOR_FACTOR_HIGH
+	armor_deflection = XENO_ARMOR_TIER_3
+	armor_hardiness_mult = XENO_ARMOR_FACTOR_VERYHIGH
 	evasion = XENO_EVASION_NONE
-	speed = XENO_SPEED_MEDHIGH
-	speed_mod = XENO_SPEED_MOD_MED
+	speed = XENO_SPEED_TIER_4
 
 	deevolves_to = "Drone"
 	caste_desc = "A digger and trapper."
-	burrow_cooldown = 50
-	tunnel_cooldown = 100
-	widen_cooldown = 100
 	acid_level = 2
 	weed_level = 1
 	evolution_allowed = FALSE
-	tremor_cooldown = 450
-
-/datum/caste_datum/burrower/mature
-	upgrade_name = "Mature"
-	caste_desc = "A digger and shaper. It looks a little more dangerous."
-	upgrade = 1
-
-	tacklemin = 3
-	tacklemax = 4
-	tackle_chance = 45
-	burrow_cooldown = 40
-	tunnel_cooldown = 90
-	widen_cooldown = 90
-	tremor_cooldown = 450
-
-/datum/caste_datum/burrower/elder
-	upgrade_name = "Elder"
-	caste_desc = "A digger and shaper. It looks pretty strong."
-	upgrade = 2
-
 	tacklemin = 4
 	tacklemax = 5
 	tackle_chance = 50
@@ -53,20 +27,6 @@
 	tunnel_cooldown = 70
 	widen_cooldown = 70
 	tremor_cooldown = 450
-
-/datum/caste_datum/burrower/ancient
-	upgrade_name = "Ancient"
-	caste_desc = "A digger and shaper. It looks extremely strong."
-	upgrade = 3
-
-	tacklemin = 4
-	tacklemax = 5
-	tackle_chance = 50
-	speed = -0.3
-	burrow_cooldown = 20
-	tunnel_cooldown = 70
-	widen_cooldown = 70
-	tremor_cooldown = 420
 
 /mob/living/carbon/Xenomorph/Burrower
 	caste_name = "Burrower"
@@ -81,7 +41,6 @@
 	pixel_x = -12
 	old_x = -12
 	tier = 2
-	upgrade = 0
 	actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/regurgitate,

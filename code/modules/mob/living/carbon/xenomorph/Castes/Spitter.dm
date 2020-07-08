@@ -1,22 +1,18 @@
 /datum/caste_datum/spitter
 	caste_name = "Spitter"
-	upgrade_name = "Young"
 	tier = 2
-	upgrade = 0
 
-	melee_damage_lower = XENO_DAMAGE_LOW
-	melee_damage_upper = XENO_DAMAGE_MEDIUMLOW
-	max_health = XENO_HEALTH_HIGHMEDIUM
-	plasma_gain = XENO_PLASMA_GAIN_HIGHMED
-	plasma_max = XENO_PLASMA_VERYHIGH
+	melee_damage_lower = XENO_DAMAGE_TIER_1
+	melee_damage_upper = XENO_DAMAGE_TIER_3
+	max_health = XENO_HEALTH_TIER_5
+	plasma_gain = XENO_PLASMA_GAIN_VERYHIGH
+	plasma_max = XENO_PLASMA_TIER_10
 	xeno_explosion_resistance = XENO_MEDIUM_EXPLOSIVE_ARMOR
-	armor_deflection = XENO_LOW_ARMOR + XENO_ARMOR_MOD_VERYSMALL
-	armor_hardiness_mult = XENO_ARMOR_FACTOR_HIGH
+	armor_deflection = XENO_ARMOR_TIER_1 + XENO_ARMOR_MOD_VERYSMALL
+	armor_hardiness_mult = XENO_ARMOR_FACTOR_VERYHIGH
 	evasion = XENO_EVASION_NONE
-	speed = XENO_SPEED_LOWHIGH
-	speed_mod = XENO_SPEED_MOD_SMALL
+	speed = XENO_SPEED_TIER_5
 
-	spit_delay = 30
 	caste_desc = "Ptui!"
 	spit_types = list(/datum/ammo/xeno/acid/medium)
 	evolves_to = list("Boiler")
@@ -25,35 +21,10 @@
 
 	behavior_delegate_type = /datum/behavior_delegate/spitter_base
 
-/datum/caste_datum/spitter/mature
-	upgrade_name = "Mature"
-	caste_desc = "A ranged damage dealer. It looks a little more dangerous."
-	upgrade = 1
-
-	spit_delay = 30
-	tacklemin = 3
-	tacklemax = 4
-	tackle_chance = 40
-
-/datum/caste_datum/spitter/elder
-	upgrade_name = "Elder"
-	caste_desc = "A ranged damage dealer. It looks pretty strong."
-	upgrade = 2
-
 	spit_delay = 25
 	tacklemin = 4
 	tacklemax = 5
 	tackle_chance = 45
-
-/datum/caste_datum/spitter/ancient
-	upgrade_name = "Ancient"
-	caste_desc = "A ranged destruction machine."
-	upgrade = 3
-
-	spit_delay = 25
-	tacklemin = 4
-	tacklemax = 5
-	tackle_chance = 48
 
 /mob/living/carbon/Xenomorph/Spitter
 	caste_name = "Spitter"

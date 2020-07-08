@@ -2,7 +2,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_pounce
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1
-	cooldowns = list(70, 65, 60, 55)
+	xeno_cooldown = 60
 	plasma_cost = 10
 
 	// Config options
@@ -36,7 +36,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_lurker_invisibility
 	ability_primacy = XENO_PRIMARY_ACTION_2
 	action_type = XENO_ACTION_CLICK
-	cooldowns = list(1, 1, 1, 1) // This ability never goes off cooldown 'naturally'. Cooldown is applied manually as a super-large value in the use_ability proc
+	xeno_cooldown = 1 // This ability never goes off cooldown 'naturally'. Cooldown is applied manually as a super-large value in the use_ability proc
 								 // and reset by the behavior_delegate whenever the ability ends (because it can be ended by things like slashes, that we can't easily track here)
 	plasma_cost = 10
 
@@ -45,7 +45,7 @@
 	var/is_invisible = FALSE    // Are we currently invisible?
 	var/speed_buff = 0
 
-	var/speed_buff_mod_max = XENO_SPEED_MOD_VERYLARGE
+	var/speed_buff_mod_max = 0.25
 	var/speed_buff_pct_per_ten_tiles = 0.25 // get a quarter of our buff per ten tiles
 	var/curr_speed_buff = 0
 
@@ -57,7 +57,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_crippling_strike
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	action_type = XENO_ACTION_ACTIVATE
-	cooldowns = list(120, 110, 100, 90)
+	xeno_cooldown = 100
 	plasma_cost = 50
 
 	var/buff_duration = 50

@@ -5,10 +5,10 @@
 	macro_path = /datum/action/xeno_action/verb/verb_crusher_charge
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1
-	cooldowns = list(150, 145, 140, 135)
+	xeno_cooldown = 140
 	plasma_cost = 20
 
-	var/direct_hit_damage = 80
+	var/direct_hit_damage = 70
 
 	// Config options
 	distance = 9
@@ -40,10 +40,10 @@
 	macro_path = /datum/action/xeno_action/verb/verb_crusher_charge
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
-	cooldowns = list(200, 190, 180, 170)
+	xeno_cooldown = 180
 	plasma_cost = 20
 
-	var/damage = 75
+	var/damage = 65
 
 	var/distance = 2
 	var/effect_type_base = /datum/effects/xeno_slow/superslow
@@ -56,7 +56,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_crusher_charge
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
-	cooldowns = list(280, 270, 260, 250)
+	xeno_cooldown = 260
 	plasma_cost = 20
 
 	var/shield_amount = 150

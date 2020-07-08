@@ -10,11 +10,11 @@
 	macro_path = /datum/action/xeno_action/verb/verb_pierce
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1
-	cooldowns = list(45, 35, 30, 25)
+	xeno_cooldown = 30
 	plasma_cost = 20
 
 	// Config
-	var/damage = 50
+	var/damage = 45
 	var/shield_regen_threshold = 2
 	var/should_spin_instead = FALSE
 
@@ -25,7 +25,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_dash
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
-	cooldowns = list(130, 120, 110, 100)
+	xeno_cooldown = 110
 	plasma_cost = 10
 
 	// Config options
@@ -36,7 +36,7 @@
 	pounce_pass_flags = PASS_MOB_THRU|PASS_OVER_THROW_MOB
 
 	var/buff_duration = 12
-	var/damage = 45
+	var/damage = 40
 	var/shield_regen_threshold = 2
 
 	var/activated_once = FALSE
@@ -49,7 +49,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_cleave
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	action_type = XENO_ACTION_CLICK
-	cooldowns = list(80, 75, 70, 70)
+	xeno_cooldown = 70
 
 	// Root config
 	var/root_duration_unbuffed = 5
@@ -110,7 +110,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_prae_stomp
 	ability_primacy = XENO_PRIMARY_ACTION_1
 	action_type = XENO_ACTION_CLICK
-	cooldowns = list(150, 140, 130, 120)
+	xeno_cooldown = 130
 	plasma_cost = 50
 
 	// Config
@@ -127,7 +127,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_crush
 	ability_primacy = XENO_PRIMARY_ACTION_2
 	action_type = XENO_ACTION_ACTIVATE
-	cooldowns = list(120, 110, 100, 90)
+	xeno_cooldown = 100
 	plasma_cost = 50
 
 // Tail lash
@@ -138,7 +138,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_crush
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	action_type = XENO_ACTION_CLICK
-	cooldowns = list(150, 140, 130, 120)
+	xeno_cooldown = 130
 	plasma_cost = 50
 
 	// Config
@@ -154,7 +154,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_prae_impale
 	ability_primacy = XENO_PRIMARY_ACTION_1
 	action_type = XENO_ACTION_CLICK
-	cooldowns = list(150, 140, 130, 120)
+	xeno_cooldown = 130
 	plasma_cost = 100
 
 	var/click_miss_cooldown = 15
@@ -167,7 +167,7 @@
 	ability_primacy = XENO_PRIMARY_ACTION_2
 	action_type = XENO_ACTION_ACTIVATE
 	plasma_cost = 100
-	cooldowns = list(250, 230, 210, 190)
+	xeno_cooldown = 210
 
 	// Config
 	var/duration = 70
@@ -180,7 +180,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_prae_tail_trip
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	action_type = XENO_ACTION_CLICK
-	cooldowns = list(150, 140, 130, 120)
+	xeno_cooldown = 130
 	plasma_cost = 50
 
 	// Config
@@ -202,7 +202,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_dash
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
-	cooldowns = list(50, 50, 50, 50)
+	xeno_cooldown = 50
 	plasma_cost = 10
 
 	// Config options
@@ -218,7 +218,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_acid_ball
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
-	cooldowns = list(200, 190, 180, 170)
+	xeno_cooldown = 180
 	plasma_cost = 75
 
 	var/activation_delay = 10
@@ -233,7 +233,7 @@
 	ability_primacy = XENO_PRIMARY_ACTION_4
 	
 	plasma_cost = 40
-	cooldowns = list(120, 110, 100, 90)
+	xeno_cooldown = 100
 
 	// Configurable options
 	spray_type = ACID_SPRAY_LINE	
@@ -248,7 +248,7 @@
 /datum/action/xeno_action/activable/spray_acid/prae_warden
 	ability_primacy = XENO_PRIMARY_ACTION_2	
 	plasma_cost = 60
-	cooldowns = list(150, 140, 130, 120)
+	xeno_cooldown = 130
 
 
 	// Configurable options
@@ -266,7 +266,7 @@
 	// todo: macro
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
-	cooldowns = list(100, 100, 100, 100)
+	xeno_cooldown = 100
 	plasma_cost = 75
 
 	// Config

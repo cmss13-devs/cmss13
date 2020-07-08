@@ -117,12 +117,13 @@
 	var/ability_speed_modifier = 0.0 //Things that add on top of our base speed, based on what powers we are using
 
 	// Progression-related
-	var/upgrade_threshold = 200
-	var/evolution_threshold = 200
-	var/upgrade_stored = 0 //How much upgrade points they have stored.
-	var/upgrade = -1  //This will track their upgrade level. -1 means cannot upgrade
+	var/age_prefix = ""
+	var/age_threshold = 1000
+	var/age_stored = 0 //How much age points they have stored.
+	var/age = 0  //This will track their age level. -1 means cannot age
 	var/max_grown = 200
 	var/evolution_stored = 0 //How much evolution they have stored
+	var/evolution_threshold = 200
 	var/tier = 1 //This will track their "tier" to restrict/limit evolutions
 	var/amount_grown = 0 // for some fucking reason larva use their own variable here, who knows why
 	var/time_of_birth
@@ -361,17 +362,14 @@
 	pain = new /datum/pain/xeno(src)
 
 /mob/living/carbon/Xenomorph/proc/update_caste()
-	if(caste_name && xeno_datum_list[caste_name] && xeno_datum_list[caste_name][max(1,upgrade+1)])
-		caste = xeno_datum_list[caste_name][max(1,upgrade+1)]
+	if(caste_name && xeno_datum_list[caste_name])
+		caste = xeno_datum_list[caste_name]
 	else
 		to_world("something went very wrong")
 		return
-	upgrade = caste.upgrade
+
 	acid_splash_cooldown = caste.acid_splash_cooldown
-	mutators.user_levelled_up(upgrade)
-	if(isXenoQueenLeadingHive(src))
-		//The Queen matures, so does the Hive!
-		hive.mutators.user_levelled_up(upgrade)
+
 	recalculate_everything()
 
 
@@ -408,16 +406,16 @@
 		name_client_postfix = client.xeno_postfix ? ("-"+client.xeno_postfix) : ""
 	color = in_hive.color
 
-	//Queens have weird, hardcoded naming conventions based on upgrade levels. They also never get nicknumbers
+	//Queens have weird, hardcoded naming conventions based on age levels. They also never get nicknumbers
 	if(isXenoQueen(src))
-		switch(upgrade)
+		switch(age)
 			if(0) name = "\improper [name_prefix]Queen"			 //Young
 			if(1) name = "\improper [name_prefix]Elder Queen"	 //Mature
 			if(2) name = "\improper [name_prefix]Elder Empress"	 //Elite
 			if(3) name = "\improper [name_prefix]Ancient Empress" //Ancient
 			if(4) name = "\improper [name_prefix]Primordial Empress" //Primordial
 	else if(isXenoPredalien(src)) name = "\improper [name_prefix][caste.display_name] ([name_client_prefix][nicknumber][name_client_postfix])"
-	else if(caste) name = "\improper [name_prefix][caste.upgrade_name] [caste.caste_name] ([name_client_prefix][nicknumber][name_client_postfix])"
+	else if(caste) name = "\improper [name_prefix][age_prefix][caste.caste_name] ([name_client_prefix][nicknumber][name_client_postfix])"
 
 	//Update linked data so they show up properly
 	change_real_name(src, name)
@@ -735,7 +733,6 @@
 
 
 /mob/living/carbon/Xenomorph/proc/recalculate_maturation()
-	upgrade_threshold =  caste.upgrade_threshold
 	evolution_threshold =  caste.evolution_threshold
 
 /mob/living/carbon/Xenomorph/rejuvenate()

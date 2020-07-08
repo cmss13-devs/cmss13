@@ -1,52 +1,28 @@
 /datum/caste_datum/sentinel
 	caste_name = "Sentinel"
-	upgrade_name = "Young"
 	tier = 1
-	upgrade = 0
-	melee_damage_lower = XENO_DAMAGE_LOW
-	melee_damage_upper = XENO_DAMAGE_LOWPLUS
-	max_health = XENO_HEALTH_LOW
-	plasma_gain = XENO_PLASMA_GAIN_MED
-	plasma_max = XENO_PLASMA_HIGHMEDIUM
+
+	melee_damage_lower = XENO_DAMAGE_TIER_1
+	melee_damage_upper = XENO_DAMAGE_TIER_2
+	max_health = XENO_HEALTH_TIER_3
+	plasma_gain = XENO_PLASMA_GAIN_HIGHMED
+	plasma_max = XENO_PLASMA_TIER_4
 	xeno_explosion_resistance = XENO_LOW_EXPLOSIVE_ARMOR
 	armor_deflection = XENO_NO_ARMOR
 	armor_hardiness_mult = XENO_ARMOR_FACTOR_LOW
 	evasion = XENO_EVASION_MEDIUM
-	speed = XENO_SPEED_HIGHFAST
-	speed_mod = XENO_SPEED_MOD_MED
-	spit_delay = 25
+	speed = XENO_SPEED_TIER_7
+
 	caste_desc = "A weak ranged combat alien."
-	tackle_chance = 40
 	spit_types = list(/datum/ammo/xeno/toxin, /datum/ammo/xeno/toxin/burst)
 	evolves_to = list("Spitter")
 	deevolves_to = "Larva"
 	acid_level = 1
 
-/datum/caste_datum/sentinel/mature
-	upgrade_name = "Mature"
-	caste_desc = "A ranged combat alien. It looks a little more dangerous."
-	upgrade = 1
-	tacklemin = 3
-	tacklemax = 4
-	tackle_chance = 45
-
-/datum/caste_datum/sentinel/elder
-	upgrade_name = "Elder"
-	caste_desc = "A ranged combat alien. It looks pretty strong."
-	upgrade = 2
 	tacklemin = 4
 	tacklemax = 5
 	tackle_chance = 50
 	spit_delay = 20
-
-/datum/caste_datum/sentinel/ancient
-	upgrade_name = "Ancient"
-	caste_desc = "Neurotoxin Factory, don't let it get you."
-	upgrade = 3
-	tacklemin = 4
-	tacklemax = 5
-	tackle_chance = 55
-	spit_delay = 15
 
 /mob/living/carbon/Xenomorph/Sentinel
 	caste_name = "Sentinel"

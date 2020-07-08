@@ -11,7 +11,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_bombard
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1
-	cooldowns = list(260, 250, 245, 240)
+	xeno_cooldown = 245
 
 	// Range and other config
 	var/effect_range = 3
@@ -27,13 +27,13 @@
 	macro_path = /datum/action/xeno_action/verb/verb_acid_lance
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
-	cooldowns = list(210, 200, 190, 180)
+	xeno_cooldown = 190
 
 	// Config
 	var/stack_time = 10
 	var/base_range = 6
 	var/range_per_stack = 1
-	var/base_damage = 40
+	var/base_damage = 35
 	var/damage_per_stack = 15
 	var/movespeed_per_stack = 1.25
 
@@ -53,7 +53,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_dump_acid
 	action_type = XENO_ACTION_ACTIVATE
 	ability_primacy = XENO_PRIMARY_ACTION_3
-	cooldowns = list(400, 370, 340, 310)
+	xeno_cooldown = 340
 
 	var/buffs_duration = 60
 	var/cooldown_duration = 350
@@ -74,7 +74,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_boiler_trap
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1
-	cooldowns = list(225, 215, 205, 195)
+	xeno_cooldown = 205
 
 	/// Config
 	var/trap_ttl = 100
@@ -87,9 +87,9 @@
 	macro_path = /datum/action/xeno_action/verb/verb_acid_mine
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
-	cooldowns = list(60, 60, 55, 55)
+	xeno_cooldown = 55
 
-	var/damage = 60
+	var/damage = 55
 	var/delay = 15
 
 /datum/action/xeno_action/activable/acid_shotgun
@@ -100,7 +100,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_acid_shotgun
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
-	cooldowns = list(150, 140, 130, 120)
+	xeno_cooldown = 130
 
 	var/ammo_type = /datum/ammo/xeno/acid_shotgun
 

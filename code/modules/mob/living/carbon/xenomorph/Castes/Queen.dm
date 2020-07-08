@@ -1,54 +1,28 @@
 /datum/caste_datum/queen
 	caste_name = "Queen"
-	upgrade_name = "Young"
 	tier = 0
-	upgrade = 0
 
-	melee_damage_lower = XENO_DAMAGE_MEDIUMLOW
-	melee_damage_upper = XENO_DAMAGE_MEDIUMHIGH
-	max_health = XENO_HEALTH_ULTRAHIGH
-	plasma_gain = XENO_PLASMA_GAIN_HIGH
-	plasma_max = XENO_PLASMA_VERYHIGH
+	melee_damage_lower = XENO_DAMAGE_TIER_4
+	melee_damage_upper = XENO_DAMAGE_TIER_6
+	max_health = XENO_HEALTH_QUEEN
+	plasma_gain = XENO_PLASMA_GAIN_VERYHIGH
+	plasma_max = XENO_PLASMA_TIER_10
 	crystal_max = XENO_CRYSTAL_MEDIUM
 	xeno_explosion_resistance = XENO_GIGA_EXPLOSIVE_ARMOR
-	armor_deflection = XENO_MEDIUM_ARMOR
+	armor_deflection = XENO_ARMOR_TIER_2
 	armor_hardiness_mult = XENO_ARMOR_FACTOR_SUPER
 	evasion = XENO_EVASION_NONE
-	speed = XENO_SPEED_SLOW
-	speed_mod = XENO_SPEED_MOD_LARGE
+	speed = XENO_SPEED_QUEEN
 
-	tacklemin = 4
-	tacklemax = 5
-	tackle_chance = 40
 	is_intelligent = 1
 	evolution_allowed = FALSE
 	fire_immune = 1
-	aura_strength = 2 //The Queen's aura is strong and stays so, and gets devastating late game. Climbs by 1 to 5
 	caste_desc = "The biggest and baddest xeno. The Queen controls the hive and plants eggs"
-	spit_delay = 35
 	spit_types = list(/datum/ammo/xeno/toxin/queen, /datum/ammo/xeno/acid/medium)
 	can_hold_facehuggers = 0
 	can_hold_eggs = CAN_HOLD_ONE_HAND
 	acid_level = 2
 	weed_level = 3
-
-	minimum_playtimes = list(
-		FACTION_XENOMORPH = HOURS_9
-	)
-
-/datum/caste_datum/queen/mature
-	upgrade_name = "Mature"
-	caste_desc = "The biggest and baddest xeno. The Queen controls the hive and plants eggs."
-	upgrade = 1
-
-	spit_delay = 30
-	tackle_chance = 45
-	aura_strength = 3
-
-/datum/caste_datum/queen/elder
-	upgrade_name = "Elder"
-	caste_desc = "The biggest and baddest xeno. The Empress controls multiple hives and planets."
-	upgrade = 2
 
 	spit_delay = 25
 	tackle_chance = 50
@@ -56,27 +30,9 @@
 	tacklemin = 5
 	tacklemax = 6
 
-/datum/caste_datum/queen/ancient
-	upgrade_name = "Ancient"
-	caste_desc = "The most perfect Xeno form imaginable."
-	upgrade = 3
-
-	spit_delay = 20
-	tackle_chance = 55
-	aura_strength = 5
-	tacklemin = 6
-	tacklemax = 7
-
-/datum/caste_datum/queen/primordial
-	upgrade_name = "Primordial"
-	caste_desc = "Natural selection's masterwork, each brush stroke of genetics, deadly, each trait, glorious, every detail, minutely crafted. The perfect being, the perfect queen."
-	upgrade = 4
-
-	spit_delay = 10
-	tackle_chance = 65
-	aura_strength = 6
-	tacklemin = 6
-	tacklemax = 7
+	minimum_playtimes = list(
+		FACTION_XENOMORPH = HOURS_9
+	)
 
 /proc/update_living_queens() // needed to update when you change a queen to a different hive
 	outer_loop:

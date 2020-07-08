@@ -36,7 +36,7 @@
 				XQ.dismount_ovipositor(TRUE)
 
 			if(hive_datum[hivenumber].stored_larva)
-				hive_datum[hivenumber].stored_larva = round(hive_datum[hivenumber].stored_larva * ((upgrade+1)/6.0)) // 83/66/50/33 for ancient/elite emp/elite queen/queen
+				hive_datum[hivenumber].stored_larva = round(hive_datum[hivenumber].stored_larva * 0.5) //Lose half on dead queen
 				var/turf/larva_spawn
 				var/list/players_with_xeno_pref = get_alien_candidates()
 				while(hive_datum[hivenumber].stored_larva > 0) // stil some left
@@ -107,7 +107,7 @@
 	remains.pixel_x = pixel_x //For 2x2.
 
 	if(!caste)
-		CRASH("CASTE ERROR: gib() was called without a caste. (name: [name], disposed: [disposed], health: [health], upgrade_stored: [upgrade_stored]")
+		CRASH("CASTE ERROR: gib() was called without a caste. (name: [name], disposed: [disposed], health: [health], age_stored: [age_stored]")
 
 	switch(caste.caste_name) //This will need to be changed later, when we have proper xeno pathing. Might do it on caste or something.
 		if("Boiler")

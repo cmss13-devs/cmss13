@@ -274,9 +274,7 @@ var/global/list/paramslist_cache = list()
 	xeno_datum_list = list()
 	for(var/T in paths)
 		var/datum/caste_datum/CD = new T
-		if(!xeno_datum_list[CD.caste_name])
-			xeno_datum_list[CD.caste_name] = list(1,2,3,4,5) // lists are numbered from 1 and 0 or negative numbers cause index out of bounds runtimes -spookydonut
-		xeno_datum_list[CD.caste_name][max(1,CD.upgrade+1)] = CD
+		xeno_datum_list[CD.caste_name] = CD
 
     // Equipment presets
 	paths = typesof(/datum/equipment_preset)

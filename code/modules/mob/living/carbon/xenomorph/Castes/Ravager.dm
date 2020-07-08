@@ -1,23 +1,22 @@
 /datum/caste_datum/ravager
 	caste_name = "Ravager"
-	upgrade_name = "Young"
 	tier = 3
-	upgrade = 0
 
-	melee_damage_lower = XENO_DAMAGE_MEDIUMHIGH
-	melee_damage_upper = XENO_DAMAGE_MEDIUMHIGH
-	max_health = XENO_HEALTH_VERYHIGH + XENO_HEALTH_MOD_VERYSMALL
-	plasma_gain = XENO_PLASMA_GAIN_VERYHIGH
-	plasma_max = XENO_PLASMA_LOW
+	melee_damage_lower = XENO_DAMAGE_TIER_6
+	melee_damage_upper = XENO_DAMAGE_TIER_6
+	max_health = XENO_HEALTH_TIER_8
+	plasma_gain = XENO_PLASMA_GAIN_ULTRAHIGH
+	plasma_max = XENO_PLASMA_TIER_1
 	xeno_explosion_resistance = XENO_ULTRA_EXPLOSIVE_ARMOR
-	armor_deflection = XENO_MEDIUM_ARMOR - XENO_ARMOR_MOD_VERYSMALL
+	armor_deflection = XENO_ARMOR_TIER_2
 	armor_hardiness_mult = XENO_ARMOR_FACTOR_CRUSHER
 	evasion = XENO_EVASION_NONE
-	speed = XENO_SPEED_MEDIUM
-	speed_mod = XENO_SPEED_MOD_LARGE
+	speed = XENO_SPEED_TIER_2
 	heal_standing = 0.66
 
-	tackle_chance = 35
+	tacklemin = 4
+	tacklemax = 5
+	tackle_chance = 45
 	
 	evolution_allowed = FALSE
 	deevolves_to = "Lurker"
@@ -26,40 +25,6 @@
 	attack_delay = -1
 
 	behavior_delegate_type = /datum/behavior_delegate/ravager_base
-
-
-/datum/caste_datum/ravager/mature
-	upgrade_name = "Mature"
-	caste_desc = "A brutal, devastating front-line attacker. It looks a little more dangerous."
-	upgrade = 1
-	tackle_chance = 40
-
-/datum/caste_datum/ravager/elder
-	upgrade_name = "Elder"
-	caste_desc = "A brutal, devastating front-line attacker. It looks pretty strong."
-	upgrade = 2
-
-	tacklemin = 4
-	tacklemax = 5
-	tackle_chance = 45
-
-/datum/caste_datum/ravager/ancient
-	upgrade_name = "Ancient"
-	caste_desc = "As I walk through the valley of the shadow of death"
-	upgrade = 3
-
-	tacklemin = 4
-	tacklemax = 5
-	tackle_chance = 50
-
-/datum/caste_datum/ravager/primordial
-	upgrade_name = "Primordial"
-	caste_desc = "This thing's scythes are bigger than a fucking building!"
-	upgrade = 4
-
-	tacklemin = 6
-	tacklemax = 7
-	tackle_chance = 55
 
 /mob/living/carbon/Xenomorph/Ravager
 	caste_name = "Ravager"

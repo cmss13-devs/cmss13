@@ -172,7 +172,7 @@
 	ability_name = "pounce"
 	macro_path = /datum/action/xeno_action/verb/verb_pounce
 	action_type = XENO_ACTION_CLICK
-	cooldowns = list(40, 40, 40, 40)
+	xeno_cooldown = 40
 	plasma_cost = 10
 
 	// Config options
@@ -248,7 +248,7 @@
 
 // General use acid spray, can be subtyped to customize behavior. 
 // ... or mutated at runtime by another action that retrieves and edits these values
-// ... as they are all safely mutable. (Except possibly cooldowns)
+// ... as they are all safely mutable. (Except possibly xeno_cooldown)
 /datum/action/xeno_action/activable/spray_acid
 	name = "Spray Acid"
 	action_icon_state = "spray_acid"
@@ -257,7 +257,7 @@
 	action_type = XENO_ACTION_CLICK
 	
 	plasma_cost = 40
-	cooldowns = list(100, 90, 80, 70)
+	xeno_cooldown = 80
 
 
 	// Configurable options

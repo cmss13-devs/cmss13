@@ -1,71 +1,29 @@
 /datum/caste_datum/praetorian
 	caste_name = "Praetorian"
-	upgrade_name = "Young"
 	tier = 3
-	upgrade = 0
 
-	melee_damage_lower = XENO_DAMAGE_MEDIUM
-	melee_damage_upper = XENO_DAMAGE_MEDIUM
-	max_health = XENO_HEALTH_VERYHIGH
-	plasma_gain = XENO_PLASMA_GAIN_HIGHMED
-	plasma_max = XENO_PLASMA_VERYHIGH
+	melee_damage_lower = XENO_DAMAGE_TIER_5
+	melee_damage_upper = XENO_DAMAGE_TIER_5
+	max_health = XENO_HEALTH_TIER_8
+	plasma_gain = XENO_PLASMA_GAIN_VERYHIGH
+	plasma_max = XENO_PLASMA_TIER_10
 	xeno_explosion_resistance = XENO_HEAVY_EXPLOSIVE_ARMOR
-	armor_deflection = XENO_LOWMED_ARMOR
+	armor_deflection = XENO_ARMOR_TIER_2
 	armor_hardiness_mult = XENO_ARMOR_FACTOR_CRUSHER
 	evasion = XENO_EVASION_NONE
-	speed = XENO_SPEED_HIGH
-	speed_mod = XENO_SPEED_MOD_LARGE
+	speed = XENO_SPEED_TIER_6
 
-	tackle_chance = 45
 	evolution_allowed = FALSE
 	deevolves_to = "Warrior"
-	spit_delay = 25
 	caste_desc = "The warleader of the hive."
 	spit_types = list(/datum/ammo/xeno/acid/praetorian)
 	acid_level = 2
-	aura_strength = 1
 
-	behavior_delegate_type = /datum/behavior_delegate/praetorian_base
-
-	
-/datum/caste_datum/praetorian/mature
-	upgrade_name = "Mature"
-	caste_desc = "The warleader of the hive. It looks a little stronger."
-	upgrade = 1
-	aura_strength = 2.0
-	tackle_chance = 50
-	spit_delay = 20
-
-/datum/caste_datum/praetorian/elder
-	upgrade_name = "Elder"
-	caste_desc = "The warleader of the hive. It looks pretty strong."
-	upgrade = 2
 	aura_strength = 3
 	spit_delay = 20
 	tackle_chance = 55
 
-/datum/caste_datum/praetorian/ancient
-	upgrade_name = "Ancient"
-	caste_desc = "Dread it, run from it, death arrives all the same."
-	upgrade = 3
-	aura_strength = 4
-	spit_delay = 15
-	tackle_chance = 55
-
-/datum/caste_datum/praetorian/primordial
-	upgrade_name = "Primordial"
-	caste_desc = "Why is this thing bigger than a dropship?!"
-	upgrade = 4
-	melee_damage_lower = 50
-	melee_damage_upper = 60
-	plasma_gain = 0.05
-	plasma_max = 1500
-	spit_delay = 0
-	armor_deflection = 60
-	tackle_chance = 60
-	speed = -0.9
-	aura_strength = 5.0
-	max_health = XENO_UNIVERSAL_HPMULT * 350
+	behavior_delegate_type = /datum/behavior_delegate/praetorian_base
 
 /mob/living/carbon/Xenomorph/Praetorian
 	caste_name = "Praetorian"

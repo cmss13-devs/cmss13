@@ -6,7 +6,7 @@
 	ability_primacy = XENO_PRIMARY_ACTION_2
 	action_type = XENO_ACTION_ACTIVATE
 	plasma_cost = 20
-	cooldowns = list(90, 85, 80, 75)
+	xeno_cooldown = 80
 
 	// Config
 	var/duration = 35
@@ -20,7 +20,7 @@
 	action_type = XENO_ACTION_CLICK
 	
 	plasma_cost = 80
-	cooldowns = list(100, 90, 80, 70)
+	xeno_cooldown = 80
 
 	// Configurable options
 	spray_type = ACID_SPRAY_LINE	// Enum for the shape of spray to do

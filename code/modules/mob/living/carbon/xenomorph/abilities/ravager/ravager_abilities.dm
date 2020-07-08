@@ -7,7 +7,7 @@
 	action_type = XENO_ACTION_ACTIVATE
 	ability_primacy = XENO_PRIMARY_ACTION_1
 	plasma_cost = 70
-	cooldowns = list(200, 190, 180, 170)
+	xeno_cooldown = 180
 
 	// Config values (mutable)
 	var/empower_range = 3
@@ -28,7 +28,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_charge_rav
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
-	cooldowns = list(160, 150, 140, 130)
+	xeno_cooldown = 140
 
 	// Pounce config
 	distance = 5					
@@ -45,11 +45,11 @@
 	macro_path = /datum/action/xeno_action/verb/verb_scissorcut
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
-	cooldowns = list(100, 100, 100, 100)
+	xeno_cooldown = 100
 	plasma_cost = 20
 
 	// Config
-	var/damage = 50
+	var/damage = 45
 
 	var/daze_duration = 2 // If we daze, daze for this duration
 
@@ -63,7 +63,7 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1
 	plasma_cost = 10
-	cooldowns = list(220, 210, 200, 190)
+	xeno_cooldown = 200
 
 	// Config values
 	var/max_distance = 6 // 5 tiles between
@@ -78,7 +78,7 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
 	plasma_cost = 10
-	cooldowns = list(160, 150, 140, 140)
+	xeno_cooldown = 140
 
 	// Config values
 	var/heal_per_rage = 150
@@ -94,13 +94,13 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	plasma_cost = 10
-	cooldowns = list(250, 240, 230, 220)
+	xeno_cooldown = 230
 
 	// Config values
 	var/activation_delay = 20
 
-	var/base_damage = 30
-	var/damage_at_rage_levels = list(5, 10, 25, 50, 80)
+	var/base_damage = 25
+	var/damage_at_rage_levels = list(5, 10, 25, 45, 70)
 	var/range_at_rage_levels = list(1, 1, 1, 2, 2)
 	var/windup_reduction_at_rage_levels = list(0, 2, 4, 6, 10)
 
@@ -115,7 +115,7 @@
 	action_type = XENO_ACTION_ACTIVATE
 	ability_primacy = XENO_PRIMARY_ACTION_1
 	plasma_cost = 0
-	cooldowns = list(130, 120, 110, 100)
+	xeno_cooldown = 110
 
 	// Config values
 	var/shield_duration = 20  		// Shield lasts 2 seconds by default.
@@ -133,7 +133,7 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
 	plasma_cost = 0
-	cooldowns = list(150, 140, 130, 120)
+	xeno_cooldown = 130
 
 	// Config
 	var/shard_cost = 75
@@ -147,7 +147,7 @@
 	action_type = XENO_ACTION_ACTIVATE
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	plasma_cost = 0
-	cooldowns = list(300, 300, 300, 300)
+	xeno_cooldown = 300
 
 	// Config values
 	var/shard_cost = 50

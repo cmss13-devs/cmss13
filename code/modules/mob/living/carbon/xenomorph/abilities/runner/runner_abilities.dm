@@ -5,7 +5,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_pounce
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1
-	cooldowns = list(40, 35, 30, 25)
+	xeno_cooldown = 30
 	plasma_cost = 0
 
 	// Config options
@@ -27,7 +27,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_runner_bonespurs
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
-	cooldowns = list(130, 120, 110, 100)
+	xeno_cooldown = 110
 	plasma_cost = 0
 
 	var/ammo_type = /datum/ammo/xeno/bone_chips/spread/runner_skillshot

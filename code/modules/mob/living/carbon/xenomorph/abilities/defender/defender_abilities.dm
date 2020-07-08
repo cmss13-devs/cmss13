@@ -4,7 +4,7 @@
 	ability_name = "toggle crest defense"
 	macro_path = /datum/action/xeno_action/verb/verb_toggle_crest
 	action_type = XENO_ACTION_ACTIVATE
-	cooldowns = list(100, 100, 100, 100)
+	xeno_cooldown = 100
 	plasma_cost = 0
 	ability_primacy = XENO_PRIMARY_ACTION_1
 
@@ -17,7 +17,7 @@
 	ability_name = "fortify"
 	macro_path = /datum/action/xeno_action/verb/verb_fortify
 	action_type = XENO_ACTION_ACTIVATE
-	cooldowns = list(100, 100, 100, 100)
+	xeno_cooldown = 100
 
 
 /datum/action/xeno_action/onclick/tail_sweep
@@ -29,7 +29,7 @@
 	ability_primacy = XENO_PRIMARY_ACTION_3
 
 	plasma_cost = 10
-	cooldowns = list(150, 130, 110, 100)
+	xeno_cooldown = 110
 
 /datum/action/xeno_action/activable/headbutt
 	name = "Headbutt"
@@ -38,5 +38,5 @@
 	macro_path = /datum/action/xeno_action/verb/verb_headbutt
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
-	cooldowns = list(60, 50, 40, 40)
+	xeno_cooldown = 40
 

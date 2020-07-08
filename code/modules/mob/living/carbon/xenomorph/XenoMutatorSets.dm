@@ -7,9 +7,9 @@
 
 //The class contains a lot of variables that are applied to various xenos' stats and actions
 /datum/mutator_set
-	var/remaining_points = 0 //How many points the xeno / hive still has to spend on mutators
+	var/remaining_points = 1 //How many points the xeno / hive still has to spend on mutators
 	var/list/purchased_mutators = list() //List of purchased mutators
-	var/user_level = -1 //Level of the Queen for Hive or the individual xeno. Starting at -1 so at tier 0 you'd get some mutators to play with
+	var/user_level = 0 //Level of the Queen for Hive or the individual xeno. Starting at -1 so at tier 0 you'd get some mutators to play with
 
 	var/tackle_chance_multiplier = 1.0
 	var/tackle_strength_bonus = 0
@@ -94,16 +94,6 @@
 	if (. == TRUE && purchased_mutators.len)
 		var/m = purchased_mutators[purchased_mutators.len]
 		log_mutator("[hive.living_xeno_queen.name] purchased Hive Mutator '[m]'")
-
-/datum/mutator_set/hive_mutators/proc/user_levelled_up(var/new_level)
-	if(user_level == new_level || new_level == -1) //-1 is for Predaliens
-		return //nothing to level up!
-	if(user_level > new_level)
-		//Something went wrong!
-		log_debug("Invalid mutator level-up! Let the devs know!")
-		return
-	remaining_points += MUTATOR_GAIN_PER_QUEEN_LEVEL * (new_level - user_level)
-	user_level = new_level
 
 /datum/mutator_set/hive_mutators/can_purchase_mutator(var/mutator_name)
 	if (..() == FALSE)
@@ -206,19 +196,6 @@
 	if (. == TRUE && purchased_mutators.len)
 		var/m = purchased_mutators[purchased_mutators.len]
 		log_mutator("[xeno.name] purchased Mutator '[m]'")
-
-/datum/mutator_set/individual_mutators/proc/user_levelled_up(var/new_level)
-	if(xeno.hardcore)
-		remaining_points = 0
-		return
-	if(user_level == new_level || new_level == -1) //-1 is for Predaliens
-		return //nothing to level up!
-	if(user_level > new_level)
-		//Something went wrong!
-		log_debug("Invalid mutator level-up! Let the devs know!")
-		return
-	remaining_points += MUTATOR_GAIN_PER_XENO_LEVEL * (new_level - user_level)
-	user_level = new_level
 
 /datum/mutator_set/individual_mutators/can_purchase_mutator(var/mutator_name)
 	if (..() == FALSE)

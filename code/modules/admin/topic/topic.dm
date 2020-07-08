@@ -1132,10 +1132,10 @@
 
 		var/mob/living/carbon/Xenomorph/X = locate(href_list["xenoupgrade"])
 
-		if(X.upgrade == -1)
-			to_chat(usr, "You cannot upgrade this caste.")
+		if(X.age == -1)
+			to_chat(usr, "You cannot age this caste.")
 
-		if(alert(usr, "Are you sure you want to upgrade this xenomorph?", "Confirmation", "Yes", "No") != "Yes")
+		if(alert(usr, "Are you sure you want to age this xenomorph?", "Confirmation", "Yes", "No") != "Yes")
 			return
 
 		var/upgrade_list = input("Choose a level.") in list("Young", "Mature", "Elder", "Ancient", "Cancel")
@@ -1154,7 +1154,7 @@
 			if("Cancel")
 				return
 
-		X.upgrade_xeno(level)
+		X.age_xeno(level)
 		message_admins("[usr.ckey] has changed the maturation level of [key_name(X)] to [level].")
 
 /***************** BEFORE**************

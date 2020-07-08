@@ -1,20 +1,17 @@
 /datum/caste_datum/lurker
 	caste_name = "Lurker"
-	upgrade_name = "Young"
 	tier = 2
-	upgrade = 0
 
-	melee_damage_lower = XENO_DAMAGE_MEDIUM
-	melee_damage_upper = XENO_DAMAGE_MEDIUMHIGH
-	max_health = XENO_HEALTH_HIGHMEDIUM
-	plasma_gain = XENO_PLASMA_GAIN_HIGH
-	plasma_max = XENO_PLASMA_HIGHMEDIUM
+	melee_damage_lower = XENO_DAMAGE_TIER_5
+	melee_damage_upper = XENO_DAMAGE_TIER_5
+	max_health = XENO_HEALTH_TIER_5
+	plasma_gain = XENO_PLASMA_GAIN_VERYHIGH
+	plasma_max = XENO_PLASMA_TIER_4
 	xeno_explosion_resistance = XENO_MEDIUM_EXPLOSIVE_ARMOR
 	armor_deflection = XENO_NO_ARMOR
 	armor_hardiness_mult = XENO_ARMOR_FACTOR_LOW
 	evasion = XENO_EVASION_MEDIUM
-	speed = XENO_SPEED_LOWFAST
-	speed_mod = XENO_SPEED_MOD_SMALL
+	speed = XENO_SPEED_TIER_8
 
 	attack_delay = 2 // VERY high slash damage, but attacks relatively slowly
 
@@ -23,36 +20,6 @@
 	deevolves_to = "Runner"
 	caste_desc = "A fast, powerful backline combatant."
 	evolves_to = list("Ravager")
-
-/datum/caste_datum/lurker/mature
-	upgrade_name = "Mature"
-	caste_desc = "A fast, powerful backline combatant. It looks a little more dangerous."
-	upgrade = 1
-
-/datum/caste_datum/lurker/elder
-	upgrade_name = "Elder"
-	caste_desc = "A fast, powerful backline combatant. It looks pretty strong."
-	upgrade = 2
-
-/datum/caste_datum/lurker/ancient
-	upgrade_name = "Ancient"
-	caste_desc = "A completely unmatched hunter. No, not even the Yautja can match you."
-	upgrade = 3
-
-/datum/caste_datum/lurker/primordial
-	upgrade_name = "Primordial"
-	caste_desc = "The apex predator. The hunter who stands atop all others."
-	upgrade = 4
-	melee_damage_lower = 50
-	melee_damage_upper = 55
-	max_health = XENO_UNIVERSAL_HPMULT * 250
-	plasma_gain = 0.2
-	armor_deflection = 30
-	melee_damage_lower = 60
-	melee_damage_upper = 70
-	attack_delay = -4
-	speed = -1.8
-	plasma_gain = 0.4
 
 /mob/living/carbon/Xenomorph/Lurker
 	caste_name = "Lurker"

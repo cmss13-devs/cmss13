@@ -48,16 +48,10 @@
 	return !BD.used_shaman_ability
 
 /datum/action/xeno_action/activable/sacrifice_egg/proc/get_cooldown()
-	var/mob/living/carbon/Xenomorph/Carrier/X = owner
-	if(X.upgrade == 0)
-		return SECONDS_40
-	return SECONDS_30 - (X.upgrade - 1) * SECONDS_5
+	return SECONDS_10
 
 /datum/action/xeno_action/activable/sacrifice_egg/proc/get_gather_range()
-	var/mob/living/carbon/Xenomorph/Carrier/X = owner
-	if(X.upgrade == 0)
-		return 3
-	return 3.5 + (X.upgrade - 1) * 0.25
+	return 4
 
 /datum/action/xeno_action/activable/sacrifice_egg/use_ability()
 	var/mob/living/carbon/Xenomorph/Carrier/X = owner

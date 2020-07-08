@@ -40,20 +40,11 @@
 	stat("Plasma:", "[round(plasma_stored)]/[round(plasma_max)]")
 	stat("Slash Damage:", "[round((melee_damage_lower+melee_damage_upper)/2)]")
 
-	// Xeno ressource collection
-	//stat("Plasmagas:", "[round(crystal_stored)]/[round(crystal_max)]")
-
 	var/shieldtotal = 0
 	for (var/datum/xeno_shield/XS in xeno_shields)
 		shieldtotal += XS.amount
 	
 	stat("Shield:", "[shieldtotal]")
-
-	stat("")
-
-	stat("Plasmagas:", "[round(crystal_stored)]/[round(crystal_max)]")
-	if(hive && hive.crystal_stored)
-		stat("Hive Plasmagas:", "[hive.crystal_stored]")
 
 	stat("")
 
@@ -66,8 +57,8 @@
 	else if(caste && caste.evolution_allowed)
 		stat("Evolve Progress:", "[round(evolution_stored)]/[evolution_threshold]")
 
-	if(upgrade != -1 && upgrade < 3) //upgrade possible
-		stat("Upgrade Progress:", "[round(upgrade_stored)]/[upgrade_threshold]")
+	if(age != -1 && age < 3) //upgrade possible
+		stat("Age Progress:", "[round(age_stored)]/[age_threshold]")
 
 	stat("")
 

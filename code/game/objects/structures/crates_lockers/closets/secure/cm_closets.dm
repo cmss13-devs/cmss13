@@ -243,9 +243,12 @@
 	new /obj/item/clothing/shoes/white(src)
 	new /obj/item/storage/belt/medical/full(src)
 	new /obj/item/clothing/under/rank/medical/green(src)
-	new /obj/item/clothing/under/rank/medical/green(src)
+	new /obj/item/clothing/under/rank/medical/blue(src)
+	new /obj/item/clothing/under/rank/medical/purple(src)
 	new /obj/item/clothing/mask/surgical(src)
 	new /obj/item/clothing/head/surgery/green(src)
+	new /obj/item/clothing/head/surgery/blue(src)
+	new /obj/item/clothing/head/surgery/purple(src)
 	new /obj/item/clothing/glasses/hud/health(src)
 
 /obj/structure/closet/secure_closet/medical_doctor/select_gamemode_equipment(gamemode)

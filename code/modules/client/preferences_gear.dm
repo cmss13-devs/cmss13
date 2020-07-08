@@ -127,6 +127,12 @@ var/global/list/gear_datums = list()
 	slot = WEAR_FACE
 	cost = 1
 
+/datum/gear/coif
+	display_name = "Coif"
+	path = /obj/item/clothing/mask/rebreather/scarf
+	cost = 2
+	slot = WEAR_FACE	
+
 /datum/gear/cmbalaclava
 	display_name = "USCM Balaclava (Green)"
 	path = /obj/item/clothing/mask/rebreather/scarf/green

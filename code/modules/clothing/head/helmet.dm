@@ -581,7 +581,6 @@
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDETOPHAIR
-	flags_marine_helmet = NO_FLAGS
 	specialty = "M30 tactical"
 
 /obj/item/clothing/head/helmet/marine/tanker
@@ -599,7 +598,6 @@
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDETOPHAIR
-	flags_marine_helmet = NO_FLAGS
 	specialty = "M50 tanker"
 
 /obj/item/clothing/head/helmet/marine/ghillie

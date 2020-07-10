@@ -11,11 +11,11 @@
 		total_brute	+= O.brute_dam
 		total_burn	+= O.burn_dam
 
-	var/oxy_l = ((species.flags & NO_BREATHE) ? 0 : getOxyLoss())
-	var/tox_l = ((species.flags & NO_POISON) ? 0 : getToxLoss())
+	var/oxy_l = ((species && species.flags & NO_BREATHE) ? 0 : getOxyLoss())
+	var/tox_l = ((species && species.flags & NO_POISON) ? 0 : getToxLoss())
 	var/clone_l = getCloneLoss()
 
-	health = species.total_health - oxy_l - tox_l - clone_l - total_burn - total_brute
+	health = ((species != null)? species.total_health : 200) - oxy_l - tox_l - clone_l - total_burn - total_brute
 
 	if(isSynth(src) && pulledby && health <= 0 && isXeno(pulledby))	// Xenos lose grab on critted synths
 		pulledby.stop_pulling()
@@ -111,7 +111,7 @@
 
 
 /mob/living/carbon/human/proc/adjustBruteLossByPart(var/amount, var/organ_name, var/obj/damage_source = null)
-	if(species.brute_mod && amount > 0)
+	if(species && species.brute_mod && amount > 0)
 		amount = amount*species.brute_mod
 
 	for(var/X in limbs)
@@ -127,7 +127,7 @@
 
 
 /mob/living/carbon/human/proc/adjustFireLossByPart(var/amount, var/organ_name, var/obj/damage_source = null)
-	if(species.burn_mod && amount > 0)
+	if(species && species.burn_mod && amount > 0)
 		amount = amount*species.burn_mod
 
 	for(var/X in limbs)
@@ -143,12 +143,12 @@
 
 
 /mob/living/carbon/human/getCloneLoss()
-	if(species.flags & (IS_SYNTHETIC|NO_SCAN))
+	if(species && species.flags & (IS_SYNTHETIC|NO_SCAN))
 		cloneloss = 0
 	return ..()
 
 /mob/living/carbon/human/setCloneLoss(var/amount)
-	if(species.flags & (IS_SYNTHETIC|NO_SCAN))
+	if(species && species.flags & (IS_SYNTHETIC|NO_SCAN))
 		cloneloss = 0
 	else
 		..()
@@ -156,7 +156,7 @@
 /mob/living/carbon/human/adjustCloneLoss(var/amount)
 	..()
 
-	if(species.flags & (IS_SYNTHETIC|NO_SCAN))
+	if(species && species.flags & (IS_SYNTHETIC|NO_SCAN))
 		cloneloss = 0
 		return
 
@@ -190,35 +190,35 @@
 
 // Defined here solely to take species flags into account without having to recast at mob/living level.
 /mob/living/carbon/human/getOxyLoss()
-	if(species.flags & NO_BREATHE)
+	if(species && species.flags & NO_BREATHE)
 		oxyloss = 0
 	return ..()
 
 /mob/living/carbon/human/adjustOxyLoss(var/amount)
-	if(species.flags & NO_BREATHE)
+	if(species && species.flags & NO_BREATHE)
 		oxyloss = 0
 	else
 		..()
 
 /mob/living/carbon/human/setOxyLoss(var/amount)
-	if(species.flags & NO_BREATHE)
+	if(species && species.flags & NO_BREATHE)
 		oxyloss = 0
 	else
 		..()
 
 /mob/living/carbon/human/getToxLoss()
-	if(species.flags & NO_POISON)
+	if(species && species.flags & NO_POISON)
 		toxloss = 0
 	return ..()
 
 /mob/living/carbon/human/adjustToxLoss(var/amount)
-	if(species.flags & NO_POISON)
+	if(species && species.flags & NO_POISON)
 		toxloss = 0
 	else
 		..()
 
 /mob/living/carbon/human/setToxLoss(var/amount)
-	if(species.flags & NO_POISON)
+	if(species && species.flags & NO_POISON)
 		toxloss = 0
 	else
 		..()

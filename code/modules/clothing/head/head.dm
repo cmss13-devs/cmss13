@@ -41,10 +41,6 @@
 		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
 	)
 
-/obj/item/clothing/head/beanie/New()
-	select_gamemode_skin(/obj/item/clothing/head/beanie)
-	..()
-
 /obj/item/clothing/head/beanie/green
 	icon_state = "beaniegreen"
 

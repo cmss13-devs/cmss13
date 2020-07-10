@@ -464,12 +464,12 @@
 		M.apply_damage(-4*level, TOX)
 		M.updatehealth()
 
-/datum/chem_property/positive/electrogenetic/update_reagent(var/datum/reagent/R, var/direction = 1)
-	..()
-	if(direction)
-		R.ingestible = FALSE
+/datum/chem_property/positive/electrogenetic/update_reagent(var/update = TRUE)
+	if(update)
+		holder.ingestible = FALSE
 	else
-		R.ingestible = TRUE
+		holder.ingestible = TRUE
+	..()
 
 /datum/chem_property/positive/defibrillating
 	name = PROPERTY_DEFIBRILLATING
@@ -599,11 +599,11 @@
 	rarity = PROPERTY_COMMON
 	category = PROPERTY_TYPE_REACTANT
 
-/datum/chem_property/positive/fueling/update_reagent(var/datum/reagent/R, var/direction = 1)
+/datum/chem_property/positive/fueling/update_reagent(var/update = TRUE)
+	holder.chemfiresupp = TRUE
+	holder.durationmod = initial(holder.durationmod) + 0.4 * level * update
+	holder.intensitymod = initial(holder.intensitymod) - 0.2 * level * update
 	..()
-	R.chemfiresupp = TRUE
-	R.durationmod = initial(R.durationmod) + 0.4 * level * direction
-	R.intensitymod = initial(R.intensitymod) - 0.2 * level * direction
 
 /datum/chem_property/positive/oxidizing
 	name = PROPERTY_OXIDIZING
@@ -612,11 +612,11 @@
 	rarity = PROPERTY_COMMON
 	category = PROPERTY_TYPE_REACTANT
 
-/datum/chem_property/positive/oxidizing/update_reagent(var/datum/reagent/R, var/direction = 1)
+/datum/chem_property/positive/oxidizing/update_reagent(var/update = TRUE)
+	holder.chemfiresupp = TRUE
+	holder.durationmod = initial(holder.durationmod) - 0.2 * level * update
+	holder.intensitymod = initial(holder.intensitymod) + 0.4 * level * update
 	..()
-	R.chemfiresupp = TRUE
-	R.durationmod = initial(R.durationmod) - 0.2 * level * direction
-	R.intensitymod = initial(R.intensitymod) + 0.4 * level * direction
 
 /datum/chem_property/positive/flowing
 	name = PROPERTY_FLOWING
@@ -625,11 +625,11 @@
 	rarity = PROPERTY_COMMON
 	category = PROPERTY_TYPE_REACTANT
 
-/datum/chem_property/positive/flowing/update_reagent(var/datum/reagent/R, var/direction = 1)
+/datum/chem_property/positive/flowing/update_reagent(var/update = TRUE)
+	holder.radiusmod += initial(holder.radiusmod) + 0.05 * level * update
+	holder.durationmod = initial(holder.durationmod) - 0.1 * level * update
+	holder.intensitymod = initial(holder.intensitymod) - 0.1 * level * update
 	..()
-	R.radiusmod += initial(R.radiusmod) + 0.05 * level * direction
-	R.durationmod = initial(R.durationmod) - 0.1 * level * direction
-	R.intensitymod = initial(R.intensitymod) - 0.1 * level * direction
 
 /datum/chem_property/positive/explosive
 	name = PROPERTY_EXPLOSIVE
@@ -638,11 +638,11 @@
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_REACTANT
 
-/datum/chem_property/positive/explosive/update_reagent(var/datum/reagent/R, var/direction = 1)
+/datum/chem_property/positive/explosive/update_reagent(var/update = TRUE)
+	holder.explosive = TRUE
+	holder.power = initial(holder.power) + level * update
+	holder.falloff_modifier = initial(holder.falloff_modifier) + ((-3 / level) * update)
 	..()
-	R.explosive = TRUE
-	R.power = initial(R.power) + level * direction
-	R.falloff_modifier = initial(R.falloff_modifier) + (-3 / level * direction)
 
 //PROPERTY_DISABLED (in random generation)
 /datum/chem_property/positive/cardiostabilizing

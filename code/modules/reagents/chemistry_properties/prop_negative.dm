@@ -318,9 +318,9 @@
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_METABOLITE
 
-/datum/chem_property/negative/hypermetabolic/update_reagent(var/datum/reagent/R, var/direction = 1)
+/datum/chem_property/negative/hypermetabolic/update_reagent(var/update = TRUE)
+	holder.custom_metabolism = initial(holder.custom_metabolism) + 0.05 * level * update
 	..()
-	R.custom_metabolism = initial(R.custom_metabolism) + 0.05 * level * direction
 
 /datum/chem_property/negative/addictive
 	name = PROPERTY_ADDICTIVE

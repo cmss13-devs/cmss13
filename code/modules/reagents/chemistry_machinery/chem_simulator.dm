@@ -288,11 +288,11 @@
 		chemical_research_data.save_document(report, "Synthesis Simulations", report.name)
 
 /obj/structure/machinery/chem_simulator/proc/encode_reagent(var/datum/reagent/C)
-	var/datum/reagent/O = new C.original_type //So make the new name based on the Original
+	var/datum/reagent/O = chemical_reagents_list[C.original_id] //So make the new name based on the Original
 	var/suffix = " "
 	for(var/datum/chem_property/P in C.properties)
-		if(O.properties.Find(P))
-			var/datum/chem_property/OP = O.get_property(P.name)
+		var/datum/chem_property/OP = O.get_property(P.name)
+		if(OP) //if the original has the property	
 			if(P.level != OP.level)//This property was amplified or suppressed
 				suffix += P.code + "[P.level]"
 		else //This property was added through relation
@@ -341,7 +341,7 @@
 	var/datum/reagent/generated/C = new /datum/reagent/generated
 	C.make_alike(target.data)
 	//Override the target with the reference
-	target_property.update_reagent(C, -1) //-1 makes it undo the update
+	target_property.update_reagent(FALSE) //FALSE resets
 	C.remove_property(target_property)
 	C.insert_property(reference_property.name, reference_property.level)
 	if(isPositiveProperty(reference_property))
@@ -356,8 +356,8 @@
 	end_simulation(C)
 
 /obj/structure/machinery/chem_simulator/proc/end_simulation(var/datum/reagent/C)
-	if(!C.original_type)
-		C.original_type = target.data.type
+	if(!C.original_id)
+		C.original_id = target.data.id
 	C.name = encode_reagent(C)
 	C.id = C.name
 	if(C.id in simulations)

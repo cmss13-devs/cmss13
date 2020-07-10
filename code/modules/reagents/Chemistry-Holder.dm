@@ -270,12 +270,12 @@ var/const/INGEST = 2
 	do
 		reaction_occured = 0
 		for(var/datum/reagent/R in reagent_list) // Usually a small list
-			if(R.original_type) //Prevent synthesised chem variants from being mixed
+			if(R.original_id) //Prevent synthesised chem variants from being mixed
 				for(var/datum/reagent/O in reagent_list)
 					if(O.id == R.id)
 						continue
-					else if(O.original_type == R.original_type || O.type == R.original_type)
-						//Merge into the original type
+					else if(O.original_id == R.original_id || O.id == R.original_id)
+						//Merge into the original
 						reagent_list -= R
 						O.volume += R.volume
 						qdel(R)

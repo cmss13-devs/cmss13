@@ -13,6 +13,8 @@
 // BEGIN_INCLUDE
 #include "#preprocessor\define\__game.dm"
 #include "#preprocessor\define\_extools_api.dm"
+#include "#preprocessor\define\__rust_g.config.dm"
+#include "#preprocessor\define\__rust_g.dm"
 #include "#preprocessor\define\_macros.dm"
 #include "#preprocessor\define\_math.dm"
 #include "#preprocessor\define\access.dm"

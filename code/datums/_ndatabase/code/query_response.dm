@@ -15,7 +15,7 @@
 	if(!query)
 		if(fail_callback && !called_callback)
 			called_callback = TRUE
-			fail_callback.Invoke(unique_query_id)
+			fail_callback.Invoke(unique_query_id, query)
 		return TRUE
 	query.read_single()
 	status = query.status
@@ -24,12 +24,12 @@
 		error = query.error
 		if(success_callback && !called_callback)
 			called_callback = TRUE
-			success_callback.Invoke(unique_query_id, results)
+			success_callback.Invoke(unique_query_id, results, query)
 		return TRUE
 	if(status==DB_QUERY_BROKEN)
 		error = query.error
 		if(fail_callback && !called_callback)
 			called_callback = TRUE
-			fail_callback.Invoke(unique_query_id)
+			fail_callback.Invoke(unique_query_id, query)
 		return TRUE
 	return FALSE

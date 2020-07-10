@@ -10,7 +10,7 @@
 
 // redefine this for faster operations
 /datum/entity_meta/test_entity/map(var/datum/entity/test_entity/ET, var/list/values)
-	ET.id = text2num(values["id"])
+	ET.id = text2num(values[DB_DEFAULT_ID_FIELD])
 	ET.name = values["name"]
 	ET.description = values["description"]
 	ET.value = text2num(values["value"])
@@ -19,7 +19,7 @@
 /datum/entity_meta/test_entity/unmap(var/datum/entity/test_entity/ET, include_id = TRUE)
 	var/list/values = list()
 	if(include_id)
-		values["id"] = ET.id
+		values[DB_DEFAULT_ID_FIELD] = ET.id
 	values["name"] = ET.name
 	values["description"] = ET.description
 	values["value"] = ET.value

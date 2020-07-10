@@ -13,6 +13,9 @@
 	var/list/datum/entity/to_delete
 	var/list/datum/entity/inserting
 
+	var/list/datum/entity_link/inbound_links
+	var/list/datum/entity_link/outbound_links
+
 /datum/entity_meta/New()
 	managed = list()
 	to_read = list()
@@ -21,10 +24,12 @@
 	to_delete = list()
 	inserting = list()
 	key_managed = list()
+	inbound_links = list()
+	outbound_links = list()
 
 // redefine this for faster operations
 /datum/entity_meta/proc/map(var/datum/entity/ET, var/list/values)
-	var/strid = "[values["id"]]"
+	var/strid = "[values[DB_DEFAULT_ID_FIELD]]"
 	ET.id = strid
 	for(var/F in field_types)
 		ET.vars[F] = values[F]
@@ -33,7 +38,7 @@
 /datum/entity_meta/proc/unmap(var/datum/entity/ET, include_id = TRUE)
 	var/list/values = list()
 	if(include_id)
-		values["id"] = ET.id
+		values[DB_DEFAULT_ID_FIELD] = ET.id
 	for(var/F in field_types)
 		values[F] = ET.vars[F]
 	return values

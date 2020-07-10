@@ -32,3 +32,18 @@ BSQL_PROTECT_DATUM(/datum/entity/player_job_ban)
 /datum/entity/player_job_ban/proc/load_refs()
 	if(admin_id)
 		admin = DB_ENTITY(/datum/entity/player, admin_id)
+
+/datum/entity_link/player_to_player_job_bans
+	parent_entity = /datum/entity/player
+	child_entity = /datum/entity/player_note
+	child_field = "player_id"
+
+	parent_name = "player"
+	child_name = "jobbans"
+
+/datum/entity_link/admin_to_player_job_bans
+	parent_entity = /datum/entity/player
+	child_entity = /datum/entity/player_note
+	child_field = "admin_id"
+
+	parent_name = "admin"

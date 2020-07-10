@@ -73,21 +73,14 @@ var/global/floorIsLava = 0
 		return
 	var/dat = "<html>"
 	dat += "<body>"
-
-	var/datum/entity/player/P = get_player_from_key(key)
-	if(!P.notes || !P.notes.len)
-		dat += "No information found on the given key."
-	
-	for(var/datum/entity/player_note/N in P.notes)
+	var/list/datum/view_record/note_view/NL = DB_VIEW(/datum/view_record/note_view, DB_COMP("player_ckey", DB_EQUALS, key))
+	for(var/datum/view_record/note_view/N in NL)
 		if(N.is_confidential)
 			continue
 		var/ban_text = N.ban_time ? "Banned for [N.ban_time] | " : ""
-		dat += "[ban_text][N.text]<br/>on [N.date]<br/><br/>"
+		dat += "[ban_text][N.text]<br/>on [N.date]<br/><br/>"		
 
 	dat += "</body></html>"
-	// Using regex to remove the note author for bans done in admin/topic.dm
-	var/regex/remove_author = new("(?=Banned by).*?(?=\\|)", "g")
-	dat = remove_author.Replace(dat, "Banned ")
 
 	show_browser(usr, dat, "Copying notes for [key]", "notescopy", "size=480x480")
 

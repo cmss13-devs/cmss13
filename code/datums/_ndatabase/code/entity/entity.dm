@@ -4,7 +4,7 @@
 	var/datum/entity_meta/metadata
 	var/__key_synced = FALSE
 
-/datum/entity/proc/save()	
+/datum/entity/proc/save()
 	if(__key_synced && !id)
 		status = DB_ENTITY_STATE_ADD_OR_SELECT
 		return
@@ -39,6 +39,7 @@
 
 /datum/entity/Dispose()
 	detach()
+	..()
 
 /datum/entity/proc/sync()
 	while(status > DB_ENTITY_STATE_SYNCED)

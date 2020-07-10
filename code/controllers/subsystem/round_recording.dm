@@ -14,6 +14,10 @@ var/datum/subsystem/round_recording/SSround_recording
 	recorder = new()
 
 /datum/subsystem/round_recording/Initialize()
+
+	can_fire = FALSE
+	return
+
 	var/list/lines = file2list("config/round_recording.txt")
 
 	var/record_rounds = FALSE
@@ -45,6 +49,9 @@ var/datum/subsystem/round_recording/SSround_recording
 	..(recorder ? "SS#: [recorder.snapshots] T: [LAZYLEN(recorder.tracked_players)]" : "Disabled")
 
 /datum/subsystem/round_recording/fire(resumed = FALSE)
+	can_fire = FALSE
+	return
+
 	if(!recorder)
 		return
 

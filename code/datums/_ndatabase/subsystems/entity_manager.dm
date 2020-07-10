@@ -9,6 +9,8 @@ var/datum/subsystem/entity_manager/SSentity_manager
 	var/datum/db/adapter/adapter
 	var/list/datum/entity_meta/tables
 	var/list/datum/entity_meta/tables_unsorted
+	var/list/datum/entity_view_meta/views
+	var/list/datum/entity_view_meta/views_unsorted
 
 	var/list/datum/entity_meta/currentrun
 
@@ -23,14 +25,40 @@ var/datum/subsystem/entity_manager/SSentity_manager
 		if(table.active_entity)
 			tables[table.entity_type] = table
 			tables_unsorted.Add(table)
+
+	var/list/all_links = typesof(/datum/entity_link) - list(/datum/entity_link)
+	for(var/entity_link in all_links)
+		var/datum/entity_link/link = new entity_link()
+		var/datum/entity_meta/parent = tables[link.parent_entity]
+		var/datum/entity_meta/child = tables[link.child_entity]
+		if(link.child_name)
+			parent.inbound_links[link.child_name] = link
+		if(link.parent_name)
+			child.outbound_links[link.parent_name] = link
+		link.parent_meta = parent
+		link.child_meta = child
+
+	views = list()
+	views_unsorted = list()
+
 	NEW_SS_GLOBAL(SSentity_manager)
 
 /datum/subsystem/entity_manager/Initialize()
 	set waitfor=0
 	while(!SSdatabase.connection.connection_ready())
 		sleep(10)
-	adapter = SSdatabase.connection.get_adapter()
+	adapter = SSdatabase.connection.get_adapter()	
 	prepare_tables()
+	
+	var/list/all_views = typesof(/datum/entity_view_meta) - list(/datum/entity_view_meta)
+	for(var/view_meta in all_views)
+		var/datum/entity_view_meta/view = new view_meta()
+		if(view.active_view)
+			views[view.destination_entity] = view
+			views_unsorted.Add(view)
+			view.root_entity_meta = tables[view.root_record_type]
+			adapter.prepare_view(view)
+
 	ready = TRUE
 
 /datum/subsystem/entity_manager/proc/prepare_tables()
@@ -130,7 +158,7 @@ var/datum/subsystem/entity_manager/SSentity_manager
 
 /datum/subsystem/entity_manager/proc/after_select(var/datum/entity_meta/meta, var/list/datum/entity/selected_entities, uqid, var/list/results)
 	for(var/list/IE in results)
-		var/datum/entity/ET = meta.managed["[IE["id"]]"]
+		var/datum/entity/ET = meta.managed["[IE[DB_DEFAULT_ID_FIELD]]"]
 		var/old_status = ET.status
 		ET.status = DB_ENTITY_STATE_SYNCED
 		meta.map(ET, IE)
@@ -154,7 +182,7 @@ var/datum/subsystem/entity_manager/SSentity_manager
 /datum/subsystem/entity_manager/proc/after_filter(var/datum/db/filter, var/datum/entity_meta/meta, var/datum/callback/CB, quid, var/list/results)
 	var/list/datum/entity/resultset = list()
 	for(var/list/IE in results)
-		var/id = "[IE["id"]]"
+		var/id = "[IE[DB_DEFAULT_ID_FIELD]]"
 		var/datum/entity/ET = meta.managed[id]
 		if(!ET)
 			ET = meta.make_new(id, FALSE)
@@ -204,9 +232,23 @@ var/datum/subsystem/entity_manager/SSentity_manager
 	
 	// safe to select
 	var/list/IE = results[1]
-	ET.id = "[IE["id"]]"
+	ET.id = "[IE[DB_DEFAULT_ID_FIELD]]"
 	meta.managed[ET.id] = ET
 	ET.status = DB_ENTITY_STATE_SYNCED
 	meta.map(ET, IE)
 	meta.on_read(ET)
 	meta.on_action(ET)
+
+/datum/subsystem/entity_manager/proc/view_meta(view_type, var/datum/db/filter = null)
+	var/datum/entity_view_meta/meta = views[view_type]
+	if(!meta)
+		return null
+	var/list/result = list()
+	adapter.read_view(meta, filter, CALLBACK(src, /datum/subsystem/entity_manager.proc/after_view, meta, result), TRUE)
+	return result
+
+/datum/subsystem/entity_manager/proc/after_view(var/datum/entity_view_meta/meta, var/list/to_write, quid, var/list/results)
+	for(var/list/r in results)
+		var/V = new meta.destination_entity()
+		meta.map(V, r)
+		to_write.Add(V)

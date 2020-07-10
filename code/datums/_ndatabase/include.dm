@@ -1,3 +1,16 @@
+#define DB_ENTITY SSentity_manager.select
+#define DB_EKEY SSentity_manager.select_by_key
+#define DB_FILTER SSentity_manager.filter_then
+#define DB_FILTER_LOCAL SSentity_manager.filter_local
+#define DB_META SSentity_manager.tables
+#define DB_VIEW SSentity_manager.view_meta
+#define WAIT_DB_READY while(!SSentity_manager.ready) {stoplag();}
+
+// MODIFY THESE TO ENABLE OR DISABLE DB ENGINES
+#define NDATABASE_BSQL_SUPPORT TRUE
+#define NDATABASE_RUSTG_BRSQL_SUPPORT TRUE
+
+
 #define DB_CAN_VV_GET TRUE
 #define DB_LOCK_TIMEOUT 5 SECONDS
 #define DB_RECHECK_TIMEOUT 1 SECONDS
@@ -5,6 +18,12 @@
 #define DB_ENTITY_MAX_CONNECTIONS 30
 #define DB_ENTITY_USUAL_CONNECTIONS 20
 #define DB_QUERY_RECHECK_TIMEOUT 1 //yes, just 0.1 of a second
+
+#define DB_DEFAULT_ID_FIELD "id"
+
+#define DB_ORDER_BY_DEFAULT 0
+#define DB_ORDER_BY_ASC 1
+#define DB_ORDER_BY_DESC 2
 
 #define DB_CONNECTION_NOT_CONNECTED 0
 #define DB_CONNECTION_BROKEN 1
@@ -72,10 +91,12 @@
 
 #include "code/database.dm"
 
-#include "code/bsql_persistent_connection.dm"
-#include "code/bsql_persistent_query.dm"
-#include "code/bsql_adapter.dm"
-#include "code/bsql_connection_settings.dm"
+#ifdef NDATABASE_RUSTG_BRSQL_SUPPORT
+#include "code/brsql_persistent_connection.dm"
+#include "code/brsql_persistent_query.dm"
+#include "code/brsql_adapter.dm"
+#include "code/brsql_connection_settings.dm"
+#endif
 
 #include "code/native_persistent_connection.dm"
 #include "code/native_persistent_query.dm"
@@ -85,20 +106,18 @@
 #include "code/query_response.dm"
 #include "code/entity/entity.dm"
 #include "code/entity/entity_meta.dm"
+#include "code/entity/link.dm"
+#include "code/entity/entity_view.dm"
+
 #include "code/interfaces/adapter.dm"
 #include "code/interfaces/connection.dm"
 #include "code/interfaces/connection_settings.dm"
 #include "code/interfaces/filter.dm"
+#include "code/interfaces/native_function.dm"
 #include "code/interfaces/query.dm"
+
 #include "tests/test_entity.dm"
 #include "subsystems/database_query_manager.dm"
 #include "subsystems/entity_manager.dm"
 
 #undef DB_CAN_VV_GET
-
-#define DB_ENTITY SSentity_manager.select
-#define DB_EKEY SSentity_manager.select_by_key
-#define DB_FILTER SSentity_manager.filter_then
-#define DB_FILTER_LOCAL SSentity_manager.filter_local
-#define DB_META SSentity_manager.tables
-#define WAIT_DB_READY while(!SSentity_manager.ready) {stoplag();}

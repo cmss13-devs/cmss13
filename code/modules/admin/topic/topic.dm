@@ -216,7 +216,10 @@
 	/////////////////////////////////////new ban stuff
 	else if(href_list["unbanf"])
 		var/datum/entity/player/P = get_player_from_key(href_list["unbanf"])
-		if(P.remove_timed_ban())
+		switch(alert("Are you sure you want to remove timed ban from [P.ckey]?", , "Yes", "No"))
+			if("No")
+				return
+		if(!P.remove_timed_ban())
 			alert(usr, "This ban has already been lifted / does not exist.", "Error", "Ok")
 		unbanpanel()
 

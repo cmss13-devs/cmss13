@@ -125,36 +125,29 @@
 	if (!istype(src,/datum/admins) || !(src.rights & R_MOD))
 		to_chat(usr, "Error: you are not an admin!")
 		return
+	
+	var/datum/entity/player/P = get_player_from_key(key)
+	if(!P.migrated_notes)
+		to_chat(usr, "Error: notes not yet migrated for that key. Please try again in 5 minutes.")
+		return
+
 	var/dat = "<html>"
 	dat += "<body>"
 
-	var/datum/entity/player/P = get_player_from_key(key)
-	if(!P)
-		to_chat(usr, "Wrong CKEY [key]")
-		return
-	if(!P.refs_loaded)
-		P.load_refs()
-		sleep(10)
-	if(!P.notes || !P.notes.len)
-		dat += "No information found on the given key.<br>"
-	else
-		var/i = 0
-		for(var/datum/entity/player_note/N in P.notes)
-			i += 1
-			var/admin_ckey = "~~LOADING~~"
-			if(N.admin && N.admin.ckey)
-				admin_ckey = N.admin.ckey
-			var/confidential_text = N.is_confidential ? " \[CONFIDENTIALLY\]" : ""
-			if(N.is_ban)
-				var/time_d = N.ban_time ? "Banned for [N.ban_time] minutes | " : ""
-				var/color = N.is_confidential ? "#880000" : "#5555AA"
-				dat += "<font color=[color]>[time_d][N.text]</font> <i>by [admin_ckey] ([N.admin_rank])</i>[confidential_text] on <i><font color=blue>[N.date]</i></font> "
-			else
-				var/color = N.is_confidential ? "#AA0055" : "#008800"
-				dat += "<font color=[color]>[N.text]</font> <i>by [admin_ckey] ([N.admin_rank])</i>[confidential_text] on <i><font color=blue>[N.date]</i></font> "
-			if(admin_ckey == usr.ckey || admin_ckey == "Adminbot" || ishost(usr))
-				dat += "<A href='?src=\ref[src];remove_player_info=[key];remove_index=[i]'>Remove</A>"
-			dat += "<br><br>"
+	var/list/datum/view_record/note_view/NL = DB_VIEW(/datum/view_record/note_view, DB_COMP("player_ckey", DB_EQUALS, key))
+	for(var/datum/view_record/note_view/N in NL)
+		var/admin_ckey = N.admin_ckey
+		var/confidential_text = N.is_confidential ? " \[CONFIDENTIALLY\]" : ""
+		if(N.is_ban)
+			var/time_d = N.ban_time ? "Banned for [N.ban_time] minutes | " : ""
+			var/color = N.is_confidential ? "#880000" : "#5555AA"
+			dat += "<font color=[color]>[time_d][N.text]</font> <i>by [admin_ckey] ([N.admin_rank])</i>[confidential_text] on <i><font color=blue>[N.date]</i></font> "
+		else
+			var/color = N.is_confidential ? "#AA0055" : "#008800"
+			dat += "<font color=[color]>[N.text]</font> <i>by [admin_ckey] ([N.admin_rank])</i>[confidential_text] on <i><font color=blue>[N.date]</i></font> "
+		if(admin_ckey == usr.ckey || admin_ckey == "Adminbot" || ishost(usr))
+			dat += "<A href='?src=\ref[src];remove_player_info=[key];remove_index=[N.id]'>Remove</A>"
+		dat += "<br><br>"
 
 	dat += "<br>"
 	dat += "<A href='?src=\ref[src];add_player_info=[key]'>Add Note</A><br>"

@@ -1,0 +1,1 @@
+#define RUST_G "rust_g"

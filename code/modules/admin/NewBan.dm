@@ -172,41 +172,25 @@ var/savefile/Banlist
 		return timeleftstring
 
 /datum/admins/proc/unbanpanel()
-	var/count = 0
 	var/dat
 	
-	Banlist.cd = "/base"
-	for (var/A in Banlist.dir)
-		count++
-		Banlist.cd = "/base/[A]"
-		var/ref		= "\ref[src]"
-		var/key		= Banlist["key"]
-		var/id		= Banlist["id"]
-		var/ip		= Banlist["ip"]
-		var/reason	= Banlist["reason"]
-		var/by		= Banlist["bannedby"]
-		var/expiry
-		if(Banlist["temp"])
-			expiry = GetExp(Banlist["minutes"])
-			if(!expiry)		expiry = "Removal Pending"
-		else				expiry = "Permaban"
-		var/unban_link = "<A href='?src=[ref];unbanf=[key]'>(U)</A><A href='?src=[ref];unbane=[key][id]'>(E)</A>"
-		var/perma_links = ""
-		if(!Banlist["temp"])
-			unban_link = ""
-			perma_links = "<A href='?src=[ref];unbanf=[key][id]'>(L)</A>"
-		else
-			perma_links = "<A href='?src=[ref];unbanupgradeperma=[key][id]'>(P)</A>"
-		if(!ishost(usr))
-			perma_links = ""
+	var/list/datum/view_record/player_ban_view/PBV = DB_VIEW(/datum/view_record/player_ban_view) // no filter
 
-		dat += "<tr><td>[unban_link][perma_links] Key: <B>[key]</B></td><td>ComputerID: <B>[id]</B></td><td>IP: <B>[ip]</B></td><td> [expiry]</td><td>(By: [by])</td><td>(Reason: [reason])</td></tr>"
+	for(var/datum/view_record/player_ban_view/ban in PBV)
+		var/expiry
+		if(!ban.is_permabanned)
+			expiry = GetExp(ban.expiration)
+			if(!expiry)
+				expiry = "Removal Pending"
+		else
+			expiry = "Permaban"
+		var/unban_link = "<A href='?src=\ref[src];unbanf=[ban.ckey]'>(U)</A>"
+
+		dat += "<tr><td>[unban_link] Key: <B>[ban.ckey]</B></td><td>ComputerID: <B>[ban.last_known_cid]</B></td><td>IP: <B>[ban.last_known_ip]</B></td><td> [expiry]</td><td>(By: [ban.admin])</td><td>(Reason: [ban.reason])</td></tr>"
 
 	dat += "</table>"
-	var/dat_header = "<HR><B>Bans:</B> <span class='[INTERFACE_BLUE]'>(U) = Unban , (E) = Edit Ban"
-	if(ishost(usr))	
-		dat_header += ", (P) = Upgrade to Perma, (L) = Lift Permaban"
-	dat_header += "</span> - <span class='[INTERFACE_GREEN]'>([count] Bans)</span><HR><table border=1 rules=all frame=void cellspacing=0 cellpadding=3 >[dat]"
+	var/dat_header = "<HR><B>Bans:</B> <span class='[INTERFACE_BLUE]'>(U) = Unban"
+	dat_header += "</span> - <span class='[INTERFACE_GREEN]'>Ban Listing</span><HR><table border=1 rules=all frame=void cellspacing=0 cellpadding=3 >[dat]"
 	show_browser(usr, dat_header, "Unban Panel", "unbanp", "size=875x400")
 
 //////////////////////////////////// DEBUG ////////////////////////////////////

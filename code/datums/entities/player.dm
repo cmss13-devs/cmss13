@@ -51,6 +51,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		"is_permabanned" = DB_FIELDTYPE_INT,
 		"permaban_reason" = DB_FIELDTYPE_STRING_MAX,
 		"permaban_date" = DB_FIELDTYPE_STRING_LARGE,
+		"permaban_admin_id" = DB_FIELDTYPE_BIGINT,
 		"is_time_banned" = DB_FIELDTYPE_INT,
 		"time_ban_reason" = DB_FIELDTYPE_STRING_MAX,
 		"time_ban_expiration" = DB_FIELDTYPE_BIGINT,
@@ -115,13 +116,9 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		return FALSE
 
 	// this is here for a short transition period when we still are testing DB notes and constantly deleting the file
-	if(config.duplicate_notes_to_file)
-		notes_del(ckey, note_id)
-	else
-		// notes_add already sends a message
-		message_admins(SPAN_NOTICE("[key_name_admin(admin)] deleted one of [ckey]'s notes."))
+	message_admins(SPAN_NOTICE("[key_name_admin(admin)] deleted one of [ckey]'s notes."))
 	// get note from our list
-	var/datum/entity/player_note/note = notes[note_id]
+	var/datum/entity/player_note/note = DB_ENTITY(/datum/entity/player_note, note_id)
 	// de-list it
 	notes.Remove(note)
 	// murder it
@@ -563,3 +560,46 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	jobbans_loaded = TRUE
 	migrated_jobbans = TRUE
 	save()
+
+/datum/entity_link/player_to_banning_admin
+	parent_entity = /datum/entity/player
+	child_entity = /datum/entity/player
+	child_field = "time_ban_admin_id"
+
+	parent_name = "banning_admin"
+
+
+/datum/entity_link/player_to_permabanning_admin
+	parent_entity = /datum/entity/player
+	child_entity = /datum/entity/player
+	child_field = "permaban_admin_id"
+
+	parent_name = "permabanning_admin"
+
+/datum/view_record/player_ban_view
+	var/id
+	var/ckey
+	var/is_permabanned
+	var/ban_type
+	var/reason
+	var/date
+	var/expiration
+	var/admin
+	var/last_known_cid
+	var/last_known_ip
+
+/datum/entity_view_meta/timed_ban_list
+	root_record_type = /datum/entity/player
+	destination_entity = /datum/view_record/player_ban_view
+	fields = list(
+		"id",
+		"ckey",
+		"is_permabanned", // this one for the machine
+		"ban_type" = DB_CASE(DB_COMP("is_permabanned", DB_EQUALS, 1), DB_CONST("permaban"), DB_CONST("timed ban")), // this one is readable
+		"reason" = DB_CASE(DB_COMP("is_permabanned", DB_EQUALS, 1), "permaban_reason", "time_ban_reason"),
+		"date" = DB_CASE(DB_COMP("is_permabanned", DB_EQUALS, 1), "permaban_date", "time_ban_date"),
+		"expiration" = "time_ban_expiration", //don't care if this is permaban, since it will be handled later
+		"admin" = DB_CASE(DB_COMP("is_permabanned", DB_EQUALS, 1), "permabanning_admin.ckey", "banning_admin.ckey"),
+		"last_known_ip",
+		"last_known_cid")
+	root_filter = DB_OR(DB_COMP("is_permabanned", DB_EQUALS, 1), DB_COMP("is_time_banned", DB_EQUALS, 1))

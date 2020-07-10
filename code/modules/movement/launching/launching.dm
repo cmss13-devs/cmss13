@@ -129,9 +129,15 @@
 
 // Proc for throwing or propelling movable atoms towards a target
 /atom/movable/proc/launch_towards(var/datum/launch_metadata/LM)
+    if (!istype(LM))
+        CRASH("invalid launch_metadata passed to launch_towards")
+        return
     if (!LM.target || !src)
         return
         
+    // If we already have launch_metadata (from a previous throw), reset it and qdel the old launch_metadata datum
+    if (istype(launch_metadata))
+        qdel(launch_metadata)
     launch_metadata = LM
 
     if (LM.spin)
@@ -140,18 +146,23 @@
     var/old_speed = cur_speed
     cur_speed = Clamp(LM.speed, MIN_SPEED, MAX_SPEED) // Sanity check, also ~1 sec delay between each launch move is not very reasonable
     var/delay = 10/cur_speed - 0.5 // scales delay back to deciseconds for when sleep is called
+    var/pass_flags = LM.pass_flags
 
     throwing = TRUE
 
-    add_temp_pass_flags(LM.pass_flags)
+    add_temp_pass_flags(pass_flags)
 
     var/turf/start_turf = get_step_towards(src, LM.target)
     var/list/turf/path = getline2(start_turf, LM.target)
     var/last_loc = loc
 
+    var/early_exit = FALSE
     LM.dist = 0
     for (var/turf/T in path)
         if (!src || !throwing || loc != last_loc || !isturf(src.loc))
+            break
+        if (!LM || LM.disposed)
+            early_exit = TRUE
             break
         if (LM.dist >= LM.range)
             break
@@ -163,12 +174,10 @@
         sleep(delay)
 
     //done throwing, either because it hit something or it finished moving
-    if (isobj(src) && throwing)
+    if (isobj(src) && throwing && !early_exit)
         launch_impact(get_turf(src))
     if (loc)
         throwing = FALSE
         rebounding = FALSE
         cur_speed = old_speed
-        launch_metadata = null
-        remove_temp_pass_flags(LM.pass_flags)
-        qdel(LM)
+        remove_temp_pass_flags(pass_flags)

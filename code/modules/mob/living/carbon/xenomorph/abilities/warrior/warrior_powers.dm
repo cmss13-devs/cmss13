@@ -14,7 +14,7 @@
 	if (!X.check_state() || X.agility)
 		return
 
-	if((!isXeno(A) || matches_hivemind(A, X)) && (!isHumanStrict(A) || !ismonkey(A))) // Can't do isXenoOrHuman because it checks for whether it is strictly human
+	if(!isHumanStrict(A) && !ismonkey(A) && (!isXeno(A) || matches_hivemind(A, X))) // Can't do isXenoOrHuman because it checks for whether it is strictly human
 		apply_cooldown_override(click_miss_cooldown)
 		return
 

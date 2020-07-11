@@ -276,6 +276,7 @@ var/datum/mob_hud/huds = list(
 	var/image/holder = hud_list[STATUS_HUD]
 	var/image/holder2 = hud_list[STATUS_HUD_OOC]
 	var/image/holder3 = hud_list[STATUS_HUD_XENO_INFECTION]
+	holder3.color = null
 
 	if(species && species.flags & IS_SYNTHETIC)
 		holder.icon_state = "hudsynth"
@@ -292,6 +293,11 @@ var/datum/mob_hud/huds = list(
 			var/obj/item/alien_embryo/E = locate(/obj/item/alien_embryo) in src
 			if(E)
 				holder3.icon_state = "infected[E.stage]"
+				var/datum/hive_status/hive = hive_datum[E.hivenumber]
+
+				if(hive && hive.color)
+					holder3.color = hive.color
+				
 			else if(locate(/mob/living/carbon/Xenomorph/Larva) in src)
 				holder.icon_state = "infected5"
 

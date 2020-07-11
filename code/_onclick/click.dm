@@ -46,11 +46,11 @@
 		return
 
 	if (client.buildmode)
-		if (istype(A, /obj/effect/bmode))
+		if (istype(A, /obj/effect/bmode) || istype(A, /obj/effect/buildholder))
 			A.clicked(src, mods)
 			return
 
-		build_click(src, client.buildmode, mods, A)
+		client.buildmode.object_click(src, mods, A)
 		return
 
 	// Click handled elsewhere. (These clicks are not affected by the next_move cooldown)

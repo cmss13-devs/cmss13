@@ -681,8 +681,12 @@ datum/proc/dd_SortValue()
 			.[key] = value
 
 /proc/copyListList(list/L)
-	var/newList = L.Copy()
+	var/list/newList = list()
 	for(var/i in L)
+		if(isnum(i))
+			newList += i
+			continue
+
 		var/temp_key = i
 		var/temp_value = L[i]
 		if(islist(i))
@@ -690,6 +694,7 @@ datum/proc/dd_SortValue()
 			temp_key = i_two.Copy()
 		if(islist(L[i]))
 			temp_value = L[i].Copy()
+
 		newList[temp_key] = temp_value
 	return newList
 

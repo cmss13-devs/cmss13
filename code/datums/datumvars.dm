@@ -430,6 +430,21 @@ body
 		src.give_disease(M)
 		href_list["datumrefresh"] = href_list["give_disease"]
 
+	else if(href_list["build_mode"])
+		if(!check_rights(R_ADMIN|R_FUN))
+			return
+
+		var/mob/M = locate(href_list["build_mode"])
+		if(!istype(M))
+			to_chat(usr, "This can only be used on instances of type /mob")
+			return
+
+		log_admin("[key_name(usr)] has toggled buildmode on [key_name(M)]")
+		message_admins("[key_name_admin(usr)] has toggled buildmode on [key_name_admin(M)]")
+
+		togglebuildmode(M)
+		href_list["datumrefresh"] = href_list["build_mode"]
+
 	else if(href_list["gib"])
 		if(!check_rights(0))	
 			return

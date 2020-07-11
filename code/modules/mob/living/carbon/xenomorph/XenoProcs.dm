@@ -407,10 +407,6 @@
 			has_obstacle = TRUE
 			break
 
-	if(locate(/obj/effect/alien/resin/special) in range(1, current_turf))
-		to_chat(src, SPAN_WARNING("There is an important structure too close here."))
-		return
-
 	if(current_turf.density || has_obstacle)
 		to_chat(src, SPAN_WARNING("There's something built here already."))
 		return

@@ -54,10 +54,6 @@
 	add_fingerprint(user)
 	if(!connected) return
 	if(morgue_open)
-		for(var/mob/living/simple_animal/scp/scp in connected.loc)
-			scp.lash_out()
-			to_chat(user, SPAN_WARNING("Can't lock the [name] on [scp.name]."))
-			return
 		for(var/atom/movable/A in connected.loc)
 			if(!A.anchored)
 				A.forceMove(src)

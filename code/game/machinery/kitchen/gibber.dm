@@ -94,11 +94,6 @@
 	if( !iscarbon(G.grabbed_thing) && !istype(G.grabbed_thing, /mob/living/simple_animal) )
 		to_chat(user, SPAN_WARNING("This item is not suitable for the gibber!"))
 		return
-	if(istype(G.grabbed_thing, /mob/living/simple_animal/scp))
-		var/mob/living/simple_animal/scp/scp = G.grabbed_thing
-		scp.lash_out()
-		to_chat(user, SPAN_WARNING("This item is not suitable for the gibber!"))
-		return
 	var/mob/living/M = G.grabbed_thing
 	if(user.grab_level < GRAB_AGGRESSIVE)
 		to_chat(user, SPAN_WARNING("You need a better grip to do that!"))

@@ -56,9 +56,6 @@
 			return 0
 	for(var/mob/living/carbon/Xenomorph/Xeno in get_turf(src))
 		return 0
-	for(var/mob/living/simple_animal/scp/scp in get_turf(src))
-		scp.lash_out() //SCP lashes out!
-		return 0//Can't contain the SCP this easily!
 	return 1
 
 /obj/structure/closet/proc/dump_contents()

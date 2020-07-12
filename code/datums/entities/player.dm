@@ -112,9 +112,6 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	if (!AHOLD_IS_MOD(admin.admin_holder))
 		return FALSE
 
-	if(!notes || !notes.len || notes.len < note_id)
-		return FALSE
-
 	// this is here for a short transition period when we still are testing DB notes and constantly deleting the file
 	message_admins(SPAN_NOTICE("[key_name_admin(admin)] deleted one of [ckey]'s notes."))
 	// get note from our list
@@ -448,6 +445,8 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	info >> infos
 	if(!infos)
 		notes_loaded = TRUE
+		migrated_notes = TRUE
+		save()
 		return
 	if(!notes)
 		notes = list()
@@ -482,7 +481,6 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		
 		note.save()
 		CHECK_TICK
-
 	notes_loaded = TRUE
 	migrated_notes = TRUE
 	save()

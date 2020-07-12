@@ -181,10 +181,5 @@
 //This can be used by subtypes to do things when the shuttle arrives.
 /datum/shuttle/ferry/proc/arrived()
 	locked = 0
-
-	if(location == 1) //We arrived to our off-site facility
-		for (var/mob/living/simple_animal/scp/scp in last_passangers)
-			scp.contain() //SCPs have been contained! They are someone else's problem now!
-
 	return	//do nothing for now
 

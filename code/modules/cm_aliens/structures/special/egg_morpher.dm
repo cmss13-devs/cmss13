@@ -141,12 +141,15 @@
 	HasProximity(target)
 
 /obj/effect/alien/resin/special/eggmorph/HasProximity(atom/movable/AM as mob|obj)
-	if(!stored_huggers || !CanHug(AM) || isSynth(AM))
+	if(!stored_huggers || isSynth(AM))
 		return
 
 	if (!linked_hive)
 		return 
 	
+	if(!CanHug(AM, linked_hive.hivenumber))
+		return
+
 	stored_huggers = max(0, stored_huggers - 1)
 
 	var/obj/item/clothing/mask/facehugger/child = new(loc, linked_hive.hivenumber)

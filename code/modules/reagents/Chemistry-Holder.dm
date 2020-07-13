@@ -429,6 +429,9 @@ var/const/INGEST = 2
 			update_total()
 			my_atom.on_reagent_change()
 
+			for(var/datum/chem_property/P in R.properties)
+				P.reagent_added(my_atom, R, R.volume)
+
 			// mix dem viruses
 			if(R.data_properties && data)
 				if(R.data_properties["viruses"] || new_data["viruses"])
@@ -468,6 +471,9 @@ var/const/INGEST = 2
 		R.volume = amount
 		SetViruses(R, new_data) // Includes setting data
 		reagent_list += R
+
+		for(var/datum/chem_property/P in D.properties)
+			P.reagent_added(my_atom, D, amount)
 
 		update_total()
 		my_atom.on_reagent_change()

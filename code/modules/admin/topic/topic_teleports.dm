@@ -112,7 +112,10 @@
 
 			else if(faction == "Xenomorphs")
 				faction = null
-				var/list/hives = list("Regular" = 1, "Corrupted" = 2, "Alpha" = 3, "Beta" = 4, "Zeta" = 5)
+				var/list/hives = list()
+				for(var/datum/hive_status/hive in hive_datum)
+					hives += list("[hive.name]" = hive.hivenumber)
+				
 				faction = input(owner, "Select hive you want to teleport to your location. Mobs in Thunderdome/CentComm areas won't be included.", "Hive Choice", "") as null|anything in hives
 				if(!faction)
 					to_chat(owner, SPAN_ALERT("Hive choice error. Aborting."))

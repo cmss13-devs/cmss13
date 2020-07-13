@@ -1,13 +1,13 @@
 #define COMMAND_ANNOUNCE		"Command Announcement"
 #define QUEEN_ANNOUNCE			"The words of the Queen reverberate in your head..."
-#define QUEEN_MOTHER_ANNOUNCE	SPAN_ANNOUNCEMENT_HEADER_BLUE("Queen Mother Psychic Directive")
+#define QUEEN_MOTHER_ANNOUNCE	"Queen Mother Psychic Directive"
 #define XENO_GENERAL_ANNOUNCE	"You sense something unusual..."	//general xeno announcement that don't involve Queen, for nuke for example
 #define YAUTJA_ANNOUNCE			"You receive a message from your ship AI..."	//preds announcement
 
 //xenomorph hive announcement
 /proc/xeno_announcement(var/message, var/hivenumber, var/title = QUEEN_ANNOUNCE)
 	var/list/targets = living_xeno_list + dead_mob_list
-	if(hivenumber == 6)
+	if(hivenumber == "everything")
 		for(var/mob/M in targets)
 			var/mob/living/carbon/Xenomorph/X = M
 			if(!isobserver(X) && !istype(X))	//filter out any potential non-xenomorphs/observers mobs

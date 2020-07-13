@@ -355,13 +355,17 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 					targets.Remove(name)
 
 		if("Xenos by Hive")
-			choices = list("Regular Hive" = XENO_HIVE_NORMAL, "Corrupted Hive" = XENO_HIVE_CORRUPTED, "Alpha Hive" = XENO_HIVE_ALPHA, "Beta Hive" = XENO_HIVE_BETA, "Zeta Hive" = XENO_HIVE_ZETA)
-			input = input("Please, select a Hive:", "Follow", null, null) as null|anything in choices
+			var/hives = list()
+
+			for(var/datum/hive_status/hive in hive_datum)
+				hives += list("[hive.name]" = hive.hivenumber)
+
+			input = input("Please, select a Hive:", "Follow", null, null) as null|anything in hives
 
 			targets = getxenos()
 			for(var/name in targets)
 				var/mob/living/carbon/Xenomorph/X = targets[name]
-				if(!istype(X) || X.hivenumber != choices[input])
+				if(!istype(X) || X.hivenumber != hives[input])
 					targets.Remove(name)
 
 	if(!LAZYLEN(targets))

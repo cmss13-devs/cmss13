@@ -35,7 +35,7 @@ var/global/datum/controller/gameticker/ticker = new()
 	"sound/music/5.ogg",
 	"sound/music/6.ogg")
 	do
-		pregame_timeleft = 180
+		pregame_timeleft = PREROUND_TIME
 		if(round_statistics)
 			to_world("<center>[SPAN_BLUE("<B>[round_statistics.name]</B>")]</center>")
 		to_world(SPAN_NOTICE("<center><B>Welcome to the pre-game lobby of Colonial Marines!</B></center>"))

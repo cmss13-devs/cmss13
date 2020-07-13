@@ -49,7 +49,7 @@
 	output += "<p><a href='byond://?src=\ref[src];lobby_choice=show_statistics'>View Statistics</A></p>"
 
 	if(round_start)
-		output += "<p>\[ [ready? "<b>Ready</b>":"<a href='byond://?src=\ref[src];lobby_choice=ready'>Ready</a>"] | [ready? "<a href='byond://?src=\ref[src];lobby_choice=ready'>Not Ready</a>":"<b>Not Ready</b>"] \]</p>"
+		output += "<p>\[ [ready? "<b>Ready</b>":"<a href='byond://?src=\ref[src];lobby_choice=ready'>Ready</a>"] | [ready? "<a href='byond://?src=\ref[src];lobby_choice=unready'>Not Ready</a>":"<b>Not Ready</b>"] \]</p>"
 		output += "<b>Be Xenomorph:</b> [(client.prefs && (client.prefs.be_special & BE_ALIEN)) ? "Yes" : "No"]"
 
 	else
@@ -103,12 +103,17 @@
 			return 1
 
 		if("ready")
-			if(!ticker || ticker.current_state <= GAME_STATE_PREGAME) // Make sure we don't ready up after the round has started
-				ready = !ready
-				if(ready)
-					readied_players++
-				else
-					readied_players--
+			if( (!ticker || ticker.current_state <= GAME_STATE_PREGAME) && !ready) // Make sure we don't ready up after the round has started
+				ready = TRUE
+				readied_players++
+
+			new_player_panel_proc()
+
+		if("unready")
+			if((!ticker || ticker.current_state <= GAME_STATE_PREGAME) && ready) // Make sure we don't ready up after the round has started
+				ready = FALSE
+				readied_players--
+			
 			new_player_panel_proc()
 
 		if("refresh")

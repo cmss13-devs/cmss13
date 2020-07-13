@@ -4,7 +4,7 @@
 
 	melee_damage_lower = XENO_DAMAGE_TIER_4
 	melee_damage_upper = XENO_DAMAGE_TIER_7
-	max_health = XENO_HEALTH_IMMORTAL
+	max_health = XENO_HEALTH_TIER_10
 	plasma_gain = XENO_PLASMA_GAIN_ULTRAHIGH
 	plasma_max = XENO_PLASMA_TIER_3
 	xeno_explosion_resistance = XENO_GIGA_EXPLOSIVE_ARMOR
@@ -35,7 +35,7 @@
 	amount_grown = 0
 	max_grown = 200
 	wall_smash = TRUE
-	hardcore = TRUE
+	hardcore = FALSE
 	tunnel_delay = 0
 	pslash_delay = 0
 	pixel_x = -16
@@ -53,7 +53,8 @@
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/regurgitate,
 		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/activable/pounce,
+		/datum/action/xeno_action/activable/pounce/predalien,
+		/datum/action/xeno_action/activable/predalien_roar
 		)
 	inherent_verbs = list(
 		/mob/living/carbon/Xenomorph/Predalien/proc/claim_trophy
@@ -69,27 +70,6 @@
 	sleep(30)
 	if(!loc) 
 		return FALSE
-	if(ticker && ticker.mode && ticker.mode.predators.len)
-		var/datum/mind/M
-		for(var/i in ticker.mode.predators)
-			M = i
-			if(M.current && M.current.stat != DEAD && z != ADMIN_Z_LEVEL)
-				to_chat(M.current, "<span class='event_announcement'>An abomination to your people has been brought onto the world at [get_area(src)]! Hunt it down and destroy it!</span>")
-				M.current.emote("roar")
-	if(age == 4)
-		desc = "Nothing matches this force of destruction. Good luck killing it, mortal."
-		color = "#FE0202"
-		if(z != ADMIN_Z_LEVEL)
-			xeno_message(SPAN_XENOANNOUNCE("A Primordial Abomination has risen! Rejoice!"))
-			for(var/mob/living/carbon/Xenomorph/X in living_xeno_list)
-				if(X && X.stat != DEAD)
-					X.emote("roar")
-			for(var/mob/living/carbon/human/H in living_mob_list)
-				if(z == H.z)
-					to_chat(H, SPAN_XENOANNOUNCE("The ground shakes beneath your feet... Echoes of imminent doom tickle your conscious like ripples on a pond..."))
-					playsound(H, 'sound/voice/predalien_roar.ogg', 100, 75)
-					if(H.client)
-						shake_camera(H, 25, 5)
 
 	to_chat(src, {"
 <span class='role_body'>|______________________|</span>

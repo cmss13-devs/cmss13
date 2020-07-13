@@ -36,6 +36,8 @@
 	if(!istype(I, /obj/item/grab) || !isXeno(user))
 		return ..(I, user)
 
+	var/larva_amount = 0 // The amount of larva they get
+
 	var/obj/item/grab/G = I
 	if(!iscarbon(G.grabbed_thing))
 		return
@@ -51,8 +53,24 @@
 		if(H.spawned_corpse)
 			to_chat(user, SPAN_XENOWARNING("This one does not look suitable!"))
 			return
+
+		larva_amount += 1
 	if(isXeno(M))
-		return
+		if(!linked_hive || M.stat != DEAD)
+			return
+		
+		// Will probably allow for hives to slowly gain larva by killing hostile xenos and taking them to the spawnpool
+		// A self sustaining cycle until one hive kills more of the other hive to tip the balance 
+
+		// Makes attacking hives very profitable if they can successfully wipe them out without suffering any significant losses
+		var/mob/living/carbon/Xenomorph/X = M
+		if(X.hivenumber != linked_hive.hivenumber)
+			if(isXenoQueen(X))
+				larva_amount = 3
+			else
+				larva_amount += max(X.tier - 1, 0) // Larva and T1s will give no larva. T2s will give 1 larva and T3s will give 2 larva
+		else
+			return
 	if(melting_body)
 		to_chat(user, SPAN_XENOWARNING("\The [src] is already processing a host! Using this one now would be a waste..."))
 		return
@@ -69,7 +87,9 @@
 	new /obj/effect/overlay/temp/acid_pool_splash(loc)
 	playsound(src, 'sound/effects/slosh.ogg', 25, 1)
 	
-	linked_hive.stored_larva += 1
+	linked_hive.stored_larva += larva_amount
+
+	linked_hive.hive_ui.update_pooled_larva()
 	
 	melt_body()
 

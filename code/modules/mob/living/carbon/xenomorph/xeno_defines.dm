@@ -97,6 +97,9 @@
 	var/heal_knocked_out = 0.33
 
 
+/datum/caste_datum/can_vv_modify()
+	return FALSE
+
 /datum/caste_datum/New()
 	. = ..()
 
@@ -204,20 +207,21 @@
 	if(X in totalXenos)
 		return
 
-	// Can only have one queen
-	if(istype(X, /mob/living/carbon/Xenomorph/Queen))
-		if(living_xeno_queen)
-			return
-		set_living_xeno_queen(X)
+	// Can only have one queen.
+	if(isXenoQueen(X))
+
+		if(!living_xeno_queen && X.z != ADMIN_Z_LEVEL) // Don't consider xenos in the ADMIN_Z_LEVEL
+			set_living_xeno_queen(X)
 
 	X.hivenumber = hivenumber
 	X.hive = src
 
-	totalXenos += X
-	if(X.tier == 2)
-		tier_2_xenos += X
-	else if(X.tier == 3)
-		tier_3_xenos += X
+	if(X.z != ADMIN_Z_LEVEL)
+		totalXenos += X
+		if(X.tier == 2)
+			tier_2_xenos += X
+		else if(X.tier == 3)
+			tier_3_xenos += X
 
 	// Xenos are a fuckfest of cross-dependencies of different datums that are initialized at different times
 	// So don't even bother trying updating UI here without large refactors
@@ -231,8 +235,15 @@
 	if(!(X in totalXenos))
 		return
 
-	if(istype(X, /mob/living/carbon/Xenomorph/Queen))
-		set_living_xeno_queen(null)
+	if(isXenoQueen(X))
+		if(living_xeno_queen == X)
+			var/mob/living/carbon/Xenomorph/Queen/next_queen
+			for(var/mob/living/carbon/Xenomorph/Queen/Q in totalXenos)
+				if(Q.z != ADMIN_Z_LEVEL)
+					next_queen = Q
+					break
+
+			set_living_xeno_queen(next_queen) // either null or a queen
 
 	// We allow "soft" removals from the hive (the xeno still retains information about the hive)
 	// This is so that xenos can add themselves back to the hive if they should die or otherwise go "on leave" from the hive
@@ -605,20 +616,28 @@
 	prefix = "Corrupted "
 	color = "#00ff80"
 
+/datum/hive_status/corrupted/add_xeno(mob/living/carbon/Xenomorph/X)
+	. = ..()
+	X.add_language("English")
+
+/datum/hive_status/corrupted/remove_xeno(mob/living/carbon/Xenomorph/X, hard)
+	. = ..()
+	X.remove_language("English")
+
 /datum/hive_status/alpha
 	name = "Alpha Hive"
 	hivenumber = XENO_HIVE_ALPHA
 	prefix = "Alpha "
-	color = "#cccc00"
+	color = "#ff0000"
 
 /datum/hive_status/beta
 	name = "Beta Hive"
 	hivenumber = XENO_HIVE_BETA
 	prefix = "Beta "
-	color = "#9999ff"
+	color = "#0080ff"
 
 /datum/hive_status/zeta
 	name = "Zeta Hive"
 	hivenumber = XENO_HIVE_ZETA
 	prefix = "Zeta "
-	color = "#606060"
+	color = "#ffa000"

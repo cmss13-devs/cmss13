@@ -132,14 +132,12 @@
 	return TRUE
 
 /proc/spawn_hivenumber_larva(var/atom/A, var/hivenumber)
-	switch(hivenumber)
-		if(XENO_HIVE_NORMAL)
-			return new /mob/living/carbon/Xenomorph/Larva(A)
-		if(XENO_HIVE_CORRUPTED)
-			return new /mob/living/carbon/Xenomorph/Larva/Corrupted(A)
-		if(XENO_HIVE_ALPHA)
-			return new /mob/living/carbon/Xenomorph/Larva/Alpha(A)
-		if(XENO_HIVE_BETA)
-			return new /mob/living/carbon/Xenomorph/Larva/Beta(A)
-		if(XENO_HIVE_ZETA)
-			return new /mob/living/carbon/Xenomorph/Larva/Zeta(A)
+	if(!hive_datum[hivenumber])
+		return
+
+	var/mob/living/carbon/Xenomorph/Larva/L = new /mob/living/carbon/Xenomorph/Larva(A)
+
+	L.set_hive_and_update(hivenumber, hive_datum[hivenumber].name)
+
+	return L
+			

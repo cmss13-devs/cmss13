@@ -407,15 +407,29 @@
 	if(!admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
 		return
-	var/list/hives = list("Regular" = 1, "Corrupted" = 2, "Alpha" = 3, "Beta" = 4, "Zeta" = 5, "All hives" = 6)
+
+	var/list/hives = list()
+	for(var/datum/hive_status/hive in hive_datum)
+		hives += list("[hive.name]" = hive.hivenumber)
+
+	hives += list("All Hives" = "everything")
 	var/hive_choice = input(usr, "Please choose the hive you want to see your announcement. Selecting \"All hives\" option will change title to \"Unknown Higher Force\"", "Hive Selection", "") as null|anything in hives
 	if(!hive_choice)
 		return FALSE
+	
 	var/hivenumber = hives[hive_choice]
+	
+	
 	var/input = input(usr, "This should be a message from the ruler of the Xenomorph race.", "What?", "") as message|null
 	if(!input)
 		return FALSE
-	xeno_announcement(input, hivenumber, QUEEN_MOTHER_ANNOUNCE)
+	
+	var/hive_prefix = ""
+	if(hive_datum[hivenumber])
+		var/datum/hive_status/hive = hive_datum[hivenumber]
+		hive_prefix = "[hive.prefix] "
+
+	xeno_announcement(input, hivenumber, SPAN_ANNOUNCEMENT_HEADER_BLUE("[hive_prefix][QUEEN_MOTHER_ANNOUNCE]"))
 
 	message_admins("[key_name_admin(src)] has created a [hive_choice] Queen Mother report")
 

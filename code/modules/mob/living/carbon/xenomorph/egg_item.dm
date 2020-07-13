@@ -10,6 +10,7 @@
 	throw_range = 1
 	layer = MOB_LAYER
 	var/hivenumber = XENO_HIVE_NORMAL
+	var/flags_embryo = NO_FLAGS
 
 /obj/item/xeno_egg/Initialize(loc, hive)
 	pixel_x = rand(-3,3)
@@ -57,6 +58,8 @@
 		if (!istype(O,/obj/structure/machinery/light/small))
 			return
 	var/obj/effect/alien/egg/newegg = new /obj/effect/alien/egg(T, hivenumber)
+	newegg.flags_embryo = flags_embryo
+
 	newegg.add_hiddenprint(user)
 	playsound(T, 'sound/effects/splat.ogg', 15, 1)
 	qdel(src)
@@ -101,6 +104,9 @@
 		if(W.weed_strength >= WEED_LEVEL_HIVE)
 			user.use_plasma(30)
 			var/obj/effect/alien/egg/newegg = new /obj/effect/alien/egg(T, hivenumber)
+
+			newegg.flags_embryo = flags_embryo
+
 			newegg.add_hiddenprint(user)
 			playsound(T, 'sound/effects/splat.ogg', 15, 1)
 			qdel(src)

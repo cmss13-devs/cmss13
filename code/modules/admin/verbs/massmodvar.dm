@@ -7,6 +7,11 @@
 
 	if(!check_rights(R_VAREDIT))	return
 
+
+	if(!can_modify(A) && !(admin_holder.rights & R_DEBUG))
+		to_chat(usr, "You can't modify this object! You require debugging permission")
+		return
+
 	if(A && A.type)
 		if(typesof(A.type))
 			switch(input("Strict object type detection?") as null|anything in list("Strictly this type","This type and subtypes", "Cancel"))
@@ -27,6 +32,10 @@
 	if(!check_rights(R_VAREDIT))	return
 
 	var/list/locked = list("vars", "key", "ckey", "client", "icon")
+
+	if(!can_modify(O) && !(admin_holder.rights & R_DEBUG))
+		to_chat(usr, "You can't modify this object! You require debugging permission")
+		return
 
 	for(var/p in forbidden_varedit_object_types)
 		if( istype(O,p) )

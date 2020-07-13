@@ -673,7 +673,7 @@
 			. -= mobility_aura * 5
 		var/mob/living/carbon/human/shooter_human = P.firer
 		if(istype(shooter_human))
-			if(shooter_human.faction == faction)
+			if(shooter_human.faction == faction && !(ammo_flags & AMMO_ALWAYS_FF))
 				. -= FF_hit_evade
 
 

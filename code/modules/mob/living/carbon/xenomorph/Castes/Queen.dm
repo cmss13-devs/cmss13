@@ -41,7 +41,7 @@
 				if(hive.living_xeno_queen.hivenumber == hive.hivenumber)
 					continue
 			for(var/mob/living/carbon/Xenomorph/Queen/Q in living_mob_list)
-				if(Q.hivenumber == hive.hivenumber)
+				if(Q.hivenumber == hive.hivenumber && Q.z != ADMIN_Z_LEVEL)
 					hive.living_xeno_queen = Q
 					xeno_message(SPAN_XENOANNOUNCE("A new Queen has risen to lead the Hive! Rejoice!"),3,hive.hivenumber)
 					continue outer_loop
@@ -147,8 +147,8 @@
 /mob/living/carbon/Xenomorph/Queen/Zeta
 	hivenumber = XENO_HIVE_ZETA
 
-/mob/living/carbon/Xenomorph/Queen/New()
-	..()
+/mob/living/carbon/Xenomorph/Queen/Initialize()
+	. = ..()
 	if(z != ADMIN_Z_LEVEL)//so admins can safely spawn Queens in Thunderdome for tests.
 		xeno_message(SPAN_XENOANNOUNCE("A new Queen has risen to lead the Hive! Rejoice!"),3,hivenumber)
 	playsound(loc, 'sound/voice/alien_queen_command.ogg', 75, 0)
@@ -251,7 +251,7 @@
 	if(!input)
 		return
 
-	xeno_announcement(input, hivenumber)
+	xeno_announcement(input, hivenumber, "The words of the [name] reverberate in your head...")
 
 	log_admin("[key_name(src)] has created a Word of the Queen report: <br>")
 	log_admin("[input]")

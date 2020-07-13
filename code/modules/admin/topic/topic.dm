@@ -846,34 +846,19 @@
 		if(alert(usr, "Are you sure you want to infect them with a xeno larva?", "Message", "Yes", "No") != "Yes")
 			return
 
-		var/list/namelist = list("Normal","Corrupted","Alpha","Beta","Zeta")
-		var/newhive = input(usr,"Select a hive.", null, null) in namelist
+		var/list/hives = list()
+		for(var/datum/hive_status/hive in hive_datum)
+			hives += list("[hive.name]" = hive.hivenumber)
+
+		var/newhive = input(usr,"Select a hive.", null, null) in hives
 
 		if(!H)
 			to_chat(usr, "This mob no longer exists")
 			return
-		var/newhivenumber
-		var/newhivefaction
-		switch(newhive)
-			if("Normal")
-				newhivenumber = XENO_HIVE_NORMAL
-				newhivefaction = FACTION_XENOMORPH
-			if("Corrupted")
-				newhivenumber = XENO_HIVE_CORRUPTED
-				newhivefaction = FACTION_XENOMORPH_CORRPUTED
-			if("Alpha")
-				newhivenumber = XENO_HIVE_ALPHA
-				newhivefaction = FACTION_XENOMORPH_ALPHA
-			if("Beta")
-				newhivenumber = XENO_HIVE_BETA
-				newhivefaction = FACTION_XENOMORPH_BETA
-			if("Zeta")
-				newhivenumber = XENO_HIVE_ZETA
-				newhivefaction = FACTION_XENOMORPH_ZETA
 
 		var/obj/item/alien_embryo/embryo = new /obj/item/alien_embryo(H)
-		embryo.hivenumber = newhivenumber
-		embryo.faction = newhivefaction
+		embryo.hivenumber = hives[newhive]
+		embryo.faction = newhive
 
 		message_admins(SPAN_NOTICE("[key_name_admin(usr)] infected [key_name_admin(H)] with a xeno ([newhive]) larva."))
 	else if(href_list["forceemote"])

@@ -293,8 +293,6 @@
 	time_of_birth = world.time
 
 	set_languages(list("Xenomorph", "Hivemind"))
-	if(hivenumber == XENO_HIVE_CORRUPTED)
-		add_language("English")
 	if(oldXeno)
 		for(var/datum/language/L in oldXeno.languages)
 			add_language(L.name)//Make sure to keep languages (mostly for event Queens that know English)
@@ -593,8 +591,11 @@
 //Call this function to set the hive and do other cleanup
 /mob/living/carbon/Xenomorph/proc/set_hive_and_update(var/new_hivenumber = XENO_HIVE_NORMAL, var/new_faction = FACTION_XENOMORPH)
 	var/datum/hive_status/new_hive = hive_datum[new_hivenumber]
-	if(new_hive)
-		new_hive.add_xeno(src)
+	if(!new_hive)
+		return
+	
+	
+	new_hive.add_xeno(src)
 
 	set_faction(new_faction)
 

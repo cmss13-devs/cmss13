@@ -142,6 +142,7 @@ var/global_langchat_disabled = FALSE
 	if(!lang_text[language])
 		return
 	lang_text[language].maptext = ""
+	lang_text[language].invisibility = 101
 
 #define LANGCHAT_LONGEST_TEXT 32
 #define LANGCHAT_WIDTH 96
@@ -182,6 +183,7 @@ var/global_langchat_disabled = FALSE
 	LTI.pixel_y = 0
 	LTI.maptext_width = LANGCHAT_WIDTH
 	LTI.maptext_x = LANGCHAT_X_OFFSET
+	LTI.invisibility = 0
 
 	switch(animation_style)
 		if(LANGCHAT_DEFAULT_POP)

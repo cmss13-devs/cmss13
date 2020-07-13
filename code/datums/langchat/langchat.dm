@@ -22,8 +22,28 @@
 /datum/language/common/langchat_supported = TRUE
 /datum/language/xenocommon/langchat_supported = TRUE
 
+var/global_langchat_disabled = FALSE
+
+/proc/disable_global_langchat()
+	global_langchat_disabled = TRUE
+	for(var/lang_name in all_languages)
+		if(all_languages[lang_name].langchat_supported)
+			var/datum/language/L = all_languages[lang_name]
+			if(!istype(L))
+				continue
+			
+			for(var/mob/M in L.lang_mob_list)
+				if(!M || !M.client)
+					continue
+				M.client.images -= L.lang_image_list
+				M.client.langchat_list -= L.lang_image_list
+			L.lang_image_list.Cut()
+			L.lang_mob_list.Cut()
+
 /mob/add_language(language)
 	..(language)
+	if(global_langchat_disabled)
+		return
 	var/datum/language/new_language = all_languages[language]
 	if(!istype(new_language))
 		return

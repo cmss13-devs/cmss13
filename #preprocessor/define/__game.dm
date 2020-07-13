@@ -37,6 +37,8 @@
 
 #define PLAYERCOUNT_LOWPOP_MAP_LIMIT 130 // number of players before we switch to lowpop maps only (LV, BR, Prison)
 
+#define PREROUND_TIME 240 // time before the round starts
+
 /*
 Garbage Collector hints
 Tells the GC how to handle deletion of the object

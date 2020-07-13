@@ -311,6 +311,10 @@ var/list/forbidden_varedit_object_types = list(
 
 	var/list/locked = list("vars", "key", "ckey", "client", "icon")
 
+	if(!can_modify(O) && !(admin_holder.rights & R_DEBUG))
+		to_chat(usr, "You can't modify this object! You require debugging permission")
+		return
+
 	for(var/p in forbidden_varedit_object_types)
 		if( istype(O,p) )
 			to_chat(usr, SPAN_DANGER("It is forbidden to edit this object's variables."))

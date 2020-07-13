@@ -82,7 +82,7 @@
 				to_chat(src, SPAN_WARNING("You require more plasma! Currently at: [plasma_stored] / 500."))
 				return
 
-			if(hivenumber == 1 && ticker && ticker.mode && hive.xeno_queen_timer>world.time)
+			if(ticker && ticker.mode && hive.xeno_queen_timer>world.time)
 				to_chat(src, SPAN_WARNING("You must wait about [round((hive.xeno_queen_timer-world.time) / (60 SECONDS))] minutes for the hive to recover from the previous Queen's death."))
 				return
 		else
@@ -154,17 +154,7 @@
 		if ("Defender")
 			M = /mob/living/carbon/Xenomorph/Defender
 		if("Queen")
-			switch(hivenumber) // because it causes issues otherwise
-				if(XENO_HIVE_NORMAL)
-					M = /mob/living/carbon/Xenomorph/Queen
-				if(XENO_HIVE_CORRUPTED)
-					M = /mob/living/carbon/Xenomorph/Queen/Corrupted
-				if(XENO_HIVE_ALPHA)
-					M = /mob/living/carbon/Xenomorph/Queen/Alpha
-				if(XENO_HIVE_BETA)
-					M = /mob/living/carbon/Xenomorph/Queen/Beta
-				if(XENO_HIVE_ZETA)
-					M = /mob/living/carbon/Xenomorph/Queen/Zeta
+			M = /mob/living/carbon/Xenomorph/Queen
 		if("Crusher")
 			M = /mob/living/carbon/Xenomorph/Crusher
 		if("Boiler")

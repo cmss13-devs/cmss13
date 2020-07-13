@@ -210,7 +210,7 @@
 		X.visible_message(SPAN_DANGER("\The [X] slashes [src]!"), \
 		SPAN_DANGER("You slash [src]!"), null, 5)
 		playsound(loc, "alien_resin_break", 25)
-		health -= X.melee_damage_lower*WEED_XENO_DAMAGE
+		health -= X.melee_damage_lower*WEED_XENO_DAMAGEMULT
 		healthcheck()
 		
 
@@ -251,6 +251,10 @@
 	if(!disposed)
 		QDEL_IN(src, rand(100,175))
 
+/obj/effect/alien/weeds/acid_spray_act()
+	. = ..()
+	health -= 20 * WEED_XENO_DAMAGEMULT
+	healthcheck()
 
 /obj/effect/alien/weeds/weedwall
 	layer = RESIN_STRUCTURE_LAYER

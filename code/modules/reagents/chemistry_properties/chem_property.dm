@@ -10,6 +10,9 @@
 	var/updates_stats = FALSE //should the property change other variables in the reagent when added or removed?
 	var/deleted = FALSE
 
+/datum/chem_property/proc/reagent_added(atom/A, datum/reagent/R, var/amount)
+	return
+
 /datum/chem_property/proc/pre_process(mob/living/M) //used for properties that need special checks before processing starts, such as cryometabolization
 	return
 

@@ -93,6 +93,13 @@
 			var/obj/structure/barricade/B = atm
 			B.acid_spray_act()
 			continue
+		
+		if(istype(atm, /obj/effect/alien/weeds/))
+			var/obj/effect/alien/weeds/W = atm
+
+			if( !W.linked_hive || W.linked_hive.hivenumber != hivenumber )
+				W.acid_spray_act()
+				continue
 
 		// Humans?
 		if(isliving(atm)) //For extinguishing mobs on fire

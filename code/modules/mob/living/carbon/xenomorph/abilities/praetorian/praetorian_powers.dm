@@ -154,7 +154,7 @@
 		to_chat(X, SPAN_XENOWARNING("You must be adjacent to your target!"))
 		return
 
-	if (H.stat)
+	if (H.stat == DEAD)
 		to_chat(X, SPAN_XENODANGER("[H] is dead, why would you want to touch it?"))
 		return
 
@@ -172,7 +172,7 @@
 		H.update_canmove()
 
 		if (ishuman(H))
-			var/mob/living/carbon/human/Hu
+			var/mob/living/carbon/human/Hu = H
 			Hu.update_xeno_hostile_hud()
 
 		add_timer(CALLBACK(GLOBAL_PROC, .proc/unroot_human, H), get_xeno_stun_duration(H, root_duration))

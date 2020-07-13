@@ -74,19 +74,47 @@
 	value = 16
 
 /datum/chem_property/special/ciphering/process(mob/living/M, var/potency = 1)
+	if(!hive_datum[level]) // This should probably always be valid
+		return
+
 	for(var/content in M.contents)
 		if(!istype(content, /obj/item/alien_embryo))
 			continue
 		var/obj/item/alien_embryo/A = content
 		A.hivenumber = level
-		A.faction = FACTION_LIST_XENOMORPH[level]
+		A.faction = hive_datum[level].name
+
+/datum/chem_property/special/ciphering/predator
+	name = PROPERTY_CIPHERING_PREDATOR
+	code = "PCI"
+	rarity = PROPERTY_DISABLED // this one should always be disabled, even if ciphering is not
+
+/datum/chem_property/special/ciphering/predator/reagent_added(atom/A, datum/reagent/R, amount)
+	. = ..()
+	var/obj/item/xeno_egg/E = A
+	if(!istype(E))
+		return
+	
+	if(amount < 10)
+		return
+
+	if((E.flags_embryo & FLAG_EMBRYO_PREDATOR) && E.hivenumber == level)
+		return
+
+	E.visible_message(SPAN_DANGER("\the [E] rapidly mutates"))
+	
+	playsound(E, 'sound/effects/attackblob.ogg', 25, TRUE)
+
+	E.hivenumber = level
+	set_hive_data(E, level)
+	E.flags_embryo |= FLAG_EMBRYO_PREDATOR
 
 /datum/chem_property/special/crossmetabolizing
 	name = PROPERTY_CROSSMETABOLIZING
 	code = "XMB"
 	description = "Can be metabolized in certain non-human species."
 	rarity = PROPERTY_ADMIN
-	category = PROPERTY_TYPE_METABOLITE|PROPERTY_TYPE_ANOMALOUS
+	category = PROPERTY_TYPE_METABOLITE|PROPERTY_TYPE_ANOMALOUS|PROPERTY_TYPE_CATALYST
 	value = 666
 
 /datum/chem_property/special/crossmetabolizing/pre_process(mob/living/M)

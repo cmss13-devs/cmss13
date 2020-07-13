@@ -317,6 +317,7 @@
 	has_gamemode_skin = FALSE //same sprite for all gamemode.
 	var/camo_active = FALSE
 	var/camo_alpha = 10
+	var/allow_gun_usage = FALSE
 
 	actions_types = list(/datum/action/item_action)
 
@@ -358,7 +359,7 @@
 
 	H.alpha = camo_alpha
 	H.FF_hit_evade = 1000
-	H.allow_gun_usage = FALSE
+	H.allow_gun_usage = allow_gun_usage
 
 	var/datum/mob_hud/security/advanced/SA = huds[MOB_HUD_SECURITY_ADVANCED]
 	SA.remove_from_hud(H)
@@ -390,19 +391,18 @@
 	add_timer(CALLBACK(src, .proc/allow_shooting, H), 5)
 
 /obj/item/storage/backpack/marine/satchel/scout_cloak/proc/allow_shooting(var/mob/living/carbon/human/H)
-	if(camo_active)
+	if(camo_active && !allow_gun_usage)
 		return
 	H.allow_gun_usage = TRUE
 
+// Can use weapons whilst invisible in the UPP cloak
 /obj/item/storage/backpack/marine/satchel/scout_cloak/upp
 	name = "\improper V86 Thermal Cloak"
-	desc = "A thermo-optic camoflage cloak commonly used by UPP commando units. While less concealing than the M68 thermal cloak used by the USCM scouts, the simplified thermal dampener system of the V86 can be run for extended periods."
+	desc = "A thermo-optic camoflage cloak commonly used by UPP commando units"
 	uniform_restricted = list(/obj/item/clothing/suit/storage/marine/faction/UPP/commando) //Need to wear UPP commando armor to equip this.
 
 	max_storage_space = 21
-	camo_alpha = 15
-
-
+	camo_alpha = 10
 
 // Welder Backpacks //
 

@@ -1,3 +1,4 @@
+
 /client
 	var/list/stored_matrices
 	var/selected_matrix = ""
@@ -6,7 +7,7 @@
 	set name = "A: Matrix Editor"
 	set category = "Debug"
 
-	if(!usr.client || !usr.client.admin_holder || !(usr.client.admin_holder.rights & R_DEBUG))
+	if(!usr.client || !usr.client.admin_holder || !(usr.client.admin_holder.rights & R_DEBUG|R_ADMIN))
 		to_chat(usr, SPAN_DANGER("develop man only >:("))
 		return
 
@@ -48,7 +49,7 @@
 	show_browser(usr, data, "Matrix Editor", "matrixeditor\ref[src]", "size=600x450")
 
 /client/proc/matrix_editor_Topic(href, href_list)
-	if(!usr.client || !usr.client.admin_holder || !(usr.client.admin_holder.rights & R_DEBUG))
+	if(!usr.client || !usr.client.admin_holder || !(usr.client.admin_holder.rights & R_DEBUG|R_ADMIN))
 		to_chat(usr, SPAN_DANGER("develop man only >:("))
 		return
 
@@ -63,6 +64,7 @@
 	switch(href_list["operation"])
 		if("new")
 			var/matrix/M
+
 			if(alert("Identity matrix?", "Matrix creation", "Yes", "No") == "Yes")
 				M = matrix()
 			else

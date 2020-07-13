@@ -63,6 +63,8 @@
 #define	EGG_MIN_GROWTH_TIME 100 //time it takes for the egg to mature once planted
 #define	EGG_MAX_GROWTH_TIME 150
 
+#define FLAG_EMBRYO_PREDATOR 1 // Useful for passing down flags from an egg to the very moment an embryo is in someone
+
 #define XENO_STARTING_CRYSTAL 100 //How much building resource the queen gets to start with
 
 // Holds defines for /datum/caste_datum, which is the primary datum for the caste system,
@@ -95,7 +97,7 @@
 #define WEED_RANGE_PYLON     5
 #define WEED_RANGE_CORE      7
 
-#define WEED_XENO_DAMAGE    0.25 //Multiplicative. The amount of damage xenos do to weeds
+#define WEED_XENO_DAMAGEMULT 0.25 //Multiplicative. The amount of damage xenos do to weeds
 #define WEED_XENO_SPEED_MULT 0.5 //Multiplicative. The slowdown that other xenos from different hives suffer. Also applies to sticky resin
 
 #define WEED_HEALTH_STANDARD 1

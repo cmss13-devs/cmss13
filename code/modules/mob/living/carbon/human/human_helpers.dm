@@ -226,6 +226,8 @@
 	frozen = FALSE
 
 /mob/living/carbon/human/proc/disable_special_items()
+	set waitfor = FALSE // Scout decloak animation uses sleep(), which is problematic for taser gun
+
 	if(istype(back, /obj/item/storage/backpack/marine/satchel/scout_cloak))
 		var/obj/item/storage/backpack/marine/satchel/scout_cloak/SC = back
 		if(SC.camo_active)

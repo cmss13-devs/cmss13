@@ -4,6 +4,15 @@
 /datum/proc/can_vv_get()
 	return TRUE
 
+/datum/proc/can_vv_modify()
+	return TRUE
+
+/proc/can_modify(var/datum/D)
+	if(!isdatum(D))
+		return TRUE
+
+	return D.can_vv_modify()
+
 /client/proc/debug_variables(datum/D in world)
 	set category = "Debug"
 	set name = "B: View Variables"
@@ -23,7 +32,7 @@
 		to_chat(usr, SPAN_WARNING("You need host permission to access this."))
 		return
 
-	if((istype(D,/datum/ammo) || istype(D,/datum/caste_datum) || istype(D,/mob/living/carbon/Xenomorph/Predalien) || !D.can_vv_get() ) && !(usr.client.admin_holder.rights & R_DEBUG))
+	if(( !D.can_vv_get() ) && !(usr.client.admin_holder.rights & R_DEBUG))
 		to_chat(usr, SPAN_WARNING("You need debugging permission to access this."))
 		return
 
@@ -352,6 +361,7 @@ body
 	//This should all be moved over to datum/admins/Topic() or something ~Carn
 	if((usr.client != src) || !src.admin_holder || !(admin_holder.rights & R_MOD))
 		return
+
 	if(href_list["Vars"])
 		debug_variables(locate(href_list["Vars"]))
 
@@ -637,29 +647,18 @@ body
 		if(!istype(X))
 			to_chat(usr, "This can only be done to instances of type /mob/living/carbon/Xenomorph")
 			return
-		var/hivenumber_status = X.hivenumber
-		var/list/namelist = list("Normal","Corrupted","Alpha","Beta","Zeta")
 
-		var/newhive = input(src,"Select a hive.", null, null) in namelist
+		var/list/hives = list()
+		for(var/datum/hive_status/hive in hive_datum)
+			hives += list("[hive.name]" = hive.hivenumber)
+
+		var/newhive = input(src,"Select a hive.", null, null) in hives
 
 		if(!X)
 			to_chat(usr, "This xeno no longer exists")
 			return
-		var/newhivenumber
-		switch(newhive)
-			if("Normal")
-				newhivenumber = XENO_HIVE_NORMAL
-			if("Corrupted")
-				newhivenumber = XENO_HIVE_CORRUPTED
-			if("Alpha")
-				newhivenumber = XENO_HIVE_ALPHA
-			if("Beta")
-				newhivenumber = XENO_HIVE_BETA
-			if("Zeta")
-				newhivenumber = XENO_HIVE_ZETA
-		if(X.hivenumber != hivenumber_status)
-			to_chat(usr, "Someone else changed this xeno while you were deciding")
-			return
+
+		var/newhivenumber = hives[newhive]
 
 		admin_holder.Topic(href, list("changehivenumber"=href_list["changehivenumber"],"newhivenumber"=newhivenumber))
 

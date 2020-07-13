@@ -29,6 +29,7 @@
 	var/lifecycle = 300 //How long the hugger will survive outside of the egg, or carrier.
 	var/leaping = 0 //Is actually attacking someone?
 	var/hivenumber = XENO_HIVE_NORMAL
+	var/flags_embryo = NO_FLAGS
 
 /obj/item/clothing/mask/facehugger/Initialize(loc, hive)
 	. = ..()
@@ -65,7 +66,7 @@
 /obj/item/clothing/mask/facehugger/attack_hand(var/mob/user)
 
 	if(stat != DEAD && !sterile)
-		if(CanHug(user))
+		if(CanHug(user, hivenumber))
 			Attach(user) //If we're alive, don't let them pick us up even if this fails. Just return.
 			return
 	if(!isXeno(user) && stat != DEAD)
@@ -88,7 +89,7 @@
 		attack_hand(user)//Not a carrier, or already full? Just pick it up.
 
 /obj/item/clothing/mask/facehugger/attack(mob/M, mob/user)
-	if(!(CanHug(M) && (M.is_mob_incapacitated() || M.lying || M.buckled && !isYautja(M))))
+	if(!(CanHug(M, hivenumber) && (M.is_mob_incapacitated() || M.lying || M.buckled && !isYautja(M))))
 		to_chat(user, SPAN_WARNING("The facehugger refuses to attach."))
 		..()
 		return
@@ -96,7 +97,7 @@
 	if(!do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_HOSTILE, M, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
 		return
 
-	if(!(CanHug(M) && (M.is_mob_incapacitated() || M.lying || M.buckled)))
+	if(!(CanHug(M, hivenumber) && (M.is_mob_incapacitated() || M.lying || M.buckled)))
 		return
 
 	Attach(M)
@@ -142,7 +143,7 @@
 	return 1
 
 /obj/item/clothing/mask/facehugger/HasProximity(atom/movable/AM)
-	if(stat == CONSCIOUS && CanHug(AM))
+	if(stat == CONSCIOUS && CanHug(AM, hivenumber))
 		Attach(AM)
 
 /obj/item/clothing/mask/facehugger/launch_towards(var/datum/launch_metadata/LM)
@@ -167,7 +168,7 @@
 		icon_state = "[initial(icon_state)]"
 	if(ismob(hit_atom) && stat != DEAD)
 		if(stat == CONSCIOUS)
-			if(leaping && CanHug(hit_atom))
+			if(leaping && CanHug(hit_atom, hivenumber))
 				Attach(hit_atom)
 			else if(hit_atom.density)
 				stat = UNCONSCIOUS //Giving it some brief downtime before jumping on someone via movement.
@@ -194,7 +195,7 @@
 	if(!isturf(loc))
 		return
 	for(var/mob/living/M in view(3, src))
-		if(CanHug(M))
+		if(CanHug(M, hivenumber))
 			M.visible_message(SPAN_WARNING("\The scuttling [src] leaps at [M]!"), \
 			SPAN_WARNING("The scuttling [src] leaps at [M]!"))
 			leaping = TRUE
@@ -205,14 +206,14 @@
 		return
 
 	for(var/mob/living/M in loc)
-		if(CanHug(M))
+		if(CanHug(M, hivenumber))
 			Attach(M)
 			break
 
 /obj/item/clothing/mask/facehugger/proc/Attach(mob/living/M)
 	set waitfor = 0
 
-	if(attached || M.status_flags & XENO_HOST || isXeno(M) || iszombie(M) || loc == M || stat == DEAD)
+	if(attached || !CanHug(M, hivenumber) || isXeno(M) || iszombie(M) || loc == M || stat == DEAD)
 		return
 
 	attached++
@@ -332,15 +333,23 @@
 	if(!sterile)
 		var/embryos = 0
 		for(var/obj/item/alien_embryo/embryo in target) // already got one, stops doubling up
-			embryos++
+			if(embryo.hivenumber == hivenumber)
+				embryos++
+			else
+				qdel(embryo)
 		if(!embryos)
 			var/obj/item/alien_embryo/embryo = new /obj/item/alien_embryo(target)
 			embryo.hivenumber = hivenumber
+			
+			embryo.flags_embryo = flags_embryo
+			flags_embryo = NO_FLAGS
+
 			icon_state = "[initial(icon_state)]_impregnated"
 		target.visible_message(SPAN_DANGER("[src] falls limp after violating [target]'s face!"))
 		Die()
 	else
 		target.visible_message(SPAN_DANGER("[src] violates [target]'s face!"))
+	
 	if(round_statistics && ishuman(target))
 		round_statistics.total_huggers_applied++
 
@@ -419,10 +428,16 @@
 	visible_message("[htmlicon(src, viewers(src))] <span class='danger'>\The [src] decays into a mass of acid and chitin.</span>")
 	qdel(src)
 
-/proc/CanHug(mob/living/carbon/M)
+/proc/CanHug(mob/living/carbon/M, var/hivenumber)
 
-	if(!istype(M) || isXeno(M) || isSynth(M) || iszombie(M) || isHellhound(M) || M.stat == DEAD || M.status_flags & XENO_HOST)
+	if(!istype(M) || isXeno(M) || isSynth(M) || iszombie(M) || isHellhound(M) || M.stat == DEAD)
 		return FALSE
+
+	if(M.status_flags & XENO_HOST)
+		for(var/obj/item/alien_embryo/embryo in M)
+			if(embryo.hivenumber == hivenumber)
+				return
+		
 
 	//Already have a hugger? NOPE
 	//This is to prevent eggs from bursting all over if you walk around with one on your face,

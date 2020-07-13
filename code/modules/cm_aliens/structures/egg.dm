@@ -14,6 +14,7 @@
 	var/status = EGG_GROWING //can be EGG_GROWING, EGG_GROWN, EGG_BURST, EGG_BURSTING, or EGG_DESTROYED; all mutually exclusive
 	var/on_fire = FALSE
 	var/hivenumber = XENO_HIVE_NORMAL
+	var/flags_embryo = NO_FLAGS
 
 /obj/effect/alien/egg/Initialize(loc, var/hive)
 	..()
@@ -123,7 +124,10 @@
 		if(loc && status != EGG_DESTROYED)
 			status = EGG_BURST
 			var/obj/item/clothing/mask/facehugger/child = new(loc, hivenumber)
-			child.hivenumber = hivenumber
+			
+			child.flags_embryo = flags_embryo
+			flags_embryo = NO_FLAGS // Lose the embryo flags when passed on
+			
 			if(X && X.caste.can_hold_facehuggers && (!X.l_hand || !X.r_hand))	//sanity checks
 				X.put_in_hands(child)
 				return
@@ -173,6 +177,9 @@
 					visible_message(SPAN_XENOWARNING("[F] crawls back into [src]!")) //Not sure how, but let's roll with it for now.
 				status = EGG_GROWN
 				icon_state = "Egg"
+
+				flags_embryo = F.flags_embryo
+
 				qdel(F)
 			if(EGG_DESTROYED)
 				to_chat(user, SPAN_XENOWARNING("This egg is no longer usable."))
@@ -210,7 +217,7 @@
 
 /obj/effect/alien/egg/HasProximity(atom/movable/AM as mob|obj)
 	if(status == EGG_GROWN)
-		if(!CanHug(AM) || isYautja(AM) || isSynth(AM)) //Predators are too stealthy to trigger eggs to burst. Maybe the huggers are afraid of them.
+		if(!CanHug(AM, hivenumber) || isYautja(AM) || isSynth(AM)) //Predators are too stealthy to trigger eggs to burst. Maybe the huggers are afraid of them.
 			return
 		Burst(FALSE, TRUE, null)
 

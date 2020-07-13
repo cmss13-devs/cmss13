@@ -25,7 +25,7 @@
 #define AMMO_SPECIAL_EMBED      131072
 #define AMMO_STRIKES_SURFACE    262144 // If the projectile hits a dense turf it'll do on_hit_turf on the turf just in front of the turf instead of on the turf itself
 #define AMMO_HITS_TARGET_TURF   524288 // Whether or not the bullet hits the target that was clicked or if it keeps travelling
-
+#define AMMO_ALWAYS_FF          1048576
 
 //Gun defines for gun related thing. More in the projectile folder.
 #define GUN_CAN_POINTBLANK		1

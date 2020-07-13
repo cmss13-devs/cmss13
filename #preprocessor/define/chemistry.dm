@@ -148,6 +148,7 @@
 #define PROPERTY_DNA_DISINTEGRATING	"DNA-Disintegrating"
 #define PROPERTY_REGULATING			"regulating"
 #define PROPERTY_CIPHERING			"ciphering"
+#define PROPERTY_CIPHERING_PREDATOR "cross-ciphering"
 //Admin Only Properties
 #define PROPERTY_CROSSMETABOLIZING	"cross-metabolizing"
 #define PROPERTY_EMBRYONIC			"embryonic"
@@ -189,6 +190,7 @@
 #define PROPERTY_TYPE_METABOLITE		32
 #define PROPERTY_TYPE_ANOMALOUS			64
 #define PROPERTY_TYPE_UNADJUSTABLE		128
+#define PROPERTY_TYPE_CATALYST 			256
 
 // Defines for pain applied pr tick by chems
 #define PROPERTY_PAINING_PAIN 		0.5

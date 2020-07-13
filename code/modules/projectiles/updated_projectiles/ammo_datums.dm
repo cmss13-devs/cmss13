@@ -55,6 +55,9 @@
 	var/sound_override				= null		// if we should play a special sound when firing.
 	var/flags_ammo_behavior 		= NO_FLAGS
 
+/datum/ammo/can_vv_modify()
+	return FALSE
+
 /datum/ammo/New()
 	accuracy 			= config.min_hit_accuracy 	// This is added to the bullet's base accuracy.
 	accuracy_var_low	= config.min_proj_variance 	// How much the accuracy varies when fired.
@@ -1315,7 +1318,7 @@
 	name = "taser bolt"
 	icon_state = "stun"
 	damage_type = OXY
-	flags_ammo_behavior = AMMO_ENERGY|AMMO_IGNORE_RESIST //Not that ignoring will do much right now.
+	flags_ammo_behavior = AMMO_ENERGY|AMMO_IGNORE_RESIST|AMMO_ALWAYS_FF //Not that ignoring will do much right now.
 
 /datum/ammo/energy/taser/New()
 	..()
@@ -1324,6 +1327,10 @@
 
 /datum/ammo/energy/taser/on_hit_mob(mob/M, obj/item/projectile/P)
 	stun_living(M,P)
+
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		H.disable_special_items() // Disables scout cloak
 
 /datum/ammo/energy/yautja/New()
 		..()
@@ -1398,9 +1405,9 @@
 		if (isYautja(M))
 			stun_time -= 2
 		else if (isXeno(M))
+			if(isXenoPredalien(M))
+				continue
 			stun_time += 1
-		else if (istype(M, /mob/living/carbon/Xenomorph/Predalien))
-			continue
 		to_chat(M, SPAN_DANGER("A powerful electric shock ripples through your body, freezing you in place!"))
 		M.stunned += stun_time
 

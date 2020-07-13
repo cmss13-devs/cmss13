@@ -129,7 +129,7 @@
 					show_fact = FALSE
 				hive = hive_datum[i]
 				if(hive)
-					msg += "<br><b style='color:[hive.color ? hive.color : "#8200FF"]'>[FACTION_LIST_XENOMORPH[i]] Hive: [counted_xenos[i]]</b> <b style='color:#4D0096'>(Queen: [hive.living_xeno_queen ? "Alive" : "Dead"])</b>"
+					msg += "<br><b style='color:[hive.color ? hive.color : "#8200FF"]'>[hive.name]: [counted_xenos[i]]</b> <b style='color:#4D0096'>(Queen: [hive.living_xeno_queen ? "Alive" : "Dead"])</b>"
 				else
 					msg += "<br><b style='color:#F00'>Error: no hive datum detected for [counted_xenos[i]]s Hive.</b>"
 				hive = null

@@ -55,6 +55,8 @@ var/global_langchat_disabled = FALSE
 	lang_image.alpha = 0
 	lang_image.color = langchat_color
 	lang_image.appearance_flags = KEEP_APART
+	lang_image.invisibility = 101
+
 	// put the image for the mob
 	lang_text[language] = lang_image
 	// put this image into global list

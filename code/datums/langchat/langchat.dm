@@ -19,8 +19,8 @@
 /datum/language/var/list/mob/lang_mob_list = list()
 /datum/language/var/langchat_supported = FALSE
 
-/datum/language/common/langchat_supported = TRUE
-/datum/language/xenocommon/langchat_supported = TRUE
+/datum/language/common/langchat_supported = FALSE
+/datum/language/xenocommon/langchat_supported = FALSE
 
 var/global_langchat_disabled = FALSE
 

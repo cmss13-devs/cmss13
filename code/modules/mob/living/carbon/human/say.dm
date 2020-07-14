@@ -110,11 +110,6 @@
 
 		italics = 1
 		message_range = 2
-	else
-		if(ending == "!")
-			langchat_say(speaking.name, message, list("langchat_yell"), LANGCHAT_FAST_POP)
-		else
-			langchat_say(speaking.name, message, null, LANGCHAT_DEFAULT_POP)
 
 	
 	..(message, speaking, verb, alt_name, italics, message_range, speech_sound, sound_vol, 0, message_mode)	//ohgod we should really be passing a datum here.

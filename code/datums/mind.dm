@@ -51,7 +51,6 @@
 						ui.close()
 						continue
 			player_entity = setup_player_entity(ckey)
-			new_character.client.setup_lang_text(new_character)
 
 	new_character.refresh_huds(current)					//inherit the HUDs from the old body
 

@@ -141,9 +141,11 @@ var/list/department_radio_keys = list(
 					listening |= M
 
 		var/speech_bubble_test = say_test(message)
-		var/image/speech_bubble = image('icons/mob/hud/talk.dmi',src,"h[speech_bubble_test]")
+		var/image/speech_bubble = image('icons/mob/hud/talk.dmi',src,"h[speech_bubble_test]")		
 
 		var/not_dead_speaker = (stat != DEAD)
+		if(not_dead_speaker)
+			langchat_make_image(message, listening, speaking)
 		for(var/mob/M in listening)
 			if(not_dead_speaker)
 				M << speech_bubble

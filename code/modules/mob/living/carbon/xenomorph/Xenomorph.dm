@@ -494,9 +494,6 @@
 		qdel(mutators)
 		mutators = null
 
-	langchat_detach()
-
-
 	. = ..()
 
 

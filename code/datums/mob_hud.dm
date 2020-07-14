@@ -541,7 +541,6 @@ var/datum/mob_hud/huds = list(
 			langchat_styles = "langchat_bolded" // bold text for bold leaders
 		
 		langchat_color = squad_colors_chat[assigned_squad.color]
-		langchat_update_colors()
 
 		if(marine_rk)
 			var/image/IMG = image('icons/mob/hud/hud.dmi',src, "hudmarinesquad")

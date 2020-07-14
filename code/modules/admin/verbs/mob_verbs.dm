@@ -19,9 +19,6 @@
 	message_admins("[key_name_admin(usr)] modified [key_name(M)]'s ckey to [new_ckey]", 1)
 	 
 	M.ckey = new_ckey
-	var/client/C = directory[ckey(new_ckey)]
-	if(istype(C))
-		C.setup_lang_text(M)
 	var/mob/living/carbon/Xenomorph/XNO = M
 	if(istype(XNO))
 		XNO.generate_name()

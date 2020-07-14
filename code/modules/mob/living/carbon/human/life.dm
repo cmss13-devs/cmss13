@@ -56,14 +56,6 @@
 			if(pulledby && pulledby.grab_level)
 				handle_grabbed()
 
-			if(!was_deafened && ear_deaf && client)
-				client.unsetup_lang_text()
-				was_deafened = TRUE
-			
-			if(was_deafened && !ear_deaf && client)
-				client.setup_lang_text()
-				was_deafened = FALSE
-
 			handle_pain()
 
 			//In case we want them to do something unique every life cycle, like twitch or moan, or whatever.

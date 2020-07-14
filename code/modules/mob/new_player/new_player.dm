@@ -147,9 +147,7 @@
 				mind.transfer_to(observer, TRUE)
 
 				if(observer.client)
-					observer.client.langchat_ghost_setup()
 					observer.client.change_view(world_view_size)
-
 					if(observer.client.prefs)
 						var/datum/mob_hud/H
 						observer.HUD_toggled = observer.client.prefs.observer_huds

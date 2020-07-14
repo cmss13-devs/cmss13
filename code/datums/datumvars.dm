@@ -1033,7 +1033,7 @@ body
 			if("oxygen")
 				L.apply_damage(amount, OXY, force = TRUE)
 			if("brain")	
-				L.adjustBrainLoss(amount)
+				L.apply_damage(amount, BRAIN, force = TRUE)
 			if("clone")	
 				L.adjustCloneLoss(amount)
 			else

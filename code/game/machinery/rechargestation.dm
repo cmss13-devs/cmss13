@@ -146,10 +146,11 @@
 		if (isrobot(occupant) || isSynth(occupant))
 			if(occupant.getBruteLoss() > 0 || occupant.getFireLoss() > 0 || occupant.getBrainLoss() > 0)
 				occupant.heal_overall_damage(10, 10, TRUE)
-				occupant.adjustBrainLoss(-10)
+				occupant.apply_damage(-10, BRAIN)
 				current_internal_charge -= 500
 				to_chat(occupant, "Repairing...")
 				doing_stuff = TRUE
+				occupant.pain.recalculate_pain()
 			if(!doing_stuff && occupant.blood_volume < initial(occupant.blood_volume))
 				occupant.blood_volume = min(occupant.blood_volume + 10, initial(occupant.blood_volume))
 				to_chat(occupant, "Refreshing liquids...")

@@ -1,11 +1,12 @@
 /datum/pain/human
 	max_pain 			= 200
 
-	threshold_mild 		= 20
-	threshold_moderate 	= 30
-	threshold_modsevere	= 50
-	threshold_severe 	= 70
-	threshold_very_severe = 85
+	threshold_mild 				= 20
+	threshold_discomforting 	= 30
+	threshold_moderate			= 40
+	threshold_distressing		= 60
+	threshold_severe			= 75
+	threshold_horrible			= 85
 
 /datum/pain/human/recalculate_pain()
 	. = ..()
@@ -24,7 +25,7 @@
 			if(O.status & !LIMB_SPLINTED)
 				apply_pain(PAIN_BONE_BREAK)
 			else
-				apply_pain(PAIN_BONE_BREAK_SPLINTED)
+				apply_pain(PAIN_BONE_BREAK - PAIN_BONE_BREAK_SPLINTED)
 
 	//Internal organs
 	for(var/datum/internal_organ/O in H.internal_organs)

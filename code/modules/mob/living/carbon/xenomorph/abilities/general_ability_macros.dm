@@ -215,7 +215,7 @@
 	set category = "Alien"
 	set name = "Order Construction"
 	set hidden = 1
-	var/action_name = "Order Construction (500)"
+	var/action_name = "Order Construction (400)"
 	handle_xeno_macro(src, action_name)
 
 

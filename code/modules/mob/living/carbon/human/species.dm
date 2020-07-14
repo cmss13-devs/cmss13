@@ -58,7 +58,6 @@
 
 	var/brute_mod = null    // Physical damage reduction/malus.
 	var/burn_mod = null     // Burn damage reduction/malus.
-	var/pain_mod = 1 // Pain resistance. Pain mods lower than 1 avoid pain consequences like pain messages and etc, but still have slowdown.
 
 	var/flags = 0       // Various specific features.
 
@@ -473,6 +472,10 @@
 
 	inherent_verbs = null
 
+/datum/species/synthetic/early_synthetic/handle_post_spawn(mob/living/carbon/human/H)
+	. = ..()
+	H.pain = new /datum/pain/synthetic/early_synthetic(H) // Has to be here, cause of stupid spawn code
+
 /datum/species/zombie
 	name= "Zombie"
 	name_plural = "Zombies"
@@ -562,7 +565,6 @@
 	deform = 'icons/mob/humans/species/r_predator.dmi'
 	brute_mod = 0.33 //Beefy!
 	burn_mod = 0.65
-	pain_mod = 0.3
 	reagent_tag = IS_YAUTJA
 	flags = IS_WHITELISTED|HAS_SKIN_COLOR|NO_SCAN|NO_POISON
 	unarmed_type = /datum/unarmed_attack/punch/strong
@@ -689,7 +691,6 @@
 	deform = 'icons/mob/humans/species/monkeys/r_monkey.dmi'
 	brute_mod = 1.5
 	burn_mod = 1.5
-	pain_mod = 1.5
 	unarmed_type = /datum/unarmed_attack/bite
 	secondary_unarmed_type = /datum/unarmed_attack
 	death_message = "lets out a faint chimper as it collapses and stops moving..."

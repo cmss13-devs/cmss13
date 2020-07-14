@@ -267,8 +267,11 @@ In most cases it makes more sense to use apply_damage() instead! And make sure t
 	var/list/obj/limb/parts = get_damageable_limbs()
 	if(!parts.len)	return
 	var/obj/limb/picked = pick(parts)
-	if(picked.take_damage(brute,burn,sharp,edge))
-		UpdateDamageIcon()
+	if(brute != 0)
+		apply_damage(brute, BRUTE, picked, sharp, edge)
+	if(burn != 0)
+		apply_damage(burn, BURN, picked, sharp, edge)
+	UpdateDamageIcon()
 	updatehealth()
 	speech_problem_flag = 1
 
@@ -408,7 +411,7 @@ This function restores all limbs.
 		if(BRUTE)
 			damageoverlaytemp = 20
 			if(species.brute_mod && !force)
-				damage = damage*species.brute_mod
+				damage = damage * species.brute_mod
 			var/temp_impact_name = null
 			if(organ.body_part & impact_limbs)
 				temp_impact_name = impact_name
@@ -417,7 +420,7 @@ This function restores all limbs.
 		if(BURN)
 			damageoverlaytemp = 20
 			if(species.burn_mod && !force)
-				damage = damage*species.burn_mod
+				damage = damage * species.burn_mod
 			var/temp_impact_name = null
 			if(organ.body_part & impact_limbs)
 				temp_impact_name = impact_name
@@ -432,3 +435,35 @@ This function restores all limbs.
 	// Will set our damageoverlay icon to the next level, which will then be set back to the normal level the next mob.Life().
 	updatehealth()
 	return TRUE
+
+// Heal or damage internal organs
+// Organ has to be either a internal organ by string or a limb with internal organs in.
+/mob/living/carbon/human/apply_internal_damage(var/damage = 0, var/organ)
+	if(!damage)
+		return
+
+	var/obj/limb/L = null
+	var/datum/internal_organ/I
+	if(internal_organs_by_name[organ])
+		I = internal_organs_by_name[organ]
+	else if(istype(organ, /datum/internal_organ))
+		I = organ
+	else
+		if(isorgan(organ))
+			L = organ
+		else
+			L = get_limb(check_zone(organ))
+		if(istype(L) && !isnull(L) && L.internal_organs)
+			I = pick(internal_organs)
+
+	if(isnull(I))
+		return
+
+	if(istype(I) && !isnull(I))
+		if(damage > 0)
+			I.take_damage(damage)
+		else
+			// The damage is negative so we want to heal, but heal damage only takes positive numbers.
+			I.heal_damage(-1 * damage)
+	
+	pain.apply_pain(damage * PAIN_ORGAN_DAMAGE_MULTIPLIER)

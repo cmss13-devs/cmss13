@@ -22,21 +22,25 @@
 	pain_message = "You grimace in pain."
 
 
+/datum/effects/pain/human/discomforting 
+	pain_message = "You could use some painkillers."
+
+
 /datum/effects/pain/human/moderate
-	pain_message = "You really need some painkillers!"
+	pain_message = "You really need painkillers!"
 
 
-/datum/effects/pain/human/modsevere
+/datum/effects/pain/human/distressing
 	pain_message = "The pain is excruciating!"
 	emote_message = list("grimaces in pain.")
 
-/datum/effects/pain/human/modsevere/process_mob()
+/datum/effects/pain/human/distressing/process_mob()
 	. = ..()
 	if(!.)
 		return FALSE
 
 	var/mob/living/carbon/affected_mob = affected_atom
-	affected_mob.EyeBlur(0.2)
+	affected_mob.EyeBlur(2)
 	if(affected_mob.pain && affected_mob.pain.feels_pain)
 		affected_mob.TalkStutter(2)
 
@@ -57,7 +61,7 @@
 		affected_mob.KnockOut(3)
 		do_once = FALSE
 
-	affected_mob.EyeBlur(0.5)
+	affected_mob.EyeBlur(2)
 	if(affected_mob.pain && affected_mob.pain.feels_pain)
 		affected_mob.TalkStutter(2)
 	if(!affected_mob.reagents || !affected_mob.reagents.has_reagent("inaprovaline"))
@@ -66,11 +70,11 @@
 	return TRUE
 
 
-/datum/effects/pain/human/very_severe
+/datum/effects/pain/human/horrible
 	pain_message = "You feel like you could die any moment now!"
 	emote_message = list("is having trouble standing.")
 
-/datum/effects/pain/human/very_severe/process_mob()
+/datum/effects/pain/human/horrible/process_mob()
 	. = ..()
 	if(!.)
 		return FALSE

@@ -109,11 +109,11 @@
 		M.sdisabilities |= MUTE
 
 /datum/chem_property/neutral/neuroinhibiting/process_overdose(mob/living/M, var/potency = 1)
-	M.adjustBrainLoss(potency)
+	M.apply_damage(potency, BRAIN)
 	M.disabilities |= NERVOUS
 
 /datum/chem_property/neutral/neuroinhibiting/process_critical(mob/living/M, var/potency = 1)
-	M.adjustBrainLoss(2*potency)
+	M.apply_damage(2*potency, BRAIN)
 
 /datum/chem_property/neutral/alcoholic
 	name = PROPERTY_ALCOHOLIC
@@ -164,7 +164,7 @@
 	M.make_jittery(5)
 
 /datum/chem_property/neutral/hallucinogenic/process_critical(mob/living/M, var/potency = 1)
-	M.adjustBrainLoss(potency)
+	M.apply_damage(potency, BRAIN)
 	M.knocked_out = max(M.knocked_out, 20)
 
 /datum/chem_property/neutral/relaxing
@@ -193,11 +193,7 @@
 	M.apply_damage(potency, OXY)
 	if(prob(5))
 		to_chat(M, SPAN_WARNING("You can hardly breathe!"))
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		var/datum/internal_organ/heart/E = H.internal_organs_by_name["heart"]
-		if(E)
-			E.damage += 0.75*potency
+	M.apply_internal_damage(0.75 * potency, "heart")
 
 /datum/chem_property/neutral/hyperthermic
 	name = PROPERTY_HYPERTHERMIC
@@ -289,7 +285,7 @@
 
 /datum/chem_property/neutral/fluffing/process_critical(mob/living/M, var/potency = 1)
 	to_chat(M, SPAN_WARNING("You feel like something is penetrating your skull!"))
-	M.adjustBrainLoss(potency)//Hair growing into brain
+	M.apply_damage(potency, BRAIN) //Hair growing into brain
 
 /datum/chem_property/neutral/allergenic
 	name = PROPERTY_ALLERGENIC
@@ -383,11 +379,11 @@
 				M.confused = 0
 
 /datum/chem_property/neutral/psychostimulating/process_overdose(mob/living/M, var/potency = 1)
-	M.adjustBrainLoss(potency)
+	M.apply_damage(potency, BRAIN)
 
 /datum/chem_property/neutral/psychostimulating/process_critical(mob/living/M, var/potency = 1)
 	M.hallucination = min(200, M.hallucination)
-	M.adjustBrainLoss(4*potency)
+	M.apply_damage(4*potency, BRAIN)
 
 /datum/chem_property/neutral/antihallucinogenic
 	name = PROPERTY_ANTIHALLUCINOGENIC
@@ -464,7 +460,7 @@
 	M.universal_understand = TRUE //Brain is working so fast it can understand the intension of everything it hears
 
 /datum/chem_property/neutral/hyperthrottling/process_overdose(mob/living/M, var/potency = 1)
-	M.adjustBrainLoss(3*potency)
+	M.apply_damage(3*potency, BRAIN)
 
 /datum/chem_property/neutral/hyperthrottling/process_critical(mob/living/M, var/potency = 1)
 	M.KnockOut(potency*2)

@@ -75,7 +75,7 @@
 
 	apply_damage(modified_damage, damage_type)
 
-/mob/living/carbon/Xenomorph/apply_damage(damage = 0, damagetype = BRUTE, def_zone = null, used_weapon = null, sharp = 0, edge = 0)
+/mob/living/carbon/Xenomorph/apply_damage(damage = 0, damagetype = BRUTE, def_zone = null, used_weapon = null, sharp = 0, edge = 0, force = FALSE)
 	if(!damage) return
 
 	//We still want to check for blood splash before we get to the damage application.

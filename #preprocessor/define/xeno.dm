@@ -209,6 +209,17 @@
 #define XENO_DAMAGE_TIER_6 45 * XENO_UNIVERSAL_DAMAGEMULT
 #define XENO_DAMAGE_TIER_7 50 * XENO_UNIVERSAL_DAMAGEMULT
 
+// Cost to make things, add +XENO_RESIN_BASE_COST to them all for actual cost
+#define XENO_RESIN_BASE_COST 25
+#define XENO_RESIN_WALL_COST 95
+#define XENO_RESIN_WALL_THICK_COST 145
+#define XENO_RESIN_DOOR_COST 95
+#define XENO_RESIN_DOOR_THICK_COST 120
+#define XENO_RESIN_MEMBRANE_COST 70
+#define XENO_RESIN_MEMBRANE_THICK_COST 95
+#define XENO_RESIN_NEST_COST 70
+#define XENO_RESIN_STICKY_COST 30
+#define XENO_RESIN_FAST_COST 10
 
 /////////////////////////////////////////////////////////////////////////////////////
 //

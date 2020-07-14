@@ -14,11 +14,7 @@
 	M.reagents.remove_all_type(/datum/reagent/toxin, REM, 0, 1)
 
 /datum/chem_property/positive/antitoxic/process_overdose(mob/living/M, var/potency = 1)
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		var/datum/internal_organ/eyes/E = H.internal_organs_by_name["eyes"]
-		if(E)
-			E.damage += potency
+	M.apply_internal_damage(potency, "eyes")
 
 /datum/chem_property/positive/antitoxic/process_critical(mob/living/M, var/potency = 1)
 	M.drowsyness  = max(M.drowsyness, 30)
@@ -140,10 +136,7 @@
 /datum/chem_property/positive/musclestimulating/process_overdose(mob/living/M, var/potency = 1)
 	if(!ishuman(M))
 		return
-	var/mob/living/carbon/human/H = M
-	var/datum/internal_organ/heart/E = H.internal_organs_by_name["heart"]
-	if(E)
-		E.damage += potency
+	M.apply_internal_damage(potency, "heart")
 
 /datum/chem_property/positive/musclestimulating/process_critical(mob/living/M, var/potency = 1)
 	M.take_limb_damage(potency)
@@ -175,12 +168,8 @@
 	M.apply_damage(potency, TOX)
 
 /datum/chem_property/positive/painkilling/process_critical(mob/living/M, var/potency = 1)
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		var/datum/internal_organ/liver/L = H.internal_organs_by_name["liver"]
-		if(L)
-			L.damage += 3*potency
-	M.adjustBrainLoss(potency)
+	M.apply_internal_damage(3 * potency, "liver")
+	M.apply_damage(potency, BRAIN)
 	M.apply_damage(3, OXY)
 
 /datum/chem_property/positive/hepatopeutic
@@ -192,18 +181,12 @@
 /datum/chem_property/positive/hepatopeutic/process(mob/living/M, var/potency = 1)
 	if(!ishuman(M))
 		return
-	var/mob/living/carbon/human/H = M
-	var/datum/internal_organ/liver/L = H.internal_organs_by_name["liver"]
-	if(L)
-		L.damage = max(L.damage - 0.5*potency, 0)
+	M.apply_internal_damage(-(0.5 * potency), "liver")
 
 /datum/chem_property/positive/hepatopeutic/process_overdose(mob/living/M, var/potency = 1)
 	if(!ishuman(M))
 		return
-	var/mob/living/carbon/human/H = M
-	var/datum/internal_organ/liver/L = H.internal_organs_by_name["liver"]
-	if(L)
-		L.damage += 2*potency
+	M.apply_internal_damage(2 * potency, "liver")
 
 /datum/chem_property/positive/hepatopeutic/process_critical(mob/living/M, var/potency = 1)
 	M.apply_damage(5*potency, TOX)
@@ -217,18 +200,12 @@
 /datum/chem_property/positive/nephropeutic/process(mob/living/M, var/potency = 1)
 	if(!ishuman(M))
 		return
-	var/mob/living/carbon/human/H = M
-	var/datum/internal_organ/kidneys/L = H.internal_organs_by_name["kidneys"]
-	if(L)
-		L.damage = max(L.damage - 0.5*potency, 0)
+	M.apply_internal_damage(-(0.5 * potency), "kidneys")
 
 /datum/chem_property/positive/nephropeutic/process_overdose(mob/living/M, var/potency = 1)
 	if(!ishuman(M))
 		return
-	var/mob/living/carbon/human/H = M
-	var/datum/internal_organ/kidneys/L = H.internal_organs_by_name["kidneys"]
-	if(L)
-		L.damage += 2*potency
+	M.apply_internal_damage(2 * potency, "kidneys")
 
 /datum/chem_property/positive/nephropeutic/process_critical(mob/living/M, var/potency = 1)
 	M.apply_damage(5*potency, TOX)
@@ -242,18 +219,12 @@
 /datum/chem_property/positive/pneumopeutic/process(mob/living/M, var/potency = 1)
 	if(!ishuman(M))
 		return
-	var/mob/living/carbon/human/H = M
-	var/datum/internal_organ/lungs/L = H.internal_organs_by_name["lungs"]
-	if(L)
-		L.damage = max(L.damage - 0.5*potency, 0)
+	M.apply_internal_damage(-(0.5 * potency), "lungs")
 
 /datum/chem_property/positive/pneumopeutic/process_overdose(mob/living/M, var/potency = 1)
 	if(!ishuman(M))
 		return
-	var/mob/living/carbon/human/H = M
-	var/datum/internal_organ/lungs/L = H.internal_organs_by_name["lungs"]
-	if(L)
-		L.damage += 2*potency
+	M.apply_internal_damage(2 * potency, "lungs")
 
 /datum/chem_property/positive/pneumopeutic/process_critical(mob/living/M, var/potency = 1)
 	M.apply_damage(5*potency, OXY)
@@ -267,10 +238,7 @@
 /datum/chem_property/positive/oculopeutic/process(mob/living/M, var/potency = 1)
 	if(!ishuman(M))
 		return
-	var/mob/living/carbon/human/H = M
-	var/datum/internal_organ/eyes/L = H.internal_organs_by_name["eyes"]
-	if(L)
-		L.damage = max(L.damage - potency, 0)
+	M.apply_internal_damage(-potency, "eyes")
 	M.eye_blurry = max(M.eye_blurry-5*potency , 0)
 	M.eye_blind = max(M.eye_blind-5*potency , 0)
 
@@ -279,7 +247,7 @@
 
 /datum/chem_property/positive/oculopeutic/process_critical(mob/living/M, var/potency = 1)
 	M.apply_damages(potency, potency, 3 * potency)
-	M.adjustBrainLoss(potency)
+	M.apply_damage(potency, BRAIN)
 
 /datum/chem_property/positive/cardiopeutic
 	name = PROPERTY_CARDIOPEUTIC
@@ -295,10 +263,7 @@
 /datum/chem_property/positive/cardiopeutic/process(mob/living/M, var/potency = 1)
 	if(!ishuman(M) || !(..()))
 		return
-	var/mob/living/carbon/human/H = M
-	var/datum/internal_organ/heart/L = H.internal_organs_by_name["heart"]
-	if(L)
-		L.damage = max(L.damage - 0.5*potency, 0)
+	M.apply_internal_damage(-(0.5 * potency), "heart")
 
 /datum/chem_property/positive/cardiopeutic/process_overdose(mob/living/M, var/potency = 1)
 	M.apply_damage(2*potency, OXY)
@@ -316,13 +281,13 @@
 	rarity = PROPERTY_COMMON
 
 /datum/chem_property/positive/neuropeutic/process(mob/living/M, var/potency = 1)
-	M.adjustBrainLoss(-3 * potency)
+	M.apply_damage(-3 * potency, BRAIN)
 
 /datum/chem_property/positive/neuropeutic/process_overdose(mob/living/M, var/potency = 1)
 	M.apply_damage(potency, TOX)
 
 /datum/chem_property/positive/neuropeutic/process_critical(mob/living/M, var/potency = 1)
-	M.adjustBrainLoss(3 * potency)
+	M.apply_damage(3 * potency, BRAIN)
 	M.AdjustStunned(potency)
 
 /datum/chem_property/positive/bonemending
@@ -409,7 +374,7 @@
 	M.bodytemperature = max(M.bodytemperature-5*potency,0)
 
 /datum/chem_property/positive/neurocryogenic/process_critical(mob/living/M, var/potency = 1)
-	M.adjustBrainLoss(5 * potency)
+	M.apply_damage(5 * potency, BRAIN)
 
 /datum/chem_property/positive/neurocryogenic/process_dead(mob/living/M, var/potency = 1)
 	if(!ishuman(M))
@@ -498,10 +463,7 @@
 /datum/chem_property/positive/defibrillating/process_critical(mob/living/M, var/potency = 1)
 	if(!ishuman(M))
 		return
-	var/mob/living/carbon/human/H = M
-	var/datum/internal_organ/heart/L = H.internal_organs_by_name["heart"]
-	if(L)
-		L.damage += potency
+	M.apply_internal_damage(potency, "heart")
 
 /datum/chem_property/positive/defibrillating/process_dead(mob/living/M, var/potency = 1)
 	if(!ishuman(M))
@@ -561,13 +523,10 @@
 /datum/chem_property/positive/neuroshielding/process_overdose(mob/living/M, var/potency = 1)
 	if(!ishuman(M))
 		return
-	var/mob/living/carbon/human/H = M
-	var/datum/internal_organ/liver/L = H.internal_organs_by_name["liver"]
-	if(L)
-		L.damage += potency
+	M.apply_internal_damage(potency, "liver")
 
 /datum/chem_property/positive/neuroshielding/process_critical(mob/living/M, var/potency = 1)
-	M.adjustBrainLoss(2 * potency)
+	M.apply_damage(2*potency, BRAIN)
 
 /datum/chem_property/positive/antiaddictive
 	name = PROPERTY_ANTIADDICTIVE
@@ -587,7 +546,7 @@
 			D.cure()
 
 /datum/chem_property/positive/antiaddictive/process_overdose(mob/living/M, var/potency = 1)
-	M.adjustBrainLoss(2*potency)
+	M.apply_damage(2*potency, BRAIN)
 
 /datum/chem_property/positive/antiaddictive/process_critical(mob/living/M, var/potency = 1)
 	M.hallucination = max(M.hallucination, potency)
@@ -674,9 +633,7 @@
 	M.drowsyness = max(M.drowsyness, 20)
 	if(!ishuman(M)) //Critical overdose causes total blackout and heart damage. Too much stimulant
 		return
-	var/mob/living/carbon/human/H = M
-	var/datum/internal_organ/heart/E = H.internal_organs_by_name["heart"]
-	E.damage += 0.5
+	M.apply_internal_damage(0.5, "heart")
 	if(prob(10))
 		M.emote(pick("twitch","blink_r","shiver"))
 

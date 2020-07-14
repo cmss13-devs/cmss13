@@ -194,10 +194,7 @@
 	if(!ishuman(M))
 		return
 	..()
-	var/mob/living/carbon/human/H = M
-	var/datum/internal_organ/liver/L = H.internal_organs_by_name["liver"]
-	if(L)
-		L.damage += 0.75*potency
+	M.apply_internal_damage(0.75 * potency, "liver")
 
 /datum/chem_property/negative/hepatotoxic/process_overdose(mob/living/M, var/potency = 1)
 	M.apply_damage(2*potency, TOX)
@@ -215,10 +212,7 @@
 	if(!ishuman(M))
 		return
 	..()
-	var/mob/living/carbon/human/H = M
-	var/datum/internal_organ/kidneys/L = H.internal_organs_by_name["kidneys"]
-	if(L)
-		L.damage += 0.75*potency
+	M.apply_internal_damage(0.75 * potency, "kidneys")
 
 /datum/chem_property/negative/nephrotoxic/process_overdose(mob/living/M, var/potency = 1)
 	M.apply_damage(2*potency, TOX)
@@ -236,10 +230,7 @@
 	if(!ishuman(M))
 		return
 	..()
-	var/mob/living/carbon/human/H = M
-	var/datum/internal_organ/lungs/L = H.internal_organs_by_name["lungs"]
-	if(L)
-		L.damage += 0.75*potency
+	M.apply_internal_damage(0.75 * potency, "lungs")
 
 /datum/chem_property/negative/pneumotoxic/process_overdose(mob/living/M, var/potency = 1)
 	M.apply_damage(2*potency, OXY)
@@ -266,7 +257,7 @@
 	M.sdisabilities |= BLIND
 
 /datum/chem_property/negative/oculotoxic/process_critical(mob/living/M, var/potency = 1)
-	M.adjustBrainLoss(0.5*potency)
+	M.apply_damage(0.5*potency, BRAIN)
 
 /datum/chem_property/negative/cardiotoxic
 	name = PROPERTY_CARDIOTOXIC
@@ -278,10 +269,7 @@
 	if(!ishuman(M))
 		return
 	..()
-	var/mob/living/carbon/human/H = M
-	var/datum/internal_organ/heart/L = H.internal_organs_by_name["heart"]
-	if(L)
-		L.damage += 0.75*potency
+	M.apply_internal_damage(0.75 * potency, "heart")
 
 /datum/chem_property/negative/cardiotoxic/process_overdose(mob/living/M, var/potency = 1)
 	M.apply_damage(2*potency, OXY)
@@ -297,10 +285,10 @@
 	category = PROPERTY_TYPE_TOXICANT|PROPERTY_TYPE_STIMULANT
 
 /datum/chem_property/negative/neurotoxic/process(mob/living/M, var/potency = 1)
-	M.adjustBrainLoss(1.75*potency)
+	M.apply_damage(1.75*potency, BRAIN)
 
 /datum/chem_property/negative/neurotoxic/process_overdose(mob/living/M, var/potency = 1)
-	M.adjustBrainLoss(3*potency)
+	M.apply_damage(3*potency, BRAIN)
 	M.jitteriness = min(M.jitteriness + potency, 3 * potency)
 	if(prob(50))
 		M.drowsyness = min(M.drowsyness + potency, 3 * potency)
@@ -341,7 +329,7 @@
 		M.contract_disease(D, TRUE)
 
 /datum/chem_property/negative/addictive/process_overdose(mob/living/M, var/potency = 1)
-	M.adjustBrainLoss(potency)
+	M.apply_damage(potency, BRAIN)
 
 /datum/chem_property/negative/addictive/process_critical(mob/living/M, var/potency = 1)
 	M.disabilities |= NERVOUS

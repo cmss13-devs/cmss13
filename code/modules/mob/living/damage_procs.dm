@@ -30,20 +30,25 @@
 			adjustCloneLoss(damage)
 		if(HALLOSS)
 			adjustHalLoss(damage)
+		if(BRAIN)
+			adjustBrainLoss(damage)
+			damage = damage * PAIN_ORGAN_DAMAGE_MULTIPLIER
 	pain.apply_pain(damage, damagetype)
 	updatehealth()
 	return 1
 
-
-/mob/living/proc/apply_damages(var/brute = 0, var/burn = 0, var/tox = 0, var/oxy = 0, var/clone = 0, var/halloss = 0, var/def_zone = null)
+/mob/living/proc/apply_damages(var/brute = 0, var/burn = 0, var/tox = 0, var/oxy = 0, var/clone = 0, var/halloss = 0, var/brain = 0, var/def_zone = null)
 	if(brute)	apply_damage(brute, BRUTE, def_zone)
 	if(burn)	apply_damage(burn, BURN, def_zone)
 	if(tox)		apply_damage(tox, TOX, def_zone)
 	if(oxy)		apply_damage(oxy, OXY, def_zone)
 	if(clone)	apply_damage(clone, CLONE, def_zone)
 	if(halloss) apply_damage(halloss, HALLOSS, def_zone)
+	if(brain)	apply_damage(brain, BRAIN, def_zone)
 	return 1
 
+/mob/living/proc/apply_internal_damage(var/damage = 0, var/organ)
+	return
 
 
 /mob/living/proc/apply_effect(var/effect = 0,var/effecttype = STUN)

@@ -6,7 +6,7 @@
 
 	flags_equip_slot = SLOT_BACK
 	w_class = SIZE_LARGE
-	force = 15
+	force = 5
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK
 	aim_slowdown = SLOWDOWN_ADS_RIFLE
 	wield_delay = WIELD_DELAY_NORMAL

@@ -70,6 +70,8 @@
 #define CUT 		"cut"
 #define BRUISE		"bruise"
 #define HALLOSS		"halloss"
+#define BRAIN		"brain"
+
 //=================================================
 
 #define STUN		"stun"

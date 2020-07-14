@@ -5,7 +5,7 @@
 	cocked_sound = 'sound/weapons/gun_cocked2.ogg'
 
 	fire_sound = 'sound/weapons/gun_m39.ogg'
-	force = 8
+	force = 5
 	w_class = SIZE_LARGE
 	movement_acc_penalty_mult = 4
 	aim_slowdown = SLOWDOWN_ADS_SMG

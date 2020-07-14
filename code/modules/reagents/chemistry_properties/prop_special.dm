@@ -36,7 +36,7 @@
 		return
 	var/mob/living/carbon/human/H = M
 	for(var/datum/internal_organ/O in H.internal_organs)
-		O.heal_damage(potency)
+		M.apply_internal_damage(-potency, O)
 
 /datum/chem_property/special/hypergenetic/process_overdose(mob/living/M, var/potency = 1)
 	M.adjustCloneLoss(2*potency)
@@ -236,5 +236,4 @@
 		return
 	var/mob/living/carbon/human/H = M
 	for(var/datum/internal_organ/I in H.internal_organs)
-		if(I.damage > 0)
-			I.damage = max(I.damage - 1, 0)
+		M.apply_internal_damage(1, I)

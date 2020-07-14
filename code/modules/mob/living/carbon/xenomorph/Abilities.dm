@@ -273,7 +273,7 @@
 		to_chat(X, SPAN_WARNING("You must overwatch the Xenomorph you want to give orders to."))
 
 /datum/action/xeno_action/activable/place_construction
-	name = "Order Construction (500)"
+	name = "Order Construction (400)"
 	action_icon_state = "morph_resin"
 	ability_name = "order construction"
 	macro_path = /datum/action/xeno_action/verb/place_construction
@@ -352,7 +352,7 @@
 				qdel(structure_template)
 				return FALSE
 
-	X.use_plasma(500)
+	X.use_plasma(400)
 	X.place_construction(T, structure_template)
 
 /datum/action/xeno_action/deevolve

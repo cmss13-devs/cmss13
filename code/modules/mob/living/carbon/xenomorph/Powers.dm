@@ -51,7 +51,7 @@
 
 /mob/living/carbon/Xenomorph/proc/build_resin(atom/A, thick=FALSE, message=TRUE)
 
-	var/base_resin_cost = 50
+	var/base_resin_cost = XENO_RESIN_BASE_COST
 	var/additional_resin_cost = 0
 	var/total_resin_cost = 0
 
@@ -60,25 +60,25 @@
 	switch(resin_to_build)
 		if(RESIN_DOOR)
 			if(thick)
-				additional_resin_cost = 125
+				additional_resin_cost = XENO_RESIN_DOOR_THICK_COST
 			else
-				additional_resin_cost = 100//total 150 & 175 thick
+				additional_resin_cost = XENO_RESIN_DOOR_COST//total 150 & 175 thick
 		if(RESIN_WALL)
 			if(thick)
-				additional_resin_cost = 150
+				additional_resin_cost = XENO_RESIN_WALL_THICK_COST
 			else
-				additional_resin_cost = 100//total 150 & 200 thick
+				additional_resin_cost = XENO_RESIN_WALL_COST //total 150 & 200 thick
 		if(RESIN_MEMBRANE)
 			if(thick)
-				additional_resin_cost = 100
+				additional_resin_cost = XENO_RESIN_MEMBRANE_THICK_COST
 			else
-				additional_resin_cost = 75//total cost 125 & 150 thick
+				additional_resin_cost = XENO_RESIN_MEMBRANE_COST//total cost 125 & 150 thick
 		if(RESIN_NEST)
-			additional_resin_cost = 75//total 125
+			additional_resin_cost = XENO_RESIN_NEST_COST//total 125
 		if(RESIN_STICKY)
-			additional_resin_cost = 35//total 85
+			additional_resin_cost = XENO_RESIN_STICKY_COST//total 85
 		if(RESIN_FAST)
-			additional_resin_cost = 15//total 65
+			additional_resin_cost = XENO_RESIN_FAST_COST//total 65
 
 	total_resin_cost = base_resin_cost + additional_resin_cost//live, diet, shit code, repeat
 

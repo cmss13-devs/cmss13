@@ -7,28 +7,33 @@
 	Each mob should spawn with a pain datumn. 
 
 	Can be customized for each mob, default procs are slow and messages appearing at mild.
-		Moderate, more slow, new message.
-		Modsevere, slow getting worse, vision starting to fade.
-		Severe, slowed a lot, oxygen damage starting to build up.
-		Very severe, rapid oxygen buildup, knocked out.
+		discomforting-moderate, more slow, new message.
+		distressing, slow getting worse, vision starting to fade.
+		severe, slowed a lot, oxygen damage starting to build up.
+		horrible, rapid oxygen buildup, knocked out.
 
 	Pain is applied and removed when needed with the apply_pain() proc.
 	Negative values remove and positive values add.
 */
 
 // Pain level, how bad are you in pain right now
-#define PAIN_LEVEL_NONE 0
-#define PAIN_LEVEL_MILD 1
-#define PAIN_LEVEL_MODERATE 2
-#define PAIN_LEVEL_MODSEVERE 3
-#define PAIN_LEVEL_SEVERE 4
-#define PAIN_LEVEL_VERY_SEVERE 5
+#define PAIN_LEVEL_NONE				0
+#define PAIN_LEVEL_MILD				1
+#define PAIN_LEVEL_DISCOMFORTING	2
+#define PAIN_LEVEL_MODERATE			3
+#define PAIN_LEVEL_DISTRESSING		4
+#define PAIN_LEVEL_SEVERE			5
+#define PAIN_LEVEL_HORRIBLE			6
+
+// Time to wait between each pain level increase/decrease
+#define PAIN_UPDATE_FREQUENCY 30
 
 // Movespeed levels, how much is the pain slowing you
 #define PAIN_SPEED_VERYSLOW	4.50
 #define PAIN_SPEED_SLOW		3.75
-#define PAIN_SPEED_MED		2.75
-#define PAIN_SPEED_LOW		1.50
+#define PAIN_SPEED_HIGH		2.75
+#define PAIN_SPEED_MED		1.50
+#define PAIN_SPEED_LOW		1
 
 // Multipliers for how much pain the different types give
 #define BRUTE_PAIN_MULTIPLIER 1
@@ -45,15 +50,17 @@
 	var/pain_level 			= PAIN_LEVEL_NONE
 	var/last_level			= PAIN_LEVEL_NONE
 
-	var/threshold_mild 		= 20
-	var/threshold_moderate 	= 40
-	var/threshold_modsevere	= 60
-	var/threshold_severe 	= 75
-	var/threshold_very_severe = 90
+	var/threshold_mild 				= 20
+	var/threshold_discomforting 	= 30
+	var/threshold_moderate			= 40
+	var/threshold_distressing		= 60
+	var/threshold_severe			= 75
+	var/threshold_horrible			= 85
 
 	var/pain_slowdown		= 0
 	
 	var/last_reduction_update = 0
+	var/level_updating		= FALSE
 
 	var/feels_pain = TRUE
 
@@ -111,35 +118,32 @@
 	update_pain_level()
 
 /datum/pain/proc/update_pain_level()
+	if(level_updating)
+		return
+
 	var/new_level = PAIN_LEVEL_NONE
 	var/pain_percentage = get_pain_percentage()
-	if(pain_percentage >= threshold_very_severe && !isnull(threshold_very_severe))
-		new_level = PAIN_LEVEL_VERY_SEVERE
-	else if (pain_percentage >= threshold_severe && !isnull(threshold_severe))
+	if(pain_percentage >= threshold_horrible && !isnull(threshold_horrible))
+		new_level = PAIN_LEVEL_HORRIBLE
+	else if(pain_percentage >= threshold_severe && !isnull(threshold_severe))
 		new_level = PAIN_LEVEL_SEVERE
-	else if (pain_percentage >= threshold_modsevere && !isnull(threshold_modsevere))
-		new_level = PAIN_LEVEL_MODSEVERE
+	else if (pain_percentage >= threshold_distressing && !isnull(threshold_distressing))
+		new_level = PAIN_LEVEL_DISTRESSING
 	else if (pain_percentage >= threshold_moderate && !isnull(threshold_moderate))
 		new_level = PAIN_LEVEL_MODERATE
+	else if (pain_percentage >= threshold_discomforting && !isnull(threshold_discomforting))
+		new_level = PAIN_LEVEL_DISCOMFORTING
 	else if (pain_percentage >= threshold_mild && !isnull(threshold_mild))
 		new_level = PAIN_LEVEL_MILD
 
 	if(!check_active_pain(new_level))
 		return
 
-	switch(new_level)
-		if(PAIN_LEVEL_MILD)
-			activate_mild()
-		if(PAIN_LEVEL_MODERATE)
-			activate_moderate()
-		if(PAIN_LEVEL_MODSEVERE)
-			activate_modsevere()
-		if(PAIN_LEVEL_SEVERE)
-			activate_severe()
-		if(PAIN_LEVEL_VERY_SEVERE)
-			activate_very_severe()
-			
-	last_level = new_level
+	if(new_level > last_level)
+		increase_pain_level()
+	else
+		decrease_pain_level()
+		
 
 /datum/pain/proc/check_active_pain(var/level = 0)
 	if(level == last_level) //Check if the new level is same as old one
@@ -151,6 +155,74 @@
 	pain_slowdown = 0
 
 	return TRUE
+
+/datum/pain/proc/increase_pain_level()
+	level_updating = TRUE
+
+	var/new_level = PAIN_LEVEL_NONE
+	switch(last_level)
+		if(PAIN_LEVEL_NONE)
+			new_level = PAIN_LEVEL_MILD
+			if(!isnull(threshold_mild))
+				activate_mild()
+		if(PAIN_LEVEL_MILD)
+			new_level = PAIN_LEVEL_DISCOMFORTING
+			if(!isnull(threshold_discomforting))
+				activate_discomforting()
+		if(PAIN_LEVEL_DISCOMFORTING)
+			new_level = PAIN_LEVEL_MODERATE
+			if(!isnull(threshold_moderate))
+				activate_moderate()
+		if(PAIN_LEVEL_MODERATE)
+			new_level = PAIN_LEVEL_DISTRESSING
+			if(!isnull(threshold_distressing))
+				activate_distressing()
+		if(PAIN_LEVEL_DISTRESSING)
+			new_level = PAIN_LEVEL_SEVERE
+			if(!isnull(threshold_severe))
+				activate_severe()
+		if(PAIN_LEVEL_SEVERE)
+			new_level = PAIN_LEVEL_HORRIBLE
+			if(!isnull(threshold_horrible))
+				activate_horrible()
+
+	last_level = new_level
+	add_timer(CALLBACK(src, .proc/before_update), PAIN_UPDATE_FREQUENCY)
+
+/datum/pain/proc/decrease_pain_level()
+	level_updating = TRUE
+
+	var/new_level = PAIN_LEVEL_SEVERE
+	switch(last_level)
+		if(PAIN_LEVEL_MILD)
+			new_level = PAIN_LEVEL_NONE
+		if(PAIN_LEVEL_DISCOMFORTING)
+			new_level = PAIN_LEVEL_MILD
+			if(!isnull(threshold_mild))
+				activate_mild()
+		if(PAIN_LEVEL_MODERATE)
+			new_level = PAIN_LEVEL_DISCOMFORTING
+			if(!isnull(threshold_discomforting))
+				activate_discomforting()
+		if(PAIN_LEVEL_DISTRESSING)
+			new_level = PAIN_LEVEL_MODERATE
+			if(!isnull(threshold_moderate))
+				activate_moderate()
+		if(PAIN_LEVEL_SEVERE)
+			new_level = PAIN_LEVEL_DISTRESSING
+			if(!isnull(threshold_distressing))
+				activate_distressing()
+		if(PAIN_LEVEL_HORRIBLE)
+			new_level = PAIN_LEVEL_SEVERE
+			if(!isnull(threshold_severe))
+				activate_severe()
+
+	last_level = new_level
+	add_timer(CALLBACK(src, .proc/before_update), PAIN_UPDATE_FREQUENCY)
+
+/datum/pain/proc/before_update()
+	level_updating = FALSE
+	update_pain_level()
 
 /datum/pain/proc/recalculate_pain()
 	// Reset the current pain back to start
@@ -172,21 +244,25 @@
 	pain_slowdown = PAIN_SPEED_LOW
 	new /datum/effects/pain/human/mild(source_mob)
 
-/datum/pain/proc/activate_moderate()
+/datum/pain/proc/activate_discomforting()
 	pain_slowdown = PAIN_SPEED_MED
+	new /datum/effects/pain/human/discomforting(source_mob)
+
+/datum/pain/proc/activate_moderate()
+	pain_slowdown = PAIN_SPEED_HIGH
 	new /datum/effects/pain/human/moderate(source_mob)
 
-/datum/pain/proc/activate_modsevere()
+/datum/pain/proc/activate_distressing()
 	pain_slowdown = PAIN_SPEED_SLOW
-	new /datum/effects/pain/human/modsevere(source_mob)
+	new /datum/effects/pain/human/distressing(source_mob)
 
 /datum/pain/proc/activate_severe()
-	pain_slowdown = PAIN_SPEED_SLOW
+	pain_slowdown = PAIN_SPEED_VERYSLOW
 	new /datum/effects/pain/human/severe(source_mob)
 
-/datum/pain/proc/activate_very_severe()
+/datum/pain/proc/activate_horrible()
 	pain_slowdown = PAIN_SPEED_VERYSLOW
-	new /datum/effects/pain/human/very_severe(source_mob)
+	new /datum/effects/pain/human/horrible(source_mob)
 
 /datum/pain/Dispose()
 	. = ..()

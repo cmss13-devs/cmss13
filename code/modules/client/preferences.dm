@@ -170,6 +170,21 @@ var/const/MAX_SAVE_SLOTS = 10
 	real_name = random_name(gender)
 	gear = list()
 
+/datum/preferences/Del()
+	. = ..()
+
+	// Preferences should not be getting deleted because they are reffed in a list
+	var/client_qdeled = isnull(owner) || owner.disposed
+	var/client_status = client_qdeled ? "client is null or disposed" : "client is OK"
+	var/client_mob_status
+	if (client_qdeled)
+		client_mob_status = "no client for mob"
+	else if (isnull(owner.mob) || owner.mob.disposed)
+		client_mob_status = "client mob is null or disposed"
+	else
+		client_mob_status = "client mob is OK"
+	CRASH("Preferences deleted unexpectedly: [client_status]; [client_mob_status]")
+
 /datum/preferences/proc/ShowChoices(mob/user)
 	if(!user || !user.client)	
 		return

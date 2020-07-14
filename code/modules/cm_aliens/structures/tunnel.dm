@@ -146,11 +146,6 @@ var/list/obj/structure/tunnel/global_tunnel_list = list()
 	if(!istype(M) || M.stat || M.lying)
 		return FALSE
 
-	//Prevents using tunnels by the queen to bypass the fog.
-	if(ticker && ticker.mode && ticker.mode.flags_round_type & MODE_FOG_ACTIVATED && isXenoQueen(M))
-		to_chat(M, SPAN_XENOWARNING("There is no reason to leave the safety of the caves yet."))
-		return FALSE
-
 	if(M.anchored)
 		to_chat(M, SPAN_XENOWARNING("You can't climb through a tunnel while immobile."))
 		return FALSE

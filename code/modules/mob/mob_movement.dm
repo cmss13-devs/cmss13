@@ -15,7 +15,6 @@
 
 
 /client/Northeast()
-	swap_hand()
 	return
 
 
@@ -52,7 +51,9 @@
 	usr.stop_pulling()
 
 /client/verb/swap_hand()
+	set name = ".SwapMobHand"
 	set hidden = 1
+
 	if(istype(mob, /mob/living/carbon))
 		mob.swap_hand()
 	if(istype(mob,/mob/living/silicon/robot))
@@ -76,12 +77,6 @@
 
 
 /client/Center()
-	/* No 3D movement in 2D spessman game. dir 16 is Z Up
-	if (isobj(mob.loc))
-		var/obj/O = mob.loc
-		if (mob.canmove)
-			return O.relaymove(mob, 16)
-	*/
 	return
 
 

@@ -401,6 +401,16 @@
 	basestate = "fwindow"
 	health = 30
 
+/obj/structure/window/reinforced/ultra
+	name = "ultra-reinforced window"
+	desc = "An ultra-reinforced window designed to keep the briefing podium a secure area."
+	icon_state = "fwindow"
+	basestate = "fwindow"
+	not_damageable = 1
+	not_deconstructable = 1
+	unslashable = TRUE
+	unacidable = TRUE
+
 /obj/structure/window/reinforced/full
 	flags_atom = FPRINT
 	icon_state = "rwindow0"

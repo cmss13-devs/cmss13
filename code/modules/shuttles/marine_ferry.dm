@@ -500,8 +500,17 @@
 		cell_explosion(sploded, 200, 20, null, "dropship crash") //Clears out walls
 		sleep(3)
 
+	// Break the reqs windows.
 	for(var/obj/structure/window/framed/almayer/requisitions/R in structure_list)
-		R.shatter_window(1) // break the reqs windows
+		R.shatter_window(1)
+
+	// Break the briefing windows.
+	for(var/obj/structure/window/reinforced/ultra/W in structure_list)
+		W.shatter_window(1)
+
+	// Delete the briefing door(s).
+	for(var/obj/structure/machinery/door/window/ultra/D in structure_list)
+		qdel(D)
 
 	// Sleep while the explosions do their job
 	var/explosion_alive = TRUE

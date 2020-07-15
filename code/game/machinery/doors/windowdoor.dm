@@ -283,3 +283,11 @@
 
 /obj/structure/machinery/door/window/tinted
 	opacity = 1
+
+/obj/structure/machinery/door/window/ultra
+	name = "Ultra-reinforced glass door"
+	desc = "A window, that is also a door. A windoor if you will. It is indestructible."
+
+// No damage taken.
+/obj/structure/machinery/door/window/ultra/attackby(obj/item/I, mob/user)
+	return try_to_activate_door(user)

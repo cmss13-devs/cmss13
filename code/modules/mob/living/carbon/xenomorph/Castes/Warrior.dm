@@ -81,7 +81,7 @@
 	if(!isliving(AM))
 		return FALSE
 	var/mob/living/L = AM
-	var/should_neckgrab = (isHumanStrict(L) || (isXeno(L) && !matches_hivemind(L, src))) && lunge
+	var/should_neckgrab = isHumanStrict(L) || (isXeno(L) && !matches_hivemind(L, src) )
 
 	if(!isnull(L) && !isnull(L.pulledby) && L != src ) //override pull of other mobs
 		visible_message(SPAN_WARNING("[src] has broken [L.pulledby]'s grip on [L]!"), null, null, 5)

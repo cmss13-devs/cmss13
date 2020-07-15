@@ -195,6 +195,10 @@
 	. = ..()	//calls mob.Login()
 	chatOutput.start()
 
+	// Macros added at runtime
+	runtime_macro_insert("X", "hotkeymode", ".SwapMobHand")
+	runtime_macro_insert("Ctrl+X", "default", ".SwapMobHand")
+
 	// Version check below if we ever need to start checking against BYOND versions again.
 
 	/*if((byond_version < world.byond_version) || ((byond_version == world.byond_version) && (byond_build < world.byond_build)))
@@ -352,3 +356,27 @@
 /client/proc/add_pref_verbs()
 	verbs += /client/proc/show_combat_chat_preferences
 	verbs += /client/proc/show_ghost_preferences
+
+/client/proc/runtime_macro_insert(var/macro_button, var/parent, var/command)
+	if (!macro_button || !parent || !command)
+		return
+
+	var/list/macro_sets = params2list(winget(src, null, "macros"))
+	if (!(parent in macro_sets))
+		var/old = params2list(winget(src, "mainwindow", "macro"))[1]
+		winset(src, null, "mainwindow.macro=[parent]")
+		winset(src, null, "mainwindow.macro=[old]")
+
+	winset(src, "[parent].[macro_button]", "parent=[parent];name=[macro_button];command=[command]")
+
+/client/proc/runtime_macro_remove(var/macro_button, var/parent)
+	if (!macro_button || !parent)
+		return
+
+	var/list/macro_sets = params2list(winget(src, null, "macros"))
+	if (!(parent in macro_sets))
+		var/old = params2list(winget(src, "mainwindow", "macro"))[1]
+		winset(src, null, "mainwindow.macro=[parent]")
+		winset(src, null, "mainwindow.macro=[old]")
+
+	winset(src, "[parent].[macro_button]", "parent=")

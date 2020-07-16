@@ -516,9 +516,9 @@ ICE GRASS
 						H.next_move_slowdown = new_slowdown
 						to_chat(H, SPAN_WARNING("You got completely tangeled in [src]! Oh boy..."))
 
-/obj/structure/flora/jungle/thickbush/attackby(var/obj/I as obj, var/mob/user as mob)
+/obj/structure/flora/jungle/thickbush/attackby(obj/item/I as obj, mob/user as mob)
 	//hatchets and shiet can clear away undergrowth
-	if(I && (istype(I, /obj/item/tool/hatchet) || istype(I, /obj/item/attachable/bayonet) || istype(I, /obj/item/weapon/melee/claymore/mercsword) && !stump))
+	if(I && (I.sharp >= IS_SHARP_ITEM_ACCURATE) && !stump)
 		var/damage = rand(2,5)
 		if(istype(I,/obj/item/weapon/melee/claymore/mercsword))
 			damage = rand(8,18)
@@ -530,7 +530,7 @@ ICE GRASS
 			playsound(src.loc, 'sound/effects/vegetation_hit.ogg', 25, 1)
 			health -= damage
 			if(health < 0)
-				to_chat(user, SPAN_NOTICE(" You clear away [src]."))
+				to_chat(user, SPAN_NOTICE("You clear away [src]."))
 			healthcheck()
 	else
 		return ..()

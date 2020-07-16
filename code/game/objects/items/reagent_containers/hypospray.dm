@@ -48,6 +48,13 @@
 		return
 	. = ..()
 
+/obj/item/reagent_container/hypospray/attack_self(mob/user as mob)
+	if (world.time <= user.next_move)
+		return
+	attack(user, user)
+	user.next_move += attack_speed
+	return
+
 /obj/item/reagent_container/hypospray/attack(mob/M, mob/living/user)
 	var/datum/reagents/liquid
 	if(istype(src,/obj/item/reagent_container/hypospray/autoinjector))

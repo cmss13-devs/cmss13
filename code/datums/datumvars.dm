@@ -224,6 +224,8 @@
 	if(isobj(D) || ismob(D) || isturf(D))
 		body += "<option value='?_src_=vars;explode=\ref[D]'>Trigger explosion</option>"
 		body += "<option value='?_src_=vars;emp=\ref[D]'>Trigger EM pulse</option>"
+	if(isarea(D))
+		body += "<option value='?_src_=vars;togglelighting=\ref[D]'>Toggle lighting</option>"
 
 	body += "</select></form>"
 
@@ -531,6 +533,28 @@ body
 					to_chat(usr, "No objects of this type exist")
 					return
 				message_admins(SPAN_NOTICE("[key_name(usr)] deleted all objects of type or subtype of [O_type] ([i] objects deleted) "))
+
+	else if(href_list["togglelighting"])
+		if(!check_rights(R_DEBUG|R_VAREDIT))	
+			return
+
+		var/area/A = locate(href_list["togglelighting"])
+		if(!isarea(A))
+			return
+
+		if(A.lighting_use_dynamic)
+			A.lighting_use_dynamic = FALSE
+			A.lighting_subarea = FALSE
+
+			A.requires_power = FALSE
+		else
+			A.lighting_use_dynamic = TRUE
+			A.lighting_subarea = TRUE
+
+			A.requires_power = TRUE
+
+		A.InitializeLighting()
+
 
 	else if(href_list["explode"])
 		if(!check_rights(R_DEBUG|R_FUN))	

@@ -280,7 +280,7 @@
 				if(!is_outside && !cavebreaker) //cavebreaker doesn't care
 					to_chat(usr, SPAN_WARNING("INVALID TARGET: target must be visible from high altitude."))
 					return
-				if (TU.protected_by_pylon())
+				if (protected_by_pylon(TURF_PROTECTION_CAS, TU))
 					to_chat(usr, SPAN_WARNING("INVALID TARGET: biological-pattern interference with signal."))
 					return
 

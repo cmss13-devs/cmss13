@@ -391,6 +391,13 @@ var/static/list/scarySounds = list('sound/weapons/thudswoosh.ogg','sound/weapons
 #define MIDSHIP "Midship"
 #define AFTSHIP "Aftship"
 
+// Turf protection levels
+
+#define TURF_PROTECTION_NONE 0
+#define TURF_PROTECTION_MORTAR 1
+#define TURF_PROTECTION_CAS 2
+#define TURF_PROTECTION_OB 3
+
 // Anything above the deck boundary is the upper deck, anything below is the lower deck
 // This is exclusive, so anything ON the boundary is an edge case that's neither on the upper nor the lower deck
 #define ALMAYER_DECK_BOUNDARY 101

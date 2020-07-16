@@ -10,6 +10,8 @@
 	var/node_type = /obj/effect/alien/weeds/node/pylon
 	var/linked_turfs = list()
 
+	var/protection_level = TURF_PROTECTION_CAS
+
 /obj/effect/alien/resin/special/pylon/New(loc, var/hive_ref)
 	. = ..(loc, hive_ref)
 
@@ -80,6 +82,8 @@
 	luminosity = 4
 	cover_range = WEED_RANGE_CORE
 	node_type = /obj/effect/alien/weeds/node/pylon/core
+
+	protection_level = TURF_PROTECTION_OB
 
 /obj/effect/alien/resin/special/pylon/core/New(loc, var/datum/hive_status/hive_ref)
 	..(loc, hive_ref)

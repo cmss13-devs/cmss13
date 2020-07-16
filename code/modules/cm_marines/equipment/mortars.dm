@@ -130,7 +130,7 @@
 			to_chat(user, SPAN_WARNING("You cannot fire [src] to this target."))
 			return
 		var/area/A = get_area(T)
-		if((istype(A) && A.ceiling >= CEILING_UNDERGROUND) || T.protected_by_pylon())
+		if((istype(A) && A.ceiling >= CEILING_UNDERGROUND) || protected_by_pylon(TURF_PROTECTION_MORTAR, T))
 			to_chat(user, SPAN_WARNING("You cannot hit the target. It is probably underground."))
 			return
 

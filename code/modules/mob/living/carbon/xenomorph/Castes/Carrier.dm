@@ -65,20 +65,19 @@
 /mob/living/carbon/Xenomorph/Carrier/death(var/cause, var/gibbed)
 	. = ..(cause, gibbed)
 	if(.)
-		var/obj/item/xeno_egg/E
-		var/obj/item/clothing/mask/facehugger/F
 		var/chance = 75
 
 		while (eggs_cur > 0)
 			if(prob(chance))
-				new E(loc, hivenumber)
+				new /obj/item/xeno_egg(loc, hivenumber)
 				eggs_cur--
 		if (huggers_cur)
 			visible_message(SPAN_XENOWARNING("The chittering mass of tiny aliens is trying to escape [src]!"))
 			for(var/i in 0 to huggers_cur)
 				if(prob(chance))
-					F = new(loc, hivenumber)
+					var/obj/item/clothing/mask/facehugger/F = new(loc, hivenumber)
 					step_away(F,src,1)
+					add_timer(CALLBACK(F, /obj/item/clothing/mask/facehugger/.proc/leap_at_nearest_target), SECONDS_3)
 
 
 /mob/living/carbon/Xenomorph/Carrier/Stat()

@@ -4,12 +4,12 @@
 
 	melee_damage_lower = XENO_DAMAGE_TIER_4
 	melee_damage_upper = XENO_DAMAGE_TIER_6
-	max_health = XENO_HEALTH_TIER_4
+	max_health = XENO_HEALTH_TIER_5
 	plasma_gain = XENO_PLASMA_GAIN_ULTRAHIGH
 	plasma_max = XENO_PLASMA_TIER_1
 	xeno_explosion_resistance = XENO_HEAVY_EXPLOSIVE_ARMOR
-	armor_deflection = XENO_ARMOR_TIER_1
-	armor_hardiness_mult = XENO_ARMOR_FACTOR_MEDIUM
+	armor_deflection = XENO_ARMOR_TIER_1 + XENO_ARMOR_MOD_VERYSMALL
+	armor_hardiness_mult = XENO_ARMOR_FACTOR_VERYHIGH
 	evasion = XENO_EVASION_LOW
 	speed = XENO_SPEED_TIER_7
 
@@ -81,7 +81,7 @@
 	if(!isliving(AM))
 		return FALSE
 	var/mob/living/L = AM
-	var/should_neckgrab = isHumanStrict(L) || (isXeno(L) && !matches_hivemind(L, src) )
+	var/should_neckgrab = (isHumanStrict(L) || (isXeno(L) && !matches_hivemind(L, src))) && lunge
 
 	if(!isnull(L) && !isnull(L.pulledby) && L != src ) //override pull of other mobs
 		visible_message(SPAN_WARNING("[src] has broken [L.pulledby]'s grip on [L]!"), null, null, 5)

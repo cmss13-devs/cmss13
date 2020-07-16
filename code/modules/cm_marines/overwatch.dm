@@ -819,6 +819,10 @@
 	var/turf/T = locate(x_coord, y_coord, 1)
 
 	var/area/A = get_area(T)
+	if(protected_by_pylon(TURF_PROTECTION_OB, T))
+		to_chat(user, "[htmlicon(src, user)] [SPAN_WARNING("The target zone has strong biological protection. The orbital strike cannot reach here.")]")
+		return
+
 	if(istype(A) && A.ceiling >= CEILING_DEEP_UNDERGROUND)
 		to_chat(user, "[htmlicon(src, user)] [SPAN_WARNING("The target zone is deep underground. The orbital strike cannot reach here.")]")
 		return

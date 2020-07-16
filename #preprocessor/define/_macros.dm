@@ -6,3 +6,5 @@
 #define subtypesof(A) (typesof(A) - A)
 
 #define addToListNoDupe(L, index) if(L) L[index] = null; else L = list(index)
+
+#define	protected_by_pylon(protection, T) (T.get_pylon_protection_level() >= protection)

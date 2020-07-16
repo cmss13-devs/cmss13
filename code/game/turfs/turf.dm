@@ -30,7 +30,7 @@
 	var/intact_tile = 1 //used by floors to distinguish floor with/without a floortile(e.g. plating).
 	var/can_bloody = TRUE //Can blood spawn on this turf?
 	var/old_turf = "" //The previous turf's path as text. Used when deconning on LV --MadSnailDisease
-	var/linked_pylons = list()
+	var/list/linked_pylons = list()
 
 	var/list/datum/automata_cell/autocells = list()
 	var/list/dirt_overlays = list()
@@ -346,9 +346,17 @@
 
 /turf/proc/ceiling_desc(mob/user)
 
-	if (protected_by_pylon())
-		to_chat(user, "The ceiling above is made of resin.")
-		return
+	if (linked_pylons.len > 0)
+		switch(get_pylon_protection_level())
+			if(TURF_PROTECTION_MORTAR)
+				to_chat(user, "The ceiling above is made of light resin.")
+				return
+			if(TURF_PROTECTION_CAS)
+				to_chat(user, "The ceiling above is made of resin.")
+				return
+			if(TURF_PROTECTION_OB)
+				to_chat(user, "The ceiling above is made of thick resin. Nothing is getting through that")
+				return
 
 	var/area/A = get_area(src)
 	switch(A.ceiling)
@@ -480,13 +488,18 @@
 /turf/proc/stop_crusher_charge()
 	return FALSE
 
-// Kinda expensive check to see if a turf is protected by a pylon
-// If you think of a better way to do this feel free, but it's kinda tricky
-/turf/proc/protected_by_pylon()
+/turf/proc/get_pylon_protection_level()
+	var/protection_level = TURF_PROTECTION_NONE
 	for (var/atom/pylon in linked_pylons)
 		if (pylon.loc != null)
-			return TRUE
+			var/obj/effect/alien/resin/special/pylon/P = pylon
+
+			if(!istype(P))
+				continue
+
+			if(P.protection_level > protection_level)
+				protection_level = P.protection_level
 		else 
 			linked_pylons -= pylon
 
-	return FALSE
+	return protection_level

@@ -51,6 +51,10 @@
 		to_chat(user, SPAN_WARNING("No. This area is needed for the dropship."))
 		return
 
+	if(!do_after(user, SECONDS_3, INTERRUPT_ALL, BUSY_ICON_BUILD))
+		to_chat(user, SPAN_WARNING("Hold still while you're constructing a table!"))
+		return
+
 	var/obj/structure/table/T = new table_type(user.loc)
 	T.add_fingerprint(user)
 	user.drop_held_item()

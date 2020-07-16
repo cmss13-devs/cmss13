@@ -198,6 +198,8 @@
 	// Macros added at runtime
 	runtime_macro_insert("X", "hotkeymode", ".SwapMobHand")
 	runtime_macro_insert("Ctrl+X", "default", ".SwapMobHand")
+	runtime_macro_insert("Northeast", "hotkeymode", ".SwapMobHand")
+	runtime_macro_insert("Northeast", "default", ".SwapMobHand")
 
 	// Version check below if we ever need to start checking against BYOND versions again.
 

@@ -134,6 +134,10 @@ Defined in conflicts.dm of the #defines folder.
 			if(G == L.l_hand || G == L.r_hand)
 				A.give_action(G.loc)
 
+	// Sharp attachments (bayonet) make weapons sharp as well.
+	if(sharp)
+		G.sharp = sharp
+
 	G.check_iff()
 
 /obj/item/attachable/proc/Detach(var/obj/item/weapon/gun/G)
@@ -152,6 +156,10 @@ Defined in conflicts.dm of the #defines folder.
 			break
 
 	loc = get_turf(G)
+
+	if(sharp)
+		G.sharp = 0
+	
 	G.check_iff()
 
 /obj/item/attachable/ui_action_click(mob/living/user, obj/item/weapon/gun/G)

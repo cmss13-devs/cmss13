@@ -4164,9 +4164,6 @@
 	tag = "icon-asteroidwarning (EAST)"
 	},
 /area/bigredv2/outside/n)
-"akx" = (
-/turf/open/mars,
-/area/bigredv2/caves)
 "aky" = (
 /obj/structure/bookcase/manuals/research_and_development,
 /obj/structure/machinery/light{
@@ -5014,12 +5011,6 @@
 "amE" = (
 /turf/open/floor/plating,
 /area/bigredv2/caves_north)
-"amF" = (
-/turf/open/mars{
-	icon_state = "mars_dirt_11";
-	tag = "icon-mars_dirt_11"
-	},
-/area/bigredv2/caves)
 "amG" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_8";
@@ -10279,14 +10270,6 @@
 	icon_state = "warnplate"
 	},
 /area/bigredv2/outside/medical)
-"azI" = (
-/obj/structure/window/framed/solaris/reinforced,
-/obj/structure/machinery/door/poddoor/almayer{
-	id = "rad_door";
-	name = "\improper Radiation Shielding"
-	},
-/turf/open/floor/plating,
-/area/bigredv2/outside/engineering)
 "azJ" = (
 /turf/closed/wall/solaris/reinforced/hull,
 /area/bigredv2/outside/s)
@@ -15719,7 +15702,7 @@
 "aMC" = (
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/plating,
-/area/bigredv2/outside/engineering)
+/area/bigredv2/caves_sw)
 "aME" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	dir = 1;
@@ -25793,10 +25776,6 @@
 	},
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
-"bpG" = (
-/obj/structure/pipes/standard/manifold/fourway/hidden/green,
-/turf/open/floor,
-/area/bigredv2/outside/engineering)
 "bpH" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -25810,13 +25789,6 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/item/device/lightreplacer,
-/turf/open/floor,
-/area/bigredv2/outside/engineering)
-"bpJ" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/obj/item/stack/sheet/metal,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bpK" = (
@@ -25987,16 +25959,6 @@
 /obj/structure/machinery/recharge_station,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
-"bqi" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/clothing/mask/breath,
-/turf/open/floor,
-/area/bigredv2/outside/engineering)
-"bqj" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/item/stack/sheet/metal,
-/turf/open/floor,
-/area/bigredv2/outside/engineering)
 "bqk" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/alarm{
@@ -26013,23 +25975,6 @@
 	name = "Storm Shutters";
 	pixel_y = -32
 	},
-/turf/open/floor,
-/area/bigredv2/outside/engineering)
-"bqm" = (
-/obj/structure/bed/chair{
-	dir = 4
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
-/turf/open/floor,
-/area/bigredv2/outside/engineering)
-"bqn" = (
-/obj/structure/table,
-/obj/effect/decal/cleanable/dirt,
-/obj/item/clothing/glasses/welding,
-/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bqo" = (
@@ -26122,22 +26067,7 @@
 	name = "\improper Engine Reactor Control";
 	req_one_access = list()
 	},
-/turf/open/floor,
-/area/bigredv2/outside/engineering)
-"bqQ" = (
-/obj/structure/bed/chair{
-	dir = 4
-	},
-/turf/open/floor,
-/area/bigredv2/outside/engineering)
-"bqR" = (
-/obj/structure/table,
-/obj/item/clothing/ears/earmuffs,
-/obj/effect/landmark/objective_landmark/close,
-/turf/open/floor,
-/area/bigredv2/outside/engineering)
-"bqS" = (
-/obj/structure/machinery/computer/arcade,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bqT" = (
@@ -26219,67 +26149,18 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
-"brk" = (
-/obj/item/stack/sheet/glass,
-/turf/open/floor,
-/area/bigredv2/outside/engineering)
-"brl" = (
-/obj/structure/machinery/bot/mulebot{
-	health = 10;
-	on = 0
-	},
-/obj/structure/table,
-/turf/open/floor,
-/area/bigredv2/outside/engineering)
 "brm" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/tool/weldpack,
+/obj/structure/table,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "brn" = (
 /obj/structure/table,
-/obj/structure/machinery/light{
-	dir = 8
-	},
 /obj/effect/spawner/random/technology_scanner,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bro" = (
 /obj/structure/machinery/camera/autoname,
-/turf/open/floor,
-/area/bigredv2/outside/engineering)
-"brp" = (
-/obj/structure/machinery/power/breakerbox,
-/turf/open/floor,
-/area/bigredv2/outside/engineering)
-"brq" = (
-/obj/structure/table,
-/obj/item/tool/lighter/random,
-/obj/item/device/lightreplacer,
-/obj/effect/landmark/objective_landmark/close,
-/turf/open/floor,
-/area/bigredv2/outside/engineering)
-"brr" = (
-/obj/structure/table,
-/obj/item/tool/lighter/random,
-/obj/structure/pipes/vents/pump{
-	dir = 4
-	},
-/obj/effect/landmark/objective_landmark/close,
-/turf/open/floor,
-/area/bigredv2/outside/engineering)
-"brs" = (
-/obj/structure/bed/chair{
-	dir = 8
-	},
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/floor,
-/area/bigredv2/outside/engineering)
-"brt" = (
-/obj/item/folder/yellow,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bru" = (
@@ -26396,10 +26277,6 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
-"brN" = (
-/obj/item/stack/sheet/metal,
-/turf/open/floor,
-/area/bigredv2/outside/engineering)
 "brO" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -26409,15 +26286,6 @@
 /area/bigredv2/outside/engineering)
 "brP" = (
 /obj/structure/bed/chair/office/light{
-	dir = 8
-	},
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 6
-	},
-/turf/open/floor,
-/area/bigredv2/outside/engineering)
-"brQ" = (
-/obj/structure/pipes/vents/pump{
 	dir = 8
 	},
 /turf/open/floor,
@@ -26526,46 +26394,13 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bso" = (
-/obj/structure/sign/safety/hazard{
-	pixel_y = -32
-	},
-/turf/open/floor,
-/area/bigredv2/outside/engineering)
-"bss" = (
-/obj/item/device/radio/headset,
-/turf/open/floor,
-/area/bigredv2/outside/engineering)
-"bst" = (
-/obj/structure/machinery/door_control{
-	desc = "A remote control-switch for opening the engines blast doors.";
-	id = "rad_door";
-	name = "Reactor Radiation Shielding control";
-	pixel_x = 30;
-	req_access = list(7)
-	},
+/obj/structure/machinery/power/geothermal,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bsu" = (
 /obj/effect/landmark{
 	name = "crap_item"
 	},
-/turf/open/floor,
-/area/bigredv2/outside/engineering)
-"bsx" = (
-/obj/structure/sign/safety/hazard{
-	pixel_y = -32
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor,
-/area/bigredv2/outside/engineering)
-"bsy" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/clothing/head/welding,
-/turf/open/floor,
-/area/bigredv2/outside/engineering)
-"bsz" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bsB" = (
@@ -26662,33 +26497,9 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
-"bsO" = (
-/obj/structure/machinery/door/airlock/almayer/secure{
-	dir = 1;
-	name = "\improper Engine Reactor";
-	req_access = list()
-	},
-/turf/open/floor,
-/area/bigredv2/outside/engineering)
 "bsP" = (
-/obj/structure/closet/radiation,
-/turf/open/floor,
-/area/bigredv2/outside/engineering)
-"bsS" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/obj/structure/machinery/door/airlock/almayer/engineering{
-	name = "\improper Engine Reactor Control";
-	req_one_access = list()
-	},
-/turf/open/floor,
-/area/bigredv2/outside/engineering)
-"bsV" = (
-/obj/structure/machinery/door/airlock/almayer/engineering{
-	name = "\improper Engine Reactor Control";
-	req_one_access = list()
-	},
+/obj/structure/table,
+/obj/effect/spawner/random/toolbox,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bsX" = (
@@ -26735,29 +26546,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bte" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/obj/structure/sign/safety/high_radiation{
-	pixel_x = 32
-	},
-/turf/open/floor,
-/area/bigredv2/outside/engineering)
-"btf" = (
-/obj/structure/bed/chair/office/light,
-/turf/open/floor,
-/area/bigredv2/outside/engineering)
-"btg" = (
-/obj/structure/machinery/computer/area_atmos,
-/turf/open/floor,
-/area/bigredv2/outside/engineering)
-"bth" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/obj/structure/sign/safety/high_radiation{
-	pixel_x = -32
-	},
+/obj/structure/machinery/light,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bti" = (
@@ -26791,12 +26580,6 @@
 	tag = "icon-asteroidwarning (SOUTHEAST)"
 	},
 /area/bigredv2/outside/se)
-"btp" = (
-/turf/open/mars{
-	icon_state = "mars_dirt_11";
-	tag = "icon-mars_dirt_11"
-	},
-/area/bigredv2/outside/sw)
 "btr" = (
 /obj/structure/machinery/computer/station_alert,
 /obj/structure/table,
@@ -26821,19 +26604,12 @@
 /area/bigredv2/outside/engineering)
 "btw" = (
 /turf/open/floor/plating,
-/area/bigredv2/outside/engineering)
+/area/bigredv2/caves_sw)
 "btx" = (
 /obj/structure/table,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
-"bty" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating,
-/area/bigredv2/outside/engineering)
-"btz" = (
-/turf/open/gm/river,
-/area/bigredv2/outside/engineering)
 "btA" = (
 /obj/effect/landmark{
 	name = "hunter_primary"
@@ -26851,12 +26627,6 @@
 	tag = "icon-mars_dirt_7"
 	},
 /area/bigredv2/outside/s)
-"btE" = (
-/turf/open/mars{
-	icon_state = "mars_dirt_13";
-	tag = "icon-mars_dirt_13"
-	},
-/area/bigredv2/outside/sw)
 "btH" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -26891,28 +26661,6 @@
 	},
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
-"btW" = (
-/turf/open/mars_cave{
-	icon_state = "mars_dirt_5";
-	tag = "icon-mars_dirt_5"
-	},
-/area/bigredv2/outside/sw)
-"btX" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating,
-/area/bigredv2/outside/engineering)
-"btY" = (
-/turf/closed/wall/mineral/uranium,
-/area/bigredv2/outside/engineering)
-"btZ" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/turf/open/floor/plating,
-/area/bigredv2/outside/engineering)
 "bua" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
@@ -26938,36 +26686,6 @@
 	tag = "icon-mars_cave_19"
 	},
 /area/bigredv2/outside/s)
-"buf" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_10";
-	tag = "icon-mars_cave_10"
-	},
-/area/bigredv2/outside/s)
-"buj" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_10";
-	tag = "icon-mars_cave_10"
-	},
-/area/bigredv2/outside/sw)
-"buk" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_7";
-	tag = "icon-mars_cave_7"
-	},
-/area/bigredv2/outside/sw)
-"bul" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_18";
-	tag = "icon-mars_cave_18"
-	},
-/area/bigredv2/outside/sw)
-"bum" = (
-/turf/open/mars_cave{
-	icon_state = "mars_dirt_6";
-	tag = "icon-mars_dirt_6"
-	},
-/area/bigredv2/outside/sw)
 "bun" = (
 /turf/open/floor{
 	dir = 10;
@@ -26989,18 +26707,6 @@
 	tag = "icon-mars_cave_17"
 	},
 /area/bigredv2/outside/s)
-"buv" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
-	},
-/area/bigredv2/outside/s)
-"buw" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_7";
-	tag = "icon-mars_cave_7"
-	},
-/area/bigredv2/outside/s)
 "buy" = (
 /obj/effect/landmark{
 	name = "crap_item"
@@ -27012,36 +26718,10 @@
 /area/bigredv2/caves_east)
 "buz" = (
 /turf/open/mars_cave{
-	icon_state = "mars_cave_8";
-	tag = "icon-mars_cave_8"
-	},
-/area/bigredv2/outside/sw)
-"buA" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_5";
-	tag = "icon-mars_cave_5"
-	},
-/area/bigredv2/outside/sw)
-"buB" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
-	},
-/area/bigredv2/outside/sw)
-"buC" = (
-/turf/open/mars_cave{
 	icon_state = "mars_cave_19";
 	tag = "icon-mars_cave_19"
 	},
-/area/bigredv2/outside/sw)
-"buD" = (
-/obj/structure/machinery/power/port_gen/pacman,
-/turf/open/floor/plating,
-/area/bigredv2/outside/engineering)
-"buH" = (
-/obj/item/trash/sosjerky,
-/turf/open/floor/plating,
-/area/bigredv2/outside/engineering)
+/area/bigredv2/caves_sw)
 "buJ" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor{
@@ -27074,67 +26754,14 @@
 	},
 /area/bigredv2/outside/sw)
 "buR" = (
+/obj/effect/landmark{
+	name = "hunter_primary"
+	},
 /turf/open/mars_cave{
-	icon_state = "mars_cave_6";
-	tag = "icon-mars_cave_6"
+	icon_state = "mars_dirt_4";
+	tag = "icon-mars_dirt_4"
 	},
-/area/bigredv2/outside/sw)
-"buS" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_17";
-	tag = "icon-mars_cave_17"
-	},
-/area/bigredv2/outside/sw)
-"buT" = (
-/turf/open/mars_cave,
-/area/bigredv2/outside/sw)
-"buU" = (
-/obj/structure/machinery/compressor{
-	dir = 1
-	},
-/turf/open/floor/plating,
-/area/bigredv2/outside/engineering)
-"buV" = (
-/obj/structure/machinery/light,
-/turf/open/floor/plating,
-/area/bigredv2/outside/engineering)
-"buX" = (
-/obj/effect/decal/cleanable/blood/oil,
-/turf/open/floor/plating,
-/area/bigredv2/outside/engineering)
-"bvf" = (
-/obj/structure/machinery/power/turbine,
-/turf/open/floor/plating,
-/area/bigredv2/outside/engineering)
-"bvg" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/turf/open/gm/river,
-/area/bigredv2/outside/engineering)
-"bvh" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/obj/structure/machinery/camera/autoname{
-	dir = 4
-	},
-/obj/effect/landmark/objective_landmark/medium,
-/turf/open/floor/plating,
-/area/bigredv2/outside/engineering)
-"bvi" = (
-/obj/structure/machinery/power/geothermal{
-	name = "Reactor Turbine";
-	power_generation_max = 1e+006
-	},
-/turf/open/floor/plating,
-/area/bigredv2/outside/engineering)
-"bvj" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/turf/open/gm/river,
-/area/bigredv2/outside/engineering)
+/area/bigredv2/caves_sw)
 "bvk" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_16";
@@ -27148,13 +26775,7 @@
 	req_one_access = list()
 	},
 /turf/open/floor,
-/area/bigredv2/outside/engineering)
-"bvn" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/turf/open/floor/plating,
-/area/bigredv2/outside/engineering)
+/area/bigredv2/caves_sw)
 "bvo" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor{
@@ -27169,24 +26790,16 @@
 	tag = "icon-tube1 (NORTH)"
 	},
 /turf/open/floor,
-/area/bigredv2/outside/engineering)
+/area/bigredv2/caves_sw)
 "bvw" = (
 /obj/effect/landmark{
 	name = "yautja_teleport_loc"
 	},
 /turf/open/mars_cave{
-	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
+	icon_state = "mars_dirt_4";
+	tag = "icon-mars_dirt_4"
 	},
-/area/bigredv2/outside/sw)
-"bvx" = (
-/obj/structure/catwalk/bigred,
-/turf/open/gm/river/desert/shallow/covered,
-/area/bigredv2/outside/engineering)
-"bvy" = (
-/obj/item/device/multitool,
-/turf/open/floor/plating,
-/area/bigredv2/outside/engineering)
+/area/bigredv2/caves_sw)
 "bvz" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/poddoor/two_tile{
@@ -27221,12 +26834,7 @@
 	tag = "icon-officechair_white (NORTH)"
 	},
 /turf/open/floor,
-/area/bigredv2/outside/engineering)
-"bvG" = (
-/obj/structure/machinery/power/port_gen/pacman,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating,
-/area/bigredv2/outside/engineering)
+/area/bigredv2/caves_sw)
 "bvH" = (
 /obj/effect/landmark{
 	name = "crap_item"
@@ -27243,23 +26851,7 @@
 	req_one_access = list()
 	},
 /turf/open/floor/plating,
-/area/bigredv2/outside/engineering)
-"bvL" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
-	},
-/area/bigredv2/outside/sw)
-"bvM" = (
-/obj/structure/machinery/compressor{
-	dir = 1
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating,
-/area/bigredv2/outside/engineering)
+/area/bigredv2/caves_sw)
 "bvO" = (
 /turf/open/mars{
 	icon_state = "mars_dirt_12";
@@ -27287,13 +26879,7 @@
 "bvS" = (
 /obj/structure/machinery/power/port_gen/pacman/super,
 /turf/open/floor/plating,
-/area/bigredv2/outside/engineering)
-"bvV" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_23";
-	tag = "icon-mars_cave_23"
-	},
-/area/bigredv2/outside/sw)
+/area/bigredv2/caves_sw)
 "bvW" = (
 /obj/effect/landmark{
 	name = "crap_item"
@@ -27356,27 +26942,12 @@
 	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/bigredv2/outside/eta)
-"bwf" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
-	},
-/area/bigredv2/outside/sw)
 "bwj" = (
 /turf/open/mars{
 	icon_state = "mars_dirt_10";
 	tag = "icon-mars_dirt_10"
 	},
 /area/bigredv2/caves/eta/xenobiology)
-"bwp" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_11";
-	tag = "icon-mars_cave_11"
-	},
-/area/bigredv2/outside/sw)
 "bwr" = (
 /obj/structure/machinery/light,
 /obj/structure/machinery/computer/objective,
@@ -27385,15 +26956,6 @@
 	icon_state = "white"
 	},
 /area/bigredv2/outside/virology)
-"bwv" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
-/turf/open/mars_cave{
-	icon_state = "mars_cave_6";
-	tag = "icon-mars_cave_6"
-	},
-/area/bigredv2/outside/sw)
 "bww" = (
 /turf/open/floor/plating,
 /area/bigredv2/caves/eta/storage)
@@ -30724,6 +30286,13 @@
 	icon_state = "wood"
 	},
 /area/bigredv2/caves/eta/living)
+"bGL" = (
+/turf/open/floor{
+	dir = 1;
+	icon_state = "asteroidfloor";
+	tag = "icon-asteroidfloor (NORTH)"
+	},
+/area/bigredv2/caves_sw)
 "bLd" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_16";
@@ -30804,6 +30373,11 @@
 	tag = "icon-mars_cave_18"
 	},
 /area/bigredv2/caves_virology)
+"cuF" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/manifold/hidden/green,
+/turf/open/floor,
+/area/bigredv2/outside/engineering)
 "cxi" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -30813,6 +30387,12 @@
 	icon_state = "grass_impenetrable"
 	},
 /area/bigredv2/caves/eta/xenobiology)
+"cFb" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/sheet/metal,
+/obj/structure/bed/chair/office/light,
+/turf/open/floor,
+/area/bigredv2/outside/engineering)
 "cGC" = (
 /obj/structure/bed/chair/wood/normal{
 	dir = 8;
@@ -30833,6 +30413,13 @@
 	},
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
+"cHn" = (
+/turf/open/floor{
+	dir = 8;
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (WEST)"
+	},
+/area/bigredv2/caves_sw)
 "cLH" = (
 /obj/item/tool/warning_cone,
 /obj/effect/decal/cleanable/dirt,
@@ -30887,6 +30474,12 @@
 	icon_state = "dark"
 	},
 /area/bigredv2/outside/filtration_plant)
+"dxV" = (
+/turf/open/mars_cave{
+	icon_state = "mars_dirt_4";
+	tag = "icon-mars_dirt_4"
+	},
+/area/bigredv2/caves_sw)
 "dyv" = (
 /turf/open/mars,
 /area/bigredv2/caves/eta/xenobiology)
@@ -30906,6 +30499,20 @@
 	icon_state = "grass_impenetrable"
 	},
 /area/bigredv2/caves/eta/xenobiology)
+"dQZ" = (
+/obj/structure/machinery/door/airlock/almayer/engineering{
+	name = "\improper Engine Reactor Control";
+	req_one_access = list()
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor,
+/area/bigredv2/outside/engineering)
+"dWl" = (
+/obj/structure/closet/toolcloset,
+/turf/open/floor,
+/area/bigredv2/outside/engineering)
 "ebZ" = (
 /turf/open/floor{
 	icon_state = "darkgreencorners2";
@@ -30980,6 +30587,13 @@
 	tag = "icon-mars_cave_5"
 	},
 /area/bigredv2/caves_lambda)
+"eGM" = (
+/obj/structure/table,
+/obj/item/device/lightreplacer,
+/obj/effect/landmark/objective_landmark/close,
+/obj/structure/pipes/standard/manifold/hidden/green,
+/turf/open/floor,
+/area/bigredv2/outside/engineering)
 "eHA" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor{
@@ -31342,6 +30956,12 @@
 	tag = "icon-mars_cave_2"
 	},
 /area/bigredv2/caves_virology)
+"hiY" = (
+/turf/open/mars_cave{
+	icon_state = "mars_cave_15";
+	tag = "icon-mars_cave_15"
+	},
+/area/bigredv2/caves_sw)
 "hmm" = (
 /turf/open/floor{
 	icon_state = "delivery"
@@ -31362,6 +30982,13 @@
 	tag = "icon-mars_dirt_13"
 	},
 /area/bigredv2/outside/space_port_lz2)
+"hqD" = (
+/turf/open/floor{
+	dir = 10;
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (SOUTHWEST)"
+	},
+/area/bigredv2/caves_sw)
 "hsJ" = (
 /obj/item/ore,
 /turf/open/mars_cave{
@@ -31387,7 +31014,7 @@
 /obj/structure/machinery/light,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/plating,
-/area/bigredv2/outside/engineering)
+/area/bigredv2/caves_sw)
 "hKD" = (
 /obj/effect/landmark{
 	name = "crap_item"
@@ -31415,16 +31042,22 @@
 	tag = "icon-dark"
 	},
 /area/bigredv2/caves/lambda/research)
-"hZs" = (
-/obj/structure/machinery/light{
-	dir = 4
+"ibH" = (
+/turf/open/floor{
+	dir = 4;
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (EAST)"
 	},
-/obj/effect/landmark/objective_landmark/medium,
-/turf/open/floor/plating,
 /area/bigredv2/outside/engineering)
 "ibP" = (
 /turf/open/floor/plating,
 /area/bigredv2/caves_research)
+"ibZ" = (
+/turf/open/mars_cave{
+	icon_state = "mars_cave_16";
+	tag = "icon-mars_cave_16"
+	},
+/area/bigredv2/caves_sw)
 "icQ" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_6";
@@ -31487,6 +31120,12 @@
 "iGK" = (
 /turf/open/mars_cave,
 /area/bigredv2/caves_sw)
+"iNR" = (
+/turf/open/mars_cave{
+	icon_state = "mars_cave_20";
+	tag = "icon-mars_cave_20"
+	},
+/area/bigredv2/caves_sw)
 "iQw" = (
 /obj/item/ore,
 /turf/open/mars_cave{
@@ -31494,6 +31133,15 @@
 	tag = "icon-mars_dirt_4"
 	},
 /area/bigredv2/outside/filtration_plant)
+"iQC" = (
+/obj/structure/table,
+/obj/effect/landmark/objective_landmark/close,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/item/clothing/head/welding,
+/turf/open/floor,
+/area/bigredv2/outside/engineering)
 "iQG" = (
 /obj/effect/alien/weeds/node,
 /turf/open/mars_cave{
@@ -31589,12 +31237,31 @@
 	tag = "icon-asteroidwarning"
 	},
 /area/bigredv2/outside/s)
+"jOc" = (
+/turf/open/floor{
+	dir = 1;
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (NORTH)"
+	},
+/area/bigredv2/caves_sw)
+"jXX" = (
+/turf/open/mars_cave{
+	icon_state = "mars_cave_14";
+	tag = "icon-mars_cave_14"
+	},
+/area/bigredv2/caves_sw)
 "kdf" = (
 /obj/item/tool/warning_cone,
 /turf/open/floor{
 	icon_state = "dark"
 	},
 /area/bigredv2/outside/filtration_plant)
+"kdh" = (
+/turf/open/mars_cave{
+	icon_state = "mars_dirt_6";
+	tag = "icon-mars_dirt_6"
+	},
+/area/bigredv2/outside/sw)
 "kdr" = (
 /turf/open/floor{
 	dir = 1;
@@ -31602,6 +31269,9 @@
 	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/bigredv2/outside/eta)
+"keg" = (
+/turf/closed/wall/solaris/reinforced,
+/area/bigredv2/caves_sw)
 "kfY" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -31632,6 +31302,13 @@
 	icon_state = "wood"
 	},
 /area/bigredv2/caves/eta/living)
+"krx" = (
+/turf/open/floor{
+	dir = 6;
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (SOUTHEAST)"
+	},
+/area/bigredv2/caves_sw)
 "kuw" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_17";
@@ -31715,6 +31392,13 @@
 	icon_state = "dark"
 	},
 /area/bigredv2/outside/se)
+"kVT" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_21";
+	tag = "icon-plant-10"
+	},
+/turf/open/floor,
+/area/bigredv2/outside/engineering)
 "kWV" = (
 /obj/effect/landmark{
 	name = "crap_item"
@@ -31733,6 +31417,12 @@
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/plating,
 /area/bigredv2/outside/bar)
+"lmg" = (
+/obj/structure/bed/chair/office/light{
+	dir = 4
+	},
+/turf/open/floor,
+/area/bigredv2/caves_sw)
 "lms" = (
 /turf/open/floor{
 	dir = 6;
@@ -31905,6 +31595,13 @@
 	tag = "icon-asteroidwarning (NORTHEAST)"
 	},
 /area/bigredv2/caves_east)
+"nVq" = (
+/obj/structure/table,
+/obj/item/clothing/glasses/welding,
+/obj/effect/landmark/objective_landmark/close,
+/obj/structure/pipes/vents/pump,
+/turf/open/floor,
+/area/bigredv2/outside/engineering)
 "nYV" = (
 /obj/item/tool/warning_cone,
 /turf/open/floor{
@@ -31941,6 +31638,20 @@
 	tag = "icon-mars_cave_11"
 	},
 /area/bigredv2/caves_east)
+"oip" = (
+/turf/open/mars{
+	icon_state = "mars_dirt_6";
+	tag = "icon-mars_dirt_6"
+	},
+/area/bigredv2/outside/sw)
+"ovq" = (
+/obj/structure/window/framed/solaris/reinforced,
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	id = "Engineering";
+	name = "\improper Engineering Shutters"
+	},
+/turf/open/floor,
+/area/bigredv2/outside/engineering)
 "oxp" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_5";
@@ -31956,11 +31667,6 @@
 	tag = "icon-mars_cave_5"
 	},
 /area/bigredv2/caves_virology)
-"oIa" = (
-/obj/structure/closet/radiation,
-/obj/effect/landmark/objective_landmark/close,
-/turf/open/floor,
-/area/bigredv2/outside/engineering)
 "oOk" = (
 /obj/effect/landmark{
 	name = "xeno_spawn";
@@ -32063,6 +31769,18 @@
 	tag = "icon-whiteblue (SOUTHWEST)"
 	},
 /area/bigredv2/outside/medical)
+"pYt" = (
+/turf/open/mars_cave{
+	icon_state = "mars_dirt_7";
+	tag = "icon-mars_dirt_7"
+	},
+/area/bigredv2/caves_sw)
+"qgY" = (
+/turf/open/mars_cave{
+	icon_state = "mars_cave_17";
+	tag = "icon-mars_cave_17"
+	},
+/area/bigredv2/caves_sw)
 "qpn" = (
 /obj/item/tank/air,
 /turf/open/floor{
@@ -32086,6 +31804,19 @@
 	tag = "icon-dark"
 	},
 /area/bigredv2/caves/eta/living)
+"qzO" = (
+/turf/open/floor{
+	dir = 4;
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (EAST)"
+	},
+/area/bigredv2/caves_sw)
+"qCK" = (
+/turf/open/floor{
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning"
+	},
+/area/bigredv2/caves_sw)
 "qFY" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_5";
@@ -32107,6 +31838,12 @@
 	tag = "icon-dark"
 	},
 /area/bigredv2/caves/eta/xenobiology)
+"qUS" = (
+/turf/open/mars_cave{
+	icon_state = "mars_dirt_6";
+	tag = "icon-mars_dirt_6"
+	},
+/area/bigredv2/caves_sw)
 "qZo" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -32116,6 +31853,9 @@
 	tag = "icon-dark"
 	},
 /area/bigredv2/caves/eta/research)
+"rdR" = (
+/turf/open/floor,
+/area/bigredv2/caves_sw)
 "rfe" = (
 /turf/open/floor{
 	dir = 8;
@@ -32203,6 +31943,12 @@
 	tag = "icon-asteroidwarning"
 	},
 /area/bigredv2/outside/eta)
+"slG" = (
+/obj/structure/pipes/vents/pump{
+	dir = 4
+	},
+/turf/open/floor,
+/area/bigredv2/outside/engineering)
 "snk" = (
 /obj/item/tank/air,
 /turf/open/mars_cave{
@@ -32232,6 +31978,17 @@
 	tag = "icon-mars_cave_2"
 	},
 /area/bigredv2/caves_east)
+"sCt" = (
+/obj/structure/closet/toolcloset,
+/obj/structure/machinery/light,
+/turf/open/floor,
+/area/bigredv2/outside/engineering)
+"sDC" = (
+/turf/open/mars_cave{
+	icon_state = "mars_cave_9";
+	tag = "icon-mars_cave_9"
+	},
+/area/bigredv2/caves_sw)
 "sHG" = (
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
@@ -32285,6 +32042,12 @@
 	tag = "icon-darkpurple2"
 	},
 /area/bigredv2/caves/lambda/research)
+"trk" = (
+/turf/open/mars_cave{
+	icon_state = "mars_cave_13";
+	tag = "icon-mars_cave_13"
+	},
+/area/bigredv2/caves_sw)
 "tsB" = (
 /obj/effect/alien/weeds/node,
 /obj/effect/landmark{
@@ -32296,6 +32059,13 @@
 	tag = "icon-mars_cave_2"
 	},
 /area/bigredv2/caves_east)
+"tvh" = (
+/turf/open/floor{
+	dir = 5;
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (NORTHEAST)"
+	},
+/area/bigredv2/caves_sw)
 "tDl" = (
 /obj/structure/machinery/power/apc,
 /turf/open/floor{
@@ -32325,6 +32095,11 @@
 	tag = "icon-mars_cave_7"
 	},
 /area/bigredv2/caves_research)
+"tTI" = (
+/obj/structure/table,
+/obj/item/pizzabox,
+/turf/open/floor,
+/area/bigredv2/outside/engineering)
 "tVp" = (
 /turf/open/mars_cave{
 	icon_state = "mars_dirt_4";
@@ -32497,6 +32272,13 @@
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor,
 /area/bigredv2/caves/eta/storage)
+"wiK" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor,
+/area/bigredv2/outside/engineering)
 "wko" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
@@ -32542,6 +32324,14 @@
 	icon_state = "delivery"
 	},
 /area/bigredv2/caves/lambda/virology)
+"wFL" = (
+/obj/structure/table,
+/obj/effect/landmark/objective_landmark/close,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor,
+/area/bigredv2/outside/engineering)
 "wFP" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/alien/weeds/node,
@@ -32643,6 +32433,11 @@
 	tag = "icon-mars_dirt_4"
 	},
 /area/bigredv2/outside/filtration_plant)
+"xIP" = (
+/obj/structure/table,
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor,
+/area/bigredv2/caves_sw)
 "xJC" = (
 /obj/item/ore,
 /turf/open/mars_cave{
@@ -36048,7 +35843,7 @@ aao
 aao
 aao
 fwa
-ozv
+rDP
 aao
 aao
 aao
@@ -41957,7 +41752,7 @@ bpx
 bpx
 bpx
 bpx
-bpy
+bpx
 aao
 aao
 aao
@@ -42172,10 +41967,10 @@ buP
 brd
 bpx
 bpx
-bsI
-bsI
-bme
-akx
+bpx
+bpx
+bpx
+bpx
 aao
 aao
 aao
@@ -42391,9 +42186,9 @@ bpx
 bpx
 bpx
 bpx
-btp
-amF
-aao
+bpx
+bpx
+oip
 aao
 aao
 aao
@@ -42610,21 +42405,21 @@ brG
 brG
 brG
 brG
-brG
-brG
-brG
-brG
-bpv
-bpv
-axX
-axX
-axX
-axX
-axX
-axX
-axX
-axX
-axX
+cHn
+cHn
+cHn
+cHn
+cHn
+hqD
+keg
+keg
+keg
+keg
+keg
+keg
+keg
+keg
+keg
 aao
 aao
 aao
@@ -42827,22 +42622,22 @@ brc
 brc
 brc
 brc
-brc
-brc
-brc
-brc
-bpv
-bpv
-axX
-aLN
+qzO
+qzO
+qzO
+qzO
+bGL
+qCK
+keg
+xIP
 bvF
-axX
+keg
 bvS
 bvS
 bvS
 bvS
-axX
-buz
+keg
+dxV
 aao
 aao
 aao
@@ -43041,25 +42836,25 @@ bpx
 bpx
 bpx
 bpx
-bsI
-bme
-bme
-aEu
-aEu
-aEu
-aEu
-buP
-bpv
-axX
-bmi
-bmi
-axX
+bpx
+bpx
+bpx
+bpx
+oip
+bpx
+oip
+jOc
+qCK
+keg
+rdR
+rdR
+keg
 btw
 btw
 btw
 btw
-axX
-buz
+keg
+dxV
 aao
 aao
 aao
@@ -43259,24 +43054,24 @@ azB
 azB
 axX
 axX
-bme
-bme
-aEu
-aEu
-aEu
-buz
-buP
-bpv
+bpx
+bpy
+bpy
+aao
+aao
+dxV
+jOc
+bGL
 bvm
-bmi
-bmi
+rdR
+rdR
 bvK
 aMC
 btw
 btw
 hEC
-axX
-buz
+keg
+dxV
 aao
 aao
 aao
@@ -43476,25 +43271,25 @@ bmq
 bob
 bsJ
 axX
+bsI
 bme
-bme
-aEu
-aEu
-buj
-buA
-buP
-bpv
-axX
+aao
+aao
+dxV
+dxV
+jOc
+qCK
+keg
 bvv
-brL
-axX
+lmg
+keg
 btw
 btw
 btw
 btw
-axX
-buk
-bvV
+keg
+dxV
+dxV
 aao
 aao
 aao
@@ -43695,23 +43490,23 @@ bmi
 azb
 bme
 bme
-aEu
-aEu
-buk
-buA
-buP
-bpv
-axX
-aLN
-aLN
-axX
+aao
+aao
+dxV
+qUS
+jOc
+qCK
+keg
+xIP
+xIP
+keg
 bvS
 bvS
 bvS
 bvS
-axX
-buk
-buA
+keg
+dxV
+buz
 aao
 aao
 fdr
@@ -43720,7 +43515,7 @@ wog
 wog
 wog
 wog
-wog
+aao
 aao
 aao
 aao
@@ -43912,32 +43707,32 @@ bsK
 axX
 bme
 bme
-aEu
-aEu
-buk
-buA
-buQ
-brc
-axX
-axX
-axX
-axX
-axX
-axX
-axX
-axX
-axX
-buk
-buB
-icQ
-icQ
-iGK
-iGK
-wog
-wog
-wog
-wog
 aao
+aao
+dxV
+dxV
+tvh
+krx
+keg
+keg
+keg
+keg
+keg
+keg
+keg
+keg
+keg
+ibZ
+wog
+wog
+wog
+wog
+wog
+wog
+wog
+wog
+wog
+wog
 aao
 aao
 aao
@@ -44128,34 +43923,34 @@ bre
 bsL
 azb
 bme
-bme
-aEu
-aEu
-buk
-buB
-buR
-buR
-buR
-buR
-buR
-buR
-buR
-buR
-buR
-buR
-bwv
-buB
-wog
-iGK
-feS
-wog
-wog
-wog
-wog
-wog
+bpx
 aao
 aao
-aao
+pYt
+dxV
+buR
+dxV
+iNR
+wog
+wog
+wog
+wog
+wog
+wog
+wog
+wog
+wog
+wog
+trk
+trk
+trk
+wog
+wog
+wog
+wog
+wog
+wog
+wog
 aao
 aao
 aao
@@ -44344,35 +44139,35 @@ bmi
 bmi
 bsM
 axX
-bme
-bme
-aEu
-aEu
-bul
-buB
-buB
-buB
-buB
-buB
-buB
-buB
-buB
-bwf
-buB
-buB
-buB
-buB
-iAF
+bpx
+bpx
+aao
+aao
+dxV
+dxV
+dxV
+dxV
+dxV
+qgY
+wog
+wog
+trk
 wog
 wog
 wog
 wog
 wog
-aao
-aao
-aao
-aao
-aao
+jXX
+dxV
+dxV
+dxV
+iNR
+wog
+wog
+wog
+wog
+wog
+wog
 aao
 aao
 aao
@@ -44561,35 +44356,35 @@ ayr
 brf
 axX
 axX
-bme
-bme
-aEu
-aEu
-aEu
-bul
-buB
-buB
-buB
-buB
-buB
-buB
-buB
-buB
-buB
-buB
-buB
-bwp
+bpx
+kdh
+aao
+aao
+aao
+dxV
+dxV
+qUS
+dxV
+qgY
+wog
+hiY
+dxV
+iNR
+wog
+wog
+trk
+jXX
+dxV
+dxV
+dxV
+dxV
+dxV
+qgY
 wog
 wog
 wog
-aao
-aao
-aao
-aao
-aao
-aao
-aao
-aao
+wog
+wog
 aao
 aao
 aao
@@ -44776,35 +44571,35 @@ bmi
 bmi
 brI
 bmi
-axX
-bme
-bme
-bme
-aEu
-aEu
-aEu
-aEu
-buk
-buB
-buB
-buB
-buB
-buB
-buB
-buB
-buB
-buB
-buA
+ovq
+bpx
+bpx
+bpx
 aao
 aao
 aao
 aao
-aao
-aao
-aao
-aao
-aao
-aao
+dxV
+dxV
+dxV
+iNR
+trk
+jXX
+dxV
+qUS
+iNR
+jXX
+dxV
+dxV
+dxV
+dxV
+dxV
+pYt
+dxV
+qgY
+wog
+wog
+wog
 aao
 aao
 aao
@@ -44993,34 +44788,34 @@ bmi
 bmi
 bmg
 bmi
-axX
-bme
-bme
-bme
-aEu
-aEu
-aEu
-aEu
-buk
-buB
-buB
+ovq
+kdh
+aao
+aao
+aao
+aao
+aao
+aao
+dxV
+dxV
+dxV
 bvw
-buB
-buB
-buB
-buB
-buB
-buB
-bwp
-aao
-aao
-aao
-aao
-aao
-aao
-aao
-aao
-aao
+dxV
+dxV
+dxV
+dxV
+dxV
+pYt
+dxV
+dxV
+buz
+ibZ
+sDC
+dxV
+dxV
+qgY
+wog
+wog
 aao
 aao
 aao
@@ -45213,31 +45008,31 @@ bmi
 axX
 axX
 axX
-bme
-bme
-aEu
-aEu
-aEu
-buk
-buB
-buB
-buB
-buB
-buB
-buB
-buB
-buB
-bwp
 aao
 aao
 aao
 aao
 aao
 aao
-aao
-aao
-aao
-aao
+dxV
+dxV
+dxV
+dxV
+dxV
+dxV
+dxV
+dxV
+dxV
+dxV
+buz
+wog
+wog
+wog
+ibZ
+ibZ
+wog
+wog
+wog
 aao
 aao
 aao
@@ -45430,21 +45225,6 @@ bpF
 bsN
 bsZ
 axX
-bme
-bme
-aEu
-aEu
-aEu
-buk
-buB
-buB
-buB
-buB
-buB
-buB
-buB
-buB
-buB
 aao
 aao
 aao
@@ -45452,10 +45232,25 @@ aao
 aao
 aao
 aao
+qUS
+dxV
+dxV
 aao
 aao
-aao
-aao
+buz
+ibZ
+ibZ
+ibZ
+wog
+wog
+wog
+wog
+wog
+trk
+trk
+trk
+wog
+wog
 aao
 aao
 aao
@@ -45646,22 +45441,7 @@ brK
 bor
 bmg
 bmi
-azb
-bme
-bme
-bme
-aEu
-aEu
-buk
-buB
-buB
-buB
-buB
-buB
-buB
-buB
-buB
-buB
+axX
 aao
 aao
 aao
@@ -45669,12 +45449,27 @@ aao
 aao
 aao
 aao
+dxV
 aao
 aao
 aao
 aao
+wog
+wog
+wog
+wog
+wog
 aao
 aao
+aao
+jXX
+dxV
+dxV
+dxV
+qgY
+wog
+hiY
+dxV
 aao
 aao
 aao
@@ -45863,36 +45658,36 @@ bop
 bqN
 bmg
 bta
-azb
-bme
-btE
-bme
-aEu
-aEu
-buk
-buB
-buB
-buB
-buB
-buB
-bvV
-buB
-buB
-buB
+axX
+aao
+aao
+aao
+aao
+aao
+aao
+aao
+aao
+aao
+aao
+aao
+aao
 wog
+wog
+trk
+jXX
 aao
 aao
 aao
 aao
-aao
-aao
-aao
-aao
-aao
-aao
-aao
-aao
-aao
+dxV
+pYt
+dxV
+dxV
+qgY
+wog
+jXX
+dxV
+dxV
 aao
 aao
 aao
@@ -46080,35 +45875,35 @@ bmi
 bsm
 bmi
 btb
-azb
-btp
-bpx
-btp
-bpx
-aEu
-buk
-buB
-buB
-buB
-buB
-bvL
-buB
-bvV
-buB
-buB
+axX
+aao
+aao
+aao
+aao
+aao
+aao
+aao
+aao
+aao
+aao
+aao
 wog
 wog
+hiY
+dxV
+dxV
+dxV
 aao
 aao
 aao
 aao
-aao
-aao
-aao
-aao
-aao
-aao
-aao
+dxV
+dxV
+buz
+wog
+hiY
+dxV
+dxV
 aao
 aao
 aao
@@ -46298,34 +46093,34 @@ bmi
 bmi
 btc
 axX
-bpx
-bpx
-bpx
-btW
-bum
-buS
-buB
-buB
-buB
-buB
-buB
-buB
-buB
-buR
-buB
+aao
+aao
+aao
+aao
+aao
+aao
+aao
+aao
 wog
 wog
 wog
+wog
+trk
+jXX
+dxV
+qUS
+dxV
 aao
 aao
 aao
 aao
-aao
-aao
-aao
-aao
-aao
-aao
+dxV
+buz
+wog
+wog
+hiY
+dxV
+pYt
 aao
 aao
 aao
@@ -46515,35 +46310,35 @@ aMB
 bmg
 btd
 axX
-bpx
-bpx
-btW
-bum
-buC
-buT
-buT
-buT
-buT
-buT
-buT
-buT
-buT
-buT
-buT
+aao
+aao
+aao
+aao
+aao
+aao
 wog
 wog
+trk
 wog
+wog
+jXX
+dxV
+dxV
+dxV
+dxV
+buz
+sDC
 aao
 aao
-aao
-aao
-aao
-aao
-aao
-aao
-aao
-aao
-aao
+qUS
+dxV
+qgY
+wog
+wog
+hiY
+dxV
+dxV
+dxV
 aao
 aao
 aao
@@ -46732,35 +46527,35 @@ ayZ
 axX
 axX
 axX
-axX
-axX
-axX
-axX
-axX
-axX
-axX
-axX
-axX
-axX
-axX
-axX
-axX
-aEu
-aEu
-kvp
-oQI
+aao
+aao
+aao
+aao
+aao
+aao
+aao
+jXX
+dxV
+qgY
+hiY
+dxV
+dxV
+dxV
+dxV
+dxV
+qgY
 wog
 aao
 aao
 aao
-aao
-aao
-aao
-aao
-aao
-aao
-aao
-aao
+buz
+wog
+wog
+wog
+wog
+sDC
+dxV
+dxV
 aao
 aao
 aao
@@ -46946,37 +46741,37 @@ bor
 bmi
 bmg
 bso
+bso
+bso
 axX
-oIa
-axX
-btw
-bty
-btX
-btw
-buD
-buU
-bvf
-bty
-btX
-bvG
-bvM
-bvf
-axX
-axX
-aEu
-kvp
-feS
+aao
+aao
+aao
+aao
+aao
+aao
+aao
+dxV
+dxV
+qgY
+hiY
+dxV
+pYt
+dxV
+pYt
+dxV
+iNR
 wog
 wog
-aao
-aao
-aao
-aao
-aao
-aao
-aao
-aao
-aao
+wog
+wog
+wog
+wog
+wog
+wog
+wog
+jXX
+dxV
 aao
 aao
 aao
@@ -47160,39 +46955,39 @@ ayr
 bpD
 bmi
 bqM
-brk
 bmi
-bmg
-bsO
+bmi
+bmi
+bmi
 bte
-bsO
-btw
-bty
-bty
-bty
-bty
-btw
-bty
-bty
-bty
-btw
-btw
-btw
 axX
-axX
-aEu
 aao
-kvp
+aao
+aao
+aao
+aao
+aao
+dxV
+dxV
+dxV
+qgY
+hiY
+dxV
+dxV
+buz
+sDC
+dxV
+dxV
+qgY
 wog
 wog
 wog
-aao
-aao
-aao
-aao
-aao
-aao
-aao
+wog
+wog
+trk
+trk
+jXX
+dxV
 aao
 aao
 aao
@@ -47379,35 +47174,35 @@ bmi
 bor
 bmi
 bmi
-bmi
-axX
-axX
-axX
-bty
-bty
-bty
-btw
-btw
-bty
-bty
-bty
-btw
-bty
-bty
-btw
-axX
-axX
+bso
+bso
+bso
 axX
 aao
-kvp
+aao
+aao
+aao
+aao
+dxV
+dxV
+dxV
+buz
+wog
+hiY
+dxV
+buz
+wog
+hiY
+dxV
+dxV
+qgY
 wog
 wog
 wog
 wog
-aao
-aao
-aao
-aao
+jXX
+dxV
+dxV
 aao
 aao
 aao
@@ -47594,37 +47389,37 @@ ayZ
 bpF
 bop
 bqN
-brl
 bmi
-brk
+bmi
+bmi
+bmi
 bsP
-bsP
-axX
-btz
-btz
-btz
-btz
-bvx
-btz
-btz
-btz
-bvx
-btz
-btz
-btz
-btw
-axX
 axX
 aao
-kvp
-wog
-wog
-wog
-wog
 aao
 aao
 aao
-aao
+dxV
+dxV
+buz
+ibZ
+wog
+wog
+wog
+ibZ
+wog
+wog
+wog
+sDC
+dxV
+iNR
+wog
+wog
+wog
+jXX
+dxV
+dxV
+dxV
 aao
 aao
 aao
@@ -47809,38 +47604,38 @@ bmg
 bmg
 ayZ
 bor
-bqi
 bmg
+tTI
 brm
-brN
 bmi
-bnX
 bmi
-azI
-btz
-btz
-btY
-btz
-bvx
-btz
-btY
-btz
-bvx
-btz
-btY
-btz
-buV
-axX
+bmi
+brm
 axX
 aao
-kvp
+aao
+dxV
+aao
+dxV
+dxV
+qgY
 wog
 wog
 wog
 wog
 aao
-aao
-aao
+wog
+wog
+wog
+jXX
+dxV
+dxV
+qgY
+wog
+hiY
+dxV
+pYt
+dxV
 aao
 aao
 aao
@@ -48025,39 +47820,39 @@ bnW
 bop
 bmz
 bpk
-bpG
-bqj
-bop
-bop
-bop
-bop
-boq
+bpM
 bmi
-azI
-btz
-btz
-btz
-btz
-bvx
-btz
-btz
-btz
-bvx
-btz
-btz
-btz
-btw
-axX
+bmi
+bmi
+bmi
+bmi
+bmi
+sCt
 axX
 aao
-kvp
-wog
-wog
+aao
+dxV
+dxV
+dxV
+dxV
+iNR
 wog
 wog
 aao
 aao
 aao
+aao
+wog
+hiY
+dxV
+dxV
+buz
+wog
+wog
+hiY
+dxV
+dxV
+dxV
 aao
 aao
 aao
@@ -48248,34 +48043,34 @@ bmg
 bmg
 brO
 bmg
-bor
 bmi
-azI
-btz
-btz
-btY
-btz
-bvx
-btz
-btY
-btz
-bvx
-btz
-btY
-btz
-btw
-btw
+dWl
 axX
 aao
-kvp
-wog
-wog
-wog
-wog
+aao
+dxV
+qUS
+pYt
+dxV
+dxV
+qgY
 aao
 aao
 aao
 aao
+aao
+wog
+hiY
+dxV
+dxV
+iNR
+wog
+wog
+hiY
+dxV
+dxV
+dxV
+dxV
 aao
 aao
 aao
@@ -48465,34 +48260,34 @@ axX
 axX
 axX
 axX
-bsS
 axX
 axX
 axX
-btz
-btz
-btz
-bvx
-btz
-bvg
-btz
-bvx
-btz
-btz
-btz
-btw
-btw
-axX
-fdr
-feS
-wog
-wog
-wog
-wog
+aao
+aao
+aao
+dxV
+dxV
+dxV
+dxV
+qgY
 aao
 aao
 aao
 aao
+qUS
+iNR
+jXX
+dxV
+dxV
+dxV
+qgY
+wog
+wog
+sDC
+aao
+aao
+dxV
 aao
 aao
 aao
@@ -48682,27 +48477,27 @@ axX
 brn
 bmq
 bmr
-bor
-bmi
+bpl
 btr
-azI
-btz
-btY
-btz
-bvx
-buV
 axX
-bvn
-bvx
-btz
-btY
-btz
-btw
-btw
-axX
-kvp
-feS
+aao
+aao
+aao
+dxV
+dxV
+dxV
+dxV
+qgY
 wog
+aao
+aao
+aao
+dxV
+dxV
+dxV
+dxV
+dxV
+buz
 wog
 wog
 wog
@@ -48898,27 +48693,27 @@ bmg
 axX
 bro
 brP
-bop
-bqN
-btf
+slG
+bmg
 bmr
-azI
-btz
-btz
-btz
-btw
-btw
-bvh
-btw
-btw
-btz
-btz
-btz
-btw
-btw
 axX
-kvp
+aao
+aao
+aao
+aao
+dxV
+dxV
+buz
 wog
+wog
+aao
+aao
+dxV
+dxV
+pYt
+dxV
+dxV
+buz
 wog
 wog
 wog
@@ -49110,37 +48905,37 @@ bnY
 bmr
 boS
 ayZ
-bpJ
-bmg
+btK
+bnq
 bqP
-bmi
-brQ
-bmi
+bop
+bop
+bpM
 bmg
-bmi
 bts
-azI
-btz
-btY
-btz
-buH
-btw
-bvi
-btw
-bvy
-btz
-btY
-btz
-btw
-btw
 axX
-kvp
-wog
-wog
-wog
-wog
-wog
 aao
+aao
+aao
+aao
+aao
+buz
+wog
+wog
+wog
+wog
+wog
+ibZ
+sDC
+dxV
+dxV
+buz
+wog
+wog
+wog
+wog
+hiY
+dxV
 aao
 aao
 aao
@@ -49330,34 +49125,34 @@ ayr
 bpK
 bqk
 axX
+wiK
 bmg
-bmg
-bss
-bri
-btf
+bor
+cFb
 btt
-azI
-btz
-btz
-btz
-btw
-btw
-hZs
-btw
-btw
-btz
-btz
-btz
-btw
-btw
 axX
-kvp
-wog
-wog
-wog
-wog
-wog
 aao
+aao
+aao
+aao
+aao
+wog
+wog
+trk
+trk
+wog
+wog
+wog
+wog
+ibZ
+ibZ
+wog
+wog
+wog
+wog
+trk
+jXX
+dxV
 aao
 aao
 aao
@@ -49547,34 +49342,34 @@ bpl
 bpL
 bmg
 axX
-brp
-brR
-bst
 bmi
+brR
+bor
 bmi
 btu
-azI
-btz
-btY
-btz
-bvx
-buV
 axX
-bvn
-bvx
-btz
-btY
-btz
-btw
-btw
-axX
-kvp
+aao
+aao
+aao
+aao
+wog
+wog
+jXX
+dxV
+dxV
+iNR
 wog
 wog
 wog
 wog
 wog
 aao
+aao
+aao
+jXX
+pYt
+dxV
+dxV
 aao
 aao
 aao
@@ -49760,36 +49555,36 @@ bnw
 bnZ
 boq
 azE
-bpm
+bmi
 bor
 bql
 axX
 axX
 axX
-axX
-bsV
-axX
+dQZ
 axX
 axX
-btz
-btz
-btz
-bvx
-btz
-bvj
-btz
-bvx
-btz
-btz
-btz
-btw
-btw
 axX
-kvp
-oQI
+aao
+aao
+aao
+wog
+wog
+hiY
+dxV
+dxV
+dxV
+dxV
+qgY
 wog
 wog
 wog
+aao
+aao
+aao
+aao
+aao
+dxV
 aao
 aao
 aao
@@ -49982,31 +49777,31 @@ bor
 bmg
 bmi
 bmi
-bpl
 bmi
+bor
 bmg
-bmi
-azI
-btz
-btz
-btY
-btz
-bvx
-btz
-btY
-btz
-bvx
-btz
-btY
-btz
-btw
-btw
+kVT
 axX
-kvp
-feS
+axX
+aao
+aao
 wog
 wog
+hiY
+dxV
+dxV
+pYt
+dxV
+iNR
 wog
+wog
+trk
+trk
+trk
+aao
+aao
+aao
+aao
 aao
 aao
 aao
@@ -50196,34 +49991,34 @@ bos
 boU
 bop
 bpM
-bqm
-bqQ
-bqQ
+bmi
+bmi
+bmi
+bmi
+bor
 bmg
 bmi
-bmg
-bmi
-azI
-btz
-btz
-btz
-btz
-bvx
-btz
-btz
-btz
-bvx
-btz
-btz
-btz
-btw
 axX
-axX
-kvp
-feS
+aao
+aao
+aao
 wog
 wog
 wog
+sDC
+dxV
+dxV
+dxV
+dxV
+iNR
+jXX
+dxV
+dxV
+dxV
+dxV
+aao
+aao
+aao
 aao
 aao
 aao
@@ -50413,34 +50208,34 @@ bmi
 ayZ
 bmy
 bor
-bqn
-boS
-brq
-bmg
-bsu
+bpm
 bmi
+bre
+bmr
+iQC
+bob
 bmi
-azI
-btz
-btz
-btY
-btz
-bvx
-btz
-btY
-btz
-bvx
-btz
-btY
-btz
-buV
 axX
-axX
-kvp
+aao
+aao
+aao
+aao
 wog
 wog
 wog
-wog
+ibZ
+ibZ
+sDC
+dxV
+dxV
+dxV
+dxV
+dxV
+dxV
+dxV
+aao
+aao
+aao
 aao
 aao
 aao
@@ -50630,34 +50425,34 @@ ayr
 ayr
 bpe
 bor
-bnv
-bqR
-brr
 bmi
 bmi
+bre
+nVq
+eGM
+bob
 bmi
-btg
 axX
-btz
-btz
-btz
-btz
-bvx
-btz
-btz
-btz
-bvx
-btz
-btz
-btz
-btw
-axX
-axX
-kvp
+aao
+aao
+aao
+aao
+aao
 wog
 wog
 wog
 wog
+hiY
+dxV
+dxV
+dxV
+dxV
+buz
+sDC
+dxV
+dxV
+aao
+aao
 aao
 aao
 aao
@@ -50847,33 +50642,33 @@ bmg
 boV
 bmi
 bpN
-bqo
-bqo
-brs
+bmi
+bmi
+bre
+bnv
+wFL
+bob
 bmg
-bmg
 axX
-axX
-axX
-btw
-btw
-btw
-btw
-btw
-buX
-btw
-bty
-bty
-btw
-btw
-btw
-axX
-axX
-axX
-kvp
+aao
+aao
+aao
+aao
+aao
+aao
+aao
 wog
+aao
+aao
+qUS
+aao
+aao
+aao
 wog
-wog
+hiY
+dxV
+pYt
+dxV
 aao
 aao
 aao
@@ -51066,31 +50861,31 @@ bop
 bpO
 bop
 bop
-bpO
-bpf
-bmg
-bsO
-bth
-bsO
-btw
-bty
-bty
-bty
-bty
-bty
-bty
-btw
-bty
-btw
-btw
-btw
+bop
+bnq
+cuF
+bmi
+bmi
 axX
 axX
-buf
+aao
+aao
+aao
+aao
+aao
+aao
+aao
+aao
+aao
+aao
+aao
+aao
+aao
 wog
 wog
-wog
-wog
+sDC
+dxV
+dxV
 aao
 aao
 aao
@@ -51282,32 +51077,32 @@ axX
 axX
 axX
 axX
-bqS
-brt
-bqM
-bsx
 axX
-bsP
+bmi
+bmg
+bor
+bmg
+bmi
 axX
-btw
-bty
-btZ
-btw
-buD
-buU
-bvf
-btw
-btZ
-buD
-buU
-bvf
 axX
-buf
-buv
-feS
+axX
+aao
+aao
+aao
+aao
+aao
+aao
+aao
+bub
+aao
+aao
+aao
 wog
 wog
 wog
+wog
+ibZ
+sDC
 aao
 aao
 aao
@@ -51498,29 +51293,29 @@ bjx
 bjx
 bjx
 bjx
-axX
+ibH
 axX
 bru
+bmg
 bqM
-bsy
+bmi
+bmi
 axX
 axX
 axX
 axX
-axX
-axX
-axX
-axX
-axX
-axX
-axX
-axX
-axX
-axX
-axX
-axX
-buw
-buv
+aao
+bjA
+bjA
+aao
+aao
+bub
+bub
+bub
+qgY
+wog
+wog
+wog
 wog
 wog
 wog
@@ -51718,8 +51513,8 @@ bjA
 bjA
 axX
 brv
+bmi
 bos
-bop
 bop
 bop
 bop
@@ -51734,10 +51529,10 @@ bjH
 bjy
 bub
 buc
-buc
-buv
-buv
-buv
+qgY
+wog
+wog
+wog
 wog
 wog
 aao
@@ -51936,7 +51731,7 @@ bjA
 axX
 brw
 bmi
-bsz
+bmg
 brO
 bti
 bpC
@@ -51951,10 +51746,10 @@ bjy
 btD
 bjy
 bub
-buv
-buv
-buv
-buv
+qgY
+wog
+wog
+wog
 wog
 aao
 aao

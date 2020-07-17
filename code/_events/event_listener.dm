@@ -115,10 +115,12 @@ var/global/datum/global_event_handler/GLOBAL_EVENT = new()
 		return FALSE
 
 	var/has_arguments = (length(args) > 2)
+	var/has_callbacks
 	for(var/id in speaker.event_listeners[event])
 		var/datum/callback/C = speaker.event_listeners[event][id]
 		if(isnull(C))
 			continue
+		has_callbacks = TRUE
 
 		var/halt_event = FALSE
 		if(has_arguments)
@@ -127,8 +129,8 @@ var/global/datum/global_event_handler/GLOBAL_EVENT = new()
 			halt_event = C.Invoke()
 
 		if(halt_event)
-			break
-	return TRUE
+			return HALTED
+	return has_callbacks
 
 // Raises the event and invokes all the callbacks synchronously and in order using the given args.
 // Listeners can return true to stop remaining listeners from executing, and listeners are executed in sorted order.
@@ -160,10 +162,12 @@ var/global/datum/global_event_handler/GLOBAL_EVENT = new()
 		to_execute = custom_mergesort(to_execute, sort)
 
 	var/has_arguments = (length(args) > 2)
+	var/has_callbacks
 	for(var/id in to_execute)
 		var/datum/callback/C = speaker.event_listeners[event][id]
 		if(isnull(C))
 			continue
+		has_callbacks = TRUE
 
 		var/halt_event = FALSE
 		if(has_arguments)
@@ -172,5 +176,5 @@ var/global/datum/global_event_handler/GLOBAL_EVENT = new()
 			halt_event = C.Invoke()
 
 		if(halt_event)
-			break
-	return TRUE
+			return HALTED
+	return has_callbacks

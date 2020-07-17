@@ -417,10 +417,11 @@ var/list/global/item_storage_box_cache = list()
 //such as when picking up all the items on a tile with one click.
 //user can be null, it refers to the potential mob doing the insertion.
 /obj/item/storage/proc/handle_item_insertion(obj/item/W, prevent_warning = 0, mob/user)
-	if(!istype(W)) return 0
+	if(!istype(W))
+		return FALSE
 	if(user && W.loc == user)
 		if(!user.drop_inv_item_to_loc(W, src))
-			return 0
+			return FALSE
 	else
 		W.forceMove(src)
 	W.on_enter_storage(src)
@@ -439,7 +440,7 @@ var/list/global/item_storage_box_cache = list()
 	if (storage_slots)
 		W.mouse_opacity = 2 //not having to click the item's tiny sprite to take it out of the storage.
 	update_icon()
-	return 1
+	return TRUE
 
 //Call this proc to handle the removal of an item from the storage item. The item will be moved to the atom sent as new_target
 /obj/item/storage/proc/remove_from_storage(obj/item/W as obj, atom/new_location)

@@ -1049,8 +1049,8 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 
 		list("EXTRA FLAMETHROWER TANKS", 0, null, null, null),
 		list("Large incinerator tank", 15, /obj/item/ammo_magazine/flamer_tank/large, null, "black"),
-		list("Large incinerator tank (B) (Green flame)", 30, /obj/item/ammo_magazine/flamer_tank/large/B, null, "black"),
-		list("Large incinerator tank (X) (Blue flame)", 30, /obj/item/ammo_magazine/flamer_tank/large/X, null, "black"),
+		list("Large incinerator tank (B) (Green flame)", 15, /obj/item/ammo_magazine/flamer_tank/large/B, null, "black"),
+		list("Large incinerator tank (X) (Blue flame)", 15, /obj/item/ammo_magazine/flamer_tank/large/X, null, "black"),
 
 		list("AMMUNITION", 0, null, null, null),
 		list("VP78 magazine", 10, /obj/item/ammo_magazine/pistol/vp78, null, "black"),

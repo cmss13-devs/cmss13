@@ -81,8 +81,6 @@ Defined in conflicts.dm of the #defines folder.
 	var/has_marine_iff = FALSE //adds IFF to bullets
 	var/hidden = FALSE //Render on gun?
 
-
-
 /obj/item/attachable/attackby(obj/item/I, mob/user)
 	if(flags_attach_features & ATTACH_RELOADABLE)
 		if(user.get_inactive_hand() != src)
@@ -548,10 +546,20 @@ Defined in conflicts.dm of the #defines folder.
 	accuracy_mod = -config.min_hit_accuracy_mult
 	accuracy_unwielded_mod = -config.min_hit_accuracy_mult
 
+/obj/item/attachable/magnetic_harness/Attach(var/obj/item/weapon/gun/G)
+	..()
+	registerListener(G, EVENT_GUN_DROPPED, "gdrp_\ref[src]", CALLBACK(G, /obj/item/weapon/gun.proc/handle_harness))
+	registerListener(G, EVENT_LAUNCH_CHECK, "lc_\ref[src]", CALLBACK(G, /obj/item/weapon/gun.proc/harness_launch_cancel))
+
+/obj/item/attachable/magnetic_harness/Detach(var/obj/item/weapon/gun/G)
+	..()
+	unregisterListener(G, EVENT_GUN_DROPPED, "gdrp_\ref[src]")
+	unregisterListener(G, EVENT_LAUNCH_CHECK, "lc_\ref[src]")
+
 /datum/event_handler/scope_zoomout_removebuffs
 	var/obj/item/weapon/gun/G = null
 	var/obj/item/attachable/scope/scope
-	single_fire = 1
+	flags_handler = HNDLR_FLAG_SINGLE_FIRE
 
 /datum/event_handler/scope_zoomout_removebuffs/New(_g,_scope)
 	G = _g
@@ -621,7 +629,7 @@ Defined in conflicts.dm of the #defines folder.
 	var/obj/item/weapon/gun/G = null
 	var/aim_slowdown = 0
 	var/fire_delay = 0
-	single_fire = 1
+	flags_handler = HNDLR_FLAG_SINGLE_FIRE
 
 /datum/event_handler/miniscope_zoomout/handle(sender, datum/event_args/ev_args)
 	G.slowdown -= aim_slowdown
@@ -1376,7 +1384,7 @@ Defined in conflicts.dm of the #defines folder.
 	w_class = SIZE_MEDIUM
 	slot = "under"
 	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION|ATTACH_WEAPON|ATTACH_MELEE
-	var/obj/item/tool/extinguisher/mini/internal_extinguisher
+	var/obj/item/tool/extinguisher/internal_extinguisher
 	current_rounds = 1 //This has to be done to pass the fire_attachment check.
 
 /obj/item/attachable/attached_gun/extinguisher/examine(mob/user)
@@ -1396,15 +1404,29 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/attached_gun/extinguisher/New()
 	..()
-	internal_extinguisher = new /obj/item/tool/extinguisher/mini()
-	internal_extinguisher.safety = FALSE
-	internal_extinguisher.create_reagents(internal_extinguisher.max_water)
-	internal_extinguisher.reagents.add_reagent("water", internal_extinguisher.max_water)
+	initialize_internal_extinguisher()
 
 /obj/item/attachable/attached_gun/extinguisher/fire_attachment(atom/target, obj/item/weapon/gun/gun, mob/living/user)
 	if(!internal_extinguisher)
 		return
 	return internal_extinguisher.afterattack(target, user)
+
+/obj/item/attachable/attached_gun/extinguisher/proc/initialize_internal_extinguisher()
+	internal_extinguisher = new /obj/item/tool/extinguisher/mini()
+	internal_extinguisher.safety = FALSE
+	internal_extinguisher.create_reagents(internal_extinguisher.max_water)
+	internal_extinguisher.reagents.add_reagent("water", internal_extinguisher.max_water)
+
+/obj/item/attachable/attached_gun/extinguisher/pyro
+	name = "HME-88 underbarrel extinguisher"
+	desc = "An experimental Taiho-Technologies HME-88 underbarrel extinguisher integrated with a select few gun models. It is capable of putting out the strongest of flames. Point at flame before applying pressure."
+	flags_attach_features = ATTACH_ACTIVATION|ATTACH_WEAPON|ATTACH_MELEE
+
+/obj/item/attachable/attached_gun/extinguisher/pyro/initialize_internal_extinguisher()
+	internal_extinguisher = new /obj/item/tool/extinguisher/pyro()
+	internal_extinguisher.safety = FALSE
+	internal_extinguisher.create_reagents(internal_extinguisher.max_water)
+	internal_extinguisher.reagents.add_reagent("water", internal_extinguisher.max_water)
 
 /obj/item/attachable/verticalgrip
 	name = "vertical grip"

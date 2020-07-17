@@ -198,7 +198,7 @@
 	is_zoomed = 0
 
 /datum/event_handler/xeno_zoom_onmovement
-	single_fire = 0
+	flags_handler = NO_FLAGS
 	var/mob/living/carbon/Xenomorph/X = null
 
 /datum/event_handler/xeno_zoom_onmovement/New(mob/living/carbon/Xenomorph/X)

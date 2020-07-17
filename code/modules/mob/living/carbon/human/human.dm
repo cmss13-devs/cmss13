@@ -1412,13 +1412,13 @@
 
 /mob/living/carbon/human/resist_fire()
 	if(isYautja(src))
-		fire_stacks = max(fire_stacks - rand(6,10), 0)
+		fire_stacks = max(fire_stacks - 8, 0)
 		KnockDown(1, TRUE) // actually 0.5
 		spin(5, 1)
 		visible_message(SPAN_DANGER("[src] expertly rolls on the floor, greatly reducing the amount of flames!"), \
 			SPAN_NOTICE("You expertly roll to extinguish the flames!"), null, 5)
 	else
-		fire_stacks = max(fire_stacks - rand(3,6), 0)
+		fire_stacks = max(fire_stacks - 5, 0)
 		KnockDown(4, TRUE)
 		spin(35, 2)
 		visible_message(SPAN_DANGER("[src] rolls on the floor, trying to put themselves out!"), \

@@ -603,6 +603,8 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	specialty = "M3-S light"
 	flags_item = MOB_LOCK_ON_EQUIP
 
+#define FIRE_SHIELD_CD 150
+
 /obj/item/clothing/suit/storage/marine/M35
 	name = "\improper M35 pyrotechnician armor"
 	desc = "A custom set of M35 armor designed for use by USCM Pyrotechnicians."
@@ -623,6 +625,111 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	unacidable = TRUE
 	specialty = "M35 pyrotechnician"
 	flags_item = MOB_LOCK_ON_EQUIP
+	actions_types = list(/datum/action/item_action/toggle, /datum/action/item_action/specialist/fire_shield)
+	var/fire_shield_on = FALSE
+	var/can_activate = TRUE
+
+/obj/item/clothing/suit/storage/marine/M35/Initialize(mapload, ...)
+	. = ..()
+
+/obj/item/clothing/suit/storage/marine/M35/verb/fire_shield()
+	set name = "Activate Fire Shield"
+	set desc = "Activate your armor's FIREWALK protocol for a short duration."
+	set category = "Pyro"
+
+	if(!usr || usr.is_mob_incapacitated(TRUE))
+		return
+	if(!ishuman(usr))
+		return
+	var/mob/living/carbon/human/H = usr
+	
+	if(H.wear_suit != src)
+		to_chat(H, SPAN_WARNING("You must be wearing the M35 pyro armor to activate FIREWALK protocol!"))
+		return
+	
+	if(!skillcheck(H, SKILL_SPEC_WEAPONS, SKILL_SPEC_TRAINED) && H.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_PYRO)
+		to_chat(H, SPAN_WARNING("You don't seem to know how to use [src]..."))
+		return
+
+	if(fire_shield_on)
+		to_chat(H, SPAN_WARNING("You already have FIREWALK protocol activated!"))
+		return
+	
+	if(!can_activate)
+		to_chat(H, SPAN_WARNING("FIREWALK protocol was recently activated, wait before trying to activate it again."))
+		return
+
+	to_chat(H, SPAN_NOTICE("FIREWALK protocol has been activated. You will now be immune to fire for 6 seconds!"))
+	registerListener(H, EVENT_PREIGNITION_CHECK, "fireshield_\ref[src]", CALLBACK(src, .proc/fire_shield_is_on))
+	registerListener(H, EVENT_PRE_FIRE_BURNED_CHECK, "fireshield_\ref[src]", CALLBACK(src, .proc/fire_shield_is_on))
+	fire_shield_on = TRUE
+	can_activate = FALSE
+	for(var/X in actions)
+		var/datum/action/A = X
+		A.update_button_icon()
+	add_timer(CALLBACK(src, .proc/end_fire_shield, H), SECONDS_6)
+
+/obj/item/clothing/suit/storage/marine/M35/proc/end_fire_shield(var/mob/living/carbon/human/user)
+	if(!istype(user))
+		return
+	to_chat(user, SPAN_NOTICE("FIREWALK protocol has finished."))
+	unregisterListener(user, EVENT_PREIGNITION_CHECK, "fireshield_\ref[src]")
+	unregisterListener(user, EVENT_PRE_FIRE_BURNED_CHECK, "fireshield_\ref[src]")
+	fire_shield_on = FALSE
+	
+	add_timer(CALLBACK(src, .proc/enable_fire_shield, user), FIRE_SHIELD_CD)
+
+/obj/item/clothing/suit/storage/marine/M35/proc/enable_fire_shield(var/mob/living/carbon/human/user)
+	if(!istype(user))
+		return
+	to_chat(user, SPAN_NOTICE("FIREWALK protocol can be activated again."))
+	can_activate = TRUE
+
+	for(var/X in actions)
+		var/datum/action/A = X
+		A.update_button_icon()
+
+// This proc is solely so that raiseEventSync returns TRUE (i.e. fire shield is on)
+/obj/item/clothing/suit/storage/marine/M35/proc/fire_shield_is_on()
+	return TRUE
+
+/obj/item/clothing/suit/storage/marine/M35/dropped(var/mob/user)
+	if (!istype(user))
+		return
+	unregisterListener(user, EVENT_PREIGNITION_CHECK, "fireshield_\ref[src]")
+	unregisterListener(user, EVENT_PRE_FIRE_BURNED_CHECK, "fireshield_\ref[src]")
+
+#undef FIRE_SHIELD_CD
+
+/datum/action/item_action/specialist/fire_shield
+	ability_primacy = SPEC_PRIMARY_ACTION_2
+
+/datum/action/item_action/specialist/fire_shield/New(var/mob/living/user, var/obj/item/holder)
+	..()
+	name = "Activate Fire Shield"
+	button.name = name
+	button.overlays.Cut()
+	var/image/IMG = image('icons/obj/items/clothing/cm_suits.dmi', button, "pyro_armor")
+	button.overlays += IMG
+
+/datum/action/item_action/specialist/fire_shield/action_cooldown_check()
+	var/obj/item/clothing/suit/storage/marine/M35/armor = holder_item
+	if (!istype(armor))
+		return FALSE
+	
+	return !armor.can_activate
+
+/datum/action/item_action/specialist/fire_shield/can_use_action()
+	var/mob/living/carbon/human/H = owner
+	if(istype(H) && !H.is_mob_incapacitated() && H.wear_suit == holder_item)
+		return TRUE
+
+/datum/action/item_action/specialist/fire_shield/action_activate()
+	var/obj/item/clothing/suit/storage/marine/M35/armor = holder_item
+	if (!istype(armor))
+		return
+	
+	armor.fire_shield()
 
 /obj/item/clothing/suit/storage/marine/ghillie
 	name = "\improper M45 pattern ghillie armor"

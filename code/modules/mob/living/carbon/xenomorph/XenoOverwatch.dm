@@ -149,7 +149,7 @@
 // Event handler so we reset on movement 
 // I'd recommend reading the event handler code before you try to understand this 
 /datum/event_handler/xeno_overwatch_onmovement
-	single_fire = 0
+	flags_handler = NO_FLAGS
 	var/mob/living/carbon/Xenomorph/X = null
 
 /datum/event_handler/xeno_overwatch_onmovement/New(mob/living/carbon/Xenomorph/X)

@@ -159,7 +159,7 @@
 	var/obj/item/weapon/gun/flamer/M240T/linked_flamer
 	var/toggling = FALSE
 	var/image/flamer_overlay
-	actions_types = list(/datum/action/item_action/toggle)
+	actions_types = list(/datum/action/item_action/specialist/toggle_fuel)
 	can_hold = list(/obj/item/weapon/gun/flamer/M240T)
 
 /obj/item/storage/large_holster/fuelpack/Initialize()
@@ -200,6 +200,15 @@
 	if(istype(user))
 		user.update_inv_back()
 
+/obj/item/storage/large_holster/fuelpack/dropped(mob/user)
+	if (linked_flamer)
+		linked_flamer.fuelpack = null
+		if (linked_flamer.current_mag in list(fuel, fuelB, fuelX))
+			linked_flamer.current_mag = null
+		linked_flamer.update_icon()
+		linked_flamer = null
+	..()
+
 // Get the right onmob icon when we have flamer holstered.
 /obj/item/storage/large_holster/fuelpack/get_mob_overlay(mob/user_mob, slot)
 	var/image/ret = ..()
@@ -215,9 +224,9 @@
 	toggle_fuel()
 
 /obj/item/storage/large_holster/fuelpack/verb/toggle_fuel()
-	set name = "Specialist Activation"
+	set name = "Toggle Fuel Type"
 	set desc = "Toggle between the fuel types."
-	set category = "Weapons"
+	set category = "Pyro"
 
 	if(!ishuman(usr) || usr.is_mob_incapacitated())
 		return 0
@@ -233,24 +242,16 @@
 	// Toggle to the next one
 
 	// Handles toggling of fuel. Snowflake way of changing action icon. Change icon, update action icon, change icon back
-	icon = 'icons/obj/items/weapons/guns/ammo.dmi'
-	if(istype(active_fuel, /obj/item/ammo_magazine/flamer_tank/large/X/))
+	if(istype(active_fuel, /obj/item/ammo_magazine/flamer_tank/large/X))
 		active_fuel = fuel
-		icon_state = "flametank_large"
-	else if(istype(active_fuel, /obj/item/ammo_magazine/flamer_tank/large/B/))
+	else if(istype(active_fuel, /obj/item/ammo_magazine/flamer_tank/large/B))
 		active_fuel = fuelX
-		icon_state = "flametank_large_blue"
-	else if(istype(active_fuel, /obj/item/ammo_magazine/flamer_tank/large/))
+	else
 		active_fuel = fuelB
-		icon_state = "flametank_large_green"
 
 	for(var/X in actions)
 		var/datum/action/A = X
 		A.update_button_icon()
-
-	icon = 'icons/obj/items/clothing/backpacks.dmi'
-	icon_state = base_icon
-
 
 	to_chat(usr, "You switch the fuel tank to <b>[active_fuel.caliber]</b>")
 	playsound(src,'sound/machines/click.ogg', 25, 1)
@@ -299,3 +300,40 @@
 		if(fuelX)
 			to_chat(user, "The [fuelX.caliber] currently contains: [round(fuelX.get_ammo_percent())]% fuel.")
 
+/datum/action/item_action/specialist/toggle_fuel
+	ability_primacy = SPEC_PRIMARY_ACTION_1
+
+/datum/action/item_action/specialist/toggle_fuel/New(var/mob/living/user, var/obj/item/holder)
+	..()
+	name = "Toggle Fuel Type"
+	button.name = name
+	update_button_icon()
+
+/datum/action/item_action/specialist/toggle_fuel/update_button_icon()
+	var/obj/item/storage/large_holster/fuelpack/FP = holder_item
+	if (!istype(FP))
+		return
+	
+	var/icon = 'icons/obj/items/weapons/guns/ammo.dmi'
+	var/icon_state
+	if(istype(FP.active_fuel, /obj/item/ammo_magazine/flamer_tank/large/X))
+		icon_state = "flametank_large_blue"
+	else if(istype(FP.active_fuel, /obj/item/ammo_magazine/flamer_tank/large/B))
+		icon_state = "flametank_large_green"
+	else
+		icon_state = "flametank_large"
+
+	button.overlays.Cut()
+	var/image/IMG = image(icon, button, icon_state)
+	button.overlays += IMG
+
+/datum/action/item_action/specialist/toggle_fuel/can_use_action()
+	var/mob/living/carbon/human/H = owner
+	if(istype(H) && !H.is_mob_incapacitated() && !H.lying && holder_item == H.back)
+		return TRUE
+
+/datum/action/item_action/specialist/toggle_fuel/action_activate()
+	var/obj/item/storage/large_holster/fuelpack/FP = holder_item
+	if (!istype(FP))
+		return
+	FP.toggle_fuel()

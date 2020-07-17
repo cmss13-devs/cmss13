@@ -89,9 +89,11 @@
 	storage_flags = STORAGE_FLAGS_POUCH
 	can_hold = list(
 					/obj/item/ammo_magazine/flamer_tank,
+					/obj/item/tool/extinguisher
 					)
 	bypass_w_limit = list(
 					/obj/item/ammo_magazine/flamer_tank,
+					/obj/item/tool/extinguisher
 					)
 
 /obj/item/storage/pouch/general/large/m39ap/Initialize()

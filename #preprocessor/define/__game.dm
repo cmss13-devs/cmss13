@@ -187,33 +187,15 @@ Tells the GC how to handle deletion of the object
 
 #define ROUNDSTART_LOGOUT_REPORT_TIME MINUTES_10 //Amount of time (in deciseconds) after the rounds starts, that the player disconnect report is issued.
 
-
-//=================================================
-
-//computer3 error codes, move lower in the file when it passes dev -Sayu
- #define PROG_CRASH      1  // Generic crash
- #define MISSING_PERIPHERAL  2  // Missing hardware
- #define BUSTED_ASS_COMPUTER  4  // Self-perpetuating error.  BAC will continue to crash forever.
- #define MISSING_PROGRAM    8  // Some files try to automatically launch a program.  This is that failing.
- #define FILE_DRM      16  // Some files want to not be copied/moved.  This is them complaining that you tried.
- #define NETWORK_FAILURE  32
 //=================================================
 //Game mode related defines.
 
 var/list/accessable_z_levels = list("1" = 10, "3" = 10, "4" = 10, "5" = 70)
 //This list contains the z-level numbers which can be accessed via space travel and the percentile chances to get there.
-//(Exceptions: extended, sandbox and nuke) -Errorage
-//Was list("3" = 30, "4" = 70).
-//Spacing should be a reliable method of getting rid of a body -- Urist.
-//Go away Urist, I'm restoring this to the longer list. ~Errorage
 
 #define TRANSITIONEDGE	3 //Distance from edge to move to another z-level
 
-
-var/static/list/scarySounds = list('sound/weapons/thudswoosh.ogg','sound/weapons/Taser.ogg','sound/weapons/armbomb.ogg','sound/voice/hiss1.ogg','sound/voice/hiss2.ogg','sound/voice/hiss3.ogg','sound/voice/hiss4.ogg','sound/voice/hiss5.ogg','sound/voice/hiss6.ogg','sound/effects/Glassbr1.ogg','sound/effects/Glassbr2.ogg','sound/effects/Glassbr3.ogg','sound/items/Welder.ogg','sound/items/Welder2.ogg','sound/machines/airlock.ogg','sound/effects/clownstep1.ogg','sound/effects/clownstep2.ogg')
 //Flags for zone sleeping
-#define ZONE_ACTIVE 1
-#define ZONE_SLEEPING 0
 #define GET_RANDOM_FREQ rand(32000, 55000) //Frequency stuff only works with 45kbps oggs.
 
 //ceiling types

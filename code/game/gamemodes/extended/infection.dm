@@ -9,9 +9,6 @@
 	uplink_welcome = "IF YOU SEE THIS, SHIT A BRICK AND AHELP"
 	uplink_uses = 10
 
-	var/const/waittime_l = 600 //lower bound on time before intercept arrives (in tenths of seconds)
-	var/const/waittime_h = 1800
-
 /datum/game_mode/infection/announce()
 	to_world("<B>The current game mode is - ZOMBIES!</B>")
 	to_world("<B>Just have fun and role-play!</B>")

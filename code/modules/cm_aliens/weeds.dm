@@ -107,9 +107,6 @@
 			new /obj/effect/alien/weeds/weedwall(T, node)
 			continue
 
-		if(istype(T.loc, /area/arrival))
-			continue
-
 		if(!weed_expand_objects(T, dirn))
 			continue
 

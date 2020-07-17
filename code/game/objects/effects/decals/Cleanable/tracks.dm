@@ -1,21 +1,4 @@
 // Stolen en masse from N3X15 of /vg/station with much gratitude.
-
-// The idea is to have 4 bits for coming and 4 for going.
-#define TRACKS_COMING_NORTH 1
-#define TRACKS_COMING_SOUTH 2
-#define TRACKS_COMING_EAST  4
-#define TRACKS_COMING_WEST  8
-#define TRACKS_GOING_NORTH  16
-#define TRACKS_GOING_SOUTH  32
-#define TRACKS_GOING_EAST   64
-#define TRACKS_GOING_WEST   128
-
-// 5 seconds
-#define TRACKS_CRUSTIFY_TIME   50
-
-// color-dir-dry
-var/global/list/image/fluidtrack_cache=list()
-
 /datum/fluidtrack
 	var/direction=0
 	var/basecolor="#A10808"

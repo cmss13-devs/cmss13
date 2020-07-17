@@ -1,7 +1,5 @@
 #define DRYING_TIME 5 * 60* 10
 
-var/global/list/image/splatter_cache=list()
-
 /obj/effect/decal/cleanable/blood
 	name = "blood"
 	desc = "It's thick and gooey. This probably isn't a safe place to be."

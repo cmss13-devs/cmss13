@@ -374,10 +374,3 @@ var/bomb_set = FALSE
 		log_game("[src] has been unexpectedly deleted at ([x],[y],[x]).")
 	bomb_set = FALSE
 	..()
-
-/obj/item/disk/nuclear/Dispose()
-	if(blobstart.len > 0)
-		var/obj/D = new /obj/item/disk/nuclear(pick(blobstart))
-		message_admins("[src] has been destroyed. Spawning [D] at ([D.x], [D.y], [D.z]).")
-		log_game("[src] has been destroyed. Spawning [D] at ([D.x], [D.y], [D.z]).")
-	. = ..()

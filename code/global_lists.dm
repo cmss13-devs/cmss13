@@ -66,7 +66,6 @@ var/global/list/chemical_gen_classes_list = list("C" = list(),"C1" = list(),"C2"
 var/global/list/landmarks_list = list()				//List of all landmarks created
 var/global/list/surgery_steps = list()				//List of all surgery steps  |BS12
 var/global/list/side_effects = list()				//List of all medical sideeffects types by thier names |BS12
-var/global/list/mechas_list = list()				//List of all mechs. Used by hostile mobs target tracking.
 var/global/list/ammo_list = list()					//List of all ammo types. Used by guns to tell the projectile how to act.
 var/global/list/joblist = list()					//List of all jobstypes, minus borg and AI
 
@@ -132,7 +131,6 @@ var/global/list/hair_styles_female_list = list()
 var/global/list/facial_hair_styles_list = list()	//stores /datum/sprite_accessory/facial_hair indexed by name
 var/global/list/facial_hair_styles_male_list = list()
 var/global/list/facial_hair_styles_female_list = list()
-var/global/list/skin_styles_female_list = list()		//unused
 	//Underwear
 var/global/list/underwear_m = list("Briefs") //Curse whoever made male/female underwear diffrent colours
 var/global/list/underwear_f = list("Briefs", "Panties")

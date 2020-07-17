@@ -16,7 +16,6 @@
 	idle_power_usage = 5
 	active_power_usage = 100
 	flags_atom = NOREACT
-	var/global/max_n_of_items = 999 // Sorry but the BYOND infinite loop detector doesn't look things over 1000.
 	var/icon_on = "smartfridge"
 	var/icon_off = "smartfridge-off"
 	var/icon_panel = "smartfridge-panel"
@@ -83,32 +82,24 @@
 		return
 
 	if(accept_check(O))
-		if(contents.len >= max_n_of_items)
-			to_chat(user, SPAN_NOTICE("\The [src] is full."))
-			return 1
-		else
-			if(user.drop_held_item())
-				add_item(O)
-				user.visible_message(SPAN_NOTICE("[user] has added \the [O] to \the [src]."), \
-									 SPAN_NOTICE("You add \the [O] to \the [src]."))
+		if(user.drop_held_item())
+			add_item(O)
+			user.visible_message(SPAN_NOTICE("[user] has added \the [O] to \the [src]."), \
+								 SPAN_NOTICE("You add \the [O] to \the [src]."))
 
-			nanomanager.update_uis(src)
+		nanomanager.update_uis(src)
 
 	else if(istype(O, /obj/item/storage/bag/plants))
 		var/obj/item/storage/bag/plants/P = O
 		var/plants_loaded = 0
 		for(var/obj/G in P.contents)
 			if(accept_check(G))
-				if(contents.len >= max_n_of_items)
-					to_chat(user, SPAN_NOTICE("\The [src] is full."))
-					return 1
+				P.remove_from_storage(G,src)
+				if(item_quants[G.name])
+					item_quants[G.name]++
 				else
-					P.remove_from_storage(G,src)
-					if(item_quants[G.name])
-						item_quants[G.name]++
-					else
-						item_quants[G.name] = 1
-					plants_loaded++
+					item_quants[G.name] = 1
+				plants_loaded++
 		if(plants_loaded)
 
 			user.visible_message( \

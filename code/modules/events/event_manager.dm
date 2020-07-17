@@ -1,19 +1,8 @@
 var/list/allEvents = typesof(/datum/event) - /datum/event
-var/list/potentialRandomEvents = typesof(/datum/event) - /datum/event
-//var/list/potentialRandomEvents = typesof(/datum/event) - /datum/event - /datum/event/spider_infestation
 
 var/eventTimeLower = MINUTES_20	//20 minutes
 var/eventTimeUpper = MINUTES_40	//40 minutes
 var/scheduledEvent = null
-
-
-//Currently unused. Needs an admin panel for messing with events.
-/*/proc/addPotentialEvent(var/type)
-	potentialRandomEvents |= type
-
-/proc/removePotentialEvent(var/type)
-	potentialRandomEvents -= type*/
-
 
 /proc/checkEvent()
 	if(!scheduledEvent)
@@ -40,21 +29,6 @@ var/scheduledEvent = null
 
 		scheduledEvent = null
 		checkEvent()
-
-//unused, see proc/dynamic_event()
-/*
-/proc/spawnEvent()
-	if(!config.allow_random_events)
-		return
-
-	var/Type = pick(potentialRandomEvents)
-	if(!Type)
-		return
-
-	//The event will add itself to the MC's event list
-	//and start working via the constructor.
-	new Type
-*/
 
 /client/proc/forceEvent(var/type in allEvents)
 	set name = "Trigger Event (Debug Only)"

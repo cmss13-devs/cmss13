@@ -84,7 +84,6 @@ var/looc_allowed = 1
 var/dsay_allowed = 1
 var/dooc_allowed = 1
 var/dlooc_allowed = 0
-var/traitor_scaling = 1
 var/abandon_allowed = 1
 var/enter_allowed = 1
 var/guests_allowed = 1
@@ -109,12 +108,9 @@ var/list/newplayer_start = list()
 
 //Spawnpoints.
 var/list/latejoin = list()
-var/list/latejoin_gateway = list()
 var/list/latejoin_cryo = list()
 var/list/latewhiskey = list()
 
-var/list/prisonwarp = list()	//prisoners go to these
-var/list/holdingfacility = list()	//captured people go here
 var/list/xeno_spawn = list()//Aliens spawn at these.
 var/list/surv_spawn = list()//Survivors spawn at these
 var/list/pred_spawn = list()//Predators spawn at these
@@ -128,17 +124,12 @@ var/list/tdome1 = list()
 var/list/tdome2 = list()
 var/list/tdomeobserve = list()
 var/list/tdomeadmin = list()
-var/list/prisonsecuritywarp = list()	//prison security goes to these
-var/list/prisonwarped = list()	//list of players already warped
-var/list/blobstart = list()
-var/list/cardinal = list( NORTH, SOUTH, EAST, WEST )
+var/list/cardinal = list(NORTH, SOUTH, EAST, WEST)
 var/list/diagonals = list(NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST)
 var/list/alldirs = list(NORTH, SOUTH, EAST, WEST, NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST)
 var/list/reverse_dir = list(2, 1, 3, 8, 10, 9, 11, 4, 6, 5, 7, 12, 14, 13, 15, 32, 34, 33, 35, 40, 42, 41, 43, 36, 38, 37, 39, 44, 46, 45, 47, 16, 18, 17, 19, 24, 26, 25, 27, 20, 22, 21, 23, 28, 30, 29, 31, 48, 50, 49, 51, 56, 58, 57, 59, 52, 54, 53, 55, 60, 62, 61, 63)
 
-var/datum/station_state/start_state = null
 var/datum/configuration/config = null
-var/datum/sun/sun = null
 
 var/list/combatlog = list()
 var/list/IClog = list()
@@ -163,10 +154,7 @@ var/list/AAlarmIndexToFlag
 var/list/AAlarmIndexToWireColor
 var/list/AAlarmWireColorToIndex
 
-#define FIRE_DAMAGE_MODIFIER 0.0215 //Higher values result in more external fire damage to the skin (default 0.0215)
-#define AIR_DAMAGE_MODIFIER 2.025 //More means less damage from hot air scalding lungs, less = more damage. (default 2.025)
-
-	//Don't set this very much higher then 1024 unless you like inviting people in to dos your server with message spam
+//Don't set this very much higher then 1024 unless you like inviting people in to dos your server with message spam
 #define MAX_MESSAGE_LEN 1024
 #define MAX_EMOTE_LEN 256
 #define MAX_PAPER_MESSAGE_LEN 3072

@@ -1241,44 +1241,6 @@
 		message_admins("[key_name(H)] got their cookie, spawned by [key_name(src.owner)]")
 		to_chat(H, SPAN_NOTICE(" Your prayers have been answered!! You received the <b>best cookie</b>!"))
 
-	else if(href_list["BlueSpaceArtillery"])
-		if(!check_rights(R_ADMIN|R_FUN))	
-			return
-
-		var/mob/living/M = locate(href_list["BlueSpaceArtillery"])
-		if(!isliving(M))
-			to_chat(usr, "This can only be used on instances of type /mob/living")
-			return
-
-		if(alert(src.owner, "Are you sure you wish to hit [key_name(M)] with Blue Space Artillery? This will severely hurt and most likely kill them.",  "Confirm Firing?" , "Yes" , "No") != "Yes")
-			return
-
-		if(BSACooldown)
-			to_chat(src.owner, "Standby!  Reload cycle in progress!  Gunnary crews ready in five seconds!")
-			return
-
-		BSACooldown = 1
-		spawn(50)
-			BSACooldown = 0
-
-		to_chat(M, "You've been hit by bluespace artillery!")
-		message_admins("[key_name(M)] has been hit by Bluespace Artillery fired by [src.owner]")
-
-		var/turf/open/floor/T = get_turf(M)
-		if(istype(T))
-			if(prob(80))	
-				T.break_tile_to_plating()
-			else			
-				T.break_tile()
-
-		if(M.health == 1)
-			M.gib()
-		else
-			M.apply_damage( min( 99 , (M.health - 1) )    , BRUTE)
-			M.Stun(20)
-			M.KnockDown(20)
-			M.stuttering = 20
-
 	else if(href_list["CentcommReply"])
 		var/mob/living/carbon/human/H = locate(href_list["CentcommReply"])
 

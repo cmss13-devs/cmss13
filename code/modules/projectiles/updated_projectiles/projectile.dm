@@ -727,7 +727,7 @@
 		apply_damage(damage, P.ammo.damage_type, P.def_zone, 0, 0, P)
 		P.play_damage_effect(src)
 		if(ammo_flags & AMMO_INCENDIARY)
-			adjust_fire_stacks(rand(6,10))
+			adjust_fire_stacks(8)
 			IgniteMob()
 			if(isHumanStrict(src))
 				emote("scream")
@@ -799,7 +799,7 @@
 		P.play_damage_effect(src)
 		
 		if(ammo_flags & AMMO_INCENDIARY)
-			adjust_fire_stacks(rand(6,11))
+			adjust_fire_stacks(9)
 			IgniteMob()
 			if(!stat && pain.feels_pain)
 				emote("scream")
@@ -875,7 +875,7 @@
 			if(caste.fire_immune)
 				if(!stat) to_chat(src, "<span class='avoidharm'>You shrug off some persistent flames.</span>")
 			else
-				adjust_fire_stacks(rand(2,6) + round(damage_result / 8))
+				adjust_fire_stacks(4 + round(damage_result / 8))
 				IgniteMob()
 				visible_message(SPAN_DANGER("[src] bursts into flames!"), \
 				SPAN_XENODANGER("You burst into flames!! Auuugh! Resist to put out the flames!"))

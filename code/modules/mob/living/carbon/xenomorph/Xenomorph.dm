@@ -368,6 +368,10 @@
 
 	acid_splash_cooldown = caste.acid_splash_cooldown
 
+	if (caste.fire_immune)
+		registerListener(src, EVENT_PREIGNITION_CHECK, "xeno_fire_immune", TRUE_CALLBACK)
+		registerListener(src, EVENT_PRE_FIRE_BURNED_CHECK, "xeno_fire_immune", TRUE_CALLBACK)
+
 	recalculate_everything()
 
 
@@ -755,7 +759,7 @@
 			A.remove_action(src)
 
 /mob/living/carbon/Xenomorph/resist_fire()
-	fire_stacks = max(fire_stacks - rand(3, 6), 0)
+	fire_stacks = max(fire_stacks - 5, 0)
 	KnockDown(4, TRUE)
 	visible_message(SPAN_DANGER("[src] rolls on the floor, trying to put themselves out!"), \
 		SPAN_NOTICE("You stop, drop, and roll!"), null, 5)

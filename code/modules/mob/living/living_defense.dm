@@ -96,12 +96,13 @@
 
 
 //Mobs on Fire
-/mob/living/proc/IgniteMob()
+/mob/living/proc/IgniteMob()	
 	if(fire_stacks > 0 && !on_fire)
-		on_fire = 1
+		on_fire = TRUE
 		to_chat(src, SPAN_DANGER("You are on fire! Use Resist to put yourself out!"))
 		update_fire()
-		return 1
+		return TRUE
+	return FALSE
 
 /mob/living/carbon/human/IgniteMob()
 	. = ..()
@@ -133,8 +134,9 @@
 		adjust_fire_stacks(-1) //the fire is consumed slowly
 
 /mob/living/fire_act()
-	adjust_fire_stacks(rand(1,2))
-	IgniteMob()
+	if (raiseEventSync(src, EVENT_PREIGNITION_CHECK) != HALTED)
+		adjust_fire_stacks(2)
+		IgniteMob()
 
 //Mobs on Fire end
 

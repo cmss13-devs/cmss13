@@ -415,8 +415,6 @@
 		link_powerpack(usr)
 	toggle_motion_detector(usr)
 
-
-
 /obj/item/weapon/gun/smartgun/able_to_fire(mob/living/user)
 	. = ..()
 	if(.)
@@ -428,7 +426,6 @@
 		if ( !istype(H.wear_suit,/obj/item/clothing/suit/storage/marine/smartgunner) || !istype(H.back,/obj/item/smartgun_powerpack))
 			click_empty(H)
 			return 0
-
 
 /obj/item/weapon/gun/smartgun/delete_bullet(obj/item/projectile/projectile_to_fire, refund = 0)
 	if(!current_mag)
@@ -733,6 +730,11 @@
 		src.drain -= 15
 		if(!auto_fire)
 			processing_objects.Remove(src)
+
+/obj/item/weapon/gun/smartgun/equipped(mob/living/carbon/human/H, slot)
+	..()
+	registerListener(src, EVENT_GUN_DROPPED, "gdrp_sg", CALLBACK(src, .proc/handle_harness))
+	registerListener(src, EVENT_LAUNCH_CHECK, "lc_sg", CALLBACK(src, .proc/harness_launch_cancel))
 
 /obj/item/weapon/gun/smartgun/dirty
 	name = "\improper M56D 'Dirty' smartgun"

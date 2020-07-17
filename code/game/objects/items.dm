@@ -605,7 +605,7 @@ cases. Override_icon_state should be a list.*/
 //The default action is attack_self().
 //Checks before we get to here are: mob is alive, mob is not restrained, paralyzed, asleep, resting, laying, item is on the mob.
 /obj/item/proc/ui_action_click()
-	if( src in usr )
+	if(src in usr)
 		attack_self(usr)
 
 
@@ -634,7 +634,7 @@ cases. Override_icon_state should be a list.*/
 /datum/event_handler/event_gun_zoom
 	var/obj/item/zooming_item
 	var/mob/living/calee
-	single_fire = 1
+	flags_handler = HNDLR_FLAG_SINGLE_FIRE
 
 /datum/event_handler/event_gun_zoom/New(obj/item/_zooming_item, mob/living/_calee)
 	zooming_item = _zooming_item

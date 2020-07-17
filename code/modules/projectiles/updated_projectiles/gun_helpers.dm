@@ -127,12 +127,6 @@ DEFINES in setup.dm, referenced here.
 	else
 		..()
 
-/obj/item/weapon/gun/launch_towards(var/datum/launch_metadata/LM)
-	if(harness_check(thrower))
-		to_chat(LM.thrower, SPAN_WARNING("\The [src] clanks on the ground."))
-	else
-		..()
-
 /*
 Note: pickup and dropped on weapons must have both the ..() to update zoom AND twohanded,
 As sniper rifles have both and weapon mods can change them as well. ..() deals with zoom only.
@@ -147,7 +141,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	turn_off_light(user)
 
 	unwield(user)
-	harness_check(user)
+	raiseEvent(src, EVENT_GUN_DROPPED, user)
 
 /obj/item/weapon/gun/proc/turn_off_light(mob/bearer)
 	if (!(flags_gun_features & GUN_FLASHLIGHT_ON))
@@ -196,41 +190,40 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 			) return TRUE
 	to_chat(user, SPAN_WARNING("[src] flashes a warning sign indicating unauthorized use!"))
 
-/*
-Here we have throwing and dropping related procs.
-This should fix some issues with throwing mag harnessed guns when
-they're not supposed to be thrown. Either way, this fix
-should be alright.
-*/
-/obj/item/weapon/gun/proc/harness_check(mob/user)
-	if(!ishuman(user))
-		return FALSE
-
-	var/mob/living/carbon/human/owner = user
-
-	if(!has_attachment(/obj/item/attachable/magnetic_harness) && !istype(src, /obj/item/weapon/gun/smartgun))
-		return FALSE
-
-	var/obj/item/I = owner.wear_suit
+// Checks whether there is anything to put your harness
+/obj/item/weapon/gun/proc/harness_check(var/mob/living/carbon/human/user)
+	var/obj/item/I = user.wear_suit
 	if(!istype(I, /obj/item/clothing/suit/storage/marine))
 		return FALSE
-
-	harness_return(user)
+	
 	return TRUE
 
-/obj/item/weapon/gun/proc/harness_return(mob/living/carbon/human/user)
-	set waitfor = 0
-	sleep(3)
-	if(!loc || !user)
-		return
-	if(user.s_store || !isturf(loc))
-		return
-
+/obj/item/weapon/gun/proc/harness_return(var/mob/living/carbon/human/user)
 	var/obj/item/I = user.wear_suit
 	user.equip_to_slot_if_possible(src, WEAR_J_STORE)
 	if(user.s_store == src)
 		to_chat(user, SPAN_WARNING("[src] snaps into place on [I]."))
 	user.update_inv_s_store()
+
+/obj/item/weapon/gun/proc/handle_harness(var/mob/living/carbon/human/user)
+	set waitfor = 0
+
+	if (!ishuman(user))
+		return
+
+	if (!harness_check(user))
+		return
+	
+	sleep(3)
+
+	if (!loc || !user)
+		return
+	if (!isturf(loc))
+		return
+	if (!harness_check(user))
+		return
+
+	harness_return(user)
 
 /obj/item/weapon/gun/attack_self(mob/user)
 	..()
@@ -908,7 +901,14 @@ should be alright.
 		return
 
 
-obj/item/weapon/gun/item_action_slot_check(mob/user, slot)
+/obj/item/weapon/gun/item_action_slot_check(mob/user, slot)
 	if(slot != WEAR_L_HAND && slot != WEAR_R_HAND)
 		return FALSE
+	return TRUE
+
+/obj/item/weapon/gun/proc/harness_launch_cancel(var/mob/thrower)
+	if (!istype(thrower))
+		return TRUE
+	
+	to_chat(thrower, SPAN_WARNING("\The [src] clanks on the ground."))
 	return TRUE

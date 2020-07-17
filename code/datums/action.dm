@@ -65,8 +65,8 @@
 
 /datum/action/item_action
 	name = "Use item"
-	var/obj/item/holder_item //the item that has this action in its list of actions. Is not necessarily the target
-							//e.g. gun attachment action: target = attachment, holder = gun.
+	var/obj/item/holder_item	//the item that has this action in its list of actions. Is not necessarily the target
+								//e.g. gun attachment action: target = attachment, holder = gun.
 
 /datum/action/item_action/New(Target, obj/item/holder)
 	..()
@@ -88,7 +88,7 @@
 		I.ui_action_click(owner, holder_item)
 
 /datum/action/item_action/can_use_action()
-	if(owner && !owner.is_mob_incapacitated() && !owner.lying)
+	if(ishuman(owner) && !owner.is_mob_incapacitated() && !owner.lying)
 		return TRUE
 
 /datum/action/item_action/update_button_icon()

@@ -319,7 +319,7 @@
 	var/camo_alpha = 10
 	var/allow_gun_usage = FALSE
 
-	actions_types = list(/datum/action/item_action)
+	actions_types = list(/datum/action/item_action/specialist/toggle_cloak)
 
 /obj/item/storage/backpack/marine/satchel/scout_cloak/dropped(mob/user)
 	if(ishuman(user) && !isSynth(user))
@@ -331,9 +331,9 @@
 	camouflage()
 
 /obj/item/storage/backpack/marine/satchel/scout_cloak/verb/camouflage()
-	set name = "Specialist Activation"
+	set name = "Activate Cloak"
 	set desc = "Activate your cloak's camouflage."
-	set category = "Weapons"
+	set category = "Scout"
 
 	if(!usr || usr.is_mob_incapacitated(TRUE))
 		return
@@ -394,6 +394,26 @@
 	if(camo_active && !allow_gun_usage)
 		return
 	H.allow_gun_usage = TRUE
+
+/datum/action/item_action/specialist/toggle_cloak
+	ability_primacy = SPEC_PRIMARY_ACTION_1
+
+/datum/action/item_action/specialist/toggle_cloak/New(var/mob/living/user, var/obj/item/holder)
+	..()
+	name = "Toggle Cloak"
+	button.name = name
+	button.overlays.Cut()
+	var/image/IMG = image('icons/obj/items/clothing/backpacks.dmi', button, "scout_cloak")
+	button.overlays += IMG
+
+/datum/action/item_action/specialist/toggle_cloak/can_use_action()
+	var/mob/living/carbon/human/H = owner
+	if(istype(H) && !H.is_mob_incapacitated() && !H.lying && holder_item == H.back)
+		return TRUE
+
+/datum/action/item_action/specialist/toggle_cloak/action_activate()
+	var/obj/item/storage/backpack/marine/satchel/scout_cloak/SC = holder_item
+	SC.camouflage()
 
 // Can use weapons whilst invisible in the UPP cloak
 /obj/item/storage/backpack/marine/satchel/scout_cloak/upp
@@ -514,7 +534,7 @@
 	max_storage_space = 15
 	storage_slots = 3
 	worn_accessible = TRUE
-	can_hold = list(/obj/item/ammo_magazine/flamer_tank)
+	can_hold = list(/obj/item/ammo_magazine/flamer_tank, /obj/item/tool/extinguisher)
 
 /obj/item/storage/backpack/lightpack
 	name = "\improper lightweight combat pack"

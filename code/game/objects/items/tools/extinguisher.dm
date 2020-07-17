@@ -1,3 +1,6 @@
+#define BASE_EXTINGUISHER_PWR 7
+#define PYRO_EXTINGUISHER_PWR 48
+
 /obj/item/tool/extinguisher
 	name = "fire extinguisher"
 	desc = "A traditional red fire extinguisher."
@@ -18,6 +21,7 @@
 	var/last_use = 1.0
 	var/safety = 1
 	var/sprite_name = "fire_extinguisher"
+	var/power = BASE_EXTINGUISHER_PWR
 
 /obj/item/tool/extinguisher/mini
 	name = "fire extinguisher"
@@ -30,6 +34,15 @@
 	force = 3.0
 	max_water = 30
 	sprite_name = "miniFE"
+
+// A solely internal extinguisher
+/obj/item/tool/extinguisher/pyro
+	name = "fire extinguisher"
+	desc = "A heavy-duty fire extinguisher designed for extreme fires."
+	w_class = SIZE_MEDIUM
+	force = 3.0
+	max_water = 500
+	power = PYRO_EXTINGUISHER_PWR
 
 /obj/item/tool/extinguisher/Initialize()
 	. = ..()
@@ -160,8 +173,8 @@
 			W.reagents.reaction(atm)
 			if(istype(atm, /obj/flamer_fire))
 				var/obj/flamer_fire/FF = atm
-				if(FF.firelevel > 7)
-					FF.firelevel -= 7
+				if(FF.firelevel > power)
+					FF.firelevel -= power
 					FF.updateicon()
 				else
 					qdel(atm)
@@ -179,3 +192,6 @@
 			break
 		sleep(2)
 	qdel(W)
+
+#undef BASE_EXTINGUISHER_PWR
+#undef PYRO_EXTINGUISHER_PWR

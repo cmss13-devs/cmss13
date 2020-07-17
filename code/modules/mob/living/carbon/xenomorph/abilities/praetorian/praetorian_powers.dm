@@ -666,9 +666,11 @@
 		use_plasma = TRUE
 
 	else if (curr_effect_type == WARDEN_HEAL_HP)
-
 		if (!X.Adjacent(A))
 			to_chat(X, SPAN_XENODANGER("You must be within touching distance of [targetXeno]!"))
+			return
+		if (targetXeno.on_fire)
+			to_chat(X, SPAN_XENOWARNING("You cannot heal xenos that are on fire!"))
 			return
 
 		var/bonus_heal = 0

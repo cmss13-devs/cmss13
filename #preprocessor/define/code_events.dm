@@ -5,6 +5,8 @@
 	will be given to the listeners when the event is raised.
 */
 
+#define HALTED -1
+
 // Raised when LMB is pressed. Args:
 //   Atom that was clicked
 //   Click parameters
@@ -27,3 +29,23 @@
 // Raised when the crewmen orders a vehicle. Args:
 //   The vehicle that was ordered
 #define EVENT_VEHICLE_ORDERED "vehicle_ordered"
+
+// Raised when a mob is about to be ignited or receive burn stacks (to check if getting ignited or receiving burn stacks is a valid).
+// Args:
+//	n/a
+#define EVENT_PREIGNITION_CHECK "preignition_check"
+
+// Raised when a mob is about to receive burn damage from fire (to check if receiving fire damage is valid).
+// Args:
+//	n/a
+#define EVENT_PRE_FIRE_BURNED_CHECK "pre_fire_burned_check"
+
+// Raised when a gun is dropped
+// Args:
+//	The mob who dropped the gun
+#define EVENT_GUN_DROPPED "gun_dropped"
+
+// Raised when an atom is about to be launched (to check if launch is valid)
+// Args:
+//	n/a
+#define EVENT_LAUNCH_CHECK "launch_check"

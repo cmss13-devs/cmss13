@@ -210,7 +210,7 @@
 		X.recalculate_speed()
 
 /datum/event_handler/boiler_acid_onmovement
-	single_fire = 0
+	flags_handler = NO_FLAGS
 	var/mob/living/carbon/Xenomorph/X = null
 	var/smoke_duration = 3
 	var/spread_speed = 1000000

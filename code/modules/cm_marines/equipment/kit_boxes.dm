@@ -246,7 +246,7 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 		new /obj/item/ammo_magazine/flamer_tank(src)
 		new /obj/item/ammo_magazine/flamer_tank/gellied(src)
 		new /obj/item/tool/extinguisher/mini(src)
-
+		new /obj/item/attachable/attached_gun/extinguisher(src)
 /obj/item/storage/box/kit/mini_sniper
 	name = "\improper L42A Sniper Kit"
 

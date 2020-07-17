@@ -2042,3 +2042,11 @@ var/list/WALLITEMS = list(
 	if(flag & bit)
 		return TRUE
 	return FALSE
+
+// A proc purely for a callback that returns TRUE (and does nothing else)
+/proc/_callback_true()
+	return TRUE
+
+// A proc purely for a callback that returns FALSE (and does nothing else)
+/proc/_callback_false()
+	return FALSE

@@ -164,8 +164,12 @@
 	item_state = "lamp"
 	brightness_on = 5
 	w_class = SIZE_LARGE
-	on = 1
+	on = 0
 	raillight_compatible = 0
+
+/obj/item/device/flashlight/lamp/on/New()
+	on = 1
+	update_brightness()
 
 //Menorah!
 /obj/item/device/flashlight/lamp/menorah

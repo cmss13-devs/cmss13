@@ -6,9 +6,6 @@ macro "default"
 		name = "Center+REP"
 		command = ".center"
 	elem 
-		name = "Northeast"
-		command = ".northeast"
-	elem 
 		name = "Southeast"
 		command = ".southeast"
 	elem 
@@ -145,9 +142,6 @@ macro "hotkeymode"
 	elem 
 		name = "Center+REP"
 		command = ".center"
-	elem 
-		name = "Northeast"
-		command = ".northeast"
 	elem 
 		name = "Southeast"
 		command = ".southeast"

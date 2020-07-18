@@ -359,7 +359,7 @@ proc/check_panel(mob/M)
 	return
 
 var/list/non_fakeattack_weapons = list(/obj/item/device/aicard,\
-	/obj/item/clothing/shoes/magboots, /obj/item/blueprints, /obj/item/disk/nuclear,\
+	/obj/item/clothing/shoes/magboots, /obj/item/disk/nuclear,\
 	/obj/item/clothing/suit/space/uscm, /obj/item/tank)
 
 /proc/fake_attack(var/mob/living/target)

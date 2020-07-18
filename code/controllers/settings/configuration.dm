@@ -35,8 +35,6 @@
 	var/vote_no_dead = 0				// dead people can't vote (tbi)
 //	var/enable_authentication = 0		// goon authentication
 	var/del_new_on_log = 1				// del's new players if they log before they spawn in
-	var/feature_object_spell_system = 0 //spawns a spellbook which gives object-type spells instead of verb-type spells for the wizard
-	var/traitor_scaling = 0 			//if amount of traitors scales based on amount of players
 	var/objectives_disabled = 0 			//if objectives are disabled or not
 	var/protect_roles_from_antagonist = 0// If security and such can be traitor/cult/other
 	var/continous_rounds = 0			// Gamemodes which end instantly will instead keep on going until the round ends by escape shuttle or nuke.
@@ -325,14 +323,8 @@
 		if ("usewhitelist")
 			config.usewhitelist = 1
 
-		if ("feature_object_spell_system")
-			config.feature_object_spell_system = 1
-
 		if ("allow_metadata")
 			config.allow_Metadata = 1
-
-		if ("traitor_scaling")
-			config.traitor_scaling = 1
 
 		if ("objectives_disabled")
 			config.objectives_disabled = 1

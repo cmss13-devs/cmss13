@@ -24,10 +24,6 @@
 			latewhiskey += loc
 			qdel(src)
 
-		if("JoinLateGateway")
-			latejoin_gateway += loc
-			qdel(src)
-
 		if("JoinLateCryo")
 			latejoin_cryo += loc
 			qdel(src)
@@ -47,15 +43,6 @@
 			HangarLowerElevator = loc
 			qdel(src)
 
-		//prisoners
-		if("prisonwarp")
-			prisonwarp += loc
-			qdel(src)
-
-		if("Holding Facility")
-			holdingfacility += loc
-			qdel(src)
-
 		if("tdome1")
 			tdome1	+= loc
 			qdel(src)
@@ -70,15 +57,6 @@
 
 		if("tdomeobserve")
 			tdomeobserve += loc
-			qdel(src)
-
-		//not prisoners
-		if("prisonsecuritywarp")
-			prisonsecuritywarp += loc
-			qdel(src)
-
-		if("blobstart")
-			blobstart += loc
 			qdel(src)
 
 		if("xeno_spawn")

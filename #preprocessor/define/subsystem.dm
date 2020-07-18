@@ -5,7 +5,6 @@
 #define SS_INIT_CHAT			   27
 #define SS_INIT_RUST               26
 #define SS_INIT_SUPPLY_SHUTTLE     25
-#define SS_INIT_SUN                24
 #define SS_INIT_GARBAGE            23
 #define SS_INIT_JOB                22
 #define SS_INIT_PLANT              21.5
@@ -76,7 +75,6 @@
 #define SS_PRIORITY_PING       	   10
 #define SS_PRIORITY_DATABASE	   15
 #define SS_PRIORITY_PERFLOGGING    4
-#define SS_PRIORITY_SUN            3
 #define SS_PRIORITY_GARBAGE        2
 #define SS_PRIORITY_INACTIVITY     1
 #define SS_PRIORITY_ADMIN          0
@@ -111,7 +109,6 @@
 #define SS_DISPLAY_FZ_TRANSITIONS -15
 #define SS_DISPLAY_TICKER         -10
 #define SS_DISPLAY_UNSPECIFIED     0
-#define SS_DISPLAY_SUN             10
 #define SS_DISPLAY_ADMIN           20
 
 #define INITIALIZE_HINT_NORMAL   0  //Nothing happens

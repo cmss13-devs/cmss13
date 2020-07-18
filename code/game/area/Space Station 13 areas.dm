@@ -66,13 +66,6 @@ var/list/ghostteleportlocs = list()
 	ambience = list('sound/ambience/ambisin1.ogg','sound/ambience/ambisin2.ogg','sound/ambience/ambisin3.ogg','sound/ambience/ambisin4.ogg')
 /area/turret_protected/
 
-/area/arrival
-	requires_power = 0
-
-/area/arrival/start
-	name = "\improper Arrival Area"
-	icon_state = "start"
-
 /area/admin
 	name = "\improper Admin room"
 	icon_state = "start"
@@ -81,10 +74,6 @@ var/list/ghostteleportlocs = list()
 /area/space/highalt
 	name = "High Altitude"
 	icon_state = "blue"
-
-/area/airtunnel1/      // referenced in airtunnel.dm:759
-
-/area/dummy/           // Referenced in engine.dm:261
 
 /area/start            // will be unused once kurper gets his login interface patch done
 	name = "start area"
@@ -95,12 +84,7 @@ var/list/ghostteleportlocs = list()
 	has_gravity = 1
 
 // === end remove
-/*
-/area/alien
-	name = "\improper abandoned  Alien base"
-	icon_state = "yellow"
-	requires_power = 0
-*/
+
 // CENTCOM
 
 /area/centcom
@@ -112,37 +96,8 @@ var/list/ghostteleportlocs = list()
 /area/centcom/control
 	name = "\improper abandoned  Centcom Control"
 
-/area/centcom/evac
-	name = "\improper abandoned  Centcom Emergency Shuttle"
-
-/area/centcom/suppy
-	name = "\improper abandoned  Centcom Supply Shuttle"
-
-/area/centcom/ferry
-	name = "\improper abandoned  Centcom Transport Shuttle"
-
-/area/centcom/shuttle
-	name = "\improper abandoned  Centcom Administration Shuttle"
-
-/area/centcom/test
-	name = "\improper abandoned  Centcom Testing Facility"
-
 /area/centcom/living
 	name = "\improper abandoned  Centcom Living Quarters"
-
-/area/centcom/specops
-	name = "\improper abandoned  Centcom Special Ops"
-
-/area/centcom/creed
-	name = "Creed's Office"
-
-/area/centcom/holding
-	name = "\improper abandoned  Holding Facility"
-
-/area/centcom/solitary
-	name = "Solitary Confinement"
-	icon_state = "brig"
-
 
 /area/tdome
 	name = "\improper abandoned  Thunderdome"
@@ -166,35 +121,3 @@ var/list/ghostteleportlocs = list()
 /area/tdome/tdomeobserve
 	name = "\improper abandoned  Thunderdome (Observer.)"
 	icon_state = "purple"
-
-//Teleporter
-
-/area/teleporter
-	name = "\improper abandoned  Teleporter"
-	icon_state = "teleporter"
-	music = "signal"
-
-/area/gateway
-	name = "\improper abandoned  Gateway"
-	icon_state = "teleporter"
-	music = "signal"
-
-/area/AIsattele
-	name = "\improper abandoned  AI Satellite Teleporter Room"
-	icon_state = "teleporter"
-	music = "signal"
-	ambience = list('sound/ambience/ambimalf.ogg')
-
-/////////////////////////////////////////////////////////////////////
-/*
- Lists of areas to be used with is_type_in_list.
- Used in gamemodes code at the moment. --rastaf0
-*/
-
-// CENTCOM
-var/list/centcom_areas = list (
-	/area/centcom,
-)
-
-//SPACE STATION 13
-var/list/the_station_areas = list ()

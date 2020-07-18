@@ -6,9 +6,6 @@
 
 var/datum/subsystem/html_ui/SShtml_ui
 
-var/list/html_machines = list() // For checking when we should update a mob based on race specific conditions
-
-
 /datum/subsystem/html_ui
 	name = "HTMLUI"
 	wait = 1.7 SECONDS

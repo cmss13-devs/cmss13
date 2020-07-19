@@ -1304,10 +1304,10 @@
 /turf/open/floor,
 /area/bigredv2/outside/marshall_office)
 "adl" = (
-/turf/open/floor/plating,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
+/turf/open/floor/plating,
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "platingdmg2";
@@ -31042,13 +31042,20 @@
 	tag = "icon-dark"
 	},
 /area/bigredv2/caves/lambda/research)
+"hYI" = (
+/obj/effect/landmark{
+	name = "xeno_hive_spawn"
+	},
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/bigredv2/outside/virology)
 "ibH" = (
 /turf/open/floor{
 	dir = 4;
 	icon_state = "asteroidwarning";
 	tag = "icon-asteroidwarning (EAST)"
-	},
-/area/bigredv2/outside/engineering)
+	})
 "ibP" = (
 /turf/open/floor/plating,
 /area/bigredv2/caves_research)
@@ -31147,6 +31154,15 @@
 /turf/open/mars_cave{
 	icon_state = "mars_cave_6";
 	tag = "icon-mars_cave_6"
+	},
+/area/bigredv2/caves_research)
+"iRG" = (
+/obj/effect/landmark{
+	name = "xeno_hive_spawn"
+	},
+/turf/open/mars_cave{
+	icon_state = "mars_cave_2";
+	tag = "icon-mars_cave_2"
 	},
 /area/bigredv2/caves_research)
 "iUe" = (
@@ -31661,6 +31677,15 @@
 "ozv" = (
 /turf/open/floor/plating,
 /area/bigredv2/caves_virology)
+"ozQ" = (
+/obj/effect/landmark{
+	name = "xeno_hive_spawn"
+	},
+/turf/open/mars_cave{
+	icon_state = "mars_cave_2";
+	tag = "icon-mars_cave_2"
+	},
+/area/bigredv2/caves_lambda)
 "oAf" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_5";
@@ -32267,6 +32292,15 @@
 	tag = "icon-mars_cave_13"
 	},
 /area/bigredv2/outside/filtration_plant)
+"wfC" = (
+/obj/effect/landmark{
+	name = "xeno_hive_spawn"
+	},
+/turf/open/mars_cave{
+	icon_state = "mars_cave_2";
+	tag = "icon-mars_cave_2"
+	},
+/area/bigredv2/caves_se)
 "wgF" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/objective_landmark/far,
@@ -38233,7 +38267,7 @@ aRJ
 aSy
 aNc
 aNc
-aNc
+hYI
 aWi
 sHG
 aNc
@@ -52886,7 +52920,7 @@ jrD
 jrD
 jcR
 jrD
-jrD
+iRG
 jrD
 jrD
 aao
@@ -76091,7 +76125,7 @@ nBa
 nBa
 nBa
 nBa
-nBa
+wfC
 nBa
 nBa
 nBa
@@ -77887,7 +77921,7 @@ tQw
 tQw
 tQw
 tQw
-tQw
+ozQ
 tQw
 tQw
 tQw

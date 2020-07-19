@@ -112,6 +112,7 @@ var/list/latejoin_cryo = list()
 var/list/latewhiskey = list()
 
 var/list/xeno_spawn = list()//Aliens spawn at these.
+var/list/xeno_hive_spawn = list()//Hives spawn at these. Useful only for XvX
 var/list/surv_spawn = list()//Survivors spawn at these
 var/list/pred_spawn = list()//Predators spawn at these
 var/list/pred_elder_spawn = list() //For elder preds.

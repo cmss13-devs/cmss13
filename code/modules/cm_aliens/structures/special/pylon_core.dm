@@ -82,6 +82,14 @@
 	luminosity = 4
 	cover_range = WEED_RANGE_CORE
 	node_type = /obj/effect/alien/weeds/node/pylon/core
+	var/hardcore = FALSE
+
+	var/next_attacked_message = SECONDS_5
+	var/last_attacked_message = 0
+
+	var/heal_amount = 100
+	var/heal_interval = SECONDS_10
+	var/last_healed = 0
 
 	protection_level = TURF_PROTECTION_OB
 
@@ -101,8 +109,41 @@
 	if(hive_ref)
 		hive_ref.set_hive_location(src, linked_hive.hivenumber)
 
+/obj/effect/alien/resin/special/pylon/core/process()
+	if(health >= maxhealth || last_healed > world.time) return
+
+	health += min(heal_amount, maxhealth)
+	last_healed = world.time + heal_interval
+
+/obj/effect/alien/resin/special/pylon/core/attack_alien(mob/living/carbon/Xenomorph/M)
+	if(linked_hive)
+		var/current_health = health
+		if(hardcore && M.hivenumber == linked_hive.hivenumber)
+			return
+
+		. = ..()
+
+		if(hardcore && last_attacked_message < world.time && current_health > health)
+			xeno_message(SPAN_XENOANNOUNCE("The hive core is under attack!"), 2, linked_hive.hivenumber)
+			last_attacked_message = world.time + next_attacked_message
+		
+	else
+		. = ..()
+
 /obj/effect/alien/resin/special/pylon/core/Dispose()
 	if(linked_hive)
 		linked_hive.hive_location = null
+		if(hardcore)
+			xeno_message(SPAN_XENOANNOUNCE("A sudden tremor ripples through the hive... the Hive Core has been destroyed! Vengeance!"), 3, linked_hive.hivenumber)
+			xeno_message(SPAN_XENOANNOUNCE("You can no longer gain new sisters or another Queen. Additionally, you are unable to heal if your Queen is dead"), 2, linked_hive.hivenumber)
+			linked_hive.hardcore = TRUE
+			linked_hive.allow_queen_evolve = FALSE
+			linked_hive.hive_structures_limit[XENO_STRUCTURE_CORE] = 0
+			linked_hive.hive_structures_limit[XENO_STRUCTURE_POOL] = 0
+
+			xeno_announcement("\The [linked_hive.name] has lost their hive core!", "everything", HIGHER_FORCE_ANNOUNCE)
+
+			if(linked_hive.spawn_pool)
+				qdel(linked_hive.spawn_pool)
 
 	. = ..()

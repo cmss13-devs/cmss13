@@ -297,7 +297,7 @@
 
 	var/turf/T = get_turf(A)
 	var/choice = XENO_STRUCTURE_CORE
-	if(X.hive.has_structure(XENO_STRUCTURE_CORE))
+	if(X.hive.has_structure(XENO_STRUCTURE_CORE) || !X.hive.can_build_structure(XENO_STRUCTURE_CORE))
 		choice = input(X, "Choose a structure to build") in X.hive.hive_structure_types + "help" + "cancel"
 	if(choice == "help")
 		var/message = "<br>Placing a construction node creates a template for special structures that can benefit the hive, which require the insertion of [MATERIAL_CRYSTAL] to construct the following:<br>"
@@ -311,6 +311,10 @@
 		return FALSE
 
 	if((choice == XENO_STRUCTURE_CORE) && isXenoQueen(X) && X.hive.has_structure(XENO_STRUCTURE_CORE))
+		if(X.hive.hive_location.hardcore)
+			to_chat(X, SPAN_WARNING("You can't rebuild this structure"))
+			return
+
 		if(alert(X, "Are you sure that you want to move the hive and destroy the old hive core?", , "Yes", "No") == "No")
 			return
 		qdel(X.hive.hive_location)

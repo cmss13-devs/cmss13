@@ -25,6 +25,8 @@
 	pixel_x = -16
 	pixel_y = -16
 	health = 200
+	var/maxhealth = 200
+
 	density = TRUE
 	unacidable = TRUE
 	anchored = TRUE
@@ -33,6 +35,9 @@
 
 /obj/effect/alien/resin/special/New(loc, var/hive_ref)
 	..()
+
+	maxhealth = health
+
 	if(hive_ref)
 		linked_hive = hive_ref
 		set_hive_data(src, linked_hive.hivenumber)

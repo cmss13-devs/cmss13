@@ -430,7 +430,7 @@
 /mob/new_player/Move()
 	return 0
 
-/mob/new_player/proc/close_spawn_windows()
+/mob/proc/close_spawn_windows() // Somehow spawn menu stays open for non-newplayers
 	close_browser(src, "latechoices") //closes late choices window
 	close_browser(src, "playersetup") //closes the player setup window
 	src << sound(null, repeat = 0, wait = 0, volume = 85, channel = 1) // Stops lobby music.

@@ -88,7 +88,7 @@
 	if(!message || src.stat || !hive)
 		return
 
-	if((!hive || !hive.living_xeno_queen) && !Check_WO())
+	if(!hive.living_xeno_queen && !Check_WO() && !hive.allow_no_queen_actions)
 		to_chat(src, SPAN_WARNING("There is no Queen. You are alone."))
 		return
 

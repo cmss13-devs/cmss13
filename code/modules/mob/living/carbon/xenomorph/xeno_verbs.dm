@@ -4,7 +4,10 @@
 	set desc = "Check the status of your current hive."
 	set category = "Alien"
 
-	if(isnull(hive) || isnull(hive.living_xeno_queen) || Check_WO()) //No Hive status on WO
+	if(!hive)
+		return
+
+	if((!hive.living_xeno_queen || Check_WO()) && !hive.allow_no_queen_actions) //No Hive status on WO
 		to_chat(src, SPAN_WARNING("There is no Queen. You are alone."))
 		return
 

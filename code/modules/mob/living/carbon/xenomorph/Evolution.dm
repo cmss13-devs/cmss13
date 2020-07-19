@@ -184,6 +184,9 @@
 			if(hive.living_xeno_queen)
 				to_chat(src, SPAN_WARNING("There already is a Queen."))
 				return
+			if(!hive.allow_queen_evolve)
+				to_chat(src, SPAN_WARNING("You can't find the strength to evolve into a Queen"))
+				return
 		else
 			if(tier == 1 && (((hive.tier_2_xenos.len + hive.tier_3_xenos.len) / totalXenos) * hive.tier_slot_multiplier) >= 0.5)
 				to_chat(src, SPAN_WARNING("The hive cannot support another Tier 2, wait for either more aliens to be born or someone to die."))

@@ -166,6 +166,13 @@
 	var/larva_gestation_multiplier = 1.0
 	var/bonus_larva_spawn_chance = 1.0
 
+	var/dynamic_evolution = TRUE
+	var/evolution_rate = 3 // Only has use if dynamic_evolution is false
+
+	var/allow_no_queen_actions = FALSE
+	var/allow_queen_evolve = TRUE // Set to true if you want to prevent evolutions into Queens
+	var/hardcore = FALSE // Set to true if you want to prevent bursts and spawns of new xenos. Will also prevent healing if the queen no longer exists
+
 	//List of how many maximum of each special structure you can have
 	var/list/hive_structures_limit = list(
 		XENO_STRUCTURE_CORE = 1,
@@ -614,7 +621,7 @@
 	name = "Corrupted Hive"
 	hivenumber = XENO_HIVE_CORRUPTED
 	prefix = "Corrupted "
-	color = "#00ff80"
+	color = "#80ff80"
 
 /datum/hive_status/corrupted/add_xeno(mob/living/carbon/Xenomorph/X)
 	. = ..()
@@ -628,16 +635,30 @@
 	name = "Alpha Hive"
 	hivenumber = XENO_HIVE_ALPHA
 	prefix = "Alpha "
-	color = "#ff0000"
+	color = "#ff4040"
 
-/datum/hive_status/beta
-	name = "Beta Hive"
-	hivenumber = XENO_HIVE_BETA
-	prefix = "Beta "
-	color = "#0080ff"
+	dynamic_evolution = FALSE
 
-/datum/hive_status/zeta
-	name = "Zeta Hive"
-	hivenumber = XENO_HIVE_ZETA
-	prefix = "Zeta "
-	color = "#ffa000"
+/datum/hive_status/bravo
+	name = "Bravo Hive"
+	hivenumber = XENO_HIVE_BRAVO
+	prefix = "Bravo "
+	color = "#ffff80"
+
+	dynamic_evolution = FALSE
+
+/datum/hive_status/charlie
+	name = "Charlie Hive"
+	hivenumber = XENO_HIVE_CHARLIE
+	prefix = "Charlie "
+	color = "#bb40ff"
+
+	dynamic_evolution = FALSE
+
+/datum/hive_status/delta
+	name = "Delta Hive"
+	hivenumber = XENO_HIVE_DELTA
+	prefix = "Delta "
+	color = "#8080ff"
+
+	dynamic_evolution = FALSE

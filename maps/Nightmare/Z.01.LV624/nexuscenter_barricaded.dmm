@@ -56,9 +56,9 @@
 	pixel_y = 4
 	},
 /turf/open/floor{
-	tag = "icon-whiteblue (NORTHEAST)";
+	dir = 5;
 	icon_state = "whiteblue";
-	dir = 5
+	tag = "icon-whiteblue (NORTHEAST)"
 	},
 /area/lv624/lazarus/main_hall)
 "ai" = (
@@ -172,6 +172,10 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/effect/decal/cleanable/blood/splatter/animated,
 /obj/item/ammo_casing,
+/obj/effect/landmark{
+	name = "xeno_hive_spawn";
+	pixel_x = -1
+	},
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -1024,9 +1028,9 @@
 "He" = (
 /obj/structure/machinery/vending/cigarette/colony,
 /turf/open/floor{
-	tag = "icon-whiteblue (NORTHWEST)";
+	dir = 9;
 	icon_state = "whiteblue";
-	dir = 9
+	tag = "icon-whiteblue (NORTHWEST)"
 	},
 /area/lv624/lazarus/main_hall)
 "Hf" = (
@@ -1149,8 +1153,8 @@
 "Lq" = (
 /obj/structure/window/framed/colony/reinforced,
 /turf/open/floor{
-	icon_state = "cult";
-	dir = 2
+	dir = 2;
+	icon_state = "cult"
 	},
 /area/lv624/lazarus/canteen)
 "Mc" = (
@@ -1173,9 +1177,9 @@
 "Me" = (
 /obj/structure/machinery/vending/cola,
 /turf/open/floor{
-	tag = "icon-whiteblue (SOUTHWEST)";
+	dir = 10;
 	icon_state = "whiteblue";
-	dir = 10
+	tag = "icon-whiteblue (SOUTHWEST)"
 	},
 /area/lv624/lazarus/main_hall)
 "Mf" = (
@@ -1215,8 +1219,8 @@
 	dir = 1
 	},
 /turf/open/floor{
-	icon_state = "redfull";
-	dir = 9
+	dir = 9;
+	icon_state = "redfull"
 	},
 /area/lv624/lazarus/security)
 "Ni" = (
@@ -1224,8 +1228,8 @@
 /obj/item/ashtray/bronze,
 /obj/item/storage/donut_box,
 /turf/open/floor{
-	icon_state = "red";
-	dir = 8
+	dir = 8;
+	icon_state = "red"
 	},
 /area/lv624/lazarus/security)
 "Nk" = (
@@ -1240,14 +1244,14 @@
 "NP" = (
 /obj/item/folder/red,
 /turf/open/floor{
-	icon_state = "redfull";
-	dir = 9
+	dir = 9;
+	icon_state = "redfull"
 	},
 /area/lv624/lazarus/security)
 "NQ" = (
 /turf/open/floor{
-	icon_state = "red";
-	dir = 10
+	dir = 10;
+	icon_state = "red"
 	},
 /area/lv624/lazarus/security)
 "NR" = (
@@ -1275,8 +1279,8 @@
 "NU" = (
 /obj/structure/window/framed/colony/reinforced,
 /turf/open/floor{
-	icon_state = "cult";
-	dir = 2
+	dir = 2;
+	icon_state = "cult"
 	},
 /area/lv624/lazarus/kitchen)
 "NV" = (
@@ -1334,29 +1338,29 @@
 /area/lv624/lazarus/kitchen)
 "OH" = (
 /turf/open/floor{
-	icon_state = "redfull";
-	dir = 9
+	dir = 9;
+	icon_state = "redfull"
 	},
 /area/lv624/lazarus/security)
 "OI" = (
 /obj/structure/table/reinforced,
 /obj/item/device/binoculars,
 /turf/open/floor{
-	icon_state = "redfull";
-	dir = 9
+	dir = 9;
+	icon_state = "redfull"
 	},
 /area/lv624/lazarus/security)
 "OJ" = (
 /obj/structure/bed/chair/office/light,
 /turf/open/floor{
-	icon_state = "redfull";
-	dir = 9
+	dir = 9;
+	icon_state = "redfull"
 	},
 /area/lv624/lazarus/security)
 "OK" = (
 /turf/open/floor{
-	icon_state = "red";
-	dir = 8
+	dir = 8;
+	icon_state = "red"
 	},
 /area/lv624/lazarus/security)
 "OM" = (

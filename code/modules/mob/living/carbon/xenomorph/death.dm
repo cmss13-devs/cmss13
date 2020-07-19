@@ -39,12 +39,12 @@
 				hive_datum[hivenumber].stored_larva = round(hive_datum[hivenumber].stored_larva * 0.5) //Lose half on dead queen
 				var/turf/larva_spawn
 				var/list/players_with_xeno_pref = get_alien_candidates()
-				while(hive_datum[hivenumber].stored_larva > 0) // stil some left
-					larva_spawn = pick(xeno_spawn)
+				while(hive_datum[hivenumber].stored_larva > 0 && istype(hive_datum[hivenumber].spawn_pool, /obj/effect/alien/resin/special/pool)) // stil some left
+					larva_spawn = get_turf(hive_datum[hivenumber].spawn_pool)
 					if(players_with_xeno_pref && players_with_xeno_pref.len)	
 						var/mob/xeno_candidate = pick(players_with_xeno_pref)
 						var/mob/living/carbon/Xenomorph/Larva/new_xeno = new /mob/living/carbon/Xenomorph/Larva(larva_spawn)
-						new_xeno.hivenumber = hivenumber
+						new_xeno.set_hive_and_update(hivenumber)
 
 						new_xeno.generate_name()
 						if(!ticker.mode.transfer_xeno(xeno_candidate, new_xeno))
@@ -52,14 +52,12 @@
 							return
 						new_xeno.visible_message(SPAN_XENODANGER("A larva suddenly burrows out of the ground!"),
 						SPAN_XENODANGER("You burrow out of the ground after feeling an immense tremor through the hive, which quickly fades into complete silence..."))
-						new_xeno << sound('sound/effects/xeno_newlarva.ogg')
 
 					hive_datum[hivenumber].stored_larva--
 					hive_datum[hivenumber].hive_ui.update_pooled_larva()
 
 			if(hive && hive.living_xeno_queen == src)
 				xeno_message(SPAN_XENOANNOUNCE("A sudden tremor ripples through the hive... the Queen has been slain! Vengeance!"),3, hivenumber)
-				xeno_message(SPAN_XENOANNOUNCE("The slashing of hosts is now permitted."),2, hivenumber)
 				hive.slashing_allowed = 1
 				hive.set_living_xeno_queen(null)
 				//on the off chance there was somehow two queen alive

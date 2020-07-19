@@ -142,10 +142,13 @@
 	hivenumber = XENO_HIVE_ALPHA
 
 /mob/living/carbon/Xenomorph/Queen/Beta
-	hivenumber = XENO_HIVE_BETA
+	hivenumber = XENO_HIVE_BRAVO
 
-/mob/living/carbon/Xenomorph/Queen/Zeta
-	hivenumber = XENO_HIVE_ZETA
+/mob/living/carbon/Xenomorph/Queen/Gamma
+	hivenumber = XENO_HIVE_CHARLIE
+
+/mob/living/carbon/Xenomorph/Queen/Delta
+	hivenumber = XENO_HIVE_DELTA
 
 /mob/living/carbon/Xenomorph/Queen/Initialize()
 	. = ..()

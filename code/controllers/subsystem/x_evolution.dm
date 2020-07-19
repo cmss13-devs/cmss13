@@ -26,6 +26,11 @@ var/datum/subsystem/xevolution/SSxevolution
 		if(!HS)
 			continue
 
+		if(!HS.dynamic_evolution)
+			boost_power[HS.hivenumber] = HS.evolution_rate
+			HS.hive_ui.update_pooled_larva()
+			continue
+
 		var/boost_power_new
 		// Minimum of 5 evo until 10 minutes have passed.
 		if((world.time - ticker.game_start_time) < XENO_ROUNDSTART_PROGRESS_TIME_2)

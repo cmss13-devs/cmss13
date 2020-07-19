@@ -351,8 +351,9 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/east1)
 "aby" = (
-/obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/scientist,
+/obj/effect/landmark{
+	name = "xeno_hive_spawn"
+	},
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west1)
 "abz" = (
@@ -380,10 +381,11 @@
 /turf/closed/wall/rock/brown,
 /area/lv624/ground/sand4)
 "abE" = (
-/obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/scientist,
+/obj/effect/landmark{
+	name = "xeno_hive_spawn"
+	},
 /turf/open/gm/dirt,
-/area/lv624/ground/caves/west1)
+/area/lv624/ground/caves/east1)
 "abF" = (
 /obj/structure/bed/nest,
 /obj/effect/landmark/corpsespawner/miner,
@@ -463,10 +465,14 @@
 /turf/closed/wall/resin/membrane/ondirt,
 /area/lv624/ground/caves/west1)
 "abV" = (
-/obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/engineer,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/west1)
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/effect/landmark{
+	name = "xeno_hive_spawn"
+	},
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv624/lazarus/main_hall)
 "abW" = (
 /obj/effect/landmark{
 	name = "hunter_primary"
@@ -18308,6 +18314,15 @@
 /obj/structure/flora/bush/ausbushes/ausbush,
 /turf/open/gm/grass,
 /area/lv624/ground/sand9)
+"hdA" = (
+/obj/effect/landmark{
+	name = "xeno_hive_spawn"
+	},
+/turf/open/floor/plating{
+	dir = 4;
+	icon_state = "asteroidwarning"
+	},
+/area/lv624/lazarus/landing_zones/lz2)
 "heY" = (
 /obj/structure/table/woodentable/fancy,
 /obj/item/tool/candle,
@@ -19174,6 +19189,15 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/gm/river,
 /area/lv624/lazarus/fitness)
+"peO" = (
+/obj/effect/landmark{
+	name = "xeno_hive_spawn"
+	},
+/turf/open/floor{
+	dir = 1;
+	icon_state = "green"
+	},
+/area/lv624/lazarus/hydroponics)
 "phU" = (
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass,
@@ -23518,7 +23542,7 @@ abZ
 abR
 abF
 ach
-abE
+acd
 abR
 acd
 ach
@@ -23972,11 +23996,11 @@ abM
 abM
 abZ
 abR
-abV
+abX
 ach
 abX
 abR
-aby
+acd
 ach
 abz
 abR
@@ -24493,7 +24517,7 @@ abN
 abN
 abN
 abN
-abN
+aby
 abN
 abN
 abN
@@ -29795,7 +29819,7 @@ niV
 niV
 niV
 niV
-niV
+hdA
 niV
 niV
 niV
@@ -30353,7 +30377,7 @@ abN
 abN
 abN
 abN
-abN
+aby
 abN
 abN
 abN
@@ -42300,7 +42324,7 @@ anT
 anT
 aoW
 anT
-anT
+peO
 anT
 anT
 anT
@@ -47127,7 +47151,7 @@ aFT
 aFt
 aGN
 aHh
-aHK
+abV
 aHK
 aJe
 aJJ
@@ -55433,7 +55457,7 @@ acg
 acg
 acg
 acg
-acg
+abE
 acg
 acg
 acg

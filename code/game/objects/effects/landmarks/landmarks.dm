@@ -63,6 +63,10 @@
 			xeno_spawn += loc
 			qdel(src)
 
+		if("xeno_hive_spawn")
+			xeno_hive_spawn += loc
+			qdel(src)
+
 		if("surv_spawn")
 			surv_spawn += loc
 			qdel(src)

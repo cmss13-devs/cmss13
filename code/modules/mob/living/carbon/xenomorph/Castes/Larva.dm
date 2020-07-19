@@ -50,12 +50,14 @@
 /mob/living/carbon/Xenomorph/Larva/Alpha
 	hivenumber = XENO_HIVE_ALPHA
 
-/mob/living/carbon/Xenomorph/Larva/Beta
-	hivenumber = XENO_HIVE_BETA
+/mob/living/carbon/Xenomorph/Larva/Bravo
+	hivenumber = XENO_HIVE_BRAVO
 
-/mob/living/carbon/Xenomorph/Larva/Zeta
-	hivenumber = XENO_HIVE_ZETA
+/mob/living/carbon/Xenomorph/Larva/Gamma
+	hivenumber = XENO_HIVE_CHARLIE
 
+/mob/living/carbon/Xenomorph/Larva/Delta
+	hivenumber = XENO_HIVE_DELTA
 
 /mob/living/carbon/Xenomorph/Larva/predalien
 	icon = 'icons/mob/xenos_old/1x1_Xenos.dmi'
@@ -136,7 +138,7 @@
 
 	var/mob/living/carbon/Xenomorph/Larva/L = new /mob/living/carbon/Xenomorph/Larva(A)
 
-	L.set_hive_and_update(hivenumber, hive_datum[hivenumber].name)
+	L.set_hive_and_update(hivenumber)
 
 	return L
 			

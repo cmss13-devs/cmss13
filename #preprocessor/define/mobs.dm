@@ -117,8 +117,9 @@
 #define XENO_HIVE_NORMAL 1
 #define XENO_HIVE_CORRUPTED 2
 #define XENO_HIVE_ALPHA 3
-#define XENO_HIVE_BETA 4
-#define XENO_HIVE_ZETA 5
+#define XENO_HIVE_BRAVO 4
+#define XENO_HIVE_CHARLIE 5
+#define XENO_HIVE_DELTA 6
 
 //=================================================
 

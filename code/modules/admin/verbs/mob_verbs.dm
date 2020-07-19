@@ -239,7 +239,7 @@
 		to_chat(usr, "This xeno no longer exists")
 		return
 
-	X.set_hive_and_update(hives[newhive], newhive)
+	X.set_hive_and_update(hives[newhive])
 	 
 	message_admins(SPAN_NOTICE("[key_name(src)] changed hivenumber of [X] to [X.hivenumber]."))
 

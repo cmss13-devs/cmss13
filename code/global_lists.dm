@@ -112,7 +112,7 @@ var/global/list/synth_types = list("Synthetic","Second Generation Synthetic")
 var/global/list/datum/xeno_mutator/xeno_mutator_list = list()
 
 //Xeno hives
-var/global/list/hive_datum = list(new /datum/hive_status(), new /datum/hive_status/corrupted(), new /datum/hive_status/alpha(), new /datum/hive_status/beta(), new /datum/hive_status/zeta())
+var/global/list/hive_datum = list(new /datum/hive_status(), new /datum/hive_status/corrupted(), new /datum/hive_status/alpha(), new /datum/hive_status/bravo(), new /datum/hive_status/charlie(), new /datum/hive_status/delta())
 
 //DEFCON rewards / assets
 var/global/list/datum/defcon_reward/defcon_reward_list = list()

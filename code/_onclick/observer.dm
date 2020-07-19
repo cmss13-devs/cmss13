@@ -39,10 +39,10 @@
 							to_chat(src, message)
 							to_chat(src, SPAN_WARNING("You must wait 5 minutes before rejoining the game!"))
 							return 0
-						if((!isXenoLarva(X) && X.away_timer < SECONDS_30) || (isXenoLarva(X) && X.away_timer < 10))
+						if((!isXenoLarva(X) && X.away_timer < SECONDS_30) || (isXenoLarva(X) && X.away_timer < 50))
 							var/to_wait = SECONDS_30 - X.away_timer
 							if(isXenoLarva(X))
-								to_wait = 10 - X.away_timer
+								to_wait = 50 - X.away_timer
 							to_chat(src, SPAN_WARNING("That player hasn't been away long enough. Please wait [to_wait] second\s longer."))
 							return 0
 					if(alert(src, "Are you sure you want to transfer yourself into [X]?", "Confirm Transfer", "Yes", "No") == "Yes")

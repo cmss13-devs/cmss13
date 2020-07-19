@@ -4331,9 +4331,6 @@
 "alI" = (
 /turf/closed/wall/biodome,
 /area/corsat/gamma/rnr/bar)
-"alJ" = (
-/turf/open/floor/wood,
-/area/corsat/gamma/rnr/bar)
 "alK" = (
 /obj/structure/window/framed/corsat,
 /turf/open/floor/plating,
@@ -40037,6 +40034,17 @@
 	icon_state = "purplecorner"
 	},
 /area/corsat/gamma/residential)
+"dvI" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/landmark{
+	name = "xeno_hive_spawn"
+	},
+/turf/open/floor/corsat{
+	icon_state = "squares"
+	},
+/area/corsat/gamma/hangar)
 "dwa" = (
 /obj/structure/bed/chair{
 	dir = 8
@@ -40571,6 +40579,17 @@
 	icon_state = "red"
 	},
 /area/corsat/omega/airlocknorth/id)
+"dQJ" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/landmark{
+	name = "xeno_hive_spawn"
+	},
+/turf/open/floor/corsat{
+	icon_state = "squares"
+	},
+/area/corsat/sigma/hangar)
 "dQL" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
@@ -41178,6 +41197,14 @@
 	icon_state = "red"
 	},
 /area/corsat/gamma/airlock/south/id)
+"elG" = (
+/obj/effect/landmark{
+	name = "xeno_hive_spawn"
+	},
+/turf/open/floor/corsat{
+	icon_state = "plate"
+	},
+/area/corsat/omega/biodome)
 "elR" = (
 /obj/structure/flora/bush/ausbushes/ppflowers,
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -42741,6 +42768,16 @@
 	icon_state = "retrosquares"
 	},
 /area/corsat/gamma/hallwaysouth)
+"fst" = (
+/obj/effect/landmark{
+	name = "xeno_hive_spawn"
+	},
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating";
+	tag = "icon-blue (NORTHEAST)"
+	},
+/area/corsat/gamma/sigmaremote)
 "fsu" = (
 /turf/open/floor/corsat{
 	dir = 4;
@@ -46048,8 +46085,8 @@
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
 	name = "Firing Range";
-	req_one_access = list(106,102,103);
 	req_access = null;
+	req_one_access = list(106,102,103);
 	use_power = 0
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -47300,6 +47337,15 @@
 	icon_state = "redcorner"
 	},
 /area/corsat/sigma/hangar)
+"iuD" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/landmark{
+	name = "xeno_hive_spawn"
+	},
+/turf/open/floor/corsat{
+	icon_state = "retrosquareslight"
+	},
+/area/corsat/sigma/south/complex)
 "iuH" = (
 /obj/structure/closet/cabinet,
 /obj/effect/landmark/objective_landmark/close,
@@ -48894,6 +48940,16 @@
 	icon_state = "brown"
 	},
 /area/corsat/omega/hallways)
+"jJm" = (
+/obj/effect/landmark{
+	name = "xeno_hive_spawn"
+	},
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "platingdmg3";
+	tag = "icon-platingdmg3 (WEST)"
+	},
+/area/corsat/sigma/biodome/testgrounds)
 "jJp" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
@@ -53379,6 +53435,15 @@
 	},
 /turf/open/mars,
 /area/corsat/sigma/biodome)
+"mTz" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/landmark{
+	name = "xeno_hive_spawn"
+	},
+/turf/open/floor/corsat{
+	icon_state = "retrosquareslight"
+	},
+/area/corsat/theta/biodome/complex)
 "mTF" = (
 /obj/structure/pipes/vents/pump{
 	dir = 4
@@ -53932,8 +53997,8 @@
 "nqd" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
 	name = "Administration";
-	req_one_access = list(106,104);
-	req_access = null
+	req_access = null;
+	req_one_access = list(106,104)
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat{
@@ -58655,6 +58720,14 @@
 	icon_state = "squares"
 	},
 /area/corsat/omega/airlocknorth)
+"qIr" = (
+/obj/effect/landmark{
+	name = "xeno_hive_spawn"
+	},
+/turf/open/floor/corsat{
+	icon_state = "squares"
+	},
+/area/corsat/gamma/engineering/core)
 "qIw" = (
 /turf/open/floor/corsat{
 	dir = 1;
@@ -60094,6 +60167,12 @@
 	icon_state = "plate"
 	},
 /area/corsat/omega/maint)
+"rMq" = (
+/obj/effect/landmark{
+	name = "xeno_hive_spawn"
+	},
+/turf/open/ice,
+/area/corsat/gamma/biodome)
 "rMD" = (
 /obj/structure/table/almayer,
 /obj/item/tool/hand_labeler,
@@ -61783,8 +61862,8 @@
 "sRK" = (
 /obj/structure/table/reinforced,
 /obj/structure/machinery/computer/secure_data{
-	req_one_access = list(201,104);
-	req_access = null
+	req_access = null;
+	req_one_access = list(201,104)
 	},
 /turf/open/floor/corsat{
 	dir = 8;
@@ -64397,6 +64476,14 @@
 	icon_state = "red"
 	},
 /area/corsat/sigma/dorms)
+"uLV" = (
+/obj/effect/landmark{
+	name = "xeno_hive_spawn"
+	},
+/turf/open/floor/corsat{
+	icon_state = "squares"
+	},
+/area/corsat/sigma/cargo)
 "uMf" = (
 /turf/open/floor/corsat{
 	icon_state = "red"
@@ -74249,7 +74336,7 @@ aEP
 nfz
 bYI
 fVl
-bfc
+rMq
 bfc
 bfc
 bfc
@@ -74321,7 +74408,7 @@ avX
 avX
 avX
 avX
-avX
+elG
 avX
 avX
 avX
@@ -77061,7 +77148,7 @@ aId
 hlf
 aId
 aay
-aId
+fst
 aay
 aId
 aaK
@@ -87631,7 +87718,7 @@ aFK
 alI
 btI
 gui
-alJ
+aXU
 vAP
 avb
 uJV
@@ -87874,9 +87961,9 @@ dky
 edP
 acD
 axY
-alJ
-alJ
-alJ
+aXU
+aXU
+aXU
 wtM
 alI
 ami
@@ -88365,8 +88452,8 @@ vMP
 xAo
 alI
 bsL
-alJ
-alJ
+aXU
+aXU
 fSo
 axV
 ami
@@ -88610,8 +88697,8 @@ vMP
 fps
 alI
 aXU
-alJ
-alJ
+aXU
+aXU
 fSo
 aTj
 ami
@@ -88855,8 +88942,8 @@ vMP
 jmO
 alI
 awA
-alJ
-alJ
+aXU
+aXU
 fSo
 aFE
 alI
@@ -89101,7 +89188,7 @@ adT
 alK
 bhx
 bhx
-alJ
+aXU
 xVS
 bhx
 bhx
@@ -89591,7 +89678,7 @@ adT
 alK
 bjD
 bjD
-alJ
+aXU
 xVS
 bjD
 bjD
@@ -89835,10 +89922,10 @@ vMP
 jmO
 alI
 cKi
-alJ
+aXU
 wmf
 xVS
-alJ
+aXU
 gwY
 alI
 oVe
@@ -90081,7 +90168,7 @@ adT
 alK
 bhx
 bhx
-alJ
+aXU
 xVS
 bhx
 bhx
@@ -90326,7 +90413,7 @@ adT
 alK
 axV
 bHR
-alJ
+aXU
 xVS
 axV
 axV
@@ -90571,7 +90658,7 @@ adT
 alK
 bjD
 huQ
-alJ
+aXU
 xVS
 bjD
 bjD
@@ -96842,7 +96929,7 @@ cao
 lsk
 kOv
 kOv
-kOv
+mTz
 jdV
 qAG
 kOv
@@ -98126,7 +98213,7 @@ aXQ
 acF
 blI
 aaD
-noK
+dvI
 acG
 aaG
 aaJ
@@ -98428,7 +98515,7 @@ cQR
 aqa
 aqa
 aqa
-aqa
+qIr
 tav
 duk
 hBo
@@ -114170,7 +114257,7 @@ bhg
 bhg
 bhh
 bhh
-bhh
+jJm
 bhh
 bhh
 bhh
@@ -115696,7 +115783,7 @@ aIh
 aHZ
 aHZ
 lYO
-wfK
+iuD
 wfK
 azG
 wfK
@@ -125639,7 +125726,7 @@ bqS
 bmF
 rno
 aeI
-vkW
+dQJ
 aeB
 aeB
 afl
@@ -128627,7 +128714,7 @@ boR
 ajx
 ajx
 ajx
-ajx
+uLV
 bJc
 ajx
 wXT

@@ -63,6 +63,13 @@
 	if(vent_found.welded)
 		to_chat(src, SPAN_WARNING("This vent is closed off, you cannot climb through it."))
 		return
+	
+	var/obj/effect/alien/weeds/W = locate(/obj/effect/alien/weeds) in vent_found.loc
+	if(W)
+		var/mob/living/carbon/Xenomorph/X = src
+		if(!istype(X) || X.hivenumber != W.linked_hive.hivenumber)
+			to_chat(src, SPAN_WARNING("The weeds are blocking the entrance of this vent"))
+			return
 
 	if(length(vent_found.connected_to))
 		if(src.action_busy)

@@ -13002,10 +13002,17 @@
 	},
 /area/strata/ag/interior/dorms/bar)
 "aIi" = (
-/turf/open/floor/strata{
-	icon_state = "orange_tile"
+/obj/structure/pipes/vents/pump{
+	dir = 8
 	},
-/area/strata/ag/interior/dorms/bar)
+/obj/effect/landmark{
+	name = "xeno_hive_spawn"
+	},
+/turf/open/floor/strata{
+	dir = 8;
+	icon_state = "white_cyan2"
+	},
+/area/strata/ag/interior/dorms/canteen)
 "aIj" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -23929,6 +23936,14 @@
 	icon_state = "white_cyan3"
 	},
 /area/strata/ag/interior/outpost/med/hall)
+"byl" = (
+/obj/effect/landmark{
+	name = "xeno_hive_spawn"
+	},
+/turf/open/floor/strata{
+	icon_state = "floor2"
+	},
+/area/strata/ug/interior/jungle/deep/structures/res)
 "byv" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 9
@@ -35937,6 +35952,9 @@
 /obj/structure/disposalpipe/segment,
 /obj/structure/disposalpipe/segment{
 	dir = 4
+	},
+/obj/effect/landmark{
+	name = "xeno_hive_spawn"
 	},
 /turf/open/floor/plating,
 /area/strata/ag/interior/tcomms)
@@ -47966,6 +47984,12 @@
 	},
 /turf/open/snow/layer2,
 /area/strata/ag/exterior/marsh)
+"uSR" = (
+/obj/effect/landmark{
+	name = "xeno_hive_spawn"
+	},
+/turf/open/gm/grass/weedable,
+/area/strata/ug/interior/jungle/deep/tearlake)
 "uTv" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
@@ -54879,9 +54903,9 @@ aCD
 cdJ
 aFM
 aGZ
-aIi
+aMB
 aJP
-aIi
+aMB
 aMB
 cdJ
 aOP
@@ -55268,7 +55292,7 @@ ceX
 chq
 chp
 aLf
-aIi
+aMB
 cjv
 aoj
 aQw
@@ -55461,7 +55485,7 @@ aHa
 aIk
 chq
 bxq
-aIi
+aMB
 cjv
 aoj
 yaA
@@ -55654,7 +55678,7 @@ cdJ
 aIl
 aIn
 aLf
-aIi
+aMB
 aNJ
 aOP
 aQv
@@ -55847,7 +55871,7 @@ aHb
 aIk
 chq
 aLf
-aIi
+aMB
 fno
 aoj
 aQv
@@ -56040,7 +56064,7 @@ aHc
 sSZ
 chr
 bxq
-aIi
+aMB
 cjv
 aoj
 aQw
@@ -56233,7 +56257,7 @@ aHd
 aIm
 chq
 aLg
-aIi
+aMB
 cjv
 aoj
 aQv
@@ -56426,7 +56450,7 @@ chq
 aIn
 aJQ
 aLh
-aIi
+aMB
 cjv
 aOP
 aQv
@@ -58331,7 +58355,7 @@ ahU
 dQi
 vjD
 qUW
-ahV
+aIi
 ala
 bMZ
 xSJ
@@ -85085,7 +85109,7 @@ pHR
 xdX
 qlT
 bGv
-jFV
+uSR
 jFV
 jFV
 jFV
@@ -94813,7 +94837,7 @@ bRl
 amj
 and
 ady
-bAr
+byl
 acp
 aoY
 uux

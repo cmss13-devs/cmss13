@@ -429,7 +429,10 @@
 		var/datum/hive_status/hive = hive_datum[hivenumber]
 		hive_prefix = "[hive.prefix] "
 
-	xeno_announcement(input, hivenumber, SPAN_ANNOUNCEMENT_HEADER_BLUE("[hive_prefix][QUEEN_MOTHER_ANNOUNCE]"))
+	if(hivenumber == "everything")
+		xeno_announcement(input, hivenumber, HIGHER_FORCE_ANNOUNCE)
+	else
+		xeno_announcement(input, hivenumber, SPAN_ANNOUNCEMENT_HEADER_BLUE("[hive_prefix][QUEEN_MOTHER_ANNOUNCE]"))
 
 	message_admins("[key_name_admin(src)] has created a [hive_choice] Queen Mother report")
 

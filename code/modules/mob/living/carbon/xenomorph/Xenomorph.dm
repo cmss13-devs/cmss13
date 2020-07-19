@@ -263,13 +263,15 @@
 	var/laid_egg = 0
 
 
-/mob/living/carbon/Xenomorph/Initialize(var/new_loc, var/mob/living/carbon/Xenomorph/oldXeno)
+/mob/living/carbon/Xenomorph/Initialize(var/new_loc, var/mob/living/carbon/Xenomorph/oldXeno, var/h_number)
 	var/area/A = get_area(src)
 	if(A && A.statistic_exempt)
 		statistic_exempt = TRUE
 	if(oldXeno)
 		hivenumber = oldXeno.hivenumber
 		nicknumber = oldXeno.nicknumber
+	else if (h_number)
+		hivenumber = h_number
 
 	// Well, not yet, technically
 	var/datum/hive_status/in_hive = hive_datum[hivenumber]
@@ -590,7 +592,7 @@
 	faction = new_faction
 
 //Call this function to set the hive and do other cleanup
-/mob/living/carbon/Xenomorph/proc/set_hive_and_update(var/new_hivenumber = XENO_HIVE_NORMAL, var/new_faction = FACTION_XENOMORPH)
+/mob/living/carbon/Xenomorph/proc/set_hive_and_update(var/new_hivenumber = XENO_HIVE_NORMAL)
 	var/datum/hive_status/new_hive = hive_datum[new_hivenumber]
 	if(!new_hive)
 		return
@@ -598,7 +600,7 @@
 	
 	new_hive.add_xeno(src)
 
-	set_faction(new_faction)
+	set_faction(hive.name)
 
 	if(istype(src, /mob/living/carbon/Xenomorph/Larva))
 		var/mob/living/carbon/Xenomorph/Larva/L = src

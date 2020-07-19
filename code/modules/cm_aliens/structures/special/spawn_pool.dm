@@ -66,9 +66,9 @@
 		var/mob/living/carbon/Xenomorph/X = M
 		if(X.hivenumber != linked_hive.hivenumber)
 			if(isXenoQueen(X))
-				larva_amount = 3
+				larva_amount = 5
 			else
-				larva_amount += max(X.tier - 1, 0) // Larva and T1s will give no larva. T2s will give 1 larva and T3s will give 2 larva
+				larva_amount += max(X.tier, 1) // Now you always gain larva.
 		else
 			return
 	if(melting_body)
@@ -125,6 +125,9 @@
 		add_timer(CALLBACK(src, /obj/effect/alien/resin/special/pool/proc/melt_body, iterations), SECONDS_2)
 
 /obj/effect/alien/resin/special/pool/proc/can_spawn_larva()
+	if(linked_hive.hardcore)
+		return FALSE
+
 	return linked_hive.stored_larva
 
 /obj/effect/alien/resin/special/pool/proc/spawn_pooled_larva(var/mob/xeno_candidate)

@@ -22,7 +22,7 @@
 	if (X.caste_name == "Queen")
 		isQueen = TRUE
 
-	if(!X.hive.living_xeno_queen)
+	if(!X.hive.living_xeno_queen && !X.hive.allow_no_queen_actions)
 		to_chat(X, SPAN_WARNING("There is no Queen. You are alone."))
 		return
 
@@ -71,7 +71,7 @@
 		if(!hive)
 			return
 
-		if(!hive.living_xeno_queen)
+		if(!hive.living_xeno_queen && !hive.allow_no_queen_actions)
 			to_chat(src, SPAN_WARNING("There is no Queen. You are alone."))
 			return
 

@@ -49,3 +49,13 @@
 // Args:
 //	n/a
 #define EVENT_LAUNCH_CHECK "launch_check"
+
+// Raised when a client is reading key presses and a key is pressed
+// Args:
+//	The key pressed
+#define EVENT_READ_KEY_DOWN "read_key_down"
+
+// Raised when a client is reading key releases and a key is released
+// Args:
+//	The key released
+#define EVENT_READ_KEY_UP "read_key_up"

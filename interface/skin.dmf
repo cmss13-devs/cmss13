@@ -338,6 +338,13 @@ macro "hotkeymode"
 		name = "F12"
 		command = "F12"
 
+macro "keyreader"
+	elem 
+		name = "Any"
+		command = ".Read-Key-Down [[*]]"
+	elem 
+		name = "Any+UP"
+		command = ".Read-Key-Up [[*]]"
 
 menu "menu"
 	elem 

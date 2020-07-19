@@ -83,6 +83,9 @@
 
 	S["lang_chat_disabled"]	>> lang_chat_disabled
 
+	S["swap_hand_default"]	>> swap_hand_default
+	S["swap_hand_hotkeymode"] >> swap_hand_hotkeymode
+
 	//Sanitize
 	ooccolor		= sanitize_hexcolor(ooccolor, initial(ooccolor))
 	lastchangelog	= sanitize_text(lastchangelog, initial(lastchangelog))
@@ -110,12 +113,19 @@
 	if(!observer_huds)
 		observer_huds = list("Medical HUD" = FALSE, "Security HUD" = FALSE, "Squad HUD" = FALSE, "Xeno Status HUD" = FALSE)
 
+	if (!swap_hand_default)
+		swap_hand_default = "CTRL+X"
+	if (!swap_hand_hotkeymode)
+		swap_hand_hotkeymode = "X"
+
 	return 1
 
 /datum/preferences/proc/save_preferences()
-	if(!path)				return 0
+	if(!path)
+		return FALSE
 	var/savefile/S = new /savefile(path)
-	if(!S)					return 0
+	if(!S)
+		return FALSE
 	S.cd = "/"
 
 	S["version"] << savefile_version
@@ -152,7 +162,10 @@
 
 	S["lang_chat_disabled"] << lang_chat_disabled
 
-	return 1
+	S["swap_hand_default"]	<< swap_hand_default
+	S["swap_hand_hotkeymode"] << swap_hand_hotkeymode
+
+	return TRUE
 
 /datum/preferences/proc/load_character(slot)
 	if(!path)				return 0

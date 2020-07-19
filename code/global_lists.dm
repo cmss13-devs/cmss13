@@ -141,6 +141,8 @@ var/global/list/backbaglist = list("Backpack", "Satchel")
 // var/global/list/exclude_jobs = list(/datum/job/ai,/datum/job/cyborg)
 var/global/round_should_check_for_win = TRUE
 
+var/global/list/key_mods = list("CTRL", "ALT", "SHIFT")
+
 //Parameterss cache
 var/global/list/paramslist_cache = list()
 

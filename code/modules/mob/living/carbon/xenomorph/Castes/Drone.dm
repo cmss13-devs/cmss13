@@ -46,7 +46,7 @@
 		/datum/action/xeno_action/activable/secrete_resin,
 		/datum/action/xeno_action/activable/place_construction,
 		/datum/action/xeno_action/activable/transfer_plasma,
-		/datum/action/xeno_action/activable/corrosive_acid/drone,
+		/datum/action/xeno_action/activable/corrosive_acid/weak,
 		/datum/action/xeno_action/onclick/emit_pheromones
 		)
 	inherent_verbs = list(

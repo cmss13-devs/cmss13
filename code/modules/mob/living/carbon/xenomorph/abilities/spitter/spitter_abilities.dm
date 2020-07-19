@@ -25,5 +25,5 @@
 	// Configurable options
 	spray_type = ACID_SPRAY_LINE	// Enum for the shape of spray to do
 	spray_distance = 6 				// Distance to spray
-	spray_effect_type = /obj/effect/xenomorph/spray/spitter
+	spray_effect_type = /obj/effect/xenomorph/spray/weak
 	activation_delay = FALSE		    // Is there an activation delay?

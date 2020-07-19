@@ -125,6 +125,17 @@
 		if(X.hivenumber == hivenumber)
 			to_chat(X, SPAN_XENOMINORWARNING("You sense one of your Hive's hugger traps at [A.name] has been burnt!"))
 
+/obj/effect/alien/resin/trap/proc/get_spray_type(var/level)
+	switch(level)
+		if(RESIN_TRAP_ACID1)
+			return /obj/effect/xenomorph/spray/weak
+
+		if(RESIN_TRAP_ACID2)
+			return /obj/effect/xenomorph/spray
+
+		if(RESIN_TRAP_ACID3)
+			return /obj/effect/xenomorph/spray/strong
+
 /obj/effect/alien/resin/trap/proc/trigger_trap(var/destroyed = FALSE)
 	set waitfor = 0
 	var/area/A = get_area(src)
@@ -149,9 +160,11 @@
 			clear_tripwires()
 		if(RESIN_TRAP_ACID1, RESIN_TRAP_ACID2, RESIN_TRAP_ACID3)
 			trap_type_name = "acid"
-			new /obj/effect/xenomorph/spray(loc, source_name, source_mob)
+			var/spray_type = get_spray_type(trap_type)
+
+			new spray_type(loc, source_name, source_mob)
 			for(var/turf/T in range(1,loc))
-				var/obj/effect/xenomorph/spray/SP = new (T, source_name, source_mob) //adding extra acid damage for better acid types
+				var/obj/effect/xenomorph/spray/SP = new spray_type(T, source_name, source_mob)
 				for(var/mob/living/carbon/H in T)
 					if (isXeno(H))
 						var/mob/living/carbon/Xenomorph/X = H
@@ -195,6 +208,11 @@
 		if((!X.acid_level || trap_type == RESIN_TRAP_GAS) && trap_type != RESIN_TRAP_EMPTY)
 			to_chat(X, SPAN_XENONOTICE("Better not risk setting this off."))
 			return
+
+		if(!X.acid_level)
+			to_chat(X, SPAN_XENONOTICE("You can't secrete any acid into \the [src]"))
+			return
+
 		if(trap_acid_level >= X.acid_level)
 			to_chat(X, SPAN_XENONOTICE("It already has good acid in."))
 			return
@@ -250,7 +268,12 @@
 			X.use_plasma(acid_cost)
 			setup_tripwires()
 			playsound(loc, 'sound/effects/refill.ogg', 25, 1)
-			set_state(RESIN_TRAP_ACID1 + X.acid_level - 1)
+			
+			if(isXenoBurrower(X))
+				set_state(RESIN_TRAP_ACID3)
+			else
+				set_state(RESIN_TRAP_ACID1 + X.acid_level - 1)
+			
 			X.visible_message(SPAN_XENOWARNING("\The [X] pressurises the resin hole with acid!"), \
 			SPAN_XENOWARNING("You pressurise the resin hole with acid!"), null, 5)
 			return

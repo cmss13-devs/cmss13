@@ -25,6 +25,7 @@
 	ability_name = "throw facehugger"
 	macro_path = /datum/action/xeno_action/verb/verb_throw_facehugger
 	action_type = XENO_ACTION_CLICK
+	ability_primacy = XENO_PRIMARY_ACTION_1
 
 /datum/action/xeno_action/activable/throw_hugger/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/Carrier/X = owner
@@ -41,6 +42,7 @@
 	ability_name = "retrieve egg"
 	macro_path = /datum/action/xeno_action/verb/verb_retrieve_egg
 	action_type = XENO_ACTION_CLICK
+	ability_primacy = XENO_PRIMARY_ACTION_2
 
 /datum/action/xeno_action/activable/retrieve_egg/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/Carrier/X = owner
@@ -85,6 +87,7 @@
 	plasma_cost = 200
 	macro_path = /datum/action/xeno_action/verb/verb_dig_tunnel
 	action_type = XENO_ACTION_ACTIVATE
+	ability_primacy = XENO_PRIMARY_ACTION_2
 
 /datum/action/xeno_action/onclick/build_tunnel/can_use_action()
 	var/mob/living/carbon/Xenomorph/X = owner

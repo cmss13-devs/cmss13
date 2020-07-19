@@ -77,10 +77,10 @@
 	
 	var/caste_luminosity = 0
 
-	var/burrow_cooldown = 50
+	var/burrow_cooldown = SECONDS_5
 	var/tunnel_cooldown = 100
-	var/widen_cooldown = 100
-	var/tremor_cooldown = 450 //Big strong ability, big cooldown.
+	var/widen_cooldown = SECONDS_10
+	var/tremor_cooldown = SECONDS_30 //Big strong ability, big cooldown.
 
 	var/innate_healing = FALSE //whether the xeno heals even outside weeds.
 

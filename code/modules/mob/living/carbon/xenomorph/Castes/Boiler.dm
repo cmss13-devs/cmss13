@@ -52,7 +52,7 @@
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/regurgitate,
 		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/activable/corrosive_acid/Boiler,
+		/datum/action/xeno_action/activable/corrosive_acid/strong,
 		/datum/action/xeno_action/onclick/toggle_long_range/boiler,
 		/datum/action/xeno_action/activable/bombard, 
 		/datum/action/xeno_action/activable/acid_lance,

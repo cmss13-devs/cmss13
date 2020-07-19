@@ -140,13 +140,13 @@
 			acid_plasma_cost = 200
 			acid_type = /obj/effect/xenomorph/acid/strong
 
-/datum/action/xeno_action/activable/corrosive_acid/drone
+/datum/action/xeno_action/activable/corrosive_acid/weak
 	name = "Corrosive Acid (75)"
 	acid_plasma_cost = 75
 	level = 1
 	acid_type = /obj/effect/xenomorph/acid/weak
 
-/datum/action/xeno_action/activable/corrosive_acid/Boiler
+/datum/action/xeno_action/activable/corrosive_acid/strong
 	name = "Corrosive Acid (200)"
 	acid_plasma_cost = 200
 	level = 3
@@ -303,3 +303,4 @@
 	plasma_cost = 200
 	macro_path = /datum/action/xeno_action/verb/verb_resin_hole
 	action_type = XENO_ACTION_CLICK
+	ability_primacy = XENO_PRIMARY_ACTION_3

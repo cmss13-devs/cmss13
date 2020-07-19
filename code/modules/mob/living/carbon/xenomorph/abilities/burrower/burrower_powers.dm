@@ -161,3 +161,42 @@
 		T.tunnel_desc = "[new_name]"
 	return
 
+/datum/action/xeno_action/activable/tremor/action_cooldown_check()
+	var/mob/living/carbon/Xenomorph/X = owner
+	return !X.used_tremor
+
+/mob/living/carbon/Xenomorph/proc/tremor() //More support focused version of crusher earthquakes.
+	if(burrow)
+		to_chat(src, SPAN_NOTICE("You must be above ground to do this."))
+		return
+
+	if(!check_state())
+		return
+
+	if(used_tremor)
+		to_chat(src, SPAN_XENOWARNING("Your aren't ready to cause more tremors yet!"))
+		return
+
+	if(!check_plasma(100)) return
+
+	use_plasma(100)
+	playsound(loc, 'sound/effects/alien_footstep_charge3.ogg', 75, 0)
+	visible_message(SPAN_XENODANGER("[src] digs itself into the ground and shakes the earth itself, causing violent tremors!"), \
+	SPAN_XENODANGER("You dig into the ground and shake it around, causing violent tremors!"))
+	create_stomp() //Adds the visual effect. Wom wom wom
+	used_tremor = 1
+
+	for(var/mob/living/carbon/M in range(7, loc))
+		to_chat(M, SPAN_WARNING("You struggle to remain on your feet as the ground shakes beneath your feet!"))
+		shake_camera(M, 2, 3)
+
+	for(var/mob/living/carbon/human/H in range(3, loc))
+		to_chat(H, SPAN_WARNING("The violent tremors make you lose your footing!"))
+		H.KnockDown(1)
+
+	spawn(caste.tremor_cooldown)
+		used_tremor = 0
+		to_chat(src, SPAN_NOTICE("You gather enough strength to cause tremors again."))
+		for(var/X in actions)
+			var/datum/action/act = X
+			act.update_button_icon()

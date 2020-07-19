@@ -167,7 +167,7 @@
 	for(var/mob/living/carbon/human/H in loc)
 		apply_spray(H)
 
-/obj/effect/xenomorph/spray/spitter
+/obj/effect/xenomorph/spray/weak
 	name = "weak splatter"
 	desc = "It burns! It burns, but not as much!"
 	icon_state = "acid2-weak"
@@ -179,7 +179,18 @@
 
 	var/bonus_damage = 25
 
-/obj/effect/xenomorph/spray/spitter/apply_spray(mob/living/carbon/M)
+/obj/effect/xenomorph/spray/strong
+	name = "strong splatter"
+	desc = "It burns a lot!"
+	icon_state = "acid2-strong"
+
+	stun_duration = 2
+	damage_amount = 30
+	fire_level_to_extinguish = 18
+	time_to_live = SECONDS_3
+	// Stuns for 2 seconds, lives for 3 seconds. Seems to stun longer than it lives for at 2 seconds
+
+/obj/effect/xenomorph/spray/weak/apply_spray(mob/living/carbon/M)
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 

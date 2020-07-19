@@ -221,19 +221,18 @@
 	else
 		to_chat(user, SPAN_WARNING("You cut \the [src] away with \the [W]."))
 
-	var/damage = W.force
-	if(W.w_class < SIZE_LARGE || !W.sharp || W.force < 20) //only big strong sharp weapon are adequate
-		damage /= 4
+	var/damage = W.force / 3
+	playsound(loc, "alien_resin_break", 25)
 
-	if(istype(W, /obj/item/tool/weldingtool))
+	if(iswelder(W))
 		var/obj/item/tool/weldingtool/WT = W
-
-		if(WT.remove_fuel(0))
-			damage = 15
+		if(WT.remove_fuel(2))
+			damage = WEED_HEALTH_STANDARD
 			playsound(loc, 'sound/items/Welder.ogg', 25, 1)
-
 	else
 		playsound(loc, "alien_resin_break", 25)
+
+
 	user.animation_attack_on(src)
 
 	health -= damage

@@ -2,10 +2,10 @@
 	caste_name = "Lurker"
 	tier = 2
 
-	melee_damage_lower = XENO_DAMAGE_TIER_5
-	melee_damage_upper = XENO_DAMAGE_TIER_5
+	melee_damage_lower = XENO_DAMAGE_TIER_6
+	melee_damage_upper = XENO_DAMAGE_TIER_6
 	max_health = XENO_HEALTH_TIER_5
-	plasma_gain = XENO_PLASMA_GAIN_VERYHIGH
+	plasma_gain = XENO_PLASMA_GAIN_TIER_7
 	plasma_max = XENO_PLASMA_TIER_4
 	xeno_explosion_resistance = XENO_MEDIUM_EXPLOSIVE_ARMOR
 	armor_deflection = XENO_NO_ARMOR
@@ -71,7 +71,7 @@
 	var/invis_recharge_time = 150      // 15 seconds to recharge invisibility.
 	var/invis_start_time = -1 // Special value for when we're not invisible
 	var/invis_duration = 300  // so we can display how long the lurker is invisible to it
-	var/buffed_slash_damage_ratio = 1.75
+	var/buffed_slash_damage_ratio = 1.2
 	var/slash_slow_duration = 35
 
 	// State

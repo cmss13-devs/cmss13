@@ -5,8 +5,8 @@
 	threshold_discomforting 	= 30
 	threshold_moderate			= 40
 	threshold_distressing		= 60
-	threshold_severe			= 75
-	threshold_horrible			= 85
+	threshold_severe			= 70
+	threshold_horrible			= 80
 
 /datum/pain/human/recalculate_pain()
 	. = ..()

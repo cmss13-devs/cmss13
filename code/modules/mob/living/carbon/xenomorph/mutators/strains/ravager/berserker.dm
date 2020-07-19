@@ -33,7 +33,7 @@
 /datum/behavior_delegate/ravager_berserker
 	name = "Berserker Ravager Behavior Delegate"
 
-	var/hp_vamp_ratio = 0.5
+	var/hp_vamp_ratio = 0.3
 	
 	// Rage config
 	var/max_rage = 5

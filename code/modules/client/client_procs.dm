@@ -196,8 +196,8 @@
 	chatOutput.start()
 
 	// Macros added at runtime
-	runtime_macro_insert("X", "hotkeymode", ".SwapMobHand")
-	runtime_macro_insert("Ctrl+X", "default", ".SwapMobHand")
+	runtime_macro_insert(prefs.swap_hand_hotkeymode, "hotkeymode", ".SwapMobHand")
+	runtime_macro_insert(prefs.swap_hand_default, "default", ".SwapMobHand")
 	runtime_macro_insert("Northeast", "hotkeymode", ".SwapMobHand")
 	runtime_macro_insert("Northeast", "default", ".SwapMobHand")
 
@@ -382,3 +382,21 @@
 		winset(src, null, "mainwindow.macro=[old]")
 
 	winset(src, "[parent].[macro_button]", "parent=")
+
+/client/verb/read_key_down(var/key as text|null)
+	set name = ".Read Key Down"
+	set hidden = TRUE
+
+	if (!key)
+		return
+
+	raiseEvent(src, EVENT_READ_KEY_DOWN, key)
+
+/client/verb/read_key_up(var/key as text|null)
+	set name = ".Read Key Up"
+	set hidden = TRUE
+
+	if (!key)
+		return
+
+	raiseEvent(src, EVENT_READ_KEY_UP, key)

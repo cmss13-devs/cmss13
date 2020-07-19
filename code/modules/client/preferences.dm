@@ -157,6 +157,11 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/stylesheet = "Modern"
 
 	var/lang_chat_disabled = FALSE
+	
+	var/swap_hand_default = "Ctrl+X"
+	var/swap_hand_hotkeymode = "X"
+	var/key_buf // A buffer for setting macro keybinds
+	var/list/key_mod_buf // A buffer for macro modifiers
 
 /datum/preferences/New(client/C)
 	if(istype(C))
@@ -370,6 +375,8 @@ var/const/MAX_SAVE_SLOTS = 10
 	dat += "<b>Ghost Sight:</b> <a href='?_src_=prefs;preference=ghost_sight'><b>[(toggles_chat & CHAT_GHOSTSIGHT) ? "All Emotes" : "Nearest Creatures"]</b></a><br>"
 	dat += "<b>Ghost Radio:</b> <a href='?_src_=prefs;preference=ghost_radio'><b>[(toggles_chat & CHAT_GHOSTRADIO) ? "All Chatter" : "Nearest Speakers"]</b></a><br>"
 	dat += "<b>Ghost Hivemind:</b> <a href='?_src_=prefs;preference=ghost_hivemind'><b>[(toggles_chat & CHAT_GHOSTHIVEMIND) ? "Show Hivemind" : "Hide Hivemind"]</b></a><br>"
+	dat += "<b>Swap Hand Macro (default mode):</b> <a href='?_src_=prefs;preference=swap_hand_default'><b>[swap_hand_default]</b></a><br>"
+	dat += "<b>Swap Hand Macro (hotkey mode):</b> <a href='?_src_=prefs;preference=swap_hand_hotkeymode'><b>[swap_hand_hotkeymode]</b></a><br>"
 	dat += "<b>Toggle Being Able to Hurt Yourself: \
 			</b> <a href='?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_IGNORE_SELF]'><b>[toggle_prefs & TOGGLE_IGNORE_SELF ? "On" : "Off"]</b></a><br>"
 	dat += "<b>Toggle Help Intent Safety: \
@@ -1299,6 +1306,24 @@ var/const/MAX_SAVE_SLOTS = 10
 				if("ghost_hivemind")
 					toggles_chat ^= CHAT_GHOSTHIVEMIND
 
+				if("swap_hand_default")
+					owner.runtime_macro_remove(swap_hand_default, "default")
+
+					swap_hand_default = read_key()
+					if (!swap_hand_default)
+						swap_hand_default = "CTRL+X"
+					
+					owner.runtime_macro_insert(swap_hand_default, "default", ".SwapMobHand")
+
+				if("swap_hand_hotkeymode")
+					owner.runtime_macro_remove(swap_hand_hotkeymode, "hotkeymode")
+
+					swap_hand_hotkeymode = read_key()
+					if (!swap_hand_hotkeymode)
+						swap_hand_hotkeymode = "X"
+					
+					owner.runtime_macro_insert(swap_hand_hotkeymode, "hotkeymode", ".SwapMobHand")
+
 				if("toggle_prefs")
 					var/flag = text2num(href_list["flag"])
 					var/flag_undo = text2num(href_list["flag_undo"])
@@ -1566,3 +1591,48 @@ var/const/MAX_SAVE_SLOTS = 10
 
 /datum/preferences/proc/close_load_dialog(mob/user)
 	close_browser(user, "saves")
+
+/datum/preferences/proc/parse_key_down(var/key)
+	key = uppertext(key)
+
+	if (key in key_mod_buf)
+		return
+
+	if (key in key_mods)
+		key_mod_buf.Add(key)
+
+/datum/preferences/proc/set_key_buf(var/key)
+	key_buf = ""
+
+	for (var/mod in key_mod_buf)
+		if (mod == key)
+			continue
+		key_buf += "[mod]+"
+
+	key_mod_buf = null
+
+	key_buf += key
+
+/datum/preferences/proc/read_key()
+	// Null out key_buf (it's the main 'signal' for when button has been pressed)
+	key_buf = null
+
+	// Initialize key_mod_buf
+	key_mod_buf = list()
+
+	// Store the old macro set being used (gonna load back after key_buf is set)
+	var/old = params2list(winget(owner, "mainwindow", "macro"))[1]
+
+	alert("Press OK below, and then input the key sequence!")
+
+	registerListener(owner, EVENT_READ_KEY_DOWN, "reading_key", CALLBACK(src, .proc/parse_key_down))
+	registerListener(owner, EVENT_READ_KEY_UP, "reading_key", CALLBACK(src, .proc/set_key_buf))
+	winset(owner, null, "mainwindow.macro=keyreader")
+	while (!key_buf)
+		stoplag()
+	winset(owner, null, "mainwindow.macro=[old]")
+	unregisterListener(owner, EVENT_READ_KEY_DOWN, "reading_key")
+	unregisterListener(owner, EVENT_READ_KEY_UP, "reading_key")
+
+	alert("The key sequence is [key_buf].")
+	return key_buf

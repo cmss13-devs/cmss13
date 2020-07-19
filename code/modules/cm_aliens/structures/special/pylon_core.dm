@@ -16,7 +16,7 @@
 	. = ..(loc, hive_ref)
 
 	replace_node()
-	for(var/turf/A in range(cover_range, loc))
+	for(var/turf/A in range(round(cover_range*PYLON_COVERAGE_MULT), loc))
 		A.linked_pylons += src
 		linked_turfs += A
 

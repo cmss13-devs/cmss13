@@ -618,8 +618,34 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 				qdel(ghostmob)
 			return
 
+/mob/dead/verb/join_as_freed_mob()
+	set category = "Ghost"
+	set name = "Join as Freed Mob"
+	set desc = "Select a freed mob by staff."
 
+	var/mob/M = src
+	if(!M.stat || !M.mind)
+		return
 
+	if(!ticker || ticker.current_state < GAME_STATE_PLAYING || !ticker.mode)
+		to_chat(src, SPAN_WARNING("The game hasn't started yet!"))
+		return
+
+	var/choice = input("Pick a Freed Mob:") as null|anything in freed_mob_list
+	if(!choice || choice == "Cancel")
+		return
+
+	var/mob/living/L = choice
+	if(!istype(L))
+		return
+
+	if(L.disposed || L.client)
+		freed_mob_list -= L
+		to_chat(src, SPAN_WARNING("Something went wrong."))
+		return
+
+	freed_mob_list -= L
+	M.mind.transfer_to(L, TRUE)
 
 
 /mob/dead/verb/join_as_hellhound()

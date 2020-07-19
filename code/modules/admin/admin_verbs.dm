@@ -63,6 +63,7 @@ var/list/admin_verbs_fun = list(
 var/list/admin_verbs_spawn = list(
 	/datum/admins/proc/spawn_atom,
 	/client/proc/game_panel,
+	/client/proc/create_humans
 )
 var/list/admin_verbs_server = list(
 	/client/proc/Set_Holiday,
@@ -153,6 +154,7 @@ var/list/admin_mob_event_verbs_hideable = list(
 	/client/proc/cmd_admin_addhud,
 	/client/proc/cmd_admin_change_their_hivenumber,
 	/client/proc/cmd_assume_direct_control,
+	/client/proc/free_mob_for_ghosts,
 	/proc/possess,
 	/proc/release
 )
@@ -204,6 +206,7 @@ var/list/admin_verbs_mod = list(
 	/client/proc/rejuvenate_all_humans_in_view,
 	/client/proc/rejuvenate_all_revivable_humans_in_view,
 	/client/proc/rejuvenate_all_xenos_in_view,
+	/client/proc/free_all_mobs_in_view,
 	/datum/admins/proc/togglesleep,
 	/datum/admins/proc/sleepall,
 	/datum/admins/proc/togglejoin,

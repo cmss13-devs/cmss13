@@ -1,0 +1,82 @@
+<html>
+
+<head>
+  <title>Create Humans</title>
+  <link rel="stylesheet" type="text/css" href="common.css">
+</head>
+
+<body>
+	<form name="spawner" action="byond://?src=/* ref src */" method="get">
+		<input type="hidden" name="src" value="/* ref src */">
+		Amount of humans: <input type="text" name="object_count" value="1" style="width:30px">
+		<br>
+		Range to spawn in: <input type="text" name="object_range" value="1" style="width:30px">
+		<br>
+		Spawn as Freed Mobs: 
+		Yes <input type="radio" class ="radioButton" name="spawn_as" value="yes">
+		No <input type="radio" class ="radioButton" name="spawn_as" value="no" checked="checked">
+		<br><br>
+		Search for equipment: <br>
+		<input type="text" name="filter" value="" onkeypress="submitFirst(event)" style="width:280px"> <input type = "button" class="button" value = "Search" onclick = "updateSearch()" />
+		<br>
+		<select name="create_humans_list" size="18" multiple style="width:98%"></select><br>
+		<input type="submit" class="button" value="Spawn">
+	</form>
+	
+	<script language="JavaScript">
+		var old_search = "";
+		var create_humans_list = document.spawner.create_humans_list;
+		var object_paths = null /* object types */;
+		var objects = object_paths == null ? new Array() : object_paths.split(";");
+		
+		document.spawner.filter.focus();
+		populateList(objects);
+		
+		function populateList(from_list)
+		{
+			create_humans_list.options.length = 0;
+			
+			var i;
+			for (i in from_list)
+			{
+				var new_option = document.createElement("option");
+				new_option.value = from_list[i];
+				new_option.text = from_list[i];
+				create_humans_list.options.add(new_option);
+			}
+		}
+		
+		function updateSearch()
+		{
+			old_search = document.spawner.filter.value;
+			
+			var filtered = new Array();
+			for(var i in objects)
+			{
+				if(objects[i].indexOf(old_search) < 0)
+				{
+					continue;
+				}
+				
+				filtered.push(objects[i]);
+			}
+			
+			populateList(filtered);
+		}
+		
+		function submitFirst(event)
+		{
+			if (!create_humans_list.options.length)
+			{
+				return false;
+			}
+			
+			if (event.keyCode == 13 || event.which == 13)
+			{
+				create_humans_list.options[0].selected = 'true';
+			}
+		}
+	</script>
+</body>
+
+</html>

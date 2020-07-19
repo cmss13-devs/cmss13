@@ -210,6 +210,15 @@
 
 	sleep(warmup_time) //Warming up
 
+	if(!queen_locked)
+		for(var/turf/T in turfs_src)
+			var/mob/living/carbon/Xenomorph/X = locate(/mob/living/carbon/Xenomorph) in T
+			if(X && X.stat != DEAD)
+				shipwide_ai_announcement("Hostile biological entities detected on [shuttle_tag]. Appropriate code level has been set.")
+				set_security_level(SEC_LEVEL_RED)
+				break
+
+
 	moving_status = SHUTTLE_INTRANSIT
 
 	for(var/X in equipments)

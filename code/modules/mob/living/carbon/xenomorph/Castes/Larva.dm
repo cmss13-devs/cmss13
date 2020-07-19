@@ -95,15 +95,14 @@
 	if(hivenumber == XENO_HIVE_CORRUPTED)
 		add_language("English")
 
-	switch(amount_grown)
-		if(0 to 49) //We're still bloody
-			progress = "Bloody "
-			state = "Bloody "
-		if(50 to 99)
-			progress = ""
-			state = ""
-		if(100 to INFINITY)
-			progress = "Mature "
+	if(amount_grown < max_grown/2) //We're still bloody
+		progress = "Bloody "
+		state = "Bloody "
+	if(amount_grown >= max_grown/2)
+		progress = ""
+		state = ""
+	if(amount_grown >= max_grown)
+		progress = "Mature "
 
 	name = "\improper [name_prefix][progress]Larva ([nicknumber])"
 

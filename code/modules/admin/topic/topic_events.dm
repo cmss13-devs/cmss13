@@ -83,3 +83,50 @@
 			if(amount != 0) //can add negative numbers too!
 				message_admins(SPAN_NOTICE("[key_name_admin(usr)] added [amount] research credits."), 1)
 				chemical_research_data.update_credits(amount)
+
+/datum/admins/proc/create_humans_list(var/href_list)
+	var/atom/initial_spot = usr.loc
+	var/turf/initial_turf = get_turf(initial_spot)
+
+	var/job_name
+	if (istext(href_list["create_humans_list"]))
+		job_name = href_list["create_humans_list"]
+	else
+		alert("Select fewer paths, (max 1)")
+		return
+
+	var/humans_to_spawn = dd_range(1, 100, text2num(href_list["object_count"]))
+	var/range_to_spawn_on = dd_range(1, 10, text2num(href_list["object_range"]))
+
+	var/free_the_humans = FALSE
+	if(href_list["spawn_as"] == "yes")
+		free_the_humans = TRUE
+
+	if(humans_to_spawn)
+		var/list/turfs = list()
+		if(!range_to_spawn_on)
+			range_to_spawn_on = 1
+
+		for(var/turf/T in range(initial_turf, range_to_spawn_on))
+			if(!T || istype(T, /turf/closed))
+				continue
+			turfs += T
+
+		if(!length(turfs))
+			return
+
+		var/mob/living/carbon/human/H
+		for(var/i = 0 to humans_to_spawn-1)
+			var/turf/to_spawn_at = pick(turfs)
+			H = new(to_spawn_at)
+
+			if(!H.hud_used)
+				H.create_hud()
+		
+			arm_equipment(H, job_name, TRUE, FALSE)
+
+			if(free_the_humans)
+				owner.free_for_ghosts(H)
+
+		message_admins("[key_name_admin(usr)] created [humans_to_spawn] humans as [job_name] at [get_area(initial_spot)]")
+	return

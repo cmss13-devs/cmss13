@@ -683,3 +683,22 @@
 	if(admin_holder)
 		admin_holder.chempanel()
 	return
+
+/datum/admins/var/create_humans_html = null
+/datum/admins/proc/create_humans(var/mob/user)
+	if(!gear_presets_list)
+		return
+
+	if(!create_humans_html)
+		var/equipment_presets = jointext(gear_presets_list, ";")
+		create_humans_html = file2text('html/create_humans.html')
+		create_humans_html = replacetext(create_humans_html, "null /* object types */", "\"[equipment_presets]\"")
+
+	show_browser(user, replacetext(create_humans_html, "/* ref src */", "\ref[src]"), "Create Humans", "create_humans", "size=450x530")
+
+/client/proc/create_humans()
+	set name = "D: Create Humans"
+	set category = "Event"
+	if(admin_holder)
+		admin_holder.create_humans(usr)
+	return

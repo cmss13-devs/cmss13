@@ -50,6 +50,7 @@ var/global/list/living_misc_mobs = list() // anything that isnt a xeno or human
 
 var/global/list/ai_mob_list = list()				//List of all AIs
 
+var/global/list/freed_mob_list = list() 	// List of mobs freed for ghosts
 
 var/global/list/xeno_datum_list = list() // multi-d list of xeno datums
 

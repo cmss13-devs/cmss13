@@ -76,6 +76,27 @@
 
 /turf/closed/wall/almayer/research/containment/wall/divide
 	icon_state = "containment_wall_divide"
+	var/operating = FALSE
+
+/turf/closed/wall/almayer/research/containment/wall/divide/proc/open()
+	if(operating)
+		return
+	operating = TRUE
+	flick("containment_wall_divide_lowering", src)
+	icon_state = "containment_wall_divide_lowered"
+	SetOpacity(0)
+	density = 0
+	operating = FALSE
+
+/turf/closed/wall/almayer/research/containment/wall/divide/proc/close()
+	if(operating)
+		return
+	operating = TRUE
+	flick("containment_wall_divide_rising", src)
+	icon_state = "containment_wall_divide"
+	SetOpacity(1)
+	density = 1
+	operating = FALSE
 
 /turf/closed/wall/almayer/research/containment/wall/south
 	icon_state = "containment_wall_south"

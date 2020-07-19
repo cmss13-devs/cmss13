@@ -1,7 +1,7 @@
 /obj/structure/machinery/reagent_analyzer
 	name = "Advanced XRF Scanner"
 	desc = "A spectrometer that bombards a sample in high energy radiation to detect emitted fluorescent x-ray patterns. By using the emission spectrum of the sample it can identify its chemical composition."
-	icon = 'icons/obj/structures/machinery/chemical_machines.dmi'
+	icon = 'icons/obj/structures/machinery/science_machines.dmi'
 	icon_state = "reagent_analyzer"
 	active_power_usage = 5000 //This is how many watts the big XRF machines usually take
 
@@ -93,17 +93,17 @@
 		report.info += "<B>Results for sample:</B> #[sample_number]<BR>\n"
 		report.generate(S)
 		sample.name = "vial ([S.name])"
-		chemical_research_data.save_document(report, "XRF Scans", "[sample_number] - [report.name]")
+		chemical_data.save_document(report, "XRF Scans", "[sample_number] - [report.name]")
 		if(S.chemclass >= CHEM_CLASS_SPECIAL && !chemical_identified_list[S.id])
 			if(last_used)
 				last_used.count_niche_stat(STATISTICS_NICHE_CHEMS)
 			var/datum/chem_property/P = S.get_property(PROPERTY_DNA_DISINTEGRATING)
 			if(P)
-				if(chemical_research_data.clearance_level >= S.gen_tier)
+				if(chemical_data.clearance_level >= S.gen_tier)
 					P.trigger()
 				else
 					return
-			chemical_research_data.update_credits(2)
+			chemical_data.update_credits(2)
 			chemical_identified_list[S.id] = S.objective_value
 			defcon_controller.check_defcon_level()
 	else

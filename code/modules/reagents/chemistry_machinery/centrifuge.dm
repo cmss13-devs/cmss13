@@ -1,7 +1,7 @@
 /obj/structure/machinery/centrifuge
 	name = "Chemical Centrifuge"
 	desc = "A machine that uses centrifugal forces to separate fluids of different densities. Needs a reagent container for input and a vialbox for output."
-	icon = 'icons/obj/structures/machinery/chemical_machines.dmi'
+	icon = 'icons/obj/structures/machinery/science_machines.dmi'
 	icon_state = "centrifuge_empty_open"
 	active_power_usage = 500
 

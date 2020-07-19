@@ -13,6 +13,7 @@
 	icon_state = "firstaid"
 	throw_speed = SPEED_FAST
 	throw_range = 8
+	matter = list("plastic" = 2000)
 	cant_hold = list(
 		/obj/item/ammo_magazine,
 		/obj/item/explosive/grenade,
@@ -69,6 +70,9 @@
 		new /obj/item/reagent_container/hypospray/autoinjector/kelotane(src)
 		new /obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol(src)
 
+/obj/item/storage/firstaid/fire/empty
+	empty = TRUE
+
 /obj/item/storage/firstaid/regular
 	icon_state = "firstaid"
 
@@ -80,6 +84,9 @@
 		new /obj/item/stack/medical/bruise_pack(src)
 		new /obj/item/stack/medical/ointment(src)
 		new /obj/item/stack/medical/splint(src)
+
+/obj/item/storage/firstaid/regular/empty
+	empty = TRUE
 
 /obj/item/storage/firstaid/toxin
 	name = "toxin first aid"
@@ -94,6 +101,9 @@
 		new /obj/item/reagent_container/pill/antitox(src)
 		new /obj/item/reagent_container/pill/antitox(src)
 		new /obj/item/reagent_container/pill/antitox(src)
+
+/obj/item/storage/firstaid/toxin/empty
+	empty = TRUE
 
 /obj/item/storage/firstaid/o2
 	name = "oxygen deprivation first aid"
@@ -110,6 +120,9 @@
 		new /obj/item/reagent_container/hypospray/autoinjector/dexalinp(src)
 		new /obj/item/reagent_container/hypospray/autoinjector/inaprovaline(src)
 
+/obj/item/storage/firstaid/o2/empty
+	empty = TRUE
+
 /obj/item/storage/firstaid/adv
 	name = "advanced first-aid kit"
 	desc = "Contains advanced medical treatments."
@@ -125,6 +138,8 @@
 		new /obj/item/stack/medical/advanced/ointment(src)
 		new /obj/item/stack/medical/splint(src)
 
+/obj/item/storage/firstaid/adv/empty
+	empty = TRUE
 
 /obj/item/storage/firstaid/rad
 	name = "radiation first-aid kit"
@@ -139,6 +154,8 @@
 		new /obj/item/reagent_container/hypospray/autoinjector/bicaridine(src)
 		new /obj/item/reagent_container/hypospray/autoinjector/bicaridine(src)
 
+/obj/item/storage/firstaid/rad/empty
+	empty = TRUE
 
 	/*
  * Syringe Case
@@ -153,6 +170,7 @@
 	throw_range = 8
 	storage_slots = 3
 	w_class = SIZE_SMALL
+	matter = list("plastic" = 1000)
 	can_hold = list(
 		/obj/item/reagent_container/pill,
 		/obj/item/reagent_container/glass/bottle,
@@ -205,6 +223,7 @@
 	icon = 'icons/obj/items/chemistry.dmi'
 	item_state = "contsolid"
 	w_class = SIZE_SMALL
+	matter = list("plastic" = 500)
 	can_hold = list(
 		/obj/item/reagent_container/pill,
 		/obj/item/toy/dice,

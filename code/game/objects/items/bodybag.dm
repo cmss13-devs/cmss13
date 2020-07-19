@@ -33,6 +33,7 @@
 	icon = 'icons/obj/cryobag.dmi'
 	icon_state = "bodybag_folded"
 	unfolded_path = /obj/structure/closet/bodybag/cryobag
+	matter = list("plastic" = 7500)
 	var/used = 0
 
 /obj/item/bodybag/cryobag/New(loc, obj/structure/closet/bodybag/cryobag/CB)

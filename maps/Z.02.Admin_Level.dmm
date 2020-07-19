@@ -9216,6 +9216,13 @@
 	icon_state = "floor"
 	},
 /area/adminlevel/ert_station)
+"QA" = (
+/obj/structure/machinery/chem_storage/misc,
+/turf/open/floor/almayer{
+	icon_regular_floor = "mono";
+	icon_state = "mono"
+	},
+/area/centcom/control)
 "QJ" = (
 /turf/open/floor/prison{
 	tag = "icon-sterile_white";
@@ -9523,6 +9530,13 @@
 	dir = 9
 	},
 /area/adminlevel/ert_station)
+"WH" = (
+/obj/structure/machinery/chem_storage,
+/turf/open/floor/almayer{
+	icon_regular_floor = "mono";
+	icon_state = "mono"
+	},
+/area/centcom/control)
 "WK" = (
 /obj/structure/table/reinforced,
 /turf/open/floor/almayer{
@@ -19662,12 +19676,12 @@ fn
 fn
 fn
 aa
-ds
-ds
-ds
 fn
+WH
+fR
+fR
+QA
 fn
-ds
 aa
 aC
 aa
@@ -19814,12 +19828,12 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
+fn
+fR
+fR
+fR
+fR
+fn
 aa
 aC
 aa
@@ -19966,13 +19980,13 @@ fn
 fn
 fn
 aa
-aC
-aC
-aC
-aC
-aC
-aC
-aC
+ds
+ds
+ds
+fn
+fn
+ds
+aa
 aC
 aa
 aa
@@ -20118,14 +20132,14 @@ ai
 ap
 fn
 aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aC
-aa
-aa
-aa
-aa
-aa
-aa
-aa
 aa
 aa
 aa
@@ -20271,13 +20285,13 @@ ah
 fn
 aa
 aC
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+aC
+aC
+aC
+aC
+aC
+aC
+aC
 aa
 aa
 aa

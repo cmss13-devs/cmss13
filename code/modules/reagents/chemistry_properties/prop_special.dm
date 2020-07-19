@@ -60,7 +60,7 @@
 
 /datum/chem_property/special/DNA_Disintegrating/trigger()
 	ticker.mode.get_specific_call("Weston-Yamada PMC (Chemical Investigation Squad)", TRUE, FALSE, holder.name)
-	chemical_research_data.update_credits(10)
+	chemical_data.update_credits(10)
 	message_admins(SPAN_NOTICE("The research department has discovered DNA_Disintegrating in [holder.name] adding [OBJECTIVE_ABSOLUTE_VALUE * 2] bonus DEFCON points."), 1)
 	objectives_controller.add_admin_points(OBJECTIVE_ABSOLUTE_VALUE * 2)
 	ai_announcement("NOTICE: $20000 received from USCSS Royce. Shuttle inbound.")
@@ -140,9 +140,9 @@
 	var/mob/living/carbon/human/H = M
 	if((locate(/obj/item/alien_embryo) in H.contents) || (H.species.flags & IS_SYNTHETIC)) //No effect if already infected
 		return
-	for(var/i=1,i<=max((potency % 100)/10,1),i++)//10's determine number of embryos
+	for(var/i=1,i<=max((level % 100)/10,1),i++)//10's determine number of embryos
 		var/obj/item/alien_embryo/embryo = new /obj/item/alien_embryo(H)
-		embryo.hivenumber = min(potency % 10,5) //1's determine hivenumber
+		embryo.hivenumber = min(level % 10,5) //1's determine hivenumber
 		embryo.faction = FACTION_LIST_XENOMORPH[embryo.hivenumber]
 
 /datum/chem_property/special/transforming

@@ -70,7 +70,7 @@ var/const/INGEST = 2
 		if(i==0)
 			paths = typesof(/datum/reagent/generated) - /datum/reagent/generated //Generated chemicals should be initialized last
 	
-	chemical_research_data.initialize_saved_chem_data() //load and initialize chems that have been saved to DB
+	chemical_data.initialize_saved_chem_data() //load and initialize chems that have been saved to DB
 	
 	//Chemical Reactions - Initialises all /datum/chemical_reaction into a list
 	// It is filtered into multiple lists within a list.

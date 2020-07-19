@@ -4,6 +4,7 @@
 	icon = 'icons/obj/items/bloodpack.dmi'
 	icon_state = "empty"
 	volume = 200
+	matter = list("plastic" = 500)
 	flags_atom = CAN_BE_SYRINGED
 
 	var/blood_type = null

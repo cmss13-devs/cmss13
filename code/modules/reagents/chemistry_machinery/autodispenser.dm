@@ -4,7 +4,7 @@
 /obj/structure/machinery/autodispenser
 	name = "Turing Dispenser"
 	desc = "A chem dispenser variant that can not be operated manually, but will instead automatically dispense chemicals based on a program of chemicals, loaded using a vial box. Despite having a digital screen the machine is mostly analog."
-	icon = 'icons/obj/structures/machinery/chemical_machines.dmi'
+	icon = 'icons/obj/structures/machinery/science_machines.dmi'
 	icon_state = "autodispenser_empty_open"
 	active_power_usage = 40
 	layer = BELOW_OBJ_LAYER

@@ -3,7 +3,7 @@
 	name = "\improper Podlock"
 	desc = "That looks like it doesn't open easily."
 	icon = 'icons/obj/structures/doors/rapid_pdoor.dmi'
-	icon_state = "pdoor1"
+	icon_state = "pdoor"
 	id = 1.0
 	dir = 1
 	unslashable = TRUE
@@ -16,8 +16,10 @@
 	. = ..()
 	if(density)
 		layer = PODDOOR_CLOSED_LAYER //to override door.Initialize() proc
+		icon_state = initial(icon_state) + "1"
 	else
 		layer = PODDOOR_OPEN_LAYER
+		icon_state = initial(icon_state) + "0"
 	return
 
 /obj/structure/machinery/door/poddoor/Collided(atom/movable/AM)
@@ -33,8 +35,8 @@
 	if(density && (stat & NOPOWER) && !operating && !unacidable)
 		spawn(0)
 			operating = 1
-			flick("pdoorc0", src)
-			icon_state = "pdoor0"
+			flick(initial(icon_state) + "c0", src)
+			icon_state = initial(icon_state) + "0"
 			SetOpacity(0)
 			sleep(15)
 			density = 0
@@ -51,8 +53,8 @@
 		return 0
 	if(!operating) //in case of emag
 		operating = 1
-	flick("pdoorc0", src)
-	icon_state = "pdoor0"
+	flick(initial(icon_state) + "c0", src)
+	icon_state = initial(icon_state) + "0"
 	SetOpacity(0)
 	sleep(10)
 	layer = PODDOOR_OPEN_LAYER
@@ -69,8 +71,8 @@
 		return
 	operating = 1
 	layer = PODDOOR_CLOSED_LAYER
-	flick("pdoorc1", src)
-	icon_state = "pdoor1"
+	flick(initial(icon_state) + "c1", src)
+	icon_state = initial(icon_state) + "1"
 	density = 1
 	SetOpacity(initial(opacity))
 
@@ -237,6 +239,9 @@
 	tiles_with = list(
 		/obj/structure/window/framed/almayer,
 		/obj/structure/machinery/door/airlock)
+
+/obj/structure/machinery/door/poddoor/almayer/blended
+	icon_state = "almayer_pdoor"
 
 /obj/structure/machinery/door/poddoor/almayer/Initialize()
 	. = ..()

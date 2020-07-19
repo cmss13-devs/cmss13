@@ -47,7 +47,7 @@
 
 /obj/item/clothing/glasses/hud/health/ui_interact(mob/user, ui_key = "main",var/datum/nanoui/ui = null, var/force_open = 0)
 	var/list/data = list(
-		"published_documents" = chemical_research_data.research_publications,
+		"published_documents" = chemical_data.research_publications,
 		"terminal_view" = FALSE
 	)
 
@@ -65,7 +65,7 @@
 		return
 
 	if(href_list["read_document"])
-		var/obj/item/paper/research_report/report = chemical_research_data.research_documents[href_list["print_type"]][href_list["print_title"]]
+		var/obj/item/paper/research_report/report = chemical_data.research_documents[href_list["print_type"]][href_list["print_title"]]
 		if(report)
 			report.read_paper(user)
 

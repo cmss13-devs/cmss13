@@ -11,7 +11,7 @@
 	name = "PanD.E.M.I.C 2200"
 	density = 1
 	anchored = 1
-	icon = 'icons/obj/structures/machinery/chemical_machines.dmi'
+	icon = 'icons/obj/structures/machinery/science_machines.dmi'
 	icon_state = "mixer0"
 	layer = BELOW_OBJ_LAYER
 	circuit = /obj/item/circuitboard/computer/pandemic

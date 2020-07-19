@@ -24,7 +24,7 @@
 		if(N.note_type == "grant")
 			if(!N.grant)
 				return
-			chemical_research_data.update_credits(N.grant)
+			chemical_data.update_credits(N.grant)
 			visible_message(SPAN_NOTICE("[user] scans the [N.name] on the [src], collecting the [N.grant] research credits."))
 			N.grant = 0
 			return
@@ -37,7 +37,7 @@
 		response = alert(usr,"Use existing or new category?","[src]","Existing","New")
 		if(response == "Existing")
 			var/list/pool = list()
-			for(var/category in chemical_research_data.research_documents)
+			for(var/category in chemical_data.research_documents)
 				pool += category
 			pool = sortAssoc(pool)
 			response = input(usr,"Select a category:") as null|anything in pool
@@ -46,7 +46,7 @@
 		if(!response)
 			response = "Misc."
 		var/obj/item/paper/research_report/CR = P.convert_to_chem_report()
-		chemical_research_data.save_document(CR, response, CR.name)
+		chemical_data.save_document(CR, response, CR.name)
 		return
 	//Clearance Updating
 	if(!istype(B, /obj/item/card/id))
@@ -74,15 +74,15 @@
 
 	switch(setting)
 		if("Increase")
-			if(chemical_research_data.clearance_level < clearance_allowance)
-				chemical_research_data.clearance_level = min(5,chemical_research_data.clearance_level + 1)
+			if(chemical_data.clearance_level < clearance_allowance)
+				chemical_data.clearance_level = min(5,chemical_data.clearance_level + 1)
 		if("Set to maximum")
-			chemical_research_data.clearance_level = max(clearance_allowance, chemical_research_data.clearance_level)
+			chemical_data.clearance_level = max(clearance_allowance, chemical_data.clearance_level)
 		if("Set to minimum")
-			chemical_research_data.clearance_level = 1
+			chemical_data.clearance_level = 1
 
-	visible_message(SPAN_NOTICE("[user] swipes their ID card on the [src], updating the clearance to level [chemical_research_data.clearance_level]."))
-	msg_admin_niche("[key_name(user)] has updated the research clearance to level [chemical_research_data.clearance_level].")
+	visible_message(SPAN_NOTICE("[user] swipes their ID card on the [src], updating the clearance to level [chemical_data.clearance_level]."))
+	msg_admin_niche("[key_name(user)] has updated the research clearance to level [chemical_data.clearance_level].")
 	return
 
 /obj/structure/machinery/computer/research/attack_hand(mob/user as mob)
@@ -92,15 +92,15 @@
 
 /obj/structure/machinery/computer/research/ui_interact(mob/user, ui_key = "main",var/datum/nanoui/ui = null, var/force_open = 0)
 	var/list/data = list(
-		"rsc_credits" = chemical_research_data.rsc_credits,
-		"clearance_level" = chemical_research_data.clearance_level,
-		"broker_cost" = max(3*(chemical_research_data.clearance_level + 1) - 2*(5 - defcon_controller.current_defcon_level), 1),
+		"rsc_credits" = chemical_data.rsc_credits,
+		"clearance_level" = chemical_data.clearance_level,
+		"broker_cost" = max(3*(chemical_data.clearance_level + 1) - 2*(5 - defcon_controller.current_defcon_level), 1),
 		"base_purchase_cost" = base_purchase_cost,
-		"research_documents" = chemical_research_data.research_documents,
-		"published_documents" = chemical_research_data.research_publications,
+		"research_documents" = chemical_data.research_documents,
+		"published_documents" = chemical_data.research_publications,
 		"main_terminal" = main_terminal,
 		"terminal_view" = TRUE,
-		"clearance_x_access" = chemical_research_data.clearance_x_access
+		"clearance_x_access" = chemical_data.clearance_x_access
 	)
 
 	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
@@ -116,14 +116,14 @@
 	if(user.stat || user.is_mob_restrained() || !in_range(src, user))
 		return
 	if(href_list["read_document"])
-		var/obj/item/paper/research_report/report = chemical_research_data.research_documents[href_list["print_type"]][href_list["print_title"]]
+		var/obj/item/paper/research_report/report = chemical_data.research_documents[href_list["print_type"]][href_list["print_title"]]
 		if(report)
 			report.read_paper(user)
 	else if(href_list["print"])
 		if(photocopier.toner)
 			photocopier.toner = max(0, photocopier.toner - 1)
 			var/obj/item/paper/research_report/printing = new /obj/item/paper/research_report/(photocopier.loc)
-			var/obj/item/paper/research_report/report = chemical_research_data.research_documents[href_list["print_type"]][href_list["print_title"]]
+			var/obj/item/paper/research_report/report = chemical_data.research_documents[href_list["print_type"]][href_list["print_title"]]
 			if(report)
 				printing.name = report.name
 				printing.info = report.info
@@ -132,7 +132,7 @@
 		else
 			to_chat(usr, SPAN_WARNING("Printer toner is empty."))
 	else if(href_list["transmit"])
-		var/obj/item/paper/research_report/report = chemical_research_data.research_documents[href_list["print_type"]][href_list["print_title"]]
+		var/obj/item/paper/research_report/report = chemical_data.research_documents[href_list["print_type"]][href_list["print_title"]]
 		if(!report)
 			to_chat(usr, SPAN_WARNING("Report data corrupted. Unable to transmit."))
 			return
@@ -146,24 +146,24 @@
 		var/transmission_cost = R.calculate_value()
 		if(alert(usr,"This will transmit the data regarding [R.name] to the WY central database, so that other research labs can continue the research. The complexity of this chemical will cost [transmission_cost] credits to transmit. Confirm transmission?","Confirm Data Transmission","Confirm","No") != "Confirm")
 			return
-		if(transmission_cost > chemical_research_data.rsc_credits)
+		if(transmission_cost > chemical_data.rsc_credits)
 			to_chat(usr, SPAN_WARNING("Insufficient funds."))
 			return
-		if(chemical_research_data.transmit_chem_data(R))
-			chemical_research_data.update_credits(transmission_cost * -1)
+		if(chemical_data.transmit_chem_data(R))
+			chemical_data.update_credits(transmission_cost * -1)
 			to_chat(usr, SPAN_NOTICE("Data for [R.name] has been transmitted."))
 		else
 			to_chat(usr, SPAN_WARNING("Error during transmission."))
 	else if(href_list["broker_clearance"])
 		if(alert(usr,"The CL can swipe their ID card on the console to increase clearance for free, given enough DEFCON. Are you sure you want to spend research credits to increase the clearance immediately?","Warning","Yes","No") != "Yes")
 			return
-		if(chemical_research_data.clearance_level < 5)
-			var/cost = max(3*(chemical_research_data.clearance_level + 1) - 2*(5 - defcon_controller.current_defcon_level), 1)
-			if(cost <= chemical_research_data.rsc_credits)
-				chemical_research_data.update_credits(cost * -1)
-				chemical_research_data.clearance_level++
-				visible_message(SPAN_NOTICE("Clearance access increased to level [chemical_research_data.clearance_level] for [cost] credits."))
-				msg_admin_niche("[key_name(user)] traded research credits to upgrade the clearance to level [chemical_research_data.clearance_level].")
+		if(chemical_data.clearance_level < 5)
+			var/cost = max(3*(chemical_data.clearance_level + 1) - 2*(5 - defcon_controller.current_defcon_level), 1)
+			if(cost <= chemical_data.rsc_credits)
+				chemical_data.update_credits(cost * -1)
+				chemical_data.clearance_level++
+				visible_message(SPAN_NOTICE("Clearance access increased to level [chemical_data.clearance_level] for [cost] credits."))
+				msg_admin_niche("[key_name(user)] traded research credits to upgrade the clearance to level [chemical_data.clearance_level].")
 			else
 				to_chat(usr, SPAN_WARNING("Insufficient funds."))
 		else
@@ -171,10 +171,10 @@
 	else if(href_list["purchase_document"])
 		var/purchase_tier = text2num(href_list["purchase_document"])
 		var/purchase_cost = base_purchase_cost + purchase_tier * purchase_tier
-		if(purchase_cost <= chemical_research_data.rsc_credits)
+		if(purchase_cost <= chemical_data.rsc_credits)
 			if(alert(usr,"Are you sure you wish to purchase a new level [purchase_tier] chemical report for [purchase_cost] credits?","Warning","Yes","No") != "Yes")
 				return
-			chemical_research_data.update_credits(purchase_cost * -1)
+			chemical_data.update_credits(purchase_cost * -1)
 			var/obj/item/paper/research_notes/unique/N
 			switch(purchase_tier)
 				if(1)
@@ -191,23 +191,23 @@
 		else
 			to_chat(usr, SPAN_WARNING("Insufficient funds."))
 	else if(href_list["publish_document"])
-		var/obj/item/paper/research_report/report = chemical_research_data.research_documents[href_list["print_type"]][href_list["print_title"]]
+		var/obj/item/paper/research_report/report = chemical_data.research_documents[href_list["print_type"]][href_list["print_title"]]
 		if(!report)
 			to_chat(usr, SPAN_WARNING("Report data corrupted. Unable to transmit."))
 			return
-		chemical_research_data.publish_document(report, href_list["print_type"], href_list["print_title"])
+		chemical_data.publish_document(report, href_list["print_type"], href_list["print_title"])
 		to_chat(usr, SPAN_NOTICE("Published [report.name]."))
 	else if(href_list["unpublish_document"])
 		var/title = href_list["print_title"]
-		if(chemical_research_data.unpublish_document(href_list["print_type"], title))
+		if(chemical_data.unpublish_document(href_list["print_type"], title))
 			to_chat(usr, SPAN_NOTICE("Removed the publication for [title]."))
 	else if(href_list["request_clearance_x_access"])
 		var/purchase_cost = 5
 		if(alert(usr,"Are you sure you wish request clearance level X access for [purchase_cost] credits?","Warning","Yes","No") != "Yes")
 			return
-		if(purchase_cost <= chemical_research_data.rsc_credits)
-			chemical_research_data.clearance_x_access = TRUE
-			chemical_research_data.update_credits(purchase_cost * -1)
+		if(purchase_cost <= chemical_data.rsc_credits)
+			chemical_data.clearance_x_access = TRUE
+			chemical_data.update_credits(purchase_cost * -1)
 			visible_message(SPAN_NOTICE("Clearance Level X Acquired."))
 		else
 			to_chat(usr, SPAN_WARNING("Insufficient funds."))

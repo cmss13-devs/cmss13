@@ -149,52 +149,47 @@
 /datum/autolathe/recipe/scalpel
 	name = "scalpel"
 	path = /obj/item/tool/surgery/scalpel
-	category = "Medical"
+	category = "Surgery"
 
 /datum/autolathe/recipe/circularsaw
 	name = "circular saw"
 	path = /obj/item/tool/surgery/circular_saw
-	category = "Medical"
+	category = "Surgery"
 
 /datum/autolathe/recipe/surgicaldrill
 	name = "surgical drill"
 	path = /obj/item/tool/surgery/surgicaldrill
-	category = "Medical"
+	category = "Surgery"
 
 /datum/autolathe/recipe/retractor
 	name = "retractor"
 	path = /obj/item/tool/surgery/retractor
-	category = "Medical"
+	category = "Surgery"
 
 /datum/autolathe/recipe/cautery
 	name = "cautery"
 	path = /obj/item/tool/surgery/cautery
-	category = "Medical"
+	category = "Surgery"
 
 /datum/autolathe/recipe/hemostat
 	name = "hemostat"
 	path = /obj/item/tool/surgery/hemostat
-	category = "Medical"
+	category = "Surgery"
 
 /datum/autolathe/recipe/beaker
 	name = "glass beaker"
 	path = /obj/item/reagent_container/glass/beaker
-	category = "Medical"
+	category = "Glassware"
 
 /datum/autolathe/recipe/beaker_large
 	name = "large glass beaker"
 	path = /obj/item/reagent_container/glass/beaker/large
-	category = "Medical"
+	category = "Glassware"
 
 /datum/autolathe/recipe/vial
 	name = "glass vial"
 	path = /obj/item/reagent_container/glass/beaker/vial
-	category = "Medical"
-
-/datum/autolathe/recipe/syringe
-	name = "syringe"
-	path = /obj/item/reagent_container/syringe
-	category = "Medical"
+	category = "Glassware"
 
 /datum/autolathe/recipe/consolescreen
 	name = "console screen"
@@ -310,3 +305,97 @@
 	name = "80mm Mortar Warhead"
 	path = /obj/item/explosive/warhead/mortar
 	category = "Explosives"
+
+//Medilathe recipes
+/datum/autolathe/recipe/medilathe
+	category = "Medical"
+
+/datum/autolathe/recipe/medilathe/syringe
+	name = "syringe"
+	path = /obj/item/reagent_container/syringe
+
+/datum/autolathe/recipe/medilathe/dropper
+	name = "dropper"
+	path = /obj/item/reagent_container/dropper
+
+/datum/autolathe/recipe/medilathe/spray
+	name = "spray bottle"
+	path = /obj/item/reagent_container/spray
+
+/datum/autolathe/recipe/medilathe/autoinjector
+	name = "autoinjector"
+	path = /obj/item/reagent_container/hypospray/autoinjector/empty
+
+/datum/autolathe/recipe/medilathe/hypospray
+	name = "hypospray"
+	path = /obj/item/reagent_container/hypospray
+
+/datum/autolathe/recipe/medilathe/bloodpack
+	name = "bloodpack"
+	path = /obj/item/reagent_container/blood
+
+/datum/autolathe/recipe/medilathe/bluespace
+	name = "bluespace beaker"
+	path = /obj/item/reagent_container/glass/beaker/bluespace
+
+/datum/autolathe/recipe/medilathe/bonesetter
+	name = "bonesetter"
+	path = /obj/item/tool/surgery/bonesetter
+
+/datum/autolathe/recipe/medilathe/cryobag
+	name = "stasis bag"
+	path = /obj/item/bodybag/cryobag
+
+/datum/autolathe/recipe/medilathe/rollerbed
+	name = "rollerbed"
+	path = /obj/item/roller
+
+/datum/autolathe/recipe/medilathe/pill_bottle
+	name = "pill bottle"
+	path = /obj/item/storage/pill_bottle
+	category = "Medical Containers"
+
+/datum/autolathe/recipe/medilathe/firstaid_regular
+	name = "first aid kit (reg)"
+	path = /obj/item/storage/firstaid/regular/empty
+	category = "Medical Containers"
+
+/datum/autolathe/recipe/medilathe/firstaid_fire
+	name = "first aid kit (fire)"
+	path = /obj/item/storage/firstaid/fire/empty
+	category = "Medical Containers"
+
+/datum/autolathe/recipe/medilathe/firstaid_toxin
+	name = "first aid kit (tox)"
+	path = /obj/item/storage/firstaid/toxin/empty
+	category = "Medical Containers"
+
+/datum/autolathe/recipe/medilathe/firstaid_oxy
+	name = "first aid kit (oxy)"
+	path = /obj/item/storage/firstaid/o2/empty
+	category = "Medical Containers"
+
+/datum/autolathe/recipe/medilathe/firstaid_adv
+	name = "first aid kit (adv)"
+	path = /obj/item/storage/firstaid/adv/empty
+	category = "Medical Containers"
+
+/datum/autolathe/recipe/medilathe/firstaid_rad
+	name = "first aid kit (rad)"
+	path = /obj/item/storage/firstaid/rad/empty
+	category = "Medical Containers"
+
+/datum/autolathe/recipe/medilathe/syringe_case
+	name = "syringe case"
+	path = /obj/item/storage/syringe_case
+	category = "Medical Containers"
+
+/datum/autolathe/recipe/medilathe/vial_box
+	name = "vial box"
+	path = /obj/item/storage/fancy/vials/empty
+	category = "Medical Containers"
+
+/datum/autolathe/recipe/medilathe/surgical_tray
+	name = "surgical tray"
+	path = /obj/item/storage/surgical_tray/empty
+	category = "Medical Containers"

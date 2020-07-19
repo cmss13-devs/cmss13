@@ -449,7 +449,7 @@
 	fake_zlevel = 1 // upperdeck
 
 /area/almayer/medical/testlab
-	name = "\improper Medical Research test lab"
+	name = "\improper Medical Research workshop"
 	icon_state = "science"
 	fake_zlevel = 1 // upperdeck
 
@@ -463,6 +463,9 @@
 	icon_state = "science"
 	fake_zlevel = 1 // upperdeck
 	flags_atom = AREA_AVOID_BIOSCAN|AREA_NOTUNNEL
+
+/area/almayer/medical/containment/cell/cl
+	name = "\improper Containment"
 
 /area/almayer/medical/chemistry
 	name = "\improper Medical Chemical laboratory"

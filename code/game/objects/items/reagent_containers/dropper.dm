@@ -10,6 +10,7 @@
 	possible_transfer_amounts = list(1,2,3,4,5)
 	w_class = SIZE_TINY
 	volume = 5
+	matter = list("plastic" = 150)
 	var/filled = 0
 
 	afterattack(obj/target, mob/user , flag)

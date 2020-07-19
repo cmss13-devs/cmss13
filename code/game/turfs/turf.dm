@@ -420,6 +420,9 @@
 /turf/closed/wall/is_weedable()
 	return TRUE //so we can spawn weeds on the walls
 
+/turf/closed/wall/almayer/research/containment/wall/divide/is_weedable()
+	return FALSE
+
 /turf/proc/can_dig_xeno_tunnel()
 	return FALSE
 
@@ -458,7 +461,9 @@
 
 /turf/open/floor/corsat/can_dig_xeno_tunnel()
 	return TRUE
-	
+
+/turf/closed/wall/almayer/research/containment/wall/divide/can_dig_xeno_tunnel()
+	return FALSE
 
 //what dirt type you can dig from this turf if any.
 /turf/proc/get_dirt_type()

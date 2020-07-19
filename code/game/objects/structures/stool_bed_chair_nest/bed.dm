@@ -199,6 +199,7 @@ obj/structure/bed/Dispose()
 	icon_state = "folded"
 	w_class = SIZE_SMALL //Fits in a backpack
 	drag_delay = 1 //Pulling something on wheels is easy
+	matter = list("plastic" = 5000)
 	var/rollertype = /obj/structure/bed/roller
 
 /obj/item/roller/attack_self(mob/user)

@@ -2,7 +2,7 @@
 	name = "chem dispenser"
 	density = 1
 	anchored = 1
-	icon = 'icons/obj/structures/machinery/chemical_machines.dmi'
+	icon = 'icons/obj/structures/machinery/science_machines.dmi'
 	icon_state = "dispenser"
 	use_power = 0
 	idle_power_usage = 40
@@ -10,44 +10,39 @@
 	var/req_skill = SKILL_MEDICAL
 	var/req_skill_level = SKILL_MEDICAL_MEDIC
 	var/ui_title = "Chem Dispenser 5000"
-	var/energy = 100
-	var/max_energy = 100
+	var/obj/structure/machinery/chem_storage/chem_storage
+	var/network = "Ground"
 	var/amount = 30
 	var/accept_glass = 0 //At 0 ONLY accepts glass containers. Kinda misleading varname.
 	var/obj/item/reagent_container/beaker = null
-	var/recharged = 0
-	var/hackedcheck = 0
+	var/ui_check = 0
 	var/list/dispensable_reagents = list("hydrogen","lithium","carbon","nitrogen","oxygen","fluorine",
 	"sodium","aluminum","silicon","phosphorus","sulfur","chlorine","potassium","iron",
 	"copper","mercury","radium","water","ethanol","sugar","sacid")
 
-/obj/structure/machinery/chem_dispenser/proc/recharge()
-	if(inoperable())
-		return
-	var/addenergy = 10
-	var/oldenergy = energy
-	energy = min(energy + addenergy, max_energy)
-	if(energy != oldenergy)
-		use_power(1500) // This thing uses up alot of power (this is still low as shit for creating reagents from thin air)
-		nanomanager.update_uis(src) // update all UIs attached to src
+/obj/structure/machinery/chem_dispenser/medbay
+	network = "Medbay"
+
+/obj/structure/machinery/chem_dispenser/research
+	network = "Research"
 
 /obj/structure/machinery/chem_dispenser/power_change()
 	..()
 	nanomanager.update_uis(src) // update all UIs attached to src
 
 /obj/structure/machinery/chem_dispenser/process()
-	if(recharged <= 0)
-		recharge()
-		recharged = 15
+	if(!chem_storage)
+		chem_storage = chemical_data.connect_chem_storage(network)
+	if(ui_check <= 0)
+		nanomanager.update_uis(src) // update all UIs attached to src
+		ui_check = 15
 	else
-		recharged -= 1
+		ui_check -= 1
 
-/obj/structure/machinery/chem_dispenser/New()
+/obj/structure/machinery/chem_dispenser/Initialize()
 	..()
-	recharge()
 	dispensable_reagents = sortList(dispensable_reagents)
 	start_processing()
-
 
 /obj/structure/machinery/chem_dispenser/ex_act(severity)
 	switch(severity)
@@ -75,7 +70,7 @@
   * @return nothing
   */
 /obj/structure/machinery/chem_dispenser/ui_interact(mob/user, ui_key = "main",var/datum/nanoui/ui = null, var/force_open = 0)
-	if(inoperable())
+	if(inoperable() || !chem_storage)
 		return
 	if(user.stat || user.is_mob_restrained())
 		return
@@ -83,8 +78,8 @@
 	// this is the data which will be sent to the ui
 	var/list/data = list(
 		"amount" = amount,
-		"energy" = round(energy),
-		"maxEnergy" = round(max_energy),
+		"energy" = round(chem_storage.energy),
+		"maxEnergy" = round(chem_storage.max_energy),
 		"isBeakerLoaded" = istype(beaker),
 		"glass" = accept_glass
 	)
@@ -134,12 +129,12 @@
 
 	if(href_list["dispense"])
 		if(dispensable_reagents.Find(href_list["dispense"]) && beaker != null && beaker.is_open_container())
-			var/obj/item/reagent_container/B = src.beaker
+			var/obj/item/reagent_container/B = beaker
 			var/datum/reagents/R = B.reagents
 			var/space = R.maximum_volume - R.total_volume
 
-			R.add_reagent(href_list["dispense"], min(amount, energy * 10, space))
-			energy = max(energy - min(amount, energy * 10, space) / 10, 0)
+			R.add_reagent(href_list["dispense"], min(amount, chem_storage.energy * 10, space))
+			chem_storage.energy = max(chem_storage.energy - min(amount, chem_storage.energy * 10, space) / 10, 0)
 
 	if(href_list["ejectBeaker"])
 		if(!beaker)
@@ -186,10 +181,10 @@
 	ui_title = "Soda Dispens-o-matic"
 	req_skill = null
 	req_skill_level = null
-	energy = 100
 	accept_glass = 1
-	max_energy = 100
+	network = "Misc"
 	dispensable_reagents = list("water","ice","coffee","cream","tea","icetea","cola","spacemountainwind","dr_gibb","space_up","tonic","sodawater","lemon_lime","sugar","orangejuice","limejuice","watermelonjuice")
+	var/hackedcheck = 0
 
 /obj/structure/machinery/chem_dispenser/soda/attackby(var/obj/item/B as obj, var/mob/user as mob)
 	..()
@@ -212,11 +207,11 @@
 	ui_title = "Booze Portal 9001"
 	req_skill = null
 	req_skill_level = null
-	energy = 100
 	accept_glass = 1
-	max_energy = 100
+	network = "Misc"
 	desc = "A technological marvel, supposedly able to mix just the mixture you'd like to drink the moment you ask for one."
 	dispensable_reagents = list("lemon_lime","sugar","orangejuice","limejuice","sodawater","tonic","beer","kahlua","whiskey","sake","wine","vodka","gin","rum","tequilla","vermouth","cognac","ale","mead")
+	var/hackedcheck = 0
 
 /obj/structure/machinery/chem_dispenser/beer/attackby(var/obj/item/B as obj, var/mob/user as mob)
 	..()

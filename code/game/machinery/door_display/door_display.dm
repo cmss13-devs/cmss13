@@ -23,16 +23,16 @@
 
 /obj/structure/machinery/door_display/New()
 	..()
+	add_timer(CALLBACK(src, .proc/get_targets))
 
-	spawn(20)
-		for(var/obj/structure/machinery/door/D in machines)
-			if (D.id == id)
-				targets += D
+/obj/structure/machinery/door_display/proc/get_targets()
+	for(var/obj/structure/machinery/door/D in machines)
+		if (D.id == id)
+			targets += D
 
-		if(targets.len == 0)
-			stat |= BROKEN
-		update_icon()
-	return
+	if(targets.len == 0)
+		stat |= BROKEN
+	update_icon()
 
 
 // has the door power situation changed, if so update icon.
@@ -185,17 +185,20 @@
 // Research cells have flashers and shutters/pod doors.
 /obj/structure/machinery/door_display/research_cell
 	var/open_shutter = 0
+	var/has_wall_divider = FALSE
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "research"
 	maptext = ""
 	req_access = list(ACCESS_MARINE_RESEARCH)
 
-/obj/structure/machinery/door_display/research_cell/New()
+/obj/structure/machinery/door_display/research_cell/get_targets()
 	..()
-	spawn(20)
-		for(var/obj/structure/machinery/flasher/F in machines)
-			if (F.id == id)
-				targets += F
+	for(var/obj/structure/machinery/flasher/F in machines)
+		if(F.id == id)
+			targets += F
+	if(has_wall_divider)
+		for(var/turf/closed/wall/almayer/research/containment/wall/divide/W in orange(src, 8))
+			targets += W
 
 /obj/structure/machinery/door_display/research_cell/Dispose()
 	//Opening doors and shutters
@@ -220,13 +223,13 @@
 	data += "<br/>"
 
 	// Open/Close Shutter
-	if (open_shutter)
+	if(open_shutter)
 		data += "<a href='?src=\ref[src];shutter=0; open=0'>Close Shutter</a><br/>"
 	else
 		data += "<a href='?src=\ref[src];shutter=1'>Open Shutter</a><br/>"
 
 	// Open/Close Door
-	if (open_shutter)
+	if(open_shutter)
 		if (open)
 			data += "<a href='?src=\ref[src];open=0'>Close Door</a><br/>"
 		else
@@ -243,6 +246,10 @@
 
 	data += "<br/>"
 
+	//Room Divider
+	if(has_wall_divider)
+		data += "<br/><A href='?src=\ref[src];divider=1'>Containment Divider</A><br/>"
+	
 	data += "<br/><a href='?src=\ref[user];mach_close=computer'>Close Display</a>"
 	data += "</TT></BODY></HTML>"
 
@@ -252,18 +259,26 @@
 // "shutter" opens/closes the shutter.
 
 /obj/structure/machinery/door_display/research_cell/Topic(href, href_list)
-	if (!..())
+	if(!..())
 		return 0
 
-	if (href_list["fc"])
+	if(href_list["fc"])
 		for(var/obj/structure/machinery/flasher/F in targets)
 			F.flash()
+
+	if(href_list["divider"])
+		for(var/turf/closed/wall/almayer/research/containment/wall/divide/W in targets)
+			if(W.density)
+				W.open()
+			else
+				W.close()
+			playsound(loc, 'sound/machines/elevator_openclose.ogg', 25, 1)
 
 	if(href_list["shutter"])
 		open_shutter = text2num(href_list["shutter"])
 		open = text2num(href_list["open"])
 
-		if (open_shutter)
+		if(open_shutter)
 			open_shutter()
 		else
 			close_door()

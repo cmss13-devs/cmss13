@@ -13,19 +13,12 @@
 	possible_transfer_amounts = null
 	flags_atom = FPRINT
 	flags_equip_slot = SLOT_WAIST
+	matter = list("plastic" = 1250, "glass" = 250)
 	var/skilllock = 1
 	var/obj/item/reagent_container/glass/beaker/vial/mag
 	var/locked = TRUE
 
 /obj/item/reagent_container/hypospray/attackby(obj/item/B, mob/living/user)
-	if(isscrewdriver(B))
-		locked = !locked
-		playsound(loc, 'sound/items/Screwdriver2.ogg', 25, 0, 6)
-		if(locked)
-			to_chat(user, SPAN_NOTICE("You lock [src]."))
-		else
-			to_chat(user, SPAN_NOTICE("You unlock [src]."))
-		return
 	if(mag && istype(B,/obj/item/reagent_container))
 		if(B.reagents)
 			var/obj/item/reagent_container/C = B
@@ -39,6 +32,18 @@
 			B.forceMove(src)
 			mag = B
 			to_chat(user, SPAN_NOTICE("You add \the [B] to [src]."))
+
+/obj/item/reagent_container/hypospray/verb/toggle_lock()
+	set category = "Weapons"
+	set	name = "Toggle Hypo Lock"
+	set desc = "Enable/Disable the hypospray's vial lock"
+
+	locked = !locked
+	playsound(loc, 'sound/items/Screwdriver2.ogg', 25, 0, 6)
+	if(locked)
+		to_chat(usr, SPAN_NOTICE("You lock [src]."))
+	else
+		to_chat(usr, SPAN_NOTICE("You unlock [src]."))
 
 /obj/item/reagent_container/hypospray/attack_hand(mob/user as mob)
 	if(!locked && mag)

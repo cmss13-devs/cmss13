@@ -664,7 +664,7 @@
 	if(gen_tier)
 		C.gen_tier = gen_tier
 	else
-		C.gen_tier = chemical_research_data.clearance_level
+		C.gen_tier = chemical_data.clearance_level
 	C.generate_stats()
 	chemical_gen_classes_list["tau"] += C.id //Because each unique_vended should be unique, we do not save the chemclass anywhere but in the tau list
 	chemical_reagents_list[C.id] = C
@@ -691,14 +691,14 @@
 	info += "<B>ID:</B> <I>[S.name]</I><BR><BR>\n"
 	info += "<B>Database Details:</B><BR>\n"
 	if(S.chemclass >= CHEM_CLASS_ULTRA)
-		if(chemical_research_data.clearance_level >= S.gen_tier)
+		if(chemical_data.clearance_level >= S.gen_tier)
 			info += "<I>The following information relating to [S.name] is restricted with a level [S.gen_tier] clearance classification.</I><BR>"
 			info += "<font size = \"2.5\">[S.description]\n"
 			info += "<BR>Overdoses at: [S.overdose] units</font><BR>\n"
 			completed = TRUE
 		else
 			info += "CLASSIFIED:<I> Clearance level [S.gen_tier] required to read the database entry.</I><BR>\n"
-	else if(S.chemclass == CHEM_CLASS_SPECIAL && !chemical_research_data.clearance_x_access)
+	else if(S.chemclass == CHEM_CLASS_SPECIAL && !chemical_data.clearance_x_access)
 		info += "CLASSIFIED:<I> Clearance level <B>X</B> required to read the database entry.</I><BR>\n"
 	else if(S.description)
 		info += "<font size = \"2.5\">[S.description]\n"
@@ -737,7 +737,7 @@
 		completed = FALSE
 	if(!S.properties) //Safety for empty reagents
 		completed = FALSE
-	if(S.chemclass == CHEM_CLASS_SPECIAL && chemical_research_data.clearance_x_access)
+	if(S.chemclass == CHEM_CLASS_SPECIAL && chemical_data.clearance_x_access)
 		completed = TRUE
 	data = S
 

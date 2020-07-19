@@ -1,37 +1,54 @@
-var/global/datum/chemical_research_data/chemical_research_data = new /datum/chemical_research_data/
+var/global/datum/chemical_data/chemical_data = new /datum/chemical_data/
 
-/datum/chemical_research_data/
+/datum/chemical_data/
 	var/rsc_credits = 2
 	var/clearance_level = 1
 	var/clearance_x_access = FALSE
 	var/list/research_documents = list()
 	var/list/research_publications = list()
 	var/list/transmitted_data = list()
+	var/list/chemical_networks = list()
 
-/datum/chemical_research_data/proc/update_credits(var/change)
+/datum/chemical_data/proc/update_credits(var/change)
 	rsc_credits = max(0, rsc_credits + change)
 
-/datum/chemical_research_data/proc/save_document(var/obj/item/paper/research_report/R, var/document_type, var/title)
+/datum/chemical_data/proc/save_document(var/obj/item/paper/research_report/R, var/document_type, var/title)
 	if(!research_documents["[document_type]"])
 		research_documents["[document_type]"] = list()
 	var/list/new_document[0]
 	new_document["[title]"] = R
 	research_documents["[document_type]"] += new_document
 
-/datum/chemical_research_data/proc/publish_document(var/obj/item/paper/research_report/R, var/document_type, var/title)
+/datum/chemical_data/proc/publish_document(var/obj/item/paper/research_report/R, var/document_type, var/title)
 	if(!research_publications["[document_type]"])
 		research_publications["[document_type]"] = list()
 	var/list/new_document[0]
 	new_document["[title]"] = R
 	research_publications["[document_type]"] += new_document
 
-/datum/chemical_research_data/proc/unpublish_document(var/document_type, var/title)
+/datum/chemical_data/proc/unpublish_document(var/document_type, var/title)
 	if(research_publications["[document_type]"]["[title]"])
 		research_publications["[document_type]"] -= list(research_publications["[document_type]"]["[title]"])
 		return TRUE
 
+//Chem storage for various chem dispensers
+/datum/chemical_data/proc/add_chem_storage(var/obj/structure/machinery/chem_storage/C)
+	if(chemical_networks.Find(C.network))
+		return FALSE
+	else
+		chemical_networks[C.network] = C
+
+/datum/chemical_data/proc/connect_chem_storage(var/network)
+	var/obj/structure/machinery/chem_storage/C = chemical_networks[network]
+	if(!C)
+		return FALSE
+	//Make the chem storage scale with number of dispensers
+	C.max_energy += 50
+	C.energy = C.max_energy
+	return C
+
 //For research sending DeLorean mail to the WY of next round
-/datum/chemical_research_data/proc/transmit_chem_data(var/datum/reagent/R)
+/datum/chemical_data/proc/transmit_chem_data(var/datum/reagent/R)
 	if(!R || transmitted_data["[R.id]"])
 		return
 	
@@ -47,7 +64,7 @@ var/global/datum/chemical_research_data/chemical_research_data = new /datum/chem
 	return TRUE
 
 //Called after all the default chems have been initialized
-/datum/chemical_research_data/proc/initialize_saved_chem_data()
+/datum/chemical_data/proc/initialize_saved_chem_data()
 	set waitfor = 0
 	while(!SSentity_manager.ready)
 		stoplag()

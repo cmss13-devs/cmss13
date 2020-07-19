@@ -44,7 +44,7 @@ var/global/datum/controller/defcon/defcon_controller
 	if(current_defcon_level > 1)
 		current_defcon_level--
 		remaining_reward_points += DEFCON_POINT_GAIN_PER_LEVEL + (DEFCON_POINT_GAIN_PER_LEVEL * (DEFCON_MAX_LEVEL - current_defcon_level))
-		chemical_research_data.update_credits((6 - current_defcon_level)*2)
+		chemical_data.update_credits((6 - current_defcon_level)*2)
 		announce_defcon_level()
 
 /datum/controller/defcon/proc/check_defcon_level()

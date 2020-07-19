@@ -152,6 +152,7 @@
 	throw_range = 5
 	w_class = SIZE_SMALL
 	attack_verb = list("attacked", "hit", "bludgeoned")
+	matter = list("plastic" = 7500)
 
 /*
  * Predator Retractor

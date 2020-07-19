@@ -2,7 +2,7 @@
 	name = "ChemMaster 3000"
 	density = 1
 	anchored = 1
-	icon = 'icons/obj/structures/machinery/chemical_machines.dmi'
+	icon = 'icons/obj/structures/machinery/science_machines.dmi'
 	icon_state = "mixer0"
 	use_power = 1
 	idle_power_usage = 20

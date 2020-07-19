@@ -21,7 +21,7 @@
 	var/list/printable = list() // data list of each printable item (for NanoUI)
 	var/list/recipes
 	var/list/categories
-	var/list/disabled_categories = list("Explosives")
+	var/list/disabled_categories = list("Explosives", "Medical", "Medical Containers")
 	var/list/components = list(
 		/obj/item/circuitboard/machine/autolathe,
 		/obj/item/stock_parts/matter_bin,
@@ -34,6 +34,7 @@
 	var/hacked = FALSE
 	var/seconds_electrified = 0
 	var/busy = FALSE
+	var/turf/make_loc
 
 	var/wires = AUTOLATHE_WIRES_UNCUT
 
@@ -48,7 +49,7 @@
 	if(isnull(recipes))
 		recipes = list()
 		categories = list()
-		for(var/R in typesof(/datum/autolathe/recipe)-/datum/autolathe/recipe-/datum/autolathe/recipe/armylathe)
+		for(var/R in typesof(/datum/autolathe/recipe)-/datum/autolathe/recipe-/datum/autolathe/recipe/armylathe-/datum/autolathe/recipe/medilathe)
 			var/datum/autolathe/recipe/recipe = new R
 			if(recipe.category in disabled_categories)
 				continue
@@ -213,10 +214,12 @@
 		var/index = text2num(href_list["make"])
 		var/multiplier = text2num(href_list["multiplier"])
 		var/datum/autolathe/recipe/making
-		var/turf/make_loc = get_step(loc, get_dir(src,usr))
 
 		if (!ishuman(usr))
 			return
+		
+		if(!initial(make_loc))
+			make_loc = get_step(loc, get_dir(src,usr))
 
 		if (index > 0 && index <= recipes.len)
 			making = recipes[index]
@@ -342,11 +345,12 @@
 	update_printable()
 
 	//Fancy autolathe animation.
-	flick("[base_state]_n",src)
+	icon_state = "[base_state]_n"
 
 	playsound(src, 'sound/machines/print.ogg', 25)
 	sleep(SECONDS_5)
 	playsound(src, 'sound/machines/print_off.ogg', 25)
+	icon_state = "[base_state]"
 
 	//Sanity check.
 	if(!making || !src) 
@@ -522,7 +526,7 @@
 	base_state = "armylathe"
 	recipes = null
 	categories = null
-	disabled_categories = list("General", "Tools", "Engineering", "Devices and Components", "Medical")
+	disabled_categories = list("General", "Tools", "Engineering", "Devices and Components", "Medical", "Medical Containers", "Surgery", "Glassware")
 	storage_capacity = list("metal" = 0, "plastic" = 0)
 	components = list(
 		/obj/item/circuitboard/machine/autolathe/armylathe,
@@ -540,5 +544,37 @@
 /obj/structure/machinery/autolathe/armylathe/attack_hand(var/mob/user)
 	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 		to_chat(user, SPAN_WARNING("You have no idea how to operate the [name]."))
-		return 0
+		return FALSE
 	. = ..()
+
+/obj/structure/machinery/autolathe/medilathe
+	name = "\improper Medilathe"
+	desc = "Storage system for a large supply of chemicals, which slowly recharges."
+	icon = 'icons/obj/structures/machinery/science_machines_64x32.dmi'
+	icon_state = "medilathe"
+	base_state = "medilathe"
+	active_power_usage = 1000
+	layer = BELOW_OBJ_LAYER
+	recipes = null
+	categories = null
+	density = 1
+	bound_x = 32
+	storage_capacity = list("plastic" = 0, "glass" = 0)
+	disabled_categories = list("General", "Tools", "Engineering", "Devices and Components", "Surgery", "Explosives")
+	make_loc = TRUE
+
+/obj/structure/machinery/autolathe/medilathe/full
+	stored_material =  list("plastic" = 40000, "glass" = 20000) //20 plastic and 10 glass sheets
+
+/obj/structure/machinery/autolathe/medilathe/attack_hand(var/mob/user)
+	if(!skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
+		to_chat(user, SPAN_WARNING("You have no idea how to operate the [name]."))
+		return FALSE
+	. = ..()
+
+/obj/structure/machinery/autolathe/medilathe/Initialize()
+	..()
+	if(dir == SOUTH || dir == EAST)
+		make_loc = get_step(get_step(loc, EAST), EAST)
+	else
+		make_loc = get_step(get_step(loc, EAST), WEST)

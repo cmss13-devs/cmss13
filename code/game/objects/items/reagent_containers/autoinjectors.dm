@@ -9,6 +9,7 @@
 	icon_state = "empty"
 	item_state = "empty"
 	flags_atom = FPRINT
+	matter = list("plastic" = 300)
 	amount_per_transfer_from_this = HIGH_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
 	volume = (HIGH_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD) * INJECTOR_USES
 	var/uses_left = 3
@@ -20,6 +21,9 @@
 		return
 	reagents.add_reagent(chemname, volume)
 	update_icon()
+
+/obj/item/reagent_container/hypospray/autoinjector/toggle_lock()
+	return
 
 /obj/item/reagent_container/hypospray/autoinjector/attack(mob/M, mob/user)
 	if(uses_left <= 0)

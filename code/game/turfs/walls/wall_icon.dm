@@ -92,9 +92,12 @@
 	if(W.type == src.type)
 		return 1
 	for(var/wb_type in blend_turfs)
+		for(var/nb_type in noblend_turfs)
+			if(istype(W, nb_type))
+				return FALSE
 		if(istype(W, wb_type))
-			return 1
-	return 0
+			return TRUE
+	return FALSE
 
 #define CORNER_NONE 0
 #define CORNER_COUNTERCLOCKWISE 1

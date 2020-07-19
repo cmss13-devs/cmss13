@@ -5,7 +5,7 @@
 /obj/structure/machinery/chem_simulator
 	name = "Synthesis Simulator"
 	desc = "This computer uses advanced algorithms to perform simulations of reagent properties, for the purpose of calculating the synthesis required to make a new variant."
-	icon = 'icons/obj/structures/machinery/chemical_machines_64x32.dmi'
+	icon = 'icons/obj/structures/machinery/science_machines_64x32.dmi'
 	icon_state = "modifier"
 	active_power_usage = 1000
 	layer = BELOW_OBJ_LAYER
@@ -71,7 +71,7 @@
 
 /obj/structure/machinery/chem_simulator/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 0)
 	var/list/data = list(
-		"rsc_credits" = chemical_research_data.rsc_credits,
+		"rsc_credits" = chemical_data.rsc_credits,
 		"target" = target,
 		"reference" = reference,
 		"mode" = mode,
@@ -245,7 +245,7 @@
 					status_bar = "UNREGISTERED CATALYSTS DETECTED"
 					return FALSE
 		if(target_property)
-			if(property_costs[target_property.name] > chemical_research_data.rsc_credits)
+			if(property_costs[target_property.name] > chemical_data.rsc_credits)
 				status_bar = "INSUFFICIENT FUNDS"
 				return FALSE
 			if(target_property.category & PROPERTY_TYPE_UNADJUSTABLE)
@@ -285,7 +285,7 @@
 	report.info += "<BR><HR><font size = \"1\"><I>This report was automatically printed by the Synthesis Simulator.<BR>The USS Almayer, [time2text(world.timeofday, "MM/DD")]/[game_year], [worldtime2text()]</I></font><BR>\n<span class=\"paper_field\"></span>"
 	playsound(loc, 'sound/machines/twobeep.ogg', 15, 1)
 	if(is_new)
-		chemical_research_data.save_document(report, "Synthesis Simulations", report.name)
+		chemical_data.save_document(report, "Synthesis Simulations", report.name)
 
 /obj/structure/machinery/chem_simulator/proc/encode_reagent(var/datum/reagent/C)
 	var/datum/reagent/O = chemical_reagents_list[C.original_id] //So make the new name based on the Original
@@ -368,7 +368,7 @@
 	if(C.overdose < 1) //to prevent chems that start at 0 OD to become un-OD-able
 		C.overdose = 1
 	simulations += C.id //Remember we've simulated this
-	chemical_research_data.update_credits(property_costs[target_property.name] * -1) //Pay
+	chemical_data.update_credits(property_costs[target_property.name] * -1) //Pay
 	//Determined rarity of new components
 	C.gen_tier = max(min(C.chemclass, CHEM_CLASS_COMMON),C.gen_tier,1)
 	if(C.chemclass == CHEM_CLASS_SPECIAL)

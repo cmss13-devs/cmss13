@@ -4,7 +4,7 @@
 	tier = 1
 	melee_damage_lower = XENO_DAMAGE_TIER_1
 	melee_damage_upper = XENO_DAMAGE_TIER_2
-	plasma_gain = XENO_PLASMA_GAIN_LOW
+	plasma_gain = XENO_PLASMA_GAIN_TIER_1
 	plasma_max = XENO_PLASMA_TIER_2
 	xeno_explosion_resistance = XENO_LOW_EXPLOSIVE_ARMOR
 	armor_deflection = XENO_NO_ARMOR

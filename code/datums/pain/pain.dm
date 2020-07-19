@@ -26,7 +26,7 @@
 #define PAIN_LEVEL_HORRIBLE			6
 
 // Time to wait between each pain level increase/decrease
-#define PAIN_UPDATE_FREQUENCY 30
+#define PAIN_UPDATE_FREQUENCY 20
 
 // Movespeed levels, how much is the pain slowing you
 #define PAIN_SPEED_VERYSLOW	4.50

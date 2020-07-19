@@ -106,10 +106,8 @@ proc/do_surgery(mob/living/carbon/M, mob/living/user, obj/item/tool)
 						multipler -= SURGERY_MULTIPLIER_LARGE
 						switch(M.pain.reduction_pain)
 							if(PAIN_REDUCTION_MEDIUM to PAIN_REDUCTION_HEAVY)
-								multipler += SURGERY_MULTIPLIER_SMALL
-							if(PAIN_REDUCTION_HEAVY to PAIN_REDUCTION_VERY_HEAVY)
 								multipler += SURGERY_MULTIPLIER_MEDIUM
-							if(PAIN_REDUCTION_VERY_HEAVY to PAIN_REDUCTION_FULL)
+							if(PAIN_REDUCTION_HEAVY to PAIN_REDUCTION_FULL)
 								multipler += SURGERY_MULTIPLIER_LARGE
 					if(istype(M.loc, /turf/open/shuttle/dropship))
 						multipler -= SURGERY_MULTIPLIER_HUGE

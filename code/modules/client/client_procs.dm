@@ -400,3 +400,18 @@
 		return
 
 	raiseEvent(src, EVENT_READ_KEY_UP, key)
+
+/client/verb/fix_swap_hand_macro()
+	set name = "Fix Swap Hand Macros"
+	set category = "OOC"
+
+	if (!prefs)
+		return
+
+	runtime_macro_remove(prefs.swap_hand_default, "default")
+	runtime_macro_insert(prefs.swap_hand_default, "default", ".SwapMobHand")
+
+	runtime_macro_remove(prefs.swap_hand_default, "hotkeymode")
+	runtime_macro_insert(prefs.swap_hand_default, "hotkeymode", ".SwapMobHand")
+
+	to_chat(src, SPAN_NOTICE("Fixed your swap hand macros!"))

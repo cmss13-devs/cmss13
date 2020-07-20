@@ -43,6 +43,7 @@ var/global/datum/chemical_data/chemical_data = new /datum/chemical_data/
 	if(!C)
 		return FALSE
 	//Make the chem storage scale with number of dispensers
+	C.recharge_rate += 5
 	C.max_energy += 50
 	C.energy = C.max_energy
 	return C

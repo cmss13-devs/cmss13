@@ -14,7 +14,10 @@
 	use_power = 1
 	idle_power_usage = 2
 	active_power_usage = 500
-	flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND|PASS_OVER_THROW_ITEM
+
+/obj/structure/machinery/gibber/initialize_pass_flags()
+	..()
+	flags_can_pass_all = SETUP_LIST_FLAGS(PASS_HIGH_OVER_ONLY, PASS_AROUND, PASS_OVER_THROW_ITEM)
 
 //auto-gibs anything that bumps into it
 /obj/structure/machinery/gibber/autogibber

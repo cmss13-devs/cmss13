@@ -10,8 +10,11 @@
 	name = "chemicals"
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "chempuff"
-	flags_pass = PASS_OVER|PASS_AROUND|PASS_UNDER|PASS_THROUGH
 	var/mob/source_user
+
+/obj/effect/decal/chempuff/initialize_pass_flags()
+	..()
+	flags_pass = SETUP_LIST_FLAGS(PASS_OVER, PASS_AROUND, PASS_UNDER, PASS_THROUGH)
 
 /obj/effect/decal/chempuff/proc/move_towards(atom/A, move_delay = 3, tiles_left = 1)
 	if(!step_towards(src, A))
@@ -70,7 +73,10 @@
 	anchored = 0
 	opacity = 0
 	unacidable = FALSE
-	flags_pass = PASS_HIGH_OVER_ONLY|PASS_AROUND
+
+/obj/effect/decal/mecha_wreckage/initialize_pass_flags()
+	..()
+	flags_pass = SETUP_LIST_FLAGS(PASS_HIGH_OVER_ONLY, PASS_AROUND)
 
 /obj/effect/decal/mecha_wreckage/ex_act(severity)
 	if(severity > EXPLOSION_THRESHOLD_MEDIUM)

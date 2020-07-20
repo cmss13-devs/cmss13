@@ -32,7 +32,6 @@
 	icon_state = "parrot_fly"
 	icon_living = "parrot_fly"
 	icon_dead = "parrot_dead"
-	flags_pass = PASS_OVER|PASS_FLAGS_CRAWLER
 	mob_size = MOB_SIZE_SMALL
 
 	speak = list("Hi","Hello!","Cracker?","BAWWWWK george mellons griffing me")
@@ -81,7 +80,6 @@
 	//Parrots are kleptomaniacs. This variable ... stores the item a parrot is holding.
 	var/obj/item/held_item = null
 
-
 /mob/living/simple_animal/parrot/Initialize()
 	..()
 	if(!ears)
@@ -95,6 +93,9 @@
 			  /mob/living/simple_animal/parrot/verb/drop_held_item_player, \
 			  /mob/living/simple_animal/parrot/proc/perch_player)
 
+/mob/living/simple_animal/parrot/initialize_pass_flags()
+	..()
+	flags_pass = SETUP_LIST_FLAGS(PASS_OVER, PASS_FLAGS_CRAWLER)
 
 /mob/living/simple_animal/parrot/death()
 	if(held_item)

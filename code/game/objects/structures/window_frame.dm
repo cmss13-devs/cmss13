@@ -15,7 +15,6 @@
 	var/reinforced = FALSE
 	var/buildstacktype = /obj/item/stack/sheet/metal
 	var/buildstackamount = 2
-	flags_can_pass_all = PASS_OVER|PASS_TYPE_CRAWLER
 	projectile_coverage = PROJECTILE_COVERAGE_MEDIUM
 
 	tiles_with = list(/turf/closed/wall)
@@ -23,6 +22,10 @@
 		/obj/structure/window/framed,
 		/obj/structure/girder,
 		/obj/structure/window_frame)
+
+/obj/structure/window_frame/initialize_pass_flags()
+	..()
+	flags_can_pass_all = SETUP_LIST_FLAGS(PASS_OVER, PASS_TYPE_CRAWLER)
 
 /obj/structure/window_frame/BlockedPassDirs(atom/movable/mover, target_dir)
 	for(var/obj/structure/S in get_turf(mover))

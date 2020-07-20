@@ -17,7 +17,6 @@
 	use_power = 1
 	idle_power_usage = 1
 	active_power_usage = 5
-	flags_can_pass_all = PASS_OVER|PASS_AROUND
 	var/strapped = 0.0
 	can_buckle = TRUE
 	buckle_lying = TRUE
@@ -41,6 +40,9 @@
 		anes_tank = null
 	. = ..()
 
+/obj/structure/machinery/optable/initialize_pass_flags()
+	..()
+	flags_can_pass_all = SETUP_LIST_FLAGS(PASS_OVER, PASS_AROUND)
 
 /obj/structure/machinery/optable/ex_act(severity)
 

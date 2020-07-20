@@ -6,7 +6,6 @@
 	density = 1
 	icon_state = "turnstile"
 	anchored = 1
-	flags_can_pass_all = PASS_OVER|PASS_THROUGH|PASS_UNDER
 	flags_atom = ON_BORDER
 	dir = 8
 	var/last_use
@@ -15,6 +14,10 @@
 /obj/structure/machinery/line_nexter/New()
 	..()
 	last_use = world.time
+
+/obj/structure/machinery/line_nexter/initialize_pass_flags()
+	..()
+	flags_can_pass_all = SETUP_LIST_FLAGS(PASS_OVER, PASS_THROUGH, PASS_UNDER)
 
 /obj/structure/machinery/line_nexter/ex_act(severity)
 	return

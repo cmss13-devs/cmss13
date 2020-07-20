@@ -7,12 +7,15 @@
 	anchored = 1
 	layer = WINDOW_LAYER
 	flags_atom = FPRINT
-	flags_can_pass_all = PASS_THROUGH|PASS_HIGH_OVER_ONLY
 	health = 50
 	var/health_max = 50
 	var/cut = 0 //Cut fences can be passed through
 	var/junction = 0 //Because everything is terrible, I'm making this a fence-level var
 	var/basestate = "fence"
+
+/obj/structure/fence/initialize_pass_flags()
+	..()
+	flags_can_pass_all = SETUP_LIST_FLAGS(PASS_THROUGH, PASS_HIGH_OVER_ONLY)
 
 //create_debris creates debris like shards and rods. This also includes the window frame for explosions
 //If an user is passed, it will create a "user smashes through the window" message. AM is the item that hits

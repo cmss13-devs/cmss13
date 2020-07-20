@@ -34,8 +34,11 @@ var/obj/structure/anti_air_cannon/almayer_aa_cannon
 	desc = "The console controlling anti air tracking systems."
 	icon_state = "ob_console"
 	dir = WEST
-	flags_can_pass_all = PASS_ALL
 	flags_atom = ON_BORDER|CONDUCT|FPRINT
+
+/obj/structure/machinery/computer/aa_console/initialize_pass_flags()
+	..()
+	flags_can_pass_all = SETUP_LIST_FLAGS(PASS_ALL)
 
 /obj/structure/machinery/computer/aa_console/ex_act()
 	return

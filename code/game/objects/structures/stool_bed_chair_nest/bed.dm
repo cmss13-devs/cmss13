@@ -16,7 +16,6 @@
 	buckle_lying = TRUE
 	throwpass = TRUE
 	debris = list(/obj/item/stack/sheet/metal)
-	flags_can_pass_all = PASS_OVER|PASS_AROUND|PASS_UNDER
 	var/buildstacktype = /obj/item/stack/sheet/metal
 	var/buildstackamount = 1
 	var/foldabletype //To fold into an item (e.g. roller bed item)
@@ -25,6 +24,10 @@
 	var/accepts_bodybag = FALSE //Whether you can buckle bodybags to this bed
 	var/base_bed_icon //Used by beds that change sprite when something is buckled to them
 	var/hit_bed_sound = 'sound/effects/metalhit.ogg' //sound player when attacked by a xeno
+
+/obj/structure/bed/initialize_pass_flags()
+	..()
+	flags_can_pass_all = SETUP_LIST_FLAGS(PASS_OVER, PASS_AROUND, PASS_UNDER)
 
 /obj/structure/bed/update_icon()
 	if(base_bed_icon)

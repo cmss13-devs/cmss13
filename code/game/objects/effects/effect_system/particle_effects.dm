@@ -7,7 +7,10 @@
 	icon = 'icons/effects/effects.dmi'
 	mouse_opacity = 0
 	unacidable = TRUE // So effect are not targeted by alien acid.
-	flags_pass = PASS_OVER|PASS_AROUND|PASS_UNDER|PASS_THROUGH|PASS_MOB_THRU
+
+/obj/effect/particle_effect/initialize_pass_flags()
+	..()
+	flags_pass = SETUP_LIST_FLAGS(PASS_OVER, PASS_AROUND, PASS_UNDER, PASS_THROUGH, PASS_MOB_THRU)
 
 	//Fire
 /obj/effect/particle_effect/fire  //Fire that ignites mobs and deletes itself after some time, but doesn't mess with atmos. Good fire flamethrowers and incendiary stuff.
@@ -52,8 +55,11 @@
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "extinguish"
 	var/life = 15.0
-	flags_pass = PASS_THROUGH|PASS_OVER|PASS_MOB_THRU|PASS_UNDER
 	mouse_opacity = 0
+
+/obj/effect/particle_effect/water/initialize_pass_flags()
+	..()
+	flags_pass = SETUP_LIST_FLAGS(PASS_THROUGH, PASS_OVER, PASS_MOB_THRU, PASS_UNDER)
 
 /obj/effect/particle_effect/water/Move(turf/newloc)
 	//var/turf/T = src.loc

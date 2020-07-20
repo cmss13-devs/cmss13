@@ -6,7 +6,10 @@
 	density = 1
 	anchored = 1
 	health = 250
-	flags_can_pass_all = PASS_HIGH_OVER_ONLY
+
+/obj/structure/showcase/initialize_pass_flags()
+	..()
+	flags_can_pass_all = SETUP_LIST_FLAGS(PASS_HIGH_OVER_ONLY)
 
 /obj/structure/showcase/bullet_act(var/obj/item/projectile/P)
 	var/damage = P.damage
@@ -146,7 +149,10 @@ obj/item/alienjar
 	desc = "A heavy box used for storing ore."
 	density = 1
 	anchored = 0
-	flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_OVER_THROW_ITEM
+
+/obj/structure/ore_box/initialize_pass_flags()
+	..()
+	flags_can_pass_all = SETUP_LIST_FLAGS(PASS_HIGH_OVER_ONLY, PASS_OVER_THROW_ITEM)
 
 /obj/structure/computer3frame
 	density = 1

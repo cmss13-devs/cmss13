@@ -33,8 +33,6 @@
 	icon = 'icons/mob/xenos_old/1x1_Xenos.dmi'
 	icon_state = "Drone Walking"
 	layer = BIG_XENO_LAYER
-	flags_pass = PASS_MOB_IS_XENO
-	flags_can_pass_all = PASS_MOB_THRU_XENO|PASS_AROUND|PASS_HIGH_OVER_ONLY
 	voice_name = "xenomorph"
 	speak_emote = list("hisses")
 	attacktext = "claws"
@@ -355,6 +353,11 @@
 		hive.hive_ui.update_all_xeno_data()
 
 	job = "Xenomorph"
+
+/mob/living/carbon/Xenomorph/initialize_pass_flags()
+	..()
+	flags_pass = SETUP_LIST_FLAGS(PASS_MOB_IS_XENO)
+	flags_can_pass_all = SETUP_LIST_FLAGS(PASS_MOB_THRU_XENO, PASS_AROUND, PASS_HIGH_OVER_ONLY)
 
 /mob/living/carbon/Xenomorph/initialize_pain()
 	pain = new /datum/pain/xeno(src)

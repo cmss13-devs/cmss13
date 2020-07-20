@@ -1,27 +1,30 @@
 #define AIRLOCK_CONTROL_RANGE 22
 
 // This code allows for airlocks to be controlled externally by setting an id_tag and comm frequency (disables ID access)
-obj/structure/machinery/door/airlock
+/obj/structure/machinery/door/airlock
 	var/id_tag
 	var/frequency
 	var/shockedby = list()
 	var/datum/radio_frequency/radio_connection
 	var/cur_command = null	//the command the door is currently attempting to complete
-	flags_can_pass_all = NO_FLAGS
 
-obj/structure/machinery/door/airlock/proc/can_radio()
+/obj/structure/machinery/door/airlock/initialize_pass_flags()
+	..()
+	flags_can_pass_all = list()
+
+/obj/structure/machinery/door/airlock/proc/can_radio()
 	if(!arePowerSystemsOn())
 		return 0
 	return 1
 
-obj/structure/machinery/door/airlock/process()
+/obj/structure/machinery/door/airlock/process()
 	..()
 	if (arePowerSystemsOn())
 		execute_current_command()
 	else
 		stop_processing()
 
-obj/structure/machinery/door/airlock/receive_signal(datum/signal/signal)
+/obj/structure/machinery/door/airlock/receive_signal(datum/signal/signal)
 	if (!arePowerSystemsOn()) return //no power
 
 	if (!can_radio()) return //no radio
@@ -34,7 +37,7 @@ obj/structure/machinery/door/airlock/receive_signal(datum/signal/signal)
 	start_processing()
 	INVOKE_ASYNC(src, .proc/execute_current_command)
 
-obj/structure/machinery/door/airlock/proc/execute_current_command()
+/obj/structure/machinery/door/airlock/proc/execute_current_command()
 	if(operating)
 		return //emagged or busy doing something else
 
@@ -50,7 +53,7 @@ obj/structure/machinery/door/airlock/proc/execute_current_command()
 		//Nothing to do, stop processing!
 		stop_processing()
 
-obj/structure/machinery/door/airlock/proc/do_command(var/command)
+/obj/structure/machinery/door/airlock/proc/do_command(var/command)
 	switch(command)
 		if("open")
 			open()
@@ -81,7 +84,7 @@ obj/structure/machinery/door/airlock/proc/do_command(var/command)
 
 	send_status()
 
-obj/structure/machinery/door/airlock/proc/command_completed(var/command)
+/obj/structure/machinery/door/airlock/proc/command_completed(var/command)
 	switch(command)
 		if("open")
 			return (!density)
@@ -103,7 +106,7 @@ obj/structure/machinery/door/airlock/proc/command_completed(var/command)
 
 	return 1	//Unknown command. Just assume it's completed.
 
-obj/structure/machinery/door/airlock/proc/send_status(var/bumped = 0)
+/obj/structure/machinery/door/airlock/proc/send_status(var/bumped = 0)
 	if(radio_connection)
 		var/datum/signal/signal = new
 		signal.transmission_method = 1 //radio signal
@@ -119,24 +122,24 @@ obj/structure/machinery/door/airlock/proc/send_status(var/bumped = 0)
 		radio_connection.post_signal(src, signal, range = AIRLOCK_CONTROL_RANGE, filter = RADIO_AIRLOCK)
 
 
-obj/structure/machinery/door/airlock/open(surpress_send)
+/obj/structure/machinery/door/airlock/open(surpress_send)
 	. = ..()
 	if(!surpress_send) send_status()
 
 
-obj/structure/machinery/door/airlock/close(surpress_send)
+/obj/structure/machinery/door/airlock/close(surpress_send)
 	. = ..()
 	if(!surpress_send) send_status()
 
 
-obj/structure/machinery/door/airlock/proc/set_frequency(new_frequency)
+/obj/structure/machinery/door/airlock/proc/set_frequency(new_frequency)
 	radio_controller.remove_object(src, frequency)
 	if(new_frequency)
 		frequency = new_frequency
 		radio_connection = radio_controller.add_object(src, frequency, RADIO_AIRLOCK)
 
 
-obj/structure/machinery/door/airlock/Initialize()
+/obj/structure/machinery/door/airlock/Initialize()
 	. = ..()
 	if(frequency)
 		set_frequency(frequency)
@@ -144,7 +147,7 @@ obj/structure/machinery/door/airlock/Initialize()
 	update_icon()
 
 
-obj/structure/machinery/door/airlock/New()
+/obj/structure/machinery/door/airlock/New()
 	..()
 
 	if(radio_controller)
@@ -154,7 +157,7 @@ obj/structure/machinery/door/airlock/New()
 
 
 
-obj/structure/machinery/airlock_sensor
+/obj/structure/machinery/airlock_sensor
 	icon = 'icons/obj/structures/machinery/airlock_machines.dmi'
 	icon_state = "airlock_sensor_off"
 	name = "airlock sensor"
@@ -173,7 +176,7 @@ obj/structure/machinery/airlock_sensor
 	var/alert = 0
 	var/previousPressure
 
-obj/structure/machinery/airlock_sensor/update_icon()
+/obj/structure/machinery/airlock_sensor/update_icon()
 	if(on)
 		if(alert)
 			icon_state = "airlock_sensor_alert"
@@ -182,7 +185,7 @@ obj/structure/machinery/airlock_sensor/update_icon()
 	else
 		icon_state = "airlock_sensor_off"
 
-obj/structure/machinery/airlock_sensor/attack_hand(mob/user)
+/obj/structure/machinery/airlock_sensor/attack_hand(mob/user)
 	var/datum/signal/signal = new
 	signal.transmission_method = 1 //radio signal
 	signal.data["tag"] = master_tag
@@ -191,7 +194,7 @@ obj/structure/machinery/airlock_sensor/attack_hand(mob/user)
 	radio_connection.post_signal(src, signal, range = AIRLOCK_CONTROL_RANGE, filter = RADIO_AIRLOCK)
 	flick("airlock_sensor_cycle", src)
 
-obj/structure/machinery/airlock_sensor/process()
+/obj/structure/machinery/airlock_sensor/process()
 	if(on)
 		var/air_pressure = return_air()
 		var/pressure = round(air_pressure,0.1)
@@ -211,29 +214,29 @@ obj/structure/machinery/airlock_sensor/process()
 
 			update_icon()
 
-obj/structure/machinery/airlock_sensor/proc/set_frequency(new_frequency)
+/obj/structure/machinery/airlock_sensor/proc/set_frequency(new_frequency)
 	radio_controller.remove_object(src, frequency)
 	frequency = new_frequency
 	radio_connection = radio_controller.add_object(src, frequency, RADIO_AIRLOCK)
 
-obj/structure/machinery/airlock_sensor/Initialize()
+/obj/structure/machinery/airlock_sensor/Initialize()
 	. = ..()
 	set_frequency(frequency)
 
-obj/structure/machinery/airlock_sensor/New()
+/obj/structure/machinery/airlock_sensor/New()
 	..()
 	if(radio_controller)
 		set_frequency(frequency)
 	start_processing()
 
 
-obj/structure/machinery/airlock_sensor/airlock_interior
+/obj/structure/machinery/airlock_sensor/airlock_interior
 	command = "cycle_interior"
 
-obj/structure/machinery/airlock_sensor/airlock_exterior
+/obj/structure/machinery/airlock_sensor/airlock_exterior
 	command = "cycle_exterior"
 
-obj/structure/machinery/access_button
+/obj/structure/machinery/access_button
 	icon = 'icons/obj/structures/machinery/airlock_machines.dmi'
 	icon_state = "access_button_standby"
 	name = "access button"
@@ -250,20 +253,20 @@ obj/structure/machinery/access_button
 	var/on = 1
 
 
-obj/structure/machinery/access_button/update_icon()
+/obj/structure/machinery/access_button/update_icon()
 	if(on)
 		icon_state = "access_button_standby"
 	else
 		icon_state = "access_button_off"
 
-obj/structure/machinery/access_button/attackby(obj/item/I as obj, mob/user as mob)
+/obj/structure/machinery/access_button/attackby(obj/item/I as obj, mob/user as mob)
 	//Swiping ID on the access button
 	if (istype(I, /obj/item/card/id))
 		attack_hand(user)
 		return
 	..()
 
-obj/structure/machinery/access_button/attack_hand(mob/user)
+/obj/structure/machinery/access_button/attack_hand(mob/user)
 	add_fingerprint(usr)
 	if(!allowed(user))
 		to_chat(user, SPAN_DANGER("Access Denied"))
@@ -278,27 +281,27 @@ obj/structure/machinery/access_button/attack_hand(mob/user)
 	flick("access_button_cycle", src)
 
 
-obj/structure/machinery/access_button/proc/set_frequency(new_frequency)
+/obj/structure/machinery/access_button/proc/set_frequency(new_frequency)
 	radio_controller.remove_object(src, frequency)
 	frequency = new_frequency
 	radio_connection = radio_controller.add_object(src, frequency, RADIO_AIRLOCK)
 
 
-obj/structure/machinery/access_button/Initialize()
+/obj/structure/machinery/access_button/Initialize()
 	. = ..()
 	set_frequency(frequency)
 
 
-obj/structure/machinery/access_button/New()
+/obj/structure/machinery/access_button/New()
 	..()
 
 	if(radio_controller)
 		set_frequency(frequency)
 
-obj/structure/machinery/access_button/airlock_interior
+/obj/structure/machinery/access_button/airlock_interior
 	frequency = 1379
 	command = "cycle_interior"
 
-obj/structure/machinery/access_button/airlock_exterior
+/obj/structure/machinery/access_button/airlock_exterior
 	frequency = 1379
 	command = "cycle_exterior"

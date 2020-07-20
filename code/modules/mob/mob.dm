@@ -47,6 +47,11 @@
 	prepare_huds()
 	..()
 
+/mob/initialize_pass_flags()
+	..()
+	flags_pass = SETUP_LIST_FLAGS(PASS_MOB_IS_OTHER)
+	flags_can_pass_all = SETUP_LIST_FLAGS(PASS_MOB_THRU_OTHER, PASS_AROUND, PASS_HIGH_OVER_ONLY)
+
 /mob/Stat()
 	if(!client)
 		return FALSE
@@ -618,29 +623,30 @@ note dizziness decrements automatically in the mob's Life() proc.
 //Updates canmove, lying and icons. Could perhaps do with a rename but I can't think of anything to describe it.
 /mob/proc/update_canmove()
 	var/laid_down = (stat || knocked_down || knocked_out || !has_legs() || resting || (status_flags & FAKEDEATH) || (pulledby && pulledby.grab_level >= GRAB_NECK))
-
+	
 	if(laid_down)
-		lying = 1
+		lying = TRUE
 		flags_atom &= ~DIRLOCK
 	else
-		lying = 0
+		lying = FALSE
 	if(buckled)
 		if(buckled.buckle_lying)
-			lying = 1
+			lying = TRUE
 			flags_atom &= ~DIRLOCK
 		else
-			lying = 0
+			lying = FALSE
 
 	canmove =  !(stunned || frozen || laid_down)
 
-	if(lying)
-		density = 0
-		drop_l_hand()
-		drop_r_hand()
-	else
-		density = 1
-
 	if(lying_prev != lying)
+		if(lying)
+			density = FALSE
+			add_temp_pass_flags(PASS_MOB_THRU)
+			drop_l_hand()
+			drop_r_hand()
+		else
+			density = TRUE
+			remove_temp_pass_flags(PASS_MOB_THRU)
 		update_transform()
 
 	if(lying)

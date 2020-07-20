@@ -11,7 +11,6 @@
 	idle_power_usage = 5
 	active_power_usage = 100
 	flags_atom = OPENCONTAINER|NOREACT
-	flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND|PASS_OVER_THROW_ITEM
 	var/operating = 0 // Is it on?
 	var/dirty = 0 // = {0..100} Does it need cleaning?
 	var/broken = 0 // ={0,1,2} How broken is it???
@@ -49,6 +48,10 @@
 		// will also allow anything using the holder item to be microwaved into
 		// impure carbon. ~Z
 		acceptable_items |= /obj/item/holder
+
+/obj/structure/machinery/initialize_pass_flags()
+	..()
+	flags_can_pass_all = SETUP_LIST_FLAGS(PASS_HIGH_OVER_ONLY, PASS_AROUND, PASS_OVER_THROW_ITEM)
 
 /*******************
 *   Item Adding

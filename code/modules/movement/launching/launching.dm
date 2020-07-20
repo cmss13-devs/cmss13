@@ -104,7 +104,7 @@
         LM.target = get_step(src, turn(dir, 180))
         LM.range = 1
         LM.speed = launched_speed
-        LM.pass_flags = PASS_UNDER|PASS_OVER
+        LM.pass_flags = SETUP_LIST_FLAGS(PASS_UNDER, PASS_OVER)
 
         launch_towards(LM)
 
@@ -113,9 +113,9 @@
     var/temp_pass_flags = pass_flags
     switch (launch_type)
         if (NORMAL_LAUNCH)
-            temp_pass_flags |= (ismob(src) ? PASS_OVER_THROW_MOB : PASS_OVER_THROW_ITEM)
+            temp_pass_flags = LIST_FLAGS_ADD(temp_pass_flags, ismob(src) ? PASS_OVER_THROW_MOB : PASS_OVER_THROW_ITEM)
         if (HIGH_LAUNCH)
-            temp_pass_flags |= PASS_HIGH_OVER
+            temp_pass_flags = LIST_FLAGS_ADD(temp_pass_flags, PASS_HIGH_OVER)
 
     var/datum/launch_metadata/LM = new()
     LM.pass_flags = temp_pass_flags

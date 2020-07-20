@@ -488,7 +488,10 @@
 	damage_cap = HEALTH_WALL_XENO_MEMBRANE
 	opacity = 0
 	alpha = 180
-	flags_can_pass_all = PASS_GLASS
+
+/turf/closed/wall/resin/membrane/initialize_pass_flags()
+	..()
+	flags_can_pass_all = SETUP_LIST_FLAGS(PASS_GLASS)
 
 //this one is only for map use
 /turf/closed/wall/resin/membrane/ondirt

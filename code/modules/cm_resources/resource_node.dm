@@ -9,7 +9,6 @@
 	unslashable = TRUE
 
 	layer = OBJ_LAYER
-	flags_can_pass_all = PASS_THROUGH|PASS_HIGH_OVER_ONLY
 
 	// Used by spawner landmarks to determine resource group
 	var/node_group
@@ -23,6 +22,10 @@
 /obj/structure/resource_node/Initialize()
 	. = ..()
 	update_icon()
+
+/obj/structure/resource_node/initialize_pass_flags()
+	..()
+	flags_can_pass_all = SETUP_LIST_FLAGS(PASS_THROUGH, PASS_HIGH_OVER_ONLY)
 
 // Sets the amount of resources this node has
 /obj/structure/resource_node/proc/activate(var/amount)

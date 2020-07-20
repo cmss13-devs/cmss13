@@ -33,7 +33,6 @@
 	knockdown = FALSE				
 	slash = FALSE					
 	freeze_self = FALSE				
-	pounce_pass_flags = PASS_MOB_THRU|PASS_OVER_THROW_MOB
 
 	var/buff_duration = 12
 	var/damage = 40
@@ -41,6 +40,9 @@
 
 	var/activated_once = FALSE
 	var/time_until_timeout = 20
+
+/datum/action/xeno_action/activable/pounce/prae_dash/initialize_pounce_pass_flags()
+	pounce_pass_flags = SETUP_LIST_FLAGS(PASS_MOB_THRU, PASS_OVER_THROW_MOB)
 
 /datum/action/xeno_action/activable/cleave
 	name = "Cleave"

@@ -8,7 +8,6 @@
 	anchored = 1
 	density = 0
 	layer = FLY_LAYER
-	flags_pass = PASS_OVER|PASS_AROUND|PASS_UNDER|PASS_THROUGH
 
 	// Vars used by vines with seed data.
 	var/age = 0
@@ -31,6 +30,10 @@
 		master.vines -= src
 		master.growth_queue -= src
 	. = ..()
+
+/obj/effect/plantsegment/initialize_pass_flags()
+	..()
+	flags_pass = SETUP_LIST_FLAGS(PASS_OVER, PASS_AROUND, PASS_UNDER, PASS_THROUGH)
 
 /obj/effect/plantsegment/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/tool/weldingtool))

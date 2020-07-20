@@ -5,7 +5,6 @@
 	layer = OBJ_LAYER
 	unacidable = FALSE
 	debris = list(/obj/item/stack/sheet/metal,/obj/item/stack/sheet/metal)
-	flags_can_pass_all = PASS_THROUGH|PASS_HIGH_OVER_ONLY
 	var/state = 0
 	var/dismantlectr = 0
 	var/buildctr = 0
@@ -14,7 +13,9 @@
 	// To store what type of wall it used to be
 	var/original
 
-
+/obj/structure/girder/initialize_pass_flags()
+	..()
+	flags_can_pass_all = SETUP_LIST_FLAGS(PASS_THROUGH, PASS_HIGH_OVER_ONLY)
 
 /obj/structure/girder/bullet_act(var/obj/item/projectile/Proj)
 	//Tasers and the like should not damage girders.

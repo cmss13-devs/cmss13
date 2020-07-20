@@ -5,11 +5,14 @@
 	icon_state = "bat"
 	icon_living = "bat"
 	icon_dead = "bat_dead"
-	flags_pass = PASS_OVER|PASS_FLAGS_CRAWLER
 	mob_size = MOB_SIZE_SMALL
 	speak = list("screech")
 	speak_emote = list("screeches")
 	emote_hear = list("screeches")
+
+/mob/living/simple_animal/bat/initialize_pass_flags()
+	..()
+	flags_pass = SETUP_LIST_FLAGS(PASS_OVER, PASS_FLAGS_CRAWLER)
 
 /mob/living/simple_animal/bat/Life()
 	. = ..()

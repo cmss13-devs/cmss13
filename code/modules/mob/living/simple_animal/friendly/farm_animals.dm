@@ -174,13 +174,16 @@
 	attacktext = "kicks"
 	health = 1
 	var/amount_grown = 0
-	flags_pass = PASS_UNDER
 	mob_size = MOB_SIZE_SMALL
 
 /mob/living/simple_animal/chick/New()
 	..()
 	pixel_x = rand(-6, 6)
 	pixel_y = rand(0, 10)
+
+/mob/living/simple_animal/chick/initialize_pass_flags()
+	..()
+	flags_pass = SETUP_LIST_FLAGS(PASS_UNDER)
 
 /mob/living/simple_animal/chick/Life()
 	. =..()
@@ -216,7 +219,6 @@ var/global/chicken_count = 0
 	health = 10
 	var/eggsleft = 0
 	var/body_color
-	flags_pass = PASS_UNDER
 	mob_size = MOB_SIZE_SMALL
 
 /mob/living/simple_animal/chicken/New()
@@ -229,6 +231,10 @@ var/global/chicken_count = 0
 	pixel_x = rand(-6, 6)
 	pixel_y = rand(0, 10)
 	chicken_count += 1
+
+/mob/living/simple_animal/chicken/initialize_pass_flags()
+	..()
+	flags_pass = SETUP_LIST_FLAGS(PASS_UNDER)
 
 /mob/living/simple_animal/chicken/death()
 	..()

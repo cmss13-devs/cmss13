@@ -7,7 +7,6 @@
 	use_power = 1
 	idle_power_usage = 50
 	active_power_usage = 50
-	flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND|PASS_OVER_THROW_ITEM
 	var/mob/living/occupant = null
 	var/max_internal_charge = 15000 		// Two charged borgs in a row with default cell
 	var/current_internal_charge = 15000 	// Starts charged, to prevent power surges on round start
@@ -18,12 +17,14 @@
 	unacidable = TRUE
 	can_buckle = TRUE
 
-
-
 /obj/structure/machinery/recharge_station/New()
 	..()
 	build_icon()
 	update_icon()
+
+/obj/structure/machinery/recharge_station/initialize_pass_flags()
+	..()
+	flags_can_pass_all = SETUP_LIST_FLAGS(PASS_HIGH_OVER_ONLY, PASS_AROUND, PASS_OVER_THROW_ITEM)
 
 /obj/structure/machinery/recharge_station/process()
 	if(stat & (BROKEN))

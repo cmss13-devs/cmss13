@@ -25,7 +25,10 @@
 	name = "beam"
 	unacidable = TRUE//Just to be sure.
 	var/def_zone
-	flags_pass = PASS_OVER|PASS_THROUGH
+
+/obj/effect/beam/initialize_pass_flags()
+	..()
+	flags_pass = SETUP_LIST_FLAGS(PASS_OVER, PASS_THROUGH)
 
 
 /obj/effect/begin

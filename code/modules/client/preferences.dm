@@ -1604,8 +1604,10 @@ var/const/MAX_SAVE_SLOTS = 10
 /datum/preferences/proc/set_key_buf(var/key)
 	key_buf = ""
 
+	var/key_upper = uppertext(key)
+
 	for (var/mod in key_mod_buf)
-		if (mod == key)
+		if (mod == key_upper)
 			continue
 		key_buf += "[mod]+"
 

@@ -133,5 +133,5 @@
 	cade.dir = user.dir
 	cade.health = health
 	cade.maxhealth = maxhealth
-	cade.flags_can_pass_front &= ~(PASS_OVER_THROW_MOB)
+	cade.flags_can_pass_front = LIST_FLAGS_REMOVE(cade.flags_can_pass_front, PASS_OVER_THROW_MOB)
 	qdel(src)

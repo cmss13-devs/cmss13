@@ -20,7 +20,6 @@
 	throwpass = 1	//You can throw objects over this, despite it's density.")
 	climbable = 1
 	breakable = 1
-	flags_can_pass_all = PASS_OVER|PASS_AROUND|PASS_UNDER|PASS_TYPE_CRAWLER
 	parts = /obj/item/frame/table
 	debris = list(/obj/item/frame/table)
 
@@ -33,6 +32,10 @@
 	projectile_coverage = 20 //maximum chance of blocking a projectile
 	var/flipped_projectile_coverage = PROJECTILE_COVERAGE_HIGH
 	var/upright_projectile_coverage = PROJECTILE_COVERAGE_LOW
+
+/obj/structure/table/initialize_pass_flags()
+	..()
+	flags_can_pass_all = SETUP_LIST_FLAGS(PASS_OVER, PASS_AROUND, PASS_UNDER, PASS_TYPE_CRAWLER, PASS_CRUSHER_CHARGE)
 
 /obj/structure/table/destroy(deconstruct)
 	if(deconstruct)
@@ -434,7 +437,7 @@
 	if(dir != NORTH)
 		layer = FLY_LAYER
 	flipped = 1
-	flags_can_pass_all &= ~PASS_UNDER
+	flags_can_pass_all = LIST_FLAGS_REMOVE(flags_can_pass_all, PASS_UNDER)
 	flags_atom |= ON_BORDER
 	for(var/D in list(turn(direction, 90), turn(direction, -90)))
 		var/obj/structure/table/T = locate() in get_step(src,D)
@@ -454,7 +457,7 @@
 	layer = initial(layer)
 	flipped = 0
 	climbable = initial(climbable)
-	flags_can_pass_all |= PASS_UNDER
+	flags_can_pass_all = LIST_FLAGS_ADD(flags_can_pass_all, PASS_UNDER)
 	flags_atom &= ~ON_BORDER
 	for(var/D in list(turn(dir, 90), turn(dir, -90)))
 		var/obj/structure/table/T = locate() in get_step(src.loc,D)
@@ -574,9 +577,12 @@
 	throwpass = 1	//You can throw objects over this, despite it's density.
 	breakable = 1
 	climbable = 1
-	flags_can_pass_all = PASS_OVER|PASS_AROUND|PASS_UNDER|PASS_THROUGH
 	parts = /obj/item/frame/rack
 	debris = list(/obj/item/frame/rack)
+
+/obj/structure/rack/initialize_pass_flags()
+	..()
+	flags_can_pass_all = SETUP_LIST_FLAGS(PASS_OVER, PASS_AROUND, PASS_UNDER, PASS_THROUGH, PASS_CRUSHER_CHARGE)
 
 /obj/structure/rack/BlockedPassDirs(atom/movable/mover, target_dir)
 	for(var/obj/structure/S in get_turf(mover))

@@ -13,17 +13,17 @@
 	var/last_bumped = 0
 
 	// Flags for what an atom can pass through
-	var/flags_pass = NO_FLAGS
-	var/flags_pass_temp = NO_FLAGS
+	var/list/flags_pass
+	var/list/flags_pass_temp
 	var/list/temp_flag_counter
 
 	// Flags for what can pass through an atom
-	var/flags_can_pass_all = NO_FLAGS // Use for objects that are not ON_BORDER or for general pass characteristics of an atom
-	var/flags_can_pass_front = NO_FLAGS // Relevant mainly for ON_BORDER atoms with the BlockedPassDirs() proc
-	var/flags_can_pass_behind = NO_FLAGS // Relevant mainly for ON_BORDER atoms with the BlockedExitDirs() proc
-	var/flags_can_pass_all_temp = NO_FLAGS
-	var/flags_can_pass_front_temp = NO_FLAGS
-	var/flags_can_pass_behind_temp = NO_FLAGS
+	var/list/flags_can_pass_all // Use for objects that are not ON_BORDER or for general pass characteristics of an atom
+	var/list/flags_can_pass_front // Relevant mainly for ON_BORDER atoms with the BlockedPassDirs() proc
+	var/list/flags_can_pass_behind // Relevant mainly for ON_BORDER atoms with the BlockedExitDirs() proc
+	var/list/flags_can_pass_all_temp
+	var/list/flags_can_pass_front_temp
+	var/list/flags_can_pass_behind_temp
 
 	var/flags_barrier = NO_FLAGS
 	var/throwpass = 0
@@ -118,55 +118,6 @@ directive is properly returned.
 
 /atom/proc/on_reagent_change()
 	return
-
-/atom/proc/Collided(atom/movable/AM)
-	return
-
-/atom/Cross(atom/movable/AM)
-	return TRUE
-
-/atom/Exit(atom/movable/AM)
-	return TRUE
-
-/*
- *	Checks whether an atom can pass through the calling atom into its target turf.
- *	Returns the blocking direction.
- *		If the atom's movement is not blocked, returns 0.
- *		If the object is completely solid, returns ALL
- */
-/atom/proc/BlockedPassDirs(atom/movable/mover, target_dir)
-	var/reverse_dir = REVERSE_DIR(dir)
-	var/flags_can_pass = flags_can_pass_all|flags_can_pass_all_temp|flags_can_pass_front|flags_can_pass_front_temp
-	var/mover_flags_pass = mover.flags_pass|mover.flags_pass_temp
-
-	if (!density || flags_can_pass & mover_flags_pass)
-		return NO_BLOCKED_MOVEMENT
-
-	if (flags_atom & ON_BORDER)
-		if (!(target_dir & reverse_dir))
-			return NO_BLOCKED_MOVEMENT
-		
-		// This is to properly handle diagonal movement (a cade to your NE facing west when you are trying to move NE should block for north instead of east)
-		if (target_dir & (NORTH|SOUTH) && target_dir & (EAST|WEST))
-			return target_dir - (target_dir & reverse_dir)
-		return target_dir & reverse_dir
-	else
-		return BLOCKED_MOVEMENT
-
-/*
- *	Checks whether an atom can leave its current turf through the calling atom.
- *	Returns the blocking direction.
- *		If the atom's movement is not blocked, returns 0 (no directions)
- *		If the object is completely solid, returns all directions
- */
-/atom/proc/BlockedExitDirs(atom/movable/mover, target_dir)
-	var/flags_can_pass = flags_can_pass_all|flags_can_pass_all_temp|flags_can_pass_behind|flags_can_pass_behind_temp
-	var/mover_flags_pass = mover.flags_pass|mover.flags_pass_temp
-
-	if(flags_atom & ON_BORDER && density && !(flags_can_pass & mover_flags_pass))
-		return target_dir & dir
-
-	return NO_BLOCKED_MOVEMENT
 
 // Convenience proc to see if a container is open for chemistry handling
 // returns true if open
@@ -445,6 +396,8 @@ Parameters are passed from New.
 		CRASH("Warning: [src]([type]) initialized multiple times!")
 	flags_atom |= INITIALIZED
 
+	initialize_pass_flags()
+
 	return INITIALIZE_HINT_NORMAL
 
 //called if Initialize returns INITIALIZE_HINT_LATELOAD
@@ -484,31 +437,36 @@ Parameters are passed from New.
 		qdel(W)
 
 // Movement
-/atom/proc/add_temp_pass_flags(var/flags)
+/atom/proc/add_temp_pass_flags(...)
 	if (isnull(temp_flag_counter))
 		temp_flag_counter = list()
+
+	var/list/flags = SETUP_LIST_FLAGS(args)
 	 
-	for (var/flag in pass_flags_list)
-		if (!(flags & flag))
-			continue
+	for (var/flag in flags)
 		var/flag_str = "[flag]"
 		if (temp_flag_counter[flag_str])
 			temp_flag_counter[flag_str] += 1
 		else
 			temp_flag_counter[flag_str] = 1
-			flags_pass_temp |= flag
+			if (isnull(flags_pass_temp))
+				flags_pass_temp = list()
+			flags_pass_temp = LIST_FLAGS_ADD(flags_pass_temp, flag)
 
-/atom/proc/remove_temp_pass_flags(var/flags)
+/atom/proc/remove_temp_pass_flags(...)
 	if (isnull(temp_flag_counter))
-		temp_flag_counter = list()
 		return
+
+	var/list/flags = SETUP_LIST_FLAGS(args)
 	
-	for (var/flag in pass_flags_list)
-		if (!(flags & flag))
-			continue
+	for (var/flag in flags)
 		var/flag_str = "[flag]"
 		if (temp_flag_counter[flag_str])
 			temp_flag_counter[flag_str] -= 1
 			if (temp_flag_counter[flag_str] == 0)
 				temp_flag_counter -= flag_str
-				flags_pass_temp &= ~flag
+				flags_pass_temp = LIST_FLAGS_REMOVE(flags_pass_temp, flag)
+
+// This proc is for initializing pass flags (allows for inheriting pass flags and list-based pass flags)
+/atom/proc/initialize_pass_flags()
+	return

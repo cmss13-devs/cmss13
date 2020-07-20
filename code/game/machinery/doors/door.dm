@@ -9,7 +9,6 @@
 	density = 1
 	throwpass = 0
 	layer = DOOR_OPEN_LAYER
-	flags_can_pass_all = NO_FLAGS
 	var/open_layer = DOOR_OPEN_LAYER
 	var/closed_layer = DOOR_CLOSED_LAYER
 	var/id = ""
@@ -31,22 +30,26 @@
 	dir = EAST
 	var/width = 1
 
-	New()
-		. = ..()
-		if(density)
-			layer = closed_layer
-			update_flags_heat_protection(get_turf(src))
-		else
-			layer = open_layer
+/obj/structure/machinery/door/New()
+	. = ..()
+	if(density)
+		layer = closed_layer
+		update_flags_heat_protection(get_turf(src))
+	else
+		layer = open_layer
 
-		handle_multidoor()
+	handle_multidoor()
 
-	Dispose()
-		. = ..()
-		if(filler && width > 1)
-			filler.SetOpacity(0)// Ehh... let's hope there are no walls there. Must fix this
-			filler = null
-		density = 0
+/obj/structure/machinery/door/Dispose()
+	. = ..()
+	if(filler && width > 1)
+		filler.SetOpacity(0)// Ehh... let's hope there are no walls there. Must fix this
+		filler = null
+	density = 0
+
+/obj/structure/machinery/door/initialize_pass_flags()
+	..()
+	flags_can_pass_all = list()
 
 /obj/structure/machinery/door/proc/handle_multidoor()
 	if(width > 1)

@@ -9,7 +9,6 @@
 	speak_emote = list("squeeks","squeeks","squiks")
 	emote_hear = list("squeeks","squeaks","squiks")
 	emote_see = list("runs in a circle", "shakes", "scritches at something")
-	flags_pass = PASS_FLAGS_CRAWLER
 	mob_size = MOB_SIZE_SMALL
 	speak_chance = 1
 	turns_per_move = 5
@@ -65,6 +64,10 @@
 	icon_dead = "mouse_[body_color]_dead"
 	if(!desc)
 		desc = "It's a small [body_color] rodent, often seen hiding in maintenance areas and making a nuisance of itself."
+
+/mob/living/simple_animal/mouse/initialize_pass_flags()
+	..()
+	flags_pass = SETUP_LIST_FLAGS(PASS_FLAGS_CRAWLER)
 
 /mob/living/simple_animal/mouse/proc/splat()
 	src.health = 0

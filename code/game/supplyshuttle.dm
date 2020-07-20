@@ -49,11 +49,14 @@ var/datum/controller/supply/supply_controller = new()
 	density = 0
 	anchored = 1
 	layer = MOB_LAYER
-	flags_can_pass_all = PASS_UNDER|PASS_THROUGH
 	var/collide_message_busy	// Timer to stop collision spam
 
+/obj/structure/plasticflaps/initialize_pass_flags()
+	..()
+	flags_can_pass_all = SETUP_LIST_FLAGS(PASS_UNDER, PASS_THROUGH)
+
 /obj/structure/plasticflaps/BlockedPassDirs(atom/movable/mover, target_dir)
-	if(mover.flags_pass & flags_can_pass_all || !iscarbon(mover))
+	if(LIST_FLAGS_COMPARE(mover.flags_pass, flags_can_pass_all) || !iscarbon(mover))
 		return NO_BLOCKED_MOVEMENT
 
 	return BLOCKED_MOVEMENT

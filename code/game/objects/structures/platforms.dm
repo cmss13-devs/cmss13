@@ -13,7 +13,6 @@
 	layer = OBJ_LAYER
 	climb_delay = 20 //Leaping a barricade is universally much faster than clumsily climbing on a table or rack
 	breakable = FALSE
-	flags_can_pass_all = PASS_OVER
 	flags_atom = ON_BORDER
 	unacidable = TRUE
 
@@ -33,6 +32,10 @@
 			layer = ABOVE_MOB_LAYER+0.1
 	overlays += I
 	..()
+
+/obj/structure/platform/initialize_pass_flags()
+	..()
+	flags_can_pass_all = SETUP_LIST_FLAGS(PASS_OVER)
 
 /obj/structure/platform/BlockedPassDirs(atom/movable/mover, target_dir)
 	var/obj/structure/S = locate(/obj/structure) in get_turf(mover)
@@ -54,7 +57,6 @@ obj/structure/platform_decoration
 	throwpass = TRUE
 	layer = 3.5
 	breakable = FALSE
-	flags_can_pass_all = PASS_OVER
 	flags_atom = ON_BORDER
 	unacidable = TRUE
 
@@ -69,6 +71,10 @@ obj/structure/platform_decoration
 		if (SOUTHWEST)
 			layer = ABOVE_MOB_LAYER+0.1
 	.. ()
+
+/obj/structure/platform_decoration/initialize_pass_flags()
+	..()
+	flags_can_pass_all = SETUP_LIST_FLAGS(PASS_OVER)
 
 /obj/structure/platform/ex_act()
 	return

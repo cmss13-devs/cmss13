@@ -252,8 +252,8 @@
 /obj/structure/barricade/plasteel/wired/New()
 	can_wire = FALSE
 	is_wired = TRUE
-	flags_can_pass_front &= ~(PASS_OVER_THROW_MOB)
-	flags_can_pass_behind &= ~(PASS_OVER_THROW_MOB)
+	flags_can_pass_front = LIST_FLAGS_REMOVE(flags_can_pass_front, PASS_OVER_THROW_MOB)
+	flags_can_pass_behind = LIST_FLAGS_REMOVE(flags_can_pass_behind, PASS_OVER_THROW_MOB)
 	climbable = FALSE
 	update_icon()
 	. = ..()

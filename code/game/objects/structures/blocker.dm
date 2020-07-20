@@ -1,11 +1,14 @@
 // Impenetrable and invincible barriers
 /obj/structure/blocker
 	name = "blocker"
-	flags_can_pass_all = NO_FLAGS
 	density = TRUE
 	anchored = TRUE
 	unacidable = TRUE
 	unslashable = TRUE
+
+/obj/structure/blocker/initialize_pass_flags()
+	..()
+	flags_can_pass_all = list()
 
 /obj/structure/blocker/ex_act(severity)
 	return

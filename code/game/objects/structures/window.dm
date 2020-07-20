@@ -6,7 +6,6 @@
 	density = 1
 	anchored = 1
 	layer = WINDOW_LAYER
-	flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_GLASS
 	flags_atom = ON_BORDER|FPRINT
 	health = 15
 	var/state = 2
@@ -35,14 +34,15 @@
 		debris += shardtype
 		update_nearby_icons()
 
-
-
 /obj/structure/window/Dispose()
 	density = 0
 	if(is_full_window())
 		update_nearby_icons()
 	. = ..()
 
+/obj/structure/window/initialize_pass_flags()
+	..()
+	flags_can_pass_all = SETUP_LIST_FLAGS(PASS_HIGH_OVER_ONLY, PASS_GLASS)
 
 /obj/structure/window/proc/set_constructed_window(start_dir)
 	state = 0
@@ -444,7 +444,6 @@
 	name = "theoretical window"
 	layer = TABLE_LAYER
 	static_frame = 1
-	flags_can_pass_all = PASS_GLASS
 	flags_atom = FPRINT
 	var/window_frame //For perspective windows,so the window frame doesn't magically dissapear
 	var/list/tiles_special = list(/obj/structure/machinery/door/airlock,
@@ -463,6 +462,10 @@
 	for(var/obj/effect/alien/weeds/weedwall/window/WW in loc)
 		qdel(WW)
 	. = ..()
+
+/obj/structure/window/framed/initialize_pass_flags()
+	..()
+	flags_can_pass_all = SETUP_LIST_FLAGS(PASS_GLASS)
 
 /obj/structure/window/framed/update_nearby_icons()
 	relativewall_neighbours()

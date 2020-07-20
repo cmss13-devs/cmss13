@@ -109,11 +109,11 @@
 	density = 1
 	layer = WINDOW_LAYER
 	anchored = 1.0
-	flags_can_pass_all = PASS_GLASS
 	flags_atom = ON_BORDER
 
-
-
+/obj/structure/holowindow/initialize_pass_flags()
+	..()
+	flags_can_pass_all = SETUP_LIST_FLAGS(PASS_GLASS)
 
 //BASKETBALL OBJECTS
 

@@ -22,7 +22,6 @@
 	var/last_sound = 0
 	active_power_usage = 3500 //The pneumatic pump power. 3 HP ~ 2200W
 	idle_power_usage = 100
-	flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND
 	var/disposal_pressure = 0
 
 //Create a new disposal, find the attached trunk (if present) and init gas resvr.
@@ -38,6 +37,10 @@
 
 		update()
 		start_processing()
+
+/obj/structure/machinery/disposal/initialize_pass_flags()
+	..()
+	flags_can_pass_all = SETUP_LIST_FLAGS(PASS_HIGH_OVER_ONLY, PASS_AROUND)
 
 //Attack by item places it in to disposal
 /obj/structure/machinery/disposal/attackby(var/obj/item/I, var/mob/user)

@@ -29,7 +29,6 @@
 	icon_size = 64
 	layer = MOB_LAYER
 	plasma_types = list(PLASMA_CATECHOLAMINE)
-	flags_pass = PASS_FLAGS_CRAWLER
 	tier = 1
 	pixel_x = -16  //Needed for 2x2
 	old_x = -16
@@ -49,3 +48,7 @@
 		/mob/living/carbon/Xenomorph/proc/vent_crawl,
 		)
 	mutation_type = RUNNER_NORMAL
+
+/mob/living/carbon/Xenomorph/Runner/initialize_pass_flags()
+	..()
+	flags_pass = SETUP_LIST_FLAGS(PASS_FLAGS_CRAWLER)

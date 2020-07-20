@@ -16,8 +16,7 @@
 							  //then open it in a populated area to crash clients.
 	var/open_sound = 'sound/handling/hinge_squeak1.ogg'
 	var/close_sound = 'sound/handling/hinge_squeak2.ogg'
-	flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND
-
+	
 	var/store_items = TRUE
 	var/store_mobs = TRUE
 
@@ -32,6 +31,10 @@
 			if(I.density || I.anchored || I == src) 
 				continue
 			I.loc = src
+
+/obj/structure/closet/initialize_pass_flags()
+	..()
+	flags_can_pass_all = SETUP_LIST_FLAGS(PASS_HIGH_OVER_ONLY, PASS_AROUND)
 
 /obj/structure/closet/alter_health()
 	return get_turf(src)

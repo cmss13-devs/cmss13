@@ -3,7 +3,6 @@
 	icon = 'icons/obj/structures/doors/railing.dmi'
 	icon_state = "railing1"
 	use_power = 0
-	flags_can_pass_all = PASS_OVER & ~(PASS_OVER_FIRE)
 	flags_atom = ON_BORDER
 	opacity = 0
 	unslashable = TRUE
@@ -20,6 +19,10 @@
 	switch(dir)
 		if(SOUTH) layer = closed_layer_south
 		else layer = closed_layer
+
+/obj/structure/machinery/door/poddoor/railing/initialize_pass_flags()
+	..()
+	flags_can_pass_all = SETUP_LIST_FLAGS(LIST_FLAGS_REMOVE(PASS_OVER, PASS_OVER_FIRE), PASS_CRUSHER_CHARGE)
 
 /obj/structure/machinery/door/poddoor/railing/open()
 	if (src.operating == 1) //doors can still open when emag-disabled

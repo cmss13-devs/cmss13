@@ -9,7 +9,6 @@
 	active_power_usage = 300
 	projectile_coverage = PROJECTILE_COVERAGE_LOW
 	unslashable = TRUE
-	flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND|PASS_OVER_THROW_ITEM
 	var/circuit = null //The path to the circuit board type. If circuit==null, the computer can't be disassembled.
 	var/processing = FALSE //Set to true if computer needs to do /process()
 	var/exproof = 0
@@ -19,10 +18,13 @@
 	if(processing)
 		start_processing()
 
-
 /obj/structure/machinery/computer/Initialize()
 	. = ..()
 	power_change()
+
+/obj/structure/machinery/computer/initialize_pass_flags()
+	..()
+	flags_can_pass_all = SETUP_LIST_FLAGS(PASS_HIGH_OVER_ONLY, PASS_AROUND, PASS_OVER_THROW_ITEM)
 
 /obj/structure/machinery/computer/process()
 	if(inoperable())

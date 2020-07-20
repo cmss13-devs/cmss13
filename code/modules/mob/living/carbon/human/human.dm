@@ -20,6 +20,11 @@
 	if(map_tag == MAP_WHISKEY_OUTPOST)
 		hardcore = TRUE //For WO disposing of corpses
 
+/mob/living/carbon/human/initialize_pass_flags()
+	..()
+	flags_pass = SETUP_LIST_FLAGS(PASS_MOB_IS_HUMAN)
+	flags_can_pass_all = SETUP_LIST_FLAGS(PASS_MOB_THRU_HUMAN, PASS_AROUND, PASS_HIGH_OVER_ONLY)
+
 /mob/living/carbon/human/prepare_huds()
 	..()
 	//updating all the mob's hud images

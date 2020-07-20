@@ -4,13 +4,17 @@
 	icon = 'icons/obj/structures/machinery/atmos.dmi'
 	icon_state = "pscrubber:0"
 	density = 1
-	flags_can_pass_all = PASS_OVER|PASS_AROUND|PASS_UNDER
+	
 
 	var/on = 0
 
 /obj/structure/machinery/portable_atmospherics/powered/scrubber/New()
 	..()
 	cell = new/obj/item/cell(src)
+
+/obj/structure/machinery/portable_atmospherics/powered/scrubber/initialize_pass_flags()
+	..()
+	flags_can_pass_all = SETUP_LIST_FLAGS(PASS_OVER, PASS_AROUND, PASS_UNDER)
 
 /obj/structure/machinery/portable_atmospherics/powered/scrubber/emp_act(severity)
 	if(inoperable())

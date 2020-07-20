@@ -9,8 +9,11 @@
 	density = TRUE
 	anchored = FALSE
 	debris = list(/obj/item/stack/sheet/metal)
-	flags_can_pass_all = PASS_OVER|PASS_AROUND|PASS_UNDER
 	var/amount = 0
+
+/obj/structure/minecart/initialize_pass_flags()
+	..()
+	flags_can_pass_all = SETUP_LIST_FLAGS(PASS_OVER, PASS_AROUND, PASS_UNDER)
 
 /obj/structure/minecart/update_icon()
 	overlays.Cut()

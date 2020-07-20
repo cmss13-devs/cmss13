@@ -9,7 +9,6 @@
 	unslashable = TRUE
 	health = 0
 	flags_atom = OPENCONTAINER
-	flags_can_pass_all = PASS_OVER|PASS_AROUND|PASS_TYPE_CRAWLER
 	throwpass = 1
 	layer = BELOW_OBJ_LAYER
 
@@ -143,6 +142,10 @@
 	create_reagents(200)
 	update_icon()
 	start_processing()
+
+/obj/structure/machinery/portable_atmospherics/hydroponics/initialize_pass_flags()
+	..()
+	flags_can_pass_all = SETUP_LIST_FLAGS(PASS_OVER, PASS_AROUND, PASS_TYPE_CRAWLER)
 
 /obj/structure/machinery/portable_atmospherics/hydroponics/bullet_act(var/obj/item/projectile/Proj)
 

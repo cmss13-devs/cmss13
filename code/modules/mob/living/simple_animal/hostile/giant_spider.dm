@@ -31,7 +31,6 @@
 	var/poison_type = "toxin"
 	faction = "spiders"
 	var/busy = 0
-	flags_pass = PASS_FLAGS_CRAWLER
 	move_to_delay = 6
 	speed = 3
 
@@ -62,6 +61,10 @@
 	melee_damage_upper = 20
 	poison_per_bite = 5
 	move_to_delay = 4
+
+/mob/living/simple_animal/hostile/giant_spider/initialize_pass_flags()
+	..()
+	flags_pass = SETUP_LIST_FLAGS(PASS_FLAGS_CRAWLER)
 
 /mob/living/simple_animal/hostile/giant_spider/AttackingTarget()
 	..()

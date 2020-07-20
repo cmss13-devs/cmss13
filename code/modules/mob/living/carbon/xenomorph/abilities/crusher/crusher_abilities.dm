@@ -12,7 +12,6 @@
 
 	// Config options
 	distance = 9
-	pounce_pass_flags = NO_FLAGS
 
 	knockdown = TRUE
 	knockdown_duration = 2
@@ -32,6 +31,8 @@
 	. = ..()
 	not_reducing_objects = typesof(/obj/structure/barricade) + typesof(/obj/structure/machinery/defenses)
 
+/datum/action/xeno_action/activable/pounce/crusher_charge/initialize_pounce_pass_flags()
+	pounce_pass_flags = SETUP_LIST_FLAGS(PASS_CRUSHER_CHARGE)
 
 /datum/action/xeno_action/onclick/crusher_stomp
 	name = "Stomp"

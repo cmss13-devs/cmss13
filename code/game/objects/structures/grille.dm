@@ -7,18 +7,19 @@
 	anchored = 1
 	debris = list(/obj/item/stack/rods)
 	flags_atom = FPRINT|CONDUCT
-	flags_can_pass_all = PASS_THROUGH|PASS_BUILDING_ONLY
 	layer = OBJ_LAYER
 	health = 10
 	var/destroyed = 0
 
+/obj/structure/grille/initialize_pass_flags()
+	..()
+	flags_can_pass_all = SETUP_LIST_FLAGS(PASS_THROUGH, PASS_BUILDING_ONLY)
 
 /obj/structure/grille/fence/
 	var/width = 3
 	health = 50
 
 /obj/structure/grille/fence/New()
-
 	..()
 
 	if(width > 1)

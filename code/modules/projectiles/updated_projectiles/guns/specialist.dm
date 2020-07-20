@@ -895,7 +895,7 @@
 
 	var/pass_flags = NO_FLAGS
 	if(is_lobbing)
-		pass_flags |= PASS_MOB_THRU|PASS_HIGH_OVER
+		pass_flags = LIST_FLAGS_ADD(pass_flags, PASS_MOB_THRU, PASS_HIGH_OVER)
 
 	F.throw_atom(target, 20, SPEED_VERY_FAST, user, null, NORMAL_LAUNCH, pass_flags)
 	if(F && F.loc) //Apparently it can get deleted before the next thing takes place, so it runtimes.

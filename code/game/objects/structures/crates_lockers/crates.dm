@@ -12,8 +12,11 @@
 	anchored = 0
 	throwpass = 1 //prevents moving crates by hurling things at them
 	store_mobs = FALSE
-	flags_can_pass_all = PASS_OVER|PASS_AROUND
 	var/rigged = 0
+
+/obj/structure/closet/crate/initialize_pass_flags()
+	..()
+	flags_can_pass_all = SETUP_LIST_FLAGS(PASS_OVER, PASS_AROUND)
 
 /obj/structure/closet/crate/can_open()
 	return 1

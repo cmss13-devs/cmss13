@@ -446,7 +446,6 @@
 	icon = 'icons/effects/fire.dmi'
 	icon_state = "red_2"
 	layer = BELOW_OBJ_LAYER
-	flags_pass = PASS_FLAGS_FLAME
 	var/firelevel = 12 //Tracks how much "fire" there is. Basically the timer of how long the fire burns
 	var/burnlevel = 10 //Tracks how HOT the fire is. This is basically the heat level of the fire and determines the temperature.
 	var/flame_icon = "red"
@@ -625,12 +624,14 @@
 			var/mob/SM = weapon_source_mob
 			SM.track_shot_hit(weapon_source)
 
-
 /obj/flamer_fire/Dispose()
 	SetLuminosity(0)
 	processing_objects.Remove(src)
 	. = ..()
 
+/obj/flamer_fire/initialize_pass_flags()
+	..()
+	flags_pass = SETUP_LIST_FLAGS(PASS_FLAGS_FLAME)
 
 /obj/flamer_fire/Crossed(mob/living/M) //Only way to get it to reliable do it when you walk into it.
 	if(!istype(M))

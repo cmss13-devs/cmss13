@@ -133,5 +133,3 @@
 	var/previous_damage_appearance // store what the body last looked like, so we only have to update it if something changed
 	var/hardcore = FALSE //If TRUE, removes the body upon unrevivable death (for WO)
 	appearance_flags = KEEP_TOGETHER
-	flags_pass = PASS_MOB_IS_HUMAN
-	flags_can_pass_all = PASS_MOB_THRU_HUMAN|PASS_AROUND|PASS_HIGH_OVER_ONLY

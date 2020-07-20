@@ -7,9 +7,6 @@
 	density = 1
 	throwpass = TRUE //You can throw objects over this, despite its density.
 	layer = BELOW_OBJ_LAYER
-	flags_can_pass_all = NO_FLAGS
-	flags_can_pass_front = PASS_OVER & ~(PASS_OVER_ACID_SPRAY)
-	flags_can_pass_behind = PASS_OVER & ~(PASS_OVER_ACID_SPRAY)
 	flags_atom = ON_BORDER
 	climb_delay = 20 //Leaping a barricade is universally much faster than clumsily climbing on a table or rack
 	var/stack_type //The type of stack the barricade dropped when disassembled if any.
@@ -39,6 +36,12 @@
 	if(user)
 		user.count_niche_stat(STATISTICS_NICHE_CADES)
 	add_timer(CALLBACK(src, .proc/update_icon), 0)
+
+/obj/structure/barricade/initialize_pass_flags()
+	..()
+	flags_can_pass_all = list()
+	flags_can_pass_front = SETUP_LIST_FLAGS(LIST_FLAGS_REMOVE(PASS_OVER, PASS_OVER_ACID_SPRAY))
+	flags_can_pass_behind = SETUP_LIST_FLAGS(LIST_FLAGS_REMOVE(PASS_OVER, PASS_OVER_ACID_SPRAY))
 
 /obj/structure/barricade/examine(mob/user)
 	..()
@@ -196,8 +199,8 @@
 				update_health(-50)
 				can_wire = FALSE
 				is_wired = TRUE
-				flags_can_pass_front &= ~(PASS_OVER_THROW_MOB)
-				flags_can_pass_behind &= ~(PASS_OVER_THROW_MOB)
+				flags_can_pass_front = LIST_FLAGS_REMOVE(flags_can_pass_front, PASS_OVER_THROW_MOB)
+				flags_can_pass_behind = LIST_FLAGS_REMOVE(flags_can_pass_behind, PASS_OVER_THROW_MOB)
 				climbable = FALSE
 				update_icon()
 		return
@@ -217,8 +220,8 @@
 				update_health(50)
 				can_wire = TRUE
 				is_wired = FALSE
-				flags_can_pass_front |= PASS_OVER_THROW_MOB
-				flags_can_pass_behind |= PASS_OVER_THROW_MOB
+				flags_can_pass_front = LIST_FLAGS_REMOVE(flags_can_pass_front, PASS_OVER_THROW_MOB)
+				flags_can_pass_behind = LIST_FLAGS_REMOVE(flags_can_pass_behind, PASS_OVER_THROW_MOB)
 				climbable = TRUE
 				update_icon()
 				new/obj/item/stack/barbed_wire( src.loc )

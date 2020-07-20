@@ -3,9 +3,12 @@
 	desc = "A hefty wooden crate."
 	icon = 'icons/obj/structures/crates.dmi'
 	icon_state = "densecrate"
-	flags_can_pass_all = PASS_OVER|PASS_AROUND
 	density = 1
 	anchored = 0
+
+/obj/structure/largecrate/initialize_pass_flags()
+	..()
+	flags_can_pass_all = SETUP_LIST_FLAGS(PASS_OVER, PASS_AROUND)
 
 /obj/structure/largecrate/attack_hand(mob/user as mob)
 	to_chat(user, SPAN_NOTICE("You need a crowbar to pry this open!"))

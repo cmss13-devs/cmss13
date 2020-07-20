@@ -45,7 +45,6 @@
 	anchored = 1
 	layer = ABOVE_OBJ_LAYER
 	mouse_opacity = 0
-	flags_pass = PASS_FLAGS_ACID_SPRAY
 	var/source_mob
 	var/source_name
 
@@ -116,6 +115,10 @@
 			
 	processing_objects.Add(src)
 	add_timer(CALLBACK(src, .proc/die), time_to_live)
+
+/obj/effect/xenomorph/spray/initialize_pass_flags()
+	..()
+	flags_pass = SETUP_LIST_FLAGS(PASS_FLAGS_ACID_SPRAY)
 
 /obj/effect/xenomorph/spray/proc/die()
 	processing_objects.Remove(src)

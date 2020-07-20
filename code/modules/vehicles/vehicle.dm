@@ -7,7 +7,6 @@
 	animate_movement = 1
 	luminosity = 2
 	can_buckle = TRUE
-	flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_OVER_THROW_ITEM
 
 	// The mobs that are in each position/seat of the vehicle
 	var/list/seats = list(
@@ -33,6 +32,10 @@
 //-------------------------------------------
 // Standard procs
 //-------------------------------------------
+
+/obj/vehicle/initialize_pass_flags()
+	..()
+	flags_can_pass_all = SETUP_LIST_FLAGS(PASS_HIGH_OVER_ONLY, PASS_OVER_THROW_ITEM)
 
 /obj/vehicle/relaymove(mob/user, direction)
 	if(user.is_mob_incapacitated()) return

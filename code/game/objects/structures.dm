@@ -100,9 +100,9 @@
 	if(!istype(T) || !istype(U)) 
 		return FALSE
 
-	user.add_temp_pass_flags(PASS_MOB_THRU|PASS_OVER_THROW_MOB)
+	user.add_temp_pass_flags(PASS_MOB_THRU, PASS_OVER_THROW_MOB)
 	var/atom/blocker = LinkBlocked(user, U, T, list(src))
-	user.remove_temp_pass_flags(PASS_MOB_THRU|PASS_OVER_THROW_MOB)
+	user.remove_temp_pass_flags(PASS_MOB_THRU, PASS_OVER_THROW_MOB)
 
 	if(blocker)
 		to_chat(user, SPAN_WARNING("\The [blocker] prevents you from climbing [src]."))

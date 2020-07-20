@@ -97,7 +97,6 @@ Class Procs:
 	var/machine_processing = 0 // whether the machine is busy and requires process() calls in scheduler.
 	throwpass = 1
 	projectile_coverage = PROJECTILE_COVERAGE_MEDIUM
-	flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND
 	var/power_machine = FALSE //Whether the machine should process on power, or normal processor
 
 /obj/structure/machinery/New()
@@ -115,6 +114,10 @@ Class Procs:
 	if(A)
 		A.remove_machine(src) //takes care of removing machine from power usage
 	. = ..()
+
+/obj/structure/machinery/initialize_pass_flags()
+	..()
+	flags_can_pass_all = SETUP_LIST_FLAGS(PASS_HIGH_OVER_ONLY, PASS_AROUND)
 
 /obj/structure/machinery/proc/start_processing()
 	if(!machine_processing)

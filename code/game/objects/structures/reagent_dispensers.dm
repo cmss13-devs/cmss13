@@ -8,7 +8,6 @@
 	density = 1
 	anchored = 0
 	flags_atom = CAN_BE_SYRINGED
-	flags_can_pass_all = PASS_OVER|PASS_AROUND|PASS_UNDER
 
 	var/amount_per_transfer_from_this = 10
 	var/possible_transfer_amounts = list(5,10,20,30,40,50,60,100)
@@ -25,6 +24,10 @@
 	if(chemical)
 		reagents.add_reagent(chemical,1000)
 	..()
+
+/obj/structure/reagent_dispensers/initialize_pass_flags()
+	..()
+	flags_can_pass_all = SETUP_LIST_FLAGS(PASS_OVER, PASS_AROUND, PASS_UNDER)
 
 /obj/structure/reagent_dispensers/examine(mob/user)
 	..()

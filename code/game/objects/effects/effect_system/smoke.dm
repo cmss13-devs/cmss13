@@ -16,7 +16,6 @@
 	var/spread_speed = 1 //time in decisecond for a smoke to spread one tile.
 	var/time_to_live = 8
 	var/smokeranking = SMOKE_RANK_HARMLESS //Override priority. A higher ranked smoke cloud will displace lower and equal ones on spreading.
-	flags_pass = PASS_FLAGS_SMOKE
 	var/source = null
 	var/source_mob = null
 
@@ -39,6 +38,10 @@
 	if(opacity)
 		SetOpacity(0)
 	active_smoke_effects -= src
+
+/obj/effect/particle_effect/smoke/initialize_pass_flags()
+	..()
+	flags_pass = SETUP_LIST_FLAGS(PASS_FLAGS_SMOKE)
 	
 /obj/effect/particle_effect/smoke/process()
 	time_to_live--

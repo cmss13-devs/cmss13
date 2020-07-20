@@ -13,7 +13,6 @@
 	icon = 'icons/obj/objects.dmi'
 	anchored = 0.0
 	density = 1.0
-	flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND|PASS_UNDER
 	icon_state = "barrier0"
 	health = 100.0
 	var/maxhealth = 100.0
@@ -24,6 +23,10 @@
 	..()
 
 	src.icon_state = "barrier[src.locked]"
+
+/obj/structure/machinery/deployable/barrier/initialize_pass_flags()
+	..()
+	flags_can_pass_all = SETUP_LIST_FLAGS(PASS_HIGH_OVER_ONLY, PASS_AROUND, PASS_UNDER)
 
 /obj/structure/machinery/deployable/barrier/attackby(obj/item/W as obj, mob/user as mob)
 	if (istype(W, /obj/item/card/id/))

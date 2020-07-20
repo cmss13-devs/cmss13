@@ -35,7 +35,6 @@
 	//Since any item can now be a piece of clothing, this has to be put here so all items share it.
 	var/flags_inventory = NO_FLAGS //This flag is used for various clothing/equipment item stuff
 	var/flags_inv_hide = NO_FLAGS //This flag is used to determine when items in someone's inventory cover others. IE helmets making it so you can't see glasses, etc.
-	flags_pass = PASS_UNDER
 
 	var/obj/item/master = null
 

@@ -9,7 +9,6 @@
 	visible = 0.0
 	use_power = 0
 	flags_atom = ON_BORDER
-	flags_can_pass_all = PASS_GLASS
 	opacity = 0
 	var/obj/item/circuitboard/airlock/electronics = null
 	air_properties_vary_with_direction = 1
@@ -25,6 +24,10 @@
 	density = 0
 	playsound(src, "shatter", 50, 1)
 	. = ..()
+
+/obj/structure/machinery/door/window/initialize_pass_flags()
+	..()
+	flags_can_pass_all = SETUP_LIST_FLAGS(PASS_GLASS)
 
 //Enforces perspective layering like it's contemporary; windows.
 /obj/structure/machinery/door/window/update_icon(loc, direction)

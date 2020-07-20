@@ -6,7 +6,7 @@
 	mob_max = 0
 	mob_min = 0
 	arrival_message = "Weston-Yamada Automated Supply Drop 334-Q signal received. Docking procedures have commenced."
-	probability = 5
+	probability = 0
 	auto_shuttle_launch = TRUE
 
 /datum/emergency_call/supplies/spawn_items()

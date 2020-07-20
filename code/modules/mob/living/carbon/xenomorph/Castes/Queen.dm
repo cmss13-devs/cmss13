@@ -407,10 +407,6 @@
 				shake_camera(M, 30, 1) //50 deciseconds, SORRY 5 seconds was way too long. 3 seconds now
 
 	for(var/mob/living/carbon/M in oview(7, src))
-		var/mob/living/carbon/human/H = M
-		if(istype(H) && istype(H.wear_ear, /obj/item/clothing/ears/earmuffs))
-			continue
-		
 		var/mob/living/carbon/Xenomorph/X = M
 		if(istype(X) && (X.hivenumber == hivenumber || istype(X, /mob/living/carbon/Xenomorph/Queen)))
 			continue 

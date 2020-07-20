@@ -146,6 +146,9 @@
     for(var/variable in copied_vars)
         var/temp_value = copied_vars[variable]
 
+        if(isdatum(temp_value)) // Don't bother with copying datums
+            continue
+
         if(islist(temp_value))
             temp_value = copyListList(temp_value)
 

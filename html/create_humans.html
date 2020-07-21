@@ -11,10 +11,11 @@
 		Amount of humans: <input type="text" name="object_count" value="1" style="width:30px">
 		<br>
 		Range to spawn in: <input type="text" name="object_range" value="1" style="width:30px">
-		<br>
-		Spawn as Freed Mobs: 
-		Yes <input type="radio" class ="radioButton" name="spawn_as" value="yes">
-		No <input type="radio" class ="radioButton" name="spawn_as" value="no" checked="checked">
+		<br><br>
+		Spawn mobs as: <br>
+		<input type="radio" class ="radioButton" name="spawn_as" value="none" checked="checked"> Regular<br>
+		<input type="radio" class ="radioButton" name="spawn_as" value="freed"> Freed mob<br>
+		<input type="radio" class ="radioButton" name="spawn_as" value="ert"> ERT
 		<br><br>
 		Search for equipment: <br>
 		<input type="text" name="filter" value="" onkeypress="submitFirst(event)" style="width:280px"> <input type = "button" class="button" value = "Search" onclick = "updateSearch()" />

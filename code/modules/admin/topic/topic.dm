@@ -1733,30 +1733,21 @@
 
 	if(href_list["distresscancel"])
 		if(distress_cancel)
-			to_chat(usr, "The distress beacon was already canceled.")
-			return
-		if(ticker.mode.waiting_for_candidates)
-			to_chat(usr, "Too late! The distress beacon was launched.")
+			to_chat(usr, "The distress beacon was either canceled, or you are too late to cancel.")
 			return
 		log_game("[key_name_admin(usr)] has canceled the distress beacon.")
 		message_staff("[key_name_admin(usr)] has canceled the distress beacon.")
-		distress_cancel = 1
+		distress_cancel = TRUE
 		return
 
 	if(href_list["distress"]) //Distress Beacon, sends a random distress beacon when pressed
-		distress_cancel = 0
+		distress_cancel = FALSE
 		message_staff("[key_name_admin(usr)] has opted to SEND the distress beacon! Launching in 10 seconds... (<A HREF='?_src_=admin_holder;distresscancel=\ref[usr]'>CANCEL</A>)")
-		spawn(100)
-			if(distress_cancel) 
-				return
-			var/mob/ref_person = locate(href_list["distress"])
-			ticker.mode.activate_distress()
-			log_game("[key_name_admin(usr)] has sent a randomized distress beacon, requested by [key_name_admin(ref_person)]")
-			message_admins("[key_name_admin(usr)] has sent a randomized distress beacon, requested by [key_name_admin(ref_person)]", 1)
+		add_timer(CALLBACK(src, .proc/accept_ert, locate(href_list["distress"])), SECONDS_10)
 		//unanswered_distress -= ref_person
 
 	if(href_list["destroyship"]) //Distress Beacon, sends a random distress beacon when pressed
-		destroy_cancel = 0
+		destroy_cancel = FALSE
 		message_staff("[key_name_admin(usr)] has opted to GRANT the self destruct! Starting in 10 seconds... (<A HREF='?_src_=admin_holder;sdcancel=\ref[usr]'>CANCEL</A>)")
 		spawn(100)
 			if(distress_cancel) 
@@ -1783,3 +1774,11 @@
 		message_staff("[key_name_admin(usr)] has canceled the self destruct.")
 		destroy_cancel = 1
 		return
+
+/datum/admins/proc/accept_ert(var/mob/ref_person)
+	if(distress_cancel)
+		return
+	distress_cancel = TRUE
+	ticker.mode.activate_distress()
+	log_game("[key_name_admin(usr)] has sent a randomized distress beacon, requested by [key_name_admin(ref_person)]")
+	message_admins("[key_name_admin(usr)] has sent a randomized distress beacon, requested by [key_name_admin(ref_person)]")

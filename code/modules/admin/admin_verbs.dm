@@ -52,6 +52,7 @@ var/list/admin_verbs_sounds = list(
 var/list/admin_verbs_fun = list(
 	/client/proc/enable_event_mob_verbs,
 	/client/proc/cmd_admin_dress_all,
+	/client/proc/free_all_mobs_in_view,
 	/client/proc/drop_bomb,
 	/client/proc/set_ooc_color_global,
 	/client/proc/announce_random_fact,
@@ -207,7 +208,6 @@ var/list/admin_verbs_mod = list(
 	/client/proc/rejuvenate_all_humans_in_view,
 	/client/proc/rejuvenate_all_revivable_humans_in_view,
 	/client/proc/rejuvenate_all_xenos_in_view,
-	/client/proc/free_all_mobs_in_view,
 	/datum/admins/proc/togglesleep,
 	/datum/admins/proc/sleepall,
 	/datum/admins/proc/togglejoin,

@@ -7,10 +7,7 @@
 //basic persistent gamemode stuff.
 /datum/game_mode
 	var/list/datum/emergency_call/all_calls = list() //initialized at round start and stores the datums.
-	var/datum/emergency_call/picked_call = null //Which distress call is currently active
-	var/has_called_emergency = FALSE
-	var/distress_cooldown = 0
-	var/waiting_for_candidates = FALSE
+	var/datum/emergency_call/picked_calls[] = list() //Which distress calls are currently active
 
 //The distress call parent. Cannot be called itself due to "name" being a filtered target.
 /datum/emergency_call
@@ -33,6 +30,8 @@
 	var/max_heavies = 1
 	var/shuttle_id = "Distress" //Empty shuttle ID means we're not using shuttles (aka spawn straight into cryo)
 	var/auto_shuttle_launch = FALSE
+
+	var/ert_message = "An emergency beacon has been activated"
 
 /datum/game_mode/proc/initialize_emergency_calls()
 	if(all_calls.len) //It's already been set up.
@@ -75,9 +74,8 @@
 /datum/game_mode/proc/get_specific_call(var/call_name, var/announce = TRUE, var/is_emergency = TRUE, var/info = "")
 	for(var/datum/emergency_call/E in all_calls) //Loop through all potential candidates
 		if(E.name == call_name)
-			picked_call = E
-			picked_call.objective_info = info
-			picked_call.activate(announce, is_emergency)
+			E.objective_info = info
+			E.activate(announce, is_emergency)
 			return
 	error("get_specific_call could not find emergency call '[call_name]'")
 	return
@@ -88,16 +86,14 @@
 
 	for(var/mob/dead/observer/M in player_list)
 		if(M.client)
-			to_chat(M, FONT_SIZE_LARGE("\n<span class='attack'>An emergency beacon has been activated. Use the <B>Ghost > Join Response Team</b> verb to join!</span>"))
+			to_chat(M, FONT_SIZE_LARGE("\n<span class='attack'>[ert_message]. Use the <B>Ghost > Join Response Team</b> verb to join!</span>"))
 			to_chat(M, "<span class='attack'>You cannot join if you have Ghosted recently.</span>\n")
 
 /datum/game_mode/proc/activate_distress()
-	picked_call = get_random_call()
-	if(!istype(picked_call, /datum/emergency_call)) //Something went horribly wrong
+	var/datum/emergency_call/random_call = get_random_call()
+	if(!istype(random_call, /datum/emergency_call)) //Something went horribly wrong
 		return
-	if(ticker && ticker.mode && ticker.mode.waiting_for_candidates) //It's already been activated
-		return
-	picked_call.activate()
+	random_call.activate()
 	return
 
 /mob/dead/observer/verb/JoinResponseTeam()
@@ -108,24 +104,42 @@
 	if(jobban_isbanned(usr, "Syndicate") || jobban_isbanned(usr, "Emergency Response Team"))
 		to_chat(usr, SPAN_DANGER("You are jobbanned from the emergency response team!"))
 		return
-	if(!ticker || !ticker.mode || isnull(ticker.mode.picked_call))
+	if(!ticker || !ticker.mode || !ticker.mode.picked_calls.len)
 		to_chat(usr, SPAN_WARNING("No distress beacons are active. You will be notified if this changes."))
 		return
 
-	var/datum/emergency_call/distress = ticker.mode.picked_call //Just to simplify things a bit
+	var/list/beacons = list()
+
+	for(var/datum/emergency_call/em_call in ticker.mode.picked_calls)
+		var/name = em_call.name
+		var/iteration = 1
+		while(name in beacons)
+			name = "[em_call.name] [iteration]"
+			iteration++
+		
+		beacons += list("[name]" = em_call) // I hate byond
+
+	var/choice = input(usr, "Choose a distress beacon to join", "") in beacons
+
+	if(!choice)
+		to_chat(usr, "Something seems to have gone wrong!")
+		return
+
+	if(!beacons[choice] || !(beacons[choice] in ticker.mode.picked_calls))
+		to_chat(usr, "That choice is no longer available!")
+		return
+
+	var/datum/emergency_call/distress = beacons[choice]
+
 	if(!istype(distress) || !distress.mob_max)
 		to_chat(usr, SPAN_WARNING("The emergency response team is already full!"))
 		return
 	var/deathtime = world.time - usr.timeofdeath
 
-	if(deathtime < 600) //Nice try, ghosting right after the announcement
+	if(deathtime < SECONDS_60) //Nice try, ghosting right after the announcement
 		if(map_tag != MAP_WHISKEY_OUTPOST) // people ghost so often on whiskey outpost.
 			to_chat(usr, SPAN_WARNING("You ghosted too recently."))
 			return
-
-	if(!ticker.mode.waiting_for_candidates)
-		to_chat(usr, SPAN_WARNING("The emergency response team has already been selected."))
-		return
 
 	if(!usr.mind) //How? Give them a new one anyway.
 		usr.mind = new /datum/mind(usr.key, usr.ckey)
@@ -146,41 +160,33 @@
 	else
 		to_chat(usr, SPAN_WARNING("You did not get enlisted in the response team. Better luck next time!"))
 
-/datum/emergency_call/proc/activate(announce = TRUE, is_emergency = FALSE)
+/datum/emergency_call/proc/activate(announce = TRUE)
 	set waitfor = 0
 	if(!ticker || !ticker.mode) //Something horribly wrong with the gamemode ticker
 		return
 
-	if(is_emergency && ticker.mode.has_called_emergency) //It's already been called.
-		return
+	ticker.mode.picked_calls += src
 
-	if(mob_max > 0)
-		ticker.mode.waiting_for_candidates = TRUE
 	show_join_message() //Show our potential candidates the message to let them join.
 	message_admins("Distress beacon: '[name]' activated [src.hostility? "[SPAN_WARNING("(THEY ARE HOSTILE)")]":"(they are friendly)"]. Looking for candidates.")
 
 	if(announce)
 		marine_announcement("A distress beacon has been launched from the [MAIN_SHIP_NAME].", "Priority Alert", 'sound/AI/distressbeacon.ogg')
 
-	if(is_emergency) //non-emergency ERTs don't count as emergency
-		ticker.mode.has_called_emergency = TRUE
-
 	add_timer(CALLBACK(src, /datum/emergency_call/proc/spawn_candidates, announce), SECONDS_60)
 
 /datum/emergency_call/proc/spawn_candidates(announce = TRUE)
+	if(ticker && ticker.mode)
+		ticker.mode.picked_calls -= src
+
 	if(candidates.len < mob_min)
 		message_admins("Aborting distress beacon, not enough candidates: found [candidates.len].")
-		ticker.mode.waiting_for_candidates = FALSE
-		ticker.mode.has_called_emergency = FALSE
 		members = list() //Empty the members list.
 		candidates = list()
 
 		if(announce)
 			marine_announcement("The distress signal has not received a response, the launch tubes are now recalibrating.", "Distress Beacon")
 
-		disable_calls()
-		ticker.mode.picked_call = null
-		add_timer(CALLBACK(src, /datum/emergency_call/proc/enable_calls), MINUTES_2)
 	else //We've got enough!
 		//Trim down the list
 		var/list/datum/mind/picked_candidates = list()
@@ -232,9 +238,7 @@
 				if(i > mob_max)
 					break //Some logic. Hopefully this will never happen..
 				create_member(M)
-		candidates = null //Blank out the candidates list for next time.
 		candidates = list()
-		ticker.mode.waiting_for_candidates = FALSE
 
 /datum/emergency_call/proc/add_candidate(var/mob/M)
 	if(!M.client || (M.mind && M.mind in candidates) || istype(M, /mob/living/carbon/Xenomorph))
@@ -266,12 +270,6 @@
 		return null
 
 	return spawn_loc
-
-/datum/emergency_call/proc/disable_calls()
-	ticker.mode.distress_cooldown = TRUE
-
-/datum/emergency_call/proc/enable_calls()
-	ticker.mode.distress_cooldown = FALSE
 
 /datum/emergency_call/proc/create_member(datum/mind/M) //This is the parent, each type spawns its own variety.
 	return

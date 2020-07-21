@@ -14,6 +14,7 @@
 #define COOLDOWN_COMM_MESSAGE MINUTES_1
 #define COOLDOWN_COMM_REQUEST MINUTES_5
 #define COOLDOWN_COMM_CENTRAL SECONDS_30
+#define COOLDOWN_COMM_DESTRUCT MINUTES_5
 
 //Note: Commented out procs are things I left alone and did not revise. Usually AI-related interactions.
 
@@ -219,14 +220,6 @@
 					to_chat(usr, SPAN_WARNING("ARES has denied your request for operational security reasons."))
 					return FALSE
 
-				if(ticker.mode.has_called_emergency)
-					to_chat(usr, SPAN_WARNING("The [MAIN_SHIP_NAME]'s distress beacon is already broadcasting."))
-					return FALSE
-
-				if(ticker.mode.distress_cooldown)
-					to_chat(usr, SPAN_WARNING("The distress beacon is currently recalibrating."))
-					return FALSE
-
 				 //Comment block to test
 				if(world.time < cooldown_request + COOLDOWN_COMM_REQUEST)
 					to_chat(usr, SPAN_WARNING("The distress beacon has recently broadcast a message. Please wait."))
@@ -262,12 +255,12 @@
 					to_chat(usr, SPAN_WARNING("ARES has denied your request for operational security reasons."))
 					return FALSE
 
-				if(get_security_level() == "delta")
-					to_chat(usr, SPAN_WARNING("The [MAIN_SHIP_NAME]'s self destruct is already activated."))
+				if(world.time < cooldown_destruct + COOLDOWN_COMM_DESTRUCT)
+					to_chat(usr, SPAN_WARNING("A self destruct request has already been sent to high command. Please wait."))
 					return FALSE
 
-				if(ticker.mode.has_called_emergency)
-					to_chat(usr, SPAN_WARNING("The [MAIN_SHIP_NAME]'s distress beacon is active!"))
+				if(get_security_level() == "delta")
+					to_chat(usr, SPAN_WARNING("The [MAIN_SHIP_NAME]'s self destruct is already activated."))
 					return FALSE
 
 				for(var/client/C in admins)

@@ -99,8 +99,12 @@
 	var/range_to_spawn_on = dd_range(1, 10, text2num(href_list["object_range"]))
 
 	var/free_the_humans = FALSE
-	if(href_list["spawn_as"] == "yes")
+	var/offer_as_ert = FALSE
+	if(href_list["spawn_as"] == "freed")
 		free_the_humans = TRUE
+	
+	else if(href_list["spawn_as"] == "ert")
+		offer_as_ert = TRUE
 
 	if(humans_to_spawn)
 		var/list/turfs = list()
@@ -115,6 +119,7 @@
 		if(!length(turfs))
 			return
 
+		var/list/humans = list()
 		var/mob/living/carbon/human/H
 		for(var/i = 0 to humans_to_spawn-1)
 			var/turf/to_spawn_at = pick(turfs)
@@ -127,6 +132,18 @@
 
 			if(free_the_humans)
 				owner.free_for_ghosts(H)
+
+			humans += H
+		
+		if (offer_as_ert)
+			var/datum/emergency_call/custom/em_call = new()
+			var/name = input(usr, "Please name your ERT", "ERT Name", "Admin spawned humans")
+			em_call.name = name
+			em_call.mob_max = humans.len
+			em_call.players_to_offer = humans
+			em_call.owner = owner
+
+			em_call.activate(announce = FALSE)
 
 		message_admins("[key_name_admin(usr)] created [humans_to_spawn] humans as [job_name] at [get_area(initial_spot)]")
 	return

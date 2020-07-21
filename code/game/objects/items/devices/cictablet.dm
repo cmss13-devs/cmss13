@@ -328,14 +328,6 @@
                     to_chat(usr, SPAN_WARNING("ARES has denied your request for operational security reasons."))
                     return FALSE
 
-                if(ticker.mode.has_called_emergency)
-                    to_chat(usr, SPAN_WARNING("The [MAIN_SHIP_NAME]'s distress beacon is already broadcasting."))
-                    return FALSE
-
-                if(ticker.mode.distress_cooldown)
-                    to_chat(usr, SPAN_WARNING("The distress beacon is currently recalibrating."))
-                    return FALSE
-
                 //Comment block to test
                 if(world.time < cooldown_request + COOLDOWN_COMM_REQUEST)
                     to_chat(usr, SPAN_WARNING("The distress beacon has recently broadcast a message. Please wait."))

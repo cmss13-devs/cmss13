@@ -57,8 +57,8 @@
 
 
 /datum/game_mode/whiskey_outpost/activate_distress()
-	picked_call = /datum/emergency_call/wo
-	picked_call.activate(FALSE)
+	var/datum/emergency_call/em_call = /datum/emergency_call/wo
+	em_call.activate(FALSE)
 	return
 
 datum/emergency_call/wo/platoon

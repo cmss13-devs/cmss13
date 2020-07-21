@@ -36,6 +36,8 @@
 			if(!istype(H) || H.stat != CONSCIOUS || isYautja(H))	//base human checks
 				targets.Remove(H)
 				continue
+			if(H.z == MAIN_SHIP_Z_LEVEL) // People on ship see everything
+				continue
 			if(H.faction != faction_to_display && !add_PMCs || H.faction != faction_to_display && add_PMCs && H.faction != FACTION_PMC)	//faction checks
 				targets.Remove(H)
 

@@ -176,42 +176,32 @@
 	if (!ticker  || !ticker.mode)
 		return
 
-	if(!check_rights(R_ADMIN))	
+	if(!check_rights(R_FUN)) // Seems more like an event thing than an admin thing
 		return
 
-	if(ticker.mode.picked_call)
-		var/confirm = alert(src, "There's already been a distress call sent. Are you sure you want to send another one? This will probably break things.", "Send a distress call?", "Yes", "No")
-		if(confirm != "Yes") 
-			return
-
-		//Reset the distress call
-		ticker.mode.picked_call.members = list()
-		ticker.mode.picked_call.candidates = list()
-		ticker.mode.waiting_for_candidates = 0
-		ticker.mode.has_called_emergency = 0
-		ticker.mode.picked_call = null
-
 	var/list/list_of_calls = list()
+	var/list/assoc_list = list()
+
 	for(var/datum/emergency_call/L in ticker.mode.all_calls)
 		if(L && L.name != "name")
 			list_of_calls += L.name
+			assoc_list += list(L.name = L)
 	list_of_calls = sortList(list_of_calls)
 
 	list_of_calls += "Randomize"
 
-	var/choice = input("Which distress call?") as null|anything in list_of_calls
+	var/choice = input("Which distress call?") in list_of_calls
+
 	if(!choice)
 		return
 
+	var/datum/emergency_call/chosen_ert
 	if(choice == "Randomize")
-		ticker.mode.picked_call	= ticker.mode.get_random_call()
+		chosen_ert = ticker.mode.get_random_call()
 	else
-		for(var/datum/emergency_call/C in ticker.mode.all_calls)
-			if(C && C.name == choice)
-				ticker.mode.picked_call = C
-				break
+		chosen_ert = assoc_list[choice]
 
-	if(!istype(ticker.mode.picked_call))
+	if(!istype(chosen_ert))
 		return
 
 	var/is_announcing = TRUE
@@ -219,9 +209,9 @@
 	if(announce == "No")
 		is_announcing = FALSE
 
-	ticker.mode.picked_call.activate(is_announcing)
+	chosen_ert.activate(is_announcing)
 
-	message_admins(SPAN_NOTICE("[key_name_admin(usr)] admin-called a [choice == "Randomize" ? "randomized ":""]distress beacon: [ticker.mode.picked_call.name]"), 1)
+	message_admins(SPAN_NOTICE("[key_name_admin(usr)] admin-called a [choice == "Randomize" ? "randomized ":""]distress beacon: [chosen_ert.name]"), 1)
 	
 /datum/admins/proc/admin_force_selfdestruct()
 	set name = "E: Self Destruct"
@@ -710,7 +700,7 @@
 		create_humans_html = file2text('html/create_humans.html')
 		create_humans_html = replacetext(create_humans_html, "null /* object types */", "\"[equipment_presets]\"")
 
-	show_browser(user, replacetext(create_humans_html, "/* ref src */", "\ref[src]"), "Create Humans", "create_humans", "size=450x530")
+	show_browser(user, replacetext(create_humans_html, "/* ref src */", "\ref[src]"), "Create Humans", "create_humans", "size=450x630")
 
 /client/proc/create_humans()
 	set name = "D: Create Humans"

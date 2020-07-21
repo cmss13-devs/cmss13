@@ -395,7 +395,7 @@
 			state = 3
 		if("change_operator")
 			if(operator != usr)
-				if(ishighersilicon(operator))
+				if(operator && ishighersilicon(operator))
 					visible_message("[htmlicon(src, viewers(src))] [SPAN_BOLDNOTICE("AI override in progress. Access denied.")]")
 				if(current_squad)
 					current_squad.overwatch_officer = usr

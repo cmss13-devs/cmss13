@@ -45,7 +45,7 @@
 			to_chat(user, "You insert [O].")
 	..()
 
-/obj/structure/machinery/computer/med_data/attack_ai(user as mob)
+/obj/structure/machinery/computer/med_data/attack_remote(user as mob)
 	return src.attack_hand(user)
 
 /obj/structure/machinery/computer/med_data/attack_hand(mob/user as mob)
@@ -139,7 +139,7 @@
 	if (!( data_core.medical.Find(src.active2) ))
 		src.active2 = null
 
-	if ((usr.contents.Find(src) || (in_range(src, usr) && istype(src.loc, /turf))) || (issilicon(usr)))
+	if ((usr.contents.Find(src) || (in_range(src, usr) && istype(src.loc, /turf))) || (isremotecontrolling(usr)))
 		usr.set_interaction(src)
 
 		if (href_list["temp"])
@@ -175,7 +175,7 @@
 
 		else if (href_list["login"])
 
-			if (isAI(usr))
+			if (isremotecontrolling(usr))
 				src.active1 = null
 				src.active2 = null
 				src.authenticated = usr.name
@@ -232,61 +232,61 @@
 					if("age")
 						if (istype(src.active1, /datum/data/record))
 							var/t1 = input("Please input age:", "Med. records", src.active1.fields["age"], null)  as num
-							if ((!( t1 ) || !( src.authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!issilicon(usr))) || src.active1 != a1))
+							if ((!( t1 ) || !( src.authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!isremotecontrolling(usr))) || src.active1 != a1))
 								return
 							src.active1.fields["age"] = t1
 					if("mi_dis")
 						if (istype(src.active2, /datum/data/record))
 							var/t1 = copytext(trim(strip_html(input("Please input minor disabilities list:", "Med. records", src.active2.fields["mi_dis"], null)  as text)),1,MAX_MESSAGE_LEN)
-							if ((!( t1 ) || !( src.authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!issilicon(usr))) || src.active2 != a2))
+							if ((!( t1 ) || !( src.authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!isremotecontrolling(usr))) || src.active2 != a2))
 								return
 							src.active2.fields["mi_dis"] = t1
 					if("mi_dis_d")
 						if (istype(src.active2, /datum/data/record))
 							var/t1 = copytext(trim(strip_html(input("Please summarize minor dis.:", "Med. records", src.active2.fields["mi_dis_d"], null)  as message)),1,MAX_MESSAGE_LEN)
-							if ((!( t1 ) || !( src.authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!issilicon(usr))) || src.active2 != a2))
+							if ((!( t1 ) || !( src.authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!isremotecontrolling(usr))) || src.active2 != a2))
 								return
 							src.active2.fields["mi_dis_d"] = t1
 					if("ma_dis")
 						if (istype(src.active2, /datum/data/record))
 							var/t1 = copytext(trim(strip_html(input("Please input major diabilities list:", "Med. records", src.active2.fields["ma_dis"], null)  as text)),1,MAX_MESSAGE_LEN)
-							if ((!( t1 ) || !( src.authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!issilicon(usr))) || src.active2 != a2))
+							if ((!( t1 ) || !( src.authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!isremotecontrolling(usr))) || src.active2 != a2))
 								return
 							src.active2.fields["ma_dis"] = t1
 					if("ma_dis_d")
 						if (istype(src.active2, /datum/data/record))
 							var/t1 = copytext(trim(strip_html(input("Please summarize major dis.:", "Med. records", src.active2.fields["ma_dis_d"], null)  as message)),1,MAX_MESSAGE_LEN)
-							if ((!( t1 ) || !( src.authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!issilicon(usr))) || src.active2 != a2))
+							if ((!( t1 ) || !( src.authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!isremotecontrolling(usr))) || src.active2 != a2))
 								return
 							src.active2.fields["ma_dis_d"] = t1
 					if("alg")
 						if (istype(src.active2, /datum/data/record))
 							var/t1 = copytext(trim(strip_html(input("Please state allergies:", "Med. records", src.active2.fields["alg"], null)  as text)),1,MAX_MESSAGE_LEN)
-							if ((!( t1 ) || !( src.authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!issilicon(usr))) || src.active2 != a2))
+							if ((!( t1 ) || !( src.authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!isremotecontrolling(usr))) || src.active2 != a2))
 								return
 							src.active2.fields["alg"] = t1
 					if("alg_d")
 						if (istype(src.active2, /datum/data/record))
 							var/t1 = copytext(trim(strip_html(input("Please summarize allergies:", "Med. records", src.active2.fields["alg_d"], null)  as message)),1,MAX_MESSAGE_LEN)
-							if ((!( t1 ) || !( src.authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!issilicon(usr))) || src.active2 != a2))
+							if ((!( t1 ) || !( src.authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!isremotecontrolling(usr))) || src.active2 != a2))
 								return
 							src.active2.fields["alg_d"] = t1
 					if("cdi")
 						if (istype(src.active2, /datum/data/record))
 							var/t1 = copytext(trim(strip_html(input("Please state diseases:", "Med. records", src.active2.fields["cdi"], null)  as text)),1,MAX_MESSAGE_LEN)
-							if ((!( t1 ) || !( src.authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!issilicon(usr))) || src.active2 != a2))
+							if ((!( t1 ) || !( src.authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!isremotecontrolling(usr))) || src.active2 != a2))
 								return
 							src.active2.fields["cdi"] = t1
 					if("cdi_d")
 						if (istype(src.active2, /datum/data/record))
 							var/t1 = copytext(trim(strip_html(input("Please summarize diseases:", "Med. records", src.active2.fields["cdi_d"], null)  as message)),1,MAX_MESSAGE_LEN)
-							if ((!( t1 ) || !( src.authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!issilicon(usr))) || src.active2 != a2))
+							if ((!( t1 ) || !( src.authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!isremotecontrolling(usr))) || src.active2 != a2))
 								return
 							src.active2.fields["cdi_d"] = t1
 					if("notes")
 						if (istype(src.active2, /datum/data/record))
 							var/t1 = copytext(html_encode(trim(input("Please summarize notes:", "Med. records", html_decode(src.active2.fields["notes"]), null)  as message)),1,MAX_MESSAGE_LEN)
-							if ((!( t1 ) || !( src.authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!issilicon(usr))) || src.active2 != a2))
+							if ((!( t1 ) || !( src.authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!isremotecontrolling(usr))) || src.active2 != a2))
 								return
 							src.active2.fields["notes"] = t1
 					if("p_stat")
@@ -397,7 +397,7 @@
 					return
 				var/a2 = src.active2
 				var/t1 = copytext(trim(strip_html(input("Add Comment:", "Med. records", null, null)  as message)),1,MAX_MESSAGE_LEN)
-				if ((!( t1 ) || !( src.authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!issilicon(usr))) || src.active2 != a2))
+				if ((!( t1 ) || !( src.authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!isremotecontrolling(usr))) || src.active2 != a2))
 					return
 				var/counter = 1
 				while(src.active2.fields[text("com_[]", counter)])
@@ -410,7 +410,7 @@
 
 			if (href_list["search"])
 				var/t1 = stripped_input(usr, "Search String: (Name, DNA, or ID)", "Med. records")
-				if ((!( t1 ) || usr.stat || !( src.authenticated ) || usr.is_mob_restrained() || ((!in_range(src, usr)) && (!issilicon(usr)))))
+				if ((!( t1 ) || usr.stat || !( src.authenticated ) || usr.is_mob_restrained() || ((!in_range(src, usr)) && (!isremotecontrolling(usr)))))
 					return
 				src.active1 = null
 				src.active2 = null

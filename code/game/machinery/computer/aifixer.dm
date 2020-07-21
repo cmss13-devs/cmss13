@@ -22,7 +22,7 @@
 	..()
 	return
 
-/obj/structure/machinery/computer/aifixer/attack_ai(var/mob/user as mob)
+/obj/structure/machinery/computer/aifixer/attack_remote(var/mob/user as mob)
 	return attack_hand(user)
 
 /obj/structure/machinery/computer/aifixer/attack_hand(var/mob/user as mob)

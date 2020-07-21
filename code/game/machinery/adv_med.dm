@@ -216,7 +216,7 @@
 
 
 
-/obj/structure/machinery/body_scanconsole/attack_ai(user as mob)
+/obj/structure/machinery/body_scanconsole/attack_remote(user as mob)
 	return src.attack_hand(user)
 
 /obj/structure/machinery/body_scanconsole/attack_hand(var/mob/living/user)

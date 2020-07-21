@@ -70,6 +70,9 @@ var/list/department_radio_keys = list(
 
 	var/image/speech_bubble = image('icons/mob/hud/talk.dmi',src,"[bubble_name]")
 
+	if(appearance_flags & PIXEL_SCALE)
+		speech_bubble.appearance_flags |= PIXEL_SCALE
+
 	for(var/mob/M in hear)
 		M << speech_bubble
 

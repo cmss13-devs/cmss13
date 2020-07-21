@@ -82,7 +82,7 @@ var/bomb_set = FALSE
 	..()
 
 /obj/structure/machinery/nuclearbomb/attack_hand(mob/user as mob)
-	if(user.is_mob_incapacitated() || !user.canmove || get_dist(src, user) > 1 || isAI(user))
+	if(user.is_mob_incapacitated() || !user.canmove || get_dist(src, user) > 1 || isremotecontrolling(user))
 		return
 
 	if(isYautja(user))
@@ -106,7 +106,7 @@ var/bomb_set = FALSE
 		make_deployable()
 
 /obj/structure/machinery/nuclearbomb/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 0)
-	if(user.is_mob_incapacitated() || !user.canmove || get_dist(src, user) > 1 || isAI(user) || being_used)
+	if(user.is_mob_incapacitated() || !user.canmove || get_dist(src, user) > 1 || isremotecontrolling(user) || being_used)
 		return
 
 	var/timer = duration2text_sec(timeleft)

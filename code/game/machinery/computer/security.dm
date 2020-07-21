@@ -59,7 +59,7 @@
 	
 	..()
 
-/obj/structure/machinery/computer/secure_data/attack_ai(mob/user as mob)
+/obj/structure/machinery/computer/secure_data/attack_remote(mob/user as mob)
 	return attack_hand(user)
 
 //Someone needs to break down the dat += into chunks instead of long ass lines.

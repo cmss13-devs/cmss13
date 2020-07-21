@@ -7,11 +7,17 @@
 /datum/proc/can_vv_modify()
 	return TRUE
 
-/proc/can_modify(var/datum/D)
-	if(!isdatum(D))
-		return TRUE
+/proc/can_modify(var/V)
+	if(isdatum(V))
+		var/datum/D = V
+		return D.can_vv_modify()
+	else if (istype(V, /atom))
+		var/atom/A = V
+		return A.can_vv_modify()
+	return TRUE
 
-	return D.can_vv_modify()
+/client/can_vv_modify()
+	return FALSE
 
 /client/proc/debug_variables(datum/D in world)
 	set category = "Debug"
@@ -207,14 +213,12 @@
 
 		body += "<option value='?_src_=vars;addverb=\ref[D]'>Add Verb</option>"
 		body += "<option value='?_src_=vars;remverb=\ref[D]'>Remove Verb</option>"
+		
 		if(ishuman(D))
 			body += "<option value>---</option>"
 			body += "<option value='?_src_=vars;edit_skill=\ref[D]'>Edit Skills</option>"
 			body += "<option value='?_src_=vars;setspecies=\ref[D]'>Set Species</option>"
-			body += "<option value='?_src_=vars;makeai=\ref[D]'>Make AI</option>"
-			body += "<option value='?_src_=vars;makerobot=\ref[D]'>Make cyborg</option>"
-			body += "<option value='?_src_=vars;makemonkey=\ref[D]'>Make monkey</option>"
-			body += "<option value='?_src_=vars;makealien=\ref[D]'>Make alien</option>"
+			body += "<option value='?_src_=vars;selectequipment=\ref[D]'>Select Equipment</option>"
 		if(isXeno(D))
 			body += "<option value='?_src_=vars;changehivenumber=\ref[D]'>Change Hivenumber</option>"
 		body += "<option value>---</option>"
@@ -224,8 +228,15 @@
 	if(isobj(D) || ismob(D) || isturf(D))
 		body += "<option value='?_src_=vars;explode=\ref[D]'>Trigger explosion</option>"
 		body += "<option value='?_src_=vars;emp=\ref[D]'>Trigger EM pulse</option>"
-	if(isarea(D))
-		body += "<option value='?_src_=vars;togglelighting=\ref[D]'>Toggle lighting</option>"
+
+	body += "<option value>---</option>"
+
+	if(istype(D, /obj/structure/machinery/faxmachine))
+		body += "<option value='?_src_=admin_holder;USCMFaxReply=\ref[usr];originfax=\ref[D]'>Send USCM fax message</option>"
+		body += "<option value='?_src_=admin_holder;CLFaxReply=\ref[usr];originfax=\ref[D]'>Send CL fax message</option>"
+
+	if(istype(D, /atom))
+		body += "<option value='?_src_=vars;enablepixelscaling=\ref[D]'>Enable Pixel Scaling</option>"
 
 	body += "</select></form>"
 
@@ -534,27 +545,23 @@ body
 					return
 				message_admins(SPAN_NOTICE("[key_name(usr)] deleted all objects of type or subtype of [O_type] ([i] objects deleted) "))
 
-	else if(href_list["togglelighting"])
+	else if(href_list["enablepixelscaling"])
 		if(!check_rights(R_DEBUG|R_VAREDIT))	
 			return
 
-		var/area/A = locate(href_list["togglelighting"])
-		if(!isarea(A))
+		var/atom/A = locate(href_list["enablepixelscaling"])
+		if(!istype(A, /atom))
 			return
+		
+		A.appearance_flags |= PIXEL_SCALE
 
-		if(A.lighting_use_dynamic)
-			A.lighting_use_dynamic = FALSE
-			A.lighting_subarea = FALSE
+		if(ismob(A))
+			var/mob/M = A
+			for(var/I in M.hud_list)
+				var/image/img = M.hud_list[I]
 
-			A.requires_power = FALSE
-		else
-			A.lighting_use_dynamic = TRUE
-			A.lighting_subarea = TRUE
-
-			A.requires_power = TRUE
-
-		A.InitializeLighting()
-
+				if(istype(img))
+					img.appearance_flags |= PIXEL_SCALE
 
 	else if(href_list["explode"])
 		if(!check_rights(R_DEBUG|R_FUN))	
@@ -701,6 +708,17 @@ body
 			return
 		admin_holder.Topic(href, list("makeai"=href_list["makeai"]))
 
+	else if(href_list["selectequipment"])
+		if(!check_rights(R_SPAWN))	
+			return
+
+		var/mob/living/carbon/human/H = locate(href_list["selectequipment"])
+		if(!istype(H))
+			to_chat(usr, "This can only be done to instances of type /mob/living/carbon/human")
+			return
+
+		cmd_admin_dress(H)
+		
 	else if(href_list["setspecies"])
 		if(!check_rights(R_SPAWN))	
 			return

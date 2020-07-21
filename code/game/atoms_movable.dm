@@ -158,8 +158,8 @@
 	var/list/image/hud_list
 
 //REDIRECT TO MASTER//
-/atom/movable/clone/attack_ai(mob/user)
-	return src.mstr.attack_ai(user)
+/atom/movable/clone/attack_remote(mob/user)
+	return src.mstr.attack_remote(user)
 
 /atom/movable/clone/attack_hand(mob/user)
 	return src.mstr.attack_hand(user)

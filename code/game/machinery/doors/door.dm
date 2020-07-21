@@ -101,7 +101,7 @@
 		else				flick("door_deny", src)
 	return
 
-/obj/structure/machinery/door/attack_ai(mob/user)
+/obj/structure/machinery/door/attack_remote(mob/user)
 	return src.attack_hand(user)
 
 /obj/structure/machinery/door/attack_hand(mob/user)

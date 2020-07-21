@@ -15,7 +15,7 @@
 	processing = TRUE
 
 
-/obj/structure/machinery/computer/prisoner/attack_ai(var/mob/user as mob)
+/obj/structure/machinery/computer/prisoner/attack_remote(var/mob/user as mob)
 	return src.attack_hand(user)
 
 
@@ -70,7 +70,7 @@
 /obj/structure/machinery/computer/prisoner/Topic(href, href_list)
 	if(..())
 		return
-	if((usr.contents.Find(src) || (in_range(src, usr) && istype(src.loc, /turf))) || (issilicon(usr)))
+	if((usr.contents.Find(src) || (in_range(src, usr) && istype(src.loc, /turf))) || (isremotecontrolling(usr)))
 		usr.set_interaction(src)
 
 		if(href_list["inject1"])

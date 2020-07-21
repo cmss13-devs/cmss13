@@ -1,3 +1,5 @@
+#define isremotecontrolling(M) (M.client && M.client.remote_control)
+
 #define isbrain(A) (istype(A, /mob/living/brain))
 #define isrobot(A) (istype(A, /mob/living/silicon/robot))
 #define isanimal(A) (istype(A, /mob/living/simple_animal))
@@ -8,11 +10,9 @@
 #define isbear(A) (istype(A, /mob/living/simple_animal/hostile/bear))
 #define iscarp(A) (istype(A, /mob/living/simple_animal/hostile/carp))
 #define isclown(A) (istype(A, /mob/living/simple_animal/hostile/retaliate/clown))
-#define isAI(A) (istype(A, /mob/living/silicon/ai))
 #define iscarbon(A) (istype(A, /mob/living/carbon))
-#define issilicon(A) (istype(A, /mob/living/silicon))
 #define isborg(A) (isrobot(A) && !ismaintdrone(A))
-#define ishighersilicon(A) (isborg(A) || isAI(A))
+#define ishighersilicon(A) (isborg(A) || isremotecontrolling(A))
 #define isliving(A) (istype(A, /mob/living))
 #define isobserver(A) (istype(A, /mob/dead/observer))
 #define isorgan(A) (istype(A, /obj/limb))

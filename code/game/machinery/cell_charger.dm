@@ -76,7 +76,7 @@
 		updateicon()
 		stop_processing()
 
-/obj/structure/machinery/cell_charger/attack_ai(mob/user)
+/obj/structure/machinery/cell_charger/attack_remote(mob/user)
 	return
 
 /obj/structure/machinery/cell_charger/emp_act(severity)

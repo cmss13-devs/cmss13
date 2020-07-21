@@ -48,7 +48,7 @@
 	var/announce_hacked = TRUE
 
 /obj/structure/machinery/door/airlock/bumpopen(mob/living/user as mob) //Airlocks now zap you when you 'bump' them open when they're electrified. --NeoFite
-	if(istype(user) && !issilicon(user))
+	if(istype(user) && !isremotecontrolling(user))
 		if(isElectrified())
 			if(!justzap && shock(user, 100))
 				justzap = 1
@@ -407,7 +407,7 @@
 	return
 
 /obj/structure/machinery/door/airlock/attack_hand(mob/user as mob)
-	if(!issilicon(usr))
+	if(!isremotecontrolling(usr))
 		if(isElectrified())
 			if(shock(user, 100))
 				return
@@ -492,7 +492,7 @@
 			L.light(SPAN_NOTICE("[user] lights their [L] on an electrical arc from the [src]"))
 			return
 
-	if(!issilicon(user))
+	if(!isremotecontrolling(user))
 		if(isElectrified())
 			if(shock(user, 75))
 				return

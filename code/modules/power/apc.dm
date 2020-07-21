@@ -376,7 +376,7 @@
 //Attack with an item - open/close cover, insert cell, or (un)lock interface
 /obj/structure/machinery/power/apc/attackby(obj/item/W, mob/user)
 
-	if(issilicon(user) && get_dist(src, user) > 1)
+	if(isremotecontrolling(user) && get_dist(src, user) > 1)
 		return attack_hand(user)
 	add_fingerprint(user)
 	if(iscrowbar(W) && opened)
@@ -593,7 +593,7 @@
 				SPAN_WARNING("You knock down [src]'s cover with [W]!"))
 			update_icon()
 		else
-			if(issilicon(user))
+			if(isremotecontrolling(user))
 				return attack_hand(user)
 			if(!opened && wiresexposed && (ismultitool(W) || iswirecutter(W)))
 				return attack_hand(user)
@@ -666,7 +666,7 @@
 			return
 
 
-	if(usr == user && opened && (!issilicon(user)))
+	if(usr == user && opened && (!isremotecontrolling(user)))
 		if(cell)
 			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 				to_chat(user, SPAN_WARNING("You have no idea how to remove the power cell from [src]."))
@@ -700,7 +700,7 @@
 		"chargingStatus" = charging,
 		"totalLoad" = round(lastused_total),
 		"coverLocked" = coverlocked,
-		"siliconUser" = issilicon(user),
+		"siliconUser" = isremotecontrolling(user),
 
 		"powerChannels" = list(
 			list(
@@ -823,12 +823,15 @@
 					shorted = 0
 
 /obj/structure/machinery/power/apc/proc/can_use(mob/user as mob, var/loud = 0) //used by attack_hand() and Topic()
+	if(user.client && user.client.remote_control)
+		return TRUE
+
 	if(user.stat)
 		to_chat(user, SPAN_WARNING("You must be conscious to use [src]!"))
 		return 0
 	if(!user.client)
 		return 0
-	if(!(ishuman(user) || issilicon(user)))
+	if(!(ishuman(user) || isremotecontrolling(user)))
 		to_chat(user, SPAN_WARNING("You don't have the dexterity to use [src]!"))
 		nanomanager.close_user_uis(user, src)
 		return 0
@@ -839,7 +842,7 @@
 		to_chat(user, SPAN_WARNING("You can't reach [src]!"))
 		return 0
 	autoflag = 5
-	if(issilicon(user))
+	if(isremotecontrolling(user))
 		if(aidisabled)
 			if(!loud)
 				to_chat(user, SPAN_WARNING("[src] has AI control disabled!"))
@@ -937,7 +940,7 @@
 		return 0
 
 	else if(href_list["overload"])
-		if(issilicon(usr) && !aidisabled)
+		if(isremotecontrolling(usr) && !aidisabled)
 			overload_lighting()
 
 	return 1

@@ -589,6 +589,19 @@
 
 	play_imported_sound(melody)
 
+/client
+	var/remote_control = FALSE
+
+/client/proc/toogle_door_control()
+	set name = "F: Toggle Remote Control"
+	set category = "Event"
+
+	if(!check_rights(R_FUN))
+		return
+
+	remote_control = !remote_control
+	message_admins("[key_name_admin(src)] has toggled remote control [remote_control? "on" : "off"] for themselves")
+
 /client/proc/enable_event_mob_verbs()
 	set name = "Z: Mob Event Verbs - Show"
 	set category = "Event"

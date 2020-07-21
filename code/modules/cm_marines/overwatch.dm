@@ -25,7 +25,7 @@
 /obj/structure/machinery/computer/overwatch/bullet_act(var/obj/item/projectile/Proj) //Can't shoot it
 	return FALSE
 
-/obj/structure/machinery/computer/overwatch/attack_ai(var/mob/user as mob)
+/obj/structure/machinery/computer/overwatch/attack_remote(var/mob/user as mob)
 	if(!ismaintdrone(user))
 		return attack_hand(user)
 
@@ -551,7 +551,7 @@
 		if("back")
 			state = 0
 		if("use_cam")
-			if(isAI(usr))
+			if(isremotecontrolling(usr))
 				to_chat(usr, "[htmlicon(src, usr)] [SPAN_WARNING("Unable to override console camera viewer. Track with camera instead. ")]")
 				return
 			if(current_squad)
@@ -578,7 +578,7 @@
 
 /obj/structure/machinery/computer/overwatch/on_unset_interaction(mob/user)
 	..()
-	if(!isAI(user))
+	if(!isremotecontrolling(user))
 		cam = null
 		user.reset_view(null)
 
@@ -710,7 +710,7 @@
 							R.fields["ma_crim"] += "Insubordination."
 
 						var/insub = "[htmlicon(src, usr)] [SPAN_BOLDNOTICE("[wanted_marine] has been reported for insubordination. Logging to enlistment file.")]"
-						if(isAI(usr))
+						if(isremotecontrolling(usr))
 							usr << insub
 						else
 							visible_message(insub)

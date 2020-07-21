@@ -487,7 +487,7 @@
 //END HACKING//
 ///////////////
 
-/obj/structure/machinery/alarm/attack_ai(mob/user)
+/obj/structure/machinery/alarm/attack_remote(mob/user)
 	return interact(user)
 
 /obj/structure/machinery/alarm/attack_hand(mob/user)
@@ -503,19 +503,19 @@
 		return
 
 	if ( (get_dist(src, user) > 1 ))
-		if (!issilicon(user))
+		if (!isremotecontrolling(user))
 			user.unset_interaction()
 			close_browser(user, "air_alarm")
 			close_browser(user, "AAlarmwires")
 			return
 
 
-		else if (issilicon(user) && aidisabled)
+		else if (isremotecontrolling(user) && aidisabled)
 			to_chat(user, "AI control for this Air Alarm interface has been disabled.")
 			close_browser(user, "air_alarm")
 			return
 
-	if(wiresexposed && (!issilicon(user)))
+	if(wiresexposed && (!isremotecontrolling(user)))
 		var/t1 = text("<html><head><title>[alarm_area.name] Air Alarm Wires</title></head><body><B>Access Panel</B><br>\n")
 		var/list/wirecolors = list(
 			"Orange" = 1,
@@ -545,7 +545,7 @@
 	return
 
 /obj/structure/machinery/alarm/proc/return_text(mob/user)
-	if(!(issilicon(user)) && locked)
+	if(!(isremotecontrolling(user)) && locked)
 		return "<html><head><title>\The [src]</title></head><body>[return_status()]<hr>[rcon_text()]<hr><i>(Swipe ID card to unlock interface)</i></body></html>"
 	else
 		return "<html><head><title>\The [src]</title></head><body>[return_status()]<hr>[rcon_text()]<hr>[return_controls()]</body></html>"
@@ -786,7 +786,7 @@ table tr:first-child th:first-child { border: none;}
 	return output
 
 /obj/structure/machinery/alarm/Topic(href, href_list)
-	if(..() || !( Adjacent(usr) || issilicon(usr)) ) // dont forget calling super in machine Topics -walter0o
+	if(..() || !( Adjacent(usr) || isremotecontrolling(usr)) ) // dont forget calling super in machine Topics -walter0o
 		usr.unset_interaction()
 		close_browser(usr, "air_alarm")
 		close_browser(usr, "AAlarmwires")
@@ -820,7 +820,7 @@ table tr:first-child th:first-child { border: none;}
 			target_temperature = input_temperature + T0C
 
 	// hrefs that need the AA unlocked -walter0o
-	if(!locked || issilicon(usr))
+	if(!locked || isremotecontrolling(usr))
 
 		if(href_list["command"])
 			var/device_id = href_list["id_tag"]
@@ -843,7 +843,7 @@ table tr:first-child th:first-child { border: none;}
 					var/list/selected = TLV[env]
 					var/list/thresholds = list("lower bound", "low warning", "high warning", "upper bound")
 					var/newval = input("Enter [thresholds[threshold]] for [env]", "Alarm triggers", selected[threshold]) as null|num
-					if (isnull(newval) || ..() || (locked && !issilicon(usr)))
+					if (isnull(newval) || ..() || (locked && !isremotecontrolling(usr)))
 						return
 					if (newval<0)
 						selected[threshold] = -1.0

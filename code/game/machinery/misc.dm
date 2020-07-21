@@ -90,7 +90,7 @@ var/list/alldepartments = list()
 /obj/structure/machinery/faxmachine/process()
 	return 0
 
-/obj/structure/machinery/faxmachine/attack_ai(mob/user as mob)
+/obj/structure/machinery/faxmachine/attack_remote(mob/user as mob)
 	return attack_hand(user)
 
 /obj/structure/machinery/faxmachine/attack_hand(mob/user as mob)

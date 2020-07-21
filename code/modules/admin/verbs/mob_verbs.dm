@@ -127,16 +127,37 @@
 		to_chat(src, "Only administrators may use this command.")
 		return
 
-	var/msg = input("You hear a voice in your head...:", text("Subtle PM to [M.key]")) as text
+	var/list/subtle_message_options = list("Voice in head", "Weston-Yamada", "USCM High Command", "Faction-specific")
+
+	var/message_option = input("Choose the method of subtle messaging", "") in subtle_message_options
+
+	if(message_option == "Faction-specific")
+		message_option = input("Choose which faction", "")
+
+	if(!message_option)
+		return
+
+	var/msg = input("Contents of the message", text("Subtle PM to [M.key]")) as text
 
 	if (!msg)
 		return
-	if(usr)
-		if (usr.client)
-			if(usr.client.admin_holder && (usr.client.admin_holder.rights & R_MOD))
-				to_chat(M, SPAN_ANNOUNCEMENT_HEADER_BLUE("You hear a voice in your head... [msg]"))
 
-	message_staff(WRAP_STAFF_LOG(usr, "subtle messaged [key_name(M)], saying \"[msg]\" in [get_area(M)] ([M.x],[M.y],[M.z])."), M.x, M.y, M.z)
+	switch(message_option)
+		if("Voice in head")
+			to_chat(M, SPAN_ANNOUNCEMENT_HEADER_BLUE("You hear a voice in your head... [msg]"))
+		else
+			var/mob/living/carbon/human/H = M
+
+			if(!istype(H))
+				to_chat(usr, "The person you are trying to contact is not human")
+				return
+
+			if(!istype(H.wear_ear, /obj/item/device/radio/headset))
+				to_chat(usr, "The person you are trying to contact is not wearing a headset")
+				return
+			to_chat(H, SPAN_DANGER("Message received through headset. [message_option] Transmission <b>\"[msg]\"</b>"))
+
+	message_staff(WRAP_STAFF_LOG(usr, "subtle messaged [key_name(M)] as [message_option], saying \"[msg]\" in [get_area(M)] ([M.x],[M.y],[M.z])."), M.x, M.y, M.z)
 
 /client/proc/cmd_admin_direct_narrate(var/mob/M)
 	set name = "Narrate"

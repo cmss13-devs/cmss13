@@ -403,8 +403,12 @@
 
 // ai attack - make lights flicker, because why not
 
-/obj/structure/machinery/light/attack_ai(mob/user)
+/obj/structure/machinery/light/attack_remote(mob/user)
 	src.flicker(1)
+	return
+
+/obj/structure/machinery/light/AIShiftClick()
+	broken()
 	return
 
 /obj/structure/machinery/light/attack_animal(mob/living/M)

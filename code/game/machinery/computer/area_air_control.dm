@@ -17,7 +17,7 @@
 		//So the scrubbers have time to spawn
 		add_timer(CALLBACK(src, .proc/scanscrubbers), 10)
 
-	attack_ai(var/mob/user as mob)
+	attack_remote(var/mob/user as mob)
 		return src.attack_hand(user)
 
 	attack_hand(var/mob/user as mob)

@@ -46,6 +46,10 @@
 	langchat_image.alpha = 0
 	langchat_image.color = langchat_color
 	langchat_image.appearance_flags = KEEP_APART
+
+	if(appearance_flags & PIXEL_SCALE)
+		langchat_image.appearance_flags |= PIXEL_SCALE
+
 	langchat_image.maptext = text_to_display
 	langchat_image.maptext_y = langchat_height
 	langchat_image.maptext_width = LANGCHAT_WIDTH

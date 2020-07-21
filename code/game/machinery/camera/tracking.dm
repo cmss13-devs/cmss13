@@ -218,7 +218,7 @@
 		return 0
 	return 1
 
-/obj/structure/machinery/camera/attack_ai(var/mob/living/silicon/ai/user as mob)
+/obj/structure/machinery/camera/attack_remote(var/mob/living/silicon/ai/user as mob)
 	if (!istype(user))
 		return
 	if (!src.can_use())
@@ -226,7 +226,7 @@
 	user.eyeobj.setLoc(get_turf(src))
 
 
-/mob/living/silicon/ai/attack_ai(var/mob/user as mob)
+/mob/living/silicon/ai/attack_remote(var/mob/user as mob)
 	ai_camera_list()
 
 /proc/camera_sort(list/L) // TODO: replace this bubblesort with a mergesort - spookydonut

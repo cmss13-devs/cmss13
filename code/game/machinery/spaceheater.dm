@@ -112,7 +112,7 @@
 /obj/structure/machinery/space_heater/Topic(href, href_list)
 	if (usr.stat)
 		return
-	if ((in_range(src, usr) && istype(src.loc, /turf)) || (issilicon(usr)))
+	if ((in_range(src, usr) && istype(src.loc, /turf)) || (isremotecontrolling(usr)))
 		usr.set_interaction(src)
 
 		switch(href_list["op"])

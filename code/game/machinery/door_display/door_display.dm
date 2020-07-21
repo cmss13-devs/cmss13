@@ -67,7 +67,7 @@
 	return 1
 
 // Allows AIs to use door_display, see human attack_hand function below
-/obj/structure/machinery/door_display/attack_ai(var/mob/user as mob)
+/obj/structure/machinery/door_display/attack_remote(var/mob/user as mob)
 	return attack_hand(user)
 
 

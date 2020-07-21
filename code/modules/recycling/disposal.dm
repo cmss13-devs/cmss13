@@ -132,7 +132,7 @@
 /obj/structure/machinery/disposal/MouseDrop_T(mob/target, mob/user)
 	return
 /*
-	if(!istype(target) || target.anchored || target.buckled || get_dist(user, src) > 1 || get_dist(user, target) > 1 || user.is_mob_incapacitated(TRUE) || isAI(user) || target.mob_size >= MOB_SIZE_BIG)
+	if(!istype(target) || target.anchored || target.buckled || get_dist(user, src) > 1 || get_dist(user, target) > 1 || user.is_mob_incapacitated(TRUE) || isremotecontrolling(user) || target.mob_size >= MOB_SIZE_BIG)
 		return
 	if(!(ishuman(target)) || !(ishuman(user))) return
 	if(isanimal(user) && target != user) return //Animals cannot put mobs other than themselves into disposal
@@ -187,7 +187,7 @@
 		update()
 
 //AI as human but can't flush
-/obj/structure/machinery/disposal/attack_ai(mob/user as mob)
+/obj/structure/machinery/disposal/attack_remote(mob/user as mob)
 	interact(user, 1)
 
 //Human interact with machine

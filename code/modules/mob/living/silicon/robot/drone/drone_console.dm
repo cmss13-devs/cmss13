@@ -11,7 +11,7 @@
 	//Used to enable or disable drone fabrication.
 	var/obj/structure/machinery/drone_fabricator/dronefab
 
-/obj/structure/machinery/computer/drone_control/attack_ai(var/mob/user as mob)
+/obj/structure/machinery/computer/drone_control/attack_remote(var/mob/user as mob)
 	return src.attack_hand(user)
 
 /obj/structure/machinery/computer/drone_control/attack_hand(var/mob/user as mob)
@@ -49,7 +49,7 @@
 		to_chat(usr, SPAN_DANGER("Access denied."))
 		return
 
-	if ((usr.contents.Find(src) || (in_range(src, usr) && istype(src.loc, /turf))) || (issilicon(usr)))
+	if ((usr.contents.Find(src) || (in_range(src, usr) && istype(src.loc, /turf))) || (isremotecontrolling(usr)))
 		usr.set_interaction(src)
 
 	if (href_list["setarea"])

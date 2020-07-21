@@ -163,7 +163,7 @@
 			nanomanager.update_uis(src) // update all UIs attached to src
 		return
 
-/obj/structure/machinery/chem_dispenser/attack_ai(mob/user as mob)
+/obj/structure/machinery/chem_dispenser/attack_remote(mob/user as mob)
 	return src.attack_hand(user)
 
 /obj/structure/machinery/chem_dispenser/attack_hand(mob/user as mob)

@@ -139,5 +139,5 @@
 	A.attack_robot(src)
 
 /atom/proc/attack_robot(mob/user as mob)
-	attack_ai(user)
+	attack_remote(user)
 	return

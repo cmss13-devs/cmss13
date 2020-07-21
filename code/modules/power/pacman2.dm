@@ -113,7 +113,7 @@
 
 		interact(user)
 
-	attack_ai(mob/user as mob)
+	attack_remote(mob/user as mob)
 		interact(user)
 
 	attack_paw(mob/user as mob)
@@ -122,7 +122,7 @@
 	proc
 		interact(mob/user)
 			if (get_dist(src, user) > 1 )
-				if (!isAI(user))
+				if (!isremotecontrolling(user))
 					user.machine = null
 					close_browser(user, "port_gen")
 					return

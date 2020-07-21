@@ -323,23 +323,23 @@
 			return 1
 
 		if("module")
-			if(issilicon(user))
+			if(isremotecontrolling(user))
 				if(usr:module)
 					return 1
 				user:pick_module()
 			return 1
 
 		if("radio")
-			if(issilicon(user))
+			if(isremotecontrolling(user))
 				user:radio_menu()
 			return 1
 		if("panel")
-			if(issilicon(user))
+			if(isremotecontrolling(user))
 				user:installed_modules()
 			return 1
 
 		if("store")
-			if(issilicon(user))
+			if(isremotecontrolling(user))
 				user:uneq_active()
 			return 1
 

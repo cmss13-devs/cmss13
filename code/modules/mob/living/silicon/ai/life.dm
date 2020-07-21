@@ -38,7 +38,7 @@
 		handle_stunned()
 
 		//stage = 1
-		//if (isAI(src)) // Are we not sure what we are?
+		//if (isremotecontrolling(src)) // Are we not sure what we are?
 		var/blind = 0
 		//stage = 2
 		var/area/loc = null
@@ -160,7 +160,7 @@
 									to_chat(src, "Receiving control information from APC.")
 									sleep(2)
 									//bring up APC dialog
-									theAPC.attack_ai(src)
+									theAPC.attack_remote(src)
 									src:aiRestorePowerRoutine = 3
 									to_chat(src, "Here are your current laws:")
 									src.show_laws()

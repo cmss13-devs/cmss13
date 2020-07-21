@@ -47,7 +47,7 @@
 			user.visible_message(SPAN_DANGER("[user] has connected the [src]'s flashbulb!"), SPAN_DANGER("You connect the [src]'s flashbulb!"))
 
 //Let the AI trigger them directly.
-/obj/structure/machinery/flasher/attack_ai()
+/obj/structure/machinery/flasher/attack_remote()
 	if (src.anchored)
 		return src.flash()
 	else
@@ -117,7 +117,7 @@
 			user.show_message(text(SPAN_DANGER("[src] is now secured.")))
 			src.overlays += "[base_state]-s"
 
-/obj/structure/machinery/flasher_button/attack_ai(mob/user as mob)
+/obj/structure/machinery/flasher_button/attack_remote(mob/user as mob)
 	return src.attack_hand(user)
 
 /obj/structure/machinery/flasher_button/attackby(obj/item/W, mob/user as mob)

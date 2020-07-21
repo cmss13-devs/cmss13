@@ -11,12 +11,12 @@
 #define IS_AI 1
 #define IS_ROBOT 2
 
-/mob/living/silicon/say_understands(var/other,var/datum/language/speaking = null)
+/mob/living/silicon/say_understands(var/mob/other,var/datum/language/speaking = null)
 	//These only pertain to common. Languages are handled by mob/say_understands()
 	if (!speaking)
 		if (istype(other, /mob/living/carbon))
 			return 1
-		if (issilicon(other))
+		if (isremotecontrolling(other))
 			return 1
 		if (istype(other, /mob/living/brain))
 			return 1
@@ -42,7 +42,7 @@
 		return emote(copytext(message,2))
 
 	var/bot_type = 0			//Let's not do a fuck ton of type checks, thanks.
-	if(isAI(src))
+	if(isremotecontrolling(src))
 		bot_type = IS_AI
 	else if(isrobot(src))
 		bot_type = IS_ROBOT

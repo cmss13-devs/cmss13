@@ -97,7 +97,7 @@
 		if("main") state = STATE_DEFAULT
 
 		if("login")
-			if(issilicon(usr))
+			if(isremotecontrolling(usr))
 				return
 			var/mob/living/carbon/human/C = usr
 			var/obj/item/card/id/I = C.get_active_hand()
@@ -352,7 +352,7 @@
 
 	updateUsrDialog()
 
-/obj/structure/machinery/computer/communications/attack_ai(var/mob/user as mob)
+/obj/structure/machinery/computer/communications/attack_remote(var/mob/user as mob)
 	return attack_hand(user)
 
 /obj/structure/machinery/computer/communications/attack_hand(var/mob/user as mob)

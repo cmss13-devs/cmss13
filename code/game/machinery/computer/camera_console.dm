@@ -12,11 +12,11 @@
 	circuit = /obj/item/circuitboard/computer/security
 
 
-	attack_ai(var/mob/user as mob)
+	attack_remote(var/mob/user as mob)
 		return attack_hand(user)
 
 	check_eye(mob/user)
-		if (user.is_mob_incapacitated() || ((get_dist(user, src) > 1 || !( user.canmove ) || user.blinded) && !issilicon(user))) //user can't see - not sure why canmove is here.
+		if (user.is_mob_incapacitated() || ((get_dist(user, src) > 1 || !( user.canmove ) || user.blinded) && !isremotecontrolling(user))) //user can't see - not sure why canmove is here.
 			user.unset_interaction()
 			return
 		else if ( !current || !current.can_use() ) //camera doesn't work
@@ -41,7 +41,7 @@
 			return
 		if(inoperable())	return
 
-		if(!isAI(user))
+		if(!isremotecontrolling(user))
 			user.set_interaction(src)
 			
 		var/list/D = list()
@@ -74,13 +74,13 @@
 
 	proc/switch_to_camera(mob/user, obj/structure/machinery/camera/C)
 		//don't need to check if the camera works for AI because the AI jumps to the camera location and doesn't actually look through cameras.
-		if(isAI(user))
+		if(isremotecontrolling(user))
 			var/mob/living/silicon/ai/A = user
 			A.eyeobj.setLoc(get_turf(C))
 			A.client.eye = A.eyeobj
 			return 1
 
-		if (!C.can_use() || user.is_mob_incapacitated() || (get_dist(user, src) > 1 || user.interactee != src || user.blinded || !( user.canmove ) && !issilicon(user)))
+		if (!C.can_use() || user.is_mob_incapacitated() || (get_dist(user, src) > 1 || user.interactee != src || user.blinded || !( user.canmove ) && !isremotecontrolling(user)))
 			return 0
 		src.current = C
 		use_power(50)

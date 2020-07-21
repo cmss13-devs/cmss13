@@ -10,7 +10,7 @@
 	idle_power_usage = 2
 	active_power_usage = 4
 
-/obj/structure/machinery/igniter/attack_ai(mob/user as mob)
+/obj/structure/machinery/igniter/attack_remote(mob/user as mob)
 	return src.attack_hand(user)
 
 /obj/structure/machinery/igniter/attack_hand(mob/user as mob)
@@ -81,7 +81,7 @@
 			else
 				icon_state = "[base_state]-p"
 
-/obj/structure/machinery/sparker/attack_ai()
+/obj/structure/machinery/sparker/attack_remote()
 	if (src.anchored)
 		return src.ignite()
 	else
@@ -113,7 +113,7 @@
 	ignite()
 	..(severity)
 
-/obj/structure/machinery/ignition_switch/attack_ai(mob/user as mob)
+/obj/structure/machinery/ignition_switch/attack_remote(mob/user as mob)
 	return attack_hand(user)
 
 /obj/structure/machinery/ignition_switch/attack_hand(mob/user as mob)

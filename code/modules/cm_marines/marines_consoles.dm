@@ -38,7 +38,7 @@
 		..()
 
 
-/obj/structure/machinery/computer/marine_card/attack_ai(var/mob/user as mob)
+/obj/structure/machinery/computer/marine_card/attack_remote(var/mob/user as mob)
 	return attack_hand(user)
 
 /obj/structure/machinery/computer/marine_card/bullet_act()
@@ -375,7 +375,7 @@
 		..()
 
 
-/obj/structure/machinery/computer/squad_changer/attack_ai(var/mob/user as mob)
+/obj/structure/machinery/computer/squad_changer/attack_remote(var/mob/user as mob)
 	return attack_hand(user)
 
 /obj/structure/machinery/computer/squad_changer/bullet_act()
@@ -495,7 +495,7 @@
 	tracked = list()
 	..()
 
-/obj/structure/machinery/computer/crew/attack_ai(mob/living/user)
+/obj/structure/machinery/computer/crew/attack_remote(mob/living/user)
 	attack_hand(user)
 	ui_interact(user)
 

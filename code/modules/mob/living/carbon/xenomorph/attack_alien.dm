@@ -277,7 +277,7 @@
 							to_chat(M, SPAN_WARNING("You should not harm this host! It has a sister inside."))
 							return FALSE
 
-			if(issilicon(src) && stat != DEAD) //A bit of visual flavor for attacking Cyborgs. Sparks!
+			if(isremotecontrolling(src) && stat != DEAD) //A bit of visual flavor for attacking Cyborgs. Sparks!
 				var/datum/effect_system/spark_spread/spark_system
 				spark_system = new /datum/effect_system/spark_spread()
 				spark_system.set_up(5, 0, src)

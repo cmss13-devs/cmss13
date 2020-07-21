@@ -114,7 +114,7 @@
 		if(was_on)
 			turn_on()
 
-/obj/structure/machinery/bot/attack_ai(mob/user as mob)
+/obj/structure/machinery/bot/attack_remote(mob/user as mob)
 	attack_hand(user)
 
 /obj/structure/machinery/bot/attack_hand(var/mob/living/carbon/human/user)

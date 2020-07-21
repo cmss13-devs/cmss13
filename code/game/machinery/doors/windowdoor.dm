@@ -145,7 +145,7 @@
 	return
 
 
-/obj/structure/machinery/door/window/attack_ai(mob/user as mob)
+/obj/structure/machinery/door/window/attack_remote(mob/user as mob)
 	return src.attack_hand(user)
 
 /obj/structure/machinery/door/window/attack_hand(mob/user)

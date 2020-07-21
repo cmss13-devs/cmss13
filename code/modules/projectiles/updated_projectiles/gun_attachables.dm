@@ -1231,7 +1231,7 @@ Defined in conflicts.dm of the #defines folder.
 
 	if(grenade_grief_check(G))
 		to_chat(user, SPAN_WARNING("\The [name]'s IFF inhibitor prevents you from firing!"))
-		message_staff("[key_name(user)] attempted to prime \a [G.name] in [get_area(src)] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>)")
+		msg_admin_niche("[key_name(user)] attempted to prime \a [G.name] in [get_area(src)] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>)")
 		return
 
 	playsound(user.loc, fire_sound, 50, 1)

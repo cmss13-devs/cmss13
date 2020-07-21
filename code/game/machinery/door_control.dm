@@ -38,7 +38,7 @@
 	idle_power_usage = 2
 	active_power_usage = 4
 
-/obj/structure/machinery/door_control/attack_ai(mob/user as mob)
+/obj/structure/machinery/door_control/attack_remote(mob/user as mob)
 	if(wires & 2)
 		return src.attack_hand(user)
 	else
@@ -189,7 +189,7 @@
 	else
 		icon_state = "doorctrl0"
 
-/obj/structure/machinery/driver_button/attack_ai(mob/user as mob)
+/obj/structure/machinery/driver_button/attack_remote(mob/user as mob)
 	return src.attack_hand(user)
 
 /obj/structure/machinery/driver_button/attackby(obj/item/W, mob/user as mob)

@@ -10,7 +10,6 @@ var/list/forbidden_varedit_object_types = list(
 		to_chat(src, "Game hasn't started yet.")
 	else
 		src.modify_variables(ticker)
-		 
 
 /client/proc/mod_list_add_ass() //haha
 	var/class = "text"
@@ -139,6 +138,8 @@ var/list/forbidden_varedit_object_types = list(
 			L[var_value] = mod_list_add_ass() //haha
 		if("No")
 			L += var_value
+	
+	message_admins("[key_name_admin(src)] added a new element to a list with a key of '[var_value]' and an associated value of [isnum(var_value)? "null" : L[var_value]]", 1)
 
 /client/proc/mod_list(var/list/L)
 	if(!check_rights(R_VAREDIT))	return
@@ -304,6 +305,8 @@ var/list/forbidden_varedit_object_types = list(
 			var/temp_var = mod_list_add_ass()
 			if(temp_var)
 				L[variable] = temp_var
+
+	message_admins("[key_name_admin(src)] modified a list's '[variable]': [L.Find(variable)] => [L[L.Find(variable)]]", 1)
 
 
 /client/proc/modify_variables(var/atom/O, var/param_var_name = null, var/autodetect_class = 0)

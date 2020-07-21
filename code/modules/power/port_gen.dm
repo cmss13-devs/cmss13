@@ -268,12 +268,12 @@ display round(lastgen) and phorontank amount
 
 	interact(user)
 
-/obj/structure/machinery/power/port_gen/pacman/attack_ai(mob/user as mob)
+/obj/structure/machinery/power/port_gen/pacman/attack_remote(mob/user as mob)
 	interact(user)
 
 /obj/structure/machinery/power/port_gen/pacman/interact(mob/user)
 	if (get_dist(src, user) > 1 )
-		if (!isAI(user))
+		if (!isremotecontrolling(user))
 			user.unset_interaction()
 			close_browser(user, "port_gen")
 			return

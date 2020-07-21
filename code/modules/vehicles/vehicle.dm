@@ -118,7 +118,7 @@
 		if(was_on)
 			turn_on()
 
-/obj/vehicle/attack_ai(mob/user as mob)
+/obj/vehicle/attack_remote(mob/user as mob)
 	return
 
 //-------------------------------------------

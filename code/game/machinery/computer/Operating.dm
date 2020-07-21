@@ -18,7 +18,7 @@
 			table.computer = src
 			break
 
-/obj/structure/machinery/computer/operating/attack_ai(mob/user)
+/obj/structure/machinery/computer/operating/attack_remote(mob/user)
 	add_fingerprint(user)
 	if(inoperable())
 		return
@@ -34,7 +34,7 @@
 
 /obj/structure/machinery/computer/operating/interact(mob/user)
 	if ( (get_dist(src, user) > 1 ) || (inoperable()) )
-		if (!issilicon(user))
+		if (!isremotecontrolling(user))
 			user.unset_interaction()
 			close_browser(user, "op")
 			return
@@ -72,7 +72,7 @@
 /obj/structure/machinery/computer/operating/Topic(href, href_list)
 	if(..())
 		return
-	if ((usr.contents.Find(src) || (in_range(src, usr) && istype(src.loc, /turf))) || (issilicon(usr)))
+	if ((usr.contents.Find(src) || (in_range(src, usr) && istype(src.loc, /turf))) || (isremotecontrolling(usr)))
 		usr.set_interaction(src)
 	return
 

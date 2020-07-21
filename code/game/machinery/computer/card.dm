@@ -65,7 +65,7 @@
 
 	ui_interact(user)
 
-/obj/structure/machinery/computer/card/attack_ai(var/mob/user as mob)
+/obj/structure/machinery/computer/card/attack_remote(var/mob/user as mob)
 	return attack_hand(user)
 
 /obj/structure/machinery/computer/card/attack_hand(mob/user as mob)

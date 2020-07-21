@@ -562,10 +562,10 @@ var/datum/controller/supply/supply_controller = new()
 	name = "Supply Manifest"
 
 
-/obj/structure/machinery/computer/ordercomp/attack_ai(var/mob/user as mob)
+/obj/structure/machinery/computer/ordercomp/attack_remote(var/mob/user as mob)
 	return attack_hand(user)
 
-/obj/structure/machinery/computer/supplycomp/attack_ai(var/mob/user as mob)
+/obj/structure/machinery/computer/supplycomp/attack_remote(var/mob/user as mob)
 	return attack_hand(user)
 
 /obj/structure/machinery/computer/ordercomp/attack_hand(var/mob/user as mob)
@@ -835,7 +835,7 @@ var/datum/controller/supply/supply_controller = new()
 			var/mob/living/carbon/human/H = usr
 			idname = H.get_authentification_name()
 			idrank = H.get_assignment()
-		else if(issilicon(usr))
+		else if(isremotecontrolling(usr))
 			idname = usr.real_name
 
 		supply_controller.ordernum++

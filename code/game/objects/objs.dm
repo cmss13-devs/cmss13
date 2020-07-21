@@ -54,7 +54,7 @@
 			if (!(usr in nearby))
 				if (usr.client && usr.interactee==src) // && M.interactee == src is omitted because if we triggered this by using the dialog, it doesn't matter if our machine changed in between triggering it and this - the dialog is probably still supposed to refresh.
 					is_in_use = 1
-					attack_ai(usr)
+					attack_remote(usr)
 		in_use = is_in_use
 
 /obj/proc/updateDialog()
@@ -107,7 +107,7 @@
 	if(can_buckle) manual_unbuckle(user)
 	else . = ..()
 
-/obj/attack_ai(mob/user)
+/obj/attack_remote(mob/user)
 	if(can_buckle) manual_unbuckle(user)
 	else . = ..()
 

@@ -186,7 +186,7 @@
 		return 0
 	if(user.is_mob_incapacitated(TRUE) || user.lying)
 		return 0
-	if(issilicon(user))
+	if(isremotecontrolling(user))
 		to_chat(user, SPAN_NOTICE("You need hands for this."))
 		return 0
 	return 1

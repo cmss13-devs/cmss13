@@ -210,7 +210,7 @@
             interact(usr)
 
         if("login")
-            if(issilicon(usr))
+            if(isremotecontrolling(usr))
                 return
             var/mob/living/carbon/human/C = usr
             var/obj/item/card/id/I = C.get_active_hand()

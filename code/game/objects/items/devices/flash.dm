@@ -68,7 +68,7 @@
 		if(!flashfail)
 			M.KnockDown(10)
 
-	else if(issilicon(M))
+	else if(isremotecontrolling(M))
 		M.KnockDown(rand(5,10))
 	else
 		flashfail = 1
@@ -86,7 +86,7 @@
 
 	if(!flashfail)
 	//	flick("flash2", src)
-		if(!issilicon(M))
+		if(!isremotecontrolling(M))
 
 			user.visible_message("<span class='disarm'>[user] blinds [M] with the flash!</span>")
 		else

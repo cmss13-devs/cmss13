@@ -90,7 +90,7 @@ var/const/HOLOPAD_MODE = 0
 		else
 			to_chat(user, SPAN_NOTICE("A request for AI presence was already sent recently."))
 
-/obj/structure/machinery/hologram/holopad/attack_ai(mob/living/silicon/ai/user)
+/obj/structure/machinery/hologram/holopad/attack_remote(mob/living/silicon/ai/user)
 	if (!istype(user))
 		return
 	/*There are pretty much only three ways to interact here.

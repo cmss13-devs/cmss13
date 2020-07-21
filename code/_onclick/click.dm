@@ -159,7 +159,7 @@
 				examine(user)
 			user.face_atom(src)
 
-		if(isAI(user))
+		if(isremotecontrolling(user))
 			examine(user)
 		return TRUE
 

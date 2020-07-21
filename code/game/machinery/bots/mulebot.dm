@@ -185,7 +185,7 @@
 	return 1
 
 
-/obj/structure/machinery/bot/mulebot/attack_ai(var/mob/user)
+/obj/structure/machinery/bot/mulebot/attack_remote(var/mob/user)
 	user.set_interaction(src)
 	interact(user, 1)
 

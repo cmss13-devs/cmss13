@@ -122,7 +122,7 @@
 				to_chat(user, "You must open the cover first!")
 		return
 
-	attack_ai(var/mob/user)
+	attack_remote(var/mob/user)
 		interact(user, 1)
 
 	attack_hand(var/mob/user)
@@ -180,7 +180,7 @@ Transponder Codes:<UL>"}
 		..()
 		if (usr.stat)
 			return
-		if ((in_range(src, usr) && istype(src.loc, /turf)) || (issilicon(usr)))
+		if ((in_range(src, usr) && istype(src.loc, /turf)) || (isremotecontrolling(usr)))
 			if(open && !locked)
 				usr.set_interaction(src)
 

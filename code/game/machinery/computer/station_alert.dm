@@ -8,7 +8,7 @@
 	processing = TRUE
 
 
-/obj/structure/machinery/computer/station_alert/attack_ai(mob/user)
+/obj/structure/machinery/computer/station_alert/attack_remote(mob/user)
 	add_fingerprint(user)
 	if(inoperable())
 		return

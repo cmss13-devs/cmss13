@@ -134,7 +134,7 @@
 	var/command = 0 //Is this a commander? This var actually sets the message size. 2 is normal, 3 is big, 4 is OMGHUGE
 
 	if(M)
-		if(isAI(M))
+		if(isremotecontrolling(M))
 			command = 3
 		if(ishuman(M))
 			var/mob/living/carbon/human/H = M

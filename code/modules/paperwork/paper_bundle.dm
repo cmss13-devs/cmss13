@@ -103,7 +103,7 @@
 				dat+= "<DIV STYLE='float;left; text-align:right; with:33.33333%'></DIV>"
 		if(istype(src[page], /obj/item/paper))
 			var/obj/item/paper/P = src[page]
-			if(!(istype(usr, /mob/living/carbon/human) || istype(usr, /mob/dead/observer) || issilicon(usr)))
+			if(!(istype(usr, /mob/living/carbon/human) || istype(usr, /mob/dead/observer) || isremotecontrolling(usr)))
 				dat+= "<BODY class='paper'>[stars(P.info)][P.stamps]</BODY>"
 			else
 				dat+= "<BODY class='paper'>[P.info][P.stamps]</BODY>"

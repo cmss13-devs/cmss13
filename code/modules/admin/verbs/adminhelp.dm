@@ -104,7 +104,7 @@ var/global/list/ahelp_msgs = list()
 					if(found)
 						if(!(found in mobs_found))
 							mobs_found += found
-							if(!ai_found && isAI(found))
+							if(!ai_found && isremotecontrolling(found))
 								ai_found = 1
 							msg += "<b><font color='black'>[original_word] (<A HREF='?_src_=admin_holder;adminmoreinfo;extra=\ref[found]'>?</A>)</font></b> "
 							continue

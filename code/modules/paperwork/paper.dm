@@ -68,7 +68,7 @@
 // I didn't like the idea that people can read tiny pieces of paper from across the room.
 // Now you need to be next to the paper in order to read it.
 	if(in_range(user, src) || istype(user, /mob/dead/observer))
-		if(!(istype(user, /mob/dead/observer) || istype(user, /mob/living/carbon/human) || issilicon(user)))
+		if(!(istype(user, /mob/dead/observer) || istype(user, /mob/living/carbon/human) || isremotecontrolling(user)))
 			// Show scrambled paper if they aren't a ghost, human, or silicone.
 			show_browser(user, "<BODY class='paper'>[stars(info)][stamps]</BODY>", name, name)
 			onclose(user, name)
@@ -104,7 +104,7 @@
 				spam_flag = 0
 	return
 
-/obj/item/paper/attack_ai(var/mob/living/silicon/ai/user as mob)
+/obj/item/paper/attack_remote(var/mob/living/silicon/ai/user as mob)
 	var/dist
 	if(istype(user) && user.camera) //is AI
 		dist = get_dist(src, user.camera)

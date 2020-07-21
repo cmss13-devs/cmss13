@@ -85,7 +85,7 @@
 	src.interact(usr)
 
 /mob/living/silicon/robot/proc/interact(mob/user)
-	if(wiresexposed && (!issilicon(user)))
+	if(wiresexposed && (!isremotecontrolling(user)))
 		user.set_interaction(src)
 		var/t1 = text("<B>Access Panel</B><br>\n")
 		var/list/Borgwires = list(
@@ -112,7 +112,7 @@
 
 /mob/living/silicon/robot/Topic(href, href_list)
 	..()
-	if (((in_range(src, usr) && istype(src.loc, /turf))) && !issilicon(usr))
+	if (((in_range(src, usr) && istype(src.loc, /turf))) && !isremotecontrolling(usr))
 		usr.set_interaction(src)
 		if (href_list["borgwires"])
 			var/t1 = text2num(href_list["borgwires"])

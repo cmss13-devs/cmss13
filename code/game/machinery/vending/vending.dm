@@ -494,7 +494,7 @@
 		to_chat(usr, SPAN_NOTICE(" You remove the [ewallet] from the [src]"))
 		ewallet = null
 
-	if (issilicon(usr) || (usr.contents.Find(src) || (in_range(src, usr) && istype(src.loc, /turf))))
+	if (isremotecontrolling(usr) || (usr.contents.Find(src) || (in_range(src, usr) && istype(src.loc, /turf))))
 		usr.set_interaction(src)
 		if ((href_list["vend"]) && vend_ready && !currently_vending)
 

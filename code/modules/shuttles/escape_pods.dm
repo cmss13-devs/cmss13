@@ -422,7 +422,7 @@ As such, a new tracker datum must be constructed to follow proper child inherita
 /obj/structure/machinery/door/airlock/evacuation/attack_alien() 
 	return FALSE //Probably a better idea that these cannot be forced open.
 
-/obj/structure/machinery/door/airlock/evacuation/attack_ai() 
+/obj/structure/machinery/door/airlock/evacuation/attack_remote() 
 	return FALSE
 
 #undef STATE_IDLE

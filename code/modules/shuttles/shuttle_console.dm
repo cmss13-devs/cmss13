@@ -17,6 +17,22 @@
 	var/abort_timer = 100 //10 seconds
 	var/link = 0 // Does this terminal activate the transport system?
 
+	var/datum/shuttle/ferry/shuttle_datum
+
+/obj/structure/machinery/computer/shuttle_control/Initialize()
+	. = ..()
+	shuttle_datum = shuttle_controller.shuttles[shuttle_tag]
+
+/obj/structure/machinery/computer/shuttle_control/proc/get_shuttle()
+	var/datum/shuttle/ferry/shuttle = shuttle_controller.shuttles[shuttle_tag]
+
+	if(shuttle_datum)
+		shuttle = shuttle_datum
+	else
+		shuttle_datum = shuttle
+
+	return shuttle
+
 /obj/structure/machinery/computer/shuttle_control/attack_hand(mob/user)
 	if(..(user))
 		return
@@ -27,11 +43,12 @@
 
 	user.set_interaction(src)
 
-	var/datum/shuttle/ferry/shuttle = shuttle_controller.shuttles[shuttle_tag]
+	var/datum/shuttle/ferry/shuttle = get_shuttle()
+
 	if(!shuttle)
 		log_debug("Shuttle control computer failed to find shuttle with tag '[shuttle_tag]'!")
 		return
-
+	
 	if(!isXeno(user) && (onboard || z == 1) && !shuttle.iselevator)
 		if(shuttle.queen_locked)
 			if(onboard && (isSynth(user) || user.job== "Pilot Officer"))
@@ -76,7 +93,7 @@
 
 /obj/structure/machinery/computer/shuttle_control/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 0)
 	var/data[0]
-	var/datum/shuttle/ferry/shuttle = shuttle_controller.shuttles[shuttle_tag]
+	var/datum/shuttle/ferry/shuttle = get_shuttle()
 	if (!istype(shuttle))
 		return
 
@@ -169,7 +186,7 @@
 
 	add_fingerprint(usr)
 
-	var/datum/shuttle/ferry/shuttle = shuttle_controller.shuttles[shuttle_tag]
+	var/datum/shuttle/ferry/shuttle = get_shuttle()
 	if (!istype(shuttle))
 		return
 
@@ -450,6 +467,8 @@
 /obj/structure/machinery/computer/shuttle_control/dropship1/New()
 	..()
 	shuttle_tag = "[MAIN_SHIP_NAME] Dropship 1"
+	if(shuttle_controller)
+		shuttle_datum = shuttle_controller.shuttles[shuttle_tag]
 
 /obj/structure/machinery/computer/shuttle_control/dropship1/onboard
 	name = "\improper 'Alamo' flight controls"
@@ -473,6 +492,8 @@
 /obj/structure/machinery/computer/shuttle_control/dropship2/New()
 	..()
 	shuttle_tag = "[MAIN_SHIP_NAME] Dropship 2"
+	if(shuttle_controller)
+		shuttle_datum = shuttle_controller.shuttles[shuttle_tag]
 
 /obj/structure/machinery/computer/shuttle_control/dropship2/onboard
 	name = "\improper 'Normandy' flight controls"

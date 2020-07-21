@@ -189,7 +189,7 @@
 /obj/structure/machinery/power/smes/power_change()
 	return
 
-/obj/structure/machinery/power/smes/attack_ai(mob/user)
+/obj/structure/machinery/power/smes/attack_remote(mob/user)
 	add_fingerprint(user)
 	ui_interact(user)
 
@@ -297,7 +297,7 @@
 	if (usr.stat || usr.is_mob_restrained() )
 		return
 	if (!(istype(usr, /mob/living/carbon/human) || ticker) && ticker.mode.name != "monkey")
-		if(!isAI(usr))
+		if(!isremotecontrolling(usr))
 			to_chat(usr, SPAN_DANGER("You don't have the dexterity to do this!"))
 			return
 

@@ -56,7 +56,7 @@
 	updateUsrDialog()
 	return 0
 
-/obj/structure/machinery/juicer/attack_ai(mob/user as mob)
+/obj/structure/machinery/juicer/attack_remote(mob/user as mob)
 	return 0
 
 /obj/structure/machinery/juicer/attack_hand(mob/user as mob)

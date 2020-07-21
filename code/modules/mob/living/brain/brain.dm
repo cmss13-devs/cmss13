@@ -20,8 +20,8 @@
 		ghostize()		//Ghostize checks for key so nothing else is necessary.
 	. = ..()
 
-/mob/living/brain/say_understands(var/other)//Goddamn is this hackish, but this say code is so odd
-	if (isAI(other))
+/mob/living/brain/say_understands(var/mob/other)//Goddamn is this hackish, but this say code is so odd
+	if (isremotecontrolling(other))
 		if(!(container && istype(container, /obj/item/device/mmi)))
 			return 0
 		else

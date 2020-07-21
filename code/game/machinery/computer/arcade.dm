@@ -46,7 +46,7 @@
 	*/
 
 
-/obj/structure/machinery/computer/arcade/attack_ai(mob/user as mob)
+/obj/structure/machinery/computer/arcade/attack_remote(mob/user as mob)
 	return src.attack_hand(user)
 
 /obj/structure/machinery/computer/arcade/attack_hand(mob/user as mob)

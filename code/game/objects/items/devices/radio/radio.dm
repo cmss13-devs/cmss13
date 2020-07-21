@@ -139,7 +139,7 @@
 	if (usr.stat || !on)
 		return
 
-	if (!(issilicon(usr) || (usr.contents.Find(src) || ( in_range(src, usr) && istype(loc, /turf) ))))
+	if (!(isremotecontrolling(usr) || (usr.contents.Find(src) || ( in_range(src, usr) && istype(loc, /turf) ))))
 		close_browser(usr, "radio")
 		return
 	usr.set_interaction(src)
@@ -275,7 +275,7 @@
 	else if(iscarbon(M)) // Nonhuman carbon mob
 		jobname = "No id"
 	// --- AI ---
-	else if(isAI(M))
+	else if(isremotecontrolling(M))
 		jobname = "AI"
 	// --- Cyborg ---
 	else if(isrobot(M))

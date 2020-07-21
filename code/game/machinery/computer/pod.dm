@@ -50,7 +50,7 @@
 			return
 	return
 
-/obj/structure/machinery/computer/pod/attack_ai(var/mob/user as mob)
+/obj/structure/machinery/computer/pod/attack_remote(var/mob/user as mob)
 	return attack_hand(user)
 
 /obj/structure/machinery/computer/pod/attack_hand(var/mob/user as mob)
@@ -101,7 +101,7 @@
 /obj/structure/machinery/computer/pod/Topic(href, href_list)
 	if(..())
 		return
-	if((usr.contents.Find(src) || (in_range(src, usr) && istype(loc, /turf))) || (issilicon(usr)))
+	if((usr.contents.Find(src) || (in_range(src, usr) && istype(loc, /turf))) || (isremotecontrolling(usr)))
 		usr.set_interaction(src)
 		if(href_list["power"])
 			var/t = text2num(href_list["power"])

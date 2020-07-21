@@ -169,7 +169,7 @@ var/list/obj/structure/machinery/newscaster/allCasters = list() //Global list th
 			return
 	return
 
-/obj/structure/machinery/newscaster/attack_ai(mob/user as mob)
+/obj/structure/machinery/newscaster/attack_remote(mob/user as mob)
 	return src.attack_hand(user)
 
 /obj/structure/machinery/newscaster/attack_hand(mob/user as mob)            //########### THE MAIN BEEF IS HERE! And in the proc below this...############
@@ -433,7 +433,7 @@ var/list/obj/structure/machinery/newscaster/allCasters = list() //Global list th
 /obj/structure/machinery/newscaster/Topic(href, href_list)
 	if(..())
 		return
-	if ((usr.contents.Find(src) || ((get_dist(src, usr) <= 1) && istype(src.loc, /turf))) || (issilicon(usr)))
+	if ((usr.contents.Find(src) || ((get_dist(src, usr) <= 1) && istype(src.loc, /turf))) || (isremotecontrolling(usr)))
 		usr.set_interaction(src)
 		if(href_list["set_channel_name"])
 			src.channel_name = strip_html(input(usr, "Provide a Feed Channel Name", "Network Channel Handler", ""))
@@ -722,12 +722,12 @@ var/list/obj/structure/machinery/newscaster/allCasters = list() //Global list th
 			to_chat(user, "<FONT COLOR='blue'>This does nothing.</FONT>")
 	src.update_icon()
 
-/obj/structure/machinery/newscaster/attack_ai(mob/user as mob)
+/obj/structure/machinery/newscaster/attack_remote(mob/user as mob)
 	return src.attack_hand(user) //or maybe it'll have some special functions? No idea.
 
 /obj/structure/machinery/newscaster/proc/AttachPhoto(mob/user as mob)
 	if(photo)
-		if(!issilicon(user))
+		if(!isremotecontrolling(user))
 			photo.loc = src.loc
 			user.put_in_inactive_hand(photo)
 		photo = null

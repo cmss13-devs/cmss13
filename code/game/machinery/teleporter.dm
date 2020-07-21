@@ -77,7 +77,7 @@
 
 	return
 
-/obj/structure/machinery/teleport/station/attack_ai()
+/obj/structure/machinery/teleport/station/attack_remote()
 	src.attack_hand()
 
 /obj/structure/machinery/computer/teleporter/attack_hand()
@@ -121,7 +121,7 @@
 	var/desc = input("Please select a location to lock in.", "Locking Computer") in L|null
 	if(!desc)
 		return
-	if(get_dist(src, usr) > 1 && !issilicon(usr))
+	if(get_dist(src, usr) > 1 && !isremotecontrolling(usr))
 		return
 
 	src.locked = L[desc]
@@ -313,7 +313,7 @@
 /obj/structure/machinery/teleport/station/attackby(var/obj/item/W)
 	src.attack_hand()
 
-/obj/structure/machinery/teleport/station/attack_ai()
+/obj/structure/machinery/teleport/station/attack_remote()
 	src.attack_hand()
 
 /obj/structure/machinery/teleport/station/attack_hand()

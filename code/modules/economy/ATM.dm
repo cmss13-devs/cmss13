@@ -76,7 +76,7 @@ log transactions
 		..()
 
 /obj/structure/machinery/atm/attack_hand(mob/user as mob)
-	if(issilicon(user))
+	if(isremotecontrolling(user))
 		to_chat(user, SPAN_DANGER("[htmlicon(src, usr)] Artificial unit recognized. Artificial units do not currently receive monetary compensation, as per Weston-Yamada regulation #1005."))
 		return
 	if(get_dist(src,user) <= 1)

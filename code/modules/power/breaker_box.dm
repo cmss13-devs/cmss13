@@ -33,7 +33,7 @@
 	else
 		to_chat(user, SPAN_DANGER("It seems to be offline"))
 
-/obj/structure/machinery/power/breakerbox/attack_ai(mob/user)
+/obj/structure/machinery/power/breakerbox/attack_remote(mob/user)
 	if(busy)
 		to_chat(user, SPAN_DANGER("System is busy. Please wait until current operation is finished before changing power settings."))
 		return

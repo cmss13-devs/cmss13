@@ -10,21 +10,11 @@
 	Note that AI have no need for the adjacency proc, and so this proc is a lot cleaner.
 */
 
-/mob/living/silicon/ai/click(var/atom/A, var/list/mods)
+/mob/click(var/atom/A, var/list/mods)
 	..()
 
-	if(control_disabled || stat)
-		return 1
-
-	if (mods["ctrl"] && mods["middle"])
-		if(control_disabled || stat)
-			return 1
-
-		if(ismob(A))
-			ai_actual_track(A)
-		else
-			A.move_camera_by_click()
-		return 1
+	if(!client || !client.remote_control)
+		return FALSE
 
 	if (mods["middle"])
 		A.AIMiddleClick(src)
@@ -45,30 +35,31 @@
 	if (world.time <= next_move)
 		return 1
 
-	if(aiCamera.in_camera_mode)
-		aiCamera.camera_mode_off()
-		aiCamera.captureimage(A, usr)
-		return 1
-
-	next_move = world.time + 9
-
-
-	A.add_hiddenprint(src)
-	A.attack_ai(src)
+	A.attack_remote(src)
 	return 1
 
 /*
 	AI has no need for the UnarmedAttack() and RangedAttack() procs,
-	because the AI code is not generic;	attack_ai() is used instead.
+	because the AI code is not generic;	attack_remote() is used instead.
 	The below is only really for safety, or you can alter the way
 	it functions and re-insert it above.
 */
 /mob/living/silicon/ai/UnarmedAttack(atom/A)
-	A.attack_ai(src)
+	A.attack_remote(src)
 /mob/living/silicon/ai/RangedAttack(atom/A)
-	A.attack_ai(src)
+	A.attack_remote(src)
 
-/atom/proc/attack_ai(mob/user as mob)
+/mob/UnarmedAttack(atom/A)
+	if(!client || !client.remote_control)
+		return FALSE
+	A.attack_remote(src)
+
+/mob/RangedAttack(atom/A)
+	if(!client || !client.remote_control)
+		return FALSE
+	A.attack_remote(src)
+
+/atom/proc/attack_remote(mob/user as mob)
 	return
 
 /*
@@ -79,17 +70,14 @@
 /atom/proc/AICtrlShiftClick()
 	return
 
-/obj/structure/machinery/door/airlock/AICtrlShiftClick()
-	return
-
 /atom/proc/AIShiftClick()
 	return
 
-/obj/structure/machinery/door/airlock/AIShiftClick()  // Opens and closes doors!
+/obj/structure/machinery/door/AIShiftClick()  // Opens and closes doors!
 	if(density)
-		Topic("aiEnable=7", list("aiEnable"="7"), 1) // 1 meaning no window (consistency!)
+		open()
 	else
-		Topic("aiDisable=7", list("aiDisable"="7"), 1)
+		close()
 	return
 
 /atom/proc/AICtrlClick()
@@ -100,41 +88,23 @@ atom/proc/AIAltClick()
 
 /obj/structure/machinery/door/airlock/AICtrlClick() // Bolts doors
 	if(locked)
-		Topic("aiEnable=4", list("aiEnable"="4"), 1)// 1 meaning no window (consistency!)
+		locked = FALSE
+		update_icon()
 	else
-		Topic("aiDisable=4", list("aiDisable"="4"), 1)
+		locked = TRUE
+		update_icon()
 
 /obj/structure/machinery/power/apc/AICtrlClick() // turns off/on APCs.
 	Topic("breaker=1", list("breaker"="1"), 0) // 0 meaning no window (consistency! wait...)
 
-/obj/structure/machinery/turretid/AICtrlClick() //turns off/on Turrets
-	Topic("toggleOn", list("toggleOn" = 1), 1) // 1 meaning no window (consistency!)
-
 /obj/structure/machinery/door/airlock/AIAltClick() // Electrifies doors.
 	if(!secondsElectrified)
 		// permanent shock
-		Topic("aiEnable=6", list("aiEnable"="6"), 1) // 1 meaning no window (consistency!)
+		secondsElectrified = -1 // 1 meaning no window (consistency!)
 	else
-		// disable/6 is not in Topic; disable/5 disables both temporary and permanent shock
-		Topic("aiDisable=5", list("aiDisable"="5"), 1)
+		secondsElectrified = 0
 	return
-
-/obj/structure/machinery/turretid/AIAltClick() //toggles lethal on turrets
-	Topic("toggleLethal", list("toggleLethal" = 1), 1) // 1 meaning no window (consistency!)
 
 /atom/proc/AIMiddleClick()
 	return
 
-/obj/structure/machinery/door/airlock/AIMiddleClick() // Toggles door bolt lights.
-	if(!src.lights)
-		Topic("aiEnable=10", list("aiEnable"="10"), 1) // 1 meaning no window (consistency!)
-	else
-		Topic("aiDisable=10", list("aiDisable"="10"), 1)
-	return
-
-//
-// Override AdjacentQuick for AltClicking
-//
-
-/mob/living/silicon/ai/TurfAdjacent(var/turf/T)
-	return (cameranet && cameranet.checkTurfVis(T))

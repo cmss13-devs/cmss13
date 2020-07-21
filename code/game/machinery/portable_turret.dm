@@ -183,7 +183,7 @@
 		..()
 
 
-/obj/structure/machinery/porta_turret/attack_ai(mob/user as mob)
+/obj/structure/machinery/porta_turret/attack_remote(mob/user as mob)
 	return attack_hand(user)
 
 /obj/structure/machinery/porta_turret/attack_hand(mob/user as mob)
@@ -847,7 +847,7 @@ Status: []<BR>"},
 
 // The below code is pretty much just recoded from the initial turret object. It's necessary but uncommented because it's exactly the same!
 
-/obj/structure/machinery/porta_turret_cover/attack_ai(mob/user as mob)
+/obj/structure/machinery/porta_turret_cover/attack_remote(mob/user as mob)
 	. = ..()
 	if (.)
 		return

@@ -14,7 +14,7 @@
 	idle_power_usage = 300
 	active_power_usage = 300
 
-/obj/structure/machinery/power/monitor/attack_ai(mob/user)
+/obj/structure/machinery/power/monitor/attack_remote(mob/user)
 	add_fingerprint(user)
 
 	if(inoperable())
@@ -31,7 +31,7 @@
 /obj/structure/machinery/power/monitor/interact(mob/user)
 
 	if ( (get_dist(src, user) > 1 ) || (inoperable()) )
-		if (!issilicon(user))
+		if (!isremotecontrolling(user))
 			user.unset_interaction()
 			close_browser(user, "powcomp")
 			return

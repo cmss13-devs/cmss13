@@ -19,7 +19,7 @@
 	processing_objects -= src
 	. = ..()
 
-/obj/item/device/radio/intercom/attack_ai(mob/user as mob)
+/obj/item/device/radio/intercom/attack_remote(mob/user as mob)
 	src.add_fingerprint(user)
 	spawn (0)
 		attack_self(user)

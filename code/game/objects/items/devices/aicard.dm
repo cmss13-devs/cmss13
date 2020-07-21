@@ -11,7 +11,7 @@
 
 
 /obj/item/device/aicard/attack(mob/living/silicon/ai/M as mob, mob/user as mob)
-	if(!isAI(M))//If target is not an AI.
+	if(!isremotecontrolling(M))//If target is not an AI.
 		return ..()
 
 	M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been carded with [src.name] by [user.name] ([user.ckey])</font>")

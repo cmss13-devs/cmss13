@@ -290,7 +290,7 @@
 
 
 
-/obj/structure/machinery/suit_storage_unit/attack_ai(mob/user as mob)
+/obj/structure/machinery/suit_storage_unit/attack_remote(mob/user as mob)
 	return attack_hand(user)
 
 /obj/structure/machinery/suit_storage_unit/carbon_unit

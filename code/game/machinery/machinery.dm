@@ -202,7 +202,7 @@ Class Procs:
 	if(usr.is_mob_restrained() || usr.lying || usr.stat)
 		return 1
 	if ( ! (istype(usr, /mob/living/carbon/human) || \
-			issilicon(usr) || \
+			isremotecontrolling(usr) || \
 			istype(usr, /mob/living/carbon/Xenomorph)))
 		to_chat(usr, SPAN_DANGER("You don't have the dexterity to do this!"))
 		return 1
@@ -211,7 +211,7 @@ Class Procs:
 
 	return 0
 
-/obj/structure/machinery/attack_ai(mob/user as mob)
+/obj/structure/machinery/attack_remote(mob/user as mob)
 	if(isrobot(user))
 		// For some reason attack_robot doesn't work
 		// This is to stop robots from using cameras to remotely control machines.
@@ -226,13 +226,13 @@ Class Procs:
 	if(user.lying || user.stat)
 		return 1
 	if ( ! (istype(usr, /mob/living/carbon/human) || \
-			issilicon(usr) || \
+			isremotecontrolling(usr) || \
 			istype(usr, /mob/living/carbon/Xenomorph)))
 		to_chat(usr, SPAN_DANGER("You don't have the dexterity to do this!"))
 		return 1
 /*
 	//distance checks are made by atom/proc/clicked()
-	if ((get_dist(src, user) > 1 || !istype(src.loc, /turf)) && !issilicon(user))
+	if ((get_dist(src, user) > 1 || !istype(src.loc, /turf)) && !isremotecontrolling(user))
 		return 1
 */
 	if (ishuman(user))

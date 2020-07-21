@@ -26,7 +26,7 @@
 	update_icon()
 	src.updateDialog()
 
-/obj/structure/machinery/embedded_controller/attack_ai(mob/user as mob)
+/obj/structure/machinery/embedded_controller/attack_remote(mob/user as mob)
 	src.ui_interact(user)
 
 /obj/structure/machinery/embedded_controller/attack_hand(mob/user as mob)

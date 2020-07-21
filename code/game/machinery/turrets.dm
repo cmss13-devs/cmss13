@@ -4,7 +4,7 @@
 
 /area/turret_protected/proc/subjectDied(target)
 	if( isliving(target) )
-		if( !issilicon(target) )
+		if( !isremotecontrolling(target) )
 			var/mob/living/L = target
 			if( L.stat )
 				if( L in turretTargets )
@@ -30,7 +30,7 @@
 	if( master && master != src )
 		return master.Exited(O)
 
-	if( ismob(O) && !issilicon(O) )
+	if( ismob(O) && !isremotecontrolling(O) )
 		turretTargets -= O
 	else if( istype(O, /obj/mecha) )
 		turretTargets -= O
@@ -341,7 +341,7 @@
 
 /obj/structure/machinery/turretid/attackby(obj/item/weapon/W, mob/user)
 	if(stat & BROKEN) return
-	if (issilicon(user))
+	if (isremotecontrolling(user))
 		return src.attack_hand(user)
 
 	if( get_dist(src, user) == 0 )		// trying to unlock the interface
@@ -358,7 +358,7 @@
 		else
 			to_chat(user, SPAN_WARNING("Access denied."))
 
-/obj/structure/machinery/turretid/attack_ai(mob/user as mob)
+/obj/structure/machinery/turretid/attack_remote(mob/user as mob)
 	if(!ailock)
 		return attack_hand(user)
 	else
@@ -366,7 +366,7 @@
 
 /obj/structure/machinery/turretid/attack_hand(mob/user as mob)
 	if ( get_dist(src, user) > 0 )
-		if ( !issilicon(user) )
+		if ( !isremotecontrolling(user) )
 			to_chat(user, SPAN_NOTICE("You are too far away."))
 			user.unset_machine()
 			close_browser(user, "turretid")
@@ -382,7 +382,7 @@
 	var/area/area = loc
 	var/t = "<TT><B>Turret Control Panel</B> ([area.name])<HR>"
 
-	if(src.locked && (!issilicon(user)))
+	if(src.locked && (!isremotecontrolling(user)))
 		t += "<I>(Swipe ID card to unlock control panel.)</I><BR>"
 	else
 		t += text("Turrets [] - <A href='?src=\ref[];toggleOn=1'>[]?</a><br>\n", src.enabled?"activated":"deactivated", src, src.enabled?"Disable":"Enable")
@@ -409,10 +409,10 @@
 	if(..(href, href_list))
 		return
 	if (src.locked)
-		if (!issilicon(usr))
+		if (!isremotecontrolling(usr))
 			to_chat(usr, "Control panel is locked!")
 			return
-	if ( get_dist(src, usr) == 0 || issilicon(usr))
+	if ( get_dist(src, usr) == 0 || isremotecontrolling(usr))
 		if (href_list["toggleOn"])
 			src.enabled = !src.enabled
 			src.updateTurrets()
@@ -508,7 +508,7 @@
 		onclose(user, "turret")
 		return
 
-	attack_ai(mob/user as mob)
+	attack_remote(mob/user as mob)
 		return attack_hand(user)
 
 	Topic(href, href_list)

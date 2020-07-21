@@ -45,7 +45,7 @@
 	idle_power_usage = 2
 	active_power_usage = 4
 
-/obj/structure/machinery/holosign_switch/attack_ai(mob/user as mob)
+/obj/structure/machinery/holosign_switch/attack_remote(mob/user as mob)
 	return src.attack_hand(user)
 
 /obj/structure/machinery/holosign_switch/attackby(obj/item/W, mob/user as mob)

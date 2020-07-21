@@ -29,6 +29,10 @@
 	if(inoperable())
 		return
 
+	if(user.client && user.client.remote_control)
+		ui_interact(user)
+		return
+
 	if(!ishuman(user))
 		return
 

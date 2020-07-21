@@ -144,7 +144,7 @@
 		return 1
 	src.updateUsrDialog()
 
-/obj/structure/machinery/microwave/attack_ai(mob/user as mob)
+/obj/structure/machinery/microwave/attack_remote(mob/user as mob)
 	return 0
 
 /obj/structure/machinery/microwave/attack_hand(mob/user as mob)

@@ -34,7 +34,7 @@ var/list/ai_verbs_default = list(
 			var/mob/living/silicon/ai/M = A
 			if ((M.client && M.interactee == subject))
 				is_in_use = 1
-				subject.attack_ai(M)
+				subject.attack_remote(M)
 	return is_in_use
 
 
@@ -319,7 +319,7 @@ var/list/ai_verbs_default = list(
 		var/obj/structure/machinery/hologram/holopad/H = locate(href_list["jumptoholopad"])
 		if(stat == CONSCIOUS)
 			if(H)
-				H.attack_ai(src) //may as well recycle
+				H.attack_remote(src) //may as well recycle
 			else
 				to_chat(src, SPAN_NOTICE("Unable to locate the holopad."))
 

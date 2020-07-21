@@ -155,8 +155,10 @@
 	deletepicture()
 
 obj/item/device/camera/siliconcam/proc/getsource()
-	if(isAI(src.loc))
-		return src
+	if(ismob(src.loc))
+		var/mob/M = src.loc
+		if(isremotecontrolling(M))
+			return src
 
 	var/mob/living/silicon/robot/C = src.loc
 	var/obj/item/device/camera/siliconcam/Cinfo

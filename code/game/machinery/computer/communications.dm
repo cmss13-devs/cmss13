@@ -147,6 +147,7 @@
 					return FALSE
 
 				marine_announcement(input)
+				message_staff("[key_name(usr)] has announced the following: [input]")
 				log_announcement("[key_name(usr)] has announced the following: [input]")
 				cooldown_message = world.time
 

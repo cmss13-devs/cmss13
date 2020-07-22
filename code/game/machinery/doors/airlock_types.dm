@@ -2,38 +2,38 @@
 /obj/structure/machinery/door/airlock/secure
 	name = "\improper Secure Airlock"
 	icon = 'icons/obj/structures/doors/Door_secure.dmi'
-	assembly_type = /obj/structure/door_assembly/door_assembly_com
+	assembly_type = /obj/structure/airlock_assembly/airlock_assembly_com
 	openspeed = 4
 
 /obj/structure/machinery/door/airlock/command
 	name = "\improper Command Airlock"
 	icon = 'icons/obj/structures/doors/Doorcom.dmi'
-	assembly_type = /obj/structure/door_assembly/door_assembly_com
+	assembly_type = /obj/structure/airlock_assembly/airlock_assembly_com
 
 /obj/structure/machinery/door/airlock/security
 	name = "\improper Security Airlock"
 	icon = 'icons/obj/structures/doors/Doorsec.dmi'
-	assembly_type = /obj/structure/door_assembly/door_assembly_sec
+	assembly_type = /obj/structure/airlock_assembly/airlock_assembly_sec
 
 /obj/structure/machinery/door/airlock/engineering
 	name = "\improper Engineering Airlock"
 	icon = 'icons/obj/structures/doors/Dooreng.dmi'
-	assembly_type = /obj/structure/door_assembly/door_assembly_eng
+	assembly_type = /obj/structure/airlock_assembly/airlock_assembly_eng
 
 /obj/structure/machinery/door/airlock/medical
 	name = "\improper Medical Airlock"
 	icon = 'icons/obj/structures/doors/Doormed.dmi'
-	assembly_type = /obj/structure/door_assembly/door_assembly_med
+	assembly_type = /obj/structure/airlock_assembly/airlock_assembly_med
 
 /obj/structure/machinery/door/airlock/maintenance
 	name = "\improper Maintenance Hatch"
 	icon = 'icons/obj/structures/doors/Doormaint.dmi'
-	assembly_type = /obj/structure/door_assembly/door_assembly_mai
+	assembly_type = /obj/structure/airlock_assembly/airlock_assembly_mai
 
 /obj/structure/machinery/door/airlock/external
 	name = "\improper External Airlock"
 	icon = 'icons/obj/structures/doors/Doorext.dmi'
-	assembly_type = /obj/structure/door_assembly/door_assembly_ext
+	assembly_type = /obj/structure/airlock_assembly/airlock_assembly_ext
 
 /obj/structure/machinery/door/airlock/glass
 	name = "\improper Glass Airlock"
@@ -50,79 +50,79 @@
 	name = "\improper Vault"
 	icon = 'icons/obj/structures/doors/vault.dmi'
 	opacity = 1
-	assembly_type = /obj/structure/door_assembly/door_assembly_highsecurity //Until somebody makes better sprites.
+	assembly_type = /obj/structure/airlock_assembly/airlock_assembly_highsecurity //Until somebody makes better sprites.
 
 /obj/structure/machinery/door/airlock/freezer
 	name = "\improper Freezer Airlock"
 	icon = 'icons/obj/structures/doors/Doorfreezer.dmi'
 	opacity = 1
-	assembly_type = /obj/structure/door_assembly/door_assembly_fre
+	assembly_type = /obj/structure/airlock_assembly/airlock_assembly_fre
 
 /obj/structure/machinery/door/airlock/hatch
 	name = "\improper Airtight Hatch"
 	icon = 'icons/obj/structures/doors/Doorhatchele.dmi'
 	opacity = 1
-	assembly_type = /obj/structure/door_assembly/door_assembly_hatch
+	assembly_type = /obj/structure/airlock_assembly/airlock_assembly_hatch
 
 /obj/structure/machinery/door/airlock/maintenance_hatch
 	name = "\improper Maintenance Hatch"
 	icon = 'icons/obj/structures/doors/Doorhatchmaint2.dmi'
 	opacity = 1
-	assembly_type = /obj/structure/door_assembly/door_assembly_mhatch
+	assembly_type = /obj/structure/airlock_assembly/airlock_assembly_mhatch
 
 /obj/structure/machinery/door/airlock/glass_command
 	name = "\improper Command Airlock"
 	icon = 'icons/obj/structures/doors/Doorcomglass.dmi'
 	opacity = 0
-	assembly_type = /obj/structure/door_assembly/door_assembly_com
+	assembly_type = /obj/structure/airlock_assembly/airlock_assembly_com
 	glass = 1
 
 /obj/structure/machinery/door/airlock/glass_engineering
 	name = "\improper Engineering Airlock"
 	icon = 'icons/obj/structures/doors/Doorengglass.dmi'
 	opacity = 0
-	assembly_type = /obj/structure/door_assembly/door_assembly_eng
+	assembly_type = /obj/structure/airlock_assembly/airlock_assembly_eng
 	glass = 1
 
 /obj/structure/machinery/door/airlock/glass_security
 	name = "\improper Security Airlock"
 	icon = 'icons/obj/structures/doors/Doorsecglass.dmi'
 	opacity = 0
-	assembly_type = /obj/structure/door_assembly/door_assembly_sec
+	assembly_type = /obj/structure/airlock_assembly/airlock_assembly_sec
 	glass = 1
 
 /obj/structure/machinery/door/airlock/glass_medical
 	name = "\improper Medical Airlock"
 	icon = 'icons/obj/structures/doors/Doormedglass.dmi'
 	opacity = 0
-	assembly_type = /obj/structure/door_assembly/door_assembly_med
+	assembly_type = /obj/structure/airlock_assembly/airlock_assembly_med
 	glass = 1
 
 /obj/structure/machinery/door/airlock/mining
 	name = "\improper Mining Airlock"
 	icon = 'icons/obj/structures/doors/Doormining.dmi'
-	assembly_type = /obj/structure/door_assembly/door_assembly_min
+	assembly_type = /obj/structure/airlock_assembly/airlock_assembly_min
 
 /obj/structure/machinery/door/airlock/marine
     name = "\improper Airlock"
     icon = 'icons/obj/structures/doors/door_marines.dmi'
-    assembly_type = /obj/structure/door_assembly/door_assembly_min
+    assembly_type = /obj/structure/airlock_assembly/airlock_assembly_min
 
 /obj/structure/machinery/door/airlock/atmos
 	name = "\improper Atmospherics Airlock"
 	icon = 'icons/obj/structures/doors/Dooratmo.dmi'
-	assembly_type = /obj/structure/door_assembly/door_assembly_atmo
+	assembly_type = /obj/structure/airlock_assembly/airlock_assembly_atmo
 
 /obj/structure/machinery/door/airlock/research
 	name = "\improper Research Airlock"
 	icon = 'icons/obj/structures/doors/Doorresearch.dmi'
-	assembly_type = /obj/structure/door_assembly/door_assembly_research
+	assembly_type = /obj/structure/airlock_assembly/airlock_assembly_research
 
 /obj/structure/machinery/door/airlock/glass_research
 	name = "\improper Research Airlock"
 	icon = 'icons/obj/structures/doors/Doorresearchglass.dmi'
 	opacity = 0
-	assembly_type = /obj/structure/door_assembly/door_assembly_research
+	assembly_type = /obj/structure/airlock_assembly/airlock_assembly_research
 	glass = 1
 	heat_proof = 1
 
@@ -130,14 +130,14 @@
 	name = "\improper Mining Airlock"
 	icon = 'icons/obj/structures/doors/Doorminingglass.dmi'
 	opacity = 0
-	assembly_type = /obj/structure/door_assembly/door_assembly_min
+	assembly_type = /obj/structure/airlock_assembly/airlock_assembly_min
 	glass = 1
 
 /obj/structure/machinery/door/airlock/glass_atmos
 	name = "\improper Atmospherics Airlock"
 	icon = 'icons/obj/structures/doors/Dooratmoglass.dmi'
 	opacity = 0
-	assembly_type = /obj/structure/door_assembly/door_assembly_atmo
+	assembly_type = /obj/structure/airlock_assembly/airlock_assembly_atmo
 	glass = 1
 
 /obj/structure/machinery/door/airlock/gold
@@ -190,19 +190,19 @@
 /obj/structure/machinery/door/airlock/science
 	name = "\improper Research Airlock"
 	icon = 'icons/obj/structures/doors/Doorsci.dmi'
-	assembly_type = /obj/structure/door_assembly/door_assembly_science
+	assembly_type = /obj/structure/airlock_assembly/airlock_assembly_science
 
 /obj/structure/machinery/door/airlock/glass_science
 	name = "\improper Research Airlock"
 	icon = 'icons/obj/structures/doors/Doorsciglass.dmi'
 	opacity = 0
-	assembly_type = /obj/structure/door_assembly/door_assembly_science
+	assembly_type = /obj/structure/airlock_assembly/airlock_assembly_science
 	glass = 1
 
 /obj/structure/machinery/door/airlock/highsecurity
 	name = "\improper High Tech Security Airlock"
 	icon = 'icons/obj/structures/doors/hightechsecurity.dmi'
-	assembly_type = /obj/structure/door_assembly/door_assembly_highsecurity
+	assembly_type = /obj/structure/airlock_assembly/airlock_assembly_highsecurity
 
 
 //STRATA AIRLOCKS // Add me later y'know?

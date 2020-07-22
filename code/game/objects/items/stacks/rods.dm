@@ -15,6 +15,11 @@
 	stack_id = "metal rod"
 	garbage = TRUE
 
+/obj/item/stack/rods/Initialize(mapload, ...)
+	. = ..()
+	
+	recipes = rod_recipes
+
 /obj/item/stack/rods/attackby(obj/item/W as obj, mob/user as mob)
 	..()
 	if (istype(W, /obj/item/tool/weldingtool))
@@ -37,39 +42,10 @@
 				user.put_in_hands(new_item)
 		return
 
-
-/obj/item/stack/rods/attack_self(mob/user as mob)
-	src.add_fingerprint(user)
-
-	if(!istype(user.loc,/turf)) return 0
-
-	if (locate(/obj/structure/grille, usr.loc))
-		for(var/obj/structure/grille/G in usr.loc)
-			if (G.destroyed)
-				G.health = 10
-				G.density = 1
-				G.destroyed = 0
-				G.icon_state = "grille"
-				use(1)
-			else
-				return 1
-
-	else if(!in_use)
-		if(amount < 4)
-			to_chat(user, SPAN_NOTICE(" You need at least four rods to do this."))
-			return
-		to_chat(usr, SPAN_NOTICE(" Assembling grille..."))
-		in_use = 1
-		if (!do_after(usr, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-			in_use = 0
-			return
-		var/obj/structure/grille/F = new /obj/structure/grille/ ( usr.loc )
-		to_chat(usr, SPAN_NOTICE(" You assemble a grille"))
-		in_use = 0
-		F.add_fingerprint(usr)
-		use(4)
-	return
-
+var/global/list/datum/stack_recipe/rod_recipes = list ( \
+	new/datum/stack_recipe("grille", /obj/structure/grille, 4, time = 20, one_per_turf = 2, on_floor = 1, skill_req = SKILL_CONSTRUCTION_TRAINED), \
+	new/datum/stack_recipe("fence", /obj/structure/fence, 10, time = 20, one_per_turf = 2, on_floor = 1, skill_req = SKILL_CONSTRUCTION_TRAINED), \
+)
 
 
 /obj/item/stack/rods/plasteel

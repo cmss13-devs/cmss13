@@ -29,7 +29,7 @@
 	var/closeOtherId = null
 	var/lockdownbyai = 0
 	autoclose = 1
-	var/assembly_type = /obj/structure/door_assembly
+	var/assembly_type = /obj/structure/airlock_assembly
 	var/mineral = null
 	var/justzap = 0
 	var/safe = 1
@@ -573,7 +573,7 @@
 								close(1)
 
 	else if(C.pry_capable)
-		if(C.pry_capable == IS_PRY_CAPABLE_CROWBAR && panel_open && (operating == -1 || (density && welded && operating != 1 && !arePowerSystemsOn() && !locked)) )
+		if(C.pry_capable == IS_PRY_CAPABLE_CROWBAR && panel_open && welded)
 			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 				to_chat(user, SPAN_WARNING("You don't seem to know how to deconstruct machines."))
 				return
@@ -585,8 +585,8 @@
 			if(do_after(user, 40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				to_chat(user, SPAN_NOTICE(" You removed the airlock electronics!"))
 
-				var/obj/structure/door_assembly/da = new assembly_type(loc)
-				if(istype(da, /obj/structure/door_assembly/multi_tile))
+				var/obj/structure/airlock_assembly/da = new assembly_type(loc)
+				if(istype(da, /obj/structure/airlock_assembly/multi_tile))
 					da.dir = dir
 
  				da.anchored = 1
@@ -595,9 +595,9 @@
 				//else if(glass)
 				else if(glass && !da.glass)
 					da.glass = 1
-				da.state = 1
+				da.state = 0
 				da.created_name = name
-				da.update_state()
+				da.update_icon()
 
 				var/obj/item/circuitboard/airlock/ae
 				if(!electronics)
@@ -617,6 +617,7 @@
 					ae.icon_state = "door_electronics_smoked"
 					operating = 0
 
+				msg_admin_niche("[key_name(user)] deconstructed [src] in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z])")
 				qdel(src)
 				return
 

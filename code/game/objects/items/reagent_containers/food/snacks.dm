@@ -65,7 +65,7 @@
 				to_chat(M, SPAN_NOTICE(" You take a bite of [src]."))
 			if (fullness > 350 && fullness <= 550)
 				to_chat(M, SPAN_NOTICE(" You unwillingly chew a bit of [src]."))
-			if (fullness > (550 * (1 + M.overeatduration / 2000)))	// The more you eat - the more you can eat
+			if (fullness > 550)
 				to_chat(M, SPAN_WARNING("You cannot force any more of [src] to go down your throat."))
 				return 0
 		else
@@ -76,7 +76,7 @@
 					return
 
 
-			if (fullness <= (550 * (1 + M.overeatduration / 1000)))
+			if (fullness <= 550)
 				user.affected_message(M,
 					SPAN_HELPFUL("You <b>start feeding</b> [user == M ? "yourself" : "[M]"] <b>[src]</b>."),
 					SPAN_HELPFUL("[user] <b>starts feeding</b> you <b>[src]</b>."),

@@ -46,3 +46,38 @@
 
 /obj/structure/blocker/fog/attack_alien(M)
     return attack_hand(M)
+
+
+/obj/structure/blocker/forcefield
+	name = "forcefield"
+
+	icon = 'icons/landmarks.dmi'
+	icon_state = "x2"
+	anchored = 1.0
+	unacidable = TRUE
+
+	var/is_whitelist = FALSE
+	var/strict_types = FALSE
+	
+	var/list/types = list()
+
+/obj/structure/blocker/forcefield/BlockedPassDirs(atom/movable/AM, target_dir)
+	var/whitelist_no_block = is_whitelist? NO_BLOCKED_MOVEMENT : BLOCKED_MOVEMENT
+
+	if(strict_types)
+		if(AM.type in types)
+			return whitelist_no_block
+	else
+		for(var/type in types)
+			if(istype(AM, type))
+				return whitelist_no_block
+	
+	return !whitelist_no_block
+
+/obj/structure/blocker/forcefield/vehicles
+	types = list(/obj/vehicle/)
+
+/obj/structure/blocker/forcefield/Initialize(mapload, ...)
+	. = ..()
+	
+	invisibility = 101

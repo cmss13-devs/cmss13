@@ -23,7 +23,7 @@
 		I = giver.l_hand
 	else if(!giver.hand)
 		I = giver.r_hand
-	if(!istype(I) || (I.flags_item & (DELONDROP|NODROP)))
+	if(!istype(I) || (I.flags_item & (DELONDROP|NODROP|ITEM_ABSTRACT)))
 		return
 	if(r_hand == null || l_hand == null)
 		switch(alert(src,"[giver] wants to give you \a [I]?",,"Yes","No"))

@@ -347,14 +347,126 @@
 				dat += " mounted underneath.<br>"
 			else dat += "It has [htmlicon(R)] [R.name] attached.<br>"
 
-
 	if(!(flags_gun_features & (GUN_INTERNAL_MAG|GUN_UNUSUAL_DESIGN))) //Internal mags and unusual guns have their own stuff set.
 		if(current_mag && current_mag.current_rounds > 0)
 			if(flags_gun_features & GUN_AMMO_COUNTER) dat += "Ammo counter shows [current_mag.current_rounds] round\s remaining.<br>"
 			else 								dat += "It's loaded[in_chamber?" and has a round chambered":""].<br>"
 		else 									dat += "It's unloaded[in_chamber?" but has a round chambered":""].<br>"
+
+	dat += "[htmlicon(src)] <a href='?src=\ref[src];list_stats=1'>\[See combat statistics]</a><br>"
 	if(dat)
 		to_chat(user, dat)
+
+/obj/item/weapon/gun/Topic(href, href_list)
+	if(!ishuman(usr) && !isobserver(usr))
+		return
+
+	if(href_list["list_stats"])
+		ui_interact(usr, "weapon_stat")
+
+
+/obj/item/weapon/gun/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 0)
+	var/ammo_name = "bullet"
+
+	var/damage = 0
+	var/bonus_projectile_amount = 0
+
+	var/falloff = 0
+
+	var/penetration = 0
+	var/armor_punch = 0
+
+	var/accuracy = 0
+
+	var/min_accuracy = 0
+
+	var/max_range = 0
+	var/scatter = 0
+
+	var/datum/ammo/in_ammo
+	if(in_chamber && in_chamber.ammo)
+		in_ammo = in_chamber.ammo
+	else if(current_mag && current_mag.current_rounds > 0)
+		if(istype(current_mag) && current_mag.chamber_contents[current_mag.chamber_position] != "empty")
+			in_ammo = ammo_list[current_mag.chamber_contents[current_mag.chamber_position]]
+			if(!istype(in_ammo))
+				in_ammo = ammo_list[current_mag.default_ammo]
+		else if(!istype(current_mag) && ammo)
+			in_ammo = ammo
+
+	var/has_ammo = istype(in_ammo)
+
+	if(has_ammo)
+		ammo_name = in_ammo.name
+
+		damage = in_ammo.damage * damage_mult
+		bonus_projectile_amount = in_ammo.bonus_projectiles_amount
+		falloff = in_ammo.damage_falloff * damage_falloff_mult
+
+		penetration = in_ammo.penetration
+		armor_punch = in_ammo.damage_armor_punch
+
+		accuracy = in_ammo.accurate_range
+
+		min_accuracy = in_ammo.accurate_range_min
+
+		max_range = in_ammo.max_range
+		scatter = in_ammo.scatter
+	
+	var/rpm = max(fire_delay, 0.0001)
+	var/burst_rpm = max(((fire_delay + (burst_delay * burst_amount)) / max(burst_amount, 1)), 0.0001)
+
+	var/list/data = list(
+		"name" = name,
+		"desc" = desc,
+
+		"two_handed_only" = (flags_gun_features & GUN_WIELDED_FIRING_ONLY),
+
+		"recoil" = max(recoil, 0.1),
+		"unwielded_recoil" = max(recoil_unwielded, 0.1),
+
+		"has_ammo" = has_ammo,
+
+		"ammo_name" = ammo_name,
+		"damage" = damage,
+		"falloff" = falloff,
+		"total_projectile_amount" = bonus_projectile_amount+1,
+		
+		"armor_punch" = armor_punch,
+		"penetration" = penetration,
+
+		"accuracy" = accuracy * accuracy_mult,
+		"unwielded_accuracy" = accuracy * accuracy_mult_unwielded,
+		"min_accuracy" = min_accuracy,
+		"max_range" = max_range,
+		"scatter" = max(0.1, scatter + src.scatter),
+		"unwielded_scatter" = max(0.1, scatter + scatter_unwielded),
+
+		"burst_scatter" = src.burst_scatter_mult,
+		"burst_amount" = burst_amount,
+		"firerate" = round(MINUTES_1 / rpm), // 3 minutes so that the values look greater than they actually are
+		"burst_firerate" = round(MINUTES_1 / burst_rpm),
+
+		"firerate_second" = round(SECONDS_1 / rpm, 0.01),
+		"burst_firerate_second" = round(SECONDS_1 / burst_rpm, 0.01),
+
+		"recoil_max" = config.max_recoil_value,
+		"scatter_max" = config.max_scatter_value,
+		"firerate_max" = MINUTES_1 / config.min_fire_delay,
+		"damage_max" = config.ultra_hit_damage,
+		"accuracy_max" = config.max_shell_range,
+		"range_max" = config.max_shell_range,
+		"falloff_max" = config.extra_damage_falloff,
+		"penetration_max" = config.max_armor_penetration,
+		"punch_max" = 5
+	)
+
+	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+
+	if (!ui)
+		ui = new(user, src, ui_key, "weapon_stats.tmpl", "USCM Weapon Codex", 850, 915)
+		ui.set_initial_data(data)
+		ui.open()
 
 /obj/item/weapon/gun/wield(var/mob/user)
 

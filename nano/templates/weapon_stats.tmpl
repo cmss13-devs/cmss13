@@ -1,0 +1,249 @@
+<style>
+
+.borderPx {
+    border: 1px solid #FFFFFF
+}
+
+.redGreenGradient{
+    width:100%; 
+    height: 20px; 
+    background: linear-gradient(90deg, rgba(255,0,0,0.75) 0%, rgba(0,255,0,0.75) 100%);
+    border: 1px solid #FFFFFF
+}
+
+.greenRedGradient{
+    width:100%; 
+    height: 20px; 
+    background: linear-gradient(90deg, rgba(0,255,0,0.75) 0%, rgba(255,0,0,0.75) 100%);
+    border: 1px solid #FFFFFF
+}
+
+.progressBar{
+    position: relative; 
+    background: rgba(0, 0, 0, 0.8); 
+    width: 0%; 
+    height: 100%;
+}
+
+</style>
+
+{{:helper.USCMMode()}}
+<div name="left_side" style="float: left; width: 45%;">
+    <h2>Weapon Info</h2>
+    <b>Name:</b> {{:data.name}}<br>
+    <b>Description:</b> {{:data.desc}}<br>
+    <h3>Recoil:</h3>
+    <b>Wielded</b>
+    <div>
+        <div class="greenRedGradient">
+            <div id="recoil" class="progressBar"></div>
+        </div>
+        0
+        <span style="text-align: right; float: right;">{{:data.recoil_max}}</span>
+    </div>
+    <b>Wielded Recoil:</b> {{:data.recoil}}<br><br>
+    {{if !data.two_handed_only}}
+        <b>Unwielded</b>
+        <div>
+            <div class="greenRedGradient">
+                <div id="recoil-unwielded" class="progressBar"></div>
+            </div>
+            0
+            <span style="text-align: right; float: right;">{{:data.recoil_max}}</span>
+        </div>
+        <b>Unwielded Recoil:</b> {{:data.unwielded_recoil}}
+    {{/if}}
+    <h3>Scatter:</h3>
+    <b>Wielded</b>
+    <div>
+        <div class="greenRedGradient">
+            <div id="scatter" class="progressBar"></div>
+        </div>
+        0
+        <span style="text-align: right; float: right;">{{:data.scatter_max}}</span>
+    </div>
+    <b>Wielded Scatter Amount:</b> {{:data.scatter}}<br><br>
+    {{if !data.two_handed_only}}
+        <b>Unwielded</b>
+        <div>
+            <div class="greenRedGradient">
+                <div id="scatter-unwielded" class="progressBar"></div>
+            </div>
+            0
+            <span style="text-align: right; float: right;">{{:data.scatter_max}}</span>
+        </div>
+        <b>Unwielded Scatter Amount:</b> {{:data.unwielded_scatter}}<br><br>
+    {{/if}}
+    {{if data.burst_amount > 1}}
+        <b>Burst Scatter Multiplier:</b> {{:data.burst_scatter}}<br>
+    {{/if}}
+    <h3>Firerate</h3>
+    <b>Semi-automatic</b>
+    <div>
+        <div class="redGreenGradient">
+            <div id="firerate-values" class="progressBar"></div>
+        </div>
+        0 RPM
+        <span style="text-align: right; float: right;">{{:data.firerate_max}} RPM</span>
+    </div>
+    <b>Semi-automatic firerate:</b> {{:data.firerate}} RPM ({{:data.firerate_second}} per second)<br><br>
+    {{if data.burst_amount > 1}}
+        <b>Burst</b>
+        <div>
+            <div class="redGreenGradient">
+                <div id="firerate-values-burst" class="progressBar"></div>
+            </div>
+            0 RPM
+            <span style="text-align: right; float: right;">{{:data.firerate_max}} RPM</span>
+        </div>
+        <b>Burst firerate:</b> {{:data.burst_firerate}} RPM ({{:data.burst_firerate_second}} per second)<br>
+    {{/if}}
+</div>
+
+{{if data.has_ammo}}
+    <div name="right_side" style="float: right; width: 45%;">
+        <h2>Ammo Info</h2>
+        <b>Name:</b> {{:data.ammo_name}}<br>
+        <h3>Damage:</h3>
+        <div>
+            <div class="redGreenGradient">
+                <div id="damage-values" class="progressBar"></div>
+            </div>
+            0
+            <span style="text-align: right; float: right;">{{:data.damage_max}}</span>
+        </div>
+        <b>Weapon Damage:</b> {{:data.damage}} 
+        {{if data.total_projectile_amount > 1}}
+            x {{:data.total_projectile_amount}}
+        {{/if}}
+        <br>
+        {{if data.burst_amount > 1}}
+            <b>Burst Amount:</b> {{:data.burst_amount}}<br>
+        {{/if}}
+        <h3>Accuracy:</h3>
+        <b>Wielded</b>
+        <div>
+            <div class="redGreenGradient">
+                <div id="accuracy-values" class="progressBar"></div>
+            </div>
+            0
+            <span style="text-align: right; float: right;">{{:data.accuracy_max}}</span>
+        </div>
+        <b>Weapon Wielded Accuracy:</b> {{:data.accuracy}}<br><br>
+        {{if !data.two_handed_only}}
+            <b>Unwielded</b>
+            <div>
+                <div class="redGreenGradient">
+                    <div id="accuracy-values-unwielded" class="progressBar"></div>
+                </div>
+                0
+                <span style="text-align: right; float: right;">{{:data.accuracy_max}}</span>
+            </div>
+            <b>Weapon Unwielded Accuracy:</b> {{:data.unwielded_accuracy}}<br>
+        {{/if}}
+        {{if data.min_accuracy > 0}}
+            <b>Weapon Minimum Accuracy: {{:data.min_accuracy}}</b><br>
+        {{/if}}
+        {{if data.max_range > 0}}
+            <h3>Maximum Range:</h3>
+            <div>
+                <div class="redGreenGradient">
+                    <div id="max-range" class="progressBar"></div>
+                </div>
+                0
+                <span style="text-align: right; float: right;">{{:data.range_max}}</span>
+            </div>
+            <b>Maximum Range:</b> {{:data.max_range}}<br>
+        {{/if}}
+        <h3>Falloff:</h3>
+        <div>
+            <div class="greenRedGradient">
+                <div id="falloff" class="progressBar"></div>
+            </div>
+            0
+            <span style="text-align: right; float: right;">{{:data.falloff_max}}</span>
+        </div>
+        <b>Falloff:</b> {{:data.falloff}}<br>
+
+        <h3>Armor Penetration:</h3>
+        <div>
+            <div class="redGreenGradient">
+                <div id="armor-penetration" class="progressBar"></div>
+            </div>
+            0
+            <span style="text-align: right; float: right;">{{:data.penetration_max}}</span>
+        </div>
+        <b>Penetration:</b> {{:data.penetration}}<br>
+        <h3>Armor Punch:</h3>
+        <div>
+            <div class="redGreenGradient">
+                <div id="armor-punch" class="progressBar"></div>
+            </div>
+            0
+            <span style="text-align: right; float: right;">{{:data.punch_max}}</span>
+        </div>
+        <b>Punch:</b> {{:data.armor_punch}}<br>
+    </div>
+{{/if}}
+
+<script>
+    
+    function makeProgressBar(id, value, maxValue, isOpposite) {
+        if(!maxValue)
+            maxValue = 100;
+
+        if(isOpposite != false)
+            isOpposite = true;
+
+        var progressBar = document.getElementById(id);
+
+        value = (value/maxValue)*100;
+
+        if(isOpposite){
+            progressBar.style.width = (100-value).toString()+"%";
+            progressBar.style.left = value.toString()+"%";
+        }
+        else{
+            progressBar.style.width = value.toString()+"%";
+            progressBar.style.left = (100-value).toString()+"%";
+        }
+    }
+    {{if data.has_ammo}}
+        makeProgressBar("damage-values", {{:data.damage}}, {{:data.damage_max}});
+
+        {{if data.min_accuracy > 0}}
+            makeProgressBar("accuracy-values", {{:data.min_accuracy}}, {{:data.accuracy_max}}, true);
+        {{else}}
+            makeProgressBar("accuracy-values", {{:data.accuracy}}, {{:data.accuracy_max}});
+
+            {{if !data.two_handed_only}}
+                makeProgressBar("accuracy-values-unwielded", {{:data.unwielded_accuracy}}, {{:data.accuracy_max}});
+            {{/if}}
+        {{/if}}
+        
+        makeProgressBar("falloff", {{:data.falloff}}, {{:data.falloff_max}});
+
+        makeProgressBar("armor-punch", {{:data.armor_punch}}, {{:data.punch_max}});
+        makeProgressBar("armor-penetration", {{:data.penetration}}, {{:data.penetration_max}});
+    {{/if}}
+
+    makeProgressBar("firerate-values", {{:data.firerate}}, {{:data.firerate_max}});
+
+    {{if data.burst_amount > 1}}
+        makeProgressBar("firerate-values-burst", {{:data.burst_firerate}}, {{:data.firerate_max}});
+    {{/if}}
+
+
+    makeProgressBar("recoil", {{:data.recoil}}, {{:data.recoil_max}});
+    makeProgressBar("scatter", {{:data.scatter}}, {{:data.scatter_max}});
+
+    {{if data.max_range > 0}}
+        makeProgressBar("max-range", {{:data.max_range}}, {{:data.range_max}});
+    {{/if}}
+
+    {{if !data.two_handed_only}}
+        makeProgressBar("recoil-unwielded", {{:data.unwielded_recoil}}, {{:data.recoil_max}});
+        makeProgressBar("scatter-unwielded", {{:data.unwielded_scatter}}, {{:data.scatter_max}});
+    {{/if}}
+
+</script>

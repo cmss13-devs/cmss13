@@ -93,9 +93,10 @@
 			  /mob/living/simple_animal/parrot/verb/drop_held_item_player, \
 			  /mob/living/simple_animal/parrot/proc/perch_player)
 
-/mob/living/simple_animal/parrot/initialize_pass_flags()
+/mob/living/simple_animal/parrot/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	flags_pass = SETUP_LIST_FLAGS(PASS_OVER, PASS_FLAGS_CRAWLER)
+	if (PF)
+		PF.flags_pass = SETUP_LIST_FLAGS(PASS_OVER, PASS_FLAGS_CRAWLER)
 
 /mob/living/simple_animal/parrot/death()
 	if(held_item)

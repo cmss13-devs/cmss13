@@ -115,9 +115,10 @@ Class Procs:
 		A.remove_machine(src) //takes care of removing machine from power usage
 	. = ..()
 
-/obj/structure/machinery/initialize_pass_flags()
+/obj/structure/machinery/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	flags_can_pass_all = SETUP_LIST_FLAGS(PASS_HIGH_OVER_ONLY, PASS_AROUND)
+	if (PF)
+		PF.flags_can_pass_all = SETUP_LIST_FLAGS(PASS_HIGH_OVER_ONLY, PASS_AROUND)
 
 /obj/structure/machinery/proc/start_processing()
 	if(!machine_processing)

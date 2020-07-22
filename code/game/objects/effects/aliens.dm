@@ -116,9 +116,10 @@
 	processing_objects.Add(src)
 	add_timer(CALLBACK(src, .proc/die), time_to_live)
 
-/obj/effect/xenomorph/spray/initialize_pass_flags()
+/obj/effect/xenomorph/spray/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	flags_pass = SETUP_LIST_FLAGS(PASS_FLAGS_ACID_SPRAY)
+	if (PF)
+		PF.flags_pass = SETUP_LIST_FLAGS(PASS_FLAGS_ACID_SPRAY)
 
 /obj/effect/xenomorph/spray/proc/die()
 	processing_objects.Remove(src)

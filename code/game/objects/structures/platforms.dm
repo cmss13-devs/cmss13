@@ -33,9 +33,10 @@
 	overlays += I
 	..()
 
-/obj/structure/platform/initialize_pass_flags()
+/obj/structure/platform/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	flags_can_pass_all = SETUP_LIST_FLAGS(PASS_OVER)
+	if (PF)
+		PF.flags_can_pass_all = SETUP_LIST_FLAGS(PASS_OVER)
 
 /obj/structure/platform/BlockedPassDirs(atom/movable/mover, target_dir)
 	var/obj/structure/S = locate(/obj/structure) in get_turf(mover)
@@ -72,9 +73,10 @@ obj/structure/platform_decoration
 			layer = ABOVE_MOB_LAYER+0.1
 	.. ()
 
-/obj/structure/platform_decoration/initialize_pass_flags()
+/obj/structure/platform_decoration/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	flags_can_pass_all = SETUP_LIST_FLAGS(PASS_OVER)
+	if (PF)
+		PF.flags_can_pass_all = SETUP_LIST_FLAGS(PASS_OVER)
 
 /obj/structure/platform/ex_act()
 	return

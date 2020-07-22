@@ -40,9 +40,10 @@
 		update_nearby_icons()
 	. = ..()
 
-/obj/structure/window/initialize_pass_flags()
+/obj/structure/window/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	flags_can_pass_all = SETUP_LIST_FLAGS(PASS_HIGH_OVER_ONLY, PASS_GLASS)
+	if (PF)
+		PF.flags_can_pass_all = SETUP_LIST_FLAGS(PASS_HIGH_OVER_ONLY, PASS_GLASS)
 
 /obj/structure/window/proc/set_constructed_window(start_dir)
 	state = 0
@@ -463,9 +464,10 @@
 		qdel(WW)
 	. = ..()
 
-/obj/structure/window/framed/initialize_pass_flags()
+/obj/structure/window/framed/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	flags_can_pass_all = SETUP_LIST_FLAGS(PASS_GLASS)
+	if (PF)
+		PF.flags_can_pass_all = SETUP_LIST_FLAGS(PASS_GLASS)
 
 /obj/structure/window/framed/update_nearby_icons()
 	relativewall_neighbours()

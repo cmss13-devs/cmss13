@@ -181,9 +181,10 @@
 	pixel_x = rand(-6, 6)
 	pixel_y = rand(0, 10)
 
-/mob/living/simple_animal/chick/initialize_pass_flags()
+/mob/living/simple_animal/chick/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	flags_pass = SETUP_LIST_FLAGS(PASS_UNDER)
+	if (PF)
+		PF.flags_pass = SETUP_LIST_FLAGS(PASS_UNDER)
 
 /mob/living/simple_animal/chick/Life()
 	. =..()
@@ -232,9 +233,10 @@ var/global/chicken_count = 0
 	pixel_y = rand(0, 10)
 	chicken_count += 1
 
-/mob/living/simple_animal/chicken/initialize_pass_flags()
+/mob/living/simple_animal/chicken/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	flags_pass = SETUP_LIST_FLAGS(PASS_UNDER)
+	if (PF)
+		PF.flags_pass = SETUP_LIST_FLAGS(PASS_UNDER)
 
 /mob/living/simple_animal/chicken/death()
 	..()

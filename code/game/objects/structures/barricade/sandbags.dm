@@ -128,9 +128,12 @@
 	stack_amount = 5
 	can_wire = FALSE
 	is_wired = TRUE
-	flags_can_pass_front = LIST_FLAGS_REMOVE(flags_can_pass_front, PASS_OVER_THROW_MOB)
-	flags_can_pass_behind = LIST_FLAGS_REMOVE(flags_can_pass_front, PASS_OVER_THROW_MOB)
 	build_stage = BARRICADE_SANDBAG_5
 	update_icon()
 	climbable = FALSE
 	. = ..()
+
+/obj/structure/barricade/sandbags/wired/initialize_pass_flags(var/datum/pass_flags_container/PF)
+	..()
+	flags_can_pass_front_temp = LIST_FLAGS_REMOVE(flags_can_pass_front_temp, PASS_OVER_THROW_MOB)
+	flags_can_pass_behind_temp = LIST_FLAGS_REMOVE(flags_can_pass_behind_temp, PASS_OVER_THROW_MOB)

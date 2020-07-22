@@ -61,15 +61,14 @@
 	else if (istype(target, /obj/structure/barricade))
 		var/obj/structure/barricade/B = target
 		visible_message(SPAN_DANGER("[src] rams into [B] and skids to a halt!"), SPAN_XENOWARNING("You ram into [B] and skid to a halt!"))
-		
-		flags_pass = list()
+
 		B.Collided(src)
 		. =  FALSE
 
 	else if (istype(target, /obj/vehicle/multitile))
 		var/obj/vehicle/multitile/M = target
 		visible_message(SPAN_DANGER("[src] rams into [M] and skids to a halt!"), SPAN_XENOWARNING("You ram into [M] and skid to a halt!"))
-		flags_pass = list()
+		
 		M.Collided(src)
 		. = FALSE
 

@@ -629,9 +629,10 @@
 	processing_objects.Remove(src)
 	. = ..()
 
-/obj/flamer_fire/initialize_pass_flags()
+/obj/flamer_fire/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	flags_pass = SETUP_LIST_FLAGS(PASS_FLAGS_FLAME)
+	if (PF)
+		PF.flags_pass = SETUP_LIST_FLAGS(PASS_FLAGS_FLAME)
 
 /obj/flamer_fire/Crossed(mob/living/M) //Only way to get it to reliable do it when you walk into it.
 	if(!istype(M))

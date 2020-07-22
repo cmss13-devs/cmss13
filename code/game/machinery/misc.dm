@@ -9,9 +9,10 @@
 	use_power = 1
 	idle_power_usage = 40
 
-/obj/structure/machinery/biogenerator/initialize_pass_flags()
+/obj/structure/machinery/biogenerator/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	flags_can_pass_all = SETUP_LIST_FLAGS(PASS_HIGH_OVER_ONLY, PASS_AROUND, PASS_OVER_THROW_ITEM)
+	if (PF)
+		PF.flags_can_pass_all = SETUP_LIST_FLAGS(PASS_HIGH_OVER_ONLY, PASS_AROUND, PASS_OVER_THROW_ITEM)
 
 var/list/obj/structure/machinery/faxmachine/allfaxes = list()
 var/list/alldepartments = list()
@@ -36,9 +37,10 @@ var/list/alldepartments = list()
 	update_icon()
 	start_processing()
 
-/obj/structure/machinery/computer3/initialize_pass_flags()
+/obj/structure/machinery/computer3/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	flags_can_pass_all = SETUP_LIST_FLAGS(PASS_HIGH_OVER_ONLY, PASS_AROUND, PASS_OVER_THROW_ITEM)
+	if (PF)
+		PF.flags_can_pass_all = SETUP_LIST_FLAGS(PASS_HIGH_OVER_ONLY, PASS_AROUND, PASS_OVER_THROW_ITEM)
 
 /obj/structure/machinery/computer3/laptop/secure_data
 	icon_state = "laptop"
@@ -83,9 +85,10 @@ var/list/alldepartments = list()
 	allfaxes -= src
 	. = ..()
 
-/obj/structure/machinery/faxmachine/initialize_pass_flags()
+/obj/structure/machinery/faxmachine/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	flags_can_pass_all = SETUP_LIST_FLAGS(PASS_HIGH_OVER_ONLY, PASS_AROUND, PASS_OVER_THROW_ITEM)
+	if (PF)
+		PF.flags_can_pass_all = SETUP_LIST_FLAGS(PASS_HIGH_OVER_ONLY, PASS_AROUND, PASS_OVER_THROW_ITEM)
 
 /obj/structure/machinery/faxmachine/process()
 	return 0
@@ -324,9 +327,10 @@ proc/SendFax(var/sent, var/sentname, var/mob/Sender, var/dpt)
 	anchored = TRUE
 	density = TRUE
 
-/obj/structure/machinery/lapvend/initialize_pass_flags()
+/obj/structure/machinery/lapvend/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	flags_can_pass_all = SETUP_LIST_FLAGS(PASS_HIGH_OVER_ONLY, PASS_AROUND, PASS_OVER_THROW_ITEM)
+	if (PF)
+		PF.flags_can_pass_all = SETUP_LIST_FLAGS(PASS_HIGH_OVER_ONLY, PASS_AROUND, PASS_OVER_THROW_ITEM)
 
 /obj/structure/machinery/mech_bay_recharge_port
 	name = "Mech Bay Power Port"
@@ -335,9 +339,10 @@ proc/SendFax(var/sent, var/sentname, var/mob/Sender, var/dpt)
 	icon = 'icons/obj/structures/props/mech.dmi'
 	icon_state = "recharge_port"
 
-/obj/structure/machinery/mech_bay_recharge_port/initialize_pass_flags()
+/obj/structure/machinery/mech_bay_recharge_port/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	flags_can_pass_all = SETUP_LIST_FLAGS(PASS_HIGH_OVER_ONLY, PASS_AROUND, PASS_OVER_THROW_ITEM)
+	if (PF)
+		PF.flags_can_pass_all = SETUP_LIST_FLAGS(PASS_HIGH_OVER_ONLY, PASS_AROUND, PASS_OVER_THROW_ITEM)
 
 /obj/structure/machinery/mecha_part_fabricator
 	icon = 'icons/obj/structures/machinery/robotics.dmi'
@@ -350,9 +355,10 @@ proc/SendFax(var/sent, var/sentname, var/mob/Sender, var/dpt)
 	idle_power_usage = 20
 	active_power_usage = 5000
 
-/obj/structure/machinery/mecha_part_fabricator/initialize_pass_flags()
+/obj/structure/machinery/mecha_part_fabricator/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	flags_can_pass_all = SETUP_LIST_FLAGS(PASS_HIGH_OVER_ONLY, PASS_AROUND, PASS_OVER_THROW_ITEM)
+	if (PF)
+		PF.flags_can_pass_all = SETUP_LIST_FLAGS(PASS_HIGH_OVER_ONLY, PASS_AROUND, PASS_OVER_THROW_ITEM)
 
 /obj/structure/machinery/computer/mecha
 	name = "Exosuit Control"

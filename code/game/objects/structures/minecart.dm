@@ -11,9 +11,10 @@
 	debris = list(/obj/item/stack/sheet/metal)
 	var/amount = 0
 
-/obj/structure/minecart/initialize_pass_flags()
+/obj/structure/minecart/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	flags_can_pass_all = SETUP_LIST_FLAGS(PASS_OVER, PASS_AROUND, PASS_UNDER)
+	if (PF)
+		PF.flags_can_pass_all = SETUP_LIST_FLAGS(PASS_OVER, PASS_AROUND, PASS_UNDER)
 
 /obj/structure/minecart/update_icon()
 	overlays.Cut()

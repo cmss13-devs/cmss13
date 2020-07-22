@@ -47,9 +47,10 @@
 		filler = null
 	density = 0
 
-/obj/structure/machinery/door/initialize_pass_flags()
+/obj/structure/machinery/door/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	flags_can_pass_all = list()
+	if (PF)
+		PF.flags_can_pass_all = list()
 
 /obj/structure/machinery/door/proc/handle_multidoor()
 	if(width > 1)

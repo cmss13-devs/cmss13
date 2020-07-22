@@ -214,8 +214,11 @@
 /obj/structure/barricade/metal/wired/New()
 	can_wire = FALSE
 	is_wired = TRUE
-	flags_can_pass_front = LIST_FLAGS_REMOVE(flags_can_pass_front, PASS_OVER_THROW_MOB)
-	flags_can_pass_behind = LIST_FLAGS_REMOVE(flags_can_pass_behind, PASS_OVER_THROW_MOB)
 	climbable = FALSE
 	update_icon()
 	. = ..()
+
+/obj/structure/barricade/metal/wired/initialize_pass_flags(var/datum/pass_flags_container/PF)
+	..()
+	flags_can_pass_front_temp = LIST_FLAGS_REMOVE(flags_can_pass_front_temp, PASS_OVER_THROW_MOB)
+	flags_can_pass_behind_temp = LIST_FLAGS_REMOVE(flags_can_pass_behind_temp, PASS_OVER_THROW_MOB)

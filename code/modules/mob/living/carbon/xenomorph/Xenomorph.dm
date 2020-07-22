@@ -356,10 +356,11 @@
 
 	job = "Xenomorph"
 
-/mob/living/carbon/Xenomorph/initialize_pass_flags()
+/mob/living/carbon/Xenomorph/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	flags_pass = SETUP_LIST_FLAGS(PASS_MOB_IS_XENO)
-	flags_can_pass_all = SETUP_LIST_FLAGS(PASS_MOB_THRU_XENO, PASS_AROUND, PASS_HIGH_OVER_ONLY)
+	if (PF)
+		PF.flags_pass = SETUP_LIST_FLAGS(PASS_MOB_IS_XENO)
+		PF.flags_can_pass_all = SETUP_LIST_FLAGS(PASS_MOB_THRU_XENO, PASS_AROUND, PASS_HIGH_OVER_ONLY)
 
 /mob/living/carbon/Xenomorph/initialize_pain()
 	pain = new /datum/pain/xeno(src)

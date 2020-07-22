@@ -15,8 +15,8 @@
  */
 /atom/proc/BlockedPassDirs(atom/movable/mover, target_dir)
 	var/reverse_dir = REVERSE_DIR(dir)
-	var/flags_can_pass = LIST_FLAGS_ADD(flags_can_pass_all, flags_can_pass_all_temp, flags_can_pass_front, flags_can_pass_front_temp)
-	var/mover_flags_pass = LIST_FLAGS_ADD(mover.flags_pass, mover.flags_pass_temp)
+	var/flags_can_pass = LIST_FLAGS_ADD(pass_flags.flags_can_pass_all, flags_can_pass_all_temp, pass_flags.flags_can_pass_front, flags_can_pass_front_temp)
+	var/mover_flags_pass = LIST_FLAGS_ADD(mover.pass_flags.flags_pass, mover.flags_pass_temp)
 
 	if (!density || LIST_FLAGS_COMPARE(flags_can_pass, mover_flags_pass))
 		return NO_BLOCKED_MOVEMENT
@@ -39,8 +39,8 @@
  *		If the object is completely solid, returns all directions
  */
 /atom/proc/BlockedExitDirs(atom/movable/mover, target_dir)
-	var/flags_can_pass = LIST_FLAGS_ADD(flags_can_pass_all, flags_can_pass_all_temp, flags_can_pass_behind, flags_can_pass_behind_temp)
-	var/mover_flags_pass = LIST_FLAGS_ADD(mover.flags_pass, mover.flags_pass_temp)
+	var/flags_can_pass = LIST_FLAGS_ADD(pass_flags.flags_can_pass_all, flags_can_pass_all_temp, pass_flags.flags_can_pass_behind, flags_can_pass_behind_temp)
+	var/mover_flags_pass = LIST_FLAGS_ADD(mover.pass_flags.flags_pass, mover.flags_pass_temp)
 
 	if(flags_atom & ON_BORDER && density && !(LIST_FLAGS_COMPARE(flags_can_pass, mover_flags_pass)))
 		return target_dir & dir

@@ -2,11 +2,30 @@
 /proc/SETUP_LIST_FLAGS(...)
     var/list/flags = list()
 
+    // Whether we need to check for any nested lists (ie one of the elements is a list)
+    var/check_nested = FALSE
     for (var/E in args)
         if (islist(E))
             flags |= E
+            check_nested = TRUE
         else
             flags |= list(E)
+    
+    var/depth = 1
+    while (check_nested)
+        if (depth > 10)
+            log_debug("List flags reached a depth greater than 10")
+            break
+        check_nested = FALSE
+        var/temp = list()
+        for (var/E in flags)
+            if (islist(E))
+                temp |= E
+                check_nested = TRUE
+            else
+                temp |= list(E)
+        flags = temp
+        depth++
     
     return flags
 
@@ -15,17 +34,17 @@
     if (length(args) <= 1)
         return TRUE
 
-    var/first = FALSE
+    var/first = TRUE
     var/list/common
     for (var/E in args)
-        if (!first)
+        if (first)
             if (isnull(E))
                 continue
             else if (islist(E))
                 common = E
             else
                 common = list(E)
-            first = TRUE
+            first = FALSE
             continue
         var/list/common_buf
         if (isnull(E))

@@ -12,9 +12,10 @@
 	..()
 	cell = new/obj/item/cell(src)
 
-/obj/structure/machinery/portable_atmospherics/powered/scrubber/initialize_pass_flags()
+/obj/structure/machinery/portable_atmospherics/powered/scrubber/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	flags_can_pass_all = SETUP_LIST_FLAGS(PASS_OVER, PASS_AROUND, PASS_UNDER)
+	if (PF)
+		PF.flags_can_pass_all = SETUP_LIST_FLAGS(PASS_OVER, PASS_AROUND, PASS_UNDER)
 
 /obj/structure/machinery/portable_atmospherics/powered/scrubber/emp_act(severity)
 	if(inoperable())

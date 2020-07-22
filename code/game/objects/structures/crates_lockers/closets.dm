@@ -32,9 +32,10 @@
 				continue
 			I.loc = src
 
-/obj/structure/closet/initialize_pass_flags()
+/obj/structure/closet/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	flags_can_pass_all = SETUP_LIST_FLAGS(PASS_HIGH_OVER_ONLY, PASS_AROUND)
+	if (PF)
+		PF.flags_can_pass_all = SETUP_LIST_FLAGS(PASS_HIGH_OVER_ONLY, PASS_AROUND)
 
 /obj/structure/closet/alter_health()
 	return get_turf(src)

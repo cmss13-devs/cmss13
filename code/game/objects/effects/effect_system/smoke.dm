@@ -39,9 +39,10 @@
 		SetOpacity(0)
 	active_smoke_effects -= src
 
-/obj/effect/particle_effect/smoke/initialize_pass_flags()
+/obj/effect/particle_effect/smoke/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	flags_pass = SETUP_LIST_FLAGS(PASS_FLAGS_SMOKE)
+	if (PF)
+		PF.flags_pass = SETUP_LIST_FLAGS(PASS_FLAGS_SMOKE)
 	
 /obj/effect/particle_effect/smoke/process()
 	time_to_live--

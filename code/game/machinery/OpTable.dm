@@ -40,9 +40,10 @@
 		anes_tank = null
 	. = ..()
 
-/obj/structure/machinery/optable/initialize_pass_flags()
+/obj/structure/machinery/optable/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	flags_can_pass_all = SETUP_LIST_FLAGS(PASS_OVER, PASS_AROUND)
+	if (PF)
+		PF.flags_can_pass_all = SETUP_LIST_FLAGS(PASS_OVER, PASS_AROUND)
 
 /obj/structure/machinery/optable/ex_act(severity)
 

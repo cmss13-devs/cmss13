@@ -154,14 +154,14 @@
 				continue
 
 			// Make sure we can pass object from all directions
-			if(!(LIST_FLAGS_COMPARE(O.flags_can_pass_all, PASS_OVER_THROW_ITEM)))
+			if(!(LIST_FLAGS_COMPARE(O.pass_flags.flags_can_pass_all, PASS_OVER_THROW_ITEM)))
 				if(!(O.flags_atom & ON_BORDER))
 					return FALSE
 				//If we're behind the object, check the behind pass flags
-				else if(dir == O.dir && !(LIST_FLAGS_COMPARE(O.flags_can_pass_behind, PASS_OVER_THROW_ITEM)))
+				else if(dir == O.dir && !(LIST_FLAGS_COMPARE(O.pass_flags.flags_can_pass_behind, PASS_OVER_THROW_ITEM)))
 					return FALSE
 				//If we're in front, check front pass flags
-				else if(dir == turn(O.dir, 180) && !(LIST_FLAGS_COMPARE(O.flags_can_pass_front, PASS_OVER_THROW_ITEM)))
+				else if(dir == turn(O.dir, 180) && !(LIST_FLAGS_COMPARE(O.pass_flags.flags_can_pass_front, PASS_OVER_THROW_ITEM)))
 					return FALSE
 
 		// Trace back towards the vehicle

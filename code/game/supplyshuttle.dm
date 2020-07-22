@@ -51,12 +51,13 @@ var/datum/controller/supply/supply_controller = new()
 	layer = MOB_LAYER
 	var/collide_message_busy	// Timer to stop collision spam
 
-/obj/structure/plasticflaps/initialize_pass_flags()
+/obj/structure/plasticflaps/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	flags_can_pass_all = SETUP_LIST_FLAGS(PASS_UNDER, PASS_THROUGH)
+	if (PF)
+		PF.flags_can_pass_all = SETUP_LIST_FLAGS(PASS_UNDER, PASS_THROUGH)
 
 /obj/structure/plasticflaps/BlockedPassDirs(atom/movable/mover, target_dir)
-	if(LIST_FLAGS_COMPARE(mover.flags_pass, flags_can_pass_all) || !iscarbon(mover))
+	if(LIST_FLAGS_COMPARE(mover.pass_flags.flags_pass, pass_flags.flags_can_pass_all) || !iscarbon(mover))
 		return NO_BLOCKED_MOVEMENT
 
 	return BLOCKED_MOVEMENT

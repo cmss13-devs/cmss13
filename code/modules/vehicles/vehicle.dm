@@ -28,14 +28,16 @@
 
 	var/obj/item/cell/cell
 	var/charge_use = 5	//set this to adjust the amount of power the vehicle uses per move
+	can_block_movement = TRUE
 
 //-------------------------------------------
 // Standard procs
 //-------------------------------------------
 
-/obj/vehicle/initialize_pass_flags()
+/obj/vehicle/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	flags_can_pass_all = SETUP_LIST_FLAGS(PASS_HIGH_OVER_ONLY, PASS_OVER_THROW_ITEM)
+	if (PF)
+		PF.flags_can_pass_all = SETUP_LIST_FLAGS(PASS_HIGH_OVER_ONLY, PASS_OVER_THROW_ITEM)
 
 /obj/vehicle/relaymove(mob/user, direction)
 	if(user.is_mob_incapacitated()) return

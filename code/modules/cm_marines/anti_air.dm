@@ -36,9 +36,10 @@ var/obj/structure/anti_air_cannon/almayer_aa_cannon
 	dir = WEST
 	flags_atom = ON_BORDER|CONDUCT|FPRINT
 
-/obj/structure/machinery/computer/aa_console/initialize_pass_flags()
+/obj/structure/machinery/computer/aa_console/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	flags_can_pass_all = SETUP_LIST_FLAGS(PASS_ALL)
+	if (PF)
+		PF.flags_can_pass_all = SETUP_LIST_FLAGS(PASS_ALL)
 
 /obj/structure/machinery/computer/aa_console/ex_act()
 	return

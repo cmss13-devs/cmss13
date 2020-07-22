@@ -111,9 +111,10 @@
 	anchored = 1.0
 	flags_atom = ON_BORDER
 
-/obj/structure/holowindow/initialize_pass_flags()
+/obj/structure/holowindow/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	flags_can_pass_all = SETUP_LIST_FLAGS(PASS_GLASS)
+	if (PF)
+		PF.flags_can_pass_all = SETUP_LIST_FLAGS(PASS_GLASS)
 
 //BASKETBALL OBJECTS
 

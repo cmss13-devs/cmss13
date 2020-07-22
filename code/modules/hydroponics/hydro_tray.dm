@@ -143,9 +143,10 @@
 	update_icon()
 	start_processing()
 
-/obj/structure/machinery/portable_atmospherics/hydroponics/initialize_pass_flags()
+/obj/structure/machinery/portable_atmospherics/hydroponics/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	flags_can_pass_all = SETUP_LIST_FLAGS(PASS_OVER, PASS_AROUND, PASS_TYPE_CRAWLER)
+	if (PF)
+		PF.flags_can_pass_all = SETUP_LIST_FLAGS(PASS_OVER, PASS_AROUND, PASS_TYPE_CRAWLER)
 
 /obj/structure/machinery/portable_atmospherics/hydroponics/bullet_act(var/obj/item/projectile/Proj)
 

@@ -38,9 +38,10 @@
 		update()
 		start_processing()
 
-/obj/structure/machinery/disposal/initialize_pass_flags()
+/obj/structure/machinery/disposal/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	flags_can_pass_all = SETUP_LIST_FLAGS(PASS_HIGH_OVER_ONLY, PASS_AROUND)
+	if (PF)
+		PF.flags_can_pass_all = SETUP_LIST_FLAGS(PASS_HIGH_OVER_ONLY, PASS_AROUND)
 
 //Attack by item places it in to disposal
 /obj/structure/machinery/disposal/attackby(var/obj/item/I, var/mob/user)

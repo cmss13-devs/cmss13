@@ -20,9 +20,10 @@
 		if(SOUTH) layer = closed_layer_south
 		else layer = closed_layer
 
-/obj/structure/machinery/door/poddoor/railing/initialize_pass_flags()
+/obj/structure/machinery/door/poddoor/railing/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	flags_can_pass_all = SETUP_LIST_FLAGS(LIST_FLAGS_REMOVE(PASS_OVER, PASS_OVER_FIRE), PASS_CRUSHER_CHARGE)
+	if (PF)
+		PF.flags_can_pass_all = SETUP_LIST_FLAGS(LIST_FLAGS_REMOVE(PASS_OVER, PASS_OVER_FIRE), PASS_CRUSHER_CHARGE)
 
 /obj/structure/machinery/door/poddoor/railing/open()
 	if (src.operating == 1) //doors can still open when emag-disabled

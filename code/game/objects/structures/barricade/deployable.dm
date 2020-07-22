@@ -113,6 +113,11 @@
 	icon_state = "folding"
 	icon = 'icons/obj/items/marine-items.dmi'
 
+/obj/structure/barricade/metal/wired/initialize_pass_flags(var/datum/pass_flags_container/PF)
+	..()
+	if (PF)
+		PF.flags_can_pass_front = LIST_FLAGS_REMOVE(PF.flags_can_pass_front, PASS_OVER_THROW_MOB)
+
 /obj/item/folding_barricade/attack_self(mob/user as mob)
 	for(var/obj/structure/barricade/B in loc)
 		if(B != src && B.dir == dir)
@@ -133,5 +138,4 @@
 	cade.dir = user.dir
 	cade.health = health
 	cade.maxhealth = maxhealth
-	cade.flags_can_pass_front = LIST_FLAGS_REMOVE(cade.flags_can_pass_front, PASS_OVER_THROW_MOB)
 	qdel(src)

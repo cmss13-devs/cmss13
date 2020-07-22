@@ -714,13 +714,13 @@ datum/proc/dd_SortValue()
 			found += A.contents
 	return found
 
-proc/print_list(list/L)
-   var/list_str = ""
-   for(var/element in L)
-      list_str += "[element],"
-   list_str = copytext(list_str, 1, length(list_str))
-   to_world(list_str)
-   return list_str
+/proc/print_list(list/L)
+	var/list_str = ""
+	for(var/element in L)
+		list_str += "[element],"
+	list_str = copytext(list_str, 1, length(list_str))
+	to_world(list_str)
+	return list_str
 
 // Mergesorts a list, using the sort callback to determine ordering
 /proc/custom_mergesort(var/list/L, var/datum/callback/sort)

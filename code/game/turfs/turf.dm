@@ -115,9 +115,9 @@
 	for (obstacle in T) //First, check objects to block exit
 		if (mover == obstacle || forget == obstacle)
 			continue
-		if (!isStructure(obstacle) && !ismob(obstacle) && !isVehicle(obstacle))
-			continue
 		A = obstacle
+		if (!istype(A) || !A.can_block_movement)
+			continue
 		blocking_dir |= A.BlockedExitDirs(mover, fdir)
 		if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
 			mover.Collide(A)
@@ -138,9 +138,9 @@
 			for(obstacle in T)
 				if(forget == obstacle)
 					continue
-				if (!isStructure(obstacle) && !ismob(obstacle) && !isVehicle(obstacle))
-					continue
 				A = obstacle
+				if (!istype(A) || !A.can_block_movement)
+					continue
 				if (A.BlockedExitDirs(mover, fd2) || A.BlockedPassDirs(mover, fd1))
 					blocking_dir |= fd1
 					if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
@@ -160,9 +160,9 @@
 			for(obstacle in T)
 				if(forget == obstacle)
 					continue
-				if (!isStructure(obstacle) && !ismob(obstacle) && !isVehicle(obstacle))
-					continue
 				A = obstacle
+				if (!istype(A) || !A.can_block_movement)
+					continue
 				if (A.BlockedExitDirs(mover, fd1) || A.BlockedPassDirs(mover, fd2))
 					blocking_dir |= fd2
 					if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
@@ -178,9 +178,9 @@
 	for(obstacle in src) //Then, check atoms in the target turf
 		if(forget == obstacle)
 			continue
-		if (!isStructure(obstacle) && !ismob(obstacle) && !isVehicle(obstacle))
-			continue
 		A = obstacle
+		if (!istype(A) || !A.can_block_movement)
+			continue
 		blocking_dir |= A.BlockedPassDirs(mover, fdir)
 		if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
 			if(!mover.Collide(A))

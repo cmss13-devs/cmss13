@@ -28,12 +28,6 @@
 		if(nutrition > 0 && stat != 2)
 			nutrition = max (0, nutrition - HUNGER_FACTOR)
 
-		if(nutrition > NUTRITION_MAX)
-			if(overeatduration < 600) //Capped so people don't take forever to unfat
-				overeatduration++
-		else
-			if(overeatduration > 1)
-				overeatduration -= 2 //Doubled the unfat rate
 
 		handle_trace_chems()
 

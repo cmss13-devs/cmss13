@@ -7,9 +7,10 @@
 	anchored = 1
 	health = 250
 
-/obj/structure/showcase/initialize_pass_flags()
+/obj/structure/showcase/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	flags_can_pass_all = SETUP_LIST_FLAGS(PASS_HIGH_OVER_ONLY)
+	if (PF)
+		PF.flags_can_pass_all = SETUP_LIST_FLAGS(PASS_HIGH_OVER_ONLY)
 
 /obj/structure/showcase/bullet_act(var/obj/item/projectile/P)
 	var/damage = P.damage
@@ -150,9 +151,10 @@ obj/item/alienjar
 	density = 1
 	anchored = 0
 
-/obj/structure/ore_box/initialize_pass_flags()
+/obj/structure/ore_box/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	flags_can_pass_all = SETUP_LIST_FLAGS(PASS_HIGH_OVER_ONLY, PASS_OVER_THROW_ITEM)
+	if (PF)
+		PF.flags_can_pass_all = SETUP_LIST_FLAGS(PASS_HIGH_OVER_ONLY, PASS_OVER_THROW_ITEM)
 
 /obj/structure/computer3frame
 	density = 1

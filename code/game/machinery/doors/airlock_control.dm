@@ -8,9 +8,10 @@
 	var/datum/radio_frequency/radio_connection
 	var/cur_command = null	//the command the door is currently attempting to complete
 
-/obj/structure/machinery/door/airlock/initialize_pass_flags()
+/obj/structure/machinery/door/airlock/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	flags_can_pass_all = list()
+	if (PF)
+		PF.flags_can_pass_all = list()
 
 /obj/structure/machinery/door/airlock/proc/can_radio()
 	if(!arePowerSystemsOn())

@@ -12,9 +12,10 @@
 	..()
 	create_reagents(500)
 	
-/obj/effect/particle_effect/smoke/chem/initialize_pass_flags()
+/obj/effect/particle_effect/smoke/chem/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	flags_pass = SETUP_LIST_FLAGS(PASS_FLAGS_SMOKE)
+	if (PF)
+		PF.flags_pass = SETUP_LIST_FLAGS(PASS_FLAGS_SMOKE)
 
 
 /datum/effect_system/smoke_spread/chem

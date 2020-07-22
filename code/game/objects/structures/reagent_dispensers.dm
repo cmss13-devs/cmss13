@@ -25,9 +25,10 @@
 		reagents.add_reagent(chemical,1000)
 	..()
 
-/obj/structure/reagent_dispensers/initialize_pass_flags()
+/obj/structure/reagent_dispensers/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	flags_can_pass_all = SETUP_LIST_FLAGS(PASS_OVER, PASS_AROUND, PASS_UNDER)
+	if (PF)
+		PF.flags_can_pass_all = SETUP_LIST_FLAGS(PASS_OVER, PASS_AROUND, PASS_UNDER)
 
 /obj/structure/reagent_dispensers/examine(mob/user)
 	..()

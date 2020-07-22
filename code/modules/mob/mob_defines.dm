@@ -193,3 +193,5 @@
 	var/next_delay_update = 0 // when next update of move delay should happen
 	var/next_delay_delay = 10 // how much time we wait for next calc of move delay
 	var/move_delay
+
+	can_block_movement = TRUE

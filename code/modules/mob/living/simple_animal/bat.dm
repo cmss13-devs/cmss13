@@ -10,9 +10,10 @@
 	speak_emote = list("screeches")
 	emote_hear = list("screeches")
 
-/mob/living/simple_animal/bat/initialize_pass_flags()
+/mob/living/simple_animal/bat/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	flags_pass = SETUP_LIST_FLAGS(PASS_OVER, PASS_FLAGS_CRAWLER)
+	if (PF)
+		PF.flags_pass = SETUP_LIST_FLAGS(PASS_OVER, PASS_FLAGS_CRAWLER)
 
 /mob/living/simple_animal/bat/Life()
 	. = ..()

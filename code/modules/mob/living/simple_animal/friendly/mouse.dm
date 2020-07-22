@@ -65,9 +65,10 @@
 	if(!desc)
 		desc = "It's a small [body_color] rodent, often seen hiding in maintenance areas and making a nuisance of itself."
 
-/mob/living/simple_animal/mouse/initialize_pass_flags()
+/mob/living/simple_animal/mouse/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	flags_pass = SETUP_LIST_FLAGS(PASS_FLAGS_CRAWLER)
+	if (PF)
+		PF.flags_pass = SETUP_LIST_FLAGS(PASS_FLAGS_CRAWLER)
 
 /mob/living/simple_animal/mouse/proc/splat()
 	src.health = 0

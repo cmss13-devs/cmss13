@@ -49,6 +49,7 @@
 		)
 	mutation_type = RUNNER_NORMAL
 
-/mob/living/carbon/Xenomorph/Runner/initialize_pass_flags()
+/mob/living/carbon/Xenomorph/Runner/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	flags_pass = SETUP_LIST_FLAGS(PASS_FLAGS_CRAWLER)
+	if (PF)
+		PF.flags_pass = SETUP_LIST_FLAGS(PASS_FLAGS_CRAWLER)

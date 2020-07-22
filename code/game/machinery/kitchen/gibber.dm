@@ -15,9 +15,10 @@
 	idle_power_usage = 2
 	active_power_usage = 500
 
-/obj/structure/machinery/gibber/initialize_pass_flags()
+/obj/structure/machinery/gibber/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	flags_can_pass_all = SETUP_LIST_FLAGS(PASS_HIGH_OVER_ONLY, PASS_AROUND, PASS_OVER_THROW_ITEM)
+	if (PF)
+		PF.flags_can_pass_all = SETUP_LIST_FLAGS(PASS_HIGH_OVER_ONLY, PASS_AROUND, PASS_OVER_THROW_ITEM)
 
 //auto-gibs anything that bumps into it
 /obj/structure/machinery/gibber/autogibber

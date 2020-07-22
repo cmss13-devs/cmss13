@@ -12,15 +12,14 @@
 	var/indestructible = FALSE
 	var/last_bumped = 0
 
-	// Flags for what an atom can pass through
-	var/list/flags_pass
+	// The cached datum for the permanent pass flags for any given atom
+	var/datum/pass_flags_container/pass_flags
+
+	// Temporary lags for what an atom can pass through
 	var/list/flags_pass_temp
 	var/list/temp_flag_counter
 
-	// Flags for what can pass through an atom
-	var/list/flags_can_pass_all // Use for objects that are not ON_BORDER or for general pass characteristics of an atom
-	var/list/flags_can_pass_front // Relevant mainly for ON_BORDER atoms with the BlockedPassDirs() proc
-	var/list/flags_can_pass_behind // Relevant mainly for ON_BORDER atoms with the BlockedExitDirs() proc
+	// Temporary flags for what can pass through an atom
 	var/list/flags_can_pass_all_temp
 	var/list/flags_can_pass_front_temp
 	var/list/flags_can_pass_behind_temp
@@ -51,6 +50,9 @@
 	// This is here to optimze things we never want to decorate
 	var/decoratable = FALSE
 
+	// Whether the atom is an obstacle that should be considered for passing
+	var/can_block_movement = FALSE
+
 /atom/New(loc, ...)
 	var/check_initialize = SSatoms.init_state
 	if(check_initialize != INITIALIZATION_INSSATOMS)
@@ -59,9 +61,25 @@
 			check = TRUE
 		args[1] = check
 		if(SSatoms.initalize_atom(src, args))
+			pass_flags = pass_flags_cache[type]
+			if (isnull(pass_flags))
+				pass_flags = new()
+				initialize_pass_flags(pass_flags)
+				pass_flags_cache[type] = pass_flags
+			else
+				initialize_pass_flags()
+			
 			Decorate()
 			return
 
+	pass_flags = pass_flags_cache[type]
+	if (isnull(pass_flags))
+		pass_flags = new()
+		initialize_pass_flags(pass_flags)
+		pass_flags_cache[type] = pass_flags
+	else
+		initialize_pass_flags()
+	
 	Decorate()
 
 /*
@@ -396,8 +414,6 @@ Parameters are passed from New.
 		CRASH("Warning: [src]([type]) initialized multiple times!")
 	flags_atom |= INITIALIZED
 
-	initialize_pass_flags()
-
 	return INITIALIZE_HINT_NORMAL
 
 //called if Initialize returns INITIALIZE_HINT_LATELOAD
@@ -468,5 +484,5 @@ Parameters are passed from New.
 				flags_pass_temp = LIST_FLAGS_REMOVE(flags_pass_temp, flag)
 
 // This proc is for initializing pass flags (allows for inheriting pass flags and list-based pass flags)
-/atom/proc/initialize_pass_flags()
+/atom/proc/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	return

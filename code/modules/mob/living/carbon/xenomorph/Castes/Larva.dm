@@ -62,10 +62,11 @@
 	icon_state = "Predalien Larva"
 	caste_name = "Predalien Larva"
 
-/mob/living/carbon/Xenomorph/Larva/initialize_pass_flags()
+/mob/living/carbon/Xenomorph/Larva/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	flags_pass = SETUP_LIST_FLAGS(PASS_MOB_THRU, PASS_FLAGS_CRAWLER)
-	flags_can_pass_all = SETUP_LIST_FLAGS(LIST_FLAGS_REMOVE(PASS_ALL, PASS_OVER_THROW_ITEM))
+	if (PF)
+		PF.flags_pass = SETUP_LIST_FLAGS(PASS_MOB_THRU, PASS_FLAGS_CRAWLER)
+		PF.flags_can_pass_all = SETUP_LIST_FLAGS(LIST_FLAGS_REMOVE(PASS_ALL, PASS_OVER_THROW_ITEM))
 
 /mob/living/carbon/Xenomorph/Larva/UnarmedAttack(atom/A)
 	a_intent = "help" //Forces help intent for all interactions.

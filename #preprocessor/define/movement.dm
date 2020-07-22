@@ -24,7 +24,6 @@
 // Note:	these are pretty abstract, when trying to apply one of these flags to an atom's flags_pass/flags_can_pass vars,
 //			consider what you intend to allow a given atom to pass/let through and how the "pass-bys" might happen logically
 
-// TODO: Rework pass flag system to be more robust (only 16 possible flags)
 #define PASS_THROUGH				1		// For atoms that are porous or have holes that an atom cannot normally pass through
 #define PASS_AROUND					2		// For atoms that do not necessarily "fill" the turf that they're on and give some space to go around
 #define PASS_OVER_THROW_ITEM		3		// For atoms that allow thrown items to go over them

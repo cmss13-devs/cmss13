@@ -23,9 +23,10 @@
 		/obj/structure/girder,
 		/obj/structure/window_frame)
 
-/obj/structure/window_frame/initialize_pass_flags()
+/obj/structure/window_frame/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	flags_can_pass_all = SETUP_LIST_FLAGS(PASS_OVER, PASS_TYPE_CRAWLER)
+	if (PF)
+		PF.flags_can_pass_all = SETUP_LIST_FLAGS(PASS_OVER, PASS_TYPE_CRAWLER)
 
 /obj/structure/window_frame/BlockedPassDirs(atom/movable/mover, target_dir)
 	for(var/obj/structure/S in get_turf(mover))

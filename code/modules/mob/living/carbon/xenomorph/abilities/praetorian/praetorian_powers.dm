@@ -462,7 +462,7 @@
 
 	to_chat(X, SPAN_XENOHIGHDANGER("You can now dodge through mobs!"))
 	X.speed_modifier -= speed_buff_amount
-	X.flags_pass = LIST_FLAGS_ADD(X.flags_pass, PASS_MOB_THRU)
+	X.flags_pass_temp = LIST_FLAGS_ADD(X.flags_pass_temp, PASS_MOB_THRU)
 	X.recalculate_speed()
 
 	add_timer(CALLBACK(src, .proc/remove_effects), duration)
@@ -477,9 +477,9 @@
 	if (!istype(X))
 		return
 
-	if (LIST_FLAGS_COMPARE(X.flags_pass, PASS_MOB_THRU))
+	if (LIST_FLAGS_COMPARE(X.flags_pass_temp, PASS_MOB_THRU))
 		X.speed_modifier += speed_buff_amount
-		X.flags_pass = LIST_FLAGS_REMOVE(X.flags_pass, PASS_MOB_THRU)
+		X.flags_pass_temp = LIST_FLAGS_REMOVE(X.flags_pass_temp, PASS_MOB_THRU)
 		X.recalculate_speed()
 		to_chat(X, SPAN_XENOHIGHDANGER("You can no longer dodge through mobs!"))
 

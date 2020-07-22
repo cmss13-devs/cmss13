@@ -33,7 +33,7 @@
 		xeno_type = pick(wave_data.wave_castes)
 		new_xeno = new xeno_type(picked)
 		new_xeno.away_timer = 300 //So ghosts can join instantly
-		new_xeno.flags_pass = list()
+		new_xeno.pass_flags.flags_pass = list()
 		new_xeno.nocrit(wave_data.wave_number)
 
 /datum/whiskey_outpost_wave

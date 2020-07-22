@@ -144,6 +144,9 @@ var/global/round_should_check_for_win = TRUE
 
 var/global/list/key_mods = list("CTRL", "ALT", "SHIFT")
 
+// A list storing the pass flags for specific types of atoms
+var/global/list/pass_flags_cache = list()
+
 //Parameterss cache
 var/global/list/paramslist_cache = list()
 

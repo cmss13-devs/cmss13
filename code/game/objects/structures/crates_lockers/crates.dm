@@ -14,9 +14,10 @@
 	store_mobs = FALSE
 	var/rigged = 0
 
-/obj/structure/closet/crate/initialize_pass_flags()
+/obj/structure/closet/crate/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	flags_can_pass_all = SETUP_LIST_FLAGS(PASS_OVER, PASS_AROUND)
+	if (PF)
+		PF.flags_can_pass_all = SETUP_LIST_FLAGS(PASS_OVER, PASS_AROUND)
 
 /obj/structure/closet/crate/can_open()
 	return 1

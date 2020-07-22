@@ -6,9 +6,10 @@
 	unacidable = TRUE
 	unslashable = TRUE
 
-/obj/structure/blocker/initialize_pass_flags()
+/obj/structure/blocker/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	flags_can_pass_all = list()
+	if (PF)
+		PF.flags_can_pass_all = list()
 
 /obj/structure/blocker/ex_act(severity)
 	return

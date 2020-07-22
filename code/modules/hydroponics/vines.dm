@@ -31,9 +31,10 @@
 		master.growth_queue -= src
 	. = ..()
 
-/obj/effect/plantsegment/initialize_pass_flags()
+/obj/effect/plantsegment/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	flags_pass = SETUP_LIST_FLAGS(PASS_OVER, PASS_AROUND, PASS_UNDER, PASS_THROUGH)
+	if (PF)
+		PF.flags_pass = SETUP_LIST_FLAGS(PASS_OVER, PASS_AROUND, PASS_UNDER, PASS_THROUGH)
 
 /obj/effect/plantsegment/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/tool/weldingtool))

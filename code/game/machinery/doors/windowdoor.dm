@@ -25,9 +25,10 @@
 	playsound(src, "shatter", 50, 1)
 	. = ..()
 
-/obj/structure/machinery/door/window/initialize_pass_flags()
+/obj/structure/machinery/door/window/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	flags_can_pass_all = SETUP_LIST_FLAGS(PASS_GLASS)
+	if (PF)
+		PF.flags_can_pass_all = SETUP_LIST_FLAGS(PASS_GLASS)
 
 //Enforces perspective layering like it's contemporary; windows.
 /obj/structure/machinery/door/window/update_icon(loc, direction)

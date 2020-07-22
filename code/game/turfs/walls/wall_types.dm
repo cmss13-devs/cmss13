@@ -510,9 +510,10 @@
 	opacity = 0
 	alpha = 180
 
-/turf/closed/wall/resin/membrane/initialize_pass_flags()
+/turf/closed/wall/resin/membrane/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	flags_can_pass_all = SETUP_LIST_FLAGS(PASS_GLASS)
+	if (PF)
+		PF.flags_can_pass_all = SETUP_LIST_FLAGS(PASS_GLASS)
 
 //this one is only for map use
 /turf/closed/wall/resin/membrane/ondirt

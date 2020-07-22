@@ -47,10 +47,11 @@
 	prepare_huds()
 	..()
 
-/mob/initialize_pass_flags()
+/mob/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	flags_pass = SETUP_LIST_FLAGS(PASS_MOB_IS_OTHER)
-	flags_can_pass_all = SETUP_LIST_FLAGS(PASS_MOB_THRU_OTHER, PASS_AROUND, PASS_HIGH_OVER_ONLY)
+	if (PF)
+		PF.flags_pass = SETUP_LIST_FLAGS(PASS_MOB_IS_OTHER)
+		PF.flags_can_pass_all = SETUP_LIST_FLAGS(PASS_MOB_THRU_OTHER, PASS_AROUND, PASS_HIGH_OVER_ONLY)
 
 /mob/Stat()
 	if(!client)

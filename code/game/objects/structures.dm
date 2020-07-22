@@ -10,6 +10,7 @@
 	health = 100
 	anchored = 1
 	projectile_coverage = PROJECTILE_COVERAGE_MEDIUM
+	can_block_movement = TRUE
 
 /obj/structure/New()
 	..()

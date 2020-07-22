@@ -24,9 +24,10 @@
 
 	src.icon_state = "barrier[src.locked]"
 
-/obj/structure/machinery/deployable/barrier/initialize_pass_flags()
+/obj/structure/machinery/deployable/barrier/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	flags_can_pass_all = SETUP_LIST_FLAGS(PASS_HIGH_OVER_ONLY, PASS_AROUND, PASS_UNDER)
+	if (PF)
+		PF.flags_can_pass_all = SETUP_LIST_FLAGS(PASS_HIGH_OVER_ONLY, PASS_AROUND, PASS_UNDER)
 
 /obj/structure/machinery/deployable/barrier/attackby(obj/item/W as obj, mob/user as mob)
 	if (istype(W, /obj/item/card/id/))

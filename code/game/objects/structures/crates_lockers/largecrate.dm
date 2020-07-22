@@ -6,9 +6,10 @@
 	density = 1
 	anchored = 0
 
-/obj/structure/largecrate/initialize_pass_flags()
+/obj/structure/largecrate/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	flags_can_pass_all = SETUP_LIST_FLAGS(PASS_OVER, PASS_AROUND)
+	if (PF)
+		PF.flags_can_pass_all = SETUP_LIST_FLAGS(PASS_OVER, PASS_AROUND)
 
 /obj/structure/largecrate/attack_hand(mob/user as mob)
 	to_chat(user, SPAN_NOTICE("You need a crowbar to pry this open!"))

@@ -13,9 +13,10 @@
 	// To store what type of wall it used to be
 	var/original
 
-/obj/structure/girder/initialize_pass_flags()
+/obj/structure/girder/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	flags_can_pass_all = SETUP_LIST_FLAGS(PASS_THROUGH, PASS_HIGH_OVER_ONLY)
+	if (PF)
+		PF.flags_can_pass_all = SETUP_LIST_FLAGS(PASS_THROUGH, PASS_HIGH_OVER_ONLY)
 
 /obj/structure/girder/bullet_act(var/obj/item/projectile/Proj)
 	//Tasers and the like should not damage girders.

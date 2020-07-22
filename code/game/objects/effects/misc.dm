@@ -26,9 +26,10 @@
 	unacidable = TRUE//Just to be sure.
 	var/def_zone
 
-/obj/effect/beam/initialize_pass_flags()
+/obj/effect/beam/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	flags_pass = SETUP_LIST_FLAGS(PASS_OVER, PASS_THROUGH)
+	if (PF)
+		PF.flags_pass = SETUP_LIST_FLAGS(PASS_OVER, PASS_THROUGH)
 
 
 /obj/effect/begin

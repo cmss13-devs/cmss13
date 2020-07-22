@@ -11,9 +11,10 @@
 	health = 10
 	var/destroyed = 0
 
-/obj/structure/grille/initialize_pass_flags()
+/obj/structure/grille/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	flags_can_pass_all = SETUP_LIST_FLAGS(PASS_THROUGH, PASS_BUILDING_ONLY)
+	if (PF)
+		PF.flags_can_pass_all = SETUP_LIST_FLAGS(PASS_THROUGH, PASS_BUILDING_ONLY)
 
 /obj/structure/grille/fence/
 	var/width = 3

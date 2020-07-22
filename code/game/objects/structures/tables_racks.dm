@@ -33,9 +33,11 @@
 	var/flipped_projectile_coverage = PROJECTILE_COVERAGE_HIGH
 	var/upright_projectile_coverage = PROJECTILE_COVERAGE_LOW
 
-/obj/structure/table/initialize_pass_flags()
+/obj/structure/table/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	flags_can_pass_all = SETUP_LIST_FLAGS(PASS_OVER, PASS_AROUND, PASS_UNDER, PASS_TYPE_CRAWLER, PASS_CRUSHER_CHARGE)
+	if (PF)
+		PF.flags_can_pass_all = SETUP_LIST_FLAGS(PASS_OVER, PASS_AROUND, PASS_TYPE_CRAWLER, PASS_CRUSHER_CHARGE)
+	flags_can_pass_all_temp = PASS_UNDER
 
 /obj/structure/table/destroy(deconstruct)
 	if(deconstruct)
@@ -437,7 +439,7 @@
 	if(dir != NORTH)
 		layer = FLY_LAYER
 	flipped = 1
-	flags_can_pass_all = LIST_FLAGS_REMOVE(flags_can_pass_all, PASS_UNDER)
+	flags_can_pass_all_temp = LIST_FLAGS_REMOVE(flags_can_pass_all_temp, PASS_UNDER)
 	flags_atom |= ON_BORDER
 	for(var/D in list(turn(direction, 90), turn(direction, -90)))
 		var/obj/structure/table/T = locate() in get_step(src,D)
@@ -455,9 +457,9 @@
 	projectile_coverage = upright_projectile_coverage
 
 	layer = initial(layer)
-	flipped = 0
+	flipped = FALSE
 	climbable = initial(climbable)
-	flags_can_pass_all = LIST_FLAGS_ADD(flags_can_pass_all, PASS_UNDER)
+	flags_can_pass_all_temp = LIST_FLAGS_ADD(flags_can_pass_all_temp, PASS_UNDER)
 	flags_atom &= ~ON_BORDER
 	for(var/D in list(turn(dir, 90), turn(dir, -90)))
 		var/obj/structure/table/T = locate() in get_step(src.loc,D)
@@ -580,9 +582,10 @@
 	parts = /obj/item/frame/rack
 	debris = list(/obj/item/frame/rack)
 
-/obj/structure/rack/initialize_pass_flags()
+/obj/structure/rack/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	flags_can_pass_all = SETUP_LIST_FLAGS(PASS_OVER, PASS_AROUND, PASS_UNDER, PASS_THROUGH, PASS_CRUSHER_CHARGE)
+	if (PF)
+		PF.flags_can_pass_all = SETUP_LIST_FLAGS(PASS_OVER, PASS_AROUND, PASS_UNDER, PASS_THROUGH, PASS_CRUSHER_CHARGE)
 
 /obj/structure/rack/BlockedPassDirs(atom/movable/mover, target_dir)
 	for(var/obj/structure/S in get_turf(mover))

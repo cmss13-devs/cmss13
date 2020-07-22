@@ -77,9 +77,10 @@
 	flavor_text = "This is an XP-45 Engineering Drone, one of the many fancy things that come out of the Weston-Yamada Research Department. It's designed to assist both ship repairs as well as ground missions. Shiny!"
 	update_icons()
 
-/mob/living/silicon/robot/drone/initialize_pass_flags()
+/mob/living/silicon/robot/drone/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	flags_pass = SETUP_LIST_FLAGS(PASS_MOB_THRU, PASS_FLAGS_CRAWLER)
+	if (PF)
+		PF.flags_pass = SETUP_LIST_FLAGS(PASS_MOB_THRU, PASS_FLAGS_CRAWLER)
 
 /mob/living/silicon/robot/drone/init()
 	connected_ai = null

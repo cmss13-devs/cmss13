@@ -26,9 +26,10 @@
 	see_in_dark = 8
 	see_invisible = 15
 
-/mob/living/simple_animal/cat/initialize_pass_flags()
+/mob/living/simple_animal/cat/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	flags_pass = SETUP_LIST_FLAGS(PASS_FLAGS_CRAWLER)
+	if (PF)
+		PF.flags_pass = SETUP_LIST_FLAGS(PASS_FLAGS_CRAWLER)
 
 /mob/living/simple_animal/cat/Life()
 	//MICE!

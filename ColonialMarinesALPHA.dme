@@ -1410,6 +1410,7 @@
 #include "code\modules\mob\new_player\preferences_setup.dm"
 #include "code\modules\mob\new_player\sprite_accessories.dm"
 #include "code\modules\movement\movement.dm"
+#include "code\modules\movement\pass_flags_container.dm"
 #include "code\modules\movement\launching\launching.dm"
 #include "code\modules\nano\nanoexternal.dm"
 #include "code\modules\nano\nanomanager.dm"

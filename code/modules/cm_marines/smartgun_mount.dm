@@ -160,9 +160,10 @@
 	var/gun_rounds = 0 //Did the gun come with any ammo?
 	health = 50
 
-/obj/structure/machinery/m56d_post/initialize_pass_flags()
+/obj/structure/machinery/m56d_post/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	flags_can_pass_all = SETUP_LIST_FLAGS(PASS_HIGH_OVER_ONLY, PASS_AROUND, PASS_OVER_THROW_ITEM)
+	if (PF)
+		PF.flags_can_pass_all = SETUP_LIST_FLAGS(PASS_HIGH_OVER_ONLY, PASS_AROUND, PASS_OVER_THROW_ITEM)
 
 //Making so rockets don't hit M56D
 /obj/structure/machinery/m56d_post/calculate_cover_hit_boolean(obj/item/projectile/P, var/distance = 0, var/cade_direction_correct = FALSE)

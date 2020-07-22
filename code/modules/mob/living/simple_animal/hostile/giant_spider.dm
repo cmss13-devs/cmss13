@@ -62,9 +62,10 @@
 	poison_per_bite = 5
 	move_to_delay = 4
 
-/mob/living/simple_animal/hostile/giant_spider/initialize_pass_flags()
+/mob/living/simple_animal/hostile/giant_spider/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	flags_pass = SETUP_LIST_FLAGS(PASS_FLAGS_CRAWLER)
+	if (PF)
+		PF.flags_pass = SETUP_LIST_FLAGS(PASS_FLAGS_CRAWLER)
 
 /mob/living/simple_animal/hostile/giant_spider/AttackingTarget()
 	..()

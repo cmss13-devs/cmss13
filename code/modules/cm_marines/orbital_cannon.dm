@@ -487,9 +487,10 @@ var/list/ob_type_fuel_requirements
 	flags_atom = ON_BORDER|CONDUCT|FPRINT
 	var/orbital_window_page = 0
 
-/obj/structure/machinery/computer/orbital_cannon_console/initialize_pass_flags()
+/obj/structure/machinery/computer/orbital_cannon_console/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	flags_can_pass_all = SETUP_LIST_FLAGS(PASS_ALL)
+	if (PF)
+		PF.flags_can_pass_all = SETUP_LIST_FLAGS(PASS_ALL)
 
 /obj/structure/machinery/computer/orbital_cannon_console/ex_act()
 	return

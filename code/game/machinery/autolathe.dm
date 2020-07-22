@@ -549,7 +549,7 @@
 
 /obj/structure/machinery/autolathe/medilathe
 	name = "\improper Medilathe"
-	desc = "Storage system for a large supply of chemicals, which slowly recharges."
+	desc = "A specialized autolathe made for printing medical items."
 	icon = 'icons/obj/structures/machinery/science_machines_64x32.dmi'
 	icon_state = "medilathe"
 	base_state = "medilathe"

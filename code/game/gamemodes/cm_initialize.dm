@@ -347,7 +347,7 @@ Additional game mode variables.
 
 	// Have to spawn the queen last or the mind will be added to xenomorphs and double spawned
 	for(var/datum/hive_status/hive in picked_queens)
-		transform_queen(picked_queens[hive], pick(hive_spawns), hive.hivenumber)
+		pick_queen_spawn(picked_queens[hive], hive.hivenumber)
 
 
 /datum/game_mode/proc/check_xeno_late_join(mob/xeno_candidate)
@@ -488,12 +488,60 @@ Additional game mode variables.
 			X.update_pipe_icons(X.loc) //If we are in a vent, fetch a fresh vent map
 	return TRUE
 
+/datum/game_mode/proc/pick_queen_spawn(datum/mind/ghost_mind, var/hivenumber = XENO_HIVE_NORMAL)
+	var/mob/living/original = ghost_mind.current
+	var/datum/hive_status/hive = hive_datum[hivenumber]
+	if(hive.living_xeno_queen || !original || !original.client)
+		return
+
+	if(!length(queen_spawn_list))
+		transform_queen(ghost_mind, pick(xeno_spawn), hivenumber)
+		return
+
+	// Make the list pretty
+	var/spawn_list_names = list()
+	for(var/T in queen_spawn_list)
+		spawn_list_names += get_area(T)
+	
+	// Timed input, answer before the time us up
+	// H'yup, that's how you do it, ugly as fuck
+	var/list/spawn_name = list("temp")
+	var/datum/temp = new()
+	var/expiration = world.time + MINUTES_2
+	spawn()
+		src = temp
+		spawn_name[1] = input(original, "Where do you want to spawn?") as null|anything in spawn_list_names
+	while(spawn_name[1] == "temp")
+		if(world.time > expiration)
+			del(temp)
+			break
+		else
+			sleep(SECONDS_2)
+
+	var/turf/QS
+	for(var/T in queen_spawn_list)
+		if(get_area(T) == spawn_name[1])
+			QS = T
+
+	// Pick a random one if nothing was picked
+	if(isnull(QS))
+		QS = pick(queen_spawn_list)
+		// Support maps without queen spawns
+		if(isnull(QS))
+			QS = pick(xeno_spawn)
+
+	if(QS in queen_spawn_list)
+		queen_spawn_list -= QS
+
+	transform_queen(ghost_mind, QS, hivenumber)
+
 /datum/game_mode/proc/transform_queen(datum/mind/ghost_mind, var/turf/xeno_turf, var/hivenumber = XENO_HIVE_NORMAL)
 	var/mob/living/original = ghost_mind.current
 	var/datum/hive_status/hive = hive_datum[hivenumber]
 	if(hive.living_xeno_queen || !original || !original.client)
 		return
-	var/mob/living/carbon/Xenomorph/new_queen = new /mob/living/carbon/Xenomorph/Queen (xeno_turf, null, hivenumber)
+
+	var/mob/living/carbon/Xenomorph/new_queen = new /mob/living/carbon/Xenomorph/Queen(xeno_turf, null, hivenumber)
 	ghost_mind.transfer_to(new_queen) //The mind is fine, since we already labeled them as a xeno. Away they go.
 	ghost_mind.name = ghost_mind.current.name
 

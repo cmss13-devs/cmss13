@@ -12826,9 +12826,7 @@
 /area/lv624/lazarus/sleep_male)
 "aMd" = (
 /obj/structure/table/reinforced,
-/obj/item/device/flashlight/lamp{
-	on = 0
-	},
+/obj/item/device/flashlight/lamp,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
 	dir = 8;
@@ -18045,6 +18043,11 @@
 	icon_state = "grassdirt_corner"
 	},
 /area/lv624/ground/jungle5)
+"dOQ" = (
+/obj/effect/alien/weeds/node,
+/obj/effect/landmark/queen_spawn,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/central1)
 "dZK" = (
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
@@ -18480,6 +18483,11 @@
 	dir = 1
 	},
 /area/lv624/ground/sand9)
+"iiK" = (
+/obj/effect/alien/weeds/node,
+/obj/effect/landmark/queen_spawn,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/east1)
 "ioo" = (
 /turf/open/gm/dirtgrassborder{
 	icon_state = "grassdirt_corner"
@@ -19278,6 +19286,13 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
+"qaE" = (
+/obj/effect/landmark{
+	name = "hunter_primary"
+	},
+/obj/effect/landmark/queen_spawn,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/west1)
 "qbz" = (
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/greengrid,
@@ -25818,7 +25833,7 @@ abN
 abN
 abN
 abN
-acS
+qaE
 abN
 abN
 aLr
@@ -37676,7 +37691,7 @@ abl
 abI
 abl
 abl
-abv
+dOQ
 abl
 abl
 abl
@@ -55227,7 +55242,7 @@ acf
 acg
 acg
 acg
-aaN
+iiK
 acg
 acg
 acg

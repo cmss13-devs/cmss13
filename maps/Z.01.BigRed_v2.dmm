@@ -1824,7 +1824,6 @@
 /area/bigredv2/caves/lambda/xenobiology)
 "aeB" = (
 /obj/structure/machinery/computer/telecomms/server{
-	req_access = null;
 	req_one_access = list(19,200)
 	},
 /turf/open/floor{
@@ -2010,7 +2009,6 @@
 /area/bigredv2/caves/lambda/xenobiology)
 "afb" = (
 /obj/structure/machinery/computer/telecomms/traffic{
-	req_access = null;
 	req_one_access = list(19,200)
 	},
 /turf/open/floor{
@@ -30576,6 +30574,7 @@
 /obj/effect/landmark{
 	name = "crap_item"
 	},
+/obj/effect/landmark/queen_spawn,
 /turf/open/floor{
 	icon_state = "dark";
 	tag = "icon-dark"
@@ -31703,6 +31702,16 @@
 	tag = "icon-mars_cave_2"
 	},
 /area/bigredv2/caves_research)
+"oQz" = (
+/obj/effect/landmark{
+	name = "crap_item"
+	},
+/obj/effect/landmark/queen_spawn,
+/turf/open/mars_cave{
+	icon_state = "mars_cave_2";
+	tag = "icon-mars_cave_2"
+	},
+/area/bigredv2/caves_sw)
 "oQI" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_23";
@@ -31723,6 +31732,17 @@
 	tag = "icon-asteroidwarning (WEST)"
 	},
 /area/bigredv2/outside/eta)
+"pbK" = (
+/obj/effect/landmark{
+	name = "hunter_secondary"
+	},
+/obj/effect/alien/weeds/node,
+/obj/effect/landmark/queen_spawn,
+/turf/open/mars_cave{
+	icon_state = "mars_cave_2";
+	tag = "icon-mars_cave_2"
+	},
+/area/bigredv2/caves_lambda)
 "pcI" = (
 /obj/structure/machinery/door/airlock/almayer/secure{
 	dir = 1;
@@ -32296,6 +32316,7 @@
 /obj/effect/landmark{
 	name = "xeno_hive_spawn"
 	},
+/obj/effect/landmark/queen_spawn,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
 	tag = "icon-mars_cave_2"
@@ -36381,7 +36402,7 @@ aao
 gxJ
 wog
 wog
-daf
+oQz
 wog
 wog
 wog
@@ -66861,7 +66882,7 @@ aao
 aao
 aao
 wQC
-aij
+pbK
 tQw
 tQw
 sNQ

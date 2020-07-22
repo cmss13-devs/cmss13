@@ -707,7 +707,7 @@
 /obj/structure/window/reinforced{
 	layer = 3.8
 	},
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/gamma/foyer)
 "ace" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
@@ -922,7 +922,7 @@
 /obj/structure/window/reinforced{
 	layer = 3.8
 	},
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/gamma/foyer)
 "acB" = (
 /obj/structure/machinery/door/window/southleft{
@@ -1578,7 +1578,7 @@
 /obj/structure/window/reinforced{
 	layer = 3.8
 	},
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/gamma/foyer)
 "aew" = (
 /obj/effect/landmark/teleporter_loc/corsat_sigma_remote{
@@ -2367,8 +2367,7 @@
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
 	name = "Laundry Unit";
-	req_access = list();
-	req_one_access = null
+	req_access = list()
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat{
@@ -2744,7 +2743,7 @@
 	layer = 3.8
 	},
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/gamma/foyer)
 "ahw" = (
 /turf/closed/wall/biodome,
@@ -2768,7 +2767,7 @@
 /obj/structure/window/reinforced{
 	layer = 3.8
 	},
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/gamma/hallwaysouth)
 "ahz" = (
 /turf/closed/wall/r_wall/biodome/biodome_unmeltable,
@@ -4004,9 +4003,7 @@
 	},
 /area/corsat/gamma/hangar/flightcontrol)
 "akN" = (
-/obj/item/device/flashlight/lamp{
-	on = 0
-	},
+/obj/item/device/flashlight/lamp,
 /obj/structure/pipes/vents/pump{
 	dir = 1
 	},
@@ -5849,8 +5846,7 @@
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
 	name = "\improper Toilet Unit";
-	req_access = list();
-	req_one_access = null
+	req_access = list()
 	},
 /turf/open/floor/corsat{
 	dir = 10;
@@ -6411,11 +6407,11 @@
 	},
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/sigma/north)
 "arC" = (
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/sigma/north)
 "arD" = (
 /obj/structure/table/woodentable/fancy,
@@ -6432,7 +6428,7 @@
 	},
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
 /obj/structure/flora/bush/ausbushes/var3/sunnybush,
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/sigma/north)
 "arF" = (
 /obj/structure/machinery/light/small{
@@ -6476,7 +6472,7 @@
 	dir = 8
 	},
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/sigma/north)
 "arN" = (
 /turf/closed/wall/biodome,
@@ -6511,7 +6507,7 @@
 "arT" = (
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
 /obj/structure/flora/bush/ausbushes/var3/leafybush,
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/sigma/north)
 "arU" = (
 /obj/structure/machinery/washing_machine,
@@ -6538,7 +6534,7 @@
 	},
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/sigma/north)
 "asa" = (
 /turf/open/floor/corsat{
@@ -6591,7 +6587,7 @@
 	},
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
 /obj/structure/flora/bush/ausbushes/var3/sunnybush,
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/sigma/north)
 "asi" = (
 /obj/structure/window/reinforced{
@@ -6599,7 +6595,7 @@
 	health = 80
 	},
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/sigma/north)
 "asj" = (
 /obj/structure/machinery/power/apc/hyper{
@@ -6623,7 +6619,7 @@
 "asn" = (
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
 /obj/structure/flora/bush/ausbushes/var3/sunnybush,
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/sigma/north)
 "aso" = (
 /turf/open/floor/corsat{
@@ -6728,7 +6724,7 @@
 	layer = 3.8
 	},
 /obj/structure/flora/bush/ausbushes/var3/leafybush,
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/sigma/north)
 "asJ" = (
 /turf/closed/wall/r_wall/biodome/biodome_unmeltable,
@@ -6741,7 +6737,7 @@
 	layer = 3.8
 	},
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/sigma/north)
 "asM" = (
 /obj/structure/window/reinforced{
@@ -6753,7 +6749,7 @@
 	},
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
 /obj/structure/flora/bush/ausbushes/var3/leafybush,
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/sigma/north)
 "asN" = (
 /obj/structure/table/woodentable,
@@ -12496,8 +12492,7 @@
 "aHf" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "\improper Toilet Unit";
-	req_access = list();
-	req_one_access = null
+	req_access = list()
 	},
 /turf/open/floor/corsat{
 	dir = 10;
@@ -13675,7 +13670,7 @@
 	},
 /area/corsat/theta/airlock/control)
 "aJZ" = (
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "aKa" = (
 /obj/structure/window/framed/corsat/security,
@@ -15865,7 +15860,7 @@
 	name = "yautja_teleport_loc"
 	},
 /obj/structure/flora/jungle/vines/heavy,
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "aPO" = (
 /obj/structure/window/framed/corsat/security,
@@ -16447,7 +16442,6 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 1;
 	name = "Chemistry";
-	req_access = null;
 	req_one_access = list(103)
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -19320,8 +19314,7 @@
 "aYd" = (
 /obj/structure/machinery/shower,
 /obj/structure/machinery/door/window/southleft{
-	opacity = 1;
-	req_access = null
+	opacity = 1
 	},
 /obj/item/tool/soap,
 /obj/structure/machinery/light/small{
@@ -19335,8 +19328,7 @@
 "aYe" = (
 /obj/structure/machinery/shower,
 /obj/structure/machinery/door/window/southleft{
-	opacity = 1;
-	req_access = null
+	opacity = 1
 	},
 /obj/structure/machinery/light/small{
 	dir = 8
@@ -19814,7 +19806,7 @@
 "aZm" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /obj/structure/flora/jungle/vines/heavy,
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "aZn" = (
 /obj/structure/platform{
@@ -21570,7 +21562,7 @@
 "bcN" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /obj/structure/flora/jungle/planttop1,
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "bcO" = (
 /obj/structure/sign/safety/airlock{
@@ -21907,18 +21899,18 @@
 /area/corsat/theta/biodome)
 "bdP" = (
 /obj/structure/flora/jungle/vines,
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "bdQ" = (
 /turf/closed/gm/dense,
 /area/corsat/theta/biodome)
 "bdR" = (
 /obj/structure/flora/jungle/vines/heavy,
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "bdS" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "bdT" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
@@ -21957,7 +21949,7 @@
 /area/corsat/theta/biodome)
 "bdZ" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "bea" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
@@ -22001,15 +21993,15 @@
 /area/corsat/sigma/biodome/gunrange)
 "beg" = (
 /obj/structure/flora/bush/ausbushes/ppflowers,
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "beh" = (
 /obj/structure/flora/jungle/planttop1,
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "bei" = (
 /obj/structure/flora/jungle/plantbot1,
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "bej" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
@@ -22039,7 +22031,7 @@
 	icon_state = "alienplant1";
 	luminosity = 2
 	},
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "ben" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
@@ -22051,7 +22043,7 @@
 /area/corsat/theta/biodome)
 "beo" = (
 /obj/structure/flora/bush/ausbushes/var3/ywflowers,
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "bep" = (
 /obj/structure/flora/jungle/planttop1,
@@ -22165,7 +22157,7 @@
 "beI" = (
 /obj/structure/flora/jungle/vines,
 /obj/structure/flora/jungle/vines,
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "beJ" = (
 /obj/structure/flora/bush/ausbushes/var3/ywflowers,
@@ -29378,7 +29370,6 @@
 "bzq" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "Research Complex Theta";
-	req_access = null;
 	req_one_access = list(103)
 	},
 /turf/open/floor/corsat{
@@ -36242,7 +36233,7 @@
 "bUJ" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /obj/structure/flora/jungle/planttop1,
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "bUK" = (
 /obj/structure/flora/jungle/plantbot1,
@@ -36484,7 +36475,7 @@
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
 	},
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "bVG" = (
 /obj/structure/machinery/door_control{
@@ -36500,7 +36491,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "bVI" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
@@ -36595,7 +36586,7 @@
 "bVX" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "bWb" = (
 /obj/structure/table/almayer,
@@ -38780,7 +38771,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "cvW" = (
 /obj/structure/machinery/door/window/westleft,
@@ -39087,7 +39078,7 @@
 "cMa" = (
 /obj/structure/flora/bush/ausbushes/var3/ywflowers,
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "cMv" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
@@ -39662,7 +39653,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "diI" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -40176,7 +40167,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "dzX" = (
 /turf/open/floor/corsat{
@@ -40966,6 +40957,15 @@
 	icon_state = "retrosquares"
 	},
 /area/corsat/gamma/foyer)
+"eeG" = (
+/obj/effect/landmark{
+	name = "xeno_spawn"
+	},
+/obj/effect/landmark/queen_spawn,
+/turf/open/floor/corsat{
+	icon_state = "plate"
+	},
+/area/corsat/omega/biodome)
 "eeL" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -41095,7 +41095,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "eiQ" = (
 /obj/structure/machinery/power/apc/high{
@@ -41353,7 +41353,7 @@
 "eql" = (
 /obj/structure/flora/bush/ausbushes/var3/ywflowers,
 /obj/structure/pipes/standard/manifold/hidden/green,
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "eqt" = (
 /obj/structure/pipes/vents/pump{
@@ -41880,7 +41880,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
 	},
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "eMI" = (
 /obj/structure/showcase{
@@ -41928,7 +41928,7 @@
 "eNM" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "eOe" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -42501,7 +42501,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "fkn" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -42563,7 +42563,7 @@
 	health = 80
 	},
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/gamma/foyer)
 "flt" = (
 /obj/vehicle/train/cargo/trolley,
@@ -42703,7 +42703,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
 	},
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "fpL" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
@@ -42867,7 +42867,7 @@
 "fwq" = (
 /obj/structure/flora/jungle/vines,
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "fwQ" = (
 /turf/open/floor/corsat{
@@ -44118,11 +44118,11 @@
 "gqT" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /obj/structure/pipes/vents/pump,
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "gqV" = (
 /obj/structure/flora/bush/ausbushes/grassybush,
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "gra" = (
 /turf/open/floor/corsat{
@@ -45551,7 +45551,7 @@
 "hnR" = (
 /obj/structure/flora/jungle/plantbot1,
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "hoh" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
@@ -46085,7 +46085,6 @@
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
 	name = "Firing Range";
-	req_access = null;
 	req_one_access = list(106,102,103);
 	use_power = 0
 	},
@@ -46366,7 +46365,7 @@
 /obj/effect/landmark{
 	name = "monkey_spawn"
 	},
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "hKZ" = (
 /obj/structure/largecrate/random/barrel,
@@ -46437,7 +46436,7 @@
 /obj/structure/tunnel{
 	id = "hole3"
 	},
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "hOl" = (
 /obj/effect/decal/cleanable/dirt,
@@ -47514,7 +47513,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "iBo" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
@@ -47638,7 +47637,7 @@
 /obj/structure/pipes/vents/pump{
 	dir = 1
 	},
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "iEN" = (
 /obj/structure/table/almayer,
@@ -47936,7 +47935,7 @@
 "iQH" = (
 /obj/structure/flora/jungle/vines,
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "iQL" = (
 /obj/structure/closet/wardrobe/robotics_black,
@@ -48424,7 +48423,7 @@
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
 	},
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "jnb" = (
 /obj/structure/machinery/light{
@@ -48501,7 +48500,7 @@
 /area/corsat/gamma/hangar/arrivals)
 "jqz" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "jrQ" = (
 /obj/structure/bed/stool{
@@ -49879,7 +49878,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "kuO" = (
 /obj/structure/table/reinforced,
@@ -50057,7 +50056,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
 	},
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "kCq" = (
 /turf/open/floor/corsat{
@@ -50647,7 +50646,7 @@
 "kWq" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/landmark/objective_landmark/far,
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "kWL" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -50716,7 +50715,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
 	},
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "laV" = (
 /obj/structure/table/almayer,
@@ -51234,7 +51233,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "lsH" = (
 /obj/structure/pipes/vents/pump{
@@ -51763,7 +51762,7 @@
 /area/corsat/sigma/hangar)
 "lKy" = (
 /obj/structure/flora/bush/ausbushes/lavendergrass,
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "lKC" = (
 /obj/structure/pipes/vents/pump{
@@ -53440,6 +53439,7 @@
 /obj/effect/landmark{
 	name = "xeno_hive_spawn"
 	},
+/obj/effect/landmark/queen_spawn,
 /turf/open/floor/corsat{
 	icon_state = "retrosquareslight"
 	},
@@ -53658,7 +53658,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "ncR" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -53845,14 +53845,14 @@
 "nlm" = (
 /obj/structure/flora/bush/ausbushes/ppflowers,
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "nln" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /obj/structure/pipes/vents/pump{
 	dir = 4
 	},
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "nls" = (
 /obj/structure/bed/sofa/south/grey/right,
@@ -54494,7 +54494,7 @@
 /obj/effect/landmark{
 	name = "monkey_spawn"
 	},
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "nFt" = (
 /obj/structure/table/reinforced,
@@ -55242,7 +55242,7 @@
 /obj/effect/landmark{
 	name = "monkey_spawn"
 	},
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "ogT" = (
 /obj/structure/toilet,
@@ -55472,7 +55472,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "opf" = (
 /obj/structure/prop/almayer/sensor_computer1{
@@ -56303,7 +56303,7 @@
 /obj/effect/landmark{
 	name = "monkey_spawn"
 	},
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "oVe" = (
 /obj/structure/machinery/light{
@@ -56333,7 +56333,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "oVM" = (
 /obj/structure/bed/sofa/vert/grey/bot,
@@ -56484,7 +56484,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "pbS" = (
 /turf/open/floor/corsat{
@@ -56647,7 +56647,7 @@
 "pgO" = (
 /obj/structure/flora/jungle/vines/heavy,
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "pgV" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -56966,7 +56966,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
 	},
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "pwd" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
@@ -58629,7 +58629,7 @@
 	dir = 8;
 	network = list("theta")
 	},
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "qFp" = (
 /obj/structure/bed/chair/office/light{
@@ -60085,7 +60085,7 @@
 "rJo" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "rJu" = (
 /obj/effect/landmark/corpsespawner/scientist,
@@ -60388,7 +60388,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "rTo" = (
 /turf/open/floor/corsat{
@@ -60425,14 +60425,14 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
 	},
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "rUH" = (
 /obj/structure/pipes/vents/pump{
 	dir = 4
 	},
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "rUK" = (
 /obj/structure/machinery/light{
@@ -61022,7 +61022,7 @@
 /area/corsat/sigma/hangar/office)
 "smP" = (
 /obj/structure/flora/bush/ausbushes/var3/sunnybush,
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "snc" = (
 /obj/structure/morgue,
@@ -61141,7 +61141,7 @@
 /area/corsat/gamma/biodome/virology)
 "spU" = (
 /obj/structure/flora/bush/ausbushes/palebush,
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "sqn" = (
 /obj/structure/machinery/colony_floodlight{
@@ -61204,7 +61204,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "sum" = (
 /turf/open/floor/corsat{
@@ -61485,6 +61485,10 @@
 	icon_state = "plate"
 	},
 /area/corsat/gamma/biodome/virology)
+"sFF" = (
+/obj/effect/landmark/queen_spawn,
+/turf/open/ice,
+/area/corsat/gamma/biodome)
 "sFI" = (
 /turf/open/floor/corsat{
 	dir = 8;
@@ -61862,7 +61866,6 @@
 "sRK" = (
 /obj/structure/table/reinforced,
 /obj/structure/machinery/computer/secure_data{
-	req_access = null;
 	req_one_access = list(201,104)
 	},
 /turf/open/floor/corsat{
@@ -62673,7 +62676,7 @@
 "twS" = (
 /obj/structure/flora/jungle/vines/heavy,
 /obj/structure/pipes/vents/pump/on,
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "twW" = (
 /obj/structure/window/framed/corsat,
@@ -62749,14 +62752,14 @@
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "tAF" = (
 /obj/structure/flora/jungle/vines/heavy,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "tBh" = (
 /turf/open/floor/corsat{
@@ -62942,7 +62945,7 @@
 /obj/structure/pipes/vents/pump{
 	dir = 1
 	},
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "tHC" = (
 /obj/structure/bed/chair{
@@ -63100,7 +63103,7 @@
 /obj/structure/flora/jungle/vines,
 /obj/structure/pipes/vents/pump,
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "tNJ" = (
 /obj/structure/table/reinforced,
@@ -63729,7 +63732,7 @@
 /area/corsat/sigma/south/robotics)
 "ukb" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "ukf" = (
 /obj/effect/landmark{
@@ -63878,7 +63881,7 @@
 	dir = 4
 	},
 /obj/structure/flora/jungle/vines/heavy,
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "upr" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -63963,7 +63966,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "usW" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -65011,14 +65014,14 @@
 "vcx" = (
 /obj/structure/flora/jungle/vines,
 /obj/structure/pipes/vents/pump,
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "vcy" = (
 /obj/structure/flora/jungle/vines,
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "vcJ" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -65591,7 +65594,7 @@
 /obj/structure/flora/jungle/vines/heavy,
 /obj/structure/pipes/vents/pump,
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "vzc" = (
 /obj/structure/machinery/light,
@@ -66087,7 +66090,7 @@
 "vQg" = (
 /obj/structure/flora/bush/ausbushes/ppflowers,
 /obj/structure/pipes/standard/manifold/hidden/green,
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "vQs" = (
 /obj/structure/table/reinforced,
@@ -67795,7 +67798,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
 	},
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "xdB" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -68164,7 +68167,7 @@
 /area/corsat/gamma/sigmaremote)
 "xsU" = (
 /obj/structure/flora/bush/ausbushes/var3/leafybush,
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "xsZ" = (
 /obj/effect/decal/cleanable/blood/splatter/animated,
@@ -68602,7 +68605,7 @@
 	health = 80
 	},
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
-/turf/open/gm/grass,
+/turf/open/gm/grass/weedable,
 /area/corsat/gamma/hallwaysouth)
 "xKC" = (
 /obj/structure/machinery/camera/autoname{
@@ -70890,7 +70893,7 @@ bfv
 bfi
 bgf
 bfc
-bfc
+sFF
 bfc
 bgc
 bfU
@@ -72938,7 +72941,7 @@ eMM
 ctw
 avX
 aFe
-aFe
+eeG
 aFe
 aFe
 avX

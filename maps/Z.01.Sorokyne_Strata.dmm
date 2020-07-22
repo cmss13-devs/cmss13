@@ -23940,6 +23940,7 @@
 /obj/effect/landmark{
 	name = "xeno_hive_spawn"
 	},
+/obj/effect/landmark/queen_spawn,
 /turf/open/floor/strata{
 	icon_state = "floor2"
 	},
@@ -25790,6 +25791,7 @@
 /obj/effect/landmark{
 	name = "monkey_spawn"
 	},
+/obj/effect/landmark/queen_spawn,
 /turf/open/gm/grass/weedable,
 /area/strata/ug/interior/jungle/deep/east_carp)
 "bIy" = (
@@ -36670,6 +36672,13 @@
 	},
 /turf/open/snow/layer1,
 /area/strata/ag/exterior/paths/westadmin)
+"gGX" = (
+/obj/effect/landmark/queen_spawn,
+/turf/open/floor/strata{
+	dir = 10;
+	icon_state = "multi_tiles"
+	},
+/area/strata/ag/interior/outpost/gen/bball/nest)
 "gHQ" = (
 /obj/item/stack/sheet/wood,
 /turf/open/floor/strata,
@@ -47988,6 +47997,7 @@
 /obj/effect/landmark{
 	name = "xeno_hive_spawn"
 	},
+/obj/effect/landmark/queen_spawn,
 /turf/open/gm/grass/weedable,
 /area/strata/ug/interior/jungle/deep/tearlake)
 "uTv" = (
@@ -72414,7 +72424,7 @@ aLu
 cjq
 cjq
 cjq
-cjq
+gGX
 cdo
 cjq
 aSJ

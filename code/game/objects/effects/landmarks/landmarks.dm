@@ -100,6 +100,19 @@
 	landmarks_list -= src
 	. = ..()
 
+
+/obj/effect/landmark/queen_spawn
+	name = "queen spawn"
+	icon = 'icons/mob/hud/screen1.dmi'
+	icon_state = "x4"
+
+/obj/effect/landmark/queen_spawn/Initialize(mapload, ...)
+	. = ..()
+	
+	queen_spawn_list += loc
+	qdel(src)
+
+
 /obj/effect/landmark/start
 	name = "start"
 	icon = 'icons/mob/hud/screen1.dmi'

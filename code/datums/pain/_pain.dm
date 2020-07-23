@@ -28,6 +28,9 @@
 // Time to wait between each pain level increase/decrease
 #define PAIN_UPDATE_FREQUENCY 20
 
+// The rate at which pain reduction decreases as pain goes up. (-PAIN_REDUCTION_DECREASE_RATE * current_pain) + reduction_pain = pain_reduction
+#define PAIN_REDUCTION_DECREASE_RATE 0.25
+
 // Movespeed levels, how much is the pain slowing you
 #define PAIN_SPEED_VERYSLOW	4.50
 #define PAIN_SPEED_SLOW		3.75
@@ -73,10 +76,13 @@
 		qdel(src)
 
 /datum/pain/proc/get_pain_percentage()
-	if(current_pain - reduction_pain > max_pain)
+	//Pain reduction effectiveness linear decreases as the pain goes up
+	var/new_pain_reduction = max(0, (-PAIN_REDUCTION_DECREASE_RATE * current_pain) + reduction_pain)
+
+	if(current_pain - new_pain_reduction > max_pain)
 		return 100
 
-	var/percentage = round(((current_pain - reduction_pain) / max_pain) * 100)
+	var/percentage = round(((current_pain - new_pain_reduction) / max_pain) * 100)
 	if(percentage < 0)
 		return 0
 	else

@@ -13,7 +13,7 @@
 	overdose_critical = HIGH_REAGENTS_OVERDOSE_CRITICAL
 	scannable = 1
 	chemclass = CHEM_CLASS_COMMON
-	properties = list(PROPERTY_CARDIOSTABILIZING = 2)
+	properties = list(PROPERTY_CARDIOSTABILIZING = 3)
 
 /datum/reagent/ryetalyn
 	name = "Ryetalyn"
@@ -50,7 +50,7 @@
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_COMMON
-	properties = list(PROPERTY_PAINKILLING = 4)
+	properties = list(PROPERTY_PAINKILLING = 5)
 
 /datum/reagent/oxycodone
 	name = "Oxycodone"

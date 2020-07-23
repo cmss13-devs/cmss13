@@ -46,7 +46,16 @@
 
 		//UNCONSCIOUS. NO-ONE IS HOME
 		if(regular_update && ((getOxyLoss() > 50)))
-			KnockOut(3)		
+			KnockOut(3)	
+		
+		if(isHumanStrict(src) && HEALTH_THRESHOLD_CRIT > health)
+			var/already_in_crit = FALSE
+			for(var/datum/effects/crit/C in effects_list)
+				already_in_crit = TRUE
+				break
+			// Need to only apply if its not already active
+			if(!already_in_crit)
+				new /datum/effects/crit/human(src)
 
 		if(knocked_out)
 			if(regular_update)

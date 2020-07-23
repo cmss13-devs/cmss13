@@ -9,6 +9,7 @@
 	var/datum/crime_incident/incident
 	var/menu_screen = "main_menu"
 	var/paper_counter = 0
+	var/imported_paper = FALSE
 
 /obj/structure/machinery/computer/sentencing/attack_hand(mob/user as mob)
 	if(..() || !allowed(usr) || inoperable())
@@ -43,6 +44,7 @@
 			if(istype(C))
 				if(incident && C.registered_name)
 					incident.criminal_name = C.registered_name
+					incident.criminal_gid = add_zero(num2hex(C.registered_gid), 6)
 					ping("\The [src] pings, \"Criminal [C.registered_name] verified.\"")
 		return
 	..()
@@ -52,6 +54,8 @@
 
 	if(istype(I) && I.incident)
 		incident = I.incident
+
+	imported_paper = TRUE
 
 	return incident
 
@@ -137,7 +141,10 @@
 
 	dat += "<br><hr>"
 	dat += "<center>"
-	dat += " <a href='?src=\ref[src];button=print_encoded_form'>Export Incident</a> "
+	if(imported_paper)
+		dat += " <a href='?src=\ref[src];button=print_imported'>Remove Incident</a> "
+	else
+		dat += " <a href='?src=\ref[src];button=print_encoded_form'>Export Incident</a> "
 	dat += "<a href='?src=\ref[src];button=change_menu;choice=main_menu'>Cancel</a></center>"
 	return dat
 
@@ -201,7 +208,7 @@
 /obj/structure/machinery/computer/sentencing/proc/list_witnesses()
 	var/dat = ""
 	dat += "<table class='border'>"
-	dat += "<th colspan='3'>Witnesses <a href='?src=\ref[src];button=add_witness;title=Witness'>Add</a></th>"
+	dat += "<th colspan='1'>Witnesses <a href='?src=\ref[src];button=add_witness;title=Witness'>Add</a></th>"
 	for(var/witness in incident.witnesses)
 		dat += "<tr>"
 
@@ -227,7 +234,7 @@
 	var/list/evidence = incident.evidence
 
 	dat += "<table class='border'>"
-	dat += "<th colspan='3'>Evidence <a href='?src=\ref[src];button=add_evidence'>Add</a></th>"
+	dat += "<th colspan='1'>Evidence <a href='?src=\ref[src];button=add_evidence'>Add</a></th>"
 	for(var/item in evidence)
 		dat += "<tr>"
 
@@ -340,13 +347,27 @@
 	dat += "</table>"
 	return dat
 
-/obj/structure/machinery/computer/sentencing/proc/print_incident_report(var/sentence = TRUE)
+/obj/structure/machinery/computer/sentencing/proc/print_incident_report(var/imported = FALSE)
 	if(!incident || !incident.criminal_name || !incident.brig_sentence)
 		return "Report is lacking information."
 
+	if(!imported)
+		var/datum/data/record/found_record
+		for(var/datum/data/record/R in data_core.security)
+			if(incident.criminal_gid == 0)
+				break
+
+			if(R.fields["id"] == incident.criminal_gid)
+				found_record = R
+				break
+
+		if(found_record)
+			found_record.fields["incident"] += "<BR> \
+												Crime: [incident.charges_to_string()].<BR> \
+												Notes: [incident.notes].<BR>"
+
 	var/obj/item/paper/incident/I = new /obj/item/paper/incident(loc)
 	I.incident = incident
-	I.sentence = sentence
 	I.name = "Encoded Incident Report [paper_counter++] ([incident.criminal_name])"
 	playsound(loc, 'sound/machines/twobeep.ogg', 15, 1)
 
@@ -372,12 +393,21 @@
 			if(istype(C))
 				if(incident && C.registered_name)
 					incident.criminal_name = C.registered_name
+					incident.criminal_gid = add_zero(num2hex(C.registered_gid), 6)
 					ping("\The [src] pings, \"Criminal [C.registered_name] verified.\"")
 			else if(incident.criminal_name)
 				ping("\The [src] pings, \"Criminal cleared.\"")
 				incident.criminal_name = null
 		if("print_encoded_form")
-			var/error = print_incident_report(0)
+			var/error = print_incident_report(FALSE)
+
+			if(error)
+				to_chat(usr, SPAN_ALERT(error))
+			else
+				incident = null
+				menu_screen = "main_menu"
+		if("print_imported")
+			var/error = print_incident_report(TRUE)
 
 			if(error)
 				to_chat(usr, SPAN_ALERT(error))
@@ -441,7 +471,7 @@
 			if(!incident)
 				return
 
-			var/incident_notes = strip_html(input(usr, "Describe the incident here:","Incident Report", html_decode(incident.notes)) as message, 1, MAX_PAPER_MESSAGE_LEN)
+			var/incident_notes = strip_html((input(usr, "Describe the incident here:","Incident Report", html_decode(incident.notes)) as message), MAX_PAPER_MESSAGE_LEN)
 			if(incident_notes != null && incident)
 				incident.notes = incident_notes
 

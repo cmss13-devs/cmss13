@@ -744,7 +744,6 @@
 /obj/item/paper/incident
 	name = "incident report"
 	var/datum/crime_incident/incident
-	var/sentence = 1 // Is this form contain a sentence of guilty?
 
 /obj/item/paper/incident/New()
 	info = {"\[center\]\[logo\]\[/center\]

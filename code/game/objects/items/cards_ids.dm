@@ -63,6 +63,7 @@
 	var/access = list()
 	var/faction = FACTION_NEUTRAL
 	var/registered_name = "Unknown" // The name registered_name on the card
+	var/registered_gid = 0
 	flags_equip_slot = SLOT_ID
 
 	var/blood_type = "\[UNSET\]"

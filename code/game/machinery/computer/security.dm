@@ -130,7 +130,7 @@
 				if ((istype(active1, /datum/data/record) && data_core.general.Find(active1)))
 					dat += text("<table><tr><td>	\
 					Name: <A href='?src=\ref[src];choice=Edit Field;field=name'>[active1.fields["name"]]</A><BR> \
-					ID: <A href='?src=\ref[src];choice=Edit Field;field=id'>[active1.fields["id"]]</A><BR>\n \
+					ID: [active1.fields["id"]]<BR>\n \
 					Sex: <A href='?src=\ref[src];choice=Edit Field;field=sex'>[active1.fields["sex"]]</A><BR>\n	\
 					Age: <A href='?src=\ref[src];choice=Edit Field;field=age'>[active1.fields["age"]]</A><BR>\n	\
 					Rank: <A href='?src=\ref[src];choice=Edit Field;field=rank'>[active1.fields["rank"]]</A><BR>\n	\
@@ -143,17 +143,20 @@
 				else
 					dat += "<B>General Record Lost!</B><BR>"
 				if ((istype(active2, /datum/data/record) && data_core.security.Find(active2)))
-					dat += text("<BR>\n<CENTER><B>Security Data</B></CENTER><BR>\nCriminal Status: <A href='?src=\ref[];choice=Edit Field;field=criminal'>[]</A><BR>\n<BR>\nMinor Crimes: <A href='?src=\ref[];choice=Edit Field;field=mi_crim'>[]</A><BR>\nDetails: <A href='?src=\ref[];choice=Edit Field;field=mi_crim_d'>[]</A><BR>\n<BR>\nMajor Crimes: <A href='?src=\ref[];choice=Edit Field;field=ma_crim'>[]</A><BR>\nDetails: <A href='?src=\ref[];choice=Edit Field;field=ma_crim_d'>[]</A><BR>\n<BR>\nImportant Notes:<BR>\n\t<A href='?src=\ref[];choice=Edit Field;field=notes'>[]</A><BR>\n<BR>\n<CENTER><B>Comments/Log</B></CENTER><BR>", src, active2.fields["criminal"], src, active2.fields["mi_crim"], src, active2.fields["mi_crim_d"], src, active2.fields["ma_crim"], src, active2.fields["ma_crim_d"], src, decode(active2.fields["notes"]))
+					dat += text("<BR>\n<CENTER><B>Security Data</B></CENTER><BR>\n \
+								Criminal Status: <A href='?src=\ref[];choice=Edit Field;field=criminal'>[]</A><BR> \n \
+								Incidents: [active2.fields["incident"]]<BR>\n \
+								\n<BR>\n<CENTER><B>Comments/Log</B></CENTER><BR>", \
+								src, active2.fields["criminal"])
 					var/counter = 1
 					while(active2.fields[text("com_[]", counter)])
 						dat += text("[]<BR><A href='?src=\ref[];choice=Delete Entry;del_c=[]'>Delete Entry</A><BR><BR>", active2.fields[text("com_[]", counter)], src, counter)
 						counter++
 					dat += text("<A href='?src=\ref[];choice=Add Entry'>Add Entry</A><BR><BR>", src)
-					dat += text("<A href='?src=\ref[];choice=Delete Record (Security)'>Delete Record (Security Only)</A><BR><BR>", src)
 				else
 					dat += "<B>Security Record Lost!</B><BR>"
 					dat += text("<A href='?src=\ref[];choice=New Record (Security)'>New Security Record</A><BR><BR>", src)
-				dat += text("\n<A href='?src=\ref[];choice=Delete Record (ALL)'>Delete Record (ALL)</A><BR><BR>\n<A href='?src=\ref[];choice=Print Record'>Print Record</A><BR>\n<A href='?src=\ref[];choice=Return'>Back</A><BR>", src, src, src)
+				dat += text("\n<A href='?src=\ref[];choice=Print Record'>Print Record</A><BR>\n<A href='?src=\ref[];choice=Return'>Back</A><BR>", src, src)
 			if(4.0)
 				if(!Perp.len)
 					dat += text("ERROR.  String could not be located.<br><br><A href='?src=\ref[];choice=Return'>Back</A>", src)
@@ -315,13 +318,13 @@ What a mess.*/
 					var/obj/item/paper/P = new /obj/item/paper( loc )
 					P.info = "<CENTER><B>Security Record</B></CENTER><BR>"
 					if (record1)
-						P.info += text("Name: [] ID: []<BR>\nSex: []<BR>\nAge: []<BR>\nPhysical Status: []<BR>\nMental Status: []<BR>", record1.fields["name"], record1.fields["id"], record1.fields["sex"], record1.fields["age"], record1.fields["p_stat"], record1.fields["m_stat"])
+						P.info += text("Name: [] ID: []<BR>\nSex: []<BR>\nAge: []<BR>\nPhysical Status: []<BR>\nMental Status: []<BR>Criminal Status: []<BR>", record1.fields["name"], record1.fields["id"], record1.fields["sex"], record1.fields["age"], record1.fields["p_stat"], record1.fields["m_stat"], record2.fields["criminal"])
 						P.name = text("Security Record ([])", record1.fields["name"])
 					else
 						P.info += "<B>General Record Lost!</B><BR>"
 						P.name = "Security Record"
 					if (record2)
-						P.info += text("<BR>\n<CENTER><B>Security Data</B></CENTER><BR>\nCriminal Status: []<BR>\n<BR>\nMinor Crimes: []<BR>\nDetails: []<BR>\n<BR>\nMajor Crimes: []<BR>\nDetails: []<BR>\n<BR>\nImportant Notes:<BR>\n\t[]<BR>\n<BR>\n<CENTER><B>Comments/Log</B></CENTER><BR>", record2.fields["criminal"], record2.fields["mi_crim"], record2.fields["mi_crim_d"], record2.fields["ma_crim"], record2.fields["ma_crim_d"], decode(record2.fields["notes"]))
+						P.info += text("<BR>\n<CENTER><B>Security Data</B></CENTER><BR>\nIncidents: [record2.fields["incident"]]<BR>\n<BR>\n<CENTER><B>Comments/Log</B></CENTER><BR>")
 						var/counter = 1
 						while(record2.fields[text("com_[]", counter)])
 							P.info += text("[]<BR>", record2.fields[text("com_[]", counter)])
@@ -355,18 +358,6 @@ What a mess.*/
 				while(active2.fields[text("com_[]", counter)])
 					counter++
 
-			if ("Delete Record (ALL)")
-				if (active1)
-					temp = "<h5>Are you sure you wish to delete the record (ALL)?</h5>"
-					temp += "<a href='?src=\ref[src];choice=Delete Record (ALL) Execute'>Yes</a><br>"
-					temp += "<a href='?src=\ref[src];choice=Clear Screen'>No</a>"
-
-			if ("Delete Record (Security)")
-				if (active2)
-					temp = "<h5>Are you sure you wish to delete the record (Security Portion Only)?</h5>"
-					temp += "<a href='?src=\ref[src];choice=Delete Record (Security) Execute'>Yes</a><br>"
-					temp += "<a href='?src=\ref[src];choice=Clear Screen'>No</a>"
-
 			if ("Delete Entry")
 				if ((istype(active2, /datum/data/record) && active2.fields[text("com_[]", href_list["del_c"])]))
 					active2.fields[text("com_[]", href_list["del_c"])] = "<B>Deleted</B>"
@@ -385,7 +376,6 @@ What a mess.*/
 				if (is_not_allowed(usr))
 					return
 				var/a1 = active1
-				var/a2 = active2
 				switch(href_list["field"])
 					if("name")
 						if (istype(active1, /datum/data/record))
@@ -393,12 +383,6 @@ What a mess.*/
 							if (!t1 || active1 != a1)
 								return
 							active1.fields["name"] = t1
-					if("id")
-						if (istype(active2, /datum/data/record))
-							var/t1 = copytext(trim(strip_html(input("Please input id:", "Secure. records", active1.fields["id"], null)  as text)),1,MAX_MESSAGE_LEN)
-							if (!t1 || active1 != a1)
-								return
-							active1.fields["id"] = t1
 					if("sex")
 						if (istype(active1, /datum/data/record))
 							if (active1.fields["sex"] == "Male")
@@ -411,36 +395,6 @@ What a mess.*/
 							if (!t1 || active1 != a1)
 								return
 							active1.fields["age"] = t1
-					if("mi_crim")
-						if (istype(active2, /datum/data/record))
-							var/t1 = copytext(trim(strip_html(input("Please input minor disabilities list:", "Secure. records", active2.fields["mi_crim"], null)  as text)),1,MAX_MESSAGE_LEN)
-							if (!t1 || active2 != a2)
-								return
-							active2.fields["mi_crim"] = t1
-					if("mi_crim_d")
-						if (istype(active2, /datum/data/record))
-							var/t1 = copytext(trim(strip_html(input("Please summarize minor dis.:", "Secure. records", active2.fields["mi_crim_d"], null)  as message)),1,MAX_MESSAGE_LEN)
-							if (!t1 || active2 != a2)
-								return
-							active2.fields["mi_crim_d"] = t1
-					if("ma_crim")
-						if (istype(active2, /datum/data/record))
-							var/t1 = copytext(trim(strip_html(input("Please input major diabilities list:", "Secure. records", active2.fields["ma_crim"], null)  as text)),1,MAX_MESSAGE_LEN)
-							if (!t1 || active2 != a2)
-								return
-							active2.fields["ma_crim"] = t1
-					if("ma_crim_d")
-						if (istype(active2, /datum/data/record))
-							var/t1 = copytext(trim(strip_html(input("Please summarize major dis.:", "Secure. records", active2.fields["ma_crim_d"], null)  as message)),1,MAX_MESSAGE_LEN)
-							if (!t1 || active2 != a2)
-								return
-							active2.fields["ma_crim_d"] = t1
-					if("notes")
-						if (istype(active2, /datum/data/record))
-							var/t1 = copytext(html_encode(trim(input("Please summarize notes:", "Secure. records", html_decode(active2.fields["notes"]), null)  as message)),1,MAX_MESSAGE_LEN)
-							if (!t1 || active2 != a2)
-								return
-							active2.fields["notes"] = t1
 					if("criminal")
 						if (istype(active2, /datum/data/record))
 							temp = "<h5>Criminal Status:</h5>"
@@ -493,26 +447,6 @@ What a mess.*/
 
 							for(var/mob/living/carbon/human/H in mob_list)
 								H.sec_hud_set_security_status()
-
-					if ("Delete Record (Security) Execute")
-						if (active2)
-							qdel(active2)
-							active2 = null
-
-					if ("Delete Record (ALL) Execute")
-						if (active1)
-							for(var/datum/data/record/R in data_core.medical)
-								if ((R.fields["name"] == active1.fields["name"] || R.fields["id"] == active1.fields["id"]))
-									data_core.medical -= R
-									qdel(R)
-								else
-							qdel(active1)
-							active1 = null
-						if (active2)
-							qdel(active2)
-							active2 = null
-					else
-						temp = "This function does not appear to be working at the moment. Our apologies."
 
 	add_fingerprint(usr)
 	updateUsrDialog()

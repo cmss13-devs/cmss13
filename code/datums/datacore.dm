@@ -180,7 +180,7 @@
 	else
 		assignment = "Unassigned"
 
-	var/id = add_zero(num2hex(rand(1, 1.6777215E7)), 6)	//this was the best they could come up with? A large random number? *sigh*
+	var/id = add_zero(num2hex(H.gid), 6)	//this was the best they could come up with? A large random number? *sigh*
 	//var/icon/front = new(get_id_photo(H), dir = SOUTH)
 	//var/icon/side = new(get_id_photo(H), dir = WEST)
 
@@ -239,16 +239,7 @@
 	S.fields["id"]			= id
 	S.fields["name"]		= H.real_name
 	S.fields["criminal"]	= "None"
-	S.fields["mi_crim"]		= "None"
-	S.fields["mi_crim_d"]	= "No minor crime convictions."
-	S.fields["ma_crim"]		= "None"
-	S.fields["ma_crim_d"]	= "No major crime convictions."
-	S.fields["notes"]		= "No notes."
-
-	if(H.sec_record && !jobban_isbanned(H, "Records"))
-		S.fields["notes"] = H.sec_record
-	else
-		S.fields["notes"] = "No notes."
+	S.fields["incident"]	= ""
 	security += S
 
 	//Locked Record

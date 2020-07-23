@@ -8,6 +8,7 @@
 	var/list/witnesses = list()
 
 	var/criminal_name = null// The person who committed the crimes
+	var/criminal_gid = 0	// Unique identifier for person
 
 	var/brig_sentence = 0 // How long do they stay in the brig on the station, PERMABRIG_SENTENCE minutes = permabrig
 	var/time_served = 0  // How long have they served of this sentence already

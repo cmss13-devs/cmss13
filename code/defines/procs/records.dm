@@ -27,12 +27,7 @@
 	R.fields["name"] = name
 	R.fields["id"] = id
 	R.name = text("Security Record #[id]")
-	R.fields["criminal"] = "None"
-	R.fields["mi_crim"] = "None"
-	R.fields["mi_crim_d"] = "No minor crime convictions."
-	R.fields["ma_crim"] = "None"
-	R.fields["ma_crim_d"] = "No major crime convictions."
-	R.fields["notes"] = "No notes."
+	R.fields["incidents"] = "None"
 	data_core.security += R
 	return R
 

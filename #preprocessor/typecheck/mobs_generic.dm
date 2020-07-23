@@ -1,4 +1,4 @@
-#define isremotecontrolling(M) (M.client && M.client.remote_control)
+#define isremotecontrolling(M) (M && M.client && M.client.remote_control)
 
 #define isbrain(A) (istype(A, /mob/living/brain))
 #define isrobot(A) (istype(A, /mob/living/silicon/robot))

@@ -62,7 +62,7 @@
 		if(chance >= E.probability + add_prob) //Tally up probabilities till we find which one we landed on
 			add_prob += E.probability
 			continue
-		chosen_call = E //Our random chance found one.
+		chosen_call = new E.type() //Our random chance found one.
 		break
 
 	if(!istype(chosen_call))
@@ -74,8 +74,9 @@
 /datum/game_mode/proc/get_specific_call(var/call_name, var/announce = TRUE, var/is_emergency = TRUE, var/info = "")
 	for(var/datum/emergency_call/E in all_calls) //Loop through all potential candidates
 		if(E.name == call_name)
-			E.objective_info = info
-			E.activate(announce, is_emergency)
+			var/datum/emergency_call/em_call = new E.type()
+			em_call.objective_info = info
+			em_call.activate(announce, is_emergency)
 			return
 	error("get_specific_call could not find emergency call '[call_name]'")
 	return

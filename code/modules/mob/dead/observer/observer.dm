@@ -152,13 +152,19 @@ Works together with spawning an observer, noted above.
 	ghost.key = key
 	ghost.mind = mind
 
+	if(ghost.mind)
+		ghost.mind.current = ghost
+
 	if(!can_reenter_corpse)
 		away_timer = 300 //They'll never come back, so we can max out the timer right away.
 		if(round_statistics)
 			round_statistics.update_panel_data()
 		track_death_calculations() //This needs to be done before mind is nullified
+		if(ghost.mind)
+			ghost.mind.original = ghost
 	else if(ghost.mind && ghost.mind.player_entity) //Use else here because track_death_calculations() already calls this.
 		ghost.mind.player_entity.update_panel_data(round_statistics)
+		ghost.mind.original = src
 
 	mind = null
 
@@ -274,15 +280,15 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(!client)	
 		return
 
-	if(!mind || !mind.current || mind.current.disposed || !can_reenter_corpse)
+	if(!mind || !mind.original || mind.original.disposed || !can_reenter_corpse)
 		to_chat(src, "<span style='color: red;'>You have no body.</span>")
 		return
 
-	if(mind.current.key && copytext(mind.current.key,1,2)!="@")	//makes sure we don't accidentally kick any clients
+	if(mind.original.key && copytext(mind.original.key,1,2)!="@")	//makes sure we don't accidentally kick any clients
 		to_chat(src, "<span style='color: red;'>Another consciousness is in your body...It is resisting you.</span>")
 		return
 
-	mind.transfer_to(mind.current, TRUE)
+	mind.transfer_to(mind.original, TRUE)
 	qdel(src)
 	return TRUE
 

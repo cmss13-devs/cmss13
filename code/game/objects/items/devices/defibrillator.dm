@@ -78,7 +78,7 @@
 		return FALSE
 
 	for(var/mob/dead/observer/G in player_list)
-		if(G.mind && G.mind.current == src)
+		if(G.mind && G.mind.original == src)
 			var/mob/dead/observer/ghost = G
 			if(ghost && ghost.client && ghost.can_reenter_corpse)
 				return ghost

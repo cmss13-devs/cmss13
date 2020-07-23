@@ -24,9 +24,7 @@
 		return //Didn't find a useable spawn point.
 
 	var/mob/living/carbon/human/mob = new(spawn_loc)
-	mob.key = M.key
-	if(mob.client)
-		mob.client.change_view(world_view_size)
+	M.transfer_to(mob, TRUE)
 
 	ticker.mode.traitors += mob.mind
 

@@ -21,9 +21,7 @@
 	if(!istype(spawn_loc)) return //Didn't find a useable spawn point.
 
 	var/mob/living/carbon/human/H = new(spawn_loc)
-	H.key = M.key
-	if(H.client) 
-		H.client.change_view(world_view_size)
+	M.transfer_to(H, TRUE)
 
 	sleep(5)
 	if (medics < max_medics)

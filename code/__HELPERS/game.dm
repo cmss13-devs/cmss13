@@ -317,8 +317,8 @@ proc/isInSight(var/atom/A, var/atom/B)
 			continue
 
 		//players that can still be revived are skipped
-		if(O.mind && O.mind.current && ishuman(O.mind.current))
-			var/mob/living/carbon/human/H = O.mind.current
+		if(O.mind && O.mind.original && ishuman(O.mind.original))
+			var/mob/living/carbon/human/H = O.mind.original
 			if (H.check_tod() && H.is_revivable())
 				continue
 

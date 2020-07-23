@@ -15,7 +15,7 @@
 	if(!new_ckey)
 		return
 	if (M.client)
-		M.ghostize()
+		M.ghostize(FALSE)
 	message_admins("[key_name_admin(usr)] modified [key_name(M)]'s ckey to [new_ckey]", 1)
 	 
 	M.ckey = new_ckey

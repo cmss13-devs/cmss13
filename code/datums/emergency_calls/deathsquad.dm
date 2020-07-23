@@ -25,9 +25,7 @@
 		return //Didn't find a useable spawn point.
 
 	var/mob/living/carbon/human/H = new(spawn_loc)
-	H.key = M.key
-	if(H.client)
-		H.client.change_view(world_view_size)
+	M.transfer_to(H, TRUE)
 	ticker.mode.traitors += H.mind
 	H.set_skills(/datum/skills/commando/deathsquad)
 

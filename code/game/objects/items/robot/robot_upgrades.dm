@@ -70,7 +70,7 @@
 
 	if(!R.key)
 		for(var/mob/dead/observer/ghost in player_list)
-			if(ghost.mind && ghost.mind.current == R)
+			if(ghost.mind && ghost.mind.original == R)
 				R.key = ghost.key
 				if(R.client) R.client.change_view(world_view_size)
 				break

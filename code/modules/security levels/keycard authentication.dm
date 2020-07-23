@@ -144,12 +144,6 @@
 			make_maint_all_access()
 		if("Revoke Emergency Maintenance Access")
 			revoke_maint_all_access()
-		if("Emergency Response Team")
-			if(is_ert_blocked())
-				to_chat(usr, SPAN_DANGER("All emergency response teams are dispatched and can not be called at this time."))
-				return
-
-			trigger_armed_response_team(1)
 
 /obj/structure/machinery/keycard_auth/proc/is_ert_blocked()
 	if(config.ert_admin_call_only) return 1

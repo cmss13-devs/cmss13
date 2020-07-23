@@ -199,7 +199,8 @@
 	if(choice == "Randomize")
 		chosen_ert = ticker.mode.get_random_call()
 	else
-		chosen_ert = assoc_list[choice]
+		var/datum/emergency_call/em_call = assoc_list[choice]
+		chosen_ert = new em_call.type()
 
 	if(!istype(chosen_ert))
 		return

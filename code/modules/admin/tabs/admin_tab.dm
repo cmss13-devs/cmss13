@@ -81,7 +81,7 @@
 	if(istype(mob,/mob/dead/observer))
 		//re-enter
 		var/mob/dead/observer/ghost = mob
-		ghost.can_reenter_corpse = 1
+		ghost.can_reenter_corpse = TRUE
 		ghost.reenter_corpse()
 		return
 

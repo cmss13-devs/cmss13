@@ -38,9 +38,7 @@
 
 	var/mob/living/carbon/human/H = new(spawn_loc)
 	H.name = H.real_name
-	H.key = M.key
-	if(H.client)
-		H.client.change_view(world_view_size)
+	M.transfer_to(H, TRUE)
 	H.job = "Mercenary"
 	ticker.mode.traitors += H.mind
 

@@ -36,6 +36,7 @@
 		new_character.mind.current = null //remove any mind currently in our new body's mind variable
 
 	current = new_character		//link ourself to our new body
+	original = new_character
 	new_character.mind = src	//and link our new body to ourself
 
 	if(active || force)

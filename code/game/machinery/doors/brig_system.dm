@@ -136,6 +136,8 @@
 	if(!C.time_to_release)
 		resuming = FALSE
 		C.time_to_release = world.timeofday + C.brig_sentence * 600
+	else
+		C.time_to_release = world.timeofday + ((C.brig_sentence * 600) - C.time_served)
 
 	for(var/obj/structure/machinery/door/window/brigdoor/door in targets)
 		if(door.density)	
@@ -162,27 +164,31 @@
 
 	C.active_timer = FALSE
 
-	C.time_served = C.time_to_release - world.timeofday
+	C.time_served = (C.brig_sentence * 600) - (C.time_to_release - world.timeofday)
 	C.time_to_release = 0
 
 /obj/structure/machinery/brig_cell/proc/timer_pause(var/mob/living/user)
 	if(!current_report)
 		return
-	
+
 	var/datum/crime_incident/C = current_report.incident
 
 	C.active_timer = FALSE
-	C.time_served = C.time_to_release - world.timeofday
+	C.time_served = (C.brig_sentence * 600) - (C.time_to_release - world.timeofday)
 
 	log_admin("[key_name(user)] has paused the jail timer of [C.criminal_name], [C.charges_to_string()].")
 
 /obj/structure/machinery/brig_cell/proc/get_time_left(var/obj/item/paper/incident/I)
 	if(!istype(I))
 		return 0
+	var/datum/crime_incident/C = I.incident
 
 	var/time = (I.incident.time_to_release - world.timeofday)/10
 	if(time < 0)
 		time = 0
+
+	if(!C.active_timer)
+		time = ((C.brig_sentence * 600) - C.time_served)/10
 
 	return time
 

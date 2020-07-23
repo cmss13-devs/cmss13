@@ -54,9 +54,6 @@
 	var/base_state = "migniter"
 	anchored = 1
 
-/obj/structure/machinery/sparker/New()
-	..()
-
 /obj/structure/machinery/sparker/power_change()
 	..()
 	if ( !(stat & NOPOWER) && disable == 0 )

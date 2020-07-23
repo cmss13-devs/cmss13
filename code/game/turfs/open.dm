@@ -369,6 +369,8 @@
 	var/icon_spawn_state = "grass1"
 
 /turf/open/jungle/New()
+	..()
+	
 	icon_state = icon_spawn_state
 
 	if(plants_spawn && prob(40))

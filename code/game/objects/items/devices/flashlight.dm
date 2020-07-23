@@ -168,6 +168,7 @@
 	raillight_compatible = 0
 
 /obj/item/device/flashlight/lamp/on/New()
+	..()
 	on = 1
 	update_brightness()
 
@@ -289,6 +290,7 @@
 	raillight_compatible = 0
 
 /obj/item/device/flashlight/slime/New()
+	..()
 	SetLuminosity(brightness_on)
 	spawn(1) //Might be sloppy, but seems to be necessary to prevent further runtimes and make these work as intended... don't judge me!
 		update_brightness()

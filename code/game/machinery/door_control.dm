@@ -237,10 +237,10 @@
 	use_power = 0
 
 /obj/structure/machinery/door_control/timed_automatic/New()
-		..()
-		trigger_time = world.time + trigger_delay*600
-		processing_objects.Add(src)
-		start_processing()  // should really be using this -spookydonut
+	..()
+	trigger_time = world.time + trigger_delay*600
+	processing_objects.Add(src)
+	start_processing()  // should really be using this -spookydonut
 
 /obj/structure/machinery/door_control/timed_automatic/process()
 	if (!triggered && world.time >= trigger_time)

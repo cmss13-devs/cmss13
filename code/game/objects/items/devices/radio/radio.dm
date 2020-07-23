@@ -46,9 +46,6 @@
 		frequency = new_frequency
 		radio_connection = radio_controller.add_object(src, frequency, RADIO_CHAT)
 
-/obj/item/device/radio/New()
-	..()
-
 /obj/item/device/radio/Dispose()
 	if(radio_connection)
 		radio_connection.remove_listener(src)

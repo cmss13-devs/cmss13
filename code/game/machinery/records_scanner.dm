@@ -21,6 +21,7 @@ obj/structure/machinery/scanner/New()
 				outputdir = 4
 		if(!outputdir)
 			outputdir = 8
+	..()
 
 /obj/structure/machinery/scanner/process()
 	if(stat & NOPOWER)

@@ -684,6 +684,7 @@
 	return
 
 /obj/structure/machinery/landinglight/New()
+	..()
 	turn_off()
 
 /obj/structure/machinery/landinglight/proc/turn_off()

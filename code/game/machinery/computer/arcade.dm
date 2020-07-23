@@ -28,24 +28,6 @@
 /obj/structure/machinery/computer/arcade
 	var/turtle = 0
 
-/obj/structure/machinery/computer/arcade/New()
-	..()
-	//Disabled for now to make sense with the splash screen.
-	/*
-	var/name_action
-	var/name_part1
-	var/name_part2
-
-	name_action = pick("Defeat ", "Annihilate ", "Save ", "Strike ", "Stop ", "Destroy ", "Robust ", "Romance ", "Pwn ", "Own ")
-
-	name_part1 = pick("the Automatic ", "Farmer ", "Lord ", "Professor ", "the Cuban ", "the Evil ", "the Dread King ", "the Space ", "Lord ", "the Great ", "Duke ", "General ")
-	name_part2 = pick("Melonoid", "Murdertron", "Sorcerer", "Ruin", "Jeff", "Ectoplasm", "Crushulon", "Uhangoid", "Vhakoid", "Peteoid", "slime", "Griefer", "ERPer", "Lizard Man", "Unicorn")
-
-	src.enemy_name = replacetext((name_part1 + name_part2), "the ", "")
-	src.name = (name_action + name_part1 + name_part2)
-	*/
-
-
 /obj/structure/machinery/computer/arcade/attack_remote(mob/user as mob)
 	return src.attack_hand(user)
 

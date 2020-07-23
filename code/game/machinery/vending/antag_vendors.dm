@@ -35,6 +35,8 @@
 	icon_deny = "uniform_marine"
 
 /obj/structure/machinery/vending/antag/gear/New()
+	..()
+
 	//Forcefully reset the product list
 	product_records = list()
 
@@ -89,6 +91,8 @@
 	icon_deny = "armory"
 
 /obj/structure/machinery/vending/antag/weapons/New()
+	..()
+
 	//Forcefully reset the product list
 	product_records = list()
 
@@ -128,6 +132,8 @@
 	icon_deny = "robotics-deny"
 
 /obj/structure/machinery/vending/antag/munition/New()
+	..()
+	
 	//Forcefully reset the product list
 	product_records = list()
 

@@ -141,3 +141,4 @@
 
 /obj/structure/machinery/computer/fixer/New()
 	all_configs = config
+	..()

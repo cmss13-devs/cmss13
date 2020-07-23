@@ -2810,7 +2810,7 @@
 /turf/open/floor/prison,
 /area/prison/research/secret/containment)
 "ago" = (
-/obj/structure/machinery/vending/robotics,
+/obj/structure/machinery/cm_vending/sorted/tech/robotics,
 /turf/open/floor/prison{
 	dir = 9;
 	icon_state = "darkpurple2";
@@ -3737,7 +3737,7 @@
 /turf/closed/wall/prison,
 /area/prison/research/secret/dissection)
 "aiE" = (
-/obj/structure/machinery/vending/phoronresearch,
+/obj/structure/machinery/cm_vending/sorted/tech/science,
 /turf/open/floor/prison{
 	icon_state = "whitepurplefull"
 	},
@@ -7940,8 +7940,9 @@
 	},
 /area/prison/medbay)
 "asS" = (
-/obj/structure/machinery/vending/wallmed1{
-	pixel_x = 28
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+	pixel_x = 28;
+	pixel_y = 0
 	},
 /turf/open/floor/prison{
 	dir = 4;
@@ -10753,7 +10754,7 @@
 	},
 /area/prison/security/checkpoint/maxsec)
 "aAu" = (
-/obj/structure/machinery/vending/wallmed1{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_y = -28
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -10805,7 +10806,7 @@
 /area/prison/research)
 "aAA" = (
 /obj/structure/table/reinforced,
-/obj/structure/machinery/vending/wallmed1{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_y = -28
 	},
 /obj/effect/landmark/objective_landmark/medium,
@@ -11417,7 +11418,7 @@
 	},
 /area/prison/toilet/research)
 "aCb" = (
-/obj/structure/machinery/vending/wallmed1{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_y = 28
 	},
 /turf/open/floor{
@@ -18082,7 +18083,7 @@
 	},
 /area/prison/security/monitoring/lowsec/ne)
 "aUa" = (
-/obj/structure/machinery/vending/wallmed1{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_x = -28
 	},
 /turf/open/floor/prison{
@@ -36295,7 +36296,7 @@
 	},
 /area/prison/toilet/security)
 "bQo" = (
-/obj/structure/machinery/vending/wallmed1{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_y = -28
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -36320,7 +36321,7 @@
 	},
 /area/prison/toilet/security)
 "bQq" = (
-/obj/structure/machinery/vending/wallmed1{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_y = -28
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{

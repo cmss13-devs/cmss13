@@ -18,11 +18,11 @@
 //M60
 
 /obj/item/ammo_magazine/m60
-	name = "vintage ammo box (7.62x51mm)"
+	name = "M60 ammo box (7.62x51mm)"
 	desc = "A blast from the past chambered in 7.62X51mm NATO."
 	caliber = "7.62x51mm"
-	icon_state = "big_ammo_box" //PLACEHOLDER
-	
+	icon_state = "m60" //PLACEHOLDER
+
 	matter = list("metal" = 10000)
 	default_ammo = /datum/ammo/bullet/m60
 	max_rounds = 100

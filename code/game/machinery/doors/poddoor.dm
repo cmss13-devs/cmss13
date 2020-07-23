@@ -22,6 +22,13 @@
 		icon_state = initial(icon_state) + "0"
 	return
 
+/obj/structure/machinery/door/poddoor/update_icon()
+	if(density)
+		icon_state = "pdoor1"
+	else
+		icon_state = "pdoor0"
+	return
+
 /obj/structure/machinery/door/poddoor/Collided(atom/movable/AM)
 	if(!density)
 		return ..()
@@ -113,7 +120,7 @@
 		operating = 0
 	if(autoclose)
 		spawn(150)
-			autoclose()	
+			autoclose()
 
 /obj/structure/machinery/door/poddoor/two_tile/four_tile/open_fully()
 	f3.density = 0

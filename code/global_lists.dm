@@ -82,10 +82,6 @@ var/global/list/processing_turfs = list()
 var/global/list/object_list = list()
 var/global/list/item_list = list()
 var/global/list/effect_list = list()
-var/global/list/attachment_vendors = list() //Used by our gamemode code
-var/global/list/marine_vendors = list() //Used by our gamemode code
-var/global/list/cargo_ammo_vendors = list() //Used by our gamemode code
-var/global/list/cargo_guns_vendors = list() //Used by our gamemode code
 var/global/list/cm_vending_vendors = list() //Used by our gamemode code
 
 // exceptions to grenade antigrief

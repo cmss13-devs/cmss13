@@ -1585,11 +1585,11 @@ Defined in conflicts.dm of the #defines folder.
 					bipod_movement = null
 
 	if(bipod_deployed)
-		icon_state = "bipod-on"
-		attach_icon = "bipod_a-on"
+		icon_state = "[icon_state]-on"
+		attach_icon = "[attach_icon]-on"
 	else
-		icon_state = "bipod"
-		attach_icon = "bipod_a"
+		icon_state = initial(icon_state)
+		attach_icon = initial(attach_icon)
 
 	G.update_attachable(slot)
 
@@ -1617,6 +1617,13 @@ Defined in conflicts.dm of the #defines folder.
 	return 0
 
 
+/obj/item/attachable/bipod/m60
+	name = "bipod"
+	desc = "A simple set of telescopic poles to keep a weapon stabilized during firing. This one looks rather old.\nGreatly increases accuracy and reduces recoil when properly placed, but also increases weapon size and slows firing speed."
+	icon_state = "bipod_m60"
+	attach_icon = "bipod_m60_a"
+
+	flags_attach_features = ATTACH_ACTIVATION
 
 
 /obj/item/attachable/burstfire_assembly

@@ -697,6 +697,21 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	B.update_icon()
 	return INITIALIZE_HINT_QDEL
 
+/obj/item/ammo_box/magazine/M16/ap
+	name = "magazine box (AP M16 x 12)"
+	icon_state = "base_m16"
+	overlay_ammo_type = "_ap"
+	overlay_gun_type = "_m16"
+	num_of_magazines = 12
+	magazine_type = /obj/item/ammo_magazine/rifle/m16/ap
+
+/obj/item/ammo_box/magazine/M16/ap/empty/Initialize()
+	flags_atom |= INITIALIZED
+	var/obj/item/ammo_box/magazine/M16/ap/B = new(loc)
+	B.contents = list()
+	B.update_icon()
+	return INITIALIZE_HINT_QDEL
+
 //-----------------------M4A3 Pistol Mag Box-----------------------
 
 /obj/item/ammo_box/magazine/m4a3

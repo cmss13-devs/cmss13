@@ -4849,7 +4849,7 @@
 	},
 /area/ice_colony/surface/substation)
 "anE" = (
-/obj/structure/machinery/vending/assist{
+/obj/structure/machinery/cm_vending/sorted/tech/comp_storage{
 	req_access = list(102)
 	},
 /turf/open/floor{
@@ -4858,7 +4858,7 @@
 	},
 /area/ice_colony/surface/substation)
 "anF" = (
-/obj/structure/machinery/vending/assist{
+/obj/structure/machinery/cm_vending/sorted/tech/comp_storage{
 	req_access = list(102)
 	},
 /turf/open/floor{
@@ -6938,7 +6938,7 @@
 /turf/open/snow/layer1,
 /area/ice_colony/exterior/surface/clearing/north)
 "asW" = (
-/obj/structure/machinery/vending/wallmed1{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_x = -32
 	},
 /turf/open/floor{
@@ -15842,7 +15842,7 @@
 	},
 /area/ice_colony/surface/bar/canteen)
 "aPx" = (
-/obj/structure/machinery/vending/boozeomat,
+/obj/structure/machinery/cm_vending/sorted/boozeomat,
 /turf/open/floor/wood,
 /area/ice_colony/surface/bar/bar)
 "aPy" = (
@@ -31177,7 +31177,7 @@
 	},
 /area/ice_colony/underground/storage/highsec)
 "bCY" = (
-/obj/structure/machinery/vending/assist,
+/obj/structure/machinery/cm_vending/sorted/tech/comp_storage,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "darkblue2";
@@ -34022,7 +34022,7 @@
 	},
 /area/ice_colony/underground/storage)
 "bJV" = (
-/obj/structure/machinery/vending/assist{
+/obj/structure/machinery/cm_vending/sorted/tech/comp_storage{
 	req_access = list(102)
 	},
 /turf/open/floor{

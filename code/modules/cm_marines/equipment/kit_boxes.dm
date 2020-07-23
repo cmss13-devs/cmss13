@@ -41,8 +41,8 @@
 		new /obj/item/weapon/gun/pistol/vp78(src)
 		new /obj/item/ammo_magazine/pistol/vp78(src)
 		new /obj/item/ammo_magazine/pistol/vp78(src)
-		new /obj/item/explosive/plastique(src)
-		new /obj/item/explosive/plastique(src)
+		new /obj/item/explosive/plastic(src)
+		new /obj/item/explosive/plastic(src)
 		new /obj/item/device/binoculars(src)
 		update_icon()
 
@@ -93,8 +93,8 @@
 		new /obj/item/ammo_magazine/pistol/vp78(src)
 		new /obj/item/weapon/gun/rifle/m4ra(src)
 		new /obj/item/storage/backpack/marine/satchel/scout_cloak(src)
-		new /obj/item/explosive/plastique(src)
-		new /obj/item/explosive/plastique(src)
+		new /obj/item/explosive/plastic(src)
+		new /obj/item/explosive/plastic(src)
 		new /obj/item/device/encryptionkey/jtac(src)
 		if(Check_WO())
 			new /obj/item/device/binoculars/designator(src)
@@ -215,6 +215,11 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 	can_hold = list() //Nada. Once you take the stuff out it doesn't fit back in.
 	foldable = TRUE
 	desc = "Drag this sprite onto yourself to open it up!\nNOTE: You cannot put items back inside this case."
+
+/obj/item/storage/box/kit/Initialize()
+	..()
+	pixel_x = rand(-5, 5)
+	pixel_y = rand(-5, 5)
 
 /obj/item/storage/box/kit/mou53_sapper
 	name = "\improper M-OU53 Field Test Kit"

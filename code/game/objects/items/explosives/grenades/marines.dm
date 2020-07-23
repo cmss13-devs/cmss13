@@ -147,7 +147,7 @@
 	new /obj/flamer_fire(T, source, source_mob, flame_level + rand(0,11), burn_level, color_name, radius)
 
 /obj/item/explosive/grenade/incendiary/molotov
-	name = "improvised firebomb"
+	name = "\improper improvised firebomb"
 	desc = "A potent, improvised firebomb, coupled with a pinch of gunpowder. Cheap, very effective, and deadly in confined spaces. Commonly found in the hands of rebels and terrorists. It can be difficult to predict how many seconds you have before it goes off, so be careful. Chances are, it might explode in your face."
 	icon_state = "molotov"
 	item_state = "molotov"
@@ -211,6 +211,12 @@
 	desc = "A deadly gas grenade found within the ranks of the UPP. Designed to spill white phosporus on the target. It explodes 2 seconds after the pin has been pulled."
 	icon_state = "grenade_upp_wp"
 	item_state = "grenade_upp_wp"
+
+/obj/item/explosive/grenade/phosphorus/clf
+	name = "\improper improvised phosphorus bomb"
+	desc = "An improvised version of gas grenade designed to spill white phosporus on the target. It explodes 2 seconds after the pin has been pulled."
+	icon_state = "grenade_clf_wp"
+	item_state = "grenade_clf_wp"
 
 /*
 //================================================

@@ -32,7 +32,8 @@
 #define SKILL_SPEC_GRENADIER    4
 #define SKILL_SPEC_PYRO         5
 #define SKILL_SPEC_SMARTGUN		6 //for smartgunners
-#define SKILL_SPEC_TRAINED      7 //can use all specialist gear
+#define SKILL_SPEC_UPP      	7 //for upp
+#define SKILL_SPEC_TRAINED      8 //can use all specialist gear
 
 
 //construction skill

@@ -334,7 +334,7 @@
 		else if(istype(acid_t, /obj/structure/window/framed))
 			var/obj/structure/window/framed/WF = acid_t
 			WF.drop_window_frame()
-		else if(istype(acid_t,/obj/item/explosive/plastique))
+		else if(istype(acid_t,/obj/item/explosive/plastic))
 			acid_t.Dispose()
 
 		else

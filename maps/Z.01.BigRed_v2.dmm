@@ -3051,7 +3051,7 @@
 	},
 /area/bigredv2/caves/lambda/xenobiology)
 "ahE" = (
-/obj/structure/machinery/vending/wallmed1{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_y = -32
 	},
 /obj/structure/machinery/light,
@@ -5194,7 +5194,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "ane" = (
-/obj/structure/machinery/vending/wallmed1{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	name = "Emergency NanoMed";
 	pixel_x = 30;
 	req_access = list()
@@ -10696,7 +10696,6 @@
 	icon_state = "barricade";
 	tag = "icon-barricade (EAST)"
 	},
-/obj/structure/machinery/vending/assist,
 /turf/open/floor{
 	dir = 5;
 	icon_state = "whitepurple";
@@ -14807,7 +14806,7 @@
 	},
 /area/bigredv2/outside/bar)
 "aKz" = (
-/obj/structure/machinery/vending/boozeomat,
+/obj/structure/machinery/cm_vending/sorted/boozeomat,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -15202,7 +15201,7 @@
 	},
 /area/bigredv2/outside/bar)
 "aLv" = (
-/obj/structure/machinery/vending/boozeomat,
+/obj/structure/machinery/cm_vending/sorted/boozeomat,
 /obj/structure/machinery/light{
 	dir = 4;
 	tag = "icon-tube1 (EAST)"
@@ -17779,7 +17778,7 @@
 	},
 /area/bigredv2/caves/lambda/research)
 "aRz" = (
-/obj/structure/machinery/vending/wallmed1{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_x = -30
 	},
 /obj/structure/sign/biohazard{
@@ -17821,7 +17820,7 @@
 	},
 /area/bigredv2/caves/lambda/virology)
 "aRC" = (
-/obj/structure/machinery/vending/wallmed1{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_x = 30
 	},
 /obj/structure/sign/biohazard{

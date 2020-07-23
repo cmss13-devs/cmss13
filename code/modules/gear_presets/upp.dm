@@ -1,5 +1,5 @@
 /datum/equipment_preset/upp
-	name = "UPP"
+	name = FACTION_UPP
 
 	languages = list("Russian", "English")
 	faction = FACTION_UPP
@@ -33,12 +33,13 @@
 /*****************************************************************************************************/
 
 /datum/equipment_preset/upp/soldier
-	name = "UPP Soldier (Standard)"
+	name = "UPP Soldier"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	skills = /datum/skills/upp
-	assignment = "UPP Soldier"
-	rank = "UPP"
+	assignment = JOB_UPP
+	rank = JOB_UPP
+	role_comm_title = "Pvt"
 	paygrade = "E1"
 
 /datum/equipment_preset/upp/soldier/load_gear(mob/living/carbon/human/H)
@@ -48,13 +49,13 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/UPP, WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/UPP, WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/marine/upp, WEAR_WAIST)
-	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/upp, WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp_knife, WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC, WEAR_HANDS)
 
 	H.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/upp, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/upp, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/plastique, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/type71, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/type71, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/type71, WEAR_IN_BACK)
@@ -67,13 +68,21 @@
 
 /*****************************************************************************************************/
 
+/datum/equipment_preset/upp/soldier/cryo
+	name = "UPP Cryo Soldier"
+
+/datum/equipment_preset/upp/soldier/cryo/load_gear(mob/living/carbon/human/H)
+	return
+
+/*****************************************************************************************************/
+
 /datum/equipment_preset/upp/survivor
 	name = "UPP Survivor"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	skills = /datum/skills/civilian/survivor/doctor
-	assignment = "UPP Soldier"
-	rank = "UPP"
+	assignment = JOB_UPP
+	rank = JOB_UPP
 	paygrade = "E1"
 
 /datum/equipment_preset/upp/survivor/load_gear(mob/living/carbon/human/H)
@@ -81,7 +90,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP, WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/UPP, WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/UPP, WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/upp, WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine, WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC, WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full, WEAR_R_STORE)
@@ -95,7 +104,7 @@
 
 	skills = /datum/skills/synthetic
 	assignment = "UPP Combat Synthetic"
-	rank = "UPP"
+	rank = "UPP Combat Synthetic"
 	paygrade = "SYN"
 
 /datum/equipment_preset/upp/synth/load_name(mob/living/carbon/human/H, var/randomise)
@@ -133,7 +142,7 @@
 
 	H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/type71, WEAR_J_STORE)
 	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/upp, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/plastique, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/type71, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/type71, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/type71, WEAR_IN_BACK)
@@ -143,24 +152,63 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/synth, WEAR_L_STORE)
 
 /*****************************************************************************************************/
-/datum/equipment_preset/upp/soldier_medic
-	name = "UPP Soldier (Medic)"
+
+/datum/equipment_preset/upp/engineer
+	name = "UPP Engineer"
+	flags = EQUIPMENT_PRESET_EXTRA
+
+	skills = /datum/skills/upp/combat_engineer
+	assignment = JOB_UPP_ENGI
+	rank = JOB_UPP_ENGI
+	role_comm_title = "Sap"
+	paygrade = "E3"
+
+/datum/equipment_preset/upp/sapper/load_gear(mob/living/carbon/human/H)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/bears, WEAR_EAR)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP, WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/UPP, WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/UPP, WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/engineerpack/upp, WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp_knife, WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(H), WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(H), WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/welding(H), WEAR_EYES)
+	H.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/upp, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/tool/shovel/etool/folded(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/construction/full(H), WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full, WEAR_L_STORE)
+
+	spawn_weapon(/obj/item/weapon/gun/rifle/type71/carbine, /obj/item/ammo_magazine/rifle/type71, H, 0, 6)
+
+/*****************************************************************************************************/
+
+/datum/equipment_preset/upp/engineer/cryo
+	name = "UPP Cryo Engineer"
+
+/datum/equipment_preset/upp/engineer/cryo/load_gear(mob/living/carbon/human/H)
+	return
+
+/*****************************************************************************************************/
+/datum/equipment_preset/upp/medic
+	name = "UPP Medic"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	skills = /datum/skills/upp/combat_medic
-	assignment = "UPP Medic"
-	rank = "UPP"
+	assignment = JOB_UPP_MEDIC
+	rank = JOB_UPP_MEDIC
+	role_comm_title = "Med"
 	paygrade = "E4"
-	role_comm_title = "Cpl"
 
-/datum/equipment_preset/upp/soldier_medic/load_gear(mob/living/carbon/human/H)
-	//TODO: add backpacks and satchels
+/datum/equipment_preset/upp/medic/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/bears, WEAR_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP/medic, WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/UPP, WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/uppcap, WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/medical/lifesaver/upp/full, WEAR_WAIST)
-	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/upp, WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp_knife, WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC, WEAR_HANDS)
 
@@ -179,25 +227,32 @@
 	spawn_weapon(/obj/item/weapon/gun/rifle/type71/carbine, /obj/item/ammo_magazine/rifle/type71, H, 0, 6)
 
 /*****************************************************************************************************/
+/datum/equipment_preset/upp/medic/cryo
+	name = "UPP Cryo Medic"
 
-/datum/equipment_preset/upp/soldier_heavy
-	name = "UPP Soldier (Heavy)"
+/datum/equipment_preset/upp/medic/cryo/load_gear(mob/living/carbon/human/H)
+	return
+
+/*****************************************************************************************************/
+
+/datum/equipment_preset/upp/specialist
+	name = "UPP Specialist"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	skills = /datum/skills/upp/specialist
-	assignment = "UPP Specialist"
-	rank = "UPP"
+	assignment = JOB_UPP_SPECIALIST
+	rank = JOB_UPP_SPECIALIST
+	role_comm_title = "Szh"
 	paygrade = "E5"
-	role_comm_title = "Spc"
 
-/datum/equipment_preset/upp/soldier_heavy/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/upp/specialist/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/bears, WEAR_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP, WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/UPP/heavy, WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/UPP/heavy, WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/korovin/standard, WEAR_WAIST)
-	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/upp, WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp_knife, WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC, WEAR_HANDS)
 
@@ -210,30 +265,38 @@
 
 /*****************************************************************************************************/
 
-/datum/equipment_preset/upp/soldier_leader
-	name = "UPP Soldier (Leader)"
+/datum/equipment_preset/upp/specialist/cryo
+	name = "UPP Cryo Specialist"
+
+/datum/equipment_preset/upp/specialist/cryo/load_gear(mob/living/carbon/human/H)
+	return
+
+/*****************************************************************************************************/
+
+/datum/equipment_preset/upp/leader
+	name = "UPP Leader"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	skills = /datum/skills/upp/SL
-	assignment = "UPP Leader"
-	rank = "UPP"
+	assignment = JOB_UPP_LEADER
+	rank = JOB_UPP_LEADER
+	role_comm_title = "MSzh"
 	paygrade = "E5"
-	role_comm_title = "SL"
 
-/datum/equipment_preset/upp/soldier_leader/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/upp/leader/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/bears, WEAR_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP, WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/UPP/heavy, WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/uppcap/beret, WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/upp, WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp_knife, WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC, WEAR_HANDS)
 
 	H.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/upp, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/korovin/standard, WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/upp, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/plastique, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/binoculars/range, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large, WEAR_R_STORE)
@@ -243,13 +306,22 @@
 
 /*****************************************************************************************************/
 
+/datum/equipment_preset/upp/leader/cryo
+	name = "UPP Cryo Leader"
+
+/datum/equipment_preset/upp/leader/cryo/load_gear(mob/living/carbon/human/H)
+	return
+
+/*****************************************************************************************************/
+
 /datum/equipment_preset/upp/commando
-	name = "UPP Commando (Standard)"
+	name = "UPP Commando"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	skills = /datum/skills/commando
-	assignment = "UPP Commando"
-	rank = "UPP"
+	assignment = JOB_UPP_COMMANDO
+	rank = JOB_UPP_COMMANDO
+	role_comm_title = "JKdo"
 	paygrade = "E2"
 	idtype = /obj/item/card/id/data
 
@@ -267,8 +339,8 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/m42_night_goggles/upp, WEAR_EYES)
 
 	H.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/upp, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/plastique, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/plastique, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/phosphorus/upp, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large, WEAR_R_STORE)
@@ -282,15 +354,14 @@
 /*****************************************************************************************************/
 
 /datum/equipment_preset/upp/commando/medic
-	name = "UPP Commando (Medic)"
+	name = "UPP Commando Medic"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	skills = /datum/skills/commando/medic
-	assignment = "UPP Commando Medic"
-	rank = "UPP"
+	assignment = JOB_UPP_COMMANDO_MEDIC
+	rank = JOB_UPP_COMMANDO_MEDIC
+	role_comm_title = "2ndKdo"
 	paygrade = "E4"
-	role_comm_title = "Cpl"
-
 
 /datum/equipment_preset/upp/commando/medic/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
@@ -325,14 +396,14 @@
 /*****************************************************************************************************/
 
 /datum/equipment_preset/upp/commando/leader
-	name = "UPP Commando (Leader)"
+	name = "UPP Commando Leader"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	skills = /datum/skills/commando/leader
-	assignment = "UPP Commando Leader"
-	rank = "UPP"
+	assignment = JOB_UPP_COMMANDO_LEADER
+	rank = JOB_UPP_COMMANDO_LEADER
+	role_comm_title = "1stKdo"
 	paygrade = "E6"
-	role_comm_title = "SL"
 	idtype = /obj/item/card/id/silver
 
 /datum/equipment_preset/upp/commando/leader/load_gear(mob/living/carbon/human/H)

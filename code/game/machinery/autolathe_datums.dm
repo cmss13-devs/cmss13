@@ -283,7 +283,7 @@
 
 /datum/autolathe/recipe/armylathe/c4
 	name = "C4 Plastic Casing"
-	path = /obj/item/explosive/plastique/custom
+	path = /obj/item/explosive/plastic/custom
 	category = "Explosives"
 
 /datum/autolathe/recipe/armylathe/rocket_tube

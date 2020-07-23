@@ -115,7 +115,7 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/marine, WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/stick, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/plastique, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/binoculars/range, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/medium, WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full, WEAR_L_STORE)
@@ -149,7 +149,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/PMC, WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/PMC, WEAR_FACE)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel, WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/plastique, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_BACK)
 
 	spawn_merc_weapon(H,0,7)
 	spawn_merc_weapon(H,1)
@@ -180,7 +180,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/PMC, WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/PMC, WEAR_FACE)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel, WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/plastique, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_BACK)
 
 /*****************************************************************************************************/
 
@@ -209,7 +209,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/PMC, WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/PMC, WEAR_FACE)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/eng, WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/plastique, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_BACK)
 
 /*****************************************************************************************************/
 

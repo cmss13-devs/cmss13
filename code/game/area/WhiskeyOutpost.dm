@@ -32,7 +32,7 @@
 	ceiling = CEILING_METAL
 
 /area/whiskey_outpost/inside/bunker/pillbox/one
-	name = "Pillbox Burbon"
+	name = "Pillbox Bourbon"
 	icon_state = "p1"
 
 /area/whiskey_outpost/inside/bunker/pillbox/two
@@ -44,7 +44,7 @@
 	icon_state = "p3"
 
 /area/whiskey_outpost/inside/bunker/pillbox/four
-	name = "Pillbox Margarita"
+	name = "Pillbox Tequila"
 	icon_state = "p4"
 
 /area/whiskey_outpost/inside/bunker/bunker/front

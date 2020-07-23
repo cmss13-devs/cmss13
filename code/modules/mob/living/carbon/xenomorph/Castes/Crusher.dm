@@ -124,7 +124,24 @@
 	else if (istype(target, /obj/structure/machinery/vending))
 		var/obj/structure/machinery/vending/V = target
 
-		if (unacidable)
+		if (V.unslashable)
+			. = FALSE
+		else
+			visible_message(SPAN_DANGER("[src] smashes straight into [V]!"), SPAN_XENODANGER("You smash straight into [V]!"))
+			playsound(loc, "punch", 25, 1)
+			V.tip_over()
+
+			var/impact_range = 1
+			var/turf/TA = get_diagonal_step(V, dir)
+			TA = get_step_away(TA, src)
+			var/launch_speed = 2
+			launch_towards(TA, impact_range, launch_speed)
+
+			. =  TRUE
+
+	else if (istype(target, /obj/structure/machinery/cm_vending))
+		var/obj/structure/machinery/cm_vending/V = target
+		if (V.unslashable)
 			. = FALSE
 		else
 			visible_message(SPAN_DANGER("[src] smashes straight into [V]!"), SPAN_XENODANGER("You smash straight into [V]!"))

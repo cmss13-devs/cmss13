@@ -1005,7 +1005,7 @@
 	},
 /area/prison/medbay)
 "vu" = (
-/obj/structure/machinery/vending/wallmed1{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_x = 28;
 	pixel_y = 0
 	},

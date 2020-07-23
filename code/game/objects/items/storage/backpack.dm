@@ -415,20 +415,11 @@
 	var/obj/item/storage/backpack/marine/satchel/scout_cloak/SC = holder_item
 	SC.camouflage()
 
-// Can use weapons whilst invisible in the UPP cloak
-/obj/item/storage/backpack/marine/satchel/scout_cloak/upp
-	name = "\improper V86 Thermal Cloak"
-	desc = "A thermo-optic camoflage cloak commonly used by UPP commando units"
-	uniform_restricted = list(/obj/item/clothing/suit/storage/marine/faction/UPP/commando) //Need to wear UPP commando armor to equip this.
-
-	max_storage_space = 21
-	camo_alpha = 10
-
 // Welder Backpacks //
 
 /obj/item/storage/backpack/marine/engineerpack
 	name = "\improper USCM technician welderpack"
-	desc = "A specialized backpack worn by USCM technicians. It carries a fueltank for quick welder refueling and use,"
+	desc = "A specialized backpack worn by USCM technicians. It carries a fueltank for quick welder refueling and use."
 	icon_state = "welderbackpack"
 	item_state = "welderbackpack"
 	var/max_fuel = 260
@@ -536,10 +527,18 @@
 	worn_accessible = TRUE
 	can_hold = list(/obj/item/ammo_magazine/flamer_tank, /obj/item/tool/extinguisher)
 
+//----------OTHER FACTIONS AND ERTS----------
+
 /obj/item/storage/backpack/lightpack
 	name = "\improper lightweight combat pack"
 	desc = "A small lightweight pack for expeditions and short-range operations."
 	icon_state = "ERT_satchel"
+	worn_accessible = TRUE
+
+/obj/item/storage/backpack/marine/engineerpack/ert
+	name = "\improper lightweight technician welderpack"
+	desc = "A small lightweight pack for expeditions and short-range operations. Features small fueltank for quick blowtorch refueling."
+	icon_state = "ERT_satchel_welder"
 	worn_accessible = TRUE
 
 /obj/item/storage/backpack/commando
@@ -573,3 +572,28 @@
 	unacidable = TRUE
 	var/internal_mag = new /obj/item/ammo_magazine/internal/souto
 	worn_accessible = TRUE
+
+
+//----------UPP SECTION----------
+
+/obj/item/storage/backpack/lightpack/upp
+	name = "\improper UCP3 combat pack"
+	desc = "A UPP military standard-issue Union Combat Pack MK3."
+	icon_state = "satchel_upp"
+	worn_accessible = TRUE
+
+//UPP engineer welderpack
+/obj/item/storage/backpack/marine/engineerpack/upp
+	name = "\improper UCP3-E technician welderpack"
+	desc = "A special version of Union Combat Pack MK3 featuring small fueltank for quick blowtorch refueling. Used by UPP combat engineers in expeditions and short-range operations."
+	icon_state = "satchel_upp_welder"
+	worn_accessible = TRUE
+	max_fuel = 180
+
+/obj/item/storage/backpack/marine/satchel/scout_cloak/upp
+	name = "\improper V86 Thermal Cloak"
+	desc = "A thermo-optic camoflage cloak commonly used by UPP commando units"
+	uniform_restricted = list(/obj/item/clothing/suit/storage/marine/faction/UPP/commando) //Need to wear UPP commando armor to equip this.
+
+	max_storage_space = 21
+	camo_alpha = 10

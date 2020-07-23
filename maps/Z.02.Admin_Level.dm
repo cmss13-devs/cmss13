@@ -61,6 +61,18 @@
 	ceiling = CEILING_UNDERGROUND_METAL
 	can_hellhound_enter = 0
 
+/area/adminlevel/bunker01/breakroom
+	name = "\improper Bunker Breakroom"
+	icon_state = "bunker01_break"
+	ceiling = CEILING_UNDERGROUND_METAL
+	can_hellhound_enter = 0
+
+/area/adminlevel/bunker01/gear
+	name = "\improper Bunker Gear"
+	icon_state = "bunker01_gear"
+	ceiling = CEILING_UNDERGROUND_METAL
+	can_hellhound_enter = 0
+
 /area/adminlevel/bunker01/caves
 	name = "\improper Bunker Caves"
 	icon_state = "bunker01_caves"

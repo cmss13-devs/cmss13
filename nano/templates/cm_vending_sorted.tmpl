@@ -1,13 +1,25 @@
-
+{{if data.theme > 0}}
+	{{if data.theme == 1}}
+		{{:helper.USCMMode()}}
+	{{else}}
+		{{if data.theme == 2}}
+			{{:helper.CLFMode()}}
+		{{else}}
+			{{if data.theme == 3}}
+				{{:helper.UPPMode()}}
+			{{/if}}
+		{{/if}}
+	{{/if}}
+{{/if}}
 
 <div itemLabel>
-	<h2>Select an item:</h2>
+	<h2>Select an item to vend:</h2>
 </div>
 
 <div itemLabel>
 	{{for data.displayed_records}}
 		{{if value.prod_color}}
-			<div style="padding-top: 5px ; font-weight: bold ; float: left ; clear : both ; color: {{:value.prod_color}}">
+			<div style="padding-top: 5px ; font-weight: bold ; float: left ; clear : both">
 				{{:helper.link(value.prod_name, null, {'vend' : value.prod_index}, value.prod_available ? null : 'disabled', null)}}
 			</div>
 		{{else}}

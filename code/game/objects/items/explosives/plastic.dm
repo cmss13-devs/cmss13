@@ -1,4 +1,4 @@
-/obj/item/explosive/plastique
+/obj/item/explosive/plastic
 	name = "plastic explosives"
 	desc = "Used to put holes in specific areas without too much extra hole."
 	gender = PLURAL
@@ -13,30 +13,30 @@
 							"max_fire_rad" = 6,		"max_fire_int" = 26,	"max_fire_dur" = 30,
 							"min_fire_rad" = 2,		"min_fire_int" = 4,		"min_fire_dur" = 5
 	)
-	
+
 	var/timer = 10
 	var/atom/plant_target = null //which atom the plstique explosive is planted on
 	var/overlay_image = "plastic-explosive2"
 	var/image/overlay
 
-/obj/item/explosive/plastique/Dispose()
+/obj/item/explosive/plastic/Dispose()
 	disarm()
 	. = ..()
 
-/obj/item/explosive/plastique/attack(mob/M as mob, mob/user as mob, def_zone)
+/obj/item/explosive/plastic/attack(mob/M as mob, mob/user as mob, def_zone)
 	return FALSE
 
-/obj/item/explosive/plastique/attack_hand(mob/user)
+/obj/item/explosive/plastic/attack_hand(mob/user)
 	if(active)
 		to_chat(user, SPAN_WARNING("You can't just pickup [src] while it is active! Use a multitool!"))
 		return
 	. = ..()
 
-/obj/item/explosive/plastique/attack_self(mob/user)
+/obj/item/explosive/plastic/attack_self(mob/user)
 	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 		to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 		return
-	
+
 	. = ..()
 	if(customizable && detonator)
 		if(istimer(detonator.a_right) || istimer(detonator.a_left))
@@ -51,7 +51,7 @@
 	timer = new_time
 	to_chat(user, SPAN_NOTICE("Timer set for [timer] seconds."))
 
-/obj/item/explosive/plastique/afterattack(atom/target, mob/user, flag)
+/obj/item/explosive/plastic/afterattack(atom/target, mob/user, flag)
 	if(user.action_busy || !flag)
 		return
 	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
@@ -65,7 +65,7 @@
 	if(ismob(target))
 		var/mob/M = target
 		to_chat(M, FONT_SIZE_HUGE(SPAN_DANGER("[user] is trying to plant [name] on you!")))
-	
+
 	if(!do_after(user, 50, INTERRUPT_ALL, BUSY_ICON_HOSTILE, target, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
 		if(!ismob(target))
 			disarm()
@@ -107,7 +107,7 @@
 		active = TRUE
 		add_timer(CALLBACK(src, .proc/prime), timer * 10)
 
-/obj/item/explosive/plastique/attackby(obj/item/W, mob/user)
+/obj/item/explosive/plastic/attackby(obj/item/W, mob/user)
 	if(ismultitool(W))
 		if(active)
 			if(user.action_busy)
@@ -126,7 +126,7 @@
 	else
 		return ..()
 
-/obj/item/explosive/plastique/proc/disarm()
+/obj/item/explosive/plastic/proc/disarm()
 	pixel_x = 0
 	pixel_y = 0
 	if(plant_target && !istype(plant_target, /obj/structure/window) & !istype(plant_target, /turf/closed))
@@ -144,13 +144,13 @@
 	active = FALSE
 	update_icon()
 
-/obj/item/explosive/plastique/proc/can_place(var/mob/user, var/atom/target)
+/obj/item/explosive/plastic/proc/can_place(var/mob/user, var/atom/target)
 	if(istype(target, /obj/structure/ladder) || istype(target, /obj/item) || istype(target, /turf/open) || istype(target, /obj/structure/barricade) || istype(target, /obj/structure/closet/crate))
 		return FALSE
 
 	if(istype(target, /obj/effect) || istype(target, /obj/structure/machinery))
 		var/obj/O = target
-		if(O.unacidable) 
+		if(O.unacidable)
 			return FALSE
 
 	if(istype(target, /turf/closed/wall))
@@ -163,19 +163,19 @@
 		if(W.not_damageable)
 			to_chat(user, SPAN_WARNING("[W] is much too tough for you to do anything to it with [src].")) //On purpose to mimic wall message
 			return FALSE
-	
+
 	if(ishuman(target))
 		var/mob/living/carbon/human/H = target
 		if(user.faction == H.faction)
 			to_chat(user, SPAN_WARNING("ARE YOU OUT OF YOUR MIND?!"))
 			return FALSE
-	
+
 	if(customizable && assembly_stage < ASSEMBLY_LOCKED)
 		return FALSE
 
 	return TRUE
 
-/obj/item/explosive/plastique/proc/calculate_pixel_offset(var/mob/user, var/atom/target)
+/obj/item/explosive/plastic/proc/calculate_pixel_offset(var/mob/user, var/atom/target)
 	switch(get_dir(user, target))
 		if(NORTH)
 			pixel_y = 24
@@ -198,7 +198,7 @@
 			pixel_x = -24
 			pixel_y = 24
 
-/obj/item/explosive/plastique/prime(var/force = FALSE)
+/obj/item/explosive/plastic/prime(var/force = FALSE)
 	if(!force && (!plant_target || plant_target.disposed || !active))
 		return
 	var/turf/target_turf
@@ -248,15 +248,15 @@
 
 	for(var/obj/structure/machinery/door/D in orange(1, target_turf))
 		D.ex_act(1000, , initial(name), source_mob)
-	
+
 	cell_explosion(target_turf, 120, 30, null, initial(name), source_mob)
 
 	qdel(src)
 
-/obj/item/explosive/plastique/proc/delayed_prime(var/turf/target_turf)
+/obj/item/explosive/plastic/proc/delayed_prime(var/turf/target_turf)
 	prime(TRUE)
 
-/obj/item/explosive/plastique/custom
+/obj/item/explosive/plastic/custom
 	name = "Custom plastic explosive"
 	desc = "A custom plastic explosive."
 	icon_state = "custom_plastic_explosive"

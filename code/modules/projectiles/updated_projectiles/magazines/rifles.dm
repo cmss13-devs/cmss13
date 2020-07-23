@@ -87,20 +87,20 @@
 	name = "\improper M16 magazine (5.56x45mm)"
 	desc = "A 5.56x45mm magazine for the M16 assault rifle."
 	caliber = "5.56x45mm"
-	icon_state = "mar40" //PLACEHOLDER
+	icon_state = "m16"
 	default_ammo = /datum/ammo/bullet/rifle
-	max_rounds = 20 //Also comes in 30 and 100 round Beta-C mag.
+	max_rounds = 20
 	gun_type = /obj/item/weapon/gun/rifle/m16
 	w_class = SIZE_MEDIUM
 
 /obj/item/ammo_magazine/rifle/m16/ap
-	name = "\improper Dutch's M16A2 'yautja killer' magazine (5.56x45mm AP)"
-	desc = "An AP 5.56x45mm magazine for a modified M16A2 assault rifle."
+	name = "\improper M16 AP magazine (5.56x45mm)"
+	desc = "An AP 5.56x45mm magazine for the M16 assault rifle."
 	caliber = "5.56x45mm"
-	icon_state = "mar40"
+	icon_state = "m16_ap"
 	default_ammo = /datum/ammo/bullet/rifle/ap
 	max_rounds = 20
-	gun_type = /obj/item/weapon/gun/rifle/m16/dutch
+	gun_type = /obj/item/weapon/gun/rifle/m16
 	w_class = SIZE_MEDIUM
 
 
@@ -132,7 +132,7 @@
 	name = "\improper Type 71 AP magazine (5.45x39mm)"
 	desc = "A 5.45x39mm high-capacity casket magazine containing armor piercing rounds for the Type 71 rifle."
 	caliber = "5.45x39mm"
-	icon_state = "type_71"
+	icon_state = "type_71_ap"
 	default_ammo = /datum/ammo/bullet/rifle/ap
 	max_rounds = 60
 	gun_type = /obj/item/weapon/gun/rifle/type71

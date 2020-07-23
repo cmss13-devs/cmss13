@@ -584,7 +584,7 @@
 /*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/po
-	name = "USCM Pilot Officer (PO)"
+	name = "USCM Pilot Officer (PO) (Cryo)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 	idtype = /obj/item/card/id/silver
@@ -595,11 +595,24 @@
 	role_comm_title = "PO"
 	skills = /datum/skills/pilot
 
-	utility_under = list(/obj/item/clothing/under/marine/officer/pilot)
-
 /datum/equipment_preset/uscm_ship/po/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/satchel
-	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
+	if(H.client && H.client.prefs && (H.client.prefs.backbag == 1))
+		backItem = /obj/item/storage/backpack/marine
+
+	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
+
+/*****************************************************************************************************/
+
+/datum/equipment_preset/uscm_ship/po/full
+	name = "USCM Pilot Officer (PO)"
+	flags = EQUIPMENT_PRESET_EXTRA
+
+	utility_under = list(/obj/item/clothing/under/marine/officer/pilot)
+
+/datum/equipment_preset/uscm_ship/po/full/load_gear(mob/living/carbon/human/H)
+	var/backItem = /obj/item/storage/backpack/satchel
+	if(H.client && H.client.prefs && (H.client.prefs.backbag == 1))
 		backItem = /obj/item/storage/backpack/marine
 
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom(H), WEAR_EAR)
@@ -836,8 +849,8 @@
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/c99t(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/chameleon(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/upp(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/plastique(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/plastique(H.back), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/plastic(H.back), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/plastic(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/box/handcuffs(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)
 

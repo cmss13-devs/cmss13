@@ -252,11 +252,11 @@ var/global/datum/controller/defcon/defcon_controller
 	ticker.mode.get_specific_call("Marine Cryo Reinforcements (Squad)", FALSE, FALSE)
 
 /datum/defcon_reward/tank_points
-	name = "Additional Tank Part Fabricator Points"
+	name = "Additional Vehicle Parts Delivery System Points"
 	cost = DEFCON_COST_EXPENSIVE
 	minimum_defcon_level = 2
 	unique = TRUE
-	announcement_message = "Additional Tank Part Fabricator Points have been authorised for this operation."
+	announcement_message = "Additional Vehicle Parts Delivery System Points have been authorised for this operation."
 
 /datum/defcon_reward/tank_points/apply_reward(var/datum/controller/defcon/d)
 	. = ..()

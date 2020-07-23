@@ -402,6 +402,7 @@ This function completely restores a damaged organ to perfect condition.
 				W.open_wound(damage)
 				if(type != BURN)
 					add_bleeding(W)
+					owner.add_splatter_floor(get_turf(loc))
 				if(prob(25))
 					//maybe have a separate message for BRUISE type damage?
 					owner.visible_message(SPAN_WARNING("The wound on [owner.name]'s [display_name] widens with a nasty ripping noise."),
@@ -416,6 +417,7 @@ This function completely restores a damaged organ to perfect condition.
 		W = new wound_type(damage)
 		if(damage >= 10 && type != BURN) //Only add bleeding when its over 10 damage
 			add_bleeding(W)
+			owner.add_splatter_floor(get_turf(loc))
 
 		//Check whether we can add the wound to an existing wound
 		for(var/datum/wound/other in wounds)

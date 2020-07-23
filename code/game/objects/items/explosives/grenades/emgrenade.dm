@@ -1,5 +1,6 @@
 /obj/item/explosive/grenade/empgrenade
 	name = "classic emp grenade"
+	desc = "Wide area EMP grenade."
 	icon_state = "emp"
 	item_state = "emp"
 	

@@ -23,7 +23,7 @@
 								50; /obj/item/device/flash, \
 								25; /obj/item/explosive/grenade/flashbang, \
 								25; /obj/item/legcuffs/yautja, \
-								50; /obj/item/explosive/plastique, \
+								50; /obj/item/explosive/plastic, \
 								100; /obj/item/explosive/grenade/HE, \
 								100; /obj/item/explosive/grenade/HE/frag, \
 								100; /obj/item/explosive/grenade/incendiary, \

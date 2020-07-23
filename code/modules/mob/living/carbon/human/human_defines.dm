@@ -106,6 +106,11 @@
 	var/assigned_fireteam = 0		//the fireteam this human is assigned to
 	var/squad_status = null			//var for squad info window. Can be null, "M.I.A" and "K.I.A"
 
+	//moved from IDs to prevent some exploits and to make points more flexible
+	var/marine_points = MARINE_TOTAL_BUY_POINTS
+	var/marine_snowflake_points = MARINE_TOTAL_SNOWFLAKE_POINTS
+	var/marine_buy_flags = MARINE_CAN_BUY_ALL
+
 	var/spawned_corpse = FALSE		// For the corpse spawner
 	//taken from blood.dm
 	var/hands_blood_color = "" //color of the blood on our hands if there's any.

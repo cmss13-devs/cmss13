@@ -206,15 +206,15 @@ WEAPONS
 	group = "Weapons"
 
 
-/datum/supply_packs/explosives_plastique
-	name = "plastique explosives crate (x2)"
+/datum/supply_packs/explosives_plastic
+	name = "plastic explosives crate (x2)"
 	contains = list(
-					/obj/item/explosive/plastique,
-					/obj/item/explosive/plastique
+					/obj/item/explosive/plastic,
+					/obj/item/explosive/plastic
 					)
 	cost = RO_PRICE_PRICY
 	containertype = /obj/structure/closet/crate/explosives
-	containername = "\improper plastique explosives crate (WARNING)"
+	containername = "\improper plastic explosives crate (WARNING)"
 	group = "Weapons"
 
 

@@ -134,6 +134,10 @@
 		round_statistics.track_new_participant(faction)
 	H.regenerate_icons()
 
+	H.marine_points = MARINE_TOTAL_BUY_POINTS		//resetting buy points
+	H.marine_snowflake_points = MARINE_TOTAL_SNOWFLAKE_POINTS
+	H.marine_buy_flags = MARINE_CAN_BUY_ALL
+
 /datum/equipment_preset/proc/load_vanity(mob/living/carbon/human/H)
 	if(!H.client || !H.client.prefs || !H.client.prefs.gear)
 		return//We want to equip them with custom stuff second, after they are equipped with everything else.
@@ -253,7 +257,6 @@
 	if(!M) return
 
 	var/list/rebel_firearms = list(
-		/obj/item/weapon/gun/shotgun/merc = /obj/item/ammo_magazine/handful/shotgun/slug,
 		/obj/item/weapon/gun/shotgun/double = /obj/item/ammo_magazine/handful/shotgun/buckshot,
 		/obj/item/weapon/gun/shotgun/double = /obj/item/ammo_magazine/handful/shotgun/flechette,
 		/obj/item/weapon/gun/shotgun/pump/cmb = /obj/item/ammo_magazine/handful/shotgun/incendiary,
@@ -269,8 +272,6 @@
 		/obj/item/weapon/gun/rifle/hunting = /obj/item/ammo_magazine/rifle/hunting,
 		/obj/item/weapon/gun/rifle/hunting = /obj/item/ammo_magazine/rifle/hunting,
 		/obj/item/weapon/gun/rifle/hunting = /obj/item/ammo_magazine/rifle/hunting,
-		/obj/item/weapon/gun/rifle/sniper/svd = /obj/item/ammo_magazine/sniper/svd,
-		/obj/item/weapon/gun/rifle/sniper/svd = /obj/item/ammo_magazine/sniper/svd,
 		/obj/item/weapon/gun/pistol/b92fs = /obj/item/ammo_magazine/pistol/b92fs,
 		/obj/item/weapon/gun/smg/mp7 = /obj/item/ammo_magazine/smg/mp7,
 		/obj/item/weapon/gun/smg/mp5 = /obj/item/ammo_magazine/smg/mp5,
@@ -332,6 +333,21 @@
 
 	return 1
 
+/datum/equipment_preset/proc/spawn_rebel_specialist_weapon(var/atom/M, var/ammo_amount = 4)
+	if(!M) return
+
+	var/list/rebel_gunner_firearms = list(
+		/obj/item/weapon/gun/shotgun/merc = /obj/item/ammo_magazine/handful/shotgun/slug,
+		/obj/item/weapon/gun/m60 = /obj/item/ammo_magazine/m60,
+		/obj/item/weapon/gun/rifle/sniper/svd = /obj/item/ammo_magazine/sniper/svd
+		)
+
+	var/gunpath = pick(rebel_gunner_firearms)
+	var/ammopath = rebel_gunner_firearms[gunpath]
+
+	spawn_weapon(gunpath, ammopath, M, FALSE, ammo_amount)
+
+	return 1
 
 /datum/equipment_preset/proc/spawn_merc_helmet(var/mob/living/carbon/human/H)
 	if(!istype(H)) return

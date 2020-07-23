@@ -46,6 +46,10 @@
 	if(!skillcheck(user, SKILL_FIREARMS, SKILL_FIREARMS_DEFAULT))
 		to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 		return 0
+	if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_TRAINED) && user.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_UPP)
+		to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
+		return 0
+
 
 /obj/item/weapon/gun/minigun/upp/handle_starting_attachment()
 	..()
@@ -69,8 +73,10 @@
 	w_class = SIZE_LARGE
 	force = 20
 	flags_gun_features = GUN_BURST_ON|GUN_WIELDED_FIRING_ONLY
-	attachable_allowed = list(/obj/item/attachable/m60barrel)
-	starting_attachment_types = list(/obj/item/attachable/m60barrel)
+	attachable_allowed = list(/obj/item/attachable/m60barrel,
+							/obj/item/attachable/bipod/m60)
+	starting_attachment_types = list(/obj/item/attachable/m60barrel,
+									/obj/item/attachable/bipod/m60)
 
 
 /obj/item/weapon/gun/m60/New(loc, spawn_empty)
@@ -79,7 +85,7 @@
 		load_into_chamber()
 
 /obj/item/weapon/gun/m60/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 34, "muzzle_y" = 16,"rail_x" = 0, "rail_y" = 0, "under_x" = 0, "under_y" = 0, "stock_x" = 0, "stock_y" = 0)
+	attachable_offset = list("muzzle_x" = 34, "muzzle_y" = 16,"rail_x" = 0, "rail_y" = 0, "under_x" = 39, "under_y" = 7, "stock_x" = 0, "stock_y" = 0)
 
 
 /obj/item/weapon/gun/m60/set_gun_config_values()

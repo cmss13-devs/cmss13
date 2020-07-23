@@ -17,11 +17,36 @@ NanoBaseHelpers = function ()
 			},
 			USCMMode: function() {
 				$('body').css("background-color","#0C0E1E");
-				$('body').css("background-image","url('uiBackground-Squad.png')");
+				$('body').css("background-image","url('uiBackground-USCM.png')");
 				$('body').css("background-position","50% 0");
 				$('body').css("background-repeat","repeat-x");
 
-				$('#uiTitleFluff').css("background-image","url('uiTitleFluff-Squad.png')");
+				$('#uiTitleFluff').css("background-image","url('uiTitleFluff-USCM.png')");
+				$('#uiTitleFluff').css("background-position","20% 20%");
+				$('#uiTitleFluff').css("background-repeat", "no-repeat");
+
+				return '';
+			},
+			UPPMode: function() {
+				$('body').css("background-color","#242721");
+				$('body').css("background-image","url('uiBackground-UPP.png')");
+				$('body').css("background-position","50% 0");
+				$('body').css("background-repeat","repeat-x");
+
+				$('#uiTitleFluff').css("background-image","url('uiTitleFluff-UPP.png')");
+				$('#uiTitleFluff').css("background-position","20% 20%");
+				$('#uiTitleFluff').css("background-repeat", "no-repeat");
+
+				return '';
+
+			},
+			CLFMode: function() {
+				$('body').css("background-color","#443232");
+				$('body').css("background-image","url('uiBackground-CLF.png')");
+				$('body').css("background-position","50% 0");
+				$('body').css("background-repeat","repeat-x");
+
+				$('#uiTitleFluff').css("background-image","url('uiTitleFluff-CLF.png')");
 				$('#uiTitleFluff').css("background-position","20% 20%");
 				$('#uiTitleFluff').css("background-repeat", "no-repeat");
 

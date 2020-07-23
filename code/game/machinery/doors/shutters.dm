@@ -8,6 +8,13 @@
 	..()
 	layer = PODDOOR_CLOSED_LAYER
 
+/obj/structure/machinery/door/poddoor/shutters/update_icon()
+	if(density)
+		icon_state = "shutter1"
+	else
+		icon_state = "shutter0"
+	return
+
 /obj/structure/machinery/door/poddoor/shutters/attackby(obj/item/C as obj, mob/user as mob)
 	add_fingerprint(user)
 	if(!C.pry_capable)

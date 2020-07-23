@@ -256,8 +256,8 @@
 /area/lv624/lazarus/armory)
 "C" = (
 /obj/structure/rack,
-/obj/item/explosive/plastique,
-/obj/item/explosive/plastique,
+/obj/item/explosive/plastic,
+/obj/item/explosive/plastic,
 /obj/item/explosive/grenade/HE/PMC,
 /obj/item/explosive/grenade/HE/PMC,
 /obj/item/explosive/grenade/HE/PMC,

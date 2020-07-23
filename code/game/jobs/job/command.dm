@@ -96,7 +96,7 @@
 	allow_additional = 1
 	scaled = 1
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE
-	gear_preset = "USCM Pilot Officer (PO)"
+	gear_preset = "USCM Pilot Officer (PO) (Cryo)"
 	minimum_playtimes = list(
 		JOB_SQUAD_ROLES = HOURS_6
 	)
@@ -120,7 +120,7 @@
 	allow_additional = 1
 	scaled = 1
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE
-	gear_preset = "USCM Vehicle Crewman (CRMN)"
+	gear_preset = "USCM Vehicle Crewman (CRMN) (Cryo)"
 	minimum_playtimes = list(
 		JOB_SQUAD_ROLES = HOURS_6,
 		JOB_SQUAD_ENGI = HOURS_3
@@ -145,7 +145,7 @@
 	allow_additional = 1
 	scaled = 1
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE
-	gear_preset = "USCM Intelligence Officer (IO)"
+	gear_preset = "USCM Intelligence Officer (IO) (Cryo)"
 	minimum_playtimes = list(
 		JOB_SQUAD_ROLES = HOURS_6
 	)

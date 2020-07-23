@@ -1,5 +1,16 @@
-
-
+{{if data.theme > 0}}
+	{{if data.theme == 1}}
+		{{:helper.USCMMode()}}
+	{{else}}
+		{{if data.theme == 2}}
+			{{:helper.CLFMode()}}
+		{{else}}
+			{{if data.theme == 3}}
+				{{:helper.UPPMode()}}
+			{{/if}}
+		{{/if}}
+	{{/if}}
+{{/if}}
 
 <div itemLabel>
 	<h2>Choose your equipment:</h2>
@@ -7,29 +18,39 @@
 
 {{if data.show_points}}
 	<div itemContent>
-		<h3>Your Remaining Points: <span class="white">{{:data.current_m_points}}</span></h3>
+		<h3>Remaining Budget: <span class="white">{{:data.current_m_points}}</span></h3>
 	</div>
 {{/if}}
-<div itemContent>
-	<span class="white">white = mandatory</span>
-</div>
 
 <div style="font-weight: bold ; float: left ; clear : both ; width: 50% ; color: orange">
-	orange = recommended
+	Orange = Mandatory
+</div>
+<div style="font-weight: bold ; float: left ; clear : both ; width: 50% ; color: #BAF83C">
+	Green = Recommended
 </div>
 
 <div itemLabel>
 	{{for data.displayed_records}}
-		{{if value.prod_color}}
-			<div style="padding-top: 5px ; font-weight: bold ; float: left ; clear : both ; width: 50% ; color: {{:value.prod_color}}">
-				{{:helper.link(value.prod_name, null, {'vend' : value.prod_index}, value.prod_available ? null : 'disabled', null)}}
-			</div>
-		{{else}}
-			<div style="padding-top: 5px ; font-weight: bold ; float: left ; clear : both ; width: 50%">
+		{{if value.prod_color == null}}
+			<div style="padding-top: 5px ; font-weight: bold ; float: left ; clear: both ; width: 50%">
 				<span class="white">{{:value.prod_name}}</span>
 			</div>
+		{{else}}
+			{{if value.prod_color == 2}}
+				<div style="padding-top: 5px ; font-weight: bold ; float: left ; clear : both ">
+					{{:helper.link(value.prod_name, null, {'vend' : value.prod_index}, value.prod_available ? null : 'disabled', 'ButtonMandat')}}
+				</div>
+			{{else}}
+				{{if value.prod_color == 3}}
+					<div style="padding-top: 5px ; font-weight: bold ; float: left ; clear : both ">
+						{{:helper.link(value.prod_name, null, {'vend' : value.prod_index}, value.prod_available ? null : 'disabled', 'ButtonRecom')}}
+					</div>
+				{{else}}
+					<div style="padding-top: 5px ; font-weight: bold ; float: left ; clear : both ">
+						{{:helper.link(value.prod_name, null, {'vend' : value.prod_index}, value.prod_available ? null : 'disabled', null)}}
+					</div>
+				{{/if}}
+			{{/if}}
 		{{/if}}
-
-
 	{{/for}}
 </div>

@@ -7479,7 +7479,7 @@
 	},
 /area/lv624/lazarus/robotics)
 "axg" = (
-/obj/structure/machinery/vending/robotics,
+/obj/structure/machinery/cm_vending/sorted/tech/robotics,
 /turf/open/floor/plating{
 	icon_state = "platebot"
 	},
@@ -7657,7 +7657,7 @@
 	},
 /area/lv624/lazarus/research)
 "axH" = (
-/obj/structure/machinery/vending/phoronresearch,
+/obj/structure/machinery/cm_vending/sorted/tech/science,
 /turf/open/floor{
 	dir = 5;
 	icon_state = "whitepurple"
@@ -7728,7 +7728,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/jungle3)
 "axS" = (
-/obj/structure/machinery/vending/wallmed1{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_x = 29
 	},
 /obj/structure/reagent_dispensers/watertank,
@@ -14471,7 +14471,7 @@
 	},
 /area/lv624/lazarus/kitchen)
 "aQP" = (
-/obj/structure/machinery/vending/boozeomat,
+/obj/structure/machinery/cm_vending/sorted/boozeomat,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "barber"

@@ -3,8 +3,8 @@
 //The acid items are stored in XenoProcs.
 /mob/living/carbon/Xenomorph/proc/corrosive_acid(atom/O, acid_type, plasma_cost)
 	if(!O.Adjacent(src))
-		if(istype(O,/obj/item/explosive/plastique))
-			var/obj/item/explosive/plastique/E = O
+		if(istype(O,/obj/item/explosive/plastic))
+			var/obj/item/explosive/plastic/E = O
 			if(E.plant_target && !E.plant_target.Adjacent(src))
 				to_chat(src, SPAN_WARNING("You can't reach [O]."))
 				return
@@ -91,8 +91,8 @@
 		return
 
 	if(!O.Adjacent(src) || (I && !isturf(I.loc)))//not adjacent or inside something
-		if(istype(O,/obj/item/explosive/plastique))
-			var/obj/item/explosive/plastique/E = O
+		if(istype(O,/obj/item/explosive/plastic))
+			var/obj/item/explosive/plastic/E = O
 			if(E.plant_target && !E.plant_target.Adjacent(src))
 				to_chat(src, SPAN_WARNING("You can't reach [O]."))
 				return

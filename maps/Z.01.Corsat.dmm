@@ -10584,7 +10584,7 @@
 	},
 /area/corsat/gamma/cargo/lobby)
 "aCF" = (
-/obj/structure/machinery/vending/boozeomat,
+/obj/structure/machinery/cm_vending/sorted/boozeomat,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -23681,7 +23681,7 @@
 	},
 /area/corsat/gamma/biodome/complex)
 "biP" = (
-/obj/structure/machinery/vending/phoronresearch,
+/obj/structure/machinery/cm_vending/sorted/tech/science,
 /turf/open/floor/corsat{
 	dir = 5;
 	icon_state = "purplewhite"
@@ -29961,7 +29961,7 @@
 	},
 /area/corsat/gamma/medbay)
 "bAI" = (
-/obj/structure/machinery/vending/wallmed1{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	name = "Emergency NanoMed";
 	pixel_x = 30;
 	req_access = list()
@@ -35914,10 +35914,10 @@
 	},
 /area/corsat/sigma/biodome/testgrounds)
 "bTz" = (
-/obj/item/explosive/plastique,
-/obj/item/explosive/plastique,
-/obj/item/explosive/plastique,
-/obj/item/explosive/plastique,
+/obj/item/explosive/plastic,
+/obj/item/explosive/plastic,
+/obj/item/explosive/plastic,
+/obj/item/explosive/plastic,
 /obj/structure/closet/secure_closet/guncabinet{
 	name = "explosives cabinet";
 	req_access = list(100)
@@ -61295,7 +61295,7 @@
 	},
 /area/corsat/gamma/residential/west)
 "sxB" = (
-/obj/structure/machinery/vending/wallmed1{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	name = "Emergency NanoMed";
 	pixel_y = 30;
 	req_access = list()

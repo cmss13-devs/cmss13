@@ -1257,7 +1257,7 @@
 	},
 /area/prison/toilet/security)
 "bSb" = (
-/obj/structure/machinery/vending/wallmed1{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_y = -28
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -1284,7 +1284,7 @@
 	},
 /area/prison/toilet/security)
 "bSd" = (
-/obj/structure/machinery/vending/wallmed1{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_y = -28
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{

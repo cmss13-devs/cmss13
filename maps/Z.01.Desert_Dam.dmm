@@ -3542,7 +3542,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_labs)
 "aku" = (
-/obj/structure/machinery/vending/boozeomat,
+/obj/structure/machinery/cm_vending/sorted/boozeomat,
 /turf/open/floor{
 	icon_state = "grimy"
 	},
@@ -7452,7 +7452,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_workshop)
 "auM" = (
-/obj/structure/machinery/vending/phoronresearch{
+/obj/structure/machinery/cm_vending/sorted/tech/science{
 	req_one_access = list()
 	},
 /turf/open/floor/prison{
@@ -10276,7 +10276,7 @@
 /turf/open/floor/interior/wood/alt,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "aCO" = (
-/obj/structure/machinery/vending/wallmed1{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	name = "Emergency NanoMed";
 	pixel_x = 30;
 	req_access = list()
@@ -22661,7 +22661,7 @@
 	},
 /area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "bnj" = (
-/obj/structure/machinery/vending/assist,
+/obj/structure/machinery/cm_vending/sorted/tech/comp_storage,
 /turf/open/floor/prison{
 	dir = 9;
 	icon_state = "blue";
@@ -27810,7 +27810,7 @@
 	},
 /area/desert_dam/interior/dam_interior/atmos_storage)
 "bDA" = (
-/obj/structure/machinery/vending/assist,
+/obj/structure/machinery/cm_vending/sorted/tech/comp_storage,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "green"
@@ -35529,7 +35529,7 @@
 /area/desert_dam/exterior/river/riverside_central_north)
 "caO" = (
 /obj/structure/rack,
-/obj/item/explosive/plastique,
+/obj/item/explosive/plastic,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison,
 /area/desert_dam/building/security/armory)
@@ -51656,7 +51656,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_cargo)
 "cZf" = (
-/obj/structure/machinery/vending/assist,
+/obj/structure/machinery/cm_vending/sorted/tech/comp_storage,
 /turf/open/floor/prison{
 	dir = 10;
 	tag = "icon-floor (SOUTHWEST)"

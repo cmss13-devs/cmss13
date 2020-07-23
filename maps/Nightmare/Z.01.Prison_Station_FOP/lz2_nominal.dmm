@@ -2382,7 +2382,7 @@
 	},
 /area/prison/toilet/research)
 "aEx" = (
-/obj/structure/machinery/vending/wallmed1{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_y = 28
 	},
 /turf/open/floor{

@@ -369,7 +369,7 @@
 	},
 /area/lv624/lazarus/research)
 "aZ" = (
-/obj/structure/machinery/vending/phoronresearch,
+/obj/structure/machinery/cm_vending/sorted/tech/science,
 /turf/open/floor{
 	dir = 5;
 	icon_state = "whitepurple"

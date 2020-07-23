@@ -486,7 +486,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle7)
 "bO" = (
-/obj/structure/machinery/vending/wallmed1{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_x = 29
 	},
 /obj/structure/reagent_dispensers/watertank,

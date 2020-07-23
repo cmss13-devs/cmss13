@@ -1,10 +1,11 @@
-/obj/structure/machinery/cm_vending/clothes_personal
+/obj/structure/machinery/cm_vending/clothing/dress
 	name = "ColMarTech Automated Personal Uniform Closet"
-	desc = "An automated closet hooked up to a colossal storage of standard-issue uniform variants."
-	icon_state = "uniform_marine"
+	desc = "An automated closet hooked up to a colossal storage of standard-issue dress uniform variants."
+	icon_state = "dress"
 	use_points = TRUE
+	vendor_theme = VENDOR_THEME_USCM
 
-/obj/structure/machinery/cm_vending/clothes_personal/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 0)
+/obj/structure/machinery/cm_vending/clothing/dress/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 0)
 
 	if(!ishuman(user)) return
 	var/mob/living/carbon/human/H = user
@@ -39,11 +40,12 @@
 				var/can_vend = TRUE
 				if(uniform_path in vended_items)
 					can_vend = FALSE
-				display_list += list(list("prod_index" = category_index, "prod_path" = uniform_path, "prod_name" = sanitize(initial(O.name)), "prod_available" = can_vend, "prod_color" = "black"))
+				display_list += list(list("prod_index" = category_index, "prod_path" = uniform_path, "prod_name" = sanitize(initial(O.name)), "prod_available" = can_vend, "prod_color" = VENDOR_ITEM_REGULAR))
 				category_index++
 
 	var/list/data = list(
 		"vendor_name" = name,
+		"theme" = vendor_theme,
 		"show_points" = use_points,
 		"current_m_points" = m_points,
 		"displayed_records" = display_list,
@@ -56,8 +58,8 @@
 		ui.open()
 		ui.set_auto_update(1)
 
-/obj/structure/machinery/cm_vending/clothes_personal/Topic(href, href_list)
-	if(inoperable())
+/obj/structure/machinery/cm_vending/clothing/dress/Topic(href, href_list)
+	if(stat & (BROKEN|NOPOWER))
 		return
 	if(usr.is_mob_incapacitated())
 		return
@@ -77,11 +79,11 @@
 				to_chat(H, SPAN_WARNING("Wrong ID card owner detected."))
 				return
 
-			if(vendor_role && I.rank != vendor_role)
+			if(LAZYLEN(vendor_role) && !vendor_role.Find(I.rank))
 				to_chat(H, SPAN_WARNING("This machine isn't for you."))
 				return
 
-			var/obj/item/IT = new item_path(loc)
+			var/obj/item/IT = new item_path(get_appropriate_vend_turf())
 			IT.add_fingerprint(usr)
 			I.vended_items += item_path
 

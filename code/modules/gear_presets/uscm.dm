@@ -122,7 +122,7 @@
 /*****************************************************************************************************/
 
 /datum/equipment_preset/uscm/tank
-	name = "USCM Vehicle Crewman (CRMN)"
+	name = "USCM Vehicle Crewman (CRMN) (Cryo)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	access = list(
@@ -143,9 +143,25 @@
 	minimum_age = 30
 	skills = /datum/skills/tank_crew
 
+/datum/equipment_preset/uscm/tank/load_gear(mob/living/carbon/human/H)
+	var/backItem = /obj/item/storage/backpack/marine/satchel
+	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
+		backItem = /obj/item/storage/backpack/marine
+
+	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
+
+/datum/equipment_preset/uscm/tank/load_status()
+	return
+
+/*****************************************************************************************************/
+
+/datum/equipment_preset/uscm/tank/full
+	name = "USCM Vehicle Crewman (CRMN)"
+	flags = EQUIPMENT_PRESET_EXTRA
+
 	utility_under = list(/obj/item/clothing/under/marine/officer/tanker)
 
-/datum/equipment_preset/uscm/tank/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/uscm/tank/full/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom(H), WEAR_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/welding(H), WEAR_EYES)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/tanker(H), WEAR_BODY)
@@ -160,13 +176,10 @@
 
 	H.hud_set_squad()
 
-/datum/equipment_preset/uscm/tank/load_status()
-	return //No cryo munchies
-
 /*****************************************************************************************************/
 
 /datum/equipment_preset/uscm/intel
-	name = "USCM Intelligence Officer (IO)"
+	name = "USCM Intelligence Officer (IO) (Cryo)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 	idtype = /obj/item/card/id/silver
@@ -190,14 +203,28 @@
 	utility_under = list(/obj/item/clothing/under/marine/officer/intel)
 
 /datum/equipment_preset/uscm/intel/load_gear(mob/living/carbon/human/H)
-	var/backItem = /obj/item/storage/backpack/marine/satchel/intel
+	var/backItem = /obj/item/storage/backpack/marine/satchel
 	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
 		backItem = /obj/item/storage/backpack/marine
+
+	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
+
+/datum/equipment_preset/uscm/intel/load_status()
+	return //No cryo munchies
+
+/*****************************************************************************************************/
+
+/datum/equipment_preset/uscm/intel/full
+	name = "USCM Intelligence Officer (IO)"
+	flags = EQUIPMENT_PRESET_EXTRA
+
+	utility_under = list(/obj/item/clothing/under/marine/officer/intel)
+
+/datum/equipment_preset/uscm/intel/full/load_gear(mob/living/carbon/human/H)
 
 	var/obj/item/clothing/under/marine/officer/intel/U = new(H)
 	var/obj/item/clothing/accessory/storage/webbing/W = new()
 	U.attach_accessory(H, W)
-
 	H.equip_to_slot_or_del(U, WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom(H), WEAR_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
@@ -205,13 +232,13 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/intel(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/intel(src), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(src), WEAR_HANDS)
-	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel/intel(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/document(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/device/binoculars(H), WEAR_L_HAND)
 
-/datum/equipment_preset/uscm/intel/load_status()
-	return //No cryo munchies
+
+	H.hud_set_squad()
 
 /*****************************************************************************************************/
 

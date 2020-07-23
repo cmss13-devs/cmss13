@@ -1,5 +1,5 @@
 
-//explosive items (grenades, plastique c4, onetankbomb, etc)
+//explosive items (grenades, plastic c4, onetankbomb, etc)
 
 /obj/item/explosive
 	var/active = FALSE

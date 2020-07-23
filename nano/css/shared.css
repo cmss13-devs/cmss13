@@ -45,7 +45,7 @@ input {
     border: 1px solid black;
 }
 
-.link, .linkOn, .linkActive, .linkOff, .selected, .disabled, .yellowButton, .redButton, a, button, .button {
+.link, .linkOn, .linkActive, .linkOff, .selected, .disabled, .yellowButton, .redButton, a, button, .button, ButtonMandat, ButtonRecom {
     min-width: 15px;
     height: 16px;
     float: left;
@@ -66,6 +66,14 @@ input {
 
 a:hover, .zoomLink:hover, .linkActive:hover {
     background: #507aac;
+}
+
+.ButtonMandat {
+	color: orange;
+}
+
+.ButtonRecom {
+	color: #BAF83C;
 }
 
 .linkPending, .linkPending:hover {

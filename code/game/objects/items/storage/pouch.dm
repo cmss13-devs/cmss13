@@ -309,12 +309,12 @@
 
 /obj/item/storage/pouch/explosive
 	name = "explosive pouch"
-	desc = "It can contain grenades, plastiques, mine boxes, and other explosives."
+	desc = "It can contain grenades, plastics, mine boxes, and other explosives."
 	icon_state = "large_explosive"
 	storage_slots = 3
 	max_w_class = SIZE_MEDIUM
 	can_hold = list(
-		/obj/item/explosive/plastique,
+		/obj/item/explosive/plastic,
 		/obj/item/explosive/mine,
 		/obj/item/explosive/grenade,
 		/obj/item/storage/box/explosive_mines
@@ -334,9 +334,9 @@
 	..()
 
 /obj/item/storage/pouch/explosive/upp/Initialize()
-	new /obj/item/explosive/plastique(src)
-	new /obj/item/explosive/plastique(src)
-	new /obj/item/explosive/plastique(src)
+	new /obj/item/explosive/plastic(src)
+	new /obj/item/explosive/plastic(src)
+	new /obj/item/explosive/plastic(src)
 	..()
 
 /obj/item/storage/pouch/medical

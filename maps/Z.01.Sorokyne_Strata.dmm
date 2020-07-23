@@ -1454,7 +1454,7 @@
 	},
 /area/strata/ug/interior/jungle/deep/structures/res)
 "adZ" = (
-/obj/structure/machinery/vending/boozeomat,
+/obj/structure/machinery/cm_vending/sorted/boozeomat,
 /obj/structure/machinery/light/small{
 	dir = 1;
 	pixel_y = 20
@@ -5202,7 +5202,7 @@
 /turf/closed/wall/strata_outpost_bare,
 /area/strata/ag/interior/outpost/canteen/showers)
 "anR" = (
-/obj/structure/machinery/vending/wallmed1,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
 /turf/closed/wall/strata_outpost_bare,
 /area/strata/ag/interior/outpost/canteen/showers)
 "anU" = (
@@ -9575,7 +9575,7 @@
 	},
 /area/strata/ag/interior/outpost/maint/canteen_e_1)
 "azp" = (
-/obj/structure/machinery/vending/boozeomat,
+/obj/structure/machinery/cm_vending/sorted/boozeomat,
 /turf/open/floor/strata{
 	dir = 10;
 	icon_state = "multi_tiles"
@@ -10145,7 +10145,7 @@
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/canteen/lower_cafeteria)
 "aAM" = (
-/obj/structure/machinery/vending/marineFood,
+/obj/structure/machinery/cm_vending/sorted/marine_food,
 /turf/open/floor/strata{
 	dir = 10;
 	icon_state = "multi_tiles"
@@ -11126,7 +11126,7 @@
 /turf/open/floor/interior/plastic,
 /area/strata/ag/interior/outpost/canteen/bar_2)
 "aDs" = (
-/obj/structure/machinery/vending/boozeomat,
+/obj/structure/machinery/cm_vending/sorted/boozeomat,
 /turf/open/floor/interior/plastic,
 /area/strata/ag/interior/outpost/canteen/bar_2)
 "aDt" = (
@@ -11373,7 +11373,7 @@
 	},
 /area/strata/ag/interior/outpost/maint/sec_west)
 "aEd" = (
-/obj/structure/machinery/vending/wallmed1,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
 /turf/closed/wall/strata_outpost_bare,
 /area/strata/ag/interior/outpost/maint/sec_west)
 "aEe" = (
@@ -11503,7 +11503,7 @@
 	},
 /area/strata/ag/interior/outpost/canteen/hall)
 "aEq" = (
-/obj/structure/machinery/vending/wallmed1{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_y = -28
 	},
 /obj/structure/largecrate/random,
@@ -11638,7 +11638,7 @@
 /turf/open/floor/greengrid,
 /area/strata/ag/interior/dorms/bar)
 "aEJ" = (
-/obj/structure/machinery/vending/boozeomat,
+/obj/structure/machinery/cm_vending/sorted/boozeomat,
 /obj/structure/machinery/camera/autoname{
 	dir = 4
 	},
@@ -13248,7 +13248,7 @@
 	},
 /area/strata/ag/interior/outpost/engi/foyer)
 "aIY" = (
-/obj/structure/machinery/vending/wallmed1,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
 /turf/closed/wall/strata_outpost_bare,
 /area/strata/ag/interior/outpost/engi/foyer)
 "aIZ" = (
@@ -14452,7 +14452,7 @@
 	},
 /area/strata/ag/interior/outpost/admin/backhall)
 "aMi" = (
-/obj/structure/machinery/vending/boozeomat,
+/obj/structure/machinery/cm_vending/sorted/boozeomat,
 /turf/open/floor/strata{
 	dir = 4;
 	icon_state = "white_cyan1"
@@ -16585,7 +16585,7 @@
 	},
 /area/strata/ag/interior/outpost/admin/backhall)
 "aSn" = (
-/obj/structure/machinery/vending/wallmed1{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_y = -28
 	},
 /obj/item/reagent_container/spray/cleaner,
@@ -17464,7 +17464,7 @@
 	},
 /area/strata/ag/interior/outpost/gen/foyer)
 "aUS" = (
-/obj/structure/machinery/vending/wallmed1,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
 /turf/closed/wall/strata_outpost_bare,
 /area/strata/ag/interior/outpost/engi/foyerdecks)
 "aUT" = (
@@ -18260,7 +18260,7 @@
 /turf/closed/wall/strata_outpost_bare,
 /area/strata/ug/interior/outpost/jung/dorms/admin4)
 "aXq" = (
-/obj/structure/machinery/vending/wallmed1,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
 /turf/closed/wall/strata_outpost_bare,
 /area/strata/ug/interior/outpost/jung/dorms/admin4)
 "aXr" = (
@@ -18791,7 +18791,7 @@
 	},
 /area/strata/ag/interior/outpost/maint/canteen_e_3)
 "aZz" = (
-/obj/structure/machinery/vending/wallmed1,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
 /turf/closed/wall/strata_outpost_bare,
 /area/strata/ag/interior/outpost/maint/canteen_e_1)
 "aZD" = (
@@ -19819,7 +19819,7 @@
 /turf/closed/wall/strata_ice,
 /area/strata/ag/interior/outpost/admin/office_0)
 "bdE" = (
-/obj/structure/machinery/vending/wallmed1,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
 /turf/closed/wall/strata_outpost_bare,
 /area/strata/ag/interior/outpost/admin/office_0)
 "bdF" = (
@@ -19942,7 +19942,7 @@
 	},
 /area/strata/ag/interior/outpost/canteen/kitchen)
 "bes" = (
-/obj/structure/machinery/vending/wallmed1,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
 /turf/closed/wall/strata_outpost_bare,
 /area/strata/ag/interior/outpost/canteen/kitchen)
 "bet" = (
@@ -22865,9 +22865,9 @@
 	},
 /area/strata/ag/interior/outpost/med/hall)
 "bsx" = (
-/obj/structure/machinery/vending/wallmed1,
-/obj/structure/machinery/vending/wallmed1,
-/obj/structure/machinery/vending/wallmed1,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
 /turf/closed/wall/strata_outpost_bare,
 /area/strata/ag/interior/outpost/maint/med1)
 "bsy" = (
@@ -26814,7 +26814,7 @@
 	},
 /area/strata/ag/interior/outpost/med/reception)
 "bOB" = (
-/obj/structure/machinery/vending/wallmed1,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
 /turf/closed/wall/strata_outpost_bare,
 /area/strata/ag/interior/outpost/med/paperroom)
 "bOC" = (
@@ -27337,7 +27337,7 @@
 	},
 /area/strata/ag/interior/administration)
 "bRs" = (
-/obj/structure/machinery/vending/marineFood,
+/obj/structure/machinery/cm_vending/sorted/marine_food,
 /turf/open/floor/strata{
 	dir = 4;
 	icon_state = "cyan2"
@@ -27830,7 +27830,7 @@
 	},
 /area/strata/ag/interior/dorms/north)
 "bUM" = (
-/obj/structure/machinery/vending/boozeomat,
+/obj/structure/machinery/cm_vending/sorted/boozeomat,
 /turf/open/floor/strata{
 	dir = 8;
 	icon_state = "white_cyan2"
@@ -28821,7 +28821,7 @@
 	},
 /area/strata/ag/interior/outpost/canteen/lower_cafeteria)
 "cao" = (
-/obj/structure/machinery/vending/marineFood,
+/obj/structure/machinery/cm_vending/sorted/marine_food,
 /turf/open/floor/interior/plastic,
 /area/strata/ag/interior/outpost/canteen/upper_cafeteria)
 "cau" = (
@@ -31066,7 +31066,7 @@
 	},
 /area/strata/ag/interior/outpost/engi/drome/shuttle)
 "cls" = (
-/obj/structure/machinery/vending/wallmed1,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
 /turf/closed/shuttle/ert{
 	icon_state = "upp23"
 	},
@@ -35226,7 +35226,7 @@
 /turf/open/floor/strata,
 /area/strata/ag/exterior/research_decks/south)
 "eRJ" = (
-/obj/structure/machinery/vending/wallmed1{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	name = "Emergency NanoMed";
 	pixel_x = 30
 	},
@@ -35507,7 +35507,7 @@
 /turf/open/snow/layer1,
 /area/strata/ag/interior/restricted/devroom)
 "flK" = (
-/obj/structure/machinery/vending/wallmed1,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
 /turf/closed/wall/strata_outpost_ribbed,
 /area/strata/ag/interior/outpost/med/morgue)
 "fmv" = (
@@ -37165,7 +37165,7 @@
 /turf/open/snow/layer2,
 /area/strata/ag/exterior/nearlz2)
 "hjC" = (
-/obj/structure/machinery/vending/wallmed1,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
 /turf/closed/wall/strata_outpost_bare,
 /area/strata/ug/interior/outpost/jung/dorms/sec2)
 "hkA" = (
@@ -38663,7 +38663,7 @@
 	dir = 8;
 	tag = "icon-chair (WEST)"
 	},
-/obj/structure/machinery/vending/wallmed1{
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	name = "Emergency NanoMed";
 	pixel_x = 30
 	},
@@ -39292,7 +39292,7 @@
 /turf/open/snow/layer1,
 /area/strata/ag/exterior/paths/northadmin)
 "kaw" = (
-/obj/structure/machinery/vending/wallmed1,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
 /turf/closed/wall/strata_outpost_bare,
 /area/strata/ug/interior/outpost/jung/dorms/med2)
 "kaO" = (
@@ -41304,7 +41304,7 @@
 	},
 /area/strata/ag/interior/tcomms/tcomms_engi)
 "msG" = (
-/obj/structure/machinery/vending/wallmed1,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med,
 /turf/closed/wall/strata_outpost_bare,
 /area/strata/ag/interior/outpost/med/hall)
 "msP" = (

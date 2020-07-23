@@ -3,6 +3,7 @@
 
 /mob/dead
 	var/voted_this_drop = 0
+	can_block_movement = FALSE
 	recalculate_move_delay = FALSE
 
 /mob/dead/observer

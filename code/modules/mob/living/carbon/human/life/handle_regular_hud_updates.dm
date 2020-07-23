@@ -95,7 +95,7 @@
 					if(250 to 350)					hud_used.nutrition_icon.icon_state = "nutrition1"
 					if(150 to 250)					hud_used.nutrition_icon.icon_state = "nutrition2"
 					if(50 to 150)					hud_used.nutrition_icon.icon_state = "nutrition3"
-					else							hud_used.nutrition_icon.icon_state = "nutrition4"
+					else							hud_used.nutrition_icon.icon_state = "nutrition3"
 
 			if(hud_used.oxygen_icon)
 				if(hal_screwyhud == 3 || oxygen_alert)	hud_used.oxygen_icon.icon_state = "oxy1"

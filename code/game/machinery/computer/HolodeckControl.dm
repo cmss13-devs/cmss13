@@ -199,10 +199,6 @@
 	to_chat(user, "The station AI is not to interact with these devices!")
 	return
 
-/obj/structure/machinery/readybutton/New()
-	..()
-
-
 /obj/structure/machinery/readybutton/attackby(obj/item/W as obj, mob/user as mob)
 	to_chat(user, "The device is a solid button, there's nothing you can do with it!")
 

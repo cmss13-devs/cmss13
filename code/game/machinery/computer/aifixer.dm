@@ -9,6 +9,7 @@
 	processing = TRUE
 
 /obj/structure/machinery/computer/aifixer/New()
+	..()
 	src.overlays += image('icons/obj/structures/machinery/computer.dmi', "ai-fixer-empty")
 
 

@@ -24,6 +24,8 @@
 	//TODO: make it heat up the surroundings when not in space
 
 /obj/item/device/suit_cooling_unit/New()
+	..()
+	
 	processing_objects |= src
 
 	cell = new/obj/item/cell()	//comes with the crappy default power cell - high-capacity ones shouldn't be hard to find

@@ -377,7 +377,6 @@
 
 /obj/effect/xenomorph/boiler_bombard/New(loc, source_xeno = null)
 	// Hopefully we don't get insantiated in these places anyway..
-
 	if (isXeno(source_xeno))
 		src.source_xeno = source_xeno
 

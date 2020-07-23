@@ -234,8 +234,8 @@ var/global/list/datum/stack_recipe/cardboard_recipes = list ( \
 	stack_id = "cardboard"
 
 /obj/item/stack/sheet/cardboard/New(var/loc, var/amount=null)
-		recipes = cardboard_recipes
-		return ..()
+	recipes = cardboard_recipes
+	return ..()
 
 /obj/item/stack/sheet/cardboard/small_stack
 	amount = STACK_10

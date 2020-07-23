@@ -298,6 +298,7 @@ var/datum/controller/supply/supply_controller = new()
 	can_pick_squad = FALSE//Can't pick squads
 
 /obj/structure/machinery/computer/supply_drop_console/limited/New()
+	..()
 	current_squad = get_squad_by_name("Echo") //Hardwired into Echo
 
 /obj/structure/machinery/computer/supply_drop_console/limited/attack_hand(mob/user)

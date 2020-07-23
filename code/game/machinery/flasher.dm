@@ -22,11 +22,6 @@
 	base_state = "pflash"
 	density = 1
 
-/*
-/obj/structure/machinery/flasher/New()
-	sleep(4)					//<--- What the fuck are you doing? D=
-	src.sd_SetLuminosity(2)
-*/
 /obj/structure/machinery/flasher/power_change()
 	..()
 	if ( !(stat & NOPOWER) )

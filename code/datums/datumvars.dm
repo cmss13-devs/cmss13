@@ -462,6 +462,10 @@ body
 			to_chat(usr, "This can only be used on instances of type /mob")
 			return
 
+		if(!M.client || !M.client.admin_holder || !M.client.admin_holder.rights & R_MOD)
+			to_chat(usr, "This can only be used on people with +MOD permissions")
+			return
+
 		log_admin("[key_name(usr)] has toggled buildmode on [key_name(M)]")
 		message_admins("[key_name_admin(usr)] has toggled buildmode on [key_name_admin(M)]")
 

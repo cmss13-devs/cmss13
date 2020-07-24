@@ -307,8 +307,6 @@
 /////////////////// add_splatter_floor ////////////////////////////////////////
 //to add a splatter of blood or other mob liquid.
 /mob/living/proc/add_splatter_floor(turf/T, small_drip, b_color)
-	if(get_blood_id() != "blood")
-		return
 	if(!T)
 		T = get_turf(src)
 
@@ -335,13 +333,7 @@
 		B = new /obj/effect/decal/cleanable/blood/splatter(T, b_color)
 
 
-
-
-
 /mob/living/carbon/human/add_splatter_floor(turf/T, small_drip, b_color)
-	if(NO_BLOOD in species.flags)
-		return
-
 	b_color = species.blood_color
 
 	..()
@@ -358,7 +350,6 @@
 		XB = new(T)
 
 
-
 /mob/living/silicon/robot/add_splatter_floor(turf/T, small_drip, b_color)
 	if(!T)
 		T = get_turf(src)
@@ -369,4 +360,3 @@
 	var/obj/effect/decal/cleanable/blood/oil/O = locate() in T.contents
 	if(!O)
 		O = new(T)
-

@@ -128,6 +128,6 @@ if __name__ == "__main__":
         PAT = environ["GITLAB_CHANGELOG_PAT"]
     else :
         PID = argv[2]
-        PAT = argv{3]}
+        PAT = argv[3]
 
     generate_changelogs(PID, argv[1], PAT)

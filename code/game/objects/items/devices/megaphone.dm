@@ -38,7 +38,6 @@
 	if ((src.loc == user && usr.stat == 0))
 		var/list/mob/living/carbon/human/vw = viewers(user) // slow but we need it
 		for(var/mob/living/carbon/human/O in vw)
-			to_world("casting to [O]")
 			if(O.species && O.species.name == "Yautja") //NOPE
 				O.show_message("[user] says something on the microphone, but you can't understand it.")
 				continue

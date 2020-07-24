@@ -1166,19 +1166,19 @@
 /area/space)
 "dK" = (
 /obj/structure/table/reinforced,
-/obj/item/stack/medical/ointment/tajaran{
+/obj/item/stack/medical/advanced/ointment/tajaran{
 	name = "soothing herbs"
 	},
-/obj/item/stack/medical/ointment/tajaran{
+/obj/item/stack/medical/advanced/ointment/tajaran{
 	name = "soothing herbs"
 	},
-/obj/item/stack/medical/ointment/tajaran{
+/obj/item/stack/medical/advanced/ointment/tajaran{
 	name = "soothing herbs"
 	},
-/obj/item/stack/medical/ointment/tajaran{
+/obj/item/stack/medical/advanced/ointment/tajaran{
 	name = "soothing herbs"
 	},
-/obj/item/stack/medical/ointment/tajaran{
+/obj/item/stack/medical/advanced/ointment/tajaran{
 	name = "soothing herbs"
 	},
 /obj/structure/machinery/light/small{
@@ -1191,19 +1191,19 @@
 /area/yautja)
 "dL" = (
 /obj/structure/table/reinforced,
-/obj/item/stack/medical/bruise_pack/tajaran{
+/obj/item/stack/medical/advanced/bruise_pack/tajaran{
 	name = "mending herbs"
 	},
-/obj/item/stack/medical/bruise_pack/tajaran{
+/obj/item/stack/medical/advanced/bruise_pack/tajaran{
 	name = "mending herbs"
 	},
-/obj/item/stack/medical/bruise_pack/tajaran{
+/obj/item/stack/medical/advanced/bruise_pack/tajaran{
 	name = "mending herbs"
 	},
-/obj/item/stack/medical/bruise_pack/tajaran{
+/obj/item/stack/medical/advanced/bruise_pack/tajaran{
 	name = "mending herbs"
 	},
-/obj/item/stack/medical/bruise_pack/tajaran{
+/obj/item/stack/medical/advanced/bruise_pack/tajaran{
 	name = "mending herbs"
 	},
 /turf/open/floor/holofloor{
@@ -8868,19 +8868,19 @@
 /area/adminlevel/ert_station)
 "La" = (
 /obj/structure/table/reinforced,
-/obj/item/stack/medical/ointment/tajaran{
+/obj/item/stack/medical/advanced/ointment/tajaran{
 	name = "soothing herbs"
 	},
-/obj/item/stack/medical/ointment/tajaran{
+/obj/item/stack/medical/advanced/ointment/tajaran{
 	name = "soothing herbs"
 	},
-/obj/item/stack/medical/ointment/tajaran{
+/obj/item/stack/medical/advanced/ointment/tajaran{
 	name = "soothing herbs"
 	},
-/obj/item/stack/medical/ointment/tajaran{
+/obj/item/stack/medical/advanced/ointment/tajaran{
 	name = "soothing herbs"
 	},
-/obj/item/stack/medical/ointment/tajaran{
+/obj/item/stack/medical/advanced/ointment/tajaran{
 	name = "soothing herbs"
 	},
 /turf/open/floor/holofloor{

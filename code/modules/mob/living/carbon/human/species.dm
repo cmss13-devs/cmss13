@@ -21,6 +21,8 @@
 	var/unarmed_type =           /datum/unarmed_attack
 	var/secondary_unarmed_type = /datum/unarmed_attack/bite
 
+	var/timed_hug = TRUE
+
 	var/list/speech_sounds        // A list of sounds to potentially play when speaking.
 	var/list/speech_chance
 	var/has_fine_manipulation = 1 // Can use small items.
@@ -96,6 +98,9 @@
 		unarmed = new unarmed_type()
 	if(secondary_unarmed_type) 
 		secondary_unarmed = new secondary_unarmed_type()
+
+/datum/species/proc/larva_impregnated(var/obj/item/alien_embryo/embryo)
+	return
 
 /datum/species/proc/handle_npc(var/mob/living/carbon/human/H)
     return
@@ -571,6 +576,8 @@
 	darksight = 5
 	slowdown = -0.5
 
+	timed_hug = FALSE
+
 	heat_level_1 = 500
 	heat_level_2 = 700
 	heat_level_3 = 1000
@@ -612,6 +619,22 @@
 		WEAR_IN_BELT,\
 		WEAR_IN_BACK\
 	)
+
+/datum/species/yautja/larva_impregnated(var/obj/item/alien_embryo/embryo)
+	var/datum/hive_status/hive = hive_datum[embryo.hivenumber]
+
+	if(!istype(hive))
+		return
+
+	if(!XENO_STRUCTURE_NEST in hive.hive_structure_types)
+		hive.hive_structure_types.Add(XENO_STRUCTURE_NEST)
+
+	if(!XENO_STRUCTURE_NEST in hive.hive_structures_limit)
+		hive.hive_structures_limit.Add(XENO_STRUCTURE_NEST)
+		hive.hive_structures_limit[XENO_STRUCTURE_NEST] = 0
+
+	hive.hive_structure_types[XENO_STRUCTURE_NEST] = /datum/construction_template/xenomorph/nest
+	hive.hive_structures_limit[XENO_STRUCTURE_NEST] += 1
 
 /datum/species/yautja/handle_death(var/mob/living/carbon/human/H, gibbed)
 	if(gibbed)

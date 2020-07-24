@@ -11,6 +11,9 @@
     var/build_icon
     var/build_icon_state
 
+    var/pixel_y = -16
+    var/pixel_x = -16
+
     var/crystals_required = 0
     var/crystals_stored = 0
     var/materials_required = list() //Example resource requirements i.e. MATERIAL_METAL = 1

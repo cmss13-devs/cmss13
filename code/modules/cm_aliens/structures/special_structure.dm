@@ -17,6 +17,8 @@
 			message = "<B>[XENO_STRUCTURE_EVOPOD]</B> - Grants an additional 0.2 evolution per tick for all sisters on weeds."
 		if(XENO_STRUCTURE_RECOVERY)
 			message = "<B>[XENO_STRUCTURE_RECOVERY]</B> - Hastily recovers the strength of sisters resting around it."
+		if(XENO_STRUCTURE_NEST)
+			message = "<B>[XENO_STRUCTURE_NEST]</B> - Strong enough to secure a headhunter for indeterminate durations."
 	return message
 
 /obj/effect/alien/resin/special

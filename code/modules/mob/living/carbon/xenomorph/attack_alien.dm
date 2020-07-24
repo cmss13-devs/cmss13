@@ -36,6 +36,9 @@
 				M.start_pulling(src)
 
 		if("hurt")
+			if(M.behavior_delegate && M.behavior_delegate.handle_slash(src))
+				return
+
 			if(M.hive && !M.hive.slashing_allowed && (M.caste && !M.caste.is_intelligent))
 				to_chat(M, SPAN_WARNING("Slashing is currently <b>forbidden</b> by the Queen. You refuse to slash [src]."))
 				return FALSE

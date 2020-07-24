@@ -180,7 +180,7 @@
 		XENO_STRUCTURE_POOL = 1,
 		XENO_STRUCTURE_EGGMORPH = 6,
 		XENO_STRUCTURE_EVOPOD = 5,
-		XENO_STRUCTURE_RECOVERY = 6
+		XENO_STRUCTURE_RECOVERY = 6,
 	)
 
 	var/global/list/hive_structure_types = list(

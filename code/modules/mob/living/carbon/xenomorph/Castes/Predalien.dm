@@ -3,24 +3,25 @@
 	display_name = "Abomination"
 
 	melee_damage_lower = XENO_DAMAGE_TIER_4
-	melee_damage_upper = XENO_DAMAGE_TIER_7
-	max_health = XENO_HEALTH_TIER_10
+	melee_damage_upper = XENO_DAMAGE_TIER_5
+	max_health = XENO_HEALTH_TIER_9
 	plasma_gain = XENO_PLASMA_GAIN_TIER_9
 	plasma_max = XENO_PLASMA_TIER_3
 	xeno_explosion_resistance = XENO_GIGA_EXPLOSIVE_ARMOR
 	armor_deflection = XENO_ARMOR_TIER_3
-	armor_hardiness_mult = XENO_ARMOR_FACTOR_LOW
+	armor_hardiness_mult = XENO_ARMOR_FACTOR_HIGH
 	evasion = XENO_EVASION_NONE
-	speed = XENO_SPEED_TIER_10
+	speed = XENO_SPEED_TIER_7
 
 	evolution_allowed = FALSE
 	tacklemin = 6
 	tacklemax = 10
-	tackle_chance = 80
+	tackle_chance = 35
 	is_intelligent = TRUE
 	tier = 1
 	attack_delay = -2
-	can_be_queen_healed = 0
+
+	behavior_delegate_type = /datum/behavior_delegate/predalien_base
 
 /mob/living/carbon/Xenomorph/Predalien
 	caste_name = "Predalien"
@@ -30,44 +31,34 @@
 	icon_state = "Predalien Walking"
 	plasma_types = list(PLASMA_CATECHOLAMINE)
 	faction = FACTION_PREDALIEN
-	melee_damage_lower = 65
-	melee_damage_upper = 80
-	amount_grown = 0
-	max_grown = 200
 	wall_smash = TRUE
 	hardcore = FALSE
-	tunnel_delay = 0
-	pslash_delay = 0
 	pixel_x = -16
 	old_x = -16
 	mob_size = MOB_SIZE_BIG
 	tier = 1
 	age = -1 //Predaliens are already in their ultimate form, they don't get even better
 
-	var/butchered_last //world.time to prevent spam.
-	var/butchered_sum = 0 //The number of people butchered. Lowers the health gained.
-
-	#define PREDALIEN_BUTCHER_COOLDOWN 140 //14 seconds.
-	#define PREDALIEN_BUTCHER_WAIT_TIME 120 //12 seconds.
 	actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/regurgitate,
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/activable/pounce/predalien,
-		/datum/action/xeno_action/activable/predalien_roar
-		)
-	inherent_verbs = list(
-		/mob/living/carbon/Xenomorph/Predalien/proc/claim_trophy
+		/datum/action/xeno_action/activable/predalien_roar,
+		/datum/action/xeno_action/activable/smash,
+		/datum/action/xeno_action/activable/devastate
 		)
 	mutation_type = "Normal"
 
-	New()
-		..()
-		announce_spawn()
+	var/butcher_time = SECONDS_6
+
+
+/mob/living/carbon/Xenomorph/Predalien/Initialize(new_loc, mob/living/carbon/Xenomorph/oldXeno, h_number)
+	. = ..()
+
+	add_timer(CALLBACK(src, .proc/announce_spawn), SECONDS_3)
 
 /mob/living/carbon/Xenomorph/Predalien/proc/announce_spawn()
-	set waitfor = 0
-	sleep(30)
 	if(!loc) 
 		return FALSE
 
@@ -82,64 +73,66 @@ Your health meter will not regenerate normally, so kill and die for the hive!</s
 "})
 	emote("roar")
 
+/datum/behavior_delegate/predalien_base
+	name = "Base Predalien Behavior Delegate"
 
-/mob/living/carbon/Xenomorph/Predalien/proc/claim_trophy()
-	set category = "Alien"
-	set name = "Claim Trophy"
-	set desc = "Butcher a corpse to attain a trophy from your kill."
+	var/kills = 0
+	var/max_kills = 10
 
-	if(is_mob_incapacitated()|| lying || buckled)
-		to_chat(src, SPAN_XENOWARNING("You're not able to do that right now."))
+/datum/behavior_delegate/predalien_base/append_to_stat()
+	stat("Kills:", "[kills]/[max_kills]")
+
+/datum/behavior_delegate/predalien_base/on_kill_mob(mob/M)
+	. = ..()
+	
+	kills = min(kills + 1, max_kills)
+
+/datum/behavior_delegate/predalien_base/melee_attack_modify_damage(original_damage, atom/A = null)
+	if(isYautja(A))
+		original_damage *= 1.5
+
+	return original_damage + kills * 2.5
+
+/datum/behavior_delegate/predalien_base/handle_slash(mob/M)
+	if(matches_hivemind(bound_xeno, M))
 		return FALSE
 
-	var/choices[] = new
-	for(var/mob/M in view(1, src)) //We are only interested in humans and predators.
-		if(Adjacent(M) && ishuman(M) && !iszombie(M) && M.stat) choices += M
+	var/mob/living/carbon/Xenomorph/Predalien/X = bound_xeno
 
-	var/mob/living/carbon/human/H = input(src, "From which corpse will you claim your trophy?") as null|anything in choices
-
-	if(!H || !H.loc) 
+	if(!istype(X))
 		return FALSE
 
-	if(is_mob_incapacitated() || lying || buckled)
-		to_chat(src, "<span class='xenowarning'>You're not able to do that right now.<span>")
-		return FALSE
+	if(M.stat == DEAD && isXenoOrHuman(M))
+		if(X.action_busy)
+			to_chat(X, SPAN_XENONOTICE("You are already performing an action!"))
+			return TRUE
 
-	if(!H.stat)
-		to_chat(src, SPAN_XENOWARNING("Your prey must be dead."))
-		return FALSE
+		playsound(X.loc, 'sound/weapons/slice.ogg', 25)
 
-	if(!Adjacent(H))
-		to_chat(src, SPAN_XENOWARNING("You have to be next to your target."))
-		return FALSE
+		if(!do_after(X, X.butcher_time, INTERRUPT_ALL, BUSY_ICON_HOSTILE, M))
+			to_chat(X, SPAN_XENONOTICE("You decide not to butcher [M]"))
+			return TRUE
 
-	if(world.time <= butchered_last + PREDALIEN_BUTCHER_COOLDOWN)
-		to_chat(src, SPAN_XENOWARNING("You have recently attempted to butcher a carcass. Wait."))
-		return FALSE
+		if(ishuman(M))
+			var/mob/living/carbon/human/H = M
+			
+			for(var/i in 1 to 3)
+				var/obj/item/reagent_container/food/snacks/meat/h_meat = new(H.loc)
+				h_meat.name = "[H.name] meat"
+			
+		else if (isXeno(M))
+			var/mob/living/carbon/Xenomorph/xeno_victim = M
 
-	butchered_last = world.time
+			new /obj/effect/decal/remains/xeno(xeno_victim.loc)
+			var/obj/item/stack/sheet/animalhide/xeno/xenohide = new /obj/item/stack/sheet/animalhide/xeno(xeno_victim.loc)
+			xenohide.name = "[xeno_victim.age_prefix][xeno_victim.caste_name]-hide"
+			xenohide.singular_name = "[xeno_victim.age_prefix][xeno_victim.caste_name]-hide"
+			xenohide.stack_id = "[xeno_victim.age_prefix][xeno_victim.caste_name]-hide"
+		
+		playsound(X.loc, 'sound/effects/blobattack.ogg', 25)
 
-	visible_message(SPAN_DANGER("[src] reaches down, angling its body toward [H], claws outstretched."),
-	SPAN_XENONOTICE("You stoop near the host's body, savoring the moment before you claim a trophy for your kill. You must stand still..."))
-	if(do_after(src, PREDALIEN_BUTCHER_WAIT_TIME, INTERRUPT_ALL, BUSY_ICON_HOSTILE) && Adjacent(H))
-		var/obj/limb/head/O = H.get_limb("head")
-		if(!(O.status & LIMB_DESTROYED))
-			H.apply_damage(150, BRUTE, "head", TRUE, TRUE)
-			if(!(O.status & LIMB_DESTROYED)) O.droplimb(0, 0, initial(name)) //Still not actually detached?
-			visible_message(SPAN_DANGER("[src] reaches down and rips off [H]'s spinal cord and skull!"),
-			SPAN_XENODANGER("You slice and pull on [H]'s head until it comes off in a bloody arc!"))
-			playsound(loc, 'sound/weapons/slice.ogg', 25)
-			emote("growl")
-			var/to_heal = max(1, 5 - (0.2 * (health < maxHealth ? butchered_sum++ : butchered_sum)))//So we do not heal multiple times due to the inline proc below.
-			XENO_HEAL_WOUNDS(isYautja(H)? 15 : to_heal, recovery_aura) //Predators give far better healing.
-		else
-			visible_message(SPAN_DANGER("[src] slices and dices [H]'s body like a ragdoll!"),
-			SPAN_XENODANGER("You fly into a frenzy and butcher [H]'s body!"))
-			playsound(loc, 'sound/weapons/bladeslice.ogg', 25)
-			emote("growl")
-			var/i = 4
-			while(i--)
-				H.apply_damage(100, BRUTE, pick("r_leg","l_leg","r_arm","l_arm"), TRUE, TRUE)
+		M.gib("butchering")
 
-	#undef PREDALIEN_BUTCHER_COOLDOWN
-	#undef PREDALIEN_BUTCHER_WAIT_TIME
+		return TRUE
+
+	return FALSE

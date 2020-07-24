@@ -54,3 +54,12 @@
 	name = XENO_STRUCTURE_RECOVERY
 	build_type = /obj/effect/alien/resin/special/recovery
 	build_icon_state = "recovery"
+
+/datum/construction_template/xenomorph/nest
+	name = XENO_STRUCTURE_NEST
+	build_type = /obj/effect/alien/resin/special/nest
+	build_icon = 'icons/mob/xenos/structures48x48.dmi'
+	build_icon_state = "reinforced_nest"
+
+	pixel_y = -8
+	pixel_x = -8

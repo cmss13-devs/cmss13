@@ -34,8 +34,8 @@
 	if(template)
 		var/image/I = template.get_structure_image()
 		I.alpha = 122
-		I.pixel_x = -16
-		I.pixel_y = -16
+		I.pixel_x = template.pixel_x
+		I.pixel_y = template.pixel_y
 		overlays += I
 
 /obj/effect/alien/resin/construction/examine(mob/user)

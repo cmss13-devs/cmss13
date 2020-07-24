@@ -59,6 +59,8 @@
 
 //#define OBJ_LAYER 3
 
+#define ABOVE_SPECIAL_RESIN_STRUCTURE_LAYER 3.01
+
 #define UPPER_ITEM_LAYER 3.01 //for items that should be at the top of the pile of items
 
 #define ABOVE_OBJ_LAYER 3.02 //just above all items

@@ -16,6 +16,6 @@
 				W = new /obj/item/weapon/wristblades
 	..()
 
-/mob/living/carbon/human/KnockOut(amount)
-	if(isSynth(src) || isYautja(src))	return
+/mob/living/carbon/human/KnockOut(var/amount, var/force = FALSE)
+	if((isSynth(src) || isYautja(src)) && !force)	return
 	..()

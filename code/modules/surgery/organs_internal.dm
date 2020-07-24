@@ -64,7 +64,7 @@
 	allowed_tools = list(
 	/obj/item/stack/medical/advanced/bruise_pack= 100, \
 	/obj/item/stack/medical/bruise_pack = 20,          \
-	/obj/item/stack/medical/bruise_pack/tajaran = 70,  \
+	/obj/item/stack/medical/advanced/bruise_pack/tajaran = 70,  \
 	)
 
 	min_duration = FIX_ORGAN_MIN_DURATION

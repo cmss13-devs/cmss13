@@ -179,7 +179,7 @@
 			else
 				to_chat(user, SPAN_NOTICE("The [affecting.display_name] is cut open, you'll need more than a bandage!"))
 
-/obj/item/stack/medical/bruise_pack/tajaran
+/obj/item/stack/medical/advanced/bruise_pack/tajaran
 	name = "\improper S'rendarr's Hand leaf"
 	singular_name = "S'rendarr's Hand leaf"
 	desc = "A poultice made of soft leaves that is rubbed on bruises."
@@ -188,7 +188,7 @@
 	heal_brute = 15
 	stack_id = "Hand leaf"
 
-/obj/item/stack/medical/ointment/tajaran
+/obj/item/stack/medical/advanced/ointment/tajaran
 	name = "\improper Messa's Tear petals"
 	singular_name = "Messa's Tear petal"
 	desc = "A poultice made of cold, blue petals that is rubbed on burns."

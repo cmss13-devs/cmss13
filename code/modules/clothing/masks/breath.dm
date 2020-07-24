@@ -108,6 +108,7 @@
 	desc = "A tactical bandana used by soldiers to conceal their face."
 	icon_state = "scarf_gray"
 	item_state = "scarf_gray"
+	original_state = "scarf_gray"
 	flags_inventory = COVERMOUTH|ALLOWREBREATH|ALLOWCPR
 	flags_inv_hide = HIDEFACE|HIDELOWHAIR
 	flags_cold_protection = BODY_FLAG_HEAD

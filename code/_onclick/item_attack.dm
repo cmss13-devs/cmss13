@@ -72,7 +72,6 @@
 	var/power = force
 	if(user.skills)
 		power = round(power * (1 + 0.25 * user.skills.get_skill_level(SKILL_MELEE_WEAPONS))) //25% bonus per melee level
-
 	if(!ishuman(M))
 		var/used_verb = "attacked"
 		if(attack_verb && attack_verb.len)
@@ -83,13 +82,10 @@
 		user.animation_attack_on(M)
 		user.flick_attack_overlay(M, "punch")
 		if(isXeno(M))
-			var/mob/living/carbon/Xenomorph/XNO = M
-			if (isYautja(user))
-				power *= 1.1 // Preds get bonus melee damage vs xenos
-
-			power = armor_damage_reduction(config.xeno_melee, power, XNO.armor_deflection + XNO.armor_deflection_buff, 20, 0, 0, XNO.armor_integrity)
-			var/armor_punch = armor_break_calculation(config.xeno_melee, power, XNO.armor_deflection + XNO.armor_deflection_buff, 20, 0, 0, XNO.armor_integrity)
-			XNO.apply_armorbreak(armor_punch)
+			var/mob/living/carbon/Xenomorph/X = M
+			power = armor_damage_reduction(config.xeno_melee, power, X.armor_deflection + X.armor_deflection_buff, 20, 0, 0, X.armor_integrity)
+			var/armor_punch = armor_break_calculation(config.xeno_melee, power, X.armor_deflection + X.armor_deflection_buff, 20, 0, 0, X.armor_integrity)
+			X.apply_armorbreak(armor_punch)
 		if(hitsound)
 			playsound(loc, hitsound, 25, 1)
 		switch(damtype)

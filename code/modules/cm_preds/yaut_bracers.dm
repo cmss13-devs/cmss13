@@ -242,27 +242,34 @@
 			. = activate_random_verb()
 			return
 	var/obj/item/weapon/wristblades/R = user.get_active_hand()
+	var/obj/item/weapon/wristblades/L = user.get_inactive_hand()
+	var/is_lefthand_full = FALSE
 	if(R && istype(R)) //Turn it off.
 		to_chat(user, SPAN_NOTICE("You retract your wrist blades."))
 		playsound(user.loc,'sound/weapons/wristblades_off.ogg', 15, 1)
 		blades_active = 0
 		qdel(R)
+		if(L && istype(L)) //If they have one in the off hand as well turn it off.
+			qdel(L)
 		return
 	else
 		if(!drain_power(user,50)) return
 
 		if(R)
-			to_chat(user, SPAN_WARNING("Your hand must be free to activate your wrist blade!"))
+			to_chat(user, SPAN_WARNING("Your hand must be free to activate your wristblade!"))
 			return
-
+		if(L)
+			to_chat(user, SPAN_WARNING("Your other hand must be free to activate your off-hand wristblade!"))
+			is_lefthand_full = TRUE
 		var/obj/limb/hand = user.get_limb(user.hand ? "l_hand" : "r_hand")
 		if(!istype(hand) || !hand.is_usable())
 			to_chat(user, SPAN_WARNING("You can't hold that!"))
 			return
-		var/obj/item/weapon/wristblades/N
-		N = new /obj/item/weapon/wristblades
-
+		var/obj/item/weapon/wristblades/N = new()
 		user.put_in_active_hand(N)
+		if(!is_lefthand_full)
+			var/obj/item/weapon/wristblades/W = new()
+			user.put_in_inactive_hand(W)
 		blades_active = 1
 		to_chat(user, SPAN_NOTICE("You activate your wrist blades."))
 		playsound(user,'sound/weapons/wristblades_on.ogg', 15, 1)

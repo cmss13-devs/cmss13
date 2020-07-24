@@ -5,7 +5,7 @@
 	rank = "Predator"
 	faction = FACTION_YAUTJA
 	uses_special_name = TRUE
-
+	skills = /datum/skills/yautja/warrior
 /datum/equipment_preset/yautja/load_race(mob/living/carbon/human/H)
 	H.set_species("Yautja")
 
@@ -75,7 +75,6 @@
 /datum/equipment_preset/yautja/elder
 	name = "Yautja Elder"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
-
 	var/elder_number = 0 //overwriting elder gear
 
 /datum/equipment_preset/yautja/elder/load_name(mob/living/carbon/human/H, var/randomise)

@@ -74,8 +74,6 @@
 	var/mob/living/M = loc
 	var/painforce = pain_dam
 	var/boxing_verb = pick(attack_verb)
-	if (skillcheck(M, SKILL_CQC, SKILL_CQC_WEAK))
-		painforce *= 0.5 //their arms are weak and pathetic like tiny little baby man
 	if (A in range(1, M))
 		if(isliving(A) && M.a_intent == HARM_INTENT)
 			if(isYautja(A))

@@ -13,8 +13,6 @@
 #define X_TOTAL_LAYERS			8
 /////////////////////////////////
 
-/mob/living/carbon/Xenomorph
-	var/list/overlays_standing[X_TOTAL_LAYERS]
 
 /mob/living/carbon/Xenomorph/apply_overlay(cache_index)
 	var/image/I = overlays_standing[cache_index]
@@ -169,4 +167,3 @@
 #undef X_R_HAND_LAYER
 #undef X_LEGCUFF_LAYER
 #undef X_FIRE_LAYER
-#undef X_TOTAL_LAYERS

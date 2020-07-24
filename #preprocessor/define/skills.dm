@@ -76,7 +76,6 @@
 //cqc skill
 //higher disarm chance on humans(+5% per level)
 //slight increase in punch damage.
-#define SKILL_CQC_WEAK      -1
 #define SKILL_CQC_DEFAULT   0
 #define SKILL_CQC_TRAINED   1
 #define SKILL_CQC_MP        2 //no risk of accidental weapon discharge upon disarming (MP)
@@ -101,8 +100,7 @@
 
 
 //melee_weapons skill
-//buff to melee weapon attack damage(+30% dmg per level)
-#define SKILL_MELEE_WEAK       -1
+//buff to melee weapon attack damage(+25% dmg per level)
 #define SKILL_MELEE_DEFAULT     0
 #define SKILL_MELEE_TRAINED     1
 #define SKILL_MELEE_SUPER       2

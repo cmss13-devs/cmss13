@@ -36,11 +36,16 @@
 	message = capitalize(message)
 	log_admin("[key_name(user)] used a megaphone to say: >[message]<")
 	if ((src.loc == user && usr.stat == 0))
-		for(var/mob/living/carbon/human/O in (viewers(user)))
+		var/list/mob/living/carbon/human/vw = viewers(user) // slow but we need it
+		for(var/mob/living/carbon/human/O in vw)
+			to_world("casting to [O]")
 			if(O.species && O.species.name == "Yautja") //NOPE
 				O.show_message("[user] says something on the microphone, but you can't understand it.")
 				continue
 			O.show_message("<B>[user]</B> broadcasts, [FONT_SIZE_LARGE("\"[message]\"")]",2) // 2 stands for hearable message
+
+
+		user.langchat_long_speech(message, vw, user.get_default_language())
 
 		spamcheck = 1
 		spawn(20)

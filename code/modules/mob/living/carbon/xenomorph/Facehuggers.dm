@@ -94,11 +94,17 @@
 		..()
 		return
 
-	if(!do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_HOSTILE, M, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
-		return
+	var/datum/species/S
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		S = H.species
 
-	if(!(CanHug(M, hivenumber) && (M.is_mob_incapacitated() || M.lying || M.buckled)))
-		return
+	if(!S || S.timed_hug )
+		if(!do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_HOSTILE, M, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
+			return
+
+		if(!(CanHug(M, hivenumber) && (M.is_mob_incapacitated() || M.lying || M.buckled)))
+			return
 
 	Attach(M)
 	user.update_icons()
@@ -313,7 +319,7 @@
 					playsound(loc, (target.gender == "male"?'sound/misc/facehugged_male.ogg' : 'sound/misc/facehugged_female.ogg') , 25, 0)
 			if(!sterile)
 				if(!H || !H.species || !(H.species.flags & IS_SYNTHETIC)) //synthetics aren't paralyzed
-					target.KnockOut(MIN_IMPREGNATION_TIME * 0.5) //THIS MIGHT NEED TWEAKS
+					target.KnockOut(MIN_IMPREGNATION_TIME * 0.5, TRUE) //THIS MIGHT NEED TWEAKS
 
 	GoIdle()
 
@@ -343,6 +349,9 @@
 			
 			embryo.flags_embryo = flags_embryo
 			flags_embryo = NO_FLAGS
+
+			if(H.species)
+				H.species.larva_impregnated(embryo)
 
 			icon_state = "[initial(icon_state)]_impregnated"
 		target.visible_message(SPAN_DANGER("[src] falls limp after violating [target]'s face!"))

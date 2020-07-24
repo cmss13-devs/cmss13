@@ -210,7 +210,7 @@
 	if (!X.check_state() || X.action_busy)
 		return
 	
-	if (!isXenoOrHuman(A) | matches_hivemind(A, X))
+	if (!isXenoOrHuman(A) || matches_hivemind(A, X))
 		to_chat(X, SPAN_XENOWARNING("You must target a hostile!"))
 		return
 

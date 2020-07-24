@@ -103,12 +103,16 @@
 					playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
 
 			if("hurt")
+				if(M.behavior_delegate && M.behavior_delegate.handle_slash(src))
+					return
+				
 				M.animation_attack_on(src)
 				if(hivenumber == M.hivenumber && !banished)
 					M.visible_message(SPAN_WARNING("\The [M] nibbles \the [src]."), \
 					SPAN_WARNING("You nibble \the [src]."), null, 5, CHAT_TYPE_XENO_FLUFF)
 					return 1
 				else
+					
 					// copypasted from attack_alien.dm
 					//From this point, we are certain a full attack will go out. Calculate damage and modifiers
 					var/damage = get_xeno_damage_slash(src, rand(M.melee_damage_lower, M.melee_damage_upper))

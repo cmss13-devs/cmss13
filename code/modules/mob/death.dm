@@ -77,6 +77,10 @@
 	track_death_calculations()
 	track_mob_death(cause, last_damage_mob)
 
+	if(isXeno(last_damage_mob))
+		var/mob/living/carbon/Xenomorph/X = last_damage_mob
+		X.behavior_delegate.on_kill_mob(src)
+
 	med_hud_set_health()
 	med_hud_set_armor()
 	med_hud_set_status()

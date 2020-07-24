@@ -71,3 +71,13 @@
 // Any special behaviors on reception of a projectile attack
 /datum/behavior_delegate/proc/on_hitby_projectile(ammo)
     return
+
+// Behaviour when killing people
+
+/datum/behavior_delegate/proc/on_kill_mob(mob/M)
+    return
+
+// Handling specific behavior
+
+/datum/behavior_delegate/proc/handle_slash(mob/M)
+    return

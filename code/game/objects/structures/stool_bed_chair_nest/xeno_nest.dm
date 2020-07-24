@@ -17,6 +17,8 @@
 	var/hivenumber = XENO_HIVE_NORMAL
 	layer = RESIN_STRUCTURE_LAYER
 
+	var/force_nest = FALSE
+
 /obj/structure/bed/nest/Initialize(loc, hive)
 	..()
 
@@ -92,7 +94,7 @@
 		to_chat(user, SPAN_WARNING("Gross! You're not touching that stuff."))
 		return
 
-	if(isYautja(M))
+	if(isYautja(M) && !force_nest)
 		to_chat(user, SPAN_WARNING("\The [M] seems to be wearing some kind of resin-resistant armor!"))
 		return
 
@@ -241,3 +243,33 @@
 
 /obj/structure/bed/nest/proc/null_ghost_of_buckled_mob()
 	ghost_of_buckled_mob = null
+
+/obj/structure/bed/nest/structure
+	name = "thick alien nest"
+	desc = "A very thick nest, oozing with a thick sticky substance."
+	layer = ABOVE_SPECIAL_RESIN_STRUCTURE_LAYER
+
+	force_nest = TRUE
+	var/obj/effect/alien/resin/special/nest/linked_structure
+
+/obj/structure/bed/nest/structure/Initialize(var/loc, var/hive, var/obj/effect/alien/resin/special/nest/to_link)
+	. = ..(loc, hive)
+
+	if(to_link)
+		linked_structure = to_link
+		health = linked_structure.health
+
+/obj/structure/bed/nest/structure/Dispose()
+	. = ..()
+	if(linked_structure)
+		linked_structure.pred_nest = null
+		qdel(linked_structure)
+
+		linked_structure = null
+
+/obj/structure/bed/nest/structure/attack_hand(mob/user)
+	if(!isXeno(user))
+		to_chat(user, SPAN_NOTICE("The sticky resin is too strong for you to do anything to this nest"))
+		return FALSE
+	. = ..()
+	

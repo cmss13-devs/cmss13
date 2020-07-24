@@ -19899,7 +19899,6 @@
 /area/shuttle/drop2/sulaco)
 "bfQ" = (
 /obj/item/device/radio/intercom{
-	canhear_range = 7;
 	layer = 3.5;
 	name = "dropship intercom";
 	pixel_x = 21;
@@ -20007,7 +20006,6 @@
 /area/shuttle/drop1/sulaco)
 "bge" = (
 /obj/item/device/radio/intercom{
-	canhear_range = 7;
 	frequency = 1441;
 	layer = 3.5;
 	name = "dropship intercom";
@@ -20951,7 +20949,6 @@
 /area/shuttle/drop2/sulaco)
 "bjW" = (
 /obj/item/device/radio/intercom{
-	canhear_range = 7;
 	name = "dropship intercom";
 	pixel_y = 24
 	},
@@ -20982,7 +20979,6 @@
 /area/shuttle/drop2/sulaco)
 "bjZ" = (
 /obj/item/device/radio/intercom{
-	canhear_range = 7;
 	name = "dropship intercom";
 	pixel_y = 24
 	},
@@ -21089,7 +21085,6 @@
 /area/shuttle/drop1/sulaco)
 "bkl" = (
 /obj/item/device/radio/intercom{
-	canhear_range = 7;
 	frequency = 1441;
 	name = "dropship intercom";
 	pixel_y = 24
@@ -21122,7 +21117,6 @@
 /area/shuttle/drop1/sulaco)
 "bko" = (
 /obj/item/device/radio/intercom{
-	canhear_range = 7;
 	frequency = 1441;
 	name = "dropship intercom";
 	pixel_y = 24
@@ -23315,7 +23309,6 @@
 /area/almayer/hallways/hangar)
 "brZ" = (
 /obj/item/device/radio/intercom{
-	canhear_range = 7;
 	layer = 3.5;
 	name = "normandy dropship intercom";
 	pixel_x = -10
@@ -23331,7 +23324,6 @@
 /area/shuttle/drop2/sulaco)
 "bsb" = (
 /obj/item/device/radio/intercom{
-	canhear_range = 7;
 	layer = 3.5;
 	name = "normandy dropship intercom";
 	pixel_x = 10
@@ -23730,7 +23722,6 @@
 /area/shuttle/drop2/sulaco)
 "btJ" = (
 /obj/item/device/radio/intercom{
-	canhear_range = 7;
 	name = "dropship intercom";
 	pixel_y = 24
 	},
@@ -23788,7 +23779,6 @@
 /area/shuttle/drop1/sulaco)
 "btR" = (
 /obj/item/device/radio/intercom{
-	canhear_range = 7;
 	frequency = 1441;
 	name = "dropship intercom";
 	pixel_y = 24
@@ -33316,7 +33306,6 @@
 /area/almayer/command/cichallway)
 "bYB" = (
 /obj/item/device/radio/intercom{
-	canhear_range = 7;
 	frequency = 1441;
 	name = "dropship intercom";
 	pixel_x = -10
@@ -33339,7 +33328,6 @@
 /area/almayer/hallways/port_hallway)
 "bYF" = (
 /obj/item/device/radio/intercom{
-	canhear_range = 7;
 	frequency = 1441;
 	name = "dropship intercom";
 	pixel_x = 10
@@ -39191,8 +39179,8 @@
 	dir = 4
 	},
 /obj/structure/machinery/sleeper{
-	icon_state = "sleeper_0";
-	dir = 8
+	dir = 8;
+	icon_state = "sleeper_0"
 	},
 /turf/open/floor/almayer{
 	dir = 4;
@@ -39410,8 +39398,8 @@
 	tag = "icon-camera (EAST)"
 	},
 /obj/structure/machinery/bodyscanner{
-	icon_state = "body_scanner_0";
-	dir = 8
+	dir = 8;
+	icon_state = "body_scanner_0"
 	},
 /turf/open/floor/almayer{
 	dir = 4;
@@ -46608,9 +46596,9 @@
 /area/almayer/medical/containment/cell)
 "mab" = (
 /turf/open/floor/almayer/research/containment/entrance{
-	tag = "icon-containment_entrance (WEST)";
+	dir = 4;
 	icon_state = "containment_entrance";
-	dir = 4
+	tag = "icon-containment_entrance (WEST)"
 	},
 /area/almayer/medical/containment/cell)
 "maw" = (
@@ -47310,8 +47298,8 @@
 /area/almayer/shipboard/firing_range_north)
 "mNI" = (
 /obj/structure/machinery/door/window/westleft{
-	icon_state = "left";
-	dir = 2
+	dir = 2;
+	icon_state = "left"
 	},
 /obj/structure/machinery/shower,
 /obj/item/tool/soap,
@@ -48358,8 +48346,8 @@
 /area/almayer/engineering/upper_engineering)
 "nPE" = (
 /obj/structure/machinery/body_scanconsole{
-	icon_state = "body_scannerconsole";
-	dir = 8
+	dir = 8;
+	icon_state = "body_scannerconsole"
 	},
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
@@ -48771,8 +48759,8 @@
 /area/almayer/shipboard/chief_mp_office)
 "oqZ" = (
 /obj/structure/machinery/sleep_console{
-	icon_state = "sleeperconsole";
-	dir = 8
+	dir = 8;
+	icon_state = "sleeperconsole"
 	},
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
@@ -53189,8 +53177,8 @@
 /area/almayer/shipboard/weapon_room)
 "tvh" = (
 /obj/structure/disposalpipe/junction{
-	icon_state = "pipe-j1";
-	dir = 1
+	dir = 1;
+	icon_state = "pipe-j1"
 	},
 /turf/closed/wall/almayer/white,
 /area/almayer/medical/containment)

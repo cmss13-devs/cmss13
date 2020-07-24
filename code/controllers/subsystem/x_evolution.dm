@@ -39,7 +39,7 @@ var/datum/subsystem/xevolution/SSxevolution
 			boost_power_new = Floor(10 * (world.time - XENO_ROUNDSTART_PROGRESS_TIME_2 - ticker.game_start_time) / EVOLUTION_INCREMENT_TIME) / 10
 
 			//Add on any bonuses from evopods after applying upgrade progress
-			boost_power_new += (0.2 * HS.has_special_structure(XENO_STRUCTURE_EVOPOD))
+			boost_power_new += (0.5 * HS.has_special_structure(XENO_STRUCTURE_EVOPOD))
 
 		boost_power_new = Clamp(boost_power_new, BOOST_POWER_MIN, BOOST_POWER_MAX)
 

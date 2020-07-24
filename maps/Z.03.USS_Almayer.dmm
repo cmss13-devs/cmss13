@@ -6199,6 +6199,18 @@
 	tag = "icon-red (NORTHEAST)"
 	},
 /area/almayer/shipboard/brig)
+"apA" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 2.5;
+	tag = "icon-W"
+	},
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "orange";
+	tag = "icon-orange (WEST)"
+	},
+/area/almayer/engineering/engineering_workshop/hangar)
 "apB" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -32419,7 +32431,7 @@
 	dir = 5;
 	tag = "icon-intact-supply (NORTHEAST)"
 	},
-/turf/open/floor/almayer,
+/turf/open/floor/plating/plating_catwalk,
 /area/almayer/engineering/engineering_workshop/hangar)
 "bVq" = (
 /obj/structure/machinery/light,
@@ -33433,6 +33445,18 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/engineering/engine_core)
+"bYT" = (
+/obj/structure/closet/secure_closet/freezer/industry,
+/obj/item/reagent_container/glass/beaker/silver,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	tag = "icon-S"
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/engineering/engineering_workshop/hangar)
 "bYU" = (
 /turf/open/floor/almayer{
 	icon_state = "orange";
@@ -38045,10 +38069,10 @@
 	},
 /area/almayer/squads/delta)
 "cok" = (
-/obj/structure/closet/secure_closet/engineering_materials,
 /turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
+	dir = 5;
+	icon_state = "plating";
+	tag = "icon-blue (NORTHEAST)"
 	},
 /area/almayer/engineering/engineering_workshop/hangar)
 "coo" = (
@@ -38804,6 +38828,9 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/living/gym)
+"cWm" = (
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/engineering/engineering_workshop/hangar)
 "cWr" = (
 /obj/structure/pipes/vents/pump/on,
 /turf/open/floor/almayer,
@@ -38986,6 +39013,34 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/command/computerlab)
+"djp" = (
+/obj/structure/closet/crate,
+/obj/item/stack/sheet/mineral/plastic{
+	amount = 5
+	},
+/obj/item/stack/sheet/glass{
+	amount = 50;
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/obj/item/stack/sheet/metal{
+	amount = 50
+	},
+/obj/item/stack/sheet/plasteel{
+	amount = 30;
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/obj/effect/decal/warning_stripes{
+	tag = "icon-S";
+	icon_state = "S"
+	},
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/almayer{
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
+	},
+/area/almayer/engineering/engineering_workshop/hangar)
 "djM" = (
 /obj/structure/table/almayer,
 /obj/structure/machinery/reagentgrinder/industrial{
@@ -43249,10 +43304,6 @@
 	icon_state = "S";
 	tag = "icon-S"
 	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	tag = "icon-N"
-	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
 	tag = "icon-intact-supply (EAST)"
@@ -43602,29 +43653,6 @@
 	tag = "icon-redfull"
 	},
 /area/almayer/shipboard/firing_range_south)
-"iKL" = (
-/obj/structure/closet/crate,
-/obj/item/stack/sheet/mineral/plastic{
-	amount = 5
-	},
-/obj/item/stack/sheet/glass{
-	amount = 50;
-	pixel_x = 3;
-	pixel_y = 3
-	},
-/obj/item/stack/sheet/metal{
-	amount = 50
-	},
-/obj/item/stack/sheet/plasteel{
-	amount = 30;
-	pixel_x = 4;
-	pixel_y = 4
-	},
-/turf/open/floor/almayer{
-	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
-	},
-/area/almayer/engineering/engineering_workshop/hangar)
 "iLq" = (
 /obj/structure/pipes/vents/scrubber{
 	dir = 1
@@ -43848,10 +43876,6 @@
 /area/almayer/living/tankerbunks)
 "iYv" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	tag = "icon-N"
-	},
-/obj/effect/decal/warning_stripes{
 	icon_state = "SE-out";
 	tag = "icon-SE-out"
 	},
@@ -43940,11 +43964,6 @@
 	},
 /area/almayer/shipboard/brig)
 "jcK" = (
-/obj/item/device/radio/intercom{
-	freerange = 1;
-	name = "General Listening Channel";
-	pixel_y = 28
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	tag = "icon-N"
@@ -45107,6 +45126,17 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/powered)
+"krk" = (
+/obj/structure/closet/secure_closet/engineering_materials,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	tag = "icon-S"
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/engineering/engineering_workshop/hangar)
 "krp" = (
 /obj/structure/table/almayer,
 /obj/item/storage/box/cups,
@@ -45405,12 +45435,16 @@
 	icon_state = "S";
 	tag = "icon-S"
 	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	tag = "icon-N"
-	},
 /obj/structure/machinery/power/apc/almayer{
 	dir = 8
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	tag = "icon-W"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	tag = "icon-SW-out"
 	},
 /turf/open/floor/almayer{
 	dir = 5;
@@ -45526,10 +45560,6 @@
 	},
 /area/almayer/command/corporateliason)
 "kQo" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "NW-out";
-	tag = "icon-NW-out"
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
 	tag = "icon-SW-out"
@@ -45726,6 +45756,14 @@
 /obj/effect/landmark/shuttle_loc/marine_crs/dropship,
 /turf/closed/wall/almayer,
 /area/almayer/engineering/engineering_workshop/hangar)
+"lcV" = (
+/obj/structure/largecrate/random/case,
+/obj/structure/machinery/light,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hallways/hangar)
 "ldi" = (
 /obj/structure/filingcabinet,
 /turf/open/floor/almayer{
@@ -46103,16 +46141,6 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/cryo_cells)
-"lwn" = (
-/obj/structure/rack,
-/obj/item/reagent_container/spray,
-/obj/item/reagent_container/spray,
-/obj/item/reagent_container/spray,
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/almayer/engineering/engineering_workshop/hangar)
 "lwJ" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -46496,11 +46524,14 @@
 /turf/open/floor/wood,
 /area/almayer/shipboard/brig_cells)
 "lSt" = (
-/obj/structure/closet/secure_closet/freezer/industry,
-/obj/item/reagent_container/glass/beaker/silver,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	tag = "icon-W"
+	},
 /turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
+	dir = 5;
+	icon_state = "plating";
+	tag = "icon-blue (NORTHEAST)"
 	},
 /area/almayer/engineering/engineering_workshop/hangar)
 "lSS" = (
@@ -47013,6 +47044,14 @@
 	tag = "icon-silvercorner (NORTH)"
 	},
 /area/almayer/hallways/aft_hallway)
+"mxc" = (
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	name = "General Listening Channel";
+	pixel_y = 28
+	},
+/turf/open/floor/almayer,
+/area/almayer/engineering/engineering_workshop/hangar)
 "mxT" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -48348,10 +48387,6 @@
 /area/almayer/squads/req)
 "nQT" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	tag = "icon-N"
-	},
-/obj/effect/decal/warning_stripes{
 	icon_state = "SE-out";
 	tag = "icon-SE-out"
 	},
@@ -49654,6 +49689,36 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/hallways/starboard_hallway)
+"pGN" = (
+/obj/structure/closet/crate,
+/obj/item/stack/sheet/aluminum{
+	amount = 20
+	},
+/obj/item/stack/sheet/copper{
+	amount = 20;
+	pixel_y = 4
+	},
+/obj/item/stack/sheet/mineral/gold{
+	amount = 3;
+	pixel_y = 4
+	},
+/obj/item/stack/sheet/mineral/silver{
+	amount = 5;
+	pixel_x = 4;
+	pixel_y = 2
+	},
+/obj/item/stack/sheet/mineral/phoron{
+	amount = 25
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	tag = "icon-S"
+	},
+/turf/open/floor/almayer{
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
+	},
+/area/almayer/engineering/engineering_workshop/hangar)
 "pIf" = (
 /obj/structure/disposalpipe/junction{
 	dir = 8;
@@ -53007,7 +53072,7 @@
 	dir = 9;
 	tag = "icon-intact-supply (NORTHWEST)"
 	},
-/turf/open/floor/almayer,
+/turf/open/floor/plating/plating_catwalk,
 /area/almayer/engineering/engineering_workshop/hangar)
 "tpR" = (
 /obj/structure/machinery/light/small{
@@ -53781,6 +53846,10 @@
 	tag = "icon-red (NORTHEAST)"
 	},
 /area/almayer/shipboard/chief_mp_office)
+"uku" = (
+/obj/structure/window/framed/almayer/requisitions,
+/turf/open/floor/plating,
+/area/almayer/engineering/engineering_workshop/hangar)
 "ukW" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
@@ -54246,6 +54315,20 @@
 	tag = "icon-orangecorner"
 	},
 /area/almayer/hallways/starboard_hallway)
+"uRr" = (
+/obj/structure/rack,
+/obj/item/reagent_container/spray,
+/obj/item/reagent_container/spray,
+/obj/item/reagent_container/spray,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	tag = "icon-S"
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/engineering/engineering_workshop/hangar)
 "uRv" = (
 /obj/structure/machinery/vending/marineFood,
 /turf/open/floor/almayer{
@@ -54803,32 +54886,6 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer,
 /area/almayer/squads/alpha/req)
-"vxY" = (
-/obj/structure/closet/crate,
-/obj/item/stack/sheet/aluminum{
-	amount = 20
-	},
-/obj/item/stack/sheet/copper{
-	amount = 20;
-	pixel_y = 4
-	},
-/obj/item/stack/sheet/mineral/gold{
-	amount = 3;
-	pixel_y = 4
-	},
-/obj/item/stack/sheet/mineral/silver{
-	amount = 5;
-	pixel_x = 4;
-	pixel_y = 2
-	},
-/obj/item/stack/sheet/mineral/phoron{
-	amount = 25
-	},
-/turf/open/floor/almayer{
-	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
-	},
-/area/almayer/engineering/engineering_workshop/hangar)
 "vyg" = (
 /turf/open/floor/almayer{
 	dir = 1;
@@ -73861,7 +73918,7 @@ aYt
 aTc
 bHB
 aTc
-bcm
+cmp
 cmp
 cmp
 cmp
@@ -74064,8 +74121,8 @@ aYu
 bcb
 bHB
 aTc
-aXg
 cmp
+bYT
 lSt
 kHk
 wEN
@@ -74267,8 +74324,8 @@ aTc
 bcc
 bHB
 aTc
-aXg
 cmp
+krk
 cok
 nQT
 bTY
@@ -74469,10 +74526,10 @@ bEA
 baH
 bGE
 bHB
-btO
-bLD
+bSq
 cmp
-lwn
+uRr
+cok
 idV
 kSC
 bVf
@@ -74672,10 +74729,10 @@ baI
 bFI
 bGF
 bHB
-btO
-bSq
+aTc
 cmp
-vxY
+pGN
+cok
 iYv
 bTY
 bVh
@@ -74875,10 +74932,10 @@ baI
 bFJ
 bGG
 bHB
-btO
 aTc
 cmp
-iKL
+djp
+cok
 idV
 rlg
 dDR
@@ -75078,10 +75135,10 @@ baI
 bFK
 bGH
 bHB
-btO
 aTc
 cmp
 cmp
+uku
 kQo
 cmp
 cmp
@@ -75281,10 +75338,10 @@ bEB
 bFL
 bGI
 bHB
-btO
 aTc
 cmp
 bTz
+bWM
 gwW
 qfX
 bVj
@@ -75484,10 +75541,10 @@ baI
 baI
 bGF
 bHB
-btO
 aTc
 cmp
 sbP
+cWm
 urg
 shd
 bVp
@@ -75687,10 +75744,10 @@ baI
 baI
 bGG
 bHB
-btO
 aTc
 cmp
 raA
+fIW
 fIW
 jgS
 gwW
@@ -75890,11 +75947,11 @@ baI
 baI
 bGH
 bHB
-btO
-aTc
+bSq
 cmp
 xJb
 hKQ
+bWM
 cAg
 oeM
 djM
@@ -76093,11 +76150,11 @@ bEC
 bFM
 bGI
 bHB
-btO
-bSq
+aTc
 cmp
 liK
 hKQ
+bWM
 ntA
 pVX
 hKV
@@ -76296,11 +76353,11 @@ baI
 bFN
 bGF
 bHB
-btO
 aTc
 cmp
 cmp
 cmp
+mxc
 jcK
 pVX
 bWS
@@ -76499,11 +76556,11 @@ baI
 bFO
 bGG
 bHB
-btO
 aTc
 cmp
 fiq
 ueF
+bWM
 wxO
 oeM
 gQl
@@ -76702,10 +76759,10 @@ baI
 baI
 bGH
 bHB
-btO
 aTc
 cmG
 bTI
+apA
 gbf
 rcW
 gwW
@@ -76905,10 +76962,10 @@ bED
 baM
 bcb
 bHB
-btO
 aTc
 cmG
 tNE
+cWm
 cRr
 shd
 tpp
@@ -77108,8 +77165,8 @@ aZM
 aTc
 bcc
 bHB
-btO
 aTc
+cmp
 urx
 bTL
 gwW
@@ -77311,8 +77368,8 @@ bEE
 baO
 bcl
 bHB
-btO
 aTc
+aXg
 mod
 siH
 plv
@@ -77515,7 +77572,7 @@ aYt
 aTc
 bHB
 btO
-aTc
+lcV
 cmp
 mTn
 gwW

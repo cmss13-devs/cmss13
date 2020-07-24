@@ -8,8 +8,8 @@
 	barricade_resistance = 10
 	stack_type = /obj/item/stack/sheet/metal
 	debris = list(/obj/item/stack/sheet/metal)
-	stack_amount = 10
-	destroyed_stack_amount = 5
+	stack_amount = 5
+	destroyed_stack_amount = 2
 	barricade_hitsound = "sound/effects/metalhit.ogg"
 	barricade_type = "metal"
 	can_wire = TRUE
@@ -212,6 +212,8 @@
 
 
 /obj/structure/barricade/metal/wired/New()
+	maxhealth += 50
+	update_health(-50)
 	can_wire = FALSE
 	is_wired = TRUE
 	climbable = FALSE

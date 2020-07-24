@@ -516,7 +516,7 @@
 	name = "reinforced table"
 	desc = "A square metal surface resting on four legs. This one has side panels, making it useful as a desk, but impossible to flip."
 	icon_state = "reinftable"
-	health = 200
+	health = 140
 	var/status = 2
 	reinforced = TRUE
 	table_prefix = "reinf"

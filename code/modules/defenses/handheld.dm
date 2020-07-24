@@ -12,7 +12,7 @@
 
 	indestructible = TRUE
 	var/defense_type = /obj/structure/machinery/defenses
-	var/deployment_time = 20
+	var/deployment_time = SECONDS_3
 
 /obj/item/defenses/handheld/examine(mob/user)
 	. = ..()
@@ -72,7 +72,6 @@
 	name = "handheld 21S tesla coil"
 	icon_state = "tesla_coil_handheld"
 	defense_type = /obj/structure/machinery/defenses/tesla_coil
-	deployment_time = 10
 
 /obj/item/defenses/handheld/bell_tower
 	name = "handheld R-1NG bell tower"
@@ -83,4 +82,4 @@
 	name = "handheld JIMA planted flag"
 	icon_state = "planted_flag_handheld"
 	defense_type = /obj/structure/machinery/defenses/planted_flag
-	deployment_time = 10
+	deployment_time = SECONDS_1

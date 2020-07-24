@@ -208,7 +208,7 @@
 		qdel(src)
 
 /obj/structure/machinery/defenses/proc/damaged_action(var/damage)
-	if(prob(5 + round(damage/5)))
+	if(health < health_max * 0.15)
 		visible_message(SPAN_DANGER("[htmlicon(src, viewers(src))] The [name] cracks and breaks apart!"))
 		stat |= DEFENSE_DAMAGED
 		turned_on = FALSE

@@ -2,8 +2,8 @@
 	name = "portable composite barricade"
 	desc = "A plasteel-carbon composite barricade. Resistant to most acids while being simple to repair. There are two pushplates that allow this barricade to fold into a neat package. Use a blowtorch to repair."
 	icon_state = "folding_0"
-	health = 400
-	maxhealth = 400
+	health = 350
+	maxhealth = 350
 	crusher_resistant = TRUE
 	barricade_resistance = 15
 	barricade_hitsound = "sound/effects/metalhit.ogg"
@@ -106,8 +106,8 @@
 /obj/item/folding_barricade
 	name = "MB-6 Folding Barricade"
 	desc = "A folding barricade that can be used to quickly deploy an all-round resistant barricade."
-	health = 400
-	var/maxhealth = 400
+	health = 350
+	var/maxhealth = 350
 	w_class = SIZE_LARGE
 	flags_equip_slot = SLOT_BACK
 	icon_state = "folding"
@@ -130,7 +130,7 @@
 	user.visible_message(SPAN_NOTICE("[user] begins deploying [src]."),
 			SPAN_NOTICE("You begin deploying [src]."))
 	playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
-	if(!do_after(user, 5, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+	if(!do_after(user, SECONDS_2, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		return
 	user.visible_message(SPAN_NOTICE("[user] has finished deploying [src]."),
 			SPAN_NOTICE("You finish deploying [src]."))

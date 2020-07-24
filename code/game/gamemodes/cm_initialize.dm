@@ -206,7 +206,7 @@ Additional game mode variables.
 		log_debug("Null client in transform_predator.")
 		return
 
-	var/mob/living/carbon/human/new_predator
+	var/mob/living/carbon/human/yautja/new_predator
 	var/wants_elder = 0
 	var/wants_leader = 0
 	if(RoleAuthority.roles_whitelist[pred_candidate.ckey] & WHITELIST_YAUTJA_ELDER)

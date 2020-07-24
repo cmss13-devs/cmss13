@@ -123,7 +123,8 @@ def generate_changelogs(pid, branch, pat):
     working_branch.save_latest_mr_date(MR_DATES_FILE)
 
 if __name__ == "__main__":
-    PID = environ["GITLAB_CHANGELOG_PID"]
-    PAT = environ["GITLAB_CHANGELOG_PAT"]
+    if argv[2] is None:
+        PID = environ["GITLAB_CHANGELOG_PID"]
+        PAT = environ["GITLAB_CHANGELOG_PAT"]
 
-    generate_changelogs(PID, argv[1], PAT)
+    generate_changelogs(argv[2], argv[1], argv[3])

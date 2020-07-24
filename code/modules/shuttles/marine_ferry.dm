@@ -28,7 +28,7 @@
 	//For now it's just one location all around, but that can be adjusted.
 	var/locs_dock = list()
 	var/locs_move = list()
-	var/locs_land = list()
+	var/list/locs_land = list()
 	//Could be a list, but I don't see a reason considering shuttles aren't bloated with variables.
 	var/sound_target = 136//Where the sound will originate from. Must be a list index, usually the center bottom (engines).
 	var/sound/sound_takeoff	= 'sound/effects/engine_startup.ogg'//Takeoff sounds.
@@ -159,13 +159,17 @@
 	var/src_rot = locs_dock[T_src]
 	var/turf/T_int = pick(locs_move)//int stands for interim
 	var/int_rot = locs_move[T_int]
-	var/turf/T_trg = pick(locs_land)
-	var/trg_rot = locs_land[T_trg]
+	var/turf/T_trg
+	var/trg_rot
+	if(!locs_land.len) // We check here as well to make sure that the order of operations/lag/changing it after launch. Wont mess this up.
+		transit_gun_mission = 1
 
 	if(transit_gun_mission)//gun mission makes you land back where you started.
 		T_trg = T_src
 		trg_rot = src_rot
-
+	else
+		T_trg = pick(locs_land)
+		trg_rot = locs_land[T_trg]
 	if(!istype(T_src) || !istype(T_int) || !istype(T_trg))
 		message_admins(SPAN_WARNING("Error with shuttles: Reference turfs not correctly instantiated. Code: MSD02.\n <font size=10>WARNING: DROPSHIP LAUNCH WILL FAIL</font>"))
 

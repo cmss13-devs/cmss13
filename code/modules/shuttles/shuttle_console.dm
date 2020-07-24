@@ -207,7 +207,11 @@
 		if(ticker.mode.active_lz != src && !onboard && isXenoQueen(usr))
 			to_chat(usr, SPAN_WARNING("The shuttle isn't responding to prompts, it looks like this isn't the primary shuttle."))
 			return
-
+		if(istype(shuttle, /datum/shuttle/ferry/marine))
+			var/datum/shuttle/ferry/marine/s = shuttle
+			if(!s.locs_land.len && !s.transit_gun_mission)
+				to_chat(usr, SPAN_WARNING("There is no suitable LZ for this shuttle. Flight configuration changed to fire-mission."))
+				s.transit_gun_mission = 1
 		if(shuttle.moving_status == SHUTTLE_IDLE) //Multi consoles, hopefully this will work
 
 			if(shuttle.locked) return

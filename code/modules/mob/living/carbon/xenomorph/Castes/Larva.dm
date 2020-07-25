@@ -77,7 +77,7 @@
 	var/progress_amount = 1
 
 	if(hive)
-		progress_amount += (0.2 * hive.has_special_structure(XENO_STRUCTURE_EVOPOD))
+		progress_amount += (0.5 * hive.has_special_structure(XENO_STRUCTURE_EVOPOD))
 
 	if(amount_grown < max_grown)
 		amount_grown = min(max_grown, amount_grown + progress_amount)

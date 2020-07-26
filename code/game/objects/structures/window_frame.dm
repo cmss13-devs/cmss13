@@ -8,6 +8,8 @@
 	throwpass = TRUE
 	climbable = 1 //Small enough to vault over, but you do need to vault over it
 	climb_delay = 15 //One second and a half, gotta vault fast
+	health = 200
+	var/max_health = 200
 	var/obj/item/stack/sheet/sheet_type = /obj/item/stack/sheet/glass/reinforced
 	var/obj/structure/window/framed/almayer/window_type = /obj/structure/window/framed/almayer
 	var/basestate = "window"
@@ -131,7 +133,30 @@
 	else
 		. = ..()
 
+/obj/structure/window_frame/attack_alien(mob/living/carbon/Xenomorph/user)
+	if(!reinforced && user.claw_type >= CLAW_TYPE_SHARP)
+		user.animation_attack_on(src)
+		playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
+		take_damage((max_health / XENO_HITS_TO_DESTROY_WINDOW_FRAME) + 1)
+		return
+	else if (reinforced && user.claw_type >= CLAW_TYPE_VERY_SHARP)
+		user.animation_attack_on(src)
+		playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
+		take_damage((max_health / XENO_HITS_TO_DESTROY_R_WINDOW_FRAME) + 1)
+		return
 
+	. = ..()
+
+/obj/structure/window_frame/proc/take_damage(var/damage)
+	health = max(0, (health - damage))
+	health = min(health, max_health)
+
+	if(health <= 0)
+		destroy()
+
+/obj/structure/window_frame/destroy()
+	new buildstacktype(loc, buildstackamount)
+	qdel(src)
 
 /obj/structure/window_frame/almayer
 	icon_state = "alm_window0_frame"

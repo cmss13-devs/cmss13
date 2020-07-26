@@ -20,6 +20,7 @@
 	P.speed_modifier += XENO_SPEED_MODIFIER_FASTER
 	P.evasion_modifier += XENO_EVASION_MOD_VERYLARGE // Best in game evasion.
 	P.plasma_types = list(PLASMA_CATECHOLAMINE)
+	P.claw_type = CLAW_TYPE_VERY_SHARP
 
 	mutator_update_actions(P)
 	MS.recalculate_actions(description, flavor_description)

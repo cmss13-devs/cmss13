@@ -10,6 +10,15 @@
 #define TUNNEL_ENTER_BIG_XENO_DELAY 120
 #define TUNNEL_ENTER_LARVA_DELAY 10
 
+// Determines how xenos interact with walls, normal nothing, sharp can destroy normal walls and window frame, very sharp reinforced ones.
+#define CLAW_TYPE_NORMAL 		1
+#define CLAW_TYPE_SHARP 		2
+#define CLAW_TYPE_VERY_SHARP 	3
+
+#define XENO_HITS_TO_DESTROY_WALL			10
+#define XENO_HITS_TO_DESTROY_WINDOW_FRAME 	3
+#define XENO_HITS_TO_DESTROY_R_WINDOW_FRAME	5
+
 #define RESIN_WALL 1
 #define RESIN_DOOR 2
 #define RESIN_MEMBRANE 4

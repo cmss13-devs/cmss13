@@ -46,6 +46,7 @@
 	)
 	
 	mutation_type = WARRIOR_NORMAL
+	claw_type = CLAW_TYPE_SHARP
 
 /mob/living/carbon/Xenomorph/Warrior/update_icons()
 	if (stat == DEAD)

@@ -44,6 +44,7 @@
 		/mob/living/carbon/Xenomorph/proc/vent_crawl,
 		)
 	mutation_type = LURKER_NORMAL
+	claw_type = CLAW_TYPE_SHARP
 
 /mob/living/carbon/Xenomorph/Lurker/update_icons()
 	if(!caste)

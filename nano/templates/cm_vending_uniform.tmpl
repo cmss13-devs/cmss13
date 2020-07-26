@@ -1,7 +1,8 @@
+{{:helper.USCMMode()}}
 <div itemLabel>
 	{{for data.displayed_records}}
 		{{if value.prod_color}}
-			<div style="padding-top: 5px; float: left; clear: both>
+			<div style="padding-top: 5px ; font-weight: bold ; float: left ; clear : both ">
 				{{:helper.link(value.prod_name, null, {'vend' : value.prod_path}, value.prod_available ? null : 'disabled', 'vendButton')}}
 			</div>
 		{{else}}

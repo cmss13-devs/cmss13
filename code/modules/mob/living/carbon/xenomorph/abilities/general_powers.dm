@@ -5,8 +5,12 @@
 // Plant weeds
 /datum/action/xeno_action/onclick/plant_weeds/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
-	if(!X.check_state()) return
-	if(X.burrow) return
+	if(!action_cooldown_check())
+		return
+	if(!X.check_state()) 
+		return
+	if(X.burrow) 
+		return
 
 	var/turf/T = X.loc
 
@@ -39,6 +43,8 @@
 		new /obj/effect/alien/weeds/node(X.loc, src, X)
 
 		playsound(X.loc, "alien_resin_build", 25)
+
+	apply_cooldown()
 		
 	..()
 	return

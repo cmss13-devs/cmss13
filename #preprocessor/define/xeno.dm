@@ -88,12 +88,10 @@
 #define XVX_STUN_LENGTHMULT 1.25
 
 // Weed defines
-#define WEED_LEVEL_STANDARD  1
-#define WEED_LEVEL_QUEEN     4
-#define WEED_LEVEL_HIVE      5
+#define WEED_LEVEL_STANDARD  1.5
+#define WEED_LEVEL_HIVE      4
 
 #define WEED_RANGE_STANDARD  3
-#define WEED_RANGE_QUEEN     4
 #define WEED_RANGE_PYLON     5
 #define WEED_RANGE_CORE      7
 

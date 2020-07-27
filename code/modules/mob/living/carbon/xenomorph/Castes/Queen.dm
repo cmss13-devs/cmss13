@@ -22,7 +22,7 @@
 	can_hold_facehuggers = 0
 	can_hold_eggs = CAN_HOLD_ONE_HAND
 	acid_level = 2
-	weed_level = 3
+	weed_level = WEED_LEVEL_STANDARD
 
 	spit_delay = 25
 	tackle_chance = 50

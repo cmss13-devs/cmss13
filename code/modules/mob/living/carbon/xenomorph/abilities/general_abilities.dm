@@ -14,6 +14,7 @@
 	plasma_cost = 75
 	macro_path = /datum/action/xeno_action/verb/verb_plant_weeds
 	action_type = XENO_ACTION_CLICK
+	xeno_cooldown = 10
 
 // Resting
 /datum/action/xeno_action/onclick/xeno_resting

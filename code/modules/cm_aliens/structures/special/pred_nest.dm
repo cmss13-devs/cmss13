@@ -13,6 +13,8 @@
 
     delete_on_hijack = FALSE
 
+    block_range = 2
+
 /obj/effect/alien/resin/special/nest/examine(mob/user)
     ..()
     if((isXeno(user) || isobserver(user)) && linked_hive)

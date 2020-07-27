@@ -378,6 +378,9 @@
 /mob/living/carbon/Xenomorph/proc/check_alien_construction(var/turf/current_turf)
 	var/has_obstacle
 	for(var/obj/O in current_turf)
+		if(istype(O, /obj/effect/build_blocker))
+			to_chat(src, SPAN_WARNING("This is too close to a special structure!"))
+			return
 		if(istype(O, /obj/item/clothing/mask/facehugger))
 			to_chat(src, SPAN_WARNING("There is a little one here already. Best move it."))
 			return

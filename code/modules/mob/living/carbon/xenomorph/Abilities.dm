@@ -351,16 +351,21 @@
 
 
 	if(structure_template.requires_node)
-		for(var/turf/TA in (range(T, 1)))
-			if(TA.density || !X.check_alien_construction(TA))
+		for(var/turf/TA in range(T, structure_template.block_range))
+			if(TA.density)
 				to_chat(X, SPAN_WARNING("You need more open space to build here."))
 				qdel(structure_template)
 				return FALSE
-			var/obj/effect/alien/weeds/alien_weeds = locate() in T
-			if(!alien_weeds || alien_weeds.weed_strength < WEED_LEVEL_HIVE || alien_weeds.linked_hive.hivenumber != X.hivenumber)
-				to_chat(X, SPAN_WARNING("You can only shape on [lowertext(hive_datum[X.hivenumber].prefix)]hive weeds. Find a hive node or core before you start building!"))
-				qdel(structure_template)
-				return FALSE
+
+		if(!X.check_alien_construction(T))
+			to_chat(X, SPAN_WARNING("You need more open space to build here."))
+			qdel(structure_template)
+			return FALSE
+		var/obj/effect/alien/weeds/alien_weeds = locate() in T
+		if(!alien_weeds || alien_weeds.weed_strength < WEED_LEVEL_HIVE || alien_weeds.linked_hive.hivenumber != X.hivenumber)
+			to_chat(X, SPAN_WARNING("You can only shape on [lowertext(hive_datum[X.hivenumber].prefix)]hive weeds. Find a hive node or core before you start building!"))
+			qdel(structure_template)
+			return FALSE
 
 	X.use_plasma(400)
 	X.place_construction(T, structure_template)

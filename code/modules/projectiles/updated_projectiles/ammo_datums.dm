@@ -1428,7 +1428,7 @@
 
 /datum/ammo/energy/yautja/rifle/bolt/New()
 	..()
-	damage = config.med_hit_damage
+	damage = config.high_hit_damage
 
 /datum/ammo/energy/yautja/rifle/blast
 	name = "plasma rifle blast"
@@ -1442,6 +1442,7 @@
 /datum/ammo/energy/yautja/rifle/blast/on_hit_mob(mob/M,obj/item/projectile/P)
 	knockback(M,P)
 	playsound(M.loc, 'sound/weapons/pulse.ogg', 25, 1)
+	explosion(get_turf(M), -1, -1, 2, -1, P.weapon_source, P.weapon_source_mob)
 
 /datum/ammo/energy/yautja/rifle/blast/on_hit_turf(turf/T,obj/item/projectile/P)
 	explosion(T, -1, -1, 2, -1, P.weapon_source, P.weapon_source_mob)

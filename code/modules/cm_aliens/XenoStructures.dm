@@ -7,11 +7,6 @@
 	icon = 'icons/mob/xenos/Effects.dmi'
 	unacidable = TRUE
 	health = 1
-
-/obj/effect/alien/flamer_fire_act()
-	health -= 50
-	if(health < 0) qdel(src)
-
 /*
  * Resin
  */
@@ -27,6 +22,10 @@
 	if(health <= 0)
 		density = 0
 		qdel(src)
+
+/obj/effect/alien/resin/flamer_fire_act()
+	health -= 50
+	healthcheck()
 
 /obj/effect/alien/resin/bullet_act(var/obj/item/projectile/Proj)
 	health -= Proj.damage

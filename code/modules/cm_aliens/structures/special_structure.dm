@@ -35,10 +35,21 @@
 	var/datum/hive_status/linked_hive
 	var/delete_on_hijack = TRUE
 
+
+	var/list/blocks = list()
+
+	var/block_range = 1
+
 /obj/effect/alien/resin/special/New(loc, var/hive_ref)
 	..()
 
 	maxhealth = health
+
+	for(var/turf/T in range(block_range, src))
+		var/obj/effect/build_blocker/SP = new(T)
+		SP.linked_structure = src
+
+		blocks.Add(SP)
 
 	if(hive_ref)
 		linked_hive = hive_ref
@@ -59,8 +70,25 @@
 			xeno_message("Hive: \A [name] has been destroyed at [sanitize(get_area(src))]!", 3, linked_hive.hivenumber)
 	linked_hive = null
 	fast_objects.Remove(src)
+
+	for(var/obj/effect/build_blocker/SP in blocks)
+		blocks -= SP
+		SP.linked_structure = null
+		qdel(SP)
+
 	. = ..()
 
 /obj/effect/alien/resin/special/attack_alien(mob/living/carbon/Xenomorph/M)
 	if(M.can_destroy_special() || M.hivenumber != linked_hive.hivenumber)
 		return ..()
+
+/obj/effect/build_blocker
+	health = 500000
+
+	unacidable = TRUE
+	indestructible = TRUE
+	invisibility = 101
+
+	alpha = 0
+
+	var/obj/effect/alien/resin/special/linked_structure

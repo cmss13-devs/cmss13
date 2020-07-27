@@ -8,6 +8,8 @@
 	var/datum/hive_status/hive_ref //Who gets what we build
 	var/requires_node = TRUE
 
+	var/block_range = 1
+
 /datum/construction_template/xenomorph/complete() //Override because we need to pass the hive ref
 	if(!build_loc)
 		log_debug("Constuction template ([name]) completed construction without a build location")
@@ -60,6 +62,8 @@
 	build_type = /obj/effect/alien/resin/special/nest
 	build_icon = 'icons/mob/xenos/structures48x48.dmi'
 	build_icon_state = "reinforced_nest"
+
+	block_range = 2
 
 	pixel_y = -8
 	pixel_x = -8

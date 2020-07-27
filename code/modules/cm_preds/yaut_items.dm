@@ -434,6 +434,10 @@
 
 	if(!usr || usr.stat || usr.z != SURFACE_Z_LEVEL)
 		return
+
+	if(istype(usr.buckled, /obj/structure/bed/nest/))
+		return
+
 	if(loc && istype(usr.loc, /turf))
 		var/turf/location = usr.loc
 		yautja_teleport_loc += location

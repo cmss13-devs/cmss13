@@ -3,14 +3,6 @@
 	action_icon_state = "xeno_deevolve"
 	plasma_cost = 500
 
-/datum/action/xeno_action/onclick/show_minimap
-	name = "Show Minimap"
-	action_icon_state = "agility_on"
-	plasma_cost = 0
-	macro_path = /datum/action/xeno_action/verb/verb_show_minimap
-	action_type = XENO_ACTION_CLICK
-
-
 /datum/action/xeno_action/onclick/remove_eggsac
 	name = "Remove Eggsac"
 	action_icon_state = "grow_ovipositor"

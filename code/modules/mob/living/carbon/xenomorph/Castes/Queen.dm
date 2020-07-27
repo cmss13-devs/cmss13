@@ -167,9 +167,6 @@
 	..()
 
 	if(stat != DEAD)
-		if(map_view)
-			src << browse_rsc(xeno_mapview_overlay, "xeno_minimap.png")
-
 		if(++breathing_counter >= rand(12, 17)) //Increase the breathing variable each tick. Play it at random intervals.
 			playsound(loc, pick('sound/voice/alien_queen_breath1.ogg', 'sound/voice/alien_queen_breath2.ogg'), 15, 1, 4)
 			breathing_counter = 0 //Reset the counter
@@ -509,7 +506,6 @@
 		/datum/action/xeno_action/onclick/queen_order,\
 		/datum/action/xeno_action/activable/place_construction,\
 		/datum/action/xeno_action/onclick/deevolve, \
-		/datum/action/xeno_action/onclick/show_minimap, \
 		/datum/action/xeno_action/onclick/banish, \
 		/datum/action/xeno_action/onclick/readmit, \
 		)
@@ -613,29 +609,6 @@
 
 /mob/living/carbon/Xenomorph/Queen/gib(var/cause = "gibbing")
 	death(cause, 1) //we need the body to show the queen's name at round end.
-
-/mob/living/carbon/Xenomorph/Queen/proc/update_mapview(var/close = FALSE, var/force_update = FALSE)
-	if(close)
-		map_view = 0
-		close_browser(src, "queenminimap")
-		return
-	map_view = 1
-	if(world.time > next_map_gen)
-		generate_xeno_mapview()
-		next_map_gen = world.time + 6000
-	if(!xeno_mapview_overlay || force_update)
-		overlay_xeno_mapview(hivenumber)
-	src << browse_rsc(xeno_mapview_overlay, "xeno_minimap.png")
-	show_browser(src, "<img src=xeno_minimap.png>", "Queen Mind Map", "queenminimap", "size=[(map_sizes[1][1]*2)+50]x[(map_sizes[1][2]*2)+50]")
-	onclose(src, "queenminimap", src)
-
-/mob/living/carbon/Xenomorph/Queen/Topic(href, href_list)
-	if (href_list["close"]) // Closing minimap properly
-		map_view = 0
-		close_browser(src, "queenminimap")
-		return
-
-	..()
 
 /mob/living/carbon/Xenomorph/Queen/proc/in_egg_plant_range(var/turf/T)
 	if(!ovipositor)

@@ -10,5 +10,4 @@ var/datum/subsystem/mapview_init/SSmapview_init
 
 /datum/subsystem/mapview_init/Initialize()
 	generate_marine_mapview()
-	generate_xeno_mapview()
 	..()

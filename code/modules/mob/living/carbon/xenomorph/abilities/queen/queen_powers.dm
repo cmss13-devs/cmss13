@@ -112,12 +112,6 @@
 	..()
 	return
 
-// Queen minimap
-/datum/action/xeno_action/onclick/show_minimap/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/Queen/X = owner
-	// There's a good reason for this to be a Queen proc so this survives for now.
-	X.update_mapview(X.map_view, TRUE)
-
 /datum/action/xeno_action/onclick/remove_eggsac/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/Queen/X = owner
 	if(!X.check_state())

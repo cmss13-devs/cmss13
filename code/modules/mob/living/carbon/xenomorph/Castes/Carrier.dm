@@ -22,7 +22,7 @@
 	throwspeed = 1
 	can_hold_facehuggers = 1
 	can_hold_eggs = CAN_HOLD_ONE_HAND
-	weed_level = 1
+	weed_level = WEED_LEVEL_STANDARD
 	huggers_max = 16
 	eggs_max = 7
 	tacklemin = 4

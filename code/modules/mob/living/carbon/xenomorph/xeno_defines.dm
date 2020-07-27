@@ -85,7 +85,7 @@
 	var/innate_healing = FALSE //whether the xeno heals even outside weeds.
 
 	var/acid_level = 0
-	var/weed_level = 0
+	var/weed_level = WEED_LEVEL_STANDARD
 
 	var/acid_splash_cooldown = SECONDS_3 //Time it takes between acid splash retaliate procs. Variable per caste, for if we want future castes that are acid bombs
 

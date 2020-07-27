@@ -20,7 +20,7 @@
 	can_hold_facehuggers = 1
 	can_hold_eggs = CAN_HOLD_TWO_HANDS
 	acid_level = 2
-	weed_level = 2 //Starts with wider weeds by default
+	weed_level = WEED_LEVEL_STANDARD
 	build_time = BUILD_TIME_HIVELORD
 	max_build_dist = 1
 

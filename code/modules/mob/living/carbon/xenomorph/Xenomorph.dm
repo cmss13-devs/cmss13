@@ -732,8 +732,8 @@
 	if(!caste || caste.weed_level == 0)
 		return //Caste does not use weeds
 	weed_level = caste.weed_level + weed_modifier
-	if(weed_level < 1)
-		weed_level = 1//need to maintain the minimum in case something goes really wrong
+	if(weed_level < WEED_LEVEL_STANDARD)
+		weed_level = WEED_LEVEL_STANDARD//need to maintain the minimum in case something goes really wrong
 
 /mob/living/carbon/Xenomorph/proc/recalculate_pheromones()
 	if(caste.aura_strength > 0)

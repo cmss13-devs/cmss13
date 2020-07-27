@@ -18,7 +18,7 @@
 	deevolves_to = "Drone"
 	caste_desc = "A digger and trapper."
 	acid_level = 2
-	weed_level = 1
+	weed_level = WEED_LEVEL_STANDARD
 	evolution_allowed = FALSE
 	tacklemin = 4
 	tacklemax = 5

@@ -132,6 +132,7 @@
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE|ROLE_ADMIN_NOTIFY|ROLE_WHITELISTED
 	flags_whitelist = WHITELIST_SYNTHETIC
 	gear_preset = "USCM Synthetic"
+	gear_preset_council = "USCM Synthetic Councillor"
 	minimum_playtimes = list()
 
 /datum/job/civilian/synthetic/set_spawn_positions(var/count)

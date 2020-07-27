@@ -453,6 +453,13 @@
 	worn_state = "rdalt"
 	rollable_sleeves = FALSE
 
+/obj/item/clothing/under/rank/synthetic/councillor
+	name = "\improper USCM Pristine Support Uniform"
+	desc = "A nicely handcrafted uniform made for Synthetic crewmembers."
+	icon_state = "synth_councillor"
+	worn_state = "synth_councillor"
+	displays_id = FALSE
+
 /obj/item/clothing/under/rank/synthetic/old
 	icon_state = "rdalt_s"
 	worn_state = "rdalt_s"

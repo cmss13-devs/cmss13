@@ -501,7 +501,15 @@ roles willy nilly.
 			H.mind.store_memory(remembered_info)
 			H.mind.initial_account = A
 
+		var/CO_council = FALSE
 		if((J.title == "Commanding Officer") && roles_whitelist && (roles_whitelist[H.ckey] & WHITELIST_COMMANDER_COUNCIL))
+			CO_council = TRUE
+
+		var/synth_council = FALSE
+		if((J.title == JOB_SYNTH) && roles_whitelist && (roles_whitelist[H.ckey] & WHITELIST_SYNTHETIC_COUNCIL))
+			synth_council = TRUE
+
+		if(CO_council || synth_council)
 			arm_equipment(H, J.gear_preset_council, FALSE, TRUE)
 		arm_equipment(H, J.gear_preset, FALSE, TRUE) //After we move them, we want to equip anything else they should have.
 

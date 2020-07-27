@@ -27,12 +27,14 @@
 	if(!langchat_image)
 		return
 	if(!langchat_listeners)
-		qdel(langchat_image)
+		qdel(langchat_image)		
+		langchat_image = null
 		return
 	for(var/mob/M in langchat_listeners)
 		if(M.client)
 			M.client.images -= langchat_image
 	qdel(langchat_image)
+	langchat_image = null
 
 /mob/proc/langchat_make_image(message, var/list/listeners, language)
 	langchat_drop_image()

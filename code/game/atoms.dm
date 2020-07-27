@@ -486,3 +486,9 @@ Parameters are passed from New.
 // This proc is for initializing pass flags (allows for inheriting pass flags and list-based pass flags)
 /atom/proc/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	return
+
+/atom/proc/enable_pixel_scaling()
+	appearance_flags |= PIXEL_SCALE
+
+/atom/proc/disable_pixel_scaling()
+	appearance_flags &= ~PIXEL_SCALE

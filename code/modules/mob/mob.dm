@@ -870,3 +870,21 @@ mob/proc/yank_out_object()
 		skills = null
 	else
 		skills = new skills_path(src)
+
+/mob/enable_pixel_scaling()
+	..()
+
+	for(var/I in hud_list)
+		var/image/img = hud_list[I]
+
+		if(istype(img))
+			img.appearance_flags |= PIXEL_SCALE
+
+/mob/disable_pixel_scaling()
+	..()
+
+	for(var/I in hud_list)
+		var/image/img = hud_list[I]
+
+		if(istype(img))
+			img.appearance_flags &= ~PIXEL_SCALE

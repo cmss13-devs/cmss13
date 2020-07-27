@@ -150,7 +150,7 @@
 					user.client.pixel_y = -1 * AM.view_tile_offset * 32
 				if(EAST)
 					user.client.pixel_x = AM.view_tile_offset * 32
-						user.client.pixel_y = 0
+					user.client.pixel_y = 0
 				if(WEST)
 					user.client.pixel_x = -1 * AM.view_tile_offset * 32
 					user.client.pixel_y = 0

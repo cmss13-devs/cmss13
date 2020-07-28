@@ -1057,8 +1057,8 @@
 	delay_style	= WEAPON_DELAY_NO_FIRE
 	aim_slowdown = SLOWDOWN_ADS_SPECIALIST
 	attachable_allowed = list(
-						/obj/item/attachable/magnetic_harness,
-						/obj/item/attachable/scope/mini)
+						/obj/item/attachable/magnetic_harness
+						)
 
 	flags_gun_features = GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
 	var/datum/effect_system/smoke_spread/smoke

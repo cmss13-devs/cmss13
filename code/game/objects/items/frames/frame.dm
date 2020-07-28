@@ -2,7 +2,7 @@
 //items that are frames or assembly used to construct something (table parts, camera assembly, etc...)
 
 /obj/item/frame
-
+	appearance_flags = TILE_BOUND
 
 
 

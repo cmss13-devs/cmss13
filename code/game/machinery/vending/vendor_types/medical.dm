@@ -243,5 +243,7 @@
 		list("HF2 Health Analyzer", 1, /obj/item/device/healthanalyzer, VENDOR_ITEM_REGULAR)
 	)
 
+	appearance_flags = TILE_BOUND
+
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/populate_product_list(var/scale)
 	return

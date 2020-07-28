@@ -38,6 +38,8 @@
 	idle_power_usage = 2
 	active_power_usage = 4
 
+	appearance_flags = TILE_BOUND
+
 /obj/structure/machinery/door_control/attack_remote(mob/user as mob)
 	if(wires & 2)
 		return src.attack_hand(user)

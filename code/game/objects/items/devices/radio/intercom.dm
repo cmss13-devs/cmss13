@@ -11,6 +11,8 @@
 	var/mob/living/silicon/ai/ai = list()
 	var/last_tick //used to delay the powercheck
 
+	appearance_flags = TILE_BOUND
+
 /obj/item/device/radio/intercom/New()
 	..()
 	processing_objects += src

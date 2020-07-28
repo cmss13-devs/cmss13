@@ -195,3 +195,5 @@
 	var/move_delay
 
 	can_block_movement = TRUE
+
+	appearance_flags = TILE_BOUND

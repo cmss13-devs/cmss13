@@ -1,6 +1,4 @@
 //var/global/current_squad_overlay = 1
-/var/global/next_map_gen = 0
-
 var/datum/subsystem/mapview/SSmapview
 
 /datum/subsystem/mapview
@@ -26,19 +24,6 @@ var/datum/subsystem/mapview/SSmapview
 //	..("P:[mob_list.len]")
 
 /datum/subsystem/mapview/fire(resumed = FALSE)
-
-	if(world.time > next_map_gen)
-		generate_xeno_mapview()
-		next_map_gen = world.time + 6000
-
-	if (MC_TICK_CHECK)
-		return
-
-	for(var/mob/living/carbon/Xenomorph/Queen/Q in living_xeno_list)
-		if(Q.map_view)
-			Q.update_mapview(FALSE, TRUE)
-			break
-
 	if (MC_TICK_CHECK)
 		return
 

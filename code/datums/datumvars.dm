@@ -228,6 +228,7 @@
 	if(isobj(D) || ismob(D) || isturf(D))
 		body += "<option value='?_src_=vars;explode=\ref[D]'>Trigger explosion</option>"
 		body += "<option value='?_src_=vars;emp=\ref[D]'>Trigger EM pulse</option>"
+		body += "<option value='?_src_=vars;setmatrix=\ref[D]'>Set Base Matrix</option>"
 
 	body += "<option value>---</option>"
 
@@ -557,15 +558,7 @@ body
 		if(!istype(A, /atom))
 			return
 		
-		A.appearance_flags |= PIXEL_SCALE
-
-		if(ismob(A))
-			var/mob/M = A
-			for(var/I in M.hud_list)
-				var/image/img = M.hud_list[I]
-
-				if(istype(img))
-					img.appearance_flags |= PIXEL_SCALE
+		A.enable_pixel_scaling()
 
 	else if(href_list["explode"])
 		if(!check_rights(R_DEBUG|R_FUN))	
@@ -1090,6 +1083,40 @@ body
 		if(amount != 0)
 			message_admins(SPAN_NOTICE("[key_name(usr)] dealt [amount] amount of [Text] damage to [L] "))
 			href_list["datumrefresh"] = href_list["mobToDamage"]
+
+	else if(href_list["setmatrix"])
+		if(!check_rights(R_DEBUG|R_ADMIN|R_FUN|R_VAREDIT))	
+			return
+
+		var/atom/A = locate(href_list["setmatrix"])
+		if(!isobj(A) && !ismob(A))
+			to_chat(usr, "This can only be done to instances of type /obj and /mob")
+			return
+		
+		if(!LAZYLEN(stored_matrices))
+			to_chat(usr, "You don't have any matrices stored!")
+			return
+
+		var/matrix_name = input("Choose a matrix", "Matrix") as null|anything in (stored_matrices + "Revert to Default" + "Cancel")
+		if(!matrix_name || matrix_name == "Cancel")
+			return
+		else if (matrix_name == "Revert to Default")
+			A.base_transform = null
+			A.transform = matrix()
+			A.disable_pixel_scaling()
+			return
+		
+		var/matrix/MX = LAZYACCESS(stored_matrices, matrix_name)
+		if(!MX)
+			return
+
+		A.base_transform = MX
+		A.transform = MX
+
+		if (alert(usr, "Would you like to enable pixel scaling?", "Confirm", "Yes", "No") == "Yes")
+			A.enable_pixel_scaling()
+		
+		href_list["datumrefresh"] = href_list["setmatrix"]
 
 	if(href_list["datumrefresh"])
 		var/datum/DAT = locate(href_list["datumrefresh"])

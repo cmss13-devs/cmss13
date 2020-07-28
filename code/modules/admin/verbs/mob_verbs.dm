@@ -243,11 +243,11 @@
 
 	message_admins("[key_name_admin(usr)] made [key_name_admin(M)] drop everything!")
 
-/client/proc/cmd_admin_change_their_hivenumber(var/mob/living/carbon/Xenomorph/X)
+/client/proc/cmd_admin_change_their_hivenumber(var/mob/living/carbon/H)
 	set name = "Change Hivenumber"
 	set category = null
 
-	if(!istype(X))
+	if(!istype(H))
 		return
 
 	var/list/hives = list()
@@ -256,13 +256,30 @@
 
 	var/newhive = input(src,"Select a hive.", null, null) in hives
 
-	if(!X)
-		to_chat(usr, "This xeno no longer exists")
+	if(!H)
+		to_chat(usr, "This mob no longer exists")
 		return
 
-	X.set_hive_and_update(hives[newhive])
+	if(isXeno(H))
+		var/mob/living/carbon/Xenomorph/X = H
+		X.set_hive_and_update(hives[newhive])
+	else
+		var/was_leader = FALSE
+		if(H.hivenumber)
+			var/datum/hive_status/hive = hive_datum[H.hivenumber]
+			if(H == hive.leading_cult_sl)
+				was_leader = TRUE
+			hive.leading_cult_sl = null
+
+		H.hivenumber = hives[newhive]
+
+		var/datum/hive_status/hive = hive_datum[H.hivenumber]
+		H.faction = hive.name
+
+		if(was_leader && (!hive.leading_cult_sl || hive.leading_cult_sl.stat == DEAD))
+			hive.leading_cult_sl = H
 	 
-	message_admins(SPAN_NOTICE("[key_name(src)] changed hivenumber of [X] to [X.hivenumber]."))
+	message_admins(SPAN_NOTICE("[key_name(src)] changed hivenumber of [H] to [H.hivenumber]."))
 
 
 /client/proc/cmd_admin_change_their_name(var/mob/living/carbon/X)

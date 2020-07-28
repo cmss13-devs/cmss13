@@ -20,8 +20,8 @@
 
 	if(ticker && ticker.mode && ticker.mode.xenomorphs.len) //Send to only xenos in our gamemode list. This is faster than scanning all mobs
 		for(var/datum/mind/L in ticker.mode.xenomorphs)
-			var/mob/living/carbon/Xenomorph/M = L.current
-			if(M && istype(M) && !M.stat && M.client && hivenumber == M.hivenumber) //Only living and connected xenos
+			var/mob/living/carbon/M = L.current
+			if(M && istype(M) && !M.stat && M.client && M.allied_to_hivenumber(hivenumber)) //Only living and connected xenos
 				to_chat(M, SPAN_XENODANGER("<span class=\"[fontsize_style]\"> [message]</span>"))
 
 //Adds stuff to your "Status" pane -- Specific castes can have their own, like carrier hugger count
@@ -107,9 +107,9 @@
 		else if(!(caste_name == "Queen"))
 			stat("Queen's Location:", "[hive.living_xeno_queen.loc.loc.name]")
 
-		if(hive.slashing_allowed == 1)
+		if(hive.slashing_allowed == XENO_SLASH_ALLOWED)
 			stat("Slashing:", "PERMITTED")
-		else if(hive.slashing_allowed == 2)
+		else if(hive.slashing_allowed == XENO_SLASH_RESTRICTED)
 			stat("Slashing:", "LIMITED")
 		else
 			stat("Slashing:", "FORBIDDEN")
@@ -257,7 +257,7 @@
 		return
 
 	var/mob/living/carbon/M = L
-	if(M.stat || M.mob_size >= MOB_SIZE_BIG || matches_hivemind(L, src))
+	if(M.stat || M.mob_size >= MOB_SIZE_BIG || match_hivemind(L, src))
 		throwing = FALSE
 		return
 
@@ -512,6 +512,10 @@
 
 	var/mob/living/carbon/human/H = M
 	var/obj/limb/L = H.get_limb(check_zone(zone_selected))
+
+	if(match_hivemind(H))
+		to_chat(src, SPAN_XENOWARNING("You can't harm this host!"))
+		return
 
 	if(!L || L.body_part == BODY_FLAG_CHEST || L.body_part == BODY_FLAG_GROIN || (L.status & LIMB_DESTROYED)) //Only limbs and head.
 		to_chat(src, SPAN_XENOWARNING("You can't rip off that limb."))

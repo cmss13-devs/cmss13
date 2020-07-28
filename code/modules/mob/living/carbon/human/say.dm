@@ -49,7 +49,7 @@
 				hive_prefix = "XENO"
 			STUI.game.Add("\[[time_stamp()]]<font color='#0099FF'>[hive_prefix]: [key_name(src)] : [message]</font><br>")
 			STUI.processing |= STUI_LOG_GAME_CHAT
-			speaking.broadcast(src,trim(message))
+			speaking.broadcast(src, trim(message))
 			return
 		//If we've gotten this far, keep going!
 		verb = speaking.get_spoken_verb(ending)

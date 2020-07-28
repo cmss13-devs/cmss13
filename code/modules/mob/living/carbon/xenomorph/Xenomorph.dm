@@ -108,7 +108,7 @@
 
 	// Hive-related vars
 	var/datum/hive_status/hive
-	var/hivenumber = XENO_HIVE_NORMAL
+	hivenumber = XENO_HIVE_NORMAL
 	var/hive_pos = NORMAL_XENO // The position of the xeno in the hive (0 = normal xeno; 1 = queen; 2+ = hive leader)
 
 	// Variables that can be mutated

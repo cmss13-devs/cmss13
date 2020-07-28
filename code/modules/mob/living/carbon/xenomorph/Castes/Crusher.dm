@@ -224,7 +224,7 @@
 		if (H.stat == DEAD)
 			continue
 
-		if(!isXenoOrHuman(H) || matches_hivemind(bound_xeno, H))
+		if(!isXenoOrHuman(H) || bound_xeno.match_hivemind(H))
 			continue
 
 		cdr_amount += 5

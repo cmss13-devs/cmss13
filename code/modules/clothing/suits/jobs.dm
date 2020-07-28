@@ -40,13 +40,45 @@
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_ARMS
 	flags_inv_hide = HIDEJUMPSUIT
 
-//Chaplain
-/obj/item/clothing/suit/chaplain_hoodie
-	name = "chaplain hoodie"
-	desc = "This suit says to you 'hush'!"
+//Cultist
+/obj/item/clothing/suit/cultist_hoodie
+	name = "black robe"
+	desc = "Looks eery and weird, almost as if it belongs to a cult."
 	icon_state = "chaplain_hoodie"
 	item_state = "chaplain_hoodie"
-	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_GROIN
+
+	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_GROIN
+	min_cold_protection_temperature = SPACE_SUIT_min_cold_protection_temperature
+
+	allowed = list(
+		/obj/item/weapon/gun/,
+		/obj/item/tank/emergency_oxygen,
+		/obj/item/device/flashlight,
+		/obj/item/storage/fancy/cigarettes,
+		/obj/item/tool/lighter,
+		/obj/item/storage/bible,
+		/obj/item/attachable/bayonet,
+		/obj/item/storage/sparepouch,
+		/obj/item/storage/large_holster/machete,
+		/obj/item/storage/belt/gun/m4a3,
+		/obj/item/storage/belt/gun/m44,
+		/obj/item/storage/belt/gun/smartpistol,
+		/obj/item/device/motiondetector,
+		/obj/item/device/walkman
+	)
+
+	armor_bio = CLOTHING_ARMOR_LOW
+	armor_bomb = CLOTHING_ARMOR_LOW
+	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
+	armor_energy = CLOTHING_ARMOR_HARDCORE
+	armor_internaldamage = CLOTHING_ARMOR_LOW
+	armor_rad = CLOTHING_ARMOR_LOW
+	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
+	armor_laser = CLOTHING_ARMOR_LOW
+
+	slowdown = SLOWDOWN_ARMOR_LIGHT
+	time_to_equip = SECONDS_2
 
 //Chaplain
 /obj/item/clothing/suit/nun

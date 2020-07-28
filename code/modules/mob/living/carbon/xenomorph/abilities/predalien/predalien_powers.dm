@@ -25,7 +25,7 @@
                     YG.decloak(H)
 
                 YG.cloak_timer = xeno_cooldown * 0.1
-        else if(isXeno(C) && matches_hivemind(C, X))
+        else if(isXeno(C) && X.match_hivemind(C))
             var/datum/behavior_delegate/predalien_base/P = X.behavior_delegate
             if(!istype(P))
                 continue
@@ -76,7 +76,7 @@
     X.create_stomp()
 
     for(var/mob/living/carbon/C in oview(round(P.kills * 0.5 + 2), X))
-        if(!matches_hivemind(C, X) && C.stat != DEAD)
+        if(!X.match_hivemind(C) && C.stat != DEAD)
             C.frozen = 1
             C.update_canmove()
 
@@ -105,7 +105,7 @@
     if (!X.check_state())
         return
     
-    if (!isXenoOrHuman(A) || matches_hivemind(A, X))
+    if (!isXenoOrHuman(A) || X.match_hivemind(A))
         to_chat(X, SPAN_XENOWARNING("You must target a hostile!"))
         return
 

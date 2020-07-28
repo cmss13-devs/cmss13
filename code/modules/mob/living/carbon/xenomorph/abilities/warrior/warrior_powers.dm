@@ -14,7 +14,7 @@
 	if (!X.check_state() || X.agility)
 		return
 
-	if(!isHumanStrict(A) && !ismonkey(A) && (!isXeno(A) || matches_hivemind(A, X))) // Can't do isXenoOrHuman because it checks for whether it is strictly human
+	if(!isHumanStrict(A) && !ismonkey(A) && (!isXeno(A) || X.match_hivemind(A))) // Can't do isXenoOrHuman because it checks for whether it is strictly human
 		apply_cooldown_override(click_miss_cooldown)
 		return
 
@@ -63,7 +63,7 @@
 	if (!action_cooldown_check())
 		return
 
-	if (!isXenoOrHuman(A) || matches_hivemind(A, X))
+	if (!isXenoOrHuman(A) || X.match_hivemind(A))
 		return
 
 	if (!X.check_state() || X.agility)
@@ -114,7 +114,7 @@
 	if (!action_cooldown_check())
 		return
 
-	if (!isXenoOrHuman(A) || matches_hivemind(A, X))
+	if (!isXenoOrHuman(A) || X.match_hivemind(X))
 		return
 
 	if (!X.check_state() || X.agility)
@@ -214,7 +214,7 @@
 
 /datum/action/xeno_action/activable/jab/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
-	if (!isXenoOrHuman(A) || matches_hivemind(A, X))
+	if (!isXenoOrHuman(A) || X.match_hivemind(A))
 		return
 
 	if (!action_cooldown_check())

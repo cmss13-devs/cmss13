@@ -9,8 +9,8 @@
 	var/turf/picked
 	var/list/xeno_spawn_loc = list()
 	var/datum/hive_status/hive = hive_datum[XENO_HIVE_NORMAL]
-	if(hive.slashing_allowed != 1)
-		hive.slashing_allowed = 1 //Allows harm intent for aliens
+	if(hive.slashing_allowed != XENO_SLASH_ALLOWED)
+		hive.slashing_allowed = XENO_SLASH_ALLOWED //Allows harm intent for aliens
 	var/xenos_to_spawn
 	if(wave_data.wave_type == WO_SCALED_WAVE)
 		xenos_to_spawn = max(count_marines(SURFACE_Z_LEVELS),5) * wave_data.scaling_factor * WO_SPAWN_MULTIPLIER

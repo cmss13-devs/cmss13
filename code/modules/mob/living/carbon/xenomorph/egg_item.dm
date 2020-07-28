@@ -40,23 +40,28 @@
 		plant_egg(user, T, proximity)
 	if(proximity && ishuman(user))
 		var/turf/T = get_turf(target)
-		plant_egg_in_containment(user, T)
+		plant_egg_human(user, T)
 
-/obj/item/xeno_egg/proc/plant_egg_in_containment(mob/living/carbon/human/user, turf/T)
-	if(!istype(T, /turf/open/floor/almayer/research/containment))
-		to_chat(user, SPAN_WARNING("Best not to plant this thing outside of a containment cell."))
-		return
-	for (var/obj/O in T)
-		if (!istype(O,/obj/structure/machinery/light/small))
-			to_chat(user, SPAN_WARNING("The floor needs to be clear to plant this!"))
+/obj/item/xeno_egg/proc/plant_egg_human(mob/living/carbon/human/user, turf/T)
+	if(user.hivenumber != hivenumber)
+		if(!istype(T, /turf/open/floor/almayer/research/containment))
+			to_chat(user, SPAN_WARNING("Best not to plant this thing outside of a containment cell."))
 			return
+		for (var/obj/O in T)
+			if (!istype(O,/obj/structure/machinery/light/small))
+				to_chat(user, SPAN_WARNING("The floor needs to be clear to plant this!"))
+				return
+
 	user.visible_message(SPAN_NOTICE("[user] starts planting [src]."), \
 					SPAN_NOTICE("You start planting [src]."), null, 5)
 	if(!do_after(user, 50, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		return
-	for (var/obj/O in T)
-		if (!istype(O,/obj/structure/machinery/light/small))
-			return
+	
+	if(user.hivenumber != hivenumber)
+		for (var/obj/O in T)
+			if (!istype(O,/obj/structure/machinery/light/small))
+				return
+	
 	var/obj/effect/alien/egg/newegg = new /obj/effect/alien/egg(T, hivenumber)
 	newegg.flags_embryo = flags_embryo
 

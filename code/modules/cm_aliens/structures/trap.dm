@@ -90,6 +90,8 @@
 					return
 				if(H.stat == DEAD || H.lying)
 					return
+				if(H.allied_to_hivenumber(hivenumber, XENO_SLASH_RESTRICTED))
+					return
 				trigger_trap()
 			if(isXeno(AM))
 				var/mob/living/carbon/Xenomorph/X = AM
@@ -166,10 +168,8 @@
 			for(var/turf/T in range(1,loc))
 				var/obj/effect/xenomorph/spray/SP = new spray_type(T, source_name, source_mob)
 				for(var/mob/living/carbon/H in T)
-					if (isXeno(H))
-						var/mob/living/carbon/Xenomorph/X = H
-						if(X.hivenumber == hivenumber)
-							continue
+					if(H.allied_to_hivenumber(hivenumber, XENO_SLASH_RESTRICTED))
+						continue
 					SP.apply_spray(H)
 			set_state()
 			clear_tripwires()

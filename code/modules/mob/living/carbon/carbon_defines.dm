@@ -13,3 +13,5 @@
 	var/list/internal_organs = list()
 	//blood.dm
 	blood_volume = BLOOD_VOLUME_NORMAL
+
+	var/hivenumber

@@ -36,30 +36,21 @@
 				M.start_pulling(src)
 
 		if("hurt")
-			if(M.behavior_delegate && M.behavior_delegate.handle_slash(src))
+			if(match_hivemind(M))
+				M.animation_attack_on(src)
+				M.visible_message(SPAN_NOTICE("[M] nibbles [src]"), \
+				SPAN_XENONOTICE("You nibble [src]"))
 				return
 
-			if(M.hive && !M.hive.slashing_allowed && (M.caste && !M.caste.is_intelligent))
-				to_chat(M, SPAN_WARNING("Slashing is currently <b>forbidden</b> by the Queen. You refuse to slash [src]."))
-				return FALSE
+			if(M.behavior_delegate && M.behavior_delegate.handle_slash(src))
+				return
 
 			if(stat == DEAD)
 				to_chat(M, SPAN_WARNING("[src] is dead, why would you want to touch it?"))
 				return FALSE
 
 			if(M.caste && !M.caste.is_intelligent)
-				if(M.hive && M.hive.slashing_allowed == 2)
-					if(status_flags & XENO_HOST)
-						for(var/obj/item/alien_embryo/embryo in src)
-							if(embryo.hivenumber == M.hivenumber)
-								to_chat(M, SPAN_WARNING("You try to slash [src], but find you <B>cannot</B>. There is a host inside!"))
-								return FALSE
-
-					if(M.health > round(2 * M.maxHealth / 3)) //Note : Under 66 % health
-						to_chat(M, SPAN_WARNING("You try to slash [src], but find you <B>cannot</B>. You are not yet injured enough to overcome the Queen's orders."))
-						return FALSE
-
-				else if(istype(buckled, /obj/structure/bed/nest) && (status_flags & XENO_HOST))
+				if(istype(buckled, /obj/structure/bed/nest) && (status_flags & XENO_HOST))
 					for(var/obj/item/alien_embryo/embryo in src)
 						if(embryo.hivenumber == M.hivenumber)
 							to_chat(M, SPAN_WARNING("You should not harm this host! It has a sister inside."))
@@ -263,18 +254,7 @@
 					return TRUE
 
 			if(M.caste && !M.caste.is_intelligent)
-				if(M.hive && M.hive.slashing_allowed == 2)
-					if(status_flags & XENO_HOST)
-						for(var/obj/item/alien_embryo/embryo in src)
-							if(embryo.hivenumber == M.hivenumber)
-								to_chat(M, SPAN_WARNING("You try to slash [src], but find you <B>cannot</B>. There is a host inside!"))
-								return FALSE
-
-					if(M.health > round(2 * M.maxHealth / 3)) //Note : Under 66 % health
-						to_chat(M, SPAN_WARNING("You try to slash [src], but find you <B>cannot</B>. You are not yet injured enough to overcome the Queen's orders."))
-						return FALSE
-
-				else if(istype(buckled, /obj/structure/bed/nest) && (status_flags & XENO_HOST))
+				if(istype(buckled, /obj/structure/bed/nest) && (status_flags & XENO_HOST))
 					for(var/obj/item/alien_embryo/embryo in src)
 						if(embryo.hivenumber == M.hivenumber)
 							to_chat(M, SPAN_WARNING("You should not harm this host! It has a sister inside."))

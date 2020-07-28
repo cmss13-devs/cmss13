@@ -62,8 +62,6 @@
 	new /obj/item/clothing/shoes/black(src)
 	new /obj/item/clothing/suit/nun(src)
 	new /obj/item/clothing/head/nun_hood(src)
-	new /obj/item/clothing/suit/chaplain_hoodie(src)
-	new /obj/item/clothing/head/chaplain_hood(src)
 	new /obj/item/clothing/suit/holidaypriest(src)
 	new /obj/item/clothing/under/wedding/bride_white(src)
 	new /obj/item/storage/backpack/cultpack (src)

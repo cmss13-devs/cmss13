@@ -12,6 +12,16 @@
 
 
 /mob/living/carbon/human/click(var/atom/A, var/list/mods)
+	if(mods["shift"] && !mods["middle"])
+		if(selected_ability && client && client.prefs && !(client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK))
+			selected_ability.use_ability(A)
+			return TRUE
+	
+	if(mods["middle"] && !mods["shift"])
+		if(selected_ability && client && client.prefs && client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK)
+			selected_ability.use_ability(A)
+			return TRUE
+
 	if(interactee)
 		var/result = interactee.handle_click(src, A, mods)
 		if(result != HANDLE_CLICK_PASS_THRU)

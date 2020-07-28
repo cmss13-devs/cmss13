@@ -150,10 +150,15 @@
 		if(user.client && user.client.eye == user)
 			// If the user is not a xeno (with active ability) with the shift click pref on, we examine. God forgive me for snowflake
 			var/do_examine = TRUE
-			if(isXeno(user) && user.client.prefs && !(user.client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK))
-				var/mob/living/carbon/Xenomorph/X = user
-				if(X.selected_ability)
-					do_examine = FALSE
+			if(user.client.prefs && !(user.client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK))
+				if(isXeno(user))
+					var/mob/living/carbon/Xenomorph/X = user
+					if(X.selected_ability)
+						do_examine = FALSE
+				else if(ishuman(user))
+					var/mob/living/carbon/human/H = user
+					if(H.selected_ability)
+						do_examine = FALSE
 
 			if(do_examine)
 				examine(user)

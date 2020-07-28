@@ -123,7 +123,7 @@
 
 	//taken from human.dm 
 	directional_lum = 0 				//humans carrying light sources only illuminate the area in front of themselves
-	hud_possible = list(HEALTH_HUD,STATUS_HUD, STATUS_HUD_OOC, STATUS_HUD_XENO_INFECTION,ID_HUD,WANTED_HUD,IMPLOYAL_HUD,IMPCHEM_HUD,IMPTRACK_HUD, SPECIALROLE_HUD, SQUAD_HUD, ORDER_HUD, XENO_HOSTILE_ACID, XENO_HOSTILE_SLOW, XENO_HOSTILE_TAG, XENO_HOSTILE_FREEZE)
+	hud_possible = list(HEALTH_HUD,STATUS_HUD, STATUS_HUD_OOC, STATUS_HUD_XENO_INFECTION, STATUS_HUD_XENO_CULTIST, ID_HUD,WANTED_HUD,IMPLOYAL_HUD,IMPCHEM_HUD,IMPTRACK_HUD, SPECIALROLE_HUD, SQUAD_HUD, ORDER_HUD, XENO_HOSTILE_ACID, XENO_HOSTILE_SLOW, XENO_HOSTILE_TAG, XENO_HOSTILE_FREEZE)
 	var/embedded_flag	  				//To check if we've need to roll for damage on movement while an item is imbedded in us.
 	var/regenZ = 1 						//Temp zombie thing until I write a better method ~Apop
 	var/allow_gun_usage = TRUE
@@ -138,3 +138,5 @@
 	var/previous_damage_appearance // store what the body last looked like, so we only have to update it if something changed
 	var/hardcore = FALSE //If TRUE, removes the body upon unrevivable death (for WO)
 	appearance_flags = KEEP_TOGETHER | TILE_BOUND
+	
+	var/datum/action/human_action/activable/selected_ability

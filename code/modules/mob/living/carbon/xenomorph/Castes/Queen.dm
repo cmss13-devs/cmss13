@@ -278,20 +278,20 @@
 	pslash_delay = TRUE
 	add_timer(CALLBACK(src, /mob/living/carbon/Xenomorph/proc/do_claw_toggle_cooldown), SECONDS_30)
 
-	var/choice = input("Choose which level of slashing hosts to permit to your hive.","Harming") as null|anything in list("Allowed", "Restricted - Less Damage", "Forbidden")
+	var/choice = input("Choose which level of slashing hosts to permit to your hive.","Harming") as null|anything in list("Allowed", "Restricted - Hosts of Interest", "Forbidden")
 
 	if(choice == "Allowed")
 		to_chat(src, SPAN_XENONOTICE("You allow slashing."))
 		xeno_message(SPAN_XENOANNOUNCE("The Queen has <b>permitted</b> the harming of hosts! Go hog wild!"), 2, hivenumber)
-		hive.slashing_allowed = 1
-	else if(choice == "Restricted - Less Damage")
+		hive.slashing_allowed = XENO_SLASH_ALLOWED
+	else if(choice == "Restricted - Hosts of Interest")
 		to_chat(src, SPAN_XENONOTICE("You restrict slashing."))
-		xeno_message(SPAN_XENOANNOUNCE("The Queen has <b>restricted</b> the harming of hosts. You will only slash when hurt."), 2, hivenumber)
-		hive.slashing_allowed = 2
+		xeno_message(SPAN_XENOANNOUNCE("The Queen has <b>restricted</b> the harming of hosts. You cannot slash hosts of interests"), 2, hivenumber)
+		hive.slashing_allowed = XENO_SLASH_RESTRICTED
 	else if(choice == "Forbidden")
 		to_chat(src, SPAN_XENONOTICE("You forbid slashing entirely."))
 		xeno_message(SPAN_XENOANNOUNCE("The Queen has <b>forbidden</b> the harming of hosts. You can no longer slash your enemies."), 2, hivenumber)
-		hive.slashing_allowed = 0
+		hive.slashing_allowed = XENO_SLASH_FORBIDDEN
 
 /mob/living/carbon/Xenomorph/proc/do_claw_toggle_cooldown()
 	pslash_delay = FALSE
@@ -404,8 +404,7 @@
 				shake_camera(M, 30, 1) //50 deciseconds, SORRY 5 seconds was way too long. 3 seconds now
 
 	for(var/mob/living/carbon/M in oview(7, src))
-		var/mob/living/carbon/Xenomorph/X = M
-		if(istype(X) && (X.hivenumber == hivenumber || istype(X, /mob/living/carbon/Xenomorph/Queen)))
+		if((match_hivemind(M) || isXenoQueen(M)))
 			continue 
 
 		M.scream_stun_timeout = SECONDS_20

@@ -300,9 +300,9 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 	set category = "Debug"
 	set name = "E: Change Hivenumber"
 
-	var/mob/living/carbon/Xenomorph/X = input(src,"Select a xeno.", null, null) in living_xeno_list
+	var/mob/living/carbon/X = input(src,"Select a xeno.", null, null) in living_xeno_list
 	if(!istype(X))
-		to_chat(usr, "This can only be done to instances of type /mob/living/carbon/Xenomorph")
+		to_chat(usr, "This can only be done to instances of type /mob/living/carbon")
 		return
 
 	cmd_admin_change_their_hivenumber(X)

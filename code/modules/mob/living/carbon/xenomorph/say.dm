@@ -85,17 +85,19 @@
 
 //General proc for hivemind. Lame, but effective.
 /mob/living/carbon/Xenomorph/proc/hivemind_talk(var/message)
-	if(!message || src.stat || !hive)
+	if(interference)
+		to_chat(src, SPAN_WARNING("A headhunter temporarily cut off your psychic connection!"))
+		return
+	
+	hivemind_broadcast(message, hive)
+
+/mob/living/carbon/proc/hivemind_broadcast(var/message, var/datum/hive_status/hive)
+	if(!message || stat || !hive)
 		return
 
 	if(!hive.living_xeno_queen && !Check_WO() && !hive.allow_no_queen_actions)
 		to_chat(src, SPAN_WARNING("There is no Queen. You are alone."))
 		return
-
-	if(interference)
-		to_chat(src, SPAN_WARNING("A headhunter temporarily cut off your psychic connection!"))
-		return
-
 
 	log_hivemind("[key_name(src)] : [message]")	
 
@@ -107,27 +109,35 @@
 	var/rendered
 
 	for (var/mob/S in player_list)
-		if(!isnull(S) && (isXeno(S) || S.stat == DEAD) && !istype(S,/mob/new_player))
+		var/hear_hivemind = 0
+		if(ishuman(S))
+			var/mob/living/carbon/human/H = S
+			if(H.hivenumber)
+				hear_hivemind = H.hivenumber
+
+		if(!isnull(S) && (isXeno(S) || S.stat == DEAD || hear_hivemind) && !istype(S,/mob/new_player))
+			var/mob/living/carbon/Xenomorph/X = src
 			if(istype(S,/mob/dead/observer))
 				if(S.client.prefs && S.client.prefs.toggles_chat & CHAT_GHOSTHIVEMIND)
 					track = "(<a href='byond://?src=\ref[S];track=\ref[src]'>follow</a>)"
-					if(isXenoQueen(src))
-						ghostrend = SPAN_XENOQUEEN("Hivemind, [name] [track] hisses, <span class='normal'>'[message]'</span>")
-					else if(IS_XENO_LEADER(src))
-						ghostrend = SPAN_XENOLEADER("Hivemind, Leader [name] [track] hisses, <span class='normal'>'[message]'</span>")
+					if(isXenoQueen(src) || hive.leading_cult_sl == src)
+						ghostrend = SPAN_XENOQUEEN("Hivemind, [src.name] [track] hisses, <span class='normal'>'[message]'</span>")
+					else if(istype(X) && IS_XENO_LEADER(X))
+						ghostrend = SPAN_XENOLEADER("Hivemind, Leader [src.name] [track] hisses, <span class='normal'>'[message]'</span>")
 					else
-						ghostrend = SPAN_XENO("Hivemind, [name] [track] hisses, <span class='normal'>'[message]'</span>")
+						ghostrend = SPAN_XENO("Hivemind, [src.name] [track] hisses, <span class='normal'>'[message]'</span>")
 					S.show_message(ghostrend, 2)
 
-			else if(hivenumber == xeno_hivenumber(S))
-				overwatch_insert = "(<a href='byond://?src=\ref[S];[overwatch_target]=\ref[src];[overwatch_src]=\ref[S]'>watch</a>)"
+			else if(hive.hivenumber == xeno_hivenumber(S) || hive.hivenumber == hear_hivemind)
+				if(isXeno(src) && isXeno(S))
+					overwatch_insert = "(<a href='byond://?src=\ref[S];[overwatch_target]=\ref[src];[overwatch_src]=\ref[S]'>watch</a>)"
 
-				if(isXenoQueen(src))
-					rendered = SPAN_XENOQUEEN("Hivemind, [name] [overwatch_insert] hisses, <span class='normal'>'[message]'</span>")
-				else if(IS_XENO_LEADER(src))
-					rendered = SPAN_XENOLEADER("Hivemind, Leader [name] [overwatch_insert] hisses, <span class='normal'>'[message]'</span>")
+				if(isXenoQueen(src) || hive.leading_cult_sl == src)
+					rendered = SPAN_XENOQUEEN("Hivemind, [src.name] [overwatch_insert] hisses, <span class='normal'>'[message]'</span>")
+				else if(istype(X) && IS_XENO_LEADER(X))
+					rendered = SPAN_XENOLEADER("Hivemind, Leader [src.name] [overwatch_insert] hisses, <span class='normal'>'[message]'</span>")
 				else
-					rendered = SPAN_XENO("Hivemind, [name] [overwatch_insert] hisses, <span class='normal'>'[message]'</span>")
+					rendered = SPAN_XENO("Hivemind, [src.name] [overwatch_insert] hisses, <span class='normal'>'[message]'</span>")
 				
 				S.show_message(rendered, 2)
 				

@@ -479,15 +479,22 @@
 /*****************************************************************************************************/
 
 /datum/equipment_preset/other/xeno_cultist
-	name = "Fun - Xeno Cultist"
+	name = "Cultist - Xeno Cultist"
 	faction = FACTION_XENOMORPH
 	flags = EQUIPMENT_PRESET_EXTRA
 	idtype = /obj/item/card/id/lanyard
 	skills = /datum/skills/civilian/survivor
 
+	assignment = "Cultist"
+	rank = "Cultist"
+
 /datum/equipment_preset/other/xeno_cultist/New()
 	. = ..()
-	access = get_antagonist_pmc_access()
+	access = get_all_civilian_accesses()
+
+/datum/equipment_preset/other/xeno_cultist/load_race(mob/living/carbon/human/H, var/hivenumber = XENO_HIVE_NORMAL)
+	. = ..()
+	H.hivenumber = XENO_HIVE_NORMAL
 
 /datum/equipment_preset/other/xeno_cultist/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/marine/satchel
@@ -499,33 +506,55 @@
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(H), WEAR_L_STORE)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/chaplain_hoodie(H), WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/chaplain_hood(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/cultist_hoodie(H), WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/cultist_hood(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(H), WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch(H), WEAR_EAR)
 
 /*****************************************************************************************************/
+/datum/equipment_preset/other/xeno_cultist/load_status(mob/living/carbon/human/H, var/hivenumber = XENO_HIVE_NORMAL)
+	if(ticker && ticker.mode && H.mind)
+		ticker.mode.xenomorphs += H.mind
 
-/datum/equipment_preset/other/xeno_cultist/patriarch
-	name = "Fun - Xeno Cultist Patriarch"
+	var/list/huds_to_add = list(MOB_HUD_XENO_INFECTION, MOB_HUD_XENO_STATUS)
+
+	for(var/hud_to_add in huds_to_add)
+		var/datum/mob_hud/hud = huds[hud_to_add]
+		hud.add_hud_to(H)
+	
+	var/list/actions_to_add = subtypesof(/datum/action/human_action/activable/cult)
+
+	for(var/datum/action/human_action/activable/O in H.actions)
+		O.remove_action(H)
+
+	for(var/action_to_add in actions_to_add)
+		var/datum/action/human_action/activable/cult/O = new action_to_add()
+		O.give_action(H)
+
+/datum/equipment_preset/other/xeno_cultist/leader
+	name = "Cultist - Xeno Cultist Leader"
 	uses_special_name = TRUE
 	flags = EQUIPMENT_PRESET_EXTRA
-	skills = /datum/skills/civilian/survivor
+	skills = /datum/skills/cultist_leader
 
-/datum/equipment_preset/other/xeno_cultist/patriarch/load_gear(mob/living/carbon/human/H)
-	var/backItem = /obj/item/storage/backpack/marine/satchel
-	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
-		backItem = /obj/item/storage/backpack/marine
+	assignment = "Cultist Leader"
+	rank = "Cultist Leader"
 
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/chaplain(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
-	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(H), WEAR_L_STORE)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/xenos(H), WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/collectable/xenom(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(H), WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch(H), WEAR_EAR)
+/datum/equipment_preset/other/xeno_cultist/leader/load_gear(mob/living/carbon/human/H)
+	. = ..()
+	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/cultist(H), WEAR_EYES)
 
-/datum/equipment_preset/other/xeno_cultist/patriarch/load_name(mob/living/carbon/human/H, var/randomise)
-	H.change_real_name(H, "Patriarch")
+/datum/equipment_preset/other/xeno_cultist/leader/load_status(mob/living/carbon/human/H)
+	. = ..()
+
+	if(hive_datum[H.hivenumber])
+		var/datum/hive_status/hive = hive_datum[H.hivenumber]
+
+		if(!hive.leading_cult_sl || hive.leading_cult_sl.stat == DEAD)
+			hive.leading_cult_sl = H
+
+	var/list/types = subtypesof(/datum/action/human_action/activable/cult_leader/)
+
+	for(var/type in types)
+		var/datum/action/human_action/activable/cult_leader/O = new type()
+		O.give_action(H)

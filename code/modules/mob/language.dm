@@ -122,23 +122,15 @@
 	key = "q"
 	flags = RESTRICTED|HIVEMIND
 
-/datum/language/xenos/check_special_condition(var/mob/other)
-
-	var/mob/living/carbon/M = other
-	if(!istype(M)) //Ghosts etc
-		return 1
-
-	if(locate(/datum/internal_organ/xenos/hivenode) in M.internal_organs || istype(M,/mob/living/carbon/Xenomorph))
-		return 1
-
-	return 0
-
 //Make queens BOLD text
 /datum/language/xenos/broadcast(var/mob/living/speaker,var/message,var/speaker_mask)
-	if(istype(speaker,/mob/living/carbon/Xenomorph/Queen))
-		message = "<B> [message]</b>"
+	if(iscarbon(speaker))
+		var/mob/living/carbon/C = speaker
 
-	..(speaker,message)
+		if(!C.hivenumber in hive_datum)
+			return
+
+		C.hivemind_broadcast(message, hive_datum[C.hivenumber])
 
 /datum/language/binary
 	name = "Robot Talk"

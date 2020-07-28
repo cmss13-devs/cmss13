@@ -309,6 +309,17 @@
 
 	hud_set_order()
 
+/mob/living/carbon/human/verb/lay_down()
+	set name = "Rest"
+	set category = "IC"
+
+	if(!resting)
+		KnockDown(1) //so that the mob immediately falls over
+
+	resting = !resting
+
+	to_chat(src, SPAN_NOTICE("You are now [resting ? "resting." : "getting up."]"))
+
 // Used for synthetics
 /mob/living/carbon/human/synthetic/verb/toggle_HUD()
 	set category = "Synthetic"

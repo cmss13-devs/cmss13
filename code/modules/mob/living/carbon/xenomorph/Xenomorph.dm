@@ -563,12 +563,6 @@
 	var/datum/mob_hud/MH = huds[MOB_HUD_XENO_INFECTION]
 	MH.add_hud_to(src)
 
-/mob/living/carbon/Xenomorph/Burrower/lay_down()
-	if (burrow)
-		return
-	..()
-
-
 
 /mob/living/carbon/Xenomorph/point_to_atom(atom/A, turf/T)
 	//xeno leader get a bit arrow and less cooldown

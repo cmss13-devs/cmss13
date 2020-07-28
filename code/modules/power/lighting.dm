@@ -148,6 +148,8 @@
 
 	var/rigged = 0				// true if rigged to explode
 
+	appearance_flags = TILE_BOUND
+
 // the smaller bulb light fixture
 
 /obj/structure/machinery/light/small

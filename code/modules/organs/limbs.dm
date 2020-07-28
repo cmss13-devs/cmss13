@@ -3,7 +3,7 @@
 ****************************************************/
 /obj/limb
 	name = "limb"
-	appearance_flags = KEEP_TOGETHER
+	appearance_flags = KEEP_TOGETHER | TILE_BOUND
 	vis_flags = VIS_INHERIT_ID | VIS_INHERIT_DIR
 	var/icon_name = null
 	var/body_part = null

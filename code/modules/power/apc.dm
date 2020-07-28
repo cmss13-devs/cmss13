@@ -119,6 +119,8 @@
 	var/printout = FALSE
 	power_machine = TRUE
 
+	appearance_flags = TILE_BOUND
+
 /obj/structure/machinery/power/apc/New(turf/loc, var/ndir, var/building=0)
 	..()
 

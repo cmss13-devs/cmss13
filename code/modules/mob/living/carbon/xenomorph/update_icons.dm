@@ -117,21 +117,29 @@
 	else
 		screech_image = image("icon"='icons/mob/xenos/overlay_effects64x64.dmi', "icon_state" = "shriek_waves") //Ehh, suit layer's not being used.
 	
+	remove_suit_layer()
+
 	overlays_standing[X_SUIT_LAYER] = screech_image
 	apply_overlay(X_SUIT_LAYER)
 	add_timer(CALLBACK(src, .proc/remove_overlay, X_SUIT_LAYER), 30)
 
 /mob/living/carbon/Xenomorph/proc/create_stomp()
+	remove_suit_layer()
+
 	overlays_standing[X_SUIT_LAYER] = image("icon"='icons/mob/xenos/overlay_effects64x64.dmi', "icon_state" = "stomp") //Ehh, suit layer's not being used.
 	apply_overlay(X_SUIT_LAYER)
 	add_timer(CALLBACK(src, .proc/remove_overlay, X_SUIT_LAYER), 12)
 
 /mob/living/carbon/Xenomorph/proc/create_empower()
+	remove_suit_layer()
+
 	overlays_standing[X_SUIT_LAYER] = image("icon"='icons/mob/xenos/overlay_effects64x64.dmi', "icon_state" = "empower")
 	apply_overlay(X_SUIT_LAYER)
 	add_timer(CALLBACK(src, .proc/remove_overlay, X_SUIT_LAYER), 20)
 
 /mob/living/carbon/Xenomorph/proc/create_shield(var/duration = 10)
+	remove_suit_layer()
+
 	overlays_standing[X_SUIT_LAYER] = image("icon"='icons/mob/xenos/overlay_effects64x64.dmi', "icon_state" = "shield2")
 	apply_overlay(X_SUIT_LAYER)
 	add_timer(CALLBACK(src, .proc/remove_overlay, X_SUIT_LAYER), duration)
@@ -155,6 +163,8 @@
 		apply_overlay(X_FIRE_LAYER)
 
 /mob/living/carbon/Xenomorph/proc/create_crusher_shield()
+	remove_overlay(X_HEAD_LAYER)
+
 	overlays_standing[X_HEAD_LAYER] = image("icon"='icons/mob/xenos/overlay_effects64x64.dmi', "icon_state" = "empower")
 	overlays_standing[X_HEAD_LAYER].color = rgb(87, 73, 144)
 	apply_overlay(X_HEAD_LAYER)

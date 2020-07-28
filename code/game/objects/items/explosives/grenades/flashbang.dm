@@ -6,6 +6,8 @@
 	var/banglet = 0
 	harmful = FALSE
 
+	var/strength = 50
+
 
 /obj/item/explosive/grenade/flashbang/attack_self(mob/user)
 	if(!skillcheck(user, SKILL_POLICE, SKILL_POLICE_MP))
@@ -46,6 +48,10 @@
 		var/mob/living/carbon/human/H = M
 		if(skillcheck(H, SKILL_POLICE, SKILL_POLICE_MP))
 			trained_human = TRUE
+
+	if(M.getarmor(M.get_limb("eyes"), ARMOR_ENERGY) >= strength)
+		to_chat(M, SPAN_HELPFUL("Your armor protects you from \the [src]."))
+		return
 
 	if(M.flash_eyes())
 		M.Stun(2)

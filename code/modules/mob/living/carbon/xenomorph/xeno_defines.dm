@@ -138,7 +138,7 @@
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/mob/living/carbon/Xenomorph/Queen/living_xeno_queen
 	var/egg_planting_range = 15
-	var/slashing_allowed = 1 //This initial var allows the queen to turn on or off slashing. Slashing off means harm intent does much less damage.
+	var/slashing_allowed = XENO_SLASH_ALLOWED //This initial var allows the queen to turn on or off slashing. Slashing off means harm intent does much less damage.
 	var/construction_allowed = XENO_QUEEN //Who can place construction nodes for special structures
 	var/destruction_allowed = XENO_LEADER //Who can destroy special structures
 	var/unnesting_allowed = FALSE
@@ -172,6 +172,9 @@
 	var/allow_no_queen_actions = FALSE
 	var/allow_queen_evolve = TRUE // Set to true if you want to prevent evolutions into Queens
 	var/hardcore = FALSE // Set to true if you want to prevent bursts and spawns of new xenos. Will also prevent healing if the queen no longer exists
+
+	// Cultist Info
+	var/mob/living/carbon/leading_cult_sl
 
 	//List of how many maximum of each special structure you can have
 	var/list/hive_structures_limit = list(

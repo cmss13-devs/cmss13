@@ -104,10 +104,11 @@
 		if(isliving(atm)) //For extinguishing mobs on fire
 			var/mob/living/M = atm
 			M.ExtinguishMob()
-			if (ishuman(M) || isXeno(M))
-				var/mob/living/carbon/Xenomorph/X = M
-				if (istype(X) && X.hivenumber == hivenumber)
+			if (iscarbon(M))
+				var/mob/living/carbon/C = M
+				if (C.allied_to_hivenumber(hivenumber))
 					continue
+
 				apply_spray(M)
 				M.apply_armoured_damage(damage_amount, ARMOR_BIO, BURN) // Deal extra damage when first placing ourselves down.
 
@@ -129,6 +130,9 @@
 /obj/effect/xenomorph/spray/Crossed(AM as mob|obj)
 	..()
 	if(ishuman(AM))
+		var/mob/living/carbon/human/H = AM
+		if(H.allied_to_hivenumber(hivenumber))
+			return
 		apply_spray(AM)
 	else if (isXeno(AM))
 		var/mob/living/carbon/Xenomorph/X = AM
@@ -406,6 +410,8 @@
 				continue
 
 		if (!H.stat)
+			if(H.match_hivemind(source_xeno))
+				continue
 			H.apply_armoured_damage(damage, ARMOR_BIO, BURN)
 			animation_flash_color(H)
 			to_chat(H, SPAN_XENODANGER("You are scalded by acid as a massive glob explodes nearby!"))
@@ -462,10 +468,8 @@
 		if (H.stat == DEAD)
 			continue
 
-		if(isXeno(H))
-			var/mob/living/carbon/Xenomorph/X = H
-			if (X.hivenumber == hivenumber)
-				continue
+		if(H.allied_to_hivenumber(hivenumber))
+			continue
 
 		animation_flash_color(H)
 

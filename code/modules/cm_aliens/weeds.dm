@@ -60,7 +60,7 @@
 /obj/effect/alien/weeds/Crossed(atom/movable/AM)
 	if (ishuman(AM))
 		var/mob/living/carbon/human/H = AM
-		if (!isYautja(H)) // predators are immune to weed slowdown effect
+		if (!isYautja(H) && !H.allied_to_hivenumber(linked_hive.hivenumber, XENO_SLASH_RESTRICTED)) // predators are immune to weed slowdown effect
 			H.next_move_slowdown = H.next_move_slowdown + weed_strength
 	else if (isXeno(AM))
 		var/mob/living/carbon/Xenomorph/X = AM

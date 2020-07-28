@@ -67,6 +67,9 @@
 
 #define XENO_STARTING_CRYSTAL 100 //How much building resource the queen gets to start with
 
+#define XENO_SLASH_ALLOWED 0
+#define XENO_SLASH_RESTRICTED 1
+#define XENO_SLASH_FORBIDDEN 2
 // Holds defines for /datum/caste_datum, which is the primary datum for the caste system,
 // /datum/hive_status (self explanatory)
 // and some of the var defines for the Xenomorph base type.

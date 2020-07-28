@@ -446,7 +446,9 @@
 		for(var/obj/item/alien_embryo/embryo in M)
 			if(embryo.hivenumber == hivenumber)
 				return
-		
+	
+	if(M.allied_to_hivenumber(hivenumber, XENO_SLASH_RESTRICTED))
+		return
 
 	//Already have a hugger? NOPE
 	//This is to prevent eggs from bursting all over if you walk around with one on your face,

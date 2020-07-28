@@ -117,12 +117,12 @@ var/datum/mob_hud/huds = list(
 
 //medical hud used by ghosts
 /datum/mob_hud/medical/observer
-	hud_icons = list(HEALTH_HUD, STATUS_HUD_OOC)
+	hud_icons = list(HEALTH_HUD, STATUS_HUD_OOC, STATUS_HUD_XENO_CULTIST)
 
 
-//infection status that appears on humans, viewed by xenos only.
+//infection status that appears on humans, viewed by xenos only and observers.
 /datum/mob_hud/xeno_infection
-	hud_icons = list(STATUS_HUD_XENO_INFECTION)
+	hud_icons = list(STATUS_HUD_XENO_INFECTION, STATUS_HUD_XENO_CULTIST)
 
 
 
@@ -276,7 +276,13 @@ var/datum/mob_hud/huds = list(
 	var/image/holder = hud_list[STATUS_HUD]
 	var/image/holder2 = hud_list[STATUS_HUD_OOC]
 	var/image/holder3 = hud_list[STATUS_HUD_XENO_INFECTION]
+	var/image/holder4 = hud_list[STATUS_HUD_XENO_CULTIST]
+
+	holder2.color = null
 	holder3.color = null
+	holder4.color = null
+
+	holder4.icon_state = "hudblank"
 
 	if(species && species.flags & IS_SYNTHETIC)
 		holder.icon_state = "hudsynth"
@@ -287,6 +293,15 @@ var/datum/mob_hud/huds = list(
 		var/datum/internal_organ/heart/heart = internal_organs_by_name["heart"]
 
 		var/holder2_set = 0
+		if(hivenumber)
+			holder4.icon_state = "hudalien"
+
+			if(hive_datum[hivenumber])
+				var/datum/hive_status/hive = hive_datum[hivenumber]
+
+				if(hive && hive.color)
+					holder4.color = hive.color
+
 		if(status_flags & XENO_HOST)
 			holder2.icon_state = "hudxeno"//Observer and admin HUD only
 			holder2_set = 1

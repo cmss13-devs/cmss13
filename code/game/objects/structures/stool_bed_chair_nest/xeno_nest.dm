@@ -56,6 +56,11 @@
 		if(!X.hive.unnesting_allowed && !isXenoBuilder(X) && X.hivenumber == hivenumber)
 			to_chat(X, SPAN_XENOWARNING("You shouldn't interfere with the nest, leave that to the drones."))
 			return
+	else if(iscarbon(user))
+		var/mob/living/carbon/H = user
+		if(H.hivenumber == hivenumber)
+			to_chat(H, SPAN_XENOWARNING("You shouldn't interfere with the nest, leave that to the drones."))
+			return
 
 	buckled_mob.visible_message(SPAN_NOTICE("\The [user] pulls \the [buckled_mob] free from \the [src]!"),\
 	SPAN_NOTICE("\The [user] pulls you free from \the [src]."),\

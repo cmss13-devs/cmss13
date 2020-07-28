@@ -219,7 +219,7 @@
 			body += "<option value='?_src_=vars;edit_skill=\ref[D]'>Edit Skills</option>"
 			body += "<option value='?_src_=vars;setspecies=\ref[D]'>Set Species</option>"
 			body += "<option value='?_src_=vars;selectequipment=\ref[D]'>Select Equipment</option>"
-		if(isXeno(D))
+		if(iscarbon(D))
 			body += "<option value='?_src_=vars;changehivenumber=\ref[D]'>Change Hivenumber</option>"
 		body += "<option value>---</option>"
 		body += "<option value='?_src_=vars;gib=\ref[D]'>Gib</option>"
@@ -671,9 +671,9 @@ body
 		if(!check_rights(R_DEBUG|R_ADMIN))	
 			return
 
-		var/mob/living/carbon/Xenomorph/X = locate(href_list["changehivenumber"])
+		var/mob/living/carbon/X = locate(href_list["changehivenumber"])
 		if(!istype(X))
-			to_chat(usr, "This can only be done to instances of type /mob/living/carbon/Xenomorph")
+			to_chat(usr, "This can only be done to instances of type /mob/living/carbon")
 			return
 
 		var/list/hives = list()
@@ -683,7 +683,7 @@ body
 		var/newhive = input(src,"Select a hive.", null, null) in hives
 
 		if(!X)
-			to_chat(usr, "This xeno no longer exists")
+			to_chat(usr, "This mob no longer exists")
 			return
 
 		var/newhivenumber = hives[newhive]

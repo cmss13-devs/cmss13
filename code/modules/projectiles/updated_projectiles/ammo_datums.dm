@@ -1326,11 +1326,12 @@
 	shell_speed = config.slow_shell_speed
 
 /datum/ammo/energy/taser/on_hit_mob(mob/M, obj/item/projectile/P)
-	stun_living(M,P)
-
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
-		H.disable_special_items() // Disables scout cloak
+
+		if(H.getarmor(H.get_limb("chest"), ARMOR_ENERGY) <= CLOTHING_ARMOR_ULTRAHIGH)
+			stun_living(M,P)
+			H.disable_special_items() // Disables scout cloak
 
 /datum/ammo/energy/yautja/New()
 		..()

@@ -30,15 +30,27 @@
 	siemens_coefficient = 0.9
 	flags_armor_protection = 0
 
-//Chaplain
-/obj/item/clothing/head/chaplain_hood
-	name = "chaplain's hood"
-	desc = "It's hood that covers the head. It keeps you warm during the space winters."
+//Cult
+/obj/item/clothing/head/cultist_hood
+	name = "black hood"
+	desc = "It's hood that covers the head."
 	icon_state = "chaplain_hood"
 	flags_inventory = COVEREYES
 	flags_inv_hide = HIDEEARS|HIDEALLHAIR
 	siemens_coefficient = 0.9
 	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_EYES
+
+	flags_cold_protection = BODY_FLAG_HEAD
+	min_cold_protection_temperature = SPACE_HELMET_min_cold_protection_temperature
+
+	armor_bio = CLOTHING_ARMOR_LOW
+	armor_bomb = CLOTHING_ARMOR_LOW
+	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
+	armor_energy = CLOTHING_ARMOR_HARDCORE
+	armor_internaldamage = CLOTHING_ARMOR_LOW
+	armor_rad = CLOTHING_ARMOR_LOW
+	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
+	armor_laser = CLOTHING_ARMOR_LOW
 
 //Chaplain
 /obj/item/clothing/head/nun_hood

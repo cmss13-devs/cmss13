@@ -93,7 +93,7 @@
 	if (!istype(X))
 		return
 
-	if(!isXenoOrHuman(A) || matches_hivemind(A, X))
+	if(!isXenoOrHuman(A) || X.match_hivemind(A))
 		return
 
 	if(!X.check_state())
@@ -189,7 +189,7 @@
 
 	var/sweep_range = 1
 	for(var/mob/living/carbon/H in orange(sweep_range, get_turf(X)))
-		if (!isXenoOrHuman(H) || matches_hivemind(X, H)) continue
+		if (!isXenoOrHuman(H) || X.match_hivemind(H)) continue
 
 		if(H != H.handle_barriers(X)) continue
 		if(H.stat == DEAD) continue

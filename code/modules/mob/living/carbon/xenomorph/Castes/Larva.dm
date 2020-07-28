@@ -98,8 +98,6 @@
 	if(hive)
 		name_prefix = hive.prefix
 		color = hive.color
-	if(hivenumber == XENO_HIVE_CORRUPTED)
-		add_language("English")
 
 	if(amount_grown < max_grown/2) //We're still bloody
 		progress = "Bloody "

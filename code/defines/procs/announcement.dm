@@ -19,8 +19,8 @@
 		for(var/mob/M in targets)
 			if(isobserver(M))
 				continue
-			var/mob/living/carbon/Xenomorph/X = M
-			if(!istype(X) || X.hivenumber != hivenumber)	//additionally filter out those of wrong hive
+			var/mob/living/carbon/X = M
+			if(!istype(X) || !X.allied_to_hivenumber(hivenumber))	//additionally filter out those of wrong hive
 				targets.Remove(X)
 
 		announcement_helper(message, title, targets, sound(get_sfx("queen"),wait = 0,volume = 50))

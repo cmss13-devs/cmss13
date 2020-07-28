@@ -180,7 +180,6 @@
 	fullscreen_vision = /obj/screen/fullscreen/nvg
 
 
-
 /obj/item/storage/fancy/blackgoo
 	icon = 'icons/obj/items/black_goo_stuff.dmi'
 	icon_state = "goobox"

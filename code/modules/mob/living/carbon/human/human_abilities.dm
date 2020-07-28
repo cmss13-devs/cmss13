@@ -115,3 +115,255 @@
 
 /datum/action/human_action/smartpack/repair_form/cooldown_check(var/obj/item/storage/backpack/marine/smartpack/S)
 	return S.repairing
+
+/*
+CULT
+*/
+/datum/action/human_action/activable
+	var/ability_used_time = 0
+
+/datum/action/human_action/activable/can_use_action()
+	var/mob/living/carbon/human/H = owner
+	if(istype(H) && !H.is_mob_incapacitated() && !H.dazed)
+		return TRUE
+
+// Called when the action is clicked on.
+/datum/action/human_action/activable/action_activate()
+	if(!ishuman(owner))
+		return
+	var/mob/living/carbon/human/H = owner
+	if(H.selected_ability == src)
+		to_chat(H, "You will no longer use [name] with \
+			[H.client && H.client.prefs && H.client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK ? "middle-click" : "shift-click"].")
+		button.icon_state = "template"
+		H.selected_ability = null
+	else
+		to_chat(H, "You will now use [name] with \
+			[H.client && H.client.prefs && H.client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK ? "middle-click" : "shift-click"].")
+		if(H.selected_ability)
+			H.selected_ability.button.icon_state = "template"
+			H.selected_ability = null
+		button.icon_state = "template_on"
+		H.selected_ability = src
+
+/datum/action/human_action/activable/remove_action(mob/living/carbon/human/H)
+	..()
+	if(H.selected_ability == src)
+		H.selected_ability = null
+
+/datum/action/human_action/activable/proc/use_ability(var/mob/M)
+	return
+
+/datum/action/human_action/activable/update_button_icon()
+	if(!button)
+		return
+	if(!action_cooldown_check())
+		button.color = rgb(240,180,0,200)
+	else
+		button.color = rgb(255,255,255,255)
+
+/datum/action/human_action/activable/action_cooldown_check()
+	return ability_used_time <= world.time
+
+/datum/action/human_action/activable/proc/enter_cooldown(var/amount = cooldown)
+	ability_used_time = world.time + amount
+
+	update_button_icon()
+
+	add_timer(CALLBACK(src, .proc/update_button_icon), amount)
+
+/datum/action/human_action/activable/cult
+	name = "Activable Cult Ability"
+
+/datum/action/human_action/activable/cult/speak_hivemind
+	name = "Speak in Hivemind"
+	action_icon_state = "cultist_channel_hivemind"
+
+/datum/action/human_action/activable/cult/speak_hivemind/action_activate()
+	if(!can_use_action())
+		return
+
+	var/mob/living/carbon/human/H = owner
+
+
+	var/input = input(H, "Say in Hivemind", "Hivemind Chat")
+
+	if(!input)
+		return
+
+	var/datum/hive_status/hive = hive_datum[H.hivenumber]
+
+	if(!istype(hive))
+		return
+
+	H.hivemind_broadcast(input, hive)
+
+/datum/action/human_action/activable/cult/obtain_equipment
+	name = "Obtain Equipment"
+	action_icon_state = "cultist_channel_equipment"
+	var/list/items_to_spawn = list(/obj/item/clothing/suit/cultist_hoodie/, /obj/item/clothing/head/cultist_hood/)
+
+/datum/action/human_action/activable/cult/obtain_equipment/action_activate()
+	if(!can_use_action())
+		return
+
+	var/mob/living/carbon/human/H = owner
+
+	var/input = alert(H, "Once obtained, you'll be unable to take it off. Confirm selection.", "Obtain Equipment","Yes","No")
+
+	if(input == "No")
+		to_chat(H, SPAN_WARNING("You have decided not to obtain your equipment."))
+		return
+
+	H.visible_message(SPAN_DANGER("[H] gets onto their knees and begins praying."), \
+	SPAN_WARNING("You get onto your knees to pray."))
+
+	if(!do_after(H, SECONDS_3, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+		to_chat(H, SPAN_WARNING("You decide not to retrieve your equipment."))
+		return
+
+	H.drop_inv_item_on_ground(H.get_item_by_slot(WEAR_JACKET), FALSE, TRUE)
+	H.drop_inv_item_on_ground(H.get_item_by_slot(WEAR_HEAD), FALSE, TRUE)
+
+	var/obj/item/clothing/C = new /obj/item/clothing/suit/cultist_hoodie()
+	H.equip_to_slot_or_del(C, WEAR_JACKET)
+	C.flags_item = NODROP
+
+	C = new /obj/item/clothing/head/cultist_hood()
+	H.equip_to_slot_or_del(C, WEAR_HEAD)
+	C.flags_item = NODROP
+
+	H.put_in_any_hand_if_possible(new /obj/item/device/flashlight, FALSE, TRUE)
+
+	playsound(H.loc, 'sound/voice/scream_horror1.ogg', 25)
+
+	H.visible_message(SPAN_HIGHDANGER("[H] puts on their robes."), SPAN_WARNING("You put on your robes."))
+	for(var/datum/action/human_action/activable/cult/obtain_equipment/O in H.actions)
+		O.remove_action(H)
+
+/datum/action/human_action/activable/cult_leader
+	name = "Activable Leader Ability"
+
+/datum/action/human_action/activable/cult_leader/proc/can_target(var/mob/living/carbon/human/H)
+	if(!ishuman(owner))
+		return
+	var/mob/living/carbon/human/Hu = owner
+
+	if(skillcheck(H, SKILL_LEADERSHIP, SKILL_LEAD_EXPERT) || skillcheck(H, SKILL_POLICE, SKILL_POLICE_MP))
+		to_chat(Hu, SPAN_WARNING("This mind is too strong to target with your abilities."))
+		return
+
+	return H.stat != DEAD && istype(H) && isHumanStrict(H) && H.hivenumber != Hu.hivenumber && !isnull(get_hive())
+
+/datum/action/human_action/activable/cult_leader/proc/get_hive()
+	if(!ishuman(owner))
+		return
+	var/mob/living/carbon/human/H = owner
+
+	if(!H.hivenumber in hive_datum)
+		return
+
+	var/datum/hive_status/hive = hive_datum[H.hivenumber]
+
+	if(!hive.living_xeno_queen && !hive.allow_no_queen_actions)
+		return
+
+	return hive
+
+/datum/action/human_action/activable/cult_leader/convert
+	name = "Convert"
+	action_icon_state = "cultist_channel_convert"
+
+/datum/action/human_action/activable/cult_leader/convert/use_ability(var/mob/M)
+	var/datum/hive_status/hive = get_hive()
+
+	if(!istype(hive))
+		to_chat(owner, SPAN_DANGER("There is no Queen. You are alone."))
+		return
+
+	if(!can_use_action())
+		return
+
+	var/mob/living/carbon/human/H = owner
+
+	var/mob/living/carbon/human/chosen = M
+
+	if(!can_target(chosen))
+		return
+
+	if(chosen.stat != CONSCIOUS)
+		to_chat(H, SPAN_XENOMINORWARNING("[chosen] must be conscious for the conversion to work!"))
+		return
+
+	if(!do_after(H, SECONDS_10, INTERRUPT_ALL, BUSY_ICON_HOSTILE, chosen, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+		to_chat(H, SPAN_XENOMINORWARNING("You decide not to convert [chosen]."))
+		return
+
+	var/datum/equipment_preset/other/xeno_cultist/XC = new()
+
+	XC.load_race(chosen, H.hivenumber)
+	XC.load_status(chosen)
+
+	chosen.faction = hive.name
+
+	to_chat(chosen, SPAN_HIGHDANGER("<hr>You are now a Xeno Cultist!"))
+	to_chat(chosen, SPAN_DANGER("Worship the Xenomorphs and listen to the Cult Leader for orders. The Cult Leader is typically the person who transformed you. Do not kill anyone unless you are wearing your black robes, you may defend yourself.<hr>"))
+
+	xeno_message("[chosen] has been converted into a cultist!")
+
+	chosen.KnockOut(5)
+	chosen.make_jittery(105)
+
+	if(chosen.client)
+		playsound_client(chosen.client, 'sound/effects/xeno_newlarva.ogg', null, 25)
+
+/datum/action/human_action/activable/cult_leader/stun
+	name = "Psychic Stun"
+	action_icon_state = "cultist_channel_stun"
+
+	cooldown = MINUTES_1
+
+/datum/action/human_action/activable/cult_leader/stun/use_ability(var/mob/M)
+	if(!action_cooldown_check())
+		return
+
+	var/datum/hive_status/hive = get_hive()
+
+	if(!istype(hive))
+		to_chat(owner, SPAN_DANGER("There is no Queen. You are alone."))
+		return
+
+	if(!can_use_action())
+		return
+
+	var/mob/living/carbon/human/H = owner
+
+	var/mob/living/carbon/human/chosen = M
+
+	if(!can_target(chosen))
+		return
+
+	to_chat(chosen, SPAN_HIGHDANGER("You feel a dangerous presence in the back of your head. You find yourself unable to move!"))
+
+	chosen.frozen = TRUE
+	chosen.update_canmove()
+
+	chosen.update_xeno_hostile_hud()
+
+	if(!do_after(H, SECONDS_2, INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE, chosen, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+		to_chat(H, SPAN_XENOMINORWARNING("You decide not to stun [chosen]."))
+		unroot_human(chosen)
+
+		enter_cooldown(SECONDS_5)
+		return
+
+	enter_cooldown()
+
+	unroot_human(chosen)
+
+	chosen.KnockOut(10)
+	chosen.make_jittery(105)
+
+	to_chat(chosen, SPAN_HIGHDANGER("An immense psychic wave passes through you, causing you to pass out!"))
+
+	playsound(get_turf(chosen), 'sound/scp/scare1.ogg', 25)

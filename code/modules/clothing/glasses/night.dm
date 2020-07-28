@@ -81,3 +81,22 @@
 /obj/item/clothing/glasses/night/yautja/Dispose()
 	..()
 	return GC_HINT_RECYCLE
+
+/obj/item/clothing/glasses/night/cultist
+	name = "\improper Unusual Thermal Imaging Goggles"
+	desc = "Seems to be thermal imaging goggles, except they have an unusual design. Looking at it makes you nauseous."
+	icon_state = "thermal"
+	item_state = "glasses"
+	w_class = SIZE_SMALL
+	vision_flags = SEE_MOBS
+	darkness_view = 7
+	fullscreen_vision = null
+
+/obj/item/clothing/glasses/night/cultist/mob_can_equip(mob/user, slot)
+	if(slot == WEAR_EYES)
+		if(iscarbon(user))
+			var/mob/living/carbon/H = user
+			if(!H.hivenumber)
+				to_chat(user, SPAN_WARNING("You do not want to put these on, they're making you nauseous."))
+				return FALSE
+	return ..()

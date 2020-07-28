@@ -94,7 +94,7 @@ Your health meter will not regenerate normally, so kill and die for the hive!</s
 	return original_damage + kills * 2.5
 
 /datum/behavior_delegate/predalien_base/handle_slash(mob/M)
-	if(matches_hivemind(bound_xeno, M))
+	if(bound_xeno.match_hivemind(M))
 		return FALSE
 
 	var/mob/living/carbon/Xenomorph/Predalien/X = bound_xeno

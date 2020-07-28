@@ -1040,13 +1040,12 @@
 	else if(href_list["changehivenumber"])
 		if(!check_rights(R_DEBUG|R_ADMIN))	return
 
-		var/mob/living/carbon/Xenomorph/X = locate(href_list["changehivenumber"])
-		if(!istype(X))
-			to_chat(usr, "This can only be done to instances of type /mob/living/carbon/Xenomorph")
+		var/mob/living/carbon/H = locate(href_list["changehivenumber"])
+		if(!istype(H))
+			to_chat(usr, "This can only be done to instances of type /mob/living/carbon/")
 			return
-
-		X.set_hive_and_update(href_list["newhivenumber"])
-		message_admins(SPAN_NOTICE("[key_name(usr)] changed hivenumber of [X] to [X.hivenumber]."), 1)
+		if(usr.client)
+			usr.client.cmd_admin_change_their_hivenumber(H)
 
 	else if(href_list["makeyautja"])
 		if(!check_rights(R_SPAWN))	return

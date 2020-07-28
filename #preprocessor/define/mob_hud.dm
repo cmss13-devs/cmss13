@@ -26,6 +26,7 @@
 #define XENO_STATUS_HUD     "21" // Whether xeno is a leader and its current upgrade level
 #define ORDER_HUD			"22" // If humans are affected by orders or not
 #define XENO_BANISHED_HUD   "23" // indicates that the xeno is banished
+#define STATUS_HUD_XENO_CULTIST "24" // Whether they are a xeno cultist or not
 
 
 

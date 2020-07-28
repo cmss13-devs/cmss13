@@ -738,6 +738,11 @@
 	if(!P)
 		return
 
+	if(isXeno(P.firer))
+		if(match_hivemind(P.firer))
+			bullet_ping(P)
+			return -1
+
 	flash_weak_pain()
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
 	if(ismob(P.weapon_source_mob))
@@ -839,7 +844,7 @@
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
 
 	if(isXeno(P.firer))
-		if(matches_hivemind(P.firer, src))
+		if(match_hivemind(P.firer))
 			bullet_ping(P)
 			return -1
 		else

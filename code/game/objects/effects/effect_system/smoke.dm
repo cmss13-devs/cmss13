@@ -281,10 +281,9 @@
 
 /obj/effect/particle_effect/smoke/xeno_burn/affect(var/mob/living/carbon/M)
 	..()
-	if(isXeno(M))
-		var/mob/living/carbon/Xenomorph/X = M
-		if(X.hivenumber == hivenumber)
-			return
+
+	if(M.allied_to_hivenumber(hivenumber))
+		return
 
 	if(isYautja(M) && prob(75))
 		return

@@ -42,7 +42,7 @@
 
 	for(var/turf/target_turf in target_turfs)
 		for(var/mob/living/carbon/H in target_turf)
-			if (!isXenoOrHuman(H) || matches_hivemind(H, X))
+			if (!isXenoOrHuman(H) || X.match_hivemind(X))
 				continue
 
 			if(!(H in target_mobs))
@@ -55,7 +55,7 @@
 
 	// Loop through our turfs, finding any humans there and dealing damage to them
 	for (var/mob/living/carbon/H in target_mobs)
-		if (!isXenoOrHuman(H) || matches_hivemind(H, X))
+		if (!isXenoOrHuman(H) || X.match_hivemind(H))
 			continue
 
 		if (H.stat)
@@ -105,7 +105,7 @@
 	var/list/target_mobs = list()
 	var/list/L = orange(1, X)
 	for (var/mob/living/carbon/H in L)
-		if (!isXenoOrHuman(H) || matches_hivemind(H, X))
+		if (!isXenoOrHuman(H) || X.match_hivemind(H))
 			continue
 
 		if (!(H in target_mobs))
@@ -118,7 +118,7 @@
 		if (H.stat)
 			continue 
 		
-		if (!isXenoOrHuman(H) || matches_hivemind(H, X))
+		if (!isXenoOrHuman(H) || X.match_hivemind(H))
 			continue
 	
 
@@ -144,7 +144,7 @@
 	if (!check_and_use_plasma_owner())
 		return
 
-	if (!isXenoOrHuman(A) || matches_hivemind(A, X))
+	if (!isXenoOrHuman(A) || X.match_hivemind(A))
 		to_chat(X, SPAN_XENODANGER("You must target a hostile!"))
 		return
 
@@ -250,7 +250,7 @@
 
 	for (var/turf/target_turf in turflist)
 		for (var/mob/living/carbon/H in target_turf)
-			if(!isXenoOrHuman(H) || matches_hivemind(H, X))
+			if(!isXenoOrHuman(H) || X.match_hivemind(H))
 				continue
 			
 			to_chat(H, SPAN_XENOHIGHDANGER("You are knocked over as the ground shakes underneath you!"))
@@ -354,7 +354,7 @@
 			if (H.stat == DEAD)
 				continue 
 				
-			if(!isXenoOrHuman(H) || matches_hivemind(H, X))
+			if(!isXenoOrHuman(H) || X.match_hivemind(H))
 				continue
 
 			if(H.mob_size >= MOB_SIZE_BIG)
@@ -379,7 +379,7 @@
 	if (!X.check_state())
 		return
 
-	if (!isXenoOrHuman(A) || matches_hivemind(A, X))
+	if (!isXenoOrHuman(A) || X.match_hivemind(A))
 		to_chat(X, SPAN_XENODANGER("You must target a hostile!"))
 		apply_cooldown_override(click_miss_cooldown)
 		return
@@ -492,7 +492,7 @@
 	if (!istype(X) || !X.check_state())
 		return
 
-	if (!isXenoOrHuman(A) || matches_hivemind(A, X))
+	if (!isXenoOrHuman(A) || X.match_hivemind(A))
 		to_chat(X, SPAN_XENODANGER("You must target a hostile!"))
 		apply_cooldown_override(click_miss_cooldown)
 		return
@@ -619,7 +619,7 @@
 	if(!A || A.layer >= FLY_LAYER || !isturf(X.loc) || !X.check_state()) 
 		return
 
-	if (!isXeno(A) || !matches_hivemind(A, X))
+	if (!isXeno(A) || !X.match_hivemind(A))
 		to_chat(X, SPAN_XENODANGER("You must target one of your sisters!"))
 		return
 

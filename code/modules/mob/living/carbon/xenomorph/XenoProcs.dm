@@ -21,7 +21,7 @@
 	if(ticker && ticker.mode && ticker.mode.xenomorphs.len) //Send to only xenos in our gamemode list. This is faster than scanning all mobs
 		for(var/datum/mind/L in ticker.mode.xenomorphs)
 			var/mob/living/carbon/M = L.current
-			if(M && istype(M) && !M.stat && M.client && M.allied_to_hivenumber(hivenumber)) //Only living and connected xenos
+			if(M && istype(M) && !M.stat && M.client && M.allied_to_hivenumber(hivenumber, XENO_SLASH_RESTRICTED)) //Only living and connected xenos
 				to_chat(M, SPAN_XENODANGER("<span class=\"[fontsize_style]\"> [message]</span>"))
 
 //Adds stuff to your "Status" pane -- Specific castes can have their own, like carrier hugger count

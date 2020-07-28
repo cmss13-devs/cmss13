@@ -494,7 +494,7 @@
 
 /datum/equipment_preset/other/xeno_cultist/load_race(mob/living/carbon/human/H, var/hivenumber = XENO_HIVE_NORMAL)
 	. = ..()
-	H.hivenumber = XENO_HIVE_NORMAL
+	H.hivenumber = hivenumber
 
 /datum/equipment_preset/other/xeno_cultist/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/marine/satchel
@@ -515,6 +515,8 @@
 /datum/equipment_preset/other/xeno_cultist/load_status(mob/living/carbon/human/H, var/hivenumber = XENO_HIVE_NORMAL)
 	if(ticker && ticker.mode && H.mind)
 		ticker.mode.xenomorphs += H.mind
+	
+	living_xeno_list += H
 
 	var/list/huds_to_add = list(MOB_HUD_XENO_INFECTION, MOB_HUD_XENO_STATUS)
 

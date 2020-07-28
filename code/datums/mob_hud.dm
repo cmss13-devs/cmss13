@@ -299,8 +299,11 @@ var/datum/mob_hud/huds = list(
 			if(hive_datum[hivenumber])
 				var/datum/hive_status/hive = hive_datum[hivenumber]
 
-				if(hive && hive.color)
-					holder4.color = hive.color
+				if(hive)
+					if(hive.color)
+						holder4.color = hive.color
+					if(hive.leading_cult_sl == src)
+						holder4.icon_state = "hudalien_leader"
 
 		if(status_flags & XENO_HOST)
 			holder2.icon_state = "hudxeno"//Observer and admin HUD only

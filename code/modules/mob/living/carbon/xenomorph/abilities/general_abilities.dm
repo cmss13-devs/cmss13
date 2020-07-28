@@ -20,6 +20,7 @@
 /datum/action/xeno_action/onclick/xeno_resting
 	name = "Rest"
 	action_icon_state = "resting"
+	macro_path = /datum/action/xeno_action/verb/verb_xeno_resting
 	action_type = XENO_ACTION_CLICK
 
 //resting action can be done even when lying down

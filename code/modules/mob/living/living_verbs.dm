@@ -141,14 +141,3 @@
 
 /mob/living/proc/resist_restraints()
 	return
-
-/mob/living/verb/lay_down()
-	set name = "Rest"
-	set category = "IC"
-
-	if(!resting)
-		KnockDown(1) //so that the mob immediately falls over
-
-	resting = !resting
-
-	to_chat(src, SPAN_NOTICE("You are now [resting ? "resting." : "getting up."]"))

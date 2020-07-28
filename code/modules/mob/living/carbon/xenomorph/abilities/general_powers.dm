@@ -59,6 +59,14 @@
 		to_chat(X, SPAN_WARNING("No time to rest, must KILL!"))
 		return
 
+	if(isXenoDefender(X) && X.fortify)
+		to_chat(X, SPAN_WARNING("You cannot rest while fortified!"))
+		return
+
+	if(isXenoBurrower(X) && X.burrow)
+		to_chat(X, SPAN_WARNING("You cannot rest while burrowed!"))
+		return
+
 	if(!X.resting)
 		X.KnockDown(1) //so that the mob immediately falls over
 

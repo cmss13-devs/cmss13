@@ -150,6 +150,7 @@
 	H.disable_special_flags()
 	H.disable_lights()
 	H.disable_special_items()
+	null_ghost_of_buckled_mob()
 
 	var/choice = alert(M, "You have no possibility of escaping unless freed by your fellow marines, do you wish to Ghost? If you are freed while ghosted, you will be given the choice to return to your body.", ,"Ghost", "Remain")
 	if(choice == "Ghost")
@@ -186,10 +187,10 @@
 			return
 			
 		if(alert(ghost_of_buckled_mob, "You have been freed from your nest, do you want to return to your body?", ,"Yes", "No") == "Yes")
-			if(!ghost_of_buckled_mob)
+			if(!ghost_of_buckled_mob && !ghost_of_buckled_mob.mind)
 				return
-			ghost_of_buckled_mob.can_reenter_corpse = TRUE
-			ghost_of_buckled_mob.reenter_corpse()
+			ghost_of_buckled_mob.mind.transfer_to(H, TRUE)
+			qdel(ghost_of_buckled_mob)
 			null_ghost_of_buckled_mob()
 
 /obj/structure/bed/nest/ex_act(var/power)

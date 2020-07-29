@@ -42,7 +42,7 @@
 
 	for(var/turf/target_turf in target_turfs)
 		for(var/mob/living/carbon/H in target_turf)
-			if (!isXenoOrHuman(H) || X.match_hivemind(X))
+			if (!isXenoOrHuman(H) || X.match_hivemind(H))
 				continue
 
 			if(!(H in target_mobs))

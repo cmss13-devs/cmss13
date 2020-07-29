@@ -156,7 +156,7 @@
 
     unroot_human(H)
 
-    X.visible_message(SPAN_XENODANGER("[X] rapidly slices into "))
+    X.visible_message(SPAN_XENODANGER("[X] rapidly slices into [H]!"))
 
     . = ..()
     return

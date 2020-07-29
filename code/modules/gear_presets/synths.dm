@@ -65,7 +65,7 @@
 	paygrade = "???"
 	role_comm_title = "Syn"
 
-/datum/equipment_preset/synth/uscm/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/synth/uscm/councillor/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/marine/satchel
 	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
 		backItem = /obj/item/storage/backpack/industrial

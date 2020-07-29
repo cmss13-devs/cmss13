@@ -33,3 +33,13 @@
 /obj/effect/landmark/item_pool_spawner/prison_lock/master
 	type_to_spawn = /obj/item/card/data/prison
 	quota = 2
+
+/obj/effect/landmark/item_pool_spawner/survivor_ammo
+	pool_name = "Survivor ammo pool"
+	quota = 3
+
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot
+	type_to_spawn = /obj/item/ammo_magazine/shotgun/buckshot
+
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1
+	type_to_spawn = /obj/item/ammo_magazine/rifle/m41aMK1

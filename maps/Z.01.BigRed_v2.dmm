@@ -1304,10 +1304,10 @@
 /turf/open/floor,
 /area/bigredv2/outside/marshall_office)
 "adl" = (
+/turf/open/floor/plating,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
-/turf/open/floor/plating,
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "platingdmg2";
@@ -2956,6 +2956,8 @@
 	dir = 8
 	},
 /obj/effect/landmark/objective_landmark/far,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor{
 	icon_state = "dark";
 	tag = "icon-dark"
@@ -3499,17 +3501,23 @@
 /obj/structure/table,
 /obj/item/clothing/suit/storage/CMB,
 /obj/effect/landmark/objective_landmark/medium,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor,
 /area/bigredv2/outside/marshall_office)
 "aiM" = (
 /obj/structure/table,
 /obj/item/handcuffs,
 /obj/effect/landmark/objective_landmark/medium,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor,
 /area/bigredv2/outside/marshall_office)
 "aiN" = (
 /obj/structure/table,
 /obj/effect/landmark/objective_landmark/medium,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor,
 /area/bigredv2/outside/marshall_office)
 "aiO" = (
@@ -3642,6 +3650,8 @@
 /obj/structure/table,
 /obj/item/trash/kepler,
 /obj/effect/landmark/objective_landmark/medium,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor,
 /area/bigredv2/outside/marshall_office)
 "ajg" = (
@@ -3908,6 +3918,8 @@
 	dir = 4
 	},
 /obj/effect/landmark/objective_landmark/medium,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor,
 /area/bigredv2/outside/marshall_office)
 "ajO" = (
@@ -4589,6 +4601,8 @@
 "alA" = (
 /obj/structure/table,
 /obj/effect/landmark/objective_landmark/medium,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -4719,6 +4733,8 @@
 "alT" = (
 /obj/structure/table/woodentable,
 /obj/effect/landmark/objective_landmark/medium,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -4953,6 +4969,8 @@
 	dir = 4
 	},
 /obj/effect/landmark/objective_landmark/medium,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -6896,6 +6914,8 @@
 "arx" = (
 /obj/structure/table,
 /obj/effect/landmark/objective_landmark/far,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor{
 	icon_state = "dark";
 	tag = "icon-dark"
@@ -6908,6 +6928,8 @@
 	dir = 8
 	},
 /obj/effect/landmark/objective_landmark/far,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor{
 	icon_state = "dark";
 	tag = "icon-dark"
@@ -8773,6 +8795,8 @@
 /obj/structure/table,
 /obj/item/trash/burger,
 /obj/effect/landmark/objective_landmark/science,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "whitegreen";
@@ -9091,6 +9115,8 @@
 /obj/structure/table,
 /obj/item/storage/pill_bottle/tramadol,
 /obj/effect/landmark/objective_landmark/science,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "whitegreen";
@@ -9471,6 +9497,8 @@
 /obj/structure/table,
 /obj/item/trash/plate,
 /obj/effect/landmark/objective_landmark/medium,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
 "axL" = (
@@ -9921,6 +9949,8 @@
 /obj/structure/table,
 /obj/item/bodybag/cryobag,
 /obj/item/bodybag/cryobag,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "whitegreen";
@@ -9931,6 +9961,8 @@
 /obj/structure/table,
 /obj/structure/table,
 /obj/item/bodybag/cryobag,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "whitegreen";
@@ -9945,6 +9977,8 @@
 /obj/item/bodybag/cryobag,
 /obj/item/storage/box/gloves,
 /obj/item/reagent_container/spray/cleaner,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
 	dir = 5;
 	icon_state = "whitegreen";
@@ -10929,6 +10963,8 @@
 /obj/structure/table/woodentable,
 /obj/item/toy/beach_ball,
 /obj/effect/landmark/objective_landmark/medium,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -11536,6 +11572,8 @@
 "aDa" = (
 /obj/structure/table,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor,
 /area/bigredv2/outside/hydroponics)
 "aDb" = (
@@ -12635,6 +12673,8 @@
 "aFI" = (
 /obj/structure/table/reinforced,
 /obj/item/trash/buritto,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor{
 	icon_state = "whitegreenfull";
 	tag = "icon-whitegreenfull"
@@ -12643,6 +12683,8 @@
 "aFJ" = (
 /obj/structure/table/reinforced,
 /obj/item/device/healthanalyzer,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -12719,6 +12761,8 @@
 /obj/structure/table/woodentable,
 /obj/item/device/radio,
 /obj/effect/landmark/objective_landmark/medium,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -13948,6 +13992,8 @@
 /obj/structure/table/woodentable,
 /obj/item/paper,
 /obj/effect/landmark/objective_landmark/far,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -14044,6 +14090,8 @@
 	dir = 4
 	},
 /obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "aIU" = (
@@ -14402,6 +14450,8 @@
 /obj/structure/table/woodentable,
 /obj/item/toy/dice/d20,
 /obj/effect/landmark/objective_landmark/far,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -14740,6 +14790,8 @@
 "aKn" = (
 /obj/structure/table,
 /obj/effect/landmark/objective_landmark/far,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor,
 /area/bigredv2/outside/office_complex)
 "aKo" = (
@@ -15132,6 +15184,8 @@
 /obj/structure/table,
 /obj/structure/machinery/light,
 /obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "aLo" = (
@@ -15141,6 +15195,8 @@
 	dir = 1
 	},
 /obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "aLp" = (
@@ -15157,6 +15213,8 @@
 /obj/structure/pipes/vents/pump,
 /obj/item/trash/cheesie,
 /obj/effect/landmark/objective_landmark/medium,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -15186,6 +15244,8 @@
 	},
 /obj/effect/decal/cleanable/blood,
 /obj/effect/landmark/objective_landmark/medium,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -15313,6 +15373,8 @@
 "aLK" = (
 /obj/structure/table,
 /obj/effect/landmark/objective_landmark/medium,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "aLM" = (
@@ -15340,6 +15402,8 @@
 "aLN" = (
 /obj/structure/table,
 /obj/effect/landmark/objective_landmark/medium,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "aLO" = (
@@ -15358,6 +15422,8 @@
 /obj/structure/table,
 /obj/item/tool/lighter/random,
 /obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "aLQ" = (
@@ -15694,6 +15760,8 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/item/tool/pen,
 /obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "aMC" = (
@@ -16302,6 +16370,8 @@
 /obj/structure/table,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/trash/plate,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
 	icon_state = "yellowfull";
 	tag = "icon-yellowfull"
@@ -16333,6 +16403,8 @@
 /obj/structure/table,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
 	icon_state = "yellowfull";
 	tag = "icon-yellowfull"
@@ -16342,6 +16414,8 @@
 /obj/structure/table,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/tool/kitchen/utensil/spoon,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor,
 /area/bigredv2/outside/hydroponics)
 "aOh" = (
@@ -16624,6 +16698,8 @@
 /obj/item/trash/cheesie,
 /obj/item/trash/pistachios,
 /obj/effect/landmark/objective_landmark/medium,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -16649,6 +16725,8 @@
 /obj/structure/pipes/vents/pump{
 	dir = 4
 	},
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor,
 /area/bigredv2/outside/hydroponics)
 "aOX" = (
@@ -16657,6 +16735,8 @@
 	dir = 4
 	},
 /obj/item/trash/tray,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
 	icon_state = "yellowfull";
 	tag = "icon-yellowfull"
@@ -16688,6 +16768,8 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor,
 /area/bigredv2/outside/hydroponics)
 "aPb" = (
@@ -16726,6 +16808,8 @@
 	dir = 4
 	},
 /obj/item/trash/plate,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
 	icon_state = "yellowfull";
 	tag = "icon-yellowfull"
@@ -16766,6 +16850,8 @@
 /obj/structure/table,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/trash/plate,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor,
 /area/bigredv2/outside/hydroponics)
 "aPj" = (
@@ -17194,6 +17280,8 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
 	icon_state = "yellowfull";
 	tag = "icon-yellowfull"
@@ -17206,6 +17294,8 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor,
 /area/bigredv2/outside/hydroponics)
 "aQg" = (
@@ -17277,10 +17367,14 @@
 "aQo" = (
 /obj/structure/table,
 /obj/item/trash/plate,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor,
 /area/bigredv2/outside/hydroponics)
 "aQp" = (
 /obj/structure/table,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
 	icon_state = "yellowfull";
 	tag = "icon-yellowfull"
@@ -17481,6 +17575,8 @@
 /obj/effect/decal/cleanable/blood,
 /obj/item/alien_embryo,
 /obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor{
 	icon_state = "yellowfull";
 	tag = "icon-yellowfull"
@@ -17491,6 +17587,8 @@
 /obj/effect/decal/cleanable/blood,
 /obj/item/tool/kitchen/knife,
 /obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor{
 	icon_state = "yellowfull";
 	tag = "icon-yellowfull"
@@ -17502,6 +17600,8 @@
 /obj/item/tool/lighter/random,
 /obj/item/storage/toolbox/mechanical,
 /obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor{
 	icon_state = "yellowfull";
 	tag = "icon-yellowfull"
@@ -18299,6 +18399,8 @@
 	},
 /obj/item/tool/surgery/surgicaldrill,
 /obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor{
 	icon_state = "yellowfull";
 	tag = "icon-yellowfull"
@@ -18311,6 +18413,8 @@
 	},
 /obj/item/device/healthanalyzer,
 /obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor{
 	icon_state = "yellowfull";
 	tag = "icon-yellowfull"
@@ -18323,6 +18427,8 @@
 	},
 /obj/item/device/multitool,
 /obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor{
 	icon_state = "yellowfull";
 	tag = "icon-yellowfull"
@@ -19299,6 +19405,8 @@
 /obj/structure/table,
 /obj/item/toy/dice,
 /obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor{
 	icon_state = "yellowfull";
 	tag = "icon-yellowfull"
@@ -19308,6 +19416,8 @@
 /obj/structure/table,
 /obj/item/weapon/gun/pistol/holdout,
 /obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor{
 	icon_state = "yellowfull";
 	tag = "icon-yellowfull"
@@ -19317,6 +19427,8 @@
 /obj/structure/table,
 /obj/item/tool/kitchen/knife,
 /obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor{
 	icon_state = "yellowfull";
 	tag = "icon-yellowfull"
@@ -20918,6 +21030,8 @@
 /obj/structure/table,
 /obj/item/tool/lighter/random,
 /obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "aZR" = (
@@ -20927,6 +21041,8 @@
 	health = 80
 	},
 /obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "aZS" = (
@@ -21028,6 +21144,8 @@
 /obj/structure/table,
 /obj/item/cell/hyper,
 /obj/effect/landmark/objective_landmark/far,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -21036,6 +21154,8 @@
 /obj/structure/table,
 /obj/item/reagent_container/glass/beaker/sulphuric,
 /obj/effect/landmark/objective_landmark/far,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -21044,6 +21164,8 @@
 /obj/structure/table,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/landmark/objective_landmark/far,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -21185,6 +21307,8 @@
 /obj/structure/table/reinforced,
 /obj/item/tool/crowbar,
 /obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "baF" = (
@@ -21654,6 +21778,8 @@
 	},
 /obj/item/reagent_container/food/drinks/bottle/sake,
 /obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "bbV" = (
@@ -21875,6 +22001,8 @@
 /obj/structure/table,
 /obj/effect/spawner/random/technology_scanner,
 /obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "bcB" = (
@@ -22394,6 +22522,8 @@
 	dir = 4
 	},
 /obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "beg" = (
@@ -22719,6 +22849,8 @@
 	dir = 4
 	},
 /obj/effect/landmark/objective_landmark/far,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -23225,6 +23357,8 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/item/trash/syndi_cakes,
 /obj/effect/landmark/objective_landmark/far,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -23344,6 +23478,8 @@
 /obj/structure/table,
 /obj/item/device/multitool,
 /obj/effect/landmark/objective_landmark/far,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -23352,6 +23488,8 @@
 /obj/structure/table,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/objective_landmark/far,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -24323,6 +24461,8 @@
 /obj/structure/table,
 /obj/item/clothing/ears/earmuffs,
 /obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "bjQ" = (
@@ -24639,6 +24779,8 @@
 /obj/effect/spawner/random/tool,
 /obj/effect/spawner/random/tool,
 /obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "blg" = (
@@ -24758,6 +24900,8 @@
 /obj/effect/spawner/random/toolbox,
 /obj/item/tool/extinguisher,
 /obj/effect/landmark/objective_landmark/medium,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "bly" = (
@@ -24797,6 +24941,8 @@
 /obj/item/circuitboard/firealarm,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/objective_landmark/far,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "blE" = (
@@ -24861,6 +25007,8 @@
 	dir = 8
 	},
 /obj/effect/landmark/objective_landmark/medium,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "blX" = (
@@ -24900,6 +25048,8 @@
 	pixel_x = 32
 	},
 /obj/effect/landmark/objective_landmark/far,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "bme" = (
@@ -24956,6 +25106,8 @@
 "bmq" = (
 /obj/structure/table,
 /obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bmr" = (
@@ -25019,6 +25171,8 @@
 	dir = 4
 	},
 /obj/effect/landmark/objective_landmark/medium,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "bmD" = (
@@ -25041,6 +25195,8 @@
 /obj/item/tool/lighter/random,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/objective_landmark/far,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "bmJ" = (
@@ -25251,6 +25407,8 @@
 /obj/structure/table,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bnw" = (
@@ -25566,6 +25724,8 @@
 	dir = 1
 	},
 /obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "boS" = (
@@ -25573,6 +25733,8 @@
 /obj/effect/spawner/random/tool,
 /obj/effect/spawner/random/technology_scanner,
 /obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "boU" = (
@@ -26082,6 +26244,8 @@
 /obj/structure/table,
 /obj/item/paper,
 /obj/effect/landmark/objective_landmark/medium,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "bqX" = (
@@ -26144,6 +26308,8 @@
 /obj/effect/spawner/random/toolbox,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "brm" = (
@@ -26154,6 +26320,8 @@
 /obj/structure/table,
 /obj/effect/spawner/random/technology_scanner,
 /obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bro" = (
@@ -26176,6 +26344,8 @@
 /obj/structure/table,
 /obj/item/stack/cable_coil,
 /obj/effect/landmark/objective_landmark/medium,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "bry" = (
@@ -26206,6 +26376,8 @@
 	pixel_x = 30
 	},
 /obj/effect/landmark/objective_landmark/medium,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "brB" = (
@@ -26272,6 +26444,8 @@
 /obj/structure/table,
 /obj/effect/spawner/random/powercell,
 /obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "brO" = (
@@ -26301,6 +26475,8 @@
 /obj/item/stack/cable_coil,
 /obj/item/stack/cable_coil,
 /obj/effect/landmark/objective_landmark/medium,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "brV" = (
@@ -26314,6 +26490,8 @@
 /obj/structure/table,
 /obj/item/weapon/melee/baton,
 /obj/effect/landmark/objective_landmark/medium,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "brY" = (
@@ -26463,6 +26641,8 @@
 /obj/structure/machinery/light,
 /obj/structure/table,
 /obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bsL" = (
@@ -26471,6 +26651,8 @@
 	},
 /obj/structure/table,
 /obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bsM" = (
@@ -26592,6 +26774,8 @@
 /obj/structure/table,
 /obj/item/device/analyzer,
 /obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "btu" = (
@@ -26605,6 +26789,8 @@
 "btx" = (
 /obj/structure/table,
 /obj/effect/landmark/objective_landmark/far,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "btA" = (
@@ -30357,6 +30543,14 @@
 	tag = "icon-asteroidwarning (NORTH)"
 	},
 /area/bigredv2/outside/s)
+"ccP" = (
+/obj/structure/table,
+/obj/effect/spawner/random/bomb_supply,
+/obj/effect/landmark/objective_landmark/medium,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
+/turf/open/floor,
+/area/bigredv2/outside/filtration_plant)
 "cqj" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor{
@@ -30486,6 +30680,13 @@
 	tag = "icon-mars_cave_8"
 	},
 /area/bigredv2/caves_virology)
+"dJc" = (
+/obj/structure/table,
+/obj/effect/landmark/objective_landmark/medium,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/floor,
+/area/bigredv2/outside/dorms)
 "dPs" = (
 /obj/effect/landmark{
 	name = "monkey_spawn"
@@ -30592,6 +30793,15 @@
 /obj/structure/pipes/standard/manifold/hidden/green,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
+"eHx" = (
+/obj/structure/table/woodentable,
+/obj/effect/landmark/objective_landmark/medium,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/dorms)
 "eHA" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor{
@@ -30755,6 +30965,14 @@
 	tag = "icon-mars_cave_6"
 	},
 /area/bigredv2/caves_virology)
+"fOK" = (
+/obj/structure/table,
+/obj/effect/spawner/random/toolbox,
+/obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/floor,
+/area/bigredv2/outside/engineering)
 "fPA" = (
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/mars,
@@ -30881,6 +31099,13 @@
 	},
 /turf/open/floor,
 /area/bigredv2/outside/hydroponics)
+"gCx" = (
+/obj/structure/table,
+/obj/effect/landmark/objective_landmark/medium,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/floor,
+/area/bigredv2/outside/filtration_plant)
 "gCE" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
@@ -31004,6 +31229,13 @@
 	tag = "icon-dark"
 	},
 /area/bigredv2/caves/lambda/research)
+"hzy" = (
+/obj/structure/table,
+/obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/floor,
+/area/bigredv2/outside/cargo)
 "hAj" = (
 /obj/effect/alien/weeds/node,
 /turf/open/mars_cave,
@@ -31053,7 +31285,8 @@
 	dir = 4;
 	icon_state = "asteroidwarning";
 	tag = "icon-asteroidwarning (EAST)"
-	})
+	},
+/area/space)
 "ibP" = (
 /turf/open/floor/plating,
 /area/bigredv2/caves_research)
@@ -31203,6 +31436,14 @@
 	tag = "icon-mars_cave_10"
 	},
 /area/bigredv2/caves_lambda)
+"jhF" = (
+/obj/structure/table,
+/obj/effect/spawner/random/tool,
+/obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
+/turf/open/floor,
+/area/bigredv2/outside/engineering)
 "jnR" = (
 /turf/open/floor{
 	dir = 9;
@@ -31258,6 +31499,21 @@
 	tag = "icon-asteroidwarning (NORTH)"
 	},
 /area/bigredv2/caves_sw)
+"jUc" = (
+/obj/structure/table,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/floor,
+/area/bigredv2/outside/hydroponics)
+"jUM" = (
+/obj/structure/table/woodentable,
+/obj/effect/landmark/objective_landmark/medium,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/bar)
 "jXX" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_14";
@@ -31451,6 +31707,15 @@
 	tag = "icon-darkblue2"
 	},
 /area/bigredv2/caves/eta/research)
+"lDa" = (
+/obj/structure/table/woodentable,
+/obj/effect/landmark/objective_landmark/far,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/library)
 "lUq" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_18";
@@ -31690,6 +31955,14 @@
 	tag = "icon-mars_cave_5"
 	},
 /area/bigredv2/caves_virology)
+"oEJ" = (
+/obj/structure/table,
+/obj/effect/spawner/random/toolbox,
+/obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/floor,
+/area/bigredv2/outside/cargo)
 "oOk" = (
 /obj/effect/landmark{
 	name = "xeno_spawn";
@@ -31723,6 +31996,13 @@
 	icon_state = "dark"
 	},
 /area/bigredv2/outside/filtration_plant)
+"oXl" = (
+/obj/structure/table,
+/obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
+/turf/open/floor,
+/area/bigredv2/outside/cargo)
 "oXr" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor{
@@ -31819,6 +32099,14 @@
 	tag = "icon-mars_dirt_7"
 	},
 /area/bigredv2/caves_sw)
+"qeK" = (
+/obj/structure/table,
+/obj/effect/spawner/random/tool,
+/obj/effect/landmark/objective_landmark/medium,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/floor,
+/area/bigredv2/outside/filtration_plant)
 "qgY" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_17";
@@ -31867,6 +32155,14 @@
 	tag = "icon-mars_cave_5"
 	},
 /area/bigredv2/caves_east)
+"qHZ" = (
+/obj/structure/table,
+/obj/effect/spawner/random/tool,
+/obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/floor,
+/area/bigredv2/outside/cargo)
 "qLV" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor{
@@ -31917,6 +32213,14 @@
 	tag = "icon-darkred2 (WEST)"
 	},
 /area/bigredv2/caves/eta/research)
+"rrI" = (
+/obj/structure/table,
+/obj/effect/spawner/random/tool,
+/obj/effect/landmark/objective_landmark/medium,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
+/turf/open/floor,
+/area/bigredv2/outside/filtration_plant)
 "ruf" = (
 /obj/structure/bed/chair{
 	dir = 8;
@@ -32012,6 +32316,14 @@
 	tag = "icon-mars_cave_23"
 	},
 /area/bigredv2/caves_research)
+"svp" = (
+/obj/structure/table,
+/obj/effect/spawner/random/technology_scanner,
+/obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/floor,
+/area/bigredv2/outside/cargo)
 "sBu" = (
 /obj/effect/landmark{
 	name = "hunter_secondary"
@@ -32092,6 +32404,14 @@
 	tag = "icon-mars_cave_13"
 	},
 /area/bigredv2/caves_sw)
+"trr" = (
+/obj/structure/table,
+/obj/effect/spawner/random/tool,
+/obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/floor,
+/area/bigredv2/outside/engineering)
 "tsB" = (
 /obj/effect/alien/weeds/node,
 /obj/effect/landmark{
@@ -32384,6 +32704,8 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "wFP" = (
@@ -32407,6 +32729,15 @@
 	tag = "icon-mars_cave_23"
 	},
 /area/bigredv2/caves_east)
+"wKf" = (
+/obj/structure/table,
+/obj/effect/landmark/objective_landmark/far,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/bigredv2/outside/office_complex)
 "wQC" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_7";
@@ -32423,6 +32754,16 @@
 "wXz" = (
 /turf/open/floor/plating,
 /area/bigredv2/caves/eta/research)
+"wXN" = (
+/obj/structure/table/woodentable,
+/obj/item/ashtray/glass,
+/obj/effect/landmark/objective_landmark/medium,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/bar)
 "wZC" = (
 /turf/open/mars{
 	icon_state = "mars_dirt_11";
@@ -41997,16 +42338,16 @@ aSB
 bfU
 aSB
 asK
-aZt
-aZt
+svp
+svp
 aZu
 aZu
 bbM
 aZu
 bjP
 tgk
-bdN
-bdN
+qHZ
+qHZ
 asK
 ayf
 ayf
@@ -42865,8 +43206,8 @@ aSB
 aSB
 aSB
 asK
-aZs
-aZs
+oEJ
+oEJ
 baz
 aZO
 bjg
@@ -43525,7 +43866,7 @@ aZu
 asK
 aZu
 bkA
-bei
+oXl
 axL
 bme
 bme
@@ -45895,7 +46236,7 @@ aZu
 aIT
 bcA
 atA
-bdN
+qHZ
 bef
 bez
 asK
@@ -47197,8 +47538,8 @@ aZu
 aZu
 aZu
 aZu
-bdN
-bei
+qHZ
+hzy
 atA
 beW
 aZu
@@ -48530,7 +48871,7 @@ bmi
 axX
 brn
 bmq
-bmr
+jhF
 bpl
 btr
 axX
@@ -48735,12 +49076,12 @@ bkp
 bjA
 bjA
 axX
-bmr
+jhF
 bmg
 bmg
 bmi
 bmi
-bnv
+fOK
 ayZ
 bpH
 bmg
@@ -48749,7 +49090,7 @@ bro
 brP
 slG
 bmg
-bmr
+jhF
 axX
 aao
 aao
@@ -48956,7 +49297,7 @@ bms
 bmg
 bnu
 bnY
-bmr
+trr
 boS
 ayZ
 btK
@@ -49389,7 +49730,7 @@ axX
 bmt
 bmi
 bnv
-bmr
+jhF
 bmq
 ayZ
 bpl
@@ -50699,7 +51040,7 @@ bpN
 bmi
 bmi
 bre
-bnv
+fOK
 wFL
 bob
 bmg
@@ -53508,7 +53849,7 @@ aHF
 awp
 bkD
 blx
-bkN
+qeK
 bmC
 bnb
 bnB
@@ -54389,7 +54730,7 @@ bkE
 bqV
 brA
 brW
-aLK
+gCx
 awp
 bjw
 bjx
@@ -55619,7 +55960,7 @@ atY
 auU
 asJ
 awo
-awZ
+dJc
 axK
 ayp
 asJ
@@ -56327,10 +56668,10 @@ gpR
 auX
 aBR
 awp
-bkN
-bkM
+rrI
+ccP
 blW
-bkM
+ccP
 bpo
 bnH
 bkE
@@ -56928,10 +57269,10 @@ axM
 aws
 amn
 aBr
-alT
+eHx
 aCS
 aDU
-alT
+eHx
 aFT
 amn
 aHG
@@ -57159,7 +57500,7 @@ aLq
 aMh
 aER
 aNR
-aKy
+wXN
 aGI
 aEO
 aqz
@@ -57400,7 +57741,7 @@ bdu
 bel
 asv
 bfd
-bfe
+wKf
 bgc
 bfe
 bgI
@@ -57616,7 +57957,7 @@ bac
 aYY
 aYY
 asv
-bfe
+wKf
 bfJ
 bgd
 bgd
@@ -58885,10 +59226,10 @@ aAg
 anJ
 aNS
 aEQ
-aFW
+jUM
 aGI
 aEQ
-aFW
+jUM
 aJq
 aKx
 aKx
@@ -62366,7 +62707,7 @@ aKD
 aLB
 aCZ
 aMM
-aOc
+jUc
 aOX
 aQi
 aLE
@@ -66266,8 +66607,8 @@ anW
 anW
 aEi
 aHO
-aui
-aui
+lDa
+lDa
 aKO
 aEi
 aDc

@@ -55,6 +55,30 @@
 
 /*****************************************************************************************************/
 
+/datum/equipment_preset/synth/uscm/councillor
+	name = "USCM Synthetic Councillor"
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	faction = FACTION_MARINE
+	idtype = /obj/item/card/id/gold
+	assignment = "Synthetic"
+	rank = "Synthetic"
+	paygrade = "???"
+	role_comm_title = "Syn"
+
+/datum/equipment_preset/synth/uscm/load_gear(mob/living/carbon/human/H)
+	var/backItem = /obj/item/storage/backpack/marine/satchel
+	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
+		backItem = /obj/item/storage/backpack/industrial
+
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/cdrcom(H), WEAR_EAR)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/synthetic/councillor(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/dress(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(H), WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(H), WEAR_HANDS)
+	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
+
+/*****************************************************************************************************/
+
 /datum/equipment_preset/synth/uscm/wo
 	name = "WO Support Synthetic"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO

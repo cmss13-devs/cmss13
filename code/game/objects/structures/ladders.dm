@@ -208,6 +208,12 @@
 			ladder_dest = down
 		else return //just in case
 
+		if(grenade_grief_check(G))
+			to_chat(user, SPAN_WARNING("\The [name]'s IFF inhibitor prevents you from priming the grenade!"))
+			// Let staff know, in case someone's actually about to try to grief
+			msg_admin_niche("[key_name(user)] attempted to prime \a [name] in [get_area(src)] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>)")
+			return
+
 		user.visible_message(SPAN_WARNING("[user] takes position to throw [G] [ladder_dir_name] [src]."),
 		SPAN_WARNING("You take position to throw [G] [ladder_dir_name] [src]."))
 		if(do_after(user, 10, INTERRUPT_ALL, BUSY_ICON_HOSTILE))

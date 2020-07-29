@@ -9,6 +9,7 @@
 	var/junctiontype //when walls smooth with one another, the type of junction each wall is.
 	var/thermite = 0
 	var/melting = FALSE
+	var/claws_minimum = CLAW_TYPE_SHARP
 
 	tiles_with = list(
 		/turf/closed/wall,
@@ -73,8 +74,6 @@
 			if(istype(O, /obj/effect/alien/weeds))
 				qdel(O)
 
-
-
 /turf/closed/wall/MouseDrop_T(mob/M, mob/user)
 	if(acided_hole)
 		if(M == user && isXeno(user))
@@ -82,15 +81,21 @@
 			return
 	..()
 
-
 /turf/closed/wall/attack_alien(mob/living/carbon/Xenomorph/user)
 	if(acided_hole && user.mob_size == MOB_SIZE_BIG)
 		acided_hole.expand_hole(user)
-	else
-		. = ..()
+		return
 
-
-
+	if(!hull && user.claw_type >= claws_minimum && !acided_hole)
+		user.animation_attack_on(src)
+		playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
+		if(damage >= (damage_cap - (damage_cap / XENO_HITS_TO_DESTROY_WALL)))
+			new /obj/effect/acid_hole(src)
+		else
+			take_damage(damage_cap / XENO_HITS_TO_DESTROY_WALL)
+		return
+	
+	. = ..()
 
 //Appearance
 /turf/closed/wall/examine(mob/user)

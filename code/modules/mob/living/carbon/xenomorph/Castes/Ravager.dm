@@ -41,6 +41,7 @@
 	pixel_x = -16
 	old_x = -16
 	mutation_type = RAVAGER_NORMAL
+	claw_type = CLAW_TYPE_VERY_SHARP
 
 	actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,

@@ -131,6 +131,7 @@
 		/datum/action/xeno_action/activable/xeno_spit,
 			)
 	mutation_type = QUEEN_NORMAL
+	claw_type = CLAW_TYPE_VERY_SHARP
 
 /mob/living/carbon/Xenomorph/Queen/can_destroy_special()
 	return TRUE

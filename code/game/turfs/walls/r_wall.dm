@@ -10,6 +10,8 @@
 
 	walltype = WALL_REINFORCED
 
+	claws_minimum = CLAW_TYPE_VERY_SHARP
+
 /turf/closed/wall/r_wall/attackby(obj/item/W, mob/user)
 	if(hull)
 		return

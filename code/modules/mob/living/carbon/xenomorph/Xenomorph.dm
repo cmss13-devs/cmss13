@@ -72,6 +72,7 @@
 	speed = -0.5 // Speed. Positive makes you go slower. (1.5 is equivalent to FAT mutation)
 	melee_damage_lower = 5
 	melee_damage_upper = 10
+	var/claw_type = CLAW_TYPE_NORMAL
 	var/burn_damage_lower = 0
 	var/burn_damage_upper = 0
 	var/plasma_stored = 10

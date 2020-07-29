@@ -51,6 +51,7 @@
 	)
 
 	mutation_type = CRUSHER_NORMAL
+	claw_type = CLAW_TYPE_VERY_SHARP
 
 // Refactored to handle all of crusher's interactions with object during charge.
 /mob/living/carbon/Xenomorph/proc/handle_collision(atom/target)

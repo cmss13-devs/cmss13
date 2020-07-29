@@ -23,8 +23,8 @@ var/global/list/datum/stack_recipe/metal_recipes = list ( \
 	null, \
 	new/datum/stack_recipe("floor tile", /obj/item/stack/tile/plasteel, 1, 4, 20), \
 	new/datum/stack_recipe("metal rod", /obj/item/stack/rods, 1, 2, 60), \
-	new/datum/stack_recipe("wall girder", /obj/structure/girder, 5, time = 50, one_per_turf = 1, on_floor = 1, skill_req = SKILL_CONSTRUCTION_ENGI), \
-	new/datum/stack_recipe("window frame", /obj/structure/window_frame/almayer, 15, time = 50, one_per_turf = 1, on_floor = 1, skill_req = SKILL_CONSTRUCTION_ENGI), \
+	new/datum/stack_recipe("wall girder", /obj/structure/girder, 2, time = 50, one_per_turf = 1, on_floor = 1, skill_req = SKILL_CONSTRUCTION_ENGI), \
+	new/datum/stack_recipe("window frame", /obj/structure/window_frame/almayer, 5, time = 50, one_per_turf = 1, on_floor = 1, skill_req = SKILL_CONSTRUCTION_ENGI), \
 	new/datum/stack_recipe("airlock assembly", /obj/structure/airlock_assembly, 5, time = 50, one_per_turf = 1, on_floor = 1, skill_req = SKILL_CONSTRUCTION_ENGI), \
 	null, \
 	new/datum/stack_recipe("bed", /obj/structure/bed, 2, one_per_turf = 1, on_floor = 1), \
@@ -80,6 +80,8 @@ var/global/list/datum/stack_recipe/metal_recipes = list ( \
  */
 var/global/list/datum/stack_recipe/plasteel_recipes = list ( \
 	new/datum/stack_recipe("plasteel barricade", /obj/structure/barricade/plasteel, 10, time = 40, one_per_turf = 1, on_floor = 1, skill_req = SKILL_CONSTRUCTION_ENGI),
+	null, \
+	new/datum/stack_recipe("reinforced window frame", /obj/structure/window_frame/colony/reinforced, 5, time = 40, one_per_turf = 1, on_floor = 1, skill_req = SKILL_CONSTRUCTION_ENGI),
 	null, \
 	new/datum/stack_recipe("plasteel rod", /obj/item/stack/rods/plasteel, 1, 1, 30),
 	new/datum/stack_recipe("metal crate", /obj/structure/closet/crate, 5, time = 50, one_per_turf = 1), \

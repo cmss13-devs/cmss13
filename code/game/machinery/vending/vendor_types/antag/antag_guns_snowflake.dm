@@ -32,7 +32,7 @@
 			list("SIDEARM AMMUNITION", 0, null, null, null),
 			list("Highpower Magazine (9mm)", 5, /obj/item/ammo_magazine/pistol/automatic, null, VENDOR_ITEM_REGULAR),
 			list("N-Y Speed Loader (7.62x38mmR)", 5, /obj/item/ammo_magazine/revolver/upp, null, VENDOR_ITEM_REGULAR),
-			list("PK-9 Magazine (.22 Hollowpoint)", 5, /obj/item/weapon/gun/pistol/c99/upp, null, VENDOR_ITEM_REGULAR),
+			list("PK-9 Magazine (.22 Hollowpoint)", 5, /obj/item/ammo_magazine/pistol/c99, null, VENDOR_ITEM_REGULAR),
 
 			list("ATTACHMENTS", 0, null, null, null),
 			list("Angled Grip", 15, /obj/item/attachable/angledgrip, null, VENDOR_ITEM_REGULAR),

@@ -509,7 +509,7 @@ roles willy nilly.
 		if(roles_whitelist && (roles_whitelist[H.ckey] & WHITELIST_SYNTHETIC_COUNCIL))
 			synth_council = TRUE
 
-		if(((J.title == "Commanding Officer") && CO_council) || ((J.title == JOB_SYNTH) && synth_council))
+		if(((J.title == JOB_CO) && CO_council) || ((J.title == JOB_SYNTH) && synth_council))
 			arm_equipment(H, J.gear_preset_council, FALSE, TRUE)
 		arm_equipment(H, J.gear_preset, FALSE, TRUE) //After we move them, we want to equip anything else they should have.
 

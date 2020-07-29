@@ -675,62 +675,54 @@ Additional game mode variables.
 					"Survivor - Security",
 					"Survivor - Prisoner",
 					"Survivor - Prisoner",
-					"Survivor - Prisoner",
+					"Survivor - Gang Leader",
+					"Survivor - Engineer"
 				)
 			if(MAP_LV_624,MAP_BIG_RED,MAP_DESERT_DAM)
 				survivor_types = list(
-					"Survivor - Assistant",
-					"Survivor - Civilian",
 					"Survivor - Scientist",
 					"Survivor - Doctor",
 					"Survivor - Chef",
-					"Survivor - Botanist",
-					"Survivor - Atmos Tech",
 					"Survivor - Chaplain",
 					"Survivor - Miner",
-					"Survivor - Salesman",
+					"Survivor - Engineer",
+					"Survivor - Trucker",
 					"Survivor - Colonial Marshall",
 				)
 			if(MAP_ICE_COLONY)
 				survivor_types = list(
 					"Survivor - Scientist",
 					"Survivor - Doctor",
-					"Survivor - Salesman",
 					"Survivor - Security",
+					"Survivor - Trucker",
+					"Survivor - Engineer"
 				)
 			if (MAP_SOROKYNE_STRATA)
 				survivor_types = list(
 					"Survivor - Scientist",
 					"Survivor - Doctor",
-					"Survivor - Salesman",
 					"Survivor - Security",
+					"Survivor - Engineer"
 				)
 			if(MAP_CORSAT)
 				survivor_types = list(
 					"Survivor - Scientist",
 					"Survivor - Scientist",
 					"Survivor - Scientist",
-					"Survivor - Civilian",
-					"Survivor - Civilian",
 					"Survivor - Doctor",
-					"Survivor - Salesman",
 					"Survivor - Security",
 					"Survivor - Corporate",
-					"Survivor - Atmos Tech",
+					"Survivor - Engineer"
 				)
 			else
 				survivor_types = list(
-					"Survivor - Assistant",
-					"Survivor - Civilian",
 					"Survivor - Scientist",
 					"Survivor - Doctor",
 					"Survivor - Chef",
-					"Survivor - Botanist",
-					"Survivor - Atmos Tech",
 					"Survivor - Chaplain",
 					"Survivor - Miner",
-					"Survivor - Salesman",
 					"Survivor - Colonial Marshall",
+					"Survivor - Engineer"
 				)
 
 	//Give them proper jobs and stuff here later

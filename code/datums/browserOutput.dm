@@ -35,7 +35,6 @@ var/savefile/iconCache = new /savefile("data/iconCache.sav") //Cache of icons fo
 
 	if(owner && winget(owner, "browseroutput", "is-disabled") == "false") //Already setup
 		doneLoading()
-
 	else //Not setup
 		load()
 

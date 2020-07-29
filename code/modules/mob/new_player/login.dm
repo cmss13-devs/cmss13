@@ -1,7 +1,5 @@
 /mob/new_player/Login()
 	update_Login_details()	//handles setting lastKnownIP and computer_id for use by the ban systems as well as checking for multikeying
-	if(join_motd)
-		to_chat_forced(src, "<div class=\"motd\">[join_motd]</div>")
 
 	if(!mind)
 		mind = new /datum/mind(key, ckey)
@@ -32,4 +30,6 @@
 			if(displayed_lobby_art != -1)
 				var/author = "[lobby_art_authors[displayed_lobby_art]]"
 				if(author != "Unknown")
-					to_chat_forced(src, SPAN_ROUNDBODY("<hr>This round's lobby art is brought to you by [author]<hr>"))
+					to_chat(src, SPAN_ROUNDBODY("<hr>This round's lobby art is brought to you by [author]<hr>"))
+			if(join_motd)
+				to_chat(src, "<div class=\"motd\">[join_motd]</div>")

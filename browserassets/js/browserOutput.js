@@ -195,11 +195,12 @@ function output(message, flag) {
 			$messages.after('<a href="#" id="newMessages"><span class="number">1</span> new <span class="messageWord">message</span> <i class="icon-double-angle-down"></i></a>');
 		}
 	}
-
+	
+	/*
 	//Url stuff
 	if (message.length && flag != 'preventLink') {
 		message = linkify(message);
-	}
+	}*/
 
 	opts.messageCount++;
 

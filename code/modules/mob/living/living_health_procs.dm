@@ -123,8 +123,9 @@
 
 
 /mob/living/proc/rejuvenate()
-
 	heal_all_damage()
+
+	raiseEvent(src, EVENT_REVIVED)
 
 	// shut down ongoing problems
 	nutrition = NUTRITION_NORMAL

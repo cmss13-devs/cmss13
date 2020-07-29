@@ -59,3 +59,8 @@
 // Args:
 //	The key released
 #define EVENT_READ_KEY_UP "read_key_up"
+
+// Raised when a mob is revived
+// Args:
+//	n/a
+#define EVENT_REVIVED "revived"

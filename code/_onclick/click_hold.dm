@@ -25,7 +25,7 @@
 
 	var/list/mods = params2list(params)
 	if(mods["left"])
-		raiseEvent(src, EVENT_LMBDOWN, A, params)
+		raiseEvent(src, EVENT_LMBDOWN, A, mods)
 
 /client/MouseUp(var/atom/A, var/turf/T, var/skin_ctl, var/params)
 	if(!A)

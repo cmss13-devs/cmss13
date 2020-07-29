@@ -77,7 +77,7 @@ var/datum/subsystem/chat/SSchat
 		C << clean_message
 		return
 
-	if (C.chatOutput && !C.chatOutput.loaded && C.chatOutput.messageQueue && islist(C.chatOutput.messageQueue))
+	if (C.chatOutput && !C.chatOutput.loaded && islist(C.chatOutput.messageQueue))
 		C.chatOutput.messageQueue += encoded_message
 		return
 

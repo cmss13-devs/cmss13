@@ -37,7 +37,7 @@
 	..()
 	if (PF)
 		PF.flags_can_pass_all = SETUP_LIST_FLAGS(PASS_OVER, PASS_AROUND, PASS_TYPE_CRAWLER, PASS_CRUSHER_CHARGE)
-	flags_can_pass_all_temp = PASS_UNDER
+	flags_can_pass_all_temp = SETUP_LIST_FLAGS(PASS_UNDER)
 
 /obj/structure/table/destroy(deconstruct)
 	if(deconstruct)

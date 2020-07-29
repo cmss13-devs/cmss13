@@ -42,7 +42,7 @@
 	var/time_until_timeout = 20
 
 /datum/action/xeno_action/activable/pounce/prae_dash/initialize_pounce_pass_flags()
-	pounce_pass_flags = SETUP_LIST_FLAGS(PASS_MOB_THRU, PASS_OVER_THROW_MOB)
+	pounce_pass_flags = list(PASS_MOB_THRU, PASS_OVER_THROW_MOB)
 
 /datum/action/xeno_action/activable/cleave
 	name = "Cleave"

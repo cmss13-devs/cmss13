@@ -175,7 +175,15 @@
 
 		secure_radio_connections[ch_name] = radio_controller.add_object(src, radiochannels[ch_name],  RADIO_CHAT)
 
+/obj/item/device/radio/headset/equipped(mob/living/carbon/human/user, slot)
+	if (slot == WEAR_EAR)
+		registerListener(user, EVENT_REVIVED, "defib_\ref[src]", CALLBACK(src, .proc/turn_on))
 
+/obj/item/device/radio/headset/dropped(mob/living/carbon/human/user)
+	unregisterListener(user, EVENT_REVIVED, "defib_\ref[src]")
+
+/obj/item/device/radio/headset/proc/turn_on()
+	on = TRUE
 
 
 /obj/item/device/radio/headset/syndicate

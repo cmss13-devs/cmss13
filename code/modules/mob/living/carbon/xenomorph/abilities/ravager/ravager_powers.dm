@@ -458,7 +458,7 @@
 
 		return TRUE
 	else
-		return shield_active
+		return !shield_active // If active shield, return FALSE so that this action does not get carried out
 
 /datum/action/xeno_action/activable/spike_shield/proc/remove_shield()
 	var/mob/living/carbon/Xenomorph/X = owner
@@ -473,12 +473,12 @@
 
 	for (var/datum/xeno_shield/XS in X.xeno_shields)
 		if (XS.shield_source == XENO_SHIELD_SOURCE_HEDGE_RAV)
+			XS.on_removal()
 			X.xeno_shields -= XS
 			qdel(XS)
 			break 
 
 	to_chat(X, SPAN_XENODANGER("You feel your shard shield dissipate!"))
-	X.remove_suit_layer()
 	X.overlay_shields()
 	return
 

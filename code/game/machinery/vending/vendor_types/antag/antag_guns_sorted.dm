@@ -30,7 +30,7 @@
 			list("SIDEARM AMMUNITION", -1, null, null),
 			list("Highpower Magazine (9mm)", 40, /obj/item/ammo_magazine/pistol/automatic, VENDOR_ITEM_REGULAR),
 			list("N-Y Speed Loader (7.62x38mmR)", 40, /obj/item/ammo_magazine/revolver/upp, VENDOR_ITEM_REGULAR),
-			list("PK-9 Magazine (.22 Hollowpoint)", 40, /obj/item/weapon/gun/pistol/c99/upp, VENDOR_ITEM_REGULAR),
+			list("PK-9 Magazine (.22 Hollowpoint)", 40, /obj/item/ammo_magazine/pistol/c99, VENDOR_ITEM_REGULAR),
 
 			list("UTILITIES", -1, null, null),
 			list("M94 Marking Flare Pack", 20, /obj/item/storage/box/m94, VENDOR_ITEM_RECOMMENDED),

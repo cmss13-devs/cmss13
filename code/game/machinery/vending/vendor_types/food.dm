@@ -5,6 +5,9 @@
 	icon_state = "marine_food"
 	vend_delay = 3
 	hackable = TRUE
+	unacidable = FALSE
+	unslashable = FALSE
+	wrenchable = TRUE
 
 	listed_products = list(
 			list("PREPARED MEALS", -1, null, null),
@@ -35,6 +38,9 @@
 	vendor_theme = VENDOR_THEME_COMPANY
 	vend_delay = 15
 	hackable = TRUE
+	unacidable = FALSE
+	unslashable = FALSE
+	wrenchable = TRUE
 
 	listed_products = list(
 			list("ALCOHOL", -1, null, null),

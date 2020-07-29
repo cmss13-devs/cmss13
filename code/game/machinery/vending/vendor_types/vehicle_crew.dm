@@ -234,6 +234,9 @@
 		usr.set_interaction(src)
 		if (href_list["vend"])
 
+			if(stat & IN_USE)
+				return
+
 			var/mob/living/carbon/human/H = usr
 
 			if(!allowed(H))

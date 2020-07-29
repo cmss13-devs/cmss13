@@ -456,6 +456,9 @@ IN_USE						used for vending/denying
 		usr.set_interaction(src)
 		if(href_list["vend"])
 
+			if(stat & IN_USE)
+				return
+
 			var/mob/living/carbon/human/H = usr
 
 			if(!hacked)
@@ -598,6 +601,9 @@ IN_USE						used for vending/denying
 	if(in_range(src, usr) && isturf(loc) && ishuman(usr))
 		usr.set_interaction(src)
 		if(href_list["vend"])
+
+			if(stat & IN_USE)
+				return
 
 			var/mob/living/carbon/human/H = usr
 
@@ -789,6 +795,9 @@ IN_USE						used for vending/denying
 	if(in_range(src, usr) && isturf(loc) && ishuman(usr))
 		usr.set_interaction(src)
 		if(href_list["vend"])
+
+			if(stat & IN_USE)
+				return
 
 			var/mob/living/carbon/human/H = usr
 

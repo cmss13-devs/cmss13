@@ -1,0 +1,9 @@
+author: Jeser
+
+delete-after: True
+
+changes: 
+  - bugfix: "Fixed PK-9 magazine in antag racks."
+  - bugfix: "Fixed medbelts spawning full in SL gear rack."
+  - bugfix: "Fixed issue when trying to vend many objects at once could result in some items not vending."
+  - bugfix: "Fixed ColMarTech Food Vendor and Booze-O-Mat not being wrenchable, slashable, acidable."

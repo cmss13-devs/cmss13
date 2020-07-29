@@ -10,6 +10,7 @@ var/datum/subsystem/perf_logging/SSperf_logging
 
 	var/wait_for_start = MINUTES_5
 	var/current_timer = 0
+	var/is_initialized = FALSE
 	var/datum/entity/mc_round/round
 	var/list/datum/entity/mc_controller/controller_assoc
 
@@ -36,12 +37,15 @@ var/datum/subsystem/perf_logging/SSperf_logging
 		C.wait_time = SS.wait
 		C.save()
 		controller_assoc[SS.type] = C
+	is_initialized = TRUE
 
 /datum/subsystem/perf_logging/fire(resumed = FALSE)
 	if(world.time < wait_for_start)
 		return // skipperino, too early
 	if(!Master)
 		return // UH OH
+	if(!is_initialized)
+		return // not actually initialized yet
 	current_timer++
 	var/total_cost = 0
 	for(var/datum/subsystem/SS in Master.subsystems)

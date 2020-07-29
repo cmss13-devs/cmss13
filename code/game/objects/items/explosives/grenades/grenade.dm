@@ -35,7 +35,7 @@
 
 	. = ..()
 
-	if(!.)
+	if(!. || isnull(loc))
 		return
 	
 	if(grenade_grief_check(src))

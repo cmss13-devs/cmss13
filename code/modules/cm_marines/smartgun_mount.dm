@@ -365,6 +365,8 @@
 		return ..()
 
 /obj/structure/machinery/m56d_hmg/New()
+	..()
+	
 	ammo = ammo_list[ammo] //dunno how this works but just sliding this in from sentry-code.
 	burst_scatter_mult = config.lmed_scatter_value
 	update_icon()

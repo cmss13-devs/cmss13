@@ -210,7 +210,7 @@
 	pounce_callbacks[/turf] = DYNAMIC(/mob/living/carbon/Xenomorph/proc/pounced_turf_wrapper)
 
 /datum/action/xeno_action/activable/pounce/proc/initialize_pounce_pass_flags()
-	pounce_pass_flags = SETUP_LIST_FLAGS(PASS_OVER_THROW_MOB)
+	pounce_pass_flags = list(PASS_OVER_THROW_MOB)
 
 // Any additional effects to apply to the target
 // is called if and only if we actually hit a human target

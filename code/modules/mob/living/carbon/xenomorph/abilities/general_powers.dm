@@ -163,7 +163,7 @@
 		SPAN_XENOWARNING("You begin to emit '[choice]' pheromones."), null, 5)
 		playsound(X.loc, "alien_drool", 25)
 
-	if(isXenoQueen(X) && X.hive.xeno_leader_list.len && X.anchored)
+	if(isXenoQueen(X) && X.hive && X.hive.xeno_leader_list.len && X.anchored)
 		for(var/mob/living/carbon/Xenomorph/L in X.hive.xeno_leader_list)
 			L.handle_xeno_leader_pheromones()
 

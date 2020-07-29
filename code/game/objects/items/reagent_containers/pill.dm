@@ -46,7 +46,7 @@ var/global/list/randomized_pill_icons
 		M.visible_message(SPAN_NOTICE("[user] swallows [src]."),
 			SPAN_HELPFUL("You swallow [src]."))
 		M.drop_inv_item_on_ground(src) //icon update
-		if(reagents.total_volume)
+		if(reagents && reagents.total_volume)
 			reagents.set_source_mob(user)
 			reagents.trans_to_ingest(M, reagents.total_volume)
 

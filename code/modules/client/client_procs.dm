@@ -178,7 +178,7 @@
 	add_pref_verbs()
 	//preferences datum - also holds some persistant data for the client (because we may as well keep these datums to a minimum)
 	prefs = preferences_datums[ckey]
-	if(!prefs || isnull(prefs) || !istype(prefs))
+	if(!istype(prefs))
 		prefs = new /datum/preferences(src)
 		preferences_datums[ckey] = prefs
 	prefs.owner = src

@@ -75,7 +75,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	if(!current_mag.current_rounds && !in_chamber) update_icon()
 
 /obj/item/weapon/gun/shotgun/proc/unload_shell(mob/user)
-	if(!current_mag)
+	if(isnull(current_mag) || !length(current_mag.chamber_contents))
 		return
 	var/obj/item/ammo_magazine/handful/new_handful = retrieve_shell(current_mag.chamber_contents[current_mag.chamber_position])
 
@@ -123,7 +123,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	empty_chamber(user)
 
 /obj/item/weapon/gun/shotgun/proc/ready_shotgun_tube()
-	if(!current_mag)
+	if(isnull(current_mag) || !length(current_mag.chamber_contents))
 		return
 	if(current_mag.current_rounds > 0)
 		ammo = ammo_list[current_mag.chamber_contents[current_mag.chamber_position]]

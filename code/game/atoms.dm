@@ -457,8 +457,7 @@ Parameters are passed from New.
 	if (isnull(temp_flag_counter))
 		temp_flag_counter = list()
 
-	var/list/flags = SETUP_LIST_FLAGS(args)
-	 
+	var/list/flags = SETUP_LIST_FLAGS(arglist(args))
 	for (var/flag in flags)
 		var/flag_str = "[flag]"
 		if (temp_flag_counter[flag_str])
@@ -473,7 +472,7 @@ Parameters are passed from New.
 	if (isnull(temp_flag_counter))
 		return
 
-	var/list/flags = SETUP_LIST_FLAGS(args)
+	var/list/flags = SETUP_LIST_FLAGS(arglist(args))
 	
 	for (var/flag in flags)
 		var/flag_str = "[flag]"

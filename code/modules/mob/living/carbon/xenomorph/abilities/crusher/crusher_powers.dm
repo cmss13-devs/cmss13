@@ -147,6 +147,7 @@
 			break
 
 	if (istype(found))
+		found.on_removal()
 		X.xeno_shields -= found
 		qdel(found)
 		to_chat(X, SPAN_XENOHIGHDANGER("You feel your enhanced shield end!"))

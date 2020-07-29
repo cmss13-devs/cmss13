@@ -32,7 +32,7 @@
 	not_reducing_objects = typesof(/obj/structure/barricade) + typesof(/obj/structure/machinery/defenses)
 
 /datum/action/xeno_action/activable/pounce/crusher_charge/initialize_pounce_pass_flags()
-	pounce_pass_flags = SETUP_LIST_FLAGS(PASS_CRUSHER_CHARGE)
+	pounce_pass_flags = list(PASS_CRUSHER_CHARGE)
 
 /datum/action/xeno_action/onclick/crusher_stomp
 	name = "Stomp"

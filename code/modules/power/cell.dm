@@ -22,6 +22,8 @@
 	matter = list("metal" = 700, "glass" = 50)
 
 /obj/item/cell/New()
+	..()
+	
 	charge = maxcharge
 	updateicon()
 

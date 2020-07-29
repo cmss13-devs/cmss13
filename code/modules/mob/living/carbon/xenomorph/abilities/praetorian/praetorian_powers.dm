@@ -639,7 +639,6 @@
 	var/use_plasma = FALSE
 
 	if (curr_effect_type == WARDEN_HEAL_SHIELD)
-
 		var/bonus_shield = 0
 
 		if (X.mutation_type == PRAETORIAN_WARDEN)

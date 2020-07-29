@@ -89,7 +89,8 @@
 	H.make_jittery(500)
 	sleep(30)
 	if(H && H.loc)
-		if(H.stat == DEAD) H.revive(TRUE)
+		if(H.stat == DEAD)
+			H.revive(TRUE)
 		playsound(H.loc, 'sound/hallucinations/wail.ogg', 25, 1)
 		H.jitteriness = 0
 		H.set_species("Zombie")

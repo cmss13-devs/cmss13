@@ -1,30 +1,27 @@
 // Helper to make sure that flag groups (which are lists) are properly expanded
 /proc/SETUP_LIST_FLAGS(...)
+    var/list/nested = list()
     var/list/flags = list()
 
     // Whether we need to check for any nested lists (ie one of the elements is a list)
-    var/check_nested = FALSE
     for (var/E in args)
         if (islist(E))
-            flags |= E
-            check_nested = TRUE
+            nested |= E
         else
             flags |= list(E)
     
     var/depth = 1
-    while (check_nested)
+    while (length(nested))
         if (depth > 10)
             log_debug("List flags reached a depth greater than 10")
             break
-        check_nested = FALSE
-        var/temp = list()
-        for (var/E in flags)
+        var/list/temp = list()
+        for (var/E in nested)
             if (islist(E))
                 temp |= E
-                check_nested = TRUE
             else
-                temp |= list(E)
-        flags = temp
+                flags |= list(E)
+        nested = temp
         depth++
     
     return flags
@@ -75,14 +72,17 @@
 // Assumes the first argument is a list
 /proc/LIST_FLAGS_REMOVE(...)
     var/list/ret
-    var/first = FALSE
+    var/first = TRUE
     for (var/E in args)
-        if (!first)
+        if (first)
+            if (isnull(E))
+                return list()
             if (!islist(E))
                 CRASH("Tried to remove flags from a nonlist")
-                return
-            ret = E
-            first = TRUE
+                return list()
+            var/list/L = E
+            ret = L.Copy()
+            first = FALSE
             continue
         ret -= E
     return ret

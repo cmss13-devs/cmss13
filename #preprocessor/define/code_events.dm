@@ -64,3 +64,45 @@
 // Args:
 //	n/a
 #define EVENT_REVIVED "revived"
+
+
+// *----------------------* //
+// 		Agent related
+// *----------------------* //
+
+// Raised when a wall is destroyed/built and by who, it goes EVENT_WALL_DESTROYED+\ref(mob)
+// Args:
+//	the type of wall destroyed/built
+#define EVENT_WALL_DESTROYED "wall_destroyed"
+#define EVENT_WALL_BUILT "wall_built"
+
+// Raised when an airlock is destroyed and by who, it goes EVENT_AIRLOCK_DESTROYED+\ref(mob)
+// Args:
+//	the type of airlock destroyed
+#define EVENT_AIRLOCK_DESTROYED "airlock_destroyed"
+
+// Raised when a window frame is destroyed and by who, it goes EVENT_W_FRAME_DESTROYED+\ref(mob)
+// Args:
+//	the type of window frame destroyed
+#define EVENT_W_FRAME_DESTROYED "w_frame_destroyed"
+
+// Raised when a window is destroyed/built and by who, it goes EVENT_WINDOW_DESTROYED+\ref(mob)
+// Args:
+//	the type of window destroyed/built
+#define EVENT_WINDOW_DESTROYED "window_destroyed"
+#define EVENT_WINDOW_BUILT "window_built"
+
+// Raised when a tracking device is planted by agents
+// Args:
+//	n/a
+#define EVENT_TRACKING_PLANTED "tracking_planted"
+
+// Raised when a propangda poster is planted by agents
+// Args:
+//	the area its placed at
+#define EVENT_PROPAGANDA_PLANTED "propaganda_planted"
+
+// Raised when a propangda poster is planted by agents
+// Args:
+//	the area its placed at
+#define EVENT_POISON_EATEN "poison_eaten"

@@ -57,7 +57,7 @@
 
 	var/mob/living/carbon/human/H = new(spawn_loc)
 	M.transfer_to(H, TRUE)
-	ticker.mode.traitors += H.mind
+
 	if(!leader)       //First one spawned is always the leader.
 		leader = H
 		arm_equipment(H, "UPP Leader", TRUE, TRUE)

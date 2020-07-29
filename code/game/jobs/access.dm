@@ -103,6 +103,7 @@
 		ACCESS_MARINE_CARGO,
 		ACCESS_MARINE_DROPSHIP,
 		ACCESS_MARINE_SEA,
+		ACCESS_MARINE_KITCHEN,
 	)
 
 /proc/get_all_centcom_access()
@@ -206,6 +207,7 @@
 		if(ACCESS_CIVILIAN_PUBLIC) 		return "Civilian"
 		if(ACCESS_IFF_MARINE) 			return "[MAIN_SHIP_NAME] Identification"
 		if(ACCESS_MARINE_SEA)			return "SEA's Office"
+		if(ACCESS_MARINE_KITCHEN)		return "Kitchen"
 
 /proc/get_centcom_access_desc(A)
 	switch(A)

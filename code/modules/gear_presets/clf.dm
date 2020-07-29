@@ -1,8 +1,3 @@
-#define EQUIPMENT_PRESET_STUB 			0
-#define EQUIPMENT_PRESET_START_OF_ROUND 1
-#define EQUIPMENT_PRESET_EXTRA 			2
-#define EQUIPMENT_PRESET_START_OF_ROUND_WO 4
-
 /datum/equipment_preset/clf
 	name = FACTION_CLF
 	languages = list("Tradeband", "English")

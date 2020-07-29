@@ -223,6 +223,11 @@
 	desc = "A tan suit with a yellow tie. Smart, but casual."
 	icon_state = "tan_suit"
 
+/obj/item/clothing/under/suit_jacket/stowaway
+	name = "dirty suit"
+	desc = "A dirty suit with a yellow tie. It looks very weathered."
+	icon_state = "stowaway_uniform"
+
 /obj/item/clothing/under/serviceoveralls
 	name = "Workman outfit"
 	desc = "The very image of a working man. Not that you're probably doing work."

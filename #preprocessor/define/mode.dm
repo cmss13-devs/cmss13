@@ -51,6 +51,7 @@
 #define BE_SURVIVOR				8
 #define BE_SYNTH_SURVIVOR		16
 #define BE_PREDATOR				32
+#define BE_AGENT				64
 
 #define TOGGLE_IGNORE_SELF					1 	// Determines whether you will not hurt yourself when clicking yourself
 #define TOGGLE_HELP_INTENT_SAFETY			2 	// Determines whether help intent will be completely harmless
@@ -73,6 +74,7 @@ var/list/be_special_flags = list(
 	"Synth Survivor" = BE_SYNTH_SURVIVOR,
 	"Predator" = BE_PREDATOR,
 	"Queen" = BE_QUEEN,
+	"Agent" = BE_AGENT,
 )
 
 #define AGE_MIN 19			//youngest a character can be
@@ -103,13 +105,15 @@ var/list/be_special_flags = list(
 #define ROLE_CREWMAN					512
 #define ROLE_INTEL_OFFICER				1024
 #define ROLE_SEA						2048
+#define ROLE_WARDEN						4096
 //=================================================
 
 #define ROLEGROUP_MARINE_ENGINEERING 	2
 
 #define ROLE_CHIEF_ENGINEER				1
-#define ROLE_ORDNANCE_TECH			2
-#define ROLE_REQUISITION_TECH			4
+#define ROLE_ORDNANCE_TECH				2
+#define ROLE_MAINT_TECH					4
+#define ROLE_REQUISITION_TECH			8
 //=================================================
 
 #define ROLEGROUP_MARINE_MED_SCIENCE 	4
@@ -117,6 +121,7 @@ var/list/be_special_flags = list(
 #define ROLE_CHIEF_MEDICAL_OFFICER		1
 #define ROLE_CIVILIAN_DOCTOR			2
 #define ROLE_CIVILIAN_RESEARCHER		4
+#define ROLE_CIVILIAN_NURSE				8
 //=================================================
 
 #define ROLEGROUP_MARINE_SQUAD_MARINES 	8
@@ -133,6 +138,11 @@ var/list/be_special_flags = list(
 #define ROLE_YAUTJA						1
 
 //=================================================
+#define ROLEGROUP_MARINE_FLUFF 	17
+
+#define ROLE_MESS_SERGEANT		1
+//=================================================
+
 #define ROLE_ADMIN_NOTIFY			1
 #define ROLE_ADD_TO_SQUAD			2
 #define ROLE_ADD_TO_DEFAULT			4
@@ -143,17 +153,19 @@ var/list/be_special_flags = list(
 
 //Role defines, specifically lists of roles for job bans, crew manifests and the like.
 var/global/list/ROLES_COMMAND 		= list(JOB_CO, JOB_XO, JOB_SO, JOB_INTEL, JOB_PILOT, JOB_CREWMAN, JOB_POLICE, JOB_CORPORATE_LIAISON, JOB_CHIEF_REQUISITION, JOB_CHIEF_ENGINEER, JOB_CMO, JOB_CHIEF_POLICE, JOB_SEA, JOB_SYNTH)
-var/global/list/ROLES_OFFICERS		= list(JOB_CO, JOB_XO, JOB_SO, JOB_INTEL, JOB_PILOT, JOB_CREWMAN, JOB_SEA, JOB_CORPORATE_LIAISON, JOB_SYNTH, JOB_CHIEF_POLICE, JOB_POLICE)
+
+#define ROLES_OFFICERS				list(JOB_CO, JOB_XO, JOB_SO, JOB_INTEL, JOB_PILOT, JOB_CREWMAN, JOB_SEA, JOB_CORPORATE_LIAISON, JOB_SYNTH, JOB_CHIEF_POLICE, JOB_WARDEN, JOB_POLICE)
 var/global/list/ROLES_CIC			= list(JOB_CO, JOB_XO, JOB_SO, JOB_WO_CO, JOB_WO_XO)
 var/global/list/ROLES_AUXIL_SUPPORT	= list(JOB_INTEL, JOB_PILOT, JOB_CREWMAN, JOB_WO_CHIEF_POLICE, JOB_WO_SO, JOB_WO_CREWMAN, JOB_WO_POLICE, JOB_WO_PILOT)
-var/global/list/ROLES_MISC			= list(JOB_SEA, JOB_CORPORATE_LIAISON, JOB_SYNTH, JOB_WO_CORPORATE_LIAISON, JOB_WO_SYNTH)
-var/global/list/ROLES_POLICE		= list(JOB_CHIEF_POLICE, JOB_POLICE)
-var/global/list/ROLES_ENGINEERING 	= list(JOB_CHIEF_ENGINEER, JOB_ORDNANCE_TECH, JOB_WO_CHIEF_ENGINEER, JOB_WO_ORDNANCE_TECH)
+var/global/list/ROLES_MISC			= list(JOB_SYNTH, JOB_SEA, JOB_CORPORATE_LIAISON, JOB_MESS_SERGEANT, JOB_WO_CORPORATE_LIAISON, JOB_WO_SYNTH)
+var/global/list/ROLES_POLICE		= list(JOB_CHIEF_POLICE, JOB_WARDEN, JOB_POLICE)
+var/global/list/ROLES_ENGINEERING 	= list(JOB_CHIEF_ENGINEER, JOB_ORDNANCE_TECH, JOB_MAINT_TECH, JOB_WO_CHIEF_ENGINEER, JOB_WO_ORDNANCE_TECH)
 var/global/list/ROLES_REQUISITION 	= list(JOB_CHIEF_REQUISITION, JOB_REQUISITION, JOB_WO_CHIEF_REQUISITION, JOB_WO_REQUISITION)
-var/global/list/ROLES_MEDICAL 	  	= list(JOB_CMO, JOB_DOCTOR, JOB_RESEARCHER, JOB_WO_CMO, JOB_WO_DOCTOR, JOB_WO_RESEARCHER)
+var/global/list/ROLES_MEDICAL 	  	= list(JOB_CMO, JOB_DOCTOR, JOB_NURSE, JOB_RESEARCHER)
 var/global/list/ROLES_MARINES	  	= list(JOB_SQUAD_LEADER, JOB_SQUAD_SPECIALIST, JOB_SQUAD_SMARTGUN, JOB_SQUAD_MEDIC, JOB_SQUAD_ENGI, JOB_SQUAD_MARINE)
 var/global/list/ROLES_SQUAD_ALL	  	= list(SQUAD_NAME_1, SQUAD_NAME_2, SQUAD_NAME_3, SQUAD_NAME_4)
-var/global/list/ROLES_REGULAR_ALL 	= ROLES_OFFICERS + ROLES_ENGINEERING + ROLES_REQUISITION + ROLES_MEDICAL + ROLES_MARINES - ROLES_WO		//Removing WO roles from here.
+var/global/list/ROLES_REGULAR_ALL 	= ROLES_CIC + ROLES_AUXIL_SUPPORT + ROLES_MISC + ROLES_POLICE + ROLES_ENGINEERING + ROLES_REQUISITION + ROLES_MEDICAL + ROLES_MARINES - ROLES_WO
+
 var/global/list/ROLES_UNASSIGNED  	= list(JOB_SQUAD_MARINE)
 var/global/list/ROLES_WO			= list(JOB_WO_CO, JOB_WO_XO, JOB_WO_CORPORATE_LIAISON, JOB_WO_SYNTH, JOB_WO_CHIEF_POLICE, JOB_WO_SO, JOB_WO_CREWMAN, JOB_WO_POLICE, JOB_WO_PILOT, JOB_WO_CHIEF_ENGINEER, JOB_WO_ORDNANCE_TECH, JOB_WO_CHIEF_REQUISITION, JOB_WO_REQUISITION, JOB_WO_CMO, JOB_WO_DOCTOR, JOB_WO_RESEARCHER)
 //=================================================
@@ -225,8 +237,9 @@ var/global/list/whitelist_hierarchy = list(WHITELIST_NORMAL, WHITELIST_COUNCIL, 
 #define FACTION_MARINE "USCM"
 #define FACTION_SURVIVOR "Survivor"
 #define FACTION_UPP "UPP"
+#define FACTION_RESS "RESS"
+#define FACTION_WY "W-Y"
 #define FACTION_CLF "CLF"
-#define FACTION_WY "Weston-Yamada"
 #define FACTION_PMC "PMC"
 #define FACTION_DEATHSQUAD "Death Squad"
 #define FACTION_MERCENARY "Mercenary"

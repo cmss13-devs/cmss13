@@ -40,7 +40,6 @@
 	H.name = H.real_name
 	M.transfer_to(H, TRUE)
 	H.job = "Mercenary"
-	ticker.mode.traitors += H.mind
 
 	if(!leader)       //First one spawned is always the leader.
 		leader = H

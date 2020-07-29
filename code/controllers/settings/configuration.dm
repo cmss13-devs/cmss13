@@ -112,7 +112,6 @@
 
 	var/comms_password = ""
 
-	var/use_irc_bot = 0
 	var/irc_bot_host = ""
 	var/main_irc = ""
 	var/admin_irc = ""
@@ -392,12 +391,6 @@
 
 		if("popup_admin_pm")
 			config.popup_admin_pm = 1
-
-		if("allow_holidays")
-			Holiday = 1
-
-		if("use_irc_bot")
-			use_irc_bot = 1
 
 		if("ticklag")
 			Ticklag = text2num(value)

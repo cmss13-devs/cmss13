@@ -6,9 +6,6 @@
 	latejoin_larva_drop = 0
 	flags_round_type = MODE_INFECTION //Apparently without this, the game mode checker ignores this as a potential legit game mode.
 
-	uplink_welcome = "IF YOU SEE THIS, SHIT A BRICK AND AHELP"
-	uplink_uses = 10
-
 /datum/game_mode/infection/announce()
 	to_world("<B>The current game mode is - ZOMBIES!</B>")
 	to_world("<B>Just have fun and role-play!</B>")

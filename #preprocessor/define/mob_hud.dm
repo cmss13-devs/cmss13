@@ -6,10 +6,7 @@
 #define STATUS_HUD			"2" // alive, dead, diseased, etc.
 #define ID_HUD				"3" // the job asigned to your ID
 #define WANTED_HUD			"4" // wanted, released, parroled, security status
-#define IMPLOYAL_HUD		"5" // loyality implant
-#define IMPCHEM_HUD			"6" // chemical implant
-#define IMPTRACK_HUD		"7" // tracking implant
-#define SPECIALROLE_HUD 	"8" // AntagHUD image
+#define FACTION_HUD 		"8" // Any faction related HUD on humans
 #define SQUAD_HUD			"9" // squad hud showing who's leader, medic, etc for each squad.
 #define STATUS_HUD_OOC		"10" // STATUS_HUD without virus db check for someone being ill.
 #define STATUS_HUD_XENO_INFECTION		"11" // STATUS_HUD without virus db check for someone being ill.
@@ -42,3 +39,8 @@
 #define MOB_HUD_XENO_HOSTILE		9
 #define MOB_HUD_PRED_CLAN			10
 #define MOB_HUD_SQUAD_OBSERVER      11
+#define MOB_HUD_FACTION_UPP			12
+#define MOB_HUD_FACTION_WY			13
+#define MOB_HUD_FACTION_RESS		14
+#define MOB_HUD_FACTION_CLF			15
+

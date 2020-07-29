@@ -45,6 +45,20 @@
 	if(!(flags_atom & NO_SNOW_TYPE))
 		select_gamemode_skin(type)
 
+/obj/item/clothing/suit/storage/jacket/marine/chef
+	name = "mess sergeant jacket"
+	desc = "Smells like vanilla. Signifies prestige and power, if a little flashy."
+	icon_state = "chef_jacket"
+	armor_melee = CLOTHING_ARMOR_LOW
+	armor_bullet = CLOTHING_ARMOR_LOW
+	armor_laser = CLOTHING_ARMOR_NONE
+	armor_energy = CLOTHING_ARMOR_NONE
+	armor_bomb = CLOTHING_ARMOR_NONE
+	armor_bio = CLOTHING_ARMOR_LOW
+	armor_rad = CLOTHING_ARMOR_LOW
+	armor_internaldamage = CLOTHING_ARMOR_LOW
+	flags_atom = NO_SNOW_TYPE
+
 /obj/item/clothing/suit/storage/jacket/marine/dress
 	name = "marine dress jacket"
 	desc = "Smells like vanilla. Signifies prestige and power, if a little flashy."

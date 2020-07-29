@@ -17,7 +17,7 @@
 
 	var/mob/living/carbon/human/H = new(T)
 	M.transfer_to(H, TRUE)
-	ticker.mode.traitors += H.mind
+
 	arm_equipment(H, "Zombie", TRUE, TRUE)
 
 	sleep(20)

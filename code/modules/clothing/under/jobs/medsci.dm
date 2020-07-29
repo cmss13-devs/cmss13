@@ -142,7 +142,7 @@
 
 /obj/item/clothing/under/rank/medical
 	desc = "It's made of a special fiber that provides minor protection against biohazards. It has a cross on the chest denoting that the wearer is trained medical personnel."
-	name = "medical doctor's jumpsuit"
+	name = "medical doctor's uniform"
 	icon_state = "medical"
 	item_state = "w_suit"
 	permeability_coefficient = 0.50
@@ -155,6 +155,13 @@
 	armor_rad = CLOTHING_ARMOR_LOW
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 	item_state_slots = list(WEAR_BODY = "medical")
+
+/obj/item/clothing/under/rank/medical/nurse
+	name = "medical nurse scrubs"
+	desc = "It's made of a special fiber that provides minor protection against biohazards. This one features an orange armband."
+	icon_state = "scrubsnurse"
+	item_state = "scrubsnurse"
+	item_state_slots = list(WEAR_BODY = "scrubsnurse")
 
 /obj/item/clothing/under/rank/medical/blue
 	name = "medical scrubs"

@@ -267,7 +267,10 @@ a.popt {text-decoration: none;}
 .extra_large			{					font-size: 130%}
 .huge					{					font-size: 150%}
 
+.bold					{font-weight: bold;}
+
 .blue					{color: #386aff;}
+.green					{color: #368f31;}
 .red 					{color: #ec0000;}
 .orange 				{color: #eca100;}
 

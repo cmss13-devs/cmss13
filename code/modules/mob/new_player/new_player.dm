@@ -148,24 +148,8 @@
 
 				if(observer.client)
 					observer.client.change_view(world_view_size)
-					if(observer.client.prefs)
-						var/datum/mob_hud/H
-						observer.HUD_toggled = observer.client.prefs.observer_huds
-						for(var/i in observer.HUD_toggled)
-							if(observer.HUD_toggled[i])
-								switch(i)
-									if("Medical HUD")
-										H = huds[MOB_HUD_MEDICAL_OBSERVER]
-										H.add_hud_to(observer)
-									if("Security HUD")
-										H = huds[MOB_HUD_SECURITY_ADVANCED]
-										H.add_hud_to(observer)
-									if("Squad HUD")
-										H = huds[MOB_HUD_SQUAD_OBSERVER]
-										H.add_hud_to(observer)
-									if("Xeno Status HUD")
-										H = huds[MOB_HUD_XENO_STATUS]
-										H.add_hud_to(observer)
+				
+				observer.set_huds_from_prefs()
 
 				qdel(src)
 				return 1

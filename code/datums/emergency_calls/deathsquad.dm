@@ -26,7 +26,6 @@
 
 	var/mob/living/carbon/human/H = new(spawn_loc)
 	M.transfer_to(H, TRUE)
-	ticker.mode.traitors += H.mind
 	H.set_skills(/datum/skills/commando/deathsquad)
 
 	if(!leader)       //First one spawned is always the leader.

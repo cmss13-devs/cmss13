@@ -23,160 +23,6 @@
 
 /*****************************************************************************************************/
 
-/datum/equipment_preset/uscm_ship/cmo
-	name = "USCM Chief Medical Officer (CMO)"
-	flags = EQUIPMENT_PRESET_START_OF_ROUND
-
-	idtype = /obj/item/card/id/silver
-	access = list(
-		ACCESS_IFF_MARINE,
-		ACCESS_MARINE_CMO,
-		ACCESS_MARINE_MEDBAY,
-		ACCESS_MARINE_RESEARCH,
-		ACCESS_MARINE_BRIDGE,
-		ACCESS_MARINE_CHEMISTRY,
-		ACCESS_MARINE_MORGUE
-	)
-	assignment = JOB_CMO
-	rank = JOB_CMO
-	paygrade = "CCMO"
-	role_comm_title = "CMO"
-	skills = /datum/skills/CMO
-
-	utility_under = list(/obj/item/clothing/under/rank/medical/green)
-	utility_hat = list(/obj/item/clothing/head/surgery/green)
-	utility_gloves = list(/obj/item/clothing/gloves/latex)
-	utility_shoes = list(/obj/item/clothing/shoes/white)
-	utility_extra = list(/obj/item/clothing/suit/storage/labcoat)
-
-	service_under = list()
-	service_over = list()
-	service_hat = list()
-	service_shoes = list()
-
-	dress_under = list(/obj/item/clothing/under/suit_jacket)
-	dress_over = list()
-	dress_hat = list()
-	dress_gloves = list(/obj/item/clothing/gloves/marine/dress)
-	dress_shoes = list(/obj/item/clothing/shoes/laceup)
-
-/datum/equipment_preset/uscm_ship/cmo/load_gear(mob/living/carbon/human/H)
-	var/backItem = /obj/item/storage/backpack/marine/satchel/medic
-	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
-		backItem = /obj/item/storage/backpack/marine/medic
-
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/cmo(H), WEAR_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/medical/green(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/white(H), WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/latex(H), WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat(H), WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/paper/research_notes/decent(H), WEAR_IN_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health(H), WEAR_EYES)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/medical/lifesaver/full(H), WEAR_WAIST)
-	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/medical(H), WEAR_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/medkit/full_advanced(H), WEAR_L_STORE)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/surgery/green(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/device/healthanalyzer(H), WEAR_J_STORE)
-
-/*****************************************************************************************************/
-
-/datum/equipment_preset/uscm_ship/doctor
-	name = "USCM Doctor"
-	flags = EQUIPMENT_PRESET_START_OF_ROUND
-
-	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
-	assignment = JOB_DOCTOR
-	rank = JOB_DOCTOR
-	paygrade = "CD"
-	role_comm_title = "Doc"
-	skills = /datum/skills/doctor
-
-	utility_under = list(/obj/item/clothing/under/rank/medical/green)
-	utility_hat = list(/obj/item/clothing/head/surgery/green)
-	utility_gloves = list(/obj/item/clothing/gloves/latex)
-	utility_shoes = list(/obj/item/clothing/shoes/white)
-	utility_extra = list(/obj/item/clothing/suit/storage/labcoat)
-
-	service_under = list()
-	service_over = list()
-	service_hat = list()
-	service_shoes = list(/obj/item/clothing/shoes/laceup)
-
-	dress_under = list(/obj/item/clothing/under/suit_jacket)
-	dress_over = list()
-	dress_hat = list()
-	dress_gloves = list(/obj/item/clothing/gloves/marine/dress)
-	dress_shoes = list(/obj/item/clothing/shoes/laceup)
-
-/datum/equipment_preset/uscm_ship/doctor/load_gear(mob/living/carbon/human/H)
-	var/backItem = /obj/item/storage/backpack/marine/satchel/medic
-	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
-		backItem = /obj/item/storage/backpack/marine/medic
-
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/doc(H), WEAR_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/medical/green(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/white(H), WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/latex(H), WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health(H), WEAR_EYES)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/medical/lifesaver/full(H), WEAR_WAIST)
-	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/medical(H), WEAR_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/medkit/full_advanced(H), WEAR_L_STORE)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/surgery/green(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/device/healthanalyzer(H.back), WEAR_IN_BACK)
-
-/*****************************************************************************************************/
-
-/datum/equipment_preset/uscm_ship/researcher
-	name = "USCM Researcer"
-	flags = EQUIPMENT_PRESET_START_OF_ROUND
-
-	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_MEDBAY, ACCESS_MARINE_RESEARCH, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
-	assignment = JOB_RESEARCHER
-	rank = JOB_RESEARCHER
-	paygrade = "CD"
-	role_comm_title = "Rsr"
-	skills = /datum/skills/researcher
-
-	utility_under = list(/obj/item/clothing/under/rank/medical/green)
-	utility_hat = list(/obj/item/clothing/head/surgery/green)
-	utility_gloves = list(/obj/item/clothing/gloves/latex)
-	utility_shoes = list(/obj/item/clothing/shoes/white)
-	utility_extra = list(/obj/item/clothing/suit/storage/labcoat/researcher)
-
-	service_under = list(/obj/item/clothing/under/marine/officer/researcher)
-	service_over = list()
-	service_hat = list()
-	service_shoes = list(/obj/item/clothing/shoes/laceup)
-
-	dress_under = list(/obj/item/clothing/under/suit_jacket)
-	dress_over = list()
-	dress_hat = list()
-	dress_gloves = list(/obj/item/clothing/gloves/marine/dress)
-	dress_shoes = list(/obj/item/clothing/shoes/laceup)
-
-/datum/equipment_preset/uscm_ship/researcher/load_gear(mob/living/carbon/human/H)
-	var/backItem = /obj/item/storage/backpack/marine/satchel/medic
-	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
-		backItem = /obj/item/storage/backpack/marine/medic
-
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/doc(H), WEAR_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/researcher(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(H), WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/latex(H), WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health(H), WEAR_EYES)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/medical/lifesaver/full(H), WEAR_WAIST)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat/researcher(H), WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/paper/research_notes/bad(H), WEAR_IN_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/reagent_container/syringe(H), WEAR_IN_JACKET)
-	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/chem(H), WEAR_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/vials(H), WEAR_L_STORE)
-	H.equip_to_slot_or_del(new /obj/item/device/healthanalyzer(H), WEAR_J_STORE)
-
-/*****************************************************************************************************/
-
 /datum/equipment_preset/uscm_ship/liaison
 	name = "USCM Corporate Liaison (CL)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
@@ -295,6 +141,37 @@
 /*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/maint
+	name = "USCM Maintenance Technician (MT)"
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
+
+	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_ENGINEERING, ACCESS_CIVILIAN_ENGINEERING)
+	assignment = JOB_MAINT_TECH
+	rank = JOB_MAINT_TECH
+	paygrade = "E5"
+	role_comm_title = "MT"
+	skills = /datum/skills/OT
+
+	utility_under = list(/obj/item/clothing/under/marine/officer/engi)
+
+/datum/equipment_preset/uscm_ship/maint/load_gear(mob/living/carbon/human/H)
+	var/backItem = /obj/item/storage/backpack/marine/satchel/tech
+	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
+		backItem = /obj/item/storage/backpack/marine/tech
+
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mt(H), WEAR_EAR)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/engi(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(H), WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/welding(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(H), WEAR_WAIST)
+	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/medium(H), WEAR_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/device/demo_scanner(H), WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/bag/trash(H), WEAR_L_HAND)
+
+/*****************************************************************************************************/
+
+/datum/equipment_preset/uscm_ship/ordn
 	name = "USCM Ordnance Technician (OT)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
@@ -307,13 +184,13 @@
 
 	utility_under = list(/obj/item/clothing/under/marine/officer/engi)
 
-/datum/equipment_preset/uscm_ship/maint/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/uscm_ship/ordn/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/marine/satchel/tech
 	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
 		backItem = /obj/item/storage/backpack/marine/tech
 
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mt(H), WEAR_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/engi(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/engi/OT(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(H), WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(H), WEAR_WAIST)
@@ -650,107 +527,6 @@
 
 /*****************************************************************************************************/
 
-/datum/equipment_preset/uscm_ship/mp
-	name = "USCM Military Police (MP)"
-	flags = EQUIPMENT_PRESET_START_OF_ROUND
-
-	access = list(
-		ACCESS_IFF_MARINE,
-		ACCESS_MARINE_BRIG,
-		ACCESS_MARINE_BRIDGE,
-		ACCESS_MARINE_DROPSHIP,
-		ACCESS_MARINE_LOGISTICS,
-		ACCESS_MARINE_PREP,
-		ACCESS_MARINE_MEDBAY,
-		ACCESS_MARINE_MORGUE,
-		ACCESS_MARINE_ALPHA,
-		ACCESS_MARINE_BRAVO,
-		ACCESS_MARINE_CHARLIE,
-		ACCESS_MARINE_DELTA,
-		ACCESS_MARINE_ENGINEERING
-	)
-	assignment = JOB_POLICE
-	rank = JOB_POLICE
-	paygrade = "E6"
-	role_comm_title = "MP"
-	minimum_age = 27
-	skills = /datum/skills/MP
-
-	utility_under = list(/obj/item/clothing/under/marine/mp)
-	utility_hat = list(/obj/item/clothing/head/helmet/beret/marine/mp)
-	utility_extra = list(/obj/item/clothing/head/cmcap, /obj/item/clothing/head/beret/cm, /obj/item/clothing/head/beret/cm/tan)
-
-/datum/equipment_preset/uscm_ship/mp/load_gear(mob/living/carbon/human/H)
-	var/backItem = /obj/item/storage/backpack/satchel/sec
-	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
-		backItem = /obj/item/storage/backpack/security
-
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mmpo(H), WEAR_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/mp(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(H), WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/security/MP/full(H), WEAR_WAIST)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/MP(H), WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud(H), WEAR_EYES)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/beret/marine/mp(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/device/taperecorder(H), WEAR_L_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/medium(H), WEAR_R_STORE)
-
-/*****************************************************************************************************/
-
-/datum/equipment_preset/uscm_ship/cmp
-	name = "USCM Chief MP (CMP)"
-	flags = EQUIPMENT_PRESET_START_OF_ROUND
-	idtype = /obj/item/card/id/silver
-
-	access = list(
-		ACCESS_IFF_MARINE,
-		ACCESS_MARINE_BRIG,
-		ACCESS_MARINE_BRIDGE,
-		ACCESS_MARINE_DROPSHIP,
-		ACCESS_MARINE_LOGISTICS,
-		ACCESS_MARINE_PREP,
-		ACCESS_MARINE_WO,
-		ACCESS_MARINE_MEDBAY,
-		ACCESS_MARINE_COMMANDER,
-		ACCESS_MARINE_MORGUE,
-		ACCESS_MARINE_ALPHA,
-		ACCESS_MARINE_BRAVO,
-		ACCESS_MARINE_CHARLIE,
-		ACCESS_MARINE_DELTA,
-		ACCESS_MARINE_ENGINEERING
-	)
-	assignment = JOB_CHIEF_POLICE
-	rank = JOB_CHIEF_POLICE
-	paygrade = "O3"
-	role_comm_title = "CMP"
-	minimum_age = 27
-	skills = /datum/skills/CMP
-
-	utility_under = list(/obj/item/clothing/under/marine/officer/warrant)
-	utility_hat = list(/obj/item/clothing/head/helmet/beret/marine/mp/cmp)
-	utility_extra = list(/obj/item/clothing/head/cmcap, /obj/item/clothing/head/beret/cm, /obj/item/clothing/head/beret/cm/tan)
-
-/datum/equipment_preset/uscm_ship/cmp/load_gear(mob/living/carbon/human/H)
-	var/backItem = /obj/item/storage/backpack/satchel/sec
-	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
-		backItem = /obj/item/storage/backpack/security
-
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/cmpcom(H), WEAR_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/warrant(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(H), WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/security/MP/full(H), WEAR_WAIST)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/MP/WO(H), WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud(H), WEAR_EYES)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/beret/marine/mp/cmp(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/device/taperecorder(H), WEAR_L_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)
-
-/*****************************************************************************************************/
-
 /datum/equipment_preset/uscm_ship/officer
 	name = "USCM Officer (USCM Command)"
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -910,59 +686,30 @@
 
 /*****************************************************************************************************/
 
-/datum/equipment_preset/uscm_ship/riot_mp
-	name = "USCM Riot MP (RMP)"
-	flags = EQUIPMENT_PRESET_EXTRA
+/datum/equipment_preset/uscm_ship/chef
+	name = "USCM Mess Sergeant (MS)"
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
-	idtype = /obj/item/card/id/silver
-	access = list()
-	assignment = "Riot Control"
-	rank = "Riot"
-	paygrade = "E6"
-	role_comm_title = "RMP"
-	skills = /datum/skills/CMP
+	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_KITCHEN)
+	assignment = JOB_MESS_SERGEANT
+	rank = JOB_MESS_SERGEANT
+	paygrade = "E5"
+	role_comm_title = "MSgt"
+	skills = /datum/skills/OT
 
-	utility_under = list(/obj/item/clothing/under/marine/officer/warrant)
-	utility_hat = list(/obj/item/clothing/head/helmet/beret/marine/mp/cmp)
-	utility_extra = list(/obj/item/clothing/head/cmcap, /obj/item/clothing/head/beret/cm, /obj/item/clothing/head/beret/cm/tan)
+	utility_under = list(/obj/item/clothing/under/marine/chef)
 
-/datum/equipment_preset/uscm_ship/riot_mp/New()
-	. = ..()
-	access = get_all_accesses() + get_all_centcom_access()
+/datum/equipment_preset/uscm_ship/chef/load_gear(mob/living/carbon/human/H)
+	var/backItem = /obj/item/storage/backpack/marine/satchel
+	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
+		backItem = /obj/item/storage/backpack/marine
 
-/datum/equipment_preset/uscm_ship/riot_mp/load_gear(mob/living/carbon/human/H)
-	//TODO: add backpacks and satchels
-
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/cmpcom(H), WEAR_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/warrant(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/riot/marine(H), WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/riot(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/security/MP/full(H), WEAR_WAIST)
-	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/sec(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas(H), WEAR_FACE)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/chefhat(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/chef(H), WEAR_EAR)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/chef(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/chef(H), WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/full(H), WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(H), WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/weapon/shield/riot(H), WEAR_L_HAND)
-	H.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/combat/riot(H), WEAR_J_STORE)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(H), WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/storage/box/flashbangs(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/custom/teargas(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/custom/teargas(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/custom/teargas(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/custom/teargas(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/handcuffs(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/handcuffs(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/with_beanbags(H), WEAR_L_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/with_beanbags(H), WEAR_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud(H), WEAR_EYES)
-
-/*****************************************************************************************************/
-
-/datum/equipment_preset/uscm_ship/riot_mp/riot_cmp
-	name = "USCM Riot Chief MP (RCMP)"
-	flags = EQUIPMENT_PRESET_EXTRA
-
-	assignment = "Chief Riot Control"
-	rank = "CRMP"
-	paygrade = "E7"
-	role_comm_title = "CRMP"
-	skills = /datum/skills/CMP
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/latex(H), WEAR_HANDS)
+	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/medium(H), WEAR_R_STORE)

@@ -205,6 +205,21 @@
 	entry_message_body = "You are held by a higher standard and are required to obey not only the server rules but the <a href='[URL_WIKI_LAW]'>Marine Law</a>. Failure to do so may result in a job ban or server ban. Your primary job is to maintain peace and stability aboard the ship. Marines can get rowdy after a few weeks of cryosleep! In addition, you are tasked with the security of high-ranking personnel, including the command staff. Keep them safe!"
 	return ..()
 
+// Warden
+/datum/job/command/warden
+	title = JOB_WARDEN
+	flag = ROLE_WARDEN
+	selection_class = "job_mp"
+	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE
+	gear_preset = "USCM Military Warden (MW)"
+	minimum_playtimes = list(
+		JOB_POLICE = HOURS_9
+	)
+
+/datum/job/command/warden/generate_entry_message(mob/living/carbon/human/H)
+	entry_message_body = "You are held by a higher standard and are required to obey not only the server rules but the <a href='[URL_WIKI_LAW]'>Marine Law</a>. Failure to do so may result in a job ban or server ban. Your primary job is to maintain peace and stability aboard the ship. Marines can get rowdy after a few weeks of cryosleep! In addition, you are tasked with the mainting security records and overwatching any prisoners in Brig."
+	return ..()
+
 //Chief MP
 /datum/job/command/warrant
 	title = JOB_CHIEF_POLICE

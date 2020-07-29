@@ -59,13 +59,10 @@
 	var/obj/selected
 	//var/max_equip = 3
 
-	var/datum/events/events
-
 
 
 /obj/vehicle/New()
 	..()
-	events = new
 	icon_state += "-unmanned"
 	add_radio()
 	//add_cabin() //No cabin for non-airtights

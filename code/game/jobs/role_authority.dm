@@ -535,7 +535,6 @@ roles willy nilly.
 			WO.self_set_headset(H)
 
 		H.sec_hud_set_ID()
-		H.sec_hud_set_implants()
 		H.hud_set_squad()
 
 		SSround_recording.recorder.track_player(H)

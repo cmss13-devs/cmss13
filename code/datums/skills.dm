@@ -430,6 +430,13 @@ MILITARY NONCOMBATANT
 		SKILL_SURGERY = SKILL_SURGERY_TRAINED,
 	)
 
+/datum/skills/nurse
+	name = "Nurse"
+	skills = list(
+		SKILL_FIREARMS = SKILL_FIREARMS_UNTRAINED,
+		SKILL_MEDICAL = SKILL_MEDICAL_MEDIC,
+	)
+
 /datum/skills/researcher
 	name = "Researcher"
 	skills = list(

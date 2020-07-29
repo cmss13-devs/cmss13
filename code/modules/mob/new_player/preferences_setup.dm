@@ -235,6 +235,8 @@ datum/preferences/proc/job_pref_to_gear_preset()
 			return "USCM Military Police (MP)"
 		if(ROLE_CHIEF_MP)
 			return "USCM Chief MP (CMP)"
+		if(ROLE_WARDEN)
+			return "USCM Military Warden (MW)"
 		if(ROLE_CREWMAN)
 			return "USCM Vehicle Crewman (CRMN)"
 		if(ROLE_INTEL_OFFICER)
@@ -246,6 +248,8 @@ datum/preferences/proc/job_pref_to_gear_preset()
 			return "USCM Chief Engineer (CE)"
 		if(ROLE_ORDNANCE_TECH)
 			return "USCM Ordnance Technician (OT)"
+		if(ROLE_MAINT_TECH)
+			return "USCM Maintenance Technician (MT)"
 		if(ROLE_REQUISITION_OFFICER)
 			return "USCM Requisitions Officer (RO)"
 		if(ROLE_REQUISITION_TECH)
@@ -256,7 +260,12 @@ datum/preferences/proc/job_pref_to_gear_preset()
 		if(ROLE_CIVILIAN_DOCTOR)
 			return "USCM Doctor"
 		if(ROLE_CIVILIAN_RESEARCHER)
-			return "USCM Researcer"
+			return "USCM Researcher"
+		if(ROLE_CIVILIAN_NURSE)
+			return "USCM Nurse"
+	switch(job_fluff_high)
+		if(ROLE_MESS_SERGEANT)
+			return "USCM Mess Sergeant (MS)"		
 	return "USCM Cryo Private (Equipped)"
 
 datum/preferences/proc/clear_equipment()

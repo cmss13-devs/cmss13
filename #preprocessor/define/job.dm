@@ -21,8 +21,11 @@ var/global/list/JOB_SQUAD_ROLES_LIST    = list(JOB_SQUAD_MARINE, JOB_SQUAD_LEADE
 
 #define JOB_CMO							"Chief Medical Officer"
 #define JOB_DOCTOR						"Doctor"
+#define JOB_NURSE						"Nurse"
 #define JOB_RESEARCHER					"Researcher"
+
 #define JOB_CORPORATE_LIAISON			"Corporate Liaison"
+#define JOB_MESS_SERGEANT				"Mess Sergeant"
 #define JOB_SYNTH						"Synthetic"
 
 #define JOB_CO							"Commanding Officer"
@@ -34,14 +37,18 @@ var/global/list/JOB_COMMAND_ROLES_LIST  = list(JOB_CO, JOB_XO, JOB_SO)
 #define JOB_CREWMAN						"Vehicle Crewman"
 #define JOB_INTEL						"Intelligence Officer"
 #define JOB_POLICE						"Military Police"
+#define JOB_WARDEN						"Military Warden"
 #define JOB_CHIEF_POLICE				"Chief MP"
 #define JOB_SEA							"Senior Enlisted Advisor"
 
 #define JOB_CHIEF_ENGINEER				"Chief Engineer"
+#define JOB_MAINT_TECH					"Maintenance Technician"
 #define JOB_ORDNANCE_TECH				"Ordnance Technician"
 
 #define JOB_CHIEF_REQUISITION			"Requisitions Officer"
 #define JOB_REQUISITION					"Cargo Technician"
+
+#define JOB_STOWAWAY					"Stowaway"
 
 //-------------WO roles---------------
 
@@ -69,6 +76,7 @@ var/global/list/JOB_COMMAND_ROLES_LIST  = list(JOB_CO, JOB_XO, JOB_SO)
 
 //------------------------------------
 
+//-------- PMC --------//
 #define JOB_PMC							"PMC Standard"
 #define JOB_PMC_ENGINEER				"PMC Mechanic"
 #define JOB_PMC_DOCTOR					"PMC Triage"
@@ -81,6 +89,7 @@ var/global/list/JOB_COMMAND_ROLES_LIST  = list(JOB_CO, JOB_XO, JOB_SO)
 #define JOB_PMC_LEADER					"PMC Leader"
 #define JOB_PMC_LEAD_INVEST				"PMC Lead Investigator"
 
+//-------- UPP --------//
 #define JOB_UPP							"UPP Private"
 #define JOB_UPP_ENGI					"UPP Korporal Sapper"
 #define JOB_UPP_MEDIC					"UPP Korporal Medic"
@@ -95,6 +104,9 @@ var/global/list/JOB_COMMAND_ROLES_LIST  = list(JOB_CO, JOB_XO, JOB_SO)
 
 #define UPP_COMMANDO_JOB_LIST			list(JOB_UPP_COMMANDO, JOB_UPP_COMMANDO_MEDIC, JOB_UPP_COMMANDO_LEADER)
 
+#define JOB_UPP_REPRESENTATIVE			"UPP Representative"
+
+//-------- CLF --------//
 #define JOB_CLF							"CLF Guerilla"
 #define JOB_CLF_ENGI					"CLF Field Technician"
 #define JOB_CLF_MEDIC					"CLF Field Medic"
@@ -102,6 +114,10 @@ var/global/list/JOB_COMMAND_ROLES_LIST  = list(JOB_CO, JOB_XO, JOB_SO)
 #define JOB_CLF_LEADER					"CLF Cell Leader"
 
 #define CLF_JOB_LIST					list(JOB_CLF, JOB_CLF_ENGI, JOB_CLF_MEDIC, JOB_CLF_SPECIALIST, JOB_CLF_LEADER)
+
+//-------- RESS --------//
+
+#define JOB_RESS_REPRESENTATIVE			"RESS Representative"
 
 //antag jobs supported by adaptive antag vendors
 #define VENDOR_ANTAG_JOBS				list(JOB_UPP, JOB_UPP_ENGI, JOB_UPP_MEDIC, JOB_UPP_SPECIALIST, JOB_UPP_LEADER, JOB_CLF, JOB_CLF_ENGI, JOB_CLF_MEDIC, JOB_CLF_SPECIALIST, JOB_CLF_LEADER)

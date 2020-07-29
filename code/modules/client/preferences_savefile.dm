@@ -237,6 +237,9 @@
 	S["job_marines_high"]	>> job_marines_high
 	S["job_marines_med"]	>> job_marines_med
 	S["job_marines_low"]	>> job_marines_low
+	S["job_fluff_high"]		>> job_fluff_high
+	S["job_fluff_med"]		>> job_fluff_med
+	S["job_fluff_low"]		>> job_fluff_low
 
 	//Flavour Text
 	S["flavor_texts_general"]	>> flavor_texts["general"]
@@ -326,6 +329,9 @@
 	job_marines_high = sanitize_integer(job_marines_high, 0, 65535, initial(job_marines_high))
 	job_marines_med = sanitize_integer(job_marines_med, 0, 65535, initial(job_marines_med))
 	job_marines_low = sanitize_integer(job_marines_low, 0, 65535, initial(job_marines_low))
+	job_fluff_high = sanitize_integer(job_fluff_high, 0, 65535, initial(job_fluff_high))
+	job_fluff_med = sanitize_integer(job_fluff_med, 0, 65535, initial(job_fluff_med))
+	job_fluff_low = sanitize_integer(job_fluff_low, 0, 65535, initial(job_fluff_low))
 
 	if(isnull(disabilities)) disabilities = 0
 	if(!organ_data) src.organ_data = list()
@@ -391,6 +397,9 @@
 	S["job_marines_high"]	<< job_marines_high
 	S["job_marines_med"]	<< job_marines_med
 	S["job_marines_low"]	<< job_marines_low
+	S["job_fluff_high"]		<< job_fluff_high
+	S["job_fluff_med"]		<< job_fluff_med
+	S["job_fluff_low"]		<< job_fluff_low
 
 	//Flavour Text
 	S["flavor_texts_general"]	<< flavor_texts["general"]

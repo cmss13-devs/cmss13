@@ -313,6 +313,23 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	specialty = "M2 pattern MP"
 	item_state_slots = list(WEAR_JACKET = "mp")
 
+/obj/item/clothing/suit/storage/marine/MP/warden
+	icon_state = "warden"
+	name = "\improper M3 pattern warden MP armor"
+	desc = "A well-crafted suit of M3 Pattern Armor typically distributed to Wardens. Useful for letting your men know who is in charge."
+	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bullet = CLOTHING_ARMOR_LOW
+	armor_laser = CLOTHING_ARMOR_LOW
+	armor_energy = CLOTHING_ARMOR_LOW
+	armor_bomb = CLOTHING_ARMOR_MEDIUM
+	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
+	armor_rad = CLOTHING_ARMOR_MEDIUMLOW
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
+	storage_slots = 2
+	uniform_restricted = list(/obj/item/clothing/under/marine/warden)
+	specialty = "M3 pattern warden MP"
+	item_state_slots = list(WEAR_JACKET = "warden")
+
 /obj/item/clothing/suit/storage/marine/MP/WO
 	icon_state = "warrant_officer"
 	name = "\improper M3 pattern chief MP armor"

@@ -18,27 +18,18 @@ var/global/cas_tracking_id_increment = 0	//this var used to assign unique tracki
 /datum/game_mode
 	var/name = "invalid"
 	var/config_tag = null
-	var/intercept_hacked = 0
 	var/votable = 1
 	var/probability = 0
 	var/list/datum/mind/modePlayer = new
-	var/list/protected_jobs = list()	// Jobs that can't be traitors because
 	var/required_players = 0
 	var/required_players_secret = 0 //Minimum number of players for that game mode to be chose in Secret
-	var/newscaster_announcements = null
 	var/ert_disabled = 0
-	var/uplink_welcome = "Syndicate Uplink Console:"
-	var/uplink_uses = 10
 	var/force_end_at = 0
 	var/xeno_evo_speed = 0 // if not 0 - gives xeno an evo boost/nerf
 	var/is_in_endgame = FALSE //Set it to TRUE when we trigger DELTA alert or dropship crashes
-	var/list/datum/mind/traitors = list()
 	var/obj/structure/machinery/computer/shuttle_control/active_lz = null
 
 	var/datum/entity/round_stats/round_stats = null
-
-	var/scheduler_logging_current_interval = MINUTES_30//30 minutes in
-	var/scheduler_logging_ongoing_interval = MINUTES_30//every 30 minutes
 
 /datum/game_mode/proc/announce() //to be calles when round starts
 	to_world("<B>Notice</B>: [src] did not define announce()")
@@ -204,9 +195,6 @@ var/global/cas_tracking_id_increment = 0	//this var used to assign unique tracki
 		if(player.mind && (player.job in ROLES_COMMAND ))
 			heads += player.mind
 	return heads
-
-/datum/game_mode/proc/check_antagonists_topic(href, href_list[])
-	return 0
 
 /datum/game_mode/New()
 	if(!map_tag)

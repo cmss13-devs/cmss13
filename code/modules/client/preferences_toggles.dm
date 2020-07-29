@@ -275,7 +275,7 @@
 	set category = "Preferences"
 	set desc = "Use to change which HUDs you want to have by default when you become an observer."
 
-	var/hud_choice = input("Choose a HUD to toggle", "Toggle HUD prefs", null) as null|anything in list("Medical HUD", "Security HUD", "Squad HUD", "Xeno Status HUD")
+	var/hud_choice = input("Choose a HUD to toggle", "Toggle HUD prefs", null) as null|anything in list("Medical HUD", "Security HUD", "Squad HUD", "Xeno Status HUD", "Faction UPP HUD", "Faction W-Y HUD", "Faction RESS HUD", "Faction CLF HUD")
 	if(!hud_choice)
 		return
 	prefs.observer_huds[hud_choice] = !prefs.observer_huds[hud_choice]
@@ -296,6 +296,14 @@
 			H = huds[MOB_HUD_SQUAD_OBSERVER]
 		if("Xeno Status HUD")
 			H = huds[MOB_HUD_XENO_STATUS]
+		if("Faction UPP HUD")
+			H = huds[MOB_HUD_FACTION_UPP]
+		if("Faction W-Y HUD")
+			H = huds[MOB_HUD_FACTION_WY]
+		if("Faction RESS HUD")
+			H = huds[MOB_HUD_FACTION_RESS]
+		if("Faction CLF HUD")
+			H = huds[MOB_HUD_FACTION_CLF]
 
 	O.HUD_toggled[hud_choice] = prefs.observer_huds[hud_choice]
 	if(O.HUD_toggled[hud_choice])

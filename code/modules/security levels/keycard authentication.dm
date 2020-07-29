@@ -68,8 +68,8 @@
 		if(!config.ert_admin_call_only)
 			dat += "<li><A href='?src=\ref[src];triggerevent=Emergency Response Team'>Emergency Response Team</A></li>"
 
-		dat += "<li><A href='?src=\ref[src];triggerevent=Grant Emergency Maintenance Access'>Grant Emergency Maintenance Access</A></li>"
-		dat += "<li><A href='?src=\ref[src];triggerevent=Revoke Emergency Maintenance Access'>Revoke Emergency Maintenance Access</A></li>"
+		dat += "<li><A href='?src=\ref[src];triggerevent=Remove Emergency Maintenance Access'>Remove Emergency Maintenance Access</A></li>"
+		dat += "<li><A href='?src=\ref[src];triggerevent=Add Emergency Maintenance Access'>Add Emergency Maintenance Access</A></li>"
 		dat += "</ul>"
 	if(screen == 2)
 		dat += "Please swipe your card to authorize the following event: <b>[event]</b>"
@@ -140,24 +140,24 @@
 	switch(event)
 		if("Red alert")
 			set_security_level(SEC_LEVEL_RED)
-		if("Grant Emergency Maintenance Access")
+		if("Remove Emergency Maintenance Access")
 			make_maint_all_access()
-		if("Revoke Emergency Maintenance Access")
+		if("Add Emergency Maintenance Access")
 			revoke_maint_all_access()
 
 /obj/structure/machinery/keycard_auth/proc/is_ert_blocked()
 	if(config.ert_admin_call_only) return 1
 	return ticker.mode && ticker.mode.ert_disabled
 
-var/global/maint_all_access = 0
+var/global/maint_all_access = 1
 
 /proc/make_maint_all_access()
 	maint_all_access = 1
-	ai_announcement("The maintenance access requirement has been revoked on all airlocks.")
+	ai_announcement("The maintenance access requirement has been removed on all airlocks.")
 
 /proc/revoke_maint_all_access()
 	maint_all_access = 0
-	ai_announcement("The maintenance access requirement has been readded on all airlocks.")
+	ai_announcement("The maintenance access requirement has been added on all airlocks.")
 
 // Keycard reader at the CORSAT locks
 /obj/structure/machinery/keycard_auth/lockdown

@@ -131,6 +131,9 @@ var/global/datum/controller/gameticker/ticker = new()
 	
 	callHook("roundstart")
 
+	if((master_mode == "Distress Signal") && SSevents)
+		SSevents.Initialize()
+
 	//here to initialize the random events nicely at round start
 	setup_economy()
 
@@ -144,8 +147,6 @@ var/global/datum/controller/gameticker/ticker = new()
 		if(round_statistics)
 			to_world(SPAN_BLUE("<B>Welcome to [round_statistics.name]</B>"))
 		to_world(SPAN_BLUE("<B>Enjoy the game!</B>"))
-		//Holiday Round-start stuff	~Carn
-		Holiday_Game_Start()
 
 	if(config.autooocmute)
 		to_world(SPAN_DANGER("<B>The OOC channel has been globally disabled due to round start!</B>"))

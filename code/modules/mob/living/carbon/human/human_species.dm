@@ -21,9 +21,6 @@
 /mob/living/carbon/human/dummy/sec_hud_set_ID()
 	return
 
-/mob/living/carbon/human/dummy/sec_hud_set_implants()
-	return
-
 /mob/living/carbon/human/dummy/sec_hud_set_security_status()
 	return
 

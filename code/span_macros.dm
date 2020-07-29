@@ -40,6 +40,8 @@
 #define SPAN_ADMINNOTICE(X) "<span class='adminnotice'>[X]</span>"
 
 // Misc
+#define SPAN_BOLD(X) "<span class='bold'>[X]</span>"
+
 #define SPAN_BOLDANNOUNCE(X) "<span class='boldannounce'>[X]</span>"
 #define SPAN_BOLDNOTICE(X) "<span class='boldnotice'>[X]</span>"
 
@@ -65,5 +67,6 @@
 
 // Colours
 #define SPAN_BLUE(X) "<span class='blue'>[X]</span>"
+#define SPAN_GREEN(X) "<span class='green'>[X]</span>"
 #define SPAN_RED(X) "<span class='red'>[X]</span>"
 #define SPAN_ORANGE(X) "<span class='orange'>[X]</span>"

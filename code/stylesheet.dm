@@ -56,6 +56,10 @@ em						{font-style: normal;	font-weight: bold;}
 .extra_large			{					font-size: 4}
 .huge					{					font-size: 5}
 
+.bold					{font-weight: bold;}
+
+.green					{color: #00ff00;}
+
 .normal					{font-style: normal;}
 
 .alert					{color: #ff0000;}

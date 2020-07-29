@@ -45,6 +45,8 @@ var/global/list/yautja_mob_list = list()
 var/global/list/human_mob_list = list() // list of all /mob/living/carbon/human mobs
 var/global/list/processable_human_list = list() //List of all humans to be processed by the SS
 var/global/list/living_human_list = list() // list of alive marines
+var/global/list/human_agent_list
+var/global/list/other_factions_human_list
 
 var/global/list/living_misc_mobs = list() // anything that isnt a xeno or human
 

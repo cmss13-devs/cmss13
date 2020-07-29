@@ -239,6 +239,12 @@
 		M_key = replacetext(M_key, "\"", "")
 		M_key = replacetext(M_key, "\\", "")
 
+		var/extra_info = ""
+		if(ishuman(M))
+			var/mob/living/carbon/human/H = M
+			if(H.agent_holder)
+				extra_info = "(<font color='red'>Agent</font>)"
+
 		//output for each mob
 		dat += {"
 			<tr id='data[i]' name='[i]' onClick="addToLocked('item[i]','data[i]','notice_span[i]')">
@@ -247,7 +253,7 @@
 					<a id='link[i]'
 					onmouseover='expand("item[i]","[M_job]","[M_name]","[M_rname]","--unused--","[M_key]","[M.lastKnownIP]","\ref[M]")'
 					>
-					<b id='search[i]'>[M_name] - [M_rname] - [M_key] ([M_job])</b>
+					<b id='search[i]'>[M_name] - [M_rname] - [M_key] ([M_job])[extra_info]</b>
 					</a>
 					<br><span id='item[i]'></span>
 				</td>
@@ -319,6 +325,90 @@
 
 
 /datum/admins/proc/check_antagonists()
+	if(!ticker || !(ticker.current_state >= GAME_STATE_PLAYING))
+		alert("The game hasn't started yet!")
+		return
+	
+	var/dat = "<html><body><h1><B>Antagonists</B></h1>"
+	dat += "Current Game Mode: <B>[ticker.mode.name]</B><BR>"
+	dat += "Round Duration: <B>[round(world.time / 36000)]:[add_zero(world.time / 600 % 60, 2)]:[world.time / 100 % 6][world.time / 100 % 10]</B><BR>"
+	
+	if(LAZYLEN(human_agent_list))
+		dat += "<br><table cellspacing=5><tr><td><B>Agents</B></td><td></td><td></td></tr>"
+		for(var/mob/living/carbon/human/H in human_agent_list)
+			var/location = get_area(H.loc)
+			if(H)
+				dat += "<tr><td><A href='?src=\ref[usr];priv_msg=\ref[H]'>[H.real_name]</a>[H.client ? "" : " <i>(logged out)</i>"][H.stat == DEAD ? " <b><font color=red>(DEAD)</font></b>" : ""]</td>"
+				dat += "<td>[location]</td>"
+				dat += "<td>[H.agent_holder.faction]</td>"
+				dat += "<td><a href='?src=\ref[usr];track=\ref[H]'>F</a></td>"
+				dat += "<td><a href='?src=\ref[src];ahelp=adminplayeropts;extra=\ref[H]'>PP</a></td>"
+				dat += "<td><a href='?src=\ref[src];agent=showobjectives;extra=\ref[H]'>Show Objective</a></td></tr>"
+		dat += "</table>"
+
+	if(LAZYLEN(other_factions_human_list))
+		dat += "<br><table cellspacing=5><tr><td><B>Other human factions</B></td><td></td><td></td></tr>"
+		for(var/mob/living/carbon/human/H in other_factions_human_list)
+			var/location = get_area(H.loc)
+			if(H)
+				dat += "<tr><td><A href='?src=\ref[usr];priv_msg=\ref[H]'>[H.real_name]</a>[H.client ? "" : " <i>(logged out)</i>"][H.stat == DEAD ? " <b><font color=red>(DEAD)</font></b>" : ""]</td>"
+				dat += "<td>[location]</td>"
+				dat += "<td>[H.faction]</td>"
+				dat += "<td><a href='?src=\ref[usr];track=\ref[H]'>F</a></td>"
+				dat += "<td><a href='?src=\ref[src];ahelp=adminplayeropts;extra=\ref[H]'>PP</a></td>"
+		dat += "</table>"
+
+	if(ticker.mode.survivors.len)
+		dat += "<br><table cellspacing=5><tr><td><B>Survivors</B></td><td></td><td></td></tr>"
+		for(var/datum/mind/L in ticker.mode.survivors)
+			var/mob/M = L.current
+			var/location = get_area(M.loc)
+			if(M)
+				dat += "<tr><td><A href='?src=\ref[usr];priv_msg=\ref[M]'>[M.real_name]</a>[M.client ? "" : " <i>(logged out)</i>"][M.stat == 2 ? " <b><font color=red>(DEAD)</font></b>" : ""]</td>"
+				dat += "<td>[location]</td>"
+				dat += "<td><a href='?src=\ref[usr];track=\ref[M]'>F</a></td>"
+				dat += "<td><A href='?src=\ref[src];ahelp=adminplayeropts;extra=\ref[M]'>PP</A></td></TR>"
+		dat += "</table>"
+
+	if(ticker.mode.xenomorphs.len)
+		dat += "<br><table cellspacing=5><tr><td><B>Aliens</B></td><td></td><td></td></tr>"
+		for(var/datum/mind/L in ticker.mode.xenomorphs)
+			var/mob/M = L.current
+			if(M)
+				var/location = get_area(M.loc)
+				dat += "<tr><td><A href='?src=\ref[usr];priv_msg=\ref[M]'>[M.real_name]</a>[M.client ? "" : " <i>(logged out)</i>"][M.stat == 2 ? " <b><font color=red>(DEAD)</font></b>" : ""]</td>"
+				dat += "<td>[location]</td>"
+				dat += "<td><a href='?src=\ref[usr];track=\ref[M]'>F</a></td>"
+				dat += "<td><A href='?src=\ref[src];ahelp=adminplayeropts;extra=\ref[M]'>PP</A></td></TR>"
+		dat += "</table>"
+
+	if(ticker.mode.survivors.len)
+		dat += "<br><table cellspacing=5><tr><td><B>Survivors</B></td><td></td><td></td></tr>"
+		for(var/datum/mind/L in ticker.mode.survivors)
+			var/mob/M = L.current
+			var/location = get_area(M.loc)
+			if(M)
+				dat += "<tr><td><A href='?src=\ref[usr];priv_msg=\ref[M]'>[M.real_name]</a>[M.client ? "" : " <i>(logged out)</i>"][M.stat == 2 ? " <b><font color=red>(DEAD)</font></b>" : ""]</td>"
+				dat += "<td>[location]</td>"
+				dat += "<td><a href='?src=\ref[usr];track=\ref[M]'>F</a></td>"
+				dat += "<td><A href='?src=\ref[src];ahelp=adminplayeropts;extra=\ref[M]'>PP</A></td></TR>"
+		dat += "</table>"
+
+	dat += "</body></html>"
+	show_browser(usr, dat, "Antagonists", "antagonists", "size=600x500")
+
+/datum/admins/proc/show_agent_objectives(var/mob/living/carbon/human/H)
+	if(!istype(H))
+		return
+
+	var/dat = "<html><body><h1><B>Objectives of [H.real_name]</B></h1>"
+	for(var/datum/agent_objective/O in H.agent_holder.objectives_list)
+		dat += "[O.description] <br><br>"
+
+	dat += "</body></html>"
+	show_browser(usr, dat, "Objectives", "objectives", "size=600x500")
+
+/datum/admins/proc/check_round_status()
 	if (ticker && ticker.current_state >= GAME_STATE_PLAYING)
 		var/dat = "<html><body><h1><B>Round Status</B></h1>"
 		dat += "Current Game Mode: <B>[ticker.mode.name]</B><BR>"
@@ -356,46 +446,6 @@
 			dat += "<a href='?src=\ref[src];evac_authority=toggle_dest'>Toggle Self Destruct Permission (does not affect evac in progress)</a><br>"
 
 		dat += "<br><a href='?src=\ref[src];delay_round_end=1'>[ticker.delay_end ? "End Round Normally" : "Delay Round End"]</a><br>"
-
-		if(ticker.mode.xenomorphs.len)
-			dat += "<br><table cellspacing=5><tr><td><B>Aliens</B></td><td></td><td></td></tr>"
-			for(var/datum/mind/L in ticker.mode.xenomorphs)
-				var/mob/M = L.current
-				if(M)
-					var/location = get_area(M.loc)
-					dat += "<tr><td><A href='?src=\ref[usr];priv_msg=\ref[M]'>[M.real_name]</a>[M.client ? "" : " <i>(logged out)</i>"][M.stat == 2 ? " <b><font color=red>(DEAD)</font></b>" : ""]</td>"
-					dat += "<td>[location]</td>"
-					dat += "<td><a href='?src=\ref[usr];track=\ref[M]'>F</a></td>"
-					dat += "<td><A href='?src=\ref[src];ahelp=adminplayeropts;extra=\ref[M]'>PP</A></td></TR>"
-			dat += "</table>"
-
-		if(ticker.liaison)
-			dat += "<br><table cellspacing=5><tr><td><B>Corporate Liaison</B></td><td></td><td></td></tr>"
-			var/mob/M = ticker.liaison.current
-			var/location = get_area(M.loc)
-			if(M)
-				dat += "<tr><td><A href='?src=\ref[usr];priv_msg=\ref[M]'>[M.real_name]</a>[M.client ? "" : " <i>(logged out)</i>"][M.stat == 2 ? " <b><font color=red>(DEAD)</font></b>" : ""]</td>"
-				dat += "<td>[location]</td>"
-				dat += "<td><a href='?src=\ref[usr];track=\ref[M]'>F</a></td>"
-				dat += "<td><A href='?src=\ref[src];traitor=\ref[M]'>TP</A></td>"
-				dat += "<td><A href='?src=\ref[src];ahelp=adminplayeropts;extra=\ref[M]'>PP</A></td></TR>"
-			dat += "</table>"
-
-		if(ticker.mode.survivors.len)
-			dat += "<br><table cellspacing=5><tr><td><B>Survivors</B></td><td></td><td></td></tr>"
-			for(var/datum/mind/L in ticker.mode.survivors)
-				var/mob/M = L.current
-				var/location = get_area(M.loc)
-				if(M)
-					dat += "<tr><td><A href='?src=\ref[usr];priv_msg=\ref[M]'>[M.real_name]</a>[M.client ? "" : " <i>(logged out)</i>"][M.stat == 2 ? " <b><font color=red>(DEAD)</font></b>" : ""]</td>"
-					dat += "<td>[location]</td>"
-					dat += "<td><a href='?src=\ref[usr];track=\ref[M]'>F</a></td>"
-					dat += "<td><A href='?src=\ref[src];ahelp=adminplayeropts;extra=\ref[M]'>PP</A></td></TR>"
-			dat += "</table>"
-
-		if(ticker.mode.traitors.len)
-			dat += check_role_table("Traitors", ticker.mode.traitors, src)
-
 		dat += "</body></html>"
 		show_browser(usr, dat, "Round Status", "roundstatus", "size=600x500")
 	else

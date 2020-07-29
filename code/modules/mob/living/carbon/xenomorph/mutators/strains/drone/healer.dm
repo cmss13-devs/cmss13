@@ -4,7 +4,7 @@
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
 	caste_whitelist = list("Drone") //Only drone.
-	mutator_actions_to_remove = list("Secrete Resin (150)","Choose Resin Structure")
+	mutator_actions_to_remove = list("Secrete Resin","Choose Resin Structure")
 	mutator_actions_to_add = list(/datum/action/xeno_action/activable/transfer_health)
 	keystone = TRUE
 

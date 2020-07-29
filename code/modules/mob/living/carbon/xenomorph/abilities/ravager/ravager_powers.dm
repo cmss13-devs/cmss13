@@ -36,7 +36,7 @@
 
 	var/accumulative_health = 0
 	for(var/mob/living/carbon/H in mobs_in_range)
-		if(!isXenoOrHuman(H) || X.match_hivemind(X)) 
+		if(!isXenoOrHuman(H) || X.match_hivemind(H)) 
 			continue
 		if(H.stat == DEAD || istype(H.buckled, /obj/structure/bed/nest))
 			continue

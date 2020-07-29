@@ -114,7 +114,7 @@
 	if (!action_cooldown_check())
 		return
 
-	if (!isXenoOrHuman(A) || X.match_hivemind(X))
+	if (!isXenoOrHuman(A) || X.match_hivemind(A))
 		return
 
 	if (!X.check_state() || X.agility)

@@ -18,6 +18,7 @@
 	var/list/nano_asset_dirs = list(\
 		"nano/css/",\
 		"nano/images/",\
+		"nano/images/weapons/",\
 		"nano/js/",\
 		"nano/templates/"\
 	)

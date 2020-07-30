@@ -442,6 +442,7 @@ var/global/list/asset_datums = list()
 	var/list/common_dirs = list(
 		"nano/css/",
 		"nano/images/",
+		"nano/images/weapons/",
 		"nano/js/"
 	)
 	var/list/uncommon_dirs = list(

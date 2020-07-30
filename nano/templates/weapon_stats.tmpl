@@ -1,5 +1,46 @@
 <style>
 
+.column {
+    text-align: center;
+    display: inline-block;
+
+    padding-left: auto;
+    padding-top: 12px;
+    padding-right: auto;
+}
+
+.row {
+    padding-left: 32px;
+    padding-right: 32px;
+}
+
+.h2 {
+    text-align: center;
+}
+
+.weaponInfo {
+    border: 1px white solid;
+    padding: 5px;
+
+    text-align: center;
+    float: top;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width: 50%;
+
+}
+
+.weaponInfo b{
+    font-size: larger;
+}
+
+.weaponInfo img{
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
 .borderPx {
     border: 1px solid #FFFFFF
 }
@@ -28,10 +69,25 @@
 </style>
 
 {{:helper.USCMMode()}}
+<div class="weaponInfo">
+    <b>{{:data.name}}</b><br>
+    <img src="{{:data.icon}}.png" onerror="if (this.src != '{{:data.icon}}.png') this.src = 'no_name.png';"/><br>
+    {{:data.desc}}<br>
+    <div class="row">
+        <div class="column">
+            <img id="single_img" src="single.png"/>
+        </div>
+        <div class="column">
+            <img id="burst_img" src="burst.png"/>
+        </div>
+        <div class="column">
+            <img id="automatic_img" src="auto.png"/>
+        </div>
+    </div>
+</div>
+
 <div name="left_side" style="float: left; width: 45%;">
     <h2>Weapon Info</h2>
-    <b>Name:</b> {{:data.name}}<br>
-    <b>Description:</b> {{:data.desc}}<br>
     <h3>Recoil:</h3>
     <b>Wielded</b>
     <div>
@@ -102,8 +158,7 @@
 
 {{if data.has_ammo}}
     <div name="right_side" style="float: right; width: 45%;">
-        <h2>Ammo Info</h2>
-        <b>Name:</b> {{:data.ammo_name}}<br>
+        <h2 style="text-align: right;">Ammo Info</h2>
         <h3>Damage:</h3>
         <div>
             <div class="redGreenGradient">
@@ -187,7 +242,16 @@
 {{/if}}
 
 <script>
-    
+
+    {{if data.burst_amount <= 1}}
+        var img = document.getElementById("burst_img");
+        img.src = "disabled_burst.png";
+    {{/if}}
+    {{if !data.automatic}}
+        var img = document.getElementById("automatic_img");
+        img.src = "disabled_automatic.png";
+    {{/if}}
+
     function makeProgressBar(id, value, maxValue, isOpposite) {
         if(!maxValue)
             maxValue = 100;

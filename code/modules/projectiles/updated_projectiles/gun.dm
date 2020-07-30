@@ -352,8 +352,9 @@
 			if(flags_gun_features & GUN_AMMO_COUNTER) dat += "Ammo counter shows [current_mag.current_rounds] round\s remaining.<br>"
 			else 								dat += "It's loaded[in_chamber?" and has a round chambered":""].<br>"
 		else 									dat += "It's unloaded[in_chamber?" but has a round chambered":""].<br>"
-
-	dat += "[htmlicon(src)] <a href='?src=\ref[src];list_stats=1'>\[See combat statistics]</a><br>"
+	if(!(flags_gun_features & GUN_UNUSUAL_DESIGN))
+		dat += "[htmlicon(src)] <a href='?src=\ref[src];list_stats=1'>\[See combat statistics]</a><br>"
+	
 	if(dat)
 		to_chat(user, dat)
 
@@ -361,7 +362,7 @@
 	if(!ishuman(usr) && !isobserver(usr))
 		return
 
-	if(href_list["list_stats"])
+	if(href_list["list_stats"] && !(flags_gun_features & GUN_UNUSUAL_DESIGN))
 		ui_interact(usr, "weapon_stat")
 
 
@@ -419,6 +420,7 @@
 	var/list/data = list(
 		"name" = name,
 		"desc" = desc,
+		"icon" = icon_state,
 
 		"two_handed_only" = (flags_gun_features & GUN_WIELDED_FIRING_ONLY),
 
@@ -426,6 +428,8 @@
 		"unwielded_recoil" = max(recoil_unwielded, 0.1),
 
 		"has_ammo" = has_ammo,
+
+		"automatic" = (flags_gun_features & GUN_HAS_FULL_AUTO),
 
 		"ammo_name" = ammo_name,
 		"damage" = damage,

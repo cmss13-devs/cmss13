@@ -187,7 +187,7 @@
 			return
 			
 		if(alert(ghost_of_buckled_mob, "You have been freed from your nest, do you want to return to your body?", ,"Yes", "No") == "Yes")
-			if(!ghost_of_buckled_mob && !ghost_of_buckled_mob.mind)
+			if(!ghost_of_buckled_mob || !ghost_of_buckled_mob.mind)
 				return
 			ghost_of_buckled_mob.mind.transfer_to(H, TRUE)
 			qdel(ghost_of_buckled_mob)

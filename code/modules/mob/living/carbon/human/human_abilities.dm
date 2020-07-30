@@ -309,7 +309,7 @@ CULT
 	to_chat(chosen, SPAN_HIGHDANGER("<hr>You are now a Xeno Cultist!"))
 	to_chat(chosen, SPAN_DANGER("Worship the Xenomorphs and listen to the Cult Leader for orders. The Cult Leader is typically the person who transformed you. Do not kill anyone unless you are wearing your black robes, you may defend yourself.<hr>"))
 
-	xeno_message("[chosen] has been converted into a cultist!")
+	xeno_message("[chosen] has been converted into a cultist!", 2, hive.hivenumber)
 
 	chosen.KnockOut(5)
 	chosen.make_jittery(105)

@@ -87,6 +87,16 @@
 	. += config.human_delay
 	move_delay = .
 
+/mob/living/carbon/human/yautja/movement_delay()
+	. = ..()
+
+	if(superslowed)
+		. += YAUTJA_SUPERSLOWED_AMOUNT
+
+	if(slowed && !superslowed)
+		. += YAUTJA_SLOWED_AMOUNT
+
+	move_delay = .
 
 /mob/living/carbon/human/Process_Spacemove(var/check_drift = 0)
 	//Can we act

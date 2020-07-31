@@ -131,6 +131,10 @@
 #define HUMAN_SLOWED_AMOUNT 2.0
 #define HUMAN_SUPERSLOWED_AMOUNT 4.0
 
+// Adds onto HUMAN_*****_AMOUNT
+#define YAUTJA_SLOWED_AMOUNT -1.25 // 0.75s slowdown
+#define YAUTJA_SUPERSLOWED_AMOUNT -3 // 1s slowdown
+
 //=================================================
 
 ///////////////////INTERNAL ORGANS DEFINES///////////////////

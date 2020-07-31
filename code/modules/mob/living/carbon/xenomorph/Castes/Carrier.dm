@@ -25,9 +25,13 @@
 	weed_level = WEED_LEVEL_STANDARD
 	huggers_max = 16
 	eggs_max = 7
-	tacklemin = 4
-	tacklemax = 5
+	
+	tackle_min = 2
+	tackle_max = 4
 	tackle_chance = 50
+	tacklestrength_min = 4
+	tacklestrength_max = 5
+
 	aura_strength = 2
 	hugger_delay = 20
 	egg_cooldown = 250

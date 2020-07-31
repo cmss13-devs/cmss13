@@ -14,9 +14,12 @@
 	speed = XENO_SPEED_TIER_7
 
 	evolution_allowed = FALSE
-	tacklemin = 6
-	tacklemax = 10
-	tackle_chance = 35
+
+	tackle_min = 3
+	tackle_max = 6
+	tacklestrength_min = 6
+	tacklestrength_max = 10
+	
 	is_intelligent = TRUE
 	tier = 1
 	attack_delay = -2

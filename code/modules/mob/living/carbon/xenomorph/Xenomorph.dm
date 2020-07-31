@@ -79,6 +79,13 @@
 	var/plasma_max = 10
 	var/plasma_gain = 5
 
+	// Tackles
+	var/tackle_min = 2
+	var/tackle_max = 6
+	var/tackle_chance = 35
+	var/tacklestrength_min = 2
+	var/tacklestrength_max = 3
+
 	var/last_hit_time = 0
 
 	//Amount of construction resources stored internally
@@ -95,9 +102,6 @@
 	var/armor_integrity_max = 100
 	var/armor_integrity_last_damage_time = 0
 	var/armor_integrity_immunity_time = 0
-	var/tacklemin = 2
-	var/tacklemax = 3
-	var/tackle_chance = 35
 	var/pull_multiplier = 1.0
 	var/aura_strength = 0 // Pheromone strength
 	var/weed_level = WEED_LEVEL_STANDARD
@@ -200,6 +204,7 @@
 	var/tileoffset = 0 // Zooming-out related vars
 	var/viewsize = 0
 	var/banished = FALSE // Banished xenos can be attacked by all other xenos
+	var/list/tackle_counter = list()
 
 
 	//////////////////////////////////////////////////////////////////
@@ -534,7 +539,7 @@
 
 /mob/living/carbon/Xenomorph/pull_response(mob/puller)
 	if(stat != DEAD && has_species(puller,"Human")) // If the Xeno is alive, fight back against a grab/pull
-		puller.KnockDown(rand(caste.tacklemin,caste.tacklemax))
+		puller.KnockDown(rand(caste.tacklestrength_min,caste.tacklestrength_max))
 		playsound(puller.loc, 'sound/weapons/pierce.ogg', 25, 1)
 		puller.visible_message(SPAN_WARNING("[puller] tried to pull [src] but instead gets a tail swipe to the head!"))
 		puller.stop_pulling()
@@ -637,11 +642,14 @@
 	recalculate_armor()
 	recalculate_damage()
 	recalculate_evasion()
+	recalculate_tackle()
 
 /mob/living/carbon/Xenomorph/proc/recalculate_tackle()
-	tacklemin = caste.tacklemin + mutators.tackle_strength_bonus + hive.mutators.tackle_strength_bonus
-	tacklemax = caste.tacklemax + mutators.tackle_strength_bonus + hive.mutators.tackle_strength_bonus
-	tackle_chance = round(caste.tackle_chance * mutators.tackle_chance_multiplier * hive.mutators.tackle_chance_multiplier + 0.5)
+	tackle_min = caste.tackle_min
+	tackle_max = caste.tackle_max
+	tackle_chance = caste.tackle_chance
+	tacklestrength_min = caste.tacklestrength_min + mutators.tackle_strength_bonus + hive.mutators.tackle_strength_bonus
+	tacklestrength_max = caste.tacklestrength_max + mutators.tackle_strength_bonus + hive.mutators.tackle_strength_bonus
 
 /mob/living/carbon/Xenomorph/proc/recalculate_health()
 	var/new_max_health = health_modifier + caste.max_health

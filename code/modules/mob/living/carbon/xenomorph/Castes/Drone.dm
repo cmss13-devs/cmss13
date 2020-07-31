@@ -21,9 +21,11 @@
 	acid_level = 1
 	weed_level = WEED_LEVEL_STANDARD
 
-	tacklemin = 3
-	tacklemax = 4
-	tackle_chance = 35
+	tackle_min = 2
+	tackle_max = 4
+	tacklestrength_min = 3
+	tacklestrength_max = 4
+	
 	aura_strength = 2
 
 /mob/living/carbon/Xenomorph/Drone

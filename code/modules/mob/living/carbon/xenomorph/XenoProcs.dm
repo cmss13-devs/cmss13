@@ -581,3 +581,31 @@
 /mob/living/carbon/Xenomorph/proc/end_pounce_freeze()
 	frozen = FALSE
 	update_canmove()
+
+/mob/living/carbon/Xenomorph/proc/attempt_tackle(var/mob/M, var/tackle_mult = 1, var/tackle_bonus = 0)
+	var/datum/tackle_counter/TC
+	if (M in tackle_counter)
+		TC = tackle_counter[M]
+	else
+		TC = getFromPool(/datum/tackle_counter, tackle_min, tackle_max, tackle_chance*tackle_mult)
+		tackle_counter[M] = TC
+	
+	if (TC.tackle_reset_id)
+		delete_timer(TC.tackle_reset_id)
+		TC.tackle_reset_id = null
+
+	. = TC.attempt_tackle(tackle_bonus)
+	if (!.)
+		TC.tackle_reset_id = add_timer(CALLBACK(src, .proc/reset_tackle, M), SECONDS_4, TIMER_UNIQUE | TIMER_STOPPABLE)
+	else
+		qdel(TC)
+		tackle_counter[M] = null
+		tackle_counter.Remove(M)
+
+/mob/living/carbon/Xenomorph/proc/reset_tackle(var/mob/M)
+	var/datum/tackle_counter/TC
+	if (M in tackle_counter)
+		TC = tackle_counter[M]
+		qdel(TC)
+		tackle_counter[M] = null
+		tackle_counter.Remove(M)

@@ -46,6 +46,9 @@
 	mutation_type = LURKER_NORMAL
 	claw_type = CLAW_TYPE_SHARP
 
+	tackle_min = 2
+	tackle_max = 6
+
 /mob/living/carbon/Xenomorph/Lurker/update_icons()
 	if(!caste)
 		return

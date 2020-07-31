@@ -20,9 +20,13 @@
 	acid_level = 2
 	weed_level = WEED_LEVEL_STANDARD
 	evolution_allowed = FALSE
-	tacklemin = 4
-	tacklemax = 5
+
+	tackle_min = 2
+	tackle_max = 4
 	tackle_chance = 50
+	tacklestrength_min = 4
+	tacklestrength_max = 5
+
 	burrow_cooldown = 20
 	tunnel_cooldown = 70
 	widen_cooldown = 70

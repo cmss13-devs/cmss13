@@ -168,7 +168,7 @@
 		
 		// give overheal
 		var/to_heal = min(X.maxHealth * heal_percent / 100, action_def.heal_strength_max)
-		add_xeno_shield(to_heal, XENO_SHIELD_SOURCE_SHAMAN)
+		X.add_xeno_shield(to_heal, XENO_SHIELD_SOURCE_SHAMAN)
 
 		if(X.armor_deflection && X.armor_integrity < 100)
 			var/to_armor = armor_percent

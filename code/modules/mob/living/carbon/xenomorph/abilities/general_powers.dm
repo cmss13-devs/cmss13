@@ -68,7 +68,7 @@
 		return
 
 	if(!X.resting)
-		X.KnockDown(1) //so that the mob immediately falls over
+		X.KnockDown(1, TRUE) //so that the mob immediately falls over
 
 	X.resting = !X.resting
 	to_chat(X, SPAN_NOTICE(" You are now [X.resting ? "resting" : "getting up"]. "))

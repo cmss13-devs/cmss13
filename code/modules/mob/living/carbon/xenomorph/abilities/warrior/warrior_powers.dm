@@ -278,8 +278,10 @@
 	..()
 
 
-/datum/action/xeno_action/onclick/uppercut/use_ability()
+/datum/action/xeno_action/activable/uppercut/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
+	if (!isXenoOrHuman(A) || X.match_hivemind(A))
+		return
 
 	if (!action_cooldown_check())
 		return
@@ -292,6 +294,9 @@
 		return
 
 	if(!BD.punching_bag)
+		return
+
+	if(BD.punching_bag != A)
 		return
 
 	var/mob/living/carbon/H = BD.punching_bag
@@ -352,10 +357,6 @@
 
 	if(ko_counter > 0)
 		X.gain_health(ko_counter * base_healthgain * X.maxHealth / 100)
-
-	BD.clear_head += round(ko_counter / 3)
-	if(BD.clear_head > BD.max_clear_head)
-		BD.clear_head = BD.max_clear_head
 
 	apply_cooldown()
 	..()

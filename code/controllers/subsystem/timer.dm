@@ -120,6 +120,8 @@ var/datum/subsystem/timer/SStimer
 				log_debug("Invalid timer: [timer] timer.time_to_run=[timer.time_to_run]||timer=[timer]||world.time=[world.time]||head_offset=[head_offset]||practical_offset=[practical_offset]||timer.spent=[timer.spent]")
 				var/datum/timed_event/bad_timer = timer
 				timer = timer.next
+				if (timer == bad_timer)
+					timer = null
 				if(log_bad_timers)
 					bad_timerlist += bad_timer
 					bad_timer.cleanup_timer()
@@ -240,7 +242,7 @@ var/datum/subsystem/timer/SStimer
 	var/spent = FALSE //set to true right before running.
 	var/name //for easy debugging.
 
-	//cicular doublely linked list
+	// Circular doublely linked list
 	var/datum/timed_event/next
 	var/datum/timed_event/prev
 
@@ -337,8 +339,12 @@ var/datum/subsystem/timer/SStimer
 
 	if (!spent)
 		if (prev == next && next)
-			next.prev = null
-			prev.next = null
+			if (next != src)
+				next.prev = null
+				prev.next = null
+			else // We are the head and referencing ourself, so we just need to directly clear those refs
+				next = null
+				prev = null
 		else
 			if (prev)
 				prev.next = next

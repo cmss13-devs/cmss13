@@ -59,7 +59,7 @@
 
 /mob/proc/Slow(amount)
 	if(status_flags & CANSLOW)
-		slowed = max(max(slowed,amount),0)
+		slowed = max(slowed, amount, 0)
 	return
 
 /mob/proc/SetSlowed(amount)
@@ -68,13 +68,12 @@
 	return
 
 /mob/proc/AdjustSlowed(amount)
-	if(status_flags & CANSLOW)		
-		slowed = max(slowed + amount,0)
+	SetSlowed(amount + slowed)
 	return
 
 /mob/proc/Superslow(amount)
 	if(status_flags & CANSLOW)
-		superslowed = max(max(superslowed,amount),0)
+		superslowed = max(superslowed, amount, 0)
 	return
 
 /mob/proc/SetSuperslowed(amount)
@@ -83,8 +82,7 @@
 	return
 
 /mob/proc/AdjustSuperslowed(amount)
-	if(status_flags & CANSLOW)		
-		superslowed = max(superslowed + amount,0)
+	SetSuperslowed(superslowed + amount)
 	return
 
 /mob/var/knocked_down_timer

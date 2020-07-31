@@ -128,9 +128,9 @@
 	name = "Boxer Warrior Behavior Delegate"
 
 	var/ko_delay = SECONDS_5
-	var/max_clear_head = 6
-	var/clear_head_delay = MINUTES_1
-	var/clear_head = 6
+	var/max_clear_head = 3
+	var/clear_head_delay = SECONDS_15
+	var/clear_head = 3
 	var/next_clear_head_regen
 	var/clear_head_tickcancel
 
@@ -270,6 +270,42 @@
 		BD.clear_head = 0
 
 /mob/living/carbon/Xenomorph/Warrior/AdjustKnockeddown(amount)
+	var/datum/behavior_delegate/boxer/BD = behavior_delegate
+	if(mutation_type != WARRIOR_BOXER || !istype(BD) || BD.clear_head <= 0)
+		..(amount)
+		return
+	if(BD.clear_head_tickcancel == world.time)
+		return
+	BD.clear_head_tickcancel = world.time
+	BD.clear_head--
+	if(BD.clear_head<=0)
+		BD.clear_head = 0
+
+/mob/living/carbon/Xenomorph/Warrior/Stun(amount)
+	var/datum/behavior_delegate/boxer/BD = behavior_delegate
+	if(mutation_type != WARRIOR_BOXER || !istype(BD) || BD.clear_head <= 0)
+		..(amount)
+		return
+	if(BD.clear_head_tickcancel == world.time)
+		return
+	BD.clear_head_tickcancel = world.time
+	BD.clear_head--
+	if(BD.clear_head<=0)
+		BD.clear_head = 0
+
+/mob/living/carbon/Xenomorph/Warrior/SetStunned(amount) //if you REALLY need to set stun to a set amount without the whole "can't go below current stunned"
+	var/datum/behavior_delegate/boxer/BD = behavior_delegate
+	if(mutation_type != WARRIOR_BOXER || !istype(BD) || BD.clear_head <= 0)
+		..(amount)
+		return
+	if(BD.clear_head_tickcancel == world.time)
+		return
+	BD.clear_head_tickcancel = world.time
+	BD.clear_head--
+	if(BD.clear_head<=0)
+		BD.clear_head = 0
+
+/mob/living/carbon/Xenomorph/Warrior/AdjustStunned(amount)
 	var/datum/behavior_delegate/boxer/BD = behavior_delegate
 	if(mutation_type != WARRIOR_BOXER || !istype(BD) || BD.clear_head <= 0)
 		..(amount)

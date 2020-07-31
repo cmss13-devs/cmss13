@@ -21,7 +21,10 @@
 
 	aura_strength = 3
 	spit_delay = 20
-	tackle_chance = 55
+
+	tackle_min = 2
+	tackle_max = 5
+	tackle_chance = 45
 
 	behavior_delegate_type = /datum/behavior_delegate/praetorian_base
 

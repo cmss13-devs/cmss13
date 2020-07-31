@@ -24,9 +24,12 @@
 	build_time = BUILD_TIME_HIVELORD
 	max_build_dist = 1
 
-	tacklemin = 4
-	tacklemax = 5
+	tackle_min = 2
+	tackle_max = 4
 	tackle_chance = 45
+	tacklestrength_min = 4
+	tacklestrength_max = 5
+	
 	aura_strength = 2.5
 
 /mob/living/carbon/Xenomorph/Hivelord

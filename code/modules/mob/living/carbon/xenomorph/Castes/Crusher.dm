@@ -16,7 +16,10 @@
 
 	behavior_delegate_type = /datum/behavior_delegate/crusher_base
 
+	tackle_min = 2
+	tackle_max = 6
 	tackle_chance = 25
+
 	evolution_allowed = FALSE
 	deevolves_to = "Warrior"
 	caste_desc = "A huge tanky xenomorph."

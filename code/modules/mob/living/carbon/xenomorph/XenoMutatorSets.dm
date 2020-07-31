@@ -11,7 +11,6 @@
 	var/list/purchased_mutators = list() //List of purchased mutators
 	var/user_level = 0 //Level of the Queen for Hive or the individual xeno. Starting at -1 so at tier 0 you'd get some mutators to play with
 
-	var/tackle_chance_multiplier = 1.0
 	var/tackle_strength_bonus = 0
 
 //Functions to be overloaded to call for when something gets updated on the xenos
@@ -120,7 +119,6 @@
 	if(!depowered)
 		return //We haven't lost anything
 
-	tackle_chance_multiplier = 1.0
 	tackle_strength_bonus = 0
 
 	leader_count_boost = 0

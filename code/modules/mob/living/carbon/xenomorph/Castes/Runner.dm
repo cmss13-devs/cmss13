@@ -16,9 +16,11 @@
 	evolves_to = list("Lurker")
 	deevolves_to = "Larva"
 
-	tacklemin = 3
-	tacklemax = 4
+	tackle_min = 2
+	tackle_max = 6
 	tackle_chance = 40
+	tacklestrength_min = 3
+	tacklestrength_max = 4
 
 /mob/living/carbon/Xenomorph/Runner
 	caste_name = "Runner"

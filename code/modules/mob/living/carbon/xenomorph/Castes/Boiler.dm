@@ -21,9 +21,12 @@
 	caste_desc = "Gross!"
 	acid_level = 3
 	caste_luminosity = 2
+	
+	tackle_min = 2
+	tackle_max = 6
 	tackle_chance = 25
-	tacklemin = 3
-	tacklemax = 4
+	tacklestrength_min = 3
+	tacklestrength_max = 4
 
 /mob/living/carbon/Xenomorph/Boiler
 	caste_name = "Boiler"

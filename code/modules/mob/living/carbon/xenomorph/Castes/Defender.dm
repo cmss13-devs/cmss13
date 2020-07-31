@@ -18,6 +18,9 @@
 	deevolves_to = "Larva"
 	can_vent_crawl = 0
 
+	tackle_min = 2
+	tackle_max = 4
+
 /mob/living/carbon/Xenomorph/Defender
 	caste_name = "Defender"
 	name = "Defender"

@@ -20,7 +20,9 @@
 	caste_desc = "A powerful front line combatant."
 	can_vent_crawl = 0
 
-	tackle_chance = 35
+	tackle_min = 2
+	tackle_max = 4
+	
 	agility_speed_increase = -0.9
 
 /mob/living/carbon/Xenomorph/Warrior

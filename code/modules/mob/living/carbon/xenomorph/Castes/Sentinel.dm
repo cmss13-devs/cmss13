@@ -19,9 +19,12 @@
 	deevolves_to = "Larva"
 	acid_level = 1
 
-	tacklemin = 4
-	tacklemax = 5
+	tackle_min = 2
+	tackle_max = 6
 	tackle_chance = 50
+	tacklestrength_min = 4
+	tacklestrength_max = 5
+	
 	spit_delay = 20
 
 /mob/living/carbon/Xenomorph/Sentinel

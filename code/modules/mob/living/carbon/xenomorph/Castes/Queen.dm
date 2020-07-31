@@ -25,10 +25,14 @@
 	weed_level = WEED_LEVEL_STANDARD
 
 	spit_delay = 25
-	tackle_chance = 50
+
+	tackle_min = 2
+	tackle_max = 6
+	tackle_chance = 55
+
 	aura_strength = 4
-	tacklemin = 5
-	tacklemax = 6
+	tacklestrength_min = 5
+	tacklestrength_max = 6
 
 	minimum_playtimes = list(
 		FACTION_XENOMORPH = HOURS_9

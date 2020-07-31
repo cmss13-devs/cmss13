@@ -27,11 +27,15 @@
 
 	var/list/evolves_to = list() //This is where you add castes to evolve into. "Seperated", "by", "commas"
 	var/deevolves_to // what caste to de-evolve to.
-	var/tacklemin = 2
-	var/tacklemax = 3
-	var/tackle_chance = 35
 	var/is_intelligent = 0 //If they can use consoles, etc. Set on Queen
 	var/caste_desc = null
+
+	// Tackles
+	var/tackle_min = 2
+	var/tackle_max = 6
+	var/tackle_chance = 35
+	var/tacklestrength_min = 2
+	var/tacklestrength_max = 3
 
 	var/armor_deflection = 0 //Chance of deflecting projectiles.
 	var/armor_hardiness_mult = XENO_ARMOR_FACTOR_LOW //so our armor is stronger

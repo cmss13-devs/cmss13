@@ -40,9 +40,9 @@
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/regurgitate,
 		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/activable/fling,
 		/datum/action/xeno_action/activable/lunge,
-		/datum/action/xeno_action/activable/warrior_punch
+		/datum/action/xeno_action/activable/warrior_punch,
+		/datum/action/xeno_action/activable/fling
 	)
 	
 	mutation_type = WARRIOR_NORMAL
@@ -121,3 +121,160 @@
 
 /datum/behavior_delegate/warrior_base/append_to_stat()
 	stat("Stored Shield", "[stored_shield]/[stored_shield_max]")
+
+/datum/behavior_delegate/boxer
+	name = "Boxer Warrior Behavior Delegate"
+
+	var/ko_delay = SECONDS_5
+	var/max_clear_head = 6
+	var/clear_head_delay = MINUTES_1
+	var/clear_head = 6
+	var/next_clear_head_regen
+	var/clear_head_tickcancel
+
+	var/mob/punching_bag
+	var/ko_counter = 0
+	var/ko_reset_timer
+	var/max_ko_counter = 15
+
+	var/image/ko_icon
+	var/image/big_ko_icon
+
+/datum/behavior_delegate/boxer/append_to_stat()
+	if(punching_bag)
+		stat("Beating", "[punching_bag] - [ko_counter] hits")
+	stat("Clarity", "[clear_head] hits")
+
+/datum/behavior_delegate/boxer/on_life()
+	var/wt = world.time
+	if(wt > next_clear_head_regen && clear_head<max_clear_head)
+		clear_head++
+		next_clear_head_regen = wt + clear_head_delay
+
+/datum/behavior_delegate/boxer/melee_attack_additional_effects_target(atom/A, ko_boost = 0.5)
+	if(!ismob(A))
+		return
+	if(punching_bag != A)
+		remove_ko()
+		punching_bag = A
+		ko_icon = image(null, A)
+		ko_icon.alpha = 196
+		ko_icon.maptext_width = 16
+		ko_icon.maptext_x = 16
+		ko_icon.maptext_y = 16
+		ko_icon.layer = 20
+		if(bound_xeno.client && bound_xeno.client.prefs && !bound_xeno.client.prefs.lang_chat_disabled)
+			bound_xeno.client.images += ko_icon
+	
+	ko_counter += ko_boost
+	if(ko_counter > max_ko_counter)
+		ko_counter = max_ko_counter
+	var/to_display = round(ko_counter)
+	ko_icon.maptext = "<span class='center langchat'>[to_display]</span>"
+	
+	ko_reset_timer = add_timer(CALLBACK(src, .proc/remove_ko), ko_delay, TIMER_UNIQUE|TIMER_OVERRIDE_UNIQUE|TIMER_NO_WAIT_UNIQUE|TIMER_STOPPABLE)
+
+/datum/behavior_delegate/boxer/proc/remove_ko()
+	punching_bag = null
+	ko_counter = 0
+	if(bound_xeno.client && ko_icon)
+		bound_xeno.client.images -= ko_icon
+	if(ko_icon)
+		qdel(ko_icon)
+		ko_icon = null
+
+/datum/behavior_delegate/boxer/proc/display_ko_message(var/mob/H)
+	if(!bound_xeno.client)
+		return
+	if(!bound_xeno.client.prefs || bound_xeno.client.prefs.lang_chat_disabled)
+		return
+	big_ko_icon = image(null, H)
+	big_ko_icon.alpha = 196
+	big_ko_icon.maptext_y = H.langchat_height
+	big_ko_icon.maptext_width = LANGCHAT_WIDTH
+	big_ko_icon.maptext_height = 64
+	big_ko_icon.color = "#FF0000"
+	big_ko_icon.maptext_x = LANGCHAT_X_OFFSET
+	big_ko_icon.maptext = "<span class='center langchat langchat_bolditalicbig'>KO!</span>"
+	bound_xeno.client.images += big_ko_icon
+	add_timer(CALLBACK(src, .proc/remove_big_ko), SECONDS_2)
+
+/datum/behavior_delegate/boxer/proc/remove_big_ko()
+	if(bound_xeno.client && big_ko_icon)
+		bound_xeno.client.images -= big_ko_icon
+	if(big_ko_icon)
+		qdel(big_ko_icon)
+		big_ko_icon = null
+
+// a lot of repeats but it's because we are calling different parent procs
+/mob/living/carbon/Xenomorph/Warrior/Daze(amount)
+	var/datum/behavior_delegate/boxer/BD = behavior_delegate
+	if(mutation_type != WARRIOR_BOXER || !istype(BD) || BD.clear_head <= 0)
+		..(amount)
+		return
+	if(BD.clear_head_tickcancel == world.time)
+		return
+	BD.clear_head_tickcancel = world.time
+	BD.clear_head--
+	if(BD.clear_head<=0)
+		BD.clear_head = 0
+
+/mob/living/carbon/Xenomorph/Warrior/SetDazed(amount)
+	var/datum/behavior_delegate/boxer/BD = behavior_delegate
+	if(mutation_type != WARRIOR_BOXER || !istype(BD) || BD.clear_head <= 0)
+		..(amount)
+		return
+	if(BD.clear_head_tickcancel == world.time)
+		return
+	BD.clear_head_tickcancel = world.time
+	BD.clear_head--
+	if(BD.clear_head<=0)
+		BD.clear_head = 0
+
+/mob/living/carbon/Xenomorph/Warrior/AdjustDazed(amount)
+	var/datum/behavior_delegate/boxer/BD = behavior_delegate
+	if(mutation_type != WARRIOR_BOXER || !istype(BD) || BD.clear_head <= 0)
+		..(amount)
+		return
+	if(BD.clear_head_tickcancel == world.time)
+		return
+	BD.clear_head_tickcancel = world.time
+	BD.clear_head--
+	if(BD.clear_head<=0)
+		BD.clear_head = 0
+
+/mob/living/carbon/Xenomorph/Warrior/KnockDown(amount, forced)
+	var/datum/behavior_delegate/boxer/BD = behavior_delegate
+	if(forced || mutation_type != WARRIOR_BOXER || !istype(BD) || BD.clear_head <= 0)
+		..(amount, forced)
+		return
+	if(BD.clear_head_tickcancel == world.time)
+		return
+	BD.clear_head_tickcancel = world.time
+	BD.clear_head--
+	if(BD.clear_head<=0)
+		BD.clear_head = 0
+
+/mob/living/carbon/Xenomorph/Warrior/SetKnockeddown(amount)
+	var/datum/behavior_delegate/boxer/BD = behavior_delegate
+	if(mutation_type != WARRIOR_BOXER || !istype(BD) || BD.clear_head <= 0)
+		..(amount)
+		return
+	if(BD.clear_head_tickcancel == world.time)
+		return
+	BD.clear_head_tickcancel = world.time
+	BD.clear_head--
+	if(BD.clear_head<=0)
+		BD.clear_head = 0
+
+/mob/living/carbon/Xenomorph/Warrior/AdjustKnockeddown(amount)
+	var/datum/behavior_delegate/boxer/BD = behavior_delegate
+	if(mutation_type != WARRIOR_BOXER || !istype(BD) || BD.clear_head <= 0)
+		..(amount)
+		return
+	if(BD.clear_head_tickcancel == world.time)
+		return
+	BD.clear_head_tickcancel = world.time
+	BD.clear_head--
+	if(BD.clear_head<=0)
+		BD.clear_head = 0

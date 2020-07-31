@@ -20,7 +20,7 @@
 	ability_name = "Fling"
 	macro_path = /datum/action/xeno_action/verb/verb_fling
 	action_type = XENO_ACTION_CLICK
-	ability_primacy = XENO_PRIMARY_ACTION_1
+	ability_primacy = XENO_PRIMARY_ACTION_3
 	xeno_cooldown = 55
 
 	// Configurables
@@ -51,17 +51,31 @@
 	ability_name = "punch"
 	macro_path = /datum/action/xeno_action/verb/verb_punch
 	action_type = XENO_ACTION_CLICK
-	ability_primacy = XENO_PRIMARY_ACTION_3
+	ability_primacy = XENO_PRIMARY_ACTION_1
 	xeno_cooldown = 40
 
 	// Configurables
 	var/base_damage = 20
-	var/boxer_punch_damage = 50
+	var/boxer_punch_damage = 20
 	var/base_punch_damage_synth = 30
-	var/boxer_punch_damage_synth = 40
+	var/boxer_punch_damage_synth = 30
 	var/base_punch_damage_pred = 25
-	var/boxer_punch_damage_pred = 35
-	var/damage_variance = 10
+	var/boxer_punch_damage_pred = 25
+	var/damage_variance = 5
+
+/datum/action/xeno_action/onclick/uppercut
+	name = "Uppercut"
+	action_icon_state = "rav_clothesline"
+	ability_name = "uppercut"
+	macro_path = /datum/action/xeno_action/verb/verb_uppercut
+	action_type = XENO_ACTION_ACTIVATE
+	ability_primacy = XENO_PRIMARY_ACTION_3
+	xeno_cooldown = 100
+	var/base_damage = 15
+	var/base_knockback = 40
+	var/base_knockdown = 0.5
+	var/knockout_power = 20 // 10 seconds
+	var/base_healthgain = 5 // in percents of health per ko point
 
 /datum/action/xeno_action/activable/jab
 	name = "Jab"
@@ -69,5 +83,6 @@
 	ability_name = "jab"
 	macro_path = /datum/action/xeno_action/verb/verb_jab
 	action_type = XENO_ACTION_CLICK
+	ability_primacy = XENO_PRIMARY_ACTION_2
 	xeno_cooldown = 40
 

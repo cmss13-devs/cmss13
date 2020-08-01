@@ -188,6 +188,9 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 				FACTION_MERCENARY,
 				FACTION_FREELANCER,
 			) return TRUE
+		if(user.faction in FACTION_LIST_WY)
+			return TRUE
+		
 	to_chat(user, SPAN_WARNING("[src] flashes a warning sign indicating unauthorized use!"))
 
 // Checks whether there is anything to put your harness

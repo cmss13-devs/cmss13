@@ -5,7 +5,7 @@
 		alert("Invalid mob")
 		return
 
-	var/rank_list = list("Custom") + RoleAuthority.roles_by_name
+	var/rank_list = list("Custom", "Weston-Yamada") + RoleAuthority.roles_by_name
 
 	var/newrank = input("Select new rank for [H]", "Change the mob's rank and skills") as null|anything in rank_list
 	if (!newrank)
@@ -14,7 +14,7 @@
 		return
 	var/obj/item/card/id/I = H.wear_id
 	 
-	if(newrank != "Custom")
+	if(RoleAuthority.roles_by_name[newrank])
 		var/datum/job/J = RoleAuthority.roles_by_name[newrank]
 		H.comm_title = J.get_comm_title()
 		H.set_skills(J.get_skills())
@@ -38,48 +38,82 @@
 			new_faction = FACTION_NEUTRAL
 		H.faction = new_faction
 	else
-		var/newcommtitle = input("Write the custom title appearing on comms chat (e.g. Spc)", "Comms title") as null|text
-		if(!newcommtitle)
-			return
-		if(!H)
-			return
+		switch(newrank)
+			if("Weston-Yamada")
+				var/code = "WY-"
+				
+				var/divisions = get_named_wy_ranks("division_code")
+				var/div = input("Select the Division at which they belong to.", "Division") in divisions
 
-		H.comm_title = newcommtitle
+				if(!div)
+					return
+				code += divisions[div]
 
-		if(!istype(I) || I != H.wear_id)
-			to_chat(usr, "The mob has no id card, unable to modify ID and chat title.")
-		else
-			var/newchattitle = input("Write the custom title appearing in chat (e.g. SGT)", "Chat title") as null|text
-			if(!newchattitle)
-				return
-			if(!H || I != H.wear_id)
-				return
+				var/ranks = get_named_wy_ranks("job_code")
+				var/rank = input("Select the Rank at which they are at.", "Rank") in ranks
 
-			I.paygrade = newchattitle
-			var/IDtitle = input("Write the custom title on your ID (e.g. Squad Specialist)", "ID title") as null|text
-			if(!IDtitle)
-				return
-			if(!H || I != H.wear_id)
-				return
+				if(!rank)
+					return
+				code += ranks[rank]
 
-			I.rank = IDtitle
-			I.assignment = IDtitle
-			I.name = "[I.registered_name]'s ID Card ([I.assignment])"
+				H.apply_wy_rank_code(code)
 
-		var/new_faction = input("Select faction.", "Faction Choice", "Neutral") as null|anything in FACTION_LIST_HUMANOID
-		if(!new_faction)
-			new_faction = FACTION_NEUTRAL
-		H.faction = new_faction
+				H.faction = FACTION_WY
+				H.faction_group = FACTION_LIST_WY
 
-		var/newskillset = input("Select a skillset", "Skill Set") as null|anything in RoleAuthority.roles_by_name
-		if(!newskillset)
-			return
+				var/newskillset = input("Select a skillset", "Skill Set") as null|anything in (list("Keep Skillset") +RoleAuthority.roles_by_name)
+				if(!newskillset || newskillset == "Keep Skillset")
+					return
 
-		if(!H)
-			return
+				if(!H)
+					return
 
-		var/datum/job/J = RoleAuthority.roles_by_name[newskillset]
-		H.set_skills(J.get_skills())
+				var/datum/job/J = RoleAuthority.roles_by_name[newskillset]
+				H.set_skills(J.get_skills())
+
+			if("Custom")
+				var/newcommtitle = input("Write the custom title appearing on comms chat (e.g. Spc)", "Comms title") as null|text
+				if(!newcommtitle)
+					return
+				if(!H)
+					return
+
+				H.comm_title = newcommtitle
+
+				if(!istype(I) || I != H.wear_id)
+					to_chat(usr, "The mob has no id card, unable to modify ID and chat title.")
+				else
+					var/newchattitle = input("Write the custom title appearing in chat (e.g. SGT)", "Chat title") as null|text
+					if(!newchattitle)
+						return
+					if(!H || I != H.wear_id)
+						return
+
+					I.paygrade = newchattitle
+					var/IDtitle = input("Write the custom title on your ID (e.g. Squad Specialist)", "ID title") as null|text
+					if(!IDtitle)
+						return
+					if(!H || I != H.wear_id)
+						return
+
+					I.rank = IDtitle
+					I.assignment = IDtitle
+					I.name = "[I.registered_name]'s ID Card ([I.assignment])"
+
+				var/new_faction = input("Select faction.", "Faction Choice", "Neutral") as null|anything in FACTION_LIST_HUMANOID
+				if(!new_faction)
+					new_faction = FACTION_NEUTRAL
+				H.faction = new_faction
+
+				var/newskillset = input("Select a skillset", "Skill Set") as null|anything in RoleAuthority.roles_by_name
+				if(!newskillset)
+					return
+
+				if(!H)
+					return
+
+				var/datum/job/J = RoleAuthority.roles_by_name[newskillset]
+				H.set_skills(J.get_skills())
 
 /client/proc/cmd_admin_dress(var/mob/living/carbon/human/M in mob_list)
 	set category = null

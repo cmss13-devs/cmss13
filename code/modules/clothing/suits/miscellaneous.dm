@@ -400,3 +400,34 @@
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
 	min_cold_protection_temperature = T0C
 	siemens_coefficient = 0.7
+
+/obj/item/clothing/suit/storage/director
+	name = "director's suit"
+	desc = "A suit that belongs to someone very important. It has minor protection to all forms of damage, and has insultating material."
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/suit_1.dmi'
+	)
+	item_state = "director_suit"
+	icon_state = "director_suit"
+
+	allowed = list(
+		/obj/item/weapon/gun/pistol,
+		/obj/item/device/flashlight
+	)
+
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_GROIN
+	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_GROIN
+
+	min_cold_protection_temperature = ICE_COLONY_TEMPERATURE
+	siemens_coefficient = 0
+
+	storage_slots = 3
+
+	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bullet = CLOTHING_ARMOR_MEDIUM
+	armor_laser = CLOTHING_ARMOR_LOW
+	armor_energy = CLOTHING_ARMOR_HARDCORE // Immune to tasers
+	armor_bomb = CLOTHING_ARMOR_MEDIUM
+	armor_bio = CLOTHING_ARMOR_MEDIUM
+	armor_rad = CLOTHING_ARMOR_MEDIUM
+	armor_internaldamage = CLOTHING_ARMOR_LOW

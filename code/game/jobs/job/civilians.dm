@@ -132,8 +132,27 @@
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE|ROLE_ADMIN_NOTIFY|ROLE_WHITELISTED
 	flags_whitelist = WHITELIST_SYNTHETIC
 	gear_preset = "USCM Synthetic"
-	gear_preset_council = "USCM Synthetic Councillor"
 	minimum_playtimes = list()
+
+/datum/job/civilian/synthetic/New()
+	. = ..()
+	gear_preset_whitelist = list(
+		"[JOB_SYNTH][WHITELIST_NORMAL]" = "USCM Synthetic",
+		"[JOB_SYNTH][WHITELIST_COUNCIL]" = "USCM Synthetic Councillor",
+		"[JOB_SYNTH][WHITELIST_LEADER]" = "USCM Synthetic Councillor"
+	)
+
+/datum/job/civilian/synthetic/get_whitelist_status(var/list/roles_whitelist, var/client/player)
+	. = ..()
+	if(!.)
+		return
+
+	if(roles_whitelist[player.ckey] & WHITELIST_SYNTHETIC_LEADER)
+		return get_desired_status(player.prefs.synth_status, WHITELIST_LEADER)
+	else if(roles_whitelist[player.ckey] & WHITELIST_SYNTHETIC_COUNCIL)
+		return get_desired_status(player.prefs.synth_status, WHITELIST_COUNCIL)
+	else if(roles_whitelist[player.ckey] & WHITELIST_SYNTHETIC)
+		return get_desired_status(player.prefs.synth_status, WHITELIST_NORMAL)
 
 /datum/job/civilian/synthetic/set_spawn_positions(var/count)
 	spawn_positions = synth_slot_formula(count)

@@ -62,6 +62,8 @@
 	item_state = "card-id"
 	var/access = list()
 	var/faction = FACTION_NEUTRAL
+	var/faction_group
+
 	var/registered_name = "Unknown" // The name registered_name on the card
 	var/registered_gid = 0
 	flags_equip_slot = SLOT_ID
@@ -80,8 +82,16 @@
 	var/pinned_on_uniform = TRUE //whether the id's onmob overlay only appear when wearing a uniform
 
 
+/obj/item/card/id/Dispose()
+	. = ..()
+	screen_loc = null
+
 /obj/item/card/id/New()
 	..()
+
+	if(!faction_group)
+		faction_group = list(faction)
+
 	spawn(30)
 		var/mob/living/carbon/human/H = loc
 		if(istype(H))

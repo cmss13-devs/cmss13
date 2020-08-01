@@ -227,3 +227,9 @@
 	name = "Workman outfit"
 	desc = "The very image of a working man. Not that you're probably doing work."
 	icon_state = "mechanic_s"
+
+/obj/item/clothing/under/suit_jacket/director
+	name = "director's uniform"
+	desc = "A uniform that belongs to someone very important."
+	item_state = "director_uniform"
+	icon_state = "director_uniform"

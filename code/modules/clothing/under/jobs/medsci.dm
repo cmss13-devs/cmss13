@@ -1,9 +1,9 @@
 /*
  * Science
  */
-/obj/item/clothing/under/rank/research_director
-	desc = "It's a jumpsuit worn by those with the know-how to achieve the position of \"Research Director\". Its fabric provides minor protection from biological contaminants."
-	name = "research director's jumpsuit"
+/obj/item/clothing/under/rank/corporate_manager
+	desc = "It's a jumpsuit worn by those with the know-how to achieve the position of \"Corporate Manager\". Its fabric provides minor protection from biological contaminants."
+	name = "corporate manager's jumpsuit"
 	icon_state = "director"
 	item_state = "g_suit"
 	armor_melee = CLOTHING_ARMOR_NONE
@@ -15,7 +15,7 @@
 	armor_rad = CLOTHING_ARMOR_LOW
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 
-/obj/item/clothing/under/rank/research_director/rdalt
+/obj/item/clothing/under/rank/corporate_manager/rdalt
 	desc = "A simple blue utilitarian jumpsuit that serves as the standard issue service uniform of support synthetics onboard USCM facilities. While commonly associated with the staple Bishop units, reduced funding to the Colonial Marines has led to a wide range of models filling these uniforms, especially in battalions operating in the edge frontier."
 	name = "synthetic service uniform"
 	icon_state = "rdalt"

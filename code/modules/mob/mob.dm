@@ -30,6 +30,9 @@
 	return ..()
 
 /mob/Initialize()
+	if(!faction_group)
+		faction_group = list(faction)
+
 	last_mob_gid++
 	gid = last_mob_gid
 

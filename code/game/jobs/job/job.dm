@@ -4,6 +4,7 @@
 	var/disp_title				 //Determined on new(). Usually the same as the title, but doesn't have to be. Set this to override what the player sees in the game as their title.
 
 	var/faction 			= FACTION_MARINE //Players will be allowed to spawn in as jobs that are set to "Marine". Other factions are special game mode spawns.
+	var/faction_group 		= FACTION_LIST_MARINE
 	var/total_positions 	= 0 //How many players can be this job
 	var/spawn_positions 	= 0 //How many players can spawn in as this job
 	var/allow_additional	= 0 //Can admins modify positions to it
@@ -23,7 +24,7 @@
 	)
 
 	var/gear_preset //Gear preset name used for this job
-	var/gear_preset_council //Gear preset name used for council snowflakes ;)
+	var/list/gear_preset_whitelist = list()//Gear preset name used for council snowflakes ;)
 
 	//For generating entry messages
 	var/entry_message_intro
@@ -32,7 +33,14 @@
 
 /datum/job/New()
 	..()
+
 	if(!disp_title) disp_title = title
+
+/datum/job/proc/get_whitelist_status(var/list/roles_whitelist, var/client/player)
+	if(!roles_whitelist)
+		return FALSE
+
+	return WHITELIST_NORMAL
 
 /datum/job/proc/can_play_role(var/client/client)
 	if(!config.use_timelocks)
@@ -91,7 +99,7 @@
 		entry_message_end = "As the [title] you answer to [supervisors]. Special circumstances may change this!"
 	return "[entry_message_intro]<br>[entry_message_body]<br>[entry_message_end]"
 
-/datum/job/proc/announce_entry_message(mob/living/carbon/human/H, datum/money_account/M) //The actual message that is displayed to the mob when they enter the game as a new player.
+/datum/job/proc/announce_entry_message(mob/living/carbon/human/H, datum/money_account/M, var/whitelist_status) //The actual message that is displayed to the mob when they enter the game as a new player.
 	set waitfor = 0
 	sleep(10)
 	if(H && H.loc && H.client)
@@ -107,7 +115,7 @@
 		"}
 		to_chat(H, t)
 
-/datum/job/proc/generate_entry_conditions(mob/living/M)
+/datum/job/proc/generate_entry_conditions(mob/living/M, var/whitelist_status)
 	return //Anything special that should happen to the mob upon entering the world.
 
 //This lets you scale max jobs at runtime

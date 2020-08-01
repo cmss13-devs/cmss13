@@ -182,6 +182,16 @@ CIVILIAN
 		SKILL_ENDURANCE = SKILL_ENDURANCE_NONE,
 	)
 
+/datum/skills/civilian/manager
+	name = "Weston-Yamada Manager" // Semi-competent leader with basic knowledge in most things.
+	skills = list(
+		SKILL_ENDURANCE = SKILL_ENDURANCE_TRAINED,
+		SKILL_LEADERSHIP = SKILL_LEAD_MASTER,
+		SKILL_MEDICAL = SKILL_MEDICAL_TRAINED,
+		SKILL_ENGINEER = SKILL_ENGINEER_TRAINED,
+	)
+
+
 /datum/skills/civilian/survivor
 	name = "Survivor"
 	skills = list(

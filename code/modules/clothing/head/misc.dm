@@ -178,6 +178,22 @@
 	desc = "For the gentleman of distinction."
 	flags_armor_protection = 0
 
+/obj/item/clothing/head/director
+	name = "director's hat"
+	icon_state = "director_hat"
+	item_state = "director_hat"
+	desc = "Belongs to someone very important. Has minor protection to all damage types"
+	flags_armor_protection = BODY_FLAG_HEAD
+
+	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
+	armor_laser = CLOTHING_ARMOR_LOW
+	armor_energy = CLOTHING_ARMOR_LOW
+	armor_bomb = CLOTHING_ARMOR_LOW
+	armor_bio = CLOTHING_ARMOR_MEDIUM
+	armor_rad = CLOTHING_ARMOR_LOW
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
+
 /obj/item/clothing/head/beaverhat
 	name = "beaver hat"
 	icon_state = "beaver_hat"

@@ -227,11 +227,11 @@ CULT
 
 	var/obj/item/clothing/C = new /obj/item/clothing/suit/cultist_hoodie()
 	H.equip_to_slot_or_del(C, WEAR_JACKET)
-	C.flags_item = NODROP
+	C.flags_item |= NODROP|DELONDROP
 
 	C = new /obj/item/clothing/head/cultist_hood()
 	H.equip_to_slot_or_del(C, WEAR_HEAD)
-	C.flags_item = NODROP
+	C.flags_item |= NODROP|DELONDROP
 
 	H.put_in_any_hand_if_possible(new /obj/item/device/flashlight, FALSE, TRUE)
 
@@ -249,8 +249,12 @@ CULT
 		return
 	var/mob/living/carbon/human/Hu = owner
 
-	if(skillcheck(H, SKILL_LEADERSHIP, SKILL_LEAD_EXPERT) || skillcheck(H, SKILL_POLICE, SKILL_POLICE_MP))
+	if(H.skills && (skillcheck(H, SKILL_LEADERSHIP, SKILL_LEAD_EXPERT) || skillcheck(H, SKILL_POLICE, SKILL_POLICE_MP)))
 		to_chat(Hu, SPAN_WARNING("This mind is too strong to target with your abilities."))
+		return
+
+	if(get_dist_sqrd(get_turf(H), get_turf(owner)) > 2)
+		to_chat(Hu, SPAN_WARNING("This target is too far away!"))
 		return
 
 	return H.stat != DEAD && istype(H) && isHumanStrict(H) && H.hivenumber != Hu.hivenumber && !isnull(get_hive())

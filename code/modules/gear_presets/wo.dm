@@ -481,7 +481,7 @@
 		ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_ENGINEERING, ACCESS_CIVILIAN_LOGISTICS)
 	assignment = "Combat Reporter"
 	rank = "Combat Reporter"
-	paygrade = "WY1"
+	paygrade = "WY-XB-X"
 	role_comm_title = "PRESS"
 	skills = /datum/skills/civilian
 	idtype = /obj/item/card/id/silver/cl

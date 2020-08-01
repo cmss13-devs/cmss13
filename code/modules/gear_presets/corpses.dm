@@ -249,7 +249,7 @@
 	name = "Corpse - Lawyer"
 	assignment = "Lawyer"
 	xenovictim = TRUE
-	paygrade = "WY1"
+	paygrade = "WY-2B-X"
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
 		ACCESS_CIVILIAN_LOGISTICS,
@@ -316,7 +316,7 @@
 	idtype = /obj/item/card/id/admiral
 	assignment = "Bridge Officer"
 	uses_special_name = TRUE
-	paygrade = "WY1"
+	paygrade = "WY-1B-X"
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
 		ACCESS_CIVILIAN_LOGISTICS,

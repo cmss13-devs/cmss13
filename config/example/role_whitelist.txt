@@ -8,14 +8,23 @@
 # A lot of the defines are just placeholders for right now.
 
 ######################################################
-# +Yautja +Unblooded +Predator +Pred
-# +Yautja Blooded +Blooded +Blooded Predator
-# +Yautja Elite +Elite +Elite Predator
-# +Yautja Elder +Elder + Elder Predator
-# +Commander +CO
-# +Synthetic +Synth
-# +Arcturian +Snowflake
-# +All +Everything
+# YAUTJA FLAGS
+# +Yautja
+# +YautjaElder
+# +YautjaCouncil
+# +YautjaLeader
+# COMMANDER FLAGS
+# +Commander
+# +CommanderCouncil
+# +CommanderLeader
+# SYNTHETIC FLAGS
+# +Synthetic
+# +SyntheticCouncil
+# +SyntheticLeader
+# GIVES ALL WHITELISTS (NOT INCLUDING COUNCIL/LEADER)
+# +All 
+# GIVES ALL WHITELISTS
+# +Everything
 #######################################################
 
 #Your_name_here				+All

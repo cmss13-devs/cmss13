@@ -493,12 +493,12 @@
 	keyslot1 = new /obj/item/device/encryptionkey/public_civ
 
 /obj/item/device/radio/headset/distress/PMC
-	name = "PMC headset"
-	desc = "A special headset used by private security forces. Channels are as follows: :g - public, :v - marine command, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :e - engineering, :m - medbay, :u - requisitions, :j - JTAC, :z - intelligence."
+	name = "corporate headset"
+	desc = "A special headset used by corporate personnel. Channels are as follows: :g - public, :v - marine command, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :e - engineering, :m - medbay, :u - requisitions, :j - JTAC, :z - intelligence, :y - Corporate."
 	frequency = PMC_FREQ
 	icon_state = "wy_headset"
 	keyslot1 = new /obj/item/device/encryptionkey/public
-	keyslot2 = new /obj/item/device/encryptionkey/mcom
+	keyslot2 = new /obj/item/device/encryptionkey/mcom/cl
 
 /obj/item/device/radio/headset/distress/bears
 	name = "UPP headset"

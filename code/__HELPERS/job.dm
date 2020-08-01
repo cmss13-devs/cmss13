@@ -81,8 +81,93 @@
 			JOB_SEA
 			)
 
+var/global/list/wy_ranks = list(
+	"division_code" = list(
+		"X" = "",
+
+		"1" = "Spc. Serv.",
+		"2" = "C.R.",
+		"3" = "Comms.",
+		"4" = "PMC Disp.",
+		"5" = "R&D",
+		"6" = "Eco",
+		"7" = "Psi"
+	),
+	"job_code" = list(
+		"X" = "",
+
+		"A" = "Trainee",
+		"B" = "Junior Executive",
+		"C" = "Executive",
+		"D" = "Senior Executive",
+		"E" = "Executive Specialist",
+		"F" = "Executive Supervisor",
+		"G" = "Assistant Manager",
+		"H" = "Division Manager",
+		"I" = "Chief Executive",
+		"J" = "Director"
+	),
+	"job_code_prefix" = list(
+		"X" = "",
+
+		"A" = "Trn",
+		"B" = "Jr. Exec",
+		"C" = "Exec",
+		"D" = "Sr. Exec",
+		"E" = "Exec. Spc",
+		"F" = "Exec. Suvp",
+		"G" = "Assis. Mng",
+		"H" = "Div. Mng",
+		"I" = "Chief. Exec",
+		"J" = "Director"
+	)
+)
+
+/mob/living/carbon/human/proc/apply_wy_rank_code(var/code)
+	comm_title = trim(get_paygrades(code, TRUE))
+	
+	var/obj/item/card/id/I = wear_id
+
+	if(istype(I))
+		I.paygrade = code
+		I.rank = code
+		I.assignment = get_paygrades(code)
+		I.name = "[I.registered_name]'s ID Card ([I.assignment])"
+
+/proc/get_named_wy_ranks(var/code)
+	if(!wy_ranks[code])
+		return
+	var/named_ranks = list()
+
+	for(var/rank in wy_ranks[code])
+		var/rank_name = wy_ranks[code][rank]
+		if(rank == "X")
+			named_ranks += list("None" = rank)
+			continue
+
+		named_ranks += list("[rank_name]" = rank)
+
+	return named_ranks
+
 /proc/get_paygrades(paygrade, size, gender)
 	if(!paygrade) return
+
+	// Format: WY-XX-X
+	if(copytext(paygrade, 1, 3) == "WY")
+		var/rank_info = copytext(paygrade, 3)
+
+		var/rank = replacetext_char(rank_info, "-", "")
+
+		var/division = wy_ranks["division_code"][copytext_char(rank, 1, 2)]
+
+		var/job = wy_ranks["job_code"][copytext_char(rank, 2, 3)]
+		var/job_prefix = wy_ranks["job_code_prefix"][copytext_char(rank, 2, 3)]
+
+		if(size)
+			return trim("[division] [job_prefix]") + " "
+
+		return trim("[division] [job]")
+
 	switch(paygrade)
 		if("C") . = size ? "" : "Civilian"
 		if("CD") . = size ? "Dr. " : "Doctor"
@@ -92,7 +177,6 @@
 		if("PMC2M") . = size ? "SPM " : "Medical Specialist"
 		if("PMC3") . = size ? "ELR " : "Elite Responder"
 		if("PMC4") . = size ? "TML " : "Team Leader"
-		if("WY1") . = size ? (gender == "female" ? "Ms. " : "Mr. ") : "Junior Executive"
 		if("E1") . = size ? "PVT " : "Private"
 		if("E2") . = size ? "PFC " : "Private First Class"
 		if("E3") . = size ? "LCPL " : "Lance Corporal"
@@ -113,7 +197,7 @@
 		if("O7") . = size ? "RADM " : "Rear Admiral (Upper Half)"
 		if("O8") . = size ? "VADM " : "Vice Admiral"
 		if("O9") . = size ? "ADM " : "Admiral"
-		if("O9E") . = size ? "SMR " : "Sky Marshal"
+		if("O9E") . = size ? "FADM " : "Fleet Admiral"
 		else . = "[paygrade] " //custom paygrade
 
 /proc/get_rank_pins(paygrade)

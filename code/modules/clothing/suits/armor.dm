@@ -97,6 +97,9 @@
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
 	w_class = SIZE_MEDIUM
 
+/obj/item/clothing/suit/armor/vest/admiral/executive
+	name = "director's jacket"
+
 /obj/item/clothing/suit/armor/vest/security
 	name = "W-Y security armor"
 	desc = "An armored vest that protects against some damage. This one has a Weston-Yamada corporate badge."

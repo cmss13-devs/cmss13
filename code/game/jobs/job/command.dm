@@ -14,8 +14,27 @@
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE|ROLE_ADMIN_NOTIFY|ROLE_WHITELISTED
 	flags_whitelist = WHITELIST_COMMANDER
 	gear_preset = "USCM Captain (CO)"
-	gear_preset_council = "USCM Commodore (CO+)"
 	minimum_playtimes = list()
+
+/datum/job/command/commander/New()
+	. = ..()
+	gear_preset_whitelist = list(
+		"[JOB_CO][WHITELIST_NORMAL]" = "USCM Captain (CO)",
+		"[JOB_CO][WHITELIST_COUNCIL]" = "USCM Commodore (CO+)",
+		"[JOB_CO][WHITELIST_LEADER]" = "USCM Commodore (CO++)"
+	)
+
+/datum/job/command/commander/get_whitelist_status(var/list/roles_whitelist, var/client/player)
+	. = ..()
+	if(!.)
+		return
+
+	if(roles_whitelist[player.ckey] & WHITELIST_COMMANDER_LEADER)
+		return get_desired_status(player.prefs.commander_status, WHITELIST_LEADER)
+	else if(roles_whitelist[player.ckey] & WHITELIST_COMMANDER_COUNCIL)
+		return get_desired_status(player.prefs.commander_status, WHITELIST_COUNCIL)
+	else if(roles_whitelist[player.ckey] & WHITELIST_COMMANDER)
+		return get_desired_status(player.prefs.commander_status, WHITELIST_NORMAL)
 
 /datum/job/command/commander/generate_entry_message()
 	entry_message_body = "Your job is HEAVY ROLE PLAY and requires you to stay IN CHARACTER at all times. While you support Weston-Yamada, you report to the USCM High Command, not the corporate office. Your primary task is the safety of the ship and her crew, and ensuring the survival and success of the marines. Your first order of business should be briefing the marines on the mission they are about to undertake. If you require any help, use adminhelp to talk to game staff about what you're supposed to do. Godspeed, captain!"

@@ -45,7 +45,8 @@ var/list/departments = list("Command", "Medical", "Engineering", "Security", "Ci
 											/datum/job/civilian,
 											/datum/job/logistics,
 											/datum/job/logistics/tech,
-											/datum/job/marine)
+											/datum/job/marine,
+											/datum/job/antag)
 	var/squads_all[] = typesof(/datum/squad) - /datum/squad
 	var/castes_all[] = subtypesof(/datum/caste_datum)
 
@@ -146,17 +147,18 @@ var/list/departments = list("Command", "Medical", "Engineering", "Security", "Ci
 		r = 1
 		while(++r <= P.len)
 			switch(ckey(P[r]))
-				if("yautja","predator","pred","unblooded") 			role |= WHITELIST_YAUTJA_UNBLOODED
-				if("yautjablooded","bloodedpredator","blooded") 	role |= WHITELIST_YAUTJA_BLOODED
-				if("yautjaelite","elitepredator","elite")			role |= WHITELIST_YAUTJA_ELITE
-				if("yautjaelder","elderpredator","elder")			role |= WHITELIST_YAUTJA_ELDER
-				if("yautjacouncil","predcouncil")					role |= WHITELIST_YAUTJA_COUNCIL
-				if("commander","co") 								role |= WHITELIST_COMMANDER
-				if("commodore","cdre","cocouncil")					role |= WHITELIST_COMMANDER_COUNCIL
-				if("synthetic","synth") 							role |= WHITELIST_SYNTHETIC
-				if("syntheticcouncil","synthcouncil")				role |= WHITELIST_SYNTHETIC_COUNCIL
-				if("arcturian","snowflake") 						role |= WHITELIST_ARCTURIAN
-				if("all","everything") 								role |= WHITELIST_ALL
+				if("yautja") 						role |= WHITELIST_YAUTJA
+				if("yautjaelder")					role |= WHITELIST_YAUTJA_ELDER
+				if("yautjacouncil")					role |= WHITELIST_YAUTJA_COUNCIL
+				if("yautjaleader")					role |= WHITELIST_YAUTJA_LEADER
+				if("commander") 					role |= WHITELIST_COMMANDER
+				if("cocouncil", "commandercouncil")	role |= WHITELIST_COMMANDER_COUNCIL
+				if("commanderleader")				role |= WHITELIST_COMMANDER_LEADER
+				if("synthetic") 					role |= WHITELIST_SYNTHETIC
+				if("syntheticcouncil")				role |= WHITELIST_SYNTHETIC_COUNCIL
+				if("syntheticleader")				role |= WHITELIST_SYNTHETIC_LEADER
+				if("all")							role |= WHITELIST_ALL
+				if("everything") 					role |= WHITELIST_EVERYTHING
 
 		W[ckey] = role
 
@@ -487,37 +489,40 @@ roles willy nilly.
 
 		H.job = J.title //TODO Why is this a mob variable at all?
 
+		var/datum/money_account/A
+
 		//Give them an account in the database.
-		var/datum/money_account/A = create_account(H.real_name, rand(50,500)*10, null)
-		if(H.mind)
-			var/remembered_info = ""
-			remembered_info += "<b>Your account number is:</b> #[A.account_number]<br>"
-			remembered_info += "<b>Your account pin is:</b> [A.remote_access_pin]<br>"
-			remembered_info += "<b>Your account funds are:</b> $[A.money]<br>"
+		if(!(J.flags_startup_parameters & ROLE_NO_ACCOUNT))
+			A = create_account(H.real_name, rand(50,500)*10, null)
+			if(H.mind)
+				var/remembered_info = ""
+				remembered_info += "<b>Your account number is:</b> #[A.account_number]<br>"
+				remembered_info += "<b>Your account pin is:</b> [A.remote_access_pin]<br>"
+				remembered_info += "<b>Your account funds are:</b> $[A.money]<br>"
 
-			if(A.transaction_log.len)
-				var/datum/transaction/T = A.transaction_log[1]
-				remembered_info += "<b>Your account was created:</b> [T.time], [T.date] at [T.source_terminal]<br>"
-			H.mind.store_memory(remembered_info)
-			H.mind.initial_account = A
+				if(A.transaction_log.len)
+					var/datum/transaction/T = A.transaction_log[1]
+					remembered_info += "<b>Your account was created:</b> [T.time], [T.date] at [T.source_terminal]<br>"
+				H.mind.store_memory(remembered_info)
+				H.mind.initial_account = A
 
-		var/CO_council = FALSE
-		if(roles_whitelist && (roles_whitelist[H.ckey] & WHITELIST_COMMANDER_COUNCIL))
-			CO_council = TRUE
+		var/job_whitelist = J.title
+		var/whitelist_status = J.get_whitelist_status(roles_whitelist, H.client)
 
-		var/synth_council = FALSE
-		if(roles_whitelist && (roles_whitelist[H.ckey] & WHITELIST_SYNTHETIC_COUNCIL))
-			synth_council = TRUE
+		if(whitelist_status)
+			job_whitelist = "[J.title][whitelist_status]"
 
-		if(((J.title == JOB_CO) && CO_council) || ((J.title == JOB_SYNTH) && synth_council))
-			arm_equipment(H, J.gear_preset_council, FALSE, TRUE)
-		arm_equipment(H, J.gear_preset, FALSE, TRUE) //After we move them, we want to equip anything else they should have.
+		if(J.gear_preset_whitelist[job_whitelist])
+			arm_equipment(H, J.gear_preset_whitelist[job_whitelist], FALSE, TRUE)
+			J.announce_entry_message(H, A, whitelist_status) //Tell them their spawn info.
+			J.generate_entry_conditions(H, whitelist_status) //Do any other thing that relates to their spawn.
+		else
+			arm_equipment(H, J.gear_preset, FALSE, TRUE) //After we move them, we want to equip anything else they should have.
+			J.announce_entry_message(H, A) //Tell them their spawn info.
+			J.generate_entry_conditions(H) //Do any other thing that relates to their spawn.
 
 		if(J.flags_startup_parameters & ROLE_ADD_TO_SQUAD) //Are we a muhreen? Randomize our squad. This should go AFTER IDs. //TODO Robust this later.
 			randomize_squad(H)
-
-		J.announce_entry_message(H, A) //Tell them their spawn info.
-		J.generate_entry_conditions(H) //Do any other thing that relates to their spawn.
 
 		H.sec_hud_set_ID()
 		H.sec_hud_set_implants()
@@ -687,3 +692,22 @@ roles willy nilly.
 			to_chat(H, "Something went wrong with randomize_squad()! Tell a coder!")
 			return
 		given_squad.put_marine_in_squad(H) //Found one, finish up
+
+/proc/get_desired_status(var/desired_status, var/status_limit)
+	var/found_desired = FALSE
+	var/found_limit = FALSE
+	
+	for(var/status in whitelist_hierarchy)
+		if(status == desired_status)
+			found_desired = TRUE
+			break
+		if(status == status_limit)
+			found_limit = TRUE
+			break
+
+	if(found_desired)
+		return desired_status
+	else if(found_limit)
+		return status_limit
+
+	return desired_status

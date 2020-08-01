@@ -120,7 +120,7 @@ Additional game mode variables.
 /datum/game_mode/proc/initialize_predator(mob/living/carbon/human/new_predator)
 	predators += new_predator.mind //Add them to the proper list.
 	pred_keys += new_predator.ckey //Add their key.
-	if(!(RoleAuthority.roles_whitelist[new_predator.ckey] & (WHITELIST_YAUTJA_ELITE|WHITELIST_YAUTJA_ELDER|WHITELIST_YAUTJA_COUNCIL))) pred_current_num++ //If they are not an elder, tick up the max.
+	pred_current_num++ 
 
 /datum/game_mode/proc/initialize_starting_predator_list()
 	if(prob(pred_round_chance)) //First we want to determine if it's actually a predator round.
@@ -128,13 +128,18 @@ Additional game mode variables.
 		var/L[] = get_whitelisted_predators() //Grabs whitelisted preds who are ready at game start.
 		var/datum/mind/M
 		var/i //Our iterator for the maximum amount of pred spots available. The actual number is changed later on.
+		var/datum/job/J = RoleAuthority.roles_by_name[JOB_PREDATOR]
+		
 		while(L.len && i < pred_maximum_num)
 			M = pick(L)
 			if(!istype(M)) continue
 			L -= M
 			M.roundstart_picked = TRUE
 			predators += M
-			if(!(RoleAuthority.roles_whitelist[M.current.ckey] & (WHITELIST_YAUTJA_ELITE|WHITELIST_YAUTJA_ELDER|WHITELIST_YAUTJA_COUNCIL)))
+			if(M.current && J)
+				if(J.get_whitelist_status(RoleAuthority.roles_whitelist, M.current.client) == WHITELIST_NORMAL)
+					i++
+			else
 				i++
 
 /datum/game_mode/proc/initialize_post_predator_list() //TO DO: Possibly clean this using tranfer_to.
@@ -181,6 +186,18 @@ Additional game mode variables.
 
 /datum/game_mode/proc/check_predator_late_join(mob/pred_candidate, show_warning = 1)
 
+	if(!pred_candidate.client)
+		return
+
+	var/datum/job/J = RoleAuthority.roles_by_name[JOB_PREDATOR]
+
+	if(!J)
+		if(show_warning) to_chat(pred_candidate, SPAN_WARNING("Something went wrong!"))
+		return
+
+	if(show_warning && alert(pred_candidate, "Confirm joining the hunt. You will join as a [lowertext(J.get_whitelist_status(RoleAuthority.roles_whitelist, pred_candidate.client))] predator", "Confirmation", "Yes", "No") == "No")
+		return
+
 	if(!(RoleAuthority.roles_whitelist[pred_candidate.ckey] & WHITELIST_PREDATOR))
 		if(show_warning) to_chat(pred_candidate, SPAN_WARNING("You are not whitelisted! You may apply on the forums to be whitelisted as a predator."))
 		return
@@ -193,7 +210,7 @@ Additional game mode variables.
 		if(show_warning) to_chat(pred_candidate, SPAN_WARNING("You already were a Yautja! Give someone else a chance."))
 		return
 
-	if(!(RoleAuthority.roles_whitelist[pred_candidate.ckey] & (WHITELIST_YAUTJA_ELDER | WHITELIST_YAUTJA_COUNCIL)))
+	if(J.get_whitelist_status(RoleAuthority.roles_whitelist, pred_candidate.client) == WHITELIST_NORMAL)
 		if(pred_current_num >= pred_maximum_num)
 			if(show_warning) to_chat(pred_candidate, SPAN_WARNING("Only [pred_maximum_num] predators may spawn this round, but Elders and Leaders do not count."))
 			return
@@ -206,56 +223,23 @@ Additional game mode variables.
 		log_debug("Null client in transform_predator.")
 		return
 
+	if(!pred_candidate.mind)
+		return
+
 	var/mob/living/carbon/human/yautja/new_predator
-	var/wants_elder = 0
-	var/wants_leader = 0
-	if(RoleAuthority.roles_whitelist[pred_candidate.ckey] & WHITELIST_YAUTJA_ELDER)
-		if(alert(pred_candidate,"Would you like to play as an Elder or a Blooded?","Predator Type","Elder","Blooded") == "Elder")
-			wants_elder = 1
-	else if(RoleAuthority.roles_whitelist[pred_candidate.ckey] & WHITELIST_YAUTJA_COUNCIL)
-		if(alert(pred_candidate,"Would you like to play as a Councillor or a Blooded?","Predator Type","Councillor","Blooded") == "Councillor")
-			wants_leader = 1
-			wants_elder = 0
 
-	new_predator = new(wants_elder|wants_leader ? pick(pred_elder_spawn) : pick(pred_spawn))
-	new_predator.mind_initialize()
-	new_predator.key = pred_candidate.key
-	new_predator.mind.key = new_predator.key
-	new_predator.statistic_exempt = TRUE
+	new_predator = new(pick(pred_spawn))
+	pred_candidate.mind.transfer_to(new_predator, TRUE)
+	new_predator.client = pred_candidate.client
 
-	if(new_predator.client)
-		new_predator.client.change_view(world_view_size)
+	var/datum/job/J = RoleAuthority.roles_by_name[JOB_PREDATOR]
 
-	if(!new_predator.client.prefs)
-		new_predator.client.prefs = new /datum/preferences(new_predator.client) //Let's give them one.
+	if(!J)
+		qdel(new_predator)
+		return
 
-	if(wants_elder)
-		arm_equipment(new_predator, "Yautja Elder", FALSE, TRUE)
+	RoleAuthority.equip_role(new_predator, J, new_predator.loc)
 
-		spawn(10)
-			to_chat(new_predator, SPAN_NOTICE("<B> Welcome Elder!</B>"))
-			to_chat(new_predator, SPAN_NOTICE("You are responsible for the well-being of your pupils. Hunting is secondary in priority."))
-			to_chat(new_predator, SPAN_NOTICE("That does not mean you can't go out and show the youngsters how it's done."))
-			to_chat(new_predator, SPAN_NOTICE("You come equipped as an Elder should, with a bonus glaive and heavy armor."))
-
-	else if(wants_leader)
-		arm_equipment(new_predator, "Yautja Councillor", FALSE, TRUE)
-
-		spawn(10)
-			to_chat(new_predator, SPAN_NOTICE("<B> Welcome Councillor!</B>"))
-			to_chat(new_predator, SPAN_NOTICE("You are responsible for the well-being of your pupils. Hunting is secondary in priority."))
-			to_chat(new_predator, SPAN_NOTICE("That does not mean you can't go out and show the youngsters how it's done."))
-	else
-		arm_equipment(new_predator, "Yautja Blooded", FALSE, TRUE)
-
-		spawn(12)
-			to_chat(new_predator, SPAN_NOTICE("You are <B>Yautja</b>, a great and noble predator!"))
-			to_chat(new_predator, SPAN_NOTICE("Your job is to first study your opponents. A hunt cannot commence unless intelligence is gathered."))
-			to_chat(new_predator, SPAN_NOTICE("Hunt at your discretion, yet be observant rather than violent."))
-			to_chat(new_predator, SPAN_NOTICE("And above all, listen to your Elders!"))
-
-	initialize_predator(new_predator)
-	new_predator.set_skills(/datum/skills/yautja/warrior)
 	return new_predator
 
 

@@ -38,7 +38,7 @@
 				continue
 			if(H.z == MAIN_SHIP_Z_LEVEL) // People on ship see everything
 				continue
-			if(H.faction != faction_to_display && !add_PMCs || H.faction != faction_to_display && add_PMCs && H.faction != FACTION_PMC)	//faction checks
+			if(H.faction != faction_to_display && !add_PMCs || H.faction != faction_to_display && add_PMCs && H.faction in FACTION_LIST_WY)	//faction checks
 				targets.Remove(H)
 
 	else if(faction_to_display == "Everyone (-Yautja)")

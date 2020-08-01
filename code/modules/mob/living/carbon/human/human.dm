@@ -1040,7 +1040,7 @@
 	set name = "View Crew Manifest"
 	set category = "IC"
 
-	if(faction != FACTION_MARINE && faction != FACTION_PMC && faction != FACTION_DEATHSQUAD)
+	if(faction != FACTION_MARINE && !(faction in FACTION_LIST_WY))
 		to_chat(usr, SPAN_WARNING("You have no access to [MAIN_SHIP_NAME] crew manifest."))
 		return
 	var/dat = data_core.get_manifest()

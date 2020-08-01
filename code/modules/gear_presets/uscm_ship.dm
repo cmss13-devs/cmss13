@@ -200,7 +200,7 @@
 	)
 	assignment = JOB_CORPORATE_LIAISON
 	rank = JOB_CORPORATE_LIAISON
-	paygrade = "WY1"
+	paygrade = "WY-XB-X"
 	role_comm_title = "CL"
 	skills = /datum/skills/civilian
 
@@ -440,8 +440,14 @@
 	minimum_age = 45
 
 /datum/equipment_preset/uscm_ship/commander/commodore/load_gear(mob/living/carbon/human/H)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/bridge(H), WEAR_BODY)  // They need body clothing on so that we can put the mateba on
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/mateba/admiral(H), WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/beret/marine/commander/cdre(H), WEAR_HEAD)
 	. = ..()
+
+/datum/equipment_preset/uscm_ship/commander/commodore/plus
+	name = "USCM Commodore (CO++)"
+	idtype = /obj/item/card/id/admiral
 
 /*****************************************************************************************************/
 
@@ -780,7 +786,7 @@
 	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
 	assignment = "USCM Admiral"
 	rank = "USCM Admiral"
-	paygrade = "O7"
+	paygrade = "O8"
 	role_comm_title = "ADM"
 	minimum_age = 50
 	skills = /datum/skills/admiral
@@ -864,7 +870,7 @@
 	access = list()
 	assignment = "Fleet Admiral"
 	rank = "Fleet Admiral"
-	paygrade = "O8"
+	paygrade = "O9E"
 	role_comm_title = "FADM"
 	minimum_age = 55
 	skills = /datum/skills/admiral
@@ -883,7 +889,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/combat(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/combat(H), WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/cdrcom(H), WEAR_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/thermal/eyepatch(H), WEAR_EYES)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/mateba/admiral(H), WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/hgpirate(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/soviet(H), WEAR_BODY)

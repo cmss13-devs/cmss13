@@ -81,6 +81,10 @@
 	S["pred_armor_type"]	>> predator_armor_type
 	S["pred_boot_type"]		>> predator_boot_type
 
+	S["commander_status"]	>> commander_status
+	S["yautja_status"]		>> yautja_status
+	S["synth_status"]		>> synth_status
+
 	S["lang_chat_disabled"]	>> lang_chat_disabled
 
 	S["swap_hand_default"]	>> swap_hand_default
@@ -108,6 +112,9 @@
 	predator_mask_type 	= sanitize_integer(predator_mask_type,1,1000000,initial(predator_mask_type))
 	predator_armor_type = sanitize_integer(predator_armor_type,1,1000000,initial(predator_armor_type))
 	predator_boot_type 	= sanitize_integer(predator_boot_type,1,1000000,initial(predator_boot_type))
+	commander_status	= sanitize_inlist(commander_status, whitelist_hierarchy, initial(commander_status))
+	yautja_status		= sanitize_inlist(yautja_status, whitelist_hierarchy + list("Elder"), initial(yautja_status))
+	synth_status		= sanitize_inlist(synth_status, whitelist_hierarchy, initial(synth_status))
 	vars["fps"] = fps
 
 	if(!observer_huds)
@@ -159,6 +166,10 @@
 	S["pred_mask_type"] 	<< predator_mask_type
 	S["pred_armor_type"] 	<< predator_armor_type
 	S["pred_boot_type"] 	<< predator_boot_type
+
+	S["commander_status"] 	<< commander_status
+	S["yautja_status"]		<< yautja_status
+	S["synth_status"]		<< synth_status
 
 	S["lang_chat_disabled"] << lang_chat_disabled
 

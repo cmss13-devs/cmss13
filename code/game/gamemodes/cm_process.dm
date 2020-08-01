@@ -327,7 +327,7 @@ Only checks living mobs with a client attached.
 	for(var/mob/M in living_human_list)
 		if(M.z && (M.z in z_levels) && M.stat != DEAD && !istype(M.loc, /turf/open/space))
 			if(ishuman(M) && !isYautja(M))
-				if(M.faction ==  FACTION_PMC) 	
+				if(M.faction in FACTION_LIST_WY) 	
 					num_pmcs++
 				else if(M.faction == FACTION_MARINE)		
 					num_marines++

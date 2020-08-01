@@ -470,8 +470,6 @@
 
 	if(!check_plasma(200))
 		return
-	use_plasma(200)
-	last_special = world.time + MINUTES_15
 
 	visible_message(SPAN_XENOWARNING("[src] begins slowly lifting [victim] into the air."), \
 	SPAN_XENOWARNING("You begin focusing your anger as you slowly lift [victim] into the air."))
@@ -480,12 +478,20 @@
 			return
 		if(victim.loc != cur_loc)
 			return
+		if(!check_plasma(200))
+			return
+
+		use_plasma(200)
+		last_special = world.time + MINUTES_15
+
 		visible_message(SPAN_XENODANGER("[src] viciously smashes and wrenches [victim] apart!"), \
 		SPAN_XENODANGER("You suddenly unleash pure anger on [victim], instantly wrenching \him apart!"))
 		emote("roar")
+
 		attack_log += text("\[[time_stamp()]\] <font color='red'>gibbed [key_name(victim)]</font>")
 		victim.attack_log += text("\[[time_stamp()]\] <font color='orange'>was gibbed by [key_name(src)]</font>")
 		victim.gib(initial(name)) //Splut
+
 		stop_pulling()
 
 /mob/living/carbon/Xenomorph/Queen/proc/mount_ovipositor()

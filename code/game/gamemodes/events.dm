@@ -43,8 +43,6 @@
 		D.carrier = 1
 		H.AddDisease(D)
 		break
-	spawn(rand(SECONDS_150, MINUTES_5)) //Delayed announcements to keep the crew on their toes.
-		marine_announcement("Confirmed outbreak of level 7 viral biohazard aboard [station_name]. All personnel must contain the outbreak.", "Biohazard Alert", 'sound/AI/outbreak7.ogg')
 
 /proc/carp_migration() // -- Darem
 	for(var/obj/effect/landmark/C in landmarks_list)

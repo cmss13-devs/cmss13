@@ -80,7 +80,7 @@
 				if(announce)
 					var/name = "SELF DESTRUCT SYSTEMS ACTIVE"
 					var/input = "DANGER, THE EMERGENCY DESTRUCT SYSTEM IS NOW ACTIVATED. PROCEED TO THE SELF DESTRUCT CHAMBER FOR CONTROL ROD INSERTION."
-					marine_announcement(input, name, 'sound/AI/ARES_Self_Destruct.ogg')
+					marine_announcement(input, name, 'sound/AI/selfdestruct_short.ogg')
 				security_level = SEC_LEVEL_DELTA
 				for(var/obj/structure/machinery/firealarm/FA in machines)
 					if(FA.z == MAIN_SHIP_Z_LEVEL)

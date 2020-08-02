@@ -160,23 +160,32 @@
 
 	round_time_lobby = world.time
 
-	spawn (50)
-		switch(map_tag)
-			if(MAP_LV_624)
-				marine_announcement("An automated distress signal has been received from archaeology site Lazarus Landing, on border world LV-624. A response team from the [MAIN_SHIP_NAME] will be dispatched shortly to investigate.", "[MAIN_SHIP_NAME]")
-			if(MAP_ICE_COLONY)
-				marine_announcement("An automated distress signal has been received from archaeology site \"Shiva's Snowball\", on border ice world \"Ifrit\". A response team from the [MAIN_SHIP_NAME] will be dispatched shortly to investigate.", "[MAIN_SHIP_NAME]")
-			if(MAP_BIG_RED)
-				marine_announcement("We've lost contact with the Weston-Yamada's research facility, [map_tag]. The [MAIN_SHIP_NAME] has been dispatched to assist.", "[MAIN_SHIP_NAME]")
-			if(MAP_PRISON_STATION)
-				marine_announcement("An automated distress signal has been received from maximum-security prison \"Fiorina Orbital Penitentiary\". A response team from the [MAIN_SHIP_NAME] will be dispatched shortly to investigate.", "[MAIN_SHIP_NAME]")
-			if(MAP_DESERT_DAM)
-				marine_announcement("We've lost contact with Weston-Yamada's extra-solar colony, \"[map_tag]\", on the planet \"Navarone.\" The [MAIN_SHIP_NAME] has been dispatched to assist.", "[MAIN_SHIP_NAME]")
-			if (MAP_SOROKYNE_STRATA)
-				marine_announcement("An automated distress signal has been recieved from a mining colony on border world LV-976, \"Sorokyne Outpost\". A response team from the [MAIN_SHIP_NAME] will be dispatched shortly to investigate.", "[MAIN_SHIP_NAME]")
-			if (MAP_CORSAT)
-				marine_announcement("An automated distress signal has been received from Weyland-Yutani's Corporate Orbital Research Station for Advanced Technology, or CORSAT. The [MAIN_SHIP_NAME] has been dispatched to investigate.", "[MAIN_SHIP_NAME]")
+	add_timer(CALLBACK(src, .proc/ares_online), SECONDS_5)
+	add_timer(CALLBACK(src, .proc/map_announcement), SECONDS_20)
+
+/datum/game_mode/colonialmarines/proc/ares_online()
+	var/name = "ARES Online"
+	var/input = "ARES. Online. Good morning, marines."
+	shipwide_ai_announcement(input, name, 'sound/AI/ares_online.ogg')
+
+/datum/game_mode/colonialmarines/proc/map_announcement()
+	switch(map_tag)
+		if(MAP_LV_624)
+			marine_announcement("An automated distress signal has been received from archaeology site Lazarus Landing, on border world LV-624. A response team from the [MAIN_SHIP_NAME] will be dispatched shortly to investigate.", "[MAIN_SHIP_NAME]")
+		if(MAP_ICE_COLONY)
+			marine_announcement("An automated distress signal has been received from archaeology site \"Shiva's Snowball\", on border ice world \"Ifrit\". A response team from the [MAIN_SHIP_NAME] will be dispatched shortly to investigate.", "[MAIN_SHIP_NAME]")
+		if(MAP_BIG_RED)
+			marine_announcement("We've lost contact with the Weston-Yamada's research facility, [map_tag]. The [MAIN_SHIP_NAME] has been dispatched to assist.", "[MAIN_SHIP_NAME]")
+		if(MAP_PRISON_STATION)
+			marine_announcement("An automated distress signal has been received from maximum-security prison \"Fiorina Orbital Penitentiary\". A response team from the [MAIN_SHIP_NAME] will be dispatched shortly to investigate.", "[MAIN_SHIP_NAME]")
+		if(MAP_DESERT_DAM)
+			marine_announcement("We've lost contact with Weston-Yamada's extra-solar colony, \"[map_tag]\", on the planet \"Navarone.\" The [MAIN_SHIP_NAME] has been dispatched to assist.", "[MAIN_SHIP_NAME]")
+		if (MAP_SOROKYNE_STRATA)
+			marine_announcement("An automated distress signal has been recieved from a mining colony on border world LV-976, \"Sorokyne Outpost\". A response team from the [MAIN_SHIP_NAME] will be dispatched shortly to investigate.", "[MAIN_SHIP_NAME]")
+		if (MAP_CORSAT)
+			marine_announcement("An automated distress signal has been received from Weyland-Yutani's Corporate Orbital Research Station for Advanced Technology, or CORSAT. The [MAIN_SHIP_NAME] has been dispatched to investigate.", "[MAIN_SHIP_NAME]")
 	..()
+
 ////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////
 

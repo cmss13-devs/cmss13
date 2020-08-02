@@ -218,10 +218,11 @@
 		for(var/turf/T in turfs_src)
 			var/mob/living/carbon/Xenomorph/X = locate(/mob/living/carbon/Xenomorph) in T
 			if(X && X.stat != DEAD)
-				shipwide_ai_announcement("Hostile biological entities detected on [shuttle_tag]. Appropriate code level has been set.")
+				var/name = "Unidentified Lifesigns"
+				var/input = "Unidentified lifesigns detected onboard. Recommendation: lockdown of exterior access ports, including ducting and ventilation."
+				shipwide_ai_announcement(input, name, 'sound/AI/unidentified_lifesigns.ogg')
 				set_security_level(SEC_LEVEL_RED)
 				break
-
 
 	moving_status = SHUTTLE_INTRANSIT
 

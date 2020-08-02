@@ -204,6 +204,8 @@
 
 	var/datum/hive_status_ui/hive_ui = new
 
+	var/list/tunnels = list()
+
 /datum/hive_status/New()
 	mutators.hive = src
 	hive_ui.set_hive(src)

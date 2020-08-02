@@ -17,30 +17,50 @@
 
 	var/tunnel_desc = "" //description added by the hivelord.
 
+	var/hivenumber = XENO_HIVE_NORMAL
+	var/datum/hive_status/hive
+
 	health = 140
 	var/id = null //For mapping
 
-var/list/obj/structure/tunnel/global_tunnel_list = list()
-
-/obj/structure/tunnel/New()
-	..()
+/obj/structure/tunnel/Initialize(mapload, var/h_number)
+	. = ..()
 	var/turf/L = get_turf(src)
 	tunnel_desc = L.loc.name + " ([loc.x], [loc.y]) [pick(greek_letters)]"//Default tunnel desc is the <area name> (x, y) <Greek letter>
-	global_tunnel_list |= src
+
+	if(h_number && hive_datum[h_number])
+		hivenumber = h_number
+		hive = hive_datum[h_number]
+
+		set_hive_data(src, h_number)
+
+		hive.tunnels += src
+
+	if(!hive)
+		hive = hive_datum[hivenumber]
+
+		hive.tunnels += src
+
 
 /obj/structure/tunnel/Dispose()
-	global_tunnel_list -= src
+	if(hive)
+		hive.tunnels -= src
+
 	for(var/mob/living/carbon/Xenomorph/X in contents)
 		X.forceMove(loc)
 		to_chat(X, SPAN_DANGER("[src] suddenly collapses, forcing you out!"))
 	. = ..()
 
+/obj/structure/tunnel/proc/isfriendly(var/mob/target)
+	var/mob/living/carbon/C = target
+	if(istype(C) && C.allied_to_hivenumber(hivenumber, XENO_SLASH_RESTRICTED))
+		return TRUE
+	
+	return FALSE
+
 /obj/structure/tunnel/examine(mob/user)
 	..()
-	if(!isXeno(user) && !isobserver(user))
-		return
-
-	if(tunnel_desc)
+	if(tunnel_desc && (isfriendly(user) || isobserver(user)))
 		to_chat(user, SPAN_INFO("The pheromone scent reads: \'[tunnel_desc]\'"))
 
 /obj/structure/tunnel/proc/healthcheck()
@@ -65,7 +85,7 @@ var/list/obj/structure/tunnel/global_tunnel_list = list()
 	set category = "Object"
 	set src in view(1)
 
-	if(isXeno(usr) && (usr.loc == src))
+	if(isXeno(usr) && isfriendly(usr) && (usr.loc == src))
 		pick_tunnel(usr)
 	else
 		to_chat(usr, "You stare into the dark abyss" + "[contents.len ? ", making out what appears to be two little lights... almost like something is watching." : "."]")
@@ -80,14 +100,17 @@ var/list/obj/structure/tunnel/global_tunnel_list = list()
 
 /obj/structure/tunnel/proc/pick_tunnel(mob/living/carbon/Xenomorph/X)
 	. = FALSE	//For peace of mind when it comes to dealing with unintended proc failures
-	if(!istype(X) || X.stat || X.lying)
+	if(!istype(X) || X.stat || X.lying || !isfriendly(X) || !hive)
 		return FALSE
 	if(X in contents)
 		var/list/tunnels = list()
-		for(var/obj/structure/tunnel/T in global_tunnel_list)
+		for(var/obj/structure/tunnel/T in hive.tunnels)
 			if(T == src)
 				continue
-			tunnels += T.tunnel_desc
+			if(!(T.z in SURFACE_Z_LEVELS))
+				continue
+
+			tunnels += list(T.tunnel_desc = T)
 		var/pick = input("Which tunnel would you like to move to?") as null|anything in tunnels
 		if(!pick)
 			return FALSE
@@ -109,16 +132,15 @@ var/list/obj/structure/tunnel/global_tunnel_list = list()
 		if(!do_after(X, tunnel_time, INTERRUPT_NO_NEEDHAND, 0))
 			return FALSE
 
-		for(var/obj/structure/tunnel/T in global_tunnel_list)
-			if(T.tunnel_desc != pick)
-				continue
-			if(T.contents.len > 2)// max 3 xenos in a tunnel
-				to_chat(X, SPAN_WARNING("The tunnel is too crowded, wait for others to exit!"))
-				return FALSE
-			else
-				X.forceMove(T)
-				to_chat(X, SPAN_XENONOTICE("You have reached your destination."))
-				return TRUE
+		var/obj/structure/tunnel/T = tunnels[pick]
+		
+		if(T.contents.len > 2)// max 3 xenos in a tunnel
+			to_chat(X, SPAN_WARNING("The tunnel is too crowded, wait for others to exit!"))
+			return FALSE
+		else
+			X.forceMove(T)
+			to_chat(X, SPAN_XENONOTICE("You have reached your destination."))
+			return TRUE
 
 /obj/structure/tunnel/proc/exit_tunnel(mob/living/carbon/Xenomorph/X)
 	. = FALSE //For peace of mind when it comes to dealing with unintended proc failures
@@ -130,7 +152,7 @@ var/list/obj/structure/tunnel/global_tunnel_list = list()
 
 //Used for controling tunnel exiting and returning
 /obj/structure/tunnel/clicked(var/mob/user, var/list/mods)
-	if(!isXeno(user))
+	if(!isXeno(user) || !isfriendly(user))
 		return ..()
 	var/mob/living/carbon/Xenomorph/X = user
 	if(mods["ctrl"] && pick_tunnel(X))//Returning to original tunnel
@@ -146,11 +168,28 @@ var/list/obj/structure/tunnel/global_tunnel_list = list()
 	if(!istype(M) || M.stat || M.lying)
 		return FALSE
 
+	if(!isfriendly(M))
+		if(M.mob_size < MOB_SIZE_BIG)
+			to_chat(M, SPAN_XENOWARNING("You aren't large enough to collapse this tunnel!"))
+			return
+
+		M.visible_message(SPAN_XENODANGER("[M] begins to fill [src] with dirt."),\
+		SPAN_XENONOTICE("You begin to fill [src] with dirt using your massive claws."), max_distance = 3)
+
+		if(!do_after(M, SECONDS_10, INTERRUPT_ALL, BUSY_ICON_HOSTILE, src, INTERRUPT_ALL_OUT_OF_RANGE, max_dist = 1))
+			to_chat(M, SPAN_XENOWARNING("You decide not to cave the tunnel in."))
+			return
+
+		src.visible_message(SPAN_XENODANGER("[src] caves in!"), max_distance = 3)
+		qdel(src)
+
+		return
+
 	if(M.anchored)
 		to_chat(M, SPAN_XENOWARNING("You can't climb through a tunnel while immobile."))
 		return FALSE
 
-	if(!global_tunnel_list.len)
+	if(!hive.tunnels.len)
 		to_chat(M, SPAN_WARNING("\The [src] doesn't seem to lead anywhere."))
 		return FALSE
 
@@ -176,7 +215,7 @@ var/list/obj/structure/tunnel/global_tunnel_list = list()
 		to_chat(M, SPAN_WARNING("Your crawling was interrupted!"))
 		return
 
-	if(global_tunnel_list.len) //Make sure other tunnels exist
+	if(hive.tunnels.len) //Make sure other tunnels exist
 		M.forceMove(src) //become one with the tunnel
 		to_chat(M, SPAN_HIGHDANGER("Alt + Click the tunnel to exit, Ctrl + Click to choose a destination."))
 		pick_tunnel(M)

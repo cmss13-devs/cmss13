@@ -676,19 +676,7 @@ body
 			to_chat(usr, "This can only be done to instances of type /mob/living/carbon")
 			return
 
-		var/list/hives = list()
-		for(var/datum/hive_status/hive in hive_datum)
-			hives += list("[hive.name]" = hive.hivenumber)
-
-		var/newhive = input(src,"Select a hive.", null, null) in hives
-
-		if(!X)
-			to_chat(usr, "This mob no longer exists")
-			return
-
-		var/newhivenumber = hives[newhive]
-
-		admin_holder.Topic(href, list("changehivenumber"=href_list["changehivenumber"],"newhivenumber"=newhivenumber))
+		admin_holder.Topic(href, list("changehivenumber"=href_list["changehivenumber"]))
 
 	else if(href_list["makeai"])
 		if(!check_rights(R_SPAWN))	

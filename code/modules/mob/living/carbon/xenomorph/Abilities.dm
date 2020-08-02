@@ -108,7 +108,7 @@
 		to_chat(X, SPAN_XENOWARNING("You can't do that from there."))
 		return
 
-	if(!T.can_dig_xeno_tunnel())
+	if(!T.can_dig_xeno_tunnel() || !(T.z in SURFACE_Z_LEVELS))
 		to_chat(X, SPAN_XENOWARNING("You scrape around, but you can't seem to dig through that kind of floor."))
 		return
 
@@ -142,7 +142,7 @@
 		return
 	X.visible_message(SPAN_XENONOTICE("\The [X] digs out a tunnel entrance."), \
 	SPAN_XENONOTICE("You dig out an entrance to the tunnel network."), null, 5)
-	X.start_dig = new /obj/structure/tunnel(T)
+	X.start_dig = new /obj/structure/tunnel(T, X.hivenumber)
 	X.tunnel_delay = 1
 	spawn(2400)
 		to_chat(X, SPAN_NOTICE("You are ready to dig a tunnel again."))

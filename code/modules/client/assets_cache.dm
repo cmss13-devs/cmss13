@@ -443,7 +443,8 @@ var/global/list/asset_datums = list()
 		"nano/css/",
 		"nano/images/",
 		"nano/images/weapons/",
-		"nano/js/"
+		"nano/js/",
+		"nano/js/uiscripts/"
 	)
 	var/list/uncommon_dirs = list(
 		"nano/templates/"
@@ -460,7 +461,7 @@ var/global/list/asset_datums = list()
 				continue
 			common[filename] = fcopy_rsc(path + filename)
 			register_asset(filename, common[filename])
-	
+
 	for(var/path in uncommon_dirs)
 		var/list/filenames = flist(path)
 		for(var/filename in filenames)

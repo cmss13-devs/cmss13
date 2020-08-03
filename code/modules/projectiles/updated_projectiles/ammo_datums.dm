@@ -2129,7 +2129,7 @@
 	damage_type = BRUTE
 	shrapnel_type = /obj/item/reagent_container/food/drinks/cans/souto/classic
 	flags_ammo_behavior = AMMO_SKIPS_ALIENS|AMMO_IGNORE_ARMOR|AMMO_IGNORE_RESIST|AMMO_BALLISTIC|AMMO_STOPPED_BY_COVER|AMMO_SPECIAL_EMBED
-	var/obj/item/reagent_container/food/drinks/cans/souto/classic/can_type
+	var/obj/item/reagent_container/food/drinks/cans/souto/can_type
 	icon = 'icons/obj/items/drinks.dmi'
 	icon_state = "souto_classic"
 

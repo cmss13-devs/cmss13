@@ -3,7 +3,7 @@
 
 /obj/structure/mortar
 	name = "\improper M402 mortar"
-	desc = "A manual, crew-operated mortar system intended to rain down 80mm goodness on anything it's aimed at. Uses manual targetting dials. Insert round to fire."
+	desc = "A manual, crew-operated mortar system intended to rain down 80mm goodness on anything it's aimed at. Uses an advanced targeting computer. Insert round to fire."
 	icon = 'icons/obj/structures/mortar.dmi'
 	icon_state = "mortar_m402"
 	anchored = 1
@@ -12,6 +12,7 @@
 	density = 1
 	layer = ABOVE_MOB_LAYER //So you can't hide it under corpses
 	flags_atom = RELAY_CLICK
+	var/computer_enabled = TRUE
 	var/targ_x = 0 //Initial target coordinates
 	var/targ_y = 0
 	var/offset_x = 0 //Automatic offset from target
@@ -24,6 +25,11 @@
 	var/firing = 0 //Used for deconstruction and aiming sanity
 	var/fixed = 0 //If set to 1, can't unanchor and move the mortar, used for map spawns and WO
 	var/has_created_ceiling_debris = 0 //prevents mortar from creating endless piles of glass shards
+
+/obj/structure/mortar/New()
+	. = ..()
+	targ_x = deobfuscate_x(0)//Makes coords appear as 0 in UI
+	targ_y = deobfuscate_y(0)
 
 /obj/structure/mortar/attack_hand(mob/user as mob)
 	if(isYautja(user))
@@ -40,73 +46,121 @@
 		return
 	add_fingerprint(user)
 
-	var/choice = alert(user, "Would you like to set the mortar's target coordinates, or dial the mortar? Setting coordinates will make you lose your fire adjustment.", "Mortar Dialing", "Target", "Dial", "Cancel")
-	if(choice == "Cancel")
+	if(computer_enabled)
+		ui_interact(user)
+	else
+		var/choice = alert(user, "Would you like to set the mortar's target coordinates, or dial the mortar? Setting coordinates will make you lose your fire adjustment.", "Mortar Dialing", "Target", "Dial", "Cancel")
+		if(choice == "Cancel")
+			return
+		if(choice == "Target")
+			handle_target(TRUE, user)
+		if(choice == "Dial")
+			handle_dial(TRUE, user)
+
+/obj/structure/mortar/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 0)
+
+	var/list/data = list(
+		"src" = "\ref[src]",//Needed to use forms with Topic()
+		"target_x" = obfuscate_x(targ_x),
+		"target_y" = obfuscate_y(targ_y),
+		"dial_x" = dial_x,
+		"dial_y" = dial_y,
+	)
+
+	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+
+	if (!ui)
+		ui = new(user, src, ui_key, "mortar.tmpl", "Mortar Targeting Computer" , 340, 270)
+		ui.add_script("mortar.js")
+		ui.set_initial_data(data)
+		ui.open()
+		ui.set_auto_update(FALSE)//Auto update is NOT compatible with forms.
+
+/obj/structure/mortar/Topic(href, href_list)
+	var/mob/user = usr
+	if(get_dist(user, src) > 1)
 		return
-	if(choice == "Target")
-		var/temp_targ_x = input("Set longitude of strike from 0 to [world.maxx].") as num
-		if(dial_x + deobfuscate_x(temp_targ_x) > world.maxx || dial_x + deobfuscate_x(temp_targ_x) < 0)
-			to_chat(user, SPAN_WARNING("You cannot aim at this coordinate, it is outside of the area of operations."))
-			return
-		var/temp_targ_y = input("Set latitude of strike from 0 to [world.maxy].") as num
-		if(dial_y + deobfuscate_y(temp_targ_y) > world.maxy || dial_y + deobfuscate_y(temp_targ_y) < 0)
-			to_chat(user, SPAN_WARNING("You cannot aim at this coordinate, it is outside of the area of operations."))
-			return
-		var/turf/T = locate(deobfuscate_x(temp_targ_x) + dial_x, deobfuscate_y(temp_targ_y) + dial_y, z)
-		if(get_dist(loc, T) < 10)
-			to_chat(user, SPAN_WARNING("You cannot aim at this coordinate, it is too close to your mortar."))
-			return
-		if(busy)
-			to_chat(user, SPAN_WARNING("Someone else is currently using this mortar."))
-			return
-		user.visible_message(SPAN_NOTICE("[user] starts adjusting [src]'s firing angle and distance."),
-		SPAN_NOTICE("You start adjusting [src]'s firing angle and distance to match the new coordinates."))
-		busy = 1
+	switch(href_list["choice"])
+		if ("target")
+			handle_target(FALSE, user, text2num(href_list["target_x"]), text2num(href_list["target_y"]))
+
+		if ("dial")
+			handle_dial(FALSE, user, text2num(href_list["dial_x"]), text2num(href_list["dial_y"]))
+			
+	ui_interact(user)
+
+/obj/structure/mortar/proc/handle_target(var/manual, var/mob/user, var/temp_targ_x = 0, var/temp_targ_y = 0)
+	if(manual)
+		temp_targ_x = input("Input the longitude of the target.") as num
+		temp_targ_y = input("Input the latitude of the target.") as num
+	if(dial_x + deobfuscate_x(temp_targ_x) > world.maxx || dial_x + deobfuscate_x(temp_targ_x) < 0)
+		to_chat(user, SPAN_WARNING("You cannot aim at this coordinate, it is outside of the area of operations."))
+		return
+	if(dial_y + deobfuscate_y(temp_targ_y) > world.maxy || dial_y + deobfuscate_y(temp_targ_y) < 0)
+		to_chat(user, SPAN_WARNING("You cannot aim at this coordinate, it is outside of the area of operations."))
+		return
+	var/turf/T = locate(deobfuscate_x(temp_targ_x) + dial_x, deobfuscate_y(temp_targ_y) + dial_y, z)
+	if(get_dist(loc, T) < 10)
+		to_chat(user, SPAN_WARNING("You cannot aim at this coordinate, it is too close to your mortar."))
+		return
+	if(busy)
+		to_chat(user, SPAN_WARNING("Someone else is currently using this mortar."))
+		return
+	user.visible_message(SPAN_NOTICE("[user] starts adjusting [src]'s firing angle and distance."),
+	SPAN_NOTICE("You start adjusting [src]'s firing angle and distance to match the new coordinates."))
+	busy = 1
+	if(manual)
 		playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
-		if(do_after(user, 30, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
-			user.visible_message(SPAN_NOTICE("[user] finishes adjusting [src]'s firing angle and distance."),
-			SPAN_NOTICE("You finish adjusting [src]'s firing angle and distance to match the new coordinates."))
-			busy = 0
-			targ_x = deobfuscate_x(temp_targ_x)
-			targ_y = deobfuscate_y(temp_targ_y)
-			var/offset_x_max = round(abs((targ_x + dial_x) - x)/offset_per_turfs) //Offset of mortar shot, grows by 1 every 20 tiles travelled
-			var/offset_y_max = round(abs((targ_y + dial_y) - y)/offset_per_turfs)
-			offset_x = rand(-offset_x_max, offset_x_max)
-			offset_y = rand(-offset_y_max, offset_y_max)
-		else busy = 0
-	if(choice == "Dial")
-		var/temp_dial_x = input("Set longitude adjustement from -10 to 10.") as num
-		if(temp_dial_x + targ_x > world.maxx || temp_dial_x + targ_x < 0)
-			to_chat(user, SPAN_WARNING("You cannot dial to this coordinate, it is outside of the area of operations."))
-			return
-		if(temp_dial_x < -10 || temp_dial_x > 10)
-			to_chat(user, SPAN_WARNING("You cannot dial to this coordinate, it is too far away. You need to set [src] up instead."))
-			return
-		var/temp_dial_y = input("Set latitude adjustement from -10 to 10.") as num
-		if(temp_dial_y + targ_y > world.maxy || temp_dial_y + targ_y < 0)
-			to_chat(user, SPAN_WARNING("You cannot dial to this coordinate, it is outside of the area of operations."))
-			return
-		var/turf/T = locate(targ_x + temp_dial_x, targ_y + temp_dial_y, z)
-		if(get_dist(loc, T) < 10)
-			to_chat(user, SPAN_WARNING("You cannot dial to this coordinate, it is too close to your mortar."))
-			return
-		if(temp_dial_y < -10 || temp_dial_y > 10)
-			to_chat(user, SPAN_WARNING("You cannot dial to this coordinate, it is too far away. You need to set [src] up instead."))
-			return
-		if(busy)
-			to_chat(user, SPAN_WARNING("Someone else is currently using this mortar."))
-			return
-		user.visible_message(SPAN_NOTICE("[user] starts dialing [src]'s firing angle and distance."),
-		SPAN_NOTICE("You start dialing [src]'s firing angle and distance to match the new coordinates."))
-		busy = 1
+	else
+		playsound(loc, 'sound/machines/scanning.ogg', 25, 1)
+	if(do_after(user, SECONDS_3, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
+		user.visible_message(SPAN_NOTICE("[user] finishes adjusting [src]'s firing angle and distance."),
+		SPAN_NOTICE("You finish adjusting [src]'s firing angle and distance to match the new coordinates."))
+		busy = 0
+		targ_x = deobfuscate_x(temp_targ_x)
+		targ_y = deobfuscate_y(temp_targ_y)
+		var/offset_x_max = round(abs((targ_x + dial_x) - x)/offset_per_turfs) //Offset of mortar shot, grows by 1 every 20 tiles travelled
+		var/offset_y_max = round(abs((targ_y + dial_y) - y)/offset_per_turfs)
+		offset_x = rand(-offset_x_max, offset_x_max)
+		offset_y = rand(-offset_y_max, offset_y_max)
+	else busy = 0
+
+/obj/structure/mortar/proc/handle_dial(var/manual, var/mob/user, var/temp_dial_x = 0, var/temp_dial_y = 0)
+	if(manual)
+		temp_dial_x = input("Set longitude adjustement from -10 to 10.") as num
+		temp_dial_y = input("Set latitude adjustement from -10 to 10.") as num
+	if(temp_dial_x + targ_x > world.maxx || temp_dial_x + targ_x < 0)
+		to_chat(user, SPAN_WARNING("You cannot dial to this coordinate, it is outside of the area of operations."))
+		return
+	if(temp_dial_x < -10 || temp_dial_x > 10)
+		to_chat(user, SPAN_WARNING("You cannot dial to this coordinate, it is too far away. You need to set [src] up instead."))
+		return
+	if(temp_dial_y + targ_y > world.maxy || temp_dial_y + targ_y < 0)
+		to_chat(user, SPAN_WARNING("You cannot dial to this coordinate, it is outside of the area of operations."))
+		return
+	if(get_dist(loc, locate(targ_x + temp_dial_x, targ_y + temp_dial_y, z)) < 10)
+		to_chat(user, SPAN_WARNING("You cannot dial to this coordinate, it is too close to your mortar."))
+		return
+	if(temp_dial_y < -10 || temp_dial_y > 10)
+		to_chat(user, SPAN_WARNING("You cannot dial to this coordinate, it is too far away. You need to set [src] up instead."))
+		return
+	if(busy)
+		to_chat(user, SPAN_WARNING("Someone else is currently using this mortar."))
+		return
+	user.visible_message(SPAN_NOTICE("[user] starts dialing [src]'s firing angle and distance."),
+	SPAN_NOTICE("You start dialing [src]'s firing angle and distance to match the new coordinates."))
+	busy = 1
+	if(manual)
 		playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
-		if(do_after(user, 15, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
-			user.visible_message(SPAN_NOTICE("[user] finishes dialing [src]'s firing angle and distance."),
-			SPAN_NOTICE("You finish dialing [src]'s firing angle and distance to match the new coordinates."))
-			busy = 0
-			dial_x = temp_dial_x
-			dial_y = temp_dial_y
-		else busy = 0
+	else
+		playsound(loc, 'sound/machines/scanning.ogg', 25, 1)
+	if(do_after(user, 1.5 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
+		user.visible_message(SPAN_NOTICE("[user] finishes dialing [src]'s firing angle and distance."),
+		SPAN_NOTICE("You finish dialing [src]'s firing angle and distance to match the new coordinates."))
+		busy = 0
+		dial_x = temp_dial_x
+		dial_y = temp_dial_y
+	else busy = 0
 
 /obj/structure/mortar/attackby(var/obj/item/O as obj, mob/user as mob)
 
@@ -143,7 +197,7 @@
 		SPAN_NOTICE("You start loading \a [mortar_shell.name] into [src]."))
 		playsound(loc, 'sound/weapons/gun_mortar_reload.ogg', 50, 1)
 		busy = 1
-		if(do_after(user, 15, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
+		if(do_after(user, 1.5 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 			user.visible_message(SPAN_NOTICE("[user] loads \a [mortar_shell.name] into [src]."),
 			SPAN_NOTICE("You load \a [mortar_shell.name] into [src]."))
 			visible_message("[htmlicon(src, viewers(src))] [SPAN_DANGER("The [name] fires!")]")
@@ -188,12 +242,19 @@
 		playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 		user.visible_message(SPAN_NOTICE("[user] starts undeploying [src]."), \
 				SPAN_NOTICE("You start undeploying [src]."))
-		if(do_after(user, 40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+		if(do_after(user, SECONDS_4, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			user.visible_message(SPAN_NOTICE("[user] undeploys [src]."), \
 				SPAN_NOTICE("You undeploy [src]."))
 			playsound(loc, 'sound/items/Deconstruct.ogg', 25, 1)
 			new /obj/item/mortar_kit(loc)
 			qdel(src)
+
+	if(istype(O, /obj/item/tool/screwdriver))
+		if(do_after(user, SECONDS_1, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+			user.visible_message(SPAN_NOTICE("[user] toggles the targeting computer on [src]."), \
+				SPAN_NOTICE("You toggle the targeting computer on [src]."))
+			computer_enabled = !computer_enabled
+			playsound(loc, 'sound/machines/switch.ogg', 25, 1)
 
 /obj/structure/mortar/ex_act(severity)
 	switch(severity)
@@ -235,7 +296,7 @@
 	user.visible_message(SPAN_NOTICE("[user] starts deploying [src]."), \
 		SPAN_NOTICE("You start deploying [src]."))
 	playsound(loc, 'sound/items/Deconstruct.ogg', 25, 1)
-	if(do_after(user, 40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+	if(do_after(user, SECONDS_4, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		user.visible_message(SPAN_NOTICE("[user] deploys [src]."), \
 			SPAN_NOTICE("You deploy [src]."))
 		playsound(loc, 'sound/weapons/gun_mortar_unpack.ogg', 25, 1)

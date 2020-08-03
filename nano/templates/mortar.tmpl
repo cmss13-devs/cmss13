@@ -1,0 +1,47 @@
+<!-- 
+Title: Mortar Targeting Computer
+Used in: /code/modules/cm_marines/equipment/mortars.dm
+ -->
+ <div>
+    <div>
+        <div class='item'>
+            <h2>Target</h2>
+        </div>
+        <form name='targetform' action='?src={{:data.src}}' method='get'>
+            <input type='hidden' name='src' value='{{:data.src}}'><!-- Used to target src for Topic() -->
+            <input type='hidden' name='choice' value='target'><!-- Used to choose action in Topic() -->
+            <div class="item">
+                <div class="itemLabel">Target X:</div>
+                <div class="itemContent"><input id='target_x' type='text' name='target_x' value='{{:data.target_x}}'></div>
+            </div>
+            <div class="item">
+                <div class="itemLabel">Target Y:</div>
+                <div class="itemContent"><input type='text' name='target_y' value='{{:data.target_y}}'></div>
+            </div>
+            <div class="item">
+                <button form='targetform'>Set Target</button>
+            </div>
+        </form>
+    </div>
+    <div>
+        <div class='item'>
+            <h2>Dial</h2>
+        </div>
+        <form name='dialform' action='?src={{:data.src}}' method='get'>
+            <input type='hidden' name='src' value='{{:data.src}}'><!-- Used to target src for Topic() -->
+            <input type='hidden' name='choice' value='dial'><!-- Used to choose action in Topic() -->
+            <div class="item">
+                <div class="itemLabel">X Offset:</div>
+                <div class="itemContent"><input id='dial_x' type='text' name='dial_x' value='{{:data.dial_x}}'></div>
+            </div>
+            <div class="item">
+                <div class="itemLabel">Y Offset:</div>
+                <div class="itemContent"><input type='text' name='dial_y' value='{{:data.dial_y}}'></div>
+            </div>
+            <br>
+            <div class="item">
+                <button form='dialform'>Set Dial</button>
+            </div>
+        </form>
+    </div>
+</div>

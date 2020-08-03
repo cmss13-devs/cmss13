@@ -447,7 +447,9 @@
 	return
 
 /datum/action/xeno_action/activable/spike_shield/action_cooldown_check()
-	if (cooldown_timer_id == TIMER_ID_NULL)
+	if (shield_active) // If active shield, return FALSE so that this action does not get carried out
+		return FALSE
+	else if (cooldown_timer_id == TIMER_ID_NULL)
 		var/mob/living/carbon/Xenomorph/X = owner
 		if (!istype(X))
 			return FALSE
@@ -455,10 +457,8 @@
 			var/datum/behavior_delegate/ravager_hedgehog/BD = X.behavior_delegate
 			if (istype(BD))
 				return BD.check_shards(shard_cost)
-
 		return TRUE
-	else
-		return !shield_active // If active shield, return FALSE so that this action does not get carried out
+	return FALSE
 
 /datum/action/xeno_action/activable/spike_shield/proc/remove_shield()
 	var/mob/living/carbon/Xenomorph/X = owner

@@ -14,6 +14,7 @@
 #define SECONDS_6 		60
 #define SECONDS_7 		70
 #define SECONDS_8 		80
+#define SECONDS_9		90
 #define SECONDS_10 		100
 #define SECONDS_12 		120
 #define SECONDS_15 		150

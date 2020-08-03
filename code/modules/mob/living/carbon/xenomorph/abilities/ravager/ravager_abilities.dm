@@ -115,7 +115,7 @@
 	action_type = XENO_ACTION_ACTIVATE
 	ability_primacy = XENO_PRIMARY_ACTION_1
 	plasma_cost = 0
-	xeno_cooldown = 110
+	xeno_cooldown = SECONDS_9 + SECONDS_2 // Left operand is the actual CD, right operand is the buffer for the shield duration
 
 	// Config values
 	var/shield_duration = 20  		// Shield lasts 2 seconds by default.

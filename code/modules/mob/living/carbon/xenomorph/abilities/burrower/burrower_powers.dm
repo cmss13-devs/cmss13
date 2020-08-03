@@ -11,7 +11,7 @@
 	if(!T)
 		return
 
-	if(istype(T, /turf/open/floor/almayer/research/containment))
+	if(istype(T, /turf/open/floor/almayer/research/containment) || istype(T, /turf/closed/wall/almayer/research/containment))
 		to_chat(src, SPAN_XENOWARNING("You can't escape this cell!"))
 		return
 

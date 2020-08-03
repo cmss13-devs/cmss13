@@ -38996,8 +38996,8 @@
 	pixel_y = 4
 	},
 /obj/effect/decal/warning_stripes{
-	tag = "icon-S";
-	icon_state = "S"
+	icon_state = "S";
+	tag = "icon-S"
 	},
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/almayer{
@@ -40051,7 +40051,7 @@
 	locked = 1;
 	name = "\improper Containment Cell 2"
 	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
+/obj/structure/machinery/door/poddoor/shutters/almayer/containment{
 	dir = 4;
 	id = "Containment Cell 2";
 	name = "\improper Containment Cell 2";
@@ -43857,6 +43857,10 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/tankerbunks)
+"iYf" = (
+/obj/structure/machinery/camera/autoname/almayer/containment,
+/turf/closed/wall/almayer/research/containment/wall/north,
+/area/almayer/medical/containment/cell)
 "iYv" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out";
@@ -46468,20 +46472,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/squads/charlie/req)
-"lRG" = (
-/obj/structure/machinery/camera/autoname/almayer{
-	dir = 8;
-	name = "ship-grade camera";
-	network = list("almayer","containment");
-	tag = "icon-camera (EAST)";
-	unacidable = 1;
-	unslashable = 1
-	},
-/turf/open/floor/almayer/research/containment/floor2{
-	dir = 8;
-	tag = "icon-containment_floor_2 (WEST)"
-	},
-/area/almayer/medical/containment/cell)
 "lRZ" = (
 /obj/structure/bed/chair/wood/normal{
 	dir = 4;
@@ -49666,7 +49656,7 @@
 	name = "Mounted Flash";
 	pixel_y = 30
 	},
-/obj/structure/machinery/light{
+/obj/structure/machinery/light/containment{
 	dir = 1
 	},
 /turf/open/floor/almayer/research/containment/floor2{
@@ -52976,13 +52966,8 @@
 	},
 /area/almayer/command/telecomms)
 "thN" = (
-/obj/structure/machinery/camera/autoname/almayer{
-	dir = 4;
-	name = "ship-grade camera";
-	network = list("almayer","containment");
-	tag = "icon-camera (NORTH)";
-	unacidable = 1;
-	unslashable = 1
+/obj/structure/machinery/camera/autoname/almayer/containment{
+	dir = 8
 	},
 /turf/open/floor/almayer/research/containment/floor2{
 	dir = 8;
@@ -54528,13 +54513,13 @@
 /obj/structure/machinery/door/airlock/almayer/research/glass{
 	id = "Containment Cell 3";
 	locked = 1;
-	name = "\improper Containment Cell 3"
-	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 4;
-	id = "Containment Cell 3";
 	name = "\improper Containment Cell 3";
 	unacidable = 1
+	},
+/obj/structure/machinery/door/poddoor/shutters/almayer/containment{
+	dir = 4;
+	id = "Containment Cell 3";
+	name = "\improper Containment Cell 3"
 	},
 /turf/open/floor/almayer/research/containment/floor2{
 	dir = 8;
@@ -54729,6 +54714,13 @@
 	},
 /turf/open/floor/wood,
 /area/almayer/living/captain_mess)
+"vkp" = (
+/obj/structure/machinery/light/containment,
+/turf/open/floor/almayer/research/containment/floor2{
+	dir = 1;
+	tag = "icon-containment_floor_2 (NORTH)"
+	},
+/area/almayer/medical/containment/cell)
 "vkB" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8;
@@ -87599,7 +87591,7 @@ abE
 atL
 akV
 irA
-icM
+iYf
 oFj
 thN
 pNP
@@ -89636,7 +89628,7 @@ hyp
 ruV
 cbg
 hme
-mzq
+vkp
 oNp
 irA
 lmw
@@ -90037,11 +90029,11 @@ alf
 irA
 icM
 hqL
-lRG
+thN
 wPz
 ruV
 hqL
-lRG
+thN
 wPz
 oNp
 irA

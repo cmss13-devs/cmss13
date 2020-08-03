@@ -71,7 +71,7 @@
 	paygrade = "PMC1"
 	skills = /datum/skills/pmc
 
-/datum/equipment_preset/wy/pmc_standard/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/pmc/pmc_standard/load_gear(mob/living/carbon/human/H)
 
 	var/choice = rand(1,6)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/PMC, WEAR_EAR)

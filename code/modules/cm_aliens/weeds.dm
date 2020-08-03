@@ -103,7 +103,7 @@
 		if(istype(T, /turf/closed/wall/resin))
 			continue
 
-		if(istype(T, /turf/closed/wall))
+		if(istype(T, /turf/closed/wall) && T.density)
 			new /obj/effect/alien/weeds/weedwall(T, node)
 			continue
 

@@ -540,11 +540,19 @@
 	if(M.lying)
 		return FALSE
 
-	playsound(loc, 'sound/effects/metal_creaking.ogg', 25, 1)
+	var/delay
+
+	if(!arePowerSystemsOn())
+		delay = SECONDS_1
+		playsound(loc, 'sound/effects/metal_creaking.ogg', 25, SOUND_FREQ_HIGH * 1.8)
+	else
+		delay = SECONDS_4
+		playsound(loc, 'sound/effects/metal_creaking.ogg', 25, TRUE)
+
 	M.visible_message(SPAN_WARNING("[M] digs into [src] and begins to pry it open."), \
 	SPAN_WARNING("You dig into [src] and begin to pry it open."), null, 5, CHAT_TYPE_XENO_COMBAT)
 
-	if(do_after(M, 40, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+	if(do_after(M, delay, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 		if(M.loc != cur_loc)
 			return 0 //Make sure we're still there
 		if(M.lying)

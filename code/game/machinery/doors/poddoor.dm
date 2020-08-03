@@ -49,6 +49,26 @@
 			density = 0
 			operating = 0
 
+/obj/structure/machinery/door/poddoor/attack_alien(mob/living/carbon/Xenomorph/X)
+	if((stat & NOPOWER) && density && !operating && !unacidable)
+		pry_open(X)
+
+
+/obj/structure/machinery/door/poddoor/proc/pry_open(var/mob/living/carbon/Xenomorph/X, var/time = SECONDS_4)
+	X.visible_message(SPAN_DANGER("[X] begins prying [src] open."),\
+	SPAN_XENONOTICE("You start prying [src] open."), max_distance = 3)
+
+	playsound(loc, 'sound/effects/metal_creaking.ogg', 25, TRUE)
+
+	if(!do_after(X, time, INTERRUPT_ALL, BUSY_ICON_HOSTILE, src, INTERRUPT_ALL))
+		to_chat(X, "You stop prying [src] open.")
+		return
+
+	X.visible_message(SPAN_DANGER("[X] pries open [src]."), \
+	SPAN_XENONOTICE("You pry open [src]."), max_distance = 3)
+	
+	open()
+
 
 /obj/structure/machinery/door/poddoor/try_to_activate_door(mob/user)
 	return

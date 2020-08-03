@@ -85,7 +85,7 @@ var/global/list/wy_ranks = list(
 	"division_code" = list(
 		"X" = "",
 
-		"1" = "Spc. Serv.",
+		"1" = "Spc Serv.",
 		"2" = "C.R.",
 		"3" = "Comms.",
 		"4" = "PMC Disp.",

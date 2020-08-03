@@ -756,6 +756,11 @@
 	..()
 
 /obj/item/storage/belt/gun/mateba/admiral/Initialize()
+	name = "engraved M276 pattern Mateba holster rig"
+	desc = "The M276 is the standard load-bearing equipment of the USCM. \
+	It consists of a modular belt with various clips. This version is for the powerful Mateba magnum revolver, \
+	along with three pouches for speedloaders. This one is tinted black and engraved with gold, highly customized for a high-ranking official."
+
 	icon_state = "amateba_holster"
 	item_state = "amateba_holster"
 	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/revolver/mateba/admiral(src)

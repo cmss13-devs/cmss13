@@ -480,7 +480,7 @@
 
 /obj/item/weapon/gun/revolver/mateba/admiral
 	name = "\improper engraved Mateba autorevolver custom"
-	desc = "The Mateba is a powerful, fast-firing revolver that uses its own recoil to rotate the cylinders. This version is snubnosed, engraved with gold, tinted black, and highly customized for a high-ranking admiral. It uses heavy .454 rounds."
+	desc = "The Mateba is a powerful, fast-firing revolver that uses its own recoil to rotate the cylinders. This version is snubnosed, engraved with gold, tinted black, and highly customized for a high-ranking official. It uses heavy .454 rounds."
 	icon_state = "amateba"
 	item_state = "amateba"
 	attachable_allowed = list(

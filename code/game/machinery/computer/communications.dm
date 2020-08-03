@@ -159,15 +159,8 @@
 				visible_message(SPAN_NOTICE("[src] prints a medal."))
 
 		if("evacuation_start")
+		
 			if(state == STATE_EVACUATION)
-
-				if(world.time < EVACUATION_TIME_LOCK || !ticker || !ticker.mode || !ticker.mode.force_end_at) //Cannot call it early in the round.
-					to_chat(usr, SPAN_WARNING("USCM protocol does not allow immediate evacuation. Please wait another [round((EVACUATION_TIME_LOCK-world.time)/MINUTES_1)] minutes before trying again."))
-					return FALSE
-
-				//if(!ticker || !ticker.mode || !ticker.mode.has_called_emergency)
-					//to_chat(usr, SPAN_WARNING("The [MAIN_SHIP_NAME]'s distress beacon must be activated prior to evacuation taking place."))
-					//return FALSE
 
 				if(security_level < SEC_LEVEL_RED)
 					to_chat(usr, SPAN_WARNING("The ship must be under red alert in order to enact evacuation procedures."))

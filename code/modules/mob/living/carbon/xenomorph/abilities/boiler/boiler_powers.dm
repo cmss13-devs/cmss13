@@ -1,20 +1,23 @@
 /datum/action/xeno_action/activable/bombard/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/X = owner
+	var/mob/living/carbon/Xenomorph/Boiler/X = owner
 
-	if (!X.check_state() || !action_cooldown_check() || X.action_busy)
+	if (!istype(X) || !X.check_state() || !action_cooldown_check() || X.action_busy)
 		return
 
-	if (istype(A, /turf/closed))
+	var/turf/T = get_turf(A)
+
+	if(istype(T, /turf/closed) || !T.can_bombard())
 		to_chat(X, SPAN_XENODANGER("You can't bombard that!"))
+		return
 
 	if (!check_plasma_owner())
 		return
 
-	if (!can_see(X, A, range))
-		to_chat(X, SPAN_XENODANGER("You cannot see that target!"))
+	if (!X.can_bombard_turf(T, range))
+		to_chat(X, SPAN_XENODANGER("That target is obstructed!"))
 		return
 
-	if (get_dist(get_turf(X), get_turf(A)) > range)
+	if (get_dist_sqrd(get_turf(X), T) > (range*range))
 		to_chat(X, SPAN_XENODANGER("That is too far away!"))
 		return
 
@@ -32,7 +35,7 @@
 	playsound(get_turf(X), 'sound/effects/blobattack.ogg', 25, 1)
 
 
-	recursive_spread(get_turf(A), effect_range, effect_range)
+	recursive_spread(T, effect_range, effect_range)
 
 	return ..()
 
@@ -42,6 +45,8 @@
 	else if (dist_left == 0)
 		return
 	else if (istype(T, /turf/closed) || istype(T, /turf/open/space))
+		return
+	else if(!T.can_bombard()) 
 		return
 
 	add_timer(CALLBACK(src, .proc/new_effect, T), 2*(orig_depth - dist_left))

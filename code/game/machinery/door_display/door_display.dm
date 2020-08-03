@@ -319,6 +319,7 @@
 	if(inoperable() && !force)	return 0
 
 	for(var/obj/structure/machinery/door/poddoor/D in targets)
+		if(D.stat & BROKEN) continue
 		if(!D.density) continue
 		INVOKE_ASYNC(D, /obj/structure/machinery/door.proc/open)
 
@@ -329,6 +330,7 @@
 	if(inoperable())	return 0
 
 	for(var/obj/structure/machinery/door/poddoor/D in targets)
+		if(D.stat & BROKEN) continue
 		if(D.density)	continue
 		INVOKE_ASYNC(D, /obj/structure/machinery/door.proc/close)
 

@@ -83,6 +83,15 @@
 	name = "military-grade camera"
 	network = list("almayer")
 
+/obj/structure/machinery/camera/autoname/almayer/containment
+	name = "containment camera"
+	unslashable = TRUE
+	unacidable = TRUE
+	network = list("almayer", "containment")
+	
+/obj/structure/machinery/camera/autoname/almayer/containment/attack_alien(mob/living/carbon/Xenomorph/M)
+	return
+
 //used by the landing camera dropship equipment. Do not place them right under where the dropship lands.
 //Should place them near each corner of your LZs.
 /obj/structure/machinery/camera/autoname/lz_camera

@@ -150,6 +150,16 @@
 
 	appearance_flags = TILE_BOUND
 
+// containment lights
+/obj/structure/machinery/light/containment
+	name = "containment light fixture"
+	unslashable = TRUE
+	unacidable = TRUE
+
+/obj/structure/machinery/light/containment/attack_alien(mob/living/carbon/Xenomorph/M)
+	return
+	
+
 // the smaller bulb light fixture
 
 /obj/structure/machinery/light/small

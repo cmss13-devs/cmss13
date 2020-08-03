@@ -15,7 +15,7 @@
 	if (!isXenoOrHuman(L))
 		return
 
-	var/mob/living/carbon/H = L 
+	var/mob/living/carbon/H = L
 	if (H.stat == DEAD)
 		return
 	

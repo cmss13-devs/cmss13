@@ -71,6 +71,27 @@
 	walltype = null
 	special_icon = 1
 
+/turf/closed/wall/almayer/research/containment/wall/ex_act(severity, explosion_direction)
+	if(severity <= EXPLOSION_THRESHOLD_MEDIUM) // Wall is resistant to explosives (and also crusher charge)
+		return
+
+	. = ..()
+	
+
+
+/turf/closed/wall/almayer/research/containment/wall/take_damage(dam, mob/M)
+	if(isXeno(M))
+		return
+	. = ..()
+
+/turf/closed/wall/almayer/research/containment/wall/attackby(obj/item/W, mob/user)
+	if(isXeno(user))
+		return
+	. = ..()
+
+/turf/closed/wall/almayer/research/containment/wall/attack_alien(mob/living/carbon/Xenomorph/user)
+	return
+
 /turf/closed/wall/almayer/research/containment/wall/corner
 	icon_state = "containment_wall_corner"
 
@@ -87,6 +108,7 @@
 	SetOpacity(0)
 	density = 0
 	operating = FALSE
+	change_weeds()
 
 /turf/closed/wall/almayer/research/containment/wall/divide/proc/close()
 	if(operating)
@@ -97,6 +119,14 @@
 	SetOpacity(1)
 	density = 1
 	operating = FALSE
+
+	change_weeds()
+
+/turf/closed/wall/almayer/research/containment/wall/divide/proc/change_weeds()
+	for(var/obj/effect/alien/W in src) // Destroy all alien things on the divider (traps, special structures, etc)
+		playsound(loc, "alien_resin_break", 25)
+		qdel(W)
+		
 
 /turf/closed/wall/almayer/research/containment/wall/south
 	icon_state = "containment_wall_south"

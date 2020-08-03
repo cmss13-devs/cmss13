@@ -174,6 +174,10 @@
 		to_chat(src, SPAN_WARNING("These weeds do not belong to your hive!"))
 		return FALSE
 
+	if(istype(current_turf, /turf/closed/wall)) // Can't build in walls with no density
+		to_chat(src, SPAN_WARNING("This area is too unstable to support a construction"))
+		return FALSE
+
 	if(resin_to_build != RESIN_COLLECTOR && !check_alien_construction(current_turf))
 		return FALSE
 

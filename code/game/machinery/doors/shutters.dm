@@ -79,6 +79,20 @@
 	add_timer(CALLBACK(src, /atom.proc/relativewall_neighbours), 10)
 	..()
 
+/obj/structure/machinery/door/poddoor/shutters/almayer/containment
+
+/obj/structure/machinery/door/poddoor/shutters/almayer/containment/attack_alien(mob/living/carbon/Xenomorph/M)
+	if(isXenoQueen(M) && density && !operating)
+		pry_open(M)
+
+		if(!(stat & BROKEN))
+			stat |= BROKEN
+			add_timer(CALLBACK(src, .proc/unbreak_doors), SECONDS_10)
+	else
+		. = ..(M)
+	
+/obj/structure/machinery/door/poddoor/shutters/almayer/containment/proc/unbreak_doors()
+	stat &= ~BROKEN
 
 //transit shutters used by marine dropships
 /obj/structure/machinery/door/poddoor/shutters/transit

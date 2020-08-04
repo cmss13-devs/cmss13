@@ -577,7 +577,6 @@
 	if(stat & IN_USE)
 		return
 
-	to_chat(H, SPAN_WARNING("ENTERED VEND SUCCESFULLY."))
 
 	stat |= IN_USE
 	if(LAZYLEN(L))
@@ -585,13 +584,11 @@
 		var/obj/item/O
 		var/turf/T = get_appropriate_vend_turf(H)
 		if(ispath(prod_type, /obj/effect/essentials_set/random))
-			to_chat(H, SPAN_WARNING("RANDOM SET."))
 			new prod_type(src)
 			for(var/obj/item/IT in contents)
 				O = IT
 				O.forceMove(T)
 		else
-			to_chat(H, SPAN_WARNING("SIMPLE PROD."))
 			O = new prod_type(T)
 		O.add_fingerprint(usr)
 

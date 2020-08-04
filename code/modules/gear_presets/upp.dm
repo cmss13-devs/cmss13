@@ -163,7 +163,7 @@
 	role_comm_title = "Sap"
 	paygrade = "E3"
 
-/datum/equipment_preset/upp/sapper/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/upp/engineer/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/bears, WEAR_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP, WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/UPP, WEAR_JACKET)

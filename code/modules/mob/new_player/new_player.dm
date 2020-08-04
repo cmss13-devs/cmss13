@@ -425,7 +425,7 @@
 	dat += "<h4><center>Crew Manifest:</center></h4>"
 	dat += data_core.get_manifest(FALSE, TRUE)
 
-	show_browser(src, dat, "Crew Manifest", "manifest", "size=400x750")
+	show_browser(src, dat, "Crew Manifest", "manifest", "size=450x750")
 
 /mob/new_player/Move()
 	return 0

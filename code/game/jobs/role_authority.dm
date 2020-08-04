@@ -104,9 +104,15 @@ var/list/departments = list("Command", "Medical", "Engineering", "Security", "Ci
 		if(J.flags_startup_parameters & ROLE_ADD_TO_MODE) roles_for_mode[J.title] = J
 
 	//TODO Come up with some dynamic method of doing this.
-	for(i in ROLES_REGULAR_ALL) //We're going to re-arrange the list for mode to look better, starting with the officers.
+	//added exception for WO, so appropriate roles would appear in prefs for WO.
+	var/list/MODE_ROLES = ROLES_REGULAR_ALL
+	if(Check_WO())
+		MODE_ROLES = ROLES_WO + ROLES_MARINES
+
+	for(i in MODE_ROLES) //We're going to re-arrange the list for mode to look better, starting with the officers.
 		J = roles_for_mode[i]
-		if(J) L[J.title] = J
+		if(J)
+			L[J.title] = J
 	roles_for_mode = L
 
 	for(i in squads_all) //Setting up our squads.
@@ -523,6 +529,10 @@ roles willy nilly.
 
 		if(J.flags_startup_parameters & ROLE_ADD_TO_SQUAD) //Are we a muhreen? Randomize our squad. This should go AFTER IDs. //TODO Robust this later.
 			randomize_squad(H)
+
+		if(Check_WO() && JOB_SQUAD_ROLES_LIST.Find(H.job))	//activates self setting proc for marine headsets for WO
+			var/datum/game_mode/whiskey_outpost/WO = ticker.mode
+			WO.self_set_headset(H)
 
 		H.sec_hud_set_ID()
 		H.sec_hud_set_implants()

@@ -111,7 +111,7 @@
 
 //------------REQ AMMUNITION VENDOR---------------
 /obj/structure/machinery/cm_vending/sorted/cargo_ammo/wo
-	req_access = list(ACCESS_MARINE_LOGISTICS)
+	req_access = list(ACCESS_MARINE_CARGO)
 	req_one_access = list()
 
 /obj/structure/machinery/cm_vending/sorted/cargo_ammo/wo/populate_product_list(var/scale)
@@ -140,6 +140,7 @@
 
 		list("INCENDIARY AMMUNITION", -1, null, null),
 		list("L42A Incendiary Magazine (10x24mm)", round(scale * 3), /obj/item/ammo_magazine/rifle/l42a/incendiary, VENDOR_ITEM_REGULAR),
+		list("M39 Incendiary Magazine (10x20mm)", round(scale * 2), /obj/item/ammo_magazine/smg/m39/incendiary, VENDOR_ITEM_REGULAR),
 		list("M41A MK2 Incendiary Magazine (10x24mm)", round(scale * 3), /obj/item/ammo_magazine/rifle/incendiary, VENDOR_ITEM_REGULAR),
 		list("M4A3 Incendiary Magazine (9mm)", round(scale * 1), /obj/item/ammo_magazine/pistol/incendiary, VENDOR_ITEM_REGULAR),
 
@@ -187,7 +188,7 @@
 //------------ARMAMENTS VENDOR---------------
 
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/wo
-	req_access = list(ACCESS_MARINE_LOGISTICS)
+	req_access = list(ACCESS_MARINE_CARGO)
 
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/wo/populate_product_list(var/scale)
 	listed_products = list(

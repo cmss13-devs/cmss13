@@ -479,6 +479,58 @@
 	keyslot2 = new /obj/item/device/encryptionkey/med
 */
 
+/*************************************
+-----SELF SETTING MARINE HEADSET-----
+*************************************/
+//For events. Currently used for WO only. After equipping it, self_set() will adapt headset to marine.
+
+/obj/item/device/radio/headset/almayer/marine/self_setting/proc/self_set()
+	var/mob/living/carbon/human/H = loc
+	if(istype(H, /mob/living/carbon/human))
+		if(H.assigned_squad)
+			switch(H.assigned_squad.name)
+				if(SQUAD_NAME_1)
+					name = "[SQUAD_NAME_1] radio headset"
+					desc = "This is used by [SQUAD_NAME_1] squad members."
+					icon_state = "alpha_headset"
+					frequency = ALPHA_FREQ
+				if(SQUAD_NAME_2)
+					name = "[SQUAD_NAME_2] radio headset"
+					desc = "This is used by [SQUAD_NAME_2] squad members."
+					icon_state = "bravo_headset"
+					frequency = BRAVO_FREQ
+				if(SQUAD_NAME_3)
+					name = "[SQUAD_NAME_3] radio headset"
+					desc = "This is used by [SQUAD_NAME_3] squad members."
+					icon_state = "charlie_headset"
+					frequency = CHARLIE_FREQ
+				if(SQUAD_NAME_4)
+					name = "[SQUAD_NAME_4] radio headset"
+					desc = "This is used by [SQUAD_NAME_4] squad members."
+					icon_state = "delta_headset"
+					frequency = DELTA_FREQ
+				if(SQUAD_NAME_5)
+					name = "[SQUAD_NAME_5] radio headset"
+					desc = "This is used by [SQUAD_NAME_5] squad members."
+					frequency = ECHO_FREQ
+			switch(H.job)
+				if(JOB_SQUAD_LEADER)
+					name = "marine leader " + name
+					keyslot2 = new /obj/item/device/encryptionkey/squadlead(src)
+				if(JOB_SQUAD_MEDIC)
+					name = "marine medic " + name
+					keyslot2 = new /obj/item/device/encryptionkey/med(src)
+				if(JOB_SQUAD_ENGI)
+					name = "marine engineer " + name
+					keyslot2 = new /obj/item/device/encryptionkey/engi(src)
+				else
+					name = "marine " + name
+
+			set_frequency(frequency)
+			for(var/ch_name in channels)
+				secure_radio_connections[ch_name] = radio_controller.add_object(src, radiochannels[ch_name],  RADIO_CHAT)
+			recalculateChannels()
+
 //Distress (ERT) headsets.
 
 /obj/item/device/radio/headset/distress

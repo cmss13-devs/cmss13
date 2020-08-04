@@ -7392,8 +7392,8 @@
 /area/whiskey_outpost/outside/north/platform)
 "sa" = (
 /obj/structure/rack,
-/obj/item/ammo_box/rounds/smg/incen,
 /obj/item/storage/box/m94,
+/obj/item/ammo_box/rounds/smg/ap,
 /turf/open/floor/prison{
 	tag = "icon-floor_plate";
 	icon_state = "floor_plate";
@@ -7899,7 +7899,6 @@
 /area/whiskey_outpost/inside/supply)
 "te" = (
 /obj/structure/rack,
-/obj/item/ammo_box/magazine/type71/ap,
 /obj/item/storage/box/m94,
 /turf/open/floor/prison{
 	tag = "icon-floor_plate";
@@ -13359,6 +13358,16 @@
 	dir = 10
 	},
 /area/whiskey_outpost/inside/bunker/pillbox/three)
+"Qj" = (
+/obj/structure/rack,
+/obj/item/storage/box/m94,
+/obj/item/ammo_box/magazine/m39/ext,
+/turf/open/floor/prison{
+	tag = "icon-floor_plate";
+	icon_state = "floor_plate";
+	dir = 2
+	},
+/area/whiskey_outpost/inside/bunker)
 "Up" = (
 /obj/structure/platform_decoration{
 	icon_state = "platform_deco";
@@ -30636,7 +30645,7 @@ hW
 oK
 fj
 fj
-te
+Qj
 fj
 fj
 Ax

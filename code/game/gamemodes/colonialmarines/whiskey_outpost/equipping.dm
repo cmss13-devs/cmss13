@@ -3,7 +3,7 @@
 *************************************/
 
 /datum/job/command/commander/whiskey
-	title = "Ground Commander"
+	title = JOB_WO_CO
 	gear_preset = "WO Ground Commander"
 
 	generate_entry_message()
@@ -26,7 +26,7 @@ Stay alive, and Godspeed, commander!"}
 *************************************/
 
 /datum/job/civilian/synthetic/whiskey
-	title = "Support Synthetic"
+	title = JOB_WO_SYNTH
 	gear_preset = "WO Support Synthetic"
 
 	generate_entry_message()
@@ -40,7 +40,7 @@ Destruction in inevitable. At the very least, you can assist in preventing other
 ---------EXECUITIVE OFFICER-----------
 *************************************/
 /datum/job/command/executive/whiskey
-	title = "Lieutendant Commander"
+	title = JOB_WO_XO
 	gear_preset = "WO Lieutendant Commander"
 
 	generate_entry_message(mob/living/carbon/human/H)
@@ -55,7 +55,7 @@ Make the USCM proud!"}
 
 //Chief MP
 /datum/job/command/warrant/whiskey
-	title = "Honor Guard Squad Leader"
+	title = JOB_WO_CHIEF_POLICE
 	selection_class = "job_honor_guard_sl"
 	gear_preset = "WO Honor Guard Squad Leader"
 
@@ -70,7 +70,7 @@ You must lead his Honor guard, his elite unit of marines, to protect the command
 -------------STAFF OFFICER------------
 *************************************/
 /datum/job/command/bridge/whiskey
-	title = "Veteran Honor Guard"
+	title = JOB_WO_SO
 	gear_preset = "WO Veteran Honor Guard"
 
 	generate_entry_message(mob/living/carbon/human/H)
@@ -84,7 +84,7 @@ Glory to the commander. Glory to the USCM."}
 ----------------CREWMAN---------------
 *************************************/
 /datum/job/command/tank_crew/whiskey
-	title = "Honor Guard Specialist"
+	title = JOB_WO_CREWMAN
 	gear_preset = "WO Honor Guard Specialist"
 
 	generate_entry_message(mob/living/carbon/human/H)
@@ -98,7 +98,7 @@ Glory to the commander. Glory to the USCM."}
 ------------MILITARY POLICE----------
 *************************************/
 /datum/job/command/police/whiskey
-	title = "Honor Guard"
+	title = JOB_WO_POLICE
 	gear_preset = "WO Honor Guard"
 
 	generate_entry_message(mob/living/carbon/human/H)
@@ -111,7 +111,7 @@ Glory to the commander. Glory to the USCM."}
 ----------------PILOT----------------
 *************************************/
 /datum/job/command/pilot/whiskey
-	title = "Mortar Crew"
+	title = JOB_WO_PILOT
 	gear_preset = "WO Mortar Crew"
 
 	generate_entry_message(mob/living/carbon/human/H)
@@ -123,7 +123,7 @@ Listen in on your radio, and pay attention to provide fire support for the marin
 ---------REQUISITIONS OFFICER--------
 *************************************/
 /datum/job/logistics/requisition/whiskey
-	title = "Quartermaster"
+	title = JOB_WO_CHIEF_REQUISITION
 	gear_preset = "WO Quartermaster"
 
 	generate_entry_message(mob/living/carbon/human/H)
@@ -136,7 +136,7 @@ You can order bunker crew to assist you, in place of proper cargo technicians."}
 --------CHIEF MEDICAL OFFICER--------
 *************************************/
 /datum/job/civilian/professor/whiskey
-	title = "Head Surgeon"
+	title = JOB_WO_CMO
 	gear_preset = "WO Head Surgeon"
 
 	generate_entry_message()
@@ -148,7 +148,7 @@ Treat the wounded, guide triage, and survive for as long as possible."}
 ----------------DOCTOR---------------
 *************************************/
 /datum/job/civilian/doctor/whiskey
-	title = "Field Doctor"
+	title = JOB_WO_DOCTOR
 	gear_preset = "WO Field Doctor"
 
 	generate_entry_message(mob/living/carbon/human/H)
@@ -160,7 +160,7 @@ Treat the wounded, perform triage, and survive for as long as possible."}
 ---------------RESEARCHER-------------
 *************************************/
 /datum/job/civilian/researcher/whiskey
-	title = "Chemist"
+	title = JOB_WO_RESEARCHER
 	gear_preset = "WO Chemist"
 
 	generate_entry_message(mob/living/carbon/human/H)
@@ -172,7 +172,7 @@ Hey, at least now, you can try out all those chems that are outlawed - not like 
 ------------CHIEF ENGINEER-----------
 *************************************/
 /datum/job/logistics/engineering/whiskey
-	title = "Bunker Crew Master"
+	title = JOB_WO_CHIEF_ENGINEER
 	gear_preset = "WO Bunker Crew Master"
 
 	generate_entry_message(mob/living/carbon/human/H)
@@ -184,7 +184,7 @@ Ensure power is up, and the bunker is well defended. You share your bunker crew 
 ---------------MAINT TECH-------------
 *************************************/
 /datum/job/logistics/tech/maint/whiskey
-	title = "Bunker Crew"
+	title = JOB_WO_ORDNANCE_TECH
 	supervisors = "the bunker crew master and the quartermaster"
 	gear_preset = "WO Bunker Crew"
 
@@ -197,7 +197,7 @@ Assist both the Bunker Crew Master and the Quartermaster in their duties."}
 --------------CARGO TECH-------------
 *************************************/
 /datum/job/logistics/tech/cargo/whiskey
-	title = "Bunker Crew Logistics"
+	title = JOB_WO_REQUISITION
 	supervisors = "the bunker crew master and the quartermaster"
 	selection_class = "job_bunker_crew"
 	gear_preset = "WO Bunker Crew Logistics"
@@ -213,7 +213,7 @@ Assist both the Bunker Crew Master and the Quartermaster in their duties."}
 -----------------LIAISON---------------
 *************************************/
 /datum/job/civilian/liaison/whiskey
-	title = "Combat Reporter"
+	title = JOB_WO_CORPORATE_LIAISON
 	supervisors = "the press"
 	gear_preset = "WO Combat Reporter"
 
@@ -261,43 +261,10 @@ You just gotta get out of this jungle to tell the tale!"}
 
 	return 1
 
-//Er, no. I'm not gonna try to find a way to make every marine spawn with the proper headset. This is easier.
-/*************************************
------SELF SETTING MARINE HEADSET-----
-*************************************/
-/obj/item/device/radio/headset/almayer/marine/self_setting/New()
-	if(istype(loc, /mob/living/carbon/human))
-		var/mob/living/carbon/human/H = loc
-		if(H.assigned_squad)
-			switch(H.assigned_squad.name)
-				if(SQUAD_NAME_1)
-					name = "[SQUAD_NAME_1] radio headset"
-					desc = "This is used by  [SQUAD_NAME_1] squad members."
-					icon_state = "alpha_headset"
-					frequency = ALPHA_FREQ
-				if(SQUAD_NAME_2)
-					name = "[SQUAD_NAME_2] radio headset"
-					desc = "This is used by [SQUAD_NAME_2] squad members."
-					icon_state = "bravo_headset"
-					frequency = BRAVO_FREQ
-				if(SQUAD_NAME_3)
-					name = "[SQUAD_NAME_3] radio headset"
-					desc = "This is used by [SQUAD_NAME_3] squad members."
-					icon_state = "charlie_headset"
-					frequency = CHARLIE_FREQ
-				if(SQUAD_NAME_4)
-					name = "[SQUAD_NAME_4] radio headset"
-					desc = "This is used by [SQUAD_NAME_4] squad members."
-					icon_state = "delta_headset"
-					frequency = DELTA_FREQ
-			switch(H.job)
-				if(JOB_SQUAD_LEADER)
-					name = "squad leader " + name
-					keyslot2 = new /obj/item/device/encryptionkey/squadlead(src)
-				if(JOB_SQUAD_MEDIC)
-					name = "squad medic " + name
-					keyslot2 = new /obj/item/device/encryptionkey/med(src)
-				if(JOB_SQUAD_ENGI)
-					name = "squad engineer " + name
-					keyslot2 = new /obj/item/device/encryptionkey/engi(src)
-	..()
+//this calls  self-setting headsets for marines AFTER they are assigned squads
+/datum/game_mode/whiskey_outpost/proc/self_set_headset(var/mob/living/carbon/human/H)
+	if(!istype(H))
+		return
+	var/obj/item/device/radio/headset/almayer/marine/self_setting/headset = H.wear_ear
+	if(istype(headset))
+		headset.self_set()

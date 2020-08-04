@@ -243,9 +243,10 @@
 	if(health <= 0)
 		qdel(src)
 
-/obj/effect/alien/weeds/fire_act()
+/obj/effect/alien/weeds/flamer_fire_act(dam)
+	. = ..()
 	if(!disposed)
-		QDEL_IN(src, rand(100,175))
+		QDEL_IN(src, rand(SECONDS_1, SECONDS_2)) // 1-2 seconds
 
 /obj/effect/alien/weeds/acid_spray_act()
 	. = ..()

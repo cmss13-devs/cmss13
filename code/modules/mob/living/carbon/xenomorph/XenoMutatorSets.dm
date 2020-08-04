@@ -228,9 +228,7 @@
 	set name = "Purchase Strains"
 	set desc = "Purchase Strains for yourself."
 	set category = "Alien"
-	if(hardcore)
-		to_chat(usr, SPAN_WARNING("No time for that, must KILL!"))
-		return
+
 	if(is_dead())
 		return //Dead xenos can't mutate!
 	if(!src.mutators)
@@ -241,9 +239,7 @@
 	set name = "List Strains"
 	set desc = "List your current Strain, if any."
 	set category = "Alien"
-	if(hardcore)
-		to_chat(usr, SPAN_WARNING("No time for that, must KILL!"))
-		return
+
 	to_chat(src, SPAN_XENOANNOUNCE("Strain:"))
 	if(isnull(src.mutators) || isnull(src.mutators.purchased_mutators) || !src.mutators.purchased_mutators.len)
 		to_chat(src, "-")

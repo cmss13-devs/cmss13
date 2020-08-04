@@ -14,8 +14,8 @@
 	name = "WO Ground Commander"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO
 
-	assignment = "Ground Commander"
-	rank = "Ground Commander"
+	assignment = JOB_WO_CO
+	rank = JOB_WO_CO
 	paygrade = "O5"
 	role_comm_title = "CDR"
 	skills = /datum/skills/commander
@@ -62,11 +62,11 @@
 /*****************************************************************************************************/
 
 /datum/equipment_preset/wo/xo
-	name = "WO Lieutendant Commander"
+	name = "WO Lieutenant Commander"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO
 
-	assignment = "Lieutendant Commander"
-	rank = "Lieutendant Commander"
+	assignment = JOB_WO_XO
+	rank = JOB_WO_XO
 	paygrade = "LCDR"
 	role_comm_title = "LCDR"
 	skills = /datum/skills/XO
@@ -97,8 +97,8 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO
 
 	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_BRIG, ACCESS_MARINE_BRIDGE, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_PREP, ACCESS_MARINE_WO, ACCESS_MARINE_MEDBAY)
-	assignment = "Honor Guard Squad Leader"
-	rank = "Honor Guard Squad Leader"
+	assignment = JOB_WO_CHIEF_POLICE
+	rank = JOB_WO_CHIEF_POLICE
 	paygrade = "E9"
 	role_comm_title = "HGSL"
 	skills = /datum/skills/honor_guard/lead
@@ -125,8 +125,8 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO
 
 	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_BRIDGE, ACCESS_MARINE_BRIG, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_LOGISTICS)
-	assignment = "Veteran Honor Guard"
-	rank = "Veteran Honor Guard"
+	assignment = JOB_WO_SO
+	rank = JOB_WO_SO
 	paygrade = "E8"
 	role_comm_title = "VHG"
 	skills = /datum/skills/honor_guard/vet
@@ -157,8 +157,8 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO
 
 	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_BRIDGE, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_LOGISTICS)
-	assignment = "Honor Guard Specialist"
-	rank = "Honor Guard Specialist"
+	assignment = JOB_WO_CREWMAN
+	rank = JOB_WO_CREWMAN
 	paygrade = "E8"
 	role_comm_title = "HGS"
 	skills = /datum/skills/honor_guard/spec
@@ -188,8 +188,8 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO
 
 	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_BRIG, ACCESS_MARINE_BRIDGE, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_PREP, ACCESS_MARINE_MEDBAY)
-	assignment = "Honor Guard"
-	rank = "Honor Guard"
+	assignment = JOB_WO_POLICE
+	rank = JOB_WO_POLICE
 	paygrade = "E7"
 	role_comm_title = "HG"
 	skills = /datum/skills/honor_guard
@@ -220,8 +220,8 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO
 
 	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_BRIDGE, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_PILOT)
-	assignment = "Mortar Crew"
-	rank = "Mortar Crew"
+	assignment = JOB_WO_PILOT
+	rank = JOB_WO_PILOT
 	paygrade = "E3"
 	role_comm_title = "MC"
 	skills = /datum/skills/mortar_crew
@@ -250,8 +250,8 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO
 
 	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_CARGO, ACCESS_MARINE_RO, ACCESS_MARINE_BRIDGE)
-	assignment = "Quartermaster"
-	rank = "Quartermaster"
+	assignment = JOB_WO_CHIEF_REQUISITION
+	rank = JOB_WO_CHIEF_REQUISITION
 	paygrade = "E8"
 	role_comm_title = "QM"
 	skills = /datum/skills/RO
@@ -278,8 +278,8 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO
 
 	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_ENGINEERING, ACCESS_CIVILIAN_ENGINEERING, ACCESS_MARINE_CARGO)
-	assignment = "Bunker Crew Logistics"
-	rank = "Bunker Crew Logistics"
+	assignment = JOB_WO_REQUISITION
+	rank = JOB_WO_REQUISITION
 	paygrade = "E4"
 	role_comm_title = "BCL"
 	skills = /datum/skills/CE
@@ -310,8 +310,8 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO
 
 	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_CMO, ACCESS_MARINE_MEDBAY, ACCESS_MARINE_RESEARCH, ACCESS_MARINE_BRIDGE, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
-	assignment = "Head Surgeon"
-	rank = "Head Surgeon"
+	assignment = JOB_WO_CMO
+	rank = JOB_WO_CMO
 	paygrade = "CCMO"
 	role_comm_title = "HS"
 	skills = /datum/skills/CMO
@@ -346,8 +346,8 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO
 
 	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
-	assignment = "Field Doctor"
-	rank = "Field Doctor"
+	assignment = JOB_WO_DOCTOR
+	rank = JOB_WO_DOCTOR
 	paygrade = "CD"
 	role_comm_title = "Doc"
 	skills = /datum/skills/doctor
@@ -379,8 +379,8 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO
 
 	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_MEDBAY, ACCESS_MARINE_RESEARCH, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
-	assignment = "Chemist"
-	rank = "Chemist"
+	assignment = JOB_WO_RESEARCHER
+	rank = JOB_WO_RESEARCHER
 	paygrade = "CD"
 	role_comm_title = "Chem"
 	skills = /datum/skills/researcher
@@ -412,8 +412,8 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO
 
 	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_CE, ACCESS_MARINE_ENGINEERING, ACCESS_MARINE_BRIDGE, ACCESS_CIVILIAN_ENGINEERING)
-	assignment = "Bunker Crew Master"
-	rank = "Bunker Crew Master"
+	assignment = JOB_WO_CHIEF_ENGINEER
+	rank = JOB_WO_CHIEF_ENGINEER
 	paygrade = "E8"
 	role_comm_title = "BCM"
 	skills = /datum/skills/CE
@@ -444,8 +444,8 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO
 
 	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_CE, ACCESS_MARINE_ENGINEERING, ACCESS_MARINE_BRIDGE, ACCESS_CIVILIAN_ENGINEERING)
-	assignment = "Bunker Crew"
-	rank = "Bunker Crew"
+	assignment = JOB_WO_ORDNANCE_TECH
+	rank = JOB_WO_ORDNANCE_TECH
 	paygrade = "E4"
 	role_comm_title = "BC"
 	skills = /datum/skills/OT
@@ -479,8 +479,8 @@
 		ACCESS_IFF_MARINE, ACCESS_WY_CORPORATE, ACCESS_ILLEGAL_PIRATE, ACCESS_MARINE_BRIDGE, ACCESS_MARINE_DROPSHIP,
 		ACCESS_MARINE_RESEARCH, ACCESS_MARINE_MEDBAY, ACCESS_CIVILIAN_PUBLIC,
 		ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_ENGINEERING, ACCESS_CIVILIAN_LOGISTICS)
-	assignment = "Combat Reporter"
-	rank = "Combat Reporter"
+	assignment = JOB_WO_CORPORATE_LIAISON
+	rank = JOB_WO_CORPORATE_LIAISON
 	paygrade = "WY-XB-X"
 	role_comm_title = "PRESS"
 	skills = /datum/skills/civilian

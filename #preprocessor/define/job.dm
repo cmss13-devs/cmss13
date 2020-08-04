@@ -43,6 +43,32 @@ var/global/list/JOB_COMMAND_ROLES_LIST  = list(JOB_CO, JOB_XO, JOB_SO)
 #define JOB_CHIEF_REQUISITION			"Requisitions Officer"
 #define JOB_REQUISITION					"Cargo Technician"
 
+//-------------WO roles---------------
+
+#define JOB_WO_CO						"Ground Commander"
+#define JOB_WO_XO						"Lieutenant Commander"
+#define JOB_WO_CHIEF_POLICE				"Honor Guard Squad Leader"
+#define JOB_WO_SO						"Veteran Honor Guard"
+#define JOB_WO_CREWMAN					"Honor Guard Specialist"
+#define JOB_WO_POLICE					"Honor Guard"
+
+#define JOB_WO_PILOT					"Mortar Crew"
+
+#define JOB_WO_CHIEF_ENGINEER			"Bunker Crew Master"
+#define JOB_WO_ORDNANCE_TECH			"Bunker Crew"
+
+#define JOB_WO_CHIEF_REQUISITION		"Quartermaster"
+#define JOB_WO_REQUISITION				"Bunker Crew Logistics"
+
+#define JOB_WO_CMO						"Head Surgeon"
+#define JOB_WO_DOCTOR					"Field Doctor"
+#define JOB_WO_RESEARCHER				"Chemist"
+
+#define JOB_WO_CORPORATE_LIAISON		"Combat Reporter"
+#define JOB_WO_SYNTH					"Support Synthetic"
+
+//------------------------------------
+
 #define JOB_PMC							"PMC Standard"
 #define JOB_PMC_ENGINEER				"PMC Mechanic"
 #define JOB_PMC_DOCTOR					"PMC Triage"

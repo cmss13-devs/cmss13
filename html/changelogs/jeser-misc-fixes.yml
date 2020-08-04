@@ -1,7 +1,0 @@
-author: Jeser
-
-delete-after: True
-
-changes: 
-  - bugfix: "Removed DEBUG messages from antag equipment rack."
-  - bugfix: "Fixed UPP engineer loadout not having gear."

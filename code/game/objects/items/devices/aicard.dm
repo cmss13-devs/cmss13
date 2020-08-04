@@ -79,7 +79,7 @@
 		if ("Wipe")
 			var/confirm = alert("Are you sure you want to wipe this card's memory? This cannot be undone once started.", "Confirm Wipe", "Yes", "No")
 			if(confirm == "Yes")
-				if(isnull(src)||!in_range(src, U)||U.interactee!=src)
+				if(QDELETED(src)||!in_range(src, U)||U.interactee!=src)
 					close_browser(U, "aicard")
 					U.unset_interaction()
 					return

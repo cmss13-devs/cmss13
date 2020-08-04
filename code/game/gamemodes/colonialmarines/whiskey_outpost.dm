@@ -290,7 +290,7 @@
 	var/choosemax
 	var/obj/structure/closet/crate/crate
 
-	if(isnull(OT) || OT == "")
+	if(!OT)
 		OT = "sup" //no breaking anything.
 
 	else if (OT == "sup")

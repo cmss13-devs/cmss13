@@ -113,7 +113,7 @@
 		to_chat(user, SPAN_WARNING("That magazine doesn't fit in there!"))
 		return
 
-	if(!isnull(current_mag) && current_mag.loc == src)
+	if(!QDELETED(current_mag) && current_mag.loc == src)
 		to_chat(user, SPAN_WARNING("It's still got something loaded!"))
 		return
 

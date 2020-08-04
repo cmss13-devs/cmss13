@@ -24,7 +24,7 @@
 	// Check if any of the hardpoints accept the magazine
 	var/obj/item/hardpoint/gun/reloading_hardpoint = null
 	for(var/obj/item/hardpoint/gun/H in vehicle.get_hardpoints())
-		if(isnull(H) || isnull(H.ammo))
+		if(QDELETED(H) || QDELETED(H.ammo))
 			continue
 
 		if(istype(I, H.ammo.type))
@@ -56,7 +56,7 @@
 	var/obj/item/hardpoint/gun/HP = chosen_hp
 
 	// If someone removed the hardpoint while their dialogue was open or something
-	if(isnull(HP))
+	if(QDELETED(HP))
 		return
 
 	if(!LAZYLEN(HP.backup_clips))

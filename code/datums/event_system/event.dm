@@ -34,7 +34,7 @@
 	handle.events += src
 
 /datum/event/proc/remove_handler(datum/event_handler/handle)
-	if(isnull(handle) || !handle in handlers)
+	if(QDELETED(handle) || !handle in handlers)
 		return
 
 	handlers -= handle // This reference is sometimes keeping it alive, so it gets disposed after it.

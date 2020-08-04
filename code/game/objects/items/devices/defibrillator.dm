@@ -84,7 +84,7 @@
 				return ghost
 
 /mob/living/carbon/human/proc/is_revivable()
-	if(isnull(internal_organs_by_name) || isnull(internal_organs_by_name["heart"]))
+	if(isnull(internal_organs_by_name) || QDELETED(internal_organs_by_name["heart"]))
 		return FALSE
 	var/datum/internal_organ/heart/heart = internal_organs_by_name["heart"]
 

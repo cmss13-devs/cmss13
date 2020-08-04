@@ -291,7 +291,7 @@
 	visible_message(SPAN_DANGER("[src] begins to create tiles."))
 	src.repairing = 1
 	spawn(20)
-		if(isnull(M))
+		if(QDELETED(M))
 			src.target = null
 			src.repairing = 0
 			return

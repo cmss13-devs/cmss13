@@ -50,7 +50,7 @@
 
 /obj/structure/machinery/hydro_floodlight_switch/proc/toggle_lights()
 	for(var/obj/structure/machinery/hydro_floodlight/F in floodlist)
-		if(!istype(F) || isnull(F) || F.damaged) continue //Missing or damaged, skip it
+		if(!istype(F) || QDELETED(F) || F.damaged) continue //Missing or damaged, skip it
 
 		spawn(rand(0,50))
 			if(F.is_lit) //Shut it down

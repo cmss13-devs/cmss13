@@ -251,7 +251,7 @@ var/global/list/all_multi_vehicles = list()
 
 /obj/vehicle/multitile/set_seated_mob(var/seat, var/mob/living/M)
 	// Give/remove verbs
-	if(isnull(M))
+	if(QDELETED(M))
 		var/mob/living/L = seats[seat]
 		remove_seated_verbs(L, seat)
 	else

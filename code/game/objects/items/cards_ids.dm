@@ -203,7 +203,7 @@
 
 /obj/item/card/id/syndicate/New(mob/user as mob)
 	..()
-	if(!isnull(user)) // Runtime prevention on laggy starts or where users log out because of lag at round start.
+	if(!QDELETED(user)) // Runtime prevention on laggy starts or where users log out because of lag at round start.
 		registered_name = ishuman(user) ? user.real_name : user.name
 	else
 		registered_name = "Agent Card"

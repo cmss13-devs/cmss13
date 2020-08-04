@@ -125,7 +125,7 @@ Please wait until completion...</TT><BR>
 					src.updateUsrDialog()
 
 					spawn (build_time)
-						if (!isnull(src.being_built))
+						if (!QDELETED(src.being_built))
 							src.being_built.loc = get_turf(src)
 							src.being_built = null
 						src.update_use_power(1)

@@ -78,7 +78,7 @@
 	if(!ishuman(user))
 		return
 
-	if(isnull(O))
+	if(QDELETED(O))
 		return
 
 	if(istype(O,/obj/item/ammo_magazine/m56d)) //lets equip it with ammo
@@ -402,7 +402,7 @@
 	if(!ishuman(user))
 		return ..()
 
-	if(isnull(O))
+	if(QDELETED(O))
 		return
 
 	if(istype(O,/obj/item/tool/wrench)) // Let us rotate this stuff.
@@ -542,9 +542,10 @@
 	return 1
 
 /obj/structure/machinery/m56d_hmg/proc/process_shot(var/mob/user)
-	set waitfor = 0
+	set waitfor = FALSE
 
-	if(isnull(target)) return //Acqure our victim.
+	if(isnull(target))
+		return //Acqure our victim.
 
 	if(!ammo)
 		update_icon() //safeguard.

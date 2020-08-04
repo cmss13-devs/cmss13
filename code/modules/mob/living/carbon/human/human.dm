@@ -491,7 +491,7 @@
 			attack_log += text("\[[time_stamp()]\] <font color='orange'>Has had their sensors toggled by [key_name(usr)]</font>")
 			usr.attack_log += text("\[[time_stamp()]\] <font color='red'>Attempted to toggle [key_name(src)]'s' sensors</font>")
 			var/obj/item/clothing/under/U = w_uniform
-			if(isnull(U))
+			if(QDELETED(U))
 				to_chat(usr, "You're not wearing a uniform!.")
 			else if(U.has_sensor >= 2)
 				to_chat(usr, "The controls are locked.")
@@ -929,9 +929,9 @@
 		O.reset_limb_surgeries()
 
 	var/obj/limb/head/h = get_limb("head")
-	if(isnull(h))
+	if(QDELETED(h))
 		h = get_limb("synthetic head")
-	if(!isnull(h))
+	else
 		h.disfigured = 0
 	name = get_visible_name()
 

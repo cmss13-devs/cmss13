@@ -470,7 +470,7 @@
 
 
 /obj/item/weapon/gun/smartgun/proc/link_powerpack(var/mob/user)
-	if(!isnull(user) && !isnull(user.back))
+	if(!QDELETED(user) && !QDELETED(user.back))
 		if(istype(user.back, /obj/item/smartgun_powerpack))
 			src.powerpack = user.back
 			return TRUE
@@ -697,9 +697,11 @@
 	set waitfor = 0
 
 
-	if(isnull(target)) return //Acquire our victim.
+	if(QDELETED(target))
+		return //Acquire our victim.
 
-	if(!ammo) return
+	if(!ammo)
+		return
 
 	if(target && (world.time-last_fired >= 3))
 		if(world.time-last_fired >= 300) //if we haven't fired for a while, beep first

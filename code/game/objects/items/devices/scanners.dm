@@ -227,7 +227,7 @@ FORENSIC SCANNER
 		to_chat(user, SPAN_DANGER("This device has critically failed and is no longer functional!"))
 		return
 
-	if(!isnull(O.reagents))
+	if(!QDELETED(O.reagents))
 		var/dat = ""
 		if(O.reagents.reagent_list.len > 0)
 			var/one_percent = O.reagents.total_volume / 100
@@ -332,7 +332,7 @@ FORENSIC SCANNER
 	return
 
 /obj/item/device/demo_scanner/proc/scan(var/obj/O)
-	if(!O || isnull(O.reagents))
+	if(QDELETED(O.reagents))
 		return
 	if(O.reagents.reagent_list.len > 0)
 		for(var/datum/reagent/R in O.reagents.reagent_list)

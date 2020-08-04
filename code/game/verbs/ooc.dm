@@ -228,7 +228,7 @@ var/global/normal_ooc_colour = "#1c52f5"
 		return
 
 	for(var/datum/nanoui/ui in mob.open_uis)
-		if(!isnull(ui))
+		if(!QDELETED(ui))
 			ui.close()
 
 	to_chat(mob, SPAN_NOTICE("<b>All NanoUIs have been forcefully closed. Please try re-opening them.</b>"))

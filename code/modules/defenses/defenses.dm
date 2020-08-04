@@ -13,7 +13,7 @@
 	var/belonging_to_faction = list(FACTION_MARINE)
 	var/health_max = 200
 	var/turned_on = FALSE
-	var/owner_mob = null
+	var/mob/owner_mob = null
 	var/defense_icon = "uac_sentry"
 	var/handheld_type = /obj/item/defenses/handheld
 	var/disassemble_time = 20
@@ -68,7 +68,7 @@
 
 
 /obj/structure/machinery/defenses/attackby(var/obj/item/O as obj, mob/user as mob)
-	if(isnull(O)) 
+	if(QDELETED(O)) 
 		return
 
 	if(ismultitool(O))

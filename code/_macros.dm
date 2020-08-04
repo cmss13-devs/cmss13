@@ -84,8 +84,8 @@
 
 #define GENERATE_DEBUG_ID "[rand(0, 9)][rand(0, 9)][rand(0, 9)][rand(0, 9)][pick(alphabet_lowercase)][pick(alphabet_lowercase)][pick(alphabet_lowercase)][pick(alphabet_lowercase)]"
 
-#define QDELING(X) (FALSE)
-#define QDELETED(X) (!X || QDELING(X))
+#define QDELED(X) (X.qdeled)
+#define QDELETED(X) (isnull(X) || X.disposed)
 
 #define RECT new /datum/shape/rectangle
 #define QTREE new /datum/quadtree

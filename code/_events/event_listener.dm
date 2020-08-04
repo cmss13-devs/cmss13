@@ -90,7 +90,7 @@ var/global/datum/global_event_handler/GLOBAL_EVENT = new()
 	var/has_arguments = (length(args) > 2)
 	for(var/id in speaker.event_listeners[event])
 		var/datum/callback/C = speaker.event_listeners[event][id]
-		if(isnull(C))
+		if(QDELETED(C))
 			continue
 
 		if(has_arguments)
@@ -118,7 +118,7 @@ var/global/datum/global_event_handler/GLOBAL_EVENT = new()
 	var/has_callbacks
 	for(var/id in speaker.event_listeners[event])
 		var/datum/callback/C = speaker.event_listeners[event][id]
-		if(isnull(C))
+		if(QDELETED(C))
 			continue
 		has_callbacks = TRUE
 
@@ -165,7 +165,7 @@ var/global/datum/global_event_handler/GLOBAL_EVENT = new()
 	var/has_callbacks
 	for(var/id in to_execute)
 		var/datum/callback/C = speaker.event_listeners[event][id]
-		if(isnull(C))
+		if(QDELETED(C))
 			continue
 		has_callbacks = TRUE
 

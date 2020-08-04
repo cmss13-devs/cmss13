@@ -1,5 +1,6 @@
 /datum
 	var/disposed
+	var/qdeled
 	var/list/active_timers //Timer subsystem
 
 /*

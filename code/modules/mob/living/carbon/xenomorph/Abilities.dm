@@ -333,7 +333,7 @@
 		qdel(structure_template)
 		return FALSE
 
-	if (isnull(T))
+	if (QDELETED(T))
 		to_chat(X, SPAN_WARNING("You cannot build here!"))
 		qdel(structure_template)
 		return FALSE

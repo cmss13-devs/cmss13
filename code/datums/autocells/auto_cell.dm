@@ -44,7 +44,7 @@
 /datum/automata_cell/Dispose()
 	. = ..()
 
-	if(!isnull(in_turf))
+	if(!QDELETED(in_turf))
 		in_turf.autocells -= src
 		in_turf = null
 
@@ -62,10 +62,10 @@
 
 // Transfer this automata cell to another turf
 /datum/automata_cell/proc/transfer_turf(var/turf/new_turf)
-	if(isnull(new_turf))
+	if(QDELETED(new_turf))
 		return
 
-	if(!isnull(in_turf))
+	if(!QDELETED(in_turf))
 		in_turf.autocells -= src
 		in_turf = null
 
@@ -81,7 +81,7 @@
 // Returns a list of neighboring cells
 // This is called by and results are passed to update_state by the cellauto subsystem
 /datum/automata_cell/proc/get_neighbors()
-	if(isnull(in_turf))
+	if(QDELETED(in_turf))
 		return
 
 	var/list/neighbors = list()
@@ -90,7 +90,7 @@
 	if(neighbor_type & NEIGHBORS_CARDINAL)
 		for(var/dir in cardinal)
 			var/turf/T = get_step(in_turf, dir)
-			if(isnull(T))
+			if(QDELETED(T))
 				continue
 
 			// Only add neighboring cells of the same type
@@ -102,7 +102,7 @@
 	if(neighbor_type & NEIGHBORS_ORDINAL)
 		for(var/dir in diagonals)
 			var/turf/T = get_step(in_turf, dir)
-			if(isnull(T))
+			if(QDELETED(T))
 				continue
 
 			for(var/datum/automata_cell/C in T.autocells)
@@ -119,7 +119,7 @@
 		return
 
 	var/turf/T = get_step(in_turf, dir)
-	if(isnull(T))
+	if(QDELETED(T))
 		return
 
 	// Create the new cell

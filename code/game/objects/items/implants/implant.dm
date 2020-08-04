@@ -397,7 +397,7 @@ the implant may become unstable and either pre-maturely inject the subject or si
 		if (!implanted) return
 		var/mob/M = imp_in
 
-		if(isnull(M)) // If the mob got gibbed
+		if(QDELETED(M)) // If the mob got gibbed
 			activate()
 		else if(M.stat == 2)
 			activate("death")

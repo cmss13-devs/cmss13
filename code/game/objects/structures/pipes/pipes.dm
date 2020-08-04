@@ -91,10 +91,10 @@
 /obj/structure/pipes/proc/get_connection(var/direction)
 	var/obj/structure/pipes/best_connected_pipe = null
 	for(var/obj/structure/pipes/target in get_step(src, direction))
-		if(!target in connected_to)
+		if(!(target in connected_to))
 			continue
 
-		if(isnull(best_connected_pipe) || length(target.connected_to) > length(best_connected_pipe.connected_to))
+		if(!QDELETED(target) && (isnull(best_connected_pipe) || length(target.connected_to) > length(best_connected_pipe.connected_to)))
 			best_connected_pipe = target
 	return best_connected_pipe
 

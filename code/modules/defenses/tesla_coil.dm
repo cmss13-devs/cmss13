@@ -81,7 +81,7 @@
 
 	last_fired = world.time
 
-	if(isnull(owner_mob))
+	if(QDELETED(owner_mob))
 		owner_mob = src
 
 	for(var/A in atoms)

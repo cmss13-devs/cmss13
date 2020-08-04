@@ -178,7 +178,7 @@ var/list/ai_verbs_default = list(
 	var/mob/living/silicon/ai/powered_ai = null
 	invisibility = 100
 
-/obj/structure/machinery/ai_powersupply/New(var/mob/living/silicon/ai/ai=null)
+/obj/structure/machinery/ai_powersupply/New(var/mob/living/silicon/ai/ai)
 	powered_ai = ai
 	if(isnull(powered_ai))
 		qdel(src)

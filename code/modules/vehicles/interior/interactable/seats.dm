@@ -20,7 +20,7 @@
 	if(!vehicle)
 		return
 
-	if(isnull(buckled_mob))
+	if(QDELETED(buckled_mob))
 		vehicle.set_seated_mob(seat, null)
 		M.unset_interaction()
 		M.reset_view()

@@ -194,7 +194,7 @@ var/waiting_for_drop_votes = 0
 		else
 			message_admins("There were no spawn points available for a contestant..")
 
-	if(!picked || isnull(picked)) //???
+	if(QDELETED(picked)) //???
 		message_admins("Warning, null picked spawn in spawn_contestant")
 		return 0
 
@@ -375,7 +375,7 @@ var/waiting_for_drop_votes = 0
 			winner = Q
 			break
 
-	if(finished == 1 && !isnull(winner) && istype(winner))
+	if(finished == 1 && !QDELETED(winner) && istype(winner))
 		to_world(SPAN_DANGER("<FONT size = 4><B>We have a winner! >> [winner.real_name] ([winner.key]) << defeated all enemies!</B></FONT>"))
 		to_world("<FONT size = 3><B>Well done, your tale of survival will live on in legend!</B></FONT>")
 

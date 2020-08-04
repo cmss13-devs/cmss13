@@ -103,7 +103,7 @@
 	unset_range()
 
 /obj/structure/machinery/defenses/sentry/attackby(var/obj/item/O, var/mob/user)
-	if(isnull(O) || isnull(user)) 
+	if(QDELETED(O) || QDELETED(user)) 
 		return
 
 	//Securing/Unsecuring
@@ -183,7 +183,7 @@
 
 
 /obj/structure/machinery/defenses/sentry/proc/fire(var/atom/A)
-	if(!(world.time-last_fired >= fire_delay) || !turned_on || !ammo || isnull(target))
+	if(!(world.time-last_fired >= fire_delay) || !turned_on || !ammo || QDELETED(target))
 		return
 
 	if(world.time-last_fired >= 300) //if we haven't fired for a while, beep first
@@ -196,7 +196,7 @@
 
 	last_fired = world.time
 
-	if(isnull(owner_mob))
+	if(QDELETED(owner_mob))
 		owner_mob = src
 
 	actual_fire(A)

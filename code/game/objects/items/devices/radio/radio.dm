@@ -254,7 +254,7 @@
 		return
 
 	var/turf/position = get_turf(src)
-	if(isnull(position))
+	if(QDELETED(position))
 		return
 
 	//#### Tagging the signal with all appropriate identity values ####//
@@ -320,7 +320,7 @@
 
 /obj/item/device/radio/proc/get_target_zs()
 	var/turf/position = get_turf(src)
-	if(isnull(position))
+	if(QDELETED(position))
 		return
 
 	var/transmit_z = position.z
@@ -373,7 +373,7 @@
 		return -1
 	if(!(0 in level))
 		var/turf/position = get_turf(src)
-		if(isnull(position))
+		if(QDELETED(position))
 			return FALSE
 		var/receive_z = position.z
 		// Use vehicle's z if we're inside a vehicle interior

@@ -26,7 +26,7 @@ mob/living/carbon/proc/handle_hallucinations()
 	while(client && hallucination > 20)
 		sleep(rand(200,500)/(hallucination/25))
 		var/halpick = rand(1,100)
-		if(isnull(client) || isnull(client.prefs))
+		if(QDELETED(client) || isnull(client.prefs))
 			continue
 		switch(halpick)
 			if(0 to 15)

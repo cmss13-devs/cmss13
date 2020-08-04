@@ -159,7 +159,7 @@
 	else if((href_list["use_beaker"]) && (!src.locked || isremotecontrolling(usr)))
 		src.use_beaker = !src.use_beaker
 
-	else if (href_list["eject"] && (!isnull(src.reagent_glass)))
+	else if (href_list["eject"] && (!QDELETED(src.reagent_glass)))
 		if(!src.locked)
 			src.reagent_glass.loc = get_turf(src)
 			src.reagent_glass = null

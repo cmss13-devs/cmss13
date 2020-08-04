@@ -115,7 +115,7 @@
 			if(H.hivenumber)
 				hear_hivemind = H.hivenumber
 
-		if(!isnull(S) && (isXeno(S) || S.stat == DEAD || hear_hivemind) && !istype(S,/mob/new_player))
+		if(!QDELETED(S) && (isXeno(S) || S.stat == DEAD || hear_hivemind) && !istype(S,/mob/new_player))
 			var/mob/living/carbon/Xenomorph/X = src
 			if(istype(S,/mob/dead/observer))
 				if(S.client.prefs && S.client.prefs.toggles_chat & CHAT_GHOSTHIVEMIND)

@@ -29,7 +29,7 @@
 	beaker = new /obj/item/reagent_container/glass/beaker/large(src)
 
 /obj/structure/machinery/juicer/update_icon()
-	icon_state = "juicer"+num2text(!isnull(beaker))
+	icon_state = "juicer"+num2text(!QDELETED(beaker))
 	return
 
 

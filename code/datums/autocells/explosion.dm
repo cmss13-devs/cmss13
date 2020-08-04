@@ -249,7 +249,7 @@
 	var/datum/automata_cell/explosion/E = new /datum/automata_cell/explosion(epicenter)
 
 	// something went wrong :(
-	if(isnull(E))
+	if(QDELETED(E))
 		return
 
 	E.power = power
@@ -269,7 +269,7 @@
 		var/mob/living/M = A
 		var/turf/T = get_turf(A)
 
-		if(isnull(M) || isnull(T))
+		if(QDELETED(M) || QDELETED(T))
 			return
 
 		var/explosion_source = E.explosion_source

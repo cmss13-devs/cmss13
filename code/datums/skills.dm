@@ -140,7 +140,7 @@
 // Returns the skill level for the given skill
 /datum/skills/proc/get_skill_level(var/skill)
 	var/datum/skill/S = get_skill(skill)
-	if(isnull(S))
+	if(QDELETED(S))
 		return -1
 	return S.get_skill_level()
 
@@ -154,7 +154,7 @@
 // Checks if the skillset is AT LEAST skilled enough to pass a skillcheck for the given skill level
 /datum/skills/proc/is_skilled(var/skill, var/req_level, var/is_explicit = FALSE)
 	var/datum/skill/S = get_skill(skill)
-	if(isnull(S))
+	if(QDELETED(S))
 		return FALSE
 	return S.is_skilled(req_level, is_explicit)
 

@@ -24,7 +24,7 @@ var/list/fast_machines = list()
 		var/obj/structure/machinery/M = currentrun[currentrun.len]
 		currentrun.len--
 		
-		if(isnull(M))
+		if(QDELETED(M))
 			continue
 
 		M.process()		

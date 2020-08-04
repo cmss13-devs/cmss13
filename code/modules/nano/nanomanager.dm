@@ -120,7 +120,7 @@
 
 	var/update_count = 0
 	for (var/datum/nanoui/ui in user.open_uis)
-		if ((isnull(src_object) || !isnull(src_object) && ui.src_object == src_object) && (isnull(ui_key) || !isnull(ui_key) && ui.ui_key == ui_key))
+		if ((isnull(src_object) || ui.src_object == src_object) && (isnull(ui_key) || ui.ui_key == ui_key))
 			ui.process(1)
 			update_count++
 
@@ -142,7 +142,7 @@
 
 	var/close_count = 0
 	for (var/datum/nanoui/ui in user.open_uis)
-		if ((isnull(src_object) || !isnull(src_object) && ui.src_object == src_object) && (isnull(ui_key) || !isnull(ui_key) && ui.ui_key == ui_key))
+		if ((isnull(src_object) || ui.src_object == src_object) && (isnull(ui_key) || ui.ui_key == ui_key))
 			ui.close()
 			close_count++
 
@@ -220,7 +220,8 @@
   */
 /datum/nanomanager/proc/user_transferred(var/mob/oldMob, var/mob/newMob)
 	//testing("nanomanager/user_transferred from mob [oldMob.name] to mob [newMob.name]")
-	if(isnull(oldMob) || isnull(newMob)) return 0 //ERROR
+	if(QDELETED(oldMob) || QDELETED(newMob))
+		return FALSE //ERROR
 	if (isnull(oldMob.open_uis) || !istype(oldMob.open_uis, /list) || open_uis.len == 0)
 		//testing("nanomanager/user_transferred mob [oldMob.name] has no open uis")
 		return 0 // has no open uis

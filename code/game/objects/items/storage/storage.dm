@@ -214,7 +214,7 @@ var/list/global/item_storage_box_cache = list()
 	click_border_end.Cut()
 	storage_start.overlays.Cut()
 
-	if(isnull(storage_continue))
+	if(QDELETED(storage_continue))
 		storage_continue = new /obj/screen/storage()
 		storage_continue.name = "storage"
 		storage_continue.master = src

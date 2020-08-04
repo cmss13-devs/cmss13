@@ -381,7 +381,7 @@
 	target = A
 	if(!istype(target))
 		return FALSE
-	if(target.z != FAC.z || target.z == 0 || FAC.z == 0 || isnull(FAC.loc))
+	if(target.z != FAC.z || target.z == 0 || FAC.z == 0 || QDELETED(FAC.loc))
 		return FALSE
 
 	var/list/modifiers = params2list(params) //Only single clicks.

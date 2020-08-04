@@ -2,8 +2,8 @@
 /mob/living/carbon/human/proc/handle_regular_hud_updates()
 
 	//Now handle what we see on our screen
-	if(!client || isnull(client))
-		return 0
+	if(!client || QDELETED(client))
+		return FALSE
 
 	if(stat != DEAD) //the dead get zero fullscreens
 
@@ -157,7 +157,7 @@
 
 		if(interactee)
 			interactee.check_eye(src)
-	return 1
+	return TRUE
 
 
 /mob/living/carbon/human/proc/check_status_effects()

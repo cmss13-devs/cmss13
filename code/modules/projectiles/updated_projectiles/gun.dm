@@ -610,7 +610,7 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 	if(!reload_override && (flags_gun_features & (GUN_BURST_FIRING|GUN_UNUSUAL_DESIGN|GUN_INTERNAL_MAG)))
 		return
 
-	if(!current_mag || isnull(current_mag) || (current_mag.loc != src && !loc_override))
+	if(!current_mag || QDELETED(current_mag) || (current_mag.loc != src && !loc_override))
 		cock(user)
 		return
 
@@ -839,7 +839,7 @@ and you're good to go.
 
 		//The gun should return the bullet that it already loaded from the end cycle of the last Fire().
 		var/obj/item/projectile/projectile_to_fire = load_into_chamber(user) //Load a bullet in or check for existing one.
-		if(!projectile_to_fire) //If there is nothing to fire, click.
+		if(QDELETED(projectile_to_fire)) //If there is nothing to fire, click.
 			click_empty(user)
 			break
 
@@ -873,7 +873,7 @@ and you're good to go.
 				projectile_to_fire.p_y = text2num(mouse_control["icon-y"])
 
 		//Finally, make with the pew pew!
-		if(!projectile_to_fire || !istype(projectile_to_fire,/obj))
+		if(QDELETED(projectile_to_fire) || !isobj(projectile_to_fire))
 			to_chat(user, "Your gun is malfunctioning. Ahelp the following: ERROR CODE I1: projectile malfunctioned while firing.")
 			log_debug("ERROR CODE I1: projectile malfunctioned while firing. User: <b>[user]</b>")
 			flags_gun_features &= ~GUN_BURST_FIRING
@@ -991,7 +991,7 @@ and you're good to go.
 		active_attachable.activate_attachment(src, null, TRUE)//No way.
 	var/obj/item/projectile/projectile_to_fire = load_into_chamber(user)
 
-	if(!projectile_to_fire)
+	if(QDELETED(projectile_to_fire))
 		return ..()
 
 	//We actually have a projectile, let's move on. We're going to simulate the fire cycle.
@@ -1026,7 +1026,9 @@ and you're good to go.
 	if(M.stat == UNCONSCIOUS && user.a_intent in list(GRAB_INTENT, DISARM_INTENT)) //Continue execution if on the correct intent. Accounts for change via the earlier do_after
 		M.death()
 
-	if(!delete_bullet(projectile_to_fire)) qdel(projectile_to_fire)
+	if(!delete_bullet(projectile_to_fire))
+		qdel(projectile_to_fire)
+	
 	reload_into_chamber(user) //Reload into the chamber if the gun supports it.
 	return TRUE
 
@@ -1233,11 +1235,15 @@ and you're good to go.
 				
 	if(total_recoil > 0 && ishuman(user))
 		shake_camera(user, total_recoil + 1, total_recoil)
-		return 1
+		return TRUE
+
+	return FALSE
 
 /obj/item/weapon/gun/proc/muzzle_flash(angle,mob/user)
-	if(!muzzle_flash || flags_gun_features & GUN_SILENCED || isnull(angle)) return //We have to check for null angle here, as 0 can also be an angle.
-	if(!istype(user) || !istype(user.loc,/turf)) return
+	if(!muzzle_flash || flags_gun_features & GUN_SILENCED || isnull(angle))
+		return //We have to check for null angle here, as 0 can also be an angle.
+	if(!istype(user) || !istype(user.loc,/turf))
+		return
 
 	if(user.luminosity <= muzzle_flash_lum)
 		user.SetLuminosity(muzzle_flash_lum)

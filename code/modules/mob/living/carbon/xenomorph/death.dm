@@ -62,7 +62,7 @@
 				hive.set_living_xeno_queen(null)
 				//on the off chance there was somehow two queen alive
 				for(var/mob/living/carbon/Xenomorph/Queen/Q in living_mob_list)
-					if(!isnull(Q) && Q != src && Q.stat != DEAD && Q.hivenumber == hivenumber)
+					if(!QDELETED(Q) && Q != src && Q.stat != DEAD && Q.hivenumber == hivenumber)
 						hive.set_living_xeno_queen(Q)
 						break
 				hive.handle_xeno_leader_pheromones()

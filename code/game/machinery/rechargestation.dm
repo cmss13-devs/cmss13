@@ -200,7 +200,7 @@
 		return FALSE
 	if (isrobot(M))
 		var/mob/living/silicon/robot/R = M
-		if(isnull(R.cell))
+		if(QDELETED(R.cell))
 			return FALSE
 	M.stop_pulling()
 	if(M && M.client)
@@ -230,7 +230,7 @@
 		return
 	if (isrobot(usr))
 		var/mob/living/silicon/robot/R = usr
-		if(isnull(R.cell))
+		if(QDELETED(R.cell))
 			to_chat(usr, SPAN_NOTICE("Without a powercell, you can't be recharged."))
 			//Make sure they actually HAVE a cell, now that they can get in while powerless. --NEO
 			return

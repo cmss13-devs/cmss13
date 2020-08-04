@@ -58,7 +58,7 @@ var/datum/subsystem/atoms/SSatoms
 
 /datum/subsystem/atoms/proc/initalize_atom(atom/A, list/arguments)
 	var/the_type = A.type
-	if(QDELING(A))
+	if(QDELED(A))
 		initialize_gone_wrong[the_type] |= BAD_INIT_QDEL_BEFORE
 		return TRUE
 
@@ -89,7 +89,7 @@ var/datum/subsystem/atoms/SSatoms
 	else if(!(A.flags_atom & INITIALIZED))
 		initialize_gone_wrong[the_type] |= BAD_INIT_DIDNT_INIT
 
-	return qdeleted || QDELING(A)
+	return qdeleted || QDELED(A)
 
 /datum/subsystem/atoms/proc/map_loader_begin()
 	old_init_state = init_state

@@ -277,7 +277,7 @@
 		return 1
 
 /mob/living/simple_animal/hostile/smartdisc/AttackingTarget()
-	if(isnull(target_mob) || !target_mob)  return
+	if(QDELETED(target_mob))  return
 	if(!Adjacent(target_mob))  return
 	if(isliving(target_mob))
 		var/mob/living/L = target_mob

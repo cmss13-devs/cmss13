@@ -37,7 +37,7 @@
 		if (linked_xeno && istype(linked_xeno, /mob/living/carbon/Xenomorph))
 			var/mob/living/carbon/Xenomorph/X = linked_xeno
 
-			if (isnull(X) || !istype(X))
+			if (QDELETED(X) || !istype(X))
 				return
 
 			X.xeno_shields -= src

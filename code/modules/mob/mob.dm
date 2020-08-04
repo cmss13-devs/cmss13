@@ -436,7 +436,7 @@
 	if(istype(AM, /atom/movable/clone))
 		AM = AM.mstr //If AM is a clone, refer to the real target
 
-	if ( !AM || !usr || src==AM || !isturf(loc) || !isturf(AM.loc) )	//if there's no person pulling OR the person is pulling themself OR the object being pulled is inside something: abort!
+	if ( QDELETED(AM) || !usr || src==AM || !isturf(loc) || !isturf(AM.loc) )	//if there's no person pulling OR the person is pulling themself OR the object being pulled is inside something: abort!
 		return
 
 	if (AM.anchored || AM.throwing)
@@ -459,7 +459,7 @@
 	else if(istype(AM, /obj))
 		AM.add_fingerprint(src)
 
-	if(!isnull(AM.pulledby) && M)
+	if(!QDELETED(AM.pulledby) && !QDELETED(M))
 		visible_message(SPAN_WARNING("[src] has broken [AM.pulledby]'s grip on [M]!"), null, null, 5)
 		AM.pulledby.stop_pulling()
 
@@ -475,7 +475,7 @@
 	if(client)
 		client.recalculate_move_delay()
 
-	if(M)
+	if(!QDELETED(M))
 		playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
 
 		flick_attack_overlay(M, "grab")
@@ -490,11 +490,11 @@
 		if(M.mob_size > MOB_SIZE_HUMAN || !(M.status_flags & CANPUSH))
 			G.icon_state = "!reinforce"
 
-	if(hud_used && hud_used.pull_icon) hud_used.pull_icon.icon_state = "pull1"
-
-	//Attempted fix for people flying away through space when cuffed and dragged.
-	if(M)
+		//Attempted fix for people flying away through space when cuffed and dragged.
 		M.inertia_dir = 0
+
+	if(hud_used && hud_used.pull_icon) 
+		hud_used.pull_icon.icon_state = "pull1"		
 
 	return AM.pull_response(src) //returns true if the response doesn't break the pull
 

@@ -28,7 +28,7 @@ var/global/list/item_cleanup_list = list()
 	var/deleted = 0
 	var/total_items = items_to_clean_up.len //save total before we start deleting stuff
 	for (var/atom/o in items_to_clean_up)
-		if(isnull(o))
+		if(QDELETED(o))
 			items_to_clean_up -= o
 			remove_from_garbage(o)
 		else if(isnull(o.loc) || isturf(o.loc)) //item is in null (probably a decal), or on the ground (as in, not on a person, but on a turf)
@@ -57,7 +57,7 @@ var/global/list/item_cleanup_list = list()
 /datum/subsystem/item_cleanup/proc/delete_z_level(var/z_level)
 	set background = 1
 	for(var/atom/o in object_list)
-		if(isnull(o) || isnull(o.loc))
+		if(QDELETED(o) || isnull(o.loc))
 			continue
 		if(o.loc.z == z_level) //item is on the proper Z-level
 			qdel(o)

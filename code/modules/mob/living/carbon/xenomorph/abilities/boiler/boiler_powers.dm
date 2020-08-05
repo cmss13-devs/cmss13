@@ -6,7 +6,7 @@
 
 	var/turf/T = get_turf(A)
 
-	if(istype(T, /turf/closed) || !T.can_bombard())
+	if(istype(T, /turf/closed) || !T.can_bombard(owner))
 		to_chat(X, SPAN_XENODANGER("You can't bombard that!"))
 		return
 
@@ -46,7 +46,7 @@
 		return
 	else if (istype(T, /turf/closed) || istype(T, /turf/open/space))
 		return
-	else if(!T.can_bombard()) 
+	else if(!T.can_bombard(owner))
 		return
 
 	add_timer(CALLBACK(src, .proc/new_effect, T), 2*(orig_depth - dist_left))

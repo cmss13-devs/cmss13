@@ -540,6 +540,12 @@
 	opacity = 0
 	alpha = 180
 
+/turf/closed/wall/resin/membrane/can_bombard(var/mob/living/carbon/Xenomorph/X)
+	if(!istype(X))
+		return FALSE
+
+	return X.hivenumber == hivenumber
+
 /turf/closed/wall/resin/membrane/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
 	if (PF)

@@ -1,5 +1,3 @@
-
-
 /datum/equipment_preset/survivor
 	name = JOB_SURVIVOR
 	assignment = JOB_SURVIVOR
@@ -19,6 +17,13 @@
 	var/random_name = capitalize(pick(H.gender == MALE ? first_names_male : first_names_female)) + " " + capitalize(pick(last_names))
 	H.change_real_name(H, random_name)
 	H.age = rand(21,45)
+
+/datum/equipment_preset/survivor/load_gear(mob/living/carbon/human/H)
+	add_random_survivor_equipment(H)
+
+	// Only add weapons to actual survivors.
+	if(H && H.client)
+		add_survivor_weapon(H)
 
 /*****************************************************************************************************/
 
@@ -45,8 +50,7 @@
 	H.equip_to_slot_or_del(new /obj/item/paper/research_notes/good(H), WEAR_IN_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/reagent_container/glass/beaker/vial/random/good(H), WEAR_IN_JACKET)
 
-	add_random_survivor_weapon(H)
-	add_random_survivor_equipment(H)
+	..()
 
 /*****************************************************************************************************/
 
@@ -74,8 +78,7 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(H), WEAR_L_STORE)
 
-	add_random_survivor_weapon(H)
-	add_random_survivor_equipment(H)
+	..()
 
 /*****************************************************************************************************/
 
@@ -107,8 +110,7 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(H), WEAR_L_STORE)
 
-	add_random_survivor_weapon(H)
-	add_random_survivor_equipment(H)
+	..()
 
 /*****************************************************************************************************/
 
@@ -140,8 +142,7 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(H), WEAR_L_STORE)
 
-	add_random_survivor_weapon(H)
-	add_random_survivor_equipment(H)
+	..()
 
 /*****************************************************************************************************/
 
@@ -164,8 +165,7 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(H), WEAR_L_STORE)
 
-	add_random_survivor_weapon(H)
-	add_random_survivor_equipment(H)
+	..()
 
 /*****************************************************************************************************/
 
@@ -189,8 +189,7 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(H), WEAR_L_STORE)
 
-	add_random_survivor_weapon(H)
-	add_random_survivor_equipment(H)
+	..()
 
 /*****************************************************************************************************/
 
@@ -215,8 +214,7 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(H), WEAR_L_STORE)
 
-	add_random_survivor_weapon(H)
-	add_random_survivor_equipment(H)
+	..()
 
 /*****************************************************************************************************/
 
@@ -246,8 +244,7 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(H), WEAR_L_STORE)
 
-	add_random_survivor_weapon(H)
-	add_random_survivor_equipment(H)
+	..()
 
 /*****************************************************************************************************/
 
@@ -272,8 +269,7 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(H), WEAR_L_STORE)
 
-	add_random_survivor_weapon(H)
-	add_random_survivor_equipment(H)
+	..()
 
 /*****************************************************************************************************/
 
@@ -301,8 +297,7 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(H), WEAR_L_STORE)
 
-	add_random_survivor_weapon(H)
-	add_random_survivor_equipment(H)
+	..()
 
 /*****************************************************************************************************/
 
@@ -326,8 +321,7 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(H), WEAR_L_STORE)
 
-	add_random_survivor_weapon(H)
-	add_random_survivor_equipment(H)
+	..()
 
 /*****************************************************************************************************/
 
@@ -352,8 +346,7 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(H), WEAR_L_STORE)
 
-	add_random_survivor_weapon(H)
-	add_random_survivor_equipment(H)
+	..()
 
 /*****************************************************************************************************/
 
@@ -379,8 +372,7 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(H), WEAR_L_STORE)
 
-	add_random_survivor_weapon(H)
-	add_random_survivor_equipment(H)
+	..()
 
 /*****************************************************************************************************/
 
@@ -408,8 +400,7 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(H), WEAR_L_STORE)
 
-	add_random_survivor_weapon(H)
-	add_random_survivor_equipment(H)
+	..()
 
 /*****************************************************************************************************/
 
@@ -443,5 +434,4 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(H), WEAR_L_STORE)
 
-	add_random_survivor_weapon(H)
-	add_random_survivor_equipment(H)
+	..()

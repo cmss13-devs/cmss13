@@ -40,6 +40,3 @@
 
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot
 	type_to_spawn = /obj/item/ammo_magazine/shotgun/buckshot
-
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1
-	type_to_spawn = /obj/item/ammo_magazine/rifle/m41aMK1

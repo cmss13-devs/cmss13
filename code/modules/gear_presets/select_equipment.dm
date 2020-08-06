@@ -486,7 +486,7 @@
 		if(10)
 			H.equip_to_slot_or_del(new /obj/item/tool/weldingtool/largetank(H), WEAR_R_HAND)
 
-/datum/equipment_preset/proc/add_random_survivor_weapon(var/mob/living/carbon/human/H)
+/datum/equipment_preset/proc/add_survivor_weapon(var/mob/living/carbon/human/H)
 	var/random_weapon = rand(0,2)
 	switch(random_weapon)
 		if(0)
@@ -496,9 +496,5 @@
 		if(2)
 			H.equip_to_slot_or_del(new /obj/item/weapon/gun/revolver/small(H.back), WEAR_IN_BACK)
 
-	random_weapon = rand(0,1)
-	switch(random_weapon)
-		if(0)
-			H.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/double/sawn(H), WEAR_L_HAND)
-		if(1)
-			H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41aMK1(H), WEAR_L_HAND)
+	// Guaranteed shotgun
+	H.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/pump/cmb(H), WEAR_L_HAND)

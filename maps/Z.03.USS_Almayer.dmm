@@ -33409,12 +33409,10 @@
 	},
 /area/almayer/engineering/engine_core)
 "bYT" = (
-/obj/structure/closet/secure_closet/freezer/industry,
-/obj/item/reagent_container/glass/beaker/silver,
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	tag = "icon-S"
-	},
+/obj/item/reagent_container/spray,
+/obj/item/reagent_container/spray,
+/obj/item/reagent_container/spray,
+/obj/structure/rack,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -42082,6 +42080,21 @@
 	tag = "icon-orange (NORTH)"
 	},
 /area/almayer/engineering/engineering_workshop)
+"gFz" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4;
+	tag = "icon-intact-supply (EAST)"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	tag = "icon-S"
+	},
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating";
+	tag = "icon-blue (NORTHEAST)"
+	},
+/area/almayer/engineering/engineering_workshop/hangar)
 "gGs" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -43866,12 +43879,12 @@
 	icon_state = "SE-out";
 	tag = "icon-SE-out"
 	},
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 1
+	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
 	tag = "icon-SW-out"
-	},
-/obj/structure/pipes/standard/manifold/hidden/supply{
-	dir = 1
 	},
 /turf/open/floor/almayer{
 	dir = 5;
@@ -45104,6 +45117,8 @@
 	icon_state = "S";
 	tag = "icon-S"
 	},
+/obj/structure/closet/secure_closet/freezer/industry,
+/obj/item/reagent_container/glass/beaker/silver,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -45403,25 +45418,12 @@
 	},
 /area/almayer/evacuation/pod17)
 "kHk" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	tag = "icon-S"
-	},
-/obj/structure/machinery/power/apc/almayer{
-	dir = 8
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	tag = "icon-W"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "SW-out";
-	tag = "icon-SW-out"
+/obj/structure/reagent_dispensers/fueltank/custom{
+	anchored = 1
 	},
 /turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plate";
+	tag = "icon-sterile"
 	},
 /area/almayer/engineering/engineering_workshop/hangar)
 "kHw" = (
@@ -45998,6 +46000,17 @@
 	tag = "icon-silver (WEST)"
 	},
 /area/almayer/living/briefing)
+"lqP" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	tag = "icon-W"
+	},
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating";
+	tag = "icon-blue (NORTHEAST)"
+	},
+/area/almayer/engineering/engineering_workshop/hangar)
 "lrh" = (
 /turf/open/floor/almayer{
 	dir = 1;
@@ -46480,14 +46493,15 @@
 /turf/open/floor/wood,
 /area/almayer/shipboard/brig_cells)
 "lSt" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	tag = "icon-W"
+/obj/structure/machinery/power/apc/almayer{
+	dir = 8
+	},
+/obj/structure/reagent_dispensers/fueltank/custom{
+	anchored = 1
 	},
 /turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "plating";
-	tag = "icon-blue (NORTHEAST)"
+	icon_state = "plate";
+	tag = "icon-sterile"
 	},
 /area/almayer/engineering/engineering_workshop/hangar)
 "lSS" = (
@@ -48354,17 +48368,17 @@
 /turf/open/floor/wood,
 /area/almayer/squads/req)
 "nQT" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "SE-out";
-	tag = "icon-SE-out"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "SW-out";
-	tag = "icon-SW-out"
-	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 6;
 	tag = "icon-intact-supply (SOUTHEAST)"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	tag = "icon-W"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out";
+	tag = "icon-SE-out"
 	},
 /turf/open/floor/almayer{
 	dir = 5;
@@ -48691,6 +48705,10 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/medical/lockerroom)
+"omU" = (
+/obj/structure/closet/secure_closet/engineering_materials,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hallways/hangar)
 "onN" = (
 /obj/structure/machinery/firealarm{
 	dir = 4;
@@ -50194,6 +50212,7 @@
 	dir = 8;
 	tag = "icon-tube1 (WEST)"
 	},
+/obj/structure/reagent_dispensers/fueltank/custom,
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "orangecorner";
@@ -52807,6 +52826,13 @@
 	tag = "icon-red"
 	},
 /area/almayer/shipboard/brig_cells)
+"sYP" = (
+/obj/structure/reagent_dispensers/fueltank/custom,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/shipboard/port_point_defense)
 "sYT" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	density = 0;
@@ -53391,6 +53417,13 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/hull/upper_hull)
+"tGO" = (
+/obj/structure/reagent_dispensers/fueltank/custom,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/shipboard/starboard_point_defense)
 "tHD" = (
 /obj/effect/step_trigger/teleporter_vector{
 	name = "Almayer_Down3";
@@ -54309,14 +54342,11 @@
 	},
 /area/almayer/hallways/starboard_hallway)
 "uRr" = (
-/obj/structure/rack,
-/obj/item/reagent_container/spray,
-/obj/item/reagent_container/spray,
-/obj/item/reagent_container/spray,
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
 	tag = "icon-S"
 	},
+/obj/structure/closet/secure_closet/engineering_materials,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -55161,6 +55191,14 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/squads/req)
+"vNF" = (
+/obj/structure/reagent_dispensers/fueltank/custom,
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating";
+	tag = "icon-blue (NORTHEAST)"
+	},
+/area/almayer/engineering/engine_core)
 "vOh" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -56642,6 +56680,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
+/obj/structure/reagent_dispensers/fueltank/custom,
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
@@ -73300,7 +73339,7 @@ aYu
 aYu
 aYu
 aYu
-btO
+omU
 cdc
 nEs
 cev
@@ -74318,7 +74357,7 @@ bHB
 aTc
 cmp
 krk
-cok
+lqP
 nQT
 bTY
 kHw
@@ -74522,7 +74561,7 @@ bSq
 cmp
 uRr
 cok
-idV
+gFz
 kSC
 bVf
 bWR
@@ -86052,7 +86091,7 @@ bbS
 aLL
 uUt
 aLW
-aON
+tGO
 aLL
 aLf
 aLd
@@ -86102,7 +86141,7 @@ bHa
 bSf
 sos
 bTO
-bVd
+sYP
 bSf
 cpk
 bVd
@@ -112668,9 +112707,9 @@ bhB
 heg
 lfQ
 blo
-blo
+vNF
 xuU
-blo
+vNF
 blo
 ktO
 heg

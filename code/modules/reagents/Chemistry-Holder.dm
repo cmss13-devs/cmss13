@@ -14,6 +14,8 @@ var/const/INGEST = 2
 	var/exploded = FALSE
 	var/source_mob
 
+	var/locked = FALSE
+
 	var/max_ex_power = 175
 	var/base_ex_falloff = 75
 	var/max_ex_shards = 32
@@ -160,6 +162,9 @@ var/const/INGEST = 2
 		return
 	if(!target.reagents || total_volume<=0)
 		return
+	if(target.reagents.locked || locked)
+		return
+
 	var/datum/reagents/R = target.reagents
 	amount = min(min(amount, total_volume), R.maximum_volume-R.total_volume)
 	var/part = amount / total_volume

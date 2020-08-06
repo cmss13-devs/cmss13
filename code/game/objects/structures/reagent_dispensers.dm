@@ -17,12 +17,12 @@
 /obj/structure/reagent_dispensers/attackby(obj/item/W as obj, mob/user as mob)
 	return
 
-/obj/structure/reagent_dispensers/Initialize()
-	create_reagents(1000)
+/obj/structure/reagent_dispensers/Initialize(var/mapload, var/reagent_amount = 1000)
+	create_reagents(reagent_amount)
 	if(!possible_transfer_amounts)
 		src.verbs -= /obj/structure/reagent_dispensers/verb/set_APTFT
 	if(chemical)
-		reagents.add_reagent(chemical,1000)
+		reagents.add_reagent(chemical, reagent_amount)
 	..()
 
 /obj/structure/reagent_dispensers/initialize_pass_flags(var/datum/pass_flags_container/PF)
@@ -48,6 +48,9 @@
 	if(!ishuman(usr))
 		return
 
+	if(!reagents || reagents.locked)
+		return
+
 	var/N = input("Amount per transfer from this:","[src]") as null|anything in possible_transfer_amounts
 	if(N)
 		amount_per_transfer_from_this = N
@@ -58,6 +61,9 @@
 	set src in view(1)
 
 	if(!ishuman(usr))
+		return
+
+	if(!reagents || reagents.locked)
 		return
 
 	dispensing = !dispensing
@@ -85,6 +91,9 @@
 	return
 
 /obj/structure/reagent_dispensers/attack_hand()
+	if(!reagents || reagents.locked)
+		return
+	
 	var/N = input("Amount per transfer from this:","[src]") as null|anything in possible_transfer_amounts
 	if(N)
 		amount_per_transfer_from_this = N
@@ -152,7 +161,7 @@
 			usr.visible_message(SPAN_NOTICE("[usr] detaches [rig] from \the [src]."), SPAN_NOTICE(" You detach [rig] from \the [src]"))
 			rig.loc = get_turf(usr)
 			rig = null
-			overlays = new/list()
+			update_icon()
 	else
 		. = ..()
 
@@ -181,6 +190,8 @@
 
 			rig = W
 			user.drop_inv_item_to_loc(W, src)
+			
+			update_icon()
 
 	return ..()
 
@@ -198,15 +209,20 @@
 		explode()
 	return 1
 
-/obj/structure/reagent_dispensers/fueltank/ex_act()
+/obj/structure/reagent_dispensers/fueltank/ex_act(severity)
 	if(exploding) return
 	exploding = 1
 	explode()
 
-/obj/structure/reagent_dispensers/fueltank/proc/explode()
-	reagents.handle_volatiles()
 	if(src)
+		. = ..()
+
+/obj/structure/reagent_dispensers/fueltank/proc/explode()
+	if(reagents.handle_volatiles() && src)
 		qdel(src)
+	else if(src)
+		exploding = FALSE
+		update_icon()
 
 /obj/structure/reagent_dispensers/fueltank/fire_act(temperature, volume)
 	if(temperature > T0C+500)
@@ -215,7 +231,7 @@
 
 /obj/structure/reagent_dispensers/fueltank/Move()
 	. = ..()
-	if(. && modded)
+	if(. && modded && reagents && !reagents.locked)
 		leak_fuel(amount_per_transfer_from_this/10.0)
 
 /obj/structure/reagent_dispensers/fueltank/proc/leak_fuel(amount)
@@ -251,6 +267,46 @@
 	desc = "A hydrogentank"
 	icon_state = "hydrogentank"
 	chemical = "hydrogen"
+
+/obj/structure/reagent_dispensers/fueltank/custom
+	name = "reagent tank"
+	desc = "A reagent tank, typically used to store large quantities of chemicals."
+
+	chemical = null
+	icon_state = "tank_normal"
+
+/obj/structure/reagent_dispensers/fueltank/custom/Initialize(var/mapload, var/volume)
+	. = ..()
+	update_icon()
+
+/obj/structure/reagent_dispensers/fueltank/custom/on_reagent_change()
+	. = ..()
+	update_icon()
+
+/obj/structure/reagent_dispensers/fueltank/custom/update_icon()
+	overlays.Cut()
+
+	var/set_icon_state = "tn_color"
+
+	if(rig)
+		overlays += image(icon, "t_signaller")
+		if(exploding)
+			overlays += image(icon, "t_boom")
+		else
+			overlays += image(icon, "t_active")
+	else
+		overlays += image(icon, "t_inactive")
+
+	if(icon_state == "tank_explosive")
+		set_icon_state = "te_color"
+
+	var/image/I = image(icon, icon_state=set_icon_state)
+
+	if(reagents)
+		I.color = mix_color_from_reagents(reagents.reagent_list)
+
+	overlays += I
+
 
 /obj/structure/reagent_dispensers/peppertank
 	name = "pepper spray refiller"

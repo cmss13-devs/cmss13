@@ -129,6 +129,10 @@
 
 				var/trans = target.reagents.trans_to(src, amount_per_transfer_from_this) // transfer from, transfer to - who cares?
 
+				if(!trans)
+					to_chat(user, SPAN_DANGER("You fail to remove reagents from [target]."))
+					return
+
 				to_chat(user, SPAN_NOTICE(" You fill the syringe with [trans] units of the solution."))
 			if (reagents.total_volume >= reagents.maximum_volume)
 				mode=!mode
@@ -335,6 +339,10 @@
 						return
 
 					var/trans = target.reagents.trans_to(src, amount_per_transfer_from_this) // transfer from, transfer to - who cares?
+
+					if(!trans)
+						to_chat(user, SPAN_DANGER("You fail to remove reagents from [target]."))
+						return
 
 					to_chat(user, SPAN_NOTICE(" You fill the syringe with [trans] units of the solution."))
 				if (reagents.total_volume >= reagents.maximum_volume)

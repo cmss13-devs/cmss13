@@ -1,3 +1,32 @@
+/proc/spawn_reagent(var/target, var/volume)
+	if(volume > 300)
+		var/obj/structure/reagent_dispensers/fueltank/custom/C = new(usr.loc, volume, target)
+		C.reagents.add_reagent(target, volume)
+
+		if(alert(usr, "Do you want to set the explosive capabilities on your fueltank? (This will disallow transferring to and from the tank)", "", "Yes", "No") == "Yes")
+			var/explosive_power = input(usr,"Power") as num
+			var/falloff = input(usr, "Base Falloff") as num
+
+			C.reagents.max_ex_power = explosive_power
+			C.reagents.base_ex_falloff = max(1, falloff)
+
+			C.reagents.locked = TRUE
+
+	else if(volume > 120)
+		var/obj/item/reagent_container/glass/beaker/bluespace/C = new /obj/item/reagent_container/glass/beaker/bluespace(usr.loc)
+		C.reagents.add_reagent(target,volume)
+	else if (volume > 60)
+		var/obj/item/reagent_container/glass/beaker/large/C = new /obj/item/reagent_container/glass/beaker/large(usr.loc)
+		C.reagents.add_reagent(target,volume)
+	else if (volume > 30)
+		var/obj/item/reagent_container/glass/beaker/C = new /obj/item/reagent_container/glass/beaker(usr.loc)
+		C.reagents.add_reagent(target,volume)
+	else
+		var/obj/item/reagent_container/glass/beaker/vial/C = new /obj/item/reagent_container/glass/beaker/vial(usr.loc)
+		C.reagents.add_reagent(target,volume)
+	return
+
+
 /datum/admins/proc/topic_chems(var/href)
 	switch(href)
 		if("view_reagent")
@@ -50,20 +79,7 @@
 			if(volume <= 0)
 				return
 
-			if(volume > 120)
-				if(volume > 300)
-					volume = 300
-				var/obj/item/reagent_container/glass/beaker/bluespace/C = new /obj/item/reagent_container/glass/beaker/bluespace(usr.loc)
-				C.reagents.add_reagent(target,volume)
-			else if (volume > 60)
-				var/obj/item/reagent_container/glass/beaker/large/C = new /obj/item/reagent_container/glass/beaker/large(usr.loc)
-				C.reagents.add_reagent(target,volume)
-			else if (volume > 30)
-				var/obj/item/reagent_container/glass/beaker/C = new /obj/item/reagent_container/glass/beaker(usr.loc)
-				C.reagents.add_reagent(target,volume)
-			else
-				var/obj/item/reagent_container/glass/beaker/vial/C = new /obj/item/reagent_container/glass/beaker/vial(usr.loc)
-				C.reagents.add_reagent(target,volume)
+			spawn_reagent(target, volume)
 			return
 		//For quickly generating a new chemical
 		if("create_random_reagent")
@@ -131,21 +147,6 @@
 			var/volume = input(usr,"How much? An appropriate container will be selected.") as num
 			if(volume <= 0)
 				return
-			if(volume > 120)
-				if(volume > 300)
-					volume = 300
-				var/obj/item/reagent_container/glass/beaker/bluespace/C = new /obj/item/reagent_container/glass/beaker/bluespace(usr.loc)
-				C.reagents.add_reagent(target,volume)
-			else if (volume > 60)
-				var/obj/item/reagent_container/glass/beaker/large/C = new /obj/item/reagent_container/glass/beaker/large(usr.loc)
-				C.reagents.add_reagent(target,volume)
-			else if (volume > 30)
-				var/obj/item/reagent_container/glass/beaker/C = new /obj/item/reagent_container/glass/beaker(usr.loc)
-				C.reagents.add_reagent(target,volume)
-			else
-				var/obj/item/reagent_container/glass/beaker/vial/C = new /obj/item/reagent_container/glass/beaker/vial(usr.loc)
-				C.reagents.add_reagent(target,volume)
-			return
 		//For creating a custom reagent
 		if("create_custom_reagent")
 			var/target = input(usr,"Enter the ID of the chemical reagent you wish to make:")
@@ -216,20 +217,8 @@
 					var/volume = input(usr,"How much? An appropriate container will be selected.") as num
 					if(volume <= 0)
 						return
-					if(volume > 120)
-						if(volume > 300)
-							volume = 300
-						var/obj/item/reagent_container/glass/beaker/bluespace/C = new /obj/item/reagent_container/glass/beaker/bluespace(usr.loc)
-						C.reagents.add_reagent(R.id,volume)
-					else if (volume > 60)
-						var/obj/item/reagent_container/glass/beaker/large/C = new /obj/item/reagent_container/glass/beaker/large(usr.loc)
-						C.reagents.add_reagent(R.id,volume)
-					else if (volume > 30)
-						var/obj/item/reagent_container/glass/beaker/C = new /obj/item/reagent_container/glass/beaker(usr.loc)
-						C.reagents.add_reagent(R.id,volume)
-					else
-						var/obj/item/reagent_container/glass/beaker/vial/C = new /obj/item/reagent_container/glass/beaker/vial(usr.loc)
-						C.reagents.add_reagent(R.id,volume)
+					
+					spawn_reagent(target, volume)
 				if("No, show me the reagent")
 					usr.client.debug_variables(chemical_reagents_list[target])
 			return

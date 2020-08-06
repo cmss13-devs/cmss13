@@ -111,6 +111,11 @@
 				return
 
 			var/trans = target.reagents.trans_to(src, target:amount_per_transfer_from_this)
+
+			if(!trans)
+				to_chat(user, SPAN_DANGER("You fail to remove reagents from [target]."))
+				return
+			
 			to_chat(user, SPAN_NOTICE("You fill [src] with [trans] units of the contents of [target]."))
 		else
 			if(reagents && !reagents.total_volume)
@@ -122,6 +127,11 @@
 				return
 
 			var/trans = reagents.trans_to(D, D:amount_per_transfer_from_this)
+
+			if(!trans)
+				to_chat(user, SPAN_DANGER("You fail to add reagents to [target]."))
+				return
+
 			to_chat(user, SPAN_NOTICE("You fill [D] with [trans] units of the contents of [src]."))
 
 	else if(target.is_open_container() && target.reagents) //Something like a glass. Player probably wants to transfer TO it.
@@ -135,6 +145,11 @@
 			return
 
 		var/trans = src.reagents.trans_to(target, amount_per_transfer_from_this)
+
+		if(!trans)
+			to_chat(user, SPAN_DANGER("You fail to add reagents to [target]."))
+			return
+
 		to_chat(user, SPAN_NOTICE("You transfer [trans] units of the solution to [target]."))
 
 	else if(istype(target, /obj/structure/machinery/smartfridge))

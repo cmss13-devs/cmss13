@@ -202,6 +202,7 @@
 
 	var/message = input("Please enter your message:", "Mentor Help", null, null) as message|null
 	if(!message)
+		open = FALSE
 		return
 
 	send_message(sender, message)
@@ -358,7 +359,7 @@
 			msg += "You can join our Discord server by using <a href='https://discordapp.com/invite/TByu8b5'>this link</a>!"
 		if("L: Xeno Quickstart Guide")
 			msg += "Your answer can be found on the Xeno Quickstart Guide on our wiki. <a href='[URL_WIKI_XENO_QUICKSTART]'>Check it out here.</a>"
-		if("L: Marine quickstart guide")
+		if("L: Marine Quickstart Guide")
 			msg += "Your answer can be found on the Marine Quickstart Guide on our wiki. <a href='[URL_WIKI_MARINE_QUICKSTART]'>Check it out here.</a>"
 		if("L: Current Map")
 			msg += "If you need a map overview of the current round, use Current Map verb in OOC tab to check name of the map. Then open our <a href='[URL_WIKI_LANDING]'>wiki front page</a> and look for the map overview in the 'Maps' section. If the map is not listed, it's a new or rare map and the overview hasn't been finished yet."
@@ -371,9 +372,9 @@
 		if("E: Event in progress")
 			msg += "There is currently a special event running and many things may be changed or different, however normal rules still apply unless you have been specifically instructed otherwise by a staff member."
 		if("R: Radios")
-			msg += "Examine your radio headset (Shift + Click) to get a list of the channels your headset has access to. Marine headsets have their respective squad channels available on \";\" key. Ship crew headsets have access to the Almayer public comms on \";\" and their respective department channel on \":h\". Command channel key is \":v\"."
+			msg += "Take your headset in hand and activate it by clicking it or pressing \"Page Down\" or \"Z\" (in Hotkey Mode). This will open window with all available channels, which also contains channel keys. Marine headsets have their respective squad channels available on \";\" key. Ship crew headsets have access to the Almayer public comms on \";\" and their respective department channel on \":h\"."
 		if("B: Binoculars")
-			msg += "Binoculars allow you to increase distance of your view in direction you are looking. To zoom in, take them into your hand and activate them by pressing Z (in Hotkey Mode), PageDown or clicking on them in your hand.\nRangefinders allow you to get tile coordinates (longitude and latitude) by lasing it while zoomed in (Green laser). Ctrl + Click on any open tile to start lasing. Ctrl + Click on your rangefinders to stop lasing without looking up from them. Coordinates can be used by Staff Officers to send supply drops or to perform Orbital Bombardment. You also can use them to call mortar fire from engineers if they have mortar. \nLaser Designators have a second mode (Red laser) that allows highlighting targets for Close Air Support performed by pilots. They also have a fixed ID number that is shown in pilot's weaponry console. Examine laser designator to check it's ID. Red laser must be maintained as long as needed in order for pilot to bomb the designated area. To switch between lasing modes, Alt + Click the laser designator. Alternatively, Right + Click it in hand and press Toggle Mode."
+			msg += "Binoculars allow you to increase distance of your view in direction you are looking. To zoom in, take them into your hand and activate them by pressing \"Page Down\" or \"Z\" (in Hotkey Mode) or clicking them while they are in your hand.\nRangefinders allow you to get tile coordinates (longitude and latitude) by lasing it while zoomed in (produces a GREEN laser). Ctrl + Click on any open tile to start lasing. Ctrl + Click on your rangefinders to stop lasing without zooming out. Coordinates can be used by Staff Officers to send supply drops or to perform Orbital Bombardment. You also can use them to call mortar fire if there are engineers with a mortar. \nLaser Designators have a second mode (produces a RED laser) that allows highlighting targets for Close Air Support performed by dropship pilots. They also have a fixed ID number that is shown on the pilot's weaponry console. Examine the laser designator to check its ID. Red laser must be maintained as long as needed in order for the dropship pilot to bomb the designated area. To switch between lasing modes, Alt + Click the laser designator. Alternatively, Right + Click it in hand and click \"Toggle Mode\"."
 		if("D: Joining disabled")
 			msg += "Joining for new players is disabled for the current round due to either a staff member or and automatic setting during the end of the round. You can observe while it ends and wait for a new round to start."
 		if("L: Leaving the server")

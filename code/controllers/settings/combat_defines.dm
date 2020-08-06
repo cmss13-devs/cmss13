@@ -1,5 +1,7 @@
 #define HUMAN_UNIVERSAL_DAMAGEMULT 1.0
 
+#define RECOIL_BUILDUP_VIEWPUNCH_MULTIPLIER 0.1
+
 /* THE SOOPER SEKRIT WEAPON CONFIG.
 
 ////PART 1: UNDERSTANDING HOW TO READ THE VARIABLES.////
@@ -124,7 +126,7 @@ As such, don't expect any values assigned to common firearms to even consider ho
 	var/lmed_plus_hit_damage = 34 * HUMAN_UNIVERSAL_DAMAGEMULT
 	var/med_hit_damage = 37 * HUMAN_UNIVERSAL_DAMAGEMULT // Old M41 damage
 	var/hmed_hit_damage = 41 * HUMAN_UNIVERSAL_DAMAGEMULT //  M41A-MK2 (Stock Pulse Rifle) for reference
-	var/lhigh_hit_damage = 46 * HUMAN_UNIVERSAL_DAMAGEMULT // Minigun
+	var/lhigh_hit_damage = 46 * HUMAN_UNIVERSAL_DAMAGEMULT
 	var/high_hit_damage = 54 * HUMAN_UNIVERSAL_DAMAGEMULT
 	var/mhigh_hit_damage = 61 * HUMAN_UNIVERSAL_DAMAGEMULT
 	var/max_hit_damage = 70 * HUMAN_UNIVERSAL_DAMAGEMULT

@@ -111,6 +111,13 @@
 	var/has_empty_icon = TRUE // whether gun has icon state of (base_gun_icon)_e
 	var/has_open_icon = FALSE // whether gun has icon state of (base_gun_icon)_o
 
+	var/recoil_loss_per_second = 10 // How much recoil_buildup is lost per second. Builds up as time passes, and is set to 0 when a single shot is fired
+	var/recoil_buildup = 0 // The recoil on a dynamic recoil gun
+
+	var/recoil_buildup_limit = 0 //The limit at which the recoil on a gun can reach. Usually the maximum value
+
+	var/last_recoil_update = 0
+
 
 //----------------------------------------------------------
 				//				    \\
@@ -166,6 +173,8 @@
 
 	effective_range_min = config.no_effective_range_min
 	effective_range_max = config.no_effective_range_max
+
+	recoil_buildup_limit = config.max_recoil_value / RECOIL_BUILDUP_VIEWPUNCH_MULTIPLIER
 
 	//reset initial define-values
 	aim_slowdown = initial(aim_slowdown)
@@ -367,12 +376,21 @@
 
 
 /obj/item/weapon/gun/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 0)
+
+
 	var/ammo_name = "bullet"
 
 	var/damage = 0
 	var/bonus_projectile_amount = 0
 
 	var/falloff = 0
+
+	var/gun_recoil = src.recoil
+
+	if(flags_gun_features & GUN_RECOIL_BUILDUP)
+		update_recoil_buildup() // Need to update recoil values
+
+		gun_recoil = recoil_buildup
 
 	var/penetration = 0
 	var/armor_punch = 0
@@ -420,11 +438,11 @@
 	var/list/data = list(
 		"name" = name,
 		"desc" = desc,
-		"icon" = icon_state,
+		"icon" = base_gun_icon,
 
 		"two_handed_only" = (flags_gun_features & GUN_WIELDED_FIRING_ONLY),
 
-		"recoil" = max(recoil, 0.1),
+		"recoil" = max(gun_recoil, 0.1),
 		"unwielded_recoil" = max(recoil_unwielded, 0.1),
 
 		"has_ammo" = has_ammo,
@@ -470,6 +488,7 @@
 	if (!ui)
 		ui = new(user, src, ui_key, "weapon_stats.tmpl", "USCM Weapon Codex", 850, 915)
 		ui.set_initial_data(data)
+		ui.set_auto_update(FALSE)
 		ui.open()
 
 /obj/item/weapon/gun/wield(var/mob/user)
@@ -1217,11 +1236,28 @@ and you're good to go.
 
 	return target
 
+/obj/item/weapon/gun/proc/update_recoil_buildup()
+	var/seconds_since_fired = max(world.timeofday - last_recoil_update, 0) * 0.1
+
+	seconds_since_fired = max(seconds_since_fired - (fire_delay * 0.3), 0) // Takes into account firerate, so that recoil cannot fall whilst firing.
+	// You have to be shooting at a third of the firerate of a gun to not build up any recoil if the recoil_loss_per_second is greater than the recoil_gain_per_second
+	
+	recoil_buildup = max(recoil_buildup - recoil_loss_per_second*seconds_since_fired, 0)
+
+	last_recoil_update = world.timeofday
 
 /obj/item/weapon/gun/proc/simulate_recoil(recoil_bonus = 0, mob/user, atom/target)
 	var/total_recoil = recoil_bonus
+
+	if(flags_gun_features & GUN_RECOIL_BUILDUP)
+		update_recoil_buildup()
+
+		recoil_buildup = min(recoil + recoil_buildup, recoil_buildup_limit)
+		total_recoil += (recoil_buildup*RECOIL_BUILDUP_VIEWPUNCH_MULTIPLIER)
+
 	if(flags_item & WIELDED)
-		total_recoil += recoil
+		if(!(flags_gun_features & GUN_RECOIL_BUILDUP)) // We're nesting this if loop, because we don't want the "else" to run if we are wielding
+			total_recoil += recoil
 	else
 		total_recoil += recoil_unwielded
 		if(flags_gun_features & GUN_BURST_FIRING)

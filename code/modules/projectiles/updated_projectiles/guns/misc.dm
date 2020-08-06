@@ -12,7 +12,7 @@
 	current_mag = /obj/item/ammo_magazine/minigun
 	w_class = SIZE_HUGE
 	force = 20
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_BURST_ON|GUN_WIELDED_FIRING_ONLY|GUN_AMMO_COUNTER
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_WIELDED_FIRING_ONLY|GUN_AMMO_COUNTER|GUN_RECOIL_BUILDUP|GUN_HAS_FULL_AUTO
 
 /obj/item/weapon/gun/minigun/New(loc, spawn_empty)
 	..()
@@ -20,24 +20,20 @@
 
 /obj/item/weapon/gun/minigun/set_gun_config_values()
 	..()
-	fire_delay = config.mlow_fire_delay
-	burst_amount = config.max_burst_value
-	burst_delay = config.min_fire_delay
+	fire_delay = config.min_fire_delay
+	
 	accuracy_mult = config.base_hit_accuracy_mult + config.low_hit_accuracy_mult
-	accuracy_mult_unwielded = config.base_hit_accuracy_mult
-	scatter = config.med_scatter_value
-	burst_scatter_mult = config.med_scatter_value
-	scatter_unwielded = config.max_scatter_value
-	damage_mult = config.base_hit_damage_mult
-	recoil = config.med_recoil_value
+	
+	scatter = config.mlow_scatter_value // Most of the scatter should come from the recoil
 
-/obj/item/weapon/gun/minigun/toggle_burst()
-	to_chat(usr, SPAN_WARNING("This weapon can only fire in bursts!"))
+	damage_mult = config.base_hit_damage_mult
+	recoil = config.min_recoil_value
+	recoil_buildup_limit = config.med_recoil_value / RECOIL_BUILDUP_VIEWPUNCH_MULTIPLIER
 
 /obj/item/weapon/gun/minigun/upp
 	name = "\improper GSh-7.62 rotary machine gun"
 	desc = "A gas-operated rotary machine gun used by UPP heavies. Its enormous volume of fire and ammunition capacity allows the suppression of large concentrations of enemy forces. Heavy weapons training is required control its recoil."
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_BURST_ON|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_AMMO_COUNTER
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_AMMO_COUNTER|GUN_RECOIL_BUILDUP|GUN_HAS_FULL_AUTO
 
 /obj/item/weapon/gun/minigun/upp/able_to_fire(mob/living/user)
 	. = ..()

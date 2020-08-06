@@ -707,7 +707,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 
 	//Burst of 1 doesn't mean anything. The weapon will only fire once regardless.
 	//Just a good safety to have all weapons that can equip a scope with 1 burst_amount.
-	if(burst_amount < 2)
+	if(burst_amount < 2 && !(flags_gun_features & GUN_HAS_FULL_AUTO))
 		to_chat(usr, SPAN_WARNING("This weapon does not have a burst fire mode!"))
 		return
 
@@ -715,8 +715,9 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		return
 
 	playsound(usr, 'sound/weapons/handling/gun_burst_toggle.ogg', 15, 1)
+
 	if(flags_gun_features & GUN_HAS_FULL_AUTO)
-		if(flags_gun_features & GUN_BURST_ON)
+		if((flags_gun_features & GUN_BURST_ON) || (burst_amount < 2 && !(flags_gun_features & GUN_FULL_AUTO_ON)))
 			flags_gun_features &= ~GUN_BURST_ON
 			flags_gun_features |= GUN_FULL_AUTO_ON
 
@@ -726,6 +727,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 			registerListener(usr.client, EVENT_LMBDRAG, "fa_\ref[src]", CALLBACK(src, .proc/full_auto_new_target))
 
 			to_chat(usr, SPAN_NOTICE("[htmlicon(src, usr)] You set [src] to full auto mode."))
+			return
 		else if(flags_gun_features & GUN_FULL_AUTO_ON)
 			flags_gun_features &= ~GUN_FULL_AUTO_ON
 
@@ -734,10 +736,12 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 			unregisterListener(usr.client, EVENT_LMBDRAG, "fa_\ref[src]")
 
 			to_chat(usr, SPAN_NOTICE("[htmlicon(src, usr)] You set [src] to single fire mode."))
-		else
-			flags_gun_features |= GUN_BURST_ON
+			return
 
-			to_chat(usr, SPAN_NOTICE("[htmlicon(src, usr)] You set [src] to burst fire mode."))
+	if(!(flags_gun_features & GUN_BURST_ON))
+		flags_gun_features |= GUN_BURST_ON
+
+		to_chat(usr, SPAN_NOTICE("[htmlicon(src, usr)] You set [src] to burst fire mode."))
 	else
 		flags_gun_features ^= GUN_BURST_ON
 

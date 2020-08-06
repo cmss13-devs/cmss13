@@ -207,8 +207,6 @@
 
 	H.apply_armoured_damage(get_xeno_damage_slash(H, damage), ARMOR_MELEE, BRUTE, L? L.name : "chest")
 
-	shake_camera(H, 3, 1)
-
 	step_away(H, X)
 	if(prob(25)) // 25% chance to fly 2 tiles
 		step_away(H, X)
@@ -268,7 +266,6 @@
 	if (punch_action && !punch_action.action_cooldown_check())
 		punch_action.end_cooldown()
 
-	shake_camera(H, 3, 1)
 	H.Daze(3)
 	H.Slow(5)
 	var/datum/behavior_delegate/boxer/BD = X.behavior_delegate

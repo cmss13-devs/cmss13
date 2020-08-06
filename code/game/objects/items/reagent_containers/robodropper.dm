@@ -89,6 +89,10 @@
 				return
 
 			var/trans = target.reagents.trans_to(src, amount_per_transfer_from_this)
+			
+			if(!trans)
+				to_chat(user, SPAN_DANGER("You fail to remove reagents from [target]."))
+				return
 
 			to_chat(user, SPAN_NOTICE(" You fill the dropper with [trans] units of the solution."))
 

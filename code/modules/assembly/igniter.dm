@@ -19,8 +19,12 @@
 		if(istype(src.loc,/obj/item/device/assembly_holder))
 			if(istype(src.loc.loc, /obj/structure/reagent_dispensers/fueltank/))
 				var/obj/structure/reagent_dispensers/fueltank/tank = src.loc.loc
-				if(tank && tank.modded)
-					tank.explode()
+				if(tank && prob(25) && !tank.exploding)
+					playsound(get_turf(tank), 'sound/machines/twobeep.ogg', 75, 1)
+					tank.exploding = TRUE
+					add_timer(CALLBACK(tank, /obj/structure/reagent_dispensers/fueltank/.proc/explode), SECONDS_3)
+
+					tank.update_icon()
 
 		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 		s.set_up(3, 1, src)

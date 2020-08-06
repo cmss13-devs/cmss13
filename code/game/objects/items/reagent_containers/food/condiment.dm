@@ -77,6 +77,11 @@
 			return
 
 		var/trans = target.reagents.trans_to(src, target:amount_per_transfer_from_this)
+
+		if(!trans)
+			to_chat(user, SPAN_DANGER("You fail to fill [src] with reagents from [target]."))
+			return
+
 		to_chat(user, SPAN_NOTICE(" You fill [src] with [trans] units of the contents of [target]."))
 
 	//Something like a glass or a food item. Player probably wants to transfer TO it.

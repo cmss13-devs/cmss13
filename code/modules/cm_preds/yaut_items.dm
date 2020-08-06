@@ -470,8 +470,10 @@
 	sharp = IS_SHARP_ITEM_BIG
 
 /obj/item/weapon/melee/harpoon/yautja/New()
+	. = ..()
+
 	force = config.min_hit_damage
-	throwforce = config.high_hit_damage
+	throwforce = config.hmed_hit_damage
 	
 /obj/item/weapon/wristblades
 	name = "wrist blades"
@@ -547,6 +549,8 @@
 
 
 /obj/item/weapon/yautja_chain/New()
+	. = ..()
+
 	force = config.mhigh_hit_damage
 	throwforce = config.base_hit_damage
 
@@ -555,14 +559,6 @@
 	if(isYautja(user) && isXeno(target))
 		var/mob/living/carbon/Xenomorph/X = target
 		X.interference = 30
-	if(. && user.zone_selected == "r_leg" || user.zone_selected == "l_leg" || user.zone_selected == "l_foot" || user.zone_selected == "r_foot")
-		if(prob(35) && !target.lying)
-			if(isXeno(target))
-				if(target.mob_size == MOB_SIZE_BIG) //Can't trip the big ones.
-					return
-			playsound(loc, 'sound/weapons/punchmiss.ogg', 25, 1)
-			user.visible_message(SPAN_DANGER("[src] lashes out and [target] goes down!"),SPAN_DANGER("<b>You trip [target]!</b>"))
-			target.KnockDown(5)
 
 /obj/item/weapon/yautja_chain/dropped(mob/living/user)
 	add_to_missing_pred_gear(src)
@@ -589,6 +585,8 @@
 	unacidable = TRUE
 
 /obj/item/weapon/melee/yautja_sword/New()
+	. = ..()
+
 	force = config.med_hit_damage //More damage than other weapons like it. Considering how "strong" this sword is supposed to be, 38 damage was laughable.
 	throwforce = config.min_hit_damage
 
@@ -604,22 +602,12 @@
 	. = ..()
 	if(!.)
 		return
-	if(isYautja(user))
-		if(isXeno(target))
-			var/mob/living/carbon/Xenomorph/X = target
-			X.interference = 30
-		force = config.med_hit_damage
-
-	else
-		to_chat(user, SPAN_WARNING("You aren't strong enough to swing the sword properly!"))
-		force = round(config.med_hit_damage/2)
-		if(prob(50)) user.make_dizzy(80)
+	if(isYautja(user) && isXeno(target))
+		var/mob/living/carbon/Xenomorph/X = target
+		X.interference = 30
 
 /obj/item/weapon/melee/yautja_sword/pickup(mob/living/user as mob)
-	if(!isYautja(user))
-		to_chat(user, SPAN_WARNING("You struggle to pick up the huge, unwieldy sword. It makes you dizzy just trying to hold it!"))
-		user.make_dizzy(50)
-	else
+	if(isYautja(user))
 		remove_from_missing_pred_gear(src)
 	..()
 
@@ -666,6 +654,8 @@
 	unacidable = TRUE
 
 /obj/item/weapon/melee/yautja_scythe/New()
+	. = ..()
+
 	icon_state = pick("predscythe","predscythe_alt")
 	force = config.hmed_hit_damage
 	throwforce = config.mlow_hit_damage
@@ -684,23 +674,16 @@
 	..()
 
 /obj/item/weapon/melee/yautja_scythe/attack(mob/living/target as mob, mob/living/carbon/human/user as mob)
-	if(!isYautja(user))
-		if(prob(20))
-			user.visible_message(SPAN_WARNING("[src] slips out of your hands!"))
-			user.drop_inv_item_on_ground(src)
-			return
 	..()
 	if(isYautja(user) && isXeno(target))
 		var/mob/living/carbon/Xenomorph/X = target
 		X.interference = 30
-	if(ishuman(target)) //Slicey dicey!
-		if(prob(14))
-			user.visible_message(SPAN_DANGER("An opening in combat presents itself!"),SPAN_DANGER("You manage to strike at your foe once more!"))
-			..() //Do it again! CRIT! This will be replaced by a bleed effect.
-	else 
-		if(prob(20))
-			user.visible_message(SPAN_DANGER("An opening in combat presents itself!"),SPAN_DANGER("You manage to strike at your foe once more!"))
-			..() //Do it again! CRIT! This will be replaced by a bleed effect.
+
+	
+	if(prob(20))
+		user.visible_message(SPAN_DANGER("An opening in combat presents itself!"),SPAN_DANGER("You manage to strike at your foe once more!"))
+		..() //Do it again! CRIT! This will be replaced by a bleed effect.
+	
 	return
 
 //Combistick
@@ -723,6 +706,8 @@
 	var/timer = 0
 
 /obj/item/weapon/melee/combistick/New()
+	. = ..()
+
 	throwforce = config.med_hit_damage
 	force = config.hlmed_hit_damage
 
@@ -939,6 +924,8 @@
 		return
 
 /obj/item/explosive/grenade/spawnergrenade/hellhound/New()
+	. = ..()
+
 	force = config.mlow_hit_damage
 	throwforce = config.hmed_hit_damage
 

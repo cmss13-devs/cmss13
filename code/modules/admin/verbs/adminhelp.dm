@@ -20,20 +20,23 @@ var/global/list/ahelp_msgs = list()
 	adminhelped = 1 //Determines if they get the message to reply by clicking the name.
 
 	var/msg
-	var/list/type = list ("Suggestion / Bug Report", "Gameplay / Roleplay Issue", "Gameplay Mechanics / MentorHelp")
-	var/selected_type = input("Pick a category.", "Admin Help", null, null) as null|anything in type
-	if(selected_type == "Gameplay / Roleplay Issue")
-		msg = input("Please enter your message:", "Admin Help", null, null) as message|null
+	var/list/type = list ("Gitlab (Suggestions/Bug Reports)", "AdminHelp", "MentorHelp")
+	var/selected_type = input("- Gitlab is an external site where you can post your suggestions and bug reports.\
+	\n\n- AdminHelp is used to contact staff members online for reporting griefers, rule clarification and asking assistance in dealing with crucial bugs.\
+	\n\n- MentorHelp is used to ask questions about gameplay mechanics and for tips and advices.\
+	\n\nSelect an option:", "AdminHelp", null, null) as null|anything in type
+	if(selected_type == "AdminHelp")
+		msg = input("Please enter your message:", "AdminHelp", null, null) as message|null
 
-	if(selected_type == "Suggestion / Bug Report")
-		switch(alert("Adminhelps are not for suggestions or bug reports - they should be posted on our Gitlab.",,"Go to Gitlab","Cancel"))
+	if(selected_type == "Gitlab (Suggestions/Bug Reports)")
+		switch(alert("CM Gitlab Issues page will be opened in your default browser.",,"Go to Gitlab","Cancel"))
 			if("Go to Gitlab")
 				src << link("https://gitlab.com/cmdevs/ColonialMarines/issues")
 			else
 				return
 
 	// Mentor help
-	if(selected_type == "Gameplay Mechanics / MentorHelp")
+	if(selected_type == "MentorHelp")
 		if(current_mhelp && current_mhelp.open)
 			if(alert("You already have a mentorhelp thread open, would you like to close it?", "Mentor Help", "Yes", "No") == "Yes")
 				current_mhelp.close()

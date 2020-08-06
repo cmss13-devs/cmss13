@@ -1,8 +1,0 @@
-author: Jeser
-
-delete-after: True
-
-changes: 
-  - spellcheck: "Changed description and options in Adminhelp selection window to better describe purpose of each option."
-  - tweak: "Updated and fixed some Adminhelp and Mentorhelp autoresponses."
-  - bugfix: "Fixed closing mentorhelp window or leaving it blank still opening a new mentorhelp."

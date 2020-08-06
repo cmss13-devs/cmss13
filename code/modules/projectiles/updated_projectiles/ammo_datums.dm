@@ -1020,11 +1020,14 @@
 
 /datum/ammo/bullet/minigun/New()
 	..()
-	accuracy = -config.low_hit_accuracy
-	accuracy_var_low = config.low_proj_variance
-	accuracy_var_high = config.low_proj_variance
-	accurate_range = config.short_shell_range
-	damage = config.lhigh_hit_damage
+
+	accuracy = -config.med_hit_accuracy
+	accuracy_var_low = config.med_proj_variance
+	accuracy_var_high = config.med_proj_variance
+	accurate_range = config.hshort_shell_range
+	damage = config.lmed_plus_hit_damage
+
+	penetration = config.hmed_armor_penetration
 
 /datum/ammo/bullet/m60
 	name = "M60 bullet"

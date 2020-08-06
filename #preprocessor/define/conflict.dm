@@ -46,6 +46,7 @@
 #define GUN_FULL_AUTO_ON		32768
 #define GUN_ONE_HAND_WIELDED    65536 //removes one-hand accuracy penalty
 #define GUN_ANTIQUE 			131072
+#define GUN_RECOIL_BUILDUP      262144
 
 //Gun attachable related flags.
 #define ATTACH_REMOVABLE	1

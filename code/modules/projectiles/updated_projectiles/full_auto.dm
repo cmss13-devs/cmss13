@@ -53,10 +53,6 @@
 		return
 	var/mob/user = loc
 
-	// No FA with mods
-	if(params["shift"] || params["ctrl"] || params["alt"])
-		return
-
 	if(istype(hovered, /obj/screen))
 		return
 

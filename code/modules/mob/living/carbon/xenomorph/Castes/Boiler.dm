@@ -76,7 +76,7 @@
 		smoke = null
 	. = ..()
 
-/turf/proc/can_bombard()
+/turf/proc/can_bombard(var/mob/bombarder)
 	if(!can_be_dissolved() && density) return FALSE
 	for(var/atom/A in src)
 		if(istype(A, /obj/structure/machinery)) continue // Machinery shouldn't block boiler gas (e.g. computers)
@@ -95,7 +95,7 @@
 		if(steps > length) return FALSE
 		if(!current) return FALSE
 
-		if(!current.can_bombard()) return FALSE
+		if(!current.can_bombard(src)) return FALSE
 		if(current.opacity)	return FALSE
 		for(var/atom/A in current)
 			if(A.opacity) return FALSE

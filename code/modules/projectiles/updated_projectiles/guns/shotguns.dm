@@ -584,7 +584,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	icon_state = "hg3712"
 	item_state = "hg3712"
 	fire_sound = 'sound/weapons/gun_shotgun_small.ogg'
-	current_mag = /obj/item/ammo_magazine/internal/shotgun
+	current_mag = /obj/item/ammo_magazine/internal/shotgun/buckshot
 	attachable_allowed = list(
 						/obj/item/attachable/reddot,
 						/obj/item/attachable/reflex,

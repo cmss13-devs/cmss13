@@ -553,7 +553,6 @@
 /obj/item/tool/shovel/spade,
 /obj/effect/landmark/objective_landmark/science,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor{
 	icon_state = "white";
 	tag = "icon-white"
@@ -10459,7 +10458,6 @@
 /obj/structure/table,
 /obj/item/stack/medical/bruise_pack,
 /obj/effect/landmark/objective_landmark/far,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison{
 	dir = 10;
@@ -10471,7 +10469,6 @@
 /obj/structure/table,
 /obj/item/tool/pickaxe/drill,
 /obj/effect/landmark/objective_landmark/far,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison{
 	dir = 10;
@@ -15939,7 +15936,6 @@
 	},
 /obj/item/tool/stamp,
 /obj/effect/landmark/objective_landmark/medium,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison{
 	dir = 10;
@@ -18071,7 +18067,6 @@
 	},
 /obj/structure/table/woodentable/fancy,
 /obj/effect/landmark/objective_landmark/close,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/interior/wood/alt,
 /area/desert_dam/building/security/office)
@@ -18558,7 +18553,6 @@
 	pixel_x = -6
 	},
 /obj/effect/landmark/objective_landmark/close,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
 	icon_state = "dark2";
@@ -18738,7 +18732,6 @@
 	tag = "icon-tube1 (EAST)"
 	},
 /obj/effect/landmark/objective_landmark/close,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison{
 	dir = 10;
@@ -18972,7 +18965,6 @@
 "bbO" = (
 /obj/structure/table/woodentable/fancy,
 /obj/effect/landmark/objective_landmark/close,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/interior/wood/alt,
 /area/desert_dam/building/security/office)
@@ -18980,7 +18972,6 @@
 /obj/item/ashtray/bronze,
 /obj/structure/table/woodentable/fancy,
 /obj/effect/landmark/objective_landmark/close,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/interior/wood/alt,
 /area/desert_dam/building/security/office)
@@ -19799,7 +19790,6 @@
 /obj/structure/table/woodentable,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor/carpet,
 /area/desert_dam/building/administration/meetingrooom)
 "bex" = (
@@ -22276,7 +22266,6 @@
 	name = "Security Desk"
 	},
 /obj/effect/landmark/objective_landmark/medium,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison{
 	dir = 10;
@@ -23837,7 +23826,6 @@
 /obj/structure/rack,
 /obj/item/cell/high/empty,
 /obj/effect/landmark/objective_landmark/close,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison{
 	dir = 4;
@@ -24164,7 +24152,6 @@
 	name = "crap_item"
 	},
 /obj/effect/landmark/objective_landmark/close,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison{
 	dir = 4;
@@ -24200,7 +24187,6 @@
 /obj/structure/rack,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor/prison{
 	icon_state = "blue"
 	},
@@ -24209,7 +24195,6 @@
 /obj/structure/rack,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor/prison{
 	dir = 6;
 	icon_state = "blue"
@@ -24459,7 +24444,6 @@
 "bsz" = (
 /obj/structure/rack,
 /obj/effect/landmark/objective_landmark/close,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison{
 	dir = 4;
@@ -27953,7 +27937,6 @@
 	tag = "icon-pipe-s (WEST)"
 	},
 /obj/effect/landmark/objective_landmark/close,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison,
 /area/desert_dam/building/security/staffroom)
@@ -28549,7 +28532,6 @@
 	icon_state = "pipe-c"
 	},
 /obj/effect/landmark/objective_landmark/close,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison,
 /area/desert_dam/building/security/staffroom)
@@ -28575,7 +28557,6 @@
 /obj/structure/table,
 /obj/item/clothing/suit/armor/det_suit,
 /obj/effect/landmark/objective_landmark/close,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison,
 /area/desert_dam/building/security/staffroom)
@@ -28856,7 +28837,6 @@
 /obj/structure/table,
 /obj/item/explosive/grenade/flashbang,
 /obj/effect/landmark/objective_landmark/close,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison,
 /area/desert_dam/building/security/staffroom)
@@ -29282,7 +29262,6 @@
 /obj/structure/table,
 /obj/item/reagent_container/spray/cleaner,
 /obj/effect/landmark/objective_landmark/close,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison,
 /area/desert_dam/building/security/staffroom)
@@ -29290,7 +29269,6 @@
 /obj/structure/table,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/landmark/objective_landmark/close,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison,
 /area/desert_dam/building/security/staffroom)
@@ -29298,7 +29276,6 @@
 /obj/structure/table,
 /obj/item/trash/kepler,
 /obj/effect/landmark/objective_landmark/close,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison,
 /area/desert_dam/building/security/staffroom)
@@ -29306,7 +29283,6 @@
 /obj/structure/table,
 /obj/structure/machinery/recharger,
 /obj/effect/landmark/objective_landmark/close,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison,
 /area/desert_dam/building/security/staffroom)
@@ -29727,7 +29703,6 @@
 /obj/item/clothing/glasses/welding,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "darkyellow2"
@@ -29752,7 +29727,6 @@
 "bJo" = (
 /obj/structure/table,
 /obj/effect/landmark/objective_landmark/medium,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/northeastern_tunnel)
@@ -29998,7 +29972,6 @@
 /obj/structure/table/woodentable,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor/interior/wood/alt,
 /area/desert_dam/building/security/courtroom)
 "bKm" = (
@@ -30022,7 +29995,6 @@
 /obj/structure/table/almayer,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor/prison{
 	dir = 10;
 	tag = "icon-floor (SOUTHWEST)"
@@ -30035,7 +30007,6 @@
 	},
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor/prison{
 	dir = 10;
 	tag = "icon-floor (SOUTHWEST)"
@@ -30077,7 +30048,6 @@
 /obj/effect/spawner/random/technology_scanner,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "darkyellow2"
@@ -30111,7 +30081,6 @@
 "bKA" = (
 /obj/structure/rack,
 /obj/effect/landmark/objective_landmark/medium,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/northeastern_tunnel)
@@ -30277,7 +30246,6 @@
 	},
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor/interior/wood/alt,
 /area/desert_dam/building/security/courtroom)
 "bLf" = (
@@ -30310,7 +30278,6 @@
 /obj/item/device/lightreplacer,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "darkyellow2"
@@ -30618,7 +30585,6 @@
 /obj/structure/table/reinforced,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "darkyellow2"
@@ -30916,7 +30882,6 @@
 /obj/structure/table/woodentable,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor{
 	icon_state = "cult"
 	},
@@ -31782,7 +31747,6 @@
 	amount = 10
 	},
 /obj/effect/landmark/objective_landmark/close,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
@@ -32936,7 +32900,6 @@
 /obj/structure/table,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor/prison{
 	icon_state = "darkyellowcorners2"
 	},
@@ -33195,7 +33158,6 @@
 /obj/structure/table,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor/prison{
 	dir = 6;
 	icon_state = "darkyellow2"
@@ -39611,7 +39573,6 @@
 /obj/structure/table,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/landmark/objective_landmark/medium,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/northeastern_tunnel)
@@ -40249,7 +40210,6 @@
 "cps" = (
 /obj/structure/table,
 /obj/effect/landmark/objective_landmark/close,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison{
 	icon_state = "darkyellow2"
@@ -40521,7 +40481,6 @@
 "cqh" = (
 /obj/structure/table,
 /obj/effect/landmark/objective_landmark/close,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison{
 	dir = 6;
@@ -40794,7 +40753,6 @@
 	},
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor{
 	icon_state = "asteroidplating";
 	tag = "icon-asteroidplating"
@@ -40805,7 +40763,6 @@
 /obj/item/device/analyzer,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor{
 	icon_state = "asteroidplating";
 	tag = "icon-asteroidplating"
@@ -40816,7 +40773,6 @@
 /obj/effect/spawner/random/toolbox,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor{
 	icon_state = "asteroidplating";
 	tag = "icon-asteroidplating"
@@ -40843,7 +40799,6 @@
 	pixel_y = 2
 	},
 /obj/effect/landmark/objective_landmark/close,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison{
 	dir = 4;
@@ -41195,7 +41150,6 @@
 /obj/structure/table,
 /obj/item/device/analyzer,
 /obj/effect/landmark/objective_landmark/close,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison{
 	dir = 4;
@@ -45267,7 +45221,6 @@
 /obj/item/storage/fancy/cigarettes/kpack,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor/prison{
 	dir = 10;
 	tag = "icon-floor (SOUTHWEST)"
@@ -45915,7 +45868,6 @@
 /obj/item/ashtray/bronze,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor/interior/tatami,
 /area/desert_dam/building/bar/bar)
 "cFG" = (
@@ -46909,7 +46861,6 @@
 "cIt" = (
 /obj/structure/table,
 /obj/effect/landmark/objective_landmark/close,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison{
 	icon_state = "cell_stripe";
@@ -46920,7 +46871,6 @@
 /obj/structure/table,
 /obj/item/clothing/head/welding,
 /obj/effect/landmark/objective_landmark/close,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison{
 	icon_state = "cell_stripe";
@@ -48856,7 +48806,6 @@
 /obj/item/storage/fancy/candle_box,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor{
 	icon_state = "cult"
 	},
@@ -49031,7 +48980,6 @@
 /obj/structure/table/woodentable,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor{
 	icon_state = "cult"
 	},
@@ -49712,7 +49660,6 @@
 /obj/item/ashtray/bronze,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor/interior/tatami,
 /area/desert_dam/building/bar/bar)
 "cQV" = (
@@ -50127,7 +50074,6 @@
 	},
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/south_tunnel_entrance)
 "cSp" = (
@@ -50179,7 +50125,6 @@
 	amount = 50
 	},
 /obj/effect/landmark/objective_landmark/medium,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/plating{
 	dir = 8;
@@ -50192,7 +50137,6 @@
 	amount = 50
 	},
 /obj/effect/landmark/objective_landmark/medium,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/plating,
 /area/desert_dam/building/substation/southwest)
@@ -50246,7 +50190,6 @@
 /obj/item/tool/stamp,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/south_tunnel_entrance)
 "cSG" = (
@@ -50533,7 +50476,6 @@
 	dir = 1
 	},
 /obj/effect/landmark/objective_landmark/medium,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison{
 	dir = 8;
@@ -51298,7 +51240,6 @@
 /obj/item/clothing/head/welding,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
@@ -51555,7 +51496,6 @@
 /obj/effect/spawner/random/toolbox,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
@@ -53570,7 +53510,6 @@
 	},
 /obj/effect/landmark/objective_landmark/science,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor/prison,
 /area/desert_dam/building/hydroponics/hydroponics)
 "dfU" = (
@@ -53639,7 +53578,6 @@
 /obj/structure/rack,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/landmark/objective_landmark/close,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison{
 	icon_state = "darkbrown2"
@@ -55154,7 +55092,6 @@
 	pixel_x = -6
 	},
 /obj/effect/landmark/objective_landmark/medium,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
 	icon_state = "dark2";
@@ -56010,7 +55947,6 @@
 "dya" = (
 /obj/structure/table,
 /obj/effect/landmark/objective_landmark/medium,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
 	icon_state = "dark";
@@ -56697,7 +56633,6 @@
 /obj/structure/table/woodentable/fancy,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor/wood,
 /area/desert_dam/building/water_treatment_one/hallway)
 "dBM" = (
@@ -57821,7 +57756,6 @@
 	},
 /obj/effect/spawner/random/toolbox,
 /obj/effect/landmark/objective_landmark/medium,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison{
 	dir = 8;
@@ -57833,7 +57767,6 @@
 /obj/structure/table,
 /obj/item/clothing/head/welding,
 /obj/effect/landmark/objective_landmark/medium,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison{
 	dir = 8;
@@ -57958,7 +57891,6 @@
 /obj/effect/spawner/random/toolbox,
 /obj/effect/landmark/objective_landmark/science,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
@@ -58888,7 +58820,6 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "darkbrown3";
@@ -59341,7 +59272,6 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor{
 	dir = 6;
 	icon_state = "darkbrown2";
@@ -62339,7 +62269,6 @@
 "dWu" = (
 /obj/structure/rack,
 /obj/effect/landmark/objective_landmark/medium,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/floodgate_control)
@@ -62358,7 +62287,6 @@
 	name = "crap_item"
 	},
 /obj/effect/landmark/objective_landmark/medium,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison{
 	dir = 10;
@@ -62440,7 +62368,6 @@
 	name = "crap_item"
 	},
 /obj/effect/landmark/objective_landmark/medium,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/floodgate_control)
@@ -63256,7 +63183,6 @@
 	},
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor/wood,
 /area/desert_dam/building/water_treatment_one/hallway)
 "eaX" = (
@@ -63292,7 +63218,6 @@
 	},
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -63409,7 +63334,6 @@
 	},
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/control_room)
 "ebB" = (
@@ -63424,7 +63348,6 @@
 /obj/structure/table,
 /obj/structure/machinery/light,
 /obj/effect/landmark/objective_landmark/medium,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/garage)
@@ -64538,7 +64461,6 @@
 /obj/structure/table,
 /obj/effect/landmark/objective_landmark/science,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor/prison,
 /area/desert_dam/building/hydroponics/hydroponics)
 "eJh" = (
@@ -64600,7 +64522,6 @@
 /obj/structure/table,
 /obj/effect/landmark/objective_landmark/science,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor{
 	icon_state = "white";
 	tag = "icon-white"
@@ -64825,7 +64746,6 @@
 "gUh" = (
 /obj/structure/rack,
 /obj/effect/landmark/objective_landmark/close,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
@@ -64891,7 +64811,6 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor/prison{
 	dir = 10;
 	tag = "icon-floor (SOUTHWEST)"
@@ -64979,7 +64898,6 @@
 "hOA" = (
 /obj/structure/table,
 /obj/effect/landmark/objective_landmark/medium,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison{
 	dir = 8;
@@ -65106,7 +65024,6 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "darkbrown3";
@@ -65186,7 +65103,6 @@
 "kUz" = (
 /obj/structure/table,
 /obj/effect/landmark/objective_landmark/medium,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
 	dir = 6;
@@ -65253,7 +65169,6 @@
 "lkZ" = (
 /obj/structure/table,
 /obj/effect/landmark/objective_landmark/medium,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
 	icon_state = "whiteyellow";
@@ -65291,7 +65206,6 @@
 	},
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/control_room)
 "lzZ" = (
@@ -65883,7 +65797,6 @@
 "pIg" = (
 /obj/structure/table,
 /obj/effect/landmark/objective_landmark/close,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison{
 	dir = 8;
@@ -66010,7 +65923,6 @@
 /obj/structure/table,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/control_room)
 "rdU" = (

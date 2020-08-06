@@ -492,7 +492,6 @@
 /obj/item/cell/hyper,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor/corsat{
 	icon_state = "yellow"
 	},
@@ -1046,7 +1045,6 @@
 /obj/structure/table/woodentable,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor/corsat{
 	dir = 8;
 	icon_state = "white"
@@ -1156,7 +1154,6 @@
 /obj/structure/table/woodentable,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor/corsat{
 	dir = 4;
 	icon_state = "white"
@@ -1194,7 +1191,6 @@
 "adl" = (
 /obj/structure/table/woodentable,
 /obj/effect/landmark/objective_landmark/close,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/corsat{
 	dir = 8;
@@ -1508,14 +1504,6 @@
 /obj/item/bedsheet/brown,
 /turf/open/floor/wood,
 /area/corsat/gamma/residential/east)
-"aej" = (
-/obj/structure/table/woodentable,
-/obj/item/newspaper,
-/obj/effect/landmark/objective_landmark/close,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
-/turf/open/floor/wood,
-/area/corsat/gamma/residential/east)
 "aek" = (
 /obj/structure/window/framed/corsat/hull,
 /turf/open/floor/plating,
@@ -1761,7 +1749,6 @@
 /obj/structure/table/woodentable,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor/corsat{
 	dir = 4;
 	icon_state = "white"
@@ -1781,7 +1768,6 @@
 	},
 /obj/structure/table/woodentable,
 /obj/effect/landmark/objective_landmark/close,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/corsat{
 	dir = 8;
@@ -6852,16 +6838,6 @@
 	icon_state = "retrosquares"
 	},
 /area/corsat/sigma/southeast)
-"ata" = (
-/obj/structure/table/woodentable,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
-/obj/effect/landmark/objective_landmark/close,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
-/turf/open/floor/wood,
-/area/corsat/gamma/residential/east)
 "atb" = (
 /obj/structure/rack,
 /obj/item/device/flashlight,
@@ -15395,7 +15371,6 @@
 	},
 /obj/effect/landmark/objective_landmark/science,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor/corsat{
 	icon_state = "lightplate"
 	},
@@ -16334,7 +16309,6 @@
 /obj/item/paper_bin,
 /obj/structure/table/woodentable/fancy,
 /obj/effect/landmark/objective_landmark/medium,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
 	dir = 8;
@@ -16394,7 +16368,6 @@
 /obj/item/tool/pen,
 /obj/structure/table/woodentable/fancy,
 /obj/effect/landmark/objective_landmark/medium,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
 	dir = 8;
@@ -16423,7 +16396,6 @@
 /obj/item/paper,
 /obj/structure/table/woodentable/fancy,
 /obj/effect/landmark/objective_landmark/medium,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
 	dir = 8;
@@ -16454,7 +16426,6 @@
 /obj/structure/table/almayer,
 /obj/item/folder/yellow,
 /obj/effect/landmark/objective_landmark/close,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/corsat{
 	icon_state = "plate"
@@ -16498,7 +16469,6 @@
 "aRs" = (
 /obj/structure/table/woodentable/fancy,
 /obj/effect/landmark/objective_landmark/medium,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
 	dir = 8;
@@ -16595,7 +16565,6 @@
 /obj/item/tool/pen,
 /obj/structure/table/woodentable/fancy,
 /obj/effect/landmark/objective_landmark/medium,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
 	dir = 8;
@@ -16741,7 +16710,6 @@
 "aRY" = (
 /obj/structure/table/woodentable,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -16767,7 +16735,6 @@
 	},
 /obj/structure/table/woodentable,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -16775,7 +16742,6 @@
 "aSd" = (
 /obj/structure/table/woodentable,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor/corsat{
 	dir = 8;
 	icon_state = "darkgreen"
@@ -16802,7 +16768,6 @@
 "aSg" = (
 /obj/structure/table/woodentable,
 /obj/effect/landmark/objective_landmark/close,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/corsat{
 	icon_state = "plate"
@@ -16823,7 +16788,6 @@
 /obj/item/bodybag,
 /obj/effect/landmark/objective_landmark/science,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor/corsat{
 	dir = 9;
 	icon_state = "greenwhite"
@@ -16917,7 +16881,6 @@
 	},
 /obj/structure/table/woodentable,
 /obj/effect/landmark/objective_landmark/close,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/corsat{
 	icon_state = "plate"
@@ -16935,7 +16898,6 @@
 "aSw" = (
 /obj/structure/table/almayer,
 /obj/effect/landmark/objective_landmark/close,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/corsat{
 	dir = 10;
@@ -17062,7 +17024,6 @@
 "aSI" = (
 /obj/structure/table/woodentable,
 /obj/effect/landmark/objective_landmark/medium,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/corsat{
 	icon_state = "plate"
@@ -17134,7 +17095,6 @@
 /obj/structure/table/almayer,
 /obj/effect/spawner/random/technology_scanner,
 /obj/effect/landmark/objective_landmark/close,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/corsat{
 	icon_state = "plate"
@@ -17225,7 +17185,6 @@
 /area/corsat/gamma/hallwaysouth)
 "aTd" = (
 /obj/structure/table/woodentable,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/corsat{
 	icon_state = "squares"
@@ -17254,7 +17213,6 @@
 	name = "crap_item"
 	},
 /obj/structure/table/woodentable,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/corsat{
 	icon_state = "squares"
@@ -18551,18 +18509,6 @@
 	icon_state = "arrow_north"
 	},
 /area/corsat/sigma/cargo)
-"aWe" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/obj/structure/table/woodentable,
-/obj/effect/landmark/objective_landmark/far,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
-/turf/open/floor/corsat{
-	icon_state = "plate"
-	},
-/area/corsat/gamma/hallwaysouth)
 "aWf" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -18594,7 +18540,6 @@
 	},
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -18624,7 +18569,6 @@
 	},
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -18922,7 +18866,6 @@
 	},
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor/wood,
 /area/corsat/sigma/cafe)
 "aXb" = (
@@ -19017,7 +18960,6 @@
 	},
 /obj/structure/table/woodentable,
 /obj/effect/landmark/objective_landmark/close,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/corsat{
 	icon_state = "plate"
@@ -19137,7 +19079,6 @@
 	},
 /obj/structure/table/woodentable,
 /obj/effect/landmark/objective_landmark/medium,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/corsat{
 	icon_state = "plate"
@@ -19166,7 +19107,6 @@
 	name = "crap_item"
 	},
 /obj/effect/landmark/objective_landmark/close,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/corsat{
 	icon_state = "plate"
@@ -19178,7 +19118,6 @@
 	},
 /obj/structure/table/woodentable,
 /obj/effect/landmark/objective_landmark/close,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/corsat{
 	icon_state = "plate"
@@ -19297,7 +19236,6 @@
 	},
 /obj/structure/table/woodentable,
 /obj/effect/landmark/objective_landmark/medium,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/corsat{
 	icon_state = "plate"
@@ -19306,7 +19244,6 @@
 "aXT" = (
 /obj/structure/table/woodentable,
 /obj/effect/landmark/objective_landmark/medium,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/corsat{
 	icon_state = "plate"
@@ -19529,7 +19466,6 @@
 	},
 /obj/structure/table/woodentable,
 /obj/effect/landmark/objective_landmark/medium,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/corsat{
 	icon_state = "plate"
@@ -19637,7 +19573,6 @@
 /obj/structure/table/woodentable,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -20278,7 +20213,6 @@
 	dir = 8
 	},
 /obj/effect/landmark/objective_landmark/close,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/corsat{
 	icon_state = "plate"
@@ -24024,8 +23958,6 @@
 "bjv" = (
 /obj/structure/table/almayer,
 /obj/effect/landmark/objective_landmark/medium,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/corsat{
 	icon_state = "squares"
@@ -25855,7 +25787,6 @@
 	},
 /obj/effect/landmark/objective_landmark/science,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "greenwhitecorner"
@@ -25905,7 +25836,6 @@
 /obj/item/trash/chips,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -26470,7 +26400,6 @@
 /obj/item/folder/black_random,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -26962,7 +26891,6 @@
 /obj/structure/table/almayer,
 /obj/effect/landmark/objective_landmark/science,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor/corsat{
 	icon_state = "lightplate"
 	},
@@ -27576,7 +27504,6 @@
 "buo" = (
 /obj/structure/table/woodentable,
 /obj/effect/landmark/objective_landmark/close,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/wood,
 /area/corsat/sigma/cafe)
@@ -27597,7 +27524,6 @@
 	},
 /obj/structure/table/woodentable,
 /obj/effect/landmark/objective_landmark/close,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/wood,
 /area/corsat/sigma/cafe)
@@ -28066,7 +27992,6 @@
 /obj/item/paper,
 /obj/item/tool/pen,
 /obj/effect/landmark/objective_landmark/medium,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/corsat{
 	icon_state = "squares"
@@ -28740,7 +28665,6 @@
 /obj/structure/rack,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor/corsat{
 	icon_state = "yellowcorner"
 	},
@@ -28757,7 +28681,6 @@
 /obj/structure/rack,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor/corsat{
 	dir = 6;
 	icon_state = "yellow"
@@ -29043,7 +28966,6 @@
 /obj/structure/table/almayer,
 /obj/item/ashtray/plastic,
 /obj/effect/landmark/objective_landmark/medium,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/corsat{
 	icon_state = "yellow"
@@ -29114,7 +29036,6 @@
 /obj/structure/table/woodentable,
 /obj/item/reagent_container/food/drinks/drinkingglass,
 /obj/effect/landmark/objective_landmark/close,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/wood,
 /area/corsat/sigma/cafe)
@@ -29365,7 +29286,6 @@
 /obj/structure/table/almayer,
 /obj/item/clothing/glasses/meson,
 /obj/effect/landmark/objective_landmark/medium,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/corsat{
 	icon_state = "yellow"
@@ -33704,7 +33624,6 @@
 /obj/item/folder/black_random,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor/corsat{
 	icon_state = "spiralplate"
 	},
@@ -33753,7 +33672,6 @@
 /obj/item/tool/pen/blue,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor/corsat{
 	icon_state = "spiralplate"
 	},
@@ -33798,7 +33716,6 @@
 	},
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor/corsat{
 	icon_state = "spiralplate"
 	},
@@ -33811,7 +33728,6 @@
 	},
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor/corsat{
 	icon_state = "spiralplate"
 	},
@@ -33981,7 +33897,6 @@
 /obj/structure/table/almayer,
 /obj/item/ashtray/bronze,
 /obj/effect/landmark/objective_landmark/medium,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/corsat{
 	icon_state = "spiralplate"
@@ -33999,7 +33914,6 @@
 /obj/structure/table/almayer,
 /obj/item/folder/black_random,
 /obj/effect/landmark/objective_landmark/medium,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/corsat{
 	icon_state = "spiralplate"
@@ -34011,7 +33925,6 @@
 /obj/item/paper,
 /obj/item/tool/pen/blue,
 /obj/effect/landmark/objective_landmark/medium,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/corsat{
 	icon_state = "spiralplate"
@@ -34194,7 +34107,6 @@
 /obj/effect/landmark/objective_landmark/close,
 /obj/item/pamphlet/powerloader,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor/corsat{
 	icon_state = "brown"
 	},
@@ -34204,7 +34116,6 @@
 /obj/item/tool/lighter/random,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor/corsat{
 	icon_state = "brown"
 	},
@@ -35249,7 +35160,6 @@
 /obj/structure/table/almayer,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/landmark/objective_landmark/close,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/corsat{
 	icon_state = "plate"
@@ -35259,7 +35169,6 @@
 /obj/structure/table/almayer,
 /obj/effect/spawner/random/tool,
 /obj/effect/landmark/objective_landmark/close,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/corsat{
 	icon_state = "plate"
@@ -35351,7 +35260,6 @@
 /obj/item/ashtray/plastic,
 /obj/item/clothing/glasses/welding,
 /obj/effect/landmark/objective_landmark/medium,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/corsat{
 	icon_state = "squares"
@@ -36242,7 +36150,6 @@
 /obj/item/reagent_container/food/drinks/drinkingglass,
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/landmark/objective_landmark/close,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/corsat{
 	dir = 1;
@@ -39365,14 +39272,6 @@
 	icon_state = "greenwhite"
 	},
 /area/corsat/gamma/medbay/lobby)
-"cTo" = (
-/obj/structure/table/woodentable,
-/obj/item/reagent_container/food/drinks/drinkingglass,
-/obj/effect/landmark/objective_landmark/close,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
-/turf/open/floor/wood,
-/area/corsat/sigma/cafe)
 "cTs" = (
 /obj/structure/stairs{
 	dir = 4
@@ -41735,7 +41634,6 @@
 "exY" = (
 /obj/structure/table/woodentable,
 /obj/effect/landmark/objective_landmark/far,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/corsat{
 	icon_state = "plate"
@@ -42573,7 +42471,6 @@
 /obj/structure/table/woodentable,
 /obj/item/device/flashlight/lamp,
 /obj/effect/landmark/objective_landmark/medium,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/wood,
 /area/corsat/gamma/rnr/library)
@@ -42904,13 +42801,6 @@
 	tag = "icon-mars_cave_15"
 	},
 /area/corsat/sigma/biodome)
-"fru" = (
-/obj/structure/table/woodentable,
-/obj/effect/landmark/objective_landmark/medium,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
-/turf/open/floor/wood,
-/area/corsat/gamma/rnr/library)
 "fsd" = (
 /obj/structure/table/reinforced,
 /obj/item/folder/red,
@@ -43106,7 +42996,6 @@
 /obj/structure/table/almayer,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor/corsat{
 	dir = 10;
 	icon_state = "whitebluefull"
@@ -43171,7 +43060,6 @@
 	name = "crap_item"
 	},
 /obj/effect/landmark/objective_landmark/close,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/wood,
 /area/corsat/gamma/residential/east)
@@ -43179,7 +43067,6 @@
 /obj/item/storage/box/masks,
 /obj/structure/table/almayer,
 /obj/effect/landmark/objective_landmark/science,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/corsat{
 	dir = 8;
@@ -44212,7 +44099,6 @@
 	},
 /obj/effect/landmark/objective_landmark/science,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor/corsat{
 	icon_state = "lightplate"
 	},
@@ -44376,7 +44262,6 @@
 	},
 /obj/structure/table/woodentable,
 /obj/effect/landmark/objective_landmark/close,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/wood,
 /area/corsat/gamma/residential/east)
@@ -44393,7 +44278,6 @@
 /obj/structure/table/almayer,
 /obj/item/device/flashlight/lamp,
 /obj/effect/landmark/objective_landmark/medium,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/corsat{
 	icon_state = "spiralplate"
@@ -44454,7 +44338,6 @@
 	dir = 4
 	},
 /obj/effect/landmark/objective_landmark/close,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/corsat{
 	icon_state = "plate"
@@ -44549,7 +44432,6 @@
 "gxu" = (
 /obj/structure/table/woodentable,
 /obj/effect/landmark/objective_landmark/close,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/corsat{
 	dir = 1;
@@ -45733,14 +45615,6 @@
 	icon_state = "marked"
 	},
 /area/corsat/sigma/airlock/control)
-"hmu" = (
-/obj/structure/table/woodentable,
-/obj/item/folder/blue,
-/obj/effect/landmark/objective_landmark/close,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
-/turf/open/floor/wood,
-/area/corsat/gamma/residential/east)
 "hmO" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -46704,7 +46578,6 @@
 /obj/item/storage/box/gloves,
 /obj/structure/table/almayer,
 /obj/effect/landmark/objective_landmark/science,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/corsat{
 	dir = 8;
@@ -48297,13 +48170,6 @@
 	icon_state = "purplewhite"
 	},
 /area/corsat/gamma/sigmaremote)
-"iYl" = (
-/obj/structure/table/woodentable,
-/obj/effect/landmark/objective_landmark/close,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
-/turf/open/floor/wood,
-/area/corsat/sigma/cafe)
 "iYG" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
@@ -48353,7 +48219,6 @@
 /obj/structure/table,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "whitetan"
@@ -48692,7 +48557,6 @@
 "jnA" = (
 /obj/structure/table/woodentable,
 /obj/effect/landmark/objective_landmark/medium,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/wood,
 /area/corsat/gamma/rnr/library)
@@ -49263,19 +49127,6 @@
 	},
 /turf/open/snow/layer3,
 /area/corsat/gamma/biodome)
-"jMZ" = (
-/obj/structure/barricade/handrail{
-	layer = 3
-	},
-/obj/structure/table/woodentable,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
-/obj/effect/landmark/objective_landmark/close,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
-/turf/open/floor/wood,
-/area/corsat/gamma/residential/east)
 "jNU" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -49663,7 +49514,6 @@
 /obj/item/tool/screwdriver,
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/landmark/objective_landmark/medium,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/corsat{
 	icon_state = "squares"
@@ -51433,7 +51283,6 @@
 /obj/item/toy/deck/uno,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -51501,7 +51350,6 @@
 /obj/item/toy/dice/d20,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -51704,7 +51552,6 @@
 /obj/effect/spawner/random/tech_supply,
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/landmark/objective_landmark/medium,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/corsat{
 	icon_state = "squares"
@@ -52110,7 +51957,6 @@
 	dir = 1
 	},
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -55224,7 +55070,6 @@
 /obj/structure/table/almayer,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor/corsat{
 	icon_state = "spiralplate"
 	},
@@ -55269,15 +55114,6 @@
 	icon_state = "red"
 	},
 /area/corsat/sigma/dorms)
-"nYk" = (
-/obj/structure/table/woodentable,
-/obj/effect/landmark/objective_landmark/far,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
-/turf/open/floor/corsat{
-	icon_state = "plate"
-	},
-/area/corsat/gamma/hallwaysouth)
 "nYn" = (
 /obj/structure/bed/chair/office/light{
 	dir = 4
@@ -56135,7 +55971,6 @@
 /obj/structure/table/gamblingtable,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -57398,7 +57233,6 @@
 /obj/structure/table,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor/corsat{
 	icon_state = "whitetan"
 	},
@@ -57538,7 +57372,6 @@
 	},
 /obj/structure/table/woodentable,
 /obj/effect/landmark/objective_landmark/medium,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/corsat{
 	icon_state = "plate"
@@ -58198,15 +58031,6 @@
 	},
 /turf/open/floor/plating,
 /area/corsat/omega/offices)
-"qfK" = (
-/obj/structure/table/woodentable,
-/obj/effect/landmark/objective_landmark/medium,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
-/turf/open/floor/corsat{
-	icon_state = "plate"
-	},
-/area/corsat/gamma/hallwaysouth)
 "qgg" = (
 /obj/structure/machinery/camera/autoname{
 	network = list("gamma")
@@ -58926,7 +58750,6 @@
 /obj/structure/table/woodentable,
 /obj/item/newspaper,
 /obj/effect/landmark/objective_landmark/close,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/wood,
 /area/corsat/gamma/residential/east)
@@ -59099,7 +58922,6 @@
 	name = "crap_item"
 	},
 /obj/effect/landmark/objective_landmark/close,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/wood,
 /area/corsat/gamma/residential/east)
@@ -59189,7 +59011,6 @@
 "qNM" = (
 /obj/structure/table/woodentable,
 /obj/effect/landmark/objective_landmark/close,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/wood,
 /area/corsat/gamma/residential/east)
@@ -59696,7 +59517,6 @@
 	},
 /obj/structure/table/woodentable,
 /obj/effect/landmark/objective_landmark/far,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/corsat{
 	icon_state = "plate"
@@ -60592,18 +60412,6 @@
 	tag = "icon-mars_cave_23"
 	},
 /area/corsat/sigma/biodome/scrapyard)
-"rQs" = (
-/obj/structure/table/almayer,
-/obj/item/clipboard,
-/obj/item/paper,
-/obj/item/tool/pen/blue,
-/obj/effect/landmark/objective_landmark/medium,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
-/turf/open/floor/corsat{
-	icon_state = "spiralplate"
-	},
-/area/corsat/sigma/south/offices)
 "rQD" = (
 /turf/open/floor/corsat{
 	dir = 1;
@@ -60727,15 +60535,6 @@
 	icon_state = "darkgreen"
 	},
 /area/corsat/sigma/hangar/monorail)
-"rTu" = (
-/obj/structure/table/woodentable,
-/obj/effect/landmark/objective_landmark/medium,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
-/turf/open/floor/corsat{
-	icon_state = "plate"
-	},
-/area/corsat/sigma/south)
 "rTw" = (
 /turf/open/floor/corsat{
 	dir = 8;
@@ -60972,7 +60771,6 @@
 /obj/structure/table,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "tan"
@@ -62259,7 +62057,6 @@
 /obj/structure/table/woodentable,
 /obj/item/folder/blue,
 /obj/effect/landmark/objective_landmark/close,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/wood,
 /area/corsat/gamma/residential/east)
@@ -63624,7 +63421,6 @@
 /obj/structure/table/almayer,
 /obj/effect/spawner/random/powercell,
 /obj/effect/landmark/objective_landmark/medium,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/corsat{
 	icon_state = "squares"
@@ -66490,7 +66286,6 @@
 "vSE" = (
 /obj/structure/table/almayer,
 /obj/effect/landmark/objective_landmark/science,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/corsat{
 	dir = 8;
@@ -67813,7 +67608,6 @@
 /obj/item/storage/fancy/cigarettes/arcturian_ace,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
 /turf/open/floor/wood,
 /area/corsat/gamma/residential/east)
 "wOX" = (
@@ -68523,16 +68317,6 @@
 	icon_state = "bluegreycorner"
 	},
 /area/corsat/sigma/hangar/office)
-"xsr" = (
-/obj/structure/table/almayer,
-/obj/item/ashtray/bronze,
-/obj/effect/landmark/objective_landmark/medium,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
-/turf/open/floor/corsat{
-	icon_state = "spiralplate"
-	},
-/area/corsat/sigma/south/offices)
 "xsE" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat{
@@ -68863,14 +68647,6 @@
 	icon_state = "retrosquareslight"
 	},
 /area/corsat/omega/complex)
-"xGN" = (
-/obj/structure/table/woodentable,
-/obj/item/device/flashlight/lamp,
-/obj/effect/landmark/objective_landmark/medium,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/m41aMK1,
-/turf/open/floor/wood,
-/area/corsat/gamma/rnr/library)
 "xHd" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	density = 0;
@@ -82434,8 +82210,8 @@ ssw
 jdt
 abs
 fxf
-aej
-ata
+qFq
+qKc
 abs
 aFl
 bHl
@@ -82682,7 +82458,7 @@ fxf
 aFU
 aFU
 abs
-jMZ
+fCK
 bHl
 ack
 uMD
@@ -84397,7 +84173,7 @@ fxf
 aFX
 aFX
 abs
-jMZ
+fCK
 bHl
 ack
 uMD
@@ -84639,7 +84415,7 @@ mea
 nWh
 abs
 fxf
-hmu
+sTD
 wOQ
 abs
 aFq
@@ -88139,7 +87915,7 @@ sGB
 sGB
 fmq
 bCo
-fru
+jnA
 bCq
 akt
 mCD
@@ -88380,11 +88156,11 @@ bCk
 asy
 gfk
 bCo
-fru
+jnA
 bCb
 fmq
 bCo
-xGN
+ffF
 bCr
 akt
 aSF
@@ -88625,11 +88401,11 @@ bCf
 asy
 bCe
 bCo
-xGN
+ffF
 bCb
 fmq
 bCo
-fru
+jnA
 bCq
 akt
 wbH
@@ -88639,7 +88415,7 @@ reh
 aqI
 kOd
 aSb
-qfK
+aSI
 aqK
 aaa
 aaa
@@ -88884,7 +88660,7 @@ iZu
 aqI
 kOd
 aSb
-qfK
+aSI
 aqK
 aaa
 aaa
@@ -89647,7 +89423,7 @@ aaa
 aqK
 aqI
 aqQ
-aWe
+rjv
 rFw
 aqI
 aqK
@@ -89892,7 +89668,7 @@ aaa
 anw
 aqI
 aqQ
-nYk
+exY
 aqX
 aqI
 anw
@@ -110789,8 +110565,8 @@ buy
 auB
 bth
 hxl
-rQs
-xsr
+bNE
+bNB
 aNv
 lbY
 auB
@@ -121321,7 +121097,7 @@ arJ
 arJ
 tpM
 auw
-rTu
+aXT
 ois
 pkP
 arJ
@@ -121755,7 +121531,7 @@ brt
 aUo
 adN
 buq
-cTo
+byu
 but
 bun
 add
@@ -122245,7 +122021,7 @@ buo
 uov
 dKn
 buq
-iYl
+buo
 bus
 bup
 add

@@ -152,6 +152,9 @@
 
 	if(!istype(X))
 		return
+	
+	if(!X.check_state())
+		return
 
 	if(!action_cooldown_check())
 		return
@@ -178,7 +181,7 @@
 	BD.caboom_trigger = TRUE
 	BD.caboom_left = BD.caboom_timer
 	BD.caboom_last_proc = 0
-	X.SetSlowed(BD.caboom_timer*1.5)
+	X.SetSuperslowed(BD.caboom_timer*2)
 
 	X.say(";FOR THE HIVE!!!")
 

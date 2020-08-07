@@ -31,3 +31,21 @@
 	plasma_cost = 0
 
 	var/ammo_type = /datum/ammo/xeno/bone_chips/spread/runner_skillshot
+
+/datum/action/xeno_action/activable/acider_acid
+	name = "Corrosive Acid"
+	action_icon_state = "corrosive_acid"
+	ability_name = "acider acid"
+	var/acid_type = /obj/effect/xenomorph/acid/strong
+	macro_path = /datum/action/xeno_action/verb/verb_acider_acid
+	ability_primacy = XENO_PRIMARY_ACTION_2
+	action_type = XENO_ACTION_CLICK
+	var/acid_cost = 100
+
+/datum/action/xeno_action/activable/acider_for_the_hive
+	name = "For the Hive!"
+	action_icon_state = "screech"
+	ability_name = "for the hive"
+	macro_path = /datum/action/xeno_action/verb/verb_acider_sacrifice
+	action_type = XENO_ACTION_ACTIVATE
+	var/minimal_acid = 200

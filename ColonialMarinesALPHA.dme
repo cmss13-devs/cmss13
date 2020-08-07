@@ -1360,6 +1360,7 @@
 #include "code\modules\mob\living\carbon\xenomorph\mutators\strains\praetorian\warden.dm"
 #include "code\modules\mob\living\carbon\xenomorph\mutators\strains\ravager\berserker.dm"
 #include "code\modules\mob\living\carbon\xenomorph\mutators\strains\ravager\hedgehog.dm"
+#include "code\modules\mob\living\carbon\xenomorph\mutators\strains\runner\acid.dm"
 #include "code\modules\mob\living\carbon\xenomorph\mutators\strains\sentinel\scatterspit.dm"
 #include "code\modules\mob\living\carbon\xenomorph\mutators\strains\warrior\boxer.dm"
 #include "code\modules\mob\living\silicon\alarm.dm"

@@ -55,3 +55,17 @@
 	..()
 	if (PF)
 		PF.flags_pass = SETUP_LIST_FLAGS(PASS_FLAGS_CRAWLER)
+
+/mob/living/carbon/Xenomorph/Runner/adjustBruteLoss(amount)
+	if(mutation_type == RUNNER_ACIDER && amount > 0)
+		var/datum/behavior_delegate/runner_acider/BD = behavior_delegate
+		if (!istype(BD))
+			BD.modify_acid(amount * BD.acid_brute_damage_conversion)
+	..()
+
+/mob/living/carbon/Xenomorph/Runner/adjustFireLoss(amount)
+	if(mutation_type == RUNNER_ACIDER && amount > 0)
+		var/datum/behavior_delegate/runner_acider/BD = behavior_delegate
+		if (istype(BD))
+			BD.modify_acid(amount * BD.acid_burn_damage_conversion)
+	..()

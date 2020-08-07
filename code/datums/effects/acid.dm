@@ -9,8 +9,8 @@
 	var/damage_in_total_obj = 50
 	var/acid_multiplier = 1
 
-/datum/effects/acid/New(var/atom/A, var/zone = "chest")
-	..()
+/datum/effects/acid/New(var/atom/A, var/mob/from = null, var/last_dmg_source = null, var/zone = "chest")
+	..(A, from, last_dmg_source, zone)
 	if(ishuman(A))
 		var/mob/living/carbon/human/H = A
 		H.update_effects()

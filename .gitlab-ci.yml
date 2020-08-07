@@ -2,11 +2,10 @@ image: i386/ubuntu:xenial
 
 stages:
   - build
-  - test
 
 variables:
   BYOND_MAJOR: "513"
-  BYOND_MINOR: "1510"
+  BYOND_MINOR: "1527"
 
 before_script:
   - apt-get update -qq

@@ -17,7 +17,7 @@
 
 	var/mob/living/carbon/Xenomorph/Runner/R = MS.xeno
 	R.mutation_type = RUNNER_ACIDER	
-	R.speed_modifier += XENO_SPEED_MODIFIER_SLOWEST
+	R.speed_modifier += XENO_SPEED_MODIFIER_SLOWER
 	apply_behavior_holder(R)
 	mutator_update_actions(R)
 	R.recalculate_everything()
@@ -34,10 +34,8 @@
 	var/caboom_timer = 20
 	var/acid_slash_regen = 5
 	var/acid_passive_regen = 1
-	var/acid_brute_damage_conversion = 1
-	var/acid_burn_damage_conversion = 1
 
-	var/melt_acid_cost = 100
+	var/melt_acid_cost = 200
 
 	var/list/caboom_sound = list('sound/effects/runner_charging_1.ogg','sound/effects/runner_charging_2.ogg')
 	var/caboom_loop = 1
@@ -124,13 +122,12 @@
 		var/damage = round((burn_range - dist) * max_burn_damage / burn_range)
 		M.apply_damage(damage, BURN)
 	playsound(bound_xeno, 'sound/effects/blobattack.ogg', 75)
-	add_timer(CALLBACK(src, /datum/behavior_delegate/runner_acider.proc/do_respawn), 30)
+	if(bound_xeno.client)
+		add_timer(CALLBACK(src, /datum/behavior_delegate/runner_acider.proc/do_respawn, bound_xeno.client), SECONDS_3)
 	bound_xeno.gib()
 
 
-/datum/behavior_delegate/runner_acider/proc/do_respawn()
-	if(!bound_xeno || !bound_xeno.hive)
-		return
+/datum/behavior_delegate/runner_acider/proc/do_respawn(var/client/C)
 	bound_xeno.hive.stored_larva++
-	if(!bound_xeno.hive.spawn_pool || !bound_xeno.hive.spawn_pool.spawn_pooled_larva(bound_xeno))
+	if(!bound_xeno.hive.spawn_pool || !bound_xeno.hive.spawn_pool.spawn_pooled_larva(C.mob))
 		bound_xeno.hive.stored_larva--

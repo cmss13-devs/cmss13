@@ -431,7 +431,7 @@ Additional game mode variables.
 	to_chat(xeno_candidate, "JAS01: Something went wrong, tell a coder.")
 
 /datum/game_mode/proc/transfer_xeno(var/xeno_candidate, mob/living/new_xeno)
-	if(!xeno_candidate || !isXeno(new_xeno))
+	if(!xeno_candidate || !isXeno(new_xeno) || QDELETED(new_xeno))
 		return FALSE
 	var/datum/mind/xeno_candidate_mind
 	if(ismind(xeno_candidate))

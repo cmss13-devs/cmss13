@@ -273,7 +273,7 @@
 					X.use_plasma(plasma_cost)
 					to_chat(target, "[queen_order]")
 					log_admin("[queen_order]")
-					message_admins("[key_name_admin(X)] has given the following Queen order to [target]: \"[input]\"", 1)
+					message_staff("[key_name_admin(X)] has given the following Queen order to [target]: \"[input]\"", 1)
 
 	else
 		to_chat(X, SPAN_WARNING("You must overwatch the Xenomorph you want to give orders to."))
@@ -481,7 +481,7 @@
 
 		INVOKE_ASYNC(new_xeno, /mob/living/carbon/Xenomorph.proc/age_xeno, T.age) //a young Crusher de-evolves into a MATURE Hunter
 
-		message_admins("[key_name_admin(X)] has deevolved [key_name_admin(T)]. Reason: [reason]")
+		message_staff("[key_name_admin(X)] has deevolved [key_name_admin(T)]. Reason: [reason]")
 
 		if(round_statistics && !new_xeno.statistic_exempt)
 			round_statistics.track_new_participant(T.faction, -1) //so an evolved xeno doesn't count as two.

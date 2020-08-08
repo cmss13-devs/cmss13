@@ -434,8 +434,8 @@
 						if (A.type == O.type)
 							A.vars[variable] = O.vars[variable]
 
-			message_admins("[key_name_admin(src)] mass modified [original_name]'s [variable] to their matrix \"[matrix_name]\" with columns ([MX.a], [MX.b], [MX.c]), ([MX.d], [MX.e], [MX.f])", 1)
+			message_staff("[key_name_admin(src)] mass modified [original_name]'s [variable] to their matrix \"[matrix_name]\" with columns ([MX.a], [MX.b], [MX.c]), ([MX.d], [MX.e], [MX.f])", 1)
 
 	// Matrix edits make their own custom log
 	if(class != "matrix")
-		message_admins("[key_name_admin(src)] mass modified [original_name]'s [variable] to [O.vars[variable]]", 1)
+		message_staff("[key_name_admin(src)] mass modified [original_name]'s [variable] to [O.vars[variable]]", 1)

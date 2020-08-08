@@ -170,7 +170,7 @@
 		i++
 	
 	if(source_mob)//so we don't message for simulations
-		message_admins("[key_name(source_mob)] detonated custom explosive by [key_name(creator)]: [name] (REAGENTS: [reagent_list_text]) in [get_area(src)] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[loc.x];Y=[loc.y];Z=[loc.z]'>JMP</a>)", loc.x, loc.y, loc.z)
+		msg_admin_niche("[key_name(source_mob)] detonated custom explosive by [key_name(creator)]: [name] (REAGENTS: [reagent_list_text]) in [get_area(src)] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[loc.x];Y=[loc.y];Z=[loc.z]'>JMP</a>)", loc.x, loc.y, loc.z)
 		reagents.source_mob = source_mob
 
 	if(containers.len < 2)

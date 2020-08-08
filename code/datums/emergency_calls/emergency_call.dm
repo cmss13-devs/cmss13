@@ -169,7 +169,7 @@
 	ticker.mode.picked_calls += src
 
 	show_join_message() //Show our potential candidates the message to let them join.
-	message_admins("Distress beacon: '[name]' activated [src.hostility? "[SPAN_WARNING("(THEY ARE HOSTILE)")]":"(they are friendly)"]. Looking for candidates.")
+	message_staff("Distress beacon: '[name]' activated [src.hostility? "[SPAN_WARNING("(THEY ARE HOSTILE)")]":"(they are friendly)"]. Looking for candidates.")
 
 	if(announce)
 		marine_announcement("A distress beacon has been launched from the [MAIN_SHIP_NAME].", "Priority Alert", 'sound/AI/distressbeacon.ogg')
@@ -181,7 +181,7 @@
 		ticker.mode.picked_calls -= src
 
 	if(candidates.len < mob_min)
-		message_admins("Aborting distress beacon, not enough candidates: found [candidates.len].")
+		message_staff("Aborting distress beacon, not enough candidates: found [candidates.len].")
 		members = list() //Empty the members list.
 		candidates = list()
 
@@ -214,7 +214,7 @@
 		if(announce)
 			marine_announcement(dispatch_message, "Distress Beacon", 'sound/AI/distressreceived.ogg') //Announcement that the Distress Beacon has been answered, does not hint towards the chosen ERT
 
-		message_admins("Distress beacon: [src.name] finalized, setting up candidates.")
+		message_staff("Distress beacon: [src.name] finalized, setting up candidates.")
 
 		//Let the deadchat know what's up since they are usually curious
 		for(var/mob/dead/observer/M in player_list)
@@ -224,7 +224,7 @@
 		var/datum/shuttle/ferry/shuttle = shuttle_controller.shuttles[shuttle_id]
 		if(!shuttle || !istype(shuttle))
 			if(shuttle_id) //Cryo distress doesn't have a shuttle
-				message_admins("Warning: Distress shuttle not found. Aborting.")
+				message_staff("Warning: Distress shuttle not found. Aborting.")
 				return
 		spawn_items()
 

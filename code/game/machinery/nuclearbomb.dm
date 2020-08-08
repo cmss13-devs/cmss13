@@ -198,12 +198,12 @@ var/bomb_set = FALSE
 						explosion_time = world.time + timeleft
 						start_processing()
 						announce_to_players()
-						message_admins("[src] has been activated by [key_name(usr, 1)](<A HREF='?_src_=admin_holder;adminplayerobservejump=[usr]'>JMP</A>)")
+						message_staff("[src] has been activated by [key_name(usr, 1)](<A HREF='?_src_=admin_holder;adminplayerobservejump=[usr]'>JMP</A>)")
 					else
 						bomb_set = FALSE
 				else
 					disable()
-					message_admins("[src] has been deactivated by [key_name(usr, 1)](<A HREF='?_src_=admin_holder;adminplayerobservejump=[usr]'>JMP</A>)")
+					message_staff("[src] has been deactivated by [key_name(usr, 1)](<A HREF='?_src_=admin_holder;adminplayerobservejump=[usr]'>JMP</A>)")
 				playsound(src.loc, 'sound/effects/thud.ogg', 100, 1)
 			being_used = FALSE
 
@@ -370,7 +370,7 @@ var/bomb_set = FALSE
 
 /obj/structure/machinery/nuclearbomb/Dispose()
 	if(timing != -1)
-		message_admins("[src] has been unexpectedly deleted at ([x],[y],[x]). (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP</a>)")
+		message_staff("[src] has been unexpectedly deleted at ([x],[y],[x]). (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP</a>)")
 		log_game("[src] has been unexpectedly deleted at ([x],[y],[x]).")
 	bomb_set = FALSE
 	..()

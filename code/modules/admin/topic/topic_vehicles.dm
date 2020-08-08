@@ -11,7 +11,7 @@
 
 	for(var/obj/vehicle/multitile/CA in view())
 		CA.handle_all_modules_broken()
-		message_admins("[src] forcibly removed all players from [CA]")
+		message_staff("[src] forcibly removed all players from [CA]")
 
 /client/proc/remove_clamp_from_vic()
 	set name = "Remove Clamp From Vehicle"
@@ -21,4 +21,4 @@
 		if(!CA.clamped)
 			return
 		CA.detach_clamp()
-		message_admins("[src] forcibly removed Vehicle Clamp [CA]")
+		message_staff("[src] forcibly removed Vehicle Clamp [CA]")

@@ -32,7 +32,7 @@ var/list/datum/decorator/manual/admin_runtime/admin_runtime_decorators = list()
 
 	admin_runtime_decorators.Add(SSdecorator.add_decorator(/datum/decorator/manual/admin_runtime, types, subtypes, field, value))
 
-	log_and_message_admins("[src] activated new decorator id: [admin_runtime_decorators.len] set for [hint_text] `[types]` for field `[field]` set value `[value]`")
+	log_and_message_staff("[src] activated new decorator id: [admin_runtime_decorators.len] set for [hint_text] `[types]` for field `[field]` set value `[value]`")
 
 /client/proc/deactivate_autoreplacer()
 	set category = "Event"
@@ -49,7 +49,7 @@ var/list/datum/decorator/manual/admin_runtime/admin_runtime_decorators = list()
 	
 	admin_runtime_decorators[num_value].enabled = FALSE
 
-	log_and_message_admins("[src] deactivated decorator id: [num_value]")
+	log_and_message_staff("[src] deactivated decorator id: [num_value]")
 
 /client/proc/rerun_decorators()
 	set category = "Event"
@@ -65,4 +65,4 @@ var/list/datum/decorator/manual/admin_runtime/admin_runtime_decorators = list()
 
 	SSdecorator.force_update()
 
-	log_and_message_admins("[src] rerun all decorators.")
+	log_and_message_staff("[src] rerun all decorators.")

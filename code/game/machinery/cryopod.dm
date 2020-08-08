@@ -425,7 +425,7 @@ var/global/list/frozen_items = list(SQUAD_NAME_1 = list(), SQUAD_NAME_2 = list()
 
 			//Book keeping!
 			var/location = get_area_name(src)
-			message_admins(SPAN_NOTICE("[key_name_admin(M)] has entered a stasis pod at [location]."))
+			message_staff(SPAN_NOTICE("[key_name_admin(M)] has entered a stasis pod at [location]."))
 
 			//Despawning occurs when process() is called with an occupant without a client.
 			add_fingerprint(user)
@@ -499,7 +499,7 @@ var/global/list/frozen_items = list(SQUAD_NAME_1 = list(), SQUAD_NAME_2 = list()
 	time_entered = world.time
 	start_processing()
 	var/turf/location = get_turf(src)
-	message_admins(SPAN_NOTICE("[key_name_admin(M)] has entered a stasis pod at [location]."))
+	message_staff(SPAN_NOTICE("[key_name_admin(M)] has entered a stasis pod at [location]."))
 	playsound(src, 'sound/machines/hydraulics_3.ogg', 30)
 
 /obj/structure/machinery/cryopod/proc/go_out()

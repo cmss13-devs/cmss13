@@ -393,7 +393,7 @@ body
 		if(!new_name || !M)	
 			return
 
-		message_admins("Admin [key_name_admin(usr)] renamed [key_name_admin(M)] to [new_name].")
+		message_staff("Admin [key_name_admin(usr)] renamed [key_name_admin(M)] to [new_name].")
 		M.fully_replace_character_name(M.real_name,new_name)
 		href_list["datumrefresh"] = href_list["rename"]
 
@@ -468,7 +468,7 @@ body
 			return
 
 		log_admin("[key_name(usr)] has toggled buildmode on [key_name(M)]")
-		message_admins("[key_name_admin(usr)] has toggled buildmode on [key_name_admin(M)]")
+		message_staff("[key_name_admin(usr)] has toggled buildmode on [key_name_admin(M)]")
 
 		togglebuildmode(M)
 		href_list["datumrefresh"] = href_list["build_mode"]
@@ -538,7 +538,7 @@ body
 				if(!i)
 					to_chat(usr, "No objects of this type exist")
 					return
-				message_admins(SPAN_NOTICE("[key_name(usr)] deleted all objects of type [O_type] ([i] objects deleted) "))
+				message_staff(SPAN_NOTICE("[key_name(usr)] deleted all objects of type [O_type] ([i] objects deleted) "))
 			if("Type and subtypes")
 				var/i = 0
 				for(var/obj/Obj in object_list)
@@ -548,7 +548,7 @@ body
 				if(!i)
 					to_chat(usr, "No objects of this type exist")
 					return
-				message_admins(SPAN_NOTICE("[key_name(usr)] deleted all objects of type or subtype of [O_type] ([i] objects deleted) "))
+				message_staff(SPAN_NOTICE("[key_name(usr)] deleted all objects of type or subtype of [O_type] ([i] objects deleted) "))
 
 	else if(href_list["enablepixelscaling"])
 		if(!check_rights(R_DEBUG|R_VAREDIT))	
@@ -570,7 +570,7 @@ body
 			return
 
 		cell_explosion(A, 150, 100)
-		log_and_message_admins("[key_name(src, TRUE)] has exploded [A]!")
+		message_staff("[key_name(src, TRUE)] has exploded [A]!")
 		href_list["datumrefresh"] = href_list["explode"]
 
 	else if(href_list["emp"])
@@ -1069,7 +1069,7 @@ body
 		L.updatehealth()
 
 		if(amount != 0)
-			message_admins(SPAN_NOTICE("[key_name(usr)] dealt [amount] amount of [Text] damage to [L] "))
+			message_staff(SPAN_NOTICE("[key_name(usr)] dealt [amount] amount of [Text] damage to [L] "))
 			href_list["datumrefresh"] = href_list["mobToDamage"]
 
 	else if(href_list["setmatrix"])

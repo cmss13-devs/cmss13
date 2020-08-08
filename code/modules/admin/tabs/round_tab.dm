@@ -14,7 +14,7 @@
 			return
 		if(value)
 			ticker.mode.pred_maximum_num = value
-			message_admins(SPAN_NOTICE("[key_name_admin(usr)] adjusted pred amount to [value]."))
+			message_staff(SPAN_NOTICE("[key_name_admin(usr)] adjusted pred amount to [value]."))
 
 /datum/admins/proc/force_predator_round()
 	set name = "P: Force Predator Round"
@@ -37,7 +37,7 @@
 		to_chat(usr, "The Hunt is already in progress.")
 		return
 
-	message_admins(SPAN_NOTICE("[key_name_admin(usr)] admin-forced a predator round."))
+	message_staff(SPAN_NOTICE("[key_name_admin(usr)] admin-forced a predator round."))
 	return
 
 /client/proc/free_slot()
@@ -84,7 +84,7 @@
 		return
 	if(!RoleAuthority.modify_role(J, num))
 		to_chat(usr, SPAN_BOLDNOTICE("Can't set job slots to be less than amount of log-ins or you are setting amount of slots less than minimal. Free slots first."))
-	message_admins(SPAN_NOTICE("[key_name(usr)] adjusted job slots of [J.title] to be [num]."))
+	message_staff(SPAN_NOTICE("[key_name(usr)] adjusted job slots of [J.title] to be [num]."))
 
 /client/proc/check_antagonists()
 	set name = "S: Round Status"
@@ -109,7 +109,7 @@
 		return
 
 	ticker.mode.round_finished = MODE_INFESTATION_DRAW_DEATH
-	message_admins(SPAN_NOTICE("[key_name(usr)] has made the round end early."))
+	message_staff(SPAN_NOTICE("[key_name(usr)] has made the round end early."))
 	for(var/client/C in admins)
 		to_chat(C, {"
 		<hr>
@@ -127,7 +127,7 @@
 		return
 	if (!ticker || ticker.current_state != GAME_STATE_PREGAME)
 		ticker.delay_end = !ticker.delay_end
-		message_admins("[SPAN_NOTICE("[key_name(usr)] [ticker.delay_end ? "delayed the round end" : "has made the round end normally"].")]")
+		message_staff("[SPAN_NOTICE("[key_name(usr)] [ticker.delay_end ? "delayed the round end" : "has made the round end normally"].")]")
 		for(var/client/C in admins)
 			to_chat(C, {"<hr>
 			[SPAN_CENTERBOLD("Staff-Only Alert: <EM>[usr.key]</EM> [ticker.delay_end ? "delayed the round end" : "has made the round end normally"]")]
@@ -158,7 +158,7 @@
 		return
 	if (ticker.current_state == GAME_STATE_PREGAME)
 		ticker.current_state = GAME_STATE_SETTING_UP
-		message_admins(SPAN_BLUE("[usr.key] has started the game."))
+		message_staff(SPAN_BLUE("[usr.key] has started the game."))
 		 
 		return TRUE
 	else

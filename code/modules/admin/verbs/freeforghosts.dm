@@ -8,7 +8,7 @@
 
 	free_for_ghosts(M)
 
-	message_admins(SPAN_NOTICE("[key_name_admin(usr)] freed [key_name(M)] for ghosts to take."))
+	message_staff(SPAN_NOTICE("[key_name_admin(usr)] freed [key_name(M)] for ghosts to take."))
 
 /client/proc/free_for_ghosts(var/mob/living/M in mob_list)
 	if(!ismob(M))

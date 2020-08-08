@@ -16,7 +16,7 @@
 		return
 	if (M.client)
 		M.ghostize(FALSE)
-	message_admins("[key_name_admin(usr)] modified [key_name(M)]'s ckey to [new_ckey]", 1)
+	message_staff("[key_name_admin(usr)] modified [key_name(M)]'s ckey to [new_ckey]", 1)
 	 
 	M.ckey = new_ckey
 	var/mob/living/carbon/Xenomorph/XNO = M
@@ -80,7 +80,7 @@
 
 	H.add_hud_to(M)
 	to_chat(src, SPAN_INFO("[hud_choice] enabled."))
-	message_admins(SPAN_INFO("[key_name(usr)] has given a [hud_choice] to [M]."))
+	message_staff(SPAN_INFO("[key_name(usr)] has given a [hud_choice] to [M]."))
 
 /client/proc/cmd_admin_gib(mob/M as mob in mob_list)
 	set category = "Special Verbs"
@@ -93,7 +93,7 @@
 	//Due to the delay here its easy for something to have happened to the mob
 	if(!M)	return
 
-	message_admins("[key_name_admin(usr)] has gibbed [key_name_admin(M)]", 1)
+	message_staff("[key_name_admin(usr)] has gibbed [key_name_admin(M)]", 1)
 
 	if(istype(M, /mob/dead/observer))
 		gibs(M.loc, M.viruses)
@@ -179,7 +179,7 @@
 		return
 
 	to_chat(M, SPAN_ANNOUNCEMENT_HEADER_BLUE(msg))
-	message_admins(SPAN_NOTICE("\bold DirectNarrate: [key_name(usr)] to ([M.name]/[M.key]): [msg]"), 1)
+	message_staff(SPAN_NOTICE("\bold DirectNarrate: [key_name(usr)] to ([M.name]/[M.key]): [msg]"), 1)
 
 /client/proc/cmd_admin_attack_log(mob/M as mob in mob_list)
 	set name = "Attack Log"
@@ -196,9 +196,9 @@
 	var/turf/T = get_turf(O)
 
 	if(T)
-		message_admins("[key_name(usr)] has possessed [O] ([O.type]) at ([T.x], [T.y], [T.z])", 1)
+		message_staff("[key_name(usr)] has possessed [O] ([O.type]) at ([T.x], [T.y], [T.z])", 1)
 	else
-		message_admins("[key_name(usr)] has possessed [O] ([O.type]) at an unknown location", 1)
+		message_staff("[key_name(usr)] has possessed [O] ([O.type]) at an unknown location", 1)
 
 	if(!usr.control_object) //If you're not already possessing something...
 		usr.name_archive = usr.real_name
@@ -241,7 +241,7 @@
 		if(istype(W,/obj/item/alien_embryo)) continue
 		M.drop_inv_item_on_ground(W)
 
-	message_admins("[key_name_admin(usr)] made [key_name_admin(M)] drop everything!")
+	message_staff("[key_name_admin(usr)] made [key_name_admin(M)] drop everything!")
 
 /client/proc/cmd_admin_change_their_hivenumber(var/mob/living/carbon/H)
 	set name = "Change Hivenumber"
@@ -279,7 +279,7 @@
 		if(was_leader && (!hive.leading_cult_sl || hive.leading_cult_sl.stat == DEAD))
 			hive.leading_cult_sl = H
 	 
-	message_admins(SPAN_NOTICE("[key_name(src)] changed hivenumber of [H] to [H.hivenumber]."))
+	message_staff(SPAN_NOTICE("[key_name(src)] changed hivenumber of [H] to [H.hivenumber]."))
 
 
 /client/proc/cmd_admin_change_their_name(var/mob/living/carbon/X)
@@ -304,7 +304,7 @@
 			if(H.wear_id.assignment)
 				H.wear_id.name += " ([H.wear_id.assignment])"
 	 
-	message_admins(SPAN_NOTICE("[key_name(src)] changed name of [old_name] to [newname]."))
+	message_staff(SPAN_NOTICE("[key_name(src)] changed name of [old_name] to [newname]."))
 
 /datum/admins/proc/togglesleep(var/mob/living/M as mob in mob_list)
 	set name = "Toggle Sleeping"

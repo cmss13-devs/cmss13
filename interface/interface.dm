@@ -168,13 +168,13 @@ Admin:
 			keysend_tripped = TRUE		
 			next_keysend_trip_reset = world.time + (2 SECONDS)
 		else
-			message_admins("Client [ckey] was just autokicked for flooding keysends; likely abuse but potentially lagspike.")
+			message_staff("Client [ckey] was just autokicked for flooding keysends; likely abuse but potentially lagspike.")
 			QDEL_IN(src, 1)
 			return
 
 	///Check if the key is short enough to even be a real key
 	if(LAZYLEN(_key) > MAX_KEYPRESS_COMMANDLENGTH)
-		message_admins("Client [ckey] just attempted to send an invalid keypress. Keymessage was over [MAX_KEYPRESS_COMMANDLENGTH] characters, autokicking due to likely abuse.")
+		message_staff("Client [ckey] just attempted to send an invalid keypress. Keymessage was over [MAX_KEYPRESS_COMMANDLENGTH] characters, autokicking due to likely abuse.")
 		QDEL_IN(src, 1)
 		return
 

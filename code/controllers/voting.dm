@@ -368,7 +368,7 @@ var/force_mapdaemon_vote = 0
 	force_mapdaemon_vote = !force_mapdaemon_vote
 	to_chat(src, SPAN_NOTICE("The server will [force_mapdaemon_vote ? "now" : "no longer"] tell Mapdaemon to start a vote the next time possible."))
 
-	message_admins("[src] is attempting to force a MapDaemon vote.")
+	message_staff("[src] is attempting to force a MapDaemon vote.")
 
 //Uses an invalid ckey to rig the votes
 //Special case for }}} handled in World/Topic()
@@ -385,7 +385,7 @@ var/force_mapdaemon_vote = 0
 
 	to_chat(src, SPAN_NOTICE("You have forced the next map to be [selection]"))
 
-	message_admins("[src] just forced the next map to be [selection].")
+	message_staff("[src] just forced the next map to be [selection].")
 
 	player_votes["}}}"] = selection //}}} is an invalid ckey so we won't be in risk of someone using this cheekily
 
@@ -402,7 +402,7 @@ var/enable_map_vote = 1
 	to_world(SPAN_NOTICE("[src] has toggled the map vote [enable_map_vote ? "on" : "off"]"))
 	to_chat(src, SPAN_NOTICE("You have toggled the map vote [enable_map_vote ? "on" : "off"]"))
 
-	message_admins("[src] just toggled the map vote [enable_map_vote ? "on" : "off"].")
+	message_staff("[src] just toggled the map vote [enable_map_vote ? "on" : "off"].")
 
 /client/proc/showVotableMaps()
 	set name = "M: List Maps"
@@ -435,12 +435,12 @@ var/enable_map_vote = 1
 				alert("That option was already available.")
 				return
 			NEXT_MAP_CANDIDATES.Add(selection)
-			message_admins("[src] just added [selection] to the map pool.")
+			message_staff("[src] just added [selection] to the map pool.")
 		if("Remove")
 			var/selection = input("Pick a map to remove from the pool") as null|anything in NEXT_MAP_CANDIDATES
 			if(!selection || !src) return
 			NEXT_MAP_CANDIDATES.Remove(selection)
-			message_admins("[src] just removed [selection] from the map pool.")
+			message_staff("[src] just removed [selection] from the map pool.")
 
 var/kill_map_daemon = 0
 /client/proc/killMapDaemon()
@@ -452,7 +452,7 @@ var/kill_map_daemon = 0
 	kill_map_daemon = 1
 
 	alert("MapDaemon will be killed on next round-end check.")
-	message_admins("[src] just killed MapDaemon. It may be restarted with \"Map Vote - Revive MapDaemon\".")
+	message_staff("[src] just killed MapDaemon. It may be restarted with \"Map Vote - Revive MapDaemon\".")
 
 /client/proc/reviveMapDaemon()
 	set name = "M: Revive MapDaemon"
@@ -460,7 +460,7 @@ var/kill_map_daemon = 0
 
 	kill_map_daemon = 0
 
-	message_admins("[src] is attempting to restart MapDaemon.")
+	message_staff("[src] is attempting to restart MapDaemon.")
 	
 	run_mapdaemon_batch()
 

@@ -104,35 +104,35 @@
 				if(!EvacuationAuthority.initiate_evacuation())
 					to_chat(usr, SPAN_WARNING("You are unable to initiate an evacuation right now!"))
 				else
-					message_admins(SPAN_NOTICE("[key_name_admin(usr)] called an evacuation."), 1)
+					message_staff(SPAN_NOTICE("[key_name_admin(usr)] called an evacuation."), 1)
 
 			if("cancel_evac")
 				if(!EvacuationAuthority.cancel_evacuation())
 					to_chat(usr, SPAN_WARNING("You are unable to cancel an evacuation right now!"))
 				else
-					message_admins(SPAN_NOTICE("[key_name_admin(usr)] canceled an evacuation."), 1)
+					message_staff(SPAN_NOTICE("[key_name_admin(usr)] canceled an evacuation."), 1)
 
 			if("toggle_evac")
 				EvacuationAuthority.flags_scuttle ^= FLAGS_EVACUATION_DENY
-				message_admins("[key_name_admin(usr)] has [EvacuationAuthority.flags_scuttle & FLAGS_EVACUATION_DENY ? "forbidden" : "allowed"] ship-wide evacuation.")
+				message_staff("[key_name_admin(usr)] has [EvacuationAuthority.flags_scuttle & FLAGS_EVACUATION_DENY ? "forbidden" : "allowed"] ship-wide evacuation.")
 
 			if("force_evac")
 				if(!EvacuationAuthority.begin_launch())
 					to_chat(usr, SPAN_WARNING("You are unable to launch the pods directly right now!"))
 				else
-					message_admins(SPAN_NOTICE("[key_name_admin(usr)] force-launched the escape pods."), 1)
+					message_staff(SPAN_NOTICE("[key_name_admin(usr)] force-launched the escape pods."), 1)
 
 			if("init_dest")
 				if(!EvacuationAuthority.enable_self_destruct())
 					to_chat(usr, SPAN_WARNING("You are unable to authorize the self-destruct right now!"))
 				else
-					message_admins(SPAN_NOTICE("[key_name_admin(usr)] force-enabled the self-destruct system."), 1)
+					message_staff(SPAN_NOTICE("[key_name_admin(usr)] force-enabled the self-destruct system."), 1)
 
 			if("cancel_dest")
 				if(!EvacuationAuthority.cancel_self_destruct(1))
 					to_chat(usr, SPAN_WARNING("You are unable to cancel the self-destruct right now!"))
 				else
-					message_admins(SPAN_NOTICE("[key_name_admin(usr)] canceled the self-destruct system."), 1)
+					message_staff(SPAN_NOTICE("[key_name_admin(usr)] canceled the self-destruct system."), 1)
 
 			if("use_dest")
 
@@ -145,11 +145,11 @@
 					return
 				if(alert("Are you sure you want to destroy the Almayer right now?",, "Yes", "Cancel") == "Cancel") return
 
-				message_admins(SPAN_NOTICE("[key_name_admin(usr)] forced the self-destrust system, destroying the [MAIN_SHIP_NAME]."), 1)
+				message_staff(SPAN_NOTICE("[key_name_admin(usr)] forced the self-destrust system, destroying the [MAIN_SHIP_NAME]."), 1)
 
 			if("toggle_dest")
 				EvacuationAuthority.flags_scuttle ^= FLAGS_SELF_DESTRUCT_DENY
-				message_admins("[key_name_admin(usr)] has [EvacuationAuthority.flags_scuttle & FLAGS_SELF_DESTRUCT_DENY ? "forbidden" : "allowed"] the self-destruct system.")
+				message_staff("[key_name_admin(usr)] has [EvacuationAuthority.flags_scuttle & FLAGS_SELF_DESTRUCT_DENY ? "forbidden" : "allowed"] the self-destruct system.")
 
 //======================================================
 //======================================================
@@ -158,7 +158,7 @@
 		if(!check_rights(R_SERVER))	return
 
 		ticker.delay_end = !ticker.delay_end
-		message_admins(SPAN_NOTICE("[key_name(usr)] [ticker.delay_end ? "delayed the round end" : "has made the round end normally"]."), 1)
+		message_staff(SPAN_NOTICE("[key_name(usr)] [ticker.delay_end ? "delayed the round end" : "has made the round end normally"]."), 1)
 
 	else if(href_list["simplemake"])
 
@@ -174,7 +174,7 @@
 			if("Cancel")	return
 			if("Yes")		delmob = 1
 
-		message_admins(SPAN_NOTICE("[key_name_admin(usr)] has used rudimentary transformation on [key_name_admin(M)]. Transforming to [href_list["simplemake"]]; deletemob=[delmob]"), 1)
+		message_staff(SPAN_NOTICE("[key_name_admin(usr)] has used rudimentary transformation on [key_name_admin(M)]. Transforming to [href_list["simplemake"]]; deletemob=[delmob]"), 1)
 
 		var/mob/transformed
 		var/hivenumber = XENO_HIVE_NORMAL
@@ -260,7 +260,7 @@
 		if(!reason)	return
 
 		ban_unban_log_save("[key_name(usr)] upgraded [banned_key]'s ban to a permaban. Reason: [sanitize(reason)]")
-		message_admins(SPAN_NOTICE("[key_name_admin(usr)] upgraded [banned_key]'s ban to a permaban. Reason: [sanitize(reason)]"), 1)
+		message_staff(SPAN_NOTICE("[key_name_admin(usr)] upgraded [banned_key]'s ban to a permaban. Reason: [sanitize(reason)]"), 1)
 		Banlist.cd = "/base/[banfolder]"
 		Banlist["reason"] << sanitize(reason)
 		Banlist["temp"] << 0
@@ -299,7 +299,7 @@
 		if(!reason)	return
 
 		ban_unban_log_save("[key_name(usr)] edited [banned_key]'s ban. Reason: [sanitize(reason)] Duration: [duration]")
-		message_admins(SPAN_NOTICE("[key_name_admin(usr)] edited [banned_key]'s ban. Reason: [sanitize(reason)] Duration: [duration]"), 1)
+		message_staff(SPAN_NOTICE("[key_name_admin(usr)] edited [banned_key]'s ban. Reason: [sanitize(reason)] Duration: [duration]"), 1)
 		Banlist.cd = "/base/[banfolder]"
 		Banlist["reason"] << sanitize(reason)
 		Banlist["temp"] << temp
@@ -585,7 +585,7 @@
 				to_chat_forced(M, SPAN_WARNING("You have been kicked from the server"))
 			else
 				to_chat_forced(M, SPAN_WARNING("You have been kicked from the server: [reason]"))
-			message_admins(SPAN_NOTICE("[key_name_admin(usr)] booted [key_name_admin(M)]."), 1)
+			message_staff(SPAN_NOTICE("[key_name_admin(usr)] booted [key_name_admin(M)]."), 1)
 			qdel(M.client)
 
 	else if(href_list["removejobban"])
@@ -594,7 +594,7 @@
 		var/t = href_list["removejobban"]
 		if(t)
 			if((alert("Do you want to unjobban [t]?","Unjobban confirmation", "Yes", "No") == "Yes") && t) //No more misclicks! Unless you do it twice.
-				message_admins(SPAN_NOTICE("[key_name_admin(usr)] removed [t]"), 1)
+				message_staff(SPAN_NOTICE("[key_name_admin(usr)] removed [t]"), 1)
 				jobban_remove(t)
 				jobban_savebanfile()
 				href_list["ban"] = 1 // lets it fall through and refresh
@@ -665,7 +665,7 @@
 			to_chat(usr, SPAN_DANGER("Warning: Mob ckey for [X.name] not found."))
 			return
 
-		message_admins("[usr.client.ckey] has reset [X.ckey] xeno name")
+		message_staff("[usr.client.ckey] has reset [X.ckey] xeno name")
 
 		to_chat(X, SPAN_DANGER("Warning: Your xeno name has been reset by [usr.client.ckey]."))
 		
@@ -691,7 +691,7 @@
 			X.client.prefs.xeno_name_ban = FALSE		
 
 			X.client.prefs.save_preferences()
-			message_admins("[usr.client.ckey] has unbanned [X.ckey] from using xeno names")
+			message_staff("[usr.client.ckey] has unbanned [X.ckey] from using xeno names")
 
 			notes_add(X.ckey, "Xeno Name Unbanned by [usr.client.ckey]", usr)
 			to_chat(X, SPAN_DANGER("Warning: You can use xeno names again."))
@@ -709,7 +709,7 @@
 			to_chat(usr, SPAN_DANGER("Warning: Mob ckey for [X.name] not found."))
 			return
 
-		message_admins("[usr.client.ckey] has banned [X.ckey] from using xeno names")
+		message_staff("[usr.client.ckey] has banned [X.ckey] from using xeno names")
 
 		notes_add(X.ckey, "Xeno Name Banned by [usr.client.ckey]|Reason: Xeno name was [X.name]", usr)
 
@@ -773,7 +773,7 @@
 		if (ticker && ticker.mode)
 			return alert(usr, "The game has already started.", null, null, null, null)
 		master_mode = href_list["c_mode2"]
-		message_admins(SPAN_NOTICE("[key_name_admin(usr)] set the mode as [master_mode]."), 1)
+		message_staff(SPAN_NOTICE("[key_name_admin(usr)] set the mode as [master_mode]."), 1)
 		to_world(SPAN_NOTICE("<b><i>The mode is now: [master_mode]!</i></b>"))
 		Game() // updates the main game menu
 		world.save_mode(master_mode)
@@ -787,7 +787,7 @@
 		if(master_mode != "secret")
 			return alert(usr, "The game mode has to be secret!", null, null, null, null)
 		secret_force_mode = href_list["f_secret2"]
-		message_admins(SPAN_NOTICE("[key_name_admin(usr)] set the forced secret mode as [secret_force_mode]."), 1)
+		message_staff(SPAN_NOTICE("[key_name_admin(usr)] set the forced secret mode as [secret_force_mode]."), 1)
 		Game() // updates the main game menu
 		.(href, list("f_secret"=1))
 
@@ -799,7 +799,7 @@
 			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human")
 			return
 
-		message_admins(SPAN_NOTICE("[key_name_admin(usr)] attempting to monkeyize [key_name_admin(H)]"), 1)
+		message_staff(SPAN_NOTICE("[key_name_admin(usr)] attempting to monkeyize [key_name_admin(H)]"), 1)
 		H.monkeyize()
 
 	else if(href_list["corgione"])
@@ -810,7 +810,7 @@
 			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human")
 			return
 
-		message_admins(SPAN_NOTICE("[key_name_admin(usr)] attempting to corgize [key_name_admin(H)]"), 1)
+		message_staff(SPAN_NOTICE("[key_name_admin(usr)] attempting to corgize [key_name_admin(H)]"), 1)
 		H.corgize()
 
 	else if(href_list["forcespeech"])
@@ -825,7 +825,7 @@
 		if(!speech)	return
 		M.say(speech)
 		speech = sanitize(speech) // Nah, we don't trust them
-		message_admins(SPAN_NOTICE("[key_name_admin(usr)] forced [key_name_admin(M)] to say: [speech]"))
+		message_staff(SPAN_NOTICE("[key_name_admin(usr)] forced [key_name_admin(M)] to say: [speech]"))
 
 	else if(href_list["zombieinfect"])
 		if(!check_rights(R_ADMIN))	return
@@ -845,7 +845,7 @@
 
 		H.AddDisease(bg, FALSE)
 
-		message_admins(SPAN_NOTICE("[key_name_admin(usr)] infected [key_name_admin(H)] with a ZOMBIE VIRUS"))
+		message_staff(SPAN_NOTICE("[key_name_admin(usr)] infected [key_name_admin(H)] with a ZOMBIE VIRUS"))
 	else if(href_list["larvainfect"])
 		if(!check_rights(R_ADMIN))	return
 		var/mob/living/carbon/human/H = locate(href_list["larvainfect"])
@@ -870,7 +870,7 @@
 		embryo.hivenumber = hives[newhive]
 		embryo.faction = newhive
 
-		message_admins(SPAN_NOTICE("[key_name_admin(usr)] infected [key_name_admin(H)] with a xeno ([newhive]) larva."))
+		message_staff(SPAN_NOTICE("[key_name_admin(usr)] infected [key_name_admin(H)] with a xeno ([newhive]) larva."))
 	else if(href_list["forceemote"])
 		if(!check_rights(R_FUN))	return
 
@@ -882,7 +882,7 @@
 		if(!speech)	return
 		M.custom_emote(1, speech, TRUE)
 		speech = sanitize(speech) // Nah, we don't trust them
-		message_admins(SPAN_NOTICE("[key_name_admin(usr)] forced [key_name_admin(M)] to emote: [speech]"))
+		message_staff(SPAN_NOTICE("[key_name_admin(usr)] forced [key_name_admin(M)] to emote: [speech]"))
 
 	else if(href_list["sendbacktolobby"])
 		if(!check_rights(R_MOD))
@@ -901,7 +901,7 @@
 		if(alert(usr, "Send [key_name(M)] back to Lobby?", "Message", "Yes", "No") != "Yes")
 			return
 
-		message_admins("[key_name(usr)] has sent [key_name(M)] back to the Lobby.")
+		message_staff("[key_name(usr)] has sent [key_name(M)] back to the Lobby.")
 
 		var/mob/new_player/NP = new()
 		NP.ckey = M.ckey
@@ -930,7 +930,7 @@
 		M.loc = pick(tdome1)
 		spawn(50)
 			to_chat(M, SPAN_NOTICE(" You have been sent to the Thunderdome."))
-		message_admins("[key_name_admin(usr)] has sent [key_name_admin(M)] to the thunderdome. (Team 1)", 1)
+		message_staff("[key_name_admin(usr)] has sent [key_name_admin(M)] to the thunderdome. (Team 1)", 1)
 
 	else if(href_list["tdome2"])
 		if(!check_rights(R_FUN))	return
@@ -954,7 +954,7 @@
 		M.loc = pick(tdome2)
 		spawn(50)
 			to_chat(M, SPAN_NOTICE(" You have been sent to the Thunderdome."))
-		message_admins("[key_name_admin(usr)] has sent [key_name_admin(M)] to the thunderdome. (Team 2)", 1)
+		message_staff("[key_name_admin(usr)] has sent [key_name_admin(M)] to the thunderdome. (Team 2)", 1)
 
 	else if(href_list["tdomeadmin"])
 		if(!check_rights(R_FUN))	return
@@ -975,7 +975,7 @@
 		M.loc = pick(tdomeadmin)
 		spawn(50)
 			to_chat(M, SPAN_NOTICE(" You have been sent to the Thunderdome."))
-		message_admins("[key_name_admin(usr)] has sent [key_name_admin(M)] to the thunderdome. (Admin.)", 1)
+		message_staff("[key_name_admin(usr)] has sent [key_name_admin(M)] to the thunderdome. (Admin.)", 1)
 
 	else if(href_list["tdomeobserve"])
 		if(!check_rights(R_FUN))	return
@@ -1003,7 +1003,7 @@
 		M.loc = pick(tdomeobserve)
 		spawn(50)
 			to_chat(M, SPAN_NOTICE(" You have been sent to the Thunderdome."))
-		message_admins("[key_name_admin(usr)] has sent [key_name_admin(M)] to the thunderdome. (Observer.)", 1)
+		message_staff("[key_name_admin(usr)] has sent [key_name_admin(M)] to the thunderdome. (Observer.)", 1)
 
 	else if(href_list["revive"])
 		if(!check_rights(R_REJUVINATE))	return
@@ -1034,7 +1034,7 @@
 			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human")
 			return
 
-		message_admins(SPAN_DANGER("Admin [key_name_admin(usr)] AIized [key_name_admin(H)]!"), 1)
+		message_staff(SPAN_DANGER("Admin [key_name_admin(usr)] AIized [key_name_admin(H)]!"), 1)
 		H.AIize()
 
 	else if(href_list["changehivenumber"])
@@ -1078,7 +1078,7 @@
 		spawn(0)
 			M.gender = y_gend
 			M.regenerate_icons()
-			message_admins("[key_name(usr)] made [H] into a Yautja, [M.real_name].")
+			message_staff("[key_name(usr)] made [H] into a Yautja, [M.real_name].")
 			if(H.mind)
 				H.mind.transfer_to(M)
 			else
@@ -1152,7 +1152,7 @@
 				return
 
 		X.age_xeno(level)
-		message_admins("[usr.ckey] has changed the maturation level of [key_name(X)] to [level].")
+		message_staff("[usr.ckey] has changed the maturation level of [key_name(X)] to [level].")
 
 /***************** BEFORE**************
 
@@ -1215,7 +1215,7 @@
 		if(alert("Are you sure you want to cancel this OB?",,"Yes","No") != "Yes")
 			return
 		orbital_cannon_cancellation["[cancel_token]"] = null
-		message_admins("[src.owner] has cancelled the orbital strike.")
+		message_staff("[src.owner] has cancelled the orbital strike.")
 
 	else if(href_list["admincancelpredsd"])
 		if (!check_rights(R_MOD))	return
@@ -1226,7 +1226,7 @@
 		if (alert("Are you sure you want to cancel this pred SD?",,"Yes","No") != "Yes")
 			return
 		bracer.exploding = FALSE
-		message_admins("[src.owner] has cancelled the predator self-destruct sequence [victim ? "of [victim] ([victim.key])":""].")
+		message_staff("[src.owner] has cancelled the predator self-destruct sequence [victim ? "of [victim] ([victim.key])":""].")
 
 	else if(href_list["adminspawncookie"])
 		if(!check_rights(R_ADMIN|R_FUN))	
@@ -1241,13 +1241,13 @@
 		if(!(istype(H.l_hand,/obj/item/reagent_container/food/snacks/cookie)))
 			H.equip_to_slot_or_del( new /obj/item/reagent_container/food/snacks/cookie(H), WEAR_R_HAND )
 			if(!(istype(H.r_hand,/obj/item/reagent_container/food/snacks/cookie)))
-				message_admins("[key_name(H)] has their hands full, so they did not receive their cookie, spawned by [key_name(src.owner)].")
+				message_staff("[key_name(H)] has their hands full, so they did not receive their cookie, spawned by [key_name(src.owner)].")
 				return
 			else
 				H.update_inv_r_hand()//To ensure the icon appears in the HUD
 		else
 			H.update_inv_l_hand()
-		message_admins("[key_name(H)] got their cookie, spawned by [key_name(src.owner)]")
+		message_staff("[key_name(H)] got their cookie, spawned by [key_name(src.owner)]")
 		to_chat(H, SPAN_NOTICE(" Your prayers have been answered!! You received the <b>best cookie</b>!"))
 
 	else if(href_list["CentcommReply"])
@@ -1369,7 +1369,7 @@
 						P.stamps += "<HR><i>This paper has been stamped by the High Command Quantum Relay.</i>"
 
 				to_chat(src.owner, "Message reply to transmitted successfully.")
-				message_admins("[key_name_admin(src.owner)] replied to a fax message from [key_name_admin(H)]", 1)
+				message_staff("[key_name_admin(src.owner)] replied to a fax message from [key_name_admin(H)]", 1)
 				return
 		to_chat(src.owner, "/red Unable to locate fax!")
 
@@ -1450,7 +1450,7 @@
 						P.stamps += "<HR><i>This paper has been stamped and encrypted by the Weston-Yamada Quantum Relay (tm).</i>"
 
 				to_chat(src.owner, "Message reply to transmitted successfully.")
-				message_admins("[key_name_admin(src.owner)] replied to a fax message from [key_name_admin(H)]", 1)
+				message_staff("[key_name_admin(src.owner)] replied to a fax message from [key_name_admin(H)]", 1)
 				return
 		to_chat(src.owner, "/red Unable to locate fax!")
 
@@ -1625,13 +1625,13 @@
 			log_admin("[key_name(usr)] created a [english_list(paths)]")
 			for(var/path in paths)
 				if(ispath(path, /mob))
-					message_admins("[key_name_admin(usr)] created a [english_list(paths)]", 1)
+					message_staff("[key_name_admin(usr)] created a [english_list(paths)]", 1)
 					break
 		else
 			log_admin("[key_name(usr)] created [number]ea [english_list(paths)]")
 			for(var/path in paths)
 				if(ispath(path, /mob))
-					message_admins("[key_name_admin(usr)] created [number]ea [english_list(paths)]", 1)
+					message_staff("[key_name_admin(usr)] created [number]ea [english_list(paths)]", 1)
 					break
 		return
 
@@ -1764,7 +1764,7 @@
 			var/mob/ref_person = locate(href_list["destroy"])
 			set_security_level(SEC_LEVEL_DELTA)
 			log_game("[key_name_admin(usr)] has granted self destruct, requested by [key_name_admin(ref_person)]")
-			message_admins("[key_name_admin(usr)] has granted self destruct, requested by [key_name_admin(ref_person)]", 1)
+			message_staff("[key_name_admin(usr)] has granted self destruct, requested by [key_name_admin(ref_person)]", 1)
 
 	if(href_list["sddeny"]) // CentComm-deny. The self destruct is denied, without any further conditions
 		var/mob/ref_person = locate(href_list["sddeny"])
@@ -1790,4 +1790,4 @@
 	distress_cancel = TRUE
 	ticker.mode.activate_distress()
 	log_game("[key_name_admin(usr)] has sent a randomized distress beacon, requested by [key_name_admin(ref_person)]")
-	message_admins("[key_name_admin(usr)] has sent a randomized distress beacon, requested by [key_name_admin(ref_person)]")
+	message_staff("[key_name_admin(usr)] has sent a randomized distress beacon, requested by [key_name_admin(ref_person)]")

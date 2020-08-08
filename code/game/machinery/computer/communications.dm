@@ -129,7 +129,7 @@
 					if(security_level != old_level)
 						//Only notify the admins if an actual change happened
 						log_game("[key_name(usr)] has changed the security level to [get_security_level()].")
-						message_admins("[key_name_admin(usr)] has changed the security level to [get_security_level()].")
+						message_staff("[key_name_admin(usr)] has changed the security level to [get_security_level()].")
 				else
 					to_chat(usr, SPAN_WARNING("You are not authorized to do this."))
 				tmp_alertlevel = SEC_LEVEL_GREEN //Reset to green.
@@ -175,7 +175,7 @@
 					return FALSE
 
 				log_game("[key_name(usr)] has called for an emergency evacuation.")
-				message_admins("[key_name_admin(usr)] has called for an emergency evacuation.")
+				message_staff("[key_name_admin(usr)] has called for an emergency evacuation.")
 				return TRUE
 
 			state = STATE_EVACUATION
@@ -194,7 +194,7 @@
 							set_security_level(SEC_LEVEL_RED, TRUE) //both SD and evac are inactive, lowering the security level.
 
 				log_game("[key_name(usr)] has canceled the emergency evacuation.")
-				message_admins("[key_name_admin(usr)] has canceled the emergency evacuation.")
+				message_staff("[key_name_admin(usr)] has canceled the emergency evacuation.")
 				return TRUE
 
 			state = STATE_EVACUATION_CANCEL

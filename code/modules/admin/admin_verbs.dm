@@ -339,18 +339,18 @@ var/list/admin_verbs_mod = list(
 	if(++P.warning_count >= MAX_WARNS)					//uh ohhhh...you'reee iiiiin trouuuubble O:)
 		ban_unban_log_save("[ckey] warned [warned_ckey], resulting in a [AUTOBANTIME] minute autoban.")
 		if(P.owning_client)
-			message_admins("[key_name_admin(src)] has warned [ckey] resulting in a [AUTOBANTIME] minute ban.")
+			message_staff("[key_name_admin(src)] has warned [ckey] resulting in a [AUTOBANTIME] minute ban.")
 			to_chat_forced(P.owning_client, "<font color='red'><BIG><B>You have been autobanned due to a warning by [key_name_admin(P.owning_client)].</B></BIG><br>This is a temporary ban, it will be removed in [AUTOBANTIME] minutes.")
 		else
-			message_admins("[key_name_admin(src)] has warned [warned_ckey] resulting in a [AUTOBANTIME] minute ban.")
+			message_staff("[key_name_admin(src)] has warned [warned_ckey] resulting in a [AUTOBANTIME] minute ban.")
 		
 		P.add_timed_ban("Autobanning due to too many formal warnings", AUTOBANTIME)
 	else
 		if(P.owning_client)
 			to_chat(P.owning_client, "<font color='red'><BIG><B>You have been formally warned by an administrator.</B></BIG><br>Further warnings will result in an autoban.</font>")
-			message_admins("[key_name_admin(src)] has warned [key_name_admin(P.owning_client)]. They have [MAX_WARNS-P.warning_count] strikes remaining.")
+			message_staff("[key_name_admin(src)] has warned [key_name_admin(P.owning_client)]. They have [MAX_WARNS-P.warning_count] strikes remaining.")
 		else
-			message_admins("[key_name_admin(src)] has warned [warned_ckey] (DC). They have [MAX_WARNS-P.warning_count] strikes remaining.")
+			message_staff("[key_name_admin(src)] has warned [warned_ckey] (DC). They have [MAX_WARNS-P.warning_count] strikes remaining.")
 
 /client/proc/give_disease(mob/T as mob in mob_list) // -- Giacom
 	set category = "Fun"
@@ -364,7 +364,7 @@ var/list/admin_verbs_mod = list(
 	var/path = text2path("/datum/disease/[D]")
 	T.contract_disease(new path, 1)
 
-	message_admins(SPAN_NOTICE("[key_name_admin(usr)] gave [key_name(T)] the disease [D]."), 1)
+	message_staff(SPAN_NOTICE("[key_name_admin(usr)] gave [key_name(T)] the disease [D]."), 1)
 
 
 /client/proc/object_talk(var/msg as text) // -- TLE

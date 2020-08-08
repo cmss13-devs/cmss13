@@ -85,10 +85,10 @@
 		var/more = ""
 		if(M)
 			more = "(<A HREF='?_src_=admin_holder;adminmoreinfo;extra=\ref[M]'>?</a>)"
-		message_admins("A chemical smoke reaction has taken place in ([whereLink])[contained]. Last associated key is [carry.my_atom.fingerprintslast][more].")
+		message_staff("A chemical smoke reaction has taken place in ([whereLink])[contained]. Last associated key is [carry.my_atom.fingerprintslast][more].")
 		log_game("A chemical smoke reaction has taken place in ([where])[contained]. Last associated key is [carry.my_atom.fingerprintslast].")
 	else
-		message_admins("A chemical smoke reaction has taken place in ([whereLink]). No associated key.")
+		message_staff("A chemical smoke reaction has taken place in ([whereLink]). No associated key.")
 		log_game("A chemical smoke reaction has taken place in ([where])[contained]. No associated key.")
 
 

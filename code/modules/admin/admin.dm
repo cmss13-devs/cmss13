@@ -133,7 +133,7 @@
 		to_world("<B>You may now respawn.</B>")
 	else
 		to_world("<B>You may no longer respawn :(</B>")
-	message_admins(SPAN_NOTICE("[key_name_admin(usr)] toggled respawn to [abandon_allowed ? "On" : "Off"]."), 1)
+	message_staff(SPAN_NOTICE("[key_name_admin(usr)] toggled respawn to [abandon_allowed ? "On" : "Off"]."), 1)
 	world.update_status()
 
 

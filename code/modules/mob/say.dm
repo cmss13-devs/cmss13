@@ -17,7 +17,7 @@
 		usr.talked = 2
 		to_chat(usr, SPAN_DANGER("You have been flagged for spam.  You may not speak for at least [usr.chatWarn] seconds (if you spammed alot this might break and never unmute you).  This number will increase each time you are flagged for spamming"))
 		if(usr.chatWarn >= 5)
-			message_admins("[key_name(usr, usr.client)] is spamming like crazy. Their current chatwarn is [usr.chatWarn]. ")
+			message_staff("[key_name(usr, usr.client)] is spamming like crazy. Their current chatwarn is [usr.chatWarn]. ")
 		add_timer(CALLBACK(usr, .proc/clear_chat_spam_mute, usr.talked, TRUE, TRUE), usr.chatWarn * CHAT_SAY_DELAY_SPAM, TIMER_UNIQUE)
 		return
 	else if(usr.talked == 1)
@@ -41,7 +41,7 @@
 		usr.talked = 2
 		to_chat(usr, SPAN_DANGER("You have been flagged for spam.  You may not speak for at least [usr.chatWarn] seconds (if you spammed alot this might break and never unmute you).  This number will increase each time you are flagged for spamming"))
 		if(usr.chatWarn >= 5)
-			message_admins("[key_name(usr, usr.client)] is spamming like crazy. Their current chatwarn is [usr.chatWarn]. ")
+			message_staff("[key_name(usr, usr.client)] is spamming like crazy. Their current chatwarn is [usr.chatWarn]. ")
 		add_timer(CALLBACK(usr, .proc/clear_chat_spam_mute, usr.talked, TRUE, TRUE), usr.chatWarn * CHAT_SAY_DELAY_SPAM, TIMER_UNIQUE)
 		return
 	else if(usr.talked == 1)
@@ -69,7 +69,7 @@
 		usr.talked = 2
 		to_chat(usr, SPAN_DANGER("You have been flagged for spam.  You may not speak for at least [usr.chatWarn] seconds (if you spammed alot this might break and never unmute you).  This number will increase each time you are flagged for spamming"))
 		if(usr.chatWarn >10)
-			message_admins("[key_name(usr, usr.client)] is spamming like a dirty bitch, their current chatwarn is [usr.chatWarn]. ")
+			message_staff("[key_name(usr, usr.client)] is spamming like a dirty bitch, their current chatwarn is [usr.chatWarn]. ")
 		add_timer(CALLBACK(usr, .proc/clear_chat_spam_mute, usr.talked, TRUE, TRUE), usr.chatWarn * CHAT_SAY_DELAY_SPAM, TIMER_UNIQUE)
 		return
 	else if(usr.talked == 1)

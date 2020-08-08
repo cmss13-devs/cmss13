@@ -27,9 +27,3 @@ build:
         - ColonialMarinesALPHA.dmb
         - ColonialMarinesALPHA.rsc
       expire_in: 20min
-
-test:
-    stage: test
-    script:
-      - DreamDaemon ColonialMarinesALPHA.dmb -trusted -params "run_tests=1&verbose_tests=1" 2>&1 | tee test_logs.log
-      - cat test_logs.log | tail -1 | grep -q "ALL TESTS SUCCEEDED"

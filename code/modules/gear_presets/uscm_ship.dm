@@ -232,8 +232,22 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 
-/*****************************************************************************************************/
+/datum/equipment_preset/uscm_ship/liaison/load_rank(mob/living/carbon/human/H)
+	if(H.mind && H.mind.player_entity)
+		var/datum/entity/player_entity/player = H.mind.player_entity
+		var/playtime = player.get_playtime(STATISTIC_HUMAN, rank)
 
+		if(playtime > 64 HOURS)
+			return "WY-XE"
+		else if(playtime > 32 HOURS)
+			return "WY-XD"
+		else if(playtime > 16 HOURS)
+			return "WY-XC"
+		else
+			return paygrade
+	return paygrade
+
+/*****************************************************************************************************/
 /datum/equipment_preset/uscm_ship/liaison/nightmare
 	name = "Nightmare USCM Corporate Liaison"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND

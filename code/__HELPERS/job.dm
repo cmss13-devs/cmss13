@@ -123,15 +123,24 @@ var/global/list/wy_ranks = list(
 	)
 )
 
-/mob/living/carbon/human/proc/apply_wy_rank_code(var/code)
-	comm_title = trim(get_paygrades(code, TRUE))
+/mob/living/carbon/human/proc/apply_wy_rank_code(var/code, var/assignment, var/c_title)
+
+	if(c_title)
+		comm_title = c_title
+	else
+		comm_title = trim(get_paygrades(code, TRUE))
 	
 	var/obj/item/card/id/I = wear_id
 
 	if(istype(I))
 		I.paygrade = code
 		I.rank = code
-		I.assignment = get_paygrades(code)
+
+		if(!assignment)
+			I.assignment = get_paygrades(code)
+		else
+			I.assignment = assignment
+
 		I.name = "[I.registered_name]'s ID Card ([I.assignment])"
 
 /proc/get_named_wy_ranks(var/code)

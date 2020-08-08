@@ -54,14 +54,14 @@
 	var/obj/item/card/id/card = B
 	var/clearance_bypass = istype(B, /obj/item/card/id/silver/clearance_badge)
 	if(!(ACCESS_WY_CORPORATE in card.access) && !clearance_bypass)
-		visible_message(SPAN_NOTICE("[user] swipes their ID card on the [src], but it refused."))
-		return
-	
-	var/setting = alert(usr,"How do you want to change the clearance settings?","[src]","Increase","Set to maximum","Set to minimum")
-	if(!setting)
+		visible_message(SPAN_NOTICE("[user] swipes their ID card on \the [src], but it is refused."))
 		return
 
+	var/list/options = list("Increase","Set to maximum","Set to minimum")
+
 	var/clearance_allowance = 6 - defcon_controller.current_defcon_level
+
+	var/can_give_x = FALSE
 	if(clearance_bypass)
 		var/obj/item/card/id/silver/clearance_badge/C = B
 		if(!C.clearance_access)
@@ -70,7 +70,20 @@
 			visible_message(SPAN_WARNING("WARNING: ILLEGAL CLEARANCE USER DETECTED. CARD DATA HAS BEEN WIPED."))
 			C.clearance_access = 0
 			return
-		clearance_allowance = C.clearance_access
+
+		if(C.clearance_access == 6)
+			clearance_allowance = 5
+			can_give_x = TRUE
+
+			if(chemical_data.clearance_level == 5)
+				options.Add("Give clearance X")
+		else
+			clearance_allowance = C.clearance_access
+
+		
+	var/setting = input(usr,"How do you want to change the clearance settings?","[src]") in options
+	if(!setting)
+		return
 
 	switch(setting)
 		if("Increase")
@@ -80,8 +93,23 @@
 			chemical_data.clearance_level = max(clearance_allowance, chemical_data.clearance_level)
 		if("Set to minimum")
 			chemical_data.clearance_level = 1
+		if("Give clearance X")
+			if(!can_give_x)
+				to_chat(usr, SPAN_WARNING("Access denied."))
+				return
+			
+			chemical_data.clearance_x_access = TRUE
+			chemical_data.reached_x_access = TRUE
 
-	visible_message(SPAN_NOTICE("[user] swipes their ID card on the [src], updating the clearance to level [chemical_data.clearance_level]."))
+			visible_message(SPAN_NOTICE("[user] swipes their ID card on \the [src], granting X clearance access to the terminal."))
+			return
+
+	if(chemical_data.clearance_level == 5 && chemical_data.reached_x_access)
+		chemical_data.clearance_x_access = TRUE
+	else
+		chemical_data.clearance_x_access = FALSE
+
+	visible_message(SPAN_NOTICE("[user] swipes their ID card on \the [src], updating the clearance to level [chemical_data.clearance_level]."))
 	msg_admin_niche("[key_name(user)] has updated the research clearance to level [chemical_data.clearance_level].")
 	return
 
@@ -207,6 +235,7 @@
 			return
 		if(purchase_cost <= chemical_data.rsc_credits)
 			chemical_data.clearance_x_access = TRUE
+			chemical_data.reached_x_access = TRUE
 			chemical_data.update_credits(purchase_cost * -1)
 			visible_message(SPAN_NOTICE("Clearance Level X Acquired."))
 		else

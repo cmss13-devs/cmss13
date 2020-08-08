@@ -4,6 +4,7 @@ var/global/datum/chemical_data/chemical_data = new /datum/chemical_data/
 	var/rsc_credits = 2
 	var/clearance_level = 1
 	var/clearance_x_access = FALSE
+	var/reached_x_access = FALSE
 	var/list/research_documents = list()
 	var/list/research_publications = list()
 	var/list/transmitted_data = list()

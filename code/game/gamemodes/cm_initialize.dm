@@ -655,7 +655,7 @@ Additional game mode variables.
 				survivor_types = list(
 					"Survivor - Scientist",
 					"Survivor - Doctor",
-					"Survivor - Corporate",
+					"Survivor - Corporate Liaison",
 					"Survivor - Security",
 					"Survivor - Prisoner",
 					"Survivor - Prisoner",
@@ -695,7 +695,7 @@ Additional game mode variables.
 					"Survivor - Scientist",
 					"Survivor - Doctor",
 					"Survivor - Security",
-					"Survivor - Corporate",
+					"Survivor - Corporate Liaison",
 					"Survivor - Engineer"
 				)
 			else

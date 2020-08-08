@@ -401,9 +401,39 @@
 	min_cold_protection_temperature = T0C
 	siemens_coefficient = 0.7
 
+/obj/item/clothing/suit/storage/manager
+	name = "manager's jacket"
+	desc = "A suit that belongs to someone important. It is made of insulating material and offers minor protection from all forms of damage."
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/suit_1.dmi'
+	)
+	item_state = "manager_suit"
+	icon_state = "manager_suit"
+
+	allowed = list(
+		/obj/item/weapon/gun/pistol,
+		/obj/item/device/flashlight
+	)
+
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_GROIN
+	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_GROIN
+
+	min_cold_protection_temperature = ICE_COLONY_TEMPERATURE
+
+	storage_slots = 1
+
+	armor_melee = CLOTHING_ARMOR_LOW
+	armor_bullet = CLOTHING_ARMOR_MEDIUM
+	armor_laser = CLOTHING_ARMOR_LOW
+	armor_energy = CLOTHING_ARMOR_LOW
+	armor_bomb = CLOTHING_ARMOR_MEDIUM
+	armor_bio = CLOTHING_ARMOR_MEDIUM
+	armor_rad = CLOTHING_ARMOR_MEDIUM
+	armor_internaldamage = CLOTHING_ARMOR_LOW
+
 /obj/item/clothing/suit/storage/director
-	name = "director's suit"
-	desc = "A suit that belongs to someone very important. It has minor protection to all forms of damage, and has insultating material."
+	name = "director's jacket"
+	desc = "A jacket that belongs to someone very important. It is made of insulating material and offers minor protection from all forms of damage."
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/suit_1.dmi'
 	)

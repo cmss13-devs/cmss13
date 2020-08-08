@@ -229,7 +229,19 @@
 	icon_state = "mechanic_s"
 
 /obj/item/clothing/under/suit_jacket/director
-	name = "director's uniform"
-	desc = "A uniform that belongs to someone very important."
+	name = "director's suit"
+	desc = "It's a suit that oozes with authority. Belongs to someone very important."
 	item_state = "director_uniform"
 	icon_state = "director_uniform"
+
+/obj/item/clothing/under/suit_jacket/manager
+	desc = "It's a suit worn by those with the know-how to achieve the position of \"Corporate Manager\"."
+	name = "manager's suit"
+	icon_state = "manager_uniform"
+	item_state = "manager_uniform"
+
+/obj/item/clothing/under/suit_jacket/trainee
+	name = "trainee's uniform"
+	desc = "It's a uniform that has a W-Y insignia on it with the words \"Trainee\" stamped below."
+	icon_state = "trainee_uniform"
+	item_state = "trainee_uniform"

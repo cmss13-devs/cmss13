@@ -1,6 +1,6 @@
 /datum/xeno_mutator/acider
 	name = "STRAIN: Runner - Acider"
-	description = "You exchange all your abilities for a new organ that is filled with volatile and explosive acid. You can force your body to explode, covering everything with acid, but that process takes 20 seconds and is noticable to people around your. Your acid is also very combustable, don't die when on fire... or do die..."
+	description = "You exchange all your abilities for a new organ that is filled with volatile and explosive acid. You can force your body to explode, covering everything with acid, but that process takes 20 seconds and is noticable to people around you."
 	flavor_description = "Burn their walls, maim their face!"
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
@@ -32,15 +32,15 @@
 
 	var/max_acid = 1000
 	var/caboom_timer = 20
-	var/acid_slash_regen = 5
+	var/acid_slash_regen = 10
 	var/acid_passive_regen = 1
 
-	var/melt_acid_cost = 200
+	var/melt_acid_cost = 100
 
 	var/list/caboom_sound = list('sound/effects/runner_charging_1.ogg','sound/effects/runner_charging_2.ogg')
 	var/caboom_loop = 1
 
-	var/caboom_acid_ratio = 100
+	var/caboom_acid_ratio = 200
 	var/caboom_burn_damage_ratio = 5
 	var/caboom_burn_range_ratio = 100
 	var/caboom_struct_acid_type = /obj/effect/xenomorph/acid
@@ -122,12 +122,12 @@
 		var/damage = round((burn_range - dist) * max_burn_damage / burn_range)
 		M.apply_damage(damage, BURN)
 	playsound(bound_xeno, 'sound/effects/blobattack.ogg', 75)
-	if(bound_xeno.client)
-		add_timer(CALLBACK(src, /datum/behavior_delegate/runner_acider.proc/do_respawn, bound_xeno.client), SECONDS_3)
+	if(bound_xeno.client && bound_xeno.hive)
+		add_timer(CALLBACK(src, /datum/behavior_delegate/runner_acider.proc/do_respawn, bound_xeno.client, bound_xeno.hive), SECONDS_5)
 	bound_xeno.gib()
 
 
-/datum/behavior_delegate/runner_acider/proc/do_respawn(var/client/C)
-	bound_xeno.hive.stored_larva++
-	if(!bound_xeno.hive.spawn_pool || !bound_xeno.hive.spawn_pool.spawn_pooled_larva(C.mob))
-		bound_xeno.hive.stored_larva--
+/datum/behavior_delegate/runner_acider/proc/do_respawn(var/client/C, var/datum/hive_status/hive)
+	hive.stored_larva++
+	if(!hive.spawn_pool || !hive.spawn_pool.spawn_pooled_larva(C.mob))
+		hive.stored_larva--

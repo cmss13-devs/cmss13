@@ -834,13 +834,13 @@
 	},
 /area/almayer/squads/delta)
 "acq" = (
-/obj/structure/pipes/standard/manifold/hidden/supply{
-	dir = 1
-	},
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "orange";
 	tag = "icon-orange (WEST)"
+	},
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 1
 	},
 /turf/open/floor/almayer,
 /area/almayer/engineering/engineering_workshop)
@@ -28341,6 +28341,10 @@
 /obj/structure/mirror{
 	pixel_x = 29
 	},
+/obj/structure/machinery/light{
+	unacidable = 1;
+	unslashable = 1
+	},
 /turf/open/floor/almayer{
 	icon_state = "sterile";
 	tag = "icon-sterile"
@@ -45112,7 +45116,6 @@
 /turf/open/floor/almayer,
 /area/almayer/powered)
 "krk" = (
-/obj/structure/closet/secure_closet/engineering_materials,
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
 	tag = "icon-S"
@@ -48705,10 +48708,6 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/medical/lockerroom)
-"omU" = (
-/obj/structure/closet/secure_closet/engineering_materials,
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/hallways/hangar)
 "onN" = (
 /obj/structure/machinery/firealarm{
 	dir = 4;
@@ -49399,6 +49398,12 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/engineering/engineering_workshop)
+"poR" = (
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hallways/vehiclehangar)
 "poW" = (
 /obj/structure/filingcabinet/security,
 /turf/open/floor/almayer{
@@ -56787,6 +56792,13 @@
 	tag = "icon-red (NORTH)"
 	},
 /area/almayer/shipboard/chief_mp_office)
+"xCR" = (
+/obj/structure/machinery/light/small,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hallways/vehiclehangar)
 "xDn" = (
 /obj/structure/machinery/light{
 	dir = 8;
@@ -70271,7 +70283,7 @@ aaa
 bzv
 bzA
 bzA
-bBB
+poR
 bzA
 pNp
 bSv
@@ -71284,7 +71296,7 @@ aKW
 aKW
 aKW
 bzv
-bzA
+xCR
 bSv
 wTN
 bTH
@@ -73339,7 +73351,7 @@ aYu
 aYu
 aYu
 aYu
-omU
+btO
 cdc
 nEs
 cev

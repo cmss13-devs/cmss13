@@ -77,7 +77,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		notes_add(ckey, note_text, admin.mob)
 	else
 		// notes_add already sends a message
-		message_admins(SPAN_NOTICE("[key_name_admin(admin.mob)] has edited [ckey]'s notes: [sanitize(note_text)]")) 
+		message_staff(SPAN_NOTICE("[key_name_admin(admin.mob)] has edited [ckey]'s notes: [sanitize(note_text)]")) 
 
 	// create new instance of player_note entity
 	var/datum/entity/player_note/note = DB_ENTITY(/datum/entity/player_note)
@@ -113,7 +113,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		return FALSE
 
 	// this is here for a short transition period when we still are testing DB notes and constantly deleting the file
-	message_admins(SPAN_NOTICE("[key_name_admin(admin)] deleted one of [ckey]'s notes."))
+	message_staff(SPAN_NOTICE("[key_name_admin(admin)] deleted one of [ckey]'s notes."))
 	// get note from our list
 	var/datum/entity/player_note/note = DB_ENTITY(/datum/entity/player_note, note_id)
 	// de-list it
@@ -138,7 +138,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		AddBan(ckey, last_known_cid, ban_text, admin.ckey, 1, duration, last_known_ip)
 		notes_add(ckey, "Banned by [admin.ckey]|Duration: [duration] minutes|Reason: [sanitize(ban_text)]", usr)
 	
-	message_admins("\blue[admin.ckey] has banned [ckey].\nReason: [sanitize(ban_text)]\nThis will be removed in [duration] minutes.")
+	message_staff("\blue[admin.ckey] has banned [ckey].\nReason: [sanitize(ban_text)]\nThis will be removed in [duration] minutes.")
 	ban_unban_log_save("[admin.ckey] has banned [ckey]|Duration: [duration] minutes|Reason: [sanitize(ban_text)]")
 
 	add_note(ban_text, FALSE, TRUE, duration)
@@ -178,7 +178,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		message_admins(SPAN_WARNING("CANNOT REMOVE BANS FROM OLD BAN MANAGER. If you see this during test period - reapply unban after test round is done."), 1)
 	
 	ban_unban_log_save("[key_name(admin)] removed [ckey]'s ban.")
-	message_admins(SPAN_NOTICE("[key_name_admin(admin)] removed [ckey]'s ban."), 1)
+	message_staff(SPAN_NOTICE("[key_name_admin(admin)] removed [ckey]'s ban."), 1)
 
 	time_ban_date = null
 	time_ban_expiration = null
@@ -414,7 +414,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	if(is_permabanned)
 		permaban_admin.sync()
 		log_access("Failed Login: [ckey] [last_known_cid] [last_known_ip] - Banned [permaban_reason]")
-		message_admins(SPAN_NOTICE("Failed Login: [ckey] id:[last_known_cid] ip:[last_known_ip] - Banned [permaban_reason]"))		
+		message_staff(SPAN_NOTICE("Failed Login: [ckey] id:[last_known_cid] ip:[last_known_ip] - Banned [permaban_reason]"))		
 		.["desc"]	= "\nReason: [permaban_reason]\nExpires: <B>PERMENANT</B>\nBy: [permaban_admin.ckey][appeal]"
 		.["reason"]	= "ckey/id"
 		return .
@@ -431,7 +431,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		else
 			timeleftstring = "[time_left] Minutes"
 		log_access("Failed Login: [ckey] [last_known_cid] [last_known_ip] - Banned [time_ban_reason]")
-		message_admins(SPAN_NOTICE("Failed Login: [ckey] id:[last_known_cid] ip:[last_known_ip] - Banned [time_ban_reason]"))		
+		message_staff(SPAN_NOTICE("Failed Login: [ckey] id:[last_known_cid] ip:[last_known_ip] - Banned [time_ban_reason]"))		
 		.["desc"]	= "\nReason: [time_ban_reason]\nExpires: [timeleftstring]\nBy: [time_ban_admin.ckey][appeal]"
 		.["reason"]	= "ckey/id"
 		return .

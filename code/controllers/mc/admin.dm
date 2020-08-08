@@ -27,7 +27,7 @@
 			class = "unknown"
 
 	usr.client.debug_variables(target)
-	message_admins("Admin [key_name_admin(usr)] is debugging the [target] [class].")
+	message_staff("Admin [key_name_admin(usr)] is debugging the [target] [class].")
 
 
 // Debug verbs.
@@ -45,7 +45,7 @@
 		if ("Failsafe")
 			new /datum/controller/failsafe()
 
-	message_admins("Admin [key_name_admin(usr)] has restarted the [controller] controller.")
+	message_staff("Admin [key_name_admin(usr)] has restarted the [controller] controller.")
 
 
 /proc/get_world_controllers()
@@ -71,7 +71,7 @@
 		return
 
 	debug_variables(controller)
-	message_admins("Admin [key_name_admin(usr)] is debugging the [controller] controller.")
+	message_staff("Admin [key_name_admin(usr)] is debugging the [controller] controller.")
 
 /client/proc/debug_game_mode()
 	set category = "Debug"
@@ -88,4 +88,4 @@
 			to_chat(usr, SPAN_WARNING("ticker is null!"))
 		else
 			to_chat(usr, SPAN_WARNING("ticker.mode is null!"))
-	message_admins("Admin [key_name_admin(usr)] is debugging the Game Mode.")
+	message_staff("Admin [key_name_admin(usr)] is debugging the Game Mode.")

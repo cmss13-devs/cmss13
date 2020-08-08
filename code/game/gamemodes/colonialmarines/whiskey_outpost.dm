@@ -207,7 +207,7 @@
 /datum/game_mode/whiskey_outpost/proc/disablejoining()
 	enter_allowed = 0
 	to_world("<B>New players may no longer join the game.</B>")
-	message_admins("wave one disabled new player game joining.")
+	message_staff("Wave one has begun. Disabled new player game joining.")
 	world.update_status()
 
 /datum/game_mode/whiskey_outpost/count_xenos()//Counts braindead too

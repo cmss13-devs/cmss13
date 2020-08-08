@@ -146,7 +146,7 @@ var/savefile/iconCache = new /savefile("data/iconCache.sav") //Cache of icons fo
 			//Uh oh this fucker has a history of playing on a banned account!!
 			if (found.len > 0)
 				//TODO: add a new evasion ban for the CURRENT client details, using the matched row details
-				message_admins("[key_name(owner)] has a cookie from a banned account! (Matched: [found["ckey"]], [found["ip"]], [found["compid"]])")
+				message_staff("[key_name(owner)] has a cookie from a banned account! (Matched: [found["ckey"]], [found["ip"]], [found["compid"]])")
 	cookieSent = 1
 
 //Called by js client on a pang

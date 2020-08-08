@@ -217,7 +217,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 				var/datum/D = input_marked_datum(admin_holder.marked_datums)
 				lst[i] = D
 
-	message_admins(SPAN_NOTICE("[key_name_admin(src)] called [A]'s [procname]() with [lst.len ? "the arguments [list2params(lst)]":"no arguments"]."))
+	message_staff(SPAN_NOTICE("[key_name_admin(src)] called [A]'s [procname]() with [lst.len ? "the arguments [list2params(lst)]":"no arguments"]."))
 	returnval = call(A,procname)(arglist(lst)) // Pass the lst as an argument list to the proc
 	to_chat(usr, SPAN_BLUE("[procname] returned: [returnval ? returnval : "null"]"))
 	 
@@ -292,7 +292,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 		spawn(10)
 			M:Alienize()
 			 
-		message_admins(SPAN_NOTICE("[key_name_admin(usr)] made [key_name(M)] into an alien."), 1)
+		message_staff(SPAN_NOTICE("[key_name_admin(usr)] made [key_name(M)] into an alien."), 1)
 	else
 		alert("Invalid mob")
 
@@ -315,9 +315,9 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 		to_chat(usr, "Mode not found?")
 	round_should_check_for_win = !round_should_check_for_win
 	if (round_should_check_for_win)
-		message_admins(SPAN_NOTICE("[key_name(src)] enabled checking for round-end."), 1)
+		message_staff(SPAN_NOTICE("[key_name(src)] enabled checking for round-end."), 1)
 	else
-		message_admins(SPAN_NOTICE("[key_name(src)] disabled checking for round-end."), 1)
+		message_staff(SPAN_NOTICE("[key_name(src)] disabled checking for round-end."), 1)
 
 
 
@@ -347,7 +347,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 							if(istype(O, hsbitem))
 								del_amt++
 								qdel(O)
-						message_admins("[key_name_admin(src)] has deleted all instances of [hsbitem] ([del_amt]).", 0)
+						message_staff("[key_name_admin(src)] has deleted all instances of [hsbitem] ([del_amt]).", 0)
 		else
 			to_chat(usr, SPAN_WARNING("Not a valid type path."))
 	 
@@ -357,7 +357,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 	set name = "X: Generate Powernets"
 	if(alert("Are you sure you want to do this?",, "Yes", "No") == "No") return
 	makepowernets()
-	message_admins("[key_name_admin(src)] has remade the powernets. makepowernets() called.", 0)
+	message_staff("[key_name_admin(src)] has remade the powernets. makepowernets() called.", 0)
 	 
 
 /client/proc/cmd_admin_grantfullaccess(var/mob/M in mob_list)
@@ -385,7 +385,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 	else
 		alert("Invalid mob")
 	 
-	message_admins(SPAN_NOTICE("[key_name_admin(usr)] has granted [M.key] full access."), 1)
+	message_staff(SPAN_NOTICE("[key_name_admin(usr)] has granted [M.key] full access."), 1)
 
 /client/proc/cmd_admin_grantallskills(var/mob/M in mob_list)
 	set category = null
@@ -399,7 +399,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 	else
 		alert("Invalid mob")
 	 
-	message_admins(SPAN_NOTICE("[key_name_admin(usr)] has granted [M.key] all skills."), 1)
+	message_staff(SPAN_NOTICE("[key_name_admin(usr)] has granted [M.key] all skills."), 1)
 
 /client/proc/cmd_assume_direct_control(var/mob/M in mob_list)
 	set name = "Control Mob"
@@ -426,7 +426,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 
 	usr.mind.transfer_to(M, TRUE)
 
-	message_admins(SPAN_NOTICE("[key_name_admin(usr)] assumed direct control of [M]."), 1)
+	message_staff(SPAN_NOTICE("[key_name_admin(usr)] assumed direct control of [M]."), 1)
 
 /client/proc/cmd_debug_mob_lists()
 	set category = "Debug"

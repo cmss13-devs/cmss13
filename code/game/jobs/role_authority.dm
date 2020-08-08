@@ -415,7 +415,7 @@ roles willy nilly.
 					to_chat(user, "There are no [J.title] slots occupied in [sq.name] Squad.")
 					return
 	J.current_positions--
-	message_admins(SPAN_NOTICE("[key_name(user)] freed the [J.title] job slot[sq ? " in [sq.name] Squad" : ""]."))
+	message_staff(SPAN_NOTICE("[key_name(user)] freed the [J.title] job slot[sq ? " in [sq.name] Squad" : ""]."))
 	return 1
 
 /datum/authority/branch/role/proc/modify_role(datum/job/J, amount)

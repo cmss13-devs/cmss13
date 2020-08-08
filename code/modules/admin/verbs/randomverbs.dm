@@ -64,7 +64,7 @@
 	if(automute)
 		muteunmute = "auto-muted"
 		M.client.prefs.muted |= mute_type
-		message_admins("SPAM AUTOMUTE: [muteunmute] [key_name_admin(M)] from [mute_string].", 1)
+		message_staff("SPAM AUTOMUTE: [muteunmute] [key_name_admin(M)] from [mute_string].", 1)
 		to_chat(M, "You have been [muteunmute] from [mute_string] by the SPAM AUTOMUTE system. Contact an admin.")
 		 
 		return FALSE
@@ -76,7 +76,7 @@
 		muteunmute = "muted"
 		M.client.prefs.muted |= mute_type
 
-	message_admins("[key_name_admin(usr)] has [muteunmute] [key_name_admin(M)] from [mute_string].", 1)
+	message_staff("[key_name_admin(usr)] has [muteunmute] [key_name_admin(M)] from [mute_string].", 1)
 	to_chat(M, "You have been [muteunmute] from [mute_string].")
 
 /client/proc/toggle_own_ghost_vis()

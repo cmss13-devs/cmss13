@@ -7,7 +7,7 @@
 	unansweredAhelps.Remove(src.computer_id)
 
 	if(AHOLD_IS_MOD(admin_datums[src.ckey]) && ticker && ticker.current_state == GAME_STATE_PLAYING)
-		message_admins("Admin logout: [key_name(src)]")
+		message_staff("Admin logout: [key_name(src)]")
 
 	if(s_active)
 		s_active.hide_from(src)

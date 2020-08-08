@@ -12,7 +12,7 @@ var/global/normal_ooc_colour = "#1c52f5"
 		usr.talked = 2
 		to_chat(usr, SPAN_DANGER("You have been flagged for spam.  You may not speak for at least [usr.chatWarn] seconds (if you spammed alot this might break and never unmute you).  This number will increase each time you are flagged for spamming"))
 		if(usr.chatWarn > 10)
-			message_admins("[key_name(usr, usr.client)] is spamming like crazy, their current chatwarn is [usr.chatWarn]. ")
+			message_staff("[key_name(usr, usr.client)] is spamming like crazy, their current chatwarn is [usr.chatWarn]. ")
 		add_timer(CALLBACK(usr, .proc/clear_chat_spam_mute, usr.talked, TRUE, TRUE), usr.chatWarn * CHAT_OOC_DELAY_SPAM, TIMER_UNIQUE)
 		return
 	else if(usr.talked == 1)
@@ -46,7 +46,7 @@ var/global/normal_ooc_colour = "#1c52f5"
 			return
 		if(findtext(msg, "byond://"))
 			to_chat(src, "<B>Advertising other servers is not allowed.</B>")
-			message_admins("[key_name_admin(src)] has attempted to advertise in OOC: [msg]")
+			message_staff("[key_name_admin(src)] has attempted to advertise in OOC: [msg]")
 			return
 
 	log_ooc("[mob.name]/[key] : [msg]")
@@ -100,7 +100,7 @@ var/global/normal_ooc_colour = "#1c52f5"
 		usr.talked = 2
 		to_chat(usr, SPAN_DANGER("You have been flagged for spam.  You may not speak for at least [usr.chatWarn] seconds (if you spammed alot this might break and never unmute you).  This number will increase each time you are flagged for spamming"))
 		if(usr.chatWarn >10)
-			message_admins("[key_name(usr, usr.client)] is spamming like crazy, their current chatwarn is [usr.chatWarn]. ")
+			message_staff("[key_name(usr, usr.client)] is spamming like crazy, their current chatwarn is [usr.chatWarn]. ")
 		add_timer(CALLBACK(usr, .proc/clear_chat_spam_mute, usr.talked, TRUE, TRUE), usr.chatWarn * CHAT_OOC_DELAY_SPAM, TIMER_UNIQUE)
 		return
 	else if(usr.talked == 1)
@@ -135,7 +135,7 @@ var/global/normal_ooc_colour = "#1c52f5"
 			return
 		if(findtext(msg, "byond://"))
 			to_chat(src, "<B>Advertising other servers is not allowed.</B>")
-			message_admins("[key_name_admin(src)] has attempted to advertise in LOOC: [msg]")
+			message_staff("[key_name_admin(src)] has attempted to advertise in LOOC: [msg]")
 			return
 
 	log_ooc("(LOCAL) [mob.name]/[key] : [msg]")

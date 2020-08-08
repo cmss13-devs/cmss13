@@ -32,7 +32,7 @@
 				tank_two = item
 				item.forceMove(src)
 				to_chat(user, SPAN_NOTICE("You attach the tank to the transfer valve."))
-				message_admins("[key_name_admin(user)] attached both tanks to a transfer valve. (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[location.x];Y=[location.y];Z=[location.z]'>JMP</a>)")
+				message_staff("[key_name_admin(user)] attached both tanks to a transfer valve. (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[location.x];Y=[location.y];Z=[location.z]'>JMP</a>)")
 				log_game("[key_name_admin(user)] attached both tanks to a transfer valve.")
 
 		update_icon()
@@ -53,7 +53,7 @@
 		A.holder = src
 		A.toggle_secure()	//this calls update_icon(), which calls update_icon() on the holder (i.e. the bomb).
 
-		message_admins("[key_name_admin(user)] attached a [item] to a transfer valve. (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[location.x];Y=[location.y];Z=[location.z]'>JMP</a>)")
+		message_staff("[key_name_admin(user)] attached a [item] to a transfer valve. (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[location.x];Y=[location.y];Z=[location.z]'>JMP</a>)")
 		log_game("[key_name_admin(user)] attached a [item] to a transfer valve.")
 		attacher = user
 		nanomanager.update_uis(src) // update all UIs attached to src
@@ -177,7 +177,7 @@
 			last_touch_info = "(<A HREF='?_src_=admin_holder;adminmoreinfo;extra=\ref[mob]'>?</A>)"
 
 		log_str += " Last touched by: [src.fingerprintslast][last_touch_info]"
-		message_admins(log_str, 0, 1)
+		message_staff(log_str, 0, 1)
 		log_game(log_str)
 		merge_gases()
 		spawn(20) // In case one tank bursts

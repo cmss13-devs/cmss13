@@ -139,7 +139,7 @@ var/list/forbidden_varedit_object_types = list(
 		if("No")
 			L += var_value
 	
-	message_admins("[key_name_admin(src)] added a new element to a list with a key of '[var_value]' and an associated value of [isnum(var_value)? "null" : L[var_value]]", 1)
+	message_staff("[key_name_admin(src)] added a new element to a list with a key of '[var_value]' and an associated value of [isnum(var_value)? "null" : L[var_value]]", 1)
 
 /client/proc/mod_list(var/list/L)
 	if(!check_rights(R_VAREDIT))	return
@@ -306,7 +306,7 @@ var/list/forbidden_varedit_object_types = list(
 			if(temp_var)
 				L[variable] = temp_var
 
-	message_admins("[key_name_admin(src)] modified a list's '[variable]': [L.Find(variable)] => [L[L.Find(variable)]]", 1)
+	message_staff("[key_name_admin(src)] modified a list's '[variable]': [L.Find(variable)] => [L[L.Find(variable)]]", 1)
 
 
 /client/proc/modify_variables(var/atom/O, var/param_var_name = null, var/autodetect_class = 0)
@@ -559,7 +559,7 @@ var/list/forbidden_varedit_object_types = list(
 			O.vars[variable] = M
 
 			world.log << "### VarEdit by [key_name(src)]: [O.type] '[variable]': [var_value] => matrix \"[matrix_name]\" with columns ([M.a], [M.b], [M.c]), ([M.d], [M.e], [M.f])"
-			message_admins("[key_name_admin(src)] modified [original_name]'s '[variable]': [var_value] => matrix \"[matrix_name]\" with columns ([M.a], [M.b], [M.c]), ([M.d], [M.e], [M.f])", 1)
+			message_staff("[key_name_admin(src)] modified [original_name]'s '[variable]': [var_value] => matrix \"[matrix_name]\" with columns ([M.a], [M.b], [M.c]), ([M.d], [M.e], [M.f])", 1)
 
 		if("marked datum")
 			var/datum/D = input_marked_datum(admin_holder.marked_datums)
@@ -567,4 +567,4 @@ var/list/forbidden_varedit_object_types = list(
 
 	if(class != "matrix")
 		world.log << "### VarEdit by [key_name(src)]: [O.type] '[variable]': [var_value] => [html_encode("[O.vars[variable]]")]"
-		message_admins("[key_name_admin(src)] modified [original_name]'s '[variable]': [var_value] => [O.vars[variable]]", 1)
+		message_staff("[key_name_admin(src)] modified [original_name]'s '[variable]': [var_value] => [O.vars[variable]]", 1)

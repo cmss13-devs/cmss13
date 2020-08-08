@@ -8,7 +8,7 @@
 	if(alert("Confirm deadmin? This procedure can be reverted at any time and will not carry over to next round, but you will lose all your admin powers in the meantime.", , "Yes", "No") == "No")
 		return
 
-	message_admins("[src] deadmined themselves.")
+	message_staff("[src] deadmined themselves.")
 	verbs += /client/proc/readmin_self
 	deadmin()
 	to_chat(src, "<br><br><span class='centerbold'><big>You are now a normal player. You can ascend back to adminhood at any time using the 'Re-admin Self' verb in your Admin panel.</big></span><br>")
@@ -20,7 +20,7 @@
 	verbs -= /client/proc/readmin_self
 	readmin()
 	to_chat(src, "<br><br><span class='centerbold'><big>You have ascended back to adminhood. All your verbs should be back where you left them.</big></span><br>")
-	message_admins("[src] readmined themselves.")
+	message_staff("[src] readmined themselves.")
 
 /client/proc/becomelarva()
 	set name = "X: Lose Larva Protection"
@@ -173,7 +173,7 @@
 		else
 			M.sleeping = 9999999
 
-	message_admins("[key_name(usr)] used Toggle Sleep In View.")
+	message_staff("[key_name(usr)] used Toggle Sleep In View.")
 	return
 
 /datum/admins/proc/viewUnheardAhelps()

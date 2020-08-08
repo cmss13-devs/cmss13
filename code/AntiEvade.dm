@@ -12,7 +12,7 @@ var/list/client/clientcidcheck = list()
 	else
 		if (clientcidcheck[ckey] != computer_id)
 			to_chat(src, "Please remove wsock32.dll from c:/program files/byond/bin and reconnect.")
-			message_admins("[clientcidcheck[ckey]] may be using Evasion Tools")
+			message_staff("[clientcidcheck[ckey]] may be using Evasion Tools")
 			log_game("[clientcidcheck[ckey]] may be using Evasion Tools")
 			del(src)
 		else

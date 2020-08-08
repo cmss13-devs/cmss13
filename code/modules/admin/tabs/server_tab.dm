@@ -25,7 +25,7 @@
 		to_world("<B>Guests may no longer enter the game.</B>")
 	else
 		to_world("<B>Guests may now enter the game.</B>")
-	message_admins(SPAN_NOTICE("[key_name_admin(usr)] toggled guests game entering [guests_allowed ? "":"dis"]allowed."), 1)
+	message_staff(SPAN_NOTICE("[key_name_admin(usr)] toggled guests game entering [guests_allowed ? "":"dis"]allowed."), 1)
 
 /datum/admins/proc/togglejoin()
 	set name = "T: Toggle Marines Joining"
@@ -37,7 +37,7 @@
 		to_world("<B>New players may no longer join the game.</B>")
 	else
 		to_world("<B>New players may now join the game.</B>")
-	message_admins(SPAN_NOTICE("[key_name_admin(usr)] toggled new player game joining."), 1)
+	message_staff(SPAN_NOTICE("[key_name_admin(usr)] toggled new player game joining."), 1)
 	world.update_status()
 
 /datum/admins/proc/toggledsay()
@@ -50,7 +50,7 @@
 		to_world("<B>Deadchat has been globally enabled!</B>")
 	else
 		to_world("<B>Deadchat has been globally disabled!</B>")
-	message_admins("[key_name_admin(usr)] toggled deadchat.")
+	message_staff("[key_name_admin(usr)] toggled deadchat.")
 
 /datum/admins/proc/toggleooc()
 	set name = "T: Toggle OOC"
@@ -62,7 +62,7 @@
 		to_world("<B>The OOC channel has been globally enabled!</B>")
 	else
 		to_world("<B>The OOC channel has been globally disabled!</B>")
-	message_admins("[key_name_admin(usr)] toggled OOC.")
+	message_staff("[key_name_admin(usr)] toggled OOC.")
 
 /datum/admins/proc/togglelooc()
 	set name = "T: Toggle LOOC"
@@ -74,4 +74,4 @@
 		to_world("<B>The LOOC channel has been globally enabled!</B>")
 	else
 		to_world("<B>The LOOC channel has been globally disabled!</B>")
-	message_admins("[key_name_admin(usr)] toggled LOOC.")
+	message_staff("[key_name_admin(usr)] toggled LOOC.")

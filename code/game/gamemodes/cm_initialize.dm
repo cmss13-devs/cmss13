@@ -180,7 +180,7 @@ Additional game mode variables.
 	var/mob/living/carbon/human/new_predator = transform_predator(pred_candidate) //Initialized and ready.
 	if(!new_predator) return
 
-	message_admins("([new_predator.key]) joined as Yautja, [new_predator.real_name].")
+	msg_admin_niche("([new_predator.key]) joined as Yautja, [new_predator.real_name].")
 
 	if(pred_candidate) pred_candidate.loc = null //Nullspace it for garbage collection later.
 

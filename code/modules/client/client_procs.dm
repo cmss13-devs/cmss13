@@ -50,7 +50,7 @@
 	//search the href for script injection
 	if(findtext(href,"<script",1,0) )
 		world.log << "Attempted use of scripts within a topic call, by [src]"
-		message_admins("Attempted use of scripts within a topic call, by [src]")
+		message_staff("Attempted use of scripts within a topic call, by [src]")
 		//del(usr)
 		return
 
@@ -343,7 +343,7 @@
 		var/datum/entity/player_entity/P = player_entities["[key_ref]"]
 		P.save_statistics()
 	log_debug("STATISTICS: Statistics saving complete.")
-	message_admins("STATISTICS: Statistics saving complete.")
+	message_staff("STATISTICS: Statistics saving complete.")
 
 /client/proc/clear_chat_spam_mute(var/warn_level = 1, var/message = FALSE, var/increase_warn = FALSE)
 	if(talked > warn_level)

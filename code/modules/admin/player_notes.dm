@@ -40,7 +40,7 @@
 	infos += P
 	info << infos
 
-	message_admins(SPAN_NOTICE("[key_name_admin(usr)] has edited [key]'s notes: [sanitize(note)]"))
+	message_staff(SPAN_NOTICE("[key_name_admin(usr)] has edited [key]'s notes: [sanitize(note)]"))
 
 	qdel(info)
 
@@ -64,7 +64,7 @@
 	infos.Remove(item)
 	info << infos
 
-	message_admins(SPAN_NOTICE("[key_name_admin(usr)] deleted one of [key]'s notes."))
+	message_staff(SPAN_NOTICE("[key_name_admin(usr)] deleted one of [key]'s notes."))
 
 	qdel(info)
 

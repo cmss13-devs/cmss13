@@ -54,7 +54,7 @@
 		if(src.mob.client.midi_silenced)	return
 		if(midi_playing)
 			total_silenced++
-			message_admins("A player has silenced the currently playing midi. Total: [total_silenced] player(s).", 1)
+			message_staff("A player has silenced the currently playing midi. Total: [total_silenced] player(s).", 1)
 			src.mob.client.midi_silenced = 1
 			spawn(SECONDS_30) // Prevents message_admins() spam. Should match with the midi_playing_timer spawn() in playsound.dm
 				src.mob.client.midi_silenced = 0

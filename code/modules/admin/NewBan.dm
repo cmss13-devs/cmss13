@@ -87,7 +87,7 @@ var/savefile/Banlist
 		if (!Banlist["key"] || !Banlist["id"])
 			RemoveBan(A)
 			log_admin("Invalid Ban.")
-			message_admins("Invalid Ban.")
+			message_staff("Invalid Ban.")
 			continue
 
 		if (!Banlist["temp"]) continue
@@ -142,11 +142,11 @@ var/savefile/Banlist
 
 	if(!usr)
 		log_admin("Ban Expired: [key]")
-		message_admins("Ban Expired: [key]")
+		message_staff("Ban Expired: [key]")
 	else
 		ban_unban_log_save("[key_name_admin(usr)] unbanned [key]")
 		log_admin("[key_name_admin(usr)] unbanned [key]")
-		message_admins("[key_name_admin(usr)] unbanned: [key]")
+		message_staff("[key_name_admin(usr)] unbanned: [key]")
 	for (var/A in Banlist.dir)
 		Banlist.cd = "/base/[A]"
 		if (key == Banlist["key"] /*|| id == Banlist["id"]*/)

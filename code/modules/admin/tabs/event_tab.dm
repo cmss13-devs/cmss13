@@ -12,10 +12,10 @@
 	
 	if(input == "")
 		custom_event_msg = null
-		message_admins("[key_name_admin(usr)] has cleared the custom event text.")
+		message_staff("[key_name_admin(usr)] has cleared the custom event text.")
 		return
 
-	message_admins("[key_name_admin(usr)] has changed the custom event text.")
+	message_staff("[key_name_admin(usr)] has changed the custom event text.")
 
 	custom_event_msg = input
 
@@ -38,10 +38,10 @@
 
 	if(config.remove_gun_restrictions)
 		to_chat(src, "<b>Enabled gun restrictions.</b>")
-		message_admins("Admin [key_name_admin(usr)] has enabled WY gun restrictions.")
+		message_staff("Admin [key_name_admin(usr)] has enabled WY gun restrictions.")
 	else
 		to_chat(src, "<b>Disabled gun restrictions.</b>")
-		message_admins("Admin [key_name_admin(usr)] has disabled WY gun restrictions.")
+		message_staff("Admin [key_name_admin(usr)] has disabled WY gun restrictions.")
 	config.remove_gun_restrictions = !config.remove_gun_restrictions
 
 /client/proc/adjust_weapon_mult()
@@ -92,8 +92,8 @@
 			if(power > custom_limit)
 				return
 			cell_explosion(epicenter, power, falloff)
-			log_and_message_admins("[key_name(src, TRUE)] dropped a custom cell bomb with power [power] and falloff [falloff]!")
-	message_admins(SPAN_NOTICE("[ckey] used 'Drop Bomb' at [epicenter.loc]."))
+			message_staff("[key_name(src, TRUE)] dropped a custom cell bomb with power [power] and falloff [falloff]!")
+	message_staff(SPAN_NOTICE("[ckey] used 'Drop Bomb' at [epicenter.loc]."))
 
 /client/proc/cmd_admin_emp(atom/O as obj|mob|turf in world)
 	set name = "EM Pulse"
@@ -113,7 +113,7 @@
 		return
 
 	empulse(O, heavy, light)
-	message_admins("[key_name_admin(usr)] created an EM PUlse ([heavy],[light]) at ([O.x],[O.y],[O.z])")
+	message_staff("[key_name_admin(usr)] created an EM PUlse ([heavy],[light]) at ([O.x],[O.y],[O.z])")
 	return
 
 /datum/admins/proc/admin_force_ERT_shuttle()
@@ -131,7 +131,7 @@
 
 	var/datum/shuttle/ferry/ert/shuttle = shuttle_controller.shuttles[tag]
 	if(!shuttle || !istype(shuttle))
-		message_admins("Warning: Distress shuttle not found. Aborting.")
+		message_staff("Warning: Distress shuttle not found. Aborting.")
 		return
 
 	if(shuttle.location) //in start zone in admin z level
@@ -152,7 +152,7 @@
 				//other ERT shuttles already docked on almayer or about to be
 				if(!F.location || F.moving_status != SHUTTLE_IDLE)
 					if(F.area_station.type == dock_id)
-						message_admins("Warning: That docking zone is already taken by another shuttle. Aborting.")
+						message_staff("Warning: That docking zone is already taken by another shuttle. Aborting.")
 						return
 
 		for(var/area/A in all_areas)
@@ -161,12 +161,12 @@
 				break
 
 	if(!shuttle.can_launch())
-		message_admins("Warning: Unable to launch this Distress shuttle at this moment. Aborting.")
+		message_staff("Warning: Unable to launch this Distress shuttle at this moment. Aborting.")
 		return
 
 	shuttle.launch()
 
-	message_admins(SPAN_NOTICE("[key_name_admin(usr)] force launched a distress shuttle ([tag])"), 1)
+	message_staff(SPAN_NOTICE("[key_name_admin(usr)] force launched a distress shuttle ([tag])"), 1)
 
 /datum/admins/proc/admin_force_distress()
 	set name = "E: Distress Beacon"
@@ -212,7 +212,7 @@
 
 	chosen_ert.activate(is_announcing)
 
-	message_admins(SPAN_NOTICE("[key_name_admin(usr)] admin-called a [choice == "Randomize" ? "randomized ":""]distress beacon: [chosen_ert.name]"), 1)
+	message_staff(SPAN_NOTICE("[key_name_admin(usr)] admin-called a [choice == "Randomize" ? "randomized ":""]distress beacon: [chosen_ert.name]"), 1)
 	
 /datum/admins/proc/admin_force_selfdestruct()
 	set name = "E: Self Destruct"
@@ -227,7 +227,7 @@
 
 	set_security_level(SEC_LEVEL_DELTA)
 
-	message_admins(SPAN_NOTICE("[key_name_admin(usr)] admin-started self destruct stystem."), 1)
+	message_staff(SPAN_NOTICE("[key_name_admin(usr)] admin-started self destruct stystem."), 1)
 
 /client/proc/view_faxes()
 	set name = "X: View Faxes"
@@ -302,7 +302,7 @@
 				card.registered_name = H.real_name
 				card.name = "[card.registered_name]'s ID Card ([card.assignment])"
 
-	message_admins("Admin [key_name(usr)] has turned everyone into a primitive")
+	message_staff("Admin [key_name(usr)] has turned everyone into a primitive")
 
 /client/proc/force_shuttle()
 	set name = "E: Force Dropship"
@@ -388,7 +388,7 @@
 	else
 		marine_announcement(input, customname, 'sound/AI/commandreport.ogg', faction)
 
-	message_admins("[key_name_admin(src)] has created a [faction] command report")
+	message_staff("[key_name_admin(src)] has created a [faction] command report")
 
 /client/proc/cmd_admin_xeno_report()
 	set name = "A: Report: Queen Mother"
@@ -425,7 +425,7 @@
 	else
 		xeno_announcement(input, hivenumber, SPAN_ANNOUNCEMENT_HEADER_BLUE("[hive_prefix][QUEEN_MOTHER_ANNOUNCE]"))
 
-	message_admins("[key_name_admin(src)] has created a [hive_choice] Queen Mother report")
+	message_staff("[key_name_admin(src)] has created a [hive_choice] Queen Mother report")
 
 /client/proc/cmd_admin_create_AI_report()
 	set name = "A: Report: ARES Comms"
@@ -446,7 +446,7 @@
 				P.update_icon()
 				C.messagetitle.Add("[MAIN_AI_SYSTEM] Update")
 				C.messagetext.Add(P.info)
-		message_admins("[key_name_admin(src)] has created an AI comms report")
+		message_staff("[key_name_admin(src)] has created an AI comms report")
 	else
 		to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM] is not responding. It may be offline or destroyed."))
 
@@ -471,7 +471,7 @@
 			C.messagetext.Add(P.info)
 
 	shipwide_ai_announcement(input)
-	message_admins("[key_name_admin(src)] has created an AI shipwide report")
+	message_staff("[key_name_admin(src)] has created an AI shipwide report")
 
 /client/proc/cmd_admin_create_predator_report()
 	set name = "A: Report: Yautja AI"
@@ -484,7 +484,7 @@
 	if(!input)
 		return FALSE
 	yautja_announcement(SPAN_YAUTJABOLDBIG(input))
-	message_admins("[key_name_admin(src)] has created a predator ship AI report")
+	message_staff("[key_name_admin(src)] has created a predator ship AI report")
 
 /client/proc/cmd_admin_world_narrate() // Allows administrators to fluff events a little easier -- TLE
 	set name = "N: Narrate to Everyone"
@@ -500,7 +500,7 @@
 		return
 		
 	to_world(SPAN_ANNOUNCEMENT_HEADER_BLUE(msg))
-	message_admins(SPAN_NOTICE("\bold GlobalNarrate: [key_name_admin(usr)] : [msg]"))
+	message_staff(SPAN_NOTICE("\bold GlobalNarrate: [key_name_admin(usr)] : [msg]"))
 
 /client/proc/admin_play_sound()
 	set name = "S: Play Sound"
@@ -554,9 +554,9 @@
 			return
 	 
 	if(isnum(heard_midi))
-		message_admins("[key_name_admin(src)] played sound `[soundin]` for [heard_midi] player(s). [length(player_list) - heard_midi] player(s) have disabled admin midis.")
+		message_staff("[key_name_admin(src)] played sound `[soundin]` for [heard_midi] player(s). [length(player_list) - heard_midi] player(s) have disabled admin midis.")
 	else
-		message_admins("[key_name_admin(src)] played sound `[soundin]` for [heard_midi].")
+		message_staff("[key_name_admin(src)] played sound `[soundin]` for [heard_midi].")
 		return
 
 	// A 30 sec timer used to show Admins how many players are silencing the sound after it starts - see preferences_toggles.dm
@@ -564,7 +564,7 @@
 	midi_playing = 1
 	spawn(midi_playing_timer)
 		midi_playing = 0
-		message_admins("'Silence Current Midi' usage reporting 30-sec timer has expired. [total_silenced] player(s) silenced the midi in the first 30 seconds out of [heard_midi] total player(s) that have 'Play Admin Midis' enabled. <span style='color: red'>[round((total_silenced / (heard_midi ? heard_midi : 1)) * 100)]% of players don't want to hear it, and likely more if the midi is longer than 30 seconds.</span>")
+		message_staff("'Silence Current Midi' usage reporting 30-sec timer has expired. [total_silenced] player(s) silenced the midi in the first 30 seconds out of [heard_midi] total player(s) that have 'Play Admin Midis' enabled. <span style='color: red'>[round((total_silenced / (heard_midi ? heard_midi : 1)) * 100)]% of players don't want to hear it, and likely more if the midi is longer than 30 seconds.</span>")
 		heard_midi = 0
 		total_silenced = 0
 
@@ -591,7 +591,7 @@
 		return
 
 	remote_control = !remote_control
-	message_admins("[key_name_admin(src)] has toggled remote control [remote_control? "on" : "off"] for themselves")
+	message_staff("[key_name_admin(src)] has toggled remote control [remote_control? "on" : "off"] for themselves")
 
 /client/proc/enable_event_mob_verbs()
 	set name = "Z: Mob Event Verbs - Show"

@@ -147,7 +147,7 @@
 		
 	arm_equipment(M, dresscode, FALSE, count_participant)
 	if(!no_logs)
-		message_admins(SPAN_NOTICE("[key_name_admin(usr)] changed the equipment of [key_name_admin(M)] to [dresscode]."), 1)
+		message_staff(SPAN_NOTICE("[key_name_admin(usr)] changed the equipment of [key_name_admin(M)] to [dresscode]."), 1)
 	return
 
 /client/proc/cmd_admin_dress_all()
@@ -164,7 +164,7 @@
 	for(var/mob/living/carbon/human/M in mob_list)
 		src.cmd_admin_dress_human(M, dresscode, 1)
 
-	message_admins(SPAN_NOTICE("[key_name_admin(usr)] changed the equipment of ALL HUMANS to [dresscode]."), 1)
+	message_staff(SPAN_NOTICE("[key_name_admin(usr)] changed the equipment of ALL HUMANS to [dresscode]."), 1)
 
 //note: when adding new dresscodes, on top of adding a proper skills_list, make sure the ID given has
 //a rank that matches a job title unless you want the human to bypass the skill system.

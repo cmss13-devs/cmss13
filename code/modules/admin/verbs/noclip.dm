@@ -11,6 +11,6 @@
 
 	mob.noclip = !mob.noclip
 	var/msg = "[key_name(src)] has toggled noclip [mob.noclip? "on" : "off"]."
-	message_admins(msg)
+	message_staff(msg)
 	log_admin(msg)
 

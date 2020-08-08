@@ -1,4 +1,6 @@
 /proc/spawn_reagent(var/target, var/volume)
+	message_staff("[usr] spawned in a container of [target] with a volume of [volume]u")
+
 	if(volume > 300)
 		var/obj/structure/reagent_dispensers/fueltank/custom/C = new(usr.loc, volume, target)
 		C.reagents.add_reagent(target, volume)
@@ -7,10 +9,14 @@
 			var/explosive_power = input(usr,"Power") as num
 			var/falloff = input(usr, "Base Falloff") as num
 
-			C.reagents.max_ex_power = explosive_power
-			C.reagents.base_ex_falloff = max(1, falloff)
+			if(explosive_power && falloff)
 
-			C.reagents.locked = TRUE
+				C.reagents.max_ex_power = explosive_power
+				C.reagents.base_ex_falloff = max(1, falloff)
+
+				C.reagents.locked = TRUE
+
+				message_staff("[usr] modified [C] ([target]) to have [C.reagents.max_ex_power] explosive power and [C.reagents.base_ex_falloff] falloff")
 
 	else if(volume > 120)
 		var/obj/item/reagent_container/glass/beaker/bluespace/C = new /obj/item/reagent_container/glass/beaker/bluespace(usr.loc)
@@ -104,7 +110,7 @@
 			R.generate_stats()
 			//Save our reagent
 			chemical_reagents_list[target] = R
-			message_admins("[key_name_admin(usr)] has generated the reagent: [target].")
+			message_staff("[key_name_admin(usr)] has generated the reagent: [target].")
 			var/response = alert(usr,"Do you want to do anything else?",null,"Generate associated reaction","View my reagent","Finish")
 			while(response != "Finish")
 				switch(response)
@@ -209,7 +215,7 @@
 			R.generate_description()
 			//Save our reagent
 			chemical_reagents_list[target] = R
-			message_admins("[key_name_admin(usr)] has created a custom reagent: [target].")
+			message_staff("[key_name_admin(usr)] has created a custom reagent: [target].")
 			//See what we want to do last
 			response = alert(usr,"Spawn container with reagent?","Custom reagent [target]","Yes","No, show me the reagent","No, I'm all done")
 			switch(response)
@@ -285,5 +291,5 @@
 				to_chat(usr,SPAN_WARNING("Something went wrong when saving the reaction."))
 				return
 			usr.client.debug_variables(chemical_reactions_list[target])
-			message_admins("[key_name_admin(usr)] has created a custom chemical reaction: [target].")
+			message_staff("[key_name_admin(usr)] has created a custom chemical reaction: [target].")
 			return

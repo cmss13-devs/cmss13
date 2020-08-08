@@ -53,10 +53,10 @@
 			if(config)
 				if(config.ToRban)
 					config.ToRban = 0
-					message_admins("<font color='red'>ToR banning disabled.</font>")
+					message_staff("<font color='red'>ToR banning disabled.</font>")
 				else
 					config.ToRban = 1
-					message_admins("<font colot='green'>ToR banning enabled.</font>")
+					message_staff("<font colot='green'>ToR banning enabled.</font>")
 		if("show")
 			var/savefile/F = new(TORFILE)
 			var/dat

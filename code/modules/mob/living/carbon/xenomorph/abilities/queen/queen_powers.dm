@@ -106,7 +106,7 @@
 
 	INVOKE_ASYNC(new_xeno, /mob/living/carbon/Xenomorph.proc/age_xeno, T.age) //a young Crusher de-evolves into a MATURE Hunter
 
-	message_admins("[key_name_admin(X)] has deevolved [key_name_admin(T)]. Reason: [reason]")
+	message_staff("[key_name_admin(X)] has deevolved [key_name_admin(T)]. Reason: [reason]")
 	log_admin("[key_name_admin(X)] has deevolved [key_name_admin(T)]. Reason: [reason]")
 	qdel(T)
 	..()
@@ -303,7 +303,7 @@
 		T.banished = TRUE
 		T.hud_update_banished()
 
-		message_admins("[key_name_admin(X)] has banished [key_name_admin(T)]. Reason: [reason]")
+		message_staff("[key_name_admin(X)] has banished [key_name_admin(T)]. Reason: [reason]")
 
 	else
 		to_chat(X, SPAN_WARNING("You must overwatch the xeno you want to banish."))

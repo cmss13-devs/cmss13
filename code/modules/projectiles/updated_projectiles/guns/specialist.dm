@@ -896,7 +896,7 @@
 
 	F.throw_atom(target, 20, SPEED_VERY_FAST, user, null, NORMAL_LAUNCH, pass_flags)
 	if(F && F.loc) //Apparently it can get deleted before the next thing takes place, so it runtimes.
-		message_admins("[key_name_admin(user)] fired a grenade ([F.name]) from \a ([name]).")
+		msg_admin_attack("[key_name_admin(user)] fired a grenade ([F.name]) from \a ([name]).")
 		log_game("[key_name_admin(user)] used a grenade ([name]).")
 		F.icon_state = initial(F.icon_state) + "_active"
 		F.active = 1
@@ -1020,7 +1020,7 @@
 	F.throw_range = 20
 	F.throw_atom(target, 20, SPEED_VERY_FAST, user)
 	if(F && F.loc) //Apparently it can get deleted before the next thing takes place, so it runtimes.
-		message_admins("[key_name_admin(user)] fired a grenade ([F.name]) from \a ([name]).")
+		msg_admin_attack("[key_name_admin(user)] fired a grenade ([F.name]) from \a ([name]).")
 		log_game("[key_name_admin(user)] used a grenade ([name]).")
 		F.icon_state = initial(F.icon_state) + "_active"
 		F.active = 1

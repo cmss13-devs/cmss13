@@ -83,7 +83,7 @@
 /*****************************************************************************************************/
 
 /datum/equipment_preset/survivor/corporate
-	name = "Survivor - Corporate"
+	name = "Survivor - Corporate Liaison"
 	assignment = "Corporate Liaison"
 	skills = /datum/skills/civilian/survivor
 	flags = EQUIPMENT_PRESET_START_OF_ROUND

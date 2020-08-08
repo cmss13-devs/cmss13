@@ -154,6 +154,12 @@
 	icon_state = "cl"
 	clearance_access = 5
 
+/obj/item/card/id/silver/clearance_badge/manager
+	name = "corporate manager badge"
+	desc = "A corporate holo-badge in standard corporate orange and white. It has a unique uncapped bottom. It is fingerprint locked with 5-X clearance level. Commonly held by corporate managers."
+	icon_state = "pmc"
+	clearance_access = 6
+
 /obj/item/card/id/pizza
 	name = "pizza guy badge"
 	desc = "It reads: 'Pizza-guy local union No. 217','We always deliver!'"

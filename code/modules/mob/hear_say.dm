@@ -98,7 +98,7 @@
 
 	var/changed_voice
 
-	if(isremotecontrolling(src) && !hard_to_hear)
+	if(isAI(src) && !hard_to_hear)
 		var/jobname // the mob's "job"
 		var/mob/living/carbon/human/impersonating //The crewmember being impersonated, if any.
 
@@ -124,7 +124,7 @@
 		else if (iscarbon(speaker)) // Nonhuman carbon mob
 			jobname = "No id"
 			comm_paygrade = ""
-		else if (isremotecontrolling(speaker))
+		else if (isAI(speaker))
 			jobname = "AI"
 			comm_paygrade = ""
 		else if (isrobot(speaker))
@@ -143,7 +143,7 @@
 			track = "<a href='byond://?src=\ref[src];trackname=[html_encode(speaker_name)];track=\ref[speaker]'>[speaker_name] ([jobname])</a>"
 
 	if(istype(src, /mob/dead/observer))
-		if(speaker_name != speaker.real_name && !isremotecontrolling(speaker)) //Announce computer and various stuff that broadcasts doesn't use it's real name but AI's can't pretend to be other mobs.
+		if(speaker_name != speaker.real_name && !isAI(speaker)) //Announce computer and various stuff that broadcasts doesn't use it's real name but AI's can't pretend to be other mobs.
 			speaker_name = "[speaker.real_name] ([speaker_name])"
 		track = "[speaker_name] (<a href='byond://?src=\ref[src];track=\ref[speaker]'>follow</a>)"
 

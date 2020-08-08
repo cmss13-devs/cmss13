@@ -38,7 +38,7 @@
 		handle_stunned()
 
 		//stage = 1
-		//if (isremotecontrolling(src)) // Are we not sure what we are?
+		//if (isRemoteControlling(src)) // Are we not sure what we are?
 		var/blind = 0
 		//stage = 2
 		var/area/loc = null

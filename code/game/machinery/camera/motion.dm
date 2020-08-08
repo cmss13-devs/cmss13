@@ -23,7 +23,7 @@
 			// If not detecting with motion camera...
 
 /obj/structure/machinery/camera/proc/newTarget(var/mob/target)
-	if (isremotecontrolling(target)) return 0
+	if (isAI(target)) return 0
 	if (detectTime == 0)
 		detectTime = world.time // start the clock
 	if (!(target in motionTargets))

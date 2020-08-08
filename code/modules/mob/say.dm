@@ -118,7 +118,7 @@
 			return 1
 		if(other.universal_speak)
 			return 1
-		if(isremotecontrolling(src))
+		if(isAI(src))
 			return 1
 		if (istype(other, src.type) || istype(src, other.type))
 			return 1

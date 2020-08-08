@@ -157,7 +157,7 @@
 obj/item/device/camera/siliconcam/proc/getsource()
 	if(ismob(src.loc))
 		var/mob/M = src.loc
-		if(isremotecontrolling(M))
+		if(isRemoteControlling(M))
 			return src
 
 	var/mob/living/silicon/robot/C = src.loc

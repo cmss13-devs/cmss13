@@ -164,7 +164,7 @@
 				examine(user)
 			user.face_atom(src)
 
-		if(isremotecontrolling(user))
+		if(isRemoteControlling(user))
 			examine(user)
 		return TRUE
 

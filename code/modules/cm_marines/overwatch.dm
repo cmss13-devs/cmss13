@@ -551,7 +551,7 @@
 		if("back")
 			state = 0
 		if("use_cam")
-			if(isremotecontrolling(usr))
+			if(isRemoteControlling(usr))
 				to_chat(usr, "[htmlicon(src, usr)] [SPAN_WARNING("Unable to override console camera viewer. Track with camera instead. ")]")
 				return
 			if(current_squad)
@@ -578,7 +578,7 @@
 
 /obj/structure/machinery/computer/overwatch/on_unset_interaction(mob/user)
 	..()
-	if(!isremotecontrolling(user))
+	if(!isRemoteControlling(user))
 		cam = null
 		user.reset_view(null)
 
@@ -710,7 +710,7 @@
 							R.fields["ma_crim"] += "Insubordination."
 
 						var/insub = "[htmlicon(src, usr)] [SPAN_BOLDNOTICE("[wanted_marine] has been reported for insubordination. Logging to enlistment file.")]"
-						if(isremotecontrolling(usr))
+						if(isRemoteControlling(usr))
 							usr << insub
 						else
 							visible_message(insub)

@@ -60,7 +60,7 @@
 				H.UpdateDamageIcon()
 		H.updatehealth()
 		return 1
-	else if(isremotecontrolling(src))
+	else if(isAI(src))
 		return 0
 
 /mob/living/proc/adjustBodyTemp(actual, desired, incrementboost)

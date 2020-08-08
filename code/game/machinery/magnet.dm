@@ -180,7 +180,7 @@
 						step_towards(M, center)
 
 				for(var/mob/living/silicon/S in orange(magnetic_field, center))
-					if(isremotecontrolling(S)) continue
+					if(isAI(S)) continue
 					step_towards(S, center)
 
 			use_power(electricity_level * 5)

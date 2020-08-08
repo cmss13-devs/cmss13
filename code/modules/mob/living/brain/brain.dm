@@ -21,7 +21,7 @@
 	. = ..()
 
 /mob/living/brain/say_understands(var/mob/other)//Goddamn is this hackish, but this say code is so odd
-	if (isremotecontrolling(other))
+	if (isAI(other))
 		if(!(container && istype(container, /obj/item/device/mmi)))
 			return 0
 		else

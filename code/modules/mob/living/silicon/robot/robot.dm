@@ -643,7 +643,7 @@ var/list/robot_verbs_default = list(
 
 	add_fingerprint(user)
 
-	if(opened && !wiresexposed && (!isremotecontrolling(user)))
+	if(opened && !wiresexposed && (!isRemoteControlling(user)))
 		var/datum/robot_component/cell_component = components["power cell"]
 		if(cell)
 			cell.updateicon()

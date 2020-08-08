@@ -918,7 +918,7 @@
 		if(!ismob(M))
 			to_chat(usr, "This can only be used on instances of type /mob")
 			return
-		if(isremotecontrolling(M))
+		if(isAI(M))
 			to_chat(usr, "This cannot be used on instances of type /mob/living/silicon/ai")
 			return
 
@@ -942,7 +942,7 @@
 		if(!ismob(M))
 			to_chat(usr, "This can only be used on instances of type /mob")
 			return
-		if(isremotecontrolling(M))
+		if(isAI(M))
 			to_chat(usr, "This cannot be used on instances of type /mob/living/silicon/ai")
 			return
 
@@ -966,7 +966,7 @@
 		if(!ismob(M))
 			to_chat(usr, "This can only be used on instances of type /mob")
 			return
-		if(isremotecontrolling(M))
+		if(isAI(M))
 			to_chat(usr, "This cannot be used on instances of type /mob/living/silicon/ai")
 			return
 
@@ -987,7 +987,7 @@
 		if(!ismob(M))
 			to_chat(usr, "This can only be used on instances of type /mob")
 			return
-		if(isremotecontrolling(M))
+		if(isAI(M))
 			to_chat(usr, "This cannot be used on instances of type /mob/living/silicon/ai")
 			return
 

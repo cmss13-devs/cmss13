@@ -180,7 +180,7 @@ Transponder Codes:<UL>"}
 		..()
 		if (usr.stat)
 			return
-		if ((in_range(src, usr) && istype(src.loc, /turf)) || (isremotecontrolling(usr)))
+		if ((in_range(src, usr) && istype(src.loc, /turf)) || (isRemoteControlling(usr)))
 			if(open && !locked)
 				usr.set_interaction(src)
 

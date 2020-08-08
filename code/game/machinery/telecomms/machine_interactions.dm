@@ -202,7 +202,7 @@
 	// Let's double check
 	if(!ishighersilicon(user) && istype(user.get_active_hand(), /obj/item/device/multitool))
 		P = user.get_active_hand()
-	else if(isremotecontrolling(user))
+	else if(isAI(user))
 		var/mob/living/silicon/ai/U = user
 		P = U.aiMulti
 	else if(isborg(user) && in_range(user, src))
@@ -368,7 +368,7 @@
 	updateUsrDialog()
 
 /obj/structure/machinery/telecomms/proc/canAccess(var/mob/user)
-	if(isremotecontrolling(user) || in_range(user, src))
+	if(isRemoteControlling(user) || in_range(user, src))
 		return 1
 	return 0
 

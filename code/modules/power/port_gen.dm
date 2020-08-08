@@ -273,7 +273,7 @@ display round(lastgen) and phorontank amount
 
 /obj/structure/machinery/power/port_gen/pacman/interact(mob/user)
 	if (get_dist(src, user) > 1 )
-		if (!isremotecontrolling(user))
+		if (!isRemoteControlling(user))
 			user.unset_interaction()
 			close_browser(user, "port_gen")
 			return

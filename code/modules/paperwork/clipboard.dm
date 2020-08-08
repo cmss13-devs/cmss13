@@ -136,7 +136,7 @@
 
 			if(P && (P.loc == src) && istype(P, /obj/item/paper) )
 
-				if(!(istype(usr, /mob/living/carbon/human) || istype(usr, /mob/dead/observer) || isremotecontrolling(usr)))
+				if(!(istype(usr, /mob/living/carbon/human) || istype(usr, /mob/dead/observer) || isRemoteControlling(usr)))
 					show_browser(usr, "<BODY class='paper'>[stars(P.info)][P.stamps]</BODY>", P.name, P.name)
 					onclose(usr, P.name)
 				else

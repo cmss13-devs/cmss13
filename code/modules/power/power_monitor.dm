@@ -31,7 +31,7 @@
 /obj/structure/machinery/power/monitor/interact(mob/user)
 
 	if ( (get_dist(src, user) > 1 ) || (inoperable()) )
-		if (!isremotecontrolling(user))
+		if (!isRemoteControlling(user))
 			user.unset_interaction()
 			close_browser(user, "powcomp")
 			return

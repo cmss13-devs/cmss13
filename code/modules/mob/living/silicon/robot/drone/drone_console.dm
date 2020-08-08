@@ -49,7 +49,7 @@
 		to_chat(usr, SPAN_DANGER("Access denied."))
 		return
 
-	if ((usr.contents.Find(src) || (in_range(src, usr) && istype(src.loc, /turf))) || (isremotecontrolling(usr)))
+	if ((usr.contents.Find(src) || (in_range(src, usr) && istype(src.loc, /turf))) || (isRemoteControlling(usr)))
 		usr.set_interaction(src)
 
 	if (href_list["setarea"])

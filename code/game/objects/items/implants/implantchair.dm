@@ -54,7 +54,7 @@
 
 
 	Topic(href, href_list)
-		if((get_dist(src, usr) <= 1) || isremotecontrolling(usr))
+		if((get_dist(src, usr) <= 1) || isRemoteControlling(usr))
 			if(href_list["implant"])
 				if(src.occupant)
 					injecting = 1

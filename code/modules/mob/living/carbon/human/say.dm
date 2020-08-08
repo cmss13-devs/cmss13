@@ -151,7 +151,7 @@
 
 	//These only pertain to common. Languages are handled by mob/say_understands()
 	if (!speaking)
-		if (isremotecontrolling(other))
+		if (isSilicon(other))
 			return 1
 		if (istype(other, /mob/living/brain))
 			return 1

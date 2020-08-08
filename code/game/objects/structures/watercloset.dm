@@ -354,7 +354,7 @@
 	var/busy = 0 	//Something's being washed at the moment
 
 /obj/structure/sink/attack_hand(mob/user)
-	if(isremotecontrolling(user))
+	if(isRemoteControlling(user))
 		return
 
 	if(!Adjacent(user))

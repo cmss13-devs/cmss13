@@ -837,7 +837,7 @@ var/datum/controller/supply/supply_controller = new()
 			var/mob/living/carbon/human/H = usr
 			idname = H.get_authentification_name()
 			idrank = H.get_assignment()
-		else if(isremotecontrolling(usr))
+		else if(isSilicon(usr))
 			idname = usr.real_name
 
 		supply_controller.ordernum++

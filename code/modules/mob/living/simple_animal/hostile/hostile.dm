@@ -34,7 +34,7 @@
 				continue
 			else if(L in friends)
 				continue
-			else if (istype(src, /mob/living/simple_animal/hostile/alien) && (isXeno(L) || (isremotecontrolling(L))))
+			else if (istype(src, /mob/living/simple_animal/hostile/alien) && (isXeno(L) || (isSilicon(L))))
 				continue
 			else
 				if(!L.stat)

@@ -171,3 +171,6 @@
 
 /obj/structure/barricade/handrail/strata
 	icon_state = "handrail_strata"
+
+/obj/structure/barricade/handrail/medical
+	icon_state = "handrail_med"

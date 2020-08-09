@@ -4,11 +4,13 @@
 	anchored = 1
 	icon = 'icons/obj/structures/machinery/science_machines.dmi'
 	icon_state = "mixer0"
+	var/base_state = "mixer"
 	use_power = 1
 	idle_power_usage = 20
 	layer = BELOW_OBJ_LAYER //So bottles/pills reliably appear above it
 	var/req_skill = SKILL_MEDICAL
 	var/req_skill_level = SKILL_MEDICAL_MEDIC
+	var/pill_maker = TRUE
 	var/obj/item/reagent_container/beaker = null
 	var/obj/item/storage/pill_bottle/loaded_pill_bottle = null
 	var/mode = 0
@@ -55,9 +57,9 @@
 	if(stat & BROKEN)
 		icon_state = (beaker?"mixer1_b":"mixer0_b")
 	else if(stat & NOPOWER)
-		icon_state = (beaker?"mixer1_nopower":"mixer0_nopower")
+		icon_state = (beaker?"[base_state]1_nopower":"[base_state]0_nopower")
 	else
-		icon_state = (beaker?"mixer1":"mixer0")
+		icon_state = (beaker?"[base_state]1":"[base_state]0")
 
 
 /obj/structure/machinery/chem_master/attackby(obj/item/B, mob/living/user)
@@ -71,7 +73,7 @@
 		updateUsrDialog()
 		update_icon()
 
-	else if(istype(B, /obj/item/storage/pill_bottle))
+	else if(istype(B, /obj/item/storage/pill_bottle) && pill_maker)
 		if(loaded_pill_bottle)
 			to_chat(user, SPAN_WARNING("A pill bottle is already loaded into the machine."))
 			return
@@ -299,20 +301,22 @@
 	var/dat = ""
 	if(!beaker)
 		dat = "Please insert beaker.<BR>"
-		if(loaded_pill_bottle)
-			dat += "<A href='?src=\ref[src];ejectp=1;user=\ref[user]'>Eject Pill Bottle \[[loaded_pill_bottle.contents.len]/[loaded_pill_bottle.max_storage_space]\]</A><BR><BR>"
-		else
-			dat += "No pill bottle inserted.<BR><BR>"
+		if(pill_maker)
+			if(loaded_pill_bottle)
+				dat += "<A href='?src=\ref[src];ejectp=1;user=\ref[user]'>Eject Pill Bottle \[[loaded_pill_bottle.contents.len]/[loaded_pill_bottle.max_storage_space]\]</A><BR><BR>"
+			else
+				dat += "No pill bottle inserted.<BR><BR>"
 		dat += "<A href='?src=\ref[src];close=1'>Close</A>"
 	else
 		dat += "<A href='?src=\ref[src];eject=1;user=\ref[user]'>Eject beaker and Clear Buffer</A><BR><BR>"
-		if(loaded_pill_bottle)
-			dat += "<A href='?src=\ref[src];ejectp=1;user=\ref[user]'>Eject [loaded_pill_bottle] \[[loaded_pill_bottle.contents.len]/[loaded_pill_bottle.max_storage_space]\]</A><BR>"
-			dat += "<A href='?src=\ref[src];addlabelp=1;user=\ref[user]'>Add label to [loaded_pill_bottle] \[[loaded_pill_bottle.contents.len]/[loaded_pill_bottle.max_storage_space]\]</A><BR><BR>"
-			dat += "<A href='?src=\ref[src];transferp=1;'>Transfer [loaded_pill_bottle] \[[loaded_pill_bottle.contents.len]/[loaded_pill_bottle.max_storage_space]\] to the smartfridge</A><BR><BR>"
-		else
-			dat += "No pill bottle inserted.<BR><BR>"
-		if(!connected)	
+		if(pill_maker)
+			if(loaded_pill_bottle)
+				dat += "<A href='?src=\ref[src];ejectp=1;user=\ref[user]'>Eject [loaded_pill_bottle] \[[loaded_pill_bottle.contents.len]/[loaded_pill_bottle.max_storage_space]\]</A><BR>"
+				dat += "<A href='?src=\ref[src];addlabelp=1;user=\ref[user]'>Add label to [loaded_pill_bottle] \[[loaded_pill_bottle.contents.len]/[loaded_pill_bottle.max_storage_space]\]</A><BR><BR>"
+				dat += "<A href='?src=\ref[src];transferp=1;'>Transfer [loaded_pill_bottle] \[[loaded_pill_bottle.contents.len]/[loaded_pill_bottle.max_storage_space]\] to the smartfridge</A><BR><BR>"
+			else
+				dat += "No pill bottle inserted.<BR><BR>"
+		if(!connected && pill_maker)	
 			dat += "<A href='?src=\ref[src];connect=1'>Connect Smartfridge</A><BR><BR>"
 		if(!beaker.reagents.total_volume)
 			dat += "Beaker is empty."
@@ -342,15 +346,16 @@
 		else
 			dat += "Empty<BR>"
 		if(!condi)
-			dat += "<HR><BR><A href='?src=\ref[src];createpill=1'>Create pill (60 units max)</A><a href=\"?src=\ref[src]&change_pill=1\"><img src=\"pill[pillsprite].png\" /></a><BR>"
-			dat += "<A href='?src=\ref[src];createpill_multiple=1'>Create multiple pills</A><BR>"
+			if(pill_maker)
+				dat += "<HR><BR><A href='?src=\ref[src];createpill=1'>Create pill (60 units max)</A><a href=\"?src=\ref[src]&change_pill=1\"><img src=\"pill[pillsprite].png\" /></a><BR>"
+				dat += "<A href='?src=\ref[src];createpill_multiple=1'>Create multiple pills</A><BR>"
 			dat += "<A href='?src=\ref[src];createbottle=1;user=\ref[user]'>Create bottle (60 units max)<a href=\"?src=\ref[src]&change_bottle=1\"><img src=\"bottle-[bottlesprite].png\" /></A>"
 		else
 			dat += "<A href='?src=\ref[src];createbottle=1;user=\ref[user]'>Create bottle (50 units max)</A>"
 	if(!condi)
-		show_browser(user, "Chemmaster menu:<BR><BR>[dat]", "Chemmaster 3000", "chem_master")
+		show_browser(user, "[name] menu:<BR><BR>[dat]", name, "chem_master", "size=420x500")
 	else
-		show_browser(user, "Condimaster menu:<BR><BR>[dat]", "Condimaster 3000", "chem_master")
+		show_browser(user, "Condimaster menu:<BR><BR>[dat]", name, "chem_master")
 	return
 
 /obj/structure/machinery/chem_master/condimaster
@@ -358,3 +363,12 @@
 	req_skill = null
 	req_skill_level = null
 	condi = 1
+
+/obj/structure/machinery/chem_master/industry_mixer
+	name = "Industrial Chemical Mixer"
+	icon_state = "industry_mixer0"
+	base_state = "industry_mixer"
+	req_skill = SKILL_ENGINEER
+	req_skill_level = SKILL_ENGINEER_ENGI
+	pill_maker = FALSE
+	max_pill_count = 0

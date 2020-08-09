@@ -834,13 +834,13 @@
 	},
 /area/almayer/squads/delta)
 "acq" = (
-/obj/structure/pipes/standard/manifold/hidden/supply{
-	dir = 1
-	},
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "orange";
 	tag = "icon-orange (WEST)"
+	},
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 1
 	},
 /turf/open/floor/almayer,
 /area/almayer/engineering/engineering_workshop)
@@ -21628,6 +21628,10 @@
 	name = "ship-grade camera";
 	tag = "icon-camera (WEST)"
 	},
+/obj/structure/barricade/handrail/medical{
+	icon_state = "handrail_med";
+	dir = 4
+	},
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_side";
@@ -40945,6 +40949,13 @@
 /obj/item/storage/briefcase,
 /turf/open/floor/wood,
 /area/almayer/command/corporateliason)
+"fps" = (
+/obj/structure/machinery/chem_master/industry_mixer,
+/turf/open/floor/almayer{
+	icon_state = "orange";
+	tag = "icon-orange (NORTH)"
+	},
+/area/almayer/engineering/engineering_workshop/hangar)
 "fpR" = (
 /obj/structure/table/almayer,
 /obj/effect/spawner/random/tool,
@@ -43046,13 +43057,6 @@
 	icon_state = "cargo_arrow"
 	},
 /area/almayer/engineering/engineering_workshop/hangar)
-"hKV" = (
-/obj/structure/table/almayer,
-/turf/open/floor/almayer{
-	icon_state = "orange";
-	tag = "icon-orange (NORTH)"
-	},
-/area/almayer/engineering/engineering_workshop/hangar)
 "hMs" = (
 /obj/structure/bed/stool,
 /turf/open/floor/almayer{
@@ -44508,6 +44512,17 @@
 	tag = "icon-red"
 	},
 /area/almayer/squads/alpha/req)
+"jDI" = (
+/obj/structure/barricade/handrail/medical{
+	icon_state = "handrail_med";
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (WEST)"
+	},
+/area/almayer/medical/lower_medical)
 "jEu" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -49275,6 +49290,14 @@
 	icon_state = "tcomms"
 	},
 /area/almayer/command/airoom)
+"pha" = (
+/obj/structure/barricade/handrail/medical,
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (WEST)"
+	},
+/area/almayer/medical/lower_medical)
 "phc" = (
 /obj/structure/machinery/portable_atmospherics/hydroponics,
 /obj/item/seeds/orangeseed,
@@ -75985,7 +76008,7 @@ hKQ
 bWM
 cAg
 oeM
-djM
+fps
 cmp
 dnX
 aKW
@@ -76188,7 +76211,7 @@ hKQ
 bWM
 ntA
 pVX
-hKV
+djM
 cmp
 dnX
 aKW
@@ -83468,10 +83491,10 @@ pUO
 qLo
 baZ
 bBO
-beh
+pha
 bei
-beh
-beh
+jDI
+jDI
 blZ
 mgT
 bei

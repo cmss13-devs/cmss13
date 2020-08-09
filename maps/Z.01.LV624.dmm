@@ -4158,27 +4158,7 @@
 /turf/closed/wall,
 /area/lv624/lazarus/medbay)
 "anG" = (
-/turf/closed/wall,
-/area/lv624/lazarus/hydroponics)
-"anH" = (
-/obj/structure/sign/botany,
-/turf/closed/wall,
-/area/lv624/lazarus/hydroponics)
-"anI" = (
-/obj/structure/window/framed/colony,
-/turf/open/floor/plating,
-/area/lv624/lazarus/hydroponics)
-"anJ" = (
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
-	dir = 1;
-	name = "\improper Hydroponics Dome";
-	req_access = list(100);
-	req_one_access = list()
-	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "green"
-	},
+/turf/closed/wall/r_wall,
 /area/lv624/lazarus/hydroponics)
 "anK" = (
 /turf/open/gm/dirtgrassborder{
@@ -4217,26 +4197,14 @@
 /turf/open/gm/river,
 /area/lv624/ground/river1)
 "anS" = (
-/obj/structure/sign/redcross,
-/turf/closed/wall,
+/turf/closed/wall/r_wall,
 /area/lv624/lazarus/medbay)
 "anT" = (
+/obj/structure/window/framed/colony/reinforced,
 /turf/open/floor{
-	dir = 1;
+	dir = 9;
 	icon_state = "green"
 	},
-/area/lv624/lazarus/hydroponics)
-"anU" = (
-/obj/item/tool/shovel,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "green"
-	},
-/area/lv624/lazarus/hydroponics)
-"anV" = (
-/obj/structure/window_frame/colony,
-/obj/item/shard,
-/turf/open/floor/plating,
 /area/lv624/lazarus/hydroponics)
 "anW" = (
 /obj/structure/flora/bush/ausbushes/pointybush,
@@ -4252,34 +4220,23 @@
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle7)
 "anY" = (
-/obj/structure/window/framed/colony,
-/turf/open/floor/plating,
-/area/lv624/lazarus/medbay)
-"anZ" = (
-/obj/structure/window_frame/colony,
-/obj/item/shard,
-/turf/open/floor/plating,
-/area/lv624/lazarus/medbay)
+/turf/closed/wall/r_wall,
+/area/lv624/ground/jungle7)
 "aoa" = (
-/obj/structure/table,
-/obj/item/clothing/glasses/hud/health,
-/obj/item/stack/medical/splint,
+/obj/structure/machinery/sleeper,
 /turf/open/floor{
-	icon_state = "whitebluecorner";
-	tag = "icon-whitebluecorner"
+	icon_state = "whitebluefull";
+	tag = "icon-whitebluefull"
 	},
 /area/lv624/lazarus/medbay)
 "aob" = (
-/obj/structure/table,
-/obj/item/tool/surgery/retractor,
-/obj/item/tool/surgery/FixOVein,
-/obj/item/tool/surgery/circular_saw{
-	pixel_y = 12
+/obj/structure/machinery/sleep_console,
+/obj/structure/extinguisher_cabinet{
+	pixel_y = 30
 	},
-/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
-	icon_state = "whitebluecorner";
-	tag = "icon-whitebluecorner"
+	icon_state = "whitebluefull";
+	tag = "icon-whitebluefull"
 	},
 /area/lv624/lazarus/medbay)
 "aod" = (
@@ -4292,82 +4249,8 @@
 	},
 /turf/open/gm/grass,
 /area/lv624/ground/jungle7)
-"aof" = (
-/obj/structure/table,
-/obj/item/clothing/suit/apron/overalls,
-/obj/item/clothing/under/colonist,
-/obj/effect/landmark/objective_landmark/close,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "green"
-	},
-/area/lv624/lazarus/hydroponics)
-"aog" = (
-/obj/structure/table,
-/obj/item/clothing/gloves/botanic_leather,
-/obj/effect/landmark/objective_landmark/close,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "green"
-	},
-/area/lv624/lazarus/hydroponics)
-"aoh" = (
-/obj/structure/table,
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/obj/effect/landmark/objective_landmark/close,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "green"
-	},
-/area/lv624/lazarus/hydroponics)
-"aoi" = (
-/obj/structure/machinery/smartfridge/seeds,
-/obj/structure/extinguisher_cabinet{
-	pixel_y = 30
-	},
-/turf/open/floor{
-	dir = 5;
-	icon_state = "green"
-	},
-/area/lv624/lazarus/hydroponics)
-"aoj" = (
-/obj/structure/machinery/biogenerator,
-/turf/open/floor{
-	dir = 9;
-	icon_state = "green"
-	},
-/area/lv624/lazarus/hydroponics)
-"aok" = (
-/obj/structure/machinery/seed_extractor,
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/turf/open/floor{
-	dir = 9;
-	icon_state = "green"
-	},
-/area/lv624/lazarus/hydroponics)
 "aol" = (
 /obj/structure/machinery/smartfridge,
-/turf/open/floor{
-	dir = 9;
-	icon_state = "green"
-	},
-/area/lv624/lazarus/hydroponics)
-"aom" = (
-/obj/structure/table,
-/obj/item/device/analyzer/plant_analyzer{
-	pixel_x = 2;
-	pixel_y = 1
-	},
-/obj/item/device/analyzer/plant_analyzer,
-/obj/effect/landmark/objective_landmark/close,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "green"
@@ -4389,33 +4272,36 @@
 	},
 /turf/open/gm/dirt,
 /area/lv624/ground/sand1)
-"aoq" = (
-/obj/structure/machinery/cm_vending/sorted/medical/no_access,
-/turf/open/floor{
-	icon_state = "whitebluecorner";
-	tag = "icon-whitebluecorner"
-	},
-/area/lv624/lazarus/medbay)
 "aor" = (
-/obj/item/storage/firstaid/adv,
-/obj/item/reagent_container/hypospray/autoinjector/quickclot,
 /obj/structure/table,
+/obj/item/clothing/glasses/hud/health,
 /obj/effect/landmark/objective_landmark/science,
+/obj/effect/landmark{
+	name = "crap_item"
+	},
+/obj/item/reagent_container/spray/cleaner,
 /turf/open/floor{
-	icon_state = "whitebluecorner";
-	tag = "icon-whitebluecorner"
+	icon_state = "whitebluefull";
+	tag = "icon-whitebluefull"
 	},
 /area/lv624/lazarus/medbay)
 "aos" = (
-/obj/item/reagent_container/spray,
-/obj/item/device/healthanalyzer,
-/obj/item/tool/surgery/FixOVein,
 /obj/structure/table,
-/obj/item/storage/box/syringes,
+/obj/item/stack/medical/bruise_pack{
+	step_x = -5;
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/obj/item/clothing/mask/surgical,
 /obj/effect/landmark/objective_landmark/science,
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/item/storage/belt/medical/full,
 /turf/open/floor{
-	icon_state = "whitebluecorner";
-	tag = "icon-whitebluecorner"
+	dir = 1;
+	icon_state = "whiteblue";
+	tag = "icon-whiteblue (NORTH)"
 	},
 /area/lv624/lazarus/medbay)
 "aou" = (
@@ -4425,55 +4311,40 @@
 	},
 /area/lv624/lazarus/medbay)
 "aov" = (
-/obj/structure/table,
-/obj/item/clothing/mask/surgical{
-	pixel_x = 3;
-	pixel_y = 5
-	},
-/obj/item/clothing/mask/surgical{
-	pixel_x = 1;
-	pixel_y = 2
-	},
-/obj/item/clothing/mask/surgical,
-/obj/item/storage/box/masks,
-/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
-	icon_state = "whitebluecorner";
-	tag = "icon-whitebluecorner"
+	dir = 1;
+	icon_state = "whiteblue";
+	tag = "icon-whiteblue (NORTH)"
 	},
 /area/lv624/lazarus/medbay)
 "aow" = (
-/obj/structure/table,
-/obj/item/clothing/under/colonist,
-/obj/effect/landmark/objective_landmark/science,
+/obj/structure/machinery/light{
+	dir = 1
+	},
 /turf/open/floor{
-	icon_state = "whitebluecorner";
-	tag = "icon-whitebluecorner"
+	dir = 5;
+	icon_state = "whiteblue";
+	tag = "icon-whiteblue (NORTHEAST)"
 	},
 /area/lv624/lazarus/medbay)
 "aox" = (
-/obj/structure/table,
-/obj/item/reagent_container/hypospray/autoinjector/quickclot,
-/obj/item/reagent_container/hypospray/autoinjector/quickclot,
-/obj/item/tool/surgery/bonegel,
-/obj/item/tool/surgery/surgicaldrill,
+/obj/structure/machinery/bodyscanner,
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	frequency = 1469;
+	name = "General Listening Channel";
+	pixel_x = 0;
+	pixel_y = 28
+	},
 /turf/open/floor{
-	icon_state = "whitebluecorner";
-	tag = "icon-whitebluecorner"
+	icon_state = "whitebluefull";
+	tag = "icon-whitebluefull"
 	},
 /area/lv624/lazarus/medbay)
-"aoy" = (
-/obj/structure/table,
-/obj/effect/landmark/objective_landmark/close,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "green"
-	},
-/area/lv624/lazarus/hydroponics)
 "aoz" = (
+/obj/structure/reagent_dispensers/watertank,
 /turf/open/floor{
-	dir = 5;
+	dir = 9;
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
@@ -4484,7 +4355,14 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "aoB" = (
-/obj/item/tool/minihoe,
+/obj/structure/table,
+/obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark{
+	name = "crap_item"
+	},
+/obj/structure/machinery/light{
+	dir = 1
+	},
 /turf/open/floor{
 	dir = 9;
 	icon_state = "green"
@@ -4494,7 +4372,6 @@
 /obj/structure/table,
 /obj/item/clothing/gloves/botanic_leather,
 /obj/effect/landmark/objective_landmark/close,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "green"
@@ -4508,98 +4385,46 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle7)
 "aoE" = (
-/obj/structure/closet/crate/medical,
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
-	icon_state = "whitebluecorner";
-	tag = "icon-whitebluecorner"
+	dir = 8;
+	icon_state = "whiteblue"
 	},
 /area/lv624/lazarus/medbay)
 "aoF" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/item/reagent_container/hypospray,
 /turf/open/floor{
-	icon_state = "whitebluecorner";
-	tag = "icon-whitebluecorner"
-	},
-/area/lv624/lazarus/medbay)
-"aoG" = (
-/obj/structure/machinery/optable,
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
-/obj/item/tool/surgery/scalpel/manager,
-/obj/effect/landmark/objective_landmark/science,
-/turf/open/floor{
-	icon_state = "whitebluecorner";
-	tag = "icon-whitebluecorner"
-	},
-/area/lv624/lazarus/medbay)
-"aoH" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/turf/open/floor{
-	icon_state = "whitebluecorner";
-	tag = "icon-whitebluecorner"
+	icon_state = "white"
 	},
 /area/lv624/lazarus/medbay)
 "aoI" = (
-/obj/structure/mirror{
-	pixel_y = 30
-	},
-/turf/closed/wall,
-/area/lv624/lazarus/medbay)
-"aoK" = (
-/obj/structure/bed/chair{
-	dir = 4
+/obj/effect/landmark{
+	name = "crap_item"
 	},
 /turf/open/floor{
-	icon_state = "whitebluecorner";
-	tag = "icon-whitebluecorner"
+	icon_state = "white"
+	},
+/area/lv624/lazarus/medbay)
+"aoK" = (
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whiteblue";
+	tag = "icon-whiteblue (EAST)"
 	},
 /area/lv624/lazarus/medbay)
 "aoL" = (
-/obj/structure/table,
-/obj/item/stack/medical/bruise_pack,
-/obj/item/tool/surgery/hemostat,
-/obj/item/storage/box/syringes,
-/obj/effect/landmark/objective_landmark/science,
+/obj/structure/machinery/optable,
+/obj/item/tank/anesthetic,
 /turf/open/floor{
-	icon_state = "whitebluecorner";
-	tag = "icon-whitebluecorner"
+	icon_state = "whitebluefull";
+	tag = "icon-whitebluefull"
 	},
 /area/lv624/lazarus/medbay)
-"aoM" = (
-/obj/structure/table,
-/obj/item/reagent_container/glass/bucket{
-	pixel_x = 6;
-	pixel_y = 6
-	},
-/obj/item/reagent_container/glass/bucket,
-/obj/effect/landmark/objective_landmark/close,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "green"
-	},
-/area/lv624/lazarus/hydroponics)
-"aoN" = (
-/obj/structure/machinery/portable_atmospherics/hydroponics,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "green"
-	},
-/area/lv624/lazarus/hydroponics)
 "aoO" = (
-/obj/structure/machinery/portable_atmospherics/hydroponics,
+/obj/item/reagent_container/glass/bucket{
+	step_y = 0
+	},
 /turf/open/floor{
-	dir = 1;
+	dir = 9;
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
@@ -4616,9 +4441,14 @@
 /area/lv624/ground/jungle7)
 "aoR" = (
 /obj/structure/table,
-/obj/item/storage/box/donkpockets,
+/obj/item/reagent_container/spray/plantbgone{
+	step_x = 4;
+	step_y = 6
+	},
 /obj/effect/landmark/objective_landmark/close,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark{
+	name = "crap_item"
+	},
 /turf/open/floor{
 	dir = 9;
 	icon_state = "green"
@@ -4628,54 +4458,13 @@
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/gm/dirt,
 /area/lv624/ground/river1)
-"aoT" = (
-/obj/structure/table,
-/obj/item/stack/sheet/plasteel{
-	amount = 10
-	},
-/obj/item/stack/sheet/metal{
-	amount = 30
-	},
-/obj/item/stack/sheet/metal{
-	amount = 30
-	},
-/obj/item/stack/rods{
-	amount = 40
-	},
-/obj/item/stack/rods{
-	amount = 40
-	},
-/obj/effect/landmark/objective_landmark/science,
-/turf/open/floor{
-	icon_state = "whitebluecorner";
-	tag = "icon-whitebluecorner"
-	},
-/area/lv624/lazarus/medbay)
 "aoU" = (
-/obj/item/device/radio/intercom{
-	freerange = 1;
-	frequency = 1469;
-	name = "General Listening Channel";
-	pixel_x = -30
-	},
-/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
+	tag = "icon-whiteblue (SOUTHWEST)";
 	icon_state = "whitebluecorner";
-	tag = "icon-whitebluecorner"
+	dir = 1
 	},
 /area/lv624/lazarus/medbay)
-"aoV" = (
-/turf/open/gm/grass,
-/area/lv624/lazarus/medbay)
-"aoW" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "green"
-	},
-/area/lv624/lazarus/hydroponics)
 "aoX" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/gm/coast{
@@ -4700,51 +4489,6 @@
 	icon_state = "beachcorner2"
 	},
 /area/lv624/ground/river1)
-"apb" = (
-/obj/item/device/radio/intercom{
-	freerange = 1;
-	frequency = 1469;
-	name = "General Listening Channel";
-	pixel_x = -30
-	},
-/turf/closed/wall,
-/area/lv624/lazarus/medbay)
-"apc" = (
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
-	dir = 1;
-	name = "\improper Medical Dome Locker";
-	req_access = list(100);
-	req_one_access = list()
-	},
-/turf/open/floor{
-	icon_state = "whitebluecorner";
-	tag = "icon-whitebluecorner"
-	},
-/area/lv624/lazarus/medbay)
-"apd" = (
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
-	dir = 1;
-	name = "\improper Medical Dome Surgery";
-	req_access = list(100);
-	req_one_access = list()
-	},
-/turf/open/floor{
-	icon_state = "whitebluecorner";
-	tag = "icon-whitebluecorner"
-	},
-/area/lv624/lazarus/medbay)
-"ape" = (
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
-	dir = 1;
-	name = "\improper Medical Dome Storage";
-	req_access = list(100);
-	req_one_access = list()
-	},
-/turf/open/floor{
-	icon_state = "whitebluecorner";
-	tag = "icon-whitebluecorner"
-	},
-/area/lv624/lazarus/medbay)
 "apf" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 5
@@ -4774,18 +4518,6 @@
 /obj/structure/flora/bush/ausbushes/pointybush,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle7)
-"apk" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	name = "Hydroponics APC";
-	pixel_y = 30;
-	start_charge = 0
-	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "green"
-	},
-/area/lv624/lazarus/hydroponics)
 "apl" = (
 /obj/structure/fence,
 /turf/open/gm/grass,
@@ -4828,87 +4560,49 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle6)
 "apt" = (
-/turf/open/floor/plating,
-/area/lv624/lazarus/medbay)
+/turf/open/floor,
+/area/lv624/ground/jungle7)
 "apu" = (
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/lazarus/landing_zones/lz1)
-"apv" = (
-/obj/structure/machinery/cm_vending/sorted/medical/no_access,
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/turf/open/floor{
-	icon_state = "whitebluecorner";
-	tag = "icon-whitebluecorner"
-	},
-/area/lv624/lazarus/medbay)
 "apw" = (
-/obj/structure/table,
-/obj/item/stack/medical/bruise_pack,
-/obj/item/stack/medical/ointment,
-/obj/item/tool/surgery/bonegel,
-/obj/effect/landmark/objective_landmark/science,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/structure/bed,
+/obj/item/bedsheet/medical,
 /turf/open/floor{
-	icon_state = "whitebluecorner";
-	tag = "icon-whitebluecorner"
+	icon_state = "whitebluefull";
+	tag = "icon-whitebluefull"
 	},
 /area/lv624/lazarus/medbay)
 "apx" = (
-/obj/item/storage/firstaid/toxin,
-/obj/structure/table,
-/obj/effect/landmark/objective_landmark/science,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	icon_state = "whitebluecorner";
-	tag = "icon-whitebluecorner"
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	frequency = 1469;
+	name = "General Listening Channel";
+	pixel_x = 0;
+	pixel_y = 28
 	},
-/area/lv624/lazarus/medbay)
-"apy" = (
-/obj/structure/machinery/bioprinter,
 /turf/open/floor{
-	icon_state = "whitebluecorner";
-	tag = "icon-whitebluecorner"
-	},
-/area/lv624/lazarus/medbay)
-"apz" = (
-/obj/structure/machinery/iv_drip,
-/turf/open/floor{
-	icon_state = "whitebluecorner";
-	tag = "icon-whitebluecorner"
+	dir = 1;
+	icon_state = "whiteblue";
+	tag = "icon-whiteblue (NORTH)"
 	},
 /area/lv624/lazarus/medbay)
 "apA" = (
+/obj/structure/machinery/vending/snack,
+/turf/open/floor{
+	dir = 1;
+	icon_state = "whiteblue";
+	tag = "icon-whiteblue (NORTH)"
+	},
+/area/lv624/lazarus/medbay)
+"apC" = (
 /obj/structure/machinery/light{
 	dir = 1
 	},
 /turf/open/floor{
-	icon_state = "whitebluecorner";
-	tag = "icon-whitebluecorner"
-	},
-/area/lv624/lazarus/medbay)
-"apB" = (
-/obj/structure/machinery/power/apc{
 	dir = 1;
-	name = "Medbay APC";
-	pixel_y = 30;
-	start_charge = 0
-	},
-/turf/open/floor{
-	icon_state = "whitebluecorner";
-	tag = "icon-whitebluecorner"
-	},
-/area/lv624/lazarus/medbay)
-"apC" = (
-/obj/structure/table,
-/obj/item/clothing/glasses/hud/health,
-/obj/item/storage/firstaid,
-/obj/item/storage/firstaid,
-/obj/effect/landmark/objective_landmark/science,
-/turf/open/floor{
-	icon_state = "whitebluecorner";
-	tag = "icon-whitebluecorner"
+	icon_state = "whiteblue";
+	tag = "icon-whiteblue (NORTH)"
 	},
 /area/lv624/lazarus/medbay)
 "apD" = (
@@ -4917,54 +4611,16 @@
 	icon_state = "grassdirt_corner2"
 	},
 /area/lv624/ground/jungle6)
-"apE" = (
-/obj/structure/table,
-/obj/item/reagent_container/glass/beaker/large,
-/obj/item/reagent_container/glass/beaker{
-	pixel_x = 4
-	},
-/obj/structure/extinguisher_cabinet{
-	pixel_y = 30
-	},
-/obj/effect/landmark/objective_landmark/science,
-/turf/open/floor{
-	icon_state = "whitebluecorner";
-	tag = "icon-whitebluecorner"
-	},
-/area/lv624/lazarus/medbay)
 "apF" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 10
 	},
 /turf/open/gm/grass,
 /area/lv624/ground/jungle3)
-"apG" = (
-/turf/open/floor/plating,
-/area/lv624/lazarus/hydroponics)
 "apH" = (
-/obj/effect/decal/remains/human,
+/obj/item/tool/crowbar,
 /turf/open/floor{
-	dir = 1;
-	icon_state = "green"
-	},
-/area/lv624/lazarus/hydroponics)
-"apI" = (
-/obj/effect/landmark{
-	name = "good_item"
-	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "green"
-	},
-/area/lv624/lazarus/hydroponics)
-"apJ" = (
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
-	name = "\improper Hydroponics Dome";
-	req_access = list(100);
-	req_one_access = list()
-	},
-/turf/open/floor{
-	dir = 1;
+	dir = 9;
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
@@ -5016,12 +4672,9 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle6)
 "apV" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/item/clothing/under/colonist,
 /turf/open/floor{
-	icon_state = "whitebluecorner";
-	tag = "icon-whitebluecorner"
+	icon_state = "white"
 	},
 /area/lv624/lazarus/medbay)
 "apW" = (
@@ -5046,34 +4699,14 @@
 /area/lv624/ground/jungle6)
 "apZ" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
-	dir = 1;
-	name = "\improper Medical Dome";
-	req_access = list(100);
-	req_one_access = list()
+	dir = 2;
+	name = "\improper Medical Bay";
+	req_one_access = newlist()
 	},
 /turf/open/floor{
-	icon_state = "whitebluecorner";
-	tag = "icon-whitebluecorner"
+	icon_state = "white"
 	},
 /area/lv624/lazarus/medbay)
-"aqa" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	dir = 1;
-	name = "\improper Hydroponics Dome";
-	req_access = list(100)
-	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "green"
-	},
-/area/lv624/lazarus/hydroponics)
-"aqb" = (
-/obj/structure/largecrate/cow,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "green"
-	},
-/area/lv624/lazarus/hydroponics)
 "aqc" = (
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_2"
@@ -5115,40 +4748,12 @@
 /obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle7)
-"aqk" = (
-/obj/structure/machinery/bodyscanner,
-/turf/open/floor{
-	icon_state = "whitebluecorner";
-	tag = "icon-whitebluecorner"
-	},
-/area/lv624/lazarus/medbay)
-"aql" = (
-/obj/structure/machinery/body_scanconsole,
-/turf/open/floor{
-	icon_state = "whitebluecorner";
-	tag = "icon-whitebluecorner"
-	},
-/area/lv624/lazarus/medbay)
 "aqm" = (
 /turf/open/gm/dirtgrassborder{
 	dir = 4;
 	icon_state = "grassdirt_corner"
 	},
 /area/lv624/ground/jungle3)
-"aqn" = (
-/obj/structure/machinery/sleeper,
-/turf/open/floor{
-	icon_state = "whitebluecorner";
-	tag = "icon-whitebluecorner"
-	},
-/area/lv624/lazarus/medbay)
-"aqo" = (
-/obj/structure/machinery/sleep_console,
-/turf/open/floor{
-	icon_state = "whitebluecorner";
-	tag = "icon-whitebluecorner"
-	},
-/area/lv624/lazarus/medbay)
 "aqp" = (
 /obj/item/device/radio/intercom{
 	freerange = 1;
@@ -5214,39 +4819,16 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle4)
 "aqA" = (
-/obj/item/device/radio/intercom{
-	freerange = 1;
-	frequency = 1469;
-	name = "General Listening Channel";
-	pixel_x = -30
+/obj/structure/closet/wardrobe,
+/obj/effect/landmark/objective_landmark/science,
+/obj/structure/machinery/light{
+	dir = 8
 	},
 /turf/open/floor{
-	icon_state = "whitebluecorner";
-	tag = "icon-whitebluecorner"
+	dir = 8;
+	icon_state = "whiteblue"
 	},
 /area/lv624/lazarus/medbay)
-"aqC" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
-/turf/open/floor{
-	dir = 5;
-	icon_state = "green"
-	},
-/area/lv624/lazarus/hydroponics)
-"aqD" = (
-/obj/structure/table,
-/obj/item/reagent_container/spray/plantbgone{
-	pixel_x = 12
-	},
-/obj/item/reagent_container/spray/plantbgone,
-/obj/effect/landmark/objective_landmark/close,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "green"
-	},
-/area/lv624/lazarus/hydroponics)
 "aqE" = (
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_3"
@@ -5295,34 +4877,23 @@
 	icon_state = "beachcorner"
 	},
 /area/lv624/ground/river3)
-"aqN" = (
-/obj/structure/table,
-/obj/item/reagent_container/hypospray,
-/obj/item/tool/surgery/FixOVein,
-/obj/effect/landmark/objective_landmark/science,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	icon_state = "whitebluecorner";
-	tag = "icon-whitebluecorner"
-	},
-/area/lv624/lazarus/medbay)
-"aqO" = (
-/obj/structure/bed/chair,
-/turf/open/floor{
-	icon_state = "whitebluecorner";
-	tag = "icon-whitebluecorner"
-	},
-/area/lv624/lazarus/medbay)
 "aqP" = (
 /obj/structure/flora/jungle/vines,
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle6)
 "aqQ" = (
 /obj/structure/table,
-/obj/structure/machinery/computer/objective,
+/obj/item/stack/medical/bruise_pack{
+	step_x = -1;
+	step_y = 4;
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
-	icon_state = "whitebluecorner";
-	tag = "icon-whitebluecorner"
+	dir = 4;
+	icon_state = "whiteblue";
+	tag = "icon-whiteblue (EAST)"
 	},
 /area/lv624/lazarus/medbay)
 "aqR" = (
@@ -5335,23 +4906,6 @@
 	},
 /turf/open/gm/grass,
 /area/lv624/ground/compound/n)
-"aqT" = (
-/obj/structure/largecrate/random,
-/turf/open/floor{
-	dir = 9;
-	icon_state = "green"
-	},
-/area/lv624/lazarus/hydroponics)
-"aqU" = (
-/obj/structure/table,
-/obj/item/clothing/suit/apron,
-/obj/effect/landmark/objective_landmark/close,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "green"
-	},
-/area/lv624/lazarus/hydroponics)
 "aqV" = (
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder{
@@ -5394,65 +4948,28 @@
 /obj/structure/flora/bush/ausbushes/lavendergrass,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle7)
-"are" = (
-/obj/item/bodybag{
-	pixel_x = -4;
-	pixel_y = 5
-	},
-/obj/item/bodybag{
-	pixel_x = 6;
-	pixel_y = 3
-	},
-/obj/item/bodybag,
-/obj/structure/table,
-/obj/item/tank/anesthetic,
-/obj/effect/landmark/objective_landmark/science,
-/turf/open/floor{
-	icon_state = "whitebluecorner";
-	tag = "icon-whitebluecorner"
-	},
-/area/lv624/lazarus/medbay)
 "arf" = (
+/obj/structure/machinery/cm_vending/sorted/medical/blood,
 /obj/structure/machinery/light,
 /turf/open/floor{
-	icon_state = "whitebluecorner";
-	tag = "icon-whitebluecorner"
+	icon_state = "whiteblue";
+	tag = "icon-whiteblue"
 	},
 /area/lv624/lazarus/medbay)
 "arg" = (
-/obj/structure/machinery/door/window/southright,
-/turf/open/floor{
-	icon_state = "whitebluecorner";
-	tag = "icon-whitebluecorner"
-	},
-/area/lv624/lazarus/medbay)
-"arh" = (
-/obj/structure/table,
-/obj/item/paper_bin{
-	pixel_y = 6
-	},
-/obj/item/tool/pen{
-	pixel_y = 7
-	},
 /obj/effect/landmark{
 	name = "crap_item"
 	},
 /turf/open/floor{
+	tag = "icon-whiteblue (SOUTHWEST)";
 	icon_state = "whitebluecorner";
-	tag = "icon-whitebluecorner"
+	dir = 8
 	},
 /area/lv624/lazarus/medbay)
 "ari" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/river3)
-"arj" = (
-/obj/structure/machinery/door/window/southleft,
-/turf/open/floor{
-	icon_state = "whitebluecorner";
-	tag = "icon-whitebluecorner"
-	},
-/area/lv624/lazarus/medbay)
 "ark" = (
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass,
@@ -5472,72 +4989,88 @@
 /turf/open/gm/grass,
 /area/lv624/ground/compound/n)
 "arp" = (
-/obj/structure/table,
-/obj/item/tool/hatchet{
-	pixel_x = 6;
-	pixel_y = 4
+/obj/structure/rack,
+/obj/item/tool/crowbar,
+/obj/item/reagent_container/glass/bucket{
+	step_y = -3
+	},
+/obj/item/reagent_container/glass/bucket{
+	step_y = 0
 	},
 /obj/effect/landmark/objective_landmark/close,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
 "arq" = (
-/obj/structure/table,
-/obj/item/clothing/shoes/sandal,
+/obj/structure/rack,
+/obj/item/clothing/suit/apron,
+/obj/item/tool/shovel,
+/obj/item/clothing/gloves/botanic_leather,
 /obj/effect/landmark/objective_landmark/close,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
 "arr" = (
-/obj/structure/table,
-/obj/item/reagent_container/food/drinks/flask/vacuumflask,
-/obj/structure/machinery/light,
+/obj/structure/rack,
+/obj/item/tool/shovel/spade,
+/obj/item/tool/hatchet{
+	step_x = -7;
+	step_y = 0;
+	pixel_x = 6;
+	pixel_y = 4
+	},
+/obj/item/tool/hatchet{
+	step_x = -4;
+	step_y = -1;
+	pixel_x = 6;
+	pixel_y = 4
+	},
+/obj/item/tool/minihoe{
+	step_y = -2
+	},
 /obj/effect/landmark/objective_landmark/close,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/structure/machinery/light,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
-"ars" = (
-/obj/structure/table,
-/obj/item/tool/crowbar,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "green"
-	},
-/area/lv624/lazarus/hydroponics)
 "art" = (
 /obj/structure/table,
-/obj/structure/machinery/light,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/structure/machinery/light,
+/obj/item/reagent_container/glass/fertilizer{
+	step_x = 0;
+	step_y = 0
+	},
 /turf/open/floor{
-	dir = 5;
+	dir = 9;
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
 "aru" = (
-/obj/effect/landmark/objective_landmark/close,
-/turf/open/floor{
+/obj/structure/machinery/power/apc{
 	dir = 1;
+	name = "Hydroponics APC";
+	pixel_y = 30;
+	start_charge = 0
+	},
+/turf/open/floor{
+	dir = 9;
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
 "arv" = (
 /obj/structure/table,
-/obj/item/tool/extinguisher,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
-	dir = 5;
+	dir = 9;
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
@@ -5553,74 +5086,16 @@
 	},
 /turf/open/gm/grass,
 /area/lv624/ground/jungle6)
-"ary" = (
-/obj/structure/table,
-/obj/item/reagent_container/hypospray/autoinjector/quickclot,
-/obj/item/tool/surgery/bonegel,
-/obj/effect/landmark/objective_landmark/science,
-/obj/effect/landmark/objective_landmark/science,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	icon_state = "whitebluecorner";
-	tag = "icon-whitebluecorner"
-	},
-/area/lv624/lazarus/medbay)
-"arz" = (
-/obj/structure/table,
-/obj/item/tool/surgery/bonesetter,
-/obj/item/tool/surgery/cautery,
-/obj/effect/landmark/objective_landmark/science,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	icon_state = "whitebluecorner";
-	tag = "icon-whitebluecorner"
-	},
-/area/lv624/lazarus/medbay)
-"arA" = (
-/obj/item/reagent_container/spray,
-/obj/item/device/healthanalyzer,
-/obj/structure/table,
-/obj/effect/landmark/objective_landmark/science,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	icon_state = "whitebluecorner";
-	tag = "icon-whitebluecorner"
-	},
-/area/lv624/lazarus/medbay)
 "arB" = (
 /obj/structure/flora/jungle/vines,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle9)
-"arC" = (
-/obj/structure/table,
-/obj/item/folder/blue,
-/obj/effect/landmark/objective_landmark/science,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	icon_state = "whitebluecorner";
-	tag = "icon-whitebluecorner"
-	},
-/area/lv624/lazarus/medbay)
-"arD" = (
-/obj/structure/table,
-/obj/item/clothing/glasses/eyepatch,
-/obj/effect/landmark/objective_landmark/science,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	icon_state = "whitebluecorner";
-	tag = "icon-whitebluecorner"
-	},
-/area/lv624/lazarus/medbay)
 "arE" = (
 /obj/effect/landmark{
 	name = "crap_item"
 	},
 /turf/open/gm/grass,
 /area/lv624/ground/compound/n)
-"arF" = (
-/obj/structure/window_frame/colony,
-/turf/open/floor/plating,
-/area/lv624/lazarus/hydroponics)
 "arG" = (
 /obj/effect/landmark{
 	name = "surv_spawn";
@@ -5731,19 +5206,8 @@
 	icon_state = "grass2"
 	},
 /area/lv624/ground/jungle6)
-"arZ" = (
-/obj/structure/bed/roller,
-/obj/effect/landmark/objective_landmark/science,
-/turf/open/floor{
-	icon_state = "whitebluecorner";
-	tag = "icon-whitebluecorner"
-	},
-/area/lv624/lazarus/medbay)
 "asa" = (
 /obj/structure/fence,
-/turf/open/gm/dirtgrassborder,
-/area/lv624/ground/compound/n)
-"asb" = (
 /turf/open/gm/dirtgrassborder,
 /area/lv624/ground/compound/n)
 "asc" = (
@@ -5837,19 +5301,7 @@
 /turf/open/gm/dirtgrassborder{
 	dir = 4
 	},
-/area/lv624/ground/compound/n)
-"asu" = (
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
-	dir = 1;
-	name = "\improper Medical Dome";
-	req_access = list(100);
-	req_one_access = list()
-	},
-/turf/open/floor{
-	icon_state = "whitebluecorner";
-	tag = "icon-whitebluecorner"
-	},
-/area/lv624/lazarus/medbay)
+/area/lv624/ground/jungle7)
 "asv" = (
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_3"
@@ -5916,7 +5368,7 @@
 "asI" = (
 /obj/item/trash/cigbutt,
 /turf/open/gm/dirt,
-/area/lv624/ground/compound/n)
+/area/lv624/ground/jungle7)
 "asJ" = (
 /obj/structure/flora/jungle/vines,
 /turf/open/floor{
@@ -5976,16 +5428,6 @@
 	dir = 1
 	},
 /area/lv624/ground/river1)
-"asS" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "green"
-	},
-/area/lv624/lazarus/hydroponics)
 "asT" = (
 /turf/closed/wall/r_wall,
 /area/lv624/lazarus/research)
@@ -6110,14 +5552,6 @@
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/research)
-"ato" = (
-/obj/structure/closet/crate/hydroponics/prespawned,
-/obj/effect/landmark/objective_landmark/close,
-/turf/open/floor{
-	dir = 9;
-	icon_state = "green"
-	},
-/area/lv624/lazarus/hydroponics)
 "atp" = (
 /turf/open/floor{
 	icon_state = "white"
@@ -6324,13 +5758,13 @@
 /area/lv624/lazarus/research)
 "atV" = (
 /obj/structure/table,
-/obj/item/clothing/glasses/sunglasses/blindfold,
-/obj/item/clothing/mask/muzzle,
+/obj/item/paper_bin{
+	step_y = 4
+	},
+/obj/item/tool/pen,
 /obj/effect/landmark/objective_landmark/science,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
-	icon_state = "whitebluecorner";
-	tag = "icon-whitebluecorner"
+	icon_state = "white"
 	},
 /area/lv624/lazarus/medbay)
 "atX" = (
@@ -6397,19 +5831,15 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle9)
 "auj" = (
-/obj/structure/table,
-/obj/item/stack/medical/ointment,
-/obj/item/stack/medical/bruise_pack,
-/obj/item/stack/medical/bruise_pack{
-	pixel_x = 3;
-	pixel_y = 3
+/obj/structure/table/reinforced,
+/obj/item/storage/surgical_tray,
+/obj/item/reagent_container/spray/cleaner{
+	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
+	name = "Surgery Cleaner"
 	},
-/obj/item/reagent_container/hypospray/autoinjector/quickclot,
-/obj/effect/landmark/objective_landmark/science,
-/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
-	icon_state = "whitebluecorner";
-	tag = "icon-whitebluecorner"
+	icon_state = "whitebluefull";
+	tag = "icon-whitebluefull"
 	},
 /area/lv624/lazarus/medbay)
 "aul" = (
@@ -6531,11 +5961,18 @@
 /area/lv624/lazarus/fitness)
 "auB" = (
 /obj/structure/table,
-/obj/item/tool/shovel/spade,
+/obj/item/reagent_container/glass/fertilizer{
+	step_x = 6;
+	step_y = 2
+	},
+/obj/item/reagent_container/glass/fertilizer{
+	step_x = 0;
+	step_y = 0
+	},
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
-	dir = 5;
+	dir = 9;
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
@@ -6662,14 +6099,6 @@
 	},
 /turf/open/gm/river,
 /area/lv624/ground/jungle6)
-"auU" = (
-/obj/structure/closet/crate/medical,
-/obj/effect/landmark/objective_landmark/science,
-/turf/open/floor{
-	icon_state = "whitebluecorner";
-	tag = "icon-whitebluecorner"
-	},
-/area/lv624/lazarus/medbay)
 "auV" = (
 /obj/effect/decal/remains/human,
 /turf/open/floor{
@@ -7660,16 +7089,6 @@
 /obj/effect/decal/remains/human,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle6)
-"axE" = (
-/obj/structure/table,
-/obj/effect/landmark/objective_landmark/science,
-/obj/effect/landmark/objective_landmark/science,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/turf/open/floor{
-	icon_state = "whitebluecorner";
-	tag = "icon-whitebluecorner"
-	},
-/area/lv624/lazarus/medbay)
 "axF" = (
 /turf/open/floor{
 	icon_state = "freezerfloor"
@@ -17983,6 +17402,14 @@
 /obj/structure/flora/bush/ausbushes/var3/sunnybush,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle8)
+"bGV" = (
+/obj/structure/machinery/iv_drip,
+/turf/open/floor{
+	dir = 6;
+	icon_state = "whiteblue";
+	tag = "icon-whitehall (WEST)"
+	},
+/area/lv624/lazarus/medbay)
 "bIv" = (
 /obj/structure/flora/bush/ausbushes/lavendergrass,
 /turf/open/gm/grass,
@@ -18014,6 +17441,13 @@
 	},
 /turf/open/gm/grass,
 /area/lv624/lazarus/landing_zones/lz1)
+"cdj" = (
+/obj/structure/window_frame/colony,
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv624/lazarus/medbay)
 "cfD" = (
 /turf/closed/wall/r_wall/unmeltable,
 /area/lv624/lazarus/quartstorage/outdoors)
@@ -18088,6 +17522,14 @@
 	dir = 4
 	},
 /area/lv624/ground/jungle9)
+"cYi" = (
+/obj/structure/table,
+/obj/item/reagent_container/food/snacks/pie,
+/turf/open/floor{
+	icon_state = "whitebluefull";
+	tag = "icon-whitebluefull"
+	},
+/area/lv624/lazarus/medbay)
 "cZs" = (
 /obj/structure/barricade/wooden,
 /turf/open/floor{
@@ -18126,6 +17568,13 @@
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/gm/dirt,
 /area/lv624/ground/sand3)
+"dsz" = (
+/obj/structure/closet/crate/hydroponics/prespawned,
+/turf/open/floor{
+	dir = 9;
+	icon_state = "green"
+	},
+/area/lv624/lazarus/hydroponics)
 "dvF" = (
 /obj/structure/flora/bush/ausbushes/pointybush,
 /obj/structure/flora/jungle/vines/heavy,
@@ -18134,6 +17583,15 @@
 "dwl" = (
 /turf/open/gm/grass,
 /area/lv624/ground/sand9)
+"dCL" = (
+/obj/item/reagent_container/food/drinks/cans/waterbottle{
+	step_x = 2;
+	step_y = 0
+	},
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv624/lazarus/medbay)
 "dEg" = (
 /turf/open/gm/dirt,
 /area/lv624/ground/jungle1)
@@ -18146,6 +17604,13 @@
 	},
 /turf/open/gm/grass,
 /area/lv624/ground/jungle1)
+"dId" = (
+/obj/structure/machinery/cm_vending/sorted/medical/no_access,
+/turf/open/floor{
+	icon_state = "whiteblue";
+	tag = "icon-whiteblue"
+	},
+/area/lv624/lazarus/medbay)
 "dIr" = (
 /obj/structure/flora/bush/ausbushes/lavendergrass,
 /turf/open/gm/grass{
@@ -18166,6 +17631,15 @@
 /obj/effect/landmark/queen_spawn,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/central1)
+"dZH" = (
+/obj/structure/filingcabinet,
+/obj/effect/landmark/objective_landmark/science,
+/obj/structure/machinery/light,
+/turf/open/floor{
+	icon_state = "whiteblue";
+	tag = "icon-whiteblue"
+	},
+/area/lv624/lazarus/medbay)
 "dZK" = (
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
@@ -18191,6 +17665,15 @@
 	},
 /turf/open/gm/grass,
 /area/lv624/ground/jungle7)
+"ehy" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "Hydroponics"
+	},
+/turf/open/floor{
+	dir = 9;
+	icon_state = "green"
+	},
+/area/lv624/lazarus/hydroponics)
 "eiH" = (
 /obj/item/stack/sheet/wood{
 	amount = 2
@@ -18201,6 +17684,36 @@
 	icon_state = "warning"
 	},
 /area/lv624/lazarus/landing_zones/lz2)
+"eji" = (
+/obj/structure/machinery/colony_floodlight,
+/turf/open/gm/grass{
+	icon_state = "grass2"
+	},
+/area/lv624/ground/jungle7)
+"elm" = (
+/obj/structure/machinery/vending/hydroseeds,
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor{
+	dir = 9;
+	icon_state = "green"
+	},
+/area/lv624/lazarus/hydroponics)
+"eoM" = (
+/turf/open/floor{
+	tag = "icon-whiteblue (SOUTHWEST)";
+	icon_state = "whitebluecorner";
+	dir = 4
+	},
+/area/lv624/lazarus/medbay)
+"eqP" = (
+/obj/structure/machinery/bioprinter,
+/turf/open/floor{
+	icon_state = "whitebluefull";
+	tag = "icon-whitebluefull"
+	},
+/area/lv624/lazarus/medbay)
 "euW" = (
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/gm/coast{
@@ -18217,6 +17730,16 @@
 	dir = 8
 	},
 /area/lv624/ground/jungle9)
+"eBN" = (
+/obj/structure/closet/crate/hydroponics/prespawned,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor{
+	dir = 9;
+	icon_state = "green"
+	},
+/area/lv624/lazarus/hydroponics)
 "eCF" = (
 /obj/structure/table,
 /obj/structure/machinery/computer/shuttle_control/dropship2,
@@ -18232,6 +17755,15 @@
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass,
 /area/lv624/lazarus/landing_zones/lz1)
+"eHm" = (
+/obj/structure/bed,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/engineer,
+/turf/open/floor{
+	icon_state = "whitebluefull";
+	tag = "icon-whitebluefull"
+	},
+/area/lv624/lazarus/medbay)
 "eHr" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /turf/open/gm/grass,
@@ -18256,6 +17788,17 @@
 	icon_state = "whiteyellowfull"
 	},
 /area/lv624/lazarus/main_hall)
+"ffb" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	dir = 2;
+	icon_state = "door_closed";
+	name = "Hydroponics"
+	},
+/turf/open/floor{
+	dir = 9;
+	icon_state = "green"
+	},
+/area/lv624/lazarus/hydroponics)
 "fja" = (
 /obj/item/attachable/bayonet{
 	desc = "A curved blade made of a strange material. It looks both old and very sharp.";
@@ -18277,6 +17820,13 @@
 /obj/structure/flora/bush/ausbushes/lavendergrass,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle1)
+"fAz" = (
+/obj/structure/machinery/cm_vending/sorted/medical/no_access,
+/turf/open/floor{
+	icon_state = "whitebluefull";
+	tag = "icon-whitebluefull"
+	},
+/area/lv624/lazarus/medbay)
 "fDq" = (
 /obj/structure/barricade/wooden{
 	dir = 4
@@ -18292,6 +17842,10 @@
 /obj/structure/foamedmetal,
 /turf/open/floor/plating,
 /area/lv624/lazarus/engineering)
+"fIy" = (
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/floor,
+/area/lv624/ground/jungle7)
 "fOT" = (
 /obj/structure/flora/bush/ausbushes/genericbush,
 /turf/open/gm/grass,
@@ -18303,6 +17857,10 @@
 	},
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass,
+/area/lv624/ground/jungle7)
+"fRi" = (
+/obj/structure/fence,
+/turf/open/gm/dirtgrassborder,
 /area/lv624/ground/jungle7)
 "fTE" = (
 /obj/structure/machinery/door/airlock/almayer/engineering{
@@ -18426,6 +17984,12 @@
 	},
 /turf/open/gm/grass,
 /area/lv624/ground/jungle7)
+"gXu" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor,
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv624/lazarus/medbay)
 "gXL" = (
 /obj/structure/flora/bush/ausbushes/var3/ywflowers,
 /turf/open/gm/grass{
@@ -18436,6 +18000,15 @@
 /obj/structure/flora/bush/ausbushes/ausbush,
 /turf/open/gm/grass,
 /area/lv624/ground/sand9)
+"hbF" = (
+/obj/item/tool/kitchen/utensil/fork{
+	step_x = 0;
+	step_y = 0
+	},
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv624/lazarus/medbay)
 "hdA" = (
 /obj/effect/landmark{
 	name = "xeno_hive_spawn"
@@ -18572,6 +18145,14 @@
 /obj/structure/flora/bush/ausbushes/var3/ywflowers,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle3)
+"hZg" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 4
+	},
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv624/lazarus/medbay)
 "iap" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 10
@@ -18631,6 +18212,13 @@
 	icon_state = "grassdirt_corner"
 	},
 /area/lv624/ground/jungle9)
+"iBD" = (
+/turf/open/floor{
+	dir = 10;
+	icon_state = "whiteblue";
+	tag = "icon-whiteblue (SOUTHWEST)"
+	},
+/area/lv624/lazarus/medbay)
 "iEX" = (
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
@@ -18648,6 +18236,17 @@
 	icon_state = "warning"
 	},
 /area/lv624/lazarus/landing_zones/lz1)
+"iPR" = (
+/obj/item/stack/medical/ointment,
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor{
+	dir = 1;
+	icon_state = "whiteblue";
+	tag = "icon-whiteblue (NORTH)"
+	},
+/area/lv624/lazarus/medbay)
 "iRo" = (
 /obj/structure/flora/bush/ausbushes/var3/leafybush,
 /turf/open/gm/grass,
@@ -18807,6 +18406,18 @@
 	},
 /turf/open/gm/grass,
 /area/lv624/ground/jungle7)
+"kuP" = (
+/obj/item/tool/hatchet{
+	step_x = -4;
+	step_y = -1;
+	pixel_x = 6;
+	pixel_y = 4
+	},
+/turf/open/floor{
+	dir = 9;
+	icon_state = "green"
+	},
+/area/lv624/lazarus/hydroponics)
 "kvo" = (
 /turf/open/gm/dirtgrassborder{
 	dir = 8;
@@ -18824,6 +18435,21 @@
 	},
 /turf/open/gm/grass,
 /area/lv624/lazarus/landing_zones/lz2)
+"kzd" = (
+/obj/structure/table,
+/obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark{
+	name = "crap_item"
+	},
+/obj/structure/machinery/light{
+	dir = 4;
+	icon_state = "tube1"
+	},
+/turf/open/floor{
+	dir = 9;
+	icon_state = "green"
+	},
+/area/lv624/lazarus/hydroponics)
 "kzl" = (
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/gm/dirt,
@@ -18876,6 +18502,12 @@
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle3)
+"kSR" = (
+/obj/structure/fence,
+/turf/open/gm/dirtgrassborder{
+	icon_state = "grassdirt_corner"
+	},
+/area/lv624/ground/jungle7)
 "lke" = (
 /obj/effect/landmark{
 	name = "crap_item"
@@ -19010,6 +18642,12 @@
 /obj/structure/flora/bush/ausbushes/var3/ywflowers,
 /turf/open/gm/grass,
 /area/lv624/ground/compound/ne)
+"miF" = (
+/obj/item/storage/firstaid,
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv624/lazarus/medbay)
 "mkU" = (
 /obj/structure/foamedmetal,
 /obj/structure/flora/jungle/vines{
@@ -19022,10 +18660,29 @@
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle1)
+"mph" = (
+/obj/structure/table,
+/obj/item/reagent_container/food/drinks/cans/waterbottle{
+	step_x = -4;
+	step_y = 9
+	},
+/turf/open/floor{
+	icon_state = "whitebluefull";
+	tag = "icon-whitebluefull"
+	},
+/area/lv624/lazarus/medbay)
 "msV" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/dirt,
 /area/lv624/ground/jungle8)
+"mtP" = (
+/obj/structure/machinery/vending/coffee,
+/turf/open/floor{
+	dir = 1;
+	icon_state = "whiteblue";
+	tag = "icon-whiteblue (NORTH)"
+	},
+/area/lv624/lazarus/medbay)
 "muv" = (
 /obj/structure/flora/jungle/vines,
 /turf/open/gm/grass,
@@ -19128,6 +18785,16 @@
 /obj/structure/flora/bush/ausbushes/ppflowers,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle6)
+"nqt" = (
+/obj/item/device/analyzer/plant_analyzer,
+/turf/open/floor{
+	dir = 9;
+	icon_state = "green"
+	},
+/area/lv624/lazarus/hydroponics)
+"nqZ" = (
+/turf/open/gm/dirtgrassborder,
+/area/lv624/ground/jungle7)
 "nrm" = (
 /obj/structure/table,
 /obj/effect/landmark{
@@ -19161,11 +18828,37 @@
 "nEd" = (
 /turf/closed/wall/r_wall,
 /area/lv624/lazarus/robotics)
+"nEE" = (
+/obj/structure/table,
+/obj/item/device/analyzer/plant_analyzer,
+/obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark{
+	name = "crap_item"
+	},
+/turf/open/floor{
+	dir = 9;
+	icon_state = "green"
+	},
+/area/lv624/lazarus/hydroponics)
+"nHj" = (
+/obj/item/tool/extinguisher,
+/turf/open/floor{
+	dir = 9;
+	icon_state = "green"
+	},
+/area/lv624/lazarus/hydroponics)
 "nHE" = (
 /obj/structure/flora/jungle/vines/heavy,
 /obj/structure/flora/bush/ausbushes/genericbush,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle5)
+"nHP" = (
+/turf/open/floor{
+	dir = 6;
+	icon_state = "whiteblue";
+	tag = "icon-whitehall (WEST)"
+	},
+/area/lv624/lazarus/medbay)
 "nHZ" = (
 /obj/structure/flora/bush/ausbushes/genericbush,
 /turf/open/gm/grass,
@@ -19197,6 +18890,12 @@
 	icon_state = "platebotc"
 	},
 /area/lv624/lazarus/quartstorage/outdoors)
+"nSg" = (
+/obj/structure/window/framed/colony,
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv624/lazarus/medbay)
 "nSR" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 5
@@ -19221,6 +18920,13 @@
 	icon_state = "bot"
 	},
 /area/lv624/ground/sand2)
+"nYZ" = (
+/turf/open/floor{
+	tag = "icon-whiteblue (SOUTHWEST)";
+	icon_state = "whitebluecorner";
+	dir = 8
+	},
+/area/lv624/lazarus/medbay)
 "ock" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner,
 /turf/open/gm/grass{
@@ -19248,6 +18954,12 @@
 	},
 /turf/open/gm/grass,
 /area/lv624/ground/jungle3)
+"oua" = (
+/obj/effect/landmark{
+	name = "crap_item"
+	},
+/turf/open/gm/dirt,
+/area/lv624/ground/jungle7)
 "oAX" = (
 /turf/open/gm/dirtgrassborder,
 /area/lv624/ground/jungle9)
@@ -19304,6 +19016,21 @@
 	},
 /turf/open/gm/grass,
 /area/lv624/lazarus/landing_zones/lz1)
+"oSJ" = (
+/obj/structure/table,
+/obj/item/storage/box/masks{
+	step_x = -4
+	},
+/obj/item/storage/box/syringes{
+	step_x = 5;
+	step_y = 4
+	},
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor{
+	icon_state = "whitebluefull";
+	tag = "icon-whitebluefull"
+	},
+/area/lv624/lazarus/medbay)
 "oTq" = (
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_3"
@@ -19347,15 +19074,19 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/gm/river,
 /area/lv624/lazarus/fitness)
-"peO" = (
-/obj/effect/landmark{
-	name = "xeno_hive_spawn"
+"pgf" = (
+/obj/structure/machinery/power/apc{
+	dir = 1;
+	name = "Medbay APC";
+	pixel_y = 30;
+	start_charge = 0
 	},
 /turf/open/floor{
 	dir = 1;
-	icon_state = "green"
+	icon_state = "whiteblue";
+	tag = "icon-whiteblue (NORTH)"
 	},
-/area/lv624/lazarus/hydroponics)
+/area/lv624/lazarus/medbay)
 "phU" = (
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass,
@@ -19395,6 +19126,21 @@
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
+"pwq" = (
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv624/lazarus/medbay)
+"pzt" = (
+/obj/structure/table,
+/obj/structure/machinery/computer/objective,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv624/lazarus/medbay)
 "pBk" = (
 /obj/structure/flora/bush/ausbushes/ppflowers,
 /turf/open/gm/grass,
@@ -19423,12 +19169,26 @@
 	},
 /turf/open/gm/grass,
 /area/lv624/ground/jungle5)
+"pOW" = (
+/obj/item/storage/firstaid/toxin,
+/turf/open/floor{
+	dir = 10;
+	icon_state = "whiteblue";
+	tag = "icon-whiteblue (SOUTHWEST)"
+	},
+/area/lv624/lazarus/medbay)
 "pRh" = (
 /turf/open/floor/plating{
 	dir = 5;
 	icon_state = "asteroidwarning"
 	},
 /area/lv624/lazarus/landing_zones/lz2)
+"pTk" = (
+/obj/item/bedsheet/medical,
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv624/lazarus/medbay)
 "pYd" = (
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
@@ -19505,6 +19265,21 @@
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/floor/plating,
 /area/lv624/lazarus/engineering)
+"qJg" = (
+/obj/structure/table,
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor{
+	icon_state = "whiteblue";
+	tag = "icon-whiteblue"
+	},
+/area/lv624/lazarus/medbay)
+"qJq" = (
+/obj/structure/machinery/body_scanconsole,
+/turf/open/floor{
+	icon_state = "whitebluefull";
+	tag = "icon-whitebluefull"
+	},
+/area/lv624/lazarus/medbay)
 "qKg" = (
 /turf/open/gm/dirtgrassborder{
 	dir = 4;
@@ -19534,6 +19309,15 @@
 "qUM" = (
 /turf/open/gm/dirtgrassborder,
 /area/lv624/ground/jungle1)
+"rkq" = (
+/obj/effect/landmark{
+	name = "crap_item"
+	},
+/turf/open/floor{
+	dir = 9;
+	icon_state = "green"
+	},
+/area/lv624/lazarus/hydroponics)
 "rmg" = (
 /obj/structure/machinery/power/monitor,
 /obj/structure/foamedmetal,
@@ -19628,6 +19412,16 @@
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle6)
+"rRE" = (
+/obj/item/tool/minihoe{
+	step_x = 1;
+	step_y = -1
+	},
+/turf/open/floor{
+	dir = 9;
+	icon_state = "green"
+	},
+/area/lv624/lazarus/hydroponics)
 "rTG" = (
 /obj/structure/machinery/colony_floodlight,
 /obj/structure/flora/jungle/vines{
@@ -19788,6 +19582,16 @@
 	dir = 4
 	},
 /area/lv624/ground/jungle1)
+"txL" = (
+/obj/structure/table,
+/obj/item/reagent_container/spray,
+/obj/effect/landmark/objective_landmark/science,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "whiteblue"
+	},
+/area/lv624/lazarus/medbay)
 "tBS" = (
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/gm/dirt,
@@ -19804,6 +19608,15 @@
 /obj/structure/flora/grass/tallgrass/jungle/corner,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle7)
+"tIg" = (
+/obj/structure/table,
+/obj/effect/landmark/objective_landmark/science,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "whiteblue"
+	},
+/area/lv624/lazarus/medbay)
 "tKI" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 1
@@ -19856,6 +19669,13 @@
 	dir = 4
 	},
 /area/lv624/lazarus/landing_zones/lz2)
+"ubY" = (
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor{
+	dir = 9;
+	icon_state = "green"
+	},
+/area/lv624/lazarus/hydroponics)
 "udM" = (
 /obj/effect/landmark{
 	name = "good_item"
@@ -20011,13 +19831,6 @@
 	icon_state = "bot"
 	},
 /area/lv624/lazarus/landing_zones/lz1)
-"vDm" = (
-/obj/structure/bed/roller,
-/turf/open/floor{
-	icon_state = "whitebluecorner";
-	tag = "icon-whitebluecorner"
-	},
-/area/lv624/lazarus/medbay)
 "vGg" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 6
@@ -20094,6 +19907,16 @@
 /obj/structure/flora/bush/ausbushes/grassybush,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle2)
+"wLe" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_10";
+	tag = "icon-plant-10"
+	},
+/turf/open/floor{
+	icon_state = "whitebluefull";
+	tag = "icon-whitebluefull"
+	},
+/area/lv624/lazarus/medbay)
 "wLz" = (
 /turf/open/floor/plating{
 	icon_state = "asteroidwarning"
@@ -36798,23 +36621,23 @@ amB
 amB
 alG
 alG
-amU
 alG
 alG
 alG
 alG
-anS
-anY
-anZ
-anY
-anS
-amN
-amN
-amN
-amN
-amN
-amN
-amN
+alG
+alG
+alG
+alG
+alG
+alG
+alG
+alG
+alG
+alG
+alG
+alG
+alG
 atn
 atQ
 auo
@@ -37024,25 +36847,25 @@ alG
 amB
 ana
 goE
-alI
+eji
 alG
 alG
+alG
+aut
+alG
+anS
+nSg
+nSg
+cdj
+nSg
 anF
-anY
-anY
-anY
-anF
-apv
-aou
-aqk
-anF
-anY
-anY
-anY
-anF
-amN
-bac
-amN
+alG
+alG
+aut
+alG
+alG
+baf
+alG
 atn
 atR
 aup
@@ -37255,19 +37078,19 @@ alG
 alG
 att
 alG
-anY
-aoq
-aou
-aoT
-anF
+anS
+anS
+anS
+anS
+wLe
 apw
-aou
-aql
+eHm
+wLe
 anF
-aqN
-are
-ary
-anY
+nSg
+nSg
+anF
+kSR
 ast
 ast
 asT
@@ -37483,21 +37306,21 @@ alG
 alG
 alG
 alG
-anZ
+anS
 aor
-aou
-aou
-apb
+oSJ
+anF
+anF
 apx
-aou
-aou
+pTk
+nYZ
 aqA
-aou
-aou
-arz
-anY
-arP
-arP
+txL
+tIg
+nSg
+nqZ
+ame
+ame
 asU
 auC
 auC
@@ -37711,21 +37534,21 @@ alG
 alG
 alG
 alG
-anY
+anS
 aos
 aoE
-aou
-apc
-aou
-aou
-aou
+pOW
+anF
+iPR
+pwq
+pwq
 apV
-aou
-aou
-arA
-anY
-arP
-arP
+pwq
+dId
+nSg
+nqZ
+ame
+ame
 asV
 atp
 uwF
@@ -37939,21 +37762,21 @@ apj
 alG
 alG
 anS
-anF
-anF
-anF
-anF
-anF
-apy
-aou
-aou
-aou
-aou
+anS
+pgf
+pwq
+aoI
+gXu
+pwq
+aoI
+pwq
+pwq
+pwq
 arf
 anF
 anF
-anS
-arP
+ame
+ame
 asU
 atq
 atT
@@ -38166,22 +37989,22 @@ amB
 alG
 alG
 alG
-anF
+anS
 aoa
 aoU
 aoF
-aou
-anF
-apz
-aou
-aou
-aou
-aou
+pwq
+pwq
+pwq
+pwq
+pwq
+hbF
+pwq
 arg
-aqA
-arZ
-anY
-arP
+iBD
+nSg
+ame
+ame
 asT
 asT
 atU
@@ -38394,22 +38217,22 @@ ana
 alI
 alG
 alG
-anF
+anS
 aob
-aou
-aoG
-aou
-apd
-aou
-apV
-aou
-aou
-aqO
-arh
-aou
-aou
-asu
-arP
+pwq
+pwq
+fAz
+anF
+mtP
+pwq
+cYi
+aov
+pwq
+pwq
+pwq
+gXu
+ame
+ame
 arP
 atn
 ayX
@@ -38622,21 +38445,21 @@ ana
 alG
 alG
 alG
-anF
+anS
 aox
-aou
-aoH
-aou
+pwq
+pwq
+eqP
 anF
 apA
-aou
-aou
-aou
-aou
-arj
-aou
-vDm
-anY
+pwq
+mph
+aov
+pwq
+pwq
+pwq
+pwq
+ame
 asI
 arP
 atn
@@ -38851,21 +38674,21 @@ alG
 aRS
 alG
 anS
-anF
-anF
+qJq
+eoM
 aoI
-anF
-anF
-apB
+pwq
+gXu
+pwq
+pwq
+miF
+pwq
+dCL
 aou
-aou
-aou
-aou
-arf
-anF
-anF
-anS
-arP
+nHP
+nSg
+ame
+ame
 arP
 asU
 atx
@@ -39078,22 +38901,22 @@ amB
 alG
 alG
 alG
-alG
-anY
+anS
+anS
 aov
-aoF
-aou
-ape
-aou
-aou
-aou
-apV
-aou
-aou
-arC
-anY
-arP
-arP
+pwq
+pwq
+pwq
+pwq
+pwq
+pwq
+pwq
+pwq
+dZH
+anF
+anF
+ame
+ame
 asW
 asT
 atO
@@ -39307,21 +39130,21 @@ alG
 aqj
 alG
 alG
-anY
+anS
 aow
 aoK
-aou
+bGV
 anF
 apC
-aou
-aou
-aou
-aou
-aou
-arD
-anY
-arP
-arP
+pwq
+pwq
+aoI
+hZg
+qJg
+nSg
+nqZ
+ame
+ame
 arP
 asZ
 aqi
@@ -39535,21 +39358,21 @@ alG
 alG
 alG
 alG
-anY
+anS
 auj
 aoL
-auU
 anF
-apE
+anF
+apx
+pwq
 aou
-aqn
-anF
+pzt
 aqQ
 atV
-axE
-anY
-arP
-arP
+nSg
+nqZ
+ame
+ame
 arP
 asZ
 aqR
@@ -39760,24 +39583,24 @@ toL
 alG
 amC
 alG
-amU
 alG
-aRS
+alG
+alG
+anS
+anS
+anS
+anS
+wLe
+pwq
+pwq
+wLe
 anF
-anY
-anY
-anY
+nSg
+nSg
 anF
-apA
-aou
-aqo
-anF
-anY
-anY
-anY
-anF
-arP
-arP
+fRi
+ame
+ame
 arP
 asZ
 aqi
@@ -39988,24 +39811,24 @@ toL
 ana
 amB
 anm
+amU
 alG
 alG
 alG
 alG
 alG
-alG
-aoV
 anS
-aou
+anS
+pwq
 apZ
 anS
-anF
-aqi
-aqi
-aqi
-asa
-arP
-arP
+anS
+alG
+alG
+alG
+fRi
+ame
+ame
 arP
 asZ
 aqi
@@ -40227,13 +40050,13 @@ anY
 apt
 apt
 anY
-aqi
+alG
 aqR
 arn
 aqi
-asa
-arP
-asK
+fRi
+ame
+oua
 arP
 asZ
 atw
@@ -40451,17 +40274,17 @@ aoe
 alG
 alG
 alG
-anY
+fIy
 apt
 apt
-anY
-aqi
+fIy
+alG
 aqS
 aro
 aqi
-asa
-arP
-arP
+fRi
+ame
+ame
 arP
 asX
 adp
@@ -40679,17 +40502,17 @@ alG
 alG
 aRS
 alG
-anI
-apG
-apG
-anI
-aqi
+fIy
+apt
+apt
+fIy
+alG
 aqi
 aqi
 arE
-asa
-arP
-arP
+fRi
+ame
+ame
 arP
 atu
 adp
@@ -40906,12 +40729,12 @@ alG
 baf
 alG
 alG
-anG
-anH
-anT
-aqa
-anH
-aqi
+alG
+anY
+apt
+apt
+anY
+alG
 aqi
 aqi
 aqi
@@ -41130,19 +40953,19 @@ ana
 alG
 alG
 alG
+alG
+alG
+alG
+baf
 anG
-anI
-anI
-anI
 anG
-apk
-anT
-anT
+aoA
+ffb
 anG
-anI
-anI
-anI
 anG
+aqi
+aqi
+aqi
 asa
 arP
 arP
@@ -41358,20 +41181,20 @@ alG
 alG
 alG
 alG
-anI
-aof
-aoy
-aoM
-aoz
+goE
+anG
+anT
+anT
+anG
 aru
 apH
-anT
+aoA
 aqp
-ato
-aqT
-ato
-anI
-asb
+anG
+anT
+anT
+anG
+asa
 arP
 arP
 arP
@@ -41585,20 +41408,20 @@ alG
 alG
 ana
 alG
-goE
-anI
-aog
-aoz
-aoz
-aoz
+alG
+alG
 anT
-apI
-anT
+aoz
 aoA
 aoA
 aoA
+aoA
+aoA
+aoA
+eBN
+dsz
 arp
-anI
+anT
 asc
 arP
 arP
@@ -41814,19 +41637,19 @@ alG
 alG
 alG
 alG
-anG
-aoh
-aoz
-aoN
-aoz
-aoO
-asS
+alG
+anT
+aol
+aoA
+rkq
 aoO
 aoA
-aoP
+aoA
+aoA
+aoA
 aoA
 arq
-anG
+anT
 arP
 arP
 arP
@@ -42041,21 +41864,21 @@ alG
 amU
 alG
 alG
-anH
+alG
 anG
-aoi
-aoz
-aoz
-aoz
-anT
-anT
-anT
+anG
+elm
 aoA
+aoA
+aoP
+aoA
+aoA
+aoP
 aoA
 aoA
 arr
 anG
-anH
+anG
 arP
 arP
 arP
@@ -42269,21 +42092,21 @@ alG
 alG
 alG
 ard
-anI
+alG
 anT
+aoA
+aoA
+aoA
+aoP
+aoP
+aoA
+aoA
+aoP
+aoP
+aoA
+aoA
+rRE
 anT
-anT
-aoO
-anT
-aoO
-anT
-aoO
-anT
-aoO
-anT
-anT
-anT
-anI
 arP
 arP
 arP
@@ -42497,21 +42320,21 @@ baf
 alG
 alG
 alG
-anJ
-anT
-anT
-anT
-anT
-aoW
-anT
-peO
-anT
-anT
-anT
-anT
-aoW
-anT
-anJ
+alG
+ehy
+nHj
+aoA
+aoA
+aoA
+aoA
+aoA
+ubY
+aoA
+rkq
+aoA
+aoA
+aoA
+ehy
 arP
 arP
 arP
@@ -42725,21 +42548,21 @@ alG
 alG
 aUU
 alG
-anI
-anU
-anT
-anT
-aoO
-anT
-aoO
-anT
-aoO
-aru
-aoO
-anT
-anT
-anT
-anI
+alG
+aoA
+aoA
+aoA
+aoA
+aoA
+aoA
+aoA
+aoA
+aoA
+nqt
+aoA
+aoA
+aoA
+aoA
 arP
 arP
 asY
@@ -42953,21 +42776,21 @@ amB
 alG
 alG
 alG
-anH
-anG
-aoj
+alG
+anT
+aoA
+aoA
+aoA
+aoP
+aoP
+kuP
+aoA
+aoP
+aoP
 aoA
 aoA
 aoA
 anT
-anT
-anT
-aoz
-aoz
-aoz
-ars
-anG
-anH
 arP
 arP
 asZ
@@ -43183,19 +43006,19 @@ alG
 aqj
 alG
 anG
-aok
+anG
 aoB
+aoA
+aoA
 aoP
 aoA
-aoO
-anT
-aoO
-aoz
-aoN
-aoz
+aoA
+aoP
+aoA
+aoA
 art
 anG
-arP
+anG
 arP
 arP
 asZ
@@ -43410,20 +43233,20 @@ alG
 alG
 alG
 alG
-anI
-aol
-aoA
-aoA
-aoA
-aoW
+alG
 anT
-anT
-aoz
-aqC
-aoz
+nEE
+aoA
+aoA
+aoA
+rkq
+aoA
+aoA
+aoA
+aoA
 auB
-anI
-asd
+anT
+arP
 arP
 arP
 asZ
@@ -43638,20 +43461,20 @@ alG
 alG
 alG
 alG
-anV
-aom
+alG
+anT
 aoC
 aoR
+kzd
 aoA
-anT
-aru
-anT
-aoz
-aqD
-aqU
+aoA
+aoA
+aoA
+aoA
+aoA
 arv
-arF
-asb
+anT
+asd
 arP
 asK
 asZ
@@ -43866,18 +43689,18 @@ alI
 alG
 alG
 alG
-anG
-anI
-anI
-anI
+alG
 anG
 anT
-asS
-aqb
+anT
 anG
-anI
-anI
-anI
+aoA
+aoA
+aoA
+aoA
+anG
+anT
+anT
 anG
 asa
 arP
@@ -44098,14 +43921,14 @@ alG
 alG
 alG
 alG
-anH
-anI
-apJ
-anI
-anH
+anG
+anT
+aoA
+ffb
+anT
+anG
 alG
 alG
-aUU
 alG
 asa
 arP

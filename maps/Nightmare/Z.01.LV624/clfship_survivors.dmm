@@ -865,10 +865,7 @@
 	},
 /area/lv624/lazarus/crashed_ship)
 "ch" = (
-/obj/structure/machinery/defenses/sentry/premade/dumb{
-	!INVALID_VAR! = 3;
-	!INVALID_VAR! = 1
-	},
+/obj/structure/machinery/defenses/sentry/premade/dumb,
 /obj/structure/barricade/metal,
 /turf/open/floor/plating{
 	dir = 2;
@@ -978,10 +975,7 @@
 	},
 /area/lv624/lazarus/crashed_ship)
 "ct" = (
-/obj/structure/machinery/defenses/sentry/premade/dumb{
-	!INVALID_VAR! = 3;
-	!INVALID_VAR! = 1
-	},
+/obj/structure/machinery/defenses/sentry/premade/dumb,
 /obj/structure/barricade/metal,
 /obj/structure/barricade/metal{
 	dir = 4
@@ -992,10 +986,7 @@
 	},
 /area/lv624/lazarus/crashed_ship)
 "cu" = (
-/obj/structure/machinery/defenses/sentry/premade/dumb{
-	!INVALID_VAR! = 3;
-	!INVALID_VAR! = 1
-	},
+/obj/structure/machinery/defenses/sentry/premade/dumb,
 /obj/structure/barricade/metal,
 /obj/structure/barricade/metal{
 	dir = 8

@@ -32,6 +32,13 @@
 	var/intensitymod = 0
 	var/durationmod = 0
 	var/radiusmod = 0
+	// For chemical fire from flamerthrowers
+	var/intensityfire = 0
+	var/durationfire = 0
+	var/rangefire = -1 // Keep at -1 if you want an infinite range
+	var/flameshape = FLAMESHAPE_LINE
+	var/fire_penetrating = FALSE // Whether it can damage fire-immune xenos
+	// For both chemical fires
 	var/burncolor = "#f88818"
 	var/burncolormod = 1
 	// Chem generator and research stuff
@@ -46,6 +53,15 @@
 /datum/reagent/New()
 	if(properties)
 		properties = properties_to_datums()
+	recalculate_variables()
+
+/datum/reagent/proc/recalculate_variables()
+	for(var/datum/chem_property/P in properties)
+		P.holder = src
+		P.reset_reagent()
+		
+	for(var/datum/chem_property/P in properties)
+		P.update_reagent()
 
 /datum/reagent/proc/reaction_mob(var/mob/M, var/method=TOUCH, var/volume) //By default we have a chance to transfer some
 	if(!istype(M, /mob/living))	return 0
@@ -171,7 +187,14 @@
 	color = C.color
 	chemclass = C.chemclass
 	gen_tier = C.gen_tier
-	properties = C.properties.Copy()
+	var/list/temp = list()
+	for(var/datum/chem_property/P in C.properties)
+		var/datum/chem_property/new_property = new P.type()
+		new_property.level = P.level
+		new_property.holder = src
+		temp += new_property
+
+	properties = temp
 	description = C.description
 	overdose = C.overdose
 	overdose_critical = C.overdose_critical
@@ -187,6 +210,10 @@
 	durationmod = C.durationmod
 	intensitymod = C.intensitymod
 	burncolor = C.burncolor
+	durationfire = C.durationfire
+	intensityfire = C.intensityfire
+	rangefire = C.rangefire
+	fire_penetrating = C.fire_penetrating
 	explosive = C.explosive
 	power = C.power
 	falloff_modifier =  C.falloff_modifier
@@ -235,18 +262,21 @@
 
 
 /datum/reagent/proc/properties_to_datums()
-	var/new_properties = list()
-	for(var/P in properties)
-		if(istype(P, /datum/chem_property))
-			new_properties += P
-			continue
-		var/datum/chem_property/D = chemical_properties_list[P]
-		if(D)
-			D = new D.type()
-			D.level = properties[P]
-			D.holder = src
-			new_properties += D
-	return new_properties
+	if(chemical_properties_list)
+		var/new_properties = list()
+		for(var/P in properties)
+			if(istype(P, /datum/chem_property))
+				new_properties += P
+				continue
+			var/datum/chem_property/D = chemical_properties_list[P]
+			if(D)
+				D = new D.type()
+				D.level = properties[P]
+				D.holder = src
+				new_properties += D
+		return new_properties
+	else
+		return properties
 
 /datum/reagent/proc/properties_to_assoc()
 	var/new_properties = list()
@@ -279,12 +309,14 @@
 			return FALSE
 	R.level = new_level
 	R.holder = src
-	R.update_reagent()
 	properties[i] = R
+
+	recalculate_variables()
 	return TRUE
 
 /datum/reagent/proc/remove_property(var/datum/chem_property/property)
 	properties -= list(property)
+	recalculate_variables()
 
 /datum/reagent/proc/reset_pain_reduction()
 	if(holder && holder.my_atom && ishuman(holder.my_atom))

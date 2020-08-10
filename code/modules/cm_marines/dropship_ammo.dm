@@ -190,7 +190,7 @@
 		L.adjust_fire_stacks(10)
 		L.IgniteMob()
 	if(!locate(/obj/flamer_fire) in T)
-		new/obj/flamer_fire(T, initial(name), source_mob, 5, 30) //short but intense
+		new/obj/flamer_fire(T, initial(name), source_mob) //short but intense
 
 
 //Rockets

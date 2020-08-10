@@ -154,10 +154,13 @@
 		if(mob_size == MOB_SIZE_BIG)
 			if((!initial(pixel_y) || lying) && !resting && !sleeping)
 				I = image("icon"='icons/mob/xenos/overlay_effects64x64.dmi', "icon_state"="alien_fire", "layer"=-X_FIRE_LAYER)
+				I.color = fire_reagent.burncolor
 			else
 				I = image("icon"='icons/mob/xenos/overlay_effects64x64.dmi', "icon_state"="alien_fire_lying", "layer"=-X_FIRE_LAYER)
+				I.color = fire_reagent.burncolor
 		else
 			I = image("icon"='icons/mob/xenos/Effects.dmi', "icon_state"="alien_fire", "layer"=-X_FIRE_LAYER)
+			I.color = fire_reagent.burncolor
 
 		overlays_standing[X_FIRE_LAYER] = I
 		apply_overlay(X_FIRE_LAYER)

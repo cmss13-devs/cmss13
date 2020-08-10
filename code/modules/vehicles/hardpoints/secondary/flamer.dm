@@ -57,4 +57,4 @@
 	if(!istype(T)) return
 
 	if(!locate(/obj/flamer_fire) in T) // No stacking flames!
-		new/obj/flamer_fire(T, initial(name), user, 35, 40)
+		new/obj/flamer_fire(T, initial(name), user)

@@ -27,7 +27,7 @@
 	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_WIELDED_FIRING_ONLY
 
 /obj/item/weapon/gun/flamer/New()
-	..()
+	. = ..()
 	update_icon()
 
 
@@ -57,6 +57,13 @@
 	if(has_empty_icon && !current_mag)
 		new_icon_state += "_e"
 	icon_state = new_icon_state
+
+	if(current_mag && current_mag.reagents)
+
+		var/image/I = image(icon, icon_state="[base_gun_icon]_strip")
+		I.color = mix_color_from_reagents(current_mag.reagents.reagent_list)
+
+		overlays += I
 
 	if(lit)
 		var/image/I = image('icons/obj/items/weapons/guns/gun.dmi', src, "+lit")
@@ -155,194 +162,36 @@
 /obj/item/weapon/gun/flamer/proc/unleash_flame(atom/target, mob/living/user)
 	set waitfor = 0
 	last_fired = world.time
-	var/burnlevel
-	var/burntime
-	var/fire_color = "red"
-	if(!current_mag)
+	if(!current_mag || !current_mag.reagents)
 		return
 
-	switch(current_mag.caliber)
-		if("UT-Napthal Fuel") //This isn't actually Napalm actually
-			burnlevel = config.med_burnlevel
-			burntime = config.low_burntime
-			max_range = config.close_shell_range
+	var/datum/reagent/R = current_mag.reagents.reagent_list[1]
 
-		// Area denial, light damage, large AOE, long burntime
-		if("Napalm B")
-			burnlevel = config.low_burnlevel
-			burntime = config.max_burntime
-			max_range = config.min_shell_range
-			playsound(user, src.get_fire_sound(), 50, 1)
-			triangular_flame(target, user, burntime, burnlevel)
-			return
+	var/flameshape = R.flameshape
 
-		if("Napalm Gel") //Long range, low damage
-			burnlevel = config.low_burnlevel
-			burntime = config.instant_burntime
-			max_range = config.near_shell_range
-			fire_color = "green"
-			playsound(user, src.get_fire_sound(), 50, 1)
+	R.intensityfire = Clamp(R.intensityfire, current_mag.reagents.min_fire_int, current_mag.reagents.max_fire_int)
+	R.durationfire = Clamp(R.durationfire, current_mag.reagents.min_fire_dur, current_mag.reagents.max_fire_dur)
+	R.rangefire = Clamp(R.rangefire, current_mag.reagents.min_fire_rad, current_mag.reagents.max_fire_rad)
+	var/max_range = R.rangefire
 
-		if("Napalm X") //Probably can end up as a spec fuel or DS flamer fuel. Also this was the original fueltype, the madman i am.
-			burnlevel = config.high_burnlevel
-			burntime = config.high_burntime
-			max_range = config.near_shell_range
-			fire_color = "blue"
+	if(R.rangefire == -1)
+		max_range = current_mag.reagents.max_fire_rad
 
-		if("Fuel") //This is welding fuel and thus pretty weak. Not ment to be exactly used for flamers either.
-			burnlevel = config.min_burnlevel
-			burntime = config.min_burntime
-			max_range = config.min_shell_range
+	var/turf/temp[] = getline2(get_turf(user), get_turf(target))
 
-		else return
+	var/turf/to_fire = temp[2]
 
-	var/list/turf/turfs = getline2(user,target)
-	playsound(user, src.get_fire_sound(), 50, 1)
-	var/distance = 1
-	var/turf/prev_T = user.loc
-	var/stop_at_turf = FALSE
+	var/obj/flamer_fire/fire = locate() in to_fire
+	if(fire)
+		qdel(fire)
 
-	for(var/turf/T in turfs)
-		if(T == user.loc)
-			prev_T = T
-			continue
-		if(loc != user)
-			break
-		if(!current_mag || !current_mag.current_rounds)
-			break
-		if(distance > max_range)
-			break
+	playsound(to_fire, src.get_fire_sound(), 50, TRUE)
 
-		current_mag.current_rounds--
-		if(T.density)
-			T.flamer_fire_act(rand(burnlevel*2, burnlevel*3))
-			stop_at_turf = TRUE
-		else if(prev_T)
-			var/atom/movable/temp = new/obj/flamer_fire()
-			var/atom/movable/AM = LinkBlocked(temp, prev_T, T)
-			qdel(temp)
-			if(AM)
-				AM.flamer_fire_act(rand(burnlevel*2, burnlevel*3))
-				if (AM.flags_atom & ON_BORDER)
-					break
-				stop_at_turf = TRUE
-		var/obj/flamer_fire/foundflame = locate() in T
-		if(foundflame)
-			qdel(foundflame) //No stacking
-		flame_turf(T, user, burntime, burnlevel, fire_color)
-		if (stop_at_turf)
-			break
-		distance++
-		prev_T = T
-		sleep(1)
+	new /obj/flamer_fire(to_fire, initial(name), user, R, max_range, current_mag.reagents, flameshape, target, CALLBACK(src, .proc/show_percentage, user))
 
+/obj/item/weapon/gun/flamer/proc/show_percentage(var/mob/living/user)
 	if(current_mag)
-		to_chat(user, SPAN_WARNING("The gauge reads: <b>[round(current_mag.get_ammo_percent())]</b>% fuel remains."))
-
-/obj/item/weapon/gun/flamer/proc/flame_turf(turf/T, mob/living/user, heat, burn, f_color = "red")
-	if(!istype(T))
-		return
-
-	new /obj/flamer_fire(T, initial(name), user, heat, burn, f_color, 0)
-
-/obj/item/weapon/gun/flamer/proc/triangular_flame(var/atom/target, var/mob/living/user, var/burntime, var/burnlevel)
-	set waitfor = 0
-
-	var/unleash_dir = user.dir //don't want the player to turn around mid-unleash to bend the fire.
-	var/list/turf/turfs = getline2(user,target)
-	playsound(user, src.get_fire_sound(), 50, 1)
-	var/distance = 1
-	var/turf/prev_T = user.loc
-	var/hit_dense_atom_mid = FALSE
-	var/burn_dam = rand(burnlevel*2, burnlevel*3)
-
-	for(var/turf/T in turfs)
-		if(T == user.loc)
-			prev_T = T
-			continue
-		if(loc != user)
-			break
-		if(!current_mag || !current_mag.current_rounds)
-			break
-		if(distance > max_range)
-			break
-
-		current_mag.current_rounds--
-		if(T.density)
-			T.flamer_fire_act()
-			hit_dense_atom_mid = TRUE
-		else if(prev_T)
-			var/atom/movable/temp = new/obj/flamer_fire()
-			var/atom/movable/AM = LinkBlocked(temp, prev_T, T)
-			qdel(temp)
-			if(AM)
-				AM.flamer_fire_act(burn_dam)
-				if (AM.flags_atom & ON_BORDER)
-					break
-				hit_dense_atom_mid = TRUE
-		flame_turf(T,user, burntime, burnlevel, "green")
-		prev_T = T
-		sleep(1)
-
-		var/list/turf/right = list()
-		var/list/turf/left = list()
-		var/turf/right_turf = T
-		var/turf/left_turf = T
-		var/right_dir = turn(unleash_dir, 90)
-		var/left_dir = turn(unleash_dir, -90)
-		for (var/i = 0, i < distance - 1, i++)
-			right_turf = get_step(right_turf, right_dir)
-			right += right_turf
-			left_turf = get_step(left_turf, left_dir)
-			left += left_turf
-
-		var/hit_dense_atom_side = FALSE
-
-		var/turf/prev_R = T
-		for (var/turf/R in right)
-			if(prev_R)
-				var/atom/movable/temp = new/obj/flamer_fire()
-				var/atom/movable/AM = LinkBlocked(temp, prev_R, R)
-				qdel(temp)
-				if(AM)
-					AM.flamer_fire_act(burn_dam)
-					if (AM.flags_atom & ON_BORDER)
-						break
-					hit_dense_atom_side = TRUE
-				else if (hit_dense_atom_mid)
-					break
-			flame_turf(R, user, burntime, burnlevel, "green")
-			if (!hit_dense_atom_mid && hit_dense_atom_side)
-				break
-			prev_R = R
-			sleep(1)
-
-		var/turf/prev_L = T
-		for (var/turf/L in left)
-			if(prev_L)
-				var/atom/movable/temp = new/obj/flamer_fire()
-				var/atom/movable/AM = LinkBlocked(temp, prev_L, L)
-				qdel(temp)
-				if(AM)
-					AM.flamer_fire_act(burn_dam)
-					if (AM.flags_atom & ON_BORDER)
-						break
-					hit_dense_atom_side = TRUE
-				else if (hit_dense_atom_mid)
-					break
-			flame_turf(L, user, burntime, burnlevel, "green")
-			if (!hit_dense_atom_mid && hit_dense_atom_side)
-				break
-			prev_L = L
-			sleep(1)
-
-		if (hit_dense_atom_mid)
-			break
-
-		distance++
-	to_chat(user, SPAN_WARNING("The gauge reads: <b>[round(current_mag.get_ammo_percent())]</b>% fuel remains!"))
-
-
+		to_chat(user, SPAN_WARNING("The gauge reads: <b>[round(current_mag.get_ammo_percent())]</b>% fuel remains!"))
 
 /obj/item/weapon/gun/flamer/M240T
 	name = "\improper M240-T incinerator unit"
@@ -444,122 +293,61 @@
 	anchored = 1
 	mouse_opacity = 0
 	icon = 'icons/effects/fire.dmi'
-	icon_state = "red_2"
+	icon_state = "dynamic_2"
 	layer = BELOW_OBJ_LAYER
+
 	var/firelevel = 12 //Tracks how much "fire" there is. Basically the timer of how long the fire burns
 	var/burnlevel = 10 //Tracks how HOT the fire is. This is basically the heat level of the fire and determines the temperature.
-	var/flame_icon = "red"
+
+	var/flame_icon = "dynamic"
 	var/flameshape = FLAMESHAPE_DEFAULT // diagonal square shape
 	var/weapon_source
 	var/weapon_source_mob
+	var/turf/target_clicked
 
-/obj/flamer_fire/New(turf/loc, var/source, var/source_mob, fire_lvl, burn_lvl, f_color, fire_spread_amount, new_flameshape)
-	..()
-	if(f_color)
-		if(f_color != "red" && f_color != "green" && f_color != "blue")
-			flame_icon = "dynamic"
-		else
-			flame_icon = f_color
-	else
-		f_color = "red"
+	var/datum/reagent/tied_reagent
+	var/datum/reagents/tied_reagents
+	var/datum/callback/to_call
 
-	if(new_flameshape)
-		flameshape = new_flameshape
+/obj/flamer_fire/Initialize(mapload, var/source, var/source_mob, var/datum/reagent/R, fire_spread_amount = 0, var/datum/reagents/obj_reagents = null, new_flameshape = FLAMESHAPE_DEFAULT, var/atom/target = null, var/datum/callback/C)
+	. = ..()
+	if(!R)
+		R = new /datum/reagent/napalm/ut()
 
-	if(!flame_icon)
-		flame_icon = "red"
-	else if(flame_icon == "dynamic")
-		color = f_color
+	flameshape = new_flameshape
 
+	color = R.burncolor
+
+	tied_reagent = R
+	tied_reagents = obj_reagents
+
+	target_clicked = target
 	weapon_source = source
 	weapon_source_mob = source_mob
 
 	icon_state = "[flame_icon]_2"
-	if(fire_lvl)
-		firelevel = fire_lvl
-	if(burn_lvl)
-		burnlevel = burn_lvl
+
+	firelevel = R.durationfire
+	burnlevel = R.intensityfire
+
 	processing_objects.Add(src)
 
-	var/burn_dam = rand(burnlevel*2, burnlevel*3)
+	to_call = C
+
+	var/burn_dam = burnlevel*FIRE_DAMAGE_PER_LEVEL
+
+	if(tied_reagents)
+		var/removed = tied_reagents.remove_reagent(tied_reagent.id, FLAME_REAGENT_USE_AMOUNT)
+		if(removed)
+			qdel(src)
+			return
 
 	if(fire_spread_amount > 0)
-		if(flameshape == FLAMESHAPE_DEFAULT || flameshape == FLAMESHAPE_IRREGULAR) // Irregular 'stutters' in shape
-			var/turf/T
-			var/turf/source_turf = get_turf(loc)
-			for(var/dirn in cardinal)
-				T = get_step(source_turf, dirn)
-				if(istype(T, /turf/open/space))
-					continue
-				var/obj/flamer_fire/foundflame = locate() in T
-				if(foundflame)
-					foundflame.flame_icon = flame_icon
-					foundflame.color = color
-					foundflame.burnlevel = burn_lvl
-					foundflame.firelevel = fire_lvl
-					continue
-				var/new_spread_amt = fire_spread_amount - 1
-				if(T.density)
-					T.flamer_fire_act(burn_dam)
-					new_spread_amt = 0
-				else
-					var/atom/A = LinkBlocked(src, source_turf, T)
+		var/datum/flameshape/FS = flameshapes[flameshape]
+		if(!FS)
+			CRASH("Invalid flameshape passed to /obj/flamer_fire. (Expected /datum/flameshape, got [FS] (id: [flameshape]))")
 
-					if(A)
-						A.flamer_fire_act(burn_dam)
-						if (A.flags_atom & ON_BORDER)
-							break
-						new_spread_amt = 0
-
-				if(flameshape == FLAMESHAPE_IRREGULAR && prob(33))
-					continue
-				spawn(0)
-					new /obj/flamer_fire(T, weapon_source, weapon_source_mob, fire_lvl, burn_lvl, f_color, new_spread_amt, flameshape)
-
-		if(flameshape == FLAMESHAPE_STAR || flameshape == FLAMESHAPE_MINORSTAR) // spread in a star-like pattern
-			fire_spread_amount = round(fire_spread_amount * 1.5) // branch 'length'
-			var/list/dirs = alldirs
-			var/turf/source_turf = get_turf(loc)
-
-			if(flameshape == FLAMESHAPE_MINORSTAR)
-				if(prob(50))
-					dirs = cardinal
-				else
-					dirs = diagonals
-
-			for(var/dirn in dirs)
-				var/endturf = get_ranged_target_turf(src, dirn, fire_spread_amount)
-				var/list/turfs = getline2(src, endturf)
-				var/new_spread_amt = 0
-
-				for(var/turf/T in turfs)
-					if(istype(T,/turf/open/space)) continue
-					var/obj/flamer_fire/foundflame = locate() in T
-					if(foundflame)
-						foundflame.flame_icon = flame_icon
-						foundflame.color = color
-						foundflame.burnlevel = burn_lvl
-						foundflame.firelevel = fire_lvl
-						continue
-
-					if(prob(15) && flameshape != FLAMESHAPE_MINORSTAR) // chance to branch a little
-						new_spread_amt = 1.5
-
-					if(T.density && !T.throwpass) // unpassable turfs stop the spread
-						T.flamer_fire_act(burn_dam)
-						new_spread_amt = 0
-
-					var/atom/A = LinkBlocked(src, source_turf, T)
-					if(A)
-						A.flamer_fire_act()
-						if (A.flags_atom & ON_BORDER)
-							break
-						new_spread_amt = 0
-
-					spawn(0)
-						new /obj/flamer_fire(T, weapon_source, weapon_source_mob, fire_lvl, burn_lvl, f_color, new_spread_amt, FLAMESHAPE_MINORSTAR)
-					new_spread_amt = 0
-
+		FS.handle_fire_spread(src, fire_spread_amount, burn_dam)
 	//Apply fire effects onto everyone in the fire
 
 	// Melt a single layer of snow
@@ -578,7 +366,7 @@
 			var/mob/living/carbon/Xenomorph/X = M
 			if(!X.caste)
 				CRASH("CASTE ERROR: flamer New() was called without a caste. (name: [X.name], disposed: [X.disposed], health: [X.health], age_stored: [X.age_stored]")
-			if(X.caste.fire_immune)
+			if(X.caste.fire_immune && !tied_reagent.fire_penetrating)
 				continue
 			if(X.burrow)
 				continue
@@ -599,23 +387,25 @@
 					msg_admin_attack("[key_name(user)] shot [key_name(H)] with \a [name] in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
 				if(weapon_source)
 					H.track_shot_hit(weapon_source, H)
-			
-			if(istype(H.wear_suit, /obj/item/clothing/suit/fire))
-				continue
-		if (raiseEventSync(M, EVENT_PREIGNITION_CHECK) != HALTED)
-			M.adjust_fire_stacks(2.5+burn_lvl)
+
+				
+		if (raiseEventSync(M, EVENT_PREIGNITION_CHECK) != HALTED || tied_reagent.fire_penetrating)
+			M.adjust_fire_stacks(2.5+burnlevel, tied_reagent)
 			M.IgniteMob()
 
 		// If fire shield is on, do not receive burn damage
-		if (raiseEventSync(M, EVENT_PRE_FIRE_BURNED_CHECK) == HALTED)
+		if (raiseEventSync(M, EVENT_PRE_FIRE_BURNED_CHECK) == HALTED && !tied_reagent.fire_penetrating)
 			continue
+		
 		M.last_damage_mob = weapon_source_mob
-		M.apply_damage(1.5*burnlevel, BURN)
+		M.apply_damage(burn_dam, BURN)
+
 		var/msg = "Augh! You are roasted by the flames!"
 		if (isXeno(M))
 			to_chat(M, SPAN_XENODANGER(msg))
 		else
 			to_chat(M, SPAN_HIGHDANGER(msg))
+		
 		if(weapon_source)
 			M.last_damage_source = weapon_source
 		else
@@ -642,8 +432,8 @@
 		var/mob/living/carbon/human/H = M
 		if(isXeno(H.pulledby))
 			var/mob/living/carbon/Xenomorph/Z = H.pulledby
-			if(raiseEventSync(Z, EVENT_PREIGNITION_CHECK) != HALTED)
-				Z.adjust_fire_stacks(burnlevel)
+			if(raiseEventSync(Z, EVENT_PREIGNITION_CHECK) != HALTED && !tied_reagent.fire_penetrating)
+				Z.adjust_fire_stacks(burnlevel, tied_reagent)
 				Z.IgniteMob()
 		if(istype(H.wear_suit, /obj/item/clothing/suit/storage/marine/M35) || istype(H.wear_suit, /obj/item/clothing/suit/fire))
 			if (raiseEventSync(H, EVENT_PRE_FIRE_BURNED_CHECK) == HALTED)
@@ -654,13 +444,13 @@
 	
 	if(isXeno(M))
 		var/mob/living/carbon/Xenomorph/X = M
-		if(X.caste.fire_immune)
+		if(X.caste.fire_immune && !tied_reagent.fire_penetrating)
 			return
 		if(X.burrow)
 			return
 	
-	if (raiseEventSync(M, EVENT_PREIGNITION_CHECK) != HALTED)
-		M.adjust_fire_stacks(burnlevel) //Make it possible to light them on fire later.
+	if (raiseEventSync(M, EVENT_PREIGNITION_CHECK) != HALTED || tied_reagent.fire_penetrating)
+		M.adjust_fire_stacks(burnlevel, tied_reagent) //Make it possible to light them on fire later.
 		M.IgniteMob()
 
 	if(weapon_source)
@@ -712,7 +502,7 @@
 				var/mob/living/carbon/Xenomorph/Burrower/B = I
 				if(B.burrow)
 					continue
-			if(isXenoRavager(I))
+			if(isXenoRavager(I) && !tied_reagent.fire_penetrating)
 				if(!I.stat)
 					var/mob/living/carbon/Xenomorph/Ravager/X = I
 					X.plasma_stored = X.plasma_max
@@ -725,9 +515,9 @@
 				var/mob/living/carbon/human/H = I
 				if(istype(H.wear_suit, /obj/item/clothing/suit/storage/marine/M35) || istype(H.wear_suit, /obj/item/clothing/suit/fire))
 					continue
-			if (raiseEventSync(I, EVENT_PREIGNITION_CHECK) == HALTED)
+			if (raiseEventSync(I, EVENT_PREIGNITION_CHECK) == HALTED && !tied_reagent.fire_penetrating)
 				continue
-			I.adjust_fire_stacks(burnlevel) //If i stand in the fire i deserve all of this. Also Napalm stacks quickly.
+			I.adjust_fire_stacks(burnlevel, tied_reagent) //If i stand in the fire i deserve all of this. Also Napalm stacks quickly.
 			I.IgniteMob()
 			I.show_message(text(SPAN_WARNING("You are burned!")),1)
 			if(isXeno(I)) //Have no fucken idea why the Xeno thing was there twice.
@@ -745,7 +535,12 @@
 	var/direction_angle = dir2angle(direction)
 	var/obj/flamer_fire/foundflame = locate() in target
 	if(!foundflame)
-		new/obj/flamer_fire(target, source, source_mob, fire_lvl, burn_lvl, f_color)
+		var/datum/reagent/R = new()
+		R.intensityfire = burn_lvl
+		R.durationfire = fire_lvl
+
+		R.color = f_color
+		new/obj/flamer_fire(target, source, source_mob, R)
 
 	for(var/spread_direction in alldirs)
 
@@ -784,7 +579,13 @@
 			fire_spread_recur(T, source, source_mob, spread_power, spread_direction, fire_lvl, burn_lvl, f_color)
 
 /proc/fire_spread(var/turf/target, var/source, var/source_mob, range, fire_lvl, burn_lvl, f_color)
-	new/obj/flamer_fire(target, source, source_mob, fire_lvl, burn_lvl, f_color)
+	var/datum/reagent/R = new()
+	R.intensityfire = burn_lvl
+	R.durationfire = fire_lvl
+
+	R.color = f_color
+
+	new/obj/flamer_fire(target, source, source_mob, R)
 	for(var/direction in alldirs)
 		var/spread_power = range
 		switch(direction)

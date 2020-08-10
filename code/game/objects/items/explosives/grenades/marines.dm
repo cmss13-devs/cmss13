@@ -136,15 +136,20 @@
 	playsound(src.loc, 'sound/weapons/gun_flamethrower2.ogg', 35, 1, 4)
 	qdel(src)
 
-/proc/flame_radius(var/source, var/source_mob, var/radius = 1, var/turf/T, var/flame_level = 5, var/burn_level = 15)
+/proc/flame_radius(var/source, var/source_mob, var/radius = 1, var/turf/T, var/flame_level = 14, var/burn_level = 15)
 	if(!istype(T))
 		return
-	var/color_name
+	var/datum/reagent/R = new /datum/reagent/napalm/ut()
 	if(burn_level >= config.high_burnlevel)
-		color_name = "blue"
+		R = new /datum/reagent/napalm/blue()
 	else if(burn_level <= config.low_burnlevel)
-		color_name = "green"
-	new /obj/flamer_fire(T, source, source_mob, flame_level + rand(0,11), burn_level, color_name, radius)
+		R = new /datum/reagent/napalm/green()
+
+	R.durationfire = flame_level
+	R.intensityfire = burn_level
+	R.rangefire = radius
+
+	new /obj/flamer_fire(T, source, source_mob, R, R.rangefire)
 
 /obj/item/explosive/grenade/incendiary/molotov
 	name = "\improper improvised firebomb"

@@ -56,9 +56,9 @@ var/global/list/xeno_datum_list = list() // multi-d list of xeno datums
 
 //Chem Stuff
 var/global/list/chemical_reactions_filtered_list	//List of all /datum/chemical_reaction datums filtered by reaction components. Used during chemical reactions
-var/global/list/chemical_reactions_list				//List of all /datum/chemical_reaction datums indexed by reaction id. Used to search for the result instead of the components.
-var/global/list/chemical_reagents_list				//List of all /datum/reagent datums indexed by reagent id. Used by chemistry stuff
-var/global/list/chemical_properties_list			//List of all /datum/chem_property datums indexed by property name
+var/global/list/chemical_reactions_list		//List of all /datum/chemical_reaction datums indexed by reaction id. Used to search for the result instead of the components.
+var/global/list/chemical_reagents_list		//List of all /datum/reagent datums indexed by reagent id. Used by chemistry stuff
+var/global/list/chemical_properties_list	//List of all /datum/chem_property datums indexed by property name
 var/global/list/chemical_objective_list	 = list()	//List of all objective reagents indexed by ID associated with the objective value
 var/global/list/chemical_identified_list = list()	//List of all identified objective reagents indexed by ID associated with the objective value
 //List of all id's from classed /datum/reagent datums indexed by class or tier. Used by chemistry generator and chem spawners.

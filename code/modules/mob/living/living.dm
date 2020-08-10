@@ -12,6 +12,8 @@
 /mob/living/Initialize()
 	..()
 
+	fire_reagent = new /datum/reagent/napalm/ut()
+
 	event_zoomout = new /datum/event()
 	event_movement = new /datum/event()
 

@@ -17,6 +17,7 @@
 		generate_stats()
 		chemical_reagents_list[id] = src
 	make_alike(chemical_reagents_list[id])
+	recalculate_variables()
 
 /datum/chemical_reaction/generated/New()
 	//Generate recipe

@@ -187,7 +187,8 @@ ICE GRASS
 						if(T && T.contents)
 							for(var/obj/structure/flora/grass/tallgrass/G in T.contents)
 								if(istype(G,/obj/structure/flora/grass/tallgrass))
-									new /obj/flamer_fire(T, "wildfire")
+									var/datum/reagent/napalm/ut/R = new()
+									new /obj/flamer_fire(T, "wildfire", null, R)
 									if(fire_flag ==FLORA_BURN_SPREAD_ONCE)
 										G.fire_flag = FLORA_BURN_NO_SPREAD
 									G.fire_act()

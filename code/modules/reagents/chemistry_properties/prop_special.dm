@@ -237,3 +237,87 @@
 	var/mob/living/carbon/human/H = M
 	for(var/datum/internal_organ/I in H.internal_organs)
 		M.apply_internal_damage(1, I)
+
+/datum/chem_property/special/radius
+	name = PROPERTY_RADIUS
+	code = "RAD"
+	description = "Controls the radius of a fire, using unknown means"
+	rarity = PROPERTY_ADMIN
+	category = PROPERTY_TYPE_REACTANT|PROPERTY_TYPE_ANOMALOUS
+	value = 666
+
+/datum/chem_property/special/radius/reset_reagent()
+	holder.chemfiresupp = initial(holder.chemfiresupp)
+
+	holder.rangefire = initial(holder.rangefire)
+	holder.radiusmod = initial(holder.radiusmod)
+	..()
+
+/datum/chem_property/special/radius/update_reagent()
+	holder.chemfiresupp = TRUE
+
+	holder.rangefire = max(holder.rangefire, 0) // Initial starts at -1 for some (aka infinite range), need to reset that to 0 so that calc doesn't fuck up
+
+	holder.rangefire += 1 * level
+	holder.radiusmod += 0.1 * level
+	..()
+
+/datum/chem_property/special/intensity
+	name = PROPERTY_INTENSITY
+	code = "INT"
+	description = "Controls the intensity of a fire, using unknown means"
+	rarity = PROPERTY_ADMIN
+	category = PROPERTY_TYPE_REACTANT|PROPERTY_TYPE_ANOMALOUS
+	value = 666
+
+/datum/chem_property/special/intensity/reset_reagent()
+	holder.chemfiresupp = initial(holder.chemfiresupp)
+
+	holder.intensityfire = initial(holder.intensityfire)
+	holder.intensitymod = initial(holder.intensitymod)
+	..()
+
+/datum/chem_property/special/intensity/update_reagent()
+	holder.chemfiresupp = TRUE
+
+	holder.intensityfire += 1 * level
+	holder.intensitymod += 0.1 * level
+	..()
+
+/datum/chem_property/special/duration
+	name = PROPERTY_DURATION
+	code = "DUR"
+	description = "Controls the duration of a fire, using unknown means"
+	rarity = PROPERTY_ADMIN
+	category = PROPERTY_TYPE_REACTANT|PROPERTY_TYPE_ANOMALOUS
+	value = 666
+
+/datum/chem_property/special/duration/reset_reagent()
+	holder.chemfiresupp = initial(holder.chemfiresupp)
+
+	holder.durationfire = initial(holder.durationfire)
+	holder.durationmod = initial(holder.durationmod)
+	..()
+
+/datum/chem_property/special/duration/update_reagent()
+	holder.chemfiresupp = TRUE
+
+	holder.durationfire += 1 * level
+	holder.durationmod += 0.1 * level
+	..()
+
+/datum/chem_property/special/firepenetrating
+	name = PROPERTY_FIRE_PENETRATING
+	code = "PTR"
+	description = "Gives the chemical a unique, anomalous combustion chemistry, causing the flame to react with flame-resistant material and obliterate through it."
+	rarity = PROPERTY_ADMIN
+	category = PROPERTY_TYPE_REACTANT|PROPERTY_TYPE_ANOMALOUS
+	value = 666
+
+/datum/chem_property/special/firepenetrating/reset_reagent()
+	holder.fire_penetrating = initial(holder.fire_penetrating)
+	..()
+
+/datum/chem_property/special/firepenetrating/update_reagent()
+	holder.fire_penetrating = TRUE
+	..()

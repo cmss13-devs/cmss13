@@ -23,7 +23,8 @@
 		sleep(2)
 
 	if(ammo.current_rounds != 0)
-		new /obj/flamer_fire(loc, "sentry explosion", null, 20, 35, "blue", 2)
+		var/datum/reagent/napalm/blue/R = new()
+		new /obj/flamer_fire(loc, "sentry explosion", null, R, 2)
 	cell_explosion(loc, 10, 10, null, "sentry explosion")
 	if(!disposed)
 		qdel(src)

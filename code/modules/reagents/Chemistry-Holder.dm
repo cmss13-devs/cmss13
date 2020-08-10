@@ -26,6 +26,8 @@ var/const/INGEST = 2
 	var/min_fire_int = 3
 	var/min_fire_dur = 3
 
+	var/fire_penetrating = FALSE
+
 /datum/reagents/New(maximum=100)
 	maximum_volume = maximum
 	if(!chemical_reagents_list || !chemical_reactions_filtered_list || !chemical_properties_list)
@@ -713,9 +715,17 @@ var/const/INGEST = 2
 
 	exploded = TRUE // clears reagents after all reactions processed
 
-	msg_admin_attack("Chemical fire with Intensity: [intensity], Duration: [duration], Radius: [radius] in [sourceturf.loc.name] ([sourceturf.x],[sourceturf.y],[sourceturf.z]).", sourceturf.x, sourceturf.y, sourceturf.z)
+	msg_admin_attack("Chemical fire with Intensity: [intensity], Duration: [duration], Radius: [radius], Flameshape: [flameshape] in [sourceturf.loc.name] ([sourceturf.x],[sourceturf.y],[sourceturf.z]).", sourceturf.x, sourceturf.y, sourceturf.z)
 
-	new /obj/flamer_fire(sourceturf, "chemical fire", source_mob, duration, intensity, firecolor, radius, FALSE, flameshape)
+	var/datum/reagent/R = new()
+	R.durationfire = duration
+	R.intensityfire = intensity
+	R.rangefire = radius
+
+	R.burncolor = firecolor
+	R.color = firecolor
+
+	new /obj/flamer_fire(sourceturf, "chemical fire", source_mob, R, radius, FALSE, flameshape)
 	sleep(5)
 	playsound(sourceturf, 'sound/weapons/gun_flamethrower1.ogg', 25, 1)
 

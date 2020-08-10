@@ -127,12 +127,12 @@
 		var/mob/living/carbon/human/H = M
 		if(H.chem_effect_flags & CHEM_EFFECT_RESIST_NEURO)
 			return
-	M.confused = min(M.confused + potency,10*potency)
-	M.drowsyness = min(M.drowsyness + potency,15*potency)
+	M.confused = min(M.confused + potency,5*potency)
+	M.drowsyness = min(M.drowsyness + potency,5*potency)
 
 /datum/chem_property/neutral/alcoholic/process_overdose(mob/living/M, var/potency = 1)
-	M.confused += min(M.confused + potency*2,20*potency)
-	M.drowsyness += min(M.drowsyness + potency*2,30*potency)
+	M.confused += min(M.confused + potency*2,10*potency)
+	M.drowsyness += min(M.drowsyness + potency*2,10*potency)
 	M.apply_damage(0.5*potency, TOX)
 
 /datum/chem_property/neutral/alcoholic/process_critical(mob/living/M, var/potency = 1)

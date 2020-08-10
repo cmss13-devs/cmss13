@@ -539,7 +539,9 @@
 	name = "\improper lightweight technician welderpack"
 	desc = "A small lightweight pack for expeditions and short-range operations. Features small fueltank for quick blowtorch refueling."
 	icon_state = "ERT_satchel_welder"
+	has_gamemode_skin = FALSE
 	worn_accessible = TRUE
+	max_fuel = 180
 
 /obj/item/storage/backpack/commando
 	name = "commando bag"
@@ -587,6 +589,7 @@
 	name = "\improper UCP3-E technician welderpack"
 	desc = "A special version of Union Combat Pack MK3 featuring small fueltank for quick blowtorch refueling. Used by UPP combat engineers in expeditions and short-range operations."
 	icon_state = "satchel_upp_welder"
+	has_gamemode_skin = FALSE
 	worn_accessible = TRUE
 	max_fuel = 180
 

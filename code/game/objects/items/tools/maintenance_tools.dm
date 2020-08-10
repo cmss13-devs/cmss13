@@ -194,7 +194,7 @@
 		var/obj/limb/S = H.get_limb(user.zone_selected)
 
 		if (!S) return
-		if(!(S.status & LIMB_ROBOT) || user.a_intent != "help")
+		if(!(S.status & LIMB_ROBOT) || user.a_intent != INTENT_HELP)
 			return ..()
 
 		if(user.action_busy)

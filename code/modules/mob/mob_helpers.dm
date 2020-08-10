@@ -300,48 +300,28 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 
 	return FALSE
 
-//converts intent-strings into numbers and back
-var/list/intents = list("help","disarm","grab","hurt")
-/proc/intent_numeric(argument)
-	if(istext(argument))
-		switch(argument)
-			if("help")		return 0
-			if("disarm")	return 1
-			if("grab")		return 2
-			else			return 3
-	else
-		switch(argument)
-			if(0)			return "help"
-			if(1)			return "disarm"
-			if(2)			return "grab"
-			else			return "hurt"
+/proc/intent_text(intent)
+	switch(intent)
+		if(INTENT_HELP)
+			return "help"
+		if(INTENT_DISARM)
+			return "disarm"
+		if(INTENT_GRAB)
+			return "grab"
+		if(INTENT_HARM)
+			return "hurt"
 
-//change a mob's act-intent. Input the intent as a string such as "help" or use "right"/"left
-/mob/verb/a_intent_change(input as text)
+/mob/verb/a_intent_change(intent as num)
 	set name = "a-intent"
 	set hidden = 1
 
-	if(isrobot(src) || ismonkey(src))
-		switch(input)
-			if("help")
-				a_intent = "help"
-			if("hurt")
-				a_intent = "hurt"
-			if("right","left")
-				a_intent = intent_numeric(intent_numeric(a_intent) - 3)
+	if(intent)
+		a_intent = intent
 	else
-		switch(input)
-			if("help","disarm","grab","hurt")
-				a_intent = input
-			if("right")
-				a_intent = intent_numeric((intent_numeric(a_intent)+1) % 4)
-			if("left")
-				a_intent = intent_numeric((intent_numeric(a_intent)+3) % 4)
-
+		a_intent = a_intent < 8 ? a_intent << 1 : 1
 
 	if(hud_used && hud_used.action_intent)
-		hud_used.action_intent.icon_state = "intent_[a_intent]"
-
+		hud_used.action_intent.icon_state = "intent_[intent_text(a_intent)]"
 
 //can the mob be operated on?
 /mob/proc/can_be_operated_on()

@@ -43,11 +43,11 @@
 	new node_type(loc, null, null, linked_hive)
 
 /obj/effect/alien/resin/special/pylon/attack_alien(mob/living/carbon/Xenomorph/M)
-	if(!linked_hive || !M.crystal_max || M.a_intent == HARM_INTENT)
+	if(!linked_hive || !M.crystal_max || M.a_intent == INTENT_HARM)
 		return ..()
 
 	//deposit resources
-	if(M.a_intent == HELP_INTENT && M.crystal_stored)
+	if(M.a_intent == INTENT_HELP && M.crystal_stored)
 		var/amount = input("How much [MATERIAL_CRYSTAL] do you wish to deposit? ([M.crystal_stored] stored)") as null|num
 		if(!amount || amount <= 0)
 			return

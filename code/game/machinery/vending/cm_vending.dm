@@ -172,7 +172,7 @@ IN_USE						used for vending/denying
 		to_chat(M, SPAN_WARNING("There's no reason to bother with that old piece of trash."))
 		return FALSE
 
-	if(M.a_intent == "hurt" && !unslashable)
+	if(M.a_intent == INTENT_HARM && !unslashable)
 		M.animation_attack_on(src)
 		if(prob(M.melee_damage_lower))
 			playsound(loc, 'sound/effects/metalhit.ogg', 25, 1)

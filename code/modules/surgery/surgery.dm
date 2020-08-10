@@ -70,7 +70,7 @@
 proc/do_surgery(mob/living/carbon/M, mob/living/user, obj/item/tool)
 	if(!istype(M))
 		return FALSE
-	if(user.a_intent == HARM_INTENT) //Check for Hippocratic Oath
+	if(user.a_intent == INTENT_HARM) //Check for Hippocratic Oath
 		return FALSE
 	if(user.action_busy) //already doing an action
 		return TRUE
@@ -137,7 +137,7 @@ proc/do_surgery(mob/living/carbon/M, mob/living/user, obj/item/tool)
 				affected.in_surgery_op = FALSE
 				return 1				   //Don't want to do weapony things after surgery
 
-	if(user.a_intent == HELP_INTENT)
+	if(user.a_intent == INTENT_HELP)
 		to_chat(user, SPAN_WARNING("You can't see any useful way to use \the [tool] on [M]."))
 		return TRUE
 	return FALSE

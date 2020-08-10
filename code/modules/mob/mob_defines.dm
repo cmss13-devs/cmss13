@@ -107,7 +107,7 @@
 	var/superslowed = 0.0 // X_SUPERSLOW_AMOUNT
 	var/shakecamera = 0
 	var/recovery_constant = 1
-	var/a_intent = "help"//Living
+	var/a_intent = INTENT_HELP//Living
 	var/lastKnownIP = null
 	var/obj/buckled = null//Living
 	var/obj/item/l_hand = null//Living

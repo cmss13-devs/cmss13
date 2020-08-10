@@ -137,7 +137,7 @@
 		user.count_niche_stat(STATISTICS_NICHE_COW)
 
 /mob/living/simple_animal/cow/attack_hand(mob/living/carbon/M as mob)
-	if(!stat && M.a_intent == DISARM_INTENT && icon_state != icon_dead)
+	if(!stat && M.a_intent == INTENT_DISARM && icon_state != icon_dead)
 		M.visible_message(SPAN_WARNING("[M] tips over [src]."), \
 			SPAN_NOTICE("You tip over [src]."))
 		KnockDown(30)

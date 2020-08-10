@@ -586,7 +586,7 @@
 /turf/closed/wall/resin/attack_alien(mob/living/carbon/Xenomorph/M)
 	if(isXenoLarva(M)) //Larvae can't do shit
 		return 0
-	else if(M.a_intent == HELP_INTENT)
+	else if(M.a_intent == INTENT_HELP)
 		return 0
 	else
 		M.animation_attack_on(src)

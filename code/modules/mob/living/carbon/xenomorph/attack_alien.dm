@@ -15,14 +15,14 @@
 	//Reviewing the four primary intents
 	switch(M.a_intent)
 
-		if("help")
+		if(INTENT_HELP)
 			if(on_fire)
 				extinguish_mob(M)
 			else
 				M.visible_message(SPAN_NOTICE("[M] caresses [src] with its scythe-like arm."), \
 				SPAN_NOTICE("You caress [src] with your scythe-like arm."), null, 5, CHAT_TYPE_XENO_FLUFF)
 
-		if("grab")
+		if(INTENT_GRAB)
 			if(M == src || anchored || buckled)
 				return FALSE
 
@@ -35,7 +35,7 @@
 			if(Adjacent(M)) //Logic!
 				M.start_pulling(src)
 
-		if("hurt")
+		if(INTENT_HARM)
 			if(match_hivemind(M))
 				M.animation_attack_on(src)
 				M.visible_message(SPAN_NOTICE("[M] nibbles [src]"), \
@@ -172,7 +172,7 @@
 
 			updatehealth()
 
-		if("disarm")
+		if(INTENT_DISARM)
 			if(M.legcuffed && isYautja(src))
 				to_chat(M, SPAN_XENODANGER("You don't have the dexterity to tackle the headhunter with that thing on your leg!"))
 				return FALSE
@@ -220,19 +220,19 @@
 		return FALSE
 
 	switch(M.a_intent)
-		if("help")
+		if(INTENT_HELP)
 			M.visible_message(SPAN_NOTICE("[M] caresses [src] with its scythe-like arm."), \
 			SPAN_NOTICE("You caress [src] with your scythe-like arm."), null, 5, CHAT_TYPE_XENO_FLUFF)
 			return FALSE
 
-		if("grab")
+		if(INTENT_GRAB)
 			if(M == src || anchored || buckled)
 				return FALSE
 
 			if(Adjacent(M)) //Logic!
 				M.start_pulling(src)
 
-		if("hurt")
+		if(INTENT_HARM)
 			if(isXeno(src) && xeno_hivenumber(src) == M.hivenumber)
 				var/mob/living/carbon/Xenomorph/X = src
 				if(!X.banished)
@@ -282,7 +282,7 @@
 			playsound(loc, "alien_claw_flesh", 25, 1)
 			apply_damage(damage, BRUTE)
 
-		if("disarm")
+		if(INTENT_DISARM)
 			playsound(loc, 'sound/weapons/alien_knockdown.ogg', 25, 1)
 			M.visible_message(SPAN_WARNING("[M] shoves [src]!"), \
 			SPAN_WARNING("You shove [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
@@ -320,7 +320,7 @@
 
 
 /obj/vehicle/attack_alien(mob/living/carbon/Xenomorph/M)
-	if(M.a_intent == "hurt")
+	if(M.a_intent == INTENT_HARM)
 		M.animation_attack_on(src)
 		playsound(loc, "alien_claw_metal", 25, 1)
 		M.flick_attack_overlay(src, "slash")
@@ -389,7 +389,7 @@
 
 //Beds, nests and chairs - unbuckling
 /obj/structure/bed/attack_alien(mob/living/carbon/Xenomorph/M)
-	if(M.a_intent == "hurt")
+	if(M.a_intent == INTENT_HARM)
 		if(unslashable)
 			return
 		M.animation_attack_on(src)
@@ -416,7 +416,7 @@
 
 //Smashing windows
 /obj/structure/window/attack_alien(mob/living/carbon/Xenomorph/M)
-	if(M.a_intent == HELP_INTENT)
+	if(M.a_intent == INTENT_HELP)
 		playsound(loc, 'sound/effects/glassknock.ogg', 25, 1)
 		M.visible_message(SPAN_WARNING("[M] creepily taps on [src] with its huge claw."), \
 		SPAN_WARNING("You creepily tap on [src]."), \
@@ -496,7 +496,7 @@
 		playsound(loc, 'sound/effects/hit_on_shattered_glass.ogg', 25, 1)
 		return TRUE
 
-	if(M.a_intent == HELP_INTENT)
+	if(M.a_intent == INTENT_HELP)
 		M.visible_message(SPAN_WARNING("[M] oogles its own reflection in [src]."), \
 			SPAN_WARNING("You oogle your own reflection in [src]."), null, 5, CHAT_TYPE_XENO_COMBAT)
 	else
@@ -618,7 +618,7 @@
 	var/turf/cur_loc = M.loc
 	if(!istype(cur_loc))
 		return 0 //Some basic logic here
-	if(M.a_intent != "hurt")
+	if(M.a_intent != INTENT_HARM)
 		TryToSwitchState(M)
 		return TRUE
 	else
@@ -802,7 +802,7 @@
 
 //Digging up snow
 /turf/open/snow/attack_alien(mob/living/carbon/Xenomorph/M)
-	if(M.a_intent == HELP_INTENT)
+	if(M.a_intent == INTENT_HELP)
 		return FALSE
 
 	if(!slayer)
@@ -842,7 +842,7 @@
 	qdel(src)
 
 /obj/structure/closet/attack_alien(mob/living/carbon/Xenomorph/M)
-	if(M.a_intent == "hurt" && !unacidable)
+	if(M.a_intent == INTENT_HARM && !unacidable)
 		M.animation_attack_on(src)
 		if(!opened && prob(70))
 			break_open()
@@ -874,7 +874,7 @@
 		to_chat(M, SPAN_WARNING("There's no reason to bother with that old piece of trash."))
 		return FALSE
 
-	if(M.a_intent == "hurt")
+	if(M.a_intent == INTENT_HARM)
 		M.animation_attack_on(src)
 		if(prob(M.melee_damage_lower))
 			playsound(loc, 'sound/effects/metalhit.ogg', 25, 1)

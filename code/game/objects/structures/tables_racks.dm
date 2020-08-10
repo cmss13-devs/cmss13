@@ -268,7 +268,7 @@
 		var/obj/item/grab/G = W
 		if(istype(G.grabbed_thing, /mob/living))
 			var/mob/living/M = G.grabbed_thing
-			if(user.a_intent == "hurt")
+			if(user.a_intent == INTENT_HARM)
 				if(user.grab_level > GRAB_AGGRESSIVE)
 					if (prob(15))	M.KnockDown(5)
 					M.apply_damage(8, def_zone = "head")

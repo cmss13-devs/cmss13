@@ -81,7 +81,7 @@
 
 /obj/item/clothing/accessory/stethoscope/attack(mob/living/carbon/human/M, mob/living/user)
 	if(ishuman(M) && isliving(user))
-		if(user.a_intent == HELP_INTENT)
+		if(user.a_intent == INTENT_HELP)
 			var/body_part = parse_zone(user.zone_selected)
 			if(body_part)
 				var/their = "their"
@@ -125,7 +125,7 @@
 	high_visibility = TRUE
 
 /obj/item/clothing/accessory/medal/attack(mob/living/carbon/human/H, mob/living/carbon/human/user)
-	if(istype(H) && istype(user) && user.a_intent == HELP_INTENT)
+	if(istype(H) && istype(user) && user.a_intent == INTENT_HELP)
 		if(H.w_uniform)
 			var/obj/item/clothing/under/U = H.w_uniform
 			if(recipient_name != H.real_name)
@@ -398,7 +398,7 @@
 	if(user.get_active_hand() && user.get_inactive_hand())
 		to_chat(user, SPAN_WARNING("You need an empty hand to draw the [holstered]!"))
 	else
-		if(user.a_intent == "hurt")
+		if(user.a_intent == INTENT_HARM)
 			usr.visible_message(SPAN_DANGER("[user] draws the [holstered], ready to shoot!"), \
 			SPAN_DANGER("You draw [holstered], ready to shoot!"))
 		else

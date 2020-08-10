@@ -123,11 +123,10 @@ Tells the GC how to handle deletion of the object
 
 
 // Game Intents
-#define HELP_INTENT		"help"
-#define HARM_INTENT		"hurt"
-#define GRAB_INTENT		"grab"
-#define DISARM_INTENT	"disarm"
-
+#define INTENT_HELP 1
+#define INTENT_DISARM 2
+#define INTENT_GRAB 4
+#define INTENT_HARM 8
 
 /*
 	Shuttles

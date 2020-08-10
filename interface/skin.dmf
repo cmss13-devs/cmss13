@@ -52,22 +52,22 @@ macro "default"
 		command = ".south"
 	elem 
 		name = "Insert"
-		command = "a-intent right"
+		command = "a-intent 0"
 	elem 
 		name = "Delete"
 		command = "delete-key-pressed"
 	elem 
 		name = "CTRL+1"
-		command = "a-intent help"
+		command = "a-intent 1"
 	elem 
 		name = "CTRL+2"
-		command = "a-intent disarm"
+		command = "a-intent 2"
 	elem 
 		name = "CTRL+3"
-		command = "a-intent grab"
+		command = "a-intent 4"
 	elem 
 		name = "CTRL+4"
-		command = "a-intent hurt"
+		command = "a-intent 8"
 	elem 
 		name = "CTRL+5"
 		command = "Toggle-Move-Intent"
@@ -189,34 +189,34 @@ macro "hotkeymode"
 		command = ".south"
 	elem 
 		name = "Insert"
-		command = "a-intent right"
+		command = "a-intent 0"
 	elem 
 		name = "Delete"
 		command = "delete-key-pressed"
 	elem 
 		name = "1"
-		command = "a-intent help"
+		command = "a-intent 1"
 	elem 
 		name = "CTRL+1"
-		command = "a-intent help"
+		command = "a-intent 1"
 	elem 
 		name = "2"
-		command = "a-intent disarm"
+		command = "a-intent 2"
 	elem 
 		name = "CTRL+2"
-		command = "a-intent disarm"
+		command = "a-intent 2"
 	elem 
 		name = "3"
-		command = "a-intent grab"
+		command = "a-intent 4"
 	elem 
 		name = "CTRL+3"
-		command = "a-intent grab"
+		command = "a-intent 4"
 	elem 
 		name = "4"
-		command = "a-intent hurt"
+		command = "a-intent 8"
 	elem 
 		name = "CTRL+4"
-		command = "a-intent hurt"
+		command = "a-intent 8"
 	elem 
 		name = "5"
 		command = "Toggle-Move-Intent"
@@ -345,6 +345,7 @@ macro "keyreader"
 	elem 
 		name = "Any+UP"
 		command = ".Read-Key-Up [[*]]"
+
 
 menu "menu"
 	elem 
@@ -793,7 +794,7 @@ window "mapwindow"
 		saved-params = "icon-size"
 		on-show = ".winset\"mainwindow.mainvsplit.left=mapwindow\""
 		on-hide = ".winset\"mainwindow.mainvsplit.left=\""
-		style=".center { text-align: center; } .langchat { font-family: 'Small Fonts'; font-size: 7px; -dm-text-outline: 1px black; } .langchat_yell { font-weight: bold; font-size: 10px; } .langchat_bolded { font-weight: bold; font-size: 8px; } .langchat_announce { font-weight: bold; font-size: 12px; } .langchat_bolditalicbig {font-weight: bold; font-size: 24px; font-style: italic;}"
+		style = ".center { text-align: center; } .langchat { font-family: 'Small Fonts'; font-size: 7px; -dm-text-outline: 1px black; } .langchat_yell { font-weight: bold; font-size: 10px; } .langchat_bolded { font-weight: bold; font-size: 8px; } .langchat_announce { font-weight: bold; font-size: 12px; } .langchat_bolditalicbig {font-weight: bold; font-size: 24px; font-style: italic;}"
 
 window "outputwindow"
 	elem "outputwindow"
@@ -1008,4 +1009,3 @@ window "preferencewindow"
 		anchor2 = 100,0
 		right-click = true
 		saved-params = "zoom;letterbox;zoom-mode"
-

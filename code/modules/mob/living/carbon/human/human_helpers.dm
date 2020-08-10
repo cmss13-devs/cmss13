@@ -91,7 +91,7 @@
 
 			if ("groin")
 				return "[limb_name]_[get_gender_name(gender)]"
-				
+
 			if("synthetic head")
 				return "head_[get_gender_name(gender)]"
 
@@ -300,23 +300,23 @@
 			to_chat(src, SPAN_NOTICE("Your source of light shorts out."))
 
 
-/mob/living/carbon/human/a_intent_change(input as text)
-	. = ..(input)
+/mob/living/carbon/human/a_intent_change(intent as num)
+	. = ..(intent)
 	if(isEarlySynthetic(src)) //1st gen synths change eye colour based on intent
-		switch(input)
-			if("help") //Green, defalt
+		switch(a_intent)
+			if(INTENT_HELP) //Green, defalt
 				r_eyes = 0
 				g_eyes = 255
 				b_eyes = 0
-			if("disarm") //Blue
+			if(INTENT_DISARM) //Blue
 				r_eyes = 0
 				g_eyes = 0
 				b_eyes = 255
-			if("grab") //Orange, since yellow doesn't show at all!
+			if(INTENT_GRAB) //Orange, since yellow doesn't show at all!
 				r_eyes = 248
 				g_eyes = 243
 				b_eyes = 43
-			if("hurt") //RED!
+			if(INTENT_HARM) //RED!
 				r_eyes = 255
 				g_eyes = 0
 				b_eyes = 0

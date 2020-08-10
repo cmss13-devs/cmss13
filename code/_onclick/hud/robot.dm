@@ -54,7 +54,7 @@
 //Intent
 	using = new /obj/screen/act_intent()
 	using.icon = ui_robot_datum.ui_style_icon
-	using.icon_state = "intent_"+owner.a_intent
+	using.icon_state = "intent_"+ intent_text(owner.a_intent)
 	static_inventory += using
 	action_intent = using
 

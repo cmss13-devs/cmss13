@@ -220,7 +220,7 @@
 /obj/structure/bed/nest/attack_alien(mob/living/carbon/Xenomorph/M)
 	if(isXenoLarva(M)) //Larvae can't do shit
 		return
-	if(M.a_intent == "hurt" && !buckled_mob) //can't slash nest with an occupant.
+	if(M.a_intent == INTENT_HARM && !buckled_mob) //can't slash nest with an occupant.
 		M.visible_message(SPAN_DANGER("\The [M] claws at \the [src]!"), \
 		SPAN_DANGER("You claw at \the [src]."))
 		playsound(loc, "alien_resin_break", 25)

@@ -27,7 +27,7 @@
 	M.next_move += 7 //Adds some lag to the 'attack'. This will add up to 10
 	switch(M.a_intent)
 
-		if("help")
+		if(INTENT_HELP)
 			if(stat == DEAD)
 				M.visible_message(SPAN_WARNING("\The [M] pokes \the [src], but nothing happens."), \
 				SPAN_WARNING("You poke \the [src], but nothing happens."), null, 5, CHAT_TYPE_FLUFF_ACTION)
@@ -35,7 +35,7 @@
 				M.visible_message(SPAN_WARNING("\The [M] pokes \the [src]."), \
 				SPAN_WARNING("You poke \the [src]."), null, 5, CHAT_TYPE_FLUFF_ACTION)
 
-		if("grab")
+		if(INTENT_GRAB)
 			if(M == src || anchored)
 				return 0
 
@@ -80,7 +80,7 @@
 			return 0
 
 		switch(M.a_intent)
-			if("help")
+			if(INTENT_HELP)
 				if(on_fire)
 					extinguish_mob(M)
 				else if(M.zone_selected == "head")
@@ -91,7 +91,7 @@
 					M.visible_message(SPAN_NOTICE("\The [M] caresses \the [src] with its scythe-like arm."), \
 					SPAN_NOTICE("You caress \the [src] with your scythe-like arm."), null, 5, CHAT_TYPE_XENO_FLUFF)
 
-			if("grab")
+			if(INTENT_GRAB)
 				if(M == src || anchored)
 					return 0
 
@@ -102,7 +102,7 @@
 					SPAN_WARNING("You grab \the [src]!"), null, 5, CHAT_TYPE_XENO_FLUFF)
 					playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
 
-			if("hurt")
+			if(INTENT_HARM)
 				if(M.behavior_delegate && M.behavior_delegate.handle_slash(src))
 					return
 				
@@ -148,7 +148,7 @@
 						MD.melee_attack_additional_effects_target(src)
 						MD.melee_attack_additional_effects_self()
 
-			if("disarm")
+			if(INTENT_DISARM)
 				M.animation_attack_on(src)
 				M.flick_attack_overlay(src, "disarm")
 				if(!(isXenoQueen(M)) || M.hivenumber != src.hivenumber)

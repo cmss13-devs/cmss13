@@ -112,8 +112,8 @@
 	spawn_rebel_helmet(H)
 	spawn_rebel_shoes(H)
 	spawn_rebel_gloves(H)
-	spawn_rebel_belt(H)
 
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(H), WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch, WEAR_EAR)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/engineerpack/ert, WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/custom/ied, WEAR_IN_BACK)

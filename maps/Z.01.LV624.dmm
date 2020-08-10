@@ -4288,7 +4288,7 @@
 "aos" = (
 /obj/structure/table,
 /obj/item/stack/medical/bruise_pack{
-	step_x = -5;
+	pixel_x = -5;
 	pixel_x = 3;
 	pixel_y = 3
 	},
@@ -4421,7 +4421,7 @@
 /area/lv624/lazarus/medbay)
 "aoO" = (
 /obj/item/reagent_container/glass/bucket{
-	step_y = 0
+	pixel_y = 0
 	},
 /turf/open/floor{
 	dir = 9;
@@ -4442,8 +4442,8 @@
 "aoR" = (
 /obj/structure/table,
 /obj/item/reagent_container/spray/plantbgone{
-	step_x = 4;
-	step_y = 6
+	pixel_x = 4;
+	pixel_y = 6
 	},
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark{
@@ -4884,8 +4884,8 @@
 "aqQ" = (
 /obj/structure/table,
 /obj/item/stack/medical/bruise_pack{
-	step_x = -1;
-	step_y = 4;
+	pixel_x = -1;
+	pixel_y = 4;
 	pixel_x = 3;
 	pixel_y = 3
 	},
@@ -4992,10 +4992,10 @@
 /obj/structure/rack,
 /obj/item/tool/crowbar,
 /obj/item/reagent_container/glass/bucket{
-	step_y = -3
+	pixel_y = -3
 	},
 /obj/item/reagent_container/glass/bucket{
-	step_y = 0
+	pixel_y = 0
 	},
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
@@ -5018,19 +5018,19 @@
 /obj/structure/rack,
 /obj/item/tool/shovel/spade,
 /obj/item/tool/hatchet{
-	step_x = -7;
-	step_y = 0;
+	pixel_x = -7;
+	pixel_y = 0;
 	pixel_x = 6;
 	pixel_y = 4
 	},
 /obj/item/tool/hatchet{
-	step_x = -4;
-	step_y = -1;
+	pixel_x = -4;
+	pixel_y = -1;
 	pixel_x = 6;
 	pixel_y = 4
 	},
 /obj/item/tool/minihoe{
-	step_y = -2
+	pixel_y = -2
 	},
 /obj/effect/landmark/objective_landmark/close,
 /obj/structure/machinery/light,
@@ -5045,8 +5045,8 @@
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /obj/structure/machinery/light,
 /obj/item/reagent_container/glass/fertilizer{
-	step_x = 0;
-	step_y = 0
+	pixel_x = 0;
+	pixel_y = 0
 	},
 /turf/open/floor{
 	dir = 9;
@@ -5759,7 +5759,7 @@
 "atV" = (
 /obj/structure/table,
 /obj/item/paper_bin{
-	step_y = 4
+	pixel_y = 4
 	},
 /obj/item/tool/pen,
 /obj/effect/landmark/objective_landmark/science,
@@ -5962,12 +5962,12 @@
 "auB" = (
 /obj/structure/table,
 /obj/item/reagent_container/glass/fertilizer{
-	step_x = 6;
-	step_y = 2
+	pixel_x = 6;
+	pixel_y = 2
 	},
 /obj/item/reagent_container/glass/fertilizer{
-	step_x = 0;
-	step_y = 0
+	pixel_x = 0;
+	pixel_y = 0
 	},
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -17585,8 +17585,8 @@
 /area/lv624/ground/sand9)
 "dCL" = (
 /obj/item/reagent_container/food/drinks/cans/waterbottle{
-	step_x = 2;
-	step_y = 0
+	pixel_x = 2;
+	pixel_y = 0
 	},
 /turf/open/floor{
 	icon_state = "white"
@@ -18002,8 +18002,8 @@
 /area/lv624/ground/sand9)
 "hbF" = (
 /obj/item/tool/kitchen/utensil/fork{
-	step_x = 0;
-	step_y = 0
+	pixel_x = 0;
+	pixel_y = 0
 	},
 /turf/open/floor{
 	icon_state = "white"
@@ -18408,8 +18408,8 @@
 /area/lv624/ground/jungle7)
 "kuP" = (
 /obj/item/tool/hatchet{
-	step_x = -4;
-	step_y = -1;
+	pixel_x = -4;
+	pixel_y = -1;
 	pixel_x = 6;
 	pixel_y = 4
 	},
@@ -18663,8 +18663,8 @@
 "mph" = (
 /obj/structure/table,
 /obj/item/reagent_container/food/drinks/cans/waterbottle{
-	step_x = -4;
-	step_y = 9
+	pixel_x = -4;
+	pixel_y = 9
 	},
 /turf/open/floor{
 	icon_state = "whitebluefull";
@@ -19019,11 +19019,11 @@
 "oSJ" = (
 /obj/structure/table,
 /obj/item/storage/box/masks{
-	step_x = -4
+	pixel_x = -4
 	},
 /obj/item/storage/box/syringes{
-	step_x = 5;
-	step_y = 4
+	pixel_x = 5;
+	pixel_y = 4
 	},
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
@@ -19414,8 +19414,8 @@
 /area/lv624/ground/jungle6)
 "rRE" = (
 /obj/item/tool/minihoe{
-	step_x = 1;
-	step_y = -1
+	pixel_x = 1;
+	pixel_y = -1
 	},
 /turf/open/floor{
 	dir = 9;

@@ -6283,13 +6283,9 @@
 "qz" = (
 /obj/structure/table/almayer,
 /obj/item/device/binoculars{
-	step_x = 0;
-	step_y = 0;
 	pixel_x = -4
 	},
 /obj/item/device/binoculars{
-	step_x = 0;
-	step_y = 0;
 	pixel_x = 3
 	},
 /obj/item/device/binoculars{
@@ -9498,19 +9494,16 @@
 /obj/structure/table/almayer,
 /obj/structure/machinery/door_control{
 	name = "Team 1 Shutters (Left)";
-	step_y = 0;
 	pixel_y = -3;
 	id = "tdome_t1"
 	},
 /obj/structure/machinery/door_control{
 	name = "Team 2 Shutters (Right)";
-	step_y = 0;
 	pixel_y = 3;
 	id = "tdome_t2"
 	},
 /obj/structure/machinery/door_control{
 	name = "Observer Shutters";
-	step_y = 0;
 	pixel_y = 9;
 	id = "tdome_observer"
 	},

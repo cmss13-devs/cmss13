@@ -101,7 +101,7 @@
 /obj/structure/machinery/computer/pod/Topic(href, href_list)
 	if(..())
 		return
-	if((usr.contents.Find(src) || (in_range(src, usr) && istype(loc, /turf))) || (isremotecontrolling(usr)))
+	if((usr.contents.Find(src) || (in_range(src, usr) && istype(loc, /turf))) || (isRemoteControlling(usr)))
 		usr.set_interaction(src)
 		if(href_list["power"])
 			var/t = text2num(href_list["power"])

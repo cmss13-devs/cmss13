@@ -163,7 +163,7 @@
 
 		if(drone_only && !ismaintdrone(S))
 			continue
-		else if(isremotecontrolling(S))
+		else if(isAI(S))
 			message_start = "<i><span class='game say'>[name], <a href='byond://?src=\ref[S];track2=\ref[S];track=\ref[speaker];trackname=[html_encode(speaker.name)]'><span class='name'>[speaker.name]</span></a>"
 		else if (!S.binarycheck())
 			continue
@@ -174,7 +174,7 @@
 	listening -= src
 
 	for (var/mob/living/M in listening)
-		if(isremotecontrolling(M) || M.binarycheck())
+		if(isSilicon(M) || M.binarycheck())
 			continue
 		M.show_message("<i><span class='game say'><span class='name'>synthesised voice</span> <span class='message'>beeps, \"beep beep beep\"</span></span></i>",2)
 

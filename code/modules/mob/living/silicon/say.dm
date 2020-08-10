@@ -16,7 +16,7 @@
 	if (!speaking)
 		if (istype(other, /mob/living/carbon))
 			return 1
-		if (isremotecontrolling(other))
+		if (isSilicon(other))
 			return 1
 		if (istype(other, /mob/living/brain))
 			return 1
@@ -42,7 +42,7 @@
 		return emote(copytext(message,2))
 
 	var/bot_type = 0			//Let's not do a fuck ton of type checks, thanks.
-	if(isremotecontrolling(src))
+	if(isAI(src))
 		bot_type = IS_AI
 	else if(isrobot(src))
 		bot_type = IS_ROBOT

@@ -411,11 +411,11 @@ the implant may become unstable and either pre-maturely inject the subject or si
 			if ("emp")
 				var/obj/item/device/radio/headset/a = new /obj/item/device/radio/headset(null)
 				var/name = prob(50) ? t.name : pick(teleportlocs)
-				a.autosay("[mobname] has died in [name]!", "[mobname]'s Death Alarm")
+				ai_silent_announcement("[mobname] has died in [name]!", "[mobname]'s Death Alarm")
 				qdel(a)
 			else
 				var/obj/item/device/radio/headset/a = new /obj/item/device/radio/headset(null)
-				a.autosay("[mobname] has died-zzzzt in-in-in...", "[mobname]'s Death Alarm")
+				ai_silent_announcement("[mobname] has died-zzzzt in-in-in...", "[mobname]'s Death Alarm")
 				qdel(a)
 				processing_objects.Remove(src)
 

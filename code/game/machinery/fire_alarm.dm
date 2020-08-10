@@ -135,7 +135,7 @@ FIRE ALARM
 	var/area/A = src.loc
 	var/d1
 	var/d2
-	if (istype(user, /mob/living/carbon/human) || isremotecontrolling(user))
+	if (istype(user, /mob/living/carbon/human) || isRemoteControlling(user))
 		A = A.loc
 
 		if (A.flags_alarm_state & ALARM_WARNING_FIRE)
@@ -174,7 +174,7 @@ FIRE ALARM
 	if (buildstage != 2)
 		return
 
-	if ((usr.contents.Find(src) || ((get_dist(src, usr) <= 1) && istype(src.loc, /turf))) || (isremotecontrolling(usr)))
+	if ((usr.contents.Find(src) || ((get_dist(src, usr) <= 1) && istype(src.loc, /turf))) || (isRemoteControlling(usr)))
 		usr.set_interaction(src)
 		if (href_list["reset"])
 			src.reset()

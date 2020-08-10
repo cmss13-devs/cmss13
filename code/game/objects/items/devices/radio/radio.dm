@@ -136,7 +136,7 @@
 	if (usr.stat || !on)
 		return
 
-	if (!(isremotecontrolling(usr) || (usr.contents.Find(src) || ( in_range(src, usr) && istype(loc, /turf) ))))
+	if (!(isRemoteControlling(usr) || (usr.contents.Find(src) || ( in_range(src, usr) && istype(loc, /turf) ))))
 		close_browser(usr, "radio")
 		return
 	usr.set_interaction(src)
@@ -183,28 +183,6 @@
 		else
 			updateDialog()
 	add_fingerprint(usr)
-
-/obj/item/device/radio/proc/autosay(var/message, var/from, var/channel) //BS12 EDIT
-	var/datum/radio_frequency/connection = null
-	if(channel && channels && channels.len > 0)
-		if (channel == "department")
-			channel = channels[1]
-		connection = secure_radio_connections[channel]
-	else
-		connection = radio_connection
-		channel = null
-	if (!istype(connection))
-		return
-	if (!connection)
-		return
-
-	var/mob/living/silicon/ai/A = new /mob/living/silicon/ai(src, null, null, 1)
-	Broadcast_Message(connection, A,
-						0, "*garbled automated announcement*", src,
-						message, from, "Automated Announcement", from, "synthesized voice",
-						4, 0, list(1), PUB_FREQ)
-	qdel(A)
-	return
 
 // Interprets the message mode when talking into a radio, possibly returning a connection datum
 /obj/item/device/radio/proc/handle_message_mode(mob/living/M as mob, message, message_mode)
@@ -272,7 +250,7 @@
 	else if(iscarbon(M)) // Nonhuman carbon mob
 		jobname = "No id"
 	// --- AI ---
-	else if(isremotecontrolling(M))
+	else if(isAI(M))
 		jobname = "AI"
 	// --- Cyborg ---
 	else if(isrobot(M))

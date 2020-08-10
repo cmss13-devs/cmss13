@@ -39,7 +39,7 @@
 			for(var/mob/living/silicon/robot/R in mob_list)
 				if(istype(R, /mob/living/silicon/robot/drone))
 					continue //There's a specific console for drones.
-				if(isremotecontrolling(user))
+				if(isRemoteControlling(user))
 					if (R.connected_ai != user)
 						continue
 				if(isrobot(user))
@@ -68,7 +68,7 @@
 					dat += " Slaved to [R.connected_ai.name] |"
 				else
 					dat += " Independent from AI |"
-				if (isremotecontrolling(user))
+				if (isRemoteControlling(user))
 					if((user.mind.original == user))
 						dat += "<A href='?src=\ref[src];magbot=\ref[R]'>(<font color=blue><i>Hack</i></font>)</A> "
 				dat += "<A href='?src=\ref[src];stopbot=\ref[R]'>(<font color=green><i>[R.canmove ? "Lockdown" : "Release"]</i></font>)</A> "
@@ -100,7 +100,7 @@
 /obj/structure/machinery/computer/robotics/Topic(href, href_list)
 	if(..())
 		return
-	if ((usr.contents.Find(src) || (in_range(src, usr) && istype(src.loc, /turf))) || (isremotecontrolling(usr)))
+	if ((usr.contents.Find(src) || (in_range(src, usr) && istype(src.loc, /turf))) || (isRemoteControlling(usr)))
 		usr.set_interaction(src)
 
 		if (href_list["eject"])
@@ -186,7 +186,7 @@
 				var/mob/living/silicon/robot/R = locate(href_list["magbot"])
 
 				// whatever weirdness this is supposed to be, but that is how the href gets added, so here it is again
-				if(istype(R) && isremotecontrolling(usr) && (usr.mind.original == usr))
+				if(istype(R) && isRemoteControlling(usr) && (usr.mind.original == usr))
 
 					var/choice = input("Are you certain you wish to hack [R.name]?") in list("Confirm", "Abort")
 					if(choice == "Confirm")

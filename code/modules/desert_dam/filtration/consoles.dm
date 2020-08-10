@@ -53,7 +53,7 @@ var/global/river_activated = 0
 	var/d1
 	//var/d2
 
-	if (istype(user, /mob/living/carbon/human) || isremotecontrolling(user))
+	if (istype(user, /mob/living/carbon/human) || isRemoteControlling(user))
 		d1 = "<A href='?src=\ref[src];reset=1'>ACTIVATE RIVER</A>"
 		var/dat = "<HTML><HEAD></HEAD><BODY><TT>[d1]</TT></BODY></HTML>"
 		river_activated = 1
@@ -67,7 +67,7 @@ var/global/river_activated = 0
 	//if (buildstage != 2)
 	//	return
 
-	if ((usr.contents.Find(src) || ((get_dist(src, usr) <= 1) && istype(src.loc, /turf))) || (isremotecontrolling(usr)))
+	if ((usr.contents.Find(src) || ((get_dist(src, usr) <= 1) && istype(src.loc, /turf))) || (isRemoteControlling(usr)))
 		usr.set_interaction(src)
 	else
 		close_browser(usr, "console")

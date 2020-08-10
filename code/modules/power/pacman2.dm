@@ -122,7 +122,7 @@
 	proc
 		interact(mob/user)
 			if (get_dist(src, user) > 1 )
-				if (!isremotecontrolling(user))
+				if (!isRemoteControlling(user))
 					user.machine = null
 					close_browser(user, "port_gen")
 					return

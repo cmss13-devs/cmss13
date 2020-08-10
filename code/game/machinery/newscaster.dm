@@ -433,7 +433,7 @@ var/list/obj/structure/machinery/newscaster/allCasters = list() //Global list th
 /obj/structure/machinery/newscaster/Topic(href, href_list)
 	if(..())
 		return
-	if ((usr.contents.Find(src) || ((get_dist(src, usr) <= 1) && istype(src.loc, /turf))) || (isremotecontrolling(usr)))
+	if ((usr.contents.Find(src) || ((get_dist(src, usr) <= 1) && istype(src.loc, /turf))) || (isRemoteControlling(usr)))
 		usr.set_interaction(src)
 		if(href_list["set_channel_name"])
 			src.channel_name = strip_html(input(usr, "Provide a Feed Channel Name", "Network Channel Handler", ""))
@@ -727,7 +727,7 @@ var/list/obj/structure/machinery/newscaster/allCasters = list() //Global list th
 
 /obj/structure/machinery/newscaster/proc/AttachPhoto(mob/user as mob)
 	if(photo)
-		if(!isremotecontrolling(user))
+		if(!isRemoteControlling(user))
 			photo.loc = src.loc
 			user.put_in_inactive_hand(photo)
 		photo = null

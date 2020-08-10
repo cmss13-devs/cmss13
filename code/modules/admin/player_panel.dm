@@ -202,8 +202,8 @@
 					M_job = "Alien"
 				else
 					M_job = "Carbon-based"
-			else if(isremotecontrolling(M)) //silicon
-				if(isremotecontrolling(M))
+			else if(isSilicon(M)) //silicon
+				if(isAI(M))
 					M_job = "AI"
 				else if(isrobot(M))
 					M_job = "Cyborg"
@@ -287,7 +287,7 @@
 
 		dat += "<tr><td>[(M.client ? "[M.client]" : "No client")]</td>"
 		dat += "<td><a href='?src=\ref[usr];priv_msg=\ref[M]'>[M.name]</a></td>"
-		if(isremotecontrolling(M))
+		if(isAI(M))
 			dat += "<td>AI</td>"
 		else if(isrobot(M))
 			dat += "<td>Cyborg</td>"

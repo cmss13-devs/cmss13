@@ -71,7 +71,7 @@
 
 /obj/structure/machinery/door/firedoor/examine(mob/user)
 	..()
-	if(get_dist(src, user) > 1 && !isremotecontrolling(user))
+	if(get_dist(src, user) > 1 && !isRemoteControlling(user))
 		return
 
 	if(pdiff >= FIREDOOR_MAX_PRESSURE_DIFF)
@@ -136,7 +136,7 @@
 	"\The [src]", "Yes, [density ? "open" : "close"]", "No")
 	if(answer == "No")
 		return
-	if(user.is_mob_incapacitated() || (!user.canmove && !isremotecontrolling(user)) || (get_dist(src, user) > 1  && !isremotecontrolling(user)))
+	if(user.is_mob_incapacitated() || (!user.canmove && !isRemoteControlling(user)) || (get_dist(src, user) > 1  && !isRemoteControlling(user)))
 		to_chat(user, "Sorry, you must remain able bodied and close to \the [src] in order to use it.")
 		return
 	if(density && (inoperable())) //can still close without power

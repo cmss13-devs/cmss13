@@ -68,7 +68,7 @@
 // I didn't like the idea that people can read tiny pieces of paper from across the room.
 // Now you need to be next to the paper in order to read it.
 	if(in_range(user, src) || istype(user, /mob/dead/observer))
-		if(!(istype(user, /mob/dead/observer) || istype(user, /mob/living/carbon/human) || isremotecontrolling(user)))
+		if(!(istype(user, /mob/dead/observer) || istype(user, /mob/living/carbon/human) || isRemoteControlling(user)))
 			// Show scrambled paper if they aren't a ghost, human, or silicone.
 			show_browser(user, "<BODY class='paper'>[stars(info)][stamps]</BODY>", name, name)
 			onclose(user, name)

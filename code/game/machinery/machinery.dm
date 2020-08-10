@@ -203,7 +203,7 @@ Class Procs:
 	if(usr.is_mob_restrained() || usr.lying || usr.stat)
 		return 1
 	if ( ! (istype(usr, /mob/living/carbon/human) || \
-			isremotecontrolling(usr) || \
+			isRemoteControlling(usr) || \
 			istype(usr, /mob/living/carbon/Xenomorph)))
 		to_chat(usr, SPAN_DANGER("You don't have the dexterity to do this!"))
 		return 1
@@ -227,13 +227,13 @@ Class Procs:
 	if(user.lying || user.stat)
 		return 1
 	if ( ! (istype(usr, /mob/living/carbon/human) || \
-			isremotecontrolling(usr) || \
+			isRemoteControlling(usr) || \
 			istype(usr, /mob/living/carbon/Xenomorph)))
 		to_chat(usr, SPAN_DANGER("You don't have the dexterity to do this!"))
 		return 1
 /*
 	//distance checks are made by atom/proc/clicked()
-	if ((get_dist(src, user) > 1 || !istype(src.loc, /turf)) && !isremotecontrolling(user))
+	if ((get_dist(src, user) > 1 || !istype(src.loc, /turf)) && !isRemoteControlling(user))
 		return 1
 */
 	if (ishuman(user))

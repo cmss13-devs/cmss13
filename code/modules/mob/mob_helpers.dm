@@ -15,7 +15,7 @@
 /mob/proc/is_mechanical()
 	if(job == "Cyborg" || job == "AI")
 		return TRUE
-	return isremotecontrolling(src) || get_species() == "Machine"
+	return isSilicon(src) || get_species() == "Machine"
 
 /mob/proc/is_ready()
 	return client && !!mind

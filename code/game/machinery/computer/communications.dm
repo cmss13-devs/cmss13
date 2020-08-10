@@ -98,7 +98,7 @@
 		if("main") state = STATE_DEFAULT
 
 		if("login")
-			if(isremotecontrolling(usr))
+			if(isRemoteControlling(usr))
 				return
 			var/mob/living/carbon/human/C = usr
 			var/obj/item/card/id/I = C.get_active_hand()

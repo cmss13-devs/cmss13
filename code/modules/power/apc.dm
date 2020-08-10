@@ -378,7 +378,7 @@
 //Attack with an item - open/close cover, insert cell, or (un)lock interface
 /obj/structure/machinery/power/apc/attackby(obj/item/W, mob/user)
 
-	if(isremotecontrolling(user) && get_dist(src, user) > 1)
+	if(isRemoteControlling(user) && get_dist(src, user) > 1)
 		return attack_hand(user)
 	add_fingerprint(user)
 	if(iscrowbar(W) && opened)
@@ -595,7 +595,7 @@
 				SPAN_WARNING("You knock down [src]'s cover with [W]!"))
 			update_icon()
 		else
-			if(isremotecontrolling(user))
+			if(isRemoteControlling(user))
 				return attack_hand(user)
 			if(!opened && wiresexposed && (ismultitool(W) || iswirecutter(W)))
 				return attack_hand(user)
@@ -668,7 +668,7 @@
 			return
 
 
-	if(usr == user && opened && (!isremotecontrolling(user)))
+	if(usr == user && opened && (!isRemoteControlling(user)))
 		if(cell)
 			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 				to_chat(user, SPAN_WARNING("You have no idea how to remove the power cell from [src]."))
@@ -702,7 +702,7 @@
 		"chargingStatus" = charging,
 		"totalLoad" = round(lastused_total),
 		"coverLocked" = coverlocked,
-		"siliconUser" = isremotecontrolling(user),
+		"siliconUser" = isRemoteControlling(user),
 
 		"powerChannels" = list(
 			list(
@@ -833,7 +833,7 @@
 		return 0
 	if(!user.client)
 		return 0
-	if(!(ishuman(user) || isremotecontrolling(user)))
+	if(!(ishuman(user) || isRemoteControlling(user)))
 		to_chat(user, SPAN_WARNING("You don't have the dexterity to use [src]!"))
 		nanomanager.close_user_uis(user, src)
 		return 0
@@ -844,7 +844,7 @@
 		to_chat(user, SPAN_WARNING("You can't reach [src]!"))
 		return 0
 	autoflag = 5
-	if(isremotecontrolling(user))
+	if(isRemoteControlling(user))
 		if(aidisabled)
 			if(!loud)
 				to_chat(user, SPAN_WARNING("[src] has AI control disabled!"))
@@ -942,7 +942,7 @@
 		return 0
 
 	else if(href_list["overload"])
-		if(isremotecontrolling(usr) && !aidisabled)
+		if(isRemoteControlling(usr) && !aidisabled)
 			overload_lighting()
 
 	return 1

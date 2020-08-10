@@ -96,7 +96,7 @@
 	else
 		dat += "None Loaded"
 	dat += "<br>Behaviour controls are [src.locked ? "locked" : "unlocked"]<hr>"
-	if(!src.locked || isremotecontrolling(user))
+	if(!src.locked || isRemoteControlling(user))
 		dat += "<TT>Healing Threshold: "
 		dat += "<a href='?src=\ref[src];adj_threshold=-10'>--</a> "
 		dat += "<a href='?src=\ref[src];adj_threshold=-5'>-</a> "
@@ -137,7 +137,7 @@
 		else
 			turn_on()
 
-	else if((href_list["adj_threshold"]) && (!src.locked || isremotecontrolling(usr)))
+	else if((href_list["adj_threshold"]) && (!src.locked || isRemoteControlling(usr)))
 		var/adjust_num = text2num(href_list["adj_threshold"])
 		src.heal_threshold += adjust_num
 		if(src.heal_threshold < 5)
@@ -145,7 +145,7 @@
 		if(src.heal_threshold > 75)
 			src.heal_threshold = 75
 
-	else if((href_list["adj_inject"]) && (!src.locked || isremotecontrolling(usr)))
+	else if((href_list["adj_inject"]) && (!src.locked || isRemoteControlling(usr)))
 		var/adjust_num = text2num(href_list["adj_inject"])
 		src.injection_amount += adjust_num
 		if(src.injection_amount < 5)
@@ -153,10 +153,10 @@
 		if(src.injection_amount > 15)
 			src.injection_amount = 15
 
-	else if((href_list["togglesafety"]) && (!src.locked || isremotecontrolling(usr)))
+	else if((href_list["togglesafety"]) && (!src.locked || isRemoteControlling(usr)))
 		safety_checks = !safety_checks
 
-	else if((href_list["use_beaker"]) && (!src.locked || isremotecontrolling(usr)))
+	else if((href_list["use_beaker"]) && (!src.locked || isRemoteControlling(usr)))
 		src.use_beaker = !src.use_beaker
 
 	else if (href_list["eject"] && (!QDELETED(src.reagent_glass)))
@@ -166,10 +166,10 @@
 		else
 			to_chat(usr, SPAN_NOTICE("You cannot eject the beaker because the panel is locked."))
 
-	else if ((href_list["togglevoice"]) && (!src.locked || isremotecontrolling(usr)))
+	else if ((href_list["togglevoice"]) && (!src.locked || isRemoteControlling(usr)))
 		src.shut_up = !src.shut_up
 
-	else if ((href_list["declaretreatment"]) && (!src.locked || isremotecontrolling(usr)))
+	else if ((href_list["declaretreatment"]) && (!src.locked || isRemoteControlling(usr)))
 		src.declare_treatment = !src.declare_treatment
 
 	src.updateUsrDialog()

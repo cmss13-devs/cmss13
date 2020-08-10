@@ -445,7 +445,7 @@ Turf and target are seperate in case you want to teleport some distance from a t
 		return
 
 	if(cmptext("ai",role))
-		if(isremotecontrolling(src))
+		if(isAI(src))
 			var/mob/living/silicon/ai/A = src
 			oldname = null//don't bother with the records update crap
 			A.SetName(newname)
@@ -509,7 +509,7 @@ Turf and target are seperate in case you want to teleport some distance from a t
 	var/list/logged_list = list()
 	for(var/named in old_list)
 		var/mob/M = old_list[named]
-		if(isremotecontrolling(M))
+		if(isSilicon(M))
 			AI_list |= M
 		else if(isobserver(M) || M.stat == 2)
 			Dead_list |= M

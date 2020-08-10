@@ -34,7 +34,7 @@
 
 /obj/structure/machinery/computer/operating/interact(mob/user)
 	if ( (get_dist(src, user) > 1 ) || (inoperable()) )
-		if (!isremotecontrolling(user))
+		if (!isRemoteControlling(user))
 			user.unset_interaction()
 			close_browser(user, "op")
 			return
@@ -72,7 +72,7 @@
 /obj/structure/machinery/computer/operating/Topic(href, href_list)
 	if(..())
 		return
-	if ((usr.contents.Find(src) || (in_range(src, usr) && istype(src.loc, /turf))) || (isremotecontrolling(usr)))
+	if ((usr.contents.Find(src) || (in_range(src, usr) && istype(src.loc, /turf))) || (isRemoteControlling(usr)))
 		usr.set_interaction(src)
 	return
 

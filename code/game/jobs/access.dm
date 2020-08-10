@@ -5,7 +5,7 @@
 /obj/proc/allowed(mob/M)
 	//check if it doesn't require any access at all
 	if(check_access()) return 1
-	if(isremotecontrolling(M)) return 1 //AI can do whatever he wants
+	if(isRemoteControlling(M)) return 1 //AI can do whatever he wants
 
 	else if(ishuman(M))
 		var/mob/living/carbon/human/H = M

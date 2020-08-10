@@ -156,6 +156,10 @@
 #define PROPERTY_RAVENING			"ravening"
 #define PROPERTY_CURING				"curing"
 #define PROPERTY_OMNIPOTENT			"omnipotent"
+#define PROPERTY_RADIUS				"radius" // Fire related admin property
+#define PROPERTY_INTENSITY			"intensity" // Fire related admin property
+#define PROPERTY_DURATION			"duration" // Fire related admin property
+#define PROPERTY_FIRE_PENETRATING	"fire-penetrating" // Fire related admin property
 //Reaction Properties
 #define PROPERTY_FUELING			"fueling"
 #define PROPERTY_OXIDIZING			"oxidizing"

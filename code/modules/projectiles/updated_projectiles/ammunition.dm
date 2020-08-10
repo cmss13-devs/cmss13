@@ -50,6 +50,9 @@ They're all essentially identical when it comes to getting the job done.
 
 /obj/item/ammo_magazine/examine(mob/user)
 	..()
+
+	if(flags_magazine & AMMUNITION_HIDE_AMMO)
+		return
 	// It should never have negative ammo after spawn. If it does, we need to know about it.
 	if(current_rounds < 0)
 		to_chat(user, "Something went horribly wrong. Ahelp the following: ERROR CODE R1: negative current_rounds on examine.")

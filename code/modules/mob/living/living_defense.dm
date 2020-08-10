@@ -119,8 +119,16 @@
 /mob/living/proc/update_fire()
 	return
 
-/mob/living/proc/adjust_fire_stacks(add_fire_stacks) //Adjusting the amount of fire_stacks we have on person
+/mob/living/proc/adjust_fire_stacks(add_fire_stacks, var/datum/reagent/R) //Adjusting the amount of fire_stacks we have on person
+	if(!R)
+		var/datum/reagent/napalm/ut/new_reagent = new()
+		if(fire_reagent.intensityfire < new_reagent.intensityfire)
+			fire_reagent = new_reagent
+
 	fire_stacks = Clamp(fire_stacks + add_fire_stacks, -20, 20)
+	if(R && (fire_reagent.intensityfire < R.intensityfire || !on_fire))
+		fire_reagent = R
+
 	if(on_fire && fire_stacks <= 0)
 		ExtinguishMob()
 

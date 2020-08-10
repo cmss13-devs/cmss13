@@ -21,7 +21,7 @@
 		return
 
 	if(copytext(message, 1, 2) == "*")
-		return emote(copytext(message, 2))
+		return emote(copytext(message, 2), player_caused = TRUE)
 
 	var/datum/language/speaking = null			
 	if(length(message) >= 2)

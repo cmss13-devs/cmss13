@@ -67,7 +67,7 @@
 		if(istype(G))
 			G.Die()
 			drop_inv_item_on_ground(G)
-		if(!caste || !caste.fire_immune)
+		if(!caste || !caste.fire_immune || fire_reagent.fire_penetrating)
 			var/dmg = armor_damage_reduction(config.xeno_fire, fire_stacks * 2 + 4.5)
 			apply_damage(dmg, BURN)
 

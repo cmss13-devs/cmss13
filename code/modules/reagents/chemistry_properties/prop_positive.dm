@@ -429,11 +429,12 @@
 		M.apply_damage(-4*level, TOX)
 		M.updatehealth()
 
-/datum/chem_property/positive/electrogenetic/update_reagent(var/update = TRUE)
-	if(update)
-		holder.ingestible = FALSE
-	else
-		holder.ingestible = TRUE
+/datum/chem_property/positive/electrogenetic/reset_reagent()
+	holder.ingestible = initial(holder.ingestible)
+	..()
+
+/datum/chem_property/positive/electrogenetic/update_reagent()
+	holder.ingestible = FALSE
 	..()
 
 /datum/chem_property/positive/defibrillating
@@ -551,44 +552,78 @@
 /datum/chem_property/positive/antiaddictive/process_critical(mob/living/M, var/potency = 1)
 	M.hallucination = max(M.hallucination, potency)
 
-/datum/chem_property/positive/fueling
+/datum/chem_property/positive/fire
+	rarity = PROPERTY_DISABLED
+	category = PROPERTY_TYPE_REACTANT
+	value = 2
+
+	var/intensitymod_per_level = 0
+	var/radiusmod_per_level = 0
+	var/durationmod_per_level = 0
+
+	var/intensity_per_level = 0
+	var/range_per_level = 0
+	var/duration_per_level = 0
+
+/datum/chem_property/positive/fire/reset_reagent()
+	holder.chemfiresupp = initial(holder.chemfiresupp)
+	holder.radiusmod = initial(holder.radiusmod)
+	holder.durationmod = initial(holder.durationmod)
+	holder.intensitymod = initial(holder.intensitymod)
+
+	holder.rangefire = initial(holder.rangefire)
+	holder.durationfire = initial(holder.durationfire)
+	holder.intensityfire = initial(holder.intensityfire)
+
+	..()
+
+/datum/chem_property/positive/fire/update_reagent()
+	holder.chemfiresupp = TRUE
+
+	holder.radiusmod += radiusmod_per_level * level
+	holder.durationmod += durationmod_per_level * level
+	holder.intensitymod += intensitymod_per_level * level
+	
+	holder.rangefire = max(holder.rangefire + range_per_level * level, 1)
+	holder.durationfire = max(holder.durationfire + duration_per_level * level, 1)
+	holder.intensityfire = max(holder.intensityfire + intensity_per_level * level, 1)
+	
+	..()
+
+/datum/chem_property/positive/fire/fueling
 	name = PROPERTY_FUELING
 	code = "FUL"
 	description = "The chemical can be burned as a fuel, expanding the burn time of a chemical fire. However, this also lowers heat intensity."
 	rarity = PROPERTY_COMMON
-	category = PROPERTY_TYPE_REACTANT
+	intensity_per_level = -3
+	duration_per_level = 6
 
-/datum/chem_property/positive/fueling/update_reagent(var/update = TRUE)
-	holder.chemfiresupp = TRUE
-	holder.durationmod = initial(holder.durationmod) + 0.4 * level * update
-	holder.intensitymod = initial(holder.intensitymod) - 0.2 * level * update
-	..()
+	intensitymod_per_level = -0.2
+	durationmod_per_level = 0.4
 
-/datum/chem_property/positive/oxidizing
+/datum/chem_property/positive/fire/oxidizing
 	name = PROPERTY_OXIDIZING
 	code = "OXI"
 	description = "The chemical is oxidizing, increasing the intensity of chemical fires. However, the fuel is also burned faster because of it."
 	rarity = PROPERTY_COMMON
-	category = PROPERTY_TYPE_REACTANT
+	intensity_per_level = 6
+	duration_per_level = -3
 
-/datum/chem_property/positive/oxidizing/update_reagent(var/update = TRUE)
-	holder.chemfiresupp = TRUE
-	holder.durationmod = initial(holder.durationmod) - 0.2 * level * update
-	holder.intensitymod = initial(holder.intensitymod) + 0.4 * level * update
-	..()
+	intensitymod_per_level = 0.4
+	durationmod_per_level = -0.2
 
-/datum/chem_property/positive/flowing
+/datum/chem_property/positive/fire/flowing
 	name = PROPERTY_FLOWING
 	code = "FLW"
 	description = "The chemical is the opposite of viscous, and it tends to spill everywhere. This could probably be used to expand the radius of a chemical fire."
 	rarity = PROPERTY_COMMON
-	category = PROPERTY_TYPE_REACTANT
+	range_per_level = 1
+	duration_per_level = -2
+	intensity_per_level = -2
 
-/datum/chem_property/positive/flowing/update_reagent(var/update = TRUE)
-	holder.radiusmod += initial(holder.radiusmod) + 0.05 * level * update
-	holder.durationmod = initial(holder.durationmod) - 0.1 * level * update
-	holder.intensitymod = initial(holder.intensitymod) - 0.1 * level * update
-	..()
+	intensitymod_per_level = -0.1
+	radiusmod_per_level = 0.05
+	durationmod_per_level = -0.1
 
 /datum/chem_property/positive/explosive
 	name = PROPERTY_EXPLOSIVE
@@ -597,10 +632,16 @@
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_REACTANT
 
-/datum/chem_property/positive/explosive/update_reagent(var/update = TRUE)
+/datum/chem_property/positive/explosive/reset_reagent()
+	holder.explosive = initial(holder.explosive)
+	holder.power = initial(holder.power)
+	holder.falloff_modifier = initial(holder.falloff_modifier)
+	..()
+
+/datum/chem_property/positive/explosive/update_reagent()
 	holder.explosive = TRUE
-	holder.power = initial(holder.power) + level * update
-	holder.falloff_modifier = initial(holder.falloff_modifier) + ((-3 / level) * update)
+	holder.power += level
+	holder.falloff_modifier += -3 / level
 	..()
 
 //PROPERTY_DISABLED (in random generation)

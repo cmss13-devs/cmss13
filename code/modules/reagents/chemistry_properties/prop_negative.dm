@@ -306,8 +306,12 @@
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_METABOLITE
 
-/datum/chem_property/negative/hypermetabolic/update_reagent(var/update = TRUE)
-	holder.custom_metabolism = initial(holder.custom_metabolism) + 0.05 * level * update
+/datum/chem_property/negative/hypermetabolic/reset_reagent()
+	holder.custom_metabolism = initial(holder.custom_metabolism)
+	..()
+
+/datum/chem_property/negative/hypermetabolic/update_reagent()
+	holder.custom_metabolism += 0.05 * level
 	..()
 
 /datum/chem_property/negative/addictive

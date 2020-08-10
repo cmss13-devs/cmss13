@@ -483,6 +483,12 @@
 	intensitymod = 0.15
 	durationmod = 0.75
 	radiusmod = -0.075
+	//------------------//
+	// THESE NEED TO BE HERE DURING COMPILE TIME. THEY CANNOT BE IN A New() PROC
+	intensityfire = 10 // config.min_burnlevel REPLACE WITH AN ENUM IF POSSIBLE
+	durationfire = 10 // config.min_burntime REPLACE WITH AN ENUM IF POSSIBLE
+	rangefire = 4 // config.min_shell_range REPLACE WITH AN ENUM IF POSSIBLE
+	//------------------//
 	explosive = TRUE
 	power = 0.12
 	falloff_modifier = -0.1
@@ -689,12 +695,77 @@
 	id = "napalm"
 	description = "This will probably ignite before you get to read this."
 	reagent_state = LIQUID
-	color = "#0064C8"
+	color = "#ffb300"
 	chemfiresupp = TRUE
 	intensitymod = 0.4
 	radiusmod = 0.085
 	durationmod = 1
-	burncolor = "#ffb300"
+	burncolor = "#D05006"
+
+/datum/reagent/napalm/ut
+	name = "UT-Napthal Fuel"
+	id = "utnapthal"
+	description = "Known as Ultra Thick Napthal Fuel, a sticky combustable liquid chemical, typically used with flamethrowers."
+	burncolor = "#D05006"
+
+/datum/reagent/napalm/ut/New()
+	properties += list(
+		PROPERTY_INTENSITY 	= config.med_burnlevel,
+		PROPERTY_DURATION 	= config.low_burntime,
+		PROPERTY_RADIUS 	= config.close_shell_range
+	)
+	. = ..()
+
+/datum/reagent/napalm/gel
+	name = "Napthal Gel"
+	id = "napalmgel"
+	description = "Unlike its liquid contemporaries, this stuff shoots far, and burns up fast, but it doesn't burn anywhere near as hot."
+	color = "#00ff00"
+	intensityfire = 7
+	durationfire = 6
+	burncolor = "#00ff00"
+
+/datum/reagent/napalm/gel/New()
+	properties += list(
+		PROPERTY_INTENSITY 	= config.low_burnlevel,
+		PROPERTY_DURATION 	= config.instant_burntime,
+		PROPERTY_RADIUS 	= config.near_shell_range
+	)
+	. = ..()
+
+/datum/reagent/napalm/blue
+	name = "Napalm X"
+	id = "napalmx"
+	description = "A sticky combustable liquid chemical that burns extremely hot."
+	intensityfire = 30
+	durationfire = 50
+	rangefire = 7
+	color = "#00b8ff"
+	burncolor = "#00b8ff"
+
+/datum/reagent/napalm/blue/New()
+	properties += list(
+		PROPERTY_INTENSITY 	= config.high_burnlevel,
+		PROPERTY_DURATION 	= config.high_burntime,
+		PROPERTY_RADIUS 	= config.near_shell_range
+	)
+	. = ..()
+
+/datum/reagent/napalm/green
+	name = "Napalm B"
+	id = "napalmb"
+	description = "A wide-spreading sticky combustable liquid chemical that burns slowly with a low temperature."
+	flameshape = FLAMESHAPE_TRIANGLE
+	color = "#00ff00"
+	burncolor = "#00ff00"
+
+/datum/reagent/napalm/green/New()
+	properties += list(
+		PROPERTY_INTENSITY 	= config.med_burnlevel,
+		PROPERTY_DURATION 	= config.max_burntime,
+		PROPERTY_RADIUS 	= config.near_shell_range
+	)
+	. = ..()
 
 /datum/reagent/chlorinetrifluoride
 	name = "Chlorine Trifluoride"

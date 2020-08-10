@@ -58,8 +58,12 @@
 		if(C.blood_volume < BLOOD_VOLUME_NORMAL)
 			C.blood_volume = max(0.2 * level,BLOOD_VOLUME_NORMAL)
 
-/datum/chem_property/neutral/nutritious/update_reagent(var/update = TRUE)
-	holder.nutriment_factor = initial(holder.nutriment_factor) + level * update
+/datum/chem_property/neutral/nutritious/reset_reagent()
+	holder.nutriment_factor = initial(holder.nutriment_factor)
+	..()
+
+/datum/chem_property/neutral/nutritious/update_reagent()
+	holder.nutriment_factor += level
 	..()
 
 /datum/chem_property/neutral/ketogenic
@@ -412,8 +416,12 @@
 	category = PROPERTY_TYPE_METABOLITE
 	value = 2
 
-/datum/chem_property/neutral/hypometabolic/update_reagent(var/update = TRUE)
-	holder.custom_metabolism = max(initial(holder.custom_metabolism) - 0.025 * level * update, 0.005)
+/datum/chem_property/neutral/hypometabolic/reset_reagent()
+	holder.custom_metabolism = initial(holder.custom_metabolism)
+	..()
+
+/datum/chem_property/neutral/hypometabolic/update_reagent()
+	holder.custom_metabolism = max(holder.custom_metabolism - 0.025 * level, 0.005)
 	..()
 
 /datum/chem_property/neutral/sedative
@@ -472,11 +480,14 @@
 	rarity = PROPERTY_COMMON
 	category = PROPERTY_TYPE_REACTANT
 
-/datum/chem_property/neutral/viscous/update_reagent(var/update = TRUE)
+/datum/chem_property/neutral/viscous/reset_reagent()
+	holder.chemfiresupp = initial(holder.chemfiresupp)
+	holder.radiusmod = initial(holder.radiusmod)
+	..()
+
+/datum/chem_property/neutral/viscous/update_reagent()
 	holder.chemfiresupp = TRUE
-	holder.radiusmod = initial(holder.radiusmod) + 0.05 * level * update
-	holder.durationmod = initial(holder.durationmod) + 0.1 * level * update
-	holder.intensitymod = initial(holder.intensitymod) + 0.1 * level * update
+	holder.radiusmod -= 0.05 * level
 	..()
 
 //PROPERTY_DISABLED (in generation)

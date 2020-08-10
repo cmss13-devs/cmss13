@@ -341,7 +341,6 @@
 	var/datum/reagent/generated/C = new /datum/reagent/generated
 	C.make_alike(target.data)
 	//Override the target with the reference
-	target_property.update_reagent(FALSE) //FALSE resets
 	C.remove_property(target_property)
 	C.insert_property(reference_property.name, reference_property.level)
 	if(isPositiveProperty(reference_property))

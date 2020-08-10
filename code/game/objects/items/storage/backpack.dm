@@ -423,13 +423,15 @@
 	icon_state = "welderbackpack"
 	item_state = "welderbackpack"
 	var/max_fuel = 260
+	var/fuel_type = "fuel"
 	max_storage_space = 15
 	storage_slots = null
 	has_gamemode_skin = TRUE
 
+
 /obj/item/storage/backpack/marine/engineerpack/Initialize()
 	create_reagents(max_fuel) //Lotsa refills
-	reagents.add_reagent("fuel", max_fuel)
+	reagents.add_reagent(fuel_type, max_fuel)
 	..()
 
 
@@ -497,6 +499,7 @@
 	desc = "A specialized fueltank worn by USCM Pyrotechnicians for use with the M240-T incinerator unit. A small general storage compartment is installed."
 	icon_state = "flamethrower_tank"
 	max_fuel = 500
+	fuel_type = "utnapthal"
 	has_gamemode_skin = TRUE
 
 /obj/item/storage/backpack/marine/engineerpack/flamethrower/attackby(obj/item/W, mob/living/user)

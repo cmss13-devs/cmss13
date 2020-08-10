@@ -141,10 +141,15 @@ var/list/RESTRICTED_CAMERA_NETWORKS = list( //Those networks can only be accesse
 #define SELF_DESTRUCT_ROD_STARTUP_TIME 12000
 
 // Flamer fire shapes
-#define FLAMESHAPE_DEFAULT 			1
-#define FLAMESHAPE_STAR				2
-#define FLAMESHAPE_MINORSTAR		3
-#define FLAMESHAPE_IRREGULAR		4
+#define FLAMESHAPE_NONE				"none"
+#define FLAMESHAPE_DEFAULT 			"default"
+#define FLAMESHAPE_STAR				"star"
+#define FLAMESHAPE_MINORSTAR		"minorstar"
+#define FLAMESHAPE_IRREGULAR		"irregular"
+#define FLAMESHAPE_TRIANGLE			"triangle"
+#define FLAMESHAPE_LINE 			"line"
+
+#define FLAME_REAGENT_USE_AMOUNT 1
 
 #define DIRT_SPLATTER "splatter" //Blood, vomit, oil 
 #define DIRT_JUNK "junk" //Gibs, Robot debris, etcetera

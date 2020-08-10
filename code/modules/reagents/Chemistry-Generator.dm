@@ -375,8 +375,9 @@
 	P = new P.type()
 	P.level = level
 	P.holder = src
-	P.update_reagent()
 	properties += P
+
+	recalculate_variables()
 	return TRUE
 
 /datum/reagent/proc/generate_description()

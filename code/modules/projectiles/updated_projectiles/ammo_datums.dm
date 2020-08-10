@@ -220,7 +220,9 @@
 /datum/ammo/proc/drop_flame(turf/T, var/source, var/source_mob) // ~Art updated fire 20JAN17
 	if(!istype(T)) return
 	if(locate(/obj/flamer_fire) in T) return
-	new /obj/flamer_fire(T, source, source_mob, 20, 20)
+
+	var/datum/reagent/napalm/ut/R = new()
+	new /obj/flamer_fire(T, source, source_mob, R)
 
 
 /*
@@ -1213,7 +1215,8 @@
 	if(!istype(T)) return
 	smoke.set_up(1, T)
 	smoke.start()
-	new /obj/flamer_fire(T, source, source_mob, pick(40, 50), 50, "blue", fire_spread_amount = 3)
+	var/datum/reagent/napalm/blue/R = new()
+	new /obj/flamer_fire(T, source, source_mob, R, fire_spread_amount = 3)
 
 	var/datum/effect_system/smoke_spread/phosphorus/landingSmoke = new /datum/effect_system/smoke_spread/phosphorus
 	landingSmoke.set_up(3, 0, T, null, 6)
@@ -2072,9 +2075,8 @@
 		return
 	if(locate(/obj/flamer_fire) in T) 
 		return
-	
-	// Very hot but burns out quickly
-	new /obj/flamer_fire(T, source, source_mob, 20, 35, "blue", fire_spread_amount = 2)
+	var/datum/reagent/napalm/blue/R = new()
+	new /obj/flamer_fire(T, source, source_mob, R, fire_spread_amount = 2)
 
 /datum/ammo/flamethrower/sentry_flamer
 	iff_signal = ACCESS_IFF_MARINE
@@ -2090,8 +2092,8 @@
 /datum/ammo/flamethrower/sentry_flamer/drop_flame(var/turf/T, var/source, var/source_mob)
 	if(!istype(T)) 
 		return
-	
-	new /obj/flamer_fire(T, source, source_mob, 20, 35, "blue", 0)
+	var/datum/reagent/napalm/blue/R = new()
+	new /obj/flamer_fire(T, source, source_mob, R, 0)
 
 /datum/ammo/flare
 	name = "flare"

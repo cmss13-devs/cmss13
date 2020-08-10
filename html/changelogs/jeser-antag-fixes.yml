@@ -1,7 +1,0 @@
-author: Jeser
-
-delete-after: True
-
-changes: 
-  - bugfix: "Fixed CLF engineer spawning with random belt instead of toolbelt."
-  - bugfix: "Fixed antag fuelpacks invisible sprite bug."

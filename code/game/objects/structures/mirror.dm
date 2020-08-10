@@ -16,7 +16,7 @@
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 
-		if(H.a_intent == "hurt")
+		if(H.a_intent == INTENT_HARM)
 			if(shattered)
 				playsound(src.loc, 'sound/effects/hit_on_shattered_glass.ogg', 25, 1)
 				return

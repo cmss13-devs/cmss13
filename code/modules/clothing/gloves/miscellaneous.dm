@@ -75,7 +75,7 @@
 	var/painforce = pain_dam
 	var/boxing_verb = pick(attack_verb)
 	if (A in range(1, M))
-		if(isliving(A) && M.a_intent == HARM_INTENT)
+		if(isliving(A) && M.a_intent == INTENT_HARM)
 			if(isYautja(A))
 				return 0
 			if (isXeno(A))

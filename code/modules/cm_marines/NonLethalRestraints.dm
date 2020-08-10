@@ -35,7 +35,7 @@
 		..()
 		return
 
-	if(user.a_intent == "hurt")
+	if(user.a_intent == INTENT_HARM)
 		return
 	else if(!status)
 		M.visible_message(SPAN_WARNING("[M] has been poked with [src] whilst it's turned off by [user]."))

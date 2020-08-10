@@ -34,7 +34,7 @@
 	if(!target)
 		return
 
-	if(user.a_intent != "hurt" || !isGlass)
+	if(user.a_intent != INTENT_HARM || !isGlass)
 		return ..()
 
 	force = 15 //Smashing bottles over someoen's head hurts.
@@ -68,7 +68,7 @@
 	//Attack logs
 	user.attack_log += text("\[[time_stamp()]\] <font color='red'>Has attacked [target.name] ([target.ckey]) with a bottle!</font>")
 	target.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been smashed with a bottle by [user.name] ([user.ckey])</font>")
-	msg_admin_attack("[user.name] ([user.ckey]) attacked [target.name] ([target.ckey]) with a bottle (INTENT: [uppertext(user.a_intent)]) in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
+	msg_admin_attack("[user.name] ([user.ckey]) attacked [target.name] ([target.ckey]) with a bottle (INTENT: [uppertext(intent_text(user.a_intent))]) in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
 
 	//The reagents in the bottle splash all over the target, thanks for the idea Nodrak
 	if(reagents)

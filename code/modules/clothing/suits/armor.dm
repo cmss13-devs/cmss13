@@ -380,7 +380,7 @@
 		if(istype(usr.get_active_hand(),/obj) && istype(usr.get_inactive_hand(),/obj))
 			to_chat(usr, SPAN_DANGER("You need an empty hand to draw the gun!"))
 		else
-			if(usr.a_intent == "hurt")
+			if(usr.a_intent == INTENT_HARM)
 				usr.visible_message(SPAN_DANGER("\The [usr] draws \the [holstered], ready to shoot!"), \
 				SPAN_DANGER("You draw \the [holstered], ready to shoot!"))
 			else

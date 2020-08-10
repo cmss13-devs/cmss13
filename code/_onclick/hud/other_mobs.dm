@@ -30,7 +30,7 @@
 
 	using = new /obj/screen/act_intent/corner()
 	using.icon = ui_style
-	using.icon_state = "intent_"+owner.a_intent
+	using.icon_state = "intent_"+ intent_text(owner.a_intent)
 	using.screen_loc = ui_datum.ui_acti
 	static_inventory += using
 	action_intent = using

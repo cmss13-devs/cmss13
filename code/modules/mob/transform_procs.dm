@@ -31,7 +31,7 @@
 
 	O.loc = loc
 	O.viruses = viruses
-	O.a_intent = "hurt"
+	O.a_intent = INTENT_HARM
 
 	for(var/datum/disease/D in O.viruses)
 		D.affected_mob = O
@@ -213,7 +213,7 @@
 			else
 				new_xeno = new /mob/living/carbon/Xenomorph/Drone(loc)
 
-	new_xeno.a_intent = "hurt"
+	new_xeno.a_intent = INTENT_HARM
 	new_xeno.key = key
 	if(new_xeno.client) new_xeno.client.change_view(world_view_size)
 
@@ -235,7 +235,7 @@
 		qdel(t)
 
 	var/mob/living/simple_animal/corgi/new_corgi = new /mob/living/simple_animal/corgi (loc)
-	new_corgi.a_intent = "hurt"
+	new_corgi.a_intent = INTENT_HARM
 	new_corgi.key = key
 	if(new_corgi.client) new_corgi.client.change_view(world_view_size)
 
@@ -270,7 +270,7 @@
 
 	new_mob.key = key
 	if(new_mob.client) new_mob.client.change_view(world_view_size)
-	new_mob.a_intent = "hurt"
+	new_mob.a_intent = INTENT_HARM
 
 
 	to_chat(new_mob, "You suddenly feel more... animalistic.")
@@ -290,7 +290,7 @@
 
 	new_mob.key = key
 	if(new_mob.client) new_mob.client.change_view(world_view_size)
-	new_mob.a_intent = "hurt"
+	new_mob.a_intent = INTENT_HARM
 	to_chat(new_mob, "You feel more... animalistic")
 
 	qdel(src)

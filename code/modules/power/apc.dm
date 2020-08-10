@@ -614,7 +614,7 @@
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 
-		if(H.species.flags & IS_SYNTHETIC && H.a_intent == GRAB_INTENT)
+		if(H.species.flags & IS_SYNTHETIC && H.a_intent == INTENT_GRAB)
 			if(H.action_busy)
 				return
 

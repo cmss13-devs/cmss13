@@ -59,7 +59,7 @@
 
 		return
 
-	if(user.a_intent != HARM_INTENT)
+	if(user.a_intent != INTENT_HARM)
 		handle_player_entrance(user)
 		return
 
@@ -137,7 +137,7 @@
 
 /obj/vehicle/multitile/attack_alien(var/mob/living/carbon/Xenomorph/M, var/dam_bonus)
 	// If they're on help intent, attempt to enter the vehicle
-	if(M.a_intent == HELP_INTENT)
+	if(M.a_intent == INTENT_HELP)
 		handle_player_entrance(M)
 		return
 

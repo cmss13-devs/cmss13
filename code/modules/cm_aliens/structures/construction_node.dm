@@ -45,7 +45,7 @@
 		to_chat(user, message)
 
 /obj/effect/alien/resin/construction/attack_alien(mob/living/carbon/Xenomorph/M)
-	if(!linked_hive || (linked_hive && (M.hivenumber != linked_hive.hivenumber)) || (M.a_intent == HARM_INTENT && M.can_destroy_special()))
+	if(!linked_hive || (linked_hive && (M.hivenumber != linked_hive.hivenumber)) || (M.a_intent == INTENT_HARM && M.can_destroy_special()))
 		return ..()
 	if(!template)
 		to_chat(M, SPAN_XENOWARNING("There is no template!"))

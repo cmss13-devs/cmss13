@@ -40,7 +40,7 @@
 	if(!istype(M))
 		return ..()
 
-	if(user.a_intent != "help")
+	if(user.a_intent != INTENT_HELP)
 		return ..()
 
 	if (reagents.total_volume > 0)

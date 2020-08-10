@@ -255,20 +255,20 @@
 
 	switch(M.a_intent)
 
-		if("help")
+		if(INTENT_HELP)
 			if (health > 0)
 				for(var/mob/O in viewers(src, null))
 					if ((O.client && !( O.blinded )))
 						O.show_message(SPAN_NOTICE("[M] [response_help] [src]"))
 
-		if("grab")
+		if(INTENT_GRAB)
 			if(M == src || anchored)
 				return 0
 			M.start_pulling(src)
 
 			return 1
 
-		if("hurt", "disarm")
+		if(INTENT_HARM, INTENT_DISARM)
 			apply_damage(harm_intent_damage, BRUTE)
 			for(var/mob/O in viewers(src, null))
 				if ((O.client && !( O.blinded )))

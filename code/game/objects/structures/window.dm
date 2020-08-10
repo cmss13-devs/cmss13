@@ -169,7 +169,7 @@
 	healthcheck()
 
 /obj/structure/window/attack_hand(mob/user as mob)
-	if(user.a_intent == "hurt" && ishuman(user))
+	if(user.a_intent == INTENT_HARM && ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if(H.species.can_shred(H))
 			attack_generic(H, 25)

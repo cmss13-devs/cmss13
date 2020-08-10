@@ -701,7 +701,7 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 		return FALSE
 	if(!user || !user.client || !user.client.prefs)
 		return FALSE
-	else if(user.client.prefs.toggle_prefs & TOGGLE_HELP_INTENT_SAFETY && user.a_intent == HELP_INTENT)
+	else if(user.client.prefs.toggle_prefs & TOGGLE_HELP_INTENT_SAFETY && user.a_intent == INTENT_HELP)
 		if (world.time % 3) // Limits how often this message pops up, saw this somewhere else and thought it was clever
 			to_chat(user, SPAN_NOTICE("You consider shooting at [A], but do not follow through."))
 		return FALSE
@@ -993,10 +993,10 @@ and you're good to go.
 
 		flags_gun_features ^= GUN_CAN_POINTBLANK //Reset this.
 		return
-	else if(user.a_intent != HARM_INTENT) //Thwack them
+	else if(user.a_intent != INTENT_HARM) //Thwack them
 		return ..()
 
-	if(M.stat == UNCONSCIOUS && user.a_intent in list(GRAB_INTENT, DISARM_INTENT)) //Execution
+	if(M.stat == UNCONSCIOUS && ((user.a_intent == INTENT_GRAB)||(user.a_intent == INTENT_DISARM))) //Execution
 		user.visible_message(SPAN_DANGER("[user] puts [src] up to [M], steadying their aim."), SPAN_WARNING("You put [src] up to [M], steadying your aim."),null, null, CHAT_TYPE_COMBAT_ACTION)
 		if(!do_after(user, SECONDS_3, INTERRUPT_ALL|INTERRUPT_DIFF_INTENT, BUSY_ICON_HOSTILE))
 			return FALSE
@@ -1042,7 +1042,7 @@ and you're good to go.
 
 	last_fired = world.time
 
-	if(M.stat == UNCONSCIOUS && user.a_intent in list(GRAB_INTENT, DISARM_INTENT)) //Continue execution if on the correct intent. Accounts for change via the earlier do_after
+	if(M.stat == UNCONSCIOUS && ((user.a_intent == INTENT_GRAB)||(user.a_intent == INTENT_DISARM))) //Continue execution if on the correct intent. Accounts for change via the earlier do_after
 		M.death()
 
 	if(!delete_bullet(projectile_to_fire))

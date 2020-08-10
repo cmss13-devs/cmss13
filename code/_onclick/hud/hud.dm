@@ -229,7 +229,7 @@
 	using.icon = ui_datum.ui_style_icon
 	if(ui_alpha)
 		using.alpha = ui_alpha
-	using.icon_state = "intent_"+mymob.a_intent
+	using.icon_state = "intent_"+ intent_text(mymob.a_intent)
 	using.screen_loc = ui_datum.ui_acti
 	static_inventory += using
 	action_intent = using

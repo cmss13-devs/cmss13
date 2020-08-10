@@ -59,7 +59,7 @@
 /obj/effect/alien/resin/attack_alien(mob/living/carbon/Xenomorph/M)
 	if(isXenoLarva(M)) //Larvae can't do shit
 		return 0
-	if(M.a_intent == HELP_INTENT)
+	if(M.a_intent == INTENT_HELP)
 		M.visible_message(SPAN_WARNING("\The [M] creepily taps on [src] with its huge claw."), \
 			SPAN_WARNING("You creepily tap on [src]."), null, 5)
 	else

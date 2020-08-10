@@ -177,7 +177,7 @@
 	if(triggered) //Mine is already set to go off
 		return
 
-	if(M.a_intent == HELP_INTENT)
+	if(M.a_intent == INTENT_HELP)
 		return
 	M.visible_message(SPAN_DANGER("[M] has slashed [src]!"), \
 		SPAN_DANGER("You slash [src]!"))

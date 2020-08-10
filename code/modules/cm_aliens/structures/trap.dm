@@ -194,7 +194,7 @@
 	var/trap_acid_level = 0
 	if(trap_type >= RESIN_TRAP_ACID1)
 		trap_acid_level = 1 + trap_type - RESIN_TRAP_ACID1
-	if(X.a_intent != "hurt")
+	if(X.a_intent != INTENT_HARM)
 		if(trap_type == RESIN_TRAP_HUGGER)
 			if(X.caste.can_hold_facehuggers)
 				set_state()

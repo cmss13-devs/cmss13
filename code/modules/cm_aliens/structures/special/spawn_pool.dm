@@ -133,13 +133,13 @@
 /obj/effect/alien/resin/special/pool/proc/spawn_pooled_larva(var/mob/xeno_candidate)
 	if(can_spawn_larva() && xeno_candidate)
 		var/mob/living/carbon/Xenomorph/Larva/new_xeno = spawn_hivenumber_larva(loc, linked_hive.hivenumber)
-		if(!new_xeno) return FALSE
+		if(isnull(new_xeno)) 
+			return FALSE
 
 		new_xeno.visible_message(SPAN_XENODANGER("A larva suddenly emerges out of from the [src]!"),
 		SPAN_XENODANGER("You emerge out of the [src] and awaken from your slumber. For the Hive!"))
 		playsound(new_xeno, 'sound/effects/xeno_newlarva.ogg', 25, 1)
-		var/xeno_mind = xeno_candidate.mind
-		if(!ticker.mode.transfer_xeno(xeno_candidate, new_xeno) && new_xeno.mind != xeno_mind)
+		if(!ticker.mode.transfer_xeno(xeno_candidate, new_xeno))
 			qdel(new_xeno)
 			return FALSE
 		to_chat(new_xeno, SPAN_XENOANNOUNCE("You are a xenomorph larva awakened from slumber!"))

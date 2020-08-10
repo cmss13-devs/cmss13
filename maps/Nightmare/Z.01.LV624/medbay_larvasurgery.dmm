@@ -52,7 +52,7 @@
 "ao" = (
 /obj/structure/table,
 /obj/item/stack/medical/bruise_pack{
-	step_x = -5;
+	pixel_x = -5;
 	pixel_x = 3;
 	pixel_y = 3
 	},
@@ -283,8 +283,8 @@
 /area/lv624/lazarus/medbay)
 "bs" = (
 /obj/item/tool/kitchen/utensil/fork{
-	step_x = 0;
-	step_y = 0
+	pixel_x = 0;
+	pixel_y = 0
 	},
 /turf/open/floor{
 	icon_state = "white"
@@ -320,7 +320,7 @@
 "bA" = (
 /obj/structure/table,
 /obj/item/paper_bin{
-	step_y = 4
+	pixel_y = 4
 	},
 /obj/item/tool/pen,
 /obj/effect/landmark/objective_landmark/science,
@@ -495,8 +495,8 @@
 "DR" = (
 /obj/structure/table,
 /obj/item/stack/medical/bruise_pack{
-	step_x = -1;
-	step_y = 4;
+	pixel_x = -1;
+	pixel_y = 4;
 	pixel_x = 3;
 	pixel_y = 3
 	},
@@ -510,11 +510,11 @@
 "En" = (
 /obj/structure/table,
 /obj/item/storage/box/masks{
-	step_x = -4
+	pixel_x = -4
 	},
 /obj/item/storage/box/syringes{
-	step_x = 5;
-	step_y = 4
+	pixel_x = 5;
+	pixel_y = 4
 	},
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
@@ -543,8 +543,8 @@
 "JK" = (
 /obj/structure/table,
 /obj/item/reagent_container/food/drinks/cans/waterbottle{
-	step_x = 0;
-	step_y = 0
+	pixel_x = 0;
+	pixel_y = 0
 	},
 /turf/open/floor{
 	icon_state = "whitebluefull";
@@ -578,8 +578,8 @@
 /area/lv624/lazarus/medbay)
 "QG" = (
 /obj/item/reagent_container/food/drinks/cans/waterbottle{
-	step_x = 2;
-	step_y = 0
+	pixel_x = 2;
+	pixel_y = 0
 	},
 /turf/open/floor{
 	icon_state = "white"

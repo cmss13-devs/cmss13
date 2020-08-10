@@ -82,9 +82,7 @@
 /obj/structure/flora/jungle/vines/heavy{
 	icon_state = "heavy_6";
 	icon_tag = "heavy";
-	pixel_x = 0;
-	step_x = 0;
-	step_y = 0
+	pixel_x = 0
 	},
 /turf/open/gm/grass,
 /area/lv624/ground/jungle3)

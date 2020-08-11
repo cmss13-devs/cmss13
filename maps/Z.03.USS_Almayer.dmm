@@ -56537,7 +56537,7 @@
 	},
 /area/almayer/medical/lower_medical)
 "xne" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
+/obj/structure/machinery/door/poddoor/shutters/almayer/containment{
 	dir = 1;
 	id = "Containment Cell 4";
 	name = "\improper Containment Cell 4";

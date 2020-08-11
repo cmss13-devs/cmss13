@@ -80,6 +80,7 @@
 	..()
 
 /obj/structure/machinery/door/poddoor/shutters/almayer/containment
+	unacidable = TRUE
 
 /obj/structure/machinery/door/poddoor/shutters/almayer/containment/attack_alien(mob/living/carbon/Xenomorph/M)
 	if(isXenoQueen(M) && density && !operating)

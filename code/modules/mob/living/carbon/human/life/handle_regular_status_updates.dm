@@ -137,9 +137,9 @@
 			paralyzed--
 
 		if(drowsyness)
-			drowsyness = max(0,drowsyness--)
+			drowsyness = max(0,drowsyness - 2)
 			eye_blurry = max(2, eye_blurry)
-			if(prob(5))
+			if(drowsyness > 10 && prob(5))
 				sleeping += 1
 				KnockOut(5)
 

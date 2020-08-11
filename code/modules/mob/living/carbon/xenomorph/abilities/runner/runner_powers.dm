@@ -197,5 +197,5 @@
 	BD.caboom_trigger = FALSE
 	X.color = null
 	X.SetLuminosity(0)
-	BD.acid_amount = 0
+	BD.modify_acid(-BD.max_acid / 4)
 	to_chat(X, SPAN_XENOWARNING("You remove all your explosive acid before it combusted."))

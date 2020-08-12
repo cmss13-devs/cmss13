@@ -1216,7 +1216,7 @@
 	smoke.set_up(1, T)
 	smoke.start()
 	var/datum/reagent/napalm/blue/R = new()
-	new /obj/flamer_fire(T, source, source_mob, R, fire_spread_amount = 3)
+	new /obj/flamer_fire(T, source, source_mob, R, 3)
 
 	var/datum/effect_system/smoke_spread/phosphorus/landingSmoke = new /datum/effect_system/smoke_spread/phosphorus
 	landingSmoke.set_up(3, 0, T, null, 6)
@@ -2076,7 +2076,7 @@
 	if(locate(/obj/flamer_fire) in T) 
 		return
 	var/datum/reagent/napalm/blue/R = new()
-	new /obj/flamer_fire(T, source, source_mob, R, fire_spread_amount = 2)
+	new /obj/flamer_fire(T, source, source_mob, R, 2)
 
 /datum/ammo/flamethrower/sentry_flamer
 	iff_signal = ACCESS_IFF_MARINE

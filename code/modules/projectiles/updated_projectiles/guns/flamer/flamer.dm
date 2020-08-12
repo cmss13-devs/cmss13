@@ -162,7 +162,7 @@
 /obj/item/weapon/gun/flamer/proc/unleash_flame(atom/target, mob/living/user)
 	set waitfor = 0
 	last_fired = world.time
-	if(!current_mag || !current_mag.reagents)
+	if(!current_mag || !current_mag.reagents || !current_mag.reagents.reagent_list.len)
 		return
 
 	var/datum/reagent/R = current_mag.reagents.reagent_list[1]
@@ -318,7 +318,9 @@
 
 	color = R.burncolor
 
-	tied_reagent = R
+	tied_reagent = new R.type() // Can't get deleted this way
+	tied_reagent.make_alike(R)
+	
 	tied_reagents = obj_reagents
 
 	target_clicked = target

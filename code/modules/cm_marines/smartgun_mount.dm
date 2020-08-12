@@ -56,6 +56,8 @@
 	var/has_mount = FALSE // Indicates whether the M56D will come with its folding mount already attached
 
 /obj/item/device/m56d_gun/New()
+	..()
+
 	update_icon()
 
 /obj/item/device/m56d_gun/examine(mob/user as mob) //Let us see how much ammo we got in this thing.

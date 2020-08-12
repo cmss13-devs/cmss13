@@ -1,3 +1,24 @@
+// MIT License
+
+// Copyright (c) 2020 Neth Iafin
+
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+
+// The above copyright notice and this permission notice shall be included in all
+// copies or substantial portions of the Software.
+
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE.
 #define DB_ENTITY SSentity_manager.select
 #define DB_EKEY SSentity_manager.select_by_key
 #define DB_FILTER SSentity_manager.filter_then
@@ -64,6 +85,9 @@
 // We are unsure what is this animal. Does it exist? If it does, we add it. In any case, it should be handled somewhere else (in entity manager)
 // Since this status is bigger than SYNCED, this means sync() will wait till someone handles it, which is exactly what we need
 #define DB_ENTITY_STATE_ADD_OR_SELECT 8
+// This is here because Neth is bad
+// Basically new item, waiting for it to be read
+#define DB_ENTITY_STATE_FRESH 9
 
 //field types
 #define DB_FIELDTYPE_INT 1

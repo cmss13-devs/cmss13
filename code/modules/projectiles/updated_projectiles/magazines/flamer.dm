@@ -73,7 +73,7 @@
 		return ..()
 
 	var/obj/O = target
-	if(!O.reagents)
+	if(!O.reagents || O.reagents.reagent_list.len < 1)
 		to_chat(user, SPAN_WARNING("[O] is empty!"))
 		return
 

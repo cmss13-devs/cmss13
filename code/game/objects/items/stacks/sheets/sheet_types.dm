@@ -11,9 +11,9 @@
  * Metal
  */
 var/global/list/datum/stack_recipe/metal_recipes = list ( \
-	new/datum/stack_recipe("barbed wire", /obj/item/stack/barbed_wire, 2, 1, 20, time = 10, skill_req = SKILL_CONSTRUCTION_TRAINED), \
-	new/datum/stack_recipe("metal barricade", /obj/structure/barricade/metal, 5, time = 20, one_per_turf = 2, on_floor = 1, skill_req = SKILL_CONSTRUCTION_TRAINED), \
-	new/datum/stack_recipe("handrail", /obj/structure/barricade/handrail, 2, time = 40, one_per_turf = 2, on_floor = 1, skill_req = SKILL_CONSTRUCTION_TRAINED), \
+	new/datum/stack_recipe("barbed wire", /obj/item/stack/barbed_wire, 2, 1, 20, time = SECONDS_1, skill_req = SKILL_CONSTRUCTION_TRAINED), \
+	new/datum/stack_recipe("metal barricade", /obj/structure/barricade/metal, 5, time = SECONDS_2, one_per_turf = 2, on_floor = 1, skill_req = SKILL_CONSTRUCTION_TRAINED, min_time = SECONDS_1), \
+	new/datum/stack_recipe("handrail", /obj/structure/barricade/handrail, 2, time = SECONDS_2, one_per_turf = 2, on_floor = 1, skill_req = SKILL_CONSTRUCTION_TRAINED, min_time = SECONDS_1), \
 	null, \
 	new/datum/stack_recipe("apc frame", /obj/item/frame/apc, 2), \
 	new/datum/stack_recipe("fire alarm frame", /obj/item/frame/fire_alarm, 2), \
@@ -79,7 +79,7 @@ var/global/list/datum/stack_recipe/metal_recipes = list ( \
  * Plasteel
  */
 var/global/list/datum/stack_recipe/plasteel_recipes = list ( \
-	new/datum/stack_recipe("plasteel barricade", /obj/structure/barricade/plasteel, 10, time = 40, one_per_turf = 1, on_floor = 1, skill_req = SKILL_CONSTRUCTION_ENGI),
+	new/datum/stack_recipe("plasteel barricade", /obj/structure/barricade/plasteel, 10, time = SECONDS_4, one_per_turf = 1, on_floor = 1, skill_req = SKILL_CONSTRUCTION_ENGI, min_time = SECONDS_2),
 	null, \
 	new/datum/stack_recipe("reinforced window frame", /obj/structure/window_frame/colony/reinforced, 5, time = 40, one_per_turf = 1, on_floor = 1, skill_req = SKILL_CONSTRUCTION_ENGI),
 	null, \

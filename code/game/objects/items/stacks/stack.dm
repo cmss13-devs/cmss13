@@ -144,7 +144,7 @@
 			if(usr.action_busy) return
 			usr.visible_message(SPAN_NOTICE("[usr] starts assembling \a [R.title]."), \
 				SPAN_NOTICE("You start assembling \a [R.title]."))
-			if(!do_after(usr, R.time * usr.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+			if(!do_after(usr, max(R.time * usr.get_skill_duration_multiplier(SKILL_CONSTRUCTION), R.min_time), INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				return
 		//We want to check this again for girder stacking
 		if(R.one_per_turf == 1 && (locate(R.result_type) in usr.loc))
@@ -289,17 +289,19 @@
 	var/res_amount = 1
 	var/max_res_amount = 1
 	var/time = 0
+	var/min_time = 0
 	var/one_per_turf = 0
 	var/on_floor = 0
 	var/skill_req = 0 //whether only people with sufficient construction skill can build this.
 
-/datum/stack_recipe/New(title, result_type, req_amount = 1, res_amount = 1, max_res_amount = 1, time = 0, one_per_turf = 0, on_floor = 0, skill_req = 0)
+/datum/stack_recipe/New(title, result_type, req_amount = 1, res_amount = 1, max_res_amount = 1, time = 0, one_per_turf = 0, on_floor = 0, skill_req = 0, min_time = 0)
 	src.title = title
 	src.result_type = result_type
 	src.req_amount = req_amount
 	src.res_amount = res_amount
 	src.max_res_amount = max_res_amount
 	src.time = time
+	src.min_time = min_time
 	src.one_per_turf = one_per_turf
 	src.on_floor = on_floor
 	src.skill_req = skill_req

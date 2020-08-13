@@ -7,6 +7,9 @@
 
 /datum/flameshape/proc/generate_fire(var/turf/T, var/obj/flamer_fire/F2, var/new_spread_amt, var/fs, var/should_call)
     var/obj/flamer_fire/foundflame = locate() in T
+    if(foundflame && foundflame.tied_reagents == F2.tied_reagents) // From the same flames
+        return
+
     if(foundflame)
         qdel(foundflame)
 

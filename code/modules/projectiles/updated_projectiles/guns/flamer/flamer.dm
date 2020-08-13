@@ -314,6 +314,11 @@
 	if(!R)
 		R = new /datum/reagent/napalm/ut()
 
+	if(!tied_reagents)
+		create_reagents(100) // So that the expanding flames are all linked together by 1 tied_reagents object
+		tied_reagents = reagents
+		tied_reagents.locked = TRUE
+
 	flameshape = new_flameshape
 
 	color = R.burncolor
@@ -338,7 +343,7 @@
 
 	var/burn_dam = burnlevel*FIRE_DAMAGE_PER_LEVEL
 
-	if(tied_reagents)
+	if(tied_reagents && !tied_reagents.locked)
 		var/removed = tied_reagents.remove_reagent(tied_reagent.id, FLAME_REAGENT_USE_AMOUNT)
 		if(removed)
 			qdel(src)

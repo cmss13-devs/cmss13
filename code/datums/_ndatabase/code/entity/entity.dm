@@ -43,7 +43,7 @@
 	status = DB_ENTITY_STATE_DELETED
 	metadata.managed -= src.id
 	if(metadata.key_field)
-		metadata.key_managed -= vars[metadata.key_field]
+		metadata.key_managed -= "[vars[metadata.key_field]]"
 	metadata.to_delete |= src
 
 /datum/entity/proc/invalidate()
@@ -58,7 +58,7 @@
 	metadata.to_update -= src
 	metadata.managed -= src.id
 	if(metadata.key_field)
-		metadata.key_managed -= vars[metadata.key_field]
+		metadata.key_managed -= "[vars[metadata.key_field]]"
 	if(!id)
 		status = DB_ENTITY_STATE_ADD_DETACH
 

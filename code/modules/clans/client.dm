@@ -62,7 +62,7 @@
 
             clans += list("People without clans" = null)
 
-            var/input = input(src, "Choose the clan to view", "View clan") in clans
+            var/input = input(src, "Choose the clan to view", "View clan") as null|anything in clans
 
             if(!input)
                 to_chat(src, SPAN_WARNING("Couldn't find any clans for you to view!"))
@@ -76,7 +76,7 @@
                 "People without clans" = null
             )
 
-            var/input = input(src, "Choose the clan to view", "View clan") in options
+            var/input = input(src, "Choose the clan to view", "View clan") as null|anything in options
 
             if(!input)
                 return
@@ -294,7 +294,7 @@
         if(has_clan_permission(CLAN_PERMISSION_ADMIN_MANAGER, warn = FALSE))
             player_rank = 999
         
-        if((target.permissions & CLAN_PERMISSION_ADMIN_MANAGER) || player_rank <= clan_info.clan_rank)
+        if((target.permissions & CLAN_PERMISSION_ADMIN_MANAGER) || player_rank <= target.clan_rank)
             to_chat(src, SPAN_DANGER("You can't target this person!"))
             return
 
@@ -340,7 +340,7 @@
                 if(target.clan_id)
                     clans += list("Remove from clan")
 
-                var/input = input(src, "Choose the clan to put them in", "Change player's clan") in clans|null
+                var/input = input(src, "Choose the clan to put them in", "Change player's clan") as null|anything in clans
 
                 if(!input)
                     return
@@ -375,7 +375,7 @@
 
                 var/datum/rank/chosen_rank
                 if(has_clan_permission(CLAN_PERMISSION_ADMIN_MODIFY, warn = FALSE))
-                    var/input = input(src, "Select the rank to change this user to.", "Select Rank") in ranks|null
+                    var/input = input(src, "Select the rank to change this user to.", "Select Rank") as null|anything in ranks
 
                     if(!input)
                         return
@@ -387,7 +387,7 @@
                         if(!has_clan_permission(ranks[rank].permission_required, warn = FALSE))
                             ranks -= rank
 
-                    var/input = input(src, "Select the rank to change this user to.", "Select Rank") in ranks|null
+                    var/input = input(src, "Select the rank to change this user to.", "Select Rank") as null|anything in ranks
 
                     if(!input)
                         return

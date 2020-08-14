@@ -598,8 +598,9 @@
 	intensity_per_level = -3
 	duration_per_level = 6
 
-	intensitymod_per_level = -0.2
-	durationmod_per_level = 0.4
+	intensitymod_per_level = -0.1
+	durationmod_per_level = 0.2
+	radiusmod_per_level = 0.01
 
 /datum/chem_property/positive/fire/oxidizing
 	name = PROPERTY_OXIDIZING
@@ -609,8 +610,9 @@
 	intensity_per_level = 6
 	duration_per_level = -3
 
-	intensitymod_per_level = 0.4
-	durationmod_per_level = -0.2
+	intensitymod_per_level = 0.2
+	durationmod_per_level = -0.1
+	radiusmod_per_level = -0.01
 
 /datum/chem_property/positive/fire/flowing
 	name = PROPERTY_FLOWING
@@ -621,9 +623,9 @@
 	duration_per_level = -2
 	intensity_per_level = -2
 
-	intensitymod_per_level = -0.1
+	intensitymod_per_level = -0.05
 	radiusmod_per_level = 0.05
-	durationmod_per_level = -0.1
+	durationmod_per_level = -0.05
 
 /datum/chem_property/positive/explosive
 	name = PROPERTY_EXPLOSIVE

@@ -380,13 +380,15 @@
 	R.make_alike(assoc_R)
 	R.gen_tier = C.gen_tier
 	var/list/old_reaction = R.required_reagents.Copy()
-	R.required_reagents -= pick(R.required_reagents)
+	if(R.required_reagents.len > 2) //we only replace if the recipe isn't small
+		R.required_reagents -= pick(R.required_reagents)
 	for(var/i = 0, i <= 5, i++)
 		var/datum/reagent/new_component = chemical_reagents_list[R.add_component()]
 		//Make sure we don't have an identical reaction and that the component is identified
 		if(R.check_duplicate() || new_component.chemclass >= CHEM_CLASS_SPECIAL)
 			R.required_reagents = old_reaction.Copy()
-			R.required_reagents -= pick(R.required_reagents)
+			if(R.required_reagents.len > 2)
+				R.required_reagents -= pick(R.required_reagents)
 			if(i >= 5)
 				//Elevate the reaction to a higher order
 				R.add_component()

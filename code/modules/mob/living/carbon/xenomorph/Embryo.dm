@@ -138,8 +138,8 @@
 		return
 
 	var/mob/picked
-	// If the bursted person themselves has Xeno enabled, they get the honor of first dibs on the new larva
-	if(!isYautja(affected_mob) || (isYautja(affected_mob) && prob(20)))
+	// If the bursted person themselves has Xeno enabled, they get the honor of first dibs on the new larva.
+	if((!isYautja(affected_mob) || (isYautja(affected_mob) && prob(20))) && istype(affected_mob.buckled,  /obj/structure/bed/nest))
 		if(affected_mob.first_xeno || (affected_mob.client && affected_mob.client.prefs && (affected_mob.client.prefs.be_special & BE_ALIEN_AFTER_DEATH) && !jobban_isbanned(affected_mob, "Alien")))
 			picked = affected_mob
 		else if(affected_mob.mind && affected_mob.mind.ghost_mob && affected_mob.client && affected_mob.client.prefs && (affected_mob.client.prefs.be_special & BE_ALIEN_AFTER_DEATH) && !jobban_isbanned(affected_mob, "Alien"))

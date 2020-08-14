@@ -5,9 +5,9 @@
 /datum/flameshape/proc/handle_fire_spread(var/obj/flamer_fire/F, var/fire_spread_amount, var/burn_dam)
     return
 
-/datum/flameshape/proc/generate_fire(var/turf/T, var/obj/flamer_fire/F2, var/new_spread_amt, var/fs, var/should_call)
+/datum/flameshape/proc/generate_fire(var/turf/T, var/obj/flamer_fire/F2, var/new_spread_amt, var/fs, var/should_call, var/skip_flame = FALSE)
     var/obj/flamer_fire/foundflame = locate() in T
-    if(foundflame && foundflame.tied_reagents == F2.tied_reagents) // From the same flames
+    if(foundflame && foundflame.tied_reagents == F2.tied_reagents && !skip_flame) // From the same flames
         return
 
     if(foundflame)
@@ -43,7 +43,8 @@
             new_spread_amt = 0
 
         else
-            var/atom/A = LinkBlocked(F, source_turf, T)
+            var/obj/flamer_fire/temp = new()
+            var/atom/A = LinkBlocked(temp, source_turf, T)
 
             if(A)
                 A.flamer_fire_act(burn_dam)
@@ -85,7 +86,8 @@
             if(T.density && !T.throwpass) // unpassable turfs stop the spread
                 T.flamer_fire_act(burn_dam)
 
-            var/atom/A = LinkBlocked(F, prev_T, T)
+            var/obj/flamer_fire/temp = new()
+            var/atom/A = LinkBlocked(temp, prev_T, T)
             if(A)
                 A.flamer_fire_act()
                 if (A.flags_atom & ON_BORDER)
@@ -148,7 +150,7 @@
             prev_T = T
             continue
 
-        add_timer(CALLBACK(src, .proc/generate_fire, T, F, 0, F.flameshape), distance)
+        add_timer(CALLBACK(src, .proc/generate_fire, T, F, 0, F.flameshape, null, TRUE), distance)
         if(stop_at_turf)
             break
 

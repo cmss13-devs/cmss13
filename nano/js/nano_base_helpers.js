@@ -15,6 +15,18 @@ NanoBaseHelpers = function ()
 
 				return '';
 			},
+			predMode: function() {
+				$('body').css("background-color","#23221f");
+				$('body').css("background-image","url('uiBackground-Pred.png')");
+				$('body').css("background-position","50% 0");
+				$('body').css("background-repeat","repeat-x");
+
+				$('#uiTitleFluff').css("background-image","url('uiTitleFluff-Pred.png')");
+				$('#uiTitleFluff').css("background-position","20% 20%");
+				$('#uiTitleFluff').css("background-repeat", "no-repeat");
+
+				return '';
+			},
 			USCMMode: function() {
 				$('body').css("background-color","#0C0E1E");
 				$('body').css("background-image","url('uiBackground-USCM.png')");

@@ -158,13 +158,14 @@ var/list/departments = list("Command", "Medical", "Engineering", "Security", "Ci
 				if("yautjacouncil")					role |= WHITELIST_YAUTJA_COUNCIL
 				if("yautjaleader")					role |= WHITELIST_YAUTJA_LEADER
 				if("commander") 					role |= WHITELIST_COMMANDER
-				if("cocouncil", "commandercouncil")	role |= WHITELIST_COMMANDER_COUNCIL
+				if("commandercouncil")				role |= WHITELIST_COMMANDER_COUNCIL
 				if("commanderleader")				role |= WHITELIST_COMMANDER_LEADER
 				if("synthetic") 					role |= WHITELIST_SYNTHETIC
 				if("syntheticcouncil")				role |= WHITELIST_SYNTHETIC_COUNCIL
 				if("syntheticleader")				role |= WHITELIST_SYNTHETIC_LEADER
-				if("all")							role |= WHITELIST_ALL
-				if("everything") 					role |= WHITELIST_EVERYTHING
+				if("allgeneral")					role |= WHITELISTS_GENERAL
+				if("allcouncil")					role |= (WHITELISTS_COUNCIL|WHITELISTS_GENERAL)
+				if("everything", "allleader") 		role |= WHITELIST_EVERYTHING
 
 		W[ckey] = role
 

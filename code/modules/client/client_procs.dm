@@ -110,6 +110,9 @@
 			var/proc_to_call = text2path(href_list["procpath"])
 			call(src, proc_to_call)()
 
+	if(href_list[CLAN_ACTION])
+		clan_topic(href, href_list)
+
 	return ..()	//redirect to hsrc.Topic()
 
 /client/proc/handle_spam_prevention(var/message, var/mute_type)

@@ -115,6 +115,10 @@ var/list/admin_verbs_debug = list(
 	/client/proc/debug_game_history
 )
 
+var/list/clan_verbs = list(
+	/client/proc/usr_create_new_clan
+)
+
 var/list/debug_verbs = list(
     /client/proc/Cell,
     /client/proc/cmd_assume_direct_control,
@@ -268,6 +272,9 @@ var/list/admin_verbs_mod = list(
 			verbs += admin_verbs_spawn
 		if(admin_holder.rights & R_MOD)
 			verbs += admin_verbs_mod
+
+		if(RoleAuthority && (RoleAuthority.roles_whitelist[ckey] & WHITELIST_YAUTJA_LEADER))
+			verbs += clan_verbs
 
 /client/proc/add_admin_whitelists()
 	if(is_mentor(src) || AHOLD_IS_MOD(admin_holder))

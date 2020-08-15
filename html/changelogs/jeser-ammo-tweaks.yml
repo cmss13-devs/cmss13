@@ -1,0 +1,9 @@
+author: Jeser
+
+delete-after: True
+
+changes: 
+  - bugfix: "Fixed bad check for magazine types when trying to put magazine into magazine box."
+  - rscadd: "Added misc and non-standard boxes to cardboard build list. Fixed naming of other boxes."
+  - rscadd: "Changes to ammunition boxes: transferring rounds is now a series of timed actions where 40 rounds are transferred every 1.5 seconds. That means extended and big magazines like M41AE2 will take longer to refill than before. Clicking ammunition box with appropriate magazine on HARM intent will start transferring rounds from magazine to the ammo box."
+  - soundadd: "Interactions with magazines and bullets such as: taking bullets out, filling magazines manually and from ammunition boxes are now accompanied by new sounds."

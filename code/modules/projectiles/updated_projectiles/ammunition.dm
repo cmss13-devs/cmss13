@@ -97,6 +97,7 @@ They're all essentially identical when it comes to getting the job done.
 	var/S = min(transfer_amount, max_rounds - current_rounds)
 	source.current_rounds -= S
 	current_rounds += S
+	playsound(loc, pick('sound/weapons/handling/mag_refill_1.ogg', 'sound/weapons/handling/mag_refill_2.ogg', 'sound/weapons/handling/mag_refill_3.ogg'), 25, 1)
 	if(source.current_rounds <= 0 && istype(source, /obj/item/ammo_magazine/handful)) //We want to delete it if it's a handful.
 		if(user)
 			user.temp_drop_inv_item(source)
@@ -114,6 +115,7 @@ They're all essentially identical when it comes to getting the job done.
 		R = transfer_amount ? min(current_rounds, transfer_amount) : min(current_rounds, MR)
 		new_handful.generate_handful(default_ammo, caliber, MR, R, gun_type)
 		current_rounds -= R
+		playsound(loc, pick('sound/weapons/handling/mag_refill_1.ogg', 'sound/weapons/handling/mag_refill_2.ogg', 'sound/weapons/handling/mag_refill_3.ogg'), 25, 1)
 
 		if(user)
 			user.put_in_hands(new_handful)
@@ -836,7 +838,6 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	var/obj/item/ammo_box/magazine/vp78/B = new(loc)
 	B.contents = list()
 	B.update_icon()
-
 	return INITIALIZE_HINT_QDEL
 
 //-----------------------Type71 Rifle Mag Box-----------------------
@@ -947,7 +948,7 @@ Turn() or Shift() as there is virtually no overhead. ~N
 
 /obj/structure/magazine_box/attackby(obj/item/W, mob/living/user)
 	if(!item_box.handfuls)
-		if(istype(W,item_box.magazine_type))
+		if(istypestrict(W,item_box.magazine_type))
 			if(item_box.contents.len < item_box.num_of_magazines)
 				user.drop_inv_item_to_loc(W, src)
 				item_box.contents += W
@@ -955,6 +956,8 @@ Turn() or Shift() as there is virtually no overhead. ~N
 				update_icon()
 			else
 				to_chat(user, SPAN_WARNING("\The [src] is full."))
+		else
+			to_chat(user, SPAN_WARNING("You don't want to mix different magazines in one box."))
 	else
 		if(istype(W, /obj/item/ammo_magazine/shotgun))
 			var/obj/item/ammo_magazine/O = W
@@ -1045,7 +1048,7 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	if(istype(I, /obj/item/ammo_magazine))
 		var/obj/item/ammo_magazine/AM = I
 		if(!isturf(loc))
-			to_chat(user, SPAN_WARNING("[src] must be on the ground to be used."))
+			to_chat(user, SPAN_WARNING("\The [src] must be on the ground to be used."))
 			return
 		if(AM.flags_magazine & AMMUNITION_REFILLABLE)
 			if(default_ammo != AM.default_ammo)
@@ -1054,35 +1057,85 @@ Turn() or Shift() as there is virtually no overhead. ~N
 			if(caliber != AM.caliber)
 				to_chat(user, SPAN_WARNING("The rounds don't match up. Better not mix them up."))
 				return
-			if(AM.current_rounds == AM.max_rounds)
-				to_chat(user, SPAN_WARNING("[AM] is already full."))
+
+
+			var/source
+			var/source_current
+			var/destination
+			var/destination_max
+			var/destination_current
+			var/action_icon
+
+			if(user.a_intent == INTENT_HARM)	//we REFILL BOX on harm intent, otherwise we refill FROM box
+				source = AM
+				source_current = AM.current_rounds
+				destination = src
+				destination_current = bullet_amount
+				destination_max = max_bullet_amount
+				action_icon = BUSY_ICON_HOSTILE
+			else
+				source = src
+				source_current = bullet_amount
+				destination = AM
+				destination_current = AM.current_rounds
+				destination_max = AM.max_rounds
+				action_icon = BUSY_ICON_FRIENDLY
+
+			if(source_current <= 0)
+				to_chat(user, SPAN_WARNING("\The [source] is empty."))
 				return
-			if(!do_after(user,15, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
+
+			if(destination_current == destination_max)
+				to_chat(user, SPAN_WARNING("\The [destination] is already full."))
 				return
-			playsound(loc, 'sound/weapons/gun_revolver_load3.ogg', 25, 1)
-			var/S = min(bullet_amount, AM.max_rounds - AM.current_rounds)
-			AM.current_rounds += S
-			bullet_amount -= S
+
+			visible_message(SPAN_NOTICE("[user] starts refilling [destination] from [source]."), SPAN_NOTICE("You start refilling [destination] from [source]."))
+
+			var/S = min(source_current, destination_max - destination_current)
+			//Amount of bullets we plan to transfer depending on amount in source
+
+			var/bullets_transferred = 0
+
+			//Amount of times timed action will be activated.
+			//Standard M41A mag of 40 rounds takes 1.5 to refill from the box.
+			for(var/i = 1;i <= Ceiling(S / 40); i++)
+				if(!do_after(user, 15, INTERRUPT_ALL, action_icon))
+					to_chat(user, SPAN_NOTICE("You stop transferring rounds from [source] into [destination]."))
+					break
+				playsound(loc, pick('sound/weapons/handling/mag_refill_1.ogg', 'sound/weapons/handling/mag_refill_2.ogg', 'sound/weapons/handling/mag_refill_3.ogg'), 25, 1)
+				var/transfer = min(S - bullets_transferred, 40)
+				destination_current += transfer
+				source_current -= transfer
+				bullets_transferred += transfer
+				to_chat(user, SPAN_NOTICE("You have transferred [bullets_transferred] rounds out of [S] from [source] into [destination]."))
+
+			if(source == AM)
+				AM.current_rounds = source_current
+				bullet_amount = destination_current
+			else if(source == src)
+				AM.current_rounds = destination_current
+				bullet_amount = source_current
+			else
+				to_chat(user, SPAN_NOTICE("Error \"Lost source\" has occured in transferring code. Report this on Gitlab, please."))
+
 			AM.update_icon(S)
 			update_icon()
-			if(AM.current_rounds == AM.max_rounds)
-				to_chat(user, SPAN_NOTICE("You refill [AM]."))
-			else
-				to_chat(user, SPAN_NOTICE("You put [S] rounds in [AM]."))
+
 		else if(AM.flags_magazine & AMMUNITION_HANDFUL)
 			if(caliber != AM.caliber)
 				to_chat(user, SPAN_WARNING("The rounds don't match up. Better not mix them up."))
 				return
 			if(bullet_amount == max_bullet_amount)
-				to_chat(user, SPAN_WARNING("[src] is full!"))
+				to_chat(user, SPAN_WARNING("\The [src] is already full."))
 				return
-			playsound(loc, 'sound/weapons/gun_revolver_load3.ogg', 25, 1)
+
+			playsound(loc, pick('sound/weapons/handling/mag_refill_1.ogg', 'sound/weapons/handling/mag_refill_2.ogg', 'sound/weapons/handling/mag_refill_3.ogg'), 25, 1)
 			var/S = min(AM.current_rounds, max_bullet_amount - bullet_amount)
 			AM.current_rounds -= S
 			bullet_amount += S
 			AM.update_icon()
 			update_icon()
-			to_chat(user, SPAN_NOTICE("You put [S] rounds in [src]."))
+			to_chat(user, SPAN_NOTICE("You put [S] rounds into [src]."))
 			if(AM.current_rounds <= 0)
 				user.temp_drop_inv_item(AM)
 				qdel(AM)
@@ -1247,9 +1300,23 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	num_of_magazines = 12
 	overlay_content = "_mre"
 
+/obj/item/ammo_box/magazine/misc/mre/empty/Initialize()
+	flags_atom |= INITIALIZED
+	var/obj/item/ammo_box/magazine/misc/mre/B = new(loc)
+	B.contents = list()
+	B.update_icon()
+	return INITIALIZE_HINT_QDEL
+
 /obj/item/ammo_box/magazine/misc/flares
 	name = "box of M94 marking flare packs"
 	desc = "A box of M94 marking flare packs, to brighten up your day."
 	magazine_type = /obj/item/storage/box/m94
 	num_of_magazines = 10
 	overlay_content = "_flares"
+
+/obj/item/ammo_box/magazine/misc/flares/empty/Initialize()
+	flags_atom |= INITIALIZED
+	var/obj/item/ammo_box/magazine/misc/flares/B = new(loc)
+	B.contents = list()
+	B.update_icon()
+	return INITIALIZE_HINT_QDEL

@@ -53,13 +53,12 @@
 	reagent_state = LIQUID
 	color = "#E71B00" // rgb: 231, 27, 0
 	chemfiresupp = TRUE
-	intensitymod = 0.3
-	durationmod = -0.75
+	intensitymod = 0.4
+	durationmod = -0.8
 	radiusmod = 0.05
 	burncolor = "#e01e1e"
 	burncolormod = 3
 	chemclass = CHEM_CLASS_RARE
-	properties = list(PROPERTY_TOXIC = 3)
 
 /datum/reagent/toxin/lexorin
 	name = "Lexorin"

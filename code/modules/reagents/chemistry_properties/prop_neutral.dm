@@ -487,7 +487,7 @@
 
 /datum/chem_property/neutral/viscous/update_reagent()
 	holder.chemfiresupp = TRUE
-	holder.radiusmod -= 0.05 * level
+	holder.radiusmod -= 0.025 * level
 	..()
 
 //PROPERTY_DISABLED (in generation)

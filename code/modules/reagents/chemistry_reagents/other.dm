@@ -179,12 +179,10 @@
 	color = "#808080" // rgb: 128, 128, 128
 	chemfiresupp = TRUE
 	intensitymod = 0.75
-	radiusmod = -0.075
+	radiusmod = -0.08
 	burncolor = "#58daff"
 	burncolormod = 2
 	chemclass = CHEM_CLASS_BASIC
-	properties = list(PROPERTY_OXIDIZING = 4, PROPERTY_VISCOUS = 3)
-
 	custom_metabolism = 0.01
 
 /datum/reagent/copper
@@ -218,14 +216,13 @@
 	color = "#808080" // rgb: 128, 128, 128
 	chemfiresupp = TRUE
 	durationmod = -0.5
-	radiusmod = 0.14
-	intensitymod = -0.75
+	radiusmod = 0.2
+	intensitymod = -0.5
 	burncolor = "#b6f8ff"
 	burncolormod = 2
 	explosive = TRUE
 	power = 0.15
 	chemclass = CHEM_CLASS_BASIC
-	properties = list(PROPERTY_FLOWING = 1)
 
 	custom_metabolism = 0.01
 
@@ -266,11 +263,10 @@
 	reagent_state = SOLID
 	color = "#1C1300" // rgb: 30, 20, 0
 	chemfiresupp = TRUE
-	durationmod = 0.8
+	durationmod = 1
 	burncolor = "#ffd700"
 	burncolormod = 3
 	chemclass = CHEM_CLASS_BASIC
-	properties = list(PROPERTY_FUELING = 4)
 
 	custom_metabolism = 0.01
 
@@ -329,7 +325,6 @@
 	burncolor = "#ffdba4"
 	burncolormod = 5
 	chemclass = CHEM_CLASS_BASIC
-	properties = list(PROPERTY_OXIDIZING = 5)
 
 	custom_metabolism = 0.01
 
@@ -383,15 +378,12 @@
 	reagent_state = SOLID
 	color = "#673910" // rgb: 103, 57, 16
 	chemfiresupp = TRUE
-	intensitymod = 0.25
-	durationmod = 1
-	radiusmod = -0.10
 	burncolor = "#ffb300"
 	explosive = TRUE
 	power = 0.5
 	falloff_modifier = 1
 	chemclass = CHEM_CLASS_UNCOMMON
-	properties = list(PROPERTY_FUELING = 4, PROPERTY_OXIDIZING = 1, PROPERTY_VISCOUS = 4, PROPERTY_CORROSIVE = 2)
+	properties = list(PROPERTY_FUELING = 7, PROPERTY_OXIDIZING = 5, PROPERTY_VISCOUS = 4, PROPERTY_CORROSIVE = 2)
 
 /datum/reagent/thermite/reaction_turf(turf/T, volume)
 	src = null
@@ -480,9 +472,6 @@
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemfiresupp = TRUE
-	intensitymod = 0.15
-	durationmod = 0.75
-	radiusmod = -0.075
 	//------------------//
 	// THESE NEED TO BE HERE DURING COMPILE TIME. THEY CANNOT BE IN A New() PROC
 	intensityfire = 10 // config.min_burnlevel REPLACE WITH AN ENUM IF POSSIBLE
@@ -494,7 +483,7 @@
 	falloff_modifier = -0.1
 	burncolor = "#ff9900"
 	chemclass = CHEM_CLASS_RARE
-	properties = list(PROPERTY_FUELING = 4, PROPERTY_OXIDIZING = 1, PROPERTY_VISCOUS = 3, PROPERTY_TOXIC = 1)
+	properties = list(PROPERTY_FUELING = 5, PROPERTY_OXIDIZING = 3, PROPERTY_VISCOUS = 4, PROPERTY_TOXIC = 1)
 
 /datum/reagent/fuel/reaction_obj(var/obj/O, var/volume)
 	var/turf/the_turf = get_turf(O)
@@ -697,10 +686,8 @@
 	reagent_state = LIQUID
 	color = "#ffb300"
 	chemfiresupp = TRUE
-	intensitymod = 0.4
-	radiusmod = 0.085
-	durationmod = 1
 	burncolor = "#D05006"
+	properties = list(PROPERTY_OXIDIZING = 6, PROPERTY_FUELING = 7, PROPERTY_FLOWING = 1)
 
 /datum/reagent/napalm/ut
 	name = "UT-Napthal Fuel"
@@ -775,12 +762,9 @@
 	color = "#00FFFF"
 	custom_metabolism = 100
 	chemfiresupp = TRUE
-	intensitymod = 1.5
-	durationmod = -1
-	radiusmod = -0.075
 	burncolor = "#ff9300"
 	chemclass = CHEM_CLASS_UNCOMMON
-	properties = list(PROPERTY_CORROSIVE = 8, PROPERTY_TOXIC = 6, PROPERTY_OXIDIZING = 8, PROPERTY_VISCOUS = 3)
+	properties = list(PROPERTY_CORROSIVE = 8, PROPERTY_TOXIC = 6, PROPERTY_OXIDIZING = 8)
 
 /datum/reagent/chlorinetrifluoride/on_mob_life(var/mob/living/M) // Not a good idea, instantly messes you up from the inside out.
 	. = ..()
@@ -802,14 +786,12 @@
 	color = "#0064C8"
 	custom_metabolism = 0.4
 	chemfiresupp = TRUE
-	intensitymod = -1
-	radiusmod = 0.1
 	burncolor = "#00a5ff"
 	burncolormod = 1.5
 	explosive = TRUE
 	power = 0.15
 	chemclass = CHEM_CLASS_COMMON
-	properties = list(PROPERTY_TOXIC = 2, PROPERTY_FLOWING = 4)
+	properties = list(PROPERTY_TOXIC = 2, PROPERTY_FLOWING = 3, PROPERTY_VISCOUS = 3, PROPERTY_FUELING = 2)
 
 ///////////////////////////////////////////Explosives////////////////////////////////////////////////////////////
 
@@ -878,8 +860,7 @@
 	power = 2
 	falloff_modifier = -0.2
 	chemfiresupp = TRUE
-	durationmod = -0.2
-	intensitymod = 0.5
+	properties = list(PROPERTY_OXIDIZING = 2)
 
 ///////////////////////////////////////////Blood plasmas////////////////////////////////////////////////////////////
 /datum/reagent/plasma

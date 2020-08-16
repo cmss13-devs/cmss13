@@ -1,6 +1,0 @@
-author: Jeser and Vampmare
-
-delete-after: True
-
-changes: 
-  - bugfix: "Fixed roundstart initializations and survivor spawning being delayed by Queens choosing Hive location."

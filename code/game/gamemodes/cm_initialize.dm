@@ -331,7 +331,7 @@ Additional game mode variables.
 
 	// Have to spawn the queen last or the mind will be added to xenomorphs and double spawned
 	for(var/datum/hive_status/hive in picked_queens)
-		pick_queen_spawn(picked_queens[hive], hive.hivenumber)
+		INVOKE_ASYNC(src, .proc/pick_queen_spawn, picked_queens[hive], hive.hivenumber)
 
 
 /datum/game_mode/proc/check_xeno_late_join(mob/xeno_candidate)

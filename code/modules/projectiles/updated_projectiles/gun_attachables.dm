@@ -1333,7 +1333,12 @@ Defined in conflicts.dm of the #defines folder.
 	if(!istype(T)) return
 
 	if(!locate(/obj/flamer_fire) in T) // No stacking flames!
-		new/obj/flamer_fire(T, initial(name), user)
+		var/datum/reagent/napalm/ut/R = new()
+
+		R.intensityfire = config.min_burnlevel
+		R.durationfire = config.min_burntime
+
+		new/obj/flamer_fire(T, initial(name), user, R)
 
 
 /obj/item/attachable/attached_gun/shotgun

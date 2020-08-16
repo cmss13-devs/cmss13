@@ -6,7 +6,7 @@
 	name = "incinerator tank"
 	desc = "A fuel tank used to store fuel for use in the M240 incinerator unit. Handle with care."
 	icon_state = "flametank_custom"
-	item_state = "flametank_custom"
+	item_state = "flametank"
 	max_rounds = 100
 	default_ammo = /datum/ammo/flamethrower //doesn't actually need bullets. But we'll get null ammo error messages if we don't
 	w_class = SIZE_MEDIUM //making sure you can't sneak this onto your belt.
@@ -107,7 +107,7 @@
 /obj/item/ammo_magazine/flamer_tank/update_icon()
 	overlays.Cut()
 
-	var/image/I = image(icon, icon_state="[item_state]_strip")
+	var/image/I = image(icon, icon_state="[icon_state]_strip")
 
 	if(reagents)
 		I.color = mix_color_from_reagents(reagents.reagent_list)
@@ -133,7 +133,7 @@
 	name = "large incinerator tank"
 	desc = "A large fuel tank used to store fuel for use in the M240-T incinerator unit. Handle with care."
 	icon_state = "flametank_large_custom"
-	item_state = "flametank_large_custom"
+	item_state = "flametank_large"
 	max_rounds = 250
 	gun_type = /obj/item/weapon/gun/flamer/M240T
 

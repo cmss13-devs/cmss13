@@ -120,6 +120,9 @@
 		else
 			dist = (0.427*dx) + (0.934*dy)
 		var/damage = round((burn_range - dist) * max_burn_damage / burn_range)
+		if(isXeno(M))
+			damage *= XVX_ACID_DAMAGEMULT
+
 		M.apply_damage(damage, BURN)
 	playsound(bound_xeno, 'sound/effects/blobattack.ogg', 75)
 	if(bound_xeno.client && bound_xeno.hive)

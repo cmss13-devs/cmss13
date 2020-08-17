@@ -48,6 +48,10 @@
 	non_null_damage_mult = 4
 	armor_full_deflection_mult = 2
 
+/datum/combat_configuration/marine/ranged/stats
+	critical_chance = 0
+	armor_random_range = 0
+
 //Marine Melee (basically "pounce slash dead")
 /datum/combat_configuration/marine/melee
 	//lower crit chance (you expect the attack most of the time, we hope)
@@ -108,6 +112,10 @@
 	armor_random_range = 10
 
 /datum/combat_configuration/xeno/ranged
+
+/datum/combat_configuration/xeno/ranged/stats
+	critical_chance = 0
+	armor_random_range = 0
 
 /datum/combat_configuration/xeno/melee
 	damage_initial_multiplier = 1.5

@@ -1,3 +1,6 @@
+#define CODEX_ARMOR_MAX 50
+#define CODEX_ARMOR_STEP 5
+
 /obj/item/weapon/gun
 	name = "gun"
 	desc = "Its a gun. It's pretty terrible, though."
@@ -401,6 +404,11 @@
 
 	var/max_range = 0
 	var/scatter = 0
+	
+	var/list/damage_armor_profile_xeno = list()
+	var/list/damage_armor_profile_marine = list()
+	var/list/damage_armor_profile_armorbreak = list()
+	var/list/damage_armor_profile_headers = list()
 
 	var/datum/ammo/in_ammo
 	if(in_chamber && in_chamber.ammo)
@@ -431,9 +439,19 @@
 
 		max_range = in_ammo.max_range
 		scatter = in_ammo.scatter
+
+		for(var/i = 0; i<=CODEX_ARMOR_MAX; i+=CODEX_ARMOR_STEP)
+			damage_armor_profile_headers.Add(i)
+			damage_armor_profile_marine.Add(round(armor_damage_reduction(config.marine_ranged_stats, damage, i, penetration)))
+			damage_armor_profile_xeno.Add(round(armor_damage_reduction(config.xeno_ranged_stats, damage, i, penetration)))
+			if(i != 0)
+				damage_armor_profile_armorbreak.Add("[round(armor_break_calculation(config.xeno_ranged_stats, damage, i, penetration, in_ammo.pen_armor_punch, armor_punch)/i)]%")
+			else
+				damage_armor_profile_armorbreak.Add("N/A")
 	
 	var/rpm = max(fire_delay, 0.0001)
 	var/burst_rpm = max(((fire_delay + (burst_delay * burst_amount)) / max(burst_amount, 1)), 0.0001)
+
 
 	var/list/data = list(
 		"name" = name,
@@ -480,7 +498,12 @@
 		"range_max" = config.max_shell_range,
 		"falloff_max" = config.extra_damage_falloff,
 		"penetration_max" = config.max_armor_penetration,
-		"punch_max" = 5
+		"punch_max" = 5,
+
+		"damage_armor_profile_headers" = damage_armor_profile_headers,
+		"damage_armor_profile_marine" = damage_armor_profile_marine,
+		"damage_armor_profile_xeno" = damage_armor_profile_xeno,
+		"damage_armor_profile_armorbreak" = damage_armor_profile_armorbreak,
 	)
 
 	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)

@@ -10,6 +10,7 @@ var/list/objective_spawn_corpse
 
 /obj/effect/landmark/corpsespawner
 	name = "Unknown"
+	icon_state = "corpse_spawner"
 
 /obj/effect/landmark/corpsespawner/New()
 	. = ..()

@@ -115,6 +115,7 @@
 "aat" = (
 /obj/structure/bed/nest,
 /obj/effect/decal/cleanable/blood/gibs/core,
+/obj/effect/landmark/corpsespawner/PMC,
 /turf/open/snow/layer0,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "aau" = (
@@ -180,11 +181,11 @@
 	icon_state = "abed"
 	},
 /obj/item/bedsheet/medical,
-/obj/effect/landmark/corpsespawner/security,
 /obj/structure/machinery/light/small{
 	dir = 1;
 	pixel_y = 20
 	},
+/obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/floor/interior/plastic,
 /area/strata/ag/interior/paths/cabin_area/central)
 "aaE" = (
@@ -207,7 +208,7 @@
 /obj/effect/landmark{
 	name = "crap_item"
 	},
-/obj/effect/landmark/corpsespawner/security,
+/obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/snow/layer0,
 /area/strata/ag/interior/paths/cabin_area/cave)
 "aaI" = (
@@ -281,11 +282,6 @@
 /obj/structure/bedsheetbin,
 /turf/open/floor/interior/plastic,
 /area/strata/ag/interior/paths/cabin_area/central)
-"aaU" = (
-/obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/doctor,
-/turf/open/snow/layer0,
-/area/strata/ag/interior/paths/cabin_area/cave)
 "aaV" = (
 /obj/item/fuelCell,
 /turf/open/ice,
@@ -878,6 +874,7 @@
 /area/strata/ag/exterior/marsh/water)
 "acx" = (
 /obj/structure/bed/nest,
+/obj/effect/landmark/corpsespawner/doctor,
 /turf/open/floor/strata{
 	icon_state = "fake_wood"
 	},
@@ -1619,8 +1616,8 @@
 /area/strata/ug/interior/jungle/deep/structures/res)
 "aes" = (
 /obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/doctor,
 /obj/item/storage/pill_bottle/inaprovaline/skillless,
+/obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/floor/strata{
 	icon_state = "multi_tiles"
 	},
@@ -1715,13 +1712,6 @@
 	icon_state = "white_cyan2"
 	},
 /area/strata/ug/interior/jungle/deep/structures/res)
-"aeG" = (
-/obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/doctor,
-/turf/open/floor/strata{
-	icon_state = "multi_tiles"
-	},
-/area/strata/ag/interior/dorms/hive)
 "aeH" = (
 /obj/structure/table/reinforced/prison,
 /obj/item/reagent_container/food/drinks/cans/waterbottle,
@@ -2293,13 +2283,6 @@
 	icon_state = "blue1"
 	},
 /area/strata/ug/interior/jungle/deep/structures/res)
-"agb" = (
-/obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/scientist,
-/turf/open/floor/strata{
-	icon_state = "multi_tiles"
-	},
-/area/strata/ag/interior/dorms/hive)
 "agf" = (
 /obj/structure/bedsheetbin,
 /turf/open/floor/strata{
@@ -2522,7 +2505,7 @@
 	pixel_x = 6;
 	pixel_y = -4
 	},
-/obj/effect/landmark/corpsespawner/scientist,
+/obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/floor/strata{
 	icon_state = "multi_tiles"
 	},
@@ -2816,7 +2799,8 @@
 	pixel_x = 6;
 	pixel_y = -4
 	},
-/obj/effect/landmark/corpsespawner/scientist,
+/obj/effect/decal/cleanable/blood/gibs/core,
+/obj/effect/landmark/corpsespawner/security/cmb,
 /turf/open/floor/strata{
 	icon_state = "multi_tiles"
 	},
@@ -3280,20 +3264,9 @@
 	icon_state = "multi_tiles"
 	},
 /area/strata/ag/interior/dorms/hive)
-"aiD" = (
-/obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/doctor,
-/obj/item/explosive/grenade/incendiary{
-	pixel_x = -4;
-	pixel_y = -2
-	},
-/turf/open/floor/strata{
-	icon_state = "multi_tiles"
-	},
-/area/strata/ag/interior/dorms/hive)
 "aiE" = (
 /obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/security,
+/obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/floor/strata{
 	icon_state = "multi_tiles"
 	},
@@ -3564,6 +3537,7 @@
 	pixel_y = 3
 	},
 /obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/strata{
 	dir = 4;
 	icon_state = "cyan2"
@@ -3889,7 +3863,7 @@
 "akn" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
 /obj/structure/disposalpipe/segment,
-/obj/effect/landmark/corpsespawner/security,
+/obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/floor/strata{
 	dir = 10;
 	icon_state = "multi_tiles"
@@ -3916,6 +3890,7 @@
 "akq" = (
 /obj/structure/table/reinforced/prison,
 /obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/strata{
 	icon_state = "red1"
 	},
@@ -4163,6 +4138,7 @@
 /obj/structure/table/reinforced/prison,
 /obj/item/reagent_container/food/snacks/cubancarp,
 /obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/strata{
 	dir = 4;
 	icon_state = "cyan1"
@@ -4183,6 +4159,7 @@
 /obj/structure/table/reinforced/prison,
 /obj/item/reagent_container/food/snacks/fishfingers,
 /obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/strata{
 	dir = 4;
 	icon_state = "cyan1"
@@ -4475,10 +4452,10 @@
 	},
 /area/strata/ag/exterior/research_decks/north)
 "alN" = (
-/obj/effect/landmark/corpsespawner/security,
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/strata_decals/catwalk/prison,
 /obj/structure/disposalpipe/segment,
+/obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/floor/plating,
 /area/strata/ag/exterior/research_decks/north)
 "alO" = (
@@ -5013,6 +4990,7 @@
 	pixel_y = -4
 	},
 /obj/effect/landmark/objective_landmark/medium,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/strata{
 	icon_state = "red1"
 	},
@@ -5791,6 +5769,7 @@
 /obj/item/storage/box/m94,
 /obj/item/storage/box/m94,
 /obj/effect/landmark/objective_landmark/far,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/strata{
 	icon_state = "floor3"
 	},
@@ -6149,6 +6128,7 @@
 /obj/item/storage/box/cups,
 /obj/item/storage/box/cups,
 /obj/effect/landmark/objective_landmark/far,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/strata{
 	icon_state = "floor3"
 	},
@@ -6475,6 +6455,7 @@
 /obj/item/storage/box/donkpockets,
 /obj/item/storage/box/donkpockets,
 /obj/effect/landmark/objective_landmark/far,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/strata{
 	icon_state = "floor3"
 	},
@@ -6486,6 +6467,7 @@
 /obj/item/storage/box/holobadge,
 /obj/item/storage/box/evidence,
 /obj/effect/landmark/objective_landmark/far,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/strata{
 	icon_state = "floor3"
 	},
@@ -6496,6 +6478,7 @@
 /obj/item/storage/box/lightstick/red,
 /obj/item/storage/box/lightstick/red,
 /obj/effect/landmark/objective_landmark/far,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/strata{
 	icon_state = "floor3"
 	},
@@ -6516,6 +6499,7 @@
 	dir = 1;
 	pixel_y = 24
 	},
+/obj/effect/landmark/corpsespawner/security/cmb,
 /turf/open/floor/strata{
 	icon_state = "floor3"
 	},
@@ -6707,6 +6691,7 @@
 	dir = 2
 	},
 /obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/strata{
 	icon_state = "red1"
 	},
@@ -6889,6 +6874,7 @@
 /obj/item/storage/box/donkpockets,
 /obj/item/storage/box/donkpockets,
 /obj/effect/landmark/objective_landmark/far,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/strata{
 	icon_state = "floor3"
 	},
@@ -6922,6 +6908,7 @@
 	dir = 4
 	},
 /obj/effect/landmark/objective_landmark/far,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/strata{
 	icon_state = "floor3"
 	},
@@ -6976,6 +6963,7 @@
 /obj/item/paper_bin,
 /obj/structure/pipes/standard/manifold/hidden/cyan,
 /obj/effect/landmark/objective_landmark/far,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/strata{
 	icon_state = "red1"
 	},
@@ -7345,6 +7333,7 @@
 /obj/item/clothing/suit/storage/hazardvest,
 /obj/structure/rack,
 /obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/strata,
 /area/strata/ag/interior/dorms/north)
 "aty" = (
@@ -8203,6 +8192,7 @@
 	dir = 4;
 	tag = "icon-bulb1 (EAST)"
 	},
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison{
 	icon_state = "darkyellowfull2"
 	},
@@ -8263,6 +8253,7 @@
 	pixel_y = 6
 	},
 /obj/effect/landmark/objective_landmark/far,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/strata{
 	icon_state = "floor3"
 	},
@@ -8306,6 +8297,7 @@
 "avX" = (
 /obj/structure/table/reinforced/prison,
 /obj/effect/landmark/objective_landmark/far,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/strata{
 	dir = 10;
 	icon_state = "multi_tiles"
@@ -8684,6 +8676,7 @@
 /obj/item/reagent_container/spray/cleaner,
 /obj/item/toy/deck,
 /obj/effect/landmark/objective_landmark/medium,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/strata{
 	dir = 4;
 	icon_state = "floor3"
@@ -9529,8 +9522,8 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/obj/effect/landmark/corpsespawner/security,
 /obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/floor/strata{
 	dir = 4;
 	icon_state = "white_cyan1"
@@ -10368,6 +10361,7 @@
 /obj/item/storage/pouch/flare/full,
 /obj/item/weapon/gun/pistol/c99,
 /obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/strata{
 	icon_state = "orange_tile"
 	},
@@ -10399,6 +10393,7 @@
 /obj/item/prop/almayer/box,
 /obj/item/coin/marine/engineer,
 /obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/greengrid,
 /area/strata/ag/interior/dorms/north)
 "aBw" = (
@@ -10856,8 +10851,8 @@
 /area/strata/ag/interior/dorms/bar)
 "aCG" = (
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/corpsespawner/doctor,
 /obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/floor/strata,
 /area/strata/ag/interior/dorms/north)
 "aCH" = (
@@ -11266,7 +11261,7 @@
 /turf/open/asphalt/cement,
 /area/strata/ag/exterior/dorms_deck)
 "aDP" = (
-/obj/effect/landmark/corpsespawner/security,
+/obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/asphalt/cement,
 /area/strata/ag/exterior/dorms_deck)
 "aDQ" = (
@@ -12456,8 +12451,8 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/obj/effect/landmark/corpsespawner/doctor,
 /obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/floor/strata{
 	dir = 8;
 	icon_state = "white_cyan2"
@@ -13485,7 +13480,7 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/obj/effect/landmark/corpsespawner/doctor,
+/obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/floor/strata{
 	dir = 8;
 	icon_state = "white_cyan2"
@@ -13596,10 +13591,10 @@
 	dir = 4;
 	tag = "icon-chair (EAST)"
 	},
-/obj/effect/landmark/corpsespawner/security,
 /obj/structure/pipes/standard/manifold/hidden/cyan{
 	dir = 4
 	},
+/obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/floor/strata{
 	dir = 4;
 	icon_state = "orange_edge"
@@ -14341,6 +14336,7 @@
 	},
 /obj/item/device/flashlight/lamp,
 /obj/effect/landmark/objective_landmark/far,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/strata{
 	icon_state = "blue1"
 	},
@@ -14829,11 +14825,6 @@
 	icon_state = "multi_tiles"
 	},
 /area/strata/ag/interior/outpost/admin/records)
-"aNp" = (
-/obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/scientist,
-/turf/open/snow/layer0,
-/area/strata/ag/interior/paths/cabin_area/cave)
 "aNq" = (
 /obj/structure/flora/grass/tallgrass/ice/corner{
 	dir = 10
@@ -15100,6 +15091,7 @@
 /obj/structure/rack,
 /obj/item/device/flashlight,
 /obj/effect/landmark/objective_landmark/medium,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/strata{
 	dir = 4;
 	icon_state = "floor3"
@@ -15582,6 +15574,7 @@
 /obj/structure/closet/bombcloset,
 /obj/item/clothing/suit/armor/bulletproof,
 /obj/effect/landmark/objective_landmark/medium,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/strata{
 	dir = 10;
 	icon_state = "multi_tiles"
@@ -15727,6 +15720,7 @@
 /obj/structure/barricade/handrail/strata,
 /obj/item/device/flashlight/lamp/green,
 /obj/effect/landmark/objective_landmark/far,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/strata{
 	icon_state = "blue1"
 	},
@@ -16154,6 +16148,7 @@
 /obj/structure/table/reinforced/prison,
 /obj/item/storage/box/pizza,
 /obj/effect/landmark/objective_landmark/medium,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/strata{
 	icon_state = "fake_wood"
 	},
@@ -16162,6 +16157,7 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
+/obj/effect/landmark/corpsespawner/engineer,
 /turf/open/floor/strata{
 	icon_state = "fake_wood"
 	},
@@ -16179,6 +16175,7 @@
 /obj/item/tool/crowbar,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/landmark/objective_landmark/medium,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/engi/foyer)
 "aRe" = (
@@ -16254,6 +16251,7 @@
 /obj/structure/barricade/wooden{
 	dir = 8
 	},
+/obj/effect/landmark/corpsespawner/chef,
 /turf/open/floor/strata{
 	dir = 10;
 	icon_state = "multi_tiles"
@@ -16442,7 +16440,7 @@
 /area/strata/ag/exterior/research_decks/west)
 "aRV" = (
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/corpsespawner/PMC,
+/obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/floor/strata,
 /area/strata/ag/exterior/research_decks/west)
 "aRW" = (
@@ -16600,12 +16598,12 @@
 /area/strata/ag/interior/outpost/maint/bar)
 "aSo" = (
 /obj/structure/closet/firecloset/full,
-/obj/effect/landmark/corpsespawner/security,
 /obj/effect/decal/cleanable/blood,
 /obj/structure/barricade/wooden{
 	dir = 8
 	},
 /obj/effect/landmark/objective_landmark/far,
+/obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/floor/strata{
 	dir = 10;
 	icon_state = "multi_tiles"
@@ -17905,7 +17903,7 @@
 "aWn" = (
 /obj/effect/decal/cleanable/blood,
 /obj/item/organ/heart,
-/obj/effect/landmark/corpsespawner/bridgeofficer,
+/obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/floor/strata,
 /area/strata/ag/interior/dorms/south)
 "aWo" = (
@@ -20106,6 +20104,7 @@
 	},
 /obj/structure/table/reinforced/prison,
 /obj/effect/landmark/objective_landmark/medium,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/strata{
 	icon_state = "blue1"
 	},
@@ -20131,7 +20130,8 @@
 /area/strata/ag/interior/administration)
 "bfa" = (
 /obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/security,
+/obj/effect/decal/cleanable/blood/gibs/core,
+/obj/effect/landmark/corpsespawner/PMC,
 /turf/open/snow/layer1,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "bfc" = (
@@ -20907,10 +20907,13 @@
 /turf/open/floor/interior/plastic,
 /area/strata/ag/interior/paths/cabin_area/central)
 "biC" = (
-/obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/security,
-/turf/open/snow/layer0,
-/area/strata/ag/interior/outpost/gen/bball/nest)
+/obj/structure/bed/roller,
+/obj/effect/landmark/objective_landmark/far,
+/obj/effect/decal/cleanable/blood/gibs/core,
+/turf/open/floor/strata{
+	icon_state = "floor3"
+	},
+/area/strata/ag/interior/outpost/gen/bball)
 "biD" = (
 /obj/structure/coatrack,
 /obj/item/clothing/suit/armor/bulletproof,
@@ -21210,6 +21213,7 @@
 /area/strata/ag/exterior/marsh/water)
 "bjB" = (
 /obj/structure/largecrate/random,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/ice,
 /area/strata/ag/exterior/marsh/river)
 "bjI" = (
@@ -21243,7 +21247,8 @@
 /area/strata/ag/exterior/paths/north_outpost)
 "bke" = (
 /obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/security,
+/obj/effect/decal/cleanable/blood/gibs/core,
+/obj/effect/landmark/corpsespawner/miner,
 /turf/open/snow/layer0,
 /area/strata/ag/interior/paths/cabin_area/cave)
 "bko" = (
@@ -21786,6 +21791,12 @@
 	icon_state = "cement1"
 	},
 /area/strata/ug/interior/jungle/platform/east)
+"bmG" = (
+/obj/structure/bed/nest,
+/obj/effect/decal/cleanable/blood/gibs/core,
+/obj/effect/landmark/corpsespawner/security/cmb,
+/turf/open/snow/layer0,
+/area/strata/ag/interior/paths/cabin_area/cave)
 "bmO" = (
 /obj/effect/landmark{
 	name = "monkey_spawn"
@@ -21800,8 +21811,8 @@
 /turf/open/floor/interior/plastic,
 /area/strata/ag/interior/paths/cabin_area/central)
 "bmQ" = (
-/obj/effect/landmark/corpsespawner/doctor,
 /obj/item/stool,
+/obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/floor/interior/plastic,
 /area/strata/ag/interior/paths/cabin_area/central)
 "bmR" = (
@@ -22085,6 +22096,7 @@
 "bot" = (
 /obj/structure/table/reinforced/prison,
 /obj/effect/landmark/objective_landmark/medium,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/strata{
 	icon_state = "blue1"
 	},
@@ -22133,6 +22145,7 @@
 	dir = 8
 	},
 /obj/effect/landmark/objective_landmark/medium,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/strata{
 	icon_state = "blue1"
 	},
@@ -22340,6 +22353,7 @@
 /obj/item/tank/emergency_oxygen/engi,
 /obj/item/tank/emergency_oxygen/engi,
 /obj/effect/landmark/objective_landmark/far,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/strata{
 	dir = 10;
 	icon_state = "multi_tiles"
@@ -22947,6 +22961,7 @@
 	pixel_y = 6
 	},
 /obj/effect/landmark/objective_landmark/far,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/strata{
 	icon_state = "blue1"
 	},
@@ -23045,7 +23060,8 @@
 /area/strata/ag/exterior/paths/cabin_area/central)
 "btz" = (
 /obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/chef,
+/obj/effect/decal/cleanable/blood/gibs/core,
+/obj/effect/landmark/corpsespawner/miner,
 /turf/open/floor/strata{
 	icon_state = "fake_wood"
 	},
@@ -23179,6 +23195,7 @@
 	dir = 8
 	},
 /obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/strata,
 /area/strata/ag/interior/disposals)
 "btW" = (
@@ -23192,6 +23209,7 @@
 	dir = 4
 	},
 /obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/strata,
 /area/strata/ag/interior/disposals)
 "btZ" = (
@@ -23232,6 +23250,7 @@
 /obj/item/weapon/gun/pistol/c99,
 /obj/item/attachable/bayonet/upp,
 /obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison{
 	icon_state = "darkredfull2"
 	},
@@ -23528,7 +23547,7 @@
 /area/strata/ag/interior/outpost/engi/drome)
 "bvS" = (
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/corpsespawner/security,
+/obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/snow/layer0,
 /area/strata/ag/exterior/paths/cabin_area)
 "bwc" = (
@@ -23673,10 +23692,6 @@
 /obj/effect/blocker/sorokyne_cold_water,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh/water)
-"bwM" = (
-/obj/effect/landmark/corpsespawner/security,
-/turf/open/snow/layer0,
-/area/strata/ag/interior/outpost/gen/bball/nest)
 "bwR" = (
 /obj/structure/inflatable/door,
 /turf/open/floor/strata{
@@ -23707,6 +23722,7 @@
 /obj/structure/rack,
 /obj/item/storage/belt/utility/full,
 /obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/strata,
 /area/strata/ag/interior/disposals)
 "bxc" = (
@@ -24358,6 +24374,7 @@
 /obj/structure/rack,
 /obj/item/storage/briefcase,
 /obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/strata,
 /area/strata/ag/interior/disposals)
 "bAx" = (
@@ -24563,7 +24580,7 @@
 "bBK" = (
 /obj/structure/barricade/snow,
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/corpsespawner/security,
+/obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/snow/layer1,
 /area/strata/ag/exterior/paths/cabin_area)
 "bBL" = (
@@ -24645,6 +24662,7 @@
 	dir = 2
 	},
 /obj/effect/landmark/objective_landmark/medium,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/strata{
 	dir = 6;
 	icon_state = "multi_tiles"
@@ -24702,6 +24720,7 @@
 	pixel_x = -5;
 	pixel_y = 14
 	},
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/strata{
 	icon_state = "floor2"
 	},
@@ -25044,7 +25063,7 @@
 /obj/structure/flora/grass/tallgrass/ice/corner{
 	dir = 1
 	},
-/obj/effect/landmark/corpsespawner/security,
+/obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/snow/layer3,
 /area/strata/ag/exterior/paths/cabin_area)
 "bDS" = (
@@ -25462,6 +25481,7 @@
 /area/strata/ag/interior/outpost/med/paperroom)
 "bGD" = (
 /obj/structure/machinery/photocopier,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/strata{
 	icon_state = "floor2"
 	},
@@ -25544,6 +25564,7 @@
 "bHr" = (
 /obj/structure/table/reinforced/prison,
 /obj/effect/landmark/objective_landmark/science,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/strata{
 	icon_state = "floor2"
 	},
@@ -25980,7 +26001,7 @@
 /area/strata/ag/interior/outpost/canteen/personal_storage)
 "bJB" = (
 /obj/structure/flora/grass/tallgrass/ice,
-/obj/effect/landmark/corpsespawner/security,
+/obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/snow/layer3,
 /area/strata/ag/exterior/paths/cabin_area)
 "bJC" = (
@@ -26570,6 +26591,7 @@
 /obj/structure/table/reinforced/prison,
 /obj/item/reagent_container/food/snacks/meatballsoup,
 /obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/strata{
 	dir = 4;
 	icon_state = "cyan1"
@@ -27870,6 +27892,7 @@
 	pixel_y = -4
 	},
 /obj/effect/landmark/objective_landmark/medium,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/strata{
 	icon_state = "red1"
 	},
@@ -27893,6 +27916,7 @@
 /obj/item/storage/firstaid/adv,
 /obj/item/reagent_container/spray/pepper,
 /obj/effect/landmark/objective_landmark/medium,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/strata{
 	icon_state = "red1"
 	},
@@ -28022,6 +28046,7 @@
 	pixel_y = 24
 	},
 /obj/effect/landmark/objective_landmark/far,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/strata{
 	icon_state = "floor3"
 	},
@@ -28153,6 +28178,7 @@
 /obj/item/storage/box/lightstick,
 /obj/item/storage/box/lightstick,
 /obj/effect/landmark/objective_landmark/far,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/strata{
 	icon_state = "floor3"
 	},
@@ -28402,8 +28428,8 @@
 	},
 /area/strata/ug/interior/jungle/deep/structures/res)
 "bXV" = (
-/obj/effect/landmark/corpsespawner/scientist,
 /obj/effect/landmark/objective_landmark/close,
+/obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/floor/strata,
 /area/strata/ag/interior/dorms/south)
 "bXW" = (
@@ -28743,6 +28769,7 @@
 /obj/structure/table/almayer,
 /obj/item/reagent_container/food/snacks/plump_pie,
 /obj/effect/landmark/objective_landmark/medium,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/strata{
 	dir = 4;
 	icon_state = "floor3"
@@ -29905,8 +29932,8 @@
 /area/strata/ag/exterior/paths/northadmin)
 "cfX" = (
 /obj/structure/largecrate/random,
-/obj/item/storage/belt/grenade/full,
 /obj/effect/landmark/objective_landmark/medium,
+/obj/item/storage/belt/grenade/large/full,
 /turf/open/asphalt/cement,
 /area/strata/ag/interior/engi_shed/four)
 "cfY" = (
@@ -33363,6 +33390,14 @@
 	},
 /turf/open/ice,
 /area/strata/ag/exterior/marsh)
+"cEu" = (
+/obj/structure/bed/nest,
+/obj/effect/decal/cleanable/blood/gibs/core,
+/obj/effect/landmark/corpsespawner/chef,
+/turf/open/floor/strata{
+	icon_state = "multi_tiles"
+	},
+/area/strata/ag/interior/dorms/hive)
 "cFj" = (
 /obj/structure/machinery/disposal,
 /obj/structure/machinery/light/small{
@@ -33453,7 +33488,7 @@
 /turf/open/snow/layer0,
 /area/strata/ag/exterior/nearlz2)
 "cML" = (
-/obj/effect/landmark/corpsespawner/doctor,
+/obj/effect/decal/cleanable/blood/gibs/body,
 /turf/open/snow/layer2,
 /area/strata/ag/exterior/marsh/center)
 "cOc" = (
@@ -33570,11 +33605,11 @@
 "cUu" = (
 /obj/structure/bed,
 /obj/structure/machinery/light/small,
-/obj/effect/landmark/corpsespawner/PMC,
 /obj/effect/decal/cleanable/blood,
 /obj/item/bedsheet/medical,
 /obj/item/storage/large_holster/machete/full,
 /obj/effect/landmark/objective_landmark/science,
+/obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/floor/strata{
 	dir = 4;
 	icon_state = "cyan2"
@@ -35259,6 +35294,7 @@
 /obj/structure/table/almayer,
 /obj/item/storage/firstaid/regular,
 /obj/effect/landmark/objective_landmark/medium,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/strata{
 	icon_state = "red1"
 	},
@@ -35315,6 +35351,7 @@
 	pixel_y = 20
 	},
 /obj/effect/landmark/objective_landmark/medium,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/strata{
 	icon_state = "red1"
 	},
@@ -35651,6 +35688,7 @@
 	dir = 4
 	},
 /obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/strata{
 	dir = 4;
 	icon_state = "floor3"
@@ -35680,6 +35718,13 @@
 /obj/structure/dropship_equipment/mg_holder,
 /turf/open/floor/strata,
 /area/strata/ug/interior/outpost/jung/dorms/sec1)
+"fwn" = (
+/obj/effect/decal/strata_decals/rocks/ice/ice1{
+	dir = 10
+	},
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/snow/layer1,
+/area/strata/ag/exterior/paths/southresearch)
 "fwr" = (
 /obj/structure/flora/grass/tallgrass/ice/corner{
 	dir = 10
@@ -36102,6 +36147,15 @@
 "fWs" = (
 /turf/closed/wall/mineral/gold,
 /area/strata/ag/interior/outpost/med/hall)
+"fWV" = (
+/obj/structure/table/reinforced/prison,
+/obj/item/reagent_container/food/drinks/bottle/sake,
+/obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/floor/strata{
+	icon_state = "orange_tile"
+	},
+/area/strata/ag/interior/dorms/bar)
 "fXE" = (
 /turf/open/gm/dirtgrassborder/weedable,
 /area/strata/ug/interior/jungle/deep/west_engi)
@@ -36141,7 +36195,7 @@
 	},
 /area/strata/ag/exterior/research_decks/south)
 "fZe" = (
-/obj/effect/landmark/corpsespawner/PMC,
+/obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/floor/strata,
 /area/strata/ug/interior/outpost/jung/dorms/admin1)
 "gab" = (
@@ -36513,6 +36567,13 @@
 	icon_state = "floor3"
 	},
 /area/strata/ug/interior/outpost/jung/dorms/med2)
+"grP" = (
+/obj/effect/landmark/corpsespawner/security/lawyer,
+/turf/open/floor/strata{
+	dir = 4;
+	icon_state = "white_cyan1"
+	},
+/area/strata/ag/interior/outpost/canteen/bar)
 "gse" = (
 /obj/effect/decal/cleanable/blood,
 /obj/structure/platform/strata{
@@ -37023,6 +37084,7 @@
 "haN" = (
 /obj/structure/largecrate/random,
 /obj/item/trash/pistachios,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison{
 	icon_state = "darkyellowfull2"
 	},
@@ -37501,9 +37563,9 @@
 "hKb" = (
 /obj/effect/decal/cleanable/generic,
 /obj/structure/closet/bodybag,
-/obj/effect/landmark/corpsespawner/chef,
 /obj/effect/decal/cleanable/blood,
 /obj/effect/landmark/objective_landmark/science,
+/obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/snow/layer2,
 /area/strata/ag/exterior/paths/southresearch)
 "hKk" = (
@@ -37606,6 +37668,15 @@
 	icon_state = "floor3"
 	},
 /area/strata/ag/interior/tcomms/tcomms_engi)
+"hTX" = (
+/obj/structure/window/reinforced/tinted,
+/obj/item/device/flashlight/lamp,
+/obj/structure/table/reinforced/prison,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/floor/strata{
+	icon_state = "blue1"
+	},
+/area/strata/ag/interior/administration)
 "hUc" = (
 /obj/structure/inflatable/popped,
 /turf/open/snow/layer2,
@@ -37676,7 +37747,7 @@
 /area/strata/ag/interior/outpost/maint/canteen_e_1)
 "ibH" = (
 /obj/item/trash/pistachios,
-/obj/effect/landmark/corpsespawner/doctor,
+/obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/floor/strata,
 /area/strata/ag/interior/tcomms)
 "ibL" = (
@@ -37921,6 +37992,14 @@
 /obj/structure/bed/roller,
 /turf/open/snow/layer0,
 /area/strata/ag/exterior/paths/southresearch)
+"ioz" = (
+/obj/structure/bed/nest,
+/obj/effect/decal/cleanable/blood/gibs/core,
+/obj/effect/landmark/corpsespawner/PMC,
+/turf/open/floor/strata{
+	icon_state = "multi_tiles"
+	},
+/area/strata/ag/interior/dorms/hive)
 "ioF" = (
 /obj/structure/platform/strata{
 	dir = 8
@@ -37935,6 +38014,7 @@
 "ioM" = (
 /obj/structure/table/almayer,
 /obj/effect/landmark/objective_landmark/medium,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/strata,
 /area/strata/ag/interior/landingzone_checkpoint)
 "ipd" = (
@@ -38135,6 +38215,14 @@
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/snow/layer0,
 /area/strata/ag/exterior/paths/southresearch)
+"izc" = (
+/obj/structure/bed/nest,
+/obj/effect/decal/cleanable/blood/gibs/core,
+/obj/effect/landmark/corpsespawner/security/cmb,
+/turf/open/floor/strata{
+	icon_state = "multi_tiles"
+	},
+/area/strata/ag/interior/dorms/hive)
 "iAk" = (
 /obj/effect/decal/strata_decals/rocks/ice/ice1{
 	dir = 1
@@ -38263,6 +38351,13 @@
 	icon_state = "purp2"
 	},
 /area/strata/ug/interior/jungle/deep/structures/engi)
+"iGR" = (
+/obj/structure/bed/nest,
+/obj/effect/landmark/corpsespawner/miner,
+/turf/open/floor/strata{
+	icon_state = "fake_wood"
+	},
+/area/strata/ug/interior/jungle/deep/minehead)
 "iHi" = (
 /obj/structure/flora/bush/ausbushes/lavendergrass,
 /turf/open/gm/grass/weedable,
@@ -38627,6 +38722,7 @@
 /obj/item/weapon/gun/pistol/c99,
 /obj/item/attachable/bayonet/upp,
 /obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/strata{
 	icon_state = "red1"
 	},
@@ -39176,6 +39272,10 @@
 	},
 /turf/open/snow/layer2,
 /area/strata/ag/exterior/marsh/center)
+"jTJ" = (
+/obj/effect/landmark/corpsespawner/PMC,
+/turf/open/snow/layer0,
+/area/strata/ag/interior/outpost/gen/bball/nest)
 "jUo" = (
 /obj/structure/machinery/light/small{
 	dir = 1
@@ -39256,6 +39356,12 @@
 "jWs" = (
 /turf/open/floor/plating,
 /area/strata/ag/exterior/landingzone_2)
+"jWw" = (
+/obj/structure/bed/nest,
+/obj/effect/decal/cleanable/blood/gibs/core,
+/obj/effect/landmark/corpsespawner/PMC,
+/turf/open/snow/layer0,
+/area/strata/ag/interior/paths/cabin_area/cave)
 "jWz" = (
 /turf/closed/wall/strata_outpost_bare,
 /area/strata/ug/interior/outpost/jung/dorms/med2)
@@ -39267,6 +39373,7 @@
 /obj/item/ammo_magazine/revolver/cmb,
 /obj/item/ammo_magazine/revolver/cmb,
 /obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/strata{
 	dir = 4;
 	icon_state = "floor3"
@@ -39694,7 +39801,7 @@
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/engi/drome)
 "kzD" = (
-/obj/effect/landmark/corpsespawner/doctor,
+/obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/floor/strata{
 	dir = 4;
 	icon_state = "floor3"
@@ -39947,11 +40054,11 @@
 /area/strata/ag/interior/outpost/med/autopsy)
 "kRb" = (
 /obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/security,
 /obj/item/explosive/grenade/incendiary{
 	pixel_x = -4;
 	pixel_y = -2
 	},
+/obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/floor/strata{
 	icon_state = "multi_tiles"
 	},
@@ -40079,6 +40186,13 @@
 	dir = 4
 	},
 /area/strata/ug/interior/jungle/deep/tearlake_west)
+"kXR" = (
+/obj/effect/landmark/corpsespawner/doctor,
+/turf/open/floor/strata{
+	dir = 8;
+	icon_state = "white_cyan2"
+	},
+/area/strata/ag/interior/outpost/canteen/lower_cafeteria)
 "kXZ" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/effect/decal/cleanable/blood/gibs/down,
@@ -40736,6 +40850,7 @@
 	pixel_y = -4
 	},
 /obj/effect/landmark/objective_landmark/medium,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/strata{
 	icon_state = "red1"
 	},
@@ -41280,6 +41395,7 @@
 /obj/effect/decal/strata_decals/grime/grime3{
 	dir = 8
 	},
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/strata{
 	dir = 4;
 	icon_state = "floor3"
@@ -42247,6 +42363,13 @@
 /obj/structure/largecrate/random/secure,
 /turf/open/snow/layer3,
 /area/strata/ag/exterior/paths/southresearch)
+"nPW" = (
+/obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/floor/strata{
+	icon_state = "orange_cover"
+	},
+/area/strata/ag/exterior/marsh/crash)
 "nQk" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/structure/machinery/recharge_station,
@@ -42481,6 +42604,7 @@
 "oeH" = (
 /obj/structure/table/reinforced/prison,
 /obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/strata,
 /area/strata/ag/interior/tcomms)
 "oeK" = (
@@ -43618,6 +43742,20 @@
 	icon_state = "orange_cover"
 	},
 /area/strata/ag/interior/outpost/engi/drome)
+"pBl" = (
+/obj/item/clothing/shoes/snow,
+/obj/structure/rack,
+/obj/item/clothing/shoes/snow,
+/obj/item/clothing/suit/storage/snow_suit,
+/obj/item/clothing/suit/storage/snow_suit,
+/obj/item/tank/emergency_oxygen/engi,
+/obj/effect/decal/strata_decals/grime/grime3{
+	dir = 8
+	},
+/obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/snow/layer1,
+/area/strata/ag/exterior/marsh/river)
 "pBO" = (
 /turf/closed/wall/strata_outpost_bare,
 /area/strata/ag/interior/outpost/med/jungle_lock)
@@ -43698,6 +43836,14 @@
 	icon_state = "platebot"
 	},
 /area/strata/ag/interior/outpost/engi/drome/shuttle)
+"pFR" = (
+/obj/structure/rack,
+/obj/item/tool/shovel/snow,
+/obj/item/device/flashlight/flare,
+/obj/item/device/flashlight,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/snow/layer1,
+/area/strata/ag/exterior/marsh/river)
 "pGt" = (
 /turf/closed/shuttle/ert{
 	icon_state = "rightengine_3";
@@ -43979,8 +44125,8 @@
 	},
 /area/strata/ag/interior/tcomms/tcomms_engi)
 "pXB" = (
-/obj/effect/landmark/corpsespawner/security,
 /obj/effect/decal/cleanable/blood/oil,
+/obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/floor/strata{
 	dir = 4;
 	icon_state = "floor3"
@@ -44136,6 +44282,11 @@
 "qgH" = (
 /turf/closed/wall/strata_outpost_bare,
 /area/strata/ag/interior/outpost/med/autopsy)
+"qhp" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/effect/landmark/corpsespawner/engineer,
+/turf/open/floor/greengrid,
+/area/strata/ag/interior/outpost/engi/emergency_storage)
 "qhP" = (
 /turf/closed/wall/strata_ice/jungle,
 /area/strata/ug/interior/jungle/deep/minehead/east)
@@ -44214,6 +44365,14 @@
 /obj/structure/platform_decoration/strata,
 /turf/open/snow/layer1,
 /area/strata/ag/exterior/nearlz2)
+"qmW" = (
+/obj/structure/largecrate/random,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/floor/strata{
+	dir = 4;
+	icon_state = "floor3"
+	},
+/area/strata/ag/exterior/research_decks/west)
 "qns" = (
 /obj/structure/machinery/light/small{
 	dir = 1;
@@ -44515,6 +44674,14 @@
 "qKx" = (
 /turf/open/asphalt/cement,
 /area/strata/ag/interior/engi_shed/two)
+"qKU" = (
+/obj/structure/bed/nest,
+/obj/effect/decal/cleanable/blood/gibs/core,
+/obj/effect/landmark/corpsespawner/doctor,
+/turf/open/floor/strata{
+	icon_state = "multi_tiles"
+	},
+/area/strata/ag/interior/dorms/hive)
 "qLp" = (
 /obj/structure/machinery/light/small,
 /obj/structure/pipes/standard/simple/hidden/cyan{
@@ -44541,6 +44708,7 @@
 /obj/item/toy/deck,
 /obj/structure/platform/strata/metal,
 /obj/effect/landmark/objective_landmark/medium,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/strata,
 /area/strata/ag/exterior/research_decks/south)
 "qMQ" = (
@@ -44601,9 +44769,9 @@
 /area/strata/ag/exterior/landingzone_2)
 "qOt" = (
 /obj/structure/closet/bodybag,
-/obj/effect/landmark/corpsespawner/miner,
 /obj/effect/decal/cleanable/blood,
 /obj/effect/landmark/objective_landmark/science,
+/obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/floor/strata,
 /area/strata/ag/exterior/research_decks/south)
 "qOF" = (
@@ -44748,12 +44916,6 @@
 	icon_state = "white_cyan1"
 	},
 /area/strata/ag/interior/dorms/canteen)
-"qVh" = (
-/obj/structure/closet/bodybag,
-/obj/effect/landmark/corpsespawner/miner,
-/obj/effect/landmark/objective_landmark/science,
-/turf/open/floor/strata,
-/area/strata/ag/exterior/research_decks/south)
 "qVl" = (
 /obj/structure/platform_decoration/strata{
 	dir = 4
@@ -44993,6 +45155,7 @@
 /obj/item/clothing/glasses/thermal/syndi,
 /obj/structure/closet/secure_closet/security,
 /obj/effect/landmark/objective_landmark/medium,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/strata{
 	dir = 8;
 	icon_state = "multi_tiles"
@@ -45327,7 +45490,7 @@
 /area/strata/ag/interior/nearlz1)
 "rHs" = (
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/corpsespawner/security,
+/obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/floor/strata{
 	dir = 4;
 	icon_state = "floor3"
@@ -45677,7 +45840,7 @@
 /obj/structure/barricade/snow{
 	dir = 1
 	},
-/obj/effect/landmark/corpsespawner/russian,
+/obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/snow/layer2,
 /area/strata/ag/exterior/paths/southresearch)
 "sjp" = (
@@ -45791,10 +45954,10 @@
 /area/strata/ug/interior/jungle/platform/south)
 "sou" = (
 /obj/structure/closet/bodybag,
-/obj/effect/landmark/corpsespawner/PMC,
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/gibs/core,
 /obj/effect/landmark/objective_landmark/science,
+/obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/snow/layer1,
 /area/strata/ag/exterior/paths/southresearch)
 "spf" = (
@@ -46138,9 +46301,9 @@
 /area/strata/ag/interior/dorms/north)
 "sJh" = (
 /obj/structure/closet/bodybag,
-/obj/effect/landmark/corpsespawner/scientist,
 /obj/effect/decal/cleanable/blood,
 /obj/effect/landmark/objective_landmark/science,
+/obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/snow/layer1,
 /area/strata/ag/exterior/paths/southresearch)
 "sJu" = (
@@ -46169,6 +46332,10 @@
 /obj/structure/fence,
 /turf/open/snow/layer2,
 /area/strata/ag/exterior/marsh)
+"sMj" = (
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/floor/strata,
+/area/strata/ag/exterior/research_decks/west)
 "sMt" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/structure/largecrate/random,
@@ -46182,6 +46349,7 @@
 	dir = 4
 	},
 /obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/almayer{
 	icon_state = "test_floor5";
 	tag = "icon-test_floor5"
@@ -46331,8 +46499,8 @@
 /turf/open/gm/grass/weedable,
 /area/strata/ug/interior/jungle/deep/tearlake_north)
 "sWr" = (
-/obj/effect/landmark/corpsespawner/security,
 /obj/item/weapon/gun/pistol/c99,
+/obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/gm/grass/weedable,
 /area/strata/ug/interior/jungle/deep/east_engi)
 "sWO" = (
@@ -46380,6 +46548,11 @@
 /obj/effect/blocker/sorokyne_cold_water,
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh/water)
+"sYj" = (
+/obj/structure/bed/nest,
+/obj/effect/landmark/corpsespawner/PMC,
+/turf/open/snow/layer0,
+/area/strata/ag/interior/outpost/gen/bball/nest)
 "sYm" = (
 /turf/open/gm/dirtgrassborder/weedable{
 	dir = 1;
@@ -46532,7 +46705,7 @@
 /turf/open/snow/layer2,
 /area/strata/ag/exterior/paths/southresearch)
 "tjo" = (
-/obj/effect/landmark/corpsespawner/doctor,
+/obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/floor/strata,
 /area/strata/ug/interior/outpost/jung/dorms/sec1)
 "tjD" = (
@@ -46572,6 +46745,7 @@
 /obj/item/storage/box/gloves,
 /obj/item/storage/box/pillbottles,
 /obj/effect/landmark/objective_landmark/far,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/strata{
 	icon_state = "floor3"
 	},
@@ -47027,6 +47201,13 @@
 	icon_state = "upp25"
 	},
 /area/strata/ag/exterior/marsh/crash)
+"tLs" = (
+/obj/structure/barricade/wooden{
+	dir = 8
+	},
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/ice,
+/area/strata/ag/exterior/paths/southresearch)
 "tLI" = (
 /turf/open/floor/strata{
 	icon_state = "fake_wood"
@@ -48264,6 +48445,7 @@
 	dir = 1
 	},
 /obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/strata{
 	icon_state = "orange_cover"
 	},
@@ -48420,6 +48602,7 @@
 "vth" = (
 /obj/structure/closet/lawcloset,
 /obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/strata{
 	dir = 4;
 	icon_state = "floor3"
@@ -48806,6 +48989,10 @@
 	dir = 8
 	},
 /area/strata/ug/interior/jungle/deep/south_dorms)
+"vPY" = (
+/obj/effect/landmark/corpsespawner/PMC,
+/turf/open/floor/strata,
+/area/strata/ug/interior/outpost/jung/dorms/admin1)
 "vQo" = (
 /turf/closed/wall/strata_ice/jungle,
 /area/strata/ug/interior/jungle/platform/east/scrub)
@@ -48858,8 +49045,8 @@
 	dir = 1;
 	pixel_y = 24
 	},
-/obj/effect/landmark/corpsespawner/doctor,
 /obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/floor/strata{
 	dir = 8;
 	icon_state = "white_cyan2"
@@ -49307,7 +49494,7 @@
 	dir = 8
 	},
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor/plating,
+/turf/open/snow/layer1,
 /area/strata/ag/exterior/marsh/river)
 "wDl" = (
 /obj/structure/rack,
@@ -49315,7 +49502,8 @@
 /obj/item/device/flashlight/flare,
 /obj/item/device/flashlight,
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor/plating,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/snow/layer1,
 /area/strata/ag/exterior/marsh/river)
 "wDq" = (
 /obj/structure/fence,
@@ -49808,6 +49996,7 @@
 	dir = 1
 	},
 /obj/effect/landmark/objective_landmark/medium,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/strata{
 	dir = 4;
 	icon_state = "floor3"
@@ -50038,11 +50227,13 @@
 /turf/closed/wall/strata_outpost_bare,
 /area/strata/ag/interior/engi_shed/one)
 "xDX" = (
-/obj/structure/platform_decoration/strata{
-	dir = 8
+/obj/structure/bed/nest,
+/obj/effect/decal/cleanable/blood/gibs/core,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/floor/strata{
+	icon_state = "multi_tiles"
 	},
-/turf/open/snow/layer0,
-/area/strata/ag/exterior/marsh/crash)
+/area/strata/ag/interior/dorms/hive)
 "xEU" = (
 /obj/effect/spawner/random/toolbox,
 /turf/open/snow/layer2,
@@ -50155,8 +50346,8 @@
 /area/strata/ag/exterior/vanyard)
 "xJD" = (
 /obj/structure/closet/bodybag,
-/obj/effect/landmark/corpsespawner/security,
 /obj/effect/landmark/objective_landmark/science,
+/obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/floor/strata,
 /area/strata/ag/exterior/research_decks/south)
 "xJH" = (
@@ -50254,9 +50445,9 @@
 /area/strata/ug/interior/jungle/deep/east_engi)
 "xOs" = (
 /obj/structure/closet/bodybag,
-/obj/effect/landmark/corpsespawner/scientist,
 /obj/effect/decal/cleanable/blood/gibs/core,
 /obj/effect/landmark/objective_landmark/science,
+/obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/floor/strata,
 /area/strata/ag/exterior/research_decks/south)
 "xPb" = (
@@ -50300,6 +50491,7 @@
 	},
 /obj/effect/decal/cleanable/blood,
 /obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/almayer{
 	icon_state = "test_floor5";
 	tag = "icon-test_floor5"
@@ -50366,10 +50558,10 @@
 /area/strata/ag/exterior/nearlz2)
 "xTZ" = (
 /obj/structure/closet/bodybag,
-/obj/effect/landmark/corpsespawner/scientist,
 /obj/effect/decal/strata_decals/grime/grime3,
 /obj/effect/decal/cleanable/blood,
 /obj/effect/landmark/objective_landmark/science,
+/obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/floor/strata,
 /area/strata/ag/exterior/research_decks/south)
 "xUg" = (
@@ -51669,11 +51861,11 @@ nTS
 crN
 bIG
 wCi
-wCi
+pBl
 bIG
 bIG
 czQ
-fRv
+nPW
 fRv
 fRv
 fRv
@@ -51861,8 +52053,8 @@ loB
 nVa
 bIG
 cwN
-cfo
-cfo
+cwN
+cwN
 bIG
 wGV
 wGV
@@ -51871,12 +52063,12 @@ ydL
 ydL
 nIy
 wqQ
-abq
+wGV
 ydL
 wGV
 wGV
 wGV
-abq
+wGV
 wGV
 wGV
 wGV
@@ -52051,11 +52243,11 @@ crN
 crN
 hYQ
 bQD
-cfo
+cwN
 pZF
-cfo
+cwN
 wDl
-wDl
+pFR
 wGV
 wGV
 wGV
@@ -52075,7 +52267,7 @@ vEJ
 vEJ
 wrh
 wGV
-abq
+wGV
 wGV
 lRP
 aTx
@@ -52268,7 +52460,7 @@ sqT
 fCI
 sUE
 fQN
-abq
+wGV
 wGV
 wGV
 abq
@@ -52825,7 +53017,7 @@ cfo
 cfo
 cwN
 cxG
-cfo
+cwN
 wGg
 sqS
 ydL
@@ -53020,7 +53212,7 @@ cfo
 cfo
 cwN
 cxG
-abq
+wGV
 czQ
 wGV
 abq
@@ -53234,7 +53426,7 @@ wGV
 tAl
 ydL
 wGV
-abq
+wGV
 wGV
 wGV
 ydL
@@ -53595,7 +53787,7 @@ cwN
 aac
 aac
 cwL
-cfo
+cwN
 cxG
 cfo
 cfo
@@ -53789,7 +53981,7 @@ aac
 aac
 cwN
 cwN
-cfo
+cwN
 cwN
 cfo
 abq
@@ -53983,11 +54175,11 @@ bLR
 lpW
 cwN
 cwN
-cfo
+cwN
 cxG
 wGV
 xyP
-abq
+wGV
 wGV
 abq
 tKS
@@ -54181,7 +54373,7 @@ cwN
 wGV
 lqi
 mGG
-xDX
+fQN
 wGV
 abq
 abq
@@ -54375,7 +54567,7 @@ ydL
 fvO
 aac
 fvP
-xDX
+fQN
 wGV
 abq
 wGV
@@ -54587,7 +54779,7 @@ ydL
 ydL
 wGV
 dsp
-qXI
+dsp
 dsp
 aac
 aac
@@ -54759,7 +54951,7 @@ cwN
 wGV
 wGV
 fvO
-wGV
+fCI
 fCI
 aCB
 wGV
@@ -54780,7 +54972,7 @@ ydL
 wGV
 qXI
 dsp
-qXI
+dsp
 lUN
 aac
 aac
@@ -54972,7 +55164,7 @@ ydL
 wGV
 qXI
 dsp
-qXI
+dsp
 dsp
 coC
 wrw
@@ -55078,11 +55270,11 @@ aac
 clp
 cnO
 bjY
-aeG
-aeG
+xDX
+qKU
 cmB
 bjY
-aiE
+xDX
 exO
 cnO
 clp
@@ -55146,9 +55338,9 @@ cex
 cwS
 oMy
 rQX
-erA
+rQX
 euc
-cex
+cwS
 cwS
 glN
 eLF
@@ -55336,11 +55528,11 @@ edm
 qbq
 cwS
 cwS
-cex
 cwS
-cex
 cwS
-cex
+cwS
+cwS
+cwS
 fzN
 waM
 cbO
@@ -55355,9 +55547,9 @@ bQE
 eOX
 wGV
 dsp
-qXI
+coC
 dsp
-qXI
+dsp
 dsp
 coC
 emv
@@ -55463,7 +55655,7 @@ aac
 aac
 clp
 cnO
-agb
+aiE
 agC
 ipI
 ahR
@@ -55530,9 +55722,9 @@ qbP
 sDB
 idz
 cxv
-cex
 cwS
-cex
+cwS
+cwS
 cwS
 cwS
 nGi
@@ -55548,10 +55740,10 @@ aac
 aac
 gBG
 dsp
-qXI
+coC
 dsp
 dsp
-qXI
+coC
 coC
 rbO
 aac
@@ -55660,9 +55852,9 @@ bjY
 rzH
 cnO
 cnO
-aiD
+kRb
 bjY
-aiE
+qKU
 cnO
 clp
 bwl
@@ -55740,7 +55932,7 @@ aac
 aac
 aac
 dsp
-qXI
+coC
 dsp
 tCi
 nVI
@@ -55849,11 +56041,11 @@ aac
 aac
 clp
 afB
-agb
+cEu
 agD
-agb
-cnO
 aiE
+cnO
+xDX
 bjY
 kRb
 cnO
@@ -56042,9 +56234,9 @@ aac
 aac
 clp
 afC
-agb
+aiE
 agE
-agb
+aiE
 cnO
 coc
 ajl
@@ -56265,7 +56457,7 @@ aEK
 aFR
 aHd
 aIm
-chq
+fWV
 aLg
 aMB
 cjv
@@ -57004,11 +57196,11 @@ aac
 clp
 cnO
 aes
-aeG
+aiE
 cnO
 afF
 clp
-agb
+aiE
 aht
 cnO
 cfr
@@ -57389,13 +57581,13 @@ aac
 aac
 clp
 cnO
-aiE
+ioz
 aiE
 cnO
 afE
 clp
 agI
-agb
+izc
 cnO
 wGx
 bPu
@@ -61713,7 +61905,7 @@ cex
 cex
 cex
 cex
-cxv
+cex
 iAL
 tUC
 rZg
@@ -62072,7 +62264,7 @@ beR
 bhz
 bkv
 bnT
-brt
+hTX
 bhC
 bhD
 cqH
@@ -66901,7 +67093,7 @@ aRR
 aRR
 bxH
 brA
-bGk
+qmW
 aac
 bNj
 bRV
@@ -67468,7 +67660,7 @@ aQO
 aQO
 aTn
 aUH
-aQM
+sMj
 aYm
 bal
 aQJ
@@ -68865,7 +69057,7 @@ aac
 aac
 aac
 vpi
-jrw
+tLs
 aac
 aac
 aac
@@ -70409,7 +70601,7 @@ dDJ
 aac
 aac
 aac
-xFA
+fwn
 xPT
 tUZ
 scq
@@ -70676,7 +70868,7 @@ aab
 aac
 aac
 aac
-aHy
+sYj
 aHz
 bgn
 aTR
@@ -71545,7 +71737,7 @@ bTF
 bTF
 mqQ
 oqJ
-qVh
+xJD
 ukx
 xTZ
 cuP
@@ -72804,7 +72996,7 @@ bFg
 chS
 cdo
 ccf
-biC
+aat
 ccf
 cdo
 pIa
@@ -73039,7 +73231,7 @@ ceC
 ceC
 ceC
 xvy
-bVM
+qhp
 tlc
 art
 asu
@@ -73589,7 +73781,7 @@ aTR
 ccf
 cdo
 cfa
-ccf
+jTJ
 cfF
 cdo
 cfF
@@ -73969,7 +74161,7 @@ cjq
 cpV
 aay
 ccf
-bwM
+cfa
 ccf
 cdo
 cfF
@@ -74176,7 +74368,7 @@ ced
 ced
 dWm
 cdA
-bdm
+biC
 mce
 meu
 wol
@@ -75712,7 +75904,7 @@ pIa
 aaV
 cdo
 ccf
-bwM
+cfa
 ced
 cdo
 ccf
@@ -76591,7 +76783,7 @@ wZZ
 cIM
 aYQ
 aYQ
-hwI
+vPY
 pEm
 hwI
 piD
@@ -77638,8 +77830,8 @@ aLK
 gMa
 gMa
 aLK
-bke
-aaU
+bmG
+bmG
 aLK
 cdo
 bpm
@@ -77883,7 +78075,7 @@ aHJ
 ckK
 aKR
 aMj
-cji
+grP
 cka
 ckI
 ckI
@@ -78211,13 +78403,13 @@ aac
 aac
 aac
 aLK
-aNp
+bke
 aNj
 beb
 aaI
 beb
 biu
-aaU
+jWw
 aNi
 beb
 aLK
@@ -78404,7 +78596,7 @@ aac
 aac
 aac
 aLK
-aNp
+bmG
 aNk
 beb
 beb
@@ -78791,8 +78983,8 @@ aac
 aac
 aac
 aLK
-aNp
-aNp
+bke
+bmG
 aLK
 aLK
 gMa
@@ -79998,7 +80190,7 @@ ccr
 ccr
 aAK
 ccr
-ccr
+kXR
 aEj
 ckM
 ccr
@@ -86913,7 +87105,7 @@ bnd
 bnd
 btz
 abC
-acx
+iGR
 bnd
 bDm
 abS

@@ -910,7 +910,7 @@
 /area/whiskey_outpost/inside/engineering)
 "cs" = (
 /obj/effect/landmark/start/whiskey{
-	name = "Lieutendant Commander"
+	name = "Lieutenant Commander"
 	},
 /turf/open/floor/prison{
 	tag = "icon-floor_plate";
@@ -7601,8 +7601,8 @@
 /area/whiskey_outpost/outside/north)
 "sw" = (
 /obj/structure/rack,
-/obj/structure/magazine_box,
 /obj/item/storage/box/m94,
+/obj/item/ammo_box/magazine,
 /turf/open/floor/prison{
 	tag = "icon-floor_plate";
 	icon_state = "floor_plate";

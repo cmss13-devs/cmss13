@@ -530,6 +530,9 @@
 			for(var/ch_name in channels)
 				secure_radio_connections[ch_name] = radio_controller.add_object(src, radiochannels[ch_name],  RADIO_CHAT)
 			recalculateChannels()
+			if(H.mind && H.hud_used && H.hud_used.locate_leader)	//make SL tracker visible
+				H.hud_used.locate_leader.alpha = 255
+				H.hud_used.locate_leader.mouse_opacity = 1
 
 //Distress (ERT) headsets.
 

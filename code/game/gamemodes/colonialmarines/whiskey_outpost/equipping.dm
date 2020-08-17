@@ -41,7 +41,7 @@ Destruction in inevitable. At the very least, you can assist in preventing other
 *************************************/
 /datum/job/command/executive/whiskey
 	title = JOB_WO_XO
-	gear_preset = "WO Lieutendant Commander"
+	gear_preset = "WO Lieutenant Commander"
 
 	generate_entry_message(mob/living/carbon/human/H)
 		. = {"You've been with the commander for as long as you can remember. You've always been the bookish nerd to the Honor Guard Squad Leader's jock; as such, you're the commander's right-hand man.

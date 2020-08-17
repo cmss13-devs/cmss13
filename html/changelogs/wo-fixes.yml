@@ -1,8 +1,0 @@
-author: Jeser
-
-delete-after: True
-
-changes: 
-  - bugfix: "Fixed issue with Whiskey Outpost's XO role, Lieutenant Commander, not spawning."
-  - bugfix: "Fixed bugged magazine box spawning at North-East mini-pillbox in main bunker perimeter by replacing it with M41A magazine box instead."
-  - bugfix: "Fixed SL tracker not appearing automatically for squad marines upon roundstart."

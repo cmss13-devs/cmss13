@@ -30,8 +30,8 @@
 	for(var/turf/T in turfs_ahead)
 		if(!istype(T, /turf/open/snow)) continue
 		var/turf/open/snow/ST = T
-		if(!ST || !ST.slayer)
+		if(!ST || !ST.bleed_layer)
 			continue
-		new /obj/item/stack/snow(ST, ST.slayer)
-		ST.slayer = 0
+		new /obj/item/stack/snow(ST, ST.bleed_layer)
+		ST.bleed_layer = 0
 		ST.update_icon(1, 0)

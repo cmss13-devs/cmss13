@@ -906,6 +906,7 @@
 #include "code\game\objects\structures\stool_bed_chair_nest\stools.dm"
 #include "code\game\objects\structures\stool_bed_chair_nest\wheelchair.dm"
 #include "code\game\objects\structures\stool_bed_chair_nest\xeno_nest.dm"
+#include "code\game\turfs\auto_turf.dm"
 #include "code\game\turfs\closed.dm"
 #include "code\game\turfs\floor.dm"
 #include "code\game\turfs\floor_types.dm"

@@ -42,7 +42,7 @@
 	update_icon(1,1)
 
 /turf/open/snow/Entered(atom/movable/AM)
-	if(slayer > 0)
+	if(bleed_layer > 0)
 		if(iscarbon(AM))
 			var/mob/living/carbon/C = AM
 			var/slow_amount = 0.75
@@ -50,10 +50,10 @@
 			if(istype(C, /mob/living/carbon/Xenomorph)||isYautja(C))
 				slow_amount = 0.25
 				can_stuck = 0
-			var/new_slowdown = C.next_move_slowdown + (slow_amount * slayer)
+			var/new_slowdown = C.next_move_slowdown + (slow_amount * bleed_layer)
 			if(prob(2))
 				to_chat(C, SPAN_WARNING("Moving through [src] slows you down.")) //Warning only
-			else if(can_stuck && slayer == 3 && prob(2))
+			else if(can_stuck && bleed_layer == 3 && prob(2))
 				to_chat(C, SPAN_WARNING("You get stuck in [src] for a moment!"))
 				new_slowdown += 10
 			C.next_move_slowdown = new_slowdown
@@ -62,9 +62,9 @@
 
 //Update icon
 /turf/open/snow/update_icon(var/update_full, var/skip_sides)
-	icon_state = "snow_[slayer]"
+	icon_state = "snow_[bleed_layer]"
 	dir = pick(NORTH,SOUTH,EAST,WEST,NORTHEAST,NORTHWEST,SOUTHEAST,SOUTHWEST)
-	switch(slayer)
+	switch(bleed_layer)
 		if(0)
 			name = "dirt floor"
 		if(1)
@@ -89,7 +89,7 @@
 		for(var/dirn in alldirs)
 			T = get_step(src, dirn)
 			if(istype(T))
-				if(slayer > T.slayer && T.slayer < 1)
+				if(bleed_layer > T.bleed_layer && T.bleed_layer < 1)
 					var/image/I = new('icons/turf/floors/snow2.dmi', "snow_[(dirn & (dirn-1)) ? "outercorner" : pick("innercorner", "outercorner")]", dir = dirn)
 					switch(dirn)
 						if(NORTH)
@@ -113,7 +113,7 @@
 							I.pixel_x = -32
 							I.pixel_y = -32
 
-					I.layer = layer + 0.001 + slayer * 0.0001
+					I.layer = layer + 0.001 + bleed_layer * 0.0001
 					overlays += I
 
 
@@ -121,34 +121,34 @@
 /turf/open/snow/ex_act(severity)
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
-			if(prob(20) && slayer)
-				slayer -= 1
+			if(prob(20) && bleed_layer)
+				bleed_layer -= 1
 				update_icon(1, 0)
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
-			if(prob(60) && slayer)
-				slayer = max(slayer - 2, 0)
+			if(prob(60) && bleed_layer)
+				bleed_layer = max(bleed_layer - 2, 0)
 				update_icon(1, 0)
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			if(slayer)
-				slayer = 0
+			if(bleed_layer)
+				bleed_layer = 0
 				update_icon(1, 0)
 
 //SNOW LAYERS-----------------------------------//
 /turf/open/snow/layer0
 	icon_state = "snow_0"
-	slayer = 0
+	bleed_layer = 0
 
 /turf/open/snow/layer1
 	icon_state = "snow_1"
-	slayer = 1
+	bleed_layer = 1
 
 /turf/open/snow/layer2
 	icon_state = "snow_2"
-	slayer = 2
+	bleed_layer = 2
 
 /turf/open/snow/layer3
 	icon_state = "snow_3"
-	slayer = 3
+	bleed_layer = 3
 
 
 

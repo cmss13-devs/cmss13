@@ -83,6 +83,8 @@ var/list/wood_icons = list("wood", "wood-broken")
 
 
 /turf/open/floor/update_icon()
+	. = ..()
+
 	if(is_plasteel_floor())
 		if(!broken && !burnt)
 			icon_state = icon_regular_floor

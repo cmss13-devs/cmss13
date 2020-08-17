@@ -44,8 +44,9 @@
 	desc = "Cats really don't like these things."
 	var/covered = 1 //1 for theres the cover, 0 if there isn't.
 
-	New()
-		..()
+/turf/open/floor/plating/plating_catwalk/Initialize(mapload, ...)
+		. = ..()
+		
 		icon_state = base_state
 		update_turf_overlay()
 

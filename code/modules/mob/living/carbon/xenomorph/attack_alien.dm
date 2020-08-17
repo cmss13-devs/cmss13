@@ -805,7 +805,7 @@
 	if(M.a_intent == INTENT_HELP)
 		return FALSE
 
-	if(!slayer)
+	if(!bleed_layer)
 		to_chat(M, SPAN_WARNING("There is nothing to clear out!"))
 		return FALSE
 
@@ -815,13 +815,13 @@
 	if(!do_after(M, 25, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 		return FALSE
 
-	if(!slayer)
+	if(!bleed_layer)
 		to_chat(M, SPAN_WARNING("There is nothing to clear out!"))
 		return
 
 	M.visible_message(SPAN_NOTICE("[M] clears out [src]."), \
 	SPAN_NOTICE("You clear out [src]."), null, 5, CHAT_TYPE_XENO_COMBAT)
-	slayer -= 1
+	bleed_layer -= 1
 	update_icon(1, 0)
 
 /turf/open/snow/attack_larva(mob/living/carbon/Xenomorph/Larva/M)

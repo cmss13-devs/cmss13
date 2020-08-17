@@ -361,8 +361,8 @@
 	if (istype(loc, /turf/open/snow))
 		var/turf/open/snow/S = loc
 
-		if (S.slayer > 0)
-			S.slayer -= 1
+		if (S.bleed_layer > 0)
+			S.bleed_layer -= 1
 			S.update_icon(1, 0)
 
 	for(var/mob/living/M in loc) //Deal bonus damage if someone's caught directly in initial stream

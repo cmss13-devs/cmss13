@@ -78,7 +78,7 @@
 			if(turfdirt)
 				if(turfdirt == DIRT_TYPE_SNOW)
 					var/turf/open/snow/ST = T
-					if(!ST.slayer)
+					if(!ST.bleed_layer)
 						return
 				to_chat(user, SPAN_NOTICE("You start digging."))
 				playsound(user.loc, 'sound/effects/thud.ogg', 40, 1, 6)
@@ -88,10 +88,10 @@
 				var/transf_amt = dirt_amt_per_dig
 				if(turfdirt == DIRT_TYPE_SNOW)
 					var/turf/open/snow/ST = T
-					if(!ST.slayer)
+					if(!ST.bleed_layer)
 						return
-					transf_amt = min(ST.slayer, dirt_amt_per_dig)
-					ST.slayer -= transf_amt
+					transf_amt = min(ST.bleed_layer, dirt_amt_per_dig)
+					ST.bleed_layer -= transf_amt
 					ST.update_icon(1,0)
 					to_chat(user, SPAN_NOTICE("You dig up some snow."))
 				else

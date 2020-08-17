@@ -1229,6 +1229,11 @@
 		if(!O.up)
 			tint_level = VISION_IMPAIR_MAX
 
+	else if(istype(head, /obj/item/clothing/head/helmet/marine/tech))
+		var/obj/item/clothing/head/helmet/marine/tech/O = head
+		if(O.protection_on)
+			tint_level = VISION_IMPAIR_MAX
+
 	if(glasses && glasses.has_tint && glasses.active)
 		tint_level = VISION_IMPAIR_MAX
 

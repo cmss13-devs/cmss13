@@ -693,7 +693,7 @@
 	name = "UT-Napthal Fuel"
 	id = "utnapthal"
 	description = "Known as Ultra Thick Napthal Fuel, a sticky combustable liquid chemical, typically used with flamethrowers."
-	burncolor = "#D05006"
+	burncolor = "#EE6515"
 
 /datum/reagent/napalm/ut/New()
 	properties += list(

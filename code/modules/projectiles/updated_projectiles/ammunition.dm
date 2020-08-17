@@ -103,6 +103,10 @@ They're all essentially identical when it comes to getting the job done.
 			user.temp_drop_inv_item(source)
 		qdel(source) //Dangerous. Can mean future procs break if they reference the source. Have to account for this.
 	else source.update_icon()
+
+	if(!istype(src, /obj/item/ammo_magazine/internal))	//if we are shotgun or revolver or whatever not using normal mag system
+		playsound(loc, pick('sound/weapons/handling/mag_refill_1.ogg', 'sound/weapons/handling/mag_refill_2.ogg', 'sound/weapons/handling/mag_refill_3.ogg'), 25, 1)
+
 	update_icon(S)
 	return S // We return the number transferred if it was successful.
 
@@ -115,7 +119,8 @@ They're all essentially identical when it comes to getting the job done.
 		R = transfer_amount ? min(current_rounds, transfer_amount) : min(current_rounds, MR)
 		new_handful.generate_handful(default_ammo, caliber, MR, R, gun_type)
 		current_rounds -= R
-		playsound(loc, pick('sound/weapons/handling/mag_refill_1.ogg', 'sound/weapons/handling/mag_refill_2.ogg', 'sound/weapons/handling/mag_refill_3.ogg'), 25, 1)
+		if(!istype(src, /obj/item/ammo_magazine/internal))	//if we are shotgun or revolver or whatever not using normal mag system
+			playsound(loc, pick('sound/weapons/handling/mag_refill_1.ogg', 'sound/weapons/handling/mag_refill_2.ogg', 'sound/weapons/handling/mag_refill_3.ogg'), 25, 1)
 
 		if(user)
 			user.put_in_hands(new_handful)

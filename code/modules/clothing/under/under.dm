@@ -25,6 +25,7 @@
 		*/
 	var/displays_id = 1
 	var/rollable_sleeves = FALSE //can we roll the sleeves on this uniform?
+	var/cuttable_sleeves = FALSE
 	var/rolled_sleeves = FALSE //are the sleeves currently rolled?
 	var/list/suit_restricted //for uniforms that only accept to be combined with certain suits
 	var/removed_parts = 0
@@ -47,6 +48,8 @@
 	//autodetect rollability
 	if((worn_state + "_d") in icon_states(default_onmob_icons[WEAR_BODY]))
 		rollable_sleeves = TRUE
+	if((worn_state + "_df") in icon_states(default_onmob_icons[WEAR_BODY]))
+		cuttable_sleeves = TRUE	
 	..()
 
 /obj/item/clothing/Dispose()
@@ -197,3 +200,21 @@
 
 		update_clothing_icon()
 	else to_chat(usr, SPAN_WARNING("You cannot roll down the uniform!"))
+
+/obj/item/clothing/under/attackby(obj/item/B, mob/user)
+	if(istype(B, /obj/item/attachable/bayonet) && (user.a_intent == INTENT_HARM))
+		if(user.a_intent != INTENT_HARM)
+			to_chat(user, SPAN_NOTICE("You need to be on harm intent to cut up [src] with [B]."))
+		if(cuttable_sleeves == FALSE)
+			to_chat(user, SPAN_NOTICE("You can't cut up [src]."))
+		if(rolled_sleeves == TRUE)
+			to_chat(user, SPAN_NOTICE("You can't dice up [src] while its rolled."))
+		else 
+			rollable_sleeves = FALSE
+			cuttable_sleeves = FALSE
+			item_state_slots[WEAR_BODY] = "[worn_state]_df"
+			user.visible_message("[user] slices [src] with [B].")
+			update_clothing_icon()
+			update_rollsuit_status()
+	else
+		..()

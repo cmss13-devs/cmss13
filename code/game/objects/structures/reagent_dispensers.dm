@@ -144,6 +144,7 @@
 	var/modded = 0
 	var/obj/item/device/assembly_holder/rig = null
 	var/exploding = 0
+	var/reinforced = FALSE
 	var/source_mob
 
 /obj/structure/reagent_dispensers/fueltank/examine(mob/user)
@@ -153,6 +154,8 @@
 		to_chat(user, SPAN_DANGER("Fuel faucet is wrenched open, leaking the fuel!"))
 	if(rig)
 		to_chat(user, SPAN_NOTICE("There is some kind of device rigged to the tank."))
+	if(reinforced)
+		to_chat(user, SPAN_NOTICE("It seems to be reinforced with metal shielding."))
 
 /obj/structure/reagent_dispensers/fueltank/attack_hand()
 	if(rig)
@@ -167,6 +170,11 @@
 
 /obj/structure/reagent_dispensers/fueltank/attackby(obj/item/W as obj, mob/user as mob)
 	src.add_fingerprint(user)
+
+	if(user.action_busy)
+		to_chat(user, SPAN_WARNING("You're already peforming an action!"))
+		return
+
 	/*if (istype(W,/obj/item/tool/wrench))
 		user.visible_message("[user] wrenches [src]'s faucet [modded ? "closed" : "open"].", \
 			"You wrench [src]'s faucet [modded ? "closed" : "open"]")
@@ -180,7 +188,12 @@
 			to_chat(user, SPAN_DANGER("There is another device in the way."))
 			return ..()
 		user.visible_message("[user] begins rigging [W] to \the [src].", "You begin rigging [W] to \the [src]")
-		if(do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+		if(do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_HOSTILE, src, INTERRUPT_ALL))
+
+			if(rig)
+				to_chat(user, SPAN_DANGER("There is another device in the way."))
+				return ..()
+
 			user.visible_message(SPAN_NOTICE("[user] rigs [W] to \the [src]."), SPAN_NOTICE(" You rig [W] to \the [src]"))
 
 			var/obj/item/device/assembly_holder/H = W
@@ -193,12 +206,49 @@
 			
 			update_icon()
 
+	else if(istype(W,/obj/item/stack/sheet/metal/))
+		var/obj/item/stack/sheet/metal/M = W
+		if(M.get_amount() < STACK_5)
+			to_chat(user, SPAN_WARNING("You don't have enough of [M] to reinforce [src]."))
+			return
+
+		user.visible_message(SPAN_NOTICE("[user] begins reinforcing the exterior of [src] with [M]."),\
+		SPAN_NOTICE("You begin reinforcing [src] with [M]."))
+
+		if(!do_after(user, SECONDS_3, INTERRUPT_ALL, BUSY_ICON_BUILD, src, INTERRUPT_ALL) || reinforced)
+			return
+
+		if(!M.use(STACK_5))
+			to_chat(user, SPAN_WARNING("You don't have enough of [M] to reinforce [src]."))
+			return
+
+		user.visible_message(SPAN_NOTICE("[user] reinforces the exterior of [src] with [M]."),\
+		SPAN_NOTICE("You reinforce [src] with [M]."))
+
+		reinforced = TRUE
+		update_icon()
+
+	else if(istype(W, /obj/item/tool/crowbar))
+		
+		user.visible_message(SPAN_DANGER("[user] begins to remove the shielding from [src]."),\
+		SPAN_NOTICE("You begin to remove the shielding from [src]."))
+
+		if(!do_after(user, SECONDS_3, INTERRUPT_ALL, BUSY_ICON_BUILD, src, INTERRUPT_ALL) || !reinforced)
+			return
+
+		user.visible_message(SPAN_DANGER("[user] removes the shielding from [src]."),\
+		SPAN_NOTICE("You remove the shielding from [src]."))
+		new /obj/item/stack/sheet/metal(loc, STACK_5)
+
+		reinforced = FALSE
+		update_icon()
+
 	return ..()
 
 
 /obj/structure/reagent_dispensers/fueltank/bullet_act(var/obj/item/projectile/Proj)
 	if(exploding) return 0
-	if(istype(Proj.firer,/mob/living/carbon/human))
+	if(istype(Proj.firer,/mob/living/carbon/human) && !reinforced)
 		message_staff("[key_name_admin(Proj.firer)] shot [name] at [loc.loc.name] ([loc.x],[loc.y],[loc.z]) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[loc.x];Y=[loc.y];Z=[loc.z]'>JMP</a>).")
 		log_game("[key_name(Proj.firer)] shot [name] at [loc.loc.name] ([loc.x],[loc.y],[loc.z]).")
 	if(ismob(Proj.firer))
@@ -212,17 +262,37 @@
 /obj/structure/reagent_dispensers/fueltank/ex_act(severity)
 	if(exploding) return
 	exploding = 1
-	explode()
+	if(severity >= EXPLOSION_THRESHOLD_HIGH)
+		explode(TRUE)
+	else
+		explode()
 
 	if(src)
 		. = ..()
 
-/obj/structure/reagent_dispensers/fueltank/proc/explode()
-	if(reagents.handle_volatiles() && src)
+/obj/structure/reagent_dispensers/fueltank/proc/explode(var/force)
+	if(!(reinforced && !force) && reagents.handle_volatiles() && src)
 		qdel(src)
 	else if(src)
 		exploding = FALSE
 		update_icon()
+
+/obj/structure/reagent_dispensers/fueltank/update_icon(var/cut_overlays = TRUE)
+	if(cut_overlays)
+		overlays.Cut()
+	. = ..()
+	
+	if(rig)
+		overlays += image(icon, "t_signaller")
+		if(exploding)
+			overlays += image(icon, "t_boom")
+		else
+			overlays += image(icon, "t_active")
+	else
+		overlays += image(icon, "t_inactive")
+
+	if(reinforced)
+		overlays += image(icon, icon_state = "t_reinforced")
 
 /obj/structure/reagent_dispensers/fueltank/fire_act(temperature, volume)
 	if(temperature > T0C+500)
@@ -288,15 +358,6 @@
 
 	var/set_icon_state = "tn_color"
 
-	if(rig)
-		overlays += image(icon, "t_signaller")
-		if(exploding)
-			overlays += image(icon, "t_boom")
-		else
-			overlays += image(icon, "t_active")
-	else
-		overlays += image(icon, "t_inactive")
-
 	if(icon_state == "tank_explosive")
 		set_icon_state = "te_color"
 
@@ -306,6 +367,8 @@
 		I.color = mix_color_from_reagents(reagents.reagent_list)
 
 	overlays += I
+
+	. = ..(FALSE)
 
 
 /obj/structure/reagent_dispensers/peppertank

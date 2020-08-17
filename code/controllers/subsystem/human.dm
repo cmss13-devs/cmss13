@@ -14,7 +14,6 @@ var/datum/subsystem/human/SShuman
 /datum/subsystem/human/New()
 	NEW_SS_GLOBAL(SShuman)
 
-
 /datum/subsystem/human/stat_entry()
 	..("P:[processable_human_list.len]")
 

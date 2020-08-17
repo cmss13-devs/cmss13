@@ -222,7 +222,7 @@
 /turf/closed/wall/indestructible/splashscreen
 	name = "Lobby Art"
 	desc = "Assorted artworks."
-	icon = 'icons/lobby/title.dmi'
+	icon_source = "lobby_art"
 	icon_state = "lobbyart1"
 //	icon_state = "title_holiday"
 	layer = FLY_LAYER
@@ -505,7 +505,7 @@
 /turf/closed/wall/resin
 	name = "resin wall"
 	desc = "Weird slime solidified into a wall."
-	icon = 'icons/mob/xenos/structures.dmi'
+	icon_source = "alien_structures"
 	icon_state = "resin"
 	walltype = WALL_RESIN
 	damage_cap = HEALTH_WALL_XENO

@@ -11,7 +11,7 @@
 /obj/item/clothing/mask/facehugger
 	name = "alien"
 	desc = "It has some sort of a tube at the end of its tail."
-	icon = 'icons/mob/xenos/Effects.dmi'
+	icon_source = "alien_effects"
 	icon_state = "facehugger"
 	item_state = "facehugger"
 	w_class = SIZE_TINY //Note: can be picked up by aliens unlike most other items of w_class below 4

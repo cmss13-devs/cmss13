@@ -8,6 +8,8 @@
 
 	var/icobase = 'icons/mob/humans/species/r_human.dmi'    // Normal icon set.
 	var/deform = 'icons/mob/humans/species/r_def_human.dmi' // Mutated icon set.
+	var/icobase_source // if we want to use sourcing system
+	var/deform_source
 	var/eyes = "eyes_s"                                  // Icon for eyes.
 	var/uses_ethnicity = FALSE						 //Set to TRUE to load proper ethnicities and what have you
 
@@ -270,6 +272,11 @@
 
 /datum/species/proc/handle_post_spawn(var/mob/living/carbon/human/H) //Handles anything not already covered by basic species assignment.
 	add_inherent_verbs(H)
+	
+	if(icobase_source)
+		icobase = get_icon_from_source(icobase_source)
+	if(deform_source)
+		deform = get_icon_from_source(deform_source)
 
 /datum/species/proc/handle_death(var/mob/living/carbon/human/H) //Handles any species-specific death events.
 /*
@@ -560,8 +567,8 @@
 /datum/species/yautja
 	name = "Yautja"
 	name_plural = "Yautja"
-	icobase = 'icons/mob/humans/species/r_predator.dmi'
-	deform = 'icons/mob/humans/species/r_predator.dmi'
+	icobase_source = "species_hunter"
+	deform_source = "species_hunter"
 	brute_mod = 0.33 //Beefy!
 	burn_mod = 0.65
 	reagent_tag = IS_YAUTJA

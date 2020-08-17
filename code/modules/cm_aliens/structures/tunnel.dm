@@ -5,7 +5,7 @@
 /obj/structure/tunnel
 	name = "tunnel"
 	desc = "A tunnel entrance. Looks like it was dug by some kind of clawed beast."
-	icon = 'icons/mob/xenos/effects.dmi'
+	icon_source = "alien_effects"
 	icon_state = "hole"
 
 	density = 0

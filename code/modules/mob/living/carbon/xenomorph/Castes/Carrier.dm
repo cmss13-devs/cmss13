@@ -40,7 +40,7 @@
 	caste_name = "Carrier"
 	name = "Carrier"
 	desc = "A strange-looking alien creature. It carries a number of scuttling jointed crablike creatures."
-	icon = 'icons/mob/xenos/carrier.dmi' //They are now like, 2x2
+	icon_source = "alien_carrier"
 	icon_size = 64
 	icon_state = "Carrier Walking"
 	plasma_types = list(PLASMA_PURPLE)

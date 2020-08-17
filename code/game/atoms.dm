@@ -53,7 +53,15 @@
 	// Whether the atom is an obstacle that should be considered for passing
 	var/can_block_movement = FALSE
 
-/atom/New(loc, ...)
+	// what icon we use
+	var/icon_source
+
+/atom/New(loc, ...)	
+	if(icon_source)
+		if(!icon_source_files[icon_source])
+			icon_source_files[icon_source] = file(icon_source_master[icon_source])
+		icon = icon_source_files[icon_source]
+	
 	var/check_initialize = SSatoms.init_state
 	if(check_initialize != INITIALIZATION_INSSATOMS)
 		var/check = FALSE

@@ -33,7 +33,7 @@
 	caste_name = "Spitter"
 	name = "Spitter"
 	desc = "A gross, oozing alien of some kind."
-	icon = 'icons/mob/xenos/spitter.dmi'
+	icon_source = "alien_spitter"
 	icon_size = 48
 	icon_state = "Spitter Walking"
 	plasma_types = list(PLASMA_NEUROTOXIN)

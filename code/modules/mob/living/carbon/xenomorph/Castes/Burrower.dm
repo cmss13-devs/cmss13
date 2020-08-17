@@ -36,7 +36,7 @@
 	caste_name = "Burrower"
 	name = "Burrower"
 	desc = "A beefy, alien with sharp claws."
-	icon = 'icons/mob/xenos/burrower.dmi'
+	icon_source = "alien_burrower"
 	icon_size = 64
 	icon_state = "Burrower Walking"
 	layer = MOB_LAYER

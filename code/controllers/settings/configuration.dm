@@ -164,6 +164,13 @@
 		switch(type)
 			if("config") initilize_configuration(name,value)
 			if("game_options") initialize_game_options(name, value)
+			if("icon_source") initialize_icon_source(name, value)
+
+/datum/configuration/proc/initialize_icon_source(name,value)
+	if(!icon_source_master[name])
+		log_misc("Unknown icon source was attempted to initialize. Type [name] source [value].")
+		return
+	icon_source_master[name] = value
 
 /datum/configuration/proc/initilize_configuration(name,value)
 	switch (name)

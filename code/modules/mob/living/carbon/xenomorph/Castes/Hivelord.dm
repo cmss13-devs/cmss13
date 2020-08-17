@@ -36,7 +36,7 @@
 	caste_name = "Hivelord"
 	name = "Hivelord"
 	desc = "A builder of really big hives."
-	icon = 'icons/mob/xenos/hivelord.dmi'
+	icon_source = "alien_hivelord"
 	icon_size = 64
 	icon_state = "Hivelord Walking"
 	plasma_types = list(PLASMA_PURPLE,PLASMA_PHEROMONE)

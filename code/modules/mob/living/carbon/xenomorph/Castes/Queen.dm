@@ -56,10 +56,10 @@
 	caste_name = "Queen"
 	name = "Queen"
 	desc = "A huge, looming alien creature. The biggest and the baddest."
-	icon = 'icons/mob/xenos/queen.dmi'
+	icon_source = "alien_queen_standing"
 	icon_size = 64
-	var/icon_body = 'icons/mob/xenos/queen.dmi'
-	var/icon_ovi = 'icons/mob/xenos/Ovipositor.dmi'
+	var/icon_body = "alien_queen_standing"
+	var/icon_ovi = "alien_queen_ovipositor"
 	icon_state = "Queen Walking"
 	plasma_types = list(PLASMA_ROYAL,PLASMA_CHITIN,PLASMA_PHEROMONE,PLASMA_NEUROTOXIN)
 	attacktext = "bites"
@@ -586,11 +586,17 @@
 
 
 /mob/living/carbon/Xenomorph/Queen/update_icons()
-	icon = icon_body
+	if(icon_body)
+		if(!icon_source_files[icon_body])
+			icon_source_files[icon_body] = file(icon_source_master[icon_body])
+		icon = icon_source_files[icon_body]
 	if(stat == DEAD)
 		icon_state = "[mutation_type] Queen Dead"
 	else if(ovipositor)
-		icon = icon_ovi
+		if(icon_ovi)
+			if(!icon_source_files[icon_ovi])
+				icon_source_files[icon_ovi] = file(icon_source_master[icon_ovi])
+			icon = icon_source_files[icon_ovi]
 		icon_state = "[mutation_type] Queen Ovipositor"
 	else if(lying)
 		if((resting || sleeping) && (!knocked_down && !knocked_out && health > 0))

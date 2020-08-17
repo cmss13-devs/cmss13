@@ -130,6 +130,7 @@
 #include "code\controllers\settings\combat_defines.dm"
 #include "code\controllers\settings\combat_personalized.dm"
 #include "code\controllers\settings\configuration.dm"
+#include "code\controllers\settings\icon_source_map.dm"
 #include "code\controllers\settings\game_options.dm"
 #include "code\controllers\subsystem\admin.dm"
 #include "code\controllers\subsystem\assets.dm"

@@ -191,6 +191,20 @@
 	else
 		icon_state = initial(icon_state)
 
+/obj/item/ammo_magazine/rocket/custom/update_icon()
+	if(current_rounds <= 0)
+		return ..()
+	if(warhead)
+		if(locked)
+			if(fuel && fuel.reagents.get_reagent_amount(fuel_type) >= fuel_requirement)
+				icon_state = initial(icon_state) +"_locked"
+			else
+				icon_state = initial(icon_state) +"_no_fuel"
+		else if(!locked)
+			icon_state = initial(icon_state) +"_unlocked"
+	else
+		icon_state = initial(icon_state)
+
 /obj/item/ammo_magazine/rocket/ap
 	name = "\improper 84mm anti-armor rocket"
 	icon_state = "ap_rocket"
@@ -223,7 +237,7 @@
 		else if(fuel)
 			user.put_in_hands(fuel)
 			fuel = null
-		icon_state = initial(icon_state)
+		update_icon()
 		desc = initial(desc) + "\n Contains[fuel?" fuel":""] [warhead?" and warhead":""]."
 		return
 	. = ..()
@@ -241,16 +255,10 @@
 			return
 		if(locked)
 			to_chat(user, SPAN_NOTICE("You unlock [name]."))
-			icon_state = initial(icon_state) +"_unlocked"
 		else
 			to_chat(user, SPAN_NOTICE("You lock [name]."))
-			if(fuel && fuel.reagents.get_reagent_amount(fuel_type) >= fuel_requirement)
-				icon_state = initial(icon_state) +"_locked"
-			else
-				icon_state = initial(icon_state) +"_no_fuel"
 		locked = !locked
 		playsound(loc, 'sound/items/Screwdriver.ogg', 25, 0, 6)
-		return
 	else if(istype(W,/obj/item/reagent_container/glass) && !locked)
 		if(fuel)
 			to_chat(user, SPAN_DANGER("The [name] already has a fuel container!"))
@@ -274,9 +282,9 @@
 		W.forceMove(src)
 		warhead = W
 		to_chat(user, SPAN_DANGER("You add [W] to [name]."))
-		icon_state = initial(icon_state) +"_unlocked"
 		desc = initial(desc) + "\n Contains[fuel?" fuel":""] [warhead?" and warhead":""]."
 		playsound(loc, 'sound/items/Screwdriver2.ogg', 25, 0, 6)
+	update_icon()
 
 //-------------------------------------------------------
 //M5 RPG'S MEAN FUCKING COUSIN

@@ -17,7 +17,7 @@
 
 /mob/living/carbon/Xenomorph/Larva
 	name = "Bloody Larva"
-	icon = 'icons/mob/xenos/larva.dmi'
+	icon_source = "alien_embryo"
 	caste_name = "Bloody Larva"
 	speak_emote = list("hisses")
 	icon_state = "Bloody Larva"

@@ -25,7 +25,7 @@
 	caste_name = "Lurker"
 	name = "Lurker"
 	desc = "A beefy, fast alien with sharp claws."
-	icon = 'icons/mob/xenos/lurker.dmi'
+	icon_source = "alien_lurker"
 	icon_size = 48
 	icon_state = "Lurker Walking"
 	plasma_types = list(PLASMA_CATECHOLAMINE)

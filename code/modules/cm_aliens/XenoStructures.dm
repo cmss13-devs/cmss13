@@ -4,7 +4,7 @@
 /obj/effect/alien
 	name = "alien thing"
 	desc = "theres something alien about this"
-	icon = 'icons/mob/xenos/Effects.dmi'
+	icon_source = "alien_effects"
 	unacidable = TRUE
 	health = 1
 /*
@@ -147,7 +147,7 @@
 /obj/structure/mineral_door/resin
 	name = "resin door"
 	mineralType = "resin"
-	icon = 'icons/mob/xenos/Effects.dmi'
+	icon_source = "alien_effects"
 	hardness = 1.5
 	health = HEALTH_DOOR_XENO
 	var/close_delay = 100

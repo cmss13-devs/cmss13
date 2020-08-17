@@ -220,6 +220,6 @@
 
 /obj/effect/overlay/temp/acid_pool_splash
 	name = "acid splash"
-	icon = 'icons/mob/xenos/Effects.dmi'
+	icon_source = "alien_effects"
 	icon_state = "acidpoolsplash"
 	effect_duration = SECONDS_10

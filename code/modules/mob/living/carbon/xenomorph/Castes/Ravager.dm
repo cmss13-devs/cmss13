@@ -32,7 +32,7 @@
 	caste_name = "Ravager"
 	name = "Ravager"
 	desc = "A huge, nasty red alien with enormous scythed claws."
-	icon = 'icons/mob/xenos/ravager.dmi'
+	icon_source = "alien_ravager"
 	icon_size = 64
 	icon_state = "Ravager Walking"
 	plasma_types = list(PLASMA_CATECHOLAMINE)

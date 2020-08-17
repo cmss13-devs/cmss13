@@ -2,7 +2,7 @@
 /obj/effect/alien/weeds
 	name = "weeds"
 	desc = "Weird black weeds..."
-	icon = 'icons/mob/xenos/weeds.dmi'
+	icon_source = "alien_weeds"
 	icon_state = "base"
 
 	anchored = 1
@@ -181,11 +181,11 @@
 		var/image/secretion
 
 		if(icon_dir >= 0)
-			secretion = image('icons/mob/xenos/Effects.dmi', "secrete[icon_dir]")
+			secretion = image(get_icon_from_source("alien_effects"), "secrete[icon_dir]")
 		else if(icon_dir == -15)
-			secretion = image('icons/mob/xenos/Effects.dmi', "secrete_base")
+			secretion = image(get_icon_from_source("alien_effects"), "secrete_base")
 		else
-			secretion = image('icons/mob/xenos/Effects.dmi', "secrete_dir[-icon_dir]")
+			secretion = image(get_icon_from_source("alien_effects"), "secrete_dir[-icon_dir]")
 
 		overlays += secretion
 

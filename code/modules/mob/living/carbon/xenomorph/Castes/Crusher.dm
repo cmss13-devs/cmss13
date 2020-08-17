@@ -28,7 +28,7 @@
 	caste_name = "Crusher"
 	name = "Crusher"
 	desc = "A huge alien with an enormous armored head crest."
-	icon = 'icons/mob/xenos/crusher.dmi'
+	icon_source = "alien_crusher"
 	icon_size = 64
 	icon_state = "Crusher Walking"
 	plasma_types = list(PLASMA_CHITIN)

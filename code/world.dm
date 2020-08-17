@@ -437,6 +437,7 @@ var/list/datum/entity/map_vote/all_votes
 	config = new /datum/configuration()
 	config.load("config/config.txt")
 	config.load("config/game_options.txt","game_options")
+	config.load("config/icon_source.txt","icon_source")
 	// apply some settings from config..
 	abandon_allowed = config.respawn
 

@@ -3,7 +3,7 @@
 /obj/structure/bed/nest
 	name = "alien nest"
 	desc = "It's a gruesome pile of thick, sticky resin shaped like a nest."
-	icon = 'icons/mob/xenos/Effects.dmi'
+	icon_source = "alien_effects"
 	icon_state = "nest"
 	buckling_y = 6
 	buildstacktype = null //can't be disassembled and doesn't drop anything when destroyed

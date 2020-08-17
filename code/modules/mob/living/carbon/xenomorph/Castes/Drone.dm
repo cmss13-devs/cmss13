@@ -32,7 +32,7 @@
 	caste_name = "Drone"
 	name = "Drone"
 	desc = "An Alien Drone"
-	icon_state = "alien_drone"
+	icon_source = "alien_drone"
 	icon_size = 48
 	icon_state = "Drone Walking"
 	plasma_types = list(PLASMA_PURPLE)

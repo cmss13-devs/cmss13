@@ -79,7 +79,28 @@ var/global/datum/controller/objectives_controller/objectives_controller
 	for(var/i=0;i<vial_boxes;i++)
 		var/dest = pick(15;"close", 30;"medium", 5;"far", 50;"science")
 		spawn_objective_at_landmark(dest, /obj/item/storage/fancy/vials/random)
-	clear_objective_landmarks()
+
+/datum/controller/objectives_controller/proc/generate_corpses(var/corpses)
+	if(!objective_spawn_corpse)
+		return
+	if(corpses > LAZYLEN(objective_spawn_corpse))
+		corpses = LAZYLEN(objective_spawn_corpse)
+
+	var/obj/effect/landmark/corpsespawner/spawnpoint
+	for(var/i = 0 to corpses)
+		spawnpoint = pick(objective_spawn_corpse)
+
+		//Creates a mob and checks for gear in each slot before attempting to equip it.
+		var/mob/living/carbon/human/M = new /mob/living/carbon/human(spawnpoint.loc)
+		M.create_hud() //Need to generate hud before we can equip anything apparently...
+		arm_equipment(M, "Corpse - [spawnpoint.name]", TRUE, FALSE)
+		
+		LAZYREMOVE(objective_spawn_corpse, spawnpoint)
+		qdel(spawnpoint)
+	
+	for(var/obj/effect/landmark/corpsespawner/C in objective_spawn_corpse)
+		qdel(C)
+	objective_spawn_corpse = null
 
 /datum/controller/objectives_controller/proc/clear_objective_landmarks()
 	//Don't need them anymore, so we remove them
@@ -362,6 +383,7 @@ var/global/datum/controller/objectives_controller/objectives_controller
 /hook/startup/proc/create_objectives_controller()
 	objectives_controller = new /datum/controller/objectives_controller
 	objectives_controller.generate_objectives()
+	objectives_controller.clear_objective_landmarks()
 	objectives_controller.connect_objectives()
 	// Setup some global objectives
 	objectives_controller.power = new /datum/cm_objective/establish_power

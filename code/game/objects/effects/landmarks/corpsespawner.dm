@@ -1,5 +1,5 @@
 
-
+var/list/objective_spawn_corpse
 
 ///////////////////// LANDMARK CORPSE ///////
 
@@ -11,17 +11,11 @@
 /obj/effect/landmark/corpsespawner
 	name = "Unknown"
 
-/obj/effect/landmark/corpsespawner/Initialize()
+/obj/effect/landmark/corpsespawner/New()
 	. = ..()
 	if(loc && !disposed) //there's some issue with the code that calls this initialize twice,
-		createCorpse()	//once normally and once when the landmark is in null space, thus spawning a mob there
-						//this is a bandaid until it's properly fixed.
-
-/obj/effect/landmark/corpsespawner/proc/createCorpse() //Creates a mob and checks for gear in each slot before attempting to equip it.
-	var/mob/living/carbon/human/M = new /mob/living/carbon/human(src.loc)
-	M.create_hud() //Need to generate hud before we can equip anything apparently...
-	arm_equipment(M, "Corpse - [name]", TRUE, FALSE)
-	qdel(src)
+		LAZYADD(objective_spawn_corpse, src)	//once normally and once when the landmark is in null space, thus spawning a mob there
+												//this is a bandaid until it's properly fixed.
 
 // I'll work on making a list of corpses people request for maps, or that I think will be commonly used. Syndicate operatives for example.
 

@@ -461,10 +461,51 @@
 
 /obj/item/clothing/head/helmet/marine/tech
 	name = "\improper M10 technician helmet"
+	desc = "A modified M10 marine helmet for squad engineers. Features a toggleable welding screen for eye protection."
+	icon_state = "tech_helmet"
 	specialty = "M10 technician"
+	var/protection_on = FALSE
+
+	actions_types = list(/datum/action/item_action/toggle)
+
+/obj/item/clothing/head/helmet/marine/tech/attack_self()
+	toggle()
+
+/obj/item/clothing/head/helmet/marine/tech/verb/toggle()
+	set category = "Object"
+	set name = "Toggle Tech Helmet"
+	set src in usr
+
+	if(usr.canmove && !usr.stat && !usr.is_mob_restrained())
+		if(protection_on)
+			flags_inventory &= ~(COVEREYES|COVERMOUTH)
+			flags_inv_hide &= ~(HIDEEYES|HIDEFACE)
+			icon_state = initial(icon_state)
+			eye_protection = 0
+			to_chat(usr, "You <b>deactivate</b> the [src]'s welding screen.")
+		else
+			flags_inventory |= COVEREYES|COVERMOUTH
+			flags_inv_hide |= HIDEEYES|HIDEFACE
+			icon_state = "[initial(icon_state)]_on"
+			eye_protection = 2
+			to_chat(usr, "You <b>activate</b> the [src]'s welding screen.")
+
+		protection_on = !protection_on
+
+		if(ishuman(loc))
+			var/mob/living/carbon/human/H = loc
+			if(H.head == src)
+				H.update_tint()
+
+		update_clothing_icon()	//so our mob-overlays update
+
+		for(var/X in actions)
+			var/datum/action/A = X
+			A.update_button_icon()
 
 /obj/item/clothing/head/helmet/marine/medic
 	name = "\improper M10 medic helmet"
+	desc = "An M10 marine helmet version worn by squad medics. Has red cross painted on its front."
 	icon_state = "med_helmet"
 	specialty = "M10 medic"
 

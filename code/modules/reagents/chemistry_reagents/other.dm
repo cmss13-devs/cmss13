@@ -696,7 +696,7 @@
 	burncolor = "#EE6515"
 
 /datum/reagent/napalm/ut/New()
-	properties += list(
+	properties = list(
 		PROPERTY_INTENSITY 	= config.med_burnlevel,
 		PROPERTY_DURATION 	= config.low_burntime,
 		PROPERTY_RADIUS 	= config.close_shell_range
@@ -713,7 +713,7 @@
 	burncolor = "#00ff00"
 
 /datum/reagent/napalm/gel/New()
-	properties += list(
+	properties = list(
 		PROPERTY_INTENSITY 	= config.low_burnlevel,
 		PROPERTY_DURATION 	= config.instant_burntime,
 		PROPERTY_RADIUS 	= config.near_shell_range
@@ -731,7 +731,7 @@
 	burncolor = "#00b8ff"
 
 /datum/reagent/napalm/blue/New()
-	properties += list(
+	properties = list(
 		PROPERTY_INTENSITY 	= config.high_burnlevel,
 		PROPERTY_DURATION 	= config.high_burntime,
 		PROPERTY_RADIUS 	= config.near_shell_range
@@ -747,7 +747,7 @@
 	burncolor = "#00ff00"
 
 /datum/reagent/napalm/green/New()
-	properties += list(
+	properties = list(
 		PROPERTY_INTENSITY 	= config.med_burnlevel,
 		PROPERTY_DURATION 	= config.max_burntime,
 		PROPERTY_RADIUS 	= config.near_shell_range

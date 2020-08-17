@@ -10,6 +10,7 @@
 
 /obj/effect/landmark/corpsespawner
 	name = "Unknown"
+	icon_state = "corpse_spawner"
 
 /obj/effect/landmark/corpsespawner/Initialize()
 	. = ..()

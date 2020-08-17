@@ -56,17 +56,17 @@
 			return
 		var/turf/open/T = target
 		if(T.get_dirt_type() == DIRT_TYPE_SNOW)
-			if(T.slayer >= 3)
+			if(T.bleed_layer >= 3)
 				to_chat(user, "This ground is already full of snow.")
 				return
 			to_chat(user, "You start putting some snow back on the ground.")
 			if(!do_after(user, 15, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				to_chat(user, "You stop putting some snow back on the ground.")
 				return
-			if(T.slayer >= 3)
+			if(T.bleed_layer >= 3)
 				return
 			to_chat(user, "You put a new snow layer on the ground.")
-			T.slayer += 1
+			T.bleed_layer += 1
 			T.update_icon(TRUE, FALSE)
 			use(1)
 

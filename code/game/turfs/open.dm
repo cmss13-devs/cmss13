@@ -3,8 +3,30 @@
 /turf/open
 	var/is_groundmap_turf = FALSE //whether this a turf used as main turf type for the 'outside' of a map.
 	var/allow_construction = TRUE //whether you can build things like barricades on this turf.
-	var/slayer = 0 //snow layer
+	var/bleed_layer = 0 //snow layer
 	var/wet = 0 //whether the turf is wet (only used by floors).
+
+/turf/open/Initialize(mapload, ...)
+	. = ..()
+	
+	update_icon()
+
+/turf/open/update_icon()
+	overlays.Cut()
+
+	for(var/direction in alldirs)
+		var/turf/open/auto_turf/T = get_step(src, direction)
+		if(!istype(T))
+			continue
+
+		if(bleed_layer > T.bleed_layer || bleed_layer == T.bleed_layer)
+			continue
+
+		var/special_icon_state = "[T.icon_prefix]_[(direction & (direction-1)) ? "outercorner" : pick("innercorner", "outercorner")]"
+		var/image/I = image(T.icon, special_icon_state, dir = REVERSE_DIR(direction), layer = layer + 0.001 + T.bleed_layer * 0.0001)
+		I.appearance_flags = RESET_TRANSFORM|RESET_ALPHA|RESET_COLOR
+
+		overlays += I
 
 /turf/open/examine(mob/user)
 	..()

@@ -245,7 +245,7 @@
 	if(istype(src, /turf/open/snow))
 		var/turf/open/snow/s = src
 		//This is so we revert back to a proper snow layer
-		path = "/turf/open/snow/layer[s.slayer]"
+		path = "/turf/open/snow/layer[s.bleed_layer]"
 
 	if(src.type == new_turf_path)
 		return
@@ -409,7 +409,7 @@
 	return FALSE
 
 /turf/open/snow/is_weedable()
-	return !slayer
+	return !bleed_layer
 
 /turf/open/mars/is_weedable()
 	return FALSE

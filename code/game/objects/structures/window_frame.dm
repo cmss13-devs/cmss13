@@ -7,7 +7,6 @@
 	density = 1
 	throwpass = TRUE
 	climbable = 1 //Small enough to vault over, but you do need to vault over it
-	climb_delay = 15 //One second and a half, gotta vault fast
 	health = 200
 	var/max_health = 200
 	var/obj/item/stack/sheet/sheet_type = /obj/item/stack/sheet/glass/reinforced

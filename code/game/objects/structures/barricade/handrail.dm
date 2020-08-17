@@ -6,7 +6,7 @@
 	barricade_type = "handrail"
 	health = 30 
 	maxhealth = 30
-	climb_delay = 5
+	climb_delay = CLIMB_DELAY_SHORT
 	stack_type = /obj/item/stack/sheet/metal
 	debris = list(/obj/item/stack/sheet/metal)
 	stack_amount = 2

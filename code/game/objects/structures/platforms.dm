@@ -11,7 +11,6 @@
 	density = 1
 	throwpass = TRUE //You can throw objects over this, despite its density.
 	layer = OBJ_LAYER
-	climb_delay = 20 //Leaping a barricade is universally much faster than clumsily climbing on a table or rack
 	breakable = FALSE
 	flags_atom = ON_BORDER
 	unacidable = TRUE
@@ -93,7 +92,8 @@ obj/structure/platform_decoration
 	name = "ice rock edge"
 	desc = "A solid chunk of desolate rocks and ice. Looks like you could climb it with some difficulty."
 	icon_state = "strata_platform"
-	climb_delay = 10 //Lowered climb speed for both sides since people complained. Half of the base climb delay since these are in combat zones. To-Do, specific climb speeds for up and down, xenos, climb verb, macro, auto-climb client pref.
+	climb_delay = CLIMB_DELAY_SHORT //Lowered climb speed for both sides since people complained. Half of the base climb delay since these are in combat zones. To-Do, specific climb speeds for up and down, xenos, climb verb, macro, auto-climb client pref.
+
 //Strata wall metal platforms
 /obj/structure/platform_decoration/strata/metal
 	name = "raised metal corner"

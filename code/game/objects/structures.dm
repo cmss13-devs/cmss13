@@ -1,7 +1,11 @@
+#define	CLIMB_DELAY_SHORT		SECONDS_1
+#define	CLIMB_DELAY_MEDIUM		SECONDS_2
+#define	CLIMB_DELAY_LONG		SECONDS_3
+
 /obj/structure
 	icon = 'icons/obj/structures/structures.dmi'
 	var/climbable
-	var/climb_delay = 50
+	var/climb_delay = CLIMB_DELAY_MEDIUM
 	var/breakable
 	var/parts
 	var/list/debris = list()

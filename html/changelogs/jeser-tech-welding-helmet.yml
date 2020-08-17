@@ -1,8 +1,0 @@
-author: Jeser
-
-delete-after: True
-
-changes: 
-  - rscadd: "M10 Technician Helmet now has same functionality as welding mask."
-  - tweak: "Welding goggles were moved from basic mandatory equipment in Squad Engineer Equipment Rack to Engineering Supplies in Squad Engineer Gear Rack. Cost: 5 points."
-  - imageadd: "New M10 Technician Helmet sprites by Frans_Feiffer."

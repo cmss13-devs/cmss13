@@ -49,7 +49,7 @@
 	if(isnull(new_layer) || new_layer == bleed_layer)
 		return
 
-	bleed_layer = new_layer
+	bleed_layer = min(0, new_layer)
 	for(var/direction in alldirs)
 		var/turf/open/T = get_step(src, direction)
 		if(istype(T))

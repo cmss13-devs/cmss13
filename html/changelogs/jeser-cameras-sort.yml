@@ -1,7 +1,0 @@
-author: Jeser
-
-delete-after: True
-
-changes: 
-  - tweak: "Security Cameras Console's list of cameras is now sorted in alphabetical order."
-  - tweak: "A 2 seconds delay was added to Cameras Console interactions to prevent performance drops due to sorting."

@@ -694,6 +694,7 @@
 	id = "utnapthal"
 	description = "Known as Ultra Thick Napthal Fuel, a sticky combustable liquid chemical, typically used with flamethrowers."
 	burncolor = "#EE6515"
+	properties = list()
 
 /datum/reagent/napalm/ut/New()
 	properties = list(
@@ -708,9 +709,8 @@
 	id = "napalmgel"
 	description = "Unlike its liquid contemporaries, this stuff shoots far, and burns up fast, but it doesn't burn anywhere near as hot."
 	color = "#00ff00"
-	intensityfire = 7
-	durationfire = 6
 	burncolor = "#00ff00"
+	properties = list()
 
 /datum/reagent/napalm/gel/New()
 	properties = list(
@@ -724,11 +724,9 @@
 	name = "Napalm X"
 	id = "napalmx"
 	description = "A sticky combustable liquid chemical that burns extremely hot."
-	intensityfire = 30
-	durationfire = 50
-	rangefire = 7
 	color = "#00b8ff"
 	burncolor = "#00b8ff"
+	properties = list()
 
 /datum/reagent/napalm/blue/New()
 	properties = list(
@@ -745,6 +743,7 @@
 	flameshape = FLAMESHAPE_TRIANGLE
 	color = "#00ff00"
 	burncolor = "#00ff00"
+	properties = list()
 
 /datum/reagent/napalm/green/New()
 	properties = list(

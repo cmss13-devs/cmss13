@@ -8,7 +8,6 @@
 	icon_opened = "open_basic"
 	icon_closed = "closed_basic"
 	climbable = 1
-	climb_delay = 20 //Doesn't need as long to climb over a crate
 	anchored = 0
 	throwpass = 1 //prevents moving crates by hurling things at them
 	store_mobs = FALSE

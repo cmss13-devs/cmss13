@@ -277,6 +277,7 @@
 				O = new prod_type(T, TRUE)
 			else
 				O = new prod_type(T)
+		vending_stat_bump(prod_type, src.type)
 		O.add_fingerprint(usr)
 
 	else

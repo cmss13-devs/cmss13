@@ -60,6 +60,7 @@
 	var/turf/T = locate(x+1,y-1,z)
 	playsound(src, 'sound/machines/hydraulics_1.ogg', 40, 1)
 	new part_type(T)
+	vending_stat_bump(part_type, src.type)
 	icon_state = "drone_fab_idle"
 
 /obj/structure/machinery/part_fabricator/Topic(href, href_list)

@@ -613,6 +613,7 @@
 				O = new prod_type(get_appropriate_vend_turf(), TRUE)
 			else
 				O = new prod_type(get_appropriate_vend_turf())
+		vending_stat_bump(prod_type, src.type)
 		O.add_fingerprint(usr)
 
 	else

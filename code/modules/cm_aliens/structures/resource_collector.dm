@@ -2,7 +2,7 @@
 
 /obj/effect/alien/resin/collector
 	name = "hive collector"
-	icon = 'icons/mob/xenos/structures64x64.dmi'
+	icon_source = "alien_structures_64x64"
 	desc = "A disgusting mass of pulsating spores. It reeks of plasma."
 	icon_state = "collector"
 	pixel_x = -16

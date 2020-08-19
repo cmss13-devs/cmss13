@@ -23,8 +23,7 @@
 
 /obj/effect/alien/resin/special
 	name = "Special Resin Structure"
-	icon = 'icons/mob/xenos/structures64x64.dmi'
-	icon_source = null
+	icon_source = "alien_structures_64x64"
 	pixel_x = -16
 	pixel_y = -16
 	health = 200

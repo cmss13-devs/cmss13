@@ -24,7 +24,7 @@
 	..()
 	if(!ishuman(affected_mob)) return
 	var/mob/living/carbon/human/H = affected_mob
-	if(!H.regenZ) return
+
 	if(age > 1.5*stage_minimum_age) stage_prob = 100 //if it takes too long we force a stage increase
 	else stage_prob = initial(stage_prob)
 	if(H.stat == DEAD) stage_minimum_age = 75 //the virus progress faster when the host is dead.
@@ -75,9 +75,6 @@
 						H.apply_damage(-healamt, TOX)
 						H.apply_damage(-healamt, OXY)
 				H.nutrition = NUTRITION_MAX //never hungry
-				if(goo_message_cooldown < world.time)
-					goo_message_cooldown = world.time + 100
-					to_chat(affected_mob, SPAN_XENOWARNING(" Spread... Consume... Infect..."))
 
 
 /datum/disease/black_goo/proc/zombie_transform(mob/living/carbon/human/H)
@@ -103,29 +100,35 @@
 	name = "claws"
 	icon = 'icons/mob/humans/species/r_zombie.dmi'
 	icon_state = "claw_l"
-	flags_item = NODROP|DELONDROP
-	force = 15
+	flags_item = NODROP|DELONDROP|ITEM_ABSTRACT
+	force = 20
 	w_class = SIZE_MASSIVE
 	sharp = 1
 	attack_verb = list("slashed", "bitten", "torn", "scraped", "nibbled")
 	pry_capable = IS_PRY_CAPABLE_FORCE
 
 /obj/item/weapon/zombie_claws/attack(mob/living/M, mob/living/carbon/human/user, def_zone)
-	if(user.species == "Human")
+	if(iszombie(M))
 		return FALSE
+	
 	. = ..()
 	if(.)
 		playsound(loc, 'sound/weapons/bladeslice.ogg', 25, 1, 5)
-	if(ishuman(M))
+	
+	if(isHumanStrict(M))
 		var/mob/living/carbon/human/H = M
-		if(H.species.name == "Human")
-			for(var/datum/disease/black_goo/BG in H.viruses)
-				user.show_message(text(SPAN_XENOWARNING(" <B>You sense your target is infected</B>")))
-				return
-			if(prob(75))
-				M.contract_disease(new /datum/disease/black_goo)
-				user.show_message(text(SPAN_XENOWARNING(" <B>You sense your target is now infected</B>")))
 
+		for(var/datum/disease/black_goo/BG in H.viruses)
+			user.show_message(text(SPAN_XENOWARNING(" <B>You sense your target is infected</B>")))
+			return .
+		
+		var/bio_protected = max(CLOTHING_ARMOR_HARDCORE - H.getarmor(def_zone, ARMOR_BIO), 0)
+
+		if(prob(bio_protected))
+			M.AddDisease(new /datum/disease/black_goo())
+			user.show_message(text(SPAN_XENOWARNING(" <B>You sense your target is now infected</B>")))
+
+	M.SetSuperslowed(max(2, M.superslowed)) // Make them slower
 
 /obj/item/weapon/zombie_claws/afterattack(obj/O as obj, mob/user as mob, proximity)
 	if (istype(O, /obj/structure/machinery/door/airlock) && get_dist(src, O) <= 1)
@@ -133,10 +136,16 @@
 		if(!D.density)
 			return
 
+		if(user.action_busy)
+			return
+
 		user.visible_message(SPAN_DANGER("[user] jams \his [name] into [O] and strains to rip it open."),
 		SPAN_DANGER("You jam your [name] into [O] and strain to rip it open."))
 		playsound(user, 'sound/weapons/wristblades_hit.ogg', 15, 1)
 		if(do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+			if(!D.density)
+				return
+
 			user.visible_message(SPAN_DANGER("[user] forces [O] open with \his [name]."),
 			SPAN_DANGER("You force [O] open with your [name]."))
 			D.open(1)
@@ -160,8 +169,8 @@
 	icon_state = "blackgoo"
 
 /obj/item/reagent_container/food/drinks/bottle/black_goo_cure/Initialize()
-		..()
-		reagents.add_reagent("antiZed", 30)
+	..()
+	reagents.add_reagent("antiZed", 30)
 
 /datum/language/zombie
 	name = "Zombie"
@@ -177,8 +186,7 @@
 	w_class = SIZE_SMALL
 	vision_flags = SEE_MOBS
 	darkness_view = 7
-	flags_item = NODROP|DELONDROP
-	fullscreen_vision = /obj/screen/fullscreen/nvg
+	flags_item = NODROP|DELONDROP|ITEM_ABSTRACT
 
 
 /obj/item/storage/fancy/blackgoo
@@ -196,7 +204,7 @@
 		if(contents.len <= 0)
 			to_chat(user, "There are no bottles left inside it.")
 		else if(contents.len == 1)
-			to_chat(user, "There is one bottles left inside it.")
+			to_chat(user, "There is one bottle left inside it.")
 		else
 			to_chat(user, "There are [src.contents.len] bottles inside the container.")
 
@@ -206,11 +214,3 @@
 	for(var/i=1; i <= storage_slots; i++)
 		new /obj/item/reagent_container/food/drinks/bottle/black_goo(src)
 	return
-
-//zombie ice-proofing
-/obj/item/clothing/mask/rebreather/scarf/zombie
-	name = "zombie mouth"
-	icon_state = "BLANK"
-	item_state = "BLANK"
-	flags_item = NODROP|DELONDROP
-

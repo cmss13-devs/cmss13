@@ -182,6 +182,8 @@
 	value = 666
 
 /datum/chem_property/special/curing/process(mob/living/M, var/potency = 1)
+	var/datum/species/zombie/zs = all_species["Zombie"]
+
 	if(!ishuman(M))
 		return
 	var/mob/living/carbon/human/H = M
@@ -189,13 +191,13 @@
 		for(var/datum/disease/D in H.viruses)
 			if(potency >= 2)
 				D.cure()
-				H.regenZ = 0
+				zs.remove_from_revive(H)
 			else
 				if(D.name == "Unknown Mutagenic Disease" && (potency == 0.5 || potency > 1.5))
 					D.cure()
 				if(D.name == "Black Goo" && potency >= 1)
 					D.cure()
-					H.regenZ = 0
+					zs.remove_from_revive(H)
 
 /datum/chem_property/special/omnipotent
 	name = PROPERTY_OMNIPOTENT

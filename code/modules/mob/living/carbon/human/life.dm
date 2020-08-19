@@ -32,9 +32,11 @@
 	//update the current life tick, can be used to e.g. only do something every 4 ticks
 	life_tick++
 
-	if(stat == DEAD && species.name == "Zombie" && regenZ)
-		handle_chemicals_in_body()
-		return
+	if(stat == DEAD && species.name == "Zombie")
+		var/datum/species/zombie/zs = species
+		if(zs.to_revive[src])
+			handle_chemicals_in_body()
+			return
 	//No need to update all of these procs if the guy is dead.
 	if(!in_stasis)
 		if(stat != DEAD)

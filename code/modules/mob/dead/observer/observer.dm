@@ -564,66 +564,41 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	var/list/zombie_list = list()
 
 	for(var/mob/living/carbon/human/A in living_mob_list)
-		if(iszombie(A) && !A.client && A.regenZ)
-			var/player_in_decap_head
-			//when decapitated the human mob is clientless,
-			//we must check whether the player is still manning the brain in the decap'd head,
-			//so their body isn't stolen by another player.
-			var/obj/limb/head/h = A.get_limb("head")
-			if(h && (h.status & LIMB_DESTROYED))
-				for (var/obj/item/limb/head/HD in item_list)
-					if(HD.brainmob)
-						if(HD.brainmob.real_name == A.real_name)
-							if(HD.brainmob.client)
-								player_in_decap_head = TRUE
-								break
-			if(!player_in_decap_head)
-				zombie_list += A.real_name
+		if(iszombie(A) && !A.client && A.stat != DEAD) // Only living zombies
+			zombie_list += list(A.real_name = A)
 
 
 	if(zombie_list.len == 0)
-		to_chat(src, "<span style='color: green;'>There are no available zombies or all empty zombies have been fed the cure.</span>")
+		to_chat(src, SPAN_DANGER("There are no available zombies."))
 		return
 
 	var/choice = input("Pick a Zombie:") as null|anything in zombie_list
-	if(!choice || choice == "Cancel")
+	if(!choice)
 		return
 
 	if(!client)
 		return
 
-	for(var/mob/living/carbon/human/Z in living_mob_list)
-		if(choice == Z.real_name)
-			if(Z.disposed) //should never occur,just to be sure.
-				return
-			if(!Z.regenZ)
-				to_chat(src, SPAN_WARNING("That zombie has been cured!"))
-				return
-			if(Z.client)
-				to_chat(src, SPAN_WARNING("That player is still connected."))
-				return
+	var/mob/living/carbon/human/Z = zombie_list[choice]
 
-			var/obj/limb/head/h = Z.get_limb("head")
-			if(h && (h.status & LIMB_DESTROYED))
-				for (var/obj/item/limb/head/HD in item_list)
-					if(HD.brainmob)
-						if(HD.brainmob.real_name == Z.real_name)
-							if(HD.brainmob.client)
-								to_chat(src, SPAN_WARNING("That player is still connected!"))
-								return
+	if(!Z || !mind)
+		return
 
-			var/mob/ghostmob = client.mob
+	if(Z.disposed) //should never occur,just to be sure.
+		return
+	
+	if(Z.stat == DEAD)
+		to_chat(src, SPAN_WARNING("This zombie is dead!"))
+		return
 
-			Z.ghostize(0) //Make sure previous owner does not get a free respawn.
-			Z.ckey = usr.ckey
-			if(Z.client) //so players don't keep their ghost zoom view.
-				Z.client.change_view(world_view_size)
+	if(Z.client)
+		to_chat(src, SPAN_WARNING("That player is still connected."))
+		return
 
-			msg_admin_niche("[key_name(usr)] has joined as a [Z].")
+	mind.transfer_to(Z, TRUE)
 
-			if(isobserver(ghostmob) )
-				qdel(ghostmob)
-			return
+	msg_admin_niche("[key_name(usr)] has joined as a [Z].")
+
 
 /mob/dead/verb/join_as_freed_mob()
 	set category = "Ghost"

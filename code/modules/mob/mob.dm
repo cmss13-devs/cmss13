@@ -554,6 +554,10 @@ note dizziness decrements automatically in the mob's Life() proc.
 /mob/proc/make_jittery(var/amount)
 	return
 
+/mob/proc/remove_jittery()
+	jitteriness = 0
+	return
+
 /mob/living/carbon/human/make_jittery(var/amount)
 	if(stat == DEAD) return //dead humans can't jitter
 	jitteriness = min(1000, jitteriness + amount)	// store what will be new value

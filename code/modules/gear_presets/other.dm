@@ -381,10 +381,9 @@
 	H.faction = faction
 
 /datum/equipment_preset/other/zombie/load_race(mob/living/carbon/human/H)
+	H.set_species("Human") // Set back, so that we can get our claws again
+
 	H.set_species("Zombie")
-	H.contract_disease(new /datum/disease/black_goo)
-	for(var/datum/disease/black_goo/BG in H.viruses)
-		BG.stage = 5
 
 /datum/equipment_preset/other/zombie/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/colonist, WEAR_BODY)

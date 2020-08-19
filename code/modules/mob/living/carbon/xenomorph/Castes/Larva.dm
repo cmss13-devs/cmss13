@@ -58,7 +58,7 @@
 	hivenumber = XENO_HIVE_DELTA
 
 /mob/living/carbon/Xenomorph/Larva/predalien
-	icon = 'icons/mob/xenos_old/1x1_Xenos.dmi'
+	icon_source = "alien_hunter_embryo"
 	icon_state = "Predalien Larva"
 	caste_name = "Predalien Larva"
 

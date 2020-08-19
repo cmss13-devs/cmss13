@@ -3,7 +3,7 @@
 /datum/construction_template/xenomorph
 	name = "xenomorph structure"
 	build_type = /obj/effect/alien/resin/special
-	build_icon = 'icons/mob/xenos/structures64x64.dmi'
+	build_icon_source = "alien_structures_64x64"
 	crystals_required = 45 * XENO_STRUCTURE_PLASMA_MULTIPLIER
 	var/datum/hive_status/hive_ref //Who gets what we build
 	var/requires_node = TRUE
@@ -60,7 +60,7 @@
 /datum/construction_template/xenomorph/nest
 	name = XENO_STRUCTURE_NEST
 	build_type = /obj/effect/alien/resin/special/nest
-	build_icon = 'icons/mob/xenos/structures48x48.dmi'
+	build_icon_source = "alien_structures"
 	build_icon_state = "reinforced_nest"
 
 	block_range = 2

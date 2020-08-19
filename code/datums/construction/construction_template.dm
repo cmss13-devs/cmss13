@@ -9,6 +9,7 @@
     var/build_type = /obj/structure
     var/build_loc
     var/build_icon
+    var/build_icon_source
     var/build_icon_state
 
     var/pixel_y = -16
@@ -25,6 +26,8 @@
     ..()
 
 /datum/construction_template/proc/get_structure_image()
+    if(build_icon_source)
+        build_icon = get_icon_from_source(build_icon_source)
     return image(build_icon, build_icon_state)
 
 /datum/construction_template/proc/add_crystal(var/mob/living/carbon/Xenomorph/M)

@@ -97,7 +97,6 @@ They're all essentially identical when it comes to getting the job done.
 	var/S = min(transfer_amount, max_rounds - current_rounds)
 	source.current_rounds -= S
 	current_rounds += S
-	playsound(loc, pick('sound/weapons/handling/mag_refill_1.ogg', 'sound/weapons/handling/mag_refill_2.ogg', 'sound/weapons/handling/mag_refill_3.ogg'), 25, 1)
 	if(source.current_rounds <= 0 && istype(source, /obj/item/ammo_magazine/handful)) //We want to delete it if it's a handful.
 		if(user)
 			user.temp_drop_inv_item(source)

@@ -7,7 +7,7 @@
 	max_health = XENO_HEALTH_TIER_3
 	plasma_gain = XENO_PLASMA_GAIN_TIER_5
 	plasma_max = XENO_PLASMA_TIER_4
-	xeno_explosion_resistance = XENO_LOW_EXPLOSIVE_ARMOR
+	xeno_explosion_resistance = XENO_EXPLOSIVE_ARMOR_TIER_1
 	armor_deflection = XENO_NO_ARMOR
 	armor_hardiness_mult = XENO_ARMOR_FACTOR_LOW
 	evasion = XENO_EVASION_MEDIUM

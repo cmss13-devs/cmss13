@@ -8,7 +8,7 @@
 	plasma_gain = XENO_PLASMA_GAIN_TIER_10
 	plasma_max = XENO_PLASMA_TIER_10
 	crystal_max = XENO_CRYSTAL_HIGH
-	xeno_explosion_resistance = XENO_LOW_EXPLOSIVE_ARMOR
+	xeno_explosion_resistance = XENO_EXPLOSIVE_ARMOR_TIER_1
 	armor_deflection = XENO_ARMOR_TIER_1
 	armor_hardiness_mult = XENO_ARMOR_FACTOR_MEDIUM
 	evasion = XENO_EVASION_NONE

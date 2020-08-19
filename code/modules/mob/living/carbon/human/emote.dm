@@ -2,6 +2,9 @@
 	var/param = null
 	var/comm_paygrade = get_paygrade()
 
+	if(!species.can_emote)
+		return
+
 	if (findtext(act, "-", 1, null))
 		var/t1 = findtext(act, "-", 1, null)
 		param = copytext(act, t1 + 1, length(act) + 1)

@@ -28,6 +28,7 @@
 	var/list/speech_sounds        // A list of sounds to potentially play when speaking.
 	var/list/speech_chance
 	var/has_fine_manipulation = 1 // Can use small items.
+	var/can_emote = TRUE
 	var/insulated                 // Immune to electrocution and glass shards to the feet.
 
 	// Some species-specific gibbing data.
@@ -491,7 +492,7 @@
 	blood_color = "#333333"
 	icobase = 'icons/mob/humans/species/r_goo_zed.dmi'
 	deform = 'icons/mob/humans/species/r_goo_zed.dmi'
-	death_message = "seizes up and falls limp... But is it dead?"
+	death_message = "seizes up and falls limp..."
 	flags = NO_BREATHE|NO_SCAN|NO_POISON
 	brute_mod = 0.25 //EXTREME BULLET RESISTANCE
 	burn_mod = 2 //IT BURNS
@@ -500,43 +501,56 @@
 	cold_level_2 = -1
 	cold_level_3 = -1
 	has_fine_manipulation = FALSE
+	can_emote = FALSE
 	knock_down_reduction = 10
 	stun_reduction = 10
 	knock_out_reduction = 5
 	has_organ = list()
+
+	var/list/to_revive = list()
 
 /datum/species/zombie/handle_post_spawn(mob/living/carbon/human/H)
 	H.set_languages("Zombie")
 	return ..()
 
 /datum/species/zombie/handle_post_spawn(var/mob/living/carbon/human/H)
-	if(H.hud_used)
-		qdel(H.hud_used)
-		H.hud_used = null
-//		H.create_mob_hud()
-		if(H.hud_used)
-			H.hud_used.show_hud(H.hud_used.hud_version)
 	if(H.l_hand) H.drop_inv_item_on_ground(H.l_hand, FALSE, TRUE)
 	if(H.r_hand) H.drop_inv_item_on_ground(H.r_hand, FALSE, TRUE)
 	if(H.wear_id) qdel(H.wear_id)
-	if(H.gloves) qdel(H.gloves)
-	if(H.head) qdel(H.head)
-	if(H.glasses) qdel(H.glasses)
-	if(H.wear_mask) qdel(H.wear_mask)
-	var/obj/item/weapon/zombie_claws/ZC = new()
+	if(H.gloves) H.drop_inv_item_on_ground(H.gloves, FALSE, TRUE)
+	if(H.head) H.drop_inv_item_on_ground(H.head, FALSE, TRUE)
+	if(H.glasses) H.drop_inv_item_on_ground(H.glasses, FALSE, TRUE)
+	if(H.wear_mask) H.drop_inv_item_on_ground(H.wear_mask, FALSE, TRUE)
+
+	var/obj/item/weapon/zombie_claws/ZC = new(H)
 	ZC.icon_state = "claw_r"
 	H.equip_to_slot_or_del(ZC, WEAR_R_HAND, TRUE)
-	H.equip_to_slot_or_del(new /obj/item/weapon/zombie_claws, WEAR_L_HAND, TRUE)
-	H.equip_to_slot(new /obj/item/clothing/glasses/zombie_eyes, WEAR_EYES, TRUE)
-	H.equip_to_slot(new /obj/item/clothing/mask/rebreather/scarf/zombie, WEAR_FACE, TRUE)
+	H.equip_to_slot_or_del(new /obj/item/weapon/zombie_claws(H), WEAR_L_HAND, TRUE)
+	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/zombie_eyes(H), WEAR_EYES, TRUE)
+
+
+
+	var/datum/disease/D
+	
+	for(var/datum/disease/black_goo/DD in H.viruses)
+		D = DD
+
+	if(!D) 
+		H.AddDisease(new /datum/disease/black_goo())
+	
+	D.stage = 5
+
 	return ..()
 
+
+/datum/species/zombie/post_species_loss(mob/living/carbon/human/H)
+	if(H in to_revive)
+		delete_timer(to_revive[H])
+		to_revive -= H
 
 
 /datum/species/zombie/handle_unique_behavior(var/mob/living/carbon/human/H)
 	if(prob(5))
-		playsound(H.loc, 'sound/voice/alien_talk3.ogg', 25, 1)
-	else if(prob(5))
 		playsound(H.loc, 'sound/hallucinations/far_noise.ogg', 15, 1)
 	else if(prob(5))
 		playsound(H.loc, 'sound/hallucinations/veryfar_noise.ogg', 15, 1)
@@ -544,25 +558,29 @@
 /datum/species/zombie/handle_death(var/mob/living/carbon/human/H, gibbed)
 	set waitfor = 0
 	if(gibbed) return
-	if(!H.regenZ) return  //Also in each check, in case they are hit with the stuff to stop the regenerating during timers.
-	sleep(5)
-	if(H && H.loc && H.stat == DEAD && H.regenZ)
-		to_chat(H, SPAN_XENOWARNING(" You fall... but your body is slowly regenerating itself."))
-	sleep(1200)
-	if(H && H.loc && H.stat == DEAD && H.regenZ)
-		to_chat(H, SPAN_XENOWARNING(" Your body is half regenerated..."))
-	sleep(1200)
 
-	if(H && H.loc && H.stat == DEAD && H.regenZ)
+	if(H)
+		to_chat(H, SPAN_XENOWARNING("You fall... but your body is slowly regenerating itself."))
+		prepare_to_revive(H, MINUTES_4)
+
+/datum/species/zombie/proc/prepare_to_revive(var/mob/living/carbon/human/H, var/time)
+	to_revive.Add(H)
+	to_revive[H] = add_timer(CALLBACK(src, .proc/revive_from_death, H), time, TIMER_STOPPABLE | TIMER_OVERRIDE_UNIQUE)
+
+/datum/species/zombie/proc/remove_from_revive(var/mob/living/carbon/human/H)
+	if(H in to_revive)
+		delete_timer(to_revive[H])
+
+/datum/species/zombie/proc/revive_from_death(var/mob/living/carbon/human/H)
+	if(H && H.loc && H.stat == DEAD)
 		H.revive(TRUE)
 		H.stunned = 4
-		H.make_jittery(500)
-		H.visible_message(SPAN_WARNING("[H] rises!"), SPAN_XENOWARNING("YOU RISE AGAIN!"))
-		H.equip_to_slot(new /obj/item/clothing/glasses/zombie_eyes, WEAR_EYES, TRUE)
-		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine, WEAR_FEET, TRUE)
 
-		spawn(30)
-			H.jitteriness = 0
+		H.make_jittery(500)
+		H.visible_message(SPAN_WARNING("[H] rises from the ground!"))
+		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(H), WEAR_FEET, TRUE)
+
+		add_timer(CALLBACK(H, /mob/.proc/remove_jittery), SECONDS_3)
 
 /datum/species/yautja
 	name = "Yautja"

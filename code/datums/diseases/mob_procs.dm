@@ -25,13 +25,14 @@
 		return
 
 	if(force_species_check)
-		var/fail = 1
+		var/fail = TRUE
 		if(ishuman(src))
 			var/mob/living/carbon/human/H = src
 			for(var/vuln_species in virus.affected_species)
 				if(H.species.name == vuln_species)
-					fail = 0
+					fail = FALSE
 					break
+		
 		if(fail) return
 
 	if(skip_this == 1)
@@ -86,14 +87,9 @@
 	if(passed)
 		AddDisease(virus)
 
-
-
-
 /mob/living/carbon/human/contract_disease(datum/disease/virus, skip_this = 0, force_species_check=1, spread_type = -5)
 	if(species.flags & IS_SYNTHETIC) return //synthetic species are immune
-	..()
-
-
+	..(virus, skip_this, force_species_check, spread_type)
 
 /mob/proc/AddDisease(datum/disease/D, var/roll_for_carrier = TRUE)
 	var/datum/disease/DD = new D.type(1, D)
@@ -103,6 +99,8 @@
 	DD.holder = src
 	if(DD.can_carry && roll_for_carrier && prob(5))
 		DD.carrier = 1
+
+	return DD
 
 
 /mob/living/carbon/human/AddDisease(datum/disease/D)

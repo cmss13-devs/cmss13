@@ -32,6 +32,10 @@
 				continue
 			I.loc = src
 
+/obj/structure/closet/Dispose()
+	dump_contents()
+	. = ..()
+
 /obj/structure/closet/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
 	if (PF)
@@ -251,7 +255,16 @@
 	if(user.is_mob_incapacitated(TRUE)) return
 	user.next_move = world.time + 5
 
+	var/obj/item/I = user.get_active_hand()
+
+	if(I.pry_capable == IS_PRY_CAPABLE_FORCE)
+		visible_message(SPAN_DANGER("[user] smashes out of the locker!"))
+		playsound(loc, 'sound/effects/metal_crash.ogg', 75)
+		qdel(src)
+		return
+
 	if(!src.open())
+
 		to_chat(user, SPAN_NOTICE("It won't budge!"))
 		if(!lastbang)
 			lastbang = 1

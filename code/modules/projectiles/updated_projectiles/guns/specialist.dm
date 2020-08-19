@@ -1124,13 +1124,30 @@
 /obj/item/weapon/gun/launcher/rocket/proc/make_rocket(mob/user, drop_override = 0, empty = 1)
 	if(!current_mag)
 		return
+
 	var/obj/item/ammo_magazine/rocket/r = new current_mag.type()
+	//if there's ever another type of custom rocket ammo this logic should just be moved into a function on the rocket
+	if(istype(current_mag, /obj/item/ammo_magazine/rocket/custom) && !empty)
+		//set the custom rocket variables here.
+		var/obj/item/ammo_magazine/rocket/custom/k = new /obj/item/ammo_magazine/rocket/custom
+		var/obj/item/ammo_magazine/rocket/custom/cur_mag_cast = current_mag
+		k.contents = cur_mag_cast.contents
+		k.desc = cur_mag_cast.desc
+		k.fuel = cur_mag_cast.fuel
+		k.icon_state = cur_mag_cast.icon_state
+		k.warhead = cur_mag_cast.warhead
+		k.locked = cur_mag_cast.locked
+		k.name = cur_mag_cast.name
+		k.filters = cur_mag_cast.filters
+		r = k
+
 	if(empty)
 		r.current_rounds = 0
 	if(drop_override || !user) //If we want to drop it on the ground or there's no user.
 		r.forceMove(get_turf(src)) //Drop it on the ground.
-	else user.put_in_hands(r)
-	r.update_icon()
+	else 
+		user.put_in_hands(r)
+		r.update_icon()
 
 /obj/item/weapon/gun/launcher/rocket/reload(mob/user, obj/item/ammo_magazine/rocket)
 	if(!current_mag)

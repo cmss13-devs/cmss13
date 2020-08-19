@@ -509,7 +509,7 @@
 		ui = new(user, src, ui_key, "autolathe.tmpl", "[name] Control Panel" , 600, 700)
 		ui.set_initial_data(data)
 		ui.open()
-		ui.set_auto_update(1)
+		ui.set_auto_update(0)
 
 /obj/structure/machinery/autolathe/yautja
 	name = "\improper yautja autolathe"

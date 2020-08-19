@@ -233,7 +233,7 @@ As such, a new tracker datum must be constructed to follow proper child inherita
 			ui = new(user, src, ui_key, "escape_pod_console.tmpl", id_tag, 470, 290)
 			ui.set_initial_data(data)
 			ui.open()
-			ui.set_auto_update(1)
+			ui.set_auto_update(0)
 
 	Topic(href, href_list)
 		if(..()) 

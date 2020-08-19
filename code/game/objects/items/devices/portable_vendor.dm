@@ -104,7 +104,7 @@
 		ui = new(user, src, ui_key, "portable_vendor.tmpl", name , 600, 700)
 		ui.set_initial_data(data)
 		ui.open()
-		ui.set_auto_update(1)
+		ui.set_auto_update(0)
 
 
 /obj/item/device/portable_vendor/Topic(href, href_list)

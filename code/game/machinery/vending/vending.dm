@@ -465,7 +465,7 @@
 		ui = new(user, src, ui_key, "vending_machine.tmpl", name , 450, 600)
 		ui.set_initial_data(data)
 		ui.open()
-		ui.set_auto_update(1)
+		ui.set_auto_update(0)
 
 /obj/structure/machinery/vending/Topic(href, href_list)
 	if(inoperable())

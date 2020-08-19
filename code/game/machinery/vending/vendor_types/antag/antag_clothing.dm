@@ -590,6 +590,8 @@
 				O.forceMove(T)
 		else
 			O = new prod_type(T)
+		
+		vending_stat_bump(prod_type, src.type)
 		O.add_fingerprint(usr)
 
 		var/bitf = L[4]

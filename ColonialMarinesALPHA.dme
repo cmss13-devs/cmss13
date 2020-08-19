@@ -298,6 +298,7 @@
 #include "code\datums\entities\player.dm"
 #include "code\datums\entities\player_job_ban.dm"
 #include "code\datums\entities\player_note.dm"
+#include "code\datums\entities\vending_stat.dm"
 #include "code\datums\event_system\args.dm"
 #include "code\datums\event_system\datum_events.dm"
 #include "code\datums\event_system\event.dm"

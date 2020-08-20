@@ -230,7 +230,8 @@
 	// Related to zooming out (primarily queen and boiler)
 	var/devour_timer = 0 // The world.time at which we will regurgitate our currently-vored victim
 	var/extra_build_dist = 0 // For drones/hivelords. Extends the maximum build range they have
-	var/selected_resin = RESIN_WALL //which resin structure to build when we secrete resin
+	var/list/resin_build_order
+	var/selected_resin = 1 // Which resin structure to build when we secrete resin, defaults to 1 (first element)
 	var/selected_construction = XENO_STRUCTURE_CORE //which special structure to build when we place constructions
 	var/datum/ammo/xeno/ammo = null //The ammo datum for our spit projectiles. We're born with this, it changes sometimes.
 	var/obj/structure/tunnel/start_dig = null
@@ -350,6 +351,7 @@
 	if (caste)
 		behavior_delegate = new caste.behavior_delegate_type()
 		behavior_delegate.bound_xeno = src
+		resin_build_order = caste.resin_build_order
 	else
 		CRASH("Xenomorph [src] has no caste datum! Tell the devs!")
 

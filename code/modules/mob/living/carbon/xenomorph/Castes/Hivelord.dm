@@ -21,7 +21,7 @@
 	can_hold_eggs = CAN_HOLD_TWO_HANDS
 	acid_level = 2
 	weed_level = WEED_LEVEL_STANDARD
-	build_time = BUILD_TIME_HIVELORD
+	build_time_mult = BUILD_TIME_MULT_HIVELORD
 	max_build_dist = 1
 
 	tackle_min = 2
@@ -31,6 +31,11 @@
 	tacklestrength_max = 5
 	
 	aura_strength = 2.5
+
+/datum/caste_datum/hivelord/New()
+	. = ..()
+
+	resin_build_order = resin_build_order_hivelord
 
 /mob/living/carbon/Xenomorph/Hivelord
 	caste_name = "Hivelord"

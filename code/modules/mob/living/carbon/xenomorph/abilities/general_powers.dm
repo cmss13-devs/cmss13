@@ -113,26 +113,15 @@
 	var/mob/living/carbon/Xenomorph/X = owner
 	if(!X.check_state())
 		return
-	switch(X.selected_resin)
-		if(RESIN_DOOR)
-			X.selected_resin = RESIN_WALL
-		if(RESIN_WALL)
-			X.selected_resin = RESIN_MEMBRANE
-		if(RESIN_MEMBRANE)
-			X.selected_resin = RESIN_NEST
-		if(RESIN_NEST)
-			X.selected_resin = RESIN_STICKY
-		if(RESIN_STICKY)
-			X.selected_resin = RESIN_FAST
-		if(RESIN_FAST)
-			X.selected_resin = RESIN_DOOR
-		else
-			return //something went wrong
+	X.selected_resin++
+	if (X.selected_resin > length(X.resin_build_order))
+		X.selected_resin = 1
 
-	to_chat(X, SPAN_NOTICE("You will now build <b>[X.resin2text(X.selected_resin)]\s</b> when secreting resin."))
+	var/datum/resin_construction/RC = X.resin_build_order[X.selected_resin]
+	to_chat(X, SPAN_NOTICE("You will now build <b>[RC.construction_name]\s</b> when secreting resin."))
 	//update the button's overlay with new choice
 	button.overlays.Cut()
-	button.overlays += image('icons/mob/hud/actions.dmi', button, X.resin2text(X.selected_resin))
+	button.overlays += image('icons/mob/hud/actions.dmi', button, RC.construction_name)
 
 	..()
 	return

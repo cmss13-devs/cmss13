@@ -49,38 +49,10 @@
 
 
 
-/mob/living/carbon/Xenomorph/proc/build_resin(atom/A, thick=FALSE, message=TRUE)
+/mob/living/carbon/Xenomorph/proc/build_resin(var/atom/A, var/thick = FALSE, var/message = TRUE)
+	var/datum/resin_construction/RC = resin_build_order[selected_resin]
 
-	var/base_resin_cost = XENO_RESIN_BASE_COST
-	var/additional_resin_cost = 0
-	var/total_resin_cost = 0
-
-	var/resin_to_build = selected_resin
-
-	switch(resin_to_build)
-		if(RESIN_DOOR)
-			if(thick)
-				additional_resin_cost = XENO_RESIN_DOOR_THICK_COST
-			else
-				additional_resin_cost = XENO_RESIN_DOOR_COST//total 150 & 175 thick
-		if(RESIN_WALL)
-			if(thick)
-				additional_resin_cost = XENO_RESIN_WALL_THICK_COST
-			else
-				additional_resin_cost = XENO_RESIN_WALL_COST //total 150 & 200 thick
-		if(RESIN_MEMBRANE)
-			if(thick)
-				additional_resin_cost = XENO_RESIN_MEMBRANE_THICK_COST
-			else
-				additional_resin_cost = XENO_RESIN_MEMBRANE_COST//total cost 125 & 150 thick
-		if(RESIN_NEST)
-			additional_resin_cost = XENO_RESIN_NEST_COST//total 125
-		if(RESIN_STICKY)
-			additional_resin_cost = XENO_RESIN_STICKY_COST//total 85
-		if(RESIN_FAST)
-			additional_resin_cost = XENO_RESIN_FAST_COST//total 65
-
-	total_resin_cost = base_resin_cost + additional_resin_cost//live, diet, shit code, repeat
+	var/total_resin_cost = XENO_RESIN_BASE_COST + RC.cost // Live, diet, shit code, repeat
 
 	if(action_busy)
 		return FALSE
@@ -91,18 +63,6 @@
 
 	var/turf/current_turf = get_turf(A)
 
-	// Xeno ressource collection
-	/*var/obj/structure/resource_node/plasma/target_node = locate() in current_turf
-	if(target_node && get_dist(src, current_turf) <= max(1, src.caste.max_build_dist)) // Building resource collectors
-		var/obj/effect/alien/resin/collector/alien_blocker = locate() in current_turf
-		var/obj/structure/machinery/collector/marine_blocker = locate() in current_turf
-		if(alien_blocker || marine_blocker)
-			to_chat(src, SPAN_WARNING("There is already another collector here!"))
-			return FALSE
-		if(!target_node.growth_level)
-			to_chat(src, SPAN_WARNING("This resource is not ready yet!"))
-			return FALSE
-		resin_to_build = RESIN_COLLECTOR */
 	if(get_dist(src, A) > src.caste.max_build_dist + extra_build_dist) // Hivelords have max_build_dist of 1, drones and queens 0
 		current_turf = get_turf(src)
 	else if(thick) //hivelords can thicken existing resin structures.
@@ -149,60 +109,13 @@
 				playsound(loc, "alien_resin_build", 25)
 			A.add_hiddenprint(src) //so admins know who thickened the walls
 			return TRUE
-
-	var/mob/living/carbon/Xenomorph/blocker = locate() in current_turf
-	if(blocker && blocker != src && blocker.stat != DEAD)
-		to_chat(src, SPAN_WARNING("Can't do that with [blocker] in the way!"))
+	
+	if (!RC.can_build_here(current_turf, src))
 		return FALSE
 
-	if(!istype(current_turf) || !current_turf.is_weedable())
-		to_chat(src, SPAN_WARNING("You can't do that here."))
-		return FALSE
-
-	var/area/AR = get_area(current_turf)
-	if(istype(AR,/area/shuttle/drop1/lz1) || istype(AR,/area/shuttle/drop2/lz2)) //Bandaid for atmospherics bug when Xenos build around the shuttles
-		to_chat(src, SPAN_WARNING("You sense this is not a suitable area for expanding the hive."))
-		return FALSE
+	var/wait_time = RC.build_time * caste.build_time_mult
 
 	var/obj/effect/alien/weeds/alien_weeds = locate() in current_turf
-
-	if(!alien_weeds)
-		to_chat(src, SPAN_WARNING("You can only shape on weeds. Find some resin before you start building!"))
-		return FALSE
-	
-	if (alien_weeds.linked_hive.hivenumber != hivenumber)
-		to_chat(src, SPAN_WARNING("These weeds do not belong to your hive!"))
-		return FALSE
-
-	if(istype(current_turf, /turf/closed/wall)) // Can't build in walls with no density
-		to_chat(src, SPAN_WARNING("This area is too unstable to support a construction"))
-		return FALSE
-
-	if(resin_to_build != RESIN_COLLECTOR && !check_alien_construction(current_turf))
-		return FALSE
-
-	if(resin_to_build == RESIN_DOOR)
-		var/wall_support = FALSE
-		for(var/D in cardinal)
-			var/turf/T = get_step(current_turf,D)
-			if(T)
-				if(T.density)
-					wall_support = TRUE
-					break
-				else if(locate(/obj/structure/mineral_door/resin) in T)
-					wall_support = TRUE
-					break
-		if(!wall_support)
-			to_chat(src, SPAN_WARNING("Resin doors need a wall or resin door next to them to stand up."))
-			return FALSE
-
-	if(resin_to_build == RESIN_NEST)
-		if(!(alien_weeds.weed_strength >= WEED_LEVEL_HIVE))
-			to_chat(src, SPAN_WARNING("These weeds are not strong enough to hold the nest."))
-			return
-
-	var/wait_time = caste.build_time
-
 	alien_weeds.secreting = TRUE
 	alien_weeds.update_icon()
 
@@ -215,84 +128,16 @@
 	alien_weeds.secreting = FALSE
 	alien_weeds.update_icon()
 
-	blocker = locate() in current_turf
-	if(blocker && blocker != src && blocker.stat != DEAD)
+	if (!RC.can_build_here(current_turf, src))
 		return FALSE
-
-	if(!check_state())
-		return FALSE
-	if(!check_plasma(total_resin_cost))
-		return FALSE
-
-	if(!istype(current_turf) || !current_turf.is_weedable())
-		return FALSE
-
-	AR = get_area(current_turf)
-	if(istype(AR,/area/shuttle/drop1/lz1 || istype(AR,/area/shuttle/drop2/lz2))) //Bandaid for atmospherics bug when Xenos build around the shuttles
-		return FALSE
-
-	alien_weeds = locate() in current_turf
-	if(!alien_weeds)
-		return FALSE
-
-	if(resin_to_build != RESIN_COLLECTOR && !check_alien_construction(current_turf))
-		return FALSE
-
-	if(resin_to_build == RESIN_DOOR)
-		var/wall_support = FALSE
-		for(var/D in cardinal)
-			var/turf/T = get_step(current_turf,D)
-			if(T)
-				if(T.density)
-					wall_support = TRUE
-					break
-				else if(locate(/obj/structure/mineral_door/resin) in T)
-					wall_support = TRUE
-					break
-		if(!wall_support)
-			to_chat(src, SPAN_WARNING("Resin doors need a wall or resin door next to them to stand up."))
-			return FALSE
 
 	use_plasma(total_resin_cost)
 	if(message)
-		visible_message(SPAN_XENONOTICE("[src] regurgitates a thick substance and shapes it into \a [resin2text(resin_to_build, thick)]!"), \
-			SPAN_XENONOTICE("You regurgitate some resin and shape it into \a [resin2text(resin_to_build, thick)], using a total [total_resin_cost] plasma."), null, 5)
+		visible_message(SPAN_XENONOTICE("[src] regurgitates a thick substance and shapes it into \a [RC.construction_name]!"), \
+			SPAN_XENONOTICE("You regurgitate some resin and shape it into \a [RC.construction_name], using a total [total_resin_cost] plasma."), null, 5)
 		playsound(loc, "alien_resin_build", 25)
 
-	var/atom/new_resin
-
-	switch(resin_to_build)
-		if(RESIN_DOOR)
-			if(thick)
-				new_resin = new /obj/structure/mineral_door/resin/thick(current_turf, hivenumber)
-			else
-				new_resin = new /obj/structure/mineral_door/resin(current_turf, hivenumber)
-		if(RESIN_WALL)
-			if(thick)
-				current_turf.ChangeTurf(/turf/closed/wall/resin/thick)
-			else
-				current_turf.ChangeTurf(/turf/closed/wall/resin)
-			new_resin = current_turf
-		if(RESIN_MEMBRANE)
-			if(thick)
-				current_turf.ChangeTurf(/turf/closed/wall/resin/membrane/thick)
-			else
-				current_turf.ChangeTurf(/turf/closed/wall/resin/membrane)
-			new_resin = current_turf
-		if(RESIN_NEST)
-			new_resin = new /obj/structure/bed/nest(current_turf, hivenumber)
-		if(RESIN_STICKY)
-			new_resin = new /obj/effect/alien/resin/sticky(current_turf, hivenumber)
-		if(RESIN_FAST)
-			new_resin = new /obj/effect/alien/resin/sticky/fast(current_turf, hivenumber)
-		// Xeno ressource collection
-		/*if(RESIN_COLLECTOR)
-			new_resin = new /obj/effect/alien/resin/collector(current_turf, hive, target_node)*/
-
-	var/turf/closed/wall/resin/W = new_resin
-	if (istype(W))
-		W.hivenumber = hivenumber
-		set_hive_data(W, hivenumber)
+	var/atom/new_resin = RC.build(current_turf, hivenumber)
 
 	new_resin.add_hiddenprint(src) //so admins know who placed it
 	return TRUE

@@ -112,6 +112,9 @@
 		return
 	var/datum/behavior_delegate/lurker_base/BD = X.behavior_delegate
 	if (istype(BD))
+		// In case slash has already landed
+		if (!BD.next_slash_buffed)
+			return
 		BD.next_slash_buffed = FALSE
 
 	to_chat(X, SPAN_XENODANGER("You have waited too long, your slash will no longer deal increased damage!"))

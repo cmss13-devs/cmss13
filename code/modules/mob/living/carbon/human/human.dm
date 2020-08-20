@@ -1421,25 +1421,26 @@
 
 /mob/living/carbon/human/resist_fire()
 	if(isYautja(src))
-		fire_stacks = max(fire_stacks - 8, 0)
+		adjust_fire_stacks(HUNTER_FIRE_RESIST_AMOUNT, min_stacks = 0)
 		KnockDown(1, TRUE) // actually 0.5
 		spin(5, 1)
 		visible_message(SPAN_DANGER("[src] expertly rolls on the floor, greatly reducing the amount of flames!"), \
 			SPAN_NOTICE("You expertly roll to extinguish the flames!"), null, 5)
 	else
-		fire_stacks = max(fire_stacks - 5, 0)
+		adjust_fire_stacks(HUMAN_FIRE_RESIST_AMOUNT, min_stacks = 0)
 		KnockDown(4, TRUE)
 		spin(35, 2)
 		visible_message(SPAN_DANGER("[src] rolls on the floor, trying to put themselves out!"), \
 			SPAN_NOTICE("You stop, drop, and roll!"), null, 5)
 
-	if(fire_stacks > 0 && !istype(get_turf(src), /turf/open/gm/river))
+	if(istype(get_turf(src), /turf/open/gm/river))
+		ExtinguishMob()
+
+	if(fire_stacks > 0)
 		return
 
 	visible_message(SPAN_DANGER("[src] has successfully extinguished themselves!"), \
 			SPAN_NOTICE("You extinguish yourself."), null, 5)
-	ExtinguishMob()
-	return
 
 /mob/living/carbon/human/resist_acid()
 	var/sleep_amount = 1

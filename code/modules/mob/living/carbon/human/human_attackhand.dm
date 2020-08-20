@@ -11,14 +11,13 @@
 		if(INTENT_HELP)
 
 			if(on_fire && M != src)
-				fire_stacks = max(fire_stacks - 1, 0)
+				adjust_fire_stacks(-10, min_stacks = 0)
 				playsound(src.loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
 				M.visible_message(SPAN_DANGER("[M] tries to put out the fire on [src]!"), \
 					SPAN_WARNING("You try to put out the fire on [src]!"), null, 5)
 				if(fire_stacks <= 0)
 					M.visible_message(SPAN_DANGER("[M] has successfully extinguished the fire on [src]!"), \
 						SPAN_NOTICE("You extinguished the fire on [src]."), null, 5)
-					ExtinguishMob()
 				return 1
 
 			// If unconcious with oxygen damage, do CPR. If dead, we do CPR 

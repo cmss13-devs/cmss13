@@ -119,15 +119,15 @@
 /mob/living/proc/update_fire()
 	return
 
-/mob/living/proc/adjust_fire_stacks(add_fire_stacks, var/datum/reagent/R) //Adjusting the amount of fire_stacks we have on person
-	if(!R)
-		var/datum/reagent/napalm/ut/new_reagent = new()
-		if(fire_reagent.intensityfire < new_reagent.intensityfire)
-			fire_reagent = new_reagent
-
-	fire_stacks = Clamp(fire_stacks + add_fire_stacks, -20, 20)
-	if(R && (fire_reagent.intensityfire < R.intensityfire || !on_fire))
-		fire_reagent = R
+/mob/living/proc/adjust_fire_stacks(add_fire_stacks, var/datum/reagent/R, var/min_stacks = MIN_FIRE_STACKS) //Adjusting the amount of fire_stacks we have on person	
+	if (R)
+		if (!fire_reagent || R.durationfire > fire_stacks || fire_reagent.intensityfire < R.intensityfire || !on_fire)
+			fire_reagent = R
+	else if (!fire_reagent)
+		fire_reagent = new /datum/reagent/napalm/ut()
+	
+	var/max_stacks = min(fire_reagent.durationfire, MAX_FIRE_STACKS) // Fire stacks should not exceed MAX_FIRE_STACKS for reasonable resist amounts
+	fire_stacks = Clamp(fire_stacks + add_fire_stacks, min_stacks, max_stacks)
 
 	if(on_fire && fire_stacks <= 0)
 		ExtinguishMob()
@@ -137,9 +137,9 @@
 		fire_stacks++ //If we've doused ourselves in water to avoid fire, dry off slowly
 		fire_stacks = min(0, fire_stacks)//So we dry ourselves back to default, nonflammable.
 	if(!on_fire)
-		return 1
+		return TRUE
 	if(fire_stacks > 0)
-		adjust_fire_stacks(-1) //the fire is consumed slowly
+		adjust_fire_stacks(-0.5, min_stacks = 0) //the fire is consumed slowly
 
 /mob/living/fire_act()
 	if (raiseEventSync(src, EVENT_PREIGNITION_CHECK) != HALTED)

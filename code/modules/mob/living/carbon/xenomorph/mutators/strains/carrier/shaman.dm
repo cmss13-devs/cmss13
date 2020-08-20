@@ -293,12 +293,10 @@
 				continue
 			H.KnockDown(action_def.stun_timer)
 			H.emote("scream")
-			H.fire_stacks = max(H.fire_stacks - rand(3,6), 0)
+			H.adjust_fire_stacks(-10, min_stacks = 0)
 			H.spin(25, 2)
 			if(!prob(50))
 				H.extinguish_acid()
-			if(fire_stacks <= 0)
-				H.ExtinguishMob()
 			H.visible_message(SPAN_DANGER("[H] rolls on the floor, flailing their hands in panic!"), \
 				SPAN_NOTICE("Wave of madness passes thru and completely overwhelms you. What is this madness, GET IT OFF ME!"), null, 5)
 			H.scream_stun_timeout = world.time + action_def.stun_timeout

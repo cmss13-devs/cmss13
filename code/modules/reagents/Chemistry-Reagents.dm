@@ -32,7 +32,7 @@
 	var/intensitymod = 0
 	var/durationmod = 0
 	var/radiusmod = 0
-	// For chemical fire from flamerthrowers
+	// For chemical fire from flamethrowers
 	var/intensityfire = 0
 	var/durationfire = 0
 	var/rangefire = -1 // Keep at -1 if you want an infinite range

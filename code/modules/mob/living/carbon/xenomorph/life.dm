@@ -57,19 +57,26 @@
 			to_chat(src, SPAN_XENODANGER("Your carapace crackles and your tendons strengthen. You are ready to evolve!")) //Makes this bold so the Xeno doesn't miss it
 			src << sound('sound/effects/xeno_evolveready.ogg')
 
+// Always deal 80% of damage and deal the other 20% depending on how many fire stacks mob has
+#define PASSIVE_BURN_DAM_CALC(intensity, duration, fire_stacks) intensity*((duration-fire_stacks)/duration*0.2 + 0.8)
+
 /mob/living/carbon/Xenomorph/proc/handle_xeno_fire()
-	if(on_fire)
-		var/obj/item/clothing/mask/facehugger/F = get_active_hand()
-		var/obj/item/clothing/mask/facehugger/G = get_inactive_hand()
-		if(istype(F))
-			F.Die()
-			drop_inv_item_on_ground(F)
-		if(istype(G))
-			G.Die()
-			drop_inv_item_on_ground(G)
-		if(!caste || !caste.fire_immune || fire_reagent.fire_penetrating)
-			var/dmg = armor_damage_reduction(config.xeno_fire, fire_stacks * 2 + 4.5)
-			apply_damage(dmg, BURN)
+	if(!on_fire)
+		return
+	
+	var/obj/item/clothing/mask/facehugger/F = get_active_hand()
+	var/obj/item/clothing/mask/facehugger/G = get_inactive_hand()
+	if(istype(F))
+		F.Die()
+		drop_inv_item_on_ground(F)
+	if(istype(G))
+		G.Die()
+		drop_inv_item_on_ground(G)
+	if(!caste || !caste.fire_immune || fire_reagent.fire_penetrating)
+		var/dmg = armor_damage_reduction(config.xeno_fire, PASSIVE_BURN_DAM_CALC(fire_reagent.intensityfire, fire_reagent.durationfire, fire_stacks))
+		apply_damage(dmg, BURN)
+
+#undef PASSIVE_BURN_DAM_CALC
 
 /mob/living/carbon/Xenomorph/proc/handle_pheromones()
 	//Rollercoaster of fucking stupid because Xeno life ticks aren't synchronised properly and values reset just after being applied
@@ -220,7 +227,7 @@
 					playsound(loc, 'sound/voice/alien_drool1.ogg', 50, 1)
 				var/mob/living/carbon/human/H = M
 				if(world.time > devour_timer || H.stat == DEAD)
-					regurgitate(H, 0)
+					regurgitate(H)
 
 			M.acid_damage++
 			if(M.acid_damage > 300)

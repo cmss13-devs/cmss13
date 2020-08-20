@@ -87,6 +87,14 @@
 
 			spawn_reagent(target, volume)
 			return
+		if("make_report")
+			var/target = input(usr, "Enter the ID of the chemical reagent you wish to make a report of:")
+			if(!chemical_reagents_list[target])
+				to_chat(usr, SPAN_WARNING("No reagent with this ID could be found."))
+				return
+			
+			var/datum/reagent/R = chemical_reagents_list[target]
+			R.print_report(loc = usr.loc, admin_spawned = TRUE)	
 		//For quickly generating a new chemical
 		if("create_random_reagent")
 			var/target = input(usr,"Enter the ID of the chemical reagent you wish to make:")

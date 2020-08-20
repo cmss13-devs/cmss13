@@ -85,13 +85,9 @@
 
 /obj/structure/machinery/reagent_analyzer/proc/print_report(var/result, var/reason)
 	var/obj/item/paper/research_report/report = new /obj/item/paper/research_report/(loc)
-	report.name = "Analysis of "
 	if(result)
 		var/datum/reagent/S = sample.reagents.reagent_list[1]
-		report.name += "[S.name]"
-		report.info += "<center><img src = wylogo.png><HR><I><B>Official Weston-Yamada Document</B><BR>Automated A-XRF Report</I><HR><H2>Analysis of [S.name]</H2></center>"
-		report.info += "<B>Results for sample:</B> #[sample_number]<BR>\n"
-		report.generate(S)
+		S.print_report(report = report, sample_number = sample_number)
 		sample.name = "vial ([S.name])"
 		chemical_data.save_document(report, "XRF Scans", "[sample_number] - [report.name]")
 		if(S.chemclass >= CHEM_CLASS_SPECIAL && !chemical_identified_list[S.id])
@@ -107,8 +103,19 @@
 			chemical_identified_list[S.id] = S.objective_value
 			defcon_controller.check_defcon_level()
 	else
-		report.name += "ERROR"
+		report.name += "Analysis of ERROR"
 		report.info += "<center><img src = wylogo.png><HR><I><B>Official Weston-Yamada Document</B><BR>Reagent Analysis Print</I><HR><H2>Analysis ERROR</H2></center>"
 		report.info += "<B>Result:</B><BR>Analysis failed for sample #[sample_number].<BR><BR>\n"
 		report.info += "<B>Reason for error:</B><BR><I>[reason]</I><BR>\n"
 	report.info += "<BR><HR><font size = \"1\"><I>This report was automatically printed by the A-XRF Scanner.<BR>The USS Almayer, [time2text(world.timeofday, "MM/DD")]/[game_year], [worldtime2text()]</I></font><BR>\n<span class=\"paper_field\"></span>"
+
+/datum/reagent/proc/print_report(var/turf/loc, var/obj/item/paper/research_report/report, var/admin_spawned = FALSE, var/sample_number = 0)
+	if(!report)
+		report = new /obj/item/paper/research_report(loc)
+	
+	report.name = "Analysis of [name]"
+
+	report.info += "<center><img src = wylogo.png><HR><I><B>Official Weston-Yamada Document</B><BR>Automated A-XRF Report</I><HR><H2>Analysis of [name]</H2></center>"
+	if(sample_number)
+		report.info += "<B>Results for sample:</B> #[sample_number]<BR>\n"
+	report.generate(src, admin_spawned)

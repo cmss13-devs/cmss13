@@ -685,20 +685,20 @@
 	var/datum/reagent/data
 	var/completed = FALSE
 
-/obj/item/paper/research_report/proc/generate(var/datum/reagent/S)
+/obj/item/paper/research_report/proc/generate(var/datum/reagent/S, var/info_only = FALSE)
 	if(!S)
 		return
 	info += "<B>ID:</B> <I>[S.name]</I><BR><BR>\n"
 	info += "<B>Database Details:</B><BR>\n"
 	if(S.chemclass >= CHEM_CLASS_ULTRA)
-		if(chemical_data.clearance_level >= S.gen_tier)
+		if(chemical_data.clearance_level >= S.gen_tier || info_only)
 			info += "<I>The following information relating to [S.name] is restricted with a level [S.gen_tier] clearance classification.</I><BR>"
 			info += "<font size = \"2.5\">[S.description]\n"
 			info += "<BR>Overdoses at: [S.overdose] units</font><BR>\n"
 			completed = TRUE
 		else
 			info += "CLASSIFIED:<I> Clearance level [S.gen_tier] required to read the database entry.</I><BR>\n"
-	else if(S.chemclass == CHEM_CLASS_SPECIAL && !chemical_data.clearance_x_access)
+	else if(S.chemclass == CHEM_CLASS_SPECIAL && !chemical_data.clearance_x_access && !info_only)
 		info += "CLASSIFIED:<I> Clearance level <B>X</B> required to read the database entry.</I><BR>\n"
 	else if(S.description)
 		info += "<font size = \"2.5\">[S.description]\n"
@@ -706,14 +706,14 @@
 		completed = TRUE
 	else
 		info += "<I>No details on this reagent could be found in the database.</I><BR>\n"
-	if(S.chemclass >= CHEM_CLASS_SPECIAL && !chemical_identified_list[S.id])
+	if(S.chemclass >= CHEM_CLASS_SPECIAL && !chemical_identified_list[S.id] && !info_only)
 		info += "<BR><I>Saved emission spectrum of [S.name] to the database.</I><BR>\n"
 	info += "<BR><B>Composition Details:</B><BR>\n"
 	if(chemical_reactions_list[S.id])
 		var/datum/chemical_reaction/C = chemical_reactions_list[S.id]
 		for(var/I in C.required_reagents)
 			var/datum/reagent/R = chemical_reagents_list["[I]"]
-			if(R.chemclass >= CHEM_CLASS_SPECIAL && !chemical_identified_list[R.id])
+			if(R.chemclass >= CHEM_CLASS_SPECIAL && !chemical_identified_list[R.id] && !info_only)
 				info += "<font size = \"2\"><I> - Unknown emission spectrum</I></font><BR>\n"
 				completed = FALSE
 			else
@@ -724,7 +724,7 @@
 				info += "<BR>Reaction would require the following catalysts:<BR>\n"
 				for(var/I in C.required_catalysts)
 					var/datum/reagent/R = chemical_reagents_list["[I]"]
-					if(R.chemclass >= CHEM_CLASS_SPECIAL && !chemical_identified_list[R.id])
+					if(R.chemclass >= CHEM_CLASS_SPECIAL && !chemical_identified_list[R.id] && !info_only)
 						info += "<font size = \"2\"><I> - Unknown emission spectrum</I></font><BR>\n"
 						completed = FALSE
 					else
@@ -735,10 +735,15 @@
 	else
 		info += "<I>ERROR: Unable to analyze emission spectrum of sample.</I>" //A reaction to make this doesn't exist, so this is our IC excuse
 		completed = FALSE
-	if(!S.properties) //Safety for empty reagents
-		completed = FALSE
-	if(S.chemclass == CHEM_CLASS_SPECIAL && chemical_data.clearance_x_access)
+
+	if(info_only)
 		completed = TRUE
+	else
+		if(!S.properties) //Safety for empty reagents
+			completed = FALSE
+		if(S.chemclass == CHEM_CLASS_SPECIAL && chemical_data.clearance_x_access)
+			completed = TRUE
+	
 	data = S
 
 /obj/item/paper/incident

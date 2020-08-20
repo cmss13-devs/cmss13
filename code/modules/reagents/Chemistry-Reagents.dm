@@ -315,7 +315,7 @@
 	return TRUE
 
 /datum/reagent/proc/remove_property(var/datum/chem_property/property)
-	properties -= list(property)
+	properties -= property
 	recalculate_variables()
 
 /datum/reagent/proc/reset_pain_reduction()

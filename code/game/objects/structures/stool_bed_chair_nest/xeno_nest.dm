@@ -211,7 +211,7 @@
 		qdel(src)
 
 /obj/structure/bed/nest/fire_act()
-	on_fire = 1
+	on_fire = TRUE
 	if(on_fire)
 		update_icon()
 		QDEL_IN(src, rand(225, 400))

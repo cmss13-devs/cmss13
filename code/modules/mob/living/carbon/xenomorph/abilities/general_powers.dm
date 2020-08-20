@@ -52,8 +52,6 @@
 /datum/action/xeno_action/onclick/xeno_resting/use_ability(atom/A)
 
 	var/mob/living/carbon/Xenomorph/X = owner
-	if(X.is_mob_incapacitated(TRUE))
-		return
 
 	if(X.hardcore)
 		to_chat(X, SPAN_WARNING("No time to rest, must KILL!"))
@@ -104,7 +102,7 @@
 	if(X.stomach_contents.len)
 		for(var/mob/living/M in X.stomach_contents)
 			// Also has good reason to be a proc on all Xenos
-			X.regurgitate(M)
+			X.regurgitate(M, TRUE)
 	
 	..()
 	return

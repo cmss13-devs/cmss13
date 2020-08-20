@@ -358,7 +358,7 @@
 		see_in_dark = 8
 		sight |= SEE_MOBS
 
-/mob/living/carbon/Xenomorph/proc/regurgitate(mob/living/victim, var/stunned = 1)
+/mob/living/carbon/Xenomorph/proc/regurgitate(mob/living/victim, stuns = FALSE)
 	if(stomach_contents.len)
 		if(victim)
 			stomach_contents.Remove(victim)
@@ -369,9 +369,8 @@
 			SPAN_XENOWARNING("You hurl out the contents of your stomach!"), null, 5)
 			playsound(get_true_location(loc), 'sound/voice/alien_drool2.ogg', 50, 1)
 
-			if(!stunned)
-				victim.SetStunned(0)
-				victim.SetKnockeddown(0)
+			if (stuns)
+				victim.AdjustStunned(2)
 	else
 		to_chat(src, SPAN_WARNING("There's nothing in your belly that needs regurgitating."))
 

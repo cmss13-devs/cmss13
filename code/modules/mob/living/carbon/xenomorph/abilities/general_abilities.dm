@@ -27,7 +27,7 @@
 /datum/action/xeno_action/onclick/xeno_resting/can_use_action()
 	var/mob/living/carbon/Xenomorph/X = owner
 
-	if (!X || X.is_mob_incapacitated(1) || X.buckled || X.fortify || X.crest_defense)
+	if (!X || X.buckled || X.fortify || X.crest_defense)
 		return
 
 	if (istype(X, /mob/living/carbon/Xenomorph/Burrower))

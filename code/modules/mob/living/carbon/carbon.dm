@@ -428,14 +428,13 @@
 				break
 
 /mob/living/carbon/proc/extinguish_mob(mob/living/carbon/C)
-	fire_stacks = max(fire_stacks - 1, 0)
+	adjust_fire_stacks(-5, min_stacks = 0)
 	playsound(src.loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
 	C.visible_message(SPAN_DANGER("[C] tries to put out the fire on [src]!"), \
 	SPAN_WARNING("You try to put out the fire on [src]!"), null, 5)
 	if(fire_stacks <= 0)
 		C.visible_message(SPAN_DANGER("[C] has successfully extinguished the fire on [src]!"), \
 		SPAN_NOTICE("You extinguished the fire on [src]."), null, 5)
-		ExtinguishMob()
 
 /mob/living/carbon/resist_buckle()
 	if(istype(buckled, /obj/structure/bed/nest))

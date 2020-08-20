@@ -747,7 +747,7 @@
 
 /datum/reagent/napalm/green/New()
 	properties = list(
-		PROPERTY_INTENSITY 	= config.med_burnlevel,
+		PROPERTY_INTENSITY 	= config.low_burnlevel,
 		PROPERTY_DURATION 	= config.max_burntime,
 		PROPERTY_RADIUS 	= config.near_shell_range
 	)

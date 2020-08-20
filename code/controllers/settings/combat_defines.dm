@@ -150,7 +150,7 @@ Burn time = How long do we want our flames to last?
 
 	var/min_burnlevel = 10 * HUMAN_UNIVERSAL_DAMAGEMULT
 	var/low_burnlevel = 15 * HUMAN_UNIVERSAL_DAMAGEMULT
-	var/med_burnlevel = 20 * HUMAN_UNIVERSAL_DAMAGEMULT //This tickles aliens, really hurts humans.
+	var/med_burnlevel = 30 * HUMAN_UNIVERSAL_DAMAGEMULT //This tickles aliens, really hurts humans.
 	var/high_burnlevel = 40 * HUMAN_UNIVERSAL_DAMAGEMULT
 	var/max_burnlevel = 50 * HUMAN_UNIVERSAL_DAMAGEMULT
 

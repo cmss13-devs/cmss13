@@ -17,10 +17,10 @@
 /datum/tackle_counter/proc/attempt_tackle(var/tackle_bonus = 0)
     tackle_count++
 
-    if (tackle_count < min_tackles)
-        return FALSE
-    else if (tackle_count >= max_tackles)
+    if (tackle_count >= max_tackles)
         return TRUE
+    else if (tackle_count < min_tackles)
+        return FALSE
     else if (prob(tackle_chance + tackle_bonus))
         return TRUE
     

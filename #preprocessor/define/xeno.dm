@@ -19,14 +19,6 @@
 #define XENO_HITS_TO_DESTROY_WINDOW_FRAME 	3
 #define XENO_HITS_TO_DESTROY_R_WINDOW_FRAME	5
 
-#define RESIN_WALL 1
-#define RESIN_DOOR 2
-#define RESIN_MEMBRANE 4
-#define RESIN_NEST 8
-#define RESIN_STICKY 16
-#define RESIN_FAST 32
-#define RESIN_COLLECTOR 64
-
 #define XENO_ACTION_CLICK  0 // Just select the action (base). Toggles can use this too
 #define XENO_ACTION_ACTIVATE 1 // Actually use the action SHOULD ONLY BE USED ON ACTIVABLE ACTIONS OR ELSE WILL NOT WORK
 #define XENO_ACTION_QUEUE 2 // Tell the action handler to queue the action for next click
@@ -51,8 +43,8 @@
 #define HUD_PLASMA_STATES_XENO 16
 #define HUD_ARMOR_STATES_XENO  10
 
-#define BUILD_TIME_XENO		20 //time taken for a xeno to place down a resin structure
-#define BUILD_TIME_HIVELORD	10
+#define BUILD_TIME_MULT_XENO    1 // Multiplier for time taken for a xeno to place down a resin structure
+#define BUILD_TIME_MULT_HIVELORD     0.5
 #define XENO_LEADER_HIVE_POS(X)          (X + 1)
 #define GET_XENO_LEADER_NUM(X)  (X.hive_pos - 1)
 #define IS_XENO_LEADER(X)       (X.hive_pos > 1)

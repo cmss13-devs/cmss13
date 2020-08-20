@@ -59,7 +59,7 @@
 	var/behavior_delegate_type = /datum/behavior_delegate
 
 	// Resin building-related vars
-	var/build_time = BUILD_TIME_XENO // Default build time and build distance
+	var/build_time_mult = BUILD_TIME_MULT_XENO // Default build time and build distance
 	var/max_build_dist = 0
 
 	//Carrier vars
@@ -100,6 +100,8 @@
 	var/heal_standing = 0.4
 	var/heal_knocked_out = 0.33
 
+	var/list/resin_build_order
+
 
 /datum/caste_datum/can_vv_modify()
 	return FALSE
@@ -116,6 +118,8 @@
 			if(2)
 				evolution_threshold = 500
 			//Other tiers (T3, Queen, etc.) can't evolve anyway
+
+	resin_build_order = resin_build_order_default
 
 /datum/caste_datum/proc/can_play_caste(var/client/client)
 	if(!config.use_timelocks)

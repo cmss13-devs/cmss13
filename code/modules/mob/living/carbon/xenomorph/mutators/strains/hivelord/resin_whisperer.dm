@@ -51,7 +51,9 @@
 		return FALSE
 
 	// Account for the do_after in the resin building proc when checking cooldown
-	return (world.time >= last_use + (X.caste.build_time + cooldown))
+	var/datum/resin_construction/RC = X.resin_build_order[X.selected_resin]
+	var/total_build_time = RC.build_time*X.caste.build_time_mult
+	return (world.time >= last_use + (total_build_time + cooldown))
 
 /datum/action/xeno_action/activable/secrete_resin/remote/use_ability(atom/A)
 	if(!action_cooldown_check())
@@ -72,8 +74,10 @@
 		return
 
 	last_use = world.time
-	T.visible_message(SPAN_XENONOTICE("The weeds begin pulsating wildly and secrete resin in the shape of \a [X.resin2text(X.selected_resin, FALSE)]!"), null, 5)
-	to_chat(owner, SPAN_XENONOTICE("You focus your plasma into the weeds below you and force the weeds to secrete resin in the shape of \a [X.resin2text(X.selected_resin, FALSE)]."))
+
+	var/datum/resin_construction/RC = X.resin_build_order[X.selected_resin]
+	T.visible_message(SPAN_XENONOTICE("The weeds begin pulsating wildly and secrete resin in the shape of \a [RC.construction_name]!"), null, 5)
+	to_chat(owner, SPAN_XENONOTICE("You focus your plasma into the weeds below you and force the weeds to secrete resin in the shape of \a [RC.construction_name]."))
 	playsound(T, "alien_resin_build", 25)
 
 /datum/action/xeno_action/verb/verb_coerce_resin()

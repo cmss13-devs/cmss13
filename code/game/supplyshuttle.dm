@@ -320,7 +320,7 @@ var/datum/controller/supply/supply_controller = new()
 	var/ordernum
 	var/datum/supply_packs/object = null
 	var/orderedby = null
-	var/comment = null
+	var/approvedby = null
 
 /datum/controller/supply
 	var/processing = 1
@@ -522,7 +522,7 @@ var/datum/controller/supply/supply_controller = new()
 
 		var/atom/A = new SP.containertype(pickedloc)
 		if(istype(A, /obj/structure/closet))
-			A.name = "[SP.containername][SO.comment ? " ([SO.comment])" : ""]"
+			A.name = "[SP.containername]"
 
 			//supply manifest generation begin
 
@@ -673,7 +673,7 @@ var/datum/controller/supply/supply_controller = new()
 		temp = "Current approved orders: <BR><BR>"
 		for(var/S in supply_controller.shoppinglist)
 			var/datum/supply_order/SO = S
-			temp += "[SO.object.name] approved by [SO.orderedby] [SO.comment ? "([SO.comment])":""]<BR>"
+			temp += "[SO.object.name] approved by [SO.approvedby]<BR>"
 		temp += "<BR><A href='?src=\ref[src];mainmenu=1'>OK</A>"
 
 	else if (href_list["viewrequests"])
@@ -892,6 +892,7 @@ var/datum/controller/supply/supply_controller = new()
 					P.cost = P.cost * SUPPLY_COST_MULTIPLIER
 					temp = "Thank you for your order.<BR>"
 					temp += "<BR><A href='?src=\ref[src];viewrequests=1'>Back</A> <A href='?src=\ref[src];mainmenu=1'>Main Menu</A>"
+					O.approvedby = usr.name
 					msg_admin_niche("[usr] confirmed supply order of [P.name].")
 				else
 					temp = "Not enough money left.<BR>"
@@ -902,7 +903,7 @@ var/datum/controller/supply/supply_controller = new()
 		temp = "Current approved orders: <BR><BR>"
 		for(var/S in supply_controller.shoppinglist)
 			var/datum/supply_order/SO = S
-			temp += "#[SO.ordernum] - [SO.object.name] approved by [SO.orderedby][SO.comment ? " ([SO.comment])":""]<BR>"// <A href='?src=\ref[src];cancelorder=[S]'>(Cancel)</A><BR>"
+			temp += "#[SO.ordernum] - [SO.object.name] approved by [SO.approvedby]<BR>"// <A href='?src=\ref[src];cancelorder=[S]'>(Cancel)</A><BR>"
 		temp += "<BR><A href='?src=\ref[src];mainmenu=1'>OK</A>"
 /*
 	else if (href_list["cancelorder"])
@@ -913,7 +914,7 @@ var/datum/controller/supply/supply_controller = new()
 
 		for(var/S in supply_shuttle_shoppinglist)
 			var/datum/supply_order/SO = S
-			temp += "[SO.object.name] approved by [SO.orderedby][SO.comment ? " ([SO.comment])":""] <A href='?src=\ref[src];cancelorder=[S]'>(Cancel)</A><BR>"
+			temp += "[SO.object.name] approved by [SO.orderedby] <A href='?src=\ref[src];cancelorder=[S]'>(Cancel)</A><BR>"
 		temp += "<BR><A href='?src=\ref[src];mainmenu=1'>OK</A>"
 */
 	else if (href_list["viewrequests"])

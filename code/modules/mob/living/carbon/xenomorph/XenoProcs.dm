@@ -581,12 +581,12 @@
 	frozen = FALSE
 	update_canmove()
 
-/mob/living/carbon/Xenomorph/proc/attempt_tackle(var/mob/M, var/tackle_mult = 1, var/tackle_bonus = 0)
+/mob/living/carbon/Xenomorph/proc/attempt_tackle(var/mob/M, var/tackle_mult = 1, var/tackle_min_offset = 0, var/tackle_max_offset = 0, var/tackle_bonus = 0)
 	var/datum/tackle_counter/TC
 	if (M in tackle_counter)
 		TC = tackle_counter[M]
 	else
-		TC = getFromPool(/datum/tackle_counter, tackle_min, tackle_max, tackle_chance*tackle_mult)
+		TC = getFromPool(/datum/tackle_counter, tackle_min + tackle_min_offset, tackle_max + tackle_max_offset, tackle_chance*tackle_mult)
 		tackle_counter[M] = TC
 	
 	if (TC.tackle_reset_id)

@@ -183,32 +183,26 @@
 				playsound(loc, 'sound/weapons/alien_claw_block.ogg', 25, 1) //Feedback
 				return FALSE
 			M.flick_attack_overlay(src, "disarm")
-			if(knocked_down)
-				if(isYautja(src))
-					if(prob(95))
-						M.visible_message(SPAN_DANGER("[src] avoids [M]'s tackle!"), \
-						SPAN_DANGER("[src] avoids your attempt to tackle them!"), null, 5, CHAT_TYPE_XENO_COMBAT)
-						playsound(loc, 'sound/weapons/alien_claw_swipe.ogg', 25, 1)
-						return TRUE
-				else if(prob(80))
-					playsound(loc, 'sound/weapons/alien_claw_swipe.ogg', 25, 1)
-					M.visible_message(SPAN_DANGER("[M] tries to tackle [src], but they are already down!"), \
-					SPAN_DANGER("You try to tackle [src], but they are already down!"), null, 5, CHAT_TYPE_XENO_COMBAT)
-					return TRUE
-				playsound(loc, 'sound/weapons/pierce.ogg', 25, 1)
-				KnockDown(rand(M.tacklestrength_min, M.tacklestrength_max)) //Min and max tackle strenght. They are located in individual caste files.
+
+			var/tackle_mult = 1
+			var/tackle_min_offset = 0
+			var/tackle_max_offset = 0
+			if (isYautja(src))
+				tackle_mult = 0.2
+				tackle_min_offset += 2
+				tackle_max_offset += 2
+
+			if(M.attempt_tackle(src, tackle_mult, tackle_min_offset, tackle_max_offset))
+				playsound(loc, 'sound/weapons/alien_knockdown.ogg', 25, 1)
+				KnockDown(rand(M.tacklestrength_min, M.tacklestrength_max))
 				M.visible_message(SPAN_DANGER("[M] tackles down [src]!"), \
 				SPAN_DANGER("You tackle down [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
-
 			else
-				var/tackle_mult = isYautja(src) ? 0.2 : 1
-				if(M.attempt_tackle(src, tackle_mult))
-					playsound(loc, 'sound/weapons/alien_knockdown.ogg', 25, 1)
-					KnockDown(rand(M.tacklestrength_min, M.tacklestrength_max))
-					M.visible_message(SPAN_DANGER("[M] tackles down [src]!"), \
-					SPAN_DANGER("You tackle down [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+				playsound(loc, 'sound/weapons/alien_claw_swipe.ogg', 25, 1)
+				if (knocked_down)
+					M.visible_message(SPAN_DANGER("[M] tries to tackle [src], but they are already down!"), \
+					SPAN_DANGER("You try to tackle [src], but they are already down!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 				else
-					playsound(loc, 'sound/weapons/alien_claw_swipe.ogg', 25, 1)
 					M.visible_message(SPAN_DANGER("[M] tries to tackle [src]"), \
 					SPAN_DANGER("You try to tackle [src]"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	return TRUE

@@ -50,6 +50,9 @@
 #define HOURS_6 		216000
 #define HOURS_9 		324000
 
+#define XENO_LEAVE_TIMER_LARVA 60
+#define XENO_LEAVE_TIMER 300
+
 // Real time that is still reliable even when the round crosses over midnight time reset.
 #define REALTIMEOFDAY (world.timeofday + (864000 * MIDNIGHT_ROLLOVER_CHECK))
 #define MIDNIGHT_ROLLOVER_CHECK ( rollovercheck_last_timeofday != world.timeofday ? update_midnight_rollover() : midnight_rollovers )

@@ -673,6 +673,7 @@
 				<br>"}
 	if(check_rights(R_SPAWN,0))
 		dat += {"<A href='?src=\ref[src];chem_panel=spawn_reagent'>Spawn Reagent in Container</A><br>
+				<A href='?src=\ref[src];chem_panel=make_report'>Make Chem Report</A><br>
 				<br>"}
 	if(check_rights(R_FUN,0))
 		dat += {"<A href='?src=\ref[src];chem_panel=create_random_reagent'>Generate Reagent</A><br>

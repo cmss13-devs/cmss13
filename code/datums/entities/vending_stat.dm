@@ -21,6 +21,8 @@
 	child_name = "vending_stat"
 
 /proc/vending_stat_bump(item_name, source_name, bump_by = 1)
+	if(!SSperf_logging.round)
+		return // too early. Don't care
 	SSperf_logging.round.sync() // should be already synced but what if someone tries to vend stuff in first 5 seconds of game starting? takes almost no time if we already done
 	var/round_id = SSperf_logging.round.id // get the round id
 	DB_FILTER(/datum/entity/vending_stat, DB_AND( // find all records (hopefully just one)

@@ -412,14 +412,14 @@
 			continue 
 
 		M.scream_stun_timeout = SECONDS_20
-		var/dist = get_dist_sqrd(src, M)
-		if(dist <= 4*4)
+		var/dist = get_dist(src, M)
+		if(dist <= 4)
 			to_chat(M, SPAN_DANGER("An ear-splitting guttural roar shakes the ground beneath your feet!"))
 			M.stunned += 4 //Seems the effect lasts between 3-8 seconds.
 			M.KnockDown(4)
 			if(!M.ear_deaf)
 				M.ear_deaf += 8 //Deafens them temporarily
-		else if(dist >= 5*5 && dist < 7*7)
+		else if(dist >= 5 && dist < 7)
 			M.stunned += 3
 			to_chat(M, SPAN_DANGER("The roar shakes your body to the core, freezing you in place!"))
 		

@@ -207,7 +207,7 @@
 /obj/structure/machinery/defenses/sentry/proc/actual_fire(var/atom/A)
 	var/obj/item/projectile/P = new(initial(name), owner_mob)
 	P.generate_bullet(new ammo.default_ammo)
-	P.fire_at(A, src, owner_mob, P.ammo.max_range, P.ammo.shell_speed)
+	P.fire_at(A, src, owner_mob, P.ammo.max_range, P.ammo.shell_speed, null, FALSE, faction_group)
 	muzzle_flash(Get_Angle(get_turf(src), A))
 	ammo.current_rounds--
 	if(ammo.current_rounds == 0)
@@ -256,7 +256,7 @@
 
 			if(ishuman(A))
 				var/mob/living/carbon/human/H = A
-				if((H.faction in belonging_to_faction) || H.invisibility)
+				if(H.get_target_lock(faction_group) || H.invisibility)
 					if(A == target)
 						target = null
 					targets.Remove(H)
@@ -366,7 +366,7 @@ obj/structure/machinery/defenses/sentry/premade/damaged_action()
 /obj/structure/machinery/defenses/sentry/premade/dumb
 	name = "Modified UA-577 Gauss Turret"
 	desc = "A deployable, semi-automated turret with AI targeting capabilities. Armed with an M30 Autocannon and a high-capacity drum magazine. This one's IFF system has been disabled, and it will open fire on any targets within range."
-	belonging_to_faction = list("")
+	faction_group = null
 	ammo = new /obj/item/ammo_magazine/sentry/premade/dumb
 
 //the turret inside a static sentry deployment system
@@ -374,7 +374,7 @@ obj/structure/machinery/defenses/sentry/premade/damaged_action()
 	name = "UA-633 Static Gauss Turret"
 	desc = "An fully-automated defence turret with mid-range targeting capabilities. Armed with a modified M32-S Autocannon and an internal belt feed."
 	density = TRUE
-	belonging_to_faction = list(FACTION_MARINE)
+	faction_group = FACTION_LIST_MARINE
 	fire_delay = 1
 	ammo = new /obj/item/ammo_magazine/sentry/premade
 	var/obj/structure/machinery/sentry_holder/deployment_system
@@ -386,7 +386,7 @@ obj/structure/machinery/defenses/sentry/premade/damaged_action()
 	. = ..()
 
 /obj/structure/machinery/defenses/sentry/premade/deployable/colony
-	belonging_to_faction = list(FACTION_MARINE, FACTION_COLONIST)
+	faction_group = list(FACTION_MARINE, FACTION_COLONIST)
 
 //the turret inside the shuttle sentry deployment system
 /obj/structure/machinery/defenses/sentry/premade/dropship

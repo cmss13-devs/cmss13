@@ -101,6 +101,17 @@
 	data["marine_jobs"] = format_jobs(ROLES_UNASSIGNED)
 	data["civilian_jobs"] = format_jobs(list("Colonist","Passenger"))
 
+	data["faction_groups"] = null
+	var/list/groups = list()
+	if(scan && scan.faction_group && modify)
+		if(isnull(modify.faction_group))
+			modify.faction_group = list()
+
+		for(var/faction in scan.faction_group)
+			groups.Add(list(list("ref" = faction, "unlocked" = ((faction in modify.faction_group) ? TRUE : FALSE))))
+
+		data["faction_groups"] = groups
+
 	if (modify)
 		var/list/regions = list()
 		for(var/i = 1; i <= 7; i++)
@@ -174,6 +185,25 @@
 						modify.access -= access_type
 						if(!access_allowed)
 							modify.access += access_type
+
+		if("identification")
+			if(!is_authenticated() || !modify)
+				return
+
+			if(href_list["unlocked"])
+				var/faction = href_list["access_target"]
+				var/faction_unlocked = text2num(href_list["unlocked"])
+
+				var/list/new_faction_group = list()
+				if(islist(modify.faction_group))
+					new_faction_group = modify.faction_group
+				
+				if(faction_unlocked)
+					new_faction_group.Remove(faction)
+				else
+					new_faction_group.Add(faction)
+				
+				modify.faction_group = new_faction_group
 
 		if ("assign")
 			if (is_authenticated() && modify)

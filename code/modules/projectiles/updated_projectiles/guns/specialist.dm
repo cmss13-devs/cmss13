@@ -33,6 +33,8 @@
 	starting_attachment_types = list(/obj/item/attachable/sniperbarrel)
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_AMMO_COUNTER
 	map_specific_decoration = TRUE
+	iff_enabled = TRUE
+	iff_enabled_current = TRUE
 
 /obj/item/weapon/gun/rifle/sniper/M42A/handle_starting_attachment()
 	..()
@@ -72,6 +74,8 @@
 	attachable_allowed = list(/obj/item/attachable/bipod)
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_AMMO_COUNTER
 	starting_attachment_types = list(/obj/item/attachable/sniperbarrel)
+	iff_enabled = TRUE
+	iff_enabled_current = TRUE
 
 /obj/item/weapon/gun/rifle/sniper/M42B/handle_starting_attachment()
 	..()
@@ -116,6 +120,8 @@
 	zoomdevicename = "scope"
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_WY_RESTRICTED|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_AMMO_COUNTER
 	starting_attachment_types = list(/obj/item/attachable/sniperbarrel)
+	iff_enabled = TRUE
+	iff_enabled_current = TRUE
 
 /obj/item/weapon/gun/rifle/sniper/elite/handle_starting_attachment()
 	..()
@@ -296,7 +302,6 @@
 	var/recycletime = 120
 	var/long_range_cooldown = 2
 	var/blip_type = "detector"
-	var/iff_signal = ACCESS_IFF_MARINE
 
 	unacidable = 1
 	indestructible = 1
@@ -571,7 +576,7 @@
 		if(isrobot(M)) continue
 		if(ishuman(M))
 			var/mob/living/carbon/human/H = M
-			if(H.get_target_lock(iff_signal))
+			if(H.get_target_lock(human_user.faction_group))
 				continue
 		ping_count++
 
@@ -629,13 +634,8 @@
 	for(M in orange(range, user)) // orange allows sentry to fire through gas and darkness
 		if(!isliving(M) || M.stat & DEAD || isrobot(M)) continue // No dead or non living.
 
-		/*
-		I really, really need to replace this with some that isn't insane. You shouldn't have to fish for access like this.
-		This should be enough shortcircuiting, but it is possible for the code to go all over the possibilities and generally
-		slow down. It'll serve for now.
-		*/
 		var/mob/living/carbon/human/H = M
-		if(istype(H) && H.get_target_lock(ammo.iff_signal)) continue
+		if(istype(H) && H.get_target_lock(user.faction_group)) continue
 		if(angle > 0)
 			var/opp
 			var/adj
@@ -1257,6 +1257,8 @@
 	fire_sound = 'sound/weapons/gun_flare.ogg'
 	flags_gun_features = GUN_INTERNAL_MAG
 	attachable_allowed = list(/obj/item/attachable/scope/mini)
+	iff_enabled = TRUE
+	iff_enabled_current = TRUE	
 	var/popped_state = "m82f_e" //Icon state that represents an unloaded flare gun. The tube's just popped out.
 
 

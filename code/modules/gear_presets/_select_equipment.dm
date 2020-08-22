@@ -124,7 +124,6 @@
 		if(H.mind.initial_account)
 			W.associated_account_number = H.mind.initial_account.account_number
 	H.job = rank
-	H.faction = faction
 	H.comm_title = role_comm_title
 
 /datum/equipment_preset/proc/load_languages(mob/living/carbon/human/H)

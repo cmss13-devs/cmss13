@@ -1,6 +1,7 @@
 /datum/equipment_preset/uscm_ship
 	name = "USCM (ship roles)"
 	faction = FACTION_MARINE
+	faction_group = FACTION_LIST_MARINE
 	minimum_age = 20
 	languages = list("English")
 
@@ -29,7 +30,6 @@
 
 	idtype = /obj/item/card/id/silver/cl
 	access = list(
-		ACCESS_IFF_MARINE,
 		ACCESS_WY_CORPORATE,
 		ACCESS_ILLEGAL_PIRATE,
 		ACCESS_MARINE_BRIDGE,
@@ -97,8 +97,9 @@
 /datum/equipment_preset/uscm_ship/liaison/nightmare
 	name = "Nightmare USCM Corporate Liaison"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	faction_group = FACTION_LIST_MARINE_WY
 
-	access = list(ACCESS_IFF_PMC, ACCESS_WY_PMC_GREEN, ACCESS_WY_PMC_ORANGE, ACCESS_WY_PMC_RED, ACCESS_WY_PMC_BLACK, ACCESS_WY_PMC_WHITE, ACCESS_WY_CORPORATE)
+	access = list(ACCESS_WY_PMC_GREEN, ACCESS_WY_PMC_ORANGE, ACCESS_WY_PMC_RED, ACCESS_WY_PMC_BLACK, ACCESS_WY_PMC_WHITE, ACCESS_WY_CORPORATE)
 
 /*****************************************************************************************************/
 
@@ -108,7 +109,6 @@
 
 	idtype = /obj/item/card/id/silver
 	access = list(
-		ACCESS_IFF_MARINE,
 		ACCESS_MARINE_CE,
 		ACCESS_MARINE_ENGINEERING,
 		ACCESS_MARINE_BRIDGE,
@@ -144,7 +144,7 @@
 	name = "USCM Maintenance Technician (MT)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
-	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_ENGINEERING, ACCESS_CIVILIAN_ENGINEERING)
+	access = list(ACCESS_MARINE_ENGINEERING, ACCESS_CIVILIAN_ENGINEERING)
 	assignment = JOB_MAINT_TECH
 	rank = JOB_MAINT_TECH
 	paygrade = "E5"
@@ -175,7 +175,7 @@
 	name = "USCM Ordnance Technician (OT)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
-	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_ENGINEERING, ACCESS_CIVILIAN_ENGINEERING)
+	access = list(ACCESS_MARINE_ENGINEERING, ACCESS_CIVILIAN_ENGINEERING)
 	assignment = JOB_ORDNANCE_TECH
 	rank = JOB_ORDNANCE_TECH
 	paygrade = "E5"
@@ -206,7 +206,6 @@
 
 	idtype = /obj/item/card/id/silver
 	access = list(
-		ACCESS_IFF_MARINE,
 		ACCESS_MARINE_CARGO,
 		ACCESS_MARINE_RO,
 		ACCESS_MARINE_BRIDGE,
@@ -249,7 +248,7 @@
 	name = "USCM Cargo Technician (CT)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
-	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_CARGO, ACCESS_MARINE_PREP)
+	access = list(ACCESS_MARINE_CARGO, ACCESS_MARINE_PREP)
 	assignment = JOB_REQUISITION
 	rank = JOB_REQUISITION
 	paygrade = "E5"
@@ -348,7 +347,6 @@
 
 	idtype = /obj/item/card/id/silver
 	access = list(
-		ACCESS_IFF_MARINE,
 		ACCESS_MARINE_LOGISTICS,
 		ACCESS_MARINE_BRIDGE,
 		ACCESS_MARINE_BRIG,
@@ -410,7 +408,7 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 	idtype = /obj/item/card/id/silver
-	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_BRIDGE, ACCESS_MARINE_BRIG, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_LOGISTICS)
+	access = list(ACCESS_MARINE_BRIDGE, ACCESS_MARINE_BRIG, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_LOGISTICS)
 	assignment = JOB_SO
 	rank = JOB_SO
 	paygrade = "O2"
@@ -485,7 +483,7 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 	idtype = /obj/item/card/id/silver
-	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_BRIDGE, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_PILOT)
+	access = list(ACCESS_MARINE_BRIDGE, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_PILOT)
 	assignment = JOB_PILOT
 	rank = JOB_PILOT
 	paygrade = "O1" //Technically Second Lieutenant equivalent, but 2ndLT doesn't exist in Marine pay grade, so Ensign
@@ -532,7 +530,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	idtype = /obj/item/card/id/admiral
-	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
+	access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
 	assignment = "USCM Officer"
 	rank = "USCM Officer"
 	paygrade = "O5"
@@ -573,7 +571,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	idtype = /obj/item/card/id/admiral
-	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
+	access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
 	assignment = "USCM Admiral"
 	rank = "USCM Admiral"
 	paygrade = "O8"
@@ -620,7 +618,7 @@
 	name = "UPP Spy"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
+	access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
 	assignment = JOB_ORDNANCE_TECH
 	rank = "UPP"
 	paygrade = "E6"
@@ -690,7 +688,7 @@
 	name = "USCM Mess Sergeant (MS)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
-	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_KITCHEN)
+	access = list(ACCESS_MARINE_KITCHEN)
 	assignment = JOB_MESS_SERGEANT
 	rank = JOB_MESS_SERGEANT
 	paygrade = "E5"

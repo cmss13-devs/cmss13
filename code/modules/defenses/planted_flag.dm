@@ -55,7 +55,7 @@
 		return
 
 	for(var/mob/living/carbon/human/H in targets)
-		if(!(H.faction in belonging_to_faction))
+		if(!(H.get_target_lock(faction_group)))
 			continue
 		
 		H.activate_order_buff(COMMAND_ORDER_HOLD, PLANTED_FLAG_BUFF, 1.5 SECONDS)

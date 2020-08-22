@@ -89,13 +89,12 @@
 /obj/item/card/id/New()
 	..()
 
-	if(!faction_group)
-		faction_group = list(faction)
-
 	spawn(30)
 		var/mob/living/carbon/human/H = loc
 		if(istype(H))
 			blood_type = H.blood_type
+		if(istype(H) && isnull(faction_group))
+			faction_group = H.faction_group
 
 
 /obj/item/card/id/attack_self(mob/user as mob)
@@ -129,7 +128,6 @@
 	name = "identification holo-lanyard"
 	desc = "A crude holo-lanyard. As cheap as they come."
 	icon_state = "lanyard"
-	access = list(ACCESS_IFF_MARINE)
 
 /obj/item/card/id/silver
 	name = "identification holo-badge"

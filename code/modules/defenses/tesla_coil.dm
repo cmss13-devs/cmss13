@@ -66,7 +66,7 @@
 			continue
 
 		var/mob/living/carbon/human/H = M
-		if(istype(H) && (H.faction in belonging_to_faction)) 
+		if(istype(H) && H.get_target_lock(faction_group)) 
 			continue
 
 		targets += M

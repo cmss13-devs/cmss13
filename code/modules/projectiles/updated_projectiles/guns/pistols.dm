@@ -503,6 +503,8 @@ It is a modified Beretta 93R, and can fire three round burst or single fire. Whe
 	reload_sound = 'sound/weapons/handling/gun_su6_reload.ogg'
 	unload_sound = 'sound/weapons/handling/gun_su6_unload.ogg'
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
+	iff_enabled = TRUE
+	iff_enabled_current = TRUE
 
 /obj/item/weapon/gun/pistol/smart/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 28, "muzzle_y" = 20,"rail_x" = 13, "rail_y" = 22, "under_x" = 24, "under_y" = 17, "stock_x" = 24, "stock_y" = 17)

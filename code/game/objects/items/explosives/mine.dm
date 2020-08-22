@@ -22,7 +22,7 @@
 							"min_fire_rad" = 2,		"min_fire_int" = 3,		"min_fire_dur" = 3
 	)
 
-	var/iff_signal = ACCESS_IFF_MARINE
+	var/iff_signal = FACTION_MARINE
 	var/triggered = FALSE
 	var/obj/effect/mine_tripwire/tripwire
 
@@ -233,7 +233,7 @@
 	name = "\improper M20P Claymore anti-personnel mine"
 	desc = "The M20P Claymore is a directional proximity triggered anti-personnel mine designed by Armat Systems for use by the United States Colonial Marines. It has been modified for use by the W-Y PMC forces."
 	icon_state = "m20p"
-	iff_signal = ACCESS_IFF_PMC
+	iff_signal = FACTION_PMC
 
 /obj/item/explosive/mine/custom
 	name = "Custom mine"

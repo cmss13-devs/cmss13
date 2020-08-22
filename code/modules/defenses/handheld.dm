@@ -49,8 +49,7 @@
 	if(!do_after(user, deployment_time * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
 		return
 
-	var/factions = user.faction_group
-
+	var/factions = user.get_id_faction_group()
 	var/obj/structure/machinery/defenses/D = new defense_type(T, factions)
 	D.dir = direction
 	playsound(T, 'sound/mecha/mechmove01.ogg', 30, 1)

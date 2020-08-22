@@ -7,7 +7,6 @@
 #define AMMO_ROCKET			16
 #define AMMO_SNIPER			32
 #define AMMO_INCENDIARY		64
-#define AMMO_SKIPS_HUMANS	128
 #define AMMO_SKIPS_ALIENS 	256
 #define AMMO_IS_SILENCED 	512
 #define AMMO_IGNORE_ARMOR	1024
@@ -27,7 +26,6 @@
 	var/sound_miss //When it misses someone.
 	var/sound_bounce //When it bounces off something.
 
-	var/iff_signal					= ACCESS_IFF_MARINE		// PLACEHOLDER. Bullets that can skip friendlies will call for this
 	var/accuracy 					= 0 		// This is added to the bullet's base accuracy
 	var/accuracy_var_low			= 0 		// How much the accuracy varies when fired
 	var/accuracy_var_high			= 0
@@ -190,7 +188,7 @@
 		final_angle += rand(-total_scatter_angle, total_scatter_angle)
 		var/turf/new_target = get_angle_target_turf(curloc, final_angle, 30)
 
-		P.fire_at(new_target, original_P.firer, original_P.shot_from, P.ammo.max_range, P.ammo.shell_speed, original_P.original) //Fire!
+		P.fire_at(new_target, original_P.firer, original_P.shot_from, P.ammo.max_range, P.ammo.shell_speed, original_P.original, iff_group = original_P.iff_group) //Fire!
 
 	//This is sort of a workaround for now. There are better ways of doing this ~N.
 /datum/ammo/proc/stun_living(mob/living/target, obj/item/projectile/P) //Taser proc to stun folks.
@@ -354,8 +352,7 @@
 
 /datum/ammo/bullet/pistol/smart
 	name = "smartpistol bullet"
-	iff_signal = ACCESS_IFF_MARINE
-	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_SKIPS_HUMANS
+	flags_ammo_behavior = AMMO_BALLISTIC
 
 /datum/ammo/bullet/pistol/smart/New()
 	..()
@@ -788,8 +785,7 @@
 /datum/ammo/bullet/sniper
 	name = "sniper bullet"
 	damage_falloff = 0
-	iff_signal = ACCESS_IFF_MARINE
-	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_SNIPER|AMMO_SKIPS_HUMANS|AMMO_IGNORE_COVER
+	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_SNIPER|AMMO_IGNORE_COVER
 	accurate_range_min = 4
 
 /datum/ammo/bullet/sniper/New()
@@ -807,8 +803,7 @@
 	name = "incendiary sniper bullet"
 	accuracy = 0
 	damage_type = BURN
-	iff_signal = ACCESS_IFF_MARINE
-	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_INCENDIARY|AMMO_SNIPER|AMMO_SKIPS_HUMANS|AMMO_IGNORE_COVER
+	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_INCENDIARY|AMMO_SNIPER|AMMO_IGNORE_COVER
 
 /datum/ammo/bullet/sniper/incendiary/New()
 	..()
@@ -819,9 +814,8 @@
 
 /datum/ammo/bullet/sniper/flak
 	name = "flak sniper bullet"
-	iff_signal = ACCESS_IFF_MARINE
 	damage_type = BRUTE
-	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_SNIPER|AMMO_SKIPS_HUMANS|AMMO_IGNORE_COVER|AMMO_SCANS_NEARBY
+	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_SNIPER|AMMO_IGNORE_COVER|AMMO_SCANS_NEARBY
 
 /datum/ammo/bullet/sniper/flak/New()
 	..()
@@ -884,11 +878,9 @@
 
 /datum/ammo/bullet/sniper/svd
 	name = "crude sniper bullet"
-	iff_signal = null
 
 /datum/ammo/bullet/sniper/anti_tank
 	name = "anti-tank sniper bullet"
-	iff_signal = ACCESS_IFF_MARINE
 
 /datum/ammo/bullet/sniper/anti_tank/New()
 	..()
@@ -899,7 +891,6 @@
 
 /datum/ammo/bullet/sniper/elite
 	name = "supersonic sniper bullet"
-	iff_signal = ACCESS_IFF_PMC
 
 /datum/ammo/bullet/sniper/elite/New()
 	..()
@@ -939,9 +930,6 @@
 	penetration = config.hmed_armor_penetration
 	damage_armor_punch = 1
 
-/datum/ammo/bullet/smartgun/marine
-	iff_signal = ACCESS_IFF_MARINE
-
 /datum/ammo/bullet/smartgun/marine/armor_piercing
 	icon_state = "bullet"
 
@@ -956,7 +944,6 @@
 
 /datum/ammo/bullet/smartgun/dirty
 	name = "irradiated smartgun bullet"
-	iff_signal = ACCESS_IFF_PMC
 	debilitate = list(0,0,0,3,0,0,0,1)
 
 /datum/ammo/bullet/smartgun/dirty/New()
@@ -969,7 +956,6 @@
 	penetration = 0
 
 /datum/ammo/bullet/smartgun/dirty/armor_piercing
-	iff_signal = ACCESS_IFF_PMC
 	debilitate = list(0,0,0,3,0,0,0,1)
 
 /datum/ammo/bullet/smartgun/dirty/armor_piercing/New()
@@ -985,8 +971,7 @@
 /datum/ammo/bullet/turret
 	name = "autocannon bullet"
 	icon_state 	= "redbullet" //Red bullets to indicate friendly fire restriction
-	iff_signal = ACCESS_IFF_MARINE
-	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_SKIPS_HUMANS|AMMO_IGNORE_COVER
+	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_IGNORE_COVER
 
 /datum/ammo/bullet/turret/New()
 	..()
@@ -1003,8 +988,7 @@
 
 /datum/ammo/bullet/turret/dumb
 	icon_state 	= "bullet"
-	iff_signal = 0
-	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_SKIPS_HUMANS
+	flags_ammo_behavior = AMMO_BALLISTIC
 
 /datum/ammo/bullet/machinegun //Adding this for the MG Nests (~Art)
 	name = "machinegun bullet"
@@ -2079,8 +2063,7 @@
 	new /obj/flamer_fire(T, source, source_mob, R, 2)
 
 /datum/ammo/flamethrower/sentry_flamer
-	iff_signal = ACCESS_IFF_MARINE
-	flags_ammo_behavior = AMMO_INCENDIARY|AMMO_IGNORE_ARMOR|AMMO_SKIPS_HUMANS|AMMO_IGNORE_COVER
+	flags_ammo_behavior = AMMO_INCENDIARY|AMMO_IGNORE_ARMOR|AMMO_IGNORE_COVER
 
 /datum/ammo/flamethrower/sentry_flamer/New()
 	..()
@@ -2099,8 +2082,7 @@
 	name = "flare"
 	ping = null //no bounce off.
 	damage_type = BURN
-	iff_signal = ACCESS_IFF_MARINE
-	flags_ammo_behavior = AMMO_INCENDIARY|AMMO_SKIPS_HUMANS|AMMO_HITS_TARGET_TURF
+	flags_ammo_behavior = AMMO_INCENDIARY|AMMO_HITS_TARGET_TURF
 
 /datum/ammo/flare/New()
 	..()

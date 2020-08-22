@@ -3,8 +3,6 @@
 	var/title = ""				 //The internal title for the job, used for the job ban system and so forth. Don't change these, change the disp_title instead.
 	var/disp_title				 //Determined on new(). Usually the same as the title, but doesn't have to be. Set this to override what the player sees in the game as their title.
 
-	var/faction 			= FACTION_MARINE //Players will be allowed to spawn in as jobs that are set to "Marine". Other factions are special game mode spawns.
-	var/faction_group 		= FACTION_LIST_MARINE
 	var/total_positions 	= 0 //How many players can be this job
 	var/spawn_positions 	= 0 //How many players can spawn in as this job
 	var/allow_additional	= 0 //Can admins modify positions to it

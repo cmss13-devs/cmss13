@@ -21,7 +21,7 @@
 	name = "Dust Raider Private"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP)
+	access = list(ACCESS_MARINE_PREP)
 	assignment = "Squad Marine"
 	rank = "Squad Marine"
 	paygrade = "E2"
@@ -43,7 +43,7 @@
 	name = "Dust Raider Squad Leader"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP)
+	access = list(ACCESS_MARINE_PREP)
 	assignment = "Squad Leader"
 	rank = "Squad Leader"
 	paygrade = "E6"
@@ -72,7 +72,7 @@
 	name = "Dust Raider Smartgunner"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP, ACCESS_MARINE_SMARTPREP)
+	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_SMARTPREP)
 	assignment = "Squad Smartgunner"
 	rank = "Squad Smartgunner"
 	paygrade = "E4"
@@ -99,7 +99,7 @@
 	name = "Dust Raider Engineer"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP, ACCESS_MARINE_ENGPREP, ACCESS_CIVILIAN_ENGINEERING)
+	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_ENGPREP, ACCESS_CIVILIAN_ENGINEERING)
 	assignment = "Squad Engineer"
 	rank = "Squad Engineer"
 	paygrade = "E3"
@@ -128,7 +128,7 @@
 	name = "Dust Raider Medic"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP, ACCESS_MARINE_MEDPREP, ACCESS_MARINE_MEDBAY)
+	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_MEDPREP, ACCESS_MARINE_MEDBAY)
 	assignment = "Squad Medic"
 	rank = "Squad Medic"
 	paygrade = "E3"
@@ -158,7 +158,7 @@
 	name = "Dust Raider Specialist"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP, ACCESS_MARINE_SPECPREP)
+	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_SPECPREP)
 	assignment = "Squad Specialist"
 	rank = "Squad Specialist"
 	paygrade = "E5"

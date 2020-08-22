@@ -45,7 +45,7 @@
 		if(T.density)
 			continue
 
-		var/obj/effect/bell_tripwire/FE = new /obj/effect/bell_tripwire(T, belonging_to_faction)
+		var/obj/effect/bell_tripwire/FE = new /obj/effect/bell_tripwire(T, faction_group)
 		FE.linked_bell = src
 		tripwires_placed += FE
 
@@ -90,7 +90,7 @@
 	var/mob/M = A
 	if(ishuman(M)) 
 		var/mob/living/carbon/human/H = M
-		if(H.faction in faction)
+		if(H.get_target_lock(faction))
 			return
 	
 	if(linked_bell.last_mob_activated == M)

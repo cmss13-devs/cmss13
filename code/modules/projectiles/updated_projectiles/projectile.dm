@@ -53,6 +53,8 @@
 
 	var/projectile_override_flags = 0
 
+	var/iff_group
+
 	var/weapon_source
 	var/weapon_source_mob
 
@@ -113,7 +115,7 @@
 	return damage
 
 // Target, firer, shot from (i.e. the gun), projectile range, projectile speed, original target (who was aimed at, not where projectile is going towards), is_shrapnel (whether it should miss the firer or not)
-/obj/item/projectile/proc/fire_at(atom/target, atom/F, atom/S, range = 30, speed = 1, atom/original_override, is_shrapnel = FALSE)
+/obj/item/projectile/proc/fire_at(atom/target, atom/F, atom/S, range = 30, speed = 1, atom/original_override, is_shrapnel = FALSE, var/iff_group)
 	if(!original) 
 		original = istype(original_override) ? original_override : target
 	if(!loc) 
@@ -129,6 +131,10 @@
 		qdel(src)
 		return
 	firer = F
+
+	if(!isnull(iff_group))
+		src.iff_group = iff_group
+
 	if(F && !is_shrapnel) 
 		permutated += F //Don't hit the shooter (firer)
 	else if (S && is_shrapnel)
@@ -293,8 +299,6 @@
 					continue
 				var/mob/living/dL = dA
 				if(dL.is_dead())
-					continue
-				if(ammo_flags & AMMO_SKIPS_HUMANS && ishuman(dL))
 					continue
 				if(ammo_flags & AMMO_SKIPS_ALIENS && isXeno(dL))
 					var/mob/living/carbon/Xenomorph/X = dL
@@ -667,7 +671,7 @@
 	. = ..()
 	if(.)
 		var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
-		if(ammo_flags & AMMO_SKIPS_HUMANS && get_target_lock(P.ammo.iff_signal))
+		if(!isnull(P.iff_group) && get_target_lock(P.iff_group))
 			return FALSE
 		if(mobility_aura)
 			. -= mobility_aura * 5

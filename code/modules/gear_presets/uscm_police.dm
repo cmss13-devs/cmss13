@@ -10,7 +10,6 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 	access = list(
-		ACCESS_IFF_MARINE,
 		ACCESS_MARINE_BRIG,
 		ACCESS_MARINE_BRIDGE,
 		ACCESS_MARINE_DROPSHIP,
@@ -59,7 +58,6 @@
 	idtype = /obj/item/card/id/silver
 
 	access = list(
-		ACCESS_IFF_MARINE,
 		ACCESS_MARINE_BRIG,
 		ACCESS_MARINE_BRIDGE,
 		ACCESS_MARINE_DROPSHIP,
@@ -110,7 +108,6 @@
 	idtype = /obj/item/card/id/silver
 
 	access = list(
-		ACCESS_IFF_MARINE,
 		ACCESS_MARINE_BRIG,
 		ACCESS_MARINE_BRIDGE,
 		ACCESS_MARINE_DROPSHIP,

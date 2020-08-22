@@ -29,7 +29,7 @@
 	var/recycletime = 120
 	var/long_range_cooldown = 2
 	var/blip_type = "detector"
-	var/iff_signal = ACCESS_IFF_MARINE			//allows making PMC versions of MD.
+	var/iff_signal = FACTION_MARINE
 	actions_types = list(/datum/action/item_action)
 	var/scanning = FALSE // controls if MD is in process of scan
 	var/datum/shape/rectangle/range_bounds

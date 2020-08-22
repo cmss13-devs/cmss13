@@ -314,9 +314,12 @@
 	recalculate_variables()
 	return TRUE
 
-/datum/reagent/proc/remove_property(var/datum/chem_property/property)
-	properties -= property
-	recalculate_variables()
+/datum/reagent/proc/remove_property(var/property)
+	for(var/datum/chem_property/P in properties)
+		if(P.name == property)
+			LAZYREMOVE(properties, P)
+			recalculate_variables()
+			return TRUE
 
 /datum/reagent/proc/reset_pain_reduction()
 	if(holder && holder.my_atom && ishuman(holder.my_atom))

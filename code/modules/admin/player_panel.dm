@@ -531,7 +531,8 @@
 	"}
 
 	if(ishuman(M))
-		body += {"<br>Infection: <A href='?src=\ref[src];larvainfect=\ref[M]'>Xeno Larva</A> | <A href='?src=\ref[src];zombieinfect=\ref[M]'>Zombie Virus</A>
+		body += {"<br>Infection: <A href='?src=\ref[src];larvainfect=\ref[M]'>Xeno Larva</A> | <A href='?src=\ref[src];zombieinfect=\ref[M]'>Zombie Virus</A><br>
+				Antagonist:	<A href='?src=\ref[src];makemutineer=\ref[M]'>Make Mutineering Leader</A>
 	"}
 
 	if(isXeno(M))

@@ -871,6 +871,26 @@
 		embryo.faction = newhive
 
 		message_staff(SPAN_NOTICE("[key_name_admin(usr)] infected [key_name_admin(H)] with a xeno ([newhive]) larva."))
+	
+	else if(href_list["makemutineer"])
+		if(!check_rights(R_DEBUG|R_SPAWN))	
+			return
+
+		var/mob/living/carbon/human/H = locate(href_list["makemutineer"])
+		if(!istype(H))
+			to_chat(usr, "This can only be done to instances of type /mob/living/carbon/human")
+			return
+
+		if(H.faction != FACTION_MARINE)
+			to_chat(usr, "This player's faction must equal '[FACTION_MARINE]' to make them a mutineer.")
+			return
+
+		var/datum/equipment_preset/other/mutineer/leader/leader_preset = new()
+		leader_preset.load_status(H)
+
+		message_staff("[key_name_admin(usr)] has made [key_name_admin(H)] into a mutineer leader.")
+
+
 	else if(href_list["forceemote"])
 		if(!check_rights(R_FUN))	return
 

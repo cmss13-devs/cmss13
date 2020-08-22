@@ -65,7 +65,8 @@ var/list/admin_verbs_fun = list(
 var/list/admin_verbs_spawn = list(
 	/datum/admins/proc/spawn_atom,
 	/client/proc/game_panel,
-	/client/proc/create_humans
+	/client/proc/create_humans,
+	/client/proc/clear_mutineers
 )
 var/list/admin_verbs_server = list(
 	/client/proc/Set_Holiday,

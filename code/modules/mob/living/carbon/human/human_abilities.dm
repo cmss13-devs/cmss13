@@ -371,3 +371,64 @@ CULT
 	to_chat(chosen, SPAN_HIGHDANGER("An immense psychic wave passes through you, causing you to pass out!"))
 
 	playsound(get_turf(chosen), 'sound/scp/scare1.ogg', 25)
+
+/datum/action/human_action/activable/mutineer
+	name = "Mutiny abilities"
+
+/datum/action/human_action/activable/mutineer/mutineer_convert
+	name = "Convert"
+	action_icon_state = "mutineer_convert"
+
+	var/list/converted = list()
+
+/datum/action/human_action/activable/mutineer/mutineer_convert/use_ability(var/mob/M)
+	if(!can_use_action())
+		return
+
+	var/mob/living/carbon/human/H = owner
+	var/mob/living/carbon/human/chosen = M
+
+	if(chosen.faction != FACTION_MARINE || (chosen.skills && skillcheck(chosen, SKILL_POLICE, 2)) || chosen in converted)
+		to_chat(H, SPAN_WARNING("You can't convert [chosen]!"))
+		return
+
+	to_chat(H, SPAN_NOTICE("Mutiny join request sent to [chosen]!"))
+
+	if(alert(chosen, "Do you want to be a mutineer?", "Become Mutineer", "Yes", "No") == "No")
+		return
+
+	converted += chosen
+	to_chat(chosen, SPAN_WARNING("You'll become a mutineer when the mutiny begins. Prepare yourself and do not cause any harm until you've been made into a mutineer."))
+
+	message_staff("[key_name_admin(chosen)] has been converted into a mutineer by [key_name_admin(H)].")
+
+/datum/action/human_action/activable/mutineer/mutineer_begin
+	name = "Begin Mutiny"
+	action_icon_state = "mutineer_begin"
+
+/datum/action/human_action/activable/mutineer/mutineer_begin/action_activate()
+	if(!can_use_action())
+		return
+
+	var/mob/living/carbon/human/H = owner
+	
+	if(alert(H, "Are you sure you want to begin the mutiny?", "Begin Mutiny?", "Yes", "No") == "No")
+		return
+
+	shipwide_ai_announcement("DANGER: Communications received; a mutiny is in progress. Code: Detain, Arrest, Defend")
+	var/datum/equipment_preset/other/mutineer/XC = new()
+
+	XC.load_status(H)
+	to_chat(H, SPAN_HIGHDANGER("<hr>You are now a Mutineer!"))
+	to_chat(H, SPAN_DANGER("Please check the rules to see what you can and can't do as a mutineer.<hr>"))
+
+	for(var/datum/action/human_action/activable/mutineer/mutineer_convert/converted in H.actions)
+		for(var/mob/living/carbon/human/chosen in converted.converted)
+			XC.load_status(chosen)
+			to_chat(chosen, SPAN_HIGHDANGER("<hr>You are now a Mutineer!"))
+			to_chat(chosen, SPAN_DANGER("Please check the rules to see what you can and can't do as a mutineer.<hr>"))
+		
+		converted.remove_action(H)
+
+	message_staff("[key_name_admin(H)] has begun the mutiny.")
+	src.remove_action(H)

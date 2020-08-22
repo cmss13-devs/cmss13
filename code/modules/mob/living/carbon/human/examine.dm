@@ -456,8 +456,11 @@
 		if( findtext(pose,".",length(pose)) == 0 && findtext(pose,"!",length(pose)) == 0 && findtext(pose,"?",length(pose)) == 0 )
 			pose = addtext(pose,".") //Makes sure all emotes end with a period.
 		msg += "\n[t_He] is [pose]"
-
+	
 	to_chat(user, msg)
+
+	if(isYautja(user))
+		to_chat(user, SPAN_BLUE("[src] is worth [max(life_kills_total, 1)] honor."))
 
 //Helper procedure. Called by /mob/living/carbon/human/examine() and /mob/living/carbon/human/Topic() to determine HUD access to security and medical records.
 /proc/hasHUD(mob/M, hudtype)

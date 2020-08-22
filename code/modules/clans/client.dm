@@ -116,6 +116,7 @@
 
             player_delete_clan = (clan_info.permissions & CLAN_PERMISSION_ADMIN_MANAGER),
             player_sethonor_clan = (clan_info.permissions & CLAN_PERMISSION_ADMIN_MANAGER),
+            player_setcolor_clan = (clan_info.permissions & CLAN_PERMISSION_ADMIN_MODIFY),
 
             player_rename_clan = (clan_info.permissions & CLAN_PERMISSION_ADMIN_MODIFY),
             player_setdesc_clan = (clan_info.permissions & CLAN_PERMISSION_MODIFY),
@@ -189,6 +190,23 @@
 
     return TRUE
 
+/client/proc/add_honor(var/number)
+    if(!clan_info)
+        return FALSE
+    clan_info.sync()
+
+    clan_info.honor = max(number + clan_info.honor, 0)
+    clan_info.save()
+
+    if(clan_info.clan_id)
+        var/datum/entity/clan/target_clan = GET_CLAN(clan_info.clan_id)
+        target_clan.sync()
+
+        target_clan.honor = max(number + target_clan.honor, 0)
+
+        target_clan.save()
+    
+    return TRUE
 
 /client/proc/clan_topic(href, href_list)
     set waitfor = FALSE
@@ -233,6 +251,18 @@
                 to_chat(src, SPAN_NOTICE("Set the description of [target_clan.name]."))
                 target_clan.description = trim(input)
 
+            if(CLAN_ACTION_CLAN_SETCOLOR)
+                if(!has_clan_permission(CLAN_PERMISSION_ADMIN_MODIFY))
+                    return
+
+                var/color = input(usr, "Input a new color", "Set Color", target_clan.color) as color|null
+
+                if(!color)
+                    return
+                
+                target_clan.color = color
+                log_and_message_staff("[key_name_admin(src)] has set the color of [target_clan.name] to [color].")
+                to_chat(src, SPAN_NOTICE("Set the name of [target_clan.name] to [color]."))
             if(CLAN_ACTION_CLAN_SETHONOR)
                 if(!has_clan_permission(CLAN_PERMISSION_ADMIN_MANAGER))
                     return

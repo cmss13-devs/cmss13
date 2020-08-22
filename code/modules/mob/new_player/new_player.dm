@@ -161,7 +161,7 @@
 										H = huds[MOB_HUD_SECURITY_ADVANCED]
 										H.add_hud_to(observer)
 									if("Squad HUD")
-										H = huds[MOB_HUD_SQUAD]
+										H = huds[MOB_HUD_SQUAD_OBSERVER]
 										H.add_hud_to(observer)
 									if("Xeno Status HUD")
 										H = huds[MOB_HUD_XENO_STATUS]

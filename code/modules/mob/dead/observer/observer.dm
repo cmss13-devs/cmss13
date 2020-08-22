@@ -191,7 +191,7 @@ Works together with spawning an observer, noted above.
 							H = huds[MOB_HUD_SECURITY_ADVANCED]
 							H.add_hud_to(ghost)
 						if("Squad HUD")
-							H = huds[MOB_HUD_SQUAD]
+							H = huds[MOB_HUD_SQUAD_OBSERVER]
 							H.add_hud_to(ghost)
 						if("Xeno Status HUD")
 							H = huds[MOB_HUD_XENO_STATUS]

@@ -27,7 +27,7 @@
 #define ORDER_HUD			"22" // If humans are affected by orders or not
 #define XENO_BANISHED_HUD   "23" // indicates that the xeno is banished
 #define STATUS_HUD_XENO_CULTIST "24" // Whether they are a xeno cultist or not
-
+#define PRED_CLAN   "25"
 
 
 //data HUD (medhud, sechud) defines
@@ -40,4 +40,5 @@
 #define MOB_HUD_XENO_STATUS			7
 #define MOB_HUD_SQUAD				8
 #define MOB_HUD_XENO_HOSTILE		9
-
+#define MOB_HUD_PRED_CLAN			10
+#define MOB_HUD_SQUAD_OBSERVER      11

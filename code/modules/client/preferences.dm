@@ -962,8 +962,6 @@ var/const/MAX_SAVE_SLOTS = 10
 						options += list("Council" = WHITELIST_COUNCIL)
 					if(whitelist_flags & WHITELIST_YAUTJA_LEADER)
 						options += list("Leader" = WHITELIST_LEADER)
-					if(whitelist_flags & WHITELIST_YAUTJA_ELDER)
-						options += list("Elder" = "Elder") // god damn elder snowflakes
 
 					var/new_yautja_status = input(user, "Choose your new Yautja Whitelist Status.", "Yautja Status") in options
 

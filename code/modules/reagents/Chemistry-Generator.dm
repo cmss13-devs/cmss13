@@ -365,9 +365,9 @@
 				return FALSE
 			else if(match.level < level) //Override
 				level -= match.level
-				remove_property(match)
+				remove_property(match.name)
 			else //Cancelled out
-				remove_property(match)
+				remove_property(match.name)
 				return FALSE
 			break
 	//Insert the property

@@ -6,6 +6,31 @@
 
 /*****************************************************************************************************/
 
+/datum/equipment_preset/other/mutineer
+	name = "Mutineer"
+
+	faction = FACTION_MUTINEER
+
+/datum/equipment_preset/other/mutineer/load_status(mob/living/carbon/human/H)
+	. = ..()
+	H.faction = FACTION_MUTINEER
+	H.hud_set_squad()
+
+/datum/equipment_preset/other/mutineer/leader
+	name = "Mutineer Leader"
+
+/datum/equipment_preset/other/mutineer/leader/load_status(mob/living/carbon/human/H)
+	for(var/datum/action/human_action/activable/mutineer/A in H.actions)
+		A.remove_action(H)
+
+	var/list/abilities = subtypesof(/datum/action/human_action/activable/mutineer)
+
+
+	for(var/type in abilities)
+		var/datum/action/human_action/activable/mutineer/M = new type()
+		M.give_action(H)
+	
+
 /datum/equipment_preset/other/freelancer
 	name = "Freelancer"
 

@@ -710,3 +710,25 @@
 	if(admin_holder)
 		admin_holder.create_humans(usr)
 	return
+
+/client/proc/clear_mutineers()
+	set name = "D: Clear All Mutineers"
+	set category = "Event"
+	if(admin_holder)
+		admin_holder.clear_mutineers()
+	return
+
+/datum/admins/proc/clear_mutineers()	
+	if(!check_rights(R_SPAWN))
+		return
+
+	if(alert(usr, "Are you sure you want to change all mutineers back to normal?", "Confirmation", "Yes", "No") == "No")
+		return
+
+	for(var/mob/living/carbon/human/H in human_mob_list)
+		if(H && H.faction == FACTION_MUTINEER)
+			H.faction = FACTION_MARINE
+			H.hud_set_squad()
+
+			for(var/datum/action/human_action/activable/mutineer/A in H.actions)
+				A.remove_action(H)

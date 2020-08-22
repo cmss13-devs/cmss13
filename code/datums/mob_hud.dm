@@ -533,8 +533,15 @@ var/datum/mob_hud/huds = list(
 
 /mob/living/carbon/human/hud_set_squad()
 	var/image/holder = hud_list[SQUAD_HUD]
+
 	holder.icon_state = "hudblank"
 	holder.overlays.Cut()
+
+	if(faction == FACTION_MUTINEER)
+		holder.icon_state = "hudmutineer"
+		hud_list[SQUAD_HUD] = holder
+		return
+
 	if(assigned_squad)
 		var/squad_clr = squad_colors[assigned_squad.color]
 		var/marine_rk
@@ -605,8 +612,6 @@ var/datum/mob_hud/huds = list(
 			holder.overlays += image('icons/mob/hud/hud.dmi',src, "hudmarinesquad[marine_rk]")
 			if(border_rk)
 				holder.overlays += image('icons/mob/hud/hud.dmi',src, "hudmarineborder[border_rk]")
-	hud_list[SQUAD_HUD] = holder
-
 
 /mob/proc/hud_set_order()
 	return

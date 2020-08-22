@@ -10,7 +10,7 @@ var/global/list/clan_locations = list()
     
     clan_locations += list("[zlevel]" = list())
 
-    var/datum/map_load_metadata/M = maploader.load_map(file("maps/predship/regular.dmm"), 5, 5, zlevel)
+    var/datum/map_load_metadata/M = maploader.load_map('maps/predship/regular.dmm', 5, 5, zlevel)
 
     for(var/atom/A in M.atoms_to_initialise)
         if(isobj(A))

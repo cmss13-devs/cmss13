@@ -11,6 +11,8 @@ var/datum/mob_hud/huds = list(
 	MOB_HUD_XENO_STATUS = new /datum/mob_hud/xeno(),
 	MOB_HUD_SQUAD = new /datum/mob_hud/squad(),
 	MOB_HUD_XENO_HOSTILE = new /datum/mob_hud/xeno_hostile(),
+	MOB_HUD_PRED_CLAN = new /datum/mob_hud/pred_clan(),
+	MOB_HUD_SQUAD_OBSERVER	= new /datum/mob_hud/squad/observer()
 	)
 
 /datum/mob_hud
@@ -133,6 +135,8 @@ var/datum/mob_hud/huds = list(
 /datum/mob_hud/xeno_hostile
 	hud_icons = list(XENO_HOSTILE_ACID, XENO_HOSTILE_SLOW, XENO_HOSTILE_TAG, XENO_HOSTILE_FREEZE)
 
+/datum/mob_hud/pred_clan
+	hud_icons = list(PRED_CLAN)
 
 //Security
 
@@ -148,6 +152,8 @@ var/datum/mob_hud/huds = list(
 /datum/mob_hud/squad
 	hud_icons = list(SQUAD_HUD, ORDER_HUD)
 
+/datum/mob_hud/squad/observer
+	hud_icons = list(SQUAD_HUD, ORDER_HUD, PRED_CLAN)
 
 
 
@@ -369,9 +375,6 @@ var/datum/mob_hud/huds = list(
 		if(!holder2_set)
 			holder2.icon_state = "hudhealthy"
 			holder3.icon_state = ""
-
-
-
 
 //xeno status HUD
 
@@ -612,6 +615,22 @@ var/datum/mob_hud/huds = list(
 			holder.overlays += image('icons/mob/hud/hud.dmi',src, "hudmarinesquad[marine_rk]")
 			if(border_rk)
 				holder.overlays += image('icons/mob/hud/hud.dmi',src, "hudmarineborder[border_rk]")
+	hud_list[SQUAD_HUD] = holder
+
+/mob/living/carbon/human/yautja/hud_set_squad()
+	set waitfor = FALSE
+
+	var/image/holder = hud_list[PRED_CLAN]
+
+	holder.icon_state = "predhud"
+
+	if(client && client.clan_info && client.clan_info.clan_id)
+		var/datum/entity/clan/player_clan = GET_CLAN(client.clan_info.clan_id)
+		player_clan.sync()
+
+		holder.color = player_clan.color
+
+	hud_list[PRED_CLAN] = holder
 
 /mob/proc/hud_set_order()
 	return

@@ -154,7 +154,6 @@ var/list/departments = list("Command", "Medical", "Engineering", "Security", "Ci
 		while(++r <= P.len)
 			switch(ckey(P[r]))
 				if("yautja") 						role |= WHITELIST_YAUTJA
-				if("yautjaelder")					role |= WHITELIST_YAUTJA_ELDER
 				if("yautjacouncil")					role |= WHITELIST_YAUTJA_COUNCIL
 				if("yautjaleader")					role |= WHITELIST_YAUTJA_LEADER
 				if("commander") 					role |= WHITELIST_COMMANDER

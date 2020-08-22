@@ -110,9 +110,11 @@
 
 /obj/item/clothing/mask/gas/yautja/equipped(mob/living/carbon/human/user, slot)
 	if(slot == WEAR_FACE)
-		var/datum/mob_hud/H = huds[MOB_HUD_MEDICAL_ADVANCED]
+		var/datum/mob_hud/H = huds[MOB_HUD_MEDICAL_OBSERVER]
 		H.add_hud_to(user)
 		H = huds[MOB_HUD_XENO_STATUS]
+		H.add_hud_to(user)
+		H = huds[MOB_HUD_PRED_CLAN]
 		H.add_hud_to(user)
 		add_vision(user)
 	..()
@@ -125,9 +127,11 @@
 				mob.temp_drop_inv_item(G)
 				qdel(G)
 				mob.update_inv_glasses()
-		var/datum/mob_hud/H = huds[MOB_HUD_MEDICAL_ADVANCED]
+		var/datum/mob_hud/H = huds[MOB_HUD_MEDICAL_OBSERVER]
 		H.remove_hud_from(mob)
 		H = huds[MOB_HUD_XENO_STATUS]
+		H.remove_hud_from(mob)
+		H = huds[MOB_HUD_PRED_CLAN]
 		H.remove_hud_from(mob)
 	add_to_missing_pred_gear(src)
 	..()

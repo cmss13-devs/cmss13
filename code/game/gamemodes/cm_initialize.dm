@@ -117,10 +117,12 @@ Additional game mode variables.
 
 //===================================================\\
 
-/datum/game_mode/proc/initialize_predator(mob/living/carbon/human/new_predator)
+/datum/game_mode/proc/initialize_predator(mob/living/carbon/human/new_predator, var/ignore_pred_num = FALSE)
 	predators += new_predator.mind //Add them to the proper list.
 	pred_keys += new_predator.ckey //Add their key.
-	pred_current_num++ 
+
+	if(!ignore_pred_num)
+		pred_current_num++ 
 
 /datum/game_mode/proc/initialize_starting_predator_list()
 	if(prob(pred_round_chance)) //First we want to determine if it's actually a predator round.
@@ -195,7 +197,7 @@ Additional game mode variables.
 		if(show_warning) to_chat(pred_candidate, SPAN_WARNING("Something went wrong!"))
 		return
 
-	if(show_warning && alert(pred_candidate, "Confirm joining the hunt. You will join as a [lowertext(J.get_whitelist_status(RoleAuthority.roles_whitelist, pred_candidate.client))] predator", "Confirmation", "Yes", "No") == "No")
+	if(show_warning && alert(pred_candidate, "Confirm joining the hunt. You will join as \a [lowertext(J.get_whitelist_status(RoleAuthority.roles_whitelist, pred_candidate.client))] predator", "Confirmation", "Yes", "No") == "No")
 		return
 
 	if(!(RoleAuthority.roles_whitelist[pred_candidate.ckey] & WHITELIST_PREDATOR))
@@ -223,12 +225,17 @@ Additional game mode variables.
 		log_debug("Null client in transform_predator.")
 		return
 
+	var/datum/entity/clan_player/clan_info = pred_candidate.client.clan_info
+	var/list/spawn_points = get_clan_spawnpoints(CLAN_SHIP_PUBLIC)
+	if(clan_info)
+		clan_info.sync()
+		if(clan_info.clan_id)
+			spawn_points = get_clan_spawnpoints(clan_info.clan_id)
+
 	if(!pred_candidate.mind)
 		return
 
-	var/mob/living/carbon/human/yautja/new_predator
-
-	new_predator = new(pick(pred_spawn))
+	var/mob/living/carbon/human/yautja/new_predator = new(pick(spawn_points))
 	pred_candidate.mind.transfer_to(new_predator, TRUE)
 	new_predator.client = pred_candidate.client
 

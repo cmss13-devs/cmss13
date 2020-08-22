@@ -9,6 +9,7 @@
 
 /datum/rank/unblooded
     name = CLAN_RANK_UNBLOODED
+    permission_required = CLAN_PERMISSION_ADMIN_MODIFY
 
 /datum/rank/young
     name = CLAN_RANK_YOUNG

@@ -15,47 +15,49 @@
 /datum/job/antag/predator/New()
 	. = ..()
 	gear_preset_whitelist = list(
-		"[JOB_PREDATOR][WHITELIST_NORMAL]" = "Yautja Blooded",
-		"[JOB_PREDATOR][WHITELIST_COUNCIL]" = "Yautja Councillor",
-		"[JOB_PREDATOR][WHITELIST_LEADER]" = "Yautja Elder",
-		"[JOB_PREDATOR]Elder" = "Yautja Elder"
+		"[JOB_PREDATOR][CLAN_RANK_YOUNG]" = "Yautja Young",
+		"[JOB_PREDATOR][CLAN_RANK_BLOODED]" = "Yautja Blooded",
+		"[JOB_PREDATOR][CLAN_RANK_ELITE]" = "Yautja Elite",
+		"[JOB_PREDATOR][CLAN_RANK_ELDER]" = "Yautja Elder",
+		"[JOB_PREDATOR][CLAN_RANK_LEADER]" = "Yautja Leader",
+		"[JOB_PREDATOR][CLAN_RANK_ADMIN]" = "Yautja Ancient"
 	)
 
-/datum/job/antag/predator/get_whitelist_status(var/list/roles_whitelist, var/client/player)
+/datum/job/antag/predator/get_whitelist_status(var/list/roles_whitelist, var/client/player) // Might be a problem waiting here, but we've got no choice
 	. = ..()
 	if(!.)
 		return
 
-	if(roles_whitelist[player.ckey] & WHITELIST_YAUTJA_ELDER)
-		if(player.prefs.yautja_status == "Elder")
-			return "Elder"
+	if(!player.clan_info)
+		return CLAN_RANK_BLOODED
 
-	if(roles_whitelist[player.ckey] & WHITELIST_YAUTJA_LEADER)
-		return get_desired_status(player.prefs.yautja_status, WHITELIST_LEADER)
-	else if(roles_whitelist[player.ckey] & WHITELIST_YAUTJA_COUNCIL)
-		return get_desired_status(player.prefs.yautja_status, WHITELIST_COUNCIL)
-	else if(roles_whitelist[player.ckey] & WHITELIST_YAUTJA)
-		return get_desired_status(player.prefs.yautja_status, WHITELIST_NORMAL)
+	player.clan_info.sync() // pause here might be problematic, we'll see. If DB dies, then we're fucked
+
+	var/rank = clan_ranks[player.clan_info.clan_rank]
+
+	if(!rank)
+		return CLAN_RANK_BLOODED
+
+	if(!("[JOB_PREDATOR][rank]" in gear_preset_whitelist))
+		return CLAN_RANK_BLOODED
+
+	if(\
+		(roles_whitelist[player.ckey] & (WHITELIST_YAUTJA_LEADER|WHITELIST_YAUTJA_COUNCIL)) &&\
+		get_desired_status(player.prefs.yautja_status, WHITELIST_COUNCIL) == WHITELIST_NORMAL\
+	)
+		return CLAN_RANK_BLOODED
+
+	return rank
+
+		
 
 /datum/job/antag/predator/announce_entry_message(var/mob/new_predator, var/account, var/whitelist_status)
-	if(whitelist_status == "Elder" || whitelist_status == WHITELIST_LEADER)
-		to_chat(new_predator, SPAN_NOTICE("<B> Welcome Elder!</B>"))
-		to_chat(new_predator, SPAN_NOTICE("You are responsible for the well-being of your pupils. Hunting is secondary in priority."))
-		to_chat(new_predator, SPAN_NOTICE("That does not mean you can't go out and show the youngsters how it's done."))
-		to_chat(new_predator, SPAN_NOTICE("You come equipped as an Elder should, with a bonus glaive and heavy armor."))
-	else if(whitelist_status == WHITELIST_COUNCIL)
-		to_chat(new_predator, SPAN_NOTICE("<B> Welcome Councillor!</B>"))
-		to_chat(new_predator, SPAN_NOTICE("You are responsible for the well-being of your pupils. Hunting is secondary in priority."))
-		to_chat(new_predator, SPAN_NOTICE("That does not mean you can't go out and show the youngsters how it's done."))
-	else
-		to_chat(new_predator, SPAN_NOTICE("You are <B>Yautja</b>, a great and noble predator!"))
-		to_chat(new_predator, SPAN_NOTICE("Your job is to first study your opponents. A hunt cannot commence unless intelligence is gathered."))
-		to_chat(new_predator, SPAN_NOTICE("Hunt at your discretion, yet be observant rather than violent."))
-		to_chat(new_predator, SPAN_NOTICE("And above all, listen to your Elders!"))
+	to_chat(new_predator, SPAN_NOTICE("You are <B>Yautja</b>, a great and noble predator!"))
+	to_chat(new_predator, SPAN_NOTICE("Your job is to first study your opponents. A hunt cannot commence unless intelligence is gathered."))
+	to_chat(new_predator, SPAN_NOTICE("Hunt at your discretion, yet be observant rather than violent."))
 
 /datum/job/antag/predator/generate_entry_conditions(mob/living/M, var/whitelist_status)
 	. = ..()
 
-	if(ticker && ticker.mode && whitelist_status == WHITELIST_NORMAL)
-		ticker.mode.initialize_predator(M)
-
+	if(ticker && ticker.mode)
+		ticker.mode.initialize_predator(M, whitelist_status == CLAN_RANK_ADMIN)

@@ -167,6 +167,9 @@
 			M.count_human_kill(job_name, cause)
 			M.life_kills_total += 1
 
+			if(isYautja(M) && M.client)
+				M.client.add_honor(max(life_kills_total, 1))
+
 /mob/living/carbon/Xenomorph/track_mob_death(var/cause, var/cause_mob)
 	. = ..(cause, cause_mob, caste_name)
 	if(statistic_exempt)
@@ -182,3 +185,10 @@
 		if(!M.statistic_exempt && M != src)
 			M.count_xeno_kill(caste_name, cause)
 			M.life_kills_total += 1
+			if(isYautja(M) && M.client)
+				M.client.add_honor(max(life_kills_total, 1))
+
+/mob/living/carbon/examine(mob/user)
+	. = ..()
+	if(isYautja(user))
+		to_chat(user, SPAN_BLUE("[src] is worth [max(life_kills_total, 1)] honor."))

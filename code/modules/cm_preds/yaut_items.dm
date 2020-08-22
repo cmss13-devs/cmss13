@@ -360,52 +360,39 @@
 
 /obj/item/device/yautja_teleporter/attack_self(mob/user)
 	set waitfor = 0
-	if(istype(get_area(user),/area/yautja))
-		var/almayer = alert("Travel to the ooman ship?","Sure?","Yes","No")
-		if(almayer == "No" || !almayer) return
-		playsound(src,'sound/ambience/signal.ogg', 25, 1)
-		timer = 1
-		user.visible_message(SPAN_INFO("[user] starts becoming shimmery and indistinct..."))
-		if(do_after(user,100, INTERRUPT_ALL, BUSY_ICON_GENERIC))
-			// Teleport self.
-			user.visible_message(SPAN_WARNING("[htmlicon(user, viewers(src))][user] disappears!"))
-			var/tele_time = animation_teleport_quick_out(user)
-			// Also teleport whoever you're pulling.
-			var/mob/living/M = user.pulling
-			if(istype(M))
-				M.visible_message(SPAN_WARNING("[htmlicon(M, viewers(src))][M] disappears!"))
-				animation_teleport_quick_out(M)
-			sleep(tele_time)
 
-			var/turf/end_turf = pick(yautja_almayer_loc)
-			user.forceMove(end_turf)
-			animation_teleport_quick_in(user)
-			if(M && M.loc)
-				M.forceMove(end_turf)
-				animation_teleport_quick_in(M)
-			timer = 0
-		else
-			sleep(10)
-			if(loc) timer = 0
+	if(!ishuman(user))
 		return
+
 	var/mob/living/carbon/human/H = user
-	var/sure = alert("Really trigger it?","Sure?","Yes","No")
-	if(sure == "No" || !sure) return
+	var/ship_to_tele = list("Public" = CLAN_SHIP_PUBLIC, "Ooman Ship" = CLAN_SHIP_ALMAYER)
+	
 	if(!isYautja(H))
-		to_chat(user, SPAN_WARNING("The screen angrily flashes three times!"))
-		playsound(user, 'sound/effects/EMPulse.ogg', 25, 1)
-		do_after(user, 30, INTERRUPT_NONE, 1)
-		explosion(loc,-1,-1,2)
-		if(loc)
-			if(ismob(loc))
-				user = loc
-				user.temp_drop_inv_item(src)
-			qdel(src)
+		to_chat(user, SPAN_WARNING("You fiddle with it, but nothing happens!"))
 		return
+	
+	if(H.client && H.client.clan_info)
+		var/datum/entity/clan_player/clan_info = H.client.clan_info
+		if(clan_info.permissions & CLAN_PERMISSION_ADMIN_VIEW)
+			var/list/datum/view_record/clan_view/CPV = DB_VIEW(/datum/view_record/clan_view/)
+			for(var/datum/view_record/clan_view/CV in CPV)
+				if(!("[CV.clan_id]" in pred_ships))
+					continue
+				
+				ship_to_tele += list("[CV.name]" = "[CV.clan_id]")
+		else if(clan_info.clan_id)
+			ship_to_tele += list("Your clan" = "[clan_info.clan_id]")
+
+	var/clan = ship_to_tele[(input(H, "Select a ship to teleport to", "[src]") as null|anything in ship_to_tele)]
+
+	if((!clan || !(clan in pred_ships)) && clan != CLAN_SHIP_ALMAYER)
+		return
+
 	playsound(src,'sound/ambience/signal.ogg', 25, 1)
 	timer = 1
 	user.visible_message(SPAN_INFO("[user] starts becoming shimmery and indistinct..."))
-	if(do_after(user,100, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+
+	if(do_after(user, SECONDS_10, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 		// Teleport self.
 		user.visible_message(SPAN_WARNING("[htmlicon(user, viewers(src))][user] disappears!"))
 		var/tele_time = animation_teleport_quick_out(user)
@@ -416,7 +403,12 @@
 			animation_teleport_quick_out(M)
 		sleep(tele_time)
 
-		var/turf/end_turf = pick(pred_spawn)
+		var/turf/end_turf
+		if(clan != CLAN_SHIP_ALMAYER)
+			end_turf = pick(get_clan_spawnpoints(clan))
+		else
+			end_turf = pick(yautja_almayer_loc)
+
 		user.forceMove(end_turf)
 		animation_teleport_quick_in(user)
 		if(M && M.loc)

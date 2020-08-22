@@ -90,6 +90,9 @@
 			{{if data.player_sethonor_clan}}
 				<td><div unselectable="on">{{:helper.link('Set Honor', '', { 'clan_href' : data.clan_id, 'clan_action': 'sethonor' })}}</div></td>
 			{{/if}}
+			{{if data.player_setcolor_clan}}
+				<td><div unselectable="on">{{:helper.link('Set Color', '', { 'clan_href' : data.clan_id, 'clan_action': 'setcolor' })}}</div></td>
+			{{/if}}
 			{{if data.player_delete_clan}}
 				<td><div unselectable="on">{{:helper.link('Delete Clan', '', { 'clan_href' : data.clan_id, 'clan_action': 'delete' })}}</div></td>
 			{{/if}}

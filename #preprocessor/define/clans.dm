@@ -56,6 +56,7 @@ var/global/list/clan_ranks_ordered = list(
 #define CLAN_ACTION_CLAN_SETDESC "setdesc" // Set description of clan
 #define CLAN_ACTION_CLAN_SETHONOR "sethonor" // Set honor of clan
 #define CLAN_ACTION_CLAN_DELETE "delete"
+#define CLAN_ACTION_CLAN_SETCOLOR "setcolor"
 
 #define CLAN_ACTION_PLAYER_MOVECLAN "moveclan" // Set a player's clan
 #define CLAN_ACTION_PLAYER_MODIFYRANK "modifyrank" // Set a player's rank. Resets when moved from clan to Young Blood
@@ -79,3 +80,6 @@ var/global/list/clan_ranks_ordered = list(
             \
             player_move_clans = (clan_info.permissions & CLAN_PERMISSION_ADMIN_MOVE)\
         )
+
+#define CLAN_SHIP_PUBLIC "Public"
+#define CLAN_SHIP_ALMAYER "Almayer"

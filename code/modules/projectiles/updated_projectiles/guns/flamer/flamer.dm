@@ -365,6 +365,12 @@
 			S.bleed_layer -= 1
 			S.update_icon(1, 0)
 
+	if (istype(loc, /turf/open/auto_turf/snow))
+		var/turf/open/auto_turf/snow/S = loc
+		if(S.bleed_layer > 0)
+			var/new_layer = S.bleed_layer - 1
+			S.changing_layer(new_layer)
+
 	for(var/mob/living/M in loc) //Deal bonus damage if someone's caught directly in initial stream
 		if(M.stat == DEAD)
 			continue

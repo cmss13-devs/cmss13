@@ -2,7 +2,7 @@
 
 /obj/ovipositor
 	name = "Egg Sac"
-	icon = 'icons/mob/xenos/Ovipositor.dmi'
+	icon_source = "alien_queen_ovipositor"
 	icon_state = "ovipositor"
 	unacidable = TRUE
 	var/begin_decay_time = 0
@@ -37,7 +37,7 @@
 
 	var/turf/T = get_turf(src)
 	if (T)
-		T.overlays += image('icons/mob/xenos/Ovipositor.dmi', "ovipositor_molted")
+		T.overlays += image(get_icon_from_source("alien_queen_ovipositor"), "ovipositor_molted")
 
 	qdel(src)
 
@@ -48,7 +48,7 @@
 
 	var/turf/T = get_turf(src)
 	if (T)
-		T.overlays += image('icons/mob/xenos/Ovipositor.dmi', "ovipositor_gibbed")
+		T.overlays += image(get_icon_from_source("alien_queen_ovipositor"), "ovipositor_gibbed")
 
 	qdel(src)
 

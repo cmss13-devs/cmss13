@@ -23,7 +23,7 @@
 /datum/decorator/christmas/queen/hat/decorate(var/mob/living/carbon/Xenomorph/Queen/queen)
 	if(!istype(queen))
 		return
-	queen.icon_body = 'icons/mob/xenos_old/xenomorph_64x64_christmas.dmi'
+	//queen.icon_body = 'icons/mob/xenos_old/xenomorph_64x64_christmas.dmi'
 
 // barbed wire changes are added as a whole, so no need to split
 /datum/decorator/christmas/barbed_wire/get_decor_types()

@@ -19,7 +19,6 @@
 /obj/item/organ/brain/xeno
 	name = "thinkpan"
 	desc = "It looks kind of like an enormous wad of purple bubblegum."
-	icon = 'icons/mob/xenos_old/alien.dmi'
 	icon_state = "chitin"
 
 /obj/item/organ/brain/New()

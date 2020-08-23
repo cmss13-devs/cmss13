@@ -1,7 +1,7 @@
 /obj/effect/alien/resin/special/nest
     name = XENO_STRUCTURE_NEST
     desc = "A very thick nest, oozing with a thick sticky substance."
-    icon = 'icons/mob/xenos/structures48x48.dmi'
+    icon_source = "alien_structures_48x48"
     pixel_x = -8
     pixel_y = -8
 

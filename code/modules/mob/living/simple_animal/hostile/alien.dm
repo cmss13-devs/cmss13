@@ -1,9 +1,5 @@
 /mob/living/simple_animal/hostile/alien
 	name = "alien hunter"
-	icon = 'icons/mob/xenos_old/1x1_Xenos.dmi'
-	icon_state = "Hunter Running"
-	icon_living = "Hunter Running"
-	icon_dead = "Hunter Dead"
 	icon_gib = "syndicate_gib"
 	response_help = "pokes"
 	response_disarm = "shoves"
@@ -59,7 +55,7 @@
 
 /mob/living/simple_animal/hostile/alien/ravager
 	name = "alien ravager"
-	icon = 'icons/mob/xenos_old/2x2_Xenos.dmi'
+	icon_source = "alien_ravager"
 	icon_state = "Ravager Running"
 	icon_living = "Ravager Running"
 	icon_dead = "Ravager Dead"

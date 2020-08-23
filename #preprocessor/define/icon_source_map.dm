@@ -22,9 +22,12 @@ var/global/list/icon_source_master = list(
 	"alien_warrior" = "icons/mob/xenos/warrior.dmi",
 	"alien_structures" = "icons/mob/xenos/structures.dmi",
 	"alien_structures_64x64" = "icons/mob/xenos/structures64x64.dmi",
+	"alien_structures_48x48" = "icons/mob/xenos/structures48x48.dmi",
 	"alien_overlay_64x64" = "icons/mob/xenos/overlay_effects64x64.dmi",
 	"alien_effects" = "icons/mob/xenos/Effects.dmi",
 	"alien_weeds" = "icons/mob/xenos/weeds.dmi",
+	"alien_gib_48x48" = "icons/mob/xenos_old/xenomorph_48x48.dmi",
+	"alien_gib_64x64" = "icons/mob/xenos_old/xenomorph_64x64.dmi",
 	"species_hunter" = "icons/mob/humans/species/r_predator.dmi",
 )
 

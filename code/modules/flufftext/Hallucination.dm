@@ -168,8 +168,6 @@ mob/living/carbon/proc/handle_hallucinations()
 								halbody = image('icons/mob/humans/human.dmi',target,"husk_l",TURF_LAYER)
 							if(2,3)
 								halbody = image('icons/mob/humans/human.dmi',target,"husk_s",TURF_LAYER)
-							if(4)
-								halbody = image('icons/mob/xenos_old/alien.dmi',target,"alienother",TURF_LAYER)
 	//						if(5)
 	//							halbody = image('xcomalien.dmi',target,"chryssalid",TURF_LAYER)
 

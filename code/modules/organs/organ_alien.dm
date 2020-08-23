@@ -61,7 +61,6 @@
 /obj/item/organ/diona/nutrients
 	name = "nutrient vessel"
 	organ_tag = "nutrient vessel"
-	icon = 'icons/mob/xenos_old/alien.dmi'
 	icon_state = "claw"
 	organ_type = /datum/internal_organ/diona/nutrients
 
@@ -71,7 +70,6 @@
 /obj/item/organ/diona/node
 	name = "receptor node"
 	organ_tag = "receptor node"
-	icon = 'icons/mob/xenos_old/alien.dmi'
 	icon_state = "claw"
 	organ_type = /datum/internal_organ/diona/node
 

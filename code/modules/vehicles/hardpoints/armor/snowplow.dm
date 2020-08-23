@@ -28,10 +28,18 @@
 
 	var/list/turfs_ahead = list(ahead, get_step(ahead, turn(move_dir, 90)), get_step(ahead, turn(move_dir, -90)))
 	for(var/turf/T in turfs_ahead)
-		if(!istype(T, /turf/open/snow)) continue
-		var/turf/open/snow/ST = T
-		if(!ST || !ST.bleed_layer)
+		if(istype(T, /turf/open/snow))
+			var/turf/open/snow/ST = T
+			if(!ST || !ST.bleed_layer)
+				continue
+			new /obj/item/stack/snow(ST, ST.bleed_layer)
+			ST.bleed_layer = 0
+			ST.update_icon(1, 0)
+		else if(istype(T, /turf/open/auto_turf/snow))
+			var/turf/open/auto_turf/snow/S = T
+			if(!S || !S.bleed_layer)
+				continue
+			new /obj/item/stack/snow(S, S.bleed_layer)
+			S.changing_layer(0)
+		else
 			continue
-		new /obj/item/stack/snow(ST, ST.bleed_layer)
-		ST.bleed_layer = 0
-		ST.update_icon(1, 0)

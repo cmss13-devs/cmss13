@@ -49,7 +49,7 @@
 	if(isnull(new_layer) || new_layer == bleed_layer)
 		return
 
-	bleed_layer = min(0, new_layer)
+	bleed_layer = max(0, new_layer)
 	for(var/direction in alldirs)
 		var/turf/open/T = get_step(src, direction)
 		if(istype(T))
@@ -108,6 +108,9 @@
 /turf/open/auto_turf/snow/get_dirt_type()
 	return DIRT_TYPE_SNOW
 
+/turf/open/auto_turf/snow/is_weedable()
+	return !bleed_layer
+
 /turf/open/auto_turf/snow/attackby(var/obj/item/I, var/mob/user)
 	//Light Stick
 	if(istype(I, /obj/item/lightstick))
@@ -130,6 +133,30 @@
 		L.pixel_y += rand(-5,5)
 		L.SetLuminosity(2)
 		playsound(user, 'sound/weapons/Genhit.ogg', 25, 1)
+
+//Digging up snow
+/turf/open/auto_turf/snow/attack_alien(mob/living/carbon/Xenomorph/M)
+	if(M.a_intent == INTENT_HELP)
+		return FALSE
+
+	if(!bleed_layer)
+		to_chat(M, SPAN_WARNING("There is nothing to clear out!"))
+		return FALSE
+
+	M.visible_message(SPAN_NOTICE("[M] starts clearing out the [name]."), SPAN_NOTICE("You start clearing out the [name]."), null, 5, CHAT_TYPE_XENO_COMBAT)
+	playsound(M.loc, 'sound/weapons/alien_claw_swipe.ogg', 25, 1)
+	if(!do_after(M, 25, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
+		return FALSE
+
+	if(!bleed_layer)
+		to_chat(M, SPAN_WARNING("There is nothing to clear out!"))
+		return
+
+	M.visible_message(SPAN_NOTICE("[M] clears out [src]."), \
+	SPAN_NOTICE("You clear out [src]."), null, 5, CHAT_TYPE_XENO_COMBAT)
+
+	var/new_layer = bleed_layer - 1
+	changing_layer(new_layer)
 	
 /turf/open/auto_turf/snow/Entered(atom/movable/AM)
 	if(bleed_layer > 0)

@@ -26,6 +26,7 @@
 
 #define AREA_AVOID_BIOSCAN      1 //used to make mobs skip bioscans
 #define AREA_NOTUNNEL           4 //makes it so the area can not be tunneled to
+#define AREA_ALLOW_XENO_JOIN    8 //xenos can join whilst in this area (for admin zlevel)
 
 // Default number of ticks for do_after
 #define DA_DEFAULT_NUM_TICKS 5

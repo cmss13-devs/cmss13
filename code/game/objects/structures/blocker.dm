@@ -61,6 +61,12 @@
 	var/strict_types = FALSE
 	
 	var/list/types = list()
+	var/visible = FALSE
+
+/obj/structure/blocker/forcefield/get_projectile_hit_boolean(obj/item/projectile/P)
+	if(!is_whitelist)
+		return FALSE
+	. = ..()
 
 /obj/structure/blocker/forcefield/BlockedPassDirs(atom/movable/AM, target_dir)
 	var/whitelist_no_block = is_whitelist? NO_BLOCKED_MOVEMENT : BLOCKED_MOVEMENT
@@ -75,10 +81,18 @@
 	
 	return !whitelist_no_block
 
-/obj/structure/blocker/forcefield/vehicles
-	types = list(/obj/vehicle/)
-
 /obj/structure/blocker/forcefield/Initialize(mapload, ...)
 	. = ..()
 	
-	invisibility = 101
+	if(!visible)
+		invisibility = 101
+
+
+/obj/structure/blocker/forcefield/vehicles
+	types = list(/obj/vehicle/)
+
+/obj/structure/blocker/forcefield/human
+	types = list(/mob/living/carbon/human)
+	icon_state = "purple_line"
+
+	visible = TRUE

@@ -353,7 +353,8 @@ Additional game mode variables.
 	var/list/hives = list()
 
 	for(var/mob/living/carbon/Xenomorph/X in living_xeno_list)
-		if(X.z == ADMIN_Z_LEVEL) continue //xenos on admin z level don't count
+		var/area/A = get_area(X)
+		if(X.z == ADMIN_Z_LEVEL && (!A || !(A.flags_atom & AREA_ALLOW_XENO_JOIN))) continue //xenos on admin z level don't count
 		if(istype(X) && !X.client)
 			if(X.away_timer >= XENO_LEAVE_TIMER || (isXenoLarva(X) && X.away_timer >= XENO_LEAVE_TIMER_LARVA) ) available_xenos_non_ssd += X
 			available_xenos += X

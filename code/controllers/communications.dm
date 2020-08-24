@@ -307,6 +307,10 @@ var/global/datum/controller/radio/radio_controller = new()
 	for(var/obj/device in devices[filter])
 		if(device == source)
 			continue
+
+		if(!OBJECTS_CAN_REACH(device, source))
+			continue
+		
 		if(range)
 			var/turf/end_point = get_turf(device)
 			if(!end_point)

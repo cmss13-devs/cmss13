@@ -89,10 +89,13 @@
 	var/comm_title = ""
 	var/list/obj/item/device/radio/radios = list()
 
+	var/atom/radio_loc = radio.loc
+
 	// --- Broadcast only to intercom devices ---
 	if(data == RADIO_FILTER_TYPE_INTERCOM)
 		for (var/obj/item/device/radio/intercom/R in connection.devices["[RADIO_CHAT]"])
-			if(R.receive_range(display_freq, level) > -1)
+			var/atom/loc = R.loc
+			if(R.receive_range(display_freq, level) > -1 && OBJECTS_CAN_REACH(loc, radio_loc))
 				radios += R
 
 	// --- Broadcast only to intercoms and station-bounced radios ---
@@ -100,7 +103,8 @@
 		for (var/obj/item/device/radio/R in connection.devices["[RADIO_CHAT]"])
 			if(istype(R, /obj/item/device/radio/headset))
 				continue
-			if(R.receive_range(display_freq, level) > -1)
+			var/atom/loc = R.loc
+			if(R.receive_range(display_freq, level) > -1 && OBJECTS_CAN_REACH(loc, radio_loc))
 				radios += R
 
 	// --- Broadcast to antag radios! ---
@@ -108,13 +112,15 @@
 		for(var/antag_freq in ANTAG_FREQS)
 			var/datum/radio_frequency/antag_connection = radio_controller.return_frequency(antag_freq)
 			for (var/obj/item/device/radio/R in antag_connection.devices["[RADIO_CHAT]"])
-				if(R.receive_range(antag_freq, level) > -1)
+				var/atom/loc = R.loc
+				if(R.receive_range(display_freq, level) > -1 && OBJECTS_CAN_REACH(loc, radio_loc))
 					radios += R
 
 	// --- Broadcast to ALL radio devices ---
 	else
 		for (var/obj/item/device/radio/R in connection.devices["[RADIO_CHAT]"])
-			if(R.receive_range(display_freq, level) > -1)
+			var/atom/loc = R.loc
+			if(R.receive_range(display_freq, level) > -1 && OBJECTS_CAN_REACH(loc, radio_loc))
 				radios += R
 
 	// Get a list of mobs who can hear from the radios we collected.

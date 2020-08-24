@@ -7,9 +7,9 @@
 /area/tdome)
 "ac" = (
 /turf/open/floor/almayer{
-	tag = "icon-red (NORTHWEST)";
+	dir = 10;
 	icon_state = "red";
-	dir = 10
+	tag = "icon-red (NORTHWEST)"
 	},
 /area/adminlevel/ert_station)
 "ad" = (
@@ -105,6 +105,23 @@
 "ar" = (
 /turf/open/floor/plating/plating_catwalk,
 /area/supply/dock_vehicle)
+"aw" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "green";
+	tag = "icon-green (NORTHEAST)"
+	},
+/area/adminlevel/bunker01/caves/outpost)
+"ay" = (
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (WEST)"
+	},
+/area/adminlevel/bunker01/medbay)
 "az" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -153,9 +170,9 @@
 /area/space)
 "aE" = (
 /turf/open/floor/almayer{
-	tag = "icon-sterile_green_corner (NORTH)";
+	dir = 1;
 	icon_state = "w-y0";
-	dir = 1
+	tag = "icon-sterile_green_corner (NORTH)"
 	},
 /area/tdome)
 "aG" = (
@@ -177,8 +194,8 @@
 "aK" = (
 /obj/structure/closet/cabinet,
 /turf/open/floor/almayer{
-	tag = "icon-sterile";
-	icon_state = "carpet6-2"
+	icon_state = "carpet6-2";
+	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
 "aN" = (
@@ -193,6 +210,14 @@
 "aQ" = (
 /turf/open/space/transit/north/shuttlespace_ns13,
 /area/space)
+"aR" = (
+/obj/structure/machinery/cm_vending/sorted/medical/antag,
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "sterile_green_corner";
+	tag = "icon-sterile_green_corner (EAST)"
+	},
+/area/adminlevel/bunker01/medbay)
 "aT" = (
 /obj/effect/step_trigger/teleporter/random{
 	affect_ghosts = 1;
@@ -282,6 +307,20 @@
 	},
 /turf/open/space/transit/north/shuttlespace_ns3,
 /area/space)
+"bf" = (
+/obj/structure/window_frame/colony/reinforced,
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	density = 0;
+	icon_state = "shutter0";
+	id = "base_3_shutter";
+	name = "\improper Bunker Shutters";
+	opacity = 0
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/mainroom)
 "bg" = (
 /turf/open/space/transit/north/shuttlespace_ns9,
 /area/space)
@@ -333,9 +372,9 @@
 	pixel_y = 24
 	},
 /turf/open/floor/almayer{
-	tag = "icon-sterile";
+	dir = 1;
 	icon_state = "orange";
-	dir = 1
+	tag = "icon-sterile"
 	},
 /area/adminlevel/bunker01/engineering)
 "bx" = (
@@ -357,6 +396,16 @@
 	},
 /turf/open/space/transit/north/shuttlespace_ns5,
 /area/space)
+"bF" = (
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/adminlevel/bunker01/breakroom)
+"bH" = (
+/obj/structure/machinery/cm_vending/clothing/antag,
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/gear)
 "bM" = (
 /turf/open/space/transit/north/shuttlespace_ns3,
 /area/space)
@@ -471,31 +520,6 @@
 "cc" = (
 /turf/open/space,
 /area/shuttle/distress/transit_pmc)
-"cd" = (
-/obj/effect/engine_exhaust{
-	dir = 1
-	},
-/turf/open/space,
-/area/space)
-"ce" = (
-/obj/structure/shuttle/engine/propulsion{
-	tag = "icon-propulsion (NORTH)";
-	icon_state = "propulsion";
-	dir = 1
-	},
-/turf/open/space,
-/area/space)
-"cf" = (
-/turf/closed/wall/indestructible/other{
-	color = "#686245"
-	},
-/area/yautja)
-"cg" = (
-/turf/closed/shuttle{
-	dir = 1;
-	icon_state = "pwall"
-	},
-/area/yautja)
 "ch" = (
 /turf/open/space/transit/north/shuttlespace_ns4,
 /area/almayer/evacuation/stranded/pod3)
@@ -508,120 +532,6 @@
 "ck" = (
 /turf/open/space/transit/north/shuttlespace_ns4,
 /area/almayer/evacuation/stranded/pod8)
-"cl" = (
-/obj/structure/shuttle/engine/heater{
-	tag = "icon-heater (NORTH)";
-	icon_state = "heater";
-	dir = 1
-	},
-/turf/open/floor{
-	icon_state = "floor4";
-	tag = "icon-floor4"
-	},
-/area/yautja)
-"cm" = (
-/obj/structure/shuttle/engine/heater{
-	tag = "icon-heater (NORTH)";
-	icon_state = "heater";
-	dir = 1
-	},
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
-/turf/open/floor{
-	icon_state = "floor4";
-	tag = "icon-floor4"
-	},
-/area/yautja)
-"cn" = (
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
-/turf/open/floor{
-	icon_state = "floor4";
-	tag = "icon-floor4"
-	},
-/area/yautja)
-"co" = (
-/turf/open/floor{
-	icon_state = "floor4";
-	tag = "icon-floor4"
-	},
-/area/yautja)
-"cp" = (
-/obj/structure/machinery/light/small{
-	dir = 4;
-	icon_state = "bulb1";
-	tag = "icon-bulb1 (EAST)"
-	},
-/turf/open/floor{
-	icon_state = "floor4";
-	tag = "icon-floor4"
-	},
-/area/yautja)
-"cq" = (
-/obj/structure/machinery/light/small,
-/turf/open/floor{
-	icon_state = "floor4";
-	tag = "icon-floor4"
-	},
-/area/yautja)
-"cu" = (
-/obj/structure/machinery/door/airlock/secure{
-	name = "Storage Chamber"
-	},
-/turf/open/floor{
-	icon_state = "floor4";
-	tag = "icon-floor4"
-	},
-/area/yautja)
-"cv" = (
-/obj/structure/machinery/power/smes/magical{
-	capacity = 9e+008;
-	charge = 9e+008;
-	dir = 4;
-	name = "plasma power generator"
-	},
-/turf/open/floor{
-	icon_state = "floor4";
-	tag = "icon-floor4"
-	},
-/area/yautja)
-"cw" = (
-/obj/structure/machinery/power/apc/almayer{
-	dir = 1
-	},
-/obj/structure/table/reinforced{
-	layer = 2.69
-	},
-/turf/open/floor{
-	icon_state = "floor4";
-	tag = "icon-floor4"
-	},
-/area/yautja)
-"cx" = (
-/obj/structure/table/reinforced{
-	layer = 2.69
-	},
-/obj/structure/machinery/light/small{
-	dir = 1;
-	icon_state = "bulb1";
-	tag = "icon-bulb1 (NORTH)"
-	},
-/turf/open/floor{
-	icon_state = "floor4";
-	tag = "icon-floor4"
-	},
-/area/yautja)
-"cy" = (
-/obj/structure/table/reinforced{
-	layer = 2.69
-	},
-/turf/open/floor{
-	icon_state = "floor4";
-	tag = "icon-floor4"
-	},
-/area/yautja)
 "cz" = (
 /turf/open/space/transit/north/shuttlespace_ns4,
 /area/almayer/evacuation/stranded/pod15)
@@ -660,297 +570,6 @@
 	},
 /turf/open/space/transit/north/shuttlespace_ns4,
 /area/space)
-"cD" = (
-/obj/structure/machinery/power/terminal{
-	dir = 1;
-	icon_state = "term";
-	tag = "icon-term (NORTH)"
-	},
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
-/turf/open/floor{
-	icon_state = "floor4";
-	tag = "icon-floor4"
-	},
-/area/yautja)
-"cE" = (
-/obj/structure/machinery/power/terminal{
-	dir = 1;
-	icon_state = "term";
-	tag = "icon-term (NORTH)"
-	},
-/turf/open/floor{
-	icon_state = "floor4";
-	tag = "icon-floor4"
-	},
-/area/yautja)
-"cF" = (
-/obj/structure/shuttle/engine/heater{
-	tag = "icon-heater (NORTH)";
-	icon_state = "heater";
-	dir = 1
-	},
-/obj/structure/machinery/light/small{
-	dir = 1;
-	icon_state = "bulb1";
-	tag = "icon-bulb1 (NORTH)"
-	},
-/turf/open/floor{
-	icon_state = "floor4";
-	tag = "icon-floor4"
-	},
-/area/yautja)
-"cG" = (
-/obj/structure/ore_box,
-/turf/open/floor{
-	icon_state = "floor4";
-	tag = "icon-floor4"
-	},
-/area/yautja)
-"cH" = (
-/obj/structure/rack,
-/obj/item/device/flashlight/lantern,
-/turf/open/floor{
-	icon_state = "floor4";
-	tag = "icon-floor4"
-	},
-/area/yautja)
-"cI" = (
-/obj/structure/rack,
-/obj/item/weapon/melee/twohanded/spear,
-/turf/open/floor{
-	icon_state = "floor4";
-	tag = "icon-floor4"
-	},
-/area/yautja)
-"cJ" = (
-/obj/structure/rack,
-/obj/item/device/flashlight/lantern,
-/obj/item/device/flashlight/lantern,
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"cK" = (
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"cL" = (
-/turf/open/shuttle{
-	icon_state = "floor6"
-	},
-/area/yautja)
-"cM" = (
-/obj/structure/machinery/light/small{
-	dir = 1;
-	icon_state = "bulb1";
-	tag = "icon-bulb1 (NORTH)"
-	},
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"cN" = (
-/obj/structure/rack,
-/obj/item/device/healthanalyzer,
-/obj/item/device/healthanalyzer,
-/obj/item/device/healthanalyzer,
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"cO" = (
-/obj/structure/table/reinforced,
-/obj/item/device/flashlight/lantern,
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"cP" = (
-/obj/structure/table/reinforced,
-/obj/item/storage/backpack/yautja,
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"cQ" = (
-/obj/structure/rack,
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
-/obj/item/device/flashlight/lantern,
-/obj/item/device/flashlight/lantern,
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"cR" = (
-/obj/structure/rack,
-/obj/structure/machinery/light/small{
-	dir = 4;
-	icon_state = "bulb1";
-	tag = "icon-bulb1 (EAST)"
-	},
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"cS" = (
-/obj/structure/table/reinforced{
-	layer = 2.69
-	},
-/obj/item/device/flashlight/lantern,
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"cT" = (
-/obj/structure/table/reinforced{
-	layer = 2.69
-	},
-/obj/item/reagent_container/hypospray/autoinjector/yautja,
-/obj/item/reagent_container/hypospray/autoinjector/yautja,
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"cU" = (
-/obj/structure/table/reinforced{
-	layer = 2.69
-	},
-/obj/item/weapon/melee/yautja_knife,
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"cV" = (
-/obj/structure/bed/alien,
-/obj/effect/landmark{
-	name = "pred_elder_spawn"
-	},
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"cW" = (
-/obj/structure/table/reinforced,
-/obj/item/tool/surgery/retractor/predatorretractor,
-/obj/item/tool/surgery/circular_saw/predatorbonesaw,
-/obj/item/tool/surgery/cautery/predatorcautery,
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"cX" = (
-/obj/structure/machinery/light/small{
-	dir = 1;
-	icon_state = "bulb1";
-	tag = "icon-bulb1 (NORTH)"
-	},
-/obj/structure/machinery/optable,
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"cY" = (
-/obj/structure/table/reinforced,
-/obj/item/tool/surgery/bonegel/predatorbonegel,
-/obj/item/tool/surgery/hemostat/predatorhemostat,
-/obj/item/tool/surgery/bonesetter/predatorbonesetter,
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"cZ" = (
-/obj/structure/table/reinforced,
-/obj/item/tank/anesthetic,
-/obj/item/clothing/mask/breath/medical,
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"da" = (
-/obj/structure/bed/alien,
-/obj/effect/landmark{
-	name = "pred_spawn"
-	},
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"db" = (
-/obj/structure/rack,
-/obj/item/storage/box/lights/bulbs,
-/obj/item/storage/box/lights/bulbs,
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"dc" = (
-/obj/structure/machinery/light/small{
-	dir = 8;
-	icon_state = "bulb1";
-	tag = "icon-bulb1 (WEST)"
-	},
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"dd" = (
-/obj/structure/machinery/light/small{
-	dir = 4;
-	icon_state = "bulb1";
-	tag = "icon-bulb1 (EAST)"
-	},
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"de" = (
-/obj/structure/bed/alien,
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"df" = (
-/obj/structure/table/reinforced{
-	layer = 2.69
-	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/machinery/door/window/southleft,
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
 "dg" = (
 /turf/open/space/transit/north/shuttlespace_ns4,
 /area/almayer/evacuation/stranded/pod9)
@@ -960,91 +579,6 @@
 "di" = (
 /turf/open/space/transit/north/shuttlespace_ns4,
 /area/almayer/evacuation/stranded/pod11)
-"dj" = (
-/obj/structure/table/reinforced,
-/obj/item/tool/surgery/surgicaldrill/predatorsurgicaldrill,
-/obj/item/tool/surgery/scalpel/predatorscalpel,
-/obj/item/tool/surgery/FixOVein/predatorFixOVein,
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"dk" = (
-/obj/structure/machinery/door/airlock/secure{
-	name = "\improper Operation Room"
-	},
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"dl" = (
-/obj/structure/machinery/door/airlock/secure{
-	name = "Blooded Chambers"
-	},
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"dm" = (
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"dn" = (
-/obj/structure/machinery/door/airlock/secure{
-	name = "Elder Quarters"
-	},
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"do" = (
-/obj/structure/table/reinforced{
-	layer = 2.69
-	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/window/reinforced{
-	dir = 4;
-	health = 80
-	},
-/obj/structure/machinery/door/window/southleft{
-	dir = 1;
-	icon_state = "left";
-	layer = 2.8;
-	tag = "icon-left (NORTH)"
-	},
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"dp" = (
-/obj/structure/rack,
-/obj/item/storage/backpack/yautja,
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"dq" = (
-/obj/structure/machinery/door/airlock/secure{
-	name = "\improper Houndmaster's Quarters"
-	},
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
 "ds" = (
 /turf/closed/wall/almayer/outer{
 	name = "reinforced hull"
@@ -1059,63 +593,6 @@
 "dy" = (
 /turf/open/floor/wood,
 /area/centcom/living)
-"dz" = (
-/obj/structure/table/reinforced,
-/obj/item/stack/medical/splint{
-	name = "splints"
-	},
-/obj/item/stack/medical/splint{
-	name = "splints"
-	},
-/obj/item/stack/medical/splint{
-	name = "splints"
-	},
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
-/obj/item/stack/medical/splint{
-	name = "splints"
-	},
-/obj/item/stack/medical/splint{
-	name = "splints"
-	},
-/obj/item/stack/medical/splint{
-	name = "splints"
-	},
-/obj/item/stack/medical/splint{
-	name = "splints"
-	},
-/obj/item/stack/medical/splint{
-	name = "splints"
-	},
-/obj/item/stack/medical/splint{
-	name = "splints"
-	},
-/obj/item/stack/medical/splint{
-	name = "splints"
-	},
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"dB" = (
-/obj/structure/table/reinforced{
-	layer = 2.69
-	},
-/obj/structure/machinery/door/window/southleft,
-/obj/structure/window/reinforced{
-	dir = 4;
-	health = 80
-	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
 "dC" = (
 /obj/effect/step_trigger/teleporter/random{
 	affect_ghosts = 1;
@@ -1164,363 +641,27 @@
 	},
 /turf/open/space/transit/north/shuttlespace_ns4,
 /area/space)
-"dK" = (
-/obj/structure/table/reinforced,
-/obj/item/stack/medical/advanced/ointment/tajaran{
-	name = "soothing herbs"
+"dJ" = (
+/obj/structure/largecrate/supply/weapons/m56d,
+/turf/open/floor/almayer{
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
 	},
-/obj/item/stack/medical/advanced/ointment/tajaran{
-	name = "soothing herbs"
-	},
-/obj/item/stack/medical/advanced/ointment/tajaran{
-	name = "soothing herbs"
-	},
-/obj/item/stack/medical/advanced/ointment/tajaran{
-	name = "soothing herbs"
-	},
-/obj/item/stack/medical/advanced/ointment/tajaran{
-	name = "soothing herbs"
-	},
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"dL" = (
-/obj/structure/table/reinforced,
-/obj/item/stack/medical/advanced/bruise_pack/tajaran{
-	name = "mending herbs"
-	},
-/obj/item/stack/medical/advanced/bruise_pack/tajaran{
-	name = "mending herbs"
-	},
-/obj/item/stack/medical/advanced/bruise_pack/tajaran{
-	name = "mending herbs"
-	},
-/obj/item/stack/medical/advanced/bruise_pack/tajaran{
-	name = "mending herbs"
-	},
-/obj/item/stack/medical/advanced/bruise_pack/tajaran{
-	name = "mending herbs"
-	},
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"dP" = (
-/obj/structure/machinery/light/small,
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
+/area/adminlevel/bunker01/storage)
 "dQ" = (
 /turf/open/space,
 /area/shuttle/distress/transit_upp)
-"dR" = (
-/obj/structure/machinery/door/airlock/secure{
-	name = "\improper Medicine Room"
-	},
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"dS" = (
-/obj/structure/machinery/autolathe/yautja,
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"dT" = (
-/obj/structure/rack{
-	layer = 2.79
-	},
-/obj/item/stack/sheet/plasteel{
-	amount = 30
-	},
-/obj/item/stack/sheet/metal{
-	amount = 50
-	},
-/obj/item/stack/sheet/metal{
-	amount = 50
-	},
-/obj/item/stack/sheet/mineral/sandstone{
-	amount = 50
-	},
-/obj/item/stack/sheet/glass{
-	amount = 50
-	},
-/obj/structure/machinery/light/small{
-	dir = 1;
-	icon_state = "bulb1";
-	tag = "icon-bulb1 (NORTH)"
-	},
-/obj/item/stack/sheet/mineral/sandstone{
-	amount = 50
-	},
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"dU" = (
-/obj/structure/machinery/door/airlock/secure{
-	name = "\improper Hellhound Quarters"
-	},
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"dV" = (
-/obj/structure/machinery/light/small,
-/turf/open/shuttle{
-	icon_state = "floor6"
-	},
-/area/yautja)
-"dZ" = (
-/obj/item/clothing/mask/gas/yautja,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/machinery/door/window/northright{
-	icon_state = "right";
-	dir = 2
-	},
-/obj/structure/table/reinforced{
-	layer = 2.69
-	},
-/obj/item/clothing/suit/armor/yautja,
-/obj/item/clothing/shoes/yautja,
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"ea" = (
-/obj/item/clothing/mask/gas/yautja,
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 80
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/machinery/door/window/northright{
-	icon_state = "right";
-	dir = 2
-	},
-/obj/structure/table/reinforced{
-	layer = 2.69
-	},
-/obj/item/clothing/suit/armor/yautja,
-/obj/item/clothing/shoes/yautja,
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"eb" = (
-/obj/item/clothing/mask/gas/yautja,
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 80
-	},
-/obj/structure/machinery/door/window/northright{
-	icon_state = "right";
-	dir = 2
-	},
-/obj/structure/table/reinforced{
-	layer = 2.69
-	},
-/obj/item/clothing/suit/armor/yautja,
-/obj/item/clothing/shoes/yautja,
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"ec" = (
-/obj/effect/step_trigger/teleporter/yautja_ship,
-/turf/open/floor/light,
-/area/yautja)
-"ed" = (
-/obj/structure/shuttle/window,
-/turf/open/shuttle{
-	icon_state = "floor6"
-	},
-/area/yautja)
-"ee" = (
-/obj/structure/table/reinforced,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/reinforced,
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"ef" = (
-/obj/structure/table/reinforced,
-/obj/item/weapon/melee/twohanded/dualsaber,
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 80
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/reinforced,
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"eg" = (
-/obj/structure/table/reinforced,
-/obj/item/weapon/melee/katana,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 80
-	},
-/obj/structure/window/reinforced,
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"eh" = (
-/obj/structure/table/reinforced,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 80
-	},
-/obj/structure/window/reinforced,
-/obj/item/clothing/mask/gas/voice/space_ninja{
-	desc = "A close-fitting mask that appears to only cover half of the face. One can only wonder who would make such a thing.";
-	name = "strange half-mask"
-	},
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"ei" = (
-/obj/structure/table/reinforced,
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 80
-	},
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
 "ej" = (
 /turf/open/floor/plating/plating_catwalk,
 /area/supply/dock)
-"ek" = (
-/obj/structure/window/reinforced,
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
+"el" = (
+/obj/structure/table/reinforced,
+/turf/open/floor/prison{
+	dir = 2;
+	icon_state = "sterile_white";
+	tag = "icon-sterile_white"
 	},
-/area/yautja)
-"em" = (
-/obj/structure/table/reinforced{
-	layer = 2.69
-	},
-/obj/item/clothing/mask/gas/yautja,
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 80
-	},
-/obj/structure/machinery/door/window/northright{
-	icon_state = "right";
-	dir = 2
-	},
-/obj/item/clothing/suit/armor/yautja,
-/obj/item/clothing/shoes/yautja,
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"en" = (
-/obj/structure/machinery/door/airlock/centcom{
-	name = "Airlock Out"
-	},
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"eq" = (
-/obj/item/legcuffs/yautja,
-/obj/item/legcuffs/yautja,
-/obj/item/legcuffs/yautja,
-/obj/item/legcuffs/yautja,
-/obj/item/legcuffs/yautja,
-/obj/item/legcuffs/yautja,
-/obj/item/legcuffs/yautja,
-/obj/structure/rack{
-	layer = 2.79
-	},
-/obj/item/legcuffs/yautja,
-/obj/item/legcuffs/yautja,
-/obj/item/legcuffs/yautja,
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"er" = (
-/obj/structure/xenoautopsy/tank,
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"es" = (
-/obj/structure/rack,
-/obj/item/device/encryptionkey/yautja,
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"et" = (
-/obj/structure/rack,
-/obj/item/reagent_container/food/snacks/meat,
-/obj/item/reagent_container/food/snacks/xenomeat{
-	pixel_x = -6;
-	pixel_y = -5
-	},
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"eu" = (
-/obj/structure/xenoautopsy/tank/hugger,
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
+/area/adminlevel/bunker01/kitchen)
 "ev" = (
 /turf/open/floor/carpet{
 	dir = 9;
@@ -1534,9 +675,9 @@
 /area/centcom/living)
 "ex" = (
 /obj/structure/bed/chair/wood/wings{
-	tag = "icon-wooden_chair_wings (NORTH)";
+	dir = 1;
 	icon_state = "wooden_chair_wings";
-	dir = 1
+	tag = "icon-wooden_chair_wings (NORTH)"
 	},
 /turf/open/floor/wood,
 /area/centcom/living)
@@ -1547,57 +688,6 @@
 	},
 /turf/open/floor/carpet,
 /area/centcom/living)
-"ez" = (
-/obj/structure/rack{
-	layer = 2.79
-	},
-/obj/item/explosive/grenade/spawnergrenade/smartdisc,
-/obj/item/explosive/grenade/spawnergrenade/smartdisc,
-/obj/item/explosive/grenade/spawnergrenade/smartdisc,
-/obj/item/explosive/grenade/spawnergrenade/smartdisc,
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"eA" = (
-/obj/structure/xenoautopsy/tank/alien,
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"eB" = (
-/obj/structure/rack,
-/obj/item/reagent_container/food/snacks/meat,
-/obj/structure/machinery/light/small{
-	dir = 4;
-	icon_state = "bulb1";
-	tag = "icon-bulb1 (EAST)"
-	},
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"eC" = (
-/obj/structure/rack,
-/obj/item/reagent_container/food/snacks/xenomeat,
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"eD" = (
-/obj/structure/xenoautopsy/tank/larva,
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
 "eE" = (
 /turf/open/floor/carpet{
 	dir = 1;
@@ -1621,127 +711,10 @@
 "eJ" = (
 /turf/open/space,
 /area/shuttle/distress/transit_big)
-"eK" = (
-/obj/structure/rack,
-/obj/item/weapon/melee/yautja_knife,
-/obj/item/reagent_container/hypospray/autoinjector/yautja,
-/obj/structure/machinery/light/small{
-	dir = 8;
-	icon_state = "bulb1";
-	tag = "icon-bulb1 (WEST)"
-	},
-/obj/item/reagent_container/hypospray/autoinjector/yautja,
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"eL" = (
-/obj/structure/rack,
-/obj/item/weapon/melee/yautja_knife,
-/obj/item/reagent_container/hypospray/autoinjector/yautja,
-/obj/structure/machinery/light/small{
-	dir = 4;
-	icon_state = "bulb1";
-	tag = "icon-bulb1 (EAST)"
-	},
-/obj/item/reagent_container/hypospray/autoinjector/yautja,
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"eM" = (
-/obj/structure/xenoautopsy/tank,
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"eN" = (
-/obj/structure/rack,
-/obj/item/reagent_container/food/snacks/meat,
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"eO" = (
-/obj/structure/rack,
-/obj/item/reagent_container/food/snacks/meat,
-/obj/item/reagent_container/food/snacks/meat{
-	pixel_x = -2;
-	pixel_y = -2
-	},
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"eP" = (
-/obj/structure/xenoautopsy/tank,
-/obj/structure/machinery/light/small{
-	dir = 4;
-	icon_state = "bulb1";
-	tag = "icon-bulb1 (EAST)"
-	},
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"eQ" = (
-/obj/structure/rack,
-/obj/item/weapon/melee/harpoon/yautja{
-	pixel_y = -2
-	},
-/obj/item/weapon/melee/harpoon/yautja,
-/obj/item/weapon/melee/harpoon/yautja{
-	pixel_x = 4;
-	pixel_y = 6
-	},
-/obj/item/weapon/melee/harpoon/yautja{
-	pixel_x = 4;
-	pixel_y = 6
-	},
-/obj/item/weapon/melee/harpoon/yautja{
-	pixel_x = -4;
-	pixel_y = -3
-	},
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"eR" = (
-/obj/structure/rack,
-/obj/item/weapon/melee/harpoon/yautja{
-	pixel_x = -4;
-	pixel_y = -3
-	},
-/obj/item/weapon/melee/harpoon/yautja{
-	pixel_x = 4;
-	pixel_y = 6
-	},
-/obj/item/weapon/melee/harpoon/yautja,
-/obj/item/weapon/melee/harpoon/yautja,
-/obj/item/weapon/melee/harpoon/yautja,
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"eS" = (
-/obj/structure/machinery/door/airlock/secure{
-	name = "Central Chamber"
-	},
-/turf/open/shuttle{
-	icon_state = "floor6"
-	},
-/area/yautja)
+"eT" = (
+/obj/structure/table/almayer,
+/turf/open/floor/wood,
+/area/adminlevel/bunker01/breakroom)
 "eU" = (
 /turf/open/floor/carpet{
 	dir = 8;
@@ -1776,48 +749,22 @@
 	tag = "icon-carpetside (EAST)"
 	},
 /area/centcom/living)
-"fc" = (
-/obj/structure/machinery/door/airlock/secure{
-	name = "Storage Chamber"
+"fb" = (
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "green";
+	tag = "icon-green (NORTH)"
 	},
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
+/area/adminlevel/bunker01/mainroom)
+"fl" = (
+/obj/structure/machinery/cm_vending/gear/antag_guns,
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/gear)
 "fn" = (
 /turf/closed/wall/almayer/outer{
 	name = "reinforced hull"
 	},
 /area/centcom/control)
-"fp" = (
-/obj/structure/table/reinforced,
-/obj/effect/decal/warning_stripes,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/machinery/door/window/southleft{
-	layer = 2.8
-	},
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"fq" = (
-/obj/structure/table/reinforced,
-/obj/effect/decal/warning_stripes,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/machinery/door/window/southleft{
-	layer = 2.8
-	},
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
 "fr" = (
 /obj/structure/pipes/standard/manifold/hidden/supply,
 /obj/structure/disposalpipe/junction{
@@ -1888,13 +835,6 @@
 	icon_state = "mono"
 	},
 /area/centcom/control)
-"fE" = (
-/obj/structure/bed/chair/wood/wings,
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
 "fL" = (
 /turf/open/floor/carpet{
 	dir = 10;
@@ -1945,57 +885,6 @@
 	icon_state = "mono"
 	},
 /area/centcom/control)
-"fS" = (
-/obj/structure/bed/chair/wood/wings{
-	tag = "icon-wooden_chair_wings (EAST)";
-	icon_state = "wooden_chair_wings";
-	dir = 4
-	},
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"fT" = (
-/obj/structure/table/reinforced,
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"fU" = (
-/obj/structure/bed/chair/wood/wings{
-	tag = "icon-wooden_chair_wings (WEST)";
-	icon_state = "wooden_chair_wings";
-	dir = 8
-	},
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"fV" = (
-/obj/structure/table/reinforced,
-/obj/effect/decal/warning_stripes,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 4;
-	health = 80
-	},
-/obj/structure/machinery/door/window/southleft{
-	dir = 8;
-	icon_state = "left";
-	layer = 2.8;
-	tag = "icon-left (WEST)"
-	},
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
 "fW" = (
 /turf/open/floor/carpet{
 	dir = 6;
@@ -2006,24 +895,6 @@
 "fY" = (
 /turf/closed/wall/rock/brown,
 /area/adminlevel/bunker01/caves)
-"ga" = (
-/obj/structure/machinery/door/airlock/secure{
-	name = "\improper Meeting Chamber"
-	},
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"gb" = (
-/obj/structure/machinery/door/airlock/secure{
-	name = "Trophy Room"
-	},
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
 "gc" = (
 /turf/open/mars_cave,
 /area/adminlevel/bunker01/caves)
@@ -2067,24 +938,17 @@
 "gi" = (
 /turf/closed/wall/r_wall,
 /area/adminlevel/bunker01/bathroom)
-"gk" = (
-/obj/structure/table/reinforced,
-/obj/item/device/flashlight/lantern,
-/obj/structure/machinery/light/small{
-	dir = 4
+"gj" = (
+/obj/structure/machinery/chem_dispenser{
+	req_access = list(201);
+	req_one_access = null
 	},
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "sterile_green_corner";
+	tag = "icon-sterile_green_corner (WEST)"
 	},
-/area/yautja)
-"gl" = (
-/obj/structure/curtain/red,
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
+/area/adminlevel/bunker01/medbay)
 "gm" = (
 /obj/effect/step_trigger/teleporter/random{
 	affect_ghosts = 1;
@@ -2165,17 +1029,6 @@
 	},
 /turf/open/space/transit/north/shuttlespace_ns4,
 /area/space)
-"gr" = (
-/obj/structure/bed/chair/wood/wings{
-	tag = "icon-wooden_chair_wings (NORTH)";
-	icon_state = "wooden_chair_wings";
-	dir = 1
-	},
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
 "gs" = (
 /obj/effect/step_trigger/teleporter/random{
 	affect_ghosts = 1;
@@ -2192,41 +1045,6 @@
 	},
 /turf/open/space/transit/north/shuttlespace_ns4,
 /area/space)
-"gt" = (
-/obj/structure/table/reinforced,
-/obj/effect/decal/warning_stripes,
-/obj/structure/window/reinforced{
-	dir = 4;
-	health = 80
-	},
-/obj/structure/machinery/door/window/southleft{
-	dir = 1;
-	icon_state = "left";
-	layer = 2.8;
-	tag = "icon-left (NORTH)"
-	},
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"gu" = (
-/obj/structure/table/reinforced,
-/obj/effect/decal/warning_stripes,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/machinery/door/window/southleft{
-	dir = 1;
-	icon_state = "left";
-	layer = 2.8;
-	tag = "icon-left (NORTH)"
-	},
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
 "gv" = (
 /obj/effect/step_trigger/teleporter/random{
 	affect_ghosts = 1;
@@ -2291,244 +1109,6 @@
 	},
 /turf/open/space/transit/north/shuttlespace_ns4,
 /area/space)
-"gz" = (
-/obj/structure/table/reinforced,
-/obj/item/tool/kitchen/utensil/spoon,
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"gA" = (
-/obj/item/reagent_container/food/snacks/stew,
-/obj/structure/table/reinforced,
-/obj/item/reagent_container/food/snacks/stew,
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"gB" = (
-/obj/item/reagent_container/food/snacks/stew,
-/obj/structure/table/reinforced,
-/obj/structure/machinery/light/small{
-	dir = 1;
-	icon_state = "bulb1";
-	tag = "icon-bulb1 (NORTH)"
-	},
-/obj/item/reagent_container/food/snacks/stew,
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"gC" = (
-/obj/structure/machinery/door/airlock/secure{
-	name = "Practice Chamber"
-	},
-/turf/open/shuttle{
-	icon_state = "floor6"
-	},
-/area/yautja)
-"gD" = (
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
-/obj/structure/table/reinforced,
-/obj/item/clothing/shoes/combat,
-/obj/item/clothing/under/gladiator,
-/obj/item/clothing/gloves/combat,
-/obj/item/clothing/head/helmet/gladiator,
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"gE" = (
-/obj/structure/table/reinforced,
-/obj/item/device/assembly/voice,
-/obj/item/device/assembly/voice,
-/obj/item/weapon/melee/baton/cattleprod,
-/obj/item/weapon/melee/baton/cattleprod,
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"gF" = (
-/obj/structure/table/reinforced,
-/obj/item/clothing/mask/muzzle,
-/obj/item/clothing/mask/muzzle,
-/obj/item/clothing/mask/muzzle,
-/obj/item/clothing/mask/muzzle,
-/obj/item/clothing/mask/muzzle,
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"gG" = (
-/obj/structure/machinery/door/airlock/freezer{
-	name = "\improper Cooler Room"
-	},
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"gH" = (
-/obj/structure/window/framed/colony/reinforced/hull{
-	color = "#686245"
-	},
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"gI" = (
-/obj/structure/machinery/door/airlock/glass{
-	id = "Prisoner Cell 1";
-	name = "\improper Prisoner Cell 1"
-	},
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"gJ" = (
-/obj/structure/machinery/door_display/research_cell{
-	id = "Prisoner Cell 1"
-	},
-/turf/closed/wall/indestructible/other{
-	color = "#686245"
-	},
-/area/yautja)
-"gK" = (
-/obj/structure/machinery/door/airlock/glass{
-	id = "Prisoner Cell 2";
-	name = "\improper Prisoner Cell 2"
-	},
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"gL" = (
-/obj/structure/machinery/door_display/research_cell{
-	id = "Prisoner Cell 2"
-	},
-/turf/closed/wall/indestructible/other{
-	color = "#686245"
-	},
-/area/yautja)
-"gM" = (
-/obj/structure/machinery/door/airlock/glass{
-	id = "Prisoner Cell 3";
-	name = "\improper Prisoner Cell 3"
-	},
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"gN" = (
-/obj/structure/machinery/door_display/research_cell{
-	id = "Prisoner Cell 3"
-	},
-/turf/closed/wall/indestructible/other{
-	color = "#686245"
-	},
-/area/yautja)
-"gO" = (
-/obj/structure/closet,
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"gP" = (
-/obj/structure/machinery/door/airlock/secure{
-	name = "\improper Feeder Room"
-	},
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"gQ" = (
-/obj/structure/table/reinforced,
-/obj/structure/machinery/light/small{
-	dir = 4;
-	icon_state = "bulb1";
-	tag = "icon-bulb1 (EAST)"
-	},
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"gR" = (
-/obj/structure/machinery/door/airlock/secure{
-	name = "\improper Feed Hall"
-	},
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"gS" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"gT" = (
-/obj/structure/machinery/door/airlock/secure{
-	name = "\improper Containment Cells"
-	},
-/turf/open/shuttle{
-	icon_state = "floor6"
-	},
-/area/yautja)
-"gU" = (
-/obj/structure/machinery/door/airlock/secure{
-	name = "\improper Wargear Storage"
-	},
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"gV" = (
-/obj/structure/machinery/light/small{
-	dir = 4;
-	icon_state = "bulb1";
-	tag = "icon-bulb1 (EAST)"
-	},
-/obj/structure/table/reinforced,
-/obj/item/weapon/melee/claymore/mercsword,
-/obj/item/weapon/melee/claymore/mercsword,
-/obj/item/weapon/melee/claymore/mercsword,
-/obj/item/weapon/melee/claymore/mercsword,
-/obj/item/weapon/melee/claymore/mercsword,
-/obj/item/weapon/melee/claymore/mercsword,
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"gX" = (
-/obj/structure/machinery/door/airlock/glass{
-	name = "\improper Fighting Pit"
-	},
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
 "gY" = (
 /turf/closed/shuttle/ert{
 	icon_state = "stan20"
@@ -2574,78 +1154,13 @@
 	icon_state = "upp25"
 	},
 /area/shuttle/distress/start_upp)
-"hh" = (
-/obj/structure/kitchenspike,
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"hi" = (
-/obj/structure/machinery/light/small,
-/obj/structure/kitchenspike,
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"hj" = (
-/obj/structure/machinery/door/airlock/glass{
-	id = "Prisoner Cell 4";
-	name = "\improper Prisoner Cell 4"
-	},
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"hk" = (
-/obj/structure/machinery/door_display/research_cell{
-	id = "Prisoner Cell 4"
-	},
-/turf/closed/wall/indestructible/other{
-	color = "#686245"
-	},
-/area/yautja)
-"hl" = (
-/obj/structure/machinery/door/airlock/glass{
-	id = "Prisoner Cell 5";
-	name = "\improper Prisoner Cell 5"
-	},
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"hm" = (
-/obj/structure/machinery/door_display/research_cell{
-	id = "Prisoner Cell 5"
-	},
-/turf/closed/wall/indestructible/other{
-	color = "#686245"
-	},
-/area/yautja)
-"hn" = (
-/obj/structure/machinery/door/airlock/glass{
-	id = "Prisoner Cell 6";
-	name = "\improper Prisoner Cell 6"
-	},
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"ho" = (
-/obj/structure/machinery/door_display/research_cell{
-	id = "Prisoner Cell 6"
-	},
-/turf/closed/wall/indestructible/other{
-	color = "#686245"
-	},
-/area/yautja)
 "hp" = (
 /turf/closed/wall/indestructible,
 /area/start)
+"hq" = (
+/obj/structure/bed/chair,
+/turf/open/floor/wood,
+/area/adminlevel/bunker01/breakroom)
 "hr" = (
 /turf/closed/shuttle/ert{
 	icon_state = "stan21"
@@ -2861,39 +1376,8 @@
 	},
 /area/shuttle/distress/start_upp)
 "ii" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
-/turf/open/shuttle{
-	icon_state = "floor6"
-	},
-/area/yautja)
-"ij" = (
-/obj/structure/table/reinforced,
-/obj/item/handcuffs,
-/obj/item/handcuffs,
-/obj/item/handcuffs,
-/obj/item/handcuffs,
-/obj/item/handcuffs,
-/obj/item/handcuffs,
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"ik" = (
-/obj/structure/table/reinforced,
-/obj/item/legcuffs,
-/obj/item/legcuffs,
-/obj/item/legcuffs,
-/obj/item/legcuffs,
-/obj/item/legcuffs,
-/obj/item/legcuffs,
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
+/turf/closed/wall/rock/brown,
+/area/adminlevel/bunker01/caves/xeno)
 "in" = (
 /obj/structure/machinery/door/airlock/almayer/generic,
 /obj/structure/machinery/door/poddoor/shutters/transit{
@@ -3086,61 +1570,6 @@
 	tag = "icon-rasputin15"
 	},
 /area/shuttle/distress/start_upp)
-"iI" = (
-/obj/structure/morgue/sarcophagus,
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"iJ" = (
-/obj/structure/machinery/door/airlock/secure{
-	name = "\improper Fore Rooms"
-	},
-/turf/open/shuttle{
-	icon_state = "floor6"
-	},
-/area/yautja)
-"iK" = (
-/obj/structure/table/reinforced,
-/obj/item/XenoBio/Blood,
-/obj/item/XenoBio/Blood,
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"iL" = (
-/obj/structure/table/reinforced,
-/obj/item/XenoItem,
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"iM" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
-/obj/structure/table/reinforced,
-/obj/item/alienjar,
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"iN" = (
-/obj/effect/alien/egg,
-/obj/structure/machinery/light/small{
-	dir = 1;
-	icon_state = "bulb1";
-	tag = "icon-bulb1 (NORTH)"
-	},
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
 "iQ" = (
 /turf/open/mars_cave,
 /area/adminlevel/bunker01/mainroom)
@@ -3168,39 +1597,6 @@
 /obj/structure/window/framed/almayer/white,
 /turf/open/floor/plating,
 /area/shuttle/distress/start_big)
-"iX" = (
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"iY" = (
-/obj/structure/table/reinforced,
-/obj/item/XenoBio/Resin,
-/obj/item/XenoBio/Resin,
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"iZ" = (
-/obj/structure/machinery/door/window/southleft{
-	layer = 2.8
-	},
-/obj/structure/machinery/door/window/southleft{
-	dir = 1;
-	icon_state = "left";
-	layer = 2.8;
-	tag = "icon-left (NORTH)"
-	},
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
 "jc" = (
 /turf/closed/shuttle/ert{
 	icon_state = "wy12"
@@ -3218,33 +1614,6 @@
 	tag = "icon-sterile"
 	},
 /area/shuttle/distress/start_big)
-"jf" = (
-/obj/structure/machinery/door/airlock/secure{
-	name = "\improper Burial Room"
-	},
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"jg" = (
-/obj/structure/machinery/door/airlock/secure{
-	name = "\improper Growth and Research Chamber"
-	},
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"jh" = (
-/obj/structure/machinery/door/airlock/external{
-	name = "\improper Airlock"
-	},
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
 "ji" = (
 /obj/effect/landmark/start,
 /turf/open/floor,
@@ -3350,23 +1719,6 @@
 	},
 /turf/open/floor/plating/almayer,
 /area/shuttle/distress/start_big)
-"jw" = (
-/obj/structure/machinery/door/airlock/secure{
-	name = "Navigator's Room"
-	},
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"jx" = (
-/obj/effect/alien/egg,
-/obj/structure/machinery/light/small,
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
 "jy" = (
 /turf/closed/shuttle/ert{
 	icon_state = "stan_leftengine"
@@ -3518,15 +1870,6 @@
 "jZ" = (
 /turf/closed/wall/r_wall,
 /area/adminlevel/bunker01/command)
-"ka" = (
-/obj/structure/bed/chair/wood/normal{
-	icon_state = "echair0"
-	},
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
 "kb" = (
 /turf/closed/shuttle/ert{
 	icon_state = "leftengine_1";
@@ -3651,20 +1994,6 @@
 	tag = "icon-sterile"
 	},
 /area/shuttle/distress/start_big)
-"kv" = (
-/obj/structure/table/woodentable,
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
-"kw" = (
-/obj/structure/machinery/computer/crew,
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
 "kx" = (
 /turf/closed/wall/indestructible/splashscreen,
 /area/start)
@@ -4261,6 +2590,14 @@
 	icon_state = "tcomms"
 	},
 /area/shuttle/distress/start_big)
+"lK" = (
+/obj/structure/bed,
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "sterile_green_corner";
+	tag = "icon-sterile_green_corner (NORTH)"
+	},
+/area/adminlevel/bunker01/medbay)
 "lL" = (
 /turf/open/floor/plating/almayer,
 /area/shuttle/distress/start_big)
@@ -4750,9 +3087,9 @@
 	dir = 2
 	},
 /obj/structure/machinery/shower{
-	tag = "icon-shower (EAST)";
+	dir = 4;
 	icon_state = "shower";
-	dir = 4
+	tag = "icon-shower (EAST)"
 	},
 /obj/item/tool/soap,
 /turf/open/floor/almayer{
@@ -4929,24 +3266,17 @@
 	icon_state = "freezerfloor"
 	},
 /area/shuttle/distress/start_big)
-"mR" = (
-/obj/structure/machinery/light/small{
-	dir = 4;
-	icon_state = "bulb1";
-	tag = "icon-bulb1 (EAST)"
+"mT" = (
+/obj/structure/machinery/door/airlock/almayer/marine/requisitions{
+	name = "\improper Tools";
+	req_access = list(201);
+	req_one_access = null
 	},
-/turf/open/shuttle{
-	icon_state = "floor6"
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
 	},
-/area/yautja)
-"mU" = (
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
-/turf/open/shuttle{
-	icon_state = "floor6"
-	},
-/area/yautja)
+/area/adminlevel/bunker01/gear)
 "mW" = (
 /obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk,
@@ -5002,9 +3332,9 @@
 /area/adminlevel/bunker01/command)
 "na" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
-	tag = "icon-intact-supply (SOUTHWEST)";
+	dir = 10;
 	icon_state = "intact-supply";
-	dir = 10
+	tag = "icon-intact-supply (SOUTHWEST)"
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 2;
@@ -5180,6 +3510,14 @@
 "nx" = (
 /turf/closed/wall/r_wall,
 /area/adminlevel/bunker01/kitchen)
+"ny" = (
+/obj/structure/machinery/autodoc,
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "sterile_green_corner";
+	tag = "icon-sterile_green_corner (EAST)"
+	},
+/area/adminlevel/bunker01/medbay)
 "nz" = (
 /obj/structure/sign/safety/ladder{
 	pixel_y = 32
@@ -5315,9 +3653,9 @@
 /area/adminlevel/bunker01/bedroom)
 "nV" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
-	tag = "icon-map-supply (WEST)";
+	dir = 8;
 	icon_state = "map-supply";
-	dir = 8
+	tag = "icon-map-supply (WEST)"
 	},
 /obj/structure/disposalpipe/junction{
 	dir = 2;
@@ -5335,9 +3673,9 @@
 /area/adminlevel/bunker01/hydroponics)
 "nX" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
-	tag = "icon-intact-supply (SOUTHWEST)";
+	dir = 10;
 	icon_state = "intact-supply";
-	dir = 10
+	tag = "icon-intact-supply (SOUTHWEST)"
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 8;
@@ -5482,8 +3820,8 @@
 /area/adminlevel/bunker01/hydroponics)
 "op" = (
 /turf/open/floor/almayer{
-	tag = "icon-sterile";
-	icon_state = "carpet14-10"
+	icon_state = "carpet14-10";
+	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
 "oq" = (
@@ -5718,9 +4056,9 @@
 /area/adminlevel/bunker01/hydroponics)
 "oQ" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
-	tag = "icon-intact-supply (NORTHWEST)";
+	dir = 9;
 	icon_state = "intact-supply";
-	dir = 9
+	tag = "icon-intact-supply (NORTHWEST)"
 	},
 /obj/structure/machinery/power/apc/antag{
 	pixel_y = -24
@@ -5880,6 +4218,20 @@
 	},
 /turf/open/floor/carpet,
 /area/adminlevel/bunker01/command)
+"pi" = (
+/obj/structure/blocker/forcefield/human{
+	dir = 4
+	},
+/turf/open/mars_cave,
+/area/adminlevel/bunker01/caves/xeno)
+"pj" = (
+/obj/structure/bed,
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (NORTH)"
+	},
+/area/adminlevel/bunker01/medbay)
 "pl" = (
 /obj/structure/machinery/cm_vending/clothing/antag,
 /turf/open/floor/almayer,
@@ -5959,9 +4311,9 @@
 /area/adminlevel/bunker01/storage)
 "px" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
-	tag = "icon-intact-supply (SOUTHWEST)";
+	dir = 10;
 	icon_state = "intact-supply";
-	dir = 10
+	tag = "icon-intact-supply (SOUTHWEST)"
 	},
 /obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk,
@@ -5989,9 +4341,9 @@
 /area/adminlevel/bunker01/mainroom)
 "pC" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
-	tag = "icon-intact-supply (NORTHWEST)";
+	dir = 9;
 	icon_state = "intact-supply";
-	dir = 9
+	tag = "icon-intact-supply (NORTHWEST)"
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/mainroom)
@@ -6222,9 +4574,9 @@
 /area/adminlevel/bunker01/engineering)
 "qt" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
-	tag = "icon-map-supply (WEST)";
+	dir = 8;
 	icon_state = "map-supply";
-	dir = 8
+	tag = "icon-map-supply (WEST)"
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/engineering)
@@ -6249,9 +4601,9 @@
 /area/adminlevel/bunker01/engineering)
 "qw" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
-	tag = "icon-intact-supply (SOUTHWEST)";
+	dir = 10;
 	icon_state = "intact-supply";
-	dir = 10
+	tag = "icon-intact-supply (SOUTHWEST)"
 	},
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/prison{
@@ -6297,6 +4649,14 @@
 	tag = "icon-blue (NORTHEAST)"
 	},
 /area/tdome/tdomeobserve)
+"qA" = (
+/obj/structure/machinery/cm_vending/sorted/tech/electronics_storage/antag,
+/turf/open/floor/almayer{
+	dir = 9;
+	icon_state = "orange";
+	tag = "icon-orange (NORTHWEST)"
+	},
+/area/adminlevel/bunker01/engineering)
 "qC" = (
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	name = "\improper Engineering";
@@ -6423,6 +4783,9 @@
 "qO" = (
 /turf/closed/wall,
 /area/adminlevel/bunker01/caves)
+"qQ" = (
+/turf/open/floor/wood,
+/area/adminlevel/bunker01/breakroom)
 "qR" = (
 /obj/structure/disposalpipe/segment,
 /turf/closed/wall/r_wall,
@@ -6461,9 +4824,9 @@
 /area/adminlevel/bunker01/mainroom)
 "qW" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
-	tag = "icon-map-supply (WEST)";
+	dir = 8;
 	icon_state = "map-supply";
-	dir = 8
+	tag = "icon-map-supply (WEST)"
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/mainroom)
@@ -6537,9 +4900,9 @@
 /area/adminlevel/bunker01/security)
 "rh" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
-	tag = "icon-map-supply (WEST)";
+	dir = 8;
 	icon_state = "map-supply";
-	dir = 8
+	tag = "icon-map-supply (WEST)"
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 1;
@@ -6843,9 +5206,9 @@
 	opacity = 0
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
-	tag = "icon-intact-supply (NORTH)";
+	dir = 1;
 	icon_state = "intact-supply";
-	dir = 1
+	tag = "icon-intact-supply (NORTH)"
 	},
 /obj/structure/disposalpipe/segment,
 /obj/structure/machinery/door/firedoor/border_only/almayer/antag{
@@ -6939,9 +5302,9 @@
 /area/adminlevel/bunker01/medbay)
 "rQ" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
-	tag = "icon-intact-supply (NORTH)";
+	dir = 1;
 	icon_state = "intact-supply";
-	dir = 1
+	tag = "icon-intact-supply (NORTH)"
 	},
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer{
@@ -7111,11 +5474,18 @@
 	tag = "icon-sterile"
 	},
 /area/adminlevel/bunker01/medbay)
+"sg" = (
+/turf/open/floor/almayer{
+	dir = 9;
+	icon_state = "green";
+	tag = "icon-green (SOUTHEAST)"
+	},
+/area/adminlevel/bunker01/mainroom)
 "sj" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
-	tag = "icon-intact-supply (SOUTHWEST)";
+	dir = 10;
 	icon_state = "intact-supply";
-	dir = 10
+	tag = "icon-intact-supply (SOUTHWEST)"
 	},
 /obj/structure/machinery/firealarm{
 	dir = 4;
@@ -7228,9 +5598,9 @@
 /area/adminlevel/bunker01/medbay)
 "st" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
-	tag = "icon-intact-supply (NORTH)";
+	dir = 1;
 	icon_state = "intact-supply";
-	dir = 1
+	tag = "icon-intact-supply (NORTH)"
 	},
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
@@ -7268,6 +5638,9 @@
 	tag = "icon-sterile"
 	},
 /area/adminlevel/bunker01/medbay)
+"sz" = (
+/turf/closed/wall,
+/area/adminlevel/bunker01/hydroponics)
 "sB" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/machinery/power/apc/antag{
@@ -7437,9 +5810,9 @@
 	req_one_access = null
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
-	tag = "icon-intact-supply (NORTH)";
+	dir = 1;
 	icon_state = "intact-supply";
-	dir = 1
+	tag = "icon-intact-supply (NORTH)"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer/antag{
 	dir = 2
@@ -7500,9 +5873,9 @@
 /area/adminlevel/bunker01/medbay)
 "sX" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
-	tag = "icon-intact-supply (SOUTHWEST)";
+	dir = 10;
 	icon_state = "intact-supply";
-	dir = 10
+	tag = "icon-intact-supply (SOUTHWEST)"
 	},
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
@@ -7652,9 +6025,9 @@
 /area/adminlevel/bunker01/medbay)
 "ti" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
-	tag = "icon-intact-supply (NORTHWEST)";
+	dir = 9;
 	icon_state = "intact-supply";
-	dir = 9
+	tag = "icon-intact-supply (NORTHWEST)"
 	},
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
@@ -7824,6 +6197,37 @@
 /obj/structure/machinery/hologram/holopad,
 /turf/open/floor/carpet,
 /area/centcom/living)
+"tL" = (
+/obj/structure/barricade/plasteel,
+/turf/open/mars_cave,
+/area/adminlevel/bunker01/caves)
+"tN" = (
+/obj/structure/machinery/cm_vending/sorted/medical/marinemed/antag,
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	density = 0;
+	dir = 4;
+	icon_state = "shutter0";
+	id = "base_medbay";
+	name = "\improper Medbay Shutters";
+	opacity = 0
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
+"tR" = (
+/obj/structure/machinery/door/airlock/almayer/engineering{
+	dir = 1;
+	name = "\improper Engineering";
+	req_access = list(201);
+	req_one_access = null
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/caves/outpost)
 "tY" = (
 /obj/structure/machinery/washing_machine,
 /turf/open/floor/prison{
@@ -7832,6 +6236,35 @@
 	tag = "icon-sterile_white"
 	},
 /area/adminlevel/ert_station)
+"tZ" = (
+/obj/structure/machinery/bodyscanner,
+/turf/open/floor/almayer{
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
+"ub" = (
+/obj/structure/closet/secure_closet/freezer/fridge/full,
+/turf/open/floor/prison{
+	dir = 2;
+	icon_state = "sterile_white";
+	tag = "icon-sterile_white"
+	},
+/area/adminlevel/bunker01/kitchen)
+"ud" = (
+/obj/structure/window/reinforced{
+	dir = 4;
+	health = 80
+	},
+/turf/open/floor/almayer{
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
+	},
+/area/adminlevel/bunker01/gear)
+"ue" = (
+/obj/structure/barricade/plasteel/wired,
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/caves/outpost)
 "ug" = (
 /obj/structure/machinery/shower,
 /turf/open/floor/prison{
@@ -7845,6 +6278,41 @@
 /obj/item/ashtray/plastic,
 /turf/open/floor/wood,
 /area/adminlevel/bunker01/bedroom)
+"ul" = (
+/obj/structure/machinery/door/airlock/multi_tile/secure{
+	dir = 8;
+	name = "\improper Entrance";
+	req_access = list(201)
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/mainroom)
+"un" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+	dir = 1;
+	name = "\improper Medbay";
+	req_access = list(201);
+	req_one_access = null
+	},
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
+"uo" = (
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/space,
+/area/adminlevel/bunker01/medbay)
+"uB" = (
+/obj/structure/machinery/vending/dinnerware,
+/turf/open/floor/prison{
+	dir = 2;
+	icon_state = "sterile_white";
+	tag = "icon-sterile_white"
+	},
+/area/adminlevel/bunker01/kitchen)
 "uD" = (
 /obj/structure/closet/crate/secure/mortar_ammo/full{
 	name = "\improper M402 mortar ammo crate"
@@ -7862,14 +6330,22 @@
 	tag = "icon-orange (WEST)"
 	},
 /area/adminlevel/ert_station)
+"uV" = (
+/obj/structure/reagent_dispensers/fueltank,
+/turf/open/floor/almayer{
+	dir = 10;
+	icon_state = "orange";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/engineering)
 "va" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
 	name = "\improper Bathroom"
 	},
 /turf/open/floor/almayer{
-	tag = "icon-sterile";
-	icon_state = "floor"
+	icon_state = "floor";
+	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
 "vq" = (
@@ -7883,6 +6359,13 @@
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/mainroom)
+"vB" = (
+/obj/structure/machinery/door_control{
+	id = "second_base";
+	name = "Second Base Shutters"
+	},
+/turf/open/mars_cave,
+/area/adminlevel/bunker01/caves/outpost)
 "vD" = (
 /obj/structure/bed/chair{
 	dir = 8;
@@ -7890,8 +6373,8 @@
 	tag = "icon-chair (WEST)"
 	},
 /turf/open/floor/almayer{
-	tag = "icon-sterile";
-	icon_state = "floor"
+	icon_state = "floor";
+	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
 "vN" = (
@@ -7912,15 +6395,15 @@
 "vO" = (
 /obj/structure/closet/cabinet,
 /turf/open/floor/almayer{
-	tag = "icon-sterile";
-	icon_state = "carpet14-10"
+	icon_state = "carpet14-10";
+	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
 "vP" = (
 /obj/structure/bed/chair,
 /turf/open/floor/almayer{
-	tag = "icon-sterile";
-	icon_state = "floor"
+	icon_state = "floor";
+	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
 "vS" = (
@@ -7928,17 +6411,44 @@
 /obj/item/trash/cigbutt,
 /turf/open/floor/wood,
 /area/adminlevel/bunker01/bedroom)
+"vZ" = (
+/obj/structure/window/reinforced{
+	dir = 4;
+	health = 80
+	},
+/turf/open/floor/almayer{
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
+	},
+/area/adminlevel/bunker01/storage)
 "wg" = (
 /obj/structure/closet/secure_closet/personal,
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/command)
 "wj" = (
 /turf/open/floor/almayer{
-	tag = "icon-sterile_green_corner (NORTH)";
+	dir = 1;
 	icon_state = "w-y2";
-	dir = 1
+	tag = "icon-sterile_green_corner (NORTH)"
 	},
 /area/tdome)
+"wq" = (
+/obj/structure/closet/crate/secure/mortar_ammo/full{
+	name = "\improper M402 mortar ammo crate"
+	},
+/turf/open/floor/almayer{
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
+	},
+/area/adminlevel/bunker01/storage)
+"wr" = (
+/obj/structure/largecrate/supply/supplies/sandbags,
+/obj/structure/largecrate/supply/supplies/sandbags,
+/turf/open/floor/almayer{
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
+	},
+/area/adminlevel/bunker01/mainroom)
 "wv" = (
 /obj/structure/machinery/vending/snack,
 /turf/open/floor/almayer{
@@ -7951,6 +6461,10 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/mainroom)
+"wG" = (
+/obj/structure/barricade/metal/wired,
+/turf/open/mars_cave,
+/area/adminlevel/bunker01/caves)
 "wQ" = (
 /obj/structure/closet/firecloset,
 /turf/open/floor/almayer,
@@ -7967,6 +6481,20 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/mainroom)
+"xE" = (
+/turf/closed/wall/r_wall/bunker,
+/area/adminlevel/bunker01/breakroom)
+"xI" = (
+/obj/structure/sink{
+	dir = 1;
+	pixel_y = -10
+	},
+/turf/open/floor/prison{
+	dir = 2;
+	icon_state = "sterile_white";
+	tag = "icon-sterile_white"
+	},
+/area/adminlevel/bunker01/kitchen)
 "xO" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 1;
@@ -7974,13 +6502,44 @@
 	req_access = null
 	},
 /turf/open/floor/almayer{
-	tag = "icon-sterile";
-	icon_state = "floor"
+	icon_state = "floor";
+	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
+"xP" = (
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "green";
+	tag = "icon-green (WEST)"
+	},
+/area/adminlevel/bunker01/caves/outpost)
+"xU" = (
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 80
+	},
+/turf/open/floor/almayer{
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
+	},
+/area/adminlevel/bunker01/gear)
+"yd" = (
+/obj/structure/machinery/autodoc_console,
+/turf/open/floor/almayer{
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
 "yg" = (
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/storage)
+"yi" = (
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "green";
+	tag = "icon-green (WEST)"
+	},
+/area/adminlevel/bunker01/mainroom)
 "yk" = (
 /obj/structure/table/reinforced,
 /obj/item/book/manual/chef_recipes,
@@ -7997,25 +6556,44 @@
 	tag = "icon-red"
 	},
 /area/adminlevel/ert_station)
+"ym" = (
+/obj/structure/machinery/vending/hydroseeds,
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "blue";
+	tag = "icon-blue (EAST)"
+	},
+/area/adminlevel/bunker01/hydroponics)
 "yo" = (
 /obj/structure/bed,
 /obj/item/bedsheet/brown,
 /turf/open/floor/almayer{
-	tag = "icon-sterile";
-	icon_state = "carpet11-12"
+	icon_state = "carpet11-12";
+	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
+"yq" = (
+/obj/structure/machinery/vending/snack/packaged,
+/turf/open/floor/wood,
+/area/adminlevel/bunker01/breakroom)
 "yt" = (
 /obj/structure/disposalpipe/segment{
 	dir = 2;
 	icon_state = "pipe-c"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
-	tag = "icon-intact-supply (SOUTHWEST)";
+	dir = 10;
 	icon_state = "intact-supply";
-	dir = 10
+	tag = "icon-intact-supply (SOUTHWEST)"
 	},
 /turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/bunker01/mainroom)
+"yu" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	tag = "icon-W"
+	},
+/turf/open/floor/plating/almayer,
 /area/adminlevel/bunker01/mainroom)
 "yw" = (
 /obj/structure/machinery/door/airlock/almayer/command{
@@ -8030,6 +6608,9 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/bedroom)
+"yy" = (
+/turf/open/floor/plating/almayer,
+/area/adminlevel/bunker01/mainroom)
 "yC" = (
 /obj/structure/machinery/bioprinter{
 	stored_metal = 1000
@@ -8052,6 +6633,19 @@
 	tag = "icon-sterile_green_corner (NORTH)"
 	},
 /area/adminlevel/ert_station)
+"yW" = (
+/obj/structure/rack,
+/obj/item/tool/shovel/etool/folded,
+/obj/item/tool/shovel/etool/folded,
+/obj/item/tool/shovel/etool/folded,
+/obj/item/tool/shovel/etool/folded,
+/obj/item/tool/shovel/etool/folded,
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "orange";
+	tag = "icon-orange (WEST)"
+	},
+/area/adminlevel/bunker01/engineering)
 "zg" = (
 /obj/structure/machinery/chem_master,
 /turf/open/floor/almayer{
@@ -8069,11 +6663,22 @@
 	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
+"zq" = (
+/obj/structure/largecrate/supply/supplies/flares,
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 80
+	},
+/turf/open/floor/almayer{
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
+	},
+/area/adminlevel/bunker01/storage)
 "zr" = (
 /turf/open/floor/almayer{
-	tag = "icon-sterile";
+	dir = 9;
 	icon_state = "silver";
-	dir = 9
+	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
 "zt" = (
@@ -8106,13 +6711,34 @@
 /obj/structure/window/framed/almayer/white/hull,
 /turf/open/floor/plating,
 /area/shuttle/distress/start_big)
+"zO" = (
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "green";
+	tag = "icon-green (NORTHEAST)"
+	},
+/area/adminlevel/bunker01/mainroom)
 "zT" = (
 /turf/open/floor/almayer{
-	tag = "icon-sterile";
+	dir = 10;
 	icon_state = "sterile_green_side";
-	dir = 10
+	tag = "icon-sterile"
 	},
 /area/adminlevel/bunker01/medbay)
+"zU" = (
+/obj/structure/machinery/door/firedoor/border_only/almayer/antag,
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
+"zV" = (
+/obj/structure/barricade/metal/wired{
+	dir = 4
+	},
+/obj/structure/barricade/metal/wired,
+/turf/open/mars_cave,
+/area/adminlevel/bunker01/caves)
 "zZ" = (
 /obj/structure/machinery/door/window/southleft,
 /turf/open/floor/prison{
@@ -8125,14 +6751,21 @@
 /obj/structure/machinery/light,
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/bedroom)
+"Af" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	tag = "icon-NW-out"
+	},
+/turf/open/floor/plating/almayer,
+/area/adminlevel/bunker01/mainroom)
 "Ah" = (
 /obj/structure/bed/chair{
 	dir = 1
 	},
 /turf/open/floor/almayer{
-	tag = "icon-red (NORTHWEST)";
+	dir = 8;
 	icon_state = "red";
-	dir = 8
+	tag = "icon-red (NORTHWEST)"
 	},
 /area/adminlevel/ert_station)
 "Ai" = (
@@ -8161,6 +6794,17 @@
 	tag = "icon-sterile"
 	},
 /area/shuttle/distress/start_big)
+"Aq" = (
+/obj/structure/sign/safety/hydro,
+/turf/closed/wall,
+/area/adminlevel/bunker01/hydroponics)
+"AD" = (
+/obj/structure/machinery/cm_vending/gear/antag,
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/storage)
+"AK" = (
+/turf/closed/wall/r_wall/bunker,
+/area/adminlevel/bunker01/kitchen)
 "AL" = (
 /obj/structure/sink{
 	dir = 4;
@@ -8203,6 +6847,45 @@
 "Bf" = (
 /turf/open/floor/wood,
 /area/adminlevel/bunker01/bedroom)
+"Br" = (
+/obj/structure/machinery/door/airlock/almayer/medical/glass{
+	dir = 1;
+	name = "\improper Medbay";
+	req_access = null;
+	req_one_access = null
+	},
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
+"Bt" = (
+/obj/structure/machinery/door/airlock/almayer/engineering{
+	name = "\improper Engineering";
+	req_access = list(201);
+	req_one_access = null
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/engineering)
+"Bw" = (
+/obj/structure/table/reinforced,
+/obj/effect/spawner/random/toolbox,
+/turf/open/floor/almayer{
+	dir = 6;
+	icon_state = "orange";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/engineering)
+"BC" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "\improper Hydroponics";
+	req_access = list(201)
+	},
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/hydroponics)
 "BD" = (
 /obj/effect/landmark{
 	name = "tdome2"
@@ -8241,6 +6924,13 @@
 	tag = "icon-sterile_green_side (EAST)"
 	},
 /area/adminlevel/bunker01/medbay)
+"BT" = (
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "green";
+	tag = "icon-green (NORTH)"
+	},
+/area/adminlevel/bunker01/caves/outpost)
 "BU" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_20";
@@ -8263,6 +6953,15 @@
 	tag = "icon-sterile_white"
 	},
 /area/adminlevel/ert_station)
+"BY" = (
+/obj/structure/machinery/door/airlock/almayer/engineering{
+	dir = 1;
+	name = "\improper Engineering";
+	req_access = list(201);
+	req_one_access = null
+	},
+/turf/open/floor/plating/almayer,
+/area/adminlevel/bunker01/mainroom)
 "Cc" = (
 /obj/effect/landmark{
 	color = "#FFFF00";
@@ -8282,6 +6981,21 @@
 	tag = "icon-red (NORTH)"
 	},
 /area/adminlevel/ert_station)
+"Cl" = (
+/obj/structure/bed,
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
+"Cm" = (
+/obj/structure/machinery/cm_vending/gear/antag,
+/obj/structure/window/reinforced{
+	dir = 4;
+	health = 80
+	},
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/storage)
 "Cr" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
@@ -8304,6 +7018,23 @@
 	tag = "icon-sterile_white"
 	},
 /area/adminlevel/ert_station)
+"CK" = (
+/obj/structure/closet/secure_closet/freezer/meat,
+/turf/open/floor/prison{
+	dir = 2;
+	icon_state = "sterile_white";
+	tag = "icon-sterile_white"
+	},
+/area/adminlevel/bunker01/kitchen)
+"CO" = (
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/bunker01/gear)
+"CR" = (
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/mainroom)
 "CU" = (
 /obj/structure/machinery/sleep_console,
 /turf/open/floor/almayer{
@@ -8312,6 +7043,19 @@
 	tag = "icon-sterile_green_side (NORTH)"
 	},
 /area/adminlevel/ert_station)
+"CW" = (
+/turf/closed/wall/r_wall/bunker,
+/area/adminlevel/bunker01/medbay)
+"CX" = (
+/obj/structure/machinery/autodoc_console{
+	dir = 8
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (NORTH)"
+	},
+/area/adminlevel/bunker01/medbay)
 "Dg" = (
 /obj/structure/disposalpipe/junction{
 	dir = 8;
@@ -8349,6 +7093,14 @@
 	},
 /turf/closed/wall/almayer/outer,
 /area/tdome/tdomeobserve)
+"Dr" = (
+/obj/structure/barricade/plasteel/wired,
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "green";
+	tag = "icon-green (EAST)"
+	},
+/area/adminlevel/bunker01/caves/outpost)
 "Ds" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	dir = 1;
@@ -8378,6 +7130,20 @@
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/command)
+"DM" = (
+/obj/structure/window_frame/colony/reinforced,
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	density = 0;
+	icon_state = "shutter0";
+	id = "base_1_shutter";
+	name = "\improper Bunker Shutters";
+	opacity = 0
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/mainroom)
 "DV" = (
 /turf/open/floor/almayer{
 	icon_plating = "tcomms";
@@ -8414,6 +7180,14 @@
 	tag = "icon-sterile_white"
 	},
 /area/adminlevel/bunker01/bedroom)
+"Eh" = (
+/obj/structure/barricade/plasteel,
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "green";
+	tag = "icon-green (EAST)"
+	},
+/area/adminlevel/bunker01/caves/outpost)
 "En" = (
 /obj/structure/machinery/cm_vending/sorted/medical/no_access{
 	req_access = null
@@ -8437,6 +7211,13 @@
 	tag = "icon-rasputin15"
 	},
 /area/shuttle/distress/start_upp)
+"EC" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	tag = "icon-NE-out"
+	},
+/turf/open/floor/plating/almayer,
+/area/adminlevel/bunker01/mainroom)
 "EI" = (
 /obj/structure/table/reinforced,
 /obj/structure/reagent_dispensers/beerkeg{
@@ -8458,11 +7239,27 @@
 "ET" = (
 /obj/structure/machinery/vending/cola,
 /turf/open/floor/almayer{
-	tag = "icon-sterile";
+	dir = 8;
 	icon_state = "silver";
-	dir = 8
+	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
+"EX" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	tag = "icon-S"
+	},
+/turf/open/floor/plating/almayer,
+/area/adminlevel/bunker01/mainroom)
+"EZ" = (
+/obj/structure/machinery/door_control{
+	id = "base_3_shutter";
+	name = "Base Shutters";
+	pixel_x = -7;
+	pixel_y = -20
+	},
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/mainroom)
 "Fa" = (
 /obj/structure/bed,
 /obj/item/bedsheet/brown,
@@ -8475,6 +7272,13 @@
 	tag = "icon-green (NORTH)"
 	},
 /area/adminlevel/bunker01/engineering)
+"Fd" = (
+/obj/structure/machinery/cm_vending/sorted/medical/blood/antag,
+/turf/open/floor/almayer{
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
 "Fh" = (
 /obj/structure/closet/crate/secure/mortar_ammo/mortar_kit,
 /turf/open/floor/almayer{
@@ -8482,6 +7286,16 @@
 	tag = "icon-bluecorner (NORTH)"
 	},
 /area/adminlevel/bunker01/mainroom)
+"Fn" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "\improper Kitchen";
+	req_access = list(201)
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/kitchen)
 "Fo" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -8518,10 +7332,19 @@
 "FJ" = (
 /obj/structure/rack,
 /turf/open/floor/almayer{
-	tag = "icon-sterile";
-	icon_state = "orange"
+	icon_state = "orange";
+	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
+"FK" = (
+/obj/structure/machinery/door_control{
+	id = "base_2_shutter";
+	name = "Base Shutters";
+	pixel_x = 7;
+	pixel_y = -20
+	},
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/mainroom)
 "FS" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
@@ -8531,18 +7354,26 @@
 	tag = "icon-sterile_white"
 	},
 /area/adminlevel/bunker01/bathroom)
+"FX" = (
+/obj/structure/machinery/cm_vending/sorted/tech/tool_storage/antag,
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "orange";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/engineering)
 "Gf" = (
 /obj/structure/closet/cabinet,
 /turf/open/floor/almayer{
-	tag = "icon-sterile";
-	icon_state = "carpet10-8"
+	icon_state = "carpet10-8";
+	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
 "Gq" = (
 /turf/open/floor/almayer{
-	tag = "icon-sterile";
+	dir = 8;
 	icon_state = "silver";
-	dir = 8
+	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
 "Gv" = (
@@ -8557,11 +7388,23 @@
 /obj/structure/machinery/light,
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/mainroom)
+"Gy" = (
+/obj/structure/machinery/door/airlock/almayer/engineering{
+	dir = 1;
+	name = "\improper Engineering";
+	req_access = list(201);
+	req_one_access = null
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/mainroom)
 "GB" = (
 /turf/open/floor/almayer{
-	tag = "icon-sterile";
+	dir = 1;
 	icon_state = "silver";
-	dir = 1
+	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
 "GC" = (
@@ -8577,6 +7420,21 @@
 	tag = "icon-sterile_green_side (EAST)"
 	},
 /area/adminlevel/ert_station)
+"GF" = (
+/obj/structure/machinery/smartfridge/secure/medbay,
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	density = 0;
+	dir = 4;
+	icon_state = "shutter0";
+	id = "base_medbay";
+	name = "\improper Medbay Shutters";
+	opacity = 0
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
 "GH" = (
 /obj/structure/janitorialcart,
 /obj/item/tool/mop,
@@ -8607,27 +7465,75 @@
 	tag = "icon-sterile_green_corner (WEST)"
 	},
 /area/adminlevel/ert_station)
+"Hr" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "green";
+	tag = "icon-green (NORTH)"
+	},
+/area/adminlevel/bunker01/caves/outpost)
+"Hs" = (
+/obj/structure/barricade/metal/wired,
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "green";
+	tag = "icon-green (EAST)"
+	},
+/area/adminlevel/bunker01/caves/outpost)
 "HB" = (
 /turf/open/space/transit/north/shuttlespace_ns4,
 /area/almayer/evacuation/stranded/pod18)
 "HY" = (
 /obj/structure/machinery/cm_vending/sorted/boozeomat,
 /turf/open/floor/almayer{
-	tag = "icon-sterile";
+	dir = 8;
 	icon_state = "silver";
-	dir = 8
+	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
+"Ie" = (
+/turf/closed/wall/r_wall/bunker,
+/area/adminlevel/bunker01/hydroponics)
+"Ik" = (
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	density = 0;
+	icon_state = "shutter0";
+	id = "base_blastdoor";
+	name = "\improper Bunker Blast Doors";
+	opacity = 0
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4";
+	tag = "icon-test_floor4"
+	},
+/area/adminlevel/bunker01/mainroom)
 "Il" = (
 /obj/structure/table/almayer,
 /obj/structure/machinery/light,
 /turf/open/floor/wood,
 /area/adminlevel/bunker01/bedroom)
+"Im" = (
+/obj/structure/table/reinforced,
+/obj/item/tool/kitchen/rollingpin,
+/obj/item/tool/kitchen/knife,
+/turf/open/floor/prison{
+	dir = 2;
+	icon_state = "sterile_white";
+	tag = "icon-sterile_white"
+	},
+/area/adminlevel/bunker01/kitchen)
+"In" = (
+/obj/structure/barricade/metal/wired,
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/caves/outpost)
 "Io" = (
 /turf/open/floor/almayer{
-	tag = "icon-sterile";
+	dir = 10;
 	icon_state = "silver";
-	dir = 10
+	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
 "Iq" = (
@@ -8638,6 +7544,14 @@
 	tag = "icon-sterile_white"
 	},
 /area/adminlevel/ert_station)
+"Ir" = (
+/obj/structure/machinery/recharge_station,
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "orange";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/engineering)
 "It" = (
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/mainroom)
@@ -8671,6 +7585,18 @@
 	tag = "icon-sterile_green_side (WEST)"
 	},
 /area/adminlevel/ert_station)
+"IH" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	tag = "icon-W"
+	},
+/turf/open/floor/plating/almayer,
+/area/adminlevel/bunker01/mainroom)
+"II" = (
+/obj/structure/table/almayer,
+/obj/item/trash/cigbutt,
+/turf/open/floor/wood,
+/area/adminlevel/bunker01/breakroom)
 "IR" = (
 /turf/closed/wall/r_wall/unmeltable,
 /area/adminlevel/simulation)
@@ -8681,11 +7607,45 @@
 "Ja" = (
 /obj/structure/rack,
 /turf/open/floor/almayer{
-	tag = "icon-sterile";
+	dir = 10;
 	icon_state = "orange";
-	dir = 10
+	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
+"Jb" = (
+/obj/structure/rack,
+/obj/item/storage/briefcase/inflatable,
+/obj/item/storage/briefcase/inflatable,
+/obj/item/storage/briefcase/inflatable,
+/obj/item/storage/box/lights/mixed,
+/obj/item/storage/box/lights/mixed,
+/obj/item/storage/box/lights/mixed,
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "orange";
+	tag = "icon-orange (WEST)"
+	},
+/area/adminlevel/bunker01/engineering)
+"Jk" = (
+/obj/structure/rack,
+/obj/item/stack/sheet/glass{
+	amount = 50
+	},
+/obj/item/stack/sheet/glass{
+	amount = 50
+	},
+/obj/item/stack/sheet/glass{
+	amount = 50
+	},
+/obj/item/stack/sheet/glass{
+	amount = 50
+	},
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "orange";
+	tag = "icon-orange (WEST)"
+	},
+/area/adminlevel/bunker01/engineering)
 "Jq" = (
 /obj/structure/table/almayer,
 /turf/open/floor/wood,
@@ -8697,6 +7657,20 @@
 	},
 /turf/open/floor/plating/almayer,
 /area/adminlevel/ert_station)
+"Jw" = (
+/obj/structure/window/reinforced{
+	dir = 4;
+	health = 80
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 80
+	},
+/turf/open/floor/almayer{
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
+	},
+/area/adminlevel/bunker01/storage)
 "Jy" = (
 /obj/structure/machinery/cm_vending/sorted/tech/comp_storage{
 	req_access = null
@@ -8762,6 +7736,17 @@
 	tag = "icon-sterile_white"
 	},
 /area/adminlevel/bunker01/bedroom)
+"Kn" = (
+/turf/closed/wall/r_wall/bunker,
+/area/adminlevel/bunker01/engineering)
+"Kp" = (
+/obj/structure/machinery/iv_drip,
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (NORTH)"
+	},
+/area/adminlevel/bunker01/medbay)
 "Kq" = (
 /turf/open/floor/almayer{
 	icon_state = "redfull";
@@ -8791,6 +7776,39 @@
 	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
+"Kx" = (
+/obj/structure/table/reinforced,
+/obj/item/storage/box/pillbottles,
+/obj/item/storage/box/pillbottles,
+/obj/item/storage/box/pillbottles,
+/obj/item/storage/box/pillbottles,
+/obj/item/storage/box/pillbottles,
+/obj/item/storage/box/pillbottles,
+/obj/item/storage/box/pillbottles,
+/obj/item/storage/box/pillbottles,
+/obj/item/tool/hand_labeler,
+/turf/open/floor/almayer{
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
+"KB" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	dir = 2;
+	name = "\improper Bathroom"
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/breakroom)
+"KD" = (
+/obj/structure/machinery/cm_vending/sorted/tech/comp_storage/antag,
+/turf/open/floor/almayer{
+	icon_state = "orange";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/engineering)
 "KG" = (
 /obj/structure/largecrate/supply/supplies/flares,
 /obj/structure/window/reinforced{
@@ -8816,12 +7834,22 @@
 	icon_state = "tcomms"
 	},
 /area/adminlevel/ert_station)
+"KJ" = (
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 80
+	},
+/turf/open/floor/almayer{
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
+	},
+/area/adminlevel/bunker01/storage)
 "KM" = (
 /obj/structure/bed,
 /obj/item/bedsheet/brown,
 /turf/open/floor/almayer{
-	tag = "icon-sterile";
-	icon_state = "carpet9-4"
+	icon_state = "carpet9-4";
+	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
 "KN" = (
@@ -8837,15 +7865,15 @@
 	dir = 2
 	},
 /turf/open/floor/almayer{
-	tag = "icon-green";
+	dir = 2;
 	icon_state = "green";
-	dir = 2
+	tag = "icon-green"
 	},
 /area/adminlevel/bunker01/medbay)
 "KO" = (
 /turf/open/floor/almayer{
-	tag = "icon-sterile";
-	icon_state = "carpet15-15"
+	icon_state = "carpet15-15";
+	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
 "KQ" = (
@@ -8855,6 +7883,19 @@
 	tag = "icon-sterile_green_side (WEST)"
 	},
 /area/adminlevel/ert_station)
+"KT" = (
+/obj/structure/machinery/door_control{
+	id = "base_medbay";
+	name = "Medbay Lockdown";
+	pixel_x = -23;
+	pixel_y = -23
+	},
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (WEST)"
+	},
+/area/adminlevel/bunker01/medbay)
 "KW" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
@@ -8862,28 +7903,12 @@
 	},
 /turf/open/floor/plating/almayer,
 /area/adminlevel/ert_station)
-"La" = (
-/obj/structure/table/reinforced,
-/obj/item/stack/medical/advanced/ointment/tajaran{
-	name = "soothing herbs"
+"KY" = (
+/turf/open/floor/almayer{
+	icon_state = "sterile_green_corner";
+	tag = "icon-sterile"
 	},
-/obj/item/stack/medical/advanced/ointment/tajaran{
-	name = "soothing herbs"
-	},
-/obj/item/stack/medical/advanced/ointment/tajaran{
-	name = "soothing herbs"
-	},
-/obj/item/stack/medical/advanced/ointment/tajaran{
-	name = "soothing herbs"
-	},
-/obj/item/stack/medical/advanced/ointment/tajaran{
-	name = "soothing herbs"
-	},
-/turf/open/floor/holofloor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/yautja)
+/area/adminlevel/bunker01/medbay)
 "Li" = (
 /obj/structure/mirror{
 	pixel_x = 30
@@ -8898,6 +7923,13 @@
 	icon_state = "freezerfloor"
 	},
 /area/shuttle/distress/start_big)
+"Lr" = (
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "sterile_green_corner";
+	tag = "icon-sterile_green_corner (EAST)"
+	},
+/area/adminlevel/bunker01/medbay)
 "Lt" = (
 /obj/structure/window/framed/colony,
 /turf/open/floor/almayer{
@@ -8942,6 +7974,20 @@
 	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
+"LF" = (
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "green";
+	tag = "icon-green (EAST)"
+	},
+/area/adminlevel/bunker01/caves/outpost)
+"LM" = (
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (NORTH)"
+	},
+/area/adminlevel/bunker01/medbay)
 "LN" = (
 /obj/structure/rack,
 /obj/effect/landmark{
@@ -8967,6 +8013,59 @@
 	tag = "icon-blue (NORTHEAST)"
 	},
 /area/tdome/tdomeobserve)
+"LP" = (
+/obj/structure/table/reinforced,
+/obj/item/storage/firstaid/adv{
+	pixel_x = 2;
+	pixel_y = -5
+	},
+/obj/item/storage/firstaid/adv{
+	pixel_x = 2;
+	pixel_y = -5
+	},
+/obj/item/storage/firstaid/adv{
+	pixel_x = 2;
+	pixel_y = -5
+	},
+/obj/item/storage/firstaid/adv{
+	pixel_x = 2;
+	pixel_y = -5
+	},
+/obj/item/storage/firstaid/adv{
+	pixel_x = 2;
+	pixel_y = -5
+	},
+/obj/item/storage/firstaid/adv{
+	pixel_x = 2;
+	pixel_y = -5
+	},
+/obj/item/storage/firstaid/adv{
+	pixel_x = 2;
+	pixel_y = -5
+	},
+/obj/item/storage/firstaid/adv{
+	pixel_x = 2;
+	pixel_y = -5
+	},
+/obj/item/storage/belt/medical/lifesaver/full,
+/obj/item/storage/belt/medical/lifesaver/full,
+/obj/item/storage/belt/medical/lifesaver/upp/full,
+/obj/item/storage/belt/medical/lifesaver/upp/full,
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (NORTH)"
+	},
+/area/adminlevel/bunker01/medbay)
+"Me" = (
+/obj/structure/machinery/door_control{
+	id = "base_4_shutter";
+	name = "Base Shutters";
+	pixel_x = 7;
+	pixel_y = -20
+	},
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/mainroom)
 "Mk" = (
 /obj/structure/machinery/chem_dispenser{
 	req_access = null;
@@ -8979,6 +8078,18 @@
 	tag = "icon-sterile_green_corner (WEST)"
 	},
 /area/adminlevel/ert_station)
+"Mm" = (
+/obj/structure/bed,
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (WEST)"
+	},
+/area/adminlevel/bunker01/medbay)
+"Mn" = (
+/obj/structure/machinery/vending/coffee/simple,
+/turf/open/floor/wood,
+/area/adminlevel/bunker01/breakroom)
 "Mt" = (
 /turf/closed/wall/almayer/white/hull,
 /area/shuttle/distress/start_big)
@@ -8989,14 +8100,29 @@
 	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
+"ME" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	tag = "icon-SW-out"
+	},
+/turf/open/floor/plating/almayer,
+/area/adminlevel/bunker01/mainroom)
 "MG" = (
 /obj/structure/machinery/vending/cigarette/free,
 /turf/open/floor/almayer{
-	tag = "icon-sterile";
+	dir = 8;
 	icon_state = "silver";
-	dir = 8
+	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
+"ML" = (
+/obj/structure/closet/firecloset,
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "orange";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/engineering)
 "MZ" = (
 /obj/structure/rack,
 /obj/item/storage/briefcase/inflatable,
@@ -9011,6 +8137,19 @@
 	tag = "icon-green (NORTHWEST)"
 	},
 /area/adminlevel/bunker01/caves)
+"Nb" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+	dir = 1;
+	name = "\improper Medbay";
+	req_access = list(201);
+	req_one_access = null
+	},
+/obj/structure/machinery/door/firedoor/border_only/almayer/antag,
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
 "Ni" = (
 /obj/structure/toilet,
 /turf/open/floor/prison{
@@ -9022,9 +8161,9 @@
 "Nk" = (
 /obj/structure/rack,
 /turf/open/floor/almayer{
-	tag = "icon-sterile";
+	dir = 6;
 	icon_state = "orange";
-	dir = 6
+	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
 "Nm" = (
@@ -9035,6 +8174,20 @@
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/mainroom)
+"Nq" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	tag = "icon-N"
+	},
+/turf/open/floor/plating/almayer,
+/area/adminlevel/bunker01/mainroom)
+"ND" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out";
+	tag = "icon-SE-out"
+	},
+/turf/open/floor/plating/almayer,
+/area/adminlevel/bunker01/mainroom)
 "NH" = (
 /obj/structure/table/reinforced,
 /obj/structure/machinery/microwave,
@@ -9044,6 +8197,12 @@
 	tag = "icon-sterile_white"
 	},
 /area/adminlevel/ert_station)
+"NJ" = (
+/turf/open/floor/almayer{
+	icon_state = "blue";
+	tag = "icon-blue"
+	},
+/area/adminlevel/bunker01/hydroponics)
 "NP" = (
 /obj/structure/sink{
 	dir = 8;
@@ -9072,8 +8231,8 @@
 	req_one_access = null
 	},
 /turf/open/floor/almayer{
-	tag = "icon-sterile";
-	icon_state = "floor"
+	icon_state = "floor";
+	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
 "Ob" = (
@@ -9102,30 +8261,51 @@
 /obj/structure/bed,
 /obj/item/bedsheet/brown,
 /turf/open/floor/almayer{
-	tag = "icon-sterile";
-	icon_state = "carpet7-3"
+	icon_state = "carpet7-3";
+	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
 "Oj" = (
 /obj/structure/bed/chair/office/dark{
-	icon_state = "officechair_dark";
-	dir = 8
+	dir = 8;
+	icon_state = "officechair_dark"
 	},
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
 	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
+"Ok" = (
+/obj/structure/window_frame/colony/reinforced,
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	density = 0;
+	icon_state = "shutter0";
+	id = "base_4_shutter";
+	name = "\improper Bunker Shutters";
+	opacity = 0
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/mainroom)
 "On" = (
 /obj/structure/disposaloutlet{
-	icon_state = "outlet";
-	dir = 4
+	dir = 4;
+	icon_state = "outlet"
 	},
 /obj/structure/disposalpipe/trunk{
 	dir = 8
 	},
 /turf/open/space,
 /area/space)
+"Os" = (
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "sterile_green_corner";
+	tag = "icon-sterile_green_corner (WEST)"
+	},
+/area/adminlevel/bunker01/medbay)
 "Ou" = (
 /obj/effect/step_trigger/teleporter/random{
 	affect_ghosts = 1;
@@ -9139,6 +8319,9 @@
 	},
 /turf/open/space/transit/north/shuttlespace_ns15,
 /area/space)
+"OB" = (
+/turf/closed/wall/r_wall/bunker,
+/area/adminlevel/bunker01/storage)
 "OD" = (
 /turf/open/floor/almayer{
 	icon_state = "sterile_green";
@@ -9162,6 +8345,15 @@
 "OT" = (
 /turf/closed/wall/almayer/outer,
 /area/tdome/tdomeobserve)
+"OU" = (
+/obj/structure/machinery/door_control{
+	id = "base_1_shutter";
+	name = "Base Shutters";
+	pixel_x = -7;
+	pixel_y = -20
+	},
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/mainroom)
 "OZ" = (
 /obj/structure/closet/secure_closet/personal,
 /turf/open/floor/almayer,
@@ -9174,13 +8366,25 @@
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/mainroom)
+"Pg" = (
+/obj/structure/closet/secure_closet/medical2,
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "sterile_green_corner";
+	tag = "icon-sterile_green_corner (NORTH)"
+	},
+/area/adminlevel/bunker01/medbay)
+"Pn" = (
+/obj/structure/machinery/vending/cigarette/free,
+/turf/open/floor/wood,
+/area/adminlevel/bunker01/breakroom)
 "Po" = (
 /obj/structure/bed/chair{
 	dir = 1
 	},
 /turf/open/floor/almayer{
-	tag = "icon-sterile";
-	icon_state = "floor"
+	icon_state = "floor";
+	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
 "Pr" = (
@@ -9188,10 +8392,34 @@
 	dir = 4
 	},
 /turf/open/floor/almayer{
-	tag = "icon-sterile";
-	icon_state = "floor"
+	icon_state = "floor";
+	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
+"PB" = (
+/obj/structure/table/reinforced,
+/obj/item/clothing/gloves/yellow,
+/turf/open/floor/almayer{
+	icon_state = "orange";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/engineering)
+"PC" = (
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "orange";
+	tag = "icon-orange (EAST)"
+	},
+/area/adminlevel/bunker01/engineering)
+"PD" = (
+/obj/structure/machinery/body_scanconsole{
+	dir = 8
+	},
+/turf/open/floor/almayer{
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
 "PE" = (
 /turf/open/floor/engine,
 /area/adminlevel/simulation)
@@ -9205,17 +8433,35 @@
 	tag = "icon-blue (NORTHEAST)"
 	},
 /area/tdome/tdome2)
+"PG" = (
+/obj/structure/table/reinforced,
+/obj/item/reagent_container/glass/beaker/bluespace,
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
 "PI" = (
 /obj/structure/closet/firecloset,
 /turf/open/floor/wood,
 /area/adminlevel/bunker01/bedroom)
 "PJ" = (
 /turf/open/floor/almayer{
-	tag = "icon-sterile_green_corner (NORTH)";
+	dir = 1;
 	icon_state = "w-y1";
-	dir = 1
+	tag = "icon-sterile_green_corner (NORTH)"
 	},
 /area/tdome)
+"PT" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	dir = 9;
+	icon_state = "green";
+	tag = "icon-green (SOUTHEAST)"
+	},
+/area/adminlevel/bunker01/caves/outpost)
 "PW" = (
 /obj/structure/machinery/vending/dinnerware,
 /obj/structure/machinery/door/firedoor/border_only/almayer/antag,
@@ -9243,6 +8489,20 @@
 	tag = "icon-redfull"
 	},
 /area/adminlevel/ert_station)
+"Qm" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	dir = 1;
+	name = "\improper Bedroom";
+	req_access = list(201)
+	},
+/obj/structure/machinery/door/firedoor/border_only/almayer/antag{
+	dir = 2
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/breakroom)
 "Qp" = (
 /obj/structure/table/almayer,
 /obj/item/clipboard,
@@ -9260,10 +8520,16 @@
 /area/shuttle/distress/start_big)
 "Qr" = (
 /turf/open/floor/almayer{
-	tag = "icon-sterile";
-	icon_state = "floor"
+	icon_state = "floor";
+	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
+"Qw" = (
+/obj/structure/sign/safety/galley{
+	pixel_x = 32
+	},
+/turf/open/floor/wood,
+/area/adminlevel/bunker01/breakroom)
 "Qx" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -9303,6 +8569,28 @@
 	icon_state = "tcomms"
 	},
 /area/tdome/tdomeobserve)
+"QV" = (
+/obj/effect/alien/weeds/node/pylon/core{
+	hivenumber = 3
+	},
+/turf/open/mars_cave,
+/area/adminlevel/bunker01/caves/xeno)
+"QW" = (
+/obj/structure/largecrate/supply/supplies/plasteel,
+/obj/structure/largecrate/supply/supplies/plasteel,
+/obj/structure/largecrate/supply/supplies/plasteel,
+/turf/open/floor/almayer{
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
+	},
+/area/adminlevel/bunker01/mainroom)
+"QY" = (
+/obj/structure/machinery/autodoc,
+/turf/open/floor/almayer{
+	icon_state = "sterile_green_corner";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
 "Ra" = (
 /obj/structure/rack,
 /obj/item/stack/sheet/glass{
@@ -9323,6 +8611,28 @@
 	tag = "icon-green (NORTH)"
 	},
 /area/adminlevel/bunker01/storage)
+"Re" = (
+/obj/structure/largecrate/supply/supplies/metal,
+/obj/structure/largecrate/supply/supplies/metal,
+/obj/structure/largecrate/supply/supplies/metal,
+/obj/structure/largecrate/supply/supplies/metal,
+/obj/structure/largecrate/supply/supplies/metal,
+/turf/open/floor/almayer{
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
+	},
+/area/adminlevel/bunker01/mainroom)
+"Rf" = (
+/obj/structure/machinery/door/poddoor/shutters/almayer/pressure{
+	density = 1;
+	icon_state = "shutter1";
+	id = "second_base";
+	indestructible = 1;
+	name = "Second Base";
+	opacity = 1
+	},
+/turf/open/mars_cave,
+/area/adminlevel/bunker01/mainroom)
 "Rj" = (
 /obj/structure/window/framed/colony,
 /turf/open/floor/almayer{
@@ -9360,14 +8670,42 @@
 	tag = "icon-bluecorner (NORTH)"
 	},
 /area/adminlevel/bunker01/mainroom)
+"RI" = (
+/obj/structure/machinery/iv_drip,
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
 "RK" = (
 /obj/structure/machinery/vending/coffee,
 /turf/open/floor/almayer{
-	tag = "icon-sterile";
+	dir = 8;
 	icon_state = "silver";
-	dir = 8
+	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
+"RO" = (
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "green";
+	tag = "icon-green (EAST)"
+	},
+/area/adminlevel/bunker01/mainroom)
+"RR" = (
+/obj/structure/window/reinforced{
+	dir = 4;
+	health = 80
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 80
+	},
+/turf/open/floor/almayer{
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
+	},
+/area/adminlevel/bunker01/gear)
 "RS" = (
 /obj/structure/pipes/vents/pump{
 	dir = 1
@@ -9415,8 +8753,8 @@
 "Sl" = (
 /obj/structure/table/almayer,
 /turf/open/floor/almayer{
-	tag = "icon-sterile";
-	icon_state = "floor"
+	icon_state = "floor";
+	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
 "Sm" = (
@@ -9469,6 +8807,17 @@
 	},
 /turf/open/floor/wood,
 /area/adminlevel/bunker01/bedroom)
+"SA" = (
+/obj/structure/machinery/door/airlock/almayer/marine/requisitions{
+	name = "\improper Tools";
+	req_access = list(201);
+	req_one_access = null
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/storage)
 "SQ" = (
 /obj/structure/machinery/cm_vending/gear/antag_guns,
 /turf/open/floor/almayer,
@@ -9490,22 +8839,38 @@
 	tag = "icon-sterile_green_corner (EAST)"
 	},
 /area/adminlevel/ert_station)
+"SU" = (
+/obj/structure/table/reinforced,
+/obj/structure/machinery/reagentgrinder,
+/obj/item/stack/sheet/mineral/phoron{
+	amount = 25
+	},
+/obj/item/stack/sheet/mineral/phoron{
+	amount = 25;
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/turf/open/floor/almayer{
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
 "Tm" = (
 /obj/structure/table/almayer,
 /obj/structure/machinery/door_control{
+	id = "tdome_t1";
 	name = "Team 1 Shutters (Left)";
-	pixel_y = -3;
-	id = "tdome_t1"
+	pixel_y = -3
 	},
 /obj/structure/machinery/door_control{
+	id = "tdome_t2";
 	name = "Team 2 Shutters (Right)";
-	pixel_y = 3;
-	id = "tdome_t2"
+	pixel_y = 3
 	},
 /obj/structure/machinery/door_control{
+	id = "tdome_observer";
 	name = "Observer Shutters";
-	pixel_y = 9;
-	id = "tdome_observer"
+	pixel_y = 9
 	},
 /turf/open/floor/almayer{
 	dir = 5;
@@ -9513,6 +8878,18 @@
 	tag = "icon-blue (NORTHEAST)"
 	},
 /area/tdome/tdomeobserve)
+"Tw" = (
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "sterile_green_corner";
+	tag = "icon-sterile_green_corner (NORTH)"
+	},
+/area/adminlevel/bunker01/medbay)
+"Tx" = (
+/obj/structure/table/almayer,
+/obj/item/ashtray/plastic,
+/turf/open/floor/wood,
+/area/adminlevel/bunker01/breakroom)
 "TA" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -9520,6 +8897,9 @@
 	},
 /turf/open/floor/plating/almayer,
 /area/adminlevel/ert_station)
+"TB" = (
+/turf/closed/wall/r_wall/bunker,
+/area/adminlevel/bunker01/caves/outpost)
 "TF" = (
 /turf/open/space/transit/north/shuttlespace_ns4,
 /area/almayer/evacuation/stranded/pod17)
@@ -9529,6 +8909,9 @@
 	icon_state = "orangecorner";
 	tag = "icon-orangecorner (EAST)"
 	},
+/area/adminlevel/bunker01/engineering)
+"TQ" = (
+/turf/open/floor/almayer,
 /area/adminlevel/bunker01/engineering)
 "TT" = (
 /obj/structure/bed,
@@ -9540,11 +8923,14 @@
 	pixel_y = 28
 	},
 /turf/open/floor/almayer{
-	tag = "icon-sterile";
+	dir = 1;
 	icon_state = "silver";
-	dir = 1
+	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
+"TX" = (
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/caves/outpost)
 "Ua" = (
 /obj/structure/machinery/autodoc_console,
 /turf/open/floor/almayer{
@@ -9569,6 +8955,21 @@
 	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
+"UA" = (
+/obj/structure/machinery/cm_vending/sorted/medical/antag,
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	density = 0;
+	dir = 4;
+	icon_state = "shutter0";
+	id = "base_medbay";
+	name = "\improper Medbay Shutters";
+	opacity = 0
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
 "UE" = (
 /obj/structure/bed,
 /obj/item/bedsheet/medical,
@@ -9584,6 +8985,15 @@
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/bedroom)
+"UX" = (
+/obj/structure/machinery/autodoc_console{
+	dir = 8
+	},
+/turf/open/floor/almayer{
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
 "Vd" = (
 /obj/structure/machinery/cm_vending/sorted/tech/electronics_storage/antag,
 /turf/open/floor/almayer{
@@ -9625,14 +9035,25 @@
 "Vu" = (
 /turf/closed/wall,
 /area/adminlevel/ert_station)
+"Vw" = (
+/obj/structure/machinery/autodoc_console,
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (NORTH)"
+	},
+/area/adminlevel/bunker01/medbay)
+"Vz" = (
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/bunker01/engineering)
 "VC" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
 	name = "\improper Dormitories"
 	},
 /turf/open/floor/almayer{
-	tag = "icon-sterile";
-	icon_state = "floor"
+	icon_state = "floor";
+	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
 "VD" = (
@@ -9643,17 +9064,28 @@
 	tag = "icon-blue (NORTHEAST)"
 	},
 /area/tdome/tdomeobserve)
+"VM" = (
+/obj/structure/barricade/metal/wired,
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "green";
+	tag = "icon-green (WEST)"
+	},
+/area/adminlevel/bunker01/caves/outpost)
 "VP" = (
 /turf/open/floor/almayer{
-	tag = "icon-sterile";
-	icon_state = "carpet13-5"
+	icon_state = "carpet13-5";
+	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
+"VQ" = (
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/bunker01/storage)
 "VT" = (
 /turf/open/floor/almayer{
-	tag = "icon-red (NORTHWEST)";
+	dir = 8;
 	icon_state = "red";
-	dir = 8
+	tag = "icon-red (NORTHWEST)"
 	},
 /area/adminlevel/ert_station)
 "Wg" = (
@@ -9661,11 +9093,18 @@
 	req_one_access = null
 	},
 /turf/open/floor/almayer{
-	tag = "icon-sterile";
+	dir = 10;
 	icon_state = "sterile_green_side";
-	dir = 10
+	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
+"Wh" = (
+/obj/structure/machinery/cm_vending/sorted/medical/antag,
+/turf/open/floor/almayer{
+	icon_state = "sterile_green_corner";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
 "Wp" = (
 /turf/open/floor/almayer{
 	dir = 9;
@@ -9673,10 +9112,22 @@
 	tag = "icon-sterile_green_side (NORTHWEST)"
 	},
 /area/adminlevel/bunker01/medbay)
+"Wt" = (
+/obj/structure/barricade/plasteel/wired,
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "green";
+	tag = "icon-green (WEST)"
+	},
+/area/adminlevel/bunker01/caves/outpost)
 "Wu" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer/antag,
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/mainroom)
+"WC" = (
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/mars_cave,
+/area/adminlevel/bunker01/caves/outpost)
 "WG" = (
 /obj/item/map/current_map{
 	pixel_y = -5
@@ -9708,8 +9159,8 @@
 "WK" = (
 /obj/structure/table/reinforced,
 /turf/open/floor/almayer{
-	tag = "icon-sterile";
-	icon_state = "silverfull"
+	icon_state = "silverfull";
+	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
 "WQ" = (
@@ -9717,9 +9168,9 @@
 	dir = 1
 	},
 /turf/open/floor/almayer{
-	tag = "icon-red (NORTHWEST)";
+	dir = 4;
 	icon_state = "red";
-	dir = 4
+	tag = "icon-red (NORTHWEST)"
 	},
 /area/adminlevel/ert_station)
 "WS" = (
@@ -9731,6 +9182,25 @@
 	tag = "icon-bluecorner (NORTH)"
 	},
 /area/adminlevel/bunker01/storage)
+"WY" = (
+/obj/structure/machinery/door_control{
+	id = "base_blastdoor";
+	name = "Base Shutters";
+	pixel_x = 24
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/mainroom)
+"WZ" = (
+/obj/structure/barricade/plasteel,
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "green";
+	tag = "icon-green (WEST)"
+	},
+/area/adminlevel/bunker01/caves/outpost)
 "Xa" = (
 /obj/structure/table/almayer,
 /obj/item/folder/black{
@@ -9762,6 +9232,13 @@
 	tag = "icon-sterile_white"
 	},
 /area/adminlevel/ert_station)
+"Xo" = (
+/obj/structure/closet/crate/secure/mortar_ammo/mortar_kit,
+/turf/open/floor/almayer{
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
+	},
+/area/adminlevel/bunker01/storage)
 "Xt" = (
 /obj/structure/rack,
 /obj/effect/landmark{
@@ -9797,9 +9274,15 @@
 	tag = "icon-bluecorner (NORTH)"
 	},
 /area/adminlevel/bunker01/caves)
+"XZ" = (
+/turf/closed/wall/r_wall/bunker,
+/area/adminlevel/bunker01/gear)
 "Ya" = (
 /turf/open/floor/plating/almayer,
 /area/adminlevel/ert_station)
+"Yf" = (
+/turf/closed/wall/r_wall/bunker,
+/area/adminlevel/bunker01/mainroom)
 "Yh" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
@@ -9819,11 +9302,18 @@
 "Yn" = (
 /obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
 /turf/open/floor/almayer{
-	tag = "icon-sterile";
+	dir = 5;
 	icon_state = "orange";
-	dir = 5
+	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
+"Yu" = (
+/turf/open/floor/almayer{
+	dir = 9;
+	icon_state = "green";
+	tag = "icon-green (SOUTHEAST)"
+	},
+/area/adminlevel/bunker01/caves/outpost)
 "Yy" = (
 /obj/structure/table/reinforced,
 /obj/structure/machinery/juicer,
@@ -9858,6 +9348,12 @@
 	tag = "icon-blue (NORTHEAST)"
 	},
 /area/tdome/tdomeobserve)
+"YQ" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/adminlevel/bunker01/breakroom)
 "YR" = (
 /obj/structure/machinery/cm_vending/gear/antag,
 /turf/open/floor/almayer,
@@ -9865,35 +9361,57 @@
 "YU" = (
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/caves)
+"YY" = (
+/obj/structure/machinery/processor,
+/turf/open/floor/prison{
+	dir = 2;
+	icon_state = "sterile_white";
+	tag = "icon-sterile_white"
+	},
+/area/adminlevel/bunker01/kitchen)
 "Zd" = (
 /turf/open/floor/almayer{
 	icon_state = "bluefull";
 	tag = "icon-bluefull"
 	},
 /area/tdome/tdome1)
+"Zn" = (
+/obj/structure/window_frame/colony/reinforced,
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	density = 0;
+	icon_state = "shutter0";
+	id = "base_2_shutter";
+	name = "\improper Bunker Shutters";
+	opacity = 0
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/mainroom)
 "Zp" = (
 /obj/structure/bed,
 /obj/item/bedsheet/brown,
 /turf/open/floor/almayer{
-	tag = "icon-sterile";
-	icon_state = "carpet5-1"
+	icon_state = "carpet5-1";
+	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
 "Zq" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/manifold/hidden/supply{
-	tag = "icon-map-supply (WEST)";
+	dir = 8;
 	icon_state = "map-supply";
-	dir = 8
+	tag = "icon-map-supply (WEST)"
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/mainroom)
 "Zr" = (
 /obj/structure/machinery/vending/snack,
 /turf/open/floor/almayer{
-	tag = "icon-sterile";
+	dir = 8;
 	icon_state = "silver";
-	dir = 8
+	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
 "Zv" = (
@@ -9917,11 +9435,14 @@
 /area/adminlevel/ert_station)
 "Zy" = (
 /turf/open/floor/almayer{
-	tag = "icon-sterile";
+	dir = 1;
 	icon_state = "orange";
-	dir = 1
+	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
+"ZA" = (
+/turf/open/mars_cave,
+/area/adminlevel/bunker01/caves/xeno)
 "ZB" = (
 /obj/structure/machinery/autodoc/event,
 /turf/open/floor/almayer{
@@ -9938,10 +9459,20 @@
 	req_one_access = null
 	},
 /turf/open/floor/almayer{
-	tag = "icon-sterile";
-	icon_state = "floor"
+	icon_state = "floor";
+	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
+"ZO" = (
+/obj/structure/machinery/body_scanconsole{
+	dir = 8
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (NORTH)"
+	},
+/area/adminlevel/bunker01/medbay)
 "ZU" = (
 /obj/structure/machinery/disposal,
 /turf/open/floor/prison{
@@ -9952,9 +9483,9 @@
 /area/adminlevel/ert_station)
 "ZV" = (
 /turf/open/floor/almayer{
-	tag = "icon-red (NORTHWEST)";
+	dir = 4;
 	icon_state = "red";
-	dir = 4
+	tag = "icon-red (NORTHWEST)"
 	},
 /area/adminlevel/ert_station)
 
@@ -21598,14 +21129,14 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
 aa
 aa
 aa
@@ -21705,62 +21236,62 @@ aa
 aa
 aa
 aa
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
 aa
 aa
 aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+aC
+aC
+aC
+aC
 aa
 aa
 aa
@@ -21857,6 +21388,7 @@ aa
 aa
 aa
 aa
+aC
 aa
 aa
 aa
@@ -21903,16 +21435,15 @@ aa
 aa
 aa
 aa
+ii
+ii
+ii
+ii
 aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
+aC
 aa
 aa
 aa
@@ -22009,62 +21540,62 @@ aa
 aa
 aa
 aa
+aC
 aa
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+ii
+ii
+ii
+ZA
+ZA
+ii
+ii
+fY
+fY
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+aC
 aa
 aa
 aa
@@ -22142,81 +21673,81 @@ aP
 aY
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aa
+fY
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+XZ
+XZ
+XZ
+XZ
+XZ
+XZ
+XZ
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+TB
+TB
+TB
+TB
+gc
+gc
+gc
+tL
+gc
+gc
+gc
+gc
+fY
+fY
+fY
+fY
+fY
+fY
+ii
+ii
+ii
+ZA
+ZA
+ZA
+ZA
+ZA
+ii
+fY
+fY
+aa
+aC
 aa
 aa
 aa
@@ -22294,6 +21825,7 @@ bO
 bj
 aa
 aa
+aC
 aa
 aa
 aa
@@ -22314,61 +21846,60 @@ aa
 aa
 aa
 aa
+fY
+Kn
+qA
+yW
+Jk
+Jb
+uV
+XZ
+bH
+ud
+CO
+ud
+fl
+XZ
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+TB
+Yu
+xP
+VM
+gc
+gc
+gc
+wG
+gc
+gc
+gc
+gc
+gc
+fY
+fY
+fY
+fY
+ii
+ii
+ZA
+ZA
+ZA
+ZA
+ZA
+ZA
+ZA
+ii
+fY
+fY
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+aC
 aa
 aa
 aa
@@ -22446,81 +21977,81 @@ aU
 aY
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+aC
+aa
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+Kn
+FX
+TQ
+Vz
+TQ
+KD
+XZ
+bH
+RR
+CO
+RR
+fl
+XZ
+Yf
+Yf
+Yf
+Yf
+fY
+fY
+fY
+gc
+gc
+TB
+Hr
+TX
+In
+gc
+gc
+gc
+tL
+gc
+gc
+gc
+gc
+gc
+gc
+fY
+fY
+fY
+ii
+ZA
+ZA
+ZA
+ZA
+ZA
+ZA
+ZA
+ZA
+ZA
+ii
+fY
+aa
+aC
 aa
 aa
 aa
@@ -22598,81 +22129,81 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+aC
+aa
+fY
+Yf
+Yf
+Yf
+Yf
+Yf
+Yf
+Yf
+Yf
+Yf
+Yf
+Yf
+Yf
+Yf
+Yf
+Yf
+Yf
+Yf
+Yf
+Yf
+Kn
+Ir
+TQ
+Vz
+TQ
+PB
+XZ
+bH
+RR
+CO
+RR
+fl
+XZ
+sg
+yi
+yi
+Yf
+fY
+gc
+gc
+gc
+gc
+tR
+TX
+TX
+ue
+gc
+gc
+gc
+gc
+fY
+fY
+gc
+gc
+gc
+gc
+fY
+fY
+fY
+ii
+ZA
+QV
+ZA
+ZA
+ZA
+ZA
+ZA
+ZA
+ZA
+ii
+ii
+aa
+aC
 aa
 aa
 aa
@@ -22750,81 +22281,81 @@ bh
 bj
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+aC
+aa
+fY
+Yf
+ND
+yu
+yu
+yu
+yu
+yu
+yu
+yu
+yu
+yu
+yu
+yu
+yu
+yu
+yu
+yu
+EC
+yy
+Kn
+ML
+PC
+Vz
+PC
+Bw
+XZ
+bH
+xU
+CO
+xU
+fl
+XZ
+fb
+It
+pp
+Yf
+gc
+gc
+gc
+gc
+gc
+WC
+BT
+TX
+ue
+gc
+gc
+fY
+fY
+fY
+fY
+fY
+gc
+gc
+gc
+gc
+fY
+fY
+ii
+ZA
+ZA
+ZA
+ZA
+ZA
+ZA
+ZA
+ZA
+ZA
+ZA
+ii
+aa
+aC
 aa
 aa
 aa
@@ -22902,81 +22433,81 @@ aP
 aY
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+aC
+aa
+fY
+Yf
+EX
+yy
+yy
+yy
+yy
+yy
+yy
+yy
+yy
+yy
+yy
+yy
+yy
+yy
+yy
+yy
+Nq
+yy
+Kn
+Kn
+Kn
+Bt
+Kn
+Kn
+XZ
+XZ
+XZ
+mT
+XZ
+XZ
+XZ
+fb
+It
+pp
+DM
+gc
+gc
+gc
+gc
+gc
+tR
+TX
+TX
+In
+gc
+gc
+fY
+fY
+fY
+fY
+fY
+gc
+gc
+gc
+gc
+fY
+fY
+ii
+ii
+ZA
+ZA
+ZA
+ZA
+ZA
+ZA
+ZA
+ZA
+ZA
+ii
+aa
+aC
 aa
 aa
 aa
@@ -23054,81 +22585,81 @@ bO
 bj
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+aC
+aa
+fY
+Yf
+EX
+yy
+yy
+yy
+yy
+yy
+yy
+yy
+yy
+yy
+yy
+yy
+yy
+yy
+yy
+yy
+Nq
+yy
+Yf
+pp
+pp
+It
+pp
+CR
+Ik
+CR
+pp
+It
+pp
+pp
+Gy
+It
+It
+pp
+DM
+gc
+gc
+gc
+gc
+gc
+TB
+aw
+LF
+Hs
+gc
+gc
+gc
+fY
+fY
+fY
+fY
+gc
+gc
+gc
+gc
+gc
+fY
+ii
+ii
+ii
+ii
+ii
+ii
+ZA
+ZA
+ZA
+ZA
+ZA
+ii
+aa
+aC
 aa
 aa
 aa
@@ -23206,81 +22737,81 @@ aP
 aY
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+aC
+aa
+fY
+Yf
+EX
+yy
+yy
+yy
+yy
+yy
+yy
+yy
+yy
+yy
+yy
+yy
+yy
+yy
+yy
+yy
+Nq
+yy
+Yf
+pp
+It
+It
+It
+CR
+Ik
+CR
+It
+It
+It
+It
+Yf
+fb
+It
+OU
+Yf
+gc
+gc
+gc
+gc
+gc
+TB
+TB
+TB
+TB
+gc
+gc
+gc
+fY
+fY
+fY
+gc
+gc
+gc
+gc
+gc
+gc
+fY
+ii
+ii
+ii
+ii
+ii
+ZA
+ZA
+ZA
+QV
+ZA
+ZA
+ii
+aa
+aC
 aa
 aa
 aa
@@ -23358,81 +22889,81 @@ bO
 bj
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+aC
+aa
+fY
+Yf
+EX
+yy
+yy
+yy
+yy
+yy
+yy
+yy
+yy
+yy
+yy
+yy
+yy
+yy
+yy
+yy
+Nq
+yy
+Yf
+pp
+It
+It
+pp
+WY
+Ik
+WY
+pp
+pp
+It
+pp
+Gy
+It
+It
+FK
+Yf
+gc
+gc
+gc
+gc
+gc
+gc
+fY
+fY
+fY
+gc
+gc
+gc
+fY
+fY
+fY
+gc
+gc
+gc
+gc
+gc
+gc
+fY
+ii
+ii
+ii
+ii
+ii
+ZA
+ZA
+ZA
+ZA
+ZA
+ii
+ii
+aa
+aC
 aa
 aa
 aa
@@ -23510,81 +23041,81 @@ aP
 aY
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+aC
+aa
+fY
+Yf
+EX
+yy
+yy
+yy
+yy
+yy
+yy
+yy
+yy
+yy
+yy
+yy
+yy
+yy
+yy
+yy
+Nq
+yy
+BY
+It
+It
+It
+pp
+Yf
+Yf
+Yf
+Yf
+pp
+It
+pp
+Yf
+fb
+It
+pp
+Zn
+gc
+gc
+gc
+gc
+gc
+fY
+fY
+fY
+fY
+gc
+gc
+gc
+tL
+gc
+gc
+gc
+gc
+gc
+gc
+gc
+gc
+fY
+ii
+ii
+ii
+ZA
+ZA
+ZA
+ZA
+ZA
+ZA
+ZA
+ii
+fY
+aa
+aC
 aa
 aa
 aa
@@ -23662,81 +23193,81 @@ aP
 aT
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+aC
+aa
+fY
+Yf
+EX
+yy
+yy
+yy
+yy
+yy
+yy
+yy
+yy
+yy
+yy
+yy
+yy
+yy
+yy
+yy
+Nq
+yy
+Yf
+pp
+It
+It
+pp
+Yf
+Yf
+Yf
+Yf
+pp
+It
+pp
+Yf
+fb
+It
+pp
+Zn
+gc
+gc
+gc
+gc
+fY
+fY
+fY
+fY
+fY
+gc
+gc
+gc
+wG
+gc
+gc
+gc
+gc
+gc
+gc
+gc
+gc
+fY
+pi
+ZA
+ZA
+ZA
+ZA
+ZA
+ZA
+ZA
+ZA
+ZA
+ii
+fY
+aa
+aC
 aa
 aa
 aa
@@ -23814,87 +23345,87 @@ aQ
 aU
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+aC
+aa
+fY
+Yf
+EX
+yy
+yy
+yy
+yy
+yy
+yy
+yy
+yy
+yy
+yy
+yy
+yy
+yy
+yy
+yy
+Nq
+yy
+Yf
+pp
+It
+It
+pp
+Yf
+Yf
+Yf
+Yf
+pp
+It
+pp
+Yf
+fb
+It
+pp
+Yf
+gc
+gc
+gc
+gc
+fY
+fY
+fY
+fY
+gc
+gc
+gc
+gc
+tL
+gc
+gc
+gc
+gc
+gc
+gc
+gc
+gc
+gc
+pi
+ZA
+ZA
+ZA
+ZA
+ZA
+ZA
+ZA
+ZA
+ZA
+ii
+fY
+aa
+aC
+aC
+aC
+aC
+aC
+aC
+aC
 aa
 aa
 aa
@@ -23966,87 +23497,87 @@ aP
 aT
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+aC
+aa
+fY
+Yf
+EX
+yy
+yy
+yy
+yy
+yy
+yy
+yy
+yy
+yy
+yy
+yy
+yy
+yy
+yy
+yy
+Nq
+yy
+Yf
+pp
+It
+It
+pp
+pp
+pp
+Re
+Yf
+pp
+It
+pp
+Yf
+fb
+It
+pp
+Yf
+gc
+gc
+gc
+gc
+fY
+fY
+fY
+fY
+gc
+gc
+gc
+fY
+fY
+fY
+gc
+gc
+gc
+gc
+gc
+gc
+gc
+gc
+pi
+ZA
+ZA
+QV
+ZA
+ZA
+ZA
+ZA
+ZA
+ii
+ii
+fY
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aC
 aa
 aa
 aa
@@ -24118,87 +23649,87 @@ aQ
 aU
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+aC
+aa
+fY
+Yf
+EX
+yy
+yy
+yy
+yy
+yy
+yy
+yy
+yy
+yy
+yy
+yy
+yy
+yy
+yy
+yy
+Nq
+yy
+Yf
+pp
+It
+It
+It
+It
+It
+QW
+Yf
+pp
+It
+pp
+Yf
+fb
+It
+pp
+bf
+gc
+gc
+gc
+gc
+TB
+TB
+TB
+gc
+gc
+gc
+gc
+fY
+fY
+fY
+fY
+gc
+gc
+gc
+gc
+gc
+gc
+gc
+pi
+ZA
+ZA
+ZA
+ZA
+ZA
+ZA
+ZA
+ii
+ii
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+aa
+aC
 aa
 aa
 aa
@@ -24270,87 +23801,87 @@ aP
 aT
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+aC
+aa
+fY
+Yf
+ME
+IH
+IH
+IH
+IH
+IH
+IH
+IH
+IH
+IH
+IH
+IH
+IH
+IH
+IH
+IH
+Af
+yy
+Yf
+pp
+pp
+pp
+pp
+pp
+pp
+wr
+Yf
+pp
+It
+pp
+Yf
+fb
+It
+pp
+bf
+gc
+gc
+gc
+gc
+TB
+PT
+Wt
+gc
+gc
+gc
+gc
+fY
+fY
+fY
+fY
+fY
+gc
+gc
+gc
+gc
+gc
+gc
+pi
+ZA
+ZA
+ZA
+ZA
+ZA
+ii
+ii
+ii
+fY
+XZ
+XZ
+XZ
+XZ
+XZ
+XZ
+XZ
+fY
+aa
+aC
 aa
 aa
 aa
@@ -24422,87 +23953,87 @@ aQ
 aU
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+aC
+aa
+fY
+Yf
+Yf
+Yf
+Yf
+Yf
+Yf
+Yf
+Yf
+Yf
+Yf
+Yf
+Yf
+Yf
+Yf
+Yf
+Yf
+Yf
+CW
+CW
+CW
+zU
+Nb
+CW
+tN
+UA
+GF
+CW
+CW
+pp
+It
+pp
+Yf
+fb
+It
+EZ
+Yf
+gc
+gc
+gc
+gc
+tR
+TX
+In
+gc
+gc
+gc
+gc
+fY
+fY
+fY
+fY
+fY
+gc
+gc
+gc
+gc
+gc
+gc
+ii
+ZA
+ZA
+ii
+ii
+ii
+ii
+fY
+fY
+fY
+XZ
+bH
+ud
+CO
+ud
+fl
+XZ
+fY
+aa
+aC
 aa
 aa
 aa
@@ -24574,87 +24105,87 @@ aP
 aT
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+aC
+aa
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+CW
+lK
+Mm
+ay
+Os
+CW
+Tw
+ay
+KT
+gj
+CW
+pp
+It
+pp
+Yf
+fb
+It
+Me
+Yf
+gc
+gc
+gc
+gc
+TB
+aw
+Dr
+gc
+gc
+gc
+gc
+gc
+fY
+fY
+fY
+fY
+gc
+gc
+gc
+gc
+gc
+gc
+ii
+ii
+ii
+ii
+fY
+fY
+fY
+fY
+fY
+fY
+XZ
+bH
+RR
+CO
+RR
+fl
+XZ
+fY
+aa
+aC
 aa
 aa
 aa
@@ -24726,87 +24257,87 @@ aQ
 aU
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+aC
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+fY
+CW
+Kp
+RI
+rL
+rL
+Br
+rL
+rL
+rL
+Kx
+CW
+pp
+It
+pp
+Yf
+fb
+It
+pp
+Ok
+gc
+gc
+gc
+gc
+TB
+TB
+TB
+gc
+gc
+gc
+gc
+gc
+wG
+gc
+fY
+fY
+gc
+gc
+gc
+gc
+gc
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+XZ
+bH
+RR
+CO
+RR
+fl
+XZ
+fY
+aa
+aC
 aa
 aa
 aa
@@ -24878,87 +24409,87 @@ aP
 aT
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aa
+fY
+CW
+pj
+Cl
+rL
+to
+uo
+LM
+rL
+PG
+SU
+CW
+pp
+It
+pp
+Yf
+zO
+RO
+RO
+Ok
+gc
+gc
+gc
+gc
+fY
+fY
+fY
+gc
+gc
+gc
+gc
+gc
+tL
+gc
+gc
+gc
+gc
+gc
+gc
+gc
+gc
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+XZ
+bH
+xU
+CO
+xU
+fl
+XZ
+fY
+aa
+aC
 aa
 aa
 aa
@@ -25047,70 +24578,70 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+aC
+aa
+fY
+CW
+Kp
+RI
+rL
+rL
+Br
+rL
+rL
+rL
+to
+CW
+pp
+It
+pp
+Yf
+Yf
+Yf
+Yf
+Yf
+gc
+gc
+gc
+fY
+fY
+fY
+gc
+gc
+gc
+gc
+gc
+gc
+wG
+gc
+gc
+gc
+gc
+gc
+gc
+gc
+gc
+fY
+Yf
+Yf
+Yf
+Yf
+xE
+xE
+xE
+xE
+xE
+xE
+xE
+xE
+XZ
+mT
+XZ
+XZ
+XZ
+fY
+aa
+aC
 aa
 aa
 aa
@@ -25199,70 +24730,70 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+aC
+aa
+fY
+CW
+pj
+Cl
+rL
+to
+CW
+LM
+rL
+rL
+to
+CW
+pp
+It
+pp
+pp
+Yf
+gc
+gc
+gc
+gc
+gc
+gc
+fY
+fY
+fY
+gc
+gc
+gc
+gc
+fY
+gc
+tL
+gc
+gc
+gc
+gc
+gc
+gc
+gc
+gc
+Rf
+ul
+It
+It
+It
+KB
+qQ
+qQ
+qQ
+qQ
+YQ
+YQ
+xE
+pp
+It
+pp
+Yf
+fY
+fY
+aa
+aC
 aa
 aa
 aa
@@ -25351,70 +24882,70 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+aC
+aa
+fY
+CW
+ZO
+to
+LM
+PD
+CW
+LM
+rL
+rL
+to
+CW
+pp
+It
+It
+It
+ul
+gc
+gc
+gc
+gc
+gc
+gc
+fY
+fY
+gc
+gc
+gc
+gc
+fY
+fY
+gc
+wG
+gc
+gc
+gc
+gc
+gc
+gc
+gc
+gc
+Rf
+CR
+It
+It
+pp
+xE
+qQ
+qQ
+qQ
+hq
+eT
+Tx
+xE
+pp
+It
+pp
+Yf
+fY
+fY
+aa
+aC
 aa
 aa
 aa
@@ -25503,70 +25034,70 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+aC
+aa
+fY
+CW
+rR
+to
+LM
+tZ
+CW
+KY
+rL
+rL
+Lr
+CW
+pp
+It
+It
+It
+CR
+gc
+gc
+gc
+gc
+gc
+fY
+fY
+fY
+gc
+gc
+gc
+fY
+fY
+fY
+gc
+zV
+gc
+gc
+gc
+gc
+gc
+gc
+gc
+gc
+fY
+Yf
+pp
+It
+pp
+xE
+Pn
+qQ
+qQ
+hq
+eT
+eT
+xE
+pp
+It
+pp
+Yf
+fY
+fY
+aa
+aC
 aa
 aa
 aa
@@ -25655,70 +25186,70 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+aC
+aa
+fY
+CW
+LM
+to
+LM
+to
+CW
+CW
+rL
+un
+CW
+CW
+pp
+It
+It
+pp
+Yf
+gc
+gc
+gc
+gc
+gc
+gc
+fY
+fY
+gc
+gc
+gc
+fY
+fY
+fY
+fY
+gc
+gc
+gc
+gc
+gc
+gc
+gc
+fY
+fY
+fY
+Yf
+pp
+It
+pp
+xE
+yq
+qQ
+qQ
+hq
+II
+eT
+xE
+pp
+It
+pp
+Yf
+fY
+fY
+aa
+aC
 aa
 aa
 aa
@@ -25807,70 +25338,70 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+aC
+aa
+fY
+CW
+rU
+to
+LM
+sK
+CW
+Pg
+rL
+rL
+tl
+CW
+pp
+pp
+It
+pp
+Yf
+gc
+gc
+gc
+gc
+gc
+gc
+TB
+TB
+TB
+gc
+gc
+fY
+fY
+fY
+fY
+gc
+gc
+gc
+gc
+gc
+gc
+fY
+fY
+fY
+fY
+Yf
+pp
+It
+pp
+xE
+Mn
+qQ
+qQ
+qQ
+bF
+bF
+xE
+pp
+It
+pp
+Yf
+fY
+fY
+aa
+aC
 aa
 aa
 aa
@@ -25959,70 +25490,70 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+aC
+aa
+fY
+CW
+Vw
+to
+LM
+yd
+CW
+LP
+rL
+rL
+tm
+OB
+OB
+OB
+SA
+OB
+OB
+OB
+OB
+OB
+gc
+gc
+gc
+TB
+PT
+WZ
+gc
+gc
+fY
+fY
+fY
+gc
+gc
+gc
+gc
+gc
+gc
+fY
+fY
+fY
+fY
+fY
+Yf
+pp
+It
+pp
+xE
+xE
+xE
+qQ
+Qw
+qQ
+qQ
+Qm
+It
+It
+pp
+Yf
+fY
+fY
+aa
+aC
 aa
 aa
 aa
@@ -26111,70 +25642,70 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+aC
+aa
+fY
+CW
+CX
+zT
+Wp
+UX
+CW
+sQ
+rL
+rL
+Fd
+OB
+AD
+vZ
+VQ
+yg
+yg
+vZ
+AD
+OB
+gc
+gc
+gc
+tR
+TX
+In
+gc
+gc
+gc
+gc
+tL
+gc
+gc
+gc
+gc
+gc
+gc
+fY
+fY
+vB
+fY
+fY
+Yf
+pp
+It
+pp
+pp
+pp
+xE
+xE
+xE
+xE
+xE
+xE
+pp
+pp
+pp
+Yf
+fY
+fY
+aa
+aC
 aa
 aa
 aa
@@ -26263,8 +25794,70 @@ aa
 aa
 aa
 aa
+aC
 aa
+fY
+CW
+QY
+rM
+rM
+ny
+CW
+Wh
+rM
+rM
+aR
+OB
+AD
+Jw
+VQ
+VQ
+yg
+Jw
+AD
+OB
+fY
+gc
+gc
+TB
+aw
+Eh
+gc
+gc
+gc
+gc
+wG
+gc
+gc
+gc
+gc
+gc
+fY
+fY
+fY
+fY
+fY
+fY
+Yf
+pp
+It
+pp
+pp
+pp
+Yf
+fY
+fY
+fY
+fY
+Yf
+Yf
+Yf
+Yf
+Yf
+fY
+fY
 aa
+aC
 aa
 aa
 aa
@@ -26297,68 +25890,6 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-cf
-cf
-cf
-cf
-cf
-cf
-cf
-cf
-cf
-cf
-cf
-cf
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-cf
-cf
-cf
-cf
-cf
-cf
-cf
 aa
 aa
 aa
@@ -26415,8 +25946,70 @@ aa
 aa
 aa
 aa
+aC
 aa
+fY
+CW
+CW
+CW
+CW
+CW
+CW
+CW
+CW
+CW
+CW
+OB
+AD
+Jw
+yg
+VQ
+yg
+Jw
+Cm
+OB
+fY
+fY
+gc
+TB
+TB
+TB
+gc
+gc
+gc
+gc
+tL
+gc
+gc
+gc
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+AK
+AK
+Fn
+AK
+uB
+el
+AK
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
 aa
+aC
 aa
 aa
 aa
@@ -26449,68 +26042,6 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-cf
-cf
-dj
-cf
-de
-dz
-La
-dK
-de
-cf
-cK
-cK
-cf
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-cf
-cK
-cK
-dm
-cK
-hh
-cf
 aa
 aa
 aa
@@ -26567,8 +26098,70 @@ aa
 aa
 aa
 aa
+aC
 aa
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+OB
+AD
+Jw
+yg
+VQ
+yg
+zq
+zq
+OB
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+AK
+el
+oz
+oz
+oz
+oz
+AK
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
 aa
+aC
 aa
 aa
 aa
@@ -26609,68 +26202,6 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-cf
-cW
-cK
-cf
-cK
-cK
-cK
-cK
-cK
-cf
-cK
-cK
-cf
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-cf
-cM
-cK
-cK
-cK
-hi
-cf
-aa
-cf
-cf
-cf
-cf
-cf
-cf
-cf
 aa
 aa
 aa
@@ -26719,6 +26250,7 @@ aa
 aa
 aa
 aa
+aC
 aa
 aa
 aa
@@ -26730,6 +26262,17 @@ aa
 aa
 aa
 aa
+fY
+OB
+AD
+Jw
+yg
+VQ
+dJ
+dJ
+dJ
+OB
+fY
 aa
 aa
 aa
@@ -26750,6 +26293,15 @@ aa
 aa
 aa
 aa
+fY
+AK
+ub
+oz
+el
+Im
+oz
+AK
+fY
 aa
 aa
 aa
@@ -26761,6 +26313,7 @@ aa
 aa
 aa
 aa
+aC
 aa
 aa
 aa
@@ -26778,19 +26331,6 @@ aa
 aa
 aa
 aa
-cf
-cX
-cK
-dk
-cK
-cK
-cK
-cK
-cK
-dR
-cL
-cL
-cf
 aa
 aa
 aa
@@ -26808,21 +26348,12 @@ aa
 aa
 aa
 aa
-cf
-cK
-cK
-cK
-cK
-hh
-cf
 aa
-cf
-iI
-cK
-dc
-cK
-iI
-cf
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -26871,6 +26402,70 @@ aa
 aa
 aa
 aa
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aa
+fY
+OB
+AD
+KJ
+yg
+VQ
+Xo
+wq
+wq
+OB
+fY
+aa
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aa
+fY
+AK
+CK
+oz
+oz
+oz
+xI
+AK
+fY
+aa
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
 aa
 aa
 aa
@@ -26911,70 +26506,6 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-cf
-cY
-cK
-cf
-cK
-cK
-cK
-cK
-cK
-cf
-cK
-dV
-cf
-aa
-aa
-cf
-cf
-cf
-cf
-cf
-cf
-cf
-cf
-cf
-cf
-cf
-cf
-cf
-cf
-cf
-cf
-gG
-cf
-cf
-cf
-cf
-cf
-cf
-cf
-cK
-cK
-cK
-cK
-cK
-cf
 aa
 aa
 aa
@@ -27033,6 +26564,50 @@ aa
 aa
 aa
 aa
+aC
+aa
+fY
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+OB
+fY
+aa
+aC
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aC
+aa
+fY
+AK
+nK
+oa
+os
+YY
+oz
+AK
+fY
+aa
+aC
 aa
 aa
 aa
@@ -27082,51 +26657,7 @@ aa
 aa
 aa
 aa
-cf
-cZ
-dd
-cf
-de
-dL
-dL
-dL
-de
-cf
-cK
-cL
-cf
-cf
-cf
-cf
-eq
-ez
-eK
-eQ
-cf
-cK
-cK
-cK
-dc
-cK
-cK
-cK
-cf
-cK
-cK
-cK
-cf
-cK
-cK
-dm
-cK
-cK
-cf
-iI
-cK
-cK
-cK
-iI
-cf
+aa
 aa
 aa
 aa
@@ -27185,6 +26716,50 @@ aa
 aa
 aa
 aa
+aC
+aa
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+aa
+aC
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aC
+aa
+fY
+Ie
+sz
+sz
+sz
+Aq
+BC
+Ie
+fY
+aa
+aC
 aa
 aa
 aa
@@ -27233,52 +26808,8 @@ aa
 aa
 aa
 aa
-cf
-cf
-cf
-cf
-cf
-cf
-cf
-cf
-cf
-cf
-cf
-cK
-cL
-cf
-dZ
-ek
-dZ
-cK
-cK
-cK
-cK
-cf
-cK
-cK
-fS
-fS
-fS
-cK
-cK
-cf
-gz
-cK
-cK
-gP
-cK
-fE
-fT
-gr
-cK
-cf
-gS
-cK
-cK
-cK
-dP
-cf
+aa
+aa
 aa
 aa
 aa
@@ -27337,6 +26868,50 @@ aa
 aa
 aa
 aa
+aC
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aC
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aC
+aa
+fY
+Ie
+nM
+ot
+ot
+ot
+oc
+Ie
+fY
+aa
+aC
 aa
 aa
 aa
@@ -27381,56 +26956,12 @@ aa
 aa
 aa
 aa
-cf
-cf
-cf
-cf
-cf
-cO
-da
-cf
-cK
-dm
-cK
-cf
-da
-cO
-cf
-cK
-cL
-cf
-ea
-ek
-ea
-cK
-cK
-cK
-cK
-cf
-cK
-fE
-fT
-fT
-fT
-gr
-cK
-cf
-gA
-cK
-cK
-cf
-cK
-fE
-fT
-gr
-cK
-cf
-iI
-cK
-cK
-cK
-iI
-cf
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -27489,6 +27020,50 @@ aa
 aa
 aa
 aa
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aC
+aa
+fY
+Ie
+nN
+oc
+oc
+oc
+NJ
+Ie
+fY
+aa
+aC
 aa
 aa
 aa
@@ -27531,58 +27106,14 @@ aa
 aa
 aa
 aa
-cd
-ce
-cg
-cl
-cn
-cG
-cf
-cP
-cK
-gl
-cK
-cK
-cK
-gl
-cK
-cP
-cf
-cM
-cL
-cf
-cM
-cK
-cK
-cK
-cK
-cK
-cK
-fc
-cK
-fE
-fT
-cK
-fT
-gr
-dP
-cf
-gB
-cK
-cK
-fT
-cK
-fE
-fT
-gr
-dP
-cf
-cK
-cK
-cK
-cK
-cK
-cf
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -27672,6 +27203,19 @@ aa
 aa
 aa
 aa
+aC
+aa
+fY
+Ie
+nW
+oo
+oo
+ym
+oW
+Ie
+fY
+aa
+aC
 aa
 aa
 aa
@@ -27683,58 +27227,45 @@ aa
 aa
 aa
 aa
-cd
-ce
-cg
-cl
-co
-cH
-cf
-cf
-cf
-cf
-cK
-cK
-cK
-cf
-cf
-cf
-cf
-cK
-cL
-cf
-ea
-ek
-ea
-cK
-cK
-cK
-cK
-cf
-cK
-fE
-fT
-fT
-fT
-gr
-cK
-cf
-gA
-cK
-cK
-fT
-cK
-fE
-fT
-gr
-cK
-cf
-iI
-cK
-cK
-cK
-iI
-cf
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -27824,6 +27355,19 @@ aa
 aa
 aa
 aa
+aC
+aa
+fY
+Ie
+Ie
+Ie
+Ie
+Ie
+Ie
+Ie
+fY
+aa
+aC
 aa
 aa
 aa
@@ -27835,58 +27379,45 @@ aa
 aa
 aa
 aa
-cd
-ce
-cg
-cF
-co
-cq
-cf
-cP
-cK
-gl
-cK
-cK
-cK
-gl
-cK
-cP
-cf
-cK
-cL
-cf
-eb
-ek
-em
-cK
-cK
-cK
-cK
-cf
-cK
-cK
-fU
-fU
-fU
-cK
-cK
-cf
-gA
-cK
-cK
-fT
-cK
-fE
-fT
-gr
-cK
-cf
-gS
-cK
-cK
-cK
-dP
-cf
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -27976,6 +27507,19 @@ aa
 aa
 aa
 aa
+aC
+aa
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+fY
+aa
+aC
 aa
 aa
 aa
@@ -27987,58 +27531,45 @@ aa
 aa
 aa
 aa
-cd
-ce
-cg
-cl
-co
-co
-cf
-gk
-da
-cf
-cK
-dd
-cK
-cf
-da
-gk
-cf
-cK
-cL
-cf
-cf
-cf
-cf
-eq
-ez
-eL
-eR
-cf
-cK
-dd
-cK
-cK
-cK
-dd
-cK
-cf
-gA
-cK
-cK
-fT
-cK
-fE
-fT
-gr
-cK
-cf
-iI
-cK
-cK
-cK
-iI
-cf
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -28128,6 +27659,7 @@ aa
 aa
 aa
 aa
+aC
 aa
 aa
 aa
@@ -28139,58 +27671,57 @@ aa
 aa
 aa
 aa
-cd
-ce
-cg
-cl
-co
-cf
-cf
-cf
-cf
-cf
-dl
-cf
-dl
-cf
-cf
-cf
-cf
-cK
-dV
-cf
+aC
 aa
 aa
-cf
-cf
-cf
-cf
-cf
-cf
-cf
-cf
-cf
-ga
-cf
-cf
-cf
-cf
-gA
-cK
-cK
-gQ
-cK
-dd
-cK
-cK
-cK
-cf
-cK
-iX
-cK
-iX
-cK
-cf
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -28280,6 +27811,19 @@ aa
 aa
 aa
 aa
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
+aC
 aa
 aa
 aa
@@ -28287,66 +27831,53 @@ aa
 aa
 aa
 aa
-cf
-cf
-cf
-cf
-cf
-cf
-cf
-cf
-cu
-cf
-cJ
-cQ
-cN
-cf
-cK
-dm
-cK
-cf
-cf
-cf
-dS
-cK
-cL
-cf
-cf
-cf
-cf
-cK
-cK
-cK
-cf
-cK
-cK
-dm
-cK
-cL
-cK
-dm
-cK
-cf
-cf
-cf
-cf
-cf
-gR
-cf
-cf
-cf
-cf
-cf
-cf
-cf
-jf
-cf
-cf
-cf
-cf
-gH
-gH
-gH
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 "}
@@ -28437,68 +27968,68 @@ aa
 aa
 aa
 aa
-cd
-ce
-cg
-cl
-cn
-co
-cf
-cv
-cD
-co
-co
-cf
-cK
-cK
-cK
-cf
-cK
-cK
-cK
-cf
-cf
-cf
-dT
-cK
-cL
-cf
-ec
-ec
-en
-cL
-cL
-dP
-cf
-cK
-cK
-cL
-cL
-cL
-cL
-cL
-cK
-cK
-cf
-cK
-cK
-dm
-cL
-dm
-cK
-cK
-cK
-cK
-cf
-cK
-cL
-cK
-cf
-cK
-dc
-cK
-cK
-gH
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 "}
@@ -28589,68 +28120,68 @@ aa
 aa
 aa
 aa
-cd
-ce
-cg
-cl
-co
-co
-cf
-cv
-cE
-co
-cq
-cf
-cK
-cK
-cK
-cf
-cf
-dl
-cf
-cf
-cf
-cf
-cf
-cK
-cL
-cf
-ec
-ec
-en
-cL
-cL
-cK
-cf
-cK
-cL
-cL
-cK
-cK
-cK
-cL
-cL
-cK
-cf
-cK
-cL
-mR
-cL
-cL
-cL
-mR
-cL
-cK
-cf
-cK
-cL
-cK
-cf
-cK
-cK
-cK
-cK
-gH
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 "}
@@ -28741,68 +28272,68 @@ aa
 aa
 aa
 aa
-cd
-ce
-cg
-cl
-co
-co
-cf
-cv
-cE
-co
-co
-cu
-cL
-cL
-cL
-cK
-dm
-cL
-cK
-cK
-dm
-cK
-cf
-cK
-dV
-cf
-ed
-ed
-cf
-cK
-cL
-cK
-cf
-cM
-cL
-cK
-cK
-cL
-cK
-cK
-cL
-dP
-cf
-cM
-dV
-gH
-gH
-gX
-gH
-gH
-ii
-dP
-cf
-gS
-cL
-dP
-cf
-cM
-cK
-cK
-kv
-gH
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 "}
@@ -28893,68 +28424,68 @@ aa
 aa
 aa
 aa
-cd
-ce
-cg
-cl
-co
-cq
-cf
-cw
-co
-co
-co
-cf
-cK
-cK
-cL
-cK
-cK
-cL
-cK
-cK
-cK
-cK
-cK
-cK
-cL
-cK
-cK
-cK
-cK
-cK
-cL
-cK
-cf
-cK
-cL
-cK
-cL
-cf
-cL
-cK
-cL
-cK
-cf
-cK
-cL
-gH
-cK
-cK
-cK
-gH
-cL
-cK
-cf
-cK
-cL
-cK
-cf
-cK
-cK
-cK
-kv
-gH
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 "}
@@ -29045,68 +28576,68 @@ aa
 aa
 aa
 aa
-cd
-ce
-cg
-cm
-co
-co
-cu
-co
-co
-co
-cq
-cf
-cM
-cK
-cL
-cL
-cL
-cL
-cL
-cL
-cL
-cL
-cL
-cL
-cL
-cL
-cL
-cL
-cL
-cL
-cL
-cL
-eS
-cL
-cL
-cK
-dP
-cf
-cM
-cK
-cL
-cL
-gC
-cL
-cL
-gH
-cK
-cK
-cK
-gH
-cL
-cL
-iJ
-cL
-cL
-cL
-jw
-cK
-cK
-ka
-kw
-gH
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 "}
@@ -29197,68 +28728,68 @@ aa
 aa
 aa
 aa
-cd
-ce
-cg
-cl
-co
-cq
-cf
-cx
-co
-co
-co
-cf
-cK
-cK
-cL
-cK
-cK
-cL
-cK
-cK
-cK
-cK
-cK
-cK
-cL
-cK
-cK
-cK
-cK
-cK
-cL
-cK
-cf
-cK
-cL
-cK
-cL
-cf
-cL
-cK
-cL
-cK
-cf
-cK
-cL
-gH
-cK
-cK
-cK
-gH
-cL
-cK
-cf
-cK
-cL
-cK
-cf
-cK
-cK
-cK
-kv
-gH
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 "}
@@ -29349,68 +28880,68 @@ aa
 aa
 aa
 aa
-cd
-ce
-cg
-cl
-co
-co
-cf
-cy
-co
-co
-co
-cu
-cL
-cL
-cL
-cK
-dd
-cL
-cK
-cK
-dd
-cK
-cf
-cK
-dV
-cf
-ed
-ed
-cf
-cK
-cL
-cK
-cf
-cM
-cL
-cK
-cK
-cL
-cK
-cK
-cL
-dP
-cf
-cM
-dV
-gH
-gH
-gX
-gH
-gH
-ii
-dP
-cf
-gS
-cL
-dP
-cf
-cM
-cK
-cK
-kv
-gH
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 "}
@@ -29501,68 +29032,68 @@ aa
 aa
 aa
 aa
-cd
-ce
-cg
-cl
-co
-co
-cf
-cy
-co
-co
-cq
-cf
-cK
-cK
-cK
-cf
-cf
-dn
-cf
-cf
-cf
-cf
-cf
-cK
-cL
-cf
-ec
-ec
-en
-cL
-cL
-cK
-cf
-cK
-cL
-cL
-cK
-cK
-cK
-cL
-cL
-cK
-cf
-cK
-cL
-mU
-cL
-cL
-cL
-mU
-cL
-cK
-cf
-cK
-cL
-cK
-cf
-cK
-cK
-cK
-cK
-gH
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 "}
@@ -29653,68 +29184,68 @@ aa
 aa
 aa
 aa
-cd
-ce
-cg
-cl
-cp
-co
-cf
-cy
-cp
-co
-co
-cf
-cK
-cK
-cK
-cf
-cK
-cK
-cK
-cf
-cf
-cf
-cM
-cK
-cL
-cf
-ec
-ec
-en
-cL
-cL
-dP
-cf
-cK
-cK
-cL
-cL
-cL
-cL
-cL
-cK
-cK
-cf
-cK
-cK
-dd
-cL
-dd
-cK
-cK
-cK
-cK
-cf
-cK
-cL
-cK
-cf
-cK
-dd
-cK
-cK
-gH
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 "}
@@ -29807,66 +29338,66 @@ aa
 aa
 aa
 aa
-cf
-cf
-cf
-cf
-cf
-cf
-cf
-cf
-cu
-cf
-cN
-cR
-db
-cf
-cK
-dd
-cK
-cf
-cf
-cf
-cK
-cK
-cL
-cf
-cf
-cf
-cf
-cK
-cK
-cK
-cf
-cK
-cK
-dd
-cK
-cL
-cK
-dd
-cK
-cf
-cf
-cf
-cf
-cf
-gT
-cf
-cf
-cf
-cf
-cf
-cf
-cf
-jg
-cf
-cf
-cf
-cf
-gH
-gH
-gH
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 "}
@@ -29963,58 +29494,58 @@ aa
 aa
 aa
 aa
-cd
-ce
-cg
-cl
-co
-cf
-cf
-cf
-cf
-cf
-dn
-cf
-dn
-cf
-cf
-cf
-cf
-cK
-dV
-cf
 aa
 aa
-cf
-cf
-cf
-cf
-cf
-cf
-cf
-cf
-cf
-gb
-cf
-cf
-cf
-cf
-gD
-cK
-gH
-dc
-cK
-dc
-gH
-gD
-cK
-cf
-iK
-dc
-cK
-dc
-cK
-cf
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -30115,58 +29646,58 @@ aa
 aa
 aa
 aa
-cd
-ce
-cg
-cl
-co
-co
-cf
-cS
-dc
-cK
-cK
-cf
-cK
-cK
-dc
-cS
-cf
-cK
-cL
-cf
-cf
-cf
-cf
-er
-eA
-eM
-eD
-cf
-fp
-dm
-cK
-cK
-cK
-dm
-gt
-cf
-cK
-cK
-gI
-cK
-cK
-cK
-hj
-cK
-cK
-cf
-iL
-fS
-cK
-cK
-cK
-cf
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -30267,58 +29798,58 @@ aa
 aa
 aa
 aa
-cd
-ce
-cg
-cm
-co
-cq
-cf
-cT
-cK
-cK
-cK
-cf
-cK
-cK
-cK
-cT
-cf
-cK
-cL
-cf
-ee
-cK
-cK
-cK
-cK
-cK
-cK
-cf
-cK
-cK
-cK
-cK
-cK
-cK
-cK
-cf
-cf
-cf
-gJ
-cK
-cK
-cK
-hk
-cf
-cf
-cf
-iM
-iY
-cK
-cK
-dP
-cf
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -30419,58 +29950,58 @@ aa
 aa
 aa
 aa
-cd
-ce
-cg
-cl
-co
-co
-cf
-cU
-cK
-cK
-do
-cf
-dB
-cK
-cK
-cU
-cf
-cK
-cL
-cf
-ef
-cK
-cK
-es
-eB
-eN
-cK
-cf
-cK
-cK
-fV
-cK
-fV
-cK
-cK
-cf
-gD
-cK
-gH
-cK
-cK
-cK
-gH
-gD
-cK
-cf
-cK
-cK
-cK
-cK
-cK
-cf
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -30571,58 +30102,58 @@ aa
 aa
 aa
 aa
-cd
-ce
-cg
-cl
-cp
-cI
-cf
-cK
-cK
-cK
-cK
-cf
-cK
-cK
-cK
-cK
-cf
-cM
-cL
-cf
-eg
-cK
-cK
-cf
-cf
-cf
-cK
-fc
-cK
-cK
-cK
-cK
-cK
-cK
-dP
-cf
-cK
-cK
-gK
-cK
-cK
-cK
-hl
-cK
-cK
-cf
-cK
-cK
-cK
-cK
-cK
-cf
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -30725,56 +30256,56 @@ aa
 aa
 aa
 aa
-cf
-cf
-cf
-cf
-cf
-cV
-dd
-cK
-dp
-cf
-dp
-cK
-dd
-cV
-cf
-cK
-cL
-cf
-eh
-cK
-cK
-et
-eC
-eO
-cK
-cf
-cK
-cK
-fV
-cK
-fV
-cK
-cK
-cf
-cf
-cf
-gL
-cK
-cK
-cK
-hm
-cf
-cf
-cf
-cf
-cf
-jh
-cf
-cf
-cf
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -30881,52 +30412,52 @@ aa
 aa
 aa
 aa
-cf
-cf
-cf
-cf
-cf
-cf
-cf
-cf
-cf
-cf
-cf
-cK
-cL
-cf
-ei
-cK
-cK
-cK
-cK
-cK
-cK
-cf
-cK
-cK
-cK
-cK
-cK
-cK
-cK
-cf
-gD
-cK
-gH
-cK
-cK
-cK
-gH
-gD
-cK
-cf
-iN
-iZ
-cK
-iZ
-jx
-cf
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -31034,51 +30565,51 @@ aa
 aa
 aa
 aa
-cf
-de
-cK
-cf
-co
-co
-cn
-co
-co
-cf
-cK
-cL
-cf
-cf
-cf
-cf
-eu
-eD
-eP
-eu
-cf
-fq
-cK
-cK
-dd
-cK
-cK
-gu
-cf
-cK
-cK
-gM
-cK
-cK
-cK
-hn
-cK
-cK
-cf
-cf
-cf
-cK
-cf
-cf
-cf
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -31186,51 +30717,51 @@ aa
 aa
 aa
 aa
-cf
-cK
-cK
-cf
-co
-co
-co
-co
-co
-cf
-cK
-dV
-cf
 aa
 aa
-cf
-cf
-cf
-cf
-cf
-cf
-cf
-cf
-cf
-cf
-cf
-cf
-cf
-cf
-cf
-cf
-gN
-cK
-cK
-cK
-ho
-cf
-cf
-cf
-iN
-iZ
-cK
-iZ
-jx
-cf
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -31338,19 +30869,6 @@ aa
 aa
 aa
 aa
-cf
-cM
-cK
-dq
-co
-co
-co
-co
-co
-dU
-cL
-cL
-cf
 aa
 aa
 aa
@@ -31366,23 +30884,36 @@ aa
 aa
 aa
 aa
-cf
-gE
-cK
-cK
-cK
-cK
-cK
-cK
-cK
-ij
-cf
-cf
-cf
-cK
-cf
-cf
-cf
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -31490,19 +31021,6 @@ aa
 aa
 aa
 aa
-cf
-df
-cK
-cf
-co
-co
-co
-co
-co
-cf
-cK
-cK
-cf
 aa
 aa
 aa
@@ -31518,23 +31036,36 @@ aa
 aa
 aa
 aa
-cf
-gF
-cK
-cK
-dd
-cK
-dd
-cK
-cK
-ik
-cf
-iN
-iZ
-cK
-iZ
-jx
-cf
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -31642,19 +31173,6 @@ aa
 aa
 aa
 aa
-cf
-cf
-dd
-cf
-co
-co
-cp
-co
-co
-cf
-cK
-cK
-cf
 aa
 aa
 aa
@@ -31670,23 +31188,36 @@ aa
 aa
 aa
 aa
-cf
-cf
-cf
-cf
-cf
-gU
-cf
-cf
-cf
-cf
-cf
-cf
-cf
-cf
-cf
-cf
-cf
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -31795,18 +31326,6 @@ aa
 aa
 aa
 aa
-cf
-cf
-cf
-cf
-cf
-cf
-cf
-cf
-cf
-cf
-cf
-cf
 aa
 aa
 aa
@@ -31824,13 +31343,25 @@ aa
 aa
 aa
 aa
-cf
-gO
-cK
-cK
-cK
-gO
-cf
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -31976,13 +31507,13 @@ aa
 aa
 aa
 aa
-cf
-gO
-cK
-cK
-cK
-gO
-cf
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -32128,13 +31659,13 @@ aa
 aa
 aa
 aa
-cf
-gO
-cK
-gV
-cK
-gO
-cf
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -32280,13 +31811,13 @@ aa
 aa
 aa
 aa
-cf
-cf
-cf
-cf
-cf
-cf
-cf
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa

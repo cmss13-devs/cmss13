@@ -17,6 +17,7 @@
 	var/hibernate = FALSE
 
 	var/datum/hive_status/linked_hive = null
+	var/hivenumber = XENO_HIVE_NORMAL
 
 	// Which node is responsible for keeping this weed patch alive?
 	var/obj/effect/alien/weeds/node/parent = null
@@ -31,8 +32,11 @@
 			name = "hive [name]"
 			health = WEED_HEALTH_HIVE
 		node.add_child(src)
+		hivenumber = linked_hive.hivenumber
+	else
+		linked_hive = hive_datum[hivenumber]
 
-		set_hive_data(src, linked_hive.hivenumber)
+	set_hive_data(src, hivenumber)
 
 	update_icon()
 	update_neighbours()
@@ -323,8 +327,8 @@
 		linked_hive = hive
 	else if (istype(X) && X.hive)
 		linked_hive = X.hive
-	else 
-		linked_hive = hive_datum[XENO_HIVE_NORMAL]
+	else
+		linked_hive = hive_datum[hivenumber]
 
 	
 	. = ..(pos, src)

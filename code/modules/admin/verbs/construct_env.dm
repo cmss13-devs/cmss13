@@ -32,10 +32,68 @@
 	t=/obj/structure/table/woodentable,/obj/item/device/flashlight/lamp/green,/turf/open/floor/wood
 	f=/turf/open/floor/wood
 */
+/client/proc/construct_env_dmm()
+	set category = "Event"
+	set name = "C: Construct Map from DMM"
+
+	if(!admin_holder || !(admin_holder.rights & (R_ADMIN|R_DEBUG)))
+		to_chat(usr, "Only administrators may use this command.")
+		return
+
+	var/input = input(usr, "Enter a DMM script.", "Construct Map") as file|null
+	if(!input)
+		return
+
+	var/x
+	var/y
+	var/z
+
+	switch(alert("Where would you like to construct the map?", "Choose Position", "Here", "Custom"))
+		if("Here")
+			x = usr.x
+			y = usr.y
+			z = usr.z
+		if("Custom")
+			var/usr_x = input(usr, "Enter X position", "Map Position") as num|null
+			if(!usr_x)
+				return
+			var/usr_y = input(usr, "Enter Y position", "Map Position") as num|null
+			if(!usr_y)
+				return
+			var/usr_z = input(usr, "Enter Z position. Set to 0 to put on a new zlevel", "Map Position") as num|null
+
+			x = usr_x
+			y = usr_y
+			z = usr_z
+
+	if(alert(usr, "Are you sure you want to construct this DMM file at X: [x], Y: [y], Z: [z]?", "Construct Map", "Yes", "No") == "No")
+		return
+
+	to_chat(usr, SPAN_NOTICE("Constructing map..."))
+
+	var/show_z = z
+	if(show_z == 0)
+		show_z = (world.maxz + 1)
+
+	message_staff("[key_name_admin(usr)] is constructing an environment using a DMM file.", x, y, show_z)
+
+	try
+		var/datum/map_load_metadata/M = maploader.load_map(input, x, y, z, TRUE, FALSE, FALSE, TRUE)
+		to_chat(src, SPAN_NOTICE("Map has been fully constructed!"))
+		
+		for(var/obj/O in M.atoms_to_initialise)
+			O.update_icon()
+			O.set_pixel_location()
+		message_staff("[key_name_admin(usr)] has finished constructing an environment using a DMM file.", x, y, show_z)
+	catch (var/ex)
+		to_chat(src, SPAN_NOTICE("Encountered an error whilst constructing the map! [ex]"))
+		message_staff("[key_name_admin(usr)] failed to construct the DMM file.")
+
+
 
 /client/proc/construct_env()
 	set category = "Event"
-	set name = "Construct Environment"
+	set name = "C: Construct Environment"
 
 	if(!admin_holder || !(admin_holder.rights & R_ADMIN))
 		to_chat(usr, "Only administrators may use this command.")

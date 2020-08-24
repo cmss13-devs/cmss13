@@ -121,18 +121,17 @@
 
 	appearance_flags = TILE_BOUND
 
-/obj/structure/machinery/power/apc/New(turf/loc, var/ndir, var/building=0)
-	..()
+/obj/structure/machinery/power/apc/Initialize(mapload, var/ndir, var/building=0)
+	. = ..()
 
 	//Offset 24 pixels in direction of dir
 	//This allows the APC to be embedded in a wall, yet still inside an area
+
 	if(building)
 		dir = ndir
-	tdir = dir //To fix Vars bug
-	dir = SOUTH
 
-	pixel_x = (tdir & 3) ? 0 : (tdir == 4 ? 24 : -24)
-	pixel_y = (tdir & 3) ? (tdir == 1 ? 24 : -24) : 0
+	set_pixel_location()
+
 	if(building == 0)
 		init()
 	else
@@ -151,6 +150,13 @@
 
 	if(!start_charge && z == 1 && prob(10))
 		set_broken()
+
+/obj/structure/machinery/power/apc/set_pixel_location()
+	tdir = dir //To fix Vars bug
+	dir = SOUTH
+
+	pixel_x = (tdir & 3) ? 0 : (tdir == 4 ? 24 : -24)
+	pixel_y = (tdir & 3) ? (tdir == 1 ? 24 : -24) : 0
 
 /obj/structure/machinery/power/apc/Dispose()
 	if(terminal)

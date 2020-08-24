@@ -10,6 +10,11 @@
 		document_holder_present = TRUE
 		break
 
+	if(!objective_spawn_close || !objective_spawn_medium || !objective_spawn_far || !objective_spawn_science)
+		//We've been dynamically loaded in
+		qdel(src)
+		return
+
 	switch(name)
 		if("Objective Landmark Close")
 			if(document_holder_present)

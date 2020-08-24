@@ -59,7 +59,8 @@ var/global/dmm_suite/preloader/_preloader = new
 	if(!y_offset)
 		y_offset = 1
 	if(!z_offset)
-		z_offset = world.maxz + 1
+		world.maxz += 1
+		z_offset = world.maxz
 
 	var/list/bounds = list(1.#INF, 1.#INF, 1.#INF, -1.#INF, -1.#INF, -1.#INF)
 	var/list/grid_models = list()
@@ -381,7 +382,7 @@ var/global/dmm_suite/preloader/_preloader = new
 
 	if(crds)
 		if(!no_changeturf && ispath(path, /turf))
-			. = crds.ChangeTurf(path, FALSE, TRUE)
+			. = crds.ChangeTurf(path, FALSE)
 		else
 			. = create_atom(path, crds)//first preloader pass
 
@@ -509,6 +510,10 @@ var/global/dmm_suite/preloader/_preloader = new
 		target_path = path
 
 /dmm_suite/preloader/proc/load(atom/what)
+	if(isarea(what))
+		use_preloader = FALSE
+		return
+
 	for(var/attribute in attributes)
 		var/value = attributes[attribute]
 		if(islist(value))

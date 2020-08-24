@@ -30,5 +30,8 @@ var/global/list/clan_locations = list()
 /obj/effect/landmark/clan_spawn/New()
     . = ..()
     var/zlevel = src.z
-    clan_locations["[zlevel]"] += loc
+
+    if("[zlevel]" in clan_locations)
+        clan_locations["[zlevel]"] += loc
+    
     qdel(src)

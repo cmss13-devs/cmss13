@@ -231,6 +231,7 @@
 	icon_state = "generic_headset"
 	item_state = "headset"
 	frequency = PUB_FREQ
+	keyslot1 = new /obj/item/device/encryptionkey/public
 	var/headset_hud_on = 1
 
 
@@ -283,7 +284,6 @@
 	to_chat(usr, SPAN_NOTICE("You toggle [src]'s headset HUD [headset_hud_on ? "on":"off"]."))
 	playsound(src,'sound/machines/click.ogg', 20, 1)
 
-
 /obj/item/device/radio/headset/almayer/ce
 	name = "chief engineer's headset"
 	desc = "The headset of the guy in charge of spooling engines, managing MTs, and tearing up the floor for scrap metal. Of robust and sturdy construction. Channels are as follows: :e - engineering, :v - marine command, :m - medical, :u - requisitions, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad."
@@ -301,6 +301,12 @@
 	desc = "Useful for coordinating maintenance bars and orbital bombardments. Of robust and sturdy construction. To access the engineering channel, use :e."
 	icon_state = "eng_headset"
 	keyslot1 = new /obj/item/device/encryptionkey/engi
+
+/obj/item/device/radio/headset/almayer/chef
+	name = "kitchen radio headset"
+	desc = "Used by the onboard kitchen staff, filled with background noise of sizzling pots. Can coordinate with the supply channel, using :u."
+	icon_state = "req_headset"
+	keyslot1 = new /obj/item/device/encryptionkey/req/ct
 
 /obj/item/device/radio/headset/almayer/doc
 	name = "medical radio headset"
@@ -353,6 +359,12 @@
 	desc = "Used by the CL to convince people to sign NDAs. Channels are as follows: :v - marine command, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :e - engineering, :m - medbay, :u - requisitions, :j - JTAC, :z - intelligence, :y for WY."
 	icon_state = "wy_headset"
 	keyslot1 = new /obj/item/device/encryptionkey/mcom/cl
+
+/obj/item/device/radio/headset/almayer/rep
+	name = "representative radio headset"
+	desc = "This headset was the worst invention made, constant chatter comes from it."
+	icon_state = "wy_headset"
+	keyslot1 = new /obj/item/device/encryptionkey/mcom/rep
 
 /obj/item/device/radio/headset/almayer/mcom/cdrcom
 	name = "marine commanding officer headset"

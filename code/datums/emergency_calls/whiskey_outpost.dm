@@ -49,7 +49,6 @@
 	to_chat(mob, "<B>Objectives:</b> [objectives]")
 	RoleAuthority.randomize_squad(mob)
 	mob.sec_hud_set_ID()
-	mob.sec_hud_set_implants()
 	mob.hud_set_squad()
 
 	data_core.manifest_inject(mob) //Put people in crew manifest

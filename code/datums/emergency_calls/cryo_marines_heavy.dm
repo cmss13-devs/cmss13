@@ -54,7 +54,6 @@
 	
 	RoleAuthority.randomize_squad(H)
 	H.sec_hud_set_ID()
-	H.sec_hud_set_implants()
 	H.hud_set_squad()
 
 	// Have to add radio headsets AFTER squad assignment, because the self-setting headset depends on things set in randomize_squad

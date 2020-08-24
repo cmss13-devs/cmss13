@@ -79,7 +79,7 @@
 		return
 	J = RoleAuthority.roles_for_mode[role]
 	var/tpos = J.spawn_positions
-	var/num = input("How many slots role [J.title] should have, currently [J.get_total_positions(1)] / [J.current_positions]?","Number:", tpos) as num|null
+	var/num = input("How many slots role [J.title] should have, currently [J.current_positions] / [J.get_total_positions(1)]?","Number:", tpos) as num|null
 	if(!num)
 		return
 	if(!RoleAuthority.modify_role(J, num))
@@ -87,10 +87,18 @@
 	message_staff(SPAN_NOTICE("[key_name(usr)] adjusted job slots of [J.title] to be [num]."))
 
 /client/proc/check_antagonists()
-	set name = "S: Round Status"
+	set name = "S: Check Antagonists"
 	set category = "Round"
 	if(admin_holder)
 		admin_holder.check_antagonists()
+		log_admin("[key_name(usr)] checked antagonists.")
+	return
+
+/client/proc/check_round_status()
+	set name = "S: Round Status"
+	set category = "Round"
+	if(admin_holder)
+		admin_holder.check_round_status()
 		log_admin("[key_name(usr)] checked round status.")
 	return
 

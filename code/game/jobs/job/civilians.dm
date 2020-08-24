@@ -1,8 +1,3 @@
-//Chief Medical Officer
-/datum/job/civilian
-	department_flag = ROLEGROUP_MARINE_MED_SCIENCE
-	gear_preset = "Colonist"
-
 /datum/job/civilian
 	department_flag = ROLEGROUP_MARINE_MED_SCIENCE
 	gear_preset = "Colonist"
@@ -34,6 +29,23 @@
 
 /datum/job/civilian/professor/generate_entry_message()
 	entry_message_body = "You are a civilian, and are not subject to follow military chain of command, but you do work for the USCM. You have final authority over the medical department, medications, and treatments. Make sure that the doctors and nurses are doing their jobs and keeping the marines healthy and strong."
+	return ..()
+
+/datum/job/civilian/nurse
+	title = JOB_NURSE
+	flag = ROLE_CIVILIAN_NURSE
+	total_positions = 1
+	spawn_positions = 1
+	supervisors = "the chief medical officer"
+	selection_class = "job_doctor"
+	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE
+	gear_preset = "USCM Nurse"
+	minimum_playtimes = list(
+		JOB_SQUAD_ROLES = HOURS_3
+	)
+
+/datum/job/civilian/nurse/generate_entry_message(mob/living/carbon/human/H)
+	entry_message_body = "You are a civilian, and are not subject to follow military chain of command, but you do work for the USCM. You are tasked with keeping the marines healthy and strong. You are also an expert when it comes to medication and treatment, but you do not know anything about surgery. Focus on assisting doctors and triaging wounded marines."
 	return ..()
 
 //Doctor
@@ -74,7 +86,7 @@
 	supervisors = "chief medical officer"
 	selection_class = "job_researcher"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE
-	gear_preset = "USCM Researcer"
+	gear_preset = "USCM Researcher"
 	minimum_playtimes = list(
 		JOB_DOCTOR = HOURS_3
 	)

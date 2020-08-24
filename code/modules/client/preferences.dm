@@ -9,6 +9,7 @@ var/global/list/special_roles = list(
 	"Survivor" = 0,
 	"Synth Survivor" = 1,
 	"Predator" = 1,
+	"Agent" = 0,
 )
 
 var/global/list/stylesheets = list(
@@ -131,6 +132,10 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/job_marines_high = 0
 	var/job_marines_med = 0
 	var/job_marines_low = 0
+
+	var/job_fluff_high = 0
+	var/job_fluff_med = 0
+	var/job_fluff_low = 0
 
 	//Keeps track of preferrence for not getting any wanted jobs
 	var/alternate_option = RETURN_TO_LOBBY //Be a marine.
@@ -273,6 +278,9 @@ var/const/MAX_SAVE_SLOTS = 10
 			if("Synth Survivor")
 				ban_check_name = "Synth Survivor"
 
+			if("Agent")
+				ban_check_name = "Agent"
+
 		if(jobban_isbanned(user, ban_check_name))
 			dat += "<b>Be [role_name]:</b> <font color=red><b>\[BANNED]</b></font><br>"
 		else if(!can_play_special_job(user.client, ban_check_name))
@@ -297,6 +305,7 @@ var/const/MAX_SAVE_SLOTS = 10
 
 		n++
 
+	dat += "<br>"
 	dat += "\t<a href='?_src_=prefs;preference=job;task=menu'><b>Set Marine Role Preferences</b></a>"
 	dat += "</div>"
 
@@ -449,7 +458,7 @@ var/const/MAX_SAVE_SLOTS = 10
 //splitJobs 	- Allows you split the table by job. You can make different tables for each department by including their heads. Defaults to CE to make it look nice.
 //width	 		- Screen' width. Defaults to 550 to make it look nice.
 //height 	 	- Screen's height. Defaults to 500 to make it look nice.
-/datum/preferences/proc/SetChoices(mob/user, limit = 13, list/splitJobs = list(), width = 800, height = 850)
+/datum/preferences/proc/SetChoices(mob/user, limit = 16, list/splitJobs = list(), width = 800, height = 850)
 	if(!RoleAuthority) 
 		return
 
@@ -528,7 +537,7 @@ var/const/MAX_SAVE_SLOTS = 10
 
 		HTML += "</td></tr>"
 
-	HTML += "</td'></tr></table>"
+	HTML += "</td></tr></table>"
 	HTML += "</center></table>"
 
 	if(user.client.prefs) //Just makin sure
@@ -625,6 +634,10 @@ var/const/MAX_SAVE_SLOTS = 10
 	job_marines_med = 0
 	job_marines_low = 0
 
+	job_fluff_high = 0
+	job_fluff_med = 0
+	job_fluff_low = 0
+
 /datum/preferences/proc/GetJobDepartment(var/datum/job/job, var/level)
 	if(!job || !level)	
 		return FALSE
@@ -661,6 +674,14 @@ var/const/MAX_SAVE_SLOTS = 10
 					return job_marines_med
 				if(3)
 					return job_marines_low
+		if(ROLEGROUP_MARINE_FLUFF)
+			switch(level)
+				if(1)
+					return job_fluff_high
+				if(2)
+					return job_fluff_med
+				if(3)
+					return job_fluff_low
 	return FALSE
 
 /datum/preferences/proc/SetJobDepartment(var/datum/job/job, var/level)
@@ -672,6 +693,8 @@ var/const/MAX_SAVE_SLOTS = 10
 			job_medsci_med |= job_medsci_high
 			job_engi_med |= job_engi_high
 			job_marines_med |= job_marines_high
+			job_fluff_med |= job_fluff_high
+			job_fluff_high = 0
 			job_command_high = 0
 			job_medsci_high = 0
 			job_engi_high = 0
@@ -723,6 +746,17 @@ var/const/MAX_SAVE_SLOTS = 10
 					job_marines_med |= job.flag
 				if(3)
 					job_marines_low |= job.flag
+		if(ROLEGROUP_MARINE_FLUFF)
+			job_fluff_high &= ~job.flag
+			job_fluff_med &= ~job.flag
+			job_fluff_low &= ~job.flag
+			switch(level)
+				if(1)
+					job_fluff_high = job.flag
+				if(2)
+					job_fluff_med |= job.flag
+				if(3)
+					job_fluff_low |= job.flag
 	return TRUE
 
 /datum/preferences/proc/process_link(mob/user, list/href_list)

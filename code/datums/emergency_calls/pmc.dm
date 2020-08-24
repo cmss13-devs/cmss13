@@ -26,8 +26,6 @@
 	var/mob/living/carbon/human/mob = new(spawn_loc)
 	M.transfer_to(mob, TRUE)
 
-	ticker.mode.traitors += mob.mind
-
 	if(!leader)       //First one spawned is always the leader.
 		leader = mob
 		to_chat(mob, SPAN_WARNING(FONT_SIZE_BIG("You are a Weston-Yamada squad leader!")))
@@ -113,8 +111,6 @@
 	H.key = M.key
 	if(H.client)
 		H.client.change_view(world_view_size)
-
-	ticker.mode.traitors += H.mind
 
 	if(!leader)       //First one spawned is always the leader.
 		leader = H

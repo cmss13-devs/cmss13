@@ -52,16 +52,12 @@ var/global/list/global_map = null
 	//5 - empty space
 
 
-	//////////////
+//////////////
 var/list/paper_tag_whitelist = list("center","p","div","span","h1","h2","h3","h4","h5","h6","hr","pre",	\
 	"big","small","font","i","u","b","s","sub","sup","tt","br","hr","ol","ul","li","caption","col",	\
 	"table","td","th","tr")
 
-	///////////////
-var/eventchance = 10 //% per 5 mins
-var/event = FALSE
-var/hadevent = 0
-	///////////////
+///////////////
 
 var/diary = null
 var/round_stats = null

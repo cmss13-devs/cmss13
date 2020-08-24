@@ -35,6 +35,8 @@
 	can_hold = list() // any
 	cant_hold = list(/obj/item/disk/nuclear)
 
+	storage_flags = STORAGE_GATHER_SIMULTAENOUSLY|STORAGE_QUICK_GATHER|STORAGE_CLICK_GATHER
+
 /obj/item/storage/bag/trash/update_icon()
 	if(contents.len == 0)
 		icon_state = "trashbag0"
@@ -44,6 +46,8 @@
 		icon_state = "trashbag2"
 	else icon_state = "trashbag3"
 
+/obj/item/storage/bag/trash/open(mob/user)
+	return
 
 // -----------------------------
 //        Plastic Bag

@@ -1,3 +1,8 @@
+#define EQUIPMENT_PRESET_STUB 			0
+#define EQUIPMENT_PRESET_START_OF_ROUND 1
+#define EQUIPMENT_PRESET_EXTRA 			2
+#define EQUIPMENT_PRESET_START_OF_ROUND_WO 4
+
 /datum/equipment_preset
 	var/name = "Preset"
 	var/flags = EQUIPMENT_PRESET_STUB

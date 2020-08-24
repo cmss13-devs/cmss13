@@ -4,9 +4,6 @@
 	required_players = 0
 	latejoin_larva_drop = 0
 
-	uplink_welcome = "Syndicate Uplink Console:"
-	uplink_uses = 10
-
 /datum/game_mode/announce()
 	to_world("<B>The current game mode is - Extended!</B>")
 
@@ -37,6 +34,7 @@
 		round_statistics.end_round_player_population = clients.len
 		round_statistics.log_round_statistics()
 
+	announce_agents()
 	declare_completion_announce_predators()
 	declare_completion_announce_medal_awards()
 	return 1

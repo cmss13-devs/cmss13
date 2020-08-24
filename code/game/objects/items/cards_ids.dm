@@ -178,6 +178,11 @@
 	icon_state = "gold"
 	item_state = "gold_id"
 
+/obj/item/card/id/visa
+	name = "battered-up visa card"
+	desc = "A corporate holo-badge. It's a unique Corporate orange and white."
+	icon_state = "visa"
+
 /obj/item/card/id/silver/cl
 	name = "corporate holo-badge"
 	desc = "A corporate holo-badge. It's a unique Corporate orange and white."

@@ -185,7 +185,6 @@
 			if(is_sharp(obj) || istype(obj, /obj/item/shard/shrapnel))
 				H.embedded_items -= obj
 			user.count_niche_stat(STATISTICS_NICHE_SURGERY_SHRAPNEL)
-			H.sec_hud_set_implants()
 
 	else if(affected.hidden)
 		user.visible_message(SPAN_NOTICE("[user] takes something out of incision on [target]'s [affected.display_name] with \the [tool]."), \

@@ -5,10 +5,6 @@
 		message_admins("[usr.key] has attempted to override the admin panel!")
 		return
 
-	if(ticker.mode && ticker.mode.check_antagonists_topic(href, href_list))
-		check_antagonists()
-		return
-
 	if(href_list["editrights"])
 		if(!check_rights(R_PERMISSIONS))
 			message_admins("[key_name_admin(usr)] attempted to edit the admin permissions without sufficient rights.")
@@ -1693,6 +1689,13 @@
 	else if(href_list["ahelp"])
 		
 		topic_ahelps(href_list)
+
+	else if(href_list["agent"] == "showobjectives")
+		if(!check_rights(R_MOD))	
+			return
+
+		var/mob/M = locate(href_list["extra"])
+		show_agent_objectives(M)
 
 	// player info stuff
 

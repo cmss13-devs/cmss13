@@ -111,6 +111,11 @@
 	icon_state = "cap_key"
 	channels = list("Command" = 1, SQUAD_NAME_1 = 0, SQUAD_NAME_2 = 0, SQUAD_NAME_3 = 0, SQUAD_NAME_4 = 0, "Engi" = 1, "MedSci" = 1, "Req" = 1, "JTAC" = 1, "Intel" = 1, "WY" = 1)
 
+/obj/item/device/encryptionkey/mcom/rep
+	name = "\improper Representative radio encryption key"
+	icon_state = "cap_key"
+	channels = list("Command" = 1, "Almayer" = 1)
+
 /obj/item/device/encryptionkey/po
 	name = "\improper Marine Pilot Officer Radio Encryption Key"
 	icon_state = "cap_key"

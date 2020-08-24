@@ -12,7 +12,11 @@ var/datum/mob_hud/huds = list(
 	MOB_HUD_SQUAD = new /datum/mob_hud/squad(),
 	MOB_HUD_XENO_HOSTILE = new /datum/mob_hud/xeno_hostile(),
 	MOB_HUD_PRED_CLAN = new /datum/mob_hud/pred_clan(),
-	MOB_HUD_SQUAD_OBSERVER	= new /datum/mob_hud/squad/observer()
+	MOB_HUD_SQUAD_OBSERVER	= new /datum/mob_hud/squad/observer(),
+	MOB_HUD_FACTION_UPP	= new /datum/mob_hud/faction/upp(),
+	MOB_HUD_FACTION_WY = new /datum/mob_hud/faction/wy(),
+	MOB_HUD_FACTION_RESS = new /datum/mob_hud/faction/ress(),
+	MOB_HUD_FACTION_CLF = new /datum/mob_hud/faction/clf(),
 	)
 
 /datum/mob_hud
@@ -146,7 +150,7 @@ var/datum/mob_hud/huds = list(
 	hud_icons = list(ID_HUD)
 
 /datum/mob_hud/security/advanced
-	hud_icons = list(ID_HUD, IMPTRACK_HUD, IMPLOYAL_HUD, IMPCHEM_HUD, WANTED_HUD)
+	hud_icons = list(ID_HUD, WANTED_HUD)
 
 
 /datum/mob_hud/squad
@@ -155,7 +159,34 @@ var/datum/mob_hud/huds = list(
 /datum/mob_hud/squad/observer
 	hud_icons = list(SQUAD_HUD, ORDER_HUD, PRED_CLAN)
 
+//Factions
+/datum/mob_hud/faction
+	hud_icons = list(FACTION_HUD)
+	var/faction_to_check = FACTION_UPP
 
+/datum/mob_hud/faction/add_to_single_hud(mob/user, mob/target)
+	var/faction = target.faction
+	if(ishuman(target))
+		var/mob/living/carbon/human/H = target
+		if(H.agent_holder)
+			faction = H.agent_holder.faction
+	if(isobserver(target))
+		faction = faction_to_check
+
+	if(faction == faction_to_check)
+		..()
+
+/datum/mob_hud/faction/upp
+	faction_to_check = FACTION_UPP
+
+/datum/mob_hud/faction/wy
+	faction_to_check = FACTION_WY
+
+/datum/mob_hud/faction/ress
+	faction_to_check = FACTION_RESS
+
+/datum/mob_hud/faction/clf
+	faction_to_check = FACTION_CLF
 
 ///////// MOB PROCS //////////////////////////////:
 
@@ -481,29 +512,6 @@ var/datum/mob_hud/huds = list(
 		var/obj/item/card/id/I = wear_id.GetID()
 		if(I)
 			holder.icon_state = "hud[ckey(I.GetJobName())]"
-
-
-
-/mob/proc/sec_hud_set_implants()
-	return
-
-/mob/living/carbon/human/sec_hud_set_implants()
-	var/image/holder1 = hud_list[IMPTRACK_HUD]
-	var/image/holder2 = hud_list[IMPLOYAL_HUD]
-	var/image/holder3 = hud_list[IMPCHEM_HUD]
-
-	holder1.icon_state = "hudblank"
-	holder2.icon_state = "hudblank"
-	holder3.icon_state = "hudblank"
-
-	for(var/obj/item/implant/I in src)
-		if(I.implanted)
-			if(istype(I,/obj/item/implant/tracking))
-				holder1.icon_state = "hud_imp_tracking"
-			if(istype(I,/obj/item/implant/loyalty))
-				holder2.icon_state = "hud_imp_loyal"
-			if(istype(I,/obj/item/implant/chem))
-				holder3.icon_state = "hud_imp_chem"
 
 /mob/living/carbon/human/proc/sec_hud_set_security_status()
 	var/image/holder = hud_list[WANTED_HUD]

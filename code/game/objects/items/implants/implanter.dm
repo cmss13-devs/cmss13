@@ -46,8 +46,6 @@
 						affected.implants += src.imp
 						imp.part = affected
 
-						M.sec_hud_set_implants()
-
 					src.imp = null
 					update()
 				else

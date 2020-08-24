@@ -297,6 +297,11 @@
 		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
 	)
 
+/obj/item/clothing/head/helmet/beret/marine/mp/warden
+	name = "\improper USCM warden peaked"
+	icon_state = "warden"
+	desc = "A kevlar reinforced beret with the USCM military police insignia emblazoned on it. This durable headwear provides comparable protection to an M10 helmet, but in a much more stylish package."
+
 /obj/item/clothing/head/helmet/beret/marine/mp/cmp
 	name = "\improper USCM chief MP beret"
 	desc = "A kevlar reinforced beret with the USCM military police lieutenant insignia emblazoned on it. This durable headwear provides comparable protection to an M10 helmet, but in a much more stylish package. It shines with the glow of corrupt authority and a smudge of doughnut."

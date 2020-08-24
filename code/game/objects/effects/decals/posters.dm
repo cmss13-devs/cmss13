@@ -4,6 +4,7 @@
 	icon = 'icons/obj/structures/props/posters.dmi'
 	icon_state = "rolled_poster"
 	force = 0
+	w_class = SIZE_SMALL
 	var/serial_number = 0
 
 
@@ -105,14 +106,13 @@ obj/structure/sign/poster/attackby(obj/item/W as obj, mob/user as mob)
 	qdel(P)	//delete it now to cut down on sanity checks afterwards. Agouri's code supports rerolling it anyway
 	playsound(D.loc, 'sound/items/poster_being_created.ogg', 25, 1)
 
-	sleep(17)
-	if(!D)	return
-
-	if(istype(src,/turf/closed/wall) && user && user.loc == temp_loc)//Let's check if everything is still there
-		to_chat(user, SPAN_NOTICE("You place the poster!"))
-	else
+	if(!do_after(user, 17, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 		D.roll_and_drop(temp_loc)
-	return
+		return
+
+	to_chat(user, SPAN_NOTICE("You place the poster!"))
+	
+	raiseEvent(GLOBAL_EVENT, EVENT_PROPAGANDA_PLANTED + "\ref[user]", get_area(user))
 
 /datum/poster
 	// Name suffix. Poster - [name]

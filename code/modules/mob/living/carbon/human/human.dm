@@ -33,7 +33,6 @@
 	med_hud_set_armor()
 	med_hud_set_status()
 	sec_hud_set_ID()
-	sec_hud_set_implants()
 	sec_hud_set_security_status()
 	hud_set_squad()
 	//and display them
@@ -78,6 +77,10 @@
 	if(pain && pain.source_mob == src)
 		pain.source_mob = null
 		qdel(pain)
+
+	if(agent_holder)
+		agent_holder.source_human = null
+		human_agent_list -= src
 
 /mob/living/carbon/human/Stat()
 	if(!..())

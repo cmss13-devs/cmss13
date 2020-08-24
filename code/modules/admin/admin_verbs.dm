@@ -69,7 +69,6 @@ var/list/admin_verbs_spawn = list(
 	/client/proc/clear_mutineers
 )
 var/list/admin_verbs_server = list(
-	/client/proc/Set_Holiday,
 	/datum/admins/proc/startnow,
 	/datum/admins/proc/restart,
 	/datum/admins/proc/delay,
@@ -126,7 +125,6 @@ var/list/debug_verbs = list(
     /client/proc/ticklag,
     /client/proc/cmd_admin_grantfullaccess,
     /client/proc/cmd_admin_grantallskills,
-    /client/proc/forceEvent,
     /client/proc/hide_debug_verbs,
     /client/proc/view_power_update_stats_area,
     /client/proc/view_power_update_stats_machines,
@@ -220,6 +218,7 @@ var/list/admin_verbs_mod = list(
 	/client/proc/jumptomob,
 	/client/proc/toggle_own_ghost_vis,
 	/client/proc/check_antagonists,
+	/client/proc/check_round_status,
 	/client/proc/toggleattacklogs,
 	/client/proc/toggleffattacklogs,
 	/client/proc/xooc,					// Xeno OOC

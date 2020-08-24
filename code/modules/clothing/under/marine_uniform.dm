@@ -38,14 +38,14 @@
 
 /obj/item/clothing/under/marine/medic
 	name = "\improper USCM medic uniform"
-	desc = "A standard-issue Marine Medic fatigues It has shards of light Kevlar to help protect against stabbing weapons, bullets, and shrapnel from explosions, a small EMF distributor to help null energy-based weapons, and a hazmat chemical filter weave to ward off biological and radiation hazards."
+	desc = "A standard-issue Marine Medic fatigues. It has shards of light Kevlar to help protect against stabbing weapons, bullets, and shrapnel from explosions, a small EMF distributor to help null energy-based weapons, and a hazmat chemical filter weave to ward off biological and radiation hazards."
 	icon_state = "marine_medic"
 	worn_state = "marine_medic"
 	specialty = "USCM medic"
 
 /obj/item/clothing/under/marine/engineer
 	name = "\improper USCM engineer uniform"
-	desc = "A standard-issue Marine Engineer fatigues It has shards of light Kevlar to help protect against stabbing weapons, bullets, and shrapnel from explosions, a small EMF distributor to help null energy-based weapons, and a hazmat chemical filter weave to ward off biological and radiation hazards."
+	desc = "A standard-issue Marine Engineer fatigues. It has shards of light Kevlar to help protect against stabbing weapons, bullets, and shrapnel from explosions, a small EMF distributor to help null energy-based weapons, and a hazmat chemical filter weave to ward off biological and radiation hazards."
 	icon_state = "marine_engineer"
 	worn_state = "marine_engineer"
 	specialty = "USCM engineer"
@@ -72,6 +72,14 @@
 	..(loc,expected_type, override_icon_state, new_name, new_protection)
 */
 
+/obj/item/clothing/under/marine/chef
+	name = "\improper USCM mess sergeant uniform"
+	desc = "A standard-issue Marine Engineer fatigues. It has shards of light Kevlar to help protect against stabbing weapons, bullets, and shrapnel from explosions, a small EMF distributor to help null energy-based weapons, and a hazmat chemical filter weave to ward off biological and radiation hazards."
+	icon_state = "chef_uniform"
+	worn_state = "chef_uniform"
+	rollable_sleeves = FALSE
+	specialty = "USCM mess sergeant"
+	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/under/marine/mp
 	name = "military police jumpsuit"
@@ -81,6 +89,16 @@
 	suit_restricted = list(/obj/item/clothing/suit/storage/marine, /obj/item/clothing/suit/armor/riot/marine)
 	rollable_sleeves = FALSE
 	specialty = "military police"
+	flags_atom = NO_SNOW_TYPE
+
+/obj/item/clothing/under/marine/warden
+	name = "military warden jumpsuit"
+	desc = "A standard-issue Military Warden uniform. It has shards of light Kevlar to help protect against stabbing weapons, bullets, and shrapnel from explosions, a small EMF distributor to help null energy-based weapons, and a hazmat chemical filter weave to ward off biological and radiation hazards."
+	icon_state = "warden_jumpsuit"
+	worn_state = "warden_jumpsuit"
+	suit_restricted = list(/obj/item/clothing/suit/storage/marine, /obj/item/clothing/suit/armor/riot/marine)
+	rollable_sleeves = FALSE
+	specialty = "military warden"
 	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/under/marine/officer
@@ -198,11 +216,20 @@
 	armor_bio = CLOTHING_ARMOR_LOW
 	armor_rad = CLOTHING_ARMOR_LOW
 	armor_internaldamage = CLOTHING_ARMOR_LOW
-	icon_state = "E_jumpsuit"
-	worn_state = "E_jumpsuit"
+	icon_state = "mt_jumpsuit"
+	worn_state = "mt_jumpsuit"
 	specialty = "engineer"
+	rollable_sleeves = TRUE
 	flags_atom = NO_SNOW_TYPE
-	item_state_slots = list(WEAR_BODY = "E_jumpsuit")
+	item_state_slots = list(WEAR_BODY = "mt_jumpsuit")
+
+/obj/item/clothing/under/marine/officer/engi/OT
+	name = "ordnance engineer uniform"
+	desc = "A uniform for a professional bomb maker. It has shards of light Kevlar to help protect against stabbing weapons, bullets, and shrapnel from explosions. Padded with extra plates to take the brunt force of an explosion."
+	armor_bomb = CLOTHING_ARMOR_LOW
+	icon_state = "ot_jumpsuit"
+	worn_state = "ot_jumpsuit"
+	item_state_slots = list(WEAR_BODY = "ot_jumpsuit")
 
 /obj/item/clothing/under/marine/officer/researcher
 	name = "researcher clothes"
@@ -299,7 +326,7 @@
 	worn_state = "upp_uniform"
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
 	has_sensor = 0
-	suit_restricted = list(/obj/item/clothing/suit/storage/marine/faction/UPP, /obj/item/clothing/suit/storage/marine/smartgunner/UPP)
+	suit_restricted = list(/obj/item/clothing/suit/storage/marine/faction/UPP, /obj/item/clothing/suit/storage/marine/smartgunner/UPP, /obj/item/clothing/suit/gimmick/jason)
 
 /obj/item/clothing/under/marine/veteran/UPP/medic
 	name = "\improper UPP medic fatigues"
@@ -432,7 +459,17 @@
 	icon_state = "liaison_suspenders"
 	worn_state = "liaison_suspenders"
 
+/obj/item/clothing/under/ress_suit
+	name = "representative's fine suit"
+	desc = "A stiff, stylish blue suit commonly worn by gentlemen from the Royal Empire of the Rising Sun. Expertly crafted to make you look as important as possible."
+	icon_state = "ress_suit"
+	worn_state = "ress_suit"
 
+/obj/item/clothing/under/stowaway
+	name = "dirty suit"
+	desc = "A stiff, stylish tan suit commonly worn by businessmen from the Weston-Yamada corporation. Expertly crafted to make you look like a prick."
+	icon_state = "stowaway_uniform"
+	worn_state = "stowaway_uniform"
 
 /obj/item/clothing/under/rank/chef/exec
 	name = "\improper Weston-Yamada suit"

@@ -128,6 +128,40 @@
 			if(x && y && z)
 				A.JumpToCoord(x, y, z)
 
+/mob/dead/observer/proc/set_huds_from_prefs()
+	if(!client || !client.prefs)
+		return
+
+	var/datum/mob_hud/H
+	HUD_toggled = client.prefs.observer_huds
+	for(var/i in HUD_toggled)
+		if(HUD_toggled[i])
+			switch(i)
+				if("Medical HUD")
+					H = huds[MOB_HUD_MEDICAL_OBSERVER]
+					H.add_hud_to(src)
+				if("Security HUD")
+					H = huds[MOB_HUD_SECURITY_ADVANCED]
+					H.add_hud_to(src)
+				if("Squad HUD")
+					H = huds[MOB_HUD_SQUAD_OBSERVER]
+					H.add_hud_to(src)
+				if("Xeno Status HUD")
+					H = huds[MOB_HUD_XENO_STATUS]
+					H.add_hud_to(src)
+				if("Faction UPP HUD")
+					H = huds[MOB_HUD_FACTION_UPP]
+					H.add_hud_to(src)
+				if("Faction W-Y HUD")
+					H = huds[MOB_HUD_FACTION_WY]
+					H.add_hud_to(src)
+				if("Faction RESS HUD")
+					H = huds[MOB_HUD_FACTION_RESS]
+					H.add_hud_to(src)
+				if("Faction CLF HUD")
+					H = huds[MOB_HUD_FACTION_CLF]
+					H.add_hud_to(src)
+
 
 /mob/dead/BlockedPassDirs(atom/movable/mover, target_dir)
 	return NO_BLOCKED_MOVEMENT
@@ -178,24 +212,7 @@ Works together with spawning an observer, noted above.
 			ghost.client.soundOutput.status_flags = 0 //Clear all effects that would affect a living mob
 			ghost.client.soundOutput.apply_status()
 		
-		if(ghost.client.prefs)
-			var/datum/mob_hud/H
-			ghost.HUD_toggled = ghost.client.prefs.observer_huds
-			for(var/i in ghost.HUD_toggled)
-				if(ghost.HUD_toggled[i])
-					switch(i)
-						if("Medical HUD")
-							H = huds[MOB_HUD_MEDICAL_OBSERVER]
-							H.add_hud_to(ghost)
-						if("Security HUD")
-							H = huds[MOB_HUD_SECURITY_ADVANCED]
-							H.add_hud_to(ghost)
-						if("Squad HUD")
-							H = huds[MOB_HUD_SQUAD_OBSERVER]
-							H.add_hud_to(ghost)
-						if("Xeno Status HUD")
-							H = huds[MOB_HUD_XENO_STATUS]
-							H.add_hud_to(ghost)
+	ghost.set_huds_from_prefs()
 
 	return ghost
 

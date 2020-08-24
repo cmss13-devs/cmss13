@@ -499,8 +499,6 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 	var/list/individual_counts = list()
 	for(var/datum/disease/M in active_diseases)
 		individual_counts["[M.type]"]++
-	for(var/datum/event/M in events)
-		individual_counts["[M.type]"]++
 	for(var/mob/M in processable_human_list)
 		individual_counts["[M.type]"]++
 	for(var/obj/structure/machinery/M in processing_machines)

@@ -109,3 +109,10 @@
 	..()
 	stored_item = new /obj/item/attachable/bayonet(src)
 	update_icon()
+
+
+/obj/item/clothing/shoes/marine/ress
+	name = "armoured sandals"
+	icon_state = "sandals"
+	item_state = "sandals"
+	items_allowed = null

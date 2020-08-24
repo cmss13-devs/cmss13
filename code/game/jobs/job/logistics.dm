@@ -63,6 +63,23 @@
 	entry_message_body = "Your job is to maintain the integrity of the USCM weapons, munitions and equipment, including the orbital cannon. You can use the workshop in the portside hangar to construct new armaments for the marines. However you remain one of the more flexible roles on the ship and as such may receive other menial tasks from your superiors."
 	return ..()
 
+/datum/job/logistics/maint
+	title = JOB_MAINT_TECH
+	flag = ROLE_MAINT_TECH
+	department_flag = ROLEGROUP_MARINE_ENGINEERING
+	faction = FACTION_MARINE
+	supervisors = "the chief engineer"
+	selection_class = "job_ot"
+	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE
+	gear_preset = "USCM Maintenance Technician (MT)"
+	minimum_playtimes = list(
+		JOB_SQUAD_ENGI = HOURS_3
+	)
+
+/datum/job/logistics/maint/generate_entry_message(mob/living/carbon/human/H)
+	entry_message_body = "Your job is to maintain the integrity of [MAIN_SHIP_NAME], including the orbital cannon. You remain one of the more flexible roles on the ship and as such may receive other menial tasks from your superiors."
+	return ..()
+
 //Cargo Tech. Don't ask why this is in engineering
 /datum/job/logistics/tech/cargo
 	title = JOB_REQUISITION
@@ -85,4 +102,17 @@
 
 /datum/job/logistics/tech/cargo/generate_entry_message(mob/living/carbon/human/H)
 	entry_message_body = "Your job is to dispense supplies to the marines, including weapon attachments. Stay in your department when possible to ensure the marines have full access to the supplies they may require. Listen to the radio in case someone requests a supply drop via the overwatch system."
+	return ..()
+
+/datum/job/logistics/chef
+	title = JOB_MESS_SERGEANT
+	flag = ROLE_MESS_SERGEANT
+	department_flag = ROLEGROUP_MARINE_FLUFF
+	faction = FACTION_MARINE
+	selection_class = "job_ot"
+	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE
+	gear_preset = "USCM Mess Sergeant (MS)"
+
+/datum/job/logistics/chef/generate_entry_message(mob/living/carbon/human/H)
+	entry_message_body = "Your job is to service the marines with excellent food, drinks and entertaining the shipside crew when needed. You have a lot of freedom and it is up to you, to decide what to do with it. Good luck!"
 	return ..()

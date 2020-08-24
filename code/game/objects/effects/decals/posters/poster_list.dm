@@ -97,3 +97,8 @@ Template
 	icon_state="poster18"
 	name = "Weston-Yamada Poster"
 	desc = "You don't have much choice in brand loyalty when there's basically only one brand."
+
+/datum/poster/poster_19
+	icon_state = "poster_agents"
+	name = "suspicious looking poster"
+	desc = "This poster describes USCM as the enemy."

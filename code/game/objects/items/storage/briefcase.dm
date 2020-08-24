@@ -11,9 +11,6 @@
 	max_w_class = SIZE_MEDIUM
 	max_storage_space = 16
 
-/obj/item/storage/briefcase/Initialize()
-	..()
-
 /obj/item/storage/briefcase/attack(mob/living/M as mob, mob/living/user as mob)
 	M.last_damage_source = initial(name)
 	M.last_damage_mob = user
@@ -41,3 +38,10 @@
 		M.eye_blurry += 3
 
 	return
+
+/obj/item/storage/briefcase/stowaway
+	name = "briefcase"
+	desc = "It's made of AUTHENTIC faux-leather and has a price-tag still attached. Its owner must be a real professional."
+	icon_state = "suitcase"
+	item_state = "suitcase"
+	force = 8.0

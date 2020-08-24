@@ -123,7 +123,7 @@
 
 	//taken from human.dm 
 	directional_lum = 0 				//humans carrying light sources only illuminate the area in front of themselves
-	hud_possible = list(HEALTH_HUD,STATUS_HUD, STATUS_HUD_OOC, STATUS_HUD_XENO_INFECTION, STATUS_HUD_XENO_CULTIST, ID_HUD,WANTED_HUD,IMPLOYAL_HUD,IMPCHEM_HUD,IMPTRACK_HUD, SPECIALROLE_HUD, SQUAD_HUD, ORDER_HUD, XENO_HOSTILE_ACID, XENO_HOSTILE_SLOW, XENO_HOSTILE_TAG, XENO_HOSTILE_FREEZE, PRED_CLAN)
+	hud_possible = list(HEALTH_HUD,STATUS_HUD, STATUS_HUD_OOC, STATUS_HUD_XENO_INFECTION, STATUS_HUD_XENO_CULTIST, ID_HUD, WANTED_HUD, SQUAD_HUD, ORDER_HUD, XENO_HOSTILE_ACID, XENO_HOSTILE_SLOW, XENO_HOSTILE_TAG, XENO_HOSTILE_FREEZE, PRED_CLAN, FACTION_HUD)
 	var/embedded_flag	  				//To check if we've need to roll for damage on movement while an item is imbedded in us.
 	var/allow_gun_usage = TRUE
 	var/has_used_pamphlet = FALSE 		//Has this person used a pamphlet?
@@ -139,3 +139,5 @@
 	appearance_flags = KEEP_TOGETHER | TILE_BOUND
 	
 	var/datum/action/human_action/activable/selected_ability
+
+	var/datum/agent/agent_holder

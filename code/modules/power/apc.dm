@@ -121,7 +121,7 @@
 
 	appearance_flags = TILE_BOUND
 
-/obj/structure/machinery/power/apc/Initialize(mapload, var/ndir, var/building=0)
+/obj/structure/machinery/power/apc/New(var/turf/loc, var/ndir, var/building=0)
 	. = ..()
 
 	//Offset 24 pixels in direction of dir

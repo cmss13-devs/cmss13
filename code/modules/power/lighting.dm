@@ -201,6 +201,9 @@
 
 	add_timer(CALLBACK(src, .proc/update, 0), 1)
 
+	set_pixel_location()
+
+/obj/structure/machinery/light/set_pixel_location()
 	switch(fitting)
 		if("tube")
 			switch(dir)

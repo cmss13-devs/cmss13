@@ -33,7 +33,8 @@
 	var/light_disabled = 0
 	var/alarm_on = 0
 
-/obj/structure/machinery/camera/New()
+/obj/structure/machinery/camera/Initialize(mapload, ...)
+	. = ..()
 	WireColorToFlag = randomCameraWires()
 	assembly = new(src)
 	assembly.state = 4
@@ -51,13 +52,14 @@
 		ASSERT(src.network)
 		ASSERT(src.network.len > 0)
 
-	switch(dir)
-		if(1)	pixel_y = -18
-		if(2)	pixel_y = 40
-		if(4)	pixel_x = -27
-		if(8)	pixel_x = 27
+	set_pixel_location()
 
-	..()
+/obj/structure/machinery/camera/set_pixel_location()
+	switch(dir)
+		if(NORTH)		pixel_y = -18
+		if(SOUTH)		pixel_y = 40
+		if(EAST)		pixel_x = -27
+		if(WEST)		pixel_x = 27
 
 /obj/structure/machinery/camera/emp_act(severity)
 	if(!isEmpProof())

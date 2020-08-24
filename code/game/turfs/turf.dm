@@ -248,7 +248,7 @@
 		path = "/turf/open/snow/layer[s.bleed_layer]"
 
 	if(src.type == new_turf_path)
-		return
+		return src
 
 	var/pylons = linked_pylons
 

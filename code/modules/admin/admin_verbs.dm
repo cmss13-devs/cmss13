@@ -57,6 +57,7 @@ var/list/admin_verbs_fun = list(
 	/client/proc/set_ooc_color_global,
 	/client/proc/announce_random_fact,
 	/client/proc/construct_env,
+	/client/proc/construct_env_dmm,
 	/client/proc/set_autoreplacer,
 	/client/proc/deactivate_autoreplacer,
 	/client/proc/rerun_decorators,
@@ -112,7 +113,8 @@ var/list/admin_verbs_debug = list(
 	/client/proc/matrix_editor,
 	/client/proc/generate_sound_queues,
 	/client/proc/bulk_fetcher,
-	/client/proc/debug_game_history
+	/client/proc/debug_game_history,
+	/client/proc/construct_env_dmm
 )
 
 var/list/clan_verbs = list(

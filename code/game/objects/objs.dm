@@ -36,6 +36,9 @@
 	processing_objects.Remove(src)
 	return 0
 
+/obj/proc/set_pixel_location()
+	return
+
 /obj/item/proc/get_examine_line()
 	if(blood_color)
 		. = SPAN_WARNING("[htmlicon(src)] [gender==PLURAL?"some":"a"] <font color='[blood_color]'>stained</font> [src]")

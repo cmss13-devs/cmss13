@@ -22,6 +22,7 @@ var/global/datum/controller/gameticker/ticker = new()
 	var/game_start_time = 0 // Global world start time.
 	var/toweractive = FALSE
 	var/delay_end = FALSE	//if set to nonzero, the round will not restart on it's own
+	var/automatic_delay_end = FALSE
 
 	var/round_end_announced = FALSE // Spam Prevention. Announce round end only once.
 	var/datum/mind/liaison = null

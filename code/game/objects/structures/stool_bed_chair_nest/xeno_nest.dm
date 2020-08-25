@@ -185,6 +185,12 @@
 	if(ghost_of_buckled_mob && istype(H))
 		if(H.undefibbable)
 			return
+
+		if(!ghost_of_buckled_mob || !ghost_of_buckled_mob.mind)
+			return
+		var/datum/mind/M = ghost_of_buckled_mob.mind
+		if(!isobserver(M.current))
+			return
 			
 		if(alert(ghost_of_buckled_mob, "You have been freed from your nest, do you want to return to your body?", ,"Yes", "No") == "Yes")
 			if(!ghost_of_buckled_mob || !ghost_of_buckled_mob.mind)

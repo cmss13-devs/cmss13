@@ -69,8 +69,8 @@
 		RestrainedClickOn(A)
 		return
 
-	// Throwing stuff.
-	if (throw_mode)
+	// Throwing stuff, can't throw on inventory items nor screen objects
+	if (throw_mode && A.loc != src && !istype(A, /obj/screen))
 		throw_item(A)
 		return
 

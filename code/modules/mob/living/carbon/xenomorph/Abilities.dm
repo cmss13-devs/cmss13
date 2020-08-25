@@ -299,6 +299,12 @@
 		return FALSE
 
 	var/turf/T = get_turf(A)
+
+	var/area/AR = get_area(T)
+	if(!(AR.is_resin_allowed))
+		to_chat(X, SPAN_XENOWARNING("It's too early to spread the hive this far."))
+		return FALSE
+
 	var/choice = XENO_STRUCTURE_CORE
 	if(X.hive.has_structure(XENO_STRUCTURE_CORE) || !X.hive.can_build_structure(XENO_STRUCTURE_CORE))
 		choice = input(X, "Choose a structure to build") in X.hive.hive_structure_types + "help" + "cancel"

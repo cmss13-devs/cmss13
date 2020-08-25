@@ -245,6 +245,7 @@
 		icon_state = initial(icon_state)
 		det_time = initial(det_time) //these can be modified when fired by UGL
 		throw_range = initial(throw_range)
+		w_class = initial(w_class)
 
 
 /obj/item/explosive/grenade/HE/training/flamer_fire_act()

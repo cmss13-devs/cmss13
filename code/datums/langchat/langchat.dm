@@ -62,7 +62,7 @@
 	langchat_image.alpha = 0
 	langchat_listeners = listeners
 	for(var/mob/M in langchat_listeners)
-		if(M.client && M.client.prefs && !M.client.prefs.lang_chat_disabled && M.say_understands(src,language))
+		if(M.client && M.client.prefs && !M.client.prefs.lang_chat_disabled && M.say_understands(src,language) && !M.ear_deaf)
 			M.client.images += langchat_image
 	animate(langchat_image, pixel_y = langchat_image.pixel_y + LANGCHAT_MESSAGE_POP_Y_SINK, alpha = LANGCHAT_MAX_ALPHA, time = LANGCHAT_MESSAGE_POP_TIME)
 

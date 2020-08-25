@@ -47,7 +47,7 @@
 	stat("Health Reserves:", "[internal_hitpoints]/[internal_hitpoints_max]")
 
 /datum/behavior_delegate/praetorian_warden/on_life()
-	if ((internal_hitpoints != 0) && bound_xeno.health <= percent_hp_to_self_heal*bound_xeno.maxHealth)
+	if ((internal_hitpoints != 0) && bound_xeno.health <= percent_hp_to_self_heal*bound_xeno.maxHealth && !bound_xeno.on_fire)
 		if (internal_hitpoints >= internal_hp_selfheal_size)
 			remove_internal_hitpoints(internal_hp_selfheal_size)
 			bound_xeno.gain_health(internal_hp_selfheal_size)
@@ -60,7 +60,7 @@
 		internal_hitpoints = min(internal_hitpoints_max, internal_hitpoints + internal_hp_per_life)
 
 /datum/behavior_delegate/praetorian_warden/on_hitby_projectile(ammo)
-	if ((internal_hitpoints != 0) && bound_xeno.health <= percent_hp_to_self_heal*bound_xeno.maxHealth)
+	if ((internal_hitpoints != 0) && bound_xeno.health <= percent_hp_to_self_heal*bound_xeno.maxHealth && !bound_xeno.on_fire)
 		if (internal_hitpoints >= internal_hp_selfheal_size)
 			remove_internal_hitpoints(internal_hp_selfheal_size)
 			bound_xeno.gain_health(internal_hp_selfheal_size)

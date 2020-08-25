@@ -78,8 +78,9 @@
 
 #define POWERLOADER_LAYER 3.6 //above windows and wall mounts so the top of the loader doesn't clip.
 
-#define BELOW_MOB_LAYER 		3.78
-#define LYING_DEAD_MOB_LAYER	3.79
+#define BELOW_MOB_LAYER 		3.75
+#define LYING_DEAD_MOB_LAYER	3.76
+#define LYING_BETWEEN_MOB_LAYER 3.79
 #define LYING_LIVING_MOB_LAYER	3.8
 
 #define ABOVE_LYING_MOB_LAYER 3.9 //drone (not the xeno)

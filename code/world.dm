@@ -268,7 +268,7 @@ var/world_topic_spam_protect_time = world.timeofday
 
 				load_maps_for_vote()
 
-			ticker.delay_end = TRUE
+			ticker.automatic_delay_end = TRUE
 			message_staff("World/Topic() call (likely MapDaemon.exe) has delayed the round end.", 1)
 			return "SUCCESS"
 
@@ -276,11 +276,12 @@ var/world_topic_spam_protect_time = world.timeofday
 
 			if(!ticker) return "ERROR"
 
-			ticker.delay_end = FALSE
+			ticker.automatic_delay_end = FALSE
 			message_staff("World/Topic() call (likely MapDaemon.exe) has resumed the round end.", 1)
 
 			//So admins have a chance to make EORG bans and do whatever
-			message_staff(FONT_SIZE_LARGE(SPAN_BOLDANNOUNCE("NOTICE: Delay round within 30 seconds in order to prevent auto-restart!")), 1)
+			if(!ticker.delay_end)
+				message_staff(FONT_SIZE_LARGE(SPAN_BOLDANNOUNCE("NOTICE: Delay round within 30 seconds in order to prevent auto-restart!")), 1)
 
 			MapDaemonHandleRestart() //Doesn't hold
 
@@ -494,7 +495,7 @@ proc/setup_database_connection()
 
 	sleep(300)
 
-	if(ticker.delay_end) 
+	if(ticker.delay_end || ticker.automatic_delay_end)
 		return
 
 	to_world(SPAN_DANGER("<b>Restarting world!</b> \blue Initiated by MapDaemon.exe!"))

@@ -238,6 +238,7 @@
 	flags_inv_hide = HIDEEARS
 	var/flags_marine_helmet = HELMET_SQUAD_OVERLAY|HELMET_GARB_OVERLAY|HELMET_DAMAGE_OVERLAY|HELMET_STORE_GARB
 	var/obj/item/storage/internal/pockets
+	var/helmet_bash_cooldown = 0
 
 	// Really the list of special cosmetic items -> their icon_state(s)
 	var/list/allowed_helmet_items = list(
@@ -395,7 +396,7 @@
 		..()
 
 /obj/item/clothing/head/helmet/marine/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/ammo_magazine))
+	if(istype(W, /obj/item/ammo_magazine) && world.time > helmet_bash_cooldown)
 		var/obj/item/ammo_magazine/M = W
 		var/ammo_level = "somewhat"
 		playsound(user, 'sound/items/trayhit1.ogg', 15, FALSE)
@@ -408,6 +409,7 @@
 		if(M.current_rounds == 0)
 			ammo_level = "empty. Uh oh."
 		user.visible_message("[user] bashes [M] against their helmet", "You bash [M] against your helmet. It is [ammo_level]")
+		helmet_bash_cooldown = world.time + SECONDS_20
 	else
 		..()
 		return pockets.attackby(W, user)

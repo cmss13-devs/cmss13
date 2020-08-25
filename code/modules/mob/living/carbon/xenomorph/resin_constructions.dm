@@ -16,6 +16,10 @@
         return FALSE
 
     var/area/AR = get_area(T)
+    if(!(AR.is_resin_allowed))
+        to_chat(X, SPAN_XENOWARNING("It's too early to spread the hive this far."))
+        return FALSE
+
     if(istype(AR, /area/shuttle/drop1/lz1) || istype(AR, /area/shuttle/drop2/lz2)) //Bandaid for atmospherics bug when Xenos build around the shuttles
         to_chat(X, SPAN_WARNING("You sense this is not a suitable area for expanding the hive."))
         return FALSE

@@ -247,8 +247,8 @@
 		//This is so we revert back to a proper snow layer
 		path = "/turf/open/snow/layer[s.bleed_layer]"
 
-	if(src.type == new_turf_path)
-		return src
+	//if(src.type == new_turf_path) // Put this back if shit starts breaking
+	//	return src
 
 	var/pylons = linked_pylons
 

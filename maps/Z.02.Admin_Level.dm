@@ -94,6 +94,15 @@
 	ceiling = CEILING_UNDERGROUND
 	flags_atom = AREA_NOTUNNEL|AREA_ALLOW_XENO_JOIN
 
+	var/hivenumber = XENO_HIVE_ALPHA
+
+/area/adminlevel/bunker01/caves/xeno/Entered(A, atom/OldLoc)
+	. = ..()
+	if(isXeno(A))
+		var/mob/living/carbon/Xenomorph/X = A
+
+		X.away_timer = XENO_LEAVE_TIMER
+		X.set_hive_and_update(hivenumber)
 
 // ERT Station
 /area/adminlevel/ert_station

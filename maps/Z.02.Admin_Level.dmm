@@ -6303,7 +6303,10 @@
 /area/adminlevel/bunker01/medbay)
 "uo" = (
 /obj/structure/window/framed/colony/reinforced,
-/turf/open/space,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
 /area/adminlevel/bunker01/medbay)
 "uB" = (
 /obj/structure/machinery/vending/dinnerware,

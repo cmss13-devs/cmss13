@@ -5,6 +5,11 @@
 
 	if (!usr.client.admin_holder || !(usr.client.admin_holder.rights & R_MOD))
 		return
+
+	if(!check_rights(R_DEBUG, FALSE) && ticker.current_state != GAME_STATE_COMPILE_FINISHED)
+		to_chat(usr, "You can't restart the world until compilation has finished!")
+		return
+
 	var/confirm = alert("Restart the game world?", "Restart", "Yes", "Cancel")
 	if(confirm == "Cancel")
 		return

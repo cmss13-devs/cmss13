@@ -499,6 +499,15 @@
 	select_gamemode_skin(type)
 	..()
 
+/obj/item/storage/sparepouch/update_icon()
+	overlays.Cut()
+	if(!contents.len)
+		return
+	else if(contents.len <= storage_slots * 0.5)
+		overlays += "+[icon_state]_half"
+	else
+		overlays += "+[icon_state]_full"
+
 
 ////////////////////////////// GUN BELTS /////////////////////////////////////
 

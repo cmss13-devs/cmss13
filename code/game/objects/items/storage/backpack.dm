@@ -80,6 +80,20 @@
 			return
 	..()
 
+/obj/item/storage/backpack/update_icon()
+	overlays.Cut()
+	var/sum_storage_cost = 0
+	for(var/obj/item/I in contents)
+		sum_storage_cost += I.get_storage_cost()
+	if(!sum_storage_cost)
+		return
+
+	else if(sum_storage_cost <= max_storage_space * 0.5)
+		overlays += "+[icon_state]_half"
+	else
+		overlays += "+[icon_state]_full"
+
+
 /*
  * Backpack Types
  */
@@ -87,7 +101,6 @@
 /obj/item/storage/backpack/holding
 	name = "bag of holding"
 	desc = "A backpack that opens into a localized pocket of Blue Space."
-	
 	icon_state = "holdingpack"
 	max_w_class = SIZE_LARGE
 	max_storage_space = 28

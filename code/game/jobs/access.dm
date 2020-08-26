@@ -76,7 +76,6 @@
 
 /proc/get_all_marine_access()
 	return list(
-		ACCESS_IFF_MARINE,
 		ACCESS_MARINE_COMMANDER,
 		ACCESS_MARINE_LOGISTICS,
 		ACCESS_MARINE_BRIDGE,
@@ -107,17 +106,16 @@
 	)
 
 /proc/get_all_centcom_access()
-	return list(ACCESS_WY_PMC_GREEN, ACCESS_WY_PMC_ORANGE, ACCESS_WY_PMC_RED, ACCESS_WY_PMC_BLACK, ACCESS_WY_PMC_WHITE, ACCESS_WY_CORPORATE, ACCESS_IFF_PMC)
+	return list(ACCESS_WY_PMC_GREEN, ACCESS_WY_PMC_ORANGE, ACCESS_WY_PMC_RED, ACCESS_WY_PMC_BLACK, ACCESS_WY_PMC_WHITE, ACCESS_WY_CORPORATE)
 
 /proc/get_all_syndicate_access()
 	return list(ACCESS_ILLEGAL_PIRATE)
 
 /proc/get_antagonist_access()
-	var/L[] = get_all_accesses() + get_all_syndicate_access()
-	return L - ACCESS_IFF_MARINE
+	return get_all_accesses() + get_all_syndicate_access()
 
 /proc/get_antagonist_pmc_access()
-	return get_antagonist_access() + ACCESS_IFF_PMC
+	return get_antagonist_access()
 
 /proc/get_freelancer_access()
 	return list(ACCESS_MARINE_BRIDGE, ACCESS_MARINE_CARGO, ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_ENGINEERING, ACCESS_CIVILIAN_LOGISTICS)
@@ -137,7 +135,7 @@
 		if(5)
 			return list(ACCESS_MARINE_COMMANDER, ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_BRIDGE, ACCESS_MARINE_CARGO, ACCESS_MARINE_SEA) // Command
 		if(6)
-			return list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP, ACCESS_MARINE_MEDPREP, ACCESS_MARINE_ENGPREP, ACCESS_MARINE_SMARTPREP, ACCESS_MARINE_LEADER, ACCESS_MARINE_SPECPREP)//spess mahreens
+			return list(ACCESS_MARINE_PREP, ACCESS_MARINE_MEDPREP, ACCESS_MARINE_ENGPREP, ACCESS_MARINE_SMARTPREP, ACCESS_MARINE_LEADER, ACCESS_MARINE_SPECPREP)//spess mahreens
 		if(7)
 			return list(ACCESS_MARINE_ALPHA, ACCESS_MARINE_BRAVO, ACCESS_MARINE_CHARLIE, ACCESS_MARINE_DELTA) // Squads
 		if(8)
@@ -172,7 +170,6 @@
 		if(8)
 			return "Civilian" // Civilian
 
-
 /proc/get_access_desc(A)
 	switch(A)
 		if(ACCESS_MARINE_WO)			return "WO's Office"
@@ -205,7 +202,6 @@
 		if(ACCESS_CIVILIAN_ENGINEERING) return "Civilian Engineering"
 		if(ACCESS_CIVILIAN_BRIG)		return "Civilian Brig"
 		if(ACCESS_CIVILIAN_PUBLIC) 		return "Civilian"
-		if(ACCESS_IFF_MARINE) 			return "[MAIN_SHIP_NAME] Identification"
 		if(ACCESS_MARINE_SEA)			return "SEA's Office"
 		if(ACCESS_MARINE_KITCHEN)		return "Kitchen"
 
@@ -217,4 +213,3 @@
 		if(ACCESS_WY_PMC_BLACK)			return "W-Y PMC Black"
 		if(ACCESS_WY_PMC_WHITE)			return "W-Y PMC White"
 		if(ACCESS_WY_CORPORATE)			return "W-Y Executive"
-		if(ACCESS_IFF_PMC) 				return "W-Y Identification"

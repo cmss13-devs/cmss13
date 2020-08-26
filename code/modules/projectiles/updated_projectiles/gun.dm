@@ -21,8 +21,11 @@
 		)
 	flags_atom = FPRINT|CONDUCT
 	flags_item = TWOHANDED
+
 	var/iff_enabled_current = FALSE
 	var/iff_enabled = FALSE
+	var/iff_group_cache
+
 	var/accepted_ammo = list()
 	var/muzzle_flash 	= "muzzle_flash"
 	var/muzzle_flash_lum = 3 //muzzle flash brightness
@@ -573,6 +576,7 @@
 //----------------------------------------------------------
 
 /obj/item/weapon/gun/proc/replace_ammo(mob/user = null, var/obj/item/ammo_magazine/magazine)
+	reset_iff_group_cache()
 	if(!magazine.default_ammo)
 		to_chat(user, "Something went horribly wrong. Ahelp the following: ERROR CODE A1: null ammo while reloading.")
 		log_debug("ERROR CODE A1: null ammo while reloading. User: <b>[user]</b>")
@@ -776,7 +780,7 @@ and you're good to go.
 		var/mob/M = usr
 		weapon_source_mob = M
 	var/obj/item/projectile/P = new /obj/item/projectile(bullet_source, weapon_source_mob, src)
-	P.generate_bullet(chambered, 0, iff_enabled_current?AMMO_SKIPS_HUMANS:0)
+	P.generate_bullet(chambered, 0, 0)
 
 	return P
 
@@ -924,9 +928,14 @@ and you're good to go.
 		if(get_turf(target) != get_turf(user))
 			simulate_recoil(recoil_comp, user, target)
 
+			// Get IFF from our shooter if necessary,
+			var/iff_group_to_pass = null
+			if(iff_enabled_current)
+				iff_group_to_pass = get_user_iff_group(user)
+
 			//This is where the projectile leaves the barrel and deals with projectile code only.
 			//vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-			projectile_to_fire.fire_at(target, user, src, projectile_to_fire?.ammo?.max_range, projectile_to_fire?.ammo?.shell_speed, original_target)
+			projectile_to_fire.fire_at(target, user, src, projectile_to_fire?.ammo?.max_range, projectile_to_fire?.ammo?.shell_speed, original_target, FALSE, iff_group_to_pass)
 			//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 			last_fired = world.time
 
@@ -955,6 +964,21 @@ and you're good to go.
 			sleep(burst_delay)
 
 	flags_gun_features &= ~GUN_BURST_FIRING // We always want to turn off bursting when we're done, mainly for when we break early mid-burstfire.
+
+// We have a "cache" to avoid getting ID card iff every shot,
+// The cache is reset upon new magazines or when necessary.
+/obj/item/weapon/gun/proc/get_user_iff_group(var/mob/living/user)
+	if(!ishuman(user))
+		return user.faction_group
+
+	if(isnull(iff_group_cache))
+		var/mob/living/carbon/human/H = user
+		iff_group_cache = H.get_id_faction_group()
+
+	return iff_group_cache
+
+/obj/item/weapon/gun/proc/reset_iff_group_cache()
+	iff_group_cache = null
 
 /obj/item/weapon/gun/attack(mob/living/M, mob/living/user, def_zone)
 	if(!(flags_gun_features & GUN_CAN_POINTBLANK)) // If it can't point blank, you can't suicide and such.
@@ -1054,7 +1078,7 @@ and you're good to go.
 		var/obj/item/projectile/BP
 		for(var/i in 0 to projectile_to_fire.ammo.bonus_projectiles_amount)
 			BP = new /obj/item/projectile(initial(name), user, M.loc)
-			BP.generate_bullet(ammo_list[projectile_to_fire.ammo.bonus_projectiles_type], 0, iff_enabled_current?AMMO_SKIPS_HUMANS:0)
+			BP.generate_bullet(ammo_list[projectile_to_fire.ammo.bonus_projectiles_type], 0)
 			BP.damage *= damage_buff
 			BP.ammo.on_hit_mob(M, BP)
 			M.bullet_act(BP)

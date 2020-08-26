@@ -4,7 +4,6 @@
 
 	idtype = /obj/item/card/id/visa
 	access = list(
-		ACCESS_IFF_MARINE,
 		ACCESS_ILLEGAL_PIRATE,
 		ACCESS_MARINE_DROPSHIP,
 		ACCESS_CIVILIAN_PUBLIC,
@@ -47,11 +46,11 @@
 
 /datum/equipment_preset/upp/representative
 	name = "UPP Representative"
+	faction_group = FACTION_LIST_MARINE_UPP
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	idtype = /obj/item/card/id/silver/cl
 	access = list(
-		ACCESS_IFF_MARINE,
 		ACCESS_ILLEGAL_PIRATE,
 		ACCESS_MARINE_BRIDGE,
 		ACCESS_MARINE_DROPSHIP,
@@ -80,10 +79,10 @@
 	name = "RESS Representative"
 	flags = EQUIPMENT_PRESET_EXTRA
 	faction = FACTION_RESS
+	faction_group = FACTION_LIST_MARINE_RESS
 
 	idtype = /obj/item/card/id/silver/cl
 	access = list(
-		ACCESS_IFF_MARINE,
 		ACCESS_ILLEGAL_PIRATE,
 		ACCESS_MARINE_BRIDGE,
 		ACCESS_MARINE_DROPSHIP,

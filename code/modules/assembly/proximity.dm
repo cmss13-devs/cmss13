@@ -13,7 +13,7 @@
 	var/timing = FALSE
 	var/time = 10
 	var/range = 2
-	var/iff_signal = ACCESS_IFF_MARINE
+	var/iff_signal = FACTION_MARINE
 
 	var/delay = 1 //number of seconds between sensing and pulsing
 	var/delaying = FALSE

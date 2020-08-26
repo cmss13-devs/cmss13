@@ -13,7 +13,6 @@
 #define AMMO_SNIPER				32
 #define AMMO_INCENDIARY			64
 #define AMMO_ANTISTRUCT         128 // Primarily for railgun but can be implemented for other projectiles that are for antitank and antistructure (wall/machine)
-#define AMMO_SKIPS_HUMANS		256
 #define AMMO_SKIPS_ALIENS 		512
 #define AMMO_IS_SILENCED 		1024 //Unused right now.
 #define AMMO_IGNORE_ARMOR		2048

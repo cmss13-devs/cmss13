@@ -343,7 +343,7 @@ roles willy nilly.
 	if(ismob(M) && istype(J))
 		if(check_role_entry(M, J, latejoin))
 			M.job 						= J.title
-			M.faction					= J.faction
+			M.faction					= FACTION_MARINE
 			M.comm_title 		= J.get_comm_title()
 			J.current_positions++
 			return 1

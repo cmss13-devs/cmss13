@@ -10,7 +10,7 @@
 	use_power = 0
 	stat = DEFENSE_FUNCTIONAL
 	health = 200
-	var/belonging_to_faction = list(FACTION_MARINE)
+	var/faction_group = FACTION_LIST_MARINE
 	var/health_max = 200
 	var/turned_on = FALSE
 	var/mob/owner_mob = null
@@ -23,9 +23,9 @@
 	..(loc)
 	if(!isnull(faction))
 		if(islist(faction))
-			belonging_to_faction = faction
+			faction_group = faction
 		else
-			belonging_to_faction = list(faction)
+			faction_group = list(faction)
 
 /obj/structure/machinery/defenses/update_icon()
 	if(turned_on)

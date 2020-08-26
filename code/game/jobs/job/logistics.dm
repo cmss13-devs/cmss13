@@ -40,7 +40,6 @@
 	title = JOB_ORDNANCE_TECH
 	flag = ROLE_ORDNANCE_TECH
 	department_flag = ROLEGROUP_MARINE_ENGINEERING
-	faction = FACTION_MARINE
 	total_positions = 3
 	spawn_positions = 3
 	allow_additional = 1
@@ -67,7 +66,6 @@
 	title = JOB_MAINT_TECH
 	flag = ROLE_MAINT_TECH
 	department_flag = ROLEGROUP_MARINE_ENGINEERING
-	faction = FACTION_MARINE
 	supervisors = "the chief engineer"
 	selection_class = "job_ot"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE
@@ -108,7 +106,6 @@
 	title = JOB_MESS_SERGEANT
 	flag = ROLE_MESS_SERGEANT
 	department_flag = ROLEGROUP_MARINE_FLUFF
-	faction = FACTION_MARINE
 	selection_class = "job_ot"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE
 	gear_preset = "USCM Mess Sergeant (MS)"

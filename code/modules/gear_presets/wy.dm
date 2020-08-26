@@ -7,7 +7,6 @@
 	idtype = /obj/item/card/id/silver
 	faction_group = FACTION_LIST_WY
 	access = list(
-		ACCESS_IFF_MARINE,
 		ACCESS_WY_CORPORATE,
 		ACCESS_ILLEGAL_PIRATE,
 		ACCESS_MARINE_BRIDGE,

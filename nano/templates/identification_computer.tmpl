@@ -196,6 +196,13 @@
               {{/for}}
             </div>
           {{/for}}
+		<div class='item'>
+          <h2>Identification Group</h2>
+        </div>
+		<div class='item' style='width: 100%'>
+		   {{for data.faction_groups}}
+                {{:helper.link(value.ref, '', {'choice' : 'identification', 'access_target' : value.ref, 'unlocked' : value.unlocked}, null, value.unlocked ? 'selected' : null)}}
+            {{/for}}
         </div>
       {{/if}}
     {{/if}}

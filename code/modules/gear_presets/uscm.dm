@@ -1,6 +1,7 @@
 /datum/equipment_preset/uscm
 	name = "USCM"
 	faction = FACTION_MARINE
+	faction_group = FACTION_LIST_MARINE
 	languages = list("English")
 	idtype = /obj/item/card/id/dogtag
 
@@ -30,7 +31,7 @@
 	name = "USCM (Cryo) Squad Marine (PFC)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
-	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP)
+	access = list(ACCESS_MARINE_PREP)
 	assignment = JOB_SQUAD_MARINE
 	rank = JOB_SQUAD_MARINE
 	paygrade = "E2"
@@ -85,7 +86,7 @@
 	name = "USCM (Cryo) Smartgunner"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
-	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP, ACCESS_MARINE_SMARTPREP)
+	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_SMARTPREP)
 	assignment = JOB_SQUAD_SMARTGUN
 	rank = JOB_SQUAD_SMARTGUN
 	paygrade = "E4"
@@ -126,7 +127,6 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	access = list(
-		ACCESS_IFF_MARINE,
 		ACCESS_MARINE_PREP,
 		ACCESS_MARINE_SMARTPREP,
 		ACCESS_MARINE_CREWMAN,
@@ -184,7 +184,6 @@
 
 	idtype = /obj/item/card/id/silver
 	access = list(
-		ACCESS_IFF_MARINE,
 		ACCESS_MARINE_BRIDGE,
 		ACCESS_MARINE_BRIG,
 		ACCESS_MARINE_DROPSHIP,
@@ -246,7 +245,7 @@
 	name = "USCM (Cryo) Squad Specialist"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP, ACCESS_MARINE_SPECPREP)
+	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_SPECPREP)
 	assignment = JOB_SQUAD_SPECIALIST
 	rank = JOB_SQUAD_SPECIALIST
 	paygrade = "E5"
@@ -292,7 +291,7 @@
 	name = "USCM (Cryo) Squad Medic"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP, ACCESS_MARINE_MEDPREP, ACCESS_MARINE_MEDBAY)
+	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_MEDPREP, ACCESS_MARINE_MEDBAY)
 	assignment = JOB_SQUAD_MEDIC
 	rank = JOB_SQUAD_MEDIC
 	paygrade = "E3"
@@ -314,7 +313,7 @@
 	name = "USCM (Cryo) Squad Engineer"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP, ACCESS_MARINE_ENGPREP, ACCESS_CIVILIAN_ENGINEERING)
+	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_ENGPREP, ACCESS_CIVILIAN_ENGINEERING)
 	assignment = JOB_SQUAD_ENGI
 	rank = JOB_SQUAD_ENGI
 	paygrade = "E3"
@@ -336,7 +335,7 @@
 	name = "USCM (Cryo) Squad Leader"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP, ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP)
+	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP)
 	assignment = JOB_SQUAD_LEADER
 	rank = JOB_SQUAD_LEADER
 	paygrade = "E6"
@@ -360,7 +359,7 @@
 	name = "USCM Cryo Private (Equipped)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP)
+	access = list(ACCESS_MARINE_PREP)
 	assignment = JOB_SQUAD_MARINE
 	rank = JOB_SQUAD_MARINE
 	paygrade = "E2"
@@ -399,7 +398,7 @@
 	name = "USCM Cryo Squad Leader (Equipped)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP, ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP)
+	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP)
 	assignment = JOB_SQUAD_LEADER
 	rank = JOB_SQUAD_LEADER
 	paygrade = "E6"
@@ -431,7 +430,7 @@
 	name = "USCM Cryo Smartgunner (Equipped)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP, ACCESS_MARINE_SMARTPREP)
+	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_SMARTPREP)
 	assignment = JOB_SQUAD_SMARTGUN
 	rank = JOB_SQUAD_SMARTGUN
 	paygrade = "E4"
@@ -462,7 +461,7 @@
 	name = "USCM Cryo Engineer (Equipped)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP, ACCESS_MARINE_ENGPREP, ACCESS_CIVILIAN_ENGINEERING)
+	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_ENGPREP, ACCESS_CIVILIAN_ENGINEERING)
 	assignment = JOB_SQUAD_ENGI
 	rank = JOB_SQUAD_ENGI
 	paygrade = "E3"
@@ -501,7 +500,7 @@
 	name = "USCM Cryo Medic (Equipped)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP, ACCESS_MARINE_MEDPREP, ACCESS_MARINE_MEDBAY)
+	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_MEDPREP, ACCESS_MARINE_MEDBAY)
 	assignment = JOB_SQUAD_MEDIC
 	rank = JOB_SQUAD_MEDIC
 	paygrade = "E3"
@@ -540,7 +539,7 @@
 	name = "USCM Cryo Specialist (Equipped)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP, ACCESS_MARINE_SPECPREP)
+	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_SPECPREP)
 	assignment = JOB_SQUAD_SPECIALIST
 	rank = JOB_SQUAD_SPECIALIST
 	paygrade = "E5"

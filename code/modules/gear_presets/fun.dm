@@ -199,9 +199,9 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 	uses_special_name = TRUE
 	faction = FACTION_HEFA
+	faction_group = list(FACTION_HEFA, FACTION_MARINE)
 
 	// Cooperate!
-	access = list(ACCESS_IFF_MARINE)
 	idtype = /obj/item/card/id/gold
 	assignment = "Shrapnelsworn"
 	rank = "Brother of the Order"

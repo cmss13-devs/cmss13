@@ -331,7 +331,6 @@
 		ACCESS_WY_PMC_BLACK,
 		ACCESS_WY_PMC_WHITE,
 		ACCESS_WY_CORPORATE,
-		ACCESS_IFF_PMC,
 	)
 
 /datum/equipment_preset/corpse/bridgeofficer/johnson/load_gear(mob/living/carbon/human/H)
@@ -387,7 +386,6 @@
 		ACCESS_WY_PMC_BLACK,
 		ACCESS_WY_PMC_WHITE,
 		ACCESS_WY_CORPORATE,
-		ACCESS_IFF_PMC,
 	)
 
 /datum/equipment_preset/corpse/PMC/load_gear(mob/living/carbon/human/H)

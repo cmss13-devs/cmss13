@@ -171,7 +171,6 @@
 	title = JOB_SQUAD_MARINE
 	flag = ROLE_MARINE_STANDARD
 	department_flag = ROLEGROUP_MARINE_SQUAD_MARINES
-	faction = FACTION_MARINE
 	total_positions = -1
 	spawn_positions = -1
 	minimum_playtimes = list()

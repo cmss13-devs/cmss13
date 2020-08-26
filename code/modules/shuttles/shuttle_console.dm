@@ -219,6 +219,16 @@
 
 			//Alert code is the Queen is the one calling it, the shuttle is on the ground and the shuttle still allows alerts
 			if(isXenoQueen(M) && shuttle.location == 1 && shuttle.alerts_allowed && onboard && !shuttle.iselevator)
+				var/mob/living/carbon/Xenomorph/Queen/Q = M
+
+				// Check for onboard xenos, so the Queen doesn't leave most of her hive behind.
+				var/count = Q.count_hivemember_same_area()
+
+				// Check if at least half of the hive is onboard. If not, we don't launch.
+				if(count < length(Q.hive.totalXenos) * 0.5)
+					to_chat(Q, SPAN_WARNING("More than half of your hive is not on board. Don't leave without them!"))
+					return
+
 				// Allow the queen to choose the ship section to crash into
 				var/crash_target = input("Choose a ship section to target","Hijack",null) as null|anything in almayer_ship_sections + list("Cancel")
 				if(crash_target == "Cancel")
@@ -253,16 +263,14 @@
 					marine_announcement("Unscheduled dropship departure detected from operational area. Hijack likely. Shutting down autopilot.", "Dropship Alert", 'sound/AI/hijack.ogg')
 					shuttle.alerts_allowed--
 
-					to_chat(M, SPAN_DANGER("A loud alarm erupts from [src]! The fleshy hosts must know that you can access it!"))
-					// typechecked above
-					var/mob/living/carbon/Xenomorph/Queen/Q = M
+					to_chat(Q, SPAN_DANGER("A loud alarm erupts from [src]! The fleshy hosts must know that you can access it!"))
 					xeno_message(SPAN_XENOANNOUNCE("The Queen has commanded the metal bird to depart for the metal hive in the sky! Rejoice!"),3,Q.hivenumber)
 
 					// Notify the yautja too so they stop the hunt
 					message_all_yautja("The serpent Queen has commanded the landing shuttle to depart.")
 					playsound(src, 'sound/misc/queen_alarm.ogg')
 
-					M.count_niche_stat(STATISTICS_NICHE_FLIGHT)
+					Q.count_niche_stat(STATISTICS_NICHE_FLIGHT)
 
 					if(Q.hive)
 						Q.hive.remove_all_special_structures()

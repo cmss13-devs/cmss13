@@ -40,3 +40,19 @@
 //These don't do much currently. Or anything? Only around for legacy code.
 /mob/living/carbon/Xenomorph/is_mob_restrained()
 	return 0
+
+// Count how many xenos are in the same area as you. Used in hijacking.
+/mob/living/carbon/Xenomorph/proc/count_hivemember_same_area()
+	var/area/MA = get_area(src)
+	var/count = 0
+
+	// Compare the areas.
+	for(var/mob/living/carbon/Xenomorph/X in hive.totalXenos)
+		if(!X in living_xeno_list)
+			continue
+
+		var/area/XA = get_area(X)
+		if(XA == MA)
+			count++
+
+	return count

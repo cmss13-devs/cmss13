@@ -184,6 +184,10 @@ Works together with spawning an observer, noted above.
 	var/mob/dead/observer/ghost = new(src)	//Transfer safety to observer spawning proc.
 	ghost.can_reenter_corpse = can_reenter_corpse
 	ghost.timeofdeath = timeofdeath //BS12 EDIT
+
+	if(z == ADMIN_Z_LEVEL)
+		ghost.timeofdeath = 0 // Bypass respawn limit if you die on the admin zlevel
+
 	ghost.key = key
 	ghost.mind = mind
 
@@ -237,7 +241,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			msg_admin_niche("[key_name_admin(usr)] has ghosted. (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[location.x];Y=[location.y];Z=[location.z]'>JMP</a>)")
 		log_game("[key_name_admin(usr)] has ghosted.")
 		var/mob/dead/observer/ghost = ghostize(FALSE) //FALSE parameter is so we can never re-enter our body, "Charlie, you can never come baaaack~" :3
-		if(ghost)
+		if(ghost && z != ADMIN_Z_LEVEL)
 			ghost.timeofdeath = world.time
 
 /mob/dead/observer/Move(NewLoc, direct)

@@ -44,7 +44,7 @@
 		life_time_start = world.time
 	var/area/current_area = get_area(loc)
 	if(current_area)
-		current_area.Entered()
+		current_area.Entered(src)
 	if(!isnull(current_area) && current_area.statistic_exempt)
 		statistic_exempt = TRUE
 	prepare_huds()

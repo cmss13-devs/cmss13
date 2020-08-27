@@ -241,9 +241,9 @@ var/global/datum/controller/gameticker/ticker = new()
 				to_world(SPAN_DANGER("<B>The OOC channel has been globally enabled due to round end!</B>"))
 				ooc_allowed = 1
 
-			if(!delay_end)
+			if(!delay_end && !automatic_delay_end)
 				sleep(restart_timeout)
-				if(!delay_end)
+				if(!delay_end && !automatic_delay_end)
 					world.Reboot()
 				else
 					to_world({"<hr>

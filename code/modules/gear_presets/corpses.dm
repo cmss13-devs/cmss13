@@ -39,6 +39,7 @@
 			N.afterbuckle(H)
 	H.undefibbable = TRUE
 	H.spawned_corpse = TRUE
+	H.updatehealth()
 
 /datum/equipment_preset/corpse/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(H), WEAR_BACK)

@@ -7,14 +7,16 @@
 		if(!ticker || !ticker.mode)
 			to_chat(src, SPAN_WARNING("The game hasn't started yet!"))
 			return
-		to_chat(src, ticker.mode.pred_current_num)
-		var/value = input(src,"What is the new maximum number of predators?","Input:", ticker.mode.pred_maximum_num) as num|null
+
+		var/value = input(src,"How many additional predators can join? Decreasing the value is not recommended. Current predator count: [ticker.mode.pred_current_num]","Input:", ticker.mode.pred_additional_max) as num|null
+
 		if(value < ticker.mode.pred_current_num)
-			to_chat(src, SPAN_WARNING("Can't have max number of predators than there already are."))
+			to_chat(src, SPAN_NOTICE("Aborting. Number cannot be lower than the current pred count. (current: [ticker.mode.pred_current_num], attempted: [value])"))
 			return
+
 		if(value)
-			ticker.mode.pred_maximum_num = value
-			message_staff(SPAN_NOTICE("[key_name_admin(usr)] adjusted pred amount to [value]."))
+			ticker.mode.pred_additional_max = abs(value)
+			message_staff(SPAN_NOTICE("[key_name_admin(usr)] adjusted the additional pred amount to [abs(value)]."))
 
 /datum/admins/proc/force_predator_round()
 	set name = "P: Force Predator Round"

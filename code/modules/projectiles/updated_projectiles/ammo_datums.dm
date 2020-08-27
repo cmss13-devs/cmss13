@@ -815,7 +815,7 @@
 /datum/ammo/bullet/sniper/flak
 	name = "flak sniper bullet"
 	damage_type = BRUTE
-	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_SNIPER|AMMO_IGNORE_COVER|AMMO_SCANS_NEARBY
+	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_SNIPER|AMMO_IGNORE_COVER
 
 /datum/ammo/bullet/sniper/flak/New()
 	..()
@@ -1582,7 +1582,7 @@
 	name = "neurotoxic air splash"
 	effect_power = 1
 	spit_cost = 50
-	flags_ammo_behavior = AMMO_XENO_TOX|AMMO_IGNORE_RESIST|AMMO_SCANS_NEARBY
+	flags_ammo_behavior = AMMO_XENO_TOX|AMMO_IGNORE_RESIST
 
 /datum/ammo/xeno/toxin/shotgun
 	name = "neurotoxic droplet"

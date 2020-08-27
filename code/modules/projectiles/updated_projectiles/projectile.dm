@@ -300,6 +300,11 @@
 				var/mob/living/dL = dA
 				if(dL.is_dead())
 					continue
+				if(ishuman(dL))
+					var/mob/living/carbon/human/H = dL
+					if(!isnull(iff_group) && H.get_target_lock(iff_group))
+						continue
+
 				if(ammo_flags & AMMO_SKIPS_ALIENS && isXeno(dL))
 					var/mob/living/carbon/Xenomorph/X = dL
 					var/mob/living/carbon/Xenomorph/F = firer

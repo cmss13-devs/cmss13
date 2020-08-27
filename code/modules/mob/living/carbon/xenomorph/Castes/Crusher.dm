@@ -34,6 +34,8 @@
 	plasma_types = list(PLASMA_CHITIN)
 	tier = 3
 	drag_delay = 6 //pulling a big dead xeno is hard
+	
+	small_explosives_stun = FALSE
 
 	mob_size = MOB_SIZE_BIG
 

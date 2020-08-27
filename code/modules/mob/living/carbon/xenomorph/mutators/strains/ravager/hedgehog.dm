@@ -18,7 +18,7 @@
 	var/mob/living/carbon/Xenomorph/Ravager/R = MS.xeno
 
 	R.mutation_type = RAVAGER_HEDGEHOG
-	
+	R.small_explosives_stun = FALSE
 	R.speed_modifier += XENO_SPEED_MODIFIER_SLOWEST
 
 	apply_behavior_holder(R)

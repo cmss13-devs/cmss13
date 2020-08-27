@@ -2,8 +2,8 @@
 	caste_name = "Lurker"
 	tier = 2
 
-	melee_damage_lower = XENO_DAMAGE_TIER_6
-	melee_damage_upper = XENO_DAMAGE_TIER_6
+	melee_damage_lower = XENO_DAMAGE_TIER_4
+	melee_damage_upper = XENO_DAMAGE_TIER_4
 	max_health = XENO_HEALTH_TIER_5
 	plasma_gain = XENO_PLASMA_GAIN_TIER_7
 	plasma_max = XENO_PLASMA_TIER_4

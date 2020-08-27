@@ -42,7 +42,7 @@
 
 		var/powerfactor_value = round( damage * 0.05 ,1)
 		powerfactor_value = min(powerfactor_value,20)
-		if(powerfactor_value > 0 && total_explosive_resistance < XENO_EXPLOSIVE_ARMOR_TIER_10)
+		if(powerfactor_value > 0 && small_explosives_stun)
 			KnockDown(powerfactor_value/5)
 			KnockOut(powerfactor_value/5)
 			if(mob_size != MOB_SIZE_BIG)

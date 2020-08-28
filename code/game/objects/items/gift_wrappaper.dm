@@ -121,7 +121,7 @@
 
 /obj/item/wrapping_paper/attackby(obj/item/W as obj, mob/user as mob)
 	..()
-	if (!( locate(/obj/structure/table, src.loc) ))
+	if (!( locate(/obj/structure/surface/table, src.loc) ))
 		to_chat(user, SPAN_NOTICE(" You MUST put the paper on a table!"))
 	if (W.w_class < 4)
 		if ((istype(user.l_hand, /obj/item/tool/wirecutters) || istype(user.r_hand, /obj/item/tool/wirecutters)))

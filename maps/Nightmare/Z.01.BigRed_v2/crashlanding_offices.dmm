@@ -283,7 +283,7 @@
 	},
 /area/bigredv2/outside/office_complex)
 "aU" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/restraints,
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin15";
@@ -363,7 +363,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/office_complex)
 "bg" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/spawner/random/tech_supply,
 /obj/effect/spawner/random/tech_supply,
 /turf/open/floor{
@@ -448,7 +448,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/paper,
 /turf/open/floor,
 /area/bigredv2/outside/office_complex)
@@ -468,7 +468,7 @@
 	},
 /area/bigredv2/outside/office_complex)
 "bv" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark{
 	name = "crap_item"
 	},
@@ -519,7 +519,7 @@
 	},
 /area/bigredv2/outside/office_complex)
 "bC" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/spawner/random/tech_supply,
 /turf/open/floor{
 	icon_state = "white"
@@ -566,7 +566,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/office_complex)
 "bK" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/paper_bin,
 /turf/open/floor,
 /area/bigredv2/outside/office_complex)
@@ -665,7 +665,7 @@
 	},
 /area/bigredv2/outside/office_complex)
 "bZ" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/food/drinks/flask,
 /obj/structure/machinery/camera/autoname{
 	dir = 4
@@ -675,7 +675,7 @@
 	},
 /area/bigredv2/outside/office_complex)
 "ca" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -898,7 +898,7 @@
 	},
 /area/bigredv2/outside/office_complex)
 "cH" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/trash/semki,
 /obj/structure/pipes/vents/pump{
 	dir = 4
@@ -908,7 +908,7 @@
 	},
 /area/bigredv2/outside/office_complex)
 "cI" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/clothing/mask/cigarette,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
@@ -1261,7 +1261,7 @@
 	},
 /area/bigredv2/outside/office_complex)
 "dI" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/disk/objective,
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin15";
@@ -1285,7 +1285,7 @@
 	},
 /area/bigredv2/outside/office_complex)
 "dL" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/device/binoculars,
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin15";
@@ -1293,7 +1293,7 @@
 	},
 /area/bigredv2/outside/office_complex)
 "dM" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/storage/firstaid,
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin15";
@@ -1301,7 +1301,7 @@
 	},
 /area/bigredv2/outside/office_complex)
 "dN" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/device/flashlight,
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin15";
@@ -1316,7 +1316,7 @@
 	},
 /area/bigredv2/outside/office_complex)
 "dP" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/spawner/random/tech_supply,
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin15";
@@ -1335,7 +1335,7 @@
 	},
 /area/bigredv2/outside/office_complex)
 "dR" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/map/big_red_map,
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin15";
@@ -1343,7 +1343,7 @@
 	},
 /area/bigredv2/outside/office_complex)
 "dS" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/spawner/random/tool,
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin15";
@@ -1351,7 +1351,7 @@
 	},
 /area/bigredv2/outside/office_complex)
 "dT" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/spawner/random/toolbox,
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin15";

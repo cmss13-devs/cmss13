@@ -182,7 +182,7 @@
 /turf/open/space/transit/north/shuttlespace_ns15,
 /area/space)
 "aI" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/tool/kitchen/rollingpin,
 /obj/item/tool/kitchen/knife,
 /turf/open/floor/prison{
@@ -655,7 +655,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/supply/dock)
 "el" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /turf/open/floor/prison{
 	dir = 2;
 	icon_state = "sterile_white";
@@ -670,7 +670,7 @@
 	},
 /area/centcom/living)
 "ew" = (
-/obj/structure/table/woodentable/fancy,
+/obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/wood,
 /area/centcom/living)
 "ex" = (
@@ -712,7 +712,7 @@
 /turf/open/space,
 /area/shuttle/distress/transit_big)
 "eT" = (
-/obj/structure/table/almayer,
+/obj/structure/surface/table/almayer,
 /turf/open/floor/wood,
 /area/adminlevel/bunker01/breakroom)
 "eU" = (
@@ -775,7 +775,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/mainroom)
 "fu" = (
-/obj/structure/table/woodentable/fancy,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/item/clothing/head/collectable/tophat{
 	desc = "A top hat, placed here as a special thanks to someone often overlooked and forgotten. But who the community owes a thank you anyways.";
 	name = "Penguin"
@@ -787,7 +787,7 @@
 /turf/open/floor/carpet,
 /area/centcom/living)
 "fx" = (
-/obj/structure/table/woodentable/fancy,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/item/reagent_container/food/snacks/muffin{
 	desc = "Another special homage to someone never thanked enough.";
 	name = "Sgt. Man"
@@ -1249,7 +1249,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/bedroom)
 "hE" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/door/firedoor/border_only/almayer/antag,
 /turf/open/floor/prison{
 	dir = 2;
@@ -1261,7 +1261,7 @@
 /turf/closed/shuttle/ert,
 /area/shuttle/distress/start)
 "hO" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark{
 	name = "DistressItem"
 	},
@@ -1301,7 +1301,7 @@
 	},
 /area/shuttle/distress/start_pmc)
 "hV" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark{
 	name = "Distress_PMCItem"
 	},
@@ -1341,7 +1341,7 @@
 	},
 /area/shuttle/distress/start_upp)
 "ic" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark{
 	name = "Distress_UPPItem"
 	},
@@ -1619,7 +1619,7 @@
 /turf/open/floor,
 /area/start)
 "jj" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark{
 	name = "DistressItem"
 	},
@@ -1648,7 +1648,7 @@
 	},
 /area/shuttle/distress/start_pmc)
 "jn" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark{
 	name = "Distress_PMCItem"
 	},
@@ -1677,7 +1677,7 @@
 	},
 /area/shuttle/distress/start_pmc)
 "jr" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark{
 	name = "Distress_UPPItem"
 	},
@@ -1701,7 +1701,7 @@
 	},
 /area/shuttle/distress/start_upp)
 "ju" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/storage/firstaid/regular,
 /obj/item/storage/belt/medical/lifesaver/full,
 /obj/effect/landmark{
@@ -2005,7 +2005,7 @@
 	},
 /area/shuttle/distress/start_big)
 "kz" = (
-/obj/structure/table/almayer,
+/obj/structure/surface/table/almayer,
 /obj/item/device/flashlight/lamp,
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -2018,7 +2018,7 @@
 	icon_state = "tube1";
 	pixel_y = 0
 	},
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -2062,7 +2062,7 @@
 /area/shuttle/distress/start_big)
 "kF" = (
 /obj/item/storage/surgical_tray,
-/obj/structure/table/almayer,
+/obj/structure/surface/table/almayer,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -2070,7 +2070,7 @@
 /area/shuttle/distress/start_big)
 "kG" = (
 /obj/structure/machinery/microwave,
-/obj/structure/table/almayer,
+/obj/structure/surface/table/almayer,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -2125,7 +2125,7 @@
 	},
 /area/shuttle/distress/start_big)
 "kN" = (
-/obj/structure/table/almayer,
+/obj/structure/surface/table/almayer,
 /obj/item/storage/box/donkpockets,
 /obj/item/storage/box/donkpockets,
 /turf/open/floor/almayer{
@@ -2186,7 +2186,7 @@
 	},
 /area/shuttle/distress/start_big)
 "kU" = (
-/obj/structure/table/almayer,
+/obj/structure/surface/table/almayer,
 /obj/item/storage/pouch/medkit,
 /obj/item/storage/pouch/medkit,
 /obj/item/storage/pouch/medical,
@@ -2214,7 +2214,7 @@
 /turf/open/floor/wood,
 /area/shuttle/distress/start_big)
 "kY" = (
-/obj/structure/table/almayer,
+/obj/structure/surface/table/almayer,
 /obj/item/paper_bin,
 /obj/item/tool/pen,
 /turf/open/floor/wood,
@@ -2256,7 +2256,7 @@
 	},
 /area/shuttle/distress/start_big)
 "ld" = (
-/obj/structure/table/almayer,
+/obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/communications,
 /obj/structure/machinery/light{
 	dir = 8;
@@ -2270,7 +2270,7 @@
 	},
 /area/shuttle/distress/start_big)
 "le" = (
-/obj/structure/table/almayer,
+/obj/structure/surface/table/almayer,
 /obj/item/device/flashlight/lamp/green,
 /turf/open/floor{
 	dir = 8;
@@ -2284,7 +2284,7 @@
 /turf/open/floor/wood,
 /area/shuttle/distress/start_big)
 "lg" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/storage/belt/utility/full,
 /obj/item/storage/backpack/marine/satchel/tech,
 /obj/item/storage/toolbox/electrical,
@@ -2315,7 +2315,7 @@
 	},
 /area/shuttle/distress/start_big)
 "li" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -2350,7 +2350,7 @@
 	},
 /area/shuttle/distress/start_big)
 "lm" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/storage/toolbox/mechanical,
 /obj/item/device/radio,
 /turf/open/floor/almayer{
@@ -2359,7 +2359,7 @@
 	},
 /area/shuttle/distress/start_big)
 "ln" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/storage/firstaid/regular,
 /obj/item/storage/belt/medical/lifesaver/full,
 /turf/open/floor/almayer{
@@ -2390,7 +2390,7 @@
 	icon_state = "tube1";
 	pixel_y = 0
 	},
-/obj/structure/table/almayer,
+/obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/security,
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -2398,7 +2398,7 @@
 	},
 /area/shuttle/distress/start_big)
 "lt" = (
-/obj/structure/table/almayer,
+/obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/secure_data,
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -2565,7 +2565,7 @@
 	},
 /area/shuttle/distress/start_big)
 "lI" = (
-/obj/structure/table/almayer,
+/obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/card,
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -2721,7 +2721,7 @@
 	},
 /area/shuttle/distress/start_big)
 "lW" = (
-/obj/structure/table/almayer,
+/obj/structure/surface/table/almayer,
 /obj/item/stack/sheet/metal{
 	amount = 50;
 	pixel_x = 3;
@@ -2860,7 +2860,7 @@
 	},
 /area/shuttle/distress/start_big)
 "mg" = (
-/obj/structure/table/almayer,
+/obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/communications,
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -2868,7 +2868,7 @@
 	},
 /area/shuttle/distress/start_big)
 "mh" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/storage/belt/utility/full,
 /obj/item/storage/backpack/marine/engineerpack,
 /obj/item/storage/toolbox/mechanical,
@@ -2900,7 +2900,7 @@
 	},
 /area/shuttle/distress/start_big)
 "ml" = (
-/obj/structure/table/almayer,
+/obj/structure/surface/table/almayer,
 /obj/item/clothing/suit/armor/bulletproof,
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -2934,7 +2934,7 @@
 /turf/open/floor/plating/almayer,
 /area/shuttle/distress/start_big)
 "mo" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/ammo_magazine/smg/m39,
 /obj/item/ammo_magazine/smg/m39,
 /obj/item/ammo_magazine/smg/m39,
@@ -2950,7 +2950,7 @@
 	icon_state = "tube1";
 	pixel_y = 0
 	},
-/obj/structure/table/almayer,
+/obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/med_data/laptop,
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -2965,7 +2965,7 @@
 	},
 /area/shuttle/distress/start_big)
 "mr" = (
-/obj/structure/table/almayer,
+/obj/structure/surface/table/almayer,
 /obj/item/paper_bin,
 /obj/item/tool/pen,
 /obj/item/tool/pen,
@@ -2995,7 +2995,7 @@
 	icon_state = "tube1";
 	pixel_y = 0
 	},
-/obj/structure/table/almayer,
+/obj/structure/surface/table/almayer,
 /obj/item/ammo_magazine/pistol/mod88{
 	pixel_x = 5
 	},
@@ -3058,7 +3058,7 @@
 	},
 /area/shuttle/distress/start_big)
 "mz" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/storage/toolbox/emergency{
 	pixel_x = 3;
 	pixel_y = 3
@@ -3098,7 +3098,7 @@
 	},
 /area/shuttle/distress/start_big)
 "mC" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/ammo_magazine/smg/m39,
 /obj/item/ammo_magazine/smg/m39,
 /obj/item/weapon/gun/smg/m39/elite,
@@ -3186,7 +3186,7 @@
 /turf/open/floor/plating/almayer,
 /area/shuttle/distress/start_big)
 "mL" = (
-/obj/structure/table/almayer,
+/obj/structure/surface/table/almayer,
 /obj/item/paper_bin{
 	pixel_x = -5;
 	pixel_y = 5
@@ -3203,7 +3203,7 @@
 	},
 /area/shuttle/distress/start_big)
 "mM" = (
-/obj/structure/table/almayer,
+/obj/structure/surface/table/almayer,
 /obj/item/clipboard,
 /obj/item/clipboard,
 /obj/item/folder,
@@ -3218,7 +3218,7 @@
 	},
 /area/shuttle/distress/start_big)
 "mN" = (
-/obj/structure/table/almayer,
+/obj/structure/surface/table/almayer,
 /obj/structure/largecrate/random/case/small{
 	pixel_y = 5
 	},
@@ -3250,7 +3250,7 @@
 	},
 /area/shuttle/distress/start_big)
 "mP" = (
-/obj/structure/table/almayer,
+/obj/structure/surface/table/almayer,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -3350,7 +3350,7 @@
 /turf/closed/wall/r_wall,
 /area/adminlevel/bunker01/caves)
 "nc" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/faxmachine{
 	department = "CLASSIFIED"
 	},
@@ -3399,7 +3399,7 @@
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/command)
 "nh" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/paper_bin,
 /obj/item/tool/pen,
 /obj/structure/machinery/firealarm{
@@ -3471,7 +3471,7 @@
 	},
 /area/adminlevel/bunker01/command)
 "nq" = (
-/obj/structure/table/holotable/wood,
+/obj/structure/surface/table/holotable/wood,
 /obj/item/clothing/mask/cigarette/cigar/havana,
 /obj/item/ashtray/glass,
 /turf/open/floor/carpet{
@@ -3596,7 +3596,7 @@
 	},
 /area/adminlevel/bunker01/kitchen)
 "nK" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/juicer,
 /turf/open/floor/prison{
 	dir = 2;
@@ -3616,7 +3616,7 @@
 	},
 /area/adminlevel/bunker01/hydroponics)
 "nN" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/storage/bag/plants,
 /obj/item/tool/shovel/spade,
 /obj/item/reagent_container/glass/bucket,
@@ -3699,7 +3699,7 @@
 	},
 /area/adminlevel/bunker01/bathroom)
 "oa" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/microwave,
 /obj/structure/machinery/power/apc/antag{
 	dir = 4;
@@ -3800,7 +3800,7 @@
 /turf/open/floor/wood,
 /area/adminlevel/bunker01/bedroom)
 "on" = (
-/obj/structure/table/almayer,
+/obj/structure/surface/table/almayer,
 /obj/structure/bedsheetbin{
 	pixel_y = 6
 	},
@@ -3825,7 +3825,7 @@
 	},
 /area/adminlevel/ert_station)
 "oq" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 1;
 	icon_state = "map-supply";
@@ -3850,7 +3850,7 @@
 	},
 /area/adminlevel/bunker01/kitchen)
 "os" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/microwave,
 /obj/structure/pipes/vents/pump{
 	dir = 8;
@@ -3901,7 +3901,7 @@
 	},
 /area/adminlevel/bunker01/kitchen)
 "oA" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/tool/kitchen/rollingpin,
 /obj/item/tool/kitchen/knife,
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -3931,7 +3931,7 @@
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/hydroponics)
 "oE" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/light{
 	dir = 8;
 	icon_state = "tube1"
@@ -4069,7 +4069,7 @@
 	},
 /area/adminlevel/bunker01/hydroponics)
 "oR" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/tool/shovel/etool/folded,
 /obj/item/tool/shovel/etool/folded,
 /obj/item/tool/shovel/etool/folded,
@@ -4155,7 +4155,7 @@
 	},
 /area/adminlevel/bunker01/caves)
 "oZ" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/computer/secure_data{
 	dir = 4;
 	req_access = list(201);
@@ -4584,7 +4584,7 @@
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/effect/spawner/random/toolbox,
 /obj/structure/pipes/vents/pump{
 	dir = 8;
@@ -4613,7 +4613,7 @@
 	},
 /area/adminlevel/bunker01/bathroom)
 "qy" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/clothing/gloves/yellow,
 /obj/structure/pipes/vents/pump{
 	dir = 4
@@ -4633,7 +4633,7 @@
 	},
 /area/adminlevel/bunker01/engineering)
 "qz" = (
-/obj/structure/table/almayer,
+/obj/structure/surface/table/almayer,
 /obj/item/device/binoculars{
 	pixel_x = -4
 	},
@@ -4698,7 +4698,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/engineering)
 "qF" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/effect/spawner/random/tool,
 /turf/open/floor/almayer{
 	dir = 6;
@@ -4727,7 +4727,7 @@
 	},
 /area/adminlevel/bunker01/bathroom)
 "qI" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/effect/spawner/random/toolbox,
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer{
@@ -5136,7 +5136,7 @@
 	},
 /area/adminlevel/bunker01/medbay)
 "rC" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/recharger,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	density = 0;
@@ -5155,7 +5155,7 @@
 	},
 /area/adminlevel/bunker01/medbay)
 "rD" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/recharger,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	density = 0;
@@ -5413,7 +5413,7 @@
 	},
 /area/adminlevel/bunker01/medbay)
 "sb" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/reagent_container/glass/beaker/large,
 /obj/item/reagent_container/glass/beaker/large,
 /obj/item/reagent_container/glass/beaker,
@@ -5561,7 +5561,7 @@
 	},
 /area/adminlevel/bunker01/medbay)
 "sr" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/storage/box/pillbottles,
 /obj/item/storage/box/pillbottles,
 /obj/item/storage/box/pillbottles,
@@ -5575,7 +5575,7 @@
 	},
 /area/adminlevel/bunker01/medbay)
 "ss" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/reagentgrinder,
 /obj/item/stack/sheet/mineral/phoron{
 	amount = 25;
@@ -5767,7 +5767,7 @@
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/security)
 "sP" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/storage/box/masks,
 /obj/item/storage/box/masks,
 /obj/item/storage/box/gloves,
@@ -5936,7 +5936,7 @@
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/medbay)
 "te" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/storage/firstaid/adv{
 	pixel_x = 2;
 	pixel_y = -5
@@ -6052,7 +6052,7 @@
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/medbay)
 "tl" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/device/defibrillator,
 /obj/item/device/defibrillator,
 /obj/item/device/defibrillator,
@@ -6125,7 +6125,7 @@
 	},
 /area/adminlevel/bunker01/medbay)
 "ts" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/storage/surgical_tray,
 /obj/item/reagent_container/spray/cleaner{
 	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
@@ -6274,7 +6274,7 @@
 	},
 /area/adminlevel/ert_station)
 "uk" = (
-/obj/structure/table/almayer,
+/obj/structure/surface/table/almayer,
 /obj/item/ashtray/plastic,
 /turf/open/floor/wood,
 /area/adminlevel/bunker01/bedroom)
@@ -6410,7 +6410,7 @@
 	},
 /area/adminlevel/ert_station)
 "vS" = (
-/obj/structure/table/almayer,
+/obj/structure/surface/table/almayer,
 /obj/item/trash/cigbutt,
 /turf/open/floor/wood,
 /area/adminlevel/bunker01/bedroom)
@@ -6544,7 +6544,7 @@
 	},
 /area/adminlevel/bunker01/mainroom)
 "yk" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/book/manual/chef_recipes,
 /obj/item/clothing/head/chefhat,
 /turf/open/floor/prison{
@@ -6637,7 +6637,7 @@
 	},
 /area/adminlevel/ert_station)
 "yW" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/tool/shovel/etool/folded,
 /obj/item/tool/shovel/etool/folded,
 /obj/item/tool/shovel/etool/folded,
@@ -6685,7 +6685,7 @@
 	},
 /area/adminlevel/ert_station)
 "zt" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/storage/surgical_tray,
 /obj/item/reagent_container/spray/cleaner{
 	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
@@ -6787,7 +6787,7 @@
 	},
 /area/adminlevel/bunker01/bathroom)
 "Am" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/storage/firstaid/adv{
 	pixel_x = 2;
 	pixel_y = -5
@@ -6874,7 +6874,7 @@
 	},
 /area/adminlevel/bunker01/engineering)
 "Bw" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/effect/spawner/random/toolbox,
 /turf/open/floor/almayer{
 	dir = 6;
@@ -6946,7 +6946,7 @@
 	},
 /area/tdome/tdomeobserve)
 "BV" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/chem_dispenser/soda{
 	density = 0
 	},
@@ -7011,7 +7011,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/mainroom)
 "CI" = (
-/obj/structure/table/almayer,
+/obj/structure/surface/table/almayer,
 /obj/structure/bedsheetbin{
 	pixel_y = 6
 	},
@@ -7201,7 +7201,7 @@
 	},
 /area/adminlevel/ert_station)
 "Er" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/storage/firstaid/adv{
 	pixel_x = 2;
 	pixel_y = -5
@@ -7222,7 +7222,7 @@
 /turf/open/floor/plating/almayer,
 /area/adminlevel/bunker01/mainroom)
 "EI" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/reagent_dispensers/beerkeg{
 	density = 0
 	},
@@ -7307,7 +7307,7 @@
 /turf/open/floor/plating/almayer,
 /area/adminlevel/ert_station)
 "Fw" = (
-/obj/structure/table/almayer,
+/obj/structure/surface/table/almayer,
 /obj/item/storage/fancy/cigar,
 /turf/open/floor/almayer{
 	dir = 5;
@@ -7333,7 +7333,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/security)
 "FJ" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /turf/open/floor/almayer{
 	icon_state = "orange";
 	tag = "icon-sterile"
@@ -7380,7 +7380,7 @@
 	},
 /area/adminlevel/ert_station)
 "Gv" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /turf/open/floor/prison{
 	dir = 2;
 	icon_state = "sterile_white";
@@ -7411,7 +7411,7 @@
 	},
 /area/adminlevel/ert_station)
 "GC" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/recharger,
 /obj/item/roller,
 /obj/item/roller,
@@ -7449,7 +7449,7 @@
 	},
 /area/adminlevel/ert_station)
 "GT" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/chem_dispenser/beer{
 	density = 0
 	},
@@ -7514,12 +7514,12 @@
 	},
 /area/adminlevel/bunker01/mainroom)
 "Il" = (
-/obj/structure/table/almayer,
+/obj/structure/surface/table/almayer,
 /obj/structure/machinery/light,
 /turf/open/floor/wood,
 /area/adminlevel/bunker01/bedroom)
 "Im" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/tool/kitchen/rollingpin,
 /obj/item/tool/kitchen/knife,
 /turf/open/floor/prison{
@@ -7596,7 +7596,7 @@
 /turf/open/floor/plating/almayer,
 /area/adminlevel/bunker01/mainroom)
 "II" = (
-/obj/structure/table/almayer,
+/obj/structure/surface/table/almayer,
 /obj/item/trash/cigbutt,
 /turf/open/floor/wood,
 /area/adminlevel/bunker01/breakroom)
@@ -7608,7 +7608,7 @@
 /turf/open/floor/wood,
 /area/adminlevel/bunker01/bedroom)
 "Ja" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /turf/open/floor/almayer{
 	dir = 10;
 	icon_state = "orange";
@@ -7616,7 +7616,7 @@
 	},
 /area/adminlevel/ert_station)
 "Jb" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/storage/briefcase/inflatable,
 /obj/item/storage/briefcase/inflatable,
 /obj/item/storage/briefcase/inflatable,
@@ -7630,7 +7630,7 @@
 	},
 /area/adminlevel/bunker01/engineering)
 "Jk" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/stack/sheet/glass{
 	amount = 50
 	},
@@ -7650,7 +7650,7 @@
 	},
 /area/adminlevel/bunker01/engineering)
 "Jq" = (
-/obj/structure/table/almayer,
+/obj/structure/surface/table/almayer,
 /turf/open/floor/wood,
 /area/adminlevel/bunker01/bedroom)
 "Js" = (
@@ -7703,7 +7703,7 @@
 	},
 /area/adminlevel/ert_station)
 "JW" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/storage/box/pillbottles{
 	pixel_x = 3;
 	pixel_y = 5
@@ -7780,7 +7780,7 @@
 	},
 /area/adminlevel/ert_station)
 "Kx" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/storage/box/pillbottles,
 /obj/item/storage/box/pillbottles,
 /obj/item/storage/box/pillbottles,
@@ -7992,7 +7992,7 @@
 	},
 /area/adminlevel/bunker01/medbay)
 "LN" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark{
 	name = "Distress_PMCItem"
 	},
@@ -8017,7 +8017,7 @@
 	},
 /area/tdome/tdomeobserve)
 "LP" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/storage/firstaid/adv{
 	pixel_x = 2;
 	pixel_y = -5
@@ -8127,7 +8127,7 @@
 	},
 /area/adminlevel/bunker01/engineering)
 "MZ" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/storage/briefcase/inflatable,
 /obj/item/storage/briefcase/inflatable,
 /obj/item/storage/briefcase/inflatable,
@@ -8162,7 +8162,7 @@
 	},
 /area/adminlevel/ert_station)
 "Nk" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /turf/open/floor/almayer{
 	dir = 6;
 	icon_state = "orange";
@@ -8192,7 +8192,7 @@
 /turf/open/floor/plating/almayer,
 /area/adminlevel/bunker01/mainroom)
 "NH" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/microwave,
 /turf/open/floor/prison{
 	dir = 2;
@@ -8400,7 +8400,7 @@
 	},
 /area/adminlevel/ert_station)
 "PB" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/clothing/gloves/yellow,
 /turf/open/floor/almayer{
 	icon_state = "orange";
@@ -8437,7 +8437,7 @@
 	},
 /area/tdome/tdome2)
 "PG" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/reagent_container/glass/beaker/bluespace,
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
@@ -8507,7 +8507,7 @@
 	},
 /area/adminlevel/bunker01/breakroom)
 "Qp" = (
-/obj/structure/table/almayer,
+/obj/structure/surface/table/almayer,
 /obj/item/clipboard,
 /obj/item/folder/red{
 	pixel_x = -2;
@@ -8595,7 +8595,7 @@
 	},
 /area/adminlevel/bunker01/medbay)
 "Ra" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/stack/sheet/glass{
 	amount = 50
 	},
@@ -8754,7 +8754,7 @@
 /turf/open/space/transit/north/shuttlespace_ns4,
 /area/space)
 "Sl" = (
-/obj/structure/table/almayer,
+/obj/structure/surface/table/almayer,
 /turf/open/floor/almayer{
 	icon_state = "floor";
 	tag = "icon-sterile"
@@ -8778,7 +8778,7 @@
 	pixel_y = -2
 	},
 /obj/item/folder/white,
-/obj/structure/table/almayer,
+/obj/structure/surface/table/almayer,
 /obj/item/device/megaphone{
 	layer = 3.1
 	},
@@ -8826,7 +8826,7 @@
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/mainroom)
 "ST" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/reagentgrinder,
 /obj/item/stack/sheet/mineral/phoron{
 	amount = 25;
@@ -8843,7 +8843,7 @@
 	},
 /area/adminlevel/ert_station)
 "SU" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/reagentgrinder,
 /obj/item/stack/sheet/mineral/phoron{
 	amount = 25
@@ -8859,7 +8859,7 @@
 	},
 /area/adminlevel/bunker01/medbay)
 "Tm" = (
-/obj/structure/table/almayer,
+/obj/structure/surface/table/almayer,
 /obj/structure/machinery/door_control{
 	id = "tdome_t1";
 	name = "Team 1 Shutters (Left)";
@@ -8889,7 +8889,7 @@
 	},
 /area/adminlevel/bunker01/medbay)
 "Tx" = (
-/obj/structure/table/almayer,
+/obj/structure/surface/table/almayer,
 /obj/item/ashtray/plastic,
 /turf/open/floor/wood,
 /area/adminlevel/bunker01/breakroom)
@@ -9141,7 +9141,7 @@
 /obj/item/map/current_map{
 	pixel_x = 5
 	},
-/obj/structure/table/almayer,
+/obj/structure/surface/table/almayer,
 /obj/item/map/current_map{
 	pixel_x = -7
 	},
@@ -9160,7 +9160,7 @@
 	},
 /area/centcom/control)
 "WK" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /turf/open/floor/almayer{
 	icon_state = "silverfull";
 	tag = "icon-sterile"
@@ -9205,7 +9205,7 @@
 	},
 /area/adminlevel/bunker01/caves/outpost)
 "Xa" = (
-/obj/structure/table/almayer,
+/obj/structure/surface/table/almayer,
 /obj/item/folder/black{
 	pixel_x = 3;
 	pixel_y = 5
@@ -9243,7 +9243,7 @@
 	},
 /area/adminlevel/bunker01/storage)
 "Xt" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark{
 	name = "DistressItem"
 	},
@@ -9318,7 +9318,7 @@
 	},
 /area/adminlevel/bunker01/caves/outpost)
 "Yy" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/juicer,
 /turf/open/floor/prison{
 	dir = 2;
@@ -9418,7 +9418,7 @@
 	},
 /area/adminlevel/ert_station)
 "Zv" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/device/defibrillator,
 /obj/item/device/defibrillator,
 /obj/item/storage/belt/medical/lifesaver/full,

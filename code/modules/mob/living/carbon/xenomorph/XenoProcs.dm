@@ -317,14 +317,14 @@
 		return
 
 	if (pounceAction.should_destroy_objects)
-		if(istype(O, /obj/structure/table) || istype(O, /obj/structure/rack) || istype(O, /obj/structure/window_frame))
+		if(istype(O, /obj/structure/surface/table) || istype(O, /obj/structure/surface/rack) || istype(O, /obj/structure/window_frame))
 			var/obj/structure/S = O
 			visible_message(SPAN_DANGER("[src] plows straight through [S]!"), null, null, 5)
 			S.destroy() //We want to continue moving, so we do not reset throwing.
 		else
 			O.hitby(src) //This resets throwing.
 	else 
-		if(!istype(O, /obj/structure/table) && !istype(O, /obj/structure/rack))
+		if(!istype(O, /obj/structure/surface/table) && !istype(O, /obj/structure/surface/rack))
 			O.hitby(src) //This resets throwing.
 
 /mob/living/carbon/Xenomorph/proc/pounced_obj_wrapper(var/obj/O)

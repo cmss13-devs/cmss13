@@ -26,7 +26,7 @@
 
 /obj/item/reagent_container/spray/afterattack(atom/A, mob/user, proximity)
 	//this is what you get for using afterattack() TODO: make is so this is only called if attackby() returns 0 or something
-	if(istype(A, /obj/item/storage) || istype(A, /obj/structure/table) || istype(A, /obj/structure/rack) || istype(A, /obj/structure/closet) \
+	if(istype(A, /obj/item/storage) || istype(A, /obj/structure/surface/table) || istype(A, /obj/structure/surface/rack) || istype(A, /obj/structure/closet) \
 	|| istype(A, /obj/item/reagent_container) || istype(A, /obj/structure/sink) || istype(A, /obj/structure/janitorialcart || istype(A, /obj/structure/ladder)))
 		return
 

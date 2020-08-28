@@ -21,7 +21,7 @@
 	desc = "A model of an ancient Earth communication device.";
 	force = 8
 	},
-/obj/structure/rack{
+/obj/structure/surface/rack{
 	layer = 2.5
 	},
 /obj/structure/window/reinforced{
@@ -71,7 +71,7 @@
 /turf/closed/wall/r_wall,
 /area/lv624/lazarus/security)
 "k" = (
-/obj/structure/rack{
+/obj/structure/surface/rack{
 	layer = 2.5
 	},
 /obj/item/weapon/gun/shotgun/pump,
@@ -86,7 +86,7 @@
 "l" = (
 /obj/effect/decal/cleanable/cobweb2,
 /obj/item/reagent_container/hypospray/autoinjector/tricord,
-/obj/structure/rack{
+/obj/structure/surface/rack{
 	layer = 2.5
 	},
 /obj/item/reagent_container/hypospray/autoinjector/dexalinp{
@@ -128,7 +128,7 @@
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
-/obj/structure/rack{
+/obj/structure/surface/rack{
 	layer = 2.5
 	},
 /obj/item/weapon/gun/pistol/highpower,
@@ -150,7 +150,7 @@
 	},
 /area/lv624/lazarus/armory)
 "q" = (
-/obj/structure/rack{
+/obj/structure/surface/rack{
 	layer = 2.5
 	},
 /obj/effect/landmark{
@@ -202,7 +202,7 @@
 /area/lv624/lazarus/armory)
 "w" = (
 /obj/item/storage/toolbox/syndicate,
-/obj/structure/rack{
+/obj/structure/surface/rack{
 	layer = 2.5
 	},
 /obj/effect/landmark{
@@ -222,7 +222,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/weapon/gun/revolver/cmb,
 /obj/item/ammo_magazine/revolver/cmb,
 /obj/item/ammo_magazine/revolver/cmb,
@@ -255,7 +255,7 @@
 	},
 /area/lv624/lazarus/armory)
 "C" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/explosive/plastic,
 /obj/item/explosive/plastic,
 /obj/item/explosive/grenade/HE/PMC,

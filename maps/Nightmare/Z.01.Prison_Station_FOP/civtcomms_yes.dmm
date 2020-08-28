@@ -140,7 +140,7 @@
 	},
 /area/prison/telecomms)
 "v" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/effect/spawner/random/tool,
 /obj/structure/pipes/standard/simple/hidden/scrubbers{
 	tag = "icon-intact-scrubbers (NORTHEAST)";
@@ -183,7 +183,7 @@
 	},
 /area/prison/telecomms)
 "A" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/effect/spawner/random/tool,
 /turf/open/floor/prison{
 	tag = "icon-darkyellowfull2 (EAST)";
@@ -229,7 +229,7 @@
 /turf/open/floor/prison,
 /area/prison/telecomms)
 "D" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/effect/landmark{
 	name = "good_item"
 	},
@@ -257,7 +257,7 @@
 	},
 /area/prison/telecomms)
 "H" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/effect/spawner/random/tool,
 /obj/structure/machinery/light{
 	dir = 8;

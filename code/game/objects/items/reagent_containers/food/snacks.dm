@@ -182,7 +182,7 @@
 		return 1
 	if ( \
 			!isturf(src.loc) || \
-			!(locate(/obj/structure/table) in src.loc) && \
+			!(locate(/obj/structure/surface/table) in src.loc) && \
 			!(locate(/obj/structure/machinery/optable) in src.loc) && \
 			!(locate(/obj/item/tool/kitchen/tray) in src.loc) \
 		)

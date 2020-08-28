@@ -23,7 +23,7 @@
 	},
 /area/lv624/lazarus/crashed_ship)
 "ad" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
@@ -41,7 +41,7 @@
 	},
 /area/lv624/ground/caves/west1)
 "ag" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
@@ -106,14 +106,14 @@
 	icon_state = "commb";
 	stat = 1
 	},
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/floor{
 	tag = "icon-whitebluefull";
 	icon_state = "whitebluefull"
 	},
 /area/lv624/lazarus/crashed_ship)
 "am" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/paper_bin,
 /obj/item/tool/pen,
 /obj/item/ammo_magazine/pistol/heavy,
@@ -123,7 +123,7 @@
 	},
 /area/lv624/lazarus/crashed_ship)
 "an" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/paper_bin,
 /obj/item/tool/pen,
 /turf/open/floor/plating,
@@ -133,7 +133,7 @@
 	icon_state = "atmosb";
 	stat = 1
 	},
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/floor{
 	tag = "icon-whitebluefull";
 	icon_state = "whitebluefull"
@@ -281,7 +281,7 @@
 	},
 /area/lv624/lazarus/crashed_ship)
 "aJ" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/ammo_magazine/pistol/b92fs,
 /obj/item/ammo_magazine/pistol/b92fs,
 /turf/open/floor{
@@ -297,7 +297,7 @@
 	},
 /area/lv624/lazarus/crashed_ship)
 "aL" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/weapon/gun/pistol/heavy,
 /obj/item/ammo_magazine/pistol/heavy,
 /turf/open/floor{
@@ -306,7 +306,7 @@
 	},
 /area/lv624/lazarus/crashed_ship)
 "aM" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/ammo_magazine/pistol/heavy,
 /obj/item/ammo_magazine/pistol/heavy,
 /turf/open/floor{
@@ -315,7 +315,7 @@
 	},
 /area/lv624/lazarus/crashed_ship)
 "aN" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/weapon/gun/pistol/b92fs,
 /obj/item/ammo_magazine/pistol/b92fs,
 /obj/item/ammo_magazine/pistol/b92fs,
@@ -496,7 +496,7 @@
 /turf/open/floor/wood,
 /area/lv624/lazarus/crashed_ship)
 "bk" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /turf/open/floor/wood,
 /area/lv624/lazarus/crashed_ship)
 "bl" = (
@@ -537,12 +537,12 @@
 /turf/open/floor/wood,
 /area/lv624/lazarus/crashed_ship)
 "bp" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/item/storage/firstaid/adv,
 /turf/open/floor/wood,
 /area/lv624/lazarus/crashed_ship)
 "bq" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/item/storage/firstaid,
 /turf/open/floor/wood,
 /area/lv624/lazarus/crashed_ship)
@@ -1166,13 +1166,13 @@
 	},
 /area/lv624/lazarus/crashed_ship)
 "cS" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/item/weapon/gun/smg/fp9000,
 /obj/item/ammo_magazine/smg/fp9000,
 /turf/open/floor/wood,
 /area/lv624/lazarus/crashed_ship)
 "cT" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/item/ammo_magazine/smg/fp9000,
 /obj/item/ammo_magazine/smg/fp9000,
 /turf/open/floor/wood,

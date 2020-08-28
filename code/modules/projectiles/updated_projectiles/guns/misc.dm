@@ -255,7 +255,7 @@
 		to_chat(usr, SPAN_DANGER("[src] is empty."))
 
 /obj/item/weapon/gun/syringe/proc/fire_syringe(atom/target, mob/user)
-	if (locate (/obj/structure/table, src.loc))
+	if (locate (/obj/structure/surface/table, src.loc))
 		return
 	else
 		var/turf/trg = get_turf(target)

@@ -13,7 +13,7 @@
 /turf/closed/wall/r_wall/prison,
 /area/prison/hangar_storage/main)
 "e" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /turf/open/floor/prison{
 	tag = "icon-darkyellowfull2 (EAST)";
 	icon_state = "darkyellowfull2";
@@ -58,7 +58,7 @@
 	},
 /area/prison/hangar_storage/main)
 "j" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/storage/box/nade_box/tear_gas,
 /turf/open/floor/prison{
 	tag = "icon-darkyellowfull2 (EAST)";
@@ -252,7 +252,7 @@
 	},
 /area/prison/hangar_storage/main)
 "G" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/weapon/gun/launcher/m81,
 /obj/item/storage/box/handcuffs,
 /obj/item/storage/box/handcuffs,

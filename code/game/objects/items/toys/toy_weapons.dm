@@ -114,7 +114,7 @@
 		if(!isturf(target.loc) || target == user) return
 		if(flag) return
 
-		if (locate (/obj/structure/table, src.loc))
+		if (locate (/obj/structure/surface/table, src.loc))
 			return
 		else if (bullets)
 			var/turf/trg = get_turf(target)

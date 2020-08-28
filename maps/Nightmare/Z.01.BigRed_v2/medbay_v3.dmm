@@ -118,7 +118,7 @@
 	},
 /area/bigredv2/outside/medical)
 "as" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/pipes/vents/pump,
 /obj/item/device/autopsy_scanner/objective,
 /turf/open/floor{
@@ -175,7 +175,7 @@
 	},
 /area/bigredv2/outside/medical)
 "aA" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/floor{
 	icon_state = "damaged4";
 	dir = 8
@@ -203,7 +203,7 @@
 	},
 /area/bigredv2/outside/medical)
 "aE" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/extinguisher_cabinet{
 	pixel_x = -27;
 	pixel_y = 0
@@ -254,7 +254,7 @@
 	},
 /area/bigredv2/outside/medical)
 "aK" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/bomb_supply,
 /obj/item/stack/sheet/metal{
 	amount = 1
@@ -315,7 +315,7 @@
 	},
 /area/bigredv2/outside/medical)
 "aS" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
@@ -363,7 +363,7 @@
 	},
 /area/bigredv2/outside/medical)
 "ba" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/light{
 	tag = "icon-tube1 (EAST)";
 	icon_state = "tube1";
@@ -796,7 +796,7 @@
 	},
 /area/bigredv2/outside/medical)
 "cg" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
@@ -865,7 +865,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/medical)
 "cp" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor{
 	icon_state = "platingdmg1"
@@ -1132,7 +1132,7 @@
 	},
 /area/bigredv2/outside/medical)
 "cS" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/storage/pill_bottle/tramadol,
 /turf/open/floor{
 	icon_state = "platingdmg1"
@@ -1439,7 +1439,7 @@
 	},
 /area/bigredv2/outside/medical)
 "dD" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/autopsy_scanner/objective,
 /turf/open/floor{
 	tag = "icon-whitebluefull (NORTHEAST)";
@@ -1544,7 +1544,7 @@
 	},
 /area/bigredv2/outside/medical)
 "dS" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/food/snacks/sliceable/pizza/margherita,
 /turf/open/floor{
 	tag = "icon-whitebluefull (NORTHEAST)";
@@ -1804,7 +1804,7 @@
 	},
 /area/bigredv2/outside/medical)
 "ew" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/document_objective/paper,
 /turf/open/floor{
 	tag = "icon-whitebluefull (NORTHEAST)";
@@ -1813,7 +1813,7 @@
 	},
 /area/bigredv2/outside/medical)
 "ex" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/storage/box/masks,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
@@ -1867,7 +1867,7 @@
 	},
 /area/bigredv2/outside/medical)
 "eD" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/computer/objective,
 /turf/open/floor{
 	icon_state = "white"
@@ -1971,7 +1971,7 @@
 	},
 /area/bigredv2/outside/medical)
 "eQ" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/trash/burger,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/frame/table,
@@ -2119,7 +2119,7 @@
 	},
 /area/bigredv2/outside/medical)
 "fh" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/trash/buritto,
 /obj/item/document_objective/folder,
 /turf/open/floor{

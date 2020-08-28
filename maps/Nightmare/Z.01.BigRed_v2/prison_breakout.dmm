@@ -15,7 +15,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "ac" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/floor{
 	tag = "icon-white";
 	icon_state = "white";
@@ -45,7 +45,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "af" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/document_objective/paper,
 /turf/open/floor{
@@ -188,7 +188,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "ax" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/light{
 	icon_state = "tube1";
 	dir = 8
@@ -209,7 +209,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "az" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/camera/autoname{
 	dir = 2
 	},
@@ -258,14 +258,14 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "aE" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /turf/open/floor{
 	icon_state = "vault";
 	dir = 8
 	},
 /area/bigredv2/outside/marshall_office)
 "aF" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/ammo_magazine/revolver/cmb,
 /turf/open/floor{
 	icon_state = "vault";
@@ -273,7 +273,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "aG" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/weapon/gun/revolver/cmb,
 /turf/open/floor{
 	icon_state = "vault";
@@ -281,7 +281,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "aH" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/structure/machinery/light{
 	tag = "icon-tube1 (NORTH)";
 	icon_state = "tube1";
@@ -384,21 +384,21 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "aS" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/clothing/accessory/storage/black_vest,
 /turf/open/floor{
 	icon_state = "dark"
 	},
 /area/bigredv2/outside/marshall_office)
 "aT" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/weapon/gun/shotgun/pump/cmb,
 /turf/open/floor{
 	icon_state = "dark"
 	},
 /area/bigredv2/outside/marshall_office)
 "aU" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/ammo_magazine/shotgun,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
@@ -406,7 +406,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "aV" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -419,7 +419,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "aX" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/door/window/brigdoor/eastleft,
 /obj/item/weapon/shield/riot,
 /turf/open/floor{
@@ -573,13 +573,13 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "bt" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/floor{
 	icon_state = "dark"
 	},
 /area/bigredv2/outside/marshall_office)
 "bu" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/camera/autoname{
 	dir = 1
 	},
@@ -589,7 +589,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "bv" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/clothing/head/beret/sec/warden,
 /turf/open/floor{
 	icon_state = "dark"
@@ -606,7 +606,7 @@
 /area/bigredv2/outside/marshall_office)
 "bx" = (
 /obj/structure/machinery/computer/secure_data,
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -620,7 +620,7 @@
 /area/bigredv2/outside/marshall_office)
 "bA" = (
 /obj/structure/machinery/computer/security,
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/floor{
 	tag = "icon-bcircuit";
 	icon_state = "bcircuit";
@@ -628,7 +628,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "bB" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/ore/diamond,
 /obj/item/ore/uranium,
 /turf/open/floor{
@@ -714,7 +714,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "bN" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/radio,
 /turf/open/floor{
 	tag = "icon-bcircuit";
@@ -723,7 +723,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "bO" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/floor{
 	tag = "icon-darkish";
 	icon_state = "darkish";
@@ -738,7 +738,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "bQ" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/door/window/brigdoor/westright,
 /turf/open/floor{
 	icon_state = "vault";
@@ -803,7 +803,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "bX" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/ore/uranium,
 /turf/open/floor{
 	tag = "icon-bcircuit";
@@ -823,7 +823,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "bZ" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/taperecorder,
 /turf/open/floor{
 	tag = "icon-darkish";
@@ -852,7 +852,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "cc" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/clothing/mask/gas,
 /obj/item/clothing/mask/gas,
 /turf/open/floor{
@@ -860,7 +860,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "ce" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/clothing/suit/armor/riot,
 /turf/open/floor{
 	icon_state = "dark"
@@ -938,7 +938,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "cn" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/door/window/brigdoor/southright,
 /turf/open/floor{
 	icon_state = "vault";
@@ -1243,7 +1243,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "dc" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/floor{
 	icon_state = "redfull";
 	dir = 9

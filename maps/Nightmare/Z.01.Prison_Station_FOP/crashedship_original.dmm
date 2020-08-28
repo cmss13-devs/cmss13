@@ -140,7 +140,7 @@
 /turf/open/floor/prison,
 /area/prison/recreation/highsec/s)
 "ao" = (
-/obj/structure/table/gamblingtable,
+/obj/structure/surface/table/gamblingtable,
 /obj/structure/pipes/standard/simple/hidden/scrubbers{
 	tag = "icon-intact-scrubbers (EAST)";
 	icon_state = "intact-scrubbers";
@@ -154,7 +154,7 @@
 /turf/open/floor/prison,
 /area/prison/recreation/highsec/s)
 "ap" = (
-/obj/structure/table/gamblingtable,
+/obj/structure/surface/table/gamblingtable,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 4;
@@ -173,7 +173,7 @@
 /turf/open/floor/prison,
 /area/prison/recreation/highsec/s)
 "aq" = (
-/obj/structure/table/gamblingtable,
+/obj/structure/surface/table/gamblingtable,
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
@@ -434,7 +434,7 @@
 /turf/open/floor/prison,
 /area/prison/recreation/highsec/s)
 "aM" = (
-/obj/structure/table/gamblingtable,
+/obj/structure/surface/table/gamblingtable,
 /turf/open/floor/prison,
 /area/prison/recreation/highsec/s)
 "aN" = (
@@ -626,7 +626,7 @@
 	},
 /area/prison/cellblock/highsec/south/north)
 "bj" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /turf/open/floor/prison{
 	tag = "icon-floor_plate (SOUTHWEST)";
 	icon_state = "floor_plate";
@@ -634,7 +634,7 @@
 	},
 /area/prison/cellblock/highsec/south/north)
 "bk" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "red"
@@ -655,7 +655,7 @@
 	},
 /area/prison/recreation/highsec/s)
 "bn" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /turf/open/floor/prison{
 	dir = 6;
 	icon_state = "red"
@@ -994,7 +994,7 @@
 	},
 /area/prison/cellblock/highsec/south/south)
 "bP" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/computer/security{
 	network = list("PRISON")
 	},
@@ -1103,7 +1103,7 @@
 /turf/open/floor/plating,
 /area/prison/maintenance/residential/access/south)
 "cd" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/device/flashlight/lamp{
 	on = 0
 	},
@@ -2228,7 +2228,7 @@
 	},
 /area/prison/security/checkpoint/highsec_medsec)
 "em" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /turf/open/floor/prison{
 	dir = 5;
 	icon_state = "darkred2"
@@ -2416,7 +2416,7 @@
 /turf/open/floor/prison,
 /area/prison/security/checkpoint/highsec_medsec)
 "eB" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "darkred2"
@@ -2471,7 +2471,7 @@
 /area/prison/cellblock/highsec/south/south)
 "eG" = (
 /obj/item/ammo_casing,
-/obj/structure/table/reinforced{
+/obj/structure/surface/table/reinforced{
 	dir = 1;
 	flipped = 1
 	},
@@ -2484,7 +2484,7 @@
 /turf/open/floor/plating,
 /area/prison/pirate)
 "eI" = (
-/obj/structure/table/reinforced{
+/obj/structure/surface/table/reinforced{
 	dir = 1;
 	flipped = 1
 	},
@@ -2506,7 +2506,7 @@
 /turf/open/floor/prison,
 /area/prison/security/checkpoint/highsec_medsec)
 "eL" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "darkred2"
@@ -2549,7 +2549,7 @@
 	},
 /area/prison/cellblock/highsec/south/south)
 "eP" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/ammo_magazine/rifle/mar40,
 /obj/item/ammo_magazine/rifle/mar40,
 /obj/item/ammo_magazine/rifle/mar40,
@@ -2594,7 +2594,7 @@
 /turf/open/floor/prison,
 /area/prison/security/checkpoint/highsec_medsec)
 "eT" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/recharger,
 /obj/structure/pipes/standard/simple/hidden/scrubbers{
 	dir = 10
@@ -2648,7 +2648,7 @@
 /turf/open/floor/plating,
 /area/prison/pirate)
 "eY" = (
-/obj/structure/table/reinforced{
+/obj/structure/surface/table/reinforced{
 	dir = 1;
 	flipped = 1
 	},
@@ -3006,7 +3006,7 @@
 	pixel_x = 9;
 	pixel_y = 8
 	},
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/light{
 	dir = 8;
 	icon_state = "tube1";
@@ -3020,7 +3020,7 @@
 	stat = 1
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /turf/open/shuttle,
 /area/prison/pirate)
 "fK" = (
@@ -3028,11 +3028,11 @@
 	icon_state = "commb";
 	stat = 1
 	},
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /turf/open/shuttle,
 /area/prison/pirate)
 "fL" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/paper/prison_station/pirate_note,
 /obj/structure/machinery/light{
 	dir = 4
@@ -3171,7 +3171,7 @@
 	},
 /area/prison/cellblock/mediumsec/west)
 "gg" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/microwave,
 /turf/open/shuttle{
 	icon_state = "floor7"
@@ -3303,7 +3303,7 @@
 /turf/open/space,
 /area/space)
 "gx" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/storage/box/donkpockets,
 /obj/structure/machinery/light/small{
 	dir = 8
@@ -3467,7 +3467,7 @@
 	},
 /area/prison/cellblock/mediumsec/west)
 "gH" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/storage/box/donkpockets,
 /turf/open/shuttle{
 	icon_state = "floor7"
@@ -3586,7 +3586,7 @@
 /turf/open/floor/carpet,
 /area/prison/pirate)
 "gY" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/item/device/flashlight/lamp{
 	on = 0
 	},
@@ -3700,7 +3700,7 @@
 	},
 /area/prison/pirate)
 "hk" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/device/defibrillator,
 /obj/item/storage/firstaid/regular,
 /turf/open/floor/plating,
@@ -3898,7 +3898,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/structure/table/reinforced{
+/obj/structure/surface/table/reinforced{
 	dir = 4;
 	flipped = 1
 	},
@@ -3958,7 +3958,7 @@
 /obj/item/stack/sheet/metal{
 	amount = 50
 	},
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /turf/open/floor/plating,
 /area/prison/pirate)
 "hH" = (
@@ -3995,7 +3995,7 @@
 /obj/structure/pipes/vents/pump{
 	dir = 8 
 	},
-/obj/structure/table/reinforced{
+/obj/structure/surface/table/reinforced{
 	dir = 4;
 	flipped = 1
 	},
@@ -4791,7 +4791,7 @@
 	},
 /area/prison/laundry)
 "jn" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /turf/open/floor/prison{
 	tag = "icon-bright_clean (SOUTHWEST)";
 	icon_state = "bright_clean";
@@ -4799,7 +4799,7 @@
 	},
 /area/prison/laundry)
 "jo" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/clothing/under/color/orange,
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 5;

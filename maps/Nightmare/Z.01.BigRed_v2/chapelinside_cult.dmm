@@ -224,7 +224,7 @@
 	},
 /area/bigredv2/outside/chapel)
 "aB" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/item/tool/candle,
 /turf/open/floor{
 	tag = "icon-darkish";
@@ -243,7 +243,7 @@
 	},
 /area/bigredv2/outside/chapel)
 "aD" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/item/weapon/melee/chainofcommand,
 /turf/open/floor{
 	icon_state = "cult";
@@ -349,7 +349,7 @@
 	dir = 4;
 	layer = 2.4
 	},
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/item/storage/bible,
 /turf/open/floor{
 	icon_state = "cult";
@@ -467,7 +467,7 @@
 	},
 /area/bigredv2/outside/chapel)
 "aZ" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /turf/open/floor{
 	icon_state = "cult";
 	dir = 2
@@ -499,7 +499,7 @@
 	},
 /area/bigredv2/outside/chapel)
 "bd" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/item/disk/objective,
 /turf/open/floor{
 	tag = "icon-darkish";
@@ -515,7 +515,7 @@
 	},
 /area/bigredv2/outside/chapel)
 "bf" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /turf/open/floor{
 	icon_state = "cult";
 	dir = 2
@@ -535,7 +535,7 @@
 	},
 /area/bigredv2/outside/chapel)
 "bj" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /turf/open/floor{
 	tag = "icon-darkish";
 	icon_state = "darkish";

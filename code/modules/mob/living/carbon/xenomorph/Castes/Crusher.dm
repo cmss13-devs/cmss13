@@ -108,8 +108,8 @@
 			G.healthcheck()
 			. = TRUE
 
-	else if (istype(target, /obj/structure/table))
-		var/obj/structure/table/T = target
+	else if (istype(target, /obj/structure/surface/table))
+		var/obj/structure/surface/table/T = target
 		T.Crossed(src)
 		. = TRUE
 

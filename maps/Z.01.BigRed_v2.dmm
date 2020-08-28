@@ -206,7 +206,7 @@
 	},
 /area/bigredv2/outside/space_port)
 "aaC" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/tool,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
@@ -271,7 +271,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "aaK" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/technology_scanner,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
@@ -297,7 +297,7 @@
 	},
 /area/bigredv2/outside/medical)
 "aaN" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/powercell,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
@@ -319,7 +319,7 @@
 	},
 /area/bigredv2/outside/space_port)
 "aaQ" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/spawner/random/tool,
 /obj/effect/landmark/objective_landmark/close,
@@ -366,7 +366,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "aaV" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
 	icon_state = "dark"
@@ -388,7 +388,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/marshall_office)
 "aaY" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/spawner/random/tool,
 /obj/structure/machinery/camera/autoname{
@@ -467,7 +467,7 @@
 	},
 /area/bigredv2/outside/space_port)
 "abh" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
 /obj/structure/machinery/door_control{
 	id = "Spaceport";
@@ -614,7 +614,7 @@
 /area/bigredv2/outside/space_port)
 "aby" = (
 /obj/structure/machinery/computer/shuttle_control/dropship1,
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/floor{
 	icon_state = "dark";
 	tag = "icon-dark"
@@ -629,7 +629,7 @@
 	},
 /area/bigredv2/outside/space_port)
 "abB" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/tool,
 /obj/effect/spawner/random/tech_supply,
 /obj/effect/landmark/objective_landmark/close,
@@ -654,7 +654,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "abE" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/tool,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
@@ -664,7 +664,7 @@
 	},
 /area/bigredv2/outside/space_port)
 "abF" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/bomb_supply,
 /obj/effect/spawner/random/technology_scanner,
 /obj/effect/spawner/random/tool,
@@ -675,7 +675,7 @@
 	},
 /area/bigredv2/outside/space_port)
 "abG" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/technology_scanner,
 /obj/effect/spawner/random/tool,
 /obj/effect/landmark/objective_landmark/close,
@@ -706,7 +706,7 @@
 	},
 /area/bigredv2/outside/space_port)
 "abK" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/tool,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
@@ -1116,7 +1116,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "acM" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
 	icon_state = "white";
@@ -1192,7 +1192,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "acV" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
@@ -1219,7 +1219,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "acY" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/folder/black,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
@@ -1237,7 +1237,7 @@
 /turf/open/floor/greengrid,
 /area/bigredv2/outside/telecomm)
 "adb" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/tool/hand_labeler,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
@@ -1245,7 +1245,7 @@
 	},
 /area/bigredv2/outside/telecomm)
 "adc" = (
-/obj/structure/table/woodentable/fancy,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/item/clothing/head/det_hat,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
@@ -1264,7 +1264,7 @@
 	},
 /area/bigredv2/outside/telecomm)
 "adf" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/folder/black_random,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
@@ -1360,7 +1360,7 @@
 	},
 /area/bigredv2/outside/telecomm)
 "ads" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/folder/yellow,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
@@ -1382,7 +1382,7 @@
 	},
 /area/bigredv2/outside/telecomm)
 "adv" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/light{
 	dir = 4;
 	tag = "icon-tube1 (EAST)"
@@ -1476,7 +1476,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/marshall_office)
 "adH" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/technology_scanner,
 /obj/effect/spawner/random/tool,
 /obj/effect/landmark/objective_landmark/close,
@@ -1485,7 +1485,7 @@
 	},
 /area/bigredv2/outside/telecomm)
 "adI" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/tool/extinguisher,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
@@ -1572,7 +1572,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "adU" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
@@ -1645,7 +1645,7 @@
 	},
 /area/bigredv2/outside/telecomm)
 "aef" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/radio/headset,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
@@ -1766,7 +1766,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/marshall_office)
 "aes" = (
-/obj/structure/table/woodentable/fancy,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/computer/security/wooden_tv,
 /turf/open/floor{
 	icon_state = "wood"
@@ -1848,7 +1848,7 @@
 	},
 /area/bigredv2/outside/telecomm)
 "aeE" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	dir = 1;
@@ -1883,7 +1883,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "aeK" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/light{
 	dir = 8
 	},
@@ -1915,7 +1915,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/marshall_office)
 "aeO" = (
-/obj/structure/table/woodentable/fancy,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/recharger,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
@@ -1923,7 +1923,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "aeP" = (
-/obj/structure/table/woodentable/fancy,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/item/reagent_container/food/drinks/flask/detflask,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
@@ -1931,7 +1931,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "aeQ" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/light{
 	dir = 1
 	},
@@ -2027,7 +2027,7 @@
 /area/bigredv2/caves/lambda/xenobiology)
 "aff" = (
 /obj/effect/decal/cleanable/mucus,
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark{
 	name = "monkey_spawn"
 	},
@@ -2051,7 +2051,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/marshall_office)
 "afj" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/camera/autoname{
 	dir = 1
 	},
@@ -2102,7 +2102,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "afo" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/weapon/gun/revolver/cmb,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
@@ -2111,7 +2111,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "afp" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/ammo_magazine/revolver/cmb,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
@@ -2120,7 +2120,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "afq" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/structure/machinery/light{
 	dir = 1;
 	tag = "icon-tube1 (NORTH)"
@@ -2149,7 +2149,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "aft" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/tool/surgery/hemostat,
 /obj/structure/machinery/light{
 	dir = 8
@@ -2195,7 +2195,7 @@
 	},
 /area/bigredv2/caves/lambda/xenobiology)
 "afy" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	dir = 4;
@@ -2247,7 +2247,7 @@
 	},
 /area/bigredv2/caves/lambda/xenobiology)
 "afG" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/reagentgrinder,
 /turf/open/floor{
 	dir = 6;
@@ -2261,7 +2261,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/caves/lambda/xenobiology)
 "afI" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/tech_supply,
 /obj/effect/spawner/random/tool,
 /obj/structure/machinery/door_control{
@@ -2446,7 +2446,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/caves/lambda/xenobiology)
 "agf" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/door/window{
 	dir = 2;
 	tag = "icon-left"
@@ -2566,7 +2566,7 @@
 	},
 /area/bigredv2/outside/space_port)
 "agt" = (
-/obj/structure/table/woodentable/fancy,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
 	icon_state = "grimy"
@@ -2637,7 +2637,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "agD" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/ammo_magazine/shotgun/incendiary,
 /obj/item/clothing/accessory/storage/black_vest,
 /obj/item/clothing/accessory/storage/black_vest,
@@ -2648,7 +2648,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "agE" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/weapon/gun/shotgun/pump/cmb,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
@@ -2656,7 +2656,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "agF" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/weapon/gun/shotgun/pump/cmb,
 /obj/item/ammo_magazine/shotgun/slugs,
 /obj/effect/decal/cleanable/dirt,
@@ -2666,7 +2666,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "agG" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/weapon/gun/shotgun/pump/cmb,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/objective_landmark/medium,
@@ -2682,7 +2682,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "agI" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/door/window/brigdoor/eastleft,
 /obj/item/weapon/shield/riot,
 /turf/open/floor{
@@ -2743,14 +2743,14 @@
 	},
 /area/bigredv2/caves/lambda/xenobiology)
 "agO" = (
-/obj/structure/table/woodentable/fancy,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
 	icon_state = "wood"
 	},
 /area/bigredv2/outside/marshall_office)
 "agP" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
 	icon_state = "dark";
@@ -2825,7 +2825,7 @@
 	},
 /area/bigredv2/outside/medical)
 "agZ" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
@@ -2835,7 +2835,7 @@
 	},
 /area/bigredv2/caves/lambda/xenobiology)
 "aha" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/light/small{
 	dir = 8;
 	tag = "icon-bulb1 (WEST)"
@@ -2879,7 +2879,7 @@
 	},
 /area/bigredv2/outside/space_port)
 "ahf" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
@@ -2951,7 +2951,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "ahq" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/pipes/vents/pump{
 	dir = 8
 	},
@@ -2981,7 +2981,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/marshall_office)
 "ahv" = (
-/obj/structure/table/holotable/wood,
+/obj/structure/surface/table/holotable/wood,
 /obj/item/paper_bin,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/wood,
@@ -3011,7 +3011,7 @@
 	},
 /area/bigredv2/caves_lambda)
 "ahz" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/tool/surgery/scalpel/manager,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/mars_cave{
@@ -3284,7 +3284,7 @@
 	},
 /area/bigredv2/caves_lambda)
 "aik" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/tool/surgery/retractor,
 /obj/structure/machinery/light{
 	dir = 8
@@ -3301,7 +3301,7 @@
 	},
 /area/bigredv2/caves/lambda/xenobiology)
 "aim" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/extinguisher_cabinet{
 	pixel_x = -27
 	},
@@ -3329,7 +3329,7 @@
 	},
 /area/bigredv2/caves/lambda/xenobiology)
 "aip" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/pipes/vents/pump,
 /obj/item/device/flashlight/lamp,
 /obj/effect/landmark/objective_landmark/science,
@@ -3447,7 +3447,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "aiF" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/ammo_magazine/shotgun/slugs,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
@@ -3455,7 +3455,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "aiG" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/handcuffs,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
@@ -3463,7 +3463,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "aiH" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/camera/autoname,
 /obj/item/ammo_magazine/shotgun/slugs,
 /obj/item/ammo_magazine/shotgun/buckshot,
@@ -3473,7 +3473,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "aiI" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/ammo_magazine/shotgun/buckshot,
 /obj/item/clothing/head/beret/sec/warden,
 /obj/effect/landmark/objective_landmark/medium,
@@ -3491,27 +3491,27 @@
 /area/bigredv2/outside/marshall_office)
 "aiK" = (
 /obj/structure/machinery/computer/secure_data,
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/floor{
 	icon_state = "dark"
 	},
 /area/bigredv2/outside/marshall_office)
 "aiL" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/clothing/suit/storage/CMB,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor,
 /area/bigredv2/outside/marshall_office)
 "aiM" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/handcuffs,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor,
 /area/bigredv2/outside/marshall_office)
 "aiN" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor,
@@ -3591,7 +3591,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "aiY" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/light{
 	dir = 4;
 	tag = "icon-tube1 (EAST)"
@@ -3605,14 +3605,14 @@
 /area/bigredv2/outside/medical)
 "aiZ" = (
 /obj/structure/machinery/computer/security,
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/floor{
 	icon_state = "bcircuit";
 	tag = "icon-bcircuit"
 	},
 /area/bigredv2/outside/marshall_office)
 "aja" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/ore/diamond,
 /obj/item/ore/uranium,
 /obj/effect/landmark/objective_landmark/close,
@@ -3634,7 +3634,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "ajd" = (
-/obj/structure/table/holotable/wood,
+/obj/structure/surface/table/holotable/wood,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/carpet,
 /area/bigredv2/caves/lambda/breakroom)
@@ -3643,26 +3643,26 @@
 /turf/open/floor,
 /area/bigredv2/outside/marshall_office)
 "ajf" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/trash/kepler,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor,
 /area/bigredv2/outside/marshall_office)
 "ajg" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/evidencebag,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor,
 /area/bigredv2/outside/marshall_office)
 "ajh" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/clothing/suit/armor/det_suit,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor,
 /area/bigredv2/outside/marshall_office)
 "aji" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/explosive/grenade/flashbang,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor,
@@ -3675,7 +3675,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/marshall_office)
 "ajk" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/bomb_supply,
 /obj/effect/spawner/random/bomb_supply,
 /obj/effect/landmark/objective_landmark/science,
@@ -3686,7 +3686,7 @@
 	},
 /area/bigredv2/outside/medical)
 "ajl" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
 	icon_state = "wood"
@@ -3751,7 +3751,7 @@
 	},
 /area/bigredv2/caves/lambda/xenobiology)
 "aju" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/floor{
 	icon_state = "dark";
 	tag = "icon-dark"
@@ -3819,7 +3819,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "ajC" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/radio,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
@@ -3828,7 +3828,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "ajD" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
 	icon_state = "darkish";
@@ -3843,7 +3843,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "ajF" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/door/window/brigdoor/westright,
 /turf/open/floor{
 	dir = 8;
@@ -3907,7 +3907,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/marshall_office)
 "ajN" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/spray/cleaner,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -3917,13 +3917,13 @@
 /turf/open/floor,
 /area/bigredv2/outside/marshall_office)
 "ajO" = (
-/obj/structure/table/holotable/wood,
+/obj/structure/surface/table/holotable/wood,
 /obj/item/tool/pen,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/carpet,
 /area/bigredv2/caves/lambda/breakroom)
 "ajP" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/trash/kepler,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -3932,7 +3932,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/marshall_office)
 "ajQ" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/recharger,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -4034,7 +4034,7 @@
 	},
 /area/bigredv2/outside/nw)
 "ake" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/ore/uranium,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
@@ -4052,7 +4052,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "akg" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/taperecorder,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
@@ -4071,7 +4071,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "aki" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/clothing/mask/gas,
 /obj/item/clothing/mask/gas,
 /obj/effect/landmark/objective_landmark/medium,
@@ -4089,7 +4089,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/marshall_office)
 "akk" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/clothing/suit/armor/riot,
 /obj/item/clothing/suit/armor/riot,
 /obj/effect/landmark/objective_landmark/medium,
@@ -4124,7 +4124,7 @@
 /area/bigredv2/outside/marshall_office)
 "akq" = (
 /obj/structure/machinery/computer/secure_data,
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/floor,
 /area/bigredv2/outside/marshall_office)
 "akr" = (
@@ -4191,7 +4191,7 @@
 	},
 /area/bigredv2/caves/lambda/xenobiology)
 "akA" = (
-/obj/structure/table/woodentable/fancy,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/item/ashtray/bronze,
 /obj/structure/machinery/computer/objective,
 /obj/effect/landmark/objective_landmark/medium,
@@ -4200,7 +4200,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "akB" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/xenoautopsy,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
@@ -4266,7 +4266,7 @@
 	},
 /area/bigredv2/caves/lambda/xenobiology)
 "akJ" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/analyzer/plant_analyzer,
 /obj/structure/machinery/light{
 	dir = 1
@@ -4324,7 +4324,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "akQ" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/door/window/brigdoor/southright,
 /turf/open/floor{
 	dir = 8;
@@ -4409,7 +4409,7 @@
 	},
 /area/bigredv2/caves/lambda/xenobiology)
 "ald" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/book/manual/research_and_development,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
@@ -4593,7 +4593,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "alA" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
@@ -4724,7 +4724,7 @@
 	},
 /area/bigredv2/caves/lambda/xenobiology)
 "alT" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
@@ -4956,7 +4956,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "amx" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
@@ -4967,7 +4967,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "amy" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/structure/pipes/vents/pump{
 	dir = 8
 	},
@@ -5221,7 +5221,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/marshall_office)
 "ang" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/item/paper/Court,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
@@ -5257,7 +5257,7 @@
 /turf/open/mars_cave,
 /area/bigredv2/caves_lambda)
 "ank" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/spawner/random/toolbox,
 /turf/open/floor/plating,
 /area/bigredv2/caves/lambda/xenobiology)
@@ -5266,7 +5266,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/caves/lambda/xenobiology)
 "anm" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/spawner/random/powercell,
 /turf/open/floor/plating,
 /area/bigredv2/caves/lambda/xenobiology)
@@ -5295,7 +5295,7 @@
 	},
 /area/bigredv2/caves/lambda/xenobiology)
 "ans" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/storage/box/gloves,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
@@ -5400,7 +5400,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/marshall_office)
 "anE" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
 	icon_state = "cult"
@@ -5593,7 +5593,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "aoi" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
 	dir = 9;
@@ -5606,7 +5606,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/marshall_office)
 "aok" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
@@ -5620,7 +5620,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "aom" = (
-/obj/structure/table/woodentable/fancy,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/item/clothing/suit/storage/lawyer/bluejacket,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
@@ -5725,7 +5725,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/bar)
 "aoA" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/plastic,
 /obj/item/stack/sheet/mineral/plastic,
 /obj/item/stack/sheet/mineral/plastic,
@@ -5777,7 +5777,7 @@
 	},
 /area/bigredv2/caves/lambda/xenobiology)
 "aoJ" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/XenoBio/Resin,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
@@ -5896,7 +5896,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/marshall_office)
 "aoX" = (
-/obj/structure/table/woodentable/fancy,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/item/device/camera,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
@@ -5926,7 +5926,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "apb" = (
-/obj/structure/table/woodentable/fancy,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/item/device/camera_film,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
@@ -6035,16 +6035,16 @@
 /turf/open/floor/plating,
 /area/bigredv2/caves/lambda/xenobiology)
 "apq" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /turf/open/floor/plating,
 /area/bigredv2/caves/lambda/xenobiology)
 "apr" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/tool/screwdriver,
 /turf/open/floor/plating,
 /area/bigredv2/caves/lambda/xenobiology)
 "aps" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/circuitboard/machine/batteryrack,
 /obj/item/stack/cable_coil/orange,
 /turf/open/floor/plating,
@@ -6218,7 +6218,7 @@
 	},
 /area/bigredv2/outside/general_offices)
 "apP" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/bedsheetbin,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -6279,7 +6279,7 @@
 	},
 /area/bigredv2/outside/general_offices)
 "apX" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/phoron{
 	amount = 25
 	},
@@ -6297,7 +6297,7 @@
 	},
 /area/bigredv2/outside/general_offices)
 "apZ" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/uranium{
 	amount = 50
 	},
@@ -6315,7 +6315,7 @@
 	},
 /area/bigredv2/outside/ne)
 "aqb" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/floor/plating,
 /area/bigredv2/caves/lambda/xenobiology)
 "aqc" = (
@@ -6366,7 +6366,7 @@
 	},
 /area/bigredv2/caves/lambda/xenobiology)
 "aqh" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/light,
 /obj/structure/xenoautopsy/tank/hugger,
 /obj/effect/decal/warning_stripes,
@@ -6543,7 +6543,7 @@
 	},
 /area/bigredv2/outside/medical)
 "aqC" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	dir = 5;
@@ -6726,7 +6726,7 @@
 	},
 /area/bigredv2/caves/lambda/breakroom)
 "ara" = (
-/obj/structure/table/holotable/wood,
+/obj/structure/surface/table/holotable/wood,
 /obj/item/device/flashlight/lamp,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
@@ -6769,7 +6769,7 @@
 	},
 /area/bigredv2/outside/nw)
 "are" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/storage/fancy/vials/random,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
@@ -6797,7 +6797,7 @@
 	},
 /area/bigredv2/outside/medical)
 "arh" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	icon_state = "white"
@@ -6903,7 +6903,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/general_offices)
 "arx" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/far,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
@@ -6912,7 +6912,7 @@
 	},
 /area/bigredv2/outside/general_offices)
 "ary" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/paper_bin,
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
@@ -6935,7 +6935,7 @@
 /area/bigredv2/outside/dorms)
 "arA" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/uranium{
 	amount = 50
 	},
@@ -6957,7 +6957,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/silver,
 /obj/item/stack/sheet/mineral/silver{
 	amount = 20
@@ -6975,7 +6975,7 @@
 /turf/open/mars,
 /area/bigredv2/outside/ne)
 "arE" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/ammo_magazine/shotgun/incendiary,
 /obj/item/ammo_magazine/shotgun/incendiary,
 /obj/item/ammo_magazine/shotgun/incendiary,
@@ -7040,7 +7040,7 @@
 	},
 /area/bigredv2/caves_lambda)
 "arN" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/powercell,
 /turf/open/floor{
 	dir = 8;
@@ -7066,7 +7066,7 @@
 	},
 /area/bigredv2/outside/medical)
 "arQ" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/reagentgrinder,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
@@ -7109,7 +7109,7 @@
 	},
 /area/bigredv2/outside/medical)
 "arW" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/light{
 	dir = 4
 	},
@@ -7249,7 +7249,7 @@
 /turf/open/mars,
 /area/bigredv2/outside/ne)
 "asn" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/structure/window/reinforced,
 /obj/item/clothing/suit/armor/vest,
 /obj/effect/landmark/objective_landmark/far,
@@ -7341,7 +7341,7 @@
 /turf/open/mars_cave,
 /area/bigredv2/caves_lambda)
 "asy" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/light{
 	dir = 8;
 	tag = "icon-tube1 (WEST)"
@@ -7417,7 +7417,7 @@
 /area/bigredv2/outside/medical)
 "asG" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/bodybag,
 /obj/item/bodybag,
 /obj/item/bodybag,
@@ -7447,7 +7447,7 @@
 /turf/closed/wall/solaris,
 /area/bigredv2/outside/cargo)
 "asL" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/spawner/random/tool,
 /obj/effect/spawner/random/tool,
 /obj/effect/spawner/random/tool,
@@ -7472,13 +7472,13 @@
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
 "asQ" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
 /obj/item/stack/cable_coil/blue,
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
 "asR" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
 /obj/structure/pipes/vents/pump,
 /turf/open/floor,
@@ -7518,7 +7518,7 @@
 	},
 /area/bigredv2/outside/general_offices)
 "asX" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/diamond,
 /obj/item/stack/sheet/plasteel{
 	amount = 30;
@@ -7541,7 +7541,7 @@
 	},
 /area/bigredv2/outside/general_offices)
 "asZ" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/diamond,
 /obj/item/clothing/under/redcoat,
 /obj/effect/landmark/objective_landmark/far,
@@ -7710,7 +7710,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
 	},
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/bodybag,
 /obj/item/bodybag,
 /obj/item/bodybag,
@@ -7780,7 +7780,7 @@
 	},
 /area/bigredv2/outside/dorms)
 "atC" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/light{
 	dir = 8
 	},
@@ -7788,7 +7788,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
 "atD" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/spawner/random/tool,
 /obj/effect/spawner/random/tool,
 /turf/open/floor,
@@ -7923,7 +7923,7 @@
 	},
 /area/bigredv2/outside/medical)
 "atT" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/tool/pen,
 /obj/structure/machinery/light{
 	dir = 4
@@ -8017,7 +8017,7 @@
 	},
 /area/bigredv2/outside/general_offices)
 "auf" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/gold,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
@@ -8036,7 +8036,7 @@
 	},
 /area/bigredv2/outside/general_offices)
 "auh" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/diamond,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
@@ -8045,7 +8045,7 @@
 	},
 /area/bigredv2/outside/general_offices)
 "aui" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
 	icon_state = "wood"
@@ -8261,7 +8261,7 @@
 	},
 /area/bigredv2/outside/medical)
 "auI" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/storage/box/bodybags,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
@@ -8596,7 +8596,7 @@
 	},
 /area/bigredv2/outside/medical)
 "avv" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor{
 	icon_state = "white"
@@ -8781,7 +8781,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/nw)
 "avW" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/trash/burger,
 /obj/effect/landmark/objective_landmark/science,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -8855,7 +8855,7 @@
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/se)
 "awe" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
 /turf/open/floor{
 	dir = 10;
@@ -9006,13 +9006,13 @@
 /turf/open/mars,
 /area/bigredv2/outside/ne)
 "awz" = (
-/obj/structure/table/holotable/wood,
+/obj/structure/surface/table/holotable/wood,
 /obj/item/XenoBio/Chitin,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/carpet,
 /area/bigredv2/caves/lambda/breakroom)
 "awA" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/light{
 	dir = 8
 	},
@@ -9024,7 +9024,7 @@
 	},
 /area/bigredv2/caves/lambda/research)
 "awB" = (
-/obj/structure/table/holotable/wood,
+/obj/structure/surface/table/holotable/wood,
 /obj/item/reagent_container/food/drinks/coffee,
 /obj/item/phone,
 /obj/effect/landmark/objective_landmark/far,
@@ -9100,7 +9100,7 @@
 	},
 /area/bigredv2/caves/lambda/breakroom)
 "awL" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/storage/pill_bottle/tramadol,
 /obj/effect/landmark/objective_landmark/science,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -9199,24 +9199,24 @@
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
 "awZ" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
 "axa" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/ashtray/bronze,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
 "axb" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/radio,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
 "axc" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor,
@@ -9292,7 +9292,7 @@
 	dir = 8;
 	tag = "icon-rwindow (WEST)"
 	},
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "darkgreen2";
@@ -9370,7 +9370,7 @@
 	},
 /area/bigredv2/outside/nw)
 "axw" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/storage/firstaid/adv,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
@@ -9468,20 +9468,20 @@
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
 "axI" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/tool,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
 "axJ" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/powercell,
 /obj/structure/pipes/vents/pump,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
 "axK" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/trash/plate,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -9774,7 +9774,7 @@
 	},
 /area/bigredv2/outside/general_offices)
 "ayx" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
 	icon_state = "wood"
@@ -9932,7 +9932,7 @@
 	},
 /area/bigredv2/outside/medical)
 "ayS" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/bodybag/cryobag,
 /obj/item/bodybag/cryobag,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -9943,8 +9943,8 @@
 	},
 /area/bigredv2/outside/medical)
 "ayT" = (
-/obj/structure/table,
-/obj/structure/table,
+/obj/structure/surface/table,
+/obj/structure/surface/table,
 /obj/item/bodybag/cryobag,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
@@ -9954,7 +9954,7 @@
 	},
 /area/bigredv2/outside/medical)
 "ayU" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/light{
 	dir = 4
 	},
@@ -10048,7 +10048,7 @@
 	},
 /area/bigredv2/caves_lambda)
 "azg" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/cell_charger,
 /obj/structure/machinery/light{
 	dir = 1;
@@ -10063,7 +10063,7 @@
 	},
 /area/bigredv2/caves/lambda/research)
 "azh" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
 	dir = 1;
@@ -10297,7 +10297,7 @@
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/filtration_plant)
 "azM" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/clothing/head/det_hat,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
@@ -10943,7 +10943,7 @@
 	},
 /area/bigredv2/outside/dorms)
 "aBr" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/item/toy/beach_ball,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -11083,7 +11083,7 @@
 	},
 /area/bigredv2/outside/medical)
 "aBN" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/healthanalyzer,
 /obj/structure/pipes/vents/pump,
 /obj/item/reagent_container/spray/cleaner,
@@ -11093,7 +11093,7 @@
 	},
 /area/bigredv2/outside/medical)
 "aBO" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/recharger,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
@@ -11102,7 +11102,7 @@
 	},
 /area/bigredv2/outside/medical)
 "aBP" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	icon_state = "whitegreencorner";
@@ -11230,7 +11230,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/hydroponics)
 "aCk" = (
-/obj/structure/table/woodentable/fancy,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/item/paper/courtroom{
 	name = "A Crash Course in Legal SOP"
 	},
@@ -11240,13 +11240,13 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "aCl" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/tool/shovel/spade,
 /obj/structure/machinery/camera/autoname,
 /turf/open/floor,
 /area/bigredv2/outside/hydroponics)
 "aCm" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/paper/hydroponics,
 /turf/open/floor,
 /area/bigredv2/outside/hydroponics)
@@ -11552,7 +11552,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/hydroponics)
 "aDa" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor,
@@ -11682,7 +11682,7 @@
 	},
 /area/bigredv2/caves/lambda/research)
 "aDp" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/technology_scanner,
 /turf/open/floor{
 	dir = 9;
@@ -11808,7 +11808,7 @@
 	},
 /area/bigredv2/caves/lambda/virology)
 "aDC" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/tool/surgery/bonesetter,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/objective_landmark/science,
@@ -11819,7 +11819,7 @@
 	},
 /area/bigredv2/outside/medical)
 "aDD" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/storage/box/masks,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/objective_landmark/science,
@@ -11830,7 +11830,7 @@
 	},
 /area/bigredv2/outside/medical)
 "aDE" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/tool/surgery/FixOVein,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
@@ -11840,7 +11840,7 @@
 	},
 /area/bigredv2/outside/medical)
 "aDF" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/tool/surgery/cautery,
 /obj/item/reagent_container/spray/cleaner,
 /obj/effect/landmark/objective_landmark/science,
@@ -12071,7 +12071,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/caves/eta/living)
 "aEk" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/structure/pipes/vents/pump{
 	dir = 4
 	},
@@ -12149,7 +12149,7 @@
 /area/bigredv2/caves/lambda/research)
 "aEs" = (
 /obj/structure/machinery/computer/objective,
-/obj/structure/table/holotable/wood,
+/obj/structure/surface/table/holotable/wood,
 /turf/open/floor/wood,
 /area/bigredv2/caves/lambda/breakroom)
 "aEt" = (
@@ -12173,7 +12173,7 @@
 	},
 /area/bigredv2/outside/nw)
 "aEw" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/tool/surgery/scalpel/manager,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
@@ -12210,7 +12210,7 @@
 	},
 /area/bigredv2/outside/medical)
 "aEB" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/pipes/vents/pump,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
@@ -12429,7 +12429,7 @@
 	},
 /area/bigredv2/caves/lambda/research)
 "aFg" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
@@ -12438,7 +12438,7 @@
 	},
 /area/bigredv2/caves/lambda/research)
 "aFh" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/spawner/random/technology_scanner,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
@@ -12481,7 +12481,7 @@
 	},
 /area/bigredv2/caves/lambda/research)
 "aFl" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/technology_scanner,
 /turf/open/floor{
 	dir = 10;
@@ -12652,7 +12652,7 @@
 	},
 /area/bigredv2/outside/medical)
 "aFI" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/trash/buritto,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
@@ -12661,7 +12661,7 @@
 	},
 /area/bigredv2/outside/medical)
 "aFJ" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/device/healthanalyzer,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
@@ -12737,7 +12737,7 @@
 	},
 /area/bigredv2/outside/dorms)
 "aFT" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/item/device/radio,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -12770,7 +12770,7 @@
 	},
 /area/bigredv2/caves/lambda/virology)
 "aFW" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
 	icon_state = "wood"
@@ -13032,7 +13032,7 @@
 	},
 /area/bigredv2/outside/medical)
 "aGz" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/light{
 	dir = 8
 	},
@@ -13044,7 +13044,7 @@
 	},
 /area/bigredv2/outside/medical)
 "aGA" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/storage/firstaid/o2,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
@@ -13075,7 +13075,7 @@
 	},
 /area/bigredv2/outside/medical)
 "aGD" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
 	icon_state = "white"
@@ -13097,7 +13097,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
 "aGG" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/item/device/binoculars,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
@@ -13175,7 +13175,7 @@
 /turf/open/mars_cave,
 /area/bigredv2/caves_lambda)
 "aGT" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
 	dir = 5;
@@ -13194,7 +13194,7 @@
 	},
 /area/bigredv2/caves/lambda/research)
 "aGV" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/spray/cleaner,
 /obj/structure/pipes/vents/pump{
 	dir = 4
@@ -13213,7 +13213,7 @@
 	},
 /area/bigredv2/caves/lambda/research)
 "aGX" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/tool/weedkiller/D24,
 /obj/effect/landmark/objective_landmark/science,
 /obj/effect/landmark/objective_landmark/far,
@@ -13248,7 +13248,7 @@
 	},
 /area/bigredv2/caves/lambda/virology)
 "aHa" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/storage/pill_bottle/spaceacillin,
 /obj/effect/landmark/objective_landmark/science,
 /obj/effect/landmark/objective_landmark/far,
@@ -13257,7 +13257,7 @@
 	},
 /area/bigredv2/outside/virology)
 "aHc" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/storage/box/donkpockets,
 /obj/structure/machinery/power/apc{
 	dir = 4;
@@ -13415,7 +13415,7 @@
 	},
 /area/bigredv2/outside/medical)
 "aHu" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/storage/firstaid/fire,
 /obj/item/storage/firstaid/fire,
 /obj/effect/decal/cleanable/dirt,
@@ -13426,7 +13426,7 @@
 	},
 /area/bigredv2/outside/medical)
 "aHv" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/storage/firstaid/toxin,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/objective_landmark/science,
@@ -13435,7 +13435,7 @@
 	},
 /area/bigredv2/outside/medical)
 "aHw" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/storage/firstaid/regular,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/objective_landmark/science,
@@ -13453,7 +13453,7 @@
 	},
 /area/bigredv2/outside/general_store)
 "aHy" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/storage/firstaid/rad,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
@@ -13534,14 +13534,14 @@
 /area/bigredv2/outside/bar)
 "aHJ" = (
 /obj/structure/machinery/reagentgrinder,
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
 	icon_state = "wood"
 	},
 /area/bigredv2/outside/bar)
 "aHK" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/toy/sword,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
@@ -13582,7 +13582,7 @@
 	},
 /area/bigredv2/outside/library)
 "aHP" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/plating,
 /area/bigredv2/outside/general_store)
@@ -13825,7 +13825,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor,
 /area/bigredv2/outside/office_complex)
@@ -13885,7 +13885,7 @@
 	},
 /area/bigredv2/outside/bar)
 "aIw" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/microwave,
 /turf/open/floor{
 	icon_state = "freezerfloor";
@@ -13967,7 +13967,7 @@
 	},
 /area/bigredv2/outside/library)
 "aIH" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/item/paper,
 /obj/effect/landmark/objective_landmark/far,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -14062,7 +14062,7 @@
 	},
 /area/bigredv2/caves/lambda/research)
 "aIT" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
@@ -14118,7 +14118,7 @@
 	},
 /area/bigredv2/caves/lambda/virology)
 "aIY" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
 	dir = 8;
@@ -14157,7 +14157,7 @@
 	},
 /area/bigredv2/caves/lambda/virology)
 "aJb" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/ashtray/bronze,
 /obj/structure/pipes/vents/pump{
 	dir = 8
@@ -14378,7 +14378,7 @@
 	},
 /area/bigredv2/outside/hydroponics)
 "aJy" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
 	icon_state = "darkish";
@@ -14423,7 +14423,7 @@
 	},
 /area/bigredv2/outside/library)
 "aJD" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/item/toy/dice/d20,
 /obj/effect/landmark/objective_landmark/far,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -14462,7 +14462,7 @@
 	},
 /area/bigredv2/caves/lambda/research)
 "aJI" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/tech_supply,
 /obj/effect/spawner/random/tech_supply,
 /obj/effect/landmark/objective_landmark/far,
@@ -14763,7 +14763,7 @@
 	},
 /area/bigredv2/outside/c)
 "aKn" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/far,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor,
@@ -14824,7 +14824,7 @@
 	},
 /area/bigredv2/outside/bar)
 "aKy" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/item/ashtray/glass,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
@@ -15112,7 +15112,7 @@
 	},
 /area/bigredv2/outside/admin_building)
 "aLf" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/clothing/mask/cigarette,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -15123,7 +15123,7 @@
 	},
 /area/bigredv2/outside/office_complex)
 "aLg" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
 	icon_state = "grimy"
@@ -15155,14 +15155,14 @@
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "aLn" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/light,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "aLo" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/radio,
 /obj/structure/pipes/vents/pump{
 	dir = 1
@@ -15181,7 +15181,7 @@
 	},
 /area/bigredv2/outside/bar)
 "aLq" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/structure/pipes/vents/pump,
 /obj/item/trash/cheesie,
 /obj/effect/landmark/objective_landmark/medium,
@@ -15210,7 +15210,7 @@
 	},
 /area/bigredv2/outside/bar)
 "aLt" = (
-/obj/structure/table/woodentable{
+/obj/structure/surface/table/woodentable{
 	flipped = 1
 	},
 /obj/effect/decal/cleanable/blood,
@@ -15221,7 +15221,7 @@
 	},
 /area/bigredv2/outside/bar)
 "aLu" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/effect/landmark{
 	name = "monkey_spawn"
 	},
@@ -15241,7 +15241,7 @@
 	},
 /area/bigredv2/outside/bar)
 "aLw" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/trash/waffles,
 /turf/open/floor{
 	icon_state = "yellowfull";
@@ -15249,7 +15249,7 @@
 	},
 /area/bigredv2/outside/hydroponics)
 "aLx" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	icon_state = "yellowfull";
@@ -15257,7 +15257,7 @@
 	},
 /area/bigredv2/outside/hydroponics)
 "aLy" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/tool/kitchen/knife,
 /turf/open/floor{
 	icon_state = "yellowfull";
@@ -15265,7 +15265,7 @@
 	},
 /area/bigredv2/outside/hydroponics)
 "aLz" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/trash/waffles,
 /turf/open/floor{
@@ -15274,14 +15274,14 @@
 	},
 /area/bigredv2/outside/hydroponics)
 "aLA" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /turf/open/floor{
 	icon_state = "yellowfull";
 	tag = "icon-yellowfull"
 	},
 /area/bigredv2/outside/hydroponics)
 "aLB" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/trash/plate,
 /turf/open/floor{
 	icon_state = "yellowfull";
@@ -15289,7 +15289,7 @@
 	},
 /area/bigredv2/outside/hydroponics)
 "aLC" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/tool/kitchen/rollingpin,
 /turf/open/floor{
 	icon_state = "yellowfull";
@@ -15297,7 +15297,7 @@
 	},
 /area/bigredv2/outside/hydroponics)
 "aLD" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/tool/kitchen/knife/butcher,
 /turf/open/floor{
 	icon_state = "yellowfull";
@@ -15363,7 +15363,7 @@
 	},
 /area/bigredv2/caves/lambda/virology)
 "aLN" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor,
@@ -15381,7 +15381,7 @@
 	},
 /area/bigredv2/caves/lambda/virology)
 "aLP" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/tool/lighter/random,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -15549,7 +15549,7 @@
 	},
 /area/bigredv2/outside/bar)
 "aMi" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/effect/spawner/random/tool,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
@@ -15717,7 +15717,7 @@
 	},
 /area/bigredv2/outside/virology)
 "aMB" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/tool/pen,
 /obj/effect/landmark/objective_landmark/close,
@@ -15749,7 +15749,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/tool/surgery/retractor,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
@@ -15767,7 +15767,7 @@
 	},
 /area/bigredv2/outside/bar)
 "aMI" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/item/trash/sosjerky,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
@@ -15939,7 +15939,7 @@
 	},
 /area/bigredv2/outside/virology)
 "aNg" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/tool/surgery/surgicaldrill,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
@@ -16066,7 +16066,7 @@
 	},
 /area/bigredv2/outside/c)
 "aNx" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/pipes/vents/pump{
 	dir = 8
 	},
@@ -16077,7 +16077,7 @@
 	},
 /area/bigredv2/caves/eta/storage)
 "aNy" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/paper_bin,
 /obj/item/tool/pen,
 /obj/effect/landmark/objective_landmark/medium,
@@ -16108,7 +16108,7 @@
 /area/bigredv2/outside/admin_building)
 "aNB" = (
 /obj/structure/machinery/computer/security,
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -16116,13 +16116,13 @@
 "aNC" = (
 /obj/structure/machinery/computer/station_alert,
 /obj/structure/machinery/camera/autoname,
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/floor{
 	icon_state = "white"
 	},
 /area/bigredv2/outside/admin_building)
 "aND" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/faxmachine{
 	density = 0;
 	req_one_access = list(200)
@@ -16132,7 +16132,7 @@
 	},
 /area/bigredv2/outside/admin_building)
 "aNE" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/window/reinforced{
 	dir = 4;
 	health = 80
@@ -16292,7 +16292,7 @@
 	},
 /area/bigredv2/outside/bar)
 "aNX" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/structure/pipes/vents/pump{
 	dir = 8
 	},
@@ -16302,7 +16302,7 @@
 	},
 /area/bigredv2/outside/bar)
 "aNY" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/item/trash/raisins,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
@@ -16327,7 +16327,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/hydroponics)
 "aOb" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/trash/plate,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -16337,7 +16337,7 @@
 	},
 /area/bigredv2/outside/hydroponics)
 "aOc" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/floor,
 /area/bigredv2/outside/hydroponics)
 "aOd" = (
@@ -16359,7 +16359,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/hydroponics)
 "aOf" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -16369,7 +16369,7 @@
 	},
 /area/bigredv2/outside/hydroponics)
 "aOg" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/tool/kitchen/utensil/spoon,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -16405,7 +16405,7 @@
 	},
 /area/bigredv2/outside/e)
 "aOl" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/paper_bin,
 /obj/item/disk/nuclear,
 /obj/effect/landmark/objective_landmark/science,
@@ -16568,7 +16568,7 @@
 	},
 /area/bigredv2/outside/admin_building)
 "aOH" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/flashlight/lamp,
 /obj/structure/window/reinforced{
 	dir = 4;
@@ -16588,7 +16588,7 @@
 	},
 /area/bigredv2/outside/admin_building)
 "aOJ" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/decal/cleanable/blood/gibs/limb,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/plating,
@@ -16626,7 +16626,7 @@
 	},
 /area/bigredv2/outside/admin_building)
 "aOP" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
 	icon_state = "dark";
@@ -16634,7 +16634,7 @@
 	},
 /area/bigredv2/caves/eta/storage)
 "aOQ" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	dir = 6;
@@ -16651,7 +16651,7 @@
 	},
 /area/bigredv2/outside/c)
 "aOS" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/item/trash/cheesie,
 /obj/item/trash/pistachios,
 /obj/effect/landmark/objective_landmark/medium,
@@ -16677,7 +16677,7 @@
 	},
 /area/bigredv2/outside/hydroponics)
 "aOW" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/pipes/vents/pump{
 	dir = 4
 	},
@@ -16685,7 +16685,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/hydroponics)
 "aOX" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
@@ -16718,7 +16718,7 @@
 	},
 /area/bigredv2/outside/hydroponics)
 "aPa" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
@@ -16756,7 +16756,7 @@
 	},
 /area/bigredv2/caves/eta/research)
 "aPe" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
@@ -16768,7 +16768,7 @@
 	},
 /area/bigredv2/outside/hydroponics)
 "aPf" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
 	dir = 1;
@@ -16777,7 +16777,7 @@
 	},
 /area/bigredv2/caves/eta/research)
 "aPg" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/XenoBio/Blood,
 /obj/item/XenoBio/Blood,
 /obj/item/paper,
@@ -16799,7 +16799,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/hydroponics)
 "aPi" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/trash/plate,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -16926,7 +16926,7 @@
 	},
 /area/bigredv2/outside/general_store)
 "aPw" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/food/snacks/chips,
 /obj/item/reagent_container/food/snacks/donut,
 /obj/structure/pipes/vents/pump{
@@ -16940,7 +16940,7 @@
 	},
 /area/bigredv2/outside/general_store)
 "aPx" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/food/snacks/chips,
 /obj/item/reagent_container/food/snacks/cookie,
 /obj/item/reagent_container/food/snacks/donut,
@@ -16952,7 +16952,7 @@
 	},
 /area/bigredv2/outside/general_store)
 "aPy" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/food/snacks/candy,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
@@ -16962,7 +16962,7 @@
 	},
 /area/bigredv2/outside/general_store)
 "aPz" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/food/drinks/cans/waterbottle,
 /obj/item/reagent_container/food/drinks/cans/cola,
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -16974,7 +16974,7 @@
 	},
 /area/bigredv2/outside/general_store)
 "aPA" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/food/drinks/cans/waterbottle,
 /obj/item/reagent_container/food/drinks/cans/cola,
 /obj/item/reagent_container/food/drinks/cans/beer,
@@ -16986,7 +16986,7 @@
 	},
 /area/bigredv2/outside/general_store)
 "aPB" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/food/drinks/flask,
 /obj/item/reagent_container/food/drinks/cans/waterbottle,
 /obj/item/reagent_container/food/drinks/cans/beer,
@@ -17004,7 +17004,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/general_store)
 "aPD" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/storage/briefcase,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
@@ -17014,7 +17014,7 @@
 	},
 /area/bigredv2/outside/general_store)
 "aPE" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/camera/autoname{
 	dir = 1
 	},
@@ -17026,7 +17026,7 @@
 	},
 /area/bigredv2/outside/general_store)
 "aPF" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/storage/box/snappops,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
@@ -17041,7 +17041,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/general_store)
 "aPH" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
 	dir = 8;
@@ -17097,7 +17097,7 @@
 	},
 /area/bigredv2/outside/admin_building)
 "aPO" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/window/reinforced{
 	dir = 4;
 	health = 80
@@ -17133,7 +17133,7 @@
 	},
 /area/bigredv2/outside/admin_building)
 "aPT" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/technology_scanner,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
@@ -17167,7 +17167,7 @@
 	},
 /area/bigredv2/outside/admin_building)
 "aPX" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/item/tool/lighter/zippo,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
@@ -17184,7 +17184,7 @@
 	},
 /area/bigredv2/outside/bar)
 "aPZ" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	dir = 8;
@@ -17226,7 +17226,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/hydroponics)
 "aQe" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/trash/plate,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -17238,7 +17238,7 @@
 	},
 /area/bigredv2/outside/hydroponics)
 "aQf" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/tool/kitchen/utensil/fork,
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -17314,13 +17314,13 @@
 /turf/open/floor,
 /area/bigredv2/outside/hydroponics)
 "aQo" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/trash/plate,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor,
 /area/bigredv2/outside/hydroponics)
 "aQp" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
 	icon_state = "yellowfull";
@@ -17375,14 +17375,14 @@
 	},
 /area/bigredv2/caves/lambda/research)
 "aQx" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
 	icon_state = "wood"
 	},
 /area/bigredv2/caves/eta/living)
 "aQy" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/tool/pen,
 /obj/item/paper_bundle,
 /obj/effect/landmark/objective_landmark/far,
@@ -17420,7 +17420,7 @@
 	},
 /area/bigredv2/outside/virology)
 "aQD" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/stock_parts/smes_coil,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
@@ -17448,7 +17448,7 @@
 	},
 /area/bigredv2/outside/w)
 "aQH" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/food/snacks/chips,
 /obj/item/reagent_container/food/snacks/cookie,
 /obj/item/reagent_container/food/snacks/donkpocket,
@@ -17460,7 +17460,7 @@
 	},
 /area/bigredv2/outside/general_store)
 "aQI" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/food/drinks/cans/thirteenloko,
 /obj/item/reagent_container/food/drinks/cans/cola,
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -17475,7 +17475,7 @@
 	},
 /area/bigredv2/outside/general_store)
 "aQJ" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/food/drinks/flask/vacuumflask,
 /obj/item/reagent_container/food/drinks/flask,
 /obj/structure/machinery/light{
@@ -17489,7 +17489,7 @@
 	},
 /area/bigredv2/outside/general_store)
 "aQL" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/camera/autoname{
 	dir = 4
 	},
@@ -17517,7 +17517,7 @@
 	},
 /area/bigredv2/outside/general_store)
 "aQO" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/camera/autoname,
 /obj/effect/decal/cleanable/blood,
 /obj/item/alien_embryo,
@@ -17529,7 +17529,7 @@
 	},
 /area/bigredv2/outside/general_store)
 "aQP" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/decal/cleanable/blood,
 /obj/item/tool/kitchen/knife,
 /obj/effect/landmark/objective_landmark/close,
@@ -17540,7 +17540,7 @@
 	},
 /area/bigredv2/outside/general_store)
 "aQQ" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/tool/lighter/random,
 /obj/item/tool/lighter/random,
 /obj/item/storage/toolbox/mechanical,
@@ -17552,7 +17552,7 @@
 	},
 /area/bigredv2/outside/general_store)
 "aQR" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/computer/pod/old{
 	name = "Register"
 	},
@@ -17583,7 +17583,7 @@
 	},
 /area/bigredv2/outside/general_store)
 "aQV" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/paper,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
@@ -17673,7 +17673,7 @@
 	},
 /area/bigredv2/outside/admin_building)
 "aRf" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/changestone,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
@@ -17927,7 +17927,7 @@
 	},
 /area/bigredv2/outside/virology)
 "aRK" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/food/snacks/cheesewedge,
 /obj/item/reagent_container/food/snacks/chips,
 /obj/item/reagent_container/food/snacks/cookie,
@@ -17939,7 +17939,7 @@
 	},
 /area/bigredv2/outside/general_store)
 "aRL" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/food/snacks/candy,
 /obj/item/reagent_container/food/snacks/candy,
 /obj/item/reagent_container/food/snacks/candy,
@@ -17960,7 +17960,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/general_store)
 "aRN" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/food/drinks/cans/thirteenloko,
 /obj/item/reagent_container/food/drinks/cans/cola,
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -17972,7 +17972,7 @@
 	},
 /area/bigredv2/outside/general_store)
 "aRO" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/food/drinks/flask,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
@@ -18259,7 +18259,7 @@
 	},
 /area/bigredv2/outside/general_store)
 "aSD" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/food/snacks/cheesewedge,
 /obj/item/reagent_container/food/snacks/chips,
 /obj/item/reagent_container/food/snacks/donkpocket,
@@ -18272,7 +18272,7 @@
 	},
 /area/bigredv2/outside/general_store)
 "aSE" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/food/snacks/candy,
 /obj/item/reagent_container/food/snacks/candy,
 /obj/item/reagent_container/food/snacks/candy,
@@ -18285,7 +18285,7 @@
 	},
 /area/bigredv2/outside/general_store)
 "aSF" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/food/drinks/cans/tonic,
 /obj/item/reagent_container/food/drinks/cans/waterbottle,
 /obj/item/reagent_container/food/drinks/cans/aspen,
@@ -18298,7 +18298,7 @@
 	},
 /area/bigredv2/outside/general_store)
 "aSG" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/food/drinks/flask/vacuumflask,
 /obj/item/reagent_container/food/drinks/flask,
 /obj/effect/landmark/objective_landmark/close,
@@ -18309,7 +18309,7 @@
 	},
 /area/bigredv2/outside/general_store)
 "aSH" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/storage/box/snappops,
 /obj/structure/pipes/vents/pump{
 	dir = 4
@@ -18337,7 +18337,7 @@
 	},
 /area/bigredv2/outside/general_store)
 "aSK" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
@@ -18350,7 +18350,7 @@
 	},
 /area/bigredv2/outside/general_store)
 "aSL" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
@@ -18363,7 +18363,7 @@
 	},
 /area/bigredv2/outside/general_store)
 "aSM" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
@@ -18376,7 +18376,7 @@
 	},
 /area/bigredv2/outside/general_store)
 "aSN" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/computer/pod/old{
 	name = "Register"
 	},
@@ -18427,7 +18427,7 @@
 	},
 /area/bigredv2/outside/admin_building)
 "aSS" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/weapon/gun/smg/mp7,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
@@ -18492,7 +18492,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/admin_building)
 "aTb" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
 	icon_state = "wood"
@@ -18783,7 +18783,7 @@
 	},
 /area/bigredv2/outside/virology)
 "aTM" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/food/snacks/bun,
 /obj/structure/machinery/light{
 	dir = 4
@@ -18796,7 +18796,7 @@
 	},
 /area/bigredv2/outside/general_store)
 "aTN" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/food/snacks/candy,
 /obj/item/reagent_container/food/snacks/bun,
 /obj/item/reagent_container/food/snacks/donkpocket,
@@ -18811,7 +18811,7 @@
 	},
 /area/bigredv2/outside/general_store)
 "aTO" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/food/drinks/cans/waterbottle,
 /obj/item/reagent_container/food/drinks/cans/aspen,
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -18823,7 +18823,7 @@
 	},
 /area/bigredv2/outside/general_store)
 "aTP" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/food/drinks/flask/vacuumflask,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
@@ -18837,7 +18837,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/general_store)
 "aTR" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/storage/briefcase,
 /obj/structure/machinery/light{
 	dir = 4
@@ -18850,7 +18850,7 @@
 	},
 /area/bigredv2/outside/general_store)
 "aTS" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/weapon/gun/pistol/holdout,
 /obj/structure/machinery/light{
 	dir = 8
@@ -18889,7 +18889,7 @@
 	},
 /area/bigredv2/outside/admin_building)
 "aTZ" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/weapon/gun/smg/mp7,
 /obj/structure/machinery/light{
 	dir = 4
@@ -18944,7 +18944,7 @@
 	},
 /area/bigredv2/outside/admin_building)
 "aUg" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/item/device/camera,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
@@ -19212,7 +19212,7 @@
 	},
 /area/bigredv2/outside/virology)
 "aUO" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/tank/anesthetic,
 /obj/item/storage/pill_bottle/spaceacillin,
 /obj/effect/landmark/objective_landmark/science,
@@ -19238,7 +19238,7 @@
 	},
 /area/bigredv2/outside/w)
 "aUS" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/food/snacks/bun,
 /obj/item/reagent_container/food/snacks/bun,
 /obj/item/reagent_container/food/snacks/cheesewedge,
@@ -19251,7 +19251,7 @@
 	},
 /area/bigredv2/outside/general_store)
 "aUT" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/food/snacks/bun,
 /obj/item/reagent_container/food/snacks/bun,
 /obj/item/reagent_container/food/snacks/cheesewedge,
@@ -19264,7 +19264,7 @@
 	},
 /area/bigredv2/outside/general_store)
 "aUU" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/food/snacks/candy,
 /obj/item/reagent_container/food/snacks/bun,
 /obj/effect/landmark/objective_landmark/close,
@@ -19285,7 +19285,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/general_store)
 "aUX" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/food/drinks/coffee,
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/landmark/objective_landmark/close,
@@ -19296,7 +19296,7 @@
 	},
 /area/bigredv2/outside/general_store)
 "aUY" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/food/drinks/coffee,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
@@ -19306,7 +19306,7 @@
 	},
 /area/bigredv2/outside/general_store)
 "aUZ" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/food/drinks/flask/vacuumflask,
 /obj/item/reagent_container/food/drinks/cans/aspen,
 /obj/effect/landmark/objective_landmark/close,
@@ -19317,7 +19317,7 @@
 	},
 /area/bigredv2/outside/general_store)
 "aVa" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/flashlight,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
@@ -19327,7 +19327,7 @@
 	},
 /area/bigredv2/outside/general_store)
 "aVb" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/storage/box/snappops,
 /obj/item/storage/box/snappops,
 /obj/effect/landmark/objective_landmark/close,
@@ -19343,7 +19343,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/general_store)
 "aVd" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/toy/dice,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -19353,7 +19353,7 @@
 	},
 /area/bigredv2/outside/general_store)
 "aVe" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/weapon/gun/pistol/holdout,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -19363,7 +19363,7 @@
 	},
 /area/bigredv2/outside/general_store)
 "aVf" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/tool/kitchen/knife,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -19373,7 +19373,7 @@
 	},
 /area/bigredv2/outside/general_store)
 "aVg" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/computer/pod/old{
 	name = "Register"
 	},
@@ -19409,7 +19409,7 @@
 	},
 /area/bigredv2/outside/admin_building)
 "aVk" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/weapon/gun/pistol/mod88,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
@@ -19561,7 +19561,7 @@
 	},
 /area/bigredv2/outside/virology)
 "aVE" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/reagentgrinder,
 /turf/open/floor{
 	icon_state = "white"
@@ -19711,7 +19711,7 @@
 /area/bigredv2/outside/admin_building)
 "aVX" = (
 /obj/structure/machinery/computer/security,
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/floor{
 	dir = 5;
 	icon_state = "darkblue2";
@@ -19725,7 +19725,7 @@
 /turf/open/mars,
 /area/bigredv2/outside/e)
 "aVZ" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/microwave,
 /obj/structure/machinery/light,
 /turf/open/floor{
@@ -19735,7 +19735,7 @@
 	},
 /area/bigredv2/caves/lambda/virology)
 "aWb" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/storage/box/wy_mre,
 /turf/open/floor{
 	icon_state = "whitegreen";
@@ -19743,7 +19743,7 @@
 	},
 /area/bigredv2/caves/lambda/virology)
 "aWc" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/microwave,
 /obj/structure/machinery/light,
 /turf/open/floor{
@@ -19933,7 +19933,7 @@
 /area/bigredv2/outside/admin_building)
 "aWG" = (
 /obj/structure/machinery/computer/communications,
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/floor{
 	dir = 6;
 	icon_state = "darkblue2";
@@ -19941,7 +19941,7 @@
 	},
 /area/bigredv2/outside/admin_building)
 "aWH" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/item/device/pinpointer,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
@@ -20035,7 +20035,7 @@
 	},
 /area/bigredv2/outside/virology)
 "aWS" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/glass/bottle/toxin,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
@@ -20076,7 +20076,7 @@
 	},
 /area/bigredv2/outside/w)
 "aWX" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/toy/prize/ripley,
 /obj/item/toy/prize/odysseus,
 /obj/effect/landmark/objective_landmark/close,
@@ -20158,7 +20158,7 @@
 	},
 /area/bigredv2/outside/admin_building)
 "aXm" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/paper_bin,
 /obj/item/tool/pen,
 /obj/item/device/radio/intercom{
@@ -20174,7 +20174,7 @@
 	},
 /area/bigredv2/outside/admin_building)
 "aXn" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/item/reagent_container/spray/cleaner,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
@@ -20254,7 +20254,7 @@
 	},
 /area/bigredv2/outside/w)
 "aXB" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/toy/prize/mauler,
 /obj/item/toy/prize/odysseus,
 /obj/effect/landmark/objective_landmark/close,
@@ -20265,7 +20265,7 @@
 	},
 /area/bigredv2/outside/general_store)
 "aXC" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/light,
 /obj/item/toy/prize/ripley,
 /obj/item/toy/prize/odysseus,
@@ -20277,7 +20277,7 @@
 	},
 /area/bigredv2/outside/general_store)
 "aXD" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/toy/prize/mauler,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
@@ -20287,7 +20287,7 @@
 	},
 /area/bigredv2/outside/general_store)
 "aXE" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/toy/prize/ripley,
 /obj/item/toy/prize/mauler,
 /obj/structure/machinery/camera/autoname{
@@ -20301,7 +20301,7 @@
 	},
 /area/bigredv2/outside/general_store)
 "aXG" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/toy/sword,
 /obj/item/toy/gun,
 /obj/effect/landmark/objective_landmark/close,
@@ -20337,7 +20337,7 @@
 	},
 /area/bigredv2/outside/admin_building)
 "aXN" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/faxmachine{
 	density = 0;
 	req_one_access = list(200)
@@ -20355,7 +20355,7 @@
 	},
 /area/bigredv2/outside/admin_building)
 "aXP" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/tool/pen,
 /turf/open/floor{
 	icon_state = "darkblue2";
@@ -20363,7 +20363,7 @@
 	},
 /area/bigredv2/outside/admin_building)
 "aXQ" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/floor{
 	dir = 6;
 	icon_state = "darkblue2";
@@ -20424,13 +20424,13 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/cargo)
 "aYe" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/plating,
 /area/bigredv2/outside/cargo)
 "aYf" = (
 /obj/structure/machinery/light,
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/plating,
 /area/bigredv2/outside/cargo)
@@ -20590,7 +20590,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/virology)
 "aYC" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	icon_state = "freezerfloor"
@@ -20735,7 +20735,7 @@
 	},
 /area/bigredv2/outside/office_complex)
 "aZc" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/microwave,
 /turf/open/floor,
 /area/bigredv2/outside/office_complex)
@@ -20823,20 +20823,20 @@
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "aZr" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/spawner/random/tool,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "aZs" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "aZt" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/technology_scanner,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor,
@@ -20965,14 +20965,14 @@
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "aZQ" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/tool/lighter/random,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "aZR" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/window/reinforced{
 	dir = 4;
 	health = 80
@@ -20989,7 +20989,7 @@
 	},
 /area/bigredv2/outside/admin_building)
 "aZT" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/computer3/laptop/secure_data,
 /turf/open/floor{
 	dir = 8;
@@ -21077,7 +21077,7 @@
 	},
 /area/bigredv2/outside/office_complex)
 "baf" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/cell/hyper,
 /obj/effect/landmark/objective_landmark/far,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -21086,7 +21086,7 @@
 	},
 /area/bigredv2/outside/office_complex)
 "bag" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/glass/beaker/sulphuric,
 /obj/effect/landmark/objective_landmark/far,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -21095,7 +21095,7 @@
 	},
 /area/bigredv2/outside/office_complex)
 "bah" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/landmark/objective_landmark/far,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -21126,7 +21126,7 @@
 	},
 /area/bigredv2/outside/chapel)
 "ban" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/item/device/radio/headset,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
@@ -21237,7 +21237,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "baE" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/tool/crowbar,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -21271,7 +21271,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/admin_building)
 "baK" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/spawner/random/tech_supply,
 /obj/effect/spawner/random/tech_supply,
 /obj/effect/landmark/objective_landmark/far,
@@ -21300,13 +21300,13 @@
 /turf/open/floor,
 /area/bigredv2/outside/office_complex)
 "baP" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/paper,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor,
 /area/bigredv2/outside/office_complex)
 "baR" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
 	icon_state = "cult"
@@ -21411,7 +21411,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "bbj" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/alienjar,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
@@ -21445,7 +21445,7 @@
 	},
 /area/bigredv2/outside/admin_building)
 "bbm" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/computer/med_data/laptop,
 /turf/open/floor{
 	dir = 8;
@@ -21480,14 +21480,14 @@
 /turf/open/floor,
 /area/bigredv2/outside/admin_building)
 "bbr" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/storage/photo_album,
 /obj/item/tool/pen/red,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor,
 /area/bigredv2/outside/admin_building)
 "bbs" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/spawner/random/tech_supply,
 /obj/effect/spawner/random/tech_supply,
 /obj/structure/pipes/vents/pump{
@@ -21596,7 +21596,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/item/storage/bible,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
@@ -21703,7 +21703,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "bbU" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/window/reinforced{
 	dir = 4;
 	health = 80
@@ -21741,7 +21741,7 @@
 	},
 /area/bigredv2/outside/admin_building)
 "bbZ" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/computer/security/wooden_tv,
 /obj/structure/machinery/light{
 	dir = 4
@@ -21775,7 +21775,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/admin_building)
 "bce" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/spawner/random/tech_supply,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
@@ -21790,7 +21790,7 @@
 	},
 /area/bigredv2/outside/office_complex)
 "bch" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/clipboard,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
@@ -21929,7 +21929,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/technology_scanner,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -21960,7 +21960,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "bcE" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/pipes/vents/pump{
 	dir = 4
 	},
@@ -22055,7 +22055,7 @@
 	},
 /area/bigredv2/outside/admin_building)
 "bcO" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/clothing/mask/cigarette/cigar,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
@@ -22063,7 +22063,7 @@
 	},
 /area/bigredv2/outside/admin_building)
 "bcP" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/faxmachine{
 	density = 0;
 	req_one_access = list(200)
@@ -22139,7 +22139,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/office_complex)
 "bdb" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/paper_bin,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor,
@@ -22236,7 +22236,7 @@
 	},
 /area/bigredv2/outside/admin_building)
 "bdq" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/trash/snack_bowl,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
@@ -22271,7 +22271,7 @@
 	},
 /area/bigredv2/outside/office_complex)
 "bdx" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/tech_supply,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
@@ -22368,7 +22368,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "bdN" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/tool,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor,
@@ -22446,7 +22446,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "bef" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
 /obj/structure/pipes/vents/pump{
 	dir = 4
@@ -22468,7 +22468,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "bei" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
@@ -22735,7 +22735,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "beX" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/tool/lighter/random,
 /obj/item/tool/lighter/random,
 /obj/effect/landmark/objective_landmark/close,
@@ -22772,7 +22772,7 @@
 	},
 /area/bigredv2/outside/c)
 "bfd" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/food/drinks/flask,
 /obj/structure/machinery/camera/autoname{
 	dir = 4
@@ -22784,7 +22784,7 @@
 	},
 /area/bigredv2/outside/office_complex)
 "bfe" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
 	icon_state = "dark"
@@ -22998,7 +22998,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "bfH" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/camera/autoname{
 	dir = 8
 	},
@@ -23145,7 +23145,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "bgb" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/technology_scanner,
 /obj/structure/pipes/vents/pump{
 	dir = 8
@@ -23191,14 +23191,14 @@
 	},
 /area/bigredv2/outside/office_complex)
 "bgi" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/computer3/laptop/secure_data,
 /turf/open/floor{
 	icon_state = "grimy"
 	},
 /area/bigredv2/outside/office_complex)
 "bgj" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_15";
 	pixel_y = 10;
@@ -23281,7 +23281,7 @@
 	},
 /area/bigredv2/outside/office_complex)
 "bgt" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/trash/syndi_cakes,
 /obj/effect/landmark/objective_landmark/far,
@@ -23296,7 +23296,7 @@
 	},
 /area/bigredv2/outside/office_complex)
 "bgv" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/tool/pen/blue,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
@@ -23384,7 +23384,7 @@
 	},
 /area/bigredv2/outside/c)
 "bgI" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/trash/semki,
 /obj/structure/pipes/vents/pump{
 	dir = 4
@@ -23395,14 +23395,14 @@
 	},
 /area/bigredv2/outside/office_complex)
 "bgJ" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/computer/objective,
 /turf/open/floor{
 	icon_state = "white"
 	},
 /area/bigredv2/outside/medical)
 "bgK" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/multitool,
 /obj/effect/landmark/objective_landmark/far,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -23411,7 +23411,7 @@
 	},
 /area/bigredv2/outside/office_complex)
 "bgL" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/objective_landmark/far,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -23470,7 +23470,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/storage/box/m94,
 /obj/structure/pipes/vents/pump{
 	dir = 1
@@ -23560,14 +23560,14 @@
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "bhg" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor,
 /area/bigredv2/outside/storage)
 "bhh" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/spawner/random/toolbox,
 /obj/structure/machinery/power/apc{
@@ -23577,7 +23577,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/storage)
 "bhi" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/spawner/random/toolbox,
 /obj/structure/machinery/light{
@@ -23605,7 +23605,7 @@
 	},
 /area/bigredv2/outside/office_complex)
 "bhm" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/trash/kepler,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
@@ -23856,7 +23856,7 @@
 	},
 /area/bigredv2/outside/office_complex)
 "bhZ" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/paper/janitor,
 /obj/effect/landmark/objective_landmark/far,
@@ -24011,7 +24011,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "biQ" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/bomb_supply,
 /obj/effect/spawner/random/tool,
 /obj/effect/spawner/random/tool,
@@ -24073,7 +24073,7 @@
 	},
 /area/bigredv2/outside/c)
 "biW" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/spawner/random/toolbox,
 /obj/structure/machinery/light,
@@ -24084,7 +24084,7 @@
 /obj/structure/pipes/vents/pump{
 	dir = 1
 	},
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/landmark/objective_landmark/medium,
@@ -24151,7 +24151,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "bjj" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/spawner/random/tool,
 /obj/effect/spawner/random/tool,
 /obj/effect/spawner/random/tool,
@@ -24231,7 +24231,7 @@
 	dir = 4;
 	tag = "icon-tube1 (EAST)"
 	},
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/spawner/random/tool,
 /obj/effect/spawner/random/tool,
 /obj/effect/spawner/random/tool,
@@ -24383,7 +24383,7 @@
 	},
 /area/bigredv2/outside/space_port_lz2)
 "bjP" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/clothing/ears/earmuffs,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -24631,7 +24631,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "bkL" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/light{
 	dir = 1
 	},
@@ -24640,13 +24640,13 @@
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "bkM" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/bomb_supply,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "bkN" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/tool,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor,
@@ -24698,7 +24698,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "bld" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/tech_supply,
 /obj/effect/spawner/random/tool,
 /obj/effect/spawner/random/tool,
@@ -24732,7 +24732,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "bll" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/tool,
 /obj/effect/spawner/random/tool,
 /obj/effect/spawner/random/bomb_supply,
@@ -24741,7 +24741,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "blm" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/bomb_supply,
 /obj/effect/spawner/random/bomb_supply,
 /obj/effect/spawner/random/tool,
@@ -24749,7 +24749,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "bln" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/bomb_supply,
 /obj/effect/spawner/random/bomb_supply,
 /obj/effect/landmark/objective_landmark/close,
@@ -24764,7 +24764,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "blp" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/landmark/objective_landmark/close,
@@ -24819,7 +24819,7 @@
 	},
 /area/bigredv2/outside/s)
 "blx" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
 /obj/item/tool/extinguisher,
 /obj/effect/landmark/objective_landmark/medium,
@@ -24859,7 +24859,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "blD" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/circuitboard/firealarm,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/objective_landmark/far,
@@ -24921,7 +24921,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "blW" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/bomb_supply,
 /obj/effect/spawner/random/tool,
 /obj/structure/pipes/vents/pump{
@@ -24962,7 +24962,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "bmb" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/sign/safety/atmospherics{
 	pixel_x = 32
@@ -25023,13 +25023,13 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bmq" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bmr" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/tool,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor,
@@ -25083,7 +25083,7 @@
 	},
 /area/bigredv2/outside/s)
 "bmC" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/tool,
 /obj/structure/pipes/vents/pump{
 	dir = 4
@@ -25108,7 +25108,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "bmH" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/tool/lighter/random,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/objective_landmark/far,
@@ -25327,7 +25327,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bnx" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/pipes/vents/pump{
 	dir = 8
 	},
@@ -25349,7 +25349,7 @@
 	dir = 4;
 	tag = "icon-rwindow (EAST)"
 	},
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/computer/objective,
 /turf/open/floor{
 	dir = 5;
@@ -25358,7 +25358,7 @@
 	},
 /area/bigredv2/caves/lambda/virology)
 "bnz" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/tool/lighter/zippo,
 /obj/item/tool/lighter/zippo,
 /obj/effect/landmark/objective_landmark/close,
@@ -25428,7 +25428,7 @@
 /obj/structure/machinery/computer/atmos_alert{
 	dir = 8
 	},
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "bnQ" = (
@@ -25626,7 +25626,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "boR" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/tool,
 /obj/structure/machinery/camera/autoname{
 	dir = 1
@@ -25636,7 +25636,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "boS" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/tool,
 /obj/effect/spawner/random/technology_scanner,
 /obj/effect/landmark/objective_landmark/close,
@@ -25826,12 +25826,12 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bpD" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/device/camera_film,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bpE" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/device/analyzer,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
@@ -26147,7 +26147,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/paper,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -26209,7 +26209,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "brj" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/objective_landmark/close,
@@ -26217,11 +26217,11 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "brm" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "brn" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/technology_scanner,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -26244,7 +26244,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "brx" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/stack/cable_coil,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -26266,7 +26266,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "brA" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/pipes/vents/pump{
 	dir = 8
 	},
@@ -26342,7 +26342,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "brM" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/powercell,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -26371,7 +26371,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "brU" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/stack/cable_coil,
 /obj/item/stack/cable_coil,
 /obj/effect/landmark/objective_landmark/medium,
@@ -26386,7 +26386,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "brW" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/weapon/melee/baton,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -26477,7 +26477,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bsB" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/tool,
 /obj/effect/spawner/random/tool,
 /obj/structure/machinery/power/apc,
@@ -26485,26 +26485,26 @@
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "bsC" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/technology_scanner,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "bsD" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/tool,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "bsE" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "bsF" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/circuitboard/solar_tracker,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor,
@@ -26537,7 +26537,7 @@
 /area/bigredv2/outside/engineering)
 "bsK" = (
 /obj/structure/machinery/light,
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor,
@@ -26546,7 +26546,7 @@
 /obj/effect/landmark{
 	name = "crap_item"
 	},
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor,
@@ -26560,7 +26560,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bsN" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/pipes/vents/pump{
 	dir = 1
 	},
@@ -26573,7 +26573,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bsP" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
@@ -26605,14 +26605,14 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "btc" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/light,
 /obj/effect/spawner/random/tool,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "btd" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/tool,
 /obj/item/stack/sheet/metal{
 	amount = 30
@@ -26657,7 +26657,7 @@
 /area/bigredv2/outside/se)
 "btr" = (
 /obj/structure/machinery/computer/station_alert,
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bts" = (
@@ -26667,7 +26667,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "btt" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/analyzer,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -26675,14 +26675,14 @@
 /area/bigredv2/outside/engineering)
 "btu" = (
 /obj/structure/machinery/computer/atmos_alert,
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "btw" = (
 /turf/open/floor/plating,
 /area/bigredv2/caves_sw)
 "btx" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/far,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor,
@@ -27028,7 +27028,7 @@
 "bwr" = (
 /obj/structure/machinery/light,
 /obj/structure/machinery/computer/objective,
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -27043,14 +27043,14 @@
 	},
 /area/bigredv2/caves/eta/xenobiology)
 "bwz" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/computer/objective,
 /turf/open/floor{
 	icon_state = "warnwhite"
 	},
 /area/bigredv2/outside/office_complex)
 "bwA" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/computer/objective,
 /turf/open/floor,
 /area/bigredv2/outside/office_complex)
@@ -27121,7 +27121,7 @@
 	},
 /area/bigredv2/caves/eta/storage)
 "bwQ" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/tool/screwdriver,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
@@ -27144,7 +27144,7 @@
 	},
 /area/bigredv2/caves/eta/storage)
 "bwT" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/tool,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
@@ -27175,7 +27175,7 @@
 	},
 /area/bigredv2/caves/eta/research)
 "bwX" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/tech_supply,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
@@ -27185,7 +27185,7 @@
 	},
 /area/bigredv2/caves/eta/research)
 "bwY" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/tech_supply,
 /obj/structure/pipes/vents/pump,
 /obj/effect/landmark/objective_landmark/science,
@@ -27204,7 +27204,7 @@
 	},
 /area/bigredv2/caves/eta/research)
 "bxa" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/storage/fancy/vials/random,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
@@ -27214,7 +27214,7 @@
 	},
 /area/bigredv2/caves/eta/research)
 "bxb" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	dir = 5;
@@ -27255,7 +27255,7 @@
 	},
 /area/bigredv2/caves/eta/storage)
 "bxj" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/technology_scanner,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
@@ -27264,7 +27264,7 @@
 	},
 /area/bigredv2/caves/eta/storage)
 "bxk" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/light{
 	dir = 4
 	},
@@ -27442,7 +27442,7 @@
 	},
 /area/bigredv2/caves/eta/storage)
 "bxH" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/tool,
 /obj/structure/pipes/vents/pump,
 /obj/effect/landmark/objective_landmark/far,
@@ -27488,7 +27488,7 @@
 	},
 /area/bigredv2/caves/eta/storage)
 "bxM" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/tool,
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/landmark/objective_landmark/far,
@@ -28160,7 +28160,7 @@
 	},
 /area/bigredv2/caves/eta/research)
 "bzt" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
 	dir = 8;
@@ -28264,7 +28264,7 @@
 	},
 /area/bigredv2/caves/eta/research)
 "bzF" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/tech_supply,
 /obj/item/phone,
 /obj/effect/landmark/objective_landmark/science,
@@ -28275,7 +28275,7 @@
 	},
 /area/bigredv2/caves/eta/research)
 "bzG" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/storage/fancy/vials/random,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
@@ -28295,7 +28295,7 @@
 /area/bigredv2/caves/eta/research)
 "bzI" = (
 /obj/structure/machinery/computer/security,
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/floor{
 	dir = 5;
 	icon_state = "darkblue2";
@@ -28525,7 +28525,7 @@
 	},
 /area/bigredv2/caves/eta/research)
 "bAo" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/trash/kepler,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/computer/objective,
@@ -28569,7 +28569,7 @@
 	},
 /area/bigredv2/caves/eta/research)
 "bAu" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/storage/box/wy_mre,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/plating,
@@ -28671,7 +28671,7 @@
 	},
 /area/bigredv2/caves/eta/research)
 "bAF" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/technology_scanner,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
@@ -28711,7 +28711,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/caves/eta/research)
 "bAL" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/plating,
 /area/bigredv2/caves/eta/research)
@@ -29198,7 +29198,7 @@
 	},
 /area/bigredv2/caves/eta/xenobiology)
 "bCd" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/technology_scanner,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
@@ -29208,7 +29208,7 @@
 	},
 /area/bigredv2/caves/eta/xenobiology)
 "bCe" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/alienjar,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
@@ -29218,7 +29218,7 @@
 	},
 /area/bigredv2/caves/eta/xenobiology)
 "bCf" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/xenoautopsy,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
@@ -29228,7 +29228,7 @@
 	},
 /area/bigredv2/caves/eta/xenobiology)
 "bCg" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/XenoBio/Blood,
 /obj/item/XenoBio/Blood,
 /obj/item/tool/pen,
@@ -29279,7 +29279,7 @@
 	},
 /area/bigredv2/caves/eta/research)
 "bCm" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/faxmachine,
 /turf/open/floor{
 	dir = 4;
@@ -29335,7 +29335,7 @@
 	},
 /area/bigredv2/caves/eta/research)
 "bCt" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/tool,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
@@ -29354,7 +29354,7 @@
 	},
 /area/bigredv2/caves/eta/research)
 "bCv" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/reagentgrinder,
 /turf/open/floor{
 	dir = 4;
@@ -29412,7 +29412,7 @@
 	},
 /area/bigredv2/caves/eta/xenobiology)
 "bCC" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/technology_scanner,
 /obj/structure/pipes/vents/pump{
 	dir = 8
@@ -29442,7 +29442,7 @@
 	},
 /area/bigredv2/caves/eta/xenobiology)
 "bCI" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/technology_scanner,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
@@ -29462,7 +29462,7 @@
 /turf/open/mars,
 /area/bigredv2/caves/eta/research)
 "bCM" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/light,
 /obj/effect/spawner/random/technology_scanner,
 /obj/item/xenos_claw,
@@ -29525,7 +29525,7 @@
 	},
 /area/bigredv2/caves/eta/research)
 "bCT" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/tool,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
@@ -29535,7 +29535,7 @@
 	},
 /area/bigredv2/caves/eta/research)
 "bCU" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/tool/pickaxe/plasmacutter,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
@@ -29770,7 +29770,7 @@
 	},
 /area/bigredv2/caves/eta/living)
 "bDu" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/book/manual/nuclear,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
@@ -29804,7 +29804,7 @@
 	},
 /area/bigredv2/caves/eta/living)
 "bDA" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/computer/pod/old{
 	name = "Personal Computer"
 	},
@@ -29885,7 +29885,7 @@
 	},
 /area/bigredv2/caves/eta/living)
 "bDL" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/tool,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
@@ -29893,7 +29893,7 @@
 	},
 /area/bigredv2/caves/eta/living)
 "bDM" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/microwave,
 /turf/open/floor,
 /area/bigredv2/caves/eta/living)
@@ -30195,7 +30195,7 @@
 	},
 /area/bigredv2/caves/eta/living)
 "bEB" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/computer/objective,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
@@ -30224,7 +30224,7 @@
 	},
 /area/bigredv2/caves/eta/living)
 "bEE" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/spacecash/c1000,
 /obj/item/spacecash/c1000,
 /obj/effect/landmark/objective_landmark/far,
@@ -30233,7 +30233,7 @@
 	},
 /area/bigredv2/caves/eta/living)
 "bEF" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/trash/semki,
 /obj/structure/pipes/vents/pump,
 /obj/effect/landmark/objective_landmark/far,
@@ -30357,7 +30357,7 @@
 	},
 /area/bigredv2/outside/medical)
 "bFh" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/computer/objective,
 /turf/open/floor{
 	icon_state = "wood"
@@ -30438,7 +30438,7 @@
 	},
 /area/bigredv2/outside/s)
 "ccP" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/bomb_supply,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -30574,7 +30574,7 @@
 	},
 /area/bigredv2/caves_virology)
 "dJc" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor,
@@ -30679,7 +30679,7 @@
 	},
 /area/bigredv2/caves_lambda)
 "eGM" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/lightreplacer,
 /obj/effect/landmark/objective_landmark/close,
 /obj/structure/pipes/standard/manifold/hidden/green,
@@ -30849,7 +30849,7 @@
 	},
 /area/bigredv2/caves_virology)
 "fOK" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -30982,7 +30982,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/hydroponics)
 "gCx" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor,
@@ -31111,7 +31111,7 @@
 	},
 /area/bigredv2/caves/lambda/research)
 "hzy" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor,
@@ -31252,7 +31252,7 @@
 	},
 /area/bigredv2/outside/filtration_plant)
 "iQC" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/close,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -31372,12 +31372,12 @@
 	},
 /area/bigredv2/caves_sw)
 "jUc" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor,
 /area/bigredv2/outside/hydroponics)
 "jUM" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
@@ -31578,7 +31578,7 @@
 	},
 /area/bigredv2/caves/eta/research)
 "lDa" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/effect/landmark/objective_landmark/far,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
@@ -31744,7 +31744,7 @@
 	},
 /area/bigredv2/caves_east)
 "nVq" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/clothing/glasses/welding,
 /obj/effect/landmark/objective_landmark/close,
 /obj/structure/pipes/vents/pump,
@@ -31825,7 +31825,7 @@
 	},
 /area/bigredv2/caves_virology)
 "oEJ" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -31961,7 +31961,7 @@
 	},
 /area/bigredv2/caves_sw)
 "qeK" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/tool,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -32016,7 +32016,7 @@
 	},
 /area/bigredv2/caves_east)
 "qHZ" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/tool,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -32168,7 +32168,7 @@
 	},
 /area/bigredv2/caves_research)
 "svp" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/technology_scanner,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -32227,7 +32227,7 @@
 	},
 /area/bigredv2/outside/cargo)
 "tgk" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/computer/shuttle_control/dropship2,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor,
@@ -32255,7 +32255,7 @@
 	},
 /area/bigredv2/caves_sw)
 "trr" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/tool,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -32309,7 +32309,7 @@
 	},
 /area/bigredv2/caves_research)
 "tTI" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/pizzabox,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
@@ -32548,7 +32548,7 @@
 	},
 /area/bigredv2/caves/lambda/virology)
 "wFL" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/close,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -32578,7 +32578,7 @@
 	},
 /area/bigredv2/caves_east)
 "wKf" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/far,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
@@ -32602,7 +32602,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/caves/eta/research)
 "wXN" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/item/ashtray/glass,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -32675,7 +32675,7 @@
 	},
 /area/bigredv2/outside/filtration_plant)
 "xIP" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor,
 /area/bigredv2/caves_sw)

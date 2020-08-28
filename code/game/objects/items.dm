@@ -26,6 +26,7 @@
 	var/heat_source = 0 //whether this item is a source of heat, and how hot it is (in Kelvin).
 
 	var/hitsound = null
+	var/center_of_mass = "x=16;y=16"
 	var/w_class = SIZE_MEDIUM
 	var/storage_cost = null
 	flags_atom = FPRINT

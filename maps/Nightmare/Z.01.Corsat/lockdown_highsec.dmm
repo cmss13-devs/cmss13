@@ -112,7 +112,7 @@
 	},
 /area/corsat/omega/checkpoint)
 "q" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/door_control{
 	id = "delta_gamma";
 	name = "Gamma Emergency Access";
@@ -134,7 +134,7 @@
 	},
 /area/corsat/omega/checkpoint)
 "r" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/computer/security{
 	dir = 2;
 	icon_state = "cameras";
@@ -146,7 +146,7 @@
 	},
 /area/corsat/omega/checkpoint)
 "s" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/computer/secure_data,
 /turf/open/floor/corsat{
 	icon_state = "red";
@@ -222,7 +222,7 @@
 	},
 /area/corsat/omega/checkpoint)
 "D" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/door/window/brigdoor/westleft{
 	name = "Identification Desk";
 	req_access = list(3)
@@ -263,7 +263,7 @@
 	},
 /area/corsat/omega/checkpoint)
 "H" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/door/window/brigdoor/westleft{
 	name = "Identification Desk";
 	req_access = list(3)
@@ -291,7 +291,7 @@
 	},
 /area/corsat/omega/checkpoint)
 "J" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/door_control{
 	id = "delta_omega";
 	name = "Checkpoint Omega";
@@ -316,13 +316,13 @@
 	icon_state = "cameras";
 	network = list("omega")
 	},
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /turf/open/floor/corsat{
 	icon_state = "red"
 	},
 /area/corsat/omega/checkpoint)
 "L" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/computer/secure_data{
 	dir = 1
 	},

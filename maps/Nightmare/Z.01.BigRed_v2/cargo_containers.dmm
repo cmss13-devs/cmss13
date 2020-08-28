@@ -40,7 +40,7 @@
 /turf/closed/wall/solaris,
 /area/bigredv2/outside/cargo)
 "aj" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/tool,
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
@@ -79,7 +79,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "aq" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
 /obj/structure/pipes/vents/pump{
 	dir = 4
@@ -536,7 +536,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "bG" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/bomb_supply,
 /obj/effect/spawner/random/tool,
 /obj/effect/spawner/random/tool,
@@ -724,18 +724,18 @@
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "cg" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/tech_supply,
 /obj/effect/spawner/random/tool,
 /obj/effect/spawner/random/tool,
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "ch" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "ci" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/radio,
 /obj/structure/pipes/vents/pump{
 	dir = 1
@@ -770,25 +770,25 @@
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "cn" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/spawner/random/tool,
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "co" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/spawner/random/tool,
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "cp" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "cq" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/tool,
 /obj/effect/spawner/random/tool,
 /obj/effect/spawner/random/bomb_supply,
@@ -796,14 +796,14 @@
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "cr" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/bomb_supply,
 /obj/effect/spawner/random/bomb_supply,
 /obj/effect/spawner/random/tool,
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "cs" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/bomb_supply,
 /obj/effect/spawner/random/bomb_supply,
 /turf/open/floor,

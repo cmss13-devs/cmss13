@@ -97,21 +97,21 @@
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
 "as" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/toy/deck,
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
 "at" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/ashtray/bronze,
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
 "au" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
 "av" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/storage/donut_box/empty,
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
@@ -182,23 +182,23 @@
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
 "aF" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/pipes/vents/pump,
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
 "aG" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/trash/plate,
 /obj/item/reagent_container/food/snacks/meatpizzaslice,
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
 "aH" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/poster,
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
 "aI" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/pizzabox/margherita,
 /obj/item/pizzabox/meat{
 	pixel_x = -5;

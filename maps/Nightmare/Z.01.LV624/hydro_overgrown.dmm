@@ -170,7 +170,7 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "aau" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/tool/hatchet{
 	pixel_x = 6;
 	pixel_y = 4
@@ -185,7 +185,7 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "aav" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/tool/extinguisher,
 /obj/structure/flora/jungle/vines/heavy{
 	icon_state = "heavy_6";
@@ -340,7 +340,7 @@
 /turf/open/gm/grass,
 /area/lv624/lazarus/hydroponics)
 "aol" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/clothing/suit/apron/overalls,
 /obj/item/clothing/under/colonist,
 /obj/structure/flora/jungle/vines/heavy{
@@ -354,7 +354,7 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "aoy" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/floor{
 	dir = 5;
 	icon_state = "green"
@@ -373,7 +373,7 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "aoB" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/clothing/gloves/botanic_leather,
 /obj/structure/flora/jungle/vines/heavy{
 	icon_state = "heavy_6";
@@ -409,7 +409,7 @@
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle7)
 "aoR" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/light{
 	dir = 1
 	},
@@ -509,7 +509,7 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "aqD" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/analyzer/plant_analyzer{
 	pixel_x = 2;
 	pixel_y = 1
@@ -530,7 +530,7 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "aqU" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/clothing/suit/apron,
 /turf/open/floor{
 	dir = 5;
@@ -547,7 +547,7 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/hydroponics)
 "arr" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/food/drinks/flask/vacuumflask,
 /obj/structure/machinery/light,
 /turf/open/floor{
@@ -556,11 +556,11 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "ars" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/gm/dirt,
 /area/lv624/lazarus/hydroponics)
 "art" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/light,
 /turf/open/floor{
 	dir = 5;
@@ -568,7 +568,7 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "aru" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/tool/shovel/spade,
 /turf/open/floor{
 	dir = 5;
@@ -738,7 +738,7 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "aZl" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/glass/bucket{
 	pixel_x = 6;
 	pixel_y = 6
@@ -901,7 +901,7 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "aZB" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/clothing/shoes/sandal,
 /obj/structure/flora/jungle/vines/heavy{
 	icon_state = "heavy_6";
@@ -933,7 +933,7 @@
 	},
 /area/lv624/ground/compound/n)
 "aZH" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/storage/box/donkpockets,
 /turf/open/gm/grass,
 /area/lv624/lazarus/hydroponics)
@@ -1142,7 +1142,7 @@
 /turf/open/gm/dirt,
 /area/lv624/lazarus/hydroponics)
 "bah" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/tool/crowbar,
 /turf/open/gm/dirt,
 /area/lv624/lazarus/hydroponics)

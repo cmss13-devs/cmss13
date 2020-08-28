@@ -12,7 +12,7 @@
 	},
 /area/yautja)
 "af" = (
-/obj/structure/table/reinforced{
+/obj/structure/surface/table/reinforced{
 	layer = 2.69
 	},
 /turf/open/floor{
@@ -21,7 +21,7 @@
 	},
 /area/yautja)
 "ah" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/weapon/melee/twohanded/spear,
 /turf/open/floor{
 	icon_state = "floor4";
@@ -29,7 +29,7 @@
 	},
 /area/yautja)
 "ai" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/device/flashlight/lantern,
 /obj/item/device/flashlight/lantern,
 /turf/open/floor/holofloor{
@@ -38,7 +38,7 @@
 	},
 /area/yautja)
 "ak" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/device/healthanalyzer,
 /obj/item/device/healthanalyzer,
 /obj/item/device/healthanalyzer,
@@ -48,14 +48,14 @@
 	},
 /area/yautja)
 "am" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /turf/open/floor/holofloor{
 	dir = 2;
 	icon_state = "cult"
 	},
 /area/yautja)
 "ao" = (
-/obj/structure/table/reinforced{
+/obj/structure/surface/table/reinforced{
 	layer = 2.69
 	},
 /obj/item/device/flashlight/lantern,
@@ -65,7 +65,7 @@
 	},
 /area/yautja)
 "ap" = (
-/obj/structure/table/reinforced{
+/obj/structure/surface/table/reinforced{
 	layer = 2.69
 	},
 /obj/item/weapon/melee/yautja_knife,
@@ -75,7 +75,7 @@
 	},
 /area/yautja)
 "ar" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/tool/surgery/retractor/predatorretractor,
 /obj/item/tool/surgery/circular_saw/predatorbonesaw,
 /obj/item/tool/surgery/cautery/predatorcautery,
@@ -92,7 +92,7 @@
 	},
 /area/yautja)
 "aA" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/tool/surgery/bonegel/predatorbonegel,
 /obj/item/tool/surgery/hemostat/predatorhemostat,
 /obj/item/tool/surgery/bonesetter/predatorbonesetter,
@@ -102,7 +102,7 @@
 	},
 /area/yautja)
 "aB" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/tank/anesthetic,
 /obj/item/clothing/mask/breath/medical,
 /turf/open/floor/holofloor{
@@ -111,7 +111,7 @@
 	},
 /area/yautja)
 "aG" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/storage/box/lights/bulbs,
 /obj/item/storage/box/lights/bulbs,
 /turf/open/floor/holofloor{
@@ -127,7 +127,7 @@
 	},
 /area/yautja)
 "aN" = (
-/obj/structure/table/reinforced{
+/obj/structure/surface/table/reinforced{
 	layer = 2.69
 	},
 /obj/structure/window/reinforced{
@@ -140,7 +140,7 @@
 	},
 /area/yautja)
 "aO" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/tool/surgery/surgicaldrill/predatorsurgicaldrill,
 /obj/item/tool/surgery/scalpel/predatorscalpel,
 /obj/item/tool/surgery/FixOVein/predatorFixOVein,
@@ -166,7 +166,7 @@
 	},
 /area/yautja)
 "aT" = (
-/obj/structure/table/reinforced{
+/obj/structure/surface/table/reinforced{
 	layer = 2.69
 	},
 /obj/structure/window/reinforced{
@@ -188,7 +188,7 @@
 	},
 /area/yautja)
 "aU" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/storage/backpack/yautja,
 /turf/open/floor/holofloor{
 	dir = 2;
@@ -205,7 +205,7 @@
 	},
 /area/yautja)
 "aX" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/stack/medical/splint{
 	name = "splints"
 	},
@@ -242,7 +242,7 @@
 	},
 /area/yautja)
 "aY" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/stack/medical/advanced/bruise_pack/tajaran{
 	name = "mending herbs"
 	},
@@ -264,7 +264,7 @@
 	},
 /area/yautja)
 "aZ" = (
-/obj/structure/table/reinforced{
+/obj/structure/surface/table/reinforced{
 	layer = 2.69
 	},
 /obj/structure/machinery/door/window/southleft,
@@ -281,7 +281,7 @@
 	},
 /area/yautja)
 "ba" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/stack/medical/advanced/ointment/tajaran{
 	name = "soothing herbs"
 	},
@@ -319,7 +319,7 @@
 	},
 /area/yautja)
 "bi" = (
-/obj/structure/rack{
+/obj/structure/surface/rack{
 	layer = 2.79
 	},
 /obj/item/stack/sheet/plasteel{
@@ -363,7 +363,7 @@
 	dir = 2;
 	icon_state = "right"
 	},
-/obj/structure/table/reinforced{
+/obj/structure/surface/table/reinforced{
 	layer = 2.69
 	},
 /obj/item/clothing/suit/armor/yautja,
@@ -386,7 +386,7 @@
 	dir = 2;
 	icon_state = "right"
 	},
-/obj/structure/table/reinforced{
+/obj/structure/surface/table/reinforced{
 	layer = 2.69
 	},
 /obj/item/clothing/suit/armor/yautja,
@@ -406,7 +406,7 @@
 	dir = 2;
 	icon_state = "right"
 	},
-/obj/structure/table/reinforced{
+/obj/structure/surface/table/reinforced{
 	layer = 2.69
 	},
 /obj/item/clothing/suit/armor/yautja,
@@ -427,7 +427,7 @@
 	},
 /area/yautja)
 "bA" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/window/reinforced{
 	dir = 4
 	},
@@ -438,7 +438,7 @@
 	},
 /area/yautja)
 "bM" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/weapon/melee/twohanded/dualsaber,
 /obj/structure/window/reinforced{
 	dir = 8;
@@ -454,7 +454,7 @@
 	},
 /area/yautja)
 "bN" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/weapon/melee/katana,
 /obj/structure/window/reinforced{
 	dir = 4
@@ -470,7 +470,7 @@
 	},
 /area/yautja)
 "bO" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/window/reinforced{
 	dir = 4
 	},
@@ -489,7 +489,7 @@
 	},
 /area/yautja)
 "bP" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/window/reinforced{
 	dir = 8;
 	health = 80
@@ -507,7 +507,7 @@
 	},
 /area/yautja)
 "bR" = (
-/obj/structure/table/reinforced{
+/obj/structure/surface/table/reinforced{
 	layer = 2.69
 	},
 /obj/item/clothing/mask/gas/yautja,
@@ -543,7 +543,7 @@
 /obj/item/legcuffs/yautja,
 /obj/item/legcuffs/yautja,
 /obj/item/legcuffs/yautja,
-/obj/structure/rack{
+/obj/structure/surface/rack{
 	layer = 2.79
 	},
 /obj/item/legcuffs/yautja,
@@ -562,7 +562,7 @@
 	},
 /area/yautja)
 "bV" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/device/encryptionkey/yautja,
 /turf/open/floor/holofloor{
 	dir = 2;
@@ -570,7 +570,7 @@
 	},
 /area/yautja)
 "bW" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/reagent_container/food/snacks/meat,
 /obj/item/reagent_container/food/snacks/xenomeat{
 	pixel_x = -6;
@@ -589,7 +589,7 @@
 	},
 /area/yautja)
 "bY" = (
-/obj/structure/rack{
+/obj/structure/surface/rack{
 	layer = 2.79
 	},
 /obj/item/explosive/grenade/spawnergrenade/smartdisc,
@@ -609,7 +609,7 @@
 	},
 /area/yautja)
 "ca" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/reagent_container/food/snacks/meat,
 /obj/structure/machinery/light/small{
 	dir = 4;
@@ -622,7 +622,7 @@
 	},
 /area/yautja)
 "cb" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/reagent_container/food/snacks/xenomeat,
 /obj/structure/machinery/light/small{
 	dir = 8
@@ -640,7 +640,7 @@
 	},
 /area/yautja)
 "ce" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/weapon/melee/yautja_knife,
 /obj/item/reagent_container/hypospray/autoinjector/yautja,
 /obj/item/reagent_container/hypospray/autoinjector/yautja,
@@ -660,7 +660,7 @@
 	},
 /area/yautja)
 "ch" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/reagent_container/food/snacks/meat,
 /turf/open/floor/holofloor{
 	dir = 2;
@@ -668,7 +668,7 @@
 	},
 /area/yautja)
 "ci" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/reagent_container/food/snacks/meat,
 /obj/item/reagent_container/food/snacks/meat{
 	pixel_x = -2;
@@ -692,7 +692,7 @@
 	},
 /area/yautja)
 "ck" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/weapon/melee/harpoon/yautja{
 	pixel_y = -2
 	},
@@ -715,7 +715,7 @@
 	},
 /area/yautja)
 "cl" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/weapon/melee/harpoon/yautja{
 	pixel_x = -4;
 	pixel_y = -3
@@ -750,7 +750,7 @@
 	},
 /area/yautja)
 "co" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/effect/decal/warning_stripes,
 /obj/structure/window/reinforced{
 	dir = 4
@@ -764,7 +764,7 @@
 	},
 /area/yautja)
 "cp" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/effect/decal/warning_stripes,
 /obj/structure/window/reinforced{
 	dir = 8
@@ -796,7 +796,7 @@
 	},
 /area/yautja)
 "cv" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /turf/open/floor/holofloor{
 	dir = 2;
 	icon_state = "cult"
@@ -814,7 +814,7 @@
 	},
 /area/yautja)
 "cx" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/effect/decal/warning_stripes,
 /obj/structure/window/reinforced{
 	dir = 1
@@ -865,7 +865,7 @@
 	},
 /area/yautja)
 "cB" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/effect/decal/warning_stripes,
 /obj/structure/window/reinforced{
 	dir = 4;
@@ -883,7 +883,7 @@
 	},
 /area/yautja)
 "cC" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/effect/decal/warning_stripes,
 /obj/structure/window/reinforced{
 	dir = 8
@@ -900,7 +900,7 @@
 	},
 /area/yautja)
 "cD" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/tool/kitchen/utensil/spoon,
 /turf/open/floor/holofloor{
 	dir = 2;
@@ -909,7 +909,7 @@
 /area/yautja)
 "cE" = (
 /obj/item/reagent_container/food/snacks/stew,
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/reagent_container/food/snacks/stew,
 /turf/open/floor/holofloor{
 	dir = 2;
@@ -925,7 +925,7 @@
 	},
 /area/yautja)
 "cH" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/clothing/shoes/combat,
 /obj/item/clothing/under/gladiator,
 /obj/item/clothing/gloves/combat,
@@ -936,7 +936,7 @@
 	},
 /area/yautja)
 "cI" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/device/assembly/voice,
 /obj/item/device/assembly/voice,
 /obj/item/weapon/melee/baton/cattleprod,
@@ -947,7 +947,7 @@
 	},
 /area/yautja)
 "cJ" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/clothing/mask/muzzle,
 /obj/item/clothing/mask/muzzle,
 /obj/item/clothing/mask/muzzle,
@@ -1064,7 +1064,7 @@
 	},
 /area/yautja)
 "cZ" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/weapon/melee/claymore/mercsword,
 /obj/item/weapon/melee/claymore/mercsword,
 /obj/item/weapon/melee/claymore/mercsword,
@@ -1147,7 +1147,7 @@
 	},
 /area/yautja)
 "dk" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/handcuffs,
 /obj/item/handcuffs,
 /obj/item/handcuffs,
@@ -1160,7 +1160,7 @@
 	},
 /area/yautja)
 "dl" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/legcuffs,
 /obj/item/legcuffs,
 /obj/item/legcuffs,
@@ -1188,7 +1188,7 @@
 	},
 /area/yautja)
 "dp" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/XenoBio/Blood,
 /obj/item/XenoBio/Blood,
 /turf/open/floor/holofloor{
@@ -1197,7 +1197,7 @@
 	},
 /area/yautja)
 "dq" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/XenoItem,
 /turf/open/floor/holofloor{
 	dir = 2;
@@ -1205,7 +1205,7 @@
 	},
 /area/yautja)
 "ds" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/alienjar,
 /turf/open/floor/holofloor{
 	dir = 2;
@@ -1213,7 +1213,7 @@
 	},
 /area/yautja)
 "dz" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/XenoBio/Resin,
 /obj/item/XenoBio/Resin,
 /turf/open/floor/holofloor{
@@ -1289,7 +1289,7 @@
 	},
 /area/yautja)
 "dQ" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /turf/open/floor/holofloor{
 	dir = 2;
 	icon_state = "cult"
@@ -1326,7 +1326,7 @@
 	},
 /area/yautja)
 "hX" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/device/flashlight/lantern,
 /turf/open/floor{
 	icon_state = "floor4";
@@ -1352,7 +1352,7 @@
 	},
 /area/yautja)
 "kj" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/storage/backpack/yautja,
 /turf/open/floor/holofloor{
 	dir = 2;
@@ -1360,7 +1360,7 @@
 	},
 /area/yautja)
 "kl" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/device/flashlight/lantern,
 /turf/open/floor/holofloor{
 	dir = 2;
@@ -1399,7 +1399,7 @@
 	},
 /area/yautja)
 "Jy" = (
-/obj/structure/table/reinforced{
+/obj/structure/surface/table/reinforced{
 	layer = 2.69
 	},
 /obj/item/reagent_container/hypospray/autoinjector/yautja,

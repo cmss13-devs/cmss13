@@ -40,7 +40,7 @@
 	},
 /area/bigredv2/outside/space_port)
 "aj" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/spawner/random/tool,
 /obj/structure/machinery/camera/autoname{
@@ -98,7 +98,7 @@
 	},
 /area/bigredv2/outside/space_port)
 "ar" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
 /obj/structure/machinery/door_control{
 	id = "Spaceport";
@@ -156,7 +156,7 @@
 /obj/structure/machinery/computer/shuttle_control/dropship1{
 	onboard = 0
 	},
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/floor{
 	tag = "icon-dark";
 	icon_state = "dark";
@@ -164,7 +164,7 @@
 	},
 /area/bigredv2/landing/console)
 "az" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/powercell,
 /obj/item/document_objective/folder,
 /turf/open/floor{
@@ -195,7 +195,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "aD" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/tool,
 /turf/open/floor{
 	tag = "icon-dark";
@@ -213,7 +213,7 @@
 	},
 /area/bigredv2/outside/space_port)
 "aF" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/tool,
 /obj/effect/spawner/random/tech_supply,
 /turf/open/floor{
@@ -230,7 +230,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "aH" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/tool,
 /turf/open/floor{
 	tag = "icon-darkgreen2 (SOUTHWEST)";
@@ -239,7 +239,7 @@
 	},
 /area/bigredv2/outside/space_port)
 "aI" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/bomb_supply,
 /obj/effect/spawner/random/technology_scanner,
 /obj/effect/spawner/random/tool,
@@ -250,7 +250,7 @@
 	},
 /area/bigredv2/outside/space_port)
 "aJ" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/technology_scanner,
 /obj/effect/spawner/random/tool,
 /turf/open/floor{
@@ -284,7 +284,7 @@
 	},
 /area/bigredv2/outside/space_port)
 "aN" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/tool,
 /turf/open/floor{
 	tag = "icon-darkgreen2 (SOUTHEAST)";

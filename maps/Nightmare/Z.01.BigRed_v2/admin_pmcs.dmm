@@ -174,7 +174,7 @@
 	},
 /area/bigredv2/outside/admin_building)
 "aB" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/computer3/laptop/secure_data,
 /turf/open/floor{
 	tag = "icon-carpet15-15 (WEST)";
@@ -239,7 +239,7 @@
 	},
 /area/bigredv2/outside/admin_building)
 "aK" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/radio/marine,
 /turf/open/floor{
 	tag = "icon-carpet15-15 (WEST)";
@@ -281,7 +281,7 @@
 	},
 /area/bigredv2/outside/admin_building)
 "aP" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/floor{
 	tag = "icon-carpet15-15 (WEST)";
 	icon_state = "carpet15-15";
@@ -327,7 +327,7 @@
 	},
 /area/bigredv2/outside/admin_building)
 "aV" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/document_objective/folder,
 /turf/open/floor{
 	tag = "icon-carpet15-15 (WEST)";
@@ -374,7 +374,7 @@
 	},
 /area/bigredv2/outside/admin_building)
 "ba" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/pipes/vents/pump{
 	dir = 4
 	},

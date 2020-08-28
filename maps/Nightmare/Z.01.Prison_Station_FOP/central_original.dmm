@@ -303,7 +303,7 @@
 	},
 /area/prison/yard)
 "aG" = (
-/obj/structure/table/reinforced{
+/obj/structure/surface/table/reinforced{
 	dir = 1;
 	flipped = 1
 	},
@@ -316,7 +316,7 @@
 "aH" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/pipes/standard/simple/hidden/scrubbers,
-/obj/structure/table/reinforced{
+/obj/structure/surface/table/reinforced{
 	dir = 1;
 	flipped = 1
 	},
@@ -347,7 +347,7 @@
 	},
 /area/prison/yard)
 "aK" = (
-/obj/structure/table/reinforced{
+/obj/structure/surface/table/reinforced{
 	dir = 8;
 	flipped = 1
 	},
@@ -415,7 +415,7 @@
 	},
 /area/prison/yard)
 "aR" = (
-/obj/structure/table/reinforced{
+/obj/structure/surface/table/reinforced{
 	dir = 4;
 	flipped = 1
 	},
@@ -453,7 +453,7 @@
 	icon_state = "intact-scrubbers";
 	dir = 4
 	},
-/obj/structure/table/reinforced{
+/obj/structure/surface/table/reinforced{
 	dir = 8;
 	flipped = 1
 	},
@@ -575,7 +575,7 @@
 	},
 /area/prison/yard)
 "bd" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/effect/landmark{
 	name = "good_item"
 	},
@@ -610,7 +610,7 @@
 	},
 /area/prison/yard)
 "bg" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/ammo_casing,
 /turf/open/floor/prison{
 	tag = "icon-bright_clean2 (SOUTHWEST)";
@@ -619,7 +619,7 @@
 	},
 /area/prison/yard)
 "bh" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /turf/open/floor/prison{
 	tag = "icon-bright_clean (SOUTHWEST)";
 	icon_state = "bright_clean";
@@ -761,7 +761,7 @@
 	},
 /area/prison/yard)
 "bt" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/weapon/gun/shotgun/pump/cmb,
 /turf/open/floor/prison{
 	tag = "icon-bright_clean (SOUTHWEST)";
@@ -824,7 +824,7 @@
 	icon_state = "intact-scrubbers";
 	dir = 4
 	},
-/obj/structure/table/reinforced{
+/obj/structure/surface/table/reinforced{
 	dir = 4;
 	flipped = 1
 	},
@@ -843,7 +843,7 @@
 	},
 /area/prison/yard)
 "bA" = (
-/obj/structure/table/reinforced{
+/obj/structure/surface/table/reinforced{
 	dir = 2;
 	flipped = 1
 	},
@@ -856,7 +856,7 @@
 "bB" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/pipes/standard/simple/hidden/scrubbers,
-/obj/structure/table/reinforced{
+/obj/structure/surface/table/reinforced{
 	dir = 2;
 	flipped = 1
 	},
@@ -870,7 +870,7 @@
 /obj/effect/landmark{
 	name = "crap_item"
 	},
-/obj/structure/table/reinforced{
+/obj/structure/surface/table/reinforced{
 	dir = 2;
 	flipped = 1
 	},

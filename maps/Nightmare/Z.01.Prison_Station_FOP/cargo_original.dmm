@@ -13,7 +13,7 @@
 /turf/closed/wall/r_wall/prison,
 /area/prison/hangar_storage/main)
 "aHi" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /turf/open/floor/prison{
 	tag = "icon-darkyellowfull2 (EAST)";
 	icon_state = "darkyellowfull2";
@@ -58,7 +58,7 @@
 	},
 /area/prison/hangar_storage/main)
 "aIm" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark{
 	name = "crap_item"
 	},

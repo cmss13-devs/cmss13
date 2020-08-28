@@ -131,7 +131,7 @@
 	},
 /area/prison/canteen)
 "ap" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /turf/open/floor/prison{
 	tag = "icon-bright_clean (SOUTHWEST)";
 	icon_state = "bright_clean";
@@ -332,7 +332,7 @@
 	},
 /area/prison/canteen)
 "aL" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /turf/open/floor,
 /area/prison/canteen)
 "aM" = (
@@ -370,7 +370,7 @@
 	},
 /area/prison/canteen)
 "aP" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /turf/open/floor/prison{
 	tag = "icon-bright_clean (SOUTHWEST)";
 	icon_state = "bright_clean";
@@ -378,7 +378,7 @@
 	},
 /area/prison/canteen)
 "aQ" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/structure/machinery/light{
 	dir = 4
 	},
@@ -462,7 +462,7 @@
 	},
 /area/prison/canteen)
 "aZ" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/structure/machinery/power/apc{
 	dir = 4;
 	pixel_x = 28;
@@ -825,7 +825,7 @@
 /turf/open/floor/prison,
 /area/prison/canteen)
 "bw" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/processor,
 /turf/open/floor/prison{
 	tag = "icon-kitchen";
@@ -833,7 +833,7 @@
 	},
 /area/prison/kitchen)
 "bx" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/microwave,
 /turf/open/floor/prison{
 	tag = "icon-kitchen";
@@ -841,7 +841,7 @@
 	},
 /area/prison/kitchen)
 "by" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/reagentgrinder,
 /turf/open/floor/prison{
 	tag = "icon-kitchen";
@@ -1927,7 +1927,7 @@
 	},
 /area/prison/toilet/canteen)
 "db" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/prison{
 	tag = "icon-bright_clean (SOUTHWEST)";
@@ -2047,7 +2047,7 @@
 	},
 /area/prison/canteen)
 "dm" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
@@ -2435,7 +2435,7 @@
 	},
 /area/prison/toilet/canteen)
 "dC" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/prison{

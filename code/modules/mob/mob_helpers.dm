@@ -332,7 +332,7 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 	if(!lying) return FALSE
 	if(locate(/obj/structure/machinery/optable, loc) || locate(/obj/structure/bed/roller, loc))
 		return TRUE
-	var/obj/structure/table/T = locate(/obj/structure/table, loc)
+	var/obj/structure/surface/table/T = locate(/obj/structure/surface/table, loc)
 	if(T && !T.flipped) return TRUE
 
 /mob/living/carbon/hellhound/can_be_operated_on()

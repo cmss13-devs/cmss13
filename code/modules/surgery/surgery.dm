@@ -100,7 +100,7 @@ proc/do_surgery(mob/living/carbon/M, mob/living/user, obj/item/tool)
 				if(!isSynth(M) && !isYautja(M))
 					if(locate(/obj/structure/bed/roller, M.loc))
 						multipler -= SURGERY_MULTIPLIER_SMALL
-					else if(locate(/obj/structure/table/, M.loc))
+					else if(locate(/obj/structure/surface/table/, M.loc))
 						multipler -= SURGERY_MULTIPLIER_MEDIUM
 					if(M.stat == CONSCIOUS)//If not on anesthetics or not unconsious
 						multipler -= SURGERY_MULTIPLIER_LARGE

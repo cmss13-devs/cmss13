@@ -148,7 +148,7 @@
 /turf/closed/wall/r_wall/prison,
 /area/prison/library)
 "bPY" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /turf/open/floor/wood,
 /area/prison/library)
 "bPZ" = (
@@ -373,7 +373,7 @@
 /turf/open/floor/wood,
 /area/prison/library)
 "bTe" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/tool/pen,
 /turf/open/floor/wood,
 /area/prison/library)
@@ -436,14 +436,14 @@
 /turf/open/floor/wood,
 /area/prison/library)
 "bUD" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/device/flashlight/lamp{
 	on = 0
 	},
 /turf/open/floor/wood,
 /area/prison/library)
 "bUE" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/paper_bin{
 	pixel_y = 3
 	},
@@ -534,7 +534,7 @@
 /turf/open/floor/plating,
 /area/prison/engineering)
 "bVY" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/spawner/random/tool,
 /obj/effect/decal/warning_stripes{
 	tag = "icon-N";
@@ -589,7 +589,7 @@
 /turf/open/floor/plating,
 /area/prison/engineering)
 "bYK" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /turf/open/floor/prison{
 	tag = "icon-bluefull (WEST)";
 	icon_state = "bluefull";
@@ -627,7 +627,7 @@
 /area/prison/library)
 "bYP" = (
 /obj/effect/spawner/random/toolbox,
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /turf/open/floor/prison,
 /area/prison/engineering)
 "bYQ" = (
@@ -698,7 +698,7 @@
 /area/prison/cellblock/protective)
 "cat" = (
 /obj/effect/spawner/random/toolbox,
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/device/radio,
 /turf/open/floor/prison,
 /area/prison/engineering)
@@ -835,7 +835,7 @@
 /turf/open/floor/wood,
 /area/prison/library)
 "cbI" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/folder,
 /obj/item/device/assembly/signaler,
 /turf/open/floor/prison,
@@ -918,7 +918,7 @@
 /turf/open/floor/plating,
 /area/prison/engineering)
 "cei" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/spawner/random/tool,
 /turf/open/floor/plating,
 /area/prison/engineering)
@@ -1026,7 +1026,7 @@
 	},
 /area/prison/cellblock/protective)
 "chz" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /turf/open/floor/prison,
 /area/prison/engineering)
 "chA" = (
@@ -1167,7 +1167,7 @@
 	},
 /area/prison/cellblock/protective)
 "ciQ" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/device/flashlight/lamp{
 	on = 0
 	},
@@ -1663,7 +1663,7 @@
 /area/prison/parole/protective_custody)
 "cmr" = (
 /obj/structure/machinery/computer/secure_data,
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /turf/open/floor/prison{
 	tag = "icon-darkredfull2 (SOUTHWEST)";
 	icon_state = "darkredfull2";
@@ -1674,7 +1674,7 @@
 /obj/structure/machinery/computer/security{
 	network = list("PRISON")
 	},
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /turf/open/floor/prison{
 	tag = "icon-darkredfull2 (SOUTHWEST)";
 	icon_state = "darkredfull2";
@@ -1682,7 +1682,7 @@
 	},
 /area/prison/security/monitoring/protective)
 "cmt" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/paper_bin{
 	pixel_x = -3;
 	pixel_y = 7
@@ -1694,7 +1694,7 @@
 	},
 /area/prison/security/monitoring/protective)
 "cmu" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/device/flashlight/lamp{
 	on = 0
 	},
@@ -1789,7 +1789,7 @@
 	},
 /area/prison/security/monitoring/protective)
 "cng" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/tool/pen{
 	pixel_x = 9;
 	pixel_y = 8
@@ -1817,7 +1817,7 @@
 	},
 /area/prison/cellblock/protective)
 "cnj" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /turf/open/floor/prison{
 	tag = "icon-cell_stripe (NORTH)";
 	icon_state = "cell_stripe";
@@ -1961,7 +1961,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/prison/cellblock/protective)
 "cof" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /turf/open/floor/prison{
 	tag = "icon-floor_plate";
 	icon_state = "floor_plate";
@@ -1976,7 +1976,7 @@
 	},
 /area/prison/security/monitoring/protective)
 "coE" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /turf/open/floor/prison{
 	icon_state = "darkred2"
 	},
@@ -2091,7 +2091,7 @@
 	},
 /area/prison/cellblock/protective)
 "cBl" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/disk/objective,
 /turf/open/floor/wood,
 /area/prison/library)

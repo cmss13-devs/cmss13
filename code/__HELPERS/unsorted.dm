@@ -2050,3 +2050,22 @@ var/list/WALLITEMS = list(
 // A proc purely for a callback that returns FALSE (and does nothing else)
 /proc/_callback_false()
 	return FALSE
+
+//used to check if a mob can examine an object
+/atom/proc/can_examine(var/mob/user)
+	if(!user.client || user.client.eye != user)
+		return FALSE
+	if(isRemoteControlling(user))
+		return TRUE
+	// If the user is not a xeno (with active ability) with the shift click pref on, we examine. God forgive me for snowflake
+	if(user.client.prefs && !(user.client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK))
+		if(isXeno(user))
+			var/mob/living/carbon/Xenomorph/X = user
+			if(X.selected_ability)
+				return FALSE
+		else if(ishuman(user))
+			var/mob/living/carbon/human/H = user
+			if(H.selected_ability)
+				return FALSE
+	user.face_atom(src)
+	return TRUE

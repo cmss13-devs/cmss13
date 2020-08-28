@@ -106,7 +106,7 @@
 	},
 /area/bigredv2/caves/lambda/virology)
 "q" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/microwave,
 /obj/structure/machinery/light,
 /turf/open/floor{

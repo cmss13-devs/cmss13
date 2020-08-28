@@ -827,7 +827,7 @@
 /area/space)
 "bG" = (
 /obj/structure/machinery/computer/secure_data,
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /turf/open/floor/prison{
 	tag = "icon-darkredfull2 (SOUTHWEST)";
 	icon_state = "darkredfull2";
@@ -838,7 +838,7 @@
 /obj/structure/machinery/computer/security{
 	network = list("PRISON")
 	},
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /turf/open/floor/prison{
 	tag = "icon-darkredfull2 (SOUTHWEST)";
 	icon_state = "darkredfull2";
@@ -965,7 +965,7 @@
 	},
 /area/space)
 "bV" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /turf/open/floor/prison{
 	tag = "icon-cell_stripe (NORTH)";
 	icon_state = "cell_stripe";
@@ -1123,7 +1123,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/space)
 "ch" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /turf/open/floor/prison{
 	tag = "icon-floor_plate";
 	icon_state = "floor_plate";
@@ -1138,7 +1138,7 @@
 	},
 /area/space)
 "cj" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /turf/open/floor/prison{
 	icon_state = "darkred2"
 	},

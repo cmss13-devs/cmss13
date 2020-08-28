@@ -736,7 +736,7 @@
 /turf/open/ice,
 /area/ice_colony/exterior/surface/valley/north)
 "acJ" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/tool/extinguisher/mini,
 /obj/item/circuitboard/airlock,
 /obj/effect/landmark{
@@ -758,7 +758,7 @@
 /area/ice_colony/surface/engineering/electric)
 "acL" = (
 /obj/structure/machinery/computer/objective,
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "darkyellow2";
@@ -766,7 +766,7 @@
 	},
 /area/ice_colony/surface/engineering/electric)
 "acM" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/light{
 	dir = 1
 	},
@@ -780,7 +780,7 @@
 	},
 /area/ice_colony/surface/engineering/electric)
 "acN" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/assembly/igniter,
 /obj/item/device/assembly/igniter,
 /obj/item/device/assembly/igniter,
@@ -800,7 +800,7 @@
 /turf/open/auto_turf/snow/layer3,
 /area/ice_colony/exterior/surface/valley/northwest)
 "acP" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/assembly/infra,
 /obj/item/device/assembly/voice,
 /obj/effect/landmark/objective_landmark/medium,
@@ -918,7 +918,7 @@
 /turf/closed/ice_rock/single,
 /area/ice_colony/exterior/surface/cliff)
 "ade" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/explosive/grenade/custom/metalfoam,
 /obj/item/explosive/grenade/custom/metalfoam,
 /obj/item/device/flashlight,
@@ -951,7 +951,7 @@
 	},
 /area/ice_colony/surface/engineering/electric)
 "adi" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/storage/box/lights/mixed,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
@@ -1080,7 +1080,7 @@
 	},
 /area/ice_colony/surface/engineering/electric)
 "ady" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/storage/box/lightstick,
 /obj/structure/machinery/power/apc{
 	dir = 4;
@@ -1222,7 +1222,7 @@
 /turf/closed/ice_rock/corners,
 /area/ice_colony/exterior/surface/cliff)
 "adN" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/tool/crowbar/red,
 /obj/item/device/flash,
 /obj/effect/landmark/objective_landmark/medium,
@@ -1233,7 +1233,7 @@
 	},
 /area/ice_colony/surface/engineering/electric)
 "adO" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/flashlight/flare,
 /obj/item/device/radio,
 /obj/effect/landmark/objective_landmark/medium,
@@ -1243,7 +1243,7 @@
 	},
 /area/ice_colony/surface/engineering/electric)
 "adP" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/assembly/prox_sensor,
 /obj/item/device/assembly/timer,
 /obj/effect/landmark/objective_landmark/medium,
@@ -1274,7 +1274,7 @@
 	},
 /area/ice_colony/surface/engineering/electric)
 "adT" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/storage/box/lightstick,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
@@ -1397,7 +1397,7 @@
 /turf/open/auto_turf/snow/layer1,
 /area/ice_colony/exterior/surface/valley/northwest)
 "aen" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/inflatable,
 /obj/item/inflatable,
 /obj/item/inflatable,
@@ -1414,7 +1414,7 @@
 	},
 /area/ice_colony/surface/engineering/tool)
 "aeo" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/spawner/random/tool,
 /obj/structure/machinery/power/apc{
@@ -1442,7 +1442,7 @@
 	},
 /area/ice_colony/surface/engineering/tool)
 "aeq" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/lightstick,
 /obj/item/lightstick,
 /obj/item/cell/hyper/empty,
@@ -1486,7 +1486,7 @@
 	},
 /area/ice_colony/surface/engineering)
 "aev" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/stack/medical/ointment,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
@@ -1523,7 +1523,7 @@
 /turf/open/auto_turf/snow/layer1,
 /area/ice_colony/exterior/surface/valley/northwest)
 "aez" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
@@ -1654,7 +1654,7 @@
 	},
 /area/ice_colony/surface/engineering/tool)
 "aeP" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/stack/sheet/wood{
 	amount = 10
 	},
@@ -1731,7 +1731,7 @@
 	},
 /area/ice_colony/surface/engineering/generator)
 "aeX" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/stack/cable_coil,
 /obj/structure/machinery/light{
 	dir = 4
@@ -1821,7 +1821,7 @@
 	},
 /area/ice_colony/surface/engineering)
 "afi" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/stack/medical/bruise_pack,
 /obj/item/cell,
 /obj/item/clothing/gloves/yellow,
@@ -1833,7 +1833,7 @@
 	},
 /area/ice_colony/surface/engineering)
 "afj" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/cell/high/empty,
 /obj/structure/machinery/cell_charger,
 /obj/effect/landmark/objective_landmark/medium,
@@ -1858,7 +1858,7 @@
 	},
 /area/ice_colony/surface/engineering/tool)
 "afm" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/stack/cable_coil,
 /obj/item/storage/box/engineer,
 /obj/effect/landmark/objective_landmark/medium,
@@ -1933,7 +1933,7 @@
 	},
 /area/ice_colony/surface/engineering/generator)
 "afv" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark{
 	name = "crap_item"
 	},
@@ -1965,7 +1965,7 @@
 /turf/open/ice,
 /area/ice_colony/exterior/surface/valley/northwest)
 "afz" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/stack/sheet/metal{
 	amount = 10
 	},
@@ -2072,7 +2072,7 @@
 /turf/open/auto_turf/snow/layer2,
 /area/ice_colony/exterior/surface/valley/northwest)
 "afL" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/book/manual/engineering_guide{
 	pixel_x = -5;
 	pixel_y = -5
@@ -2118,7 +2118,7 @@
 	},
 /area/ice_colony/exterior/surface/cliff)
 "afR" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/stack/rods{
 	amount = 25
 	},
@@ -2234,7 +2234,7 @@
 	},
 /area/ice_colony/surface/engineering)
 "agb" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
@@ -2255,7 +2255,7 @@
 /turf/open/auto_turf/snow/layer1,
 /area/ice_colony/exterior/surface/valley/northwest)
 "age" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/food/drinks/cans/thirteenloko,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
@@ -2401,7 +2401,7 @@
 	},
 /area/ice_colony/surface/engineering/generator)
 "agw" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
 	dir = 9;
@@ -2489,7 +2489,7 @@
 	},
 /area/ice_colony/surface/engineering)
 "agG" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/clipboard,
 /obj/structure/disposalpipe/segment{
 	dir = 2;
@@ -2503,7 +2503,7 @@
 	},
 /area/ice_colony/surface/engineering)
 "agH" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/stack/rods{
 	amount = 25
 	},
@@ -2519,7 +2519,7 @@
 	},
 /area/ice_colony/surface/engineering)
 "agI" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/tool/wrench,
 /obj/item/tool/screwdriver,
 /obj/effect/landmark/objective_landmark/medium,
@@ -2557,7 +2557,7 @@
 	},
 /area/ice_colony/underground/hallway/north_west)
 "agM" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/power/apc{
 	dir = 4;
 	pixel_x = 24;
@@ -2620,7 +2620,7 @@
 /turf/closed/ice_rock/southWall,
 /area/ice_colony/exterior/surface/valley/north)
 "agY" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/storage/toolbox/electrical,
 /obj/item/storage/toolbox/electrical,
 /obj/effect/landmark/objective_landmark/medium,
@@ -2643,7 +2643,7 @@
 	},
 /area/ice_colony/surface/engineering)
 "aha" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/storage/toolbox/mechanical,
 /obj/item/storage/toolbox/mechanical,
 /obj/effect/landmark{
@@ -2674,7 +2674,7 @@
 	},
 /area/ice_colony/surface/engineering)
 "ahd" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/food/snacks/human/burger,
 /obj/structure/disposalpipe/segment,
 /obj/effect/landmark/objective_landmark/medium,
@@ -2685,7 +2685,7 @@
 	},
 /area/ice_colony/surface/engineering)
 "ahe" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark{
 	name = "crap_item"
 	},
@@ -2761,7 +2761,7 @@
 /turf/open/auto_turf/snow/layer2,
 /area/ice_colony/exterior/surface/valley/west)
 "ahq" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark{
 	name = "crap_item"
 	},
@@ -2773,7 +2773,7 @@
 	},
 /area/ice_colony/surface/engineering/generator)
 "ahr" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/effect/spawner/random/technology_scanner,
 /obj/item/tool/shovel/snow{
 	pixel_x = 4;
@@ -3028,7 +3028,7 @@
 /turf/open/auto_turf/snow/layer0,
 /area/ice_colony/exterior/surface/clearing/north)
 "ahV" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/cell_charger,
 /obj/structure/machinery/light{
 	dir = 4
@@ -3041,7 +3041,7 @@
 	},
 /area/ice_colony/surface/engineering/generator)
 "ahW" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/effect/spawner/random/tool,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
@@ -3220,7 +3220,7 @@
 	},
 /area/ice_colony/surface/engineering)
 "aiu" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/tool/wrench,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
@@ -3246,7 +3246,7 @@
 /turf/open/auto_turf/snow/layer0,
 /area/ice_colony/exterior/surface/clearing/north)
 "aix" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
 	dir = 10;
@@ -3255,7 +3255,7 @@
 	},
 /area/ice_colony/surface/engineering/generator)
 "aiy" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
@@ -3278,7 +3278,7 @@
 /turf/open/auto_turf/snow/layer0,
 /area/ice_colony/exterior/surface/clearing/north)
 "aiB" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/cell/high/empty,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
@@ -3296,7 +3296,7 @@
 /turf/open/auto_turf/snow/layer0,
 /area/ice_colony/exterior/surface/clearing/north)
 "aiD" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/stack/sheet/metal{
 	amount = 25;
 	pixel_x = 2;
@@ -3309,7 +3309,7 @@
 	},
 /area/ice_colony/surface/substation/smes)
 "aiE" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/stack/sheet/wood{
 	amount = 10
 	},
@@ -3320,7 +3320,7 @@
 	},
 /area/ice_colony/surface/substation/smes)
 "aiF" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/stack/sheet/wood{
 	amount = 10
 	},
@@ -3337,7 +3337,7 @@
 /turf/open/auto_turf/snow/layer2,
 /area/ice_colony/exterior/surface/clearing/north)
 "aiH" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/cell/high,
 /obj/structure/machinery/light{
 	dir = 8
@@ -3475,7 +3475,7 @@
 /turf/open/auto_turf/snow/layer0,
 /area/ice_colony/exterior/surface/clearing/north)
 "aiZ" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/cell/high/empty,
 /obj/structure/machinery/light{
 	dir = 8
@@ -3495,7 +3495,7 @@
 	},
 /area/ice_colony/surface/substation/smes)
 "ajb" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/cell/high/empty,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
@@ -3615,7 +3615,7 @@
 /turf/open/auto_turf/snow/layer1,
 /area/ice_colony/exterior/surface/clearing/north)
 "ajr" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/tool/shovel/snow{
 	pixel_x = 4;
 	pixel_y = 4
@@ -3631,7 +3631,7 @@
 	},
 /area/ice_colony/surface/engineering)
 "ajs" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/tool/shovel/snow{
 	pixel_x = 4;
 	pixel_y = 4
@@ -3726,7 +3726,7 @@
 	},
 /area/ice_colony/surface/engineering)
 "ajB" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/cell/high/empty,
 /obj/effect/landmark{
 	name = "crap_item"
@@ -3739,7 +3739,7 @@
 	},
 /area/ice_colony/surface/substation/smes)
 "ajC" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/stack/sheet/plasteel{
 	amount = 15
 	},
@@ -3750,7 +3750,7 @@
 	},
 /area/ice_colony/surface/substation/smes)
 "ajD" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/book/manual/engineering_construction,
 /obj/item/book/manual/engineering_guide{
 	pixel_x = -5;
@@ -3881,7 +3881,7 @@
 /turf/open/auto_turf/snow/layer3,
 /area/ice_colony/exterior/surface/valley/west)
 "ajT" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/phoron{
 	amount = 50
 	},
@@ -3924,7 +3924,7 @@
 /turf/open/auto_turf/snow/layer0,
 /area/ice_colony/exterior/surface/clearing/north)
 "ajY" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/cell_charger,
 /obj/item/clothing/mask/rebreather,
 /obj/effect/landmark/objective_landmark/far,
@@ -3972,7 +3972,7 @@
 	},
 /area/ice_colony/surface/substation/smes)
 "ake" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
@@ -4003,7 +4003,7 @@
 	},
 /area/ice_colony/exterior/surface/landing_pad2)
 "aki" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/phoron{
 	amount = 50
 	},
@@ -4018,7 +4018,7 @@
 	},
 /area/ice_colony/surface/engineering)
 "akj" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/phoron{
 	amount = 50
 	},
@@ -4043,7 +4043,7 @@
 	},
 /area/ice_colony/surface/engineering)
 "akm" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/computer/objective,
 /turf/open/floor{
 	dir = 4;
@@ -4211,7 +4211,7 @@
 /turf/open/auto_turf/snow/layer1,
 /area/ice_colony/exterior/surface/clearing/north)
 "akI" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/cell,
 /obj/item/cell,
 /obj/effect/landmark/objective_landmark/far,
@@ -4478,7 +4478,7 @@
 /turf/closed/wall/r_wall,
 /area/ice_colony/surface/substation)
 "alt" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/circuitboard/airlock,
 /obj/item/circuitboard/airlock,
 /obj/item/circuitboard/airlock,
@@ -4510,7 +4510,7 @@
 /turf/open/auto_turf/snow/layer2,
 /area/ice_colony/exterior/surface/clearing/north)
 "alx" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/circuitboard/airalarm,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
@@ -4543,7 +4543,7 @@
 	},
 /area/ice_colony/surface/substation)
 "alA" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/circuitboard/apc,
 /obj/item/circuitboard/apc,
 /obj/effect/landmark/objective_landmark/far,
@@ -4614,7 +4614,7 @@
 /turf/open/auto_turf/snow/layer3,
 /area/ice_colony/exterior/surface/clearing/north)
 "alN" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/storage/bag/plants,
 /obj/structure/machinery/power/apc{
 	dir = 1;
@@ -4672,7 +4672,7 @@
 	},
 /area/ice_colony/exterior/surface/cliff)
 "alS" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/circuitboard/airlock,
 /obj/item/circuitboard/airlock,
 /obj/item/circuitboard/airlock,
@@ -4699,7 +4699,7 @@
 	},
 /area/ice_colony/surface/substation)
 "alV" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/circuitboard/airalarm,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
@@ -4708,7 +4708,7 @@
 	},
 /area/ice_colony/surface/substation)
 "alW" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/circuitboard/apc,
 /obj/item/circuitboard/apc,
 /obj/effect/landmark/objective_landmark/far,
@@ -4867,7 +4867,7 @@
 /turf/open/auto_turf/snow/layer3,
 /area/ice_colony/exterior/surface/clearing/north)
 "ams" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/effect/spawner/random/bomb_supply,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
@@ -4902,7 +4902,7 @@
 	},
 /area/ice_colony/surface/substation)
 "amw" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/explosive/grenade/custom/metalfoam,
 /obj/item/explosive/grenade/custom/metalfoam,
 /obj/effect/landmark/objective_landmark/far,
@@ -5084,7 +5084,7 @@
 /turf/open/auto_turf/snow/layer2,
 /area/ice_colony/exterior/surface/clearing/north)
 "amU" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/spawner/random/tool,
 /obj/effect/landmark/objective_landmark/far,
@@ -5154,7 +5154,7 @@
 	},
 /area/ice_colony/surface/substation)
 "anb" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/effect/spawner/random/bomb_supply,
 /obj/effect/landmark{
 	name = "crap_item"
@@ -5410,7 +5410,7 @@
 /turf/open/floor/plating,
 /area/ice_colony/surface/mining)
 "anH" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark{
 	name = "crap_item"
 	},
@@ -5418,7 +5418,7 @@
 /turf/open/floor/plating,
 /area/ice_colony/surface/mining)
 "anI" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/stack/cable_coil/random,
 /obj/item/stack/cable_coil/random,
 /obj/effect/landmark{
@@ -5628,7 +5628,7 @@
 /turf/open/floor,
 /area/ice_colony/surface/mining)
 "aoh" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/stack/sheet/metal{
 	amount = 25;
 	pixel_x = 2;
@@ -5641,7 +5641,7 @@
 /turf/open/floor,
 /area/ice_colony/surface/mining)
 "aoi" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/flashlight,
 /obj/effect/landmark{
 	name = "crap_item"
@@ -5849,7 +5849,7 @@
 /turf/open/floor,
 /area/ice_colony/surface/mining)
 "aoP" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark{
 	name = "crap_item"
 	},
@@ -5857,7 +5857,7 @@
 /turf/open/floor,
 /area/ice_colony/surface/mining)
 "aoQ" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/stack/sheet/wood{
 	amount = 15
 	},
@@ -5985,7 +5985,7 @@
 	},
 /area/ice_colony/surface/clinic/treatment)
 "ape" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/tool/pickaxe,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/plating,
@@ -6038,7 +6038,7 @@
 	},
 /area/ice_colony/surface/clinic/treatment)
 "apl" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/storage/box/botanydisk,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -6091,13 +6091,13 @@
 /turf/open/floor,
 /area/ice_colony/surface/mining)
 "apr" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/tool/crowbar,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor,
 /area/ice_colony/surface/mining)
 "aps" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/tool/pickaxe,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor,
@@ -6203,7 +6203,7 @@
 	start_charge = 0
 	},
 /obj/item/storage/toolbox/emergency,
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/science,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
@@ -6255,7 +6255,7 @@
 /turf/open/auto_turf/snow/layer0,
 /area/ice_colony/exterior/surface/clearing/pass)
 "apN" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/storage/box/masks,
 /obj/item/storage/box/gloves{
 	pixel_x = 6;
@@ -6269,7 +6269,7 @@
 	},
 /area/ice_colony/surface/clinic/storage)
 "apO" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/landmark/objective_landmark/far,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -6333,7 +6333,7 @@
 	pixel_y = 24;
 	start_charge = 0
 	},
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/alarm{
 	dir = 4;
 	pixel_x = -24
@@ -6523,7 +6523,7 @@
 	},
 /area/ice_colony/surface/clinic/storage)
 "aqr" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/storage/firstaid/o2,
 /obj/item/storage/firstaid/regular{
 	pixel_x = 5;
@@ -6675,7 +6675,7 @@
 	},
 /area/ice_colony/surface/clinic/treatment)
 "aqH" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/effect/spawner/random/powercell,
 /obj/effect/spawner/random/bomb_supply,
 /obj/effect/landmark/objective_landmark/far,
@@ -6686,7 +6686,7 @@
 	},
 /area/ice_colony/surface/substation)
 "aqI" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/defibrillator,
 /obj/structure/machinery/firealarm{
 	dir = 4;
@@ -7181,13 +7181,13 @@
 /turf/open/auto_turf/snow/layer3,
 /area/ice_colony/exterior/surface/cliff)
 "arN" = (
-/obj/structure/table/woodentable/poor,
+/obj/structure/surface/table/woodentable/poor,
 /obj/effect/landmark/objective_landmark/far,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor,
 /area/ice_colony/surface/mining)
 "arO" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/paper/research_notes,
 /obj/effect/landmark/objective_landmark/science,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -7319,7 +7319,7 @@
 	},
 /area/ice_colony/surface/clinic/storage)
 "ase" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/paper/research_notes,
 /obj/effect/landmark/objective_landmark/science,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -7563,7 +7563,7 @@
 	},
 /area/ice_colony/surface/clinic/lobby)
 "asK" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/computer/objective,
 /turf/open/floor{
 	dir = 6;
@@ -7578,7 +7578,7 @@
 /turf/open/ice,
 /area/ice_colony/exterior/surface/valley/west)
 "asM" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
 	dir = 9;
@@ -7623,7 +7623,7 @@
 	},
 /area/ice_colony/surface/hydroponics/lobby)
 "asS" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
 	dir = 5;
@@ -7708,7 +7708,7 @@
 	},
 /area/ice_colony/surface/clinic/lobby)
 "atc" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/book/manual/medical_diagnostics_manual,
 /obj/structure/machinery/alarm{
 	dir = 8;
@@ -7954,7 +7954,7 @@
 	},
 /area/ice_colony/surface/clinic/lobby)
 "atF" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/storage/firstaid/fire,
 /obj/item/storage/firstaid/toxin{
 	pixel_x = 5;
@@ -8144,7 +8144,7 @@
 "aue" = (
 /obj/item/paper_bin,
 /obj/item/tool/pen/blue,
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/effect/landmark/objective_landmark/science,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
@@ -8214,7 +8214,7 @@
 /turf/open/floor/grass,
 /area/ice_colony/surface/hydroponics/lobby)
 "auo" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/bodybag/cryobag,
 /obj/item/storage/box/syringes,
 /obj/effect/landmark/objective_landmark/science,
@@ -8225,7 +8225,7 @@
 	},
 /area/ice_colony/surface/clinic/storage)
 "aup" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/item/paper/research_notes,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -8236,7 +8236,7 @@
 	},
 /area/ice_colony/surface/hydroponics/lobby)
 "auq" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
@@ -8338,7 +8338,7 @@
 	},
 /area/ice_colony/surface/hydroponics/lobby)
 "auD" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
@@ -8391,7 +8391,7 @@
 	},
 /area/ice_colony/surface/hydroponics/lobby)
 "auI" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
@@ -8474,7 +8474,7 @@
 /turf/open/auto_turf/snow/layer1,
 /area/ice_colony/exterior/surface/clearing/south)
 "auS" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/science,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
@@ -9310,7 +9310,7 @@
 /turf/open/auto_turf/snow/layer0,
 /area/ice_colony/exterior/surface/clearing/south)
 "awH" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
@@ -9497,7 +9497,7 @@
 /turf/open/floor/plating,
 /area/ice_colony/surface/disposals)
 "axh" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
 	dir = 10;
@@ -9515,7 +9515,7 @@
 	},
 /area/ice_colony/surface/hydroponics/lobby)
 "axj" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
 	dir = 6;
@@ -9786,7 +9786,7 @@
 	},
 /area/ice_colony/surface/dorms/canteen)
 "axS" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/light{
 	dir = 1
 	},
@@ -9800,7 +9800,7 @@
 	},
 /area/ice_colony/surface/dorms/canteen)
 "axT" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/microwave,
 /turf/open/floor{
 	dir = 1;
@@ -9809,7 +9809,7 @@
 	},
 /area/ice_colony/surface/dorms/canteen)
 "axU" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/storage/box/donkpockets,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -9820,7 +9820,7 @@
 	},
 /area/ice_colony/surface/dorms/canteen)
 "axV" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/storage/box/pizza,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -10120,7 +10120,7 @@
 /turf/open/auto_turf/snow/layer0,
 /area/ice_colony/exterior/surface/clearing/south)
 "ayK" = (
-/obj/structure/table/woodentable/poor,
+/obj/structure/surface/table/woodentable/poor,
 /obj/effect/landmark/objective_landmark/far,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/plating,
@@ -10226,7 +10226,7 @@
 /turf/open/auto_turf/snow/layer2,
 /area/ice_colony/exterior/surface/valley/south)
 "ayY" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/bedsheetbin,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
@@ -10236,7 +10236,7 @@
 	},
 /area/ice_colony/surface/dorms/lavatory)
 "ayZ" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/bedsheetbin,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
@@ -10245,7 +10245,7 @@
 	},
 /area/ice_colony/surface/dorms/lavatory)
 "aza" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/spray/cleaner,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -10484,7 +10484,7 @@
 /turf/open/auto_turf/snow/layer0,
 /area/ice_colony/exterior/surface/valley/south)
 "azI" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/radio,
 /obj/item/device/radio,
 /obj/item/storage/toolbox/emergency,
@@ -10559,7 +10559,7 @@
 /turf/closed/wall/r_wall,
 /area/ice_colony/surface/garage/repair)
 "azS" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/storage/belt/utility,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -10616,7 +10616,7 @@
 	},
 /area/ice_colony/surface/garage/one)
 "azY" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/tool,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -10631,7 +10631,7 @@
 	dir = 1;
 	tag = "icon-tube1 (NORTH)"
 	},
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -10654,7 +10654,7 @@
 /turf/closed/wall,
 /area/ice_colony/surface/garage/one)
 "aAc" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark{
 	name = "crap_item"
 	},
@@ -10670,7 +10670,7 @@
 	dir = 1;
 	tag = "icon-tube1 (NORTH)"
 	},
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/tool,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
@@ -10735,7 +10735,7 @@
 	},
 /area/ice_colony/surface/garage/two)
 "aAk" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark{
 	name = "crap_item"
 	},
@@ -10743,7 +10743,7 @@
 /turf/open/auto_turf/snow/layer0,
 /area/ice_colony/exterior/surface/valley/south/excavation)
 "aAl" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/storage/box/lightstick/red,
 /obj/effect/landmark{
 	name = "good_item"
@@ -10757,7 +10757,7 @@
 	},
 /area/ice_colony/surface/disposals)
 "aAm" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark{
 	name = "good_item"
 	},
@@ -10782,7 +10782,7 @@
 	},
 /area/ice_colony/surface/disposals)
 "aAp" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/tool/shovel/snow,
 /obj/effect/landmark/objective_landmark/far,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -10792,7 +10792,7 @@
 	},
 /area/ice_colony/surface/disposals)
 "aAq" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/device/flashlight,
 /obj/item/device/flashlight/flare,
 /obj/effect/landmark/objective_landmark/far,
@@ -10873,7 +10873,7 @@
 	},
 /area/ice_colony/surface/dorms)
 "aAz" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/auto_turf/snow/layer0,
 /area/ice_colony/exterior/surface/valley/south/excavation)
@@ -10892,7 +10892,7 @@
 	},
 /area/ice_colony/surface/hangar/alpha)
 "aAB" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/camera,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/auto_turf/snow/layer0,
@@ -11013,7 +11013,7 @@
 /turf/open/auto_turf/snow/layer0,
 /area/ice_colony/exterior/surface/valley/south/excavation)
 "aAP" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/powercell,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -11024,7 +11024,7 @@
 	},
 /area/ice_colony/surface/garage/one)
 "aAQ" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/tool,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -11048,7 +11048,7 @@
 	},
 /area/ice_colony/surface/garage/one)
 "aAT" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/auto_turf/snow/layer0,
 /area/ice_colony/exterior/surface/valley/south/excavation)
@@ -11085,7 +11085,7 @@
 	},
 /area/ice_colony/surface/garage/two)
 "aAY" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/storage/box/lightstick/red,
 /turf/open/auto_turf/snow/layer0,
 /area/ice_colony/exterior/surface/valley/south/excavation)
@@ -11161,7 +11161,7 @@
 	dir = 2;
 	icon_state = "pipe-c"
 	},
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/tool,
 /obj/structure/machinery/power/apc{
 	dir = 1;
@@ -11180,7 +11180,7 @@
 	dir = 1;
 	tag = "icon-tube1 (NORTH)"
 	},
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/tool,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/landmark/objective_landmark/medium,
@@ -11191,7 +11191,7 @@
 	},
 /area/ice_colony/surface/garage/repair)
 "aBl" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/storage/box/lightstick/red,
 /obj/effect/landmark{
 	name = "crap_item"
@@ -11204,7 +11204,7 @@
 	},
 /area/ice_colony/surface/garage/repair)
 "aBm" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark{
 	name = "good_item"
 	},
@@ -11260,7 +11260,7 @@
 	},
 /area/ice_colony/surface/garage/one)
 "aBs" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/tool,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
@@ -11386,7 +11386,7 @@
 	},
 /area/ice_colony/surface/command/checkpoint)
 "aBG" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/tool/pickaxe/gold,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/auto_turf/snow/layer0,
@@ -11398,7 +11398,7 @@
 /turf/open/auto_turf/snow/layer0,
 /area/ice_colony/exterior/surface/valley/south/excavation)
 "aBI" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/storage/box/lightstick,
 /turf/open/auto_turf/snow/layer0,
 /area/ice_colony/exterior/surface/valley/south/excavation)
@@ -11438,7 +11438,7 @@
 	},
 /area/ice_colony/surface/garage/repair)
 "aBO" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/clothing/mask/rebreather,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/auto_turf/snow/layer0,
@@ -11476,7 +11476,7 @@
 	},
 /area/ice_colony/surface/garage/one)
 "aBS" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/tool/shovel/snow,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/auto_turf/snow/layer0,
@@ -11525,7 +11525,7 @@
 	},
 /area/ice_colony/surface/garage/two)
 "aBX" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/tool/shovel,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/auto_turf/snow/layer0,
@@ -11564,7 +11564,7 @@
 /obj/structure/window/reinforced/tinted{
 	dir = 1
 	},
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/clipboard,
 /obj/item/tool/stamp,
 /obj/effect/landmark/objective_landmark/medium,
@@ -11581,7 +11581,7 @@
 /obj/structure/window/reinforced/tinted{
 	dir = 1
 	},
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/paper_bin,
 /obj/item/tool/pen/blue,
 /obj/effect/landmark/objective_landmark/medium,
@@ -11608,7 +11608,7 @@
 	},
 /area/ice_colony/surface/command/control/office)
 "aCf" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/faxmachine,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
@@ -11634,7 +11634,7 @@
 	},
 /area/ice_colony/surface/command/checkpoint)
 "aCh" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/storage/toolbox/emergency,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/auto_turf/snow/layer0,
@@ -11822,7 +11822,7 @@
 	},
 /area/ice_colony/surface/command/control/office)
 "aCF" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/folder/white,
 /obj/structure/machinery/firealarm{
 	dir = 4;
@@ -11955,7 +11955,7 @@
 /turf/open/ice,
 /area/ice_colony/exterior/surface/clearing/pass)
 "aCY" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/alarm{
 	dir = 4;
 	pixel_x = -24
@@ -11976,7 +11976,7 @@
 	tag = "icon-twindow (WEST)"
 	},
 /obj/structure/window/reinforced/tinted,
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/clipboard,
 /obj/item/tool/stamp,
 /obj/effect/landmark/objective_landmark/medium,
@@ -11999,7 +11999,7 @@
 	tag = "icon-twindow (WEST)"
 	},
 /obj/structure/window/reinforced/tinted,
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/clipboard,
 /obj/item/tool/stamp,
 /obj/effect/landmark{
@@ -12226,7 +12226,7 @@
 	},
 /area/ice_colony/surface/hydroponics/south)
 "aDy" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark{
 	name = "good_item"
 	},
@@ -12305,7 +12305,7 @@
 	},
 /area/ice_colony/surface/command/checkpoint)
 "aDH" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/door/window/brigdoor/westleft{
 	name = "Security Desk"
 	},
@@ -12652,7 +12652,7 @@
 /turf/open/floor/plating,
 /area/ice_colony/surface/command/checkpoint)
 "aEq" = (
-/obj/structure/table{
+/obj/structure/surface/table{
 	dir = 4;
 	flipped = 1;
 	icon_state = "tableflip0"
@@ -12860,7 +12860,7 @@
 	dir = 1;
 	tag = "icon-tube1 (NORTH)"
 	},
-/obj/structure/table{
+/obj/structure/surface/table{
 	flipped = 1;
 	icon_state = "tableflip0"
 	},
@@ -12871,7 +12871,7 @@
 	},
 /area/ice_colony/surface/command/control)
 "aER" = (
-/obj/structure/table{
+/obj/structure/surface/table{
 	flipped = 1;
 	icon_state = "tableflip0"
 	},
@@ -12942,7 +12942,7 @@
 	},
 /area/ice_colony/surface/garage/repair)
 "aEY" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/clothing/mask/rebreather,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -12991,7 +12991,7 @@
 	},
 /area/ice_colony/surface/garage/one)
 "aFd" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -13617,7 +13617,7 @@
 	},
 /area/ice_colony/surface/storage_unit/power)
 "aGJ" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/storage/bag/plants,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -14042,7 +14042,7 @@
 /turf/open/floor/wood,
 /area/ice_colony/surface/command/crisis)
 "aHV" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
@@ -14051,20 +14051,20 @@
 	},
 /area/ice_colony/surface/hydroponics/lobby)
 "aHW" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/item/paper_bin,
 /obj/item/tool/pen/blue,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/wood,
 /area/ice_colony/surface/command/crisis)
 "aHX" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/item/ammo_magazine/shotgun/slugs,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/wood,
 /area/ice_colony/surface/command/crisis)
 "aHY" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
@@ -14074,7 +14074,7 @@
 	},
 /area/ice_colony/surface/hydroponics/lobby)
 "aHZ" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/item/weapon/gun/pistol/holdout,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/wood,
@@ -14093,7 +14093,7 @@
 /turf/open/floor/wood,
 /area/ice_colony/surface/command/crisis)
 "aIc" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/item/device/flashlight/lamp,
 /obj/item/tool/pen/blue{
 	pixel_x = 5
@@ -14102,7 +14102,7 @@
 /turf/open/floor/wood,
 /area/ice_colony/surface/command/control/pv1)
 "aId" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/item/paper_bin,
 /obj/item/tool/stamp,
 /obj/effect/landmark/objective_landmark/medium,
@@ -14114,7 +14114,7 @@
 /turf/open/floor/wood,
 /area/ice_colony/surface/command/control/pv1)
 "aIg" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
@@ -14124,7 +14124,7 @@
 	},
 /area/ice_colony/surface/hydroponics/lobby)
 "aIh" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/item/paper_bin,
 /obj/item/tool/stamp,
 /obj/effect/landmark/objective_landmark/medium,
@@ -14178,19 +14178,19 @@
 /turf/open/floor/wood,
 /area/ice_colony/surface/command/crisis)
 "aIr" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/item/device/flashlight,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/wood,
 /area/ice_colony/surface/command/crisis)
 "aIs" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/item/storage/toolbox/emergency,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/wood,
 /area/ice_colony/surface/command/crisis)
 "aIt" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/structure/machinery/door_control{
 	name = "Colony Administration Lockdown"
 	},
@@ -14198,7 +14198,7 @@
 /turf/open/floor/wood,
 /area/ice_colony/surface/command/crisis)
 "aIu" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/item/paper_bin,
 /obj/item/tool/pen/blue,
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -14206,14 +14206,14 @@
 /turf/open/floor/wood,
 /area/ice_colony/surface/command/crisis)
 "aIv" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/item/handcuffs,
 /obj/item/tool/stamp,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/wood,
 /area/ice_colony/surface/command/crisis)
 "aIw" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
@@ -14324,7 +14324,7 @@
 /area/ice_colony/surface/command/crisis)
 "aIO" = (
 /obj/item/storage/box/donkpockets,
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/wood,
 /area/ice_colony/surface/command/crisis)
@@ -14386,7 +14386,7 @@
 /area/ice_colony/surface/command/crisis)
 "aIZ" = (
 /obj/structure/machinery/microwave,
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/floor/wood,
 /area/ice_colony/surface/command/crisis)
 "aJa" = (
@@ -14696,7 +14696,7 @@
 	},
 /area/ice_colony/surface/storage_unit/research)
 "aKo" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/ammo_rcd,
 /obj/item/ammo_rcd,
 /obj/item/ammo_rcd,
@@ -14723,7 +14723,7 @@
 	},
 /area/ice_colony/surface/storage_unit/research)
 "aKq" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/tool/crowbar/red,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
@@ -14878,7 +14878,7 @@
 /turf/open/floor/wood,
 /area/ice_colony/surface/bar/canteen)
 "aKV" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/storage/box/donkpockets,
 /obj/item/storage/box/donkpockets,
 /obj/effect/landmark/objective_landmark/close,
@@ -14886,7 +14886,7 @@
 /turf/open/floor/wood,
 /area/ice_colony/surface/bar/canteen)
 "aKW" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/microwave,
 /turf/open/floor/wood,
 /area/ice_colony/surface/bar/canteen)
@@ -14906,7 +14906,7 @@
 /obj/structure/machinery/firealarm{
 	pixel_y = 24
 	},
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/wood,
@@ -15200,7 +15200,7 @@
 /turf/open/floor/wood,
 /area/ice_colony/surface/bar/bar)
 "aMb" = (
-/obj/structure/table/gamblingtable,
+/obj/structure/surface/table/gamblingtable,
 /obj/effect/landmark{
 	name = "crap_item"
 	},
@@ -15229,7 +15229,7 @@
 /turf/open/floor/wood,
 /area/ice_colony/surface/bar/bar)
 "aMe" = (
-/obj/structure/table/gamblingtable{
+/obj/structure/surface/table/gamblingtable{
 	dir = 4;
 	flipped = 1;
 	icon_state = "gambleflip0"
@@ -15300,7 +15300,7 @@
 	},
 /area/ice_colony/surface/hangar/checkpoint)
 "aMm" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/door/window/brigdoor/westright{
 	name = "Security Desk"
 	},
@@ -15386,7 +15386,7 @@
 /turf/open/ice,
 /area/ice_colony/exterior/surface/valley/west)
 "aMv" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
@@ -15396,7 +15396,7 @@
 	},
 /area/ice_colony/surface/research/field_gear)
 "aMw" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
@@ -15406,7 +15406,7 @@
 	},
 /area/ice_colony/surface/research/field_gear)
 "aMx" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/lightreplacer,
 /obj/item/clothing/mask/rebreather,
 /obj/effect/landmark/objective_landmark/far,
@@ -15507,7 +15507,7 @@
 	},
 /area/ice_colony/surface/hangar/checkpoint)
 "aMU" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/door/window/brigdoor/westleft{
 	name = "Security Desk"
 	},
@@ -15555,7 +15555,7 @@
 /turf/closed/ice_rock/southWall,
 /area/ice_colony/exterior/surface/cliff)
 "aMZ" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark{
 	name = "crap_item"
 	},
@@ -15669,7 +15669,7 @@
 /turf/open/ice,
 /area/ice_colony/exterior/surface/clearing/south)
 "aNs" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/reagent_container/food/snacks/donkpocket,
 /obj/structure/window/reinforced{
 	dir = 1
@@ -15681,7 +15681,7 @@
 	},
 /area/ice_colony/surface/bar/canteen)
 "aNt" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/effect/landmark{
 	name = "crap_item"
 	},
@@ -15694,7 +15694,7 @@
 	},
 /area/ice_colony/surface/bar/canteen)
 "aNu" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/window/reinforced{
 	dir = 1
 	},
@@ -15706,7 +15706,7 @@
 	},
 /area/ice_colony/surface/bar/canteen)
 "aNv" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/reagent_container/food/snacks/fortunecookie,
 /obj/item/tool/kitchen/utensil/fork,
 /obj/effect/landmark/objective_landmark/close,
@@ -15716,7 +15716,7 @@
 	},
 /area/ice_colony/surface/bar/canteen)
 "aNw" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/window/reinforced{
 	dir = 1
 	},
@@ -15742,7 +15742,7 @@
 	},
 /area/ice_colony/surface/bar/canteen)
 "aNy" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/window/reinforced{
 	dir = 1
 	},
@@ -15763,14 +15763,14 @@
 	},
 /area/ice_colony/surface/bar/canteen)
 "aNA" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/item/reagent_container/food/drinks/cans/beer,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/wood,
 /area/ice_colony/surface/bar/bar)
 "aNC" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/wood,
 /area/ice_colony/surface/bar/bar)
@@ -15781,7 +15781,7 @@
 /turf/open/floor/wood,
 /area/ice_colony/surface/bar/bar)
 "aNE" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/item/reagent_container/food/drinks/bottle/vodka,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/wood,
@@ -15802,7 +15802,7 @@
 	},
 /area/ice_colony/surface/hangar/checkpoint)
 "aNL" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/flashlight,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
@@ -15813,7 +15813,7 @@
 /area/ice_colony/surface/garage/two)
 "aNM" = (
 /obj/structure/machinery/computer/objective,
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "darkblue2";
@@ -15865,7 +15865,7 @@
 /turf/open/shuttle/elevator,
 /area/shuttle/elevator3/ground)
 "aNT" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/storage/briefcase/inflatable,
 /obj/item/storage/box/lightstick/red,
 /obj/item/storage/box/lightstick/red,
@@ -15930,7 +15930,7 @@
 /turf/open/floor/wood,
 /area/ice_colony/surface/bar/bar)
 "aOe" = (
-/obj/structure/table/gamblingtable,
+/obj/structure/surface/table/gamblingtable,
 /obj/effect/landmark{
 	name = "good_item"
 	},
@@ -16014,7 +16014,7 @@
 	},
 /area/ice_colony/exterior/surface/cliff)
 "aOv" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
 	dir = 4;
@@ -16050,7 +16050,7 @@
 	},
 /area/ice_colony/surface/bar/canteen)
 "aOA" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /turf/open/floor{
 	icon_state = "freezerfloor";
 	tag = "icon-freezerfloor"
@@ -16465,7 +16465,7 @@
 	dir = 1;
 	pixel_y = -10
 	},
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/tool/soap,
 /obj/item/reagent_container/spray/cleaner{
 	pixel_x = 6;
@@ -16478,7 +16478,7 @@
 	},
 /area/ice_colony/surface/bar/canteen)
 "aPu" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/microwave,
 /turf/open/floor{
 	icon_state = "freezerfloor";
@@ -16486,7 +16486,7 @@
 	},
 /area/ice_colony/surface/bar/canteen)
 "aPv" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/food/snacks/flour,
 /obj/item/tool/kitchen/rollingpin,
 /obj/effect/landmark/objective_landmark/close,
@@ -16496,7 +16496,7 @@
 	},
 /area/ice_colony/surface/bar/canteen)
 "aPw" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/trash/plate,
 /obj/item/trash/plate{
 	pixel_x = 2;
@@ -16522,7 +16522,7 @@
 /turf/open/floor/wood,
 /area/ice_colony/surface/bar/bar)
 "aPy" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/structure/machinery/chem_dispenser/beer,
 /obj/structure/machinery/alarm{
 	dir = 1;
@@ -16730,7 +16730,7 @@
 	},
 /area/ice_colony/surface/hangar/beta)
 "aQa" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
@@ -17058,7 +17058,7 @@
 	},
 /area/ice_colony/surface/hangar/beta)
 "aQO" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/flashlight,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
@@ -17090,7 +17090,7 @@
 	},
 /area/ice_colony/surface/research/field_gear)
 "aQS" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/computer/objective,
 /turf/open/floor{
 	dir = 4;
@@ -17251,7 +17251,7 @@
 	},
 /area/ice_colony/surface/bar/canteen)
 "aRn" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/reagent_container/food/snacks/bigbiteburger,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
@@ -17261,7 +17261,7 @@
 /area/ice_colony/surface/bar/canteen)
 "aRo" = (
 /obj/item/tool/kitchen/knife/butcher,
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
 	icon_state = "freezerfloor";
@@ -17407,7 +17407,7 @@
 	},
 /area/ice_colony/surface/hangar/beta)
 "aRI" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/powercell,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
@@ -17660,7 +17660,7 @@
 	},
 /area/ice_colony/surface/bar/bar)
 "aSe" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/flashlight,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -17761,7 +17761,7 @@
 	},
 /area/ice_colony/surface/hangar/beta)
 "aSu" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/tool,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
@@ -17781,7 +17781,7 @@
 /turf/closed/wall/r_wall,
 /area/ice_colony/surface/research/temporary)
 "aSx" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/clothing/gloves/black,
 /obj/effect/landmark{
 	name = "crap_item"
@@ -17795,7 +17795,7 @@
 	},
 /area/ice_colony/surface/research/temporary)
 "aSy" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/clothing/gloves/black,
 /obj/effect/landmark/objective_landmark/science,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -17806,7 +17806,7 @@
 	},
 /area/ice_colony/surface/research/temporary)
 "aSz" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/reagent_scanner,
 /obj/effect/landmark{
 	name = "good_item"
@@ -17826,7 +17826,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark{
 	name = "crap_item"
 	},
@@ -18015,7 +18015,7 @@
 	},
 /area/ice_colony/surface/bar/bar)
 "aST" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/powercell,
 /obj/effect/spawner/random/tool,
 /obj/effect/landmark/objective_landmark/close,
@@ -18232,7 +18232,7 @@
 	},
 /area/ice_colony/exterior/surface/valley/southwest)
 "aTr" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/reagentgrinder,
 /turf/open/floor{
 	icon_state = "freezerfloor";
@@ -18281,7 +18281,7 @@
 	},
 /area/ice_colony/surface/bar/bar)
 "aTx" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/storage/belt/utility,
 /obj/structure/machinery/light{
 	dir = 8
@@ -18469,7 +18469,7 @@
 /turf/open/ice,
 /area/ice_colony/exterior/surface/cliff)
 "aTZ" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/science,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
@@ -18556,7 +18556,7 @@
 	dir = 4
 	},
 /obj/structure/window/reinforced/tinted,
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/paper_bin,
 /obj/item/tool/pen/blue,
 /obj/effect/landmark/objective_landmark/medium,
@@ -18948,7 +18948,7 @@
 	},
 /area/ice_colony/surface/research/temporary)
 "aVm" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/bomb_supply,
 /obj/effect/landmark/objective_landmark/science,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -18959,7 +18959,7 @@
 	},
 /area/ice_colony/surface/research/tech_storage)
 "aVn" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
@@ -19038,7 +19038,7 @@
 	},
 /area/ice_colony/surface/hangar/alpha)
 "aVz" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/storage/belt/utility,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -19068,7 +19068,7 @@
 	},
 /area/ice_colony/surface/hangar/hallway)
 "aVC" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/flashlight,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -19179,7 +19179,7 @@
 	},
 /area/ice_colony/exterior/surface/landing_pad)
 "aVL" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/clothing/mask/gas,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
@@ -19190,7 +19190,7 @@
 /area/ice_colony/surface/research/temporary)
 "aVM" = (
 /obj/structure/machinery/light,
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/clothing/mask/gas,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
@@ -19232,7 +19232,7 @@
 	},
 /area/ice_colony/surface/research/tech_storage)
 "aVR" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/tool,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
@@ -19326,7 +19326,7 @@
 	},
 /area/ice_colony/surface/hangar/alpha)
 "aWf" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/flashlight,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -19351,7 +19351,7 @@
 	},
 /area/ice_colony/surface/hangar/hallway)
 "aWi" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/storage/belt/utility,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -19451,7 +19451,7 @@
 	},
 /area/ice_colony/exterior/surface/landing_pad)
 "aWs" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/powercell,
 /obj/effect/spawner/random/bomb_supply,
 /obj/effect/landmark{
@@ -19586,7 +19586,7 @@
 	},
 /area/ice_colony/surface/hangar/alpha)
 "aWK" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -19597,7 +19597,7 @@
 	},
 /area/ice_colony/surface/hangar/alpha)
 "aWL" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -19680,7 +19680,7 @@
 	},
 /area/ice_colony/surface/research/tech_storage)
 "aWU" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
@@ -19689,7 +19689,7 @@
 	},
 /area/ice_colony/surface/research/tech_storage)
 "aWV" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark{
 	name = "good_item"
 	},
@@ -19717,7 +19717,7 @@
 	},
 /area/ice_colony/surface/research/tech_storage)
 "aWY" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/spawner/random/tool,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
@@ -19726,7 +19726,7 @@
 	},
 /area/ice_colony/surface/research/tech_storage)
 "aWZ" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/storage/box/lightstick/red,
 /obj/item/storage/box/lightstick/red,
 /obj/effect/landmark/objective_landmark/science,
@@ -19743,7 +19743,7 @@
 	},
 /area/ice_colony/surface/research/tech_storage)
 "aXb" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/circuitboard/apc,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
@@ -19854,7 +19854,7 @@
 	},
 /area/ice_colony/surface/hangar/alpha)
 "aXr" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/flashlight,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -19944,7 +19944,7 @@
 	},
 /area/ice_colony/surface/research/tech_storage)
 "aXC" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/powercell,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
@@ -20529,7 +20529,7 @@
 	},
 /area/ice_colony/exterior/surface/landing_pad)
 "aZg" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/computer/shuttle_control/dropship1,
 /turf/open/floor/plating/icefloor{
 	dir = 1;
@@ -20748,13 +20748,13 @@
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/underground/hangar)
 "aZX" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/storage/belt/utility,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/underground/hangar)
 "aZY" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/effect/spawner/random/toolbox,
 /obj/structure/machinery/light{
 	dir = 1
@@ -20763,7 +20763,7 @@
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/underground/hangar)
 "aZZ" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/effect/spawner/random/tool,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/plating/icefloor,
@@ -21538,26 +21538,26 @@
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/surface/excavation/storage)
 "bcC" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/surface/excavation/storage)
 "bcD" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/spawner/random/powercell,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/surface/excavation/storage)
 "bcE" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/spawner/random/powercell,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/surface/excavation/storage)
 "bcF" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/tool/pickaxe/plasmacutter,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
@@ -21567,7 +21567,7 @@
 	},
 /area/ice_colony/surface/excavation)
 "bcG" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/storage/toolbox/emergency,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
@@ -21625,7 +21625,7 @@
 	},
 /area/ice_colony/surface/excavation)
 "bcN" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/clothing/mask/gas,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
@@ -21635,7 +21635,7 @@
 	},
 /area/ice_colony/surface/excavation)
 "bcO" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/clothing/mask/gas,
 /obj/structure/machinery/light{
 	dir = 1
@@ -21667,7 +21667,7 @@
 	},
 /area/ice_colony/surface/excavation)
 "bcR" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/tool/shovel/snow,
 /obj/item/tool/shovel/snow,
 /obj/item/tool/shovel/snow,
@@ -21679,7 +21679,7 @@
 	},
 /area/ice_colony/surface/excavation)
 "bcS" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark{
 	name = "crap_item"
 	},
@@ -21712,7 +21712,7 @@
 	},
 /area/ice_colony/surface/excavation)
 "bcV" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/device/analyzer,
 /obj/effect/landmark{
 	name = "crap_item"
@@ -21725,7 +21725,7 @@
 	},
 /area/ice_colony/surface/excavation)
 "bcW" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
 	dir = 5;
@@ -21797,7 +21797,7 @@
 	},
 /area/ice_colony/surface/excavation/storage)
 "bdj" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/cell_charger,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/plating/icefloor,
@@ -21806,7 +21806,7 @@
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/surface/excavation/storage)
 "bdl" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
 	dir = 8;
@@ -21937,7 +21937,7 @@
 	},
 /area/ice_colony/underground/requesition/storage)
 "bdJ" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/wrapping_paper,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
@@ -22050,7 +22050,7 @@
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/surface/excavation/storage)
 "bdY" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/flashlight,
 /obj/structure/machinery/light{
 	dir = 8
@@ -22098,7 +22098,7 @@
 	},
 /area/ice_colony/surface/excavation)
 "bec" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -22113,7 +22113,7 @@
 	},
 /area/ice_colony/surface/excavation)
 "bed" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/paper_bin,
 /obj/item/tool/pen,
 /obj/structure/disposalpipe/segment{
@@ -22130,7 +22130,7 @@
 	},
 /area/ice_colony/surface/excavation)
 "bee" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/tool/crowbar,
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -22278,7 +22278,7 @@
 	},
 /area/ice_colony/underground/requesition/storage)
 "beu" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/tool/weldpack,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
@@ -22364,7 +22364,7 @@
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/surface/excavation/storage)
 "beJ" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/flashlight,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
@@ -22384,7 +22384,7 @@
 	},
 /area/ice_colony/surface/excavation)
 "beM" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/storage/firstaid,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -22465,7 +22465,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
 	dir = 8;
@@ -22609,13 +22609,13 @@
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/surface/excavation/storage)
 "bfs" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/spawner/random/technology_scanner,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/surface/excavation/storage)
 "bft" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/surface/excavation/storage)
@@ -22629,7 +22629,7 @@
 	},
 /area/ice_colony/surface/excavation)
 "bfv" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/microwave,
 /turf/open/floor{
 	icon_state = "darkblue2";
@@ -22637,7 +22637,7 @@
 	},
 /area/ice_colony/surface/excavation)
 "bfw" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/storage/box/donkpockets,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
@@ -22646,7 +22646,7 @@
 	},
 /area/ice_colony/surface/excavation)
 "bfx" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark{
 	name = "good_item"
 	},
@@ -22686,7 +22686,7 @@
 	},
 /area/ice_colony/surface/excavation)
 "bfC" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/clothing/gloves/yellow,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
@@ -22695,7 +22695,7 @@
 	},
 /area/ice_colony/surface/excavation)
 "bfD" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/reagent_scanner,
 /obj/structure/machinery/light,
 /obj/effect/landmark/objective_landmark/medium,
@@ -22733,7 +22733,7 @@
 	},
 /area/ice_colony/surface/excavation)
 "bfH" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/tool/shovel/snow,
 /obj/item/tool/shovel/snow,
 /obj/effect/landmark{
@@ -22747,7 +22747,7 @@
 	},
 /area/ice_colony/surface/excavation)
 "bfI" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/device/multitool,
 /obj/item/storage/belt/utility/full,
 /obj/effect/landmark/objective_landmark/medium,
@@ -22777,7 +22777,7 @@
 	},
 /area/ice_colony/surface/excavation)
 "bfM" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/device/flashlight,
 /obj/item/device/t_scanner,
 /obj/effect/landmark/objective_landmark/medium,
@@ -22787,7 +22787,7 @@
 	},
 /area/ice_colony/surface/excavation)
 "bfN" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/device/flashlight,
 /obj/item/tool/hand_labeler,
 /obj/effect/landmark/objective_landmark/medium,
@@ -23567,7 +23567,7 @@
 	},
 /area/ice_colony/underground/requesition/lobby)
 "bic" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/north)
@@ -23703,7 +23703,7 @@
 /turf/closed/wall/r_wall,
 /area/ice_colony/underground/requesition/lobby)
 "biE" = (
-/obj/structure/table/woodentable{
+/obj/structure/surface/table/woodentable{
 	icon_state = "reinf_table";
 	tag = "icon-reinf_table"
 	},
@@ -23751,7 +23751,7 @@
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/underground/hangar)
 "biK" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/item/weapon/gun/shotgun/pump/cmb,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/wood,
@@ -23768,13 +23768,13 @@
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/underground/hangar)
 "biO" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/effect/spawner/random/powercell,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/underground/hangar)
 "biP" = (
-/obj/structure/table/woodentable/fancy,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/item/device/flashlight/lamp,
 /obj/item/tool/pen/blue{
 	pixel_x = 5
@@ -23902,7 +23902,7 @@
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/underground/hangar)
 "bji" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/device/flashlight,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/plating/icefloor,
@@ -24072,7 +24072,7 @@
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/north)
@@ -24153,12 +24153,12 @@
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/underground/hangar)
 "bjV" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/north)
 "bjX" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/item/device/flashlight/lamp,
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/landmark/objective_landmark/medium,
@@ -24536,7 +24536,7 @@
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/research)
 "ble" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/research)
@@ -24544,7 +24544,7 @@
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/research)
@@ -24668,7 +24668,7 @@
 	},
 /area/ice_colony/underground/crew/chapel)
 "blB" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/carpet,
 /area/ice_colony/underground/crew/chapel)
@@ -24712,7 +24712,7 @@
 	},
 /area/ice_colony/underground/crew/library)
 "blH" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/item/book/manual/engineering_hacking,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
@@ -24720,7 +24720,7 @@
 	},
 /area/ice_colony/underground/crew/library)
 "blI" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/item/device/flashlight/lamp,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
@@ -24807,7 +24807,7 @@
 	},
 /area/ice_colony/underground/crew/chapel)
 "blT" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/item/device/flashlight/lamp,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/carpet,
@@ -24884,7 +24884,7 @@
 	},
 /area/ice_colony/underground/crew/library)
 "bmc" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/item/book/manual/marine_law,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -24895,7 +24895,7 @@
 	},
 /area/ice_colony/underground/crew/library)
 "bmd" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
@@ -25007,7 +25007,7 @@
 	},
 /area/ice_colony/underground/crew/chapel)
 "bmx" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/item/reagent_container/food/drinks/bottle/holywater,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/carpet,
@@ -25204,14 +25204,14 @@
 	},
 /area/ice_colony/underground/crew/morgue)
 "bnf" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
 	icon_state = "wood"
 	},
 /area/ice_colony/underground/crew/library)
 "bng" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/storage/toolbox/electrical,
 /obj/item/storage/toolbox/electrical,
 /obj/effect/landmark/objective_landmark/medium,
@@ -25379,7 +25379,7 @@
 	},
 /area/ice_colony/underground/crew/library)
 "bnC" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/storage/toolbox/mechanical,
 /obj/item/storage/toolbox/mechanical,
 /obj/effect/landmark{
@@ -25474,7 +25474,7 @@
 	},
 /area/ice_colony/underground/engineering)
 "bnN" = (
-/obj/structure/table/woodentable{
+/obj/structure/surface/table/woodentable{
 	icon_state = "reinf_table";
 	tag = "icon-reinf_table"
 	},
@@ -25486,7 +25486,7 @@
 	},
 /area/ice_colony/underground/engineering)
 "bnO" = (
-/obj/structure/table/woodentable{
+/obj/structure/surface/table/woodentable{
 	icon_state = "reinf_table";
 	tag = "icon-reinf_table"
 	},
@@ -25498,7 +25498,7 @@
 	},
 /area/ice_colony/underground/engineering)
 "bnP" = (
-/obj/structure/table/woodentable{
+/obj/structure/surface/table/woodentable{
 	icon_state = "reinf_table";
 	tag = "icon-reinf_table"
 	},
@@ -25512,7 +25512,7 @@
 	},
 /area/ice_colony/underground/engineering)
 "bnQ" = (
-/obj/structure/table/woodentable{
+/obj/structure/surface/table/woodentable{
 	icon_state = "reinf_table";
 	tag = "icon-reinf_table"
 	},
@@ -25578,7 +25578,7 @@
 	},
 /area/ice_colony/underground/crew/chapel)
 "bnZ" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/storage/box/bodybags,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
@@ -25587,7 +25587,7 @@
 	},
 /area/ice_colony/underground/crew/morgue)
 "boa" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/item/device/flashlight/lamp,
 /obj/item/tool/pen/blue{
 	pixel_x = 5
@@ -25596,7 +25596,7 @@
 /turf/open/floor/wood,
 /area/ice_colony/surface/command/control/pv2)
 "bob" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/food/drinks/bottle/holywater,
 /obj/structure/machinery/light,
 /obj/effect/landmark/objective_landmark/close,
@@ -25606,7 +25606,7 @@
 	},
 /area/ice_colony/underground/crew/morgue)
 "boc" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/item/ammo_magazine/pistol/holdout{
 	pixel_x = 3;
 	pixel_y = 2
@@ -25834,7 +25834,7 @@
 	},
 /area/ice_colony/underground/hallway/north_west)
 "boG" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
 	dir = 4;
@@ -26144,7 +26144,7 @@
 	},
 /area/ice_colony/underground/engineering)
 "bpz" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
 	icon_state = "dark2";
@@ -26360,7 +26360,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
 	icon_state = "dark2";
@@ -26713,7 +26713,7 @@
 	},
 /area/ice_colony/underground/hallway/north_west)
 "brc" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
 	icon_state = "darkgreen2";
@@ -26933,7 +26933,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/microwave,
 /turf/open/floor{
 	dir = 9;
@@ -26942,7 +26942,7 @@
 	},
 /area/ice_colony/underground/medical/hallway)
 "brF" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/storage/box/donkpockets,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
@@ -27008,7 +27008,7 @@
 /turf/open/floor/plating,
 /area/ice_colony/underground/reception/checkpoint_north)
 "brO" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/paper_bin,
 /obj/structure/machinery/door/window/brigdoor/westleft{
 	dir = 2;
@@ -27151,12 +27151,12 @@
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/engineering)
 "bse" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/engineering)
@@ -27317,7 +27317,7 @@
 /area/ice_colony/underground/maintenance/central)
 "bsA" = (
 /obj/structure/machinery/computer/security,
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "darkred2";
@@ -27429,7 +27429,7 @@
 	},
 /area/ice_colony/underground/engineering)
 "bsQ" = (
-/obj/structure/table/woodentable{
+/obj/structure/surface/table/woodentable{
 	icon_state = "reinf_table";
 	tag = "icon-reinf_table"
 	},
@@ -27555,7 +27555,7 @@
 	},
 /area/ice_colony/underground/medical/hallway)
 "btc" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/tool/wrench,
 /obj/item/paper/research_notes,
 /obj/effect/landmark/objective_landmark/science,
@@ -27597,7 +27597,7 @@
 	},
 /area/ice_colony/underground/medical/treatment)
 "bth" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/stack/nanopaste,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
@@ -27882,7 +27882,7 @@
 	},
 /area/ice_colony/underground/medical/treatment)
 "btO" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/storage/surgical_tray,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
@@ -28104,7 +28104,7 @@
 	},
 /area/ice_colony/underground/medical/lobby)
 "bus" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/window/reinforced{
 	dir = 1
 	},
@@ -28120,7 +28120,7 @@
 	},
 /area/ice_colony/underground/medical/lobby)
 "buu" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/door/window/brigdoor/northright,
 /obj/item/paper_bin,
 /obj/item/tool/pen/blue,
@@ -28132,7 +28132,7 @@
 	},
 /area/ice_colony/underground/medical/lobby)
 "buv" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/window/reinforced{
 	dir = 1
 	},
@@ -28215,7 +28215,7 @@
 	},
 /area/ice_colony/underground/medical/treatment)
 "buF" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/storage/box/beakers,
 /obj/item/reagent_container/glass/beaker/bluespace,
 /obj/effect/landmark/objective_landmark/science,
@@ -28417,7 +28417,7 @@
 	},
 /area/ice_colony/underground/medical/lobby)
 "bvf" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/window/reinforced{
 	dir = 8;
 	health = 80
@@ -28673,7 +28673,7 @@
 	},
 /area/ice_colony/underground/medical/lobby)
 "bvN" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/door/window/brigdoor/westleft,
 /obj/item/paper_bin,
 /obj/item/tool/pen/blue,
@@ -28725,7 +28725,7 @@
 	},
 /area/ice_colony/underground/medical/treatment)
 "bvU" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/reagentgrinder,
 /obj/item/stack/sheet/mineral/phoron,
 /obj/item/stack/sheet/mineral/phoron,
@@ -28878,7 +28878,7 @@
 	},
 /area/ice_colony/underground/hallway/north_west)
 "bwk" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/light{
 	dir = 1;
 	tag = "icon-tube1 (NORTH)"
@@ -29225,7 +29225,7 @@
 	},
 /area/ice_colony/underground/medical/lobby)
 "bxk" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/window/reinforced{
 	dir = 8;
 	health = 80
@@ -29394,7 +29394,7 @@
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/engineering)
@@ -29615,11 +29615,11 @@
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/central)
 "bys" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/central)
 "byt" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/toy/beach_ball/holoball,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/plating,
@@ -29672,7 +29672,7 @@
 /turf/closed/wall/r_wall,
 /area/ice_colony/underground/medical/hallway)
 "byC" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/tool/surgery/scalpel,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/plating,
@@ -29869,7 +29869,7 @@
 	},
 /area/ice_colony/surface/hangar/checkpoint)
 "bzi" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/storage/box/masks,
 /obj/item/storage/box/gloves{
 	pixel_x = 6;
@@ -29889,7 +29889,7 @@
 	},
 /area/ice_colony/underground/medical/storage)
 "bzk" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/bodybag/cryobag,
 /obj/item/storage/box/syringes,
 /obj/effect/landmark/objective_landmark/science,
@@ -29900,7 +29900,7 @@
 	},
 /area/ice_colony/underground/medical/storage)
 "bzl" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/storage/firstaid/o2,
 /obj/item/storage/firstaid/regular{
 	pixel_x = 5;
@@ -29915,7 +29915,7 @@
 /area/ice_colony/underground/medical/storage)
 "bzm" = (
 /obj/item/device/defibrillator,
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	dir = 1;
@@ -30099,7 +30099,7 @@
 	},
 /area/ice_colony/underground/command/center)
 "bzJ" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/faxmachine,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
@@ -30109,7 +30109,7 @@
 	},
 /area/ice_colony/underground/command/center)
 "bzK" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark{
 	name = "crap_item"
 	},
@@ -30129,7 +30129,7 @@
 	},
 /area/ice_colony/underground/crew/canteen)
 "bzM" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/trash/plate,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
@@ -30138,7 +30138,7 @@
 	},
 /area/ice_colony/underground/crew/canteen)
 "bzN" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/food/drinks/dry_ramen,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
@@ -30147,7 +30147,7 @@
 	},
 /area/ice_colony/underground/crew/canteen)
 "bzO" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/tool/kitchen/utensil/knife,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
@@ -30237,7 +30237,7 @@
 	pixel_y = -24;
 	start_charge = 0
 	},
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	icon_state = "whitered";
@@ -30333,7 +30333,7 @@
 	},
 /area/ice_colony/underground/crew/canteen)
 "bAm" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
 	icon_state = "dark2";
@@ -30341,7 +30341,7 @@
 	},
 /area/ice_colony/underground/crew/canteen)
 "bAn" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/tool/kitchen/utensil/fork,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
@@ -30350,7 +30350,7 @@
 	},
 /area/ice_colony/underground/crew/canteen)
 "bAo" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/food/snacks/boiledspagetti,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
@@ -30492,7 +30492,7 @@
 /obj/structure/window/reinforced/tinted{
 	dir = 1
 	},
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/clipboard,
 /obj/item/tool/stamp,
 /obj/effect/landmark/objective_landmark/medium,
@@ -30509,7 +30509,7 @@
 /obj/structure/window/reinforced/tinted{
 	dir = 1
 	},
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/paper_bin,
 /obj/item/tool/pen/blue,
 /obj/effect/landmark/objective_landmark/medium,
@@ -30591,14 +30591,14 @@
 /turf/open/floor/wood,
 /area/ice_colony/underground/security/detective)
 "bAS" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/item/evidencebag,
 /obj/item/clothing/mask/cigarette/cigar,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/wood,
 /area/ice_colony/underground/security/detective)
 "bAT" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/item/clipboard,
 /obj/item/folder/red{
 	pixel_x = -5;
@@ -30609,7 +30609,7 @@
 /turf/open/floor/wood,
 /area/ice_colony/underground/security/detective)
 "bAU" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/structure/machinery/computer/security/wooden_tv,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/wood,
@@ -30621,14 +30621,14 @@
 /turf/open/floor/wood,
 /area/ice_colony/underground/security/marshal)
 "bAW" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/item/paper_bin,
 /obj/item/tool/pen/blue,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/wood,
 /area/ice_colony/underground/security/marshal)
 "bAX" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	dir = 1;
@@ -30815,7 +30815,7 @@
 	},
 /area/ice_colony/underground/command/center)
 "bBu" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/sink{
 	dir = 8;
 	pixel_x = -11
@@ -30838,7 +30838,7 @@
 /turf/open/floor/wood,
 /area/ice_colony/underground/security/marshal)
 "bBx" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/item/folder/red,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/wood,
@@ -30941,7 +30941,7 @@
 	},
 /area/ice_colony/underground/research/storage)
 "bBL" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/cell_charger,
 /obj/structure/machinery/light{
 	dir = 1
@@ -30961,7 +30961,7 @@
 	},
 /area/ice_colony/underground/research/storage)
 "bBN" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/clothing/mask/gas,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
@@ -30981,7 +30981,7 @@
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/central)
 "bBQ" = (
@@ -30996,7 +30996,7 @@
 	dir = 4
 	},
 /obj/structure/window/reinforced/tinted,
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/paper_bin,
 /obj/item/tool/pen/blue,
 /obj/effect/landmark/objective_landmark/medium,
@@ -31019,7 +31019,7 @@
 	tag = "icon-twindow (WEST)"
 	},
 /obj/structure/window/reinforced/tinted,
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/clipboard,
 /obj/item/tool/stamp,
 /obj/effect/landmark{
@@ -31032,7 +31032,7 @@
 	},
 /area/ice_colony/underground/command/center)
 "bBU" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
 	dir = 8;
@@ -31041,7 +31041,7 @@
 	},
 /area/ice_colony/underground/crew/canteen)
 "bBV" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/food/snacks/chips,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
@@ -31050,7 +31050,7 @@
 	},
 /area/ice_colony/underground/crew/canteen)
 "bBW" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/food/snacks/cheeseburger,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
@@ -31059,7 +31059,7 @@
 	},
 /area/ice_colony/underground/crew/canteen)
 "bBX" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/tool/kitchen/utensil/spoon,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
@@ -31086,7 +31086,7 @@
 /turf/open/floor/wood,
 /area/ice_colony/underground/security/detective)
 "bCc" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/item/weapon/gun/revolver/cmb,
 /obj/item/ammo_magazine/revolver/cmb,
 /obj/effect/landmark/objective_landmark/medium,
@@ -31172,7 +31172,7 @@
 	},
 /area/ice_colony/underground/research)
 "bCt" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/clothing/mask/gas,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
@@ -31211,7 +31211,7 @@
 	},
 /area/ice_colony/underground/command/center)
 "bCA" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/microwave,
 /turf/open/floor{
 	dir = 8;
@@ -31220,7 +31220,7 @@
 	},
 /area/ice_colony/underground/crew/canteen)
 "bCB" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/food/snacks/hotchili,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
@@ -31260,7 +31260,7 @@
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/east)
 "bCL" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
@@ -31269,7 +31269,7 @@
 	},
 /area/ice_colony/underground/research)
 "bCM" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	icon_state = "dark2";
@@ -31383,7 +31383,7 @@
 	dir = 4;
 	pixel_x = -24
 	},
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/taperecorder,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
@@ -31393,7 +31393,7 @@
 	},
 /area/ice_colony/underground/command/center)
 "bDc" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/paper_bin,
 /obj/item/paper/research_notes,
 /obj/effect/landmark/objective_landmark/medium,
@@ -31403,7 +31403,7 @@
 	},
 /area/ice_colony/underground/command/center)
 "bDd" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark{
 	name = "crap_item"
 	},
@@ -31512,7 +31512,7 @@
 	},
 /area/ice_colony/underground/security/hallway)
 "bDq" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "darkred2";
@@ -31599,7 +31599,7 @@
 	},
 /area/ice_colony/underground/research)
 "bDB" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
 	},
@@ -31940,7 +31940,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/spacecash/c1000,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
@@ -32231,7 +32231,7 @@
 	},
 /area/ice_colony/underground/research/storage)
 "bFb" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/circuitboard/computer/atmos_alert,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
@@ -32369,7 +32369,7 @@
 /turf/open/floor/wood,
 /area/ice_colony/underground/command/pv2)
 "bFs" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/wood,
 /area/ice_colony/underground/crew/dorm_l)
@@ -32391,7 +32391,7 @@
 /turf/open/floor/wood,
 /area/ice_colony/underground/crew/dorm_l)
 "bFw" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/wood,
 /area/ice_colony/underground/crew/dorm_r)
@@ -32494,7 +32494,7 @@
 	},
 /area/ice_colony/underground/research/sample)
 "bFM" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	dir = 8;
@@ -32538,7 +32538,7 @@
 	},
 /area/ice_colony/surface/hangar/checkpoint)
 "bFT" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/circuitboard/machine/smes,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
@@ -32547,7 +32547,7 @@
 	},
 /area/ice_colony/underground/storage/highsec)
 "bFU" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/storage/box/trackimp,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
@@ -32556,7 +32556,7 @@
 	},
 /area/ice_colony/underground/storage/highsec)
 "bFV" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/circuitboard/computer/crew,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
@@ -32571,7 +32571,7 @@
 	},
 /area/ice_colony/underground/storage/highsec)
 "bFX" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/circuitboard/computer/powermonitor,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
@@ -32592,7 +32592,7 @@
 	},
 /area/ice_colony/surface/bar/canteen)
 "bFZ" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/toy/farwadoll,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
@@ -32601,7 +32601,7 @@
 	},
 /area/ice_colony/underground/storage/highsec)
 "bGa" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/reagent_container/hypospray/tricordrazine,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
@@ -32640,14 +32640,14 @@
 	},
 /area/ice_colony/underground/command/center)
 "bGg" = (
-/obj/structure/table/woodentable/fancy,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/item/paper_bin,
 /obj/item/tool/stamp,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/wood,
 /area/ice_colony/underground/command/pv1)
 "bGh" = (
-/obj/structure/table/woodentable/fancy,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/item/device/flashlight/lamp,
 /obj/item/tool/pen/blue{
 	pixel_x = 5
@@ -32656,14 +32656,14 @@
 /turf/open/floor/wood,
 /area/ice_colony/underground/command/pv2)
 "bGj" = (
-/obj/structure/table/woodentable/fancy,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/item/paper_bin,
 /obj/item/tool/stamp,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/wood,
 /area/ice_colony/underground/command/pv2)
 "bGk" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/computer/objective,
 /turf/open/floor{
 	dir = 6;
@@ -32703,7 +32703,7 @@
 	},
 /area/ice_colony/underground/security/interrogation)
 "bGs" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/storage/box/evidence,
 /obj/item/tool/hand_labeler,
 /obj/effect/landmark/objective_landmark/far,
@@ -32848,7 +32848,7 @@
 /turf/open/floor/wood,
 /area/ice_colony/underground/command/pv2)
 "bGN" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/structure/window/reinforced/tinted{
 	dir = 1
 	},
@@ -32856,7 +32856,7 @@
 /turf/open/floor/wood,
 /area/ice_colony/underground/crew/dorm_l)
 "bGO" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/structure/window/reinforced/tinted{
 	dir = 1
 	},
@@ -32877,7 +32877,7 @@
 	},
 /area/ice_colony/underground/security/interrogation)
 "bGR" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/evidencebag,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
@@ -32904,7 +32904,7 @@
 	},
 /area/ice_colony/underground/security/interrogation)
 "bGU" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/science,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
@@ -32937,7 +32937,7 @@
 /turf/closed/wall/r_wall,
 /area/ice_colony/underground/research/work)
 "bGY" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/reagentgrinder,
 /obj/item/stack/sheet/mineral/phoron,
 /obj/item/stack/sheet/mineral/phoron,
@@ -33034,7 +33034,7 @@
 /turf/closed/wall/r_wall,
 /area/ice_colony/underground/storage)
 "bHj" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/inflatable,
 /obj/item/inflatable,
 /obj/item/inflatable,
@@ -33054,7 +33054,7 @@
 	},
 /area/ice_colony/underground/storage)
 "bHk" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/spawner/random/tool,
 /obj/effect/landmark/objective_landmark/medium,
@@ -33065,7 +33065,7 @@
 	},
 /area/ice_colony/underground/storage)
 "bHl" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/storage/box/lights/mixed,
 /obj/structure/machinery/light{
 	dir = 1
@@ -33211,7 +33211,7 @@
 	},
 /area/ice_colony/underground/command/checkpoint)
 "bHA" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
 	dir = 5;
@@ -33304,7 +33304,7 @@
 	},
 /area/ice_colony/underground/security/interrogation)
 "bHR" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/flashlight/lamp,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
@@ -33339,7 +33339,7 @@
 	},
 /area/ice_colony/underground/security/hallway)
 "bHV" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	dir = 8;
@@ -33395,7 +33395,7 @@
 /turf/open/floor/plating,
 /area/ice_colony/underground/storage)
 "bIf" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/storage/box/lightstick,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
@@ -33518,7 +33518,7 @@
 /turf/open/floor/wood,
 /area/ice_colony/underground/crew/dorm_r)
 "bIu" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/device/flashlight/lamp,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
@@ -33643,7 +33643,7 @@
 	},
 /area/ice_colony/underground/command/checkpoint)
 "bIN" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/tool/pen/blue{
 	pixel_x = -6
 	},
@@ -33723,7 +33723,7 @@
 	},
 /area/ice_colony/underground/command/checkpoint)
 "bIV" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
 	dir = 1;
@@ -33763,7 +33763,7 @@
 	},
 /area/ice_colony/underground/security/interrogation)
 "bJa" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
 	dir = 6;
@@ -33807,7 +33807,7 @@
 	},
 /area/ice_colony/underground/security/hallway)
 "bJf" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/tech_supply,
 /obj/effect/landmark/objective_landmark/science,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -33899,7 +33899,7 @@
 	},
 /area/ice_colony/underground/command/checkpoint)
 "bJs" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/door/window/brigdoor/westleft{
 	name = "Security Desk"
 	},
@@ -34054,7 +34054,7 @@
 /turf/open/floor/plating,
 /area/ice_colony/underground/security/interrogation)
 "bJH" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/handcuffs,
 /obj/structure/machinery/flasher_button{
 	id = "sec_checkpoint";
@@ -34073,7 +34073,7 @@
 	},
 /area/ice_colony/underground/security/hallway)
 "bJI" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/book/manual/marine_law,
 /obj/item/storage/donut_box,
 /obj/structure/machinery/firealarm{
@@ -34087,7 +34087,7 @@
 	},
 /area/ice_colony/underground/security/hallway)
 "bJJ" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/clipboard,
 /obj/item/folder/red{
 	pixel_x = -3;
@@ -34113,7 +34113,7 @@
 /turf/open/ice,
 /area/ice_colony/underground/maintenance/east)
 "bJL" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/storage/box/syringes,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
@@ -34155,7 +34155,7 @@
 	},
 /area/ice_colony/underground/research)
 "bJQ" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/cell/high/empty,
 /obj/structure/machinery/cell_charger,
 /obj/structure/machinery/firealarm{
@@ -34339,12 +34339,12 @@
 /area/ice_colony/underground/crew/dorm_r)
 "bKp" = (
 /obj/effect/decal/cleanable/cobweb,
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/security)
 "bKq" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/reagent_container/blood/OMinus,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/plating,
@@ -34353,12 +34353,12 @@
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/security)
 "bKs" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/implantpad,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/plating,
@@ -34436,7 +34436,7 @@
 	},
 /area/ice_colony/underground/security/hallway)
 "bKA" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/door/window/brigdoor/westleft{
 	dir = 4;
 	icon_state = "leftsecure";
@@ -34485,7 +34485,7 @@
 	},
 /area/ice_colony/underground/security/hallway)
 "bKE" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/storage/box/beakers,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
@@ -34495,7 +34495,7 @@
 	},
 /area/ice_colony/underground/research/work)
 "bKF" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/tech_supply,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
@@ -34769,7 +34769,7 @@
 	},
 /area/ice_colony/underground/research)
 "bLl" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	icon_state = "darkpurple2";
@@ -34944,7 +34944,7 @@
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/security)
 "bLR" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/radio,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
@@ -34961,7 +34961,7 @@
 	},
 /area/ice_colony/underground/security/backroom)
 "bLT" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/taperecorder,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
@@ -35460,7 +35460,7 @@
 /area/ice_colony/underground/security)
 "bMU" = (
 /obj/item/storage/donut_box,
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
 	dir = 1;
@@ -35471,7 +35471,7 @@
 "bMV" = (
 /obj/item/device/taperecorder,
 /obj/item/clothing/glasses/sunglasses,
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
 	dir = 1;
@@ -35482,7 +35482,7 @@
 "bMW" = (
 /obj/item/paper_bin,
 /obj/item/tool/pen/blue,
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
 	dir = 1;
@@ -35492,7 +35492,7 @@
 /area/ice_colony/underground/security)
 "bMX" = (
 /obj/item/book/manual/marine_law,
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/handcuffs,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
@@ -35502,7 +35502,7 @@
 	},
 /area/ice_colony/underground/security)
 "bMY" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
 	dir = 5;
@@ -35593,7 +35593,7 @@
 /area/ice_colony/underground/security)
 "bNs" = (
 /obj/item/storage/box/donkpockets,
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/alarm{
 	dir = 8;
 	pixel_x = 24
@@ -35769,7 +35769,7 @@
 /area/ice_colony/underground/security)
 "bNS" = (
 /obj/structure/machinery/microwave,
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "darkred2";
@@ -35903,7 +35903,7 @@
 	},
 /area/ice_colony/underground/crew/lavatory)
 "bOg" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/bedsheetbin,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
@@ -35964,7 +35964,7 @@
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/security)
 "bOs" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/storage/box/trackimp,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
@@ -36188,7 +36188,7 @@
 /turf/open/floor/carpet,
 /area/ice_colony/underground/crew/leisure)
 "bOR" = (
-/obj/structure/table/gamblingtable,
+/obj/structure/surface/table/gamblingtable,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/carpet,
 /area/ice_colony/underground/crew/leisure)
@@ -36205,7 +36205,7 @@
 /turf/open/floor/wood,
 /area/ice_colony/underground/crew/leisure)
 "bOU" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/security)
@@ -36282,7 +36282,7 @@
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/south)
 "bPh" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/wood,
 /area/ice_colony/underground/crew/leisure)
@@ -36297,7 +36297,7 @@
 /turf/open/floor/carpet,
 /area/ice_colony/underground/crew/leisure)
 "bPk" = (
-/obj/structure/table/gamblingtable,
+/obj/structure/surface/table/gamblingtable,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
@@ -37055,7 +37055,7 @@
 	},
 /area/ice_colony/underground/crew/lavatory)
 "bRc" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/spray/cleaner,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
@@ -37228,7 +37228,7 @@
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/security)
 "bRx" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/weapon/gun/revolver/cmb,
 /obj/item/weapon/gun/revolver/cmb{
 	pixel_x = 6;
@@ -37261,7 +37261,7 @@
 	},
 /area/ice_colony/underground/security/armory)
 "bRA" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/storage/box/flashbangs{
 	pixel_x = 3;
 	pixel_y = -2
@@ -37284,7 +37284,7 @@
 /area/ice_colony/underground/security/brig)
 "bRC" = (
 /obj/structure/bedsheetbin,
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
 	dir = 1;
@@ -37295,7 +37295,7 @@
 "bRD" = (
 /obj/item/paper_bin,
 /obj/item/tool/pen/blue,
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
 	dir = 1;
@@ -37305,7 +37305,7 @@
 /area/ice_colony/underground/security/brig)
 "bRE" = (
 /obj/item/storage/box/donkpockets,
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
 	dir = 1;
@@ -37315,7 +37315,7 @@
 /area/ice_colony/underground/security/brig)
 "bRF" = (
 /obj/structure/machinery/microwave,
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "darkyellow2";
@@ -37414,7 +37414,7 @@
 	},
 /area/ice_colony/underground/reception)
 "bRU" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/paper_bin,
 /obj/item/tool/pen/blue,
 /obj/structure/machinery/alarm{
@@ -37427,7 +37427,7 @@
 	},
 /area/ice_colony/underground/reception)
 "bRW" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/folder/black_random{
 	pixel_x = 6;
 	pixel_y = -3
@@ -37455,7 +37455,7 @@
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/security)
 "bRY" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/structure/machinery/light{
 	dir = 8
 	},
@@ -37477,7 +37477,7 @@
 	},
 /area/ice_colony/underground/security/armory)
 "bRZ" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/explosive/grenade/incendiary,
 /obj/item/explosive/grenade/incendiary{
 	pixel_x = -4;
@@ -37490,7 +37490,7 @@
 	},
 /area/ice_colony/underground/security/armory)
 "bSb" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/structure/machinery/light{
 	dir = 4;
 	tag = "icon-tube1 (EAST)"
@@ -37558,7 +37558,7 @@
 	},
 /area/ice_colony/underground/reception)
 "bSh" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/folder/black_random{
 	pixel_x = -4;
 	pixel_y = -4
@@ -37571,7 +37571,7 @@
 	},
 /area/ice_colony/underground/reception)
 "bSi" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/ammo_magazine/shotgun/slugs,
 /obj/item/ammo_magazine/shotgun/slugs{
 	pixel_x = 6;
@@ -37585,7 +37585,7 @@
 	},
 /area/ice_colony/underground/security/armory)
 "bSj" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/weapon/gun/pistol/holdout,
 /obj/item/weapon/gun/pistol/holdout{
 	pixel_x = 6;
@@ -37634,7 +37634,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/packageWrap,
 /obj/item/tool/hand_labeler,
 /obj/effect/landmark/objective_landmark/close,
@@ -37654,7 +37654,7 @@
 	},
 /area/ice_colony/underground/reception)
 "bSr" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/tool/stamp,
 /obj/item/paper_bin,
 /obj/structure/machinery/alarm{
@@ -37678,7 +37678,7 @@
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/security)
 "bSt" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
 	icon_state = "dark2";
@@ -37686,7 +37686,7 @@
 	},
 /area/ice_colony/underground/security/armory)
 "bSu" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/weapon/gun/shotgun/pump/cmb{
 	pixel_x = 6;
 	pixel_y = -4
@@ -37699,7 +37699,7 @@
 	},
 /area/ice_colony/underground/security/armory)
 "bSv" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/ammo_magazine/shotgun/buckshot,
 /obj/item/ammo_magazine/shotgun/buckshot{
 	pixel_x = 6;
@@ -37712,7 +37712,7 @@
 	},
 /area/ice_colony/underground/security/armory)
 "bSw" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/ammo_magazine/shotgun/incendiary,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
@@ -37721,7 +37721,7 @@
 	},
 /area/ice_colony/underground/security/armory)
 "bSx" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/ammo_magazine/pistol/holdout,
 /obj/item/ammo_magazine/pistol/holdout{
 	pixel_x = 6;
@@ -37736,7 +37736,7 @@
 	},
 /area/ice_colony/underground/security/armory)
 "bSy" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/ammo_magazine/pistol/holdout,
 /obj/item/ammo_magazine/pistol/holdout,
 /obj/item/ammo_magazine/pistol/holdout{
@@ -37772,7 +37772,7 @@
 /obj/structure/window/reinforced/tinted{
 	dir = 4
 	},
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/flashlight/lamp,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
@@ -37781,7 +37781,7 @@
 	},
 /area/ice_colony/underground/security/brig)
 "bSD" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/flashlight/lamp,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
@@ -37791,7 +37791,7 @@
 	},
 /area/ice_colony/underground/security/brig)
 "bSE" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/south)
@@ -37812,7 +37812,7 @@
 	},
 /area/ice_colony/underground/reception)
 "bSH" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/tool/stamp{
 	icon_state = "stamp-ce";
 	tag = "icon-stamp-ce"
@@ -37977,12 +37977,12 @@
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/east)
 "bTa" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/east)
@@ -38143,13 +38143,13 @@
 	icon_state = "stamp-ce";
 	tag = "icon-stamp-ce"
 	},
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/wood,
 /area/ice_colony/underground/reception)
 "bTF" = (
 /obj/item/tool/pen/blue,
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/disposalpipe/segment,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/wood,
@@ -38165,7 +38165,7 @@
 /turf/open/floor/wood,
 /area/ice_colony/underground/reception)
 "bTH" = (
-/obj/structure/table{
+/obj/structure/surface/table{
 	dir = 4;
 	flipped = 1;
 	icon_state = "tableflip0"
@@ -38530,7 +38530,7 @@
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/south)
@@ -38704,7 +38704,7 @@
 /turf/open/floor/plating,
 /area/ice_colony/underground/reception/checkpoint_south)
 "bVg" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/paper_bin,
 /obj/structure/machinery/door/window/brigdoor/westleft{
 	dir = 2;
@@ -38783,7 +38783,7 @@
 	},
 /area/ice_colony/underground/reception/checkpoint_south)
 "bVo" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
 	dir = 10;
@@ -39077,19 +39077,19 @@
 	},
 /area/ice_colony/exterior/underground/caves/dig)
 "bVX" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/storage/toolbox/mechanical,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/ice,
 /area/ice_colony/exterior/underground/caves/open)
 "bVY" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/storage/toolbox/electrical,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/ice,
 /area/ice_colony/exterior/underground/caves/open)
 "bVZ" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/tool/wrench,
 /obj/item/tool/weldingtool,
 /obj/effect/landmark/objective_landmark/far,
@@ -39198,7 +39198,7 @@
 	},
 /area/ice_colony/exterior/underground/caves/dig)
 "bWs" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/flashlight/flare,
 /obj/effect/landmark{
 	name = "crap_item"
@@ -39217,7 +39217,7 @@
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/south)
 "bWv" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/camera,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/ice,
@@ -39693,7 +39693,7 @@
 /turf/open/ice,
 /area/ice_colony/exterior/underground/caves/open)
 "bXB" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
 	dir = 10;
@@ -39702,7 +39702,7 @@
 	},
 /area/ice_colony/underground/security/armory)
 "bXD" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/tool/surgery/scalpel,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
@@ -39711,7 +39711,7 @@
 	},
 /area/ice_colony/underground/crew/morgue)
 "bXE" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/camera,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
@@ -39720,7 +39720,7 @@
 	},
 /area/ice_colony/underground/crew/morgue)
 "bXF" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/computer/objective,
 /turf/open/floor{
 	icon_state = "dark2";
@@ -39728,7 +39728,7 @@
 	},
 /area/ice_colony/underground/engineering)
 "bXL" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/window/reinforced{
 	dir = 1
 	},
@@ -39740,7 +39740,7 @@
 	},
 /area/ice_colony/underground/medical/lobby)
 "bXM" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/window/reinforced{
 	dir = 1
 	},
@@ -39752,7 +39752,7 @@
 	},
 /area/ice_colony/underground/medical/lobby)
 "bXN" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/spray/cleaner{
 	pixel_x = -5;
 	pixel_y = 3
@@ -39768,7 +39768,7 @@
 	},
 /area/ice_colony/underground/medical/or)
 "bXO" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/window/reinforced{
 	dir = 8;
 	health = 80
@@ -39781,7 +39781,7 @@
 	},
 /area/ice_colony/underground/medical/lobby)
 "bXQ" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/storage/firstaid/fire,
 /obj/item/storage/firstaid/toxin{
 	pixel_x = 5;
@@ -39795,7 +39795,7 @@
 	},
 /area/ice_colony/underground/medical/storage)
 "bXR" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/item/handcuffs,
 /obj/item/weapon/melee/baton,
 /obj/effect/landmark/objective_landmark/medium,
@@ -39807,7 +39807,7 @@
 	tag = "icon-twindow (WEST)"
 	},
 /obj/structure/window/reinforced/tinted,
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/clipboard,
 /obj/item/tool/stamp,
 /obj/effect/landmark/objective_landmark/medium,
@@ -39821,7 +39821,7 @@
 	dir = 8;
 	pixel_x = -24
 	},
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
@@ -39831,7 +39831,7 @@
 	},
 /area/ice_colony/underground/storage/highsec)
 "bXV" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/spacecash/c500,
 /obj/item/spacecash/c100,
 /obj/item/spacecash/c10,
@@ -39846,7 +39846,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	dir = 8;
@@ -39855,7 +39855,7 @@
 	},
 /area/ice_colony/underground/research)
 "bXY" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/evidencebag,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
@@ -39864,7 +39864,7 @@
 	},
 /area/ice_colony/underground/security/interrogation)
 "bYa" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
 	icon_state = "dark2";
@@ -39875,7 +39875,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	dir = 8;
@@ -39884,7 +39884,7 @@
 	},
 /area/ice_colony/underground/research/work)
 "bYc" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/sink{
 	dir = 8;
 	pixel_x = -11
@@ -39897,7 +39897,7 @@
 	},
 /area/ice_colony/underground/research/work)
 "bYd" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/computer/objective,
 /turf/open/floor{
 	icon_state = "darkpurple2";
@@ -39905,7 +39905,7 @@
 	},
 /area/ice_colony/underground/research/work)
 "bYe" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	icon_state = "darkpurple2";
@@ -39914,7 +39914,7 @@
 /area/ice_colony/underground/research/work)
 "bYg" = (
 /obj/item/storage/box/bodybags,
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
 	dir = 10;
@@ -39923,7 +39923,7 @@
 	},
 /area/ice_colony/underground/security/backroom)
 "bYh" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/paper,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
@@ -39941,7 +39941,7 @@
 	},
 /area/ice_colony/underground/reception)
 "bYj" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/tool/hand_labeler,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
@@ -39953,7 +39953,7 @@
 /obj/structure/window/reinforced/tinted{
 	dir = 4
 	},
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
 	icon_state = "darkyellow2";
@@ -39961,12 +39961,12 @@
 	},
 /area/ice_colony/underground/security/brig)
 "bYm" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/wood,
 /area/ice_colony/underground/reception)
 "bYn" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/computer/objective,
 /turf/open/floor{
 	dir = 8;
@@ -39983,7 +39983,7 @@
 	},
 /area/ice_colony/underground/reception/checkpoint_south)
 "bYp" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/trash/chips,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
@@ -40085,7 +40085,7 @@
 	},
 /area/ice_colony/surface/hangar/beta)
 "dzn" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/flashlight,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -40171,7 +40171,7 @@
 	},
 /area/ice_colony/surface/hydroponics/north)
 "eSN" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/landmark/objective_landmark/science,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -40197,7 +40197,7 @@
 	},
 /area/ice_colony/underground/medical/lobby)
 "fHx" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/radio,
 /obj/item/device/radio{
 	pixel_x = 3;
@@ -40268,7 +40268,7 @@
 /area/ice_colony/exterior/underground/caves/dig)
 "gDb" = (
 /obj/structure/machinery/computer/objective,
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "darkred2";
@@ -40354,7 +40354,7 @@
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/north)
 "iBu" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/paper/research_notes,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
@@ -40407,12 +40407,12 @@
 	},
 /area/ice_colony/surface/hangar/alpha)
 "jZc" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/central)
 "jZI" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/computer/shuttle_control/dropship2,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/landing/console)
@@ -40448,7 +40448,7 @@
 /turf/closed/wall,
 /area/ice_colony/surface/research)
 "kWZ" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/research)
@@ -40555,7 +40555,7 @@
 	},
 /area/ice_colony/surface/dorms)
 "nup" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	dir = 4;
@@ -40591,7 +40591,7 @@
 	},
 /area/ice_colony/underground/requesition)
 "nUN" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/engineering)
@@ -40646,7 +40646,7 @@
 	},
 /area/ice_colony/underground/research/storage)
 "pjQ" = (
-/obj/structure/table/gamblingtable,
+/obj/structure/surface/table/gamblingtable,
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
@@ -40679,7 +40679,7 @@
 	},
 /area/ice_colony/surface/hydroponics/lobby)
 "qny" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/wood,
@@ -40862,7 +40862,7 @@
 	},
 /area/ice_colony/underground/research)
 "sKH" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/analyzer,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -41053,7 +41053,7 @@
 	},
 /area/ice_colony/exterior/surface/landing_pad)
 "uuK" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/toy/deck/uno,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/plating/icefloor,
@@ -41136,7 +41136,7 @@
 	},
 /area/ice_colony/underground/crew/lavatory)
 "waD" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
@@ -41178,7 +41178,7 @@
 	},
 /area/ice_colony/underground/engineering/substation)
 "wTN" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/wood,
@@ -41192,7 +41192,7 @@
 	},
 /area/ice_colony/exterior/underground/caves/dig)
 "xrT" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
 	dir = 10;
@@ -41233,7 +41233,7 @@
 /turf/open/ice,
 /area/ice_colony/exterior/surface/landing_pad_external)
 "ygw" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/encryptionkey,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,

@@ -861,6 +861,7 @@
 #include "code\game\objects\structures\reagent_dispensers.dm"
 #include "code\game\objects\structures\safe.dm"
 #include "code\game\objects\structures\signs.dm"
+#include "code\game\objects\structures\surface.dm"
 #include "code\game\objects\structures\tables_racks.dm"
 #include "code\game\objects\structures\tank_dispenser.dm"
 #include "code\game\objects\structures\watercloset.dm"

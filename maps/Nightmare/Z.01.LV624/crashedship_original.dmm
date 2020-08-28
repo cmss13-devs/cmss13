@@ -268,7 +268,7 @@
 	},
 /area/lv624/ground/sand6)
 "dC" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/gold{
 	amount = 2
 	},
@@ -281,7 +281,7 @@
 	},
 /area/lv624/ground/sand5)
 "dD" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/diamond{
 	amount = 2
 	},
@@ -291,7 +291,7 @@
 	},
 /area/lv624/ground/sand5)
 "dE" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/stack/sheet/metal{
 	amount = 50;
 	pixel_x = 4;
@@ -306,7 +306,7 @@
 	},
 /area/lv624/ground/sand5)
 "dF" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/tool/shovel,
 /turf/open/floor{
 	icon_state = "vault";
@@ -331,7 +331,7 @@
 	},
 /area/lv624/ground/sand5)
 "dN" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/iron{
 	amount = 5
 	},
@@ -346,7 +346,7 @@
 	},
 /area/lv624/ground/sand5)
 "dQ" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/tritium{
 	pixel_x = -4
 	},
@@ -356,7 +356,7 @@
 	},
 /area/lv624/ground/sand5)
 "dR" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/silver{
 	amount = 20
 	},
@@ -366,14 +366,14 @@
 	},
 /area/lv624/ground/sand5)
 "dS" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /turf/open/floor{
 	icon_state = "vault";
 	dir = 8
 	},
 /area/lv624/ground/sand5)
 "dT" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/tool/pickaxe,
 /turf/open/floor{
 	icon_state = "vault";

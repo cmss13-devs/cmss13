@@ -43,7 +43,7 @@
 
 
 
-/obj/structure/table/holotable
+/obj/structure/surface/table/holotable
 	name = "table"
 	desc = "A square piece of metal standing on four metal legs. It can not move."
 	icon_state = "table"
@@ -51,14 +51,14 @@
 	anchored = 1.0
 	throwpass = 1	//You can throw objects over this, despite it's density.
 
-/obj/structure/table/holotable/attack_animal(mob/living/user as mob) //Removed code for larva since it doesn't work. Previous code is now a larva ability. /N
+/obj/structure/surface/table/holotable/attack_animal(mob/living/user as mob) //Removed code for larva since it doesn't work. Previous code is now a larva ability. /N
 	return attack_hand(user)
 
-/obj/structure/table/holotable/attack_hand(mob/user as mob)
+/obj/structure/surface/table/holotable/attack_hand(mob/user as mob)
 	return // HOLOTABLE DOES NOT GIVE A FUCK
 
 
-/obj/structure/table/holotable/attackby(obj/item/W, mob/user)
+/obj/structure/surface/table/holotable/attackby(obj/item/W, mob/user)
 	if (istype(W, /obj/item/grab) && get_dist(src,user)<=1)
 		var/obj/item/grab/G = W
 		if(ismob(G.grabbed_thing))
@@ -80,7 +80,7 @@
 
 	..()
 
-/obj/structure/table/holotable/wood
+/obj/structure/surface/table/holotable/wood
 	name = "table"
 	desc = "A square piece of wood standing on four wooden legs. It can not move."
 	icon_state = "woodtable"
@@ -248,16 +248,16 @@
 
 //Holorack
 
-/obj/structure/rack/holorack
+/obj/structure/surface/rack/holorack
 	name = "rack"
 	desc = "Different from the Middle Ages version."
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "rack"
 
-/obj/structure/rack/holorack/attack_hand(mob/user as mob)
+/obj/structure/surface/rack/holorack/attack_hand(mob/user as mob)
 	return
 
-/obj/structure/rack/holorack/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/surface/rack/holorack/attackby(obj/item/W as obj, mob/user as mob)
 	if (istype(W, /obj/item/tool/wrench))
 		to_chat(user, "It's a holorack!  You can't unwrench it!")
 		return

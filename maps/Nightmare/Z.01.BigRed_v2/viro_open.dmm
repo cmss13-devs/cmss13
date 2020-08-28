@@ -497,7 +497,7 @@
 /turf/open/mars,
 /area/bigredv2/outside/virology)
 "bs" = (
-/obj/structure/table/almayer,
+/obj/structure/surface/table/almayer,
 /obj/item/tool/surgery/scalpel,
 /obj/item/device/autopsy_scanner,
 /turf/open/mars_cave{
@@ -565,14 +565,14 @@
 /turf/open/floor/interior/plastic,
 /area/bigredv2/outside/virology)
 "bF" = (
-/obj/structure/table/almayer,
+/obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/med_data/laptop{
 	dir = 8
 	},
 /turf/open/floor/interior/plastic,
 /area/bigredv2/outside/virology)
 "bG" = (
-/obj/structure/table/almayer,
+/obj/structure/surface/table/almayer,
 /obj/item/ashtray/glass,
 /obj/item/storage/syringe_case/regular{
 	pixel_y = 10
@@ -580,7 +580,7 @@
 /turf/open/floor/interior/plastic,
 /area/bigredv2/outside/virology)
 "bH" = (
-/obj/structure/table/almayer,
+/obj/structure/surface/table/almayer,
 /obj/item/handcuffs,
 /turf/open/floor/interior/plastic,
 /area/bigredv2/outside/virology)

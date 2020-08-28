@@ -101,30 +101,38 @@
 
 	next_move = world.time
 	// If standing next to the atom clicked.
-	if (A.Adjacent(src))
-		if (W)
-			if (W.attack_speed)
-				next_move += W.attack_speed
-			if (!A.attackby(W, src, mods) && A && !A.disposed)
-				// in case the attackby slept
-				if(!W)
-					next_move += 4
-					UnarmedAttack(A, 1)
-					return
-
-				W.afterattack(A, src, 1, mods)
-		else
-			next_move += 4
-			UnarmedAttack(A, 1)
-
+	if(A.Adjacent(src))
+		click_adjacent(A, W, mods)
+		return
+	else if((istype(A.loc, /obj/structure/surface) && A.loc.Adjacent(src)) || istype(A.loc.loc, /obj/structure/surface) && A.loc.loc.Adjacent(src))
+		var/obj/structure/surface/S = A.loc
+		click_adjacent(A, W, mods)
+		S.draw_item_overlays()
 		return
 
 	// If not standing next to the atom clicked.
-	if (W)
+	if(W)
 		W.afterattack(A, src, 0, mods)
 		return
 
 	RangedAttack(A, mods)
+	return
+
+/mob/proc/click_adjacent(atom/A, var/obj/item/W, mods)
+	if(W)
+		if(W.attack_speed)
+			next_move += W.attack_speed
+		if(!A.attackby(W, src, mods) && A && !A.disposed)
+			// in case the attackby slept
+			if(!W)
+				next_move += 4
+				UnarmedAttack(A, 1, mods)
+				return
+
+			W.afterattack(A, src, 1, mods)
+	else
+		next_move += 4
+		UnarmedAttack(A, 1, mods)
 	return
 
 
@@ -147,24 +155,7 @@
 
 /atom/proc/clicked(var/mob/user, var/list/mods)
 	if (mods["shift"] && !mods["middle"])
-		if(user.client && user.client.eye == user)
-			// If the user is not a xeno (with active ability) with the shift click pref on, we examine. God forgive me for snowflake
-			var/do_examine = TRUE
-			if(user.client.prefs && !(user.client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK))
-				if(isXeno(user))
-					var/mob/living/carbon/Xenomorph/X = user
-					if(X.selected_ability)
-						do_examine = FALSE
-				else if(ishuman(user))
-					var/mob/living/carbon/human/H = user
-					if(H.selected_ability)
-						do_examine = FALSE
-
-			if(do_examine)
-				examine(user)
-			user.face_atom(src)
-
-		if(isRemoteControlling(user))
+		if(can_examine(user))
 			examine(user)
 		return TRUE
 

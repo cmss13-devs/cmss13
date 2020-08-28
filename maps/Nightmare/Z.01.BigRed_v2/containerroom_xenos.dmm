@@ -135,7 +135,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/nw)
 "A" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/alienjar,
 /turf/open/floor/plating,
 /area/bigredv2/outside/nw)

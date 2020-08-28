@@ -111,7 +111,7 @@
 /turf/closed/wall/prison,
 /area/prison/medbay/surgery)
 "pQ" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/tool/surgery/bonegel,
 /obj/item/tool/surgery/bonesetter,
 /turf/open/floor/prison{
@@ -179,7 +179,7 @@
 	},
 /area/prison/medbay)
 "qx" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/tool/surgery/retractor,
 /obj/item/tool/surgery/hemostat,
 /turf/open/floor/prison{
@@ -269,7 +269,7 @@
 	},
 /area/prison/medbay)
 "ra" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/stack/medical/advanced/bruise_pack,
 /obj/item/stack/nanopaste,
 /turf/open/floor/prison{
@@ -317,7 +317,7 @@
 	},
 /area/prison/medbay/surgery)
 "rG" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/tool/surgery/circular_saw,
 /obj/item/tool/surgery/scalpel/manager,
 /turf/open/floor/prison{
@@ -477,7 +477,7 @@
 	},
 /area/prison/medbay)
 "ss" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/tool/surgery/FixOVein,
 /obj/item/tool/surgery/surgicaldrill,
 /turf/open/floor/prison{
@@ -938,7 +938,7 @@
 	},
 /area/prison/medbay)
 "uS" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/device/defibrillator,
 /turf/open/floor/prison{
 	tag = "icon-whitegreenfull (SOUTHWEST)";
@@ -947,7 +947,7 @@
 	},
 /area/prison/medbay)
 "uT" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/storage/firstaid/o2,
 /obj/item/storage/firstaid/regular{
 	pixel_x = 5;
@@ -960,7 +960,7 @@
 	},
 /area/prison/medbay)
 "uU" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/bodybag/cryobag,
 /obj/item/storage/box/syringes,
 /turf/open/floor/prison{
@@ -1075,7 +1075,7 @@
 	},
 /area/prison/medbay)
 "we" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/clothing/suit/straight_jacket,
 /obj/item/clothing/suit/straight_jacket,
 /obj/item/clothing/suit/straight_jacket,
@@ -1496,7 +1496,7 @@
 	},
 /area/prison/medbay)
 "zG" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/paper_bin{
 	pixel_x = -3;
 	pixel_y = 7
@@ -1511,7 +1511,7 @@
 	},
 /area/prison/medbay)
 "zH" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/computer/med_data/laptop{
 	pixel_y = 3
 	},
@@ -1935,7 +1935,7 @@
 	},
 /area/prison/medbay/foyer)
 "Do" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/paper_bin{
 	pixel_x = -3;
 	pixel_y = 7
@@ -1952,7 +1952,7 @@
 /area/prison/medbay/foyer)
 "Dp" = (
 /obj/structure/machinery/computer/secure_data,
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /turf/open/floor/prison{
 	tag = "icon-darkredfull2 (SOUTHWEST)";
 	icon_state = "darkredfull2";
@@ -1963,7 +1963,7 @@
 /obj/structure/machinery/computer/security{
 	network = list("PRISON")
 	},
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /turf/open/floor/prison{
 	tag = "icon-darkredfull2 (SOUTHWEST)";
 	icon_state = "darkredfull2";
@@ -2165,7 +2165,7 @@
 	},
 /area/prison/medbay)
 "GJ" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/door/window/eastleft,
 /obj/structure/machinery/door/window/westright,
 /turf/open/floor/prison{
@@ -2423,7 +2423,7 @@
 	},
 /area/prison/medbay)
 "HY" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/computer/med_data/laptop,
 /turf/open/floor/prison{
 	tag = "icon-whitegreenfull (SOUTHWEST)";
@@ -2498,7 +2498,7 @@
 	},
 /area/prison/medbay)
 "IC" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/reagent_container/spray/cleaner{
 	pixel_x = -5;
 	pixel_y = 3
@@ -2531,7 +2531,7 @@
 	},
 /area/prison/medbay)
 "Jb" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/paper_bin{
 	pixel_x = -3;
 	pixel_y = 7
@@ -2547,7 +2547,7 @@
 	},
 /area/prison/medbay)
 "Jc" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/device/flashlight/lamp{
 	on = 0
 	},
@@ -2630,7 +2630,7 @@
 /turf/closed/wall/prison,
 /area/prison/medbay/foyer)
 "RR" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/storage/box/masks,
 /obj/item/storage/box/gloves{
 	pixel_x = 6;

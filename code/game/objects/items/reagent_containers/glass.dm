@@ -20,7 +20,7 @@
 		/obj/structure/machinery/chem_master/,
 		/obj/structure/machinery/chem_dispenser/,
 		/obj/structure/machinery/reagentgrinder,
-		/obj/structure/table,
+		/obj/structure/surface/table,
 		/obj/structure/closet,
 		/obj/structure/sink,
 		/obj/item/storage,

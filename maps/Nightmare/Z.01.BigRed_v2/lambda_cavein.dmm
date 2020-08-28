@@ -18,12 +18,12 @@
 	},
 /area/bigredv2/outside/hydroponics)
 "ad" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/trash/plate,
 /turf/open/floor,
 /area/bigredv2/outside/hydroponics)
 "ae" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/floor{
 	tag = "icon-yellowfull";
 	icon_state = "yellowfull"

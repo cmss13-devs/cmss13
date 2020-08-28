@@ -72,7 +72,7 @@
 	},
 /area/bigredv2/outside/space_port)
 "an" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/spawner/random/toolbox,
 /turf/open/floor{
 	tag = "icon-darkgreen2 (NORTHWEST)";
@@ -291,7 +291,7 @@
 	},
 /area/bigredv2/outside/space_port)
 "aL" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/flashlight/lamp,
 /obj/structure/machinery/door_control{
 	id = "Spaceport2";
@@ -363,7 +363,7 @@
 	},
 /area/bigredv2/outside/space_port)
 "aT" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/computer/objective{
 	icon_state = "medlaptop";
 	dir = 8
@@ -410,7 +410,7 @@
 	},
 /area/bigredv2/outside/space_port)
 "aY" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark{
 	name = "crap_item"
 	},
@@ -421,7 +421,7 @@
 	},
 /area/bigredv2/outside/space_port)
 "aZ" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/computer/security{
 	icon_state = "cameras";
 	dir = 1
@@ -433,7 +433,7 @@
 	},
 /area/bigredv2/outside/space_port)
 "ba" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/radio,
 /turf/open/floor{
 	tag = "icon-darkgreen2";
@@ -457,7 +457,7 @@
 	},
 /area/bigredv2/outside/space_port)
 "bd" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/paper,
 /obj/item/tool/pen,
 /turf/open/floor{
@@ -467,7 +467,7 @@
 	},
 /area/bigredv2/outside/space_port)
 "be" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/paper_bin,
 /turf/open/floor{
 	tag = "icon-darkgreen2 (SOUTHEAST)";

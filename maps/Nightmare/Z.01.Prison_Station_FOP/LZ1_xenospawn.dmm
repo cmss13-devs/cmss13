@@ -115,11 +115,11 @@
 /turf/open/floor/plating,
 /area/prison/hallway/entrance)
 "ar" = (
-/obj/structure/table/woodentable/fancy,
+/obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/carpet,
 /area/prison/command/quarters)
 "as" = (
-/obj/structure/table/woodentable/fancy,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/item/device/flashlight/lamp{
 	on = 0
 	},
@@ -450,7 +450,7 @@
 	},
 /area/prison/hallway/entrance)
 "ba" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/paper_bin{
 	pixel_x = -3;
 	pixel_y = 7
@@ -505,7 +505,7 @@
 /obj/structure/machinery/computer/security{
 	network = list("PRISON")
 	},
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "darkred2"
@@ -534,7 +534,7 @@
 /area/prison/hallway/entrance)
 "bi" = (
 /obj/structure/machinery/computer/secure_data,
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /turf/open/floor/prison{
 	dir = 6;
 	icon_state = "darkred2"
@@ -892,7 +892,7 @@
 /area/prison/hallway/entrance)
 "bW" = (
 /obj/structure/machinery/computer/secure_data,
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /turf/open/floor/prison{
 	dir = 5;
 	icon_state = "darkred2"
@@ -949,7 +949,7 @@
 	},
 /area/prison/hallway/entrance)
 "cc" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/paper_bin{
 	pixel_x = -3;
 	pixel_y = 7
@@ -1289,7 +1289,7 @@
 /area/prison/security/checkpoint/hangar)
 "cP" = (
 /obj/structure/machinery/computer/secure_data,
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /turf/open/floor/prison{
 	tag = "icon-darkredfull2 (SOUTHWEST)";
 	icon_state = "darkredfull2";
@@ -1497,7 +1497,7 @@
 /obj/structure/machinery/computer/security{
 	network = list("PRISON")
 	},
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /turf/open/floor/prison{
 	tag = "icon-darkredfull2 (SOUTHWEST)";
 	icon_state = "darkredfull2";
@@ -1726,7 +1726,7 @@
 /turf/open/floor/plating,
 /area/prison/hallway/entrance)
 "dK" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /turf/open/floor/prison{
 	tag = "icon-darkredfull2 (SOUTHWEST)";
 	icon_state = "darkredfull2";
@@ -1734,7 +1734,7 @@
 	},
 /area/prison/security/checkpoint/hangar)
 "dL" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/paper_bin{
 	pixel_x = -3;
 	pixel_y = 7

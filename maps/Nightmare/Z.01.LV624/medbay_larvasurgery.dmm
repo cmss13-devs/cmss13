@@ -37,7 +37,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle7)
 "an" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/clothing/glasses/hud/health,
 /obj/effect/landmark/objective_landmark/science,
 /obj/effect/landmark{
@@ -50,7 +50,7 @@
 	},
 /area/lv624/lazarus/medbay)
 "ao" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/stack/medical/bruise_pack{
 	pixel_x = -5;
 	pixel_x = 3;
@@ -107,7 +107,7 @@
 	},
 /area/lv624/lazarus/medbay)
 "at" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /turf/open/floor{
 	icon_state = "whitebluefull";
 	tag = "icon-whitebluefull"
@@ -318,7 +318,7 @@
 	},
 /area/lv624/lazarus/medbay)
 "bA" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/paper_bin{
 	pixel_y = 4
 	},
@@ -391,7 +391,7 @@
 	},
 /area/lv624/lazarus/medbay)
 "qr" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/spray,
 /obj/effect/landmark/objective_landmark/science,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -493,7 +493,7 @@
 	},
 /area/lv624/lazarus/medbay)
 "DR" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/stack/medical/bruise_pack{
 	pixel_x = -1;
 	pixel_y = 4;
@@ -508,7 +508,7 @@
 	},
 /area/lv624/lazarus/medbay)
 "En" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/storage/box/masks{
 	pixel_x = -4
 	},
@@ -541,7 +541,7 @@
 	},
 /area/lv624/lazarus/medbay)
 "JK" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/food/drinks/cans/waterbottle{
 	pixel_x = 0;
 	pixel_y = 0
@@ -560,7 +560,7 @@
 	},
 /area/lv624/lazarus/medbay)
 "Pi" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/computer/objective,
 /obj/structure/machinery/light{
 	dir = 4
@@ -586,7 +586,7 @@
 	},
 /area/lv624/lazarus/medbay)
 "QQ" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/science,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
@@ -601,7 +601,7 @@
 	},
 /area/lv624/lazarus/medbay)
 "Vq" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	icon_state = "whiteblue";

@@ -34,12 +34,8 @@
 
 
 /obj/item/storage/MouseDrop(obj/over_object as obj)
-	if(ishuman(usr) || isrobot(usr))
-
-		if(usr.lying)
-			return
-
-		if(over_object == usr && Adjacent(usr)) // this must come before the screen objects only block
+	if(CAN_PICKUP(usr, src))
+		if(over_object == usr) // this must come before the screen objects only block
 			open(usr)
 			return
 
@@ -60,6 +56,12 @@
 					usr.drop_inv_item_on_ground(src)
 					usr.put_in_l_hand(src)
 			add_fingerprint(usr)
+
+/obj/item/storage/clicked(var/mob/user, var/list/mods)
+	if(!mods["shift"] && mods["middle"] && CAN_PICKUP(user, src))
+		open(user)
+		return
+	..()
 
 /obj/item/storage/proc/return_inv()
 

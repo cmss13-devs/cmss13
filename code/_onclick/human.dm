@@ -62,7 +62,7 @@
 
 	last_chew = world.time
 
-/mob/living/carbon/human/UnarmedAttack(var/atom/A, var/proximity)
+/mob/living/carbon/human/UnarmedAttack(var/atom/A, var/proximity, click_parameters)
 
 	if(lying) //No attacks while laying down
 		return 0
@@ -80,7 +80,7 @@
 		to_chat(src, SPAN_NOTICE("You try to move your [temp.display_name], but cannot!"))
 		return
 
-	A.attack_hand(src)
+	A.attack_hand(src, click_parameters)
 
 /datum/proc/handle_click(mob/living/carbon/human/user, atom/A, params) //Heres our handle click relay proc thing.
 	return HANDLE_CLICK_PASS_THRU

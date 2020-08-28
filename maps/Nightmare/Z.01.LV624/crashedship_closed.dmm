@@ -255,7 +255,7 @@
 /turf/closed/wall/rock/brown,
 /area/lv624/ground/sand5)
 "aT" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/gold{
 	amount = 2
 	},
@@ -268,7 +268,7 @@
 	},
 /area/lv624/ground/sand5)
 "aU" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/diamond{
 	amount = 2
 	},
@@ -278,7 +278,7 @@
 	},
 /area/lv624/ground/sand5)
 "aV" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/stack/sheet/metal{
 	amount = 50;
 	pixel_x = 4;
@@ -293,7 +293,7 @@
 	},
 /area/lv624/ground/sand5)
 "aW" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/tool/shovel,
 /turf/open/floor{
 	icon_state = "vault";
@@ -318,7 +318,7 @@
 	},
 /area/lv624/ground/sand5)
 "aZ" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/iron{
 	amount = 5
 	},
@@ -337,7 +337,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/sand6)
 "bb" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/tritium{
 	pixel_x = -4
 	},
@@ -347,7 +347,7 @@
 	},
 /area/lv624/ground/sand5)
 "bc" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/silver{
 	amount = 20
 	},
@@ -357,14 +357,14 @@
 	},
 /area/lv624/ground/sand5)
 "bd" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /turf/open/floor{
 	icon_state = "vault";
 	dir = 8
 	},
 /area/lv624/ground/sand5)
 "be" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/tool/pickaxe,
 /turf/open/floor{
 	icon_state = "vault";

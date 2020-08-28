@@ -37,12 +37,12 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "ak" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/tool,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "al" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/document_objective/folder,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
@@ -113,13 +113,13 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "aB" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/tool/lighter/random,
 /obj/item/disk/objective,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "aC" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/tool,
 /obj/structure/machinery/camera/autoname{
 	dir = 2
@@ -127,12 +127,12 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "aD" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "aE" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/tool,
 /obj/effect/spawner/random/technology_scanner,
 /turf/open/floor,
@@ -228,12 +228,12 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "aU" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/device/camera_film,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "aV" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/device/analyzer,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
@@ -351,7 +351,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bn" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/clothing/glasses/welding,
 /turf/open/floor,
@@ -431,7 +431,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bA" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor,
@@ -451,7 +451,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/engineering)
 "bE" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/light{
 	icon_state = "tube1";
 	dir = 8
@@ -470,12 +470,12 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bH" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/decal/cleanable/ash,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bI" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bJ" = (
@@ -511,7 +511,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bP" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/powercell,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
@@ -579,7 +579,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bZ" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/tool/pen,
 /obj/item/disk/objective,
@@ -714,13 +714,13 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "cz" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/light,
 /obj/effect/spawner/random/tool,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "cA" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/tool,
 /obj/item/stack/sheet/metal{
 	amount = 30
@@ -1289,14 +1289,14 @@
 /turf/open/mars_cave,
 /area/bigredv2/outside/sw)
 "eC" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/decal/cleanable/molten_item,
 /turf/open/floor/plating{
 	icon_state = "panelscorched"
 	},
 /area/bigredv2/outside/engineering)
 "eD" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/decal/cleanable/ash,
 /turf/open/floor/plating{
 	icon_state = "panelscorched"
@@ -1309,7 +1309,7 @@
 	},
 /area/bigredv2/outside/engineering)
 "eF" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/analyzer,
 /turf/open/floor/plating{
 	icon_state = "panelscorched"

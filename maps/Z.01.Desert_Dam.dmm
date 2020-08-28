@@ -549,7 +549,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_biology)
 "abI" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/tool/shovel/spade,
 /obj/effect/landmark/objective_landmark/science,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -593,7 +593,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_northwest)
 "abO" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /turf/open/floor/prison,
 /area/desert_dam/exterior/valley/valley_dam)
 "abP" = (
@@ -703,7 +703,7 @@
 /turf/closed/wall/indestructible/invisible,
 /area/desert_dam/exterior/river/riverside_east)
 "acf" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	dir = 8;
@@ -815,7 +815,7 @@
 /turf/open/gm/river/desert/shallow_corner,
 /area/desert_dam/exterior/valley/valley_labs)
 "acA" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark{
 	name = "crap_item"
 	},
@@ -1053,7 +1053,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_west_entrance)
 "adi" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/power/apc{
 	dir = 1;
 	pixel_y = 24;
@@ -1068,7 +1068,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_labs)
 "adk" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/tool/weldingtool,
 /obj/structure/machinery/light{
 	dir = 1
@@ -1076,7 +1076,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/exterior/valley/valley_dam)
 "adl" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/window/reinforced{
 	dir = 4;
 	health = 80
@@ -1439,7 +1439,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_west_entrance)
 "aet" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/door_control{
 	id = "dam_checkpoint_north";
 	name = "Checkpoint Lockdown";
@@ -1479,7 +1479,7 @@
 /obj/structure/window/reinforced/tinted{
 	dir = 1
 	},
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/clipboard,
 /obj/item/tool/stamp,
 /obj/effect/decal/cleanable/dirt,
@@ -1639,7 +1639,7 @@
 /turf/open/gm/river/desert/deep/covered,
 /area/desert_dam/exterior/river/riverside_east)
 "aeW" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/computer/shuttle_control/dropship1{
 	use_power = 0
 	},
@@ -1649,7 +1649,7 @@
 	},
 /area/desert_dam/landing/console)
 "aeX" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/computer/security{
 	name = "Security Cameras - Research";
 	network = list("chigusa_3")
@@ -1679,7 +1679,7 @@
 	tag = "icon-twindow (WEST)"
 	},
 /obj/structure/machinery/computer/communications,
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	icon_state = "bright_clean2"
@@ -1758,7 +1758,7 @@
 	},
 /area/desert_dam/interior/dam_interior/western_dam_cave)
 "afo" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/effect/spawner/random/toolbox,
 /turf/open/floor/prison{
 	icon_state = "darkpurple2"
@@ -1785,7 +1785,7 @@
 	dir = 4
 	},
 /obj/structure/window/reinforced/tinted,
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/paper_bin,
 /obj/item/tool/pen/blue,
 /obj/effect/decal/cleanable/dirt,
@@ -1800,7 +1800,7 @@
 	tag = "icon-twindow (WEST)"
 	},
 /obj/structure/window/reinforced/tinted,
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/clipboard,
 /obj/item/tool/stamp,
 /obj/effect/decal/cleanable/dirt,
@@ -2219,7 +2219,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_northwest)
 "agG" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/window/reinforced{
 	dir = 4;
 	health = 80
@@ -2671,7 +2671,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_wilderness)
 "ahW" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/chem_dispenser/soda{
 	pixel_y = 32
 	},
@@ -3325,7 +3325,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_central_hallway)
 "ajQ" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/effect/spawner/random/technology_scanner,
 /turf/open/floor/prison{
 	dir = 9;
@@ -3363,7 +3363,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "ajV" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/light{
 	dir = 1
 	},
@@ -3442,7 +3442,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_biology)
 "akf" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/xenoautopsy,
 /turf/open/floor/prison{
 	dir = 5;
@@ -3612,7 +3612,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_containment)
 "akE" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/clothing/gloves/yellow,
 /turf/open/floor/prison{
 	dir = 1;
@@ -3620,7 +3620,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_excavation)
 "akF" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/reagent_scanner,
 /turf/open/floor/prison{
 	dir = 1;
@@ -3628,7 +3628,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_excavation)
 "akG" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark{
 	name = "crap_item"
 	},
@@ -3740,7 +3740,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_containment)
 "akX" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/tool/pen,
 /obj/item/XenoBio/Blood,
 /turf/open/floor/prison{
@@ -3772,7 +3772,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_biology)
 "alb" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/xenoautopsy/tank{
 	icon_state = "jarshelf_7"
 	},
@@ -3856,7 +3856,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_containment)
 "alm" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "darkpurple2"
@@ -3903,7 +3903,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_biology)
 "alu" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "darkpurple2"
@@ -3934,7 +3934,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_excavation)
 "alz" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/device/multitool,
 /obj/item/storage/belt/utility/full,
 /turf/open/floor/prison{
@@ -3943,7 +3943,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_excavation)
 "alA" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/device/flashlight,
 /obj/item/device/t_scanner,
 /turf/open/floor/prison{
@@ -3952,7 +3952,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_excavation)
 "alB" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/device/flashlight,
 /obj/item/tool/hand_labeler,
 /turf/open/floor/prison{
@@ -3961,7 +3961,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_excavation)
 "alC" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/tool/shovel/snow,
 /obj/item/tool/shovel/snow,
 /obj/effect/landmark{
@@ -4040,7 +4040,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_biology)
 "alN" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/storage/fancy/vials/random,
 /turf/open/floor/prison{
 	dir = 4;
@@ -4159,7 +4159,7 @@
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/bar/backroom)
 "amb" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/alienjar,
 /turf/open/floor/prison{
 	dir = 4;
@@ -4234,7 +4234,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/interior/lab_northeast/east_lab_containment)
 "amo" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /turf/open/floor/prison{
 	icon_state = "bright_clean2"
 	},
@@ -4477,7 +4477,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_biology)
 "amV" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/xenoautopsy/tank{
 	icon_state = "jar_sample"
 	},
@@ -4812,7 +4812,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_east_hallway)
 "anN" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/tech_supply,
 /obj/structure/machinery/light{
 	dir = 1
@@ -4847,21 +4847,21 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_security_armory)
 "anS" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/ammo_magazine/revolver/cmb,
 /turf/open/floor/prison{
 	icon_state = "darkredfull2"
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_security_armory)
 "anT" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/weapon/gun/revolver/cmb,
 /turf/open/floor/prison{
 	icon_state = "darkredfull2"
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_security_armory)
 "anU" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/computer/security{
 	name = "Security Cameras - Research";
 	network = list("chigusa_3")
@@ -4905,14 +4905,14 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_biology)
 "aoa" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/light,
 /turf/open/floor/prison{
 	icon_state = "darkpurple2"
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_biology)
 "aob" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /turf/open/floor/prison{
 	icon_state = "darkpurple2"
 	},
@@ -4943,7 +4943,7 @@
 /turf/open/gm/river/desert/deep/covered,
 /area/desert_dam/exterior/river/riverside_east)
 "aoh" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/light{
 	dir = 4
 	},
@@ -5076,7 +5076,7 @@
 /turf/open/desert/rock,
 /area/desert_dam/exterior/valley/valley_cargo)
 "aoA" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/computer/guestpass,
 /turf/open/floor/prison{
 	dir = 1;
@@ -5107,7 +5107,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_northwest)
 "aoF" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/ammo_magazine/shotgun/incendiary,
 /obj/item/ammo_magazine/shotgun/incendiary,
 /turf/open/floor/prison{
@@ -5320,7 +5320,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/interior/lab_northeast/east_lab_biology)
 "apl" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/weapon/gun/shotgun/pump/cmb,
 /turf/open/floor/prison{
 	icon_state = "darkredfull2"
@@ -5459,7 +5459,7 @@
 	},
 /area/shuttle/tri_trans1/alpha)
 "apD" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/tech_supply,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison{
@@ -5769,7 +5769,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_medical)
 "aqx" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/computer/security{
 	name = "Security Cameras - Research";
 	network = list("chigusa_3")
@@ -5869,7 +5869,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_west_entrance)
 "aqL" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/computer/objective,
 /turf/open/floor/prison{
 	dir = 8;
@@ -5951,7 +5951,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_security_armory)
 "aqV" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/storage/donut_box,
 /obj/item/reagent_container/food/snacks/donut,
 /turf/open/floor/prison{
@@ -6109,7 +6109,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_security_armory)
 "arn" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/folder/blue{
 	pixel_x = -3
 	},
@@ -6233,7 +6233,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_workshop)
 "arC" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/structure/machinery/light{
 	dir = 1
 	},
@@ -6244,7 +6244,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_workshop)
 "arD" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison{
 	dir = 1;
@@ -6298,7 +6298,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/tool/surgery/retractor,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison{
@@ -6496,7 +6496,7 @@
 /turf/open/desert/desert_shore/desert_shore1,
 /area/desert_dam/exterior/valley/valley_labs)
 "asm" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/computer/guestpass,
 /turf/open/floor/prison{
 	dir = 8;
@@ -6610,7 +6610,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/interior/lab_northeast/east_lab_west_entrance)
 "asC" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/door/window/brigdoor/eastleft{
 	dir = 2
 	},
@@ -6651,7 +6651,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_west_entrance)
 "asH" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/door_control,
 /turf/open/floor/prison{
 	dir = 10;
@@ -6665,7 +6665,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_security_armory)
 "asJ" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/computer/security{
 	name = "Security Cameras - Research";
 	network = list("chigusa_3")
@@ -6675,7 +6675,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_security_armory)
 "asL" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /turf/open/floor/prison{
 	icon_state = "darkred2"
 	},
@@ -6697,7 +6697,7 @@
 	},
 /area/desert_dam/interior/dam_interior/north_tunnel_entrance)
 "asO" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/computer/security{
 	name = "Security Cameras - Habitation";
 	network = list("chigusa_2")
@@ -6713,7 +6713,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_dam)
 "asQ" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/computer/emails,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_two/floodgate_control)
@@ -6729,7 +6729,7 @@
 	},
 /area/desert_dam/interior/dam_interior/hanger)
 "asS" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/computer/atmos_alert,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_two/floodgate_control)
@@ -6782,7 +6782,7 @@
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/riverside_east)
 "ata" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/door/window/brigdoor/eastleft{
 	dir = 2
 	},
@@ -6862,7 +6862,7 @@
 /turf/open/desert/rock/deep,
 /area/desert_dam/interior/dam_interior/south_tunnel)
 "atm" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/phoron{
 	amount = 50
 	},
@@ -6927,7 +6927,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_mining)
 "atv" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/paper_bin,
 /obj/item/tool/pen,
 /obj/structure/machinery/door/window/brigdoor/northleft{
@@ -7165,7 +7165,7 @@
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/riverside_east)
 "atY" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/paper_bin,
 /obj/item/tool/pen,
 /obj/structure/machinery/light{
@@ -7444,7 +7444,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_workshop)
 "auL" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/tool,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison{
@@ -7563,7 +7563,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_medical)
 "auZ" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark{
 	name = "crap_item"
 	},
@@ -7674,7 +7674,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_west_entrance)
 "avo" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/computer/security{
 	name = "Security Cameras - Research";
 	network = list("chigusa_3")
@@ -7685,7 +7685,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_east_entrance)
 "avp" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_two/floodgate_control)
 "avq" = (
@@ -7740,7 +7740,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_workshop)
 "avy" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/tool,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison{
@@ -7757,7 +7757,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_lobby)
 "avA" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison{
 	icon_state = "darkyellow2"
@@ -8059,7 +8059,7 @@
 	},
 /area/desert_dam/interior/dam_interior/west_tunnel)
 "awr" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/effect/spawner/random/tool,
 /turf/open/floor/prison{
 	dir = 4;
@@ -8117,7 +8117,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "awA" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/tool/crowbar/red,
 /obj/item/device/flash,
 /obj/structure/machinery/light{
@@ -8186,7 +8186,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_RND)
 "awI" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/effect/spawner/random/tool,
 /turf/open/floor/prison{
 	dir = 10;
@@ -8194,7 +8194,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_RND)
 "awJ" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/light,
 /obj/effect/spawner/random/toolbox,
 /turf/open/floor/prison{
@@ -8464,7 +8464,7 @@
 /turf/open/desert/desert_shore/desert_shore1,
 /area/desert_dam/interior/caves/central_caves)
 "axy" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/door_control{
 	id = "dam_checkpoint_northeast";
 	name = "Checkpoint Lockdown";
@@ -8487,7 +8487,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_east_entrance)
 "axB" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /turf/open/floor/prison{
 	dir = 6;
 	icon_state = "red"
@@ -8512,7 +8512,7 @@
 /turf/closed/wall/r_wall/prison,
 /area/desert_dam/building/security/marshals_office)
 "axG" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/effect/spawner/random/toolbox,
 /obj/structure/machinery/light,
 /turf/open/floor/prison{
@@ -8520,7 +8520,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_RND)
 "axH" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/stack/sheet/metal{
 	amount = 50;
 	pixel_x = 2;
@@ -8661,7 +8661,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "aye" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/computer/pod/old{
 	name = "Personal Computer"
 	},
@@ -8670,13 +8670,13 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "ayf" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/floor{
 	icon_state = "wood"
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "ayg" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/plating,
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
@@ -8687,7 +8687,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "ayi" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/tool/pen,
 /obj/item/paper_bundle,
 /turf/open/floor{
@@ -8716,7 +8716,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "aym" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/tool,
 /turf/open/floor{
 	icon_state = "wood"
@@ -8733,7 +8733,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_wilderness)
 "ayq" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whiteyellowfull"
@@ -8778,7 +8778,7 @@
 	},
 /area/desert_dam/building/security/lobby)
 "ayx" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/plating,
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
@@ -8810,7 +8810,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_RND)
 "ayC" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/weapon/melee/harpoon/yautja{
 	name = "Alien Harpoon"
 	},
@@ -8831,7 +8831,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_RND)
 "ayF" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/computer/guestpass,
 /turf/open/floor/prison{
 	dir = 1;
@@ -8839,7 +8839,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_RND)
 "ayG" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/tech_supply,
 /obj/item/phone,
 /obj/effect/landmark/objective_landmark/far,
@@ -8917,7 +8917,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "ayQ" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/legcuffs/yautja{
 	desc = "A bizarre alien device used for trapping and killing prey.";
 	name = "Alien Mine"
@@ -8953,7 +8953,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_RND)
 "ayV" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/paper_bin,
 /obj/item/disk/nuclear,
 /obj/effect/landmark/objective_landmark/far,
@@ -9039,7 +9039,7 @@
 	},
 /area/desert_dam/building/administration/control_room)
 "azg" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison{
 	dir = 10;
@@ -9985,7 +9985,7 @@
 /obj/item/stack/sheet/mineral/sandstone{
 	amount = 50
 	},
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whiteyellowfull"
@@ -9999,7 +9999,7 @@
 /area/desert_dam/exterior/valley/valley_wilderness)
 "aBU" = (
 /obj/effect/decal/remains/xeno,
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark{
 	name = "good_item"
 	},
@@ -10009,7 +10009,7 @@
 	},
 /area/desert_dam/interior/caves/east_caves)
 "aBV" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/weapon/melee/harpoon,
 /turf/open/floor{
 	dir = 4;
@@ -10116,7 +10116,7 @@
 	},
 /area/desert_dam/interior/caves/east_caves)
 "aCl" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/interior/wood,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
@@ -10147,7 +10147,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "aCq" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/prison{
 	icon_state = "redcorner"
@@ -10209,7 +10209,7 @@
 /turf/open/floor/interior/wood,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "aCD" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/storage/donut_box,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison{
@@ -10220,7 +10220,7 @@
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "aCE" = (
 /obj/structure/machinery/microwave,
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
@@ -10330,20 +10330,20 @@
 	pixel_x = 6;
 	pixel_y = -4
 	},
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/item/weapon/gun/pistol/holdout,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/interior/wood/alt,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "aCW" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/item/ammo_magazine/shotgun/buckshot,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/interior/wood,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "aCX" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/item/stack/sheet/wood{
 	amount = 2
 	},
@@ -10427,7 +10427,7 @@
 /turf/open/floor/interior/wood/alt,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "aDi" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/item/ammo_magazine/shotgun/slugs,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/interior/wood,
@@ -10455,7 +10455,7 @@
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/riverside_east)
 "aDn" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/stack/medical/bruise_pack,
 /obj/effect/landmark/objective_landmark/far,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -10466,7 +10466,7 @@
 	},
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "aDo" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/tool/pickaxe/drill,
 /obj/effect/landmark/objective_landmark/far,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -10477,20 +10477,20 @@
 	},
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "aDp" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/item/tool/pickaxe,
 /obj/item/stack/medical/ointment,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/interior/wood/alt,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "aDq" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/item/weapon/gun/shotgun/double,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/interior/wood/alt,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "aDr" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/item/tool/pickaxe,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/interior/wood/alt,
@@ -11376,7 +11376,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_medical)
 "aFJ" = (
-/obj/structure/table/almayer,
+/obj/structure/surface/table/almayer,
 /obj/item/storage/fancy/cigarettes,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood,
@@ -11741,7 +11741,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_crashsite)
 "aGT" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/asphalt{
 	icon_state = "tile"
 	},
@@ -12032,7 +12032,7 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "aHJ" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/tool/shovel,
 /turf/open/asphalt{
 	icon_state = "tile"
@@ -12110,7 +12110,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_crashsite)
 "aHV" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/tool/pickaxe/hammer,
 /turf/open/asphalt{
 	icon_state = "tile"
@@ -12566,7 +12566,7 @@
 	},
 /area/desert_dam/building/lab_northwest/west_lab_xenoflora)
 "aJt" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
@@ -13748,7 +13748,7 @@
 	},
 /area/desert_dam/building/substation/northeast)
 "aMA" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/floor/prison{
 	dir = 9;
 	icon_state = "darkyellow2"
@@ -13829,7 +13829,7 @@
 	is_resin_allowed = 0
 	})
 "aMK" = (
-/obj/structure/rack{
+/obj/structure/surface/rack{
 	layer = 2.5
 	},
 /obj/effect/spawner/random/tech_supply,
@@ -13938,7 +13938,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_medical)
 "aMX" = (
-/obj/structure/rack{
+/obj/structure/surface/rack{
 	layer = 2.5
 	},
 /obj/effect/spawner/random/technology_scanner,
@@ -14015,7 +14015,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/building/substation/northeast)
 "aNg" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/clothing/head/welding,
 /turf/open/floor/prison{
 	dir = 8;
@@ -14114,7 +14114,7 @@
 	},
 /area/desert_dam/building/administration/control_room)
 "aNt" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/tool,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison{
@@ -14123,7 +14123,7 @@
 	},
 /area/desert_dam/building/administration/control_room)
 "aNu" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/spawner/random/tool,
 /obj/effect/landmark/objective_landmark/close,
@@ -14182,7 +14182,7 @@
 	is_resin_allowed = 0
 	})
 "aNB" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/phoron{
 	amount = 50
 	},
@@ -14386,7 +14386,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_mining)
 "aOn" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark{
 	name = "crap_item"
 	},
@@ -15589,7 +15589,7 @@
 	},
 /area/desert_dam/building/substation/northwest)
 "aRE" = (
-/obj/structure/rack{
+/obj/structure/surface/rack{
 	layer = 2.5
 	},
 /obj/effect/spawner/random/tech_supply,
@@ -15773,7 +15773,7 @@
 	},
 /area/desert_dam/building/substation/northwest)
 "aSf" = (
-/obj/structure/rack{
+/obj/structure/surface/rack{
 	layer = 2.5
 	},
 /obj/effect/spawner/random/technology_scanner,
@@ -15927,7 +15927,7 @@
 	},
 /area)
 "aSz" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/door/window/brigdoor/westleft{
 	name = "Security Desk"
 	},
@@ -16377,7 +16377,7 @@
 	},
 /area/desert_dam/building/mining/workshop)
 "aTY" = (
-/obj/structure/rack{
+/obj/structure/surface/rack{
 	layer = 2.5
 	},
 /obj/item/stack/sheet/metal,
@@ -16394,7 +16394,7 @@
 /turf/closed/wall/r_wall/prison,
 /area/desert_dam/building/security/courtroom)
 "aUa" = (
-/obj/structure/rack{
+/obj/structure/surface/rack{
 	layer = 2.5
 	},
 /obj/item/stack/sheet/metal,
@@ -16668,35 +16668,35 @@
 	},
 /area/desert_dam/building/dorms/hallway_northwing)
 "aUX" = (
-/obj/structure/rack{
+/obj/structure/surface/rack{
 	layer = 2.5
 	},
 /obj/effect/spawner/random/technology_scanner,
 /turf/open/floor/prison,
 /area/desert_dam/building/mining/workshop)
 "aUY" = (
-/obj/structure/rack{
+/obj/structure/surface/rack{
 	layer = 2.5
 	},
 /obj/effect/spawner/random/bomb_supply,
 /turf/open/floor/prison,
 /area/desert_dam/building/mining/workshop)
 "aUZ" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark{
 	name = "crap_item"
 	},
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_two/control_room)
 "aVa" = (
-/obj/structure/rack{
+/obj/structure/surface/rack{
 	layer = 2.5
 	},
 /obj/effect/spawner/random/toolbox,
 /turf/open/floor/prison,
 /area/desert_dam/building/mining/workshop)
 "aVb" = (
-/obj/structure/rack{
+/obj/structure/surface/rack{
 	layer = 2.5
 	},
 /obj/item/clothing/head/welding,
@@ -16827,7 +16827,7 @@
 	},
 /area/desert_dam/building/water_treatment_two/hallway)
 "aVD" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/filtration_button{
 	id = "filter 2"
 	},
@@ -16838,7 +16838,7 @@
 	},
 /area/desert_dam/building/water_treatment_two/control_room)
 "aVE" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/tool/wrench,
 /turf/open/floor/prison,
 /area/desert_dam/exterior/valley/valley_dam)
@@ -16907,7 +16907,7 @@
 /turf/open/floor/wood,
 /area/desert_dam/building/administration/office)
 "aVP" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/faxmachine{
 	density = 0;
 	req_one_access = list()
@@ -16924,7 +16924,7 @@
 /turf/open/floor/wood,
 /area/desert_dam/building/administration/office)
 "aVR" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark{
 	name = "good_item"
 	},
@@ -16951,7 +16951,7 @@
 	},
 /area/desert_dam/building/water_treatment_two/hallway)
 "aVV" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/computer/security{
 	name = "Security Cameras - Habitation";
 	network = list("chigusa_2")
@@ -16963,7 +16963,7 @@
 	},
 /area/desert_dam/building/water_treatment_two/control_room)
 "aVW" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/computer/emails,
 /turf/open/floor/prison{
 	dir = 10;
@@ -17021,7 +17021,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_telecoms)
 "aWg" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/computer/atmos_alert,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_two/control_room)
@@ -17039,7 +17039,7 @@
 	},
 /area/desert_dam/exterior/landing_pad_one)
 "aWj" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/faxmachine,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison{
@@ -17083,7 +17083,7 @@
 	},
 /area/desert_dam/building/administration/control_room)
 "aWp" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/tool,
 /obj/effect/spawner/random/tech_supply,
 /obj/effect/landmark/objective_landmark/close,
@@ -17345,7 +17345,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_two/control_room)
@@ -17511,7 +17511,7 @@
 /area/desert_dam/building/security/lobby)
 "aXE" = (
 /obj/structure/machinery/recharger,
-/obj/structure/table/woodentable/fancy,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/security/detective)
@@ -17664,7 +17664,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_wilderness)
 "aYg" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_two/hallway)
 "aYh" = (
@@ -17779,7 +17779,7 @@
 /obj/structure/window/reinforced/tinted{
 	dir = 1
 	},
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/clipboard,
 /obj/item/tool/stamp,
 /obj/effect/landmark/objective_landmark/close,
@@ -17795,7 +17795,7 @@
 /obj/structure/window/reinforced/tinted{
 	dir = 1
 	},
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/paper_bin,
 /obj/item/tool/pen/blue,
 /obj/effect/landmark/objective_landmark/close,
@@ -17825,7 +17825,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_wilderness)
 "aYD" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/tool/shovel,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_two/hallway)
@@ -17894,7 +17894,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/computer/atmos_alert,
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /turf/open/floor/prison{
 	icon_state = "bright_clean2"
 	},
@@ -17905,7 +17905,7 @@
 	tag = "icon-twindow (WEST)"
 	},
 /obj/structure/machinery/computer/communications,
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /turf/open/floor/prison{
 	icon_state = "bright_clean2"
 	},
@@ -17981,7 +17981,7 @@
 	dir = 4
 	},
 /obj/structure/window/reinforced/tinted,
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/paper_bin,
 /obj/item/tool/pen/blue,
 /obj/effect/landmark/objective_landmark/close,
@@ -17995,7 +17995,7 @@
 	tag = "icon-twindow (WEST)"
 	},
 /obj/structure/window/reinforced/tinted,
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/clipboard,
 /obj/item/tool/stamp,
 /obj/effect/landmark/objective_landmark/close,
@@ -18065,7 +18065,7 @@
 /obj/item/paper/courtroom{
 	name = "A Crash Course in Legal SOP"
 	},
-/obj/structure/table/woodentable/fancy,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/interior/wood/alt,
@@ -18212,7 +18212,7 @@
 /area/desert_dam/exterior/valley/valley_dam)
 "aZJ" = (
 /obj/structure/machinery/computer/security/wooden_tv,
-/obj/structure/table/woodentable/fancy,
+/obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/security/detective)
 "aZK" = (
@@ -18280,7 +18280,7 @@
 	},
 /area/desert_dam/building/administration/lobby)
 "aZV" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/folder/black_random{
 	pixel_x = 6;
 	pixel_y = -3
@@ -18376,7 +18376,7 @@
 	},
 /area/desert_dam/building/administration/hallway)
 "baj" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/faxmachine,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison{
@@ -18394,7 +18394,7 @@
 	},
 /area/desert_dam/building/administration/lobby)
 "bal" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark{
 	name = "crap_item"
 	},
@@ -18465,7 +18465,7 @@
 	},
 /area/desert_dam/building/administration/lobby)
 "bat" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/folder/black_random{
 	pixel_x = -4;
 	pixel_y = -4
@@ -18539,7 +18539,7 @@
 	},
 /area/desert_dam/building/administration/hallway)
 "baC" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/door/window/eastleft{
 	dir = 8;
 	name = "Security Desk"
@@ -18577,7 +18577,7 @@
 	},
 /area/desert_dam/building/administration/lobby)
 "baF" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/tool/hand_labeler,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
@@ -18594,7 +18594,7 @@
 	},
 /area/desert_dam/building/administration/archives)
 "baH" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/paper_bin,
 /obj/item/tool/pen/blue,
 /obj/effect/landmark/objective_landmark/close,
@@ -18631,7 +18631,7 @@
 	pixel_y = 24;
 	start_charge = 0
 	},
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/storage/donut_box,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_two/hallway)
@@ -18654,7 +18654,7 @@
 	},
 /area/desert_dam/building/administration/control_room)
 "baS" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/tool/stamp{
 	icon_state = "stamp-ce";
 	tag = "icon-stamp-ce"
@@ -18675,7 +18675,7 @@
 	},
 /area/desert_dam/building/administration/archives)
 "baV" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/paper,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
@@ -18726,7 +18726,7 @@
 	},
 /area/desert_dam/building/administration/control_room)
 "bbc" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/light{
 	dir = 8;
 	tag = "icon-tube1 (EAST)"
@@ -18767,7 +18767,7 @@
 	},
 /area/desert_dam/building/administration/hallway)
 "bbh" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/tool/stamp,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
@@ -18777,7 +18777,7 @@
 	},
 /area/desert_dam/building/administration/lobby)
 "bbi" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/light,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
@@ -18786,7 +18786,7 @@
 	},
 /area/desert_dam/building/administration/lobby)
 "bbj" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
 	icon_state = "darkred2";
@@ -18963,14 +18963,14 @@
 /turf/open/floor/plating,
 /area/desert_dam/building/medical/virology_wing)
 "bbO" = (
-/obj/structure/table/woodentable/fancy,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/interior/wood/alt,
 /area/desert_dam/building/security/office)
 "bbP" = (
 /obj/item/ashtray/bronze,
-/obj/structure/table/woodentable/fancy,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/interior/wood/alt,
@@ -19174,7 +19174,7 @@
 	},
 /area/desert_dam/interior/dam_interior/north_tunnel)
 "bcA" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/window/reinforced{
 	dir = 1
 	},
@@ -19289,7 +19289,7 @@
 	},
 /area/desert_dam/building/administration/hallway)
 "bcW" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison{
 	dir = 5;
@@ -19334,7 +19334,7 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "bdd" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/window/reinforced{
 	dir = 1
 	},
@@ -19346,7 +19346,7 @@
 	},
 /area/desert_dam/building/security/lobby)
 "bde" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/door/window/brigdoor/northleft,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison{
@@ -19398,12 +19398,12 @@
 /turf/open/floor/wood,
 /area/desert_dam/building/administration/meetingrooom)
 "bdo" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/wood,
 /area/desert_dam/building/administration/meetingrooom)
 "bdp" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/item/paper_bin,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/wood,
@@ -19423,7 +19423,7 @@
 	},
 /area/desert_dam/exterior/river/riverside_central_north)
 "bdw" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/window/reinforced{
 	dir = 1
 	},
@@ -19436,7 +19436,7 @@
 	},
 /area/desert_dam/building/security/lobby)
 "bdz" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/window/reinforced{
 	dir = 1
 	},
@@ -19537,19 +19537,19 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/table/woodentable/fancy,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/security/detective)
 "bdM" = (
 /obj/item/ashtray/bronze,
 /obj/item/clothing/mask/cigarette/cigar,
-/obj/structure/table/woodentable/fancy,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/interior/wood/alt,
 /area/desert_dam/building/security/detective)
 "bdN" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/tool/wirecutters,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
@@ -19580,7 +19580,7 @@
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/security/courtroom)
 "bdS" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark{
 	name = "crap_item"
 	},
@@ -19592,7 +19592,7 @@
 	},
 /area/desert_dam/building/water_treatment_two/hallway)
 "bdT" = (
-/obj/structure/table/woodentable/fancy,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/interior/wood/alt,
 /area/desert_dam/building/security/detective)
@@ -19787,7 +19787,7 @@
 /turf/open/floor/carpet,
 /area/desert_dam/building/administration/meetingrooom)
 "bew" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/carpet,
@@ -19918,7 +19918,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_telecoms)
 "beQ" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/tool/wrench,
 /turf/open/floor/prison{
 	dir = 10;
@@ -19990,7 +19990,7 @@
 	},
 /area/desert_dam/building/administration/overseer_office)
 "bfb" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
 	icon_state = "white"
@@ -20021,7 +20021,7 @@
 	name = "Security Cameras - Operations";
 	network = list("chigusa_1")
 	},
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "darkred2";
@@ -20057,7 +20057,7 @@
 "bfk" = (
 /obj/item/handcuffs,
 /obj/item/weapon/melee/baton,
-/obj/structure/table/woodentable/fancy,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/interior/wood/alt,
 /area/desert_dam/building/security/marshals_office)
@@ -20134,13 +20134,13 @@
 /turf/open/floor/wood,
 /area/desert_dam/building/administration/overseer_office)
 "bfx" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/clothing/mask/cigarette/cigar,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/wood,
 /area/desert_dam/building/administration/overseer_office)
 "bfy" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/faxmachine{
 	density = 0;
 	req_one_access = list()
@@ -20480,7 +20480,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_wilderness)
 "bgD" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/weapon/gun/energy/taser,
 /turf/open/floor/prison{
 	dir = 8;
@@ -20503,7 +20503,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_wilderness)
 "bgI" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/paper_bin,
 /obj/item/tool/pen,
 /turf/open/floor/prison,
@@ -20596,7 +20596,7 @@
 	},
 /area/desert_dam/building/water_treatment_two/control_room)
 "bgZ" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark{
 	name = "crap_item"
 	},
@@ -20692,7 +20692,7 @@
 	},
 /area/desert_dam/building/water_treatment_two/equipment)
 "bho" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_two/control_room)
 "bhq" = (
@@ -20704,7 +20704,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_two/control_room)
 "bhs" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/computer/security{
 	name = "Security Cameras - Habitation";
 	network = list("chigusa_2")
@@ -21086,7 +21086,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/river/riverside_east)
 "biA" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/window/reinforced{
 	dir = 8
 	},
@@ -21321,7 +21321,7 @@
 	},
 /area/desert_dam/building/security/lobby)
 "bjj" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/window/reinforced{
 	dir = 4;
 	health = 80
@@ -21546,7 +21546,7 @@
 /turf/open/asphalt,
 /area/desert_dam/interior/dam_interior/west_tunnel)
 "bjP" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/door/window/eastleft{
 	dir = 8;
 	name = "Security Desk"
@@ -21579,7 +21579,7 @@
 "bjS" = (
 /obj/item/paper_bin,
 /obj/item/tool/pen/blue,
-/obj/structure/table/woodentable/fancy,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/interior/wood/alt,
 /area/desert_dam/building/security/marshals_office)
@@ -21776,13 +21776,13 @@
 /area/desert_dam/exterior/valley/valley_wilderness)
 "bkG" = (
 /obj/item/ammo_magazine/revolver/cmb,
-/obj/structure/table/woodentable/fancy,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/interior/wood/alt,
 /area/desert_dam/building/security/marshals_office)
 "bkH" = (
 /obj/item/folder/red,
-/obj/structure/table/woodentable/fancy,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/interior/wood/alt,
 /area/desert_dam/building/security/marshals_office)
@@ -21809,7 +21809,7 @@
 	},
 /area/desert_dam/building/bar/bar)
 "bkM" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/tool/stamp,
 /turf/open/floor/prison{
 	dir = 10;
@@ -22050,7 +22050,7 @@
 	},
 /area/desert_dam/interior/dam_interior/hanger)
 "blB" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/computer/security{
 	name = "Security Cameras - Operations";
 	network = list("chigusa_1")
@@ -22191,7 +22191,7 @@
 	},
 /area/desert_dam/exterior/river/filtration_a)
 "blW" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/window/reinforced{
 	dir = 8
 	},
@@ -22205,7 +22205,7 @@
 	},
 /area/desert_dam/building/security/lobby)
 "blX" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/window/reinforced{
 	dir = 4;
 	health = 80
@@ -22254,7 +22254,7 @@
 	},
 /area/desert_dam/interior/dam_interior/north_tunnel_entrance)
 "bmd" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/tool/pen/blue{
 	pixel_x = -6
 	},
@@ -22330,7 +22330,7 @@
 	},
 /area/desert_dam/building/security/observation)
 "bml" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
 	icon_state = "dark"
@@ -22365,7 +22365,7 @@
 	},
 /area/desert_dam/interior/dam_interior/tech_storage)
 "bmp" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/structure/closet/fireaxecabinet{
 	pixel_y = 32
 	},
@@ -22379,7 +22379,7 @@
 	},
 /area/desert_dam/interior/dam_interior/tech_storage)
 "bmq" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/stack/sheet/plasteel{
 	amount = 15
 	},
@@ -22391,7 +22391,7 @@
 	},
 /area/desert_dam/interior/dam_interior/tech_storage)
 "bmr" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/prison{
 	dir = 8;
@@ -22680,7 +22680,7 @@
 	},
 /area/desert_dam/interior/dam_interior/tech_storage)
 "bnl" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/circuitboard/computer/crew,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison{
@@ -22781,7 +22781,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_telecoms)
 "bnC" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/ammo_magazine/shotgun/slugs,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/asphalt{
@@ -22841,7 +22841,7 @@
 	},
 /area/desert_dam/exterior/river/filtration_a)
 "bnL" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/tool/lighter/zippo,
 /obj/item/tool/lighter/zippo,
 /obj/effect/landmark/objective_landmark/close,
@@ -22851,7 +22851,7 @@
 	},
 /area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "bnM" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/stack/sheet/metal,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison{
@@ -22892,7 +22892,7 @@
 	},
 /area/desert_dam/building/administration/control_room)
 "bnT" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/circuitboard/computer/powermonitor,
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/landmark/objective_landmark/close,
@@ -22902,14 +22902,14 @@
 /turf/open/floor/greengrid,
 /area/desert_dam/interior/dam_interior/tech_storage)
 "bnV" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/circuitboard/apc,
 /obj/item/circuitboard/apc,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/greengrid,
 /area/desert_dam/interior/dam_interior/tech_storage)
 "bnW" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/circuitboard/airlock,
 /obj/item/circuitboard/airlock,
 /obj/item/circuitboard/airlock,
@@ -23090,7 +23090,7 @@
 	},
 /area/desert_dam/interior/dam_interior/hanger)
 "boz" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/cell/high/empty,
 /obj/structure/machinery/cell_charger,
 /obj/effect/landmark/objective_landmark/close,
@@ -23112,7 +23112,7 @@
 	},
 /area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "boC" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/storage/box/trackimp,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison{
@@ -23135,7 +23135,7 @@
 	},
 /area/desert_dam/building/administration/control_room)
 "boF" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/circuitboard/airlock,
 /obj/item/circuitboard/airlock,
 /obj/item/circuitboard/airlock,
@@ -23397,7 +23397,7 @@
 	},
 /area/desert_dam/exterior/landing_pad_one)
 "bpv" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/trash/kepler,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/objective_landmark/close,
@@ -23430,7 +23430,7 @@
 	},
 /area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "bpy" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/light{
 	dir = 8;
 	tag = "icon-tube1 (EAST)"
@@ -23455,13 +23455,13 @@
 	},
 /area/desert_dam/building/administration/hallway)
 "bpA" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/greengrid,
 /area/desert_dam/interior/dam_interior/tech_storage)
 "bpB" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison{
 	dir = 4;
@@ -23532,7 +23532,7 @@
 	},
 /area/desert_dam/exterior/landing_pad_one)
 "bpR" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/stack/sheet/metal{
 	amount = 10
 	},
@@ -23564,7 +23564,7 @@
 	},
 /area/desert_dam/exterior/landing_pad_one)
 "bpU" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/phoron{
 	amount = 15
 	},
@@ -23575,7 +23575,7 @@
 	},
 /area/desert_dam/interior/dam_interior/smes_main)
 "bpV" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/stack/sheet/metal{
 	amount = 10
 	},
@@ -23586,7 +23586,7 @@
 	},
 /area/desert_dam/interior/dam_interior/smes_main)
 "bpW" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/stack/rods{
 	amount = 25
 	},
@@ -23814,7 +23814,7 @@
 	},
 /area/desert_dam/building/security/northern_hallway)
 "bqH" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison{
@@ -23823,7 +23823,7 @@
 	},
 /area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "bqI" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/cell/high/empty,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -23833,7 +23833,7 @@
 	},
 /area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "bqJ" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/storage/box/lights/mixed,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison{
@@ -24137,7 +24137,7 @@
 	},
 /area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "brG" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/tool,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison{
@@ -24146,7 +24146,7 @@
 	},
 /area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "brH" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/cell/high/empty,
 /obj/effect/landmark{
 	name = "crap_item"
@@ -24184,7 +24184,7 @@
 	},
 /area/desert_dam/building/warehouse/breakroom)
 "brM" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison{
@@ -24192,7 +24192,7 @@
 	},
 /area/desert_dam/interior/dam_interior/tech_storage)
 "brN" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison{
@@ -24290,7 +24290,7 @@
 	},
 /area/desert_dam/building/security/northern_hallway)
 "bsc" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison{
 	dir = 9;
@@ -24429,7 +24429,7 @@
 	},
 /area/desert_dam/interior/dam_interior/hanger)
 "bsy" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/firealarm{
 	dir = 8;
 	pixel_x = -24
@@ -24442,7 +24442,7 @@
 	},
 /area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "bsz" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison{
@@ -24848,7 +24848,7 @@
 	},
 /area/desert_dam/interior/dam_interior/engine_east_wing)
 "btV" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/light{
 	dir = 4
 	},
@@ -24989,7 +24989,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_mining)
 "buz" = (
-/obj/structure/rack{
+/obj/structure/surface/rack{
 	layer = 2.5
 	},
 /turf/open/floor/prison{
@@ -25247,7 +25247,7 @@
 	},
 /area/desert_dam/interior/dam_interior/engine_room)
 "bvl" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/spawner/random/tool,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison{
@@ -25297,7 +25297,7 @@
 /obj/item/stack/sheet/plasteel{
 	amount = 10
 	},
-/obj/structure/rack{
+/obj/structure/surface/rack{
 	layer = 2.5
 	},
 /turf/open/floor/prison{
@@ -25413,7 +25413,7 @@
 /area/desert_dam/building/security/staffroom)
 "bvL" = (
 /obj/structure/machinery/computer/secure_data,
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "darkred2"
@@ -25522,7 +25522,7 @@
 	},
 /area/desert_dam/interior/dam_interior/north_tunnel)
 "bwf" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/tool/extinguisher/mini,
 /obj/item/circuitboard/airlock,
 /obj/effect/landmark{
@@ -25550,7 +25550,7 @@
 	},
 /area/desert_dam/interior/dam_interior/engine_west_wing)
 "bwi" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/light{
 	dir = 1
 	},
@@ -25563,7 +25563,7 @@
 	},
 /area/desert_dam/interior/dam_interior/engine_west_wing)
 "bwj" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/assembly/igniter,
 /obj/item/device/assembly/igniter,
 /obj/item/device/assembly/igniter,
@@ -25576,7 +25576,7 @@
 	},
 /area/desert_dam/interior/dam_interior/engine_west_wing)
 "bwk" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/assembly/infra,
 /obj/item/device/assembly/voice,
 /obj/effect/landmark/objective_landmark/medium,
@@ -25650,7 +25650,7 @@
 	},
 /area/desert_dam/interior/dam_interior/engine_room)
 "bwx" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/food/drinks/cans/thirteenloko,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison{
@@ -25723,7 +25723,7 @@
 	},
 /area/desert_dam/building/security/observation)
 "bwK" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/flashlight/lamp,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
@@ -25880,7 +25880,7 @@
 	},
 /area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "bxi" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/tool,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/landmark/objective_landmark/close,
@@ -25899,7 +25899,7 @@
 	},
 /area/desert_dam/exterior/landing_pad_one)
 "bxk" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/inflatable,
 /obj/item/inflatable,
 /obj/item/inflatable,
@@ -25913,7 +25913,7 @@
 	},
 /area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "bxl" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/spawner/random/tool,
 /obj/effect/landmark/objective_landmark/close,
@@ -25981,7 +25981,7 @@
 	},
 /area/desert_dam/interior/dam_interior/northeastern_tunnel)
 "bxv" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/explosive/grenade/custom/metalfoam,
 /obj/item/explosive/grenade/custom/metalfoam,
 /obj/item/device/flashlight,
@@ -26046,7 +26046,7 @@
 	},
 /area/desert_dam/interior/dam_interior/engine_room)
 "bxK" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/flashlight/flare,
 /obj/item/device/radio,
 /obj/effect/landmark/objective_landmark/far,
@@ -26070,7 +26070,7 @@
 	},
 /area/desert_dam/interior/dam_interior/engine_east_wing)
 "bxN" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison{
 	dir = 1;
@@ -26202,7 +26202,7 @@
 	},
 /area/desert_dam/interior/dam_interior/hangar_storage)
 "byp" = (
-/obj/structure/table/woodentable/fancy,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/effect/landmark/corpsespawner/security/lawyer,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
@@ -26247,7 +26247,7 @@
 	},
 /area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "byu" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/stack/sheet/metal,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison{
@@ -26443,7 +26443,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_wilderness)
 "bza" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison,
@@ -26717,7 +26717,7 @@
 	},
 /area/desert_dam/interior/dam_interior/control_room)
 "bzM" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/analyzer,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
@@ -26736,7 +26736,7 @@
 /area/desert_dam/interior/dam_interior/control_room)
 "bzO" = (
 /obj/structure/machinery/computer/atmos_alert,
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/floor/prison{
 	dir = 5;
 	icon_state = "darkyellow2"
@@ -26752,7 +26752,7 @@
 	},
 /area/desert_dam/interior/dam_interior/engine_room)
 "bzQ" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/storage/box/lights/mixed,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison{
@@ -26801,7 +26801,7 @@
 /turf/open/floor/interior/wood/alt,
 /area/desert_dam/building/security/courtroom)
 "bzX" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/taperecorder,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
@@ -26812,7 +26812,7 @@
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_mining)
 "bzZ" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/storage/box/evidence,
 /obj/item/tool/hand_labeler,
 /obj/structure/machinery/light{
@@ -27006,7 +27006,7 @@
 /turf/open/floor/greengrid,
 /area/desert_dam/interior/dam_interior/engine_room)
 "bAM" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/storage/box/lightstick,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison{
@@ -27214,7 +27214,7 @@
 	},
 /area/desert_dam/interior/dam_interior/northwestern_tunnel)
 "bBx" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/door_control{
 	id = "dam_checkpoint_northwest";
 	name = "Checkpoint Lockdown";
@@ -27238,7 +27238,7 @@
 	},
 /area/desert_dam/interior/dam_interior/north_tunnel)
 "bBF" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/cell_charger,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison{
@@ -27246,7 +27246,7 @@
 	},
 /area/desert_dam/interior/dam_interior/engine_east_wing)
 "bBG" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/light,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison{
@@ -27254,7 +27254,7 @@
 	},
 /area/desert_dam/interior/dam_interior/engine_east_wing)
 "bBH" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison{
 	icon_state = "darkyellow2"
@@ -27277,7 +27277,7 @@
 	},
 /area/desert_dam/building/mining/workshop_foyer)
 "bBO" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/paper_bin,
 /obj/item/tool/pen,
 /obj/effect/landmark/objective_landmark/close,
@@ -27503,7 +27503,7 @@
 	},
 /area/desert_dam/interior/dam_interior/control_room)
 "bCD" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/cell_charger,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison{
@@ -27553,7 +27553,7 @@
 	},
 /area/desert_dam/building/security/interrogation)
 "bCN" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/evidencebag,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison{
@@ -27678,7 +27678,7 @@
 /turf/open/asphalt/cement,
 /area/desert_dam/interior/dam_interior/northeastern_tunnel)
 "bDe" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/circuitboard/computer/atmos_alert,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/objective_landmark/close,
@@ -27722,7 +27722,7 @@
 	},
 /area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "bDj" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/greengrid,
@@ -27858,7 +27858,7 @@
 	},
 /area/desert_dam/interior/dam_interior/atmos_storage)
 "bDE" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison{
 	icon_state = "floor_plate"
@@ -27930,7 +27930,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/security/staffroom)
 "bDV" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/trash/kepler,
 /obj/structure/disposalpipe/segment{
 	dir = 8;
@@ -28113,7 +28113,7 @@
 /turf/open/asphalt/cement,
 /area/desert_dam/interior/dam_interior/northeastern_tunnel)
 "bEy" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/circuitboard/computer/crew,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/objective_landmark/close,
@@ -28409,7 +28409,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_mining)
 "bFf" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/handcuffs,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison{
@@ -28455,7 +28455,7 @@
 	},
 /area/desert_dam/building/security/southern_hallway)
 "bFm" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/taperecorder,
 /obj/item/clothing/glasses/sunglasses,
 /obj/effect/landmark/objective_landmark/close,
@@ -28464,7 +28464,7 @@
 	},
 /area/desert_dam/building/security/holding)
 "bFn" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/storage/donut_box,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison{
@@ -28483,7 +28483,7 @@
 	},
 /area/desert_dam/building/security/holding)
 "bFq" = (
-/obj/structure/rack{
+/obj/structure/surface/rack{
 	layer = 2.5
 	},
 /obj/effect/spawner/random/tech_supply,
@@ -28525,7 +28525,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_telecoms)
 "bFv" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/evidencebag,
 /obj/structure/disposalpipe/segment{
 	dir = 8;
@@ -28554,7 +28554,7 @@
 	},
 /area/desert_dam/building/security/deathrow)
 "bFy" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/clothing/suit/armor/det_suit,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -28745,7 +28745,7 @@
 	},
 /area/desert_dam/interior/dam_interior/control_room)
 "bGb" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/cell_charger,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/prison{
@@ -28834,7 +28834,7 @@
 	},
 /area/desert_dam/interior/dam_interior/central_tunnel)
 "bGv" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/explosive/grenade/flashbang,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -29192,7 +29192,7 @@
 	},
 /area/desert_dam/interior/dam_interior/engine_room)
 "bHx" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/light{
 	dir = 8;
 	tag = "icon-tube1 (EAST)"
@@ -29259,28 +29259,28 @@
 	},
 /area/desert_dam/interior/caves/east_caves)
 "bHI" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/spray/cleaner,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison,
 /area/desert_dam/building/security/staffroom)
 "bHJ" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison,
 /area/desert_dam/building/security/staffroom)
 "bHK" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/trash/kepler,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison,
 /area/desert_dam/building/security/staffroom)
 "bHL" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/recharger,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -29360,7 +29360,7 @@
 	},
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "bHZ" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/structure/machinery/light{
 	dir = 1
 	},
@@ -29474,7 +29474,7 @@
 	},
 /area/desert_dam/interior/dam_interior/engine_room)
 "bIv" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison{
 	dir = 8;
@@ -29488,7 +29488,7 @@
 	},
 /area/desert_dam/interior/dam_interior/engine_east_wing)
 "bIx" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/clothing/mask/gas,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison{
@@ -29498,7 +29498,7 @@
 	},
 /area/desert_dam/interior/dam_interior/atmos_storage)
 "bIy" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/clothing/mask/gas,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison{
@@ -29582,7 +29582,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_telecoms)
 "bIV" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/effect/landmark{
 	name = "good_item"
 	},
@@ -29695,7 +29695,7 @@
 	},
 /area/desert_dam/interior/dam_interior/central_tunnel)
 "bJl" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/light{
 	dir = 8;
 	tag = "icon-tube1 (WEST)"
@@ -29725,7 +29725,7 @@
 	},
 /area/desert_dam/interior/dam_interior/smes_main)
 "bJo" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/plating,
@@ -29969,7 +29969,7 @@
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_civilian)
 "bKl" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/interior/wood/alt,
@@ -29992,7 +29992,7 @@
 	},
 /area/desert_dam/interior/dam_interior/hangar_storage)
 "bKo" = (
-/obj/structure/table/almayer,
+/obj/structure/surface/table/almayer,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison{
@@ -30001,7 +30001,7 @@
 	},
 /area/desert_dam/interior/dam_interior/hangar_storage)
 "bKp" = (
-/obj/structure/table/almayer,
+/obj/structure/surface/table/almayer,
 /obj/structure/machinery/light{
 	dir = 4
 	},
@@ -30044,7 +30044,7 @@
 /turf/open/asphalt/cement,
 /area/desert_dam/interior/dam_interior/north_tunnel)
 "bKw" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/effect/spawner/random/technology_scanner,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -30079,7 +30079,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/northeastern_tunnel)
 "bKA" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/plating,
@@ -30170,7 +30170,7 @@
 /turf/closed/wall/r_wall/prison,
 /area/desert_dam/building/security/southern_hallway)
 "bKO" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/door/window/brigdoor/eastleft{
 	dir = 1
 	},
@@ -30189,7 +30189,7 @@
 	},
 /area/desert_dam/building/security/southern_hallway)
 "bKQ" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison{
@@ -30198,7 +30198,7 @@
 	},
 /area/desert_dam/building/security/staffroom)
 "bKR" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison{
@@ -30240,7 +30240,7 @@
 	},
 /area/desert_dam/building/security/southern_hallway)
 "bLe" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
@@ -30274,7 +30274,7 @@
 /turf/open/asphalt,
 /area/desert_dam/interior/dam_interior/north_tunnel)
 "bLj" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/device/lightreplacer,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -30308,7 +30308,7 @@
 /area/desert_dam/interior/dam_interior/engine_west_wing)
 "bLm" = (
 /obj/effect/spawner/random/toolbox,
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/device/radio,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/prison{
@@ -30371,7 +30371,7 @@
 	},
 /area/desert_dam/building/medical/chemistry)
 "bLv" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
 	icon_state = "whiteyellow";
@@ -30582,7 +30582,7 @@
 /turf/open/asphalt/cement,
 /area/desert_dam/interior/dam_interior/northwestern_tunnel)
 "bMe" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison{
@@ -30612,7 +30612,7 @@
 	},
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "bMi" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
@@ -30625,7 +30625,7 @@
 	},
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "bMj" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/device/radio,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -30680,7 +30680,7 @@
 	},
 /area/desert_dam/interior/dam_interior/smes_backup)
 "bMp" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/phoron{
 	amount = 50
 	},
@@ -30690,7 +30690,7 @@
 	},
 /area/desert_dam/interior/dam_interior/smes_backup)
 "bMq" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/phoron{
 	amount = 50
 	},
@@ -30712,7 +30712,7 @@
 /area/desert_dam/building/security/warden)
 "bMs" = (
 /obj/structure/machinery/computer/secure_data,
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "darkred2"
@@ -30750,7 +30750,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/hangar_storage)
 "bMy" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/computer/security{
 	name = "Security Cameras - Habitation";
 	network = list("chigusa_2")
@@ -30770,7 +30770,7 @@
 	},
 /area/desert_dam/interior/dam_interior/workshop)
 "bME" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/stack/sheet/wood{
 	amount = 10
 	},
@@ -30840,7 +30840,7 @@
 	},
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "bMP" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/prison{
 	dir = 4;
@@ -30879,7 +30879,7 @@
 /turf/open/floor/interior/wood/alt,
 /area/desert_dam/building/security/courtroom)
 "bMZ" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
@@ -31092,7 +31092,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/security/prison)
 "bNI" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/folder/red{
 	pixel_x = 4;
 	pixel_y = -2
@@ -31160,7 +31160,7 @@
 	},
 /area/desert_dam/building/security/warden)
 "bNR" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/computer/objective,
 /turf/open/floor/prison{
 	dir = 1;
@@ -31168,7 +31168,7 @@
 	},
 /area/desert_dam/building/warehouse/breakroom)
 "bNS" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/clothing/mask/gas,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison{
@@ -31189,7 +31189,7 @@
 /turf/closed/wall/r_wall/bunker,
 /area/desert_dam/interior/dam_interior/workshop)
 "bNZ" = (
-/obj/structure/rack{
+/obj/structure/surface/rack{
 	layer = 2.5
 	},
 /obj/item/stack/sheet/metal,
@@ -31265,7 +31265,7 @@
 	},
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "bOn" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/stock_parts/smes_coil,
 /obj/item/stack/sheet/glass{
 	amount = 30
@@ -31306,7 +31306,7 @@
 	},
 /area/desert_dam/interior/dam_interior/smes_main)
 "bOs" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/stack/sheet/metal{
 	amount = 30
 	},
@@ -31317,7 +31317,7 @@
 	},
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "bOt" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/device/multitool,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/prison{
@@ -31635,7 +31635,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_telecoms)
 "bPC" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/computer/security{
 	name = "Security Cameras - Habitation";
 	network = list("chigusa_2")
@@ -31646,7 +31646,7 @@
 	},
 /area/desert_dam/building/security/prison)
 "bPD" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/window/reinforced{
 	dir = 8;
 	health = 80
@@ -31658,7 +31658,7 @@
 	},
 /area/desert_dam/building/security/prison)
 "bPE" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison{
 	dir = 1;
@@ -31666,7 +31666,7 @@
 	},
 /area/desert_dam/building/warehouse/breakroom)
 "bPF" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark{
 	name = "good_item"
 	},
@@ -31689,7 +31689,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/security/prison)
 "bPI" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/door/window/brigdoor/northleft{
 	dir = 8
 	},
@@ -31742,7 +31742,7 @@
 /turf/closed/wall/r_wall/bunker,
 /area/desert_dam/interior/dam_interior/western_dam_cave)
 "bPP" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/stack/sheet/plasteel{
 	amount = 10
 	},
@@ -31796,7 +31796,7 @@
 /turf/open/asphalt,
 /area/desert_dam/interior/dam_interior/north_tunnel_entrance)
 "bPW" = (
-/obj/structure/table/woodentable/fancy,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/item/storage/briefcase,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
@@ -31806,7 +31806,7 @@
 	},
 /area/desert_dam/building/administration/overseer_office)
 "bPX" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/radio,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
@@ -32034,7 +32034,7 @@
 	},
 /area/desert_dam/building/warehouse/breakroom)
 "bQC" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/clipboard,
 /obj/item/tool/stamp,
 /obj/structure/machinery/light{
@@ -32357,7 +32357,7 @@
 /area/desert_dam/interior/dam_interior/west_tunnel)
 "bRC" = (
 /obj/structure/bedsheetbin,
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/light{
 	dir = 1
 	},
@@ -32368,7 +32368,7 @@
 	},
 /area/desert_dam/building/security/prison)
 "bRD" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/computer/objective,
 /turf/open/floor{
 	dir = 1;
@@ -32377,7 +32377,7 @@
 	},
 /area/desert_dam/building/security/prison)
 "bRE" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/clothing/mask/gas,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison{
@@ -32424,7 +32424,7 @@
 /area/desert_dam/interior/dam_interior/western_dam_cave)
 "bRN" = (
 /obj/item/clothing/head/welding,
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/prison{
@@ -32508,7 +32508,7 @@
 	},
 /area/desert_dam/interior/dam_interior/office)
 "bRY" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/tech_supply,
 /obj/effect/spawner/random/tool,
 /obj/effect/spawner/random/tool,
@@ -32607,7 +32607,7 @@
 	},
 /area/desert_dam/interior/dam_interior/northwestern_tunnel)
 "bSi" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/phoron{
 	amount = 50
 	},
@@ -32618,7 +32618,7 @@
 	},
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "bSj" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/phoron{
 	amount = 50
 	},
@@ -32897,7 +32897,7 @@
 	},
 /area/desert_dam/interior/dam_interior/control_room)
 "bTc" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison{
@@ -32914,7 +32914,7 @@
 	},
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "bTe" = (
-/obj/structure/rack{
+/obj/structure/surface/rack{
 	layer = 2.5
 	},
 /obj/effect/spawner/random/tech_supply,
@@ -32925,7 +32925,7 @@
 	},
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "bTf" = (
-/obj/structure/rack{
+/obj/structure/surface/rack{
 	layer = 2.5
 	},
 /obj/effect/spawner/random/technology_scanner,
@@ -32949,7 +32949,7 @@
 /turf/open/gm/river/desert/deep/covered,
 /area/desert_dam/exterior/river/riverside_central_north)
 "bTj" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
 	dir = 4;
@@ -33155,7 +33155,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison{
@@ -33477,7 +33477,7 @@
 	},
 /area/desert_dam/interior/dam_interior/workshop)
 "bUY" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/tool,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison{
@@ -33486,7 +33486,7 @@
 	},
 /area/desert_dam/interior/dam_interior/workshop)
 "bUZ" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/tool/lighter/random,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison{
@@ -33502,7 +33502,7 @@
 	},
 /area/desert_dam/interior/dam_interior/engine_west_wing)
 "bVb" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison{
@@ -34627,7 +34627,7 @@
 	},
 /area/desert_dam/building/security/prison)
 "bYo" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/ammo_magazine/pistol/holdout,
 /obj/item/ammo_magazine/pistol/holdout{
 	pixel_x = 6;
@@ -34639,7 +34639,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/security/armory)
 "bYp" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/ammo_magazine/pistol/holdout,
 /obj/item/ammo_magazine/pistol/holdout,
 /obj/item/ammo_magazine/pistol/holdout{
@@ -34651,7 +34651,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/security/armory)
 "bYq" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/ammo_magazine/revolver/cmb,
 /obj/item/ammo_magazine/revolver/cmb{
 	pixel_x = 6;
@@ -34666,7 +34666,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/security/armory)
 "bYr" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/ammo_magazine/shotgun/incendiary,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison,
@@ -34720,7 +34720,7 @@
 	},
 /area/desert_dam/interior/dam_interior/northeastern_tunnel)
 "bYB" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/device/flashlight,
 /obj/item/device/flashlight/flare,
 /obj/effect/landmark/objective_landmark/close,
@@ -34833,7 +34833,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_cargo)
 "bYQ" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/explosive/grenade/incendiary,
 /obj/item/explosive/grenade/incendiary{
 	pixel_x = -4;
@@ -34858,7 +34858,7 @@
 	},
 /area/desert_dam/building/security/prison)
 "bYT" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
@@ -35548,7 +35548,7 @@
 	},
 /area/desert_dam/exterior/river/riverside_central_north)
 "caO" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/explosive/plastic,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison,
@@ -35566,7 +35566,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/security/prison)
 "caR" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
 	dir = 10;
@@ -35575,7 +35575,7 @@
 	},
 /area/desert_dam/building/security/prison)
 "caS" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/light,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
@@ -35696,7 +35696,7 @@
 	},
 /area/desert_dam/interior/dam_interior/northeastern_tunnel)
 "cbk" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/clothing/glasses/welding,
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -36001,7 +36001,7 @@
 	},
 /area/desert_dam/interior/dam_interior/northeastern_tunnel)
 "cbW" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/tool,
 /obj/effect/spawner/random/technology_scanner,
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -36240,7 +36240,7 @@
 	},
 /area/desert_dam/interior/dam_interior/break_room)
 "ccE" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
 	icon_state = "whiteyellow";
@@ -36248,7 +36248,7 @@
 	},
 /area/desert_dam/interior/dam_interior/break_room)
 "ccF" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/tool/lighter/random,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
@@ -36381,7 +36381,7 @@
 	},
 /area/desert_dam/building/security/deathrow)
 "cdf" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/faxmachine,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison{
@@ -36399,7 +36399,7 @@
 /area/desert_dam/exterior/valley/valley_telecoms)
 "cdi" = (
 /obj/structure/machinery/computer/station_alert,
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -36706,7 +36706,7 @@
 	},
 /area/desert_dam/interior/caves/central_caves)
 "cdY" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/objective_landmark/medium,
@@ -36715,14 +36715,14 @@
 	},
 /area/desert_dam/building/bar/bar)
 "cdZ" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
 	icon_state = "grimy"
 	},
 /area/desert_dam/building/bar/bar)
 "cea" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/item/trash/cheesie,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
@@ -36730,7 +36730,7 @@
 	},
 /area/desert_dam/building/bar/bar)
 "ceb" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
@@ -36831,7 +36831,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/security/deathrow)
 "ceu" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/paper_bin,
 /obj/item/tool/pen,
 /obj/effect/landmark/objective_landmark/science,
@@ -37110,7 +37110,7 @@
 /area/desert_dam/interior/dam_interior/west_tunnel)
 "cfm" = (
 /obj/structure/machinery/computer/atmos_alert,
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -37263,7 +37263,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_cargo)
 "cfN" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/ammo_magazine/shotgun/slugs,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison{
@@ -37423,7 +37423,7 @@
 	},
 /area/desert_dam/exterior/river_mouth/southern)
 "cgp" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/filtration_button{
 	id = "filter 1"
 	},
@@ -38034,7 +38034,7 @@
 /turf/open/asphalt,
 /area/desert_dam/building/water_treatment_one/garage)
 "ciH" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/phoron{
 	amount = 50
 	},
@@ -38042,7 +38042,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/building/substation/west)
 "ciI" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/phoron{
 	amount = 50
 	},
@@ -38197,7 +38197,7 @@
 	},
 /area/desert_dam/building/medical/chemistry)
 "cjo" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/tool/stamp,
 /obj/item/paper_bin,
 /obj/effect/landmark/objective_landmark/science,
@@ -38208,7 +38208,7 @@
 	},
 /area/desert_dam/building/medical/chemistry)
 "cjp" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/packageWrap,
 /obj/item/tool/hand_labeler,
 /obj/effect/landmark/objective_landmark/science,
@@ -38286,7 +38286,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "darkbrown2"
@@ -38469,7 +38469,7 @@
 	},
 /area/desert_dam/interior/dam_interior/lobby)
 "cke" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/bodybag,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/prison{
@@ -38574,7 +38574,7 @@
 	},
 /area/desert_dam/building/telecommunication)
 "cks" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison{
 	dir = 1;
@@ -38651,7 +38651,7 @@
 	},
 /area/desert_dam/building/medical/chemistry)
 "ckC" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/device/flashlight/lamp/green,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/prison{
@@ -39049,7 +39049,7 @@
 	},
 /area/desert_dam/building/medical/chemistry)
 "clJ" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/stack/sheet/mineral/phoron{
 	amount = 25;
 	pixel_x = 3;
@@ -39062,7 +39062,7 @@
 	},
 /area/desert_dam/building/medical/chemistry)
 "clK" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/reagent_container/glass/beaker/large,
 /obj/item/reagent_container/glass/beaker/large,
 /obj/item/reagent_container/glass/beaker,
@@ -39095,7 +39095,7 @@
 	},
 /area/desert_dam/building/medical/west_wing_hallway)
 "clO" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/autopsy_scanner,
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/landmark/objective_landmark/science,
@@ -39140,7 +39140,7 @@
 	},
 /area/desert_dam/interior/dam_interior/lobby)
 "clT" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/door/window/brigdoor/northleft{
 	dir = 4
 	},
@@ -39308,7 +39308,7 @@
 	},
 /area/desert_dam/building/medical/chemistry)
 "cmv" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/storage/box/pillbottles,
 /obj/structure/disposalpipe/segment,
 /obj/effect/landmark/objective_landmark/science,
@@ -39317,7 +39317,7 @@
 	},
 /area/desert_dam/building/medical/chemistry)
 "cmw" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/storage/fancy/vials/random,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
@@ -39342,7 +39342,7 @@
 	},
 /area/desert_dam/building/medical/break_room)
 "cmC" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "darkbrown2"
@@ -39385,7 +39385,7 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_civilian)
 "cmL" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/structure/machinery/prop/almayer/computer/PC,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/carpet,
@@ -39401,7 +39401,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_civilian)
 "cmO" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/paper_bin,
 /obj/item/tool/pen,
 /obj/effect/landmark/objective_landmark/close,
@@ -39563,21 +39563,21 @@
 	},
 /area/desert_dam/interior/dam_interior/smes_backup)
 "cnu" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/item/paper_bin,
 /obj/item/tool/pen,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/carpet,
 /area/desert_dam/building/warehouse/breakroom)
 "cnv" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/northeastern_tunnel)
 "cnw" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/light,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/landmark/objective_landmark/medium,
@@ -39710,7 +39710,7 @@
 	},
 /area/desert_dam/building/medical/break_room)
 "cnO" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/light,
 /turf/open/floor/prison{
 	dir = 10;
@@ -39732,7 +39732,7 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_civilian)
 "cnS" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/computer/shuttle_control/dropship2,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison{
@@ -39935,13 +39935,13 @@
 /turf/open/floor/wood,
 /area/desert_dam/building/warehouse/breakroom)
 "coA" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/item/device/flashlight/lamp/green,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/carpet,
 /area/desert_dam/building/warehouse/breakroom)
 "coB" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/clothing/suit/storage/hazardvest,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison{
@@ -40008,7 +40008,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
 "coM" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/prison{
 	icon_state = "whitered"
@@ -40052,7 +40052,7 @@
 	},
 /area/desert_dam/building/medical/chemistry)
 "coS" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/door/window/brigdoor/northleft{
 	dir = 4
 	},
@@ -40208,7 +40208,7 @@
 	},
 /area/desert_dam/building/bar/bar)
 "cps" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison{
@@ -40277,14 +40277,14 @@
 /area/desert_dam/building/medical/chemistry)
 "cpC" = (
 /obj/structure/machinery/reagentgrinder,
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /turf/open/floor{
 	icon_state = "whitepurplecorner";
 	tag = "icon-whitepurplecorner"
 	},
 /area/desert_dam/building/medical/chemistry)
 "cpD" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	icon_state = "whitepurplecorner";
@@ -40479,7 +40479,7 @@
 	},
 /area/desert_dam/building/warehouse/breakroom)
 "cqh" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison{
@@ -40488,7 +40488,7 @@
 	},
 /area/desert_dam/building/warehouse/breakroom)
 "cqj" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/handcuffs,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison{
@@ -40496,7 +40496,7 @@
 	},
 /area/desert_dam/building/security/warden)
 "cqk" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/ammo_magazine/shotgun/slugs,
 /obj/item/ammo_magazine/shotgun/buckshot,
 /obj/effect/landmark/objective_landmark/close,
@@ -40513,7 +40513,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_cargo)
 "cqm" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/ammo_magazine/shotgun/buckshot,
 /obj/item/clothing/head/beret/sec/warden,
 /obj/effect/landmark/objective_landmark/close,
@@ -40541,7 +40541,7 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_dam)
 "cqr" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/door/window/brigdoor/northleft{
 	dir = 2
 	},
@@ -40640,7 +40640,7 @@
 	},
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "cqF" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/clothing/glasses/welding,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -40666,7 +40666,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/warehouse/warehouse)
 "cqI" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/folder,
 /obj/item/device/assembly/signaler,
 /obj/effect/decal/cleanable/dirt,
@@ -40746,7 +40746,7 @@
 	},
 /area/desert_dam/building/telecommunication)
 "crg" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/radio{
 	pixel_x = 3;
 	pixel_y = 2
@@ -40759,7 +40759,7 @@
 	},
 /area/desert_dam/building/telecommunication)
 "crh" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/analyzer,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -40769,7 +40769,7 @@
 	},
 /area/desert_dam/building/telecommunication)
 "cri" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -40792,7 +40792,7 @@
 	},
 /area/desert_dam/building/telecommunication)
 "crl" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/radio,
 /obj/item/device/radio{
 	pixel_x = 3;
@@ -41147,7 +41147,7 @@
 	},
 /area/desert_dam/building/telecommunication)
 "css" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/analyzer,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -41280,7 +41280,7 @@
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "csM" = (
 /obj/effect/spawner/random/toolbox,
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
@@ -41294,7 +41294,7 @@
 	},
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "csN" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
@@ -41663,7 +41663,7 @@
 	},
 /area/desert_dam/building/medical/lobby)
 "ctV" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/device/healthanalyzer,
 /obj/item/device/healthanalyzer,
 /obj/structure/machinery/power/apc{
@@ -42031,7 +42031,7 @@
 	},
 /area/desert_dam/interior/dam_interior/smes_backup)
 "cuX" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/clothing/glasses/hud/health,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/prison{
@@ -42221,7 +42221,7 @@
 	},
 /area/desert_dam/interior/dam_interior/south_tunnel)
 "cvB" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/folder/black_random,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison{
@@ -42230,7 +42230,7 @@
 	},
 /area/desert_dam/building/telecommunication)
 "cvC" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/folder/yellow,
 /obj/structure/machinery/light,
 /obj/effect/landmark/objective_landmark/close,
@@ -42248,7 +42248,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_cargo)
 "cvE" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/encryptionkey,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison{
@@ -42319,7 +42319,7 @@
 	},
 /area/desert_dam/building/medical/lobby)
 "cvO" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/window/reinforced{
 	dir = 1;
 	tag = "icon-rwindow (NORTH)"
@@ -42536,7 +42536,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_civilian)
 "cww" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/tool/hand_labeler,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison{
@@ -42551,7 +42551,7 @@
 	},
 /area/desert_dam/building/telecommunication)
 "cwy" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/phoron{
 	amount = 50
 	},
@@ -42627,7 +42627,7 @@
 	},
 /area/desert_dam/building/medical/lobby)
 "cwI" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/door/window/brigdoor/northleft{
 	dir = 8
 	},
@@ -42664,7 +42664,7 @@
 	},
 /area/desert_dam/building/medical/lobby)
 "cwM" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/storage/box/pillbottles,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/prison{
@@ -42866,7 +42866,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_telecoms)
 "cxo" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/phoron{
 	amount = 50
 	},
@@ -42954,7 +42954,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_medical)
 "cxA" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/window/reinforced{
 	dir = 8;
 	health = 80
@@ -42984,7 +42984,7 @@
 	},
 /area/desert_dam/interior/dam_interior/workshop)
 "cxD" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/storage/pill_bottle/kelotane{
 	pixel_x = -7
 	},
@@ -43111,7 +43111,7 @@
 /area/desert_dam/exterior/river/riverside_south)
 "cxY" = (
 /obj/structure/window/reinforced,
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/recharger,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/prison{
@@ -43430,7 +43430,7 @@
 	},
 /area/desert_dam/building/medical/primary_storage)
 "cyX" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/storage/firstaid/fire,
 /obj/item/storage/firstaid/toxin{
 	pixel_x = 5;
@@ -43480,7 +43480,7 @@
 /obj/item/tool/surgery/bonesetter,
 /obj/item/tool/surgery/FixOVein,
 /obj/item/stack/nanopaste,
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/prison{
 	dir = 4;
@@ -43503,7 +43503,7 @@
 /turf/closed/wall/r_wall,
 /area/desert_dam/building/substation/central)
 "czh" = (
-/obj/structure/rack{
+/obj/structure/surface/rack{
 	layer = 2.5
 	},
 /obj/effect/spawner/random/tech_supply,
@@ -43524,7 +43524,7 @@
 	},
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "czn" = (
-/obj/structure/rack{
+/obj/structure/surface/rack{
 	layer = 2.5
 	},
 /obj/effect/spawner/random/technology_scanner,
@@ -43611,7 +43611,7 @@
 	},
 /area/desert_dam/interior/dam_interior/CE_office)
 "czE" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/storage/box/masks,
 /obj/item/storage/box/gloves{
 	pixel_x = 6;
@@ -43632,7 +43632,7 @@
 	},
 /area/desert_dam/building/medical/primary_storage)
 "czF" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/storage/fancy/vials/random,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/prison{
@@ -43653,7 +43653,7 @@
 /obj/item/tool/surgery/scalpel,
 /obj/item/tool/surgery/hemostat,
 /obj/item/tool/surgery/scalpel/manager,
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/light{
 	dir = 4
 	},
@@ -43676,7 +43676,7 @@
 /obj/item/tool/surgery/scalpel,
 /obj/item/tool/surgery/hemostat,
 /obj/item/tool/surgery/scalpel/manager,
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/light{
 	dir = 4
 	},
@@ -43896,7 +43896,7 @@
 	},
 /area/desert_dam/exterior/river/riverside_south)
 "cAn" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/bodybag/cryobag,
 /obj/item/storage/box/syringes,
 /obj/effect/landmark/objective_landmark/science,
@@ -43938,7 +43938,7 @@
 /obj/item/tool/surgery/retractor,
 /obj/item/tool/surgery/cautery,
 /obj/item/tool/surgery/bonegel,
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/reagent_container/spray/cleaner{
 	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
 	name = "Surgery Cleaner"
@@ -43972,7 +43972,7 @@
 /obj/item/tool/surgery/retractor,
 /obj/item/tool/surgery/cautery,
 /obj/item/tool/surgery/bonegel,
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/reagent_container/spray/cleaner{
 	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
 	name = "Surgery Cleaner"
@@ -44051,7 +44051,7 @@
 	dir = 1;
 	icon_state = "pipe-j2"
 	},
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "whitegreen"
@@ -44074,7 +44074,7 @@
 /area/desert_dam/building/medical/office2)
 "cAK" = (
 /obj/structure/disposalpipe/segment,
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "whitegreencorner"
@@ -44299,7 +44299,7 @@
 	},
 /area/desert_dam/building/medical/west_wing_hallway)
 "cBl" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/storage/firstaid/o2,
 /obj/item/storage/firstaid/regular{
 	pixel_x = 5;
@@ -44374,7 +44374,7 @@
 	},
 /area/desert_dam/building/medical/surgery_room_two)
 "cBu" = (
-/obj/structure/rack{
+/obj/structure/surface/rack{
 	layer = 2.5
 	},
 /obj/effect/spawner/random/technology_scanner,
@@ -44625,7 +44625,7 @@
 /area/desert_dam/building/medical/emergency_room)
 "cCm" = (
 /obj/item/device/defibrillator,
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/prison{
 	dir = 10;
@@ -44707,7 +44707,7 @@
 	},
 /area/desert_dam/building/medical/surgery_room_two)
 "cCx" = (
-/obj/structure/rack{
+/obj/structure/surface/rack{
 	layer = 2.5
 	},
 /obj/effect/spawner/random/tech_supply,
@@ -44719,7 +44719,7 @@
 	},
 /area/desert_dam/building/substation/central)
 "cCy" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/phoron{
 	amount = 50
 	},
@@ -44730,7 +44730,7 @@
 	},
 /area/desert_dam/building/substation/central)
 "cCz" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/phoron{
 	amount = 50
 	},
@@ -44831,7 +44831,7 @@
 	},
 /area/desert_dam/interior/dam_interior/CE_office)
 "cCQ" = (
-/obj/structure/table/almayer,
+/obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/emails,
 /turf/open/floor/prison{
 	dir = 10;
@@ -44867,7 +44867,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_cargo)
 "cCW" = (
-/obj/structure/rack{
+/obj/structure/surface/rack{
 	layer = 2.5
 	},
 /obj/effect/spawner/random/tech_supply,
@@ -45018,7 +45018,7 @@
 	},
 /area/desert_dam/building/medical/emergency_room)
 "cDo" = (
-/obj/structure/table/almayer,
+/obj/structure/surface/table/almayer,
 /obj/item/reagent_container/glass/beaker/cryoxadone,
 /obj/item/reagent_container/glass/beaker/cryoxadone,
 /obj/structure/machinery/light{
@@ -45217,7 +45217,7 @@
 	},
 /area/desert_dam/exterior/river/riverside_east)
 "cDT" = (
-/obj/structure/table/almayer,
+/obj/structure/surface/table/almayer,
 /obj/item/storage/fancy/cigarettes/kpack,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -45861,7 +45861,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_civilian)
 "cFF" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -46592,7 +46592,7 @@
 	},
 /area/desert_dam/building/medical/garage)
 "cHz" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/device/defibrillator,
 /obj/item/device/defibrillator,
 /obj/item/device/defibrillator,
@@ -46859,7 +46859,7 @@
 	},
 /area/desert_dam/building/warehouse/loading)
 "cIt" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison{
@@ -46868,7 +46868,7 @@
 	},
 /area/desert_dam/building/warehouse/loading)
 "cIu" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/clothing/head/welding,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -46900,7 +46900,7 @@
 	},
 /area/desert_dam/building/warehouse/loading)
 "cIz" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/roller,
 /obj/item/roller,
 /obj/structure/machinery/light{
@@ -46911,7 +46911,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/building/medical/garage)
 "cIA" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/reagent_container/spray/cleaner,
 /obj/item/reagent_container/spray/cleaner,
 /obj/item/reagent_container/spray/cleaner,
@@ -46919,7 +46919,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/building/medical/garage)
 "cIB" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/storage/belt/medical/lifesaver/full,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/plating,
@@ -46938,7 +46938,7 @@
 	},
 /area/desert_dam/building/medical/garage)
 "cID" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/recharger,
 /obj/item/reagent_container/spray/cleaner,
 /turf/open/floor/prison{
@@ -47057,7 +47057,7 @@
 	},
 /area/desert_dam/building/medical/virology_wing)
 "cIV" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "sterile_white";
@@ -47202,7 +47202,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/exterior/valley/valley_cargo)
 "cJr" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/clothing/suit/armor/riot,
 /obj/item/clothing/suit/armor/riot,
 /obj/effect/landmark/objective_landmark/close,
@@ -47211,7 +47211,7 @@
 	},
 /area/desert_dam/building/security/armory)
 "cJs" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/storage/box/flashbangs{
 	pixel_x = 3;
 	pixel_y = -2
@@ -47223,7 +47223,7 @@
 	},
 /area/desert_dam/building/security/armory)
 "cJt" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/weapon/gun/pistol/holdout,
 /obj/item/weapon/gun/pistol/holdout{
 	pixel_x = 6;
@@ -47235,7 +47235,7 @@
 	},
 /area/desert_dam/building/security/armory)
 "cJv" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/weapon/gun/revolver/cmb,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison{
@@ -47267,7 +47267,7 @@
 /turf/closed/wall/r_wall,
 /area/desert_dam/building/medical/treatment_room)
 "cJB" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/paper_bin{
 	pixel_x = -3;
 	pixel_y = 7
@@ -47284,7 +47284,7 @@
 	},
 /area/desert_dam/building/medical/treatment_room)
 "cJC" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/computer/med_data/laptop{
 	pixel_y = 3
 	},
@@ -47337,7 +47337,7 @@
 	},
 /area/desert_dam/building/medical/virology_wing)
 "cJJ" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/prison{
 	dir = 8;
@@ -47516,7 +47516,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_cargo)
 "cKj" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/weapon/gun/shotgun/pump/cmb,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison{
@@ -47578,7 +47578,7 @@
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_medical)
 "cKt" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/storage/box/masks,
 /obj/item/storage/box/gloves{
 	pixel_x = 6;
@@ -47860,7 +47860,7 @@
 	},
 /area/desert_dam/building/medical/treatment_room)
 "cLm" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/floor/plating,
 /area/desert_dam/building/medical/east_wing_hallway)
 "cLo" = (
@@ -47875,7 +47875,7 @@
 	},
 /area/desert_dam/building/medical/virology_wing)
 "cLq" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/storage/fancy/vials/random,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/prison{
@@ -47888,7 +47888,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/prison{
 	dir = 10;
@@ -47982,7 +47982,7 @@
 	},
 /area/desert_dam/building/medical/treatment_room)
 "cLS" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/book/manual/medical_diagnostics_manual,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/prison{
@@ -47992,7 +47992,7 @@
 	},
 /area/desert_dam/building/medical/treatment_room)
 "cLT" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/device/defibrillator,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/prison{
@@ -48002,7 +48002,7 @@
 	},
 /area/desert_dam/building/medical/treatment_room)
 "cLU" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/storage/firstaid/o2,
 /obj/item/storage/firstaid/regular{
 	pixel_x = 5;
@@ -48016,7 +48016,7 @@
 	},
 /area/desert_dam/building/medical/treatment_room)
 "cLV" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/bodybag/cryobag,
 /obj/item/storage/box/syringes,
 /obj/effect/landmark/objective_landmark/science,
@@ -48243,7 +48243,7 @@
 /turf/closed/wall/r_wall,
 /area/desert_dam/building/medical/virology_isolation)
 "cMQ" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/prison{
 	dir = 9;
@@ -48273,7 +48273,7 @@
 	},
 /area/desert_dam/building/medical/virology_isolation)
 "cMU" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/tool/weedkiller/D24,
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -48295,7 +48295,7 @@
 	},
 /area/desert_dam/building/medical/virology_isolation)
 "cMW" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/storage/pill_bottle/spaceacillin,
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -48526,7 +48526,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_medical)
 "cNE" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/storage/fancy/vials/random,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/prison{
@@ -48802,7 +48802,7 @@
 	},
 /area/desert_dam/building/church)
 "cOu" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/item/storage/fancy/candle_box,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -48819,7 +48819,7 @@
 	},
 /area/desert_dam/building/church)
 "cOw" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/item/trash/candle,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
@@ -48827,7 +48827,7 @@
 	},
 /area/desert_dam/building/church)
 "cOx" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/item/storage/bible,
 /obj/structure/machinery/light{
 	dir = 1
@@ -48886,7 +48886,7 @@
 	},
 /area/desert_dam/building/substation/southwest)
 "cOI" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/prison{
 	dir = 10;
@@ -48949,7 +48949,7 @@
 	},
 /area/desert_dam/building/medical/virology_wing)
 "cOR" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/tank/anesthetic,
 /obj/item/storage/pill_bottle/spaceacillin,
 /obj/effect/landmark/objective_landmark/science,
@@ -48977,7 +48977,7 @@
 /turf/open/asphalt,
 /area/desert_dam/building/warehouse/warehouse)
 "cOU" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
@@ -49183,7 +49183,7 @@
 	},
 /area/desert_dam/building/bar/bar)
 "cPC" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/tool,
 /turf/open/floor/prison{
 	dir = 4;
@@ -49227,7 +49227,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/landing_pad_two)
 "cPJ" = (
-/obj/structure/rack{
+/obj/structure/surface/rack{
 	layer = 2.5
 	},
 /obj/effect/spawner/random/technology_scanner,
@@ -49301,7 +49301,7 @@
 	},
 /area/desert_dam/building/medical/virology_wing)
 "cPS" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/reagentgrinder,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/prison{
@@ -49319,7 +49319,7 @@
 	},
 /area/desert_dam/building/medical/virology_wing)
 "cPU" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/storage/pill_bottle/spaceacillin,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/prison{
@@ -49619,7 +49619,7 @@
 	name = "Security Cameras - Operations";
 	network = list("chigusa_1")
 	},
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "whiteyellow";
@@ -49656,7 +49656,7 @@
 /turf/open/floor/interior/tatami,
 /area/desert_dam/building/bar/bar)
 "cQU" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/item/ashtray/bronze,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -49669,7 +49669,7 @@
 	},
 /area/desert_dam/building/security/deathrow)
 "cQW" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/clothing/mask/muzzle,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison{
@@ -49677,7 +49677,7 @@
 	},
 /area/desert_dam/building/security/deathrow)
 "cQX" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/clothing/suit/straight_jacket,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison{
@@ -49685,7 +49685,7 @@
 	},
 /area/desert_dam/building/security/deathrow)
 "cQY" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/light,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison{
@@ -50016,7 +50016,7 @@
 	},
 /area/desert_dam/interior/dam_interior/south_tunnel_entrance)
 "cSe" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/computer/security{
 	name = "Security Cameras - Operations";
 	network = list("chigusa_1")
@@ -50032,7 +50032,7 @@
 	name = "Checkpoint Lockdown";
 	req_access = list()
 	},
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/prison,
 /area/desert_dam/interior/dam_interior/south_tunnel_entrance)
@@ -50057,7 +50057,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_civilian)
 "cSo" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/door/window/eastleft{
 	dir = 8;
 	name = "Security Desk"
@@ -50120,7 +50120,7 @@
 	},
 /area/desert_dam/building/substation/southwest)
 "cSx" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/phoron{
 	amount = 50
 	},
@@ -50132,7 +50132,7 @@
 	},
 /area/desert_dam/building/substation/southwest)
 "cSy" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/phoron{
 	amount = 50
 	},
@@ -50176,7 +50176,7 @@
 	},
 /area/desert_dam/interior/dam_interior/south_tunnel_entrance)
 "cSF" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/door/window/eastleft{
 	dir = 8;
 	name = "Security Desk"
@@ -50207,7 +50207,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_cargo)
 "cSK" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/prison{
 	dir = 6;
@@ -50244,7 +50244,7 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_cargo)
 "cSU" = (
-/obj/structure/rack{
+/obj/structure/surface/rack{
 	layer = 2.5
 	},
 /turf/open/floor/prison{
@@ -50252,7 +50252,7 @@
 	},
 /area/desert_dam/building/mining/workshop)
 "cSX" = (
-/obj/structure/rack{
+/obj/structure/surface/rack{
 	layer = 2.5
 	},
 /obj/effect/spawner/random/technology_scanner,
@@ -50261,7 +50261,7 @@
 	},
 /area/desert_dam/building/mining/workshop)
 "cSY" = (
-/obj/structure/rack{
+/obj/structure/surface/rack{
 	layer = 2.5
 	},
 /obj/effect/spawner/random/toolbox,
@@ -50392,7 +50392,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_cargo)
 "cTv" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "darkyellowcorners2"
@@ -50407,7 +50407,7 @@
 	},
 /area/desert_dam/building/mining/workshop)
 "cTA" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/tool,
 /turf/open/floor/prison{
 	icon_state = "darkyellow2"
@@ -50471,7 +50471,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_cargo)
 "cTL" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/light{
 	dir = 1
 	},
@@ -50529,7 +50529,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_civilian)
 "cTR" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/paper_bin,
 /obj/item/tool/pen,
 /turf/open/floor/prison{
@@ -50537,7 +50537,7 @@
 	},
 /area/desert_dam/building/mining/workshop)
 "cTS" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/floor/prison{
 	dir = 6;
 	icon_state = "darkyellow2"
@@ -50555,7 +50555,7 @@
 	is_resin_allowed = 0
 	})
 "cTZ" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/paper_bin,
 /obj/item/tool/pen,
 /turf/open/floor/prison{
@@ -50564,7 +50564,7 @@
 	},
 /area/desert_dam/building/mining/workshop)
 "cUa" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/floor/prison{
 	icon_state = "darkyellow2"
 	},
@@ -51235,7 +51235,7 @@
 	},
 /area/desert_dam/building/warehouse/loading)
 "cXd" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
 /obj/item/clothing/head/welding,
 /obj/effect/landmark/objective_landmark/close,
@@ -51492,7 +51492,7 @@
 	},
 /area/desert_dam/building/warehouse/loading)
 "cYB" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -51564,7 +51564,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/warehouse/warehouse)
 "cYK" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison{
 	dir = 10;
@@ -52178,7 +52178,7 @@
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dbA" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/reagent_container/food/snacks/bigbiteburger,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison{
@@ -52187,7 +52187,7 @@
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dbB" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/extinguisher_cabinet{
 	pixel_y = 30
 	},
@@ -52210,7 +52210,7 @@
 	},
 /area/desert_dam/building/warehouse/warehouse)
 "dbD" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/reagentgrinder,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
@@ -52231,7 +52231,7 @@
 	start_charge = 0
 	},
 /obj/structure/machinery/microwave,
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
 	tag = "icon-sterile_white"
@@ -52239,14 +52239,14 @@
 /area/desert_dam/building/cafeteria/cafeteria)
 "dbG" = (
 /obj/structure/machinery/microwave,
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
 	tag = "icon-sterile_white"
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dbH" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/sink/kitchen,
 /obj/structure/machinery/light{
 	dir = 1
@@ -53104,7 +53104,7 @@
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "deH" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
@@ -53462,7 +53462,7 @@
 	},
 /area/desert_dam/building/warehouse/loading)
 "dfK" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison{
@@ -53472,7 +53472,7 @@
 	},
 /area/desert_dam/building/warehouse/loading)
 "dfL" = (
-/obj/structure/rack{
+/obj/structure/surface/rack{
 	layer = 2.5
 	},
 /obj/item/stack/sheet/metal,
@@ -53488,7 +53488,7 @@
 	dir = 4;
 	tag = "icon-tube1 (EAST)"
 	},
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison{
 	dir = 10;
@@ -53502,7 +53502,7 @@
 /turf/open/asphalt/cement,
 /area/desert_dam/interior/dam_interior/central_tunnel)
 "dfT" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/tool/shovel/spade,
 /obj/structure/machinery/light{
 	dir = 4;
@@ -53513,7 +53513,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/hydroponics/hydroponics)
 "dfU" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/light{
 	dir = 8
 	},
@@ -53575,7 +53575,7 @@
 /turf/open/asphalt,
 /area/desert_dam/building/cafeteria/loading)
 "dgg" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -53654,7 +53654,7 @@
 	},
 /area/desert_dam/building/warehouse/loading)
 "dgt" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison{
 	dir = 10;
@@ -53663,7 +53663,7 @@
 	},
 /area/desert_dam/building/warehouse/loading)
 "dgu" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison{
@@ -53695,7 +53695,7 @@
 /area/desert_dam/building/warehouse/loading)
 "dgz" = (
 /obj/structure/machinery/light,
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison{
@@ -54071,7 +54071,7 @@
 "djg" = (
 /obj/item/paper_bin,
 /obj/item/tool/stamp,
-/obj/structure/table/woodentable/fancy,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/wood,
 /area/desert_dam/building/administration/office)
@@ -54080,7 +54080,7 @@
 /obj/item/tool/pen/blue{
 	pixel_x = 5
 	},
-/obj/structure/table/woodentable/fancy,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/wood,
 /area/desert_dam/building/administration/office)
@@ -54628,7 +54628,7 @@
 	},
 /area/desert_dam/building/cafeteria/loading)
 "dmP" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
 	tag = "icon-sterile_white"
@@ -54913,7 +54913,7 @@
 	},
 /area/desert_dam/building/water_treatment_one/lobby)
 "dqn" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/control_room)
@@ -55040,7 +55040,7 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_cargo)
 "drQ" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/tool/stamp,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/prison{
@@ -55078,7 +55078,7 @@
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "drZ" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/door/window/eastleft{
 	dir = 8;
 	name = "Security Desk"
@@ -55177,7 +55177,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/garage)
 "dsO" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/prison{
 	dir = 4;
@@ -55223,7 +55223,7 @@
 	},
 /area/desert_dam/exterior/river/riverside_central_south)
 "dto" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/garage)
@@ -55231,7 +55231,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/garage)
 "dtq" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison{
@@ -55353,7 +55353,7 @@
 /area/desert_dam/exterior/valley/valley_dam)
 "dun" = (
 /obj/structure/machinery/computer/med_data/laptop,
-/obj/structure/table/woodentable/fancy,
+/obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "carpet15-15";
@@ -55362,7 +55362,7 @@
 /area/desert_dam/building/administration/office)
 "duo" = (
 /obj/structure/machinery/computer/guestpass,
-/obj/structure/table/woodentable/fancy,
+/obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "carpet11-12";
@@ -55476,7 +55476,7 @@
 /area/desert_dam/interior/dam_interior/disposals)
 "duU" = (
 /obj/structure/machinery/computer/med_data/laptop,
-/obj/structure/table/woodentable/fancy,
+/obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/wood,
 /area/desert_dam/building/administration/office)
 "duV" = (
@@ -55484,12 +55484,12 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/structure/table/woodentable/fancy,
+/obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/wood,
 /area/desert_dam/building/administration/office)
 "duY" = (
 /obj/structure/machinery/computer/security/wooden_tv,
-/obj/structure/table/woodentable/fancy,
+/obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "carpet7-3";
@@ -55498,7 +55498,7 @@
 /area/desert_dam/building/administration/overseer_office)
 "duZ" = (
 /obj/structure/machinery/computer/med_data/laptop,
-/obj/structure/table/woodentable/fancy,
+/obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "carpet15-15";
@@ -55631,7 +55631,7 @@
 	},
 /area/desert_dam/interior/dam_interior/smes_main)
 "dwe" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/stack/rods{
 	amount = 25
 	},
@@ -55643,7 +55643,7 @@
 	},
 /area/desert_dam/interior/dam_interior/smes_main)
 "dwf" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/stack/cable_coil,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/landmark/objective_landmark/medium,
@@ -55653,7 +55653,7 @@
 	},
 /area/desert_dam/interior/dam_interior/smes_main)
 "dwg" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/light{
 	dir = 1;
 	tag = "icon-tube1 (NORTH)"
@@ -55676,7 +55676,7 @@
 	},
 /area/desert_dam/interior/dam_interior/control_room)
 "dwl" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/bedsheetbin,
 /turf/open/floor{
 	icon_state = "freezerfloor";
@@ -55684,7 +55684,7 @@
 	},
 /area/desert_dam/building/water_treatment_one/breakroom)
 "dwm" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/light{
 	dir = 1
 	},
@@ -55738,7 +55738,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/dorms/hallway_northwing)
 "dwW" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/disposalpipe/segment{
 	dir = 4;
 	icon_state = "pipe-c"
@@ -55751,7 +55751,7 @@
 	},
 /area/desert_dam/interior/dam_interior/smes_backup)
 "dwX" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/disposalpipe/segment,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/landmark/objective_landmark/medium,
@@ -55794,7 +55794,7 @@
 	},
 /area/desert_dam/building/dorms/hallway_northwing)
 "dxg" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison{
 	dir = 9;
@@ -55802,7 +55802,7 @@
 	},
 /area/desert_dam/building/dorms/hallway_northwing)
 "dxh" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison{
 	dir = 1;
@@ -55865,7 +55865,7 @@
 	},
 /area/desert_dam/building/hydroponics/hydroponics_breakroom)
 "dxM" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/extinguisher_cabinet{
 	pixel_y = 30
 	},
@@ -55877,7 +55877,7 @@
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dxN" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison{
@@ -55892,7 +55892,7 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_medical)
 "dxR" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/food/snacks/donut,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison{
@@ -55914,7 +55914,7 @@
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dxT" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/food/snacks/candy,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison{
@@ -55945,7 +55945,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/garage)
 "dya" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
@@ -56026,7 +56026,7 @@
 	},
 /area/desert_dam/building/dorms/pool)
 "dyS" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/food/snacks/chips,
 /obj/item/reagent_container/food/snacks/cookie,
 /obj/item/reagent_container/food/snacks/donkpocket,
@@ -56286,7 +56286,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_labs)
 "dAd" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/food/snacks/chips,
 /obj/item/reagent_container/food/snacks/cookie,
 /obj/item/reagent_container/food/snacks/donut,
@@ -56298,7 +56298,7 @@
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dAf" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/food/snacks/cheesewedge,
 /obj/item/reagent_container/food/snacks/chips,
 /obj/item/reagent_container/food/snacks/cookie,
@@ -56310,7 +56310,7 @@
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dAg" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/food/snacks/chips,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/objective_landmark/far,
@@ -56321,7 +56321,7 @@
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dAk" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/food/snacks/bun,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison{
@@ -56429,7 +56429,7 @@
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dBb" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/food/snacks/cookie,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison{
@@ -56439,7 +56439,7 @@
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dBc" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/food/snacks/candy,
 /obj/item/reagent_container/food/snacks/bun,
 /obj/item/reagent_container/food/snacks/donkpocket,
@@ -56454,7 +56454,7 @@
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dBd" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/food/snacks/bun,
 /obj/item/reagent_container/food/snacks/bun,
 /obj/item/reagent_container/food/snacks/cheesewedge,
@@ -56467,7 +56467,7 @@
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dBe" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark{
 	name = "crap_item"
 	},
@@ -56480,7 +56480,7 @@
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dBf" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/food/snacks/candy,
 /obj/item/reagent_container/food/snacks/bun,
 /obj/effect/landmark/objective_landmark/far,
@@ -56555,7 +56555,7 @@
 	},
 /area/desert_dam/building/dorms/restroom)
 "dBw" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/floor/prison{
 	dir = 9;
 	icon_state = "greenfull"
@@ -56590,7 +56590,7 @@
 /obj/item/weapon/melee/baseballbat/metal{
 	pixel_x = 5
 	},
-/obj/structure/rack{
+/obj/structure/surface/rack{
 	layer = 2.5
 	},
 /obj/structure/machinery/light{
@@ -56623,14 +56623,14 @@
 /obj/structure/machinery/computer/pod/old{
 	name = "Personal Computer"
 	},
-/obj/structure/table/woodentable/fancy,
+/obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor{
 	icon_state = "wood"
 	},
 /area/desert_dam/building/water_treatment_one/hallway)
 "dBK" = (
 /obj/structure/disposalpipe/segment,
-/obj/structure/table/woodentable/fancy,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/wood,
@@ -56685,7 +56685,7 @@
 	},
 /area/desert_dam/building/water_treatment_one/breakroom)
 "dBU" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
 	icon_state = "white"
@@ -56767,7 +56767,7 @@
 	},
 /area/desert_dam/building/dorms/pool)
 "dCo" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/storage/fancy/vials/random,
 /turf/open/floor/prison{
 	icon_state = "bright_clean2"
@@ -56782,7 +56782,7 @@
 	is_resin_allowed = 0
 	})
 "dCw" = (
-/obj/structure/table/almayer,
+/obj/structure/surface/table/almayer,
 /obj/item/spacecash/c10,
 /turf/open/floor/wood,
 /area/desert_dam/building/medical/break_room)
@@ -56805,7 +56805,7 @@
 /turf/open/asphalt/cement,
 /area/desert_dam/interior/dam_interior/west_tunnel)
 "dCB" = (
-/obj/structure/table/woodentable/fancy,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/wood,
 /area/desert_dam/building/medical/CMO)
@@ -56856,7 +56856,7 @@
 	},
 /area/desert_dam/building/water_treatment_one/breakroom)
 "dCI" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/light{
 	dir = 8
 	},
@@ -56958,7 +56958,7 @@
 	},
 /area/desert_dam/building/dorms/restroom)
 "dCY" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/bedsheetbin,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison{
@@ -57000,7 +57000,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_cargo)
 "dDv" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/clothing/head/welding,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison{
@@ -57009,7 +57009,7 @@
 	},
 /area/desert_dam/interior/dam_interior/tech_storage)
 "dDw" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/clothing/head/welding,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison{
@@ -57018,7 +57018,7 @@
 /area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "dDx" = (
 /obj/item/clothing/head/welding,
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/prison{
 	dir = 10;
@@ -57043,7 +57043,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_northwest)
 "dDD" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/clothing/head/welding,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/prison{
@@ -57187,7 +57187,7 @@
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/river/riverside_south)
 "dEp" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
 	icon_state = "wood"
@@ -57218,7 +57218,7 @@
 	},
 /area/desert_dam/building/dorms/hallway_westwing)
 "dEv" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/food/snacks/chips,
 /obj/item/reagent_container/food/snacks/donut,
 /obj/effect/decal/cleanable/dirt,
@@ -57476,7 +57476,7 @@
 	},
 /area/desert_dam/building/dorms/restroom)
 "dGa" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/food/snacks/candy,
 /obj/item/reagent_container/food/snacks/candy,
 /obj/item/reagent_container/food/snacks/candy,
@@ -57573,7 +57573,7 @@
 	},
 /area/desert_dam/building/dorms/hallway_westwing)
 "dGD" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/food/snacks/donkpocket,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/objective_landmark/far,
@@ -57590,7 +57590,7 @@
 	},
 /area/desert_dam/building/dorms/hallway_westwing)
 "dGF" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "green"
@@ -57696,7 +57696,7 @@
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dHj" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/food/snacks/candy,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/objective_landmark/far,
@@ -57730,7 +57730,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_civilian)
 "dHo" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison{
@@ -57750,7 +57750,7 @@
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dHr" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/light{
 	dir = 1
 	},
@@ -57764,7 +57764,7 @@
 	},
 /area/desert_dam/building/hydroponics/hydroponics_breakroom)
 "dHs" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/clothing/head/welding,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -57852,7 +57852,7 @@
 	},
 /area/desert_dam/building/dorms/restroom)
 "dHI" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/food/snacks/candy,
 /obj/item/reagent_container/food/snacks/candy,
 /obj/item/reagent_container/food/snacks/candy,
@@ -57882,7 +57882,7 @@
 /turf/open/asphalt,
 /area/desert_dam/building/warehouse/loading)
 "dHQ" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/power/apc{
 	dir = 4;
 	pixel_x = 28;
@@ -57898,7 +57898,7 @@
 	},
 /area/desert_dam/building/hydroponics/hydroponics)
 "dHS" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark{
 	name = "crap_item"
 	},
@@ -58046,7 +58046,7 @@
 	},
 /area/desert_dam/building/dorms/pool)
 "dIs" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/disposalpipe/segment,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/landmark/objective_landmark/medium,
@@ -58185,7 +58185,7 @@
 /area/desert_dam/building/dorms/pool)
 "dIQ" = (
 /obj/item/clothing/under/shorts/red,
-/obj/structure/rack{
+/obj/structure/surface/rack{
 	layer = 2.5
 	},
 /obj/structure/disposalpipe/segment{
@@ -58283,7 +58283,7 @@
 /area/desert_dam/building/dorms/pool)
 "dJm" = (
 /obj/item/tool/mop,
-/obj/structure/rack{
+/obj/structure/surface/rack{
 	layer = 2.5
 	},
 /obj/effect/landmark/objective_landmark/far,
@@ -58432,7 +58432,7 @@
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dJX" = (
-/obj/structure/rack{
+/obj/structure/surface/rack{
 	layer = 2.5
 	},
 /obj/effect/landmark/objective_landmark/far,
@@ -58542,7 +58542,7 @@
 	},
 /area/desert_dam/interior/dam_interior/break_room)
 "dKm" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison{
 	dir = 10;
@@ -58550,7 +58550,7 @@
 	},
 /area/desert_dam/building/dorms/pool)
 "dKn" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison{
 	icon_state = "blue"
@@ -58715,7 +58715,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_cargo)
 "dKT" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -58813,7 +58813,7 @@
 	},
 /area/desert_dam/interior/dam_interior/disposals)
 "dLe" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/radio,
 /obj/item/device/radio,
 /obj/item/storage/toolbox/emergency,
@@ -59097,7 +59097,7 @@
 	},
 /area/desert_dam/exterior/river/riverside_east)
 "dMx" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/clothing/ears/earmuffs,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/objective_landmark/medium,
@@ -59164,7 +59164,7 @@
 	name = "Security Cameras - Operations";
 	network = list("chigusa_1")
 	},
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/floor/prison{
 	dir = 9;
 	icon_state = "red"
@@ -59254,7 +59254,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_cargo)
 "dNB" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/storage/box/lightstick/red,
 /obj/effect/landmark{
 	name = "good_item"
@@ -59266,7 +59266,7 @@
 	},
 /area/desert_dam/interior/dam_interior/disposals)
 "dNF" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/technology_scanner,
 /obj/effect/spawner/random/tool,
 /obj/effect/decal/cleanable/dirt,
@@ -59529,13 +59529,13 @@
 /turf/open/floor/wood,
 /area/desert_dam/building/medical/break_room)
 "dOD" = (
-/obj/structure/table/almayer,
+/obj/structure/surface/table/almayer,
 /obj/item/toy/deck,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood,
 /area/desert_dam/building/medical/break_room)
 "dOE" = (
-/obj/structure/table/almayer,
+/obj/structure/surface/table/almayer,
 /obj/item/stack/medical/ointment,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood,
@@ -59590,13 +59590,13 @@
 	},
 /area/desert_dam/building/medical/break_room)
 "dOM" = (
-/obj/structure/table/almayer,
+/obj/structure/surface/table/almayer,
 /obj/item/spacecash/c10,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood,
 /area/desert_dam/building/medical/break_room)
 "dOO" = (
-/obj/structure/table/almayer,
+/obj/structure/surface/table/almayer,
 /obj/item/ashtray/glass,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood,
@@ -59703,7 +59703,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_cargo)
 "dPj" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/light,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/prison{
@@ -60999,7 +60999,7 @@
 	},
 /area/desert_dam/building/medical/emergency_room)
 "dSv" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/roller,
 /obj/item/roller,
 /obj/effect/decal/cleanable/dirt,
@@ -61394,7 +61394,7 @@
 /turf/closed/wall,
 /area/desert_dam/building/cafeteria/cafeteria)
 "dUe" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/door/poddoor/shutters{
 	dir = 2;
 	icon_state = "shutter1"
@@ -61406,7 +61406,7 @@
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dUf" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/poddoor/shutters{
 	dir = 2;
@@ -61733,7 +61733,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_cargo)
 "dVl" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/food/snacks/cookie,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/objective_landmark/far,
@@ -61758,7 +61758,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_cargo)
 "dVo" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/food/snacks/bun,
 /obj/item/reagent_container/food/snacks/bun,
 /obj/item/reagent_container/food/snacks/cheesewedge,
@@ -61786,7 +61786,7 @@
 	},
 /area/desert_dam/building/water_treatment_one/lobby)
 "dVs" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/paper_bin,
 /obj/item/tool/pen,
 /obj/effect/landmark/objective_landmark/medium,
@@ -61809,7 +61809,7 @@
 	},
 /area/desert_dam/building/water_treatment_one/lobby)
 "dVv" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark{
 	name = "crap_item"
 	},
@@ -62267,7 +62267,7 @@
 	},
 /area/desert_dam/building/hydroponics/hydroponics_storage)
 "dWu" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison,
@@ -62282,7 +62282,7 @@
 	},
 /area/desert_dam/building/water_treatment_one/breakroom)
 "dWy" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark{
 	name = "crap_item"
 	},
@@ -62295,7 +62295,7 @@
 	},
 /area/desert_dam/building/water_treatment_one/floodgate_control)
 "dWz" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/computer/security{
 	name = "Security Cameras - Operations";
 	network = list("chigusa_1")
@@ -62303,7 +62303,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/floodgate_control)
 "dWA" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/food/snacks/candy,
 /obj/item/reagent_container/food/snacks/bun,
 /obj/effect/decal/cleanable/dirt,
@@ -62347,7 +62347,7 @@
 	},
 /area/desert_dam/building/water_treatment_one/floodgate_control)
 "dWG" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/computer/emails,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/floodgate_control)
@@ -62363,7 +62363,7 @@
 /turf/open/floor/wood,
 /area/desert_dam/building/water_treatment_one/hallway)
 "dWK" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark{
 	name = "crap_item"
 	},
@@ -62372,7 +62372,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/floodgate_control)
 "dWL" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/computer/atmos_alert,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/floodgate_control)
@@ -62384,7 +62384,7 @@
 	},
 /area/desert_dam/building/water_treatment_one/breakroom)
 "dWN" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/paper_bin,
 /obj/item/tool/pen,
 /obj/effect/decal/cleanable/dirt,
@@ -62402,7 +62402,7 @@
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dWP" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark{
 	name = "crap_item"
 	},
@@ -62797,7 +62797,7 @@
 	},
 /area/desert_dam/building/dorms/restroom)
 "dYC" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/radio,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison{
@@ -62806,7 +62806,7 @@
 	},
 /area/desert_dam/building/dorms/hallway_northwing)
 "dYD" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/ashtray/bronze,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison{
@@ -62996,7 +62996,7 @@
 	},
 /area/desert_dam/building/dorms/hallway_northwing)
 "dZU" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison{
 	dir = 8;
@@ -63010,7 +63010,7 @@
 	},
 /area/desert_dam/building/dorms/hallway_northwing)
 "dZY" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/trash/plate,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison{
@@ -63074,7 +63074,7 @@
 	},
 /area/desert_dam/building/water_treatment_one/hallway)
 "eaz" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
 	icon_state = "wood"
@@ -63087,13 +63087,13 @@
 	},
 /area/desert_dam/building/dorms/hallway_westwing)
 "eaC" = (
-/obj/structure/table/gamblingtable,
+/obj/structure/surface/table/gamblingtable,
 /turf/open/floor{
 	icon_state = "wood"
 	},
 /area/desert_dam/building/dorms/hallway_westwing)
 "eaG" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/item/paper_bin,
 /obj/item/tool/pen,
 /obj/effect/landmark/objective_landmark/far,
@@ -63102,7 +63102,7 @@
 	},
 /area/desert_dam/building/dorms/hallway_westwing)
 "eaH" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/structure/machinery/computer/emails,
 /turf/open/floor{
 	icon_state = "wood"
@@ -63177,7 +63177,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/purification)
 "eaW" = (
-/obj/structure/table/woodentable/fancy,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/light{
 	dir = 4
 	},
@@ -63212,7 +63212,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/dorms/hallway_westwing)
 "ebf" = (
-/obj/structure/table/woodentable/fancy,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/light{
 	dir = 8
 	},
@@ -63236,7 +63236,7 @@
 	},
 /area/desert_dam/building/dorms/hallway_westwing)
 "ebk" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/powercell,
 /turf/open/floor/prison{
 	dir = 4;
@@ -63257,7 +63257,7 @@
 	},
 /area/desert_dam/building/dorms/pool)
 "ebp" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/powercell,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison{
@@ -63266,7 +63266,7 @@
 	},
 /area/desert_dam/building/dorms/pool)
 "ebq" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/radio,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison{
@@ -63327,7 +63327,7 @@
 	},
 /area/desert_dam/building/water_treatment_one/hallway)
 "ebA" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/paper_bin,
 /obj/structure/machinery/light{
 	dir = 4
@@ -63345,7 +63345,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/garage)
 "ebD" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/light,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -64411,7 +64411,7 @@
 /obj/item/tool/surgery/bonesetter,
 /obj/item/tool/surgery/FixOVein,
 /obj/item/stack/nanopaste,
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/prison{
 	dir = 4;
@@ -64435,7 +64435,7 @@
 	})
 "eBZ" = (
 /obj/item/storage/fancy/vials/random,
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/prison{
 	dir = 10;
@@ -64458,7 +64458,7 @@
 /turf/open/asphalt,
 /area/desert_dam/building/water_treatment_one/garage)
 "eDQ" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/science,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison,
@@ -64519,7 +64519,7 @@
 /turf/closed/wall/rock/orange,
 /area/desert_dam/exterior/rock)
 "fqI" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/science,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
@@ -64572,7 +64572,7 @@
 	},
 /area/desert_dam/building/warehouse/loading)
 "fPp" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/prison{
 	dir = 1;
@@ -64589,7 +64589,7 @@
 	})
 "fTk" = (
 /obj/structure/sink/kitchen,
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/light{
 	dir = 1
 	},
@@ -64672,7 +64672,7 @@
 	is_resin_allowed = 0
 	})
 "grQ" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/storage/fancy/vials/random,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/prison,
@@ -64726,7 +64726,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_wilderness)
 "gNq" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/tool/pen,
 /turf/open/floor{
 	icon_state = "wood"
@@ -64744,7 +64744,7 @@
 	is_resin_allowed = 0
 	})
 "gUh" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison{
@@ -64790,7 +64790,7 @@
 	is_resin_allowed = 0
 	})
 "het" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/prison{
 	dir = 1;
@@ -64804,7 +64804,7 @@
 	},
 /area/desert_dam/building/cafeteria/cold_room)
 "hmA" = (
-/obj/structure/table/almayer,
+/obj/structure/surface/table/almayer,
 /obj/item/paper_bin,
 /obj/item/tool/pen,
 /obj/item/folder/black,
@@ -64896,7 +64896,7 @@
 	},
 /area/desert_dam/interior/dam_interior/hanger)
 "hOA" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison{
@@ -64921,7 +64921,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_labs)
 "hWz" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/wood,
 /area/desert_dam/building/administration/overseer_office)
@@ -64963,7 +64963,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_labs)
 "iqK" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/phoron{
 	amount = 50
 	},
@@ -65017,7 +65017,7 @@
 	},
 /area/desert_dam/interior/dam_interior/hanger)
 "iYy" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/lightreplacer,
 /obj/item/clothing/mask/rebreather,
 /obj/effect/decal/cleanable/dirt,
@@ -65091,7 +65091,7 @@
 	},
 /area/desert_dam/building/hydroponics/hydroponics)
 "kRX" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/storage/fancy/vials/random,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
@@ -65101,7 +65101,7 @@
 	},
 /area/desert_dam/building/lab_northwest/west_lab_xenoflora)
 "kUz" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
@@ -65141,7 +65141,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_labs)
 "lib" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/window/reinforced{
 	dir = 8;
 	health = 80
@@ -65167,7 +65167,7 @@
 	},
 /area/desert_dam/building/medical/north_wing_hallway)
 "lkZ" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
@@ -65200,7 +65200,7 @@
 	},
 /area/desert_dam/interior/dam_interior/engine_room)
 "lxq" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark{
 	name = "crap_item"
 	},
@@ -65272,7 +65272,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_labs)
 "lUl" = (
-/obj/structure/table/woodentable/fancy,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
 	dir = 8;
@@ -65289,7 +65289,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_dam)
 "mbl" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/light{
 	dir = 1
 	},
@@ -65319,7 +65319,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_labs)
 "mhU" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
@@ -65544,7 +65544,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_cargo)
 "nSN" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/prison{
 	dir = 8;
@@ -65552,7 +65552,7 @@
 	},
 /area/desert_dam/building/medical/office2)
 "nTa" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
@@ -65585,7 +65585,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_medical)
 "odr" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/roller,
 /obj/item/roller,
 /obj/item/roller,
@@ -65689,7 +65689,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_cargo)
 "oVs" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
 	icon_state = "wood"
@@ -65755,7 +65755,7 @@
 	is_resin_allowed = 0
 	})
 "ppS" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/prison{
 	dir = 8;
@@ -65784,7 +65784,7 @@
 	},
 /area/desert_dam/building/substation/northwest)
 "pFj" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/storage/fancy/vials/random,
 /turf/open/floor{
 	icon_state = "wood"
@@ -65795,7 +65795,7 @@
 /turf/open/asphalt,
 /area/desert_dam/building/hydroponics/hydroponics_loading)
 "pIg" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison{
@@ -65814,7 +65814,7 @@
 "pSV" = (
 /obj/item/tool/pen,
 /obj/item/paper_bundle,
-/obj/structure/table/woodentable/fancy,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/computer/objective,
 /turf/open/floor{
 	icon_state = "wood"
@@ -65849,7 +65849,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
 "qbC" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/structure/machinery/computer/objective,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/wood,
@@ -65894,7 +65894,7 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_northwest)
 "qHt" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
 	icon_state = "dark2";
@@ -65920,7 +65920,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
 "qXZ" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison,
@@ -65985,7 +65985,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/hydroponics/hydroponics_loading)
 "rEH" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
 	icon_state = "whiteyellow";
@@ -66221,7 +66221,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_labs)
 "tdf" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/folder/yellow,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
@@ -66329,7 +66329,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_labs)
 "uyn" = (
-/obj/structure/rack{
+/obj/structure/surface/rack{
 	layer = 2.5
 	},
 /obj/effect/landmark/objective_landmark/far,
@@ -66356,7 +66356,7 @@
 	},
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "uRx" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison{
 	icon_state = "blue"
@@ -66391,7 +66391,7 @@
 	is_resin_allowed = 0
 	})
 "vhs" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
 	dir = 10;
@@ -66565,7 +66565,7 @@
 	},
 /area/desert_dam/building/cafeteria/loading)
 "wFv" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/prison{
 	dir = 8;
@@ -66740,7 +66740,7 @@
 	is_resin_allowed = 0
 	})
 "xzc" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/computer/objective,
 /turf/open/floor{
 	icon_state = "wood"
@@ -66758,7 +66758,7 @@
 	},
 /area/desert_dam/interior/dam_interior/hanger)
 "xJG" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/paper_bin,
 /obj/item/tool/pen,
 /obj/effect/landmark/objective_landmark/medium,
@@ -66785,7 +66785,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_cargo)
 "xRf" = (
-/obj/structure/rack{
+/obj/structure/surface/rack{
 	layer = 2.5
 	},
 /obj/effect/spawner/random/tech_supply,

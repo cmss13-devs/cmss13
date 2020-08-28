@@ -125,18 +125,18 @@
 /turf/open/floor/greengrid,
 /area/bigred/ground/security)
 "t" = (
-/obj/structure/table/almayer,
+/obj/structure/surface/table/almayer,
 /obj/item/disk/objective,
 /turf/open/floor/greengrid,
 /area/bigred/ground/security)
 "u" = (
-/obj/structure/table/almayer,
+/obj/structure/surface/table/almayer,
 /obj/item/ashtray/bronze,
 /obj/item/trash/cigbutt/cigarbutt,
 /turf/open/floor/greengrid,
 /area/bigred/ground/security)
 "v" = (
-/obj/structure/table/almayer,
+/obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/security/wooden_tv{
 	dir = 8
 	},
@@ -190,7 +190,7 @@
 	},
 /area/bigred/ground/security)
 "D" = (
-/obj/structure/table/almayer,
+/obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/secure_data{
 	dir = 8
 	},
@@ -224,7 +224,7 @@
 /area/bigred/ground/security)
 "H" = (
 /obj/item/device/radio,
-/obj/structure/table/almayer,
+/obj/structure/surface/table/almayer,
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -248,14 +248,14 @@
 /obj/structure/machinery/camera/autoname{
 	dir = 8
 	},
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/spawner/random/toolbox,
 /turf/open/floor{
 	icon_state = "dark"
 	},
 /area/bigred/ground/security)
 "L" = (
-/obj/structure/table/almayer,
+/obj/structure/surface/table/almayer,
 /obj/item/device/motiondetector,
 /turf/open/floor{
 	icon_state = "dark"
@@ -274,21 +274,21 @@
 	},
 /area/bigred/ground/security)
 "N" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/storage/firstaid,
 /turf/open/floor{
 	icon_state = "dark"
 	},
 /area/bigred/ground/security)
 "O" = (
-/obj/structure/table/almayer,
+/obj/structure/surface/table/almayer,
 /obj/item/handcuffs,
 /turf/open/floor{
 	icon_state = "dark"
 	},
 /area/bigred/ground/security)
 "P" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/stack/sheet/metal/small_stack,
 /turf/open/floor{
 	icon_state = "dark"
@@ -304,14 +304,14 @@
 	},
 /area/bigred/ground/security)
 "R" = (
-/obj/structure/table/almayer,
+/obj/structure/surface/table/almayer,
 /obj/effect/spawner/random/tool,
 /turf/open/floor{
 	icon_state = "dark"
 	},
 /area/bigred/ground/security)
 "S" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/clothing/mask/gas,
 /obj/item/device/flashlight,
 /obj/structure/machinery/light{
@@ -333,12 +333,12 @@
 /turf/open/floor/greengrid,
 /area/bigred/ground/security)
 "W" = (
-/obj/structure/table/almayer,
+/obj/structure/surface/table/almayer,
 /obj/item/document_objective/folder,
 /turf/open/floor/greengrid,
 /area/bigred/ground/security)
 "X" = (
-/obj/structure/table/almayer,
+/obj/structure/surface/table/almayer,
 /obj/effect/spawner/random/technology_scanner,
 /turf/open/floor/greengrid,
 /area/bigred/ground/security)

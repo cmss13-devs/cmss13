@@ -57,7 +57,7 @@
 /turf/open/floor/wood,
 /area/lv624/ground/caves/central2)
 "ap" = (
-/obj/structure/table/woodentable/poor,
+/obj/structure/surface/table/woodentable/poor,
 /obj/item/tool/candle,
 /obj/item/tool/match{
 	pixel_x = 6;
@@ -69,7 +69,7 @@
 /turf/open/floor/wood,
 /area/lv624/ground/caves/central2)
 "aq" = (
-/obj/structure/table/woodentable/poor,
+/obj/structure/surface/table/woodentable/poor,
 /obj/item/explosive/grenade/HE/m15,
 /obj/item/weapon/gun/shotgun/pump/cmb,
 /obj/item/ammo_magazine/shotgun/buckshot,
@@ -164,14 +164,14 @@
 /turf/open/gm/grass,
 /area/lv624/ground/caves/central2)
 "aI" = (
-/obj/structure/table/woodentable/poor,
+/obj/structure/surface/table/woodentable/poor,
 /obj/item/weapon/gun/shotgun/pump/cmb,
 /obj/item/ammo_magazine/revolver/small,
 /obj/item/ammo_magazine/revolver/small,
 /turf/open/floor/wood,
 /area/lv624/ground/caves/central2)
 "aJ" = (
-/obj/structure/table/woodentable/poor,
+/obj/structure/surface/table/woodentable/poor,
 /obj/item/device/flashlight/lantern,
 /obj/item/weapon/gun/shotgun/pump/cmb,
 /obj/item/ammo_magazine/revolver/small,

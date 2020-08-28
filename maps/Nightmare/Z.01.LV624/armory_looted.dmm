@@ -22,7 +22,7 @@
 	desc = "A model of an ancient Earth communication device.";
 	force = 8
 	},
-/obj/structure/rack{
+/obj/structure/surface/rack{
 	layer = 2.5
 	},
 /obj/structure/window/reinforced{
@@ -162,7 +162,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/weapon/gun/revolver/cmb,
 /obj/item/ammo_magazine/revolver/cmb,
 /obj/item/ammo_magazine/revolver/cmb,

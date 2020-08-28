@@ -934,7 +934,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/east1)
 "adC" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/gold{
 	amount = 2
 	},
@@ -948,7 +948,7 @@
 	},
 /area/lv624/ground/sand5)
 "adD" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/diamond{
 	amount = 2
 	},
@@ -959,7 +959,7 @@
 	},
 /area/lv624/ground/sand5)
 "adE" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/stack/sheet/metal{
 	amount = 50;
 	pixel_x = 4;
@@ -975,7 +975,7 @@
 	},
 /area/lv624/ground/sand5)
 "adF" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/tool/shovel,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
@@ -1028,7 +1028,7 @@
 	},
 /area/lv624/ground/sand5)
 "adN" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/iron{
 	amount = 5
 	},
@@ -1053,7 +1053,7 @@
 /turf/open/floor/wood,
 /area/lv624/ground/caves/central2)
 "adR" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/silver{
 	amount = 20
 	},
@@ -1073,7 +1073,7 @@
 	},
 /area/lv624/ground/sand6)
 "adT" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/tool/pickaxe,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
@@ -1102,7 +1102,7 @@
 /obj/item/stack/sheet/mineral/sandstone{
 	amount = 50
 	},
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spider/stickyweb{
 	icon_state = "cobweb1"
 	},
@@ -1113,7 +1113,7 @@
 /area/lv624/ground/caves/east1)
 "adY" = (
 /obj/effect/decal/remains/xeno,
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark{
 	name = "good_item"
 	},
@@ -1123,7 +1123,7 @@
 	},
 /area/lv624/ground/caves/east1)
 "adZ" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/weapon/melee/harpoon,
 /turf/open/floor{
 	dir = 4;
@@ -1185,7 +1185,7 @@
 /turf/closed/wall/mineral/sandstone,
 /area/lv624/ground/sand6)
 "aei" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/tritium{
 	pixel_x = -4
 	},
@@ -1239,7 +1239,7 @@
 /area/lv624/ground/sand6)
 "aep" = (
 /obj/effect/decal/remains/xeno,
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
 	dir = 4;
@@ -1247,7 +1247,7 @@
 	},
 /area/lv624/ground/sand6)
 "aeq" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/weapon/melee/harpoon/yautja{
 	name = "Alien Harpoon"
 	},
@@ -1513,7 +1513,7 @@
 /turf/open/floor,
 /area/lv624/ground/sand2)
 "afi" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark{
 	name = "crap_item"
 	},
@@ -1566,7 +1566,7 @@
 /turf/open/floor,
 /area/lv624/ground/sand2)
 "afq" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/weapon/melee/harpoon/yautja{
 	name = "Alien Harpoon"
 	},
@@ -1611,7 +1611,7 @@
 	},
 /area/lv624/ground/sand2)
 "afv" = (
-/obj/structure/table/reinforced{
+/obj/structure/surface/table/reinforced{
 	dir = 1;
 	flipped = 1
 	},
@@ -1621,7 +1621,7 @@
 	},
 /area/lv624/ground/sand2)
 "afw" = (
-/obj/structure/table/reinforced{
+/obj/structure/surface/table/reinforced{
 	dir = 1;
 	flipped = 1
 	},
@@ -1683,7 +1683,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/sand2)
 "afG" = (
-/obj/structure/table/reinforced{
+/obj/structure/surface/table/reinforced{
 	dir = 8;
 	flipped = 1
 	},
@@ -1725,7 +1725,7 @@
 /turf/open/floor/plating,
 /area/lv624/ground/sand2)
 "afO" = (
-/obj/structure/table/reinforced{
+/obj/structure/surface/table/reinforced{
 	dir = 4;
 	flipped = 1
 	},
@@ -1769,7 +1769,7 @@
 /turf/closed/wall/cult,
 /area/lv624/ground/sand4)
 "afW" = (
-/obj/structure/table/reinforced{
+/obj/structure/surface/table/reinforced{
 	dir = 8;
 	flipped = 1
 	},
@@ -1833,7 +1833,7 @@
 /turf/open/floor/plating,
 /area/lv624/ground/sand2)
 "agh" = (
-/obj/structure/table/reinforced{
+/obj/structure/surface/table/reinforced{
 	dir = 1;
 	flipped = 1
 	},
@@ -1842,7 +1842,7 @@
 /turf/open/floor/plating,
 /area/lv624/ground/sand2)
 "agi" = (
-/obj/structure/table/reinforced{
+/obj/structure/surface/table/reinforced{
 	dir = 1;
 	flipped = 1
 	},
@@ -1855,7 +1855,7 @@
 /area/lv624/ground/sand2)
 "agj" = (
 /obj/effect/decal/remains/human,
-/obj/structure/table/reinforced{
+/obj/structure/surface/table/reinforced{
 	dir = 1;
 	flipped = 1
 	},
@@ -1888,7 +1888,7 @@
 /turf/open/floor/plating,
 /area/lv624/ground/sand2)
 "agq" = (
-/obj/structure/table/reinforced{
+/obj/structure/surface/table/reinforced{
 	dir = 4;
 	flipped = 1
 	},
@@ -1909,7 +1909,7 @@
 	},
 /area/lv624/ground/sand2)
 "agt" = (
-/obj/structure/table/reinforced{
+/obj/structure/surface/table/reinforced{
 	dir = 8;
 	flipped = 1
 	},
@@ -1918,7 +1918,7 @@
 /turf/open/floor/plating,
 /area/lv624/ground/sand2)
 "agu" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
 	dir = 8;
@@ -1968,7 +1968,7 @@
 /turf/open/floor/plating,
 /area/lv624/ground/sand2)
 "agD" = (
-/obj/structure/table/reinforced{
+/obj/structure/surface/table/reinforced{
 	dir = 8;
 	flipped = 1
 	},
@@ -1979,7 +1979,7 @@
 /turf/open/floor/plating,
 /area/lv624/ground/sand2)
 "agE" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/explosive/grenade/incendiary,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/plating,
@@ -1990,14 +1990,14 @@
 /turf/open/floor/plating,
 /area/lv624/ground/sand2)
 "agG" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/ammo_casing,
 /obj/item/weapon/gun/pistol/holdout,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/plating,
 /area/lv624/ground/sand2)
 "agH" = (
-/obj/structure/table/reinforced{
+/obj/structure/surface/table/reinforced{
 	dir = 4;
 	flipped = 1
 	},
@@ -2049,7 +2049,7 @@
 	},
 /area/lv624/ground/sand2)
 "agR" = (
-/obj/structure/table/reinforced{
+/obj/structure/surface/table/reinforced{
 	dir = 8;
 	flipped = 1
 	},
@@ -2064,7 +2064,7 @@
 /turf/open/floor/plating,
 /area/lv624/ground/sand2)
 "agT" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/storage/firstaid/o2{
 	layer = 2.8;
 	pixel_x = 4;
@@ -2085,7 +2085,7 @@
 /turf/open/floor/plating,
 /area/lv624/ground/sand2)
 "agV" = (
-/obj/structure/table/reinforced{
+/obj/structure/surface/table/reinforced{
 	dir = 4;
 	flipped = 1
 	},
@@ -2154,7 +2154,7 @@
 /turf/open/floor/plating,
 /area/lv624/ground/sand2)
 "ahi" = (
-/obj/structure/table/reinforced{
+/obj/structure/surface/table/reinforced{
 	dir = 4;
 	flipped = 1
 	},
@@ -2167,7 +2167,7 @@
 /turf/open/gm/river,
 /area/lv624/ground/river2)
 "ahk" = (
-/obj/structure/table/reinforced{
+/obj/structure/surface/table/reinforced{
 	flipped = 1
 	},
 /obj/item/ammo_casing,
@@ -2178,7 +2178,7 @@
 /turf/open/floor/plating,
 /area/lv624/ground/sand2)
 "ahl" = (
-/obj/structure/table/reinforced{
+/obj/structure/surface/table/reinforced{
 	flipped = 1
 	},
 /obj/effect/decal/remains/human,
@@ -2187,7 +2187,7 @@
 /turf/open/floor/plating,
 /area/lv624/ground/sand2)
 "ahm" = (
-/obj/structure/table/reinforced{
+/obj/structure/surface/table/reinforced{
 	flipped = 1
 	},
 /obj/effect/landmark/objective_landmark/far,
@@ -2336,7 +2336,7 @@
 	},
 /area/lv624/ground/sand2)
 "ahN" = (
-/obj/structure/table/reinforced{
+/obj/structure/surface/table/reinforced{
 	flipped = 1
 	},
 /obj/effect/decal/remains/human,
@@ -2353,7 +2353,7 @@
 /turf/closed/wall,
 /area/lv624/ground/sand8)
 "ahQ" = (
-/obj/structure/table/reinforced{
+/obj/structure/surface/table/reinforced{
 	flipped = 1
 	},
 /turf/open/floor/plating{
@@ -2476,7 +2476,7 @@
 	},
 /area/lv624/ground/sand8)
 "aik" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/ashtray/plastic,
 /obj/item/stack/flag/red,
 /obj/item/weapon/gun/pistol/holdout,
@@ -2493,7 +2493,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/sand8)
 "aim" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/flashlight/lamp,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/plating{
@@ -2518,7 +2518,7 @@
 	},
 /area/lv624/ground/sand8)
 "aip" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/stack/rods{
 	amount = 40
 	},
@@ -2530,7 +2530,7 @@
 	},
 /area/lv624/ground/sand8)
 "aiq" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/stack/cable_coil/random,
 /obj/effect/spawner/random/tech_supply,
 /obj/effect/landmark/objective_landmark/far,
@@ -2649,7 +2649,7 @@
 /turf/open/floor/plating,
 /area/lv624/ground/sand8)
 "aiJ" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/stack/medical/ointment,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/landmark/objective_landmark/far,
@@ -4273,7 +4273,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/sand1)
 "aor" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/clothing/glasses/hud/health,
 /obj/effect/landmark/objective_landmark/science,
 /obj/effect/landmark{
@@ -4286,7 +4286,7 @@
 	},
 /area/lv624/lazarus/medbay)
 "aos" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/stack/medical/bruise_pack{
 	pixel_x = -5;
 	pixel_x = 3;
@@ -4355,7 +4355,7 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "aoB" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark{
 	name = "crap_item"
@@ -4369,7 +4369,7 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "aoC" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/clothing/gloves/botanic_leather,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
@@ -4440,7 +4440,7 @@
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle7)
 "aoR" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/spray/plantbgone{
 	pixel_x = 4;
 	pixel_y = 6
@@ -4882,7 +4882,7 @@
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle6)
 "aqQ" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/stack/medical/bruise_pack{
 	pixel_x = -1;
 	pixel_y = 4;
@@ -4989,7 +4989,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/compound/n)
 "arp" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/tool/crowbar,
 /obj/item/reagent_container/glass/bucket{
 	pixel_y = -3
@@ -5004,7 +5004,7 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "arq" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/clothing/suit/apron,
 /obj/item/tool/shovel,
 /obj/item/clothing/gloves/botanic_leather,
@@ -5015,7 +5015,7 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "arr" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/tool/shovel/spade,
 /obj/item/tool/hatchet{
 	pixel_x = -7;
@@ -5040,7 +5040,7 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "art" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /obj/structure/machinery/light,
@@ -5066,7 +5066,7 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "arv" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
@@ -5696,7 +5696,7 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/research)
 "atP" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/alien_embryo{
 	pixel_y = 4
 	},
@@ -5757,7 +5757,7 @@
 /turf/closed/wall,
 /area/lv624/lazarus/research)
 "atV" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/paper_bin{
 	pixel_y = 4
 	},
@@ -5831,7 +5831,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle9)
 "auj" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/storage/surgical_tray,
 /obj/item/reagent_container/spray/cleaner{
 	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
@@ -5944,7 +5944,7 @@
 	},
 /area/lv624/ground/jungle3)
 "auz" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
@@ -5960,7 +5960,7 @@
 	},
 /area/lv624/lazarus/fitness)
 "auB" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/glass/fertilizer{
 	pixel_x = 6;
 	pixel_y = 2
@@ -5977,7 +5977,7 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "auC" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	dir = 5;
@@ -5986,7 +5986,7 @@
 /area/lv624/lazarus/research)
 "auD" = (
 /obj/item/clothing/under/shorts/red,
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
 	dir = 4;
@@ -6159,12 +6159,12 @@
 	},
 /area/lv624/lazarus/quartstorage/outdoors)
 "avd" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
 "ave" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/storage/firstaid,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/vault,
@@ -6173,20 +6173,20 @@
 /turf/closed/wall/rock/brown,
 /area/lv624/ground/jungle6)
 "avg" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/clothing/mask/gas,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
 "avh" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/storage/box/bodybags,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
 "avi" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/storage/box/beakers,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/vault,
@@ -6211,7 +6211,7 @@
 /turf/open/floor/wood,
 /area/lv624/ground/caves/central2)
 "avn" = (
-/obj/structure/table/woodentable/poor,
+/obj/structure/surface/table/woodentable/poor,
 /obj/item/tool/candle,
 /obj/item/tool/match{
 	pixel_x = 6;
@@ -6310,7 +6310,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle7)
 "avB" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark{
 	name = "good_item"
 	},
@@ -6327,7 +6327,7 @@
 	},
 /area/lv624/ground/jungle6)
 "avD" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/decal/remains/human,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
@@ -6339,7 +6339,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/storage/box/disks{
 	layer = 2.9;
 	pixel_x = 5;
@@ -6366,7 +6366,7 @@
 	},
 /area/lv624/lazarus/research)
 "avG" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/clipboard,
 /obj/effect/landmark/objective_landmark/science,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -6384,7 +6384,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/jungle6)
 "avJ" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/tool/crowbar,
 /obj/effect/landmark/objective_landmark/science,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -6456,7 +6456,7 @@
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
 "avT" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/clothing/under/colonist,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -6466,7 +6466,7 @@
 /obj/item/stack/rods{
 	amount = 20
 	},
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
@@ -6474,7 +6474,7 @@
 /obj/item/stack/sheet/plasteel{
 	amount = 10
 	},
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
@@ -6889,13 +6889,13 @@
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
 "awX" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/storage/box/drinkingglasses,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
 "awY" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/stack/sheet/glass{
 	amount = 30
 	},
@@ -6903,14 +6903,14 @@
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
 "awZ" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/tool/crowbar,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
 "axa" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/storage/box/lights/mixed,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/vault,
@@ -7140,7 +7140,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle6)
 "axL" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/book/manual/research_and_development,
 /obj/item/cell/hyper,
 /obj/effect/landmark/objective_landmark/science,
@@ -7155,7 +7155,7 @@
 /area/lv624/ground/jungle9)
 "axN" = (
 /obj/item/storage/firstaid/regular,
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
@@ -7387,7 +7387,7 @@
 /area/lv624/lazarus/fitness)
 "ayz" = (
 /obj/item/tool/mop,
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
@@ -7463,7 +7463,7 @@
 /area/lv624/lazarus/research)
 "ayJ" = (
 /obj/item/storage/box/beakers,
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/sign/biohazard{
 	pixel_x = -30
 	},
@@ -7493,7 +7493,7 @@
 	},
 /area/lv624/lazarus/fitness)
 "ayM" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/folder,
 /obj/effect/landmark/objective_landmark/science,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -7510,7 +7510,7 @@
 /obj/item/weapon/melee/baseballbat/metal{
 	pixel_x = 5
 	},
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
@@ -7567,7 +7567,7 @@
 	},
 /area/lv624/lazarus/robotics)
 "ayX" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/computer/objective,
 /turf/open/floor{
 	dir = 5;
@@ -7657,7 +7657,7 @@
 	},
 /area/lv624/lazarus/research)
 "azi" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/shard{
 	pixel_x = 12;
 	pixel_y = 3
@@ -7699,7 +7699,7 @@
 	},
 /area/lv624/lazarus/fitness)
 "azn" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/structure/machinery/light,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -7896,7 +7896,7 @@
 /turf/closed/wall,
 /area/lv624/lazarus/sleep_female)
 "azS" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/tool/surgery/scalpel{
 	pixel_y = 12
 	},
@@ -7938,7 +7938,7 @@
 	},
 /area/lv624/ground/jungle6)
 "azY" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spider/stickyweb{
 	icon_state = "cobweb1"
 	},
@@ -7969,7 +7969,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle9)
 "aAd" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whiteyellowfull"
@@ -8165,7 +8165,7 @@
 	},
 /area/lv624/lazarus/sleep_female)
 "aAD" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/stack/sheet/wood{
 	amount = 50
 	},
@@ -8173,7 +8173,7 @@
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
 "aAE" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/storage/fancy/cigarettes/wypacket,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/vault,
@@ -8228,7 +8228,7 @@
 	},
 /area/lv624/ground/compound/c)
 "aAP" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
@@ -8248,7 +8248,7 @@
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/science,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
@@ -8263,7 +8263,7 @@
 	pixel_y = 30;
 	start_charge = 0
 	},
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/toy/deck,
 /obj/item/storage/fancy/cigarettes/wypacket,
 /obj/effect/landmark/objective_landmark/close,
@@ -8366,7 +8366,7 @@
 	},
 /area/lv624/lazarus/sleep_female)
 "aBe" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/phone,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
@@ -8375,7 +8375,7 @@
 	},
 /area/lv624/lazarus/sleep_female)
 "aBf" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
 	dir = 9;
@@ -8397,7 +8397,7 @@
 	},
 /area/lv624/ground/sand6)
 "aBi" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/legcuffs/yautja{
 	desc = "A bizarre alien device used for trapping and killing prey.";
 	name = "Alien Mine"
@@ -8493,7 +8493,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle9)
 "aBv" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/science,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
@@ -8580,13 +8580,13 @@
 /obj/item/stack/rods{
 	amount = 15
 	},
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
 "aBH" = (
 /obj/item/storage/firstaid,
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
@@ -8599,7 +8599,7 @@
 /obj/item/stack/sheet/metal{
 	amount = 30
 	},
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
@@ -8830,7 +8830,7 @@
 /turf/open/gm/river,
 /area/lv624/ground/jungle4)
 "aCq" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/trash/cheesie,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -8955,7 +8955,7 @@
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
 "aCF" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/storage/box/mousetraps,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/vault,
@@ -9018,7 +9018,7 @@
 	},
 /area/lv624/lazarus/sleep_male)
 "aCQ" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/tool/pen{
 	layer = 3.1
 	},
@@ -9092,7 +9092,7 @@
 	},
 /area/lv624/lazarus/sleep_female)
 "aCZ" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/weapon/gun/pistol/holdout,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -9117,7 +9117,7 @@
 	},
 /area/lv624/lazarus/sleep_female)
 "aDc" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/megaphone,
 /obj/item/tool/wrench,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -9197,7 +9197,7 @@
 	},
 /area/lv624/lazarus/sleep_male)
 "aDr" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/plating{
@@ -9263,7 +9263,7 @@
 	},
 /area/lv624/lazarus/sleep_female)
 "aDB" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/mirror{
 	dir = 4;
 	pixel_x = -32
@@ -9387,7 +9387,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/trash/cheesie,
 /obj/effect/landmark{
 	name = "crap_item"
@@ -9400,7 +9400,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/food/snacks/cheeseburger,
 /obj/effect/landmark{
 	name = "crap_item"
@@ -9675,7 +9675,7 @@
 	},
 /area/lv624/lazarus/chapel)
 "aEI" = (
-/obj/structure/table/woodentable/poor,
+/obj/structure/surface/table/woodentable/poor,
 /turf/open/floor/wood,
 /area/lv624/ground/caves/central2)
 "aEJ" = (
@@ -9792,7 +9792,7 @@
 	},
 /area/lv624/lazarus/quart)
 "aEW" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/window/reinforced{
 	dir = 8
 	},
@@ -10024,7 +10024,7 @@
 	},
 /area/lv624/lazarus/quart)
 "aFy" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark/costume/butler,
 /turf/open/floor{
 	dir = 4;
@@ -10036,7 +10036,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle3)
 "aFA" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/spawner/random/tech_supply,
 /obj/effect/spawner/random/tech_supply,
 /obj/effect/landmark/objective_landmark/close,
@@ -10047,7 +10047,7 @@
 	},
 /area/lv624/lazarus/quart)
 "aFB" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/spawner/random/technology_scanner,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -10057,7 +10057,7 @@
 	},
 /area/lv624/lazarus/quart)
 "aFC" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/spawner/random/tech_supply,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -10067,7 +10067,7 @@
 	},
 /area/lv624/lazarus/quart)
 "aFD" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/structure/machinery/light{
 	dir = 4
 	},
@@ -10182,7 +10182,7 @@
 	},
 /area/lv624/lazarus/quart)
 "aFV" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/trash/cheesie,
 /obj/effect/landmark/objective_landmark/science,
 /obj/effect/landmark/objective_landmark/science,
@@ -10344,7 +10344,7 @@
 /turf/closed/wall,
 /area/lv624/lazarus/chapel)
 "aGt" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
@@ -10353,7 +10353,7 @@
 	},
 /area/lv624/lazarus/quart)
 "aGu" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/spawner/random/bomb_supply,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -10448,7 +10448,7 @@
 	},
 /area/lv624/lazarus/toilet)
 "aGK" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/prop/mech/drill,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -10531,7 +10531,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/compound/c)
 "aGZ" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/poster,
 /obj/item/clothing/glasses/regular/hipster,
 /obj/effect/landmark/objective_landmark/close,
@@ -10547,7 +10547,7 @@
 	},
 /area/lv624/lazarus/toilet)
 "aHb" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/mirror{
 	pixel_x = 30
 	},
@@ -10562,7 +10562,7 @@
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/prop/mech/hydralic_clamp,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -10626,7 +10626,7 @@
 	},
 /area/lv624/lazarus/quart)
 "aHl" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -10932,7 +10932,7 @@
 	pixel_y = 30;
 	start_charge = 0
 	},
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark{
 	name = "crap_item"
 	},
@@ -10985,7 +10985,7 @@
 	},
 /area/lv624/ground/compound/sw)
 "aIp" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark{
 	name = "crap_item"
 	},
@@ -11122,7 +11122,7 @@
 /turf/open/floor/bluegrid,
 /area/lv624/lazarus/internal_affairs)
 "aIH" = (
-/obj/structure/table/woodentable/poor,
+/obj/structure/surface/table/woodentable/poor,
 /obj/item/clothing/mask/cigarette/cigar,
 /obj/item/weapon/gun/shotgun/double,
 /obj/effect/landmark/objective_landmark/far,
@@ -11130,7 +11130,7 @@
 /turf/open/floor/wood,
 /area/lv624/ground/jungle6)
 "aII" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/clothing/glasses/regular,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
@@ -11373,7 +11373,7 @@
 	desc = "A model of an ancient Earth communication device.";
 	force = 8
 	},
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/structure/window/reinforced{
 	dir = 8
 	},
@@ -11416,7 +11416,7 @@
 	force = 3;
 	name = "display jackhammer"
 	},
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/structure/window/reinforced{
 	dir = 4;
 	health = 80
@@ -11457,7 +11457,7 @@
 /area/lv624/lazarus/main_hall)
 "aJL" = (
 /obj/item/stock_parts/matter_bin/super,
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
 	dir = 1
@@ -11500,7 +11500,7 @@
 /area/lv624/lazarus/landing_zones/lz2)
 "aJP" = (
 /obj/item/stock_parts/scanning_module/phasic,
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
 	dir = 1
@@ -12218,7 +12218,7 @@
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle2)
 "aLS" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/weapon/gun/shotgun/pump,
 /obj/item/ammo_magazine/shotgun/slugs,
 /obj/effect/landmark/objective_landmark/close,
@@ -12229,7 +12229,7 @@
 "aLT" = (
 /obj/effect/decal/cleanable/cobweb2,
 /obj/item/reagent_container/hypospray/autoinjector/tricord,
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/reagent_container/hypospray/autoinjector/quickclot{
 	pixel_x = 3;
 	pixel_y = 3
@@ -12279,7 +12279,7 @@
 /area/lv624/lazarus/security)
 "aMa" = (
 /obj/item/device/flash,
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/explosive/grenade/flashbang{
 	pixel_x = 7;
 	pixel_y = 2
@@ -12299,7 +12299,7 @@
 	},
 /area/lv624/lazarus/security)
 "aMb" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/weapon/gun/shotgun/pump/cmb,
 /obj/item/ammo_magazine/shotgun/buckshot,
 /obj/effect/landmark/objective_landmark/close,
@@ -12315,7 +12315,7 @@
 	},
 /area/lv624/lazarus/sleep_male)
 "aMd" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/device/flashlight/lamp,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
@@ -12381,7 +12381,7 @@
 	},
 /area/lv624/lazarus/canteen)
 "aMm" = (
-/obj/structure/table/gamblingtable,
+/obj/structure/surface/table/gamblingtable,
 /turf/open/floor{
 	icon_state = "bar"
 	},
@@ -12631,7 +12631,7 @@
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/weapon/gun/pistol/highpower,
 /obj/item/ammo_magazine/pistol/highpower,
 /obj/item/ammo_magazine/pistol/highpower,
@@ -12706,7 +12706,7 @@
 "aNi" = (
 /obj/effect/decal/cleanable/blood,
 /obj/item/device/flashlight/lamp,
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
@@ -12879,7 +12879,7 @@
 	},
 /area/lv624/lazarus/armory)
 "aNM" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark{
 	name = "crap_item"
 	},
@@ -12945,7 +12945,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle3)
 "aNV" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/chem_dispenser/soda{
 	pixel_y = 22
 	},
@@ -12959,7 +12959,7 @@
 /obj/structure/sink/kitchen{
 	pixel_y = 30
 	},
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/food/snacks/donkpocket{
 	pixel_x = 4;
 	pixel_y = 4
@@ -12976,7 +12976,7 @@
 	},
 /area/lv624/lazarus/kitchen)
 "aNX" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/food/snacks/grown/tomato,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
@@ -12985,7 +12985,7 @@
 	},
 /area/lv624/lazarus/kitchen)
 "aNY" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/trash/snack_bowl{
 	pixel_y = 9
 	},
@@ -13002,7 +13002,7 @@
 	},
 /area/lv624/lazarus/kitchen)
 "aOa" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
 	dir = 8;
@@ -13051,7 +13051,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle7)
 "aOj" = (
-/obj/structure/table/woodentable/fancy,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/bluegrid,
@@ -13096,7 +13096,7 @@
 	},
 /area/lv624/lazarus/internal_affairs)
 "aOo" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/clothing/glasses/sunglasses/big,
 /obj/structure/machinery/light,
 /obj/effect/landmark/objective_landmark/close,
@@ -13159,7 +13159,7 @@
 /area/lv624/lazarus/armory)
 "aOA" = (
 /obj/item/storage/toolbox/syndicate,
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark{
 	name = "crap_item"
 	},
@@ -13181,7 +13181,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/weapon/gun/revolver/cmb,
 /obj/item/ammo_magazine/revolver/cmb,
 /obj/item/ammo_magazine/revolver/cmb,
@@ -13195,7 +13195,7 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/clothing/ears/earmuffs,
 /obj/item/ammo_magazine/revolver/cmb,
 /obj/item/weapon/gun/revolver/cmb,
@@ -13207,7 +13207,7 @@
 	},
 /area/lv624/lazarus/security)
 "aOF" = (
-/obj/structure/table/woodentable/fancy,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/item/reagent_container/food/drinks/bottle/whiskey,
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -13220,7 +13220,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle6)
 "aOI" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/device/binoculars,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
@@ -13272,7 +13272,7 @@
 	},
 /area/lv624/lazarus/canteen)
 "aOP" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/trash/plate,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
@@ -13280,7 +13280,7 @@
 	},
 /area/lv624/lazarus/canteen)
 "aOQ" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/trash/candy,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
@@ -13364,7 +13364,7 @@
 /turf/open/floor/bluegrid,
 /area/lv624/lazarus/internal_affairs)
 "aPe" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/door/window/westright{
 	layer = 2.9
 	},
@@ -13457,7 +13457,7 @@
 	},
 /area/lv624/lazarus/security)
 "aPs" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/mirror{
 	icon_state = "mirror_broke";
 	pixel_x = 30
@@ -13477,7 +13477,7 @@
 /turf/closed/wall/r_wall,
 /area/lv624/lazarus/comms)
 "aPu" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
 	dir = 1;
@@ -13485,7 +13485,7 @@
 	},
 /area/lv624/lazarus/security)
 "aPv" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/handcuffs,
 /obj/item/storage/firstaid/adv,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -13495,7 +13495,7 @@
 	},
 /area/lv624/lazarus/security)
 "aPw" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
 	dir = 4;
@@ -13518,14 +13518,14 @@
 /area/lv624/lazarus/kitchen)
 "aPz" = (
 /obj/structure/machinery/chem_master/condimaster,
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "barber"
 	},
 /area/lv624/lazarus/kitchen)
 "aPA" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/microwave,
 /turf/open/floor{
 	dir = 8;
@@ -13533,7 +13533,7 @@
 	},
 /area/lv624/lazarus/kitchen)
 "aPB" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
@@ -13541,7 +13541,7 @@
 	},
 /area/lv624/lazarus/canteen)
 "aPC" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/food/snacks/grown/banana,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
@@ -13575,7 +13575,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle3)
 "aPH" = (
-/obj/structure/table/woodentable/fancy,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/item/storage/bible,
 /obj/structure/machinery/light/small{
 	dir = 1
@@ -13589,7 +13589,7 @@
 /turf/open/floor,
 /area/lv624/lazarus/chapel)
 "aPI" = (
-/obj/structure/table/woodentable/fancy,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/item/tool/candle,
 /turf/open/floor{
 	dir = 8;
@@ -13597,7 +13597,7 @@
 	},
 /area/lv624/lazarus/chapel)
 "aPJ" = (
-/obj/structure/table/woodentable/fancy,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/item/storage/box/matches,
 /obj/item/tool/candle,
 /turf/open/floor{
@@ -13690,7 +13690,7 @@
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/trash/plate,
 /turf/open/floor{
 	icon_state = "white"
@@ -13708,7 +13708,7 @@
 	},
 /area/lv624/lazarus/main_hall)
 "aQc" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/processor,
 /turf/open/floor{
 	dir = 8;
@@ -13752,7 +13752,7 @@
 	},
 /area/lv624/lazarus/canteen)
 "aQh" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/hypospray/autoinjector/quickclot,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
@@ -13844,7 +13844,7 @@
 /turf/closed/wall/r_wall,
 /area/lv624/lazarus/captain)
 "aQy" = (
-/obj/structure/table/woodentable/fancy,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/item/trash/candle,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
@@ -13892,7 +13892,7 @@
 	},
 /area/lv624/lazarus/captain)
 "aQF" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/mirror{
 	pixel_y = -30
 	},
@@ -14062,7 +14062,7 @@
 /turf/open/gm/dirtgrassborder,
 /area/lv624/ground/jungle3)
 "aRd" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/mmi/radio_enabled,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -14072,7 +14072,7 @@
 	},
 /area/lv624/lazarus/comms)
 "aRe" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/flashlight,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -14082,7 +14082,7 @@
 	},
 /area/lv624/lazarus/comms)
 "aRf" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/radio/headset{
 	frequency = 1469;
 	pixel_x = 4;
@@ -14113,7 +14113,7 @@
 	},
 /area/lv624/lazarus/chapel)
 "aRi" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/multitool,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -14123,7 +14123,7 @@
 	},
 /area/lv624/lazarus/comms)
 "aRj" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/structure/machinery/light,
 /obj/effect/spawner/random/technology_scanner,
 /obj/effect/landmark/objective_landmark/close,
@@ -14160,7 +14160,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle3)
 "aRq" = (
-/obj/structure/table/reinforced{
+/obj/structure/surface/table/reinforced{
 	dir = 1;
 	flipped = 1
 	},
@@ -14278,7 +14278,7 @@
 	},
 /area/lv624/lazarus/landing_zones/lz2)
 "aRH" = (
-/obj/structure/table/woodentable/fancy,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/item/device/megaphone,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/bluegrid,
@@ -14330,7 +14330,7 @@
 	},
 /area/lv624/lazarus/main_hall)
 "aRR" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/clothing/head/chefhat,
 /obj/structure/machinery/light/small{
 	dir = 8
@@ -14522,7 +14522,7 @@
 	},
 /area/lv624/lazarus/hop)
 "aSz" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/computer/objective,
 /turf/open/floor{
 	icon_state = "vault"
@@ -14538,7 +14538,7 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/hop)
 "aSC" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/clothing/suit/chef/classic,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
@@ -14645,7 +14645,7 @@
 /turf/open/floor/bluegrid,
 /area/lv624/lazarus/internal_affairs)
 "aST" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/clothing/under/CM_uniform,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
@@ -14665,7 +14665,7 @@
 /turf/open/floor/grass,
 /area/lv624/lazarus/main_hall)
 "aSW" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/food/snacks/grilledcheese,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
@@ -14691,7 +14691,7 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/kitchen)
 "aTc" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/trash/chips,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -14810,12 +14810,12 @@
 /turf/open/floor/bluegrid,
 /area/lv624/lazarus/internal_affairs)
 "aTy" = (
-/obj/structure/table/woodentable/fancy,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/computer/crew,
 /turf/open/floor/bluegrid,
 /area/lv624/lazarus/internal_affairs)
 "aTz" = (
-/obj/structure/table/woodentable/fancy,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/item/ashtray/glass,
 /obj/item/toy/deck,
 /obj/structure/prop/mech/mech_parts/part/gygax_head,
@@ -14859,7 +14859,7 @@
 	},
 /area/lv624/lazarus/canteen)
 "aTF" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/food/condiment/saltshaker,
 /obj/item/reagent_container/food/condiment/peppermill{
 	pixel_x = 4;
@@ -15016,7 +15016,7 @@
 	},
 /area/lv624/lazarus/kitchen)
 "aUc" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/structure/machinery/power/apc{
 	dir = 1;
 	name = "Kitchen APC"
@@ -15027,7 +15027,7 @@
 /area/lv624/lazarus/kitchen)
 "aUd" = (
 /obj/item/tool/kitchen/knife/butcher,
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/structure/extinguisher_cabinet{
 	pixel_y = 30
 	},
@@ -15073,7 +15073,7 @@
 /area/lv624/lazarus/comms)
 "aUl" = (
 /obj/item/device/multitool,
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
 	dir = 9;
@@ -15082,7 +15082,7 @@
 /area/lv624/lazarus/comms)
 "aUo" = (
 /obj/effect/spawner/random/toolbox,
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
@@ -15101,7 +15101,7 @@
 	},
 /area/lv624/lazarus/engineering)
 "aUt" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/device/assembly/timer,
 /obj/item/device/assembly/voice,
 /obj/item/tool/crowbar,
@@ -15119,7 +15119,7 @@
 /area/lv624/lazarus/engineering)
 "aUv" = (
 /obj/item/device/flashlight,
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/door_control{
 	id = "nexus_blast";
 	name = "Nexus Lockdown"
@@ -15386,7 +15386,7 @@
 	},
 /area/lv624/ground/compound/se)
 "aVn" = (
-/obj/structure/table/reinforced{
+/obj/structure/surface/table/reinforced{
 	dir = 8;
 	flipped = 1
 	},
@@ -15538,12 +15538,12 @@
 	},
 /area/lv624/ground/compound/se)
 "aVL" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/plating,
 /area/lv624/ground/sand2)
 "aVM" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/item/device/taperecorder,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -15570,7 +15570,7 @@
 /obj/item/reagent_container/food/snacks/grown/banana{
 	pixel_x = -8
 	},
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /turf/open/floor{
 	icon_state = "freezerfloor"
 	},
@@ -15613,19 +15613,19 @@
 /area/lv624/lazarus/secure_storage)
 "aVX" = (
 /obj/item/disk/nuclear,
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/tool/crowbar,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/greengrid,
 /area/lv624/lazarus/secure_storage)
 "aVY" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/ore/silver,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/greengrid,
 /area/lv624/lazarus/secure_storage)
 "aVZ" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/ore/diamond,
 /obj/effect/landmark{
 	name = "good_item"
@@ -15634,7 +15634,7 @@
 /turf/open/floor/greengrid,
 /area/lv624/lazarus/secure_storage)
 "aWa" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/ore/gold,
 /obj/item/ore/silver,
 /obj/effect/landmark/objective_landmark/medium,
@@ -15851,7 +15851,7 @@
 	name = "HIGH VOLTAGE";
 	pixel_y = -32
 	},
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/tool/extinguisher,
 /obj/effect/spawner/random/powercell,
 /obj/effect/landmark/objective_landmark/medium,
@@ -15871,7 +15871,7 @@
 /area/lv624/lazarus/engineering)
 "aWG" = (
 /obj/effect/spawner/random/toolbox,
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/device/radio,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -15880,7 +15880,7 @@
 	},
 /area/lv624/lazarus/engineering)
 "aWH" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/folder,
 /obj/item/device/assembly/signaler,
 /obj/effect/landmark/objective_landmark/medium,
@@ -15890,7 +15890,7 @@
 	},
 /area/lv624/lazarus/engineering)
 "aWI" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/device/flashlight,
 /obj/effect/spawner/random/tool,
 /obj/effect/landmark/objective_landmark/medium,
@@ -15963,31 +15963,31 @@
 /turf/open/floor/greengrid,
 /area/lv624/lazarus/secure_storage)
 "aWT" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/device/aicard,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/greengrid,
 /area/lv624/lazarus/secure_storage)
 "aWU" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/weapon/gun/flamer,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/greengrid,
 /area/lv624/lazarus/secure_storage)
 "aWV" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/weapon/gun/rifle/m41a,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/greengrid,
 /area/lv624/lazarus/secure_storage)
 "aWW" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/ammo_magazine/rifle/extended,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/greengrid,
 /area/lv624/lazarus/secure_storage)
 "aWX" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/tool/weldingtool,
 /obj/item/tool/wrench,
 /obj/effect/landmark/objective_landmark/medium,
@@ -15998,7 +15998,7 @@
 	},
 /area/lv624/lazarus/comms)
 "aWY" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/radio/off{
 	frequency = 1469
 	},
@@ -16010,7 +16010,7 @@
 	},
 /area/lv624/lazarus/comms)
 "aWZ" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/clothing/head/soft/blue,
 /obj/structure/machinery/light,
 /obj/effect/landmark/objective_landmark/medium,
@@ -16021,7 +16021,7 @@
 	},
 /area/lv624/lazarus/comms)
 "aXa" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/radio/off{
 	frequency = 1469
 	},
@@ -16039,14 +16039,14 @@
 	},
 /area/lv624/lazarus/comms)
 "aXb" = (
-/obj/structure/table/woodentable/fancy,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/item/device/flashlight/lamp,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/bluegrid,
 /area/lv624/lazarus/internal_affairs)
 "aXc" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/computer/objective,
 /turf/open/floor{
 	icon_state = "bluecorner"
@@ -16133,13 +16133,13 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle2)
 "aXq" = (
-/obj/structure/table/woodentable/fancy,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/item/device/pinpointer,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/bluegrid,
 /area/lv624/lazarus/internal_affairs)
 "aXr" = (
-/obj/structure/table/woodentable/fancy,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/item/storage/box/donkpockets,
 /obj/item/clothing/glasses/sunglasses/big{
 	pixel_y = 5
@@ -16157,7 +16157,7 @@
 	},
 /area/lv624/lazarus/engineering)
 "aXt" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
@@ -16213,7 +16213,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle3)
 "aXC" = (
-/obj/structure/table/woodentable/poor,
+/obj/structure/surface/table/woodentable/poor,
 /obj/item/reagent_container/food/drinks/bottle/whiskey{
 	pixel_x = -7
 	},
@@ -16227,25 +16227,25 @@
 /turf/open/floor/wood,
 /area/lv624/ground/jungle6)
 "aXD" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/tank/phoron,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/greengrid,
 /area/lv624/lazarus/secure_storage)
 "aXE" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/weapon/gun/shotgun/pump,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/greengrid,
 /area/lv624/lazarus/secure_storage)
 "aXF" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/ammo_magazine/shotgun/buckshot,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/greengrid,
 /area/lv624/lazarus/secure_storage)
 "aXG" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/ammo_magazine/shotgun/slugs,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/greengrid,
@@ -16346,7 +16346,7 @@
 /turf/open/gm/grass,
 /area/lv624/lazarus/landing_zones/lz2)
 "aXY" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/ashtray/glass,
 /obj/item/tool/crowbar,
 /obj/effect/landmark/objective_landmark/medium,
@@ -16357,7 +16357,7 @@
 	},
 /area/lv624/lazarus/comms)
 "aXZ" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/spawner/random/tool,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
@@ -16406,7 +16406,7 @@
 /obj/structure/foamedmetal{
 	layer = 3.1
 	},
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -16520,7 +16520,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west1)
 "aYD" = (
-/obj/structure/table/woodentable/fancy,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/item/clothing/glasses/sunglasses,
 /obj/item/trash/cheesie,
 /obj/structure/pipes/standard/simple/hidden/cyan{
@@ -16543,7 +16543,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west1)
 "aYG" = (
-/obj/structure/table/woodentable/fancy,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/item/trash/cigbutt/cigarbutt,
 /obj/structure/machinery/cell_charger,
 /obj/item/storage/fancy/cigarettes/wypacket,
@@ -16567,7 +16567,7 @@
 	},
 /area/lv624/ground/caves/west1)
 "aYJ" = (
-/obj/structure/table/woodentable/fancy,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/item/trash/chips,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -16576,12 +16576,12 @@
 	},
 /area/lv624/lazarus/hop)
 "aYL" = (
-/obj/structure/table/woodentable/fancy,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/computer/objective,
 /turf/open/floor/bluegrid,
 /area/lv624/lazarus/internal_affairs)
 "aYM" = (
-/obj/structure/table/woodentable/fancy,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/computer/med_data/laptop,
 /obj/structure/machinery/light/small{
 	dir = 8
@@ -16591,14 +16591,14 @@
 	},
 /area/lv624/lazarus/hop)
 "aYN" = (
-/obj/structure/table/woodentable/fancy,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/computer/rdconsole,
 /turf/open/floor{
 	icon_state = "grimy"
 	},
 /area/lv624/lazarus/hop)
 "aYO" = (
-/obj/structure/table/woodentable/poor,
+/obj/structure/surface/table/woodentable/poor,
 /obj/item/device/flashlight/lantern,
 /turf/open/floor/wood,
 /area/lv624/ground/caves/central2)
@@ -16673,7 +16673,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/sand7)
 "aZc" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/weapon/melee/twohanded/fireaxe,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -16706,7 +16706,7 @@
 	},
 /area/lv624/lazarus/engineering)
 "aZf" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/tool/lighter,
 /obj/item/device/analyzer,
 /obj/item/device/multitool,
@@ -16717,7 +16717,7 @@
 	},
 /area/lv624/lazarus/engineering)
 "aZg" = (
-/obj/structure/table/woodentable/fancy,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/light/small,
 /obj/structure/machinery/computer/objective,
 /turf/open/floor{
@@ -16725,7 +16725,7 @@
 	},
 /area/lv624/lazarus/captain)
 "aZh" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/computer/objective,
 /turf/open/floor{
 	dir = 9;
@@ -16733,7 +16733,7 @@
 	},
 /area/lv624/lazarus/comms)
 "aZi" = (
-/obj/structure/table/woodentable/fancy,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/chem_dispenser/beer{
 	pixel_y = 26
 	},
@@ -16753,7 +16753,7 @@
 	},
 /area/lv624/lazarus/captain)
 "aZk" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/radio/off{
 	frequency = 1469
 	},
@@ -16779,7 +16779,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/river1)
 "aZn" = (
-/obj/structure/table/woodentable/poor,
+/obj/structure/surface/table/woodentable/poor,
 /obj/item/tool/candle,
 /obj/item/tool/match{
 	pixel_x = 6;
@@ -16790,7 +16790,7 @@
 /turf/open/floor/wood,
 /area/lv624/ground/jungle6)
 "aZo" = (
-/obj/structure/table/woodentable/fancy,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/item/device/megaphone,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -16799,7 +16799,7 @@
 	},
 /area/lv624/lazarus/captain)
 "aZp" = (
-/obj/structure/table/woodentable/poor,
+/obj/structure/surface/table/woodentable/poor,
 /obj/effect/landmark/objective_landmark/far,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/wood{
@@ -16820,7 +16820,7 @@
 	},
 /area/lv624/lazarus/kitchen)
 "aZt" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/greengrid,
 /area/lv624/lazarus/secure_storage)
@@ -16831,7 +16831,7 @@
 	},
 /area/lv624/lazarus/engineering)
 "aZw" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/ashtray/bronze,
 /obj/item/storage/donut_box,
 /obj/effect/landmark/objective_landmark/close,
@@ -16882,7 +16882,7 @@
 	},
 /area/lv624/lazarus/hop)
 "aZB" = (
-/obj/structure/table/woodentable/fancy,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/newscaster{
 	pixel_x = -30
 	},
@@ -16920,7 +16920,7 @@
 	},
 /area/lv624/lazarus/hop)
 "aZF" = (
-/obj/structure/table/woodentable,
+/obj/structure/surface/table/woodentable,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
@@ -16950,7 +16950,7 @@
 	},
 /area/lv624/lazarus/engineering)
 "aZK" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/clothing/mask/gas,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
@@ -16959,7 +16959,7 @@
 	},
 /area/lv624/lazarus/comms)
 "aZL" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/structure/prop/mech/drill,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/greengrid,
@@ -17523,7 +17523,7 @@
 	},
 /area/lv624/ground/jungle9)
 "cYi" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/food/snacks/pie,
 /turf/open/floor{
 	icon_state = "whitebluefull";
@@ -17551,7 +17551,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle3)
 "diZ" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/tool/crowbar,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/vault,
@@ -17741,7 +17741,7 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "eCF" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/computer/shuttle_control/dropship2,
 /turf/open/gm/dirt,
 /area/lv624/landing/console2)
@@ -17944,7 +17944,7 @@
 /area/lv624/ground/jungle9)
 "gqG" = (
 /obj/item/device/assembly/infra,
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/effect/spawner/random/powercell,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -18019,7 +18019,7 @@
 	},
 /area/lv624/lazarus/landing_zones/lz2)
 "heY" = (
-/obj/structure/table/woodentable/fancy,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/item/tool/candle,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
@@ -18100,7 +18100,7 @@
 /turf/closed/wall/r_wall,
 /area/lv624/lazarus/landing_zones/lz2)
 "hIZ" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/storage/box/lights/mixed,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/vault,
@@ -18123,7 +18123,7 @@
 	},
 /area/lv624/ground/jungle7)
 "hNR" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/clothing/under/colonist,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/vault,
@@ -18252,7 +18252,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle4)
 "iSf" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
@@ -18436,7 +18436,7 @@
 /turf/open/gm/grass,
 /area/lv624/lazarus/landing_zones/lz2)
 "kzd" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark{
 	name = "crap_item"
@@ -18487,7 +18487,7 @@
 	},
 /area/lv624/lazarus/atmos)
 "kPY" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/trash/plate,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -18661,7 +18661,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle1)
 "mph" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/food/drinks/cans/waterbottle{
 	pixel_x = -4;
 	pixel_y = 9
@@ -18796,7 +18796,7 @@
 /turf/open/gm/dirtgrassborder,
 /area/lv624/ground/jungle7)
 "nrm" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark{
 	name = "good_item"
 	},
@@ -18829,7 +18829,7 @@
 /turf/closed/wall/r_wall,
 /area/lv624/lazarus/robotics)
 "nEE" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/analyzer/plant_analyzer,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark{
@@ -18964,7 +18964,7 @@
 /turf/open/gm/dirtgrassborder,
 /area/lv624/ground/jungle9)
 "oEE" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/food/snacks/grown/banana,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -19017,7 +19017,7 @@
 /turf/open/gm/grass,
 /area/lv624/lazarus/landing_zones/lz1)
 "oSJ" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/storage/box/masks{
 	pixel_x = -4
 	},
@@ -19121,7 +19121,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle6)
 "psH" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/vault,
@@ -19132,7 +19132,7 @@
 	},
 /area/lv624/lazarus/medbay)
 "pzt" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/computer/objective,
 /obj/structure/machinery/light{
 	dir = 4
@@ -19197,7 +19197,7 @@
 	},
 /area/lv624/lazarus/landing_zones/lz1)
 "pZM" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/clothing/mask/gas,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/vault,
@@ -19266,7 +19266,7 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/engineering)
 "qJg" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	icon_state = "whiteblue";
@@ -19359,7 +19359,7 @@
 	},
 /area/lv624/ground/jungle8)
 "ryJ" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/science,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
@@ -19583,7 +19583,7 @@
 	},
 /area/lv624/ground/jungle1)
 "txL" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/spray,
 /obj/effect/landmark/objective_landmark/science,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -19609,7 +19609,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle7)
 "tIg" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/science,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
@@ -19946,7 +19946,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle1)
 "wWs" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)

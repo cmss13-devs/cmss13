@@ -26,7 +26,7 @@
 /obj/item/stack/sheet/mineral/sandstone{
 	amount = 50
 	},
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whiteyellowfull"
@@ -34,7 +34,7 @@
 /area/lv624/ground/caves/east1)
 "g" = (
 /obj/effect/decal/remains/xeno,
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark{
 	name = "good_item"
 	},
@@ -44,7 +44,7 @@
 	},
 /area/lv624/ground/caves/east1)
 "h" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/weapon/melee/harpoon,
 /turf/open/floor{
 	dir = 4;
@@ -96,14 +96,14 @@
 /turf/closed/wall/mineral/sandstone,
 /area/lv624/ground/sand6)
 "p" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whiteyellowfull"
 	},
 /area/lv624/ground/sand6)
 "q" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/weapon/melee/harpoon/yautja{
 	name = "Alien Harpoon"
 	},
@@ -120,7 +120,7 @@
 	},
 /area/lv624/ground/sand6)
 "s" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/legcuffs/yautja{
 	desc = "A bizarre alien device used for trapping and killing prey.";
 	name = "Alien Mine"
@@ -131,7 +131,7 @@
 	},
 /area/lv624/ground/sand6)
 "t" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark{
 	name = "crap_item"
 	},
@@ -150,7 +150,7 @@
 	},
 /area/lv624/ground/sand6)
 "v" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/weapon/melee/harpoon/yautja{
 	name = "Alien Harpoon"
 	},

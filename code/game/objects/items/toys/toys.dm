@@ -190,7 +190,7 @@
 	if (istype(A, /obj/item/storage/backpack ))
 		return
 
-	else if (locate (/obj/structure/table, src.loc))
+	else if (locate (/obj/structure/surface/table, src.loc))
 		return
 
 	else if (istype(A, /obj/structure/reagent_dispensers/watertank) && get_dist(src,A) <= 1)

@@ -49,7 +49,7 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/research)
 "aj" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/floor{
 	dir = 5;
 	icon_state = "whitepurple"
@@ -127,7 +127,7 @@
 /turf/closed/wall,
 /area/lv624/lazarus/research)
 "av" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/clipboard,
 /obj/item/paper/research_notes,
 /turf/open/floor{
@@ -202,7 +202,7 @@
 	},
 /area/lv624/lazarus/research)
 "aF" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/tool/surgery/scalpel{
 	pixel_y = 12
 	},
@@ -213,7 +213,7 @@
 	},
 /area/lv624/lazarus/research)
 "aG" = (
-/obj/structure/rack{
+/obj/structure/surface/rack{
 	layer = 2.5
 	},
 /obj/item/clothing/glasses/regular,
@@ -296,7 +296,7 @@
 	icon_state = "tube1";
 	dir = 8
 	},
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/storage/box/disks{
 	layer = 2.9;
 	pixel_x = 5;
@@ -328,14 +328,14 @@
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/floor{
 	dir = 5;
 	icon_state = "whitepurple"
 	},
 /area/lv624/lazarus/research)
 "aT" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/cell_charger,
 /obj/item/tool/crowbar,
 /turf/open/floor{
@@ -374,7 +374,7 @@
 	},
 /area/lv624/lazarus/research)
 "bm" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/floor{
 	icon_state = "freezerfloor"
 	},
@@ -409,7 +409,7 @@
 /area/lv624/lazarus/research)
 "bz" = (
 /obj/item/storage/box/beakers,
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/sign/biohazard{
 	pixel_x = -30
 	},
@@ -425,7 +425,7 @@
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle9)
 "qs" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/storage/fancy/vials/random,
 /turf/open/floor{
 	dir = 5;
@@ -433,7 +433,7 @@
 	},
 /area/lv624/lazarus/research)
 "Tz" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/paper/research_notes,
 /turf/open/floor{
 	dir = 5;

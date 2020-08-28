@@ -474,7 +474,7 @@
 
 /obj/item/toy/handcard/dropped(mob/user as mob)
 	..()
-	if(locate(/obj/structure/table, loc))
+	if(locate(/obj/structure/surface/table, loc))
 		src.update_icon(user.dir)
 	else
 		update_icon()

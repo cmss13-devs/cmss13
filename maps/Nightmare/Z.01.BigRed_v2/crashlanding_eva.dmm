@@ -215,7 +215,7 @@
 	},
 /area/bigredv2/outside/general_offices)
 "aQ" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/document_objective/folder,
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin15";
@@ -244,7 +244,7 @@
 	},
 /area/bigredv2/outside/general_offices)
 "aU" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/map/big_red_map,
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin15";
@@ -278,7 +278,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/general_offices)
 "ba" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/plastic,
 /obj/item/stack/sheet/mineral/plastic,
 /obj/item/stack/sheet/mineral/plastic,
@@ -296,7 +296,7 @@
 	},
 /area/bigredv2/outside/general_offices)
 "bc" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/device/mass_spectrometer/adv/objective,
 /turf/open/floor{
 	tag = "icon-dark";
@@ -389,7 +389,7 @@
 	},
 /area/bigredv2/outside/general_offices)
 "bp" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/bedsheetbin,
 /turf/open/floor/plating,
 /area/bigredv2/outside/general_offices)
@@ -445,7 +445,7 @@
 	},
 /area/bigredv2/outside/general_offices)
 "bx" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/phoron{
 	amount = 25
 	},
@@ -456,7 +456,7 @@
 	},
 /area/bigredv2/outside/general_offices)
 "by" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/uranium{
 	amount = 50
 	},
@@ -467,12 +467,12 @@
 	},
 /area/bigredv2/outside/general_offices)
 "bz" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/document_objective/paper,
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
 "bA" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
 "bB" = (
@@ -570,14 +570,14 @@
 	},
 /area/bigredv2/outside/general_offices)
 "bP" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
 /area/bigredv2/outside/general_offices)
 "bQ" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/uranium{
 	amount = 50
 	},
@@ -599,7 +599,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/silver,
 /obj/item/stack/sheet/mineral/silver{
 	amount = 20
@@ -626,7 +626,7 @@
 	},
 /area/bigredv2/outside/general_offices)
 "bV" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/spawner/random/tool,
 /obj/effect/spawner/random/tool,
 /obj/effect/spawner/random/tool,
@@ -664,7 +664,7 @@
 	},
 /area/bigredv2/outside/general_offices)
 "cb" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/restraints,
 /obj/effect/landmark{
 	name = "crap_item"
@@ -696,7 +696,7 @@
 	},
 /area/bigredv2/outside/general_offices)
 "ce" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/disk/objective,
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin15";
@@ -721,7 +721,7 @@
 	},
 /area/bigredv2/outside/general_offices)
 "ci" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/diamond,
 /obj/item/stack/sheet/plasteel{
 	amount = 30;
@@ -735,7 +735,7 @@
 	},
 /area/bigredv2/outside/general_offices)
 "cj" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/diamond,
 /obj/item/clothing/under/redcoat,
 /turf/open/floor{
@@ -745,7 +745,7 @@
 	},
 /area/bigredv2/outside/general_offices)
 "ck" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/light{
 	dir = 8;
 	icon_state = "tube1";
@@ -754,7 +754,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
 "cl" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/spawner/random/tool,
 /obj/effect/spawner/random/tool,
 /turf/open/floor,
@@ -823,7 +823,7 @@
 	},
 /area/bigredv2/outside/general_offices)
 "cw" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/gold,
 /turf/open/floor{
 	tag = "icon-dark";
@@ -843,7 +843,7 @@
 	},
 /area/bigredv2/outside/general_offices)
 "cy" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/diamond,
 /turf/open/floor{
 	tag = "icon-dark";
@@ -1110,7 +1110,7 @@
 	},
 /area/bigredv2/outside/general_offices)
 "dn" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/floor/plating{
 	icon_state = "wood"
 	},
@@ -1121,7 +1121,7 @@
 	},
 /area/bigredv2/outside/general_offices)
 "dp" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -1158,7 +1158,7 @@
 	},
 /area/bigredv2/outside/general_offices)
 "dv" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/floor/plating{
 	icon_state = "wood-broken5"
 	},
@@ -1477,11 +1477,11 @@
 /turf/open/floor,
 /area/bigredv2/outside/hydroponics)
 "es" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/floor,
 /area/bigredv2/outside/hydroponics)
 "et" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/tool/shovel/spade,
 /obj/structure/machinery/camera/autoname{
 	dir = 1
@@ -1489,7 +1489,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/hydroponics)
 "eu" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/paper/hydroponics,
 /turf/open/floor,
 /area/bigredv2/outside/hydroponics)
@@ -1556,7 +1556,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/hydroponics)
 "eF" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/document_objective/folder,
 /turf/open/floor,

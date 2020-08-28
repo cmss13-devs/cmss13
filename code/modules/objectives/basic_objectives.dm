@@ -2,7 +2,7 @@
 // *** Basic retrieve item and get it to an area ***
 // --------------------------------------------
 /datum/cm_objective/retrieve_item
-	var/target_item
+	var/obj/target_item
 	var/list/area/target_areas
 	var/area/initial_location
 	objective_flags = OBJ_CAN_BE_UNCOMPLETED | OBJ_FAILABLE
@@ -24,7 +24,7 @@
 		return FALSE
 	for(var/T in target_areas)
 		var/area/target_area = T //not sure why the cast is necessary (rather than casting in the loop), but it doesn't work without it... ~ThePiachu
-		if(istype(get_area(target_item), target_area))
+		if(istype(get_area(target_item.loc), target_area))
 			complete()
 			return TRUE
 

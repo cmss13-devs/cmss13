@@ -961,7 +961,7 @@
 		explosion_throw(P.damage/2, P.dir, 4)
 	return TRUE
 
-/obj/structure/table/bullet_act(obj/item/projectile/P)
+/obj/structure/surface/table/bullet_act(obj/item/projectile/P)
 	bullet_ping(P)
 	health -= round(P.damage/2)
 	if(health < 0)

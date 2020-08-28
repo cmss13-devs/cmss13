@@ -74,7 +74,7 @@
 	},
 /area/lv624/ground/sand6)
 "ar" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark{
 	name = "crap_item"
 	},
@@ -84,7 +84,7 @@
 	},
 /area/lv624/ground/sand6)
 "as" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/disk/objective,
 /turf/open/floor{
 	dir = 4;
@@ -92,7 +92,7 @@
 	},
 /area/lv624/ground/sand6)
 "at" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/document_objective/report,
 /turf/open/floor{
 	dir = 4;
@@ -100,7 +100,7 @@
 	},
 /area/lv624/ground/sand6)
 "au" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark{
 	name = "crap_item"
 	},
@@ -114,7 +114,7 @@
 	},
 /area/lv624/ground/sand6)
 "av" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/weapon/melee/harpoon/yautja{
 	name = "Alien Harpoon"
 	},
@@ -175,7 +175,7 @@
 	},
 /area/lv624/ground/sand6)
 "aE" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark{
 	name = "crap_item"
 	},
@@ -197,7 +197,7 @@
 	},
 /area/lv624/ground/sand6)
 "aH" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/stack/sheet/mineral/sandstone{
 	amount = 50
 	},
@@ -236,7 +236,7 @@
 	},
 /area/lv624/ground/sand6)
 "aN" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/mass_spectrometer/adv/objective,
 /turf/open/floor{
 	dir = 4;
@@ -262,7 +262,7 @@
 /turf/closed/wall/mineral/sandstone,
 /area/lv624/ground/sand3)
 "aS" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/autopsy_scanner/objective,
 /turf/open/floor{
 	dir = 4;
@@ -273,14 +273,14 @@
 /turf/closed/wall/rock/brown,
 /area/lv624/ground/sand3)
 "aU" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whiteyellowfull"
 	},
 /area/lv624/ground/sand3)
 "aV" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark{
 	name = "crap_item"
 	},
@@ -290,7 +290,7 @@
 	},
 /area/lv624/ground/sand3)
 "aW" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/document_objective/technical_manual,
 /turf/open/floor{
 	dir = 4;

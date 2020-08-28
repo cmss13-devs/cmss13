@@ -149,7 +149,7 @@
 	},
 /area/lv624/lazarus/main_hall)
 "au" = (
-/obj/structure/table{
+/obj/structure/surface/table{
 	dir = 4;
 	flipped = 1
 	},
@@ -244,7 +244,7 @@
 /area/lv624/lazarus/main_hall)
 "aF" = (
 /obj/item/limb/foot/r_foot,
-/obj/structure/table{
+/obj/structure/surface/table{
 	dir = 8;
 	flipped = 1
 	},
@@ -284,7 +284,7 @@
 /area/lv624/lazarus/main_hall)
 "aJ" = (
 /obj/item/limb/hand/r_hand,
-/obj/structure/table{
+/obj/structure/surface/table{
 	dir = 4;
 	flipped = 1
 	},
@@ -377,7 +377,7 @@
 	},
 /area/lv624/lazarus/main_hall)
 "aV" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -400,7 +400,7 @@
 "aY" = (
 /obj/effect/decal/cleanable/blood/splatter/animated,
 /obj/item/limb/arm/l_arm,
-/obj/structure/table{
+/obj/structure/surface/table{
 	dir = 4;
 	flipped = 1
 	},
@@ -410,7 +410,7 @@
 /area/lv624/lazarus/main_hall)
 "aZ" = (
 /obj/effect/decal/cleanable/blood/splatter/animated,
-/obj/structure/table{
+/obj/structure/surface/table{
 	dir = 2;
 	flipped = 1
 	},
@@ -433,11 +433,11 @@
 /area/lv624/lazarus/main_hall)
 "bc" = (
 /obj/effect/decal/cleanable/blood/splatter/animated,
-/obj/structure/table{
+/obj/structure/surface/table{
 	dir = 4;
 	flipped = 1
 	},
-/obj/structure/table{
+/obj/structure/surface/table{
 	dir = 2;
 	flipped = 1
 	},
@@ -507,11 +507,11 @@
 "bk" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/floor/grass,
 /area/lv624/lazarus/main_hall)
 "bl" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "whitegreencorner"
@@ -552,7 +552,7 @@
 /area/lv624/lazarus/main_hall)
 "br" = (
 /obj/effect/decal/cleanable/blood/splatter/animated,
-/obj/structure/table{
+/obj/structure/surface/table{
 	dir = 4;
 	flipped = 1
 	},
@@ -631,7 +631,7 @@
 "bA" = (
 /obj/item/tool/crowbar,
 /obj/effect/decal/cleanable/blood/splatter/animated,
-/obj/structure/table{
+/obj/structure/surface/table{
 	dir = 8;
 	flipped = 1
 	},
@@ -674,7 +674,7 @@
 /area/lv624/lazarus/main_hall)
 "bE" = (
 /obj/effect/landmark/corpsespawner/chef,
-/obj/structure/table{
+/obj/structure/surface/table{
 	dir = 4;
 	flipped = 1
 	},
@@ -719,11 +719,11 @@
 /area/lv624/lazarus/main_hall)
 "bJ" = (
 /obj/effect/decal/cleanable/blood/splatter/animated,
-/obj/structure/table{
+/obj/structure/surface/table{
 	dir = 2;
 	flipped = 1
 	},
-/obj/structure/table{
+/obj/structure/surface/table{
 	dir = 8;
 	flipped = 1
 	},
@@ -742,7 +742,7 @@
 "bL" = (
 /obj/effect/decal/cleanable/blood/splatter/animated,
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/structure/table{
+/obj/structure/surface/table{
 	dir = 2;
 	flipped = 1
 	},
@@ -752,7 +752,7 @@
 "bM" = (
 /obj/effect/decal/cleanable/blood/splatter/animated,
 /obj/item/limb/leg/r_leg,
-/obj/structure/table{
+/obj/structure/surface/table{
 	dir = 2;
 	flipped = 1
 	},
@@ -954,7 +954,7 @@
 	},
 /area/lv624/lazarus/quart)
 "FV" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/door/window/westright{
 	layer = 2.9
 	},
@@ -1008,7 +1008,7 @@
 /turf/closed/wall,
 /area/lv624/lazarus/chapel)
 "Gt" = (
-/obj/structure/rack{
+/obj/structure/surface/rack{
 	layer = 2.5
 	},
 /turf/open/floor{
@@ -1158,14 +1158,14 @@
 	},
 /area/lv624/lazarus/canteen)
 "Mc" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/clothing/under/CM_uniform,
 /turf/open/floor{
 	icon_state = "red"
 	},
 /area/lv624/lazarus/security)
 "Md" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/device/flashlight/lamp{
 	on = 0
 	},
@@ -1224,7 +1224,7 @@
 	},
 /area/lv624/lazarus/security)
 "Ni" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/ashtray/bronze,
 /obj/item/storage/donut_box,
 /turf/open/floor{
@@ -1284,7 +1284,7 @@
 	},
 /area/lv624/lazarus/kitchen)
 "NV" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/chem_dispenser/soda{
 	pixel_y = 22
 	},
@@ -1297,7 +1297,7 @@
 /obj/structure/sink/kitchen{
 	pixel_y = 30
 	},
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/food/snacks/donkpocket{
 	pixel_x = 4;
 	pixel_y = 4
@@ -1313,7 +1313,7 @@
 	},
 /area/lv624/lazarus/kitchen)
 "NX" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/food/snacks/grown/tomato,
 /turf/open/floor{
 	dir = 8;
@@ -1321,7 +1321,7 @@
 	},
 /area/lv624/lazarus/kitchen)
 "NY" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/trash/snack_bowl{
 	pixel_y = 9
 	},
@@ -1343,7 +1343,7 @@
 	},
 /area/lv624/lazarus/security)
 "OI" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /obj/item/device/binoculars,
 /turf/open/floor{
 	dir = 9;

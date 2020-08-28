@@ -192,5 +192,5 @@
 					obstacle.attack_animal(src)
 					return
 			var/obj/structure/obstacle = locate(/obj/structure, get_step(src, dir))
-			if(istype(obstacle, /obj/structure/window) || istype(obstacle, /obj/structure/closet) || istype(obstacle, /obj/structure/table) || istype(obstacle, /obj/structure/grille) || istype(obstacle, /obj/structure/barricade))
+			if(istype(obstacle, /obj/structure/window) || istype(obstacle, /obj/structure/closet) || istype(obstacle, /obj/structure/surface/table) || istype(obstacle, /obj/structure/grille) || istype(obstacle, /obj/structure/barricade))
 				obstacle.attack_animal(src)

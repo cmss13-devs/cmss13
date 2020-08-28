@@ -3,7 +3,7 @@
 /turf/closed/wall/solaris/rock,
 /area/bigredv2/caves)
 "b" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/tool/shovel,
 /turf/open/mars_cave{
 	tag = "icon-mars_cave_2";
@@ -11,7 +11,7 @@
 	},
 /area/bigredv2/caves_north)
 "c" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/tool/pickaxe,
 /obj/item/tool/pickaxe,
 /turf/open/mars_cave{
@@ -20,7 +20,7 @@
 	},
 /area/bigredv2/caves_north)
 "d" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/clothing/mask/gas,
 /obj/item/clothing/mask/gas,
 /turf/open/mars_cave{
@@ -35,7 +35,7 @@
 	},
 /area/bigredv2/caves_north)
 "f" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/storage/toolbox,
 /turf/open/mars_cave{
 	tag = "icon-mars_cave_2";
@@ -43,7 +43,7 @@
 	},
 /area/bigredv2/caves_north)
 "g" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/technology_scanner,
 /turf/open/mars_cave{
 	tag = "icon-mars_cave_2";
@@ -51,7 +51,7 @@
 	},
 /area/bigredv2/caves_north)
 "h" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/tool/pickaxe,
 /turf/open/mars_cave{
 	tag = "icon-mars_cave_2";
@@ -84,7 +84,7 @@
 	},
 /area/bigredv2/caves_north)
 "l" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/lightstick/red,
 /obj/item/lightstick/red,
 /obj/item/lightstick/red,
@@ -120,7 +120,7 @@
 	},
 /area/bigredv2/caves_north)
 "q" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/clothing/mask/gas,
 /turf/open/mars_cave{
 	tag = "icon-mars_cave_2";
@@ -128,7 +128,7 @@
 	},
 /area/bigredv2/caves_north)
 "r" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/pizzabox,
 /turf/open/mars_cave{
 	tag = "icon-mars_cave_2";
@@ -136,7 +136,7 @@
 	},
 /area/bigredv2/caves_north)
 "s" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/flashlight,
 /turf/open/mars_cave{
 	tag = "icon-mars_cave_2";

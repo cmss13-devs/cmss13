@@ -115,7 +115,7 @@
 	
 	return TRUE
 
-/obj/structure/proc/do_climb(var/mob/living/user)
+/obj/structure/proc/do_climb(var/mob/living/user, mods)
 	if(!can_climb(user))
 		return
 

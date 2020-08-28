@@ -275,7 +275,7 @@
 /turf/open/floor/prison,
 /area/prison/security/monitoring/highsec)
 "aH" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/flashlight/lamp{
 	on = 0
 	},
@@ -314,7 +314,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/prison/security/monitoring/highsec)
 "aK" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/computer/security{
 	network = list("PRISON")
 	},
@@ -373,7 +373,7 @@
 /turf/open/floor/prison,
 /area/prison/residential/central)
 "aR" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/flashlight/lamp{
 	on = 0
 	},
@@ -382,7 +382,7 @@
 	},
 /area/prison/residential/central)
 "aS" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/computer/security{
 	network = list("PRISON")
 	},
@@ -394,7 +394,7 @@
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/prison/residential/central)
 "aU" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
@@ -407,7 +407,7 @@
 	},
 /area/prison/residential/central)
 "aV" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/paper_bin{
 	pixel_x = -3;
 	pixel_y = 7
@@ -816,7 +816,7 @@
 	},
 /area/prison/security/monitoring/highsec)
 "bK" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/paper_bin{
 	pixel_x = -3;
 	pixel_y = 7
@@ -938,7 +938,7 @@
 /turf/open/floor/plating,
 /area/prison/residential/central)
 "bW" = (
-/obj/structure/table/reinforced,
+/obj/structure/surface/table/reinforced,
 /turf/open/floor/prison{
 	tag = "icon-bright_clean (SOUTHWEST)";
 	icon_state = "bright_clean";

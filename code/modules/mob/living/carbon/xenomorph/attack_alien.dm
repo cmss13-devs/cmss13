@@ -334,7 +334,7 @@
 	return attack_hand(user)
 
 //Breaking tables and racks
-/obj/structure/table/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/structure/surface/table/attack_alien(mob/living/carbon/Xenomorph/M)
 	if(breakable)
 		M.animation_attack_on(src)
 		if(sheet_type == /obj/item/stack/sheet/wood)
@@ -368,7 +368,7 @@
 		M.apply_damage(10)
 
 
-/obj/structure/rack/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/structure/surface/rack/attack_alien(mob/living/carbon/Xenomorph/M)
 	M.animation_attack_on(src)
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
 	M.visible_message(SPAN_DANGER("[M] slices [src] apart!"), \

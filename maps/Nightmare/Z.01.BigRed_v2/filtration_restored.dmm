@@ -7,7 +7,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "ac" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/tool/lighter/random,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor,
@@ -27,7 +27,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "ag" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/disk/objective,
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
@@ -178,7 +178,7 @@
 /obj/structure/machinery/computer/atmos_alert{
 	dir = 8
 	},
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "aG" = (
@@ -242,12 +242,12 @@
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "aQ" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "aR" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/tool,
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
@@ -328,7 +328,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "be" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/landmark{
 	name = "good_item"
 	},
@@ -339,24 +339,24 @@
 /turf/closed/wall/solaris,
 /area/bigredv2/outside/filtration_plant)
 "bg" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/spawner/random/tool,
 /obj/structure/machinery/light,
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "bh" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/effect/spawner/random/tool,
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "bi" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/circuitboard/solar_tracker,
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "bj" = (
-/obj/structure/rack,
+/obj/structure/surface/rack,
 /obj/item/tank/air,
 /obj/item/tool/pickaxe,
 /turf/open/floor,
@@ -431,7 +431,7 @@
 	},
 /area/bigredv2/outside/filtration_plant)
 "bt" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/technology_scanner,
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
@@ -475,7 +475,7 @@
 /area/bigredv2/outside/filtration_plant)
 "bB" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/disk/objective,
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
@@ -510,14 +510,14 @@
 	},
 /area/bigredv2/outside/filtration_plant)
 "bG" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/computer/atmos_alert{
 	dir = 4
 	},
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "bH" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "bI" = (
@@ -788,13 +788,13 @@
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "VW" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/technology_scanner,
 /obj/structure/machinery/light,
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "Yg" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
 /obj/structure/machinery/light{
 	dir = 1

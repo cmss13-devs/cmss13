@@ -29,7 +29,7 @@
 	d=/obj/structure/machinery/door/airlock/almayer,/turf/open/floor/almayer
 	n=/obj/structure/machinery/door/airlock/almayer{N},/turf/open/floor/almayer
 	b=/obj/structure/bed,/obj/item/bedsheet/blue,/turf/open/floor/wood
-	t=/obj/structure/table/woodentable,/obj/item/device/flashlight/lamp/green,/turf/open/floor/wood
+	t=/obj/structure/surface/table/woodentable,/obj/item/device/flashlight/lamp/green,/turf/open/floor/wood
 	f=/turf/open/floor/wood
 */
 /client/proc/construct_env_dmm()

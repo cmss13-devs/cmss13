@@ -15,7 +15,7 @@
 	matter = list("metal" = 7500) //A table, takes two sheets to build
 	flags_atom = FPRINT|CONDUCT
 	attack_verb = list("slammed", "bashed", "battered", "bludgeoned", "thrashed", "whacked")
-	var/table_type = /obj/structure/table //what type of table it creates when assembled
+	var/table_type = /obj/structure/surface/table //what type of table it creates when assembled
 
 /obj/item/frame/table/attackby(obj/item/W, mob/user)
 
@@ -55,7 +55,7 @@
 		to_chat(user, SPAN_WARNING("Hold still while you're constructing a table!"))
 		return
 
-	var/obj/structure/table/T = new table_type(user.loc)
+	var/obj/structure/surface/table/T = new table_type(user.loc)
 	T.add_fingerprint(user)
 	user.drop_held_item()
 	qdel(src)
@@ -70,7 +70,7 @@
 	icon = 'icons/obj/items/items.dmi'
 	icon_state = "reinf_tableparts"
 	matter = list("metal" = 15000) //A reinforced table. Two sheets of metal and four rods
-	table_type = /obj/structure/table/reinforced
+	table_type = /obj/structure/surface/table/reinforced
 
 /obj/item/frame/table/reinforced/attackby(obj/item/W, mob/user)
 
@@ -88,7 +88,7 @@
 	desc = "A kit for a table, including a large, flat wooden surface and four legs. Some assembly required."
 	icon_state = "wood_tableparts"
 	flags_atom = FPRINT
-	table_type = /obj/structure/table/woodentable
+	table_type = /obj/structure/surface/table/woodentable
 
 /obj/item/frame/table/wood/attackby(obj/item/W, mob/user)
 
@@ -96,7 +96,7 @@
 		new /obj/item/stack/sheet/wood(get_turf(src))
 		qdel(src)
 
-	if(istype(W, /obj/item/stack/tile/carpet) && table_type == /obj/structure/table/woodentable)
+	if(istype(W, /obj/item/stack/tile/carpet) && table_type == /obj/structure/surface/table/woodentable)
 		var/obj/item/stack/tile/carpet/C = W
 		if(C.use(1))
 			to_chat(user, SPAN_NOTICE("You put a layer of carpet on [src]."))
@@ -107,13 +107,13 @@
 	name = "poor wooden table parts"
 	desc = "A kit for a poorly crafted table, including a large, flat wooden surface and four legs. Some assembly required."
 	icon_state = "pwood_tableparts"
-	table_type = /obj/structure/table/woodentable/poor
+	table_type = /obj/structure/surface/table/woodentable/poor
 
 /obj/item/frame/table/wood/fancy
 	name = "fancy wooden table parts"
 	desc = "A kit for a finely crafted mahogany table, including a large, flat wooden surface and four legs. Some assembly required."
 	icon_state = "fwood_tableparts"
-	table_type = /obj/structure/table/woodentable/fancy
+	table_type = /obj/structure/surface/table/woodentable/fancy
 
 /*
  * Gambling Table Parts
@@ -124,7 +124,7 @@
 	desc = "A kit for a table, including a large, flat wooden and carpet surface and four legs. Some assembly required."
 	icon_state = "gamble_tableparts"
 	flags_atom = null
-	table_type = /obj/structure/table/gamblingtable
+	table_type = /obj/structure/surface/table/gamblingtable
 
 /obj/item/frame/table/gambling/attackby(obj/item/W as obj, mob/user as mob)
 
@@ -145,7 +145,7 @@
 /obj/item/frame/table/almayer
 	name = "gray table parts"
 	icon_state = "table_parts"
-	table_type = /obj/structure/table/almayer
+	table_type = /obj/structure/surface/table/almayer
 
 
 
@@ -173,15 +173,15 @@
 		to_chat(user, SPAN_WARNING("No. This area is needed for the dropship."))
 		return
 
-	if(locate(/obj/structure/table) in user.loc || locate(/obj/structure/barricade) in user.loc)
+	if(locate(/obj/structure/surface/table) in user.loc || locate(/obj/structure/barricade) in user.loc)
 		to_chat(user, SPAN_WARNING("There is already a structure here."))
 		return
 
-	if(locate(/obj/structure/rack) in user.loc)
+	if(locate(/obj/structure/surface/rack) in user.loc)
 		to_chat(user, SPAN_WARNING("There already is a rack here."))
 		return
 
-	var/obj/structure/rack/R = new /obj/structure/rack(user.loc)
+	var/obj/structure/surface/rack/R = new /obj/structure/surface/rack(user.loc)
 	R.add_fingerprint(user)
 	user.drop_held_item()
 	qdel(src)

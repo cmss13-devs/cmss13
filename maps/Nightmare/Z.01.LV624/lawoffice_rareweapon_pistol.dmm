@@ -81,12 +81,12 @@
 /turf/open/floor/bluegrid,
 /area/lv624/lazarus/internal_affairs)
 "ap" = (
-/obj/structure/table/woodentable/fancy,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/item/device/megaphone,
 /turf/open/floor/bluegrid,
 /area/lv624/lazarus/internal_affairs)
 "aq" = (
-/obj/structure/table/woodentable/fancy,
+/obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/bluegrid,
 /area/lv624/lazarus/internal_affairs)
 "ar" = (
@@ -452,7 +452,7 @@
 /turf/open/floor/bluegrid,
 /area/lv624/lazarus/internal_affairs)
 "bm" = (
-/obj/structure/table/woodentable/fancy,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/item/device/pinpointer,
 /turf/open/floor/bluegrid,
 /area/lv624/lazarus/internal_affairs)
@@ -492,12 +492,12 @@
 /turf/open/floor/bluegrid,
 /area/lv624/lazarus/internal_affairs)
 "bt" = (
-/obj/structure/table/woodentable/fancy,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/item/device/flashlight/lamp,
 /turf/open/floor/bluegrid,
 /area/lv624/lazarus/internal_affairs)
 "bu" = (
-/obj/structure/table/woodentable/fancy,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/item/storage/box/donkpockets,
 /obj/item/clothing/glasses/sunglasses/big{
 	pixel_y = 5
@@ -505,12 +505,12 @@
 /turf/open/floor/bluegrid,
 /area/lv624/lazarus/internal_affairs)
 "bv" = (
-/obj/structure/table/woodentable/fancy,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/computer/crew,
 /turf/open/floor/bluegrid,
 /area/lv624/lazarus/internal_affairs)
 "bw" = (
-/obj/structure/table/woodentable/fancy,
+/obj/structure/surface/table/woodentable/fancy,
 /obj/item/ashtray/glass,
 /obj/item/toy/deck,
 /obj/structure/prop/mech/mech_parts/part/gygax_head,

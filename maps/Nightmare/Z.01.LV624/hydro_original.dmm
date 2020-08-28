@@ -87,7 +87,7 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/hydroponics)
 "of" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/clothing/suit/apron/overalls,
 /obj/item/clothing/under/colonist,
 /turf/open/floor{
@@ -96,7 +96,7 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "og" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/clothing/gloves/botanic_leather,
 /turf/open/floor{
 	dir = 5;
@@ -104,7 +104,7 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "oh" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/light{
 	dir = 1
 	},
@@ -148,7 +148,7 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "om" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/device/analyzer/plant_analyzer{
 	pixel_x = 2;
 	pixel_y = 1
@@ -160,7 +160,7 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "oy" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/disk/objective,
 /turf/open/floor{
 	dir = 5;
@@ -187,7 +187,7 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "oC" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/clothing/gloves/botanic_leather,
 /turf/open/floor{
 	dir = 9;
@@ -195,7 +195,7 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "oM" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/glass/bucket{
 	pixel_x = 6;
 	pixel_y = 6
@@ -228,7 +228,7 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "oR" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/storage/box/donkpockets,
 /turf/open/floor{
 	dir = 9;
@@ -327,7 +327,7 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "qD" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/spray/plantbgone{
 	pixel_x = 12
 	},
@@ -345,7 +345,7 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "qU" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/clothing/suit/apron,
 /turf/open/floor{
 	dir = 5;
@@ -360,7 +360,7 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "rp" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/tool/hatchet{
 	pixel_x = 6;
 	pixel_y = 4
@@ -371,7 +371,7 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "rq" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/clothing/shoes/sandal,
 /turf/open/floor{
 	dir = 9;
@@ -379,7 +379,7 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "rr" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/reagent_container/food/drinks/flask/vacuumflask,
 /obj/structure/machinery/light,
 /turf/open/floor{
@@ -388,7 +388,7 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "rs" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/tool/crowbar,
 /turf/open/floor{
 	dir = 5;
@@ -396,7 +396,7 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "rt" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/structure/machinery/light,
 /obj/item/disk/objective,
 /turf/open/floor{
@@ -405,7 +405,7 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "ru" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/tool/shovel/spade,
 /obj/item/document_objective/technical_manual,
 /turf/open/floor{
@@ -414,7 +414,7 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "rv" = (
-/obj/structure/table,
+/obj/structure/surface/table,
 /obj/item/tool/extinguisher,
 /turf/open/floor{
 	dir = 5;

@@ -45,15 +45,13 @@
 	mouse_opacity = 0 //can't click to examine it
 	var/effect_duration = 10 //in deciseconds
 
-	New()
-		..()
-		flick(icon_state, src)
-		start_countdown()
+	var/start_on_spawn = TRUE
 
-/obj/effect/overlay/temp/proc/start_countdown()
-	set waitfor = 0
-	sleep(effect_duration)
-	qdel(src)
+/obj/effect/overlay/temp/New()
+	..()
+	flick(icon_state, src)
+	if(start_on_spawn)
+		QDEL_IN(src, effect_duration)
 
 /obj/effect/overlay/temp/point
 	name = "arrow"
@@ -61,11 +59,32 @@
 	icon = 'icons/mob/hud/screen1.dmi'
 	icon_state = "arrow"
 	anchored = 1
-	effect_duration = 25
+	effect_duration = 2.5 SECONDS
+
+	start_on_spawn = FALSE
+
+/obj/effect/overlay/temp/point/Initialize(mapload, var/mob/M)
+	. = ..()
+	var/turf/T1 = loc
+	var/turf/T2 = M.loc
+
+	if(!T2.x || !T2.y)
+		return
+
+	var/dist_x = (T2.x - T1.x)
+	var/dist_y = (T2.y - T1.y)
+
+	var/glide_time = max(get_accurate_dist(T1, T2) * 1.6, 5) // 1 tile range has a minimum of 2
+
+	pixel_x = dist_x * 32
+	pixel_y = dist_y * 32
+
+	animate(src, pixel_x = 0, pixel_y = 0, time = glide_time, easing = QUAD_EASING)
+	QDEL_IN(src, effect_duration + glide_time)
 
 /obj/effect/overlay/temp/point/big
 	icon_state = "big_arrow"
-	effect_duration = 40
+	effect_duration = SECONDS_4
 
 //Special laser for coordinates, not for CAS
 /obj/effect/overlay/temp/laser_coordinate

@@ -76,6 +76,7 @@
 	hive_pos = XENO_QUEEN
 	crystal_max = XENO_CRYSTAL_MEDIUM
 	crystal_stored = XENO_CRYSTAL_MEDIUM
+	small_explosives_stun = FALSE
 
 	var/map_view = 0
 	var/breathing_counter = 0

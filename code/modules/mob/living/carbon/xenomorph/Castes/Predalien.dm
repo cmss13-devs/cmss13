@@ -41,6 +41,7 @@
 	mob_size = MOB_SIZE_BIG
 	tier = 1
 	age = -1 //Predaliens are already in their ultimate form, they don't get even better
+	small_explosives_stun = FALSE
 
 	actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,

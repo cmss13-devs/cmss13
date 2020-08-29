@@ -77,6 +77,8 @@
 	var/plasma_max = 10
 	var/plasma_gain = 5
 
+	var/small_explosives_stun = TRUE // Have to put this here, otherwise it can't be strain specific
+
 	// Tackles
 	var/tackle_min = 2
 	var/tackle_max = 6

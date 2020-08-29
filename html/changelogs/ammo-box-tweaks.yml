@@ -1,0 +1,8 @@
+author: Jeser
+
+delete-after: True
+
+changes: 
+  - bugfix: "Fixed new ammunition sounds playing for shotgun ammo boxes."
+  - tweak: "Undeployed ammo boxes sprites now have small offsets."
+  - rscadd: "Added ammo boxes path option for Quick Create Object."

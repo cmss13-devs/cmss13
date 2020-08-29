@@ -574,10 +574,10 @@
 	//xeno leader get a bit arrow and less cooldown
 	if(hive_pos != NORMAL_XENO)
 		recently_pointed_to = world.time + 10
-		new /obj/effect/overlay/temp/point/big(T)
+		new /obj/effect/overlay/temp/point/big(T, src)
 	else
 		recently_pointed_to = world.time + 50
-		new /obj/effect/overlay/temp/point(T)
+		new /obj/effect/overlay/temp/point(T, src)
 	visible_message("<b>[src]</b> points to [A]")
 	return 1
 

@@ -331,11 +331,11 @@
 	//Squad Leaders and above have reduced cooldown and get a bigger arrow
 	if(!skillcheck(src, SKILL_LEADERSHIP, SKILL_LEAD_TRAINED))
 		recently_pointed_to = world.time + 50
-		new /obj/effect/overlay/temp/point(T)
+		new /obj/effect/overlay/temp/point(T, src)
 
 	else
 		recently_pointed_to = world.time + 10
-		new /obj/effect/overlay/temp/point/big(T)
+		new /obj/effect/overlay/temp/point/big(T, src)
 	visible_message("<b>[src]</b> points to [A]", null, null, 5)
 	return 1
 

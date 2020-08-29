@@ -389,3 +389,16 @@ var/list/accessable_z_levels = list("1" = 10, "3" = 10, "4" = 10, "5" = 70)
 // I.e. the foreship is x = 0 to and including ALMAYER_FORE_BOUNDARY
 #define ALMAYER_FORE_BOUNDARY 121
 #define ALMAYER_AFT_BOUNDARY 197
+
+/proc/get_accurate_dist(var/turf/A, var/turf/B)
+	var/dist
+	if(!A || !B)
+		dist = 0
+	else
+		var/dx = abs(A.x - B.x)
+		var/dy = abs(A.y - B.y)
+		if(dx>=dy)	dist = (0.934*dx) + (0.427*dy)
+		else		dist = (0.427*dx) + (0.934*dy)
+
+	return dist
+	

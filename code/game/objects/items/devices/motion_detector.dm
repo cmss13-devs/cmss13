@@ -225,6 +225,7 @@
 		/obj/item/device/autopsy_scanner/objective,
 		/obj/item/paper/research_notes,
 		/obj/item/reagent_container/glass/beaker/vial/random,
+		/obj/item/storage/fancy/vials/random,
 		/obj/structure/machinery/computer/objective,
 		/obj/item/limb/head/synth,
 	)

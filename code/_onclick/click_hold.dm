@@ -11,6 +11,7 @@
 	var/holding_click = FALSE
 	// The history of all atoms that were hovered over while the mouse was depressed
 	var/list/mouse_trace_history
+	var/list/lmb_last_mousedown_mods
 
 /client/MouseDown(var/atom/A, var/turf/T, var/skin_ctl, var/params)
 	if(!A)
@@ -26,6 +27,7 @@
 	var/list/mods = params2list(params)
 	if(mods["left"])
 		raiseEvent(src, EVENT_LMBDOWN, A, mods)
+		lmb_last_mousedown_mods = mods
 
 /client/MouseUp(var/atom/A, var/turf/T, var/skin_ctl, var/params)
 	if(!A)

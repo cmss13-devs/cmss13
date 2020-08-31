@@ -101,14 +101,16 @@
 		return TRUE
 	..()
 
-/obj/structure/surface/do_climb(var/mob/user, mods)
+/obj/structure/surface/proc/try_to_open_container(var/mob/user, mods)
+	if(!Adjacent(user))
+		return
+
 	if(ishuman(user) || isrobot(user))
 		var/obj/item/O = get_item(mods)
 		if(O && istype(O, /obj/item/storage))
 			var/obj/item/storage/S = O
 			S.open(usr)
-			return
-	..()
+			return TRUE
 
 /obj/structure/surface/attack_hand(mob/user, click_data)
 	. = ..()
@@ -157,3 +159,8 @@
 	W.pixel_y = (CELLSIZE * (cell_y + 0.5)) - center["y"]
 	W.pixel_z = 0
 	attach_item(W)
+
+/obj/structure/surface/MouseDrop(atom/over)
+	. = ..()
+	if(over == usr && usr && usr.client && usr.client.lmb_last_mousedown_mods)
+		return try_to_open_container(usr, usr.client.lmb_last_mousedown_mods)

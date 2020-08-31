@@ -236,7 +236,10 @@
 
 //Flipping tables, nothing more, nothing less
 /obj/structure/surface/table/MouseDrop(over_object, src_location, over_location)
-	..()
+	. = ..()
+	if(.)
+		return .
+
 	if(flipped)
 		do_put()
 	else

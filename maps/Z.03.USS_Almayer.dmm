@@ -38237,7 +38237,7 @@
 /area/almayer/living/grunt_rnr)
 "cqg" = (
 /obj/structure/machinery/vending/hydroseeds{
-	req_access = list(28)
+	req_access = null
 	},
 /turf/open/floor/almayer{
 	dir = 4;

@@ -493,6 +493,8 @@ proc/setup_database_connection()
 /proc/MapDaemonHandleRestart()
 	set waitfor = 0
 
+	ticker.current_state = GAME_STATE_COMPILE_FINISHED
+
 	sleep(300)
 
 	if(ticker.delay_end || ticker.automatic_delay_end)

@@ -56,7 +56,10 @@ Additional game mode variables.
 	var/merc_starting_num 	= 0 //PMC clamp.
 	var/marine_starting_num = 0 //number of players not in something special
 	var/pred_current_num 	= 0 //How many are there now?
-	var/pred_maximum_num 	= 4 //How many are possible per round? Does not count elders.
+	var/pred_per_players 	= 40 //Preds per player
+	var/pred_start_count	= 4 //The initial count of predators
+
+	var/pred_additional_max = 0
 	var/pred_round_chance 	= 20 //%
 	var/pred_leader_count 	= 0 //How many Leader preds are active
 	var/pred_leader_max 	= 1 //How many Leader preds are permitted. Currently fixed to 1. May add admin verb to adjust this later.
@@ -124,6 +127,8 @@ Additional game mode variables.
 	if(!ignore_pred_num)
 		pred_current_num++ 
 
+#define calculate_pred_max (Floor(length(player_list) / pred_per_players) + pred_additional_max + pred_start_count)
+
 /datum/game_mode/proc/initialize_starting_predator_list()
 	if(prob(pred_round_chance)) //First we want to determine if it's actually a predator round.
 		flags_round_type |= MODE_PREDATOR //It is now a predator round.
@@ -131,8 +136,9 @@ Additional game mode variables.
 		var/datum/mind/M
 		var/i //Our iterator for the maximum amount of pred spots available. The actual number is changed later on.
 		var/datum/job/J = RoleAuthority.roles_by_name[JOB_PREDATOR]
-		
-		while(L.len && i < pred_maximum_num)
+		var/pred_max = calculate_pred_max
+
+		while(L.len && i < pred_max)
 			M = pick(L)
 			if(!istype(M)) continue
 			L -= M
@@ -213,11 +219,14 @@ Additional game mode variables.
 		return
 
 	if(J.get_whitelist_status(RoleAuthority.roles_whitelist, pred_candidate.client) == WHITELIST_NORMAL)
-		if(pred_current_num >= pred_maximum_num)
-			if(show_warning) to_chat(pred_candidate, SPAN_WARNING("Only [pred_maximum_num] predators may spawn this round, but Elders and Leaders do not count."))
+		var/pred_max = calculate_pred_max
+		if(pred_current_num >= pred_max)
+			if(show_warning) to_chat(pred_candidate, SPAN_WARNING("Only [pred_max] predators may spawn this round, but Elders and Leaders do not count."))
 			return
 
 	return 1
+
+#undef calculate_pred_max
 
 /datum/game_mode/proc/transform_predator(mob/pred_candidate)
 	if(!pred_candidate.client) //Something went wrong.

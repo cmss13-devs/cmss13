@@ -310,7 +310,7 @@
 
 	amount = min(amount, reagents.total_volume)
 	reagents.remove_reagent(chemical,amount)
-	new /obj/effect/decal/cleanable/liquid_fuel(src.loc, amount,1)
+	new /obj/effect/decal/cleanable/liquid_fuel(src.loc, amount)
 
 /obj/structure/reagent_dispensers/fueltank/flamer_fire_act()
 	explode()

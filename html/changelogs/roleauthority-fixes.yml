@@ -1,8 +1,0 @@
-author: Jeser
-
-delete-after: True
-
-changes: 
-  - tweak: "If job gets slot opened, it will stay open for the rest of the round now, whether current population satisfies slot unlocking requirements or not. Reason why this was changed in a simple example: player gets spawned as Squad Specialist, but 20 minutes later has to go to cryo. However, by this time, a dozen or two marines have died and amount of alive and active USCM personnel humans is lower than required for 4th Specialist slot to be opened. This results in slot being locked. In most cases, for the whole round."
-  - bugfix: "Fixed Adjust Job Slots verb not doing anything."
-  - rscadd: "Added verb for staff to debug Role Authority system."

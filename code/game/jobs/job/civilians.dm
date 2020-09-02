@@ -68,8 +68,14 @@
 	spawn_positions = doc_slot_formula(count)
 
 /datum/job/civilian/doctor/get_total_positions(var/latejoin = 0)
-	return (latejoin ? doc_slot_formula(get_total_marines()) : spawn_positions)
-
+	var/positions = spawn_positions
+	if(latejoin)
+		positions = doc_slot_formula(get_total_marines())
+		if(total_positions_in_round < positions)
+			total_positions_in_round = positions
+		else
+			positions = total_positions_in_round
+	return positions
 
 /datum/job/civilian/doctor/generate_entry_message(mob/living/carbon/human/H)
 	entry_message_body = "You are a civilian, and are not subject to follow military chain of command, but you do work for the USCM. You are tasked with keeping the marines healthy and strong, usually in the form of surgery. You are also an expert when it comes to medication and treatment. If you do not know what you are doing, mentorhelp so a mentor can assist you."
@@ -95,7 +101,14 @@
 	spawn_positions = rsc_slot_formula(count)
 
 /datum/job/civilian/researcher/get_total_positions(var/latejoin = 0)
-	return (latejoin ? rsc_slot_formula(get_total_marines()) : spawn_positions)
+	var/positions = spawn_positions
+	if(latejoin)
+		positions = rsc_slot_formula(get_total_marines())
+		if(total_positions_in_round < positions)
+			total_positions_in_round = positions
+		else
+			positions = total_positions_in_round
+	return positions
 
 /datum/job/civilian/researcher/generate_entry_message(mob/living/carbon/human/H)
 	entry_message_body = "You are a civilian, and are not subject to follow military chain of command, but you do work for the USCM. You are tasked with researching and developing new medical treatments, helping your fellow doctors, and generally learning new things. Your role involves a lot of roleplaying, but you can perform the function of a regular doctor. Do not hand out things to marines without getting permission from your supervisor."
@@ -170,7 +183,14 @@
 	spawn_positions = synth_slot_formula(count)
 
 /datum/job/civilian/synthetic/get_total_positions(var/latejoin = 0)
-	return (latejoin ? synth_slot_formula(get_total_marines()) : spawn_positions)
+	var/positions = spawn_positions
+	if(latejoin)
+		positions = synth_slot_formula(get_total_marines())
+		if(total_positions_in_round < positions)
+			total_positions_in_round = positions
+		else
+			positions = total_positions_in_round
+	return positions
 
 /datum/job/civilian/synthetic/generate_entry_message()
 	entry_message_body = "You are a Synthetic! You are held to a higher standard and are required to obey not only the Server Rules but Marine Law and Synthetic Rules. Failure to do so may result in your White-list Removal. Your primary job is to support and assist all USCM Departments and Personnel on-board. In addition, being a Synthetic gives you knowledge in every field and specialization possible on-board the ship. As a Synthetic you answer to the acting commanding officer. Special circumstances may change this!"

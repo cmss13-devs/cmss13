@@ -56,7 +56,14 @@
 	spawn_positions = ot_slot_formula(count)
 
 /datum/job/logistics/tech/maint/get_total_positions(var/latejoin = 0)
-	return (latejoin ? ot_slot_formula(get_total_marines()) : spawn_positions)
+	var/positions = spawn_positions
+	if(latejoin)
+		positions = ot_slot_formula(get_total_marines())
+		if(total_positions_in_round < positions)
+			total_positions_in_round = positions
+		else
+			positions = total_positions_in_round
+	return positions
 
 /datum/job/logistics/tech/maint/generate_entry_message(mob/living/carbon/human/H)
 	entry_message_body = "Your job is to maintain the integrity of the USCM weapons, munitions and equipment, including the orbital cannon. You can use the workshop in the portside hangar to construct new armaments for the marines. However you remain one of the more flexible roles on the ship and as such may receive other menial tasks from your superiors."
@@ -96,7 +103,14 @@
 	spawn_positions = ct_slot_formula(count)
 
 /datum/job/logistics/tech/cargo/get_total_positions(var/latejoin = 0)
-	return (latejoin ? ct_slot_formula(get_total_marines()) : spawn_positions)
+	var/positions = spawn_positions
+	if(latejoin)
+		positions = ct_slot_formula(get_total_marines())
+		if(total_positions_in_round < positions)
+			total_positions_in_round = positions
+		else
+			positions = total_positions_in_round
+	return positions
 
 /datum/job/logistics/tech/cargo/generate_entry_message(mob/living/carbon/human/H)
 	entry_message_body = "Your job is to dispense supplies to the marines, including weapon attachments. Stay in your department when possible to ensure the marines have full access to the supplies they may require. Listen to the radio in case someone requests a supply drop via the overwatch system."

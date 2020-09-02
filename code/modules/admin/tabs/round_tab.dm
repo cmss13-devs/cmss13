@@ -56,6 +56,8 @@
 		J = RoleAuthority.roles_for_mode[i]
 		if(J.total_positions > 0 && J.current_positions > 0)
 			roles += i
+
+	to_chat(usr, SPAN_BOLDNOTICE("There is not a single taken job slot."))
 	var/role = input("This list contains all roles that have at least one slot taken.\nPlease select role slot to free.", "Free role slot")  as null|anything in roles
 	if(!role)
 		return
@@ -81,7 +83,7 @@
 		return
 	J = RoleAuthority.roles_for_mode[role]
 	var/tpos = J.spawn_positions
-	var/num = input("How many slots role [J.title] should have, currently [J.current_positions] / [J.get_total_positions(1)]?","Number:", tpos) as num|null
+	var/num = input("How many slots role [J.title] should have?\nCurrently taken slots: [J.current_positions]\nTotal amount of slots opened this round: [J.total_positions_in_round]","Number:", tpos) as num|null
 	if(!num)
 		return
 	if(!RoleAuthority.modify_role(J, num))

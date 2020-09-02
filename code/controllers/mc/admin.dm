@@ -73,6 +73,17 @@
 	debug_variables(controller)
 	message_staff("Admin [key_name_admin(usr)] is debugging the [controller] controller.")
 
+/client/proc/debug_role_authority()
+	set category = "Debug"
+	set name = "B: Debug Role Authority"
+
+	if(!RoleAuthority)
+		to_chat(usr, "RoleAuthority not found!")
+		return
+
+	debug_variables(RoleAuthority)
+	message_staff("Admin [key_name_admin(usr)] is debugging the Role Authority.")
+
 /client/proc/debug_game_mode()
 	set category = "Debug"
 	set name = "B: Debug Game Mode"

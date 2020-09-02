@@ -63,7 +63,9 @@
 		for(var/datum/squad/sq in RoleAuthority.squads)
 			if(sq)
 				sq.max_engineers = slots
-	return (slots*4)
+		if(total_positions_in_round < slots * 4)
+			total_positions_in_round = slots * 4
+	return total_positions_in_round
 
 /datum/job/marine/engineer/equipped
 	flags_startup_parameters = ROLE_ADD_TO_SQUAD
@@ -95,7 +97,9 @@
 		for(var/datum/squad/sq in RoleAuthority.squads)
 			if(sq)
 				sq.max_medics = slots
-	return (slots*4)
+		if(total_positions_in_round < slots * 4)
+			total_positions_in_round = slots * 4
+	return total_positions_in_round
 
 /datum/job/marine/medic/equipped
 	flags_startup_parameters = ROLE_ADD_TO_SQUAD
@@ -126,7 +130,14 @@
 	spawn_positions = spec_slot_formula(count)
 
 /datum/job/marine/specialist/get_total_positions(var/latejoin = 0)
-	return (latejoin ? spec_slot_formula(get_total_marines()) : spawn_positions)
+	var/positions = spawn_positions
+	if(latejoin)
+		positions = spec_slot_formula(get_total_marines())
+		if(total_positions_in_round < positions)
+			total_positions_in_round = positions
+		else
+			positions = total_positions_in_round
+	return positions
 
 /datum/job/marine/specialist/equipped
 	flags_startup_parameters = ROLE_ADD_TO_SQUAD
@@ -157,7 +168,14 @@
 	spawn_positions = sg_slot_formula(count)
 
 /datum/job/marine/smartgunner/get_total_positions(var/latejoin = 0)
-	return (latejoin ? sg_slot_formula(get_total_marines()) : spawn_positions)
+	var/positions = spawn_positions
+	if(latejoin)
+		positions = sg_slot_formula(get_total_marines())
+		if(total_positions_in_round < positions)
+			total_positions_in_round = positions
+		else
+			positions = total_positions_in_round
+	return positions
 
 /datum/job/marine/smartgunner/equipped
 	flags_startup_parameters = ROLE_ADD_TO_SQUAD

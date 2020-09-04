@@ -51,6 +51,9 @@
 //Full documentation 650-700 lines down by the copy for elevators
 /datum/shuttle/ferry/marine/preflight_checks()
 
+	if(!LAZYLEN(locs_land))
+		return TRUE
+
 	if(!main_doors.len && !controls.len)
 		var/turf/T_src = pick(locs_dock)
 		var/list/turfs = get_shuttle_turfs(T_src, info_datums)

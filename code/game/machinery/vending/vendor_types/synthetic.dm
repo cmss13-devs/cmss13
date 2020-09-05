@@ -203,8 +203,6 @@
 		list("Hard hat, Blue", 12, /obj/item/clothing/head/hardhat/dblue, null, VENDOR_ITEM_REGULAR),
 		list("Hard hat, Orange", 12, /obj/item/clothing/head/hardhat/orange, null, VENDOR_ITEM_REGULAR),
 		list("Hard hat, Red", 12, /obj/item/clothing/head/hardhat/red, null, VENDOR_ITEM_REGULAR),
-		list("Nurse's Cap", 12, /obj/item/clothing/head/nursehat, null, VENDOR_ITEM_REGULAR),
-		list("Pete's Hat", 12, /obj/item/clothing/head/collectable/petehat, null, VENDOR_ITEM_REGULAR),
 		list("Surgical Cap, Blue", 12, /obj/item/clothing/head/surgery/blue, null, VENDOR_ITEM_REGULAR),
 		list("Surgical Cap, Blue", 12, /obj/item/clothing/head/surgery/purple, null, VENDOR_ITEM_REGULAR),
 		list("Surgical Cap, Green", 12, /obj/item/clothing/head/surgery/green, null, VENDOR_ITEM_REGULAR),

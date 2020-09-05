@@ -921,7 +921,6 @@
 
 		var/mob/new_player/NP = new()
 		NP.ckey = M.ckey
-		if(NP.client) NP.client.change_view(world_view_size)
 		qdel(M)
 
 	else if(href_list["tdome1"])

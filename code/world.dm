@@ -8,6 +8,8 @@ var/global/datum/global_init/init = new ()
 	makeDatumRefLists()
 
 var/world_view_size = 7
+var/lobby_view_size = 16
+
 var/internal_tick_usage = 0
 /world
 	mob = /mob/new_player

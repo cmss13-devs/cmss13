@@ -545,6 +545,8 @@ qdel(src)
 
 	var/list/mob/living/knocked_down_mobs = list()
 	var/datum/coords/C = null
+
+	var/list/targets = list()
 	for (var/turf/T in source)
 		C = source[T]
 		var/turf/target = locate(reference.x + C.x_pos, reference.y + C.y_pos, reference.z)
@@ -562,6 +564,16 @@ qdel(src)
 				var/mob/living/L = A
 				L.last_damage_mob = null
 				L.gib()
+		
+		target = target.ChangeTurf(/turf/open/gm/empty)
+
+		targets.Add(T)
+		targets[T] = target
+
+	for(var/turf/T in source)
+		C = source[T]
+		var/turf/target = targets[T]
+		landing_area = target.loc
 
 		// Moving the turfs over
 		var/old_dir = T.dir

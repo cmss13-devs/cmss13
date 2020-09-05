@@ -509,11 +509,12 @@
 
 	var/list/to_revive = list()
 
-/datum/species/zombie/handle_post_spawn(mob/living/carbon/human/H)
-	H.set_languages("Zombie")
-	return ..()
-
 /datum/species/zombie/handle_post_spawn(var/mob/living/carbon/human/H)
+	H.set_languages(list("Zombie"))
+
+	H.faction = FACTION_ZOMBIE
+	H.faction_group = list(FACTION_ZOMBIE)
+
 	if(H.l_hand) H.drop_inv_item_on_ground(H.l_hand, FALSE, TRUE)
 	if(H.r_hand) H.drop_inv_item_on_ground(H.r_hand, FALSE, TRUE)
 	if(H.wear_id) qdel(H.wear_id)
@@ -528,7 +529,7 @@
 	H.equip_to_slot_or_del(new /obj/item/weapon/zombie_claws(H), WEAR_L_HAND, TRUE)
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/zombie_eyes(H), WEAR_EYES, TRUE)
 
-
+	H.pain = new /datum/pain/zombie(H) // Has to be here, cause of stupid spawn code
 
 	var/datum/disease/D
 	
@@ -536,9 +537,12 @@
 		D = DD
 
 	if(!D) 
-		H.AddDisease(new /datum/disease/black_goo())
+		D = H.AddDisease(new /datum/disease/black_goo())
 	
 	D.stage = 5
+
+	var/datum/mob_hud/Hu = huds[MOB_HUD_MEDICAL_OBSERVER]
+	Hu.add_hud_to(H)
 
 	return ..()
 
@@ -547,6 +551,9 @@
 	if(H in to_revive)
 		delete_timer(to_revive[H])
 		to_revive -= H
+	
+	var/datum/mob_hud/Hu = huds[MOB_HUD_MEDICAL_OBSERVER]
+	Hu.remove_hud_from(H)
 
 
 /datum/species/zombie/handle_unique_behavior(var/mob/living/carbon/human/H)
@@ -561,7 +568,7 @@
 
 	if(H)
 		to_chat(H, SPAN_XENOWARNING("You fall... but your body is slowly regenerating itself."))
-		prepare_to_revive(H, MINUTES_4)
+		prepare_to_revive(H, MINUTES_1)
 
 /datum/species/zombie/proc/prepare_to_revive(var/mob/living/carbon/human/H, var/time)
 	to_revive.Add(H)

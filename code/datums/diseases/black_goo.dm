@@ -66,9 +66,9 @@
 			else if(prob(5))
 				H.vomit_on_floor()
 		if(5)
-			if(!zombie_transforming && prob(10))
+			if(!zombie_transforming && prob(50))
 				if(H.stat != DEAD)
-					var/healamt = H.stat ? 5 : 1
+					var/healamt = 2
 					if(H.health < H.maxHealth)
 						H.apply_damage(-healamt, BURN)
 						H.apply_damage(-healamt, BRUTE)
@@ -101,7 +101,7 @@
 	icon = 'icons/mob/humans/species/r_zombie.dmi'
 	icon_state = "claw_l"
 	flags_item = NODROP|DELONDROP|ITEM_ABSTRACT
-	force = 20
+	force = 40
 	w_class = SIZE_MASSIVE
 	sharp = 1
 	attack_verb = list("slashed", "bitten", "torn", "scraped", "nibbled")
@@ -175,7 +175,12 @@
 /datum/language/zombie
 	name = "Zombie"
 	desc = "If you select this from the language screen, expect a ban."
-	colour = "green"
+	colour = "soghun"
+
+	speech_verb = "groans"
+	ask_verb = "groans"
+	exclaim_verb = "groans"
+
 	key = "4"
 	flags = RESTRICTED
 

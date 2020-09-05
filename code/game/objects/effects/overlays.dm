@@ -60,6 +60,7 @@
 	icon_state = "arrow"
 	anchored = 1
 	effect_duration = 2.5 SECONDS
+	var/glide_time = 0.5 SECONDS
 
 	start_on_spawn = FALSE
 
@@ -73,8 +74,6 @@
 
 	var/dist_x = (T2.x - T1.x)
 	var/dist_y = (T2.y - T1.y)
-
-	var/glide_time = max(get_accurate_dist(T1, T2) * 1.6, 5) // 1 tile range has a minimum of 2
 
 	pixel_x = dist_x * 32
 	pixel_y = dist_y * 32

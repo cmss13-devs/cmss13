@@ -31160,13 +31160,6 @@
 	icon_state = "white"
 	},
 /area/bigredv2/outside/virology)
-"ibH" = (
-/turf/open/floor{
-	dir = 4;
-	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (EAST)"
-	},
-/area/space)
 "ibP" = (
 /turf/open/floor/plating,
 /area/bigredv2/caves_research)
@@ -51534,7 +51527,7 @@ bjx
 bjx
 bjx
 bjx
-ibH
+bjx
 axX
 bru
 bmg

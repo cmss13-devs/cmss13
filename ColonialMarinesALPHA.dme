@@ -328,6 +328,7 @@
 #include "code\datums\pain\pain_synthetic.dm"
 #include "code\datums\pain\pain_xeno.dm"
 #include "code\datums\pain\pain_yautja.dm"
+#include "code\datums\pain\pain_zombie.dm"
 #include "code\datums\statistics\entities\caste_stats.dm"
 #include "code\datums\statistics\entities\death_stats.dm"
 #include "code\datums\statistics\entities\human_stats.dm"

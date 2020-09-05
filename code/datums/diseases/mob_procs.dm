@@ -102,9 +102,8 @@
 
 	return DD
 
-
 /mob/living/carbon/human/AddDisease(datum/disease/D)
-	..()
+	. = ..()
 	med_hud_set_status()
 
 //returns whether the mob's clothes stopped the disease from passing through

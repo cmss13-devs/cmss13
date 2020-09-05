@@ -78,8 +78,8 @@
 				largest_move_time = 1
 		if(M.next_click >= largest_click_time)
 			largest_click_mob = M
-			if(M.next_click > world.time)
-				largest_click_time = M.next_click - world.time
+			if(M.next_click > REALTIMEOFDAY)
+				largest_click_time = M.next_click - REALTIMEOFDAY
 			else
 				largest_click_time = 0
 		log_admin("DEBUG: [key_name(M)]  next_move = [M.next_move]  next_click = [M.next_click]  world.time = [world.time]")

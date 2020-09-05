@@ -29,10 +29,10 @@
 				do_click(TU, location, params)
 		return
 
-	if (world.time <= next_click)
+	if (REALTIMEOFDAY <= next_click)
 		return
 
-	next_click = world.time + 1
+	next_click = REALTIMEOFDAY + 1
 	var/list/mods = params2list(params)
 
 	if (!clicked_something)
@@ -126,7 +126,7 @@
 
 /mob/proc/click_adjacent(atom/A, var/obj/item/W, mods)
 	if(W)
-		if(W.attack_speed)
+		if(W.attack_speed && A.loc != src)
 			next_move += W.attack_speed
 		if(!A.attackby(W, src, mods) && A && !A.disposed)
 			// in case the attackby slept
@@ -137,7 +137,8 @@
 
 			W.afterattack(A, src, 1, mods)
 	else
-		next_move += 4
+		if(A.loc != src)
+			next_move += 4
 		UnarmedAttack(A, 1, mods)
 	return
 

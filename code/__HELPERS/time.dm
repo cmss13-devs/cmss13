@@ -53,17 +53,14 @@
 #define XENO_LEAVE_TIMER_LARVA 60
 #define XENO_LEAVE_TIMER 300
 
-// Real time that is still reliable even when the round crosses over midnight time reset.
-#define REALTIMEOFDAY (world.timeofday + (864000 * MIDNIGHT_ROLLOVER_CHECK))
-#define MIDNIGHT_ROLLOVER_CHECK ( rollovercheck_last_timeofday != world.timeofday ? update_midnight_rollover() : midnight_rollovers )
-
 var/midnight_rollovers = 0
 var/rollovercheck_last_timeofday = 0
 
-/proc/update_midnight_rollover()
-	if(world.timeofday < rollovercheck_last_timeofday) //TIME IS GOING BACKWARDS!
-		return midnight_rollovers++
-	return midnight_rollovers
+#define update_midnight_rollover world.timeofday < rollovercheck_last_timeofday? midnight_rollovers++ : midnight_rollovers
+
+// Real time that is still reliable even when the round crosses over midnight time reset.
+#define REALTIMEOFDAY (world.timeofday + (864000 * MIDNIGHT_ROLLOVER_CHECK))
+#define MIDNIGHT_ROLLOVER_CHECK ( rollovercheck_last_timeofday != world.timeofday ? update_midnight_rollover : midnight_rollovers )
 
 
 /proc/worldtime2text(time = world.time) // Shows current time starting at noon 12:00 (station time)

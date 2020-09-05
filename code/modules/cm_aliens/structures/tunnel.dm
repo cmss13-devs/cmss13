@@ -137,10 +137,13 @@
 		if(T.contents.len > 2)// max 3 xenos in a tunnel
 			to_chat(X, SPAN_WARNING("The tunnel is too crowded, wait for others to exit!"))
 			return FALSE
-		else
-			X.forceMove(T)
-			to_chat(X, SPAN_XENONOTICE("You have reached your destination."))
-			return TRUE
+		if(!T.loc)
+			to_chat(X, SPAN_WARNING("The tunnel has collapsed before you reached its exit!"))
+			return FALSE
+
+		X.forceMove(T)
+		to_chat(X, SPAN_XENONOTICE("You have reached your destination."))
+		return TRUE
 
 /obj/structure/tunnel/proc/exit_tunnel(mob/living/carbon/Xenomorph/X)
 	. = FALSE //For peace of mind when it comes to dealing with unintended proc failures

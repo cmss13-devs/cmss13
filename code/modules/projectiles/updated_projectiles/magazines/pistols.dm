@@ -21,6 +21,11 @@
 	icon_state = "m4a3_ap"
 	default_ammo = /datum/ammo/bullet/pistol/ap
 
+/obj/item/ammo_magazine/pistol/rubber
+	name = "\improper M4A3 Rubber magazine (9mm)"
+	icon_state = "m4a3_le"
+	default_ammo = /datum/ammo/bullet/pistol/rubber
+
 /obj/item/ammo_magazine/pistol/incendiary
 	name = "\improper M4A3 incendiary magazine (9mm)"
 	icon_state = "m4a3_incendiary"
@@ -49,7 +54,10 @@
 	icon_state = "88m4_mag_ap"
 	max_rounds = 19
 	gun_type = /obj/item/weapon/gun/pistol/mod88
-	
+
+/obj/item/ammo_magazine/pistol/mod88/rubber
+	name = "\improper 88M4 rubber magazine (9mm)"
+	default_ammo = /datum/ammo/bullet/pistol/rubber
 
 //-------------------------------------------------------
 //VP78

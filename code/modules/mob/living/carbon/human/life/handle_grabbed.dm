@@ -6,9 +6,6 @@
 	if(pulledby.grab_level >= GRAB_AGGRESSIVE)
 		drop_held_items()
 
-	if(pulledby.grab_level >= GRAB_NECK)
+	if(pulledby.grab_level >= GRAB_CHOKE)
 		apply_damage(3, OXY)
-
-	if(pulledby.grab_level >= GRAB_KILL)
-		apply_damage(3, OXY)
-
+		apply_stamina_damage(5)

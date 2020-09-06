@@ -49,9 +49,16 @@
 		if(skillcheck(H, SKILL_POLICE, SKILL_POLICE_MP))
 			trained_human = TRUE
 
-	if(M.getarmor(M.get_limb("eyes"), ARMOR_ENERGY) >= strength)
-		to_chat(M, SPAN_HELPFUL("Your armor protects you from \the [src]."))
-		return
+		var/list/protections = list(H.glasses, H.wear_mask, H.head)
+		var/total_eye_protection = 0
+
+		for(var/obj/item/clothing/C in protections)
+			if(C && (C.flags_armor_protection & BODY_FLAG_EYES))
+				total_eye_protection += C.armor_energy
+
+		if(total_eye_protection >= strength)
+			to_chat(M, SPAN_HELPFUL("Your armor protects you from \the [src]."))
+			return
 
 	if(M.flash_eyes())
 		M.Stun(2)

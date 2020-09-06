@@ -335,6 +335,18 @@
 	chemclass = CHEM_CLASS_RARE
 	properties = list(PROPERTY_MUSCLESTIMULATING = 40, PROPERTY_ADDICTIVE = 8)
 
+/datum/reagent/stimulant
+	name = "Stimulant"
+	id = "antag_stimulant"
+	description = "A highly-potent, long-lasting combination CNS and muscle stimulant."
+	reagent_state = LIQUID
+	color = "#00ffff" // rgb: 200, 165, 220
+	custom_metabolism = 0.05 // 4x longer
+	overdose = LOWH_REAGENTS_OVERDOSE
+	overdose_critical = LOWH_REAGENTS_OVERDOSE_CRITICAL
+	chemclass = CHEM_CLASS_RARE
+	properties = list(PROPERTY_UNKNOWN = 1)
+
 /datum/reagent/cryoxadone
 	name = "Cryoxadone"
 	id = "cryoxadone"

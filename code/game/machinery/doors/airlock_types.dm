@@ -262,7 +262,8 @@
 	var/damage_check = max(0, damage + dam)
 	if(damage_check >= damage_cap && M && z == MAIN_SHIP_Z_LEVEL)
 		new /obj/effect/decal/prints(get_turf(src), M, "The fingerprint contains bits of wire and metal specks.")
-		ai_silent_announcement("DAMAGE REPORT: Structural damage detected at [get_area(src)], requesting Military Police supervision.")
+		if(M.detectable_by_ai())
+			ai_silent_announcement("DAMAGE REPORT: Structural damage detected at [get_area(src)], requesting Military Police supervision.")
 
 	..()
 

@@ -762,6 +762,9 @@
 	var/damage = P.calculate_damage()
 	var/damage_result = damage
 
+	if(P.ammo.stamina_damage)
+		apply_stamina_damage(P.ammo.stamina_damage, P.def_zone, ARMOR_BULLET) // Stamina damage only comes from bullets
+
 	//Any projectile can decloak a predator. It does defeat one free bullet though.
 	if(gloves)
 		var/obj/item/clothing/gloves/yautja/Y = gloves

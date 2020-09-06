@@ -15,8 +15,6 @@
 	var/visible = 0
 	var/obj/effect/beam/i_beam/first = null
 
-
-
 /obj/item/device/assembly/infra/Dispose()
 	if(first)
 		qdel(first)

@@ -49,6 +49,7 @@
 #define SS_PRIORITY_MOB            150
 #define SS_PRIORITY_XENO           149
 #define SS_PRIORITY_HUMAN          148
+#define SS_PRIORITY_STAMINA        126
 #define SS_PRIORITY_COMPONENT      125
 #define SS_PRIORITY_NANOUI         120
 #define SS_PRIORITY_VOTE           110

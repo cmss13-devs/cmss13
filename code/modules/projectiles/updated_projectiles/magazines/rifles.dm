@@ -46,6 +46,11 @@
 	icon_state = "m41a_LE"
 	default_ammo = /datum/ammo/bullet/rifle/le
 
+/obj/item/ammo_magazine/rifle/rubber
+	name = "M41A Rubber Magazine (10x24mm)"
+	desc = "A 10mm magazine filled with rubber bullets."
+	icon_state = "m41a_LE"
+	default_ammo = /datum/ammo/bullet/rifle/rubber
 
 //-------------------------------------------------------
 //M41A (MK1) TRUE AND ORIGINAL
@@ -170,6 +175,11 @@
 	max_rounds = 25
 	gun_type = /obj/item/weapon/gun/rifle/l42a
 	w_class = SIZE_MEDIUM
+
+/obj/item/ammo_magazine/rifle/l42a/rubber
+	name = "L42A rubber magazine (10x24mm)"
+	icon_state = "l42mk1_le"
+	default_ammo = /datum/ammo/bullet/rifle/rubber
 
 /obj/item/ammo_magazine/rifle/l42a/extended
 	name = "\improper L42A extended magazine (10x24mm)"

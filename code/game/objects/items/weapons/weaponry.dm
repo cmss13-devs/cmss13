@@ -57,6 +57,8 @@
 	force = MELEE_FORCE_STRONG
 	w_class = SIZE_MEDIUM
 
+
+
 /obj/item/weapon/melee/butterfly
 	name = "butterfly knife"
 	desc = "A basic metal blade concealed in a lightweight plasteel grip. Small enough when folded to fit in a pocket."

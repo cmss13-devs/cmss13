@@ -21,6 +21,14 @@
 		if(!(H.stat == CONSCIOUS))
 			continue
 
+		var/pending_objective = FALSE
+		for(var/datum/action/human_action/activable/receive_objective/B in H.actions)
+			pending_objective = TRUE
+			break
+
+		if(pending_objective)
+			continue
+
 		var/current_number = LAZYLEN(H.agent_holder.objectives_list)
 		if(isnull(current_number) || current_number <= lowest_number)
 			lowest_number = current_number

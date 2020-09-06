@@ -114,7 +114,7 @@ IN_USE						used for vending/denying
 		to_chat(user, SPAN_WARNING("You have succesfully removed access restrictions in [src]."))
 		if(user && z == MAIN_SHIP_Z_LEVEL)
 			new /obj/effect/decal/prints(get_turf(user), user, "A small piece of cut wire is found on the fingerprint.")
-			if(user.faction == FACTION_MARINE)
+			if(user.faction == FACTION_MARINE && user.detectable_by_ai())
 				ai_silent_announcement("DAMAGE REPORT: Unauthorized access change detected at [get_area(src)], requesting Military Police supervision.")
 	else
 		to_chat(user, SPAN_WARNING("You have restored access restrictions in [src]."))
@@ -343,7 +343,9 @@ IN_USE						used for vending/denying
 			to_chat(user, SPAN_WARNING("[msg]"))
 			return
 	else if(ismultitool(W))
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+		var/obj/item/device/multitool/MT = W
+
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI) && !skillcheck(user, SKILL_ANTAG, SKILL_ANTAG_TRAINED))
 			to_chat(user, SPAN_WARNING("You do not understand how tweak access requirements in [src]."))
 			return FALSE
 		if(stat != WORKING)
@@ -353,7 +355,7 @@ IN_USE						used for vending/denying
 			to_chat(user, SPAN_WARNING("You are unable to hack access restrictions in [src]."))
 			return FALSE
 		to_chat(user, SPAN_WARNING("You start tweaking access restrictions in [src]."))
-		if(!do_after(user, 100 * sqrt(user.get_skill_duration_multiplier(SKILL_ENGINEER)), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, numticks = 3))
+		if(!do_after(user, MT.hack_speed * sqrt(user.get_skill_duration_multiplier(SKILL_ENGINEER)), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, numticks = 3))
 			to_chat(user, SPAN_WARNING("You stop tweaking access restrictions in [src]."))
 			return FALSE
 		hack_access(user)

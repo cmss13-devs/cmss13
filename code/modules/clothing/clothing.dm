@@ -207,6 +207,8 @@
 	blood_overlay_type = "hands"
 	var/gloves_blood_amt = 0 //taken from blood.dm
 
+	var/hide_prints = FALSE
+
 /obj/item/clothing/gloves/update_clothing_icon()
 	if (ismob(src.loc))
 		var/mob/M = src.loc

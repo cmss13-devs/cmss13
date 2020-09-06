@@ -177,7 +177,7 @@
 
 	qdel(src)
 
-/turf/closed/wall/ex_act(severity, explosion_direction)
+/turf/closed/wall/ex_act(severity, explosion_direction, source, mob/source_mob)
 	if(hull)
 		return
 	var/location = get_step(get_turf(src), explosion_direction) // shrapnel will just collide with the wall otherwise
@@ -192,7 +192,7 @@
 			if(prob(50)) // prevents spam in close corridors etc
 				src.visible_message(SPAN_WARNING("The explosion causes shards to spall off of [src]!"))
 			create_shrapnel(location, rand(2,5), explosion_direction, , /datum/ammo/bullet/shrapnel/spall)
-		take_damage(exp_damage)
+		take_damage(exp_damage, source_mob)
 
 	return
 

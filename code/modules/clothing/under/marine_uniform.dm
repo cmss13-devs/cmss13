@@ -33,8 +33,10 @@
 		select_gamemode_skin(type, override_icon_state, new_protection)
 
 /obj/item/clothing/under/marine/set_sensors(mob/user)
-	to_chat(user, SPAN_WARNING("The sensors in your uniform can't be modified."))
-	return
+	if(!skillcheck(user, SKILL_ANTAG, SKILL_ANTAG_TRAINED))
+		to_chat(user, SPAN_WARNING("The sensors in your uniform can't be modified."))
+		return
+	. = ..()
 
 /obj/item/clothing/under/marine/medic
 	name = "\improper USCM medic uniform"

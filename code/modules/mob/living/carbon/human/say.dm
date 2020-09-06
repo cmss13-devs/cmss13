@@ -5,6 +5,10 @@
 	var/message_range = world_view_size
 	var/italics = 0
 
+	if(!able_to_speak)
+		to_chat(src, SPAN_DANGER("You try to speak, but nothing comes out!"))
+		return
+
 	if(client)
 		if(client.prefs.muted & MUTE_IC)
 			to_chat(src, SPAN_DANGER("You cannot speak in IC (Muted)."))

@@ -45,6 +45,8 @@
 	var/damage_cap = HEALTH_DOOR // Airlock gets destroyed
 	var/autoname = FALSE
 
+	var/list/obj/item/device/assembly/signaler/attached_signallers = list()
+
 	var/announce_hacked = TRUE
 
 /obj/structure/machinery/door/airlock/bumpopen(mob/living/user as mob) //Airlocks now zap you when you 'bump' them open when they're electrified. --NeoFite
@@ -294,6 +296,13 @@
 /obj/structure/machinery/door/airlock/proc/isWireCut(var/wire)
 	return !(wires & getWireFlag(wire))
 
+/obj/structure/machinery/door/airlock/proc/getAssembly(var/wire)
+	for(var/signaller in attached_signallers)
+		if(wire == attached_signallers[signaller])
+			return signaller
+
+	return
+
 /obj/structure/machinery/door/airlock/proc/arePowerSystemsOn()
 	if(stat & NOPOWER)
 		return FALSE
@@ -430,7 +439,7 @@
 	var/list/wire_descriptions = get_wire_descriptions()
 	var/list/panel_wires = list()
 	for(var/wire = 1 to wire_descriptions.len)
-		panel_wires += list(list("desc" = wire_descriptions[wire], "cut" = isWireCut(wire)))
+		panel_wires += list(list("desc" = wire_descriptions[wire], "cut" = isWireCut(wire), "attach" = !isnull(getAssembly(wire))))
 
 	if(panel_wires.len)
 		data["wires"] = panel_wires
@@ -459,7 +468,7 @@
 			var/wireId = text2num(href_list["wire"])
 
 			if(!iswirecutter(usr.get_active_hand()))
-				to_chat(usr, "You need wirecutters!")
+				to_chat(usr, SPAN_WARNING("You need wirecutters!"))
 				return TRUE
 
 			if(isWireCut(wireId))
@@ -470,16 +479,57 @@
 			if(announce_hacked && z == MAIN_SHIP_Z_LEVEL)
 				announce_hacked = FALSE
 				new /obj/effect/decal/prints(get_turf(src), usr, "The fingerprint contains oil and wire pieces.")
-				ai_silent_announcement("DAMAGE REPORT: Structural damage detected at [get_area(src)], requesting Military Police supervision.")
+				if(usr.detectable_by_ai())
+					ai_silent_announcement("DAMAGE REPORT: Structural damage detected at [get_area(src)], requesting Military Police supervision.")
 
 		else if(href_list["pulse"])
 			var/wireId = text2num(href_list["pulse"])
 
 			if(!ismultitool(usr.get_active_hand()))
-				to_chat(usr, "You need a multitool!")
+				to_chat(usr, SPAN_WARNING("You need a multitool!"))
 				return TRUE
 
 			pulse(wireId)
+		else if(href_list["attach"])
+			var/wireId = text2num(href_list["attach"])
+
+			if(!issignaler(usr.get_active_hand()))
+				to_chat(usr, SPAN_WARNING("You need a signaller in your hand!"))
+				return TRUE
+			
+			if(getAssembly(wireId))
+				return TRUE
+
+			if(!skillcheck(usr, SKILL_ANTAG, SKILL_ANTAG_TRAINED))
+				to_chat(usr, SPAN_WARNING("You don't seem to know how to perform this action."))
+				return TRUE
+
+			var/obj/item/device/assembly/signaler/signaller = usr.get_active_hand()
+			usr.drop_held_item(signaller)
+			signaller.forceMove(src)
+
+			signaller.airlock_wire = wireId
+			attached_signallers.Add(signaller)
+
+			attached_signallers[signaller] = wireId
+			to_chat(usr, SPAN_NOTICE("You add [signaller] to [src]."))
+
+		else if(href_list["unattach"])
+			var/wireId = text2num(href_list["unattach"])
+			var/obj/item/device/assembly/signaler/signaller = getAssembly(wireId)
+
+			if(!signaller)
+				return TRUE
+
+			if(!usr.put_in_active_hand(signaller))
+				to_chat(usr, SPAN_WARNING("Your hand needs to be free!"))
+				return TRUE
+			
+			signaller.airlock_wire = null
+			attached_signallers -= signaller
+			to_chat(usr, SPAN_NOTICE("You remove [signaller] from [src]."))
+
+
 
 	add_fingerprint(usr)
 	update_icon()
@@ -707,6 +757,7 @@
 /obj/structure/machinery/door/airlock/proc/lock(var/forced=0)
 	if(operating || locked) return
 
+	playsound(loc, 'sound/machines/hydraulics_1.ogg', 25)
 	locked = 1
 	visible_message(SPAN_NOTICE("\The [src] airlock emits a loud thunk, then a click."))
 	update_icon()
@@ -716,6 +767,8 @@
 
 	if(forced || (arePowerSystemsOn())) //only can raise bolts if power's on
 		locked = 0
+
+		playsound(loc, 'sound/machines/hydraulics_2.ogg', 25)
 		visible_message(SPAN_NOTICE("\The [src] airlock emits a click, then hums slightly."))
 		update_icon()
 		return TRUE

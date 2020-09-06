@@ -121,7 +121,7 @@
 	healthcheck(user = Proj.firer)
 	return 1
 
-/obj/structure/window/ex_act(severity, explosion_direction)
+/obj/structure/window/ex_act(severity, explosion_direction, source, mob/source_mob)
 	if(not_damageable) //Impossible to destroy
 		return
 
@@ -129,7 +129,7 @@
 
 	switch(health)
 		if(0 to INFINITY)
-			healthcheck(0, 1)
+			healthcheck(0, 1, user = source_mob)
 		if(-2000 to 0)
 			var/location = get_turf(src)
 			playsound(src, "shatter", 50, 1)
@@ -228,12 +228,13 @@
 					M.apply_damage(10)
 					if(!not_damageable) //Impossible to destroy
 						health -= 25
-				if(GRAB_NECK)
-					M.visible_message(SPAN_DANGER("<big>[user] crushes [M] against \the [src]!</big>"))
+				if(GRAB_CHOKE)
+					M.visible_message(SPAN_DANGER("[user] crushes [M] against \the [src]!"))	
 					M.KnockDown(5)
 					M.apply_damage(20)
 					if(!not_damageable) //Impossible to destroy
 						health -= 50
+					
 			healthcheck(1, 1, 1, M) //The person thrown into the window literally shattered it
 		return
 
@@ -477,7 +478,7 @@
 /obj/structure/window/framed/update_icon()
 	relativewall()
 
-/obj/structure/window/framed/ex_act(severity, explosion_direction)
+/obj/structure/window/framed/ex_act(severity, explosion_direction, source, mob/source_mob)
 	if(not_damageable) //Impossible to destroy
 		return
 
@@ -485,7 +486,7 @@
 
 	switch(health)
 		if(0 to INFINITY)
-			healthcheck(0, 1)
+			healthcheck(0, 1, user = source_mob)
 		if(-3000 to 0)
 			var/location = get_turf(src)
 			playsound(src, "shatter", 50, 1)
@@ -533,7 +534,8 @@
 	if(health <= 0)
 		if(user && z == MAIN_SHIP_Z_LEVEL)
 			new /obj/effect/decal/prints(get_turf(src), user, "A small glass piece is found on the fingerprint.")
-			ai_silent_announcement("DAMAGE REPORT: Structural damage detected at [get_area(src)], requesting Military Police supervision.")
+			if(user.detectable_by_ai())
+				ai_silent_announcement("DAMAGE REPORT: Structural damage detected at [get_area(src)], requesting Military Police supervision.")
 
 	. = ..()
 

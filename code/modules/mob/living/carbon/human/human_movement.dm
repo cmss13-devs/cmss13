@@ -15,7 +15,7 @@
 	var/reducible_tally = 0 //Tally elements that can be reduced are put here, then we apply hyperzine effects
 	var/wear_slowdown_reduction = 0
 
-	reducible_tally += pain.pain_slowdown
+	reducible_tally += max(pain.pain_slowdown, stamina.stamina_slowdown) // Get the highest slowdown and apply that
 
 	// Limb break/loss slowdown
 	// Wheelchairs depend on different limbs than walking, which is...cute

@@ -144,8 +144,8 @@
 				to_chat(H, SPAN_WARNING("Not enough points."))
 
 
-			var/turf/T = loc
-			if(T.contents.len > 25)
+			var/turf/T = get_turf(loc)
+			if(length(T.contents) > 25)
 				to_chat(H, SPAN_WARNING("The floor is too cluttered, make some space."))
 				return
 
@@ -161,6 +161,7 @@
 			spawn(30)
 				var/type_p = L[3]
 				var/obj/IT = new type_p(get_turf(src))
+				vending_stat_bump(type_p, src.type)
 				if(loc == H)
 					H.put_in_any_hand_if_possible(IT)
 				fabricating = 0
@@ -185,7 +186,7 @@
 
 
 /obj/item/device/portable_vendor/New()
-	..()
+	. = ..()
 	processing_objects.Add(src)
 	update_overlays()
 

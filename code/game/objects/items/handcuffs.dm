@@ -53,7 +53,7 @@
 		msg_admin_attack("[key_name(user)] attempted to handcuff [key_name(H)] in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
 
 		user.visible_message(SPAN_NOTICE("[user] tries to put [src] on [H]."))
-		if(do_after(user, cuff_delay, INTERRUPT_ALL, BUSY_ICON_HOSTILE, H, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
+		if(do_after(user, cuff_delay, INTERRUPT_MOVED, BUSY_ICON_HOSTILE, H, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
 			if(src == user.get_active_hand() && !H.handcuffed && Adjacent(user))
 				if(iscarbon(H))
 					if(istype(H.buckled, /obj/structure/bed/roller))
@@ -66,7 +66,7 @@
 
 	else if (ismonkey(target))
 		user.visible_message(SPAN_NOTICE("[user] tries to put [src] on [target]."))
-		if(do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_HOSTILE, target, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
+		if(do_after(user, 30, INTERRUPT_MOVED, BUSY_ICON_HOSTILE, target, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
 			if(src == user.get_active_hand() && !target.handcuffed && Adjacent(user))
 				user.drop_inv_item_on_ground(src)
 				target.equip_to_slot_if_possible(src, WEAR_HANDCUFFS, 1, 0, 1, 1)

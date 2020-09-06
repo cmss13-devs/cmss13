@@ -7,8 +7,8 @@
 
 
 /obj/item/weapon/gun/energy/taser
-	name = "taser gun"
-	desc = "An advanced stun device capable of firing balls of ionized electricity. Used for nonlethal takedowns."
+	name = "disabler gun"
+	desc = "An advanced stun device capable of firing balls of ionized electricity. Used for nonlethal takedowns. "
 	icon_state = "taser"
 	item_state = "taser"
 	muzzle_flash = null //TO DO.
@@ -17,16 +17,17 @@
 	matter = list("metal" = 2000)
 	ammo = /datum/ammo/energy/taser
 	var/obj/item/cell/high/cell //10000 power.
-	var/charge_cost = 100 //100 shots.
+	var/charge_cost = 625 // approx 16 shots shots.
 	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_CAN_POINTBLANK
 
 /obj/item/weapon/gun/energy/taser/New()
 	..()
 	cell = new /obj/item/cell/high(src)
+	update_icon()
 
 /obj/item/weapon/gun/energy/taser/set_gun_config_values()
 	..()
-	fire_delay = config.max_fire_delay * 2
+	fire_delay = config.med_fire_delay
 	accuracy_mult = config.base_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult
 	damage_mult = config.base_hit_damage_mult
@@ -36,10 +37,25 @@
 
 
 /obj/item/weapon/gun/energy/taser/update_icon()
-	if(!cell || cell.charge - charge_cost < 0)
-		icon_state = base_gun_icon + "_e"
-	else
-		icon_state = base_gun_icon
+	. = ..()
+
+	icon_state = "[base_gun_icon]_e"
+
+	if(!cell)
+		return
+	
+	switch(cell.percent())
+		if(75 to 100)
+			overlays += "+charge_100"
+		if(50 to 75)
+			overlays += "+charge_75"
+		if(25 to 50)
+			overlays += "+charge_50"
+		if(1 to 25)
+			overlays += "+charge_25"
+		else
+			overlays += "+charge_0"
+	
 
 /obj/item/weapon/gun/energy/taser/emp_act(severity)
 	cell.use(round(cell.maxcharge / severity))
@@ -69,7 +85,12 @@
 	if(refund) cell.charge += charge_cost
 	return 1
 
-
+/obj/item/weapon/gun/energy/taser/examine(mob/user)
+	. = ..()
+	if(cell)
+		to_chat(user, SPAN_NOTICE("It has [cell.percent()]% charge left."))
+	else
+		to_chat(user, SPAN_NOTICE("It has no power cell inside."))
 
 /obj/item/weapon/gun/energy/plasmarifle
 	name = "plasma rifle"

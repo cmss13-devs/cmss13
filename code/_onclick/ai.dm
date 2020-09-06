@@ -88,11 +88,9 @@ atom/proc/AIAltClick()
 
 /obj/structure/machinery/door/airlock/AICtrlClick() // Bolts doors
 	if(locked)
-		locked = FALSE
-		update_icon()
+		lock(TRUE)
 	else
-		locked = TRUE
-		update_icon()
+		unlock(TRUE)
 
 /obj/structure/machinery/power/apc/AICtrlClick() // turns off/on APCs.
 	Topic("breaker=1", list("breaker"="1"), 0) // 0 meaning no window (consistency! wait...)

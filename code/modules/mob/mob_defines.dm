@@ -117,6 +117,8 @@
 	var/obj/item/storage/s_active = null//Carbon
 	var/obj/item/clothing/mask/wear_mask = null//Carbon
 
+	var/able_to_speak = TRUE
+
 	var/datum/hud/hud_used = null
 
 	var/grab_level = GRAB_PASSIVE //if we're pulling a mob, tells us how aggressive our grab is.

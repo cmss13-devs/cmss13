@@ -11,6 +11,7 @@
 #define SKILL_MEDICAL        "medical"
 #define SKILL_SURGERY        "surgery"
 #define SKILL_RESEARCH       "research"
+#define SKILL_ANTAG          "antag"
 #define SKILL_PILOT          "pilot"
 #define SKILL_POLICE         "police"
 #define SKILL_POWERLOADER    "powerloader"
@@ -67,6 +68,9 @@
 #define SKILL_RESEARCH_DEFAULT  0
 #define SKILL_RESEARCH_TRAINED  1 //Allows use of research machines
 
+//antag skill
+#define SKILL_ANTAG_DEFAULT 0
+#define SKILL_ANTAG_TRAINED 1
 
 //police skill, hidden
 #define SKILL_POLICE_DEFAULT    0

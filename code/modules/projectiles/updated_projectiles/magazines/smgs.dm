@@ -28,6 +28,12 @@
 	icon_state = "m39_le"
 	default_ammo = /datum/ammo/bullet/smg/le
 
+/obj/item/ammo_magazine/smg/m39/rubber
+	name = "\improper M39 rubber magazine (10x20mm)"
+	desc = "A 10x20mm caseless submachinegun magazine, containing rubber bullets. Used to disarm people"
+	icon_state = "m39_le"
+	default_ammo = /datum/ammo/bullet/smg/rubber
+
 /obj/item/ammo_magazine/smg/m39/incendiary
 	name = "\improper M39 incendiary magazine (10x20mm)"
 	desc = "A 10x20mm incendiary magazine."

@@ -423,6 +423,9 @@
 	if(!ishuman(src) && !ismonkey(src)) return
 	if(M.lying || M.is_mob_incapacitated())
 		return
+	if(M.pulling == src && (M.a_intent & INTENT_GRAB) && M.grab_level == GRAB_AGGRESSIVE)
+		return
+	
 	show_inv(M)
 
 /mob/proc/swap_hand()
@@ -446,12 +449,20 @@
 		return
 
 	if(pulling)
-		var/pulling_old = pulling
-		stop_pulling()
 		// Are we pulling the same thing twice? Just stop pulling.
-		if(pulling_old == AM && client)
-			client.recalculate_move_delay()
+		if(pulling == AM)
+			var/obj/item/grab/G = get_active_hand()
+			if(istype(G))
+				G.attack_self(src)
+			else
+				stop_pulling()
+
+			if(client)
+				client.recalculate_move_delay()
+			
 			return
+		else
+			stop_pulling()
 
 	var/mob/M
 	if(ismob(AM))
@@ -630,7 +641,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 
 //Updates canmove, lying and icons. Could perhaps do with a rename but I can't think of anything to describe it.
 /mob/proc/update_canmove()
-	var/laid_down = (stat || knocked_down || knocked_out || !has_legs() || resting || (status_flags & FAKEDEATH) || (pulledby && pulledby.grab_level >= GRAB_NECK))
+	var/laid_down = (stat || knocked_down || knocked_out || !has_legs() || resting || (status_flags & FAKEDEATH) || (pulledby && pulledby.grab_level >= GRAB_AGGRESSIVE))
 	
 	if(laid_down)
 		lying = TRUE
@@ -659,7 +670,9 @@ note dizziness decrements automatically in the mob's Life() proc.
 
 	if(lying)
 		//so mob lying always appear behind standing mobs, but dead ones appear behind living ones
-		if (stat == DEAD)
+		if(pulledby && pulledby.grab_level == GRAB_CARRY)
+			layer = ABOVE_MOB_LAYER
+		else if (stat == DEAD)
 			layer = LYING_DEAD_MOB_LAYER // Dead mobs should layer under living ones
 		else if(layer == initial(layer)) //to avoid things like hiding larvas.
 			layer = LYING_LIVING_MOB_LAYER

@@ -154,7 +154,7 @@
 		var/mob/living/L = usr
 		attack_hand(L)
 
-/obj/structure/machinery/door_control/attack_hand(mob/living/user)
+/obj/structure/machinery/door_control/attack_hand(mob/living/user, var/force = FALSE)
 	add_fingerprint(user)
 	if(istype(user,/mob/living/carbon/Xenomorph))
 		return
@@ -162,7 +162,7 @@
 		to_chat(user, SPAN_WARNING("[src] doesn't seem to be working."))
 		return
 
-	if(!allowed(user) && (wires & 1))
+	if(!allowed(user) && (wires & 1) && !force )
 		to_chat(user, SPAN_DANGER("Access Denied"))
 		flick("doorctrl-denied",src)
 		return

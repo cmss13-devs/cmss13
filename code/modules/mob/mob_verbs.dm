@@ -305,6 +305,7 @@
 		var/mob/M = pulling
 		pulling.pulledby = null
 		pulling = null
+
 		grab_level = 0
 		if(client)
 			client.recalculate_move_delay()
@@ -319,4 +320,5 @@
 				//resist_grab uses long movement cooldown durations to prevent message spam
 				//so we must undo it here so the victim can move right away
 				M.client.next_movement = world.time
+			M.update_transform(TRUE)
 			M.update_canmove()

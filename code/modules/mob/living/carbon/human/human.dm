@@ -1373,6 +1373,10 @@
 /mob/living/carbon/human/yautja/initialize_pain()
 	pain = new /datum/pain/yautja(src)
 
+/mob/living/carbon/human/yautja/initialize_stamina()
+	stamina = new /datum/stamina/yautja(src)
+
+
 /mob/living/carbon/human/monkey/Initialize()
 	..(new_species = "Monkey")
 
@@ -1409,17 +1413,26 @@
 /mob/living/carbon/human/synthetic/initialize_pain()
 	pain = new /datum/pain/synthetic(src)
 
+/mob/living/carbon/human/synthetic/initialize_stamina()
+	stamina = new /datum/stamina/synthetic(src)
+
 /mob/living/carbon/human/synthetic_old/Initialize(var/new_loc)
 	..(new_loc, "Early Synthetic")
 
 /mob/living/carbon/human/synthetic_old/initialize_pain()
 	pain = new /datum/pain/synthetic(src)
 
+/mob/living/carbon/human/synthetic_old/initialize_stamina()
+	stamina = new /datum/stamina/synthetic(src)
+
 /mob/living/carbon/human/synthetic_2nd_gen/Initialize(var/new_loc)
 	..(new_loc, "Second Generation Synthetic")
 
 /mob/living/carbon/human/synthetic_2nd_gen/initialize_pain()
 	pain = new /datum/pain/synthetic(src)
+
+/mob/living/carbon/human/synthetic_2nd_gen/initialize_stamina()
+	stamina = new /datum/stamina/synthetic(src)
 
 
 /mob/living/carbon/human/resist_fire()

@@ -20,6 +20,7 @@
 	attack_icon = image("icon" = 'icons/effects/attacks.dmi',"icon_state" = "", "layer" = 0)
 
 	initialize_pain()
+	initialize_stamina()
 
 
 /mob/living/Dispose()
@@ -49,6 +50,15 @@
 
 /mob/living/proc/initialize_pain()
 	pain = new /datum/pain(src)
+
+/mob/living/proc/initialize_stamina()
+	stamina = new /datum/stamina(src)
+
+/mob/living/proc/apply_stamina_damage(var/damage, var/def_zone, var/armor_type)
+	if(!stamina)
+		return
+	
+	stamina.apply_damage(damage)
 
 //sort of a legacy burn method for /electrocute, /shock, and the e_chair
 /mob/living/proc/burn_skin(burn_amount)
@@ -179,9 +189,28 @@
 		if(pulling.anchored)
 			stop_pulling()
 			return
-
+		
 		var/pull_dir = get_dir(src, pulling)
-		if(get_dist(src, pulling) > 1 || ((pull_dir - 1) & pull_dir)) //puller and pullee more than one tile away or in diagonal position
+
+		if(grab_level >= GRAB_CARRY)
+			switch(grab_level)
+				if(GRAB_CARRY)
+					var/direction_to_face = EAST
+
+					if(direct & WEST)
+						direction_to_face = WEST
+
+					pulling.Move(NewLoc, direction_to_face)
+					var/mob/living/pmob = pulling
+					if(istype(pmob))
+						pmob.on_movement()
+				else
+					pulling.Move(NewLoc, direct)
+			
+			var/mob/living/pmob = pulling
+			if(istype(pmob))
+				pmob.on_movement()
+		else if(get_dist(src, pulling) > 1 || ((pull_dir - 1) & pull_dir)) //puller and pullee more than one tile away or in diagonal position
 			pulling.Move(T, get_dir(pulling, T)) //the pullee tries to reach our previous position
 			if(pulling && get_dist(src, pulling) > 1) //the pullee couldn't keep up
 				stop_pulling()
@@ -235,7 +264,15 @@
 
 	if(pulling && pulling.drag_delay && get_pull_miltiplier())	//Dragging stuff can slow you down a bit.
 		var/pull_delay = pulling.get_pull_drag_delay() * get_pull_miltiplier()
-		. += max(pull_speed + pull_delay + 3*grab_level, 0) //harder grab makes you slower
+
+		var/grab_level_delay = 0
+		switch(grab_level)
+			if(GRAB_AGGRESSIVE)
+				grab_level_delay = 6
+			if(GRAB_CHOKE)
+				grab_level_delay = 9
+
+		. += max(pull_speed + pull_delay + grab_level_delay, 0) //harder grab makes you slower
 	move_delay = .
 
 
@@ -257,12 +294,15 @@
 
 //whether we are slowed when dragging things
 /mob/living/proc/get_pull_miltiplier()
-	return 1.0
+	if(grab_level == GRAB_CARRY)
+		return 0.1
+	else
+		return 1.0
 
 /mob/living/carbon/human/get_pull_miltiplier()
 	if(has_species(src,"Yautja"))
 		return 0//Predators aren't slowed when pulling their prey.
-	return 1
+	return ..()
 
 /mob/living/forceMove(atom/destination)
 	stop_pulling()

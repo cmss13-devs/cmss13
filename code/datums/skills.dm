@@ -81,6 +81,10 @@
 	skill_name = SKILL_RESEARCH
 	skill_level = SKILL_RESEARCH_DEFAULT
 
+/datum/skill/antag
+	skill_name = SKILL_ANTAG
+	skill_level = SKILL_ANTAG_DEFAULT
+
 /datum/skill/pilot
 	skill_name = SKILL_PILOT
 	skill_level = SKILL_PILOT_DEFAULT

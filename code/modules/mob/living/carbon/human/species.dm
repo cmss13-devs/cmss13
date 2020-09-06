@@ -455,6 +455,7 @@
 	H.set_languages(list("English", "Russian", "Tradeband", "Sainja", "Xenomorph"))
 	living_human_list -= H
 	H.pain = new /datum/pain/synthetic(H) // Has to be here, cause of stupid spawn code
+	H.stamina = new /datum/stamina/synthetic(H)
 	return ..()
 
 /datum/species/synthetic/second_gen_synthetic
@@ -729,6 +730,7 @@
 	A.remove_from_hud(H)
 	H.set_languages(list("Sainja"))
 	H.pain = new /datum/pain/yautja(H) // Has to be here, cause of stupid spawn code
+	H.stamina = new /datum/stamina/yautja(H)
 
 	return ..()
 

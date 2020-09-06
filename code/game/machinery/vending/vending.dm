@@ -549,7 +549,8 @@
 			if(announce_hacked && z == MAIN_SHIP_Z_LEVEL)
 				announce_hacked = FALSE
 				new /obj/effect/decal/prints(get_turf(src), usr, "The fingerprint contains oil and wire pieces.")
-				ai_silent_announcement("DAMAGE REPORT: Structural damage detected at [get_area(src)], requesting Military Police supervision.")
+				if(usr.detectable_by_ai())
+					ai_silent_announcement("DAMAGE REPORT: Structural damage detected at [get_area(src)], requesting Military Police supervision.")
 
 		else if ((href_list["pulsewire"]) && (src.panel_open))
 			var/wire = text2num(href_list["pulsewire"])

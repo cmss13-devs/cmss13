@@ -56,7 +56,7 @@ Contains most of the procs that are called when a mob is attacked by something
 
 	var/siemens_coefficient = 1.0
 
-	var/list/clothing_items = list(head, wear_mask, wear_suit, w_uniform, gloves, shoes) // What all are we checking?
+	var/list/clothing_items = list(head, wear_mask, wear_suit, w_uniform, gloves, shoes, glasses) // What all are we checking?
 	for(var/obj/item/clothing/C in clothing_items)
 		if(istype(C) && (C.flags_armor_protection & def_zone.body_part)) // Is that body part being targeted covered?
 			siemens_coefficient *= C.siemens_coefficient
@@ -67,7 +67,7 @@ Contains most of the procs that are called when a mob is attacked by something
 /mob/living/carbon/human/proc/getarmor_organ(var/obj/limb/def_zone, var/type)
 	if(!type)	return 0
 	var/protection = 0
-	var/list/protective_gear = list(head, wear_mask, wear_suit, w_uniform, gloves, shoes)
+	var/list/protective_gear = list(head, wear_mask, wear_suit, w_uniform, gloves, shoes, glasses)
 	for(var/gear in protective_gear)
 		if(gear && istype(gear ,/obj/item/clothing))
 			var/obj/item/clothing/C = gear
@@ -235,11 +235,7 @@ Contains most of the procs that are called when a mob is attacked by something
 						glasses.add_mob_blood(src)
 						update_inv_glasses(0)
 
-			if("chest")//Easier to score a stun but lasts less time
-				if(prob((I.force + 10)))
-					apply_effect(6, WEAKEN)
-					visible_message(SPAN_DANGER("<B>[src] has been knocked down!</B>"), null, null, 5)
-
+			if("chest")
 				if(bloody)
 					bloody_body(src)
 

@@ -148,11 +148,12 @@
 						M.KnockDown(1)
 					M.apply_damage(10)
 					health -= 25
-				if(GRAB_NECK)
-					M.visible_message(SPAN_DANGER("<big>[user] crushes [M] against \the [src]!</big>"))
+				if(GRAB_CHOKE)
+					M.visible_message(SPAN_DANGER("[user] crushes [M] against \the [src]!"))
 					M.KnockDown(5)
 					M.apply_damage(20)
 					health -= 50
+
 			healthcheck(1, 1, M) //The person thrown into the window literally shattered it
 		return
 

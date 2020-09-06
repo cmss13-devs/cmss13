@@ -33,6 +33,7 @@
 	var/accurate_range_min 			= 0			// Snipers use this to simulate poor accuracy at close ranges
 	var/max_range 					= 0 		// This will de-increment a counter on the bullet
 	var/scatter  					= 0 		// How much the ammo scatters when burst fired, added to gun scatter, along with other mods
+	var/stamina_damage 				= 0
 	var/damage 						= 0 		// This is the base damage of the bullet as it is fired
 	var/damage_var_low				= 0 		// Same as with accuracy variance
 	var/damage_var_high				= 0
@@ -114,13 +115,8 @@
 				target.apply_effect(2, SLOW)
 				to_chat(target, SPAN_XENODANGER("You are shaken by the sudden impact!"))
 			else
-				if(!isYautja(M)) //Not predators.
-					var/mob/living/target = M
-					target.apply_effect(1, STUN)
-					target.apply_effect(1, WEAKEN)
-					target.apply_effect(2, SUPERSLOW)
-					target.apply_effect(4, SLOW)
-					to_chat(target, SPAN_HIGHDANGER("The blast knocks you off your feet!"))
+				var/mob/living/L = M
+				L.apply_stamina_damage(P.ammo.damage, P.def_zone, ARMOR_BULLET)
 		step_away(M,P)
 
 /datum/ammo/proc/heavy_knockback(mob/M, obj/item/projectile/P, var/max_range = 6) //crazier version of knockback
@@ -140,14 +136,13 @@
 			target.apply_effect(2, SUPERSLOW)
 			target.apply_effect(5, SLOW)
 		else
+			var/mob/living/target = M
 			if(!isYautja(M)) //Not predators.
-				var/mob/living/target = M
-				target.apply_effect(2, STUN)
-				target.apply_effect(4, WEAKEN)
 				target.apply_effect(5, DAZE)
 				target.apply_effect(5, SUPERSLOW)
 				target.apply_effect(8, SLOW)
 				to_chat(target, SPAN_HIGHDANGER("The blast knocks you off your feet!"))
+			target.apply_stamina_damage(P.ammo.damage, P.def_zone, ARMOR_BULLET)
 	step_away(M,P)
 
 /datum/ammo/proc/burst(atom/target, obj/item/projectile/P, damage_type = BRUTE, range = 1, damage_div = 2, show_message = 1) //damage_div says how much we divide damage
@@ -189,31 +184,6 @@
 		var/turf/new_target = get_angle_target_turf(curloc, final_angle, 30)
 
 		P.fire_at(new_target, original_P.firer, original_P.shot_from, P.ammo.max_range, P.ammo.shell_speed, original_P.original, iff_group = original_P.iff_group) //Fire!
-
-	//This is sort of a workaround for now. There are better ways of doing this ~N.
-/datum/ammo/proc/stun_living(mob/living/target, obj/item/projectile/P) //Taser proc to stun folks.
-	if(istype(target))
-		if(isYautja(target) || isXeno(target)) 
-			return //Not on aliens.
-			
-		switch(target.faction) //Switches are still better than evaluating this twice.
-			if(FACTION_UPP) //These antags can shrug off tasers so they are not shut down.
-				target.apply_effect(1, STUN)
-				target.apply_effect(1, WEAKEN) //Barely affected.
-				target.apply_effect(2, SUPERSLOW)
-				target.apply_effect(4, SLOW)
-				return
-			if(FACTION_DEATHSQUAD)
-				target.apply_effect(1, WEAKEN) //Almost unaffacted.
-				target.apply_effect(2, SLOW)
-				return
-			if(FACTION_XENOMORPH) //Completely unaffected.
-				return
-
-		target.apply_effect(6, STUN)
-		target.apply_effect(12, WEAKEN)
-		target.apply_effect(20, SUPERSLOW)
-		target.apply_effect(30, SLOW)
 
 /datum/ammo/proc/drop_flame(turf/T, var/source, var/source_mob) // ~Art updated fire 20JAN17
 	if(!istype(T)) return
@@ -266,7 +236,21 @@
 
 /datum/ammo/bullet/pistol/tranq
 	name = "tranq bullet"
-	debilitate = list(0,2,0,0,5,3,20,0)
+	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_IGNORE_RESIST
+	stamina_damage = 150
+
+	var/knockout_period = SECONDS_10
+
+/datum/ammo/bullet/pistol/tranq/New()
+	. = ..()
+	shrapnel_chance = 0
+
+/datum/ammo/bullet/pistol/tranq/on_hit_mob(mob/M, obj/item/projectile/P)
+	. = ..()
+	if(isliving(M))
+		var/mob/living/L = M
+		if(L.stamina)
+			L.stamina.apply_rest_period(knockout_period)
 
 /datum/ammo/bullet/pistol/hollow
 	name = "hollowpoint pistol bullet"
@@ -295,6 +279,16 @@
 	damage = config.min_hit_damage
 	penetration = config.low_armor_penetration
 	pen_armor_punch = 3
+
+/datum/ammo/bullet/pistol/rubber
+	name = "rubber pistol bullet"
+	sound_override = 'sound/weapons/gun_c99.ogg'
+
+/datum/ammo/bullet/pistol/rubber/New()
+	..()
+	damage = config.no_hit_damage
+	stamina_damage = config.low_hit_damage
+	shrapnel_chance = 0
 
 // Used by M1911, Deagle and KT-42
 /datum/ammo/bullet/pistol/heavy
@@ -496,6 +490,16 @@
 	damage_falloff = config.reg_damage_falloff
 	pen_armor_punch = 4
 
+/datum/ammo/bullet/smg/rubber
+	name = "rubber submachinegun bullet"
+	sound_override = 'sound/weapons/gun_c99.ogg'
+
+/datum/ammo/bullet/smg/rubber/New()
+	..()
+	damage = config.no_hit_damage
+	stamina_damage = config.base_hit_damage
+	shrapnel_chance = 0
+
 /*
 //================================================
 					Rifle Ammo
@@ -551,6 +555,16 @@
 	damage = config.mlow_hit_damage
 	penetration = config.low_armor_penetration
 	pen_armor_punch = 5
+
+/datum/ammo/bullet/rifle/rubber
+	name = "rubber rifle bullet"
+	sound_override = 'sound/weapons/gun_c99.ogg'
+
+/datum/ammo/bullet/rifle/rubber/New()
+	..()
+	damage = config.no_hit_damage
+	stamina_damage = config.min_hit_damage
+	shrapnel_chance = 0
 
 /datum/ammo/bullet/rifle/incendiary
 	name = "incendiary rifle bullet"
@@ -650,6 +664,7 @@
 	max_range = config.short_shell_range
 	shrapnel_chance = 0
 	damage = config.no_hit_damage
+	stamina_damage = config.lhigh_hit_damage
 	accuracy = config.med_hit_accuracy
 	shell_speed = config.fast_shell_speed
 
@@ -657,11 +672,6 @@
 	if(!M || M == P.firer) return
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
-		if(H.species.name == "Human") //no effect on synths or preds.
-			H.apply_effect(6, STUN)
-			H.apply_effect(8, WEAKEN)
-			H.apply_effect(15, DAZE)
-			H.apply_effect(15, SLOW)
 		shake_camera(H, 2, 1)
 
 
@@ -1312,21 +1322,19 @@
 
 /datum/ammo/energy/taser/New()
 	..()
+	stamina_damage = config.high_hit_damage
 	accuracy = config.max_hit_accuracy
-	shell_speed = config.slow_shell_speed
+	shell_speed = config.slow_shell_speed // Slightly faster
 
 /datum/ammo/energy/taser/on_hit_mob(mob/M, obj/item/projectile/P)
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
-
-		if(H.getarmor(H.get_limb("chest"), ARMOR_ENERGY) <= CLOTHING_ARMOR_ULTRAHIGH)
-			stun_living(M,P)
-			H.disable_special_items() // Disables scout cloak
+		H.disable_special_items() // Disables scout cloak
 
 /datum/ammo/energy/yautja/New()
-		..()
-		accurate_range = config.short_shell_range
-		shell_speed = config.fast_shell_speed
+	..()
+	accurate_range = config.short_shell_range
+	shell_speed = config.fast_shell_speed
 
 /datum/ammo/energy/yautja/pistol
 	name = "plasma pistol bolt"

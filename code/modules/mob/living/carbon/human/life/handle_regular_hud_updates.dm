@@ -79,7 +79,7 @@
 					if(1)	hud_used.healths.icon_state = "health6"
 					if(2)	hud_used.healths.icon_state = "health7"
 					else
-						var/pain_percentage = pain.get_pain_percentage()
+						var/pain_percentage = max(pain.get_pain_percentage(), 100 - (stamina.current_stamina/stamina.max_stamina)*100) // Get the highest value from either
 						switch(pain_percentage)
 							if(80 to 100)			hud_used.healths.icon_state = "health6"
 							if(60 to 80)			hud_used.healths.icon_state = "health5"

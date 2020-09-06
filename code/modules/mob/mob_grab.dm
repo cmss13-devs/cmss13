@@ -1,4 +1,4 @@
-#define UPGRADE_COOLDOWN	40
+#define UPGRADE_COOLDOWN	SECONDS_2
 
 /obj/item/grab
 	name = "grab"
@@ -33,6 +33,8 @@
 	if(!user)
 		return
 	if(user.pulling == user.buckled) return //can't move the thing you're sitting on.
+	if(user.grab_level >= GRAB_CARRY)
+		return
 	if(istype(target, /obj/effect))//if you click a blood splatter with a grab instead of the turf,
 		target = get_turf(target)	//we still try to move the grabbed thing to the turf.
 	if(isturf(target))
@@ -45,7 +47,7 @@
 
 
 /obj/item/grab/attack_self(mob/user)
-	if(!ismob(grabbed_thing) || world.time < (last_upgrade + UPGRADE_COOLDOWN))
+	if(!ismob(grabbed_thing) || world.time < (last_upgrade + UPGRADE_COOLDOWN * user.get_skill_duration_multiplier(SKILL_CQC)))
 		return
 
 	if(!ishuman(user)) //only humans can reinforce a grab.
@@ -53,34 +55,38 @@
 			var/mob/living/carbon/Xenomorph/X = user
 			X.pull_power(grabbed_thing)
 		return
+	
+	
 	var/mob/victim = grabbed_thing
 	if(victim.mob_size > MOB_SIZE_HUMAN || !(victim.status_flags & CANPUSH))
 		return //can't tighten your grip on big mobs and mobs you can't push.
 	last_upgrade = world.time
-	if(user.grab_level <= GRAB_KILL)
-		user.grab_level++
-		playsound(src.loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
-		switch(user.grab_level)
-			if(GRAB_KILL)
-				icon_state = "disarm/kill1"
-				user.visible_message(SPAN_DANGER("[user] has tightened \his grip on [victim]'s neck!"), null, null, 5)
-				victim.last_damage_source = initial(user.name)
-				victim.last_damage_mob = user
-				victim.attack_log += "\[[time_stamp()]\] <font color='orange'>Has been strangled (kill intent) by [key_name(user)]</font>"
-				user.attack_log += "\[[time_stamp()]\] <font color='red'>Strangled (kill intent) [key_name(victim)]</font>"
-				msg_admin_attack("[key_name(user)] strangled (kill intent) [key_name(victim)] in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
-			if(GRAB_NECK)
-				icon_state = "disarm/kill"
-				user.visible_message(SPAN_WARNING("[user] has reinforced \his grip on [victim] (now neck)!"), null, null, 5)
-				victim.attack_log += "\[[time_stamp()]\] <font color='orange'>Has had their neck grabbed by [key_name(user)]</font>"
-				user.attack_log += "\[[time_stamp()]\] <font color='red'>Grabbed the neck of [key_name(victim)]</font>"
-				msg_admin_attack("[key_name(user)] grabbed the neck of [key_name(victim)] in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
-			if(GRAB_AGGRESSIVE)
-				user.visible_message(SPAN_WARNING("[user] has grabbed [victim] aggressively (now hands)!"), null, null, 5)
-		victim.update_canmove()
+
+	switch(user.grab_level)
+		if(GRAB_PASSIVE)
+			progress_passive(user, victim)
+		if(GRAB_AGGRESSIVE)
+			progress_aggressive(user, victim)
+
+/obj/item/grab/proc/progress_passive(mob/living/carbon/human/user, mob/victim)
+	user.grab_level = GRAB_AGGRESSIVE
+	playsound(src.loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
+	user.visible_message(SPAN_WARNING("[user] has grabbed [victim] aggressively!"), null, null, 5)
+	victim.update_canmove()
+
+/obj/item/grab/proc/progress_aggressive(mob/living/carbon/human/user, mob/victim)
+	user.grab_level = GRAB_CHOKE
+	playsound(src.loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
+	user.visible_message(SPAN_WARNING("[user] holds [victim] by the neck and starts choking them!"), null, null, 5)
+	victim.Move(user.loc, get_dir(victim.loc, user.loc))
+	victim.update_transform(TRUE)
+
+	victim.update_canmove()
 
 /obj/item/grab/attack(mob/living/M, mob/living/user, def_zone)
-	if(M == user && user.pulling && isXeno(user))
+	if(M == grabbed_thing)
+		attack_self(user)
+	else if(M == user && user.pulling && isXeno(user))
 		var/mob/living/carbon/Xenomorph/X = user
 		var/mob/living/carbon/pulled = X.pulling
 		if(!istype(pulled))

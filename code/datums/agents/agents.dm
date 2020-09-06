@@ -13,18 +13,19 @@ Giving objectives to an agent:
 
 /datum/agent
 	var/mob/living/carbon/human/source_human
+	var/obj/item/device/portable_vendor/antag/tools
 	var/faction = FACTION_WY
 
 	var/objectives_list
 
-/datum/agent/New(var/mob/living/carbon/human/H, var/chosen_faction)
+/datum/agent/New(var/mob/living/carbon/human/H, var/chosen_faction, var/start_with_objective = TRUE)
 	. = ..()
 	if(!istype(H))
 		qdel(src)
 
 	source_human = H
 	source_human.agent_holder = src
-	
+
 	if(!isnull(chosen_faction))
 		faction = chosen_faction
 	else
@@ -36,7 +37,24 @@ Giving objectives to an agent:
 
 	LAZYADD(human_agent_list, source_human)
 
+	if(source_human.skills)
+		source_human.skills.set_skill(SKILL_ANTAG, SKILL_ANTAG_TRAINED)
+		source_human.skills.set_skill(SKILL_FIREARMS, SKILL_FIREARMS_DEFAULT)
+
+	if(start_with_objective)
+		give_objective()
+
+	receive_tools()
 	apply_hud()
+
+/datum/agent/proc/receive_tools()
+	tools = new(source_human.loc, src)
+	tools.faction_belonging = faction
+
+	if(!source_human.equip_to_slot_if_possible(tools, WEAR_IN_BACK))
+		// Failed, trying to put in hands else drop
+		if(!source_human.put_in_any_hand_if_possible(tools))
+			tools.loc = source_human.loc
 
 /datum/agent/proc/generate_message()
 	var/faction_name = "Weston-Yamada"
@@ -80,10 +98,10 @@ Giving objectives to an agent:
 	if(ispath(objective_type, /datum/agent_objective))
 		typepath = objective_type
 
-	if(alert(source_human, "Objective transmission incoming from [faction]...", "Agent Message", "Accept", "Deny") == "Deny")
-		return
+	var/datum/action/human_action/activable/receive_objective/transmission = new()
+	transmission.objective_to_receive = typepath
 
-	LAZYADD(objectives_list, new typepath(src))
+	transmission.give_action(source_human)
 
 /datum/agent/Dispose()
 	. = ..()
@@ -94,3 +112,38 @@ Giving objectives to an agent:
 		for(var/datum/agent_objective/O in objectives_list)
 			O.belonging_to_agent = null
 			qdel(O)
+
+/datum/action/human_action/activable/receive_objective
+	name = "Receive Incoming Transmission"
+	var/objective_to_receive
+
+	action_icon_state = "antag_objective_receive"
+
+
+
+/datum/action/human_action/activable/receive_objective/can_use_action()
+	. = ..()
+	if(!.)
+		return FALSE
+
+	var/mob/living/carbon/human/H = owner
+	if(!H.agent_holder)
+		return FALSE
+
+	if(!objective_to_receive)
+		return FALSE
+
+	return TRUE
+
+/datum/action/human_action/activable/receive_objective/action_activate()
+	if(alert(owner, "Are you sure you want to receive your next objectives?", "Receive Objectives", "Yes", "No") == "No")
+		return
+
+	if(!can_use_action())
+		return
+
+	var/mob/living/carbon/human/H = owner
+
+	LAZYADD(H.agent_holder.objectives_list, new objective_to_receive(H.agent_holder))
+
+	remove_action(H)

@@ -32,14 +32,14 @@
 	icon_state = "blue"
 	item_state = "toolbox_blue"
 
-	New()
-		..()
-		new /obj/item/tool/screwdriver(src)
-		new /obj/item/tool/wrench(src)
-		new /obj/item/tool/weldingtool(src)
-		new /obj/item/tool/crowbar(src)
-		new /obj/item/device/analyzer(src)
-		new /obj/item/tool/wirecutters(src)
+/obj/item/storage/toolbox/mechanical/New()
+	. = ..()
+	new /obj/item/tool/screwdriver(src)
+	new /obj/item/tool/wrench(src)
+	new /obj/item/tool/weldingtool(src)
+	new /obj/item/tool/crowbar(src)
+	new /obj/item/device/analyzer(src)
+	new /obj/item/tool/wirecutters(src)
 
 /obj/item/storage/toolbox/electrical
 	name = "electrical toolbox"

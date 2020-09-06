@@ -12,6 +12,8 @@ obj/structure/machinery/recharger
 	var/percent_charge_complete = 0
 	var/list/allowed_devices = list(/obj/item/weapon/melee/baton, /obj/item/cell, /obj/item/weapon/gun/energy/taser, /obj/item/device/defibrillator)
 
+	var/charge_amount = 1000
+
 obj/structure/machinery/recharger/attackby(obj/item/G as obj, mob/user as mob)
 	if(istype(user,/mob/living/silicon))
 		return
@@ -74,7 +76,7 @@ obj/structure/machinery/recharger/process()
 		if(istype(charging, /obj/item/weapon/gun/energy/taser))
 			var/obj/item/weapon/gun/energy/taser/E = charging
 			if(!E.cell.fully_charged())
-				E.cell.give(active_power_usage*CELLRATE)
+				E.cell.give(charge_amount)
 				percent_charge_complete = E.cell.percent()
 				update_use_power(2)
 				update_icon()
@@ -88,7 +90,7 @@ obj/structure/machinery/recharger/process()
 			var/obj/item/weapon/melee/baton/B = charging
 			if(B.bcell)
 				if(!B.bcell.fully_charged())
-					B.bcell.give(active_power_usage*CELLRATE)
+					B.bcell.give(charge_amount)
 					percent_charge_complete = B.bcell.percent()
 					update_use_power(2)
 					update_icon()

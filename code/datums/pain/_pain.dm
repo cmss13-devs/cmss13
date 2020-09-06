@@ -90,6 +90,7 @@
 
 /datum/pain/proc/apply_pain(var/amount = 0, var/type = BRUTE)
 	var/actual_amount = amount
+
 	switch(type)
 		if(BRUTE)
 			actual_amount = BRUTE_PAIN_MULTIPLIER * amount

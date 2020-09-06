@@ -96,6 +96,14 @@
 			return AI.say(channel_prefix + " " +message)
 		return AI.say(message)
 
+/mob/proc/detectable_by_ai()
+	return TRUE
+
+/mob/living/carbon/human/detectable_by_ai() 
+	if(gloves && gloves.hide_prints)
+		return FALSE
+	. = ..()
+
 //AI shipside announcement, that uses announcement mechanic instead of talking into comms
 //to ensure that all humans on ship hear it regardless of comms and power
 /proc/shipwide_ai_announcement(var/message, var/title = MAIN_AI_SYSTEM, var/sound_to_play = sound('sound/misc/interference.ogg'))

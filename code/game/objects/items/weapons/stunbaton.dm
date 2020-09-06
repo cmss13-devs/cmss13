@@ -12,8 +12,7 @@
 	
 	attack_verb = list("beaten")
 	req_one_access = list(ACCESS_MARINE_BRIG, ACCESS_MARINE_ARMORY, ACCESS_MARINE_COMMANDER, ACCESS_WY_CORPORATE, ACCESS_WY_PMC_GREEN, ACCESS_CIVILIAN_BRIG)
-	var/stunforce = 10
-	var/agonyforce = 80
+	var/stunforce = 40
 	var/status = 0		//whether the thing is on or not
 	var/obj/item/cell/bcell = null
 	var/hitcost = 1000	//oh god why do power cells carry so much charge? We probably need to make a distinction between "industrial" sized power cells for APCs and power cells for everything else.
@@ -46,11 +45,11 @@
 
 /obj/item/weapon/melee/baton/update_icon()
 	if(status)
-		icon_state = "[initial(name)]_active"
+		icon_state = "[initial(icon_state)]_active"
 	else if(!bcell)
-		icon_state = "[initial(name)]_nocell"
+		icon_state = "[initial(icon_state)]_nocell"
 	else
-		icon_state = "[initial(name)]"
+		icon_state = "[initial(icon_state)]"
 
 /obj/item/weapon/melee/baton/examine(mob/user)
 	..()
@@ -138,7 +137,6 @@
 		..()
 		return
 
-	var/agony = agonyforce
 	var/stun = stunforce
 	var/mob/living/L = M
 
@@ -146,9 +144,10 @@
 	if(user.a_intent == INTENT_HARM)
 		if (!..())	//item/attack() does it's own messaging and logs
 			return 0	// item/attack() will return 1 if they hit, 0 if they missed.
-		agony *= 0.5	//whacking someone causes a much poorer contact than prodding them.
-		stun *= 0.5
-		//we can't really extract the actual hit zone from ..(), unfortunately. Just act like they attacked the area they intended to.
+
+		if(!status)
+			return TRUE
+
 	else
 		//copied from human_defense.dm - human defence code should really be refactored some time.
 		if (ishuman(L))
@@ -180,9 +179,8 @@
 	//stun effects
 
 	if(!isYautja(L) && !isXeno(L)) //Xenos and Predators are IMMUNE to all baton stuns.
-		L.stun_effect_act(stun, agony, target_zone, src)
-		if(!L.knocked_down)
-			L.KnockDown(4)
+		L.emote("pain")
+		L.apply_stamina_damage(stun, target_zone, ARMOR_ENERGY)
 
 	playsound(loc, 'sound/weapons/Egloves.ogg', 25, 1, 6)
 	msg_admin_attack("[key_name(user)] stunned [key_name(L)] with the [src] in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
@@ -216,7 +214,6 @@
 	force = 3
 	throwforce = 5
 	stunforce = 0
-	agonyforce = 60	//same force as a stunbaton, but uses way more charge.
 	hitcost = 2500
 	attack_verb = list("poked")
 	flags_equip_slot = NO_FLAGS

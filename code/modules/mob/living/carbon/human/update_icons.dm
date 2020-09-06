@@ -84,17 +84,20 @@ There are several things that need to be remembered:
 		overlays_standing[cache_index] = null
 
 
-/mob/living/carbon/human/update_transform()
-	if(lying == lying_prev)
+/mob/living/carbon/human/update_transform(var/force = FALSE)
+	if(lying == lying_prev && !force)
 		return
 	lying_prev = lying
 	if(lying)
 		var/matrix/M = matrix()
-		if(prob(50))
+		if(pulledby && pulledby.grab_level >= GRAB_CARRY)
 			M.Turn(90)
 		else
-			M.Turn(270)
-		M.Translate(rand(-10,10),rand(-10,10))
+			if(prob(50))
+				M.Turn(90)
+			else
+				M.Turn(270)
+			M.Translate(rand(-10,10),rand(-10,10))
 		apply_transform(M)
 	else
 		var/matrix/M = matrix()

@@ -135,15 +135,18 @@ Code:
 
 
 /obj/item/device/assembly/signaler/receive_signal(datum/signal/signal)
-	if(!signal)	return 0
-	if(signal.encryption != code)	return 0
-	if(!(src.wires & WIRE_RADIO_RECEIVE))	return 0
-	pulse(1)
+	if(!signal)	
+		return FALSE
+	if(signal.encryption != code)	
+		return FALSE
+	if(!(src.wires & WIRE_RADIO_RECEIVE))	
+		return FALSE
+
+	pulse(TRUE)
 
 	if(!holder)
-		for(var/mob/O in hearers(1, src.loc))
-			O.show_message(text("[htmlicon(src, O)] *beep* *beep*"))
-	return
+		playsound(loc, 'sound/machines/twobeep.ogg', 15)
+	return TRUE
 
 
 /obj/item/device/assembly/signaler/proc/set_frequency(new_frequency)

@@ -87,3 +87,38 @@
 
 /atom/proc/attack_hand(mob/user)
 	return
+
+/mob/living/carbon/human/MouseDrop_T(atom/dropping, mob/user)
+	if(user != src)
+		return . = ..()
+
+	if(pulling != dropping || grab_level != GRAB_AGGRESSIVE || !ishuman(dropping) || !(a_intent & INTENT_GRAB))
+		return . = ..()
+	
+	if(!skillcheck(src, SKILL_POLICE, SKILL_POLICE_MP))
+		to_chat(src, SPAN_WARNING("You aren't trained to carry people!"))
+		return . = ..()
+
+	var/mob/living/carbon/human/target = dropping
+
+	user.visible_message(SPAN_WARNING("[src] starts loading [target] onto their back."),\
+	SPAN_WARNING("You start loading [target] onto your back."))
+
+	if(!do_after(src, SECONDS_3 * get_skill_duration_multiplier(SKILL_CQC), INTERRUPT_ALL, BUSY_ICON_HOSTILE, pulling, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
+		return
+
+	user.visible_message(SPAN_WARNING("[src] loads [target] onto their back."),\
+	SPAN_WARNING("You load [target] onto your back."))
+
+	if(pulling != dropping || !dropping || dropping.disposed)
+		return . = ..()
+
+	grab_level = GRAB_CARRY
+
+	target.Move(user.loc, get_dir(target.loc, user.loc))
+	target.update_transform(TRUE)
+
+	target.update_canmove()
+	
+		
+	

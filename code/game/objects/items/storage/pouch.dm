@@ -183,7 +183,7 @@
 	desc = "It can contain ammo magazines."
 	icon_state = "medium_ammo_mag"
 	max_w_class = SIZE_MEDIUM
-	storage_slots = 2
+	storage_slots = 3
 	bypass_w_limit = list(
 		/obj/item/ammo_magazine/rifle,
 		/obj/item/ammo_magazine/smg/m39
@@ -207,7 +207,7 @@
 /obj/item/storage/pouch/magazine/large
 	name = "large magazine pouch"
 	icon_state = "large_ammo_mag"
-	storage_slots = 3
+	storage_slots = 4
 
 /obj/item/storage/pouch/magazine/large/with_beanbags
 

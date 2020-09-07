@@ -28,6 +28,8 @@
 	MS.recalculate_actions(description, flavor_description)
 	H.recalculate_plasma()
 
+	H.resin_build_order = resin_build_order_default
+
 /*
  *    Coerce Resin ability
  */

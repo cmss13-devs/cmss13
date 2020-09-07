@@ -166,8 +166,8 @@
 	return !X.used_tremor
 
 /mob/living/carbon/Xenomorph/proc/tremor() //More support focused version of crusher earthquakes.
-	if(burrow)
-		to_chat(src, SPAN_NOTICE("You must be above ground to do this."))
+	if(burrow || is_ventcrawling)
+		to_chat(src, SPAN_XENOWARNING("You must be above ground to do this."))
 		return
 
 	if(!check_state())

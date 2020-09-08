@@ -50,8 +50,16 @@
 		return 0
 
 	if(istype(M, /mob/living/carbon))
+		var/mob/living/carbon/C = M
 		var/fullness = M.nutrition + (M.reagents.get_reagent_amount("nutriment") * 25)
-		if(M == user)								//If you're eating it yourself
+		if(fullness > 540 && world.time < C.overeat_cooldown)
+			to_chat(user, SPAN_WARNING("[user == M ? "You" : "They"] don't feel like eating more right now."))
+			return
+
+		if(fullness > 540)
+			C.overeat_cooldown = world.time + OVEREAT_TIME
+
+		if(M == user)//If you're eating it yourself
 			if(istype(M,/mob/living/carbon/human))
 				var/mob/living/carbon/human/H = M
 				if(H.species.flags & IS_SYNTHETIC)
@@ -63,11 +71,10 @@
 				to_chat(M, SPAN_NOTICE(" You hungrily begin to eat [src]."))
 			if (fullness > 150 && fullness <= 350)
 				to_chat(M, SPAN_NOTICE(" You take a bite of [src]."))
-			if (fullness > 350 && fullness <= 550)
+			if (fullness > 350 && fullness <= 540)
 				to_chat(M, SPAN_NOTICE(" You unwillingly chew a bit of [src]."))
-			if (fullness > 550)
-				to_chat(M, SPAN_WARNING("You cannot force any more of [src] to go down your throat."))
-				return 0
+			if (fullness > 540)
+				to_chat(M, SPAN_WARNING("You reluctantly force more of [src] to go down your throat."))
 		else
 			if(istype(M,/mob/living/carbon/human))
 				var/mob/living/carbon/human/H = M
@@ -75,18 +82,11 @@
 					to_chat(H, SPAN_DANGER("They have a monitor for a head, where do you think you're going to put that?"))
 					return
 
-
-			if (fullness <= 550)
+			if (fullness <= 540)
 				user.affected_message(M,
 					SPAN_HELPFUL("You <b>start feeding</b> [user == M ? "yourself" : "[M]"] <b>[src]</b>."),
 					SPAN_HELPFUL("[user] <b>starts feeding</b> you <b>[src]</b>."),
 					SPAN_NOTICE("[user] starts feeding [user == M ? "themselves" : "[M]"] [src]."))
-			else
-				user.affected_message(M,
-					SPAN_HELPFUL("You <b>try to feed</b> [user == M ? "yourself" : "[M]"] <b>[src]</b> but they are full."),
-					SPAN_HELPFUL("[user] <b>tries feeding</b> you <b>[src]</b> but you are full."),
-					SPAN_NOTICE("[user] tries feeding [user == M ? "themselves" : "[M]"] [src] but they are full."))
-				return 0
 
 			if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, M)) return
 

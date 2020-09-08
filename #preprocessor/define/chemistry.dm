@@ -39,7 +39,7 @@
 #define HUNGER_FACTOR 0.05
 
 // Nutrition levels
-#define NUTRITION_MAX		450
+#define NUTRITION_MAX		550
 #define NUTRITION_NORMAL	400
 #define NUTRITION_LOW		250
 #define NUTRITION_VERYLOW	50

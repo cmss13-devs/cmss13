@@ -26,6 +26,26 @@
 					var/obj/item/spacecash/C = backpackI
 					amount_collected += C.worth
 
+		// Check the pockets in the armour
+		if(istype(I, /obj/item/clothing/suit/storage))
+			var/obj/item/clothing/suit/storage/S = I
+			if(S.pockets)//not all suits have pockits
+				var/obj/item/storage/internal/Int = S.pockets
+				for(var/obj/item/backpackI in Int)
+					if(istype(backpackI, /obj/item/spacecash))
+						var/obj/item/spacecash/C = backpackI
+						amount_collected += C.worth
+
+		// Check the webbing/uniform storage
+		if(istype(I, /obj/item/clothing/under))
+			var/obj/item/clothing/under/U = I
+			for(var/obj/item/clothing/accessory/storage/T in U.accessories)
+				var/obj/item/storage/internal/Int = T.hold
+				for(var/obj/item/backpackI in Int)
+					if(istype(backpackI, /obj/item/spacecash))
+						var/obj/item/spacecash/C = backpackI
+						amount_collected += C.worth
+
 		if(istype(I, /obj/item/spacecash))
 			var/obj/item/spacecash/C = I
 			amount_collected += C.worth

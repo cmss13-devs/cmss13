@@ -142,7 +142,7 @@
 	if(damage >= damage_cap)
 		if(M && istype(M))
 			M.count_niche_stat(STATISTICS_NICHE_DESCTRUCTION_WALLS, 1)
-			raiseEvent(GLOBAL_EVENT, EVENT_WALL_DESTROYED + "\ref[M]", src.type)
+			raiseEvent(GLOBAL_EVENT, EVENT_WALL_DESTROYED + "\ref[M]", src.type, get_area(src))
 		// Xenos used to be able to crawl through the wall, should suggest some structural damage to the girder
 		if (acided_hole)
 			dismantle_wall(1)

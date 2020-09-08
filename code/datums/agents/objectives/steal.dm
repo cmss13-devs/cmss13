@@ -25,22 +25,32 @@
 		return FALSE
 
 	for(var/obj/item/I in belonging_to_agent.source_human)
+		// Found a backpack, storage
 		if(istype(I, /obj/item/storage))
 			for(var/obj/item/backpackI in I)
 				if(istypestrict(backpackI, item_to_steal_type))
 					return TRUE
+		// Check the pockets in the armour
+		if(istype(I, /obj/item/clothing/suit/storage))
+			var/obj/item/clothing/suit/storage/S = I
+			if(S.pockets)//not all suits have pockits
+				var/obj/item/storage/internal/Int = S.pockets
+				for(var/obj/item/backpackI in Int)
+					if(istypestrict(backpackI, item_to_steal_type))
+						return TRUE
+		// Check the webbing/uniform storage
+		if(istype(I, /obj/item/clothing/under))
+			var/obj/item/clothing/under/U = I
+			for(var/obj/item/clothing/accessory/storage/T in U.accessories)
+				var/obj/item/storage/internal/Int = T.hold
+				for(var/obj/item/backpackI in Int)
+					if(istypestrict(backpackI, item_to_steal_type))
+						return TRUE
 
 		if(istypestrict(I, item_to_steal_type))
 			return TRUE
 
 	return FALSE
-
-
-/datum/agent_objective/steal/jones
-	item_to_steal_type = /obj/item/holder/Jones
-
-/datum/agent_objective/steal/camera
-	item_to_steal_type = /obj/item/device/camera
 
 /datum/agent_objective/steal/earmuffs
 	item_to_steal_type = /obj/item/clothing/ears/earmuffs
@@ -51,20 +61,85 @@
 /datum/agent_objective/steal/ob_manual
 	item_to_steal_type = /obj/item/book/manual/orbital_cannon_manual
 
-/datum/agent_objective/steal/marine_law_manual
-	item_to_steal_type = /obj/item/book/manual/marine_law
+/datum/agent_objective/steal/health_analyzer
+	item_to_steal_type = /obj/item/device/healthanalyzer/golden
 
-/datum/agent_objective/steal/fuel_cell
-	item_to_steal_type = /obj/item/fuelCell
+/datum/agent_objective/steal/golden_cup
+	item_to_steal_type = /obj/item/golden_cup
 
-/datum/agent_objective/steal/wet_floor
-	item_to_steal_type = /obj/item/tool/wet_sign
+/datum/agent_objective/steal/golden_coin
+	item_to_steal_type = /obj/item/coin/gold
 
-/datum/agent_objective/steal/bible
-	item_to_steal_type = /obj/item/storage/bible
+/datum/agent_objective/steal/tally_book
+	item_to_steal_type = /obj/item/tally_book
 
-/datum/agent_objective/steal/powercell
-	item_to_steal_type = /obj/item/cell/high
+/datum/agent_objective/steal/folded_medical_sheet
+	item_to_steal_type = /obj/item/folded_medical_sheet
 
-/datum/agent_objective/steal/cigars
-	item_to_steal_type = /obj/item/storage/fancy/cigar
+// CMO item
+/obj/item/device/healthanalyzer/golden
+	name = "golden HF2 health analyzer"
+	desc = "A special health analyzer with a golden front place. Property of the Chief Medical Officer."
+	icon_state = "golden_health"
+	item_state = "analyzer"
+
+/obj/item/device/healthanalyzer/golden/New()
+	. = ..()
+	
+	LAZYADD(objects_of_interest, src)
+
+/obj/item/device/healthanalyzer/golden/Dispose()
+	. = ..()
+	
+	LAZYREMOVE(objects_of_interest, src)
+
+// Medbay item
+/obj/item/folded_medical_sheet
+	name = "folded medical sheet"
+	desc = "A folded medical sheet, it is neatly packed."
+	icon_state = "folded_sheet_medical"
+	item_state = "folded_sheet_medical"
+
+/obj/item/folded_medical_sheet/New()
+	. = ..()
+	
+	LAZYADD(objects_of_interest, src)
+
+/obj/item/folded_medical_sheet/Dispose()
+	. = ..()
+	
+	LAZYREMOVE(objects_of_interest, src)
+
+// Req tally book
+/obj/item/tally_book
+	name = "tally book"
+	desc = "Property of the Requisitions Officer, this is the holy book of Requisition. It keeps count of all the money spent on supplies."
+	icon = 'icons/obj/items/books.dmi'
+	icon_state ="book"
+
+/obj/item/tally_book/New()
+	. = ..()
+	
+	LAZYADD(objects_of_interest, src)
+
+/obj/item/tally_book/Dispose()
+	. = ..()
+	
+	LAZYREMOVE(objects_of_interest, src)
+
+// CIC item
+/obj/item/golden_cup
+	name = "golden cup"
+	desc = "A sign of vanity for the coffee addict. What idiot decided this was a good idea? Belongs to CiC staff."
+	icon_state = "golden_cup"
+	item_state = "golden_cup"
+
+/obj/item/golden_cup/New()
+	. = ..()
+	
+	LAZYADD(objects_of_interest, src)
+	
+/obj/item/golden_cup/Dispose()
+	. = ..()
+	
+	LAZYREMOVE(objects_of_interest, src)

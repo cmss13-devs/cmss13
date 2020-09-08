@@ -12,6 +12,11 @@
 	desc = "Directly and intentionally disrupting primary operations of the ship. Fighting in the RO line, disrupting the briefing."
 	brig_time = 10
 
+/datum/law/major_law/foreign_activity
+	name = "Foreign Activity"
+	desc = "Carrying out objectives or being tied to material that describe planned actions that go against the USCM."
+	brig_time = 10
+
 /datum/law/major_law/assault
 	name = "Assault"
 	desc = "To threaten or use physical force against someone with ill intent, but without intent to kill."

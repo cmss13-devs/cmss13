@@ -4722,7 +4722,7 @@
 	},
 /area/strata/ag/interior/dorms/canteen)
 "amu" = (
-/obj/structure/prop/almayer/sensor_computer1,
+/obj/structure/prop/almayer/computers/sensor_computer1,
 /turf/closed/wall/strata_outpost_bare,
 /area/strata/ag/interior/research_decks/security)
 "amv" = (
@@ -19830,7 +19830,7 @@
 /turf/open/auto_turf/snow/layer2,
 /area/strata/ag/exterior/north_lz_caves)
 "bae" = (
-/obj/structure/prop/almayer/mapping_computer,
+/obj/structure/prop/almayer/computers/mapping_computer,
 /turf/open/floor/strata{
 	icon_state = "red1"
 	},
@@ -25098,7 +25098,7 @@
 /turf/open/auto_turf/snow/layer0,
 /area/strata/ag/exterior/paths/southresearch)
 "bpS" = (
-/obj/structure/prop/almayer/sensor_computer1,
+/obj/structure/prop/almayer/computers/sensor_computer1,
 /turf/open/floor/strata{
 	icon_state = "red1"
 	},
@@ -33959,7 +33959,7 @@
 /turf/closed/wall/strata_outpost_ribbed,
 /area/strata/ag/interior/restricted/devroom)
 "cmp" = (
-/obj/structure/prop/almayer/sensor_computer1,
+/obj/structure/prop/almayer/computers/sensor_computer1,
 /turf/closed/wall/strata_outpost_ribbed,
 /area/strata/ag/interior/restricted/devroom)
 "cmq" = (
@@ -36398,7 +36398,7 @@
 /turf/open/gm/dirt,
 /area/strata/ug/interior/jungle/deep/tearlake_west)
 "dOG" = (
-/obj/structure/prop/almayer/sensor_computer3,
+/obj/structure/prop/almayer/computers/sensor_computer3,
 /turf/closed/wall/strata_outpost_ribbed,
 /area/strata/ag/interior/restricted/devroom)
 "dOO" = (
@@ -38350,7 +38350,7 @@
 /turf/open/floor/strata,
 /area/strata/ag/exterior/paths/north_outpost)
 "gDg" = (
-/obj/structure/prop/almayer/sensor_computer2,
+/obj/structure/prop/almayer/computers/sensor_computer2,
 /turf/closed/wall/strata_outpost_ribbed,
 /area/strata/ag/interior/restricted/devroom)
 "gDl" = (
@@ -42280,7 +42280,7 @@
 	},
 /area/strata/ag/interior/outpost/med/records)
 "mIE" = (
-/obj/structure/prop/almayer/mapping_computer,
+/obj/structure/prop/almayer/computers/mapping_computer,
 /turf/closed/wall/strata_outpost_bare,
 /area/strata/ag/interior/research_decks/security)
 "mIG" = (

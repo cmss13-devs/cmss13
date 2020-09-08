@@ -7224,7 +7224,7 @@
 	},
 /area/almayer/hallways/starboard_hallway)
 "asa" = (
-/obj/structure/prop/almayer/sensor_computer1{
+/obj/structure/prop/almayer/computers/sensor_computer1{
 	name = "self destruct status computer"
 	},
 /turf/open/floor/almayer{
@@ -7233,7 +7233,7 @@
 	},
 /area/almayer/command/self_destruct)
 "asb" = (
-/obj/structure/prop/almayer/sensor_computer2{
+/obj/structure/prop/almayer/computers/sensor_computer2{
 	name = "self destruct regulator"
 	},
 /turf/open/floor/almayer{
@@ -7357,7 +7357,7 @@
 	},
 /area/almayer/hallways/aft_hallway)
 "asq" = (
-/obj/structure/prop/almayer/sensor_computer3{
+/obj/structure/prop/almayer/computers/sensor_computer3{
 	name = "tempature regulator"
 	},
 /turf/open/floor/almayer{
@@ -8979,7 +8979,7 @@
 	},
 /area/almayer/engineering/upper_engineering)
 "awm" = (
-/obj/structure/prop/almayer/mapping_computer,
+/obj/structure/prop/almayer/computers/mapping_computer,
 /turf/open/floor/almayer{
 	dir = 9;
 	icon_state = "red";
@@ -9086,7 +9086,7 @@
 /turf/open/floor/almayer,
 /area/almayer/living/officer_rnr)
 "awA" = (
-/obj/structure/prop/almayer/sensor_computer1{
+/obj/structure/prop/almayer/computers/sensor_computer1{
 	name = "radar computer"
 	},
 /turf/open/floor/almayer{
@@ -9109,20 +9109,20 @@
 /turf/closed/wall/almayer,
 /area/almayer/shipboard/port_missiles)
 "awD" = (
-/obj/structure/prop/almayer/sensor_computer2,
+/obj/structure/prop/almayer/computers/sensor_computer2,
 /turf/open/floor/almayer,
 /area/almayer/command/cic)
 "awE" = (
 /turf/closed/wall/almayer,
 /area/almayer/command/corporateliason)
 "awG" = (
-/obj/structure/prop/almayer/sensor_computer3{
+/obj/structure/prop/almayer/computers/sensor_computer3{
 	name = "weapon targetting computer"
 	},
 /turf/open/floor/almayer,
 /area/almayer/command/cic)
 "awH" = (
-/obj/structure/prop/almayer/sensor_computer3{
+/obj/structure/prop/almayer/computers/sensor_computer3{
 	name = "weapon targetting computer"
 	},
 /turf/open/floor/almayer{
@@ -11483,7 +11483,7 @@
 /turf/open/floor/almayer,
 /area/almayer/command/cic)
 "aBR" = (
-/obj/structure/prop/almayer/mapping_computer,
+/obj/structure/prop/almayer/computers/mapping_computer,
 /obj/structure/machinery/light,
 /turf/open/floor/almayer{
 	dir = 8;
@@ -12851,7 +12851,7 @@
 	},
 /area/almayer/command/cic)
 "aGq" = (
-/obj/structure/prop/almayer/mapping_computer,
+/obj/structure/prop/almayer/computers/mapping_computer,
 /turf/open/floor/almayer{
 	dir = 10;
 	icon_state = "blue";
@@ -12971,7 +12971,7 @@
 	},
 /area/almayer/command/cic)
 "aGM" = (
-/obj/structure/prop/almayer/sensor_computer1{
+/obj/structure/prop/almayer/computers/sensor_computer1{
 	name = "radar computer"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -14699,7 +14699,7 @@
 	},
 /area/almayer/engineering/upper_engineering)
 "aMT" = (
-/obj/structure/prop/almayer/mission_planning_system{
+/obj/structure/prop/almayer/computers/mission_planning_system{
 	desc = "This gathers all information about the Self-Destruct and pools it into one repository.";
 	name = "self destruct information tower"
 	},
@@ -34249,7 +34249,7 @@
 /turf/open/floor/almayer,
 /area/almayer/shipboard/port_missiles)
 "bZJ" = (
-/obj/structure/prop/almayer/mapping_computer,
+/obj/structure/prop/almayer/computers/mapping_computer,
 /obj/structure/machinery/light{
 	dir = 1
 	},
@@ -43668,7 +43668,7 @@
 	},
 /area/almayer/command/cichallway)
 "iuz" = (
-/obj/structure/prop/almayer/mapping_computer,
+/obj/structure/prop/almayer/computers/mapping_computer,
 /obj/structure/machinery/light{
 	dir = 1
 	},
@@ -53486,7 +53486,7 @@
 /turf/open/floor/wood,
 /area/almayer/medical/upper_medical)
 "unc" = (
-/obj/structure/prop/almayer/sensor_computer1{
+/obj/structure/prop/almayer/computers/sensor_computer1{
 	name = "radar computer"
 	},
 /turf/open/floor/almayer,

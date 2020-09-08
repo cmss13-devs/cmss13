@@ -102,7 +102,17 @@
 //	the area its placed at
 #define EVENT_PROPAGANDA_PLANTED "propaganda_planted"
 
-// Raised when a propangda poster is planted by agents
+// Raised when poison is ate
 // Args:
-//	the area its placed at
+//	the job of eater
 #define EVENT_POISON_EATEN "poison_eaten"
+
+// Raised when an apc is disabled
+// Args:
+//	the area its disabled at
+#define EVENT_APC_DISABLED "aps_disabled"
+
+// Raised when a floppy disk is inserted into a computer
+// Args:
+//	n/a
+#define EVENT_DISK_INSERTED "disk_inserted"

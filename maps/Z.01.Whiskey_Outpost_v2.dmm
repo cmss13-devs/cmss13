@@ -487,7 +487,7 @@
 	},
 /area/whiskey_outpost/inside/hospital)
 "bm" = (
-/obj/structure/prop/almayer/sensor_computer3,
+/obj/structure/prop/almayer/computers/sensor_computer3,
 /obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/prison{
 	tag = "icon-floor_plate";
@@ -1605,7 +1605,7 @@
 	},
 /area/whiskey_outpost/inside/hospital)
 "ea" = (
-/obj/structure/prop/almayer/sensor_computer1{
+/obj/structure/prop/almayer/computers/sensor_computer1{
 	name = "radar computer"
 	},
 /turf/open/floor/prison{

@@ -86,6 +86,8 @@ var/global/list/item_list = list()
 var/global/list/effect_list = list()
 var/global/list/cm_vending_vendors = list() //Used by our gamemode code
 
+/var/global/list/objects_of_interest // This is used to track the stealing objective for Agents.
+
 // exceptions to grenade antigrief
 var/global/list/grenade_antigrief_exempt_areas = list(
 )

@@ -106,7 +106,7 @@
 				playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 				new buildstacktype(loc, buildstackamount)
 				to_chat(user, SPAN_NOTICE(" You deconstruct [src]."))
-				raiseEvent(GLOBAL_EVENT, EVENT_W_FRAME_DESTROYED + "\ref[user]", src.type)
+				raiseEvent(GLOBAL_EVENT, EVENT_W_FRAME_DESTROYED + "\ref[user]", src.type, get_area(src))
 				qdel(src)
 
 	else if(istype(W, /obj/item/grab))

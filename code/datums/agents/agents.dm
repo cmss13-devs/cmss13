@@ -113,13 +113,12 @@ Giving objectives to an agent:
 			O.belonging_to_agent = null
 			qdel(O)
 
+
 /datum/action/human_action/activable/receive_objective
 	name = "Receive Incoming Transmission"
 	var/objective_to_receive
 
 	action_icon_state = "antag_objective_receive"
-
-
 
 /datum/action/human_action/activable/receive_objective/can_use_action()
 	. = ..()
@@ -136,13 +135,15 @@ Giving objectives to an agent:
 	return TRUE
 
 /datum/action/human_action/activable/receive_objective/action_activate()
-	if(alert(owner, "Are you sure you want to receive your next objectives?", "Receive Objectives", "Yes", "No") == "No")
+	if(alert(owner, "Are you sure you want to receive your next objective?", "Receive Objective", "Yes", "No") == "No")
 		return
 
 	if(!can_use_action())
 		return
 
 	var/mob/living/carbon/human/H = owner
+
+	ai_silent_announcement("SUSPICIOUS TRANSMISSION DETECTED.", ":p")
 
 	LAZYADD(H.agent_holder.objectives_list, new objective_to_receive(H.agent_holder))
 

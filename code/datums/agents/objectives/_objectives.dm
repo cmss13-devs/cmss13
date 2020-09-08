@@ -142,7 +142,7 @@ Objective message,
 
 			Signed, \[i\][signed_by]\[/i\]
 
-			\[hr\]\[small\] This documentation is stricly for [objective.belonging_to_faction] only. The acquisition, copying and distribution of this file is strictly forbidden to person/s or entity/s outside of [objective.belonging_to_faction]. The person violating these regulations may find themselves in prison or permanently disappearing.
+			\[hr\]\[small\] This documentation is stricly for REDACTED only. The acquisition, copying and distribution of this file is strictly forbidden to person/s or entity/s outside of REDACTED. The person violating these regulations may find themselves in prison or permanently disappearing.
 			"}
 
 	..()

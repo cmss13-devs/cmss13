@@ -15410,7 +15410,7 @@
 	},
 /area/corsat/gamma/hangar/monorail/control)
 "aOH" = (
-/obj/structure/prop/almayer/sensor_computer3,
+/obj/structure/prop/almayer/computers/sensor_computer3,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -15464,7 +15464,7 @@
 /turf/closed/wall/r_wall/biodome/biodome_unmeltable,
 /area/corsat/inaccessible)
 "aOR" = (
-/obj/structure/prop/almayer/sensor_computer2,
+/obj/structure/prop/almayer/computers/sensor_computer2,
 /obj/structure/platform{
 	density = 0;
 	dir = 1;
@@ -40058,7 +40058,7 @@
 	},
 /area/corsat/sigma/dorms)
 "dwH" = (
-/obj/structure/prop/almayer/mapping_computer,
+/obj/structure/prop/almayer/computers/mapping_computer,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "purplewhite"
@@ -45049,7 +45049,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/structure/prop/almayer/mapping_computer,
+/obj/structure/prop/almayer/computers/mapping_computer,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "purplewhite"
@@ -47555,7 +47555,7 @@
 	},
 /area/corsat/omega/security)
 "izn" = (
-/obj/structure/prop/almayer/sensor_computer1,
+/obj/structure/prop/almayer/computers/sensor_computer1,
 /turf/open/floor/corsat{
 	dir = 5;
 	icon_state = "purplewhite"
@@ -52883,7 +52883,7 @@
 /turf/open/mars,
 /area/corsat/sigma/biodome)
 "mvM" = (
-/obj/structure/prop/almayer/sensor_computer1,
+/obj/structure/prop/almayer/computers/sensor_computer1,
 /turf/open/floor/corsat{
 	dir = 5;
 	icon_state = "purplewhite"
@@ -55614,7 +55614,7 @@
 /turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "opf" = (
-/obj/structure/prop/almayer/sensor_computer1{
+/obj/structure/prop/almayer/computers/sensor_computer1{
 	name = "computer"
 	},
 /turf/open/shuttle/escapepod{
@@ -59805,7 +59805,7 @@
 	},
 /area/corsat/gamma/rnr)
 "rrs" = (
-/obj/structure/prop/almayer/sensor_computer1{
+/obj/structure/prop/almayer/computers/sensor_computer1{
 	name = "computer"
 	},
 /turf/open/shuttle/escapepod{

@@ -834,13 +834,13 @@
 	},
 /area/almayer/squads/delta)
 "acq" = (
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 1
+	},
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "orange";
 	tag = "icon-orange (WEST)"
-	},
-/obj/structure/pipes/standard/manifold/hidden/supply{
-	dir = 1
 	},
 /turf/open/floor/almayer,
 /area/almayer/engineering/engineering_workshop)
@@ -7130,7 +7130,7 @@
 	},
 /area/almayer/hallways/starboard_hallway)
 "asa" = (
-/obj/structure/prop/almayer/sensor_computer1{
+/obj/structure/prop/almayer/computers/sensor_computer1{
 	name = "self destruct status computer"
 	},
 /turf/open/floor/almayer{
@@ -7139,7 +7139,7 @@
 	},
 /area/almayer/command/self_destruct)
 "asb" = (
-/obj/structure/prop/almayer/sensor_computer2{
+/obj/structure/prop/almayer/computers/sensor_computer2{
 	name = "self destruct regulator"
 	},
 /turf/open/floor/almayer{
@@ -7263,7 +7263,7 @@
 	},
 /area/almayer/hallways/aft_hallway)
 "asq" = (
-/obj/structure/prop/almayer/sensor_computer3{
+/obj/structure/prop/almayer/computers/sensor_computer3{
 	name = "tempature regulator"
 	},
 /turf/open/floor/almayer{
@@ -8870,7 +8870,7 @@
 	},
 /area/almayer/engineering/upper_engineering)
 "awm" = (
-/obj/structure/prop/almayer/mapping_computer,
+/obj/structure/prop/almayer/computers/mapping_computer,
 /turf/open/floor/almayer{
 	dir = 9;
 	icon_state = "red";
@@ -8977,7 +8977,7 @@
 /turf/open/floor/almayer,
 /area/almayer/living/officer_rnr)
 "awA" = (
-/obj/structure/prop/almayer/sensor_computer1{
+/obj/structure/prop/almayer/computers/sensor_computer1{
 	name = "radar computer"
 	},
 /turf/open/floor/almayer{
@@ -9000,20 +9000,20 @@
 /turf/closed/wall/almayer,
 /area/almayer/shipboard/port_missiles)
 "awD" = (
-/obj/structure/prop/almayer/sensor_computer2,
+/obj/structure/prop/almayer/computers/sensor_computer2,
 /turf/open/floor/almayer,
 /area/almayer/command/cic)
 "awE" = (
 /turf/closed/wall/almayer,
 /area/almayer/command/corporateliason)
 "awG" = (
-/obj/structure/prop/almayer/sensor_computer3{
+/obj/structure/prop/almayer/computers/sensor_computer3{
 	name = "weapon targetting computer"
 	},
 /turf/open/floor/almayer,
 /area/almayer/command/cic)
 "awH" = (
-/obj/structure/prop/almayer/sensor_computer3{
+/obj/structure/prop/almayer/computers/sensor_computer3{
 	name = "weapon targetting computer"
 	},
 /turf/open/floor/almayer{
@@ -11307,7 +11307,7 @@
 /turf/open/floor/almayer,
 /area/almayer/command/cic)
 "aBR" = (
-/obj/structure/prop/almayer/mapping_computer,
+/obj/structure/prop/almayer/computers/mapping_computer,
 /obj/structure/machinery/light,
 /turf/open/floor/almayer{
 	dir = 8;
@@ -12637,7 +12637,7 @@
 	},
 /area/almayer/command/cic)
 "aGq" = (
-/obj/structure/prop/almayer/mapping_computer,
+/obj/structure/prop/almayer/computers/mapping_computer,
 /turf/open/floor/almayer{
 	dir = 10;
 	icon_state = "blue";
@@ -12757,7 +12757,7 @@
 	},
 /area/almayer/command/cic)
 "aGM" = (
-/obj/structure/prop/almayer/sensor_computer1{
+/obj/structure/prop/almayer/computers/sensor_computer1{
 	name = "radar computer"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -14443,7 +14443,7 @@
 	},
 /area/almayer/engineering/upper_engineering)
 "aMT" = (
-/obj/structure/prop/almayer/mission_planning_system{
+/obj/structure/prop/almayer/computers/mission_planning_system{
 	desc = "This gathers all information about the Self-Destruct and pools it into one repository.";
 	name = "self destruct information tower"
 	},
@@ -26088,6 +26088,7 @@
 /obj/structure/machinery/power/apc/almayer{
 	dir = 8
 	},
+/obj/item/folded_medical_sheet,
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_side";
@@ -30068,6 +30069,7 @@
 "bNR" = (
 /obj/structure/surface/table/almayer,
 /obj/item/storage/fancy/cigar,
+/obj/item/tally_book,
 /turf/open/floor/almayer,
 /area/almayer/squads/req)
 "bNS" = (
@@ -33670,7 +33672,7 @@
 /turf/open/floor/almayer,
 /area/almayer/shipboard/port_missiles)
 "bZJ" = (
-/obj/structure/prop/almayer/mapping_computer,
+/obj/structure/prop/almayer/computers/mapping_computer,
 /obj/structure/machinery/light{
 	dir = 1
 	},
@@ -35140,8 +35142,7 @@
 "cdQ" = (
 /obj/structure/machinery/vending/hydronutrients,
 /obj/structure/machinery/light{
-	dir = 4;
-	icon_state = "tube1"
+	dir = 4
 	},
 /turf/open/floor/almayer{
 	dir = 4;
@@ -38236,9 +38237,7 @@
 	},
 /area/almayer/living/grunt_rnr)
 "cqg" = (
-/obj/structure/machinery/vending/hydroseeds{
-	req_access = null
-	},
+/obj/structure/machinery/vending/hydroseeds,
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "green";
@@ -38249,7 +38248,6 @@
 /obj/structure/machinery/portable_atmospherics/hydroponics,
 /obj/structure/machinery/light,
 /turf/open/floor/almayer{
-	dir = 2;
 	icon_state = "green";
 	tag = "icon-green"
 	},
@@ -40311,7 +40309,6 @@
 "eAh" = (
 /obj/structure/filingcabinet/seeds,
 /turf/open/floor/almayer{
-	dir = 2;
 	icon_state = "green";
 	tag = "icon-green"
 	},
@@ -42350,6 +42347,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
+/obj/item/coin/gold,
 /turf/open/floor/wood,
 /area/almayer/shipboard/chief_mp_office)
 "gRP" = (
@@ -42841,6 +42839,7 @@
 	dir = 8;
 	tag = "icon-map-supply (WEST)"
 	},
+/obj/item/golden_cup,
 /turf/open/floor/almayer,
 /area/almayer/command/cic)
 "hvw" = (
@@ -43389,7 +43388,6 @@
 "hXU" = (
 /obj/structure/surface/rack,
 /obj/item/tool/shovel/spade{
-	pixel_x = 0;
 	pixel_x = -4
 	},
 /obj/item/tool/shovel/spade{
@@ -43397,7 +43395,6 @@
 	},
 /obj/item/tool/shovel/spade,
 /obj/item/reagent_container/glass/bucket{
-	pixel_x = 0;
 	pixel_x = -4;
 	pixel_y = -3
 	},
@@ -43612,7 +43609,7 @@
 	},
 /area/almayer/command/cichallway)
 "iuz" = (
-/obj/structure/prop/almayer/mapping_computer,
+/obj/structure/prop/almayer/computers/mapping_computer,
 /obj/structure/machinery/light{
 	dir = 1
 	},
@@ -44674,7 +44671,6 @@
 "jBK" = (
 /obj/structure/machinery/portable_atmospherics/hydroponics,
 /turf/open/floor/almayer{
-	dir = 2;
 	icon_state = "green";
 	tag = "icon-green"
 	},
@@ -47811,7 +47807,6 @@
 "nah" = (
 /obj/structure/sink{
 	dir = 1;
-	pixel_x = 0;
 	pixel_y = -10
 	},
 /turf/open/floor/almayer{
@@ -49787,6 +49782,7 @@
 /obj/structure/pipes/vents/scrubber{
 	dir = 8
 	},
+/obj/item/device/healthanalyzer/golden,
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "sterile_green_side";
@@ -52764,12 +52760,12 @@
 "szU" = (
 /obj/structure/surface/rack,
 /obj/item/stack/sheet/cardboard{
-	pixel_x = -3;
-	amount = 50
+	amount = 50;
+	pixel_x = -3
 	},
 /obj/item/stack/sheet/cardboard{
-	pixel_x = 4;
-	amount = 50
+	amount = 50;
+	pixel_x = 4
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -54345,7 +54341,7 @@
 /turf/open/floor/wood,
 /area/almayer/medical/upper_medical)
 "unc" = (
-/obj/structure/prop/almayer/sensor_computer1{
+/obj/structure/prop/almayer/computers/sensor_computer1{
 	name = "radar computer"
 	},
 /turf/open/floor/almayer,
@@ -55437,9 +55433,7 @@
 /area/almayer/shipboard/brig_cells)
 "vAZ" = (
 /obj/structure/machinery/light{
-	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	dir = 8
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";

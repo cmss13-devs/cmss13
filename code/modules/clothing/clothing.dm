@@ -134,6 +134,16 @@
 	item_state = "earmuffs"
 	flags_equip_slot = SLOT_EAR
 
+/obj/item/clothing/ears/earmuffs/New()
+	. = ..()
+	
+	LAZYADD(objects_of_interest, src)
+
+/obj/item/clothing/ears/earmuffs/Dispose()
+	. = ..()
+	
+	LAZYREMOVE(objects_of_interest, src)
+
 
 ///////////////////////////////////////////////////////////////////////
 //Suit

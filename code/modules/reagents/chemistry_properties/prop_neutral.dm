@@ -52,11 +52,12 @@
 /datum/chem_property/neutral/nutritious/pre_process(mob/living/M)
 	if(M.stat == DEAD)
 		return
-	M.nutrition += holder.nutriment_factor * level
-	if(iscarbon(M))
-		var/mob/living/carbon/C = M
-		if(C.blood_volume < BLOOD_VOLUME_NORMAL)
-			C.blood_volume = max(0.2 * level,BLOOD_VOLUME_NORMAL)
+	
+	if(M.nutrition + (holder.nutriment_factor * level) >= NUTRITION_MAX)
+		M.nutrition = NUTRITION_MAX
+		holder.volume = 0
+	else
+		M.nutrition += holder.nutriment_factor * level
 
 /datum/chem_property/neutral/nutritious/reset_reagent()
 	holder.nutriment_factor = initial(holder.nutriment_factor)

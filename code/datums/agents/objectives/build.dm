@@ -46,7 +46,7 @@
 	var/obj/thingy = list_obj_types[length(list_obj_types)]
 	text_string += " and [list_obj_types_to_required_amount[list_obj_types[length(list_obj_types)]]] [initial(thingy.name)]s"
 
-	description = "Prepare a hideout has by building[text_string]."
+	description = "Prepare a hideout by building[text_string]."
 
 /datum/agent_objective/build/proc/count_built(var/type_path)
 	var/path_found = null

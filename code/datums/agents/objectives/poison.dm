@@ -18,10 +18,10 @@
 	registerListener(GLOBAL_EVENT, EVENT_POISON_EATEN + "\ref[poisoned_food]", "\ref[src]_\ref[poisoned_food]", CALLBACK(src, .proc/ate_poison))
 
 /datum/agent_objective/poison/generate_objective_body_message()
-	return "[SPAN_BOLD("[SPAN_BLUE("Poison")]")] an officer with the special [SPAN_BOLD("[SPAN_RED("[poisoned_food.name]")]")] to weaken command."
+	return "[SPAN_BOLD("[SPAN_BLUE("Poison")]")] an officer with the rotten [SPAN_BOLD("[SPAN_RED("[poisoned_food.name]")]")] to upset their stomach."
 
 /datum/agent_objective/poison/generate_description()
-	description = "Poison an officer with the special [poisoned_food.name] to weaken command."
+	description = "Poison an officer with the rotten [poisoned_food.name] to upset their stomach."
 
 /datum/agent_objective/poison/proc/ate_poison(var/job_of_eater)
 	if(ate_it)

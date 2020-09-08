@@ -14,6 +14,16 @@
 	var/target_name = null
 	var/timeofdeath = null
 
+/obj/item/device/autopsy_scanner/New()
+	. = ..()
+	
+	LAZYADD(objects_of_interest, src)
+
+/obj/item/device/autopsy_scanner/Dispose()
+	. = ..()
+	
+	LAZYREMOVE(objects_of_interest, src)
+
 /datum/autopsy_data_scanner
 	var/weapon = null // this is the DEFINITE weapon type that was used
 	var/list/organs_scanned = list() // this maps a number of scanned organs to
@@ -27,14 +37,14 @@
 	var/hits = 0
 	var/time_inflicted = 0
 
-	proc/copy()
-		var/datum/autopsy_data/W = new()
-		W.weapon = weapon
-		W.pretend_weapon = pretend_weapon
-		W.damage = damage
-		W.hits = hits
-		W.time_inflicted = time_inflicted
-		return W
+/datum/autopsy_data/proc/copy()
+	var/datum/autopsy_data/W = new()
+	W.weapon = weapon
+	W.pretend_weapon = pretend_weapon
+	W.damage = damage
+	W.hits = hits
+	W.time_inflicted = time_inflicted
+	return W
 
 /obj/item/device/autopsy_scanner/proc/add_data(var/obj/limb/O)
 	if(!O.autopsy_data.len && !O.trace_chemicals.len) return

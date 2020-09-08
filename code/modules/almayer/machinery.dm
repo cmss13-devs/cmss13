@@ -285,31 +285,50 @@
 	icon_state = "30mm_crate"
 
 
-/obj/structure/prop/almayer/mission_planning_system
+/obj/structure/prop/almayer/computers
+	var/hacked = FALSE
+
+/obj/structure/prop/almayer/computers/update_icon()
+	. = ..()
+	
+	overlays.Cut()
+
+	if(hacked)
+		overlays += "+hacked"
+
+/obj/structure/prop/almayer/computers/attackby(obj/item/W, mob/user)
+	if(istype(W, /obj/item/device/agents/floppy_disk))
+		var/obj/item/device/agents/floppy_disk/D = W
+		D.insert_drive(user, src)
+		return
+
+	. = ..()
+
+/obj/structure/prop/almayer/computers/mission_planning_system
 	name = "\improper MPS IV computer"
 	desc = "The Mission Planning System IV (MPS IV), a enhancement in mission planning and charting for dropship pilots across the USCM. Fully capable of customizing their flight paths and loadouts to suit their combat needs."
 	icon = 'icons/obj/structures/props/almayer_props.dmi'
 	icon_state = "mps"
 
-/obj/structure/prop/almayer/mapping_computer
+/obj/structure/prop/almayer/computers/mapping_computer
 	name = "\improper CMPS II computer"
 	desc = "The Common Mapping Production System version II allows for sensory imput from satellites and ship systems to derive planetary maps in a standardized fashion for all USCM pilots."
 	icon = 'icons/obj/structures/props/almayer_props.dmi'
 	icon_state = "mapping_comp"
 
-/obj/structure/prop/almayer/sensor_computer1
+/obj/structure/prop/almayer/computers/sensor_computer1
 	name = "sensor computer"
 	desc = "The IBM series 10 computer retrofitted to work as a sensor computer for the ship. While somewhat dated it still serves its purpose."
 	icon = 'icons/obj/structures/props/almayer_props.dmi'
 	icon_state = "sensor_comp1"
 
-/obj/structure/prop/almayer/sensor_computer2
+/obj/structure/prop/almayer/computers/sensor_computer2
 	name = "sensor computer"
 	desc = "The IBM series 10 computer retrofitted to work as a sensor computer for the ship. While somewhat dated it still serves its purpose."
 	icon = 'icons/obj/structures/props/almayer_props.dmi'
 	icon_state = "sensor_comp2"
 
-/obj/structure/prop/almayer/sensor_computer3
+/obj/structure/prop/almayer/computers/sensor_computer3
 	name = "sensor computer"
 	desc = "The IBM series 10 computer retrofitted to work as a sensor computer for the ship. While somewhat dated it still serves its purpose."
 	icon = 'icons/obj/structures/props/almayer_props.dmi'

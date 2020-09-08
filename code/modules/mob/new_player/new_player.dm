@@ -21,7 +21,8 @@
 	universal_speak = TRUE
 	stat = DEAD
 
-/mob/new_player/New()
+/mob/new_player/Initialize()
+	. = ..()
 	if(client)
 		client.view = lobby_view_size
 

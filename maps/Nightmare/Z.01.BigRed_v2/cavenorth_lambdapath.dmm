@@ -19,8 +19,8 @@
 /area/bigredv2/caves_north)
 "e" = (
 /turf/open/mars_cave{
-	tag = "icon-mars_cave_2";
-	icon_state = "mars_cave_2"
+	icon_state = "mars_cave_2";
+	tag = "icon-mars_cave_2"
 	},
 /area/bigredv2/caves_north)
 "f" = (
@@ -43,10 +43,59 @@
 	icon_state = "mars_cave_2"
 	},
 /area/bigredv2/caves_lambda)
+"m" = (
+/turf/open/mars_cave{
+	icon_state = "mars_cave_14";
+	tag = "icon-mars_cave_14"
+	},
+/area/bigredv2/caves_north)
+"n" = (
+/turf/open/mars_cave{
+	icon_state = "mars_dirt_4";
+	tag = "icon-mars_dirt_4"
+	},
+/area/bigredv2/caves_north)
+"o" = (
+/turf/open/mars_cave{
+	icon_state = "mars_cave_17";
+	tag = "icon-mars_cave_17"
+	},
+/area/bigredv2/caves_north)
+"s" = (
+/turf/open/mars_cave{
+	icon_state = "mars_cave_15";
+	tag = "icon-mars_cave_15"
+	},
+/area/bigredv2/caves_north)
+"C" = (
+/turf/open/mars_cave{
+	icon_state = "mars_dirt_6";
+	tag = "icon-mars_dirt_6"
+	},
+/area/bigredv2/caves_north)
+"H" = (
+/turf/open/mars_cave{
+	icon_state = "mars_cave_19";
+	tag = "icon-mars_cave_19"
+	},
+/area/bigredv2/caves_north)
+"M" = (
+/turf/open/mars_cave{
+	icon_state = "mars_dirt_5";
+	tag = "icon-mars_dirt_5"
+	},
+/area/bigredv2/caves_north)
 "S" = (
 /turf/open/mars_cave{
 	tag = "icon-mars_cave_7";
 	icon_state = "mars_cave_7"
+	},
+/area/bigredv2/caves_lambda)
+"Z" = (
+/obj/structure/mineral_door/resin,
+/turf/open/mars_cave{
+	icon_state = "mars_cave_16";
+	tag = "icon-mars_cave_16"
 	},
 /area/bigredv2/caves_lambda)
 
@@ -54,33 +103,33 @@
 a
 d
 e
+m
+C
+n
+H
 e
 e
-e
-e
-e
-e
-e
+s
 "}
 (2,1,1) = {"
 b
 f
-f
+s
+n
+n
+n
+o
 e
 e
-e
-e
-e
-e
-e
+m
 "}
 (3,1,1) = {"
 b
 b
-a
-d
-e
-d
+s
+M
+n
+H
 d
 b
 b
@@ -90,8 +139,8 @@ b
 b
 b
 g
-g
-g
+Z
+Z
 b
 b
 b

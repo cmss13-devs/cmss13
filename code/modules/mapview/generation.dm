@@ -91,10 +91,6 @@
 	var/list/tier_2 = list()
 	var/list/tier_3 = list()
 	for(var/mob/living/carbon/human/H in living_mob_list)
-		if(istype(H.loc,/obj/vehicle/multitile))
-			if(H.loc.z == 1)
-				if(!(H.loc in vehicles))
-					vehicles += H.loc
 		if(H.z != 1 && !istype(H.loc,/mob/living/carbon/Xenomorph))
 			continue
 		if(!H.has_helmet_camera())
@@ -132,8 +128,10 @@
 	if(selected)
 		for(var/mob/living/carbon/human/sel in marines_with_helmets[selected])
 			newoverlay.DrawBox(colors[selected],sel.loc.x-1,sel.loc.y-1,sel.loc.x+1,sel.loc.y+1)
+	for(var/obj/vehicle/multitile/MULT in all_multi_vehicles)
+		if(MULT.visible_in_tacmap)	//don't need colony/hostile vehicle to show
+			vehicles += MULT
 	if(vehicles.len)
-		//TODO: Cakey, please don't let this get merged into dev.
 		for(var/obj/vehicle/multitile/V in vehicles)
 			newoverlay.DrawBox(rgb(0,153,77),V.x-1,V.y-1,V.x+1,V.y+1)
 			newoverlay.DrawBox(rgb(128,255,128),V.x-1,V.y)

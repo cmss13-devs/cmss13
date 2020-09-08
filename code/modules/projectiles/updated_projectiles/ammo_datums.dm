@@ -2190,6 +2190,8 @@
 	var/nade_type = /obj/item/explosive/grenade/HE
 	icon_state = "grenade"
 
+	flags_ammo_behavior = AMMO_IGNORE_COVER|AMMO_SKIPS_ALIENS
+
 /datum/ammo/grenade_container/New()
 	..()
 	damage = config.min_hit_damage
@@ -2215,6 +2217,9 @@
 	G.det_time = 10
 	G.source_mob = P.weapon_source_mob
 	G.activate()
+
+/datum/ammo/grenade_container/rifle
+	flags_ammo_behavior = NO_FLAGS
 
 /datum/ammo/grenade_container/smoke
 	name = "smoke grenade shell"

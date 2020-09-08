@@ -20,7 +20,9 @@
 		"right" = list(-2, 0)
 	)
 
-	movement_sound = 'sound/ambience/tank_driving.ogg'
+	required_skill = SKILL_VEHICLE_LARGE
+
+	movement_sound = 'sound/vehicles/tank_driving.ogg'
 
 	luminosity = 7
 
@@ -46,8 +48,10 @@
 		return
 	M.client.verbs += /obj/vehicle/multitile/proc/get_status_info
 	M.client.verbs += /obj/vehicle/multitile/proc/open_controls_guide
+	M.client.verbs += /obj/vehicle/multitile/proc/name_vehicle
 	if(seat == VEHICLE_DRIVER)
 		M.client.verbs += /obj/vehicle/multitile/proc/toggle_door_lock
+		M.client.verbs += /obj/vehicle/multitile/proc/activate_horn
 	else if(seat == VEHICLE_GUNNER)
 		M.client.verbs += /obj/vehicle/multitile/proc/switch_hardpoint
 		M.client.verbs += /obj/vehicle/multitile/proc/cycle_hardpoint
@@ -58,8 +62,10 @@
 		return
 	M.client.verbs -= /obj/vehicle/multitile/proc/get_status_info
 	M.client.verbs -= /obj/vehicle/multitile/proc/open_controls_guide
+	M.client.verbs -= /obj/vehicle/multitile/proc/name_vehicle
 	if(seat == VEHICLE_DRIVER)
 		M.client.verbs -= /obj/vehicle/multitile/proc/toggle_door_lock
+		M.client.verbs -= /obj/vehicle/multitile/proc/activate_horn
 	else if(seat == VEHICLE_GUNNER)
 		M.client.verbs -= /obj/vehicle/multitile/proc/switch_hardpoint
 		M.client.verbs -= /obj/vehicle/multitile/proc/cycle_hardpoint
@@ -75,6 +81,13 @@
 	icon = 'icons/obj/vehicles/interiors/apc.dmi'
 	icon_state = "exit_door"
 
+/obj/vehicle/multitile/apc/initialize_cameras(var/change_tag = FALSE)
+	if(!camera_int)
+		camera_int = new /obj/structure/machinery/camera/vehicle(src)
+	if(change_tag)
+		camera_int.c_tag = "#[rand(1,100)] M777 \"[nickname]\" APC"
+	else
+		camera_int.c_tag = "#[rand(1,100)] M777 APC"
 /*
 ** PRESETS
 */
@@ -93,8 +106,9 @@
 	add_hardpoint(new /obj/item/hardpoint/locomotion/apc_wheels)
 
 /obj/vehicle/multitile/apc/decrepit/load_damage(var/obj/vehicle/multitile/R)
-	take_damage_type(1e8, "abstract") //OOF.ogg
-	take_damage_type(1e8, "abstract") //OOF.ogg
+	take_damage_type(1e8, "abstract")
+	take_damage_type(1e8, "abstract")
+	healthcheck()
 
 /obj/vehicle/multitile/apc/medical
 	name = "\improper M577-MED Armored Personnel Carrier"
@@ -112,8 +126,9 @@
 	add_hardpoint(new /obj/item/hardpoint/locomotion/apc_wheels)
 
 /obj/vehicle/multitile/apc/medical/decrepit/load_damage(var/obj/vehicle/multitile/R)
-	take_damage_type(1e8, "abstract") //OOF.ogg
-	take_damage_type(1e8, "abstract") //OOF.ogg
+	take_damage_type(1e8, "abstract")
+	take_damage_type(1e8, "abstract")
+	healthcheck()
 
 /obj/vehicle/multitile/apc/medical/fixed/load_hardpoints(var/obj/vehicle/multitile/R)
 	add_hardpoint(new /obj/item/hardpoint/gun/dualcannon)
@@ -135,8 +150,9 @@
 	add_hardpoint(new /obj/item/hardpoint/locomotion/apc_wheels)
 
 /obj/vehicle/multitile/apc/command/decrepit/load_damage(var/obj/vehicle/multitile/R)
-	take_damage_type(1e8, "abstract") //OOF.ogg
-	take_damage_type(1e8, "abstract") //OOF.ogg
+	take_damage_type(1e8, "abstract")
+	take_damage_type(1e8, "abstract")
+	healthcheck()
 
 /obj/vehicle/multitile/apc/command/fixed/load_hardpoints(var/obj/vehicle/multitile/R)
 	add_hardpoint(new /obj/item/hardpoint/gun/dualcannon)

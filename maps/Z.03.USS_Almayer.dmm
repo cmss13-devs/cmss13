@@ -11388,7 +11388,8 @@
 /area/almayer/command/cic)
 "aCb" = (
 /obj/structure/machinery/computer/security/almayer_network{
-	dir = 8
+	dir = 8;
+	network = list("almayer", "vehicle")
 	},
 /obj/structure/surface/table/reinforced,
 /obj/structure/window/reinforced/toughened{
@@ -12628,6 +12629,7 @@
 /obj/structure/machinery/computer/security/almayer{
 	dir = 4;
 	name = "Ship Security Cameras";
+	network = list("almayer", "vehicle");
 	pixel_x = -17
 	},
 /obj/item/device/flashlight/lamp,
@@ -46792,6 +46794,7 @@
 /obj/structure/machinery/computer/security/almayer{
 	dir = 4;
 	name = "Ship Security Cameras";
+	network = list("almayer", "vehicle");
 	pixel_x = -17
 	},
 /obj/item/device/flashlight/lamp,
@@ -52673,6 +52676,7 @@
 /obj/structure/machinery/computer/security/almayer{
 	dir = 4;
 	name = "Ship Security Cameras";
+	network = list("almayer", "vehicle");
 	pixel_x = -17
 	},
 /obj/item/device/flashlight/lamp,
@@ -52833,6 +52837,7 @@
 /obj/structure/machinery/computer/security/almayer{
 	dir = 4;
 	name = "Ship Security Cameras";
+	network = list("almayer", "vehicle");
 	pixel_x = -17
 	},
 /obj/item/device/flashlight/lamp,

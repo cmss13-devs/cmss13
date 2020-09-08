@@ -105,6 +105,8 @@
 	if(movement_sound && !force)
 		playsound(src, movement_sound, vol = 20, sound_range = 30)
 
+	last_move_dir = direction
+
 	return TRUE
 
 // Rotates the vehicle by deg degrees if possible
@@ -112,13 +114,15 @@
 	if(!can_rotate(deg))
 		return FALSE
 
-	momentum *= turn_momentum_loss_factor
+	momentum = max(momentum * turn_momentum_loss_factor, 0.5)	//here is where "momentum bug" was occuring.
 	update_next_move()
 
 	rotate_hardpoints(deg)
 	rotate_entrances(deg)
 	rotate_bounds(deg)
 	dir = turn(dir, deg)
+
+	last_move_dir = dir
 
 	update_icon()
 

@@ -79,6 +79,7 @@
 	HP.ammo = M
 	HP.backup_clips.Remove(M)
 
+	playsound(loc, 'sound/machines/hydraulics_3.ogg', 50)
 	to_chat(user, SPAN_NOTICE("You reload the \the [HP]."))
 
 // Landmark for spawning the reloader

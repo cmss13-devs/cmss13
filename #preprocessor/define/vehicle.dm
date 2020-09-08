@@ -19,7 +19,8 @@
 #define VEHICLE_SPEED_SLOW          30 //3 seconds per tile
 #define VEHICLE_SPEED_NORMAL        10 //default 1 second per tile
 #define VEHICLE_SPEED_FASTNORMAL    7
-#define VEHICLE_SPEED_FAST          5 //half a second per tile
+#define VEHICLE_SPEED_FAST			5 //half a second per tile
+#define VEHICLE_SPEED_FASTER		4
 #define VEHICLE_SPEED_VERYFAST      3
 #define VEHICLE_SPEED_SUPERFAST     2
 #define VEHICLE_SPEED_DEBUGFAST     1

@@ -9,6 +9,8 @@
 	pixel_x = -48
 	pixel_y = -48
 
+	density = TRUE	//come on, it's huge
+
 	point_cost = 1000
 
 	w_class = SIZE_MASSIVE

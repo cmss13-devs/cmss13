@@ -968,12 +968,14 @@ var/datum/controller/supply/supply_controller = new()
 	req_access = list(ACCESS_MARINE_CREWMAN)
 	// Can only retrieve one vehicle per round
 	var/spent = FALSE
+	var/list/allowed_roles = list(JOB_CREWMAN)
 
 /obj/structure/machinery/computer/supplycomp/vehicle/attack_hand(var/mob/living/carbon/human/H as mob)
 	if(inoperable())
 		return
 
-	if(z != MAIN_SHIP_Z_LEVEL)
+	if(LAZYLEN(allowed_roles) && !allowed_roles.Find(H.job))		//replaced Z-level restriction with role restriction.
+		to_chat(H, SPAN_WARNING("This console isn't for you."))
 		return
 
 	if(!allowed(H))

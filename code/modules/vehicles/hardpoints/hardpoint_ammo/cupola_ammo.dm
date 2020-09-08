@@ -5,7 +5,7 @@
 	icon = 'icons/obj/items/weapons/guns/ammo.dmi'
 	icon_state = "cupola_1"
 	w_class = SIZE_LARGE
-	default_ammo = /datum/ammo/bullet/smartgun/marine
+	default_ammo = /datum/ammo/bullet/smartgun
 	max_rounds = 500
 	gun_type = /obj/item/hardpoint/gun/m56cupola
 	point_cost = 100

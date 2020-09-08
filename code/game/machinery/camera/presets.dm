@@ -52,6 +52,20 @@
 	upgradeXRay()
 	upgradeMotion()
 
+// VEHICLE CAMERA
+
+/obj/structure/machinery/camera/vehicle
+	name = "military-grade vehicle camera"
+	icon_state = "camera_vehicle"
+	network = list("vehicle")
+
+/obj/structure/machinery/camera/vehicle/toggle_cam_status(var/on = FALSE)
+	if(on)
+		status = TRUE
+	else
+		status = FALSE
+	kick_viewers()
+
 // AUTONAME
 
 /obj/structure/machinery/camera/autoname

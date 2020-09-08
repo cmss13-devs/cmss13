@@ -18,7 +18,7 @@
         list("Decoy", 14, /obj/item/explosive/grenade/decoy, "white", "A decoy grenade. Emits a loud explosion that can be heard from very far away, keep away from ears. Can be used 3 times."),
 
         list("<h2>UTILITY</h2>", -1, null, null, null),
-        list("Security Access Tuner v2", 25, /obj/item/storage/toolbox/antag, "white", "An upgraded access tuner, able to rapidly hack various machinery. Disguised as a regular multitool"),
+        list("Security Access Tuner v2", 25, /obj/item/device/multitool/antag, "white", "An upgraded access tuner, able to rapidly hack various machinery. Disguised as a regular multitool"),
         list("Concealing Gloves", 12, /obj/item/clothing/gloves/antag, "white", "Gloves which prevent the AI from noticing any damage caused by you, whether it be structural or hacking. Only works whilst the gloves are on."),
 		list("OoI Tracker", 20, /obj/item/device/tracker, "white", "A tracker that tracks different objects of interest in a nearby range."),
 

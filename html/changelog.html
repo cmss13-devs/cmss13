@@ -65,6 +65,46 @@
 	</tr>
 </table>
 			<h2 class="date">08 September 2020</h2>
+			<h3 class="author">Jeser updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="wip">General vehicle changes:</li>
+				<li class="rscadd">Added exterior cameras to vehicles with separate network. 5 camera consoles in CIC (1 per Overwatch seat and 1 at CO seat) have access to the vehicle cameras network. Vehicle cameras should appear in the top of the cameras list for quick access. Cameras are disabled once vehicle hull runs out of health and reenabled after fixing it.</li>
+				<li class="bugfix">Fixed vehicles not being shown on tactical map.</li>
+				<li class="tweak">Added var/visible_in_tacmap to vehicles that is responsible for visibility on tactical map.</li>
+				<li class="rscadd">Added wall-mounted storage compartment. Allows Vehicle Crewmen to store personal possessions or weaponry ammunition. Can't fit mobs inside. Only accessible by Vehicle Crewmen. Added to the interiors of tank and all APC modifications.</li>
+				<li class="imageadd">Added wall-mounted storage compartment sprites by Bongosz and Triiodine.</li>
+				<li class="rscadd">Added CIC tacmap to command APC.</li>
+				<li class="bugfix">Fixed vehicle interior props being destructible.</li>
+				<li class="bugfix">Fixed emotes from outside being seen inside of vehicles.</li>
+				<li class="bugfix">Fixed exploit allowing to put more magazines into vehicle weapons than supposed to.</li>
+				<li class="bugfix">Fixed new vendors not reacting to being bumped into by multitile vehicles.</li>
+				<li class="bugfix">Fixed momentum bug, that was freezing vehicle in place for several seconds.</li>
+				<li class="tweak">Added sounds for loading magazine into loader, reloading hardpoint and for xenos attacking vehicle.</li>
+				<li class="tweak">Vehicle ramming changes. Simple vehicles (powerloader, cargo tug) are now destroyed in 3 rams. Multitile vehicles have proper bumping code and don't ignore each other anymore. When ramming into multitile vehicle, both vehicles' last movement direction and momentum are taken into account and damage taken by vehicles is increased respectively.</li>
+				<li class="tweak">Vehicle skills requirements for Tank and APC were icnreased to Crewman level.</li>
+				<li class="bugfix">Fixed Toggle Gyrostabilizer verb not working.</li>
+				<li class="tweak">Tank movement. Regular treads speed was increased. Robustreads speed was increased to previous speed of regular treads. Maximum momentum of tank was increased from 2 to 3. Summary: tanks momentum gain is slightly slower than it was while top speed is much higher.</li>
+				<li class="rscadd">Added Activate Horn verb for driver. Activates vehicle signal. Has 10 seconds delay. Shortcut: CTRL + Click. Keep in mind, that vehicles horn can be heard in approximately 15 tiles radius both by allies and foes.</li>
+				<li class="rscadd">Added Name Vehicle verb for both VCs. Allows to add nickname/callsign of the vehicle at the end of it's name in quotation marks. 26 characters max. Single use.</li>
+				<li class="tweak">Updated and tweaked Vehicle Controls Guide. Features colored categories, description of new verbs and shortcuts and sorted in alphabetical order.</li>
+				<li class="wip">Modules changes:</li>
+				<li class="tweak">Made M34A2-A Multipurpose Turret a dense object.</li>
+				<li class="tweak">Vehicle weaponry now shows ammo status after shooting. Message about not being ready to fire won't be shown for weapons with high rate of fire (LTAA-AP Minigun, M56 Cupola, RE-RE700 Frontal Cannon).</li>
+				<li class="tweak">M56 Cupola and RE-RE700 Frontal Cannon. Delay between shots was increased from 0.5 to 1.5 seconds and 0.5 to 1.6 seconds and now they fire in bursts of 3 and 4 rounds, respectively.</li>
+				<li class="bugfix">Fixed M56 Cupola's and RE-RE700 Frontal Cannon's IFF bug. (Thanks to Waltermeldron for help with identifying bug's source)</li>
+				<li class="tweak">Smoke Launcher. Delay between shots was increased from 3 to 7 seconds. Spare magazines amount reduced from 4 to 3. Amount of ammo in the magazine was increased from 6 to 10.</li>
+				<li class="tweak">Upon activation Smoke Launcher shoots two smoke grenades 3 tiles ahead and 2 tiles to the LEFT and RIGHT from hull's direction with 1 second delay, creating a smoke screen in front of the tank.</li>
+				<li class="tweak">Grenade Launcher. Minimal (3 tiles) and maximum (7 tiles) firing range were introduced. Trying to shoot too close will prevent the shot, while shooting further than maximum range will instead shoot at maximum range.</li>
+				<li class="tweak">Smoke and Grenade launchers ammo now flies above humans and xenos.</li>
+				<li class="tweak">Secondary Flamer. Arc of fire was increased from 60 to 90 degrees.</li>
+				<li class="bugfix">Fixed Flamer path always starting in front of the tank, rather than turret.</li>
+				<li class="wip">Miscellaneous changes:</li>
+				<li class="bugfix">Fixed tools pouch in Vehicle Crewman rack having wrong tools in it.</li>
+				<li class="tweak">Replaced Z-level restriction on Vehicle ASRS console with role requirement.</li>
+				<li class="bugfix">Fixed problems with hearing sounds from inside of vehicle interior. Sounds should be louder now.</li>
+				<li class="bugfix">Fixed vehicle clamps functionality.</li>
+				<li class="tweak">Labelers don't work on multitile vehicles anymore.</li>
+			</ul>
 			<h3 class="author">Vampmare updated:</h3>
 			<ul class="changes bgimages16">
 				<li class="tweak">Updated existing Agent objectives to be harder. Added new ones. Added new special fluff items for Agents to steal.</li>

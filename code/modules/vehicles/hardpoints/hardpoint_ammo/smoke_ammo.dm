@@ -5,7 +5,7 @@
 	icon_state = "slauncher_1"
 	w_class = SIZE_LARGE
 	default_ammo = /datum/ammo/grenade_container/smoke
-	max_rounds = 6
+	max_rounds = 10
 	gun_type = /obj/item/hardpoint/gun/smoke_launcher
 	point_cost = 50
 

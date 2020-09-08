@@ -28,35 +28,38 @@
 		if(clamped)
 			to_chat(user, SPAN_WARNING("[src] already has a [O.name] attached."))
 			return
-		var/obj/item/hardpoint/HP = hardpoints[HDPT_TREADS]
-		if(!HP)
-			to_chat(user, SPAN_WARNING("There are no treads to attach [O.name] to."))
+
+		for(var/obj/item/hardpoint/locomotion/Loco in hardpoints)
+			if(skillcheck(user, SKILL_POLICE, SKILL_POLICE_MP))
+				user.visible_message(SPAN_WARNING("[user] starts attaching the vehicle clamp to [src]."), SPAN_NOTICE("You start attaching the vehicle clamp to [src]."))
+				if(!do_after(user, 10, INTERRUPT_ALL, BUSY_ICON_BUILD))
+					user.visible_message(SPAN_WARNING("[user] stops attaching the vehicle clamp to [src]."), SPAN_WARNING("You stop attaching the vehicle clamp to [src]."))
+					return
+				user.visible_message(SPAN_WARNING("[user] attaches the vehicle clamp to [src]."), SPAN_NOTICE("You attach the vehicle clamp to [src] and lock the mechanism with your ID."))
+				attach_clamp(O, user)
+			else
+				to_chat(user, SPAN_WARNING("You don't know how to use [O] with [src]."))
 			return
-		if(skillcheck(user, SKILL_POLICE, SKILL_POLICE_MP))
-			user.visible_message(SPAN_WARNING("[user] starts attaching the vehicle clamp to [src]."), SPAN_NOTICE("You start attaching the vehicle clamp to [src]."))
-			if(!do_after(user, 10, INTERRUPT_ALL, BUSY_ICON_BUILD))
-				user.visible_message(SPAN_WARNING("[user] stops attaching the vehicle clamp to [src]."), SPAN_WARNING("You stop attaching the vehicle clamp to [src]."))
-				return
-			user.visible_message(SPAN_WARNING("[user] attaches the vehicle clamp to [src]."), SPAN_NOTICE("You attach the vehicle clamp to [src] and lock the mechanism with your ID."))
-			attach_clamp(O, user)
-		else
-			to_chat(user, SPAN_WARNING("You don't know how to use [O] with [src]."))
+		to_chat(user, SPAN_WARNING("There are no treads to attach [O.name] to."))
 		return
 
 	// Are we trying to remove a vehicle clamp?
 	if(isscrewdriver(O))
 		if(!clamped)
 			return
+
+		user.visible_message(SPAN_WARNING("[user] starts removing the vehicle clamp from [src]."), SPAN_NOTICE("You start removing the vehicle clamp from [src]."))
 		if(skillcheck(user, SKILL_POLICE, SKILL_POLICE_MP))
-			user.visible_message(SPAN_WARNING("[user] starts removing the vehicle clamp from [src]."), SPAN_NOTICE("You start removing the vehicle clamp from [src]."))
 			if(!do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_BUILD))
 				user.visible_message(SPAN_WARNING("[user] stops removing the vehicle clamp from [src]."), SPAN_WARNING("You stop removing the vehicle clamp from [src]."))
 				return
-			user.visible_message(SPAN_WARNING("[user] removes the vehicle clamp from [src]."), SPAN_NOTICE("You unlock the mechanism with your ID and remove the vehicle clamp from [src]."))
-			detach_clamp(user)
+			user.visible_message(SPAN_WARNING("[user] skillfully removes the vehicle clamp from [src]."), SPAN_NOTICE("You unlock the mechanism with your ID and skillfully remove the vehicle clamp from [src]."))
 		else
-			to_chat(user, SPAN_WARNING("You don't know how to remove the vehicle clamp."))
-
+			if(!do_after(user, SECONDS_30, INTERRUPT_ALL, BUSY_ICON_BUILD))
+				user.visible_message(SPAN_WARNING("[user] stops removing the vehicle clamp from [src]."), SPAN_WARNING("You stop removing the vehicle clamp from [src]."))
+				return
+			user.visible_message(SPAN_WARNING("[user] clumsily removes the vehicle clamp from [src]."), SPAN_NOTICE("You manage to unlock vehicle clamp and take it off [src]."))
+		detach_clamp(user)
 		return
 
 	if(user.a_intent != INTENT_HARM)
@@ -111,6 +114,7 @@
 		user.visible_message(SPAN_WARNING("[user] finishes tightening nuts and bolts on \the [src]."), SPAN_NOTICE("You finish tightening nuts and bolts on \the [src]."))
 
 		health = max_hp
+		toggle_cameras_status(TRUE)
 
 	update_icon()
 
@@ -163,6 +167,7 @@
 
 	M.visible_message(SPAN_DANGER("\The [M] slashes [src]!"), \
 	SPAN_DANGER("You slash [src]!"))
+	playsound(M.loc, pick('sound/effects/metalhit.ogg', 'sound/weapons/alien_claw_metal1.ogg', 'sound/weapons/alien_claw_metal2.ogg', 'sound/weapons/alien_claw_metal3.ogg'), 25, 1)
 
 	take_damage_type(damage * ( (M.caste == "Ravager") ? 2 : 1 ), "slash", M) //Ravs do a bitchin double damage
 
@@ -207,6 +212,10 @@
 	if(seat == VEHICLE_DRIVER)
 		if(mods["shift"] && !mods["alt"])
 			A.examine(user)
+			return
+
+		if(mods["ctrl"] && !mods["alt"])
+			activate_horn()
 			return
 
 	if(seat == VEHICLE_GUNNER)
@@ -297,15 +306,21 @@
 	move_delay = 50000
 	next_move = world.time + move_delay
 	update_icon()
-	message_staff("[key_name(user)] attached vehicle clamp to [src]")
+	message_admins("[key_name(user)] ([user.job]) attached vehicle clamp to [src]")
 
 /obj/vehicle/multitile/proc/detach_clamp(mob/user)
 	clamped = FALSE
+	move_delay = initial(move_delay)
+
+	var/obj/item/hardpoint/locomotion/Loco
+	for(Loco in hardpoints)
+		Loco.on_install(src)	//we restore speed respective to wheels/treads if any installed
+
 	next_move = world.time + move_delay
 	for(var/obj/item/vehicle_clamp/TC in src)
 		if(user)
 			TC.Move(get_turf(user))
-			message_staff("[key_name(user)] detached vehicle clamp from [src]")
+			message_admins("[key_name(user)] ([user.job]) detached vehicle clamp from [src]")
 		else
 			TC.Move(get_turf(src))
 	update_icon()

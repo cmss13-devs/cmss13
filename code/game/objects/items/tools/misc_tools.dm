@@ -41,6 +41,9 @@
 	if(istype(A, /obj/item/tool/surgery))
 		to_chat(user, SPAN_NOTICE("That wouldn't be sanitary."))
 		return
+	if(istype(A, /obj/vehicle/multitile))
+		to_chat(user, SPAN_NOTICE("The label won't stick to that."))
+		return
 	if(isturf(A))
 		to_chat(user, SPAN_NOTICE("The label won't stick to that."))
 		return

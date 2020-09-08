@@ -110,6 +110,13 @@
 		cade.collapse()
 		return FALSE
 
+	else if(istype(A, /obj/structure/machinery/cm_vending))
+		var/obj/structure/machinery/cm_vending/O = A
+
+		visible_message(SPAN_DANGER("[src] pushes [O] over!"))
+		playsound(O, 'sound/effects/metal_crash.ogg', 35)
+		O.tip_over()
+
 	else if(isobj(A) && !istype(A, /obj/vehicle))
 		var/obj/O = A
 		if(O.unacidable)
@@ -119,6 +126,35 @@
 		visible_message(SPAN_DANGER("[src] crushes [O]!"))
 		playsound(O, 'sound/effects/metal_crash.ogg', 35)
 		qdel(O)
+
+	else if(istype(A, /obj/vehicle/multitile))	//we check multitile first, then other vehicles
+		var/obj/vehicle/multitile/V = A
+		var/damage
+
+		if(last_move_dir == REVERSE_DIR(V.last_move_dir))	//crashing into each other
+			damage = momentum + V.momentum
+		else if(last_move_dir == V.last_move_dir)	//crashing into something from behind
+			damage = max(momentum - V.momentum, 0)
+		else
+			damage = momentum
+
+		damage = 5 * (damage + 1)	//5 is minimal damage of bumping which is multiplied on vehicles' current momentum. +1 to prevent reduction
+		take_damage_type(damage, "blunt", V)
+		V.take_damage_type(damage, "blunt", src)
+
+		visible_message(SPAN_DANGER("[src] crushes into [V]!"))
+		playsound(V, 'sound/effects/metal_crash.ogg', 35)
+		return FALSE
+
+	else if(istype(A, /obj/vehicle))
+		var/obj/vehicle/V = A
+
+		take_damage_type(5, "blunt", V)
+		V.health = V.health - Ceiling(V.maxhealth/3)	//we destroy any simple vehicle in 3 crushes
+		V.healthcheck()
+
+		visible_message(SPAN_DANGER("[src] crushes into [V]!"))
+		playsound(V, 'sound/effects/metal_crash.ogg', 35)
 		return FALSE
 
 	else if(istype(A, /turf/closed/wall))

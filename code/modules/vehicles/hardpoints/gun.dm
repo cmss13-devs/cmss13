@@ -84,21 +84,26 @@
 /obj/item/hardpoint/gun/proc/try_add_clip(var/obj/item/ammo_magazine/A, var/mob/user)
 	if(max_clips == 0)
 		to_chat(user, SPAN_WARNING("\The [src] does not have room for additional ammo."))
-		return 0
+		return FALSE
 	else if(backup_clips.len >= max_clips)
 		to_chat(user, SPAN_WARNING("\The [src]'s reloader is full."))
-		return 0
+		return FALSE
 
 	to_chat(user, SPAN_NOTICE("You begin loading \the [A] into \the [src]."))
 
 	if(!do_after(user, 10, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 		to_chat(user, SPAN_WARNING("Something interrupted you while reloading \the [src]."))
-		return 0
+		return FALSE
+
+	if(backup_clips.len >= max_clips)
+		to_chat(user, SPAN_WARNING("\The [src]'s reloader is full."))
+		return FALSE
 
 	user.drop_inv_item_to_loc(A, src)
 	to_chat(user, SPAN_NOTICE("You load \the [A] into \the [src]."))
+	playsound(loc, 'sound/machines/hydraulics_2.ogg', 50)
 	backup_clips += A
-	return 1
+	return TRUE
 
 /obj/item/hardpoint/gun/proc/in_firing_arc(var/atom/A)
 	if(!owner)
@@ -170,19 +175,31 @@
 	return TRUE
 
 /obj/item/hardpoint/gun/can_activate(var/mob/user, var/atom/A)
-	if(!..())
+	if(!owner)
+		return
+
+	if(!owner.seats[VEHICLE_GUNNER] || owner.seats[VEHICLE_GUNNER] != user)
+		to_chat(user, SPAN_WARNING("<b>Wrong user detected. Please, report this to developer.</b>"))
+		return FALSE
+
+	if(world.time < next_use)
+		if(cooldown >= 20)	//filter out guns with high firerate to prevent message spam.
+			to_chat(user, SPAN_WARNING("\The [src] will be ready to shoot in [SPAN_HELPFUL((next_use - world.time) / 10)] seconds."))
+		return FALSE
+	if(health <= 0)
+		to_chat(user, SPAN_WARNING("<b>\The [src] is broken!</b>"))
 		return FALSE
 
 	if(ammo.current_rounds <= 0)
-		to_chat(usr, SPAN_WARNING("\The [src] is out of ammo!"))
+		to_chat(user, SPAN_WARNING("<b>\The [src] is out of ammo!</b> Magazines: <b>[SPAN_HELPFUL(LAZYLEN(backup_clips))]/[SPAN_HELPFUL(max_clips)]</b>"))
 		return FALSE
 
 	if(!in_firing_arc(A))
-		to_chat(user, SPAN_WARNING("The target is not within your firing arc!"))
+		to_chat(user, SPAN_WARNING("<b>The target is not within your firing arc!</b>"))
 		return FALSE
 
 	if(!clear_los(A))
-		to_chat(user, SPAN_WARNING("You don't have a clear line of sight to the target!"))
+		to_chat(user, SPAN_WARNING("<b>You don't have a clear line of sight to the target!</b>"))
 		return FALSE
 
 	return TRUE
@@ -200,7 +217,9 @@
 
 	fire_projectile(user, A)
 
-/obj/item/hardpoint/gun/proc/fire_projectile(var/mob/user, var/atom/A)
+	to_chat(user, SPAN_WARNING("[src] Ammo: <b>[SPAN_HELPFUL(ammo ? ammo.current_rounds : 0)]/[SPAN_HELPFUL(ammo ? ammo.max_rounds : 0)]</b> | Mags: <b>[SPAN_HELPFUL(LAZYLEN(backup_clips))]/[SPAN_HELPFUL(max_clips)]</b>"))
+
+/obj/item/hardpoint/gun/proc/fire_projectile(var/mob/user, var/atom/A, var/iff_on = FALSE)
 	set waitfor = 0
 
 	var/turf/origin_turf = get_turf(src)
@@ -209,8 +228,11 @@
 	var/obj/item/projectile/P = new(initial(name), user)
 	P.loc = origin_turf
 	P.generate_bullet(new ammo.default_ammo)
-	P.fire_at(A, owner.seats[VEHICLE_GUNNER], src, P.ammo.max_range, P.ammo.shell_speed, iff_group = owner.seats[VEHICLE_GUNNER].faction_group)
-	
+	if(iff_on)
+		P.fire_at(A, owner.seats[VEHICLE_GUNNER], src, P.ammo.max_range, P.ammo.shell_speed, iff_group = owner.seats[VEHICLE_GUNNER].faction_group)
+	else
+		P.fire_at(A, owner.seats[VEHICLE_GUNNER], src, P.ammo.max_range, P.ammo.shell_speed)
+
 	if(use_muzzle_flash)
 		muzzle_flash(Get_Angle(owner, A))
 

@@ -11,7 +11,7 @@
 	point_cost = 300
 	health = 500
 
-	move_speed = VEHICLE_SPEED_FASTNORMAL
+	move_speed = VEHICLE_SPEED_FASTER
 
 /obj/item/hardpoint/locomotion/treads/robust
 	name = "robus-treads"
@@ -20,4 +20,4 @@
 	point_cost = 350
 	health = 750
 
-	move_speed = VEHICLE_SPEED_NORMAL
+	move_speed = VEHICLE_SPEED_FASTNORMAL

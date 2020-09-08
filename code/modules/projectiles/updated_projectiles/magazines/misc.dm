@@ -35,7 +35,7 @@
 	name = "\improper GRENADE SPAWNER AMMO"
 	desc = "OH GOD OH FUCK"
 	icon_state = "m41a_explosive"
-	default_ammo = /datum/ammo/grenade_container
+	default_ammo = /datum/ammo/grenade_container/rifle
 
 /obj/item/ammo_magazine/rifle/huggerspawner
 	name = "\improper HUGGER SPAWNER AMMO"

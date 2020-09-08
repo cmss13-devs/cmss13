@@ -14,7 +14,7 @@
 	damage_multiplier = 0.125
 	cooldown = 40
 	accuracy = 0.68
-	firing_arc = 60
+	firing_arc = 90
 
 	origins = list(0, -2)
 
@@ -34,13 +34,14 @@
 /obj/item/hardpoint/gun/small_flamer/fire_projectile(var/mob/user, var/atom/A)
 	set waitfor = 0
 
-	var/turf/spawn_tile = get_step(get_step(owner, owner.dir), owner.dir)
-	var/list/turf/turfs = getline2(spawn_tile, A)
+	var/turf/origin_turf = get_turf(src)
+	origin_turf = locate(origin_turf.x + origins[1], origin_turf.y + origins[2], origin_turf.z)
+	var/list/turf/turfs = getline2(origin_turf, A)
 	var/distance = 0
 	var/turf/prev_T
 
 	for(var/turf/T in turfs)
-		if(T == src.loc)
+		if(T == loc)
 			prev_T = T
 			continue
 		if(!ammo.current_rounds) 	break

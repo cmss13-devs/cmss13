@@ -18,9 +18,12 @@
 		"back" = list(0, 2)
 	)
 
-	movement_sound = 'sound/ambience/tank_driving.ogg'
+	movement_sound = 'sound/vehicles/tank_driving.ogg'
+	honk_sound = 'sound/vehicles/honk_3_ambulence.ogg'
 
-	max_momentum = 2
+	required_skill = SKILL_VEHICLE_LARGE
+
+	max_momentum = 3
 
 	luminosity = 7
 
@@ -62,6 +65,14 @@
 
 	explosive_resistance = 400
 
+/obj/vehicle/multitile/tank/initialize_cameras(var/change_tag = FALSE)
+	if(!camera_int)
+		camera_int = new /obj/structure/machinery/camera/vehicle(src)
+	if(change_tag)
+		camera_int.c_tag = "#[rand(1,100)] M34A2 \"[nickname]\" Tank" //this fluff allows it to be at the start of cams list
+	else
+		camera_int.c_tag = "#[rand(1,100)] M34A2 Tank"
+
 /obj/vehicle/multitile/tank/load_hardpoints()
 	add_hardpoint(new /obj/item/hardpoint/holder/tank_turret)
 
@@ -70,12 +81,14 @@
 		return
 	M.client.verbs += /obj/vehicle/multitile/proc/get_status_info
 	M.client.verbs += /obj/vehicle/multitile/proc/open_controls_guide
+	M.client.verbs += /obj/vehicle/multitile/proc/name_vehicle
 	if(seat == VEHICLE_DRIVER)
 		M.client.verbs += /obj/vehicle/multitile/proc/toggle_door_lock
+		M.client.verbs += /obj/vehicle/multitile/proc/activate_horn
 	else if(seat == VEHICLE_GUNNER)
 		M.client.verbs += /obj/vehicle/multitile/proc/switch_hardpoint
 		M.client.verbs += /obj/vehicle/multitile/proc/cycle_hardpoint
-		M.client.verbs += /obj/vehicle/multitile/proc/toggle_gyrostabilizer
+		M.client.verbs += /obj/vehicle/multitile/tank/toggle_gyrostabilizer
 		M.client.verbs += /obj/vehicle/multitile/proc/toggle_shift_click
 
 
@@ -84,17 +97,17 @@
 		return
 	M.client.verbs -= /obj/vehicle/multitile/proc/get_status_info
 	M.client.verbs -= /obj/vehicle/multitile/proc/open_controls_guide
+	M.client.verbs -= /obj/vehicle/multitile/proc/name_vehicle
 	if(seat == VEHICLE_DRIVER)
 		M.client.verbs -= /obj/vehicle/multitile/proc/toggle_door_lock
+		M.client.verbs -= /obj/vehicle/multitile/proc/activate_horn
 	else if(seat == VEHICLE_GUNNER)
 		M.client.verbs -= /obj/vehicle/multitile/proc/switch_hardpoint
 		M.client.verbs -= /obj/vehicle/multitile/proc/cycle_hardpoint
-		M.client.verbs -= /obj/vehicle/multitile/proc/toggle_gyrostabilizer
+		M.client.verbs -= /obj/vehicle/multitile/tank/toggle_gyrostabilizer
 		M.client.verbs -= /obj/vehicle/multitile/proc/toggle_shift_click
 
-
 /obj/vehicle/multitile/tank/toggle_gyrostabilizer()
-
 	var/mob/M = usr
 	if(!M || !istype(M))
 		return
@@ -185,9 +198,10 @@
 
 /obj/vehicle/multitile/tank/decrepit/load_damage(var/obj/vehicle/multitile/R)
 	// once to break the hardpoints
-	take_damage_type(1e8, "abstract") //OOF.ogg
+	take_damage_type(1e8, "abstract")
 	// once more to break the frame
 	take_damage_type(1e8, "abstract")
+	healthcheck()
 
 /obj/vehicle/multitile/tank/plain/load_hardpoints(var/obj/vehicle/multitile/R)
 	..()

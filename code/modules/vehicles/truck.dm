@@ -25,7 +25,7 @@
 		"back_right" = list(0, 2)
 	)
 
-	movement_sound = 'sound/ambience/tank_driving.ogg'
+	movement_sound = 'sound/vehicles/tank_driving.ogg'
 
 	luminosity = 4
 

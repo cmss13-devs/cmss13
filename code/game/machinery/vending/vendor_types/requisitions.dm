@@ -343,7 +343,7 @@
 	vendor_theme = VENDOR_THEME_USCM
 	icon_state = "req_attach"
 
-	vend_delay = 5
+	vend_delay = 3
 
 /obj/structure/machinery/cm_vending/sorted/attachments/Initialize()
 	..()

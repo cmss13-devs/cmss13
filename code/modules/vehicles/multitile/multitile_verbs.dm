@@ -206,7 +206,7 @@
 		return
 
 	if(V.nickname)
-		to_chat(user, SPAN_WARNING("Vehicle already has a \"[nickname]\" nickname."))
+		to_chat(user, SPAN_WARNING("Vehicle already has a \"[V.nickname]\" nickname."))
 		return
 
 	var/new_nickname = stripped_input(user, "Enter a unique name or callsign to add to your vehicle's name. 26 characters maximum. SINGLE USE ONLY.", "Name your vehicle", "", MAX_NAME_LEN)
@@ -252,7 +252,7 @@
 		return
 
 	if(world.time < V.next_honk)
-		to_chat(user, SPAN_WARNING("You need to wait [(next_honk - world.time) / 10] seconds."))
+		to_chat(user, SPAN_WARNING("You need to wait [(V.next_honk - world.time) / 10] seconds."))
 		return
 
 	V.next_honk = world.time + SECONDS_10

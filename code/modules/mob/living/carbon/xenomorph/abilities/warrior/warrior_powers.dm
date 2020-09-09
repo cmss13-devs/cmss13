@@ -77,6 +77,9 @@
 	if(istype(H.buckled, /obj/structure/bed/nest))
 		return
 
+	if(H == X.pulling)
+		X.stop_pulling()
+
 	if(H.mob_size >= MOB_SIZE_BIG)
 		to_chat(X, SPAN_XENOWARNING("[H] is too big for you to fling!"))
 		return

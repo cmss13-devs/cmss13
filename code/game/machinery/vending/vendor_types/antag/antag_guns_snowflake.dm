@@ -142,7 +142,6 @@
 		products_sets = listed_products[FACTION_CLF]
 
 	if(products_sets.len)
-		to_chat(user, SPAN_WARNING("products_sets.len = [products_sets.len]."))
 		for(var/i in 1 to products_sets.len)
 			var/list/myprod = products_sets[i]
 			var/p_name = myprod[1]

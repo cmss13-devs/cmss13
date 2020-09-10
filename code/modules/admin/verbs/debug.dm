@@ -351,6 +351,25 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 		else
 			to_chat(usr, SPAN_WARNING("Not a valid type path."))
 	 
+/client/proc/cmd_debug_fire_ob()
+	set category = "Debug"
+	set desc = "Fire an OB warhead at your current location."
+	set name = "E: Fire OB"
+
+	if(!check_rights(R_DEBUG))
+		return
+
+	if(alert("Are you SURE you want to do this? It will create an OB explosion without delay or a sound cue!",, "Yes", "No") == "No") return
+
+	// Select the warhead.
+	var/list/warheads = subtypesof(/obj/structure/ob_ammo/warhead/)
+	var/choice = input("Select the warhead:") as null|anything in warheads
+	var/obj/structure/ob_ammo/warhead/warhead = new choice
+	var/turf/target = get_turf(usr.loc)
+	target.ceiling_debris_check(5)
+	warhead.warhead_impact(target)
+
+	message_staff("[key_name(usr)] has fired \an [warhead.name] at ([target.x],[target.y],[target.z]).")
 
 /client/proc/cmd_debug_make_powernets()
 	set category = "Debug"

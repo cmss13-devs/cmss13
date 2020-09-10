@@ -552,7 +552,7 @@
 		R.intensityfire = burn_lvl
 		R.durationfire = fire_lvl
 
-		R.color = f_color
+		R.burncolor = f_color
 		new/obj/flamer_fire(target, source, source_mob, R)
 
 	for(var/spread_direction in alldirs)
@@ -596,7 +596,7 @@
 	R.intensityfire = burn_lvl
 	R.durationfire = fire_lvl
 
-	R.color = f_color
+	R.burncolor = f_color
 
 	new/obj/flamer_fire(target, source, source_mob, R)
 	for(var/direction in alldirs)

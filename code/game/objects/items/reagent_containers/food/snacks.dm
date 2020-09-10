@@ -180,11 +180,11 @@
 		inaccurate = 1
 	else
 		return 1
-	if ( \
-			!isturf(src.loc) || \
+	if ( 	!istype(loc, /obj/structure/surface/table) && \
+			(!isturf(src.loc) || \
 			!(locate(/obj/structure/surface/table) in src.loc) && \
 			!(locate(/obj/structure/machinery/optable) in src.loc) && \
-			!(locate(/obj/item/tool/kitchen/tray) in src.loc) \
+			!(locate(/obj/item/tool/kitchen/tray) in src.loc)) \
 		)
 		to_chat(user, SPAN_DANGER("You cannot slice [src] here! You need a table or at least a tray to do it."))
 		return 1

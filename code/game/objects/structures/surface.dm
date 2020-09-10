@@ -1,6 +1,11 @@
 //Surface structures are structures that can have items placed on them
 /obj/structure/surface
 	health = 100
+	var/list/update_types = list(
+		/obj/item/reagent_container/glass,
+		/obj/item/storage,
+		/obj/item/reagent_container/food/snacks
+	)
 
 /obj/structure/surface/Initialize()
 	. = ..()
@@ -130,8 +135,9 @@
 			return TRUE
 	else if(!O.attackby(W, user))
 		W.afterattack(O, user, TRUE)
-	if(istype(W, /obj/item/reagent_container/glass) || istype(W, /obj/item/storage))
-		draw_item_overlays()
+	for(var/type in update_types)
+		if(istype(O, type))
+			draw_item_overlays()
 
 /obj/structure/surface/proc/auto_align(obj/item/W, click_data)
 	if(!W.center_of_mass) // Clothing, material stacks, generally items with large sprites where exact placement would be unhandy.

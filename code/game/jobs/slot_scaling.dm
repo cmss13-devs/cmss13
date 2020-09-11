@@ -48,11 +48,5 @@
 /proc/sg_slot_formula(var/playercount)
 	return job_slot_formula(playercount,20,1,2,4)
 
-/proc/tank_slot_formula(var/playercount)
-	//if (map_tag == MAP_SOROKYNE_STRATA) 
-		//return 0
-	//else
-	return job_slot_formula(playercount,100,1,0,2)
-
 /proc/synth_slot_formula(var/playercount)
 	return job_slot_formula(playercount,140,1,1,2)

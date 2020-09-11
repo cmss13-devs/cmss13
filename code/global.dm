@@ -97,6 +97,7 @@ var/CHARGELEVEL = 0.0005 // Cap for how fast cells charge, as a percentage-per-t
 
 var/SupplyElevator
 var/VehicleElevator
+var/VehicleElevatorConsole
 var/HangarUpperElevator
 var/HangarLowerElevator
 var/global/map_tag

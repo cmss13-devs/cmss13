@@ -899,6 +899,10 @@ Additional game mode variables.
 	for(var/obj/structure/machinery/cm_vending/sorted/CVS in cm_vending_vendors)
 		CVS.populate_product_list(scale)
 
+	if(VehicleElevatorConsole)
+		var/obj/structure/machinery/computer/supplycomp/vehicle/VEC = VehicleElevatorConsole
+		VEC.check_vehicle_lock()
+
 	//Scale the amount of cargo points through a direct multiplier
 	supply_controller.points = round(supply_controller.points * scale)
 

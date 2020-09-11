@@ -968,7 +968,23 @@ var/datum/controller/supply/supply_controller = new()
 	req_access = list(ACCESS_MARINE_CREWMAN)
 	// Can only retrieve one vehicle per round
 	var/spent = FALSE
+	var/tank_unlocked = TRUE
 	var/list/allowed_roles = list(JOB_CREWMAN)
+
+/obj/structure/machinery/computer/supplycomp/vehicle/Initialize()
+	..()
+	if(!VehicleElevatorConsole)
+		VehicleElevatorConsole = src
+	else
+		check_vehicle_lock()
+
+/obj/structure/machinery/computer/supplycomp/vehicle/proc/check_vehicle_lock()
+	if(!ticker.mode || istype(ticker.mode, /datum/game_mode/extended))
+		return
+	var/datum/game_mode/GM = ticker.mode
+
+	if(GM.marine_starting_num < 90)
+		tank_unlocked = FALSE
 
 /obj/structure/machinery/computer/supplycomp/vehicle/attack_hand(var/mob/living/carbon/human/H as mob)
 	if(inoperable())
@@ -1012,9 +1028,12 @@ var/datum/controller/supply/supply_controller = new()
 	if(spent)
 		dat += "No vehicles are available for retrieval."
 	else
-		dat += {"Available vehicles:<br>
-		<a href='?src=\ref[src];get_vehicle=tank'>M34A2 Longstreet Light Tank</a><br>
-		<a href='?src=\ref[src];get_vehicle=apc'>M577 Armored Personnel Carrier</a><br>
+		dat += "Available vehicles:<br>"
+		if(tank_unlocked)
+			dat += "<a href='?src=\ref[src];get_vehicle=tank'>M34A2 Longstreet Light Tank</a><br>"
+		else
+			dat += "<font color=\"red\"><b>Not enough resources were allocated to repair M34A2 Longstreet Light Tank during this operation.</b></font><br>"
+		dat += {"<a href='?src=\ref[src];get_vehicle=apc'>M577 Armored Personnel Carrier</a><br>
 		<a href='?src=\ref[src];get_vehicle=med_apc'>M577-MED Armored Personnel Carrier</a><br>
 		<a href='?src=\ref[src];get_vehicle=cmd_apc'>M577-CMD Armored Personnel Carrier</a><br>"}
 

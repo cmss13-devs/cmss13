@@ -149,9 +149,9 @@
 	title = JOB_CREWMAN
 	flag = ROLE_CREWMAN
 	total_positions = 2
-	spawn_positions = 0
+	spawn_positions = 2
 	allow_additional = 1
-	scaled = 1
+	scaled = 0
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE
 	gear_preset = "USCM Vehicle Crewman (CRMN) (Cryo)"
 	minimum_playtimes = list(
@@ -162,19 +162,6 @@
 /datum/job/command/tank_crew/generate_entry_message(mob/living/carbon/human/H)
 	entry_message_body = "Your job is to operate and maintain the ship's armored vehicles. You are in charge of representing the armored presence amongst the marines during the operation, as well as maintaining and repairing your own tank."
 	return ..()
-
-/datum/job/command/tank_crew/set_spawn_positions(var/count)
-	spawn_positions = tank_slot_formula(count)
-
-/datum/job/command/tank_crew/get_total_positions(var/latejoin = 0)
-	var/positions = spawn_positions
-	if(latejoin)
-		positions = tank_slot_formula(get_total_marines())
-		if(total_positions_in_round < positions)
-			total_positions_in_round = positions
-		else
-			positions = total_positions_in_round
-	return positions
 
 //Intelligence Officer
 /datum/job/command/intel

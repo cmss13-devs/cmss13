@@ -96,7 +96,7 @@
 	if (!isturf(loc))
 		return
 
-	if (world.time <= next_move)	// Attack click cooldown check
+	if (world.time <= next_move && A.loc != src)	// Attack click cooldown check
 		return
 
 	next_move = world.time

@@ -129,5 +129,8 @@ if __name__ == "__main__":
     else :
         PID = argv[2]
         PAT = argv[3]
+    
+    if argv[4]:
+        MR_DATES_FILE = argv[4]
 
     generate_changelogs(PID, argv[1], PAT)

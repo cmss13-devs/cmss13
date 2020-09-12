@@ -237,7 +237,7 @@
 /datum/ammo/bullet/pistol/tranq
 	name = "tranq bullet"
 	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_IGNORE_RESIST
-	stamina_damage = 150
+	stamina_damage = 300
 
 	var/knockout_period = SECONDS_10
 

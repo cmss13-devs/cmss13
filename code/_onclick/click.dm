@@ -29,10 +29,10 @@
 				do_click(TU, location, params)
 		return
 
-	if (REALTIMEOFDAY <= next_click)
+	if (world.time <= next_click)
 		return
 
-	next_click = REALTIMEOFDAY + 1
+	next_click = world.time + 1
 	var/list/mods = params2list(params)
 
 	if (!clicked_something)
@@ -139,6 +139,8 @@
 	else
 		if(A.loc != src)
 			next_move += 4
+		else
+			next_move += 0.5	
 		UnarmedAttack(A, 1, mods)
 	return
 

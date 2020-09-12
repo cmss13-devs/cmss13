@@ -30,50 +30,13 @@
 		qdel(W)
 	. = ..()
 
-/obj/effect/alien/resin/special/pylon/examine(mob/user)
-	..()
-	if((isXeno(user) || isobserver(user)) && linked_hive)
-		var/message = "There is [linked_hive.crystal_stored] plasma in the stockpile."
-		to_chat(user, message)
-
 /obj/effect/alien/resin/special/pylon/proc/replace_node()
 	var/obj/effect/alien/weeds/node/pylon/W = locate() in loc
 	if(W)
 		return
 	new node_type(loc, null, null, linked_hive)
 
-/obj/effect/alien/resin/special/pylon/attack_alien(mob/living/carbon/Xenomorph/M)
-	if(!linked_hive || !M.crystal_max || M.a_intent == INTENT_HARM)
-		return ..()
-
-	//deposit resources
-	if(M.a_intent == INTENT_HELP && M.crystal_stored)
-		var/amount = input("How much [MATERIAL_CRYSTAL] do you wish to deposit? ([M.crystal_stored] stored)") as null|num
-		if(!amount || amount <= 0)
-			return
-		amount = Clamp(amount, 1, M.crystal_stored)
-		linked_hive.crystal_stored += amount
-		M.crystal_stored -= amount
-		playsound(src, 'sound/effects/alien_resin_build2.ogg', 25, 1)
-		visible_message(SPAN_XENOWARNING("\The [M] deposits a stack of [MATERIAL_CRYSTAL] into \the [src]."), \
-			SPAN_XENONOTICE("You collect a deposits of [amount] [MATERIAL_CRYSTAL] into \the [src]."))
-		return
-
-	//collect resources
-	if(!linked_hive.crystal_stored)
-		to_chat(M, SPAN_XENOWARNING("There is no stored plasma!"))
-		return
-	var/amount = input("How much [MATERIAL_CRYSTAL] do you wish to collect? ([linked_hive.crystal_stored] stored)") as null|num
-	if(!amount || amount <= 0)
-		return
-	amount = Clamp(amount, 1, min((M.crystal_max - M.crystal_stored), linked_hive.crystal_stored))
-	linked_hive.crystal_stored -= amount
-	M.crystal_stored += amount
-	playsound(src, 'sound/effects/alien_resin_build1.ogg', 25, 1)
-	visible_message(SPAN_XENOWARNING("\The [M] collects a stack of [MATERIAL_CRYSTAL] from \the [src]."), \
-		SPAN_XENONOTICE("You collect a stack of [amount] [MATERIAL_CRYSTAL] from \the [src]."))
-
-//Hive Core - Stockpiles materials, generates strong weeds, supports other buildings
+//Hive Core - Generates strong weeds, supports other buildings
 /obj/effect/alien/resin/special/pylon/core
 	name = XENO_STRUCTURE_CORE
 	desc = "A giant pulsating mound of mass. It looks very much alive."

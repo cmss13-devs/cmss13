@@ -25,7 +25,7 @@ def generate_changelogs(pid, branch, pat):
 
     # Load the latest MR date on the branch
     working_branch = Branch(pid, branch)
-    working_branch.load_latest_mr_date(MR_DATES_FILE)
+    working_branch.load_latest_mr_date(str(pid)+'.txt')
 
     # Show when the merge date of the MR we processed last run
     last_mr_date = working_branch.get_latest_mr_date()
@@ -120,7 +120,7 @@ def generate_changelogs(pid, branch, pat):
     print("{} changelog{} generated.".format(cls_generated, " was" if cls_generated == 1 else "s were"))
 
     # Save our progress on changelog generation
-    working_branch.save_latest_mr_date(MR_DATES_FILE)
+    working_branch.save_latest_mr_date(str(pid)+'.txt')
 
 if __name__ == "__main__":
     if argv[2] is None:
@@ -129,8 +129,5 @@ if __name__ == "__main__":
     else :
         PID = argv[2]
         PAT = argv[3]
-    
-    if argv[4]:
-        MR_DATES_FILE = argv[4]
 
     generate_changelogs(PID, argv[1], PAT)

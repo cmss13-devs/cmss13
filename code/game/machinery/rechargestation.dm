@@ -1,5 +1,5 @@
 /obj/structure/machinery/recharge_station
-	name = "cyborg recharging and repair station"
+	name = "robot recharge station"
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "borgcharger0"
 	density = TRUE
@@ -13,8 +13,6 @@
 	var/charging_cap_active = 25000			// Active Cap - When cyborg is inside
 	var/charging_cap_passive = 2500			// Passive Cap - Recharging internal capacitor when no cyborg is inside
 	var/icon_update_tick = 0				// Used to update icon only once every 10 ticks
-	unslashable = TRUE
-	unacidable = TRUE
 	can_buckle = TRUE
 
 /obj/structure/machinery/recharge_station/New()

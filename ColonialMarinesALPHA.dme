@@ -1683,7 +1683,7 @@
 #include "code\modules\vehicles\interior\interior_wall.dm"
 #include "code\modules\vehicles\interior\interactable\doors.dm"
 #include "code\modules\vehicles\interior\interactable\seats.dm"
-#include "code\modules\vehicles\interior\interactable\vehicle_locker.dm" 
+#include "code\modules\vehicles\interior\interactable\vehicle_locker.dm"
 #include "code\modules\vehicles\interior\interactable\viewports.dm"
 #include "code\modules\vehicles\interior\interactable\weapons_loader.dm"
 #include "code\modules\vehicles\interior\objects\fancy_locker.dm"

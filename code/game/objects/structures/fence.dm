@@ -179,8 +179,6 @@
 		..()
 
 /obj/structure/fence/proc/cut_grille()
-	if(prob(75))
-		new /obj/item/stack/barbed_wire(loc)
 	health = 0
 	cut = 1
 	density = 0

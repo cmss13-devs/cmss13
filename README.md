@@ -1,10 +1,12 @@
 # LICENSE
 
-The code for CM-SS13 is licensed under the [GNU General Public License v3](http://www.gnu.org/licenses/gpl.html), which can be found in full in [/LICENSE-GPL3](/LICENSE-GPL3).
+The code for CM-SS13 is licensed under the [GNU Affero General Public License v3](http://www.gnu.org/licenses/agpl.html), which can be found in full in [/LICENSE-AGPL3](/LICENSE-AGPL3).
 
 Assets including icons and sound are under the [Creative Commons 3.0 BY-SA license](https://creativecommons.org/licenses/by-sa/3.0/) unless otherwise indicated. Authorship for assets including art and sound under the CC BY-SA license is defined as the active development team of CM-SS13. 
 
-By committing any code or assets to our repository you automatically release rights for them to the Active Development Team of CM-SS13.
+All code is assumed to be licensed under AGPL v3 unless stated otherwise by file header.
+
+Feel free to contact any developer if you want parts of code licensed under more permissive license (like MIT) so you can use it in your Closed Source project.
 
 
 # CONTRIBUTING TO CM-SS13

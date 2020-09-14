@@ -87,7 +87,7 @@ atom/proc/AIAltClick()
 	return
 
 /obj/structure/machinery/door/airlock/AICtrlClick() // Bolts doors
-	if(locked)
+	if(!locked)
 		lock(TRUE)
 	else
 		unlock(TRUE)

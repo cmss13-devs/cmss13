@@ -11,8 +11,6 @@
     health = 400
     var/obj/structure/bed/nest/structure/pred_nest
 
-    delete_on_hijack = FALSE
-
     block_range = 2
 
 /obj/effect/alien/resin/special/nest/examine(mob/user)

@@ -566,6 +566,9 @@ var/list/global/item_storage_box_cache = list()
 
 
 /obj/item/storage/proc/dump_into(obj/item/storage/M, mob/user)
+	if(user.action_busy)
+		return
+
 	if(istype(M,/obj/item/ammo_magazine/shotgun)) //for inserting handfuls of shotgun shells
 		var/obj/item/ammo_magazine/shotgun/B = M
 		var/handfuls = round(B.current_rounds / 5,1) //The number of handfuls, we round up because we still want the last one that isn't full

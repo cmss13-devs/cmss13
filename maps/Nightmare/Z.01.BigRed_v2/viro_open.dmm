@@ -35,11 +35,13 @@
 	dir = 4;
 	layer = 2.4
 	},
-/obj/structure/machinery/door/poddoor/two_tile/vertical{
+/obj/structure/machinery/door/poddoor/almayer{
 	density = 0;
+	dir = 4;
 	icon_state = "pdoor0";
-	name = "\improper Virology Lockdown";
-	opacity = 0
+	id = "viro";
+	name = "Virology Lockdown";
+	opacity = 1
 	},
 /turf/open/floor/interior/plastic,
 /area/bigredv2/outside/virology)
@@ -299,11 +301,13 @@
 	dir = 4;
 	layer = 2.4
 	},
-/obj/structure/machinery/door/poddoor/two_tile/vertical{
+/obj/structure/machinery/door/poddoor/almayer{
 	density = 0;
+	dir = 4;
 	icon_state = "pdoor0";
-	name = "\improper Virology Lockdown";
-	opacity = 0
+	id = "viro";
+	name = "Virology Lockdown";
+	opacity = 1
 	},
 /turf/open/floor/interior/plastic,
 /area/bigredv2/outside/virology)
@@ -584,6 +588,17 @@
 /obj/item/handcuffs,
 /turf/open/floor/interior/plastic,
 /area/bigredv2/outside/virology)
+"zC" = (
+/obj/structure/machinery/door/poddoor/almayer{
+	density = 0;
+	dir = 4;
+	icon_state = "pdoor0";
+	id = "viro";
+	name = "Virology Lockdown";
+	opacity = 1
+	},
+/turf/open/floor/interior/plastic,
+/area/bigredv2/outside/virology)
 
 (1,1,1) = {"
 aa
@@ -793,7 +808,7 @@ bd
 ab
 ag
 ab
-aH
+zC
 af
 ab
 bD
@@ -817,7 +832,7 @@ bd
 ac
 ak
 ab
-aH
+zC
 aR
 ab
 aS

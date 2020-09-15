@@ -264,18 +264,10 @@
 	dir = 1
 	},
 /area/bigredv2/outside/filtration_plant)
-"aU" = (
-/obj/effect/decal/warning_stripes{
-	tag = "icon-SE-in";
-	icon_state = "SE-in"
-	},
-/obj/structure/machinery/computer3/server/rack,
-/turf/open/floor,
-/area/bigredv2/outside/filtration_plant)
 "aV" = (
 /obj/effect/decal/warning_stripes{
-	tag = "icon-SW-in";
-	icon_state = "SW-in"
+	icon_state = "U-S";
+	tag = "icon-U-S"
 	},
 /obj/structure/machinery/computer3/server/rack,
 /turf/open/floor,
@@ -301,18 +293,10 @@
 	},
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
-"ba" = (
-/obj/effect/decal/warning_stripes{
-	tag = "icon-NE-in";
-	icon_state = "NE-in"
-	},
-/obj/structure/machinery/computer3/server/rack,
-/turf/open/floor,
-/area/bigredv2/outside/filtration_plant)
 "bb" = (
 /obj/effect/decal/warning_stripes{
-	tag = "icon-NW-in";
-	icon_state = "NW-in"
+	icon_state = "U-N";
+	tag = "icon-U-N"
 	},
 /obj/structure/machinery/computer3/server/rack,
 /turf/open/floor,
@@ -420,16 +404,6 @@
 /obj/item/weapon/melee/twohanded/fireaxe,
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
-"bs" = (
-/obj/structure/cargo_container/horizontal{
-	tag = "icon-0,2";
-	icon_state = "0,2"
-	},
-/turf/open/floor{
-	icon_state = "bot";
-	dir = 1
-	},
-/area/bigredv2/outside/filtration_plant)
 "bt" = (
 /obj/structure/surface/table,
 /obj/effect/spawner/random/technology_scanner,
@@ -450,16 +424,6 @@
 "bw" = (
 /turf/closed/wall/solaris/reinforced/hull,
 /area/bigredv2/outside/filtration_plant)
-"bx" = (
-/obj/structure/cargo_container/horizontal{
-	tag = "icon-0,1";
-	icon_state = "0,1"
-	},
-/turf/open/floor{
-	icon_state = "bot";
-	dir = 1
-	},
-/area/bigredv2/outside/filtration_plant)
 "by" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/closed/wall/solaris/reinforced/hull,
@@ -478,16 +442,6 @@
 /obj/structure/surface/table,
 /obj/item/disk/objective,
 /turf/open/floor,
-/area/bigredv2/outside/filtration_plant)
-"bC" = (
-/obj/structure/cargo_container/horizontal{
-	tag = "icon-0,0";
-	icon_state = "0,0"
-	},
-/turf/open/floor{
-	icon_state = "bot";
-	dir = 1
-	},
 /area/bigredv2/outside/filtration_plant)
 "bD" = (
 /obj/structure/window/framed/colony/reinforced/hull,
@@ -549,13 +503,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "bL" = (
-/turf/open/mars{
-	tag = "icon-mars_dirt_10";
-	icon_state = "mars_dirt_10"
-	},
-/area/bigredv2/outside/s)
-"bM" = (
-/turf/closed/wall/solaris/reinforced/hull,
+/turf/closed/wall/solaris,
 /area/bigredv2/outside/s)
 "bN" = (
 /obj/structure/machinery/door_control{
@@ -588,13 +536,6 @@
 	icon_state = "mars_cave_2"
 	},
 /area/bigredv2/caves_east)
-"bR" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "bot";
-	dir = 1
-	},
-/area/bigredv2/outside/filtration_plant)
 "bS" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/reagent_dispensers/fueltank,
@@ -618,6 +559,14 @@
 	},
 /area/bigredv2/caves_east)
 "bV" = (
+/obj/structure/machinery/door/poddoor/almayer{
+	density = 1;
+	dir = 4;
+	icon_state = "pdoor1";
+	id = "filtration";
+	name = "Filtration Lockdown";
+	opacity = 0
+	},
 /turf/open/floor{
 	tag = "icon-asteroidwarning (NORTH)";
 	icon_state = "asteroidwarning";
@@ -633,6 +582,14 @@
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "bY" = (
+/obj/structure/machinery/door/poddoor/almayer{
+	density = 1;
+	dir = 4;
+	icon_state = "pdoor1";
+	id = "filtration";
+	name = "Filtration Lockdown";
+	opacity = 0
+	},
 /turf/open/floor{
 	tag = "icon-asteroidwarning (NORTH)";
 	icon_state = "asteroidwarning";
@@ -647,12 +604,17 @@
 	},
 /area/bigredv2/outside/filtration_plant)
 "ca" = (
-/obj/structure/machinery/door/poddoor/two_tile/vertical{
-	name = "\improper Filtration Lockdown"
+/obj/structure/machinery/door/poddoor/almayer{
+	density = 1;
+	dir = 4;
+	icon_state = "pdoor1";
+	id = "filtration";
+	name = "Filtration Lockdown";
+	opacity = 0
 	},
 /turf/open/floor{
-	tag = "icon-asteroidwarning";
-	icon_state = "asteroidwarning"
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning"
 	},
 /area/bigredv2/outside/s)
 "cb" = (
@@ -671,8 +633,13 @@
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "cd" = (
-/obj/structure/machinery/door/poddoor/two_tile/vertical{
-	name = "\improper Filtration Lockdown"
+/obj/structure/machinery/door/poddoor/almayer{
+	density = 1;
+	dir = 4;
+	icon_state = "pdoor1";
+	id = "filtration";
+	name = "Filtration Lockdown";
+	opacity = 0
 	},
 /turf/open/floor{
 	tag = "icon-asteroidwarning";
@@ -691,6 +658,14 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/door/poddoor/two_tile/vertical{
 	name = "\improper Filtration Lockdown"
+	},
+/obj/structure/machinery/door/poddoor/almayer{
+	density = 1;
+	dir = 4;
+	icon_state = "pdoor1";
+	id = "filtration";
+	name = "Filtration Lockdown";
+	opacity = 0
 	},
 /turf/open/floor{
 	tag = "icon-asteroidwarning";
@@ -760,6 +735,29 @@
 	},
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/filtration_plant)
+"cI" = (
+/obj/structure/machinery/door/poddoor/almayer{
+	density = 1;
+	dir = 4;
+	icon_state = "pdoor1";
+	id = "filtration";
+	name = "Filtration Lockdown";
+	opacity = 0
+	},
+/obj/structure/blocker/forcefield/vehicles,
+/turf/open/floor{
+	tag = "icon-asteroidwarning (NORTH)";
+	icon_state = "asteroidwarning";
+	dir = 1
+	},
+/area/bigredv2/outside/filtration_plant)
+"dd" = (
+/obj/structure/blocker/forcefield/vehicles,
+/turf/open/mars_cave{
+	tag = "icon-mars_cave_2";
+	icon_state = "mars_cave_2"
+	},
+/area/bigredv2/outside/filtration_plant)
 "jh" = (
 /obj/structure/machinery/light,
 /turf/open/floor{
@@ -774,6 +772,14 @@
 	},
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
+"np" = (
+/obj/structure/machinery/door/airlock/almayer/engineering{
+	dir = 1;
+	name = "\improper Atmospherics Condenser";
+	req_one_access = list()
+	},
+/turf/open/floor,
+/area/bigredv2/outside/filtration_plant)
 "tB" = (
 /obj/structure/closet/firecloset/full,
 /obj/structure/sign/safety/atmospherics{
@@ -781,9 +787,55 @@
 	},
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
+"zu" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/door/poddoor/almayer{
+	density = 1;
+	dir = 4;
+	icon_state = "pdoor1";
+	id = "filtration";
+	name = "Filtration Lockdown";
+	opacity = 0
+	},
+/obj/structure/blocker/forcefield/vehicles,
+/turf/open/floor{
+	tag = "icon-asteroidwarning";
+	icon_state = "asteroidwarning"
+	},
+/area/bigredv2/outside/filtration_plant)
+"BC" = (
+/turf/open/mars_cave{
+	tag = "icon-mars_cave_2";
+	icon_state = "mars_cave_2"
+	},
+/area/bigredv2/outside/filtration_plant)
+"Ms" = (
+/obj/structure/machinery/computer3/server/rack,
+/obj/effect/decal/warning_stripes{
+	icon_state = "U-S";
+	tag = "icon-U-S"
+	},
+/turf/open/floor,
+/area/bigredv2/outside/filtration_plant)
+"Qx" = (
+/obj/structure/blocker/forcefield/vehicles,
+/turf/closed/wall/solaris,
+/area/bigredv2/outside/filtration_plant)
+"Rv" = (
+/obj/structure/blocker/forcefield/vehicles,
+/turf/closed/wall/solaris,
+/area/bigredv2/caves_east)
 "TX" = (
 /obj/structure/machinery/light{
 	dir = 1
+	},
+/turf/open/floor,
+/area/bigredv2/outside/filtration_plant)
+"UH" = (
+/obj/structure/machinery/computer3/server/rack,
+/obj/effect/decal/warning_stripes{
+	icon_state = "U-N";
+	tag = "icon-U-N"
 	},
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
@@ -793,6 +845,13 @@
 /obj/structure/machinery/light,
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
+"WD" = (
+/obj/structure/blocker/forcefield/vehicles,
+/turf/open/mars_cave{
+	tag = "icon-mars_cave_2";
+	icon_state = "mars_cave_2"
+	},
+/area/bigredv2/caves_east)
 "Yg" = (
 /obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
@@ -821,10 +880,10 @@ bw
 bw
 bw
 bL
-bM
+bV
 bV
 ca
-bM
+bL
 cl
 cm
 "}
@@ -845,13 +904,13 @@ bw
 aj
 aj
 aj
-bw
-bw
-bw
+aj
+aa
+bZ
 bZ
 ce
-bw
-bw
+aa
+aa
 bw
 "}
 (3,1,1) = {"
@@ -872,11 +931,11 @@ bw
 bw
 bw
 bw
-az
-bw
+aa
+bY
 bY
 cf
-bw
+aa
 az
 aY
 "}
@@ -893,12 +952,12 @@ aa
 az
 ao
 az
-az
 bB
 bG
 bH
 aY
 bN
+az
 az
 ad
 az
@@ -921,11 +980,11 @@ bm
 az
 az
 az
-az
 bI
 aY
 TX
-bR
+ad
+ad
 ad
 az
 aS
@@ -938,8 +997,8 @@ aq
 aA
 aa
 az
-az
-az
+Ms
+UH
 az
 aa
 az
@@ -948,10 +1007,10 @@ aS
 aS
 aS
 az
-az
 bJ
 az
-bS
+ad
+ad
 az
 az
 aS
@@ -962,22 +1021,22 @@ bw
 ad
 ar
 aB
-ah
+np
 az
-aU
-ba
 az
-ah
+az
+az
+aZ
 az
 ao
-bs
-bx
-bC
-az
+aL
+bT
+aS
 az
 bJ
 az
-bT
+az
+az
 az
 az
 aS
@@ -998,12 +1057,12 @@ ad
 ao
 aS
 aS
-aS
-az
+bT
 az
 bJ
 az
-aS
+az
+az
 az
 az
 aS
@@ -1019,20 +1078,20 @@ aN
 aN
 aB
 az
-aa
+ah
 az
 ao
 aS
 aS
 aS
 az
-az
 bJ
 az
-aS
+az
+az
 az
 bz
-aS
+bS
 aS
 aY
 "}
@@ -1051,11 +1110,11 @@ ao
 az
 az
 az
-az
 ay
 aY
 TX
-bT
+az
+az
 bX
 az
 aS
@@ -1078,8 +1137,8 @@ aa
 bw
 bD
 bD
-bD
 bw
+az
 az
 az
 az
@@ -1104,13 +1163,13 @@ bt
 bw
 bE
 bE
-bE
 bw
 az
-bw
+aa
+bY
 bY
 cd
-bw
+aa
 az
 aY
 "}
@@ -1130,14 +1189,14 @@ bt
 by
 bF
 bF
-bF
 bw
-bw
-bw
+aa
+aa
+bZ
 bZ
 ce
-bw
-bw
+aa
+aa
 aY
 "}
 (14,1,1) = {"
@@ -1156,14 +1215,14 @@ VW
 bw
 bE
 bE
-bE
 bw
-bO
-bw
-bY
-cf
-bw
-bO
+dd
+Rv
+cI
+cI
+zu
+Qx
+WD
 aj
 "}
 (15,1,1) = {"
@@ -1182,8 +1241,8 @@ bt
 bw
 bF
 bF
-bF
 bw
+BC
 bO
 bQ
 bO
@@ -1208,8 +1267,8 @@ az
 bw
 bD
 bD
-bD
 bw
+BC
 bP
 bU
 bO
@@ -1231,8 +1290,8 @@ bj
 az
 ao
 bW
-bw
-bO
+aa
+WD
 bO
 bO
 bO
@@ -1258,7 +1317,7 @@ az
 bp
 ad
 cc
-bO
+WD
 bO
 bO
 bO
@@ -1284,7 +1343,7 @@ aW
 bu
 ay
 aY
-bO
+WD
 bO
 bO
 bO
@@ -1310,7 +1369,7 @@ bo
 az
 cb
 bK
-bO
+WD
 bO
 bO
 bO
@@ -1336,7 +1395,7 @@ az
 az
 az
 cn
-bO
+WD
 bO
 bO
 bO
@@ -1362,7 +1421,7 @@ ah
 bA
 ah
 aY
-bO
+WD
 bO
 bO
 bO

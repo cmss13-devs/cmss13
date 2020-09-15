@@ -42661,8 +42661,9 @@
 /turf/closed/wall/almayer,
 /area/prison/pirate)
 "cip" = (
-/obj/structure/machinery/door/poddoor/two_tile{
+/obj/structure/machinery/door/poddoor/almayer{
 	density = 0;
+	dir = 2;
 	icon_state = "pdoor0";
 	id = "pirate_cargo";
 	name = "Rocinante Cargo Bay Door";
@@ -42675,32 +42676,44 @@
 "ciq" = (
 /obj/item/ammo_casing,
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor{
-	icon_state = "delivery"
-	},
-/area/prison/pirate)
-"cir" = (
-/obj/structure/machinery/door/poddoor/two_tile{
+/obj/structure/machinery/door/poddoor/almayer{
 	density = 0;
+	dir = 2;
 	icon_state = "pdoor0";
 	id = "pirate_cargo";
 	name = "Rocinante Cargo Bay Door";
 	opacity = 0
 	},
+/turf/open/floor{
+	icon_state = "delivery"
+	},
+/area/prison/pirate)
+"cir" = (
 /obj/effect/landmark/corpsespawner/prison_security,
 /obj/effect/decal/cleanable/blood,
 /obj/item/weapon/gun/rifle/m16,
+/obj/structure/machinery/door/poddoor/almayer{
+	density = 0;
+	dir = 2;
+	icon_state = "pdoor0";
+	id = "pirate_cargo";
+	name = "Rocinante Cargo Bay Door";
+	opacity = 0
+	},
 /turf/open/floor{
 	icon_state = "delivery"
 	},
 /area/prison/pirate)
 "cis" = (
 /obj/item/ammo_casing,
-/turf/open/floor{
-	icon_state = "delivery"
+/obj/structure/machinery/door/poddoor/almayer{
+	density = 0;
+	dir = 2;
+	icon_state = "pdoor0";
+	id = "pirate_cargo";
+	name = "Rocinante Cargo Bay Door";
+	opacity = 0
 	},
-/area/prison/pirate)
-"cit" = (
 /turf/open/floor{
 	icon_state = "delivery"
 	},
@@ -86008,7 +86021,7 @@ rSp
 cpY
 cpY
 chn
-cit
+cip
 cnI
 ckk
 ckk

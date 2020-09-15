@@ -858,10 +858,6 @@
 	},
 /turf/open/gm/dirt,
 /area/lv624/ground/sand5)
-"adm" = (
-/obj/structure/mineral_door/resin,
-/turf/open/gm/dirt,
-/area/lv624/ground/sand5)
 "adn" = (
 /obj/structure/girder/displaced,
 /turf/closed/shuttle{
@@ -17505,6 +17501,11 @@
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass,
 /area/lv624/lazarus/landing_zones/lz2)
+"cIU" = (
+/obj/structure/mineral_door/resin,
+/obj/structure/blocker/forcefield/vehicles,
+/turf/open/gm/dirt,
+/area/lv624/ground/sand5)
 "cPf" = (
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_2"
@@ -18406,6 +18407,10 @@
 	},
 /turf/open/gm/grass,
 /area/lv624/ground/jungle7)
+"kse" = (
+/obj/structure/blocker/forcefield/vehicles,
+/turf/closed/wall/cult,
+/area/lv624/ground/caves/west1)
 "kuP" = (
 /obj/item/tool/hatchet{
 	pixel_x = -4;
@@ -19058,6 +19063,10 @@
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/river,
 /area/lv624/ground/river3)
+"pat" = (
+/obj/structure/blocker/forcefield/vehicles,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/west1)
 "pbd" = (
 /obj/structure/flora/jungle/vines,
 /turf/closed/wall/rock/brown,
@@ -19831,6 +19840,11 @@
 	icon_state = "bot"
 	},
 /area/lv624/lazarus/landing_zones/lz1)
+"vCG" = (
+/obj/structure/mineral_door/resin,
+/obj/structure/blocker/forcefield/vehicles,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/east1)
 "vGg" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 6
@@ -20044,6 +20058,10 @@
 	},
 /turf/open/gm/grass,
 /area/lv624/ground/jungle7)
+"ydz" = (
+/obj/structure/blocker/forcefield/vehicles,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/central1)
 "yhH" = (
 /obj/structure/barricade/wooden{
 	dir = 8
@@ -31112,7 +31130,7 @@ abN
 abN
 abN
 acp
-acp
+kse
 acp
 abN
 abN
@@ -31340,7 +31358,7 @@ abN
 abN
 abQ
 abN
-abN
+pat
 abR
 abN
 abN
@@ -31568,7 +31586,7 @@ abN
 abN
 abN
 abN
-abN
+pat
 adK
 abN
 abN
@@ -31796,7 +31814,7 @@ ach
 ach
 abZ
 acp
-acp
+kse
 acp
 abN
 abN
@@ -38393,10 +38411,10 @@ abS
 abS
 abS
 acP
+acO
+acO
+acO
 abS
-acO
-acO
-acO
 acP
 acP
 acP
@@ -38621,7 +38639,7 @@ abS
 abS
 abS
 acP
-acP
+acA
 acA
 acA
 acA
@@ -38848,7 +38866,7 @@ abS
 abS
 abS
 abS
-acP
+acA
 acA
 acA
 acA
@@ -42268,7 +42286,7 @@ abm
 abm
 abm
 abm
-acP
+acA
 acA
 acA
 acA
@@ -42496,7 +42514,7 @@ abm
 abm
 abm
 abm
-acP
+acA
 acA
 acI
 acA
@@ -42724,7 +42742,7 @@ abm
 abm
 abm
 abm
-acP
+acA
 acA
 acA
 acA
@@ -42952,7 +42970,7 @@ abm
 abm
 abm
 abm
-acP
+acA
 acA
 acA
 acA
@@ -43180,9 +43198,9 @@ abm
 abm
 abm
 abm
-acP
-adm
-adm
+cIU
+cIU
+cIU
 acP
 acP
 acP
@@ -43408,7 +43426,7 @@ abm
 abm
 abm
 abm
-acP
+acA
 acA
 acA
 acP
@@ -43635,8 +43653,8 @@ abm
 abm
 abm
 abm
-abm
-acP
+abl
+acA
 acA
 acA
 acA
@@ -44081,7 +44099,7 @@ abm
 abm
 abm
 abl
-abl
+ydz
 abl
 abl
 abl
@@ -44309,7 +44327,7 @@ abl
 abl
 abl
 abl
-abl
+ydz
 abl
 abv
 abl
@@ -44537,7 +44555,7 @@ abl
 abl
 abl
 abl
-abl
+ydz
 abl
 abl
 abl
@@ -44765,7 +44783,7 @@ abl
 abl
 abl
 abl
-abl
+ydz
 abl
 abl
 abl
@@ -50014,8 +50032,8 @@ acf
 acf
 acf
 acf
-acf
-acf
+acg
+acg
 acf
 acf
 acg
@@ -50241,11 +50259,11 @@ acf
 acf
 acf
 acf
-acf
-acf
+acg
+acg
 aaN
 acg
-acf
+vCG
 acg
 acg
 acg
@@ -50473,7 +50491,7 @@ acg
 acg
 acg
 acg
-aaL
+vCG
 acg
 acg
 acg
@@ -50701,7 +50719,7 @@ acg
 acg
 acg
 acg
-aaL
+vCG
 acg
 acg
 aco
@@ -50927,7 +50945,7 @@ aaN
 acg
 acg
 acg
-acf
+acg
 acf
 acf
 acg
@@ -52064,7 +52082,7 @@ acg
 acg
 acg
 acg
-acf
+acg
 acf
 acf
 acf
@@ -53892,8 +53910,8 @@ acf
 acg
 acg
 acf
-aaL
-acg
+vCG
+vCG
 acg
 acg
 acg
@@ -54121,7 +54139,7 @@ acg
 acg
 acg
 acg
-aaL
+vCG
 acg
 acg
 acg
@@ -54349,7 +54367,7 @@ acg
 acg
 acg
 acg
-aaL
+vCG
 acg
 acg
 acg
@@ -54577,7 +54595,7 @@ acg
 acg
 acg
 acg
-aaL
+vCG
 acg
 acg
 acg

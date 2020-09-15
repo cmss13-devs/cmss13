@@ -45,6 +45,11 @@
 /obj/structure/mineral_door/resin,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/central1)
+"n" = (
+/obj/structure/mineral_door/resin,
+/obj/structure/blocker/forcefield/vehicles,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/central3)
 "o" = (
 /obj/effect/alien/weeds/node,
 /turf/open/gm/dirt,
@@ -171,7 +176,7 @@ a
 b
 a
 g
-c
+a
 c
 k
 k
@@ -195,8 +200,8 @@ a
 a
 a
 a
-c
-l
+n
+k
 k
 "}
 (7,1,1) = {"
@@ -218,7 +223,7 @@ a
 a
 a
 a
-a
+n
 k
 k
 "}
@@ -241,7 +246,7 @@ a
 a
 a
 a
-j
+n
 k
 k
 "}

@@ -78,17 +78,6 @@
 	icon_state = "mars_dirt_4"
 	},
 /area/bigredv2/outside/e)
-"ao" = (
-/obj/effect/decal/cleanable/blood{
-	dir = 4;
-	icon_state = "gib6";
-	tag = "icon-gib6"
-	},
-/turf/open/mars_cave{
-	tag = "icon-mars_cave_10";
-	icon_state = "mars_cave_10"
-	},
-/area/bigredv2/outside/e)
 "ap" = (
 /turf/closed/wall/solaris/rock,
 /area/bigredv2/caves)
@@ -467,8 +456,9 @@
 	dir = 8
 	},
 /turf/open/floor{
-	tag = "icon-asteroidwarning";
-	icon_state = "asteroidwarning"
+	tag = "icon-asteroidfloor (NORTH)";
+	icon_state = "asteroidfloor";
+	dir = 1
 	},
 /area/bigredv2/outside/e)
 "bn" = (
@@ -775,15 +765,6 @@
 	icon_state = "mars_cave_2"
 	},
 /area/bigredv2/caves_east)
-"cX" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/turf/open/mars{
-	tag = "icon-mars_dirt_10";
-	icon_state = "mars_dirt_10"
-	},
-/area/bigredv2/outside/se)
 "cY" = (
 /turf/open/floor{
 	tag = "icon-asteroidwarning (NORTHWEST)";
@@ -824,6 +805,62 @@
 	dir = 10
 	},
 /area/bigredv2/outside/se)
+"es" = (
+/obj/structure/blocker/forcefield/vehicles,
+/turf/open/floor{
+	tag = "icon-asteroidfloor (NORTH)";
+	icon_state = "asteroidfloor";
+	dir = 1
+	},
+/area/bigredv2/caves_east)
+"ph" = (
+/turf/open/floor{
+	tag = "icon-asteroidfloor (NORTH)";
+	icon_state = "asteroidfloor";
+	dir = 1
+	},
+/area/bigredv2/caves_east)
+"ps" = (
+/obj/structure/blocker/forcefield/vehicles,
+/turf/open/floor{
+	tag = "icon-asteroidwarning";
+	icon_state = "asteroidwarning"
+	},
+/area/bigredv2/caves_east)
+"tj" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/mars,
+/area/bigredv2/outside/se)
+"vX" = (
+/turf/open/floor{
+	dir = 5;
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (NORTHEAST)"
+	},
+/area/bigredv2/outside/e)
+"wj" = (
+/turf/open/floor{
+	tag = "icon-asteroidwarning";
+	icon_state = "asteroidwarning"
+	},
+/area/bigredv2/outside/e)
+"Cp" = (
+/turf/open/floor{
+	dir = 6;
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (SOUTHEAST)"
+	},
+/area/bigredv2/outside/e)
+"CG" = (
+/obj/structure/blocker/forcefield/vehicles,
+/turf/open/floor{
+	tag = "icon-asteroidwarning (NORTH)";
+	icon_state = "asteroidwarning";
+	dir = 1
+	},
+/area/bigredv2/caves_east)
 
 (1,1,1) = {"
 ab
@@ -1397,12 +1434,12 @@ cH
 "}
 (20,1,1) = {"
 an
-an
 aa
+aS
 aW
 ba
+wj
 aa
-an
 an
 an
 an
@@ -1428,11 +1465,11 @@ cH
 (21,1,1) = {"
 aa
 aa
-aa
+aS
 aR
 bb
+wj
 aa
-an
 an
 an
 bC
@@ -1457,11 +1494,11 @@ cH
 "}
 (22,1,1) = {"
 ap
-ao
 aa
-aS
+vX
+aR
 bk
-aa
+Cp
 aa
 aa
 bB
@@ -1479,9 +1516,9 @@ bK
 cH
 dc
 cH
-cH
 cV
-cX
+tj
+cM
 cP
 cH
 "}
@@ -1509,8 +1546,8 @@ bK
 cH
 cH
 cH
-cH
 cR
+cH
 cM
 cP
 cH
@@ -1540,8 +1577,8 @@ cH
 cH
 cH
 cR
-cR
 cY
+da
 da
 dd
 "}
@@ -1570,9 +1607,9 @@ ap
 ap
 ap
 ap
-ap
-cZ
-db
+CG
+es
+ps
 ap
 "}
 (26,1,1) = {"
@@ -1599,9 +1636,9 @@ ap
 ap
 ap
 ap
-ap
 cW
 cZ
+ph
 db
 ap
 "}
@@ -1630,8 +1667,8 @@ ap
 ap
 ap
 ap
-ap
 cZ
+ph
 db
 ap
 "}

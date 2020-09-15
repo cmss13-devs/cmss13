@@ -33373,6 +33373,7 @@
 /area/ice_colony/underground/research)
 "bIa" = (
 /obj/structure/mineral_door/resin,
+/obj/structure/blocker/forcefield/vehicles,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "darkpurple2";
@@ -33382,12 +33383,14 @@
 "bIb" = (
 /obj/item/stack/sheet/wood,
 /obj/structure/mineral_door/resin,
+/obj/structure/blocker/forcefield/vehicles,
 /turf/open/ice,
 /area/ice_colony/underground/research)
 "bIc" = (
 /obj/structure/barricade/wooden{
 	dir = 1
 	},
+/obj/structure/blocker/forcefield/vehicles,
 /turf/open/ice,
 /area/ice_colony/underground/research)
 "bIe" = (
@@ -34820,6 +34823,7 @@
 /area/ice_colony/underground/research)
 "bLq" = (
 /obj/structure/barricade/wooden,
+/obj/structure/blocker/forcefield/vehicles,
 /turf/open/ice,
 /area/ice_colony/underground/research)
 "bLr" = (
@@ -40181,6 +40185,13 @@
 	tag = "icon-darkyellow2 (NORTH)"
 	},
 /area/ice_colony/surface/research/tech_storage)
+"fqt" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/blocker/forcefield/vehicles,
+/turf/open/ice,
+/area/ice_colony/underground/maintenance/south)
 "fxf" = (
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
@@ -40283,6 +40294,10 @@
 	tag = "icon-darkbrown2 (NORTH)"
 	},
 /area/ice_colony/surface/research)
+"hfj" = (
+/obj/structure/blocker/forcefield/vehicles,
+/turf/open/ice,
+/area/ice_colony/underground/maintenance/south)
 "hmT" = (
 /turf/closed/ice_rock/corners{
 	dir = 9;
@@ -40300,6 +40315,10 @@
 "hrN" = (
 /turf/open/auto_turf/snow/layer4,
 /area/ice_colony/exterior/surface/clearing/north)
+"hAX" = (
+/obj/structure/blocker/forcefield/vehicles,
+/turf/open/floor/plating,
+/area/ice_colony/underground/maintenance/south)
 "hDM" = (
 /turf/open/auto_turf/snow/layer4,
 /area/ice_colony/exterior/surface/valley/southeast)
@@ -40370,6 +40389,13 @@
 	tag = "icon-dark2"
 	},
 /area/ice_colony/underground/hallway/north_west)
+"iNy" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/blocker/forcefield/vehicles,
+/turf/open/floor/plating,
+/area/ice_colony/underground/maintenance/south)
 "iQg" = (
 /obj/item/packageWrap,
 /turf/open/floor/plating/icefloor,
@@ -40393,6 +40419,10 @@
 "jtr" = (
 /turf/closed/wall,
 /area/ice_colony/exterior/surface/cliff)
+"juq" = (
+/obj/structure/blocker/forcefield/vehicles,
+/turf/closed/wall/r_wall,
+/area/ice_colony/underground/crew/leisure)
 "jCk" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -40525,6 +40555,10 @@
 	tag = "icon-dark2"
 	},
 /area/ice_colony/surface/hangar/beta)
+"mwS" = (
+/obj/structure/blocker/forcefield/vehicles,
+/turf/closed/wall/r_wall,
+/area/ice_colony/underground/maintenance/south)
 "myI" = (
 /obj/structure/pipes/vents/pump{
 	dir = 4
@@ -40684,6 +40718,10 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/wood,
 /area/ice_colony/surface/bar/bar)
+"qpn" = (
+/obj/structure/blocker/forcefield/vehicles,
+/turf/open/ice,
+/area/ice_colony/exterior/underground/caves/open)
 "qvJ" = (
 /obj/structure/disposalpipe/segment,
 /obj/effect/landmark/objective_landmark/medium,
@@ -66295,10 +66333,10 @@ bqx
 bNA
 bNA
 bNA
-bNA
-bNA
-bNA
-bNA
+juq
+juq
+juq
+juq
 bQu
 bRN
 bPg
@@ -66580,7 +66618,7 @@ bOP
 bPh
 bPR
 bND
-bNA
+juq
 bQu
 bRN
 bPg
@@ -66862,7 +66900,7 @@ bOn
 bOn
 bOn
 bQv
-bNA
+juq
 bQu
 bRO
 bPg
@@ -67144,7 +67182,7 @@ bOn
 bPi
 bOn
 bPh
-bNA
+juq
 bQu
 bRO
 bPg
@@ -67426,7 +67464,7 @@ bOQ
 bPj
 bOn
 bQw
-bNA
+juq
 bQu
 bRO
 bQu
@@ -67708,7 +67746,7 @@ bOR
 bPk
 bOn
 bND
-bNA
+juq
 bQu
 bRO
 bQu
@@ -67990,16 +68028,14 @@ bOR
 bPk
 bPS
 bND
-bNA
-bOk
-bRO
-bQu
-bQu
-bQu
-bOk
-bOk
-bOk
-bOk
+juq
+mwS
+fqt
+hfj
+hfj
+hfj
+mwS
+mwS
 bOk
 bOk
 bOk
@@ -68007,9 +68043,11 @@ bOk
 bOk
 bOk
 bOk
-bPg
-bRN
 bOk
+mwS
+hAX
+iNy
+mwS
 bmU
 bmU
 bmU
@@ -75350,7 +75388,7 @@ bCI
 bEe
 bCI
 bCg
-bmU
+qpn
 bmU
 bmU
 bmU
@@ -75632,7 +75670,7 @@ bVa
 bEe
 bCI
 bJK
-bmU
+qpn
 bmU
 bmU
 boD
@@ -75914,7 +75952,7 @@ bVa
 bEe
 bCI
 bJK
-bmU
+qpn
 bmU
 bmU
 bmU
@@ -76196,7 +76234,7 @@ bVa
 bEe
 bCI
 bCg
-bmU
+qpn
 bmU
 bmU
 bmU
@@ -76478,7 +76516,7 @@ bVa
 bEe
 bCI
 bCg
-bmU
+qpn
 bmU
 bmU
 bmU
@@ -77888,7 +77926,7 @@ bVa
 bEe
 bCI
 bJK
-bmU
+qpn
 bmU
 bmU
 bmU
@@ -78170,7 +78208,7 @@ bVa
 bEe
 bCI
 bJK
-bmU
+qpn
 bmU
 bmU
 bmU
@@ -78452,7 +78490,7 @@ bCJ
 bST
 bFH
 bJK
-bmU
+qpn
 bmU
 bmU
 bmU
@@ -78734,7 +78772,7 @@ bCI
 bCI
 bFH
 bJK
-bmU
+qpn
 bmU
 bmU
 boD
@@ -79281,10 +79319,10 @@ bCI
 bCg
 aZF
 bmQ
-bmU
-bmU
-bmU
-bmU
+qpn
+qpn
+qpn
+qpn
 bnU
 boB
 bmm

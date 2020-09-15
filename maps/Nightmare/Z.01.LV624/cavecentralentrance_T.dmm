@@ -60,6 +60,16 @@
 	icon_state = "warning"
 	},
 /area/lv624/ground/sand5)
+"N" = (
+/obj/structure/mineral_door/resin,
+/obj/structure/blocker/forcefield/vehicles,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/central1)
+"V" = (
+/obj/structure/mineral_door/resin,
+/obj/structure/blocker/forcefield/vehicles,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/central3)
 
 (1,1,1) = {"
 a
@@ -171,7 +181,7 @@ a
 b
 a
 g
-c
+a
 c
 k
 k
@@ -195,8 +205,8 @@ a
 a
 a
 a
-c
-l
+V
+k
 k
 "}
 (7,1,1) = {"
@@ -218,7 +228,7 @@ a
 a
 a
 a
-a
+V
 k
 k
 "}
@@ -241,7 +251,7 @@ a
 a
 a
 a
-j
+V
 k
 k
 "}
@@ -714,9 +724,9 @@ f
 f
 f
 f
-e
-d
-d
+f
+f
+f
 d
 d
 d
@@ -738,8 +748,8 @@ f
 f
 h
 f
-d
-d
+f
+f
 d
 d
 l
@@ -777,14 +787,14 @@ p
 (32,1,1) = {"
 d
 d
-m
-m
+N
+N
+N
 d
 d
-d
-m
-m
-m
+N
+N
+N
 d
 d
 d

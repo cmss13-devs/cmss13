@@ -10,15 +10,8 @@
 /turf/closed/wall/solaris/reinforced,
 /area/bigred/ground/security)
 "c" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
-/turf/open/floor{
-	tag = "icon-asteroidwarning (NORTHEAST)";
-	icon_state = "asteroidwarning";
-	dir = 5
-	},
-/area/bigredv2/caves_east)
+/turf/open/mars,
+/area/bigredv2/outside/se)
 "d" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
@@ -99,7 +92,26 @@
 	},
 /area/bigred/ground/security)
 "m" = (
+/obj/effect/landmark{
+	name = "hunter_primary"
+	},
+/obj/structure/blocker/forcefield/vehicles,
+/turf/open/floor{
+	tag = "icon-asteroidwarning (NORTHEAST)";
+	icon_state = "asteroidwarning";
+	dir = 5
+	},
+/area/bigredv2/caves_east)
+"n" = (
+/obj/structure/blocker/forcefield/vehicles,
+/turf/open/mars_cave{
+	icon_state = "mars_cave_2";
+	tag = "icon-mars_cave_2"
+	},
+/area/bigred/ground/security)
+"p" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/blocker/forcefield/vehicles,
 /turf/open/floor{
 	tag = "icon-asteroidwarning (EAST)";
 	icon_state = "asteroidwarning";
@@ -157,6 +169,10 @@
 /turf/open/floor{
 	icon_state = "dark"
 	},
+/area/bigred/ground/security)
+"y" = (
+/obj/structure/blocker/forcefield/vehicles,
+/turf/closed/wall/solaris/reinforced,
 /area/bigred/ground/security)
 "z" = (
 /turf/open/floor{
@@ -352,8 +368,10 @@
 /area/bigred/ground/security)
 
 (1,1,1) = {"
+c
 a
 d
+i
 i
 b
 b
@@ -369,6 +387,8 @@ b
 b
 e
 h
+h
+h
 b
 s
 B
@@ -382,6 +402,8 @@ b
 (3,1,1) = {"
 b
 f
+h
+j
 j
 q
 t
@@ -397,6 +419,8 @@ b
 b
 g
 j
+j
+j
 q
 u
 C
@@ -410,6 +434,8 @@ b
 (5,1,1) = {"
 b
 h
+h
+j
 j
 b
 v
@@ -425,6 +451,8 @@ b
 b
 j
 h
+h
+h
 b
 b
 b
@@ -438,6 +466,8 @@ b
 (7,1,1) = {"
 b
 k
+h
+j
 j
 b
 w
@@ -452,6 +482,8 @@ b
 (8,1,1) = {"
 b
 h
+h
+j
 j
 b
 x
@@ -466,6 +498,8 @@ b
 (9,1,1) = {"
 b
 j
+j
+h
 h
 r
 E
@@ -481,6 +515,8 @@ b
 b
 l
 h
+h
+h
 b
 z
 F
@@ -494,6 +530,8 @@ b
 (11,1,1) = {"
 b
 e
+h
+j
 j
 b
 A
@@ -506,16 +544,18 @@ Z
 b
 "}
 (12,1,1) = {"
-c
+n
 m
-m
-b
-b
-b
-b
-b
-b
-b
-b
-b
+p
+p
+p
+y
+y
+y
+y
+y
+y
+y
+y
+y
 "}

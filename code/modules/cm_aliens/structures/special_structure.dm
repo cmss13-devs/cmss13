@@ -33,8 +33,6 @@
 	unacidable = TRUE
 	anchored = TRUE
 	var/datum/hive_status/linked_hive
-	var/delete_on_hijack = TRUE
-
 
 	var/list/blocks = list()
 

@@ -619,9 +619,15 @@
 	hive_structures[name_ref] -= S
 	return TRUE
 
-/datum/hive_status/proc/remove_all_special_structures()
+/datum/hive_status/proc/remove_all_special_structures(var/hijacking_queen)
 	for(var/name_ref in hive_structures)
 		for(var/obj/effect/alien/resin/special/S in hive_structures[name_ref])
+			// For hijack, we skip structures being in the same zone as the Queen.
+			if(hijacking_queen)
+				var/area/QA = get_area(hijacking_queen) // Need to be done here, unfortunately.
+				var/area/SA = get_area(S)
+				if(SA == QA)
+					continue
 			hive_structures[name_ref] -= S
 			qdel(S)
 

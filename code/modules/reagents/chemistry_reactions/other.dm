@@ -22,7 +22,7 @@
 /datum/chemical_reaction/explosive/nitroglycerin
 	name = "nitroglycerin"
 	id = "nitroglycerin"
-	id = "nitroglycerin"
+	result = "nitroglycerin"
 	required_reagents = list("glycerol" = 1, "pacid" = 1, "sacid" = 1)
 	result_amount = 2
 	sensitivity_threshold = 5

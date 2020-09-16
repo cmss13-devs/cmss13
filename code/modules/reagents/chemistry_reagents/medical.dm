@@ -453,19 +453,3 @@
 	custom_metabolism = 0.01
 	data = 0
 	properties = list(PROPERTY_CURING = 2)
-
-// Surgery muscle relaxant & painkiller in one
-// Uses paralyze - cannot move, talk, or emote but can hear; patient is safe to operate on
-/datum/reagent/suxamorycin
-	name = "Suxamorycin"
-	id = "suxamorycin"
-	description = "A fairly new, powerful muscle relaxant, engineered from suxamethonium chloride. Weston-Yamada takes great pride in its quick effect and short duration, albeit its long-term effects are not tested yet."
-	reagent_state = LIQUID
-	custom_metabolism = 0.5
-	color = "#32a852"
-	scannable = 1
-	overdose = LOWM_REAGENTS_OVERDOSE
-	overdose_critical = LOWH_REAGENTS_OVERDOSE_CRITICAL
-	data = 0
-	chemclass = CHEM_CLASS_COMMON
-	properties = list(PROPERTY_SEDATIVE = 4, PROPERTY_HALLUCINOGENIC = 1)

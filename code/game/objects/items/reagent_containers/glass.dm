@@ -289,11 +289,11 @@
 	update_icon()
 
 /obj/item/reagent_container/glass/beaker/vial/sedative
-	name = "suxamorycin vial"
+	name = "chloral hydrate vial"
 
 /obj/item/reagent_container/glass/beaker/vial/sedative/Initialize()
 	..()
-	reagents.add_reagent("suxamorycin", 30)
+	reagents.add_reagent("chloralhydrate", 30)
 	update_icon()
 
 /obj/item/reagent_container/glass/beaker/vial/random

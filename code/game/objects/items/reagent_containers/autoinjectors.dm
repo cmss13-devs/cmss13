@@ -129,19 +129,6 @@
 	amount_per_transfer_from_this = HIGH_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
 	volume = (HIGH_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD) * INJECTOR_USES
 
-/obj/item/reagent_container/hypospray/autoinjector/suxamorycin
-	name = "suxamorycin autoinjector"
-	chemname = "anesthetic"
-	desc = "An autoinjector loaded with 3 uses of Suxamorycin. An incredibly strong muscle relaxant with dubious side effects, used for surgery."
-	amount_per_transfer_from_this = 10
-	volume = 30
-	mixed_chem = TRUE
-
-/obj/item/reagent_container/hypospray/autoinjector/suxamorycin/Initialize()
-	..()
-	reagents.add_reagent("suxamorycin", volume)
-	update_icon()
-
 /obj/item/reagent_container/hypospray/autoinjector/emergency
 	name = "emergency autoinjector (CAUTION)"
 	chemname = "emergency"

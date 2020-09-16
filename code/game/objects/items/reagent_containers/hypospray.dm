@@ -81,7 +81,7 @@
 			return
 	var/sleeptoxin = 0
 	for(var/datum/reagent/R in liquid.reagent_list)
-		if(istype(R, /datum/reagent/toxin/chloralhydrate) || istype(R, /datum/reagent/toxin/stoxin) || istype(R, /datum/reagent/suxamorycin))
+		if(istype(R, /datum/reagent/toxin/chloralhydrate) || istype(R, /datum/reagent/toxin/stoxin))
 			sleeptoxin = 1
 			break
 	if(sleeptoxin)

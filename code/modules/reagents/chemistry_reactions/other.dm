@@ -474,14 +474,6 @@
 	required_reagents = list("water" = 4, "toxin" = 1)
 	result_amount = 5
 
-// Muscle relaxant
-/datum/chemical_reaction/suxamorycin
-	name = "Suxamorycin"
-	id = "suxamorycin"
-	result = "suxamorycin"
-	required_reagents = list("chloralhydrate" = 1, "oxygen" = 1, "nitrogen" = 1)
-	result_amount = 3
-
 /datum/chemical_reaction/royalplasma
 	name = "Royal plasma"
 	id = "royalplasma"

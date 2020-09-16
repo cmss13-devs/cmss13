@@ -141,16 +141,6 @@
 	..()
 	reagents.add_reagent("chloralhydrate", 30)		//Intentionally low since it is so strong. Still enough to knock someone out.
 
-/obj/item/reagent_container/glass/bottle/suxamorycin
-	name = "Suxamorycin bottle"
-	desc = "A bottle of suxamorycin. A fairly new, powerful muscle relaxant, engineered from suxamethonium chloride. Weston-Yamada takes great pride in its quick effect and short duration, albeit its long-term effects are not tested yet."
-	icon = 'icons/obj/items/chemistry.dmi'
-	icon_state = "bottle20"
-
-/obj/item/reagent_container/glass/bottle/suxamorycin/Initialize()
-	..()
-	reagents.add_reagent("suxamorycin", 30)
-
 /obj/item/reagent_container/glass/bottle/antitoxin
 	name = "\improper Dylovene bottle"
 	desc = "A small bottle of dylovene. Counters poisons, and repairs damage. A wonder drug."

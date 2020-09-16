@@ -10770,9 +10770,6 @@
 	},
 /area/almayer/command/cic)
 "aAB" = (
-/obj/structure/machinery/computer/communications{
-	dir = 4
-	},
 /obj/structure/surface/table/reinforced,
 /obj/structure/window/reinforced/toughened{
 	dir = 8
@@ -10780,6 +10777,9 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
 	tag = "icon-intact-supply (EAST)"
+	},
+/obj/structure/machinery/computer/groundside_operations{
+	dir = 4
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -11363,14 +11363,14 @@
 	},
 /area/almayer/command/cichallway)
 "aBZ" = (
-/obj/structure/machinery/computer/station_alert{
-	dir = 4
-	},
 /obj/structure/surface/table/reinforced,
 /obj/structure/window/reinforced/toughened{
 	dir = 8
 	},
 /obj/structure/window/reinforced/toughened,
+/obj/structure/machinery/computer/almayer_control{
+	dir = 4
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"

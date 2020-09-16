@@ -282,3 +282,7 @@
 	if(iscrowbar(C))
 		return
 	..()
+
+/obj/structure/machinery/door/poddoor/almayer/closed
+	density = TRUE
+	opacity = TRUE

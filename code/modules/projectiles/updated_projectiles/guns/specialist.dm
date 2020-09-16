@@ -576,7 +576,7 @@
 		if(isrobot(M)) continue
 		if(ishuman(M))
 			var/mob/living/carbon/human/H = M
-			if(H.get_target_lock(human_user.faction_group))
+			if(human_user && H.get_target_lock(human_user.faction_group))
 				continue
 		ping_count++
 

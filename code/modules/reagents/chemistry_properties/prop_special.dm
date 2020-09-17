@@ -20,8 +20,8 @@
 	rarity = PROPERTY_LEGENDARY
 	category = PROPERTY_TYPE_METABOLITE
 
-/datum/chem_property/special/boosting/pre_process(mob/living/M)
-	return list(REAGENT_BOOST = level)
+/datum/chem_property/special/regulating/pre_process(mob/living/M)
+	return list(REAGENT_CANNOT_OD = TRUE)
 
 /datum/chem_property/special/hypergenetic
 	name = PROPERTY_HYPERGENETIC

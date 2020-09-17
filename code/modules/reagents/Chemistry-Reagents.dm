@@ -125,13 +125,13 @@
 
 //Pre-processing
 /datum/reagent/proc/handle_pre_processing(mob/living/M)
-	var/list/mods = list(	REAGENT_EFFECT	= TRUE,
-							REAGENT_CAN_OD 	= TRUE,
-							REAGENT_BOOST 	= FALSE,
-							REAGENT_PURGE 	= FALSE,
-							REAGENT_FORCE 	= FALSE,
-							REAGENT_CANCEL	= FALSE)
-	
+	var/list/mods = list(	REAGENT_EFFECT		= TRUE,
+							REAGENT_CANNOT_OD 	= FALSE,
+							REAGENT_BOOST 		= FALSE,
+							REAGENT_PURGE 		= FALSE,
+							REAGENT_FORCE 		= FALSE,
+							REAGENT_CANCEL		= FALSE)
+
 	for(var/datum/chem_property/P in properties)
 		var/list/A = P.pre_process(M)
 		if(!A)
@@ -150,7 +150,7 @@
 		if(potency <= 0)
 			continue
 		P.process(M, potency)
-		if(overdose && volume >= overdose && mods[REAGENT_CAN_OD])
+		if(overdose && volume >= overdose && !mods[REAGENT_CANNOT_OD])
 			P.process_overdose(M, potency)
 			if(overdose_critical && volume > overdose_critical)
 				P.process_critical(M, potency)

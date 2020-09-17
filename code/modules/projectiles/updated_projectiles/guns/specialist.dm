@@ -311,7 +311,7 @@
 						/obj/item/attachable/burstfire_assembly,
 						/obj/item/attachable/flashlight)
 
-	flags_gun_features = GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
 	starting_attachment_types = list(/obj/item/attachable/smartbarrel)
 
 

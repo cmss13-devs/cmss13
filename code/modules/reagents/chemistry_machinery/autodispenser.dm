@@ -237,7 +237,7 @@
 			nanomanager.update_uis(src)
 		else //We can dispense any basic or common chemical directly. This does use energy as we're creating stuff from thin air
 			//Check if we have enough energy to afford dispensing
-			var/savings = energy - min(amount, energy * 10) / 10
+			var/savings = energy - amount * 0.1
 			if(savings < 0) //Check if we can afford dispensing the chemical
 				break
 			output_container.reagents.add_reagent(R.id,amount)

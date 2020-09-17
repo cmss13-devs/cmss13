@@ -38,12 +38,15 @@
 /obj/structure/machinery/door/poddoor/almayer{
 	density = 0;
 	dir = 4;
-	icon_state = "pdoor0";
 	id = "viro";
 	name = "Virology Lockdown";
-	opacity = 1
+	opacity = 0
 	},
-/turf/open/floor/interior/plastic,
+/turf/open/floor{
+	tag = "icon-asteroidfloor (NORTH)";
+	icon_state = "asteroidfloor";
+	dir = 1
+	},
 /area/bigredv2/outside/virology)
 "ag" = (
 /turf/open/mars_cave{
@@ -152,10 +155,6 @@
 	},
 /area/bigredv2/outside/virology)
 "ax" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4;
-	layer = 2.4
-	},
 /turf/open/floor{
 	tag = "icon-asteroidwarning (NORTH)";
 	icon_state = "asteroidwarning";
@@ -192,16 +191,6 @@
 	dir = 1
 	},
 /area/bigredv2/outside/virology)
-"aC" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4;
-	layer = 2.4
-	},
-/turf/open/floor{
-	tag = "icon-asteroidwarning";
-	icon_state = "asteroidwarning"
-	},
-/area/bigredv2/outside/virology)
 "aE" = (
 /obj/structure/inflatable,
 /turf/open/floor{
@@ -226,12 +215,19 @@
 	},
 /area/bigredv2/outside/virology)
 "aH" = (
-/turf/open/floor/interior/plastic,
+/obj/structure/machinery/light{
+	tag = "icon-tube1 (EAST)";
+	icon_state = "tube1";
+	dir = 4
+	},
+/obj/structure/inflatable,
+/turf/open/floor{
+	tag = "icon-asteroidwarning (EAST)";
+	icon_state = "asteroidwarning";
+	dir = 4
+	},
 /area/bigredv2/outside/virology)
 "aI" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 6
-	},
 /obj/structure/inflatable/door,
 /turf/open/floor{
 	tag = "icon-asteroidwarning (EAST)";
@@ -261,9 +257,9 @@
 	},
 /obj/structure/inflatable/popped/door,
 /turf/open/floor{
-	tag = "icon-asteroidwarning (WEST)";
-	icon_state = "asteroidwarning";
-	dir = 8
+	tag = "icon-asteroidfloor (NORTH)";
+	icon_state = "asteroidfloor";
+	dir = 1
 	},
 /area/bigredv2/outside/virology)
 "aN" = (
@@ -283,19 +279,6 @@
 	dir = 1
 	},
 /area/bigredv2/outside/virology)
-"aP" = (
-/turf/open/mars{
-	tag = "icon-mars_dirt_9";
-	icon_state = "mars_dirt_9"
-	},
-/area/bigredv2/outside/virology)
-"aQ" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4;
-	layer = 2.4
-	},
-/turf/open/floor/interior/plastic,
-/area/bigredv2/outside/virology)
 "aR" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
@@ -304,25 +287,16 @@
 /obj/structure/machinery/door/poddoor/almayer{
 	density = 0;
 	dir = 4;
-	icon_state = "pdoor0";
 	id = "viro";
 	name = "Virology Lockdown";
-	opacity = 1
+	opacity = 0
 	},
-/turf/open/floor/interior/plastic,
+/turf/open/floor{
+	tag = "icon-asteroidfloor (NORTH)";
+	icon_state = "asteroidfloor";
+	dir = 1
+	},
 /area/bigredv2/outside/virology)
-"aS" = (
-/turf/open/mars{
-	tag = "icon-mars_dirt_3";
-	icon_state = "mars_dirt_3"
-	},
-/area/bigredv2/outside/nw)
-"aT" = (
-/turf/open/mars{
-	tag = "icon-mars_dirt_9";
-	icon_state = "mars_dirt_9"
-	},
-/area/bigredv2/outside/nw)
 "aU" = (
 /turf/open/mars,
 /area/bigredv2/outside/nw)
@@ -332,22 +306,23 @@
 /area/bigredv2/outside/nw)
 "aW" = (
 /obj/structure/pipes/standard/simple/hidden/green{
-	dir = 9
+	dir = 4;
+	layer = 2.4
 	},
-/obj/structure/inflatable/popped/door,
+/obj/structure/inflatable/door,
 /turf/open/floor{
-	tag = "icon-asteroidwarning (EAST)";
-	icon_state = "asteroidwarning";
-	dir = 4
+	tag = "icon-asteroidfloor (NORTH)";
+	icon_state = "asteroidfloor";
+	dir = 1
 	},
 /area/bigredv2/outside/nw)
 "aX" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
-	tag = "icon-asteroidfloor (NORTH)";
-	icon_state = "asteroidfloor";
-	dir = 1
+	tag = "icon-asteroidwarning (SOUTHWEST)";
+	icon_state = "asteroidwarning";
+	dir = 10
 	},
 /area/bigredv2/outside/virology)
 "aY" = (
@@ -355,25 +330,22 @@
 	pixel_y = -32
 	},
 /turf/open/floor{
-	tag = "icon-asteroidfloor (NORTH)";
-	icon_state = "asteroidfloor";
-	dir = 1
+	tag = "icon-asteroidwarning";
+	icon_state = "asteroidwarning"
 	},
 /area/bigredv2/outside/virology)
 "aZ" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
-	tag = "icon-asteroidfloor (NORTH)";
-	icon_state = "asteroidfloor";
-	dir = 1
+	tag = "icon-asteroidwarning";
+	icon_state = "asteroidwarning"
 	},
 /area/bigredv2/outside/virology)
 "ba" = (
 /obj/structure/machinery/light,
 /turf/open/floor{
-	tag = "icon-asteroidfloor (NORTH)";
-	icon_state = "asteroidfloor";
-	dir = 1
+	tag = "icon-asteroidwarning";
+	icon_state = "asteroidwarning"
 	},
 /area/bigredv2/outside/virology)
 "bb" = (
@@ -406,9 +378,14 @@
 	icon_state = "gib6";
 	tag = "icon-gib6"
 	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4;
+	layer = 2.4
+	},
 /turf/open/floor{
-	tag = "icon-asteroidwarning";
-	icon_state = "asteroidwarning"
+	tag = "icon-asteroidfloor (NORTH)";
+	icon_state = "asteroidfloor";
+	dir = 1
 	},
 /area/bigredv2/outside/nw)
 "bg" = (
@@ -416,26 +393,6 @@
 /turf/open/mars{
 	tag = "icon-mars_dirt_11";
 	icon_state = "mars_dirt_11"
-	},
-/area/bigredv2/outside/virology)
-"bh" = (
-/obj/structure/inflatable,
-/turf/open/mars{
-	tag = "icon-mars_dirt_3";
-	icon_state = "mars_dirt_3"
-	},
-/area/bigredv2/outside/virology)
-"bi" = (
-/obj/structure/machinery/light{
-	tag = "icon-tube1 (EAST)";
-	icon_state = "tube1";
-	dir = 4
-	},
-/obj/structure/inflatable,
-/turf/open/floor{
-	tag = "icon-asteroidwarning (SOUTHWEST)";
-	icon_state = "asteroidwarning";
-	dir = 10
 	},
 /area/bigredv2/outside/virology)
 "bj" = (
@@ -448,7 +405,11 @@
 /area/bigredv2/outside/nw)
 "bk" = (
 /obj/structure/inflatable/door,
-/turf/open/mars,
+/turf/open/floor{
+	tag = "icon-asteroidwarning (SOUTHWEST)";
+	icon_state = "asteroidwarning";
+	dir = 10
+	},
 /area/bigredv2/outside/virology)
 "bl" = (
 /obj/structure/inflatable,
@@ -469,7 +430,11 @@
 /area/bigredv2/outside/virology)
 "bn" = (
 /obj/structure/inflatable,
-/turf/open/mars,
+/turf/open/floor{
+	tag = "icon-asteroidwarning (WEST)";
+	icon_state = "asteroidwarning";
+	dir = 8
+	},
 /area/bigredv2/outside/virology)
 "bo" = (
 /obj/structure/closet/bodybag{
@@ -519,15 +484,27 @@
 "bu" = (
 /obj/structure/bed/roller,
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor/interior/plastic,
+/turf/open/floor{
+	tag = "icon-asteroidwarning (NORTHWEST)";
+	icon_state = "asteroidwarning";
+	dir = 9
+	},
 /area/bigredv2/outside/virology)
 "bv" = (
 /obj/structure/inflatable/popped,
-/turf/open/floor/interior/plastic,
+/turf/open/floor{
+	tag = "icon-asteroidwarning (NORTH)";
+	icon_state = "asteroidwarning";
+	dir = 1
+	},
 /area/bigredv2/outside/virology)
 "bw" = (
 /obj/structure/bed/roller,
-/turf/open/floor/interior/plastic,
+/turf/open/floor{
+	tag = "icon-asteroidwarning (NORTH)";
+	icon_state = "asteroidwarning";
+	dir = 1
+	},
 /area/bigredv2/outside/virology)
 "bx" = (
 /obj/structure/inflatable/popped,
@@ -542,23 +519,27 @@
 	tag = "icon-gib6";
 	icon_state = "gib6"
 	},
-/turf/open/floor/interior/plastic,
+/turf/open/floor{
+	tag = "icon-asteroidwarning (WEST)";
+	icon_state = "asteroidwarning";
+	dir = 8
+	},
 /area/bigredv2/outside/virology)
 "bz" = (
 /obj/structure/inflatable,
-/turf/open/floor/interior/plastic,
+/turf/open/floor{
+	tag = "icon-asteroidfloor (NORTH)";
+	icon_state = "asteroidfloor";
+	dir = 1
+	},
 /area/bigredv2/outside/virology)
 "bA" = (
 /obj/structure/inflatable/door,
-/turf/open/floor/interior/plastic,
-/area/bigredv2/outside/virology)
-"bC" = (
-/obj/structure/closet/l3closet/general,
-/turf/open/floor/interior/plastic,
-/area/bigredv2/outside/virology)
-"bD" = (
-/obj/structure/machinery/smartfridge/chemistry,
-/turf/open/floor/interior/plastic,
+/turf/open/floor{
+	tag = "icon-asteroidfloor (NORTH)";
+	icon_state = "asteroidfloor";
+	dir = 1
+	},
 /area/bigredv2/outside/virology)
 "bE" = (
 /obj/structure/bed/chair/office/light{
@@ -566,14 +547,22 @@
 	icon_state = "officechair_white";
 	tag = ""
 	},
-/turf/open/floor/interior/plastic,
+/turf/open/floor{
+	tag = "icon-asteroidfloor (NORTH)";
+	icon_state = "asteroidfloor";
+	dir = 1
+	},
 /area/bigredv2/outside/virology)
 "bF" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/med_data/laptop{
 	dir = 8
 	},
-/turf/open/floor/interior/plastic,
+/turf/open/floor{
+	tag = "icon-asteroidwarning (NORTHEAST)";
+	icon_state = "asteroidwarning";
+	dir = 5
+	},
 /area/bigredv2/outside/virology)
 "bG" = (
 /obj/structure/surface/table/almayer,
@@ -581,23 +570,96 @@
 /obj/item/storage/syringe_case/regular{
 	pixel_y = 10
 	},
-/turf/open/floor/interior/plastic,
+/turf/open/floor{
+	tag = "icon-asteroidwarning";
+	icon_state = "asteroidwarning"
+	},
 /area/bigredv2/outside/virology)
 "bH" = (
 /obj/structure/surface/table/almayer,
 /obj/item/handcuffs,
-/turf/open/floor/interior/plastic,
+/turf/open/floor{
+	dir = 6;
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (SOUTHEAST)"
+	},
 /area/bigredv2/outside/virology)
+"lB" = (
+/turf/open/floor{
+	dir = 6;
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (SOUTHEAST)"
+	},
+/area/bigredv2/outside/virology)
+"qP" = (
+/obj/structure/inflatable/popped/door,
+/turf/open/floor{
+	tag = "icon-asteroidwarning";
+	icon_state = "asteroidwarning"
+	},
+/area/bigredv2/outside/nw)
+"rG" = (
+/turf/open/floor{
+	tag = "icon-asteroidwarning";
+	icon_state = "asteroidwarning"
+	},
+/area/bigredv2/outside/nw)
 "zC" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	density = 0;
 	dir = 4;
-	icon_state = "pdoor0";
 	id = "viro";
 	name = "Virology Lockdown";
-	opacity = 1
+	opacity = 0
 	},
-/turf/open/floor/interior/plastic,
+/turf/open/floor{
+	tag = "icon-asteroidwarning (NORTH)";
+	icon_state = "asteroidwarning";
+	dir = 1
+	},
+/area/bigredv2/outside/virology)
+"FK" = (
+/obj/structure/inflatable,
+/turf/open/floor{
+	tag = "icon-asteroidwarning (EAST)";
+	icon_state = "asteroidwarning";
+	dir = 4
+	},
+/area/bigredv2/outside/virology)
+"GE" = (
+/turf/open/floor{
+	tag = "icon-asteroidwarning";
+	icon_state = "asteroidwarning"
+	},
+/area/bigredv2/outside/virology)
+"Kk" = (
+/obj/structure/machinery/door/poddoor/almayer{
+	density = 0;
+	dir = 4;
+	id = "viro";
+	name = "Virology Lockdown";
+	opacity = 0
+	},
+/turf/open/floor{
+	tag = "icon-asteroidwarning";
+	icon_state = "asteroidwarning"
+	},
+/area/bigredv2/outside/virology)
+"Po" = (
+/obj/structure/inflatable,
+/turf/open/floor{
+	tag = "icon-asteroidwarning (NORTHEAST)";
+	icon_state = "asteroidwarning";
+	dir = 5
+	},
+/area/bigredv2/outside/virology)
+"Vr" = (
+/obj/structure/inflatable/popped,
+/turf/open/floor{
+	tag = "icon-asteroidfloor (NORTH)";
+	icon_state = "asteroidfloor";
+	dir = 1
+	},
 /area/bigredv2/outside/virology)
 
 (1,1,1) = {"
@@ -700,7 +762,7 @@ bd
 ab
 bu
 by
-at
+av
 aA
 av
 av
@@ -712,21 +774,21 @@ bd
 ab
 bv
 bz
-at
+av
 aA
+av
 aK
 aK
-aK
-aK
+lB
 bd
 "}
 (11,1,1) = {"
 ab
 bw
 bA
-at
-aC
-ag
+av
+aA
+GE
 ag
 ag
 ag
@@ -735,10 +797,10 @@ bd
 (12,1,1) = {"
 ab
 bv
-bv
-at
-aC
-ag
+Vr
+av
+aA
+GE
 ag
 ah
 ag
@@ -748,23 +810,23 @@ bd
 ab
 bw
 bA
-at
-aC
+av
+aA
+GE
 ag
-aP
 ai
 bb
 bd
 "}
 (14,1,1) = {"
 ab
-au
-au
-at
-aC
-bh
+Po
+FK
+av
+aA
+av
 bn
-bk
+aG
 bk
 bd
 "}
@@ -773,11 +835,11 @@ ab
 ag
 ag
 at
-aC
-bh
-bC
-aH
-aH
+aA
+av
+bz
+av
+GE
 bd
 "}
 (16,1,1) = {"
@@ -785,20 +847,20 @@ ab
 ag
 ag
 at
-aC
-au
-bC
-aH
-aH
+aA
+av
+bz
+av
+GE
 bd
 "}
 (17,1,1) = {"
 ab
 ag
 aw
-aG
+bA
 aM
-bi
+bA
 aH
 bE
 bG
@@ -810,8 +872,8 @@ ag
 ab
 zC
 af
+Kk
 ab
-bD
 bF
 bH
 bd
@@ -820,9 +882,9 @@ bd
 ab
 ab
 ab
-aH
-aQ
-ab
+at
+aA
+GE
 ab
 ab
 ab
@@ -834,8 +896,8 @@ ak
 ab
 zC
 aR
+Kk
 ab
-aS
 aU
 ab
 bc
@@ -846,8 +908,8 @@ ak
 aE
 aI
 aW
+qP
 bj
-aS
 aU
 bc
 bc
@@ -858,8 +920,8 @@ ak
 ak
 ax
 bf
+rG
 ak
-aT
 aV
 aU
 bc

@@ -559,17 +559,14 @@
 	},
 /area/bigredv2/caves_east)
 "bV" = (
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 1;
+/obj/structure/machinery/door/poddoor/almayer/closed{
 	dir = 4;
-	icon_state = "pdoor1";
 	id = "filtration";
-	name = "Filtration Lockdown";
-	opacity = 0
+	name = "Filtration Lockdown"
 	},
 /turf/open/floor{
-	tag = "icon-asteroidwarning (NORTH)";
-	icon_state = "asteroidwarning";
+	tag = "icon-asteroidfloor (NORTH)";
+	icon_state = "asteroidfloor";
 	dir = 1
 	},
 /area/bigredv2/outside/s)
@@ -582,18 +579,15 @@
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "bY" = (
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 1;
+/obj/structure/machinery/door/poddoor/almayer/closed{
 	dir = 4;
-	icon_state = "pdoor1";
 	id = "filtration";
-	name = "Filtration Lockdown";
-	opacity = 0
+	name = "Filtration Lockdown"
 	},
 /turf/open/floor{
-	tag = "icon-asteroidwarning (NORTH)";
+	dir = 4;
 	icon_state = "asteroidwarning";
-	dir = 1
+	tag = "icon-asteroidwarning (EAST)"
 	},
 /area/bigredv2/outside/filtration_plant)
 "bZ" = (
@@ -603,20 +597,6 @@
 	dir = 1
 	},
 /area/bigredv2/outside/filtration_plant)
-"ca" = (
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 1;
-	dir = 4;
-	icon_state = "pdoor1";
-	id = "filtration";
-	name = "Filtration Lockdown";
-	opacity = 0
-	},
-/turf/open/floor{
-	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning"
-	},
-/area/bigredv2/outside/s)
 "cb" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/frame/table,
@@ -632,20 +612,6 @@
 	},
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
-"cd" = (
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 1;
-	dir = 4;
-	icon_state = "pdoor1";
-	id = "filtration";
-	name = "Filtration Lockdown";
-	opacity = 0
-	},
-/turf/open/floor{
-	tag = "icon-asteroidwarning";
-	icon_state = "asteroidwarning"
-	},
-/area/bigredv2/outside/filtration_plant)
 "ce" = (
 /obj/structure/machinery/light,
 /turf/open/floor{
@@ -659,17 +625,15 @@
 /obj/structure/machinery/door/poddoor/two_tile/vertical{
 	name = "\improper Filtration Lockdown"
 	},
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 1;
+/obj/structure/machinery/door/poddoor/almayer/closed{
 	dir = 4;
-	icon_state = "pdoor1";
 	id = "filtration";
-	name = "Filtration Lockdown";
-	opacity = 0
+	name = "Filtration Lockdown"
 	},
 /turf/open/floor{
-	tag = "icon-asteroidwarning";
-	icon_state = "asteroidwarning"
+	dir = 4;
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (EAST)"
 	},
 /area/bigredv2/outside/filtration_plant)
 "cg" = (
@@ -736,19 +700,16 @@
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/filtration_plant)
 "cI" = (
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 1;
+/obj/structure/machinery/door/poddoor/almayer/closed{
 	dir = 4;
-	icon_state = "pdoor1";
 	id = "filtration";
-	name = "Filtration Lockdown";
-	opacity = 0
+	name = "Filtration Lockdown"
 	},
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/floor{
-	tag = "icon-asteroidwarning (NORTH)";
+	dir = 4;
 	icon_state = "asteroidwarning";
-	dir = 1
+	tag = "icon-asteroidwarning (EAST)"
 	},
 /area/bigredv2/outside/filtration_plant)
 "dd" = (
@@ -789,24 +750,16 @@
 /area/bigredv2/outside/filtration_plant)
 "zu" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 1;
+/obj/structure/machinery/door/poddoor/almayer/closed{
 	dir = 4;
-	icon_state = "pdoor1";
 	id = "filtration";
-	name = "Filtration Lockdown";
-	opacity = 0
+	name = "Filtration Lockdown"
 	},
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/floor{
-	tag = "icon-asteroidwarning";
-	icon_state = "asteroidwarning"
-	},
-/area/bigredv2/outside/filtration_plant)
-"BC" = (
-/turf/open/mars_cave{
-	tag = "icon-mars_cave_2";
-	icon_state = "mars_cave_2"
+	dir = 4;
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (EAST)"
 	},
 /area/bigredv2/outside/filtration_plant)
 "Ms" = (
@@ -838,6 +791,18 @@
 	tag = "icon-U-N"
 	},
 /turf/open/floor,
+/area/bigredv2/outside/filtration_plant)
+"US" = (
+/obj/structure/machinery/door/poddoor/almayer/closed{
+	dir = 4;
+	id = "filtration";
+	name = "Filtration Lockdown"
+	},
+/turf/open/floor{
+	dir = 8;
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (WEST)"
+	},
 /area/bigredv2/outside/filtration_plant)
 "VW" = (
 /obj/structure/surface/table,
@@ -882,7 +847,7 @@ bw
 bL
 bV
 bV
-ca
+bV
 bL
 cl
 cm
@@ -1166,9 +1131,9 @@ bE
 bw
 az
 aa
-bY
-bY
-cd
+US
+US
+US
 aa
 az
 aY
@@ -1242,7 +1207,7 @@ bw
 bF
 bF
 bw
-BC
+bO
 bO
 bQ
 bO
@@ -1268,7 +1233,7 @@ bw
 bD
 bD
 bw
-BC
+bO
 bP
 bU
 bO

@@ -452,51 +452,27 @@ var/datum/controller/supply/supply_controller = new()
 		if(.(B))
 			return 1
 
-//Sellin
+// Called when the elevator is lowered.
 /datum/controller/supply/proc/sell()
 	var/area/area_shuttle = shuttle.get_location_area()
-	if(!area_shuttle)	return
+	if(!area_shuttle)
+		return
 
-	var/phoron_count = 0
-	var/plat_count = 0
+	// Sell crates.
+	for(var/obj/structure/closet/crate/C in area_shuttle)
+		callHook("sell_crate", list(C, area_shuttle))
+		points += points_per_crate
+		qdel(C)
 
+	// Sell manifests.
 	for(var/atom/movable/MA in area_shuttle)
-		if(MA.anchored)	continue
+		if(istype(MA, /obj/item/paper/manifest))
+			var/obj/item/paper/manifest/M = MA
+			if(M.stamped && M.stamped.len)
+				points += points_per_slip
 
-		// Must be in a crate!
-		if(istype(MA,/obj/structure/closet/crate))
-			callHook("sell_crate", list(MA, area_shuttle))
-
-			points += points_per_crate
-			var/find_slip = 1
-
-			for(var/atom in MA)
-				// Sell manifests
-				var/atom/A = atom
-				if(find_slip && istype(A,/obj/item/paper/manifest))
-					var/obj/item/paper/slip = A
-					if(slip.stamped && slip.stamped.len) //yes, the clown stamp will work. clown is the highest authority on the station, it makes sense
-						points += points_per_slip
-						find_slip = 0
-					continue
-
-				// Sell phoron
-			/*	if(istype(A, /obj/item/stack/sheet/mineral/phoron))
-					var/obj/item/stack/sheet/mineral/phoron/P = A
-					phoron_count += P.get_amount()*/
-
-				// Sell platinum
-				if(istype(A, /obj/item/stack/sheet/mineral/platinum))
-					var/obj/item/stack/sheet/mineral/platinum/P = A
-					plat_count += P.get_amount()
-
+		// Delete everything else.
 		qdel(MA)
-
-	if(phoron_count)
-		points += phoron_count * points_per_phoron
-
-	if(plat_count)
-		points += plat_count * points_per_platinum
 
 //Buyin
 /datum/controller/supply/proc/buy()

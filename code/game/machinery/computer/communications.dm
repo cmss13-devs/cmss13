@@ -312,7 +312,7 @@
 				var/input = stripped_input(usr, "Please choose a message to transmit to USCM.  Please be aware that this process is very expensive, and abuse will lead to termination.  Transmission does not guarantee a response. There is a small delay before you may send another message. Be clear and concise.", "To abort, send an empty message.", "")
 				if(!input || !(usr in view(1,src)) || authenticated != 2 || world.time < cooldown_central + COOLDOWN_COMM_CENTRAL) return FALSE
 
-				Centcomm_announce(input, usr)
+				high_command_announce(input, usr)
 				to_chat(usr, SPAN_NOTICE("Message transmitted."))
 				log_announcement("[key_name(usr)] has made an USCM announcement: [input]")
 				cooldown_central = world.time

@@ -26,7 +26,7 @@
 		announcement_helper(message, title, targets, sound(get_sfx("queen"),wait = 0,volume = 50))
 
 //general marine announcement
-/proc/marine_announcement(var/message, var/title = COMMAND_ANNOUNCE, var/sound_to_play = sound('sound/misc/notice2.ogg'), var/faction_to_display = FACTION_MARINE, var/add_PMCs = TRUE)
+/proc/marine_announcement(var/message, var/title = COMMAND_ANNOUNCE, var/sound_to_play = sound('sound/misc/notice2.ogg'), var/faction_to_display = FACTION_MARINE, var/add_PMCs = TRUE, var/signature)
 	var/list/targets = human_mob_list + dead_mob_list
 	if(faction_to_display == FACTION_MARINE)
 		for(var/mob/M in targets)
@@ -59,6 +59,9 @@
 				continue
 			if(H.faction != faction_to_display)
 				targets.Remove(H)
+
+	if(!isnull(signature))
+		message += "<br><br> Signed by, <br> [signature]"
 
 	announcement_helper(message, title, targets, sound_to_play)
 

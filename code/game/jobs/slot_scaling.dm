@@ -25,7 +25,7 @@
 	return job_slot_formula(playercount,35,1,2,4)
 
 /proc/so_slot_formula(var/playercount)
-	return job_slot_formula(playercount,50,2,4,5)
+	return job_slot_formula(playercount,50,1,2,5)
 
 /proc/doc_slot_formula(var/playercount)
 	return job_slot_formula(playercount,25,1,4,6)
@@ -49,4 +49,4 @@
 	return job_slot_formula(playercount,20,1,2,4)
 
 /proc/synth_slot_formula(var/playercount)
-	return job_slot_formula(playercount,140,1,1,2)
+	return job_slot_formula(playercount,120,1,1,2)

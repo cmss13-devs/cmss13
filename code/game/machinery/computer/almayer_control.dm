@@ -122,7 +122,15 @@
 
 			is_announcement_active = FALSE
 
-			shipwide_ai_announcement(input, COMMAND_SHIP_ANNOUNCE)
+			var/signed = null
+			if(ishuman(usr))
+				var/mob/living/carbon/human/H = usr
+				var/obj/item/card/id/id = H.wear_id
+				if(istype(id))
+					var/paygrade = get_paygrades(id.paygrade, FALSE, H.gender)
+					signed = "[paygrade] [id.registered_name]"
+
+			shipwide_ai_announcement(input, COMMAND_SHIP_ANNOUNCE, signature = signed)
 			add_timer(CALLBACK(GLOBAL_PROC, .proc/message_staff, "[key_name(usr)] has announced the following to the ship: [input]"), 20)
 			add_timer(CALLBACK(src, .proc/reactivate_announcement, usr), COOLDOWN_COMM_MESSAGE)
 			log_announcement("[key_name(usr)] has announced the following to the ship: [input]")

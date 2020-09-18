@@ -86,6 +86,9 @@
 		var/marine_text = ""
 		var/misc_text = ""
 		var/living_count = 0
+		var/almayer_count = 0
+		var/SSD_count = 0
+		var/helmetless_count = 0
 
 		for(var/X in current_squad.marines_list)
 			if(!X) 
@@ -104,15 +107,6 @@
 				if(A)
 					area_name = sanitize(A.name)
 
-				if((SURFACE_Z_LEVEL != M_turf.z))
-					continue
-
-				if(!H.key || !H.client)
-					continue
-
-				if(!istype(H.head, /obj/item/clothing/head/helmet/marine))
-					continue
-
 				if(H.job)
 					role = H.job
 				else if(istype(H.wear_id, /obj/item/card/id)) //decapitated marine is mindless,
@@ -124,10 +118,23 @@
 					if(CONSCIOUS)
 						mob_state = "Conscious"
 						living_count++
-
 					if(UNCONSCIOUS)
 						mob_state = "<b>Unconscious</b>"
 						living_count++
+					else
+						continue
+
+				if((SURFACE_Z_LEVEL != M_turf.z))
+					almayer_count++
+					continue
+
+				if(!istype(H.head, /obj/item/clothing/head/helmet/marine))
+					helmetless_count++
+					continue
+
+				if(!H.key || !H.client)
+					SSD_count++
+					continue
 
 			var/marine_infos = "<tr><td><A href='?src=\ref[src];operation=use_cam;cam_target=\ref[H]'>[mob_name]</a></td><td>[role][act_sl]</td><td>[mob_state]</td><td>[area_name]</td></tr>"
 			switch(role)
@@ -147,7 +154,7 @@
 					misc_text += marine_infos
 
 		dat += "<b>Total: [current_squad.marines_list.len] Deployed</b><BR>"
-		dat += "<b>Marines alive: [living_count]</b><BR>"
+		dat += "<b>Marines detected: [living_count] ([helmetless_count] no helmet, [SSD_count] SSD, [almayer_count] on Almayer)</b><BR>"
 		dat += "<center><b>Search:</b> <input type='text' id='filter' value='' onkeyup='updateSearch();' style='width:300px;'></center>"
 		dat += "<table id='marine_list' border='2px' style='width: 100%; border-collapse: collapse;' align='center'><tr>"
 		dat += "<th>Name</th><th>Role</th><th>State</th><th>Location</th></tr>"

@@ -21,11 +21,13 @@
 			apply_pain(PAIN_DELIMB)
 		// Broken bones
 		else if(O.status & LIMB_BROKEN || O.surgery_open_stage)
-			// Non-splinted else splinted
-			if(O.status & !LIMB_SPLINTED)
-				apply_pain(PAIN_BONE_BREAK)
-			else
+			// Splinted else non-splinted
+			if(O.status & LIMB_SPLINTED)
 				apply_pain(PAIN_BONE_BREAK - PAIN_BONE_BREAK_SPLINTED)
+			else
+				apply_pain(PAIN_BONE_BREAK)
+		else if((O.status & LIMB_SPLINTED) && !(O.status & LIMB_BROKEN))
+			apply_pain(PAIN_BONE_BREAK_SPLINTED)
 
 	//Internal organs
 	for(var/datum/internal_organ/O in H.internal_organs)

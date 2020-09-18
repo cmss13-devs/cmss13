@@ -516,6 +516,10 @@ var/global/dmm_suite/preloader/_preloader = new
 
 	for(var/attribute in attributes)
 		var/value = attributes[attribute]
+
+		if(attribute == "step_x" || attribute == "step_y") // step_x and step_y have no reason to be used ever, it just usually ends up breaking animations. This'll automatically convert it to pixel_x and pixel_y
+			attribute = replacetext(attribute, "step", "pixel")
+
 		if(islist(value))
 			value = deepCopyList(value)
 		try

@@ -1347,8 +1347,8 @@
 					W.add_fingerprint(HS)
 					for(var/obj/limb/l in to_splint)
 						amount_removed += 1
-						pain.apply_pain(PAIN_BONE_BREAK_SPLINTED)
 						l.status &= ~LIMB_SPLINTED
+						pain.recalculate_pain()
 						if(!W.add(1))
 							W = new /obj/item/stack/medical/splint(HS.loc)//old stack is dropped, time for new one
 							W.amount = 0

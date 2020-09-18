@@ -1004,7 +1004,10 @@ This function completely restores a damaged organ to perfect condition.
 					SPAN_HELPFUL("[user] finishes applying <b>[S]</b> to your [display_name]."),
 					SPAN_NOTICE("[user] finish applying [S] to [possessive_their] [display_name]."))
 				status |= LIMB_SPLINTED
-				owner.pain.apply_pain(-PAIN_BONE_BREAK_SPLINTED)
+				if(status & LIMB_BROKEN)
+					owner.pain.apply_pain(-PAIN_BONE_BREAK_SPLINTED)
+				else
+					owner.pain.apply_pain(PAIN_BONE_BREAK_SPLINTED)
 				. = 1
 				owner.update_med_icon()
 		else
@@ -1014,7 +1017,10 @@ This function completely restores a damaged organ to perfect condition.
 				SPAN_WARNING("[user] successfully applies [S] to their [display_name]."),
 				SPAN_NOTICE("You successfully apply [S] to your [display_name]."))
 				status |= LIMB_SPLINTED
-				owner.pain.apply_pain(-PAIN_BONE_BREAK_SPLINTED)
+				if(status & LIMB_BROKEN)
+					owner.pain.apply_pain(-PAIN_BONE_BREAK_SPLINTED)
+				else
+					owner.pain.apply_pain(PAIN_BONE_BREAK_SPLINTED)
 				. = 1
 				owner.update_med_icon()
 

@@ -61,7 +61,7 @@
 				targets.Remove(H)
 
 	if(!isnull(signature))
-		message += "<br><br> Signed by, <br> [signature]"
+		message += "<br><br><i> Signed by, <br> [signature]</i>"
 
 	announcement_helper(message, title, targets, sound_to_play)
 
@@ -109,13 +109,16 @@
 
 //AI shipside announcement, that uses announcement mechanic instead of talking into comms
 //to ensure that all humans on ship hear it regardless of comms and power
-/proc/shipwide_ai_announcement(var/message, var/title = MAIN_AI_SYSTEM, var/sound_to_play = sound('sound/misc/interference.ogg'))
+/proc/shipwide_ai_announcement(var/message, var/title = MAIN_AI_SYSTEM, var/sound_to_play = sound('sound/misc/interference.ogg'), var/signature)
 	var/list/targets = human_mob_list + dead_mob_list
 	for(var/mob/T in targets)
 		if(isobserver(T))
 			continue
 		if(!ishuman(T) || isYautja(T) || T.z != MAIN_SHIP_Z_LEVEL)
 			targets.Remove(T)
+
+	if(!isnull(signature))
+		message += "<br><br><i> Signed by, <br> [signature]</i>"
 
 	announcement_helper(message, title, targets, sound_to_play)
 

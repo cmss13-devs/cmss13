@@ -63,7 +63,8 @@
 	chemical_data.update_credits(10)
 	message_staff(SPAN_NOTICE("The research department has discovered DNA_Disintegrating in [holder.name] adding [OBJECTIVE_ABSOLUTE_VALUE * 2] bonus DEFCON points."), 1)
 	objectives_controller.add_admin_points(OBJECTIVE_ABSOLUTE_VALUE * 2)
-	ai_announcement("NOTICE: $20000 received from USCSS Royce. Shuttle inbound.")
+	defcon_controller.add_rewards_points(2);	
+	ai_announcement("NOTICE: $20000 received from USCSS Royce and sent to DEFCON assets. Shuttle inbound.")
 
 /datum/chem_property/special/ciphering
 	name = PROPERTY_CIPHERING

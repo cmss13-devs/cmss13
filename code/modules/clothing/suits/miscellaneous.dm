@@ -394,6 +394,10 @@
 	min_cold_protection_temperature = T0C
 	siemens_coefficient = 0.7
 
+/obj/item/clothing/suit/bomber/open
+	name = "open bomber jacket"
+	icon_state = "bomber_2"
+
 /obj/item/clothing/suit/storage/manager
 	name = "manager's jacket"
 	desc = "A suit that belongs to someone important. It is made of insulating material and offers minor protection from all forms of damage."

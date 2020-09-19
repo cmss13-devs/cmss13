@@ -311,7 +311,7 @@
 						/obj/item/attachable/burstfire_assembly,
 						/obj/item/attachable/flashlight)
 
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_HAS_FULL_AUTO
 	starting_attachment_types = list(/obj/item/attachable/smartbarrel)
 
 
@@ -330,7 +330,7 @@
 	burst_delay = config.mlow_fire_delay
 	fa_delay = config.mlow_fire_delay
 	fa_scatter_peak = config.ultra_scatter_peak
-	fa_max_scatter = config.med_scatter_value
+	fa_max_scatter = config.hmed_scatter_value
 	accuracy_mult = config.base_hit_accuracy_mult + config.min_hit_accuracy_mult
 	scatter = config.med_scatter_value
 	burst_scatter_mult = config.low_scatter_value

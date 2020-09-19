@@ -2,7 +2,7 @@
 #define URL_CHANGELOG              "https://cm-ss13.com/changelog"
 
 // Issue tracker
-#define URL_ISSUE_TRACKER          "https://gitlab.com/cmdevs/ColonialMarines/issues"
+#define URL_ISSUE_TRACKER          "https://gitlab.com/cmdevs/colonial-warfare/issues"
 
 // Wiki links
 #define URL_WIKI_RULES             "https://cm-ss13.com/wiki/Rules"

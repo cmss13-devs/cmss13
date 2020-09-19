@@ -50,7 +50,7 @@
 
 	if(alert("Please search for the bug first to make sure you aren't posting a duplicate.",,"Ok","Cancel")=="Cancel")
 		return
-	src << link("https://gitlab.com/cmdevs/ColonialMarines/issues")
+	src << link(URL_ISSUE_TRACKER)
 	return
 
 /client/verb/set_fps()

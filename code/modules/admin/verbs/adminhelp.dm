@@ -20,18 +20,18 @@ var/global/list/ahelp_msgs = list()
 	adminhelped = 1 //Determines if they get the message to reply by clicking the name.
 
 	var/msg
-	var/list/type = list ("Gitlab (Suggestions/Bug Reports)", "AdminHelp", "MentorHelp")
-	var/selected_type = input("- Gitlab is an external site where you can post your suggestions and bug reports.\
+	var/list/type = list ("Gitlab (Bug Reports)", "AdminHelp", "MentorHelp")
+	var/selected_type = input("- Gitlab is an external site where you can post your bug reports. If you want to implement a suggestion, make a Merge Request.\
 	\n\n- AdminHelp is used to contact staff members online for reporting griefers, rule clarification and asking assistance in dealing with crucial bugs.\
 	\n\n- MentorHelp is used to ask questions about gameplay mechanics and for tips and advices.\
 	\n\nSelect an option:", "AdminHelp", null, null) as null|anything in type
 	if(selected_type == "AdminHelp")
 		msg = input("Please enter your message:", "AdminHelp", null, null) as message|null
 
-	if(selected_type == "Gitlab (Suggestions/Bug Reports)")
+	if(selected_type == "Gitlab (Bug Reports)")
 		switch(alert("CM Gitlab Issues page will be opened in your default browser.",,"Go to Gitlab","Cancel"))
 			if("Go to Gitlab")
-				src << link("https://gitlab.com/cmdevs/ColonialMarines/issues")
+				src << link(URL_ISSUE_TRACKER)
 			else
 				return
 

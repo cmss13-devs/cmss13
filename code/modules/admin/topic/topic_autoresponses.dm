@@ -53,7 +53,7 @@
 		if("C: Changelog")
 			msgplayer = SPAN_NOTICE("<b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. The answer to your question can be found in the changelog. Click the changelog button at the top-right of the screen to view it in-game, or visit <a href='[URL_CHANGELOG]'>changelog page</a> on our wiki instead.</b>")
 		if("G: Gitlab it")
-			msgplayer = SPAN_NOTICE("<b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>! Please, submit your suggestion/bug report issue in our <a href='[URL_ISSUE_TRACKER]'>Gitlab</a>.</b>")
+			msgplayer = SPAN_NOTICE("<b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>! Please, submit your bug report issue in our <a href='[URL_ISSUE_TRACKER]'>Gitlab</a>.</b>")
 		if("H: Clear Cache")
 			msgplayer = SPAN_NOTICE("<b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. In order to clear cache, you need to click on gear icon located in upper-right corner of your BYOND client and select preferences. Switch to Games tab and click Clear Cache button. In some cases you need to manually delete cache. To do that, select Advanced tab and click Open User Directory and delete \"cache\" folder there.</b>")
 		else return

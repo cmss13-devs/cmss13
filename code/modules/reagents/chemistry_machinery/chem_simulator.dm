@@ -159,6 +159,7 @@
 			stop_processing()
 			icon_state = "modifier"
 			simulating = 0
+		update_costs()
 	else if(href_list["stop_simulation"])
 		stop_processing()
 		icon_state = "modifier"
@@ -212,10 +213,15 @@
 				if(MODE_SUPPRESS)
 					property_costs[P.name] = 2
 				if(MODE_RELATE)
-					if(P.rarity < PROPERTY_RARE)
-						property_costs[P.name] = P.level
+					if(reference_property)
+						if(reference_property.category & PROPERTY_TYPE_ANOMALOUS)
+							property_costs[P.name] = P.level * 10
+						else if(reference_property.rarity < PROPERTY_RARE)
+							property_costs[P.name] = P.level
+						else
+							property_costs[P.name] = P.level * 3
 					else
-						property_costs[P.name] = P.level * 3
+						property_costs[P.name] = P.level * 1
 		if(only_positive)
 			for(var/P in property_costs)
 				property_costs[P] = property_costs[P] + 1

@@ -22,10 +22,6 @@
 	if(..() || !allowed(user) || inoperable())
 		return
 
-	if(!istype(loc.loc, /area/almayer/command/cic)) //Has to be in the CIC. Can also be a generic CIC area to communicate, if wanted.
-		to_chat(usr, SPAN_WARNING("Unable to establish a connection."))
-		return FALSE
-
 	ui_interact(user)
 
 /obj/structure/machinery/computer/groundside_operations/ui_interact(var/mob/user as mob)

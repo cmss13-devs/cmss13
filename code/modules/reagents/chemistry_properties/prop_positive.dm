@@ -313,11 +313,14 @@
 				L.time_to_knit = 300 // 3 mins
 			if("r_leg","r_arm","l_leg","l_arm")
 				L.time_to_knit = 600 // 6 mins
-		if(L.time_to_knit && (L.status & LIMB_BROKEN) && L.knitting_time == -1 && (potency > 5 || L.status & LIMB_SPLINTED))
-			var/total_knitting_time = world.time + L.time_to_knit - max(150*potency, L.time_to_knit + 50)
-			L.knitting_time = total_knitting_time
-			L.start_processing()
-			to_chat(M, SPAN_NOTICE("You feel the bones in your [L.display_name] starting to knit together."))
+		if(L.time_to_knit && (L.status & LIMB_BROKEN) && L.knitting_time == -1)
+			if(!(L.status & LIMB_SPLINTED))
+				potency -= 2.5 // It'll work, but we're effectively 5 level lower.
+			if(potency > 0)
+				var/total_knitting_time = world.time + L.time_to_knit - min(150*potency, L.time_to_knit - 50)
+				L.knitting_time = total_knitting_time
+				L.start_processing()
+				to_chat(M, SPAN_NOTICE("You feel the bones in your [L.display_name] starting to knit together."))
 
 /datum/chem_property/positive/bonemending/process_overdose(mob/living/M, var/potency = 1)
 	M.take_limb_damage(2*potency)

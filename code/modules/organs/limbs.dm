@@ -886,10 +886,10 @@ This function completely restores a damaged organ to perfect condition.
 	return !not_salved
 
 /obj/limb/proc/fracture()
-	if(status & (LIMB_BROKEN|LIMB_DESTROYED|LIMB_ROBOT) )
+	if(status & (LIMB_BROKEN|LIMB_DESTROYED|LIMB_ROBOT))
 		if (knitting_time != -1)
 			knitting_time = -1
-			to_chat(owner, SPAN_WARNING("You feel your [src] stop knitting together as it absorbs damage!"))
+			to_chat(owner, SPAN_WARNING("You feel your [display_name] stop knitting together as it absorbs damage!"))
 		return
 	if(owner.chem_effect_flags & CHEM_EFFECT_RESIST_FRACTURE)
 		return

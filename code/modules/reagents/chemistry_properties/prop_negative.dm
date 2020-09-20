@@ -311,7 +311,7 @@
 	..()
 
 /datum/chem_property/negative/hypermetabolic/update_reagent()
-	holder.custom_metabolism += 0.05 * level
+	holder.custom_metabolism = holder.custom_metabolism * (1 + 0.25 * level)
 	..()
 
 /datum/chem_property/negative/addictive

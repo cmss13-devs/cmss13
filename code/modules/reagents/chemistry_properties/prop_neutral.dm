@@ -52,7 +52,7 @@
 /datum/chem_property/neutral/nutritious/pre_process(mob/living/M)
 	if(M.stat == DEAD)
 		return
-	
+
 	if(M.nutrition + (holder.nutriment_factor * level) >= NUTRITION_MAX)
 		M.nutrition = NUTRITION_MAX
 		holder.volume = 0
@@ -188,7 +188,7 @@
 /datum/chem_property/neutral/relaxing/process_overdose(mob/living/M, var/potency = 1)
 	//heart beats slower
 	M.reagent_move_delay_modifier += 2*potency
-	if(prob(10)) 
+	if(prob(10))
 		to_chat(M, SPAN_WARNING("You feel incredibly weak!"))
 
 /datum/chem_property/neutral/relaxing/process_critical(mob/living/M, var/potency = 1)
@@ -312,7 +312,7 @@
 
 /datum/chem_property/neutral/euphoric/on_delete(mob/living/M)
 	..()
-	
+
 	M.pain.reset_pain_reduction()
 
 /datum/chem_property/neutral/euphoric/process(mob/living/M, var/potency = 1)
@@ -365,7 +365,7 @@
 			to_chat(M, SPAN_WARNING("You lose focus..."))
 		else if(potency == 3)
 			to_chat(M, SPAN_WARNING("Your mind feels much less stable..."))
-		else 
+		else
 			to_chat(M, SPAN_WARNING("You lose your perfect focus..."))
 	else
 		if(world.time > holder.data + ANTIDEPRESSANT_MESSAGE_DELAY)
@@ -422,7 +422,7 @@
 	..()
 
 /datum/chem_property/neutral/hypometabolic/update_reagent()
-	holder.custom_metabolism = max(holder.custom_metabolism - 0.025 * level, 0.005)
+	holder.custom_metabolism = max(holder.custom_metabolism / (1 + 0.35 * level), 0.005)
 	..()
 
 /datum/chem_property/neutral/sedative

@@ -25,11 +25,11 @@
 	value = 1
 
 /datum/chem_property/neutral/thanatometabolizing/pre_process(mob/living/M)
-	if(M.stat != DEAD && M.oxyloss < 50 && round(M.blood_volume) > BLOOD_VOLUME_BAD)
+	if(M.stat != DEAD && M.oxyloss < 50 && round(M.blood_volume) > BLOOD_VOLUME_OKAY)
 		return list(REAGENT_CANCEL = TRUE)
 	var/effectiveness = 1
 	if(M.stat != DEAD)
-		effectiveness = min(max(max(M.oxyloss / 10, M.blood_volume / BLOOD_VOLUME_NORMAL) * 0.1 * level, 0.1), 1)
+		effectiveness = Clamp(max(M.oxyloss / 10, (BLOOD_VOLUME_NORMAL - M.blood_volume) / BLOOD_VOLUME_NORMAL) * 0.1 * level, 0.1, 1)
 	return list(REAGENT_FORCE = TRUE, REAGENT_EFFECT = effectiveness)
 
 /datum/chem_property/neutral/excreting

@@ -46,7 +46,7 @@
 
 //Metabolization mods
 #define REAGENT_EFFECT			"effectiveness"
-#define REAGENT_CAN_OD 			"can_OD"
+#define REAGENT_CANNOT_OD 		"cannot_OD"
 #define REAGENT_BOOST			"boost"
 #define REAGENT_PURGE			"purge"
 #define REAGENT_FORCE			"force"
@@ -187,7 +187,7 @@
 
 //Property category
 #define PROPERTY_TYPE_MEDICINE			1
-#define PROPERTY_TYPE_TOXICANT			2 
+#define PROPERTY_TYPE_TOXICANT			2
 #define PROPERTY_TYPE_STIMULANT			4
 #define PROPERTY_TYPE_REACTANT			8
 #define PROPERTY_TYPE_IRRITANT			16

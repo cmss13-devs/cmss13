@@ -39,6 +39,8 @@ var/global/datum/controller/defcon/defcon_controller
 		var/percentage = last_objectives_scored_points / defcon_level_triggers[current_defcon_level -1] * 100
 		return percentage
 
+/datum/controller/defcon/proc/add_rewards_points(var/amount)
+	remaining_reward_points += amount
 
 /datum/controller/defcon/proc/decrease_defcon_level()
 	if(current_defcon_level > 1)

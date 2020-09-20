@@ -745,13 +745,6 @@
 	dir = 4
 	},
 /area/desert_dam/exterior/river/riverside_east)
-"acm" = (
-/obj/structure/window/framed/colony/reinforced,
-/turf/open/floor{
-	icon_state = "white";
-	tag = "icon-white"
-	},
-/area/desert_dam/building/lab_northwest/west_lab_xenoflora)
 "acn" = (
 /obj/item/trash/eat,
 /turf/open/asphalt,
@@ -87446,7 +87439,7 @@ aGz
 aGz
 aGA
 aGz
-acm
+aIf
 aKp
 aGz
 aGA

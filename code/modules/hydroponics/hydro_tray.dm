@@ -401,12 +401,7 @@
 			overlays += "[seed.plant_icon]-harvest"
 		else if(age < seed.maturation)
 
-			var/t_growthstate
-			if(age >= seed.maturation)
-				t_growthstate = seed.growth_stages
-			else
-				t_growthstate = round(seed.maturation / seed.growth_stages)
-
+			var/t_growthstate = round(age/seed.maturation * seed.growth_stages)
 			overlays += "[seed.plant_icon]-grow[t_growthstate]"
 			lastproduce = age
 		else

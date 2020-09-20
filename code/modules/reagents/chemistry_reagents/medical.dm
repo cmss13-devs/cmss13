@@ -172,6 +172,7 @@
 	reagent_state = LIQUID
 	color = "#C8A5DC" // rgb: 200, 165, 220
 	chemclass = CHEM_CLASS_SPECIAL
+	objective_value = OBJECTIVE_HIGH_VALUE
 	properties = list(	PROPERTY_CROSSMETABOLIZING = 1,
 						PROPERTY_HYPERGENETIC = 1,
 						PROPERTY_ANTICORROSIVE = 1,

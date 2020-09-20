@@ -29,6 +29,20 @@
 	item_state = "bl_suit"
 	rollable_sleeves = FALSE
 
+/obj/item/clothing/under/rank/priest_robe
+	name = "priest robes"
+	desc = "A long dress with a purple scarf, often worn by religious folk."
+	icon_state = "priest_robe"
+	item_state = "bl_suit"
+	rollable_sleeves = FALSE
+
+/obj/item/clothing/under/rank/worker_overalls
+	name = "worker overalls"
+	desc = "An outfit fit for the hard working man."
+	icon_state = "worker_overalls"
+	item_state = "bl_suit"
+	rollable_sleeves = FALSE
+
 /obj/item/clothing/under/rank/chef
 	desc = "It's an apron which is given only to the most <b>hardcore</b> chefs in space."
 	name = "chef's uniform"

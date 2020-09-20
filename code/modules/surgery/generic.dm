@@ -218,11 +218,11 @@
 
 /datum/surgery_step/generic/cauterize
 	allowed_tools = list(
-	/obj/item/tool/surgery/cautery = 100,         \
-	/obj/item/clothing/mask/cigarette = 75,	\
-	/obj/item/tool/lighter = 50,    \
-	/obj/item/tool/weldingtool = 25
-	)
+    /obj/item/tool/surgery/cautery = 100,         \
+    /obj/item/clothing/mask/cigarette = 75,    \
+    /obj/item/tool/lighter = 50,    \
+    /obj/item/tool/weldingtool = 50
+    )
 
 	min_duration = CAUTERY_MIN_DURATION
 	max_duration = CAUTERY_MAX_DURATION

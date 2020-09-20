@@ -299,7 +299,7 @@
 	if(istype(I, /obj/item/grab))
 		var/obj/item/grab/G = I
 		if(ismob(G.grabbed_thing))
-			if(grab_level >= GRAB_AGGRESSIVE)
+			if(grab_level >= GRAB_CARRY) // Carry and choke can only throw
 				var/mob/living/M = G.grabbed_thing
 				spin_throw = FALSE //thrown mobs don't spin
 				thrown_thing = M

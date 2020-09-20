@@ -15,9 +15,11 @@
 
 /datum/surgery_step/open_encased/saw
 	allowed_tools = list(
-	/obj/item/tool/surgery/circular_saw = 100, \
-	/obj/item/tool/hatchet = 75
-	)
+    /obj/item/tool/surgery/circular_saw = 100, \
+    /obj/item/tool/hatchet = 75, \
+    /obj/item/weapon/melee/claymore/mercsword/machete = 75, \
+    /obj/item/weapon/melee/twohanded/fireaxe = 60  
+    )
 
 	min_duration = CIRCULAR_SAW_MIN_DURATION
 	max_duration = CIRCULAR_SAW_MAX_DURATION

@@ -159,7 +159,7 @@ Defined in conflicts.dm of the #defines folder.
 
 	if(sharp)
 		G.sharp = 0
-	
+
 	G.check_iff()
 
 /obj/item/attachable/ui_action_click(mob/living/user, obj/item/weapon/gun/G)
@@ -1543,9 +1543,7 @@ Defined in conflicts.dm of the #defines folder.
 	wield_delay_mod -= WIELD_DELAY_FAST
 	accuracy_mod -= config.hmed_hit_accuracy_mult
 	burst_scatter_mod += config.low_scatter_value
-	if(istype(G,/obj/item/weapon/gun/rifle/lmg))
-		delay_mod += config.min_fire_delay
-	else if(istype(G,/obj/item/weapon/gun/rifle/sniper/M42A))
+	if(istype(G,/obj/item/weapon/gun/rifle/sniper/M42A))
 		delay_mod += config.high_fire_delay + config.min_fire_delay
 	else
 		delay_mod += config.min_fire_delay + config.mlow_fire_delay
@@ -1570,9 +1568,7 @@ Defined in conflicts.dm of the #defines folder.
 				wield_delay_mod += WIELD_DELAY_FAST
 				accuracy_mod += config.hmed_hit_accuracy_mult
 				burst_scatter_mod -= config.low_scatter_value
-				if(istype(G,/obj/item/weapon/gun/rifle/lmg))
-					delay_mod -= config.min_fire_delay
-				else if(istype(G,/obj/item/weapon/gun/rifle/sniper/M42A))
+				if(istype(G,/obj/item/weapon/gun/rifle/sniper/M42A))
 					delay_mod -= config.high_fire_delay + config.min_fire_delay
 				else
 					delay_mod -= config.min_fire_delay + config.mlow_fire_delay

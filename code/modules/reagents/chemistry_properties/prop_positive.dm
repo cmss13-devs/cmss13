@@ -400,7 +400,7 @@
 		var/obj/item/alien_embryo/A = content
 		if(A && istype(A))
 			if(A.counter > 0)
-				A.counter = max(A.counter - 1+potency,0)
+				A.counter = A.counter - potency
 				H.take_limb_damage(0,0.2*potency)
 			else
 				A.stage--

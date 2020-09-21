@@ -765,10 +765,6 @@ var/list/obj/structure/machinery/newscaster/allCasters = list() //Global list th
 	var/scribble=""
 	var/scribble_page = null
 
-/*obj/item/newspaper/attack_hand(mob/user as mob)
-	..()
-	to_world("derp")*/
-
 obj/item/newspaper/attack_self(mob/user as mob)
 	if(ishuman(user))
 		var/mob/living/carbon/human/human_user = user

@@ -79,6 +79,9 @@
 	return
 
 /obj/item/paper/proc/read_paper(mob/user)
+	var/datum/asset/asset_datum = get_asset_datum(/datum/asset/simple/paper)
+	asset_datum.send()
+
 	show_browser(user, "<BODY class='paper'>[info][stamps]</BODY>", name, name)
 	onclose(user, name)
 
@@ -105,8 +108,7 @@
 	else //cyborg or AI not seeing through a camera
 		dist = get_dist(src, user)
 	if(dist < 2)
-		show_browser(user, "<BODY class='paper'>[info][stamps]</BODY>", name, name)
-		onclose(user, name)
+		read_paper(user)
 	else
 		//Show scrambled paper
 		show_browser(user, "<BODY class='paper'>[stars(info)][stamps]</BODY>", name, name)

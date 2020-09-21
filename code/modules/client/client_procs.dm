@@ -31,18 +31,22 @@
 		return
 	next_allowed_topic_time = world.time + TOPIC_SPAM_DELAY
 
-	//Asset cache
-	var/job
+	// asset_cache
+	var/asset_cache_job
 	if(href_list["asset_cache_confirm_arrival"])
-		job = round(text2num(href_list["asset_cache_confirm_arrival"]))
-		//because we skip the limiter, we have to make sure this is a valid arrival and not somebody tricking us
-		//into letting append to a list without limit.
-		if(job > 0 && job <= last_asset_job && !(job in completed_asset_jobs))
-			completed_asset_jobs += job
+		asset_cache_job = asset_cache_confirm_arrival(href_list["asset_cache_confirm_arrival"])
+		if (!asset_cache_job)
 			return
-		else if(job in completed_asset_jobs) 
-			to_chat(src, SPAN_DANGER("An error has been detected in how your client is receiving resources. Attempting to correct.... (If you keep seeing these messages you might want to close byond and reconnect)"))
-			src << browse("...", "window=asset_cache_browser") 
+
+	//byond bug ID:2256651
+	if (asset_cache_job && (asset_cache_job in completed_asset_jobs))
+		to_chat(src, "<span class='danger'>An error has been detected in how your client is receiving resources. Attempting to correct.... (If you keep seeing these messages you might want to close byond and reconnect)</span>")
+		src << browse("...", "window=asset_cache_browser")
+		return
+
+	if (href_list["asset_cache_preload_data"])
+		asset_cache_preload_data(href_list["asset_cache_preload_data"])
+		return
 
 	if(href_list["_src_"] == "chat") //Hopefully this catches pings before we log
 		return chatOutput.Topic(href, href_list)
@@ -77,10 +81,6 @@
 	//Logs all hrefs
 	if(config && config.log_hrefs && href_logfile)
 		href_logfile << "<small>[time2text(world.timeofday,"hh:mm")] [src] (usr:[usr])</small> || [hsrc ? "[hsrc] " : ""][href]<br>"
-
-	if(job && (job in completed_asset_jobs))
-		to_chat(src, SPAN_DANGER("An error has been detected in how your client is receiving resources. Attempting to correct.... (If you keep seeing these messages you might want to close byond and reconnect)"))
-		src << browse("...", "window=asset_cache_browser")
 
 	switch(href_list["_src_"])
 		if("admin_holder")
@@ -231,7 +231,8 @@
 		add_admin_whitelists()
 
 	send_assets()
-	nanomanager.send_resources(src)
+
+	connection_time = world.time
 
 	create_clickcatcher()
 	apply_clickcatcher()
@@ -298,17 +299,12 @@
 
 //send resources to the client. It's here in its own proc so we can move it around easiliy if need be
 /client/proc/send_assets()
-	//get the common files
-	getFiles(
-		'html/search.js',
-		'html/panels.css',
-		'html/loading.gif',
-		'html/images/wylogo.png',
-		'html/images/uscmlogo.png',
-		'html/images/faxwylogo.png',
-		'html/images/faxbackground.jpg'
-		)
-	add_timer(CALLBACK(GLOBAL_PROC, .proc/get_files_slot, src, SSassets.preload, FALSE), 10)
+	spawn (10) //removing this spawn causes all clients to not get verbs.
+		//load info on what assets the client has
+		src << browse('code/modules/asset_cache/validate_assets.html', "window=asset_cache_browser")
+
+		//Precache the client with all other assets slowly, so as to not block other browse() calls
+		add_timer(CALLBACK(SSassets.transport, /datum/asset_transport.proc/send_assets_slow, src, SSassets.transport.preload), 5 SECONDS)
 
 /client/Stat()
 	// We just did a short sleep because of a change, do another to render quickly, but flip the flag back.

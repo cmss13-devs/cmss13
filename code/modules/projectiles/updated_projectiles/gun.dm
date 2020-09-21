@@ -382,7 +382,8 @@
 
 
 /obj/item/weapon/gun/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 0)
-
+	var/datum/asset/assets = get_asset_datum(/datum/asset/nanoui/weapons)
+	assets.send(user)
 
 	var/ammo_name = "bullet"
 
@@ -455,11 +456,10 @@
 	var/rpm = max(fire_delay, 0.0001)
 	var/burst_rpm = max(((fire_delay + (burst_delay * burst_amount)) / max(burst_amount, 1)), 0.0001)
 
-
 	var/list/data = list(
 		"name" = name,
 		"desc" = desc,
-		"icon" = base_gun_icon,
+		"icon" = SSassets.transport.get_asset_url("[base_gun_icon].png"),
 
 		"two_handed_only" = (flags_gun_features & GUN_WIELDED_FIRING_ONLY),
 

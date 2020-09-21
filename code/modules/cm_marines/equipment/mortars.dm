@@ -71,7 +71,7 @@
 
 	if (!ui)
 		ui = new(user, src, ui_key, "mortar.tmpl", "Mortar Targeting Computer" , 340, 270)
-		ui.add_script("mortar.js")
+		ui.add_script("mortar", 'nano/js/ui_scripts/mortar.js')
 		ui.set_initial_data(data)
 		ui.open()
 		ui.set_auto_update(FALSE)//Auto update is NOT compatible with forms.

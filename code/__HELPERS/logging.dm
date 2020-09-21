@@ -31,6 +31,11 @@
 	STUI.admin.Add("\[[time_stamp()]]ADMIN: [text]<br>")
 	STUI.processing |= STUI_LOG_ADMIN
 
+/proc/log_asset(text)
+	asset_log.Add(text)
+	if (config.log_asset)
+		diary << "\[[time_stamp()]]ADMIN: [text][log_end]"
+
 /proc/log_adminpm(text)
 	admin_log.Add(text)
 	if (config.log_admin)

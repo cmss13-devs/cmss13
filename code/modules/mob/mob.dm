@@ -371,26 +371,8 @@
 	set name = "Changelog"
 	set category = "OOC"
 
-	getFiles (
-		'html/postcardsmall.jpg',
-		'html/somerights20.png',
-		'html/88x31.png',
-		'html/bug-minus.png',
-		'html/cross-circle.png',
-		'html/hard-hat-exclamation.png',
-		'html/image-minus.png',
-		'html/image-plus.png',
-		'html/music-minus.png',
-		'html/music-plus.png',
-		'html/tick-circle.png',
-		'html/wrench-screwdriver.png',
-		'html/spell-check.png',
-		'html/burn-exclamation.png',
-		'html/chevron.png',
-		'html/chevron-expand.png',
-		'html/changelog.css',
-		'html/changelog.js',
-	)
+	var/datum/asset/simple/changelog = get_asset_datum(/datum/asset/simple/changelog)
+	changelog.send(src)
 
 	var/changelog_html = file2text('html/changelog.html')
 

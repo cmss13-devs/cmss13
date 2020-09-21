@@ -33,9 +33,9 @@ nanoui is used to open and update nano browser uis
 	// options for modifying window behaviour
 	var/window_options = "focus=0;can_close=1;can_minimize=1;can_maximize=0;can_resize=1;titlebar=1;" // window option is set using window_id
 	// the list of stylesheets to apply to this ui
-	var/list/stylesheets = list()
+	var/stylesheets[0]
 	// the list of javascript scripts to use for this ui
-	var/list/scripts = list()
+	var/scripts[0]
 	// a list of templates which can be used with this ui
 	var/templates[0]
 	// the layout key for this ui (this is used on the frontend, leave it as "default" unless you know what you're doing)
@@ -94,8 +94,11 @@ nanoui is used to open and update nano browser uis
 		ref = nref
 
 	add_common_assets()
+	var/datum/asset/assets_images = get_asset_datum(/datum/asset/simple/nanoui_images)
+	assets_images.send(user)
 	var/datum/asset/assets = get_asset_datum(/datum/asset/nanoui)
 	assets.send(user, ntemplate_filename)
+	assets.send(user, "layout_default.tmpl", TRUE)
 
 /**
  * Clear references to the nanoui instance to prepare for garbage collection
@@ -116,16 +119,18 @@ nanoui is used to open and update nano browser uis
   * @return nothing
   */
 /datum/nanoui/proc/add_common_assets()
-	add_script("libraries.min.js") // A JS file comprising of jQuery, doT.js and jQuery Timer libraries (compressed together)
-	add_script("nano_utility.js") // The NanoUtility JS, this is used to store utility functions.
-	add_script("nano_template.js") // The NanoTemplate JS, this is used to render templates.
-	add_script("nano_state_manager.js") // The NanoStateManager JS, it handles updates from the server and passes data to the current state
-	add_script("nano_state.js") // The NanoState JS, this is the base state which all states must inherit from
-	add_script("nano_state_default.js") // The NanoStateDefault JS, this is the "default" state (used by all UIs by default), which inherits from NanoState
-	add_script("nano_base_callbacks.js") // The NanoBaseCallbacks JS, this is used to set up (before and after update) callbacks which are common to all UIs
-	add_script("nano_base_helpers.js") // The NanoBaseHelpers JS, this is used to set up template helpers which are common to all UIs
-	add_stylesheet("shared.css") // this CSS sheet is common to all UIs
-	add_stylesheet("icons.css") // this CSS sheet is common to all UIs
+	add_template("layout", "layout_default.tmpl")
+	add_script("libraries.min", 'nano/js/libraries.min.js') // A JS file comprising of jQuery, doT.js and jQuery Timer libraries (compressed together)
+	add_script("nano_utility", 'nano/js/nano_utility.js') // The NanoUtility JS, this is used to store utility functions.
+	add_script("nano_template", 'nano/js/nano_template.js') // The NanoTemplate JS, this is used to render templates.
+	add_script("nano_state_manager", 'nano/js/nano_state_manager.js') // The NanoStateManager JS, it handles updates from the server and passes data to the current state
+	add_script("nano_state", 'nano/js/nano_state.js') // The NanoState JS, this is the base state which all states must inherit from
+	add_script("nano_state_default", 'nano/js/nano_state_default.js') // The NanoStateDefault JS, this is the "default" state (used by all UIs by default), which inherits from NanoState
+	add_script("nano_base_callbacks", 'nano/js/nano_base_callbacks.js') // The NanoBaseCallbacks JS, this is used to set up (before and after update) callbacks which are common to all UIs
+	add_script("nano_base_helpers", 'nano/js/nano_base_helpers.js') // The NanoBaseHelpers JS, this is used to set up template helpers which are common to all UIs
+	add_stylesheet("shared", 'nano/css/shared.css') // this CSS sheet is common to all UIs
+	add_stylesheet("icons", 'nano/css/icons.css') // this CSS sheet is common to all UIs
+	add_stylesheet("layout_default", 'nano/css/layout_default.css')
 
  /**
   * Set the current status (also known as visibility) of this ui.
@@ -266,8 +271,13 @@ nanoui is used to open and update nano browser uis
   *
   * @return nothing
   */
-/datum/nanoui/proc/add_stylesheet(file)
-	stylesheets.Add(file)
+/datum/nanoui/proc/add_stylesheet(name, file)
+	var/asset_name = "[name].css"
+
+	stylesheets[asset_name] = file
+
+	if(!SSassets.cache[asset_name])
+		SSassets.transport.register_asset(asset_name, file)
 
  /**
   * Add a JavsScript script to this UI
@@ -277,8 +287,13 @@ nanoui is used to open and update nano browser uis
   *
   * @return nothing
   */
-/datum/nanoui/proc/add_script(file)
-	scripts.Add(file)
+/datum/nanoui/proc/add_script(name, file)
+	var/asset_name = "[ckey(name)].js"
+
+	scripts[asset_name] = file
+
+	if(!SSassets.cache[asset_name])
+		SSassets.transport.register_asset(asset_name, file)
 
  /**
   * Add a template for this UI
@@ -291,21 +306,7 @@ nanoui is used to open and update nano browser uis
   * @return nothing
   */
 /datum/nanoui/proc/add_template(key, filename)
-	templates[key] = filename
-
- /**
-  * Set the layout key for use in the frontend Javascript
-  * The layout key is the basic layout key for the page
-  * Two files are loaded on the client based on the layout key varable:
-  *     -> a template in /nano/templates with the filename "layout_<layout_key>.tmpl
-  *     -> a CSS stylesheet in /nano/css with the filename "layout_<layout_key>.css
-  *
-  * @param nlayout string The layout key to use
-  *
-  * @return nothing
-  */
-/datum/nanoui/proc/set_layout_key(nlayout_key)
-	layout_key = lowertext(nlayout_key)
+	templates[key] = SSassets.transport.get_asset_url(filename)
 
  /**
   * Set the ui to update the layout (re-render it) on each update, turning this on will break the map ui (if it's being used)
@@ -373,18 +374,12 @@ nanoui is used to open and update nano browser uis
   * @return string HTML for the UI
   */
 /datum/nanoui/proc/get_html()
-
-	// before the UI opens, add the layout files based on the layout key
-	add_stylesheet("layout_[layout_key].css")
-	add_template("layout", "layout_[layout_key].tmpl")
-
 	var/head_content = ""
+	for (var/file in scripts)
+		head_content += "<script type='text/javascript' src='[SSassets.transport.get_asset_url(file)]'></script> "
 
-	for (var/filename in scripts)
-		head_content += "<script type='text/javascript' src='[filename]'></script> "
-
-	for (var/filename in stylesheets)
-		head_content += "<link rel='stylesheet' type='text/css' href='[filename]'> "
+	for (var/file in stylesheets)
+		head_content += "<link rel='stylesheet' type='text/css' href='[SSassets.transport.get_asset_url(file)]'> "
 
 	var/template_data_json = "{}" // An empty JSON object
 	if (templates.len > 0)

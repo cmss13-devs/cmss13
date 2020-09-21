@@ -7,7 +7,7 @@ var/datum/subsystem/assets/SSassets
 
 	var/list/cache = list()
 	var/list/preload = list()
-
+	var/datum/asset_transport/transport = new()
 
 /datum/subsystem/assets/New()
 	NEW_SS_GLOBAL(SSassets)
@@ -18,8 +18,6 @@ var/datum/subsystem/assets/SSassets
 		if(type != initial(A._abstract))
 			get_asset_datum(type)
 
-	preload = cache.Copy() //don't preload assets generated during the round
+	transport.Initialize(cache)
 
-	for(var/client/C in clients)
-		add_timer(CALLBACK(GLOBAL_PROC, .proc/get_files_slot, C, preload, FALSE), 10)
 	return ..()

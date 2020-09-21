@@ -14,6 +14,8 @@
 	var/head_content = ""
 	var/content = ""
 	var/title_buttons = ""
+	var/static/datum/asset/simple/common/common_asset = get_asset_datum(/datum/asset/simple/common)
+	var/static/datum/asset/simple/other/other_asset = get_asset_datum(/datum/asset/simple/other)
 
 
 /datum/browser/New(nuser, nwindow_id, ntitle = 0, stylesheet = 'html/browser/common.css', nwidth = 0, nheight = 0, var/atom/nref = null)
@@ -42,14 +44,21 @@
 /datum/browser/proc/set_window_options(nwindow_options)
 	window_options = nwindow_options
 
-/datum/browser/proc/set_title_image(ntitle_image)
-	//title_image = ntitle_image
-
 /datum/browser/proc/add_stylesheet(name, file)
-	stylesheets[name] = file
+	if (istype(name, /datum/asset/spritesheet))
+		var/datum/asset/spritesheet/sheet = name
+		stylesheets["spritesheet_[sheet.name].css"] = "data/spritesheets/[sheet.name]"
+	else
+		var/asset_name = "[name].css"
+
+		stylesheets[asset_name] = file
+
+		if (!SSassets.cache[asset_name])
+			SSassets.transport.register_asset(asset_name, file)
 
 /datum/browser/proc/add_script(name, file)
-	scripts[name] = file
+	scripts["[ckey(name)].js"] = file
+	SSassets.transport.register_asset("[ckey(name)].js", file)
 
 /datum/browser/proc/set_content(ncontent)
 	content = ncontent
@@ -58,17 +67,17 @@
 	content += ncontent
 
 /datum/browser/proc/get_header()
-	var/key
-	var/filename
-	for (key in stylesheets)
-		filename = "[ckey(key)].css"
-		user << browse_rsc(stylesheets[key], filename)
-		head_content += "<link rel='stylesheet' type='text/css' href='[filename]'>"
+	head_content += "<link rel='stylesheet' type='text/css' href='[common_asset.get_url_mappings()["common.css"]]'>"
+	head_content += "<link rel='stylesheet' type='text/css' href='[other_asset.get_url_mappings()["search.js"]]'>"
+	head_content += "<link rel='stylesheet' type='text/css' href='[other_asset.get_url_mappings()["panels.css"]]'>"
+	head_content += "<link rel='stylesheet' type='text/css' href='[other_asset.get_url_mappings()["loading.gif"]]'>"
 
-	for (key in scripts)
-		filename = "[ckey(key)].js"
-		user << browse_rsc(scripts[key], filename)
-		head_content += "<script type='text/javascript' src='[filename]'></script>"
+	for (var/file in stylesheets)
+		head_content += "<link rel='stylesheet' type='text/css' href='[SSassets.transport.get_asset_url(file)]'>"
+
+
+	for (var/file in scripts)
+		head_content += "<script type='text/javascript' src='[SSassets.transport.get_asset_url(file)]'></script>"
 
 	var/title_attributes = "class='uiTitle'"
 	if (title_image)
@@ -100,16 +109,35 @@
 	[get_footer()]
 	"}
 
-/datum/browser/proc/open(var/use_onclose = 1)
+/datum/browser/proc/open(var/use_onclose = TRUE)
+	if(isnull(window_id))	//null check because this can potentially nuke goonchat
+		to_chat(user, "<span class='userdanger'>The [title] browser you tried to open failed a sanity check! Please report this on github!</span>")
+		return
 	var/window_size = ""
 	if (width && height)
 		window_size = "size=[width]x[height];"
+	common_asset.send(user)
+	other_asset.send(user)
+	if (stylesheets.len)
+		SSassets.transport.send_assets(user, stylesheets)
+	if (scripts.len)
+		SSassets.transport.send_assets(user, scripts)
+
 	user << browse(get_content(), "window=[window_id];[window_size][window_options]")
+	
 	if (use_onclose)
-		onclose(user, window_id, ref)
+		setup_onclose()
+
+/datum/browser/proc/setup_onclose()
+	set waitfor = 0 //winexists sleeps, so we don't need to.
+	for (var/i in 1 to 10)
+		if (user && winexists(user, window_id))
+			onclose(user, window_id, ref)
+			break
 
 /datum/browser/proc/close()
-	close_browser(user, "[window_id]")
+	if(!isnull(window_id))//null check because this can potentially nuke goonchat
+		close_browser(user, "[window_id]")
 
 // This will allow you to show an icon in the browse window
 // This is added to mob so that it can be used without a reference to the browser object

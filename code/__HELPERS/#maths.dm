@@ -65,7 +65,7 @@ var/list/sqrtTable = list(1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 
 #define ToRadians(degrees) (degrees * 0.0174532925)
 
 // min is inclusive, max is exclusive
-#define Wrap(val, min_val, max_val) (val - ( Floor((val - min_val) / (max_val - min_val)) * (max_val - min_val) ))
+#define WRAP(val, min, max) clamp(( min == max ? min : (val) - (round(((val) - (min))/((max) - (min))) * ((max) - (min))) ),min,max)
 
 
 // MATH PROCS

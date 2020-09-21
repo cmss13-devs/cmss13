@@ -163,6 +163,12 @@ var/savefile/iconCache = new /savefile("data/iconCache.sav") //Cache of icons fo
 		data = json_encode(data)
 	C << output("[data]", "["browseroutput"]:ehjaxCallback")
 
+/// Generate a filename for this asset
+/// The same asset will always lead to the same asset name
+/// (Generated names do not include file extention.)
+/proc/generate_asset_name(file)
+	return "asset.[md5(fcopy_rsc(file))]"
+
 // Converts the icons to html and stores them for display
 /proc/htmlicon(object, target = world)
 	if(!object)
@@ -184,10 +190,11 @@ var/savefile/iconCache = new /savefile("data/iconCache.sav") //Cache of icons fo
 	if(!isicon(I))
 		if(isfile(object))
 			var/name = sanitize_filename("[generate_asset_name(object)].png")
-			register_asset(name, object)
-			for(var/mob in targets)
-				send_asset(mob, key, FALSE)
-			return "<img class='icon icon-misc' src=\"[url_encode(name)]\">"
+			if(!SSassets.cache[name])
+				SSassets.transport.register_asset(name, object)
+			for(var/object2 in targets)
+				SSassets.transport.send_assets(object2, name)
+			return "<img class='icon icon-misc' src='[SSassets.transport.get_asset_url(name)]'>"
 
 	var/atom/A = object
 	if(!istype(A))
@@ -197,11 +204,11 @@ var/savefile/iconCache = new /savefile("data/iconCache.sav") //Cache of icons fo
 	I = icon(I, A.icon_state, A.dir, 1, FALSE)
 
 	key = "[generate_asset_name(I)].png"
-	register_asset(key, I)
-	for(var/mob in targets)
-		send_asset(mob, key, FALSE)
-
-	return "<img class='icon icon-[A.icon_state]' src=\"[url_encode(key)]\">"
+	if(!SSassets.cache[key])
+		SSassets.transport.register_asset(key, I)
+	for(var/object2 in targets)
+		SSassets.transport.send_assets(object2, key)
+	return "<img class='icon icon-[A.icon_state]' src='[SSassets.transport.get_asset_url(key)]'>"
 
 /proc/to_chat_forced(var/target, var/message)
 	if (istype(message, /image) || istype(message, /sound) || istype(target, /savefile))

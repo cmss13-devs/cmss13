@@ -10,6 +10,7 @@
 	var/log_say = 0						// log client say
 	var/log_hivemind = 0				// log hivemind
 	var/log_admin = 0					// log admin actions
+	var/log_asset = 0					// log asset
 	var/log_debug = 1					// log debug output
 	var/log_game = 0					// log game events
 	var/log_vote = 0					// log voting

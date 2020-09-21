@@ -33,7 +33,7 @@
 		create_shrapnel(loc, shrapnel_count, , ,shrapnel_type, initial(name), source_mob)
 		sleep(2) //so that mobs are not knocked down before being hit by shrapnel. shrapnel might also be getting deleted by explosions?
 	apply_explosion_overlay()
-	cell_explosion(loc, explosion_power, explosion_falloff, null, initial(name), source_mob)
+	cell_explosion(loc, explosion_power, explosion_falloff, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, initial(name), source_mob)
 	qdel(src)
 
 

@@ -172,7 +172,7 @@
 		dir = pick(NORTH, EAST, SOUTH, WEST)
 		sleep(2)
 
-	cell_explosion(loc, 10, 10, null, "sentry explosion")
+	cell_explosion(loc, 10, 10, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, "sentry explosion")
 	if(!disposed)
 		qdel(src)
 

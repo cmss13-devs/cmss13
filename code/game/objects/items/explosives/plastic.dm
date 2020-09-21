@@ -230,7 +230,7 @@
 			. = ..()
 		if(!disposed)
 			overlays.Cut()
-			cell_explosion(target_turf, 60, 30, null, initial(name), source_mob)
+			cell_explosion(target_turf, 60, 30, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, initial(name), source_mob)
 			qdel(src)
 		return
 	plant_target.ex_act(1000, , initial(name), source_mob)
@@ -249,7 +249,7 @@
 	for(var/obj/structure/machinery/door/D in orange(1, target_turf))
 		D.ex_act(1000, , initial(name), source_mob)
 
-	cell_explosion(target_turf, 120, 30, null, initial(name), source_mob)
+	cell_explosion(target_turf, 120, 30, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, initial(name), source_mob)
 
 	qdel(src)
 

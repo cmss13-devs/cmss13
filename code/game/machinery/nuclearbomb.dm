@@ -364,7 +364,7 @@ var/bomb_set = FALSE
 	EvacuationAuthority.trigger_self_destruct(list(z), src, FALSE, NUKE_EXPLOSION_GROUND_FINISHED, FALSE, end_round)
 
 	sleep(100)
-	cell_explosion(loc, 500, 150, null, initial(name))
+	cell_explosion(loc, 500, 150, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, initial(name))
 	qdel(src)
 	return TRUE
 

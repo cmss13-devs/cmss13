@@ -514,7 +514,7 @@
 	for(var/j=0; j<10; j++)
 		sploded = locate(T_trg.x + rand(-5, 15), T_trg.y + rand(-5, 25), T_trg.z)
 		//Fucking. Kaboom.
-		cell_explosion(sploded, 200, 20, null, "dropship crash") //Clears out walls
+		cell_explosion(sploded, 200, 20, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, "dropship crash") //Clears out walls
 		sleep(3)
 
 	// Break the reqs windows.

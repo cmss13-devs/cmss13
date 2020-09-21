@@ -39,6 +39,8 @@
 	var/power = 0
 	// How much will the power drop off when the explosion propagates?
 	var/power_falloff = 20
+	// Falloff shape is used to determines whether or not the falloff will change during the explosion traveling.
+	var/falloff_shape = EXPLOSION_FALLOFF_SHAPE_LINEAR
 	// How much power does the explosion gain (or lose) by bouncing off walls?
 	var/reflection_power_multiplier = 0.4
 
@@ -189,10 +191,17 @@
 		if(new_power <= 0)
 			continue
 
+		var/new_falloff = power_falloff
+		// Handle our falloff function.
+		switch(falloff_shape)
+			if(EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL)
+				new_falloff += new_falloff * dir_falloff
+
 		var/datum/automata_cell/explosion/E = propagate(dir)
 		if(E)
 			E.power = new_power
-			E.power_falloff = power_falloff
+			E.power_falloff = new_falloff
+			E.falloff_shape = falloff_shape
 			E.explosion_source = explosion_source
 			E.explosion_source_mob = explosion_source_mob
 
@@ -232,7 +241,7 @@
 // I'll admit most of the code from here on out is basically just copypasta from DOREC
 
 // Spawns a cellular automaton of an explosion
-/proc/cell_explosion(var/turf/epicenter, var/power, var/falloff, var/direction, var/explosion_source, var/explosion_source_mob)
+/proc/cell_explosion(var/turf/epicenter, var/power, var/falloff, var/falloff_shape = EXPLOSION_FALLOFF_SHAPE_LINEAR, var/direction, var/explosion_source, var/explosion_source_mob)
 	if(!istype(epicenter))
 		epicenter = get_turf(epicenter)
 
@@ -254,6 +263,7 @@
 
 	E.power = power
 	E.power_falloff = falloff
+	E.falloff_shape = falloff_shape
 	E.direction = direction
 	E.explosion_source = explosion_source
 	E.explosion_source_mob = explosion_source_mob

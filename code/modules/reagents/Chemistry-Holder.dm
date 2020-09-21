@@ -595,6 +595,7 @@ var/const/INGEST = 2
 	//For explosion
 	var/ex_power = 0
 	var/ex_falloff = base_ex_falloff
+	var/ex_falloff_shape = EXPLOSION_FALLOFF_SHAPE_LINEAR
 	//For chemical fire
 	var/radius = 0
 	var/intensity = 0
@@ -621,7 +622,7 @@ var/const/INGEST = 2
 	intensity = round(intensity)
 	duration = round(duration)
 	if(ex_power > 0)
-		explode(sourceturf, ex_power, ex_falloff)
+		explode(sourceturf, ex_power, ex_falloff, ex_falloff_shape)
 	if(intensity > 0)
 		var/firecolor = mix_burn_colors(supplements)
 		combust(sourceturf, radius, intensity, duration, supplemented, firecolor, smokerad)
@@ -631,7 +632,7 @@ var/const/INGEST = 2
 	trigger_volatiles = FALSE
 	return exploded
 
-/datum/reagents/proc/explode(var/turf/sourceturf, var/ex_power, var/ex_falloff)
+/datum/reagents/proc/explode(var/turf/sourceturf, var/ex_power, var/ex_falloff, var/ex_falloff_shape)
 	if(!sourceturf)
 		return
 	if(sourceturf.chemexploded)
@@ -670,7 +671,7 @@ var/const/INGEST = 2
 		if((istype(my_atom, /obj/item/explosive/plastic) || istype(my_atom, /obj/item/explosive/grenade)) && (ismob(my_atom.loc) || isStructure(my_atom.loc)))
 			my_atom.loc.ex_act(ex_power)
 			ex_power = ex_power / 2
-		cell_explosion(sourceturf, ex_power, ex_falloff, null, "chemical explosion", source_mob)
+		cell_explosion(sourceturf, ex_power, ex_falloff, ex_falloff_shape, null, "chemical explosion", source_mob)
 
 		exploded = TRUE // clears reagents after all reactions processed
 

@@ -48,8 +48,6 @@
 		add_timer(CALLBACK(src, /obj/structure/machinery/reagent_analyzer/proc/reagent_process), SECONDS_2)
 		return
 	playsound(loc, 'sound/machines/fax.ogg', 15, 1)
-	status = 0
-	processing = FALSE
 	add_timer(CALLBACK(src, /obj/structure/machinery/reagent_analyzer/proc/finish_reagent_process), SECONDS_4)
 
 /obj/structure/machinery/reagent_analyzer/proc/finish_reagent_process()
@@ -69,6 +67,8 @@
 		print_report(1)
 		playsound(loc, 'sound/machines/twobeep.ogg', 15, 1)
 	sample_number++
+	status = 0
+	processing = FALSE
 
 /obj/structure/machinery/reagent_analyzer/attack_hand(mob/user as mob)
 	if(processing)

@@ -146,7 +146,7 @@
 	for(var/datum/chem_property/P in properties)
 		//A level of 1 == 0.5 potency, which is equal to REM (0.2/0.4) in the old system
 		//That means the level of the property by default is the number of REMs the effect had in the old system
-		var/potency = mods[REAGENT_EFFECT] * (P.level * 0.5 + mods[REAGENT_BOOST])
+		var/potency = mods[REAGENT_EFFECT] * ((P.level+mods[REAGENT_BOOST]) * 0.5)
 		if(potency <= 0)
 			continue
 		P.process(M, potency)
@@ -164,7 +164,7 @@
 //Dead Processing, see /mob/living/carbon/human/proc/handle_necro_chemicals_in_body()
 /datum/reagent/proc/handle_dead_processing(mob/living/M, var/list/mods)
 	for(var/datum/chem_property/P in properties)
-		var/potency = mods[REAGENT_EFFECT] * (P.level * 0.5 + mods[REAGENT_BOOST])
+		var/potency = mods[REAGENT_EFFECT] * ((P.level+mods[REAGENT_BOOST]) * 0.5)
 		if(potency <= 0)
 			continue
 		if(P.process_dead(M, potency))

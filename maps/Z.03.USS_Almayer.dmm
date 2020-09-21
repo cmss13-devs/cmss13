@@ -11527,6 +11527,7 @@
 	name = "Research Interior Door";
 	pixel_x = -25;
 	pixel_y = -5;
+	normaldoorcontrol = 1;
 	req_access = list(28)
 	},
 /obj/structure/machinery/door_control{
@@ -27387,15 +27388,6 @@
 /obj/structure/surface/table/reinforced,
 /obj/structure/machinery/door/window/westright{
 	dir = 4
-	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
-	dir = 4;
-	icon_state = "";
-	id = "researchlockdownint";
-	layer = 3.55;
-	name = "\improper Research Lockdown";
-	opacity = 0
 	},
 /obj/structure/machinery/door/window/westright{
 	req_one_access = list(2,7)

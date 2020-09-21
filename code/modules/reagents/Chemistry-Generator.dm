@@ -328,6 +328,7 @@
 											PROPERTY_ADDICTIVE 			= list(PROPERTY_PSYCHOSTIMULATING, PROPERTY_NEUROTOXIC),\
 											PROPERTY_CIPHERING_PREDATOR = list(PROPERTY_CIPHERING, PROPERTY_CROSSMETABOLIZING))
 	var/datum/chem_property/match
+	var/datum/chem_property/initial_property
 	for(var/datum/chem_property/P in properties)
 		if(P.name == property)
 			match = P
@@ -335,13 +336,14 @@
 			//Handle properties that combine
 			for(var/C in combining_properties)
 				var/list/combo = combining_properties[C]
-				if(!combo.Find(property))
+				if(!combo.Find(property) || !combo.Find(P.name))
 					continue
 				var/pieces = 0
 				for(var/piece in combo)
 					if(piece == property || get_property(piece))
 						pieces++
 				if(pieces >= length(combo))
+					initial_property = property
 					property = C
 					level = max(level - P.level, P.level - level, 1)
 					for(var/datum/chem_property/R in properties)
@@ -376,6 +378,15 @@
 	P.level = level
 	P.holder = src
 	properties += P
+
+   	//Special case: If it's a catalyst property, add it nonetheless.
+	if(initial_property != property)
+		P =	chemical_properties_list[initial_property]
+		if(P.category & PROPERTY_TYPE_CATALYST)
+			P = new P.type()
+			P.level = level
+			P.holder = src
+			properties += P
 
 	recalculate_variables()
 	return TRUE

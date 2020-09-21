@@ -22,6 +22,8 @@
 		JOB_SQUAD_ROLES = HOURS_3
 	)
 
+	var/minimum_playtime_as_job = HOURS_3
+
 	var/gear_preset //Gear preset name used for this job
 	var/list/gear_preset_whitelist = list()//Gear preset name used for council snowflakes ;)
 
@@ -44,20 +46,30 @@
 /datum/job/proc/can_play_role(var/client/client)
 	if(!config.use_timelocks)
 		return TRUE
-	var/datum/entity/player_entity/selected_entity = client.player_entity
-	if(!minimum_playtimes.len || (client.admin_holder && (client.admin_holder.rights & R_ADMIN)) || selected_entity.get_playtime(STATISTIC_HUMAN, title) > 0)
+	
+	if((client.admin_holder && (client.admin_holder.rights & R_ADMIN)))
 		return TRUE
+
+	if(get_job_playtime(client, title) > minimum_playtime_as_job)
+		return TRUE
+	
 	for(var/prereq in minimum_playtimes)
-		if(selected_entity.get_playtime(STATISTIC_HUMAN, prereq) < minimum_playtimes[prereq])
-			return FALSE
+		if(islist(prereq))
+			for(var/prequisite_only_one in prereq)
+				if(get_job_playtime(client, prequisite_only_one) >= LAZYACCESS(prereq, prequisite_only_one))
+					return TRUE
+		else
+			if(get_job_playtime(client, prereq) < LAZYACCESS(minimum_playtimes, prereq))
+				return FALSE
+
 	return TRUE
 
-/datum/job/proc/get_role_requirements(var/datum/entity/player_entity/selected_entity)
+/datum/job/proc/get_role_requirements(var/client/C)
 	var/list/return_requirements = list()
 	for(var/prereq in minimum_playtimes)
-		var/playtime = selected_entity.get_playtime(STATISTIC_HUMAN, prereq)
-		if(playtime < minimum_playtimes[prereq])
-			return_requirements[prereq] = minimum_playtimes[prereq] - playtime
+		var/playtime = get_job_playtime(C, title)
+		if(playtime < LAZYACCESS(minimum_playtimes, prereq))
+			return_requirements[prereq] = LAZYACCESS(minimum_playtimes, prereq) - playtime
 	return return_requirements
 
 /datum/job/proc/get_access()

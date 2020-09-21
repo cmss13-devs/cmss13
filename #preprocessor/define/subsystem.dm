@@ -37,6 +37,7 @@
 #define SS_INIT_ADMIN             -24
 #define SS_INIT_DATABASE		  -25
 #define SS_INIT_ENTITYMANAGER	  -26
+#define SS_INIT_PLAYTIME    	  -27
 #define SS_INIT_CORPSESPAWNER      -30
 
 
@@ -76,6 +77,7 @@
 #define SS_PRIORITY_TRACKING       19
 #define SS_PRIORITY_PING       	   10
 #define SS_PRIORITY_DATABASE	   15
+#define SS_PRIORITY_PLAYTIME       5
 #define SS_PRIORITY_PERFLOGGING    4
 #define SS_PRIORITY_CORPSESPAWNER  3
 #define SS_PRIORITY_GARBAGE        2

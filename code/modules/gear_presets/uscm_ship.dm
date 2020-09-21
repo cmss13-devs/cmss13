@@ -79,9 +79,8 @@
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 
 /datum/equipment_preset/uscm_ship/liaison/load_rank(mob/living/carbon/human/H)
-	if(H.mind && H.mind.player_entity)
-		var/datum/entity/player_entity/player = H.mind.player_entity
-		var/playtime = player.get_playtime(STATISTIC_HUMAN, rank)
+	if(H.client)
+		var/playtime = get_job_playtime(H.client, rank)
 
 		if(playtime > 64 HOURS)
 			return "WY-XE"
@@ -444,9 +443,8 @@
 	H.hud_set_squad()
 
 /datum/equipment_preset/uscm_ship/sea/load_rank(mob/living/carbon/human/H)
-	if(H.mind && H.mind.player_entity)
-		var/datum/entity/player_entity/player = H.mind.player_entity
-		if(player.get_playtime(STATISTIC_HUMAN, rank) >= HOURS_9)
+	if(H.client)
+		if(get_job_playtime(H.client, JOB_SEA) >= HOURS_9)
 			return "E9"
 	return paygrade
 

@@ -364,7 +364,7 @@
 	if (hive && hive.hive_ui)
 		hive.hive_ui.update_all_xeno_data()
 
-	job = "Xenomorph"
+	job = JOB_XENOMORPH
 
 /mob/living/carbon/Xenomorph/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()

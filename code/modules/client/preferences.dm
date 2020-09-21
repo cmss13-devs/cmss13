@@ -264,13 +264,14 @@ var/const/MAX_SAVE_SLOTS = 10
 			if("Xenomorph Queen")
 				ban_check_name = "Queen"
 				var/datum/caste_datum/C = RoleAuthority.castes_by_name[CASTE_QUEEN]
-				missing_requirements = C.get_caste_requirements(user.client)
+
+				LAZYSET(missing_requirements, JOB_XENOMORPH, C.get_caste_requirement(user.client))
 
 			if("Survivor")
 				ban_check_name = "Survivor"
-				var/datum/entity/player_entity = user.client.player_entity
+				var/client/C = user.client
 				var/datum/job/J = RoleAuthority.roles_by_path[/datum/job/civilian/survivor]
-				missing_requirements = J.get_role_requirements(player_entity)
+				missing_requirements = J.get_role_requirements(C)
 
 			if("Predator")
 				ban_check_name = "Predator"
@@ -495,7 +496,7 @@ var/const/MAX_SAVE_SLOTS = 10
 			HTML += "<b><del>[job.disp_title]</del></b></td><td>WHITELISTED</td></tr>"
 			continue
 		else if(!job.can_play_role(user.client))
-			var/list/missing_requirements = job.get_role_requirements(user.client.player_entity)
+			var/list/missing_requirements = job.get_role_requirements(user.client)
 			HTML += "<b><del>[job.disp_title]</del></b></td><td>TIMELOCKED</td></tr>"
 			for(var/requirement in missing_requirements)
 				HTML += "<tr class='[job.selection_class]'><td width='40%' align='right'>[requirement]</td><td>[duration2text(missing_requirements[requirement])] Hours</td></tr>"
@@ -1035,8 +1036,7 @@ var/const/MAX_SAVE_SLOTS = 10
 						return
 
 					if(prefix_length==3)
-						var/datum/entity/player_entity/selected_entity = user.client.player_entity
-						var/playtime = selected_entity.get_playtime(STATISTIC_XENO)
+						var/playtime = get_job_playtime(user.client, JOB_XENOMORPH)
 						if(playtime < 124 HOURS)
 							to_chat(user, SPAN_WARNING(FONT_SIZE_BIG("You need to play [Ceiling((124 HOURS - playtime)/HOURS_1)] more hours to unlock xeno three letter prefix.")))
 							return
@@ -1065,8 +1065,7 @@ var/const/MAX_SAVE_SLOTS = 10
 						to_chat(user, SPAN_WARNING(FONT_SIZE_BIG("You are banned from xeno name picking.")))
 						xeno_postfix = ""
 						return
-					var/datum/entity/player_entity/selected_entity = user.client.player_entity
-					var/playtime = selected_entity.get_playtime(STATISTIC_XENO)
+					var/playtime = get_job_playtime(user.client, JOB_XENOMORPH)
 					if(playtime < 24 HOURS)
 						to_chat(user, SPAN_WARNING(FONT_SIZE_BIG("You need to play [Ceiling((24 HOURS - playtime)/HOURS_1)] more hours to unlock xeno postfix.")))
 						return

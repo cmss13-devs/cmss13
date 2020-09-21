@@ -7,8 +7,6 @@
 	var/dead_icon = "Drone Dead"
 	var/language = "Xenomorph"
 
-	var/list/minimum_playtimes = list()
-
 	var/melee_damage_lower = 10
 	var/melee_damage_upper = 20
 	var/evasion = XENO_EVASION_NONE
@@ -101,6 +99,7 @@
 	var/heal_knocked_out = 0.33
 
 	var/list/resin_build_order
+	var/minimum_xeno_playtime = 0
 
 
 /datum/caste_datum/can_vv_modify()
@@ -124,21 +123,14 @@
 /datum/caste_datum/proc/can_play_caste(var/client/client)
 	if(!config.use_timelocks)
 		return TRUE
-	var/datum/entity/player_entity/selected_entity = client.player_entity
-	if(!minimum_playtimes.len || (client.admin_holder && (client.admin_holder.rights & R_ADMIN)) || selected_entity.get_playtime(STATISTIC_XENO, caste_name) > 0)
-		return TRUE
-	for(var/prereq in minimum_playtimes)
-		if(selected_entity.get_playtime(STATISTIC_XENO, prereq) < minimum_playtimes[prereq])
-			return FALSE
+
+	if(minimum_xeno_playtime && get_job_playtime(client, JOB_XENOMORPH) < minimum_xeno_playtime)
+		return FALSE
+	
 	return TRUE
 
-/datum/caste_datum/proc/get_caste_requirements(var/client/client)
-	var/datum/entity/player_entity/selected_entity = client.player_entity
-	var/list/return_requirements = list()
-	for(var/prereq in minimum_playtimes)
-		if(selected_entity.get_playtime(STATISTIC_XENO, prereq) < minimum_playtimes[prereq])
-			return_requirements["[prereq]"] = minimum_playtimes[prereq] - selected_entity.get_playtime(STATISTIC_XENO, prereq)
-	return return_requirements
+/datum/caste_datum/proc/get_caste_requirement(var/client/client)
+	return minimum_xeno_playtime - get_job_playtime(client, JOB_XENOMORPH)
 
 /datum/hive_status
 	var/name = "Normal Hive"

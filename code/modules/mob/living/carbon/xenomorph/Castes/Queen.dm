@@ -34,9 +34,7 @@
 	tacklestrength_min = 5
 	tacklestrength_max = 6
 
-	minimum_playtimes = list(
-		FACTION_XENOMORPH = HOURS_9
-	)
+	minimum_xeno_playtime = 9 HOURS
 
 /proc/update_living_queens() // needed to update when you change a queen to a different hive
 	outer_loop:

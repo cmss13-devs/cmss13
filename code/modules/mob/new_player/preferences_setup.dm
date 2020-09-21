@@ -180,7 +180,7 @@ datum/preferences/proc/randomize_skin_color()
 	g_skin = green
 	b_skin = blue
 
-datum/preferences/proc/update_preview_icon()
+/datum/preferences/proc/update_preview_icon()
 	if(!owner)
 		return
 	if(preview_front)
@@ -190,7 +190,7 @@ datum/preferences/proc/update_preview_icon()
 	var/J = job_pref_to_gear_preset()
 	if(isnull(preview_dummy))
 		preview_dummy = new()
-	clear_equipment(preview_dummy)
+	clear_equipment()
 	preview_dummy.set_species()
 	copy_appearance_to(preview_dummy)
 	preview_dummy.update_body()

@@ -28,6 +28,7 @@
 	var/refs_loaded = FALSE
 	var/notes_loaded = FALSE
 	var/jobbans_loaded = FALSE
+	var/playtime_loaded = FALSE
 	var/migrating_notes = FALSE
 	var/migrating_bans = FALSE
 	var/migrating_jobbans = FALSE
@@ -36,6 +37,7 @@
 	var/datum/entity/player/time_ban_admin
 	var/list/datum/entity/player_note/notes
 	var/list/datum/entity/player_job_ban/job_bans
+	var/list/datum/entity/player_time/playtimes
 	var/client/owning_client
 
 BSQL_PROTECT_DATUM(/datum/entity/player)
@@ -318,6 +320,8 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	player.notes = list()
 	player.notes_loaded = FALSE
 	player.jobbans_loaded = FALSE
+	player.playtime_loaded = FALSE
+
 	player.is_permabanned = text2num(player.is_permabanned)
 	player.is_time_banned = text2num(player.is_time_banned)
 	player.time_ban_expiration = text2num(player.time_ban_expiration)
@@ -335,6 +339,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	player.notes = list()
 	player.notes_loaded = FALSE
 	player.jobbans_loaded = FALSE
+	player.playtime_loaded = FALSE
 
 	player.load_rels()
 
@@ -350,6 +355,8 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	else if(!migrating_jobbans)
 		migrating_jobbans = TRUE
 		INVOKE_ASYNC(src, /datum/entity/player.proc/migrate_jobbans)
+
+	DB_FILTER(/datum/entity/player_time, DB_COMP("player_id", DB_EQUALS, id), CALLBACK(src, /datum/entity/player.proc/on_read_timestat))
 
 	if(!migrated_bans && !migrating_bans)
 		migrating_bans = TRUE
@@ -375,6 +382,12 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 			job_bans[safe_job_name] = JB
 	
 	auto_unjobban()
+
+/datum/entity/player/proc/on_read_timestat(var/list/datum/entity/player_time/_stat)
+	playtime_loaded = TRUE
+	if(_stat)
+		for(var/datum/entity/player_time/S in _stat)
+			LAZYSET(playtimes, S.role_id, S)
 
 /proc/get_player_from_key(key)
 	var/safe_key = ckey(key)

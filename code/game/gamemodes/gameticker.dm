@@ -197,9 +197,9 @@ var/global/datum/controller/gameticker/ticker = new()
 			if(player.job)
 				RoleAuthority.equip_role(player, RoleAuthority.roles_by_name[player.job])
 				EquipCustomItems(player)
-			if(player.mind.player_entity)
-				var/datum/entity/player_entity/PE = player.mind.player_entity
-				if(PE.get_playtime(STATISTIC_HUMAN) == 0 && PE.get_playtime(STATISTIC_XENO) == 0)
+			if(player.client)
+				var/client/C = player.client
+				if(C.player_data && C.player_data.playtime_loaded && length(C.player_data.playtimes) == 0)
 					msg_admin_niche("NEW PLAYER: <b>[key_name(player, 1, 1, 0)] (<A HREF='?_src_=admin_holder;ahelp=adminmoreinfo;extra=\ref[player]'>?</A>)</b>. IP: [player.lastKnownIP], CID: [player.computer_id]")
 	if(captainless)
 		for(var/mob/M in player_list)

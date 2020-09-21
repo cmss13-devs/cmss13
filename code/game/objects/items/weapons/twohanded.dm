@@ -353,5 +353,5 @@
 
 	var/turf/epicenter = get_turf(target)
 	target.ex_act(400, null, src, user, 100)
-	cell_explosion(epicenter, 150, 50, null, src, user)
+	cell_explosion(epicenter, 150, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, src, user)
 	qdel(src)

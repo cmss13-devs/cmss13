@@ -33,7 +33,7 @@
 		log_admin("[key_name(usr)] changed the security level to code [sec_level].")
 
 /client/proc/toggle_gun_restrictions()
-	if(!admin_holder || !config)	
+	if(!admin_holder || !config)
 		return
 
 	if(config.remove_gun_restrictions)
@@ -70,6 +70,7 @@
 	var/turf/epicenter = mob.loc
 	var/custom_limit = 5000
 	var/list/choices = list("CANCEL", "Small Bomb", "Medium Bomb", "Big Bomb", "Custom Bomb")
+	var/list/falloff_shape_choices = list("CANCEL", "Linear", "Exponential")
 	var/choice = input("What size explosion would you like to produce?") in choices
 	switch(choice)
 		if("CANCEL")
@@ -89,10 +90,18 @@
 			if(!falloff)
 				return
 
+			var/shape_choice = input(src, "Select falloff shape?", "Select falloff shape") in falloff_shape_choices
+			var/explosion_shape = EXPLOSION_FALLOFF_SHAPE_LINEAR
+			switch(shape_choice)
+				if("CANCEL")
+					return 0
+				if("Exponential")
+					explosion_shape = EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL
+
 			if(power > custom_limit)
 				return
-			cell_explosion(epicenter, power, falloff)
-			message_staff("[key_name(src, TRUE)] dropped a custom cell bomb with power [power] and falloff [falloff]!")
+			cell_explosion(epicenter, power, falloff, explosion_shape)
+			message_staff("[key_name(src, TRUE)] dropped a custom cell bomb with power [power], falloff [falloff] and falloff_shape [shape_choice]!")
 	message_staff(SPAN_NOTICE("[ckey] used 'Drop Bomb' at [epicenter.loc]."))
 
 /client/proc/cmd_admin_emp(atom/O as obj|mob|turf in world)
@@ -213,7 +222,7 @@
 	chosen_ert.activate(is_announcing)
 
 	message_staff(SPAN_NOTICE("[key_name_admin(usr)] admin-called a [choice == "Randomize" ? "randomized ":""]distress beacon: [chosen_ert.name]"), 1)
-	
+
 /datum/admins/proc/admin_force_selfdestruct()
 	set name = "E: Self Destruct"
 	set desc = "Trigger self destruct countdown. This should not be done if the self destruct has already been called."
@@ -272,7 +281,7 @@
 	if(objectives_controller)
 		to_chat(src, objectives_controller.get_objectives_progress())
 		to_chat(src, "<b>DEFCON:</b> [objectives_controller.get_scored_points()] / [objectives_controller.get_total_points()] points")
-	
+
 	for(var/datum/hive_status/hive in hive_datum)
 		if(hive.xenocon_points)
 			to_chat(src, "<b>XENOCON [hive.hivenumber]:</b> [hive.xenocon_points] / [XENOCON_THRESHOLD] points")
@@ -718,7 +727,7 @@
 		admin_holder.clear_mutineers()
 	return
 
-/datum/admins/proc/clear_mutineers()	
+/datum/admins/proc/clear_mutineers()
 	if(!check_rights(R_SPAWN))
 		return
 

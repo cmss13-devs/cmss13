@@ -530,14 +530,14 @@
 	damage_falloff = config.med_damage_falloff
 
 /datum/ammo/bullet/rifle/explosive/on_hit_mob(mob/M, obj/item/projectile/P)
-	cell_explosion(get_turf(M), 80, 40, P.dir, P.weapon_source, P.weapon_source_mob)
+	cell_explosion(get_turf(M), 80, 40, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, P.weapon_source, P.weapon_source_mob)
 
 /datum/ammo/bullet/rifle/explosive/on_hit_obj(obj/O, obj/item/projectile/P)
-	cell_explosion(get_turf(O), 80, 40, P.dir, P.weapon_source, P.weapon_source_mob)
+	cell_explosion(get_turf(O), 80, 40, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, P.weapon_source, P.weapon_source_mob)
 
 /datum/ammo/bullet/rifle/explosive/on_hit_turf(turf/T, obj/item/projectile/P)
 	if(T.density)
-		cell_explosion(T, 80, 40, P.dir, P.weapon_source, P.weapon_source_mob)
+		cell_explosion(T, 80, 40, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, P.weapon_source, P.weapon_source_mob)
 
 /datum/ammo/bullet/rifle/ap
 	name = "armor-piercing rifle bullet"
@@ -1068,24 +1068,24 @@
 	. = ..()
 
 /datum/ammo/rocket/on_hit_mob(mob/M, obj/item/projectile/P)
-	cell_explosion(get_turf(M), 200, 50, null, P.weapon_source, P.weapon_source_mob)
+	cell_explosion(get_turf(M), 200, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_source, P.weapon_source_mob)
 	smoke.set_up(1, get_turf(M))
 	if(isHumanStrict(M)) // No yautya or synths. Makes humans gib on direct hit.
 		M.ex_act(350, P.dir, P.weapon_source, P.weapon_source_mob, 100)
 	smoke.start()
 
 /datum/ammo/rocket/on_hit_obj(obj/O, obj/item/projectile/P)
-	cell_explosion(get_turf(O), 200, 50, null, P.weapon_source, P.weapon_source_mob)
+	cell_explosion(get_turf(O), 200, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_source, P.weapon_source_mob)
 	smoke.set_up(1, get_turf(O))
 	smoke.start()
 
 /datum/ammo/rocket/on_hit_turf(turf/T, obj/item/projectile/P)
-	cell_explosion(T, 200, 50, null, P.weapon_source, P.weapon_source_mob)
+	cell_explosion(T, 200, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_source, P.weapon_source_mob)
 	smoke.set_up(1, T)
 	smoke.start()
 
 /datum/ammo/rocket/do_at_max_range(obj/item/projectile/P)
-	cell_explosion(get_turf(P), 200, 50, null, P.weapon_source, P.weapon_source_mob)
+	cell_explosion(get_turf(P), 200, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_source, P.weapon_source_mob)
 	smoke.set_up(1, get_turf(P))
 	smoke.start()
 
@@ -1110,14 +1110,14 @@
 	M.KnockOut(2)
 	if(isHumanStrict(M)) // No yautya or synths. Makes humans gib on direct hit.
 		M.ex_act(350, P.dir, P.weapon_source, P.weapon_source_mob, 100)
-	cell_explosion(T, 100, 50, null, P.weapon_source, P.weapon_source_mob)
+	cell_explosion(T, 100, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_source, P.weapon_source_mob)
 	smoke.set_up(1, T)
 	smoke.start()
 
 /datum/ammo/rocket/ap/on_hit_obj(obj/O, obj/item/projectile/P)
 	var/turf/T = get_turf(O)
 	O.ex_act(150, P.dir, P.weapon_source, P.weapon_source_mob, 100)
-	cell_explosion(T, 100, 50, null, P.weapon_source, P.weapon_source_mob)
+	cell_explosion(T, 100, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_source, P.weapon_source_mob)
 	smoke.set_up(1, T)
 	smoke.start()
 
@@ -1138,7 +1138,7 @@
 	if(!hit_something)
 		T.ex_act(150, P.dir, P.weapon_source, P.weapon_source_mob, 200)
 
-	cell_explosion(T, 100, 50, null, P.weapon_source, P.weapon_source_mob)
+	cell_explosion(T, 100, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_source, P.weapon_source_mob)
 	smoke.set_up(1, T)
 	smoke.start()
 
@@ -1159,7 +1159,7 @@
 				continue
 	if(!hit_something)
 		T.ex_act(250, P.dir, P.weapon_source, P.weapon_source_mob)
-	cell_explosion(T, 100, 50, null, P.weapon_source, P.weapon_source_mob)
+	cell_explosion(T, 100, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_source, P.weapon_source_mob)
 	smoke.set_up(1, T)
 	smoke.start()
 
@@ -1177,20 +1177,20 @@
 	shell_speed = config.fast_shell_speed
 
 /datum/ammo/rocket/ltb/on_hit_mob(mob/M, obj/item/projectile/P)
-	cell_explosion(get_turf(M), 220, 50, null, P.weapon_source, P.weapon_source_mob)
-	cell_explosion(get_turf(M), 200, 100, null, P.weapon_source, P.weapon_source_mob)
+	cell_explosion(get_turf(M), 220, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_source, P.weapon_source_mob)
+	cell_explosion(get_turf(M), 200, 100, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_source, P.weapon_source_mob)
 
 /datum/ammo/rocket/ltb/on_hit_obj(obj/O, obj/item/projectile/P)
-	cell_explosion(get_turf(O), 220, 50, null, P.weapon_source, P.weapon_source_mob)
-	cell_explosion(get_turf(O), 200, 100, null, P.weapon_source, P.weapon_source_mob)
+	cell_explosion(get_turf(O), 220, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_source, P.weapon_source_mob)
+	cell_explosion(get_turf(O), 200, 100, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_source, P.weapon_source_mob)
 
 /datum/ammo/rocket/ltb/on_hit_turf(turf/T, obj/item/projectile/P)
-	cell_explosion(get_turf(T), 220, 50, null, P.weapon_source, P.weapon_source_mob)
-	cell_explosion(get_turf(T), 200, 100, null, P.weapon_source, P.weapon_source_mob)
+	cell_explosion(get_turf(T), 220, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_source, P.weapon_source_mob)
+	cell_explosion(get_turf(T), 200, 100, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_source, P.weapon_source_mob)
 
 /datum/ammo/rocket/ltb/do_at_max_range(obj/item/projectile/P)
-	cell_explosion(get_turf(P), 220, 50, null, P.weapon_source, P.weapon_source_mob)
-	cell_explosion(get_turf(P), 200, 100, null, P.weapon_source, P.weapon_source_mob)
+	cell_explosion(get_turf(P), 220, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_source, P.weapon_source_mob)
+	cell_explosion(get_turf(P), 200, 100, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_source, P.weapon_source_mob)
 
 /datum/ammo/rocket/wp
 	name = "white phosphorous rocket"

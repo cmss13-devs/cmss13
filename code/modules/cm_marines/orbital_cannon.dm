@@ -400,20 +400,20 @@ var/list/ob_type_fuel_requirements
 /obj/structure/ob_ammo/warhead/explosive/warhead_impact(turf/target, inaccuracy_amt = 0)
 	new /obj/effect/overlay/temp/blinking_laser (target)
 	sleep(10)
-	cell_explosion(target, clear_power, clear_falloff, null, initial(name), source_mob) //break shit around
+	cell_explosion(target, clear_power, clear_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, initial(name), source_mob) //break shit around
 	sleep(clear_delay)
 	//ACTUALLY BLOW SHIT UP
 	if(!target.density)
-		cell_explosion(target, standard_power, standard_falloff, null, initial(name), source_mob)
+		cell_explosion(target, standard_power, standard_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, initial(name), source_mob)
 		sleep(double_explosion_delay)
-		cell_explosion(target, standard_power, standard_falloff, null, initial(name), source_mob)
+		cell_explosion(target, standard_power, standard_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, initial(name), source_mob)
 		return
 	
 	for(var/turf/T in range(2, target))
 		if(!T.density)
-			cell_explosion(target, standard_power, standard_falloff, null, initial(name), source_mob)
+			cell_explosion(target, standard_power, standard_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, initial(name), source_mob)
 			sleep(double_explosion_delay)
-			cell_explosion(target, standard_power, standard_falloff, null, initial(name), source_mob)
+			cell_explosion(target, standard_power, standard_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, initial(name), source_mob)
 			return
 
 /obj/structure/ob_ammo/warhead/incendiary
@@ -431,7 +431,7 @@ var/list/ob_type_fuel_requirements
 /obj/structure/ob_ammo/warhead/incendiary/warhead_impact(turf/target, inaccuracy_amt = 0)
 	new /obj/effect/overlay/temp/blinking_laser (target)
 	sleep(10)
-	cell_explosion(target, clear_power, clear_falloff, null, initial(name), source_mob) //break shit around
+	cell_explosion(target, clear_power, clear_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, initial(name), source_mob) //break shit around
 	sleep(clear_delay)
 	fire_spread(target, initial(name), source_mob, distance, fire_level, burn_level, fire_color)
 
@@ -465,7 +465,7 @@ var/list/ob_type_fuel_requirements
 	set waitfor = 0
 	new /obj/effect/overlay/temp/blinking_laser (loc)
 	sleep(10)
-	cell_explosion(loc, explosion_power, explosion_falloff, null, initial(name), source_mob)
+	cell_explosion(loc, explosion_power, explosion_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, initial(name), source_mob)
 
 
 /obj/structure/ob_ammo/ob_fuel

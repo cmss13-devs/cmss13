@@ -22,6 +22,11 @@
 #define SMOKE_RANK_HIGH			4
 #define SMOKE_RANK_BOILER		5
 
+// What kind of function to use for Explosions falling off.
+
+#define EXPLOSION_FALLOFF_SHAPE_LINEAR          0
+#define EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL     1
+
 //area flags
 
 #define AREA_AVOID_BIOSCAN      1 //used to make mobs skip bioscans

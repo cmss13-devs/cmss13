@@ -47,4 +47,4 @@
 		return
 
 	// boom
-	cell_explosion(epicenter, explosive_power, explosive_falloff, H.dir, initial(name), H)
+	cell_explosion(epicenter, explosive_power, explosive_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, H.dir, initial(name), H)

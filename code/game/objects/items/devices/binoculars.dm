@@ -105,6 +105,10 @@
 	if(S)
 		las_name = S.name
 
+	// Safety check - prevent targeting items in containers (notably your equipment/inventory)
+	if(A.z == 0)
+		return
+
 	var/turf/TU = get_turf(A)
 	if(!istype(TU) || user.action_busy)
 		return
@@ -230,6 +234,10 @@
 	else
 		las_name = "X"
 	las_name = las_name + "-[tracking_id]"
+
+	// Safety check - prevent targeting atoms in containers (notably your equipment/inventory)
+	if(A.z == 0)
+		return
 
 	var/turf/TU = get_turf(A)
 	var/area/targ_area = get_area(A)

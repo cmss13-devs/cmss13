@@ -28,13 +28,13 @@
 				end_result_tracking = TRUE
 
 /datum/event/proc/add_handler(datum/event_handler/handle)
-	if(!handle in handlers)
+	if(handle in handlers)
 		return
 	handlers += handle
 	handle.events += src
 
 /datum/event/proc/remove_handler(datum/event_handler/handle)
-	if(QDELETED(handle) || !handle in handlers)
+	if(QDELETED(handle) || !(handle in handlers))
 		return
 
 	handlers -= handle // This reference is sometimes keeping it alive, so it gets disposed after it.

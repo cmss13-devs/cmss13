@@ -127,12 +127,10 @@
 /datum/reagent/water/reaction_mob(var/mob/living/M, var/method=TOUCH, var/volume)//Splashing people with water can help put them out!
 	if(!istype(M, /mob/living))
 		return
-	return
 	if(method == TOUCH)
 		M.adjust_fire_stacks(-(volume / 10))
 		if(M.fire_stacks <= 0)
 			M.ExtinguishMob()
-		return
 
 /datum/reagent/water/holywater
 	name = "Holy Water"

@@ -3,6 +3,7 @@
 
 //Returns the thing in our active hand
 /mob/proc/get_active_hand()
+	RETURN_TYPE(/obj/item)
 	if(hand)	return l_hand
 	else		return r_hand
 
@@ -181,7 +182,6 @@
 			return l_hand
 		else
 			return r_hand
-		return
 
 /mob/living/carbon/human/proc/equip_if_possible(obj/item/W, slot, del_on_fail = 1) // since byond doesn't seem to have pointers, this seems like the best way to do this :/
 	//warning: icky code

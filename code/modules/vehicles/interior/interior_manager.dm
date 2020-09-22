@@ -113,7 +113,7 @@ var/global/datum/interior_manager/interior_manager = new
 // Finds which interior is at (x,y) and returns its interior datum
 /datum/interior_manager/proc/get_interior_by_coords(var/x, var/y)
 	for(var/datum/interior/I in interiors)
-		var/list/bounds = I.get_bound_turfs()
+		var/list/turf/bounds = I.get_bound_turfs()
 		if(!bounds)
 			continue
 

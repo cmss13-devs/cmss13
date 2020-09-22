@@ -3,8 +3,6 @@
 #define DEBUG 0
 #define NO_FLAGS 0 // To make it even more clear that something is a bitfield
 
-#define DM_VERSION 512
-
 //Game defining directives.
 #define SURFACE_Z_LEVELS list(1)
 #define SURFACE_Z_LEVEL 1 // The planet/colony itself

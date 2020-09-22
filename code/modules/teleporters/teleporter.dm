@@ -143,7 +143,7 @@
 #define ANIMATION_DURATION 18
 // Handler proc for VFX. mostly some easy timing maths
 /datum/teleporter/proc/apply_vfx(var/location_id, var/time_to_fire = 30)
-    if(!location_id in locations)
+    if(!(location_id in locations))
         log_debug("Invalid location ID [location_id] handed to teleporter [id]. Error code: TELEPORTER_6")
         log_admin("Invalid location ID [location_id] handed to teleporter [id]. Tell the devs. Error code: TELEPORTER_6")
         return 

@@ -37,7 +37,6 @@ var/global/datum/global_event_handler/GLOBAL_EVENT = new()
 /proc/registerListener(var/datum/speaker, var/event, var/id, var/datum/callback/callback)
 	if(!speaker || !istype(speaker))
 		CRASH("attempt to register listener for event \"[event]\" but no speaker was given")
-		return FALSE
 
 	var/list/event_listeners = LAZYACCESS(speaker.event_listeners, event)
 	LAZYINITLIST(event_listeners)
@@ -60,7 +59,6 @@ var/global/datum/global_event_handler/GLOBAL_EVENT = new()
 /proc/unregisterListener(var/datum/speaker, var/event, var/id)
 	if(!speaker || !istype(speaker))
 		CRASH("attempt to unregister listener for event \"[event]\" but no speaker was given")
-		return FALSE
 
 	var/list/event_listeners = LAZYACCESS(speaker.event_listeners, event)
 	if(!event_listeners)
@@ -82,7 +80,6 @@ var/global/datum/global_event_handler/GLOBAL_EVENT = new()
 /proc/raiseEvent(var/datum/speaker, var/event, ...)
 	if(!speaker || !istype(speaker))
 		CRASH("attempt to raise event \"[event]\" but no speaker was given")
-		return FALSE
 
 	if(!LAZYLEN(LAZYACCESS(speaker.event_listeners, event)))
 		return FALSE
@@ -109,7 +106,6 @@ var/global/datum/global_event_handler/GLOBAL_EVENT = new()
 /proc/raiseEventSync(var/datum/speaker, var/event, ...)
 	if(!speaker || !istype(speaker))
 		CRASH("attempt to raise event \"[event]\" but no speaker was given")
-		return FALSE
 
 	if(!LAZYLEN(LAZYACCESS(speaker.event_listeners, event)))
 		return FALSE
@@ -143,7 +139,6 @@ var/global/datum/global_event_handler/GLOBAL_EVENT = new()
 /proc/raiseEventOrdered(var/datum/speaker, var/event, var/datum/callback/sort, ...)
 	if(!speaker || !istype(speaker))
 		CRASH("attempt to raise event \"[event]\" but no speaker was given")
-		return FALSE
 
 	if(!LAZYLEN(LAZYACCESS(speaker.event_listeners, event)))
 		return FALSE

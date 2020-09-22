@@ -205,7 +205,7 @@
 
 
 /datum/game_mode/xenovs/proc/get_xenos_hive(list/z_levels = GAME_PLAY_Z_LEVELS)
-    var/list/hivenumbers = list()
+    var/list/list/hivenumbers = list()
     for(var/datum/hive_status/H in hive_datum)
         hivenumbers += list(H.name = list())
 

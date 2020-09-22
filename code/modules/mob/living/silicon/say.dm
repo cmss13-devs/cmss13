@@ -104,7 +104,6 @@
 					R.radio.talk_into(src,message,message_mode,verb,speaking)
 			return 1
 
-			return 1
 		if("general")
 			switch(bot_type)
 				if(IS_AI)

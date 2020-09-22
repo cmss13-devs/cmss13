@@ -127,7 +127,7 @@
 	if(iscarbon(speaker))
 		var/mob/living/carbon/C = speaker
 
-		if(!C.hivenumber in hive_datum)
+		if(!(C.hivenumber in hive_datum))
 			return
 
 		C.hivemind_broadcast(message, hive_datum[C.hivenumber])
@@ -199,7 +199,7 @@
 /mob/proc/add_language(var/language)
 	var/datum/language/new_language = all_languages[language]
 
-	if(!istype(new_language) || new_language in languages)
+	if(!istype(new_language) || (new_language in languages))
 		return 0
 
 	languages.Add(new_language)
@@ -222,7 +222,7 @@
 
 // Can we speak this language, as opposed to just understanding it?
 /mob/proc/can_speak(datum/language/speaking)
-	return (universal_speak || speaking in src.languages)
+	return (universal_speak || (speaking in src.languages))
 
 //TBD
 /mob/verb/check_languages()

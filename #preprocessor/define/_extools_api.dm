@@ -94,6 +94,7 @@ var/next_promise_id = 0
 	return result
 
 /proc/call_async()
+	RETURN_TYPE(/datum/promise)
 	var/list/arguments = args.Copy()
 	var/datum/promise/P = new
 	arguments.Insert(1, "\ref[P]")

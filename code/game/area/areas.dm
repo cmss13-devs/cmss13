@@ -416,23 +416,18 @@
 				else
 					M.make_floating(1)
 
-/area/proc/thunk(mob)
-	if(istype(mob,/mob/living/carbon/human/))  // Only humans can wear magboots, so we give them a chance to.
-		if((istype(mob:shoes, /obj/item/clothing/shoes/magboots) && (mob:shoes.flags_inventory & NOSLIPPING)))
-			return
-
-	if(istype(get_turf(mob), /turf/open/space)) // Can't fall onto nothing.
+/area/proc/thunk(M)
+	if(istype(get_turf(M), /turf/open/space)) // Can't fall onto nothing.
 		return
 
-	if(istype(mob,/mob/living/carbon/human/)) // Only clumbsy humans can fall on their asses.
-		mob:AdjustStunned(5)
-		mob:AdjustKnockeddown(5)
+	if(istype(M,/mob/living/carbon/human/))  // Only humans can wear magboots, so we give them a chance to.
+		var/mob/living/carbon/human/H = M
+		if((istype(H.shoes, /obj/item/clothing/shoes/magboots) && (H.shoes.flags_inventory & NOSLIPPING)))
+			return
+		H.AdjustStunned(5)
+		H.AdjustKnockeddown(5)
 
-	else if (istype(mob,/mob/living/carbon/human/))
-		mob:AdjustStunned(2)
-		mob:AdjustKnockeddown(2)
-
-	to_chat(mob, "Gravity!")
+	to_chat(M, "Gravity!")
 
 
 

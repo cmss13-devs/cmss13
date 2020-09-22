@@ -348,6 +348,7 @@ This function restores all limbs.
 	return
 
 /mob/living/carbon/human/get_limb(zone)
+	RETURN_TYPE(/obj/limb)
 	zone = check_zone(zone)
 	return (locate(limb_types_by_name[zone]) in limbs)
 

@@ -152,7 +152,7 @@ Quick adjacency (to turf):
 	var/rdir = get_dir(src, A)
 	var/fdir = get_dir(A, src)
 
-	var/list/blockers = list(
+	var/list/list/blockers = list(
 		"fd1" = list(),
 		"fd2" = list()
 	)

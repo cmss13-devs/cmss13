@@ -35,7 +35,7 @@
 							FACTION_ZOMBIE = 0
 							)
 
-	var/list/counted_xenos[6]
+	var/list/counted_xenos = list(0,0,0,0,0,0)
 
 	var/msg = "<b>Current Players:</b>\n"
 	var/list/Lines = list()

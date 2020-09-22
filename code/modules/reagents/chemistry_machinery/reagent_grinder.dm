@@ -84,9 +84,6 @@
 		to_chat(user, SPAN_WARNING("The machine cannot hold anymore items."))
 		return 1
 
-		updateUsrDialog()
-		return 0
-
 	if(istype(O,/obj/item/storage))
 		var/obj/item/storage/B = O
 		if(B.contents.len > 0)

@@ -359,7 +359,7 @@ Additional game mode variables.
 /datum/game_mode/proc/attempt_to_join_as_xeno(mob/xeno_candidate, instant_join = 0)
 	var/list/available_xenos = list()
 	var/list/available_xenos_non_ssd = list()
-	var/list/hives = list()
+	var/list/obj/effect/alien/resin/special/pool/hives = list()
 
 	for(var/mob/living/carbon/Xenomorph/X in living_xeno_list)
 		var/area/A = get_area(X)
@@ -627,7 +627,7 @@ Additional game mode variables.
 				new_survivor = pick(possible_survivors)
 				if(!new_survivor)
 					break  //We ran out of survivors!
-				if(!synth_survivor && new_survivor in possible_synth_survivors)
+				if(!synth_survivor && (new_survivor in possible_synth_survivors))
 					new_survivor.roundstart_picked = TRUE
 					synth_survivor = new_survivor
 				else if(new_survivor in possible_human_survivors) //so we don't draft people that want to be synth survivors but not normal survivors

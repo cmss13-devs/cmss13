@@ -389,7 +389,6 @@ As such, a new tracker datum must be constructed to follow proper child inherita
 	if(occupant)
 		to_chat(M, SPAN_WARNING("The cryogenic pod is already in use. You will need to find another."))
 		return FALSE
-		return
 	M.forceMove(src)
 	to_chat(M, SPAN_NOTICE("You feel cool air surround you as your mind goes blank and the pod locks."))
 	occupant = M

@@ -64,7 +64,6 @@
 #define SS_PRIORITY_SHUTTLE        80
 #define SS_PRIORITY_TELEPORTER     75
 #define SS_PRIORITY_EVENT          65
-#define SS_PRIORITY_DATABASE       63
 #define SS_PRIORITY_DISEASE        60
 #define SS_PRIORITY_FAST_MACHINERY 55
 #define SS_PRIORITY_MIDI       	   40

@@ -35,7 +35,7 @@
 	var/sound/sound_landing = 'sound/effects/engine_landing.ogg'//Landing sounds.
 	var/sound/sound_moving //Movement sounds, usually not applicable.
 	var/sound/sound_misc //Anything else, like escape pods.
-	var/obj/structure/dropship_equipment/list/equipments = list()
+	var/list/obj/structure/dropship_equipment/equipments = list()
 
 	//Copy of about 650-700 lines down for elevators
 	var/list/controls = list() //Used to announce failure
@@ -140,7 +140,7 @@
 				process_state = IDLE_STATE
 				arrived()
 
-/datum/shuttle/ferry/marine/long_jump()
+/datum/shuttle/ferry/marine/long_jump(area/departing, area/destination, area/interim, travel_time, direction)
 	set waitfor = 0
 
 	if(moving_status != SHUTTLE_IDLE) return
@@ -189,7 +189,6 @@
 		recharging = 0
 		return	//someone cancelled the launch
 
-	var/travel_time = 0
 	if(transit_gun_mission)
 		travel_time = move_time * 1.5 //fire missions not made shorter by optimization.
 		for(var/X in equipments)

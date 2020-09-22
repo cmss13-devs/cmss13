@@ -39,7 +39,7 @@
 
 /obj/item/device/walkman/attackby(obj/item/W, mob/user)
 	if(istype(W,/obj/item/device/cassette_tape))
-		if(W == user.get_active_hand() && src in user)
+		if(W == user.get_active_hand() && (src in user))
 			if(!tape)
 				insert_tape(W)
 				playsound(src,'sound/weapons/handcuffs.ogg',20,1)

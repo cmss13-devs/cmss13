@@ -697,7 +697,7 @@
 	set waitfor = 0
 
 
-	if(QDELETED(target))
+	if(!length(target))
 		return //Acquire our victim.
 
 	if(!ammo)

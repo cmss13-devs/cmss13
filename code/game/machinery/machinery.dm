@@ -249,7 +249,6 @@ Class Procs:
 
 /obj/structure/machinery/proc/RefreshParts() //Placeholder proc for machines that are built using frames.
 	return
-	return 0
 
 /obj/structure/machinery/proc/state(var/msg)
   for(var/mob/O in hearers(src, null))

@@ -28,7 +28,7 @@
 									"FT2" = null,
 									"FT3" = null
 									)	//FT leaders stored here
-	var/list/fireteams = list(
+	var/list/list/fireteams = list(
 							"FT1" = list(),
 							"FT2" = list(),
 							"FT3" = list()
@@ -397,8 +397,7 @@
 			if(squad_leader.is_mob_incapacitated() || !hasHUD(squad_leader,"squadleader"))
 				return
 			if(choice == "Unassign from Team Leader position")
-				if("Unassign from Team Leader position") unassign_ft_leader(target.assigned_fireteam, TRUE)
-				else return
+				unassign_ft_leader(target.assigned_fireteam, TRUE)
 			target.hud_set_squad()
 			return
 

@@ -827,14 +827,14 @@ This function completely restores a damaged organ to perfect condition.
 /obj/limb/proc/release_restraints()
 	if(!owner)
 		return
-	if (owner.handcuffed && body_part in list(BODY_FLAG_ARM_LEFT, BODY_FLAG_ARM_RIGHT, BODY_FLAG_HAND_LEFT, BODY_FLAG_HAND_RIGHT))
+	if (owner.handcuffed && (body_part in list(BODY_FLAG_ARM_LEFT, BODY_FLAG_ARM_RIGHT, BODY_FLAG_HAND_LEFT, BODY_FLAG_HAND_RIGHT)))
 		owner.visible_message(\
 			"\The [owner.handcuffed.name] falls off of [owner.name].",\
 			"\The [owner.handcuffed.name] falls off you.")
 
 		owner.drop_inv_item_on_ground(owner.handcuffed)
 
-	if (owner.legcuffed && body_part in list(BODY_FLAG_FOOT_LEFT, BODY_FLAG_FOOT_RIGHT, BODY_FLAG_LEG_LEFT, BODY_FLAG_LEG_RIGHT))
+	if (owner.legcuffed && (body_part in list(BODY_FLAG_FOOT_LEFT, BODY_FLAG_FOOT_RIGHT, BODY_FLAG_LEG_LEFT, BODY_FLAG_LEG_RIGHT)))
 		owner.visible_message(\
 			"\The [owner.legcuffed.name] falls off of [owner.name].",\
 			"\The [owner.legcuffed.name] falls off you.")

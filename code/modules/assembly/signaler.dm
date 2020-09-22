@@ -114,15 +114,6 @@ Code:
 	radio_connection.post_signal(src, signal)
 	return
 
-	for(var/obj/item/device/assembly/signaler/S in item_list)
-		if(!S)	continue
-		if(S == src)	continue
-		if((S.frequency == src.frequency) && (S.code == src.code))
-			spawn(0)
-				if(S)	S.pulse(0)
-	return 0
-
-
 /obj/item/device/assembly/signaler/pulse(var/radio = 0)
 	if(istype(src.loc, /obj/structure/machinery/door/airlock) && src.airlock_wire && src.wires)
 		var/obj/structure/machinery/door/airlock/A = src.loc

@@ -41,7 +41,7 @@
 	//add_language("Robot Talk", 1) // let them use this since we arent like regular ss13
 	add_language("Drone Talk", 1)
 
-	if(camera && "Robots" in camera.network)
+	if(camera && ("Robots" in camera.network))
 		camera.network.Add("Engineering")
 
 	//They are unable to be upgraded, so let's give them a bit of a better battery.

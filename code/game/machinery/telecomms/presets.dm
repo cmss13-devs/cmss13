@@ -130,8 +130,8 @@
 				playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
 		return
 
-		if(ismultitool(I))
-			return
+	else if(ismultitool(I))
+		return
 	else return ..()
 
 /obj/structure/machinery/telecomms/relay/preset/telecomms

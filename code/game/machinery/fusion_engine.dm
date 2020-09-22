@@ -133,7 +133,6 @@
 		else
 			to_chat(user, SPAN_WARNING("You need to remove the fuel cell from [src] first."))
 			return TRUE
-		return TRUE
 	else if(iswelder(O))
 		if(buildstate == 1)
 			var/obj/item/tool/weldingtool/WT = O

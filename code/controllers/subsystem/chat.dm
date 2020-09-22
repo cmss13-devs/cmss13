@@ -50,7 +50,6 @@ var/datum/subsystem/chat/SSchat
 	
 	if(!istext(message))
 		CRASH("to_chat called with invalid input type ([message])")
-		return
 
 	var/datum/chat_item/ci = new()
 	ci.target = target

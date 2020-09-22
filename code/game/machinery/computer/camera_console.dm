@@ -75,7 +75,7 @@
 		if(!can_access_camera(C))
 			return
 		switch_to_camera(user, C)
-		add_timer(CALLBACK(src, .attack_hand, user), 25)
+		add_timer(CALLBACK(src, /atom.proc/attack_hand, user), 25)
 	return
 
 /obj/structure/machinery/computer/security/proc/can_access_camera(obj/structure/machinery/camera/C)

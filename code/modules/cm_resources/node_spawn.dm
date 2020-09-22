@@ -13,7 +13,6 @@
 /obj/effect/landmark/resource_node_activator/proc/trigger()
 	if(!node_group || !amount)
 		CRASH("A resource node activator was triggered at ([x], [y], [z]) without a node group or resource amount!")
-		return
 
 	//Find all resource nodes that should be activated by this trigger
 	var/list/nodes_to_activate = list()
@@ -23,7 +22,6 @@
 
 	if(!nodes_to_activate.len)
 		CRASH("A resource node activator was triggered at ([x], [y], [z]) without any nodes to spawn!")
-		return
 
 	//Divide the resources equally among each node
 	var/node_resources = round(amount / nodes_to_activate.len)

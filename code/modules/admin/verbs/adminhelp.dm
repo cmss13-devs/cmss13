@@ -119,7 +119,7 @@ var/global/list/ahelp_msgs = list()
 	STUI.processing |= STUI_LOG_STAFF_CHAT
 	msg = "<font color='#009900'><b>[selected_upper]: [get_options_bar(mob, 2, 1, 1, msg=original_msg)]:</b></font> <br>&emsp;<font color='#DA6200'><b>[msg]</font></b><br>"
 
-	var/list/current_staff = get_staff_by_category()
+	var/list/list/current_staff = get_staff_by_category()
 	var/admin_number_afk = current_staff["afk"].len
 	var/list/admins = current_staff["admins"]
 

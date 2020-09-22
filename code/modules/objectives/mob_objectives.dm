@@ -25,12 +25,12 @@
 			continue
 		switch(elimination_type)
 			if(ELIMINATE_Z_LEVEL)
-				if((M.z in z_levels) || (include_vents && M.loc.z in z_levels))
+				if((M.z in z_levels) || (include_vents && (M.loc.z in z_levels)))
 					mob_count++
 				else
 					continue
 			if(ELIMINATE_AREA)
-				if((isturf(M.loc) && get_area(M) in areas_to_clear) || (include_vents && get_area(M) in areas_to_clear))
+				if((isturf(M.loc) && (get_area(M) in areas_to_clear)) || (include_vents && (get_area(M) in areas_to_clear)))
 					mob_count++
 				else
 					continue

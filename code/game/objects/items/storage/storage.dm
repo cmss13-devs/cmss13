@@ -64,7 +64,7 @@
 	..()
 
 /obj/item/storage/proc/return_inv()
-
+	RETURN_TYPE(/list)
 	var/list/L = list(  )
 
 	L += src.contents

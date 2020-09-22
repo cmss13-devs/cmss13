@@ -74,7 +74,6 @@
 		src.use(15)
 	else
 		to_chat(usr, SPAN_NOTICE("\blue You cannot do that."))
-	..()
 
 /obj/item/stack/cable_coil/attackby(obj/item/W, mob/user)
 	if( istype(W, /obj/item/tool/wirecutters) && src.amount > 1)

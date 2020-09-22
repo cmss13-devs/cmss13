@@ -22,7 +22,7 @@
 	update_desc()
 
 /obj/structure/machinery/constructable_frame/proc/update_desc()
-	if(CONSTRUCTION_STATE_BEGIN)
+	if(state == CONSTRUCTION_STATE_BEGIN)
 		requirements_left = " Requires 5 lengths of cable."
 	if(req_components)
 		requirements_left = " Requires "

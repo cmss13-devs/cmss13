@@ -14,7 +14,7 @@
 	var/obj/item/reagent_container/glass/output_container //Our output beaker
 	var/obj/structure/machinery/smartfridge/chemistry/linked_storage //Where we take chemicals from
 
-	var/list/programs = list(list(),list()) //the program of chem datums to dispense, 1 = memory, 2 = box
+	var/list/list/programs = list(list(),list()) //the program of chem datums to dispense, 1 = memory, 2 = box
 	var/list/program_amount = list(list(),list()) //how much to dispense with each program item, 1 = memory, 2 = box
 	var/program = PROGRAM_BOX
 	var/multiplier = 1

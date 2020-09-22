@@ -100,21 +100,22 @@
 						icon_state = "4"
 
 			if(istype(P, /obj/item/device/mmi))
-				if(!P:brainmob)
-					to_chat(user, SPAN_DANGER("Sticking an empty [P] into the frame would sort of defeat the purpose."))
+				var/obj/item/device/mmi/mmi
+				if(!mmi.brainmob)
+					to_chat(user, SPAN_DANGER("Sticking an empty [mmi] into the frame would sort of defeat the purpose."))
 					return
-				if(P:brainmob.stat == 2)
-					to_chat(user, SPAN_DANGER("Sticking a dead [P] into the frame would sort of defeat the purpose."))
+				if(mmi.brainmob.stat == 2)
+					to_chat(user, SPAN_DANGER("Sticking a dead [mmi] into the frame would sort of defeat the purpose."))
 					return
 
-				if(jobban_isbanned(P:brainmob, "AI"))
-					to_chat(user, SPAN_DANGER("This [P] does not seem to fit."))
+				if(jobban_isbanned(mmi.brainmob, "AI"))
+					to_chat(user, SPAN_DANGER("This [mmi] does not seem to fit."))
 					return
 
 				if(user.drop_held_item())
-					P.forceMove(src)
-					brain = P
-					to_chat(usr, "Added [P].")
+					mmi.forceMove(src)
+					brain = mmi
+					to_chat(usr, "Added [mmi].")
 					icon_state = "3b"
 
 			if(istype(P, /obj/item/tool/crowbar) && brain)

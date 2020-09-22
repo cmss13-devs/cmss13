@@ -275,5 +275,3 @@
 					to_chat(usr, "[htmlicon(src, usr)] [SPAN_WARNING("Connected account has been suspended.")]")
 			else
 				to_chat(usr, "[htmlicon(src, usr)] [SPAN_WARNING("EFTPOS is not connected to an account.")]")
-	else
-		..()

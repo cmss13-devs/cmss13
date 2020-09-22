@@ -74,5 +74,3 @@
 	else
 		PAS.increment_stack_count()
 		return
-
-	H.update_xeno_hostile_hud()

@@ -198,7 +198,7 @@
 			if(!is_announcement_active)
 				to_chat(usr, SPAN_WARNING("Please allow at least [COOLDOWN_COMM_MESSAGE*0.1] second\s to pass between announcements."))
 				return FALSE
-			var/input = stripped_multiline_input(usr, "Please write a message to announce to the station crew.", "Priority Announcement", "") as message|null
+			var/input = stripped_multiline_input(usr, "Please write a message to announce to the station crew.", "Priority Announcement", "")
 			if(!input || !is_announcement_active || !(usr in view(1,src))) 
 				return FALSE
 

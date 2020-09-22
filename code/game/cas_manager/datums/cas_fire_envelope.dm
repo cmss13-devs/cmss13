@@ -180,7 +180,7 @@
 /datum/cas_fire_envelope/proc/remove_user_from_tracking(user)
 	if(!guidance)
 		return
-	if(user && user in guidance.users)
+	if(user && (user in guidance.users))
 		guidance.users -= user
 		var/mob/M = user
 		if(istype(M) && M.client)

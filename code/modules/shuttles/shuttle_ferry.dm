@@ -37,7 +37,7 @@
 	direction = !location
 	..(origin, destination)
 
-/datum/shuttle/ferry/long_jump(var/area/departing, var/area/destination, var/area/interim, var/travel_time, var/direction)
+/datum/shuttle/ferry/long_jump(area/departing, area/destination, area/interim, travel_time, direction)
 	if(isnull(location))
 		return
 

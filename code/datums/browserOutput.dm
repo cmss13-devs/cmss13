@@ -214,7 +214,6 @@ var/savefile/iconCache = new /savefile("data/iconCache.sav") //Cache of icons fo
 	if (istype(message, /image) || istype(message, /sound) || istype(target, /savefile))
 		target << message
 		CRASH("DEBUG: to_chat called with invalid message")
-		return
 
 	//Otherwise, we're good to throw it at the user
 	if(!istext(message))

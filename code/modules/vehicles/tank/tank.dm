@@ -88,7 +88,7 @@
 	else if(seat == VEHICLE_GUNNER)
 		M.client.verbs += /obj/vehicle/multitile/proc/switch_hardpoint
 		M.client.verbs += /obj/vehicle/multitile/proc/cycle_hardpoint
-		M.client.verbs += /obj/vehicle/multitile/tank/toggle_gyrostabilizer
+		M.client.verbs += /obj/vehicle/multitile/proc/toggle_gyrostabilizer
 		M.client.verbs += /obj/vehicle/multitile/proc/toggle_shift_click
 
 
@@ -104,7 +104,7 @@
 	else if(seat == VEHICLE_GUNNER)
 		M.client.verbs -= /obj/vehicle/multitile/proc/switch_hardpoint
 		M.client.verbs -= /obj/vehicle/multitile/proc/cycle_hardpoint
-		M.client.verbs -= /obj/vehicle/multitile/tank/toggle_gyrostabilizer
+		M.client.verbs -= /obj/vehicle/multitile/proc/toggle_gyrostabilizer
 		M.client.verbs -= /obj/vehicle/multitile/proc/toggle_shift_click
 
 /obj/vehicle/multitile/tank/toggle_gyrostabilizer()

@@ -64,7 +64,7 @@ var/global/list/chemical_properties_list	//List of all /datum/chem_property datu
 var/global/list/chemical_objective_list	 = list()	//List of all objective reagents indexed by ID associated with the objective value
 var/global/list/chemical_identified_list = list()	//List of all identified objective reagents indexed by ID associated with the objective value
 //List of all id's from classed /datum/reagent datums indexed by class or tier. Used by chemistry generator and chem spawners.
-var/global/list/chemical_gen_classes_list = list("C" = list(),"C1" = list(),"C2" = list(),"C3" = list(),"C4" = list(),"C5" = list(),"C6" = list(),"T1" = list(),"T2" = list(),"T3" = list(),"T4" = list(),"omega" = list(),"tau" = list())
+var/global/list/list/chemical_gen_classes_list = list("C" = list(),"C1" = list(),"C2" = list(),"C3" = list(),"C4" = list(),"C5" = list(),"C6" = list(),"T1" = list(),"T2" = list(),"T3" = list(),"T4" = list(),"omega" = list(),"tau" = list())
 
 var/global/list/landmarks_list = list()				//List of all landmarks created
 var/global/list/surgery_steps = list()				//List of all surgery steps  |BS12
@@ -72,7 +72,7 @@ var/global/list/side_effects = list()				//List of all medical sideeffects types
 var/global/list/ammo_list = list()					//List of all ammo types. Used by guns to tell the projectile how to act.
 var/global/list/joblist = list()					//List of all jobstypes, minus borg and AI
 
-var/global/list/gear_presets_list = list()
+var/global/list/datum/equipment_preset/gear_presets_list = list()
 
 var/global/list/structure_list = list()				//List of all /obj/structure as they are created, to fetch generic structures with a lot less lag
 var/global/list/active_areas = list()
@@ -112,7 +112,7 @@ var/global/list/synth_types = list("Synthetic","Second Generation Synthetic")
 var/global/list/datum/xeno_mutator/xeno_mutator_list = list()
 
 //Xeno hives
-var/global/list/hive_datum = list(new /datum/hive_status(), new /datum/hive_status/corrupted(), new /datum/hive_status/alpha(), new /datum/hive_status/bravo(), new /datum/hive_status/charlie(), new /datum/hive_status/delta())
+var/global/list/datum/hive_status/hive_datum = list(new /datum/hive_status(), new /datum/hive_status/corrupted(), new /datum/hive_status/alpha(), new /datum/hive_status/bravo(), new /datum/hive_status/charlie(), new /datum/hive_status/delta())
 
 //DEFCON rewards / assets
 var/global/list/datum/defcon_reward/defcon_reward_list = list()

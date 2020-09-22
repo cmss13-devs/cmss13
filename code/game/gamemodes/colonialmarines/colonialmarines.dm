@@ -184,7 +184,6 @@
 			marine_announcement("An automated distress signal has been recieved from a mining colony on border world LV-976, \"Sorokyne Outpost\". A response team from the [MAIN_SHIP_NAME] will be dispatched shortly to investigate.", "[MAIN_SHIP_NAME]")
 		if (MAP_CORSAT)
 			marine_announcement("An automated distress signal has been received from Weyland-Yutani's Corporate Orbital Research Station for Advanced Technology, or CORSAT. The [MAIN_SHIP_NAME] has been dispatched to investigate.", "[MAIN_SHIP_NAME]")
-	..()
 
 ////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////

@@ -39272,9 +39272,9 @@
 	},
 /area/almayer/medical/operating_room_four)
 "dwl" = (
-/obj/structure/platform{
+/obj/structure/platform_decoration{
 	dir = 8;
-	icon_state = "platform_deco"
+	tag = "icon-platform_deco (EAST)"
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/briefing)
@@ -40711,9 +40711,7 @@
 	},
 /area/almayer/medical/medical_science)
 "eWp" = (
-/obj/structure/platform{
-	icon_state = "platform_deco"
-	},
+/obj/structure/platform_decoration,
 /turf/open/floor/almayer,
 /area/almayer/living/briefing)
 "eXb" = (

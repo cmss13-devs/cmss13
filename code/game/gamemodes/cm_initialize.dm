@@ -679,7 +679,7 @@ Additional game mode variables.
 					"Survivor - Gang Leader",
 					"Survivor - Engineer"
 				)
-			if(MAP_LV_624,MAP_BIG_RED,MAP_DESERT_DAM)
+			if(MAP_LV_624,MAP_BIG_RED,MAP_DESERT_DAM,MAP_KUTJEVO)
 				survivor_types = list(
 					"Survivor - Scientist",
 					"Survivor - Doctor",

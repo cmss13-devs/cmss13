@@ -79,3 +79,11 @@ var/list/objective_spawn_corpse
 
 /obj/effect/landmark/corpsespawner/PMC
 	name = "Private Security Officer"
+
+///CM specific jobs///
+
+/obj/effect/landmark/corpsespawner/colonist //default is a colonist
+	name = "Colonist"
+
+/obj/effect/landmark/corpsespawner/colonist/burst
+	name = "Burst Colonist"

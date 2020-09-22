@@ -230,6 +230,18 @@
 	basestate = "strata_window"
 	reinforced = TRUE
 
+//Kutjevo frames
+
+/obj/structure/window_frame/kutjevo
+	icon = 'icons/turf/walls/kutjevo/kutjevo_windows.dmi'
+	icon_state = "kutjevo_window0_frame"
+	basestate = "kutjevo_window"
+
+/obj/structure/window_frame/kutjevo/reinforced
+	icon_state = "kutjevo_window_alt0_frame"
+	basestate = "kutjevo_window_alt"
+	reinforced = TRUE
+
 //Solaris frames
 
 /obj/structure/window_frame/solaris
@@ -240,6 +252,18 @@
 /obj/structure/window_frame/solaris/reinforced
 	icon_state = "solaris_window0_frame"
 	basestate = "solaris_window"
+	reinforced = TRUE
+
+//Greybox development windows
+
+/obj/structure/window_frame/dev
+	icon = 'icons/turf/walls/dev/dev_windows.dmi'
+	icon_state = "dev_window0_frame"
+	basestate = "dev_window"
+
+/obj/structure/window_frame/dev/reinforced
+	icon_state = "dev_rwindow0_frame"
+	basestate = "dev_rwindow"
 	reinforced = TRUE
 
 //Corsat frames

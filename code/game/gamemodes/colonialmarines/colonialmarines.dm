@@ -99,12 +99,14 @@
 			if(MAP_WHISKEY_OUTPOST) new /obj/item/map/whiskey_outpost_map(T)
 			if(MAP_SOROKYNE_STRATA) new /obj/item/map/sorokyne_map(T)
 			if(MAP_CORSAT) new /obj/item/map/corsat(T)
+			if(MAP_KUTJEVO) new /obj/item/map/kutjevo_map(T)
 	if(monkey_amount)
 		//var/debug_tally = 0
 		switch(map_tag)
 			if(MAP_LV_624) monkey_types = list(/mob/living/carbon/human/farwa, /mob/living/carbon/human/monkey, /mob/living/carbon/human/neaera, /mob/living/carbon/human/stok)
 			if(MAP_ICE_COLONY) monkey_types = list(/mob/living/carbon/human/yiren)
 			if(MAP_BIG_RED) monkey_types = list(/mob/living/carbon/human/neaera)
+			if(MAP_KUTJEVO) monkey_types = list(/mob/living/carbon/human/neaera, /mob/living/carbon/human/stok)
 			if(MAP_PRISON_STATION) monkey_types = list(/mob/living/carbon/human/monkey)
 			if(MAP_DESERT_DAM) monkey_types = list(/mob/living/carbon/human/stok)
 			if(MAP_SOROKYNE_STRATA) monkey_types = list(/mob/living/carbon/human/yiren)
@@ -184,6 +186,8 @@
 			marine_announcement("An automated distress signal has been recieved from a mining colony on border world LV-976, \"Sorokyne Outpost\". A response team from the [MAIN_SHIP_NAME] will be dispatched shortly to investigate.", "[MAIN_SHIP_NAME]")
 		if (MAP_CORSAT)
 			marine_announcement("An automated distress signal has been received from Weyland-Yutani's Corporate Orbital Research Station for Advanced Technology, or CORSAT. The [MAIN_SHIP_NAME] has been dispatched to investigate.", "[MAIN_SHIP_NAME]")
+		if (MAP_KUTJEVO)
+			marine_announcement("An automated distress signal has been received from Weston Yamada colony Kutjevo Refinery, known for botanical research, export, and raw materials processing and refinement. The [MAIN_SHIP_NAME] has been dispatched to investigate.", "[MAIN_SHIP_NAME]")
 
 ////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////

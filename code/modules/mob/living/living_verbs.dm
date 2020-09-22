@@ -46,6 +46,15 @@
 	//unbuckling yourself
 	if(buckled && (last_special <= world.time) )
 		resist_buckle()
+	
+	//escaping a bodybag or a thermal tarp
+	if(loc && (istype(loc, /obj/structure/closet/bodybag)))
+		var/obj/structure/closet/bodybag/BB = loc
+		if (BB.opened)
+			return
+		visible_message("[BB] begins to wiggle violently!")
+		if(do_after(src, (5*SECONDS_1), INTERRUPT_ALL, BUSY_ICON_HOSTILE, BB))//5 second unzip from inside
+			BB.open()
 
 	//Breaking out of a locker?
 	else if(loc && (istype(loc, /obj/structure/closet)))

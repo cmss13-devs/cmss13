@@ -7,7 +7,7 @@
 	name = "remote door-control"
 	desc = "It controls doors, remotely."
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
-	icon_state = "doorctrl0"
+	icon_state = "doorctrl"
 	desc = "A remote control-switch for a door."
 	power_channel = POWER_CHANNEL_ENVIRON
 	unslashable = TRUE
@@ -164,11 +164,11 @@
 
 	if(!allowed(user) && (wires & 1) && !force )
 		to_chat(user, SPAN_DANGER("Access Denied"))
-		flick("doorctrl-denied",src)
+		flick(initial(icon_state) + "-denied",src)
 		return
 
 	use_power(5)
-	icon_state = "doorctrl1"
+	icon_state = initial(icon_state) + "1"
 	add_fingerprint(user)
 
 	switch(normaldoorcontrol)
@@ -182,14 +182,14 @@
 	desiredstate = !desiredstate
 	spawn(15)
 		if(!(stat & NOPOWER))
-			icon_state = "doorctrl0"
+			icon_state = initial(icon_state) + "0"
 
 /obj/structure/machinery/door_control/power_change()
 	..()
 	if(stat & NOPOWER)
-		icon_state = "doorctrl-p"
+		icon_state = initial(icon_state) + "-p"
 	else
-		icon_state = "doorctrl0"
+		icon_state = initial(icon_state) + "0"
 
 /obj/structure/machinery/driver_button/attack_remote(mob/user as mob)
 	return src.attack_hand(user)
@@ -246,7 +246,7 @@
 
 /obj/structure/machinery/door_control/timed_automatic/process()
 	if (!triggered && world.time >= trigger_time)
-		icon_state = "doorctrl1"
+		icon_state = initial(icon_state) + "1"
 
 		switch(normaldoorcontrol)
 			if(CONTROL_NORMAL_DOORS)
@@ -262,7 +262,7 @@
 		//stop_processing()
 		spawn(15)
 			if(!(stat & NOPOWER))
-				icon_state = "doorctrl0"
+				icon_state = initial(icon_state) + "0"
 
 // Controls elevator railings
 /obj/structure/machinery/door_control/railings
@@ -281,26 +281,26 @@
 		return
 
 	if(busy)
-		flick("doorctrl-denied",src)
+		flick(initial(icon_state) + "-denied",src)
 		return
 
 	if(!allowed(user) && (wires & 1))
 		to_chat(user, SPAN_DANGER("Access Denied"))
-		flick("doorctrl-denied",src)
+		flick(initial(icon_state) + "-denied",src)
 		return
 
 	var/datum/shuttle/ferry/supply/vehicle/elevator = supply_controller.vehicle_elevator
 	if(!elevator)
-		flick("doorctrl-denied",src)
+		flick(initial(icon_state) + "-denied",src)
 		return
 
 	// safety first
 	if(!elevator.at_station())
-		flick("doorctrl-denied",src)
+		flick(initial(icon_state) + "-denied",src)
 		return
 
 	use_power(5)
-	icon_state = "doorctrl1"
+	icon_state = initial(icon_state) + "1"
 	busy = TRUE
 	add_fingerprint(user)
 
@@ -320,4 +320,11 @@
 	spawn(15)
 		busy = FALSE
 		if(!(stat & NOPOWER))
-			icon_state = "doorctrl0"
+			icon_state = initial(icon_state) + "0"
+
+/obj/structure/machinery/door_control/brbutton
+	icon_state = "big_red_button_wallv"
+
+	
+/obj/structure/machinery/door_control/brbutton/alt
+	icon_state = "big_red_button_tablev"

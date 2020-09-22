@@ -284,6 +284,9 @@
 
 	if(!usr.canmove || usr.stat || usr.is_mob_restrained())
 		return
+	
+	if(usr.loc == src)
+		return
 
 	if(ishuman(usr))
 		src.add_fingerprint(usr)

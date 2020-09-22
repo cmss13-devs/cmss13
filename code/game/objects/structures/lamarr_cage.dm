@@ -85,3 +85,21 @@
 
 /obj/item/clothing/mask/facehugger/lamarr/New()//to prevent deleting it if aliums are disabled
 	return
+
+/obj/item/clothing/mask/facehugger/lamarr/Die()
+	if(stat == DEAD) return
+
+	icon_state = "[initial(icon_state)]_dead"
+	stat = DEAD
+
+	visible_message("[htmlicon(src, viewers(src))] <span class='danger'>\The [src] curls up into a ball!</span>")
+	playsound(src.loc, 'sound/voice/alien_facehugger_dies.ogg', 25, 1)
+
+	if(ismob(loc)) //Make it fall off the person so we can update their icons. Won't update if they're in containers thou
+		var/mob/M = loc
+		M.drop_inv_item_on_ground(src)
+
+	layer = BELOW_MOB_LAYER //so dead hugger appears below live hugger if stacked on same tile.
+	//override function prevents Lamarr from decaying like other huggers so you can keep it in your helmet, otherwise the code is identical.
+	return
+	

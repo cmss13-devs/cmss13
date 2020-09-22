@@ -29,7 +29,7 @@ var/global/datum/chemical_data/chemical_data = new /datum/chemical_data/
 
 /datum/chemical_data/proc/unpublish_document(var/document_type, var/title)
 	if(research_publications["[document_type]"]["[title]"])
-		research_publications["[document_type]"] -= list(research_publications["[document_type]"]["[title]"])
+		research_publications["[document_type]"] -= title
 		return TRUE
 
 //Chem storage for various chem dispensers
@@ -53,7 +53,7 @@ var/global/datum/chemical_data/chemical_data = new /datum/chemical_data/
 /datum/chemical_data/proc/transmit_chem_data(var/datum/reagent/R)
 	if(!R || transmitted_data["[R.id]"])
 		return
-	
+
 	var/datum/entity/chemical_information/CI = DB_ENTITY(/datum/entity/chemical_information)
 
 	CI.assign_values(R.vars, list("properties_text", "spent_chemical"))
@@ -76,7 +76,7 @@ var/global/datum/chemical_data/chemical_data = new /datum/chemical_data/
 	var/i = 0
 	for(var/datum/entity/chemical_information/data in chemicals)
 		var/datum/reagent/generated/R = new /datum/reagent/generated
-        
+
 		//Make the reagent
 		for(var/V in data.metadata.field_types)
 			if(V != "properties_text" && V != "spent_chemical")

@@ -16,4 +16,4 @@ var/global/datum/cas_iff_group/uscm_cas_group = new /datum/cas_iff_group()
 
 var/global/datum/cas_iff_group/upp_cas_group = new /datum/cas_iff_group()
 
-var/global/list/cas_groups = list(FACTION_MARINE = uscm_cas_group, FACTION_UPP = upp_cas_group, FACTION_NEUTRAL = uscm_cas_group)
+var/global/list/datum/cas_iff_group/cas_groups = list(FACTION_MARINE = uscm_cas_group, FACTION_UPP = upp_cas_group, FACTION_NEUTRAL = uscm_cas_group)

@@ -17,7 +17,7 @@
 			return 0
 		if(ACCESS_WY_CORPORATE in held_card.access)
 			return 2
-		else if(ACCESS_MARINE_BRIDGE in held_card.access || ACCESS_MARINE_COMMANDER in held_card.access)
+		else if((ACCESS_MARINE_BRIDGE in held_card.access) || (ACCESS_MARINE_COMMANDER in held_card.access))
 			return 1
 
 	proc/create_transation(target, reason, amount)

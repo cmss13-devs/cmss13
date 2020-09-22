@@ -177,7 +177,7 @@
 /*
  * Parapens
  */
- /obj/item/tool/pen/paralysis
+/obj/item/tool/pen/paralysis
 	flags_atom = FPRINT|OPENCONTAINER
 	flags_equip_slot = SLOT_WAIST
 

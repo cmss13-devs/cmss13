@@ -75,11 +75,9 @@
 
 	if (!( istext(HTMLstring) ))
 		CRASH("Given non-text argument!")
-		return
 	else
 		if (length(HTMLstring) != 7)
 			CRASH("Given non-HTML argument!")
-			return
 	var/textr = copytext(HTMLstring, 2, 4)
 	var/textg = copytext(HTMLstring, 4, 6)
 	var/textb = copytext(HTMLstring, 6, 8)
@@ -96,7 +94,6 @@
 	if (length(textb) < 2)
 		textr = text("0[]", textb)
 	return text("#[][][]", textr, textg, textb)
-	return
 
 //Returns the middle-most value
 /proc/dd_range(var/low, var/high, var/num)
@@ -277,7 +274,7 @@ Turf and target are seperate in case you want to teleport some distance from a t
 
 	blocking_dir |= start_turf.BlockedExitDirs(mover, fdir)
 	for (obstacle in start_turf) //First, check objects to block exit
-		if (mover == obstacle || obstacle in forget)
+		if (mover == obstacle || (obstacle in forget))
 			continue
 		if (!isStructure(obstacle) && !ismob(obstacle) && !isVehicle(obstacle))
 			continue

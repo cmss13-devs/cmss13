@@ -168,8 +168,9 @@
 /mob/living/carbon/Xenomorph/proc/create_crusher_shield()
 	remove_overlay(X_HEAD_LAYER)
 
-	overlays_standing[X_HEAD_LAYER] = image("icon"=get_icon_from_source("alien_overlay_64x64"), "icon_state" = "empower")
-	overlays_standing[X_HEAD_LAYER].color = rgb(87, 73, 144)
+	var/image/shield = image("icon"=get_icon_from_source("alien_overlay_64x64"), "icon_state" = "empower")
+	shield.color = rgb(87, 73, 144)
+	overlays_standing[X_HEAD_LAYER] = shield
 	apply_overlay(X_HEAD_LAYER)
 	add_timer(CALLBACK(src, .proc/remove_overlay, X_HEAD_LAYER), 20)
 

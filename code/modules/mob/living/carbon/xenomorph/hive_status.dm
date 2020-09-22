@@ -55,7 +55,7 @@
 	if(!data["xeno_keys"])
 		return
 
-	for(var/index = 1 to data["xeno_keys"].len)
+	for(var/index = 1 to length(data["xeno_keys"]))
 		var/list/info = data["xeno_keys"][index]
 		if(info["nicknumber"] == X.nicknumber)
 

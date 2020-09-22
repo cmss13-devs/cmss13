@@ -659,10 +659,10 @@
 	if(!istype(hive))
 		return
 
-	if(!XENO_STRUCTURE_NEST in hive.hive_structure_types)
+	if(!(XENO_STRUCTURE_NEST in hive.hive_structure_types))
 		hive.hive_structure_types.Add(XENO_STRUCTURE_NEST)
 
-	if(!XENO_STRUCTURE_NEST in hive.hive_structures_limit)
+	if(!(XENO_STRUCTURE_NEST in hive.hive_structures_limit))
 		hive.hive_structures_limit.Add(XENO_STRUCTURE_NEST)
 		hive.hive_structures_limit[XENO_STRUCTURE_NEST] = 0
 

@@ -79,7 +79,6 @@
                 return list()
             if (!islist(E))
                 CRASH("Tried to remove flags from a nonlist")
-                return list()
             var/list/L = E
             ret = L.Copy()
             first = FALSE

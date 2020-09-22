@@ -383,7 +383,7 @@ its easier to just keep the beam vertical.
 
 
 /atom/proc/get_global_map_pos()
-	if(!islist(global_map) || isemptylist(global_map)) return
+	if(!islist(global_map) || !length(global_map)) return
 	var/cur_x = null
 	var/cur_y = null
 	var/list/y_arr = null

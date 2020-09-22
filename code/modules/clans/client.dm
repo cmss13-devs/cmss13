@@ -215,7 +215,7 @@
         return
 
     if(!clan_info)
-        return ..()
+        return
 
     clan_info.sync() // Make sure permissions/clan is accurate
 
@@ -400,7 +400,7 @@
                     to_chat(src, SPAN_WARNING("This player doesn't belong to a clan!"))
                     return
 
-                var/ranks = clan_ranks.Copy()
+                var/list/datum/rank/ranks = clan_ranks.Copy()
                 ranks -= CLAN_RANK_ADMIN // Admin rank should not and cannot be obtained from here
 
                 var/datum/rank/chosen_rank
@@ -456,6 +456,3 @@
         target.save()
         target.sync()
         usr_view_clan_info(target.clan_id, TRUE)
-                    
-
-    ..()

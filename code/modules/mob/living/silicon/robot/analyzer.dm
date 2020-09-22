@@ -29,7 +29,7 @@
 	if(!(istype(user, /mob/living/carbon/human) || ticker) && ticker.mode.name != "monkey")
 		to_chat(user, SPAN_DANGER("You don't have the dexterity to do this!"))
 		return
-	if(!isrobot(M) && !(ishuman(M) && (M:species.flags & IS_SYNTHETIC)))
+	if(!isrobot(M) && !isSynth(M))
 		to_chat(user, SPAN_DANGER("You can't analyze non-robotic things!"))
 		return
 
@@ -58,7 +58,7 @@
 		else
 			user.show_message(SPAN_NOTICE("\t Components are OK."),1)
 
-	if (ishuman(M) && (M:species.flags & IS_SYNTHETIC))
+	if (isSynth(M))
 		var/mob/living/carbon/human/H = M
 		var/list/damaged = H.get_damaged_limbs(1,1)
 		user.show_message(SPAN_NOTICE("Localized Damage, Brute/Electronics:"),1)

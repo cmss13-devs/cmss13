@@ -10,6 +10,7 @@
 	return null
 
 /proc/get_area(atom/A)
+	RETURN_TYPE(/area)
 	var/turf/T = get_turf(A)
 	if(T) . = T.loc
 

@@ -657,7 +657,7 @@
 			SPAN_WARNING("You slash [src]!"))
 			playsound(src.loc, 'sound/weapons/slash.ogg', 25, 1)
 			var/allcut = 1
-			for(var/wire = 1; wire < get_wire_descriptions().len; wire++)
+			for(var/wire = 1; wire < length(get_wire_descriptions()); wire++)
 				if(!isWireCut(wire))
 					allcut = 0
 					break
@@ -667,7 +667,7 @@
 				visible_message(SPAN_WARNING("[src]'s cover flies open, exposing the wires!"))
 
 			else if(wiresexposed == 1 && allcut == 0)
-				for(var/wire = 1; wire < get_wire_descriptions().len; wire++)
+				for(var/wire = 1; wire < length(get_wire_descriptions()); wire++)
 					cut(wire)
 				update_icon()
 				visible_message(SPAN_WARNING("[src]'s wires are shredded!"))

@@ -13,7 +13,7 @@
 	var/max_cards = 52
 	w_class = SIZE_TINY
 
-	var/list/cards = list()
+	var/list/datum/playingcard/cards = list()
 
 /obj/item/toy/deck/New()
 	..()
@@ -244,7 +244,7 @@
 
 	var/concealed = 0
 	var/discard_pile = FALSE
-	var/list/cards = list()
+	var/list/datum/playingcard/cards = list()
 
 /obj/item/toy/handcard/aceofspades
 	icon_state = "spades_ace"

@@ -14,7 +14,6 @@
 #define COOLDOWN_COMM_MESSAGE MINUTES_1
 #define COOLDOWN_COMM_REQUEST MINUTES_5
 #define COOLDOWN_COMM_CENTRAL SECONDS_30
-#define COOLDOWN_COMM_DESTRUCT MINUTES_5
 
 //Note: Commented out procs are things I left alone and did not revise. Usually AI-related interactions.
 
@@ -119,7 +118,7 @@
 			var/mob/M = usr
 			var/obj/item/card/id/I = M.get_active_hand()
 			if(istype(I))
-				if(ACCESS_MARINE_COMMANDER in I.access || ACCESS_MARINE_BRIDGE in I.access) //Let heads change the alert level.
+				if((ACCESS_MARINE_COMMANDER in I.access) || (ACCESS_MARINE_BRIDGE in I.access)) //Let heads change the alert level.
 					switch(tmp_alertlevel)
 						if(-INFINITY to SEC_LEVEL_GREEN) tmp_alertlevel = SEC_LEVEL_GREEN //Cannot go below green.
 						if(SEC_LEVEL_BLUE to INFINITY) tmp_alertlevel = SEC_LEVEL_BLUE //Cannot go above blue.
@@ -142,7 +141,7 @@
 				if(world.time < cooldown_message + COOLDOWN_COMM_MESSAGE)
 					to_chat(usr, SPAN_WARNING("Please allow at least [COOLDOWN_COMM_MESSAGE*0.1] second\s to pass between announcements."))
 					return FALSE
-				var/input = stripped_multiline_input(usr, "Please write a message to announce to the station crew.", "Priority Announcement", "") as message|null
+				var/input = stripped_multiline_input(usr, "Please write a message to announce to the station crew.", "Priority Announcement", "")
 				if(!input || authenticated != 2 || world.time < cooldown_message + COOLDOWN_COMM_MESSAGE || !(usr in view(1,src))) 
 					return FALSE
 

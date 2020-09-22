@@ -6,7 +6,6 @@
 #if DM_VERSION < 513
 #define islist(L) (istype(L, /list))
 #endif
-#define isemptylist(L) (!L.len)
 
 /*
  * Holds procs to help with list operations
@@ -680,8 +679,8 @@ datum/proc/dd_SortValue()
 			.[i] = key
 			.[key] = value
 
-/proc/copyListList(list/L)
-	var/list/newList = list()
+/proc/copyListList(list/list/L)
+	var/list/list/newList = list()
 	for(var/i in L)
 		if(isnum(i))
 			newList += i

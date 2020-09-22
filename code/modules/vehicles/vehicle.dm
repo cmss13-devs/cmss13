@@ -9,7 +9,7 @@
 	can_buckle = TRUE
 
 	// The mobs that are in each position/seat of the vehicle
-	var/list/seats = list(
+	var/list/mob/seats = list(
 		VEHICLE_DRIVER = null
 	)
 

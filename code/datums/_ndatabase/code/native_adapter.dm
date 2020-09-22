@@ -24,8 +24,6 @@
 #define NATIVE_COUNT_COLUMN_NAME "total"
 #define NATIVE_ROOT_NAME "__root"
 #define NATIVE_ROOT_ALIAS "T_root"
-#define COPY_FROM_START(T, loc) copytext(T, 1, loc)
-#define COPY_AFTER_FOUND(T, loc) copytext(T, loc+1)
 
 /datum/db/adapter/native_adapter
 	var/list/issue_log

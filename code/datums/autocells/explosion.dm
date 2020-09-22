@@ -208,7 +208,7 @@
 			// Set the direction the explosion is traveling in
 			E.direction = dir
 			//Diagonal cells have a small delay when branching off the center. This helps the explosion look circular
-			if(!direction && dir in diagonals)
+			if(!direction && (dir in diagonals))
 				E.delay = 1
 
 			setup_new_cell(E)
@@ -290,7 +290,6 @@
 		if(explosion_source_mob)
 			if(!ismob(explosion_source_mob))
 				CRASH("Statistics attempted to track a source mob incorrectly: [explosion_source_mob] ([explosion_source])")
-				return
 			var/mob/firing_mob = explosion_source_mob
 			M.last_damage_mob = firing_mob
 			var/turf/location_of_mob = get_turf(firing_mob)

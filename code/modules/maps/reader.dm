@@ -482,7 +482,6 @@ var/global/dmm_suite/preloader/_preloader = new
 		if(equal_position)//associative var, so do the association
 			if(isnum(left))
 				CRASH("Numerical key in associative list.")
-				break // This is invalid; apparently dm will runtime in this situation.
 			var/trim_right = trim_text(copytext(text,equal_position+1,position))//the content of the variable
 			to_return[left] = readlistitem(trim_right)
 

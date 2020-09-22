@@ -23,7 +23,7 @@
 		Aim(A) 	//Clicked a mob, aim at them
 	else  		//Didn't click someone, check if there is anyone along that guntrace
 		var/mob/living/M = GunTrace(user.x,user.y,A.x,A.y,user.z,user)  //Find dat mob.
-		if(M && isliving(M) && M in view(user) && !(M in target))
+		if(M && isliving(M) && (M in view(user)) && !(M in target))
 			Aim(M) //Aha!  Aim at them!
 		else if(!ismob(M) || (ismob(M) && !(M in view(user)))) //Nope!  They weren't there!
 			Fire(A,user,params)  //Fire like normal, then.
@@ -53,7 +53,7 @@
 		stop_aim()
 		return
 	M.last_move_intent = world.time
-	if(src.in_chamber && T in view(5,M))
+	if(src.in_chamber && (T in view(5,M)))
 		Fire(T,usr,reflex = 1)
 	else
 		click_empty(M)

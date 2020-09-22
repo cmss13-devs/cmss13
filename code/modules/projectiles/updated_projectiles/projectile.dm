@@ -83,11 +83,11 @@
 	return GC_HINT_RECYCLE
 
 /obj/item/projectile/Collided(atom/movable/AM)
-	if(AM && !AM in permutated)
+	if(AM && !(AM in permutated))
 		scan_a_turf(AM.loc)
 
 /obj/item/projectile/Crossed(atom/movable/AM)
-	if(AM && !AM in permutated)
+	if(AM && !(AM in permutated))
 		scan_a_turf(get_turf(AM))
 
 

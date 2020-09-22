@@ -6,6 +6,7 @@ stages:
 variables:
   BYOND_MAJOR: "513"
   BYOND_MINOR: "1527"
+  SPACEMAN_DMM_VERSION: "1.5"
 
 before_script:
   - apt-get update -qq
@@ -15,10 +16,13 @@ before_script:
   - cd byond
   - make install
   - cd ..
+  - curl -LJO "https://github.com/SpaceManiac/SpacemanDMM/releases/download/suite-${SPACEMAN_DMM_VERSION}/dreamchecker" -o dreamchecker
+  - chmod +x dreamchecker
 
 build:
     stage: build
     script:
+      - ./dreamchecker
       - chmod +rwx ./insert_maps_in_dme.sh
       - ./insert_maps_in_dme.sh
       - DreamMaker ColonialMarinesALPHA.dme

@@ -543,7 +543,7 @@
 /obj/item/reagent_container/glass/rag/afterattack(atom/movable/AM, mob/user, proximity)
 	if(!proximity)
 		return
-	if(istype(AM) && src in user)
+	if(istype(AM) && (src in user))
 		user.visible_message("[user] starts to wipe down [AM] with [src]!")
 		if(do_after(user,30, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 			user.visible_message("[user] finishes wiping off the [AM]!")

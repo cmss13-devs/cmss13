@@ -69,7 +69,7 @@
 	var/list/obj/limb/parts = human.get_damaged_limbs(brute,burn)
 	if(!parts.len)	return
 	var/obj/limb/picked = pick(parts)
-	if(LIMB_ROBOT)
+	if(picked.status & LIMB_ROBOT)
 		picked.heal_damage(brute, burn, 0, 1)
 		human.pain.apply_pain(-brute, BRUTE)
 		human.pain.apply_pain(-burn, BURN)

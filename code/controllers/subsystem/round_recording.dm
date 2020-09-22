@@ -17,7 +17,7 @@ var/datum/subsystem/round_recording/SSround_recording
 
 	can_fire = FALSE
 	return
-
+/*
 	var/list/lines = file2list("config/round_recording.txt")
 
 	var/record_rounds = FALSE
@@ -43,7 +43,7 @@ var/datum/subsystem/round_recording/SSround_recording
 
 	if(!record_rounds)
 		pause()
-	..()
+	..()*/
 
 /datum/subsystem/round_recording/stat_entry()
 	..(recorder ? "SS#: [recorder.snapshots] T: [LAZYLEN(recorder.tracked_players)]" : "Disabled")
@@ -52,7 +52,7 @@ var/datum/subsystem/round_recording/SSround_recording
 	can_fire = FALSE
 	return
 
-	if(!recorder)
+/*	if(!recorder)
 		return
 
 	if(!ticker || ticker.current_state != GAME_STATE_PLAYING)
@@ -77,4 +77,4 @@ var/datum/subsystem/round_recording/SSround_recording
 		recorder.snapshot_player(M)
 
 		if (MC_TICK_CHECK)
-			return
+			return*/

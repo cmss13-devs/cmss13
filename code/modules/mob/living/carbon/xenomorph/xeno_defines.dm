@@ -195,8 +195,8 @@
 		XENO_STRUCTURE_RECOVERY = /datum/construction_template/xenomorph/recovery
 	)
 
-	var/list/hive_structures = list() //Stringref list of structures that have been built
-	var/list/hive_constructions = list() //Stringref list of structures that are being built
+	var/list/list/hive_structures = list() //Stringref list of structures that have been built
+	var/list/list/hive_constructions = list() //Stringref list of structures that are being built
 
 	var/datum/hive_status_ui/hive_ui = new
 
@@ -509,7 +509,7 @@
 		if(X.z == ADMIN_Z_LEVEL)
 			continue
 
-		if(!X in living_xeno_list)
+		if(!(X in living_xeno_list))
 			continue
 
 		var/area/A = get_area(X)

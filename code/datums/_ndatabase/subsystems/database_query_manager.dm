@@ -78,7 +78,7 @@ var/datum/subsystem/database_query_manager/SSdatabase
 	if(connection.status != DB_CONNECTION_READY)
 		return
 	while (currentrun.len)
-		var/list/datum/db/query_response/Q = currentrun[currentrun.len]		
+		var/datum/db/query_response/Q = currentrun[currentrun.len]		
 		if (!Q || Q.disposed)
 			queries -= Q
 			continue

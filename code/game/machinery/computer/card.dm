@@ -54,7 +54,7 @@
 	if(!istype(id_card))
 		return ..()
 
-	if(!scan && ACCESS_MARINE_LOGISTICS in id_card.access)
+	if(!scan && (ACCESS_MARINE_LOGISTICS in id_card.access))
 		if(user.drop_held_item())
 			id_card.forceMove(src)
 			scan = id_card

@@ -140,7 +140,7 @@ var/list/department_radio_keys = list(
 				if((M.stat == DEAD || isobserver(M)) && M.client && M.client.prefs && (M.client.prefs.toggles_chat & CHAT_GHOSTEARS))
 					listening |= M
 					continue
-				if(M.loc && M.locs[1] in hearturfs)
+				if(M.loc && (M.locs[1] in hearturfs))
 					listening |= M
 
 		var/speech_bubble_test = say_test(message)

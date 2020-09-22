@@ -27,7 +27,7 @@
 #define CLAN_LIMIT_NUMBER 1 // Hard limit
 #define CLAN_LIMIT_SIZE 2 // Scales with clan size
 
-var/global/list/clan_ranks = list(
+var/global/list/datum/rank/clan_ranks = list(
     CLAN_RANK_UNBLOODED = new /datum/rank/unblooded(), 
     CLAN_RANK_YOUNG = new /datum/rank/young(), 
     CLAN_RANK_BLOODED = new /datum/rank/blooded(), 

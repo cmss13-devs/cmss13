@@ -185,7 +185,7 @@ var/list/robot_verbs_default = list(
 		if("Medic")
 			module = new /obj/item/circuitboard/robot_module/medic(src)
 			module.channels = list("Command" = 1, "MP" = 0, SQUAD_NAME_1 = 0, SQUAD_NAME_2 = 0, SQUAD_NAME_3 = 0, SQUAD_NAME_4 = 0, "Engi" = 0, "MedSci" = 1, "Req" = 0 )
-			if(camera && "Robots" in camera.network)
+			if(camera && ("Robots" in camera.network))
 				camera.network.Add("Medical")
 			module_sprites["Standard"] = "surgeon"
 			module_sprites["Advanced Droid"] = "droid-medical"
@@ -195,7 +195,7 @@ var/list/robot_verbs_default = list(
 		if("Surgeon")
 			module = new /obj/item/circuitboard/robot_module/surgeon(src)
 			module.channels = list("Command" = 1, "MP" = 0, SQUAD_NAME_1 = 0, SQUAD_NAME_2 = 0, SQUAD_NAME_3 = 0, SQUAD_NAME_4 = 0, "Engi" = 0, "MedSci" = 1, "Req" = 0 )
-			if(camera && "Robots" in camera.network)
+			if(camera && ("Robots" in camera.network))
 				camera.network.Add("Medical")
 			module_sprites["Standard"] = "surgeon"
 			module_sprites["Advanced Droid"] = "droid-medical"
@@ -212,7 +212,7 @@ var/list/robot_verbs_default = list(
 		if("Engineering")
 			module = new /obj/item/circuitboard/robot_module/engineering(src)
 			module.channels = list("Command" = 1, "MP" = 0, SQUAD_NAME_1 = 0, SQUAD_NAME_2 = 0, SQUAD_NAME_3 = 0, SQUAD_NAME_4 = 0, "Engi" = 1, "MedSci" = 0, "Req" = 0 )
-			if(camera && "Robots" in camera.network)
+			if(camera && ("Robots" in camera.network))
 				camera.network.Add("Engineering")
 			module_sprites["Landmate"] = "landmate"
 			module_sprites["Landmate - Treaded"] = "engiborg+tread"

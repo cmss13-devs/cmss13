@@ -159,7 +159,7 @@
 
 	body += "<div align='center'><b><font size='1'>[formatted_type]</font></b>"
 
-	if(admin_holder && admin_holder.marked_datums && D in admin_holder.marked_datums)
+	if(admin_holder && admin_holder.marked_datums && (D in admin_holder.marked_datums))
 		body += "<br><font size='1' color='red'><b>Marked Object</b></font>"
 
 	body += "</div>"
@@ -351,21 +351,16 @@ body
 		html += "[name] = /list ([L.len])"
 
 		if (L.len > 0 && !(name == "underlays" || name == "overlays" || name == "vars" || L.len > 500))
-			// not sure if this is completely right...
-			if(0)   //(L.vars.len > 0)
-				html += "<ol>"
-				html += "</ol>"
-			else
-				html += "<ul>"
-				var/index = 1
-				for (var/entry in L)
-					if(istext(entry))
-						html += debug_variable(entry, L[entry], level + 1)
-					//html += debug_variable("[index]", L[index], level + 1)
-					else
-						html += debug_variable(index, L[index], level + 1)
-					index++
-				html += "</ul>"
+			html += "<ul>"
+			var/index = 1
+			for (var/entry in L)
+				if(istext(entry))
+					html += debug_variable(entry, L[entry], level + 1)
+				//html += debug_variable("[index]", L[index], level + 1)
+				else
+					html += debug_variable(index, L[index], level + 1)
+				index++
+			html += "</ul>"
 
 	else
 		html += "[name] = <span class='value'>[value]</span>"

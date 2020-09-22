@@ -119,7 +119,7 @@
 
 // Handle HREF clicks through hive status and hivemind
 /mob/living/carbon/Xenomorph/Topic(href, href_list)
-	if (XENO_OVERWATCH_TARGET_HREF)
+	if(href_list[XENO_OVERWATCH_TARGET_HREF])
 		if(!check_state(1))
 			return
 

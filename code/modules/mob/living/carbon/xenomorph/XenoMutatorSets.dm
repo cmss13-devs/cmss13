@@ -38,7 +38,6 @@
 	else
 		to_chat(usr, "Mutation failed!")
 		return FALSE
-	return FALSE
 
 /datum/mutator_set/proc/can_purchase_mutator(var/mutator_name)
 	var/datum/xeno_mutator/XM = xeno_mutator_list[mutator_name]

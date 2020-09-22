@@ -85,8 +85,8 @@
 	if(..())
 		return
 	if(stat & NOPOWER)
-		return
 		dat+= "<HR><BR><A href='?src=\ref[user];mach_close=suit_storage_unit'>Close panel</A>"
+		return
 	if(isUV) //The thing is running its cauterisation cycle. You have to wait.
 		dat += SET_CLASS("<B>Unit is cauterising contents with UV ray. Please wait.</B>", INTERFACE_RED)
 		dat += "<BR>"

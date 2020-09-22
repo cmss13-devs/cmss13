@@ -169,7 +169,7 @@
 			teleatom.visible_message(SPAN_DANGER("<B>The [teleatom] bounces off of the portal!</B>"))
 			return 0
 
-		if(!isemptylist(teleatom.search_contents_for(/obj/item/disk/nuclear)))
+		if(length(teleatom.search_contents_for(/obj/item/disk/nuclear)))
 			if(istype(teleatom, /mob/living))
 				var/mob/living/MM = teleatom
 				MM.visible_message(SPAN_DANGER("<B>The [MM] bounces off of the portal!</B>"),SPAN_DANGER("Something you are carrying seems to be unable to pass through the portal. Better drop it if you want to go through."))
@@ -178,7 +178,7 @@
 			return 0
 
 		if(destination.z == 2) //centcomm z-level
-			if(!isemptylist(teleatom.search_contents_for(/obj/item/storage/backpack/holding)))
+			if(length(teleatom.search_contents_for(/obj/item/storage/backpack/holding)))
 				teleatom.visible_message(SPAN_DANGER("<B>The Bag of Holding bounces off of the portal!</B>"))
 				return 0
 

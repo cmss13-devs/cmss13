@@ -17,7 +17,6 @@
 
 ///////////////////////////////RECIPE GENERATOR///////////////////////////////
 /datum/chemical_reaction/proc/generate_recipe()
-	..()
 	//Determine modifier for uneven recipe balance
 	var/modifier = rand(0,100)
 	if(modifier<=60)
@@ -51,7 +50,6 @@
 	return TRUE
 
 /datum/chemical_reaction/proc/add_component(var/my_chemid,var/my_modifier,var/is_catalyst)
-	..()
 	var/chem_id		//The id of the picked chemical
 	var/modifier	//The number of required reagents
 	var/new_objective_value 
@@ -147,7 +145,6 @@
 
 ////////////////////////////////NAME GENERATOR////////////////////////////////
 /datum/reagent/proc/generate_name()
-	..()
 	/*We can't make use of this currently because reagents are initialised before reactions. Might fix this at a later date.
 	if(modifier > 6)
 		modifier = 6
@@ -170,7 +167,6 @@
 
 //////////////////////////////REAGENT GENERATOR//////////////////////////////
 /datum/reagent/proc/generate_stats(var/no_properties)
-	..()
 	//Properties
 	if(!no_properties)
 		var/gen_value

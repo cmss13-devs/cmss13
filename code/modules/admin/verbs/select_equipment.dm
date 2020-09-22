@@ -171,9 +171,7 @@
 /proc/arm_equipment(var/mob/living/carbon/human/M, var/dresscode, var/randomise = FALSE, var/count_participant = FALSE)
 	if(!gear_presets_list)
 		CRASH("arm_equipment !gear_presets_list")
-		return
 	if(!gear_presets_list[dresscode])
 		CRASH("arm_equipment !gear_presets_list[dresscode]")
-		return
 	gear_presets_list[dresscode].load_preset(M, randomise, count_participant)
 	return

@@ -197,7 +197,7 @@
 	return list(min, max)
 
 /datum/interior/proc/get_middle_turf()
-	var/list/bounds = get_bound_turfs()
+	var/list/turf/bounds = get_bound_turfs()
 	var/turf/middle = locate(Floor(bounds[1].x + (bounds[2].x - bounds[1].x)/2), Floor(bounds[1].y + (bounds[2].y - bounds[1].y)/2), bounds[1].z)
 	
 	return middle

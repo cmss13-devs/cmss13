@@ -226,7 +226,7 @@ world/loop_checks = 0
 
 			return
 		else
-			WARNING("qdel() passed object of type [D.type]. qdel() cannot handle unmovable atoms.")
+			warning("qdel() passed object of type [D.type]. qdel() cannot handle unmovable atoms.")
 			del(D)
 			SSgarbage.hard_del_count++
 			SSgarbage.gc_count++

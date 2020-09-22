@@ -32,7 +32,7 @@
             new /datum/effects/xeno_buff(C, X, ttl = (0.25 SECONDS * P.kills + SECONDS_3), bonus_damage = bonus_damage_scale * P.kills, bonus_speed = (bonus_speed_scale * P.kills))
 
 
-    for(var/mob/M in view(M))
+    for(var/mob/M in view(X))
         if(M && M.client)
             shake_camera(M, 10, 1)
     
@@ -87,7 +87,7 @@
             add_timer(CALLBACK(GLOBAL_PROC, .proc/unroot_human, C), get_xeno_stun_duration(C, freeze_duration))
 
 
-    for(var/mob/M in view(M))
+    for(var/mob/M in view(X))
         if(M && M.client)
             shake_camera(M, 0.2 SECONDS, 1)
     

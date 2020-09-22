@@ -50,9 +50,6 @@
 /atom/movable/proc/launch_impact(atom/hit_atom)
     if (isnull(launch_metadata))
         CRASH("launch_impact called without any stored metadata")
-        throwing = FALSE
-        rebounding = FALSE
-        return
     
     var/list/collision_callbacks = launch_metadata.get_collision_callbacks(hit_atom)
     if (islist(collision_callbacks))
@@ -131,7 +128,6 @@
 /atom/movable/proc/launch_towards(var/datum/launch_metadata/LM)
     if (!istype(LM))
         CRASH("invalid launch_metadata passed to launch_towards")
-        return
     if (!LM.target || !src)
         return
     

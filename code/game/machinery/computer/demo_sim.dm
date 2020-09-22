@@ -93,7 +93,7 @@
 	cooling = TRUE
 
 	for(var/spawn_loc in dummy_spawn_locs)
-		var/var/mob/living/carbon/human/dummy = new /mob/living/carbon/human(spawn_loc)
+		var/mob/living/carbon/human/dummy = new /mob/living/carbon/human(spawn_loc)
 		dummy.name = "simulated human"
 		QDEL_IN(dummy,MINUTES_1)
 

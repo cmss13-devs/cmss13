@@ -340,7 +340,7 @@
 
 	Topic(href, href_list)
 		src.add_fingerprint(usr)
-		if(href_list["nextTag"] && href_list["nextTag"] in tagger_locations)
+		if(href_list["nextTag"] && (href_list["nextTag"] in tagger_locations))
 			src.currTag = href_list["nextTag"]
 		openwindow(usr)
 

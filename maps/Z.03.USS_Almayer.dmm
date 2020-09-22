@@ -834,13 +834,13 @@
 	},
 /area/almayer/squads/delta)
 "acq" = (
-/obj/structure/pipes/standard/manifold/hidden/supply{
-	dir = 1
-	},
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "orange";
 	tag = "icon-orange (WEST)"
+	},
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 1
 	},
 /turf/open/floor/almayer,
 /area/almayer/engineering/engineering_workshop)
@@ -11389,7 +11389,7 @@
 "aCb" = (
 /obj/structure/machinery/computer/security/almayer_network{
 	dir = 8;
-	network = list("almayer", "vehicle")
+	network = list("almayer","vehicle")
 	},
 /obj/structure/surface/table/reinforced,
 /obj/structure/window/reinforced/toughened{
@@ -11406,6 +11406,14 @@
 	name = "ultra-reinforced window"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer,
+/obj/structure/machinery/door/poddoor/almayer{
+	density = 0;
+	dir = 4;
+	icon_state = "pdoor0";
+	id = "CIC Lockdown";
+	name = "\improper Combat Information Center Blast Door";
+	opacity = 0
+	},
 /turf/open/floor/plating,
 /area/almayer/command/cic)
 "aCg" = (
@@ -12630,7 +12638,7 @@
 /obj/structure/machinery/computer/security/almayer{
 	dir = 4;
 	name = "Ship Security Cameras";
-	network = list("almayer", "vehicle");
+	network = list("almayer","vehicle");
 	pixel_x = -17
 	},
 /obj/item/device/flashlight/lamp,
@@ -16312,7 +16320,7 @@
 	id = "isolationchamber 1";
 	name = "\improper Isolation Chamber One"
 	},
-/obj/structure/window/framed/almayer/requisitions,
+/obj/structure/window/framed/almayer/hull,
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig_cells)
 "aTL" = (
@@ -16331,7 +16339,7 @@
 	id = "isolationchamber 2";
 	name = "\improper Isolation Chamber Two"
 	},
-/obj/structure/window/framed/almayer/requisitions,
+/obj/structure/window/framed/almayer/hull,
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig_cells)
 "aTQ" = (
@@ -27583,13 +27591,15 @@
 /turf/open/floor/almayer,
 /area/almayer/living/cryo_cells)
 "bGo" = (
-/obj/structure/window/framed/almayer/requisitions,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	dir = 4;
 	id = "ROlobby1";
 	name = "\improper RO Line 1"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer,
+/obj/structure/window/framed/almayer/hull{
+	name = "ultra-reinforced window"
+	},
 /turf/open/floor/plating,
 /area/almayer/squads/req)
 "bGp" = (
@@ -37623,7 +37633,7 @@
 	dir = 2;
 	tag = "icon-door_open"
 	},
-/obj/structure/window/framed/almayer/requisitions,
+/obj/structure/window/framed/almayer/hull,
 /turf/open/floor/plating,
 /area/almayer/engineering/engineering_workshop/hangar)
 "cmH" = (
@@ -38181,12 +38191,14 @@
 	},
 /area/almayer/medical/operating_room_four)
 "cpK" = (
-/obj/structure/window/framed/almayer/requisitions,
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	dir = 4;
 	id = "ROlobby2";
 	name = "\improper RO Line 2"
+	},
+/obj/structure/window/framed/almayer/hull{
+	name = "ultra-reinforced window"
 	},
 /turf/open/floor/plating,
 /area/almayer/squads/req)
@@ -40869,7 +40881,7 @@
 	},
 /area/almayer/shipboard/brig)
 "ffu" = (
-/obj/structure/window/framed/almayer/requisitions,
+/obj/structure/window/framed/almayer/hull,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	density = 0;
 	dir = 2;
@@ -46784,7 +46796,7 @@
 /obj/structure/machinery/computer/security/almayer{
 	dir = 4;
 	name = "Ship Security Cameras";
-	network = list("almayer", "vehicle");
+	network = list("almayer","vehicle");
 	pixel_x = -17
 	},
 /obj/item/device/flashlight/lamp,
@@ -47102,7 +47114,7 @@
 	},
 /area/almayer/squads/req)
 "mqU" = (
-/obj/structure/window/framed/almayer/requisitions,
+/obj/structure/window/framed/almayer/hull,
 /turf/open/floor/almayer{
 	icon_state = "redfull";
 	tag = "icon-redfull"
@@ -48011,7 +48023,7 @@
 	},
 /area/almayer/squads/req)
 "njy" = (
-/obj/structure/window/framed/almayer/requisitions,
+/obj/structure/window/framed/almayer/hull,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	density = 0;
 	dir = 2;
@@ -49052,6 +49064,14 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
 	tag = "icon-intact-supply (EAST)"
+	},
+/obj/structure/machinery/door/poddoor/almayer{
+	density = 0;
+	dir = 4;
+	icon_state = "pdoor0";
+	id = "CIC Lockdown";
+	name = "\improper Combat Information Center Blast Door";
+	opacity = 0
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -52405,7 +52425,7 @@
 /area/almayer/engineering/engineering_workshop/hangar)
 "siH" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
-/obj/structure/window/framed/almayer/requisitions,
+/obj/structure/window/framed/almayer/hull,
 /turf/open/floor/plating,
 /area/almayer/engineering/engineering_workshop/hangar)
 "sjN" = (
@@ -52666,7 +52686,7 @@
 /obj/structure/machinery/computer/security/almayer{
 	dir = 4;
 	name = "Ship Security Cameras";
-	network = list("almayer", "vehicle");
+	network = list("almayer","vehicle");
 	pixel_x = -17
 	},
 /obj/item/device/flashlight/lamp,
@@ -52805,6 +52825,14 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer,
+/obj/structure/machinery/door/poddoor/almayer{
+	density = 0;
+	dir = 4;
+	icon_state = "pdoor0";
+	id = "CIC Lockdown";
+	name = "\improper Combat Information Center Blast Door";
+	opacity = 0
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -52827,7 +52855,7 @@
 /obj/structure/machinery/computer/security/almayer{
 	dir = 4;
 	name = "Ship Security Cameras";
-	network = list("almayer", "vehicle");
+	network = list("almayer","vehicle");
 	pixel_x = -17
 	},
 /obj/item/device/flashlight/lamp,
@@ -54306,7 +54334,7 @@
 	},
 /area/almayer/shipboard/chief_mp_office)
 "uku" = (
-/obj/structure/window/framed/almayer/requisitions,
+/obj/structure/window/framed/almayer/hull,
 /turf/open/floor/plating,
 /area/almayer/engineering/engineering_workshop/hangar)
 "ukW" = (
@@ -56273,12 +56301,6 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/hull/lower_hull)
-"wwG" = (
-/obj/structure/window/framed/almayer/hull{
-	name = "ultra-reinforced window"
-	},
-/turf/open/floor/plating,
-/area/almayer/command/cic)
 "wwW" = (
 /turf/open/floor/almayer/research/containment/corner1,
 /area/almayer/medical/containment/cell/cl)
@@ -79614,9 +79636,9 @@ akh
 akh
 aCf
 ayt
-wwG
+aCf
 akh
-wwG
+aCf
 aCg
 aCf
 akh

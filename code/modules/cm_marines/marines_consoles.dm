@@ -384,7 +384,7 @@
 /obj/structure/machinery/computer/squad_changer/attack_hand(var/mob/user as mob)
 	if(..())
 		return
-	if(user) 
+	if(user)
 		add_fingerprint(user)
 
 	usr.set_interaction(src)
@@ -484,6 +484,7 @@
 	name = "Crew monitoring computer"
 	desc = "Used to monitor active health sensors built into marine jumpsuits."
 	icon_state = "crew"
+	density = TRUE
 	use_power = 1
 	idle_power_usage = 250
 	active_power_usage = 500
@@ -552,7 +553,7 @@
 			if(istype(C.loc, /mob/living/carbon/human))
 
 				var/mob/living/carbon/human/H = C.loc
-				if(H && H.faction == FACTION_SURVIVOR && H.loc.z == 1) 
+				if(H && H.faction == FACTION_SURVIVOR && H.loc.z == 1)
 					continue // survivors
 				if(H.w_uniform != C)
 					continue

@@ -487,6 +487,7 @@
 	desc = "The flight controls for the 'Alamo' Dropship. Named after the Alamo Mission, stage of the Battle of the Alamo in the United States' state of Texas in the Spring of 1836. The defenders held to the last, encouraging other Texians to rally to the flag."
 	icon = 'icons/obj/structures/machinery/shuttle-parts.dmi'
 	icon_state = "console"
+	density = TRUE
 	onboard = 1
 
 /obj/structure/machinery/computer/shuttle_control/dropship2
@@ -513,7 +514,7 @@
 	icon = 'icons/obj/structures/machinery/shuttle-parts.dmi'
 	icon_state = "console"
 	onboard = 1
-
+	density = TRUE
 
 //Elevator control console
 

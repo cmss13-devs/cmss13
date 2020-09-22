@@ -4,6 +4,7 @@
 	name = "Prisoner Management"
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "explosive"
+	density = TRUE
 	req_access = list(ACCESS_MARINE_BRIG)
 	circuit = "/obj/item/circuitboard/computer/prisoner"
 	var/id = 0.0

@@ -4,6 +4,7 @@
 	name = "Pod Launch Control"
 	desc = "A controll for launching pods. Some people prefer firing Mechas."
 	icon_state = "computer_generic"
+	density = TRUE
 	circuit = /obj/item/circuitboard/computer/pod
 	var/id = 1.0
 	var/obj/structure/machinery/mass_driver/connected = null

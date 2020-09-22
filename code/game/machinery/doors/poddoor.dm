@@ -17,16 +17,18 @@
 	if(density)
 		layer = PODDOOR_CLOSED_LAYER //to override door.Initialize() proc
 		icon_state = initial(icon_state) + "1"
+		SetOpacity(1)
 	else
 		layer = PODDOOR_OPEN_LAYER
 		icon_state = initial(icon_state) + "0"
+		SetOpacity(0)
 	return
 
 /obj/structure/machinery/door/poddoor/update_icon()
 	if(density)
-		icon_state = "pdoor1"
+		icon_state = initial(icon_state) + "1"
 	else
-		icon_state = "pdoor0"
+		icon_state = initial(icon_state) + "0"
 	return
 
 /obj/structure/machinery/door/poddoor/Collided(atom/movable/AM)

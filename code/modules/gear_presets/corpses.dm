@@ -398,3 +398,28 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC(H), WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/PMC(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/tool/lighter/zippo(H), WEAR_R_STORE)
+
+
+/////Actually specific colonists
+
+/datum/equipment_preset/corpse/colonist
+	name = "Corpse - Colonist"
+	assignment = JOB_COLONIST
+	xenovictim = FALSE
+	rank = JOB_COLONIST
+	faction = FACTION_COLONIST
+	access = list(ACCESS_CIVILIAN_PUBLIC)
+	idtype = /obj/item/card/id/lanyard
+
+/datum/equipment_preset/colonist/load_gear(mob/living/carbon/human/H)
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset(H), WEAR_EAR)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/colonist(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(H), WEAR_FEET)
+
+/datum/equipment_preset/corpse/colonist/burst
+	name = "Corpse - Burst Colonist"
+	xenovictim = TRUE
+
+/datum/equipment_preset/corpse/colonist/doctor
+	

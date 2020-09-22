@@ -32,6 +32,7 @@
 		if(DIRT_TYPE_GROUND) I.color = "#512A09"
 		if(DIRT_TYPE_MARS) I.color = "#FF5500"
 		if(DIRT_TYPE_SNOW) I.color = "#EBEBEB"
+		if(DIRT_TYPE_SAND) I.color = "#ab804b"
 	overlays -= I
 	if(dirt_amt)
 		overlays += I

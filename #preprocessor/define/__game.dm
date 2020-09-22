@@ -34,6 +34,7 @@
 #define MAP_DESERT_DAM "Trijent Dam"  // Highpop only
 #define MAP_SOROKYNE_STRATA "Sorokyne Strata"
 #define MAP_CORSAT "CORSAT" // Highpop only
+#define MAP_KUTJEVO "Kutjevo Refinery"
 
 #define PLAYERCOUNT_LOWPOP_MAP_LIMIT 130 // number of players before we switch to lowpop maps only (LV, BR, Prison)
 
@@ -283,6 +284,12 @@ var/list/accessable_z_levels = list("1" = 10, "3" = 10, "4" = 10, "5" = 70)
 #define WALL_SOLARIS "solaris_interior"
 #define WALL_SOLARISR "solaris_interior_r"
 #define WALL_SOLARIS_ROCK "solaris_rock"
+#define WALL_KUTJEVO_ROCK "rock"
+#define WALL_KUTJEVO_ROCK_BORDER "rock_border"
+#define WALL_KUTJEVO_COLONY "colony"
+#define WALL_KUTJEVO_COLONYR "colonyr"
+#define WALL_DEVWALL "devwall"
+#define WALL_DEVWALL_R "devwall_r"
 
 //Defines for dropship weapon gimbals
 #define GIMBAL_LEFT -1

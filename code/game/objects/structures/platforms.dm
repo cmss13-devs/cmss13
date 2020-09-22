@@ -77,7 +77,7 @@ obj/structure/platform_decoration
 	if (PF)
 		PF.flags_can_pass_all = SETUP_LIST_FLAGS(PASS_OVER)
 
-/obj/structure/platform/ex_act()
+/obj/structure/platform_decoration/ex_act()
 	return
 
 //Map variants//
@@ -104,3 +104,44 @@ obj/structure/platform_decoration
 	name = "raised metal edge"
 	desc = "A raised level of metal, often used to elevate areas above others. You could probably climb it."
 	icon_state = "strata_metalplatform"
+
+//Kutjevo metal platforms
+
+/obj/structure/platform/kutjevo
+	icon_state = "kutjevo_platform"
+	name = "raised metal edge"
+	desc =  "A raised level of metal, often used to elevate areas above others, or construct bridges. You could probably climb it."
+	climb_delay = 10
+
+/obj/structure/platform_decoration/kutjevo
+	name = "raised metal corner"
+	desc = "The corner of what appears to be raised piece of metal, often used to imply the illusion of elevation in non-euclidean 2d spaces. But you don't know that, you're just a spaceman with a rifle."
+	icon_state = "kutjevo_platform_deco"
+
+
+/obj/structure/platform/kutjevo/smooth
+	icon_state = "kutjevo_platform_sm"
+	name = "raised metal edge"
+	desc =  "A raised level of metal, often used to elevate areas above others, or construct bridges. You could probably climb it."
+
+/obj/structure/platform/kutjevo/smooth/stair_plate
+	icon_state = "kutjevo_stair_plate"
+
+/obj/structure/platform/kutjevo/smooth/stair_cut
+	icon_state = "kutjevo_stair_cm_stair"
+
+
+/obj/structure/platform_decoration/kutjevo/smooth
+	name = "raised metal corner"
+	desc = "The corner of what appears to be raised piece of metal, often used to imply the illusion of elevation in non-euclidean 2d spaces. But you don't know that, you're just a spaceman with a rifle."
+	icon_state = "kutjevo_platform_sm_deco"
+
+/obj/structure/platform/kutjevo/rock
+	icon_state = "kutjevo_rock"
+	name = "raised rock edges"
+	desc = "A collection of stones and rocks that provide ample grappling and vaulting opportunity. Indicates a change in elevation. You could probably climb it."
+
+/obj/structure/platform_decoration/kutjevo/rock
+	icon_state = "kutjevo_rock_deco"
+	name = "raised rock corner"
+	desc = "A collection of stones and rocks that cap the edge of some conveniently 1 meter long lengths of perfectly climbable chest high walls."

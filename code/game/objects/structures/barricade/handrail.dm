@@ -174,3 +174,6 @@
 
 /obj/structure/barricade/handrail/medical
 	icon_state = "handrail_med"
+
+/obj/structure/barricade/handrail/kutjevo
+	icon_state = "hr_kutjevo"

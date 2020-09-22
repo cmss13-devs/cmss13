@@ -18876,6 +18876,7 @@
 	name = "ship-grade camera";
 	tag = "icon-camera (WEST)"
 	},
+/obj/structure/surface/table/almayer,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_corner";
@@ -25370,8 +25371,7 @@
 /area/almayer/living/briefing)
 "bzD" = (
 /obj/structure/machinery/door/poddoor/almayer{
-	id = "tcomms";
-	name = "\improper Podlock"
+	id = "tcomms"
 	},
 /turf/open/floor/almayer{
 	icon_plating = "tcomms";
@@ -30570,6 +30570,10 @@
 /obj/structure/platform{
 	dir = 4;
 	layer = 2.7
+	},
+/obj/structure/stairs/perspective{
+	dir = 9;
+	icon_state = "p_stair_full"
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/briefing)
@@ -38903,6 +38907,17 @@
 	tag = "icon-blue"
 	},
 /area/almayer/squads/delta/req)
+"daw" = (
+/obj/structure/platform{
+	dir = 4;
+	layer = 2.7
+	},
+/obj/structure/stairs/perspective{
+	dir = 10;
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor/almayer,
+/area/almayer/living/briefing)
 "dbv" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 8;
@@ -39668,8 +39683,7 @@
 	dir = 2
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "agentshuttle";
-	name = "\improper Shutters"
+	id = "agentshuttle"
 	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin3";
@@ -54073,9 +54087,9 @@
 	},
 /area/almayer/shipboard/chief_mp_office)
 "tXG" = (
-/obj/structure/stairs{
+/obj/structure/stairs/perspective{
 	dir = 8;
-	icon_state = "ramptop"
+	icon_state = "p_stair_full"
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/briefing)
@@ -94333,7 +94347,7 @@ beH
 eWp
 bPw
 tXG
-bPw
+daw
 dwl
 beH
 beH

@@ -103,8 +103,7 @@
 
 /obj/effect/landmark/queen_spawn
 	name = "queen spawn"
-	icon = 'icons/mob/hud/screen1.dmi'
-	icon_state = "x4"
+	icon_state = "queen_spawn"
 
 /obj/effect/landmark/queen_spawn/Initialize(mapload, ...)
 	. = ..()

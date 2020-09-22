@@ -689,6 +689,35 @@
 	reinf = 1
 	window_frame = /obj/structure/window_frame/strata/reinforced
 
+//Kutjevo Windows
+
+/obj/structure/window/framed/kutjevo
+	name = "window"
+	icon = 'icons/turf/walls/kutjevo/kutjevo_windows.dmi'
+	icon_state = "kutjevo_window0"
+	basestate = "kutjevo_window"
+	desc = "A glass window inside a wall frame."
+	health = 40
+	window_frame = /obj/structure/window_frame/kutjevo
+
+/obj/structure/window/framed/kutjevo/reinforced
+	name = "reinforced window"
+	icon_state = "kutjevo_window_alt0"
+	basestate = "kutjevo_window_alt"
+	desc = "A glass window. Cross bars are visible. Might take a few good hits to shatter it."
+	health = 100
+	reinf = 1
+	window_frame = /obj/structure/window_frame/kutjevo/reinforced
+
+/obj/structure/window/framed/kutjevo/reinforced/hull
+	icon_state = "kutjevo_window_hull"
+	desc = "A glass window. Something tells you this one is somehow indestructable."
+	not_damageable = 1
+	not_deconstructable = 1
+	unslashable = TRUE
+	unacidable = TRUE
+	health = 1000000
+
 //Solaris windows
 
 /obj/structure/window/framed/solaris
@@ -710,6 +739,34 @@
 	window_frame = /obj/structure/window_frame/solaris/reinforced
 
 /obj/structure/window/framed/solaris/reinforced/hull
+	desc = "A glass window. Something tells you this one is somehow indestructable."
+	not_damageable = 1
+	not_deconstructable = 1
+	unslashable = TRUE
+	unacidable = TRUE
+	health = 1000000
+
+//GREYBOX DEV WINDOWS
+
+/obj/structure/window/framed/dev
+	name = "greybox window"
+	icon = 'icons/turf/walls/dev/dev_windows.dmi'
+	icon_state = "dev_window0"
+	basestate = "dev_window"
+	desc = "A glass window inside a wall frame. Just like in the orange box!"
+	health = 40
+	window_frame = /obj/structure/window_frame/dev
+
+/obj/structure/window/framed/dev/reinforced
+	name = "greybox reinforced window"
+	icon_state = "dev_rwindow0"
+	basestate = "dev_rwindow"
+	desc = "A glass window inside a reinforced wall frame. Just like in the orange box!"
+	health = 100
+	reinf = 1
+	window_frame = /obj/structure/window_frame/dev/reinforced
+
+/obj/structure/window/framed/dev/reinforced/hull
 	desc = "A glass window. Something tells you this one is somehow indestructable."
 	not_damageable = 1
 	not_deconstructable = 1

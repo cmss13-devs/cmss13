@@ -56,6 +56,29 @@
 	bound_width = 32
 	bound_height = 32
 
+/obj/structure/filtration/machine_32x32/indestructible
+	unacidable = TRUE
+	unslashable = TRUE
+	breakable = FALSE
+
+/obj/structure/filtration/machine_32x32/indestructible/ex_act(severity)
+	return
+
+/obj/structure/filtration/machine_32x64
+	icon = 'icons/obj/structures/props/32x64.dmi'
+	density = 1
+	anchored = 1
+	bound_width = 32
+	bound_height = 64
+
+/obj/structure/filtration/machine_32x64/indestructible
+	unacidable = TRUE
+	unslashable = TRUE
+	breakable = FALSE
+
+/obj/structure/filtration/machine_32x64/indestructible/ex_act(severity)
+	return
+
 /obj/structure/filtration/machine_96x96
 	icon = 'icons/obj/structures/props/96x96.dmi'
 	//bound_x = 96
@@ -65,6 +88,14 @@
 	bound_width = 96
 	bound_height = 96
 
+/obj/structure/filtration/machine_96x96/indestructible
+	unacidable = TRUE
+	unslashable = TRUE
+	breakable = FALSE
+
+/obj/structure/filtration/machine_96x96/indestructible/ex_act(severity)
+	return
+
 /obj/structure/filtration/machine_64x96
 	icon = 'icons/obj/structures/props/64x96.dmi'
 	//bound_x = 96
@@ -73,6 +104,15 @@
 	anchored = 1
 	bound_width = 64
 	bound_height = 96
+
+/obj/structure/filtration/machine_64x96/indestructible
+	unacidable = TRUE
+	unslashable = TRUE
+	breakable = FALSE
+
+/obj/structure/filtration/machine_64x96/indestructible/ex_act(severity)
+	return
+
 /obj/structure/filtration/machine_64x128
 	icon = 'icons/obj/structures/props/64x128.dmi'
 	//bound_x = 96
@@ -81,6 +121,14 @@
 	anchored = 1
 	bound_width = 64
 	bound_height = 128
+
+/obj/structure/filtration/machine_64x128/indestructible
+	unacidable = TRUE
+	unslashable = TRUE
+	breakable = FALSE
+
+/obj/structure/filtration/machine_64x128/indestructible/ex_act(severity)
+	return
 
 /obj/structure/filtration/coagulation_arm
 	name = "coagulation arm"

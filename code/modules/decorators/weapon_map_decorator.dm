@@ -42,7 +42,7 @@
 	r_icon = 'icons/obj/items/weapons/guns/guns_by_map/desert/guns_righthand.dmi'
 	b_icon = 'icons/obj/items/weapons/guns/guns_by_map/desert/back.dmi'
 	j_icon = 'icons/obj/items/weapons/guns/guns_by_map/desert/suit_slot.dmi'
-	map_array = list(MAP_WHISKEY_OUTPOST, MAP_DESERT_DAM, MAP_BIG_RED)
+	map_array = list(MAP_WHISKEY_OUTPOST, MAP_DESERT_DAM, MAP_BIG_RED, MAP_KUTJEVO)
 
 /datum/decorator/weapon_map_decorator/jungle
 	c_icon = 'icons/obj/items/weapons/guns/guns_by_map/jungle/guns_obj.dmi'

@@ -19,13 +19,19 @@
 	icon_state = "jungletarp_folded"
 	w_class = SIZE_MEDIUM
 	unfolded_path = /obj/structure/closet/bodybag/tarp
-
-
+	unacidable = TRUE
 
 /obj/item/bodybag/tarp/snow
 	icon = 'icons/obj/bodybag.dmi'
 	icon_state = "snowtarp_folded"
 	unfolded_path = /obj/structure/closet/bodybag/tarp/snow
+
+/obj/item/bodybag/tarp/reactive
+	name = "\improper V2 reactive thermal tarp (folded)"
+	desc = "A tarp carried by some USCM infantry. This updated tarp is capable of blending into its environment nearly flawlessly, given that is can properly collate data once deployed. The tarp is able to hide the wearer's heat signature."
+	icon = 'icons/obj/bodybag.dmi'
+	icon_state = "reactivetarp_folded"
+	unfolded_path = /obj/structure/closet/bodybag/tarp/reactive
 
 /obj/structure/closet/bodybag/tarp
 	name = "\improper V1 thermal-dampening tarp"
@@ -37,7 +43,7 @@
 	open_sound = 'sound/effects/vegetation_walk_1.ogg'
 	close_sound = 'sound/effects/vegetation_walk_2.ogg'
 	item_path = /obj/item/bodybag/tarp
-	anchored = 1
+	anchored = 0
 
 /obj/structure/closet/bodybag/tarp/snow
 	icon_state = "snowtarp_closed"
@@ -45,8 +51,50 @@
 	icon_opened = "snowtarp_open"
 	item_path = /obj/item/bodybag/tarp/snow
 
+/obj/structure/closet/bodybag/tarp/reactive
+	name = "\improper V2 reactive thermal tarp"
+	desc = "A tarp carried by some USCM infantry. This updated tarp is capable of blending into its environment nearly flawlessly, given that is can properly collate data once deployed. The tarp is able to hide the wearer's heat signature."
+	icon_state = "reactivetarp_closed"
+	icon_closed = "reactivetarp_closed"
+	icon_opened = "reactivetarp_open"
+	open_sound = 'sound/effects/vegetation_walk_1.ogg'
+	close_sound = 'sound/effects/vegetation_walk_2.ogg'
 
+	item_path = /obj/item/bodybag/tarp/reactive
+	anchored = 0
 
+/obj/structure/closet/bodybag/tarp/store_mobs(var/stored_units)//same as stasis bag proc
+	var/list/mobs_can_store = list()
+	for(var/mob/living/carbon/human/H in loc)
+		if(H.buckled)
+			continue
+		if(H.stat == DEAD) // dead, nope
+			continue
+		mobs_can_store += H
+	var/mob/living/carbon/human/mob_to_store
+	if(mobs_can_store.len)
+		mob_to_store = pick(mobs_can_store)
+		mob_to_store.forceMove(src)
+		stored_units += mob_size
+	return stored_units
+
+/obj/structure/closet/bodybag/tarp/open()
+	animate(src, alpha = 255, time = SECONDS_3, easing = QUAD_EASING)
+	. = ..()
+
+/obj/structure/closet/bodybag/tarp/close()
+	animate(src, alpha = 60, time = SECONDS_12, easing = QUAD_EASING)
+	. = ..()
+
+/obj/structure/closet/bodybag/tarp/dump_contents()
+	for(var/obj/I in src)
+		I.forceMove(loc)
+	for(var/mob/M in src)//No stun
+		M.forceMove(loc)
+		M.update_canmove()
+		if(!M.lying)
+			M.visible_message(SPAN_WARNING("[M] suddenly gets out of [src]!"),
+			SPAN_WARNING("You get out of [src] and get your bearings!"))
 
 /obj/item/coin/marine
 	name = "marine specialist weapon token"

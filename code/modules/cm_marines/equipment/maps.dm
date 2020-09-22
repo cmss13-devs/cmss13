@@ -96,6 +96,12 @@
 	html_link = "images/8/8e/CORSAT_Satellite.png"
 	color = "red"
 
+/obj/item/map/kutjevo_map
+	name = "\improper Kutjevo Refinery map"
+	desc = "An orbital scan of Kutjevo Refinery"
+	html_link = "images/8/8e/CORSAT_Satellite.png"//placeholder agh!
+	color = "red"
+
 
 //used by marine equipment machines to spawn the correct map.
 /obj/item/map/current_map
@@ -120,7 +126,6 @@
 			desc = "A censored blueprint of the Solaris Ridge facility"
 			html_link = "images/9/9e/Solaris_Ridge.png"
 			color = "#e88a10"
-
 		if(MAP_PRISON_STATION)
 			name = "\improper Fiorina Orbital Penitentiary Map"
 			desc = "A labelled interior scan of Fiorina Orbital Penitentiary"
@@ -141,6 +146,11 @@
 			name = "\improper CORSAT map"
 			desc = "A blueprint of CORSAT station"
 			html_link = "images/8/8e/CORSAT_Satellite.png"
+			color = "red"
+		if (MAP_KUTJEVO)
+			name = "\improper Kutjevo Refinery map"
+			desc = "An orbital scan of Kutjevo Refinery"
+			html_link = "images/8/8e/CORSAT_Satellite.png"//placeholder
 			color = "red"
 		else
 			qdel(src)

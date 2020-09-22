@@ -141,6 +141,14 @@ obj/item/alienjar
 	density = 0
 	opacity = 0
 
+/obj/structure/stairs/perspective //instance these for the required icons
+	icon = 'icons/obj/structures/stairs/perspective_stairs.dmi'
+	icon_state = "np_stair"
+
+/obj/structure/stairs/perspective/kutjevo
+	icon = 'icons/obj/structures/stairs/perspective_stairs_kutjevo.dmi'
+
+
 
 // Prop
 /obj/structure/ore_box

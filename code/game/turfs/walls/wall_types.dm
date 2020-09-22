@@ -449,7 +449,7 @@
 	icon_state = "strata_ice"
 	desc = "An absolutely massive collection of columns made of ice. The longer you stare, the deeper the ice seems to go."
 	walltype = WALL_STRATA_ICE //Not a metal wall
-	hull = 1 //Can't break this ice.
+	hull = 0 //Can't break this ice.
 
 /turf/closed/wall/strata_ice/jungle
 	name = "jungle vegetation"
@@ -457,7 +457,7 @@
 	icon_state = "strata_jungle"
 	desc = "Exceptionally dense vegetation that you can't see through."
 	walltype = WALL_STRATA_JUNGLE //Not a metal wall
-	hull = 1 //Can't break this vegetation.
+	hull = 0
 
 /turf/closed/wall/strata_outpost_ribbed //this guy is our reinforced replacement
 	name = "ribbed outpost walls"
@@ -497,9 +497,64 @@
 	name = "solaris ridge rock wall"
 	icon_state = "solaris_rock"
 	walltype = WALL_SOLARIS_ROCK
+	hull = 1//prevents decon message
+
+//GREYBOX DEVELOPMENT WALLS
+
+/turf/closed/wall/dev
+	name = "greybox wall"
+	icon = 'icons/turf/walls/dev/dev.dmi'
+	icon_state = "devwall"
+	desc = "Just like in the orange box!"
+	walltype = WALL_DEVWALL
+
+/turf/closed/wall/dev/reinforced
+	name = "greybox reinforced wall"
+	icon_state = "devwall_r"
+	desc = "Just like in the orange box! This one is reinforced"
+	walltype = WALL_DEVWALL_R
+	damage_cap = 1000
+	max_temperature = 28000
+
+/turf/closed/wall/dev/reinforced/hull
+	name = "greybox hull wall"
+	desc = "Just like in the orange box! This one is indestructable."
 	hull = 1
 
+//KUTJEVO DESERT WALLS / SHARED TRIJENT TILESET
 
+/turf/closed/wall/kutjevo/rock
+	name = "rock wall"
+	desc = "Tall sandy rocks. Imposing. Impressive. Attention grabbing."
+	icon = 'icons/turf/walls/kutjevo/kutjevo.dmi'
+	icon_state = "rock"
+	walltype = WALL_KUTJEVO_ROCK
+	hull = 1
+
+/turf/closed/wall/kutjevo/rock/border
+	icon_state = "rock_border"//no sandy edges
+	walltype = WALL_KUTJEVO_ROCK_BORDER
+
+/turf/closed/wall/kutjevo/colony
+	name = "colony wall"
+	icon = 'icons/turf/walls/kutjevo/kutjevo.dmi'
+	icon_state = "colony"
+	desc = "Dusty worn down walls that were once built to last."
+	walltype = WALL_KUTJEVO_COLONY	
+
+/turf/closed/wall/kutjevo/colony/reinforced
+	name = "reinforced colony wall"
+	icon_state = "colonyr"
+	desc = "Dusty worn down walls that were once built to last. This one is reinforced"
+	walltype = WALL_KUTJEVO_COLONYR
+	damage_cap = 1000
+	max_temperature = 28000
+
+/turf/closed/wall/kutjevo/colony/reinforced/hull
+	icon_state = "colonyh"
+	name = "reinforced colony wall"
+	desc = "Dusty worn down walls that were once built to last. This one is indestructable."
+	hull = 1
 
 //Xenomorph's Resin Walls
 

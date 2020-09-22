@@ -62,5 +62,4 @@
 		if(id == L.id)
 			L.next()
 
-	spawn(15)
-		icon_state = "doorctrl0"
+	add_timer(VARSET_CALLBACK(src, icon_state, "doorctrl0"), 1.5 SECONDS)

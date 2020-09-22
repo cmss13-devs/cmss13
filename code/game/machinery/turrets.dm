@@ -253,8 +253,7 @@
 		if (src.cover!=null)
 			flick("popup", src.cover)
 			src.cover.icon_state = "openTurretCover"
-		spawn(10)
-			if (popping==1) popping = 0
+		add_timer(VARSET_CALLBACK(src, popping, FALSE), 1 SECONDS)
 
 /obj/structure/machinery/turret/proc/popDown()
 	if ((!isPopping()) || src.popping==1)

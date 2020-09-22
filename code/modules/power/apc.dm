@@ -833,9 +833,7 @@
 				visible_message(SPAN_WARNING("\The [src] begins flashing error messages wildly!"))
 				if(ishuman(user))
 					raiseEvent(GLOBAL_EVENT, EVENT_APC_DISABLED + "\ref[user]", get_area(src))
-			spawn(1200)
-				if(shorted == 1)
-					shorted = 0
+			add_timer(VARSET_CALLBACK(src, shorted, FALSE), 2 MINUTES)
 
 /obj/structure/machinery/power/apc/proc/can_use(mob/user as mob, var/loud = 0) //used by attack_hand() and Topic()
 	if(user.client && user.client.remote_control)

@@ -141,8 +141,7 @@
 	if(operating == 1) //emag again
 		operating = 0
 	if(autoclose)
-		spawn(150)
-			autoclose()
+		add_timer(CALLBACK(src, .proc/autoclose), 15 SECONDS)
 
 /obj/structure/machinery/door/poddoor/two_tile/four_tile/open_fully()
 	f3.density = 0

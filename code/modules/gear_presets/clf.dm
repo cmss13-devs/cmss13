@@ -254,6 +254,64 @@
 
 /*****************************************************************************************************/
 
+/datum/equipment_preset/clf/synth
+	name = "CLF Multipurpose Synthetic"
+	flags = EQUIPMENT_PRESET_EXTRA
+
+	skills = /datum/skills/early_synthetic
+	assignment = "CLF Multipurpose Synthetic"
+	rank = "CLF Multipurpose Synthetic"
+	role_comm_title = "SYN"
+
+
+/datum/equipment_preset/clf/synth/load_name(mob/living/carbon/human/H, var/randomise)
+	H.gender = pick(50;MALE,50;FEMALE)
+	var/datum/preferences/A = new()
+	A.randomize_appearance(H)
+	var/random_name
+	if(H.gender == MALE)
+		random_name = "[pick(first_names_male_clf)]"
+		H.f_style = "5 O'clock Shadow"
+	else
+		random_name = "[pick(first_names_female_clf)]"
+	H.change_real_name(H, random_name)
+	H.r_hair = 15
+	H.g_hair = 15
+	H.b_hair = 25
+	H.r_eyes = 139
+	H.g_eyes = 62
+	H.b_eyes = 19
+	idtype = /obj/item/card/id/data
+
+/datum/equipment_preset/clf/synth/load_race(mob/living/carbon/human/H)
+	H.set_species("Early Synthetic")
+
+/datum/equipment_preset/clf/synth/load_gear(mob/living/carbon/human/H)
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/engineerpack/ert, WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/colonist/clf, WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/combat, WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/combat, WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/militia, WEAR_JACKET)
+
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/medical/full/with_defib_and_analyzer, WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/heavy, WEAR_J_STORE)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/heavy, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/heavy, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/roller, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/tool/extinguisher/mini, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/tool/shovel/etool/folded, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/attachable/bayonet/upp, WEAR_FACE)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch(H), WEAR_EAR)
+	H.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/synth, WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/construction/full, WEAR_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health(H), WEAR_EYES)
+
+/*****************************************************************************************************/
+
+
+
 /datum/equipment_preset/clf/leader/cryo
 	name = "CLF Cryo Leader"
 

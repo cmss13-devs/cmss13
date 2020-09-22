@@ -56,6 +56,7 @@
 	icon_state = "x2"
 	anchored = 1.0
 	unacidable = TRUE
+	density = FALSE
 
 	var/is_whitelist = FALSE
 	var/strict_types = FALSE

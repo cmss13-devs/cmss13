@@ -106,7 +106,7 @@ Class Procs:
 	if(A)
 		A.add_machine(src) //takes care of adding machine's power usage
 
-/obj/structure/machinery/Dispose()
+/obj/structure/machinery/Destroy()
 	machines -= src
 	processing_machines -= src
 	power_machines -= src

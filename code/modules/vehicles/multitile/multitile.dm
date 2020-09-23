@@ -151,7 +151,7 @@ var/global/list/all_multi_vehicles = list()
 
 	all_multi_vehicles += src
 
-/obj/vehicle/multitile/Dispose()
+/obj/vehicle/multitile/Destroy()
 	if(!interior.disposed)
 		qdel(interior)
 		interior = null

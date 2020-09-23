@@ -20,7 +20,7 @@
 		A.linked_pylons += src
 		linked_turfs += A
 
-/obj/effect/alien/resin/special/pylon/Dispose()
+/obj/effect/alien/resin/special/pylon/Destroy()
 
 	for (var/turf/A in linked_turfs)
 		A.linked_pylons -= src
@@ -93,7 +93,7 @@
 	else
 		. = ..()
 
-/obj/effect/alien/resin/special/pylon/core/Dispose()
+/obj/effect/alien/resin/special/pylon/core/Destroy()
 	if(linked_hive)
 		linked_hive.hive_location = null
 		if(hardcore)

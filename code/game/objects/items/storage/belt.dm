@@ -545,7 +545,7 @@
 	else
 		overlays += "+[icon_state_text]_full"
 
-/obj/item/storage/belt/gun/Dispose()
+/obj/item/storage/belt/gun/Destroy()
 	if(gun_underlay)
 		qdel(gun_underlay)
 		gun_underlay = null

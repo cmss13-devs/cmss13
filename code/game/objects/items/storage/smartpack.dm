@@ -111,7 +111,7 @@
 		M.frozen = FALSE
 	..()
 
-/obj/item/storage/backpack/marine/smartpack/Dispose()
+/obj/item/storage/backpack/marine/smartpack/Destroy()
 	if(ismob(src.loc))
 		src.loc.SetLuminosity(-BACKPACK_LIGHT_LEVEL)
 	else

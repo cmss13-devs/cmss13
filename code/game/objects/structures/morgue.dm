@@ -19,7 +19,7 @@
 	..()
 	connected = new tray_path(src)
 
-/obj/structure/morgue/Dispose()
+/obj/structure/morgue/Destroy()
 	. = ..()
 	if(connected)
 		qdel(connected)
@@ -128,7 +128,7 @@
 		linked_morgue = morgue_source
 	..()
 
-/obj/structure/morgue_tray/Dispose()
+/obj/structure/morgue_tray/Destroy()
 	. = ..()
 	linked_morgue = null
 

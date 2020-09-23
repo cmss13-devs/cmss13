@@ -141,6 +141,6 @@
 		remove_from_missing_pred_gear(src)
 	..()
 
-/obj/item/clothing/mask/gas/yautja/Dispose()
+/obj/item/clothing/mask/gas/yautja/Destroy()
 	remove_from_missing_pred_gear(src)
 	..()

@@ -216,7 +216,7 @@ world/loop_checks = 0
 	if(istype(D, /atom) && !istype(D, /atom/movable))
 		if(istype(D, /turf/))
 			var/turf/ot = D
-			var/gc_hint = ot.Dispose()
+			var/gc_hint = ot.Destroy()
 
 			if(gc_hint == GC_HINT_IGNORE)
 				return
@@ -237,7 +237,7 @@ world/loop_checks = 0
 		return
 
 	// Let our friend know they're about to get fucked up.
-	var/gc_hint = D.Dispose()
+	var/gc_hint = D.Destroy()
 	switch(gc_hint)
 		if(GC_HINT_IGNORE)
 			return

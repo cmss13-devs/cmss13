@@ -8,9 +8,9 @@
 	icon_state = "detector_blip"
 	layer = BELOW_FULLSCREEN_LAYER
 
-	Dispose()
-		..()
-		return GC_HINT_RECYCLE
+/obj/effect/detector_blip/Destroy()
+	..()
+	return GC_HINT_RECYCLE
 
 /obj/item/device/motiondetector
 	name = "motion detector"
@@ -100,7 +100,7 @@
 		playsound(loc, 'sound/items/detector_turn_off.ogg', 30, 0, 5, 2)
 		processing_objects.Remove(src)
 
-/obj/item/device/motiondetector/Dispose()
+/obj/item/device/motiondetector/Destroy()
 	processing_objects.Remove(src)
 	for(var/obj/X in blip_pool)
 		qdel(X)

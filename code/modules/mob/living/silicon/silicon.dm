@@ -22,7 +22,7 @@
 	living_misc_mobs += src
 	add_language("English")
 
-/mob/living/silicon/Dispose()
+/mob/living/silicon/Destroy()
 	..()
 	living_misc_mobs -= src
 

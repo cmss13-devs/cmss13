@@ -19,6 +19,6 @@
         if(mowed)
             playsound(src, 'sound/machines/lawnmower.ogg',70, TRUE)
 
-/obj/structure/lawnmower/Dispose()
+/obj/structure/lawnmower/Destroy()
     new /obj/item/limb/foot/r_foot(get_turf(loc))
     . = ..()    

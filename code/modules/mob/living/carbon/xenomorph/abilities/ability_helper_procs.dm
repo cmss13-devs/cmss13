@@ -207,7 +207,7 @@
 		return
 	src.X = X
 
-/datum/event_handler/xeno_zoom_onmovement/Dispose()
+/datum/event_handler/xeno_zoom_onmovement/Destroy()
 	X = null
 	. = ..()
 	return

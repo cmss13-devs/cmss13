@@ -246,7 +246,7 @@
 	playsound(loc, "alien_resin_move", 25)
 	..()
 
-/obj/structure/mineral_door/resin/Dispose()
+/obj/structure/mineral_door/resin/Destroy()
 	relativewall_neighbours()
 	var/turf/U = loc
 	spawn(0)

@@ -19,7 +19,7 @@
 	var/ship_tag //used to associate the base to a dropship.
 	var/obj/structure/dropship_equipment/installed_equipment
 
-/obj/effect/attach_point/Dispose()
+/obj/effect/attach_point/Destroy()
 	if(installed_equipment)
 		qdel(installed_equipment)
 		installed_equipment = null
@@ -145,7 +145,7 @@
 	var/screen_mode = 0 //used by the dropship console code when this equipment is selected
 	var/point_cost = 0 //how many points it costs to build this with the fabricator, set to 0 if unbuildable.
 
-/obj/structure/dropship_equipment/Dispose()
+/obj/structure/dropship_equipment/Destroy()
 	if(ammo_equipped)
 		qdel(ammo_equipped)
 		ammo_equipped = null
@@ -639,7 +639,7 @@
 		icon_state = initial(icon_state)
 
 
-/obj/structure/dropship_equipment/electronics/landing_zone_detector/Dispose()
+/obj/structure/dropship_equipment/electronics/landing_zone_detector/Destroy()
 	linked_cam_console = null
 	. = ..()
 
@@ -894,7 +894,7 @@
 	var/medevac_cooldown
 	var/busy_winch
 
-/obj/structure/dropship_equipment/medevac_system/Dispose()
+/obj/structure/dropship_equipment/medevac_system/Destroy()
 	if(linked_stretcher)
 		linked_stretcher.linked_medevac = null
 		linked_stretcher = null

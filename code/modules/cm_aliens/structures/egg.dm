@@ -26,7 +26,7 @@
 	update_icon()
 	Grow()
 
-/obj/effect/alien/egg/Dispose()
+/obj/effect/alien/egg/Destroy()
 	. = ..()
 	delete_egg_triggers()
 

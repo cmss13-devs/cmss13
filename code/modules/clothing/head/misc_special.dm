@@ -147,9 +147,9 @@
 //			user.UpdateLuminosity()
 			SetLuminosity(brightness_on)
 
-	Dispose()
-		if(ismob(src.loc))
-			src.loc.SetLuminosity(-brightness_on)
-		else
-			SetLuminosity(0)
-		. = ..()
+/obj/item/clothing/head/pumpkinhead/Destroy()
+	if(ismob(src.loc))
+		src.loc.SetLuminosity(-brightness_on)
+	else
+		SetLuminosity(0)
+	return ..()

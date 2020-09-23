@@ -10,7 +10,7 @@
     max_tackles = max
     tackle_chance = chance
 
-/datum/tackle_counter/Dispose()
+/datum/tackle_counter/Destroy()
     ..()
     return GC_HINT_RECYCLE
 

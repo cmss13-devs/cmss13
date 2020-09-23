@@ -27,7 +27,7 @@
 	var/obj/effect/mine_tripwire/tripwire
 
 
-/obj/item/explosive/mine/Dispose()
+/obj/item/explosive/mine/Destroy()
 	if(tripwire)
 		qdel(tripwire)
 		tripwire = null
@@ -208,7 +208,7 @@
 	unacidable = TRUE //You never know
 	var/obj/item/explosive/mine/linked_claymore
 
-/obj/effect/mine_tripwire/Dispose()
+/obj/effect/mine_tripwire/Destroy()
 	if(linked_claymore)
 		linked_claymore = null
 	. = ..()

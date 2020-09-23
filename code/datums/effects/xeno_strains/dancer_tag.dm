@@ -31,7 +31,7 @@
 	H.update_xeno_hostile_hud()
 
 
-/datum/effects/dancer_tag/Dispose()
+/datum/effects/dancer_tag/Destroy()
 	if (!ishuman(affected_atom))
 		return ..()
 

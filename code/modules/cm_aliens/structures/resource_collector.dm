@@ -29,7 +29,7 @@
 	processing_objects.Add(src)
 	update_icon()
 
-/obj/effect/alien/resin/collector/Dispose()
+/obj/effect/alien/resin/collector/Destroy()
 	linked_hive = null
 	if(connected_node)
 		connected_node.update_icon()

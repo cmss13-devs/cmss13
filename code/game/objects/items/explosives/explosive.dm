@@ -27,7 +27,7 @@
 	for(var/limit in reaction_limits)
 		reagents.vars[limit] = reaction_limits[limit]
 
-/obj/item/explosive/Dispose()
+/obj/item/explosive/Destroy()
 	source_mob = null
 	creator = null
 	. = ..()

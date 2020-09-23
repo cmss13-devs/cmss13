@@ -167,7 +167,7 @@
 	pixel_x = rand(-9, 9)
 	w_class = SIZE_TINY
 
-/obj/item/disk/objective/Dispose()
+/obj/item/disk/objective/Destroy()
 	if(objective)
 		objective.fail()
 	..()
@@ -191,7 +191,7 @@
 	name = "data terminal [label]"
 	objective = new /datum/cm_objective/retrieve_data/terminal(src)
 
-/obj/structure/machinery/computer/objective/Dispose()
+/obj/structure/machinery/computer/objective/Destroy()
 	if(objective)
 		objective.fail()
 	..()

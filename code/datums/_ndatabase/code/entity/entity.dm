@@ -62,7 +62,7 @@
 	if(!id)
 		status = DB_ENTITY_STATE_ADD_DETACH
 
-/datum/entity/Dispose()
+/datum/entity/Destroy()
 	detach()
 	..()
 

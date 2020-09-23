@@ -61,7 +61,7 @@
 	fast_objects.Add(src)
 	update_icon()
 
-/obj/effect/alien/resin/special/Dispose()
+/obj/effect/alien/resin/special/Destroy()
 	if(linked_hive)
 		linked_hive.remove_special_structure(src)
 		if(linked_hive.living_xeno_queen)

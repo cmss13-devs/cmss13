@@ -28,7 +28,7 @@
 	design = rand(1, 3)
 	update_icon()
 
-/obj/item/device/walkman/Dispose()
+/obj/item/device/walkman/Destroy()
 	if(tape)
 		qdel(tape)
 	break_sound()

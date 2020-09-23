@@ -26,7 +26,7 @@
 	if(client)
 		client.view = lobby_view_size
 
-/mob/new_player/Dispose()
+/mob/new_player/Destroy()
 	if(ready)
 		readied_players--
 

@@ -3,7 +3,7 @@
 
 	handle_fire() //Check if we're on fire
 
-/mob/living/carbon/Dispose()
+/mob/living/carbon/Destroy()
 	if(internal_organs)
 		for(var/datum/internal_organ/I in internal_organs)
 			qdel(I)

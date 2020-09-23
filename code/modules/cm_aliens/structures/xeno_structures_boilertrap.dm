@@ -95,7 +95,7 @@
 
 	return ..()
 
-/obj/effect/alien/resin/boilertrap/Dispose()
+/obj/effect/alien/resin/boilertrap/Destroy()
 	clear_tripwires()
 	. = ..()
 
@@ -107,7 +107,7 @@
 	unacidable = TRUE //You never know
 	var/obj/effect/alien/resin/boilertrap/linked_trap
 
-/obj/effect/hole_tripwire_boiler/Dispose()
+/obj/effect/hole_tripwire_boiler/Destroy()
 	if(linked_trap)
 		linked_trap.tripwires -= src
 		linked_trap = null

@@ -9,7 +9,7 @@
 	..()
 	processing_objects.Add(src)
 
-/obj/item/holder/Dispose()
+/obj/item/holder/Destroy()
 	processing_objects.Remove(src)
 	. = ..()
 

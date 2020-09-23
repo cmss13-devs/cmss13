@@ -44,7 +44,7 @@
 
 	. = ..()
 
-/datum/effects/xeno_buff/Dispose()
+/datum/effects/xeno_buff/Destroy()
 
 	if(affected_atom)
 		to_chat(affected_atom, SPAN_XENONOTICE("You no longer feel empowered"))

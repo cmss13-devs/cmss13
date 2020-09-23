@@ -67,7 +67,7 @@
 	if(source_mob)
 		firer = source_mob
 
-/obj/item/projectile/Dispose()
+/obj/item/projectile/Destroy()
 	..()
 	in_flight = 0
 	ammo = null

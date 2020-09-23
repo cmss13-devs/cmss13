@@ -23,7 +23,7 @@
 	var/const/WIRE_RADIO_RECEIVE = 8		//Allows Pulsed(1) to call Activate()
 	var/const/WIRE_RADIO_PULSE = 16			//Allows Pulse(1) to send a radio message
 
-/obj/item/device/assembly/Dispose()
+/obj/item/device/assembly/Destroy()
 	if(holder)
 		holder = null
 	if(attached_overlays)

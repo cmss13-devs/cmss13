@@ -224,7 +224,7 @@
 				if(WEST)
 					pixel_x = -10
 
-/obj/structure/machinery/light/Dispose()
+/obj/structure/machinery/light/Destroy()
 	var/area/A = get_area(src)
 	if(A)
 		on = 0

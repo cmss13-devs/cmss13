@@ -35,7 +35,7 @@
 				break
 		update_icon()
 
-/obj/structure/ladder/Dispose()
+/obj/structure/ladder/Destroy()
 	if(down)
 		if(istype(down))
 			down.up = null

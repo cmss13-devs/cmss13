@@ -31,7 +31,7 @@
 	if(connected)
 		connected.connected = src
 
-/obj/structure/machinery/bodyscanner/Dispose()
+/obj/structure/machinery/bodyscanner/Destroy()
 	if(occupant)
 		go_out()
 	if(connected)
@@ -180,7 +180,7 @@
 		connected.connected = src
 
 
-/obj/structure/machinery/body_scanconsole/Dispose()
+/obj/structure/machinery/body_scanconsole/Destroy()
 	if(connected)
 		if(connected.occupant)
 			connected.go_out()

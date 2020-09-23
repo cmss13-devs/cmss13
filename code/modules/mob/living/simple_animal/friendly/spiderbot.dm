@@ -165,7 +165,7 @@
 		src.name = "Spider-bot"
 		update_icon()
 
-/mob/living/simple_animal/spiderbot/Dispose()
+/mob/living/simple_animal/spiderbot/Destroy()
 	eject_brain()
 	. = ..()
 

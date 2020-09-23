@@ -62,7 +62,7 @@
 		source_action.action_activate()
 	return TRUE
 
-/obj/screen/action_button/Dispose()
+/obj/screen/action_button/Destroy()
 	source_action = null
 	. = ..()
 

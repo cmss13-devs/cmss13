@@ -93,7 +93,7 @@
 	..()
 	client.move_delay = MINIMAL_MOVEMENT_INTERVAL
 
-/mob/dead/observer/Dispose()
+/mob/dead/observer/Destroy()
 	following = null
 	return ..()
 

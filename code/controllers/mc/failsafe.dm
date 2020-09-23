@@ -31,7 +31,7 @@ var/datum/controller/failsafe/Failsafe
 		Failsafe.Loop()
 		qdel(Failsafe) //when Loop() returns, we delete ourselves and let the mc recreate us
 
-/datum/controller/failsafe/Dispose()
+/datum/controller/failsafe/Destroy()
 	..()
 	return GC_HINT_DELETE_NOW
 

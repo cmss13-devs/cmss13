@@ -27,7 +27,7 @@
 		connected.connected = src
 
 
-/obj/structure/machinery/sleep_console/Dispose()
+/obj/structure/machinery/sleep_console/Destroy()
 	if(connected)
 		if(connected.occupant)
 			connected.go_out()
@@ -213,7 +213,7 @@
 		connected.connected = src
 
 
-/obj/structure/machinery/sleeper/Dispose()
+/obj/structure/machinery/sleeper/Destroy()
 	if(occupant)
 		go_out()
 	if(connected)

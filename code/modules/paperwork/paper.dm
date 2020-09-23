@@ -754,7 +754,7 @@
 
 	..()
 
-/obj/item/paper/incident/Dispose()
+/obj/item/paper/incident/Destroy()
 	incident = null
 
 	. = ..()

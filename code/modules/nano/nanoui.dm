@@ -103,7 +103,7 @@ nanoui is used to open and update nano browser uis
 /**
  * Clear references to the nanoui instance to prepare for garbage collection
  */
-/datum/nanoui/Dispose()
+/datum/nanoui/Destroy()
 	if(user)
 		nanomanager.ui_closed(src)
 		close_browser(user, "[window_id]")

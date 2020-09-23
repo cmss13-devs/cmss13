@@ -173,7 +173,7 @@
 	active_fuel = fuel
 	flamer_overlay = overlay_image('icons/obj/items/clothing/backpacks.dmi', "+m240t")
 
-/obj/item/storage/large_holster/fuelpack/Dispose()
+/obj/item/storage/large_holster/fuelpack/Destroy()
 	active_fuel = null
 	if(fuel)
 		qdel(fuel)

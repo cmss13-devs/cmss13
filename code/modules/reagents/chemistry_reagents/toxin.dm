@@ -113,7 +113,7 @@
 	M.silent = max(M.silent, 10)
 	M.tod = worldtime2text()
 
-/datum/reagent/toxin/zombiepowder/Dispose()
+/datum/reagent/toxin/zombiepowder/Destroy()
 	if(holder && ismob(holder.my_atom))
 		var/mob/M = holder.my_atom
 		M.status_flags &= ~FAKEDEATH

@@ -28,7 +28,7 @@
 
 	return TRUE
 
-/datum/effects/xeno_freeze/Dispose()
+/datum/effects/xeno_freeze/Destroy()
 	if(affected_atom)
 		var/mob/living/carbon/affected_mob = affected_atom
 		affected_mob.frozen = FALSE

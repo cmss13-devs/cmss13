@@ -34,7 +34,7 @@
 		debris += shardtype
 		update_nearby_icons()
 
-/obj/structure/window/Dispose()
+/obj/structure/window/Destroy()
 	density = 0
 	if(is_full_window())
 		update_nearby_icons()
@@ -462,7 +462,7 @@
 		relativewall_neighbours()
 	..()
 
-/obj/structure/window/framed/Dispose()
+/obj/structure/window/framed/Destroy()
 	for(var/obj/effect/alien/weeds/weedwall/window/WW in loc)
 		qdel(WW)
 	. = ..()
@@ -800,7 +800,7 @@
 	//icon_state = "rwindow0_debug" //Uncomment to check hull in the map editor
 	var/triggered = 0 //indicates if the shutters have already been triggered
 
-/obj/structure/window/framed/prison/reinforced/hull/Dispose()
+/obj/structure/window/framed/prison/reinforced/hull/Destroy()
 	spawn_shutters()
 	.=..()
 
@@ -884,7 +884,7 @@
 /obj/structure/window/framed/corsat/hull/security
 	health = 400
 
-/obj/structure/window/framed/corsat/hull/Dispose()
+/obj/structure/window/framed/corsat/hull/Destroy()
 	spawn_shutters()
 	.=..()
 

@@ -10,5 +10,5 @@
 /obj/effect/elevator/supply/ex_act(severity)
 	return
 
-/obj/effect/elevator/supply/Dispose()
+/obj/effect/elevator/supply/Destroy()
 	return GC_HINT_IGNORE

@@ -28,7 +28,7 @@
 	create_reagents(240)
 	connect_smartfridge()
 
-/obj/structure/machinery/bodyscanner/Dispose()
+/obj/structure/machinery/bodyscanner/Destroy()
 	connected = null
 	. = ..()
 

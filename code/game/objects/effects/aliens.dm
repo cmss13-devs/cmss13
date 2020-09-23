@@ -296,7 +296,7 @@
 	var/strength_t = isturf(acid_t) ? 8:4 // Turf take twice as long to take down.
 	tick(strength_t)
 
-/obj/effect/xenomorph/acid/Dispose()
+/obj/effect/xenomorph/acid/Destroy()
 	acid_t = null
 	. = ..()
 
@@ -339,7 +339,7 @@
 			var/obj/structure/window/framed/WF = acid_t
 			WF.drop_window_frame()
 		else if(istype(acid_t,/obj/item/explosive/plastic))
-			acid_t.Dispose()
+			qdel(acid_t)
 
 		else
 			if(acid_t.contents.len) //Hopefully won't auto-delete things inside melted stuff..

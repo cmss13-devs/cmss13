@@ -81,7 +81,7 @@ var/list/alldepartments = list()
 	if(!("USCM High Command" in alldepartments))
 		alldepartments += "USCM High Command"
 
-/obj/structure/machinery/faxmachine/Dispose()
+/obj/structure/machinery/faxmachine/Destroy()
 	allfaxes -= src
 	. = ..()
 

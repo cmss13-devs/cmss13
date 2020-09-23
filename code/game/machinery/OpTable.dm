@@ -34,7 +34,7 @@
 			break
 	anes_tank = new(src)
 
-/obj/structure/machinery/optable/Dispose()
+/obj/structure/machinery/optable/Destroy()
 	if(anes_tank)
 		qdel(anes_tank)
 		anes_tank = null

@@ -41,7 +41,7 @@
 	H.update_xeno_hostile_hud()
 
 
-/datum/effects/prae_acid_stacks/Dispose()
+/datum/effects/prae_acid_stacks/Destroy()
 	if (!ishuman(affected_atom))
 		return ..()
 

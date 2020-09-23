@@ -16,7 +16,7 @@
 	item_pool_landmarks += src
 	..()
 
-/obj/effect/landmark/item_pool_spawner/Dispose()
+/obj/effect/landmark/item_pool_spawner/Destroy()
 	item_pool_landmarks -= src
 	. = ..()
 

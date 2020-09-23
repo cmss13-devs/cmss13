@@ -96,7 +96,7 @@
 	effect_duration = 600
 	var/obj/item/device/binoculars/range/designator/source_binoc
 
-/obj/effect/overlay/temp/laser_coordinate/Dispose()
+/obj/effect/overlay/temp/laser_coordinate/Destroy()
 	if(source_binoc)
 		source_binoc.laser_cooldown = world.time + source_binoc.cooldown_duration
 		source_binoc.coord = null
@@ -133,7 +133,7 @@
 		cas_groups[user.faction].add_signal(signal)
 			
 
-/obj/effect/overlay/temp/laser_target/Dispose()
+/obj/effect/overlay/temp/laser_target/Destroy()
 	if(signal)
 		cas_groups[user.faction].remove_signal(signal)
 		if(signal.linked_cam)
@@ -168,7 +168,7 @@
 	icon = 'icons/obj/items/weapons/projectiles.dmi'
 	icon_state = "laser_target3"
 
-/obj/effect/overlay/temp/blinking_laser/Dispose()
+/obj/effect/overlay/temp/blinking_laser/Destroy()
 	SetLuminosity(0)
 	. = ..()
 

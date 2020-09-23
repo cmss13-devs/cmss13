@@ -20,7 +20,7 @@
 	if (linked_hive.color)
 		color = linked_hive.color
 
-/obj/effect/alien/resin/construction/Dispose()
+/obj/effect/alien/resin/construction/Destroy()
 	if(template && linked_hive && (template.crystals_stored < template.crystals_required))
 		linked_hive.crystal_stored += template.crystals_stored
 		linked_hive.remove_construction(src)

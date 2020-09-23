@@ -160,7 +160,7 @@
 		xeno_message(SPAN_XENOANNOUNCE("A new Queen has risen to lead the Hive! Rejoice!"),3,hivenumber)
 	playsound(loc, 'sound/voice/alien_queen_command.ogg', 75, 0)
 
-/mob/living/carbon/Xenomorph/Queen/Dispose()
+/mob/living/carbon/Xenomorph/Queen/Destroy()
 	if(observed_xeno)
 		set_queen_overwatch(observed_xeno, TRUE)
 	if(hive && hive.living_xeno_queen == src)

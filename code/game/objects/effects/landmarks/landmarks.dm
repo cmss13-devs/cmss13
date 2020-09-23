@@ -96,7 +96,7 @@
 
 	return 1
 
-/obj/effect/landmark/Dispose()
+/obj/effect/landmark/Destroy()
 	landmarks_list -= src
 	. = ..()
 

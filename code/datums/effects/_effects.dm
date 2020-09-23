@@ -104,7 +104,7 @@
 		return FALSE
 	return TRUE
 
-/datum/effects/Dispose()
+/datum/effects/Destroy()
 	if(affected_atom)
 		affected_atom.effects_list -= src
 		affected_atom = null

@@ -489,7 +489,7 @@ var/global/dmm_suite/preloader/_preloader = new
 
 	return to_return
 
-/dmm_suite/Dispose()
+/dmm_suite/Destroy()
 	..()
 	return GC_HINT_DELETE_NOW
 

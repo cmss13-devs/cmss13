@@ -339,7 +339,7 @@
 
 	fire(target.loc)
 
-/obj/structure/machinery/defenses/sentry/Dispose() //Clear these for safety's sake.
+/obj/structure/machinery/defenses/sentry/Destroy() //Clear these for safety's sake.
 	target = null
 	qdel(range_bounds)
 	stop_processing()
@@ -379,7 +379,7 @@ obj/structure/machinery/defenses/sentry/premade/damaged_action()
 	ammo = new /obj/item/ammo_magazine/sentry/premade
 	var/obj/structure/machinery/sentry_holder/deployment_system
 
-/obj/structure/machinery/defenses/sentry/premade/deployable/Dispose()
+/obj/structure/machinery/defenses/sentry/premade/deployable/Destroy()
 	if(deployment_system)
 		deployment_system.deployed_turret = null
 		deployment_system = null
@@ -393,7 +393,7 @@ obj/structure/machinery/defenses/sentry/premade/damaged_action()
 	density = TRUE
 	var/obj/structure/dropship_equipment/sentry_holder/deployment_system
 
-/obj/structure/machinery/defenses/sentry/premade/dropship/Dispose()
+/obj/structure/machinery/defenses/sentry/premade/dropship/Destroy()
 	if(deployment_system)
 		deployment_system.deployed_turret = null
 		deployment_system = null

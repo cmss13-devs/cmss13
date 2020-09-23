@@ -32,7 +32,7 @@
     src.master = H
     C.screen += src
 
-/obj/effect/bmode/Dispose()
+/obj/effect/bmode/Destroy()
     master = null
     cl.screen -= src
 
@@ -98,7 +98,7 @@
     cl.buildmode = BM
     buildmode = BM
 
-/obj/effect/buildholder/Dispose()
+/obj/effect/buildholder/Destroy()
     . = ..()
 
     qdel(bm_help)

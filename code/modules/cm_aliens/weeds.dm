@@ -45,7 +45,7 @@
 			if(loc && node && node.loc)
 				weed_expand(node)
 
-/obj/effect/alien/weeds/Dispose()
+/obj/effect/alien/weeds/Destroy()
 	if(parent)
 		parent.remove_child(src)
 
@@ -74,7 +74,7 @@
 // Uh oh, we might be dying!
 // I know this is bad proc naming but it was too good to pass on and it's only used in this file anyways
 // If you're still confused, scroll aaaall the way down to the bottom of the file.
-// that's /obj/effect/alien/weeds/node/Dispose().
+// that's /obj/effect/alien/weeds/node/Destroy().
 /obj/effect/alien/weeds/proc/avoid_orphanage()
 	for(var/obj/effect/alien/weeds/node/N in orange(node_range, get_turf(src)))
 		// WE FOUND A NEW MOMMY
@@ -354,7 +354,7 @@
 			qdel(W) //replaces the previous weed
 			break
 
-/obj/effect/alien/weeds/node/Dispose()
+/obj/effect/alien/weeds/node/Destroy()
 	// When the node is removed, weeds should start dying out
 	// Make all the children look for a new parent node
 	for(var/X in children)
@@ -373,7 +373,7 @@
 /obj/effect/alien/weeds/node/pylon/core
 	node_range = WEED_RANGE_CORE
 
-/obj/effect/alien/weeds/node/pylon/Dispose()
+/obj/effect/alien/weeds/node/pylon/Destroy()
 	if(parent_pylon)
 		add_timer(CALLBACK(parent_pylon, .obj/effect/alien/resin/special/pylon/proc/replace_node), rand(150, 250))
 	parent_pylon = null

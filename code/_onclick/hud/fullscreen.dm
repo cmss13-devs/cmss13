@@ -69,7 +69,7 @@
 	var/severity = 0
 	var/fs_view = 7
 
-/obj/screen/fullscreen/Dispose()
+/obj/screen/fullscreen/Destroy()
 	..()
 	severity = 0
 	return GC_HINT_RECYCLE

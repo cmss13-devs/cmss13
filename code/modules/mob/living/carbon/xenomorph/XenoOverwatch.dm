@@ -155,7 +155,7 @@
 /datum/event_handler/xeno_overwatch_onmovement/New(mob/living/carbon/Xenomorph/X)
 	src.X = X
 
-/datum/event_handler/xeno_overwatch_onmovement/Dispose()
+/datum/event_handler/xeno_overwatch_onmovement/Destroy()
 	X = null 
 	return ..()
 	

@@ -131,7 +131,7 @@
 
 	return TRUE
 
-/obj/structure/machinery/defenses/tesla_coil/Dispose() //Clear these for safety's sake.
+/obj/structure/machinery/defenses/tesla_coil/Destroy() //Clear these for safety's sake.
 	if(targets)
 		targets = null
 

@@ -265,37 +265,38 @@ proc/check_panel(mob/M)
 				for(var/mob/O in oviewers(world_view_size , my_target))
 					to_chat(O, SPAN_DANGER("<B>[my_target] stumbles around.</B>"))
 
-	New()
-		..()
-		spawn(SECONDS_30)
-			if(my_target)
-				my_target.hallucinations -= src
-			qdel(src)
-		step_away(src,my_target,2)
-		spawn attack_loop()
-
-	Dispose()
+/obj/effect/fake_attacker/New()
+	..()
+	spawn(SECONDS_30)
 		if(my_target)
 			my_target.hallucinations -= src
-			my_target = null
-		weap = null
-		if(currentimage)
-			qdel(currentimage)
-			currentimage = null
-		if(left)
-			qdel(left)
-			left = null
-		if(right)
-			qdel(right)
-			right = null
-		if(up)
-			qdel(up)
-			up = null
-		if(down)
-			qdel(down)
-			down = null
-		. = ..()
+		qdel(src)
+	step_away(src,my_target,2)
+	spawn attack_loop()
 
+/obj/effect/fake_attacker/Destroy()
+	if(my_target)
+		my_target.hallucinations -= src
+		my_target = null
+	weap = null
+	if(currentimage)
+		qdel(currentimage)
+		currentimage = null
+	if(left)
+		qdel(left)
+		left = null
+	if(right)
+		qdel(right)
+		right = null
+	if(up)
+		qdel(up)
+		up = null
+	if(down)
+		qdel(down)
+		down = null
+	return ..()
+
+/obj/effect/fake_attacker
 	proc/updateimage()
 
 		if(src.dir == NORTH)

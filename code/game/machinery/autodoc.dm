@@ -42,7 +42,7 @@
 	if(connected)
 		connected.connected = src
 
-/obj/structure/machinery/autodoc/Dispose()
+/obj/structure/machinery/autodoc/Destroy()
 	if(occupant)
 		occupant.forceMove(loc)
 		occupant = null
@@ -703,7 +703,7 @@
 		connected.connected = src
 
 
-/obj/structure/machinery/autodoc_console/Dispose()
+/obj/structure/machinery/autodoc_console/Destroy()
 	if(connected)
 		if(connected.occupant)
 			connected.go_out()

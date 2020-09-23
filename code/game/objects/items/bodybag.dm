@@ -212,7 +212,7 @@
 	J.attack(stasis_mob, user) // yes this is awful -spookydonut
 	return
 
-/obj/structure/closet/bodybag/cryobag/Dispose()
+/obj/structure/closet/bodybag/cryobag/Destroy()
 	var/mob/living/L = locate() in contents
 	if(L)
 		L.in_stasis = FALSE

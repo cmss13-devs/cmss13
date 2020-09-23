@@ -20,7 +20,7 @@
 	var/turf/T = src.loc
 	if(level==1) hide(T.intact_tile)
 
-/obj/structure/machinery/power/terminal/Dispose()
+/obj/structure/machinery/power/terminal/Destroy()
 	if(master)
 		if(istype(master, /obj/structure/machinery/power/apc))
 			var/obj/structure/machinery/power/apc/A = master

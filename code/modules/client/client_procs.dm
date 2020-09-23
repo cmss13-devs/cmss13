@@ -281,7 +281,7 @@
 
 	. = ..()
 
-/client/Dispose()
+/client/Destroy()
 	. = ..()
 
 	return GC_HINT_DELETE_NOW

@@ -32,7 +32,7 @@
 				continue
 			I.loc = src
 
-/obj/structure/closet/Dispose()
+/obj/structure/closet/Destroy()
 	dump_contents()
 	. = ..()
 

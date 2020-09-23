@@ -221,7 +221,7 @@
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "maptable"
 
-/obj/structure/machinery/prop/almayer/CICmap/Dispose()
+/obj/structure/machinery/prop/almayer/CICmap/Destroy()
 	for(var/mob/living/L in current_viewers)
 		to_chat(L, SPAN_NOTICE("You stop looking at the map."))
 		close_browser(L,"marineminimap")

@@ -48,7 +48,7 @@
 	. = ..()
 	update_icon()
 
-/obj/item/device/binoculars/range/Dispose()
+/obj/item/device/binoculars/range/Destroy()
 	if(coord)
 		qdel(coord)
 		coord = null
@@ -150,7 +150,7 @@
 	tracking_id = ++cas_tracking_id_increment
 	desc = "A laser designator with two modes: target marking for CAS with IR laser and rangefinding. Tracking ID for CAS: [tracking_id]. Ctrl + Click turf to target something. Ctrl + Click designator to stop lasing. Alt + Click designator to switch modes."
 
-/obj/item/device/binoculars/range/designator/Dispose()
+/obj/item/device/binoculars/range/designator/Destroy()
 	if(laser)
 		qdel(laser)
 		laser = null

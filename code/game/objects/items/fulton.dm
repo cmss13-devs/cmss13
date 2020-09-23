@@ -29,7 +29,7 @@ var/global/list/deployed_fultons = list()
 	attached_atom = atom_to_attach
 	update_icon()
 
-/obj/item/stack/fulton/Dispose()
+/obj/item/stack/fulton/Destroy()
 	if(attached_atom)
 		attached_atom = null
 	if(original_location)

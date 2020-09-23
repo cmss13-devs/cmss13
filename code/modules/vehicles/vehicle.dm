@@ -238,7 +238,7 @@
 	. = ..()
 	seats[VEHICLE_DRIVER] = null
 
-/obj/vehicle/Dispose()
+/obj/vehicle/Destroy()
 	SetLuminosity(0)
 	. = ..()
 

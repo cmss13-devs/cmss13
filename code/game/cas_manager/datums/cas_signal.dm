@@ -9,7 +9,7 @@
 	z_initial = z_descend(location)
 	loc = location
 
-/datum/cas_signal/Dispose()
+/datum/cas_signal/Destroy()
 	if(linked_cam)
 		qdel(linked_cam)
 		linked_cam = null

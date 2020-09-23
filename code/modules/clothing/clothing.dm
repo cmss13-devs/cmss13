@@ -139,7 +139,7 @@
 	
 	LAZYADD(objects_of_interest, src)
 
-/obj/item/clothing/ears/earmuffs/Dispose()
+/obj/item/clothing/ears/earmuffs/Destroy()
 	. = ..()
 	
 	LAZYREMOVE(objects_of_interest, src)
@@ -348,7 +348,7 @@
 		var/mob/M = src.loc
 		M.update_inv_shoes()
 
-/obj/item/clothing/shoes/Dispose()
+/obj/item/clothing/shoes/Destroy()
 	if(stored_item)
 		qdel(stored_item)
 		stored_item = null

@@ -67,7 +67,7 @@
 
 	to_chat(user, SPAN_WARNING("New interest to track selected as [tracked_object.name]."))
 
-/obj/item/device/tracker/Dispose()
+/obj/item/device/tracker/Destroy()
 	if(tracked_object)
 		tracked_object = null
 	. = ..()

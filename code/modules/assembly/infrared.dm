@@ -15,7 +15,7 @@
 	var/visible = 0
 	var/obj/effect/beam/i_beam/first = null
 
-/obj/item/device/assembly/infra/Dispose()
+/obj/item/device/assembly/infra/Destroy()
 	if(first)
 		qdel(first)
 		first = null
@@ -208,7 +208,7 @@
 		return
 	return
 
-/obj/effect/beam/i_beam/Dispose()
+/obj/effect/beam/i_beam/Destroy()
 	processing_objects.Remove(src)
 	. = ..()
 
@@ -271,7 +271,7 @@
 		return
 	return
 
-/obj/effect/beam/i_beam/Dispose()
+/obj/effect/beam/i_beam/Destroy()
 	if(master)
 		master = null
 	if(next)

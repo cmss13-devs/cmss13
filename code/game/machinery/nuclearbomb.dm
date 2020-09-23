@@ -368,7 +368,7 @@ var/bomb_set = FALSE
 	qdel(src)
 	return TRUE
 
-/obj/structure/machinery/nuclearbomb/Dispose()
+/obj/structure/machinery/nuclearbomb/Destroy()
 	if(timing != -1)
 		message_staff("[src] has been unexpectedly deleted at ([x],[y],[x]). (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP</a>)")
 		log_game("[src] has been unexpectedly deleted at ([x],[y],[x]).")

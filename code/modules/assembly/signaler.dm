@@ -150,6 +150,6 @@ Code:
 	radio_connection = radio_controller.add_object(src, frequency, RADIO_CHAT)
 	return
 
-/obj/item/device/assembly/signaler/Dispose()
+/obj/item/device/assembly/signaler/Destroy()
 	radio_connection = null
 	return ..()

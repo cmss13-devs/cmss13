@@ -25,11 +25,11 @@
 	idle_power_usage = 10
 	active_power_usage = 1000
 
-	Dispose()
-		if(milled_item)
-			qdel(milled_item)
-			milled_item = null
-		. = ..()
+/obj/structure/machinery/mill/Destroy()
+	if(milled_item)
+		qdel(milled_item)
+		milled_item = null
+	return ..()
 
 /obj/structure/machinery/mill/process()
 	if(error)
@@ -99,11 +99,11 @@
 	idle_power_usage = 10
 	active_power_usage = 500
 
-	Dispose()
-		if(fermenting_item)
-			qdel(fermenting_item)
-			fermenting_item = null
-		. = ..()
+/obj/structure/machinery/fermenter/Destroy()
+	if(fermenting_item)
+		qdel(fermenting_item)
+		fermenting_item = null
+	return ..()
 
 /obj/structure/machinery/fermenter/process()
 	if(error)
@@ -171,11 +171,11 @@
 	idle_power_usage = 10
 	active_power_usage = 10000
 
-	Dispose()
-		if(destilling_item)
-			qdel(destilling_item)
-			destilling_item = null
-		. = ..()
+/obj/structure/machinery/still/Destroy()
+	if(destilling_item)
+		qdel(destilling_item)
+		destilling_item = null
+	return ..()
 
 /obj/structure/machinery/still/process()
 	if(error)

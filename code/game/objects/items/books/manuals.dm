@@ -1303,7 +1303,7 @@
 	
 	LAZYADD(objects_of_interest, src)
 
-/obj/item/book/manual/orbital_cannon_manual/Dispose()
+/obj/item/book/manual/orbital_cannon_manual/Destroy()
 	. = ..()
 	
 	LAZYREMOVE(objects_of_interest, src)

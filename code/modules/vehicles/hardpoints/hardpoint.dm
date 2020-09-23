@@ -40,7 +40,7 @@
 
 	var/hdpt_layer = HDPT_LAYER_WHEELS
 
-/obj/item/hardpoint/Dispose()
+/obj/item/hardpoint/Destroy()
 	if(owner)
 		owner.remove_hardpoint(src)
 		owner.update_icon()

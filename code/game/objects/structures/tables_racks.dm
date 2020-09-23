@@ -76,7 +76,7 @@
 			visible_message(SPAN_DANGER("[O] plows straight through [src]!"))
 			destroy()
 
-/obj/structure/surface/table/Dispose()
+/obj/structure/surface/table/Destroy()
 	var/tableloc = loc
 	. = ..()
 	update_adjacent(tableloc) //so neighbouring tables get updated correctly

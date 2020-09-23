@@ -21,7 +21,7 @@
 	..(loc, hive_ref)
 	range_bounds = RECT(x, y, EGGMORPG_RANGE, EGGMORPG_RANGE)
 
-/obj/effect/alien/resin/special/eggmorph/Dispose()
+/obj/effect/alien/resin/special/eggmorph/Destroy()
 	if (stored_huggers && linked_hive)
 		//Hugger explosion, like a carrier
 		var/obj/item/clothing/mask/facehugger/F

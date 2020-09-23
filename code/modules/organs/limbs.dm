@@ -89,7 +89,7 @@
 /obj/limb/process()
 		return 0
 
-/obj/limb/Dispose()	
+/obj/limb/Destroy()	
 	parent = null
 	if(children)
 		for(var/obj/limb/L in children)

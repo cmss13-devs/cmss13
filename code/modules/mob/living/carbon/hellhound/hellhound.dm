@@ -40,7 +40,7 @@
 		to_chat(M, SPAN_WARNING("Click 'Join as hellhound' in the ghost panel to become one. First come first serve!"))
 		to_chat(M, SPAN_WARNING("If you need help during play, click adminhelp and ask."))
 
-/mob/living/carbon/hellhound/Dispose()
+/mob/living/carbon/hellhound/Destroy()
 	..()
 	living_misc_mobs -= src
 

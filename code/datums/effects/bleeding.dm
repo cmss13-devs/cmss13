@@ -44,7 +44,7 @@
 		duration += damage * (blood_duration_multiplier / BLOOD_ADD_PENALTY)
 		blood_loss += damage / (blood_loss_divider * BLOOD_ADD_PENALTY) //Make the first hit count, adding on bleeding has a penalty
 
-/datum/effects/bleeding/Dispose()
+/datum/effects/bleeding/Destroy()
 	if(limb)
 		limb.bleeding_effects_list -= src
 	..()

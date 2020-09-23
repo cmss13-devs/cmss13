@@ -182,7 +182,7 @@
 	remaining_points = 6
 
 
-/datum/mutator_set/individual_mutators/Dispose()
+/datum/mutator_set/individual_mutators/Destroy()
 	if(xeno)
 		xeno.mutators = null
 		xeno = null

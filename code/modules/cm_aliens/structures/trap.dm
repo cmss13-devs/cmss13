@@ -319,7 +319,7 @@
 	if(ismob(A))
 		HasProximity(A)
 
-/obj/effect/alien/resin/trap/Dispose()
+/obj/effect/alien/resin/trap/Destroy()
 	if(trap_type != RESIN_TRAP_EMPTY && loc)
 		trigger_trap()
 	for(var/obj/effect/hole_tripwire/HT in tripwires)
@@ -334,7 +334,7 @@
 	unacidable = TRUE //You never know
 	var/obj/effect/alien/resin/trap/linked_trap
 
-/obj/effect/hole_tripwire/Dispose()
+/obj/effect/hole_tripwire/Destroy()
 	if(linked_trap)
 		linked_trap.tripwires -= src
 		linked_trap = null

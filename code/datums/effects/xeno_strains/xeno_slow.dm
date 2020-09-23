@@ -41,7 +41,7 @@
 	affected_mob.AdjustSlowed(1.1) // Prevent you from getting 'unslowed'
 	return TRUE
 
-/datum/effects/xeno_slow/Dispose()
+/datum/effects/xeno_slow/Destroy()
 
 	if (!ishuman(affected_atom))
 		. = ..()

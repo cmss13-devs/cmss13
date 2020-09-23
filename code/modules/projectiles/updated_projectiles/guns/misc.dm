@@ -131,7 +131,7 @@
 		remove_from_missing_pred_gear(src)
 	..()
 
-/obj/item/weapon/gun/launcher/spike/Dispose()
+/obj/item/weapon/gun/launcher/spike/Destroy()
 	. = ..()
 	remove_from_missing_pred_gear(src)
 	processing_objects.Remove(src)

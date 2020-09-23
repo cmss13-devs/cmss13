@@ -43,7 +43,7 @@
 	SetLuminosity(round(potency/15))
 	lastTick = world.timeofday
 
-/obj/effect/glowshroom/Dispose()
+/obj/effect/glowshroom/Destroy()
 	SetLuminosity(0)
 	. = ..()
 

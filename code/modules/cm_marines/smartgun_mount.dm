@@ -373,7 +373,7 @@
 	burst_scatter_mult = config.lmed_scatter_value
 	update_icon()
 
-/obj/structure/machinery/m56d_hmg/Dispose() //Make sure we pick up our trash.
+/obj/structure/machinery/m56d_hmg/Destroy() //Make sure we pick up our trash.
 	if(operator)
 		operator.unset_interaction()
 	SetLuminosity(0)
@@ -781,8 +781,8 @@
 	icon_empty = "towergun_folding"
 	var/obj/structure/dropship_equipment/mg_holder/deployment_system
 
-	Dispose()
-		if(deployment_system)
-			deployment_system.deployed_mg = null
-			deployment_system = null
-		. = ..()
+/obj/structure/machinery/m56d_hmg/mg_turret/dropship/Destroy()
+	if(deployment_system)
+		deployment_system.deployed_mg = null
+		deployment_system = null
+	return ..()

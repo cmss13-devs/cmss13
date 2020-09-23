@@ -17,7 +17,7 @@
 	else 
 		return ..(damage)
 
-/datum/xeno_shield/vanguard/Dispose()
+/datum/xeno_shield/vanguard/Destroy()
 	if (linked_xeno && istype(linked_xeno, /mob/living/carbon/Xenomorph))
 		var/mob/living/carbon/Xenomorph/X = linked_xeno
 		X.explosivearmor_modifier -= explosive_armor_amount

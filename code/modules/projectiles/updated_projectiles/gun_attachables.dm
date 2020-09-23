@@ -1384,7 +1384,7 @@ Defined in conflicts.dm of the #defines folder.
 	to_chat(user, SPAN_WARNING("[src] only accepts shotgun buckshot."))
 
 /obj/item/attachable/attached_gun/extinguisher
-	name = "underbarrel extinguisher"
+	name = "HME-12 underbarrel extinguisher"
 	icon_state = "extinguisher"
 	attach_icon = "extinguisher_a"
 	desc = "A Taiho-Technologies HME-12 underbarrel extinguisher. Attaches to the underbarrel of most weapons. Point at flame before applying pressure."
@@ -1425,8 +1425,8 @@ Defined in conflicts.dm of the #defines folder.
 	internal_extinguisher.reagents.add_reagent("water", internal_extinguisher.max_water)
 
 /obj/item/attachable/attached_gun/extinguisher/pyro
-	name = "HME-88 underbarrel extinguisher"
-	desc = "An experimental Taiho-Technologies HME-88 underbarrel extinguisher integrated with a select few gun models. It is capable of putting out the strongest of flames. Point at flame before applying pressure."
+	name = "HME-88B underbarrel extinguisher"
+	desc = "An experimental Taiho-Technologies HME-88B underbarrel extinguisher integrated with a select few gun models. It is capable of putting out the strongest of flames. Point at flame before applying pressure."
 	flags_attach_features = ATTACH_ACTIVATION|ATTACH_WEAPON|ATTACH_MELEE
 
 /obj/item/attachable/attached_gun/extinguisher/pyro/initialize_internal_extinguisher()

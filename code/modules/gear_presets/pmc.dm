@@ -99,7 +99,7 @@
 			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39/ap, WEAR_IN_BACK)
 			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39/ap, WEAR_IN_BACK)
 		if(4)
-			H.equip_to_slot_or_del(new /obj/item/weapon/gun/flamer, WEAR_J_STORE)
+			H.equip_to_slot_or_del(new /obj/item/weapon/gun/flamer/underextinguisher, WEAR_J_STORE)
 			H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/pistol/pmc_mod88, WEAR_L_STORE)
 			H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/pistol/pmc_mod88, WEAR_R_STORE)
 			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/flamer_tank, WEAR_IN_BACK)
@@ -141,7 +141,7 @@
 	H.equip_to_slot_or_del(new /obj/item/weapon/gun/energy/taser, WEAR_IN_ACCESSORY)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full, WEAR_R_STORE)
 
-	H.equip_to_slot_or_del(new /obj/item/weapon/gun/flamer, WEAR_J_STORE)
+	H.equip_to_slot_or_del(new /obj/item/weapon/gun/flamer/underextinguisher, WEAR_J_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large, WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/handcuffs, WEAR_IN_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/handcuffs, WEAR_IN_L_STORE)

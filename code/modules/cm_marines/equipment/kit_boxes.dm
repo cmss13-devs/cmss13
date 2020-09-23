@@ -246,12 +246,11 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 	overlays += image('icons/obj/items/pro_case.dmi', "+flamer")
 	spawn(1)
 		new /obj/item/storage/backpack/marine/engineerpack/flamethrower/kit(src)
-		new /obj/item/weapon/gun/flamer(src)
+		new /obj/item/weapon/gun/flamer/underextinguisher(src)
 		new /obj/item/ammo_magazine/flamer_tank(src)
 		new /obj/item/ammo_magazine/flamer_tank(src)
 		new /obj/item/ammo_magazine/flamer_tank/gellied(src)
 		new /obj/item/tool/extinguisher/mini(src)
-		new /obj/item/attachable/attached_gun/extinguisher(src)
 /obj/item/storage/box/kit/mini_sniper
 	name = "\improper L42A Sniper Kit"
 

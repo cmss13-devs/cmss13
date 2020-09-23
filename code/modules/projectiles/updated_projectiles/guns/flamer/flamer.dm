@@ -193,6 +193,9 @@
 	if(current_mag)
 		to_chat(user, SPAN_WARNING("The gauge reads: <b>[round(current_mag.get_ammo_percent())]</b>% fuel remains!"))
 
+/obj/item/weapon/gun/flamer/underextinguisher
+	starting_attachment_types = list(/obj/item/attachable/attached_gun/extinguisher)
+
 /obj/item/weapon/gun/flamer/M240T
 	name = "\improper M240-T incinerator unit"
 	desc = "An improved version of the M240A1 incinerator unit, the M240-T model is capable of dispersing a larger variety of fuel types."

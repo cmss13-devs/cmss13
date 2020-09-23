@@ -449,7 +449,10 @@
 	icon_state = "strata_ice"
 	desc = "An absolutely massive collection of columns made of ice. The longer you stare, the deeper the ice seems to go."
 	walltype = WALL_STRATA_ICE //Not a metal wall
-	hull = 0 //Can't break this ice.
+	hull = 1 //Can't break this ice.
+
+/turf/closed/wall/strata_ice/ex_act(severity)
+	return
 
 /turf/closed/wall/strata_ice/jungle
 	name = "jungle vegetation"
@@ -457,7 +460,7 @@
 	icon_state = "strata_jungle"
 	desc = "Exceptionally dense vegetation that you can't see through."
 	walltype = WALL_STRATA_JUNGLE //Not a metal wall
-	hull = 0
+	hull = 1
 
 /turf/closed/wall/strata_outpost_ribbed //this guy is our reinforced replacement
 	name = "ribbed outpost walls"
@@ -497,7 +500,7 @@
 	name = "solaris ridge rock wall"
 	icon_state = "solaris_rock"
 	walltype = WALL_SOLARIS_ROCK
-	hull = 1//prevents decon message
+	hull = 1
 
 //GREYBOX DEVELOPMENT WALLS
 

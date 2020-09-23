@@ -99,7 +99,7 @@
 /obj/item/map/kutjevo_map
 	name = "\improper Kutjevo Refinery map"
 	desc = "An orbital scan of Kutjevo Refinery"
-	html_link = "images/8/8e/CORSAT_Satellite.png"//placeholder agh!
+	html_link = "images/0/0d/Kutjevo_a1.jpg"
 	color = "red"
 
 
@@ -150,7 +150,7 @@
 		if (MAP_KUTJEVO)
 			name = "\improper Kutjevo Refinery map"
 			desc = "An orbital scan of Kutjevo Refinery"
-			html_link = "images/8/8e/CORSAT_Satellite.png"//placeholder
+			html_link = "images/0/0d/Kutjevo_a1.jpg"
 			color = "red"
 		else
 			qdel(src)

@@ -42,8 +42,8 @@
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/regurgitate,
 		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/activable/lunge,
 		/datum/action/xeno_action/activable/warrior_punch,
+		/datum/action/xeno_action/activable/lunge,
 		/datum/action/xeno_action/activable/fling
 	)
 	

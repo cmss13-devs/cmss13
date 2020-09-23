@@ -107,13 +107,13 @@
 			if(usr.job != "Commanding Officer")
 				to_chat(usr, SPAN_WARNING("Only the Commanding Officer can award medals."))
 				return
-			if(give_medal_award(loc))
+			if(give_medal_award(usr.loc))
 				visible_message(SPAN_NOTICE("[src] prints a medal."))
 
 		if("evacuation_start")
 			if(state == STATE_EVACUATION)
-				if(security_level < SEC_LEVEL_DELTA)
-					to_chat(usr, SPAN_WARNING("The ship must be under delta alert in order to enact evacuation procedures."))
+				if(security_level < SEC_LEVEL_RED)
+					to_chat(usr, SPAN_WARNING("The ship must be under red alert in order to enact evacuation procedures."))
 					return FALSE
 
 				if(EvacuationAuthority.flags_scuttle & FLAGS_EVACUATION_DENY)

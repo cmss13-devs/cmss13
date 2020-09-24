@@ -181,7 +181,7 @@
 	volume = 10
 
 /obj/item/reagent_container/glass/fertilizer/Initialize()
-	..()
+	. = ..()
 
 	src.pixel_x = rand(-5.0, 5)
 	src.pixel_y = rand(-5.0, 5)

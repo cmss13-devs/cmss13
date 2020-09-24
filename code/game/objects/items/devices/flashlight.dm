@@ -221,7 +221,7 @@
 
 /obj/item/device/flashlight/flare/Destroy()
 	processing_objects -= src
-	..()
+	return ..()
 
 /obj/item/device/flashlight/flare/process()
 	fuel = max(fuel - 1, 0)

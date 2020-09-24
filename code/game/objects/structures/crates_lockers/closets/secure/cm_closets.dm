@@ -12,7 +12,7 @@
 	icon_off = "secure_closed_commander"
 
 /obj/structure/closet/secure_closet/commander/Initialize()
-	..()
+	. = ..()
 	new /obj/item/storage/mateba_case(src)
 	new /obj/item/storage/backpack/mcommander(src)
 	new /obj/item/clothing/glasses/sunglasses(src)
@@ -41,7 +41,7 @@
 	icon_off = "secure_closed_staff"
 
 /obj/structure/closet/secure_closet/staff_officer/gear/Initialize()
-	..()
+	. = ..()
 	new /obj/item/clothing/head/beret/cm(src)
 	new /obj/item/clothing/head/beret/cm(src)
 	new /obj/item/clothing/head/beret/cm/tan(src)
@@ -62,7 +62,7 @@
 	name = "staff officer's armory locker"
 
 /obj/structure/closet/secure_closet/staff_officer/armory/Initialize()
-	..()
+	. = ..()
 	new /obj/item/clothing/head/helmet/marine(src)
 	new /obj/item/clothing/head/helmet/marine(src)
 	new /obj/item/clothing/suit/storage/marine/MP/RO(src)
@@ -73,12 +73,12 @@
 	new /obj/item/clothing/gloves/marine(src)
 
 /obj/structure/closet/secure_closet/staff_officer/armory/m4a1/Initialize()
-	..()
+	. = ..()
 	new /obj/item/storage/belt/marine(src)
 	new /obj/item/storage/belt/marine(src)
 
 /obj/structure/closet/secure_closet/staff_officer/armory/shotgun/Initialize()
-	..()
+	. = ..()
 	new /obj/item/storage/belt/shotgun(src)
 	new /obj/item/storage/belt/shotgun(src)
 
@@ -86,7 +86,7 @@
 	name = "intelligence officer's locker"
 
 /obj/structure/closet/secure_closet/staff_officer/intel/Initialize()
-	..()
+	. = ..()
 	new /obj/item/clothing/head/beret/cm(src)
 	new /obj/item/clothing/head/beret/cm/tan(src)
 	new /obj/item/clothing/head/cmcap/ro(src)
@@ -119,7 +119,7 @@
 	icon_off = "secure_closed_pilot"
 
 /obj/structure/closet/secure_closet/pilot_officer/Initialize()
-	..()
+	. = ..()
 	new /obj/item/clothing/head/helmet/marine/pilot(src)
 	new /obj/item/device/radio/headset/almayer/mcom(src)
 	new /obj/item/clothing/under/marine/officer/pilot(src)
@@ -147,7 +147,7 @@
 	icon_off = "secure_closed_police"
 
 /obj/structure/closet/secure_closet/military_police/Initialize()
-	..()
+	. = ..()
 	new /obj/item/clothing/head/helmet/beret/marine/mp(src)
 	new /obj/item/clothing/gloves/black(src)
 	new /obj/item/clothing/accessory/holster/armpit(src)
@@ -180,7 +180,7 @@
 	icon_off = "secure_closed_warrant"
 
 /obj/structure/closet/secure_closet/warrant_officer/Initialize()
-	..()
+	. = ..()
 	new /obj/item/clothing/head/helmet/beret/marine/mp/cmp(src)
 	new /obj/item/clothing/accessory/holster/armpit(src)
 	new /obj/item/clothing/shoes/marine(src)
@@ -210,7 +210,7 @@
 	icon_off = "secure_closed_warrant"
 
 /obj/structure/closet/secure_closet/military_officer_spare/Initialize()
-	..()
+	. = ..()
 	new /obj/item/clothing/accessory/holster/armpit(src)
 	new /obj/item/storage/backpack/security(src)
 	new /obj/item/clothing/shoes/marine(src)
@@ -236,7 +236,7 @@
 	icon_off = "secure_closed_medical"
 
 /obj/structure/closet/secure_closet/medical_doctor/Initialize()
-	..()
+	. = ..()
 	new /obj/item/storage/backpack/marine/satchel(src)
 	if(z != 1) new /obj/item/device/radio/headset/almayer/doc(src)
 	new /obj/item/clothing/shoes/white(src)
@@ -267,7 +267,7 @@
 	icon_off = "secure_closed_medical_white"
 
 /obj/structure/closet/secure_closet/hydroresearch/Initialize()
-	..()
+	. = ..()
 	new /obj/item/reagent_container/spray/hydro(src)
 	new /obj/item/reagent_container/spray/hydro(src)
 	new /obj/item/reagent_container/spray/hydro(src)
@@ -295,7 +295,7 @@
 	icon_off = "secure_off_cargo"
 
 /obj/structure/closet/secure_closet/req_officer/Initialize()
-	..()
+	. = ..()
 	new /obj/item/device/radio/headset/almayer/ro(src)
 	new /obj/item/clothing/under/rank/ro_suit(src)
 	new /obj/item/clothing/shoes/marine(src)
@@ -315,7 +315,7 @@
 	icon_off = "secure_off_cargo"
 
 /obj/structure/closet/secure_closet/cargotech/Initialize()
-	..()
+	. = ..()
 	new /obj/item/clothing/under/rank/cargotech(src)
 	new /obj/item/clothing/shoes/marine(src)
 	new /obj/item/device/radio/headset/almayer/ct(src)
@@ -336,7 +336,7 @@
 	icon_off = "secure_closed_commander"
 
 /obj/structure/closet/secure_closet/sea/Initialize()
-	..()
+	. = ..()
 	new /obj/item/device/whistle(src)
 	new /obj/item/device/binoculars/range(src)
 	new /obj/item/clothing/suit/armor/bulletproof/badge(src)

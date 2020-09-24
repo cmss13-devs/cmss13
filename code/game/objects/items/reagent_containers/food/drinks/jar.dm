@@ -10,7 +10,7 @@
 	center_of_mass = "x=15;y=8"
 
 /obj/item/reagent_container/food/drinks/jar/Initialize()
-	..()
+	. = ..()
 	reagents.add_reagent("slime", 50)
 
 /obj/item/reagent_container/food/drinks/jar/on_reagent_change()

@@ -48,7 +48,7 @@
 	if(!isnull(current_area) && current_area.statistic_exempt)
 		statistic_exempt = TRUE
 	prepare_huds()
-	..()
+	return ..()
 
 /mob/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()

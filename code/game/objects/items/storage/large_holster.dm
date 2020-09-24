@@ -64,7 +64,7 @@
 
 
 /obj/item/storage/large_holster/m37/full/Initialize()
-	..()
+	. = ..()
 	icon_state = "m37_holster_full"
 	new /obj/item/weapon/gun/shotgun/pump(src)
 
@@ -78,7 +78,7 @@
 	can_hold = list(/obj/item/weapon/melee/claymore/mercsword/machete)
 
 /obj/item/storage/large_holster/machete/full/Initialize()
-	..()
+	. = ..()
 	icon_state = "machete_holster_full"
 	item_state = "machete_holster_full"
 	new /obj/item/weapon/melee/claymore/mercsword/machete(src)
@@ -94,7 +94,7 @@
 	can_hold = list(/obj/item/weapon/melee/katana)
 
 /obj/item/storage/large_holster/katana/full/Initialize()
-	..()
+	. = ..()
 	icon_state = "katana_holster_full"
 	new /obj/item/weapon/melee/katana(src)
 
@@ -108,7 +108,7 @@
 	can_hold = list(/obj/item/weapon/melee/claymore/mercsword/ceremonial)
 
 /obj/item/storage/large_holster/ceremonial_sword/full/Initialize()
-	..()
+	. = ..()
 	icon_state = "ceremonial_sword_holster_full"
 	new /obj/item/weapon/melee/claymore/mercsword/ceremonial(src)
 
@@ -136,7 +136,7 @@
 	if(istype(user)) user.update_inv_belt()
 
 /obj/item/storage/large_holster/m39/full/Initialize()
-	..()
+	. = ..()
 	new /obj/item/weapon/gun/smg/m39(src)
 	update_icon()
 

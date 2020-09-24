@@ -37,7 +37,7 @@
 /obj/item/storage/box/survival
 
 /obj/item/storage/box/survival/Initialize()
-	..()
+	. = ..()
 	contents = list()
 	sleep(1)
 	new /obj/item/clothing/mask/breath( src )
@@ -48,7 +48,7 @@
 /obj/item/storage/box/engineer
 
 /obj/item/storage/box/engineer/Initialize()
-	..()
+	. = ..()
 	contents = list()
 	sleep(1)
 	new /obj/item/clothing/mask/breath( src )
@@ -65,7 +65,7 @@
 
 
 /obj/item/storage/box/gloves/Initialize()
-	..()
+	. = ..()
 	new /obj/item/clothing/gloves/latex(src)
 	new /obj/item/clothing/gloves/latex(src)
 	new /obj/item/clothing/gloves/latex(src)
@@ -82,7 +82,7 @@
 	w_class = SIZE_SMALL
 
 /obj/item/storage/box/masks/Initialize()
-	..()
+	. = ..()
 	new /obj/item/clothing/mask/surgical(src)
 	new /obj/item/clothing/mask/surgical(src)
 	new /obj/item/clothing/mask/surgical(src)
@@ -101,7 +101,7 @@
 	w_class = SIZE_SMALL
 
 /obj/item/storage/box/syringes/Initialize()
-	..()
+	. = ..()
 	new /obj/item/reagent_container/syringe(src)
 	new /obj/item/reagent_container/syringe(src)
 	new /obj/item/reagent_container/syringe(src)
@@ -118,7 +118,7 @@
 	w_class = SIZE_MEDIUM
 
 /obj/item/storage/box/beakers/Initialize()
-	..()
+	. = ..()
 	new /obj/item/reagent_container/glass/beaker(src)
 	new /obj/item/reagent_container/glass/beaker(src)
 	new /obj/item/reagent_container/glass/beaker(src)
@@ -134,7 +134,7 @@
 	w_class = SIZE_MEDIUM
 
 /obj/item/storage/box/sprays/Initialize()
-	..()
+	. = ..()
 	new /obj/item/reagent_container/spray(src)
 	new /obj/item/reagent_container/spray(src)
 	new /obj/item/reagent_container/spray(src)
@@ -151,7 +151,7 @@
 	w_class = SIZE_MEDIUM
 
 /obj/item/storage/box/flashbangs/Initialize()
-	..()
+	. = ..()
 	new /obj/item/explosive/grenade/flashbang(src)
 	new /obj/item/explosive/grenade/flashbang(src)
 	new /obj/item/explosive/grenade/flashbang(src)
@@ -166,7 +166,7 @@
 	icon_state = "flashbang"
 
 /obj/item/storage/box/emps/Initialize()
-	..()
+	. = ..()
 	new /obj/item/explosive/grenade/empgrenade(src)
 	new /obj/item/explosive/grenade/empgrenade(src)
 	new /obj/item/explosive/grenade/empgrenade(src)
@@ -180,7 +180,7 @@
 	icon_state = "implant"
 
 /obj/item/storage/box/trackimp/Initialize()
-	..()
+	. = ..()
 	new /obj/item/implantcase/tracking(src)
 	new /obj/item/implantcase/tracking(src)
 	new /obj/item/implantcase/tracking(src)
@@ -195,7 +195,7 @@
 	icon_state = "implant"
 
 /obj/item/storage/box/chemimp/Initialize()
-	..()
+	. = ..()
 	new /obj/item/implantcase/chem(src)
 	new /obj/item/implantcase/chem(src)
 	new /obj/item/implantcase/chem(src)
@@ -214,7 +214,7 @@
 	w_class = SIZE_MEDIUM
 
 /obj/item/storage/box/rxglasses/Initialize()
-	..()
+	. = ..()
 	new /obj/item/clothing/glasses/regular(src)
 	new /obj/item/clothing/glasses/regular(src)
 	new /obj/item/clothing/glasses/regular(src)
@@ -228,7 +228,7 @@
 	desc = "It has a picture of drinking glasses on it."
 
 /obj/item/storage/box/drinkingglasses/Initialize()
-	..()
+	. = ..()
 	new /obj/item/reagent_container/food/drinks/drinkingglass(src)
 	new /obj/item/reagent_container/food/drinks/drinkingglass(src)
 	new /obj/item/reagent_container/food/drinks/drinkingglass(src)
@@ -243,7 +243,7 @@
 	item_state = "syringe_kit"
 
 /obj/item/storage/box/cdeathalarm_kit/Initialize()
-	..()
+	. = ..()
 	new /obj/item/implanter(src)
 	new /obj/item/implantcase/death_alarm(src)
 	new /obj/item/implantcase/death_alarm(src)
@@ -257,7 +257,7 @@
 	desc = "It has a large ketchup smear on it."
 
 /obj/item/storage/box/condimentbottles/Initialize()
-	..()
+	. = ..()
 	new /obj/item/reagent_container/food/condiment(src)
 	new /obj/item/reagent_container/food/condiment(src)
 	new /obj/item/reagent_container/food/condiment(src)
@@ -272,7 +272,7 @@
 	desc = "It has pictures of paper cups on the front."
 
 /obj/item/storage/box/cups/Initialize()
-	..()
+	. = ..()
 	new /obj/item/reagent_container/food/drinks/sillycup( src )
 	new /obj/item/reagent_container/food/drinks/sillycup( src )
 	new /obj/item/reagent_container/food/drinks/sillycup( src )
@@ -290,7 +290,7 @@
 	w_class = SIZE_MEDIUM
 
 /obj/item/storage/box/donkpockets/Initialize()
-	..()
+	. = ..()
 	new /obj/item/reagent_container/food/snacks/donkpocket(src)
 	new /obj/item/reagent_container/food/snacks/donkpocket(src)
 	new /obj/item/reagent_container/food/snacks/donkpocket(src)
@@ -305,7 +305,7 @@
 	icon_state = "monkeycubebox"
 
 /obj/item/storage/box/monkeycubes/Initialize()
-	..()
+	. = ..()
 	if(src.type == /obj/item/storage/box/monkeycubes)
 		for(var/i = 1; i <= 5; i++)
 			new /obj/item/reagent_container/food/snacks/monkeycube/wrapped(src)
@@ -315,7 +315,7 @@
 	desc = "Drymate brand farwa cubes, shipped from Ahdomai. Just add water!"
 
 /obj/item/storage/box/monkeycubes/farwacubes/Initialize()
-	..()
+	. = ..()
 	for(var/i = 1; i <= 5; i++)
 		new /obj/item/reagent_container/food/snacks/monkeycube/wrapped/farwacube(src)
 
@@ -324,7 +324,7 @@
 	desc = "Drymate brand stok cubes, shipped from Moghes. Just add water!"
 
 /obj/item/storage/box/monkeycubes/stokcubes/Initialize()
-	..()
+	. = ..()
 	for(var/i = 1; i <= 5; i++)
 		new /obj/item/reagent_container/food/snacks/monkeycube/wrapped/stokcube(src)
 
@@ -333,7 +333,7 @@
 	desc = "Drymate brand neaera cubes, shipped from Jargon 4. Just add water!"
 
 /obj/item/storage/box/monkeycubes/neaeracubes/Initialize()
-	..()
+	. = ..()
 	for(var/i = 1; i <= 5; i++)
 		new /obj/item/reagent_container/food/snacks/monkeycube/wrapped/neaeracube(src)
 
@@ -343,7 +343,7 @@
 	icon_state = "id"
 
 /obj/item/storage/box/ids/Initialize()
-	..()
+	. = ..()
 	new /obj/item/card/id(src)
 	new /obj/item/card/id(src)
 	new /obj/item/card/id(src)
@@ -359,7 +359,7 @@
 	icon_state = "handcuff"
 
 /obj/item/storage/box/handcuffs/Initialize()
-	..()
+	. = ..()
 	new /obj/item/handcuffs(src)
 	new /obj/item/handcuffs(src)
 	new /obj/item/handcuffs(src)
@@ -375,7 +375,7 @@
 	icon_state = "handcuff"
 
 /obj/item/storage/box/zipcuffs/Initialize()
-	..()
+	. = ..()
 	new /obj/item/handcuffs/zip(src)
 	new /obj/item/handcuffs/zip(src)
 	new /obj/item/handcuffs/zip(src)
@@ -398,7 +398,7 @@
 	icon_state = "mousetraps"
 
 /obj/item/storage/box/mousetraps/Initialize()
-	..()
+	. = ..()
 	new /obj/item/device/assembly/mousetrap( src )
 	new /obj/item/device/assembly/mousetrap( src )
 	new /obj/item/device/assembly/mousetrap( src )
@@ -411,7 +411,7 @@
 	desc = "It has pictures of pill bottles on its front."
 
 /obj/item/storage/box/pillbottles/Initialize()
-	..()
+	. = ..()
 	new /obj/item/storage/pill_bottle( src )
 	new /obj/item/storage/pill_bottle( src )
 	new /obj/item/storage/pill_bottle( src )
@@ -429,7 +429,7 @@
 	max_storage_space = 8
 
 /obj/item/storage/box/snappops/Initialize()
-	..()
+	. = ..()
 	for(var/i=1; i <= 8; i++)
 		new /obj/item/toy/snappop(src)
 
@@ -444,7 +444,7 @@
 	can_hold = list(/obj/item/tool/match)
 
 /obj/item/storage/box/matches/Initialize()
-	..()
+	. = ..()
 	for(var/i=1; i <= 14; i++)
 		new /obj/item/tool/match(src)
 
@@ -459,7 +459,7 @@
 	icon_state = "syringe"
 
 /obj/item/storage/box/quickclot/Initialize()
-	..()
+	. = ..()
 	for (var/i; i < 7; i++)
 		new /obj/item/reagent_container/hypospray/autoinjector/quickclot(src)
 
@@ -478,7 +478,7 @@
 	storage_flags = STORAGE_FLAGS_BOX|STORAGE_CLICK_GATHER
 
 /obj/item/storage/box/lights/bulbs/Initialize()
-	..()
+	. = ..()
 	for(var/i = 0; i < 21; i++)
 		new /obj/item/light_bulb/bulb(src)
 
@@ -488,7 +488,7 @@
 	w_class = SIZE_MEDIUM
 
 /obj/item/storage/box/lights/tubes/Initialize()
-	..()
+	. = ..()
 	for(var/i = 0; i < 21; i++)
 		new /obj/item/light_bulb/tube/large(src)
 
@@ -497,7 +497,7 @@
 	icon_state = "lightmixed"
 
 /obj/item/storage/box/lights/mixed/Initialize()
-	..()
+	. = ..()
 	for(var/i = 0; i < 14; i++)
 		new /obj/item/light_bulb/tube/large(src)
 	for(var/i = 0; i < 7; i++)
@@ -509,7 +509,7 @@
 	icon_state = "syringe"
 
 /obj/item/storage/box/autoinjectors/Initialize()
-	..()
+	. = ..()
 	for(var/i = 0; i < 7; i++)
 		new /obj/item/reagent_container/hypospray/autoinjector/empty(src)
 
@@ -526,7 +526,7 @@
 	can_hold = list(/obj/item/explosive/mine)
 
 /obj/item/storage/box/explosive_mines/Initialize()
-	..()
+	. = ..()
 	contents = list()
 	sleep(1)
 	var/I = type == /obj/item/storage/box/explosive_mines/pmc ? /obj/item/explosive/mine/pmc : /obj/item/explosive/mine
@@ -547,7 +547,7 @@
 	can_hold = list(/obj/item/device/flashlight/flare,/obj/item/device/flashlight/flare/signal)
 
 /obj/item/storage/box/m94/Initialize()
-	..()
+	. = ..()
 	contents = list()
 	var/i = 0
 	while(i++ < max_storage_space)
@@ -569,7 +569,7 @@
 	can_hold = list(/obj/item/device/flashlight/flare,/obj/item/device/flashlight/flare/signal)
 
 /obj/item/storage/box/m94/signal/Initialize()
-	..()
+	. = ..()
 	contents = list()
 	new /obj/item/device/flashlight/flare/signal(src)
 	new /obj/item/device/flashlight/flare/signal(src)
@@ -600,7 +600,7 @@
 	var/grenade_type = /obj/item/explosive/grenade/HE
 
 /obj/item/storage/box/nade_box/Initialize()
-	..()
+	. = ..()
 	select_gamemode_skin(/obj/item/storage/box/nade_box)
 	nade_box_icon = icon_state
 	for(var/i = 1 to storage_slots)
@@ -652,7 +652,7 @@
 	can_hold = list(/obj/item/lightstick)
 
 /obj/item/storage/box/lightstick/Initialize()
-	..()
+	. = ..()
 	new /obj/item/lightstick(src)
 	new /obj/item/lightstick(src)
 	new /obj/item/lightstick(src)
@@ -666,7 +666,7 @@
 	icon_state = "lightstick2"
 
 /obj/item/storage/box/lightstick/red/Initialize()
-	..()
+	. = ..()
 	new /obj/item/lightstick/red(src)
 	new /obj/item/lightstick/red(src)
 	new /obj/item/lightstick/red(src)
@@ -689,7 +689,7 @@
 	var/isopened = 0
 
 /obj/item/storage/box/MRE/Initialize()
-	..()
+	. = ..()
 	pickflavor()
 
 /obj/item/storage/box/MRE/proc/pickflavor()

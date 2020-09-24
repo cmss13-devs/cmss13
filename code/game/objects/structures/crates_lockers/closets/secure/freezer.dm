@@ -17,14 +17,12 @@
 	req_access = list(ACCESS_CIVILIAN_PUBLIC)
 
 /obj/structure/closet/secure_closet/freezer/kitchen/Initialize()
-	..()
-	sleep(2)
+	. = ..()
 	for(var/i = 0, i < 6, i++)
 		new /obj/item/reagent_container/food/snacks/flour(src)
 	new /obj/item/reagent_container/food/condiment/sugar(src)
 	for(var/i = 0, i < 3, i++)
 		new /obj/item/reagent_container/food/snacks/meat/monkey(src)
-	return
 
 
 /obj/structure/closet/secure_closet/freezer/kitchen/mining
@@ -43,11 +41,9 @@
 
 
 /obj/structure/closet/secure_closet/freezer/meat/Initialize()
-	..()
-	sleep(2)
+	. = ..()
 	for(var/i = 0, i < 4, i++)
 		new /obj/item/reagent_container/food/snacks/meat/monkey(src)
-	return
 
 
 
@@ -62,21 +58,19 @@
 
 
 /obj/structure/closet/secure_closet/freezer/fridge/Initialize()
-	..()
-	sleep(2)
+	. = ..()
 	for(var/i = 0, i < 5, i++)
 		new /obj/item/reagent_container/food/drinks/milk(src)
 	for(var/i = 0, i < 3, i++)
 		new /obj/item/reagent_container/food/drinks/soymilk(src)
 	for(var/i = 0, i < 2, i++)
 		new /obj/item/storage/fancy/egg_box(src)
-	return
 
 /obj/structure/closet/secure_closet/freezer/fridge/groceries
 	name = "Groceries"
 
 /obj/structure/closet/secure_closet/freezer/fridge/groceries/Initialize()
-	sleep(2)
+	. = ..()
 	for(var/i = 0, i < 2, i++)
 		new /obj/item/reagent_container/food/snacks/grown/apple(src)
 	for(var/i = 0, i < 2, i++)
@@ -97,7 +91,6 @@
 		new /obj/item/reagent_container/food/snacks/grown/tomato(src)
 	for(var/i = 0, i < 2, i++)
 		new /obj/item/reagent_container/food/snacks/grown/whitebeet(src)
-	return
 
 /obj/structure/closet/secure_closet/freezer/money
 	name = "Freezer"
@@ -111,27 +104,23 @@
 
 
 /obj/structure/closet/secure_closet/freezer/money/Initialize()
-	..()
-	sleep(2)
+	. = ..()
 	for(var/i = 0, i < 3, i++)
 		new /obj/item/spacecash/c1000(src)
 	for(var/i = 0, i < 5, i++)
 		new /obj/item/spacecash/c500(src)
 	for(var/i = 0, i < 6, i++)
 		new /obj/item/spacecash/c200(src)
-	return
 
 /obj/structure/closet/secure_closet/freezer/fridge/full
 
 /obj/structure/closet/secure_closet/freezer/fridge/full/Initialize()
-	..()
-	sleep(2)
+	. = ..()
 	for(var/i = 0, i < 2, i++)
 		new /obj/item/reagent_container/food/condiment/sugar(src)
 	for(var/i = 0, i < 6, i++)
 		new /obj/item/reagent_container/food/snacks/flour(src)
 	new /obj/item/reagent_container/food/condiment/enzyme(src)
-	return
 
 /obj/structure/closet/secure_closet/freezer/industry
 	name = "Industry Freezer"

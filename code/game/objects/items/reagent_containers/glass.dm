@@ -284,7 +284,7 @@
 	name = "tricordrazine vial"
 
 /obj/item/reagent_container/glass/beaker/vial/tricordrazine/Initialize()
-	..()
+	. = ..()
 	reagents.add_reagent("tricordrazine", 30)
 	update_icon()
 
@@ -292,7 +292,7 @@
 	name = "chloral hydrate vial"
 
 /obj/item/reagent_container/glass/beaker/vial/sedative/Initialize()
-	..()
+	. = ..()
 	reagents.add_reagent("chloralhydrate", 30)
 	update_icon()
 
@@ -300,7 +300,7 @@
 	var/tier
 
 /obj/item/reagent_container/glass/beaker/vial/random/Initialize()
-	..()
+	. = ..()
 	var/random_chem
 	if(tier)
 		random_chem = pick(chemical_gen_classes_list[tier])
@@ -335,7 +335,7 @@
 	name = "cryomix beaker"
 
 /obj/item/reagent_container/glass/beaker/cryopredmix/Initialize()
-	..()
+	. = ..()
 	reagents.add_reagent("cryoxadone", 30)
 	reagents.add_reagent("clonexadone", 30)
 	update_icon()
@@ -344,7 +344,7 @@
 	name = "sulphuric acid beaker"
 
 /obj/item/reagent_container/glass/beaker/sulphuric/Initialize()
-	..()
+	. = ..()
 	reagents.add_reagent("sacid", 60)
 	update_icon()
 
@@ -352,7 +352,7 @@
 	name = "ethanol beaker"
 
 /obj/item/reagent_container/glass/beaker/ethanol/Initialize()
-	..()
+	. = ..()
 	reagents.add_reagent("ethanol", 60)
 	update_icon()
 
@@ -360,7 +360,7 @@
 	name = "phosphorus beaker"
 
 /obj/item/reagent_container/glass/beaker/large/phosphorus/Initialize()
-	..()
+	. = ..()
 	reagents.add_reagent("phosphorus", 120)
 	update_icon()
 
@@ -368,7 +368,7 @@
 	name = "lithium beaker"
 
 /obj/item/reagent_container/glass/beaker/large/lithium/Initialize()
-	..()
+	. = ..()
 	reagents.add_reagent("lithium", 120)
 	update_icon()
 
@@ -376,7 +376,7 @@
 	name = "sodium chloride beaker"
 
 /obj/item/reagent_container/glass/beaker/large/sodiumchloride/Initialize()
-	..()
+	. = ..()
 	reagents.add_reagent("sodiumchloride", 120)
 	update_icon()
 
@@ -384,7 +384,7 @@
 	name = "potassium chloride beaker"
 
 /obj/item/reagent_container/glass/beaker/large/potassiumchloride/Initialize()
-	..()
+	. = ..()
 	reagents.add_reagent("potassium_chloride", 120)
 	update_icon()
 
@@ -400,7 +400,7 @@
 	var/reagent = "hydrogen"
 
 /obj/item/reagent_container/glass/canister/Initialize()
-	..()
+	. = ..()
 	reagents.add_reagent(reagent, 400)
 
 /obj/item/reagent_container/glass/canister/afterattack(obj/target, mob/user , flag)

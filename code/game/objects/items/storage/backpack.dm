@@ -208,7 +208,7 @@
 /obj/item/storage/backpack/satchel/withwallet
 
 /obj/item/storage/backpack/satchel/withwallet/Initialize()
-	..()
+	. = ..()
 	new /obj/item/storage/wallet/random( src )
 
 /obj/item/storage/backpack/satchel/norm

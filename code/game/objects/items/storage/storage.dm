@@ -616,7 +616,7 @@ var/list/global/item_storage_box_cache = list()
 	return TRUE
 
 /obj/item/storage/Initialize()
-	..()
+	. = ..()
 	if (!(storage_flags & STORAGE_QUICK_GATHER))
 		verbs -= /obj/item/storage/verb/toggle_gathering_mode
 

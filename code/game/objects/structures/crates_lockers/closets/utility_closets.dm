@@ -20,7 +20,7 @@
 	icon_opened = "emergencyopen"
 
 /obj/structure/closet/emcloset/Initialize()
-	..()
+	. = ..()
 
 	switch (pickweight(list("small" = 55, "aid" = 25, "tank" = 10, "both" = 10, "nothing" = 0, "delete" = 0)))
 		if ("small")
@@ -59,7 +59,7 @@
 			qdel(src)*/
 
 /obj/structure/closet/emcloset/legacy/Initialize()
-	..()
+	. = ..()
 	new /obj/item/tank/oxygen(src)
 	new /obj/item/clothing/mask/gas(src)
 
@@ -74,7 +74,7 @@
 	icon_opened = "fireclosetopen"
 
 /obj/structure/closet/firecloset/Initialize()
-	..()
+	. = ..()
 
 	new /obj/item/clothing/suit/fire/firefighter(src)
 	new /obj/item/clothing/mask/gas(src)
@@ -83,8 +83,7 @@
 	new /obj/item/clothing/head/hardhat/red(src)
 
 /obj/structure/closet/firecloset/full/Initialize()
-	..()
-	sleep(4)
+	. = ..()
 	contents = list()
 
 	new /obj/item/clothing/suit/fire/firefighter(src)
@@ -112,7 +111,7 @@
 	icon_opened = "toolclosetopen"
 
 /obj/structure/closet/toolcloset/Initialize()
-	..()
+	. = ..()
 	if(prob(40))
 		new /obj/item/clothing/suit/storage/hazardvest(src)
 	if(prob(70))
@@ -156,7 +155,7 @@
 	icon_closed = "radsuitcloset"
 
 /obj/structure/closet/radiation/Initialize()
-	..()
+	. = ..()
 	new /obj/item/clothing/suit/radiation(src)
 	new /obj/item/clothing/head/radiation(src)
 	new /obj/item/clothing/suit/radiation(src)
@@ -173,8 +172,7 @@
 	icon_opened = "bombsuitopen"
 
 /obj/structure/closet/bombcloset/Initialize()
-	..()
-	sleep(2)
+	. = ..()
 	new /obj/item/clothing/suit/bomb_suit( src )
 	new /obj/item/clothing/under/color/black( src )
 	new /obj/item/clothing/shoes/black( src )
@@ -189,8 +187,7 @@
 	icon_opened = "bombsuitsecopen"
 
 /obj/structure/closet/bombclosetsecurity/Initialize()
-	..()
-	sleep(2)
+	. = ..()
 	new /obj/item/clothing/suit/bomb_suit/security( src )
 	new /obj/item/clothing/under/rank/security( src )
 	new /obj/item/clothing/shoes/brown( src )
@@ -211,8 +208,7 @@
 	store_mobs = FALSE
 
 /obj/structure/closet/hydrant/Initialize()
-	..()
-	sleep(2)
+	. = ..()
 	new /obj/item/clothing/suit/fire/firefighter(src)
 	new /obj/item/clothing/mask/gas(src)
 	new /obj/item/device/flashlight(src)

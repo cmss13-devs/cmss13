@@ -50,7 +50,7 @@
 	faction = "malf_drone"
 
 /mob/living/simple_animal/hostile/retaliate/malf_drone/Initialize()
-	..()
+	. = ..()
 	if(prob(5))
 		projectiletype = /obj/item/projectile/beam/pulse/drone
 		projectilesound = 'sound/weapons/pulse2.ogg'

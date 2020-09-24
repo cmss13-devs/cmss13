@@ -38,7 +38,7 @@
 
     loc = null
     cl = null
-    
+    return ..()
 
 /obj/effect/bmode/builddir // Deprecated
     icon_state = "build"

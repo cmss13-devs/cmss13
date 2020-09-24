@@ -28,7 +28,7 @@
 	var/repair_form_cooldown = 180
 
 /obj/item/storage/backpack/marine/smartpack/Initialize()
-	..()
+	. = ..()
 	original_icon = icon_state
 	update_icon()
 

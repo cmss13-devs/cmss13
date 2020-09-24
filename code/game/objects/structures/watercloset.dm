@@ -134,7 +134,7 @@
 	var/is_washing = 0
 
 /obj/structure/machinery/shower/Initialize()
-	..()
+	. = ..()
 	create_reagents(2)
 
 //add heat controls? when emagged, you can freeze to death in it?

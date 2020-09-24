@@ -9,7 +9,7 @@
 	smokeranking = SMOKE_RANK_HIGH
 
 /obj/effect/particle_effect/smoke/chem/Initialize()
-	..()
+	. = ..()
 	create_reagents(500)
 	
 /obj/effect/particle_effect/smoke/chem/initialize_pass_flags(var/datum/pass_flags_container/PF)

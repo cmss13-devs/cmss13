@@ -228,7 +228,7 @@
 	
 /obj/item/weapon/gun/energy/plasmapistol/Destroy()
 	remove_from_missing_pred_gear(src)
-	..()
+	return ..()
 
 /obj/item/weapon/gun/energy/plasmapistol/dropped(mob/living/user)
 	add_to_missing_pred_gear(src)

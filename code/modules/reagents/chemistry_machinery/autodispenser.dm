@@ -32,8 +32,7 @@
 
 /obj/structure/machinery/autodispenser/Initialize()
 	. = ..()
-	spawn(7)
-		linked_storage = locate(/obj/structure/machinery/smartfridge/chemistry,get_step(src, dir))
+	linked_storage = locate(/obj/structure/machinery/smartfridge/chemistry,get_step(src, dir))
 	start_processing()
 
 /obj/structure/machinery/autodispenser/attackby(obj/item/B, mob/living/user)

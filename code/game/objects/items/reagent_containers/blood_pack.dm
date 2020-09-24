@@ -10,7 +10,7 @@
 	var/blood_type = null
 
 /obj/item/reagent_container/blood/Initialize()
-	..()
+	. = ..()
 	if(blood_type != null)
 		name = "BloodPack [blood_type]"
 		reagents.add_reagent("blood", 200, list("viruses"=null,"blood_type"=blood_type,"resistances"=null))

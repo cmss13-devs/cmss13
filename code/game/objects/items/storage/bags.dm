@@ -120,7 +120,7 @@
 	storage_flags = STORAGE_FLAGS_BAG|STORAGE_QUICK_EMPTY
 
 /obj/item/storage/bag/sheetsnatcher/Initialize()
-	..()
+	. = ..()
 	//verbs -= /obj/item/storage/verb/quick_empty
 	//verbs += /obj/item/storage/bag/sheetsnatcher/quick_empty
 

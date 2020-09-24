@@ -189,7 +189,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	var/chem_volume = 15
 
 /obj/item/clothing/mask/cigarette/Initialize()
-	..()
+	. = ..()
 	flags_atom |= NOREACT // so it doesn't react until you light it
 	create_reagents(chem_volume) // making the cigarrete a chemical holder with a maximum volume of 15
 	reagents.add_reagent("nicotine",10)

@@ -9,8 +9,7 @@
 	icon_off = "wardensecureoff"
 
 /obj/structure/closet/secure_closet/warden/Initialize()
-	..()
-	sleep(2)
+	. = ..()
 	if(prob(50))
 		new /obj/item/storage/backpack/security(src)
 	else
@@ -41,7 +40,7 @@
 
 
 /obj/structure/closet/secure_closet/marshal/Initialize()
-	..()
+	. = ..()
 	new /obj/item/clothing/suit/storage/CMB(src)
 	new /obj/item/clothing/under/CM_uniform(src)
 	new /obj/item/storage/backpack/security(src)
@@ -59,8 +58,7 @@
 	icon_off = "secure_closed_police"
 
 /obj/structure/closet/secure_closet/security/Initialize()
-	..()
-	sleep(2)
+	. = ..()
 	if(prob(50))
 		new /obj/item/storage/backpack/security(src)
 	else
@@ -81,20 +79,20 @@
 
 
 /obj/structure/closet/secure_closet/security/cargo/Initialize()
-	..()
+	. = ..()
 	new /obj/item/clothing/accessory/armband/cargo(src)
 
 /obj/structure/closet/secure_closet/security/engine/Initialize()
-	..()
+	. = ..()
 	new /obj/item/clothing/accessory/armband/engine(src)
 	new /obj/item/device/encryptionkey/engi(src)
 
 /obj/structure/closet/secure_closet/security/science/Initialize()
-	..()
+	. = ..()
 	new /obj/item/clothing/accessory/armband/science(src)
 
 /obj/structure/closet/secure_closet/security/med/Initialize()
-	..()
+	. = ..()
 	new /obj/item/clothing/accessory/armband/medgreen(src)
 	new /obj/item/device/encryptionkey/med(src)
 
@@ -123,8 +121,7 @@
 	icon_off = "cabinetdetective_broken"
 
 /obj/structure/closet/secure_closet/detective/Initialize()
-	..()
-	sleep(2)
+	. = ..()
 	new /obj/item/clothing/under/det(src)
 	new /obj/item/clothing/under/det/black(src)
 	new /obj/item/clothing/under/det/slob(src)
@@ -157,8 +154,7 @@
 	req_access = list(ACCESS_MARINE_COMMANDER)
 
 /obj/structure/closet/secure_closet/injection/Initialize()
-	..()
-	sleep(2)
+	. = ..()
 	new /obj/item/reagent_container/ld50_syringe/choral(src)
 	new /obj/item/reagent_container/ld50_syringe/choral(src)
 
@@ -170,7 +166,7 @@
 	var/id = null
 
 /obj/structure/closet/secure_closet/brig/Initialize()
-	..()
+	. = ..()
 	new /obj/item/clothing/under/color/orange(src)
 	new /obj/item/clothing/shoes/orange(src)
 	new /obj/item/device/radio/headset(src)
@@ -181,8 +177,7 @@
 	req_one_access = list(ACCESS_MARINE_BRIG, ACCESS_CIVILIAN_BRIG)
 
 /obj/structure/closet/secure_closet/courtroom/Initialize()
-	..()
-	sleep(2)
+	. = ..()
 	new /obj/item/clothing/shoes/brown(src)
 	new /obj/item/paper/Court (src)
 	new /obj/item/paper/Court (src)

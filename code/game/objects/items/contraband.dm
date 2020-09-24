@@ -7,7 +7,7 @@
 	skilllock = 0
 
 /obj/item/storage/pill_bottle/happy/Initialize()
-	..()
+	. = ..()
 	new /obj/item/reagent_container/pill/happy( src )
 	new /obj/item/reagent_container/pill/happy( src )
 	new /obj/item/reagent_container/pill/happy( src )
@@ -22,7 +22,7 @@
 	skilllock = 0
 
 /obj/item/storage/pill_bottle/zoom/Initialize()
-	..()
+	. = ..()
 	new /obj/item/reagent_container/pill/zoom( src )
 	new /obj/item/reagent_container/pill/zoom( src )
 	new /obj/item/reagent_container/pill/zoom( src )

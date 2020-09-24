@@ -23,7 +23,7 @@
 	foldable = /obj/item/stack/sheet/cardboard
 
 /obj/item/storage/donut_box/Initialize()
-	..()
+	. = ..()
 	for(var/i=1; i <= startswith; i++)
 		new /obj/item/reagent_container/food/snacks/donut/normal(src)
 	update_icon()
@@ -67,7 +67,7 @@
 	can_hold = list(/obj/item/attachable/mateba, /obj/item/weapon/gun/revolver/mateba, /obj/item/weapon/mateba_key)
 
 /obj/item/storage/mateba_case/Initialize()
-	..()
+	. = ..()
 	new /obj/item/attachable/mateba/short(src)
 	new /obj/item/attachable/mateba/long(src)
 	new /obj/item/weapon/mateba_key(src)

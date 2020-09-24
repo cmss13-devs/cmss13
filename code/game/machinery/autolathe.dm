@@ -573,7 +573,7 @@
 	. = ..()
 
 /obj/structure/machinery/autolathe/medilathe/Initialize()
-	..()
+	. = ..()
 	if(dir == SOUTH || dir == EAST)
 		make_loc = get_step(get_step(loc, EAST), EAST)
 	else

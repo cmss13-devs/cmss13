@@ -948,7 +948,7 @@ var/datum/controller/supply/supply_controller = new()
 	var/list/allowed_roles = list(JOB_CREWMAN)
 
 /obj/structure/machinery/computer/supplycomp/vehicle/Initialize()
-	..()
+	. = ..()
 	if(!VehicleElevatorConsole)
 		VehicleElevatorConsole = src
 	else

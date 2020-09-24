@@ -268,7 +268,7 @@
 
 /obj/item/weapon/melee/twohanded/glaive/Destroy()
 	remove_from_missing_pred_gear(src)
-	..()
+	return ..()
 
 /obj/item/weapon/melee/twohanded/glaive/dropped(mob/living/user)
 	add_to_missing_pred_gear(src)

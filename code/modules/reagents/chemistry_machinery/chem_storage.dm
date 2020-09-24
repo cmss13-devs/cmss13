@@ -27,6 +27,7 @@
 	network = "Misc"
 
 /obj/structure/machinery/chem_storage/Initialize()
+	. = ..()
 	chemical_data.add_chem_storage(src)
 	start_processing()
 

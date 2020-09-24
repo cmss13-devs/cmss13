@@ -18,7 +18,7 @@
 	var/list/HUD_toggled = list(0,0,0)
 
 /mob/living/silicon/Initialize()
-	..()
+	. = ..()
 	living_misc_mobs += src
 	add_language("English")
 

@@ -120,7 +120,7 @@
 	icon_state = "mre1"
 
 /obj/item/storage/box/uscm_mre/Initialize()
-	..()
+	. = ..()
 	pixel_y = rand(-3,3)
 	pixel_x = rand(-3,3)
 	for(var/i = 0,i < 6,i++)
@@ -150,7 +150,7 @@
 	w_class = SIZE_TINY
 
 /obj/item/reagent_container/food/snacks/protein_pack/Initialize()
-	..()
+	. = ..()
 	reagents.add_reagent("nutriment", 8)
 	bitesize = 4
 
@@ -168,7 +168,7 @@
 	filling_color = "#ED1169"
 
 /obj/item/reagent_container/food/snacks/mre_pack/meal1/Initialize()
-	..()
+	. = ..()
 	reagents.add_reagent("nutriment", 9)
 	bitesize = 3
 
@@ -178,7 +178,7 @@
 	icon_state = "MREb"
 
 /obj/item/reagent_container/food/snacks/mre_pack/meal2/Initialize()
-	..()
+	. = ..()
 	reagents.add_reagent("nutriment", 9)
 	bitesize = 2
 
@@ -188,7 +188,7 @@
 	icon_state = "MREc"
 
 /obj/item/reagent_container/food/snacks/mre_pack/meal3/Initialize()
-	..()
+	. = ..()
 	reagents.add_reagent("nutriment", 9)
 	bitesize = 3
 
@@ -198,7 +198,7 @@
 	icon_state = "MREd"
 
 /obj/item/reagent_container/food/snacks/mre_pack/meal4/Initialize()
-	..()
+	. = ..()
 	reagents.add_reagent("nutriment", 8)
 	bitesize = 1
 
@@ -208,7 +208,7 @@
 	icon_state = "MREe"
 
 /obj/item/reagent_container/food/snacks/mre_pack/meal5/Initialize()
-	..()
+	. = ..()
 	reagents.add_reagent("nutriment", 10)
 	bitesize = 3
 
@@ -218,7 +218,7 @@
 	icon_state = "MREf"
 
 /obj/item/reagent_container/food/snacks/mre_pack/meal6/Initialize()
-	..()
+	. = ..()
 	reagents.add_reagent("nutriment", 2)
 	bitesize = 1
 
@@ -228,7 +228,7 @@
 	icon_state = "mreCookies"
 
 /obj/item/reagent_container/food/snacks/mre_pack/xmas1/Initialize()
-	..()
+	. = ..()
 	reagents.add_reagent("nutriment", 10)
 	bitesize = 2
 
@@ -238,7 +238,7 @@
 	icon_state = "mreGingerbread"
 
 /obj/item/reagent_container/food/snacks/mre_pack/xmas2/Initialize()
-	..()
+	. = ..()
 	reagents.add_reagent("nutriment", 10)
 	bitesize = 2
 
@@ -248,7 +248,7 @@
 	icon_state = "mreFruitcake"
 
 /obj/item/reagent_container/food/snacks/mre_pack/xmas3/Initialize()
-	..()
+	. = ..()
 	reagents.add_reagent("nutriment", 10)
 	bitesize = 2
 
@@ -257,7 +257,7 @@
 	desc = "A space-age food storage device, capable of keeping food extra fresh. Actually, it's just a box."
 
 /obj/item/storage/box/pizza/Initialize()
-	..()
+	. = ..()
 	pixel_y = rand(-3,3)
 	pixel_x = rand(-3,3)
 	new /obj/item/reagent_container/food/snacks/donkpocket(src)
@@ -292,7 +292,7 @@
 	w_class = SIZE_LARGE
 
 /obj/item/storage/box/wy_mre/Initialize()
-	..()
+	. = ..()
 	pixel_y = rand(-3,3)
 	pixel_x = rand(-3,3)
 	new /obj/item/reagent_container/food/snacks/donkpocket(src)

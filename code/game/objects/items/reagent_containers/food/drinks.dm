@@ -185,7 +185,7 @@
 	center_of_mass = "x=16;y=9"
 
 /obj/item/reagent_container/food/drinks/milk/Initialize()
-	..()
+	. = ..()
 	reagents.add_reagent("milk", 50)
 
 /* Flour is no longer a reagent
@@ -221,7 +221,7 @@
 	center_of_mass = "x=15;y=10"
 
 /obj/item/reagent_container/food/drinks/coffee/Initialize()
-	..()
+	. = ..()
 	reagents.add_reagent("coffee", 20)
 
 /obj/item/reagent_container/food/drinks/tea
@@ -232,7 +232,7 @@
 	center_of_mass = "x=16;y=14"
 
 /obj/item/reagent_container/food/drinks/tea/Initialize()
-	..()
+	. = ..()
 	reagents.add_reagent("tea", 30)
 
 /obj/item/reagent_container/food/drinks/ice
@@ -242,7 +242,7 @@
 	center_of_mass = "x=15;y=10"
 
 /obj/item/reagent_container/food/drinks/ice/Initialize()
-	..()
+	. = ..()
 	reagents.add_reagent("ice", 30)
 
 /obj/item/reagent_container/food/drinks/h_chocolate
@@ -253,7 +253,7 @@
 	center_of_mass = "x=15;y=13"
 
 /obj/item/reagent_container/food/drinks/h_chocolate/Initialize()
-	..()
+	. = ..()
 	reagents.add_reagent("hot_coco", 30)
 
 /obj/item/reagent_container/food/drinks/dry_ramen
@@ -263,7 +263,7 @@
 	center_of_mass = "x=16;y=11"
 
 /obj/item/reagent_container/food/drinks/dry_ramen/Initialize()
-	..()
+	. = ..()
 	reagents.add_reagent("dry_ramen", 30)
 
 
@@ -276,7 +276,7 @@
 	center_of_mass = "x=16;y=12"
 
 /obj/item/reagent_container/food/drinks/sillycup/Initialize()
-	..()
+	. = ..()
 
 /obj/item/reagent_container/food/drinks/sillycup/on_reagent_change()
 	if(reagents.total_volume)
@@ -313,7 +313,7 @@
 	center_of_mass = "x=17;y=8"
 
 /obj/item/reagent_container/food/drinks/flask/marine/Initialize()
-	..()
+	. = ..()
 	reagents.add_reagent("water", 59)
 	reagents.add_reagent("hooch", 1)
 

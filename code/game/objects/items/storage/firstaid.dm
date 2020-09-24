@@ -24,7 +24,7 @@
 	var/possible_icons_full
 
 /obj/item/storage/firstaid/Initialize()
-	..()
+	. = ..()
 
 	if(possible_icons_full)
 		icon_full = pick(possible_icons_full)
@@ -237,7 +237,7 @@
 	var/pill_type_to_fill //type of pill to use to fill in the bottle in /Initialize()
 
 /obj/item/storage/pill_bottle/Initialize()
-	..()
+	. = ..()
 	if(pill_type_to_fill)
 		for(var/i=1 to max_storage_space)
 			new pill_type_to_fill(src)

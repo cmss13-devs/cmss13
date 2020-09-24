@@ -143,7 +143,7 @@
 
 /obj/item/clothing/suit/armor/yautja/Destroy()
 	remove_from_missing_pred_gear(src)
-	..()
+	return ..()
 
 
 /obj/item/clothing/cape
@@ -188,7 +188,7 @@
 
 /obj/item/clothing/cape/eldercape/Destroy()
 	remove_from_missing_pred_gear(src)
-	..()
+	return ..()
 
 /obj/item/clothing/shoes/yautja
 	name = "clan greaves"
@@ -233,7 +233,7 @@
 
 /obj/item/clothing/shoes/yautja/Destroy()
 	remove_from_missing_pred_gear(src)
-	..()
+	return ..()
 
 /obj/item/clothing/under/chainshirt
 	name = "body mesh"
@@ -257,7 +257,7 @@
 
 /obj/item/clothing/under/chainshirt/Destroy()
 	remove_from_missing_pred_gear(src)
-	..()
+	return ..()
 
 /obj/item/clothing/under/chainshirt/dropped(mob/living/user)
 	add_to_missing_pred_gear(src)
@@ -320,7 +320,7 @@
 
 /obj/item/storage/backpack/yautja/Destroy()
 	remove_from_missing_pred_gear(src)
-	..()
+	return ..()
 
 /obj/item/storage/backpack/yautja/dropped(mob/living/user)
 	add_to_missing_pred_gear(src)
@@ -347,7 +347,7 @@
 
 /obj/item/device/yautja_teleporter/Destroy()
 	remove_from_missing_pred_gear(src)
-	..()
+	return ..()
 
 /obj/item/device/yautja_teleporter/dropped(mob/living/user)
 	add_to_missing_pred_gear(src)
@@ -584,7 +584,7 @@
 
 /obj/item/weapon/melee/yautja_sword/Destroy()
 	remove_from_missing_pred_gear(src)
-	..()
+	return ..()
 
 /obj/item/weapon/melee/yautja_sword/dropped(mob/living/user)
 	add_to_missing_pred_gear(src)
@@ -654,7 +654,7 @@
 
 /obj/item/weapon/melee/yautja_scythe/Destroy()
 	remove_from_missing_pred_gear(src)
-	..()
+	return ..()
 
 /obj/item/weapon/melee/yautja_scythe/dropped(mob/living/user)
 	add_to_missing_pred_gear(src)
@@ -708,7 +708,7 @@
 
 /obj/item/weapon/melee/combistick/Destroy()
 	remove_from_missing_pred_gear(src)
-	..()
+	return ..()
 
 /obj/item/weapon/melee/combistick/dropped(mob/living/user)
 	add_to_missing_pred_gear(src)

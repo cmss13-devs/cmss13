@@ -133,7 +133,7 @@
 
 
 /obj/item/storage/secure/briefcase/Initialize()
-	..()
+	. = ..()
 	new /obj/item/paper(src)
 	new /obj/item/tool/pen(src)
 
@@ -170,7 +170,7 @@
 	cant_hold = list(/obj/item/storage/secure/briefcase)
 
 /obj/item/storage/secure/safe/Initialize()
-	..()
+	. = ..()
 	new /obj/item/paper(src)
 	new /obj/item/tool/pen(src)
 
@@ -178,4 +178,4 @@
 	return attack_self(user)
 
 /obj/item/storage/secure/safe/HoS/Initialize()
-	..()
+	. = ..()

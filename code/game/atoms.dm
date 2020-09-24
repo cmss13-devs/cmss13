@@ -418,6 +418,7 @@ Must refer back to this parent or manually set initialized to TRUE.
 Parameters are passed from New.
 */
 /atom/proc/Initialize(mapload, ...)
+	SHOULD_CALL_PARENT(TRUE)
 	if(flags_atom & INITIALIZED)
 		CRASH("Warning: [src]([type]) initialized multiple times!")
 	flags_atom |= INITIALIZED

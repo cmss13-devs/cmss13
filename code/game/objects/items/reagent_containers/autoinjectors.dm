@@ -16,7 +16,7 @@
 	var/mixed_chem = FALSE
 
 /obj/item/reagent_container/hypospray/autoinjector/Initialize()
-	..()
+	. = ..()
 	if(mixed_chem)
 		return
 	reagents.add_reagent(chemname, volume)
@@ -89,7 +89,7 @@
 	mixed_chem = TRUE
 
 /obj/item/reagent_container/hypospray/autoinjector/chloralhydrate/Initialize()
-	..()
+	. = ..()
 	reagents.add_reagent("chloralhydrate", 1*3)
 	reagents.add_reagent("stoxin", 9*3)
 	update_icon()
@@ -139,7 +139,7 @@
 	uses_left = 1
 
 /obj/item/reagent_container/hypospray/autoinjector/emergency/Initialize()
-	..()
+	. = ..()
 	reagents.add_reagent("bicaridine", REAGENTS_OVERDOSE-1)
 	reagents.add_reagent("kelotane", REAGENTS_OVERDOSE-1)
 	reagents.add_reagent("oxycodone", MED_REAGENTS_OVERDOSE-1)

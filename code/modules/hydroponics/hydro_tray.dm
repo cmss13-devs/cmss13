@@ -136,7 +136,7 @@
 		)
 
 /obj/structure/machinery/portable_atmospherics/hydroponics/Initialize()
-	..()
+	. = ..()
 	temp_chem_holder = new()
 	temp_chem_holder.create_reagents(10)
 	create_reagents(200)
@@ -739,7 +739,7 @@
 		..()
 
 /obj/structure/machinery/portable_atmospherics/hydroponics/soil/Initialize()
-	..()
+	. = ..()
 	verbs -= /obj/structure/machinery/portable_atmospherics/hydroponics/verb/close_lid
 
 #undef HYDRO_SPEED_MULTIPLIER

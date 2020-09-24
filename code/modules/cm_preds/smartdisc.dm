@@ -21,7 +21,7 @@
 
 /obj/item/explosive/grenade/spawnergrenade/smartdisc/Destroy()
 	remove_from_missing_pred_gear(src)
-	..()
+	return ..()
 
 /obj/item/explosive/grenade/spawnergrenade/smartdisc/dropped(mob/user)
 	add_to_missing_pred_gear(src)

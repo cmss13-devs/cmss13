@@ -205,6 +205,38 @@ var/global/list/gear_datums = list()
 	slot = WEAR_FACE
 	cost = 2
 
+
+
+/datum/gear/tacticalmaskblack
+	display_name = "Tactical Mask (Green)"
+	path = /obj/item/clothing/mask/rebreather/scarf/tacticalmask/green
+	slot = WEAR_FACE
+	cost = 2
+//
+/datum/gear/greenfacepaint
+	display_name = "Green Facepaint"
+	path = /obj/item/facepaint/green
+	slot = WEAR_IN_BACK
+	cost = 2
+
+/datum/gear/brownfacepaint
+	display_name = "Brown Facepaint"
+	path = /obj/item/facepaint/brown
+	slot = WEAR_IN_BACK
+	cost = 2
+
+/datum/gear/blackfacepaint
+	display_name = "Black Facepaint"
+	path = /obj/item/facepaint/black
+	slot = WEAR_IN_BACK
+	cost = 2
+
+/datum/gear/skullfacepaint
+	display_name = "Skull Facepaint"
+	path = /obj/item/facepaint/skull
+	slot = WEAR_IN_BACK
+	cost = 4 //there needs to be some reason to NOT use this badass facepaint or every marine will have it
+
 /datum/gear/aceofspades
 	display_name = "Ace of Spades"
 	path = /obj/item/toy/handcard/aceofspades

@@ -52,7 +52,7 @@
 		else
 			to_chat(user, SPAN_WARNING("Chemical data already inserted."))
 			return
-	else 
+	else
 		to_chat(user, SPAN_WARNING("The [src] refuses the [B]."))
 		return
 	user.drop_inv_item_to_loc(B, src)
@@ -194,7 +194,7 @@
 				simulating = 0
 				ready = check_ready()
 	else
-		stop_processing()	
+		stop_processing()
 	nanomanager.update_uis(src)
 
 /obj/structure/machinery/chem_simulator/proc/update_costs()
@@ -297,12 +297,7 @@
 	var/datum/reagent/O = chemical_reagents_list[C.original_id] //So make the new name based on the Original
 	var/suffix = " "
 	for(var/datum/chem_property/P in C.properties)
-		var/datum/chem_property/OP = O.get_property(P.name)
-		if(OP) //if the original has the property	
-			if(P.level != OP.level)//This property was amplified or suppressed
-				suffix += P.code + "[P.level]"
-		else //This property was added through relation
-			suffix += P.code + "[P.level]"
+		suffix += P.code+"[P.level]"
 	return O.name + suffix
 
 /obj/structure/machinery/chem_simulator/proc/amplify()

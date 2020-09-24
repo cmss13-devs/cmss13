@@ -78,7 +78,7 @@
 		if(istype(target, type))
 			return
 
-	if(ismob(target) && target.reagents && reagents.total_volume)
+	if(ismob(target) && target.reagents && reagents.total_volume && user.a_intent == INTENT_HARM)
 		to_chat(user, SPAN_NOTICE("You splash the solution onto [target]."))
 		playsound(target, 'sound/effects/slosh.ogg', 25, 1)
 
@@ -115,7 +115,7 @@
 			if(!trans)
 				to_chat(user, SPAN_DANGER("You fail to remove reagents from [target]."))
 				return
-			
+
 			to_chat(user, SPAN_NOTICE("You fill [src] with [trans] units of the contents of [target]."))
 		else
 			if(reagents && !reagents.total_volume)
@@ -155,7 +155,7 @@
 	else if(istype(target, /obj/structure/machinery/smartfridge))
 		return
 
-	else if(reagents.total_volume)
+	else if((reagents.total_volume) && (user.a_intent == INTENT_HARM))
 		to_chat(user, SPAN_NOTICE("You splash the solution onto [target]."))
 		playsound(target, 'sound/effects/slosh.ogg', 25, 1)
 		reagents.reaction(target, TOUCH)

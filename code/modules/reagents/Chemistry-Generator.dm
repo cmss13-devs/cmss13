@@ -376,7 +376,7 @@
 	properties += P
 
    	//Special case: If it's a catalyst property, add it nonetheless.
-	if(initial_property != property)
+	if(initial_property && initial_property != property)
 		P =	chemical_properties_list[initial_property]
 		if(P.category & PROPERTY_TYPE_CATALYST)
 			P = new P.type()

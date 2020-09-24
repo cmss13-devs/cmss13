@@ -65,6 +65,12 @@
 	</tr>
 </table>
 			<h2 class="date">24 September 2020</h2>
+			<h3 class="author">Benbot16 updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Fixes XN-99 Napalm flames being passed an invalid reagent, resulting in them neither generating light or igniting mobs travelling over them</li>
+				<li class="tweak">Makes XN-99 Napalm's flames more circular in shape</li>
+				<li class="tweak">Makes the flames generated a bit more circular in shape</li>
+			</ul>
 			<h3 class="author">Bundeswehr updated:</h3>
 			<ul class="changes bgimages16">
 				<li class="tweak">Lowered HPR and M39 firing sounds by 10 dB.</li>
@@ -79,6 +85,9 @@
 			<h3 class="author">Segrain updated:</h3>
 			<ul class="changes bgimages16">
 				<li class="bugfix">Plants in hydroponics trays now properly progress through visual stages of growth.</li>
+				<li class="tweak">Customising chemicals in synthesis simulator now lists all properties in the new chemical's name.</li>
+				<li class="bugfix">Fixed a rare issue with synthesis simulator refusing to correctly make a new custom chemical.</li>
+				<li class="bugfix">CMO's terminal now can properly unpublish published documents.</li>
 			</ul>
 			<h3 class="author">Vicacrov updated:</h3>
 			<ul class="changes bgimages16">
@@ -104,11 +113,19 @@
 				<li class="tweak">Added the Large Magazine Pouch as an option costing 15 points in the ColMarTech Automated Marine Equipment Rack, ColMarTech Pilot Officer Equipment Rack and ColMarTech Vehicle Crewman Equipment Rack</li>
 				<li class="tweak">Added the Large Magazine Pouch as an option costing 10 points under Supplies in the ColMarTech Intelligence Officer Gear Rack</li>
 			</ul>
+			<h3 class="author">naut updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="tweak">Reagent containers now only splash their contents on the floor or a mob on harm intent.</li>
+			</ul>
 			<h3 class="author">spookydonut updated:</h3>
 			<ul class="changes bgimages16">
 				<li class="tweak">Replaces some spawn() usage with varset callback timers</li>
 				<li class="tweak">Renamed Dispose() to Destroy()</li>
 				<li class="tweak">Fixed new warnings from dreamchecker about iterators</li>
+				<li class="tweak">Changed subsystems to use definition macros</li>
+				<li class="tweak">Removed btime.dll</li>
+				<li class="tweak">Added SHOULD_CALL_PARENT lint to /datum/proc/Dispose() and fixed offending cases</li>
+				<li class="tweak">Added SHOULD_CALL_PARENT lint to /atom/proc/Initialize() and fixed offending cases</li>
 			</ul>
 
 			<h2 class="date">23 September 2020</h2>

@@ -16,7 +16,7 @@
 	initialize_map()
 
 // /obj/item/map/attack(mob/living/carbon/human/M as mob, mob/living/carbon/human/usr as mob) //Show someone the map by hitting them with it
-//     usr.visible_message(SPAN_NOTICE("You open up the [name] and show it to [M]. "), \
+//     usr.visible_message(SPAN_NOTICE("You open up the [name] and show it to [M]. "), \ 
 //         SPAN_NOTICE("[usr] opens up the [name] and shows it to \the [M]. "))
 //     M << initialize_map()
 /obj/item/map/attack()

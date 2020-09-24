@@ -28,7 +28,7 @@
 	return
 
 /datum/db/filter/and
-	var/datum/db/filter/subfilters
+	var/list/datum/db/filter/subfilters
 
 /datum/db/filter/and/New(...)
 	subfilters = list()
@@ -44,7 +44,7 @@
 	return column_list
 
 /datum/db/filter/or
-	var/datum/db/filter/subfilters
+	var/list/datum/db/filter/subfilters
 
 /datum/db/filter/or/New(...)
 	subfilters = list()

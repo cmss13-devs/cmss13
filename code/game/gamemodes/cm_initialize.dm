@@ -39,7 +39,7 @@ Additional game mode variables.
 */
 
 /datum/game_mode
-	var/datum/mind/xenomorphs[] = list() //These are our basic lists to keep track of who is in the game.
+	var/list/datum/mind/xenomorphs[] = list() //These are our basic lists to keep track of who is in the game.
 	var/datum/mind/picked_queens[] = list()
 	var/datum/mind/survivors[] = list()
 	var/datum/mind/synth_survivor = null

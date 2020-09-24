@@ -104,8 +104,6 @@
 	if(X.hive.living_xeno_queen && X.hive.living_xeno_queen.observed_xeno == T)
 		X.hive.living_xeno_queen.set_queen_overwatch(new_xeno)
 
-	INVOKE_ASYNC(new_xeno, /mob/living/carbon/Xenomorph.proc/age_xeno, T.age) //a young Crusher de-evolves into a MATURE Hunter
-
 	message_staff("[key_name_admin(X)] has deevolved [key_name_admin(T)]. Reason: [reason]")
 	log_admin("[key_name_admin(X)] has deevolved [key_name_admin(T)]. Reason: [reason]")
 	qdel(T)

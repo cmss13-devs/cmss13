@@ -45,12 +45,6 @@
 	if(SSxevolution && ((hive.living_xeno_queen && hive.living_xeno_queen.ovipositor) || (ticker.game_start_time + XENO_HIVE_EVOLUTION_FREETIME) >= world.time))
 		progress_amount = SSxevolution.get_evolution_boost_power(hive.hivenumber)
 
-	if(age != -1 && age < 3) //age possible
-		age_stored = min(age_stored + 1, age_threshold)
-
-		if(age_stored >= age_threshold && !is_mob_incapacitated() && !handcuffed && !legcuffed && map_tag != MAP_WHISKEY_OUTPOST)
-			INVOKE_ASYNC(src, .proc/age_xeno, (age + 1))
-
 	if(caste && caste.evolution_allowed && evolution_stored < evolution_threshold && hive.living_xeno_queen && (hive.living_xeno_queen.ovipositor || (ticker.game_start_time + XENO_HIVE_EVOLUTION_FREETIME) >= world.time))
 		evolution_stored = min(evolution_stored + progress_amount, evolution_threshold)
 		if(evolution_stored >= evolution_threshold - 1)

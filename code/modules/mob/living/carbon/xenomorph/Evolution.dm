@@ -342,8 +342,6 @@
 	new_xeno.visible_message(SPAN_XENODANGER("A [new_xeno.caste.caste_name] emerges from the husk of \the [src]."), \
 	SPAN_XENODANGER("You regress into your previous form."))
 
-	INVOKE_ASYNC(new_xeno, /mob/living/carbon/Xenomorph.proc/age_xeno, age) // no bone for self-deevolve
-
 	if(round_statistics && !new_xeno.statistic_exempt)
 		round_statistics.track_new_participant(faction, -1) //so an evolved xeno doesn't count as two.
 	SSround_recording.recorder.track_player(new_xeno)

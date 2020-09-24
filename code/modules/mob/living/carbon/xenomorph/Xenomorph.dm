@@ -121,8 +121,6 @@
 
 	// Progression-related
 	var/age_prefix = ""
-	var/age_threshold = 1000
-	var/age_stored = 0 //How much age points they have stored.
 	var/age = 0  //This will track their age level. -1 means cannot age
 	var/max_grown = 200
 	var/evolution_stored = 0 //How much evolution they have stored
@@ -289,6 +287,7 @@
 	mutators.xeno = src
 
 	update_caste()
+
 	generate_name()
 
 	if(isXenoQueen(src))
@@ -364,7 +363,7 @@
 	if (hive && hive.hive_ui)
 		hive.hive_ui.update_all_xeno_data()
 
-	job = JOB_XENOMORPH
+	job = caste.caste_name // Used for tracking the caste playtime
 
 /mob/living/carbon/Xenomorph/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
@@ -425,18 +424,20 @@
 	if(client)
 		name_client_prefix = "[(client.xeno_prefix||client.xeno_postfix) ? client.xeno_prefix : "XX"]-"
 		name_client_postfix = client.xeno_postfix ? ("-"+client.xeno_postfix) : ""
+
+		age_xeno()
 	color = in_hive.color
 
 	//Queens have weird, hardcoded naming conventions based on age levels. They also never get nicknumbers
 	if(isXenoQueen(src))
 		switch(age)
-			if(0) name = "\improper [name_prefix]Queen"			 //Young
-			if(1) name = "\improper [name_prefix]Elder Queen"	 //Mature
-			if(2) name = "\improper [name_prefix]Elder Empress"	 //Elite
-			if(3) name = "\improper [name_prefix]Ancient Empress" //Ancient
-			if(4) name = "\improper [name_prefix]Primordial Empress" //Primordial
-	else if(isXenoPredalien(src)) name = "\improper [name_prefix][caste.display_name] ([name_client_prefix][nicknumber][name_client_postfix])"
-	else if(caste) name = "\improper [name_prefix][age_prefix][caste.caste_name] ([name_client_prefix][nicknumber][name_client_postfix])"
+			if(XENO_NORMAL) name = "[name_prefix]Queen"			 //Young
+			if(XENO_MATURE) name = "[name_prefix]Elder Queen"	 //Mature
+			if(XENO_ELDER) name = "[name_prefix]Elder Empress"	 //Elite
+			if(XENO_ANCIENT) name = "[name_prefix]Ancient Empress" //Ancient
+			if(XENO_PRIME) name = "[name_prefix]Prime Empress" //Primordial
+	else if(isXenoPredalien(src)) name = "[name_prefix][caste.display_name] ([name_client_prefix][nicknumber][name_client_postfix])"
+	else if(caste) name = "[name_prefix][age_prefix][caste.caste_name] ([name_client_prefix][nicknumber][name_client_postfix])"
 
 	//Update linked data so they show up properly
 	change_real_name(src, name)

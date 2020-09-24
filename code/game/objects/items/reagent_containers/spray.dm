@@ -21,7 +21,7 @@
 
 
 /obj/item/reagent_container/spray/Initialize()
-	..()
+	. = ..()
 	src.verbs -= /obj/item/reagent_container/verb/set_APTFT
 
 /obj/item/reagent_container/spray/afterattack(atom/A, mob/user, proximity)
@@ -105,7 +105,7 @@
 	volume = 50
 
 /obj/item/reagent_container/spray/cleaner/Initialize()
-	..()
+	. = ..()
 	reagents.add_reagent("cleaner", src.volume)
 //pepperspray
 /obj/item/reagent_container/spray/pepper
@@ -119,7 +119,7 @@
 
 
 /obj/item/reagent_container/spray/pepper/Initialize()
-	..()
+	. = ..()
 	reagents.add_reagent("condensedcapsaicin", 40)
 
 /obj/item/reagent_container/spray/pepper/examine(mob/user)
@@ -143,7 +143,7 @@
 	volume = 10
 
 /obj/item/reagent_container/spray/waterflower/Initialize()
-	..()
+	. = ..()
 	reagents.add_reagent("water", 10)
 
 //chemsprayer
@@ -207,7 +207,7 @@
 
 
 /obj/item/reagent_container/spray/plantbgone/Initialize()
-	..()
+	. = ..()
 	reagents.add_reagent("plantbgone", 100)
 
 
@@ -222,5 +222,5 @@
 	icon_state = "hydrospray"
 
 /obj/item/reagent_container/spray/hydro/Initialize()
-	..()
+	. = ..()
 	reagents.add_reagent("ammonia", src.volume)

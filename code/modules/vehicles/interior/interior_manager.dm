@@ -52,6 +52,7 @@ var/global/datum/interior_manager/interior_manager = new
 			interiors -= I
 	interiors = null
 	chunk_availability = null
+	return ..()
 
 /datum/interior_manager/proc/get_chunk_coords(var/chunk_id)
 	var/base_load_pos = (chunk_id-1) * chunk_size

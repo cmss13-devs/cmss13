@@ -743,7 +743,7 @@ IN_USE						used for vending/denying
 	vendor_theme = VENDOR_THEME_USCM
 
 /obj/structure/machinery/cm_vending/sorted/Initialize()
-	..()
+	. = ..()
 	populate_product_list(1.2)
 
 //this proc, well, populates product list based on roundstart amount of players

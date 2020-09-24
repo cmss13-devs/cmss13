@@ -54,7 +54,7 @@
 	req_access = list(ACCESS_MARINE_BRIG)
 
 /obj/item/storage/lockbox/loyalty/Initialize()
-	..()
+	. = ..()
 	new /obj/item/implantcase/loyalty(src)
 	new /obj/item/implantcase/loyalty(src)
 	new /obj/item/implantcase/loyalty(src)
@@ -67,5 +67,5 @@
 	req_access = list(ACCESS_MARINE_BRIG)
 
 /obj/item/storage/lockbox/clusterbang/Initialize()
-	..()
+	. = ..()
 	new /obj/item/explosive/grenade/flashbang/clusterbang(src)

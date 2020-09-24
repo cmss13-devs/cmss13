@@ -212,7 +212,7 @@
 /obj/item/storage/pouch/magazine/large/with_beanbags
 
 /obj/item/storage/pouch/magazine/large/with_beanbags/Initialize()
-	..()
+	. = ..()
 	for(var/i=1; i <= storage_slots; i++)
 		var/obj/item/ammo_magazine/handful/H = new(src)
 		H.generate_handful(/datum/ammo/bullet/shotgun/beanbag, "12g", 5, 5, /obj/item/weapon/gun/shotgun)
@@ -439,7 +439,7 @@
 	can_hold = list(/obj/item/reagent_container/syringe)
 
 /obj/item/storage/pouch/syringe/full/Initialize()
-	..()
+	. = ..()
 	new /obj/item/reagent_container/syringe(src)
 	new /obj/item/reagent_container/syringe(src)
 	new /obj/item/reagent_container/syringe(src)
@@ -552,7 +552,7 @@
 	)
 
 /obj/item/storage/pouch/construction/full/Initialize()
-	..()
+	. = ..()
 	var/obj/item/stack/sheet/plasteel/PLAS = new /obj/item/stack/sheet/plasteel(src)
 	PLAS.amount = 50
 	var/obj/item/stack/sheet/metal/MET = new /obj/item/stack/sheet/metal(src)

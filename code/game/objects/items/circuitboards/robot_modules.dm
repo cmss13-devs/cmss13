@@ -19,13 +19,13 @@
 
 
 /obj/item/circuitboard/robot_module/Initialize()
+	. = ..()
 //		src.modules += new /obj/item/device/flashlight(src) // Replaced by verb and integrated light which uses power.
-		src.modules += new /obj/item/device/flash(src)
-		src.emag = new /obj/item/toy/sword(src)
-		src.emag.name = "Placeholder Emag Item"
+	src.modules += new /obj/item/device/flash(src)
+	src.emag = new /obj/item/toy/sword(src)
+	src.emag.name = "Placeholder Emag Item"
 //		src.jetpack = new /obj/item/toy/sword(src)
 //		src.jetpack.name = "Placeholder Upgrade Item"
-		return
 
 
 /obj/item/circuitboard/robot_module/proc/respawn_consumable(var/mob/living/silicon/robot/R)
@@ -82,6 +82,7 @@
 		)
 
 /obj/item/circuitboard/robot_module/surgeon/Initialize()
+	. = ..()
 	src.modules += new /obj/item/device/flashlight(src)
 	src.modules += new /obj/item/device/flash(src)
 	src.modules += new /obj/item/device/healthanalyzer(src)
@@ -106,7 +107,6 @@
 
 	src.emag.reagents.add_reagent("pacid", 250)
 	src.emag.name = "Polyacid spray"
-	return
 
 /obj/item/circuitboard/robot_module/surgeon/respawn_consumable(var/mob/living/silicon/robot/R)
 	if(src.emag)
@@ -123,6 +123,7 @@
 		)
 
 /obj/item/circuitboard/robot_module/medic/Initialize()
+	. = ..()
 	src.modules += new /obj/item/device/flashlight(src)
 	src.modules += new /obj/item/device/flash(src)
 	src.modules += new /obj/item/robot/sight/hud/med(src)
@@ -146,7 +147,6 @@
 
 	src.emag.reagents.add_reagent("pacid", 250)
 	src.emag.name = "Polyacid spray"
-	return
 
 /obj/item/circuitboard/robot_module/medic/respawn_consumable(var/mob/living/silicon/robot/R)
 	var/obj/item/reagent_container/syringe/S = locate() in src.modules
@@ -178,6 +178,7 @@
 		)
 
 /obj/item/circuitboard/robot_module/engineering/Initialize()
+	. = ..()
 	src.modules += new /obj/item/device/flashlight(src)
 	src.modules += new /obj/item/device/flash(src)
 	src.modules += new /obj/item/robot/sight/meson(src)
@@ -201,8 +202,6 @@
 		W.amount = stacktypes[T]
 		src.modules += W
 
-	return
-
 /obj/item/circuitboard/robot_module/engineering/respawn_consumable(var/mob/living/silicon/robot/R)
 	var/obj/item/device/lightreplacer/L = locate() in src.modules
 	L.uses = L.max_uses
@@ -213,6 +212,7 @@
 	name = "security robot module"
 
 /obj/item/circuitboard/robot_module/security/Initialize()
+	. = ..()
 	src.modules += new /obj/item/device/flashlight(src)
 	src.modules += new /obj/item/device/flash(src)
 	src.modules += new /obj/item/robot/sight/hud/sec(src)
@@ -221,7 +221,6 @@
 	src.modules += new /obj/item/tool/crowbar(src)
 //	src.modules += new /obj/item/weapon/gun/energy/taser/cyborg(src)
 //	src.emag = new /obj/item/weapon/gun/energy/laser/cyborg(src)
-	return
 
 /obj/item/circuitboard/robot_module/security/respawn_consumable(var/mob/living/silicon/robot/R)
 	var/obj/item/device/flash/F = locate() in src.modules
@@ -242,6 +241,7 @@
 	name = "janitorial robot module"
 
 /obj/item/circuitboard/robot_module/janitor/Initialize()
+	. = ..()
 	src.modules += new /obj/item/device/flashlight(src)
 	src.modules += new /obj/item/device/flash(src)
 	src.modules += new /obj/item/tool/soap/nanotrasen(src)
@@ -254,7 +254,6 @@
 
 	src.emag.reagents.add_reagent("cleaner", 250)
 	src.emag.name = "space cleaner"
-	return
 
 /obj/item/circuitboard/robot_module/janitor/respawn_consumable(var/mob/living/silicon/robot/R)
 	var/obj/item/device/lightreplacer/LR = locate() in src.modules
@@ -267,6 +266,7 @@
 	name = "service robot module"
 
 /obj/item/circuitboard/robot_module/butler/Initialize()
+	. = ..()
 	src.modules += new /obj/item/device/flashlight(src)
 	src.modules += new /obj/item/device/flash(src)
 	src.modules += new /obj/item/reagent_container/food/drinks/cans/beer(src)
@@ -290,7 +290,6 @@
 	emag.create_reagents(50)
 	emag.reagents.add_reagent("beer2", 50)
 	src.emag.name = "Mickey Finn's Special Brew"
-	return
 
 /obj/item/circuitboard/robot_module/butler/add_languages(var/mob/living/silicon/robot/R)
 	//full set of languages
@@ -310,11 +309,11 @@
 	name = "syndicate robot module"
 
 /obj/item/circuitboard/robot_module/syndicate/Initialize()
+	. = ..()
 	src.modules += new /obj/item/device/flashlight(src)
 	src.modules += new /obj/item/device/flash(src)
 	src.modules += new /obj/item/weapon/melee/energy/sword(src)
 //	src.modules += new /obj/item/weapon/gun/energy/pulse_rifle/destroyer(src)
-	return
 
 /obj/item/circuitboard/robot_module/drone
 	name = "drone module"
@@ -331,6 +330,7 @@
 		)
 
 /obj/item/circuitboard/robot_module/drone/Initialize()
+	. = ..()
 	src.modules += new /obj/item/tool/weldingtool(src)
 	src.modules += new /obj/item/tool/screwdriver(src)
 	src.modules += new /obj/item/tool/wrench(src)
@@ -349,8 +349,6 @@
 		var/obj/item/stack/sheet/W = new T(src)
 		W.amount = stacktypes[T]
 		src.modules += W
-
-	return
 
 /obj/item/circuitboard/robot_module/drone/add_languages(var/mob/living/silicon/robot/R)
 	return	//not much ROM to spare in that tiny microprocessor!

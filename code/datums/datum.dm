@@ -8,6 +8,7 @@
  * Called BEFORE qdel moves shit.
  */
 /datum/proc/Destroy(force=FALSE, ...)
+	SHOULD_CALL_PARENT(TRUE)
 	// For the Timer subsystem.
 	var/list/timers = active_timers
 	active_timers = null

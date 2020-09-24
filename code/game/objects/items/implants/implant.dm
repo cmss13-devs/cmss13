@@ -308,7 +308,7 @@ the implant may become unstable and either pre-maturely inject the subject or si
 			malfunction--
 
 /obj/item/implant/chem/Initialize()
-	..()
+	. = ..()
 	create_reagents(50)
 
 /obj/item/implant/loyalty

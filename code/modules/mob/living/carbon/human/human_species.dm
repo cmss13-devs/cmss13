@@ -2,7 +2,15 @@
 // might be worth adapting the bugs into a feature and using these
 // subtypes as a basis for non-common-speaking alien foreigners. ~ Z
 
-/mob/living/carbon/human/dummy/Initialize(var/new_loc)
+/mob/living/carbon/human/dummy/Initialize(mapload, new_loc)
+	. = ..()
+	human_mob_list -= src
+	living_human_list -= src
+	processable_human_list -= src
+	mob_list -= src
+	dead_mob_list -= src
+	living_mob_list -= src
+	
 	set_species()
 	change_real_name(src, "Test Dummy")
 	status_flags = GODMODE|CANPUSH

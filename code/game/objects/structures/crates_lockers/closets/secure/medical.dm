@@ -10,8 +10,7 @@
 	req_access = list(ACCESS_MARINE_MEDBAY)
 
 /obj/structure/closet/secure_closet/medical1/Initialize()
-	..()
-	sleep(2)
+	. = ..()
 	new /obj/item/storage/box/syringes(src)
 	new /obj/item/reagent_container/dropper(src)
 	new /obj/item/reagent_container/dropper(src)
@@ -35,8 +34,7 @@
 	req_access = list(ACCESS_MARINE_MEDBAY)
 
 /obj/structure/closet/secure_closet/medical2/Initialize()
-	..()
-	sleep(2)
+	. = ..()
 	new /obj/item/tank/anesthetic(src)
 	new /obj/item/tank/anesthetic(src)
 	new /obj/item/tank/anesthetic(src)
@@ -56,8 +54,7 @@
 	icon_off = "secure_closed_medical_white"
 
 /obj/structure/closet/secure_closet/medical3/Initialize()
-	..()
-	sleep(2)
+	. = ..()
 	new /obj/item/storage/belt/medical/full(src)
 	new /obj/item/storage/belt/medical/full(src)
 	new /obj/item/storage/backpack/marine/satchel(src)
@@ -87,8 +84,7 @@
 	icon_off = "cmosecureoff"
 
 /obj/structure/closet/secure_closet/CMO/Initialize()
-	..()
-	sleep(2)
+	. = ..()
 	new /obj/item/clothing/suit/radiation(src)
 	new /obj/item/clothing/head/radiation(src)
 	new /obj/item/clothing/shoes/white(src)
@@ -122,8 +118,7 @@
 	req_access = list(ACCESS_MARINE_CHEMISTRY)
 
 /obj/structure/closet/secure_closet/chemical/Initialize()
-	..()
-	sleep(2)
+	. = ..()
 	for(var/i = 0, i < 4, i++)
 		new /obj/item/storage/box/pillbottles(src)
 	return

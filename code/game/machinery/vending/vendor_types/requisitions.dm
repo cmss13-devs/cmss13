@@ -10,7 +10,7 @@
 	vendor_theme = VENDOR_THEME_USCM
 
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/Initialize()
-	..()
+	. = ..()
 	cm_vending_vendors.Add(src)
 
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/vend_fail()
@@ -198,7 +198,7 @@
 	vendor_theme = VENDOR_THEME_USCM
 
 /obj/structure/machinery/cm_vending/sorted/cargo_ammo/Initialize()
-	..()
+	. = ..()
 	cm_vending_vendors.Add(src)						//this is needed for cm_initialize and needs changing
 
 /obj/structure/machinery/cm_vending/sorted/cargo_ammo/vend_fail()
@@ -346,7 +346,7 @@
 	vend_delay = 3
 
 /obj/structure/machinery/cm_vending/sorted/attachments/Initialize()
-	..()
+	. = ..()
 	cm_vending_vendors.Add(src)						//this is needed for cm_initialize and needs changing
 
 /obj/structure/machinery/cm_vending/sorted/attachments/vend_fail()

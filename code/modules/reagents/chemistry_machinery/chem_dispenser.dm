@@ -40,7 +40,7 @@
 		ui_check -= 1
 
 /obj/structure/machinery/chem_dispenser/Initialize()
-	..()
+	. = ..()
 	dispensable_reagents = sortList(dispensable_reagents)
 	start_processing()
 

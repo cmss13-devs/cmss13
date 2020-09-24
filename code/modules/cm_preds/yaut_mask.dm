@@ -143,4 +143,4 @@
 
 /obj/item/clothing/mask/gas/yautja/Destroy()
 	remove_from_missing_pred_gear(src)
-	..()
+	return ..()

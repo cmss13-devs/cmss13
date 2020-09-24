@@ -64,7 +64,7 @@
 
 /datum/entity/Destroy()
 	detach()
-	..()
+	return ..()
 
 /datum/entity/proc/sync()
 	while(status > DB_ENTITY_STATE_SYNCED)

@@ -237,7 +237,7 @@
 	desc = "A crate for the storage of the RCD."
 
 /obj/structure/closet/crate/rcd/Initialize()
-	..()
+	. = ..()
 	new /obj/item/ammo_rcd(src)
 	new /obj/item/ammo_rcd(src)
 	new /obj/item/ammo_rcd(src)
@@ -248,7 +248,7 @@
 	name = "Emergency Rations"
 
 /obj/structure/closet/crate/freezer/rations/Initialize()
-	..()
+	. = ..()
 	new /obj/item/storage/box/donkpockets(src)
 	new /obj/item/storage/box/donkpockets(src)
 
@@ -269,7 +269,7 @@
 	icon_closed = "closed_radioactive"
 
 /obj/structure/closet/crate/radiation/Initialize()
-	..()
+	. = ..()
 	new /obj/item/clothing/suit/radiation(src)
 	new /obj/item/clothing/head/radiation(src)
 	new /obj/item/clothing/suit/radiation(src)

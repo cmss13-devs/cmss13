@@ -14,8 +14,7 @@
 
 /obj/structure/machinery/computer/research/Initialize()
 	. = ..()
-	spawn(7)
-		photocopier = locate(/obj/structure/machinery/photocopier,get_step(src, NORTH))
+	photocopier = locate(/obj/structure/machinery/photocopier,get_step(src, NORTH))
 
 /obj/structure/machinery/computer/research/attackby(obj/item/B, mob/living/user)
 	//Collecting grants

@@ -10,7 +10,7 @@
 
 
 /mob/living/Initialize()
-	..()
+	. = ..()
 
 	fire_reagent = new /datum/reagent/napalm/ut()
 

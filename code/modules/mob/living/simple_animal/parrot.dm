@@ -81,7 +81,7 @@
 	var/obj/item/held_item = null
 
 /mob/living/simple_animal/parrot/Initialize()
-	..()
+	. = ..()
 	if(!ears)
 		var/headset = pick(	/obj/item/device/radio/headset)
 		ears = new headset(src)

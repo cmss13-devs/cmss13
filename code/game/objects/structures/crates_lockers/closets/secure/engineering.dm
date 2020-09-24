@@ -9,8 +9,7 @@
 	icon_off = "secureceoff"
 
 /obj/structure/closet/secure_closet/engineering_chief/Initialize()
-	..()
-	sleep(2)
+	. = ..()
 	new /obj/item/clothing/accessory/storage/webbing(src)
 	new /obj/item/clothing/accessory/storage/black_vest/brown_vest(src)
 	new /obj/item/clothing/head/hardhat/white(src)
@@ -40,8 +39,7 @@
 	icon_off = "secureengelecoff"
 
 /obj/structure/closet/secure_closet/engineering_electrical/Initialize()
-	..()
-	sleep(2)
+	. = ..()
 	new /obj/item/clothing/gloves/yellow(src)
 	new /obj/item/clothing/gloves/yellow(src)
 	new /obj/item/clothing/gloves/yellow(src)
@@ -67,8 +65,7 @@
 	icon_off = "secureengweldoff"
 
 /obj/structure/closet/secure_closet/engineering_welding/Initialize()
-	..()
-	sleep(2)
+	. = ..()
 	new /obj/item/clothing/head/welding(src)
 	new /obj/item/clothing/head/welding(src)
 	new /obj/item/clothing/head/welding(src)
@@ -115,7 +112,7 @@
 	icon_off = "secureengoff"
 
 /obj/structure/closet/secure_closet/engineering_personal/Initialize()
-	..()
+	. = ..()
 	if(!z == MAIN_SHIP_Z_LEVEL && prob(70)) new /obj/item/clothing/accessory/storage/black_vest/brown_vest(src)
 	else new /obj/item/clothing/accessory/storage/webbing(src)
 	new /obj/item/storage/toolbox/mechanical(src)
@@ -148,8 +145,7 @@
 	icon_off = "secureatmoff"
 
 /obj/structure/closet/secure_closet/atmos_personal/Initialize()
-	..()
-	sleep(2)
+	. = ..()
 	if (!z == MAIN_SHIP_Z_LEVEL && prob(70)) new /obj/item/clothing/accessory/storage/black_vest/brown_vest(src)
 	else new /obj/item/clothing/accessory/storage/webbing(src)
 	new /obj/item/clothing/suit/fire/firefighter(src)

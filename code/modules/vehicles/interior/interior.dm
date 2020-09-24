@@ -50,6 +50,7 @@
 	if(interior_data)
 		qdel(interior_data)
 	interior_data = null
+	return ..()
 
 // Use this proc to load the template back in
 /datum/interior/proc/create_interior(var/interior_map)

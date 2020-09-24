@@ -132,6 +132,7 @@
 	for(var/datum/skill/S in skills)
 		qdel(S)
 		skills -= S
+	return ..()
 
 // Checks if the given skill is contained in this skillset at all
 /datum/skills/proc/has_skill(var/skill)

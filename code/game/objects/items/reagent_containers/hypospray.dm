@@ -120,7 +120,7 @@
 	return 1
 
 /obj/item/reagent_container/hypospray/Initialize()
-	..()
+	. = ..()
 	mag = new /obj/item/reagent_container/glass/beaker/vial(src)
 
 /obj/item/reagent_container/hypospray/tricordrazine
@@ -128,7 +128,7 @@
 	volume = 30
 
 /obj/item/reagent_container/hypospray/tricordrazine/Initialize()
-	..()
+	. = ..()
 	mag = new /obj/item/reagent_container/glass/beaker/vial/tricordrazine(src)
 
 /obj/item/reagent_container/hypospray/sedative
@@ -137,5 +137,5 @@
 	volume = 30
 
 /obj/item/reagent_container/hypospray/sedative/Initialize()
-	..()
+	. = ..()
 	mag = new /obj/item/reagent_container/glass/beaker/vial/sedative(src)

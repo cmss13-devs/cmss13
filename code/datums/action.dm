@@ -29,6 +29,7 @@
 	qdel(button)
 	button = null
 	target = null
+	return ..()
 
 /datum/action/proc/update_button_icon()
 	return

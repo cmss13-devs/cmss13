@@ -54,7 +54,7 @@
 	friendly = "nuzzles" //If the mob does no damage with it's attack
 
 /mob/living/simple_animal/Initialize()
-	..()
+	. = ..()
 	living_misc_mobs += src
 	verbs -= /mob/verb/observe
 

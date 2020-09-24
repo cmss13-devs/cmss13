@@ -217,7 +217,7 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 	desc = "Drag this sprite onto yourself to open it up!\nNOTE: You cannot put items back inside this case."
 
 /obj/item/storage/box/kit/Initialize()
-	..()
+	. = ..()
 	pixel_x = rand(-5, 5)
 	pixel_y = rand(-5, 5)
 

@@ -13,7 +13,7 @@
 	create_reagents(1000)
 	change_real_name(src, "unknown")
 
-	..()
+	. = ..()
 
 	prev_gender = gender // Debug for plural genders
 

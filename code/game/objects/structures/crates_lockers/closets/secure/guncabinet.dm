@@ -23,7 +23,7 @@
 
 /obj/structure/closet/secure_closet/guncabinet/Destroy()
 	gun_cabinets -= src
-	..()
+	return ..()
 
 /obj/structure/closet/secure_closet/guncabinet/toggle()
 	..()

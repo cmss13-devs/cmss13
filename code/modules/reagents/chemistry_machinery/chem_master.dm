@@ -24,7 +24,7 @@
 	var/obj/structure/machinery/smartfridge/chemistry/connected
 
 /obj/structure/machinery/chem_master/Initialize()
-	..()
+	. = ..()
 	create_reagents(240)
 	connect_smartfridge()
 

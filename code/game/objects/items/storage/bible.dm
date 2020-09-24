@@ -14,7 +14,7 @@
 	icon_state ="bible"
 
 /obj/item/storage/bible/booze/Initialize()
-	..()
+	. = ..()
 	new /obj/item/reagent_container/food/drinks/cans/beer(src)
 	new /obj/item/reagent_container/food/drinks/cans/beer(src)
 	new /obj/item/spacecash(src)

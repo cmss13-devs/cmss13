@@ -169,7 +169,7 @@
 	icon_state = "blackgoo"
 
 /obj/item/reagent_container/food/drinks/bottle/black_goo_cure/Initialize()
-	..()
+	. = ..()
 	reagents.add_reagent("antiZed", 30)
 
 /datum/language/zombie
@@ -215,7 +215,7 @@
 
 
 /obj/item/storage/fancy/blackgoo/Initialize()
-	..()
+	. = ..()
 	for(var/i=1; i <= storage_slots; i++)
 		new /obj/item/reagent_container/food/drinks/bottle/black_goo(src)
 	return

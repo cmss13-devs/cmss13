@@ -20,7 +20,7 @@
 	src.pixel_y = rand(-5.0, 5)
 
 /obj/item/reagent_container/food/snacks/grown/Initialize()
-	..()
+	. = ..()
 
 	//Handle some post-spawn var stuff.
 	spawn(1)

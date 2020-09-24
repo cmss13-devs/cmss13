@@ -20,6 +20,12 @@
 	build_icon()
 	update_icon()
 
+/obj/structure/machinery/recharge_station/Destroy()
+	if(occupant)
+		to_chat(occupant, SPAN_NOTICE(" <B>Critical failure of [name]. Unit ejected.</B>"))
+		go_out()
+	return ..()
+
 /obj/structure/machinery/recharge_station/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
 	if (PF)

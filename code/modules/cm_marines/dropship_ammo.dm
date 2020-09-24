@@ -300,9 +300,7 @@
 	impact.ceiling_debris_check(3)
 	spawn(5)
 		explosion(impact,1,2,3,6,1,0, , initial(name), source_mob) //relatively weak
-		for(var/turf/T in range(4,impact))
-			if(!locate(/obj/flamer_fire) in T) // No stacking flames!
-				new/obj/flamer_fire(T, initial(name), source_mob, 60, 30) //cooking for a long time
+		fire_spread(impact, initial(name), source_mob, 6, 60, 30, "white")
 		qdel(src)
 
 

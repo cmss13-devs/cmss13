@@ -608,8 +608,7 @@ Dream Daemon can be unintuitive to set up. This document will cover the basic st
 3. Locate and select the Colonial Marines repository .dmb file for running.
 4. Set the trust level to Trusted.
 5. Set a fixed port, and forward it if you haven’t already.
-6. Ensure that your repository has btime.dll in the same directory as the .dmb file generated from compiling. This is necessary for the process scheduler to function.
-7. Press Go, wait for the server to spin up, and enter with the small yellow Join button.
+6. Press Go, wait for the server to spin up, and enter with the small yellow Join button.
 
 Be sure Dream Daemon is inactive when compiling, as it locks up assets and prevents recompiling in some cases.
 

@@ -28,7 +28,7 @@
 	see_in_dark = 8
 	away_timer = 300
 	tier = 0  //Larva's don't count towards Pop limits
-	age = -1
+	age = XENO_NO_AGE
 	crit_health = -25
 	gib_chance = 25
 	mob_size = 0

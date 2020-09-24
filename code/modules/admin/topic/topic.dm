@@ -1137,38 +1137,6 @@
 
 		usr.client.cmd_admin_animalize(M)
 
-
-	else if(href_list["xenoupgrade"])
-		if(!check_rights(R_ADMIN))
-			return
-
-		var/mob/living/carbon/Xenomorph/X = locate(href_list["xenoupgrade"])
-
-		if(X.age == -1)
-			to_chat(usr, "You cannot age this caste.")
-
-		if(alert(usr, "Are you sure you want to age this xenomorph?", "Confirmation", "Yes", "No") != "Yes")
-			return
-
-		var/upgrade_list = input("Choose a level.") in list("Young", "Mature", "Elder", "Ancient", "Cancel")
-
-		var/level
-
-		switch(upgrade_list)
-			if("Young")
-				level = 0
-			if("Mature")
-				level = 1
-			if("Elder")
-				level = 2
-			if("Ancient")
-				level = 3
-			if("Cancel")
-				return
-
-		X.age_xeno(level)
-		message_staff("[usr.ckey] has changed the maturation level of [key_name(X)] to [level].")
-
 /***************** BEFORE**************
 
 

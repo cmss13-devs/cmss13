@@ -585,9 +585,6 @@
 				Antagonist:	<A href='?src=\ref[src];makemutineer=\ref[M]'>Make Mutineering Leader</A>
 	"}
 
-	if(isXeno(M))
-		body += "<br>Upgrade: <A href='?src=\ref[src];xenoupgrade=\ref[M]'>Upgrade Xeno</A>"
-
 	body += {"<br>
 		</body></html>
 	"}

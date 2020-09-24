@@ -165,6 +165,8 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/xeno_postfix = ""
 	var/xeno_name_ban = FALSE
 
+	var/show_xeno_age = TRUE
+
 	var/stylesheet = "Modern"
 
 	var/lang_chat_disabled = FALSE
@@ -296,6 +298,8 @@ var/const/MAX_SAVE_SLOTS = 10
 
 				dat += "<b>Xeno prefix:</b> <a href='?_src_=prefs;preference=xeno_prefix;task=input'>[display_prefix]</a><br>"
 				dat += "<b>Xeno postfix:</b> <a href='?_src_=prefs;preference=xeno_postfix;task=input'>[display_postfix]</a><br>"
+
+				dat += "<b>Show Xeno Age:</b> <a href='?_src_=prefs;preference=xeno_show_age'><b>[show_xeno_age? "Yes" : "No"]</b></a><br>"
 
 				var/tempnumber = rand(1, 999)
 				var/postfix_text = xeno_postfix ? ("-"+xeno_postfix) : ""
@@ -1036,7 +1040,7 @@ var/const/MAX_SAVE_SLOTS = 10
 						return
 
 					if(prefix_length==3)
-						var/playtime = get_job_playtime(user.client, JOB_XENOMORPH)
+						var/playtime = user.client.get_total_xeno_playtime()
 						if(playtime < 124 HOURS)
 							to_chat(user, SPAN_WARNING(FONT_SIZE_BIG("You need to play [Ceiling((124 HOURS - playtime)/HOURS_1)] more hours to unlock xeno three letter prefix.")))
 							return
@@ -1065,7 +1069,7 @@ var/const/MAX_SAVE_SLOTS = 10
 						to_chat(user, SPAN_WARNING(FONT_SIZE_BIG("You are banned from xeno name picking.")))
 						xeno_postfix = ""
 						return
-					var/playtime = get_job_playtime(user.client, JOB_XENOMORPH)
+					var/playtime = user.client.get_total_xeno_playtime()
 					if(playtime < 24 HOURS)
 						to_chat(user, SPAN_WARNING(FONT_SIZE_BIG("You need to play [Ceiling((24 HOURS - playtime)/HOURS_1)] more hours to unlock xeno postfix.")))
 						return
@@ -1368,6 +1372,9 @@ var/const/MAX_SAVE_SLOTS = 10
 				if("ViewMC")
 					if(user.client.admin_holder && user.client.admin_holder.rights & R_DEBUG)
 						View_MC = !View_MC
+
+				if("xeno_show_age")
+					show_xeno_age = !show_xeno_age
 
 				if("be_special")
 					var/num = text2num(href_list["num"])

@@ -120,17 +120,42 @@
 
 	resin_build_order = resin_build_order_default
 
+/client/var/cached_xeno_playtime
+
+/client/proc/get_total_xeno_playtime(var/skip_cache = FALSE)
+	if(cached_xeno_playtime && !skip_cache)
+		return cached_xeno_playtime
+
+	var/total_xeno_playtime = 0
+
+	for(var/caste in RoleAuthority.castes_by_name)
+		total_xeno_playtime += get_job_playtime(src, caste)
+
+	total_xeno_playtime += get_job_playtime(src, JOB_XENOMORPH)
+
+	if(player_entity)
+		var/past_xeno_playtime = player_entity.get_playtime(STATISTIC_XENO)
+		if(past_xeno_playtime)
+			total_xeno_playtime += past_xeno_playtime
+
+
+	cached_xeno_playtime = total_xeno_playtime
+
+	return total_xeno_playtime
+
 /datum/caste_datum/proc/can_play_caste(var/client/client)
 	if(!config.use_timelocks)
 		return TRUE
 
-	if(minimum_xeno_playtime && get_job_playtime(client, JOB_XENOMORPH) < minimum_xeno_playtime)
+	var/total_xeno_playtime = client.get_total_xeno_playtime()
+
+	if(minimum_xeno_playtime && total_xeno_playtime < minimum_xeno_playtime)
 		return FALSE
 	
 	return TRUE
 
 /datum/caste_datum/proc/get_caste_requirement(var/client/client)
-	return minimum_xeno_playtime - get_job_playtime(client, JOB_XENOMORPH)
+	return minimum_xeno_playtime - client.get_total_xeno_playtime()
 
 /datum/hive_status
 	var/name = "Normal Hive"

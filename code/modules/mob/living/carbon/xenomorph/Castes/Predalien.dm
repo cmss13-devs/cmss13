@@ -40,7 +40,7 @@
 	old_x = -16
 	mob_size = MOB_SIZE_BIG
 	tier = 1
-	age = -1 //Predaliens are already in their ultimate form, they don't get even better
+	age = XENO_NO_AGE //Predaliens are already in their ultimate form, they don't get even better
 	small_explosives_stun = FALSE
 
 	actions = list(

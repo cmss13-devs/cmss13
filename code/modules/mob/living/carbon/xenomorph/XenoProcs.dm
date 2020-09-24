@@ -57,9 +57,6 @@
 	else if(caste && caste.evolution_allowed)
 		stat("Evolve Progress:", "[round(evolution_stored)]/[evolution_threshold]")
 
-	if(age != -1 && age < 3) //upgrade possible
-		stat("Age Progress:", "[round(age_stored)]/[age_threshold]")
-
 	stat("")
 
 	if (behavior_delegate)

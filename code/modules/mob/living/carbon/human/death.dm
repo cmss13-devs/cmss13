@@ -59,7 +59,7 @@
 		playsound(loc, species.death_sound, 50, 1)
 
 	// Finding the last guy for anti-delay.
-	if(ticker.mode.is_in_endgame)
+	if(ticker && ticker.mode && ticker.mode.is_in_endgame)
 		var/mob/last_living_human
 		for(var/mob/M in living_human_list)
 			if(M.z != MAIN_SHIP_Z_LEVEL)

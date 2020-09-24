@@ -126,8 +126,8 @@
 	if(toggle)
 		toggle = 0
 		toggle_valve()
-		spawn(50) // To stop a signal being spammed from a proxy sensor constantly going off or whatever
-			toggle = 1
+		// To stop a signal being spammed from a proxy sensor constantly going off or whatever
+		add_timer(VARSET_CALLBACK(src, toggle, TRUE), 5 SECONDS)
 
 /obj/item/device/transfer_valve/update_icon()
 	overlays.Cut()

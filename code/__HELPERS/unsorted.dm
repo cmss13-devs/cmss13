@@ -2066,3 +2066,15 @@ var/list/WALLITEMS = list(
 				return FALSE
 	user.face_atom(src)
 	return TRUE
+
+//datum may be null, but it does need to be a typed var
+#define NAMEOF(datum, X) (#X || ##datum.##X)
+
+#define VARSET_CALLBACK(datum, var, var_value) CALLBACK(GLOBAL_PROC, /proc/___callbackvarset, ##datum, NAMEOF(##datum, ##var), ##var_value)
+
+/proc/___callbackvarset(list_or_datum, var_name, var_value)
+	if(length(list_or_datum))
+		list_or_datum[var_name] = var_value
+		return
+	var/datum/D = list_or_datum
+	D.vars[var_name] = var_value

@@ -677,8 +677,7 @@
 
 	if(!drain_power(usr,70)) return
 	disc_timer = 1
-	spawn(100)
-		disc_timer = 0
+	add_timer(VARSET_CALLBACK(src, disc_timer, FALSE), 10 SECONDS)
 
 	for(var/mob/living/simple_animal/hostile/smartdisc/S in range(7))
 		to_chat(usr, SPAN_WARNING("The [S] skips back towards you!"))

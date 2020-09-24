@@ -87,14 +87,12 @@
 			P.update()
 			P.add_fingerprint(usr)
 			wait = 1
-			spawn(10)
-				wait = 0
+			add_timer(VARSET_CALLBACK(src, wait, FALSE), 1 SECONDS)
 	if(href_list["makemeter"])
 		if(!wait)
 			new /obj/item/pipe_meter(/*usr.loc*/ src.loc)
 			wait = 1
-			spawn(15)
-				wait = 0
+			add_timer(VARSET_CALLBACK(src, wait, FALSE), 1.5 SECONDS)
 	return
 
 /obj/structure/machinery/pipedispenser/attackby(var/obj/item/W as obj, var/mob/user as mob)
@@ -228,8 +226,7 @@ Nah
 			C.add_fingerprint(usr)
 			C.update()
 			wait = 1
-			spawn(15)
-				wait = 0
+			add_timer(VARSET_CALLBACK(src, wait, FALSE), 1.5 SECONDS)
 	return
 
 // adding a pipe dispensers that spawn unhooked from the ground

@@ -61,8 +61,8 @@
 			powernet_connection_failed = 1 //God damn it, where'd our network go
 			is_on = 0
 			stop_processing()
-			spawn(150) // Error! Check again in 15 seconds. Someone could have blown/acided or snipped a cable
-				powernet_connection_failed = 0
+			// Error! Check again in 15 seconds. Someone could have blown/acided or snipped a cable
+			add_timer(VARSET_CALLBACK(src, powernet_connection_failed, FALSE), 15 SECONDS)
 	else if(powernet) //All good! Let's fire it up!
 		if(!check_failure()) //Wait! Check to see if it breaks during processing
 			update_icon()

@@ -35,8 +35,7 @@
 	playsound(get_turf(src), 'sound/items/whistle.ogg', volume, 1, vary = 0)
 
 	spamcheck = 1
-	spawn(30)
-		spamcheck = 0
+	add_timer(VARSET_CALLBACK(src, spamcheck, FALSE), 3 SECONDS)
 
 /obj/item/device/whistle/MouseDrop(obj/over_object as obj)
 	if(ishuman(usr) || isrobot(usr))
@@ -71,5 +70,4 @@
 	user.show_message(SPAN_WARNING("[user]'s [name] rasps, \"Halt! Security!\""),1)
 
 	spamcheck = 1
-	spawn(20)
-		spamcheck = 0
+	add_timer(VARSET_CALLBACK(src, spamcheck, FALSE), 2 SECONDS)

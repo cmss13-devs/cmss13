@@ -12,7 +12,7 @@
 		list("Essential SL Set", 0, /obj/effect/essentials_set/leader, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
 
 		list("GENERAL SUPPLIES", 0, null, null, null),
-		list("Flamethrower", 12, /obj/item/weapon/gun/flamer, null, VENDOR_ITEM_REGULAR),
+		list("Flamethrower", 12, /obj/item/weapon/gun/flamer/underextinguisher, null, VENDOR_ITEM_REGULAR),
 		list("Flamethrower Tank", 3, /obj/item/ammo_magazine/flamer_tank, null, VENDOR_ITEM_REGULAR),
 		list("Incendiary Grenade", 8, /obj/item/explosive/grenade/incendiary, null, VENDOR_ITEM_REGULAR),
 		list("Motion Detector (MD)", 5, /obj/item/device/motiondetector, null, VENDOR_ITEM_RECOMMENDED),
@@ -159,7 +159,7 @@
 		/obj/item/explosive/plastic,
 		/obj/item/device/binoculars/range/designator,
 		/obj/item/map/current_map,
-		/obj/item/weapon/gun/flamer,
+		/obj/item/weapon/gun/flamer/underextinguisher,
 		/obj/item/tool/extinguisher/mini,
 		/obj/item/storage/box/zipcuffs
 	)

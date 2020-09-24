@@ -168,12 +168,20 @@
         picked_queens[hive].current.close_spawn_windows()
 
     for(var/datum/hive_status/hive in hive_spots)
+        new/obj/effect/alien/resin/special/pool(hive_spots[hive], hive) // Spawn a hive pool so they all get fair xenos
         var/obj/effect/alien/resin/special/pylon/core/C = new(hive_spots[hive], hive)
         C.hardcore = TRUE // This'll make losing the hive core more detrimental than losing a Queen
         hive_cores += C
 
 ////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////
+
+// Queen delay timer. No more instant evolves
+/datum/game_mode/xenovs/check_queen_status(var/queen_time, var/hivenumber)
+	var/datum/hive_status/hive = hive_datum[hivenumber]
+
+	if(hive)
+		hive.xeno_queen_timer = world.time + 5 MINUTES
 
 //This is processed each tick, but check_win is only checked 5 ticks, so we don't go crazy with scanning for mobs.
 /datum/game_mode/xenovs/process()

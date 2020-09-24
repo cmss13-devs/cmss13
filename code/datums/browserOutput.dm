@@ -282,7 +282,7 @@ var/savefile/iconCache = new /savefile("data/iconCache.sav") //Cache of icons fo
 	if (!target || !message)
 		return
 
-	if(!SSchat?.initialized)
+	if(!SSchat || !SSchat.initialized)
 		to_chat_forced(target, message)
 		return
 	SSchat.queue(target, message)

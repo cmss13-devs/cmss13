@@ -1,7 +1,4 @@
-var/datum/subsystem/xeno/SSxeno
-
-
-/datum/subsystem/xeno
+SUBSYSTEM_DEF(xeno)
 	name          = "Xeno Life"
 	wait          = 2 SECONDS
 	flags         = SS_NO_INIT | SS_KEEP_TIMING
@@ -9,11 +6,6 @@ var/datum/subsystem/xeno/SSxeno
 	display_order = SS_DISPLAY_XENO
 
 	var/list/currentrun = list()
-
-
-/datum/subsystem/xeno/New()
-	NEW_SS_GLOBAL(SSxeno)
-
 
 /datum/subsystem/xeno/stat_entry()
 	..("P:[xeno_mob_list.len]")

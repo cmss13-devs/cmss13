@@ -1,5 +1,3 @@
-var/datum/subsystem/machinery/SSmachinery
-
 var/list/machines = list()
 var/list/processing_machines = list()
 
@@ -7,7 +5,7 @@ var/list/datum/powernet/powernets = list() //Holds all powernet datums in use or
 var/list/datum/powernet/powernets_by_name = list() //Holds all powernet datums in use or pooled
 
 
-/datum/subsystem/machinery
+SUBSYSTEM_DEF(machinery)
 	name          = "Machinery"
 	wait          = SS_WAIT_MACHINERY
 	flags         = SS_NO_INIT | SS_KEEP_TIMING
@@ -15,9 +13,6 @@ var/list/datum/powernet/powernets_by_name = list() //Holds all powernet datums i
 	display_order = SS_DISPLAY_MACHINERY
 
 	var/list/currentrunmachines = list()
-
-/datum/subsystem/machinery/New()
-	NEW_SS_GLOBAL(SSmachinery)
 
 /datum/subsystem/machinery/stat_entry(var/msg)
 	if (msg)

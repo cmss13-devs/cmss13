@@ -1,18 +1,15 @@
 //var/global/current_squad_overlay = 1
-var/datum/subsystem/mapview/SSmapview
-
-/datum/subsystem/mapview
+SUBSYSTEM_DEF(mapview)
 	name          = "Mapview"
 	wait          = 2 SECONDS
-	flags         = SS_NO_INIT | SS_KEEP_TIMING | SS_DISABLE_FOR_TESTING
+	flags         = SS_KEEP_TIMING | SS_DISABLE_FOR_TESTING
 	priority      = SS_PRIORITY_MAPVIEW
 	display_order = SS_DISPLAY_UNSPECIFIED
 	var/list/map_machines
 
-/datum/subsystem/mapview/New()
-	NEW_SS_GLOBAL(SSmapview)
-	spawn(20)
-		create_map_machines()
+/datum/subsystem/mapview/Initialize(start_timeofday)
+	create_map_machines()
+	return ..()
 
 /datum/subsystem/mapview/proc/create_map_machines()
 	map_machines = list()

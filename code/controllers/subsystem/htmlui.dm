@@ -4,19 +4,12 @@
 // It's some form of proc queue but ???
 // Does anything even *use* this?
 
-var/datum/subsystem/html_ui/SShtml_ui
-
-/datum/subsystem/html_ui
+SUBSYSTEM_DEF(html_ui)
 	name = "HTMLUI"
 	wait = 1.7 SECONDS
 	flags = SS_NO_INIT | SS_NO_TICK_CHECK | SS_FIRE_IN_LOBBY
 
 	var/list/update = list()
-
-
-/datum/subsystem/html_ui/New()
-	NEW_SS_GLOBAL(SShtml_ui)
-
 
 /datum/subsystem/html_ui/fire(resumed = FALSE)
 	if (update.len)

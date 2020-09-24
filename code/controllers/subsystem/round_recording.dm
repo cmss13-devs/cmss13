@@ -1,6 +1,4 @@
-var/datum/subsystem/round_recording/SSround_recording
-
-/datum/subsystem/round_recording
+SUBSYSTEM_DEF(round_recording)
 	name     = "Round Recording"
 	wait     = SS_WAIT_ROUND_RECORDING
 	priority = SS_PRIORITY_ROUND_RECORDING
@@ -9,14 +7,10 @@ var/datum/subsystem/round_recording/SSround_recording
 	var/list/currentrun
 	var/datum/round_recorder/recorder
 
-/datum/subsystem/round_recording/New()
-	NEW_SS_GLOBAL(SSround_recording)
-	recorder = new()
-
 /datum/subsystem/round_recording/Initialize()
-
+	recorder = new()
 	can_fire = FALSE
-	return
+	return ..()
 /*
 	var/list/lines = file2list("config/round_recording.txt")
 

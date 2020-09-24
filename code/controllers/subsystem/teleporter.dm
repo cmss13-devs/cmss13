@@ -1,9 +1,7 @@
-var/datum/subsystem/teleporter/SSTeleporter
-
 var/global/datum/subsystem/teleporter/teleporter_ss
 
 // Master teleporter controller.
-/datum/subsystem/teleporter
+SUBSYSTEM_DEF(teleporter)
     name = "Teleporter"
     wait = 5 SECONDS
     init_order =     SS_INIT_TELEPORTER
@@ -13,9 +11,6 @@ var/global/datum/subsystem/teleporter/teleporter_ss
 
     var/teleporters_by_id // Associative list of teleporters by ID, master list of teleporters to process
     var/teleporters       // Process list (identical contents to teleporters_by_id)
-
-/datum/subsystem/teleporter/New()
-    NEW_SS_GLOBAL(SSTeleporter)
 
 // teleporter ID:
 //Corsat_Teleporter
@@ -38,3 +33,4 @@ var/global/datum/subsystem/teleporter/teleporter_ss
 
     teleporters_by_id[teleporter_id] = teleporter
     teleporters += teleporter
+    return ..()

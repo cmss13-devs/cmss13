@@ -1,7 +1,4 @@
-var/datum/subsystem/clues/SSclues
-
-
-/datum/subsystem/clues
+SUBSYSTEM_DEF(clues)
 	name          = "Clues"
 	wait          = 10 SECONDS
 	flags         = SS_NO_INIT | SS_KEEP_TIMING
@@ -9,9 +6,6 @@ var/datum/subsystem/clues/SSclues
 
 	var/list/currentrun = list()
 	var/list/prints_list = list()
-
-/datum/subsystem/clues/New()
-	NEW_SS_GLOBAL(SSclues)
 
 /datum/subsystem/clues/stat_entry()
 	..("P:[prints_list.len]")

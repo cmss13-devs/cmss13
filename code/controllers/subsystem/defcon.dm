@@ -1,26 +1,15 @@
-var/datum/subsystem/defcon/SSdefcon
-
-/datum/subsystem/defcon
+SUBSYSTEM_DEF(defcon)
 	name		= "DEFCON"
 	wait		= 5.5 SECONDS
 	init_order = SS_INIT_DEFCON
 	priority = SS_PRIORITY_DEFCON
 	flags     = SS_NO_TICK_CHECK | SS_DISABLE_FOR_TESTING
 
-/datum/subsystem/defcon/New()
-	..()
-	NEW_SS_GLOBAL(SSdefcon)
-	if(!defcon_controller)
-		defcon_controller = new /datum/controller/defcon()
-	SSdefcon = src
-
 /datum/subsystem/defcon/Initialize(start_timeofday)
 	//text2file("DEFCON initialization started","data/defcon_log.txt")
 	if(!defcon_controller)
 		defcon_controller = new /datum/controller/defcon()
-	var/time = (world.timeofday - start_timeofday) / 10
-	var/msg = "Initialized [name] subsystem within [time] seconds!"
-	to_world("[SPAN_DANGER(msg)]")
+	return ..()
 
 /datum/subsystem/defcon/fire()
 

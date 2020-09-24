@@ -1,14 +1,12 @@
-var/datum/subsystem/chat/SSchat
-
 #define MAX_DEQUEUE 10 // dequeue no more than this amount of messages, to prevent noone getting a message due to high load
 
 /datum/chat_item
 	var/target
 	var/message
 
-/datum/subsystem/chat
+SUBSYSTEM_DEF(chat)
 	name = "Chat"
-	flags = SS_FIRE_IN_LOBBY | SS_POST_FIRE_TIMING
+	flags = SS_FIRE_IN_LOBBY | SS_POST_FIRE_TIMING | SS_NO_INIT
 	wait = 2
 	priority = SS_PRIORITY_CHAT
 	init_order = SS_INIT_CHAT
@@ -16,10 +14,6 @@ var/datum/subsystem/chat/SSchat
 	var/list/processQueue = list()
 	var/list/processQueue_current = list()
 	var/list/chatQueue = list()
-
-
-/datum/subsystem/chat/New()
-	NEW_SS_GLOBAL(SSchat)
 
 /datum/subsystem/chat/stat_entry()
 	..("P:[processQueue.len]; C:[processQueue_current.len]")

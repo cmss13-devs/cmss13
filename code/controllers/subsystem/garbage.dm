@@ -4,16 +4,13 @@
 //#define GC_DEBUG
 //#define GC_FINDREF
 
-
-var/datum/subsystem/garbage/SSgarbage
-
-/datum/subsystem/garbage
+SUBSYSTEM_DEF(garbage)
 	name          = "Garbage"
 	init_order    = SS_INIT_GARBAGE
 	wait          = 5 SECONDS
 	display_order = SS_DISPLAY_GARBAGE
 	priority      = SS_PRIORITY_GARBAGE
-	flags         = SS_BACKGROUND | SS_NO_TICK_CHECK | SS_FIRE_IN_LOBBY
+	flags         = SS_BACKGROUND | SS_NO_TICK_CHECK | SS_FIRE_IN_LOBBY | SS_NO_INIT
 
 	var/list/queue = new
 	var/force_hard_deletion = FALSE
@@ -22,10 +19,6 @@ var/datum/subsystem/garbage/SSgarbage
 	var/list/hard_del_profiling = list()
 
 	var/can_hard_del = FALSE
-
-
-/datum/subsystem/garbage/New()
-	NEW_SS_GLOBAL(SSgarbage)
 
 
 /datum/subsystem/garbage/stat_entry()

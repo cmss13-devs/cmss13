@@ -1,15 +1,11 @@
-var/datum/subsystem/landmark_init/SSlandmark_init
 var/list/shuttle_landmarks = list()
 var/list/teleporter_landmarks = list()
 var/list/item_pool_landmarks = list()
 
-/datum/subsystem/landmark_init
+SUBSYSTEM_DEF(landmark_init)
 	name       = "Landmark Init"
 	init_order = SS_INIT_LANDMARK
 	flags      = SS_NO_FIRE
-
-/datum/subsystem/landmark_init/New()
-	NEW_SS_GLOBAL(SSlandmark_init)
 
 /datum/subsystem/landmark_init/Initialize()
 	for(var/obj/effect/landmark/shuttle_loc/L in shuttle_landmarks)
@@ -75,7 +71,7 @@ var/list/item_pool_landmarks = list()
 			newly_spawned.loc = T
 			pool.turfs -= T
 	
-	..()
+	return ..()
 
 // Java bean thingy to hold what I need to populate these
 /datum/item_pool_holder

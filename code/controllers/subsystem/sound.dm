@@ -1,20 +1,11 @@
-var/datum/subsystem/sound/SSsound
-
-/*
-	Subsystem that handles sound queueing
-*/
-
-/datum/subsystem/sound
+SUBSYSTEM_DEF(sound)
 	name          = "Sound"
-	flags 		  = SS_FIRE_IN_LOBBY | SS_POST_FIRE_TIMING
+	flags 		  = SS_FIRE_IN_LOBBY | SS_POST_FIRE_TIMING | SS_NO_INIT
 	wait		  = 2
 	priority      = SS_PRIORITY_SOUND
 
 	var/list/template_queue = list()
 	var/list/currentrun = list()
-
-/datum/subsystem/sound/New()
-	NEW_SS_GLOBAL(SSsound)
 
 /datum/subsystem/sound/fire(resumed = FALSE)
 	for(var/datum/sound_template/i in template_queue)

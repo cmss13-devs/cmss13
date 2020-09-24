@@ -4,11 +4,12 @@
 	maps 
 
 */
-/datum/subsystem/soundscape
+SUBSYSTEM_DEF(soundscape)
 	name = "Soundscape"
 	wait = 1 SECOND
 	priority = SS_PRIORITY_SOUNDSCAPE
 	var/list/currentrun = list()
+	flags = SS_NO_INIT
 
 /datum/subsystem/soundscape/fire(resumed = FALSE)
 	if(!resumed)

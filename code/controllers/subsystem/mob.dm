@@ -1,7 +1,4 @@
-var/datum/subsystem/mob/SSmob
-
-
-/datum/subsystem/mob
+SUBSYSTEM_DEF(mob)
 	name          = "Misc Mobs"
 	wait          = 2 SECONDS
 	flags         = SS_NO_INIT | SS_KEEP_TIMING | SS_DISABLE_FOR_TESTING
@@ -9,11 +6,6 @@ var/datum/subsystem/mob/SSmob
 	display_order = SS_DISPLAY_MOB
 
 	var/list/currentrun = list()
-
-
-/datum/subsystem/mob/New()
-	NEW_SS_GLOBAL(SSmob)
-
 
 /datum/subsystem/mob/stat_entry()
 	..("P:[living_misc_mobs.len]")

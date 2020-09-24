@@ -2,9 +2,7 @@
 #define BUCKET_POS(timer) (round((timer.time_to_run - SStimer.head_offset) / world.tick_lag) + 1)
 #define TIMER_ID_MAX (2**24) //max float with integer precision
 
-var/datum/subsystem/timer/SStimer
-
-/datum/subsystem/timer
+SUBSYSTEM_DEF(timer)
 	name          = "Timer"
 	wait          = SS_INIT_TIMER
 	flags         = SS_NO_INIT | SS_TICKER
@@ -34,9 +32,6 @@ var/datum/subsystem/timer/SStimer
 
 	var/static/times_flushed = 0
 	var/static/times_crashed = 0
-
-/datum/subsystem/timer/New()
-	NEW_SS_GLOBAL(SStimer)
 
 
 /datum/subsystem/timer/stat_entry()

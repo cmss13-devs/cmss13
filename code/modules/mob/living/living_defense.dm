@@ -153,7 +153,7 @@
 	if(!src.client)
 		return
 	
-	if(!SSWeather)
+	if(!SSweather)
 		return
 
 	// Do this always
@@ -161,16 +161,16 @@
 	remove_weather_effects()	
 
 	// Check if we're supposed to be something affected by weather
-	if(SSWeather.is_weather_event && SSWeather.weather_event_instance && SSWeather.weather_affects_check(src))
+	if(SSweather.is_weather_event && SSweather.weather_event_instance && SSweather.weather_affects_check(src))
 		// Ok, we're affected by weather.
 
 		// Fullscreens
-		if(SSWeather.weather_event_instance.fullscreen_type)
-			overlay_fullscreen("weather", SSWeather.weather_event_instance.fullscreen_type)
+		if(SSweather.weather_event_instance.fullscreen_type)
+			overlay_fullscreen("weather", SSweather.weather_event_instance.fullscreen_type)
 		else
 			clear_fullscreen("weather")
 
 		// Effects
-		if(SSWeather.weather_event_instance.effect_type)
-			new SSWeather.weather_event_instance.effect_type(src)
+		if(SSweather.weather_event_instance.effect_type)
+			new SSweather.weather_event_instance.effect_type(src)
 		

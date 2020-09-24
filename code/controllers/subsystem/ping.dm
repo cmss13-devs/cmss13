@@ -1,15 +1,10 @@
-var/datum/subsystem/ping/SSping
-
-/datum/subsystem/ping
+SUBSYSTEM_DEF(ping)
 	name = "Ping"
 	priority = SS_PRIORITY_PING
 	wait = 3 SECONDS
 	flags = SS_NO_INIT | SS_FIRE_IN_LOBBY | SS_DISABLE_FOR_TESTING
 
 	var/list/currentrun = list()
-
-/datum/subsystem/ping/New()
-	NEW_SS_GLOBAL(SSping)
 
 /datum/subsystem/ping/stat_entry()
 	..("P:[clients.len]")

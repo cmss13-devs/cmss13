@@ -1,10 +1,8 @@
-var/datum/subsystem/midi/SSmidi
-
 /datum/midi_record
 	var/target
 	var/midi
 
-/datum/subsystem/midi
+SUBSYSTEM_DEF(midi)
 	name     = "Midi"
 	wait     = 2 SECONDS
 	flags    = SS_NO_INIT|SS_BACKGROUND|SS_FIRE_IN_LOBBY|SS_DISABLE_FOR_TESTING
@@ -13,10 +11,6 @@ var/datum/subsystem/midi/SSmidi
 	var/list/datum/midi_record/prepped_midis = list()
 
 	var/list/datum/midi_record/currentrun = list()
-
-
-/datum/subsystem/midi/New()
-	NEW_SS_GLOBAL(SSmidi)
 
 
 /datum/subsystem/midi/stat_entry()

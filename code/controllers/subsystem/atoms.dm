@@ -3,9 +3,7 @@
 #define BAD_INIT_SLEPT 4
 #define BAD_INIT_NO_HINT 8
 
-var/datum/subsystem/atoms/SSatoms
-
-/datum/subsystem/atoms
+SUBSYSTEM_DEF(atoms)
 	name = "Atoms"
 	init_order = SS_INIT_ATOMS
 	flags = SS_NO_FIRE
@@ -15,9 +13,6 @@ var/datum/subsystem/atoms/SSatoms
 
 	var/list/atoms_loaded_late
 	var/list/initialize_gone_wrong = list()
-
-/datum/subsystem/atoms/New()
-	NEW_SS_GLOBAL(SSatoms)
 
 /datum/subsystem/atoms/stat_entry()
 	..("B:[initialize_gone_wrong.len]")

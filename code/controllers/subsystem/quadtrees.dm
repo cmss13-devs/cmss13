@@ -12,13 +12,13 @@ SUBSYSTEM_DEF(quadtree)
     cur_quadtrees = new/list(world.maxz)
     new_quadtrees = new/list(world.maxz)
     var/datum/shape/rectangle/R
-    for(var/i in 1 to cur_quadtrees.len)
+    for(var/i in 1 to length(cur_quadtrees))
         R = RECT(world.maxx/2,world.maxy/2, world.maxx, world.maxy)
         new_quadtrees[i] = QTREE(R, qtree_capacity, i)
     return ..()
 
 /datum/subsystem/quadtree/stat_entry()
-	..("QT:[cur_quadtrees.len]")
+	..("QT:[length(cur_quadtrees)]")
 
 /datum/subsystem/quadtree/fire(resumed = FALSE)
     if(!resumed)
@@ -29,7 +29,7 @@ SUBSYSTEM_DEF(quadtree)
         for(var/i in 1 to world.maxz)
             new_quadtrees[i] = QTREE(RECT(world.maxx/2,world.maxy/2, world.maxx, world.maxy), qtree_capacity, i)
 
-    while(player_feed.len)
+    while(length(player_feed))
         var/mob/M = player_feed[player_feed.len]
         player_feed.len--
         for(var/datum/quadtree/Q in new_quadtrees)

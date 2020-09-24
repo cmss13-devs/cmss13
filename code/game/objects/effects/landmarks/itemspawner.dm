@@ -1,18 +1,8 @@
-
-
-
-
-
-
-
-
-
 //Costume spawner landmarks
-
-/obj/effect/landmark/costume/Initialize() //costume spawner, selects a random subclass and disappears
+/obj/effect/landmark/costume/random/Initialize() //costume spawner, selects a random subclass and disappears
 	. = ..()
-	var/list/options = typesof(/obj/effect/landmark/costume)
-	var/PICK= options[rand(1,options.len)]
+	var/list/options = typesof(/obj/effect/landmark/costume) - /obj/effect/landmark/costume/random
+	var/PICK = options[rand(1, options.len)]
 	new PICK(src.loc)
 	return INITIALIZE_HINT_QDEL
 

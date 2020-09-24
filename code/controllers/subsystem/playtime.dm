@@ -1,17 +1,10 @@
-var/datum/subsystem/playtime/SSplaytime
-
-
-/datum/subsystem/playtime
+SUBSYSTEM_DEF(playtime)
 	name = "Playtime"
 	wait = 1 MINUTES
 	priority = SS_PRIORITY_PLAYTIME
-	init_order = SS_INIT_PLAYTIME
 	flags = SS_NO_INIT | SS_KEEP_TIMING
 
 	var/list/currentrun = list()
-
-/datum/subsystem/playtime/New()
-	NEW_SS_GLOBAL(SSplaytime)
 
 /datum/subsystem/playtime/fire(resumed = FALSE)
 	if (!resumed)

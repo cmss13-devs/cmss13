@@ -1,7 +1,4 @@
-var/datum/subsystem/tracking/SStracking
-
-
-/datum/subsystem/tracking
+SUBSYSTEM_DEF(tracking)
 	name          = "Tracking"
 	wait          = 2 SECONDS
 	priority      = SS_PRIORITY_TRACKING
@@ -20,9 +17,9 @@ var/datum/subsystem/tracking/SStracking
 
 	var/list/currentrun = list()
 
-/datum/subsystem/tracking/New()
-	NEW_SS_GLOBAL(SStracking)
+/datum/subsystem/tracking/Initialize(start_timeofday)
 	initialize_trackers()
+	return ..()
 
 
 /datum/subsystem/tracking/stat_entry()

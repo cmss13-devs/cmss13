@@ -1,6 +1,4 @@
-var/datum/subsystem/law_init/SSlaw_init
-
-/datum/subsystem/law_init
+SUBSYSTEM_DEF(law_init)
 	name       = "Law Init"
 	init_order = SS_INIT_LAW
 	flags      = SS_NO_FIRE
@@ -10,9 +8,6 @@ var/datum/subsystem/law_init/SSlaw_init
 	var/list/minor_law = list()
 	var/list/major_law = list()
 	var/list/capital_law = list()
-
-/datum/subsystem/law_init/New()
-	NEW_SS_GLOBAL(SSlaw_init)
 
 /datum/subsystem/law_init/Initialize()
 	for(var/L in subtypesof(/datum/law/optional_law))
@@ -28,3 +23,5 @@ var/datum/subsystem/law_init/SSlaw_init
 		capital_law += new L
 
 	laws = optional_law + minor_law + major_law + capital_law
+	
+	return ..()

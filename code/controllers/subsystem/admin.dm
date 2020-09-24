@@ -1,15 +1,10 @@
-var/datum/subsystem/admin/SSadmin
-
-/datum/subsystem/admin
+SUBSYSTEM_DEF(admin)
 	name          = "Admin"
 	wait          = SS_WAIT_ADMIN
 	flags		  = SS_FIRE_IN_LOBBY | SS_NO_INIT | SS_KEEP_TIMING
 
 	var/list/currentrun = list()
 	var/times_repeated = 0
-
-/datum/subsystem/admin/New()
-	NEW_SS_GLOBAL(SSadmin)
 
 /datum/subsystem/admin/stat_entry()
 	..("P:[unansweredAhelps.len]")

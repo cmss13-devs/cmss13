@@ -1,7 +1,4 @@
-var/datum/subsystem/ticker/SSticker
-
-
-/datum/subsystem/ticker
+SUBSYSTEM_DEF(ticker)
 	name          = "Ticker"
 	init_order    = SS_INIT_TICKER
 	wait          = 2 SECONDS
@@ -11,11 +8,6 @@ var/datum/subsystem/ticker/SSticker
 
 	var/lastTickerTimeDuration
 	var/lastTickerTime
-
-
-/datum/subsystem/ticker/New()
-	NEW_SS_GLOBAL(SSticker)
-
 
 /datum/subsystem/ticker/Initialize(timeofday)
 	lastTickerTime = world.timeofday
@@ -27,7 +19,7 @@ var/datum/subsystem/ticker/SSticker
 		if (ticker)
 			ticker.pregame()
 
-	..()
+	return ..()
 
 
 /datum/subsystem/ticker/fire(resumed = FALSE)

@@ -1,8 +1,6 @@
-var/datum/subsystem/item_cleanup/SSitem_cleanup
-
 var/global/list/item_cleanup_list = list()
 
-/datum/subsystem/item_cleanup
+SUBSYSTEM_DEF(item_cleanup)
 	name = "Item Cleanup"
 	wait = MINUTES_10 //should be adjusted for WO
 	var/start_processing_time = MINUTES_35 //should be adjusted for WO
@@ -12,11 +10,7 @@ var/global/list/item_cleanup_list = list()
 	//Each iteration we move items from the global list into here
 	//And delete them during the next iteration
 	var/list/items_to_clean_up = list()
-
-/datum/subsystem/item_cleanup/New()
-	..()
-	NEW_SS_GLOBAL(SSitem_cleanup)
-	SSitem_cleanup = src
+	flags = SS_NO_INIT
 
 /datum/subsystem/item_cleanup/fire()
 	set background = 1

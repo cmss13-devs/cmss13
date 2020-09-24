@@ -1,5 +1,3 @@
-var/datum/subsystem/decorator/SSdecorator
-
 // our atom declaration should not be hardcoded for this SS existance.
 // if this subsystem is deleted, stuff still works
 // That's why we define this here
@@ -7,27 +5,19 @@ var/datum/subsystem/decorator/SSdecorator
 	if(SSdecorator && SSdecorator.registered_decorators[type])
 		SSdecorator.decorate(src)
 
-/datum/subsystem/decorator
+SUBSYSTEM_DEF(decorator)
 	name          = "Decorator"
 	init_order    = SS_INIT_DECORATOR
 	display_order = SS_DISPLAY_DECORATOR
 	priority      = SS_PRIORITY_DECORATOR
-	flags		  = SS_FIRE_IN_LOBBY
+	flags		  = SS_NO_FIRE
 
 	can_fire = FALSE
 
 	var/list/currentrun = list()
-	var/list/decoratable
-	var/list/registered_decorators
-	var/list/datum/decorator/active_decorators
-
-
-/datum/subsystem/decorator/New()
-	decoratable = list()
-	registered_decorators = list()
-	active_decorators = list()
-
-	NEW_SS_GLOBAL(SSdecorator)
+	var/list/decoratable = list()
+	var/list/registered_decorators = list()
+	var/list/datum/decorator/active_decorators = list()
 
 /datum/subsystem/decorator/Initialize()	
 	var/list/all_decors = typesof(/datum/decorator) - list(/datum/decorator) - typesof(/datum/decorator/manual)
@@ -50,7 +40,7 @@ var/datum/subsystem/decorator/SSdecorator
 	for(var/atom/object in world)
 		object.Decorate()
 		CHECK_TICK
-	..()
+	return ..()
 
 /datum/subsystem/decorator/proc/add_decorator(decor_type, ...)
 	var/list/arguments = list()

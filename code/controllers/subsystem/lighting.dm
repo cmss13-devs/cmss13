@@ -1,7 +1,4 @@
-var/datum/subsystem/lighting/SSlighting
-
-
-/datum/subsystem/lighting
+SUBSYSTEM_DEF(lighting)
 	name          = "Lighting"
 	init_order    = SS_INIT_LIGHTING
 	display_order = SS_DISPLAY_LIGHTING
@@ -15,9 +12,6 @@ var/datum/subsystem/lighting/SSlighting
 	var/list/turf/changed_turfs_current = list()
 	var/list/turf/changed_turfs = list()
 
-
-/datum/subsystem/lighting/New()
-	NEW_SS_GLOBAL(SSlighting)
 
 /datum/subsystem/lighting/stat_entry()
 	..("L:[lights.len]; T:[changed_turfs.len]")
@@ -39,7 +33,7 @@ var/datum/subsystem/lighting/SSlighting
 		if(istype(thing))
 			thing.shift_to_subarea()
 
-	..()
+	return ..()
 
 
 /datum/subsystem/lighting/fire(resumed = FALSE)

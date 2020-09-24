@@ -1,16 +1,12 @@
-var/datum/subsystem/stamina/SSstamina
-
 var/global/list/active_staminas = list()
 
-/datum/subsystem/stamina
+SUBSYSTEM_DEF(stamina)
 	name     = "Stamina"
 	wait     = 2 SECONDS
 	priority = SS_PRIORITY_STAMINA
-
+	flags = SS_NO_INIT
 	var/list/currentrun = list()
 
-/datum/subsystem/stamina/New()
-	NEW_SS_GLOBAL(SSstamina)
 
 /datum/subsystem/stamina/fire(resumed = FALSE)
 	if (!resumed)

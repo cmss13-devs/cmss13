@@ -76,3 +76,13 @@
 #define TIMER_HANGS_WARNING			600
 
 #define TIMER_ID_NULL				-1
+
+/// Standard typed BYOND global, do not use
+#define GLOBAL_REAL(X, Typepath) var/global##Typepath/##X
+
+#define SUBSYSTEM_DEF(X) GLOBAL_REAL(SS##X, /datum/subsystem/##X);\
+/datum/subsystem/##X/New(){\
+    NEW_SS_GLOBAL(SS##X);\
+    PreInit();\
+}\
+/datum/subsystem/##X

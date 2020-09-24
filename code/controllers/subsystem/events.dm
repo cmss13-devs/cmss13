@@ -3,9 +3,7 @@
 #define MAXIMUM_POP_FOR_EXTRA_DELAY 140
 #define MINIMUM_POP_FOR_EXTRA_DELAY 80
 
-var/datum/subsystem/event/SSevents
-
-/datum/subsystem/event
+SUBSYSTEM_DEF(events)
 	name     = "Events"
 	wait     = MINUTES_1
 	flags	 = SS_NO_INIT
@@ -24,13 +22,10 @@ var/datum/subsystem/event/SSevents
 	var/extra_delay_based_on_pop = 0
 	var/last_event_time = 0
 
-/datum/subsystem/event/New()
-	NEW_SS_GLOBAL(SSevents)
-
-/datum/subsystem/event/stat_entry()
+/datum/subsystem/events/stat_entry()
 	..("C:[events_run]")
 
-/datum/subsystem/event/Initialize()
+/datum/subsystem/events/Initialize()
 	LAZYINITLIST(events_list)
 
 	var/count = 1
@@ -44,8 +39,10 @@ var/datum/subsystem/event/SSevents
 		ready_to_run = TRUE
 
 	start_time = world.time
+	
+	return ..()
 
-/datum/subsystem/event/fire(resumed = FALSE)
+/datum/subsystem/events/fire(resumed = FALSE)
 	if(((start_time + PREPTIME_BEFORE_EVENTS) > world.time || (last_event_time + delay_between_each_event + extra_delay_based_on_pop) > world.time) && !forced)
 		return
 
@@ -75,4 +72,3 @@ var/datum/subsystem/event/SSevents
 			E.activate()
 			break
 
-	

@@ -36,8 +36,14 @@
 	// The object used for the clickable stat() button.
 	var/obj/effect/statclick/statclick
 
+//Do not override
+///datum/controller/subsystem/New()
+
 // Used to initialize the subsystem BEFORE the map has loaded
-/datum/subsystem/New()
+// Called AFTER Recover if that is called
+// Prefer to use Initialize if possible
+/datum/subsystem/proc/PreInit()
+	return
 
 //cleanup actions
 /datum/subsystem/proc/Shutdown()

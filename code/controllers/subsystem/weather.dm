@@ -1,8 +1,6 @@
-var/datum/subsystem/weather/SSWeather
-
 var/list/weather_notify_objects = list()
 
-/datum/subsystem/weather
+SUBSYSTEM_DEF(weather)
 	name          = "Weather"
 	wait          = 5 SECONDS
 	priority      = SS_PRIORITY_LIGHTING
@@ -32,9 +30,6 @@ var/list/weather_notify_objects = list()
 	// If applicable, INSTANCE of weather_event_type
 	// Holds necessary data for the current weather event
 	var/datum/weather_event/weather_event_instance
-
-/datum/subsystem/weather/New()
-	NEW_SS_GLOBAL(SSWeather)
 
 /datum/subsystem/weather/Initialize(start_timeofday)
 	// Set up our map delegate datum for supported maps

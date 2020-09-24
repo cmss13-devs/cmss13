@@ -1,6 +1,4 @@
-var/datum/subsystem/quadtree/SSquadtree
-
-/datum/subsystem/quadtree
+SUBSYSTEM_DEF(quadtree)
     name = "Quadtree"
     wait = 0.5 SECONDS 
     priority = SS_PRIORITY_QUADTREE
@@ -10,17 +8,14 @@ var/datum/subsystem/quadtree/SSquadtree
     var/list/player_feed
     var/qtree_capacity = QUADTREE_CAPACITY
 
-/datum/subsystem/quadtree/New()
-    NEW_SS_GLOBAL(SSquadtree)
+/datum/subsystem/quadtree/Initialize()
     cur_quadtrees = new/list(world.maxz)
     new_quadtrees = new/list(world.maxz)
-
-/datum/subsystem/quadtree/Initialize()
     var/datum/shape/rectangle/R
     for(var/i in 1 to cur_quadtrees.len)
         R = RECT(world.maxx/2,world.maxy/2, world.maxx, world.maxy)
         new_quadtrees[i] = QTREE(R, qtree_capacity, i)
-    ..()
+    return ..()
 
 /datum/subsystem/quadtree/stat_entry()
 	..("QT:[cur_quadtrees.len]")

@@ -1,8 +1,6 @@
-var/datum/subsystem/perf_logging/SSperf_logging
-
 #define PERF_LOGGING_WAIT	600
 
-/datum/subsystem/perf_logging
+SUBSYSTEM_DEF(perf_logging)
 	name = "Perf Logging"
 	wait = PERF_LOGGING_WAIT
 	flags = SS_BACKGROUND | SS_FIRE_IN_LOBBY | SS_DISABLE_FOR_TESTING
@@ -14,12 +12,11 @@ var/datum/subsystem/perf_logging/SSperf_logging
 	var/datum/entity/mc_round/round
 	var/list/datum/entity/mc_controller/controller_assoc
 
-/datum/subsystem/perf_logging/New()
-	NEW_SS_GLOBAL(SSperf_logging)
 
 /datum/subsystem/perf_logging/Initialize()
 	if(!round)
 		INVOKE_ASYNC(src, /datum/subsystem/perf_logging.proc/true_initialize)
+	return ..()
 
 
 /datum/subsystem/perf_logging/proc/true_initialize()

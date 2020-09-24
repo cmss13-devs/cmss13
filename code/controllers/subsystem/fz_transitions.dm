@@ -1,10 +1,8 @@
-var/datum/subsystem/fz_transitions/SSfz_transitions
-
 var/list/projectors = list()
 var/list/clones = list()
 var/list/clones_t = list()
 
-/datum/subsystem/fz_transitions
+SUBSYSTEM_DEF(fz_transitions)
 	name			= "Z-Transitions"
 	wait			= SS_WAIT_FZ_TRANSITIONS
 	display_order	= SS_DISPLAY_FZ_TRANSITIONS
@@ -12,15 +10,13 @@ var/list/clones_t = list()
 	init_order		= SS_INIT_FZ_TRANSITIONS
 	flags     		= SS_KEEP_TIMING
 
-/datum/subsystem/fz_transitions/New()
-	NEW_SS_GLOBAL(SSfz_transitions)
-
 /datum/subsystem/fz_transitions/stat_entry()
 	..("P:[projectors.len]|C:[clones.len]|T:[clones_t.len]")
 
 /datum/subsystem/fz_transitions/Initialize()
 	for(var/obj/effect/projector/P in world)
 		projectors.Add(P)
+	return ..()
 
 /datum/subsystem/fz_transitions/fire(resumed = FALSE)
 	for(var/obj/effect/projector/P in projectors)

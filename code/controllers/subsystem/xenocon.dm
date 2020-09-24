@@ -1,16 +1,9 @@
-var/datum/subsystem/inactivity/SSxenocon
-
-/datum/subsystem/xenocon
+SUBSYSTEM_DEF(xenocon)
 	name = "XENOCON"
 	wait = 5 SECONDS
 	priority = SS_PRIORITY_INACTIVITY
-	
+	flags = SS_NO_INIT
 	var/rewarded = FALSE
-
-/datum/subsystem/xenocon/New()
-	. = ..()
-	NEW_SS_GLOBAL(SSxenocon)
-	SSxenocon = src
 
 /datum/subsystem/xenocon/fire(resumed = FALSE)
 	if(rewarded)

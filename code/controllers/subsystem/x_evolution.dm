@@ -1,10 +1,8 @@
-var/datum/subsystem/xevolution/SSxevolution
-
 #define BOOST_POWER_MAX 20
 #define BOOST_POWER_MIN 1
 #define EVOLUTION_INCREMENT_TIME MINUTES_30 // Evolution increases by 1 every 25 minutes.
 
-/datum/subsystem/xevolution
+SUBSYSTEM_DEF(xevolution)
 	name = "Evilution"
 	wait = 1 MINUTES
 	priority = SS_PRIORITY_INACTIVITY
@@ -15,11 +13,11 @@ var/datum/subsystem/xevolution/SSxevolution
 	var/list/boost_power = list()
 	var/force_boost_power = FALSE // Debugging only
 
-/datum/subsystem/xevolution/New()
+/datum/subsystem/xevolution/Initialize(start_timeofday)
 	for(var/datum/hive_status/HS in hive_datum)
 		boost_power += HS.hivenumber
 		boost_power[HS.hivenumber] = 1
-	NEW_SS_GLOBAL(SSxevolution)
+	return ..()
 
 /datum/subsystem/xevolution/fire(resumed = FALSE)
 	for(var/datum/hive_status/HS in hive_datum)

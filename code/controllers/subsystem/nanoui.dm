@@ -1,18 +1,10 @@
-var/datum/subsystem/nano/SSnano
-
-
-/datum/subsystem/nano
+SUBSYSTEM_DEF(nano)
 	name     = "Nano UI"
 	flags    = SS_NO_INIT | SS_FIRE_IN_LOBBY
 	wait     = 2 SECONDS
 	priority = SS_PRIORITY_NANOUI
 
 	var/list/currentrun = list()
-
-
-/datum/subsystem/nano/New()
-	NEW_SS_GLOBAL(SSnano)
-
 
 /datum/subsystem/nano/stat_entry()
 	..("P:[nanomanager.processing_uis.len]")

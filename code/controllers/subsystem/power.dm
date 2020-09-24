@@ -1,8 +1,6 @@
-var/datum/subsystem/power/SSpower
-
 var/list/power_machines = list()
 
-/datum/subsystem/power
+SUBSYSTEM_DEF(power)
 	name          = "Power"
 	init_order    = SS_INIT_POWER
 	display_order = SS_DISPLAY_POWER
@@ -15,18 +13,13 @@ var/list/power_machines = list()
 	var/list/currentrun_power_machines = list()
 	var/list/currentrun_areas = list()
 
-
-/datum/subsystem/power/New()
-	NEW_SS_GLOBAL(SSpower)
-
-
 /datum/subsystem/power/stat_entry()
 	..("PN:[powernets.len]|PM:[power_machines.len]|A:[active_areas.len]")
 
 
 /datum/subsystem/power/Initialize(timeofday)
 	makepowernets()
-	..()
+	return ..()
 
 
 /datum/subsystem/power/fire(resumed = FALSE)

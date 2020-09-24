@@ -1,17 +1,12 @@
-var/datum/subsystem/cellauto/SScellauto
-
 var/list/cellauto_cells = list()
 
-/datum/subsystem/cellauto
+SUBSYSTEM_DEF(cellauto)
 	name     = "Cellular Automata"
 	wait     = SS_WAIT_CELLAUTO
 	priority = SS_PRIORITY_CELLAUTO
 	flags    = SS_NO_INIT
 
 	var/list/currentrun = list()
-
-/datum/subsystem/cellauto/New()
-	NEW_SS_GLOBAL(SScellauto)
 
 /datum/subsystem/cellauto/stat_entry()
 	..("C: [cellauto_cells.len]")

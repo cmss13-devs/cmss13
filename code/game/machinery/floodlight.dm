@@ -15,14 +15,14 @@
 	unslashable = TRUE
 	unacidable = TRUE
 
-	New()
-		..()
-		spawn(1)
-			cell = new /obj/item/cell(src)
+/obj/structure/machinery/floodlight/New()
+	..()
+	spawn(1)
+		cell = new /obj/item/cell(src)
 
-	Dispose()
-		SetLuminosity(0)
-		. = ..()
+/obj/structure/machinery/floodlight/Destroy()
+	SetLuminosity(0)
+	return ..()
 
 /obj/structure/machinery/floodlight/proc/updateicon()
 	icon_state = "flood[open ? "o" : ""][open && cell ? "b" : ""]0[on]"

@@ -98,7 +98,7 @@ var/const/INGEST = 2
 		if(i==0)
 			paths = typesof(/datum/chemical_reaction/generated) - /datum/chemical_reaction/generated //Generated chemicals should be initialized last
 
-/datum/reagents/Dispose()
+/datum/reagents/Destroy()
 	. = ..()
 	for(var/datum/reagent/R in reagent_list)
 		R.holder = null

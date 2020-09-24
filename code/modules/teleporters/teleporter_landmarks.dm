@@ -22,7 +22,7 @@
     teleporter_landmarks += src
     ..()
 
-/obj/effect/landmark/teleporter_loc/Dispose()
+/obj/effect/landmark/teleporter_loc/Destroy()
 	teleporter_landmarks -= src
 	. = ..()
 

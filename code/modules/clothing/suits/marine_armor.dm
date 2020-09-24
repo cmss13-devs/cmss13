@@ -178,7 +178,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 		return 1
 	return 0
 
-/obj/item/clothing/suit/storage/marine/Dispose()
+/obj/item/clothing/suit/storage/marine/Destroy()
 	if(ismob(src.loc))
 		src.loc.SetLuminosity(-brightness_on)
 	else

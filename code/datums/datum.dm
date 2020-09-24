@@ -7,7 +7,7 @@
  * Like Del(), but for qdel.
  * Called BEFORE qdel moves shit.
  */
-/datum/proc/Dispose()
+/datum/proc/Destroy(force=FALSE, ...)
 	// For the Timer subsystem.
 	var/list/timers = active_timers
 	active_timers = null

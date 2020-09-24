@@ -88,7 +88,7 @@
 	
 	LAZYADD(objects_of_interest, src)
 
-/obj/item/device/healthanalyzer/golden/Dispose()
+/obj/item/device/healthanalyzer/golden/Destroy()
 	. = ..()
 	
 	LAZYREMOVE(objects_of_interest, src)
@@ -105,7 +105,7 @@
 	
 	LAZYADD(objects_of_interest, src)
 
-/obj/item/folded_medical_sheet/Dispose()
+/obj/item/folded_medical_sheet/Destroy()
 	. = ..()
 	
 	LAZYREMOVE(objects_of_interest, src)
@@ -122,7 +122,7 @@
 	
 	LAZYADD(objects_of_interest, src)
 
-/obj/item/tally_book/Dispose()
+/obj/item/tally_book/Destroy()
 	. = ..()
 	
 	LAZYREMOVE(objects_of_interest, src)
@@ -139,7 +139,7 @@
 	
 	LAZYADD(objects_of_interest, src)
 	
-/obj/item/golden_cup/Dispose()
+/obj/item/golden_cup/Destroy()
 	. = ..()
 	
 	LAZYREMOVE(objects_of_interest, src)

@@ -23,7 +23,7 @@
 	if(action_icon_state)
 		button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
 
-/datum/action/Dispose()
+/datum/action/Destroy()
 	if(owner)
 		remove_action(owner)
 	qdel(button)
@@ -77,7 +77,7 @@
 	name = "Use [target]"
 	button.name = name
 
-/datum/action/item_action/Dispose()
+/datum/action/item_action/Destroy()
 	holder_item.actions -= src
 	holder_item = null
 	..()

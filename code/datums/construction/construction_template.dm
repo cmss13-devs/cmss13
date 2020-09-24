@@ -20,7 +20,7 @@
     var/materials_required = list() //Example resource requirements i.e. MATERIAL_METAL = 1
     var/extras_required = list() //Example extra requirements i.e. /obj/item = 1
 
-/datum/construction_template/Dispose()
+/datum/construction_template/Destroy()
     owner = null
     build_loc = null
     ..()

@@ -46,10 +46,10 @@
 		icon_state = "implant_melted"
 		malfunction = MALFUNCTION_PERMANENT
 
-	Dispose()
-		if(part)
-			part.implants.Remove(src)
-		. = ..()
+/obj/item/implant/Destroy()
+	if(part)
+		part.implants.Remove(src)
+	return ..()
 
 /obj/item/implant/tracking
 	name = "tracking implant"

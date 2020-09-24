@@ -58,7 +58,7 @@
 		else
 			to_chat(user, SPAN_WARNING("The bracer clamps painfully around your forearm and beeps angrily. It won't come off!"))
 
-/obj/item/clothing/gloves/yautja/Dispose()
+/obj/item/clothing/gloves/yautja/Destroy()
 	processing_objects.Remove(src)
 	remove_from_missing_pred_gear(src)
 	..()

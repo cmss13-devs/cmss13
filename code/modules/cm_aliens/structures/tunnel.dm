@@ -42,7 +42,7 @@
 		hive.tunnels += src
 
 
-/obj/structure/tunnel/Dispose()
+/obj/structure/tunnel/Destroy()
 	if(hive)
 		hive.tunnels -= src
 

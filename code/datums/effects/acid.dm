@@ -60,7 +60,7 @@
 	
 	return TRUE
 
-/datum/effects/acid/Dispose()
+/datum/effects/acid/Destroy()
 	if(affected_atom)
 		affected_atom.effects_list -= src
 	

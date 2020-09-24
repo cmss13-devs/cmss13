@@ -204,7 +204,7 @@
 	var/obj/item/storage/large_holster/fuelpack/fuelpack
 	starting_attachment_types = list(/obj/item/attachable/attached_gun/extinguisher/pyro)
 
-/obj/item/weapon/gun/flamer/M240T/Dispose()
+/obj/item/weapon/gun/flamer/M240T/Destroy()
 	if(fuelpack)
 		if(fuelpack.linked_flamer == src)
 			fuelpack.linked_flamer = null
@@ -427,7 +427,7 @@
 			var/mob/SM = weapon_source_mob
 			SM.track_shot_hit(weapon_source)
 
-/obj/flamer_fire/Dispose()
+/obj/flamer_fire/Destroy()
 	SetLuminosity(0)
 	processing_objects.Remove(src)
 	. = ..()

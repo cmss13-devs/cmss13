@@ -42,7 +42,7 @@
 
 	exterior = E
 
-/datum/interior/Dispose()
+/datum/interior/Destroy()
 	exterior = null
 
 	interior_manager.unload_chunk(chunk_id)

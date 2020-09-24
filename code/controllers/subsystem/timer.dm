@@ -313,7 +313,7 @@ var/datum/subsystem/timer/SStimer
 	next.prev = src
 	prev.next = src
 
-/datum/timed_event/Dispose()
+/datum/timed_event/Destroy()
 	..()
 	cleanup_timer()
 

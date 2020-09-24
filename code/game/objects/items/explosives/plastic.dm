@@ -19,7 +19,7 @@
 	var/overlay_image = "plastic-explosive2"
 	var/image/overlay
 
-/obj/item/explosive/plastic/Dispose()
+/obj/item/explosive/plastic/Destroy()
 	disarm()
 	. = ..()
 

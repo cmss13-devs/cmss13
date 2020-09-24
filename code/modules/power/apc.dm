@@ -158,7 +158,7 @@
 	pixel_x = (tdir & 3) ? 0 : (tdir == 4 ? 24 : -24)
 	pixel_y = (tdir & 3) ? (tdir == 1 ? 24 : -24) : 0
 
-/obj/structure/machinery/power/apc/Dispose()
+/obj/structure/machinery/power/apc/Destroy()
 	if(terminal)
 		terminal.master = null
 		terminal = null
@@ -1231,7 +1231,7 @@
 					L.broken()
 					sleep(1)
 
-/obj/structure/machinery/power/apc/Dispose()
+/obj/structure/machinery/power/apc/Destroy()
 	area.power_light = 0
 	area.power_equip = 0
 	area.power_environ = 0

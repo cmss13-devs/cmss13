@@ -49,9 +49,9 @@
 		playsound(user, 'sound/weapons/Genhit.ogg', 25, 1)
 
 	//Remove lightsource
-	Dispose()
-		SetLuminosity(0)
-		. = ..()
+/obj/item/lightstick/Destroy()
+	SetLuminosity(0)
+	return ..()
 
 //Red
 /obj/item/lightstick/red

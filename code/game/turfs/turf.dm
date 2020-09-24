@@ -47,7 +47,7 @@
 
 	levelupdate()
 
-/turf/Dispose()
+/turf/Destroy()
 	. = ..()
 
 	stop_processing()

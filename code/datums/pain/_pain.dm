@@ -271,7 +271,7 @@
 	pain_slowdown = PAIN_SPEED_VERYSLOW
 	new /datum/effects/pain/human/horrible(source_mob)
 
-/datum/pain/Dispose()
+/datum/pain/Destroy()
 	. = ..()
 	
 	source_mob = null

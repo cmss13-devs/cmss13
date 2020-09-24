@@ -82,7 +82,7 @@
 	
 	return information
 
-/obj/effect/decal/prints/Dispose()
+/obj/effect/decal/prints/Destroy()
 	SSclues.prints_list -= src
 
 	. = ..()	

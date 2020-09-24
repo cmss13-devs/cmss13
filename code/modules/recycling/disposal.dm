@@ -298,7 +298,7 @@
 			qdel(src)
 			return
 
-/obj/structure/machinery/disposal/Dispose()
+/obj/structure/machinery/disposal/Destroy()
 	if(contents.len)
 		eject()
 	. = ..()
@@ -450,7 +450,7 @@
 
 	var/partialTag = "" //Set by a partial tagger the first time round, then put in destinationTag if it goes through again.
 
-/obj/structure/disposalholder/Dispose()
+/obj/structure/disposalholder/Destroy()
 		active = 0
 		. = ..()
 
@@ -612,7 +612,7 @@
 
 //Pipe is deleted
 //Ensure if holder is present, it is expelled
-/obj/structure/disposalpipe/Dispose()
+/obj/structure/disposalpipe/Destroy()
 	var/obj/structure/disposalholder/H = locate() in src
 	if(H)
 		//Holder was present

@@ -6,7 +6,7 @@
 	if(handled_by_master_subsystem)
 		effect_list += src
 
-/obj/effect/Dispose()
+/obj/effect/Destroy()
 	. = ..()
 	if(handled_by_master_subsystem)
 		effect_list -= src

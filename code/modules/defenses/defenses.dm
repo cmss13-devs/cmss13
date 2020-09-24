@@ -246,7 +246,7 @@
 /obj/structure/machinery/defenses/power_change()
 	return
 
-/obj/structure/machinery/defenses/Dispose()
+/obj/structure/machinery/defenses/Destroy()
 	if(owner_mob)
 		owner_mob = null
 

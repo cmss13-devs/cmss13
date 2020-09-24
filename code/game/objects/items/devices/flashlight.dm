@@ -22,7 +22,7 @@
 	else
 		icon_state = initial(icon_state)
 
-/obj/item/device/flashlight/Dispose()
+/obj/item/device/flashlight/Destroy()
 	if(on)
 		if(ismob(src.loc))
 			src.loc.SetLuminosity(-brightness_on)
@@ -219,7 +219,7 @@
 	fuel = rand(800, 1000) // Sorry for changing this so much but I keep under-estimating how long X number of ticks last in seconds.
 	..()
 
-/obj/item/device/flashlight/flare/Dispose()
+/obj/item/device/flashlight/flare/Destroy()
 	processing_objects -= src
 	..()
 
@@ -368,7 +368,7 @@
 		return
 	..()
 
-/obj/item/device/flashlight/flare/signal/Dispose()
+/obj/item/device/flashlight/flare/signal/Destroy()
 	if(signal)
 		cas_groups[faction].remove_signal(signal)
 		qdel(signal)

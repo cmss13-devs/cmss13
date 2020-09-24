@@ -126,7 +126,7 @@
 		if(!isnull(predetermined_skill_level))
 			S.set_skill(predetermined_skill_level, owner)
 
-/datum/skills/Dispose()
+/datum/skills/Destroy()
 	owner = null
 
 	for(var/datum/skill/S in skills)

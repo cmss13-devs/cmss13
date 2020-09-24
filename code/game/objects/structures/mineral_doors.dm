@@ -169,7 +169,7 @@
 	hardness = 3
 	luminosity = 2
 
-/obj/structure/mineral_door/uranium/Dispose()
+/obj/structure/mineral_door/uranium/Destroy()
 	SetLuminosity(0)
 	. = ..()
 

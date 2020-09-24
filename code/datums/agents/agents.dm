@@ -103,7 +103,7 @@ Giving objectives to an agent:
 
 	transmission.give_action(source_human)
 
-/datum/agent/Dispose()
+/datum/agent/Destroy()
 	. = ..()
 	
 	source_human.agent_holder = null

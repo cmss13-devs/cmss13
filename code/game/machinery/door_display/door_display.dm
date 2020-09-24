@@ -200,7 +200,7 @@
 		for(var/turf/closed/wall/almayer/research/containment/wall/divide/W in orange(src, 8))
 			targets += W
 
-/obj/structure/machinery/door_display/research_cell/Dispose()
+/obj/structure/machinery/door_display/research_cell/Destroy()
 	//Opening doors and shutters
 	ion_act()
 	..()

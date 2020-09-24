@@ -146,7 +146,7 @@ var/global/list/faction_phoron_stored_list = list(
 /obj/structure/machinery/collector/power_change()
 	return
 
-/obj/structure/machinery/collector/Dispose()
+/obj/structure/machinery/collector/Destroy()
 	marine_collectors -= src
 	RN = null
 

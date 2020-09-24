@@ -119,7 +119,7 @@
 	if(w_class <= SIZE_MEDIUM) //pulling small items doesn't slow you down much
 		drag_delay = 1
 
-/obj/item/Dispose()
+/obj/item/Destroy()
 	flags_item &= ~DELONDROP //to avoid infinite loop of unequip, delete, unequip, delete.
 	flags_item &= ~NODROP //so the item is properly unequipped if on a mob.
 	for(var/X in actions)
@@ -640,7 +640,7 @@ cases. Override_icon_state should be a list.*/
 	zooming_item = _zooming_item
 	calee = _calee
 
-/datum/event_handler/event_gun_zoom/Dispose()
+/datum/event_handler/event_gun_zoom/Destroy()
 	if(zooming_item)
 		zooming_item.zoom_event_handler = null
 		zooming_item = null

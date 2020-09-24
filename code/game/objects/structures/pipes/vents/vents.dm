@@ -119,7 +119,7 @@
 		new /obj/item/pipe(loc, make_from = src)
 		qdel(src)
 
-/obj/structure/pipes/vents/Dispose()
+/obj/structure/pipes/vents/Destroy()
 	if(initial_loc)
 		initial_loc.air_vent_info -= id_tag
 		initial_loc.air_vent_names -= id_tag

@@ -91,6 +91,6 @@ var/list/item_pool_landmarks = list()
 	src.pool_name = pool_name
 	turfs = list()
 
-/datum/item_pool_holder/Dispose()
+/datum/item_pool_holder/Destroy()
 	turfs = null
 	. = ..()

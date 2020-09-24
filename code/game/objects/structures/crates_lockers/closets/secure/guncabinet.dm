@@ -21,7 +21,7 @@
 	gun_cabinets += src
 	update_icon()
 
-/obj/structure/closet/secure_closet/guncabinet/Dispose()
+/obj/structure/closet/secure_closet/guncabinet/Destroy()
 	gun_cabinets -= src
 	..()
 

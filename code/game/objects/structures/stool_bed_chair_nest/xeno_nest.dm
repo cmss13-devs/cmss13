@@ -245,7 +245,7 @@
 /obj/structure/bed/nest/flamer_fire_act()
 	qdel(src)
 
-/obj/structure/bed/nest/Dispose()
+/obj/structure/bed/nest/Destroy()
 	unbuckle()
 	
 	. = ..()
@@ -271,7 +271,7 @@
 		linked_structure = to_link
 		health = linked_structure.health
 
-/obj/structure/bed/nest/structure/Dispose()
+/obj/structure/bed/nest/structure/Destroy()
 	. = ..()
 	if(linked_structure)
 		linked_structure.pred_nest = null

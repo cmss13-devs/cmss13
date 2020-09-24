@@ -11,22 +11,22 @@
 	idle_power_usage = 0
 	var/obj/item/device/radio/beacon/Beacon
 
-	New()
-		..()
-		var/turf/T = loc
-		Beacon = new /obj/item/device/radio/beacon
-		Beacon.invisibility = INVISIBILITY_MAXIMUM
-		Beacon.loc = T
+/obj/structure/machinery/bluespace_beacon/New()
+	..()
+	var/turf/T = loc
+	Beacon = new /obj/item/device/radio/beacon
+	Beacon.invisibility = INVISIBILITY_MAXIMUM
+	Beacon.loc = T
 
-		hide(T.intact_tile)
+	hide(T.intact_tile)
 
-	Dispose()
-		if(Beacon)
-			qdel(Beacon)
-			Beacon = null
-		. = ..()
+/obj/structure/machinery/bluespace_beacon/Destroy()
+	if(Beacon)
+		qdel(Beacon)
+		Beacon = null
+	return ..()
 
-
+/obj/structure/machinery/bluespace_beacon
 	// update the invisibility and icon
 	hide(var/intact)
 		invisibility = intact ? 101 : 0

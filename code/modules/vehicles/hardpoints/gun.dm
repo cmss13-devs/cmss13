@@ -36,7 +36,7 @@
 	var/const_mz_offset_x = 0
 	var/const_mz_offset_y = 0
 
-/obj/item/hardpoint/gun/Dispose()
+/obj/item/hardpoint/gun/Destroy()
 	for(var/obj/O in backup_clips)
 		qdel(O)
 	backup_clips = null

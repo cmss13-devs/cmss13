@@ -115,7 +115,7 @@
     else
         . = ..()
 
-/obj/item/device/portable_vendor/antag/Dispose()
+/obj/item/device/portable_vendor/antag/Destroy()
     . = ..()
     if(linked_agent)
         linked_agent.tools = null

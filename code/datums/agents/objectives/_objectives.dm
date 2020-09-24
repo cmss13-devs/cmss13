@@ -89,7 +89,7 @@ Objective message,
 
 	return FALSE
 
-/datum/agent_objective/Dispose()
+/datum/agent_objective/Destroy()
 	. = ..()
 	
 	if(belonging_to_agent)
@@ -151,7 +151,7 @@ Objective message,
 	to_chat(user, SPAN_DANGER("This looks too important to burn!"))
 	return
 
-/obj/item/paper/antag/Dispose()
+/obj/item/paper/antag/Destroy()
 	. = ..()
 	
 	if(objective)

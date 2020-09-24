@@ -17,7 +17,7 @@
 	var/amount = 5
 	var/drying_blood = TRUE //whether the blood will dry
 
-/obj/effect/decal/cleanable/blood/Dispose()
+/obj/effect/decal/cleanable/blood/Destroy()
 	for(var/datum/disease/D in viruses)
 		D.cure(0)
 	..()

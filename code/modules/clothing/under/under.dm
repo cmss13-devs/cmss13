@@ -52,7 +52,7 @@
 		cuttable_sleeves = TRUE	
 	..()
 
-/obj/item/clothing/Dispose()
+/obj/item/clothing/Destroy()
 	if(accessories && accessories.len)
 		for(var/obj/I in accessories)
 			qdel(I)

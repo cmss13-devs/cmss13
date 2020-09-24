@@ -15,7 +15,7 @@
     linked_consoles = list()
     time_last_used = 0
 
-/datum/teleporter/Dispose()
+/datum/teleporter/Destroy()
 	for(var/obj/structure/machinery/computer/teleporter_console/T in linked_consoles)
 		T.linked_teleporter = null
 	linked_consoles = null

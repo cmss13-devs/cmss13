@@ -146,7 +146,7 @@
 		light = new(src)
 
 //Objects with opacity will trigger nearby lights to update at next lighting process.
-/atom/movable/Dispose()
+/atom/movable/Destroy()
 	if(opacity)
 		if(isturf(loc))
 			if(loc:lighting_lumcount > 1)

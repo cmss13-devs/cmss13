@@ -55,7 +55,7 @@ var/global/list/obj/structure/machinery/telecomms/telecomms_list = list()
 	..()
 	add_tcomm_machine()
 
-/obj/structure/machinery/telecomms/Dispose()
+/obj/structure/machinery/telecomms/Destroy()
 	telecomms_list -= src
 	remove_tcomm_machine()
 	. = ..()

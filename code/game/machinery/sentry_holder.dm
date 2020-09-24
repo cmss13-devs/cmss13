@@ -98,7 +98,7 @@
 	pixel_y = oy
 	icon_state = "sentry_system_installed"
 
-/obj/structure/machinery/sentry_holder/Dispose()
+/obj/structure/machinery/sentry_holder/Destroy()
 	if(deployed_turret)
 		qdel(deployed_turret)
 		deployed_turret = null

@@ -8,7 +8,7 @@
 	// List of held hardpoints
 	var/list/hardpoints
 
-/obj/item/hardpoint/holder/Dispose()
+/obj/item/hardpoint/holder/Destroy()
 	if(LAZYLEN(hardpoints))
 		for(var/obj/item/hardpoint/H in hardpoints)
 			qdel(H)

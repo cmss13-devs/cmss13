@@ -9,7 +9,7 @@
     var/selected_source             // Populated w/ the nanoUI-selected source location
     var/selected_destination        // selected destination location
 
-/obj/structure/machinery/computer/teleporter_console/Dispose()
+/obj/structure/machinery/computer/teleporter_console/Destroy()
 	linked_teleporter = null
 	. = ..()
 

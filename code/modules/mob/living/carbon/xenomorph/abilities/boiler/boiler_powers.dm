@@ -227,7 +227,7 @@
 	src.X = X
 	add_timer(CALLBACK(src, .proc/cancel_effect, src), duration)
 
-/datum/event_handler/boiler_acid_onmovement/Dispose()
+/datum/event_handler/boiler_acid_onmovement/Destroy()
 	X = null
 	. = ..()
 	return

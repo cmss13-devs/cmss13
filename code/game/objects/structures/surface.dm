@@ -15,7 +15,7 @@
 	attach_all()
 	update_icon()
 
-/obj/structure/surface/Dispose()
+/obj/structure/surface/Destroy()
 	detach_all()
 	. = ..()
 

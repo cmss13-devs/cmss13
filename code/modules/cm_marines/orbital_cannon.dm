@@ -267,7 +267,7 @@ var/list/ob_type_fuel_requirements
 	var/fuel_amt = 0
 
 
-/obj/structure/orbital_tray/Dispose()
+/obj/structure/orbital_tray/Destroy()
 	if(warhead)
 		qdel(warhead)
 		warhead = null

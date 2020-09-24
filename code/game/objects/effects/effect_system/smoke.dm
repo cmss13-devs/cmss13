@@ -33,7 +33,7 @@
 	time_to_live += rand(-1,1)
 	active_smoke_effects += src	
 
-/obj/effect/particle_effect/smoke/Dispose()
+/obj/effect/particle_effect/smoke/Destroy()
 	. = ..()
 	if(opacity)
 		SetOpacity(0)
@@ -467,7 +467,7 @@
 	var/source = null
 	var/source_mob = null
 
-/datum/effect_system/smoke_spread/Dispose()
+/datum/effect_system/smoke_spread/Destroy()
 	source = null
 	source_mob = null
 	. = ..()

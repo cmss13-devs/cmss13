@@ -22,7 +22,7 @@
 	if(garbage)
 		add_to_garbage(src)
 
-/obj/Dispose()
+/obj/Destroy()
 	if(buckled_mob) 
 		unbuckle()
 	. = ..()

@@ -20,7 +20,7 @@
 		src.icon_state = "[src.icon_state]"
 		src.base_state = src.icon_state
 
-/obj/structure/machinery/door/window/Dispose()
+/obj/structure/machinery/door/window/Destroy()
 	density = 0
 	playsound(src, "shatter", 50, 1)
 	. = ..()

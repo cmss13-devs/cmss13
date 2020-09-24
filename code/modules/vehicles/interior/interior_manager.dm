@@ -45,7 +45,7 @@ var/global/datum/interior_manager/interior_manager = new
 
 	interiors = new /list(total_chunk_ids)
 
-/datum/interior_manager/Dispose()
+/datum/interior_manager/Destroy()
 	for(var/datum/interior/I in interiors)
 		if(!I.disposed)
 			qdel(I)

@@ -190,7 +190,7 @@
 	processing_objects.Add(src)
 	update_overlays()
 
-/obj/item/device/portable_vendor/Dispose()
+/obj/item/device/portable_vendor/Destroy()
 	processing_objects.Remove(src)
 	. = ..()
 

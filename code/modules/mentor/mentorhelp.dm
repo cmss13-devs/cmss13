@@ -30,7 +30,7 @@
 	author = thread_author
 	author_key = thread_author.key
 
-/datum/mentorhelp/Dispose()
+/datum/mentorhelp/Destroy()
 	author = null
 	mentor = null
 	history = null

@@ -114,7 +114,7 @@
 /obj/item/weapon/melee/twohanded/offhand/wield()
 	qdel(src) //This shouldn't even happen.
 
-/obj/item/weapon/melee/twohanded/offhand/Dispose()
+/obj/item/weapon/melee/twohanded/offhand/Destroy()
 	..()
 	return GC_HINT_RECYCLE //So we can recycle this garbage.
 
@@ -266,7 +266,7 @@
 	unacidable = TRUE
 	attack_speed = 12 //Default is 7.
 
-/obj/item/weapon/melee/twohanded/glaive/Dispose()
+/obj/item/weapon/melee/twohanded/glaive/Destroy()
 	remove_from_missing_pred_gear(src)
 	..()
 

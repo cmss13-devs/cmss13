@@ -51,7 +51,7 @@
 	for(var/datum/event_handler/hdl in handlers)
 		remove_handler(hdl)
 
-/datum/event/Dispose()
+/datum/event/Destroy()
 	clean()
 	. = ..()
 

@@ -23,7 +23,7 @@
 	initialize_stamina()
 
 
-/mob/living/Dispose()
+/mob/living/Destroy()
 	pipes_shown = null
 
 	if(attack_icon)

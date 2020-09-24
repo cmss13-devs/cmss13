@@ -101,18 +101,18 @@ var/list/obj/structure/machinery/newscaster/allCasters = list() //Global list th
 	name = "Security Newscaster"
 	securityCaster = 1
 
-	New()         //Constructor, ho~
-		allCasters += src
-		src.paper_remaining = 15            // Will probably change this to something better
-		for(var/obj/structure/machinery/newscaster/NEWSCASTER in allCasters) // Let's give it an appropriate unit number
-			src.unit_no++
-		src.update_icon() //for any custom ones on the map...
-		..()                                //I just realised the newscasters weren't in the global machines list. The superconstructor call will tend to that
+/obj/structure/machinery/newscaster/security_unit/New()         //Constructor, ho~
+	allCasters += src
+	src.paper_remaining = 15            // Will probably change this to something better
+	for(var/obj/structure/machinery/newscaster/NEWSCASTER in allCasters) // Let's give it an appropriate unit number
+		src.unit_no++
+	src.update_icon() //for any custom ones on the map...
+	..()                                //I just realised the newscasters weren't in the global machines list. The superconstructor call will tend to that
 
-	Dispose()
-		allCasters -= src
-		SetLuminosity(0)
-		. = ..()
+/obj/structure/machinery/newscaster/security_unit/Destroy()
+	allCasters -= src
+	SetLuminosity(0)
+	return ..()
 
 /obj/structure/machinery/newscaster/update_icon()
 	if(!ispowered || isbroken)

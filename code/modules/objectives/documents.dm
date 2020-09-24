@@ -83,7 +83,7 @@
 	label = "[pick(alphabet_uppercase)][rand(100,999)]"
 	objective = new objective_type(src)
 
-/obj/item/document_objective/Dispose()
+/obj/item/document_objective/Destroy()
 	if(objective)
 		objective.fail()
 	..()

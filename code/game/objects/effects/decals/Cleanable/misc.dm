@@ -58,7 +58,7 @@
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "greenglow"
 
-/obj/effect/decal/cleanable/greenglow/Dispose()
+/obj/effect/decal/cleanable/greenglow/Destroy()
 	SetLuminosity(0)
 	. = ..()
 
@@ -102,10 +102,10 @@
 	random_icon_states = list("vomit_1", "vomit_2", "vomit_3", "vomit_4")
 	var/list/viruses = list()
 
-	Dispose()
-		for(var/datum/disease/D in viruses)
-			D.cure(0)
-		. = ..()
+/obj/effect/decal/cleanable/vomit/Destroy()
+	for(var/datum/disease/D in viruses)
+		D.cure(0)
+	return ..()
 
 /obj/effect/decal/cleanable/vomit/ex_act()
 	return

@@ -268,7 +268,7 @@
 
 	return removed_organ
 
-/datum/internal_organ/Dispose()
+/datum/internal_organ/Destroy()
 	owner = null
 	organ_holder = null
 

@@ -20,7 +20,7 @@
 	if(objectives_controller)
 		objectives_controller.add_objective(src)
 
-/datum/cm_objective/Dispose()
+/datum/cm_objective/Destroy()
 	cm_objectives -= src
 	if(objectives_controller)
 		objectives_controller.remove_objective(src)

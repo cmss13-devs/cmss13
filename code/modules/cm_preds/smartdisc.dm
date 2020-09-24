@@ -19,7 +19,7 @@
 	if(!isYautja(loc))
 		add_to_missing_pred_gear(src)
 
-/obj/item/explosive/grenade/spawnergrenade/smartdisc/Dispose()
+/obj/item/explosive/grenade/spawnergrenade/smartdisc/Destroy()
 	remove_from_missing_pred_gear(src)
 	..()
 

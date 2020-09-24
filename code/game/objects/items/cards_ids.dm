@@ -82,7 +82,7 @@
 	var/pinned_on_uniform = TRUE //whether the id's onmob overlay only appear when wearing a uniform
 
 
-/obj/item/card/id/Dispose()
+/obj/item/card/id/Destroy()
 	. = ..()
 	screen_loc = null
 

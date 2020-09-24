@@ -187,21 +187,21 @@
 	var/obj/structure/machinery/door/poddoor/filler_object/f1
 	var/obj/structure/machinery/door/poddoor/filler_object/f2
 
-	Initialize()
-		..()
-		f1 = new/obj/structure/machinery/door/poddoor/filler_object (loc)
-		f2 = new/obj/structure/machinery/door/poddoor/filler_object (get_step(src,dir))
-		f1.density = density
-		f2.density = density
-		f1.SetOpacity(opacity)
-		f2.SetOpacity(opacity)
+/obj/structure/machinery/door/poddoor/two_tile/Initialize()
+	. = ..()
+	f1 = new/obj/structure/machinery/door/poddoor/filler_object (loc)
+	f2 = new/obj/structure/machinery/door/poddoor/filler_object (get_step(src,dir))
+	f1.density = density
+	f2.density = density
+	f1.SetOpacity(opacity)
+	f2.SetOpacity(opacity)
 
-	Dispose()
-		qdel(f1)
-		f1 = null
-		qdel(f2)
-		f2 = null
-		. = ..()
+/obj/structure/machinery/door/poddoor/two_tile/Destroy()
+	qdel(f1)
+	f1 = null
+	qdel(f2)
+	f2 = null
+	return ..()
 
 /obj/structure/machinery/door/poddoor/two_tile/vertical
 	dir = NORTH
@@ -212,21 +212,21 @@
 	var/obj/structure/machinery/door/poddoor/filler_object/f3
 	var/obj/structure/machinery/door/poddoor/filler_object/f4
 
-	Initialize()
-		..()
-		f3 = new/obj/structure/machinery/door/poddoor/filler_object (get_step(f2,dir))
-		f4 = new/obj/structure/machinery/door/poddoor/filler_object (get_step(f3,dir))
-		f3.density = density
-		f4.density = density
-		f3.SetOpacity(opacity)
-		f4.SetOpacity(opacity)
+/obj/structure/machinery/door/poddoor/two_tile/four_tile/Initialize()
+	. = ..()
+	f3 = new/obj/structure/machinery/door/poddoor/filler_object (get_step(f2,dir))
+	f4 = new/obj/structure/machinery/door/poddoor/filler_object (get_step(f3,dir))
+	f3.density = density
+	f4.density = density
+	f3.SetOpacity(opacity)
+	f4.SetOpacity(opacity)
 
-	Dispose()
-		qdel(f3)
-		f3 = null
-		qdel(f4)
-		f4 = null
-		..()
+/obj/structure/machinery/door/poddoor/two_tile/four_tile/Destroy()
+	qdel(f3)
+	f3 = null
+	qdel(f4)
+	f4 = null
+	return ..()
 
 /obj/structure/machinery/door/poddoor/two_tile/four_tile/vertical
 	dir = NORTH

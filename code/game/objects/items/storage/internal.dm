@@ -136,7 +136,7 @@
 /obj/item/proc/on_pocket_removal()
 	return
 
-/obj/item/storage/internal/Dispose()
+/obj/item/storage/internal/Destroy()
 	. = ..()
 	master_item = null
 	

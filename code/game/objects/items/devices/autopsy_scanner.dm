@@ -19,7 +19,7 @@
 	
 	LAZYADD(objects_of_interest, src)
 
-/obj/item/device/autopsy_scanner/Dispose()
+/obj/item/device/autopsy_scanner/Destroy()
 	. = ..()
 	
 	LAZYREMOVE(objects_of_interest, src)

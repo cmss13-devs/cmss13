@@ -141,7 +141,7 @@
 		remove_from_missing_pred_gear(src)
 	..()
 
-/obj/item/clothing/suit/armor/yautja/Dispose()
+/obj/item/clothing/suit/armor/yautja/Destroy()
 	remove_from_missing_pred_gear(src)
 	..()
 
@@ -186,7 +186,7 @@
 		remove_from_missing_pred_gear(src)
 	..()
 
-/obj/item/clothing/cape/eldercape/Dispose()
+/obj/item/clothing/cape/eldercape/Destroy()
 	remove_from_missing_pred_gear(src)
 	..()
 
@@ -231,7 +231,7 @@
 		remove_from_missing_pred_gear(src)
 	..()
 
-/obj/item/clothing/shoes/yautja/Dispose()
+/obj/item/clothing/shoes/yautja/Destroy()
 	remove_from_missing_pred_gear(src)
 	..()
 
@@ -255,7 +255,7 @@
 	siemens_coefficient = 0.9
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
 
-/obj/item/clothing/under/chainshirt/Dispose()
+/obj/item/clothing/under/chainshirt/Destroy()
 	remove_from_missing_pred_gear(src)
 	..()
 
@@ -318,7 +318,7 @@
 	storage_slots = 10
 	max_storage_space = 30
 
-/obj/item/storage/backpack/yautja/Dispose()
+/obj/item/storage/backpack/yautja/Destroy()
 	remove_from_missing_pred_gear(src)
 	..()
 
@@ -345,7 +345,7 @@
 	unacidable = TRUE
 	var/timer = 0
 
-/obj/item/device/yautja_teleporter/Dispose()
+/obj/item/device/yautja_teleporter/Destroy()
 	remove_from_missing_pred_gear(src)
 	..()
 
@@ -491,7 +491,7 @@
 	attack_verb = list("sliced", "slashed", "jabbed", "torn", "gored")
 	force = config.hlmed_hit_damage
 
-/obj/item/weapon/wristblades/Dispose()
+/obj/item/weapon/wristblades/Destroy()
 	. = ..()
 	return GC_HINT_RECYCLE
 
@@ -582,7 +582,7 @@
 	force = config.med_hit_damage //More damage than other weapons like it. Considering how "strong" this sword is supposed to be, 38 damage was laughable.
 	throwforce = config.min_hit_damage
 
-/obj/item/weapon/melee/yautja_sword/Dispose()
+/obj/item/weapon/melee/yautja_sword/Destroy()
 	remove_from_missing_pred_gear(src)
 	..()
 
@@ -652,7 +652,7 @@
 	force = config.hmed_hit_damage
 	throwforce = config.mlow_hit_damage
 
-/obj/item/weapon/melee/yautja_scythe/Dispose()
+/obj/item/weapon/melee/yautja_scythe/Destroy()
 	remove_from_missing_pred_gear(src)
 	..()
 
@@ -706,7 +706,7 @@
 /obj/item/weapon/melee/combistick/IsShield()
 	return on
 
-/obj/item/weapon/melee/combistick/Dispose()
+/obj/item/weapon/melee/combistick/Destroy()
 	remove_from_missing_pred_gear(src)
 	..()
 

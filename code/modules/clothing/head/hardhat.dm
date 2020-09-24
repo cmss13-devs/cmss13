@@ -51,12 +51,12 @@
 			SetLuminosity(brightness_on)
 		..()
 
-	Dispose()
-		if(ismob(src.loc))
-			src.loc.SetLuminosity(-brightness_on)
-		else
-			SetLuminosity(0)
-		. = ..()
+/obj/item/clothing/head/hardhat/Destroy()
+	if(ismob(src.loc))
+		src.loc.SetLuminosity(-brightness_on)
+	else
+		SetLuminosity(0)
+	return ..()
 
 
 /obj/item/clothing/head/hardhat/orange

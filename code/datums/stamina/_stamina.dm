@@ -75,7 +75,7 @@
     var/datum/effects/stamina/S = new tier(source_mob)
     stamina_slowdown = S.slowdown
 
-/datum/stamina/Dispose()
+/datum/stamina/Destroy()
     . = ..()
     
     source_mob = null

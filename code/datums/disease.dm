@@ -190,7 +190,7 @@ var/list/diseases = typesof(/datum/disease) - /datum/disease
 	return new type(process)
 
 
-/datum/disease/Dispose()
+/datum/disease/Destroy()
 	affected_mob = null
 	holder = null
 	active_diseases -= src

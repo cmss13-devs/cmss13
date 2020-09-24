@@ -39,7 +39,7 @@
 /datum/effects/weather/process_obj()
 	return FALSE
 
-/datum/effects/weather/Dispose()
+/datum/effects/weather/Destroy()
 	if(affected_atom)
 		affected_atom.effects_list -= src
 	return ..()

@@ -41,7 +41,7 @@
 
 	birth()
 
-/datum/automata_cell/Dispose()
+/datum/automata_cell/Destroy()
 	. = ..()
 
 	if(!QDELETED(in_turf))

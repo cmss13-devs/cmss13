@@ -49,7 +49,7 @@
 		FE.linked_bell = src
 		tripwires_placed += FE
 
-/obj/structure/machinery/defenses/bell_tower/Dispose()
+/obj/structure/machinery/defenses/bell_tower/Destroy()
 	. = ..()
 
 	if(last_mob_activated)
@@ -73,7 +73,7 @@
 	if(faction)
 		src.faction = faction
 
-/obj/effect/bell_tripwire/Dispose()
+/obj/effect/bell_tripwire/Destroy()
 	if(linked_bell)
 		linked_bell.tripwires_placed -= src
 		linked_bell = null

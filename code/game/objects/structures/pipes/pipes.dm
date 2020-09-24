@@ -33,7 +33,7 @@
 	
 	search_for_connections()
 
-/obj/structure/pipes/Dispose()
+/obj/structure/pipes/Destroy()
 	for(var/mob/living/M in src)
 		M.remove_ventcrawl()
 		M.forceMove(loc)

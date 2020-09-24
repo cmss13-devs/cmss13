@@ -63,7 +63,7 @@
 		return
 	. = ..()
 
-/obj/item/clothing/accessory/storage/black_vest/acid_harness/Dispose()
+/obj/item/clothing/accessory/storage/black_vest/acid_harness/Destroy()
 	vial = null
 	battery = null
 	qdel(acid_core)

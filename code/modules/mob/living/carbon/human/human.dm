@@ -41,7 +41,7 @@
 /mob/living/carbon/human/initialize_pain()
 	pain = new /datum/pain/human(src)
 
-/mob/living/carbon/human/Dispose()
+/mob/living/carbon/human/Destroy()
 	if(assigned_squad)
 		SStracking.stop_tracking(assigned_squad.tracking_id, src)
 		var/n = assigned_squad.marines_list.Find(src)

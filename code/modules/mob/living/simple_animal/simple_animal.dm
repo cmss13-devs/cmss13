@@ -58,7 +58,7 @@
 	living_misc_mobs += src
 	verbs -= /mob/verb/observe
 
-/mob/living/simple_animal/Dispose()
+/mob/living/simple_animal/Destroy()
 	..()
 	living_misc_mobs -= src
 

@@ -180,7 +180,7 @@ bullets/shells. ~N
 	flags_magazine = AMMUNITION_HANDFUL
 	attack_speed = 3 // should make reloading less painful
 
-/obj/item/ammo_magazine/handful/Dispose()
+/obj/item/ammo_magazine/handful/Destroy()
 	..()
 	return GC_HINT_RECYCLE
 

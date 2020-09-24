@@ -150,7 +150,7 @@
 		return TRUE
 	return FALSE
 
-/obj/effect/alien/resin/special/pool/Dispose()
+/obj/effect/alien/resin/special/pool/Destroy()
 	linked_hive.spawn_pool = null
 	vis_contents.Cut()
 	if(melting_body)

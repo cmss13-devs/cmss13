@@ -2264,7 +2264,7 @@
 /obj/structure/pipes/standard/simple/visible{
 	dir = 4
 	},
-/obj/structure/window/framed/almayer/hull,
+/obj/structure/window/framed/almayer/hull/hijack_bustable,
 /turf/open/floor/plating,
 /area/almayer/engineering/airmix)
 "afZ" = (
@@ -4164,9 +4164,7 @@
 /turf/open/floor/almayer,
 /area/almayer/command/self_destruct)
 "akQ" = (
-/obj/structure/window/framed/almayer/hull{
-	name = "ultra-reinforced window"
-	},
+/obj/structure/window/framed/almayer/hull/hijack_bustable,
 /turf/open/floor/plating,
 /area/almayer/command/self_destruct)
 "akR" = (
@@ -9279,9 +9277,7 @@
 	},
 /area/almayer/medical/medical_science)
 "axo" = (
-/obj/structure/window/framed/almayer/hull{
-	name = "ultra-reinforced window"
-	},
+/obj/structure/window/framed/almayer/hull/hijack_bustable,
 /turf/open/floor/plating,
 /area/almayer/command/telecomms)
 "axp" = (
@@ -11402,9 +11398,7 @@
 	},
 /area/almayer/command/cic)
 "aCf" = (
-/obj/structure/window/framed/almayer/hull{
-	name = "ultra-reinforced window"
-	},
+/obj/structure/window/framed/almayer/hull/hijack_bustable,
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/machinery/door/poddoor/almayer{
 	density = 0;
@@ -16320,7 +16314,7 @@
 	id = "isolationchamber 1";
 	name = "\improper Isolation Chamber One"
 	},
-/obj/structure/window/framed/almayer/hull,
+/obj/structure/window/framed/almayer/hull/hijack_bustable,
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig_cells)
 "aTL" = (
@@ -16339,7 +16333,7 @@
 	id = "isolationchamber 2";
 	name = "\improper Isolation Chamber Two"
 	},
-/obj/structure/window/framed/almayer/hull,
+/obj/structure/window/framed/almayer/hull/hijack_bustable,
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig_cells)
 "aTQ" = (
@@ -17236,11 +17230,11 @@
 /area/almayer/living/bridgebunks)
 "aWY" = (
 /obj/structure/pipes/standard/simple/visible,
-/obj/structure/window/framed/almayer/hull,
+/obj/structure/window/framed/almayer/hull/hijack_bustable,
 /turf/open/floor/plating,
 /area/almayer/engineering/airmix)
 "aWZ" = (
-/obj/structure/window/framed/almayer/hull,
+/obj/structure/window/framed/almayer/hull/hijack_bustable,
 /obj/structure/pipes/standard/simple/visible,
 /turf/open/floor/plating,
 /area/almayer/engineering/airmix)
@@ -27597,9 +27591,7 @@
 	name = "\improper RO Line 1"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer,
-/obj/structure/window/framed/almayer/hull{
-	name = "ultra-reinforced window"
-	},
+/obj/structure/window/framed/almayer/hull/hijack_bustable,
 /turf/open/floor/plating,
 /area/almayer/squads/req)
 "bGp" = (
@@ -34568,9 +34560,7 @@
 	},
 /area/almayer/evacuation/pod5)
 "cck" = (
-/obj/structure/window/framed/almayer/hull{
-	name = "ultra-reinforced window"
-	},
+/obj/structure/window/framed/almayer/hull/hijack_bustable,
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
 	},
@@ -37637,7 +37627,7 @@
 	dir = 2;
 	tag = "icon-door_open"
 	},
-/obj/structure/window/framed/almayer/hull,
+/obj/structure/window/framed/almayer/hull/hijack_bustable,
 /turf/open/floor/plating,
 /area/almayer/engineering/engineering_workshop/hangar)
 "cmH" = (
@@ -38201,9 +38191,7 @@
 	id = "ROlobby2";
 	name = "\improper RO Line 2"
 	},
-/obj/structure/window/framed/almayer/hull{
-	name = "ultra-reinforced window"
-	},
+/obj/structure/window/framed/almayer/hull/hijack_bustable,
 /turf/open/floor/plating,
 /area/almayer/squads/req)
 "cpY" = (
@@ -40895,7 +40883,7 @@
 	},
 /area/almayer/shipboard/brig)
 "ffu" = (
-/obj/structure/window/framed/almayer/hull,
+/obj/structure/window/framed/almayer/hull/hijack_bustable,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	density = 0;
 	dir = 2;
@@ -41771,6 +41759,10 @@
 /obj/structure/machinery/brig_cell/cell_3,
 /turf/closed/wall/almayer,
 /area/almayer/shipboard/brig_cells)
+"ggQ" = (
+/obj/structure/window/framed/almayer/hull/hijack_bustable,
+/turf/open/floor/plating,
+/area/almayer/engineering/airmix)
 "gio" = (
 /obj/structure/closet/emcloset,
 /turf/open/floor/almayer{
@@ -47128,7 +47120,7 @@
 	},
 /area/almayer/squads/req)
 "mqU" = (
-/obj/structure/window/framed/almayer/hull,
+/obj/structure/window/framed/almayer/hull/hijack_bustable,
 /turf/open/floor/almayer{
 	icon_state = "redfull";
 	tag = "icon-redfull"
@@ -48037,7 +48029,7 @@
 	},
 /area/almayer/squads/req)
 "njy" = (
-/obj/structure/window/framed/almayer/hull,
+/obj/structure/window/framed/almayer/hull/hijack_bustable,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	density = 0;
 	dir = 2;
@@ -52439,7 +52431,7 @@
 /area/almayer/engineering/engineering_workshop/hangar)
 "siH" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
-/obj/structure/window/framed/almayer/hull,
+/obj/structure/window/framed/almayer/hull/hijack_bustable,
 /turf/open/floor/plating,
 /area/almayer/engineering/engineering_workshop/hangar)
 "sjN" = (
@@ -54348,7 +54340,7 @@
 	},
 /area/almayer/shipboard/chief_mp_office)
 "uku" = (
-/obj/structure/window/framed/almayer/hull,
+/obj/structure/window/framed/almayer/hull/hijack_bustable,
 /turf/open/floor/plating,
 /area/almayer/engineering/engineering_workshop/hangar)
 "ukW" = (
@@ -57250,9 +57242,7 @@
 	},
 /area/almayer/squads/req)
 "xBe" = (
-/obj/structure/window/framed/almayer/hull{
-	name = "ultra-reinforced window"
-	},
+/obj/structure/window/framed/almayer/hull/hijack_bustable,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "brigwindows";
 	name = "\improper Brig Windows"
@@ -97731,7 +97721,7 @@ aiC
 aEY
 aFR
 aGw
-afi
+ggQ
 afk
 afk
 aep
@@ -98340,7 +98330,7 @@ aiC
 aEY
 aFS
 aGz
-afi
+ggQ
 bLy
 bLy
 aep
@@ -99531,8 +99521,8 @@ aag
 aai
 aao
 aep
-afi
-afi
+ggQ
+ggQ
 afY
 aep
 aiB
@@ -99558,7 +99548,7 @@ aWf
 aiB
 aep
 afY
-afi
+ggQ
 afY
 aep
 aao
@@ -100142,7 +100132,7 @@ aap
 aep
 aep
 afY
-afi
+ggQ
 aep
 alJ
 aYj
@@ -107780,7 +107770,7 @@ aLf
 aVl
 ccx
 bBm
-afi
+ggQ
 afk
 afk
 dKL
@@ -108389,7 +108379,7 @@ cbG
 aVl
 byQ
 ccS
-afi
+ggQ
 bLy
 bLy
 dKL
@@ -109201,7 +109191,7 @@ aSm
 aVl
 ccC
 ccW
-afi
+ggQ
 afk
 bML
 dKL
@@ -109376,7 +109366,7 @@ aaa
 dKL
 afk
 afk
-afi
+ggQ
 bxI
 byR
 aVl

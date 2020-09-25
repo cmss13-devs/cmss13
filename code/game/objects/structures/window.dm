@@ -549,6 +549,8 @@
 	unacidable = TRUE
 	health = 1000000 //Failsafe, shouldn't matter
 
+/obj/structure/window/framed/almayer/hull/hijack_bustable //I exist to explode after hijack, that is all.
+
 /obj/structure/window/framed/almayer/white
 	icon_state = "white_rwindow0"
 	basestate = "white_rwindow"

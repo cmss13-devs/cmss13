@@ -517,7 +517,7 @@
 		sleep(3)
 
 	// Break the ultra-reinforced windows.
-	for(var/obj/structure/window/framed/almayer/hull/H in structure_list)
+	for(var/obj/structure/window/framed/almayer/hull/hijack_bustable/H in structure_list)
 		H.shatter_window(1)
 
 	// Break the briefing windows.

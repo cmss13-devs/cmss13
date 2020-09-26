@@ -662,7 +662,8 @@ keep_zoom - do we keep zoom during movement. be careful with setting this to 1
 /obj/item/var/zoom_event_handler
 
 /obj/item/proc/zoom(mob/living/user, tileoffset = 11, viewsize = 12, keep_zoom = 0) //tileoffset is client view offset in the direction the user is facing. viewsize is how far out this thing zooms. 7 is normal view
-	if(!user) return
+	if(!user)
+		return
 	var/zoom_device = zoomdevicename ? "\improper [zoomdevicename] of [src]" : "\improper [src]"
 
 	for(var/obj/item/I in user.contents)
@@ -697,6 +698,14 @@ keep_zoom - do we keep zoom during movement. be careful with setting this to 1
 		if(user.client)
 			user.client.change_view(viewsize)
 
+			if(zoom_event_handler)
+				qdel(zoom_event_handler)
+			zoom_event_handler = new /datum/event_handler/event_gun_zoom(src, user)
+			if(!keep_zoom)
+				user.add_movement_handler(zoom_event_handler)
+			add_dropped_handler(zoom_event_handler)
+			add_unwield_handler(zoom_event_handler)
+
 			var/tilesize = 32
 			var/viewoffset = tilesize * tileoffset
 
@@ -713,13 +722,6 @@ keep_zoom - do we keep zoom during movement. be careful with setting this to 1
 				if(WEST)
 					user.client.pixel_x = -viewoffset
 					user.client.pixel_y = 0
-			if(zoom_event_handler)
-				qdel(zoom_event_handler)
-			zoom_event_handler = new /datum/event_handler/event_gun_zoom(src, user)
-			if(!keep_zoom)
-				user.add_movement_handler(zoom_event_handler)
-			add_dropped_handler(zoom_event_handler)
-			add_unwield_handler(zoom_event_handler)
 
 		user.visible_message(SPAN_NOTICE("[user] peers through \the [zoom_device]."),
 		SPAN_NOTICE("You peer through \the [zoom_device]."))

@@ -1,0 +1,46 @@
+<style>
+    .playtime_table {
+        width: 100%;
+        margin-top: 5px;
+        background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+    }
+    .playtime_row {
+        width: 100%;
+        margin: 10px 0 0 0;
+
+        font-size: large;
+        text-align: center;
+        border: solid black 1px;
+    }
+</style>
+
+<div class="item">
+    {{:helper.link('Human', null, {'switchCategory' : 0}, data.category == 0 ? 'selected' : null)}}
+    {{:helper.link('Xenomorph', null, {'switchCategory' : 1}, data.category == 1 ? 'selected' : null)}}
+</div>
+
+<table class="playtime_table">
+<tr>
+    <th>Role</th>
+    <th>Playtime</th>
+</tr>
+
+{{if data.category == 0}}
+    {{:helper.USCMMode()}}
+    {{for data.stored_human_playtime}}
+        <tr class="playtime_row" style="background-color: {{:value.bgcolor}}"> 
+            <td style="color: {{:value.textcolor}}">{{:value.job}}</td>
+            <td style="color: {{:value.textcolor}}">{{:value.playtime}} HOURS</td>
+        </tr>
+    {{/for}}
+{{else data.category == 1}}
+    {{:helper.xenoMode()}}
+
+    {{for data.stored_xeno_playtime}}
+        <tr class="playtime_row" style="background-color: {{:value.bgcolor}}"> 
+            <td style="color: {{:value.textcolor}}">{{:value.job}}</td>
+            <td style="color: {{:value.textcolor}}">{{:value.playtime}} HOURS</td>
+        </tr>
+    {{/for}}
+{{/if}}
+</table>

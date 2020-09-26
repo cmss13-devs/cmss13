@@ -6,6 +6,11 @@
 
 #define HOURS *36000
 
+#define MINUTES_TO_DECISECOND *600
+#define MINUTES_TO_HOURS /60 
+
+#define DECISECONDS_TO_HOURS /36000
+
 #define SECONDS_1 		10
 #define SECONDS_2 		20
 #define SECONDS_3 		30

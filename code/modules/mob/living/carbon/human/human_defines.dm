@@ -142,3 +142,18 @@
 	var/datum/action/human_action/activable/selected_ability
 
 	var/datum/agent/agent_holder
+
+/client/var/cached_human_playtime
+
+/client/proc/get_total_human_playtime(var/skip_cache = FALSE)
+	if(cached_human_playtime && !skip_cache)
+		return cached_human_playtime
+
+	var/total_marine_playtime = 0
+
+	for(var/job in RoleAuthority.roles_by_name)
+		total_marine_playtime += get_job_playtime(src, job)
+
+	cached_human_playtime = total_marine_playtime
+
+	return total_marine_playtime

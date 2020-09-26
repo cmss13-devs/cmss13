@@ -216,6 +216,9 @@ Works together with spawning an observer, noted above.
 			ghost.client.soundOutput.status_flags = 0 //Clear all effects that would affect a living mob
 			ghost.client.soundOutput.apply_status()
 		
+		if(ghost.client.player_data)
+			ghost.client.player_data.load_timestat_data()
+		
 	ghost.set_huds_from_prefs()
 
 	return ghost
@@ -804,11 +807,11 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 /mob/dead/observer/verb/view_stats()
 	set category = "Ghost"
-	set name = "View Statistics"
-	set desc = "View global and player statistics tied to the game."
+	set name = "View Playtimes"
+	set desc = "View your playtimes."
 
 	if(client && client.player_entity)
-		client.player_entity.show_statistics(src, round_statistics)
+		client.player_data.ui_interact(src)
 
 /mob/dead/observer/verb/view_kill_feed()
 	set category = "Ghost"

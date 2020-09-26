@@ -125,10 +125,11 @@ var/global/list/JOB_COMMAND_ROLES_LIST  = list(JOB_CO, JOB_XO, JOB_SO)
 #define JOB_PREDATOR                    "Predator"
 #define JOB_XENOMORPH                   "Xenomorph"
 
-#define MATURE_THRESHOLD 		10 HOURS
-#define ELDER_THRESHOLD			25 HOURS
-#define ANCIENT_THRESHOLD		70 HOURS
-#define PRIME_THRESHOLD 	    175 HOURS
+// For colouring the ranks in the statistics menu
+#define JOB_PLAYTIME_TIER_1         (10 HOURS)
+#define JOB_PLAYTIME_TIER_2         (25 HOURS)
+#define JOB_PLAYTIME_TIER_3         (70 HOURS)
+#define JOB_PLAYTIME_TIER_4         (175 HOURS)
 
 #define XENO_NO_AGE     -1
 #define XENO_NORMAL		0

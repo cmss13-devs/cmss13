@@ -51,7 +51,7 @@
 	output +="<br><b>[xeno_text]</b>"
 	output += "<p><a href='byond://?src=\ref[src];lobby_choice=show_preferences'>Setup Character</A></p>"
 
-	output += "<p><a href='byond://?src=\ref[src];lobby_choice=show_statistics'>View Statistics</A></p>"
+	output += "<p><a href='byond://?src=\ref[src];lobby_choice=show_playtimes'>View Playtimes</A></p>"
 
 	if(round_start)
 		output += "<p>\[ [ready? "<b>Ready</b>":"<a href='byond://?src=\ref[src];lobby_choice=ready'>Ready</a>"] | [ready? "<a href='byond://?src=\ref[src];lobby_choice=unready'>Not Ready</a>":"<b>Not Ready</b>"] \]</p>"
@@ -101,10 +101,9 @@
 			client.prefs.ShowChoices(src)
 			return 1
 
-		if("show_statistics")
-			if(client.player_entity)
-				client.player_entity.menu = 1
-				client.player_entity.show_statistics(src, null)
+		if("show_playtimes")
+			if(client.player_data)
+				client.player_data.ui_interact(src)
 			return 1
 
 		if("ready")

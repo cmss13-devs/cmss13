@@ -6,13 +6,13 @@
 	var/hours_as_caste = get_job_playtime(client, caste.caste_name)
 
 	switch(hours_as_caste)
-		if(MATURE_THRESHOLD to ELDER_THRESHOLD)
+		if(JOB_PLAYTIME_TIER_1 to JOB_PLAYTIME_TIER_2)
 			age = XENO_MATURE
-		if(ELDER_THRESHOLD to ANCIENT_THRESHOLD)
+		if(JOB_PLAYTIME_TIER_2 to JOB_PLAYTIME_TIER_3)
 			age = XENO_ELDER
-		if(ANCIENT_THRESHOLD to PRIME_THRESHOLD)
+		if(JOB_PLAYTIME_TIER_3 to JOB_PLAYTIME_TIER_4)
 			age = XENO_ANCIENT
-		if(PRIME_THRESHOLD to INFINITY)
+		if(JOB_PLAYTIME_TIER_4 to INFINITY)
 			age = XENO_PRIME
 
 	// For people who wish to remain anonymous

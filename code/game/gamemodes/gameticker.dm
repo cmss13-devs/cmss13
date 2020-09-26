@@ -226,8 +226,6 @@ var/global/datum/controller/gameticker/ticker = new()
 
 		spawn(1)
 			declare_completion()
-			calculate_end_statistics()
-			show_end_statistics()
 
 		spawn(50)
 			callHook("roundend")
@@ -271,9 +269,6 @@ var/global/datum/controller/gameticker/ticker = new()
 
 /datum/controller/gameticker/proc/calculate_end_statistics()
 	mode.calculate_end_statistics()
-
-/datum/controller/gameticker/proc/show_end_statistics()
-	mode.show_end_statistics()
 
 /datum/controller/gameticker/proc/declare_completion()
 	mode.declare_completion()//To declare normal completion.

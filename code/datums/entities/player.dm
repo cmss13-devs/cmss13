@@ -24,6 +24,8 @@
 	
 
 // UNTRACKED FIELDS
+	var/name // Used for NanoUI statistics menu
+
 	var/warning_count = 0
 	var/refs_loaded = FALSE
 	var/notes_loaded = FALSE
@@ -38,6 +40,7 @@
 	var/list/datum/entity/player_note/notes
 	var/list/datum/entity/player_job_ban/job_bans
 	var/list/datum/entity/player_time/playtimes
+	var/list/playtime_data // For the NanoUI menu
 	var/client/owning_client
 
 BSQL_PROTECT_DATUM(/datum/entity/player)
@@ -385,9 +388,15 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 
 /datum/entity/player/proc/on_read_timestat(var/list/datum/entity/player_time/_stat)
 	playtime_loaded = TRUE
-	if(_stat)
+	if(_stat) // Viewable playtime statistics are only loaded when the player connects, as they do not need constant updates since playtime is a statistic that is recorded over a long period of time
+		LAZYSET(playtime_data, "category", 0)
+		LAZYSET(playtime_data, "loaded", FALSE) // The jobs themselves can be loaded whenever a player opens their statistic menu
+		LAZYSET(playtime_data, "stored_human_playtime", list())
+		LAZYSET(playtime_data, "stored_xeno_playtime", list())
+
 		for(var/datum/entity/player_time/S in _stat)
 			LAZYSET(playtimes, S.role_id, S)
+	
 
 /proc/get_player_from_key(key)
 	var/safe_key = ckey(key)

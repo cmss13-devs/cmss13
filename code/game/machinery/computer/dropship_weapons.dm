@@ -19,7 +19,7 @@
 	var/datum/cas_fire_mission/editing_firemission
 	var/firemission_signal //id of the signal
 	var/in_firemission_mode = FALSE
-	
+
 
 /obj/structure/machinery/computer/dropship_weapons/New()
 	..()
@@ -112,13 +112,13 @@
 			if(!istype(X))
 				continue //the fuck
 			var/error_code = X.check(src)
-			
+
 			var/selected = X == selected_firemission
 			if(error_code != FIRE_MISSION_ALL_GOOD && selected)
 				selected = FALSE
 				selected_firemission = null
 			var/can_edit = error_code != FIRE_MISSION_CODE_ERROR && !selected
-			
+
 			if(selected)
 				found_selected = TRUE
 			var/can_interact = firemission_envelope.stat == FIRE_MISSION_STATE_IDLE && error_code == FIRE_MISSION_ALL_GOOD
@@ -128,7 +128,7 @@
 		if(!istype(editing_firemission))
 			editing_firemission = null
 			//the fuck
-		
+
 		if(editing_firemission)
 			var/error_code = editing_firemission.check(src)
 			var/can_edit = error_code != FIRE_MISSION_CODE_ERROR
@@ -151,7 +151,7 @@
 
 		if(!found_selected)
 			selected_firemission = null
-		
+
 		if(editing_firemission)
 			fm_length = editing_firemission.mission_length
 
@@ -169,7 +169,7 @@
 			fm_direction = dir2text(firemission_envelope.recorded_dir)
 			if(firemission_envelope.recorded_loc && (!firemission_envelope.recorded_loc.loc || !firemission_envelope.recorded_loc.loc:loc))
 				firemission_envelope.recorded_loc = null
-				
+
 			firemission_signal = firemission_envelope.recorded_loc?firemission_envelope.recorded_loc.get_name() : "NOT SELECTED"
 			if(!fm_direction)
 				fm_direction = "NOT SELECTED"
@@ -236,7 +236,7 @@
 		if(M.job != "Pilot Officer") //only pilots can fire dropship weapons.
 			to_chat(usr, SPAN_WARNING("A screen with graphics and walls of physics and engineering values open, you immediately force it closed."))
 			return
-		
+
 		if(!faction)
 			return //no faction, no weapons
 
@@ -327,14 +327,14 @@
 			to_chat(usr, SPAN_WARNING("A screen with graphics and walls of physics and engineering values open, you immediately force it closed."))
 			return
 		if(ref>firemission_envelope.missions.len)
-			to_chat(usr, SPAN_WARNING("Fire Mission ID corrupted or already deleted."))			
+			to_chat(usr, SPAN_WARNING("Fire Mission ID corrupted or already deleted."))
 			return
 		if(selected_firemission == firemission_envelope.missions[ref])
 			to_chat(usr, SPAN_WARNING("Can't delete selected Fire Mission."))
 			return
 		var/result = firemission_envelope.delete_firemission(ref)
 		if(result != 1)
-			to_chat(usr, SPAN_WARNING("Unable to delete Fire Mission while in combat."))			
+			to_chat(usr, SPAN_WARNING("Unable to delete Fire Mission while in combat."))
 			return
 
 	if(href_list["mission_tag"])
@@ -344,10 +344,10 @@
 			to_chat(usr, SPAN_WARNING("A screen with graphics and walls of physics and engineering values open, you immediately force it closed."))
 			return
 		if(ref>firemission_envelope.missions.len)
-			to_chat(usr, SPAN_WARNING("Fire Mission ID corrupted or deleted."))			
+			to_chat(usr, SPAN_WARNING("Fire Mission ID corrupted or deleted."))
 			return
 		if(firemission_envelope.stat > FIRE_MISSION_STATE_IN_TRANSIT && firemission_envelope.stat < FIRE_MISSION_STATE_COOLDOWN)
-			to_chat(usr, SPAN_WARNING("Fire Mission already underway."))			
+			to_chat(usr, SPAN_WARNING("Fire Mission already underway."))
 			return
 		if(selected_firemission == firemission_envelope.missions[ref])
 			selected_firemission = null
@@ -361,13 +361,13 @@
 			to_chat(usr, SPAN_WARNING("A screen with graphics and walls of physics and engineering values open, you immediately force it closed."))
 			return
 		if(ref>firemission_envelope.missions.len)
-			to_chat(usr, SPAN_WARNING("Fire Mission ID corrupted or deleted."))			
+			to_chat(usr, SPAN_WARNING("Fire Mission ID corrupted or deleted."))
 			return
 		if(selected_firemission == firemission_envelope.missions[ref])
 			to_chat(usr, SPAN_WARNING("Can't edit selected Fire Mission."))
 			return
 		if(firemission_envelope.stat > FIRE_MISSION_STATE_IN_TRANSIT && firemission_envelope.stat < FIRE_MISSION_STATE_COOLDOWN)
-			to_chat(usr, SPAN_WARNING("Fire Mission already underway."))			
+			to_chat(usr, SPAN_WARNING("Fire Mission already underway."))
 			return
 		editing_firemission = firemission_envelope.missions[ref]
 
@@ -380,7 +380,7 @@
 			to_chat(usr, SPAN_WARNING("A screen with graphics and walls of physics and engineering values open, you immediately force it closed."))
 			return
 		in_firemission_mode = TRUE
-	
+
 	if(href_list["leave_firemission_execution"])
 		var/mob/M = usr
 		if(M.job != "Pilot Officer") //only pilots can fire dropship weapons.
@@ -395,12 +395,12 @@
 			return
 		var/list/directions = list(dir2text(NORTH), dir2text(SOUTH), dir2text(EAST), dir2text(WEST))
 		var/chosen = input("Select new Direction for the strafing run", "Select Direction", dir2text(firemission_envelope.recorded_dir)) as null|anything in directions
-		
+
 		var/chosen_dir = text2dir(chosen)
 		if(!chosen_dir)
 			to_chat(usr, SPAN_WARNING("Error with direction detected."))
 			return
-		
+
 		update_direction(chosen_dir)
 
 	if(href_list["change_offset"])
@@ -408,14 +408,14 @@
 		if(M.job != "Pilot Officer") //only pilots can fire dropship weapons.
 			to_chat(usr, SPAN_WARNING("A screen with graphics and walls of physics and engineering values open, you immediately force it closed."))
 			return
-		
+
 		var/chosen = stripped_input(usr, "Select Fire Mission length, from 0 to [firemission_envelope.max_offset]", "Select Offset", "[firemission_envelope.recorded_offset]", 2)
 		var/chosen_offset = text2num(chosen)
-		
+
 		if(chosen_offset == null)
 			to_chat(usr, SPAN_WARNING("Error with offset detected."))
 			return
-		
+
 		update_offset(chosen_offset)
 
 	if(href_list["select_laser_firemission"])
@@ -428,10 +428,10 @@
 			to_chat(usr, SPAN_WARNING("A screen with graphics and walls of physics and engineering values open, you immediately force it closed."))
 			return
 		if(firemission_envelope.stat > FIRE_MISSION_STATE_IN_TRANSIT && firemission_envelope.stat < FIRE_MISSION_STATE_COOLDOWN)
-			to_chat(usr, SPAN_WARNING("Fire Mission already underway."))			
+			to_chat(usr, SPAN_WARNING("Fire Mission already underway."))
 			return
 		if(shuttle.moving_status != SHUTTLE_INTRANSIT)
-			to_chat(usr, SPAN_WARNING("Shuttle has to be in orbit."))			
+			to_chat(usr, SPAN_WARNING("Shuttle has to be in orbit."))
 			return
 		var/datum/cas_iff_group/cas_group = cas_groups[faction]
 		var/datum/cas_signal/cas_sig
@@ -442,7 +442,7 @@
 		if(!cas_sig)
 			to_chat(usr, SPAN_WARNING("Target lost or obstructed."))
 			return
-		
+
 		update_location(cas_sig)
 
 	if(href_list["execute_firemission"])
@@ -451,19 +451,19 @@
 			to_chat(usr, SPAN_WARNING("A screen with graphics and walls of physics and engineering values open, you immediately force it closed."))
 			return
 		if(firemission_envelope.stat != FIRE_MISSION_STATE_IDLE)
-			to_chat(usr, SPAN_WARNING("Fire Mission already underway."))			
+			to_chat(usr, SPAN_WARNING("Fire Mission already underway."))
 			return
 		if(shuttle.moving_status != SHUTTLE_INTRANSIT)
-			to_chat(usr, SPAN_WARNING("Shuttle has to be in orbit."))			
+			to_chat(usr, SPAN_WARNING("Shuttle has to be in orbit."))
 			return
 
 		if(!firemission_envelope.recorded_loc)
-			to_chat(usr, SPAN_WARNING("Target is not selected or lost."))			
+			to_chat(usr, SPAN_WARNING("Target is not selected or lost."))
 			return
 
 		initiate_firemission()
 
-	if(href_list["fm_weapon_id"])		
+	if(href_list["fm_weapon_id"])
 		var/weap_ref = text2num(href_list["fm_weapon_id"])+1
 		var/offset_ref = text2num(href_list["fm_offset_id"])+1
 		var/mob/M = usr
@@ -471,17 +471,17 @@
 			to_chat(usr, SPAN_WARNING("A screen with graphics and walls of physics and engineering values open, you immediately force it closed."))
 			return
 		if(!editing_firemission)
-			to_chat(usr, SPAN_WARNING("You are no longer editing Fire Mission."))			
+			to_chat(usr, SPAN_WARNING("You are no longer editing Fire Mission."))
 			return
 		if(!editing_firemission.records || editing_firemission.records.len<weap_ref)
-			to_chat(usr, SPAN_WARNING("Weapon not found."))			
+			to_chat(usr, SPAN_WARNING("Weapon not found."))
 			return
 		var/datum/cas_fire_mission_record/record = editing_firemission.records[weap_ref]
 		if(record.offsets.len < offset_ref)
 			to_chat(usr, SPAN_WARNING("Issues with offsets. You have to re-create this mission."))
 			return
 		if(firemission_envelope.stat > FIRE_MISSION_STATE_IN_TRANSIT && firemission_envelope.stat < FIRE_MISSION_STATE_COOLDOWN)
-			to_chat(usr, SPAN_WARNING("Fire Mission already underway."))			
+			to_chat(usr, SPAN_WARNING("Fire Mission already underway."))
 			return
 		var/list/gimb = record.get_offsets()
 		var/min = gimb["min"]
@@ -501,20 +501,20 @@
 			to_chat(usr, SPAN_WARNING("Update caused an error: [firemission_envelope.mission_error]"))
 		if(result == -1)
 			to_chat(usr, SPAN_WARNING("System Error. Delete this Fire Mission."))
-	
+
 	if(href_list["firemission_camera"])
 		if(shuttle.moving_status != SHUTTLE_INTRANSIT)
-			to_chat(usr, SPAN_WARNING("Shuttle has to be in orbit."))			
+			to_chat(usr, SPAN_WARNING("Shuttle has to be in orbit."))
 			return
 
 		if(!firemission_envelope.guidance)
-			to_chat(usr, SPAN_WARNING("Guidance is not selected or lost."))			
+			to_chat(usr, SPAN_WARNING("Guidance is not selected or lost."))
 			return
-		
+
 		firemission_envelope.add_user_to_tracking(usr)
 
 		to_chat(usr, "You peek thru the guidance camera.")
-		
+
 	ui_interact(usr)
 
 /obj/structure/machinery/computer/dropship_weapons/proc/initiate_firemission()
@@ -528,12 +528,12 @@
 	if (!shuttle.transit_gun_mission | shuttle.moving_status != SHUTTLE_INTRANSIT)
 		to_chat(usr, "Has to be in Fly By mode")
 		return
-	
+
 	var/fmid = firemission_envelope.missions.Find(selected_firemission)
 	if(!fmid)
 		to_chat(usr, "No Firemission selected")
 		return
-	
+
 	var/result = firemission_envelope.execute_firemission(firemission_envelope.recorded_loc, firemission_envelope.recorded_offset, firemission_envelope.recorded_dir, fmid)
 	if(result<1)
 		to_chat(usr, "Screen beeps with an error: "+ firemission_envelope.mission_error)
@@ -606,6 +606,8 @@
 	else
 		firemission_envelope.change_current_loc(shootloc)
 
+/obj/structure/machinery/computer/dropship_weapons
+	density = TRUE
 
 /obj/structure/machinery/computer/dropship_weapons/dropship1
 	name = "\improper 'Alamo' weapons controls"

@@ -70,11 +70,11 @@ var/datum/controller/supply/supply_controller = new()
 		return
 	if(collide_message_busy > world.time)
 		return
-	
+
 	collide_message_busy = world.time + SECONDS_3
 	C.visible_message(SPAN_NOTICE("[C] tries to go through \the [src]."), \
 	SPAN_NOTICE("You try to go through \the [src]."))
-	
+
 	if(do_after(C, SECONDS_2, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 		C.forceMove(get_turf(src))
 
@@ -99,6 +99,7 @@ var/datum/controller/supply/supply_controller = new()
 	desc = "A console for an Automated Storage and Retrieval System"
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "supply"
+	density = TRUE
 	req_access = list(ACCESS_MARINE_CARGO)
 	circuit = /obj/item/circuitboard/computer/supplycomp
 	var/temp = null
@@ -111,6 +112,7 @@ var/datum/controller/supply/supply_controller = new()
 	name = "Supply ordering console"
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "request"
+	density = TRUE
 	circuit = /obj/item/circuitboard/computer/ordercomp
 	var/temp = null
 	var/reqtime = 0 //Cooldown for requisitions - Quarxink
@@ -976,7 +978,7 @@ var/datum/controller/supply/supply_controller = new()
 
 	H.set_interaction(src)
 	post_signal("supply_vehicle")
-	
+
 	var/datum/shuttle/ferry/supply/elevator = supply_controller.vehicle_elevator
 	var/dat = ""
 

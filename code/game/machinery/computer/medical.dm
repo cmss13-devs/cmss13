@@ -4,6 +4,7 @@
 	name = "Medical Records"
 	desc = "This can be used to check medical records."
 	icon_state = "medcomp"
+	density = TRUE
 	req_one_access = list(ACCESS_MARINE_MEDBAY, ACCESS_WY_CORPORATE)
 	circuit = "/obj/item/circuitboard/computer/med_data"
 	var/obj/item/card/id/scan = null

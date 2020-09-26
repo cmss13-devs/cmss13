@@ -5,6 +5,7 @@
 	icon_state = "arcade"
 	circuit = "/obj/item/circuitboard/computer/arcade"
 	unacidable = FALSE
+	density = TRUE
 	var/enemy_name = "Fury Fuhrer"
 	var/temp = "Sponsored by Weston-Yamada and the United States Colonial Marines" //Temporary message, for attack messages, etc
 	var/player_hp = 30 //Player health/attack points

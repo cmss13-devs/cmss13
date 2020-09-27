@@ -1,4 +1,4 @@
-/mob/living/carbon/human/Initialize(var/new_loc, var/new_species = null)
+/mob/living/carbon/human/Initialize(mapload, new_loc, new_species = null)
 	blood_type = pick(7;"O-", 38;"O+", 6;"A-", 34;"A+", 2;"B-", 9;"B+", 1;"AB-", 3;"AB+")
 	human_mob_list += src
 	living_human_list += src
@@ -1407,7 +1407,7 @@
 /mob/living/carbon/human/yiren/initialize_pain()
 	pain = new /datum/pain/monkey(src)
 
-/mob/living/carbon/human/synthetic/Initialize(var/new_loc)
+/mob/living/carbon/human/synthetic/Initialize(mapload, new_loc)
 	..(new_loc, "Synthetic")
 
 /mob/living/carbon/human/synthetic/initialize_pain()
@@ -1416,7 +1416,7 @@
 /mob/living/carbon/human/synthetic/initialize_stamina()
 	stamina = new /datum/stamina/synthetic(src)
 
-/mob/living/carbon/human/synthetic_old/Initialize(var/new_loc)
+/mob/living/carbon/human/synthetic_old/Initialize(mapload, new_loc)
 	..(new_loc, "Early Synthetic")
 
 /mob/living/carbon/human/synthetic_old/initialize_pain()
@@ -1425,7 +1425,7 @@
 /mob/living/carbon/human/synthetic_old/initialize_stamina()
 	stamina = new /datum/stamina/synthetic(src)
 
-/mob/living/carbon/human/synthetic_2nd_gen/Initialize(var/new_loc)
+/mob/living/carbon/human/synthetic_2nd_gen/Initialize(mapload, new_loc)
 	..(new_loc, "Second Generation Synthetic")
 
 /mob/living/carbon/human/synthetic_2nd_gen/initialize_pain()

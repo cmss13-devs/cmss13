@@ -21,7 +21,7 @@
 	var/metal = 0
 
 
-/obj/effect/particle_effect/foam/Initialize(loc, var/ismetal=0)
+/obj/effect/particle_effect/foam/Initialize(mapload, loc, var/ismetal=0)
 	..(loc)
 	icon_state = "[ismetal ? "m":""]foam"
 	metal = ismetal

@@ -211,8 +211,8 @@
 	center_of_mass = "x=16;y=9"
 
 /obj/item/reagent_container/food/drinks/soymilk/Initialize()
-		..()
-		reagents.add_reagent("soymilk", 50)
+	. = ..()
+	reagents.add_reagent("soymilk", 50)
 
 /obj/item/reagent_container/food/drinks/coffee
 	name = "\improper Coffee"

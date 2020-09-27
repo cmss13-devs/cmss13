@@ -165,14 +165,14 @@
 	icon_state = "enzyme"
 
 /obj/item/reagent_container/food/condiment/enzyme/Initialize()
-		..()
-		reagents.add_reagent("enzyme", 50)
+	. = ..()
+	reagents.add_reagent("enzyme", 50)
 
 /obj/item/reagent_container/food/condiment/sugar
 
 /obj/item/reagent_container/food/condiment/sugar/Initialize()
-		..()
-		reagents.add_reagent("sugar", 50)
+	. = ..()
+	reagents.add_reagent("sugar", 50)
 
 /obj/item/reagent_container/food/condiment/saltshaker		//Seperate from above since it's a small shaker rather then
 	name = "Salt Shaker"											//	a large one.
@@ -183,8 +183,8 @@
 	volume = 20
 
 /obj/item/reagent_container/food/condiment/saltshaker/Initialize()
-		..()
-		reagents.add_reagent("sodiumchloride", 20)
+	. = ..()
+	reagents.add_reagent("sodiumchloride", 20)
 
 /obj/item/reagent_container/food/condiment/peppermill
 	name = "Pepper Mill"
@@ -195,5 +195,5 @@
 	volume = 20
 
 /obj/item/reagent_container/food/condiment/peppermill/Initialize()
-		..()
-		reagents.add_reagent("blackpepper", 20)
+	. = ..()
+	reagents.add_reagent("blackpepper", 20)

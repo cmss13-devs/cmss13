@@ -46,8 +46,8 @@
 		/obj/structure/machinery/constructable_frame)
 
 /obj/item/reagent_container/glass/Initialize()
-		..()
-		base_name = name
+	. = ..()
+	base_name = name
 
 /obj/item/reagent_container/glass/examine(mob/user)
 	..()
@@ -275,7 +275,7 @@
 	possible_transfer_amounts = list(5,10,15,25)
 	flags_atom = FPRINT|OPENCONTAINER
 
-/obj/item/reagent_container/glass/beaker/vial/New()
+/obj/item/reagent_container/glass/beaker/vial/Initialize()
 	. = ..()
 	pixel_y = rand(-8, 8)
 	pixel_x = rand(-9, 9)

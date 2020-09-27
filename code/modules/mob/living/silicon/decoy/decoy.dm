@@ -2,11 +2,11 @@
 	var/silent_announcement_cooldown = 0
 
 /mob/living/silicon/decoy/ship_ai/Initialize()
-		..()
-		name = MAIN_AI_SYSTEM
-		desc = "This is the artificial intelligence system for the [MAIN_SHIP_NAME]. Like many other military-grade AI systems, this one was manufactured by Weston-Yamada."
-		ai_headset = new(src)
-		ai_mob_list += src
+	. = ..()
+	name = MAIN_AI_SYSTEM
+	desc = "This is the artificial intelligence system for the [MAIN_SHIP_NAME]. Like many other military-grade AI systems, this one was manufactured by Weston-Yamada."
+	ai_headset = new(src)
+	ai_mob_list += src
 
 //Should likely just replace this with an actual AI mob in the future. Might as well.
 /mob/living/silicon/decoy

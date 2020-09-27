@@ -206,10 +206,10 @@
 	//This exists so the prespawned hydro crates spawn with their contents.
 
 /obj/structure/closet/crate/hydroponics/prespawned/Initialize()
-		..()
-		new /obj/item/reagent_container/spray/plantbgone(src)
-		new /obj/item/reagent_container/spray/plantbgone(src)
-		new /obj/item/tool/minihoe(src)
+	. = ..()
+	new /obj/item/reagent_container/spray/plantbgone(src)
+	new /obj/item/reagent_container/spray/plantbgone(src)
+	new /obj/item/tool/minihoe(src)
 
 /obj/structure/closet/crate/internals
 	name = "internals crate"

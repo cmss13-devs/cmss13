@@ -20,7 +20,7 @@
 		bitten(user)
 		return
 
-/obj/item/organ/Initialize(loc, organ_datum)
+/obj/item/organ/Initialize(mapload, loc, organ_datum)
 	..()
 	create_reagents(5)
 	if(organ_datum)

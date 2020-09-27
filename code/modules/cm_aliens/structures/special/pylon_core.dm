@@ -12,8 +12,8 @@
 
 	var/protection_level = TURF_PROTECTION_CAS
 
-/obj/effect/alien/resin/special/pylon/New(loc, var/hive_ref)
-	. = ..(loc, hive_ref)
+/obj/effect/alien/resin/special/pylon/Initialize(mapload, loc, hive_ref)
+	. = ..()
 
 	replace_node()
 	for(var/turf/A in range(round(cover_range*PYLON_COVERAGE_MULT), loc))

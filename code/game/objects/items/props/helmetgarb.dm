@@ -80,5 +80,5 @@
 
 /obj/item/prop/helmetgarb/spacejam_tickets
     name = "\improper Tickets to Space Jam"
-    desc = "Two original, crisp, orange, tickets to the one and only Space Jam of 2165. And what a jam it was."
+    desc = "Two original, crisp, orange, tickets to the one and only Space Jam of 2188. And what a jam it was."
     icon_state = "tickets_to_space_jam"

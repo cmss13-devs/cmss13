@@ -49,12 +49,27 @@ BSQL_PROTECT_DATUM(/datum/entity/player_time)
 
 /datum/view_record/playtime/proc/get_nanoui_data()
 
+    var/icon_display
+    switch(total_minutes MINUTES_TO_DECISECOND)
+        if(JOB_PLAYTIME_TIER_1 to JOB_PLAYTIME_TIER_2)
+            icon_display = "Tier1"
+        if(JOB_PLAYTIME_TIER_2 to JOB_PLAYTIME_TIER_3)
+            icon_display = "Tier2"
+        if(JOB_PLAYTIME_TIER_3 to JOB_PLAYTIME_TIER_4)
+            icon_display = "Tier3"
+        if(JOB_PLAYTIME_TIER_4 to INFINITY)
+            icon_display = "Tier4"
+
+    if(icon_display)
+        icon_display = SSassets.transport.get_asset_url("uiPlaytime[icon_display].png")
+        
     var/playtime_percentage = min((total_minutes MINUTES_TO_DECISECOND) / JOB_PLAYTIME_TIER_4, 1)
     return list(
         "job" = role_id,
         "playtime" = round(total_minutes MINUTES_TO_HOURS, 0.1),
         "bgcolor" = "rgb(0, [Floor(128 * playtime_percentage)], [Floor(255 * playtime_percentage)])",
-        "textcolor" = "#FFFFFF"
+        "textcolor" = "#FFFFFF",
+        "icondisplay" = icon_display
     )
 
 /datum/entity/player/proc/ui_interact(mob/user, ui_key = "playtime", var/datum/nanoui/ui = null, force_open = FALSE)

@@ -3141,7 +3141,7 @@
 /obj/item/reagent_container/food/snacks/packaged_meal/attack_self(mob/user as mob)
 	if(package)
 		to_chat(user, SPAN_NOTICE("You pull open the package of the meal!"))
-		playsound(loc,'sound/effects/pageturn2.ogg', 15, 1)
+		playsound(loc,"rip", 15, 1)
 
 		name = "\improper" + flavor
 		desc = "The contents of a USCM Standard issue MRE. This one is " + flavor + "."

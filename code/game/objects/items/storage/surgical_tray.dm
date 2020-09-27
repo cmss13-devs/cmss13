@@ -6,6 +6,7 @@
 	w_class = SIZE_LARGE //Should not fit in backpacks
 	storage_slots = 12
 	max_storage_space = 24
+	use_sound = "toolbox"
 	matter = list("plastic" = 3000)
 	var/empty = FALSE
 	can_hold = list(

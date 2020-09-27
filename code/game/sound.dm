@@ -10,14 +10,14 @@
 	var/falloff = 1
 	var/volume_cat = VOLUME_SFX
 	var/range = 0
-	var/x //Map coordinates, not sound coordinates 
+	var/x //Map coordinates, not sound coordinates
 	var/y
 	var/z
 
 /proc/get_free_channel()
-	var/static/cur_chan = 1	
+	var/static/cur_chan = 1
 	. = cur_chan++
-	if(cur_chan > FREE_CHAN_END) 
+	if(cur_chan > FREE_CHAN_END)
 		cur_chan = 1
 
 //Proc used to play a sound effect. Avoid using this proc for non-IC sounds, as there are others
@@ -28,7 +28,7 @@
 //sound_range: the maximum theoretical range (in tiles) of the sound, by default is equal to the volume.
 //vol_cat: the category of this sound, used in client volume. There are 3 volume categories: VOLUME_SFX (Sound effects), VOLUME_AMB (Ambience and Soundscapes) and VOLUME_ADM (Admin sounds and some other stuff)
 //channel: use this only when you want to force the sound to play on an specific channel
-//status: the regular 4 sound flags 
+//status: the regular 4 sound flags
 //falloff: max range till sound volume starts dropping as distance increases
 
 /proc/playsound(atom/source, soundin, vol = 100, vary = FALSE, sound_range, vol_cat = VOLUME_SFX, channel = 0, status , falloff = 1)
@@ -49,16 +49,16 @@
 	S.falloff = falloff
 
 	var/turf/turf_source = get_turf(source)
-	if(!turf_source) 
+	if(!turf_source)
 		return FALSE
-	S.x = turf_source.x 
+	S.x = turf_source.x
 	S.y = turf_source.y
 	S.z = turf_source.z
 
 	S.volume = vol
 	S.volume_cat = vol_cat
 
-	if(!sound_range) 
+	if(!sound_range)
 		sound_range = round(0.25*vol) //if no specific range, the max range is equal to a quarter of the volume.
 	S.range = sound_range
 
@@ -113,7 +113,7 @@
 
 //Self explanatory
 /proc/playsound_area(area/A, soundin, vol = 100, channel, status, vol_cat = VOLUME_SFX)
-	if(!isarea(A)) 
+	if(!isarea(A))
 		return FALSE
 	var/datum/sound_template/S = new()
 	S.file = soundin
@@ -124,13 +124,13 @@
 
 	var/list/hearers = list()
 	for(var/mob/living/M in A.contents)
-		if(!M || !M.client || !M.client.soundOutput) 
+		if(!M || !M.client || !M.client.soundOutput)
 			continue
 		hearers += M.client
 	SSsound.queue(S, hearers)
 
 /client/proc/playtitlemusic()
-	if(!ticker || !ticker.login_music)	
+	if(!ticker || !ticker.login_music)
 		return FALSE
 	if(prefs && prefs.toggles_sound & SOUND_LOBBY)
 		playsound_client(src, ticker.login_music, null, 85, 0, VOLUME_ADM, SOUND_CHANNEL_LOBBY, SOUND_STREAM)
@@ -161,6 +161,20 @@
 				S = pick('sound/effects/sparks1.ogg','sound/effects/sparks2.ogg','sound/effects/sparks3.ogg','sound/effects/sparks4.ogg')
 			if("rustle")
 				S = pick('sound/effects/rustle1.ogg','sound/effects/rustle2.ogg','sound/effects/rustle3.ogg','sound/effects/rustle4.ogg','sound/effects/rustle5.ogg')
+			if("toolbox")
+				S = pick('sound/effects/toolbox.ogg')
+			if("pillbottle")
+				S = pick('sound/effects/pillbottle.ogg')
+			if("rip")
+				S = pick('sound/effects/rip1.ogg','sound/effects/rip2.ogg')
+			if("lighter")
+				S = pick('sound/effects/lighter1.ogg','sound/effects/lighter2.ogg','sound/effects/lighter3.ogg')
+			if("zippo_open")
+				S = pick('sound/effects/zippo_open.ogg')
+			if("zippo_close")
+				S = pick('sound/effects/zippo_close.ogg')
+			if("match")
+				S = pick('sound/effects/match.ogg')
 			if("punch")
 				S = pick('sound/weapons/punch1.ogg','sound/weapons/punch2.ogg','sound/weapons/punch3.ogg','sound/weapons/punch4.ogg')
 			if("clownstep")
@@ -264,7 +278,7 @@
 
 	var/ammount = input(usr, "How many sounds to queue?") as num
 	var/range = input(usr, "Range") as num
-	var/x = input(usr, "Center X") as num 
+	var/x = input(usr, "Center X") as num
 	var/y = input(usr, "Center Y") as num
 	var/z = input(usr, "Z level") as num
 	var/datum/sound_template/S
@@ -275,4 +289,3 @@
 		S.y = y
 		S.z = z
 		SSsound.queue(S)
-	 

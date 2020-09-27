@@ -730,7 +730,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 			return
 		else if(flags_gun_features & GUN_FULL_AUTO_ON)
 			flags_gun_features &= ~GUN_FULL_AUTO_ON
-
+			full_auto_stop() // If the LMBUP hasn't been called for any reason.
 			unregisterListener(usr.client, EVENT_LMBDOWN, "fa_\ref[src]")
 			unregisterListener(usr.client, EVENT_LMBUP, "fa_\ref[src]")
 			unregisterListener(usr.client, EVENT_LMBDRAG, "fa_\ref[src]")

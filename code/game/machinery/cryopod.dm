@@ -321,35 +321,25 @@ var/global/list/frozen_items = list(SQUAD_NAME_1 = list(), SQUAD_NAME_2 = list()
 		var/mob/living/carbon/human/H = occupant
 		if(H.assigned_squad)
 			var/datum/squad/S = H.assigned_squad
-			switch(H.job)
-				if(JOB_SQUAD_ENGI)
-					S.num_engineers--
-				if(JOB_SQUAD_MEDIC)
-					S.num_medics--
-				if(JOB_SQUAD_SPECIALIST)
-					S.num_specialists--
-					//we make the set this specialist took if any available again
-					if(H.skills)
-						var/set_name
-						switch(H.skills.get_skill_level(SKILL_SPEC_WEAPONS))
-							if(SKILL_SPEC_ROCKET)
-								set_name = "Demolitionist Set"
-							if(SKILL_SPEC_GRENADIER)
-								set_name = "Heavy Grenadier Set"
-							if(SKILL_SPEC_PYRO)
-								set_name = "Pyro Set"
-							if(SKILL_SPEC_SCOUT)
-								set_name = "Scout Set"
-							if(SKILL_SPEC_SNIPER)
-								set_name = "Sniper Set"
+			if(H.job == JOB_SQUAD_SPECIALIST)
+				//we make the set this specialist took if any available again
+				if(H.skills)
+					var/set_name
+					switch(H.skills.get_skill_level(SKILL_SPEC_WEAPONS))
+						if(SKILL_SPEC_ROCKET)
+							set_name = "Demolitionist Set"
+						if(SKILL_SPEC_GRENADIER)
+							set_name = "Heavy Grenadier Set"
+						if(SKILL_SPEC_PYRO)
+							set_name = "Pyro Set"
+						if(SKILL_SPEC_SCOUT)
+							set_name = "Scout Set"
+						if(SKILL_SPEC_SNIPER)
+							set_name = "Sniper Set"
 
-						if(set_name && !available_specialist_sets.Find(set_name))
-							available_specialist_sets += set_name
-				if(JOB_SQUAD_SMARTGUN)
-					S.num_smartgun--
-				if(JOB_SQUAD_LEADER)
-					S.num_leaders--
-			S.count--
+					if(set_name && !available_specialist_sets.Find(set_name))
+						available_specialist_sets += set_name
+			S.forget_marine_in_squad(H)
 
 	ticker.mode.latejoin_tally-- //Cryoing someone out removes someone from the Marines, blocking further larva spawns until accounted for
 

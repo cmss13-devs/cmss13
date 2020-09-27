@@ -8,7 +8,7 @@
         width: 100%;
         margin: 10px 0 0 0;
 
-        font-size: large;
+        font-size: larger;
         text-align: center;
         border: solid black 1px;
     }
@@ -21,6 +21,7 @@
 
 <table class="playtime_table">
 <tr>
+    <th style="padding: 2px;">Tier</th>
     <th>Role</th>
     <th>Playtime</th>
 </tr>
@@ -29,6 +30,11 @@
     {{:helper.USCMMode()}}
     {{for data.stored_human_playtime}}
         <tr class="playtime_row" style="background-color: {{:value.bgcolor}}"> 
+            {{if value.icondisplay}}
+                <td unselectable="on" style="padding: 2px;"><img src="{{:value.icondisplay}}" style="margin: 0 auto; display: block;"></img></td>
+            {{else}}
+                <td unselectable="on" style="padding: 2px; height: 27px;"></td>
+            {{/if}}
             <td style="color: {{:value.textcolor}}">{{:value.job}}</td>
             <td style="color: {{:value.textcolor}}">{{:value.playtime}} HOURS</td>
         </tr>
@@ -38,6 +44,11 @@
 
     {{for data.stored_xeno_playtime}}
         <tr class="playtime_row" style="background-color: {{:value.bgcolor}}"> 
+            {{if value.icondisplay}}
+                <td unselectable="on" style="padding: 2px;"><img src="{{:value.icondisplay}}" style="margin: 0 auto; display: block;"></img></td>
+            {{else}}
+                <td unselectable="on" style="padding: 2px; height: 27px;"></td>
+            {{/if}}
             <td style="color: {{:value.textcolor}}">{{:value.job}}</td>
             <td style="color: {{:value.textcolor}}">{{:value.playtime}} HOURS</td>
         </tr>

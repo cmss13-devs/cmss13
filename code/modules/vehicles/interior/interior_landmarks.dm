@@ -20,10 +20,10 @@
 	name = "entrance marker"
 	icon_state = "arrow"
 
-	var/exit_type = "/obj/structure/interior_exit"
+	var/exit_type = /obj/structure/interior_exit
 
 /obj/effect/landmark/interior/spawn/entrance/on_load(var/datum/interior/I)
-	var/exit_path = text2path(exit_type)
+	var/exit_path = exit_type
 	if(!exit_path)
 		return
 	var/obj/structure/interior_exit/E = new exit_path(get_turf(src))
@@ -35,7 +35,7 @@
 	// Don't qdel this because it's used for entering as well
 
 /obj/effect/landmark/interior/spawn/entrance/step_toward/on_load(var/datum/interior/I)
-	var/exit_path = text2path(exit_type)
+	var/exit_path = exit_type
 	if(!exit_path)
 		return
 	var/obj/structure/interior_exit/E = new exit_path(get_step(src, dir))

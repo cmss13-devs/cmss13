@@ -89,9 +89,8 @@
 						req_components[A] = circuit.req_components[A]
 					req_component_names = circuit.req_components.Copy()
 					for(var/A in req_components)
-						var/cp = text2path(A)
-						var/obj/ct = new cp() // have to quickly instantiate it get name
-						req_component_names[A] = ct.name
+						var/obj/ct = A
+						req_component_names[A] = initial(ct.name)
 					if(circuit.frame_desc)
 						requirements_left = circuit.frame_desc
 					else
@@ -153,7 +152,7 @@
 					to_chat(user, SPAN_WARNING("You are not trained to build machines..."))
 					return
 				for(var/I in req_components)
-					if(istype(P, text2path(I)) && (req_components[I] > 0))
+					if(istype(P, I) && (req_components[I] > 0))
 						if(!do_after(user, 20 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 							return
 						playsound(src.loc, 'sound/items/Deconstruct.ogg', 25, 1)

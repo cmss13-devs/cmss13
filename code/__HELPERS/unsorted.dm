@@ -1319,7 +1319,6 @@ var/global/image/action_blue_power_up
 //Returns: A list of all areas of that type in the world.
 /proc/get_areas(var/areatype)
 	if(!areatype) return null
-	if(istext(areatype)) areatype = text2path(areatype)
 	if(isarea(areatype))
 		var/area/areatemp = areatype
 		areatype = areatemp.type
@@ -1333,7 +1332,6 @@ var/global/image/action_blue_power_up
 //Returns: A list of all turfs in areas of that type of that type in the world.
 /proc/get_area_turfs(var/areatype)
 	if(!areatype) return null
-	if(istext(areatype)) areatype = text2path(areatype)
 	if(isarea(areatype))
 		var/area/areatemp = areatype
 		areatype = areatemp.type
@@ -1722,18 +1720,31 @@ proc/get_true_location(var/atom/loc)
 Checks if that loc and dir has a item on the wall
 */
 var/list/WALLITEMS = list(
-	"/obj/structure/machinery/power/apc", "/obj/structure/machinery/alarm", "/obj/item/device/radio/intercom",
-	"/obj/structure/extinguisher_cabinet", "/obj/structure/reagent_dispensers/peppertank",
-	"/obj/structure/machinery/status_display", "/obj/structure/machinery/requests_console", "/obj/structure/machinery/light_switch", "/obj/effect/sign",
-	"/obj/structure/machinery/newscaster", "/obj/structure/machinery/firealarm", "/obj/structure/noticeboard", "/obj/structure/machinery/door_control",
-	"/obj/structure/machinery/computer/security/telescreen", "/obj/structure/machinery/embedded_controller/radio/simple_vent_controller",
-	"/obj/item/storage/secure/safe", "/obj/structure/machinery/brig_cell", "/obj/structure/machinery/flasher", "/obj/structure/machinery/keycard_auth",
-	"/obj/structure/mirror", "/obj/structure/closet/fireaxecabinet", "/obj/structure/machinery/computer/security/telescreen/entertainment"
+	/obj/structure/machinery/power/apc,
+	/obj/structure/machinery/alarm,
+	/obj/item/device/radio/intercom,
+	/obj/structure/extinguisher_cabinet,
+	/obj/structure/reagent_dispensers/peppertank,
+	/obj/structure/machinery/status_display,
+	/obj/structure/machinery/requests_console,
+	/obj/structure/machinery/light_switch,
+	/obj/structure/machinery/newscaster,
+	/obj/structure/machinery/firealarm,
+	/obj/structure/noticeboard,
+	/obj/structure/machinery/door_control,
+	/obj/structure/machinery/computer/security/telescreen,
+	/obj/item/storage/secure/safe,
+	/obj/structure/machinery/brig_cell,
+	/obj/structure/machinery/flasher,
+	/obj/structure/machinery/keycard_auth,
+	/obj/structure/mirror,
+	/obj/structure/closet/fireaxecabinet,
+	/obj/structure/machinery/computer/security/telescreen/entertainment,
 	)
 /proc/gotwallitem(loc, dir)
 	for(var/obj/O in loc)
 		for(var/item in WALLITEMS)
-			if(istype(O, text2path(item)))
+			if(istype(O, item))
 				//Direction works sometimes
 				if(O.dir == dir)
 					return 1
@@ -1757,7 +1768,7 @@ var/list/WALLITEMS = list(
 	//Some stuff is placed directly on the wallturf (signs)
 	for(var/obj/O in get_step(loc, dir))
 		for(var/item in WALLITEMS)
-			if(istype(O, text2path(item)))
+			if(istype(O, item))
 				if(O.pixel_x == 0 && O.pixel_y == 0)
 					return 1
 	return 0

@@ -7,7 +7,7 @@
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "robot"
 	req_access = list(ACCESS_MARINE_RESEARCH)
-	circuit = "/obj/item/circuitboard/computer/robotics"
+	circuit = /obj/item/circuitboard/computer/robotics
 
 	var/id = 0.0
 	var/temp = null

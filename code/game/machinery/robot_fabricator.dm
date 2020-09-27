@@ -77,41 +77,41 @@ Please wait until completion...</TT><BR>
 
 			switch (part_type)
 				if (1)
-					build_type = "/obj/item/robot_parts/l_arm"
+					build_type = /obj/item/robot_parts/l_arm
 					build_time = 200
 					build_cost = 25000
 
 				if (2)
-					build_type = "/obj/item/robot_parts/r_arm"
+					build_type = /obj/item/robot_parts/r_arm
 					build_time = 200
 					build_cost = 25000
 
 				if (3)
-					build_type = "/obj/item/robot_parts/l_leg"
+					build_type = /obj/item/robot_parts/l_leg
 					build_time = 200
 					build_cost = 25000
 
 				if (4)
-					build_type = "/obj/item/robot_parts/r_leg"
+					build_type = /obj/item/robot_parts/r_leg
 					build_time = 200
 					build_cost = 25000
 
 				if (5)
-					build_type = "/obj/item/robot_parts/chest"
+					build_type = /obj/item/robot_parts/chest
 					build_time = 350
 					build_cost = 50000
 
 				if (6)
-					build_type = "/obj/item/robot_parts/head"
+					build_type = /obj/item/robot_parts/head
 					build_time = 350
 					build_cost = 50000
 
 				if (7)
-					build_type = "/obj/item/robot_parts/robot_suit"
+					build_type = /obj/item/robot_parts/robot_suit
 					build_time = 600
 					build_cost = 75000
 
-			var/building = text2path(build_type)
+			var/building = build_type
 			if (building in typesof(/obj/item/robot_parts/))
 				if (src.metal_amount >= build_cost)
 					src.operating = 1

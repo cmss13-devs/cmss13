@@ -255,7 +255,7 @@ SUPPLIES
 					/obj/item/storage/box
 					)
 	cost = RO_PRICE_WORTHLESS
-	containertype = "/obj/structure/closet/crate/supply"
+	containertype = /obj/structure/closet/crate/supply
 	containername = "empty box crate"
 	group = "Supplies"
 

@@ -44,8 +44,6 @@
 	drag_delay = 6 //pulling a big dead xeno is hard
 	mutation_type = BOILER_NORMAL
 
-	var/obj/item/explosive/grenade/grenade_type = "/obj/item/explosive/grenade/xeno"
-
 	tileoffset = 0
 	viewsize = 16
 

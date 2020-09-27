@@ -1,6 +1,6 @@
 "a" = (/turf/closed/wall/wood,/area/vehicle/apc)
 "b" = (/turf/open/floor/wood,/area/vehicle/apc)
-"c" = (/obj/effect/landmark/interior/spawn/entrance/step_toward{dir = 8; exit_type = "/obj/structure/interior_exit/fancy"},/turf/open/floor/wood,/area/vehicle/apc)
+"c" = (/obj/effect/landmark/interior/spawn/entrance/step_toward{dir = 8; exit_type = /obj/structure/interior_exit/fancy},/turf/open/floor/wood,/area/vehicle/apc)
 "d" = (/turf/open/floor/carpet{tag = "icon-carpetside (NORTHWEST)"; icon_state = "carpetside"; dir = 9},/area/vehicle/apc)
 "e" = (/turf/open/floor/carpet{tag = "icon-carpetside (NORTH)"; icon_state = "carpetside"; dir = 1},/area/vehicle/apc)
 "f" = (/turf/open/floor/carpet{tag = "icon-carpetside (NORTHEAST)"; icon_state = "carpetside"; dir = 5},/area/vehicle/apc)

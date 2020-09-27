@@ -5,7 +5,7 @@
 	desc = "Terminal for programming USCM employee ID card access."
 	icon_state = "id"
 	req_access = list(ACCESS_MARINE_LOGISTICS)
-	circuit = "/obj/item/circuitboard/computer/card"
+	circuit = /obj/item/circuitboard/computer/card
 	var/obj/item/card/id/scan = null
 	var/obj/item/card/id/modify = null
 	var/mode = 0.0

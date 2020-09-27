@@ -57,7 +57,7 @@
 	chemname = "tricordrazine"
 	desc = "An autoinjector loaded with 3 uses of Tricordrazine, a weak general use medicine for treating damage."
 	amount_per_transfer_from_this = REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
-	volume = (REAGENTS_OVERDOSE_CRITICAL * INJECTOR_PERCENTAGE_OF_OD) * INJECTOR_USES
+	volume = (REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD) * INJECTOR_USES
 
 /obj/item/reagent_container/hypospray/autoinjector/quickclot
 	name = "quick clot autoinjector"

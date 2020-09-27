@@ -170,8 +170,8 @@
 /datum/squad/proc/remove_marine_from_squad(mob/living/carbon/human/M)
 	if(!M.mind)
 		return 0
-	if(!M.assigned_squad)
-		return		//not assigned to a squad
+	if(M.assigned_squad != src)
+		return		//not assigned to the correct squad
 	var/obj/item/card/id/C
 	C = M.wear_id
 	if(!istype(C))
@@ -181,6 +181,10 @@
 	C.assignment = M.job
 	C.name = "[C.registered_name]'s ID Card ([C.assignment])"
 
+	forget_marine_in_squad(M)
+
+//gracefully remove a marine from squad system, alive, dead or otherwise
+/datum/squad/proc/forget_marine_in_squad(mob/living/carbon/human/M)
 	if(M.assigned_squad.squad_leader == M)
 		if(M.job != JOB_SQUAD_LEADER) //a field promoted SL, not a real one
 			demote_squad_leader()

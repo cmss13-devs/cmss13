@@ -13,6 +13,7 @@
 	icon_state = "firstaid"
 	throw_speed = SPEED_FAST
 	throw_range = 8
+	use_sound = "toolbox"
 	matter = list("plastic" = 2000)
 	cant_hold = list(
 		/obj/item/ammo_magazine,
@@ -30,10 +31,10 @@
 		icon_full = pick(possible_icons_full)
 	else
 		icon_full = icon_state
-	
+
 	if(!empty)
 		fill_firstaid_kit()
-		
+
 	update_icon()
 
 
@@ -231,7 +232,7 @@
 	)
 	storage_flags = STORAGE_FLAGS_DEFAULT|STORAGE_CLICK_GATHER|STORAGE_QUICK_GATHER
 	storage_slots = null
-	use_sound = null
+	use_sound = "pillbottle"
 	max_storage_space = 16
 	var/skilllock = 1
 	var/pill_type_to_fill //type of pill to use to fill in the bottle in /Initialize()
@@ -260,7 +261,7 @@
 				to_chat(user, SPAN_INFO("The [src] feels like it's nearly empty!"))
 	else
 		to_chat(user, SPAN_INFO("The [src] is empty."))
-				
+
 
 /obj/item/storage/pill_bottle/attack_self(mob/living/user)
 	if(user.get_inactive_hand())
@@ -272,6 +273,7 @@
 	if(contents.len)
 		var/obj/item/I = contents[1]
 		if(user.put_in_inactive_hand(I))
+			playsound(src.loc, src.use_sound, 10, 1, 3)
 			remove_from_storage(I,user)
 			to_chat(user, SPAN_NOTICE("You take a pill out of \the [src]."))
 			if(iscarbon(user))

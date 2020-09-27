@@ -109,7 +109,7 @@
 	new /obj/item/reagent_container/syringe(src)
 	new /obj/item/reagent_container/syringe(src)
 	new /obj/item/reagent_container/syringe(src)
-		
+
 
 /obj/item/storage/box/beakers
 	name = "box of beakers"
@@ -686,6 +686,7 @@
 	can_hold = list()
 	storage_slots = 4
 	max_w_class = 0
+	use_sound = "rip"
 	var/isopened = 0
 
 /obj/item/storage/box/MRE/Initialize()

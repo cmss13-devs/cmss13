@@ -211,6 +211,24 @@ var/global/list/gear_datums = list()
 	slot = WEAR_IN_BACK
 	cost = 2
 
+/datum/gear/pack_emeraldgreen
+	display_name = "Pack Of Emerald Greens"
+	path = /obj/item/storage/fancy/cigarettes/emeraldgreen
+	slot = WEAR_IN_BACK
+	cost = 1
+
+/datum/gear/pack_lucky_strikes
+	display_name = "Pack Of Lucky Strikes"
+	path = /obj/item/storage/fancy/cigarettes/lucky_strikes
+	slot = WEAR_IN_BACK
+	cost = 1
+
+/datum/gear/type_80_Bayonet
+	display_name = "Type 80 Bayonet"
+	path = /obj/item/attachable/bayonet/upp
+	slot = WEAR_IN_BACK
+	cost = 4
+
 /datum/gear/uno_reverse_red
 	display_name = "Uno Reverse - Red"
 	path = /obj/item/toy/handcard/uno_reverse_red

@@ -41,9 +41,8 @@
 		//make sure the final recipe is not already being used. If it is, start over.
 		if(i==3 && check_duplicate())
 			required_reagents = list()
-			i = 0	
-			chemical_objective_list[id] = 10
-	
+			i = 0
+
 	//pick catalyst
 	if(prob(40) || gen_tier >= 4)//chance of requiring a catalyst
 		add_component(null,5,TRUE)
@@ -54,7 +53,6 @@
 	..()
 	var/chem_id		//The id of the picked chemical
 	var/modifier	//The number of required reagents
-	var/new_objective_value 
 
 	if(my_modifier) //Do we want a specific modifier?
 		modifier = my_modifier
@@ -62,7 +60,6 @@
 		modifier = 1
 
 	for(var/i=0,i<1,i++)
-		new_objective_value = 0
 		if(my_chemid) //Do we want a specific chem?
 			chem_id = my_chemid
 		else
@@ -79,7 +76,6 @@
 						chem_id = pick(chemical_gen_classes_list["C3"])
 					else
 						chem_id = pick(chemical_gen_classes_list["C4"])
-						new_objective_value += OBJECTIVE_MEDIUM_VALUE
 				if(2)
 					if(roll<=30)
 						chem_id = pick(chemical_gen_classes_list["C1"])
@@ -89,7 +85,6 @@
 						chem_id = pick(chemical_gen_classes_list["C3"])
 					else
 						chem_id = pick(chemical_gen_classes_list["C4"])
-						new_objective_value += OBJECTIVE_MEDIUM_VALUE
 				if(3)
 					if(roll<=10)
 						chem_id = pick(chemical_gen_classes_list["C1"])
@@ -99,25 +94,21 @@
 						chem_id = pick(chemical_gen_classes_list["C3"])
 					else if(roll<=70)
 						chem_id = pick(chemical_gen_classes_list["C4"])
-						new_objective_value += OBJECTIVE_MEDIUM_VALUE
 					else
 						chem_id = pick(chemical_gen_classes_list["C5"])
-						new_objective_value += OBJECTIVE_HIGH_VALUE
 				else
 					if(!required_reagents || is_catalyst)//first component is guaranteed special in chems tier 4 or higher, catalysts are always special in tier 4 or higher
 						chem_id = pick(chemical_gen_classes_list["C5"])
-						new_objective_value += OBJECTIVE_HIGH_VALUE
 					else if(roll<=15)
 						chem_id = pick(chemical_gen_classes_list["C2"])
 					else if(roll<=40)
 						chem_id = pick(chemical_gen_classes_list["C3"])
 					else if(roll<=65)
 						chem_id = pick(chemical_gen_classes_list["C4"])
-						new_objective_value += OBJECTIVE_MEDIUM_VALUE
+
 					else
 						chem_id = pick(chemical_gen_classes_list["C5"])
-						new_objective_value += OBJECTIVE_HIGH_VALUE
-			
+
 		//if we are already using this reagent, try again
 		if(required_reagents && required_reagents.Find(chem_id))
 			if(my_chemid) //If this was a manually set chemid, return FALSE so we don't cause an infinite loop
@@ -126,14 +117,13 @@
 				i--
 				continue
 		else if(is_catalyst)
-			new_objective_value += 20 //Worth a little more if it doesn't use up the rare reagent!
+
 			if(required_catalysts && required_catalysts.Find(chem_id))
 				if(my_chemid) //If this was a manually set chemid, return FALSE so we don't cause an infinite loop
 					return FALSE
 				else
 					i--
 					continue
-		
 		var/list/component_modifier[0]
 		component_modifier["[chem_id]"] = modifier
 		if(is_catalyst) 
@@ -141,7 +131,7 @@
 		else 
 			required_reagents += component_modifier
 
-		chemical_objective_list[id] = chemical_objective_list[id] + new_objective_value
+
 
 	return chem_id
 

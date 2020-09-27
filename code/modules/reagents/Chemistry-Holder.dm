@@ -64,16 +64,13 @@ var/const/INGEST = 2
 	//I dislike having these here but map-objects are initialised before world/New() is called. >_>
 	set waitfor = 0
 	//Chemical Reagents - Initialises all /datum/reagent into a list indexed by reagent id
-	var/paths = typesof(/datum/reagent) - /datum/reagent - /datum/reagent/generated
+	//Generated chemicals should be initialized last, hence the substract then readd.
+	var/list/paths = subtypesof(/datum/reagent) - typesof(/datum/reagent/generated) -  subtypesof(/datum/reagent/generated) + subtypesof(/datum/reagent/generated)
 	chemical_reagents_list = list()
-	for(var/i=0;i<=1;i++)
-		for(var/path in paths)
-			var/datum/reagent/D = new path()
-			D.save_chemclass()
-			chemical_reagents_list[D.id] = D
-		if(i==0)
-			paths = typesof(/datum/reagent/generated) - /datum/reagent/generated //Generated chemicals should be initialized last
-	
+	for(var/path in paths)
+		var/datum/reagent/D = new path()
+		D.save_chemclass()
+		chemical_reagents_list[D.id] = D
 	chemical_data.initialize_saved_chem_data() //load and initialize chems that have been saved to DB
 	
 	//Chemical Reactions - Initialises all /datum/chemical_reaction into a list

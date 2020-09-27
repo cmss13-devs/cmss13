@@ -714,6 +714,8 @@
 	if(isXenoRunner(src))
 		//Xeno runners need a small nerf to dragging speed mutator
 		pull_multiplier = 1.0 - (1.0 - mutators.pull_multiplier) * 0.85
+		if(is_zoomed)
+			zoom_out()
 	if(isXenoCarrier(src))
 		huggers_max = caste.huggers_max
 		eggs_max = caste.eggs_max

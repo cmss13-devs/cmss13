@@ -1401,14 +1401,6 @@ Defined in conflicts.dm of the #defines folder.
 		return
 	to_chat(user, "It's empty.")
 
-/obj/item/attachable/attached_gun/extinguisher/afterattack(atom/target, mob/user , flag)
-	if(istype(target, /obj/structure/reagent_dispensers/watertank) && get_dist(user,target) <= 1)
-		var/obj/o = target
-		o.reagents.trans_to(src, 50)
-		to_chat(user, SPAN_NOTICE(" \The [src] is now refilled"))
-		playsound(src.loc, 'sound/effects/refill.ogg', 25, 1, 3)
-		return
-
 /obj/item/attachable/attached_gun/extinguisher/New()
 	..()
 	initialize_internal_extinguisher()

@@ -2,8 +2,8 @@
 	caste_name = "Crusher"
 	tier = 3
 
-	melee_damage_lower = XENO_DAMAGE_TIER_5
-	melee_damage_upper = XENO_DAMAGE_TIER_5
+	melee_damage_lower = XENO_DAMAGE_TIER_4
+	melee_damage_upper = XENO_DAMAGE_TIER_4
 	max_health = XENO_HEALTH_TIER_7
 	plasma_gain = XENO_PLASMA_GAIN_TIER_7
 	plasma_max = XENO_PLASMA_TIER_2
@@ -259,7 +259,6 @@
 
 
 		H.apply_armoured_damage(get_xeno_damage_slash(H, damage), ARMOR_MELEE, BRUTE, bound_xeno.zone_selected)
-		new /datum/effects/xeno_slow(H, bound_xeno, , , get_xeno_stun_duration(H, 25))
 
 	var/datum/action/xeno_action/activable/pounce/crusher_charge/cAction = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/activable/pounce/crusher_charge)
 	if (!cAction.action_cooldown_check())

@@ -11,7 +11,6 @@
 		for(var/mob/living/M in target)
 			if(M)
 				M.NotTargeted(src) //Untargeting people.
-		qdel(target)
 		target = null
 
 //Compute how to fire.....
@@ -37,7 +36,6 @@
 			for(var/mob/living/L in target)
 				if(L)
 					L.NotTargeted(src)
-			qdel(target)
 			target = null
 			usr.visible_message(SPAN_DANGER("<b>[usr] turns \the [src] on [M]!</b>"))
 		else
@@ -190,7 +188,6 @@
 	if(I.target)//To prevent runtimes. This whole thing is such an awful mess. Might come back to later, sigh. ~N
 		I.target.Remove(src) //De-target them
 		if(!I.target.len)
-			qdel(I.target) //What the hell.
 			I.target = null
 
 	var/mob/living/T = I.loc //Remove the targeting icons
@@ -199,7 +196,6 @@
 	if(!targeted_by.len)
 		qdel(target_locked) //Remove the overlay
 		target_locked = null
-		qdel(targeted_by)
 		targeted_by = null
 	spawn(1) update_targeted()
 

@@ -546,6 +546,8 @@ Additional game mode variables.
 	ghost_mind.transfer_to(new_queen) //The mind is fine, since we already labeled them as a xeno. Away they go.
 	ghost_mind.name = ghost_mind.current.name
 
+	new_queen.generate_name()
+
 	SSround_recording.recorder.track_player(new_queen)
 
 	to_chat(new_queen, "<B>You are now the alien queen!</B>")

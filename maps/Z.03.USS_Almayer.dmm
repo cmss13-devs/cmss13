@@ -834,13 +834,13 @@
 	},
 /area/almayer/squads/delta)
 "acq" = (
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 1
+	},
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "orange";
 	tag = "icon-orange (WEST)"
-	},
-/obj/structure/pipes/standard/manifold/hidden/supply{
-	dir = 1
 	},
 /turf/open/floor/almayer,
 /area/almayer/engineering/engineering_workshop)
@@ -11527,9 +11527,9 @@
 	dir = 1;
 	id = "researchdoorint";
 	name = "Research Interior Door";
+	normaldoorcontrol = 1;
 	pixel_x = -25;
 	pixel_y = -5;
-	normaldoorcontrol = 1;
 	req_access = list(28)
 	},
 /obj/structure/machinery/door_control{
@@ -17267,11 +17267,11 @@
 	},
 /area/almayer/living/bridgebunks)
 "aXg" = (
-/obj/structure/largecrate/random/barrel/red,
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 6;
+	tag = "icon-intact-supply (EAST)"
 	},
+/turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)
 "aXh" = (
 /obj/structure/largecrate/random/secure,
@@ -23319,11 +23319,11 @@
 	},
 /area/almayer/hallways/hangar)
 "brY" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/machinery/light{
-	dir = 8
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 9;
+	tag = "icon-intact-supply (NORTHWEST)"
 	},
-/turf/open/floor/almayer,
+/turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)
 "brZ" = (
 /obj/item/device/radio/intercom{
@@ -26527,8 +26527,16 @@
 	},
 /area/shuttle/drop2/sulaco)
 "bDn" = (
-/obj/item/tool/warning_cone,
-/turf/open/floor/plating/plating_catwalk,
+/obj/structure/machinery/landinglight/ds2/delaythree{
+	dir = 8;
+	icon_state = "landingstripe";
+	tag = "icon-landingstripe (WEST)"
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "red";
+	tag = "icon-red (NORTH)"
+	},
 /area/almayer/hallways/hangar)
 "bDp" = (
 /turf/closed/shuttle/dropship1{
@@ -27752,6 +27760,7 @@
 	tag = "icon-W"
 	},
 /obj/structure/prop/almayer/hangar_stencil,
+/obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -27763,7 +27772,6 @@
 	icon_state = "S";
 	tag = "icon-S"
 	},
-/obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -28033,8 +28041,11 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)
 "bHD" = (
-/obj/structure/pipes/standard/manifold/hidden/supply,
-/turf/open/floor/plating/plating_catwalk,
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "red";
+	tag = "icon-red (NORTH)"
+	},
 /area/almayer/hallways/hangar)
 "bHG" = (
 /obj/structure/machinery/light{
@@ -41703,16 +41714,12 @@
 	},
 /area/almayer/shipboard/sea_office)
 "gdp" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "NW-out";
-	tag = "icon-NW-out"
-	},
 /turf/open/floor/almayer{
 	dir = 1;
-	icon_regular_floor = "cargo_arrow";
-	icon_state = "cargo_arrow"
+	icon_state = "orange";
+	tag = "icon-orange (NORTH)"
 	},
-/area/almayer/engineering/engineering_workshop/hangar)
+/area/almayer/hallways/hangar)
 "gel" = (
 /turf/closed/wall/almayer/research/containment/wall/west,
 /area/almayer/medical/containment/cell/cl)
@@ -42200,10 +42207,11 @@
 	},
 /area/almayer/engineering/engineering_workshop/hangar)
 "gGs" = (
-/obj/structure/machinery/light{
-	dir = 4
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "emerald";
+	tag = "icon-emerald (NORTH)"
 	},
-/turf/open/floor/almayer,
 /area/almayer/hallways/hangar)
 "gGv" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
@@ -43000,6 +43008,10 @@
 	tag = "icon-blue (NORTHEAST)"
 	},
 /area/almayer/squads/req)
+"hBF" = (
+/obj/structure/pipes/standard/manifold/hidden/supply,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hallways/hangar)
 "hCo" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4;
@@ -45947,11 +45959,10 @@
 /turf/closed/wall/almayer,
 /area/almayer/engineering/engineering_workshop/hangar)
 "lcV" = (
-/obj/structure/largecrate/random/case,
-/obj/structure/machinery/light,
 /turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
+	dir = 1;
+	icon_state = "blue";
+	tag = "icon-blue (NORTH)"
 	},
 /area/almayer/hallways/hangar)
 "ldi" = (
@@ -48376,6 +48387,20 @@
 	tag = "icon-blue (NORTHWEST)"
 	},
 /area/almayer/hallways/aft_hallway)
+"nzB" = (
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2;
+	tag = "icon-door_open"
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 1;
+	tag = "icon-intact-supply (NORTH)"
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4";
+	tag = "icon-test_floor4"
+	},
+/area/almayer/engineering/engineering_workshop/hangar)
 "nzO" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/light{
@@ -48900,13 +48925,14 @@
 	},
 /area/almayer/medical/containment)
 "ojk" = (
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 2;
-	tag = "icon-door_open"
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	tag = "icon-NE-out"
 	},
 /turf/open/floor/almayer{
-	icon_state = "test_floor4";
-	tag = "icon-test_floor4"
+	dir = 1;
+	icon_regular_floor = "cargo_arrow";
+	icon_state = "cargo_arrow"
 	},
 /area/almayer/engineering/engineering_workshop/hangar)
 "okz" = (
@@ -49413,6 +49439,13 @@
 	tag = "icon-red (NORTH)"
 	},
 /area/almayer/command/cic)
+"oQK" = (
+/turf/open/floor/almayer{
+	dir = 9;
+	icon_state = "orange";
+	tag = "icon-orange (NORTHWEST)"
+	},
+/area/almayer/engineering/engineering_workshop/hangar)
 "oQL" = (
 /obj/structure/machinery/light,
 /obj/structure/surface/table/almayer,
@@ -50114,16 +50147,17 @@
 /turf/open/floor/wood,
 /area/almayer/living/captain_mess)
 "pMn" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "NE-out";
-	tag = "icon-NE-out"
+/obj/structure/machinery/landinglight/ds1/delaythree{
+	dir = 4;
+	icon_state = "landingstripe";
+	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/floor/almayer{
 	dir = 1;
-	icon_regular_floor = "cargo_arrow";
-	icon_state = "cargo_arrow"
+	icon_state = "blue";
+	tag = "icon-blue (NORTH)"
 	},
-/area/almayer/engineering/engineering_workshop/hangar)
+/area/almayer/hallways/hangar)
 "pMp" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer{
@@ -51245,12 +51279,16 @@
 	icon_state = "N";
 	tag = "icon-N"
 	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 1;
-	tag = "icon-intact-supply (NORTH)"
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	tag = "icon-W"
 	},
-/turf/open/floor/almayer,
-/area/almayer/engineering/engineering_workshop/hangar)
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hallways/hangar)
 "raA" = (
 /obj/structure/machinery/cm_vending/sorted/tech/electronics_storage,
 /turf/open/floor/almayer{
@@ -53586,18 +53624,15 @@
 	},
 /area/almayer/medical/containment/cell/cl)
 "tur" = (
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 2;
-	tag = "icon-door_open"
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	tag = "icon-N"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 1;
 	tag = "icon-intact-supply (NORTH)"
 	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4";
-	tag = "icon-test_floor4"
-	},
+/turf/open/floor/almayer,
 /area/almayer/engineering/engineering_workshop/hangar)
 "tuZ" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -55344,11 +55379,15 @@
 /turf/closed/wall/almayer,
 /area/almayer/squads/charlie/req)
 "vsF" = (
-/obj/structure/machinery/light{
-	dir = 1;
-	tag = "icon-tube1 (NORTH)"
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	tag = "icon-W"
 	},
-/turf/open/floor/plating/plating_catwalk,
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
 /area/almayer/hallways/hangar)
 "vtx" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
@@ -55671,6 +55710,17 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/hallways/port_hallway)
+"vMz" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	tag = "icon-NW-out"
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_regular_floor = "cargo_arrow";
+	icon_state = "cargo_arrow"
+	},
+/area/almayer/engineering/engineering_workshop/hangar)
 "vMI" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -55758,6 +55808,14 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/living/grunt_rnr)
+"vQS" = (
+/obj/structure/surface/table/almayer,
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "orange";
+	tag = "icon-orange (NORTHEAST)"
+	},
+/area/almayer/engineering/engineering_workshop/hangar)
 "vRa" = (
 /obj/structure/closet/secure_closet/sea,
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -56425,6 +56483,16 @@
 "wFR" = (
 /turf/open/floor/almayer,
 /area/almayer/living/gym)
+"wGy" = (
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2;
+	tag = "icon-door_open"
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4";
+	tag = "icon-test_floor4"
+	},
+/area/almayer/engineering/engineering_workshop/hangar)
 "wGX" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 1
@@ -77511,7 +77579,7 @@ baM
 bkd
 bdU
 bfV
-baM
+bDn
 bkd
 bdU
 bfV
@@ -77714,13 +77782,13 @@ bdV
 bqF
 aYt
 btO
-aYt
+bHD
 aTc
 aYt
-btO
-gGs
-btO
-btO
+aYt
+aYt
+aYt
+aYt
 aZM
 aTc
 bcc
@@ -77917,19 +77985,19 @@ aTc
 aTc
 aYt
 btO
-aYt
-aTc
-aYt
-bBN
-bcm
-vsF
-aYt
+btO
+btO
+btO
+btO
+btO
+btO
+btO
 bEE
 baO
 bcl
 bHB
-aTc
-aXg
+bSq
+cmp
 mod
 siH
 plv
@@ -78117,23 +78185,23 @@ bcm
 bdW
 bdW
 bcm
-bGR
+hmy
 aYt
 btO
-aYt
+gdp
 aTc
 aYt
-btO
-sEq
-btO
-btO
-btO
+aYt
+aYt
+aYt
+aYt
+aYt
 aYt
 aTc
 bHB
-btO
-lcV
+aTc
 cmp
+oQK
 mTn
 gwW
 bUb
@@ -78323,21 +78391,21 @@ bcn
 aTc
 aYt
 btO
-aYt
+gdp
 aTc
 aYt
 aYt
 aYt
-aTc
+aYt
 aYt
 boV
 aYt
 aTc
 bHB
 btO
-aTc
+wGy
 ojk
-pMn
+bWM
 gwW
 lOV
 bWM
@@ -78538,9 +78606,9 @@ aTc
 aTc
 oJp
 bvf
-baN
+nzB
 tur
-qXZ
+shd
 ssz
 oeM
 bWM
@@ -78729,21 +78797,21 @@ bcn
 aTc
 aYt
 btO
-aYt
+gGs
 aTc
 aYt
 aYt
 aYt
-aTc
+aYt
 aYt
 bre
 aYt
 aTc
 bnH
 btO
-aTc
-ojk
-gdp
+wGy
+vMz
+bWM
 kiF
 bWw
 bWM
@@ -78929,23 +78997,23 @@ bcm
 bdW
 bdW
 bcm
-bGR
+hmy
 aYt
 btO
-aYt
+gGs
 aTc
 aYt
-btO
-dTI
-btO
-bDn
-btO
+aYt
+aYt
+aYt
+boV
+aYt
 bFP
 aTc
 bHB
 btO
-aTc
 cmp
+vQS
 eCm
 xLl
 sJc
@@ -79134,20 +79202,20 @@ aTc
 aTc
 aTc
 aYt
-btO
-aYt
-aTc
-aYt
+aXg
+bvf
+bvf
+bvf
+bvf
+bvf
+bvf
+bvf
+qXZ
+vsF
+bGJ
+hBF
 bBN
 bcm
-vsF
-aYt
-aZS
-aYu
-bGJ
-bHB
-btO
-aTc
 bJo
 bJo
 bJo
@@ -79337,18 +79405,18 @@ aYt
 aYt
 aYt
 bpj
-bvf
-bdV
-baN
-bdV
-bvf
 brY
-bvf
-bvf
-aZT
-baN
+lcV
+aTc
+aYt
+aYt
+aYt
+aYt
+aYt
+aZM
+aTc
 bGK
-bHD
+bHB
 btO
 aTc
 bJo
@@ -79541,7 +79609,7 @@ baS
 bkh
 bea
 bfZ
-baS
+pMn
 bkh
 bea
 bfZ

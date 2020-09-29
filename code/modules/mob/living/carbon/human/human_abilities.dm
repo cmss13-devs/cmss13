@@ -263,11 +263,9 @@ CULT
 	if(!ishuman(owner))
 		return
 	var/mob/living/carbon/human/H = owner
-
-	if(!(H.hivenumber in hive_datum))
+	var/datum/hive_status/hive = LAZYACCESS(hive_datum, H.hivenumber)
+	if(!hive)
 		return
-
-	var/datum/hive_status/hive = hive_datum[H.hivenumber]
 
 	if(!hive.living_xeno_queen && !hive.allow_no_queen_actions)
 		return
@@ -411,7 +409,7 @@ CULT
 		return
 
 	var/mob/living/carbon/human/H = owner
-	
+
 	if(alert(H, "Are you sure you want to begin the mutiny?", "Begin Mutiny?", "Yes", "No") == "No")
 		return
 
@@ -427,7 +425,7 @@ CULT
 			XC.load_status(chosen)
 			to_chat(chosen, SPAN_HIGHDANGER("<hr>You are now a Mutineer!"))
 			to_chat(chosen, SPAN_DANGER("Please check the rules to see what you can and can't do as a mutineer.<hr>"))
-		
+
 		converted.remove_action(H)
 
 	message_staff("[key_name_admin(H)] has begun the mutiny.")

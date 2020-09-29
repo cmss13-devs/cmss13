@@ -886,6 +886,39 @@
 
 		message_staff("[key_name_admin(usr)] has made [key_name_admin(H)] into a mutineer leader.")
 
+	else if(href_list["makecultist"] || href_list["makecultistleader"])
+		if(!check_rights(R_DEBUG|R_SPAWN))	
+			return
+
+		var/mob/living/carbon/human/H = locate(href_list["makecultist"]) || locate(href_list["makecultistleader"])
+		if(!istype(H))
+			to_chat(usr, "This can only be done to instances of type /mob/living/carbon/human")
+			return
+
+		var/list/hives = list();
+		for(var/datum/hive_status/hive in hive_datum)
+			LAZYSET(hives, hive.name, hive)
+		LAZYSET(hives, "CANCEL", null)
+
+		var/hive_name = input("Which Hive will he belongs to") in hives
+		if(!hive_name || hive_name == "CANCEL")
+			to_chat(usr, SPAN_ALERT("Hive choice error. Aborting."))
+
+		var/datum/hive_status/hive = LAZYACCESS(hives, hive_name);
+
+		if(href_list["makecultist"])
+			var/datum/equipment_preset/other/xeno_cultist/XC = new()
+			XC.load_race(H, hive.hivenumber)
+			XC.load_status(H)
+			message_staff("[key_name_admin(usr)] has made [key_name_admin(H)] into a cultist for [hive.name].")
+
+		else if(href_list["makecultistleader"])
+			var/datum/equipment_preset/other/xeno_cultist/leader/XC = new()
+			XC.load_race(H, hive.hivenumber)
+			XC.load_status(H)
+			message_staff("[key_name_admin(usr)] has made [key_name_admin(H)] into a cultist leader for [hive.name].")
+
+		H.faction = hive.name
 
 	else if(href_list["forceemote"])
 		if(!check_rights(R_FUN))	return

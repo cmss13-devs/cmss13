@@ -71,7 +71,7 @@
 		var/obj/o = target
 		o.reagents.trans_to(src, 50)
 		to_chat(user, SPAN_NOTICE(" \The [src] is now refilled"))
-		playsound(src.loc, 'sound/effects/refill.ogg', 25, 1, 3)
+		playsound(user, 'sound/effects/refill.ogg', 25, 1, 3)
 		return
 
 	if(safety)
@@ -86,7 +86,7 @@
 
 	src.last_use = world.time
 
-	playsound(src.loc, 'sound/effects/extinguish.ogg', 52, 1, 7)
+	playsound(user, 'sound/effects/extinguish.ogg', 52, 1, 7)
 
 	if(target == user)
 		if(!isliving(user))

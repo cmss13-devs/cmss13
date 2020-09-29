@@ -39,6 +39,9 @@
 /obj/structure/platform/kutjevo{
 	dir = 8
 	},
+/obj/effect/landmark{
+	name = "hunter_primary"
+	},
 /turf/open/desert/desert_shore/desert_shore1{
 	dir = 1
 	},
@@ -515,6 +518,12 @@
 "bN" = (
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/complex/botany/east)
+"bO" = (
+/obj/effect/landmark{
+	name = "hunter_primary"
+	},
+/turf/open/floor/almayer/research/containment/floor2,
+/area/kutjevo/exterior/complex_border/botany_medical_cave)
 "bP" = (
 /obj/structure/bed/chair/office/light{
 	dir = 8
@@ -972,6 +981,7 @@
 	},
 /obj/item/circuitboard/aicore,
 /obj/effect/landmark/objective_landmark/close,
+/obj/item/clothing/suit/armor/vest/security,
 /turf/open/floor/kutjevo/tan/multi_tiles,
 /area/kutjevo/interior/complex/botany)
 "dr" = (
@@ -1069,6 +1079,7 @@
 	pixel_y = 24;
 	start_charge = 0
 	},
+/obj/item/clothing/suit/armor/vest/security,
 /turf/open/floor/kutjevo/colors/cyan/edge{
 	dir = 1
 	},
@@ -1889,6 +1900,7 @@
 /area/kutjevo/interior/complex/med/operating)
 "gt" = (
 /obj/structure/closet/emcloset,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/kutjevo/multi_tiles{
 	dir = 6
 	},
@@ -1982,6 +1994,7 @@
 "gG" = (
 /obj/structure/surface/table/almayer,
 /obj/item/card/id/pizza,
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/kutjevo/grey/plate,
 /area/kutjevo/interior/construction)
 "gH" = (
@@ -2155,6 +2168,12 @@
 	dir = 1
 	},
 /area/kutjevo/exterior/runoff_bridge)
+"ho" = (
+/obj/effect/landmark{
+	name = "hunter_secondary"
+	},
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/stonyfields)
 "hp" = (
 /turf/open/gm/dirtgrassborder2,
 /area/kutjevo/exterior/complex_border/med_park)
@@ -2581,6 +2600,12 @@
 /obj/effect/alien/weeds/node,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/colony_South)
+"iH" = (
+/obj/effect/landmark{
+	name = "hunter_secondary"
+	},
+/turf/open/floor/almayer/research/containment/floor2,
+/area/kutjevo/exterior/complex_border/botany_medical_cave)
 "iI" = (
 /obj/structure/largecrate/random/case/double,
 /turf/open/auto_turf/sand/layer0,
@@ -2648,6 +2673,11 @@
 /obj/structure/platform_decoration/kutjevo,
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/exterior/runoff_dunes)
+"iU" = (
+/obj/structure/surface/rack,
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/exterior/complex_border/botany_medical_cave)
 "iV" = (
 /obj/structure/platform/kutjevo{
 	dir = 1
@@ -2964,6 +2994,12 @@
 	},
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/colony_central)
+"kc" = (
+/obj/effect/landmark{
+	name = "hunter_primary"
+	},
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/stonyfields)
 "kd" = (
 /obj/structure/extinguisher_cabinet,
 /turf/closed/wall/kutjevo/colony/reinforced/hull,
@@ -3552,9 +3588,11 @@
 /turf/open/floor/kutjevo/tan/multi_tiles,
 /area/kutjevo/exterior/runoff_bridge)
 "me" = (
-/obj/structure/prop/dam/boulder/boulder2,
+/obj/effect/landmark{
+	name = "hunter_primary"
+	},
 /turf/open/auto_turf/sand/layer1,
-/area/kutjevo/exterior/lz_dunes)
+/area/kutjevo/interior/colony_north)
 "mg" = (
 /obj/structure/surface/table/gamblingtable,
 /obj/effect/spawner/random/tool,
@@ -3823,6 +3861,7 @@
 "nc" = (
 /obj/structure/surface/table/almayer,
 /obj/item/trash/candle,
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/kutjevo/plate,
 /area/kutjevo/interior/colony_central)
 "nd" = (
@@ -4117,6 +4156,14 @@
 /obj/structure/prop/dam/boulder/boulder1,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/runoff_dunes)
+"nW" = (
+/obj/effect/landmark{
+	name = "hunter_secondary"
+	},
+/turf/open/desert/desert_shore/desert_shore1{
+	dir = 1
+	},
+/area/kutjevo/exterior/lz_river)
 "nY" = (
 /obj/structure/flora/bush/desert{
 	icon_state = "tree_4"
@@ -4318,6 +4365,7 @@
 /obj/item/clothing/head/welding,
 /obj/item/clothing/head/welding,
 /obj/effect/spawner/random/tool,
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/construction)
 "oG" = (
@@ -4525,6 +4573,10 @@
 /obj/structure/platform_decoration/kutjevo,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/scrubland)
+"pt" = (
+/obj/structure/flora/grass/tallgrass/desert/corner,
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/lz_dunes)
 "pu" = (
 /obj/structure/machinery/light,
 /turf/open/floor/kutjevo/colors/orange/edge,
@@ -4869,10 +4921,12 @@
 /area/kutjevo/interior/complex/med/locks)
 "qE" = (
 /obj/structure/largecrate/supply/supplies/mre,
+/obj/item/clothing/suit/armor/vest/security,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/complex_border/botany_medical_cave)
 "qF" = (
 /obj/structure/filingcabinet,
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/construction)
 "qG" = (
@@ -5408,7 +5462,9 @@
 /area/kutjevo/exterior/scrubland)
 "su" = (
 /obj/structure/reagent_dispensers/fueltank,
-/turf/open/gm/river/desert/deep/covered,
+/turf/open/floor/kutjevo/multi_tiles{
+	dir = 10
+	},
 /area/kutjevo/interior/colony_South/power2)
 "sv" = (
 /obj/structure/blocker/invisible_wall,
@@ -5826,11 +5882,11 @@
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/power)
 "tM" = (
-/obj/structure/platform/kutjevo/smooth{
-	dir = 8
+/obj/effect/landmark{
+	name = "hunter_secondary"
 	},
-/turf/open/gm/river/desert/deep/covered,
-/area/kutjevo/interior/colony_South/power2)
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/interior/colony_north)
 "tN" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
@@ -5982,6 +6038,7 @@
 /area/kutjevo/interior/complex/med)
 "ul" = (
 /obj/structure/closet/firecloset/full,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/interior/complex/med/locks)
 "um" = (
@@ -7906,6 +7963,7 @@
 "AI" = (
 /obj/structure/surface/table/almayer,
 /obj/item/weapon/gun/revolver/cmb,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/kutjevo/colors/purple,
 /area/kutjevo/interior/construction)
 "AJ" = (
@@ -8399,6 +8457,7 @@
 	name = "\improper M37-17 pump shotgun";
 	unacidable = 1
 	},
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/kutjevo/grey/plate,
 /area/kutjevo/interior/construction)
 "Ct" = (
@@ -8930,6 +8989,7 @@
 /obj/item/device/multitool,
 /obj/structure/surface/table/almayer,
 /obj/item/clothing/glasses/thermal/syndi,
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/construction)
 "Eg" = (
@@ -9038,6 +9098,7 @@
 	pixel_y = 24;
 	start_charge = 0
 	},
+/obj/item/clothing/suit/armor/vest/security,
 /turf/open/floor/kutjevo/colors/cyan/tile,
 /area/kutjevo/interior/complex/med/cells)
 "EB" = (
@@ -9145,6 +9206,7 @@
 	pixel_y = -6
 	},
 /obj/item/ammo_magazine/revolver/cmb,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/kutjevo/colors/purple,
 /area/kutjevo/interior/construction)
 "ER" = (
@@ -9975,6 +10037,7 @@
 	pixel_x = -2;
 	pixel_y = 5
 	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/kutjevo/multi_tiles{
 	dir = 6
 	},
@@ -10027,6 +10090,7 @@
 /area/kutjevo/interior/complex/botany)
 "HP" = (
 /obj/structure/machinery/optable,
+/obj/item/clothing/suit/armor/vest/security,
 /turf/open/floor/kutjevo/colors/cyan/edge,
 /area/kutjevo/interior/complex/med)
 "HQ" = (
@@ -10837,9 +10901,11 @@
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/scrubland)
 "KM" = (
-/obj/structure/flora/grass/tallgrass/desert/corner,
+/obj/effect/landmark{
+	name = "hunter_primary"
+	},
 /turf/open/auto_turf/sand/layer0,
-/area/kutjevo/exterior/lz_dunes)
+/area/kutjevo/exterior/scrubland)
 "KN" = (
 /obj/structure/platform_decoration/kutjevo,
 /obj/structure/window/framed/kutjevo/reinforced,
@@ -11690,6 +11756,7 @@
 "Nn" = (
 /obj/structure/surface/table/almayer,
 /obj/item/storage/fancy/cigarettes/lady_finger,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/kutjevo/colors/purple,
 /area/kutjevo/interior/construction)
 "No" = (
@@ -12218,6 +12285,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/kutjevo/colors/orange/inner_corner{
 	dir = 1
 	},
@@ -12549,6 +12617,7 @@
 /obj/structure/platform/kutjevo{
 	dir = 8
 	},
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/coagulation{
 	icon_state = "0,8"
 	},
@@ -12566,7 +12635,9 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/turf/open/gm/river/desert/deep/covered,
+/turf/open/floor/kutjevo/multi_tiles{
+	dir = 10
+	},
 /area/kutjevo/interior/colony_South/power2)
 "Qo" = (
 /obj/structure/platform/kutjevo{
@@ -12640,6 +12711,7 @@
 "QA" = (
 /obj/structure/surface/table/almayer,
 /obj/item/ammo_magazine/shotgun/buckshot,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/kutjevo/colors/purple,
 /area/kutjevo/interior/construction)
 "QB" = (
@@ -12879,6 +12951,7 @@
 "Rt" = (
 /obj/effect/spawner/random/toolbox,
 /obj/structure/surface/table/almayer,
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/construction)
 "Ru" = (
@@ -13508,6 +13581,11 @@
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/power)
+"Tz" = (
+/obj/structure/closet/crate/trashcart,
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/interior/construction)
 "TA" = (
 /obj/item/storage/toolbox/electrical,
 /turf/open/floor/kutjevo/colors/orange,
@@ -13757,8 +13835,11 @@
 /turf/open/floor/kutjevo/colors/cyan,
 /area/kutjevo/interior/complex/med/triage)
 "Uu" = (
-/turf/open/gm/river/desert/deep/covered,
-/area/kutjevo/interior/colony_South/power2)
+/obj/effect/landmark{
+	name = "hunter_secondary"
+	},
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/scrubland)
 "Uv" = (
 /obj/structure/machinery/cm_vending/sorted/tech/electronics_storage,
 /turf/open/floor/kutjevo/multi_tiles{
@@ -14457,6 +14538,10 @@
 "WL" = (
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/exterior/runoff_dunes)
+"WM" = (
+/obj/structure/reagent_dispensers/fueltank,
+/turf/open/floor/kutjevo/colors/orange/tile,
+/area/kutjevo/interior/power_pt2_electric_boogaloo)
 "WN" = (
 /obj/structure/machinery/disposal,
 /obj/effect/decal/medical_decals{
@@ -14654,14 +14739,9 @@
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/construction)
 "Xu" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
-/obj/item/storage/belt/shotgun,
-/turf/open/floor/kutjevo/multi_tiles,
-/area/kutjevo/interior/power)
+/obj/item/clothing/suit/armor/vest/security,
+/turf/open/floor/kutjevo/tan/grey_edge,
+/area/kutjevo/interior/complex/med)
 "Xv" = (
 /turf/open/floor/kutjevo/tan/multi_tiles,
 /area/kutjevo/exterior/complex_border/med_rec)
@@ -19622,7 +19702,7 @@ It
 It
 ys
 jk
-XT
+jk
 XT
 XT
 XT
@@ -19789,7 +19869,7 @@ Kv
 Kv
 Kv
 jk
-XT
+jk
 XT
 XT
 XT
@@ -19954,11 +20034,11 @@ Kv
 Kv
 Kv
 Kv
+jk
+jk
+jk
 XT
 XT
-XT
-XT
-Kg
 Kg
 Kg
 Kg
@@ -20086,7 +20166,7 @@ dj
 dj
 dj
 dj
-vI
+nW
 UK
 xa
 ND
@@ -20121,9 +20201,9 @@ Kv
 Kv
 Kv
 Kv
-XT
-Kg
-Kg
+jk
+jk
+jk
 Kg
 Kg
 Zk
@@ -20289,9 +20369,9 @@ Kv
 Kv
 Kv
 Kv
-KM
-Zk
-Zk
+Kv
+Kv
+pt
 Zk
 Zk
 Zk
@@ -20455,10 +20535,10 @@ jk
 Kv
 Kv
 Kv
-me
+Kv
+Kv
+Kv
 Go
-ZQ
-ZQ
 ZQ
 ZQ
 wt
@@ -24310,7 +24390,7 @@ fo
 fo
 fo
 la
-Xu
+gX
 ZZ
 fo
 lv
@@ -25050,7 +25130,7 @@ dj
 dj
 dj
 Dn
-Uq
+KM
 Uq
 Uq
 wF
@@ -25217,7 +25297,7 @@ dj
 dj
 Dn
 Uq
-Uq
+Uu
 Uq
 Ab
 Uq
@@ -30984,7 +31064,7 @@ Fi
 Fi
 Fi
 ma
-Fi
+kc
 ma
 ma
 ma
@@ -31151,7 +31231,7 @@ Fi
 Fi
 ma
 Fi
-ma
+ho
 ma
 ma
 dj
@@ -32734,7 +32814,7 @@ Zr
 jz
 yC
 Gi
-VI
+Xu
 gh
 ky
 Zr
@@ -34913,7 +34993,7 @@ ky
 Zr
 ky
 NS
-DC
+iU
 DC
 SD
 eN
@@ -35080,9 +35160,9 @@ ky
 Zr
 ky
 NS
+iU
 DC
-DC
-SD
+bO
 eN
 EB
 Je
@@ -35247,9 +35327,9 @@ ky
 ky
 ky
 NS
+iU
 DC
-DC
-SD
+iH
 eN
 EB
 Je
@@ -37103,7 +37183,7 @@ cG
 cG
 cG
 cG
-cG
+WM
 Tp
 GK
 CR
@@ -40608,7 +40688,7 @@ wE
 wE
 wE
 As
-tM
+wP
 As
 Zw
 ry
@@ -40776,7 +40856,7 @@ wE
 wE
 su
 iE
-Uu
+iE
 XK
 gm
 gm
@@ -40943,7 +41023,7 @@ wE
 wE
 Qn
 iE
-Uu
+iE
 JF
 gm
 gm
@@ -41109,7 +41189,7 @@ wE
 wE
 wE
 DX
-Uu
+iE
 DX
 JF
 gm
@@ -41275,9 +41355,9 @@ CU
 wE
 wE
 wE
-Uu
 iE
-Uu
+iE
+iE
 JF
 gm
 cq
@@ -41444,7 +41524,7 @@ wE
 wE
 Qn
 iE
-Uu
+iE
 JF
 AM
 cq
@@ -41610,7 +41690,7 @@ wE
 wE
 wE
 DX
-Uu
+iE
 DX
 JF
 hh
@@ -42266,7 +42346,7 @@ ca
 aN
 HW
 Qw
-oP
+Tz
 lc
 oS
 bY
@@ -47075,7 +47155,7 @@ YY
 ZG
 Ap
 Ap
-ZG
+me
 ZG
 ZG
 ZG
@@ -47242,7 +47322,7 @@ ZG
 ZG
 ZG
 ZG
-ZG
+tM
 ZG
 ZG
 YY

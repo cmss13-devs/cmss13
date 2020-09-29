@@ -75,12 +75,15 @@
 
 /obj/item/clothing/suit/storage/jacket/marine/dress/officer
 	name = "marine officer dress jacket"
+	desc = "Dress Jacket worn by Commanding Officer's of the USCM."
 	icon_state = "co_jacket"
 
 /obj/item/clothing/suit/storage/jacket/marine/dress/officer/bomber
 	name = "commanding officer bomber jacket"
+	desc = "A Bomber Jacket resembling those worn by Pilots of old. Stylish."
 	icon_state = "co_bomber"
 
 /obj/item/clothing/suit/storage/jacket/marine/dress/officer/trenchcoat
 	name = "commanding officer trenchcoat"
+	desc = "A trenchcoat designed to be worn during harsh weather in order to keep your uniform nice and tidy. In space, it's proven rather stylish."
 	icon_state = "co_trenchcoat"

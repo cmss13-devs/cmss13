@@ -119,9 +119,9 @@ SUBSYSTEM_DEF(atoms)
 			. += "- Slept during Initialize()\n"
 
 /datum/controller/subsystem/atoms/Shutdown()
-//	var/initlog = InitLog()
-//	if(initlog)
-//		text2file(initlog, "[GLOB.log_directory]/initialize.log")
+	var/initlog = InitLog()
+	if(initlog)
+		text2file(initlog, "data/initialize.log")
 
 #undef BAD_INIT_QDEL_BEFORE
 #undef BAD_INIT_DIDNT_INIT

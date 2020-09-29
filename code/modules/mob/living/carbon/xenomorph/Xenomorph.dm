@@ -764,8 +764,6 @@
 			hive.add_xeno(src)
 			hive.hive_ui.update_all_xeno_data()
 
-		if(caste_name == "Queen")
-			New()
 	armor_integrity = 100
 	..()
 	hud_update()

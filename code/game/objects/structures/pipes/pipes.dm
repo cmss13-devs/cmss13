@@ -13,8 +13,9 @@
 
 	var/ventcrawl_message_busy = 0 //Prevent spamming
 
-/obj/structure/pipes/Initialize()
+/obj/structure/pipes/Initialize(mapload, ...)
 	. = ..()
+	
 	if(!icon_manager)
 		icon_manager = new()
 
@@ -29,9 +30,10 @@
 		qdel(pipe_vision_img)
 		pipe_vision_img = null
 
-	create_valid_directions()
+	if(mapload)
+		create_valid_directions()
 	
-	search_for_connections()
+		search_for_connections()
 
 /obj/structure/pipes/Destroy()
 	for(var/mob/living/M in src)
@@ -65,10 +67,7 @@
 /obj/structure/pipes/proc/create_valid_directions()
 	return
 
-/obj/structure/pipes/proc/search_for_connections(var/recursion_check = 0)
-	if(recursion_check > 4) // We allow it to go 5 times.
-		return
-
+/obj/structure/pipes/proc/search_for_connections()
 	for(var/direction in valid_directions)
 		var/turf/T = get_step(src, direction)
 		for(var/obj/structure/pipes/P in T)
@@ -77,10 +76,7 @@
 				add_connection(P)
 				break
 
-	if(!length(connected_to))
-		addtimer(CALLBACK(src, .proc/search_for_connections, recursion_check + 1), 1)
-	else
-		addtimer(CALLBACK(src, .proc/update_icon), 5)
+	update_icon()
 
 /obj/structure/pipes/proc/add_connection(var/obj/structure/pipes/P)
 	addToListNoDupe(connected_to, P)

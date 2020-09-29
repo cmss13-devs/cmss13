@@ -41,10 +41,13 @@
 	var/list/noblend_objects = list(/obj/structure/machinery/door/window) //Objects to avoid blending with (such as children of listed blend objects.
 
 
-/turf/closed/wall/New()
-	..()
-	addtimer(CALLBACK(src, .proc/update_connections, 1), 5)
-	addtimer(CALLBACK(src, .proc/update_icon, 1), 5.1)
+/turf/closed/wall/Initialize(mapload, ...)
+	. = ..()
+	
+	if(mapload)
+		update_connections()
+
+		update_icon()
 
 
 /turf/closed/wall/ChangeTurf(newtype)

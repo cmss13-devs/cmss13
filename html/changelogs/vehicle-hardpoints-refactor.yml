@@ -1,0 +1,8 @@
+author: Jeser
+
+delete-after: True
+
+changes: 
+  - experiment: "Big backend changes to hardpoints. Nothing should change gameplay wise for now. All categories of hardpoints now support passive buffs, active abilities, armor resistances changes and gun behaviours."
+  - rscadd: "Added backend support for modules, activatable by vehicle driver."
+  - bugfix: "Fixed OD still working with treads broken and missing."

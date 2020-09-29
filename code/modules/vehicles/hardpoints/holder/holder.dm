@@ -1,6 +1,6 @@
 /obj/item/hardpoint/holder
 	name = "holder hardpoint"
-	desc = "i hold other hardpoints :)"
+	desc = "Holder for other hardpoints"
 
 	// List of types of hardpoints that this hardpoint can hold
 	var/list/accepted_hardpoints
@@ -134,10 +134,20 @@
 	if(H.health <= 0)
 		qdel(H)
 
-/obj/item/hardpoint/holder/proc/get_activatable_hardpoints()
+//Returns all activatable hardpoints
+/obj/item/hardpoint/holder/proc/get_activatable_hardpoints(var/seat)
 	var/list/hps = list()
 	for(var/obj/item/hardpoint/H in hardpoints)
-		if(!H.is_activatable())
+		if(!H.is_activatable() || seat && seat != H.allowed_seat)
+			continue
+		hps += H
+	return hps
+
+//Returns hardpoints that use ammunition
+/obj/item/hardpoint/holder/proc/get_hardpoints_with_ammo(var/seat)
+	var/list/hps = list()
+	for(var/obj/item/hardpoint/H in hardpoints)
+		if(!H.ammo || seat && seat != H.allowed_seat)
 			continue
 		hps += H
 	return hps

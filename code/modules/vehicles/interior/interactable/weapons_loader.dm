@@ -22,8 +22,8 @@
 		return
 
 	// Check if any of the hardpoints accept the magazine
-	var/obj/item/hardpoint/gun/reloading_hardpoint = null
-	for(var/obj/item/hardpoint/gun/H in vehicle.get_hardpoints())
+	var/obj/item/hardpoint/reloading_hardpoint = null
+	for(var/obj/item/hardpoint/H in vehicle.get_hardpoints_with_ammo())
 		if(QDELETED(H) || QDELETED(H.ammo))
 			continue
 
@@ -39,7 +39,7 @@
 
 // Hardpoint reloading
 /obj/structure/weapons_loader/attack_hand(var/mob/user)
-	var/list/hps = vehicle.get_gun_hardpoints()
+	var/list/hps = vehicle.get_hardpoints_with_ammo()
 
 	if(!skillcheck(user, SKILL_VEHICLE, SKILL_VEHICLE_LARGE))
 		to_chat(user, SPAN_NOTICE("You have no idea how to operate this thing!"))
@@ -53,7 +53,7 @@
 	if(chosen_hp == "Cancel")
 		return
 
-	var/obj/item/hardpoint/gun/HP = chosen_hp
+	var/obj/item/hardpoint/HP = chosen_hp
 
 	// If someone removed the hardpoint while their dialogue was open or something
 	if(QDELETED(HP))
@@ -63,7 +63,7 @@
 		to_chat(user, SPAN_WARNING("\The [HP] has no remaining backup magazines!"))
 		return
 
-	var/obj/item/ammo_magazine/M = HP.backup_clips[1]
+	var/obj/item/ammo_magazine/M = LAZYACCESS(HP.backup_clips, 1)
 	if(!M)
 		to_chat(user, SPAN_DANGER("Something went wrong! PM a staff member! Code: T_RHPN"))
 		return
@@ -77,7 +77,7 @@
 	HP.ammo.loc = get_turf(src)
 	HP.ammo.update_icon()
 	HP.ammo = M
-	HP.backup_clips.Remove(M)
+	LAZYREMOVE(HP.backup_clips, M)
 
 	playsound(loc, 'sound/machines/hydraulics_3.ogg', 50)
 	to_chat(user, SPAN_NOTICE("You reload the \the [HP]."))

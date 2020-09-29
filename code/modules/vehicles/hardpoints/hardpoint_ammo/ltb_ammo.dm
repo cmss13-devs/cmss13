@@ -6,7 +6,7 @@
 	w_class = SIZE_LARGE //Heavy fucker
 	default_ammo = /datum/ammo/rocket/ltb
 	max_rounds = 4
-	gun_type = /obj/item/hardpoint/gun/cannon
+	gun_type = /obj/item/hardpoint/primary/cannon
 	point_cost = 200
 
 /obj/item/ammo_magazine/hardpoint/ltb_cannon/update_icon()

@@ -1,4 +1,4 @@
-/obj/item/hardpoint/gun/towlauncher
+/obj/item/hardpoint/secondary/towlauncher
 	name = "TOW Launcher"
 	desc = "A secondary weapon for tanks that shoots rockets"
 
@@ -6,11 +6,7 @@
 	disp_icon = "tank"
 	disp_icon_state = "towlauncher"
 
-	slot = HDPT_SECONDARY
-
-	point_cost = 500
 	health = 500
-	damage_multiplier = 0.125
 	cooldown = 150
 	accuracy = 0.8
 	firing_arc = 60
@@ -18,6 +14,7 @@
 	origins = list(0, -2)
 
 	ammo = new /obj/item/ammo_magazine/hardpoint/towlauncher
+	max_clips = 1
 
 	px_offsets = list(
 		"1" = list(1, 10),

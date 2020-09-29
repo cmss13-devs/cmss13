@@ -75,17 +75,17 @@
 				list("Secondary Flamer Unit", 0, /obj/effect/essentials_set/tank/tankflamer, VEHICLE_SECONDARY_AVAILABLE, VENDOR_ITEM_RECOMMENDED),
 
 				list("SUPPORT MODULE", 0, null, null, null),
-				list("Artillery Module", 0, /obj/item/hardpoint/artillery_module, VEHICLE_SUPPORT_AVAILABLE, VENDOR_ITEM_REGULAR),
-				list("Integrated Weapons Sensor Array", 0, /obj/item/hardpoint/buff/support/weapons_sensor, VEHICLE_SUPPORT_AVAILABLE, VENDOR_ITEM_REGULAR),
-				list("Overdrive Enhancer", 0, /obj/item/hardpoint/buff/support/overdrive_enhancer, VEHICLE_SUPPORT_AVAILABLE, VENDOR_ITEM_RECOMMENDED),
+				list("Artillery Module", 0, /obj/item/hardpoint/support/artillery_module, VEHICLE_SUPPORT_AVAILABLE, VENDOR_ITEM_REGULAR),
+				list("Integrated Weapons Sensor Array", 0, /obj/item/hardpoint/support/weapons_sensor, VEHICLE_SUPPORT_AVAILABLE, VENDOR_ITEM_REGULAR),
+				list("Overdrive Enhancer", 0, /obj/item/hardpoint/support/overdrive_enhancer, VEHICLE_SUPPORT_AVAILABLE, VENDOR_ITEM_RECOMMENDED),
 				list("Smoke Launcher", 0, /obj/effect/essentials_set/tank/tanksl, VEHICLE_SUPPORT_AVAILABLE, VENDOR_ITEM_REGULAR),
 
 				list("ARMOR", 0, null, null, null),
-				list("Ballistic Armor", 0, /obj/item/hardpoint/buff/armor/ballistic, VEHICLE_ARMOR_AVAILABLE, VENDOR_ITEM_RECOMMENDED),
-				list("Caustic Armor", 0, /obj/item/hardpoint/buff/armor/caustic, VEHICLE_ARMOR_AVAILABLE, VENDOR_ITEM_REGULAR),
-				list("Concussive Armor", 0, /obj/item/hardpoint/buff/armor/concussive, VEHICLE_ARMOR_AVAILABLE, VENDOR_ITEM_REGULAR),
-				list("Paladin Armor", 0, /obj/item/hardpoint/buff/armor/paladin, VEHICLE_ARMOR_AVAILABLE, VENDOR_ITEM_REGULAR),
-				list("Snowplow", 0, /obj/item/hardpoint/buff/armor/snowplow, VEHICLE_ARMOR_AVAILABLE, VENDOR_ITEM_REGULAR),
+				list("Ballistic Armor", 0, /obj/item/hardpoint/armor/ballistic, VEHICLE_ARMOR_AVAILABLE, VENDOR_ITEM_RECOMMENDED),
+				list("Caustic Armor", 0, /obj/item/hardpoint/armor/caustic, VEHICLE_ARMOR_AVAILABLE, VENDOR_ITEM_REGULAR),
+				list("Concussive Armor", 0, /obj/item/hardpoint/armor/concussive, VEHICLE_ARMOR_AVAILABLE, VENDOR_ITEM_REGULAR),
+				list("Paladin Armor", 0, /obj/item/hardpoint/armor/paladin, VEHICLE_ARMOR_AVAILABLE, VENDOR_ITEM_REGULAR),
+				list("Snowplow", 0, /obj/item/hardpoint/armor/snowplow, VEHICLE_ARMOR_AVAILABLE, VENDOR_ITEM_REGULAR),
 
 				list("TREADS", 0, null, null, null),
 				list("Robus-Treads", 0, /obj/item/hardpoint/locomotion/treads/robust, VEHICLE_TREADS_AVAILABLE, VENDOR_ITEM_REGULAR),
@@ -99,10 +99,10 @@
 				list("M34A2-A Multipurpose Turret", 500, /obj/item/hardpoint/holder/tank_turret, null, VENDOR_ITEM_REGULAR),
 
 				list("PRIMARY WEAPON", 0, null, null, null),
-				list("AC3-E Autocannon", 200, /obj/item/hardpoint/gun/autocannon, null, VENDOR_ITEM_REGULAR),
-				list("DRG-N Offensive Flamer Unit", 200, /obj/item/hardpoint/gun/flamer, null, VENDOR_ITEM_REGULAR),
-				list("LTAA-AP Minigun", 200, /obj/item/hardpoint/gun/minigun, null, VENDOR_ITEM_REGULAR),
-				list("LTB Cannon", 400, /obj/item/hardpoint/gun/cannon, null, VENDOR_ITEM_RECOMMENDED),
+				list("AC3-E Autocannon", 200, /obj/item/hardpoint/primary/autocannon, null, VENDOR_ITEM_REGULAR),
+				list("DRG-N Offensive Flamer Unit", 200, /obj/item/hardpoint/primary/flamer, null, VENDOR_ITEM_REGULAR),
+				list("LTAA-AP Minigun", 200, /obj/item/hardpoint/primary/minigun, null, VENDOR_ITEM_REGULAR),
+				list("LTB Cannon", 400, /obj/item/hardpoint/primary/cannon, null, VENDOR_ITEM_RECOMMENDED),
 
 				list("PRIMARY AMMUNITION", 0, null, null, null),
 				list("AC3-E Autocannon Magazine", 100, /obj/item/ammo_magazine/hardpoint/ace_autocannon, null, VENDOR_ITEM_REGULAR),
@@ -111,10 +111,10 @@
 				list("LTB Cannon Magazine", 100, /obj/item/ammo_magazine/hardpoint/ltb_cannon, null, VENDOR_ITEM_REGULAR),
 
 				list("SECONDARY WEAPON", 0, null, null, null),
-				list("Grenade Launcher", 200, /obj/item/hardpoint/gun/grenade_launcher, null, VENDOR_ITEM_REGULAR),
-				list("M56 Cupola", 200, /obj/item/hardpoint/gun/m56cupola, null, VENDOR_ITEM_REGULAR),
-				list("Secondary Flamer Unit", 200, /obj/item/hardpoint/gun/small_flamer, null, VENDOR_ITEM_REGULAR),
-				list("TOW Launcher", 300, /obj/item/hardpoint/gun/towlauncher, null, VENDOR_ITEM_REGULAR),
+				list("Grenade Launcher", 200, /obj/item/hardpoint/secondary/grenade_launcher, null, VENDOR_ITEM_REGULAR),
+				list("M56 Cupola", 200, /obj/item/hardpoint/secondary/m56cupola, null, VENDOR_ITEM_REGULAR),
+				list("Secondary Flamer Unit", 200, /obj/item/hardpoint/secondary/small_flamer, null, VENDOR_ITEM_REGULAR),
+				list("TOW Launcher", 300, /obj/item/hardpoint/secondary/towlauncher, null, VENDOR_ITEM_REGULAR),
 
 				list("SECONDARY AMMUNITION", 0, null, null, null),
 				list("Grenade Launcher Magazine", 50, /obj/item/ammo_magazine/hardpoint/tank_glauncher, null, VENDOR_ITEM_REGULAR),
@@ -123,20 +123,20 @@
 				list("TOW Launcher Magazine", 50, /obj/item/ammo_magazine/hardpoint/towlauncher, null, VENDOR_ITEM_REGULAR),
 
 				list("SUPPORT MODULE", 0, null, null, null),
-				list("Artillery Module", 300, /obj/item/hardpoint/artillery_module, null, VENDOR_ITEM_REGULAR),
-				list("Integrated Weapons Sensor Array", 200, /obj/item/hardpoint/buff/support/weapons_sensor, null, VENDOR_ITEM_REGULAR),
-				list("Overdrive Enhancer", 200, /obj/item/hardpoint/buff/support/overdrive_enhancer, null, VENDOR_ITEM_REGULAR),
-				list("Smoke Launcher", 100, /obj/item/hardpoint/gun/smoke_launcher, null, VENDOR_ITEM_REGULAR),
+				list("Artillery Module", 300, /obj/item/hardpoint/support/artillery_module, null, VENDOR_ITEM_REGULAR),
+				list("Integrated Weapons Sensor Array", 200, /obj/item/hardpoint/support/weapons_sensor, null, VENDOR_ITEM_REGULAR),
+				list("Overdrive Enhancer", 200, /obj/item/hardpoint/support/overdrive_enhancer, null, VENDOR_ITEM_REGULAR),
+				list("Smoke Launcher", 100, /obj/item/hardpoint/support/smoke_launcher, null, VENDOR_ITEM_REGULAR),
 
 				list("SUPPORT AMMUNITION", 0, null, null, null),
 				list("Smoke Launcher Magazine", 50, /obj/item/ammo_magazine/hardpoint/tank_slauncher, null, VENDOR_ITEM_REGULAR),
 
 				list("ARMOR", 0, null, null, null),
-				list("Ballistic Armor", 300, /obj/item/hardpoint/buff/armor/ballistic, null, VENDOR_ITEM_REGULAR),
-				list("Caustic Armor", 300, /obj/item/hardpoint/buff/armor/caustic, null, VENDOR_ITEM_REGULAR),
-				list("Concussive Armor", 300, /obj/item/hardpoint/buff/armor/concussive, null, VENDOR_ITEM_REGULAR),
-				list("Paladin Armor", 300, /obj/item/hardpoint/buff/armor/paladin, null, VENDOR_ITEM_REGULAR),
-				list("Snowplow", 200, /obj/item/hardpoint/buff/armor/snowplow, null, VENDOR_ITEM_REGULAR),
+				list("Ballistic Armor", 300, /obj/item/hardpoint/armor/ballistic, null, VENDOR_ITEM_REGULAR),
+				list("Caustic Armor", 300, /obj/item/hardpoint/armor/caustic, null, VENDOR_ITEM_REGULAR),
+				list("Concussive Armor", 300, /obj/item/hardpoint/armor/concussive, null, VENDOR_ITEM_REGULAR),
+				list("Paladin Armor", 300, /obj/item/hardpoint/armor/paladin, null, VENDOR_ITEM_REGULAR),
+				list("Snowplow", 200, /obj/item/hardpoint/armor/snowplow, null, VENDOR_ITEM_REGULAR),
 
 				list("TREADS", 0, null, null, null),
 				list("Robus-Treads", 200, /obj/item/hardpoint/locomotion/treads/robust, null, VENDOR_ITEM_REGULAR),
@@ -165,19 +165,19 @@
 				list("[selected_vehicle] SPARE PARTS SELECTION:", 0, null, null, null),
 
 				list("PRIMARY WEAPON", 0, null, null, null),
-				list("PARS-159 Boyars Dualcannon", 500, /obj/item/hardpoint/gun/dualcannon, null, VENDOR_ITEM_REGULAR),
+				list("PARS-159 Boyars Dualcannon", 500, /obj/item/hardpoint/primary/dualcannon, null, VENDOR_ITEM_REGULAR),
 
 				list("PRIMARY AMMUNITION", 0, null, null, null),
 				list("PARS-159 Dualcannon Magazine", 150, /obj/item/ammo_magazine/hardpoint/ace_autocannon, null, VENDOR_ITEM_REGULAR),
 
 				list("SECONDARY WEAPON", 0, null, null, null),
-				list("RE-RE700 Frontal Cannon", 400, /obj/item/hardpoint/gun/frontalcannon, null, VENDOR_ITEM_REGULAR),
+				list("RE-RE700 Frontal Cannon", 400, /obj/item/hardpoint/secondary/frontalcannon, null, VENDOR_ITEM_REGULAR),
 
 				list("SECONDARY AMMUNITION", 0, null, null, null),
 				list("RE-RE700 Frontal Cannon Magazine", 150, /obj/item/ammo_magazine/hardpoint/tank_glauncher, null, VENDOR_ITEM_REGULAR),
 
 				list("SUPPORT MODULE", 0, null, null, null),
-				list("Flare Launcher", 300, /obj/item/hardpoint/gun/flare_launcher, null, VENDOR_ITEM_REGULAR),
+				list("Flare Launcher", 300, /obj/item/hardpoint/support/flare_launcher, null, VENDOR_ITEM_REGULAR),
 
 				list("SUPPORT AMMUNITION", 0, null, null, null),
 				list("Flare Launcher Magazine", 50, /obj/item/ammo_magazine/hardpoint/tank_slauncher, null, VENDOR_ITEM_REGULAR),
@@ -463,7 +463,7 @@
 //Not essentials sets but fuck it the code's here
 /obj/effect/essentials_set/tank/ltb
 	spawned_gear_list = list(
-		/obj/item/hardpoint/gun/cannon,
+		/obj/item/hardpoint/primary/cannon,
 		/obj/item/ammo_magazine/hardpoint/ltb_cannon,
 		/obj/item/ammo_magazine/hardpoint/ltb_cannon,
 		/obj/item/ammo_magazine/hardpoint/ltb_cannon,
@@ -473,7 +473,7 @@
 
 /obj/effect/essentials_set/tank/gatling
 	spawned_gear_list = list(
-		/obj/item/hardpoint/gun/minigun,
+		/obj/item/hardpoint/primary/minigun,
 		/obj/item/ammo_magazine/hardpoint/ltaaap_minigun,
 		/obj/item/ammo_magazine/hardpoint/ltaaap_minigun,
 		/obj/item/ammo_magazine/hardpoint/ltaaap_minigun
@@ -481,7 +481,7 @@
 
 /obj/effect/essentials_set/tank/dragonflamer
 	spawned_gear_list = list(
-		/obj/item/hardpoint/gun/flamer,
+		/obj/item/hardpoint/primary/flamer,
 		/obj/item/ammo_magazine/hardpoint/primary_flamer,
 		/obj/item/ammo_magazine/hardpoint/primary_flamer,
 		/obj/item/ammo_magazine/hardpoint/primary_flamer
@@ -489,7 +489,7 @@
 
 /obj/effect/essentials_set/tank/autocannon
 	spawned_gear_list = list(
-		/obj/item/hardpoint/gun/autocannon,
+		/obj/item/hardpoint/primary/autocannon,
 		/obj/item/ammo_magazine/hardpoint/ace_autocannon,
 		/obj/item/ammo_magazine/hardpoint/ace_autocannon,
 		/obj/item/ammo_magazine/hardpoint/ace_autocannon,
@@ -498,27 +498,27 @@
 
 /obj/effect/essentials_set/tank/tankflamer
 	spawned_gear_list = list(
-		/obj/item/hardpoint/gun/small_flamer,
+		/obj/item/hardpoint/secondary/small_flamer,
 		/obj/item/ammo_magazine/hardpoint/secondary_flamer,
 		/obj/item/ammo_magazine/hardpoint/secondary_flamer
 	)
 
 /obj/effect/essentials_set/tank/tow
 	spawned_gear_list = list(
-		/obj/item/hardpoint/gun/towlauncher,
+		/obj/item/hardpoint/secondary/towlauncher,
 		/obj/item/ammo_magazine/hardpoint/towlauncher,
 		/obj/item/ammo_magazine/hardpoint/towlauncher
 	)
 
 /obj/effect/essentials_set/tank/tank56
 	spawned_gear_list = list(
-		/obj/item/hardpoint/gun/m56cupola,
+		/obj/item/hardpoint/secondary/m56cupola,
 		/obj/item/ammo_magazine/hardpoint/m56_cupola
 	)
 
 /obj/effect/essentials_set/tank/tankgl
 	spawned_gear_list = list(
-		/obj/item/hardpoint/gun/grenade_launcher,
+		/obj/item/hardpoint/secondary/grenade_launcher,
 		/obj/item/ammo_magazine/hardpoint/tank_glauncher,
 		/obj/item/ammo_magazine/hardpoint/tank_glauncher,
 		/obj/item/ammo_magazine/hardpoint/tank_glauncher,
@@ -528,7 +528,7 @@
 
 /obj/effect/essentials_set/tank/tanksl
 	spawned_gear_list = list(
-		/obj/item/hardpoint/gun/smoke_launcher,
+		/obj/item/hardpoint/support/smoke_launcher,
 		/obj/item/ammo_magazine/hardpoint/tank_slauncher,
 		/obj/item/ammo_magazine/hardpoint/tank_slauncher,
 		/obj/item/ammo_magazine/hardpoint/tank_slauncher,
@@ -538,7 +538,7 @@
 
 /obj/effect/essentials_set/apc/dualcannon
 	spawned_gear_list = list(
-		/obj/item/hardpoint/gun/dualcannon,
+		/obj/item/hardpoint/primary/dualcannon,
 		/obj/item/ammo_magazine/hardpoint/boyars_dualcannon,
 		/obj/item/ammo_magazine/hardpoint/boyars_dualcannon,
 		/obj/item/ammo_magazine/hardpoint/boyars_dualcannon,
@@ -547,14 +547,14 @@
 
 /obj/effect/essentials_set/apc/frontalcannon
 	spawned_gear_list = list(
-		/obj/item/hardpoint/gun/frontalcannon,
+		/obj/item/hardpoint/secondary/frontalcannon,
 		/obj/item/ammo_magazine/hardpoint/m56_cupola/frontal_cannon,
 		/obj/item/ammo_magazine/hardpoint/m56_cupola/frontal_cannon
 	)
 
 /obj/effect/essentials_set/apc/flarelauncher
 	spawned_gear_list = list(
-		/obj/item/hardpoint/gun/flare_launcher,
+		/obj/item/hardpoint/support/flare_launcher,
 		/obj/item/ammo_magazine/hardpoint/flare_launcher,
 		/obj/item/ammo_magazine/hardpoint/flare_launcher,
 		/obj/item/ammo_magazine/hardpoint/flare_launcher,

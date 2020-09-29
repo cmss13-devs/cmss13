@@ -53,7 +53,7 @@
 
 			damage_percentage -= round((X.armor_deflection*(X.armor_integrity/100)) / VEHICLE_TRAMPLE_DAMAGE_REDUCTION_ARMOR_MULT) // Ravager reduces percentage by ~50% by virtue of having very high armor.
 
-			if(locate(/obj/item/hardpoint/buff/support/overdrive_enhancer) in src)
+			if(locate(/obj/item/hardpoint/support/overdrive_enhancer) in src)
 				damage_percentage += VEHICLE_TRAMPLE_DAMAGE_OVERDRIVE_BUFF
 
 			damage_percentage = max(VEHICLE_TRAMPLE_DAMAGE_OVERDRIVE_BUFF, max(0, damage_percentage))
@@ -67,7 +67,7 @@
 
 			if(takes_damage)
 				L.apply_damage(7 + rand(0, 5), BRUTE)
-		
+
 		if(!L.is_mob_incapacitated())
 			step_away(L, src)
 

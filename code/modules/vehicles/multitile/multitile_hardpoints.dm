@@ -1,3 +1,52 @@
+// Returns all hardpoints that are attached to the vehicle, including ones held by holder hardpoints (e.g. turrets)
+/obj/vehicle/multitile/proc/get_hardpoints_copy()
+	var/list/all_hardpoints = hardpoints.Copy()
+	for(var/obj/item/hardpoint/holder/H in all_hardpoints)
+		if(!H.hardpoints)
+			continue
+		all_hardpoints += H.hardpoints.Copy()
+
+	return all_hardpoints
+
+//Returns all activatable hardpoints
+/obj/vehicle/multitile/proc/get_activatable_hardpoints(var/seat)
+	var/list/hps = list()
+	for(var/obj/item/hardpoint/H in hardpoints)
+		if(istype(H, /obj/item/hardpoint/holder))
+			var/obj/item/hardpoint/holder/HP = H
+			if(HP.hardpoints)
+				hps += HP.get_activatable_hardpoints(seat)
+		if(!H.is_activatable() || seat && seat != H.allowed_seat)
+			continue
+		hps += H
+	return hps
+
+//Returns hardpoints that use ammunition
+/obj/vehicle/multitile/proc/get_hardpoints_with_ammo(var/seat)
+	var/list/hps = list()
+	for(var/obj/item/hardpoint/H in hardpoints)
+		if(istype(H, /obj/item/hardpoint/holder))
+			var/obj/item/hardpoint/holder/HP = H
+			if(HP.hardpoints)
+				hps += HP.get_hardpoints_with_ammo(seat)
+		if(!H.ammo || seat && seat != H.allowed_seat)
+			continue
+		hps += H
+	return hps
+
+// Returns a hardpoint by its name
+/obj/vehicle/multitile/proc/find_hardpoint(var/name)
+	for(var/obj/item/hardpoint/H in hardpoints)
+		if(istype(H, /obj/item/hardpoint/holder))
+			var/obj/item/hardpoint/holder/HP = H
+
+			var/obj/item/hardpoint/nested_hp = HP.find_hardpoint(name)
+			if(nested_hp)
+				return nested_hp
+
+		if(H.name == name)
+			return H
+	return null
 
 //What to do if all ofthe installed modules have been broken
 /obj/vehicle/multitile/proc/handle_all_modules_broken()
@@ -86,7 +135,7 @@
 			return
 
 	var/list/hps = list()
-	for(var/obj/item/hardpoint/H in get_hardpoints())
+	for(var/obj/item/hardpoint/H in get_hardpoints_copy())
 		// Only allow uninstalls of massive hardpoints when using powerloaders
 		if(H.w_class == SIZE_MASSIVE && !ispowerclamp(O) || H.w_class <= SIZE_HUGE && ispowerclamp(O))
 			continue
@@ -183,7 +232,7 @@
 	if(!istype(M))
 		return
 
-	var/list/usable_hps = get_activatable_hardpoints()
+	var/list/usable_hps = get_hardpoints_with_ammo(seat)
 	for(var/obj/item/hardpoint/HP in usable_hps)
 		if(HP == active_hp[seat] || HP.slot != HDPT_PRIMARY && HP.slot != HDPT_SECONDARY)
 			usable_hps.Remove(HP)
@@ -205,7 +254,7 @@
 	if(!istype(M))
 		return
 
-	var/list/usable_hps = get_activatable_hardpoints()
+	var/list/usable_hps = get_activatable_hardpoints(seat)
 	for(var/obj/item/hardpoint/HP in usable_hps)
 		if(HP.slot != HDPT_SUPPORT)
 			usable_hps.Remove(HP)

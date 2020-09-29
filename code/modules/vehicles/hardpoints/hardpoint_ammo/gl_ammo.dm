@@ -6,7 +6,7 @@
 	w_class = SIZE_LARGE
 	default_ammo = /datum/ammo/grenade_container
 	max_rounds = 10
-	gun_type = /obj/item/hardpoint/gun/grenade_launcher
+	gun_type = /obj/item/hardpoint/secondary/grenade_launcher
 	point_cost = 100
 
 /obj/item/ammo_magazine/hardpoint/tank_glauncher/update_icon()

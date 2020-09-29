@@ -5,5 +5,5 @@
 	icon_state = "flametank_large"
 	w_class = SIZE_LARGE
 	max_rounds = 100
-	gun_type = /obj/item/hardpoint/gun/small_flamer
+	gun_type = /obj/item/hardpoint/secondary/small_flamer
 	point_cost = 100

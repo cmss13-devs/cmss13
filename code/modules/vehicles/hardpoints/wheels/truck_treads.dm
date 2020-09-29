@@ -9,7 +9,6 @@
 
 	slot = HDPT_TREADS
 
-	point_cost = 300
 	health = 300
 
 	move_speed = VEHICLE_SPEED_VERYFAST

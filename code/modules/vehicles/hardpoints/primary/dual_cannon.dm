@@ -1,5 +1,5 @@
 // APC cannons
-/obj/item/hardpoint/gun/dualcannon
+/obj/item/hardpoint/primary/dualcannon
 	name = "PARS-159 Boyars Dualcannon"
 	desc = "A primary two-barrel cannon for the APC that shoots explosive flak rounds"
 	icon = 'icons/obj/vehicles/hardpoints/apc.dmi'
@@ -7,13 +7,9 @@
 	icon_state = "dual_cannon"
 	disp_icon = "apc"
 	disp_icon_state = "dualcannon"
-	firing_sounds = list('sound/weapons/tank_autocannon_fire.ogg')
+	activation_sounds = list('sound/weapons/tank_autocannon_fire.ogg')
 
-	slot = HDPT_PRIMARY
-
-	point_cost = 600
 	health = 500
-	damage_multiplier = 0.15
 	cooldown = 10
 	accuracy = 0.98
 	firing_arc = 60
@@ -31,7 +27,7 @@
 		"8" = list(14, 9)
 	)
 
-/obj/item/hardpoint/gun/dualcannon/fire(var/mob/user, var/atom/A)
+/obj/item/hardpoint/primary/dualcannon/fire(var/mob/user, var/atom/A)
 	if(ammo.current_rounds <= 0)
 		return
 
@@ -41,8 +37,8 @@
 		var/atom/T = A
 		if(!prob((accuracy * 100) / owner.misc_multipliers["accuracy"]))
 			T = get_step(get_turf(A), pick(cardinal))
-		if(LAZYLEN(firing_sounds))
-			playsound(get_turf(src), pick(firing_sounds), 60, 1)
+		if(LAZYLEN(activation_sounds))
+			playsound(get_turf(src), pick(activation_sounds), 60, 1)
 		fire_projectile(user, T)
 		if(ammo.current_rounds <= 0)
 			break

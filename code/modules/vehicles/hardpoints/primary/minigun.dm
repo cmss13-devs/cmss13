@@ -1,4 +1,4 @@
-/obj/item/hardpoint/gun/minigun
+/obj/item/hardpoint/primary/minigun
 	name = "LTAA-AP Minigun"
 	desc = "A primary weapon for tanks that spews bullets"
 
@@ -6,11 +6,7 @@
 	disp_icon = "tank"
 	disp_icon_state = "ltaaap_minigun"
 
-	slot = HDPT_PRIMARY
-
-	point_cost = 600
 	health = 350
-	damage_multiplier = 0.15
 	// Doesn't really matter, the minigun has fully custom firing (and therefore cooldown) logic
 	cooldown = 2
 	accuracy = 0.33
@@ -51,7 +47,7 @@
 	//So, I came back to this and changed it by adding a fixed reset at 1.5 seconds or later, which seems reasonable
 	//Now the cutoff is a little abrupt, but at least it exists. --MadSnailDisease
 
-/obj/item/hardpoint/gun/minigun/fire(var/mob/user, var/atom/A)
+/obj/item/hardpoint/primary/minigun/fire(var/mob/user, var/atom/A)
 	if(ammo.current_rounds <= 0)
 		to_chat(usr, SPAN_WARNING("[name] does not have any ammo."))
 		return

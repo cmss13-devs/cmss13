@@ -1,20 +1,17 @@
 // Technically a support weapon but it functions like a gun
 // Sue me
-/obj/item/hardpoint/gun/smoke_launcher
+/obj/item/hardpoint/support/smoke_launcher
 	name = "Smoke Launcher"
 	desc = "Launches smoke forward to obscure vision"
 
 	icon_state = "slauncher_0"
 	disp_icon = "tank"
 	disp_icon_state = "slauncher"
-	firing_sounds = list('sound/weapons/tank_smokelauncher_fire.ogg')
+	activation_sounds = list('sound/weapons/tank_smokelauncher_fire.ogg')
 
-	slot = HDPT_SUPPORT
-	hdpt_layer = HDPT_LAYER_SUPPORT
+	activatable = TRUE
 
-	point_cost = 250
 	health = 300
-	damage_multiplier = 0.075
 	cooldown = 70
 	accuracy = 0.8
 
@@ -23,7 +20,7 @@
 
 	use_muzzle_flash = FALSE
 
-/obj/item/hardpoint/gun/smoke_launcher/get_icon_image(var/x_offset, var/y_offset, var/new_dir)
+/obj/item/hardpoint/support/smoke_launcher/get_icon_image(var/x_offset, var/y_offset, var/new_dir)
 
 	var/icon_suffix = "NS"
 	var/icon_state_suffix = "0"
@@ -39,7 +36,7 @@
 	return image(icon = "[disp_icon]_[icon_suffix]", icon_state = "[disp_icon_state]_[icon_state_suffix]", pixel_x = x_offset, pixel_y = y_offset)
 
 
-/obj/item/hardpoint/gun/smoke_launcher/fire(var/mob/user, var/atom/A)
+/obj/item/hardpoint/support/smoke_launcher/fire(var/mob/user, var/atom/A)
 	if(ammo.current_rounds <= 0)
 		return
 
@@ -61,19 +58,19 @@
 			L = locate(owner.x - 4, owner.y + 2, owner.z)
 			R = locate(owner.x - 4, owner.y - 2, owner.z)
 
-	if(LAZYLEN(firing_sounds))
-		playsound(get_turf(src), pick(firing_sounds), 60, 1)
+	if(LAZYLEN(activation_sounds))
+		playsound(get_turf(src), pick(activation_sounds), 60, 1)
 	fire_projectile(user, L)
 
 	sleep(10)
 
-	if(LAZYLEN(firing_sounds))
-		playsound(get_turf(src), pick(firing_sounds), 60, 1)
+	if(LAZYLEN(activation_sounds))
+		playsound(get_turf(src), pick(activation_sounds), 60, 1)
 	fire_projectile(user, R)
 
 	to_chat(user, SPAN_WARNING("[src] Ammo: <b>[SPAN_HELPFUL(ammo ? ammo.current_rounds : 0)]/[SPAN_HELPFUL(ammo ? ammo.max_rounds : 0)]</b> | Mags: <b>[SPAN_HELPFUL(LAZYLEN(backup_clips))]/[SPAN_HELPFUL(max_clips)]</b>"))
 
-/obj/item/hardpoint/gun/smoke_launcher/fire_projectile(var/mob/user, var/atom/A)
+/obj/item/hardpoint/support/smoke_launcher/fire_projectile(var/mob/user, var/atom/A)
 	set waitfor = 0
 
 	var/turf/origin_turf = get_turf(src)

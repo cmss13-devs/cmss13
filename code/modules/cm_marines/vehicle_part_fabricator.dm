@@ -175,7 +175,7 @@
 	for(var/build_type in typesof(/obj/item/hardpoint))
 		var/obj/item/hardpoint/TE = build_type
 		var/build_name = initial(TE.name)
-		var/build_cost = initial(TE.point_cost)
+		var/build_cost = 0
 		if(build_cost)
 			dat += "<a href='byond://?src=\ref[src];produce=[build_type];cost=[build_cost]'>[build_name] ([build_cost])</a><br>"
 

@@ -30,15 +30,15 @@
 	// Rest (all the guns) is handled by the tank turret hardpoint
 	hardpoints_allowed = list(
 		/obj/item/hardpoint/holder/tank_turret,
-		/obj/item/hardpoint/gun/smoke_launcher,
-		/obj/item/hardpoint/buff/support/weapons_sensor,
-		/obj/item/hardpoint/buff/support/overdrive_enhancer,
-		/obj/item/hardpoint/artillery_module,
-		/obj/item/hardpoint/buff/armor/ballistic,
-		/obj/item/hardpoint/buff/armor/caustic,
-		/obj/item/hardpoint/buff/armor/concussive,
-		/obj/item/hardpoint/buff/armor/paladin,
-		/obj/item/hardpoint/buff/armor/snowplow,
+		/obj/item/hardpoint/support/smoke_launcher,
+		/obj/item/hardpoint/support/weapons_sensor,
+		/obj/item/hardpoint/support/overdrive_enhancer,
+		/obj/item/hardpoint/support/artillery_module,
+		/obj/item/hardpoint/armor/ballistic,
+		/obj/item/hardpoint/armor/caustic,
+		/obj/item/hardpoint/armor/concussive,
+		/obj/item/hardpoint/armor/paladin,
+		/obj/item/hardpoint/armor/snowplow,
 		/obj/item/hardpoint/locomotion/treads,
 		/obj/item/hardpoint/locomotion/treads/robust
 	)
@@ -156,45 +156,45 @@
 /obj/vehicle/multitile/tank/fixed/load_hardpoints(var/obj/vehicle/multitile/R)
 	..()
 
-	add_hardpoint(new /obj/item/hardpoint/buff/support/overdrive_enhancer)
-	add_hardpoint(new /obj/item/hardpoint/buff/armor/ballistic)
+	add_hardpoint(new /obj/item/hardpoint/support/overdrive_enhancer)
+	add_hardpoint(new /obj/item/hardpoint/armor/ballistic)
 	add_hardpoint(new /obj/item/hardpoint/locomotion/treads)
 
 	var/obj/item/hardpoint/holder/tank_turret/T = locate() in hardpoints
 	if(!T)
 		return
 
-	T.add_hardpoint(new /obj/item/hardpoint/gun/cannon)
-	T.add_hardpoint(new /obj/item/hardpoint/gun/m56cupola)
+	T.add_hardpoint(new /obj/item/hardpoint/primary/cannon)
+	T.add_hardpoint(new /obj/item/hardpoint/secondary/m56cupola)
 
 //Tank spawner that spawns in a tank that's NOT eight kinds of awful, mostly for testing purposes
 /obj/vehicle/multitile/tank/fixed_minigun/load_hardpoints(var/obj/vehicle/multitile/R)
 	..()
 
-	add_hardpoint(new /obj/item/hardpoint/buff/support/overdrive_enhancer)
-	//add_hardpoint(new /obj/item/hardpoint/buff/armor/ballistic)
+	add_hardpoint(new /obj/item/hardpoint/support/overdrive_enhancer)
+	add_hardpoint(new /obj/item/hardpoint/armor/ballistic)
 	add_hardpoint(new /obj/item/hardpoint/locomotion/treads)
 
 	var/obj/item/hardpoint/holder/tank_turret/T = locate() in hardpoints
 	if(!T)
 		return
 
-	T.add_hardpoint(new /obj/item/hardpoint/gun/minigun)
-	T.add_hardpoint(new /obj/item/hardpoint/gun/grenade_launcher)
+	T.add_hardpoint(new /obj/item/hardpoint/primary/minigun)
+	T.add_hardpoint(new /obj/item/hardpoint/secondary/grenade_launcher)
 
 /obj/vehicle/multitile/tank/decrepit/load_hardpoints(var/obj/vehicle/multitile/R)
 	..()
 
-	add_hardpoint(new /obj/item/hardpoint/gun/smoke_launcher)
-	add_hardpoint(new /obj/item/hardpoint/buff/armor/ballistic)
+	add_hardpoint(new /obj/item/hardpoint/support/smoke_launcher)
+	add_hardpoint(new /obj/item/hardpoint/armor/ballistic)
 	add_hardpoint(new /obj/item/hardpoint/locomotion/treads)
 
 	var/obj/item/hardpoint/holder/tank_turret/T = locate() in hardpoints
 	if(!T)
 		return
 
-	T.add_hardpoint(new /obj/item/hardpoint/gun/cannon)
-	T.add_hardpoint(new /obj/item/hardpoint/gun/m56cupola)
+	T.add_hardpoint(new /obj/item/hardpoint/primary/cannon)
+	T.add_hardpoint(new /obj/item/hardpoint/secondary/m56cupola)
 
 /obj/vehicle/multitile/tank/decrepit/load_damage(var/obj/vehicle/multitile/R)
 	// once to break the hardpoints

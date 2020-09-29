@@ -21,7 +21,7 @@
 	if(!seat)
 		return
 
-	var/list/usable_hps = V.get_activatable_hardpoints()
+	var/list/usable_hps = V.get_activatable_hardpoints(seat)
 	if(!LAZYLEN(usable_hps))
 		to_chat(M, SPAN_WARNING("None of the hardpoints can be activated or they are all broken."))
 		return
@@ -50,7 +50,7 @@
 	if(!seat)
 		return
 
-	var/list/usable_hps = V.get_activatable_hardpoints()
+	var/list/usable_hps = V.get_activatable_hardpoints(seat)
 	if(!LAZYLEN(usable_hps))
 		to_chat(M, SPAN_WARNING("None of the hardpoints can be activated or they are all broken."))
 		return

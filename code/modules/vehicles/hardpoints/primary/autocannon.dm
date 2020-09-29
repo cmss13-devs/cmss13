@@ -1,17 +1,13 @@
-/obj/item/hardpoint/gun/autocannon
+/obj/item/hardpoint/primary/autocannon
 	name = "AC3-E Autocannon"
 	desc = "A primary autocannon for tanks that shoots explosive flak rounds"
 
 	icon_state = "ace_autocannon"
 	disp_icon = "tank"
 	disp_icon_state = "ace_autocannon"
-	firing_sounds = list('sound/weapons/tank_autocannon_fire.ogg')
+	activation_sounds = list('sound/weapons/tank_autocannon_fire.ogg')
 
-	slot = HDPT_PRIMARY
-
-	point_cost = 600
 	health = 500
-	damage_multiplier = 0.15
 	cooldown = 10
 	accuracy = 0.98
 	firing_arc = 60

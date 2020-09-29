@@ -80,10 +80,5 @@
 
 /obj/item/clothing/suit/storage/jacket/marine/dress/officer/bomber
 	name = "commanding officer bomber jacket"
-	desc = "A Bomber Jacket resembling those worn by Pilots of old. Stylish."
+	desc = "A Bomber Jacket resembling those worn by Pilots of old. A classic, Stylish choice for those in the higher ranks."
 	icon_state = "co_bomber"
-
-/obj/item/clothing/suit/storage/jacket/marine/dress/officer/trenchcoat
-	name = "commanding officer trenchcoat"
-	desc = "A trenchcoat designed to be worn during harsh weather in order to keep your uniform nice and tidy. In space, it's proven rather stylish."
-	icon_state = "co_trenchcoat"

@@ -249,12 +249,21 @@
 	specialty = "researcher"
 	flags_atom = NO_SNOW_TYPE
 
-/obj/item/clothing/under/marine/officer/formal
-	name = "formal commanding officer uniform"
+/obj/item/clothing/under/marine/officer/formal/white
+	name = "formal commanding officer's white uniform"
 	desc = "The well-ironed formal uniform of a USCM officer. Even looking at it the wrong way could result in you, and your platoon being court-marshalled. It has shards of light Kevlar to help protect against stabbing weapons, bullets, and shrapnel from explosions, a small EMF distributor to help null energy-based weapons, and a hazmat chemical filter weave to ward off biological and radiation hazards."
-	icon_state = "CO_formal"
-	worn_state = "CO_formal"
+	icon_state = "CO_formal_white"
+	worn_state = "CO_formal_white"
 	specialty = "USCM officer"
+	flags_atom = NO_SNOW_TYPE
+
+/obj/item/clothing/under/marine/officer/formal/black
+	name = "formal commanding officer's black uniform"
+	desc = "The well-ironed formal uniform of a USCM officer. Even looking at it the wrong way could result in you, and your platoon being court-marshalled. It has shards of light Kevlar to help protect against stabbing weapons, bullets, and shrapnel from explosions, a small EMF distributor to help null energy-based weapons, and a hazmat chemical filter weave to ward off biological and radiation hazards."
+	icon_state = "CO_formal_black"
+	worn_state = "CO_formal_black"
+	specialty = "USCM officer"
+	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/under/marine/officer/dining
 	name = "dining commanding officer uniform"
@@ -262,6 +271,7 @@
 	icon_state = "CO_dining"
 	worn_state = "CO_dining"
 	specialty = "USCM officer"
+	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/under/marine/officer/casual
 	name = "casual commanding officer uniform"
@@ -269,6 +279,7 @@
 	icon_state = "CO_casual"
 	worn_state = "CO_casual"
 	specialty = "USCM officer"
+	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/under/marine/dress
 	name = "marine dress uniform"

@@ -19,7 +19,7 @@
         var/message = "Used to secure formidable hosts."
         to_chat(user, message)
 
-/obj/effect/alien/resin/special/nest/Initialize(var/mapdata, var/datum/hive_status/hive_ref)
+/obj/effect/alien/resin/special/nest/Initialize(mapload, datum/hive_status/hive_ref)
     . = ..()
 
     var/hive = 0

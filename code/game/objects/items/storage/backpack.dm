@@ -267,9 +267,9 @@
 	var/has_gamemode_skin = TRUE //replace this with the atom_flag NO_SNOW_TYPE at some point, just rename it to like, NO_MAP_VARIANT_SKIN
 
 /obj/item/storage/backpack/marine/Initialize()
+	. = ..()
 	if(has_gamemode_skin)
 		select_gamemode_skin(type)
-	..()
 
 /obj/item/storage/backpack/marine/medic
 	name = "\improper USCM medic backpack"
@@ -443,9 +443,9 @@
 
 
 /obj/item/storage/backpack/marine/engineerpack/Initialize()
+	. = ..()
 	create_reagents(max_fuel) //Lotsa refills
 	reagents.add_reagent(fuel_type, max_fuel)
-	..()
 
 
 /obj/item/storage/backpack/marine/engineerpack/attackby(obj/item/W, mob/living/user)

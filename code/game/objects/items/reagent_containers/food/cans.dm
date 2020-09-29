@@ -102,8 +102,8 @@
 	center_of_mass = "x=16;y=10"
 
 /obj/item/reagent_container/food/drinks/cans/cola/Initialize()
-		..()
-		reagents.add_reagent("cola", 30)
+	. = ..()
+	reagents.add_reagent("cola", 30)
 
 /obj/item/reagent_container/food/drinks/cans/waterbottle
 	name = "\improper Weston-Yamada Bottled Spring Water"
@@ -112,8 +112,8 @@
 	center_of_mass = "x=15;y=8"
 
 /obj/item/reagent_container/food/drinks/cans/waterbottle/Initialize()
-		..()
-		reagents.add_reagent("water", 30)
+	. = ..()
+	reagents.add_reagent("water", 30)
 
 /obj/item/reagent_container/food/drinks/cans/beer
 	name = "beer bottle"
@@ -122,8 +122,8 @@
 	center_of_mass = "x=16;y=12"
 
 /obj/item/reagent_container/food/drinks/cans/beer/Initialize()
-		..()
-		reagents.add_reagent("beer", 30)
+	. = ..()
+	reagents.add_reagent("beer", 30)
 
 /obj/item/reagent_container/food/drinks/cans/ale
 	name = "ale bottle"
@@ -133,8 +133,8 @@
 	center_of_mass = "x=16;y=10"
 
 /obj/item/reagent_container/food/drinks/cans/ale/Initialize()
-		..()
-		reagents.add_reagent("ale", 30)
+	. = ..()
+	reagents.add_reagent("ale", 30)
 
 
 /obj/item/reagent_container/food/drinks/cans/space_mountain_wind
@@ -144,8 +144,8 @@
 	center_of_mass = "x=16;y=10"
 
 /obj/item/reagent_container/food/drinks/cans/space_mountain_wind/Initialize()
-		..()
-		reagents.add_reagent("spacemountainwind", 30)
+	. = ..()
+	reagents.add_reagent("spacemountainwind", 30)
 
 /obj/item/reagent_container/food/drinks/cans/thirteenloko
 	name = "\improper Thirteen Loko"
@@ -154,8 +154,8 @@
 	center_of_mass = "x=16;y=8"
 
 /obj/item/reagent_container/food/drinks/cans/thirteenloko/Initialize()
-		..()
-		reagents.add_reagent("thirteenloko", 30)
+	. = ..()
+	reagents.add_reagent("thirteenloko", 30)
 
 /obj/item/reagent_container/food/drinks/cans/dr_gibb
 	name = "\improper Dr. Gibb"
@@ -164,8 +164,8 @@
 	center_of_mass = "x=16;y=10"
 
 /obj/item/reagent_container/food/drinks/cans/dr_gibb/Initialize()
-		..()
-		reagents.add_reagent("dr_gibb", 30)
+	. = ..()
+	reagents.add_reagent("dr_gibb", 30)
 
 /obj/item/reagent_container/food/drinks/cans/starkist
 	name = "\improper Star-kist"
@@ -174,9 +174,9 @@
 	center_of_mass = "x=16;y=10"
 
 /obj/item/reagent_container/food/drinks/cans/starkist/Initialize()
-		..()
-		reagents.add_reagent("cola", 15)
-		reagents.add_reagent("orangejuice", 15)
+	. = ..()
+	reagents.add_reagent("cola", 15)
+	reagents.add_reagent("orangejuice", 15)
 
 /obj/item/reagent_container/food/drinks/cans/space_up
 	name = "\improper Space-Up"
@@ -185,8 +185,8 @@
 	center_of_mass = "x=16;y=10"
 
 /obj/item/reagent_container/food/drinks/cans/space_up/Initialize()
-		..()
-		reagents.add_reagent("space_up", 30)
+	. = ..()
+	reagents.add_reagent("space_up", 30)
 
 /obj/item/reagent_container/food/drinks/cans/lemon_lime
 	name = "lemon-lime"
@@ -195,8 +195,8 @@
 	center_of_mass = "x=16;y=10"
 
 /obj/item/reagent_container/food/drinks/cans/lemon_lime/Initialize()
-		..()
-		reagents.add_reagent("lemon_lime", 30)
+	. = ..()
+	reagents.add_reagent("lemon_lime", 30)
 
 /obj/item/reagent_container/food/drinks/cans/lemon_lime
 	name = "iced tea can"
@@ -205,8 +205,8 @@
 	center_of_mass = "x=16;y=10"
 
 /obj/item/reagent_container/food/drinks/cans/lemon_lime/Initialize()
-		..()
-		reagents.add_reagent("icetea", 30)
+	. = ..()
+	reagents.add_reagent("icetea", 30)
 
 /obj/item/reagent_container/food/drinks/cans/grape_juice
 	name = "grape juice"
@@ -215,8 +215,8 @@
 	center_of_mass = "x=16;y=10"
 
 /obj/item/reagent_container/food/drinks/cans/grape_juice/Initialize()
-		..()
-		reagents.add_reagent("grapejuice", 30)
+	. = ..()
+	reagents.add_reagent("grapejuice", 30)
 
 /obj/item/reagent_container/food/drinks/cans/tonic
 	name = "tonic water"
@@ -225,8 +225,8 @@
 	center_of_mass = "x=16;y=10"
 
 /obj/item/reagent_container/food/drinks/cans/tonic/Initialize()
-		..()
-		reagents.add_reagent("tonic", 50)
+	. = ..()
+	reagents.add_reagent("tonic", 50)
 
 /obj/item/reagent_container/food/drinks/cans/sodawater
 	name = "soda water"
@@ -235,8 +235,8 @@
 	center_of_mass = "x=16;y=10"
 
 /obj/item/reagent_container/food/drinks/cans/sodawater/Initialize()
-		..()
-		reagents.add_reagent("sodawater", 50)
+	. = ..()
+	reagents.add_reagent("sodawater", 50)
 
 /obj/item/reagent_container/food/drinks/cans/souto
 	name = "\improper Souto Can"
@@ -246,9 +246,6 @@
 	center_of_mass = "x=16;y=10"
 	embeddable = 1
 
-/obj/item/reagent_container/food/drinks/cans/souto/Initialize()
-		..()
-
 /obj/item/reagent_container/food/drinks/cans/souto/diet
 	name = "\improper Diet Souto"
 	desc = "Now with 0% fruit juice! Canned in Havana"
@@ -256,8 +253,8 @@
 	item_state = "souto_diet_classic"
 
 /obj/item/reagent_container/food/drinks/cans/souto/diet/Initialize()
-		..()
-		reagents.add_reagent("water", 25)
+	. = ..()
+	reagents.add_reagent("water", 25)
 
 /obj/item/reagent_container/food/drinks/cans/souto/classic
 	name = "\improper Souto Classic"
@@ -266,8 +263,8 @@
 	item_state = "souto_classic"
 
 /obj/item/reagent_container/food/drinks/cans/souto/classic/Initialize()
-		..()
-		reagents.add_reagent("souto_classic", 50)
+	. = ..()
+	reagents.add_reagent("souto_classic", 50)
 
 /obj/item/reagent_container/food/drinks/cans/souto/diet/classic
 	name = "\improper Diet Souto"
@@ -276,8 +273,8 @@
 	item_state = "souto_diet_classic"
 
 /obj/item/reagent_container/food/drinks/cans/souto/diet/classic/Initialize()
-		..()
-		reagents.add_reagent("souto_classic", 25)
+	. = ..()
+	reagents.add_reagent("souto_classic", 25)
 
 /obj/item/reagent_container/food/drinks/cans/souto/cherry
 	name = "\improper Cherry Souto"
@@ -286,8 +283,8 @@
 	item_state = "souto_cherry"
 
 /obj/item/reagent_container/food/drinks/cans/souto/cherry/Initialize()
-		..()
-		reagents.add_reagent("souto_cherry", 50)
+	. = ..()
+	reagents.add_reagent("souto_cherry", 50)
 
 /obj/item/reagent_container/food/drinks/cans/souto/diet/cherry
 	name = "\improper Diet Cherry Souto"
@@ -296,8 +293,8 @@
 	item_state = "souto_diet_cherry"
 
 /obj/item/reagent_container/food/drinks/cans/souto/diet/cherry/Initialize()
-		..()
-		reagents.add_reagent("souto_cherry", 25)
+	. = ..()
+	reagents.add_reagent("souto_cherry", 25)
 
 /obj/item/reagent_container/food/drinks/cans/souto/lime
 	name = "\improper Lime Souto"
@@ -306,8 +303,8 @@
 	item_state = "souto_lime"
 
 /obj/item/reagent_container/food/drinks/cans/souto/lime/Initialize()
-		..()
-		reagents.add_reagent("souto_lime", 50)
+	. = ..()
+	reagents.add_reagent("souto_lime", 50)
 
 /obj/item/reagent_container/food/drinks/cans/souto/diet/lime
 	name = "\improper Diet Lime Souto"
@@ -316,8 +313,8 @@
 	item_state = "souto_diet_lime"
 
 /obj/item/reagent_container/food/drinks/cans/souto/diet/lime/Initialize()
-		..()
-		reagents.add_reagent("souto_lime", 25)
+	. = ..()
+	reagents.add_reagent("souto_lime", 25)
 
 /obj/item/reagent_container/food/drinks/cans/souto/grape
 	name = "\improper Grape Souto"
@@ -326,8 +323,8 @@
 	item_state = "souto_grape"
 
 /obj/item/reagent_container/food/drinks/cans/souto/grape/Initialize()
-		..()
-		reagents.add_reagent("souto_grape", 50)
+	. = ..()
+	reagents.add_reagent("souto_grape", 50)
 
 /obj/item/reagent_container/food/drinks/cans/souto/diet/grape
 	name = "\improper Diet Grape Souto"
@@ -336,8 +333,8 @@
 	item_state = "souto_diet_grape"
 
 /obj/item/reagent_container/food/drinks/cans/souto/diet/grape/Initialize()
-		..()
-		reagents.add_reagent("souto_grape", 25)
+	. = ..()
+	reagents.add_reagent("souto_grape", 25)
 
 /obj/item/reagent_container/food/drinks/cans/souto/blue
 	name = "\improper Blue Raspberry Souto"
@@ -346,8 +343,8 @@
 	item_state = "souto_blueraspberry"
 
 /obj/item/reagent_container/food/drinks/cans/souto/blue/Initialize()
-		..()
-		reagents.add_reagent("souto_blueraspberry", 50)
+	. = ..()
+	reagents.add_reagent("souto_blueraspberry", 50)
 
 /obj/item/reagent_container/food/drinks/cans/souto/diet/blue
 	name = "\improper Diet Blue Raspberry Souto"
@@ -356,8 +353,8 @@
 	item_state = "souto_diet_blueraspberry"
 
 /obj/item/reagent_container/food/drinks/cans/souto/diet/blue/Initialize()
-		..()
-		reagents.add_reagent("souto_blueraspberry", 25)
+	. = ..()
+	reagents.add_reagent("souto_blueraspberry", 25)
 
 /obj/item/reagent_container/food/drinks/cans/souto/peach
 	name = "\improper Peach Souto"
@@ -366,8 +363,8 @@
 	item_state = "souto_peach"
 
 /obj/item/reagent_container/food/drinks/cans/souto/peach/Initialize()
-		..()
-		reagents.add_reagent("souto_peach", 50)
+	. = ..()
+	reagents.add_reagent("souto_peach", 50)
 
 /obj/item/reagent_container/food/drinks/cans/souto/diet/peach
 	name = "\improper Diet Peach Souto"
@@ -376,8 +373,8 @@
 	item_state = "souto_diet_peach"
 
 /obj/item/reagent_container/food/drinks/cans/souto/diet/peach/Initialize()
-		..()
-		reagents.add_reagent("souto_peach", 25)
+	. = ..()
+	reagents.add_reagent("souto_peach", 25)
 
 /obj/item/reagent_container/food/drinks/cans/souto/cranberry
 	name = "\improper Cranberry Souto"
@@ -386,8 +383,8 @@
 	item_state = "souto_cranberry"
 
 /obj/item/reagent_container/food/drinks/cans/souto/cranberry/Initialize()
-		..()
-		reagents.add_reagent("souto_cranberry", 50)
+	. = ..()
+	reagents.add_reagent("souto_cranberry", 50)
 
 /obj/item/reagent_container/food/drinks/cans/souto/diet/cranberry
 	name = "\improper Diet Cranberry Souto"
@@ -396,9 +393,9 @@
 	item_state = "souto_diet_cranberry"
 
 /obj/item/reagent_container/food/drinks/cans/souto/diet/cranberry/Initialize()
-		..()
-		reagents.add_reagent("souto_cranberry", 25)
-		reagents.add_reagent("water", 25)
+	. = ..()
+	reagents.add_reagent("souto_cranberry", 25)
+	reagents.add_reagent("water", 25)
 
 /obj/item/reagent_container/food/drinks/cans/aspen
 	name = "\improper Weston-Yamada Aspen Beer"
@@ -407,5 +404,5 @@
 	center_of_mass = "x=16;y=10"
 
 /obj/item/reagent_container/food/drinks/cans/aspen/Initialize()
-		..()
-		reagents.add_reagent("beer", 50)
+	. = ..()
+	reagents.add_reagent("beer", 50)

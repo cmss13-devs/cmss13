@@ -108,7 +108,7 @@
 	var/slow_amt = 8
 	var/hivenumber = XENO_HIVE_NORMAL
 
-/obj/effect/alien/resin/sticky/Initialize(loc, hive)
+/obj/effect/alien/resin/sticky/Initialize(mapload, loc, hive)
 	..()
 	if (hive)
 		hivenumber = hive
@@ -155,17 +155,15 @@
 
 	tiles_with = list(/obj/structure/mineral_door/resin)
 
-/obj/structure/mineral_door/resin/Initialize(loc, hive)
-	spawn(0)
-		relativewall()
-		relativewall_neighbours()
-		for(var/turf/closed/wall/W in orange(1))
-			W.update_connections()
-			W.update_icon()
+/obj/structure/mineral_door/resin/Initialize(mapload, loc, hive)
+	. = ..()
+	relativewall()
+	relativewall_neighbours()
+	for(var/turf/closed/wall/W in orange(1))
+		W.update_connections()
+		W.update_icon()
 
-		set_hive_data(src, hivenumber)
-
-	..()
+	set_hive_data(src, hivenumber)
 
 	if (hive)
 		hivenumber = hive

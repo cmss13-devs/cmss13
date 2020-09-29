@@ -408,8 +408,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	chem_volume = 20
 
 /obj/item/clothing/mask/cigarette/cigar/Initialize()
-		..()
-		reagents.add_reagent("nicotine",10)
+	. = ..()
+	reagents.add_reagent("nicotine",10)
 
 /obj/item/clothing/mask/cigarette/cigar/cohiba
 	name = "\improper Cohiba Robusto cigar"

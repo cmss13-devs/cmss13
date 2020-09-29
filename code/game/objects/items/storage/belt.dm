@@ -71,6 +71,7 @@
 
 
 /obj/item/storage/belt/utility/full/Initialize()
+	. = ..()
 	new /obj/item/tool/screwdriver(src)
 	new /obj/item/tool/wrench(src)
 	new /obj/item/tool/weldingtool(src)
@@ -78,17 +79,16 @@
 	new /obj/item/tool/wirecutters(src)
 	new /obj/item/stack/cable_coil(src,30,pick("red","yellow","orange"))
 	new /obj/item/device/multitool(src)
-	..()
 
 
 /obj/item/storage/belt/utility/atmostech/Initialize()
+	. = ..()
 	new /obj/item/tool/screwdriver(src)
 	new /obj/item/tool/wrench(src)
 	new /obj/item/tool/weldingtool(src)
 	new /obj/item/tool/crowbar(src)
 	new /obj/item/tool/wirecutters(src)
 	new /obj/item/device/t_scanner(src)
-	..()
 
 /obj/item/storage/belt/medical
 	name = "\improper M276 pattern medical storage rig"
@@ -119,13 +119,14 @@
 		/obj/item/ammo_magazine/revolver,
 		/obj/item/ammo_magazine/handful,
 		/obj/item/device/flashlight/flare,
-	    /obj/item/reagent_container/hypospray,
-	    /obj/item/bodybag,
-	    /obj/item/device/defibrillator,
-	    /obj/item/roller
+		/obj/item/reagent_container/hypospray,
+		/obj/item/bodybag,
+		/obj/item/device/defibrillator,
+		/obj/item/roller
 	)
 
 /obj/item/storage/belt/medical/full/Initialize()
+	. = ..()
 	new /obj/item/storage/pill_bottle/bicaridine(src)
 	new /obj/item/storage/pill_bottle/dexalin(src)
 	new /obj/item/storage/pill_bottle/antitox(src)
@@ -137,7 +138,6 @@
 	new /obj/item/stack/medical/splint(src)
 	new /obj/item/stack/medical/advanced/bruise_pack(src)
 	new /obj/item/stack/medical/advanced/ointment(src)
-	..()
 
 /obj/item/storage/belt/medical/verb/toggle_mode() //A verb that can (should) only be used if in hand/equipped
 	set category = "Object"
@@ -150,9 +150,9 @@
 /obj/item/storage/belt/medical/full/with_defib_and_analyzer
 
 /obj/item/storage/belt/medical/full/with_defib_and_analyzer/Initialize()
+	. = ..()
 	new /obj/item/device/defibrillator(src)
 	new /obj/item/device/healthanalyzer(src)
-	..()
 
 /obj/item/storage/belt/medical/lifesaver
 	name = "\improper M276 pattern lifesaver bag"
@@ -176,11 +176,12 @@
 	var/has_gamemode_skin = TRUE
 
 /obj/item/storage/belt/medical/lifesaver/Initialize()
+	. = ..()
 	if(has_gamemode_skin)
 		select_gamemode_skin(type)
-	..()
 
 /obj/item/storage/belt/medical/lifesaver/full/Initialize()
+	. = ..()
 	new /obj/item/stack/medical/advanced/bruise_pack(src)
 	new /obj/item/stack/medical/advanced/bruise_pack(src)
 	new /obj/item/stack/medical/advanced/ointment(src)
@@ -197,7 +198,6 @@
 	new /obj/item/storage/pill_bottle/peridaxon(src)
 	new /obj/item/storage/pill_bottle/quickclot(src)
 	new /obj/item/stack/medical/splint(src)
-	..()
 
 /obj/item/storage/belt/medical/lifesaver/upp
 	name = "\improper Type 41 pattern lifesaver bag"
@@ -209,6 +209,7 @@
 	max_storage_space = 82
 
 /obj/item/storage/belt/medical/lifesaver/upp/full/Initialize()
+	. = ..()
 	new /obj/item/stack/medical/advanced/bruise_pack(src)
 	new /obj/item/stack/medical/advanced/bruise_pack(src)
 	new /obj/item/stack/medical/advanced/ointment(src)
@@ -228,7 +229,6 @@
 	new /obj/item/storage/pill_bottle/peridaxon(src)
 	new /obj/item/storage/pill_bottle/quickclot(src)
 	new /obj/item/stack/medical/splint(src)
-	..()
 
 /obj/item/storage/belt/security
 	name = "\improper M276 pattern security rig"
@@ -281,13 +281,13 @@
 
 
 /obj/item/storage/belt/security/MP/full/Initialize()
+	. = ..()
 	new /obj/item/weapon/gun/energy/taser(src)
 	new /obj/item/device/flash(src)
 	new /obj/item/weapon/melee/baton(src)
 	new /obj/item/handcuffs(src)
 	new /obj/item/reagent_container/spray/pepper(src)
 	new /obj/item/device/clue_scanner(src)
-	..()
 
 
 /obj/item/storage/belt/marine
@@ -319,33 +319,33 @@
 	var/has_gamemode_skin = TRUE //whether it has a sprite for each gamemode.
 
 /obj/item/storage/belt/marine/Initialize()
+	. = ..()
 	if(has_gamemode_skin)
 		select_gamemode_skin(type)
-	..()
 
 /obj/item/storage/belt/marine/m41a/Initialize()
+	. = ..()
 	new /obj/item/ammo_magazine/rifle (src)
 	new /obj/item/ammo_magazine/rifle (src)
 	new /obj/item/ammo_magazine/rifle (src)
 	new /obj/item/ammo_magazine/rifle (src)
 	new /obj/item/ammo_magazine/rifle (src)
-	..()
 
 /obj/item/storage/belt/marine/m41amk1/Initialize()
+	. = ..()
 	new /obj/item/ammo_magazine/rifle/m41aMK1 (src)
 	new /obj/item/ammo_magazine/rifle/m41aMK1 (src)
 	new /obj/item/ammo_magazine/rifle/m41aMK1 (src)
 	new /obj/item/ammo_magazine/rifle/m41aMK1 (src)
 	new /obj/item/ammo_magazine/rifle/m41aMK1 (src)
-	..()
 
 /obj/item/storage/belt/marine/m39/Initialize()
+	. = ..()
 	new /obj/item/ammo_magazine/smg/m39 (src)
 	new /obj/item/ammo_magazine/smg/m39 (src)
 	new /obj/item/ammo_magazine/smg/m39 (src)
 	new /obj/item/ammo_magazine/smg/m39 (src)
 	new /obj/item/ammo_magazine/smg/m39 (src)
-	..()
 
 /obj/item/storage/belt/marine/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/ammo_magazine/shotgun))
@@ -363,12 +363,12 @@
 
 //version full of type 71 mags
 /obj/item/storage/belt/marine/upp/full/Initialize()
+	. = ..()
 	new /obj/item/ammo_magazine/rifle/type71(src)
 	new /obj/item/ammo_magazine/rifle/type71(src)
 	new /obj/item/ammo_magazine/rifle/type71(src)
 	new /obj/item/ammo_magazine/rifle/type71(src)
 	new /obj/item/ammo_magazine/rifle/type71(src)
-	..()
 
 //Crazy Ivan's belt reskin
 /obj/item/storage/belt/marine/upp/ivan
@@ -392,14 +392,14 @@
 	can_hold = list(/obj/item/ammo_magazine/handful)
 
 /obj/item/storage/belt/shotgun/Initialize()
+	. = ..()
 	select_gamemode_skin(type)
-	..()
 
 /obj/item/storage/belt/shotgun/full/Initialize()
+	. = ..()
 	for(var/i=1; i <= storage_slots; i++)
 		var/obj/item/ammo_magazine/handful/H = new(src)
 		H.generate_handful(/datum/ammo/bullet/shotgun/slug, "12g", 5, 5, /obj/item/weapon/gun/shotgun)
-	..()
 
 /obj/item/storage/belt/shotgun/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/ammo_magazine/shotgun))
@@ -420,6 +420,7 @@
 	can_hold=list(/obj/item/weapon/melee/throwing_knife)
 
 /obj/item/storage/belt/knifepouch/Initialize()
+	. = ..()
 	select_gamemode_skin(type)
 	item_state = "marinebelt" //PLACEHOLDER. Override, since it has no unique state.
 	new /obj/item/weapon/melee/throwing_knife(src)
@@ -428,7 +429,6 @@
 	new /obj/item/weapon/melee/throwing_knife(src)
 	new /obj/item/weapon/melee/throwing_knife(src)
 	new /obj/item/weapon/melee/throwing_knife(src)
-	..()
 
 /obj/item/storage/belt/grenade
 	name="\improper M276 pattern M40 HEDP rig"
@@ -443,13 +443,13 @@
 
 
 /obj/item/storage/belt/grenade/full/Initialize()
+	. = ..()
 	new /obj/item/explosive/grenade/incendiary(src)
 	new /obj/item/explosive/grenade/incendiary(src)
 	new /obj/item/explosive/grenade/incendiary(src)
 	new /obj/item/explosive/grenade/HE(src)
 	new /obj/item/explosive/grenade/HE(src)
 	new /obj/item/explosive/grenade/HE(src)
-	..()
 
 /obj/item/storage/belt/grenade/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/storage/box/nade_box))
@@ -465,6 +465,7 @@
 	max_storage_space = 54
 
 /obj/item/storage/belt/grenade/large/full/Initialize()
+	. = ..()
 	new /obj/item/explosive/grenade/incendiary(src)
 	new /obj/item/explosive/grenade/incendiary(src)
 	new /obj/item/explosive/grenade/incendiary(src)
@@ -480,7 +481,6 @@
 	new /obj/item/explosive/grenade/HE(src)
 	new /obj/item/explosive/grenade/HE(src)
 	new /obj/item/explosive/grenade/HE(src)
-	..()
 
 
 
@@ -496,8 +496,8 @@
 	item_state="g8pouch"
 
 /obj/item/storage/sparepouch/Initialize()
+	. = ..()
 	select_gamemode_skin(type)
-	..()
 
 /obj/item/storage/sparepouch/update_icon()
 	overlays.Cut()
@@ -637,10 +637,11 @@
 	)
 
 /obj/item/storage/belt/gun/m4a3/Initialize()
+	. = ..()
 	select_gamemode_skin(type)
-	..()
 
 /obj/item/storage/belt/gun/m4a3/full/Initialize()
+	. = ..()
 	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/pistol/m4a3(src)
 	new /obj/item/ammo_magazine/pistol(src)
 	new /obj/item/ammo_magazine/pistol(src)
@@ -649,9 +650,9 @@
 	new /obj/item/ammo_magazine/pistol(src)
 	new /obj/item/ammo_magazine/pistol(src)
 	new_gun.on_enter_storage(src)
-	..()
 
 /obj/item/storage/belt/gun/m4a3/commander/Initialize()
+	. = ..()
 	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/pistol/m4a3/custom(src)
 	new /obj/item/ammo_magazine/pistol/ap(src)
 	new /obj/item/ammo_magazine/pistol/ap(src)
@@ -660,9 +661,9 @@
 	new /obj/item/ammo_magazine/pistol(src)
 	new /obj/item/ammo_magazine/pistol(src)
 	new_gun.on_enter_storage(src)
-	..()
 
 /obj/item/storage/belt/gun/m4a3/mod88/Initialize()
+	. = ..()
 	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/pistol/mod88(src)
 	new /obj/item/ammo_magazine/pistol/mod88(src)
 	new /obj/item/ammo_magazine/pistol/mod88(src)
@@ -671,9 +672,9 @@
 	new /obj/item/ammo_magazine/pistol/mod88(src)
 	new /obj/item/ammo_magazine/pistol/mod88(src)
 	new_gun.on_enter_storage(src)
-	..()
 
 /obj/item/storage/belt/gun/m4a3/vp78/Initialize()
+	. = ..()
 	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/pistol/vp78(src)
 	new /obj/item/ammo_magazine/pistol/vp78(src)
 	new /obj/item/ammo_magazine/pistol/vp78(src)
@@ -682,7 +683,6 @@
 	new /obj/item/ammo_magazine/pistol/vp78(src)
 	new /obj/item/ammo_magazine/pistol/vp78(src)
 	new_gun.on_enter_storage(src)
-	..()
 
 /obj/item/storage/belt/gun/m44
 	name = "\improper M276 pattern M44 holster rig"
@@ -697,10 +697,11 @@
 	)
 
 /obj/item/storage/belt/gun/m44/Initialize()
+	. = ..()
 	select_gamemode_skin(type)
-	..()
 
 /obj/item/storage/belt/gun/m44/full/Initialize()
+	. = ..()
 	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/revolver/m44(src)
 	new /obj/item/ammo_magazine/revolver/marksman(src)
 	new /obj/item/ammo_magazine/revolver/marksman(src)
@@ -709,9 +710,9 @@
 	new /obj/item/ammo_magazine/revolver/marksman(src)
 	new /obj/item/ammo_magazine/revolver/marksman(src)
 	new_gun.on_enter_storage(src)
-	..()
 
-/obj/item/storage/belt/gun/m44/custom/New()
+/obj/item/storage/belt/gun/m44/custom/Initialize()
+	. = ..()
 	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/revolver/m44/custom(src)
 	new /obj/item/ammo_magazine/revolver/marksman(src)
 	new /obj/item/ammo_magazine/revolver/marksman(src)
@@ -720,7 +721,6 @@
 	new /obj/item/ammo_magazine/revolver/marksman(src)
 	new /obj/item/ammo_magazine/revolver/marksman(src)
 	new_gun.on_enter_storage(src)
-	..()
 
 /obj/item/storage/belt/gun/mateba
 	name = "\improper M276 pattern Mateba holster rig"
@@ -735,6 +735,7 @@
 	)
 
 /obj/item/storage/belt/gun/mateba/full/Initialize()
+	. = ..()
 	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/revolver/mateba(src)
 	new /obj/item/ammo_magazine/revolver/mateba(src)
 	new /obj/item/ammo_magazine/revolver/mateba(src)
@@ -742,7 +743,6 @@
 	new /obj/item/ammo_magazine/revolver/mateba(src)
 	new /obj/item/ammo_magazine/revolver/mateba(src)
 	new_gun.on_enter_storage(src)
-	..()
 
 /obj/item/storage/belt/gun/mateba/cmateba
 	name = "\improper M276 pattern Mateba holster rig"
@@ -751,10 +751,11 @@
 	item_state = "cmateba_holster"
 
 /obj/item/storage/belt/gun/mateba/cmateba/Initialize()
+	. = ..()
 	select_gamemode_skin(type)
-	..()
 
 /obj/item/storage/belt/gun/mateba/cmateba/full/Initialize()
+	. = ..()
 	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/revolver/mateba/cmateba(src)
 	new /obj/item/ammo_magazine/revolver/mateba(src)
 	new /obj/item/ammo_magazine/revolver/mateba(src)
@@ -762,9 +763,8 @@
 	new /obj/item/ammo_magazine/revolver/mateba(src)
 	new /obj/item/ammo_magazine/revolver/mateba(src)
 	new_gun.on_enter_storage(src)
-	..()
 
-/obj/item/storage/belt/gun/mateba/admiral/Initialize()
+/obj/item/storage/belt/gun/mateba/admiral
 	name = "engraved M276 pattern Mateba holster rig"
 	desc = "The M276 is the standard load-bearing equipment of the USCM. \
 	It consists of a modular belt with various clips. This version is for the powerful Mateba magnum revolver, \
@@ -772,6 +772,9 @@
 
 	icon_state = "amateba_holster"
 	item_state = "amateba_holster"
+
+/obj/item/storage/belt/gun/mateba/admiral/Initialize()
+	. = ..()
 	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/revolver/mateba/admiral(src)
 	new /obj/item/ammo_magazine/revolver/mateba(src)
 	new /obj/item/ammo_magazine/revolver/mateba(src)
@@ -779,7 +782,6 @@
 	new /obj/item/ammo_magazine/revolver/mateba(src)
 	new /obj/item/ammo_magazine/revolver/mateba(src)
 	new_gun.on_enter_storage(src)
-	..()
 
 /obj/item/storage/belt/gun/korovin
 	name = "\improper Type 41 pistol holster rig"
@@ -793,22 +795,22 @@
 	)
 
 /obj/item/storage/belt/gun/korovin/standard/Initialize()
+	. = ..()
 	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/pistol/c99/upp(src)
 	new /obj/item/ammo_magazine/pistol/c99(src)
 	new /obj/item/ammo_magazine/pistol/c99(src)
 	new /obj/item/ammo_magazine/pistol/c99(src)
 	new /obj/item/ammo_magazine/pistol/c99(src)
 	new_gun.on_enter_storage(src)
-	..()
 
 /obj/item/storage/belt/gun/korovin/tranq/Initialize()
+	. = ..()
 	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/pistol/c99/upp/tranq(src)
 	new /obj/item/ammo_magazine/pistol/c99t(src)
 	new /obj/item/ammo_magazine/pistol/c99t(src)
 	new /obj/item/ammo_magazine/pistol/c99(src)
 	new /obj/item/ammo_magazine/pistol/c99(src)
 	new_gun.on_enter_storage(src)
-	..()
 
 /obj/item/storage/belt/gun/smartpistol
 	name = "\improper M276 pattern SU-6 Smartpistol holster rig"
@@ -825,10 +827,11 @@
 	var/has_gamemode_skin = TRUE
 
 /obj/item/storage/belt/gun/smartpistol/Initialize()
+	. = ..()
 	select_gamemode_skin(type)
-	..()
 
 /obj/item/storage/belt/gun/smartpistol/full/Initialize()
+	. = ..()
 	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/pistol/smart(src)
 	new /obj/item/ammo_magazine/pistol/smart(src)
 	new /obj/item/ammo_magazine/pistol/smart(src)
@@ -836,7 +839,6 @@
 	new /obj/item/ammo_magazine/pistol/smart(src)
 	new /obj/item/ammo_magazine/pistol/smart(src)
 	new_gun.on_enter_storage(src)
-	..()
 
 /obj/item/storage/belt/gun/flaregun
 	name = "\improper M276 pattern M82F flare gun holster rig"
@@ -851,6 +853,7 @@
 	)
 
 /obj/item/storage/belt/gun/flaregun/full/Initialize()
+	. = ..()
 	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/flare(src)
 	new /obj/item/device/flashlight/flare(src)
 	new /obj/item/device/flashlight/flare(src)
@@ -869,9 +872,9 @@
 	new /obj/item/device/flashlight/flare(src)
 	new /obj/item/device/flashlight/flare(src)
 	new_gun.on_enter_storage(src)
-	..()
 
 /obj/item/storage/belt/gun/flaregun/full_nogun/Initialize()
+	. = ..()
 	new /obj/item/device/flashlight/flare(src)
 	new /obj/item/device/flashlight/flare(src)
 	new /obj/item/device/flashlight/flare(src)
@@ -888,7 +891,6 @@
 	new /obj/item/device/flashlight/flare(src)
 	new /obj/item/device/flashlight/flare(src)
 	new /obj/item/device/flashlight/flare(src)
-	..()
 
 /obj/item/storage/belt/gun/flaregun/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/storage/box/m94))
@@ -936,24 +938,24 @@
 	)
 
 /obj/item/storage/belt/gun/smartgunner/Initialize()
+	. = ..()
 	select_gamemode_skin(type)
-	..()
 
 /obj/item/storage/belt/gun/smartgunner/full/Initialize()
+	. = ..()
 	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/pistol/m4a3(src)
 	new /obj/item/ammo_magazine/pistol/hp(src)
 	new /obj/item/ammo_magazine/smartgun(src)
 	new /obj/item/ammo_magazine/smartgun(src)
 	new_gun.on_enter_storage(src)
-	..()
 
 /obj/item/storage/belt/gun/smartgunner/pmc/full/Initialize()
+	. = ..()
 	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/pistol/vp78(src)
 	new /obj/item/ammo_magazine/pistol/vp78(src)
 	new /obj/item/ammo_magazine/smartgun/dirty(src)
 	new /obj/item/ammo_magazine/smartgun/dirty(src)
 	new_gun.on_enter_storage(src)
-	..()
 
 /obj/item/storage/belt/souto
 	name = "\improper Souto belt"

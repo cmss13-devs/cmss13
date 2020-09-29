@@ -57,7 +57,7 @@
 	var/butcher_time = SECONDS_6
 
 
-/mob/living/carbon/Xenomorph/Predalien/Initialize(new_loc, mob/living/carbon/Xenomorph/oldXeno, h_number)
+/mob/living/carbon/Xenomorph/Predalien/Initialize(mapload, new_loc, mob/living/carbon/Xenomorph/oldXeno, h_number)
 	. = ..()
 
 	add_timer(CALLBACK(src, .proc/announce_spawn), SECONDS_3)

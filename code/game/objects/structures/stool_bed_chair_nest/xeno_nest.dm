@@ -19,8 +19,8 @@
 
 	var/force_nest = FALSE
 
-/obj/structure/bed/nest/Initialize(loc, hive)
-	..()
+/obj/structure/bed/nest/Initialize(mapload, loc, hive)
+	. = ..()
 
 	if (hive)
 		hivenumber = hive
@@ -264,8 +264,8 @@
 	force_nest = TRUE
 	var/obj/effect/alien/resin/special/nest/linked_structure
 
-/obj/structure/bed/nest/structure/Initialize(var/loc, var/hive, var/obj/effect/alien/resin/special/nest/to_link)
-	. = ..(loc, hive)
+/obj/structure/bed/nest/structure/Initialize(mapload, loc, hive, obj/effect/alien/resin/special/nest/to_link)
+	. = ..()
 
 	if(to_link)
 		linked_structure = to_link

@@ -10,19 +10,9 @@
 
 
 /obj/structure/closet/secure_closet/bar/Initialize()
-		..()
-		sleep(2)
+	. = ..()
+	for(var/i in 1 to 10)
 		new /obj/item/reagent_container/food/drinks/cans/beer( src )
-		new /obj/item/reagent_container/food/drinks/cans/beer( src )
-		new /obj/item/reagent_container/food/drinks/cans/beer( src )
-		new /obj/item/reagent_container/food/drinks/cans/beer( src )
-		new /obj/item/reagent_container/food/drinks/cans/beer( src )
-		new /obj/item/reagent_container/food/drinks/cans/beer( src )
-		new /obj/item/reagent_container/food/drinks/cans/beer( src )
-		new /obj/item/reagent_container/food/drinks/cans/beer( src )
-		new /obj/item/reagent_container/food/drinks/cans/beer( src )
-		new /obj/item/reagent_container/food/drinks/cans/beer( src )
-		return
 
 /obj/structure/closet/secure_closet/bar/update_icon()
 	if(broken)

@@ -268,7 +268,7 @@
 	//Taken from update_icon for all xeno's
 	var/list/overlays_standing[X_TOTAL_LAYERS]
 
-/mob/living/carbon/Xenomorph/Initialize(var/new_loc, var/mob/living/carbon/Xenomorph/oldXeno, var/h_number)
+/mob/living/carbon/Xenomorph/Initialize(mapload, new_loc, mob/living/carbon/Xenomorph/oldXeno, h_number)
 	var/area/A = get_area(src)
 	if(A && A.statistic_exempt)
 		statistic_exempt = TRUE

@@ -17,13 +17,13 @@
 /obj/structure/reagent_dispensers/attackby(obj/item/W as obj, mob/user as mob)
 	return
 
-/obj/structure/reagent_dispensers/Initialize(var/mapload, var/reagent_amount = 1000)
+/obj/structure/reagent_dispensers/Initialize(mapload, reagent_amount = 1000)
+	. = ..()
 	create_reagents(reagent_amount)
 	if(!possible_transfer_amounts)
 		src.verbs -= /obj/structure/reagent_dispensers/verb/set_APTFT
 	if(chemical)
 		reagents.add_reagent(chemical, reagent_amount)
-	..()
 
 /obj/structure/reagent_dispensers/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
@@ -345,7 +345,7 @@
 	chemical = null
 	icon_state = "tank_normal"
 
-/obj/structure/reagent_dispensers/fueltank/custom/Initialize(var/mapload, var/volume)
+/obj/structure/reagent_dispensers/fueltank/custom/Initialize(mapload, volume)
 	. = ..()
 	update_icon()
 

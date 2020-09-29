@@ -12,7 +12,7 @@
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/flags_embryo = NO_FLAGS
 
-/obj/item/xeno_egg/Initialize(loc, hive)
+/obj/item/xeno_egg/Initialize(mapload, loc, hive)
 	pixel_x = rand(-3,3)
 	pixel_y = rand(-3,3)
 	create_reagents(60)

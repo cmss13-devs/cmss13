@@ -22,8 +22,8 @@
     var/obj/effect/buildholder/master
     var/client/cl
 
-/obj/effect/bmode/Initialize(loc, obj/effect/buildholder/H, client/C)
-    . = ..(loc)
+/obj/effect/bmode/Initialize(mapload, loc, obj/effect/buildholder/H, client/C)
+    . = ..()
     if(!istype(H))
         qdel(src)
 
@@ -83,8 +83,8 @@
     var/obj/effect/bmode/buildquit/bm_quit = null
     var/atom/movable/throw_atom = null
 
-/obj/effect/buildholder/Initialize(loc, client/C)
-    . = ..(loc)
+/obj/effect/buildholder/Initialize(mapload, loc, client/C)
+    . = ..()
 
     cl = C
 

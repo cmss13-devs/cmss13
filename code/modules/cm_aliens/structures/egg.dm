@@ -16,7 +16,7 @@
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/flags_embryo = NO_FLAGS
 
-/obj/effect/alien/egg/Initialize(loc, var/hive)
+/obj/effect/alien/egg/Initialize(mapload, loc, var/hive)
 	..()
 	create_egg_triggers()
 	if (hive)

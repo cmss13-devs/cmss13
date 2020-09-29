@@ -38,7 +38,7 @@
 
 /obj/effect/landmark/costume/butler/Initialize()
 	. = ..()
-	new /obj/item/clothing/suit/wcoat(src.loc)
+	new /obj/item/clothing/suit/storage/wcoat(src.loc)
 	new /obj/item/clothing/under/suit_jacket(src.loc)
 	new /obj/item/clothing/head/that(src.loc)
 	return INITIALIZE_HINT_QDEL
@@ -60,7 +60,7 @@
 
 /obj/effect/landmark/costume/prig/Initialize()
 	. = ..()
-	new /obj/item/clothing/suit/wcoat(src.loc)
+	new /obj/item/clothing/suit/storage/wcoat(src.loc)
 	new /obj/item/clothing/glasses/monocle(src.loc)
 	var/CHOICE= pick( /obj/item/clothing/head/bowler, /obj/item/clothing/head/that)
 	new CHOICE(src.loc)

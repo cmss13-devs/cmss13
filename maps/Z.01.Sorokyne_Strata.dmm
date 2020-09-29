@@ -3784,7 +3784,7 @@
 	dir = 1;
 	pixel_y = 20
 	},
-/obj/item/clothing/suit/bomber,
+/obj/item/clothing/suit/storage/bomber,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/strata{
 	icon_state = "red1"
@@ -4019,7 +4019,7 @@
 /area/strata/ag/interior/outpost/canteen/spare_uniforms)
 "akD" = (
 /obj/structure/closet/secure_closet/personal,
-/obj/item/clothing/suit/apron/overalls,
+/obj/item/clothing/suit/storage/apron/overalls,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/strata{
 	icon_state = "red1"

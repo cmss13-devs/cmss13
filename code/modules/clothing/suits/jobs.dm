@@ -118,6 +118,17 @@
 	item_state = "apronchef"
 	blood_overlay_type = "armor"
 	flags_armor_protection = 0
+	allowed = list (
+		/obj/item/tool/kitchen/knife,
+		/obj/item/tool/kitchen/knife/butcher,
+		
+		/obj/item/device/flashlight,
+		/obj/item/device/healthanalyzer,
+		/obj/item/device/radio,
+		/obj/item/tank/emergency_oxygen,
+		/obj/item/tool/crowbar,
+		/obj/item/tool/pen,
+	)
 
 //Security
 /obj/item/clothing/suit/security/navyofficer

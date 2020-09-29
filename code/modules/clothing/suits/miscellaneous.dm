@@ -116,21 +116,55 @@
 	)
 	flags_inv_hide = HIDEJUMPSUIT
 
-/obj/item/clothing/suit/wcoat
+/obj/item/clothing/suit/storage/wcoat
 	name = "waistcoat"
 	desc = "For some classy, murderous fun."
 	icon_state = "vest"
 	item_state = "wcoat"
 	blood_overlay_type = "armor"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN
+	allowed = list(
+		/obj/item/weapon/gun,
+		/obj/item/ammo_magazine,
+		/obj/item/ammo_casing,
+		/obj/item/weapon/melee/baton,
+		/obj/item/handcuffs,
+		/obj/item/storage/fancy/cigarettes,
+		/obj/item/tool/lighter,
+		/obj/item/device/taperecorder,
+		
+		/obj/item/device/flashlight,
+		/obj/item/device/healthanalyzer,
+		/obj/item/device/radio,
+		/obj/item/tank/emergency_oxygen,
+		/obj/item/tool/crowbar,
+		/obj/item/tool/pen,
+	)
 
 
-/obj/item/clothing/suit/apron/overalls
+/obj/item/clothing/suit/storage/apron/overalls
 	name = "coveralls"
 	desc = "A set of denim overalls."
 	icon_state = "overalls"
 	item_state = "overalls"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS
+	allowed = list(
+		/obj/item/weapon/gun,
+		/obj/item/ammo_magazine,
+		/obj/item/ammo_casing,
+		/obj/item/weapon/melee/baton,
+		/obj/item/handcuffs,
+		/obj/item/storage/fancy/cigarettes,
+		/obj/item/tool/lighter,
+		/obj/item/device/taperecorder,
+		
+		/obj/item/device/flashlight,
+		/obj/item/device/healthanalyzer,
+		/obj/item/device/radio,
+		/obj/item/tank/emergency_oxygen,
+		/obj/item/tool/crowbar,
+		/obj/item/tool/pen,
+	)
 
 
 /obj/item/clothing/suit/syndicatefake
@@ -385,16 +419,36 @@
 	desc = "Your classic, non-racist poncho. This one is red."
 	icon_state = "redponcho"
 
-/obj/item/clothing/suit/bomber
+/obj/item/clothing/suit/storage/bomber
 	name = "bomber jacket"
 	desc = "A well-worn WW2 leather bomber jacket."
 	icon_state = "bomber"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
+	allowed = list (
+		/obj/item/device/analyzer,
+		/obj/item/device/multitool,
+		/obj/item/device/pipe_painter,
+		/obj/item/device/radio,
+		/obj/item/device/t_scanner,
+		/obj/item/tool/crowbar,
+		/obj/item/tool/screwdriver,
+		/obj/item/tool/weldingtool,
+		/obj/item/tool/wirecutters,
+		/obj/item/tool/wrench,
+		/obj/item/clothing/mask/gas,
+		
+		/obj/item/device/flashlight,
+		/obj/item/device/healthanalyzer,
+		/obj/item/device/radio,
+		/obj/item/tank/emergency_oxygen,
+		/obj/item/tool/crowbar,
+		/obj/item/tool/pen,
+	)
 	min_cold_protection_temperature = T0C
 	siemens_coefficient = 0.7
 
-/obj/item/clothing/suit/bomber/open
+/obj/item/clothing/suit/storage/bomber/open
 	name = "open bomber jacket"
 	icon_state = "bomber_2"
 

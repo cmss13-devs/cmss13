@@ -1540,13 +1540,10 @@
 	dir = 2;
 	name = "\improper Chief MP's Office"
 	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 2;
-	icon_state = "shutter0";
-	id = "CMP Office Shutters";
-	name = "\improper Privacy Shutters";
-	opacity = 0
+	id = "$2";
+	name = "\improper Privacy Shutters"
 	},
 /obj/structure/disposalpipe/segment,
 /obj/structure/machinery/door/firedoor/border_only/almayer{
@@ -9781,13 +9778,10 @@
 	name = "\improper Combat Information Center"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer,
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
-	icon_state = "pdoor0";
 	id = "CIC Lockdown";
-	name = "\improper Combat Information Center Blast Door";
-	opacity = 0
+	name = "\improper Combat Information Center Blast Door"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -10644,13 +10638,10 @@
 	id_tag = "cic_exterior";
 	name = "\improper Combat Information Center"
 	},
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
-	icon_state = "pdoor0";
 	id = "CIC Lockdown";
-	name = "\improper Combat Information Center Blast Door";
-	opacity = 0
+	name = "\improper Combat Information Center Blast Door"
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -11400,13 +11391,10 @@
 "aCf" = (
 /obj/structure/window/framed/almayer/hull/hijack_bustable,
 /obj/structure/machinery/door/firedoor/border_only/almayer,
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
-	icon_state = "pdoor0";
 	id = "CIC Lockdown";
-	name = "\improper Combat Information Center Blast Door";
-	opacity = 0
+	name = "\improper Combat Information Center Blast Door"
 	},
 /turf/open/floor/plating,
 /area/almayer/command/cic)
@@ -11415,13 +11403,10 @@
 	name = "\improper Combat Information Center"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer,
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
-	icon_state = "pdoor0";
 	id = "CIC Lockdown";
-	name = "\improper Combat Information Center Blast Door";
-	opacity = 0
+	name = "\improper Combat Information Center Blast Door"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
@@ -12602,13 +12587,10 @@
 	},
 /area/almayer/shipboard/brig)
 "aGj" = (
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 2;
-	icon_state = "pdoor0";
 	id = "CIC Lockdown";
-	name = "\improper Combat Information Center Blast Door";
-	opacity = 0
+	name = "\improper Combat Information Center Blast Door"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4";
@@ -13119,13 +13101,10 @@
 /area/almayer/command/cichallway)
 "aIo" = (
 /obj/structure/window/framed/almayer/white,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 4;
-	icon_state = "";
 	id = "researchlockdownext";
-	name = "\improper Research Lockdown";
-	opacity = 0
+	name = "\improper Research Lockdown"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	tag = "icon-door_open"
@@ -15553,14 +15532,10 @@
 "aRd" = (
 /obj/structure/surface/table/reinforced,
 /obj/structure/machinery/door/window/westright,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 4;
-	icon_state = "";
 	id = "researchlockdownext";
-	layer = 3.55;
-	name = "\improper Research Lockdown";
-	opacity = 0
+	name = "\improper Research Lockdown"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	tag = "icon-door_open"
@@ -16361,14 +16336,11 @@
 	dir = 2;
 	tag = "icon-door_open"
 	},
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 2;
-	icon_state = "pdoor0";
 	id = "CIC Lockdown";
 	layer = 2.2;
-	name = "\improper Combat Information Center Blast Door";
-	opacity = 0
+	name = "\improper Combat Information Center Blast Door"
 	},
 /turf/open/floor/almayer,
 /area/almayer/hull/upper_hull)
@@ -17482,13 +17454,10 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)
 "aYC" = (
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
-	icon_state = "pdoor0";
 	id = "Hangar Lockdown";
-	name = "\improper Hangar Lockdown Blast Door";
-	opacity = 0
+	name = "\improper Hangar Lockdown Blast Door"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
@@ -17553,13 +17522,10 @@
 	dir = 4;
 	tag = "icon-intact-supply (EAST)"
 	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 4;
-	icon_state = "shutter0";
 	id = "northcheckpoint";
-	name = "\improper Checkpoint Shutters";
-	opacity = 0
+	name = "\improper Checkpoint Shutters"
 	},
 /turf/open/floor/almayer{
 	icon_state = "redfull";
@@ -17962,13 +17928,10 @@
 	},
 /area/almayer/hallways/hangar)
 "aZZ" = (
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
-	icon_state = "pdoor0";
 	id = "Hangar Lockdown";
-	name = "\improper Hangar Lockdown Blast Door";
-	opacity = 0
+	name = "\improper Hangar Lockdown Blast Door"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4";
@@ -17997,13 +17960,10 @@
 	},
 /area/almayer/hallways/starboard_hallway)
 "bag" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 4;
-	icon_state = "shutter0";
 	id = "northcheckpoint";
-	name = "\improper Checkpoint Shutters";
-	opacity = 0
+	name = "\improper Checkpoint Shutters"
 	},
 /turf/open/floor/almayer{
 	icon_state = "redfull";
@@ -22944,13 +22904,10 @@
 /turf/open/floor/almayer,
 /area/almayer/hallways/hangar)
 "bqH" = (
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
-	icon_state = "pdoor0";
 	id = "Hangar Lockdown";
-	name = "\improper Hangar Lockdown Blast Door";
-	opacity = 0
+	name = "\improper Hangar Lockdown Blast Door"
 	},
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
 	dir = 2;
@@ -22958,13 +22915,10 @@
 	req_one_access = newlist()
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer,
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
-	icon_state = "pdoor0";
 	id = "medicalemergency";
-	name = "\improper Medical Bay Lockdown";
-	opacity = 0
+	name = "\improper Medical Bay Lockdown"
 	},
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
@@ -27874,13 +27828,10 @@
 	},
 /area/almayer/hallways/port_hallway)
 "bGZ" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 4;
-	icon_state = "shutter0";
 	id = "southcheckpoint";
-	name = "\improper Checkpoint Shutters";
-	opacity = 0
+	name = "\improper Checkpoint Shutters"
 	},
 /turf/open/floor/almayer{
 	icon_state = "redfull";
@@ -28121,13 +28072,10 @@
 	dir = 4;
 	tag = "icon-intact-supply (EAST)"
 	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 4;
-	icon_state = "shutter0";
 	id = "southcheckpoint";
-	name = "\improper Checkpoint Shutters";
-	opacity = 0
+	name = "\improper Checkpoint Shutters"
 	},
 /turf/open/floor/almayer{
 	icon_state = "redfull";
@@ -28492,12 +28440,9 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 1
 	},
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
-	icon_state = "pdoor0";
+/obj/structure/machinery/door/poddoor/almayer/open{
 	id = "Hangar Lockdown";
-	name = "\improper Hangar Lockdown Blast Door";
-	opacity = 0
+	name = "\improper Hangar Lockdown Blast Door"
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/tankerbunks)
@@ -29740,13 +29685,10 @@
 	},
 /area/almayer/hull/lower_hull)
 "bMZ" = (
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
-	icon_state = "pdoor0";
 	id = "Hangar Lockdown";
-	name = "\improper Hangar Lockdown Blast Door";
-	opacity = 0
+	name = "\improper Hangar Lockdown Blast Door"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4";
@@ -29870,12 +29812,9 @@
 /turf/open/floor/almayer,
 /area/almayer/shipboard/navigation)
 "bNp" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
-	icon_state = "shutter0";
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "vehicle1door";
-	name = "Vehicle Bay One";
-	opacity = 0
+	name = "Vehicle Bay One"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -33690,13 +33629,10 @@
 /turf/open/floor/almayer,
 /area/almayer/hallways/starboard_hallway)
 "bZL" = (
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
-	icon_state = "pdoor0";
 	id = "Hangar Lockdown";
-	name = "\improper Hangar Lockdown Blast Door";
-	opacity = 0
+	name = "\improper Hangar Lockdown Blast Door"
 	},
 /turf/open/floor/almayer,
 /area/almayer/hallways/vehiclehangar)
@@ -33863,13 +33799,10 @@
 	},
 /area/almayer/living/cafeteria_port)
 "cat" = (
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
-	icon_state = "pdoor0";
 	id = "Hangar Lockdown";
-	name = "\improper Hangar Lockdown Blast Door";
-	opacity = 0
+	name = "\improper Hangar Lockdown Blast Door"
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/vehiclehangar)
@@ -33950,13 +33883,10 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
-	icon_state = "pdoor0";
 	id = "Hangar Lockdown";
-	name = "\improper Hangar Lockdown Blast Door";
-	opacity = 0
+	name = "\improper Hangar Lockdown Blast Door"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
@@ -33965,13 +33895,10 @@
 /turf/open/floor/almayer,
 /area/almayer/hallways/vehiclehangar)
 "caD" = (
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
-	icon_state = "pdoor0";
 	id = "Hangar Lockdown";
-	name = "\improper Hangar Lockdown Blast Door";
-	opacity = 0
+	name = "\improper Hangar Lockdown Blast Door"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -37632,13 +37559,10 @@
 /area/almayer/engineering/engineering_workshop/hangar)
 "cmH" = (
 /obj/structure/machinery/door/airlock/almayer/maint,
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
-	icon_state = "pdoor0";
 	id = "Hangar Lockdown";
-	name = "\improper Hangar Lockdown Blast Door";
-	opacity = 0
+	name = "\improper Hangar Lockdown Blast Door"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer{
@@ -39815,13 +39739,10 @@
 	tag = "icon-door_open"
 	},
 /obj/structure/disposalpipe/segment,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 2;
-	icon_state = "shutter0";
 	id = "researchlockdownint";
-	name = "\improper Research Lockdown";
-	opacity = 0
+	name = "\improper Research Lockdown"
 	},
 /turf/open/floor/almayer{
 	dir = 4;
@@ -40884,13 +40805,10 @@
 /area/almayer/shipboard/brig)
 "ffu" = (
 /obj/structure/window/framed/almayer/hull/hijack_bustable,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 2;
-	icon_state = "shutter0";
-	id = "CMP Office Shutters";
-	name = "\improper Privacy Shutters";
-	opacity = 0
+	id = "$2";
+	name = "\improper Privacy Shutters"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2;
@@ -41525,12 +41443,9 @@
 	},
 /area/almayer/shipboard/brig)
 "fQu" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
-	icon_state = "shutter0";
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "CMO Shutters";
-	name = "\improper CMO Office Shutters";
-	opacity = 0
+	name = "\improper CMO Office Shutters"
 	},
 /obj/structure/window/framed/almayer/white,
 /obj/structure/machinery/door/firedoor/border_only/almayer{
@@ -42940,13 +42855,10 @@
 	name = "\improper Combat Information Center"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer,
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
-	icon_state = "pdoor0";
 	id = "CIC Lockdown";
-	name = "\improper Combat Information Center Blast Door";
-	opacity = 0
+	name = "\improper Combat Information Center Blast Door"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
@@ -43095,12 +43007,9 @@
 	},
 /area/almayer/hull/upper_hull)
 "hHJ" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
-	icon_state = "shutter0";
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "vehicle1door";
-	name = "Vehicle Bay One";
-	opacity = 0
+	name = "Vehicle Bay One"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer{
@@ -43268,13 +43177,10 @@
 	dir = 2;
 	tag = "icon-door_open"
 	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 2;
-	icon_state = "shutter0";
 	id = "researchlockdownint";
-	name = "\improper Research Lockdown";
-	opacity = 0
+	name = "\improper Research Lockdown"
 	},
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -44476,13 +44382,10 @@
 /area/almayer/squads/alpha/req)
 "jnX" = (
 /obj/structure/window/framed/almayer,
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
-	icon_state = "pdoor0";
 	id = "CIC Lockdown";
-	name = "\improper Combat Information Center Blast Door";
-	opacity = 0
+	name = "\improper Combat Information Center Blast Door"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/plating,
@@ -45177,12 +45080,9 @@
 /area/almayer/medical/upper_medical)
 "kgs" = (
 /obj/structure/window/framed/almayer/white,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
-	icon_state = "";
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "researchlockdownext";
-	name = "\improper Research Lockdown";
-	opacity = 0
+	name = "\improper Research Lockdown"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 1;
@@ -48030,13 +47930,10 @@
 /area/almayer/squads/req)
 "njy" = (
 /obj/structure/window/framed/almayer/hull/hijack_bustable,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 2;
-	icon_state = "shutter0";
-	id = "CMP Office Shutters";
-	name = "\improper Privacy Shutters";
-	opacity = 0
+	id = "$2";
+	name = "\improper Privacy Shutters"
 	},
 /obj/structure/cable{
 	d1 = 1;
@@ -49071,13 +48968,10 @@
 	dir = 4;
 	tag = "icon-intact-supply (EAST)"
 	},
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
-	icon_state = "pdoor0";
 	id = "CIC Lockdown";
-	name = "\improper Combat Information Center Blast Door";
-	opacity = 0
+	name = "\improper Combat Information Center Blast Door"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -49931,13 +49825,10 @@
 	},
 /area/almayer/shipboard/weapon_room)
 "pzw" = (
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
-	icon_state = "pdoor0";
 	id = "Hangar Lockdown";
-	name = "\improper Hangar Lockdown Blast Door";
-	opacity = 0
+	name = "\improper Hangar Lockdown Blast Door"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
@@ -51144,22 +51035,16 @@
 	},
 /area/almayer/medical/medical_science)
 "qOf" = (
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
-	icon_state = "pdoor0";
 	id = "Hangar Lockdown";
-	name = "\improper Hangar Lockdown Blast Door";
-	opacity = 0
+	name = "\improper Hangar Lockdown Blast Door"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer,
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
-	icon_state = "pdoor0";
 	id = "medicalemergency";
-	name = "\improper Medical Bay Lockdown";
-	opacity = 0
+	name = "\improper Medical Bay Lockdown"
 	},
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
@@ -51975,13 +51860,10 @@
 /turf/open/floor/almayer,
 /area/almayer/squads/req)
 "rIj" = (
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
-	icon_state = "pdoor0";
 	id = "Hangar Lockdown";
-	name = "\improper Hangar Lockdown Blast Door";
-	opacity = 0
+	name = "\improper Hangar Lockdown Blast Door"
 	},
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
 	dir = 2;
@@ -51989,13 +51871,10 @@
 	req_one_access = newlist()
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer,
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
-	icon_state = "pdoor0";
 	id = "medicalemergency";
-	name = "\improper Medical Bay Lockdown";
-	opacity = 0
+	name = "\improper Medical Bay Lockdown"
 	},
 /obj/structure/machinery/door_control{
 	id = "medicalemergency";
@@ -52831,13 +52710,10 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer,
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
-	icon_state = "pdoor0";
 	id = "CIC Lockdown";
-	name = "\improper Combat Information Center Blast Door";
-	opacity = 0
+	name = "\improper Combat Information Center Blast Door"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -53235,13 +53111,10 @@
 	},
 /area/almayer/shipboard/port_point_defense)
 "sYT" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 4;
-	icon_state = "shutter0";
 	id = "CMO Shutters";
-	name = "\improper CMO Office Shutters";
-	opacity = 0
+	name = "\improper CMO Office Shutters"
 	},
 /obj/structure/window/framed/almayer/white,
 /obj/structure/machinery/door/firedoor/border_only/almayer,
@@ -54046,13 +53919,10 @@
 	dir = 4;
 	tag = "icon-intact-supply (EAST)"
 	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 4;
-	icon_state = "shutter0";
 	id = "CMO Shutters";
-	name = "\improper CMO Office Shutters";
-	opacity = 0
+	name = "\improper CMO Office Shutters"
 	},
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	name = "\improper CMO's Office";
@@ -54853,14 +54723,11 @@
 	dir = 2;
 	tag = "icon-door_open"
 	},
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 2;
-	icon_state = "pdoor0";
 	id = "CIC Lockdown";
 	layer = 2.2;
-	name = "\improper Combat Information Center Blast Door";
-	opacity = 0
+	name = "\improper Combat Information Center Blast Door"
 	},
 /obj/structure/machinery/door/airlock/almayer/command{
 	dir = 2;
@@ -57636,13 +57503,10 @@
 /area/almayer/shipboard/firing_range_north)
 "xTR" = (
 /obj/structure/window/framed/almayer,
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
-	icon_state = "pdoor0";
 	id = "CIC Lockdown";
-	name = "\improper Combat Information Center Blast Door";
-	opacity = 0
+	name = "\improper Combat Information Center Blast Door"
 	},
 /turf/open/floor/plating,
 /area/almayer/command/cichallway)

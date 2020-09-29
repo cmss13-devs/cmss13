@@ -86,12 +86,9 @@
 /turf/open/floor/plating,
 /area/prison/maintenance/residential/access/south)
 "q" = (
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
-	icon_state = "pdoor0";
-	name = "Civilian Residences Emergency Access";
-	opacity = 0
+	name = "Civilian Residences Emergency Access"
 	},
 /turf/open/floor/plating,
 /area/prison/maintenance/residential/access/south)
@@ -198,12 +195,9 @@
 	icon_state = "4-8";
 	pixel_x = 0
 	},
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
-	icon_state = "pdoor0";
-	name = "Civilian Residences Emergency Access";
-	opacity = 0
+	name = "Civilian Residences Emergency Access"
 	},
 /turf/open/floor/plating,
 /area/prison/maintenance/residential/access/south)
@@ -232,11 +226,7 @@
 /area/prison/maintenance/residential/access/south)
 "A" = (
 /obj/structure/machinery/door/unpowered/shuttle,
-/obj/structure/machinery/door/poddoor/shutters/transit{
-	density = 0;
-	icon_state = "shutter0";
-	opacity = 0
-	},
+/obj/structure/machinery/door/poddoor/shutters/transit/open,
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin3";
 	icon_state = "rasputin3"

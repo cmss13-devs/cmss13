@@ -678,13 +678,10 @@
 	},
 /area/prison/kitchen)
 "bl" = (
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
-	icon_state = "pdoor0";
 	id = "";
-	name = "\improper Forced Blast Door";
-	opacity = 0
+	name = "\improper Forced Blast Door"
 	},
 /turf/open/floor/prison,
 /area/prison/canteen)
@@ -814,13 +811,10 @@
 	icon_state = "door_open";
 	name = "Canteen"
 	},
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
-	icon_state = "pdoor0";
 	id = "noid";
-	name = "\improper Forced Blast Door";
-	opacity = 0
+	name = "\improper Forced Blast Door"
 	},
 /turf/open/floor/prison,
 /area/prison/canteen)

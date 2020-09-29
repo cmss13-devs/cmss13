@@ -6630,13 +6630,10 @@
 	},
 /area/lv624/lazarus/research)
 "aws" = (
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
-	icon_state = "pdoor0";
 	id = "";
-	name = "\improper Forced Blast Door";
-	opacity = 0
+	name = "\improper Forced Blast Door"
 	},
 /obj/structure/machinery/door/airlock/almayer/research{
 	density = 0;
@@ -6794,13 +6791,10 @@
 	name = "????";
 	stat = 2
 	},
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
-	icon_state = "pdoor0";
 	id = "";
-	name = "\improper Forced Blast Door";
-	opacity = 0
+	name = "\improper Forced Blast Door"
 	},
 /obj/structure/machinery/door/airlock/almayer/research{
 	density = 0;

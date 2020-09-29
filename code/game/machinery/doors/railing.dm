@@ -1,7 +1,7 @@
 /obj/structure/machinery/door/poddoor/railing
 	name = "\improper retractable railing"
 	icon = 'icons/obj/structures/doors/railing.dmi'
-	icon_state = "railing1"
+	icon_state = "railing0"
 	use_power = 0
 	flags_atom = ON_BORDER
 	opacity = 0
@@ -12,15 +12,19 @@
 	throwpass = TRUE //You can throw objects over this, despite its density.
 	open_layer = CATWALK_LAYER
 	closed_layer = WINDOW_LAYER
-	var/closed_layer_south = ABOVE_MOB_LAYER
+	density = TRUE
 
-/obj/structure/machinery/door/poddoor/railing/New()
-	..()
-	close()		//this makes sure to update sprite
+/obj/structure/machinery/door/poddoor/railing/Initialize()
+	. = ..()
 	if(dir == SOUTH)
-		layer = closed_layer_south
+		closed_layer = ABOVE_MOB_LAYER
+	layer = closed_layer
+
+/obj/structure/machinery/door/poddoor/railing/update_icon()
+	if(density)
+		icon_state = "railing1"
 	else
-		layer = closed_layer
+		icon_state = "railing0"
 
 /obj/structure/machinery/door/poddoor/railing/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
@@ -50,11 +54,7 @@
 		return 0
 	density = 1
 	operating = 1
-	switch(dir)
-		if(SOUTH)
-			layer = closed_layer_south
-		else
-			layer = closed_layer
+	layer = closed_layer
 	flick("railingc1", src)
 	icon_state = "railing1"
 

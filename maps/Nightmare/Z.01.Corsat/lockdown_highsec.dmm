@@ -6,12 +6,9 @@
 /turf/closed/wall/r_wall/biodome/biodome_unmeltable,
 /area/corsat/omega/checkpoint)
 "c" = (
-/obj/structure/machinery/door/poddoor/two_tile/four_tile/secure{
-	density = 0;
-	icon_state = "pdoor0";
+/obj/structure/machinery/door/poddoor/two_tile/four_tile/secure/open{
 	id = "delta_gamma2";
 	name = "Gamma Checkpoint";
-	opacity = 0;
 	use_power = 0
 	},
 /turf/open/floor/corsat{
@@ -76,12 +73,9 @@
 	},
 /area/corsat/omega/checkpoint)
 "m" = (
-/obj/structure/machinery/door/poddoor/two_tile/four_tile/vertical/secure{
-	density = 0;
-	icon_state = "pdoor0";
+/obj/structure/machinery/door/poddoor/two_tile/four_tile/vertical/secure/open{
 	id = "delta_gamma";
 	name = "Gamma Emergency Access";
-	opacity = 0;
 	use_power = 0
 	},
 /turf/open/floor/corsat{
@@ -90,13 +84,10 @@
 /area/corsat/omega/checkpoint)
 "n" = (
 /obj/structure/window/framed/corsat/security,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 1;
-	icon_state = "shutter0";
 	id = "OmegaAccessC";
-	name = "Security Shutters";
-	opacity = 0
+	name = "Security Shutters"
 	},
 /turf/open/floor/plating,
 /area/corsat/omega/checkpoint)
@@ -155,13 +146,10 @@
 /area/corsat/omega/checkpoint)
 "t" = (
 /obj/structure/window/framed/corsat/security,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 4;
-	icon_state = "shutter0";
 	id = "OmegaAccessC";
-	name = "Security Shutters";
-	opacity = 0
+	name = "Security Shutters"
 	},
 /turf/open/floor/plating,
 /area/corsat/omega/checkpoint)
@@ -231,13 +219,10 @@
 	dir = 4;
 	name = "Identification Desk"
 	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 4;
-	icon_state = "shutter0";
 	id = "OmegaAccessC";
-	name = "Security Shutters";
-	opacity = 0
+	name = "Security Shutters"
 	},
 /obj/structure/window/reinforced,
 /turf/open/floor/corsat{
@@ -272,13 +257,10 @@
 	dir = 4;
 	name = "Identification Desk"
 	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 4;
-	icon_state = "shutter0";
 	id = "OmegaAccessC";
-	name = "Security Shutters";
-	opacity = 0
+	name = "Security Shutters"
 	},
 /turf/open/floor/corsat{
 	icon_state = "plate"
@@ -374,12 +356,9 @@
 	},
 /area/corsat/omega/checkpoint)
 "T" = (
-/obj/structure/machinery/door/poddoor/two_tile/four_tile/vertical/secure{
-	density = 0;
-	icon_state = "pdoor0";
+/obj/structure/machinery/door/poddoor/two_tile/four_tile/vertical/secure/open{
 	id = "delta_omega";
 	name = "Omega Checkpoint";
-	opacity = 0;
 	use_power = 0
 	},
 /turf/open/floor/corsat{
@@ -387,12 +366,9 @@
 	},
 /area/corsat/omega/checkpoint)
 "U" = (
-/obj/structure/machinery/door/poddoor/two_tile/four_tile/vertical/secure{
-	density = 0;
-	icon_state = "pdoor0";
+/obj/structure/machinery/door/poddoor/two_tile/four_tile/vertical/secure/open{
 	id = "delta_theta";
 	name = "Theta Emergency Access";
-	opacity = 0;
 	use_power = 0
 	},
 /turf/open/floor/corsat{

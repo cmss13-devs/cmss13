@@ -33,12 +33,9 @@
 /area/supply/dock_vehicle)
 "ag" = (
 /obj/structure/window/framed/almayer/hull,
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
-	icon_state = "pdoor0";
+/obj/structure/machinery/door/poddoor/almayer/open{
 	id = "tdome_observer";
-	name = "\improper Observer Shutters";
-	opacity = 0
+	name = "\improper Observer Shutters"
 	},
 /turf/open/floor/almayer{
 	dir = 5;
@@ -309,12 +306,9 @@
 /area/space)
 "bf" = (
 /obj/structure/window_frame/colony/reinforced,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
-	icon_state = "shutter0";
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "base_3_shutter";
-	name = "\improper Bunker Shutters";
-	opacity = 0
+	name = "\improper Bunker Shutters"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -5083,12 +5077,9 @@
 /area/adminlevel/bunker01/medbay)
 "rz" = (
 /obj/structure/machinery/smartfridge/secure/medbay,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
-	icon_state = "shutter0";
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "bunker_medbay";
-	name = "\improper Medbay Shutters";
-	opacity = 0
+	name = "\improper Medbay Shutters"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer/antag{
 	dir = 2
@@ -5100,12 +5091,9 @@
 	},
 /area/adminlevel/bunker01/medbay)
 "rA" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
-	icon_state = "shutter0";
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "bunker_medbay";
-	name = "\improper Medbay Shutters";
-	opacity = 0
+	name = "\improper Medbay Shutters"
 	},
 /obj/structure/machinery/cm_vending/sorted/medical/marinemed/antag,
 /obj/structure/machinery/door/firedoor/border_only/almayer/antag{
@@ -5118,12 +5106,9 @@
 	},
 /area/adminlevel/bunker01/medbay)
 "rB" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
-	icon_state = "shutter0";
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "bunker_medbay";
-	name = "\improper Medbay Shutters";
-	opacity = 0
+	name = "\improper Medbay Shutters"
 	},
 /obj/structure/machinery/cm_vending/sorted/medical/antag,
 /obj/structure/machinery/door/firedoor/border_only/almayer/antag{
@@ -5138,12 +5123,9 @@
 "rC" = (
 /obj/structure/surface/table/reinforced,
 /obj/structure/machinery/recharger,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
-	icon_state = "shutter0";
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "bunker_medbay";
-	name = "\improper Medbay Shutters";
-	opacity = 0
+	name = "\improper Medbay Shutters"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer/antag{
 	dir = 2
@@ -5157,12 +5139,9 @@
 "rD" = (
 /obj/structure/surface/table/reinforced,
 /obj/structure/machinery/recharger,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
-	icon_state = "shutter0";
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "bunker_medbay";
-	name = "\improper Medbay Shutters";
-	opacity = 0
+	name = "\improper Medbay Shutters"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer/antag{
 	dir = 2
@@ -5176,12 +5155,9 @@
 /turf/closed/wall/r_wall,
 /area/adminlevel/bunker01/medbay)
 "rF" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
-	icon_state = "shutter0";
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "bunker_medbay";
-	name = "\improper Medbay Shutters";
-	opacity = 0
+	name = "\improper Medbay Shutters"
 	},
 /obj/structure/window/framed/colony/reinforced,
 /obj/structure/machinery/door/firedoor/border_only/almayer/antag{
@@ -5198,12 +5174,9 @@
 	req_access = list(201);
 	req_one_access = null
 	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
-	icon_state = "shutter0";
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "bunker_medbay";
-	name = "\improper Medbay Shutters";
-	opacity = 0
+	name = "\improper Medbay Shutters"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 1;
@@ -5220,12 +5193,9 @@
 	},
 /area/adminlevel/bunker01/medbay)
 "rH" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
-	icon_state = "shutter0";
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "bunker_medbay";
-	name = "\improper Medbay Shutters";
-	opacity = 0
+	name = "\improper Medbay Shutters"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer/antag{
 	dir = 2
@@ -5788,12 +5758,9 @@
 /area/adminlevel/bunker01/medbay)
 "sR" = (
 /obj/structure/window/framed/colony,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
-	icon_state = "shutter0";
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "bunker_or1_shutters";
-	name = "\improper Surgery Shutters";
-	opacity = 0
+	name = "\improper Surgery Shutters"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer/antag{
 	dir = 2
@@ -5824,12 +5791,9 @@
 /area/adminlevel/bunker01/medbay)
 "sT" = (
 /obj/structure/window/framed/colony,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
-	icon_state = "shutter0";
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "bunker_or2_shutters";
-	name = "\improper Surgery Shutters";
-	opacity = 0
+	name = "\improper Surgery Shutters"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer/antag{
 	dir = 2
@@ -6203,13 +6167,10 @@
 /area/adminlevel/bunker01/caves)
 "tN" = (
 /obj/structure/machinery/cm_vending/sorted/medical/marinemed/antag,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 4;
-	icon_state = "shutter0";
 	id = "base_medbay";
-	name = "\improper Medbay Shutters";
-	opacity = 0
+	name = "\improper Medbay Shutters"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -7135,12 +7096,9 @@
 /area/adminlevel/bunker01/command)
 "DM" = (
 /obj/structure/window_frame/colony/reinforced,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
-	icon_state = "shutter0";
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "base_1_shutter";
-	name = "\improper Bunker Shutters";
-	opacity = 0
+	name = "\improper Bunker Shutters"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -7425,13 +7383,10 @@
 /area/adminlevel/ert_station)
 "GF" = (
 /obj/structure/machinery/smartfridge/secure/medbay,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 4;
-	icon_state = "shutter0";
 	id = "base_medbay";
-	name = "\improper Medbay Shutters";
-	opacity = 0
+	name = "\improper Medbay Shutters"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -7501,12 +7456,9 @@
 /turf/closed/wall/r_wall/bunker,
 /area/adminlevel/bunker01/hydroponics)
 "Ik" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
-	icon_state = "shutter0";
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "base_blastdoor";
-	name = "\improper Bunker Blast Doors";
-	opacity = 0
+	name = "\improper Bunker Blast Doors"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4";
@@ -7857,12 +7809,9 @@
 /area/adminlevel/ert_station)
 "KN" = (
 /obj/structure/window/framed/colony,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
-	icon_state = "shutter0";
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "bunker_or1_shutters";
-	name = "\improper Surgery Shutters";
-	opacity = 0
+	name = "\improper Surgery Shutters"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer/antag{
 	dir = 2
@@ -8280,12 +8229,9 @@
 /area/adminlevel/ert_station)
 "Ok" = (
 /obj/structure/window_frame/colony/reinforced,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
-	icon_state = "shutter0";
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "base_4_shutter";
-	name = "\improper Bunker Shutters";
-	opacity = 0
+	name = "\improper Bunker Shutters"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -8960,13 +8906,10 @@
 /area/adminlevel/ert_station)
 "UA" = (
 /obj/structure/machinery/cm_vending/sorted/medical/antag,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 4;
-	icon_state = "shutter0";
 	id = "base_medbay";
-	name = "\improper Medbay Shutters";
-	opacity = 0
+	name = "\improper Medbay Shutters"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -9380,12 +9323,9 @@
 /area/tdome/tdome1)
 "Zn" = (
 /obj/structure/window_frame/colony/reinforced,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
-	icon_state = "shutter0";
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "base_2_shutter";
-	name = "\improper Bunker Shutters";
-	opacity = 0
+	name = "\improper Bunker Shutters"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";

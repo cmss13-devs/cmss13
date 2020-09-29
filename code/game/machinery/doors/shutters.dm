@@ -4,9 +4,8 @@
 	icon_state = "shutter"
 	power_channel = POWER_CHANNEL_ENVIRON
 
-/obj/structure/machinery/door/poddoor/shutters/New()
-	..()
-	layer = PODDOOR_CLOSED_LAYER
+/obj/structure/machinery/door/poddoor/shutters/opened
+	density = FALSE
 
 /obj/structure/machinery/door/poddoor/shutters/update_icon()
 	if(density)
@@ -75,9 +74,12 @@
 		/obj/structure/window/framed/almayer,
 		/obj/structure/machinery/door/airlock)
 
-/obj/structure/machinery/door/poddoor/shutters/almayer/New()
-	add_timer(CALLBACK(src, /atom.proc/relativewall_neighbours), 10)
-	..()
+/obj/structure/machinery/door/poddoor/shutters/almayer/open
+	density = FALSE
+
+/obj/structure/machinery/door/poddoor/shutters/almayer/Initialize()
+	. = ..()
+	relativewall_neighbours()
 
 /obj/structure/machinery/door/poddoor/shutters/almayer/containment
 	unacidable = TRUE
@@ -104,6 +106,9 @@
 
 	ex_act(severity) //immune to explosions
 		return
+
+/obj/structure/machinery/door/poddoor/shutters/transit/open
+	density = FALSE
 
 /obj/structure/machinery/door/poddoor/shutters/almayer/pressure
 	name = "pressure shutters"

@@ -51,11 +51,8 @@
 /area/prison/cellblock/maxsec/north)
 "aai" = (
 /obj/structure/window/framed/prison/reinforced,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
-	icon_state = "shutter0";
-	id = "biological_testing_1";
-	opacity = 0
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	id = "biological_testing_1"
 	},
 /turf/open/floor/plating,
 /area/prison/research/secret/testing)
@@ -71,11 +68,8 @@
 	icon_state = "coil1";
 	name = "cable piece"
 	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
-	icon_state = "shutter0";
-	id = "biological_testing_1";
-	opacity = 0
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	id = "biological_testing_1"
 	},
 /turf/open/floor/plating,
 /area/prison/research/secret/testing)
@@ -85,11 +79,8 @@
 	tag = "icon-N"
 	},
 /obj/structure/machinery/door/window/northright,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
-	icon_state = "shutter0";
-	id = "biological_testing_1";
-	opacity = 0
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	id = "biological_testing_1"
 	},
 /turf/open/floor/plating,
 /area/prison/research/secret/testing)
@@ -98,11 +89,8 @@
 	icon_state = "N";
 	tag = "icon-N"
 	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
-	icon_state = "shutter0";
-	id = "biological_testing_2";
-	opacity = 0
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	id = "biological_testing_2"
 	},
 /obj/structure/machinery/door/window/northleft,
 /turf/open/floor/plating,
@@ -112,11 +100,8 @@
 	icon_state = "N";
 	tag = "icon-N"
 	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
-	icon_state = "shutter0";
-	id = "biological_testing_2";
-	opacity = 0
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	id = "biological_testing_2"
 	},
 /obj/structure/machinery/door/window/northright,
 /turf/open/floor/plating,
@@ -1351,11 +1336,8 @@
 /area/prison/research/secret/bioengineering)
 "acX" = (
 /obj/structure/window/framed/prison/reinforced,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
-	icon_state = "shutter0";
-	id = "biological_testing_2";
-	opacity = 0
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	id = "biological_testing_2"
 	},
 /turf/open/floor/plating,
 /area/prison/research/secret/testing)
@@ -9833,12 +9815,9 @@
 /turf/open/floor/plating,
 /area/prison/maintenance/residential/access/north)
 "axP" = (
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
-	icon_state = "pdoor0";
-	name = "Civilian Residences Emergency Access";
-	opacity = 0
+	name = "Civilian Residences Emergency Access"
 	},
 /turf/open/floor/plating,
 /area/prison/maintenance/residential/access/north)
@@ -10096,12 +10075,9 @@
 	dir = 4;
 	tag = "icon-intact-supply (EAST)"
 	},
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
-	icon_state = "pdoor0";
-	name = "Civilian Residences Emergency Access";
-	opacity = 0
+	name = "Civilian Residences Emergency Access"
 	},
 /turf/open/floor/plating,
 /area/prison/maintenance/residential/access/north)
@@ -24511,12 +24487,9 @@
 	},
 /area/prison/residential/central)
 "bkI" = (
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
-	icon_state = "pdoor0";
-	name = "Civilian Residences Emergency Access";
-	opacity = 0
+	name = "Civilian Residences Emergency Access"
 	},
 /turf/open/floor/plating,
 /area/prison/security/monitoring/highsec)
@@ -24918,12 +24891,9 @@
 	dir = 4;
 	tag = "icon-intact-supply (EAST)"
 	},
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
-	icon_state = "pdoor0";
-	name = "Civilian Residences Emergency Access";
-	opacity = 0
+	name = "Civilian Residences Emergency Access"
 	},
 /turf/open/floor/plating,
 /area/prison/security/monitoring/highsec)
@@ -31910,11 +31880,7 @@
 /area/prison/monorail/east)
 "bEh" = (
 /obj/structure/machinery/door/unpowered/shuttle,
-/obj/structure/machinery/door/poddoor/shutters/transit{
-	density = 0;
-	icon_state = "shutter0";
-	opacity = 0
-	},
+/obj/structure/machinery/door/poddoor/shutters/transit/open,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin3";
 	tag = "icon-rasputin3"
@@ -31922,11 +31888,7 @@
 /area/prison/monorail/east)
 "bEi" = (
 /obj/structure/machinery/door/airlock/almayer/generic,
-/obj/structure/machinery/door/poddoor/shutters/transit{
-	density = 0;
-	icon_state = "shutter0";
-	opacity = 0
-	},
+/obj/structure/machinery/door/poddoor/shutters/transit/open,
 /turf/open/floor/prison,
 /area/prison/monorail/east)
 "bEk" = (
@@ -38029,12 +37991,9 @@
 /turf/open/floor/plating,
 /area/prison/maintenance/residential/access/south)
 "bUX" = (
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
-	icon_state = "pdoor0";
-	name = "Civilian Residences Emergency Access";
-	opacity = 0
+	name = "Civilian Residences Emergency Access"
 	},
 /turf/open/floor/plating,
 /area/prison/maintenance/residential/access/south)
@@ -38652,12 +38611,9 @@
 	dir = 4;
 	tag = "icon-intact-supply (EAST)"
 	},
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
-	icon_state = "pdoor0";
-	name = "Civilian Residences Emergency Access";
-	opacity = 0
+	name = "Civilian Residences Emergency Access"
 	},
 /turf/open/floor/plating,
 /area/prison/maintenance/residential/access/south)
@@ -39981,12 +39937,9 @@
 	},
 /area/prison/cellblock/mediumsec/north)
 "car" = (
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
-	icon_state = "pdoor0";
+/obj/structure/machinery/door/poddoor/almayer/open{
 	id = "";
 	name = "emergency lockdown";
-	opacity = 0;
 	use_power = 0
 	},
 /turf/open/floor/prison{
@@ -41116,11 +41069,8 @@
 	},
 /area/prison/hallway/engineering)
 "cdR" = (
-/obj/structure/machinery/door/poddoor/two_tile{
-	density = 0;
-	icon_state = "pdoor0";
-	id = "execution";
-	opacity = 0
+/obj/structure/machinery/door/poddoor/two_tile/opened{
+	id = "execution"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor{
@@ -42293,11 +42243,8 @@
 /turf/open/floor/plating,
 /area/prison/pirate)
 "cho" = (
-/obj/structure/machinery/door/poddoor/two_tile/vertical{
-	density = 0;
-	icon_state = "pdoor0";
-	id = "riot_armory";
-	opacity = 0
+/obj/structure/machinery/door/poddoor/two_tile/vertical/open{
+	id = "riot_armory"
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -42306,11 +42253,8 @@
 	},
 /area/prison/security/armory/riot)
 "chp" = (
-/obj/structure/machinery/door/poddoor/two_tile/vertical{
-	density = 0;
-	icon_state = "pdoor0";
-	id = "lethal_armory";
-	opacity = 0
+/obj/structure/machinery/door/poddoor/two_tile/vertical/open{
+	id = "lethal_armory"
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -42661,13 +42605,10 @@
 /turf/closed/wall/almayer,
 /area/prison/pirate)
 "cip" = (
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 2;
-	icon_state = "pdoor0";
 	id = "pirate_cargo";
-	name = "Rocinante Cargo Bay Door";
-	opacity = 0
+	name = "Rocinante Cargo Bay Door"
 	},
 /turf/open/floor{
 	icon_state = "delivery"
@@ -42676,13 +42617,10 @@
 "ciq" = (
 /obj/item/ammo_casing,
 /obj/effect/decal/cleanable/blood,
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 2;
-	icon_state = "pdoor0";
 	id = "pirate_cargo";
-	name = "Rocinante Cargo Bay Door";
-	opacity = 0
+	name = "Rocinante Cargo Bay Door"
 	},
 /turf/open/floor{
 	icon_state = "delivery"
@@ -42692,13 +42630,10 @@
 /obj/effect/landmark/corpsespawner/prison_security,
 /obj/effect/decal/cleanable/blood,
 /obj/item/weapon/gun/rifle/m16,
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 2;
-	icon_state = "pdoor0";
 	id = "pirate_cargo";
-	name = "Rocinante Cargo Bay Door";
-	opacity = 0
+	name = "Rocinante Cargo Bay Door"
 	},
 /turf/open/floor{
 	icon_state = "delivery"
@@ -42706,13 +42641,10 @@
 /area/prison/pirate)
 "cis" = (
 /obj/item/ammo_casing,
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 2;
-	icon_state = "pdoor0";
 	id = "pirate_cargo";
-	name = "Rocinante Cargo Bay Door";
-	opacity = 0
+	name = "Rocinante Cargo Bay Door"
 	},
 /turf/open/floor{
 	icon_state = "delivery"
@@ -48402,12 +48334,9 @@
 /turf/open/floor/plating,
 /area/prison/security/monitoring/medsec/south)
 "cAA" = (
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
-	icon_state = "pdoor0";
-	name = "Civilian Residences Emergency Access";
-	opacity = 0
+	name = "Civilian Residences Emergency Access"
 	},
 /obj/structure/machinery/light,
 /turf/open/floor/plating,
@@ -49434,12 +49363,9 @@
 /turf/open/floor/plating,
 /area/prison/cellblock/mediumsec/east)
 "hdc" = (
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
-	icon_state = "pdoor0";
+/obj/structure/machinery/door/poddoor/almayer/open{
 	id = "";
 	name = "emergency lockdown";
-	opacity = 0;
 	use_power = 0
 	},
 /obj/effect/decal/cleanable/blood,
@@ -52456,12 +52382,9 @@
 	},
 /area/prison/canteen)
 "teg" = (
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
-	icon_state = "pdoor0";
+/obj/structure/machinery/door/poddoor/almayer/open{
 	id = "";
 	name = "emergency lockdown";
-	opacity = 0;
 	use_power = 0
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -53029,12 +52952,9 @@
 /turf/open/floor/carpet,
 /area/prison/residential/central)
 "vDC" = (
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
-	icon_state = "pdoor0";
+/obj/structure/machinery/door/poddoor/almayer/open{
 	id = "";
 	name = "emergency lockdown";
-	opacity = 0;
 	use_power = 0
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,

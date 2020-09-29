@@ -1159,12 +1159,9 @@
 	},
 /area/prison/residential/central)
 "cp" = (
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
-	icon_state = "pdoor0";
-	name = "Civilian Residences Emergency Access";
-	opacity = 0
+	name = "Civilian Residences Emergency Access"
 	},
 /turf/open/floor/plating,
 /area/prison/security/monitoring/highsec)
@@ -1308,12 +1305,9 @@
 	icon_state = "4-8";
 	pixel_x = 0
 	},
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
-	icon_state = "pdoor0";
-	name = "Civilian Residences Emergency Access";
-	opacity = 0
+	name = "Civilian Residences Emergency Access"
 	},
 /turf/open/floor/plating,
 /area/prison/security/monitoring/highsec)

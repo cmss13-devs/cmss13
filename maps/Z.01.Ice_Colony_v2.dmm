@@ -12594,12 +12594,9 @@
 /area/ice_colony/surface/command/control/office)
 "aEj" = (
 /obj/structure/window_frame/colony/reinforced,
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
-	icon_state = "pdoor0";
+/obj/structure/machinery/door/poddoor/almayer/open{
 	id = "";
-	name = "\improper Forced Blast Door";
-	opacity = 0
+	name = "\improper Forced Blast Door"
 	},
 /turf/open/floor/plating,
 /area/ice_colony/surface/command/control/office)
@@ -12827,13 +12824,10 @@
 /area/ice_colony/surface/command/control)
 "aEN" = (
 /obj/item/shard,
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
-	icon_state = "pdoor0";
 	id = "";
-	name = "\improper Forced Blast Door";
-	opacity = 0
+	name = "\improper Forced Blast Door"
 	},
 /turf/open/floor/plating,
 /area/ice_colony/surface/command/control)
@@ -13652,12 +13646,9 @@
 /turf/open/floor/plating,
 /area/ice_colony/surface/command/crisis)
 "aGN" = (
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
-	icon_state = "pdoor0";
+/obj/structure/machinery/door/poddoor/almayer/open{
 	id = "";
-	name = "\improper Forced Blast Door";
-	opacity = 0
+	name = "\improper Forced Blast Door"
 	},
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
 	name = "\improper Colony Crisis Room";
@@ -13672,23 +13663,17 @@
 	tag = "icon-gib6"
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
-	icon_state = "pdoor0";
+/obj/structure/machinery/door/poddoor/almayer/open{
 	id = "";
-	name = "\improper Forced Blast Door";
-	opacity = 0
+	name = "\improper Forced Blast Door"
 	},
 /turf/open/floor/wood,
 /area/ice_colony/surface/command/crisis)
 "aGP" = (
 /obj/structure/window_frame/colony/reinforced,
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
-	icon_state = "pdoor0";
+/obj/structure/machinery/door/poddoor/almayer/open{
 	id = "";
-	name = "\improper Forced Blast Door";
-	opacity = 0
+	name = "\improper Forced Blast Door"
 	},
 /turf/open/floor/plating,
 /area/ice_colony/surface/command/crisis)

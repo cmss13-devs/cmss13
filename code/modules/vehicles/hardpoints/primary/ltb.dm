@@ -1,17 +1,13 @@
-/obj/item/hardpoint/gun/cannon
+/obj/item/hardpoint/primary/cannon
 	name = "LTB Cannon"
 	desc = "A primary cannon for tanks that shoots explosive rounds"
 
 	icon_state = "ltb_cannon"
 	disp_icon = "tank"
 	disp_icon_state = "ltb_cannon"
-	firing_sounds = list('sound/weapons/tank_cannon_fire1.ogg', 'sound/weapons/tank_cannon_fire2.ogg')
+	activation_sounds = list('sound/weapons/tank_cannon_fire1.ogg', 'sound/weapons/tank_cannon_fire2.ogg')
 
-	slot = HDPT_PRIMARY
-
-	point_cost = 600
 	health = 500
-	damage_multiplier = 0.15
 	cooldown = 200
 	accuracy = 0.97
 	firing_arc = 60

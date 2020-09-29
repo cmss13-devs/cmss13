@@ -1,17 +1,13 @@
-/obj/item/hardpoint/gun/grenade_launcher
+/obj/item/hardpoint/secondary/grenade_launcher
 	name = "Grenade Launcher"
 	desc = "A secondary weapon for tanks that shoots grenades"
 
 	icon_state = "glauncher"
 	disp_icon = "tank"
 	disp_icon_state = "glauncher"
-	firing_sounds = list('sound/weapons/gun_m92_attachable.ogg')
+	activation_sounds = list('sound/weapons/gun_m92_attachable.ogg')
 
-	slot = HDPT_SECONDARY
-
-	point_cost = 300
 	health = 500
-	damage_multiplier = 0.125
 	cooldown = 30
 	accuracy = 0.4
 	firing_arc = 90
@@ -31,7 +27,7 @@
 		"8" = list(-6, 17)
 	)
 
-/obj/item/hardpoint/gun/grenade_launcher/can_activate(var/mob/user, var/atom/A)
+/obj/item/hardpoint/secondary/grenade_launcher/can_activate(var/mob/user, var/atom/A)
 	if(!..())
 		return FALSE
 
@@ -43,7 +39,7 @@
 
 	return TRUE
 
-/obj/item/hardpoint/gun/grenade_launcher/fire_projectile(var/mob/user, var/atom/A)
+/obj/item/hardpoint/secondary/grenade_launcher/fire_projectile(var/mob/user, var/atom/A)
 	set waitfor = 0
 
 	var/turf/origin_turf = get_turf(src)

@@ -1,26 +1,22 @@
-/obj/item/hardpoint/gun/m56cupola
+/obj/item/hardpoint/secondary/m56cupola
 	name = "M56 Cupola"
 	desc = "A secondary weapon for tanks that shoots bullets"
 
 	icon_state = "m56_cupola"
 	disp_icon = "tank"
 	disp_icon_state = "m56cupola"
-	firing_sounds = list('sound/weapons/gun_smartgun1.ogg', 'sound/weapons/gun_smartgun2.ogg', 'sound/weapons/gun_smartgun3.ogg')
+	activation_sounds = list('sound/weapons/gun_smartgun1.ogg', 'sound/weapons/gun_smartgun2.ogg', 'sound/weapons/gun_smartgun3.ogg')
 
-	slot = HDPT_SECONDARY
-
-	point_cost = 400
 	health = 350
-	damage_multiplier = 0.125
 	cooldown = 15
 	accuracy = 0.7
 	firing_arc = 90
-	range_multiplier = 3
 	var/burst_amount = 3
 
 	origins = list(0, -2)
 
 	ammo = new /obj/item/ammo_magazine/hardpoint/m56_cupola
+	max_clips = 1
 
 	muzzle_flash_pos = list(
 		"1" = list(8, -1),
@@ -29,7 +25,7 @@
 		"8" = list(-5, 7)
 	)
 
-/obj/item/hardpoint/gun/m56cupola/fire(var/mob/user, var/atom/A)
+/obj/item/hardpoint/secondary/m56cupola/fire(var/mob/user, var/atom/A)
 	if(ammo.current_rounds <= 0)
 		return
 
@@ -39,8 +35,8 @@
 		var/atom/T = A
 		if(!prob((accuracy * 100) / owner.misc_multipliers["accuracy"]))
 			T = get_step(get_turf(A), pick(cardinal))
-		if(LAZYLEN(firing_sounds))
-			playsound(get_turf(src), pick(firing_sounds), 60, 1)
+		if(LAZYLEN(activation_sounds))
+			playsound(get_turf(src), pick(activation_sounds), 60, 1)
 		fire_projectile(user, T, TRUE)
 		if(ammo.current_rounds <= 0)
 			break

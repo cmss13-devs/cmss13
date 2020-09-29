@@ -6,7 +6,7 @@
 	w_class = SIZE_LARGE
 	default_ammo = /datum/ammo/bullet/tank/flak
 	max_rounds = 40
-	gun_type = /obj/item/hardpoint/gun/autocannon
+	gun_type = /obj/item/hardpoint/primary/autocannon
 	point_cost = 200
 
 /obj/item/ammo_magazine/hardpoint/ace_autocannon/update_icon()

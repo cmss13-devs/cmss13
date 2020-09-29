@@ -1,4 +1,4 @@
-/obj/item/hardpoint/artillery_module
+/obj/item/hardpoint/support/artillery_module
 	name = "Artillery Module"
 	desc = "Allows the user to look far into the distance."
 
@@ -6,13 +6,7 @@
 	disp_icon = "tank"
 	disp_icon_state = "artillerymod"
 
-	slot = HDPT_SUPPORT
-	hdpt_layer = HDPT_LAYER_SUPPORT
-	activatable = TRUE
-
-	point_cost = 600
 	health = 250
-	damage_multiplier = 0.075
 
 	activatable = TRUE
 
@@ -20,7 +14,7 @@
 	var/view_buff = 12 //This way you can VV for more or less fun
 	var/view_tile_offset = 5
 
-/obj/item/hardpoint/artillery_module/activate(var/mob/user, var/atom/A)
+/obj/item/hardpoint/support/artillery_module/activate(var/mob/user, var/atom/A)
 	if(!user.client)
 		return
 
@@ -53,7 +47,7 @@
 			user.client.pixel_x = -1 * view_tile_offset * 32
 			user.client.pixel_y = 0
 
-/obj/item/hardpoint/artillery_module/deactivate()
+/obj/item/hardpoint/support/artillery_module/deactivate()
 	if(!is_active)
 		return
 
@@ -68,7 +62,7 @@
 		user.client.pixel_y = 0
 	is_active = FALSE
 
-/obj/item/hardpoint/artillery_module/can_activate()
+/obj/item/hardpoint/support/artillery_module/can_activate()
 	if(health <= 0)
 		to_chat(usr, SPAN_WARNING("\The [src] is broken!"))
 		return FALSE

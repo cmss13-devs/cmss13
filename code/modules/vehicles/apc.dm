@@ -27,9 +27,9 @@
 	luminosity = 7
 
 	hardpoints_allowed = list(
-		/obj/item/hardpoint/gun/dualcannon,
-		/obj/item/hardpoint/gun/frontalcannon,
-		/obj/item/hardpoint/gun/flare_launcher,
+		/obj/item/hardpoint/primary/dualcannon,
+		/obj/item/hardpoint/secondary/frontalcannon,
+		/obj/item/hardpoint/support/flare_launcher,
 		/obj/item/hardpoint/locomotion/apc_wheels
 	)
 
@@ -94,15 +94,15 @@
 
 //apc spawner that spawns in an apc that's NOT eight kinds of awful, mostly for testing purposes
 /obj/vehicle/multitile/apc/fixed/load_hardpoints(var/obj/vehicle/multitile/R)
-	add_hardpoint(new /obj/item/hardpoint/gun/dualcannon)
-	add_hardpoint(new /obj/item/hardpoint/gun/frontalcannon)
-	add_hardpoint(new /obj/item/hardpoint/gun/flare_launcher)
+	add_hardpoint(new /obj/item/hardpoint/primary/dualcannon)
+	add_hardpoint(new /obj/item/hardpoint/secondary/frontalcannon)
+	add_hardpoint(new /obj/item/hardpoint/support/flare_launcher)
 	add_hardpoint(new /obj/item/hardpoint/locomotion/apc_wheels)
 
 /obj/vehicle/multitile/apc/decrepit/load_hardpoints(var/obj/vehicle/multitile/R)
-	add_hardpoint(new /obj/item/hardpoint/gun/dualcannon)
-	add_hardpoint(new /obj/item/hardpoint/gun/frontalcannon)
-	add_hardpoint(new /obj/item/hardpoint/gun/flare_launcher)
+	add_hardpoint(new /obj/item/hardpoint/primary/dualcannon)
+	add_hardpoint(new /obj/item/hardpoint/secondary/frontalcannon)
+	add_hardpoint(new /obj/item/hardpoint/support/flare_launcher)
 	add_hardpoint(new /obj/item/hardpoint/locomotion/apc_wheels)
 
 /obj/vehicle/multitile/apc/decrepit/load_damage(var/obj/vehicle/multitile/R)
@@ -120,9 +120,9 @@
 	interior_capacity = 5
 
 /obj/vehicle/multitile/apc/medical/decrepit/load_hardpoints(var/obj/vehicle/multitile/R)
-	add_hardpoint(new /obj/item/hardpoint/gun/dualcannon)
-	add_hardpoint(new /obj/item/hardpoint/gun/frontalcannon)
-	add_hardpoint(new /obj/item/hardpoint/gun/flare_launcher)
+	add_hardpoint(new /obj/item/hardpoint/primary/dualcannon)
+	add_hardpoint(new /obj/item/hardpoint/secondary/frontalcannon)
+	add_hardpoint(new /obj/item/hardpoint/support/flare_launcher)
 	add_hardpoint(new /obj/item/hardpoint/locomotion/apc_wheels)
 
 /obj/vehicle/multitile/apc/medical/decrepit/load_damage(var/obj/vehicle/multitile/R)
@@ -131,9 +131,9 @@
 	healthcheck()
 
 /obj/vehicle/multitile/apc/medical/fixed/load_hardpoints(var/obj/vehicle/multitile/R)
-	add_hardpoint(new /obj/item/hardpoint/gun/dualcannon)
-	add_hardpoint(new /obj/item/hardpoint/gun/frontalcannon)
-	add_hardpoint(new /obj/item/hardpoint/gun/flare_launcher)
+	add_hardpoint(new /obj/item/hardpoint/primary/dualcannon)
+	add_hardpoint(new /obj/item/hardpoint/secondary/frontalcannon)
+	add_hardpoint(new /obj/item/hardpoint/support/flare_launcher)
 	add_hardpoint(new /obj/item/hardpoint/locomotion/apc_wheels)
 
 /obj/vehicle/multitile/apc/command
@@ -144,9 +144,9 @@
 	interior_capacity = 5
 
 /obj/vehicle/multitile/apc/command/decrepit/load_hardpoints(var/obj/vehicle/multitile/R)
-	add_hardpoint(new /obj/item/hardpoint/gun/dualcannon)
-	add_hardpoint(new /obj/item/hardpoint/gun/frontalcannon)
-	add_hardpoint(new /obj/item/hardpoint/gun/flare_launcher)
+	add_hardpoint(new /obj/item/hardpoint/primary/dualcannon)
+	add_hardpoint(new /obj/item/hardpoint/secondary/frontalcannon)
+	add_hardpoint(new /obj/item/hardpoint/support/flare_launcher)
 	add_hardpoint(new /obj/item/hardpoint/locomotion/apc_wheels)
 
 /obj/vehicle/multitile/apc/command/decrepit/load_damage(var/obj/vehicle/multitile/R)
@@ -155,7 +155,7 @@
 	healthcheck()
 
 /obj/vehicle/multitile/apc/command/fixed/load_hardpoints(var/obj/vehicle/multitile/R)
-	add_hardpoint(new /obj/item/hardpoint/gun/dualcannon)
-	add_hardpoint(new /obj/item/hardpoint/gun/frontalcannon)
-	add_hardpoint(new /obj/item/hardpoint/gun/flare_launcher)
+	add_hardpoint(new /obj/item/hardpoint/primary/dualcannon)
+	add_hardpoint(new /obj/item/hardpoint/secondary/frontalcannon)
+	add_hardpoint(new /obj/item/hardpoint/support/flare_launcher)
 	add_hardpoint(new /obj/item/hardpoint/locomotion/apc_wheels)

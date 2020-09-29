@@ -7,7 +7,6 @@
 	disp_icon = "apc"
 	disp_icon_state = "wheels"
 
-	point_cost = 300
 	health = 500
 
 	move_speed = VEHICLE_SPEED_SUPERFAST

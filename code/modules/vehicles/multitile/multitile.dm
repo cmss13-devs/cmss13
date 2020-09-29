@@ -231,7 +231,8 @@ var/global/list/all_multi_vehicles = list()
 
 //Returns the ratio of damage to take, just a housekeeping thing
 /obj/vehicle/multitile/proc/get_dmg_multi(var/type)
-	if(!dmg_multipliers.Find(type)) return 0
+	if(!dmg_multipliers || !dmg_multipliers.Find(type))
+		return 1
 	return dmg_multipliers[type] * dmg_multipliers["all"]
 
 //Generic proc for taking damage
@@ -300,53 +301,6 @@ var/global/list/all_multi_vehicles = list()
 		return interior.get_passengers()
 	return null
 
-//------------------------------------------------------
-//------------------------HARDPOINTS--------------------
-//------------------------------------------------------
-
-
-// Returns all hardpoints that are attached to the vehicle, including ones held by holder hardpoints (e.g. turrets)
-/obj/vehicle/multitile/proc/get_hardpoints()
-	var/list/all_hardpoints = hardpoints.Copy()
-	for(var/obj/item/hardpoint/holder/H in hardpoints)
-		if(!H.hardpoints)
-			continue
-		all_hardpoints += H.hardpoints.Copy()
-
-	return all_hardpoints
-
-/obj/vehicle/multitile/proc/get_activatable_hardpoints()
-	var/list/hps = list()
-	for(var/obj/item/hardpoint/H in hardpoints)
-		if(istype(H, /obj/item/hardpoint/holder))
-			var/obj/item/hardpoint/holder/HP = H
-			if(!HP.hardpoints)
-				continue
-			hps += HP.get_activatable_hardpoints()
-		if(!H.is_activatable())
-			continue
-		hps += H
-	return hps
-
-// Returns a hardpoint by its name
-/obj/vehicle/multitile/proc/find_hardpoint(var/name)
-	for(var/obj/item/hardpoint/H in hardpoints)
-		if(istype(H, /obj/item/hardpoint/holder))
-			var/obj/item/hardpoint/holder/HP = H
-
-			var/obj/item/hardpoint/nested_hp = HP.find_hardpoint(name)
-			if(nested_hp)
-				return nested_hp
-
-		if(H.name == name)
-			return H
-	return null
-
-/obj/vehicle/multitile/proc/get_gun_hardpoints()
-	var/list/guns
-	for(var/obj/item/hardpoint/gun/G in get_hardpoints())
-		LAZYADD(guns, G)
-	return guns
 
 //Special armored vic healthcheck that mainly updates the hardpoint states
 /obj/vehicle/multitile/healthcheck()
@@ -354,9 +308,7 @@ var/global/list/all_multi_vehicles = list()
 	for(var/obj/item/hardpoint/H in hardpoints)
 		if(H.health <= 0)
 			H.deactivate()
-			if(istype(H, /obj/item/hardpoint/buff))
-				var/obj/item/hardpoint/buff/B = H
-				B.remove_buff(src)
+			H.remove_buff(src)
 		else
 			all_broken = 0 //if something exists but isnt broken
 

@@ -11,7 +11,6 @@
 
 	density = TRUE	//come on, it's huge
 
-	point_cost = 1000
 
 	w_class = SIZE_MASSIVE
 	density = TRUE
@@ -25,15 +24,15 @@
 
 	accepted_hardpoints = list(
 		// primaries
-		/obj/item/hardpoint/gun/flamer,
-		/obj/item/hardpoint/gun/cannon,
-		/obj/item/hardpoint/gun/minigun,
-		/obj/item/hardpoint/gun/autocannon,
+		/obj/item/hardpoint/primary/flamer,
+		/obj/item/hardpoint/primary/cannon,
+		/obj/item/hardpoint/primary/minigun,
+		/obj/item/hardpoint/primary/autocannon,
 		// secondaries
-		/obj/item/hardpoint/gun/small_flamer,
-		/obj/item/hardpoint/gun/towlauncher,
-		/obj/item/hardpoint/gun/m56cupola,
-		/obj/item/hardpoint/gun/grenade_launcher
+		/obj/item/hardpoint/secondary/small_flamer,
+		/obj/item/hardpoint/secondary/towlauncher,
+		/obj/item/hardpoint/secondary/m56cupola,
+		/obj/item/hardpoint/secondary/grenade_launcher
 	)
 
 	hdpt_layer = HDPT_LAYER_TURRET
@@ -134,8 +133,8 @@
 	..(deg)
 
 	var/obj/vehicle/multitile/tank/C = owner
-	var/obj/item/hardpoint/artillery_module/AM
-	for(var/obj/item/hardpoint/artillery_module/A in C.hardpoints)
+	var/obj/item/hardpoint/support/artillery_module/AM
+	for(var/obj/item/hardpoint/support/artillery_module/A in C.hardpoints)
 		AM = A
 	if(AM && AM.is_active)
 		var/mob/user = C.seats[VEHICLE_GUNNER]

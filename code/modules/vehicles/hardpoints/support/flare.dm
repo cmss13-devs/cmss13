@@ -1,4 +1,4 @@
-/obj/item/hardpoint/gun/flare_launcher
+/obj/item/hardpoint/support/flare_launcher
 	name = "Mounted Flare Launcher"
 	desc = "A support module for APCs that shoots flares"
 	icon = 'icons/obj/vehicles/hardpoints/apc.dmi'
@@ -6,14 +6,11 @@
 	icon_state = "flare_launcher"
 	disp_icon = "apc"
 	disp_icon_state = "flare_launcher"
-	firing_sounds = list('sound/weapons/gun_m92_attachable.ogg')
+	activation_sounds = list('sound/weapons/gun_m92_attachable.ogg')
 
-	slot = HDPT_SUPPORT
-	hdpt_layer = HDPT_LAYER_SUPPORT
+	activatable = TRUE
 
-	point_cost = 250
 	health = 500
-	damage_multiplier = 0.075
 	cooldown = 30
 	accuracy = 0.7
 	firing_arc = 120

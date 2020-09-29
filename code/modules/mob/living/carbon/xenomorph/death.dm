@@ -116,7 +116,7 @@
 	remains.pixel_x = pixel_x //For 2x2.
 
 	if(!caste)
-		CRASH("CASTE ERROR: gib() was called without a caste. (name: [name], disposed: [disposed], health: [health])")
+		CRASH("CASTE ERROR: gib() was called without a caste. (name: [name], disposed: [QDELETED(src)], health: [health])")
 
 	switch(caste.caste_name) //This will need to be changed later, when we have proper xeno pathing. Might do it on caste or something.
 		if("Boiler")

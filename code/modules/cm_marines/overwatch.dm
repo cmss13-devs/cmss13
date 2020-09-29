@@ -836,10 +836,10 @@
 	visible_message("[htmlicon(src, viewers(src))] [SPAN_BOLDNOTICE("Orbital bombardment request for squad '[current_squad]' accepted. Orbital cannons are now calibrating.")]")
 	send_to_squad("Initializing fire coordinates.")
 	playsound(T,'sound/effects/alert.ogg', 25, 1)  //Placeholder
-	add_timer(CALLBACK(src, /obj/structure/machinery/computer/overwatch/proc/send_to_squad, "Transmitting beacon feed."), SECONDS_2)
-	add_timer(CALLBACK(src, /obj/structure/machinery/computer/overwatch/proc/send_to_squad, "Calibrating trajectory window."), SECONDS_4)
-	add_timer(CALLBACK(src, /obj/structure/machinery/computer/overwatch/proc/begin_fire), SECONDS_6)
-	add_timer(CALLBACK(src, /obj/structure/machinery/computer/overwatch/proc/fire_bombard, user, A, T), SECONDS_6 + 6)
+	addtimer(CALLBACK(src, /obj/structure/machinery/computer/overwatch/proc/send_to_squad, "Transmitting beacon feed."), SECONDS_2)
+	addtimer(CALLBACK(src, /obj/structure/machinery/computer/overwatch/proc/send_to_squad, "Calibrating trajectory window."), SECONDS_4)
+	addtimer(CALLBACK(src, /obj/structure/machinery/computer/overwatch/proc/begin_fire), SECONDS_6)
+	addtimer(CALLBACK(src, /obj/structure/machinery/computer/overwatch/proc/fire_bombard, user, A, T), SECONDS_6 + 6)
 
 /obj/structure/machinery/computer/overwatch/proc/begin_fire()
 	for(var/mob/living/carbon/H in living_mob_list)
@@ -900,7 +900,7 @@
 	C.anchored = TRUE //To avoid accidental pushes
 	send_to_squad("'[C.name]' supply drop incoming. Heads up!")
 	var/datum/squad/S = current_squad //in case the operator changes the overwatched squad mid-drop
-	add_timer(CALLBACK(src, /obj/structure/machinery/computer/overwatch/proc/finish_supplydrop, C, S, T), SECONDS_10)
+	addtimer(CALLBACK(src, /obj/structure/machinery/computer/overwatch/proc/finish_supplydrop, C, S, T), SECONDS_10)
 
 /obj/structure/machinery/computer/overwatch/proc/finish_supplydrop(obj/structure/closet/crate/C, datum/squad/S, turf/T)
 	if(!C || C.loc != S.drop_pad.loc) //Crate no longer on pad somehow, abort.

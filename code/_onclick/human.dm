@@ -110,7 +110,7 @@
 	user.visible_message(SPAN_WARNING("[src] loads [target] onto their back."),\
 	SPAN_WARNING("You load [target] onto your back."))
 
-	if(pulling != dropping || !dropping || dropping.disposed)
+	if(pulling != dropping || !dropping || QDELETED(dropping))
 		return . = ..()
 
 	grab_level = GRAB_CARRY

@@ -8,10 +8,6 @@
 	icon_state = "detector_blip"
 	layer = BELOW_FULLSCREEN_LAYER
 
-/obj/effect/detector_blip/Destroy()
-	..()
-	return GC_HINT_RECYCLE
-
 /obj/item/device/motiondetector
 	name = "motion detector"
 	desc = "A device that detects movement, but ignores marines. The screen will show the amount of unidentified movement detected (up to 9). You can switch modes with Alt+Click."
@@ -265,7 +261,7 @@
 		if(detected)
 			detected_sound = TRUE
 		
-		TICK_CHECK
+		CHECK_TICK
 
 	for(var/mob/M in orange(detector_range, loc))
 		var/detected
@@ -288,7 +284,7 @@
 			if(detected)
 				detected_sound = TRUE
 
-		TICK_CHECK
+		CHECK_TICK
 
 	if(detected_sound)
 		playsound(loc, 'sound/items/tick.ogg', 50, 0, 7, 2)

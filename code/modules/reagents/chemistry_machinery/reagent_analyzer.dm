@@ -45,10 +45,10 @@
 /obj/structure/machinery/reagent_analyzer/proc/reagent_process()
 	status++
 	if(status <= 3)
-		add_timer(CALLBACK(src, /obj/structure/machinery/reagent_analyzer/proc/reagent_process), SECONDS_2)
+		addtimer(CALLBACK(src, /obj/structure/machinery/reagent_analyzer/proc/reagent_process), SECONDS_2)
 		return
 	playsound(loc, 'sound/machines/fax.ogg', 15, 1)
-	add_timer(CALLBACK(src, /obj/structure/machinery/reagent_analyzer/proc/finish_reagent_process), SECONDS_4)
+	addtimer(CALLBACK(src, /obj/structure/machinery/reagent_analyzer/proc/finish_reagent_process), SECONDS_4)
 
 /obj/structure/machinery/reagent_analyzer/proc/finish_reagent_process()
 	if(!sample || !sample.reagents || sample.reagents.total_volume < 30 || sample.reagents.reagent_list.len > 1)

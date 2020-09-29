@@ -728,7 +728,7 @@
 /obj/item/reagent_container/food/snacks/donkpocket/proc/cooltime() //Not working, derp?
 	if(warm)
 		spawn(4200)
-			if(!disposed) //not qdel'd
+			if(!QDELETED(src)) //not qdel'd
 				warm = 0
 				reagents.del_reagent("tricordrazine")
 				name = "donk-pocket"

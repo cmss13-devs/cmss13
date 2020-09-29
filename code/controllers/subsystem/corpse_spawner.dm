@@ -8,6 +8,6 @@ SUBSYSTEM_DEF(corpse_spawner)
 
 	var/corpses = 15
 
-/datum/subsystem/corpse_spawner/Initialize()
+/datum/controller/subsystem/corpse_spawner/Initialize()
 	objectives_controller.generate_corpses(corpses)
 	return ..()

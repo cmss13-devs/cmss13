@@ -169,7 +169,7 @@
 		qdel(src)
 	else
 		. = ..()
-		if(!disposed)
+		if(!QDELETED(src))
 			disarm()
 
 
@@ -190,13 +190,13 @@
 		var/step_direction = get_step(src, direction)
 		tripwire.forceMove(step_direction)
 	prime()
-	if(!disposed)
+	if(!QDELETED(src))
 		disarm()
 
 
 /obj/item/explosive/mine/flamer_fire_act() //adding mine explosions
 	prime()
-	if(!disposed)
+	if(!QDELETED(src))
 		disarm()
 
 

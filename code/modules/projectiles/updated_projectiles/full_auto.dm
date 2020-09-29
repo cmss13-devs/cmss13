@@ -92,7 +92,7 @@
 	else
 		Fire(fa_target, user, fa_params)
 
-	add_timer(CALLBACK(src, .proc/repeat_fire, user), fa_delay)
+	addtimer(CALLBACK(src, .proc/repeat_fire, user), fa_delay)
 
 // Make sure we're not trying to start full auto when the gun isn't even held by anyone
 /obj/item/weapon/gun/dropped(var/mob/user)

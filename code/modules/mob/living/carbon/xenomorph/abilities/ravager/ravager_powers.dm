@@ -16,7 +16,7 @@
 		X.visible_message(SPAN_XENODANGER("[X] starts empowering!"), SPAN_XENODANGER("You start empowering yourself!"))
 		activated_once = TRUE
 		get_inital_shield()
-		add_timer(CALLBACK(src, .proc/timeout), time_until_timeout)
+		addtimer(CALLBACK(src, .proc/timeout), time_until_timeout)
 		apply_cooldown()
 		return ..()
 	else
@@ -440,7 +440,7 @@
 
 	X.create_shield(shield_duration)
 	shield_active = TRUE
-	add_timer(CALLBACK(src, .proc/remove_shield), shield_duration)
+	addtimer(CALLBACK(src, .proc/remove_shield), shield_duration)
 
 	apply_cooldown()
 	..()

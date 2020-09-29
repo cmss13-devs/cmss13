@@ -491,10 +491,6 @@
 	attack_verb = list("sliced", "slashed", "jabbed", "torn", "gored")
 	force = config.hlmed_hit_damage
 
-/obj/item/weapon/wristblades/Destroy()
-	. = ..()
-	return GC_HINT_RECYCLE
-
 /obj/item/weapon/wristblades/dropped(mob/living/carbon/human/M)
 	playsound(M,'sound/weapons/wristblades_off.ogg', 15, 1)
 	if(M)
@@ -610,9 +606,9 @@
 	if(!on)
 		on = !on
 		timer = TRUE
-		add_timer(CALLBACK(src, .proc/stop_parry), SECONDS_3)
+		addtimer(CALLBACK(src, .proc/stop_parry), SECONDS_3)
 		to_chat(user, SPAN_NOTICE("You get ready to parry with the [src]."))
-		add_timer(CALLBACK(src, .proc/parry_cooldown), SECONDS_8)
+		addtimer(CALLBACK(src, .proc/parry_cooldown), SECONDS_8)
 
 	add_fingerprint(user)
 	return
@@ -872,7 +868,7 @@
 		icon_state = initial(icon_state) + "_active"
 		active = 1
 		update_icon()
-		add_timer(CALLBACK(src, .proc/prime), det_time)
+		addtimer(CALLBACK(src, .proc/prime), det_time)
 
 	prime()
 		if(spawner_type && deliveryamt)

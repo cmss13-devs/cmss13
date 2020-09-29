@@ -78,10 +78,6 @@
 	flags_item = NODROP|DELONDROP
 	fullscreen_vision = null
 
-/obj/item/clothing/glasses/night/yautja/Destroy()
-	..()
-	return GC_HINT_RECYCLE
-
 /obj/item/clothing/glasses/night/cultist
 	name = "\improper Unusual Thermal Imaging Goggles"
 	desc = "Seems to be thermal imaging goggles, except they have an unusual design. Looking at it makes you nauseous."

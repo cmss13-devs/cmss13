@@ -10,7 +10,7 @@ SUBSYSTEM_DEF(create_ticker)
 	init_order = SS_INIT_TICKER_SPAWN
 	flags      = SS_NO_FIRE
 
-/datum/subsystem/create_ticker/Initialize(timeofday)
+/datum/controller/subsystem/create_ticker/Initialize(timeofday)
 	ticker = new
 	return ..()
 

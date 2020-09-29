@@ -128,7 +128,7 @@
 	if(W)
 		if(W.attack_speed && A.loc != src)
 			next_move += W.attack_speed
-		if(!A.attackby(W, src, mods) && A && !A.disposed)
+		if(!A.attackby(W, src, mods) && A && !QDELETED(A))
 			// in case the attackby slept
 			if(!W)
 				next_move += 4

@@ -74,13 +74,9 @@
 				return FALSE
 
 			if(WR.walltype == WALL_RESIN)
-				var/prev_old_turf = WR.old_turf
 				WR.ChangeTurf(/turf/closed/wall/resin/thick)
-				WR.old_turf = prev_old_turf
 			else if(WR.walltype == WALL_MEMBRANE)
-				var/prev_old_turf = WR.old_turf
 				WR.ChangeTurf(/turf/closed/wall/resin/membrane/thick)
-				WR.old_turf = prev_old_turf
 			else
 				to_chat(src, SPAN_XENOWARNING("[WR] can't be made thicker."))
 				return FALSE

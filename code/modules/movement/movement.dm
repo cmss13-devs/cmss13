@@ -69,7 +69,7 @@
 	if (throwing)
 		launch_impact(A)
 
-	if (A && !A.disposed)
+	if (A && !QDELETED(A))
 		A.last_bumped = world.time
 		A.Collided(src)
 	return

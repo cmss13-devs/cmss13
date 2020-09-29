@@ -62,10 +62,10 @@
 	if(client.admin_holder && client.inactivity < 1200)
 		if(client.admin_holder && client.admin_holder.rights & R_DEBUG && client.prefs.View_MC) //Skip admins, and check for our pref.
 			if(statpanel("MC"))
-				stat("Location:", "([x], [y], [z])")
 				stat("CPU:", "[world.cpu]")
-				stat("Instances:", "[world.contents.len]")
-
+				stat("Instances:", "[num2text(length(world.contents), 10)]")
+				stat("World Time:", "[world.time]")
+				GLOB.stat_entry()
 				stat(null)
 				if(Master)
 					Master.stat_entry()
@@ -77,7 +77,7 @@
 					stat("Failsafe Controller:", "ERROR")
 				if(Master)
 					stat(null)
-					for(var/datum/subsystem/SS in Master.subsystems)
+					for(var/datum/controller/subsystem/SS in Master.subsystems)
 						SS.stat_entry()
 
 	// Looking at contents of a tile

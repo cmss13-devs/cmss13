@@ -174,7 +174,7 @@
 	var/to_display = round(ko_counter)
 	ko_icon.maptext = "<span class='center langchat'>[to_display]</span>"
 	
-	ko_reset_timer = add_timer(CALLBACK(src, .proc/remove_ko), ko_delay, TIMER_UNIQUE|TIMER_OVERRIDE_UNIQUE|TIMER_NO_WAIT_UNIQUE|TIMER_STOPPABLE)
+	ko_reset_timer = addtimer(CALLBACK(src, .proc/remove_ko), ko_delay, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT|TIMER_STOPPABLE)
 
 /datum/behavior_delegate/boxer/proc/remove_ko()
 	punching_bag = null
@@ -199,7 +199,7 @@
 	big_ko_icon.maptext_x = LANGCHAT_X_OFFSET
 	big_ko_icon.maptext = "<span class='center langchat langchat_bolditalicbig'>KO!</span>"
 	bound_xeno.client.images += big_ko_icon
-	add_timer(CALLBACK(src, .proc/remove_big_ko), SECONDS_2)
+	addtimer(CALLBACK(src, .proc/remove_big_ko), SECONDS_2)
 
 /datum/behavior_delegate/boxer/proc/remove_big_ko()
 	if(bound_xeno.client && big_ko_icon)

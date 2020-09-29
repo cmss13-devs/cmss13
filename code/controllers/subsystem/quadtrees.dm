@@ -8,7 +8,7 @@ SUBSYSTEM_DEF(quadtree)
     var/list/player_feed
     var/qtree_capacity = QUADTREE_CAPACITY
 
-/datum/subsystem/quadtree/Initialize()
+/datum/controller/subsystem/quadtree/Initialize()
     cur_quadtrees = new/list(world.maxz)
     new_quadtrees = new/list(world.maxz)
     var/datum/shape/rectangle/R
@@ -17,10 +17,10 @@ SUBSYSTEM_DEF(quadtree)
         new_quadtrees[i] = QTREE(R, qtree_capacity, i)
     return ..()
 
-/datum/subsystem/quadtree/stat_entry()
+/datum/controller/subsystem/quadtree/stat_entry()
 	..("QT:[length(cur_quadtrees)]")
 
-/datum/subsystem/quadtree/fire(resumed = FALSE)
+/datum/controller/subsystem/quadtree/fire(resumed = FALSE)
     if(!resumed)
         player_feed = player_list.Copy()
         cur_quadtrees = new_quadtrees.Copy()
@@ -37,7 +37,7 @@ SUBSYSTEM_DEF(quadtree)
         if(MC_TICK_CHECK)
             return
 
-/datum/subsystem/quadtree/proc/players_in_range(datum/shape/range, z_level, flags = 0)
+/datum/controller/subsystem/quadtree/proc/players_in_range(datum/shape/range, z_level, flags = 0)
     var/list/players = list()
     if(z_level && cur_quadtrees.len >= z_level)
         var/datum/quadtree/Q = cur_quadtrees[z_level]

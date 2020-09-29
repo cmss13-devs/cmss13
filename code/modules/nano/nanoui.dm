@@ -240,7 +240,7 @@ nanoui is used to open and update nano browser uis
   * @return /list data to send to the ui
   */
 /datum/nanoui/proc/get_send_data(var/list/data)
-	if(disposed)
+	if(QDELETED(src))
 		// Don't send any data if the UI is being qdeleted
 		return list("config" = list())
 
@@ -427,7 +427,7 @@ nanoui is used to open and update nano browser uis
   * @return nothing
   */
 /datum/nanoui/proc/open()
-	if(disposed)
+	if(QDELETED(src))
 		return
 	if(!user.client)
 		return
@@ -473,7 +473,7 @@ nanoui is used to open and update nano browser uis
   * @return nothing
   */
 /datum/nanoui/proc/push_data(data, force_push = 0)
-	if(disposed)
+	if(QDELETED(src))
 		return
 
 	if(allowed_user_stat > -1)
@@ -498,7 +498,7 @@ nanoui is used to open and update nano browser uis
   * @return nothing
   */
 /datum/nanoui/Topic(href, href_list)
-	if(disposed)
+	if(QDELETED(src))
 		return
 
 	update_status(0) // update the status

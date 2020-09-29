@@ -251,7 +251,7 @@
 	. = ..()
 
 	if(ghost_of_buckled_mob)
-		add_timer(CALLBACK(src, .proc/null_ghost_of_buckled_mob), 600) // Give the user 60 seconds to respond when nest is destroyed.
+		addtimer(CALLBACK(src, .proc/null_ghost_of_buckled_mob), 600) // Give the user 60 seconds to respond when nest is destroyed.
 
 /obj/structure/bed/nest/proc/null_ghost_of_buckled_mob()
 	ghost_of_buckled_mob = null

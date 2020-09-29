@@ -29,36 +29,58 @@
 	icon = 'icons/turf/floors/floors.dmi'
 	var/intact_tile = 1 //used by floors to distinguish floor with/without a floortile(e.g. plating).
 	var/can_bloody = TRUE //Can blood spawn on this turf?
-	var/old_turf = "" //The previous turf's path as text. Used when deconning on LV --MadSnailDisease
 	var/list/linked_pylons = list()
 
 	var/list/datum/automata_cell/autocells = list()
 	var/list/dirt_overlays = list()
 
-/turf/New()
-	..()
+	var/list/baseturfs = /turf/baseturf_bottom
+	var/changing_turf = FALSE
+
+/turf/Initialize(mapload)
+	SHOULD_CALL_PARENT(FALSE) // this doesn't parent call for optimisation reasons
+	if(flags_atom & INITIALIZED)
+		stack_trace("Warning: [src]([type]) initialized multiple times!")
+	flags_atom |= INITIALIZED
+
+	// by default, vis_contents is inherited from the turf that was here before
+	vis_contents.Cut()
+
 	turfs += src
 	if(src.z == 1)
 		z1turfs += src
 
-	for(var/atom/movable/AM as mob|obj in src)
-		spawn(0)
-			Entered(AM)
+	assemble_baseturfs()
 
 	levelupdate()
 
-/turf/Destroy()
-	. = ..()
+	visibilityChanged()
 
+	for(var/atom/movable/AM in src)
+		Entered(AM)
+
+	Decorate()
+
+	return INITIALIZE_HINT_NORMAL
+
+/turf/Destroy(force)
+	. = QDEL_HINT_IWILLGC
+	if(!changing_turf)
+		stack_trace("Incorrect turf deletion")
+	changing_turf = FALSE
+	if(force)
+		..()
+		//this will completely wipe turf state
+		var/turf/B = new world.turf(src)
+		for(var/A in B.contents)
+			qdel(A)
+		for(var/I in B.vars)
+			B.vars[I] = null
+		return
+	visibilityChanged()
+	flags_atom &= ~INITIALIZED
 	stop_processing()
-
-	if(old_turf != "")
-		ChangeTurf(text2path(old_turf), TRUE)
-	else
-		ChangeTurf(/turf/open/floor/plating, TRUE)
-
-	// Changeturf handles the transition to the new turf type
-	return GC_HINT_IGNORE
+	..()
 
 /turf/ex_act(severity)
 	return 0
@@ -234,30 +256,84 @@
 		if(O.level == 1)
 			O.hide(intact_tile)
 
-//Creates a new turf. this is called by every code that changes a turf ("spawn atom" verb, qdel, build mode stuff, etc)
-/turf/proc/ChangeTurf(new_turf_path, forget_old_turf)
-	if (!new_turf_path)
-		return
+// A proc in case it needs to be recreated or badmins want to change the baseturfs
+/turf/proc/assemble_baseturfs(turf/fake_baseturf_type)
+	var/static/list/created_baseturf_lists = list()
+	var/turf/current_target
+	if(fake_baseturf_type)
+		if(length(fake_baseturf_type)) // We were given a list, just apply it and move on
+			baseturfs = fake_baseturf_type
+			return
+		current_target = fake_baseturf_type
+	else
+		if(length(baseturfs))
+			return // No replacement baseturf has been given and the current baseturfs value is already a list/assembled
+		if(!baseturfs)
+			current_target = initial(baseturfs) || type // This should never happen but just in case...
+			stack_trace("baseturfs var was null for [type]. Failsafe activated and it has been given a new baseturfs value of [current_target].")
+		else
+			current_target = baseturfs
+
+	// If we've made the output before we don't need to regenerate it
+	if(created_baseturf_lists[current_target])
+		var/list/premade_baseturfs = created_baseturf_lists[current_target]
+		if(length(premade_baseturfs))
+			baseturfs = premade_baseturfs.Copy()
+		else
+			baseturfs = premade_baseturfs
+		return baseturfs
+
+	var/turf/next_target = initial(current_target.baseturfs)
+	//Most things only have 1 baseturf so this loop won't run in most cases
+	if(current_target == next_target)
+		baseturfs = current_target
+		created_baseturf_lists[current_target] = current_target
+		return current_target
+	var/list/new_baseturfs = list(current_target)
+	for(var/i=0;current_target != next_target;i++)
+		if(i > 100)
+			// A baseturfs list over 100 members long is silly
+			// Because of how this is all structured it will only runtime/message once per type
+			stack_trace("A turf <[type]> created a baseturfs list over 100 members long. This is most likely an infinite loop.")
+			message_admins("A turf <[type]> created a baseturfs list over 100 members long. This is most likely an infinite loop.")
+			break
+		new_baseturfs.Insert(1, next_target)
+		current_target = next_target
+		next_target = initial(current_target.baseturfs)
+
+	baseturfs = new_baseturfs
+	created_baseturf_lists[new_baseturfs[new_baseturfs.len]] = new_baseturfs.Copy()
+	return new_baseturfs
+
+// Creates a new turf
+// new_baseturfs can be either a single type or list of types, formated the same as baseturfs. see turf.dm
+/turf/proc/ChangeTurf(path, list/new_baseturfs, flags)
+	switch(path)
+		if(null)
+			return
+		if(/turf/baseturf_bottom)
+			path = /turf/open/floor/plating
 
 	var/old_lumcount = lighting_lumcount - initial(lighting_lumcount)
-
-	var/path = "[src.type]"
-	if(istype(src, /turf/open/snow))
-		var/turf/open/snow/s = src
-		//This is so we revert back to a proper snow layer
-		path = "/turf/open/snow/layer[s.bleed_layer]"
 
 	//if(src.type == new_turf_path) // Put this back if shit starts breaking
 	//	return src
 
 	var/pylons = linked_pylons
 
-	var/turf/W = new new_turf_path( locate(src.x, src.y, src.z) )
+	var/list/old_baseturfs = baseturfs
+
+	changing_turf = TRUE
+	qdel(src)	//Just get the side effects and call Destroy
+	var/turf/W = new path(src)
+
+	if(new_baseturfs)
+		W.baseturfs = new_baseturfs
+	else
+		W.baseturfs = old_baseturfs
 
 	W.linked_pylons = pylons
 
-	if(!forget_old_turf)	//e.g. if an admin spawn a new wall on a wall tile, we don't
-		W.old_turf = path	//want the new wall to change into the old wall when destroyed
 	W.lighting_lumcount += old_lumcount
 	if(old_lumcount != W.lighting_lumcount)
 		W.lighting_changed = 1
@@ -266,6 +342,27 @@
 	W.levelupdate()
 	return W
 
+// Take off the top layer turf and replace it with the next baseturf down
+/turf/proc/ScrapeAway(amount=1, flags)
+	if(!amount)
+		return
+	if(length(baseturfs))
+		var/list/new_baseturfs = baseturfs.Copy()
+		var/turf_type = new_baseturfs[max(1, new_baseturfs.len - amount + 1)]
+		while(ispath(turf_type, /turf/baseturf_skipover))
+			amount++
+			if(amount > new_baseturfs.len)
+				CRASH("The bottomost baseturf of a turf is a skipover [src]([type])")
+			turf_type = new_baseturfs[max(1, new_baseturfs.len - amount + 1)]
+		new_baseturfs.len -= min(amount, new_baseturfs.len - 1) // No removing the very bottom
+		if(new_baseturfs.len == 1)
+			new_baseturfs = new_baseturfs[1]
+		return ChangeTurf(turf_type, new_baseturfs, flags)
+
+	if(baseturfs == type)
+		return src
+
+	return ChangeTurf(baseturfs, baseturfs, flags) // The bottom baseturf will never go away
 
 /turf/proc/ReplaceWithLattice()
 	src.ChangeTurf(/turf/open/space)

@@ -12,5 +12,5 @@
 
 /obj/effect/elevator/supply/Destroy(force)
 	if(!force)
-		return GC_HINT_IGNORE
+		return QDEL_HINT_LETMELIVE
 	return ..()

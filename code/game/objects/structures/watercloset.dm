@@ -314,7 +314,7 @@
 	var/turf/T = get_turf(src)
 //	reagents.add_reagent("water", 2)
 	T.clean(src)
-	add_timer(VARSET_CALLBACK(src, is_washing, FALSE), 10 SECONDS)
+	addtimer(VARSET_CALLBACK(src, is_washing, FALSE), 10 SECONDS)
 
 /obj/structure/machinery/shower/proc/check_heat(mob/M as mob)
 	if(!on || watertemp == "normal") return

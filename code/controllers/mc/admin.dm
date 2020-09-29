@@ -1,8 +1,12 @@
 // Clickable stat() button.
 /obj/effect/statclick
+	name = "Initializing..."
 	var/target
 
-/obj/effect/statclick/New(text, target)
+INITIALIZE_IMMEDIATE(/obj/effect/statclick)
+
+/obj/effect/statclick/Initialize(mapload, text, target) //Don't port this to Initialize it's too critical
+	. = ..()
 	name = text
 	src.target = target
 
@@ -13,11 +17,11 @@
 /obj/effect/statclick/debug
 	var/class
 
-/obj/effect/statclick/debug/Click()
-	if(!usr.client.admin_holder || !(usr.client.admin_holder.rights & R_MOD))
+/obj/effect/statclick/debug/clicked()
+	if(!usr.client.admin_holder || !target)
 		return
 	if(!class)
-		if(istype(target, /datum/subsystem))
+		if(istype(target, /datum/controller/subsystem))
 			class = "subsystem"
 		else if(istype(target, /datum/controller))
 			class = "controller"
@@ -27,76 +31,24 @@
 			class = "unknown"
 
 	usr.client.debug_variables(target)
-	message_staff("Admin [key_name_admin(usr)] is debugging the [target] [class].")
+	message_admins("Admin [key_name_admin(usr)] is debugging the [target] [class].")
+	return TRUE
 
 
 // Debug verbs.
-/client/proc/restart_controller(controller in list("Master", "Failsafe", "Supply Shuttle"))
+/client/proc/restart_controller(controller in list("Master", "Failsafe"))
 	set category = "Debug"
-	set name = "X: Restart Controller"
+	set name = "Restart Controller"
 	set desc = "Restart one of the various periodic loop controllers for the game (be careful!)"
 
-	if (!admin_holder || !(usr.client.admin_holder.rights & R_DEBUG))
+	if(!admin_holder)
 		return
-
-	switch (controller)
-		if ("Master")
-			new/datum/controller/master()
-		if ("Failsafe")
+	switch(controller)
+		if("Master")
+			Recreate_MC()
+			//SSblackbox.record_feedback("tally", "admin_verb", 1, "Restart Master Controller")
+		if("Failsafe")
 			new /datum/controller/failsafe()
+			//SSblackbox.record_feedback("tally", "admin_verb", 1, "Restart Failsafe Controller")
 
-	message_staff("Admin [key_name_admin(usr)] has restarted the [controller] controller.")
-
-
-/proc/get_world_controllers()
-	var/list/controllers = new
-
-	for(var/v in world.vars)
-		if(istype(world.vars[v], /datum/controller))
-			controllers += world.vars[v]
-	for(var/v in global.vars)
-		if(istype(global.vars[v], /datum/controller))
-			controllers += global.vars[v]
-	for(var/datum/subsystem/ss in Master.subsystems)
-		controllers += ss
-
-	return controllers
-
-/client/proc/debug_controller(controller in get_world_controllers())
-	set category = "Debug"
-	set name = "B: Debug Controller"
-	set desc = "debug the various periodic loop controllers for the game (be careful!)."
-
-	if (!admin_holder || !(usr.client.admin_holder.rights & R_DEBUG))
-		return
-
-	debug_variables(controller)
-	message_staff("Admin [key_name_admin(usr)] is debugging the [controller] controller.")
-
-/client/proc/debug_role_authority()
-	set category = "Debug"
-	set name = "B: Debug Role Authority"
-
-	if(!RoleAuthority)
-		to_chat(usr, "RoleAuthority not found!")
-		return
-
-	debug_variables(RoleAuthority)
-	message_staff("Admin [key_name_admin(usr)] is debugging the Role Authority.")
-
-/client/proc/debug_game_mode()
-	set category = "Debug"
-	set name = "B: Debug Game Mode"
-	set desc = "debug the various periodic loop controllers for the game (be careful!)."
-
-	if (!admin_holder || !(usr.client.admin_holder.rights & R_DEBUG))
-		return
-
-	if(!isnull(ticker) && !isnull(ticker.mode))
-		debug_variables(ticker.mode)
-	else
-		if(isnull(ticker))
-			to_chat(usr, SPAN_WARNING("ticker is null!"))
-		else
-			to_chat(usr, SPAN_WARNING("ticker.mode is null!"))
-	message_staff("Admin [key_name_admin(usr)] is debugging the Game Mode.")
+	message_admins("Admin [key_name_admin(usr)] has restarted the [controller] controller.")

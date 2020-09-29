@@ -19,7 +19,7 @@
 	X.speed_modifier -= speed_buff_amount
 	X.recalculate_speed()
 
-	add_timer(CALLBACK(src, .proc/remove_effects), duration)
+	addtimer(CALLBACK(src, .proc/remove_effects), duration)
 
 	apply_cooldown()
 	..()

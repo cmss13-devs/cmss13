@@ -87,7 +87,7 @@
 	if(operating == 1) //emag again
 		operating = 0
 	if(autoclose)
-		add_timer(CALLBACK(src, .proc/autoclose), 150)
+		addtimer(CALLBACK(src, .proc/autoclose), 150)
 	return 1
 
 /obj/structure/machinery/door/poddoor/close()
@@ -136,7 +136,7 @@
 	if(operating == 1) //emag again
 		operating = 0
 	if(autoclose)
-		add_timer(CALLBACK(src, .proc/autoclose), 15 SECONDS)
+		addtimer(CALLBACK(src, .proc/autoclose), 15 SECONDS)
 
 /obj/structure/machinery/door/poddoor/two_tile/four_tile/open_fully()
 	f3.density = 0
@@ -286,7 +286,7 @@
 
 /obj/structure/machinery/door/poddoor/almayer/Initialize()
 	. = ..()
-	add_timer(CALLBACK(src, /atom.proc/relativewall_neighbours), 10)
+	addtimer(CALLBACK(src, /atom.proc/relativewall_neighbours), 10)
 
 /obj/structure/machinery/door/poddoor/almayer/locked
 	unslashable = TRUE

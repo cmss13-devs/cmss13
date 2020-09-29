@@ -13,13 +13,13 @@ SUBSYSTEM_DEF(xevolution)
 	var/list/boost_power = list()
 	var/force_boost_power = FALSE // Debugging only
 
-/datum/subsystem/xevolution/Initialize(start_timeofday)
+/datum/controller/subsystem/xevolution/Initialize(start_timeofday)
 	for(var/datum/hive_status/HS in hive_datum)
 		boost_power += HS.hivenumber
 		boost_power[HS.hivenumber] = 1
 	return ..()
 
-/datum/subsystem/xevolution/fire(resumed = FALSE)
+/datum/controller/subsystem/xevolution/fire(resumed = FALSE)
 	for(var/datum/hive_status/HS in hive_datum)
 		if(!HS)
 			continue
@@ -47,7 +47,7 @@ SUBSYSTEM_DEF(xevolution)
 		//Update displayed Evilution, which is under larva apparently
 		HS.hive_ui.update_pooled_larva()
 
-/datum/subsystem/xevolution/proc/get_evolution_boost_power(var/hivenumber)
+/datum/controller/subsystem/xevolution/proc/get_evolution_boost_power(var/hivenumber)
 	return boost_power[hivenumber]
 
 #undef EVOLUTION_INCREMENT_TIME

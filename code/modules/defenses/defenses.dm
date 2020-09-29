@@ -204,7 +204,7 @@
 	sleep(5)
 
 	cell_explosion(loc, 10, 10, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, "defense explosion")
-	if(!disposed)
+	if(!QDELETED(src))
 		qdel(src)
 
 /obj/structure/machinery/defenses/proc/damaged_action(var/damage)

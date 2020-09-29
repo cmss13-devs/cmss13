@@ -90,7 +90,7 @@
 			return
 	else if(iswelder(W))
 		if(do_after(user,30, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-			if(disposed) 
+			if(QDELETED(src)) 
 				return
 			to_chat(user, SPAN_NOTICE("You weld the girder together!"))
 			repair()

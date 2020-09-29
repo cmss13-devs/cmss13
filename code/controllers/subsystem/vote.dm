@@ -3,7 +3,8 @@ SUBSYSTEM_DEF(vote)
 	flags    = SS_NO_INIT
 	wait     = 1 SECONDS
 	priority = SS_PRIORITY_VOTE
-	flags    = SS_FIRE_IN_LOBBY | SS_KEEP_TIMING | SS_DISABLE_FOR_TESTING
+	flags    = SS_KEEP_TIMING | SS_DISABLE_FOR_TESTING
+	runlevels = RUNLEVELS_DEFAULT|RUNLEVEL_LOBBY
 
-/datum/subsystem/vote/fire(resumed = FALSE)
+/datum/controller/subsystem/vote/fire(resumed = FALSE)
 	vote.process()

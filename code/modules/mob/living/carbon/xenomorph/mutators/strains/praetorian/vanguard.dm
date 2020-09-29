@@ -54,7 +54,7 @@
 	if (istype(pAction))
 		pAction.should_spin_instead = TRUE
 	
-	add_timer(CALLBACK(src, .proc/next_pierce_normal), pierce_spin_time)
+	addtimer(CALLBACK(src, .proc/next_pierce_normal), pierce_spin_time)
 	return
 	
 /datum/behavior_delegate/praetorian_vanguard/proc/next_pierce_normal()

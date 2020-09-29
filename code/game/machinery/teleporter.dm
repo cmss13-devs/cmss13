@@ -363,7 +363,7 @@
 		com.teleport()
 		use_power(5000)
 
-		add_timer(VARSET_CALLBACK(src, active, FALSE), 3 SECONDS)
+		addtimer(VARSET_CALLBACK(src, active, FALSE), 3 SECONDS)
 
 	src.add_fingerprint(usr)
 	return

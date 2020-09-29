@@ -5,7 +5,7 @@ SUBSYSTEM_DEF(xenocon)
 	flags = SS_NO_INIT
 	var/rewarded = FALSE
 
-/datum/subsystem/xenocon/fire(resumed = FALSE)
+/datum/controller/subsystem/xenocon/fire(resumed = FALSE)
 	if(rewarded)
 		return
 

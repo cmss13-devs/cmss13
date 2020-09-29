@@ -6,19 +6,20 @@
 
 SUBSYSTEM_DEF(chat)
 	name = "Chat"
-	flags = SS_FIRE_IN_LOBBY | SS_POST_FIRE_TIMING
+	flags = SS_POST_FIRE_TIMING
 	wait = 2
 	priority = SS_PRIORITY_CHAT
 	init_order = SS_INIT_CHAT
+	runlevels = RUNLEVELS_DEFAULT|RUNLEVEL_LOBBY
 
 	var/list/processQueue = list()
 	var/list/processQueue_current = list()
 	var/list/chatQueue = list()
 
-/datum/subsystem/chat/stat_entry()
+/datum/controller/subsystem/chat/stat_entry()
 	..("P:[processQueue.len]; C:[processQueue_current.len]")
 
-/datum/subsystem/chat/fire()
+/datum/controller/subsystem/chat/fire()
 	for(var/datum/chat_item/item in processQueue_current)
 		de_queue(item.target, item.message)
 		processQueue_current -= item
@@ -38,7 +39,7 @@ SUBSYSTEM_DEF(chat)
 		if(MC_TICK_CHECK)
 			return
 
-/datum/subsystem/chat/proc/queue(var/target, var/message)
+/datum/controller/subsystem/chat/proc/queue(var/target, var/message)
 	if(!target || !message)
 		return
 	
@@ -51,7 +52,7 @@ SUBSYSTEM_DEF(chat)
 
 	processQueue.Add(ci)
 
-/datum/subsystem/chat/proc/de_queue_single(var/target, var/encoded_message, var/clean_message)
+/datum/controller/subsystem/chat/proc/de_queue_single(var/target, var/encoded_message, var/clean_message)
 	var/client/C
 	if (istype(target, /client))
 		C = target
@@ -76,7 +77,7 @@ SUBSYSTEM_DEF(chat)
 
 	chatQueue[C] += encoded_message
 
-/datum/subsystem/chat/proc/de_queue(var/target, var/message)
+/datum/controller/subsystem/chat/proc/de_queue(var/target, var/message)
 	#define GCHAT_UNDEFINED_LIST 0
 	#define GCHAT_CLIENT_LIST 1
 	#define GCHAT_MOB_LIST 2

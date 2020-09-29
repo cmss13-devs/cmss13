@@ -9,11 +9,11 @@ SUBSYSTEM_DEF(disease)
 
 	var/list/currentrun = list()
 
-/datum/subsystem/disease/stat_entry()
+/datum/controller/subsystem/disease/stat_entry()
 	..("P:[active_diseases.len]")
 
 
-/datum/subsystem/disease/fire(resumed = FALSE)
+/datum/controller/subsystem/disease/fire(resumed = FALSE)
 	if (!resumed)
 		currentrun = active_diseases.Copy()
 
@@ -21,7 +21,7 @@ SUBSYSTEM_DEF(disease)
 		var/datum/disease/D = currentrun[currentrun.len]
 		currentrun.len--
 
-		if (!D || D.disposed)
+		if (!D || QDELETED(D))
 			continue
 
 		D.process()

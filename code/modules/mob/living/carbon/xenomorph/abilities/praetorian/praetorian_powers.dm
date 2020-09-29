@@ -81,7 +81,7 @@
 	if(!activated_once)
 		. = ..()
 		activated_once = TRUE
-		add_timer(CALLBACK(src, .proc/timeout), time_until_timeout)
+		addtimer(CALLBACK(src, .proc/timeout), time_until_timeout)
 	else
 		damage_nearby_targets()
 
@@ -175,7 +175,7 @@
 			var/mob/living/carbon/human/Hu = H
 			Hu.update_xeno_hostile_hud()
 
-		add_timer(CALLBACK(GLOBAL_PROC, .proc/unroot_human, H), get_xeno_stun_duration(H, root_duration))
+		addtimer(CALLBACK(GLOBAL_PROC, .proc/unroot_human, H), get_xeno_stun_duration(H, root_duration))
 		to_chat(H, SPAN_XENOHIGHDANGER("[X] has pinned you to the ground! You cannot move!"))
 
 	else
@@ -465,7 +465,7 @@
 	X.flags_pass_temp = LIST_FLAGS_ADD(X.flags_pass_temp, PASS_MOB_THRU)
 	X.recalculate_speed()
 
-	add_timer(CALLBACK(src, .proc/remove_effects), duration)
+	addtimer(CALLBACK(src, .proc/remove_effects), duration)
 
 	apply_cooldown()
 	..()
@@ -603,7 +603,7 @@
 	grenade.source_mob = X
 	grenade.loc = get_turf(X)
 	grenade.throw_atom(A, 5, SPEED_SLOW, X, TRUE)
-	add_timer(CALLBACK(grenade, /obj/item/explosive/proc/prime), prime_delay)
+	addtimer(CALLBACK(grenade, /obj/item/explosive/proc/prime), prime_delay)
 
 	..()
 	return

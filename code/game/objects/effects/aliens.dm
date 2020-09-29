@@ -115,7 +115,7 @@
 			continue
 			
 	processing_objects.Add(src)
-	add_timer(CALLBACK(src, .proc/die), time_to_live)
+	addtimer(CALLBACK(src, .proc/die), time_to_live)
 
 /obj/effect/xenomorph/spray/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
@@ -393,8 +393,8 @@
 	else
 		qdel(src)
 
-	add_timer(CALLBACK(src, .proc/damage_mobs), time_before_damage)
-	add_timer(CALLBACK(src, .proc/make_smoke), time_before_smoke)
+	addtimer(CALLBACK(src, .proc/damage_mobs), time_before_damage)
+	addtimer(CALLBACK(src, .proc/make_smoke), time_before_smoke)
 
 /obj/effect/xenomorph/boiler_bombard/proc/damage_mobs()
 	if (!istype(src) || !isturf(loc))
@@ -456,7 +456,7 @@
 
 /obj/effect/xenomorph/acid_damage_delay/New(loc, damage = 20, delay = 10, message = null, mob/living/carbon/Xenomorph/linked_xeno = null)
 	..(loc)
-	add_timer(CALLBACK(src, .proc/die), delay)
+	addtimer(CALLBACK(src, .proc/die), delay)
 	src.damage = damage
 	src.message = message
 	src.linked_xeno = linked_xeno

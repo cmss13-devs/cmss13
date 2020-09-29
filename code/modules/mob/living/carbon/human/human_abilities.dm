@@ -170,7 +170,7 @@ CULT
 
 	update_button_icon()
 
-	add_timer(CALLBACK(src, .proc/update_button_icon), amount)
+	addtimer(CALLBACK(src, .proc/update_button_icon), amount)
 
 /datum/action/human_action/activable/cult
 	name = "Activable Cult Ability"

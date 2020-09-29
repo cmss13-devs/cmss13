@@ -7,11 +7,11 @@
 SUBSYSTEM_DEF(html_ui)
 	name = "HTMLUI"
 	wait = 1.7 SECONDS
-	flags = SS_NO_INIT | SS_NO_TICK_CHECK | SS_FIRE_IN_LOBBY
-
+	flags = SS_NO_INIT | SS_NO_TICK_CHECK
+	runlevels = RUNLEVELS_DEFAULT|RUNLEVEL_LOBBY
 	var/list/update = list()
 
-/datum/subsystem/html_ui/fire(resumed = FALSE)
+/datum/controller/subsystem/html_ui/fire(resumed = FALSE)
 	if (update.len)
 		var/list/L = list()
 		var/key
@@ -40,7 +40,7 @@ SUBSYSTEM_DEF(html_ui)
 		update.Cut()
 
 
-/datum/subsystem/html_ui/proc/queue(ref, procname, ...)
+/datum/controller/subsystem/html_ui/proc/queue(ref, procname, ...)
 	var/datum/procqueue_item/item = new
 	item.ref = ref
 	item.procname = procname

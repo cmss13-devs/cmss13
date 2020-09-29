@@ -14,7 +14,7 @@ var/list/objective_spawn_corpse
 
 /obj/effect/landmark/corpsespawner/New()
 	. = ..()
-	if(loc && !disposed) //there's some issue with the code that calls this initialize twice,
+	if(loc && !QDELETED(src)) //there's some issue with the code that calls this initialize twice,
 		LAZYADD(objective_spawn_corpse, src)	//once normally and once when the landmark is in null space, thus spawning a mob there
 												//this is a bandaid until it's properly fixed.
 

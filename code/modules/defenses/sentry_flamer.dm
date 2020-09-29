@@ -26,5 +26,5 @@
 		var/datum/reagent/napalm/blue/R = new()
 		new /obj/flamer_fire(loc, "sentry explosion", null, R, 2)
 	cell_explosion(loc, 10, 10, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, "sentry explosion")
-	if(!disposed)
+	if(!QDELETED(src))
 		qdel(src)

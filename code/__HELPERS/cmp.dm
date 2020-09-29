@@ -29,18 +29,28 @@ var/cmp_field = "name"
 /proc/cmp_ckey_dsc(client/a, client/b)
 	return sorttext(a.ckey, b.ckey)
 
-/proc/cmp_subsystem_init(datum/subsystem/a, datum/subsystem/b)
-	return b.init_order - a.init_order
+/proc/cmp_subsystem_init(datum/controller/subsystem/a, datum/controller/subsystem/b)
+	return initial(b.init_order) - initial(a.init_order)	//uses initial() so it can be used on types
 
-/proc/cmp_subsystem_display(datum/subsystem/a, datum/subsystem/b)
-	if(a.display_order == b.display_order)
-		return sorttext(b.name, a.name)
-	return a.display_order - b.display_order
+/proc/cmp_subsystem_display(datum/controller/subsystem/a, datum/controller/subsystem/b)
+	return sorttext(b.name, a.name)
 
-/proc/cmp_subsystem_priority(datum/subsystem/a, datum/subsystem/b)
+/proc/cmp_subsystem_priority(datum/controller/subsystem/a, datum/controller/subsystem/b)
 	return a.priority - b.priority
 
-/proc/cmp_timer(datum/timed_event/a, datum/timed_event/b)
-	return a.time_to_run - b.time_to_run
+/proc/cmp_filter_data_priority(list/A, list/B)
+	return A["priority"] - B["priority"]
+
+/proc/cmp_timer(datum/timedevent/a, datum/timedevent/b)
+	return a.timeToRun - b.timeToRun
+
+/proc/cmp_qdel_item_time(datum/qdel_item/A, datum/qdel_item/B)
+	. = B.hard_delete_time - A.hard_delete_time
+	if (!.)
+		. = B.destroy_time - A.destroy_time
+	if (!.)
+		. = B.failures - A.failures
+	if (!.)
+		. = B.qdels - A.qdels
 
 var/atom/cmp_dist_origin=null

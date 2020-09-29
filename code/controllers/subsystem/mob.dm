@@ -3,15 +3,14 @@ SUBSYSTEM_DEF(mob)
 	wait          = 2 SECONDS
 	flags         = SS_NO_INIT | SS_KEEP_TIMING | SS_DISABLE_FOR_TESTING
 	priority      = SS_PRIORITY_MOB
-	display_order = SS_DISPLAY_MOB
 
 	var/list/currentrun = list()
 
-/datum/subsystem/mob/stat_entry()
+/datum/controller/subsystem/mob/stat_entry()
 	..("P:[living_misc_mobs.len]")
 
 
-/datum/subsystem/mob/fire(resumed = FALSE)
+/datum/controller/subsystem/mob/fire(resumed = FALSE)
 	if (!resumed)
 		currentrun = living_misc_mobs.Copy()
 
@@ -19,7 +18,7 @@ SUBSYSTEM_DEF(mob)
 		var/mob/living/M = currentrun[currentrun.len]
 		currentrun.len--
 
-		if (!M || M.disposed)
+		if (!M || QDELETED(M))
 			continue
 
 		M.Life()

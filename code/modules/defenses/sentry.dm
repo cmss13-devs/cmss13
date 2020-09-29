@@ -173,7 +173,7 @@
 		sleep(2)
 
 	cell_explosion(loc, 10, 10, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, "sentry explosion")
-	if(!disposed)
+	if(!QDELETED(src))
 		qdel(src)
 
 /obj/structure/machinery/defenses/sentry/damaged_action(var/damage)
@@ -202,7 +202,7 @@
 	actual_fire(A)
 
 	if(targets.len)
-		add_timer(CALLBACK(src, .proc/get_target), fire_delay)
+		addtimer(CALLBACK(src, .proc/get_target), fire_delay)
 	
 /obj/structure/machinery/defenses/sentry/proc/actual_fire(var/atom/A)
 	var/obj/item/projectile/P = new(initial(name), owner_mob)
@@ -221,7 +221,7 @@
 		return
 
 	SetLuminosity(SENTRY_MUZZLELUM)
-	add_timer(CALLBACK(src, /atom/proc/SetLuminosity, -SENTRY_MUZZLELUM), 10)
+	addtimer(CALLBACK(src, /atom/proc/SetLuminosity, -SENTRY_MUZZLELUM), 10)
 
 	var/image_layer = layer + 0.1
 	var/offset = 13

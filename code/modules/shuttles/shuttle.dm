@@ -66,7 +66,7 @@
 			arrive_time = world.time + travel_time
 		moving_status = SHUTTLE_INTRANSIT
 		move(departing, interim, direction)
-		add_timer(CALLBACK(src, .proc/close_doors, interim), 1)
+		addtimer(CALLBACK(src, .proc/close_doors, interim), 1)
 
 		while (world.time < arrive_time)
 			sleep(5)
@@ -74,7 +74,7 @@
 		sleep(100)
 
 		move(interim, destination, direction)
-		add_timer(CALLBACK(src, .proc/open_doors, destination), 1)
+		addtimer(CALLBACK(src, .proc/open_doors, destination), 1)
 
 		moving_status = SHUTTLE_IDLE
 

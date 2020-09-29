@@ -39,7 +39,7 @@
 // \ locations
 //   \ "location_id" -> /list/turf(area_size)
 /obj/effect/landmark/teleporter_loc/proc/initialize_marker()
-    var/datum/subsystem/teleporter/teleporterSS = teleporter_ss
+    var/datum/controller/subsystem/teleporter/teleporterSS = teleporter_ss
 
     if (teleporterSS)
         var/datum/teleporter/T = teleporterSS.teleporters_by_id[linked_teleporter]

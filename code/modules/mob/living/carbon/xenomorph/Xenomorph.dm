@@ -757,7 +757,7 @@
 	evolution_threshold =  caste.evolution_threshold
 
 /mob/living/carbon/Xenomorph/rejuvenate()
-	if(stat == DEAD && !disposed)
+	if(stat == DEAD && !QDELETED(src))
 		living_xeno_list += src
 
 		if(hive)

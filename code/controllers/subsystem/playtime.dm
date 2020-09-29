@@ -6,7 +6,7 @@ SUBSYSTEM_DEF(playtime)
 
 	var/list/currentrun = list()
 
-/datum/subsystem/playtime/fire(resumed = FALSE)
+/datum/controller/subsystem/playtime/fire(resumed = FALSE)
 	if (!resumed)
 		src.currentrun = clients.Copy()
 

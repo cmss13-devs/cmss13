@@ -3,6 +3,6 @@ SUBSYSTEM_DEF(mapview_init)
 	init_order = SS_INIT_MAPVIEW
 	flags      = SS_NO_FIRE
 
-/datum/subsystem/mapview_init/Initialize()
+/datum/controller/subsystem/mapview_init/Initialize()
 	generate_marine_mapview()
 	return ..()

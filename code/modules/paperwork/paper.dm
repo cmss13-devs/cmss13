@@ -552,7 +552,7 @@
 
 /obj/item/paper/research_notes/Initialize()
 	. = ..()
-	add_timer(CALLBACK(src, .proc/generate), 7) //To make sure reagents got initialized first
+	addtimer(CALLBACK(src, .proc/generate), 7) //To make sure reagents got initialized first
 
 /obj/item/paper/research_notes/proc/generate()
 	if(!note_type)

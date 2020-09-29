@@ -34,7 +34,7 @@
 	..(loc)
 	if(user)
 		user.count_niche_stat(STATISTICS_NICHE_CADES)
-	add_timer(CALLBACK(src, .proc/update_icon), 0)
+	addtimer(CALLBACK(src, .proc/update_icon), 0)
 
 /obj/structure/barricade/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()

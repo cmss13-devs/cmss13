@@ -60,7 +60,7 @@
 /mob/living/carbon/Xenomorph/Predalien/Initialize(mapload, new_loc, mob/living/carbon/Xenomorph/oldXeno, h_number)
 	. = ..()
 
-	add_timer(CALLBACK(src, .proc/announce_spawn), SECONDS_3)
+	addtimer(CALLBACK(src, .proc/announce_spawn), SECONDS_3)
 
 /mob/living/carbon/Xenomorph/Predalien/proc/announce_spawn()
 	if(!loc) 

@@ -9,11 +9,11 @@ SUBSYSTEM_DEF(smoke_effects)
 
 	var/list/currentrun = list()
 
-/datum/subsystem/smoke_effects/stat_entry()
+/datum/controller/subsystem/smoke_effects/stat_entry()
 	..("P:[active_smoke_effects.len]")
 
 
-/datum/subsystem/smoke_effects/fire(resumed = FALSE)
+/datum/controller/subsystem/smoke_effects/fire(resumed = FALSE)
 	if(!resumed)
 		currentrun = active_smoke_effects.Copy()
 
@@ -21,7 +21,7 @@ SUBSYSTEM_DEF(smoke_effects)
 		var/obj/effect/particle_effect/smoke/E = currentrun[currentrun.len]
 		currentrun.len--
 
-		if(!E || E.disposed)
+		if(!E || QDELETED(E))
 			continue
 
 		E.process()

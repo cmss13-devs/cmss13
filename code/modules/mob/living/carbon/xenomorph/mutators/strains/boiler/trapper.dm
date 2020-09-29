@@ -58,7 +58,7 @@
 			var/mob/living/carbon/Xenomorph/X = bound_xeno
 			X.speed_modifier -= temp_movespeed_amount
 			X.recalculate_speed()
-			add_timer(CALLBACK(src, .proc/remove_speed_buff), temp_movespeed_duration)
+			addtimer(CALLBACK(src, .proc/remove_speed_buff), temp_movespeed_duration)
 
 /datum/behavior_delegate/boiler_trapper/ranged_attack_additional_effects_target(atom/A)
 	if (!ishuman(A))

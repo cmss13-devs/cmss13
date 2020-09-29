@@ -22,10 +22,10 @@ SUBSYSTEM_DEF(events)
 	var/extra_delay_based_on_pop = 0
 	var/last_event_time = 0
 
-/datum/subsystem/events/stat_entry()
+/datum/controller/subsystem/events/stat_entry()
 	..("C:[events_run]")
 
-/datum/subsystem/events/Initialize()
+/datum/controller/subsystem/events/Initialize()
 	LAZYINITLIST(events_list)
 
 	var/count = 1
@@ -42,7 +42,7 @@ SUBSYSTEM_DEF(events)
 	
 	return ..()
 
-/datum/subsystem/events/fire(resumed = FALSE)
+/datum/controller/subsystem/events/fire(resumed = FALSE)
 	if(((start_time + PREPTIME_BEFORE_EVENTS) > world.time || (last_event_time + delay_between_each_event + extra_delay_based_on_pop) > world.time) && !forced)
 		return
 

@@ -9,7 +9,7 @@
 
 /mob/proc/stun_callback_check()
 	if(stunned && stunned < recovery_constant)
-		stun_timer = add_timer(CALLBACK(src, /mob/proc/stun_callback), (stunned/recovery_constant) * 2 SECONDS, TIMER_OVERRIDE_UNIQUE)
+		stun_timer = addtimer(CALLBACK(src, /mob/proc/stun_callback), (stunned/recovery_constant) * 2 SECONDS, TIMER_OVERRIDE|TIMER_UNIQUE)
 		return
 
 	qdel(stun_timer)
@@ -91,15 +91,15 @@
 	knocked_down = 0
 	handle_regular_status_updates(FALSE)
 	update_canmove()
-	qdel(knocked_down_timer)
 	knocked_down_timer = null
 
 /mob/proc/knocked_down_callback_check()
 	if(knocked_down && knocked_down < recovery_constant)
-		knocked_down_timer = add_timer(CALLBACK(src, /mob/proc/knocked_down_callback), (knocked_down/recovery_constant) * 2 SECONDS, TIMER_OVERRIDE_UNIQUE) // times whatever amount we have per tick
+		knocked_down_timer = addtimer(CALLBACK(src, .proc/knocked_down_callback), (knocked_down/recovery_constant) * 2 SECONDS, TIMER_OVERRIDE|TIMER_UNIQUE) // times whatever amount we have per tick
 		return
 
-	qdel(knocked_down_timer)
+	if(knocked_down_timer)
+		deltimer(knocked_down_timer)
 	knocked_down_timer = null
 
 // adjust knockdown if needed, do not call it in adjust knockdown

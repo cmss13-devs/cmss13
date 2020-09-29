@@ -12,7 +12,7 @@ SUBSYSTEM_DEF(item_cleanup)
 	var/list/items_to_clean_up = list()
 	flags = SS_NO_INIT
 
-/datum/subsystem/item_cleanup/fire()
+/datum/controller/subsystem/item_cleanup/fire()
 	set background = 1
 	if(world.time < start_processing_time)
 		//Do nothing for the first 35 minutes to preserve the colony look for the first drop
@@ -40,15 +40,15 @@ SUBSYSTEM_DEF(item_cleanup)
 
 	log_debug("item_cleanup deleted [deleted] garbage out of total [total_items]")
 
-/datum/subsystem/item_cleanup/proc/delete_almayer()
+/datum/controller/subsystem/item_cleanup/proc/delete_almayer()
 	//Should only be called for Whiskey Outpost!
 	delete_z_level(MAIN_SHIP_Z_LEVEL)
 
-/datum/subsystem/item_cleanup/proc/delete_surface()
+/datum/controller/subsystem/item_cleanup/proc/delete_surface()
 	//Should only be called when lag is really bad and everyone is off the surface, including the dropships
 	delete_z_level(SURFACE_Z_LEVEL)
 
-/datum/subsystem/item_cleanup/proc/delete_z_level(var/z_level)
+/datum/controller/subsystem/item_cleanup/proc/delete_z_level(var/z_level)
 	set background = 1
 	for(var/atom/o in object_list)
 		if(QDELETED(o) || isnull(o.loc))

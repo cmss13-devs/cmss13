@@ -4,23 +4,22 @@ SUBSYSTEM_DEF(mapview)
 	wait          = 2 SECONDS
 	flags         = SS_KEEP_TIMING | SS_DISABLE_FOR_TESTING
 	priority      = SS_PRIORITY_MAPVIEW
-	display_order = SS_DISPLAY_UNSPECIFIED
 	var/list/map_machines
 
-/datum/subsystem/mapview/Initialize(start_timeofday)
+/datum/controller/subsystem/mapview/Initialize(start_timeofday)
 	create_map_machines()
 	return ..()
 
-/datum/subsystem/mapview/proc/create_map_machines()
+/datum/controller/subsystem/mapview/proc/create_map_machines()
 	map_machines = list()
 	for(var/obj/structure/machinery/C in machines)
 		if(istype(C, /obj/structure/machinery/computer/communications) || istype(C, /obj/structure/machinery/prop/almayer/CICmap) || istype(C, /obj/structure/machinery/computer/overwatch))
 			map_machines += C
 
-///datum/subsystem/mob/stat_entry()
+///datum/controller/subsystem/mob/stat_entry()
 //	..("P:[mob_list.len]")
 
-/datum/subsystem/mapview/fire(resumed = FALSE)
+/datum/controller/subsystem/mapview/fire(resumed = FALSE)
 	if (MC_TICK_CHECK)
 		return
 

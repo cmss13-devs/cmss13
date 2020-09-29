@@ -75,7 +75,7 @@
 /obj/effect/particle_effect/smoke/proc/spread_smoke(direction)
 	set waitfor = 0
 	sleep(spread_speed)
-	if(disposed) return
+	if(QDELETED(src)) return
 	var/turf/U = get_turf(src)
 	if(!U) return
 	for(var/i in cardinal)
@@ -140,7 +140,7 @@
 			M.coughedtime = 1
 			if(ishuman(M)) //Humans only to avoid issues
 				M.emote("cough")
-			add_timer(VARSET_CALLBACK(M, coughedtime, 0), 2 SECONDS)
+			addtimer(VARSET_CALLBACK(M, coughedtime, 0), 2 SECONDS)
 
 /////////////////////////////////////////////
 // Sleep smoke
@@ -164,7 +164,7 @@
 		M.coughedtime = 1
 		if(ishuman(M)) //Humans only to avoid issues
 			M.emote("cough")
-		add_timer(VARSET_CALLBACK(M, coughedtime, 0), 2 SECONDS)
+		addtimer(VARSET_CALLBACK(M, coughedtime, 0), 2 SECONDS)
 
 /////////////////////////////////////////////
 // Mustard Gas
@@ -187,7 +187,7 @@
 		R.coughedtime = 1
 		if(ishuman(R)) //Humans only to avoid issues
 			R.emote("gasp")
-		add_timer(VARSET_CALLBACK(R, coughedtime, 0), 2 SECONDS)
+		addtimer(VARSET_CALLBACK(R, coughedtime, 0), 2 SECONDS)
 	R.updatehealth()
 	return
 
@@ -305,7 +305,7 @@
 			M.emote("cough")
 		else
 			M.emote("gasp")
-		add_timer(VARSET_CALLBACK(M, coughedtime, 0), 1.5 SECONDS)
+		addtimer(VARSET_CALLBACK(M, coughedtime, 0), 1.5 SECONDS)
 
 	//Topical damage (acid on exposed skin)
 	to_chat(M, SPAN_DANGER("Your skin feels like it is melting away!"))
@@ -357,7 +357,7 @@
 			M.emote("cough")
 		else
 			M.emote("gasp")
-		add_timer(VARSET_CALLBACK(M, coughedtime, 0), 1.5 SECONDS)
+		addtimer(VARSET_CALLBACK(M, coughedtime, 0), 1.5 SECONDS)
 	if (prob(20))
 		M.KnockDown(1)
 
@@ -409,7 +409,7 @@
 			M.emote("cough")
 		else
 			M.emote("gasp")
-		add_timer(VARSET_CALLBACK(M, coughedtime, 0), 1.5 SECONDS)
+		addtimer(VARSET_CALLBACK(M, coughedtime, 0), 1.5 SECONDS)
 	if (prob(20))
 		M.KnockDown(1)
 
@@ -425,7 +425,7 @@
 /obj/effect/particle_effect/smoke/xeno_weak_fire/spread_smoke(direction)
 	set waitfor = 0
 	sleep(spread_speed)
-	if(disposed) return
+	if(QDELETED(src)) return
 	var/turf/U = get_turf(src)
 	if(!U) return
 	for(var/i in cardinal)

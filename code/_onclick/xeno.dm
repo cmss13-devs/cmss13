@@ -51,14 +51,14 @@
 		if (istype(A, /mob/living/carbon/Xenomorph))
 			var/mob/living/carbon/Xenomorph/X = A
 
-			if (X && !X.disposed && X != observed_xeno && X.stat != DEAD && X.z != ADMIN_Z_LEVEL && X.check_state(1) && X.hivenumber == hivenumber)
+			if (X && !QDELETED(X) && X != observed_xeno && X.stat != DEAD && X.z != ADMIN_Z_LEVEL && X.check_state(1) && X.hivenumber == hivenumber)
 				if (caste && istype(caste, /datum/caste_datum/queen))
 					var/mob/living/carbon/Xenomorph/oldXeno = observed_xeno
 					overwatch(X, FALSE, /datum/event_handler/xeno_overwatch_onmovement/queen)
 
 					if (oldXeno)
 						oldXeno.hud_set_queen_overwatch()
-					if (X && !X.disposed)
+					if (X && !QDELETED(X))
 						X.hud_set_queen_overwatch()
 
 				else

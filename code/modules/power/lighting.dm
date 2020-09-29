@@ -199,7 +199,7 @@
 			if(prob(5))
 				broken(1)
 
-	add_timer(CALLBACK(src, .proc/update, 0), 1)
+	addtimer(CALLBACK(src, .proc/update, 0), 1)
 
 	set_pixel_location()
 

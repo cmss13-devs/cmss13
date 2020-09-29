@@ -4,21 +4,20 @@ var/list/clones_t = list()
 
 SUBSYSTEM_DEF(fz_transitions)
 	name			= "Z-Transitions"
-	wait			= SS_WAIT_FZ_TRANSITIONS
-	display_order	= SS_DISPLAY_FZ_TRANSITIONS
+	wait			= 1 SECONDS
 	priority 		= SS_PRIORITY_FZ_TRANSITIONS
 	init_order		= SS_INIT_FZ_TRANSITIONS
 	flags     		= SS_KEEP_TIMING
 
-/datum/subsystem/fz_transitions/stat_entry()
+/datum/controller/subsystem/fz_transitions/stat_entry()
 	..("P:[projectors.len]|C:[clones.len]|T:[clones_t.len]")
 
-/datum/subsystem/fz_transitions/Initialize()
+/datum/controller/subsystem/fz_transitions/Initialize()
 	for(var/obj/effect/projector/P in world)
 		projectors.Add(P)
 	return ..()
 
-/datum/subsystem/fz_transitions/fire(resumed = FALSE)
+/datum/controller/subsystem/fz_transitions/fire(resumed = FALSE)
 	for(var/obj/effect/projector/P in projectors)
 		if(!P || !P.loc)
 			projectors -= P

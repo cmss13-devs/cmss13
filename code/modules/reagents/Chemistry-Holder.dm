@@ -204,8 +204,8 @@ var/const/INGEST = 2
 		if(!RG.ingestible)
 			BR.del_reagent(RG.id)
 
-	add_timer(CALLBACK(BR, /datum/reagents/proc/reaction, target, INGEST), 95)
-	add_timer(CALLBACK(BR, /datum/reagents/proc/trans_to, target, BR.total_volume), SECONDS_10)
+	addtimer(CALLBACK(BR, /datum/reagents/proc/reaction, target, INGEST), 95)
+	addtimer(CALLBACK(BR, /datum/reagents/proc/trans_to, target, BR.total_volume), SECONDS_10)
 	QDEL_IN(B, SECONDS_10)
 	return amount
 
@@ -625,7 +625,7 @@ var/const/INGEST = 2
 		combust(sourceturf, radius, intensity, duration, supplemented, firecolor, smokerad)
 	if(exploded && sourceturf)
 		sourceturf.chemexploded = TRUE // to prevent grenade stacking
-		add_timer(CALLBACK(sourceturf, /turf.proc/reset_chemexploded), SECONDS_2)
+		addtimer(CALLBACK(sourceturf, /turf.proc/reset_chemexploded), SECONDS_2)
 	trigger_volatiles = FALSE
 	return exploded
 

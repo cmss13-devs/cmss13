@@ -3,15 +3,14 @@ SUBSYSTEM_DEF(xeno)
 	wait          = 2 SECONDS
 	flags         = SS_NO_INIT | SS_KEEP_TIMING
 	priority      = SS_PRIORITY_XENO
-	display_order = SS_DISPLAY_XENO
 
 	var/list/currentrun = list()
 
-/datum/subsystem/xeno/stat_entry()
+/datum/controller/subsystem/xeno/stat_entry()
 	..("P:[xeno_mob_list.len]")
 
 
-/datum/subsystem/xeno/fire(resumed = FALSE)
+/datum/controller/subsystem/xeno/fire(resumed = FALSE)
 	if (!resumed)
 		currentrun = xeno_mob_list.Copy()
 
@@ -19,7 +18,7 @@ SUBSYSTEM_DEF(xeno)
 		var/mob/living/carbon/Xenomorph/M = currentrun[currentrun.len]
 		currentrun.len--
 
-		if (!M || M.disposed)
+		if (!M || QDELETED(M))
 			continue
 
 		M.Life()

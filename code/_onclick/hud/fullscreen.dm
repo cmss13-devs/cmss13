@@ -69,12 +69,6 @@
 	var/severity = 0
 	var/fs_view = 7
 
-/obj/screen/fullscreen/Destroy()
-	..()
-	severity = 0
-	return GC_HINT_RECYCLE
-
-
 /obj/screen/fullscreen/proc/update_for_view(client_view)
 	if (screen_loc == "CENTER-7,CENTER-7" && fs_view != client_view)
 		var/list/actualview = getviewsize(client_view)

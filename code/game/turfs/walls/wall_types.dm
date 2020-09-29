@@ -573,15 +573,18 @@
 	blend_objects = list(/obj/structure/mineral_door/resin)
 	var/hivenumber = XENO_HIVE_NORMAL
 
+/turf/closed/wall/resin/make_girder()
+	ScrapeAway()
+
 /turf/closed/wall/resin/flamer_fire_act(var/dam = config.min_burnlevel)
 	take_damage(dam)
 
 //this one is only for map use
 /turf/closed/wall/resin/ondirt
-	old_turf = "/turf/open/gm/dirt"
+	baseturfs = /turf/open/gm/dirt
 //strata specifics
 /turf/closed/wall/resin/strata/on_tiles
-	old_turf = "/turf/open/floor/strata"
+	baseturfs = /turf/open/floor/strata
 
 /turf/closed/wall/resin/thick
 	name = "thick resin wall"
@@ -612,10 +615,10 @@
 
 //this one is only for map use
 /turf/closed/wall/resin/membrane/ondirt
-	old_turf = "/turf/open/gm/dirt"
+	baseturfs = /turf/open/gm/dirt
 //strata specifics
 /turf/closed/wall/resin/membrane/strata/on_tiles
-	old_turf = "/turf/open/floor/strata"
+	baseturfs = /turf/open/floor/strata
 
 /turf/closed/wall/resin/membrane/thick
 	name = "thick resin membrane"
@@ -676,9 +679,6 @@
 		playsound(src, "alien_resin_break", 25)
 	else
 		return attack_hand(user)
-
-/turf/closed/wall/resin/dismantle_wall(devastated = 0, explode = 0)
-	qdel(src) //ChangeTurf is called by Dispose()
 
 /turf/closed/wall/resin/ChangeTurf(newtype)
 	var/hive = hivenumber

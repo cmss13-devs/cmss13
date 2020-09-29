@@ -428,7 +428,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 	if(!check_rights(R_DEBUG|R_ADMIN))	
 		return
 
-	if(M.disposed) 
+	if(QDELETED(M)) 
 		return //mob is garbage collected
 
 	if(M.ckey)

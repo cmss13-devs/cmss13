@@ -217,7 +217,7 @@
 		/obj/structure/machinery/door/airlock)
 
 /obj/structure/machinery/door/airlock/strata/New()
-	add_timer(CALLBACK(src, /atom.proc/relativewall_neighbours), 10)
+	addtimer(CALLBACK(src, /atom.proc/relativewall_neighbours), 10)
 	..()
 
 /obj/structure/machinery/door/airlock/strata/autoname
@@ -255,7 +255,7 @@
 		/obj/structure/machinery/door/airlock)
 
 /obj/structure/machinery/door/airlock/almayer/New()
-	add_timer(CALLBACK(src, /atom.proc/relativewall_neighbours), 10)
+	addtimer(CALLBACK(src, /atom.proc/relativewall_neighbours), 10)
 	..()
 
 /obj/structure/machinery/door/airlock/almayer/take_damage(var/dam, var/mob/M)

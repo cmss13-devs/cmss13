@@ -95,7 +95,7 @@
 
 		visible_message(SPAN_WARNING("[target] has been splashed with something by [user]!"))
 		reagents.reaction(target, TOUCH)
-		if(!disposed)
+		if(!QDELETED(src))
 			reagents.clear_reagents()
 		return
 	else if(istype(target, /obj/structure/reagent_dispensers)) //A dispenser. Transfer FROM it TO us.
@@ -159,7 +159,7 @@
 		to_chat(user, SPAN_NOTICE("You splash the solution onto [target]."))
 		playsound(target, 'sound/effects/slosh.ogg', 25, 1)
 		reagents.reaction(target, TOUCH)
-		if(!disposed)
+		if(!QDELETED(src))
 			reagents.clear_reagents()
 		return
 

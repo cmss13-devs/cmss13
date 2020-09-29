@@ -2,16 +2,15 @@ var/list/fast_objects = list()
 
 SUBSYSTEM_DEF(fast_obj)
 	name          = "Fast objects"
-	display_order = SS_DISPLAY_FAST_OBJECTS
 	priority      = SS_PRIORITY_FAST_OBJECTS
-	wait          = SS_WAIT_FAST_OBJECTS
+	wait          = 0.5 SECONDS
 	flags         = SS_NO_INIT
 	var/list/currentrun = list()
 
-/datum/subsystem/fast_obj/stat_entry()
+/datum/controller/subsystem/fast_obj/stat_entry()
 	..("P:[fast_objects.len]")
 
-/datum/subsystem/fast_obj/fire(var/resumed = FALSE)
+/datum/controller/subsystem/fast_obj/fire(var/resumed = FALSE)
 	if (!resumed)
 		currentrun = global.fast_objects.Copy()
 
@@ -19,7 +18,7 @@ SUBSYSTEM_DEF(fast_obj)
 		var/atom/o = currentrun[currentrun.len]
 		currentrun.len--
 
-		if (!o || o.disposed)
+		if (!o || QDELETED(o))
 			continue
 
 		// > this fucking proc isn't defined on a global level.

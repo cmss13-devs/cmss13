@@ -62,4 +62,4 @@
 		if(id == L.id)
 			L.next()
 
-	add_timer(VARSET_CALLBACK(src, icon_state, "doorctrl0"), 1.5 SECONDS)
+	addtimer(VARSET_CALLBACK(src, icon_state, "doorctrl0"), 1.5 SECONDS)

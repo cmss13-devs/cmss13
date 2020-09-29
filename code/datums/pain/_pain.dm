@@ -194,7 +194,7 @@
 				activate_horrible()
 
 	last_level = new_level
-	add_timer(CALLBACK(src, .proc/before_update), PAIN_UPDATE_FREQUENCY)
+	addtimer(CALLBACK(src, .proc/before_update), PAIN_UPDATE_FREQUENCY)
 
 /datum/pain/proc/decrease_pain_level()
 	level_updating = TRUE
@@ -225,7 +225,7 @@
 				activate_severe()
 
 	last_level = new_level
-	add_timer(CALLBACK(src, .proc/before_update), PAIN_UPDATE_FREQUENCY)
+	addtimer(CALLBACK(src, .proc/before_update), PAIN_UPDATE_FREQUENCY)
 
 /datum/pain/proc/before_update()
 	level_updating = FALSE

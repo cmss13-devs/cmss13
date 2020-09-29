@@ -1,15 +1,15 @@
 SUBSYSTEM_DEF(admin)
 	name          = "Admin"
-	wait          = SS_WAIT_ADMIN
-	flags		  = SS_FIRE_IN_LOBBY | SS_NO_INIT | SS_KEEP_TIMING
-
+	wait          = 5 MINUTES
+	flags		  = SS_NO_INIT | SS_KEEP_TIMING
+	runlevels = RUNLEVELS_DEFAULT|RUNLEVEL_LOBBY
 	var/list/currentrun = list()
 	var/times_repeated = 0
 
-/datum/subsystem/admin/stat_entry()
+/datum/controller/subsystem/admin/stat_entry()
 	..("P:[unansweredAhelps.len]")
 
-/datum/subsystem/admin/fire(resumed = FALSE)
+/datum/controller/subsystem/admin/fire(resumed = FALSE)
 	if (!resumed)
 		currentrun = unansweredAhelps.Copy()
 

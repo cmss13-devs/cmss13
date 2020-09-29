@@ -62,7 +62,7 @@
 			to_chat(H, SPAN_XENOHIGHDANGER("[bound_xeno] has pinned you to the ground! You cannot move!"))
 			H.frozen = 1
 			H.update_canmove()
-			add_timer(CALLBACK(GLOBAL_PROC, .proc/unroot_human, H), root_duration)
+			addtimer(CALLBACK(GLOBAL_PROC, .proc/unroot_human, H), root_duration)
 
 
 	next_slash_buffed = FALSE

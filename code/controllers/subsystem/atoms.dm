@@ -8,53 +8,57 @@ SUBSYSTEM_DEF(atoms)
 	init_order = SS_INIT_ATOMS
 	flags = SS_NO_FIRE
 
-	var/init_state = INITIALIZATION_INSSATOMS
-	var/old_init_state
+	var/old_initialized
 
-	var/list/atoms_loaded_late
-	var/list/initialize_gone_wrong = list()
+	var/list/late_loaders = list()
 
-/datum/subsystem/atoms/stat_entry()
-	..("B:[initialize_gone_wrong.len]")
+	var/list/BadInitializeCalls = list()
 
-/datum/subsystem/atoms/Initialize(timeofday)
-	init_state = INITIALIZATION_INNEW_MAPLOAD
-	initialize_all_atoms()
+/datum/controller/subsystem/atoms/Initialize(timeofday)
+	initialized = INITIALIZATION_INNEW_MAPLOAD
+	InitializeAtoms()
 	return ..()
 
-/datum/subsystem/atoms/proc/initialize_all_atoms(var/list/created_atoms)
-	if(init_state <= INITIALIZATION_INSSATOMS_LATE)
+/datum/controller/subsystem/atoms/proc/InitializeAtoms(list/atoms)
+	if(initialized == INITIALIZATION_INSSATOMS)
 		return
 
-	init_state = INITIALIZATION_INNEW_MAPLOAD
+	initialized = INITIALIZATION_INNEW_MAPLOAD
 
-	LAZYINITLIST(atoms_loaded_late)
-
+	var/count
 	var/list/mapload_arg = list(TRUE)
-	if(created_atoms)
-		for(var/I in created_atoms)
+	if(atoms)
+		count = atoms.len
+		for(var/I in atoms)
 			var/atom/A = I
 			if(!(A.flags_atom & INITIALIZED))
-				initalize_atom(I, mapload_arg)
+				InitAtom(I, mapload_arg)
 				CHECK_TICK
 	else
+		count = 0
 		for(var/atom/A in world)
 			if(!(A.flags_atom & INITIALIZED))
-				initalize_atom(A, mapload_arg)
+				InitAtom(A, mapload_arg)
+				++count
 				CHECK_TICK
 
-	init_state = INITIALIZATION_INNEW_REGULAR
+	testing("Initialized [count] atoms")
+	pass(count)
 
-	if(length(atoms_loaded_late))
-		for(var/I in atoms_loaded_late)
+	initialized = INITIALIZATION_INNEW_REGULAR
+
+	if(late_loaders.len)
+		for(var/I in late_loaders)
 			var/atom/A = I
-			A.InitializeLate(TRUE)
-		atoms_loaded_late.Cut()
+			A.LateInitialize()
+		testing("Late initialized [late_loaders.len] atoms")
+		late_loaders.Cut()
 
-/datum/subsystem/atoms/proc/initalize_atom(atom/A, list/arguments)
+/// Init this specific atom
+/datum/controller/subsystem/atoms/proc/InitAtom(atom/A, list/arguments)
 	var/the_type = A.type
-	if(QDELED(A))
-		initialize_gone_wrong[the_type] |= BAD_INIT_QDEL_BEFORE
+	if(QDELING(A))
+		BadInitializeCalls[the_type] |= BAD_INIT_QDEL_BEFORE
 		return TRUE
 
 	var/start_tick = world.time
@@ -62,7 +66,7 @@ SUBSYSTEM_DEF(atoms)
 	var/result = A.Initialize(arglist(arguments))
 
 	if(start_tick != world.time)
-		initialize_gone_wrong[the_type] |= BAD_INIT_SLEPT
+		BadInitializeCalls[the_type] |= BAD_INIT_SLEPT
 
 	var/qdeleted = FALSE
 
@@ -70,54 +74,54 @@ SUBSYSTEM_DEF(atoms)
 		switch(result)
 			if(INITIALIZE_HINT_LATELOAD)
 				if(arguments[1])	//mapload
-					atoms_loaded_late[A] = arguments
+					late_loaders += A
 				else
-					A.InitializeLate(arglist(arguments))
+					A.LateInitialize()
 			if(INITIALIZE_HINT_QDEL)
 				qdel(A)
 				qdeleted = TRUE
 			else
-				initialize_gone_wrong[the_type] |= BAD_INIT_NO_HINT
+				BadInitializeCalls[the_type] |= BAD_INIT_NO_HINT
 
 	if(!A)	//possible harddel
 		qdeleted = TRUE
 	else if(!(A.flags_atom & INITIALIZED))
-		initialize_gone_wrong[the_type] |= BAD_INIT_DIDNT_INIT
+		BadInitializeCalls[the_type] |= BAD_INIT_DIDNT_INIT
 
-	return qdeleted || QDELED(A)
+	return qdeleted || QDELING(A)
 
-/datum/subsystem/atoms/proc/map_loader_begin()
-	old_init_state = init_state
-	init_state = INITIALIZATION_INSSATOMS_LATE
+/datum/controller/subsystem/atoms/proc/map_loader_begin()
+	old_initialized = initialized
+	initialized = INITIALIZATION_INSSATOMS
 
-/datum/subsystem/atoms/proc/map_loader_stop()
-	init_state = old_init_state
+/datum/controller/subsystem/atoms/proc/map_loader_stop()
+	initialized = old_initialized
 
-/datum/subsystem/atoms/Recover()
-	init_state = SSatoms.init_state
-	if(init_state == INITIALIZATION_INNEW_MAPLOAD)
-		initialize_all_atoms()
-	old_init_state = SSatoms.old_init_state
-	initialize_gone_wrong = SSatoms.initialize_gone_wrong
+/datum/controller/subsystem/atoms/Recover()
+	initialized = SSatoms.initialized
+	if(initialized == INITIALIZATION_INNEW_MAPLOAD)
+		InitializeAtoms()
+	old_initialized = SSatoms.old_initialized
+	BadInitializeCalls = SSatoms.BadInitializeCalls
 
-/datum/subsystem/atoms/proc/create_log()
+/datum/controller/subsystem/atoms/proc/InitLog()
 	. = ""
-	for(var/path in initialize_gone_wrong)
+	for(var/path in BadInitializeCalls)
 		. += "Path : [path] \n"
-		var/fails = initialize_gone_wrong[path]
+		var/fails = BadInitializeCalls[path]
 		if(fails & BAD_INIT_DIDNT_INIT)
 			. += "- Didn't call atom/Initialize()\n"
 		if(fails & BAD_INIT_NO_HINT)
-			. += "- Didn't return a Initialize hint\n"
+			. += "- Didn't return an Initialize hint\n"
 		if(fails & BAD_INIT_QDEL_BEFORE)
 			. += "- Qdel'd in New()\n"
 		if(fails & BAD_INIT_SLEPT)
 			. += "- Slept during Initialize()\n"
 
-/datum/subsystem/atoms/Shutdown()
-	var/log = create_log()
-	if(log)
-		text2file(log, "data/initialize.log")
+/datum/controller/subsystem/atoms/Shutdown()
+//	var/initlog = InitLog()
+//	if(initlog)
+//		text2file(initlog, "[GLOB.log_directory]/initialize.log")
 
 #undef BAD_INIT_QDEL_BEFORE
 #undef BAD_INIT_DIDNT_INIT

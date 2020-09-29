@@ -68,7 +68,6 @@
 		firer = source_mob
 
 /obj/item/projectile/Destroy()
-	..()
 	in_flight = 0
 	ammo = null
 	shot_from = null
@@ -80,7 +79,7 @@
 	firer = null
 	weapon_source = null
 	weapon_source_mob = null
-	return GC_HINT_RECYCLE
+	return ..()
 
 /obj/item/projectile/Collided(atom/movable/AM)
 	if(AM && !(AM in permutated))
@@ -197,7 +196,7 @@
 	var/this_iteration = 0
 	in_flight = 1
 	for(next_turf in path)
-		if(!loc || disposed || !in_flight)
+		if(!loc || QDELETED(src) || !in_flight)
 			return
 
 		if(distance_travelled >= range)
@@ -1001,7 +1000,7 @@
 	rotate.Turn(angle)
 	I.transform = rotate
 	// Need to do this in order to prevent the ping from being deleted
-	add_timer(CALLBACK(I, /image/.proc/flick_overlay, src, 3), 1)
+	addtimer(CALLBACK(I, /image/.proc/flick_overlay, src, 3), 1)
 
 /mob/proc/bullet_message(obj/item/projectile/P)
 	if(!P)

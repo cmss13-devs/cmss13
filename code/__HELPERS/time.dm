@@ -107,3 +107,9 @@ var/rollovercheck_last_timeofday = 0
 
 #define is_day(day) day == text2num(time2text(world.timeofday, "DD"))
 #define is_month(month) month == text2num(time2text(world.timeofday, "MM"))
+
+#define TICKS *world.tick_lag
+
+#define DS2TICKS(DS) ((DS)/world.tick_lag)
+
+#define TICKS2DS(T) ((T) TICKS)

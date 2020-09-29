@@ -184,6 +184,7 @@
 /turf/open/gm/dirt
 	name = "dirt"
 	icon_state = "desert"
+	baseturfs = /turf/open/gm/dirt
 
 /turf/open/gm/dirt/New()
 	..()
@@ -193,19 +194,23 @@
 /turf/open/gm/grass
 	name = "grass"
 	icon_state = "grass1"
+	baseturfs = /turf/open/gm/grass
 
 /turf/open/gm/dirt2
 	name = "dirt"
 	icon_state = "dirt"
+	baseturfs = /turf/open/gm/dirt2
 
 
 /turf/open/gm/dirtgrassborder
 	name = "grass"
 	icon_state = "grassdirt_edge"
+	baseturfs = /turf/open/gm/dirtgrassborder
 
 /turf/open/gm/dirtgrassborder2
 	name = "grass"
 	icon_state = "grassdirt2_edge"
+	baseturfs = /turf/open/gm/dirtgrassborder2
 
 
 /turf/open/gm/river
@@ -218,6 +223,7 @@
 	var/cover_icon = 'icons/turf/floors/filtration.dmi'
 	var/cover_icon_state = "grate"
 	var/default_name = "river"
+	baseturfs = /turf/open/gm/river
 
 /turf/open/gm/river/New()
 	..()
@@ -311,11 +317,13 @@
 /turf/open/gm/coast
 	name = "coastline"
 	icon_state = "beach"
+	baseturfs = /turf/open/gm/coast
 
 /turf/open/gm/riverdeep
 	name = "river"
 	icon_state = "seadeep"
 	can_bloody = FALSE
+	baseturfs = /turf/open/gm/riverdeep
 
 /turf/open/gm/riverdeep/New()
 	..()
@@ -352,6 +360,7 @@
 	name = "ice floor"
 	icon = 'icons/turf/ice.dmi'
 	icon_state = "ice_floor"
+	baseturfs = /turf/open/ice
 
 
 //Randomize ice floor sprite
@@ -368,6 +377,7 @@
 	name = "asphalt"
 	icon = 'icons/turf/floors/asphalt.dmi'
 	icon_state = "sunbleached_asphalt"
+	baseturfs = /turf/open/asphalt
 
 /turf/open/asphalt/cement
 	name = "concrete"
@@ -389,6 +399,7 @@
 	icon = 'icons/turf/floors/jungle.dmi'
 	icon_state = "grass1"
 	var/icon_spawn_state = "grass1"
+	baseturfs = /turf/open/jungle
 
 /turf/open/jungle/New()
 	..()

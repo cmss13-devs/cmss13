@@ -1,15 +1,15 @@
 SUBSYSTEM_DEF(nano)
 	name     = "Nano UI"
-	flags    = SS_NO_INIT | SS_FIRE_IN_LOBBY
+	flags    = SS_NO_INIT
 	wait     = 2 SECONDS
 	priority = SS_PRIORITY_NANOUI
-
+	runlevels = RUNLEVELS_DEFAULT|RUNLEVEL_LOBBY
 	var/list/currentrun = list()
 
-/datum/subsystem/nano/stat_entry()
+/datum/controller/subsystem/nano/stat_entry()
 	..("P:[nanomanager.processing_uis.len]")
 
-/datum/subsystem/nano/fire(resumed = FALSE)
+/datum/controller/subsystem/nano/fire(resumed = FALSE)
 	if (!resumed)
 		currentrun = nanomanager.processing_uis.Copy()
 
@@ -17,7 +17,7 @@ SUBSYSTEM_DEF(nano)
 		var/datum/nanoui/UI = currentrun[currentrun.len]
 		currentrun.len--
 
-		if (!UI || UI.disposed)
+		if (!UI || QDELETED(UI))
 			continue
 
 		UI.process()

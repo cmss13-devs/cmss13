@@ -81,7 +81,7 @@
 				if(prob(chance))
 					var/obj/item/clothing/mask/facehugger/F = new(loc, hivenumber)
 					step_away(F,src,1)
-					add_timer(CALLBACK(F, /obj/item/clothing/mask/facehugger/.proc/leap_at_nearest_target), SECONDS_3)
+					addtimer(CALLBACK(F, /obj/item/clothing/mask/facehugger/.proc/leap_at_nearest_target), SECONDS_3)
 
 
 /mob/living/carbon/Xenomorph/Carrier/Stat()

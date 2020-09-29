@@ -11,7 +11,7 @@ SUBSYSTEM_DEF(soundscape)
 	var/list/currentrun = list()
 	flags = SS_NO_INIT
 
-/datum/subsystem/soundscape/fire(resumed = FALSE)
+/datum/controller/subsystem/soundscape/fire(resumed = FALSE)
 	if(!resumed)
 		currentrun = clients.Copy()
 	

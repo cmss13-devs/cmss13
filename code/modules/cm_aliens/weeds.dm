@@ -249,7 +249,7 @@
 
 /obj/effect/alien/weeds/flamer_fire_act(dam)
 	. = ..()
-	if(!disposed)
+	if(!QDELETED(src))
 		QDEL_IN(src, rand(SECONDS_1, SECONDS_2)) // 1-2 seconds
 
 /obj/effect/alien/weeds/acid_spray_act()
@@ -313,7 +313,7 @@
 	children -= weed
 
 /obj/effect/alien/weeds/node/proc/replace_child(var/turf/T, var/weed_type)
-	if(!T || !istype(T) || disposed)
+	if(!T || !istype(T) || QDELETED(src))
 		return
 	var/obj/effect/alien/weeds/replacement_child = new weed_type(T, src)
 	add_child(replacement_child)
@@ -360,7 +360,7 @@
 	for(var/X in children)
 		var/obj/effect/alien/weeds/W = X
 		remove_child(W)
-		add_timer(CALLBACK(W, .proc/avoid_orphanage), rand(350, 450))
+		addtimer(CALLBACK(W, .proc/avoid_orphanage), rand(350, 450))
 
 	. = ..()
 
@@ -375,6 +375,6 @@
 
 /obj/effect/alien/weeds/node/pylon/Destroy()
 	if(parent_pylon)
-		add_timer(CALLBACK(parent_pylon, .obj/effect/alien/resin/special/pylon/proc/replace_node), rand(150, 250))
+		addtimer(CALLBACK(parent_pylon, .obj/effect/alien/resin/special/pylon/proc/replace_node), rand(150, 250))
 	parent_pylon = null
 	. = ..()

@@ -49,7 +49,7 @@
 	else if(!T.can_bombard(owner))
 		return
 
-	add_timer(CALLBACK(src, .proc/new_effect, T), 2*(orig_depth - dist_left))
+	addtimer(CALLBACK(src, .proc/new_effect, T), 2*(orig_depth - dist_left))
 
 	for (var/mob/living/L in T)
 		to_chat(L, SPAN_XENOHIGHDANGER("You see a massive ball of acid flying towards you!"))
@@ -95,7 +95,7 @@
 		X.visible_message(SPAN_XENODANGER("[X] starts to gather its acid for a massive blast!"), SPAN_XENODANGER("You start to gather your acid for a massive blast!"))
 		activated_once = TRUE
 		stack()
-		add_timer(CALLBACK(src, .proc/timeout), max_stacks*stack_time + time_after_max_before_end)
+		addtimer(CALLBACK(src, .proc/timeout), max_stacks*stack_time + time_after_max_before_end)
 		apply_cooldown()
 		return ..()
 		
@@ -145,7 +145,7 @@
 		X.speed_modifier += movespeed_per_stack
 		movespeed_nerf_applied += movespeed_per_stack
 		X.recalculate_speed()
-		add_timer(CALLBACK(src, .proc/stack), stack_time)
+		addtimer(CALLBACK(src, .proc/stack), stack_time)
 		return
 	else
 		to_chat(X, SPAN_XENOHIGHDANGER("You have charged your acid lance to maximum!"))
@@ -191,7 +191,7 @@
 
 
 	X.add_movement_handler(new /datum/event_handler/boiler_acid_onmovement(X, buffs_duration))
-	add_timer(CALLBACK(src, .proc/remove_speed_buff), buffs_duration)
+	addtimer(CALLBACK(src, .proc/remove_speed_buff), buffs_duration)
 	X.speed_modifier -= speed_buff_amount
 	X.recalculate_speed()
 
@@ -225,7 +225,7 @@
 		qdel(src)
 		return
 	src.X = X
-	add_timer(CALLBACK(src, .proc/cancel_effect, src), duration)
+	addtimer(CALLBACK(src, .proc/cancel_effect, src), duration)
 
 /datum/event_handler/boiler_acid_onmovement/Destroy()
 	X = null
@@ -239,7 +239,7 @@
 	if (!isMoving)
 		return
 
-	if (X && !X.disposed)
+	if (X && !QDELETED(X))
 		var/obj/effect/particle_effect/smoke/S = new /obj/effect/particle_effect/smoke/xeno_burn(get_turf(X), 1, X, X)
 		S.time_to_live = smoke_duration
 		S.spread_speed = spread_speed
@@ -247,7 +247,7 @@
 		qdel(src)
 
 /datum/event_handler/boiler_acid_onmovement/proc/cancel_effect()
-	if (!istype(X) || X.disposed)
+	if (!istype(X) || QDELETED(X))
 		qdel(src)
 		return
 	

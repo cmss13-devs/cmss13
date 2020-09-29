@@ -122,7 +122,7 @@ FIRE ALARM
 
 /obj/structure/machinery/firealarm/power_change()
 	..()
-	add_timer(CALLBACK(src, .proc/update_icon), rand(0,15))
+	addtimer(CALLBACK(src, .proc/update_icon), rand(0,15))
 
 /obj/structure/machinery/firealarm/attack_hand(mob/user as mob)
 	if(user.stat || inoperable())

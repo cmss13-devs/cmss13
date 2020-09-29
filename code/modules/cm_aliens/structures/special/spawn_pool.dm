@@ -98,7 +98,7 @@
 		return
 
 	for(var/mob/living/carbon/Xenomorph/Larva/L in range(2, src))
-		if(!L.ckey && !L.disposed)
+		if(!L.ckey && !QDELETED(L))
 			visible_message(SPAN_XENODANGER("[L] quickly dives into the pool."))
 			linked_hive.stored_larva++
 			linked_hive.hive_ui.update_pooled_larva()
@@ -122,7 +122,7 @@
 		qdel(melting_body)
 		melting_body = null
 	else
-		add_timer(CALLBACK(src, /obj/effect/alien/resin/special/pool/proc/melt_body, iterations), SECONDS_2)
+		addtimer(CALLBACK(src, /obj/effect/alien/resin/special/pool/proc/melt_body, iterations), SECONDS_2)
 
 /obj/effect/alien/resin/special/pool/proc/can_spawn_larva()
 	if(linked_hive.hardcore)

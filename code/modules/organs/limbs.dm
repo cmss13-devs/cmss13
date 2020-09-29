@@ -973,7 +973,7 @@ This function completely restores a damaged organ to perfect condition.
 				spark_system = null
 
 /obj/limb/proc/embed(var/obj/item/W, var/silent = 0)
-	if(!W || W.disposed || (W.flags_item & (NODROP|DELONDROP)) || W.embeddable == FALSE)
+	if(!W || QDELETED(W) || (W.flags_item & (NODROP|DELONDROP)) || W.embeddable == FALSE)
 		return
 	if(!silent)
 		owner.visible_message(SPAN_DANGER("\The [W] sticks in the wound!"))

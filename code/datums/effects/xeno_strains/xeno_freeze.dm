@@ -11,7 +11,7 @@
 /datum/effects/xeno_freeze/New(var/atom/A, var/mob/from = null, var/last_dmg_source = null, var/zone = "chest", ttl = 20)
 	. = ..(A, from, last_dmg_source, zone)
 
-	add_timer(CALLBACK(GLOBAL_PROC, .proc/qdel, src), ttl)
+	addtimer(CALLBACK(GLOBAL_PROC, .proc/qdel, src), ttl)
 
 	if (ishuman(A))
 		var/mob/living/carbon/human/H = A
@@ -36,7 +36,7 @@
 
 		if(affected_atom && ishuman(affected_atom))
 			var/mob/living/carbon/human/H = affected_atom
-			add_timer(CALLBACK(H, /mob/living/carbon/human.proc/update_xeno_hostile_hud), 3)
+			addtimer(CALLBACK(H, /mob/living/carbon/human.proc/update_xeno_hostile_hud), 3)
 
 	return ..()
 

@@ -142,7 +142,7 @@
 		name = "\improper [area.name] APC"
 		stat |= MAINT
 		update_icon()
-		add_timer(CALLBACK(src, .proc/update), 5)
+		addtimer(CALLBACK(src, .proc/update), 5)
 
 	start_processing()
 
@@ -199,7 +199,7 @@
 	update_icon()
 	make_terminal()
 
-	add_timer(CALLBACK(src, .proc/update), 5)
+	addtimer(CALLBACK(src, .proc/update), 5)
 
 /obj/structure/machinery/power/apc/examine(mob/user)
 	to_chat(user, desc)
@@ -833,7 +833,7 @@
 				visible_message(SPAN_WARNING("\The [src] begins flashing error messages wildly!"))
 				if(ishuman(user))
 					raiseEvent(GLOBAL_EVENT, EVENT_APC_DISABLED + "\ref[user]", get_area(src))
-			add_timer(VARSET_CALLBACK(src, shorted, FALSE), 2 MINUTES)
+			addtimer(VARSET_CALLBACK(src, shorted, FALSE), 2 MINUTES)
 
 /obj/structure/machinery/power/apc/proc/can_use(mob/user as mob, var/loud = 0) //used by attack_hand() and Topic()
 	if(user.client && user.client.remote_control)

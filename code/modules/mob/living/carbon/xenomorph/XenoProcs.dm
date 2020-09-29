@@ -288,7 +288,7 @@
 		playsound(loc, rand(0, 100) < 95 ? 'sound/voice/alien_pounce.ogg' : 'sound/voice/alien_pounce2.ogg', 25, 1)
 		canmove = FALSE
 		frozen = TRUE
-		add_timer(CALLBACK(src, .proc/end_pounce_freeze), pounceAction.freeze_time)
+		addtimer(CALLBACK(src, .proc/end_pounce_freeze), pounceAction.freeze_time)
 
 	if(pounceAction.slash)
 		M.attack_alien(src, pounceAction.slash_bonus_damage)
@@ -440,7 +440,7 @@
 	jitter_time--
 
 	if(jitter_time)
-		add_timer(CALLBACK(src, /mob/living/carbon/Xenomorph/proc/xeno_jitter, jitter_time), 1)
+		addtimer(CALLBACK(src, /mob/living/carbon/Xenomorph/proc/xeno_jitter, jitter_time), 1)
 	else
 		//endwhile - reset the pixel offsets to zero
 		pixel_x = old_x
@@ -582,16 +582,16 @@
 	if (M in tackle_counter)
 		TC = tackle_counter[M]
 	else
-		TC = getFromPool(/datum/tackle_counter, tackle_min + tackle_min_offset, tackle_max + tackle_max_offset, tackle_chance*tackle_mult)
+		TC = new(tackle_min + tackle_min_offset, tackle_max + tackle_max_offset, tackle_chance*tackle_mult)
 		tackle_counter[M] = TC
 	
 	if (TC.tackle_reset_id)
-		delete_timer(TC.tackle_reset_id)
+		deltimer(TC.tackle_reset_id)
 		TC.tackle_reset_id = null
 
 	. = TC.attempt_tackle(tackle_bonus)
 	if (!.)
-		TC.tackle_reset_id = add_timer(CALLBACK(src, .proc/reset_tackle, M), SECONDS_4, TIMER_UNIQUE | TIMER_STOPPABLE)
+		TC.tackle_reset_id = addtimer(CALLBACK(src, .proc/reset_tackle, M), SECONDS_4, TIMER_UNIQUE | TIMER_STOPPABLE)
 	else
 		qdel(TC)
 		tackle_counter[M] = null

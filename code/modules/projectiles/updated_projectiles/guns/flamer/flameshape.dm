@@ -52,7 +52,7 @@
                     break
                 new_spread_amt = 0
 
-        add_timer(CALLBACK(src, .proc/generate_fire, T, F, new_spread_amt, F.flameshape), 0)
+        addtimer(CALLBACK(src, .proc/generate_fire, T, F, new_spread_amt, F.flameshape), 0)
 
 
 /datum/flameshape/default/irregular
@@ -93,7 +93,7 @@
                 if (A.flags_atom & ON_BORDER)
                     break
 
-            add_timer(CALLBACK(src, .proc/generate_fire, T, F, 0, FLAMESHAPE_MINORSTAR), 0)
+            addtimer(CALLBACK(src, .proc/generate_fire, T, F, 0, FLAMESHAPE_MINORSTAR), 0)
             prev_T = T
 
 /datum/flameshape/star/minor
@@ -150,7 +150,7 @@
             prev_T = T
             continue
 
-        add_timer(CALLBACK(src, .proc/generate_fire, T, F, 0, F.flameshape, null, TRUE), distance)
+        addtimer(CALLBACK(src, .proc/generate_fire, T, F, 0, F.flameshape, null, TRUE), distance)
         if(stop_at_turf)
             break
 
@@ -158,7 +158,7 @@
         prev_T = T
 
     if(F.to_call)
-        add_timer(F.to_call, distance + 1)
+        addtimer(F.to_call, distance + 1)
 
 /datum/flameshape/triangle
     name = "Triangle"
@@ -199,7 +199,7 @@
             prev_T = T
             continue
             
-        add_timer(CALLBACK(src, .proc/generate_fire, T, F, 0, FLAMESHAPE_TRIANGLE), 0)
+        addtimer(CALLBACK(src, .proc/generate_fire, T, F, 0, FLAMESHAPE_TRIANGLE), 0)
         prev_T = T
         sleep(1)
 

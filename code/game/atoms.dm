@@ -62,22 +62,11 @@
 			icon_source_files[icon_source] = file(icon_source_master[icon_source])
 		icon = icon_source_files[icon_source]
 	
-	var/check_initialize = SSatoms.init_state
-	if(check_initialize != INITIALIZATION_INSSATOMS)
-		var/check = FALSE
-		if(check_initialize == INITIALIZATION_INNEW_MAPLOAD)
-			check = TRUE
-		args[1] = check
-		if(SSatoms.initalize_atom(src, args))
-			pass_flags = pass_flags_cache[type]
-			if (isnull(pass_flags))
-				pass_flags = new()
-				initialize_pass_flags(pass_flags)
-				pass_flags_cache[type] = pass_flags
-			else
-				initialize_pass_flags()
-			
-			Decorate()
+	var/do_initialize = SSatoms.initialized
+	if(do_initialize != INITIALIZATION_INSSATOMS)
+		args[1] = do_initialize == INITIALIZATION_INNEW_MAPLOAD
+		if(SSatoms.InitAtom(src, args))
+			//we were deleted
 			return
 
 	pass_flags = pass_flags_cache[type]
@@ -307,7 +296,7 @@ its easier to just keep the beam vertical.
 	return
 
 /atom/proc/add_hiddenprint(mob/living/M)
-	if(!M || M.disposed || !M.key || !(flags_atom  & FPRINT) || fingerprintslast == M.key)
+	if(!M || QDELETED(M) || !M.key || !(flags_atom  & FPRINT) || fingerprintslast == M.key)
 		return
 	if (ishuman(M))
 		var/mob/living/carbon/human/H = M
@@ -321,7 +310,7 @@ its easier to just keep the beam vertical.
 
 
 /atom/proc/add_fingerprint(mob/living/M)
-	if(!M || M.disposed || !M.key || !(flags_atom & FPRINT) || fingerprintslast == M.key)
+	if(!M || QDELETED(M) || !M.key || !(flags_atom & FPRINT) || fingerprintslast == M.key)
 		return
 	if(!fingerprintshidden)
 		fingerprintshidden = list()
@@ -426,7 +415,7 @@ Parameters are passed from New.
 	return INITIALIZE_HINT_NORMAL
 
 //called if Initialize returns INITIALIZE_HINT_LATELOAD
-/atom/proc/InitializeLate()
+/atom/proc/LateInitialize()
 	return
 
 

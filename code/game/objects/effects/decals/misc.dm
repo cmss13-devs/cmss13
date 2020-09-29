@@ -24,7 +24,7 @@
 		check_reactions()
 	tiles_left -= 1
 	if(tiles_left)
-		add_timer(CALLBACK(src, /obj/effect/decal/chempuff/proc/move_towards, A, move_delay, tiles_left), move_delay)
+		addtimer(CALLBACK(src, /obj/effect/decal/chempuff/proc/move_towards, A, move_delay, tiles_left), move_delay)
 	else
 		qdel(src)
 

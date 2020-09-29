@@ -144,7 +144,7 @@
 		
 		effect_power++
 	
-	add_timer(CALLBACK(BD, /datum/behavior_delegate/carrier_shaman.proc/reset_shaman_ability), action_def.get_cooldown())
+	addtimer(CALLBACK(BD, /datum/behavior_delegate/carrier_shaman.proc/reset_shaman_ability), action_def.get_cooldown())
 
 	if(effect_power < BD.remembered_count)
 		to_chat(src, SPAN_XENOWARNING("You use stored pain memory."))
@@ -254,7 +254,7 @@
 
 		effect_power++	
 	
-	add_timer(CALLBACK(BD, /datum/behavior_delegate/carrier_shaman.proc/reset_shaman_ability), action_def.get_cooldown())
+	addtimer(CALLBACK(BD, /datum/behavior_delegate/carrier_shaman.proc/reset_shaman_ability), action_def.get_cooldown())
 
 	if(effect_power < BD.remembered_count)
 		to_chat(src, SPAN_XENOWARNING("You use stored pain memory."))
@@ -375,7 +375,7 @@
 		
 		effect_power++
 	
-	add_timer(CALLBACK(BD, /datum/behavior_delegate/carrier_shaman.proc/reset_shaman_ability), action_def.get_cooldown())
+	addtimer(CALLBACK(BD, /datum/behavior_delegate/carrier_shaman.proc/reset_shaman_ability), action_def.get_cooldown())
 
 	if(effect_power < BD.remembered_count)
 		to_chat(src, SPAN_XENOWARNING("You use stored pain memory."))
@@ -395,7 +395,7 @@
 	visible_message(SPAN_XENOWARNING("\The [src] begins to emit madness-inducing pheromones."), \
 		SPAN_XENOWARNING("You begin to emit all pheromones."), null, 5)
 
-	add_timer(CALLBACK(src, /mob/living/carbon/Xenomorph/Carrier.proc/egg_sacr_pheromones_disable), SECONDS_30)
+	addtimer(CALLBACK(src, /mob/living/carbon/Xenomorph/Carrier.proc/egg_sacr_pheromones_disable), SECONDS_30)
 
 	return TRUE
 
@@ -475,7 +475,7 @@
 		
 		effect_power++
 	
-	add_timer(CALLBACK(BD, /datum/behavior_delegate/carrier_shaman.proc/reset_shaman_ability), action_def.get_cooldown())
+	addtimer(CALLBACK(BD, /datum/behavior_delegate/carrier_shaman.proc/reset_shaman_ability), action_def.get_cooldown())
 
 	if(effect_power == 0)
 		to_chat(src, SPAN_XENOWARNING("Pointless sacrifice... Noone trusted you."))

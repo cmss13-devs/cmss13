@@ -278,7 +278,7 @@ var/global/maint_all_access = 1
 			to_chat(M, SPAN_XENOANNOUNCE("The Queen Mother reaches into your mind from worlds away."))
 			to_chat(M, SPAN_XENOANNOUNCE("To my children and their Queen. I sense the large doors that trap us will open in [text_timeleft]."))
 	var/new_timeleft = timeleft - next_interval
-	add_timer(CALLBACK(src, /obj/structure/machinery/keycard_auth/lockdown/proc/timed_countdown, new_timeleft), next_interval)
+	addtimer(CALLBACK(src, /obj/structure/machinery/keycard_auth/lockdown/proc/timed_countdown, new_timeleft), next_interval)
 
 /obj/structure/machinery/keycard_auth/lockdown/trigger_event()
 	set waitfor = 0

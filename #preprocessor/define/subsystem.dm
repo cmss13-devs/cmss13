@@ -1,3 +1,50 @@
+//! ## Timing subsystem
+/**
+  * Don't run if there is an identical unique timer active
+  *
+  * if the arguments to addtimer are the same as an existing timer, it doesn't create a new timer,
+  * and returns the id of the existing timer
+  */
+#define TIMER_UNIQUE			(1<<0)
+
+///For unique timers: Replace the old timer rather then not start this one
+#define TIMER_OVERRIDE			(1<<1)
+
+/**
+  * Timing should be based on how timing progresses on clients, not the server.
+  *
+  * Tracking this is more expensive,
+  * should only be used in conjuction with things that have to progress client side, such as
+  * animate() or sound()
+  */
+#define TIMER_CLIENT_TIME		(1<<2)
+
+///Timer can be stopped using deltimer()
+#define TIMER_STOPPABLE			(1<<3)
+
+///prevents distinguishing identical timers with the wait variable
+///
+///To be used with TIMER_UNIQUE
+#define TIMER_NO_HASH_WAIT		(1<<4)
+
+///Loops the timer repeatedly until qdeleted
+///
+///In most cases you want a subsystem instead, so don't use this unless you have a good reason
+#define TIMER_LOOP				(1<<5)
+
+///Empty ID define
+#define TIMER_ID_NULL -1
+
+//! ## Initialization subsystem
+
+///New should not call Initialize
+#define INITIALIZATION_INSSATOMS 0
+///New should call Initialize(TRUE)
+#define INITIALIZATION_INNEW_MAPLOAD 2
+///New should call Initialize(FALSE)
+#define INITIALIZATION_INNEW_REGULAR 1
+
+
 // Subsystem defines.
 // All in one file so it's easier to see what everything is relative to.
 
@@ -40,7 +87,7 @@
 #define SS_INIT_PLAYTIME    	  -27
 #define SS_INIT_CORPSESPAWNER      -30
 
-
+#define SS_PRIORITY_TIMER          700
 #define SS_PRIORITY_CHAT		   300
 #define SS_PRIORITY_SOUND          250
 #define SS_PRIORITY_TICKER         200
@@ -83,38 +130,35 @@
 #define SS_PRIORITY_INACTIVITY     1
 #define SS_PRIORITY_ADMIN          0
 
-#define SS_WAIT_MACHINERY           3.5 SECONDS //TODO move the rest of these to defines
-#define SS_WAIT_FAST_MACHINERY      0.7 SECONDS
-#define SS_WAIT_FAST_OBJECTS        0.5 SECONDS
-#define SS_WAIT_CELLAUTO            0.05 SECONDS
-#define SS_WAIT_ADMIN               5 MINUTES
-#define SS_WAIT_FZ_TRANSITIONS		1 SECONDS
-#define SS_WAIT_ROUND_RECORDING        5 SECONDS
-
-
-#define SS_DISPLAY_GARBAGE        -100
-#define SS_DISPLAY_DATABASE       -99
-#define SS_DISPLAY_ENTITY	      -98
-#define SS_DISPLAY_LIGHTING       -80
-#define SS_DISPLAY_MOB            -72
-#define SS_DISPLAY_HUMAN          -71
-#define SS_DISPLAY_XENO           -70
-#define SS_DISPLAY_COMPONENT      -69
-#define SS_DISPLAY_FAST_OBJECTS   -65
-#define SS_DISPLAY_DECORATOR	  -63
-#define SS_DISPLAY_OBJECTS        -60
-#define SS_DISPLAY_TIMER          -55
-#define SS_DISPLAY_MACHINERY      -50
-#define SS_DISPLAY_PIPENET        -40
-#define SS_DISPLAY_FAST_MACHINERY -30
-#define SS_DISPLAY_SHUTTLES       -25
-#define SS_DISPLAY_TELEPORTER     -24
-#define SS_DISPLAY_POWER          -20
-#define SS_DISPLAY_FZ_TRANSITIONS -15
-#define SS_DISPLAY_TICKER         -10
-#define SS_DISPLAY_UNSPECIFIED     0
-#define SS_DISPLAY_ADMIN           20
 
 #define INITIALIZE_HINT_NORMAL   0  //Nothing happens
-#define INITIALIZE_HINT_LATELOAD 1  //Call InitializeLate
+#define INITIALIZE_HINT_LATELOAD 1  //Call LateInitialize
 #define INITIALIZE_HINT_QDEL     2  //Call qdel on the atom
+
+// SS runlevels
+
+#define RUNLEVEL_INIT 0
+#define RUNLEVEL_LOBBY 1
+#define RUNLEVEL_SETUP 2
+#define RUNLEVEL_GAME 4
+#define RUNLEVEL_POSTGAME 8
+
+#define RUNLEVELS_DEFAULT (RUNLEVEL_SETUP | RUNLEVEL_GAME | RUNLEVEL_POSTGAME)
+
+/**
+	Create a new timer and add it to the queue.
+	* Arguments:
+	* * callback the callback to call on timer finish
+	* * wait deciseconds to run the timer for
+	* * flags flags for this timer, see: code\__DEFINES\subsystems.dm
+*/
+#define addtimer(args...) _addtimer(args, file = __FILE__, line = __LINE__)
+
+///type and all subtypes should always immediately call Initialize in New()
+#define INITIALIZE_IMMEDIATE(X) ##X/New(loc, ...){\
+    ..();\
+    if(!(flags_atom & INITIALIZED)) {\
+        args[1] = TRUE;\
+        SSatoms.InitAtom(src, args);\
+    }\
+}

@@ -34,7 +34,7 @@ var/global/datum/interior_manager/interior_manager = new
 
 	for(var/turf/T in block(z_min, z_max))
 		T.ChangeTurf(/turf/open/void, TRUE)
-		T.old_turf = "/turf/open/void"
+		T.baseturfs = /turf/open/void
 
 	var/total_chunk_ids = (world.maxx / chunk_size) ** 2
 
@@ -47,7 +47,7 @@ var/global/datum/interior_manager/interior_manager = new
 
 /datum/interior_manager/Destroy()
 	for(var/datum/interior/I in interiors)
-		if(!I.disposed)
+		if(!QDELETED(I))
 			qdel(I)
 			interiors -= I
 	interiors = null

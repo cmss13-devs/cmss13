@@ -131,7 +131,7 @@
 
 	// SLIGHTLY hacky because we need to maintain lots of other state on the lurker 
 	// whenever invisibility is on/off CD and when it's active.
-	add_timer(CALLBACK(src, .proc/regen_invisibility), invis_recharge_time)
+	addtimer(CALLBACK(src, .proc/regen_invisibility), invis_recharge_time)
 
 	invis_start_time = -1
 

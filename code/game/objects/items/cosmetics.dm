@@ -1,7 +1,7 @@
 /obj/item/facepaint
 	gender = PLURAL
 	name = "facepaint"
-	desc = "Paint, for your face. Who woulda thought?."
+	desc = "Paint, for your face. Who woulda thought?. Wipe it off your face with some paper if you need to."
 	icon = 'icons/obj/items/items.dmi'
 	icon_state = "camo"
 	var/colour = "green"
@@ -10,30 +10,33 @@
 
 /obj/item/facepaint/green
 	name = "green facepaint"
+	desc = "Paint, for your face. This green facepaint is perfect for drawing menacing stripes across your face. Wipe it off your face with some paper if you need to."
 	colour = "green"
 	icon_state = "green_cammo"
 
-
 /obj/item/facepaint/brown
 	name = "brown facepaint"
+	desc = "Paint, for your face. This brown facepaint is perfect for drawing menacing stripes across your face. Wipe it off your face with some paper if you need to."
 	colour = "brown"
 	icon_state = "brown_cammo"
 
 /obj/item/facepaint/black
 	name = "black facepaint"
+	desc = "Paint, for your face. This black facepaint is perfect for your very own eye black. Wipe it off your face with some paper if you need to."
 	colour = "black"
 	icon_state = "black_cammo"
 
 /obj/item/facepaint/sniper
 	name = "fullbody paint"
+	desc = "Paint, for your face. This facepaint is meant to help you blend in with the foilage, but studies on this are at best inconclusive. Wipe it off your face with some paper if you need to."
 	colour = "full"
 	icon_state = "full_cammo"
 
 /obj/item/facepaint/skull
 	name = "skull paint"
+	desc = "Paint, for your face. Make your enemies need a change of underwear from the sheer terror a goddamn skull on your face will bring to them."
 	colour = "skull"
 	icon_state = "skull_cammo"
-
 
 /obj/item/facepaint/attack(mob/M as mob, mob/user as mob)
 	if(!ismob(M)) return

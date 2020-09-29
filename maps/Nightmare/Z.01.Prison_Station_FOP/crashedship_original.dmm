@@ -1900,12 +1900,9 @@
 /turf/closed/wall/sulaco/unmeltable,
 /area/prison/pirate)
 "dy" = (
-/obj/structure/machinery/door/poddoor/two_tile{
-	density = 0;
-	icon_state = "pdoor0";
+/obj/structure/machinery/door/poddoor/two_tile/open{
 	id = "pirate_cargo";
 	name = "Rocinante Cargo Bay Door";
-	opacity = 0;
 	unacidable = 0
 	},
 /turf/open/floor{
@@ -1920,12 +1917,9 @@
 	},
 /area/prison/pirate)
 "dA" = (
-/obj/structure/machinery/door/poddoor/two_tile{
-	density = 0;
-	icon_state = "pdoor0";
+/obj/structure/machinery/door/poddoor/two_tile/open{
 	id = "pirate_cargo";
 	name = "Rocinante Cargo Bay Door";
-	opacity = 0;
 	unacidable = 0
 	},
 /obj/effect/landmark/corpsespawner/prison_security,

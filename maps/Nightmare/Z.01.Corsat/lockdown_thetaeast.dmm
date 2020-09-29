@@ -52,12 +52,9 @@
 	},
 /area/corsat/theta/airlock/east)
 "k" = (
-/obj/structure/machinery/door/poddoor/two_tile/four_tile/vertical{
-	density = 0;
-	icon_state = "pdoor0";
+/obj/structure/machinery/door/poddoor/two_tile/four_tile/vertical/open{
 	id = "ThetaEastW";
 	name = "Theta East Airlock";
-	opacity = 0;
 	unacidable = 0;
 	use_power = 1
 	},
@@ -83,13 +80,10 @@
 /area/corsat/theta/biodome)
 "n" = (
 /obj/structure/window/framed/corsat/security,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 1;
-	icon_state = "shutter0";
 	id = "ThetaIDEC2";
-	name = "Security Shutters";
-	opacity = 0
+	name = "Security Shutters"
 	},
 /turf/open/floor/plating,
 /area/corsat/theta/airlock/east/id)

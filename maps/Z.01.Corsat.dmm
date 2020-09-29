@@ -7,13 +7,10 @@
 /area/corsat/gamma/hangar/arrivals)
 "aac" = (
 /obj/structure/window/framed/corsat/security,
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
-	icon_state = "pdoor0";
 	id = "OmegaO";
 	name = "Omega Lockdown";
-	opacity = 0;
 	use_power = 0
 	},
 /turf/open/floor/plating,
@@ -1355,13 +1352,10 @@
 /area/corsat/gamma/residential/west)
 "adL" = (
 /obj/structure/window/framed/corsat,
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
-	icon_state = "pdoor0";
 	id = "GammaHangarH";
-	name = "Hangar Lockdown";
-	opacity = 0;
+	name = "Hangar Lockdown"
 	use_power = 0
 	},
 /turf/open/floor/plating,
@@ -1510,13 +1504,10 @@
 /area/corsat/gamma/residential)
 "ael" = (
 /obj/structure/window/framed/corsat/security,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 4;
-	icon_state = "shutter0";
 	id = "GammaHangarCargoC";
-	name = "Security Shutters";
-	opacity = 0
+	name = "Security Shutters"
 	},
 /turf/open/floor/plating,
 /area/corsat/gamma/hangar/cargo)
@@ -2546,13 +2537,10 @@
 	},
 /area/corsat/gamma/hangar/security)
 "agW" = (
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
-	icon_state = "pdoor0";
 	id = "SigmaHangarH";
 	name = "Hangar Lockdown";
-	opacity = 0;
 	use_power = 0
 	},
 /turf/open/floor/corsat{
@@ -3611,13 +3599,10 @@
 /area/corsat/sigma/hangar)
 "ajL" = (
 /obj/structure/window/framed/corsat/security,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 4;
-	icon_state = "shutter0";
 	id = "SigmaCheckpointC";
-	name = "Security Shutters";
-	opacity = 0
+	name = "Security Shutters"
 	},
 /turf/open/floor/plating,
 /area/corsat/sigma/hangar/checkpoint)
@@ -4406,13 +4391,10 @@
 /area/corsat/gamma/residential/researcher)
 "alV" = (
 /obj/structure/window/framed/corsat/security,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 4;
-	icon_state = "shutter0";
 	id = "GammaSecC";
-	name = "Security Shutters";
-	opacity = 0
+	name = "Security Shutters"
 	},
 /turf/open/floor/plating,
 /area/corsat/gamma/hangar/security)
@@ -5207,13 +5189,10 @@
 /area/corsat/sigma/cargo)
 "aoa" = (
 /obj/structure/window/framed/corsat/security,
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
-	icon_state = "pdoor0";
 	id = "OmegaO";
 	name = "Omega Lockdown";
-	opacity = 0;
 	use_power = 0
 	},
 /turf/open/floor/plating,
@@ -5412,13 +5391,10 @@
 /obj/structure/machinery/door/window/brigdoor/eastleft{
 	name = "Identification Desk"
 	},
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
-	icon_state = "pdoor0";
 	id = "OmegaO";
 	name = "Omega Lockdown";
-	opacity = 0;
 	use_power = 0
 	},
 /turf/open/floor/corsat{
@@ -5572,13 +5548,10 @@
 /area/corsat/omega/maint)
 "ape" = (
 /obj/structure/window/framed/corsat/research,
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
-	icon_state = "pdoor0";
 	id = "OmegaO";
 	name = "Omega Lockdown";
-	opacity = 0;
 	use_power = 0
 	},
 /turf/open/floor/plating,
@@ -5744,13 +5717,10 @@
 /obj/structure/machinery/door/window/brigdoor/eastleft{
 	name = "Identification Desk"
 	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 4;
-	icon_state = "shutter0";
 	id = "GammaSecC";
-	name = "Security Shutters";
-	opacity = 0
+	name = "Security Shutters"
 	},
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/corsat{
@@ -7065,13 +7035,10 @@
 /area/corsat/sigma/southeast/generator)
 "atT" = (
 /obj/structure/window/framed/corsat/security,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 4;
-	icon_state = "shutter0";
 	id = "SigmaHCargoC";
-	name = "Security Shutters";
-	opacity = 0
+	name = "Security Shutters"
 	},
 /turf/open/floor/plating,
 /area/corsat/sigma/hangar/id)
@@ -7147,13 +7114,10 @@
 /area/corsat/gamma/residential/east)
 "auc" = (
 /obj/structure/window/framed/corsat/security,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 4;
-	icon_state = "shutter0";
 	id = "GammaDSC2";
-	name = "Security Shutters";
-	opacity = 0
+	name = "Security Shutters"
 	},
 /turf/open/floor/plating,
 /area/corsat/gamma/airlock/north/id)
@@ -7212,12 +7176,9 @@
 	name = "Administration";
 	req_access = list(106)
 	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
-	icon_state = "shutter0";
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "GammaAdmin";
-	name = "Security Shutters";
-	opacity = 0
+	name = "Security Shutters"
 	},
 /turf/open/floor/corsat{
 	icon_state = "officesquares"
@@ -7267,12 +7228,9 @@
 	},
 /area/corsat/omega/checkpoint)
 "aut" = (
-/obj/structure/machinery/door/poddoor/two_tile/four_tile{
-	density = 0;
-	icon_state = "pdoor0";
+/obj/structure/machinery/door/poddoor/two_tile/four_tile/open{
 	id = "SigmaSouthN";
-	name = "Sigma South Airlock";
-	opacity = 0
+	name = "Sigma South Airlock"
 	},
 /turf/open/floor/corsat{
 	icon_state = "marked"
@@ -7884,13 +7842,10 @@
 /obj/structure/machinery/door/window/brigdoor/eastleft{
 	name = "Identification Desk"
 	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 4;
-	icon_state = "shutter0";
 	id = "GammaHangarCargoC";
-	name = "Security Shutters";
-	opacity = 0
+	name = "Security Shutters"
 	},
 /turf/open/floor/corsat{
 	icon_state = "plate"
@@ -8016,12 +7971,9 @@
 /area/corsat/gamma/administration)
 "awx" = (
 /obj/structure/window/framed/corsat/security,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
-	icon_state = "shutter0";
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "GammaDSC";
-	name = "Security Shutters";
-	opacity = 0
+	name = "Security Shutters"
 	},
 /turf/open/floor/plating,
 /area/corsat/gamma/airlock/north/id)
@@ -8040,12 +7992,9 @@
 	name = "Identification Desk";
 	req_access = list(104)
 	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
-	icon_state = "shutter0";
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "GammaDSC";
-	name = "Security Shutters";
-	opacity = 0
+	name = "Security Shutters"
 	},
 /turf/open/floor/corsat{
 	icon_state = "plate"
@@ -8702,22 +8651,16 @@
 /area/corsat/sigma/hangar/office)
 "ayc" = (
 /obj/structure/window/framed/corsat/security,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
-	icon_state = "shutter0";
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "SigmaEastID2";
-	name = "Security Shutters";
-	opacity = 0
+	name = "Security Shutters"
 	},
 /turf/open/floor/plating,
 /area/corsat/sigma/airlock/east/id)
 "ayd" = (
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
-	icon_state = "pdoor0";
+/obj/structure/machinery/door/poddoor/almayer/open{
 	id = "SigmaHangarH";
 	name = "Hangar Lockdown";
-	opacity = 0;
 	use_power = 0
 	},
 /turf/open/floor/corsat{
@@ -9010,12 +8953,9 @@
 	},
 /area/corsat/sigma/airlock/east)
 "ayK" = (
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
-	icon_state = "pdoor0";
+/obj/structure/machinery/door/poddoor/almayer/open{
 	id = "SigmaHCargoN";
 	name = "Hangar Lockdown";
-	opacity = 0;
 	use_power = 0
 	},
 /turf/open/floor/corsat{
@@ -9159,12 +9099,9 @@
 	},
 /area/corsat/sigma/airlock/east)
 "aza" = (
-/obj/structure/machinery/door/poddoor/two_tile/four_tile{
-	density = 0;
-	icon_state = "pdoor0";
+/obj/structure/machinery/door/poddoor/two_tile/four_tile/open{
 	id = "GammaNorthN";
-	name = "Gamma North Airlock";
-	opacity = 0
+	name = "Gamma North Airlock"
 	},
 /turf/open/floor/corsat{
 	icon_state = "marked"
@@ -9529,13 +9466,10 @@
 /area/corsat/gamma/sigmaremote)
 "azV" = (
 /obj/structure/window/framed/corsat/security,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 4;
-	icon_state = "shutter0";
 	id = "SigmaIDSC2";
-	name = "Security Shutters";
-	opacity = 0
+	name = "Security Shutters"
 	},
 /turf/open/floor/plating,
 /area/corsat/sigma/airlock/south/id)
@@ -9981,12 +9915,9 @@
 	},
 /area/corsat/sigma/airlock/south)
 "aAZ" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
-	icon_state = "shutter0";
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "GammaAdmin";
-	name = "Security Shutters";
-	opacity = 0
+	name = "Security Shutters"
 	},
 /turf/open/floor/corsat{
 	icon_state = "officesquares"
@@ -11062,12 +10993,9 @@
 	},
 /area/corsat/theta/airlock/east)
 "aDI" = (
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
-	icon_state = "pdoor0";
+/obj/structure/machinery/door/poddoor/almayer/open{
 	id = "SigmaHangarH";
 	name = "Hangar Lockdown";
-	opacity = 0;
 	use_power = 0
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -11257,12 +11185,9 @@
 /area/corsat/omega/hangar)
 "aEf" = (
 /obj/structure/window/framed/corsat/hull,
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
-	icon_state = "pdoor0";
+/obj/structure/machinery/door/poddoor/almayer/open{
 	id = "OmegaO";
 	name = "Omega Lockdown";
-	opacity = 0;
 	use_power = 0
 	},
 /turf/open/floor/plating,
@@ -12094,12 +12019,9 @@
 	},
 /area/corsat/gamma/hangar/cargo)
 "aGl" = (
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
-	icon_state = "pdoor0";
+/obj/structure/machinery/door/poddoor/almayer/open{
 	id = "GammaHangarH";
 	name = "Hangar Lockdown";
-	opacity = 0;
 	use_power = 0
 	},
 /turf/open/floor/corsat{
@@ -12202,22 +12124,16 @@
 /area/corsat/theta/airlock/east)
 "aGx" = (
 /obj/structure/window/framed/corsat,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
-	icon_state = "shutter0";
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "GammaAdmin";
-	name = "Security Shutters";
-	opacity = 0
+	name = "Security Shutters"
 	},
 /turf/open/floor/plating,
 /area/corsat/gamma/administration)
 "aGy" = (
-/obj/structure/machinery/door/poddoor/two_tile/four_tile{
-	density = 0;
-	icon_state = "pdoor0";
+/obj/structure/machinery/door/poddoor/two_tile/four_tile/open{
 	id = "OmegaN";
-	name = "Omega Airlock";
-	opacity = 0
+	name = "Omega Airlock"
 	},
 /turf/open/floor/corsat{
 	icon_state = "marked"
@@ -12706,13 +12622,10 @@
 	name = "Virology Lab";
 	req_one_access = list(103)
 	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 2;
-	icon_state = "shutter0";
 	id = "Viro";
-	name = "Virology Lockdown";
-	opacity = 0
+	name = "Virology Lockdown"
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat{
@@ -12732,13 +12645,10 @@
 	name = "Decontamination Chamber";
 	req_one_access = list(103)
 	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 4;
-	icon_state = "shutter0";
 	id = "Viro";
-	name = "Virology Lockdown";
-	opacity = 0
+	name = "Virology Lockdown"
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -12798,12 +12708,9 @@
 /turf/closed/wall/r_wall/biodome/biodome_unmeltable,
 /area/corsat/omega/hangar/security)
 "aHM" = (
-/obj/structure/machinery/door/poddoor/two_tile/four_tile{
-	density = 0;
-	icon_state = "pdoor0";
+/obj/structure/machinery/door/poddoor/two_tile/four_tile/open{
 	id = "OmegaS";
-	name = "Omega Airlock";
-	opacity = 0
+	name = "Omega Airlock"
 	},
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/floor/corsat{
@@ -13016,12 +12923,9 @@
 	name = "Administration Desk";
 	req_access = list(104)
 	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
-	icon_state = "shutter0";
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "GammaAdmin";
-	name = "Security Shutters";
-	opacity = 0
+	name = "Security Shutters"
 	},
 /turf/open/floor/corsat{
 	icon_state = "spiralplate"
@@ -13118,12 +13022,9 @@
 /turf/closed/wall/r_wall/biodome,
 /area/corsat/gamma/airlock/control)
 "aIy" = (
-/obj/structure/machinery/door/poddoor/two_tile/four_tile{
-	density = 0;
-	icon_state = "pdoor0";
+/obj/structure/machinery/door/poddoor/two_tile/four_tile/open{
 	id = "GammaNorthS";
-	name = "Gamma North Airlock";
-	opacity = 0
+	name = "Gamma North Airlock"
 	},
 /obj/structure/machinery/door/poddoor/two_tile/four_tile/secure{
 	id = "map_lockdown";
@@ -13683,12 +13584,9 @@
 	},
 /area/corsat/sigma/south/complex)
 "aKc" = (
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
-	icon_state = "pdoor0";
+/obj/structure/machinery/door/poddoor/almayer/open{
 	id = "SigmaHCargoS";
 	name = "Hangar Lockdown";
-	opacity = 0;
 	use_power = 0
 	},
 /turf/open/floor/corsat{
@@ -14065,13 +13963,10 @@
 /turf/closed/wall/r_wall/biodome,
 /area/corsat/omega/control)
 "aLi" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 2;
-	icon_state = "shutter0";
 	id = "Viro";
-	name = "Virology Lockdown";
-	opacity = 0
+	name = "Virology Lockdown"
 	},
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "Virology Wing";
@@ -14116,13 +14011,10 @@
 /area/corsat/gamma/airlock/control)
 "aLo" = (
 /obj/structure/window/framed/corsat/security,
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
-	icon_state = "pdoor0";
 	id = "GammaControl";
 	name = "Observation Shutters";
-	opacity = 0;
 	use_power = 0
 	},
 /turf/open/floor/plating,
@@ -14328,12 +14220,9 @@
 /area/corsat/sigma/south/complex)
 "aLU" = (
 /obj/structure/window/framed/corsat/security,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
-	icon_state = "shutter0";
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "ThetaIDEC2";
-	name = "Security Shutters";
-	opacity = 0
+	name = "Security Shutters"
 	},
 /turf/open/floor/plating,
 /area/corsat/theta/airlock/east/id)
@@ -14354,12 +14243,9 @@
 /area/corsat/omega/complex)
 "aLY" = (
 /obj/structure/window/framed/corsat/security,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
-	icon_state = "shutter0";
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "ThetaIDEC";
-	name = "Security Shutters";
-	opacity = 0
+	name = "Security Shutters"
 	},
 /turf/open/floor/plating,
 /area/corsat/theta/airlock/east/id)
@@ -15025,12 +14911,9 @@
 /area/corsat/sigma/south/complex)
 "aNH" = (
 /obj/structure/window/framed/corsat/security,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
-	icon_state = "shutter0";
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "SigmaResC";
-	name = "Security Shutters";
-	opacity = 0
+	name = "Security Shutters"
 	},
 /turf/open/floor/plating,
 /area/corsat/sigma/checkpoint)
@@ -15723,13 +15606,10 @@
 /area/corsat/gamma/hangar/checkpoint)
 "aPy" = (
 /obj/structure/window/framed/corsat,
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
-	icon_state = "pdoor0";
 	id = "GammaHangarH";
-	name = "Hangar Lockdown";
-	opacity = 0;
+	name = "Hangar Lockdown"
 	use_power = 0
 	},
 /turf/open/floor/plating,
@@ -15899,12 +15779,9 @@
 	name = "Identification Desk";
 	req_access = list(104)
 	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
-	icon_state = "shutter0";
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "ThetaIDEC";
-	name = "Security Shutters";
-	opacity = 0
+	name = "Security Shutters"
 	},
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/corsat{
@@ -16901,13 +16778,10 @@
 /obj/structure/machinery/door/window/brigdoor/eastleft{
 	name = "Identification Desk"
 	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 4;
-	icon_state = "shutter0";
 	id = "SigmaHangarC";
-	name = "Security Shutters";
-	opacity = 0
+	name = "Security Shutters"
 	},
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/corsat{
@@ -18413,13 +18287,10 @@
 	},
 /area/corsat/omega/cargo)
 "aVV" = (
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
-	icon_state = "pdoor0";
 	id = "SigmaHangarH";
 	name = "Hangar Lockdown";
-	opacity = 0;
 	use_power = 0
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -19972,12 +19843,9 @@
 	},
 /area/corsat/omega/checkpoint)
 "aZD" = (
-/obj/structure/machinery/door/poddoor/two_tile/four_tile{
-	density = 0;
-	icon_state = "pdoor0";
+/obj/structure/machinery/door/poddoor/two_tile/four_tile/open{
 	id = "SigmaSouthS";
-	name = "Sigma South Airlock";
-	opacity = 0
+	name = "Sigma South Airlock"
 	},
 /turf/open/floor/corsat{
 	icon_state = "marked"
@@ -20253,24 +20121,18 @@
 	},
 /area/corsat/omega/control)
 "bai" = (
-/obj/structure/machinery/door/poddoor/two_tile/four_tile{
-	density = 0;
-	icon_state = "pdoor0";
+/obj/structure/machinery/door/poddoor/two_tile/four_tile/open{
 	id = "OmegaHangarN";
-	name = "Landing Bay Omega";
-	opacity = 0
+	name = "Landing Bay Omega"
 	},
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
 /area/corsat/omega/hangar/security)
 "baj" = (
-/obj/structure/machinery/door/poddoor/two_tile/four_tile/vertical{
-	density = 0;
-	icon_state = "pdoor0";
+/obj/structure/machinery/door/poddoor/two_tile/four_tile/vertical/open{
 	id = "OmegaHangarNE";
-	name = "Landing Bay Omega";
-	opacity = 0
+	name = "Landing Bay Omega"
 	},
 /turf/open/floor/corsat{
 	icon_state = "marked"
@@ -20501,13 +20363,10 @@
 /obj/structure/machinery/door/window/brigdoor/eastleft{
 	name = "Identification Desk"
 	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 4;
-	icon_state = "shutter0";
 	id = "OmegaAccessC";
-	name = "Security Shutters";
-	opacity = 0
+	name = "Security Shutters"
 	},
 /obj/structure/window/reinforced,
 /obj/effect/landmark/objective_landmark/far,
@@ -20516,12 +20375,9 @@
 	},
 /area/corsat/omega/checkpoint)
 "baI" = (
-/obj/structure/machinery/door/poddoor/two_tile/four_tile/vertical/secure{
-	density = 0;
-	icon_state = "pdoor0";
+/obj/structure/machinery/door/poddoor/two_tile/four_tile/vertical/secure/open{
 	id = "delta_gamma";
 	name = "Gamma Emergency Access";
-	opacity = 0;
 	use_power = 0
 	},
 /turf/open/floor/corsat{
@@ -20574,13 +20430,10 @@
 /obj/structure/machinery/door/window/brigdoor/eastleft{
 	name = "Identification Desk"
 	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 4;
-	icon_state = "shutter0";
 	id = "OmegaAccessC";
-	name = "Security Shutters";
-	opacity = 0
+	name = "Security Shutters"
 	},
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/corsat{
@@ -20614,13 +20467,10 @@
 /area/corsat/omega/hallways)
 "baU" = (
 /obj/structure/window/framed/corsat/hull,
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
-	icon_state = "pdoor0";
 	id = "OmegaO";
 	name = "Omega Lockdown";
-	opacity = 0;
 	use_power = 0
 	},
 /turf/open/floor/plating,
@@ -20657,12 +20507,9 @@
 /area/corsat/sigma/south/engineering)
 "bba" = (
 /obj/structure/window/framed/corsat/security,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
-	icon_state = "shutter0";
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "OmegaCSC";
-	name = "Security Shutters";
-	opacity = 0
+	name = "Security Shutters"
 	},
 /turf/open/floor/plating,
 /area/corsat/omega/control)
@@ -20683,12 +20530,9 @@
 	name = "Identification Desk";
 	req_access = list(104)
 	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
-	icon_state = "shutter0";
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "OmegaCSC";
-	name = "Security Shutters";
-	opacity = 0
+	name = "Security Shutters"
 	},
 /turf/open/floor/corsat{
 	icon_state = "plate"
@@ -20849,12 +20693,9 @@
 	},
 /area/corsat/theta/airlock/west)
 "bbt" = (
-/obj/structure/machinery/door/poddoor/two_tile/four_tile/vertical{
-	density = 0;
-	icon_state = "pdoor0";
+/obj/structure/machinery/door/poddoor/two_tile/four_tile/vertical/open{
 	id = "ThetaEastW";
-	name = "Theta East Airlock";
-	opacity = 0
+	name = "Theta East Airlock"
 	},
 /obj/structure/machinery/door/poddoor/two_tile/four_tile/vertical/secure{
 	id = "map_lockdown";
@@ -20866,12 +20707,9 @@
 	},
 /area/corsat/theta/airlock/east)
 "bbu" = (
-/obj/structure/machinery/door/poddoor/two_tile/four_tile/vertical{
-	density = 0;
-	icon_state = "pdoor0";
+/obj/structure/machinery/door/poddoor/two_tile/four_tile/vertical/open{
 	id = "ThetaEastE";
-	name = "Theta East Airlock";
-	opacity = 0
+	name = "Theta East Airlock"
 	},
 /turf/open/floor/corsat{
 	icon_state = "marked"
@@ -20924,13 +20762,10 @@
 /area/corsat/sigma/hangar/monorail/control)
 "bbB" = (
 /obj/structure/window/framed/corsat/research,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 2;
-	icon_state = "shutter0";
 	id = "Viro";
-	name = "Virology Lockdown";
-	opacity = 0
+	name = "Virology Lockdown"
 	},
 /turf/open/floor/plating,
 /area/corsat/gamma/biodome/virology)
@@ -20997,13 +20832,10 @@
 /area/corsat/gamma/biodome/complex)
 "bbJ" = (
 /obj/structure/window/framed/corsat/research,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 2;
-	icon_state = "shutter0";
 	id = "GammaLab";
-	name = "Privacy Shutters";
-	opacity = 0
+	name = "Privacy Shutters"
 	},
 /turf/open/floor/plating,
 /area/corsat/gamma/biodome/complex)
@@ -21031,13 +20863,10 @@
 /area/corsat/gamma/biodome/complex)
 "bbM" = (
 /obj/structure/window/framed/corsat/research,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 2;
-	icon_state = "shutter0";
 	id = "Toxins";
-	name = "Toxins Lockdown";
-	opacity = 0
+	name = "Toxins Lockdown"
 	},
 /turf/open/floor/plating,
 /area/corsat/gamma/biodome/toxins)
@@ -21068,13 +20897,10 @@
 	},
 /area/corsat/omega/checkpoint)
 "bbQ" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 2;
-	icon_state = "shutter0";
 	id = "GammaLab";
-	name = "Privacy Shutters";
-	opacity = 0
+	name = "Privacy Shutters"
 	},
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "Director's Room";
@@ -21084,13 +20910,10 @@
 /turf/open/floor/wood,
 /area/corsat/gamma/biodome/complex)
 "bbR" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 2;
-	icon_state = "shutter0";
 	id = "Toxins";
-	name = "Toxins Lockdown";
-	opacity = 0
+	name = "Toxins Lockdown"
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat{
@@ -21195,13 +21018,10 @@
 	},
 /area/corsat/theta/biodome/hydrowest)
 "bcc" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 2;
-	icon_state = "shutter0";
 	id = "Toxins";
-	name = "Toxins Lockdown";
-	opacity = 0
+	name = "Toxins Lockdown"
 	},
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
 	name = "Toxins Lab";
@@ -21234,149 +21054,113 @@
 /area/corsat/theta/biodome/complex)
 "bcf" = (
 /obj/structure/window/framed/corsat/research,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 4;
-	icon_state = "shutter0";
 	id = "Viro";
-	name = "Virology Lockdown";
-	opacity = 0
+	name = "Virology Lockdown"
 	},
 /turf/open/floor/plating,
 /area/corsat/gamma/biodome/virology)
 "bcg" = (
 /obj/structure/window/framed/corsat/research,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 4;
-	icon_state = "shutter0";
 	id = "Toxins";
-	name = "Toxins Lockdown";
-	opacity = 0
+	name = "Toxins Lockdown"
 	},
 /turf/open/floor/plating,
 /area/corsat/gamma/biodome/toxins)
 "bci" = (
 /obj/structure/window/framed/corsat,
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
-	icon_state = "pdoor0";
 	id = "GammaControl";
 	name = "Observation Shutters";
-	opacity = 0;
 	use_power = 0
 	},
 /turf/open/floor/plating,
 /area/corsat/gamma/airlock/control)
 "bcj" = (
 /obj/structure/window/framed/corsat,
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
-	icon_state = "pdoor0";
+/obj/structure/machinery/door/poddoor/almayer/open{
 	id = "GammaControl";
 	name = "Observation Shutters";
-	opacity = 0;
 	use_power = 0
 	},
 /turf/open/floor/plating,
 /area/corsat/gamma/airlock/control)
 "bck" = (
 /obj/structure/window/framed/corsat/research,
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
-	icon_state = "pdoor0";
+/obj/structure/machinery/door/poddoor/almayer/open{
 	id = "OmegaControl";
 	name = "Observation Shutters";
-	opacity = 0;
 	use_power = 0
 	},
 /turf/open/floor/plating,
 /area/corsat/omega/control)
 "bcl" = (
 /obj/structure/window/framed/corsat/research,
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
-	icon_state = "pdoor0";
 	id = "OmegaControl";
 	name = "Observation Shutters";
-	opacity = 0;
 	use_power = 0
 	},
 /turf/open/floor/plating,
 /area/corsat/omega/control)
 "bcm" = (
 /obj/structure/window/framed/corsat,
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
-	icon_state = "pdoor0";
+/obj/structure/machinery/door/poddoor/almayer/open{
 	id = "SigmaControl";
 	name = "Observation Shutters";
-	opacity = 0;
 	use_power = 0
 	},
 /turf/open/floor/plating,
 /area/corsat/sigma/airlock/control)
 "bcn" = (
 /obj/structure/window/framed/corsat,
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
-	icon_state = "pdoor0";
 	id = "SigmaControl";
 	name = "Observation Shutters";
-	opacity = 0;
 	use_power = 0
 	},
 /turf/open/floor/plating,
 /area/corsat/sigma/airlock/control)
 "bco" = (
 /obj/structure/window/framed/corsat/security,
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
-	icon_state = "pdoor0";
 	id = "SigmaControl";
 	name = "Observation Shutters";
-	opacity = 0;
 	use_power = 0
 	},
 /turf/open/floor/plating,
 /area/corsat/sigma/airlock/control)
 "bcp" = (
 /obj/structure/window/framed/corsat/security,
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
-	icon_state = "pdoor0";
+/obj/structure/machinery/door/poddoor/almayer/open{
 	id = "ThetaControl";
 	name = "Observation Shutters";
-	opacity = 0;
 	use_power = 0
 	},
 /turf/open/floor/plating,
 /area/corsat/theta/airlock/control)
 "bcq" = (
 /obj/structure/window/framed/corsat,
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
-	icon_state = "pdoor0";
 	id = "ThetaControl";
 	name = "Observation Shutters";
-	opacity = 0;
 	use_power = 0
 	},
 /turf/open/floor/plating,
 /area/corsat/theta/airlock/control)
 "bcr" = (
 /obj/structure/window/framed/corsat,
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
-	icon_state = "pdoor0";
+/obj/structure/machinery/door/poddoor/almayer/open{
 	id = "ThetaControl";
 	name = "Observation Shutters";
-	opacity = 0;
 	use_power = 0
 	},
 /turf/open/floor/plating,
@@ -21441,13 +21225,10 @@
 /obj/structure/machinery/door/window/brigdoor/eastleft{
 	name = "Identification Desk"
 	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 4;
-	icon_state = "shutter0";
 	id = "SigmaHCargoC";
-	name = "Security Shutters";
-	opacity = 0
+	name = "Security Shutters"
 	},
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/corsat{
@@ -22070,12 +21851,9 @@
 /turf/open/gm/dirt,
 /area/corsat/theta/biodome)
 "bet" = (
-/obj/structure/machinery/door/poddoor/two_tile/four_tile/vertical/secure{
-	density = 0;
-	icon_state = "pdoor0";
+/obj/structure/machinery/door/poddoor/two_tile/four_tile/vertical/secure/open{
 	id = "delta_theta";
 	name = "Theta Emergency Access";
-	opacity = 0;
 	use_power = 0
 	},
 /obj/structure/blocker/forcefield/vehicles,
@@ -24337,12 +24115,9 @@
 	},
 /area/corsat/gamma/hangar/flightcontrol)
 "bkx" = (
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
-	icon_state = "pdoor0";
+/obj/structure/machinery/door/poddoor/almayer/open{
 	id = "GammaHangarH";
 	name = "Hangar Lockdown";
-	opacity = 0;
 	use_power = 0
 	},
 /turf/open/floor/corsat{
@@ -24354,12 +24129,9 @@
 /turf/open/floor/plating,
 /area/corsat/gamma/hangar/monorail)
 "bkA" = (
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
-	icon_state = "pdoor0";
+/obj/structure/machinery/door/poddoor/almayer/open{
 	id = "GammaHCargoN";
 	name = "Gamma Cargo Checkpoint";
-	opacity = 0;
 	use_power = 0
 	},
 /turf/open/floor/corsat{
@@ -24367,13 +24139,10 @@
 	},
 /area/corsat/gamma/hangar/cargo)
 "bkB" = (
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
-	icon_state = "pdoor0";
 	id = "GammaHCargoW";
 	name = "Gamma Cargo Checkpoint";
-	opacity = 0;
 	use_power = 0
 	},
 /turf/open/floor/corsat{
@@ -24408,12 +24177,9 @@
 /area/corsat/sigma/airlock/south/id)
 "bkE" = (
 /obj/structure/window/framed/corsat/security,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
-	icon_state = "shutter0";
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "SigmaIDSC";
-	name = "Security Shutters";
-	opacity = 0
+	name = "Security Shutters"
 	},
 /turf/open/floor/plating,
 /area/corsat/sigma/airlock/south/id)
@@ -24428,12 +24194,9 @@
 	name = "Identification Desk";
 	req_access = list(104)
 	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
-	icon_state = "shutter0";
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "SigmaIDSC";
-	name = "Security Shutters";
-	opacity = 0
+	name = "Security Shutters"
 	},
 /turf/open/floor/corsat{
 	icon_state = "plate"
@@ -24441,13 +24204,10 @@
 /area/corsat/sigma/airlock/south/id)
 "bkJ" = (
 /obj/structure/window/framed/corsat/security,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 4;
-	icon_state = "shutter0";
 	id = "SigmaSecC";
-	name = "Security Shutters";
-	opacity = 0
+	name = "Security Shutters"
 	},
 /turf/open/floor/plating,
 /area/corsat/sigma/south/security)
@@ -24471,13 +24231,10 @@
 /area/corsat/gamma/administration)
 "bkM" = (
 /obj/structure/window/framed/corsat/security,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 2;
-	icon_state = "shutter0";
 	id = "GammaHOS";
-	name = "Privacy Shutters";
-	opacity = 0
+	name = "Privacy Shutters"
 	},
 /turf/open/floor/plating,
 /area/corsat/gamma/security)
@@ -24487,13 +24244,10 @@
 	name = "Head of Security Office";
 	req_access = list(101)
 	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 2;
-	icon_state = "shutter0";
 	id = "GammaHOS";
-	name = "Privacy Shutters";
-	opacity = 0
+	name = "Privacy Shutters"
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat{
@@ -24501,12 +24255,9 @@
 	},
 /area/corsat/gamma/security)
 "bkO" = (
-/obj/structure/machinery/door/poddoor/two_tile/four_tile{
-	density = 0;
-	icon_state = "pdoor0";
+/obj/structure/machinery/door/poddoor/two_tile/four_tile/open{
 	id = "OmegaO";
-	name = "Omega Lockdown";
-	opacity = 0
+	name = "Omega Lockdown"
 	},
 /turf/open/floor/corsat{
 	icon_state = "marked"
@@ -24614,13 +24365,10 @@
 	},
 /area/corsat/gamma/engineering)
 "bkZ" = (
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
-	icon_state = "pdoor0";
 	id = "OmegaO";
 	name = "Omega Lockdown";
-	opacity = 0;
 	use_power = 0
 	},
 /turf/open/floor/corsat{
@@ -24784,13 +24532,10 @@
 	},
 /area/corsat/gamma/hangar)
 "blD" = (
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
-	icon_state = "pdoor0";
 	id = "GammaHangarH";
-	name = "Hangar Lockdown";
-	opacity = 0;
+	name = "Hangar Lockdown"
 	use_power = 0
 	},
 /turf/open/floor/corsat{
@@ -25048,12 +24793,9 @@
 	},
 /area/corsat/sigma/hangar/monorail)
 "bms" = (
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
-	icon_state = "pdoor0";
+/obj/structure/machinery/door/poddoor/almayer/open{
 	id = "SigmaHangarH";
 	name = "Hangar Lockdown";
-	opacity = 0;
 	use_power = 0
 	},
 /turf/open/floor/corsat{
@@ -25201,13 +24943,10 @@
 /turf/open/floor/plating,
 /area/corsat/gamma/hangar/arrivals)
 "bmV" = (
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
-	icon_state = "pdoor0";
 	id = "OmegaO";
 	name = "Omega Lockdown";
-	opacity = 0;
 	use_power = 0
 	},
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
@@ -26242,13 +25981,10 @@
 	},
 /area/corsat/gamma/administration)
 "bqr" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 2;
-	icon_state = "shutter0";
 	id = "GammaLab";
-	name = "Privacy Shutters";
-	opacity = 0
+	name = "Privacy Shutters"
 	},
 /turf/open/floor/wood,
 /area/corsat/gamma/biodome/complex)
@@ -29336,12 +29072,9 @@
 	name = "Identification Desk";
 	req_access = list(104)
 	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
-	icon_state = "shutter0";
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "SigmaIDSC";
-	name = "Security Shutters";
-	opacity = 0
+	name = "Security Shutters"
 	},
 /turf/open/floor/corsat{
 	icon_state = "lightplate"
@@ -30378,13 +30111,10 @@
 	},
 /area/corsat/omega/complex)
 "bBL" = (
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
-	icon_state = "pdoor0";
 	id = "OmegaO";
 	name = "Omega Lockdown";
-	opacity = 0;
 	use_power = 0
 	},
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
@@ -30712,12 +30442,9 @@
 /area/corsat/gamma/security)
 "bCI" = (
 /obj/structure/window/framed/corsat/security,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
-	icon_state = "shutter0";
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "GammaSecC";
-	name = "Security Shutters";
-	opacity = 0
+	name = "Security Shutters"
 	},
 /turf/open/floor/plating,
 /area/corsat/gamma/security)
@@ -30772,24 +30499,18 @@
 /area/corsat/theta/airlock/control)
 "bCS" = (
 /obj/structure/window/framed/corsat/security,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
-	icon_state = "shutter0";
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "OmegaAccessC";
-	name = "Security Shutters";
-	opacity = 0
+	name = "Security Shutters"
 	},
 /turf/open/floor/plating,
 /area/corsat/omega/checkpoint)
 "bCV" = (
 /obj/structure/window/framed/corsat/security,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 4;
-	icon_state = "shutter0";
 	id = "OmegaAccessC";
-	name = "Security Shutters";
-	opacity = 0
+	name = "Security Shutters"
 	},
 /turf/open/floor/plating,
 /area/corsat/omega/checkpoint)
@@ -30805,13 +30526,10 @@
 /area/corsat/sigma/airlock/south/id)
 "bCX" = (
 /obj/structure/window/framed/corsat/security,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 4;
-	icon_state = "shutter0";
 	id = "GammaSouthAirlockC";
-	name = "Security Shutters";
-	opacity = 0
+	name = "Security Shutters"
 	},
 /turf/open/floor/plating,
 /area/corsat/gamma/airlock/south)
@@ -30895,12 +30613,9 @@
 /area/corsat/omega/checkpoint)
 "bDp" = (
 /obj/structure/window/framed/corsat/security,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
-	icon_state = "shutter0";
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "OmegaSecC";
-	name = "Security Shutters";
-	opacity = 0
+	name = "Security Shutters"
 	},
 /turf/open/floor/plating,
 /area/corsat/omega/security)
@@ -30999,13 +30714,10 @@
 /area/corsat/sigma/south/security)
 "bDH" = (
 /obj/structure/window/framed/corsat/cell/security,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 4;
-	icon_state = "shutter0";
 	id = "SigmaHolding2";
-	name = "Holding Cell 2";
-	opacity = 0
+	name = "Holding Cell 2"
 	},
 /turf/open/floor/plating,
 /area/corsat/sigma/south/security)
@@ -31024,13 +30736,10 @@
 	name = "Holding Cell 2";
 	req_access = list(101)
 	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 4;
-	icon_state = "shutter0";
 	id = "SigmaHolding2";
-	name = "Holding Cell 2";
-	opacity = 0
+	name = "Holding Cell 2"
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -34124,13 +33833,10 @@
 	},
 /area/corsat/sigma/cargo)
 "bOj" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 2;
-	icon_state = "shutter0";
 	id = "Viro";
-	name = "Virology Lockdown";
-	opacity = 0
+	name = "Virology Lockdown"
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat{
@@ -35283,12 +34989,9 @@
 /area/corsat/omega/security)
 "bRg" = (
 /obj/structure/window/framed/corsat/security,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
-	icon_state = "shutter0";
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "OmegaWarden";
-	name = "Privacy Shutters";
-	opacity = 0
+	name = "Privacy Shutters"
 	},
 /turf/open/floor/plating,
 /area/corsat/omega/security)
@@ -35298,12 +35001,9 @@
 	name = "Warden's Office";
 	req_access = list(101)
 	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
-	icon_state = "shutter0";
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "OmegaWarden";
-	name = "Privacy Shutters";
-	opacity = 0
+	name = "Privacy Shutters"
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat{
@@ -35850,12 +35550,9 @@
 	},
 /area/corsat/sigma/biodome/testgrounds)
 "bTu" = (
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
-	icon_state = "pdoor0";
+/obj/structure/machinery/door/poddoor/almayer/open{
 	id = "SigmaGrounds";
-	name = "Testing Grounds";
-	opacity = 0
+	name = "Testing Grounds"
 	},
 /turf/open/floor/plating{
 	dir = 1;
@@ -35887,13 +35584,10 @@
 	},
 /area/corsat/sigma/biodome/testgrounds)
 "bTx" = (
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
-	icon_state = "pdoor0";
 	id = "SigmaGrounds";
-	name = "Testing Grounds";
-	opacity = 0
+	name = "Testing Grounds"
 	},
 /turf/open/floor/plating{
 	dir = 8;
@@ -35901,13 +35595,10 @@
 	},
 /area/corsat/sigma/biodome/testgrounds)
 "bTy" = (
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
-	icon_state = "pdoor0";
 	id = "SigmaGrounds";
-	name = "Testing Grounds";
-	opacity = 0
+	name = "Testing Grounds"
 	},
 /turf/open/floor/plating{
 	dir = 4;
@@ -35963,12 +35654,9 @@
 	},
 /area/corsat/sigma/biodome/testgrounds)
 "bTC" = (
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
-	icon_state = "pdoor0";
+/obj/structure/machinery/door/poddoor/almayer/open{
 	id = "SigmaGrounds";
-	name = "Testing Grounds";
-	opacity = 0
+	name = "Testing Grounds"
 	},
 /turf/open/floor/plating{
 	icon_state = "warnplate"
@@ -37859,13 +37547,10 @@
 	name = "Toxins Lab";
 	req_one_access = list(103)
 	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 2;
-	icon_state = "shutter0";
 	id = "Toxins";
-	name = "Toxins Lockdown";
-	opacity = 0
+	name = "Toxins Lockdown"
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat{
@@ -38071,12 +37756,9 @@
 	},
 /area/corsat/sigma/airlock/control)
 "caM" = (
-/obj/structure/machinery/door/poddoor/two_tile/four_tile/vertical{
-	density = 0;
-	icon_state = "pdoor0";
+/obj/structure/machinery/door/poddoor/two_tile/four_tile/vertical/open{
 	id = "SigmaWestE";
-	name = "Sigma West Airlock";
-	opacity = 0
+	name = "Sigma West Airlock"
 	},
 /turf/open/floor/corsat{
 	icon_state = "marked"
@@ -38814,13 +38496,10 @@
 /obj/structure/machinery/door/window/brigdoor/eastleft{
 	name = "Identification Desk"
 	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 4;
-	icon_state = "shutter0";
 	id = "SigmaHangarC-N";
-	name = "Security Shutters";
-	opacity = 0
+	name = "Security Shutters"
 	},
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/corsat{
@@ -43367,12 +43046,9 @@
 	},
 /area/corsat/sigma/southeast/datalab)
 "fQC" = (
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
-	icon_state = "pdoor0";
+/obj/structure/machinery/door/poddoor/almayer/open{
 	id = "GammaHangarH";
 	name = "Hangar Lockdown";
-	opacity = 0;
 	use_power = 0
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -44003,13 +43679,10 @@
 /area/corsat/gamma/sigmaremote)
 "gkU" = (
 /obj/structure/window/framed/corsat/security,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 4;
-	icon_state = "shutter0";
 	id = "GammaSouthAirlockC";
-	name = "Security Shutters";
-	opacity = 0
+	name = "Security Shutters"
 	},
 /turf/open/floor/plating,
 /area/corsat/gamma/airlock/south/id)
@@ -45595,12 +45268,9 @@
 	},
 /area/corsat/omega/security)
 "hlM" = (
-/obj/structure/machinery/door/poddoor/two_tile/four_tile/vertical{
-	density = 0;
-	icon_state = "pdoor0";
+/obj/structure/machinery/door/poddoor/two_tile/four_tile/vertical/open{
 	id = "SigmaWestW";
-	name = "Sigma West Airlock";
-	opacity = 0
+	name = "Sigma West Airlock"
 	},
 /turf/open/floor/corsat{
 	icon_state = "marked"
@@ -46252,13 +45922,10 @@
 /area/corsat/gamma/sigmaremote)
 "hFh" = (
 /obj/structure/window/framed/corsat/security,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 4;
-	icon_state = "shutter0";
 	id = "OmegaSecC";
-	name = "Security Shutters";
-	opacity = 0
+	name = "Security Shutters"
 	},
 /turf/open/floor/plating,
 /area/corsat/omega/security)
@@ -46804,12 +46471,9 @@
 	},
 /area/corsat/omega/maint)
 "hVF" = (
-/obj/structure/machinery/door/poddoor/two_tile/four_tile/vertical{
-	density = 0;
-	icon_state = "pdoor0";
+/obj/structure/machinery/door/poddoor/two_tile/four_tile/vertical/open{
 	id = "ThetaWestW";
-	name = "Theta West Airlock";
-	opacity = 0
+	name = "Theta West Airlock"
 	},
 /turf/open/floor/corsat{
 	icon_state = "marked"
@@ -51306,12 +50970,9 @@
 	},
 /area/corsat/sigma/cargo)
 "lrQ" = (
-/obj/structure/machinery/door/poddoor/two_tile/four_tile{
-	density = 0;
-	icon_state = "pdoor0";
+/obj/structure/machinery/door/poddoor/two_tile/four_tile/open{
 	id = "GammaSouthS";
-	name = "Gamma South Airlock";
-	opacity = 0
+	name = "Gamma South Airlock"
 	},
 /turf/open/floor/corsat{
 	icon_state = "marked"
@@ -51384,13 +51045,10 @@
 	name = "Administration Office";
 	req_access = list()
 	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 4;
-	icon_state = "shutter0";
 	id = "OmegaOffice";
-	name = "Privacy Shutters";
-	opacity = 0
+	name = "Privacy Shutters"
 	},
 /turf/open/floor/corsat{
 	icon_state = "officesquares"
@@ -52769,13 +52427,10 @@
 /turf/open/gm/dirt,
 /area/corsat/theta/biodome)
 "mrr" = (
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
-	icon_state = "pdoor0";
 	id = "GammaHCargoW";
 	name = "Gamma Cargo Checkpoint";
-	opacity = 0;
 	use_power = 0
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -53219,12 +52874,9 @@
 	},
 /area/corsat/gamma/biodome/virology)
 "mGU" = (
-/obj/structure/machinery/door/poddoor/two_tile/four_tile{
-	density = 0;
-	icon_state = "pdoor0";
+/obj/structure/machinery/door/poddoor/two_tile/four_tile/open{
 	id = "ThetaNorthD";
-	name = "Theta Dome Airlock";
-	opacity = 0
+	name = "Theta Dome Airlock"
 	},
 /obj/structure/machinery/door/poddoor/two_tile/four_tile/secure{
 	id = "map_lockdown";
@@ -54196,13 +53848,10 @@
 /obj/structure/machinery/door/window/brigdoor/eastleft{
 	name = "Identification Desk"
 	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 4;
-	icon_state = "shutter0";
 	id = "GammaSouthID";
-	name = "Security Shutters";
-	opacity = 0
+	name = "Security Shutters"
 	},
 /turf/open/floor/corsat{
 	icon_state = "plate"
@@ -55291,13 +54940,10 @@
 /obj/structure/machinery/door/window/brigdoor/eastleft{
 	name = "Identification Desk"
 	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 4;
-	icon_state = "shutter0";
 	id = "SigmaHangarC-S";
-	name = "Security Shutters";
-	opacity = 0
+	name = "Security Shutters"
 	},
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/corsat{
@@ -55668,12 +55314,9 @@
 /turf/open/mars,
 /area/corsat/sigma/biodome)
 "oqs" = (
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
-	icon_state = "pdoor0";
+/obj/structure/machinery/door/poddoor/almayer/open{
 	id = "GammaHangarH";
 	name = "Hangar Lockdown";
-	opacity = 0;
 	use_power = 0
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -55865,12 +55508,9 @@
 	},
 /area/corsat/theta/airlock/control)
 "ozp" = (
-/obj/structure/machinery/door/poddoor/two_tile/four_tile{
-	density = 0;
-	icon_state = "pdoor0";
+/obj/structure/machinery/door/poddoor/two_tile/four_tile/open{
 	id = "GammaSouthN";
-	name = "Gamma South Airlock";
-	opacity = 0
+	name = "Gamma South Airlock"
 	},
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/floor/corsat{
@@ -56036,12 +55676,9 @@
 	},
 /area/corsat/gamma/rnr/arcade)
 "oGf" = (
-/obj/structure/machinery/door/poddoor/two_tile/four_tile/vertical{
-	density = 0;
-	icon_state = "pdoor0";
+/obj/structure/machinery/door/poddoor/two_tile/four_tile/vertical/open{
 	id = "ThetaWestE";
-	name = "Theta West Airlock";
-	opacity = 0
+	name = "Theta West Airlock"
 	},
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/floor/corsat{
@@ -57215,12 +56852,9 @@
 	},
 /area/corsat/omega/hangar/security)
 "pzH" = (
-/obj/structure/machinery/door/poddoor/two_tile/four_tile/vertical{
-	density = 0;
-	icon_state = "pdoor0";
+/obj/structure/machinery/door/poddoor/two_tile/four_tile/vertical/open{
 	id = "SigmaWestD";
-	name = "Sigma Dome Airlock";
-	opacity = 0
+	name = "Sigma Dome Airlock"
 	},
 /turf/open/floor/corsat{
 	icon_state = "marked"
@@ -57482,13 +57116,10 @@
 /area/corsat/gamma/biodome/toxins)
 "pLO" = (
 /obj/structure/window/framed/corsat/security,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 4;
-	icon_state = "shutter0";
 	id = "SigmaHangarC-S";
-	name = "Security Shutters";
-	opacity = 0
+	name = "Security Shutters"
 	},
 /turf/open/floor/plating,
 /area/corsat/sigma/hangar/security)
@@ -57613,12 +57244,9 @@
 	},
 /area/corsat/sigma/south)
 "pSb" = (
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
-	icon_state = "pdoor0";
+/obj/structure/machinery/door/poddoor/almayer/open{
 	id = "SigmaHangarH";
 	name = "Hangar Lockdown";
-	opacity = 0;
 	use_power = 0
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -57985,13 +57613,10 @@
 /area/corsat/theta/biodome/hydrowest)
 "qbV" = (
 /obj/structure/window/framed/corsat/security,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 4;
-	icon_state = "shutter0";
 	id = "SigmaHangarC-E";
-	name = "Security Shutters";
-	opacity = 0
+	name = "Security Shutters"
 	},
 /turf/open/floor/plating,
 /area/corsat/sigma/hangar/security)
@@ -58085,13 +57710,10 @@
 /area/corsat/omega/biodome)
 "qfp" = (
 /obj/structure/window/framed/corsat,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 4;
-	icon_state = "shutter0";
 	id = "OmegaOffice";
-	name = "Privacy Shutters";
-	opacity = 0
+	name = "Privacy Shutters"
 	},
 /turf/open/floor/plating,
 /area/corsat/omega/offices)
@@ -58561,13 +58183,10 @@
 	},
 /area/corsat/gamma/residential/west)
 "qvD" = (
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
-	icon_state = "pdoor0";
 	id = "SigmaHangarH";
 	name = "Hangar Lockdown";
-	opacity = 0;
 	use_power = 0
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -58884,13 +58503,10 @@
 	name = "Airlock Security";
 	req_access = list(101)
 	},
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
-	icon_state = "pdoor0";
 	id = "OmegaO";
 	name = "Omega Lockdown";
-	opacity = 0;
 	use_power = 0
 	},
 /turf/open/floor/corsat{
@@ -60906,12 +60522,9 @@
 /turf/open/auto_turf/snow/layer0,
 /area/corsat/gamma/biodome)
 "sdm" = (
-/obj/structure/machinery/door/poddoor/two_tile/four_tile/vertical{
-	density = 0;
-	icon_state = "pdoor0";
+/obj/structure/machinery/door/poddoor/two_tile/four_tile/vertical/open{
 	id = "GammaWestD";
-	name = "Gamma Dome Airlock";
-	opacity = 0
+	name = "Gamma Dome Airlock"
 	},
 /obj/structure/machinery/door/poddoor/two_tile/four_tile/vertical/secure{
 	id = "map_lockdown";
@@ -61528,13 +61141,10 @@
 	},
 /area/corsat/sigma/hangar/arrivals)
 "sxO" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 4;
-	icon_state = "shutter0";
 	id = "OmegaOffice";
-	name = "Privacy Shutters";
-	opacity = 0
+	name = "Privacy Shutters"
 	},
 /turf/open/floor/corsat{
 	icon_state = "officesquares"
@@ -61614,13 +61224,10 @@
 /area/corsat/gamma/residential/west)
 "sCv" = (
 /obj/structure/window/framed/corsat/security,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 4;
-	icon_state = "shutter0";
 	id = "GammaSouthID";
-	name = "Security Shutters";
-	opacity = 0
+	name = "Security Shutters"
 	},
 /turf/open/floor/plating,
 /area/corsat/gamma/airlock/south/id)
@@ -63384,12 +62991,9 @@
 	name = "Administration";
 	req_access = list(106)
 	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
-	icon_state = "shutter0";
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "GammaAdmin";
-	name = "Security Shutters";
-	opacity = 0
+	name = "Security Shutters"
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat{
@@ -64913,13 +64517,10 @@
 /area/corsat/gamma/hangar/monorail)
 "uSk" = (
 /obj/structure/window/framed/corsat/security,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 4;
-	icon_state = "shutter0";
 	id = "SigmaHangarC-N";
-	name = "Security Shutters";
-	opacity = 0
+	name = "Security Shutters"
 	},
 /turf/open/floor/plating,
 /area/corsat/sigma/hangar/security)
@@ -65849,12 +65450,9 @@
 /area/corsat/sigma/south/robotics)
 "vzA" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
-	icon_state = "pdoor0";
+/obj/structure/machinery/door/poddoor/almayer/open{
 	id = "SigmaHCargoN";
 	name = "Hangar Lockdown";
-	opacity = 0;
 	use_power = 0
 	},
 /turf/open/floor/corsat{
@@ -67093,13 +66691,10 @@
 	},
 /area/corsat/gamma/kitchen)
 "wuK" = (
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
-	icon_state = "pdoor0";
 	id = "GammaHangarH";
-	name = "Hangar Lockdown";
-	opacity = 0;
+	name = "Hangar Lockdown"
 	use_power = 0
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -67202,12 +66797,9 @@
 /area/corsat/gamma/biodome)
 "wxF" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
-	icon_state = "pdoor0";
+/obj/structure/machinery/door/poddoor/almayer/open{
 	id = "SigmaHCargoS";
 	name = "Hangar Lockdown";
-	opacity = 0;
 	use_power = 0
 	},
 /turf/open/floor/corsat{
@@ -67561,13 +67153,10 @@
 	},
 /area/corsat/sigma/south/engineering)
 "wJA" = (
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
-	icon_state = "pdoor0";
 	id = "SigmaHangarH";
 	name = "Hangar Lockdown";
-	opacity = 0;
 	use_power = 0
 	},
 /turf/open/floor/corsat{
@@ -67870,12 +67459,9 @@
 	name = "Identification Desk";
 	req_access = list(104)
 	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
-	icon_state = "shutter0";
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "SigmaEastID";
-	name = "Security Shutters";
-	opacity = 0
+	name = "Security Shutters"
 	},
 /turf/open/floor/corsat{
 	icon_state = "plate"
@@ -68637,12 +68223,9 @@
 /area/corsat/gamma/administration)
 "xDC" = (
 /obj/structure/window/framed/corsat/security,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
-	icon_state = "shutter0";
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "SigmaEastID";
-	name = "Security Shutters";
-	opacity = 0
+	name = "Security Shutters"
 	},
 /turf/open/floor/plating,
 /area/corsat/sigma/airlock/east/id)
@@ -68721,12 +68304,9 @@
 	},
 /area/corsat/omega/complex)
 "xHd" = (
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
-	icon_state = "pdoor0";
+/obj/structure/machinery/door/poddoor/almayer/open{
 	id = "GammaHCargoN";
 	name = "Gamma Cargo Checkpoint";
-	opacity = 0;
 	use_power = 0
 	},
 /obj/structure/pipes/standard/simple/hidden/green,

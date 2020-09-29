@@ -35,12 +35,10 @@
 	dir = 4;
 	layer = 2.4
 	},
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
 	id = "viro";
-	name = "Virology Lockdown";
-	opacity = 0
+	name = "Virology Lockdown"
 	},
 /turf/open/floor{
 	tag = "icon-asteroidfloor (NORTH)";
@@ -284,12 +282,10 @@
 	dir = 4;
 	layer = 2.4
 	},
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
 	id = "viro";
-	name = "Virology Lockdown";
-	opacity = 0
+	name = "Virology Lockdown"
 	},
 /turf/open/floor{
 	tag = "icon-asteroidfloor (NORTH)";
@@ -605,12 +601,10 @@
 	},
 /area/bigredv2/outside/nw)
 "zC" = (
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
 	id = "viro";
-	name = "Virology Lockdown";
-	opacity = 0
+	name = "Virology Lockdown"
 	},
 /turf/open/floor{
 	tag = "icon-asteroidwarning (NORTH)";
@@ -633,12 +627,10 @@
 	},
 /area/bigredv2/outside/virology)
 "Kk" = (
-/obj/structure/machinery/door/poddoor/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
 	id = "viro";
-	name = "Virology Lockdown";
-	opacity = 0
+	name = "Virology Lockdown"
 	},
 /turf/open/floor{
 	tag = "icon-asteroidwarning";

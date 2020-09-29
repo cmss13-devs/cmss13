@@ -1110,11 +1110,7 @@
 	},
 /area/lv624/lazarus/crashed_ship)
 "cK" = (
-/obj/structure/machinery/door/poddoor/two_tile/four_tile{
-	density = 0;
-	icon_state = "pdoor0";
-	opacity = 0
-	},
+/obj/structure/machinery/door/poddoor/two_tile/four_tile/open,
 /turf/open/floor/plating{
 	dir = 2;
 	icon_state = "warnplate"

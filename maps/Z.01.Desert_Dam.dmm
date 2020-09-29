@@ -4117,12 +4117,9 @@
 	icon_state = "S";
 	tag = "icon-S"
 	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
-	icon_state = "shutter0";
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "hangar_dam_2";
-	name = "\improper Hangar Shutters";
-	opacity = 0
+	name = "\improper Hangar Shutters"
 	},
 /obj/structure/cargo_container{
 	icon_state = "gorg 0,0";
@@ -4260,12 +4257,9 @@
 	icon_state = "S";
 	tag = "icon-S"
 	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
-	icon_state = "shutter0";
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "hangar_dam_2";
-	name = "\improper Hangar Shutters";
-	opacity = 0
+	name = "\improper Hangar Shutters"
 	},
 /obj/structure/cargo_container{
 	icon_state = "gorg 2,0";
@@ -5439,12 +5433,9 @@
 /area/desert_dam/interior/lab_northeast/east_lab_security_armory)
 "apC" = (
 /obj/structure/shuttle/window,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
-	icon_state = "shutter0";
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "vehicle1door";
-	name = "Shutters";
-	opacity = 0
+	name = "Shutters"
 	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
@@ -6303,11 +6294,8 @@
 /turf/open/floor/prison,
 /area/desert_dam/interior/lab_northeast/east_lab_workshop)
 "arM" = (
-/obj/structure/machinery/door/poddoor/shutters{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/opened{
 	dir = 2;
-	icon_state = "shutter0";
-	opacity = 0;
 	unacidable = 1
 	},
 /turf/open/shuttle/dropship{
@@ -6381,11 +6369,7 @@
 	dir = 1;
 	icon_state = "door_closed"
 	},
-/obj/structure/machinery/door/poddoor/shutters{
-	density = 0;
-	icon_state = "shutter0";
-	opacity = 0
-	},
+/obj/structure/machinery/door/poddoor/shutters/opened,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
@@ -7510,11 +7494,8 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_lobby)
 "auU" = (
-/obj/structure/machinery/door/poddoor/shutters{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/opened{
 	dir = 2;
-	icon_state = "shutter0";
-	opacity = 0;
 	unacidable = 1
 	},
 /turf/open/shuttle/dropship{
@@ -12875,11 +12856,7 @@
 	dir = 1;
 	icon_state = "door_closed"
 	},
-/obj/structure/machinery/door/poddoor/shutters{
-	density = 0;
-	icon_state = "shutter0";
-	opacity = 0
-	},
+/obj/structure/machinery/door/poddoor/shutters/opened,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
@@ -14619,12 +14596,9 @@
 /area/desert_dam/building/warehouse/loading)
 "aOX" = (
 /obj/structure/shuttle/window,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
-	icon_state = "shutter0";
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "vehicle1door";
-	name = "Shutters";
-	opacity = 0
+	name = "Shutters"
 	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
@@ -36101,12 +36075,9 @@
 	icon_state = "S";
 	tag = "icon-S"
 	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
-	icon_state = "shutter0";
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "hangar_dam_2";
-	name = "\improper Hangar Shutters";
-	opacity = 0
+	name = "\improper Hangar Shutters"
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -64865,12 +64836,9 @@
 	icon_state = "S";
 	tag = "icon-S"
 	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
-	icon_state = "shutter0";
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "hangar_dam_2";
-	name = "\improper Hangar Shutters";
-	opacity = 0
+	name = "\improper Hangar Shutters"
 	},
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison{

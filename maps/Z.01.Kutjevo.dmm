@@ -189,9 +189,7 @@
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/power)
 "aH" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0
-	},
+/obj/structure/machinery/door/poddoor/shutters/almayer/open,
 /turf/open/floor/almayer/research/containment/floor2,
 /area/kutjevo/interior/complex/med/locks)
 "aI" = (
@@ -364,10 +362,9 @@
 /obj/structure/sign/safety/hazard{
 	pixel_x = -32
 	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "kutjevo_hydlock_west";
-	name = "\improper West Hydroponics Shutters"
+	name = "s"
 	},
 /turf/open/floor/almayer/research/containment/floor2,
 /area/kutjevo/interior/complex/botany)
@@ -413,10 +410,9 @@
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/colony_central)
 "by" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "kutjevo_medlock_west";
-	name = "\improper West Medical Shutters"
+	name = "s"
 	},
 /turf/open/floor/almayer/research/containment/floor2,
 /area/kutjevo/interior/complex/med)
@@ -619,10 +615,9 @@
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/complex_border/med_rec)
 "ci" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "kutjevo_medlock_ne";
-	name = "\improper North East Medical Shutters"
+	name = "s"
 	},
 /turf/open/floor/almayer/research/containment/floor2,
 /area/kutjevo/interior/complex/med/triage)
@@ -1297,10 +1292,9 @@
 	},
 /area/kutjevo/interior/oob/dev_room)
 "er" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "kutjevo_medlock_pan";
-	name = "\improper Medical North East Shutters"
+	name = "s"
 	},
 /turf/open/floor/almayer/research/containment/floor2,
 /area/kutjevo/interior/complex/med/auto_doc)
@@ -2345,10 +2339,9 @@
 /obj/effect/decal/cleanable/blood/xeno{
 	icon_state = "xgib1"
 	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "kutjevo_hydlock_west";
-	name = "\improper West Hydroponics Shutters"
+	name = "s"
 	},
 /turf/open/floor/almayer/research/containment/floor2,
 /area/kutjevo/interior/complex/botany)
@@ -2519,9 +2512,7 @@
 /turf/open/floor/kutjevo/colors/green/tile,
 /area/kutjevo/interior/complex/botany)
 "iv" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0
-	},
+/obj/structure/machinery/door/poddoor/shutters/almayer/open,
 /obj/structure/barricade/wooden,
 /turf/open/floor/almayer/research/containment/floor2,
 /area/kutjevo/interior/complex/med/locks)
@@ -2848,8 +2839,7 @@
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/complex/botany)
 "jC" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 4
 	},
 /turf/open/floor/plating/kutjevo,
@@ -3340,10 +3330,9 @@
 /area/kutjevo/exterior/scrubland)
 "lk" = (
 /obj/effect/decal/cleanable/blood/oil,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "kutjevo_hydlock_west";
-	name = "\improper West Hydroponics Shutters"
+	name = "s"
 	},
 /turf/open/floor/almayer/research/containment/floor2,
 /area/kutjevo/interior/complex/botany)
@@ -3473,10 +3462,9 @@
 /area/kutjevo/interior/colony_South/power2)
 "lL" = (
 /obj/structure/window/framed/kutjevo,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "kutjevo_medlock_ne";
-	name = "\improper North East Medical Shutters"
+	name = "s"
 	},
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/complex/med/triage)
@@ -3658,8 +3646,7 @@
 /turf/open/floor/kutjevo/grey/plate,
 /area/kutjevo/interior/construction)
 "mr" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 4;
 	name = "\improper Kutjevo Dam Storm Shutters"
 	},
@@ -4716,10 +4703,9 @@
 /obj/effect/decal/cleanable/blood/xeno{
 	icon_state = "xgib1"
 	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "kutjevo_hydlock_east";
-	name = "\improper East Hydroponics Shutters"
+	name = "s"
 	},
 /turf/open/floor/almayer/research/containment/floor2,
 /area/kutjevo/interior/complex/botany)
@@ -6161,8 +6147,7 @@
 /turf/open/floor/kutjevo/grey,
 /area/kutjevo/interior/complex/botany)
 "uE" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 8;
 	id = "kutjevo_medlock_we";
 	name = "\improper Medical West Shutters"
@@ -6170,10 +6155,9 @@
 /turf/open/floor/almayer/research/containment/floor1,
 /area/kutjevo/interior/complex/med/auto_doc)
 "uF" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "kutjevo_medlock_mid";
-	name = "\improper North Medical Shutters"
+	name = "s"
 	},
 /turf/open/floor/almayer/research/containment/floor2,
 /area/kutjevo/interior/complex/med)
@@ -6788,10 +6772,9 @@
 /obj/effect/decal/cleanable/blood/xeno{
 	icon_state = "xgib2"
 	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "kutjevo_hydlock_west";
-	name = "\improper West Hydroponics Shutters"
+	name = "s"
 	},
 /turf/open/floor/almayer/research/containment/floor2,
 /area/kutjevo/interior/complex/botany)
@@ -8076,10 +8059,9 @@
 /obj/structure/sign/safety/hazard{
 	pixel_x = -32
 	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "kutjevo_hydlock_east";
-	name = "\improper East Hydroponics Shutters"
+	name = "s"
 	},
 /turf/open/floor/almayer/research/containment/floor2,
 /area/kutjevo/interior/complex/botany)
@@ -8334,10 +8316,9 @@
 /area/kutjevo/exterior/lz_dunes)
 "BX" = (
 /obj/effect/decal/cleanable/blood/oil,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "kutjevo_hydlock_east";
-	name = "\improper East Hydroponics Shutters"
+	name = "s"
 	},
 /turf/open/floor/almayer/research/containment/floor2,
 /area/kutjevo/interior/complex/botany)
@@ -8418,10 +8399,9 @@
 /obj/structure/sign/safety/medical{
 	pixel_x = -32
 	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "kutjevo_medlock_pan";
-	name = "\improper Medical North East Shutters"
+	name = "s"
 	},
 /turf/open/floor/almayer/research/containment/floor2,
 /area/kutjevo/interior/complex/med/auto_doc)
@@ -9903,9 +9883,7 @@
 	},
 /area/kutjevo/interior/construction)
 "Hh" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0
-	},
+/obj/structure/machinery/door/poddoor/shutters/almayer/open,
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/colony_South/power2)
 "Hj" = (
@@ -10209,8 +10187,7 @@
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/lz_dunes)
 "Io" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 4;
 	name = "\improper Kutjevo Dam Storm Shutters"
 	},
@@ -10972,8 +10949,7 @@
 	},
 /area/kutjevo/interior/complex/med)
 "KY" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	name = "\improper Kutjevo Dam Storm Shutters"
 	},
 /turf/open/floor/almayer/research/containment/floor2,
@@ -11087,10 +11063,9 @@
 /obj/structure/sign/safety/medical{
 	pixel_x = 32
 	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "kutjevo_medlock_pan";
-	name = "\improper Medical North East Shutters"
+	name = "s"
 	},
 /turf/open/floor/almayer/research/containment/floor2,
 /area/kutjevo/interior/complex/med/auto_doc)
@@ -11774,10 +11749,9 @@
 /turf/open/floor/kutjevo/colors/orange,
 /area/kutjevo/interior/complex/med/locks)
 "Ns" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "kutjevo_medlock_south2";
-	name = "\improper South Secondary Medical Shutters"
+	name = "s"
 	},
 /turf/open/floor/almayer/research/containment/floor2,
 /area/kutjevo/interior/complex/med/auto_doc)
@@ -12391,10 +12365,9 @@
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4
 	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "kutjevo_medlock_pan";
-	name = "\improper Medical North East Shutters"
+	name = "s"
 	},
 /turf/open/floor/almayer/research/containment/floor2,
 /area/kutjevo/interior/complex/med/auto_doc)
@@ -13205,10 +13178,9 @@
 /obj/structure/sign/safety/hazard{
 	pixel_x = 32
 	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "kutjevo_hydlock_west";
-	name = "\improper West Hydroponics Shutters"
+	name = "s"
 	},
 /turf/open/floor/almayer/research/containment/floor2,
 /area/kutjevo/interior/complex/botany)
@@ -14090,10 +14062,9 @@
 /obj/structure/sign/safety/hazard{
 	pixel_x = 32
 	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "kutjevo_hydlock_east";
-	name = "\improper East Hydroponics Shutters"
+	name = "s"
 	},
 /turf/open/floor/almayer/research/containment/floor2,
 /area/kutjevo/interior/complex/botany)
@@ -15257,10 +15228,9 @@
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/colony_north)
 "YZ" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "kutjevo_hydlock_east";
-	name = "\improper East Hydroponics Shutters"
+	name = "s"
 	},
 /turf/open/floor/almayer/research/containment/floor2,
 /area/kutjevo/interior/complex/botany)
@@ -15514,10 +15484,9 @@
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/runoff_dunes)
 "ZV" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	density = 0;
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "kutjevo_hydlock_west";
-	name = "\improper West Hydroponics Shutters"
+	name = "s"
 	},
 /turf/open/floor/almayer/research/containment/floor2,
 /area/kutjevo/interior/complex/botany)

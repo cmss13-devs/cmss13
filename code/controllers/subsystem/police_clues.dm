@@ -7,10 +7,10 @@ SUBSYSTEM_DEF(clues)
 	var/list/currentrun = list()
 	var/list/prints_list = list()
 
-/datum/subsystem/clues/stat_entry()
+/datum/controller/subsystem/clues/stat_entry()
 	..("P:[prints_list.len]")
 
-/datum/subsystem/clues/fire(resumed = FALSE)
+/datum/controller/subsystem/clues/fire(resumed = FALSE)
 	if(!resumed && length(prints_list))
 		currentrun = prints_list.Copy()
 
@@ -18,7 +18,7 @@ SUBSYSTEM_DEF(clues)
 		var/obj/effect/decal/prints/P = currentrun[currentrun.len]
 		currentrun.len--
 
-		if(!P || P.disposed)
+		if(!P || QDELETED(P))
 			continue
 
 		if(world.timeofday - P.created_time > 10 MINUTE)

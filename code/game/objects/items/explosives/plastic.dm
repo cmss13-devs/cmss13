@@ -105,7 +105,7 @@
 		user.visible_message(SPAN_WARNING("[user] plants [name] on [target]!"),
 		SPAN_WARNING("You plant [name] on [target]! Timer counting down from [timer]."))
 		active = TRUE
-		add_timer(CALLBACK(src, .proc/prime), timer * 10)
+		addtimer(CALLBACK(src, .proc/prime), timer * 10)
 
 /obj/item/explosive/plastic/attackby(obj/item/W, mob/user)
 	if(ismultitool(W))
@@ -199,7 +199,7 @@
 			pixel_y = 24
 
 /obj/item/explosive/plastic/prime(var/force = FALSE)
-	if(!force && (!plant_target || plant_target.disposed || !active))
+	if(!force && (!plant_target || QDELETED(plant_target) || !active))
 		return
 	var/turf/target_turf
 	if(!force)
@@ -225,10 +225,10 @@
 		else if(issignaler(detonator.a_right) || issignaler(detonator.a_left))
 			overlays += new /obj/effect/overlay/danger
 			layer = INTERIOR_DOOR_LAYER
-			add_timer(CALLBACK(src, .proc/delayed_prime, target_turf), SECONDS_3)
+			addtimer(CALLBACK(src, .proc/delayed_prime, target_turf), SECONDS_3)
 		else
 			. = ..()
-		if(!disposed)
+		if(!QDELETED(src))
 			overlays.Cut()
 			cell_explosion(target_turf, 60, 30, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, initial(name), source_mob)
 			qdel(src)

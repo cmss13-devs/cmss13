@@ -30,7 +30,7 @@
 
 #define QDEL_NULL(x) if(x) { qdel(x) ; x = null }
 
-#define QDEL_IN(item, time) add_timer(CALLBACK(GLOBAL_PROC, .proc/qdel, item), time, TIMER_STOPPABLE)
+#define QDEL_IN(item, time) addtimer(CALLBACK(GLOBAL_PROC, .proc/qdel, item), time, TIMER_STOPPABLE)
 
 #define DROP_NULL(x) if(x) { x.dropInto(loc); x = null; }
 
@@ -83,9 +83,6 @@
 #define REVERSE_DIR(dir) ((dir & (NORTH|SOUTH) ? ~dir & (NORTH|SOUTH) : 0) | (dir & (EAST|WEST) ? ~dir & (EAST|WEST) : 0))
 
 #define GENERATE_DEBUG_ID "[rand(0, 9)][rand(0, 9)][rand(0, 9)][rand(0, 9)][pick(alphabet_lowercase)][pick(alphabet_lowercase)][pick(alphabet_lowercase)][pick(alphabet_lowercase)]"
-
-#define QDELED(X) (X.qdeled)
-#define QDELETED(X) (isnull(X) || X.disposed)
 
 #define RECT new /datum/shape/rectangle
 #define QTREE new /datum/quadtree

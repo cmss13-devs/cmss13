@@ -57,7 +57,7 @@
 /obj/structure/interior_exit/vehicle/New()
 	..()
 	// See interior wall code for an explanation
-	add_timer(CALLBACK(src, .proc/update_icon), 10)
+	addtimer(CALLBACK(src, .proc/update_icon), 10)
 
 /obj/structure/interior_exit/vehicle/update_icon()
 	switch(dir)

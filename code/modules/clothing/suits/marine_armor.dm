@@ -24,7 +24,7 @@
 #define CHARLIE		3
 #define DELTA		4
 #define ECHO		5
-#define NONE 		6
+#define NOSQUAD 	6
 
 var/list/armormarkings = list()
 var/list/armormarkings_sql = list()
@@ -678,7 +678,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	for(var/X in actions)
 		var/datum/action/A = X
 		A.update_button_icon()
-	add_timer(CALLBACK(src, .proc/end_fire_shield, H), SECONDS_6)
+	addtimer(CALLBACK(src, .proc/end_fire_shield, H), SECONDS_6)
 
 /obj/item/clothing/suit/storage/marine/M35/proc/end_fire_shield(var/mob/living/carbon/human/user)
 	if(!istype(user))
@@ -688,7 +688,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	unregisterListener(user, EVENT_PRE_FIRE_BURNED_CHECK, "fireshield_\ref[src]")
 	fire_shield_on = FALSE
 	
-	add_timer(CALLBACK(src, .proc/enable_fire_shield, user), FIRE_SHIELD_CD)
+	addtimer(CALLBACK(src, .proc/enable_fire_shield, user), FIRE_SHIELD_CD)
 
 /obj/item/clothing/suit/storage/marine/M35/proc/enable_fire_shield(var/mob/living/carbon/human/user)
 	if(!istype(user))

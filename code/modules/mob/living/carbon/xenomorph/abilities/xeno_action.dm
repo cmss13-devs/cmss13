@@ -152,7 +152,7 @@
 		cooldown_to_apply = xeno_cooldown
 
 	// Add a unique timer
-	cooldown_timer_id = add_timer(CALLBACK(src, .proc/on_cooldown_end), cooldown_to_apply, TIMER_UNIQUE | TIMER_STOPPABLE)
+	cooldown_timer_id = addtimer(CALLBACK(src, .proc/on_cooldown_end), cooldown_to_apply, TIMER_UNIQUE | TIMER_STOPPABLE)
 	current_cooldown_duration = cooldown_to_apply
 	current_cooldown_start_time = world.time
 	
@@ -168,7 +168,7 @@
 
 	// Note: no check to see if we're already on CD. we just flat override whatever's there
 
-	cooldown_timer_id = add_timer(CALLBACK(src, .proc/on_cooldown_end), cooldown_duration, TIMER_OVERRIDE_UNIQUE | TIMER_STOPPABLE)
+	cooldown_timer_id = addtimer(CALLBACK(src, .proc/on_cooldown_end), cooldown_duration, TIMER_OVERRIDE|TIMER_UNIQUE | TIMER_STOPPABLE)
 	current_cooldown_duration = cooldown_duration
 	current_cooldown_start_time = world.time
 	return
@@ -201,7 +201,7 @@
 		log_admin("Xeno action [src] tried to force end cooldown while already off cooldown.")
 		return
 
-	delete_timer(cooldown_timer_id)
+	deltimer(cooldown_timer_id)
 	cooldown_timer_id = TIMER_ID_NULL
 	current_cooldown_start_time = 0
 	current_cooldown_duration = 0
@@ -218,7 +218,7 @@
 		return
 	
 	// Unconditionally delete the first timer
-	delete_timer(cooldown_timer_id)
+	deltimer(cooldown_timer_id)
 	cooldown_timer_id = TIMER_ID_NULL
 
 	// Are we done, or do we need to add a new timer
@@ -230,7 +230,7 @@
 	else 
 		// Looks like timers are back on the menu, boys
 		var/new_cooldown_duration = current_cooldown_duration - amount - (world.time - current_cooldown_start_time)
-		cooldown_timer_id = add_timer(CALLBACK(src, .proc/on_cooldown_end), new_cooldown_duration, TIMER_UNIQUE | TIMER_STOPPABLE)
+		cooldown_timer_id = addtimer(CALLBACK(src, .proc/on_cooldown_end), new_cooldown_duration, TIMER_UNIQUE | TIMER_STOPPABLE)
 		current_cooldown_duration = new_cooldown_duration
 		current_cooldown_start_time = world.time
 	

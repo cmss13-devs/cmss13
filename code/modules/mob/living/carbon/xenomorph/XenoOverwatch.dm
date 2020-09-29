@@ -44,7 +44,7 @@
 
 	var/mob/living/carbon/Xenomorph/selected_xeno = input(X, "Target", "Watch which xenomorph?") as null|anything in possible_xenos
 
-	if (!selected_xeno || selected_xeno.disposed || selected_xeno == X.observed_xeno || selected_xeno.stat == DEAD || selected_xeno.z == ADMIN_Z_LEVEL || !X.check_state(1))
+	if (!selected_xeno || QDELETED(selected_xeno) || selected_xeno == X.observed_xeno || selected_xeno.stat == DEAD || selected_xeno.z == ADMIN_Z_LEVEL || !X.check_state(1))
 		X.overwatch(X.observed_xeno, TRUE) // Cancel OW
 	else if (!isQueen) // Regular Xeno OW vs Queen
 		X.overwatch(selected_xeno)
@@ -54,7 +54,7 @@
 		if (oldXeno)
 			oldXeno.hud_set_queen_overwatch()
 	
-	if (selected_xeno && !selected_xeno.disposed)
+	if (selected_xeno && !QDELETED(selected_xeno))
 		selected_xeno.hud_set_queen_overwatch()
 
 // Generic Xeno overwatch proc, very simple for now. If you want it to cancel the overwatch, hand in TRUE in the second var.
@@ -100,7 +100,7 @@
 // Called from xeno Life()
 // Makes sure that Xeno overwatch is reset when the overwatched Xeno dies.
 /mob/living/carbon/Xenomorph/proc/handle_overwatch()
-	if (observed_xeno && (observed_xeno == DEAD || observed_xeno.disposed))
+	if (observed_xeno && (observed_xeno == DEAD || QDELETED(observed_xeno)))
 		overwatch(null, TRUE)
 
 // Sets the Xeno's view to its observed target if that target is set. Otherwise, resets the xeno's view to itself.
@@ -141,7 +141,7 @@
 			xenoSrc.overwatch(xenoTarget, FALSE, /datum/event_handler/xeno_overwatch_onmovement/queen)
 			if (oldXeno)
 				oldXeno.hud_set_queen_overwatch()
-			if (xenoTarget && !xenoTarget.disposed)
+			if (xenoTarget && !QDELETED(xenoTarget))
 				xenoTarget.hud_set_queen_overwatch()
 
 	..()
@@ -166,7 +166,7 @@
 	if (!isMoving)
 		return
 
-	if (X && !X.disposed)
+	if (X && !QDELETED(X))
 		X.overwatch(X.observed_xeno, TRUE) // Goodbye overwatch
 											// Even if we hand in null here, it doesn't matter
 		X.event_movement.remove_handler(src)   // Clean ourselves up 
@@ -184,7 +184,7 @@
 
 	// This is mostly exactly the same but with some special code for dealing with the queen hud
 	var/mob/living/carbon/Xenomorph/oldXeno = X.observed_xeno
-	if (X && !X.disposed)
+	if (X && !QDELETED(X))
 		X.overwatch(X.observed_xeno, TRUE)
 	if (oldXeno)
 		oldXeno.hud_set_queen_overwatch()

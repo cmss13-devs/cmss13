@@ -5,13 +5,13 @@ SUBSYSTEM_DEF(defcon)
 	priority = SS_PRIORITY_DEFCON
 	flags     = SS_NO_TICK_CHECK | SS_DISABLE_FOR_TESTING
 
-/datum/subsystem/defcon/Initialize(start_timeofday)
+/datum/controller/subsystem/defcon/Initialize(start_timeofday)
 	//text2file("DEFCON initialization started","data/defcon_log.txt")
 	if(!defcon_controller)
 		defcon_controller = new /datum/controller/defcon()
 	return ..()
 
-/datum/subsystem/defcon/fire()
+/datum/controller/subsystem/defcon/fire()
 
 	// If our lists aren't initialized AND we can't initialize them, return
 	if (!defcon_controller.lists_initialized && !defcon_controller.initialize_level_triggers_by_map())

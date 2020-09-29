@@ -36,8 +36,11 @@
 
 	if (alert(src, "Are you sure you want to delete:\n[O]\nat ([O.x], [O.y], [O.z])?", "Confirmation", "Yes", "No") == "Yes")
 		message_staff("[key_name_admin(usr)] deleted [O] at ([O.x],[O.y],[O.z])")
-		 
-		qdel(O)
+		if(isturf(O))
+			var/turf/T = O
+			T.ScrapeAway()
+		else
+			qdel(O)
 
 /client/proc/ticklag()
 	set category = "Debug"

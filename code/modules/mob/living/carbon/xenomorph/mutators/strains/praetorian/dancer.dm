@@ -49,13 +49,13 @@
 
 	if (!slash_evasion_buffed)
 		slash_evasion_buffed = TRUE
-		slash_evasion_timer = add_timer(CALLBACK(src, .proc/remove_evasion_buff), evasion_buff_ttl, TIMER_STOPPABLE | TIMER_UNIQUE)
+		slash_evasion_timer = addtimer(CALLBACK(src, .proc/remove_evasion_buff), evasion_buff_ttl, TIMER_STOPPABLE | TIMER_UNIQUE)
 		X.evasion_modifier += evasion_buff_amount
 		X.recalculate_evasion()
 		to_chat(X, SPAN_XENODANGER("You feel your slash make you more evasive!"))
 
 	else 
-		slash_evasion_timer = add_timer(CALLBACK(src, .proc/remove_evasion_buff), evasion_buff_ttl, TIMER_STOPPABLE | TIMER_OVERRIDE_UNIQUE)
+		slash_evasion_timer = addtimer(CALLBACK(src, .proc/remove_evasion_buff), evasion_buff_ttl, TIMER_STOPPABLE | TIMER_OVERRIDE|TIMER_UNIQUE)
 
 	if (LIST_FLAGS_COMPARE(PASS_MOB_THRU, X.flags_pass_temp))
 		X.flags_pass_temp = LIST_FLAGS_REMOVE(X.flags_pass_temp, PASS_MOB_THRU)

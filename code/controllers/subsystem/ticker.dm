@@ -4,12 +4,11 @@ SUBSYSTEM_DEF(ticker)
 	wait          = 2 SECONDS
 	flags         = SS_KEEP_TIMING
 	priority      = SS_PRIORITY_TICKER
-	display_order = SS_DISPLAY_TICKER
 
 	var/lastTickerTimeDuration
 	var/lastTickerTime
 
-/datum/subsystem/ticker/Initialize(timeofday)
+/datum/controller/subsystem/ticker/Initialize(timeofday)
 	lastTickerTime = world.timeofday
 
 	if (!ticker)
@@ -22,7 +21,7 @@ SUBSYSTEM_DEF(ticker)
 	return ..()
 
 
-/datum/subsystem/ticker/fire(resumed = FALSE)
+/datum/controller/subsystem/ticker/fire(resumed = FALSE)
 	var/currentTime = world.timeofday
 
 	if(currentTime < lastTickerTime) // check for midnight rollover
@@ -35,5 +34,5 @@ SUBSYSTEM_DEF(ticker)
 	ticker.process()
 
 
-/datum/subsystem/ticker/proc/getLastTickerTimeDuration()
+/datum/controller/subsystem/ticker/proc/getLastTickerTimeDuration()
 	return lastTickerTimeDuration

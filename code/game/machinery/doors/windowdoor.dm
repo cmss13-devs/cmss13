@@ -15,7 +15,7 @@
 
 /obj/structure/machinery/door/window/New()
 	. = ..()
-	add_timer(CALLBACK(src, .proc/update_icon), 0)
+	addtimer(CALLBACK(src, .proc/update_icon), 0)
 	if (src.req_access && src.req_access.len)
 		src.icon_state = "[src.icon_state]"
 		src.base_state = src.icon_state

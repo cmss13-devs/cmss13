@@ -46,7 +46,7 @@
 		return ..()
 
 	var/mob/living/carbon/human/H = affected_atom
-	add_timer(CALLBACK(H, /mob/living/carbon/human.proc/update_xeno_hostile_hud), 3)
+	addtimer(CALLBACK(H, /mob/living/carbon/human.proc/update_xeno_hostile_hud), 3)
 
 	return ..()
 

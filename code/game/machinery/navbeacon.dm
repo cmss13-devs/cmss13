@@ -77,7 +77,7 @@
 
 		var/request = signal.data["findbeacon"]
 		if(request && ((request in codes) || request == "any" || request == location))
-			add_timer(CALLBACK(src, .proc/post_signal), 1)
+			addtimer(CALLBACK(src, .proc/post_signal), 1)
 
 	// return a signal giving location and transponder codes
 

@@ -17,19 +17,19 @@ SUBSYSTEM_DEF(tracking)
 
 	var/list/currentrun = list()
 
-/datum/subsystem/tracking/Initialize(start_timeofday)
+/datum/controller/subsystem/tracking/Initialize(start_timeofday)
 	initialize_trackers()
 	return ..()
 
 
-/datum/subsystem/tracking/stat_entry()
+/datum/controller/subsystem/tracking/stat_entry()
 	var/mobs = 0
 	for(var/tracked_group in tracked_mobs)
 		mobs += length(tracked_mobs[tracked_group])
 	..("P:[mobs]")
 
 
-/datum/subsystem/tracking/fire(resumed = FALSE)
+/datum/controller/subsystem/tracking/fire(resumed = FALSE)
 	if(!resumed)
 		currentrun = copyListList(tracked_mobs)
 
@@ -49,7 +49,7 @@ SUBSYSTEM_DEF(tracking)
 				return
 		currentrun -= tracked_group
 
-/datum/subsystem/tracking/proc/start_tracking(var/tracked_group, var/mob/living/carbon/mob)
+/datum/controller/subsystem/tracking/proc/start_tracking(var/tracked_group, var/mob/living/carbon/mob)
 	if(!mob)
 		return FALSE
 	if(mobs_in_processing[mob] == tracked_group)
@@ -61,7 +61,7 @@ SUBSYSTEM_DEF(tracking)
 	if(tracked_mobs[tracked_group])
 		tracked_mobs[tracked_group] += mob
 
-/datum/subsystem/tracking/proc/stop_tracking(var/tracked_group, var/mob/living/carbon/mob)
+/datum/controller/subsystem/tracking/proc/stop_tracking(var/tracked_group, var/mob/living/carbon/mob)
 	if(!mobs_in_processing[mob])
 		return TRUE // already removed
 	var/tracking_id = mobs_in_processing[mob]
@@ -73,16 +73,16 @@ SUBSYSTEM_DEF(tracking)
 	if(tracked_mobs[tracking_id])
 		tracked_mobs[tracking_id] -= mob
 
-/datum/subsystem/tracking/proc/set_leader(var/tracked_group, var/mob/living/carbon/mob)
+/datum/controller/subsystem/tracking/proc/set_leader(var/tracked_group, var/mob/living/carbon/mob)
 	if(leaders[tracked_group])
 		delete_leader(tracked_group)
 
 	leaders[tracked_group] = mob
 
-/datum/subsystem/tracking/proc/delete_leader(var/tracked_group)
+/datum/controller/subsystem/tracking/proc/delete_leader(var/tracked_group)
 	leaders.Remove(tracked_group)
 
-/datum/subsystem/tracking/proc/setup_trackers(mob/mob, var/tracked_group)
+/datum/controller/subsystem/tracking/proc/setup_trackers(mob/mob, var/tracked_group)
 	if(!tracked_group)
 		tracked_group = "tracked_[tracked_mobs.len]"
 
@@ -91,7 +91,7 @@ SUBSYSTEM_DEF(tracking)
 	return tracked_group
 
 
-/datum/subsystem/tracking/proc/initialize_trackers()
+/datum/controller/subsystem/tracking/proc/initialize_trackers()
 	setup_trackers(null, "marine_sl")
 	for(var/datum/hive_status/hive in hive_datum)
 		setup_trackers(null, "hive_[hive.hivenumber]")

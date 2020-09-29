@@ -53,7 +53,7 @@
 		return
 
 	playsound(src, 'sound/effects/metal_creaking.ogg', 25, 1)
-	if(do_after(user, 60, INTERRUPT_ALL, BUSY_ICON_GENERIC) && !disposed && holed_wall && !user.lying && istype(holed_wall))
+	if(do_after(user, 60, INTERRUPT_ALL, BUSY_ICON_GENERIC) && !QDELETED(src) && holed_wall && !user.lying && istype(holed_wall))
 		holed_wall.take_damage(rand(2000,3500))
 		user.emote("roar")
 

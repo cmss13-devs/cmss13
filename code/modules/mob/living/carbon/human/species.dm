@@ -550,7 +550,7 @@
 
 /datum/species/zombie/post_species_loss(mob/living/carbon/human/H)
 	if(H in to_revive)
-		delete_timer(to_revive[H])
+		deltimer(to_revive[H])
 		to_revive -= H
 	
 	var/datum/mob_hud/Hu = huds[MOB_HUD_MEDICAL_OBSERVER]
@@ -573,11 +573,11 @@
 
 /datum/species/zombie/proc/prepare_to_revive(var/mob/living/carbon/human/H, var/time)
 	to_revive.Add(H)
-	to_revive[H] = add_timer(CALLBACK(src, .proc/revive_from_death, H), time, TIMER_STOPPABLE | TIMER_OVERRIDE_UNIQUE)
+	to_revive[H] = addtimer(CALLBACK(src, .proc/revive_from_death, H), time, TIMER_STOPPABLE | TIMER_OVERRIDE|TIMER_UNIQUE)
 
 /datum/species/zombie/proc/remove_from_revive(var/mob/living/carbon/human/H)
 	if(H in to_revive)
-		delete_timer(to_revive[H])
+		deltimer(to_revive[H])
 
 /datum/species/zombie/proc/revive_from_death(var/mob/living/carbon/human/H)
 	if(H && H.loc && H.stat == DEAD)
@@ -588,7 +588,7 @@
 		H.visible_message(SPAN_WARNING("[H] rises from the ground!"))
 		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(H), WEAR_FEET, TRUE)
 
-		add_timer(CALLBACK(H, /mob/.proc/remove_jittery), SECONDS_3)
+		addtimer(CALLBACK(H, /mob/.proc/remove_jittery), SECONDS_3)
 
 /datum/species/yautja
 	name = "Yautja"

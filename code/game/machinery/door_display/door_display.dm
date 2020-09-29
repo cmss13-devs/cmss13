@@ -23,7 +23,7 @@
 
 /obj/structure/machinery/door_display/New()
 	..()
-	add_timer(CALLBACK(src, .proc/get_targets))
+	addtimer(CALLBACK(src, .proc/get_targets))
 
 /obj/structure/machinery/door_display/proc/get_targets()
 	for(var/obj/structure/machinery/door/D in machines)

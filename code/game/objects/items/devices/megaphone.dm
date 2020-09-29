@@ -47,4 +47,4 @@
 		user.langchat_long_speech(message, vw, user.get_default_language())
 
 		spamcheck = 1
-		add_timer(VARSET_CALLBACK(src, spamcheck, 0), 2 SECONDS)
+		addtimer(VARSET_CALLBACK(src, spamcheck, 0), 2 SECONDS)

@@ -401,7 +401,7 @@
 	if(anim)
 		anim(H.loc, H,'icons/mob/mob.dmi', null, "uncloak", null, H.dir)
 
-	add_timer(CALLBACK(src, .proc/allow_shooting, H), 5)
+	addtimer(CALLBACK(src, .proc/allow_shooting, H), 5)
 
 /obj/item/storage/backpack/marine/satchel/scout_cloak/proc/allow_shooting(var/mob/living/carbon/human/H)
 	if(camo_active && !allow_gun_usage)

@@ -192,12 +192,12 @@ var/const/MAX_SAVE_SLOTS = 10
 	. = ..()
 
 	// Preferences should not be getting deleted because they are reffed in a list
-	var/client_qdeled = isnull(owner) || owner.disposed
+	var/client_qdeled = isnull(owner) || QDELETED(owner)
 	var/client_status = client_qdeled ? "client is null or disposed" : "client is OK"
 	var/client_mob_status
 	if (client_qdeled)
 		client_mob_status = "no client for mob"
-	else if (isnull(owner.mob) || owner.mob.disposed)
+	else if (isnull(owner.mob) || QDELETED(owner.mob))
 		client_mob_status = "client mob is null or disposed"
 	else
 		client_mob_status = "client mob is OK"

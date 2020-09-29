@@ -178,7 +178,7 @@
 
 	remove_hardpoint(old, user)
 
-	if(old.disposed)
+	if(QDELETED(old))
 		return
 
 	if(ispowerclamp(O))

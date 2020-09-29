@@ -48,7 +48,7 @@
 	if(operating == 1) //emag again
 		operating = 0
 	if(autoclose)
-		add_timer(CALLBACK(src, .proc/autoclose), 150)
+		addtimer(CALLBACK(src, .proc/autoclose), 150)
 	return 1
 
 /obj/structure/machinery/door/poddoor/shutters/close()
@@ -90,7 +90,7 @@
 
 		if(!(stat & BROKEN))
 			stat |= BROKEN
-			add_timer(CALLBACK(src, .proc/unbreak_doors), SECONDS_10)
+			addtimer(CALLBACK(src, .proc/unbreak_doors), SECONDS_10)
 	else
 		. = ..(M)
 	

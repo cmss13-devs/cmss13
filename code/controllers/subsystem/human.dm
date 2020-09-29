@@ -3,16 +3,15 @@ SUBSYSTEM_DEF(human)
 	wait          = 2 SECONDS
 	flags         = SS_NO_INIT | SS_KEEP_TIMING
 	priority      = SS_PRIORITY_HUMAN
-	display_order = SS_DISPLAY_HUMAN
 
 	var/list/currentrun = list()
 
 
-/datum/subsystem/human/stat_entry()
+/datum/controller/subsystem/human/stat_entry()
 	..("P:[processable_human_list.len]")
 
 
-/datum/subsystem/human/fire(resumed = FALSE)
+/datum/controller/subsystem/human/fire(resumed = FALSE)
 	if (!resumed)
 		currentrun = processable_human_list.Copy()
 
@@ -20,7 +19,7 @@ SUBSYSTEM_DEF(human)
 		var/mob/living/carbon/human/M = currentrun[currentrun.len]
 		currentrun.len--
 
-		if (!M || M.disposed)
+		if (!M || QDELETED(M))
 			continue
 
 		M.Life()

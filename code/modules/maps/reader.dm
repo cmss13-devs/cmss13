@@ -491,7 +491,7 @@ var/global/dmm_suite/preloader/_preloader = new
 
 /dmm_suite/Destroy()
 	..()
-	return GC_HINT_DELETE_NOW
+	return QDEL_HINT_HARDDEL_NOW
 
 //////////////////
 //Preloader datum

@@ -176,7 +176,7 @@
 
 
 /obj/item/tool/weldingtool/process()
-	if(disposed)
+	if(QDELETED(src))
 		processing_objects.Remove(src)
 		return
 	if(welding)

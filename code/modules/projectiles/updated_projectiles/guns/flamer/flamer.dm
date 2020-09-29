@@ -381,7 +381,7 @@
 		if(isXeno(M))
 			var/mob/living/carbon/Xenomorph/X = M
 			if(!X.caste)
-				CRASH("CASTE ERROR: flamer New() was called without a caste. (name: [X.name], disposed: [X.disposed], health: [X.health])")
+				CRASH("CASTE ERROR: flamer New() was called without a caste. (name: [X.name], disposed: [QDELETED(X)], health: [X.health])")
 			if(X.caste.fire_immune && !tied_reagent.fire_penetrating)
 				continue
 			if(X.burrow)

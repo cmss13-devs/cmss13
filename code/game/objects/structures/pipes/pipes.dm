@@ -78,9 +78,9 @@
 				break
 
 	if(!length(connected_to))
-		add_timer(CALLBACK(src, .proc/search_for_connections, recursion_check + 1), 1)
+		addtimer(CALLBACK(src, .proc/search_for_connections, recursion_check + 1), 1)
 	else
-		add_timer(CALLBACK(src, .proc/update_icon), 5)
+		addtimer(CALLBACK(src, .proc/update_icon), 5)
 
 /obj/structure/pipes/proc/add_connection(var/obj/structure/pipes/P)
 	addToListNoDupe(connected_to, P)

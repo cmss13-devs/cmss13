@@ -57,10 +57,10 @@
 	playsound(mainloc, 'sound/machines/twobeep.ogg', 50, 1)
 
 	delaying = TRUE
-	add_timer(CALLBACK(src, .proc/pulse, 0), delay*10)
+	addtimer(CALLBACK(src, .proc/pulse, 0), delay*10)
 
 	cooldown = 2
-	add_timer(CALLBACK(src, .proc/process_cooldown),10)
+	addtimer(CALLBACK(src, .proc/process_cooldown),10)
 	return
 
 

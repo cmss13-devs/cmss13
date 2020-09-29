@@ -23,3 +23,5 @@
 
 #define LEFT 1
 #define RIGHT 2
+
+#define CEILING(x, y) ( -round(-(x) / (y)) * (y) )

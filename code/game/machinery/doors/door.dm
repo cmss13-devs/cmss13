@@ -221,9 +221,9 @@
 	if(operating)	operating = 0
 
 	if(autoclose  && normalspeed && !forced)
-		add_timer(CALLBACK(src, .proc/autoclose), 150 + openspeed)
+		addtimer(CALLBACK(src, .proc/autoclose), 150 + openspeed)
 	if(autoclose && !normalspeed && !forced)
-		add_timer(CALLBACK(src, .proc/autoclose), 5)
+		addtimer(CALLBACK(src, .proc/autoclose), 5)
 
 	return 1
 

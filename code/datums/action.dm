@@ -81,7 +81,7 @@
 /datum/action/item_action/Destroy()
 	holder_item.actions -= src
 	holder_item = null
-	..()
+	return ..()
 
 /datum/action/item_action/action_activate()
 	if(target)

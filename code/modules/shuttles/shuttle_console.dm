@@ -281,7 +281,7 @@
 
 					if(almayer_orbital_cannon)
 						almayer_orbital_cannon.is_disabled = TRUE
-						add_timer(CALLBACK(almayer_orbital_cannon, .obj/structure/orbital_cannon/proc/enable), MINUTES_10, TIMER_UNIQUE)
+						addtimer(CALLBACK(almayer_orbital_cannon, .obj/structure/orbital_cannon/proc/enable), MINUTES_10, TIMER_UNIQUE)
 
 					if(almayer_aa_cannon)
 						almayer_aa_cannon.is_disabled = TRUE

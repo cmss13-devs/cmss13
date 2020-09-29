@@ -24,7 +24,3 @@
 	vision_flags = SEE_TURFS
 	flags_inventory = COVEREYES
 	flags_item = NODROP|DELONDROP
-
-/obj/item/clothing/glasses/meson/yautja/Destroy()
-	..()
-	return GC_HINT_RECYCLE

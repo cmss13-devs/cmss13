@@ -121,28 +121,28 @@
 
 	overlays_standing[X_SUIT_LAYER] = screech_image
 	apply_overlay(X_SUIT_LAYER)
-	add_timer(CALLBACK(src, .proc/remove_overlay, X_SUIT_LAYER), 30)
+	addtimer(CALLBACK(src, .proc/remove_overlay, X_SUIT_LAYER), 30)
 
 /mob/living/carbon/Xenomorph/proc/create_stomp()
 	remove_suit_layer()
 
 	overlays_standing[X_SUIT_LAYER] = image("icon"=get_icon_from_source("alien_overlay_64x64"), "icon_state" = "stomp") //Ehh, suit layer's not being used.
 	apply_overlay(X_SUIT_LAYER)
-	add_timer(CALLBACK(src, .proc/remove_overlay, X_SUIT_LAYER), 12)
+	addtimer(CALLBACK(src, .proc/remove_overlay, X_SUIT_LAYER), 12)
 
 /mob/living/carbon/Xenomorph/proc/create_empower()
 	remove_suit_layer()
 
 	overlays_standing[X_SUIT_LAYER] = image("icon"=get_icon_from_source("alien_overlay_64x64"), "icon_state" = "empower")
 	apply_overlay(X_SUIT_LAYER)
-	add_timer(CALLBACK(src, .proc/remove_overlay, X_SUIT_LAYER), 20)
+	addtimer(CALLBACK(src, .proc/remove_overlay, X_SUIT_LAYER), 20)
 
 /mob/living/carbon/Xenomorph/proc/create_shield(var/duration = 10)
 	remove_suit_layer()
 
 	overlays_standing[X_SUIT_LAYER] = image("icon"=get_icon_from_source("alien_overlay_64x64"), "icon_state" = "shield2")
 	apply_overlay(X_SUIT_LAYER)
-	add_timer(CALLBACK(src, .proc/remove_overlay, X_SUIT_LAYER), duration)
+	addtimer(CALLBACK(src, .proc/remove_overlay, X_SUIT_LAYER), duration)
 
 /mob/living/carbon/Xenomorph/proc/remove_suit_layer()
 	remove_overlay(X_SUIT_LAYER)
@@ -172,7 +172,7 @@
 	shield.color = rgb(87, 73, 144)
 	overlays_standing[X_HEAD_LAYER] = shield
 	apply_overlay(X_HEAD_LAYER)
-	add_timer(CALLBACK(src, .proc/remove_overlay, X_HEAD_LAYER), 20)
+	addtimer(CALLBACK(src, .proc/remove_overlay, X_HEAD_LAYER), 20)
 
 //Xeno Overlays Indexes//////////
 #undef X_HEAD_LAYER

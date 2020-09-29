@@ -8,11 +8,11 @@ SUBSYSTEM_DEF(effects)
 
 	var/list/currentrun = list()
 
-/datum/subsystem/effects/stat_entry()
+/datum/controller/subsystem/effects/stat_entry()
 	..("P:[active_effects.len]")
 
 
-/datum/subsystem/effects/fire(resumed = FALSE)
+/datum/controller/subsystem/effects/fire(resumed = FALSE)
 	if(!resumed)
 		currentrun = active_effects.Copy()
 
@@ -20,7 +20,7 @@ SUBSYSTEM_DEF(effects)
 		var/datum/effects/E = currentrun[currentrun.len]
 		currentrun.len--
 
-		if(!E || E.disposed)
+		if(!E || QDELETED(E))
 			continue
 
 		E.process()

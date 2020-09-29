@@ -98,14 +98,14 @@
 /datum/behavior_delegate/ravager_berserker/proc/rage_lock()
 	rage = max_rage
 	rage_lock_start_time = world.time
-	add_timer(CALLBACK(src, .proc/rage_lock_callback), rage_lock_duration)
+	addtimer(CALLBACK(src, .proc/rage_lock_callback), rage_lock_duration)
 
 /datum/behavior_delegate/ravager_berserker/proc/rage_lock_callback()
 	rage_lock_start_time = 0
 	rage_cooldown_start_time = world.time
 	decrement_rage(rage)
 	to_chat(bound_xeno, SPAN_XENOWARNING("Your adrenal glands spasm. You cannot gain any rage for [rage_cooldown_duration/10] seconds."))
-	add_timer(CALLBACK(src, .proc/rage_cooldown_callback), rage_cooldown_duration)
+	addtimer(CALLBACK(src, .proc/rage_cooldown_callback), rage_cooldown_duration)
 
 /datum/behavior_delegate/ravager_berserker/proc/rage_cooldown_callback()
 	rage_cooldown_start_time = 0

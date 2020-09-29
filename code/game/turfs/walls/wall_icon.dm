@@ -4,7 +4,7 @@
 
 /turf/closed/wall/update_icon()
 	..()
-	if(disposed)
+	if(QDELETED(src))
 		return
 	
 	if(!damage_overlays[1]) //list hasn't been populated

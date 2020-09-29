@@ -3,10 +3,11 @@
 SUBSYSTEM_DEF(inactivity)
 	name = "Inactivity"
 	wait = INACTIVITY_KICK
-	flags = SS_NO_INIT | SS_BACKGROUND | SS_FIRE_IN_LOBBY | SS_DISABLE_FOR_TESTING
+	flags = SS_NO_INIT | SS_BACKGROUND | SS_DISABLE_FOR_TESTING
 	priority = SS_PRIORITY_INACTIVITY
+	runlevels = RUNLEVELS_DEFAULT|RUNLEVEL_LOBBY
 
-/datum/subsystem/inactivity/fire(resumed = FALSE)
+/datum/controller/subsystem/inactivity/fire(resumed = FALSE)
 	if (config.kick_inactive)
 		for (var/client/C in clients)
 			if(C.admin_holder && C.admin_holder.rights & R_ADMIN) //Skip admins.

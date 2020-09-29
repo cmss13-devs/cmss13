@@ -81,7 +81,7 @@ var/global/list/faction_phoron_stored_list = list(
 	if(FACTION_MARINE == faction_group)
 		objectives_controller.add_admin_points(COLLECTOR_DEFCON_RATE)
 
-	if(RN.disposed)
+	if(QDELETED(RN))
 		break_down()
 
 /obj/structure/machinery/collector/attackby(var/obj/item/O, var/mob/user)

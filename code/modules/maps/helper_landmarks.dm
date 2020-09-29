@@ -10,7 +10,7 @@
 	var/movement_prob = 50	// a chance random unanchored item in the room will be moved randomly
 	var/movement_range = 3  // how far would items get thrown
 
-/obj/effect/landmark/carnage_mark/InitializeLate()
+/obj/effect/landmark/carnage_mark/LateInitialize()
 	var/area/A = get_area(src)
 	for(var/atom/movable/AM in A)
 		if(AM && !AM.anchored && AM.simulated && prob(movement_prob))

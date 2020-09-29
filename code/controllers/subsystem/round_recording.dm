@@ -1,13 +1,13 @@
 SUBSYSTEM_DEF(round_recording)
 	name     = "Round Recording"
-	wait     = SS_WAIT_ROUND_RECORDING
+	wait     = 5 SECONDS
 	priority = SS_PRIORITY_ROUND_RECORDING
 	flags    = SS_KEEP_TIMING
 
 	var/list/currentrun
 	var/datum/round_recorder/recorder
 
-/datum/subsystem/round_recording/Initialize()
+/datum/controller/subsystem/round_recording/Initialize()
 	recorder = new()
 	can_fire = FALSE
 	return ..()
@@ -39,10 +39,10 @@ SUBSYSTEM_DEF(round_recording)
 		pause()
 	..()*/
 
-/datum/subsystem/round_recording/stat_entry()
+/datum/controller/subsystem/round_recording/stat_entry()
 	..(recorder ? "SS#: [recorder.snapshots] T: [LAZYLEN(recorder.tracked_players)]" : "Disabled")
 
-/datum/subsystem/round_recording/fire(resumed = FALSE)
+/datum/controller/subsystem/round_recording/fire(resumed = FALSE)
 	can_fire = FALSE
 	return
 

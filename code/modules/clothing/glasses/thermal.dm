@@ -66,7 +66,3 @@
 	flags_inventory = COVEREYES
 	flags_item = NODROP|DELONDROP
 	toggleable = FALSE
-
-/obj/item/clothing/glasses/thermal/yautja/Destroy()
-	..()
-	return GC_HINT_RECYCLE

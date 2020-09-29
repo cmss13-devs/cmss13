@@ -162,8 +162,8 @@
 
 	round_time_lobby = world.time
 
-	add_timer(CALLBACK(src, .proc/ares_online), SECONDS_5)
-	add_timer(CALLBACK(src, .proc/map_announcement), SECONDS_20)
+	addtimer(CALLBACK(src, .proc/ares_online), SECONDS_5)
+	addtimer(CALLBACK(src, .proc/map_announcement), SECONDS_20)
 
 /datum/game_mode/colonialmarines/proc/ares_online()
 	var/name = "ARES Online"
@@ -230,7 +230,7 @@
 						sound_to(M, sound(get_sfx("queen"), wait = 0, volume = 50))
 						to_chat(M, SPAN_XENOANNOUNCE("The Queen Mother reaches into your mind from worlds away."))
 						to_chat(M, SPAN_XENOANNOUNCE("To my children and their Queen. I sense the large doors that trap us will open in 30 seconds."))
-				add_timer(CALLBACK(src, .proc/open_podlocks, "map_lockdown"), 300)
+				addtimer(CALLBACK(src, .proc/open_podlocks, "map_lockdown"), 300)
 
 			if(round_should_check_for_win)
 				check_win()

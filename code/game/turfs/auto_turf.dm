@@ -63,14 +63,14 @@
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if(prob(20) && bleed_layer)
 				var/new_bleed_layer = min(0, bleed_layer - 1)
-				add_timer(CALLBACK(src, .proc/changing_layer, new_bleed_layer), 1)
+				addtimer(CALLBACK(src, .proc/changing_layer, new_bleed_layer), 1)
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if(prob(60) && bleed_layer)
 				var/new_bleed_layer = max(bleed_layer - 2, 0)
-				add_timer(CALLBACK(src, .proc/changing_layer, new_bleed_layer), 1)
+				addtimer(CALLBACK(src, .proc/changing_layer, new_bleed_layer), 1)
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			if(bleed_layer)
-				add_timer(CALLBACK(src, .proc/changing_layer, 0), 1)
+				addtimer(CALLBACK(src, .proc/changing_layer, 0), 1)
 
 
 //Actual auto-turfs now

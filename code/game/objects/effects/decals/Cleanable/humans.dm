@@ -20,10 +20,12 @@
 /obj/effect/decal/cleanable/blood/Destroy()
 	for(var/datum/disease/D in viruses)
 		D.cure(0)
+	viruses = null
 	..()
-	return GC_HINT_IWILLGC
+	return QDEL_HINT_IWILLGC
 
-/obj/effect/decal/cleanable/blood/New(location, b_color)
+/obj/effect/decal/cleanable/blood/Initialize(mapload, location, b_color)
+	. = ..()
 	if(b_color)
 		basecolor = b_color
 	update_icon()
@@ -35,8 +37,7 @@
 					qdel(B)
 
 	if(drying_blood)
-		add_timer(CALLBACK(src, .proc/dry), DRYING_TIME * (amount+1))
-	..()
+		addtimer(CALLBACK(src, .proc/dry), DRYING_TIME * (amount+1))
 
 /obj/effect/decal/cleanable/blood/update_icon()
 	if(basecolor == "rainbow")

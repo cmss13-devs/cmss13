@@ -179,7 +179,7 @@
 		turf_list -= U
 		laser_burn(U)
 
-	if(!ammo_count && !disposed)
+	if(!ammo_count && !QDELETED(src))
 		qdel(src) //deleted after last laser beam is fired and impact the ground.
 
 

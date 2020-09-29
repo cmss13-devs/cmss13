@@ -4,8 +4,8 @@ HOW TO MAKE A CALLBACK:
 
 HOW TO MAKE A TIMER:
 	C being a callback datum as shown above, 
-	var/timerid = add_timer(C, time, timertype)
-	var/timerid = add_timer(CALLBACK(object|null, /proc/type/path|procstring, arg1, arg2, ... argn), time, timertype)
+	var/timerid = addtimer(C, time, timertype)
+	var/timerid = addtimer(CALLBACK(object|null, /proc/type/path|procstring, arg1, arg2, ... argn), time, timertype)
 
 PROC STRINGS ARE BAD, they can only be done for datum proc calls and they dont give compile errors.
 

@@ -314,10 +314,10 @@ var/global/list/resin_build_order_hivelord = list()
 	paths = typesof(/datum/equipment_preset)
 	gear_presets_list = list()
 	for(var/T in paths)
-		var/datum/equipment_preset/EP = new T
-		if (EP.flags == 0)
-			qdel(EP)
+		var/datum/equipment_preset/EP = T
+		if (!initial(EP.flags))
 			continue
+		EP = new T
 		gear_presets_list[EP.name] = EP
 	gear_presets_list = sortAssoc(gear_presets_list)
 

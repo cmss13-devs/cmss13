@@ -11,7 +11,7 @@
 
 /obj/structure/machinery/computer/demo_sim/Initialize()
 	. = ..()
-	add_timer(CALLBACK(src, .proc/post_Initialize), 20, TIMER_UNIQUE)
+	addtimer(CALLBACK(src, .proc/post_Initialize), 20, TIMER_UNIQUE)
 
 /obj/structure/machinery/computer/demo_sim/proc/post_Initialize()
 	for(var/obj/effect/landmark/L in landmarks_list)
@@ -115,7 +115,7 @@
 		if(O.warhead)
 			make_and_prime_explosive(O.warhead)
 			
-	add_timer(CALLBACK(src, .proc/stop_cooling), MINUTES_2, TIMER_UNIQUE)
+	addtimer(CALLBACK(src, .proc/stop_cooling), MINUTES_2, TIMER_UNIQUE)
 
 /obj/structure/machinery/computer/demo_sim/proc/make_and_prime_explosive(var/obj/item/explosive/O)
 	var/obj/item/explosive/E = new O.type(simulation.loc)

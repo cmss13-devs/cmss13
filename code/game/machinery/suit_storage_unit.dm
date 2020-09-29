@@ -217,7 +217,7 @@
 
 	sleep(150)
 
-	if(disposed)
+	if(QDELETED(src))
 		return
 	if(inserted_helmet)
 		inserted_helmet.clean_blood()

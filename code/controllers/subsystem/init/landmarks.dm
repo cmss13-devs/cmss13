@@ -7,7 +7,7 @@ SUBSYSTEM_DEF(landmark_init)
 	init_order = SS_INIT_LANDMARK
 	flags      = SS_NO_FIRE
 
-/datum/subsystem/landmark_init/Initialize()
+/datum/controller/subsystem/landmark_init/Initialize()
 	for(var/obj/effect/landmark/shuttle_loc/L in shuttle_landmarks)
 		L.initialize_marker()
 		L.link_loc()

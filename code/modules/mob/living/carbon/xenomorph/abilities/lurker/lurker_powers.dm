@@ -42,7 +42,7 @@
 			BD.on_invisibility()
 
 	// if we go off early, this also works fine.
-	invis_timer_id = add_timer(CALLBACK(src, .proc/invisibility_off), duration, TIMER_STOPPABLE)
+	invis_timer_id = addtimer(CALLBACK(src, .proc/invisibility_off), duration, TIMER_STOPPABLE)
 
 	// Only resets when invisibility ends
 	apply_cooldown_override(1000000000)
@@ -55,7 +55,7 @@
 	is_invisible = FALSE
 
 	if (invis_timer_id != TIMER_ID_NULL)
-		delete_timer(invis_timer_id)
+		deltimer(invis_timer_id)
 		invis_timer_id = TIMER_ID_NULL
 	
 	var/mob/living/carbon/Xenomorph/X = owner
@@ -99,7 +99,7 @@
 
 	to_chat(X, SPAN_XENOHIGHDANGER("Your next slash will deal increased damage!"))
 
-	add_timer(CALLBACK(src, .proc/unbuff_slash), buff_duration)
+	addtimer(CALLBACK(src, .proc/unbuff_slash), buff_duration)
 	X.next_move = world.time + 1 // Autoattack reset
 
 	apply_cooldown()

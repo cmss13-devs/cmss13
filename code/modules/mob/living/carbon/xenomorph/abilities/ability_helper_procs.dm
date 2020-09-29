@@ -84,7 +84,7 @@
 	if(!check_state())
 		return
 
-	if(!O || O.disposed) //Some logic.
+	if(!O || QDELETED(O)) //Some logic.
 		return
 
 	if(!check_plasma(plasma_cost))
@@ -219,14 +219,14 @@
 	if (!isMoving)
 		return
 
-	if (X && !X.disposed)
+	if (X && !QDELETED(X))
 		cancel_zoom()
 		return 0
 	else
 		qdel(src)
 
 /datum/event_handler/xeno_zoom_onmovement/proc/cancel_zoom()
-	if (!istype(X) || X.disposed || !X.is_zoomed)
+	if (!istype(X) || QDELETED(X) || !X.is_zoomed)
 		qdel(src)
 		return
 
@@ -254,7 +254,7 @@
 	if (!isMoving)
 		return
 
-	if (X && !X.disposed)
+	if (X && !QDELETED(X))
 		if (buffer > 0)
 			buffer--
 		else

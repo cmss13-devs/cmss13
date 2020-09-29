@@ -122,23 +122,31 @@
 	var/duplicate_notes_to_file = FALSE
 
 	var/limit_players = 0
+	
+	// TODO: port tg configs
+	var/disable_high_pop_mc_mode_amount = 60
+	var/base_mc_tick_rate = 1
+	var/high_pop_mc_mode_amount = 65
+	var/high_pop_mc_tick_rate = 1.1
+	var/resume_after_initializations
+	var/tick_limit_mc_init = 500
+	var/fps = 20
 
 /datum/configuration/New()
 	var/list/L = typesof(/datum/game_mode) - /datum/game_mode
 	for (var/T in L)
 		// I wish I didn't have to instance the game modes in order to look up
 		// their information, but it is the only way (at least that I know of).
-		var/datum/game_mode/M = new T()
+		var/datum/game_mode/M = T
 
-		if (M.config_tag)
-			if(!(M.config_tag in modes))		// ensure each mode is added only once
-				log_misc("Adding game mode [M.name] ([M.config_tag]) to configuration.")
-				src.modes += M.config_tag
-				src.mode_names[M.config_tag] = M.name
-				src.probabilities[M.config_tag] = M.probability
-				if (M.votable)
-					src.votable_modes += M.config_tag
-		qdel(M)
+		if (initial(M.config_tag))
+			if(!(initial(M.config_tag) in modes))		// ensure each mode is added only once
+				log_misc("Adding game mode [initial(M.name)] ([initial(M.config_tag)]) to configuration.")
+				src.modes += initial(M.config_tag)
+				src.mode_names[initial(M.config_tag)] = initial(M.name)
+				src.probabilities[initial(M.config_tag)] = initial(M.probability)
+				if (initial(M.votable))
+					src.votable_modes += initial(M.config_tag)
 	src.votable_modes += "secret"
 	load_combat_config()
 

@@ -2,14 +2,14 @@ SUBSYSTEM_DEF(ping)
 	name = "Ping"
 	priority = SS_PRIORITY_PING
 	wait = 3 SECONDS
-	flags = SS_NO_INIT | SS_FIRE_IN_LOBBY | SS_DISABLE_FOR_TESTING
-
+	flags = SS_NO_INIT | SS_DISABLE_FOR_TESTING
+	runlevels = RUNLEVELS_DEFAULT|RUNLEVEL_LOBBY
 	var/list/currentrun = list()
 
-/datum/subsystem/ping/stat_entry()
+/datum/controller/subsystem/ping/stat_entry()
 	..("P:[clients.len]")
 
-/datum/subsystem/ping/fire(resumed = 0)
+/datum/controller/subsystem/ping/fire(resumed = 0)
 	if (!resumed)
 		src.currentrun = clients.Copy()
 

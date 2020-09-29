@@ -6,8 +6,8 @@ var/global/list/cleanable_decal_cache = list()
 	var/dirt_type = DIRT_MISC//What kind of dirt is this
 	garbage = TRUE
 
-/obj/effect/decal/cleanable/New()
-	set waitfor = 0
+/obj/effect/decal/cleanable/Initialize(mapload, ...)
+	. = ..()
 	if (random_icon_states && length(src.random_icon_states) > 0)
 		src.icon_state = pick(src.random_icon_states)
 	var/turf/T = get_turf(src)
@@ -22,12 +22,11 @@ var/global/list/cleanable_decal_cache = list()
 		I.dir = dir 
 		I.color = color
 		if(T.dirt_overlays[dirt_type])
-			T.overlays -= T.dirt_overlays[dirt_type] 
-			qdel(T.dirt_overlays[dirt_type])
+			T.overlays -= T.dirt_overlays[dirt_type]
+			QDEL_NULL(T.dirt_overlays[dirt_type])
 		T.dirt_overlays[dirt_type] = I
 		T.overlays += T.dirt_overlays[dirt_type]
 
-	..()
 	QDEL_IN(src, 3 SECONDS)
 
 

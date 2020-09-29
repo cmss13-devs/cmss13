@@ -43,8 +43,8 @@
 
 /turf/closed/wall/New()
 	..()
-	add_timer(CALLBACK(src, .proc/update_connections, 1), 5)
-	add_timer(CALLBACK(src, .proc/update_icon, 1), 5.1)
+	addtimer(CALLBACK(src, .proc/update_connections, 1), 5)
+	addtimer(CALLBACK(src, .proc/update_icon, 1), 5.1)
 
 
 /turf/closed/wall/ChangeTurf(newtype)
@@ -175,7 +175,7 @@
 	else
 		make_girder(FALSE)
 
-	qdel(src)
+	ScrapeAway()
 
 /turf/closed/wall/ex_act(severity, explosion_direction, source, mob/source_mob)
 	if(hull)
@@ -184,7 +184,7 @@
 	var/exp_damage = severity*EXPLOSION_DAMAGE_MULTIPLIER_WALL
 
 	if ( damage + exp_damage > damage_cap*2 )
-		qdel(src)
+		dismantle_wall(FALSE, TRUE)
 		if(!istype(src, /turf/closed/wall/resin))
 			create_shrapnel(location, rand(2,5), explosion_direction, , /datum/ammo/bullet/shrapnel/light)
 	else
@@ -223,13 +223,13 @@
 
 	var/turf/closed/wall/W = src
 	while(W.thermite > 0)
-		if(!istype(src, /turf/closed/wall) || disposed)
+		if(!istype(src, /turf/closed/wall) || QDELETED(src))
 			break
 
 		thermite -= 1
 		take_damage(100, user)
 
-		if(!istype(src, /turf/closed/wall) || disposed)
+		if(!istype(src, /turf/closed/wall) || QDELETED(src))
 			break
 		
 		if(thermite > (damage_cap - damage)/100) // Thermite gains a speed buff when the amount is overkill
@@ -238,10 +238,10 @@
 		else
 			sleep(20)
 			
-		if(!istype(src, /turf/closed/wall) || disposed)
+		if(!istype(src, /turf/closed/wall) || QDELETED(src))
 			break
 
-	if(O || !O.disposed)
+	if(O || !QDELETED(O))
 		qdel(O)
 
 	if(W)

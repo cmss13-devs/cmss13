@@ -306,7 +306,7 @@
 
 			radio_connection.post_signal(src, signal, filter = RADIO_MAGNETS)
 
-			add_timer(CALLBACK(src, .proc/updateUsrDialog), 1)
+			addtimer(CALLBACK(src, .proc/updateUsrDialog), 1)
 
 		if(href_list["operation"])
 			switch(href_list["operation"])

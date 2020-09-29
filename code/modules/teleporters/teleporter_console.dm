@@ -41,7 +41,7 @@
     if(linked_teleporter) // Maybe should debug log this because it's indicative of bad logic, but I'll leave it out for the sake of (potential) spam
         return 1
 
-    var/datum/subsystem/teleporter/teleporterSS = teleporter_ss
+    var/datum/controller/subsystem/teleporter/teleporterSS = teleporter_ss
 
     if(teleporterSS)
 

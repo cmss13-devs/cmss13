@@ -82,7 +82,7 @@
 /obj/vehicle/multitile/proc/post_movement()
 	if(abs(momentum) < 1)
 		return
-	add_timer(CALLBACK(src, .proc/pre_movement), next_move - world.time)
+	addtimer(CALLBACK(src, .proc/pre_movement), next_move - world.time)
 
 // Attempts to execute the given movement input
 /obj/vehicle/multitile/proc/try_move(var/direction, var/rolling=FALSE, var/force=FALSE)

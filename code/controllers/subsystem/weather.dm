@@ -4,7 +4,6 @@ SUBSYSTEM_DEF(weather)
 	name          = "Weather"
 	wait          = 5 SECONDS
 	priority      = SS_PRIORITY_LIGHTING
-	display_order = SS_DISPLAY_LIGHTING
 	flags         = SS_NO_TICK_CHECK
 
 	// Tracking vars for controller state
@@ -31,7 +30,7 @@ SUBSYSTEM_DEF(weather)
 	// Holds necessary data for the current weather event
 	var/datum/weather_event/weather_event_instance
 
-/datum/subsystem/weather/Initialize(start_timeofday)
+/datum/controller/subsystem/weather/Initialize(start_timeofday)
 	// Set up our map delegate datum for supported maps
 	// The ONLY place where things should depend on map_tag
 	// in the weather subsystem
@@ -65,7 +64,7 @@ SUBSYSTEM_DEF(weather)
 
 	. = ..()
 
-/datum/subsystem/weather/stat_entry(var/msg)
+/datum/controller/subsystem/weather/stat_entry(var/msg)
 	if (is_weather_event && weather_event_instance.display_name)
 		..("P: Current event: [weather_event_instance.display_name]")
 	else if (is_weather_event)
@@ -73,7 +72,7 @@ SUBSYSTEM_DEF(weather)
 	else
 		..("P: No event")
 
-/datum/subsystem/weather/fire()
+/datum/controller/subsystem/weather/fire()
 	if (controller_state_lock)
 		return
 	
@@ -99,13 +98,13 @@ SUBSYSTEM_DEF(weather)
 		// Tell the map_holder we're starting
 		map_holder.weather_warning(weather_event_type)
 
-		add_timer(CALLBACK(src, .proc/start_weather_event), map_holder.warn_time)
+		addtimer(CALLBACK(src, .proc/start_weather_event), map_holder.warn_time)
 
 
 // Adjust our state to indicate that we're starting a new event
 // and tell all the mobs we care about to check back in to realize there's 
 // now weather.
-/datum/subsystem/weather/proc/start_weather_event()
+/datum/controller/subsystem/weather/proc/start_weather_event()
 	if (controller_state_lock)
 		return
 
@@ -137,7 +136,7 @@ SUBSYSTEM_DEF(weather)
 // Adjust our state to indicate that the weather event that WAS running is over
 // and tell all the mobs we care about to check back in to realize there's 
 // no more weather.
-/datum/subsystem/weather/proc/end_weather_event()
+/datum/controller/subsystem/weather/proc/end_weather_event()
 
 	if (controller_state_lock)
 		return
@@ -165,7 +164,7 @@ SUBSYSTEM_DEF(weather)
 
 
 // Enqueue areas
-/datum/subsystem/weather/proc/add_as_weather_area(var/area/A, var/list/weather_areas)
+/datum/controller/subsystem/weather/proc/add_as_weather_area(var/area/A, var/list/weather_areas)
 	if (istype(A, /area/space) || !A.weather_enabled)
 		return
 	
@@ -176,11 +175,11 @@ SUBSYSTEM_DEF(weather)
 // Check whether or not a given atom should be affected by weather.
 // Uses a switch statement on map_tag to hand the execution off to 
 // map-dependent logic.
-/datum/subsystem/weather/proc/weather_affects_check(var/atom/A)
+/datum/controller/subsystem/weather/proc/weather_affects_check(var/atom/A)
 	return map_holder.should_affect_atom(A)
 
 
-/datum/subsystem/weather/proc/update_mobs()
+/datum/controller/subsystem/weather/proc/update_mobs()
 	// Update weather for living mobs
 	for (var/mob/living/carbon/human/H in living_human_list)
 		H.update_weather()

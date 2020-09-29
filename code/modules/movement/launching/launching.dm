@@ -80,7 +80,7 @@
 	else if (!rebounding && rebounds)
 		var/oldloc = loc
 		var/launched_speed = cur_speed
-		add_timer(CALLBACK(src, .proc/rebound, oldloc, launched_speed), 0.5)
+		addtimer(CALLBACK(src, .proc/rebound, oldloc, launched_speed), 0.5)
 
 	if (!rebounding)
 		O.hitby(src)
@@ -89,7 +89,7 @@
     if (!rebounding && rebounds)
         var/oldloc = loc
         var/launched_speed = cur_speed
-        add_timer(CALLBACK(src, .proc/rebound, oldloc, launched_speed), 0.5)
+        addtimer(CALLBACK(src, .proc/rebound, oldloc, launched_speed), 0.5)
         
     if (!rebounding)
         T.hitby(src)
@@ -160,7 +160,7 @@
     for (var/turf/T in path)
         if (!src || !throwing || loc != last_loc || !isturf(src.loc))
             break
-        if (!LM || LM.disposed)
+        if (!LM || QDELETED(LM))
             early_exit = TRUE
             break
         if (LM.dist >= LM.range)

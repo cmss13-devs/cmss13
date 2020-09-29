@@ -485,7 +485,7 @@
 					break
 
 		working = 1
-		add_timer(VARSET_CALLBACK(src, working, FALSE), 10 SECONDS)
+		addtimer(VARSET_CALLBACK(src, working, FALSE), 10 SECONDS)
 
 	ex_act(severity)
 		return

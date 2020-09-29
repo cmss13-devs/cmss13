@@ -7,7 +7,7 @@ SUBSYSTEM_DEF(assets)
 	var/list/preload = list()
 	var/datum/asset_transport/transport = new()
 
-/datum/subsystem/assets/Initialize()
+/datum/controller/subsystem/assets/Initialize()
 	for(var/type in typesof(/datum/asset))
 		var/datum/asset/A = type
 		if(type != initial(A._abstract))

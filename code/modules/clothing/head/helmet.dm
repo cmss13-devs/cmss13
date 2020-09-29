@@ -1009,7 +1009,7 @@
 	overlays += /obj/effect/overlay/danger
 	playsound(loc, 'sound/weapons/armbomb.ogg', 25, 1, 6)
 
-	add_timer(CALLBACK(src, .proc/prime), det_time)
+	addtimer(CALLBACK(src, .proc/prime), det_time)
 
 /obj/item/clothing/head/helmet/marine/specialist/hefa/proc/prime()
 	INVOKE_ASYNC(src, .proc/boom)

@@ -178,7 +178,7 @@ ICE GRASS
 	overlays += image("icon"=src.icon,"icon_state"=overlay_type,"layer"=ABOVE_XENO_LAYER,"dir"=dir)
 
 /obj/structure/flora/fire_act()
-	if(!disposed)
+	if(!QDELETED(src))
 		if(fire_flag != FLORA_NO_BURN)
 			if(fire_flag != FLORA_BURN_NO_SPREAD)
 				spawn(rand(75,150))

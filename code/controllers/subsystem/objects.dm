@@ -2,18 +2,17 @@ var/list/processing_objects = list()
 
 SUBSYSTEM_DEF(obj)
 	name          = "Objects"
-	display_order = SS_DISPLAY_OBJECTS
 	priority      = SS_PRIORITY_OBJECTS
 	wait          = 2 SECONDS
 	flags = SS_NO_INIT
 
 	var/list/currentrun = list()
 
-/datum/subsystem/obj/stat_entry()
+/datum/controller/subsystem/obj/stat_entry()
 	..("P:[processing_objects.len]")
 
 
-/datum/subsystem/obj/fire(resumed = FALSE)
+/datum/controller/subsystem/obj/fire(resumed = FALSE)
 	if (!resumed)
 		currentrun = global.processing_objects.Copy()
 
@@ -21,7 +20,7 @@ SUBSYSTEM_DEF(obj)
 		var/atom/o = currentrun[currentrun.len]
 		currentrun.len--
 
-		if (!o || o.disposed)
+		if (!o || QDELETED(o))
 			continue
 
 		o.process()

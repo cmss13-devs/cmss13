@@ -191,7 +191,7 @@
 	//players -= usr
 
 	var/mob/living/M = input("Who do you wish to deal a card?") as null|anything in players
-	if(!usr || disposed || !Adjacent(usr) || !M || M.disposed) return
+	if(!usr || QDELETED(src) || !Adjacent(usr) || !M || QDELETED(M)) return
 
 	if(!cards.len)
 		return
@@ -317,10 +317,10 @@
 		to_discard[P.name] = P
 	var/discarding = input("Which card do you wish to put down?") as null|anything in to_discard
 
-	if(!discarding || !usr || disposed || loc != usr) return
+	if(!discarding || !usr || QDELETED(src) || loc != usr) return
 
 	var/datum/playingcard/card = to_discard[discarding]
-	if(card.disposed)
+	if(QDELETED(card))
 		return
 	var/found = FALSE
 	for(var/datum/playingcard/P in cards)
@@ -367,12 +367,12 @@
 		to_pick_up[P.name] = P
 	var/picking_up = input("Which card do you wish to pick up?") as null|anything in to_pick_up
 
-	if(!picking_up || !usr || disposed) return
+	if(!picking_up || !usr || QDELETED(src)) return
 	
 	var/mob/living/carbon/human/user = usr
 
 	var/datum/playingcard/card = to_pick_up[picking_up]
-	if(card.disposed)
+	if(QDELETED(card))
 		return
 	var/found = FALSE
 	for(var/datum/playingcard/P in cards)

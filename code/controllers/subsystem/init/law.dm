@@ -9,7 +9,7 @@ SUBSYSTEM_DEF(law_init)
 	var/list/major_law = list()
 	var/list/capital_law = list()
 
-/datum/subsystem/law_init/Initialize()
+/datum/controller/subsystem/law_init/Initialize()
 	for(var/L in subtypesof(/datum/law/optional_law))
 		optional_law += new L
 

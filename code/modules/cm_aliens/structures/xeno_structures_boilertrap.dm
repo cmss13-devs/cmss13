@@ -24,7 +24,7 @@
 
 	bound_xeno = X
 	hivenumber = X.hivenumber
-	add_timer(CALLBACK(src, .proc/delete_trap), ttl)
+	addtimer(CALLBACK(src, .proc/delete_trap), ttl)
 
 	set_hive_data(src, hivenumber)
 	..()

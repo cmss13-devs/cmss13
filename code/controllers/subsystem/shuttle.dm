@@ -7,10 +7,10 @@ SUBSYSTEM_DEF(shuttle)
 	priority = SS_PRIORITY_SHUTTLE
 	flags     = SS_NO_TICK_CHECK
 
-/datum/subsystem/shuttle/Initialize()
+/datum/controller/subsystem/shuttle/Initialize()
 	if(!shuttle_controller)
 		shuttle_controller = new /datum/controller/shuttle_controller()
 	return ..()
 
-/datum/subsystem/shuttle/fire()
+/datum/controller/subsystem/shuttle/fire()
 	shuttle_controller.process()

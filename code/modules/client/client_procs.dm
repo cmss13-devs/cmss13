@@ -284,7 +284,7 @@
 /client/Destroy()
 	. = ..()
 
-	return GC_HINT_DELETE_NOW
+	return QDEL_HINT_HARDDEL_NOW
 
 
 #undef TOPIC_SPAM_DELAY
@@ -304,7 +304,7 @@
 		src << browse('code/modules/asset_cache/validate_assets.html', "window=asset_cache_browser")
 
 		//Precache the client with all other assets slowly, so as to not block other browse() calls
-		add_timer(CALLBACK(SSassets.transport, /datum/asset_transport.proc/send_assets_slow, src, SSassets.transport.preload), 5 SECONDS)
+		addtimer(CALLBACK(SSassets.transport, /datum/asset_transport.proc/send_assets_slow, src, SSassets.transport.preload), 5 SECONDS)
 
 /client/Stat()
 	// We just did a short sleep because of a change, do another to render quickly, but flip the flag back.

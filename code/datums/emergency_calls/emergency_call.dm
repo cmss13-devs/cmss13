@@ -174,7 +174,7 @@
 	if(announce)
 		marine_announcement("A distress beacon has been launched from the [MAIN_SHIP_NAME].", "Priority Alert", 'sound/AI/distressbeacon.ogg')
 
-	add_timer(CALLBACK(src, /datum/emergency_call/proc/spawn_candidates, announce), SECONDS_60)
+	addtimer(CALLBACK(src, /datum/emergency_call/proc/spawn_candidates, announce), SECONDS_60)
 
 /datum/emergency_call/proc/spawn_candidates(announce = TRUE)
 	if(ticker && ticker.mode)

@@ -32,7 +32,7 @@
 	notify_xeno()
 
 	if (amount > 0)
-		add_timer(CALLBACK(src, /datum/xeno_shield/vanguard/proc/decay), 2, TIMER_UNIQUE)
+		addtimer(CALLBACK(src, /datum/xeno_shield/vanguard/proc/decay), 2, TIMER_UNIQUE)
 	else
 		if (linked_xeno && istype(linked_xeno, /mob/living/carbon/Xenomorph))
 			var/mob/living/carbon/Xenomorph/X = linked_xeno
@@ -46,7 +46,7 @@
 
 			var/datum/action/xeno_action/activable/cleave/cAction = get_xeno_action_by_type(linked_xeno, /datum/action/xeno_action/activable/cleave)
 			if (istype(cAction))
-				add_timer(CALLBACK(cAction, /datum/action/xeno_action/activable/cleave/proc/remove_buff), 7, TIMER_UNIQUE)
+				addtimer(CALLBACK(cAction, /datum/action/xeno_action/activable/cleave/proc/remove_buff), 7, TIMER_UNIQUE)
 
 /datum/xeno_shield/vanguard/proc/notify_xeno()
 	var/mob/living/carbon/Xenomorph/X = linked_xeno

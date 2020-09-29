@@ -213,8 +213,8 @@
 					signed = "[paygrade] [id.registered_name]"
 
 			marine_announcement(input, signature = signed)
-			add_timer(CALLBACK(GLOBAL_PROC, .proc/message_staff, "[key_name(usr)] has announced the following: [input]"), 20)
-			add_timer(CALLBACK(src, .proc/reactivate_announcement, usr), COOLDOWN_COMM_MESSAGE)
+			addtimer(CALLBACK(GLOBAL_PROC, .proc/message_staff, "[key_name(usr)] has announced the following: [input]"), 20)
+			addtimer(CALLBACK(src, .proc/reactivate_announcement, usr), COOLDOWN_COMM_MESSAGE)
 			log_announcement("[key_name(usr)] has announced the following: [input]")
 
 		if("award")

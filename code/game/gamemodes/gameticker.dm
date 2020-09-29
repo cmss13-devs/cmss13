@@ -157,7 +157,7 @@ var/global/datum/controller/gameticker/ticker = new()
 
 	//for(var/obj/multiz/ladder/L in object_list) L.connect() //Lazy hackfix for ladders. TODO: move this to an actual controller. ~ Z
 
-	Master.RoundStart()
+	Master.SetRunLevel(RUNLEVEL_GAME)
 
 	if(config.sql_enabled)
 		spawn(MINUTES_5)

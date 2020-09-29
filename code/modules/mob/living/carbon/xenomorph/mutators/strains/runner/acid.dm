@@ -126,7 +126,7 @@
 		M.apply_damage(damage, BURN)
 	playsound(bound_xeno, 'sound/effects/blobattack.ogg', 75)
 	if(bound_xeno.client && bound_xeno.hive)
-		add_timer(CALLBACK(src, /datum/behavior_delegate/runner_acider.proc/do_respawn, bound_xeno.client, bound_xeno.hive), SECONDS_5)
+		addtimer(CALLBACK(src, /datum/behavior_delegate/runner_acider.proc/do_respawn, bound_xeno.client, bound_xeno.hive), SECONDS_5)
 	bound_xeno.gib()
 
 

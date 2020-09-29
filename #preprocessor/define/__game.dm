@@ -40,16 +40,6 @@
 
 #define PREROUND_TIME 240 // time before the round starts
 
-/*
-Garbage Collector hints
-Tells the GC how to handle deletion of the object
-*/
-#define GC_HINT_QUEUE      1 // Queue for deletion. Default
-#define GC_HINT_DELETE_NOW 2 // Hard deletes the datum immediately. You should have an exceptionally good reason to use this
-#define GC_HINT_RECYCLE    3 // Returns the datum to the datum pool if possible.
-#define GC_HINT_IGNORE     4 // Cancels the deletion.
-#define GC_HINT_IWILLGC    5 //functionally the same as the above. qdel should assume the object will gc on its own, and not check it.
-
 //A set of constants used to determine which type of mute an admin wishes to apply:
 //Please read and understand the muting/automuting stuff before changing these. MUTE_IC_AUTO etc = (MUTE_IC << 1)
 //Therefore there needs to be a gap between the flags for the automute flags

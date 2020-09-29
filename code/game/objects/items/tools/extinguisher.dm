@@ -160,7 +160,7 @@
 	reagents.trans_to(W, 1)
 	for(var/b in 0 to (5-1))
 		step_towards(W, target)
-		if (!W || W.disposed) 
+		if (!W || QDELETED(W)) 
 			return
 		else if (!W.reagents || get_turf(W) == T)
 			break

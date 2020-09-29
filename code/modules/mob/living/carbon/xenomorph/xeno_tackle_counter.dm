@@ -10,10 +10,6 @@
     max_tackles = max
     tackle_chance = chance
 
-/datum/tackle_counter/Destroy()
-    ..()
-    return GC_HINT_RECYCLE
-
 /datum/tackle_counter/proc/attempt_tackle(var/tackle_bonus = 0)
     tackle_count++
 

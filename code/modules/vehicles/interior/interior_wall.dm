@@ -19,7 +19,7 @@
 	. = ..()
 	// BYOND docs fucking lie about New. dir (and other vars) is not initialized by the time this is called
 	// So the update icon call needs to be delayed
-	add_timer(CALLBACK(src, .proc/update_icon), 10)
+	addtimer(CALLBACK(src, .proc/update_icon), 10)
 
 /obj/structure/interior_wall/update_icon()
 	..()

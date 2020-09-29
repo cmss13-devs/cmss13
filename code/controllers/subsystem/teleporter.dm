@@ -1,4 +1,4 @@
-var/global/datum/subsystem/teleporter/teleporter_ss
+var/global/datum/controller/subsystem/teleporter/teleporter_ss
 
 // Master teleporter controller.
 SUBSYSTEM_DEF(teleporter)
@@ -6,7 +6,6 @@ SUBSYSTEM_DEF(teleporter)
     wait = 5 SECONDS
     init_order =     SS_INIT_TELEPORTER
     priority =       SS_PRIORITY_TELEPORTER
-    display_order =  SS_DISPLAY_TELEPORTER
     flags =          SS_NO_FIRE
 
     var/teleporters_by_id // Associative list of teleporters by ID, master list of teleporters to process
@@ -15,7 +14,7 @@ SUBSYSTEM_DEF(teleporter)
 // teleporter ID:
 //Corsat_Teleporter
 
-/datum/subsystem/teleporter/Initialize()
+/datum/controller/subsystem/teleporter/Initialize()
     if (map_tag != MAP_CORSAT) // Bad style, but I'm leaving it here for now until someone wants to add a teleporter to another map
         return 
     

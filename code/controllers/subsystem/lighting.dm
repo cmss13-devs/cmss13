@@ -1,10 +1,9 @@
 SUBSYSTEM_DEF(lighting)
 	name          = "Lighting"
 	init_order    = SS_INIT_LIGHTING
-	display_order = SS_DISPLAY_LIGHTING
 	priority      = SS_PRIORITY_LIGHTING
 	wait          = 4
-	flags         = SS_FIRE_IN_LOBBY
+	runlevels = RUNLEVELS_DEFAULT|RUNLEVEL_LOBBY
 
 	var/list/datum/light_source/lights_current = list()
 	var/list/datum/light_source/lights = list()
@@ -13,10 +12,10 @@ SUBSYSTEM_DEF(lighting)
 	var/list/turf/changed_turfs = list()
 
 
-/datum/subsystem/lighting/stat_entry()
+/datum/controller/subsystem/lighting/stat_entry()
 	..("L:[lights.len]; T:[changed_turfs.len]")
 
-/datum/subsystem/lighting/Initialize(timeofday)
+/datum/controller/subsystem/lighting/Initialize(timeofday)
 	for(var/thing in lights)
 		var/datum/light_source/L = thing
 		if(L)
@@ -36,7 +35,7 @@ SUBSYSTEM_DEF(lighting)
 	return ..()
 
 
-/datum/subsystem/lighting/fire(resumed = FALSE)
+/datum/controller/subsystem/lighting/fire(resumed = FALSE)
 	if (!resumed)
 		lights_current = lights.Copy()
 		lights = list()

@@ -76,13 +76,7 @@ var/internal_tick_usage = 0
 
 	world.tick_lag = config.Ticklag
 
-	spawn(1)
-		Master.Setup()
-
-//	master_controller = new /datum/controller/game_controller()
-
-	//spawn(1)
-		//master_controller.setup()
+	Master.Initialize(10, FALSE, TRUE)
 
 	//Scramble the coords obsfucator
 	obfs_x = rand(-500, 500) //A number between -100 and 100
@@ -522,3 +516,15 @@ proc/setup_database_connection()
 		if(!ishuman(c.mob))
 			continue
 		c.images += I
+
+/world/proc/change_fps(new_value = 20)
+	if(new_value <= 0)
+		CRASH("change_fps() called with [new_value] new_value.")
+	if(fps == new_value)
+		return //No change required.
+
+	fps = new_value
+	on_tickrate_change()
+
+/world/proc/on_tickrate_change()
+	SStimer?.reset_buckets()

@@ -1,13 +1,13 @@
 SUBSYSTEM_DEF(sound)
 	name          = "Sound"
-	flags 		  = SS_FIRE_IN_LOBBY | SS_POST_FIRE_TIMING | SS_NO_INIT
+	flags 		  = SS_POST_FIRE_TIMING | SS_NO_INIT
 	wait		  = 2
 	priority      = SS_PRIORITY_SOUND
-
+	runlevels = RUNLEVELS_DEFAULT|RUNLEVEL_LOBBY
 	var/list/template_queue = list()
 	var/list/currentrun = list()
 
-/datum/subsystem/sound/fire(resumed = FALSE)
+/datum/controller/subsystem/sound/fire(resumed = FALSE)
 	for(var/datum/sound_template/i in template_queue)
 		if(!resumed) //We haven't started processing the hearers assigned to this sound yet
 			currentrun = template_queue[i]
@@ -25,7 +25,7 @@ SUBSYSTEM_DEF(sound)
 		template_queue.Remove(i) //Everyone that had to get this sound got it. Bye, template
 
 
-/datum/subsystem/sound/proc/queue(datum/sound_template/template, list/hearers)
+/datum/controller/subsystem/sound/proc/queue(datum/sound_template/template, list/hearers)
 	if(!hearers)
 		hearers = list()
 	template_queue[template] = hearers

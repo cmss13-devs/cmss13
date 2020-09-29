@@ -114,10 +114,6 @@
 /obj/item/weapon/melee/twohanded/offhand/wield()
 	qdel(src) //This shouldn't even happen.
 
-/obj/item/weapon/melee/twohanded/offhand/Destroy()
-	..()
-	return GC_HINT_RECYCLE //So we can recycle this garbage.
-
 /obj/item/weapon/melee/twohanded/offhand/dropped(mob/user)
 	..()
 	//This hand should be holding the main weapon. If everything worked correctly, it should not be wielded.

@@ -23,7 +23,7 @@ var/savefile/iconCache = new /savefile("data/iconCache.sav") //Cache of icons fo
 
 /datum/chatOutput/proc/start()
 	//Check for existing chat
-	if (!owner || !istype(owner) || owner.disposed)
+	if (!owner || !istype(owner) || QDELETED(owner))
 		return FALSE
 
 	if(!winexists(owner, "browseroutput"))

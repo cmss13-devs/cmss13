@@ -255,7 +255,7 @@ cases. Override_icon_state should be a list.*/
 			return
 	else
 		user.next_move = max(user.next_move+2,world.time + 2)
-	if(!disposed) //item may have been qdel'd by the drop above.
+	if(!QDELETED(src)) //item may have been qdel'd by the drop above.
 		pickup(user)
 		add_fingerprint(user)
 		if(!user.put_in_active_hand(src))
@@ -358,7 +358,7 @@ cases. Override_icon_state should be a list.*/
 		return FALSE
 
 	if(flags_item & MOB_LOCK_ON_EQUIP && locked_to_mob)
-		if(locked_to_mob.undefibbable && locked_to_mob.stat == DEAD || locked_to_mob.disposed)
+		if(locked_to_mob.undefibbable && locked_to_mob.stat == DEAD || QDELETED(locked_to_mob))
 			locked_to_mob = null
 
 		if(locked_to_mob != M)

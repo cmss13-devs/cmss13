@@ -3,7 +3,6 @@ var/list/power_machines = list()
 SUBSYSTEM_DEF(power)
 	name          = "Power"
 	init_order    = SS_INIT_POWER
-	display_order = SS_DISPLAY_POWER
 	priority      = SS_PRIORITY_POWER
 	flags         = SS_DISABLE_FOR_TESTING
 	wait          = 2 SECONDS
@@ -13,16 +12,16 @@ SUBSYSTEM_DEF(power)
 	var/list/currentrun_power_machines = list()
 	var/list/currentrun_areas = list()
 
-/datum/subsystem/power/stat_entry()
+/datum/controller/subsystem/power/stat_entry()
 	..("PN:[powernets.len]|PM:[power_machines.len]|A:[active_areas.len]")
 
 
-/datum/subsystem/power/Initialize(timeofday)
+/datum/controller/subsystem/power/Initialize(timeofday)
 	makepowernets()
 	return ..()
 
 
-/datum/subsystem/power/fire(resumed = FALSE)
+/datum/controller/subsystem/power/fire(resumed = FALSE)
 	if (!resumed)
 		currentrun_powerents      = global.powernets.Copy()
 		currentrun_areas = active_areas.Copy()
@@ -43,7 +42,7 @@ SUBSYSTEM_DEF(power)
 	while (currentrun_power_machines.len)
 		var/datum/X = currentrun_power_machines[currentrun_power_machines.len]
 		currentrun_power_machines.len--
-		if (!X || X.disposed)
+		if (!X || QDELETED(X))
 			continue
 
 		if (istype(X, /obj/structure/machinery))

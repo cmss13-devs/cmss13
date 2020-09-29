@@ -59,7 +59,7 @@
 
 
 /obj/structure/window/update_icon(loc, direction)
-	if(disposed)
+	if(QDELETED(src))
 		return
 	if(flags_atom & ON_BORDER)
 		if(direction)

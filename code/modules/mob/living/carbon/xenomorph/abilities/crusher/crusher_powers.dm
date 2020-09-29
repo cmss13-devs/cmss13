@@ -119,8 +119,8 @@
 	X.explosivearmor_modifier += 1000
 	X.recalculate_armor()
 	
-	add_timer(CALLBACK(src, .proc/remove_explosion_immunity), 25, TIMER_UNIQUE)
-	add_timer(CALLBACK(src, .proc/remove_shield), 100, TIMER_UNIQUE)
+	addtimer(CALLBACK(src, .proc/remove_explosion_immunity), 25, TIMER_UNIQUE)
+	addtimer(CALLBACK(src, .proc/remove_shield), 100, TIMER_UNIQUE)
 
 	apply_cooldown()
 	..()

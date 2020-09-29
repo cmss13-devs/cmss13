@@ -8,7 +8,7 @@ SUBSYSTEM_DEF(stamina)
 	var/list/currentrun = list()
 
 
-/datum/subsystem/stamina/fire(resumed = FALSE)
+/datum/controller/subsystem/stamina/fire(resumed = FALSE)
 	if (!resumed)
 		currentrun = active_staminas.Copy()
 
@@ -16,7 +16,7 @@ SUBSYSTEM_DEF(stamina)
 		var/datum/stamina/S = currentrun[currentrun.len]
 		currentrun.len--
 
-		if (!S || S.disposed)
+		if (!S || QDELETED(S))
 			continue
 
 		S.process()

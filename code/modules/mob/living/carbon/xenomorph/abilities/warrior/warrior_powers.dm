@@ -336,7 +336,7 @@
 	var/S = pick('sound/weapons/punch1.ogg','sound/weapons/punch2.ogg','sound/weapons/punch3.ogg','sound/weapons/punch4.ogg')
 	playsound(H,S, 50, 1)
 
-	delete_timer(BD.ko_reset_timer)
+	deltimer(BD.ko_reset_timer)
 	BD.remove_ko()
 
 	var/obj/limb/L = H.get_limb(check_zone(X.zone_selected))

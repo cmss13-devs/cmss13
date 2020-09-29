@@ -268,7 +268,7 @@
 			lastbang = 1
 			for (var/mob/M in hearers(src, null))
 				to_chat(M, text("<FONT size=[]>BANG, bang!</FONT>", max(0, 5 - get_dist(src, M))))
-			add_timer(VARSET_CALLBACK(src, lastbang, FALSE), 3 SECONDS)
+			addtimer(VARSET_CALLBACK(src, lastbang, FALSE), 3 SECONDS)
 
 /obj/structure/closet/attack_hand(mob/living/user)
 	if(opened && isXeno(user))

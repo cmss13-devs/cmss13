@@ -7,20 +7,19 @@ var/list/datum/powernet/powernets_by_name = list() //Holds all powernet datums i
 
 SUBSYSTEM_DEF(machinery)
 	name          = "Machinery"
-	wait          = SS_WAIT_MACHINERY
+	wait          = 3.5 SECONDS
 	flags         = SS_NO_INIT | SS_KEEP_TIMING
 	priority      = SS_PRIORITY_MACHINERY
-	display_order = SS_DISPLAY_MACHINERY
 
 	var/list/currentrunmachines = list()
 
-/datum/subsystem/machinery/stat_entry(var/msg)
+/datum/controller/subsystem/machinery/stat_entry(var/msg)
 	if (msg)
 		return ..()
 
 	..("M:[global.processing_machines.len]")
 
-/datum/subsystem/machinery/fire(resumed = FALSE)
+/datum/controller/subsystem/machinery/fire(resumed = FALSE)
 	if (!resumed)
 		currentrunmachines = processing_machines.Copy()
 
@@ -28,7 +27,7 @@ SUBSYSTEM_DEF(machinery)
 		var/obj/structure/machinery/M = currentrunmachines[currentrunmachines.len]
 		currentrunmachines.len--
 
-		if (!M || M.disposed)
+		if (!M || QDELETED(M))
 			continue
 
 		M.process()

@@ -1,5 +1,5 @@
 /mob/living/carbon/Xenomorph/proc/age_xeno()
-	if(stat == DEAD || !caste || disposed || !client || age == XENO_NO_AGE)
+	if(stat == DEAD || !caste || QDELETED(src) || !client || age == XENO_NO_AGE)
 		return
 
 	age = XENO_NORMAL

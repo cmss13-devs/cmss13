@@ -62,7 +62,7 @@
 			is_on = 0
 			stop_processing()
 			// Error! Check again in 15 seconds. Someone could have blown/acided or snipped a cable
-			add_timer(VARSET_CALLBACK(src, powernet_connection_failed, FALSE), 15 SECONDS)
+			addtimer(VARSET_CALLBACK(src, powernet_connection_failed, FALSE), 15 SECONDS)
 	else if(powernet) //All good! Let's fire it up!
 		if(!check_failure()) //Wait! Check to see if it breaks during processing
 			update_icon()
@@ -325,7 +325,7 @@
 				user.visible_message(SPAN_NOTICE("[user] starts unscrewing [src]'s maintenance hatch."), \
 				SPAN_NOTICE("You start unscrewing [src]'s maintenance hatch."))
 				if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-					if(disposed || repair_state != FLOODLIGHT_REPAIR_UNSCREW)
+					if(QDELETED(src) || repair_state != FLOODLIGHT_REPAIR_UNSCREW)
 						return
 					playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
 					repair_state = FLOODLIGHT_REPAIR_CROWBAR
@@ -337,7 +337,7 @@
 				user.visible_message(SPAN_NOTICE("[user] starts screwing [src]'s maintenance hatch closed."), \
 				SPAN_NOTICE("You start screwing [src]'s maintenance hatch closed."))
 				if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-					if(disposed || repair_state != FLOODLIGHT_REPAIR_SCREW)
+					if(QDELETED(src) || repair_state != FLOODLIGHT_REPAIR_SCREW)
 						return
 					playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
 					damaged = 0
@@ -360,7 +360,7 @@
 				user.visible_message(SPAN_NOTICE("[user] starts prying [src]'s maintenance hatch open."),\
 				SPAN_NOTICE("You start prying [src]'s maintenance hatch open."))
 				if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-					if(disposed || repair_state != FLOODLIGHT_REPAIR_CROWBAR)
+					if(QDELETED(src) || repair_state != FLOODLIGHT_REPAIR_CROWBAR)
 						return
 					playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
 					repair_state = FLOODLIGHT_REPAIR_WELD
@@ -381,7 +381,7 @@
 					user.visible_message(SPAN_NOTICE("[user] starts welding [src]'s damage."),
 					SPAN_NOTICE("You start welding [src]'s damage."))
 					if(do_after(user, 40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-						if(disposed || !WT.isOn() || repair_state != FLOODLIGHT_REPAIR_WELD)
+						if(QDELETED(src) || !WT.isOn() || repair_state != FLOODLIGHT_REPAIR_WELD)
 							return
 						playsound(loc, 'sound/items/Welder2.ogg', 25, 1)
 						repair_state = FLOODLIGHT_REPAIR_CABLE
@@ -406,7 +406,7 @@
 				user.visible_message(SPAN_NOTICE("[user] starts replacing [src]'s damaged cables."),\
 				SPAN_NOTICE("You start replacing [src]'s damaged cables."))
 				if(do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_GENERIC))
-					if(disposed || repair_state != FLOODLIGHT_REPAIR_CABLE)
+					if(QDELETED(src) || repair_state != FLOODLIGHT_REPAIR_CABLE)
 						return
 					if(C.use(2))
 						playsound(loc, 'sound/items/Deconstruct.ogg', 25, 1)

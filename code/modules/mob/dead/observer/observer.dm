@@ -305,7 +305,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(!client)	
 		return
 
-	if(!mind || !mind.original || mind.original.disposed || !can_reenter_corpse)
+	if(!mind || !mind.original || QDELETED(mind.original) || !can_reenter_corpse)
 		to_chat(src, "<span style='color: red;'>You have no body.</span>")
 		return
 
@@ -608,7 +608,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(!Z || !mind)
 		return
 
-	if(Z.disposed) //should never occur,just to be sure.
+	if(QDELETED(Z)) //should never occur,just to be sure.
 		return
 	
 	if(Z.stat == DEAD)
@@ -645,7 +645,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(!istype(L))
 		return
 
-	if(L.disposed || L.client)
+	if(QDELETED(L) || L.client)
 		freed_mob_list -= L
 		to_chat(src, SPAN_WARNING("Something went wrong."))
 		return
@@ -696,7 +696,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			L = X
 			break
 
-	if(!L || L.disposed)
+	if(!L || QDELETED(L))
 		to_chat(usr, "<span style='color: red;'>Not a valid mob!</span>")
 		return
 

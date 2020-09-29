@@ -19,16 +19,14 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
-var/datum/subsystem/database_query_manager/SSdatabase
+var/datum/controller/subsystem/database_query_manager/SSdatabase
 
-/datum/subsystem/database_query_manager
+/datum/controller/subsystem/database_query_manager
 	name          = "Database QM"
 	wait		  = 1 // CALL US AS OFTEN AS YOU CAN, GAME!
 	init_order    = SS_INIT_DATABASE
-	flags         = SS_FIRE_IN_LOBBY
 	priority      = SS_PRIORITY_DATABASE
-	display_order = SS_DISPLAY_DATABASE
-
+	runlevels = RUNLEVELS_DEFAULT|RUNLEVEL_LOBBY
 	var/datum/db/connection/connection
 	var/datum/db/connection_settings/settings
 	var/list/datum/db/query_response/queries
@@ -50,7 +48,7 @@ var/datum/subsystem/database_query_manager/SSdatabase
 
 	var/debug_mode = FALSE
 
-/datum/subsystem/database_query_manager/New()
+/datum/controller/subsystem/database_query_manager/New()
 	queries = list()
 	currentrun = list()
 	all_queries = list()
@@ -60,16 +58,16 @@ var/datum/subsystem/database_query_manager/SSdatabase
 	debug_mode = settings.debug_mode
 	NEW_SS_GLOBAL(SSdatabase)
 
-/datum/subsystem/database_query_manager/Initialize()
+/datum/controller/subsystem/database_query_manager/Initialize()
 	set waitfor=0
 	connection = settings.create_connection()
 	connection.keep()
 
-/datum/subsystem/database_query_manager/stat_entry()
+/datum/controller/subsystem/database_query_manager/stat_entry()
 	var/text = (connection && connection.status == DB_CONNECTION_READY) ? ("READY") : ("PREPPING")
 	..("[text], Q:[queries.len]; P:[currentrun.len]; C:[in_callback]")
 
-/datum/subsystem/database_query_manager/fire(resumed = FALSE)
+/datum/controller/subsystem/database_query_manager/fire(resumed = FALSE)
 	if (!resumed)
 		connection.keep()
 		currentrun = queries.Copy()
@@ -79,7 +77,7 @@ var/datum/subsystem/database_query_manager/SSdatabase
 		return
 	while (currentrun.len)
 		var/datum/db/query_response/Q = currentrun[currentrun.len]		
-		if (!Q || Q.disposed)
+		if (!Q || QDELETED(Q))
 			queries -= Q
 			continue
 		in_progress_tally++
@@ -94,7 +92,7 @@ var/datum/subsystem/database_query_manager/SSdatabase
 	in_progress = in_progress_tally
 	in_callback = in_callback_tally
 
-/datum/subsystem/database_query_manager/proc/create_query(query_text, success_callback, fail_callback, unique_query_id)
+/datum/controller/subsystem/database_query_manager/proc/create_query(query_text, success_callback, fail_callback, unique_query_id)
 	var/datum/db/query_response/qr = new()
 	qr.query = connection.query(query_text)
 	qr.query_text = query_text
@@ -110,7 +108,7 @@ var/datum/subsystem/database_query_manager/SSdatabase
 		all_queries += qr
 	
 // if DB supports this
-/datum/subsystem/database_query_manager/proc/create_parametric_query(query_text, parameters, success_callback, fail_callback, unique_query_id)
+/datum/controller/subsystem/database_query_manager/proc/create_parametric_query(query_text, parameters, success_callback, fail_callback, unique_query_id)
 	var/datum/db/query_response/qr = new()
 	var/list/prs = list()
 	prs.Add(query_text)
@@ -130,7 +128,7 @@ var/datum/subsystem/database_query_manager/SSdatabase
 		all_queries += qr
 
 // Do not use this if you don't know why this exists
-/datum/subsystem/database_query_manager/proc/create_query_sync(query_text, success_callback, fail_callback)
+/datum/controller/subsystem/database_query_manager/proc/create_query_sync(query_text, success_callback, fail_callback)
 	var/datum/db/query_response/qr = new()
 	qr.query = connection.query(query_text)
 	qr.query_text = query_text
@@ -142,7 +140,7 @@ var/datum/subsystem/database_query_manager/SSdatabase
 		stoplag()
 	return qr
 
-/datum/subsystem/database_query_manager/proc/create_parametric_query_sync(query_text, parameters, success_callback, fail_callback)
+/datum/controller/subsystem/database_query_manager/proc/create_parametric_query_sync(query_text, parameters, success_callback, fail_callback)
 	var/datum/db/query_response/qr = new()
 	var/list/prs = list()
 	prs += query_text
@@ -158,7 +156,7 @@ var/datum/subsystem/database_query_manager/SSdatabase
 		stoplag()
 	return qr
 
-/datum/subsystem/database_query_manager/proc/get_query_text(qid)
+/datum/controller/subsystem/database_query_manager/proc/get_query_text(qid)
 	to_chat(usr, queries[qid].query)
 
 /proc/loadsql(filename)

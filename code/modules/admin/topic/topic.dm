@@ -1775,7 +1775,7 @@
 	if(href_list["distress"]) //Distress Beacon, sends a random distress beacon when pressed
 		distress_cancel = FALSE
 		message_staff("[key_name_admin(usr)] has opted to SEND the distress beacon! Launching in 10 seconds... (<A HREF='?_src_=admin_holder;distresscancel=\ref[usr]'>CANCEL</A>)")
-		add_timer(CALLBACK(src, .proc/accept_ert, locate(href_list["distress"])), SECONDS_10)
+		addtimer(CALLBACK(src, .proc/accept_ert, locate(href_list["distress"])), SECONDS_10)
 		//unanswered_distress -= ref_person
 
 	if(href_list["destroyship"]) //Distress Beacon, sends a random distress beacon when pressed

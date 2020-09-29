@@ -32,7 +32,7 @@
 	src.bonus_damage = bonus_damage
 	src.bonus_speed = bonus_speed
 
-	add_timer(CALLBACK(GLOBAL_PROC, .proc/qdel, src), ttl)
+	addtimer(CALLBACK(GLOBAL_PROC, .proc/qdel, src), ttl)
 
 /datum/effects/xeno_buff/validate_atom(var/atom/A)
 	if (!isXeno(A))

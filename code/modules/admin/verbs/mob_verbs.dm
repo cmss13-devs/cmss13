@@ -6,7 +6,7 @@
 		to_chat(src, "Only administrators may use this command.")
 		return
 
-	if(!M || M.disposed)
+	if(!M || QDELETED(M))
 		return //mob was garbage collected
 
 	if(!new_ckey)

@@ -49,6 +49,10 @@
 
 	var/announce_hacked = TRUE
 
+/obj/structure/machinery/door/airlock/Destroy()
+	QDEL_NULL_LIST(attached_signallers)
+	return ..()
+
 /obj/structure/machinery/door/airlock/bumpopen(mob/living/user as mob) //Airlocks now zap you when you 'bump' them open when they're electrified. --NeoFite
 	if(istype(user) && !isRemoteControlling(user))
 		if(isElectrified())

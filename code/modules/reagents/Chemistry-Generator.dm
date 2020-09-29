@@ -336,7 +336,7 @@
 						if(combo.Find(R.name) && !(R.category & PROPERTY_TYPE_CATALYST))
 							R.level -= level
 							if(R.level <= 0)
-								properties.Remove(R)
+								LAZYREMOVE(properties, R)
 					break
 			//Handle properties that conflict
 			for(var/C in conflicting_properties)
@@ -363,7 +363,7 @@
 	P = new P.type()
 	P.level = level
 	P.holder = src
-	properties += P
+	LAZYADD(properties, P)
 
    	//Special case: If it's a catalyst property, add it nonetheless.
 	if(initial_property && initial_property != property)
@@ -372,7 +372,7 @@
 			P = new P.type()
 			P.level = level
 			P.holder = src
-			properties += P
+			LAZYADD(properties, P)
 
 	recalculate_variables()
 	return TRUE

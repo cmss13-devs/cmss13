@@ -106,7 +106,7 @@
 	if(!check_state())
 		return
 
-	if(!O || O.disposed) //Some logic.
+	if(!O || QDELETED(O)) //Some logic.
 		return
 
 	if(!O.Adjacent(src) || (I && !isturf(I.loc)))//not adjacent or inside something

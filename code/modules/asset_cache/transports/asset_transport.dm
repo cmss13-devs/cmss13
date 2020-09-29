@@ -13,13 +13,13 @@
 /// Called when the transport is loaded by the config controller, not called on the default transport unless it gets loaded by a config change.
 /datum/asset_transport/proc/Load()
 	for(var/client/C in clients)
-		add_timer(CALLBACK(src, .proc/send_assets_slow, C, preload), 1 SECONDS)
+		addtimer(CALLBACK(src, .proc/send_assets_slow, C, preload), 1 SECONDS)
 
 /// Initialize - Called when SSassets initializes.
 /datum/asset_transport/proc/Initialize(list/assets)
 	preload = assets.Copy()
 	for(var/client/C in clients)
-		add_timer(CALLBACK(src, .proc/send_assets_slow, C, preload), 1 SECONDS)
+		addtimer(CALLBACK(src, .proc/send_assets_slow, C, preload), 1 SECONDS)
 
 
 /// Register a browser asset with the asset cache system
@@ -125,7 +125,7 @@
 
 			client.sent_assets[new_asset_name] = ACI.hash
 
-		add_timer(CALLBACK(client, /client/proc/asset_cache_update_json), 1 SECONDS, TIMER_UNIQUE|TIMER_OVERRIDE_UNIQUE)
+		addtimer(CALLBACK(client, /client/proc/asset_cache_update_json), 1 SECONDS, TIMER_UNIQUE|TIMER_OVERRIDE)
 		return TRUE
 	return FALSE
 

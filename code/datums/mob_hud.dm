@@ -688,7 +688,7 @@ var/global/image/hud_icon_hudfocus
 	var/acid_found = FALSE
 	var/acid_count = 0
 	for (var/datum/effects/prae_acid_stacks/PAS in effects_list)
-		if (!PAS.disposed)
+		if (!QDELETED(PAS))
 			acid_count = PAS.stack_count
 			acid_found = TRUE
 			break 
@@ -698,7 +698,7 @@ var/global/image/hud_icon_hudfocus
 
 	var/slow_found = FALSE
 	for (var/datum/effects/xeno_slow/XS in effects_list)
-		if (!XS.disposed)
+		if (!QDELETED(XS))
 			slow_found = TRUE
 			break
 
@@ -707,7 +707,7 @@ var/global/image/hud_icon_hudfocus
 
 	var/tag_found = FALSE
 	for (var/datum/effects/dancer_tag/DT in effects_list)
-		if (!DT.disposed)
+		if (!QDELETED(DT))
 			tag_found = TRUE
 			break
 

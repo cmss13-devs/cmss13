@@ -86,7 +86,7 @@
 	throw_atom(target, 5, SPEED_VERY_FAST, src)
 	playsound(loc, 'sound/voice/shriek1.ogg', 25, 1)
 
-	add_timer(CALLBACK(src, /mob/living/carbon/human/proc/finish_leap, T), 5)
+	addtimer(CALLBACK(src, /mob/living/carbon/human/proc/finish_leap, T), 5)
 
 /mob/living/carbon/human/proc/finish_leap(mob/living/T)
 	if(status_flags & LEAPING) status_flags &= ~LEAPING
@@ -235,7 +235,7 @@
 		A.update_button_icon()
 
 	// 1min cooldown on orders
-	add_timer(CALLBACK(src, .proc/make_aura_available), COMMAND_ORDER_COOLDOWN)
+	addtimer(CALLBACK(src, .proc/make_aura_available), COMMAND_ORDER_COOLDOWN)
 
 	var/message = ""
 	switch(order)
@@ -282,7 +282,7 @@
 	hud_set_order()
 
 	if(duration)
-		add_timer(CALLBACK(src, .proc/deactivate_order_buff, order), duration)
+		addtimer(CALLBACK(src, .proc/deactivate_order_buff, order), duration)
 
 
 /mob/living/carbon/human/proc/deactivate_order_buff(var/order)

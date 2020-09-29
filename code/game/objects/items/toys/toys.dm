@@ -444,7 +444,7 @@
 		spam_flag = 1
 		playsound(src.loc, sound_effect, 25, 1)
 		src.add_fingerprint(user)
-		add_timer(VARSET_CALLBACK(src, spam_flag, FALSE), 2 SECONDS)
+		addtimer(VARSET_CALLBACK(src, spam_flag, FALSE), 2 SECONDS)
 
 
 

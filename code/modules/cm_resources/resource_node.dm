@@ -81,7 +81,7 @@
 	overlays.Cut()
 	icon_state = "mound[min(max_growth_level, growth_level)]_[icon_variant]"
 	var/obj/effect/alien/resin/collector/C = locate() in loc
-	if((!C || C.disposed) && growth_level)
+	if((!C || QDELETED(C)) && growth_level)
 		overlays += image(icon, "mound_puff")
 
 /obj/structure/resource_node/plasma/attack_alien(mob/living/carbon/Xenomorph/X)
@@ -96,7 +96,7 @@
 
 	// Vary by up to +/- RESOURCE_GROWTH_VARY
 	var/growth_delay_variance = (rand(0,1) == 0 ? (-1) : 1) * rand(0,RESOURCE_GROWTH_VARY)
-	add_timer(CALLBACK(src, .proc/grow), growth_delay + growth_delay_variance)
+	addtimer(CALLBACK(src, .proc/grow), growth_delay + growth_delay_variance)
 
 /obj/structure/resource_node/plasma/proc/grow()
 	growth_level++
@@ -109,4 +109,4 @@
 
 	// Continue growing
 	var/growth_delay_variance = (rand(0,1) == 0 ? (-1) : 1) * rand(0,RESOURCE_GROWTH_VARY)
-	add_timer(CALLBACK(src, .proc/grow), growth_delay + growth_delay_variance)
+	addtimer(CALLBACK(src, .proc/grow), growth_delay + growth_delay_variance)

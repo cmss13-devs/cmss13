@@ -97,7 +97,7 @@
                 return
 
             if(!mods["shift"])
-                add_timer(CALLBACK(src, .proc/apply_copied_vars_shallow, A), 1)
+                addtimer(CALLBACK(src, .proc/apply_copied_vars_shallow, A), 1)
 
             if(isobj(A))
                 var/obj/O = A

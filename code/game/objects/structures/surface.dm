@@ -11,7 +11,7 @@
 	. = ..()
 	return INITIALIZE_HINT_LATELOAD
 
-/obj/structure/surface/InitializeLate()
+/obj/structure/surface/LateInitialize()
 	attach_all()
 	update_icon()
 

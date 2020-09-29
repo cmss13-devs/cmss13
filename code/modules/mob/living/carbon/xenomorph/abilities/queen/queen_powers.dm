@@ -228,7 +228,7 @@
 		return
 	if(X.observed_xeno)
 		var/mob/living/carbon/Xenomorph/target = X.observed_xeno
-		if(target.stat == DEAD || target.disposed)
+		if(target.stat == DEAD || QDELETED(target))
 			return
 		if(X.loc.z != target.loc.z)
 			to_chat(X, SPAN_XENOWARNING("They are too far away to do this."))

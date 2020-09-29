@@ -477,7 +477,7 @@
 	if(H.check_tod() && H.is_revivable() && H.health > HEALTH_THRESHOLD_DEAD)
 		to_chat(H, SPAN_NOTICE("You feel your heart struggling as you suddenly feel a spark, making it desperately try to continue pumping."))
 		playsound_client(H.client, 'sound/effects/Heart Beat Short.ogg', 35)
-		add_timer(CALLBACK(H, /mob/living/carbon/human.proc/handle_revive), 50, TIMER_UNIQUE)
+		addtimer(CALLBACK(H, /mob/living/carbon/human.proc/handle_revive), 50, TIMER_UNIQUE)
 	return TRUE
 
 /datum/chem_property/positive/hyperdensificating

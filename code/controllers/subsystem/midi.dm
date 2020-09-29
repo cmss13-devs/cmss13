@@ -5,7 +5,8 @@
 SUBSYSTEM_DEF(midi)
 	name     = "Midi"
 	wait     = 2 SECONDS
-	flags    = SS_NO_INIT|SS_BACKGROUND|SS_FIRE_IN_LOBBY|SS_DISABLE_FOR_TESTING
+	flags    = SS_NO_INIT|SS_BACKGROUND|SS_DISABLE_FOR_TESTING
+	runlevels = RUNLEVELS_DEFAULT|RUNLEVEL_LOBBY
 	priority = SS_PRIORITY_MIDI
 
 	var/list/datum/midi_record/prepped_midis = list()
@@ -13,11 +14,11 @@ SUBSYSTEM_DEF(midi)
 	var/list/datum/midi_record/currentrun = list()
 
 
-/datum/subsystem/midi/stat_entry()
+/datum/controller/subsystem/midi/stat_entry()
 	..("MR:[prepped_midis.len]")
 
 
-/datum/subsystem/midi/fire(resumed = FALSE)
+/datum/controller/subsystem/midi/fire(resumed = FALSE)
 	if (!resumed)
 		currentrun = prepped_midis
 		prepped_midis = list()
@@ -34,7 +35,7 @@ SUBSYSTEM_DEF(midi)
 		if (MC_TICK_CHECK)
 			return
 
-/datum/subsystem/midi/proc/queue(target, midi)
+/datum/controller/subsystem/midi/proc/queue(target, midi)
 	if(!prepped_midis)
 		prepped_midis = list()
 	var/datum/midi_record/MR = new()

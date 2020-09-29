@@ -404,7 +404,7 @@
 			hacked = !hacked
 			visible_message(SPAN_NOTICE("A blue light flickers [hacked ? "on" : "off"] in the panel of \the [src]."))
 			update_printable()
-			add_timer(CALLBACK(src, .proc/flip_hacked), SECONDS_10)
+			addtimer(CALLBACK(src, .proc/flip_hacked), SECONDS_10)
 		if (AUTOLATHE_WIRE_SHOCK)
 			shock(user, 50)
 			seconds_electrified = 10

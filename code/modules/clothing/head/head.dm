@@ -208,6 +208,11 @@
 	icon_state = "cocap"
 	desc = "A hat usually worn by senior officers in the USCM. While it has limited combat functionality, some prefer to wear it instead of the standard issue helmet."
 
+/obj/item/clothing/head/cmcap/co/formal
+	name = "\improper USCM formal captain cap"
+	icon_state = "co_formalhat"
+	desc = "A formal cover worn by Commanding Officers of the USCM."
+
 
 /obj/item/clothing/head/cmcap/ro
 	name = "\improper USCM officer cap"

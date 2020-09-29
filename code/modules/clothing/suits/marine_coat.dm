@@ -76,3 +76,11 @@
 /obj/item/clothing/suit/storage/jacket/marine/dress/officer
 	name = "marine officer dress jacket"
 	icon_state = "co_jacket"
+
+/obj/item/clothing/suit/storage/jacket/marine/dress/officer/bomber
+	name = "commanding officer bomber jacket"
+	icon_state = "co_bomber"
+
+/obj/item/clothing/suit/storage/jacket/marine/dress/officer/trenchcoat
+	name = "commanding officer trenchcoat"
+	icon_state = "co_trenchcoat"

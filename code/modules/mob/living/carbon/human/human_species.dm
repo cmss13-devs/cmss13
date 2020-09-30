@@ -2,7 +2,7 @@
 // might be worth adapting the bugs into a feature and using these
 // subtypes as a basis for non-common-speaking alien foreigners. ~ Z
 
-/mob/living/carbon/human/dummy/Initialize(mapload, new_loc)
+/mob/living/carbon/human/dummy/Initialize(mapload)
 	. = ..()
 	human_mob_list -= src
 	living_human_list -= src

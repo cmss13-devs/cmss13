@@ -3134,7 +3134,7 @@
 	icon_state = "entree"
 	var/flavor = "boneless pork ribs"//default value
 
-/obj/item/reagent_container/food/snacks/packaged_meal/Initialize(mapload, loc, newflavor)
+/obj/item/reagent_container/food/snacks/packaged_meal/Initialize(mapload, newflavor)
 	. = ..()
 	determinetype(newflavor)
 

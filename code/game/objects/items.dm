@@ -134,7 +134,7 @@
 	master = null
 	locked_to_mob = null
 	item_list -= src
-	. = ..()
+	return ..()
 
 /obj/item/ex_act(severity, explosion_direction)
 	switch(severity)

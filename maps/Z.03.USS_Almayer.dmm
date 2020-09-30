@@ -22868,7 +22868,6 @@
 /area/almayer/living/gym)
 "bqo" = (
 /obj/structure/machinery/computer/skills{
-	density = 0;
 	req_one_access = list(200)
 	},
 /obj/structure/surface/table/woodentable,
@@ -28491,7 +28490,7 @@
 	dir = 2;
 	tag = "icon-door_open"
 	},
-/turf/closed/wall/almayer,
+/turf/open/floor/plating,
 /area/almayer/living/grunt_rnr)
 "bJz" = (
 /turf/open/floor/almayer{
@@ -28905,16 +28904,9 @@
 /turf/open/floor/plating,
 /area/almayer/living/grunt_rnr)
 "bKL" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	name = "\improper Rest and Relaxation Area"
-	},
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 2;
-	tag = "icon-door_open"
-	},
-/obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor/almayer,
+/obj/structure/disposalpipe/segment,
+/turf/closed/wall/almayer,
 /area/almayer/living/grunt_rnr)
 "bKM" = (
 /obj/structure/machinery/light{
@@ -90853,7 +90845,7 @@ xBe
 buH
 vdW
 qLp
-bJt
+bKL
 bKJ
 cfl
 cgd
@@ -91056,7 +91048,7 @@ xBe
 buH
 bHL
 buH
-bKL
+cfe
 bKG
 cff
 cge

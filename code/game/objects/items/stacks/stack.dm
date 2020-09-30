@@ -27,7 +27,7 @@
 /obj/item/stack/Destroy()
 	if (usr && usr.interactee == src)
 		close_browser(src, "stack")
-	. = ..()
+	return ..()
 
 /obj/item/stack/examine(mob/user)
 	..()

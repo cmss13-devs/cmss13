@@ -183,7 +183,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 		src.loc.SetLuminosity(-brightness_on)
 	else
 		SetLuminosity(0)
-	. = ..()
+	return ..()
 
 /obj/item/clothing/suit/storage/marine/attack_self(mob/user)
 	if(!isturf(user.loc))

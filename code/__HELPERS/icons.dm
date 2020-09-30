@@ -873,3 +873,11 @@ obj/proc/apply_overlay(var/icon = null, var/atom/A, var/icon_state = null, var/p
 /image/proc/flick_remove_overlay(var/atom/A)
 	if(A)
 		A.overlays.Remove(src)
+
+/mob/proc/flick_heal_overlay(time, color = "#00FF00") //used for warden and queen healing
+    var/image/I = new('icons/mob/mob.dmi', src, "heal_overlay")
+    I.layer = FLY_LAYER
+    I.appearance_flags = RESET_COLOR
+
+    I.color = color
+    I.flick_overlay(src, time)

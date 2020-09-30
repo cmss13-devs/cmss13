@@ -833,7 +833,7 @@
 	scatter = config.low_scatter_value
 	damage = config.high_hit_damage
 	damage_var_high = config.low_proj_variance
-	penetration= 0
+	penetration = 0
 
 /datum/ammo/bullet/sniper/flak/on_hit_mob(mob/M,obj/item/projectile/P)
 	burst(get_turf(M),P,damage_type, 2 , 2)

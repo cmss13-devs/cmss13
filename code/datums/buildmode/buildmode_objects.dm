@@ -83,7 +83,7 @@
     var/obj/effect/bmode/buildquit/bm_quit = null
     var/atom/movable/throw_atom = null
 
-/obj/effect/buildholder/Initialize(mapload, loc, client/C)
+/obj/effect/buildholder/Initialize(mapload, client/C)
     . = ..()
 
     cl = C

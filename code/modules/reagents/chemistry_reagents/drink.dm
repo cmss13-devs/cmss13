@@ -37,7 +37,7 @@
 
 /datum/reagent/drink/cold
 	name = "Cold drink"
-	adj_temp = -5
+	adj_temp = 0
 
 
 //FRIUT JUICE//
@@ -182,7 +182,7 @@
 	description = "Glorious brainfreezing mixture."
 	id = "milkshake"
 	color = "#AEE5E4" // rgb" 174, 229, 228
-	adj_temp = -9
+	adj_temp = 0
 
 	on_mob_life(mob/living/M)
 		. = ..()
@@ -306,7 +306,7 @@
 	id = "space_up"
 	description = "Tastes like a hull breach in your mouth."
 	color = "#202800" // rgb: 32, 40, 0
-	adj_temp = -8
+	adj_temp = 0
 
 
 
@@ -332,7 +332,7 @@
 	adj_dizzy = -5
 	adj_drowsy = -3
 	adj_sleepy = -2
-	adj_temp = 25
+	adj_temp = 5
 	chemclass = CHEM_CLASS_UNCOMMON
 
 /datum/reagent/drink/coffee/on_mob_life(mob/living/M)
@@ -363,7 +363,7 @@
 	id = "icecoffee"
 	description = "Coffee and ice, refreshing and cool."
 	color = "#102838" // rgb: 16, 40, 56
-	adj_temp = -5
+	adj_temp = 0
 	chemclass = CHEM_CLASS_NONE
 
 /datum/reagent/drink/coffee/soy_latte
@@ -403,7 +403,7 @@
 	adj_dizzy = -2
 	adj_drowsy = -1
 	adj_sleepy = -3
-	adj_temp = 20
+	adj_temp = 5
 	chemclass = CHEM_CLASS_UNCOMMON
 
 	on_mob_life(mob/living/M)
@@ -417,7 +417,7 @@
 	id = "icetea"
 	description = "No relation to a certain rap artist/ actor."
 	color = "#104038" // rgb: 16, 64, 56
-	adj_temp = -5
+	adj_temp = 0
 
 
 
@@ -462,7 +462,7 @@
 	description = "A tangy substance made of 0.5% natural citrus!"
 	id = "lemon_lime"
 	color = "#878F00" // rgb: 135, 40, 0
-	adj_temp = -2
+	adj_temp = 0
 
 /datum/reagent/drink/cold/lemonade
 	name = "Lemonade"
@@ -626,7 +626,7 @@
 	description = "It's not what it sounds like..."
 	id = "brownstar"
 	color = "#9F3400" // rgb: 159, 052, 000
-	adj_temp = -2
+	adj_temp = 0
 
 
 /datum/reagent/drink/hot_coco

@@ -180,7 +180,11 @@ var/global/dmm_suite/preloader/_preloader = new
 		if(!measureOnly)
 			if(clear_contents)
 				for(var/atom/to_delete in atoms_to_delete)
-					qdel(to_delete)
+					if(!isturf(to_delete))
+						qdel(to_delete)
+					else
+						var/turf/T = to_delete
+						T.ChangeTurf(world.turf, list(world.turf))
 		var/datum/map_load_metadata/M = new
 		M.bounds = bounds
 		M.atoms_to_initialise = atoms_to_initialise

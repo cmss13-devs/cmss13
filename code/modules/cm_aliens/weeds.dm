@@ -22,7 +22,7 @@
 	// Which node is responsible for keeping this weed patch alive?
 	var/obj/effect/alien/weeds/node/parent = null
 
-/obj/effect/alien/weeds/Initialize(mapload, pos, obj/effect/alien/weeds/node/node)
+/obj/effect/alien/weeds/Initialize(mapload, obj/effect/alien/weeds/node/node)
 	. = ..()
 	if(node)
 		linked_hive = node.linked_hive
@@ -322,7 +322,7 @@
 	..()
 	overlays += "weednode"
 
-/obj/effect/alien/weeds/node/Initialize(mapload, pos, obj/effect/alien/weeds/node/node, mob/living/carbon/Xenomorph/X, datum/hive_status/hive)
+/obj/effect/alien/weeds/node/Initialize(mapload, obj/effect/alien/weeds/node/node, mob/living/carbon/Xenomorph/X, datum/hive_status/hive)
 	if (istype(hive))
 		linked_hive = hive
 	else if (istype(X) && X.hive)
@@ -331,7 +331,7 @@
 		linked_hive = hive_datum[hivenumber]
 
 	
-	. = ..(mapload, pos, src)
+	. = ..(mapload, src)
 
 	overlays += "weednode"
 	if(X)

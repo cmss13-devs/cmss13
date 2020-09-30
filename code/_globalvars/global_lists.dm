@@ -1,6 +1,4 @@
-var/list/clients = list()					//list of all clients
-var/list/admins = list()					//list of all clients whom are admins
-var/list/directory = list()					//list of all ckeys with associated client
+
 var/list/unansweredAhelps = list()			//This feels inefficient, but I can't think of a better way. Stores the message indexed by CID
 var/list/CLFaxes = list()					//List of all CL faxes sent this round
 var/list/fax_contents = list() 				//List of fax contents to maintain it even if source paper is deleted
@@ -32,7 +30,6 @@ var/global/list/custom_huds_list = list("midnight" = new /datum/custom_hud(),
 
 var/readied_players = 0								//How many players are readied up in the lobby
 
-var/global/list/player_list = list()				//List of all mobs **with clients attached**.
 var/global/list/mob_list = list()					//List of all mobs, including clientless
 var/global/list/living_mob_list = list()			//List of all alive mobs, including clientless. Excludes /mob/new_player
 var/global/list/dead_mob_list = list()				//List of all dead mobs, including clientless. Excludes /mob/new_player

@@ -143,8 +143,8 @@
 	S.channel = SOUND_CHANNEL_Z
 	S.volume_cat = vol_cat
 	var/list/hearers = list()
-	for(var/mob/M in player_list)
-		if (M.z == z && M.client && M.client.soundOutput)
+	for(var/mob/M in GLOB.player_list)
+		if (M.z == z && M.client.soundOutput)
 			hearers += M.client
 	SSsound.queue(S, hearers)
 

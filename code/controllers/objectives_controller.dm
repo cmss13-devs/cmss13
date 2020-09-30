@@ -425,11 +425,11 @@ var/global/datum/controller/objectives_controller/objectives_controller
 	if(world.time > nextDChatAnnouncement)
 		nextDChatAnnouncement += MINUTES_5 //5 minutes
 
-		for(var/mob/M in player_list)
+		for(var/i in GLOB.observer_list)
+			var/mob/M = i
 			//Announce the numbers to deadchat
-			if (isobserver(M))
-				to_chat(M, "<h2 class='alert'>DEFCON Level [defcon_controller.current_defcon_level]</h2>")
-				to_chat(M, SPAN_WARNING("Objectives status: [scored_points] / [total_points] ([scored_points/total_points*100]%)."))
+			to_chat(M, "<h2 class='alert'>DEFCON Level [defcon_controller.current_defcon_level]</h2>")
+			to_chat(M, SPAN_WARNING("Objectives status: [scored_points] / [total_points] ([scored_points/total_points*100]%)."))
 
 		message_staff("Objectives status: [scored_points] / [total_points] ([scored_points/total_points*100]%). DEFCON Level [defcon_controller.current_defcon_level].", 1)
 

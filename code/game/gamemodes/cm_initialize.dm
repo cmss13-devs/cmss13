@@ -102,7 +102,7 @@ Additional game mode variables.
 /datum/game_mode/proc/initialize_special_clamps()
 	xeno_starting_num = Clamp((readied_players/config.xeno_number_divider), xeno_required_num, INFINITY) //(n, minimum, maximum)
 	surv_starting_num = Clamp((readied_players/config.surv_number_divider), 0, 8)
-	marine_starting_num = player_list.len - xeno_starting_num - surv_starting_num
+	marine_starting_num = GLOB.player_list.len - xeno_starting_num - surv_starting_num
 	for(var/datum/squad/sq in RoleAuthority.squads)
 		if(sq)
 			sq.max_engineers = engi_slot_formula(marine_starting_num)
@@ -127,7 +127,7 @@ Additional game mode variables.
 	if(!ignore_pred_num)
 		pred_current_num++
 
-#define calculate_pred_max (Floor(length(player_list) / pred_per_players) + pred_additional_max + pred_start_count)
+#define calculate_pred_max (Floor(length(GLOB.player_list) / pred_per_players) + pred_additional_max + pred_start_count)
 
 /datum/game_mode/proc/initialize_starting_predator_list()
 	if(prob(pred_round_chance)) //First we want to determine if it's actually a predator round.
@@ -162,7 +162,7 @@ Additional game mode variables.
 	var/players[] = new
 
 	var/mob/new_player/new_pred
-	for(var/mob/player in player_list)
+	for(var/mob/player in GLOB.player_list)
 		if(!player.client) continue //No client. DCed.
 		if(isYautja(player)) continue //Already a predator. Might be dead, who knows.
 		if(readied) //Ready check for new players.
@@ -277,7 +277,7 @@ Additional game mode variables.
 	//Minds are not transferred at this point, so we have to clean out those who may be already picked to play.
 	for(var/datum/mind/A in possible_queens)
 		var/mob/living/original = A.current
-		var/client/client = directory[A.ckey]
+		var/client/client = GLOB.directory[A.ckey]
 		if(A.roundstart_picked || jobban_isbanned(original, CASTE_QUEEN) || !can_play_special_job(client, CASTE_QUEEN))
 			possible_queens -= A
 
@@ -891,7 +891,7 @@ Additional game mode variables.
 	//This might count players who ready up but get kicked back to the lobby
 	var/marine_pop_size = 0
 
-	for(var/mob/living/carbon/human/H in player_list)
+	for(var/mob/living/carbon/human/H in human_mob_list)
 		if(H.stat != DEAD)
 			marine_pop_size++
 
@@ -921,7 +921,7 @@ Additional game mode variables.
 //Primary resources begin growing SLOWLY when marines make first landfall
 /datum/game_mode/proc/initialize_map_resource_list()
 	var/total_pop_size = 0
-	for(var/mob/M in player_list)
+	for(var/mob/M in GLOB.player_list)
 		if(M.stat != DEAD && M.mind)
 			total_pop_size++
 

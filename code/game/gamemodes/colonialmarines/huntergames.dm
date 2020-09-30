@@ -149,7 +149,7 @@ var/waiting_for_drop_votes = 0
 	for(var/obj/item/weapon/gun/G in item_list) qdel(G) //No guns or ammo allowed.
 	for(var/obj/item/ammo_magazine/M in item_list) qdel(M)
 
-	for(var/mob/new_player/player in player_list)
+	for(var/mob/new_player/player in GLOB.new_player_list)
 		if(player && player.ready)
 			if(player.mind)
 				player.job = "ROLE"

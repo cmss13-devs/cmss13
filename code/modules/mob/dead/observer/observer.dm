@@ -39,6 +39,7 @@
 	see_invisible = SEE_INVISIBLE_OBSERVER
 	see_in_dark = 100
 	verbs += /mob/dead/observer/proc/dead_tele
+	GLOB.observer_list += src
 
 	var/turf/T
 	if(ismob(body))
@@ -92,6 +93,7 @@
 	client.move_delay = MINIMAL_MOVEMENT_INTERVAL
 
 /mob/dead/observer/Destroy()
+	GLOB.observer_list -= src
 	following = null
 	return ..()
 

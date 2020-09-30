@@ -38,7 +38,7 @@ var/global/cas_tracking_id_increment = 0	//this var used to assign unique tracki
 ///Checks to see if the game can be setup and ran with the current number of players or whatnot.
 /datum/game_mode/proc/can_start()
 	var/playerC = 0
-	for(var/mob/new_player/player in player_list)
+	for(var/mob/new_player/player in GLOB.new_player_list)
 		if((player.client)&&(player.ready))
 			playerC++
 
@@ -64,7 +64,7 @@ var/global/cas_tracking_id_increment = 0	//this var used to assign unique tracki
 	spawn (ROUNDSTART_LOGOUT_REPORT_TIME)
 		display_roundstart_logout_report()
 
-	for(var/mob/new_player/np in player_list)
+	for(var/mob/new_player/np in GLOB.new_player_list)
 		np.new_player_panel_proc()
 	log_game("Round started at [time2text(world.realtime)]")
 	if(ticker && ticker.mode)
@@ -105,7 +105,7 @@ var/global/cas_tracking_id_increment = 0	//this var used to assign unique tracki
 	var/surviving_total = 0
 	var/ghosts = 0
 
-	for(var/mob/M in player_list)
+	for(var/mob/M in GLOB.player_list)
 		if(M.client)
 			clients++
 			if(ishuman(M))
@@ -150,7 +150,7 @@ var/global/cas_tracking_id_increment = 0	//this var used to assign unique tracki
 		if(BE_SYNTH_SURVIVOR)		roletext = "Synth Survivor"
 
 	//Assemble a list of active players without jobbans.
-	for(var/mob/new_player/player in player_list)
+	for(var/mob/new_player/player in GLOB.player_list)
 		if(player.client && player.ready)
 			if(!jobban_isbanned(player, roletext))
 				players += player
@@ -202,7 +202,7 @@ proc/display_roundstart_logout_report()
 
 		if(L.ckey)
 			var/found = 0
-			for(var/client/C in clients)
+			for(var/client/C in GLOB.clients)
 				if(C.ckey == L.ckey)
 					found = 1
 					break
@@ -239,18 +239,6 @@ proc/display_roundstart_logout_report()
 	for(var/mob/M in mob_list)
 		if(M.client && M.client.admin_holder && (M.client.admin_holder.rights & R_MOD))
 			to_chat(M, msg)
-
-
-proc/get_nt_opposed()
-	var/list/dudes = list()
-	for(var/mob/living/carbon/human/man in player_list)
-		if(man.client)
-			if(man.client.prefs.nanotrasen_relation == "Opposed")
-				dudes += man
-			else if(man.client.prefs.nanotrasen_relation == "Skeptical" && prob(50))
-				dudes += man
-	if(dudes.len == 0) return null
-	return pick(dudes)
 
 //Announces objectives/generic antag text.
 /proc/show_generic_antag_text(var/datum/mind/player)

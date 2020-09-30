@@ -266,7 +266,7 @@ var/list/alldepartments = list()
 
 /proc/announce_fax(var/msg_admin, var/msg_ghost)
 	log_admin(msg_admin) //Always irked me the replies do show up but the faxes themselves don't
-	for(var/client/C in admins)
+	for(var/client/C in GLOB.admins)
 		if((R_ADMIN|R_MOD) & C.admin_holder.rights)
 			if(msg_admin)
 				to_chat(C, msg_admin)
@@ -274,7 +274,8 @@ var/list/alldepartments = list()
 				to_chat(C, msg_ghost)
 			C << 'sound/effects/sos-morse-code.ogg'
 	if(msg_ghost)
-		for(var/mob/dead/observer/g in player_list)
+		for(var/i in GLOB.observer_list)
+			var/mob/dead/observer/g = i
 			if(!g.client)
 				continue
 			var/client/C = g.client

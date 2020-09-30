@@ -218,7 +218,7 @@ var/list/departments = list("Command", "Medical", "Engineering", "Security", "Ci
 
 	var/good_age_min = 20//Best command candidates are in the 25 to 40 range.
 	var/good_age_max = 50
-	for(var/mob/new_player/M in player_list) //Get all players who are ready.
+	for(var/mob/new_player/M in GLOB.new_player_list) //Get all players who are ready.
 		if(istype(M) && M.mind && M.mind.roundstart_picked)
 			continue
 
@@ -431,7 +431,7 @@ roles willy nilly.
 
 //I'm not entirely sure why this proc exists. //TODO Figure this out.
 /datum/authority/branch/role/proc/reset_roles()
-	for(var/mob/new_player/M in player_list)
+	for(var/mob/new_player/M in GLOB.new_player_list)
 		M.job = null
 	//setup_roles() //TODO Why is this here?
 

@@ -41,7 +41,7 @@
 	var/list/Lines = list()
 	if(admin_holder && ((R_ADMIN & admin_holder.rights) || (R_MOD & admin_holder.rights)))
 
-		for(var/client/C in clients)
+		for(var/client/C in GLOB.clients)
 			var/entry = "\t[C.key]"
 			if(C.admin_holder && C.admin_holder.fakekey)
 				entry += " <i>(as [C.admin_holder.fakekey])</i>"
@@ -137,7 +137,7 @@
 			msg += "<br><b style='color:#7ABA19'>Predaliens: [counted_xenos[6]]</b>"
 
 	else
-		for(var/client/C in clients)
+		for(var/client/C in GLOB.clients)
 			if(C.admin_holder && C.admin_holder.fakekey)
 				Lines += C.admin_holder.fakekey
 			else
@@ -159,7 +159,7 @@
 	var/num_admins_online = 0
 	var/num_mentors_online = 0
 	if(admin_holder)
-		for(var/client/C in admins)
+		for(var/client/C in GLOB.admins)
 			if(AHOLD_IS_ADMIN(C.admin_holder))	//Used to determine who shows up in admin rows
 
 				if(C.admin_holder.fakekey && AHOLD_IS_ONLY_MENTOR(admin_holder))		//Mentors can't see stealthmins
@@ -207,7 +207,7 @@
 				num_mentors_online++
 
 	else
-		for(var/client/C in admins)
+		for(var/client/C in GLOB.admins)
 			if(AHOLD_IS_ADMIN(C.admin_holder))
 				if(!C.admin_holder.fakekey)
 					msg += "\t[C] is a [C.admin_holder.rank]\n"

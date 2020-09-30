@@ -272,7 +272,7 @@ var/global/maint_all_access = 1
 	var/input = "Station shutter locks lifting in [text_timeleft] per manual override."
 	var/title = announce_title
 	marine_announcement(input, title, 'sound/AI/commandreport.ogg')
-	for(var/mob/M in player_list)
+	for(var/mob/M in GLOB.player_list)
 		if(isXeno(M))
 			sound_to(M, sound(get_sfx("queen"), wait = 0, volume = 50))
 			to_chat(M, SPAN_XENOANNOUNCE("The Queen Mother reaches into your mind from worlds away."))

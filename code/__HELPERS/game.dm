@@ -230,8 +230,8 @@
 
 
 	// Try to find all the players who can hear the message
-	for(var/i = 1; i <= player_list.len; i++)
-		var/mob/M = player_list[i]
+	for(var/i in GLOB.player_list)
+		var/mob/M = i
 		if(M)
 			var/turf/ear = get_turf(M)
 			if(ear)
@@ -312,7 +312,8 @@ proc/isInSight(var/atom/A, var/atom/B)
 /proc/get_alien_candidates()
 	var/list/candidates = list()
 
-	for(var/mob/dead/observer/O in player_list)
+	for(var/i in GLOB.observer_list)
+		var/mob/dead/observer/O = i
 		// Jobban check
 		if(!O.client || !O.client.prefs || !(O.client.prefs.be_special & BE_ALIEN_AFTER_DEATH) || jobban_isbanned(O, "Alien"))
 			continue
@@ -343,16 +344,6 @@ proc/isInSight(var/atom/A, var/atom/B)
 	O.maptext_width = maptext_width
 	O.screen_loc = screen_loc
 	return O
-
-/proc/Show2Group4Delay(obj/O, list/group, delay=0)
-	if(!isobj(O))	return
-	if(!group)	group = clients
-	for(var/client/C in group)
-		C.screen += O
-	if(delay)
-		spawn(delay)
-			for(var/client/C in group)
-				C.screen -= O
 
 datum/projectile_data
 	var/src_x

@@ -31,10 +31,10 @@
 	set waitfor = FALSE
 
 	// Wait for a client to key in
-	while(!length(clients))
+	while(!length(GLOB.clients))
 		sleep(10)
 
-	for(var/client/C in clients)
+	for(var/client/C in GLOB.clients)
 		var/datum/mind/M = C.mob.mind
 		M.transfer_to(test_mob)
 

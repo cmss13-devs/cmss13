@@ -213,7 +213,7 @@
 
 	if(check_rights(R_ADMIN,0))
 		msg = "<span class='[color]'><span class='prefix'>ADMIN:</span> <EM>[key_name(usr, 1)]</EM> (<a href='?_src_=admin_holder;adminplayerobservejump=\ref[mob]'>JMP</A>): <span class='message'>[msg]</span></span>"
-		for(var/client/C in admins)
+		for(var/client/C in GLOB.admins)
 			if(R_ADMIN & C.admin_holder.rights)
 				to_chat(C, msg)
 
@@ -238,7 +238,7 @@
 
 	var/channel = "MOD:"
 	channel = "[admin_holder.rank]:"
-	for(var/client/C in admins)
+	for(var/client/C in GLOB.admins)
 		if((R_ADMIN|R_MOD) & C.admin_holder.rights)
 			to_chat(C, "<span class='[color]'><span class='prefix'>[channel]</span> <EM>[key_name(src,1)]</EM> (<A HREF='?src=\ref[C.admin_holder];adminplayerobservejump=\ref[mob]'>JMP</A>): <span class='message'>[msg]</span></span>")
 

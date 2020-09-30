@@ -14,7 +14,7 @@
 /datum/game_mode/extended/post_setup()
 	initialize_post_marine_gear_list()
 	initialize_map_resource_list()
-	for(var/mob/new_player/np in player_list)
+	for(var/mob/new_player/np in GLOB.new_player_list)
 		np.new_player_panel_proc()
 	round_time_lobby = world.time
 
@@ -31,7 +31,7 @@
 	if(round_statistics)
 		round_statistics.game_mode = name
 		round_statistics.round_length = world.time
-		round_statistics.end_round_player_population = clients.len
+		round_statistics.end_round_player_population = GLOB.clients.len
 		round_statistics.log_round_statistics()
 
 	announce_agents()

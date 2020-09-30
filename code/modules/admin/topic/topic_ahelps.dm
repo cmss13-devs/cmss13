@@ -91,7 +91,7 @@
 				return
 
 			to_chat(C.mob, SPAN_NOTICE("<b>NOTICE:</b> <font color=red>[usr.key]</font> has turned your adminhelp into a mentorhelp thread."))
-			for(var/client/X in admins)
+			for(var/client/X in GLOB.admins)
 				if((R_ADMIN|R_MOD) & X.admin_holder.rights)
 					to_chat(X, SPAN_NOTICE("<b>NOTICE:</b> <font color=red>[usr.key]</font> has turned <font color=red>[C.key]</font>'s adminhelp into a mentorhelp thread."))
 			log_mhelp("[usr.key] turned [C.key]'s adminhelp into a mentorhelp thread")

@@ -2,7 +2,7 @@
 	mob_list -= src
 	dead_mob_list -= src
 	living_mob_list -= src
-	player_list -= src
+	GLOB.player_list -= src
 
 	if(mind)
 		if(mind.current == src)

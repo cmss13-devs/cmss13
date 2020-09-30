@@ -225,7 +225,7 @@
 				var/input = "Security lockdown will be lifting in 30 seconds per automated lockdown protocol."
 				var/name = "Automated Security Authority Announcement"
 				marine_announcement(input, name, 'sound/AI/commandreport.ogg')
-				for(var/mob/M in player_list)
+				for(var/mob/M in living_xeno_list)
 					if(isXeno(M))
 						sound_to(M, sound(get_sfx("queen"), wait = 0, volume = 50))
 						to_chat(M, SPAN_XENOANNOUNCE("The Queen Mother reaches into your mind from worlds away."))
@@ -316,7 +316,7 @@
 	if(round_statistics)
 		round_statistics.game_mode = name
 		round_statistics.round_length = world.time
-		round_statistics.end_round_player_population = clients.len
+		round_statistics.end_round_player_population = GLOB.clients.len
 
 		round_statistics.log_round_statistics()
 

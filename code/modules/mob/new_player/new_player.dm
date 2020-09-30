@@ -23,13 +23,14 @@
 
 /mob/new_player/Initialize()
 	. = ..()
+	GLOB.new_player_list += src
 	if(client)
 		client.view = lobby_view_size
 
 /mob/new_player/Destroy()
 	if(ready)
 		readied_players--
-
+	GLOB.new_player_list -= src
 	return ..()
 
 /mob/new_player/verb/new_player_panel()
@@ -88,8 +89,8 @@
 
 	if(ticker.current_state == GAME_STATE_PREGAME)
 		stat("Time To Start:", "[ticker.pregame_timeleft][going ? "" : " (DELAYED)"]")
-		stat("Players: [length(player_list)]", "Players Ready: [readied_players]")
-		for(var/mob/new_player/player in player_list)
+		stat("Players: [length(GLOB.player_list)]", "Players Ready: [readied_players]")
+		for(var/mob/new_player/player in GLOB.new_player_list)
 			stat("[player.key]", player.ready ? "(Playing)" : "")
 
 /mob/new_player/Topic(href, href_list[])
@@ -269,8 +270,8 @@
 
 	for(var/datum/squad/sq in RoleAuthority.squads)
 		if(sq)
-			sq.max_engineers = engi_slot_formula(clients.len)
-			sq.max_medics = medic_slot_formula(clients.len)
+			sq.max_engineers = engi_slot_formula(GLOB.clients.len)
+			sq.max_medics = medic_slot_formula(GLOB.clients.len)
 
 	if(ticker.mode.latejoin_larva_drop && ticker.mode.latejoin_tally >= ticker.mode.latejoin_larva_drop)
 		ticker.mode.latejoin_tally -= ticker.mode.latejoin_larva_drop
@@ -311,7 +312,7 @@
 		if(!RoleAuthority.check_role_entry(src, J, 1)) continue
 		var/active = 0
 		// Only players with the job assigned and AFK for less than 10 minutes count as active
-		for(var/mob/M in player_list)
+		for(var/mob/M in GLOB.player_list)
 			if(M.client && M.job == J.title && M.client.inactivity <= 10 * 60 * 10)
 				active++
 		if(roles_show & FLAG_SHOW_CIC && ROLES_CIC.Find(J.title))

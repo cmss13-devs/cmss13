@@ -17,11 +17,11 @@
 		if(M.client && (!M.client.admin_holder || !(M.client.admin_holder.rights & R_MOD)))	// Send to xenos who are non-staff
 			to_chat(M, SPAN_XOOC("XOOC: [src.key]([src.admin_holder.rank]): [msg]"))
 
-	for(var/mob/dead/observer/M in player_list)
+	for(var/mob/dead/observer/M in GLOB.observer_list)
 		if(M.client && !M.client.admin_holder)	// Send to observers who are non-staff
 			to_chat(M, SPAN_XOOC("XOOC: [src.key]([src.admin_holder.rank]): [msg]"))
 
-	for(var/client/C in admins)	// Send to staff
+	for(var/client/C in GLOB.admins)	// Send to staff
 		if(!(C.admin_holder.rights & R_MOD))
 			continue
 

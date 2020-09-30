@@ -64,7 +64,7 @@ SUBSYSTEM_DEF(events)
 	var/lucky_number = pick(lottery)
 
 	last_event_time = world.time
-	var/pop_percentage = 1 - Clamp(((length(player_list) - MINIMUM_POP_FOR_EXTRA_DELAY) / (MAXIMUM_POP_FOR_EXTRA_DELAY - MINIMUM_POP_FOR_EXTRA_DELAY)), 0, 1)
+	var/pop_percentage = 1 - Clamp(((length(GLOB.player_list) - MINIMUM_POP_FOR_EXTRA_DELAY) / (MAXIMUM_POP_FOR_EXTRA_DELAY - MINIMUM_POP_FOR_EXTRA_DELAY)), 0, 1)
 	extra_delay_based_on_pop = MAXIMUM_EXTRA_DELAY * pop_percentage
 
 	for(var/datum/round_event/E in events_list)

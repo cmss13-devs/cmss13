@@ -86,7 +86,7 @@
 		if("admin_holder")
 			hsrc = admin_holder
 		if("mhelp")
-			var/client/thread_author = directory[href_list["mhelp_key"]]
+			var/client/thread_author = GLOB.directory[href_list["mhelp_key"]]
 			if(thread_author)
 				var/datum/mentorhelp/help_thread = thread_author.current_mhelp
 				hsrc = help_thread
@@ -169,14 +169,14 @@
 	to_chat_forced(src, SPAN_WARNING("If the title screen is black, resources are still downloading. Please be patient until the title screen appears."))
 
 
-	clients += src
-	directory[ckey] = src
+	GLOB.clients += src
+	GLOB.directory[ckey] = src
 	player_entity = setup_player_entity(ckey)
 
 	//Admin Authorisation
 	admin_holder = admin_datums[ckey]
 	if(admin_holder)
-		admins += src
+		GLOB.admins += src
 		admin_holder.owner = src
 	add_pref_verbs()
 	//preferences datum - also holds some persistant data for the client (because we may as well keep these datums to a minimum)
@@ -275,9 +275,9 @@
 
 	if(admin_holder)
 		admin_holder.owner = null
-		admins -= src
-	directory -= ckey
-	clients -= src
+		GLOB.admins -= src
+	GLOB.directory -= ckey
+	GLOB.clients -= src
 
 	. = ..()
 

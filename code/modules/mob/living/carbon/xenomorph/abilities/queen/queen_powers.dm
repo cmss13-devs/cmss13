@@ -246,6 +246,8 @@
 					target.gain_health(200)
 					X.queen_ability_cooldown = world.time + 150 //15 seconds
 					to_chat(X, SPAN_XENONOTICE("You channel your plasma to heal [target]'s wounds."))
+					target.visible_message(SPAN_BOLDNOTICE("Ýou feel a presence surrounding [target] as its wounds quickly seal up!"))	//marines probably should know if a xeno gets healed
+					target.flick_heal_overlay(SECONDS_2, "#D9F500")	//it's already hard enough to gauge health without hp overlays!
 			else
 
 				to_chat(X, SPAN_WARNING("[target] is at full health."))

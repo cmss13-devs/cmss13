@@ -656,12 +656,16 @@
 		var/total_shield_amount = shield_amount + bonus_shield
 
 		if (X.observed_xeno != null)
-			to_chat(X, SPAN_XENOHIGHDANGER("You cannot heal [targetXeno] as effectively over distance!"))
+			to_chat(X, SPAN_XENOHIGHDANGER("You cannot shield [targetXeno] as effectively over distance!"))
 			total_shield_amount = total_shield_amount/4
-
-		to_chat(X, SPAN_XENODANGER("You bolster the defenses of [targetXeno]!"))
+			targetXeno.visible_message(SPAN_BOLDNOTICE("[targetXeno]'s exoskeleton shimmers for a fraction of a second."))//marines probably should know if a xeno gets healed
+		else //so both visible messages don't appear at the same time
+			targetXeno.visible_message(SPAN_BOLDNOTICE("[X] points at [targetXeno], and it shudders as its exoskeleton shimmers for a second!")) //this one is a bit less important than healing and rejuvenating 
+		to_chat(X, SPAN_XENODANGER("You bolster the defenses of [targetXeno]!"))	//but i imagine it'll be useful for predators, survivors and for battle flavor
 		to_chat(targetXeno, SPAN_XENOHIGHDANGER("You feel your defenses bolstered by [X]!"))
 		targetXeno.add_xeno_shield(total_shield_amount, XENO_SHIELD_SOURCE_WARDEN_PRAE)
+		targetXeno.xeno_jitter(SECONDS_1)
+		targetXeno.flick_heal_overlay(SECONDS_1, "#00F5DB") //D9F500
 		use_plasma = TRUE
 
 	else if (curr_effect_type == WARDEN_HEAL_HP)
@@ -669,7 +673,7 @@
 			to_chat(X, SPAN_XENODANGER("You must be within touching distance of [targetXeno]!"))
 			return
 		if (targetXeno.on_fire)
-			to_chat(X, SPAN_XENOWARNING("You cannot heal xenos that are on fire!"))
+			to_chat(X, SPAN_XENOWARNING("You cannot heal sisters that are on fire!"))
 			return
 
 		var/bonus_heal = 0
@@ -689,7 +693,9 @@
 		to_chat(X, SPAN_XENODANGER("You heal [targetXeno]!"))
 		to_chat(targetXeno, SPAN_XENOHIGHDANGER("You are healed by [X]!"))
 		targetXeno.gain_health(heal_amount + bonus_heal)
-		use_plasma = TRUE
+		targetXeno.visible_message(SPAN_BOLDNOTICE("[X] places its claws on [targetXeno], and its wounds are quickly sealed!"))	//marines probably should know if a xeno gets healed
+		use_plasma = TRUE	//it's already hard enough to gauge health without hp showing on the mob 
+		targetXeno.flick_heal_overlay(SECONDS_2, "#D9F500")//so the visible_message and recovery overlay will warn marines and possibly predators that the xenomorph has been healed!
 
 	else if (curr_effect_type == WARDEN_HEAL_DEBUFFS)
 		if (X.observed_xeno != null)
@@ -706,6 +712,9 @@
 
 		to_chat(X, SPAN_XENODANGER("You rejuvenate [targetXeno]!"))
 		to_chat(targetXeno, SPAN_XENOHIGHDANGER("You are rejuvenated by [X]!"))
+		targetXeno.visible_message(SPAN_BOLDNOTICE("[X] points at [targetXeno], and it spasms as it recuperates unnaturally quickly!"))	//marines probably should know if a xeno gets rejuvenated
+		targetXeno.xeno_jitter(SECONDS_1) //it might confuse them as to why the queen got up half a second after being AT rocketed, and give them feedback on the Praetorian rejuvenating
+		targetXeno.flick_heal_overlay(SECONDS_1, "#F5007A") //therefore making the Praetorian a priority target
 		targetXeno.SetKnockedout(0)
 		targetXeno.SetStunned(0)
 		targetXeno.SetKnockeddown(0)
@@ -713,10 +722,9 @@
 		targetXeno.SetSlowed(0)
 		targetXeno.SetSuperslowed(0)
 		use_plasma = TRUE
-
 	if (use_plasma)
 		use_plasma_owner()
 
 	apply_cooldown()
-	..()
+	..() 
 	return

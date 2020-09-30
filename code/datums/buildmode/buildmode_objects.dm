@@ -22,7 +22,7 @@
     var/obj/effect/buildholder/master
     var/client/cl
 
-/obj/effect/bmode/Initialize(mapload, loc, obj/effect/buildholder/H, client/C)
+/obj/effect/bmode/Initialize(mapload, obj/effect/buildholder/H, client/C)
     . = ..()
     if(!istype(H))
         qdel(src)

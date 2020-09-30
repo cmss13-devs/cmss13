@@ -31,7 +31,7 @@
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/flags_embryo = NO_FLAGS
 
-/obj/item/clothing/mask/facehugger/Initialize(mapload, loc, hive)
+/obj/item/clothing/mask/facehugger/Initialize(mapload, hive)
 	. = ..()
 	if (hive)
 		hivenumber = hive

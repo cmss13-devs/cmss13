@@ -24,7 +24,7 @@
 	..()
 	return QDEL_HINT_IWILLGC
 
-/obj/effect/decal/cleanable/blood/Initialize(mapload, location, b_color)
+/obj/effect/decal/cleanable/blood/Initialize(mapload, b_color)
 	if(b_color)
 		basecolor = b_color
 	update_icon()

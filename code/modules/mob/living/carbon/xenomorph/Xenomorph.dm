@@ -268,7 +268,7 @@
 	//Taken from update_icon for all xeno's
 	var/list/overlays_standing[X_TOTAL_LAYERS]
 
-/mob/living/carbon/Xenomorph/Initialize(mapload, new_loc, mob/living/carbon/Xenomorph/oldXeno, h_number)
+/mob/living/carbon/Xenomorph/Initialize(mapload, mob/living/carbon/Xenomorph/oldXeno, h_number)
 	var/area/A = get_area(src)
 	if(A && A.statistic_exempt)
 		statistic_exempt = TRUE
@@ -294,7 +294,7 @@
 		SStracking.set_leader("hive_[hivenumber]", src)
 	SStracking.start_tracking("hive_[hivenumber]", src)
 
-	..(new_loc)
+	. = ..()
 	//WO GAMEMODE
 	if(map_tag == MAP_WHISKEY_OUTPOST)
 		hardcore = 1 //Prevents healing and queen evolution

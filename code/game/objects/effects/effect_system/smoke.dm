@@ -254,7 +254,7 @@
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/gas_damage = 20
 
-/obj/effect/particle_effect/smoke/xeno_burn/Initialize(mapload, loc, amount, source, source_mob)
+/obj/effect/particle_effect/smoke/xeno_burn/Initialize(mapload, amount, source, source_mob)
 	var/mob/living/carbon/Xenomorph/X = source_mob
 	if (istype(X) && X.hivenumber)
 		hivenumber = X.hivenumber

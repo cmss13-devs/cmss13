@@ -12,7 +12,7 @@
 
 	var/protection_level = TURF_PROTECTION_CAS
 
-/obj/effect/alien/resin/special/pylon/Initialize(mapload, loc, hive_ref)
+/obj/effect/alien/resin/special/pylon/Initialize(mapload, hive_ref)
 	. = ..()
 
 	replace_node()

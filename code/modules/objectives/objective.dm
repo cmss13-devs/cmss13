@@ -28,7 +28,7 @@
 		R.enables_objectives -= src
 	for(var/datum/cm_objective/E in enables_objectives)
 		E.required_objectives -= src
-	..()
+	return ..()
 
 /datum/cm_objective/proc/Initialize() // initial setup after the map has loaded
 

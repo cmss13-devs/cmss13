@@ -6,7 +6,7 @@
 	icon_state = "medcomp"
 	density = TRUE
 	req_one_access = list(ACCESS_MARINE_MEDBAY, ACCESS_WY_CORPORATE)
-	circuit = "/obj/item/circuitboard/computer/med_data"
+	circuit = /obj/item/circuitboard/computer/med_data
 	var/obj/item/card/id/scan = null
 	var/last_user_name = ""
 	var/last_user_rank = ""

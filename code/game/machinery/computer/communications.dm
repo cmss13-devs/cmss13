@@ -23,7 +23,7 @@
 	desc = "This can be used for various important functions."
 	icon_state = "comm"
 	req_access = list(ACCESS_MARINE_BRIDGE)
-	circuit = "/obj/item/circuitboard/computer/communications"
+	circuit = /obj/item/circuitboard/computer/communications
 	unslashable = TRUE
 	unacidable = TRUE
 

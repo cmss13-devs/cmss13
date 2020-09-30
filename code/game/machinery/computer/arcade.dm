@@ -3,7 +3,7 @@
 	desc = "Two years after the average high school teenager Josh transformed into the powerful ninja 'Black Donnovan' and defeated the evil forces of Colonel Ranchenko and his UPP experiments to save his captured ninja girlfriend Reino, chaos is unleashed again on the world. Josh's Canadian cousin, transforming into the powerful ninja 'Fury Fuhrer', has created a world in Florida no longer exists. Josh once again transforms into 'Black Donnovan' to fight against Fury Fuhrer's legions of goons and restore the hellscape world to its former glory."
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "arcade"
-	circuit = "/obj/item/circuitboard/computer/arcade"
+	circuit = /obj/item/circuitboard/computer/arcade
 	unacidable = FALSE
 	density = TRUE
 	var/enemy_name = "Fury Fuhrer"

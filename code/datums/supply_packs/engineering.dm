@@ -8,7 +8,7 @@ ENGINEERING
 	contains = list(/obj/item/stack/sandbags_empty)
 	amount = 50
 	cost = RO_PRICE_VERY_CHEAP
-	containertype = "/obj/structure/closet/crate/supply"
+	containertype = /obj/structure/closet/crate/supply
 	containername = "empty sandbags crate"
 	group = "Engineering"
 
@@ -20,7 +20,7 @@ ENGINEERING
 					/obj/item/tool/shovel/etool,
 					/obj/item/tool/shovel/etool)
 	cost = RO_PRICE_CHEAP
-	containertype = "/obj/structure/closet/crate/supply"
+	containertype = /obj/structure/closet/crate/supply
 	containername = "sandbags construction kit"
 	group = "Engineering"
 

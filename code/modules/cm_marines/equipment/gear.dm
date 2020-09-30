@@ -288,7 +288,7 @@
 	name = "\improper Weston-Yamada brand MRE"
 	desc = "A prepackaged, long-lasting food box from Weston-Yamada Industries.\nOn the box is the Weston-Yamada logo, with a slogan surrounding it: \n<b>WESTON-YAMADA. BUILDING BETTER LUNCHES</b>"
 	icon_state = "mre2"
-	can_hold = list("/obj/item/reagent_container/food/snacks")
+	can_hold = list(/obj/item/reagent_container/food/snacks)
 	w_class = SIZE_LARGE
 
 /obj/item/storage/box/wy_mre/Initialize()

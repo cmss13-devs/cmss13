@@ -110,7 +110,7 @@ var/global/list/obj/structure/machinery/telecomms/telecomms_list = list()
 	use_power = 1
 	idle_power_usage = 600
 	machinetype = 1
-	circuitboard = "/obj/item/circuitboard/machine/telecomms/receiver"
+	circuitboard = /obj/item/circuitboard/machine/telecomms/receiver
 
 /*
 	The HUB idles until it receives information. It then passes on that information
@@ -132,7 +132,7 @@ var/global/list/obj/structure/machinery/telecomms/telecomms_list = list()
 	use_power = 1
 	idle_power_usage = 1600
 	machinetype = 7
-	circuitboard = "/obj/item/circuitboard/machine/telecomms/hub"
+	circuitboard = /obj/item/circuitboard/machine/telecomms/hub
 	long_range_link = 1
 	netspeed = 40
 
@@ -155,7 +155,7 @@ var/global/list/obj/structure/machinery/telecomms/telecomms_list = list()
 	use_power = 1
 	idle_power_usage = 600
 	machinetype = 8
-	circuitboard = "/obj/item/circuitboard/machine/telecomms/relay"
+	circuitboard = /obj/item/circuitboard/machine/telecomms/relay
 	netspeed = 5
 	long_range_link = 1
 	var/broadcasting = 1
@@ -181,7 +181,7 @@ var/global/list/obj/structure/machinery/telecomms/telecomms_list = list()
 	use_power = 1
 	idle_power_usage = 1000
 	machinetype = 2
-	circuitboard = "/obj/item/circuitboard/machine/telecomms/bus"
+	circuitboard = /obj/item/circuitboard/machine/telecomms/bus
 	netspeed = 40
 	var/change_frequency = 0
 
@@ -204,7 +204,7 @@ var/global/list/obj/structure/machinery/telecomms/telecomms_list = list()
 	idle_power_usage = 600
 	machinetype = 3
 	delay = 5
-	circuitboard = "/obj/item/circuitboard/machine/telecomms/processor"
+	circuitboard = /obj/item/circuitboard/machine/telecomms/processor
 	var/process_mode = 1 // 1 = Uncompress Signals, 0 = Compress Signals
 
 /*
@@ -225,7 +225,7 @@ var/global/list/obj/structure/machinery/telecomms/telecomms_list = list()
 	use_power = 1
 	idle_power_usage = 300
 	machinetype = 4
-	circuitboard = "/obj/item/circuitboard/machine/telecomms/server"
+	circuitboard = /obj/item/circuitboard/machine/telecomms/server
 	var/list/log_entries = list()
 	var/list/stored_names = list()
 	var/list/TrafficActions = list()

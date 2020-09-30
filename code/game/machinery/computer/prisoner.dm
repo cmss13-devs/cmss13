@@ -6,7 +6,7 @@
 	icon_state = "explosive"
 	density = TRUE
 	req_access = list(ACCESS_MARINE_BRIG)
-	circuit = "/obj/item/circuitboard/computer/prisoner"
+	circuit = /obj/item/circuitboard/computer/prisoner
 	var/id = 0.0
 	var/temp = null
 	var/status = 0

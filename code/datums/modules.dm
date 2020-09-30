@@ -14,7 +14,7 @@
 
 
 var/list/modules = list(			// global associative list
-"/obj/structure/machinery/power/apc" = "card_reader,power_control,id_auth,cell_power,cell_charge")
+	/obj/structure/machinery/power/apc = "card_reader,power_control,id_auth,cell_power,cell_charge")
 
 
 /datum/module/New(var/obj/O)
@@ -35,14 +35,14 @@ var/list/modules = list(			// global associative list
 	modules[type] = modtextlist
 
 /datum/moduletypes/proc/inmodlist(var/type)
-	return ("[type]" in modules)
+	return type in modules
 
 /datum/moduletypes/proc/getbitmask(var/type)
-	var/count = modcount["[type]"]
+	var/count = modcount[type]
 	if(count)
 		return 2**count-1
 
-	var/modtext = modules["[type]"]
+	var/modtext = modules[type]
 	var/num = 1
 	var/pos = 1
 
@@ -54,8 +54,8 @@ var/list/modules = list(			// global associative list
 			pos++
 			num++
 
-	modcount += "[type]"
-	modcount["[type]"] = num
+	modcount += type
+	modcount[type] = num
 
 	return 2**num-1
 

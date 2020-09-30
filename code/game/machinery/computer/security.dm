@@ -5,7 +5,7 @@
 	desc = "Used to view and edit personnel's security records"
 	icon_state = "security"
 	req_one_access = list(ACCESS_MARINE_BRIG, ACCESS_WY_CORPORATE, ACCESS_MARINE_BRIDGE)
-	circuit = "/obj/item/circuitboard/computer/secure_data"
+	circuit = /obj/item/circuitboard/computer/secure_data
 	var/obj/item/card/id/scan = null
 	var/obj/item/device/clue_scanner/scanner = null
 	var/rank = null

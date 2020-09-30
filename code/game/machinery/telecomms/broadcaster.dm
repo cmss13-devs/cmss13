@@ -18,7 +18,7 @@
 	idle_power_usage = 25
 	machinetype = 5
 	delay = 7
-	circuitboard = "/obj/item/circuitboard/machine/telecomms/broadcaster"
+	circuitboard = /obj/item/circuitboard/machine/telecomms/broadcaster
 	tcomms_machine = TRUE
 
 

@@ -212,7 +212,7 @@
 		if(H.health > HEALTH_THRESHOLD_DEAD)
 			user.visible_message(SPAN_NOTICE("[htmlicon(src, viewers(src))] \The [src] beeps: Defibrillation successful."))
 			user.track_life_saved(user.job)
-			raiseEvent(H, EVENT_REVIVED)
+			SEND_SIGNAL(H, COMSIG_HUMAN_REVIVED)
 			H.handle_revive()
 			to_chat(H, SPAN_NOTICE("You suddenly feel a spark and your consciousness returns, dragging you back to the mortal plane."))
 		else

@@ -112,7 +112,7 @@ obj/structure/sign/poster/attackby(obj/item/W as obj, mob/user as mob)
 
 	to_chat(user, SPAN_NOTICE("You place the poster!"))
 	
-	raiseEvent(GLOBAL_EVENT, EVENT_PROPAGANDA_PLANTED + "\ref[user]", get_area(user))
+	SEND_SIGNAL(P, COMSIG_POSTER_PLACED, user)
 
 /datum/poster
 	// Name suffix. Poster - [name]

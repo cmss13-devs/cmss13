@@ -2108,3 +2108,7 @@ var/list/WALLITEMS = list(
 			else
 				return "\[[url_encode(thing.tag)]\]"
 	return "\ref[input]"
+
+/proc/CallAsync(datum/source, proctype, list/arguments)
+	set waitfor = FALSE
+	return call(source, proctype)(arglist(arguments))

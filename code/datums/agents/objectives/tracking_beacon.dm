@@ -23,7 +23,7 @@
 			if(!H.equip_to_slot_if_possible(tracker, WEAR_R_HAND))
 				tracker.loc = H.loc
 
-	registerListener(GLOBAL_EVENT, EVENT_TRACKING_PLANTED + "\ref[tracker]", "\ref[src]_\ref[tracker]", CALLBACK(src, .proc/placed_tracker))
+	RegisterSignal(tracker, list(COMSIG_TRACKING_PLANTED, COMSIG_TRACKING_DISARMED), .proc/placed_tracker)
 
 /datum/agent_objective/tracking_beacon/generate_objective_body_message()
 	picked_message = pick(messages)
@@ -35,6 +35,7 @@
 	description = "[picked_message] placing the tracking device in [initial(place.name)]. Make sure it doesn't get found."
 
 /datum/agent_objective/tracking_beacon/proc/placed_tracker()
+	SIGNAL_HANDLER
 	if(tracker.planted && istypestrict(get_area(tracker), area_to_plant_type))
 		completed = TRUE
 	else

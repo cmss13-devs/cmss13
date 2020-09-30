@@ -386,7 +386,7 @@
 	for(var/i = 0, i <= 5, i++)
 		var/datum/reagent/new_component = chemical_reagents_list[R.add_component()]
 		//Make sure we don't have an identical reaction and that the component is identified
-		if(R.check_duplicate() || new_component.chemclass >= CHEM_CLASS_SPECIAL)
+		if(R.check_duplicate() || R.check_reaction_uses_all_default_medical() || new_component.chemclass >= CHEM_CLASS_SPECIAL)
 			R.required_reagents = old_reaction.Copy()
 			if(R.required_reagents.len > 2)
 				R.required_reagents -= pick(R.required_reagents)

@@ -43,4 +43,13 @@
 					if(required_reagents.Find(B))
 						matches++
 	if(matches >= required_reagents.len)
-		return TRUE	
+		return TRUE
+
+// As funny as it may sound, spawning a chemical which's recipe is Bicaridine, Tramadol and Kelotane that instantly kills or cripple marine is not nice.
+// To prevent such a situation, if ALL reagent inside a reaction are medical chemicals, the recipe is considered flawed.
+/datum/chemical_reaction/proc/check_reaction_uses_all_default_medical()
+	for(var/R in required_reagents)
+		var/datum/reagent/M = chemical_reagents_list[R]
+		if(!(initial(M.flags) & REAGENT_TYPE_MEDICAL))
+			return FALSE
+	return TRUE

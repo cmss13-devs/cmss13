@@ -38,7 +38,7 @@
 			modifier = 1
 		add_component(null, modifier)
 		//make sure the final recipe is not already being used. If it is, start over.
-		if(i==3 && check_duplicate())
+		if(i==3 && (check_duplicate() || check_reaction_uses_all_default_medical()))
 			required_reagents = list()
 			i = 0
 

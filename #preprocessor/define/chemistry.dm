@@ -75,6 +75,9 @@
 #define PLASMA_NEUROTOXIN 		"neurotoxinplasma"
 #define PLASMA_ROYAL 			"royalplasma"
 
+// Flags for Reagent
+#define REAGENT_TYPE_MEDICAL	1 // Used to restrict recipes in the generator from employing all reagents of this type
+
 /*
 	properties defines
 */

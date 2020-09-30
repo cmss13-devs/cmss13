@@ -1,9 +1,10 @@
 
 // All reagents related to medicine
 
+/datum/reagent/medical
+	flags = REAGENT_TYPE_MEDICAL
 
-
-/datum/reagent/inaprovaline
+/datum/reagent/medical/inaprovaline
 	name = "Inaprovaline"
 	id = "inaprovaline"
 	description = "Inaprovaline is a synaptic stimulant and cardiostimulant. Commonly used to stabilize patients. If the lungs are functional, inaprovaline will allow respiration while under cardiac arrest. Slows down bleeding and acts as a weak painkiller. Overdosing may cause severe damage to cardiac tissue."
@@ -15,7 +16,7 @@
 	chemclass = CHEM_CLASS_COMMON
 	properties = list(PROPERTY_CARDIOSTABILIZING = 3)
 
-/datum/reagent/ryetalyn
+/datum/reagent/medical/ryetalyn
 	name = "Ryetalyn"
 	id = "ryetalyn"
 	description = "Ryetalyn repairs genetic defects, mutations and abnormalities through a catalytic process. Used to treat genetic eye and vision problems. Overdosing on ryetalyn is very toxic and can impair sense of balance."
@@ -26,7 +27,7 @@
 	chemclass = CHEM_CLASS_UNCOMMON
 	properties = list(PROPERTY_AIDING = 2)
 
-/datum/reagent/paracetamol
+/datum/reagent/medical/paracetamol
 	name = "Paracetamol"
 	id = "paracetamol"
 	description = "Also known as Tylenol, this is a moderate long lasting painkiller that has been commonly available since 1950. Paracetamol is capable of both analgesic and antipyretic activity but no anti-inflammatory action. Overdosing on paracetamol is toxic, may induce hallucinations, and cause acute liver failure."
@@ -39,7 +40,7 @@
 	chemclass = CHEM_CLASS_UNCOMMON
 	properties = list(PROPERTY_PAINKILLING = 2)
 
-/datum/reagent/tramadol
+/datum/reagent/medical/tramadol
 	name = "Tramadol"
 	id = "tramadol"
 	description = "Tramadol is a centrally acting analgesic and is considered to be a relatively safe. The analgesic potency is claimed to be about one tenth that of morphine. It is used to treat both acute and chronic pain of moderate to (moderately) severe intensity. Tramadol is generally considered as a medicinal drug with a low potential for dependence relative to morphine. Overdosing on tramadol is highly toxic."
@@ -52,7 +53,7 @@
 	chemclass = CHEM_CLASS_COMMON
 	properties = list(PROPERTY_PAINKILLING = 5)
 
-/datum/reagent/oxycodone
+/datum/reagent/medical/oxycodone
 	name = "Oxycodone"
 	id = "oxycodone"
 	description = "Oxycodone is an opioid agonist with addiction potential similar to that of morphine. It is approved for the treatment of patients with moderate to severe pain who are expected to need continuous opioids for an extended period of time. Overdosing on oxycodone can cause hallucinations, brain damage and be highly toxic."
@@ -65,7 +66,7 @@
 	chemclass = CHEM_CLASS_UNCOMMON
 	properties = list(PROPERTY_PAINKILLING = 8)
 
-/datum/reagent/sterilizine
+/datum/reagent/medical/sterilizine
 	name = "Sterilizine"
 	id = "sterilizine"
 	description = "A sterilizer used to clean wounds in preparation for surgery. Its use has mostly been outclassed to the cheaper alternative of space cleaner."
@@ -73,7 +74,7 @@
 	color = "#C8A5DC" // rgb: 200, 165, 220
 	chemclass = CHEM_CLASS_UNCOMMON
 
-/datum/reagent/leporazine
+/datum/reagent/medical/leporazine
 	name = "Leporazine"
 	id = "leporazine"
 	description = "A drug used to treat hypothermia and hyperthermia. Stabilizes patient body temperture. Prevents the use of cryogenics. Overdosing on leporazine can cause extreme drowsyness."
@@ -85,7 +86,7 @@
 	chemclass = CHEM_CLASS_UNCOMMON
 	properties = list(PROPERTY_THERMOSTABILIZING = 2)
 
-/datum/reagent/kelotane
+/datum/reagent/medical/kelotane
 	name = "Kelotane"
 	id = "kelotane"
 	description = "Common medicine used to treat burns, caustic and corrosive trauma. Overdosing on kelotane can cause internal tissue damage."
@@ -109,7 +110,7 @@
 	chemclass = CHEM_CLASS_UNCOMMON
 	properties = list(PROPERTY_ANTICORROSIVE = 3)
 
-/datum/reagent/dexalin
+/datum/reagent/medical/dexalin
 	name = "Dexalin"
 	id = "dexalin"
 	description = "Dexalin is used in the treatment of oxygen deprivation by feeding oxygen to red blood cells directly inside the bloodstream. Used as an antidote to lexorin poisoning."
@@ -121,7 +122,7 @@
 	chemclass = CHEM_CLASS_COMMON
 	properties = list(PROPERTY_OXYGENATING = 4)
 
-/datum/reagent/dexalinp
+/datum/reagent/medical/dexalinp
 	name = "Dexalin Plus"
 	id = "dexalinp"
 	description = "Dexalin Plus is an upgraded form of Dexalin with added iron and carbon to quicken the rate which oxygen binds to the hemoglobin in red blood cells."
@@ -133,7 +134,7 @@
 	chemclass = CHEM_CLASS_UNCOMMON
 	properties = list(PROPERTY_OXYGENATING = 6)
 
-/datum/reagent/tricordrazine
+/datum/reagent/medical/tricordrazine
 	name = "Tricordrazine"
 	id = "tricordrazine"
 	description = "Tricordrazine is a highly potent stimulant, originally derived from cordrazine. Can be used to treat a wide range of injuries."
@@ -145,7 +146,7 @@
 	chemclass = CHEM_CLASS_UNCOMMON
 	properties = list(PROPERTY_NEOGENETIC = 1, PROPERTY_ANTICORROSIVE = 1, PROPERTY_ANTITOXIC = 1, PROPERTY_OXYGENATING = 1)
 
-/datum/reagent/anti_toxin
+/datum/reagent/medical/anti_toxin
 	name = "Dylovene"
 	id = "anti_toxin"
 	description = "General use anti-toxin, that neutralizes most toxins in the bloodstream. Commonly used in many advanced chemicals. Can be used as a mild anti-hallucinogen and to reduce tiredness."
@@ -157,7 +158,7 @@
 	chemclass = CHEM_CLASS_COMMON
 	properties = list(PROPERTY_ANTITOXIC = 2, PROPERTY_ANTIHALLUCINOGENIC = 2)
 
-/datum/reagent/adminordrazine //An OP chemical for admins
+/datum/reagent/medical/adminordrazine //An OP chemical for admins
 	name = "Adminordrazine"
 	id = "adminordrazine"
 	description = "A magical substance created by gods to dissolve extreme amounts of salt."
@@ -165,7 +166,7 @@
 	color = "#C8A5DC" // rgb: 200, 165, 220
 	properties = list(PROPERTY_OMNIPOTENT = 2)
 
-/datum/reagent/thwei //OP yautja chem
+/datum/reagent/medical/thwei //OP yautja chem
 	name = "Thwei"
 	id = "thwei"
 	description = "A strange, alien liquid."
@@ -185,7 +186,7 @@
 						PROPERTY_FOCUSING = 6,
 						PROPERTY_CURING = 4)
 
-/datum/reagent/synaptizine
+/datum/reagent/medical/synaptizine
 	name = "Synaptizine"
 	id = "synaptizine"
 	description = "A controlled nervestimulant that treats hallucinations, drowsiness, improves reaction time and acts as a weak painkiller. Is mildly toxic and overdosing will cause extreme toxin damage."
@@ -198,7 +199,7 @@
 	chemclass = CHEM_CLASS_UNCOMMON
 	properties = list(PROPERTY_PAINKILLING = 1, PROPERTY_NERVESTIMULATING = 2, PROPERTY_ANTIHALLUCINOGENIC = 2, PROPERTY_TOXIC = 1)
 
-/datum/reagent/neuraline //injected by neurostimulator implant
+/datum/reagent/medical/neuraline //injected by neurostimulator implant
 	name = "Neuraline"
 	id = "neuraline"
 	description = "A chemical cocktail tailored to enhance or dampen specific neural processes."
@@ -211,7 +212,7 @@
 	chemclass = CHEM_CLASS_RARE
 	properties = list(PROPERTY_NERVESTIMULATING = 5)
 
-/datum/reagent/arithrazine
+/datum/reagent/medical/arithrazine
 	name = "Arithrazine"
 	id = "arithrazine"
 	description = "A stabilized variant of dylovene. Its toxin-cleansing properties are weakened and there are harmful side effects, but it does not react with other compounds to create toxin."
@@ -223,7 +224,7 @@
 	chemclass = CHEM_CLASS_UNCOMMON
 	properties = list(PROPERTY_ANTITOXIC = 1, PROPERTY_BIOCIDIC = 1)
 
-/datum/reagent/russianred
+/datum/reagent/medical/russianred
 	name = "Russian Red"
 	id = "russianred"
 	description = "An emergency radiation treatment, however it has extreme side effects."
@@ -235,7 +236,7 @@
 	scannable = 1
 	properties = list(PROPERTY_ANTITOXIC = 1, PROPERTY_BIOCIDIC = 2)
 
-/datum/reagent/alkysine
+/datum/reagent/medical/alkysine
 	name = "Alkysine"
 	id = "alkysine"
 	description = "Alkysine is a drug used to lessen and heal the damage to neurological tissue after a catastrophic injury. Small amounts can repair extensive brain trauma. Functions as a very weak painkiller. Overdosing on alkysine is extremely toxic."
@@ -248,7 +249,7 @@
 	chemclass = CHEM_CLASS_UNCOMMON
 	properties = list(PROPERTY_NEUROPEUTIC = 2)
 
-/datum/reagent/imidazoline
+/datum/reagent/medical/imidazoline
 	name = "Imidazoline"
 	id = "imidazoline"
 	description = "Used for treating non-genetic eye trauma. Generally prescribed as treatment for most cases of eye trauma instead of performing a surgical operation."
@@ -260,7 +261,7 @@
 	chemclass = CHEM_CLASS_UNCOMMON
 	properties = list(PROPERTY_OCULOPEUTIC = 2)
 
-/datum/reagent/peridaxon
+/datum/reagent/medical/peridaxon
 	name = "Peridaxon"
 	id = "peridaxon"
 	description = "Prevents symptoms caused by damaged internal organs while in the bloodstream, but does not fix the organ damage. Recommended for patients awaiting internal organ surgery. Overdosing on peridaxon will cause internal tissue damage."
@@ -273,7 +274,7 @@
 	chemclass = CHEM_CLASS_COMMON
 	properties = list(PROPERTY_UNKNOWN = 4) //handled by organ code
 
-/datum/reagent/bicaridine // yes it cures IB, it's located in some other part of wound code for whatever reason
+/datum/reagent/medical/bicaridine // yes it cures IB, it's located in some other part of wound code for whatever reason
 	name = "Bicaridine"
 	id = "bicaridine"
 	description = "Bicaridine is an analgesic medication and can be used to treat severe external blunt trauma and to stabilize patients. Overdosing will cause caustic burns, but can mend internal broken bloodvessels."
@@ -285,7 +286,7 @@
 	chemclass = CHEM_CLASS_COMMON
 	properties = list(PROPERTY_NEOGENETIC = 2)
 
-/datum/reagent/quickclot
+/datum/reagent/medical/quickclot
 	name = "Quick Clot"
 	id = "quickclot"
 	description = "Vastly improves the blood's natural ability to coagulate and stop bleeding by hightening platelet production and effectiveness. Overdosing will cause extreme blood clotting, resulting in severe tissue damage."
@@ -298,7 +299,7 @@
 	chemclass = CHEM_CLASS_UNCOMMON
 	properties = list(PROPERTY_UNKNOWN = 6) //handled by blood code
 
-/datum/reagent/adrenaline
+/datum/reagent/medical/adrenaline
 	name = "Epinephrine"
 	id = "adrenaline"
 	description = "A natural muscle and heart stimulant. Useful for restarting the heart. Overdosing may stress the heart and cause tissue damage."
@@ -312,7 +313,7 @@
 	chemclass = CHEM_CLASS_COMMON
 	properties = list(PROPERTY_PAINKILLING = 1.5, PROPERTY_MUSCLESTIMULATING = 1, PROPERTY_ELECTROGENETIC = 4)
 
-/datum/reagent/hyperzine
+/datum/reagent/medical/hyperzine
 	name = "Hyperzine"
 	id = "hyperzine"
 	description = "A potent long lasting muscle stimulant. Increases heart rate dramatically, which may damage cardiac tissue. Highly addictive. Controlled substance."
@@ -324,7 +325,7 @@
 	chemclass = CHEM_CLASS_UNCOMMON
 	properties = list(PROPERTY_MUSCLESTIMULATING = 2, PROPERTY_CARDIOTOXIC = 1)
 
-/datum/reagent/ultrazine
+/datum/reagent/medical/ultrazine
 	name = "Ultrazine"
 	id = "ultrazine"
 	description = "A highly-potent, long-lasting combination CNS and muscle stimulant. Extremely addictive."
@@ -336,7 +337,7 @@
 	chemclass = CHEM_CLASS_RARE
 	properties = list(PROPERTY_MUSCLESTIMULATING = 40, PROPERTY_ADDICTIVE = 8)
 
-/datum/reagent/stimulant
+/datum/reagent/medical/stimulant
 	name = "Stimulant"
 	id = "antag_stimulant"
 	description = "A highly-potent, long-lasting combination CNS and muscle stimulant."
@@ -348,7 +349,7 @@
 	chemclass = CHEM_CLASS_RARE
 	properties = list(PROPERTY_UNKNOWN = 1)
 
-/datum/reagent/cryoxadone
+/datum/reagent/medical/cryoxadone
 	name = "Cryoxadone"
 	id = "cryoxadone"
 	description = "Industrial grade cryogenic medicine. Treats most types of tissue damage. Its main limitation is that the patient's body temperature must be under 170K to metabolise correctly."
@@ -358,7 +359,7 @@
 	chemclass = CHEM_CLASS_UNCOMMON
 	properties = list(PROPERTY_CRYOMETABOLIZING = 2, PROPERTY_NEOGENETIC = 1, PROPERTY_ANTICORROSIVE = 1, PROPERTY_ANTITOXIC = 1, PROPERTY_ANTICARCINOGENIC = 1)
 
-/datum/reagent/cryoxadone/on_mob_life(mob/living/M)
+/datum/reagent/medical/cryoxadone/on_mob_life(mob/living/M)
 	. = ..()
 	if(!.) return
 	if(M.bodytemperature < 170)
@@ -367,7 +368,7 @@
 		M.heal_limb_damage(1,1)
 		M.apply_damage(-1, TOX)
 
-/datum/reagent/clonexadone
+/datum/reagent/medical/clonexadone
 	name = "Clonexadone"
 	id = "clonexadone"
 	description = "Advanced cryogenic medicine made from cryoxadone. Treats most types of tissue damage. Requires temperatures below 170K to to metabolise correctly."
@@ -377,7 +378,7 @@
 	chemclass = CHEM_CLASS_UNCOMMON
 	properties = list(PROPERTY_CRYOMETABOLIZING = 6, PROPERTY_NEOGENETIC = 3, PROPERTY_ANTICORROSIVE = 3, PROPERTY_ANTITOXIC = 3, PROPERTY_ANTICARCINOGENIC = 3)
 
-/datum/reagent/rezadone
+/datum/reagent/medical/rezadone
 	name = "Rezadone"
 	id = "rezadone"
 	description = "A powder derived from fish toxin, this substance can effectively treat genetic damage in humanoids, though excessive consumption has side effects."
@@ -388,7 +389,7 @@
 	scannable = 1
 	properties = list(PROPERTY_NEOGENETIC = 1, PROPERTY_AIDING = 3, PROPERTY_TOXIC = 2, PROPERTY_ANTICARCINOGENIC = 2)
 
-/datum/reagent/spaceacillin
+/datum/reagent/medical/spaceacillin
 	name = "Spaceacillin"
 	id = "spaceacillin"
 	description = "General use theta-lactam antibiotic. Prevents and cures mundane infections."
@@ -400,7 +401,7 @@
 	scannable = 1
 	properties = list(PROPERTY_UNKNOWN = 1)
 
-/datum/reagent/ethylredoxrazine	// FUCK YOU, ALCOHOL
+/datum/reagent/medical/ethylredoxrazine	// FUCK YOU, ALCOHOL
 	name = "Ethylredoxrazine"
 	id = "ethylredoxrazine"
 	description = "Neutralizes the effects of alcohol in the blood stream, by oxidizing it into water molecules. However, it does not stop immediate intoxication. Ethylredoxrazine being a powerful oxidizer, it becomes toxic in high doses."
@@ -412,7 +413,7 @@
 	properties = list(PROPERTY_FOCUSING = 3)
 
 ///////ANTIDEPRESSANTS///////
-/datum/reagent/antidepressant/methylphenidate
+/datum/reagent/medical/antidepressant/methylphenidate
 	name = "Methylphenidate"
 	id = "methylphenidate"
 	description = "A commonly prescribed psychostimulant that increases activity of the central nervous system. Often used to treat attention deficit hyperactivity disorder (ADHD) and narcolepsy. This drug improves performance primarily in the executive function in the prefrontal cortex (reasoning, inhibiting behaviors, organizing, problem solving, planning ect.)"
@@ -423,7 +424,7 @@
 	chemclass = CHEM_CLASS_UNCOMMON
 	properties = list(PROPERTY_PSYCHOSTIMULATING = 4)
 
-/datum/reagent/antidepressant/citalopram
+/datum/reagent/medical/antidepressant/citalopram
 	name = "Citalopram"
 	id = "citalopram"
 	description = "Citalopram is a drug used to treat depression, obsessive-compulsive disorder and panic disorder. It is considered safe for consumption and has been commonly available since 1998."
@@ -434,7 +435,7 @@
 	chemclass = CHEM_CLASS_UNCOMMON
 	properties = list(PROPERTY_PSYCHOSTIMULATING = 2)
 
-/datum/reagent/antidepressant/paroxetine
+/datum/reagent/medical/antidepressant/paroxetine
 	name = "Paroxetine"
 	id = "paroxetine"
 	description = "Very powerful antidepressant used to treat: major depressive disorder (MDD), obsessive-compulsive disorder (OCD), social anxiety disorder (SAD), panic disorder, posttraumatic stress disorder (PTSD), generalized anxiety disorder (GAD) and prenmenstrual dysphoric disorder (PMDD). Prolonged use may have side effects."
@@ -445,7 +446,7 @@
 	chemclass = CHEM_CLASS_UNCOMMON
 	properties = list(PROPERTY_PSYCHOSTIMULATING = 6, PROPERTY_HALLUCINOGENIC = 6)
 
-/datum/reagent/antized
+/datum/reagent/medical/antized
 	name = "Anti-Zed"
 	id = "antiZed"
 	description = "Destroy the zombie virus in living humans and prevents regeneration for those who have already turned."

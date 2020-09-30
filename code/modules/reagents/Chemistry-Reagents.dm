@@ -47,6 +47,7 @@
 	var/objective_value // How valuable it is to identify the chemical. (Only works on chemclass SPECIAL or ULTRA)
 	var/list/properties = list() //Decides properties
 	var/original_id //For tracing back
+	var/flags = 0 // Flags for misc. stuff
 	
 	var/deleted = FALSE //If the reagent was deleted
 

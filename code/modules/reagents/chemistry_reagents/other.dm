@@ -349,6 +349,7 @@
 	color = "#FFFFFF" // rgb: 255, 255, 255
 	chemclass = CHEM_CLASS_BASIC
 	properties = list(PROPERTY_NUTRITIOUS = 1)
+	flags = REAGENT_TYPE_MEDICAL
 
 /datum/reagent/glycerol
 	name = "Glycerol"
@@ -411,6 +412,7 @@
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_BASIC
 	properties = list(PROPERTY_HEMOGENIC = 3)
+	flags = REAGENT_TYPE_MEDICAL
 
 /datum/reagent/gold
 	name = "Gold"

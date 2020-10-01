@@ -83,7 +83,7 @@
 		return
 	J = RoleAuthority.roles_for_mode[role]
 	var/tpos = J.spawn_positions
-	var/num = input("How many slots role [J.title] should have?\nCurrently taken slots: [J.current_positions]\nTotal amount of slots opened this round: [J.total_positions_in_round]","Number:", tpos) as num|null
+	var/num = input("How many slots role [J.title] should have?\nCurrently taken slots: [J.current_positions]\nTotal amount of slots opened this round: [J.total_positions_so_far]","Number:", tpos) as num|null
 	if(!num)
 		return
 	if(!RoleAuthority.modify_role(J, num))

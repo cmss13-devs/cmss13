@@ -59,13 +59,18 @@
 
 /datum/job/marine/engineer/get_total_positions(var/latejoin=0)
 	var/slots = engi_slot_formula(get_total_marines())
+
+	if(slots <= total_positions_so_far)
+		slots = total_positions_so_far
+	else
+		total_positions_so_far = slots
+
 	if(latejoin)
 		for(var/datum/squad/sq in RoleAuthority.squads)
 			if(sq)
 				sq.max_engineers = slots
-		if(total_positions_in_round < slots * 4)
-			total_positions_in_round = slots * 4
-	return total_positions_in_round
+
+	return (slots*4)
 
 /datum/job/marine/engineer/equipped
 	flags_startup_parameters = ROLE_ADD_TO_SQUAD
@@ -93,13 +98,18 @@
 
 /datum/job/marine/medic/get_total_positions(var/latejoin=0)
 	var/slots = medic_slot_formula(get_total_marines())
+
+	if(slots <= total_positions_so_far)
+		slots = total_positions_so_far
+	else
+		total_positions_so_far = slots
+
 	if(latejoin)
 		for(var/datum/squad/sq in RoleAuthority.squads)
 			if(sq)
 				sq.max_medics = slots
-		if(total_positions_in_round < slots * 4)
-			total_positions_in_round = slots * 4
-	return total_positions_in_round
+
+	return (slots*4)
 
 /datum/job/marine/medic/equipped
 	flags_startup_parameters = ROLE_ADD_TO_SQUAD
@@ -133,11 +143,12 @@
 	var/positions = spawn_positions
 	if(latejoin)
 		positions = spec_slot_formula(get_total_marines())
-		if(total_positions_in_round < positions)
-			total_positions_in_round = positions
+		if(positions <= total_positions_so_far)
+			positions = total_positions_so_far
 		else
-			positions = total_positions_in_round
+			total_positions_so_far = positions
 	return positions
+
 
 /datum/job/marine/specialist/equipped
 	flags_startup_parameters = ROLE_ADD_TO_SQUAD
@@ -171,10 +182,10 @@
 	var/positions = spawn_positions
 	if(latejoin)
 		positions = sg_slot_formula(get_total_marines())
-		if(total_positions_in_round < positions)
-			total_positions_in_round = positions
+		if(positions <= total_positions_so_far)
+			positions = total_positions_so_far
 		else
-			positions = total_positions_in_round
+			total_positions_so_far = positions
 	return positions
 
 /datum/job/marine/smartgunner/equipped

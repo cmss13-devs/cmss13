@@ -355,7 +355,7 @@ roles willy nilly.
 		return
 	if(J.flags_startup_parameters & ROLE_WHITELISTED && !(roles_whitelist[M.ckey] & J.flags_whitelist))
 		return
-	if(J.total_positions != -1 && J.current_positions >= J.total_positions_in_round && J.get_total_positions(latejoin) <= J.current_positions)
+	if(J.total_positions != -1 && J.get_total_positions(latejoin) <= J.current_positions)
 		return
 	return 1
 
@@ -426,7 +426,7 @@ roles willy nilly.
 	if(amount <= J.current_positions) //we should be able to slot everyone
 		return 0
 	J.total_positions = amount
-	J.total_positions_in_round = amount
+	J.total_positions_so_far = amount
 	return 1
 
 //I'm not entirely sure why this proc exists. //TODO Figure this out.

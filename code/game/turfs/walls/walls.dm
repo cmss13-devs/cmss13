@@ -40,6 +40,12 @@
 	var/list/blend_objects = list(/obj/structure/machinery/door, /obj/structure/window_frame, /obj/structure/window/framed) // Objects which to blend with
 	var/list/noblend_objects = list(/obj/structure/machinery/door/window) //Objects to avoid blending with (such as children of listed blend objects.
 
+/turf/closed/wall/New()
+	. = ..()
+	
+	update_connections(TRUE)
+
+	update_icon()
 
 /turf/closed/wall/Initialize(mapload, ...)
 	. = ..()

@@ -69,7 +69,6 @@
 #define SS_INIT_TELEPORTER         13
 #define SS_INIT_LIGHTING           12
 #define SS_INIT_LANDMARK           11
-#define SS_INIT_MAPVIEW            10
 #define SS_INIT_DEFCON             9
 #define SS_INIT_LAW                6
 #define SS_INIT_FZ_TRANSITIONS     5
@@ -86,6 +85,7 @@
 #define SS_INIT_ENTITYMANAGER	  -26
 #define SS_INIT_PLAYTIME    	  -27
 #define SS_INIT_CORPSESPAWNER      -30
+#define SS_INIT_MAPVIEW            -31
 
 #define SS_PRIORITY_TIMER          700
 #define SS_PRIORITY_CHAT		   300

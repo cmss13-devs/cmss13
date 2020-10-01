@@ -71,10 +71,10 @@
 	var/positions = spawn_positions
 	if(latejoin)
 		positions = doc_slot_formula(get_total_marines())
-		if(total_positions_in_round < positions)
-			total_positions_in_round = positions
+		if(positions <= total_positions_so_far)
+			positions = total_positions_so_far
 		else
-			positions = total_positions_in_round
+			total_positions_so_far = positions
 	return positions
 
 /datum/job/civilian/doctor/generate_entry_message(mob/living/carbon/human/H)
@@ -104,11 +104,12 @@
 	var/positions = spawn_positions
 	if(latejoin)
 		positions = rsc_slot_formula(get_total_marines())
-		if(total_positions_in_round < positions)
-			total_positions_in_round = positions
+		if(positions <= total_positions_so_far)
+			positions = total_positions_so_far
 		else
-			positions = total_positions_in_round
+			total_positions_so_far = positions
 	return positions
+
 
 /datum/job/civilian/researcher/generate_entry_message(mob/living/carbon/human/H)
 	entry_message_body = "You are a civilian, and are not subject to follow military chain of command, but you do work for the USCM. You are tasked with researching and developing new medical treatments, helping your fellow doctors, and generally learning new things. Your role involves a lot of roleplaying, but you can perform the function of a regular doctor. Do not hand out things to marines without getting permission from your supervisor."
@@ -186,11 +187,12 @@
 	var/positions = spawn_positions
 	if(latejoin)
 		positions = synth_slot_formula(get_total_marines())
-		if(total_positions_in_round < positions)
-			total_positions_in_round = positions
+		if(positions <= total_positions_so_far)
+			positions = total_positions_so_far
 		else
-			positions = total_positions_in_round
+			total_positions_so_far = positions
 	return positions
+
 
 /datum/job/civilian/synthetic/generate_entry_message()
 	entry_message_body = "You are a Synthetic! You are held to a higher standard and are required to obey not only the Server Rules but Marine Law and Synthetic Rules. Failure to do so may result in your White-list Removal. Your primary job is to support and assist all USCM Departments and Personnel on-board. In addition, being a Synthetic gives you knowledge in every field and specialization possible on-board the ship. As a Synthetic you answer to the acting commanding officer. Special circumstances may change this!"

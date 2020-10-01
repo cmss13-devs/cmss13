@@ -208,6 +208,15 @@
 	icon_state = "cocap"
 	desc = "A hat usually worn by senior officers in the USCM. While it has limited combat functionality, some prefer to wear it instead of the standard issue helmet."
 
+/obj/item/clothing/head/cmcap/co/formal/white
+	name = "\improper USCM formal captain's white cap"
+	icon_state = "co_formalhat_white"
+	desc = "A formal cover worn by Commanding Officers of the USCM."
+
+/obj/item/clothing/head/cmcap/co/formal/black
+	name = "\improper USCM formal captain's black cap"
+	icon_state = "co_formalhat_black"
+	desc = "A formal cover worn by Commanding Officers of the USCM."
 
 /obj/item/clothing/head/cmcap/ro
 	name = "\improper USCM officer cap"
@@ -332,15 +341,20 @@
 /obj/item/clothing/head/marine/peaked
 	name = "marine peaked cap"
 	desc = "A peaked cap. Wearer may suffer the heavy weight of responsibility upon his head and shoulders."
-	icon = 'icons/obj/items/clothing/cm_hats.dmi'
-	icon_state = "copeaked"
+	icon = 'icons/obj/items/clothing/hats.dmi'
+	icon_state = "officercap"
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/head_0.dmi'
 	)
 
 /obj/item/clothing/head/marine/peaked/captain
 	name = "marine captain peaked cap"
 	desc = "A peaked cap with the captain insignia emblazoned on it. Wearer may suffer the heavy weight of responsibility upon his head and shoulders."
+	icon = 'icons/obj/items/clothing/cm_hats.dmi'
+	icon_state = "copeaked"
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
+	)
 
 /obj/item/clothing/head/beret/marine/chiefofficer
 	name = "chief officer beret"

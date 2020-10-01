@@ -1811,9 +1811,6 @@
 /area/almayer/living/basketball)
 "aeK" = (
 /obj/structure/surface/table/almayer,
-/obj/item/clothing/under/redpyjamas{
-	pixel_y = 5
-	},
 /obj/item/clothing/shoes/laceup{
 	desc = "The height of fashion, and they're pre-polished! The name 'Bob' is written on the inside.";
 	pixel_y = -5

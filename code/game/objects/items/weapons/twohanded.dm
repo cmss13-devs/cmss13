@@ -351,3 +351,58 @@
 	target.ex_act(400, null, src, user, 100)
 	cell_explosion(epicenter, 150, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, src, user)
 	qdel(src)
+
+
+/obj/item/weapon/melee/twohanded/breacher
+	name = "Breach B5"
+	desc = "An extremely heavy tool, used to smash things. The top piece is specially designed to take down walls."
+	icon = 'icons/obj/items/experimental_tools.dmi'
+	icon_state = "breacher"
+	item_state = "breacher"
+	force = MELEE_FORCE_NORMAL
+	force_wielded = MELEE_FORCE_VERY_STRONG
+	w_class = SIZE_LARGE
+	flags_item = TWOHANDED
+	flags_equip_slot = SLOT_BACK
+
+/obj/item/weapon/melee/twohanded/breacher/afterattack(var/atom/A, var/mob/user, var/proximity)
+	if(!(flags_item & WIELDED))
+		return ..()
+
+	if(!isSynth(user))
+		return ..()
+
+	if(istype(A, /turf/closed/wall))
+		var/turf/closed/wall/W = A
+		if(W.hull)
+			return ..()
+
+		var/time_to_destroy = 50
+		if(istype(W, /turf/closed/wall/r_wall))
+			time_to_destroy = 100
+
+		breach_action(W, user, time_to_destroy)
+
+		W.take_damage(W.damage_cap)
+		return
+
+	if(istype(A, /obj/structure/girder))
+		var/obj/structure/girder/G = A
+
+		breach_action(G, user, 30)
+
+		G.dismantle()
+		return
+
+	..()
+
+/obj/item/weapon/melee/twohanded/breacher/proc/breach_action(var/atom/A, var/mob/user, var/time_to_destroy)
+	if(user.action_busy || !user.Adjacent(A))
+		return
+
+	to_chat(user, SPAN_NOTICE("You start taking down the [A.name]."))
+	if(!do_after(user, time_to_destroy, INTERRUPT_ALL, BUSY_ICON_BUILD))
+		return
+
+	to_chat(user, SPAN_NOTICE("You tear down the [A.name]."))
+	playsound(user, 'sound/effects/woodhit.ogg', 40, 1)

@@ -24,3 +24,12 @@
 	vision_flags = SEE_TURFS
 	flags_inventory = COVEREYES
 	flags_item = NODROP|DELONDROP
+
+/obj/item/clothing/glasses/meson/refurbished
+	name = "refurbished meson scanner"
+	desc = "Used to shield the user's eyes from harmful electromagnetic emissions, also used as general safety goggles. A special version with upgraded optics."
+	icon_state = "refurb_meson"
+	item_state = "glasses"
+	vision_flags = SEE_TURFS
+	flags_inventory = COVEREYES
+	fullscreen_vision = /obj/screen/fullscreen/meson/refurb

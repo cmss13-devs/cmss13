@@ -138,6 +138,7 @@
 	desc = "A vendor with a large snowflake on it. Provided by W-Y Fashion Division(TM)."
 	icon_state = "snowflake"
 	use_points = TRUE
+	show_points = TRUE
 	use_snowflake_points = TRUE
 	vendor_theme = VENDOR_THEME_COMPANY
 
@@ -234,4 +235,25 @@
 		list("Welderpack", 12, /obj/item/storage/backpack/marine/engineerpack, null, VENDOR_ITEM_REGULAR)
 	)
 
-//------------ESSENTIAL SETS---------------
+//------------EXPERIMENTAL TOOLS---------------
+/obj/structure/machinery/cm_vending/own_points/experimental_tools
+	name = "\improper Experimental Vendor"
+	desc = "A vendor with specially provisioned tools. They may or may not be tested."
+	icon_state = "snowflake"
+	vendor_theme = VENDOR_THEME_COMPANY
+	req_access = list(ACCESS_MARINE_COMMANDER)
+	vendor_role = list(JOB_SYNTH)
+
+	listed_products = list(
+		list("MEDICAL", 0, null, null, null),
+		list("Compact Defibrillator", 15, /obj/item/device/defibrillator/compact, null, VENDOR_ITEM_REGULAR),
+
+		list("ENGINEERING", 0, null, null, null),
+		list("Refurbished Meson Scanner", 15, /obj/item/clothing/glasses/meson/refurbished, null, VENDOR_ITEM_REGULAR),
+
+		list("CONSTRUCTION", 0, null, null, null),
+		list("Breach B5", 15, /obj/item/weapon/melee/twohanded/breacher, null, VENDOR_ITEM_REGULAR),
+
+		list("COMMAND", 0, null, null, null),
+		list("Crew Monitor", 15, /obj/item/tool/crew_monitor, null, VENDOR_ITEM_REGULAR),
+	)

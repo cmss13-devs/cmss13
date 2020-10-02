@@ -128,6 +128,8 @@
 	screen_loc = "WEST,SOUTH to EAST,NORTH"
 	icon_state = "meson_hud"
 
+/obj/screen/fullscreen/meson/refurb
+	icon_state = "refurb_meson_hud"
 
 /obj/screen/fullscreen/pain
 	icon_state = "painoverlay"

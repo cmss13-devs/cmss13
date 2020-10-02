@@ -27,6 +27,9 @@
 	var/use_points = FALSE			//disabling these two grants unlimited access to items for adminab... I mean, events purposes
 	var/use_snowflake_points = FALSE
 
+	var/avaliable_points_to_display = 0
+	var/show_points = TRUE
+
 	//squad-specific gear
 	var/gloves_type
 	var/headset_type
@@ -371,12 +374,12 @@ IN_USE						used for vending/denying
 
 	var/list/display_list = list()
 
-	var/m_points = 0
 	var/buy_flags = NO_FLAGS
 	if(use_snowflake_points)
-		m_points = H.marine_snowflake_points
-	else
-		m_points = H.marine_points
+		avaliable_points_to_display = H.marine_snowflake_points
+	else if(use_points)
+		avaliable_points_to_display = H.marine_points
+
 	buy_flags = H.marine_buy_flags
 
 	if(listed_products.len)
@@ -389,7 +392,7 @@ IN_USE						used for vending/denying
 
 			var/prod_available = FALSE
 			var/avail_flag = myprod[4]
-			if(m_points >= p_cost && (!avail_flag || buy_flags & avail_flag))
+			if(avaliable_points_to_display >= p_cost && (!avail_flag || buy_flags & avail_flag))
 				prod_available = TRUE
 
 			//place in main list, name, cost, available or not, color.
@@ -398,8 +401,8 @@ IN_USE						used for vending/denying
 	var/list/data = list(
 		"vendor_name" = name,
 		"theme" = vendor_theme,
-		"show_points" = use_points,
-		"current_m_points" = m_points,
+		"show_points" = show_points,
+		"current_m_points" = avaliable_points_to_display,
 		"displayed_records" = display_list,
 	)
 
@@ -594,6 +597,7 @@ IN_USE						used for vending/denying
 	icon_state = "clothing"
 	use_points = TRUE
 	vendor_theme = VENDOR_THEME_USCM
+	show_points = FALSE
 
 /obj/structure/machinery/cm_vending/clothing/Topic(href, href_list)
 	if(stat & (BROKEN|NOPOWER))
@@ -909,6 +913,106 @@ IN_USE						used for vending/denying
 			R[2]++
 			updateUsrDialog()
 			return //We found our item, no reason to go on.
+
+//------------GEAR VENDORS---------------
+//For vendors with their own points avaliable
+/obj/structure/machinery/cm_vending/own_points
+	name = "\improper ColMarTech generic vendor"
+	desc = "This is a vendor with its own points system."
+	icon_state = "guns_rack"
+	vendor_theme = VENDOR_THEME_USCM
+	use_points = FALSE
+	use_snowflake_points = FALSE
+
+	var/avaliable_points = MARINE_TOTAL_BUY_POINTS
+	avaliable_points_to_display = MARINE_TOTAL_BUY_POINTS
+
+/obj/structure/machinery/cm_vending/own_points/Topic(href, href_list)
+	if(stat & (BROKEN|NOPOWER))
+		return
+	if(usr.is_mob_incapacitated())
+		return
+
+	if(in_range(src, usr) && isturf(loc) && ishuman(usr))
+		usr.set_interaction(src)
+		if(href_list["vend"])
+			if(stat & IN_USE)
+				return
+
+			var/mob/living/carbon/human/H = usr
+
+			if(!hacked)
+				if(!allowed(H))
+					to_chat(H, SPAN_WARNING("Access denied."))
+					vend_fail()
+					return
+
+				var/obj/item/card/id/I = H.wear_id
+				if(!istype(I)) //not wearing an ID
+					to_chat(H, SPAN_WARNING("Access denied. No ID card detected"))
+					vend_fail()
+					return
+
+				if(I.registered_name != H.real_name)
+					to_chat(H, SPAN_WARNING("Wrong ID card owner detected."))
+					vend_fail()
+					return
+
+				if(LAZYLEN(vendor_role) && !vendor_role.Find(H.job))
+					to_chat(H, SPAN_WARNING("This machine isn't for you."))
+					vend_fail()
+					return
+
+			var/idx=text2num(href_list["vend"])
+			var/list/L = listed_products[idx]
+			var/cost = L[2]
+
+			if((!H.assigned_squad && squad_tag) || (squad_tag && H.assigned_squad.name != squad_tag))
+				to_chat(H, SPAN_WARNING("This machine isn't for your squad."))
+				vend_fail()
+				return
+
+			var/turf/T = get_appropriate_vend_turf()
+			if(T.contents.len > 25)
+				to_chat(H, SPAN_WARNING("The floor is too cluttered, make some space."))
+				vend_fail()
+				return
+
+			if(avaliable_points < cost)
+				to_chat(H, SPAN_WARNING("Not enough points."))
+				vend_fail()
+				return
+			else
+				avaliable_points -= cost
+				avaliable_points_to_display = avaliable_points
+
+			vend_succesfully(L, H, T)
+
+		add_fingerprint(usr)
+		ui_interact(usr)
+
+/obj/structure/machinery/cm_vending/own_points/vend_succesfully(var/list/L, var/mob/living/carbon/human/H, var/turf/T)
+	if(stat & IN_USE)
+		return
+
+	stat |= IN_USE
+	if(LAZYLEN(L))	//making sure it's not empty
+		if(vend_delay)
+			overlays.Cut()
+			icon_state = "[initial(icon_state)]_vend"
+			if(vend_sound)
+				playsound(loc, vend_sound, 25, 1, 2)	//heard only near vendor
+			sleep(vend_delay)
+		var/prod_type = L[3]
+		new prod_type(T)
+		vending_stat_bump(prod_type, src.type)
+	else
+		to_chat(H, SPAN_WARNING("ERROR: L is missing. Please report this to admins."))
+		sleep(15)
+
+	stat &= ~IN_USE
+	update_icon()
+	return
 
 //------------ESSENTIALS SETS AND RANDOM GEAR SPAWNER---------------
 

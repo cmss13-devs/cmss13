@@ -1,7 +1,7 @@
 /obj/item/device/defibrillator
 	name = "emergency defibrillator"
 	desc = "A handheld emergency defibrillator, used to restore fibrillating patients. Can optionally bring people back from the dead."
-	icon_state = "defib_full"
+	icon_state = "defib"
 	item_state = "defib"
 	flags_atom = FPRINT|CONDUCT
 	flags_item = NOBLUDGEON
@@ -23,17 +23,20 @@
 		return TRUE
 	return FALSE
 
-/obj/item/device/defibrillator/New()
+/obj/item/device/defibrillator/Initialize(mapload, ...)
 	. = ..()
+	
 	sparks.set_up(5, 0, src)
 	sparks.attach(src)
 	dcell = new/obj/item/cell(src)
 	update_icon()
 
 /obj/item/device/defibrillator/update_icon()
-	icon_state = "defib"
+	icon_state = initial(icon_state)
+
 	if(ready)
 		icon_state += "_out"
+
 	if(dcell && dcell.charge)
 		switch(round(dcell.charge * 100 / dcell.maxcharge))
 			if(67 to INFINITY)
@@ -55,7 +58,6 @@
 
 
 /obj/item/device/defibrillator/attack_self(mob/living/carbon/human/user)
-
 	if(defib_cooldown > world.time)
 		return
 
@@ -93,9 +95,9 @@
 	return TRUE
 
 /obj/item/device/defibrillator/attack(mob/living/carbon/human/H, mob/living/carbon/human/user)
-
 	if(defib_cooldown > world.time) //Both for pulling the paddles out (2 seconds) and shocking (1 second)
 		return
+
 	defib_cooldown = world.time + 20 //2 second cooldown before you can try shocking again
 
 	if(user.action_busy) //Currently deffibing
@@ -220,3 +222,14 @@
 	else
 		user.visible_message(SPAN_WARNING("[user] stops setting up the paddles on [H]'s chest"), \
 		SPAN_WARNING("You stop setting up the paddles on [H]'s chest"))
+
+
+/obj/item/device/defibrillator/compact
+	name = "compact defibrillator"
+	desc = "A compact defibrillator not tested to be reliable. Success is not guaranteed on use."
+	icon = 'icons/obj/items/experimental_tools.dmi'
+	icon_state = "compact_defib"
+	item_state = "defib"
+	w_class = SIZE_SMALL
+
+	charge_cost = 132 //How much energy is used.

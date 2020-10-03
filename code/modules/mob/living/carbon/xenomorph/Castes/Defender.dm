@@ -37,9 +37,9 @@
 		/datum/action/xeno_action/onclick/regurgitate,
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/onclick/toggle_crest_defense,
-		/datum/action/xeno_action/activable/fortify,
 		/datum/action/xeno_action/activable/headbutt,
-		/datum/action/xeno_action/onclick/tail_sweep
+		/datum/action/xeno_action/onclick/tail_sweep,
+		/datum/action/xeno_action/activable/fortify
 	)
 	mutation_type = DEFENDER_NORMAL
 

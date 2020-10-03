@@ -30,63 +30,6 @@
 	..()
 	return
 
-
-// Defender Fortify
-/datum/action/xeno_action/activable/fortify/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/X = owner
-	if (!istype(X))
-		return
-
-	if(X.crest_defense && X.spiked)
-		to_chat(src, SPAN_XENOWARNING("You cannot fortify while your crest is already down!"))
-		return
-
-	if(X.crest_defense)
-		to_chat(src, SPAN_XENOWARNING("You cannot use abilities with your crest lowered."))
-		return
-
-	if(!X.check_state())
-		return
-
-	if (!action_cooldown_check())
-		return
-
-	playsound(get_turf(X), 'sound/effects/stonedoor_openclose.ogg', 30, 1)
-
-	if(!X.fortify)
-		to_chat(X, SPAN_XENOWARNING("You tuck yourself into a defensive stance."))
-		if(X.spiked)
-			X.armor_deflection_buff += 25
-			X.armor_explosive_buff += 60
-			X.ability_speed_modifier += 3
-		else
-			X.armor_deflection_buff += 35
-			X.armor_explosive_buff += 60
-			X.frozen = TRUE
-			X.anchored = TRUE
-			X.update_canmove()
-		X.update_icons()
-		X.fortify = TRUE
-	else
-		to_chat(X, SPAN_XENOWARNING("You resume your normal stance."))
-		X.frozen = FALSE
-		X.anchored = FALSE
-		if(X.spiked)
-			X.armor_deflection_buff -= 25
-			X.armor_explosive_buff -= 40
-			X.ability_speed_modifier -= 3
-		else
-			X.armor_deflection_buff -= 35
-			X.armor_explosive_buff -= 60	
-		X.update_canmove()
-		X.update_icons()
-		X.fortify = FALSE
-
-	apply_cooldown()
-	..()
-	return
-
-
 // Defender Headbutt
 /datum/action/xeno_action/activable/headbutt/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
@@ -205,6 +148,61 @@
 
 		to_chat(H, SPAN_XENOWARNING("You are struck by [src]'s tail sweep!"))
 		playsound(H,'sound/weapons/alien_claw_block.ogg', 50, 1)
+
+	apply_cooldown()
+	..()
+	return
+
+// Defender Fortify
+/datum/action/xeno_action/activable/fortify/use_ability(atom/A)
+	var/mob/living/carbon/Xenomorph/X = owner
+	if (!istype(X))
+		return
+
+	if(X.crest_defense && X.spiked)
+		to_chat(src, SPAN_XENOWARNING("You cannot fortify while your crest is already down!"))
+		return
+
+	if(X.crest_defense)
+		to_chat(src, SPAN_XENOWARNING("You cannot use abilities with your crest lowered."))
+		return
+
+	if(!X.check_state())
+		return
+
+	if (!action_cooldown_check())
+		return
+
+	playsound(get_turf(X), 'sound/effects/stonedoor_openclose.ogg', 30, 1)
+
+	if(!X.fortify)
+		to_chat(X, SPAN_XENOWARNING("You tuck yourself into a defensive stance."))
+		if(X.spiked)
+			X.armor_deflection_buff += 25
+			X.armor_explosive_buff += 60
+			X.ability_speed_modifier += 3
+		else
+			X.armor_deflection_buff += 35
+			X.armor_explosive_buff += 60
+			X.frozen = TRUE
+			X.anchored = TRUE
+			X.update_canmove()
+		X.update_icons()
+		X.fortify = TRUE
+	else
+		to_chat(X, SPAN_XENOWARNING("You resume your normal stance."))
+		X.frozen = FALSE
+		X.anchored = FALSE
+		if(X.spiked)
+			X.armor_deflection_buff -= 25
+			X.armor_explosive_buff -= 40
+			X.ability_speed_modifier -= 3
+		else
+			X.armor_deflection_buff -= 35
+			X.armor_explosive_buff -= 60	
+		X.update_canmove()
+		X.update_icons()
+		X.fortify = FALSE
 
 	apply_cooldown()
 	..()

@@ -404,60 +404,60 @@
 	desc = "Contains inaprovaline - used to stabilize patients."
 
 /obj/item/reagent_container/syringe/inaprovaline/Initialize()
-		..()
-		reagents.add_reagent("inaprovaline", 15)
-		mode = SYRINGE_INJECT
-		update_icon()
+	. = ..()
+	reagents.add_reagent("inaprovaline", 15)
+	mode = SYRINGE_INJECT
+	update_icon()
 
 /obj/item/reagent_container/syringe/antitoxin
 	name = "syringe (anti-toxin)"
 	desc = "Contains anti-toxins."
 
 /obj/item/reagent_container/syringe/antitoxin/Initialize()
-		..()
-		reagents.add_reagent("anti_toxin", 15)
-		mode = SYRINGE_INJECT
-		update_icon()
+	. = ..()
+	reagents.add_reagent("anti_toxin", 15)
+	mode = SYRINGE_INJECT
+	update_icon()
 
 /obj/item/reagent_container/syringe/antiviral
 	name = "\improper syringe (Spaceacillin)"
 	desc = "Contains antiviral agents. Can also be used to treat infected wounds."
 
 /obj/item/reagent_container/syringe/antiviral/Initialize()
-		..()
-		reagents.add_reagent("spaceacillin", 15)
-		mode = SYRINGE_INJECT
-		update_icon()
+	. = ..()
+	reagents.add_reagent("spaceacillin", 15)
+	mode = SYRINGE_INJECT
+	update_icon()
 
 /obj/item/reagent_container/syringe/counteragent
 	name = "\improper syringe (Counteragent)"
 	desc = "Contains special antiviral counteragents."
 
 /obj/item/reagent_container/syringe/counteragent/Initialize()
-		..()
-		reagents.add_reagent("vaccine", 15)
-		mode = SYRINGE_INJECT
-		update_icon()
+	. = ..()
+	reagents.add_reagent("vaccine", 15)
+	mode = SYRINGE_INJECT
+	update_icon()
 
 /obj/item/reagent_container/syringe/drugs
 	name = "syringe (drugs)"
 	desc = "Contains aggressive drugs meant for torture."
 
 /obj/item/reagent_container/syringe/drugs/Initialize()
-		..()
-		reagents.add_reagent("space_drugs",  5)
-		reagents.add_reagent("mindbreaker",  5)
-		reagents.add_reagent("cryptobiolin", 5)
-		mode = SYRINGE_INJECT
-		update_icon()
+	. = ..()
+	reagents.add_reagent("space_drugs",  5)
+	reagents.add_reagent("mindbreaker",  5)
+	reagents.add_reagent("cryptobiolin", 5)
+	mode = SYRINGE_INJECT
+	update_icon()
 
 /obj/item/reagent_container/ld50_syringe/choral
 
 /obj/item/reagent_container/ld50_syringe/choral/Initialize()
-		..()
-		reagents.add_reagent("chloralhydrate", 50)
-		mode = SYRINGE_INJECT
-		update_icon()
+	. = ..()
+	reagents.add_reagent("chloralhydrate", 50)
+	mode = SYRINGE_INJECT
+	update_icon()
 
 
 //Robot syringes
@@ -467,28 +467,28 @@
 	desc = "Contains anti-toxins."
 
 /obj/item/reagent_container/syringe/robot/antitoxin/Initialize()
-		..()
-		reagents.add_reagent("anti_toxin", 15)
-		mode = SYRINGE_INJECT
-		update_icon()
+	. = ..()
+	reagents.add_reagent("anti_toxin", 15)
+	mode = SYRINGE_INJECT
+	update_icon()
 
 /obj/item/reagent_container/syringe/robot/inoprovaline
 	name = "\improper syringe (Inoprovaline)"
 	desc = "Contains inaprovaline - used to stabilize patients."
 
 /obj/item/reagent_container/syringe/robot/inoprovaline/Initialize()
-		..()
-		reagents.add_reagent("inaprovaline", 15)
-		mode = SYRINGE_INJECT
-		update_icon()
+	. = ..()
+	reagents.add_reagent("inaprovaline", 15)
+	mode = SYRINGE_INJECT
+	update_icon()
 
 /obj/item/reagent_container/syringe/robot/mixed
 	name = "\improper syringe (mixed)"
 	desc = "Contains inaprovaline & anti-toxins."
 
 /obj/item/reagent_container/syringe/robot/mixed/Initialize()
-		..()
-		reagents.add_reagent("inaprovaline", 7)
-		reagents.add_reagent("anti_toxin", 8)
-		mode = SYRINGE_INJECT
-		update_icon()
+	. = ..()
+	reagents.add_reagent("inaprovaline", 7)
+	reagents.add_reagent("anti_toxin", 8)
+	mode = SYRINGE_INJECT
+	update_icon()

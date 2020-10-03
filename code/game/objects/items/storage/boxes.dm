@@ -35,25 +35,21 @@
 	storage_flags = STORAGE_FLAGS_BOX
 
 /obj/item/storage/box/survival
+	w_class = SIZE_MEDIUM
 
 /obj/item/storage/box/survival/Initialize()
 	. = ..()
 	contents = list()
-	sleep(1)
 	new /obj/item/clothing/mask/breath( src )
 	new /obj/item/tank/emergency_oxygen( src )
-	w_class = SIZE_MEDIUM
-	return
 
 /obj/item/storage/box/engineer
 
 /obj/item/storage/box/engineer/Initialize()
 	. = ..()
 	contents = list()
-	sleep(1)
 	new /obj/item/clothing/mask/breath( src )
 	new /obj/item/tank/emergency_oxygen/engi( src )
-	return
 
 
 /obj/item/storage/box/gloves
@@ -528,10 +524,8 @@
 /obj/item/storage/box/explosive_mines/Initialize()
 	. = ..()
 	contents = list()
-	sleep(1)
 	var/I = type == /obj/item/storage/box/explosive_mines/pmc ? /obj/item/explosive/mine/pmc : /obj/item/explosive/mine
-	var/i = 0
-	while(++i < 5)
+	for(var/i in 1 to 5)
 		new I(src)
 
 /obj/item/storage/box/explosive_mines/pmc

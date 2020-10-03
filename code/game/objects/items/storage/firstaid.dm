@@ -183,34 +183,34 @@
 /obj/item/storage/syringe_case/regular
 
 /obj/item/storage/syringe_case/regular/Initialize()
-		..()
-		new /obj/item/reagent_container/syringe( src )
-		new /obj/item/reagent_container/glass/bottle/inaprovaline( src )
-		new /obj/item/reagent_container/glass/bottle/tricordrazine( src )
+	. = ..()
+	new /obj/item/reagent_container/syringe( src )
+	new /obj/item/reagent_container/glass/bottle/inaprovaline( src )
+	new /obj/item/reagent_container/glass/bottle/tricordrazine( src )
 
 /obj/item/storage/syringe_case/burn
 
 /obj/item/storage/syringe_case/burn/Initialize()
-		..()
-		new /obj/item/reagent_container/syringe( src )
-		new /obj/item/reagent_container/glass/bottle/kelotane( src )
-		new /obj/item/reagent_container/glass/bottle/tricordrazine( src )
+	. = ..()
+	new /obj/item/reagent_container/syringe( src )
+	new /obj/item/reagent_container/glass/bottle/kelotane( src )
+	new /obj/item/reagent_container/glass/bottle/tricordrazine( src )
 
 /obj/item/storage/syringe_case/tox
 
 /obj/item/storage/syringe_case/tox/Initialize()
-		..()
-		new /obj/item/reagent_container/syringe( src )
-		new /obj/item/reagent_container/glass/bottle/antitoxin( src )
-		new /obj/item/reagent_container/glass/bottle/antitoxin( src )
+	. = ..()
+	new /obj/item/reagent_container/syringe( src )
+	new /obj/item/reagent_container/glass/bottle/antitoxin( src )
+	new /obj/item/reagent_container/glass/bottle/antitoxin( src )
 
 /obj/item/storage/syringe_case/oxy
 
 /obj/item/storage/syringe_case/oxy/Initialize()
-		..()
-		new /obj/item/reagent_container/syringe( src )
-		new /obj/item/reagent_container/glass/bottle/inaprovaline( src )
-		new /obj/item/reagent_container/glass/bottle/dexalin( src )
+	. = ..()
+	new /obj/item/reagent_container/syringe( src )
+	new /obj/item/reagent_container/glass/bottle/inaprovaline( src )
+	new /obj/item/reagent_container/glass/bottle/dexalin( src )
 
 /*
  * Pill Bottles

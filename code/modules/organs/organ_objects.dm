@@ -21,7 +21,7 @@
 		return
 
 /obj/item/organ/Initialize(mapload, organ_datum)
-	..()
+	. = ..()
 	create_reagents(5)
 	if(organ_datum)
 		organ_data = organ_datum

@@ -15,14 +15,14 @@
 	active_power_usage = 2500
 
 /obj/structure/machinery/r_n_d/circuit_imprinter/Initialize()
-		..()
-		component_parts = list()
-		component_parts += new /obj/item/circuitboard/machine/circuit_imprinter(src)
-		component_parts += new /obj/item/stock_parts/matter_bin(src)
-		component_parts += new /obj/item/stock_parts/manipulator(src)
-		component_parts += new /obj/item/reagent_container/glass/beaker(src)
-		component_parts += new /obj/item/reagent_container/glass/beaker(src)
-		RefreshParts()
+	. = ..()
+	component_parts = list()
+	component_parts += new /obj/item/circuitboard/machine/circuit_imprinter(src)
+	component_parts += new /obj/item/stock_parts/matter_bin(src)
+	component_parts += new /obj/item/stock_parts/manipulator(src)
+	component_parts += new /obj/item/reagent_container/glass/beaker(src)
+	component_parts += new /obj/item/reagent_container/glass/beaker(src)
+	RefreshParts()
 
 /obj/structure/machinery/r_n_d/server
 	name = "R&D Server"

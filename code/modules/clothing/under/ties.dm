@@ -467,7 +467,7 @@
 	if(hold)
 		qdel(hold)
 		hold = null
-	. = ..()
+	return ..()
 
 /obj/item/clothing/accessory/storage/attack_hand(mob/user as mob)
 	if (!isnull(hold) && hold.handle_attack_hand(user))

@@ -276,8 +276,8 @@
 	pixel_x = -6
 	},
 /turf/open/floor{
-	icon_state = "vault";
-	dir = 8
+	dir = 8;
+	icon_state = "vault"
 	},
 /area/lv624/ground/sand5)
 "dD" = (
@@ -286,8 +286,8 @@
 	amount = 2
 	},
 /turf/open/floor{
-	icon_state = "vault";
-	dir = 8
+	dir = 8;
+	icon_state = "vault"
 	},
 /area/lv624/ground/sand5)
 "dE" = (
@@ -301,23 +301,21 @@
 	amount = 30
 	},
 /turf/open/floor{
-	icon_state = "vault";
-	dir = 8
+	dir = 8;
+	icon_state = "vault"
 	},
 /area/lv624/ground/sand5)
 "dF" = (
 /obj/structure/surface/rack,
 /obj/item/tool/shovel,
 /turf/open/floor{
-	icon_state = "vault";
-	dir = 8
+	dir = 8;
+	icon_state = "vault"
 	},
 /area/lv624/ground/sand5)
 "dI" = (
 /obj/structure/machinery/door/airlock/almayer/secure{
-	dir = 4;
 	icon_state = "door_locked";
-	id = "";
 	locked = 1;
 	name = "Mining Storage"
 	},
@@ -337,12 +335,11 @@
 	},
 /obj/item/stack/sheet/mineral/platinum,
 /obj/structure/machinery/light{
-	dir = 4;
-	icon_state = "tube1"
+	dir = 4
 	},
 /turf/open/floor{
-	icon_state = "vault";
-	dir = 8
+	dir = 8;
+	icon_state = "vault"
 	},
 /area/lv624/ground/sand5)
 "dQ" = (
@@ -351,8 +348,8 @@
 	pixel_x = -4
 	},
 /turf/open/floor{
-	icon_state = "vault";
-	dir = 8
+	dir = 8;
+	icon_state = "vault"
 	},
 /area/lv624/ground/sand5)
 "dR" = (
@@ -361,23 +358,23 @@
 	amount = 20
 	},
 /turf/open/floor{
-	icon_state = "vault";
-	dir = 8
+	dir = 8;
+	icon_state = "vault"
 	},
 /area/lv624/ground/sand5)
 "dS" = (
 /obj/structure/surface/rack,
 /turf/open/floor{
-	icon_state = "vault";
-	dir = 8
+	dir = 8;
+	icon_state = "vault"
 	},
 /area/lv624/ground/sand5)
 "dT" = (
 /obj/structure/surface/rack,
 /obj/item/tool/pickaxe,
 /turf/open/floor{
-	icon_state = "vault";
-	dir = 8
+	dir = 8;
+	icon_state = "vault"
 	},
 /area/lv624/ground/sand5)
 "dU" = (
@@ -409,6 +406,10 @@
 	},
 /turf/open/gm/dirt,
 /area/lv624/ground/sand5)
+"VV" = (
+/obj/structure/blocker/forcefield/vehicles,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/central1)
 
 (1,1,1) = {"
 bl
@@ -526,7 +527,7 @@ cA
 bl
 bw
 bl
-bl
+VV
 bl
 bl
 bl
@@ -537,7 +538,7 @@ bv
 bl
 bl
 bl
-bl
+VV
 bl
 bl
 cA
@@ -593,7 +594,7 @@ bl
 bl
 bl
 bl
-bl
+VV
 cA
 cI
 cA

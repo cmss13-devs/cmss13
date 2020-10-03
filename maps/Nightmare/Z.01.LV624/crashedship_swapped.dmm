@@ -248,8 +248,8 @@
 	pixel_x = -6
 	},
 /turf/open/floor{
-	icon_state = "vault";
-	dir = 8
+	dir = 8;
+	icon_state = "vault"
 	},
 /area/lv624/ground/sand6)
 "aQ" = (
@@ -258,8 +258,8 @@
 	amount = 2
 	},
 /turf/open/floor{
-	icon_state = "vault";
-	dir = 8
+	dir = 8;
+	icon_state = "vault"
 	},
 /area/lv624/ground/sand6)
 "aR" = (
@@ -273,23 +273,21 @@
 	amount = 30
 	},
 /turf/open/floor{
-	icon_state = "vault";
-	dir = 8
+	dir = 8;
+	icon_state = "vault"
 	},
 /area/lv624/ground/sand6)
 "aS" = (
 /obj/structure/surface/rack,
 /obj/item/tool/shovel,
 /turf/open/floor{
-	icon_state = "vault";
-	dir = 8
+	dir = 8;
+	icon_state = "vault"
 	},
 /area/lv624/ground/sand6)
 "aT" = (
 /obj/structure/machinery/door/airlock/almayer/secure{
-	dir = 4;
 	icon_state = "door_locked";
-	id = "";
 	locked = 1;
 	name = "Mining Storage"
 	},
@@ -309,12 +307,11 @@
 	},
 /obj/item/stack/sheet/mineral/platinum,
 /obj/structure/machinery/light{
-	dir = 4;
-	icon_state = "tube1"
+	dir = 4
 	},
 /turf/open/floor{
-	icon_state = "vault";
-	dir = 8
+	dir = 8;
+	icon_state = "vault"
 	},
 /area/lv624/ground/sand6)
 "aW" = (
@@ -340,8 +337,8 @@
 	pixel_x = -4
 	},
 /turf/open/floor{
-	icon_state = "vault";
-	dir = 8
+	dir = 8;
+	icon_state = "vault"
 	},
 /area/lv624/ground/sand6)
 "ba" = (
@@ -350,23 +347,23 @@
 	amount = 20
 	},
 /turf/open/floor{
-	icon_state = "vault";
-	dir = 8
+	dir = 8;
+	icon_state = "vault"
 	},
 /area/lv624/ground/sand6)
 "bb" = (
 /obj/structure/surface/rack,
 /turf/open/floor{
-	icon_state = "vault";
-	dir = 8
+	dir = 8;
+	icon_state = "vault"
 	},
 /area/lv624/ground/sand6)
 "bc" = (
 /obj/structure/surface/rack,
 /obj/item/tool/pickaxe,
 /turf/open/floor{
-	icon_state = "vault";
-	dir = 8
+	dir = 8;
+	icon_state = "vault"
 	},
 /area/lv624/ground/sand6)
 "bd" = (
@@ -429,6 +426,14 @@
 /obj/effect/landmark{
 	name = "crap_item"
 	},
+/turf/open/gm/dirt,
+/area/lv624/ground/sand6)
+"MN" = (
+/obj/structure/blocker/forcefield/vehicles,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/central1)
+"OV" = (
+/obj/structure/blocker/forcefield/vehicles,
 /turf/open/gm/dirt,
 /area/lv624/ground/sand6)
 
@@ -800,7 +805,7 @@ cA
 bl
 bw
 bl
-bl
+MN
 cR
 cR
 cR
@@ -811,7 +816,7 @@ dq
 cR
 cR
 cR
-cR
+OV
 cR
 cR
 cR
@@ -867,7 +872,7 @@ cR
 cR
 cR
 cR
-cR
+OV
 cR
 dq
 cR

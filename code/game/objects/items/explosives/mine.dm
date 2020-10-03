@@ -241,3 +241,4 @@
 	icon_state = "m20_custom"
 	customizable = TRUE
 	matter = list("metal" = 3750)
+	has_blast_wave_dampener = TRUE

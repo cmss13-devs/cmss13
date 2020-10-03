@@ -21,6 +21,7 @@
 	var/shrapnel_count = 0
 	var/shrapnel_type = /datum/ammo/bullet/shrapnel
 	var/fire_resistance = 30 //to prevent highly controlled massive explosions
+	falloff_mode = EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL
 
 /obj/item/explosive/grenade/HE/New()
 	..()
@@ -33,7 +34,7 @@
 		create_shrapnel(loc, shrapnel_count, , ,shrapnel_type, initial(name), source_mob)
 		sleep(2) //so that mobs are not knocked down before being hit by shrapnel. shrapnel might also be getting deleted by explosions?
 	apply_explosion_overlay()
-	cell_explosion(loc, explosion_power, explosion_falloff, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, initial(name), source_mob)
+	cell_explosion(loc, explosion_power, explosion_falloff, falloff_mode, null, initial(name), source_mob)
 	qdel(src)
 
 
@@ -56,6 +57,7 @@
 	item_state = "grenade_ex"
 	underslug_launchable = FALSE
 	explosion_power = 130
+	falloff_mode = EXPLOSION_FALLOFF_SHAPE_LINEAR
 
 
 
@@ -71,6 +73,7 @@
 	throw_range = 7
 	underslug_launchable = FALSE
 	explosion_power = 100
+	falloff_mode = EXPLOSION_FALLOFF_SHAPE_LINEAR
 
 
 /*
@@ -85,6 +88,7 @@
 	item_state = "grenade_hefa"
 	explosion_power = 40
 	shrapnel_count = 48
+	falloff_mode = EXPLOSION_FALLOFF_SHAPE_LINEAR
 
 
 
@@ -98,6 +102,7 @@
 	underslug_launchable = FALSE
 	explosion_power = 120
 	shrapnel_count = 48
+	falloff_mode = EXPLOSION_FALLOFF_SHAPE_LINEAR
 
 
 
@@ -111,6 +116,7 @@
 	underslug_launchable = FALSE
 	explosion_power = 60
 	shrapnel_count = 56
+	falloff_mode = EXPLOSION_FALLOFF_SHAPE_LINEAR
 
 
 /*

@@ -13,6 +13,7 @@
 							"max_fire_rad" = 7,		"max_fire_int" = 30,	"max_fire_dur" = 36,
 							"min_fire_rad" = 2,		"min_fire_int" = 4,		"min_fire_dur" = 5
 	)
+	has_blast_wave_dampener = TRUE
 
 /obj/item/explosive/warhead/mortar
 	name = "80mm mortar warhead"
@@ -24,3 +25,4 @@
 							"max_fire_rad" = 8,		"max_fire_int" = 40,	"max_fire_dur" = 48,
 							"min_fire_rad" = 3,		"min_fire_int" = 5,		"min_fire_dur" = 5
 	)
+	has_blast_wave_dampener = TRUE

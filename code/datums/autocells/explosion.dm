@@ -250,7 +250,7 @@
 
 	falloff = max(falloff, power/100)
 
-	msg_admin_attack("Explosion with Power: [power], Falloff: [falloff] in [epicenter.loc.name] ([epicenter.x],[epicenter.y],[epicenter.z]).", epicenter.x, epicenter.y, epicenter.z)
+	msg_admin_attack("Explosion with Power: [power], Falloff: [falloff], Shape: [falloff_shape] in [epicenter.loc.name] ([epicenter.x],[epicenter.y],[epicenter.z]).", epicenter.x, epicenter.y, epicenter.z)
 
 	playsound(epicenter, 'sound/effects/explosionfar.ogg', 100, 1, round(power^2,1))
 	playsound(epicenter, "explosion", 75, 1, max(round(power,1),7))

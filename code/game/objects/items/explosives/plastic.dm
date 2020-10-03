@@ -263,3 +263,4 @@
 	overlay_image = "custom_plastic_explosive_sensing"
 	customizable = TRUE
 	matter = list("metal" = 7500, "plastic" = 2000) // 2 metal and 1 plastic sheet
+	has_blast_wave_dampener = TRUE

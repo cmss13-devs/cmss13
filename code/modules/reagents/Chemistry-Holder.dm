@@ -617,6 +617,10 @@ var/const/INGEST = 2
 			radius += R.radiusmod * R.volume
 		if(R.id == "phosphorus")
 			smokerad = min(R.volume / 10, max_fire_rad - 1)
+	if(istype(my_atom, /obj/item/explosive))
+		var/obj/item/explosive/E = my_atom
+		ex_falloff_shape = E.falloff_mode
+		
 	//only integers please
 	radius = round(radius)
 	intensity = round(intensity)

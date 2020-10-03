@@ -22,8 +22,11 @@
 	if(mag && istype(B,/obj/item/reagent_container))
 		if(B.reagents)
 			var/obj/item/reagent_container/C = B
-			B.reagents.trans_to(mag, C.amount_per_transfer_from_this)
-			to_chat(user, SPAN_NOTICE("You transfer [C.amount_per_transfer_from_this] units from [B] to [src]."))
+			var/amount_transfered = B.reagents.trans_to(mag, C.amount_per_transfer_from_this)
+			if(!amount_transfered)
+				to_chat(user, SPAN_WARNING("It is already full!"))
+			else
+				to_chat(user, SPAN_NOTICE("You transfer [amount_transfered] units from [B] to [src]."))
 			return
 	if(locked)
 		return

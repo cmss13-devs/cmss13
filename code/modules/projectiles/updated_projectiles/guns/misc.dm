@@ -30,6 +30,7 @@
 	recoil = config.min_recoil_value
 	recoil_buildup_limit = config.med_recoil_value / RECOIL_BUILDUP_VIEWPUNCH_MULTIPLIER
 
+//Minigun UPP
 /obj/item/weapon/gun/minigun/upp
 	name = "\improper GSh-7.62 rotary machine gun"
 	desc = "A gas-operated rotary machine gun used by UPP heavies. Its enormous volume of fire and ammunition capacity allows the suppression of large concentrations of enemy forces. Heavy weapons training is required control its recoil."
@@ -55,6 +56,14 @@
 	M.flags_attach_features &= ~ATTACH_REMOVABLE
 	M.Attach(src)
 	update_attachable(M.slot)
+
+// Minigun UPP HvH
+/obj/item/weapon/gun/minigun/upp/hvh
+
+/obj/item/weapon/gun/minigun/upp/hvh/set_gun_config_values()
+	..()
+	damage_mult = config.base_hit_damage_mult + config.low_hit_damage_mult
+	recoil_buildup_limit = config.low_recoil_value / RECOIL_BUILDUP_VIEWPUNCH_MULTIPLIER
 
 //M60
 /obj/item/weapon/gun/m60

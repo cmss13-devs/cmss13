@@ -273,7 +273,7 @@
 
 /obj/item/weapon/gun/revolver/m44
 	name = "\improper M44 combat revolver"
-	desc = "A bulky revolver, occasionally carried by assault troops and officers in the Colonial Marines, as well civilian law enforcement. Fires .44 Magnum rounds."
+	desc = "A bulky revolver, occasionally carried by assault troops and officers in the Colonial Marines, as well as civilian law enforcement. Fires .44 Magnum rounds."
 	icon_state = "m44r"
 	item_state = "m44r"
 	current_mag = /obj/item/ammo_magazine/internal/revolver/m44
@@ -318,9 +318,10 @@
 	else
 		return ..()
 	
-/obj/item/weapon/gun/revolver/m44/custom//accuracy and damage bonus
+/obj/item/weapon/gun/revolver/m44/custom //accuracy and damage bonus
 	name = "\improper M44 custom combat revolver"
 	desc = "A bulky combat revolver. The handle has been polished to a pearly perfection, and the body is silver plated. Fires .44 Magnum rounds."
+	current_mag = /obj/item/ammo_magazine/internal/revolver/m44/custom //only difference is starting ammo
 	icon_state = "m44rc"
 	item_state = "m44rc"
 

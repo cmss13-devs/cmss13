@@ -314,7 +314,7 @@
 			message += "[get_xeno_structure_desc(structure_name)]<br>"
 		to_chat(X, SPAN_NOTICE(message))
 		return
-	if(choice == "cancel" || !X.check_state(1) || !X.check_plasma(500))
+	if(choice == "cancel" || !X.check_state(1) || !X.check_plasma(400))
 		return FALSE
 	if(!do_after(X, XENO_STRUCTURE_BUILD_TIME, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		return FALSE

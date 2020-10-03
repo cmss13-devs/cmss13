@@ -1367,8 +1367,8 @@
 			else
 				to_chat(HS, SPAN_WARNING("There are no splints to remove."))
 
-/mob/living/carbon/human/yautja/Initialize()
-	..(new_species = "Yautja")
+/mob/living/carbon/human/yautja/Initialize(mapload)
+	. = ..(mapload, new_species = "Yautja")
 
 /mob/living/carbon/human/yautja/initialize_pain()
 	pain = new /datum/pain/yautja(src)
@@ -1377,38 +1377,38 @@
 	stamina = new /datum/stamina/yautja(src)
 
 
-/mob/living/carbon/human/monkey/Initialize()
-	..(new_species = "Monkey")
+/mob/living/carbon/human/monkey/Initialize(mapload)
+	. = ..(mapload, new_species = "Monkey")
 
 /mob/living/carbon/human/monkey/initialize_pain()
 	pain = new /datum/pain/monkey(src)
 
-/mob/living/carbon/human/farwa/Initialize()
-	..(new_species = "Farwa")
+/mob/living/carbon/human/farwa/Initialize(mapload)
+	. = ..(mapload, new_species = "Farwa")
 
 /mob/living/carbon/human/farwa/initialize_pain()
 	pain = new /datum/pain/monkey(src)
 
-/mob/living/carbon/human/neaera/Initialize()
-	..(new_species = "Neaera")
+/mob/living/carbon/human/neaera/Initialize(mapload)
+	. = ..(mapload, new_species = "Neaera")
 
 /mob/living/carbon/human/neaera/initialize_pain()
 	pain = new /datum/pain/monkey(src)
 
-/mob/living/carbon/human/stok/Initialize()
-	..(new_species = "Stok")
+/mob/living/carbon/human/stok/Initialize(mapload)
+	. = ..(mapload, new_species = "Stok")
 
 /mob/living/carbon/human/stok/initialize_pain()
 	pain = new /datum/pain/monkey(src)
 
-/mob/living/carbon/human/yiren/Initialize()
-	..(new_species = "Yiren")
+/mob/living/carbon/human/yiren/Initialize(mapload)
+	. = ..(mapload, new_species = "Yiren")
 
 /mob/living/carbon/human/yiren/initialize_pain()
 	pain = new /datum/pain/monkey(src)
 
 /mob/living/carbon/human/synthetic/Initialize(mapload)
-	..(mapload, "Synthetic")
+	. = ..(mapload, "Synthetic")
 
 /mob/living/carbon/human/synthetic/initialize_pain()
 	pain = new /datum/pain/synthetic(src)
@@ -1417,7 +1417,7 @@
 	stamina = new /datum/stamina/synthetic(src)
 
 /mob/living/carbon/human/synthetic_old/Initialize(mapload)
-	..(mapload, "Early Synthetic")
+	. = ..(mapload, "Early Synthetic")
 
 /mob/living/carbon/human/synthetic_old/initialize_pain()
 	pain = new /datum/pain/synthetic(src)
@@ -1426,7 +1426,7 @@
 	stamina = new /datum/stamina/synthetic(src)
 
 /mob/living/carbon/human/synthetic_2nd_gen/Initialize(mapload)
-	..(mapload, "Second Generation Synthetic")
+	. = ..(mapload, "Second Generation Synthetic")
 
 /mob/living/carbon/human/synthetic_2nd_gen/initialize_pain()
 	pain = new /datum/pain/synthetic(src)

@@ -2,7 +2,7 @@ var/global/list/cleanable_decal_cache = list()
 
 /obj/effect/decal/cleanable
 	var/list/random_icon_states = list()
-	var/targeted_by = null			// Used so cleanbots can't claim a mess.
+	var/obj/structure/machinery/bot/cleanbot/targeted_by = null			// Used so cleanbots can't claim a mess.
 	var/dirt_type = DIRT_MISC//What kind of dirt is this
 	garbage = TRUE
 
@@ -29,7 +29,15 @@ var/global/list/cleanable_decal_cache = list()
 
 	QDEL_IN(src, 3 SECONDS)
 
-
+/obj/effect/decal/cleanable/Destroy()
+	random_icon_states = null
+	if(targeted_by)
+		if(targeted_by.target == src)
+			targeted_by.target = null
+		if(targeted_by.oldtarget)
+			targeted_by.oldtarget = null
+	targeted_by = null
+	return ..()
 
 /obj/effect/decal/cleanable/attackby(obj/item/W, mob/user)
 	var/obj/effect/alien/weeds/A = locate() in loc

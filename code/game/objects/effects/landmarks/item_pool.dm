@@ -11,10 +11,9 @@
 	// Initialized everywhere
 	var/pool_name			// Holds the UUID of the pool
 
-/obj/effect/landmark/item_pool_spawner/New()
-	set waitfor = 0
+/obj/effect/landmark/item_pool_spawner/Initialize(mapload, ...)
+	. = ..()
 	item_pool_landmarks += src
-	..()
 
 /obj/effect/landmark/item_pool_spawner/Destroy()
 	item_pool_landmarks -= src

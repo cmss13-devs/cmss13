@@ -109,7 +109,7 @@
 	. = ..()
 	
 	queen_spawn_list += loc
-	qdel(src)
+	return INITIALIZE_HINT_QDEL
 
 
 /obj/effect/landmark/start

@@ -12,8 +12,8 @@
 		if(!H.equip_to_slot_if_possible(disk, WEAR_L_HAND))
 			if(!H.equip_to_slot_if_possible(disk, WEAR_R_HAND))
 				disk.loc = H.loc
-	
-	registerListener(GLOBAL_EVENT, EVENT_DISK_INSERTED + "\ref[disk]", "\ref[src]_\ref[disk]", CALLBACK(src, .proc/inserted_disk))
+
+	RegisterSignal(disk, COMSIG_AGENT_DISK_INSERTED, .proc/inserted_disk)
 
 /datum/agent_objective/floppy_disk/generate_objective_body_message()
 	var/obj/O = /obj/item/device/agents/floppy_disk
@@ -24,6 +24,7 @@
 	description = "Ruin the computer systems, by inserting the [initial(O.name)] in a sensor computer in CIC."
 
 /datum/agent_objective/floppy_disk/proc/inserted_disk()
+	SIGNAL_HANDLER
 	if(completed)
 		return
 

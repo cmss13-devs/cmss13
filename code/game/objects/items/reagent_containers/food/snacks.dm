@@ -14,6 +14,7 @@
 
 	//Placeholder for effect that trigger on eating that aren't tied to reagents.
 /obj/item/reagent_container/food/snacks/proc/On_Consume(var/mob/M)
+	SEND_SIGNAL(src, COMSIG_SNACK_EATEN, M)
 	if(!usr)	return
 
 	if(!reagents.total_volume)

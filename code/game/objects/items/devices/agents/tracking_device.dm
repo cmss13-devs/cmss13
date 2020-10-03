@@ -53,7 +53,7 @@
 
 	update_icon()
 
-	raiseEvent(GLOBAL_EVENT, EVENT_TRACKING_PLANTED + "\ref[src]")
+	SEND_SIGNAL(src, COMSIG_TRACKING_PLANTED)
 
 /obj/item/device/agents/tracking_device/attackby(obj/item/W, mob/living/user)
 	if(ismultitool(W) && planted)
@@ -71,6 +71,6 @@
 
 		update_icon()
 
-		raiseEvent(GLOBAL_EVENT, EVENT_TRACKING_PLANTED + "\ref[src]")
+		SEND_SIGNAL(src, COMSIG_TRACKING_DISARMED)
 	else
 		..()

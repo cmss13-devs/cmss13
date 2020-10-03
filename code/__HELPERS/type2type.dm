@@ -252,3 +252,18 @@ proc/tg_list2text(list/list, glue=",")
 /// for use inside of browse() calls to html assets that might be loaded on a cdn.
 /proc/url2htmlloader(url)
 	return {"<html><head><meta http-equiv="refresh" content="0;URL='[url]'"/></head><body onLoad="parent.location='[url]'"></body></html>"}
+
+/proc/type2parent(child)
+	var/string_type = "[child]"
+	var/last_slash = findlasttext(string_type, "/")
+	if(last_slash == 1)
+		switch(child)
+			if(/datum)
+				return null
+			if(/obj, /mob)
+				return /atom/movable
+			if(/area, /turf)
+				return /atom
+			else
+				return /datum
+	return text2path(copytext(string_type, 1, last_slash))

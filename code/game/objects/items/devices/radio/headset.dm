@@ -177,10 +177,16 @@
 
 /obj/item/device/radio/headset/equipped(mob/living/carbon/human/user, slot)
 	if (slot == WEAR_EAR)
-		registerListener(user, EVENT_REVIVED, "defib_\ref[src]", CALLBACK(src, .proc/turn_on))
+		RegisterSignal(user, list(
+			COMSIG_LIVING_REJUVENATED, 
+			COMSIG_HUMAN_REVIVED,
+		), .proc/turn_on)
 
 /obj/item/device/radio/headset/dropped(mob/living/carbon/human/user)
-	unregisterListener(user, EVENT_REVIVED, "defib_\ref[src]")
+	UnregisterSignal(user, list(
+		COMSIG_LIVING_REJUVENATED, 
+		COMSIG_HUMAN_REVIVED,
+	))
 
 /obj/item/device/radio/headset/proc/turn_on()
 	on = TRUE

@@ -15,7 +15,7 @@
 			if(!H.equip_to_slot_if_possible(poisoned_food, WEAR_R_HAND))
 				poisoned_food.loc = H.loc
 
-	registerListener(GLOBAL_EVENT, EVENT_POISON_EATEN + "\ref[poisoned_food]", "\ref[src]_\ref[poisoned_food]", CALLBACK(src, .proc/ate_poison))
+	RegisterSignal(poisoned_food, COMSIG_SNACK_EATEN, .proc/ate_poison)
 
 /datum/agent_objective/poison/generate_objective_body_message()
 	return "[SPAN_BOLD("[SPAN_BLUE("Poison")]")] an officer with the rotten [SPAN_BOLD("[SPAN_RED("[poisoned_food.name]")]")] to upset their stomach."
@@ -24,6 +24,7 @@
 	description = "Poison an officer with the rotten [poisoned_food.name] to upset their stomach."
 
 /datum/agent_objective/poison/proc/ate_poison(var/job_of_eater)
+	SIGNAL_HANDLER
 	if(ate_it)
 		return
 
@@ -52,9 +53,3 @@
 	
 	reagents.add_reagent("nutriment", 8)
 	bitesize = 3
-
-/obj/item/reagent_container/food/snacks/agent/On_Consume(var/mob/M)
-	raiseEvent(GLOBAL_EVENT, EVENT_POISON_EATEN + "\ref[src]", M.job)
-
-	..()
-	

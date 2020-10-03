@@ -20,8 +20,7 @@
 			if(!H.equip_to_slot_if_possible(P, WEAR_L_HAND))
 				if(!H.equip_to_slot_if_possible(P, WEAR_R_HAND))
 					P.loc = H.loc
-
-	registerListener(GLOBAL_EVENT, EVENT_PROPAGANDA_PLANTED + "\ref[H]", "\ref[src]_\ref[H]", CALLBACK(src, .proc/placed_propaganda))
+		RegisterSignal(P, COMSIG_POSTER_PLACED, .proc/placed_propaganda)
 
 /datum/agent_objective/propaganda/generate_objective_body_message()
 	return "Spread the message! [SPAN_BOLD("[SPAN_BLUE("Place")]")] [SPAN_BOLD("[SPAN_RED("[posters_to_place]")]")] [SPAN_BOLD("[SPAN_RED("propaganda posters")]")] around [MAIN_SHIP_NAME] hallways."
@@ -29,7 +28,9 @@
 /datum/agent_objective/propaganda/generate_description()
 	description = "Spread the message! Place [posters_to_place] propaganda posters around [MAIN_SHIP_NAME] hallways."
 
-/datum/agent_objective/propaganda/proc/placed_propaganda(var/placed_area)
+/datum/agent_objective/propaganda/proc/placed_propaganda(turf/closed/wall/loc, mob/user)
+	SIGNAL_HANDLER
+	var/area/placed_area = get_area(user)
 	for(var/A in area_paths_to_place_at)
 		if(istype(placed_area, A))
 			currently_placed++

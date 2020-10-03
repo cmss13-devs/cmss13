@@ -60,11 +60,6 @@
 //	The key released
 #define EVENT_READ_KEY_UP "read_key_up"
 
-// Raised when a mob is revived
-// Args:
-//	n/a
-#define EVENT_REVIVED "revived"
-
 
 // *----------------------* //
 // 		Agent related
@@ -92,27 +87,7 @@
 #define EVENT_WINDOW_DESTROYED "window_destroyed"
 #define EVENT_WINDOW_BUILT "window_built"
 
-// Raised when a tracking device is planted by agents
-// Args:
-//	n/a
-#define EVENT_TRACKING_PLANTED "tracking_planted"
-
-// Raised when a propangda poster is planted by agents
-// Args:
-//	the area its placed at
-#define EVENT_PROPAGANDA_PLANTED "propaganda_planted"
-
-// Raised when poison is ate
-// Args:
-//	the job of eater
-#define EVENT_POISON_EATEN "poison_eaten"
-
 // Raised when an apc is disabled
 // Args:
 //	the area its disabled at
 #define EVENT_APC_DISABLED "aps_disabled"
-
-// Raised when a floppy disk is inserted into a computer
-// Args:
-//	n/a
-#define EVENT_DISK_INSERTED "disk_inserted"

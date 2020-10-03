@@ -23,6 +23,6 @@
 	C.hacked = TRUE
 	C.update_icon()
 
-	raiseEvent(GLOBAL_EVENT, EVENT_DISK_INSERTED + "\ref[src]")
+	SEND_SIGNAL(src, COMSIG_AGENT_DISK_INSERTED)
 
 	qdel(src)

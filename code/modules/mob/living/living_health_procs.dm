@@ -125,7 +125,7 @@
 /mob/living/proc/rejuvenate()
 	heal_all_damage()
 
-	raiseEvent(src, EVENT_REVIVED)
+	SEND_SIGNAL(src, COMSIG_LIVING_REJUVENATED)
 
 	// shut down ongoing problems
 	nutrition = NUTRITION_NORMAL

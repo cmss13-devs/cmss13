@@ -3,7 +3,7 @@
 	description = "In exchange for your ability to store huggers, you can cheat adrenaline mechanism of nearby xenos by violently killing little ones while they are still in small egg form."
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
-	caste_whitelist = list("Carrier") 
+	caste_whitelist = list("Carrier")
 	mutator_actions_to_remove = list("Use/Throw Facehugger","Emit Pheromones (30)","Plant Weeds (75)","Place resin hole (200)")
 	mutator_actions_to_add = list(/datum/action/xeno_action/activable/sacrifice_egg/radius_remember, /datum/action/xeno_action/activable/sacrifice_egg/radius_heal, /datum/action/xeno_action/activable/sacrifice_egg/radius_scream, /datum/action/xeno_action/activable/sacrifice_egg/radius_pheromones)
 	behavior_delegate_type = /datum/behavior_delegate/carrier_shaman
@@ -32,6 +32,8 @@
 	apply_behavior_holder(C)
 	mutator_update_actions(C)
 	MS.recalculate_actions(description, flavor_description)
+	C.phero_modifier = -C.caste.aura_strength
+	C.recalculate_pheromones()
 	return TRUE
 
 /datum/action/xeno_action/activable/sacrifice_egg
@@ -111,7 +113,7 @@
 	var/datum/behavior_delegate/carrier_shaman/BD = behavior_delegate
 	if(!istype(BD))
 		return FALSE
-	BD.used_shaman_ability = TRUE	
+	BD.used_shaman_ability = TRUE
 
 	if(!do_after(src, action_def.windup_delay, INTERRUPT_ALL, ACTION_GREEN_POWER_UP))
 		BD.used_shaman_ability = FALSE
@@ -123,7 +125,7 @@
 
 	visible_message(SPAN_XENONOTICE("\The [src] squashes ovomorph into a pulp."), \
 		SPAN_XENONOTICE("You squash the egg into a mess of acid blood and gore! The hive now finds vitality to continue the fight and avenge the little one."), null, 5)
-	
+
 	var/image/heal_overlay = get_busy_icon(BUSY_ICON_MEDICAL)
 	var/image/effect_overlay = get_busy_icon(ACTION_GREEN_POWER_UP)
 
@@ -136,14 +138,14 @@
 			continue
 		if(X.mutation_type == CARRIER_SHAMAN) // Shamans are disconnected from the effect
 			continue
-		
+
 		to_chat(X, SPAN_XENOWARNING("The little ones are dying! Do something!"))
 		to_chat(X, SPAN_XENOWARNING("Your instincts force you to recover and help others!"))
 
 		effect_overlay.flick_overlay(X, 20)
-		
+
 		effect_power++
-	
+
 	addtimer(CALLBACK(BD, /datum/behavior_delegate/carrier_shaman.proc/reset_shaman_ability), action_def.get_cooldown())
 
 	if(effect_power < BD.remembered_count)
@@ -165,7 +167,7 @@
 			continue
 		if(X.mutation_type == CARRIER_SHAMAN) // Shamans are disconnected from the effect
 			continue
-		
+
 		// give overheal
 		var/to_heal = min(X.maxHealth * heal_percent / 100, action_def.heal_strength_max)
 		X.add_xeno_shield(to_heal, XENO_SHIELD_SOURCE_SHAMAN)
@@ -246,14 +248,14 @@
 			continue
 		if(X.mutation_type == CARRIER_SHAMAN) // Shamans are disconnected from the effect
 			continue
-		
+
 		to_chat(X, SPAN_XENOWARNING("The little ones are dying! Do something!"))
 		to_chat(X, SPAN_XENOWARNING("Your mind emits a strange wave of thoughts that even other creatures can feel!"))
 
 		effect_overlay.flick_overlay(X, 20)
 
-		effect_power++	
-	
+		effect_power++
+
 	addtimer(CALLBACK(BD, /datum/behavior_delegate/carrier_shaman.proc/reset_shaman_ability), action_def.get_cooldown())
 
 	if(effect_power < BD.remembered_count)
@@ -275,7 +277,7 @@
 		if(M.scream_stun_timeout > world.time)
 			to_chat(src, SPAN_XENOWARNING("Wave of madness passes over you but you were already shocked by same feeling recently."))
 			continue
-		
+
 		var/mob/living/carbon/Xenomorph/X = M
 		var/mob/living/carbon/human/H = M
 
@@ -356,7 +358,7 @@
 	var/effect_power = 0
 
 	var/image/effect_overlay = get_busy_icon(ACTION_BLUE_POWER_UP)
-	
+
 	visible_message(SPAN_XENONOTICE("\The [src] squashes ovomorph into a pulp."), \
 		SPAN_XENONOTICE("You squash the egg into a mess of acid blood and gore! Others seem to channel their energy to you. They consider you their savior."), null, 8)
 
@@ -367,14 +369,14 @@
 			continue
 		if(X.mutation_type == CARRIER_SHAMAN) // Shamans are disconnected from the effect
 			continue
-		
+
 		to_chat(X, SPAN_XENOWARNING("The little ones are dying! Do something!"))
 		to_chat(X, SPAN_XENOWARNING("You channel your power to the shaman, she seems trustworthy!"))
 
 		effect_overlay.flick_overlay(X, 20)
-		
+
 		effect_power++
-	
+
 	addtimer(CALLBACK(BD, /datum/behavior_delegate/carrier_shaman.proc/reset_shaman_ability), action_def.get_cooldown())
 
 	if(effect_power < BD.remembered_count)
@@ -457,7 +459,7 @@
 	var/effect_power = 0
 
 	var/image/effect_overlay = get_busy_icon(ACTION_BLUE_POWER_UP)
-	
+
 	visible_message(SPAN_XENONOTICE("\The [src] squashes ovomorph into a pulp."), \
 		SPAN_XENONOTICE("You squash the egg into a mess of acid blood and gore! Others seem to channel their energy to you. They consider you their savior."), null, 8)
 
@@ -468,13 +470,13 @@
 			continue
 		if(X.mutation_type == CARRIER_SHAMAN) // Shamans are disconnected from the effect
 			continue
-		
+
 		to_chat(X, SPAN_XENOWARNING("The little ones are dying! Do something!"))
 
 		effect_overlay.flick_overlay(X, 20)
-		
+
 		effect_power++
-	
+
 	addtimer(CALLBACK(BD, /datum/behavior_delegate/carrier_shaman.proc/reset_shaman_ability), action_def.get_cooldown())
 
 	if(effect_power == 0)

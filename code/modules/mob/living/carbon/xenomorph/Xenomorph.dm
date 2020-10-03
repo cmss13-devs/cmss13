@@ -569,7 +569,7 @@
 	med_hud_set_armor()
 	hud_set_plasma()
 	hud_set_pheromone()
-	
+
 	//and display them
 	add_to_all_mob_huds()
 	var/datum/mob_hud/MH = huds[MOB_HUD_XENO_INFECTION]
@@ -608,8 +608,8 @@
 	var/datum/hive_status/new_hive = hive_datum[new_hivenumber]
 	if(!new_hive)
 		return
-	
-	
+
+
 	new_hive.add_xeno(src)
 
 	set_faction(hive.name)
@@ -751,6 +751,9 @@
 		aura_strength = caste.aura_strength + phero_modifier
 	else
 		caste.aura_strength = 0
+	if(aura_strength == 0 && current_aura)
+		current_aura = null
+		to_chat(src, SPAN_XENOWARNING("You lose your pheromones."))
 
 
 /mob/living/carbon/Xenomorph/proc/recalculate_maturation()
@@ -780,7 +783,7 @@
 	KnockDown(4, TRUE)
 	visible_message(SPAN_DANGER("[src] rolls on the floor, trying to put themselves out!"), \
 		SPAN_NOTICE("You stop, drop, and roll!"), null, 5)
-	
+
 	if(istype(get_turf(src), /turf/open/gm/river))
 		ExtinguishMob()
 

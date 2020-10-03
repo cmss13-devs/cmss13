@@ -125,7 +125,7 @@ Additional game mode variables.
 	pred_keys += new_predator.ckey //Add their key.
 
 	if(!ignore_pred_num)
-		pred_current_num++ 
+		pred_current_num++
 
 #define calculate_pred_max (Floor(length(player_list) / pred_per_players) + pred_additional_max + pred_start_count)
 
@@ -372,10 +372,10 @@ Additional game mode variables.
 
 	for(var/datum/hive_status/hive in hive_datum)
 		var/obj/effect/alien/resin/special/pool/SP = hive.spawn_pool
-		if(!isnull(SP) && SP.can_spawn_larva() && isnewplayer(xeno_candidate))
+		if(!isnull(SP) && SP.can_spawn_larva())
 			hives += list(hive = SP)
 
-	if(hives.len > 0 && isnewplayer(xeno_candidate))
+	if(length(hives))
 		available_xenos += pooled_larva
 
 	if(!available_xenos.len || (instant_join && !available_xenos_non_ssd.len))
@@ -503,7 +503,7 @@ Additional game mode variables.
 	var/spawn_list_names = list()
 	for(var/T in queen_spawn_list)
 		spawn_list_names += get_area(T)
-	
+
 	// Timed input, answer before the time us up
 	// H'yup, that's how you do it, ugly as fuck
 	var/list/spawn_name = list("temp")

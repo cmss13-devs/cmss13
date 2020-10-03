@@ -82,11 +82,11 @@
 	if(H.client)
 		var/playtime = get_job_playtime(H.client, rank)
 
-		if(playtime > 64 HOURS)
+		if(playtime > JOB_PLAYTIME_TIER_4)
 			return "WY-XE"
-		else if(playtime > 32 HOURS)
+		else if(playtime > JOB_PLAYTIME_TIER_3)
 			return "WY-XD"
-		else if(playtime > 16 HOURS)
+		else if(playtime > JOB_PLAYTIME_TIER_2)
 			return "WY-XC"
 		else
 			return paygrade
@@ -444,7 +444,7 @@
 
 /datum/equipment_preset/uscm_ship/sea/load_rank(mob/living/carbon/human/H)
 	if(H.client)
-		if(get_job_playtime(H.client, JOB_SEA) >= HOURS_9)
+		if(get_job_playtime(H.client, JOB_SEA) >= JOB_PLAYTIME_TIER_1)
 			return "E9"
 	return paygrade
 

@@ -13,6 +13,7 @@
 
 # KEYWORDS:
 # +MENTOR = Basic Mentor Commands
+# +NOLOCK = Bypass timelock check.
 # +MOD = general moderator verbs
 # +ADMIN = general admin tools, verbs etc
 # +FUN = events, other event-orientated actions. Access to the fun secrets in the secrets panel.
@@ -34,7 +35,7 @@
 Donator 		+COLOR
 Mentor      	+MENTOR +COLOR
 Trial Moderator +MOD +SERVER +COLOR
-Moderator 		+MOD +SERVER +BAN +REJUV +COLOR
+Moderator 		+MOD +SERVER +BAN +REJUV +COLOR +NOLOCK
 Trial Admin 	+ADMIN +MOD +SERVER +BAN +REJUV +SPAWN +STEALTH +VAREDIT +COLOR
 Admin 			+ADMIN +MOD +SERVER +BAN +REJUV +SPAWN +STEALTH +VAREDIT +POSSESS +FUN +SOUND +COLOR +BUILDMODE
 

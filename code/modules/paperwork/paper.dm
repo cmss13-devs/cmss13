@@ -80,7 +80,7 @@
 
 /obj/item/paper/proc/read_paper(mob/user)
 	var/datum/asset/asset_datum = get_asset_datum(/datum/asset/simple/paper)
-	asset_datum.send()
+	asset_datum.send(user)
 
 	show_browser(user, "<BODY class='paper'>[info][stamps]</BODY>", name, name)
 	onclose(user, name)

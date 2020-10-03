@@ -648,8 +648,6 @@ var/list/global/item_storage_box_cache = list()
 	closer.master = src
 
 /obj/item/storage/Destroy()
-	for(var/atom/movable/I in contents)
-		qdel(I)
 	for(var/mob/M in content_watchers)
 		hide_from(M)
 	if(boxes)
@@ -676,7 +674,7 @@ var/list/global/item_storage_box_cache = list()
 	if(closer)
 		qdel(closer)
 		closer = null
-	. = ..()
+	return ..()
 
 /obj/item/storage/emp_act(severity)
 	if(!istype(src.loc, /mob/living))
@@ -760,7 +758,3 @@ var/list/global/item_storage_box_cache = list()
 		return -1	//inside something with a null loc.
 
 	return depth
-
-/obj/item/storage/on_stored_atom_del(atom/movable/AM)
-	if(istype(AM, /obj/item))
-		remove_from_storage(AM)

@@ -23,8 +23,10 @@
 
 //===========================================================================
 /atom/movable/Destroy()
-	for(var/atom/movable/I in contents) qdel(I)
-	if(pulledby) pulledby.stop_pulling()
+	for(var/atom/movable/I in contents) 
+		qdel(I)
+	if(pulledby) 
+		pulledby.stop_pulling()
 	qdel(launch_metadata)
 	launch_metadata = null
 

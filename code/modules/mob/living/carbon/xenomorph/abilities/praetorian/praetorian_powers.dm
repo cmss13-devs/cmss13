@@ -665,7 +665,7 @@
 		to_chat(targetXeno, SPAN_XENOHIGHDANGER("You feel your defenses bolstered by [X]!"))
 		targetXeno.add_xeno_shield(total_shield_amount, XENO_SHIELD_SOURCE_WARDEN_PRAE)
 		targetXeno.xeno_jitter(SECONDS_1)
-		targetXeno.flick_heal_overlay(SECONDS_1, "#00F5DB") //D9F500
+		targetXeno.flick_heal_overlay(SECONDS_3, "#FFA800") //D9F500
 		use_plasma = TRUE
 
 	else if (curr_effect_type == WARDEN_HEAL_HP)
@@ -695,7 +695,7 @@
 		targetXeno.gain_health(heal_amount + bonus_heal)
 		targetXeno.visible_message(SPAN_BOLDNOTICE("[X] places its claws on [targetXeno], and its wounds are quickly sealed!"))	//marines probably should know if a xeno gets healed
 		use_plasma = TRUE	//it's already hard enough to gauge health without hp showing on the mob 
-		targetXeno.flick_heal_overlay(SECONDS_2, "#D9F500")//so the visible_message and recovery overlay will warn marines and possibly predators that the xenomorph has been healed!
+		targetXeno.flick_heal_overlay(SECONDS_3, "#00B800")//so the visible_message and recovery overlay will warn marines and possibly predators that the xenomorph has been healed!
 
 	else if (curr_effect_type == WARDEN_HEAL_DEBUFFS)
 		if (X.observed_xeno != null)
@@ -714,7 +714,7 @@
 		to_chat(targetXeno, SPAN_XENOHIGHDANGER("You are rejuvenated by [X]!"))
 		targetXeno.visible_message(SPAN_BOLDNOTICE("[X] points at [targetXeno], and it spasms as it recuperates unnaturally quickly!"))	//marines probably should know if a xeno gets rejuvenated
 		targetXeno.xeno_jitter(SECONDS_1) //it might confuse them as to why the queen got up half a second after being AT rocketed, and give them feedback on the Praetorian rejuvenating
-		targetXeno.flick_heal_overlay(SECONDS_1, "#F5007A") //therefore making the Praetorian a priority target
+		targetXeno.flick_heal_overlay(SECONDS_3, "#F5007A") //therefore making the Praetorian a priority target
 		targetXeno.SetKnockedout(0)
 		targetXeno.SetStunned(0)
 		targetXeno.SetKnockeddown(0)

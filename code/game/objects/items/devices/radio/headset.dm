@@ -386,17 +386,17 @@
 /obj/item/device/radio/headset/almayer/marine/alpha/lead
 	name = "marine alpha leader radio headset"
 	desc = "This is used by the marine Alpha squad leader. Channels are as follows: :v - marine command, :j - JTAC. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
-	keyslot2 = new /obj/item/device/encryptionkey/squadlead
+	keyslot1 = new /obj/item/device/encryptionkey/squadlead
 
 /obj/item/device/radio/headset/almayer/marine/alpha/engi
 	name = "marine alpha engineer radio headset"
 	desc = "This is used by the marine Alpha combat engineers. To access the engineering channel, use :e. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
-	keyslot2 = new /obj/item/device/encryptionkey/engi
+	keyslot1 = new /obj/item/device/encryptionkey/engi
 
 /obj/item/device/radio/headset/almayer/marine/alpha/med
 	name = "marine alpha medic radio headset"
 	desc = "This is used by the marine Alpha combat medics. To access the medical channel, use :m. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
-	keyslot2 = new /obj/item/device/encryptionkey/med
+	keyslot1 = new /obj/item/device/encryptionkey/med
 
 
 
@@ -409,17 +409,17 @@
 /obj/item/device/radio/headset/almayer/marine/bravo/lead
 	name = "marine bravo leader radio headset"
 	desc = "This is used by the marine Bravo squad leader. Channels are as follows: :v - marine command, :j - JTAC. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
-	keyslot2 = new /obj/item/device/encryptionkey/squadlead
+	keyslot1 = new /obj/item/device/encryptionkey/squadlead
 
 /obj/item/device/radio/headset/almayer/marine/bravo/engi
 	name = "marine bravo engineer radio headset"
 	desc = "This is used by the marine Bravo combat engineers. To access the engineering channel, use :e. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
-	keyslot2 = new /obj/item/device/encryptionkey/engi
+	keyslot1 = new /obj/item/device/encryptionkey/engi
 
 /obj/item/device/radio/headset/almayer/marine/bravo/med
 	name = "marine bravo medic radio headset"
 	desc = "This is used by the marine Bravo combat medics. To access the medical channel, use :m. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
-	keyslot2 = new /obj/item/device/encryptionkey/med
+	keyslot1 = new /obj/item/device/encryptionkey/med
 
 
 
@@ -432,17 +432,17 @@
 /obj/item/device/radio/headset/almayer/marine/charlie/lead
 	name = "marine charlie leader radio headset"
 	desc = "This is used by the marine Charlie squad leader. Channels are as follows: :v - marine command, :j - JTAC. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
-	keyslot2 = new /obj/item/device/encryptionkey/squadlead
+	keyslot1 = new /obj/item/device/encryptionkey/squadlead
 
 /obj/item/device/radio/headset/almayer/marine/charlie/engi
 	name = "marine charlie engineer radio headset"
 	desc = "This is used by the marine Charlie combat engineers. To access the engineering channel, use :e. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
-	keyslot2 = new /obj/item/device/encryptionkey/engi
+	keyslot1 = new /obj/item/device/encryptionkey/engi
 
 /obj/item/device/radio/headset/almayer/marine/charlie/med
 	name = "marine charlie medic radio headset"
 	desc = "This is used by the marine Charlie combat medics. To access the medical channel, use :m. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
-	keyslot2 = new /obj/item/device/encryptionkey/med
+	keyslot1 = new /obj/item/device/encryptionkey/med
 
 
 
@@ -455,17 +455,17 @@
 /obj/item/device/radio/headset/almayer/marine/delta/lead
 	name = "marine delta leader radio headset"
 	desc = "This is used by the marine Delta squad leader. Channels are as follows: :v - marine command, :j - JTAC. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
-	keyslot2 = new /obj/item/device/encryptionkey/squadlead
+	keyslot1 = new /obj/item/device/encryptionkey/squadlead
 
 /obj/item/device/radio/headset/almayer/marine/delta/engi
 	name = "marine delta engineer radio headset"
 	desc = "This is used by the marine Delta combat engineers. To access the engineering channel, use :e. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
-	keyslot2 = new /obj/item/device/encryptionkey/engi
+	keyslot1 = new /obj/item/device/encryptionkey/engi
 
 /obj/item/device/radio/headset/almayer/marine/delta/med
 	name = "marine delta medic radio headset"
 	desc = "This is used by the marine Delta combat medics. To access the medical channel, use :m. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
-	keyslot2 = new /obj/item/device/encryptionkey/med
+	keyslot1 = new /obj/item/device/encryptionkey/med
 
 
 /* Echo squad cryo support, planned, but not yet implemented. Uncomment when needed.
@@ -528,13 +528,13 @@
 			switch(H.job)
 				if(JOB_SQUAD_LEADER)
 					name = "marine leader " + name
-					keyslot2 = new /obj/item/device/encryptionkey/squadlead(src)
+					keyslot1 = new /obj/item/device/encryptionkey/squadlead(src)
 				if(JOB_SQUAD_MEDIC)
 					name = "marine medic " + name
-					keyslot2 = new /obj/item/device/encryptionkey/med(src)
+					keyslot1 = new /obj/item/device/encryptionkey/med(src)
 				if(JOB_SQUAD_ENGI)
 					name = "marine engineer " + name
-					keyslot2 = new /obj/item/device/encryptionkey/engi(src)
+					keyslot1 = new /obj/item/device/encryptionkey/engi(src)
 				else
 					name = "marine " + name
 

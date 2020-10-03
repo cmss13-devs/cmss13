@@ -741,7 +741,128 @@
 	scatter = config.low_scatter_value
 
 //-------------------------------------------------------
+
+//UPP HvH Attachments Rifle
+#define UPP_HVH_ATTACHABLES_RIFLE list(\
+	/obj/item/attachable/suppressor,\
+	/obj/item/attachable/bayonet,\
+	/obj/item/attachable/bayonet/upp,\
+	/obj/item/attachable/reddot,\
+	/obj/item/attachable/quickfire,\
+	/obj/item/attachable/reflex,\
+	/obj/item/attachable/verticalgrip,\
+	/obj/item/attachable/angledgrip,\
+	/obj/item/attachable/flashlight/grip,\
+	/obj/item/attachable/lasersight,\
+	/obj/item/attachable/gyro,\
+	/obj/item/attachable/flashlight,\
+	/obj/item/attachable/bipod,\
+	/obj/item/attachable/extended_barrel,\
+	/obj/item/attachable/heavy_barrel,\
+	/obj/item/attachable/burstfire_assembly,\
+	/obj/item/attachable/magnetic_harness,\
+	/obj/item/attachable/stock/rifle,\
+	/obj/item/attachable/attached_gun/grenade,\
+	/obj/item/attachable/attached_gun/flamer,\
+	/obj/item/attachable/attached_gun/shotgun,\
+	/obj/item/attachable/attached_gun/extinguisher,\
+	/obj/item/attachable/scope,\
+	/obj/item/attachable/scope/mini\
+	)
+
+// UPP HvH Attachments Carbine
+#define UPP_HVH_ATTACHABLES_CARBINE list(\
+	/obj/item/attachable/suppressor,\
+	/obj/item/attachable/reddot,\
+	/obj/item/attachable/reflex,\
+	/obj/item/attachable/verticalgrip,\
+	/obj/item/attachable/angledgrip,\
+	/obj/item/attachable/flashlight/grip,\
+	/obj/item/attachable/stock/smg,\
+	/obj/item/attachable/stock/smg/collapsible,\
+	/obj/item/attachable/compensator,\
+	/obj/item/attachable/lasersight,\
+	/obj/item/attachable/flashlight,\
+	/obj/item/attachable/extended_barrel,\
+	/obj/item/attachable/bayonet,\
+	/obj/item/attachable/bayonet/upp,\
+	/obj/item/attachable/heavy_barrel,\
+	/obj/item/attachable/scope/mini,\
+	/obj/item/attachable/burstfire_assembly,\
+	/obj/item/attachable/magnetic_harness,\
+	/obj/item/attachable/gyro,\
+	/obj/item/attachable/stock/smg/brace,\
+	/obj/item/attachable/quickfire,\
+	/obj/item/attachable/bipod,\
+	/obj/item/attachable/attached_gun/grenade,\
+	/obj/item/attachable/attached_gun/flamer,\
+	/obj/item/attachable/attached_gun/shotgun,\
+	/obj/item/attachable/attached_gun/extinguisher,\
+	)
+
+// Pulse Rifle Type 71 HvH
+/obj/item/weapon/gun/rifle/type71/hvh/Initialize()
+	. = ..()
+	attachable_allowed = UPP_HVH_ATTACHABLES_RIFLE
+
+/obj/item/weapon/gun/rifle/type71/hvh/set_gun_config_values()
+	..()
+	fire_delay = config.low_fire_delay
+	burst_amount = config.high_burst_value
+	burst_delay = config.mlow_fire_delay
+	accuracy_mult = config.base_hit_accuracy_mult + config.med_hit_accuracy_mult + 2*config.low_hit_accuracy_mult
+	accuracy_mult_unwielded = config.base_hit_accuracy_mult - config.high_hit_accuracy_mult
+	scatter = config.med_scatter_value
+	burst_scatter_mult = config.min_scatter_value
+	scatter_unwielded = config.high_scatter_value
+	damage_mult = config.base_hit_damage_mult + config.low_hit_damage_mult
+	recoil_unwielded = config.med_recoil_value
+
+// Flamer Type 71 HvH Rifle
+/obj/item/weapon/gun/rifle/type71/flamer/hvh/Initialize()
+	. = ..()
+	attachable_allowed = UPP_HVH_ATTACHABLES_RIFLE
+
+// Carbine Type 71 HvH Rifle
+/obj/item/weapon/gun/rifle/type71/carbine/hvh/Initialize()
+	. = ..()
+	attachable_allowed = UPP_HVH_ATTACHABLES_CARBINE
+
+/obj/item/weapon/gun/rifle/type71/carbine/hvh/set_gun_config_values()
+	..()
+	fire_delay = config.mlow_fire_delay
+	burst_delay = config.min_fire_delay
+	accuracy_mult = config.base_hit_accuracy_mult
+	accuracy_mult_unwielded = config.base_hit_accuracy_mult - config.low_hit_accuracy_mult
+	scatter = config.low_scatter_value
+	burst_scatter_mult = config.low_scatter_value
+	scatter_unwielded = config.med_scatter_value
+	damage_mult = config.base_hit_damage_mult - config.low_hit_damage_mult
+	recoil_unwielded = config.low_recoil_value
+
+// Commando Type 71 HvH Rifle
+/obj/item/weapon/gun/rifle/type71/carbine/commando/hvh/Initialize()
+	. = ..()
+	attachable_allowed = UPP_HVH_ATTACHABLES_CARBINE
+
+/obj/item/weapon/gun/rifle/type71/carbine/commando/hvh/set_gun_config_values()
+	..()
+	fire_delay = config.mlow_fire_delay
+	burst_amount = config.med_burst_value
+	burst_delay = config.mlow_fire_delay
+	accuracy_mult = config.base_hit_accuracy_mult + config.max_hit_accuracy_mult
+	accuracy_mult_unwielded = config.base_hit_accuracy_mult - config.min_hit_accuracy_mult
+	damage_mult = config.base_hit_damage_mult + config.low_hit_damage_mult
+	scatter = config.min_scatter_value
+	burst_scatter_mult = config.min_scatter_value
+	scatter_unwielded = config.lmed_scatter_value
+	recoil = config.min_recoil_value
+	recoil_unwielded = config.min_recoil_value
+	movement_acc_penalty_mult = config.mlow_movement_accuracy_penalty_mult
+
 //-------------------------------------------------------
+#undef UPP_HVH_ATTACHABLES_CARBINE
+#undef UPP_HVH_ATTACHABLES_RIFLE
 //L42A Battle Rifle
 
 /obj/item/weapon/gun/rifle/l42a

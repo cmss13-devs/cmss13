@@ -1211,6 +1211,7 @@
 #include "code\modules\gear_presets\survivors.dm"
 #include "code\modules\gear_presets\synths.dm"
 #include "code\modules\gear_presets\upp.dm"
+#include "code\modules\gear_presets\upp_hvh.dm"
 #include "code\modules\gear_presets\uscm.dm"
 #include "code\modules\gear_presets\uscm_medical.dm"
 #include "code\modules\gear_presets\uscm_police.dm"

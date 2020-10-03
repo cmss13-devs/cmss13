@@ -9,6 +9,7 @@
 	underslug_launchable = TRUE
 	allowed_sensors = list(/obj/item/device/assembly/timer)
 	matter = list("metal" = 3750)
+	has_blast_wave_dampener = TRUE
 
 /obj/item/explosive/grenade/custom/prime()
 	overlays.Cut()
@@ -25,7 +26,7 @@
 							"min_fire_rad" = 1,		"min_fire_int" = 3,		"min_fire_dur" = 3
 	)
 	underslug_launchable = FALSE
-	
+	has_blast_wave_dampener = TRUE
 	w_class = SIZE_MEDIUM
 	matter = list("metal" = 7000)
 
@@ -35,6 +36,7 @@
 	desc = "Used for emergency sealing of air breaches."
 	assembly_stage = ASSEMBLY_LOCKED
 	harmful = FALSE
+	has_blast_wave_dampener = FALSE
 
 /obj/item/explosive/grenade/custom/metalfoam/Initialize()
 	. = ..()
@@ -51,11 +53,11 @@
 	containers += B2
 	update_icon()
 
-
 /obj/item/explosive/grenade/custom/incendiary
 	name = "Incendiary Grenade"
 	desc = "Used for clearing rooms of living things."
 	assembly_stage = ASSEMBLY_LOCKED
+	has_blast_wave_dampener = FALSE
 
 /obj/item/explosive/grenade/custom/incendiary/Initialize()
 	. = ..()
@@ -90,6 +92,7 @@
 	B1.reagents.add_reagent("potassium", 25)
 	B2.reagents.add_reagent("phosphorus", 25)
 	B2.reagents.add_reagent("sugar", 25)
+	has_blast_wave_dampener = FALSE
 
 	detonator = new/obj/item/device/assembly_holder/timer_igniter(src)
 
@@ -97,12 +100,12 @@
 	containers += B2
 	update_icon()
 
-
 /obj/item/explosive/grenade/custom/cleaner
 	name = "cleaner grenade"
 	desc = "BLAM!-brand foaming space cleaner. In a special applicator for rapid cleaning of wide areas."
 	assembly_stage = ASSEMBLY_LOCKED
 	harmful = FALSE
+	has_blast_wave_dampener = FALSE
 
 /obj/item/explosive/grenade/custom/cleaner/Initialize()
 	. = ..()
@@ -127,6 +130,7 @@
 	desc = "Tear gas grenade used for nonlethal riot control. Please wear adequate gas protection."
 	assembly_stage = ASSEMBLY_LOCKED
 	harmful = FALSE
+	has_blast_wave_dampener = FALSE
 
 /obj/item/explosive/grenade/custom/teargas/Initialize()
 	. = ..()
@@ -157,6 +161,7 @@
 	name = "improvised explosive device"
 	desc = "An improvised chemical explosive grenade. Designed to kill through fragmentation."
 	assembly_stage = ASSEMBLY_LOCKED
+	has_blast_wave_dampener = FALSE
 
 /obj/item/explosive/grenade/custom/ied/Initialize()
 	. = ..()
@@ -180,6 +185,7 @@
 	name = "improvised explosive device (incendiary)"
 	desc = "An improvised chemical explosive grenade. Designed spray incendiary shrapnel across a wide area."
 	assembly_stage = ASSEMBLY_LOCKED
+	has_blast_wave_dampener = FALSE
 
 /obj/item/explosive/grenade/custom/ied_incendiary/Initialize()
 	. = ..()

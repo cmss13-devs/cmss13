@@ -18,11 +18,15 @@
 									"max_fire_rad" = 5,		"max_fire_int" = 20,	"max_fire_dur" = 24,
 									"min_fire_rad" = 1,		"min_fire_int" = 3,		"min_fire_dur" = 3
 	)
+	var/falloff_mode = EXPLOSION_FALLOFF_SHAPE_LINEAR
+	var/has_blast_wave_dampener = FALSE; //Whether or not the casing can be toggle between different falloff_mode
 
 /obj/item/explosive/Initialize()
 	. = ..()
 	if(!customizable)
 		return
+	if(has_blast_wave_dampener)
+		LAZYADD(verbs, /obj/item/explosive/proc/toggle_blast_dampener)
 	create_reagents(1000)
 	for(var/limit in reaction_limits)
 		reagents.vars[limit] = reaction_limits[limit]
@@ -202,8 +206,30 @@
 
 /obj/item/explosive/proc/make_copy_of(var/obj/item/explosive/other)
 	assembly_stage = other.assembly_stage
+	falloff_mode = other.falloff_mode
 	for(var/obj/item/reagent_container/other_container in other.containers)
 		var/obj/item/reagent_container/new_container = new other_container.type()
 		other_container.reagents.copy_to(new_container, other_container.reagents.total_volume, TRUE, TRUE, TRUE)
 		containers += new_container
-		
+
+/obj/item/explosive/proc/toggle_blast_dampener()
+	set category = "Weapons"
+	set	name = "Toggle Blast Wave Dampener"
+	set desc = "Enable/Disable the Explosive Blast Wave Dampener"
+
+	if(!ishuman(usr))
+		to_chat(usr, SPAN_DANGER("This is beyond your understanding..."))
+		return
+
+	var/mob/living/carbon/human/H = usr
+	if(!skillcheck(H, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+		to_chat(usr, SPAN_DANGER("You have no idea how to use this..."))
+		return;
+
+	if(falloff_mode == EXPLOSION_FALLOFF_SHAPE_LINEAR)
+		falloff_mode = EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL
+		to_chat(usr, SPAN_NOTICE("You enable the [src]'s blast wave dampener, limiting the blast radius."))
+	else
+		falloff_mode = EXPLOSION_FALLOFF_SHAPE_LINEAR
+		to_chat(usr, SPAN_NOTICE("You disable the [src]'s blast wave dampener, restoring the blast radius to full."))
+	playsound(loc, 'sound/items/Screwdriver2.ogg', 25, 0, 6)

@@ -28,7 +28,7 @@ SUBSYSTEM_DEF(defcon)
 		if(MC_TICK_CHECK)
 			return
 
-	while(length(current_inactive_run))
+	while(length(current_active_run))
 		var/datum/cm_objective/O = current_active_run[length(current_active_run)]
 		current_active_run.len--
 		O.process()

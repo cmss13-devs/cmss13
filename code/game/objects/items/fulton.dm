@@ -156,11 +156,11 @@ var/global/list/deployed_fultons = list()
 	deployed_fultons += src
 	attached_atom.overlays -= I
 
-	sleep(1500)
-	if(istype(get_area(attached_atom), /area/space/highalt))
-		return_fulton(original_location)
+	addtimer(CALLBACK(src, .proc/return_fulton, original_location), 150 SECONDS)
 
 /obj/item/stack/fulton/proc/return_fulton(var/turf/return_turf)
+	if(!istype(get_area(attached_atom), /area/space/highalt))
+		return
 	if(return_turf)
 		attached_atom.z = return_turf.z
 		attached_atom.x = return_turf.x

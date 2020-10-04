@@ -41,24 +41,19 @@
 	return ..()
 
 /datum/job/command/commander/announce_entry_message(mob/living/carbon/human/H)
-	sleep(15)
-	if(H && H.loc && flags_startup_parameters & ROLE_ADD_TO_MODE && map_tag != MAP_WHISKEY_OUTPOST)
-		ai_announcement("Attention all hands, [H.get_paygrade(0)] [H.real_name] on deck!")
-		for(var/obj/structure/closet/secure_closet/securecom/S in world)
-			var/obj/item/weapon/gun/rifle/m46c/I = new/obj/item/weapon/gun/rifle/m46c/
-			var/obj/item/clothing/suit/storage/marine/MP/CO/suit = new/obj/item/clothing/suit/storage/marine/MP/CO/
-			var/obj/item/clothing/head/helmet/marine/CO/head = new/obj/item/clothing/head/helmet/marine/CO/
-			if(S.opened == 0)
-				I.loc = S
-				suit.loc = S
-				head.loc = S
-			if(S.opened == 1)
-				I.loc = S.loc
-				suit.loc = S.loc
-				head.loc = S.loc
-			if(istype(I))
-				call(/obj/item/weapon/gun/rifle/m46c/proc/name_after_co)(H, I)
+	if(flags_startup_parameters & ROLE_ADD_TO_MODE && map_tag != MAP_WHISKEY_OUTPOST)
+		addtimer(CALLBACK(src, .proc/do_announce_entry_message, H), 1.5 SECONDS)
 	..()
+
+/datum/job/command/commander/proc/do_announce_entry_message(mob/living/carbon/human/H)
+	ai_announcement("Attention all hands, [H.get_paygrade(0)] [H.real_name] on deck!")
+	for(var/i in GLOB.co_secure_boxes)
+		var/obj/structure/closet/secure_closet/securecom/S = i
+		var/loc_to_spawn = S.opened ? get_turf(S) : S
+		var/obj/item/weapon/gun/rifle/m46c/I = new(loc_to_spawn)
+		new /obj/item/clothing/suit/storage/marine/MP/CO(loc_to_spawn)
+		new /obj/item/clothing/head/helmet/marine/CO(loc_to_spawn)
+		I.name_after_co(H, I)
 
 /datum/job/command/commander/nightmare
 	flags_startup_parameters = ROLE_ADMIN_NOTIFY|ROLE_WHITELISTED
@@ -283,7 +278,6 @@
 	return ..()
 
 /datum/job/command/senior/announce_entry_message(mob/living/carbon/human/H)
-	sleep(15)
-	if(H && H.loc && flags_startup_parameters & ROLE_ADD_TO_MODE && map_tag != MAP_WHISKEY_OUTPOST)
-		ai_announcement("Attention all hands, [H.get_paygrade(0)] [H.real_name] on deck!")
+	if(flags_startup_parameters & ROLE_ADD_TO_MODE && map_tag != MAP_WHISKEY_OUTPOST)
+		addtimer(CALLBACK(GLOBAL_PROC, .proc/ai_announcement, "Attention all hands, [H.get_paygrade(0)] [H.real_name] on deck!"), 1.5 SECONDS)
 	..()

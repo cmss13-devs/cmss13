@@ -389,12 +389,7 @@
 
 	has_screeched = 1
 	use_plasma(250)
-	spawn(500)
-		has_screeched = 0
-		to_chat(src, SPAN_WARNING("You feel your throat muscles vibrate. You are ready to screech again."))
-		for(var/Z in actions)
-			var/datum/action/A = Z
-			A.update_button_icon()
+	addtimer(CALLBACK(src, .proc/screech_ready), 50 SECONDS)
 	playsound(loc, screech_sound_effect, 75, 0, status = 0)
 	visible_message(SPAN_XENOHIGHDANGER("[src] emits an ear-splitting guttural roar!"))
 	create_shriekwave() //Adds the visual effect. Wom wom wom
@@ -421,7 +416,14 @@
 		else if(dist >= 5 && dist < 7)
 			M.stunned += 3
 			to_chat(M, SPAN_DANGER("The roar shakes your body to the core, freezing you in place!"))
-		
+
+/mob/living/carbon/Xenomorph/Queen/proc/screech_ready()
+	has_screeched = 0
+	to_chat(src, SPAN_WARNING("You feel your throat muscles vibrate. You are ready to screech again."))
+	for(var/Z in actions)
+		var/datum/action/A = Z
+		A.update_button_icon()
+
 /mob/living/carbon/Xenomorph/Queen/proc/queen_gut(atom/A)
 
 	if(!iscarbon(A))

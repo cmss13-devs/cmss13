@@ -9,7 +9,6 @@
 	hostility = TRUE
 
 /datum/emergency_call/hefa_knight/create_member(datum/mind/M)
-	set waitfor = 0
 	var/turf/spawn_loc = get_spawn_point()
 
 	if(!istype(spawn_loc))
@@ -19,7 +18,4 @@
 	M.transfer_to(H, TRUE)
 
 	arm_equipment(H, "HEFA Knight - Melee", FALSE, TRUE)
-	sleep(10)
-	to_chat(H, "<B>Objectives:</b> [objectives]")
-
-	return
+	addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat, H, "<B>Objectives:</b> [objectives]"), 1 SECONDS)

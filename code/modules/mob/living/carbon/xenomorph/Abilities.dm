@@ -144,9 +144,7 @@
 	SPAN_XENONOTICE("You dig out an entrance to the tunnel network."), null, 5)
 	X.start_dig = new /obj/structure/tunnel(T, X.hivenumber)
 	X.tunnel_delay = 1
-	spawn(2400)
-		to_chat(X, SPAN_NOTICE("You are ready to dig a tunnel again."))
-		X.tunnel_delay = 0
+	addtimer(CALLBACK(src, .proc/cooldown_end), 4 MINUTES)
 	var/msg = strip_html(input("Add a description to the tunnel:", "Tunnel Description") as text|null)
 	if(msg)
 		msg = "[msg] ([get_area_name(X.start_dig)])"
@@ -158,6 +156,10 @@
 	to_chat(X, SPAN_NOTICE("You will be ready to dig a new tunnel in 4 minutes."))
 	playsound(X.loc, 'sound/weapons/pierce.ogg', 25, 1)
 
+/datum/action/xeno_action/onclick/build_tunnel/proc/cooldown_end()
+	var/mob/living/carbon/Xenomorph/X = owner
+	to_chat(X, SPAN_NOTICE("You are ready to dig a tunnel again."))
+	X.tunnel_delay = 0
 
 //Queen Abilities
 /datum/action/xeno_action/activable/screech

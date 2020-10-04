@@ -49,7 +49,6 @@
 ///////////////////UPP///////////////////////////
 
 /datum/emergency_call/upp/create_member(datum/mind/M)
-	set waitfor = 0
 	var/turf/spawn_loc = get_spawn_point()
 
 	if(!istype(spawn_loc))
@@ -76,8 +75,7 @@
 
 	print_backstory(H)
 
-	sleep(10)
-	to_chat(H, "<B>Objectives:</b> [objectives]")
+	addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat, H, "<B>Objectives:</b> [objectives]"), 1 SECONDS)
 
 
 

@@ -9,7 +9,6 @@
 	probability = 5
 
 /datum/emergency_call/pizza/create_member(datum/mind/M)
-	set waitfor = 0
 	var/turf/spawn_loc = get_spawn_point()
 
 	if(!istype(spawn_loc))
@@ -24,8 +23,7 @@
 	to_chat(H, "<font size='3'>\red You are a pizza deliverer! Your employer is the [pizzatxt] Corporation.</font>")
 	to_chat(H, "Your job is to deliver your pizzas. You're PRETTY sure this is the right place..")
 
-	sleep(10)
-	to_chat(H, "<B>Objectives:</b> [objectives]")
+	addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat, H, "<B>Objectives:</b> [objectives]"), 1 SECONDS)
 
 
 /datum/emergency_call/pizza/cryo

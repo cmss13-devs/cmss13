@@ -1,3 +1,5 @@
+GLOBAL_LIST_EMPTY(co_secure_boxes)
+
 /**********************Marine Gear**************************/
 
 //MARINE COMMAND CLOSET
@@ -36,6 +38,14 @@
 	icon_opened = "commander_safe_open"
 	icon_closed = "commander_safe"
 	icon_locked = "commander_safe"
+
+/obj/structure/closet/secure_closet/securecom/Initialize()
+	. = ..()
+	GLOB.co_secure_boxes += src
+
+/obj/structure/closet/secure_closet/securecom/Destroy()
+	GLOB.co_secure_boxes -= src
+	return ..()
 
 /obj/structure/closet/secure_closet/staff_officer
 	name = "staff officer's locker"

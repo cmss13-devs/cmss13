@@ -249,20 +249,8 @@ var/world_topic_spam_protect_time = world.timeofday
 		else if(command == "mapdaemon_delay_round")
 
 			if(!ticker) return "ERROR"
-			spawn(200) //20 seconds
 
-				var/text = ""
-				text += "<hr><br>"
-				text += SPAN_CENTERBOLD("<font color='#00CC00'>You have 30 seconds to vote for the next map! Use the \"Map Vote\" verb in the OOC tab or click <a href='?src=\ref[src];vote_for_map=1'>here</a> to select an option, or open voting window again to change your choice.</font>")
-				text += "<hr><br>"
-
-				to_world(text)
-				world << 'sound/voice/start_your_voting.ogg'
-
-				for(var/client/C in clients)
-					C.mapVote()
-
-				load_maps_for_vote()
+			addtimer(CALLBACK(src, .proc/announce_mapvote), 200) // TODO: change this to use SECONDS after !101 is merged
 
 			ticker.automatic_delay_end = TRUE
 			message_staff("World/Topic() call (likely MapDaemon.exe) has delayed the round end.", 1)
@@ -287,6 +275,20 @@ var/world_topic_spam_protect_time = world.timeofday
 			return count_votes()
 
 var/list/datum/entity/map_vote/all_votes
+
+/world/proc/announce_mapvote()
+	var/text = ""
+	text += "<hr><br>"
+	text += SPAN_CENTERBOLD("<font color='#00CC00'>You have 30 seconds to vote for the next map! Use the \"Map Vote\" verb in the OOC tab or click <a href='?src=\ref[src];vote_for_map=1'>here</a> to select an option, or open voting window again to change your choice.</font>")
+	text += "<hr><br>"
+
+	to_world(text)
+	world << 'sound/voice/start_your_voting.ogg'
+
+	for(var/client/C in clients)
+		C.mapVote()
+
+	load_maps_for_vote()
 
 /world/proc/load_maps_for_vote()
 	SSentity_manager.filter_then(/datum/entity/map_vote, null, CALLBACK(world, /world.proc/load_maps_for_vote_callback))

@@ -639,17 +639,19 @@
 
 	if(!drain_power(usr,1000)) return
 
-	inject_timer = 1
-	spawn(1200)
-		if(usr && src.loc == usr)
-			to_chat(usr, SPAN_NOTICE(" Your bracers beep faintly and inform you that a new healing crystal is ready to be created."))
-			inject_timer = 0
+	inject_timer = TRUE
+	addtimer(CALLBACK(src, .proc/injectors_ready), 2 MINUTES)
 
 	to_chat(usr, SPAN_NOTICE(" You feel a faint hiss and a crystalline injector drops into your hand."))
 	var/obj/item/reagent_container/hypospray/autoinjector/yautja/O = new(usr)
 	usr.put_in_active_hand(O)
 	playsound(src, 'sound/machines/click.ogg', 15, 1)
 	return 1
+
+/obj/item/clothing/gloves/yautja/proc/injectors_ready()
+	if(ismob(loc))
+		to_chat(loc, SPAN_NOTICE(" Your bracers beep faintly and inform you that a new healing crystal is ready to be created."))
+	inject_timer = FALSE
 
 /obj/item/clothing/gloves/yautja/verb/call_disk()
 	set name = "Call Smart-Disc"
@@ -781,8 +783,7 @@
 			to_chat(usr, SPAN_WARNING("You need a free hand to do this!</b>"))
 
 	if(combistick_cooldown)
-		spawn(30)
-		combistick_cooldown = 0
+		addtimer(VARSET_CALLBACK(src, combistick_cooldown, FALSE), 3 SECONDS)
 
 /obj/item/clothing/gloves/yautja/proc/translate()
 	set name = "Translator"

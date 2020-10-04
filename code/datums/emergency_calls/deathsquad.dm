@@ -18,7 +18,6 @@
 
 // DEATH SQUAD--------------------------------------------------------------------------------
 /datum/emergency_call/death/create_member(datum/mind/M)
-	set waitfor = 0
 	var/turf/spawn_loc = get_spawn_point()
 
 	if(!istype(spawn_loc))
@@ -52,5 +51,4 @@
 		to_chat(H, "<B> Follow any orders directly from Weston-Yamada!</b>")
 		arm_equipment(H, "Weston-Yamada Deathsquad", TRUE, TRUE)
 
-	sleep(10)
-	to_chat(H, "<B>Objectives:</b> [objectives]")
+	addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat, H, "<B>Objectives:</b> [objectives]"), 1 SECONDS)

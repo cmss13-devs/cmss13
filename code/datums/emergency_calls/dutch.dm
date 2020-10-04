@@ -10,7 +10,6 @@
 	probability = 0
 
 /datum/emergency_call/dutch/create_member(datum/mind/M)
-	set waitfor = 0
 	var/turf/spawn_loc = get_spawn_point()
 
 	if(!istype(spawn_loc))
@@ -27,7 +26,4 @@
 		arm_equipment(H, "Dutch's Dozen - Minigun", TRUE, TRUE)
 	else
 		arm_equipment(H, "Dutch's Dozen - Soldier", TRUE, TRUE)
-	sleep(10)
-	to_chat(H, "<B>Objectives:</b> [objectives]")
-
-	return
+	addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat, H, "<B>Objectives:</b> [objectives]"), 1 SECONDS)

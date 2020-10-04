@@ -443,8 +443,7 @@
 		qdel(lasertarget)
 		lasing = FALSE
 		las_r = 1
-		sleep(6000)
-		las_r = 0
+		addtimer(VARSET_CALLBACK(src, las_r, FALSE), 10 MINUTES)
 		return
 	else if(las_mode == 2 && !las_b) //Give them the option for mortar fire.
 		lasing = TRUE
@@ -476,8 +475,7 @@
 			explosion(target_3, -1, HE_power, con_power, con_power)
 			lasing = FALSE
 			las_b = 1
-			sleep(6000)
-			las_b = 0
+			addtimer(VARSET_CALLBACK(src, las_b, FALSE), 10 MINUTES)
 			return
 
 /obj/item/device/binoculars/designator/afterattack(atom/A as mob|obj|turf, mob/user as mob, params) // This is actually WAY better, espically since its fucken already in the code.

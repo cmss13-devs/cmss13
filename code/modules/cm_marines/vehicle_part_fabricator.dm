@@ -55,11 +55,12 @@
 	spend_point_store(text2num(cost))
 	icon_state = "drone_fab_active"
 	busy = TRUE
-	sleep(100)
+	addtimer(CALLBACK(src, .proc/do_build_part, part_type), 10 SECONDS)
+
+/obj/structure/machinery/part_fabricator/proc/do_build_part(part_type)
 	busy = FALSE
-	var/turf/T = locate(x+1,y-1,z)
 	playsound(src, 'sound/machines/hydraulics_1.ogg', 40, 1)
-	new part_type(T)
+	new part_type(get_step(src, SOUTHEAST))
 	vending_stat_bump(part_type, src.type)
 	icon_state = "drone_fab_idle"
 

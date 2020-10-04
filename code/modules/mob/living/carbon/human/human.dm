@@ -895,23 +895,23 @@
 	if(!lastpuke)
 		lastpuke = 1
 		to_chat(src, SPAN_WARNING("You feel nauseous..."))
-		spawn(150)	//15 seconds until second warning
-			to_chat(src, SPAN_WARNING("You feel like you are about to throw up!"))
-			spawn(100)	//and you have 10 more for mad dash to the bucket
-				Stun(5)
-				if(stat == 2) //One last corpse check
-					return
-				src.visible_message(SPAN_WARNING("[src] throws up!"), SPAN_WARNING("You throw up!"), null, 5)
-				playsound(loc, 'sound/effects/splat.ogg', 25, 1, 7)
+		addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat, src, "You feel like you are about to throw up!"), 15 SECONDS)
+		addtimer(CALLBACK(src, .proc/do_vomit), 25 SECONDS)
 
-				var/turf/location = loc
-				if(istype(location, /turf))
-					location.add_vomit_floor(src, 1)
+/mob/living/carbon/human/proc/do_vomit()
+	Stun(5)
+	if(stat == 2) //One last corpse check
+		return
+	src.visible_message(SPAN_WARNING("[src] throws up!"), SPAN_WARNING("You throw up!"), null, 5)
+	playsound(loc, 'sound/effects/splat.ogg', 25, 1, 7)
 
-				nutrition -= 40
-				apply_damage(-3, TOX)
-				spawn(350)	//wait 35 seconds before next volley
-					lastpuke = 0
+	var/turf/location = loc
+	if(istype(location, /turf))
+		location.add_vomit_floor(src, 1)
+
+	nutrition -= 40
+	apply_damage(-3, TOX)
+	addtimer(VARSET_CALLBACK(src, lastpuke, FALSE), 35 SECONDS)
 
 /mob/living/carbon/human/proc/get_visible_gender()
 	if(wear_suit && wear_suit.flags_inv_hide & HIDEJUMPSUIT && ((head && head.flags_inv_hide & HIDEMASK) || wear_mask))

@@ -16,11 +16,9 @@
 	var/datum/radio_frequency/radio_connection
 	var/deadman = 0
 
-/obj/item/device/assembly/signaler/New()
-	..()
-	spawn(40)
-		set_frequency(frequency)
-	return
+/obj/item/device/assembly/signaler/Initialize(mapload, ...)
+	. = ..()
+	set_frequency(frequency)
 
 /obj/item/device/assembly/signaler/attackby(obj/item/O as obj, mob/user as mob)
 	if(issignaler(O))
@@ -34,8 +32,7 @@
 /obj/item/device/assembly/signaler/activate()
 	if(cooldown > 0)	return 0
 	cooldown = 2
-	spawn(10)
-		process_cooldown()
+	addtimer(CALLBACK(src, .proc/process_cooldown), 1 SECONDS)
 
 	signal()
 	return 1

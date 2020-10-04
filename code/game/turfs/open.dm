@@ -64,14 +64,13 @@
 	icon_state = "mars_cave_1"
 
 
-/turf/open/mars_cave/New()
-	..()
+/turf/open/mars_cave/Initialize(mapload, ...)
+	. = ..()
 
-	spawn(10)
-		var/r = rand(0, 2)
+	var/r = rand(0, 2)
 
-		if (r == 0 && icon_state == "mars_cave_2")
-			icon_state = "mars_cave_3"
+	if (r == 0 && icon_state == "mars_cave_2")
+		icon_state = "mars_cave_3"
 
 /turf/open/mars_dirt
 	name = "dirt"
@@ -79,25 +78,24 @@
 	icon_state = "mars_dirt_1"
 
 
-/turf/open/mars_dirt/New()
-	..()
-	spawn(10)
-		var/r = rand(0, 32)
+/turf/open/mars_dirt/Initialize(mapload, ...)
+	. = ..()
+	var/r = rand(0, 32)
 
-		if (r == 0 && icon_state == "mars_dirt_4")
-			icon_state = "mars_dirt_1"
-			return
+	if (r == 0 && icon_state == "mars_dirt_4")
+		icon_state = "mars_dirt_1"
+		return
 
-		r = rand(0, 32)
+	r = rand(0, 32)
 
-		if (r == 0 && icon_state == "mars_dirt_4")
-			icon_state = "mars_dirt_2"
-			return
+	if (r == 0 && icon_state == "mars_dirt_4")
+		icon_state = "mars_dirt_2"
+		return
 
-		r = rand(0, 6)
+	r = rand(0, 6)
 
-		if (r == 0 && icon_state == "mars_dirt_4")
-			icon_state = "mars_dirt_7"
+	if (r == 0 && icon_state == "mars_dirt_4")
+		icon_state = "mars_dirt_7"
 
 
 

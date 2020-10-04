@@ -462,10 +462,8 @@ var/list/ob_type_fuel_requirements
 		sleep(5)
 
 /obj/structure/ob_ammo/warhead/cluster/proc/fire_in_a_hole(var/turf/loc)
-	set waitfor = 0
 	new /obj/effect/overlay/temp/blinking_laser (loc)
-	sleep(10)
-	cell_explosion(loc, explosion_power, explosion_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, initial(name), source_mob)
+	addtimer(CALLBACK(GLOBAL_PROC, .proc/cell_explosion, loc, explosion_power, explosion_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, initial(name), source_mob), 1 SECONDS)
 
 
 /obj/structure/ob_ammo/ob_fuel

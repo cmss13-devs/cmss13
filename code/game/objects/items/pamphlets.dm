@@ -50,3 +50,4 @@
 	desc = "A pamphlet used to quickly impart vital knowledge. This one has a powerloader insignia. The title reads 'Moving freight and squishing heads - a practical guide to Caterpillar P-5000 Work Loader'."
 	skill_to_increment = SKILL_POWERLOADER
 	skill_increment = SKILL_POWERLOADER_TRAINED
+	bypass_pamphlet_limit = TRUE //it's really not necessary to stop people from learning powerloader skill

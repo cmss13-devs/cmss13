@@ -248,7 +248,7 @@
 
 /obj/structure/largecrate/supply/powerloader
 	name = "\improper Caterpillar P-5000 Work Loader crate"
-	desc = "A crate containing one folded, but fully assembled, Caterpillar P-5000 Work Loader."
+	desc = "A crate containing one folded, but fully assembled, Caterpillar P-5000 Work Loader and included pamphlet for quick training."
 	supplies = list(
 		/obj/vehicle/powerloader = 1,
 		/obj/item/pamphlet/powerloader = 1,

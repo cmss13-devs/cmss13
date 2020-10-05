@@ -55,7 +55,7 @@
 		if(user.action_busy)
 			return
 		var/turf/open/T = target
-		if(T.get_dirt_type() == DIRT_TYPE_SNOW)
+		if(istype(T,/turf/open/snow) || istype(T,/turf/open/auto_turf/snow))
 			if(T.bleed_layer >= 3)
 				to_chat(user, "This ground is already full of snow.")
 				return
@@ -66,13 +66,17 @@
 			if(T.bleed_layer >= 3)
 				return
 			to_chat(user, "You put a new snow layer on the ground.")
-			T.bleed_layer += 1
-			T.update_icon(TRUE, FALSE)
+			if(istype(T,/turf/open/auto_turf/snow))
+				var/turf/open/auto_turf/snow/AT = T
+				AT.changing_layer(AT.bleed_layer += 1)
+			else
+				T.bleed_layer += 1
+				T.update_icon(TRUE, FALSE)
 			use(1)
 
 /obj/item/stack/snow/attack_self(mob/user)
 	var/turf/T = get_turf(user)
-	if(T.get_dirt_type() != DIRT_TYPE_SNOW)
+	if(istype(T,/turf/open/snow) || istype(T,/turf/open/auto_turf/snow))
 		to_chat(user, SPAN_WARNING("You can't build a snow barricade at this location!"))
 		return
 

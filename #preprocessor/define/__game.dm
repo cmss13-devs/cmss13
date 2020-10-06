@@ -280,6 +280,7 @@ var/list/accessable_z_levels = list("1" = 10, "3" = 10, "4" = 10, "5" = 70)
 #define WALL_KUTJEVO_COLONYR "colonyr"
 #define WALL_DEVWALL "devwall"
 #define WALL_DEVWALL_R "devwall_r"
+#define WALL_HUNTERSHIP "metal"//DMI specific name
 
 //Defines for dropship weapon gimbals
 #define GIMBAL_LEFT -1

@@ -701,3 +701,11 @@
 
 /turf/closed/wall/resin/can_be_dissolved()
 	return FALSE
+
+/turf/closed/wall/huntership
+	name = "hunter wall"
+	desc = "Nigh indestructible walls that make up the hull of a hunter ship."
+	icon = 'icons/turf/walls/hunter.dmi'
+	icon_state = "metal"//DMI specific name
+	walltype = WALL_HUNTERSHIP
+	hull = 1

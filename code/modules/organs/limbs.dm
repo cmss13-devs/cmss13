@@ -90,6 +90,8 @@
 		return 0
 
 /obj/limb/Destroy()	
+	if(parent)
+		parent.children -= src
 	parent = null
 	if(children)
 		for(var/obj/limb/L in children)

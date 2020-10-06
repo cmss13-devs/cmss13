@@ -45,7 +45,7 @@
 	anchored = 1
 	layer = ABOVE_OBJ_LAYER
 	mouse_opacity = 0
-	var/source_mob
+	var/mob/source_mob
 	var/source_name
 
 	var/hivenumber = XENO_HIVE_NORMAL
@@ -56,8 +56,8 @@
 	
 	var/time_to_live = 10
 
-/obj/effect/xenomorph/spray/New(loc, var/new_source_name, var/new_source_mob) //Self-deletes
-	..(loc)
+/obj/effect/xenomorph/spray/Initialize(mapload, new_source_name, mob/new_source_mob) //Self-deletes
+	. = ..()
 	
 	// Stats tracking
 	if(new_source_mob)
@@ -75,8 +75,7 @@
 		
 		// Other acid sprays? delete ourself
 		if (atm != src && istype(atm, /obj/effect/xenomorph/spray))
-			qdel(src)
-			return
+			return INITIALIZE_HINT_QDEL
 
 		// Flamer fire?
 		if(istype(atm, /obj/flamer_fire))
@@ -117,6 +116,11 @@
 	processing_objects.Add(src)
 	addtimer(CALLBACK(src, .proc/die), time_to_live)
 
+/obj/effect/xenomorph/spray/Destroy()
+	processing_objects -= src
+	source_mob = null
+	return ..()
+
 /obj/effect/xenomorph/spray/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
 	if (PF)
@@ -125,7 +129,6 @@
 /obj/effect/xenomorph/spray/proc/die()
 	processing_objects.Remove(src)
 	qdel(src)
-	return
 
 /obj/effect/xenomorph/spray/Crossed(AM as mob|obj)
 	..()

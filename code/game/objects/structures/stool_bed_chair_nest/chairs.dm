@@ -296,3 +296,12 @@
 	unslashable = TRUE
 	unacidable = TRUE
 	dir = WEST
+
+/obj/structure/bed/chair/hunter
+	name = "hunter chair"
+	desc = "An exquisitely crafted chair for a large humanoid hunter."
+	icon = 'icons/turf/walls/hunter.dmi'
+	icon_state = "chair"
+	color = rgb(255,255,255)
+	hit_bed_sound = 'sound/weapons/bladeslice.ogg'
+	debris = list()

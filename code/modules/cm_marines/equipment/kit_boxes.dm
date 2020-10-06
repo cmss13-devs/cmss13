@@ -169,40 +169,51 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 	if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_TRAINED))
 		to_chat(user, SPAN_NOTICE("This box is not for you, give it to a specialist!"))
 		return
-	var/selection = input(user, "Pick your equipment", "Specialist Kit Selection") as null|anything in kits
-	if(!selection)
-		return
-	if(!kits[selection])
-		to_chat(user, SPAN_NOTICE("No more kits of this type may be chosen!!"))
-		return
-	var/turf/T = get_turf(loc)
-	switch(selection)
-		if("Pyro")
-			new /obj/item/storage/box/spec/pyro (T)
-			kits["Pyro"] --
-		if("Grenadier")
-			new /obj/item/storage/box/spec/heavy_grenadier (T)
-			kits["Genader"] --
-		if("Sniper")
-			new /obj/item/storage/box/spec/sniper (T)
-			kits["Sniper"] --
-		if("Scout")
-			new /obj/item/storage/box/spec/scout (T)
-			kits["Scout"] --
-		if("Demo")
-			new /obj/item/storage/box/spec/demolitionist (T)
-			kits["Demo"] --
-	qdel(src)
+	if(select_and_spawn(user))
+		qdel(src)
 
 /obj/item/spec_kit/asrs
 	desc = "A paper box. Open it and get a specialist kit. Works only for squad marines."
 
 /obj/item/spec_kit/asrs/attack_self(mob/user)
 	if(user.job == JOB_SQUAD_MARINE)
-		user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_TRAINED)
+		if (select_and_spawn(user))
+			user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_TRAINED)
+			qdel(src)
 	else
 		to_chat(user, SPAN_NOTICE("This box is not for you, give it to a squad marine!"))
-	..()
+
+/obj/item/spec_kit/proc/select_and_spawn(mob/user)
+	var/selection = input(user, "Pick your equipment", "Specialist Kit Selection") as null|anything in kits
+	if(!selection)
+		return FALSE
+	if(!kits[selection] || kits[selection] <= 0)
+		to_chat(user, SPAN_NOTICE("No more kits of this type may be chosen!!"))
+		return FALSE
+	var/turf/T = get_turf(loc)
+	switch(selection)
+		if("Pyro")
+			new /obj/item/storage/box/spec/pyro (T)
+			kits["Pyro"] --
+			return TRUE
+		if("Grenadier")
+			new /obj/item/storage/box/spec/heavy_grenadier (T)
+			kits["Grenadier"] --
+			return TRUE
+		if("Sniper")
+			new /obj/item/storage/box/spec/sniper (T)
+			kits["Sniper"] --
+			return TRUE
+		if("Scout")
+			new /obj/item/storage/box/spec/scout (T)
+			kits["Scout"] --
+			return TRUE
+		if("Demo")
+			new /obj/item/storage/box/spec/demolitionist (T)
+			kits["Demo"] --
+			return TRUE
+	return FALSE
+
 
 /******************************************PFC Kits****************************************************************/
 

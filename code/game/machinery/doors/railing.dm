@@ -60,7 +60,5 @@
 	flick("railingc1", src)
 	icon_state = "railing1"
 
-	sleep(12)
-
-	operating = 0
+	addtimer(VARSET_CALLBACK(src, operating, FALSE), 1.2 SECONDS)
 	return 1

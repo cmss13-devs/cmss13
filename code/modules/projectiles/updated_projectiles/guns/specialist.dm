@@ -902,8 +902,7 @@
 		F.active = 1
 		F.update_icon()
 		playsound(F.loc, fire_sound, 50, 1)
-		sleep(10)
-		if(F && F.loc) F.prime()
+		addtimer(CALLBACK(F, /obj/item/explosive.proc/prime), 1 SECONDS)
 
 /obj/item/weapon/gun/launcher/m81
 	name = "\improper M81 grenade launcher"
@@ -1026,8 +1025,7 @@
 		F.active = 1
 		F.update_icon()
 		playsound(F.loc, fire_sound, 50, 1)
-		sleep(10)
-		if(F && F.loc) F.prime()
+		addtimer(CALLBACK(F, /obj/item/explosive.proc/prime), 1 SECONDS)
 
 
 /obj/item/weapon/gun/launcher/m81/riot

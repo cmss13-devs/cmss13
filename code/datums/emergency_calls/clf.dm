@@ -29,7 +29,6 @@
 	to_chat(H, "<B>It is up to you and your fellow colonists to make them realize their trespasses. This sector is no longer theirs.</B>")
 
 /datum/emergency_call/clf/create_member(datum/mind/M)
-	set waitfor = 0
 	var/turf/spawn_loc = get_spawn_point()
 
 	if(!istype(spawn_loc))
@@ -51,11 +50,7 @@
 		arm_equipment(H, "CLF Soldier", TRUE, TRUE)
 	print_backstory(H)
 
-	sleep(10)
-	to_chat(H, "<B>Objectives:</b> [objectives]")
-
-	return
-
+	addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat, H, "<B>Objectives:</b> [objectives]"), 1 SECONDS)
 
 
 /datum/emergency_call/clf/platoon

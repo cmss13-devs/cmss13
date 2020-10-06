@@ -228,11 +228,12 @@ var/global/east_riverstart = 0
 
 	update_turf()
 
-	spawn(10)
-		toxic = 0
-		update_turf()
-		dispersing = 0
+	addtimer(CALLBACK(src, .proc/do_disperse), 1 SECONDS)
 
+/obj/effect/blocker/toxic_water/proc/do_disperse()
+	toxic = 0
+	update_turf()
+	dispersing = 0
 
 /obj/structure/machinery/dispersal_initiator
 	name = "\improper Dispersal Initiator"

@@ -85,9 +85,7 @@
 
 	..()
 	if(ticker && ticker.mode && ticker.mode.flags_round_type & MODE_PREDATOR)
-		spawn(20)
-			to_chat(src, "<span style='color: red;'>This is a <B>PREDATOR ROUND</B>! If you are whitelisted, you may Join the Hunt!</span>")
-			return
+		addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat, src, "<span style='color: red;'>This is a <B>PREDATOR ROUND</B>! If you are whitelisted, you may Join the Hunt!</span>"), 2 SECONDS)
 
 /mob/dead/observer/Login()
 	..()
@@ -725,15 +723,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 		if( isobserver(ghostmob) )
 			qdel(ghostmob)
-		spawn(15)
-			to_chat(L, "<span style='font-weight: bold; color: red;'>Attention!! You are playing as a hellhound. You can get server banned if you are shitty so listen up!</span>")
-			to_chat(L, "<span style='color: red;'>You MUST listen to and obey the Predator's commands at all times. Die if they demand it. Not following them is unthinkable to a hellhound.</span>")
-			to_chat(L, "<span style='color: red;'>You are not here to go hog wild rambo. You're here to be part of something rare, a Predator hunt.</span>")
-			to_chat(L, "<span style='color: red;'>The Predator players must follow a strict code of role-play and you are expected to as well.</span>")
-			to_chat(L, "<span style='color: red;'>The Predators cannot understand your speech. They can only give you orders and expect you to follow them. They have a camera that allows them to see you remotely, so you are excellent for scouting missions.</span>")
-			to_chat(L, "<span style='color: red;'>Hellhounds are fiercely protective of their masters and will never leave their side if under attack.</span>")
-			to_chat(L, "<span style='color: red;'>Note that ANY Predator can give you orders. If they conflict, follow the latest one. If they dislike your performance they can ask for another ghost and everyone will mock you. So do a good job!</span>")
-	return
 
 /mob/dead/verb/join_as_yautja()
 	set category = "Ghost"
@@ -786,9 +775,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		to_chat(src, SPAN_INFO("Your vote for [target] has been counted!"))
 		ticker.mode:supply_votes += target
 		voted_this_drop = 1
-		spawn(200)
-			voted_this_drop = 0
-		return
+		addtimer(VARSET_CALLBACK(src, voted_this_drop, FALSE), 20 SECONDS)
 
 /mob/dead/observer/verb/go_dnr()
 	set category = "Ghost"

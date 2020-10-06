@@ -38,8 +38,7 @@
 	if(!holder)
 		visible_message("[htmlicon(src, hearers(src))] *beep* *beep*", "*beep* *beep*")
 	cooldown = 2
-	spawn(10)
-		process_cooldown()
+	addtimer(CALLBACK(src, .proc/process_cooldown), 1 SECONDS)
 	return
 
 

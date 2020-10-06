@@ -433,7 +433,9 @@
 
 	layer = BELOW_MOB_LAYER //so dead hugger appears below live hugger if stacked on same tile.
 
-	sleep(1800) //3 minute timer for it to decay
+	addtimer(CALLBACK(src, .proc/do_die), 3 MINUTES)
+
+/obj/item/clothing/mask/facehugger/proc/do_die()
 	visible_message("[htmlicon(src, viewers(src))] <span class='danger'>\The [src] decays into a mass of acid and chitin.</span>")
 	qdel(src)
 

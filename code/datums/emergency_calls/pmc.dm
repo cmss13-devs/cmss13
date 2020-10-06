@@ -17,7 +17,6 @@
 
 
 /datum/emergency_call/pmc/create_member(datum/mind/M)
-	set waitfor = 0
 	var/turf/spawn_loc = get_spawn_point()
 
 	if(!istype(spawn_loc))
@@ -48,8 +47,7 @@
 
 	print_backstory(mob)
 
-	sleep(10)
-	to_chat(mob, "<B>Objectives:</b> [objectives]")
+	addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat, mob, "<B>Objectives:</b> [objectives]"), 1 SECONDS)
 
 
 /datum/emergency_call/pmc/print_backstory(mob/living/carbon/human/M)
@@ -98,7 +96,6 @@
 	checked_objective = TRUE
 
 /datum/emergency_call/pmc/chem_retrieval/create_member(datum/mind/M)
-	set waitfor = 0
 	var/turf/spawn_loc = get_spawn_point()
 
 	if(!istype(spawn_loc))
@@ -130,8 +127,7 @@
 
 	print_backstory(H)
 
-	sleep(10)
-	to_chat(H, "<B>Objectives:</b> [objectives]")
+	addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat, H, "<B>Objectives:</b> [objectives]"), 1 SECONDS)
 
 /datum/emergency_call/pmc/chem_retrieval/spawn_items()
 	var/turf/drop_spawn

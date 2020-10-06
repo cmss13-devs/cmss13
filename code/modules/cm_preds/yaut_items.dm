@@ -416,8 +416,7 @@
 			animation_teleport_quick_in(M)
 		timer = 0
 	else
-		sleep(10)
-		if(loc) timer = 0
+		addtimer(VARSET_CALLBACK(src, timer, FALSE), 1 SECONDS)
 
 /obj/item/device/yautja_teleporter/verb/add_tele_loc()
 	set name = "Add Teleporter Destination"
@@ -763,8 +762,7 @@
 		throwforce = config.med_hit_damage
 		attack_verb = list("speared", "stabbed", "impaled")
 		timer = 1
-		spawn(10)
-			timer = 0
+		addtimer(VARSET_CALLBACK(src, timer, FALSE), 1 SECONDS)
 
 		if(blood_overlay && blood_color)
 			overlays.Cut()
@@ -781,8 +779,7 @@
 		throwforce = config.med_hit_damage - config.lmed_plus_hit_damage
 		attack_verb = list("thwacked", "smacked")
 		timer = 1
-		spawn(10)
-			timer = 0
+		addtimer(VARSET_CALLBACK(src, timer, FALSE), 1 SECONDS)
 		overlays.Cut()
 
 	if(istype(user,/mob/living/carbon/human))

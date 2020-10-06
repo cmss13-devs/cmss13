@@ -11,7 +11,6 @@
 	hostility = TRUE
 
 /datum/emergency_call/deus_vult/create_member(datum/mind/M)
-	set waitfor = 0
 	var/turf/spawn_loc = get_spawn_point()
 
 	if(!istype(spawn_loc))
@@ -38,7 +37,4 @@
 		to_chat(H, "<B> You must clear out any traces of the unholy from this wretched place!</b>")
 		to_chat(H, "<B> Follow any orders directly from the Higher Power!</b>")
 
-	sleep(10)
-	to_chat(H, "<B>Objectives:</b> [objectives]")
-
-	return
+	addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat, H, "<B>Objectives:</b> [objectives]"), 1 SECONDS)

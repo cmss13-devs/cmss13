@@ -101,8 +101,7 @@
 			B.reagents.add_reagent("blood",20,data)
 			updateUsrDialog()
 			wait = 1
-			spawn(1000)
-				wait = null
+			addtimer(VARSET_CALLBACK(src, wait, null), 100 SECONDS)
 		else
 			temphtml = "The replicator is not ready yet."
 		updateUsrDialog()

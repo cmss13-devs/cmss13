@@ -10,7 +10,6 @@
 	hostility = TRUE
 
 /datum/emergency_call/pirates/create_member(datum/mind/M)
-	set waitfor = 0
 	var/turf/spawn_loc = get_spawn_point()
 
 	if(!istype(spawn_loc))
@@ -29,7 +28,4 @@
 		to_chat(H, "<font size='3'>\red You are a jolly pirate! Yarr!</font>")
 		to_chat(H, "<B> Loot this place for all its worth! Take everything of value that's not nailed down!</b>")
 
-	sleep(10)
-	to_chat(H, "<B>Objectives:</b> [objectives]")
-
-	return
+	addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat, H, "<B>Objectives:</b> [objectives]"), 1 SECONDS)

@@ -30,7 +30,6 @@
 		to_chat(H, SPAN_NOTICE("<B> Ensure they are not destroyed.</b>"))
 
 /datum/emergency_call/mercs/create_member(datum/mind/M)
-	set waitfor = 0
 	var/turf/spawn_loc = get_spawn_point()
 
 	if(!istype(spawn_loc))
@@ -55,8 +54,7 @@
 		to_chat(H, SPAN_WARNING(FONT_SIZE_BIG("You are a Freelancer mercenary!")))
 	print_backstory(H)
 
-	sleep(10)
-	to_chat(H, SPAN_NOTICE("<B>Objectives:</b> [objectives]"))
+	addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat, H, "<B>Objectives:</b> [objectives]"), 1 SECONDS)
 
 
 

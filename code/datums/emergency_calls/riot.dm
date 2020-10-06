@@ -9,7 +9,6 @@
 
 
 /datum/emergency_call/riot/create_member(datum/mind/M)
-	set waitfor = 0
 	var/turf/T = get_spawn_point()
 
 	if(!istype(T)) 
@@ -30,8 +29,7 @@
 		to_chat(H, "<B> Follow any orders directly from High Command or your superior!</b>")
 		to_chat(H, "<B> You only answer to your superior, the Marine Law and the High Command!</b>")
 
-	sleep(10)
-	to_chat(H, "<B>Objectives:</b> [objectives]")
+	addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat, H, "<B>Objectives:</b> [objectives]"), 1 SECONDS)
 
 
 /datum/emergency_call/riot/spawn_items()

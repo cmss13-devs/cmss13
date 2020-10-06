@@ -39,7 +39,6 @@
 	to_chat(M, SPAN_NOTICE(" Utilize it with your radio to prevent enemy radio interceptions."))
 
 /datum/emergency_call/upp_commando/create_member(datum/mind/M)
-	set waitfor = 0
 	var/turf/spawn_loc = get_spawn_point()
 
 	if(!istype(spawn_loc))
@@ -61,6 +60,5 @@
 		arm_equipment(H, "UPP Commando", TRUE, TRUE)
 	print_backstory(H)
 
-	sleep(10)
-	to_chat(H, "<B>Objectives:</b> [objectives]")
+	addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat, H, "<B>Objectives:</b> [objectives]"), 1 SECONDS)
 

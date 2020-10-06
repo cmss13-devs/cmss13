@@ -156,8 +156,7 @@
 	P.info = t1
 	P.name = "Transcript"
 	canprint = 0
-	sleep(300)
-	canprint = 1
+	addtimer(VARSET_CALLBACK(src, canprint, TRUE), 30 SECONDS)
 
 
 /obj/item/device/taperecorder/attack_self(mob/user)

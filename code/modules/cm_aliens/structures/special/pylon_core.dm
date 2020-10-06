@@ -56,8 +56,8 @@
 
 	protection_level = TURF_PROTECTION_OB
 
-/obj/effect/alien/resin/special/pylon/core/New(loc, var/datum/hive_status/hive_ref)
-	..(loc, hive_ref)
+/obj/effect/alien/resin/special/pylon/core/Initialize(mapload, var/datum/hive_status/hive_ref)
+	. = ..()
 
 	// Pick the closest xeno resource activator
 	var/obj/effect/landmark/resource_node_activator/hive/start_activator

@@ -163,10 +163,10 @@
 		W.update_connections()
 		W.update_icon()
 
-	set_hive_data(src, hivenumber)
-
 	if (hive)
 		hivenumber = hive
+
+	set_hive_data(src, hivenumber)
 
 /obj/structure/mineral_door/resin/flamer_fire_act(var/dam = config.min_burnlevel)
 	health -= dam

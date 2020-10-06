@@ -17,8 +17,8 @@
 	appearance_flags = KEEP_TOGETHER
 	layer = LYING_BETWEEN_MOB_LAYER
 
-/obj/effect/alien/resin/special/eggmorph/New(loc, var/hive_ref)
-	..(loc, hive_ref)
+/obj/effect/alien/resin/special/eggmorph/Initialize(mapload, var/hive_ref)
+	. = ..()
 	range_bounds = RECT(x, y, EGGMORPG_RANGE, EGGMORPG_RANGE)
 
 /obj/effect/alien/resin/special/eggmorph/Destroy()

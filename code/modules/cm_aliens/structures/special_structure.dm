@@ -38,8 +38,8 @@
 
 	var/block_range = 1
 
-/obj/effect/alien/resin/special/New(loc, var/hive_ref)
-	..()
+/obj/effect/alien/resin/special/Initialize(mapload, var/hive_ref)
+	. = ..()
 
 	maxhealth = health
 

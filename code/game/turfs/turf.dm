@@ -570,11 +570,17 @@
 /turf/open/organic/grass/get_dirt_type()
 	return DIRT_TYPE_GROUND
 
+/turf/open/gm/dirt/get_dirt_type()// looks like sand let it be sand
+	return DIRT_TYPE_SAND
+
 /turf/open/mars/get_dirt_type()
 	return DIRT_TYPE_MARS
 
 /turf/open/snow/get_dirt_type()
-	return DIRT_TYPE_SNOW
+	if(bleed_layer)
+		return DIRT_TYPE_SNOW
+	else
+		return DIRT_TYPE_GROUND
 
 /turf/open/desert/dirt/get_dirt_type()
 	return DIRT_TYPE_MARS

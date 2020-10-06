@@ -106,7 +106,10 @@
 	layer_name = list("icy dirt", "shallow snow", "deep snow", "very deep snow", "rock filled snow")
 
 /turf/open/auto_turf/snow/get_dirt_type()
-	return DIRT_TYPE_SNOW
+	if(bleed_layer)
+		return DIRT_TYPE_SNOW
+	else
+		return DIRT_TYPE_GROUND
 
 /turf/open/auto_turf/snow/is_weedable()
 	return !bleed_layer

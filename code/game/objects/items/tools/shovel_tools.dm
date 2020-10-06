@@ -71,13 +71,10 @@
 	if(user.action_busy)
 		return
 
-	if(istype(target, /turf/open/auto_turf))
-		var/turf/open/auto_turf/AT = target
-		// Clean shovel
-		if(!dirt_amt)
-			if(!AT.bleed_layer)
-				return
-
+	if(!dirt_amt)
+		var/turf/T = target
+		var/turfdirt = T.get_dirt_type()
+		if(turfdirt)
 			to_chat(user, SPAN_NOTICE("You start digging."))
 			playsound(user.loc, 'sound/effects/thud.ogg', 40, 1, 6)
 			if(!do_after(user, shovelspeed * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
@@ -85,49 +82,19 @@
 				return
 
 			var/transfer_amount = dirt_amt_per_dig
-			if(!AT.bleed_layer)
-				return
-			
-			transfer_amount = min(AT.bleed_layer, dirt_amt_per_dig)
-			AT.changing_layer(AT.bleed_layer - transfer_amount)
+			if(istype(T,/turf/open))
+				var/turf/open/OT = T
+				if(OT.bleed_layer)
+					transfer_amount = min(OT.bleed_layer, dirt_amt_per_dig)
+					if(istype(T, /turf/open/auto_turf))
+						var/turf/open/auto_turf/AT = T
+						AT.changing_layer(AT.bleed_layer - transfer_amount)
+					else
+						OT.bleed_layer -= transfer_amount
+						OT.update_icon(1,0)
 
-			var/turf_type = AT.get_dirt_type()
-			to_chat(user, SPAN_NOTICE("You dig up some [dirt_type_to_name(turf_type)]."))
-
+			to_chat(user, SPAN_NOTICE("You dig up some [dirt_type_to_name(turfdirt)]."))
 			dirt_amt = transfer_amount
-			dirt_type = turf_type
-			update_icon()
-		else
-			dump_shovel(target, user)
-
-		return
-
-	// Old relic code
-	if(!dirt_amt)
-		var/turf/T = target
-		var/turfdirt = T.get_dirt_type()
-		if(turfdirt)
-			if(turfdirt == DIRT_TYPE_SNOW)
-				var/turf/open/snow/ST = T
-				if(!ST.bleed_layer)
-					return
-			to_chat(user, SPAN_NOTICE("You start digging."))
-			playsound(user.loc, 'sound/effects/thud.ogg', 40, 1, 6)
-			if(!do_after(user, shovelspeed * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-				to_chat(user, SPAN_NOTICE("You stop digging."))
-				return
-			var/transf_amt = dirt_amt_per_dig
-			if(turfdirt == DIRT_TYPE_SNOW)
-				var/turf/open/snow/ST = T
-				if(!ST.bleed_layer)
-					return
-				transf_amt = min(ST.bleed_layer, dirt_amt_per_dig)
-				ST.bleed_layer -= transf_amt
-				ST.update_icon(1,0)
-				to_chat(user, SPAN_NOTICE("You dig up some snow."))
-			else
-				to_chat(user, SPAN_NOTICE("You dig up some dirt."))
-			dirt_amt = transf_amt
 			dirt_type = turfdirt
 			update_icon()
 	else

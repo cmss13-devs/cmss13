@@ -104,7 +104,6 @@
 		list("First Responder Medical Support Kit", 45, /obj/item/storage/box/kit/mini_medic, null, VENDOR_ITEM_REGULAR),
 		list("Frontline M40 Grenadier Kit", 45, /obj/item/storage/box/kit/mini_grenadier, null, VENDOR_ITEM_REGULAR),
 		list("L42A Sniper Kit", 30, /obj/item/storage/box/kit/mini_sniper, null, VENDOR_ITEM_REGULAR),
-		list("M240 Pyrotechnician Support Kit", 45, /obj/item/storage/box/kit/mini_pyro, null, VENDOR_ITEM_REGULAR),
 		list("Personal Self Defense Kit", 45, /obj/item/storage/box/kit/self_defense, null, VENDOR_ITEM_REGULAR),
 		list("Veteran Enlisted Kit", 30, /obj/item/storage/box/kit/veteran_enlist, null, VENDOR_ITEM_REGULAR),
 

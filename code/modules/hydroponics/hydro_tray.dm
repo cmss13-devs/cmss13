@@ -271,8 +271,7 @@
 		pestlevel = 0
 
 	// If enough time (in cycles, not ticks) has passed since the plant was harvested, we're ready to harvest again.
-	else if(seed.products && seed.products.len && age > seed.production && \
-	 (age - lastproduce) > seed.production && (!harvest && !dead))
+	else if(seed.products && seed.products.len && age > seed.production && (age - lastproduce) > seed.production && (!harvest && !dead))
 		harvest = 1
 		lastproduce = age
 

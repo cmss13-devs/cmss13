@@ -43,7 +43,7 @@ var/global/list/power_update_requests_by_area = list()
 		to_chat(usr, "Area power update profiling enabled.")
 		message_staff("[key_name(src)] toggled area power update profiling on.")
 
-	 
+
 
 /client/proc/view_power_update_stats_machines()
 	set name = "View Area Power Update Statistics By Machines"

@@ -142,7 +142,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 		returnval = call(procname)(arglist(lst)) // Pass the lst as an argument list to the proc
 
 	to_chat(usr, SPAN_BLUE("[procname] returned: [returnval ? returnval : "null"]"))
-	 
+
 
 
 
@@ -220,7 +220,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 	message_staff(SPAN_NOTICE("[key_name_admin(src)] called [A]'s [procname]() with [lst.len ? "the arguments [list2params(lst)]":"no arguments"]."))
 	returnval = call(A,procname)(arglist(lst)) // Pass the lst as an argument list to the proc
 	to_chat(usr, SPAN_BLUE("[procname] returned: [returnval ? returnval : "null"]"))
-	 
+
 
 
 
@@ -243,7 +243,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 	t += SPAN_NOTICE("Gas Type: [air_info[1]]\n")
 
 	usr.show_message(t, 1)
-	 
+
 
 /client/proc/cmd_admin_robotize(var/mob/M in mob_list)
 	set category = null
@@ -291,7 +291,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 		log_admin("[key_name(src)] has alienized [M.key].")
 		spawn(10)
 			M:Alienize()
-			 
+
 		message_staff(SPAN_NOTICE("[key_name_admin(usr)] made [key_name(M)] into an alien."), 1)
 	else
 		alert("Invalid mob")
@@ -350,7 +350,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 						message_staff("[key_name_admin(src)] has deleted all instances of [hsbitem] ([del_amt]).", 0)
 		else
 			to_chat(usr, SPAN_WARNING("Not a valid type path."))
-	 
+
 /client/proc/cmd_debug_fire_ob()
 	set category = "Debug"
 	set desc = "Fire an OB warhead at your current location."
@@ -377,7 +377,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 	if(alert("Are you sure you want to do this?",, "Yes", "No") == "No") return
 	makepowernets()
 	message_staff("[key_name_admin(src)] has remade the powernets. makepowernets() called.", 0)
-	 
+
 
 /client/proc/cmd_admin_grantfullaccess(var/mob/M in mob_list)
 	set category = null
@@ -403,7 +403,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 			H.update_inv_wear_id()
 	else
 		alert("Invalid mob")
-	 
+
 	message_staff(SPAN_NOTICE("[key_name_admin(usr)] has granted [M.key] full access."), 1)
 
 /client/proc/cmd_admin_grantallskills(var/mob/M in mob_list)
@@ -417,7 +417,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 		M.skills = null // No restrictions
 	else
 		alert("Invalid mob")
-	 
+
 	message_staff(SPAN_NOTICE("[key_name_admin(usr)] has granted [M.key] all skills."), 1)
 
 /client/proc/cmd_assume_direct_control(var/mob/M in mob_list)

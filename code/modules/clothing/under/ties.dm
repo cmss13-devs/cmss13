@@ -519,7 +519,7 @@
 		/obj/item/ammo_magazine/rifle,
 		/obj/item/ammo_magazine/smg,
 		/obj/item/ammo_magazine/sniper,
-		 )
+	)
 
 /obj/item/clothing/accessory/storage/black_vest
 	name = "black webbing vest"

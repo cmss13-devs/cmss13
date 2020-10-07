@@ -1077,7 +1077,7 @@ var/const/MAX_SAVE_SLOTS = 10
 					if(length(xeno_prefix)==3)
 						to_chat(user, SPAN_WARNING(FONT_SIZE_BIG("You can't use three letter prefix with any postfix.")))
 						return
-					 
+
 					var/new_xeno_postfix = input(user, "Choose your xenomorph postfix. One capital letter with or without a digit at the end. Put empty text if you want to remove postfix", "Xenomorph Postfix") as text|null
 					new_xeno_postfix = uppertext(new_xeno_postfix)
 					if(length(new_xeno_postfix)>2)

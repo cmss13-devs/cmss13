@@ -644,7 +644,7 @@
 				if(istype(da, /obj/structure/airlock_assembly/multi_tile))
 					da.dir = dir
 
- 				da.anchored = 1
+				da.anchored = 1
 				if(mineral)
 					da.glass = mineral
 				//else if(glass)

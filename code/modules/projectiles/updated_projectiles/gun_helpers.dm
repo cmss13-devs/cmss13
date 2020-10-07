@@ -261,7 +261,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	if(istype(I,/obj/item/attachable))
 		if(check_inactive_hand(user)) attach_to_gun(user,I)
 
- 	//the active attachment is reloadable
+	//the active attachment is reloadable
 	else if(active_attachable && active_attachable.flags_attach_features & ATTACH_RELOADABLE)
 		if(check_inactive_hand(user))
 			if(istype(I,/obj/item/ammo_magazine))

@@ -469,8 +469,8 @@
 	onclose(user, "communications")
 
  //A simpler version that doesn't have everything the other one has
- /obj/structure/machinery/computer/communications/simple
- 	circuit = null
+/obj/structure/machinery/computer/communications/simple
+	circuit = null
 
 /obj/structure/machinery/computer/communications/simple/attack_hand(var/mob/user as mob)
 	user.set_interaction(src)

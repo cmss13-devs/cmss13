@@ -66,7 +66,7 @@
 		M.client.prefs.muted |= mute_type
 		message_staff("SPAM AUTOMUTE: [muteunmute] [key_name_admin(M)] from [mute_string].", 1)
 		to_chat(M, "You have been [muteunmute] from [mute_string] by the SPAM AUTOMUTE system. Contact an admin.")
-		 
+
 		return FALSE
 
 	if(M.client.prefs.muted & mute_type)

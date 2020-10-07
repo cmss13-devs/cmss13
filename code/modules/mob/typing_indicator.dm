@@ -82,4 +82,3 @@ var/global/image/typing_indicator
 	if(prefs.toggles_chat & SHOW_TYPING)
 		if(istype(mob)) mob.set_typing_indicator(0)
 
-	 

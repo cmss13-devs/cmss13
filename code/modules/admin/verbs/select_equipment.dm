@@ -13,7 +13,7 @@
 	if(!H)
 		return
 	var/obj/item/card/id/I = H.wear_id
-	 
+
 	if(RoleAuthority.roles_by_name[newrank])
 		var/datum/job/J = RoleAuthority.roles_by_name[newrank]
 		H.comm_title = J.get_comm_title()
@@ -128,7 +128,7 @@
 	if(isnull(dresscode))
 		return
 
-	 
+
 	for (var/obj/item/I in M)
 		if (istype(I, /obj/item/implant))
 			continue

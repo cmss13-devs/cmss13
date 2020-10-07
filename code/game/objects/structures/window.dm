@@ -456,11 +456,10 @@
 		/obj/structure/window_frame)
 	tiles_with = list(/turf/closed/wall)
 
-/obj/structure/window/framed/New()
-	spawn(0)
-		relativewall()
-		relativewall_neighbours()
-	..()
+/obj/structure/window/framed/Initialize()
+	. = ..()
+	relativewall()
+	relativewall_neighbours()
 
 /obj/structure/window/framed/Destroy()
 	for(var/obj/effect/alien/weeds/weedwall/window/WW in loc)

@@ -28,11 +28,9 @@
 		return
 	return
 
-/obj/effect/portal/New()
-	spawn(SECONDS_30)
-		qdel(src)
-		return
-	return
+/obj/effect/portal/Initialize(mapload, ...)
+	. = ..()
+	QDEL_IN(src, 30 SECONDS)
 
 /obj/effect/portal/proc/teleport(atom/movable/M as mob|obj)
 	if(istype(M, /obj/effect)) //sparks don't teleport

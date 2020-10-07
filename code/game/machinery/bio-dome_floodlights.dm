@@ -12,12 +12,11 @@
 	unacidable = TRUE
 	var/list/floodlist = list() // This will save our list of floodlights on the map
 
-/obj/structure/machinery/hydro_floodlight_switch/New() //Populate our list of floodlights so we don't need to scan for them ever again
-	sleep(5) //let's make sure it exists first..
+/obj/structure/machinery/hydro_floodlight_switch/Initialize(mapload, ...)
+	. = ..()
 	for(var/obj/structure/machinery/hydro_floodlight/F in machines)
 		floodlist += F
 		F.fswitch = src
-	..()
 	start_processing()
 
 /obj/structure/machinery/hydro_floodlight_switch/process()

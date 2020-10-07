@@ -330,16 +330,13 @@ var/datum/controller/supply/supply_controller = new()
 	var/iteration = 0
 	//supply points
 	var/points = 120
-	var/points_per_process = 0
+	var/points_per_process = 1.5
 	var/points_per_slip = 1
 	var/points_per_crate = 2
-	var/min_random_crate_amount = 0 //Minimum amount of crates spawned.
+	
 	var/base_random_crate_interval = 10 //Every how many processing intervals do we get a random crates.
-	var/xeno_per_crate = 3 //Amount of xenos needed to spawn a crate
-	var/marines_per_crate = 12 //amount of marines needed per crate only works on extended.
+
 	var/crate_iteration = 0
-	var/points_per_platinum = 5
-	var/points_per_phoron = 0
 	//control
 	var/ordernum
 	var/list/shoppinglist = list()
@@ -386,13 +383,13 @@ var/datum/controller/supply/supply_controller = new()
 //Marines get one crate for each the amount of marines on the surface devided by the amount of marines per crate.
 //They always get the mincrates amount.
 /datum/controller/supply/proc/calculate_crate_amount()
-	//Please never ever tell anyone this is based upon xeno amounts.
-	var/crate_amount = round(max(min_random_crate_amount,(ticker.mode.count_xenos(SURFACE_Z_LEVELS)/xeno_per_crate)))
-	if(ticker.mode != /datum/game_mode/colonialmarines)
-		crate_amount = round(max(min_random_crate_amount,(ticker.mode.count_marines(SURFACE_Z_LEVELS)/marines_per_crate)))
-	//if it's not yet the 6th wave you only get 5 crates
-	if(crate_iteration<=5)
-		crate_amount = 5
+	
+	// Sqrt(NUM_XENOS/4)
+	var/crate_amount = Floor(max(0, sqrt(ticker.mode.count_xenos(SURFACE_Z_LEVELS)/3)))
+
+	if(crate_iteration <= 5)
+		crate_amount = 4
+
 	return crate_amount
 
 //Here we pick what crate type to send to the marines.

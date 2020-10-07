@@ -161,15 +161,14 @@
 			playsound(src.loc, 'sound/weapons/armbomb.ogg', 25, 1, 6)
 	qdel(src)
 
-/obj/item/explosive/grenade/flashbang/cluster/New()//Same concept as the segments, so that all of the parts don't become reliant on the clusterbang
-	spawn(0)
-		icon_state = "flashbang_active"
-		active = 1
-		banglet = 1
-		var/stepdist = rand(1,3)
-		var/temploc = src.loc
-		walk_away(src,temploc,stepdist)
-		var/dettime = rand(15,60)
-		spawn(dettime)
-		prime()
-	..()
+/obj/item/explosive/grenade/flashbang/cluster
+	icon_state = "flashbang_active"
+	active = 1
+	banglet = 1
+
+/obj/item/explosive/grenade/flashbang/cluster/Initialize()
+	. = ..()
+	var/stepdist = rand(1,3)
+	var/temploc = src.loc
+	walk_away(src,temploc,stepdist)
+	addtimer(CALLBACK(src, .proc/prime), rand(15, 60))

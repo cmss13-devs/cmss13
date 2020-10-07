@@ -31,8 +31,5 @@
 /obj/effect/alien/resin/special/nest/Destroy()
     . = ..()
     
-    if(pred_nest)
-        pred_nest.linked_structure = null
-        qdel(pred_nest)
-
-        pred_nest = null
+    pred_nest?.linked_structure = null
+    QDEL_NULL(pred_nest)

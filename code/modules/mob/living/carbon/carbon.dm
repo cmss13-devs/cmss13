@@ -4,10 +4,7 @@
 	handle_fire() //Check if we're on fire
 
 /mob/living/carbon/Destroy()
-	if(internal_organs)
-		for(var/datum/internal_organ/I in internal_organs)
-			qdel(I)
-		internal_organs = null
+	QDEL_NULL_LIST(internal_organs)
 
 	for(var/datum/disease/virus in viruses)
 		virus.cure()
@@ -15,12 +12,10 @@
 	. = ..()
 
 	if(handcuffed)
-		qdel(handcuffed)
-		handcuffed = null
+		QDEL_NULL(handcuffed)
 
 	if(legcuffed)
-		qdel(legcuffed)
-		legcuffed = null
+		QDEL_NULL(legcuffed)
 
 	stomach_contents.Cut() //movable atom's Dispose() deletes all content, we clear stomach_contents to be safe.
 

@@ -195,10 +195,8 @@
 	f2.SetOpacity(opacity)
 
 /obj/structure/machinery/door/poddoor/two_tile/Destroy()
-	qdel(f1)
-	f1 = null
-	qdel(f2)
-	f2 = null
+	QDEL_NULL(f1)
+	QDEL_NULL(f2)
 	return ..()
 
 /obj/structure/machinery/door/poddoor/two_tile/vertical
@@ -226,10 +224,8 @@
 	f4.SetOpacity(opacity)
 
 /obj/structure/machinery/door/poddoor/two_tile/four_tile/Destroy()
-	qdel(f3)
-	f3 = null
-	qdel(f4)
-	f4 = null
+	QDEL_NULL(f3)
+	QDEL_NULL(f4)
 	return ..()
 
 /obj/structure/machinery/door/poddoor/two_tile/four_tile/vertical

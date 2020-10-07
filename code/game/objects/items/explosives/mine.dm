@@ -28,9 +28,7 @@
 
 
 /obj/item/explosive/mine/Destroy()
-	if(tripwire)
-		qdel(tripwire)
-		tripwire = null
+	QDEL_NULL(tripwire)
 	. = ..()
 
 /obj/item/explosive/mine/ex_act()
@@ -124,9 +122,7 @@
 	if(customizable)
 		activate_sensors()
 	update_icon()
-	if(tripwire)
-		qdel(tripwire)
-		tripwire = null
+	QDEL_NULL(tripwire)
 
 //Mine can also be triggered if you "cross right in front of it" (same tile)
 /obj/item/explosive/mine/Crossed(atom/A)

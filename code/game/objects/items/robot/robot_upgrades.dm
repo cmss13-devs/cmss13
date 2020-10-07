@@ -30,8 +30,7 @@
 	R.uneq_all()
 	R.hands.icon_state = "nomod"
 	R.icon_state = "robot"
-	qdel(R.module)
-	R.module = null
+	QDEL_NULL(R.module)
 	R.camera.network.Remove(list("Engineering","Medical","MINE"))
 	R.updatename("Default")
 	R.status_flags |= CANPUSH

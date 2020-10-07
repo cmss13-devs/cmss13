@@ -260,18 +260,11 @@
 	//DISCONNECT//
 	//////////////
 /client/Del()
-	if(chatOutput)
-		qdel(chatOutput)
-		chatOutput = null
-
-	if(soundOutput)
-		qdel(soundOutput)
-		soundOutput = null
-
+	QDEL_NULL(chatOutput)
+	QDEL_NULL(soundOutput)
 	if(prefs)
 		prefs.owner = null
-		qdel(prefs.preview_dummy)
-		prefs.preview_dummy = null
+		QDEL_NULL(prefs.preview_dummy)
 
 	if(admin_holder)
 		admin_holder.owner = null

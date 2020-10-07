@@ -174,20 +174,14 @@
 	flamer_overlay = overlay_image('icons/obj/items/clothing/backpacks.dmi', "+m240t")
 
 /obj/item/storage/large_holster/fuelpack/Destroy()
-	active_fuel = null
-	if(fuel)
-		qdel(fuel)
-		fuel = null
-	if(fuelB)
-		qdel(fuelB)
-		fuelB = null
-	if(fuelX)
-		qdel(fuelX)
-		fuelX = null
+	QDEL_NULL(active_fuel)
+	QDEL_NULL(fuel)
+	QDEL_NULL(fuelB)
+	QDEL_NULL(fuelX)
 	if(linked_flamer)
 		linked_flamer.fuelpack = null
 		linked_flamer = null
-	flamer_overlay = null
+	QDEL_NULL(flamer_overlay)
 	. = ..()
 
 /obj/item/storage/large_holster/fuelpack/update_icon()

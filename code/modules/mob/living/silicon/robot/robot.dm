@@ -706,8 +706,7 @@ var/list/robot_verbs_default = list(
 //Call when target overlay should be added/removed
 /mob/living/silicon/robot/update_targeted()
 	if(!targeted_by && target_locked)
-		qdel(target_locked)
-		target_locked = null
+		QDEL_NULL(target_locked)
 	update_icons()
 	if (targeted_by && target_locked)
 		overlays += target_locked

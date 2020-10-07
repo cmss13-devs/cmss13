@@ -47,9 +47,8 @@
 
 	interior_manager.unload_chunk(chunk_id)
 
-	if(interior_data)
-		qdel(interior_data)
-	interior_data = null
+	QDEL_NULL(interior_data)
+
 	return ..()
 
 // Use this proc to load the template back in

@@ -16,9 +16,7 @@
 	var/obj/effect/beam/i_beam/first = null
 
 /obj/item/device/assembly/infra/Destroy()
-	if(first)
-		qdel(first)
-		first = null
+	QDEL_NULL(first)
 	processing_objects.Remove(src)
 	. = ..()
 
@@ -35,9 +33,7 @@
 		processing_objects.Add(src)
 	else
 		on = 0
-		if(first)
-			qdel(first)
-			first = null
+		QDEL_NULL(first)
 		processing_objects.Remove(src)
 	update_icon()
 	return secured
@@ -58,8 +54,7 @@
 /obj/item/device/assembly/infra/process()//Old code
 	if(!on)
 		if(first)
-			qdel(first)
-			first = null
+			QDEL_NULL(first)
 			return
 
 	if((!(first) && (secured && (istype(loc, /turf) || (holder && istype(holder.loc, /turf))))))
@@ -81,9 +76,7 @@
 
 
 /obj/item/device/assembly/infra/attack_hand()
-	if(first)
-		qdel(first)
-		first = null
+	QDEL_NULL(first)
 	..()
 
 /obj/item/device/assembly/infra/attackby()
@@ -93,16 +86,14 @@
 	var/t = dir
 	. = ..()
 	dir = t
-	qdel(first)
-	first = null
+	QDEL_NULL(first)
 	return
 
 
 /obj/item/device/assembly/infra/holder_movement()
 	if(!holder)	return 0
 //		dir = holder.dir
-	qdel(first)
-	first = null
+	QDEL_NULL(first)
 	return 1
 
 
@@ -248,8 +239,7 @@
 		else
 			qdel(I)
 	else
-		qdel(next)
-		next = null
+		QDEL_NULL(next)
 	spawn(10)
 		process()
 		return
@@ -274,8 +264,6 @@
 /obj/effect/beam/i_beam/Destroy()
 	if(master)
 		master = null
-	if(next)
-		qdel(next)
-		next = null
+	QDEL_NULL(next)
 	. = ..()
 

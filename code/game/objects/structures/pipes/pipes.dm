@@ -26,9 +26,7 @@
 	if(!pipe_color_check(pipe_color))
 		pipe_color = null
 
-	if(pipe_vision_img)
-		qdel(pipe_vision_img)
-		pipe_vision_img = null
+	QDEL_NULL(pipe_vision_img)
 
 	if(mapload)
 		create_valid_directions()

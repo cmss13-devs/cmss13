@@ -85,8 +85,7 @@ you will have to do something like if(client.admin_holder.rights & R_ADMIN) your
 /client/proc/deadmin()
 	if(admin_holder)
 		admin_holder.disassociate()
-		qdel(admin_holder)
-		admin_holder = null
+		QDEL_NULL(admin_holder)
 	return 1
 
 /client/proc/readmin()

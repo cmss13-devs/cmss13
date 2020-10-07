@@ -44,9 +44,7 @@
 		if(istype(up))
 			up.down = null
 		up = null
-	if(cam)
-		qdel(cam)
-		cam = null
+	QDEL_NULL(cam)
 	. = ..()
 
 /obj/structure/ladder/update_icon()

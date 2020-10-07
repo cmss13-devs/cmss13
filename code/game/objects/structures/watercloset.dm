@@ -178,9 +178,7 @@
 
 /obj/structure/machinery/shower/update_icon()	//this is terribly unreadable, but basically it makes the shower mist up
 	overlays.Cut()					//once it's been on for a while, in addition to handling the water overlay.
-	if(mymist)
-		qdel(mymist)
-		mymist = null
+	QDEL_NULL(mymist)
 
 	if(on)
 		overlays += image('icons/obj/structures/props/watercloset.dmi', src, "water", MOB_LAYER + 1, dir)
@@ -199,8 +197,7 @@
 		mymist = new /obj/effect/mist(loc)
 		spawn(250)
 			if(src && !on)
-				qdel(mymist)
-				mymist = null
+				QDEL_NULL(mymist)
 				ismist = 0
 
 /obj/structure/machinery/shower/Crossed(atom/movable/O)

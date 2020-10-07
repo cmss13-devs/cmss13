@@ -26,9 +26,7 @@
 	active_power_usage = 1000
 
 /obj/structure/machinery/mill/Destroy()
-	if(milled_item)
-		qdel(milled_item)
-		milled_item = null
+	QDEL_NULL(milled_item)
 	return ..()
 
 /obj/structure/machinery/mill/process()
@@ -59,8 +57,7 @@
 		else
 			error = 1
 
-	qdel(milled_item)
-	milled_item = null
+	QDEL_NULL(milled_item)
 	busy = 0
 
 /obj/structure/machinery/mill/attackby(var/obj/item/W as obj, mob/user as mob)
@@ -100,9 +97,7 @@
 	active_power_usage = 500
 
 /obj/structure/machinery/fermenter/Destroy()
-	if(fermenting_item)
-		qdel(fermenting_item)
-		fermenting_item = null
+	QDEL_NULL(fermenting_item)
 	return ..()
 
 /obj/structure/machinery/fermenter/process()
@@ -135,8 +130,7 @@
 		else
 			error = 1
 
-	qdel(fermenting_item)
-	fermenting_item = null
+	QDEL_NULL(fermenting_item)
 	busy = 0
 
 /obj/structure/machinery/fermenter/attackby(var/obj/item/W as obj, mob/user as mob)
@@ -172,9 +166,7 @@
 	active_power_usage = 10000
 
 /obj/structure/machinery/still/Destroy()
-	if(destilling_item)
-		qdel(destilling_item)
-		destilling_item = null
+	QDEL_NULL(destilling_item)
 	return ..()
 
 /obj/structure/machinery/still/process()
@@ -202,8 +194,7 @@
 		else
 			error = 1
 
-	qdel(destilling_item)
-	destilling_item = null
+	QDEL_NULL(destilling_item)
 	busy = 0
 
 /obj/structure/machinery/still/attackby(var/obj/item/W as obj, mob/user as mob)

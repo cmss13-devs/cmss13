@@ -253,8 +253,7 @@ obj/structure/bed/Destroy()
 	var/obj/structure/bed/roller/R = new(user.loc)
 	to_chat(user, SPAN_NOTICE("You deploy [R]."))
 	R.add_fingerprint(user)
-	qdel(held)
-	held = null
+	QDEL_NULL(held)
 
 ////////////////////////////////////////////
 			//MEDEVAC STRETCHER

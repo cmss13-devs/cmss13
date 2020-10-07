@@ -49,9 +49,7 @@
 	update_icon()
 
 /obj/item/device/binoculars/range/Destroy()
-	if(coord)
-		qdel(coord)
-		coord = null
+	QDEL_NULL(coord)
 	. = ..()
 
 /obj/item/device/binoculars/range/update_icon()
@@ -60,8 +58,7 @@
 /obj/item/device/binoculars/range/on_unset_interaction(var/mob/user)
 	..()
 	if(user && coord && !zoom)
-		qdel(coord)
-		coord = null
+		QDEL_NULL(coord)
 
 /obj/item/device/binoculars/range/clicked(mob/user, list/mods)
 	if(!ishuman(usr))
@@ -81,8 +78,7 @@
 
 /obj/item/device/binoculars/range/proc/stop_targeting(mob/living/carbon/human/user)
 	if(coord)
-		qdel(coord)
-		coord = null
+		QDEL_NULL(coord)
 		to_chat(user, SPAN_WARNING("You stop lasing."))
 
 /obj/item/device/binoculars/range/proc/acquire_target(atom/A, mob/living/carbon/human/user)
@@ -122,9 +118,7 @@
 	playsound(src, 'sound/effects/binoctarget.ogg', 35)
 	while(coord)
 		if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_GENERIC))
-			if(coord)
-				qdel(coord)
-				coord = null
+			QDEL_NULL(coord)
 			break
 
 /obj/item/device/binoculars/range/interact(mob/user as mob)
@@ -151,12 +145,8 @@
 	desc = "A laser designator with two modes: target marking for CAS with IR laser and rangefinding. Tracking ID for CAS: [tracking_id]. Ctrl + Click turf to target something. Ctrl + Click designator to stop lasing. Alt + Click designator to switch modes."
 
 /obj/item/device/binoculars/range/designator/Destroy()
-	if(laser)
-		qdel(laser)
-		laser = null
-	if(coord)
-		qdel(coord)
-		coord = null
+	QDEL_NULL(laser)
+	QDEL_NULL(coord)
 	. = ..()
 
 /obj/item/device/binoculars/range/designator/update_icon()
@@ -180,8 +170,7 @@
 /obj/item/device/binoculars/range/designator/stop_targeting(mob/living/carbon/human/user)
 	..()
 	if(laser)
-		qdel(laser)
-		laser = null
+		QDEL_NULL(laser)
 		to_chat(user, SPAN_WARNING("You stop lasing."))
 
 /obj/item/device/binoculars/range/designator/verb/toggle_mode()
@@ -269,9 +258,7 @@
 		playsound(src, 'sound/effects/binoctarget.ogg', 35)
 		while(coord)
 			if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_GENERIC))
-				if(coord)
-					qdel(coord)
-					coord = null
+				QDEL_NULL(coord)
 				break
 	else
 		to_chat(user, SPAN_NOTICE("TARGET ACQUIRED. LASER TARGETING IS ONLINE. DON'T MOVE."))
@@ -280,9 +267,7 @@
 		playsound(src, 'sound/effects/binoctarget.ogg', 35)
 		while(laser)
 			if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_GENERIC))
-				if(laser)
-					qdel(laser)
-					laser = null
+				QDEL_NULL(laser)
 				break
 
 //IMPROVED LASER DESIGNATER, faster cooldown, faster target acquisition, can be found only in scout spec kit

@@ -88,16 +88,14 @@ var/global/datum/controller/gameticker/ticker = new()
 			src.mode = config.pick_mode(master_mode)
 	if (!src.mode.can_start())
 		to_world("<B>Unable to start [mode.name].</B> Not enough players, [mode.required_players] players needed. Reverting to pre-game lobby.")
-		qdel(mode)
-		mode = null
+		QDEL_NULL(mode)
 		current_state = GAME_STATE_PREGAME
 		RoleAuthority.reset_roles()
 		return 0
 
 	var/can_continue = src.mode.pre_setup()//Setup special modes
 	if(!can_continue)
-		qdel(mode)
-		mode = null
+		QDEL_NULL(mode)
 		current_state = GAME_STATE_PREGAME
 		to_world("<B>Error setting up [master_mode].</B> Reverting to pre-game lobby.")
 		RoleAuthority.reset_roles()

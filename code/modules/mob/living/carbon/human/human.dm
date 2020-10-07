@@ -1505,12 +1505,10 @@
 			SPAN_NOTICE("You tear [restraint] in half!"))
 		restraint = null
 		if(handcuffed)
-			qdel(handcuffed)
-			handcuffed = null
+			QDEL_NULL(handcuffed)
 			handcuff_update()
 		else
-			qdel(legcuffed)
-			legcuffed = null
+			QDEL_NULL(legcuffed)
 			handcuff_update()
 		return
 	if(species.can_shred(src))
@@ -1529,12 +1527,10 @@
 		to_chat(src, SPAN_WARNING("You successfully break [restraint]."))
 		say(pick(";RAAAAAAAARGH!", ";HNNNNNNNNNGGGGGGH!", ";GWAAAAAAAARRRHHH!", "NNNNNNNNGGGGGGGGHH!", ";AAAAAAARRRGH!" ))
 		if(handcuffed)
-			qdel(handcuffed)
-			handcuffed = null
+			QDEL_NULL(handcuffed)
 			handcuff_update()
 		else
-			qdel(legcuffed)
-			legcuffed = null
+			QDEL_NULL(legcuffed)
 			handcuff_update()
 	else
 		var/displaytime = max(1, round(breakouttime / 600)) //Minutes

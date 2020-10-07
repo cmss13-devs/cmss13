@@ -129,9 +129,8 @@
 /datum/skills/Destroy()
 	owner = null
 
-	for(var/datum/skill/S in skills)
-		qdel(S)
-		skills -= S
+	QDEL_NULL_LIST(skills)
+
 	return ..()
 
 // Checks if the given skill is contained in this skillset at all

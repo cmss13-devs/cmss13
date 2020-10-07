@@ -373,8 +373,7 @@ var/global/list/frozen_items = list(SQUAD_NAME_1 = list(), SQUAD_NAME_2 = list()
 
 	//Delete the mob.
 
-	qdel(occupant)
-	occupant = null
+	QDEL_NULL(occupant)
 	stop_processing()
 
 /obj/structure/machinery/cryopod/attackby(obj/item/W, mob/living/user)

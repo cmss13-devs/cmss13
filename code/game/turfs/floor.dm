@@ -284,8 +284,7 @@ var/list/wood_icons = list("wood", "wood-broken")
 						FF.update_icon() //So siding get updated properly
 
 	if(!floor_tile) return
-	qdel(floor_tile)
-	floor_tile = null
+	QDEL_NULL(floor_tile)
 	icon_plating = "plating"
 	SetLuminosity(0)
 	intact_tile = 0

@@ -15,15 +15,9 @@
 	var/obj/special_assembly = null
 
 /obj/item/device/assembly_holder/Destroy()
-	if(a_left)
-		qdel(a_left)
-		a_left = null
-	if(a_right)
-		qdel(a_right)
-		a_right = null
-	if(special_assembly)
-		qdel(special_assembly)
-		special_assembly = null
+	QDEL_NULL(a_left)
+	QDEL_NULL(a_right)
+	QDEL_NULL(special_assembly)
 	. = ..()
 
 /obj/item/device/assembly_holder/proc/attach_special(var/obj/O, var/mob/user)

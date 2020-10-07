@@ -255,14 +255,11 @@
 		if(istype(old_lead.wear_ear, /obj/item/device/radio/headset/almayer/marine))
 			var/obj/item/device/radio/headset/almayer/marine/R = old_lead.wear_ear
 			if(istype(R.keyslot1, /obj/item/device/encryptionkey/squadlead))
-				qdel(R.keyslot1)
-				R.keyslot1 = null
+				QDEL_NULL(R.keyslot1)
 			else if(istype(R.keyslot2, /obj/item/device/encryptionkey/squadlead))
-				qdel(R.keyslot2)
-				R.keyslot2 = null
+				QDEL_NULL(R.keyslot2)
 			else if(istype(R.keyslot3, /obj/item/device/encryptionkey/squadlead))
-				qdel(R.keyslot3)
-				R.keyslot3 = null
+				QDEL_NULL(R.keyslot3)
 			R.recalculateChannels()
 		if(istype(old_lead.wear_id, /obj/item/card/id))
 			var/obj/item/card/id/ID = old_lead.wear_id

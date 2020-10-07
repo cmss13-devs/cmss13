@@ -101,26 +101,20 @@
 /obj/effect/buildholder/Destroy()
     . = ..()
 
-    qdel(bm_help)
-    qdel(bm_help)
-    qdel(bm_quit)
-
-    bm_help = null
-    bm_build = null
-    bm_quit = null
+    QDEL_NULL(bm_help)
+    QDEL_NULL(bm_help)
+    QDEL_NULL(bm_quit)
 
     cl.buildmode = null
     buildmode.master = null
-    buildmode = null
-    qdel(buildmode)
+    QDEL_NULL(buildmode)
 
 
 /obj/effect/buildholder/proc/next_mode()
 
     cl.buildmode = null
     buildmode.master = null
-    buildmode = null
-    qdel(buildmode)
+    QDEL_NULL(buildmode)
 
     if(build_modes.len > current_mode)
         current_mode++

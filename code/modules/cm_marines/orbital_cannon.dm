@@ -237,9 +237,7 @@ var/list/ob_type_fuel_requirements
 
 	chambered_tray = FALSE
 	tray.fuel_amt = 0
-	if(tray.warhead)
-		qdel(tray.warhead)
-		tray.warhead = null
+	QDEL_NULL(tray.warhead)
 	tray.update_icon()
 
 	update_icon()
@@ -268,9 +266,7 @@ var/list/ob_type_fuel_requirements
 
 
 /obj/structure/orbital_tray/Destroy()
-	if(warhead)
-		qdel(warhead)
-		warhead = null
+	QDEL_NULL(warhead)
 	if(linked_ob)
 		linked_ob.tray = null
 		linked_ob = null

@@ -29,8 +29,7 @@
 	update_icon()
 
 /obj/item/device/walkman/Destroy()
-	if(tape)
-		qdel(tape)
+	QDEL_NULL(tape)
 	break_sound()
 	current_song = null
 	current_listener = null

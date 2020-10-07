@@ -36,8 +36,7 @@
 		go_out()
 	if(connected)
 		connected.connected = null
-		qdel(connected)
-		connected = null
+		QDEL_NULL(connected)
 	. = ..()
 
 /obj/structure/machinery/bodyscanner/relaymove(mob/user)
@@ -186,8 +185,7 @@
 			connected.go_out()
 
 		connected.connected = null
-		qdel(connected)
-		connected = null
+		QDEL_NULL(connected)
 	. = ..()
 
 

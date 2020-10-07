@@ -27,8 +27,7 @@
 		qdel(I)
 	if(pulledby) 
 		pulledby.stop_pulling()
-	qdel(launch_metadata)
-	launch_metadata = null
+	QDEL_NULL(launch_metadata)
 
 	if(loc)
 		loc.on_stored_atom_del(src) //things that container need to do when a movable atom inside it is deleted

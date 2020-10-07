@@ -20,9 +20,7 @@
 	var/obj/structure/dropship_equipment/installed_equipment
 
 /obj/effect/attach_point/Destroy()
-	if(installed_equipment)
-		qdel(installed_equipment)
-		installed_equipment = null
+	QDEL_NULL(installed_equipment)
 	. = ..()
 
 /obj/effect/attach_point/attackby(obj/item/I, mob/user)
@@ -146,9 +144,7 @@
 	var/point_cost = 0 //how many points it costs to build this with the fabricator, set to 0 if unbuildable.
 
 /obj/structure/dropship_equipment/Destroy()
-	if(ammo_equipped)
-		qdel(ammo_equipped)
-		ammo_equipped = null
+	QDEL_NULL(ammo_equipped)
 	if(linked_shuttle)
 		linked_shuttle.equipments -= src
 		linked_shuttle = null

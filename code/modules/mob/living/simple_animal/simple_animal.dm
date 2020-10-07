@@ -353,8 +353,7 @@
 //Call when target overlay should be added/removed
 /mob/living/simple_animal/update_targeted()
 	if(!targeted_by && target_locked)
-		qdel(target_locked)
-		target_locked = null
+		QDEL_NULL(target_locked)
 	overlays = null
 	if (targeted_by && target_locked)
 		overlays += target_locked

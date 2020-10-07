@@ -46,11 +46,7 @@ var/global/datum/interior_manager/interior_manager = new
 	interiors = new /list(total_chunk_ids)
 
 /datum/interior_manager/Destroy()
-	for(var/datum/interior/I in interiors)
-		if(!QDELETED(I))
-			qdel(I)
-			interiors -= I
-	interiors = null
+	QDEL_NULL_LIST(interiors)
 	chunk_availability = null
 	return ..()
 

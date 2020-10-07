@@ -181,9 +181,7 @@
 	ko_counter = 0
 	if(bound_xeno.client && ko_icon)
 		bound_xeno.client.images -= ko_icon
-	if(ko_icon)
-		qdel(ko_icon)
-		ko_icon = null
+	QDEL_NULL(ko_icon)
 
 /datum/behavior_delegate/boxer/proc/display_ko_message(var/mob/H)
 	if(!bound_xeno.client)
@@ -204,9 +202,7 @@
 /datum/behavior_delegate/boxer/proc/remove_big_ko()
 	if(bound_xeno.client && big_ko_icon)
 		bound_xeno.client.images -= big_ko_icon
-	if(big_ko_icon)
-		qdel(big_ko_icon)
-		big_ko_icon = null
+	QDEL_NULL(big_ko_icon)
 
 // a lot of repeats but it's because we are calling different parent procs
 /mob/living/carbon/Xenomorph/Warrior/Daze(amount)

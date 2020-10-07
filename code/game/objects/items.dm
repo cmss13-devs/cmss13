@@ -122,15 +122,9 @@
 /obj/item/Destroy()
 	flags_item &= ~DELONDROP //to avoid infinite loop of unequip, delete, unequip, delete.
 	flags_item &= ~NODROP //so the item is properly unequipped if on a mob.
-	for(var/X in actions)
-		actions -= X
-		qdel(X)
-	if(event_unwield)
-		qdel(event_unwield)
-		event_unwield = null
-	if(event_dropped)
-		qdel(event_dropped)
-		event_dropped = null
+	QDEL_NULL_LIST(actions)
+	QDEL_NULL(event_unwield)
+	QDEL_NULL(event_dropped)
 	master = null
 	locked_to_mob = null
 	item_list -= src

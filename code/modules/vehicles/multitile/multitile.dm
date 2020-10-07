@@ -153,13 +153,9 @@ var/global/list/all_multi_vehicles = list()
 
 /obj/vehicle/multitile/Destroy()
 	if(!QDELETED(interior))
-		qdel(interior)
-		interior = null
+		QDEL_NULL(interior)
 
-	for(var/obj/item/hardpoint/H in hardpoints)
-		if(!QDELETED(H))
-			qdel(H)
-			hardpoints -= H
+	QDEL_NULL_LIST(hardpoints)
 
 	all_multi_vehicles -= src
 

@@ -175,8 +175,7 @@ There are several things that need to be remembered:
 	if(targeted_by && target_locked)
 		I = image("icon" = target_locked)
 	else if(!targeted_by && target_locked)
-		qdel(target_locked)
-		target_locked = null
+		QDEL_NULL(target_locked)
 	if(holo_card_color)
 		if(I)
 			I.overlays += image("icon" = 'icons/effects/Targeted.dmi', "icon_state" = "holo_card_[holo_card_color]")

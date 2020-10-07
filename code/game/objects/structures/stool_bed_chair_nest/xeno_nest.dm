@@ -273,9 +273,7 @@
 	. = ..()
 	if(linked_structure)
 		linked_structure.pred_nest = null
-		qdel(linked_structure)
-
-		linked_structure = null
+		QDEL_NULL(linked_structure)
 
 /obj/structure/bed/nest/structure/attack_hand(mob/user)
 	if(!isXeno(user))

@@ -10,9 +10,7 @@
 		if(mind.original == src)
 			mind.original = null
 
-	if(hud_used)
-		qdel(hud_used)
-		hud_used = null
+	QDEL_NULL(hud_used)
 
 	if(open_uis)
 		for(var/datum/nanoui/ui in open_uis)

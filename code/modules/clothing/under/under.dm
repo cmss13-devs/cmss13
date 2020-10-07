@@ -53,9 +53,7 @@
 	..()
 
 /obj/item/clothing/Destroy()
-	if(accessories && accessories.len)
-		for(var/obj/I in accessories)
-			qdel(I)
+	QDEL_NULL_LIST(accessories)
 	return..()
 
 /obj/item/clothing/under/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)

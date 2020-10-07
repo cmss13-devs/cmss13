@@ -133,10 +133,10 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	update_icon()
 	pockets.max_w_class = SIZE_SMALL //Can contain small items AND rifle magazines.
 	pockets.bypass_w_limit = list(
-	/obj/item/ammo_magazine/rifle,
-	/obj/item/ammo_magazine/smg,
-	/obj/item/ammo_magazine/sniper,
-	 )
+		/obj/item/ammo_magazine/rifle,
+		/obj/item/ammo_magazine/smg,
+		/obj/item/ammo_magazine/sniper,
+	)
 	pockets.max_storage_space = 8
 
 /obj/item/clothing/suit/storage/marine/update_icon(mob/user)
@@ -469,10 +469,10 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	update_icon()
 	pockets.max_w_class = SIZE_SMALL //Can contain small items AND rifle magazines.
 	pockets.bypass_w_limit = list(
-	/obj/item/ammo_magazine/rifle,
-	/obj/item/ammo_magazine/smg,
-	/obj/item/ammo_magazine/sniper,
-	 )
+		/obj/item/ammo_magazine/rifle,
+		/obj/item/ammo_magazine/smg,
+		/obj/item/ammo_magazine/sniper,
+	)
 	pockets.max_storage_space = 8
 
 /obj/item/clothing/suit/storage/marine/class/light
@@ -1083,10 +1083,10 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	..()
 	pockets.max_w_class = SIZE_SMALL //Can contain small items AND rifle magazines.
 	pockets.bypass_w_limit = list(
-	/obj/item/ammo_magazine/rifle,
-	/obj/item/ammo_magazine/smg,
-	/obj/item/ammo_magazine/sniper,
-	 )
+		/obj/item/ammo_magazine/rifle,
+		/obj/item/ammo_magazine/smg,
+		/obj/item/ammo_magazine/sniper,
+	)
 	pockets.max_storage_space = 8
 
 /obj/item/clothing/suit/storage/militia/vest

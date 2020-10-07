@@ -31,4 +31,3 @@
 			continue
 		to_chat(C, SPAN_MOOC("MOOC: [src.key]([src.admin_holder.rank]): [msg]"))
 
-	 

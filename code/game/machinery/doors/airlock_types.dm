@@ -611,7 +611,7 @@
 
 /obj/structure/machinery/door/airlock/dropship_hatch/unlock()
 	if(z == 4) // in flight
-	 return
+		return
 	..()
 
 /obj/structure/machinery/door/airlock/dropship_hatch/two

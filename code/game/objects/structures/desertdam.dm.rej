@@ -1,8 +1,0 @@
-diff a/code/game/obj/structures/desertdam.dm b/code/game/obj/structures/desertdam.dm	(rejected hunks)
-@@ -12,7 +12,7 @@
- 	name = "loose sand"
-    icon_state = "loosesand_overlay_for_asphalt_1"
-
- //GRASS
- /obj/structure/desertdam/decals/grass
- 	icon_state = "heavygrass_1"

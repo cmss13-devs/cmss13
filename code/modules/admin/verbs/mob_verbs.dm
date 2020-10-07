@@ -17,7 +17,7 @@
 	if (M.client)
 		M.ghostize(FALSE)
 	message_staff("[key_name_admin(usr)] modified [key_name(M)]'s ckey to [new_ckey]", 1)
-	 
+
 	M.ckey = new_ckey
 	var/mob/living/carbon/Xenomorph/XNO = M
 	if(istype(XNO))
@@ -208,7 +208,7 @@
 	usr.name = O.name
 	usr.client.eye = O
 	usr.control_object = O
-	 
+
 /proc/release(obj/O as obj in object_list)
 	set name = "Release Obj"
 	set category = null
@@ -278,7 +278,7 @@
 
 		if(was_leader && (!hive.leading_cult_sl || hive.leading_cult_sl.stat == DEAD))
 			hive.leading_cult_sl = H
-	 
+
 	message_staff(SPAN_NOTICE("[key_name(src)] changed hivenumber of [H] to [H.hivenumber]."))
 
 
@@ -303,7 +303,7 @@
 			H.wear_id.registered_name = "[H.real_name]"
 			if(H.wear_id.assignment)
 				H.wear_id.name += " ([H.wear_id.assignment])"
-	 
+
 	message_staff(SPAN_NOTICE("[key_name(src)] changed name of [old_name] to [newname]."))
 
 /datum/admins/proc/togglesleep(var/mob/living/M as mob in mob_list)

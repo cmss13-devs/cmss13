@@ -95,7 +95,7 @@
 		else
 			to_chat(src, "<font color='red'>Error: view_txt_log(): File not found/Invalid path([path]) or path([pathyesteday]).</font>")
 			return
-	 
+
 	return
 
 //Shows today's attack log
@@ -111,5 +111,5 @@
 		to_chat(src, "<font color='red'>Error: view_atk_log(): File not found/Invalid path([path]).</font>")
 		return
 	usr << run( file(path) )
-	 
+
 	return

@@ -197,8 +197,13 @@
 					/obj/item/seeds/poppyseed = 3,/obj/item/seeds/sugarcaneseed = 3,/obj/item/seeds/peanutseed = 3,/obj/item/seeds/whitebeetseed = 3,/obj/item/seeds/watermelonseed = 3,/obj/item/seeds/limeseed = 3,
 					/obj/item/seeds/lemonseed = 3,/obj/item/seeds/orangeseed = 3,/obj/item/seeds/grassseed = 3,/obj/item/seeds/cocoapodseed = 3,/obj/item/seeds/plumpmycelium = 2,
 					/obj/item/seeds/cabbageseed = 3,/obj/item/seeds/grapeseed = 3,/obj/item/seeds/pumpkinseed = 3,/obj/item/seeds/cherryseed = 3,/obj/item/seeds/riceseed = 3)
-	contraband = list(/obj/item/seeds/libertymycelium = 1,/obj/item/seeds/mtearseed = 1,/obj/item/seeds/ambrosiavulgarisseed = 1,
-					  /obj/item/seeds/nettleseed = 1,/obj/item/seeds/reishimycelium = 1)
+	contraband = list(
+		/obj/item/seeds/libertymycelium = 1,
+		/obj/item/seeds/mtearseed = 1,
+		/obj/item/seeds/ambrosiavulgarisseed = 1,
+		/obj/item/seeds/nettleseed = 1,
+		/obj/item/seeds/reishimycelium = 1,
+	)
 	premium = list(/obj/item/toy/waterflower = 1)
 
 /obj/structure/machinery/vending/dinnerware

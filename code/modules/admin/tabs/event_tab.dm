@@ -561,7 +561,7 @@
 					heard_midi = 0
 		if("Cancel")
 			return
-	 
+
 	if(isnum(heard_midi))
 		message_staff("[key_name_admin(src)] played sound `[soundin]` for [heard_midi] player(s). [length(player_list) - heard_midi] player(s) have disabled admin midis.")
 	else

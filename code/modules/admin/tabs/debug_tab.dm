@@ -54,7 +54,7 @@
 	if(newtick && newtick <= 2 && newtick > 0)
 		message_staff("[key_name(src)] has modified world.tick_lag to [newtick]")
 		world.tick_lag = newtick
-		 
+
 
 		switch(alert("Enable Tick Compensation?","Tick Comp is currently: [config.Tickcomp]","Yes","No"))
 			if("Yes")	config.Tickcomp = 1

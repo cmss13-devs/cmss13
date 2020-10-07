@@ -171,7 +171,7 @@
 	if (ticker.current_state == GAME_STATE_PREGAME)
 		ticker.current_state = GAME_STATE_SETTING_UP
 		message_staff(SPAN_BLUE("[usr.key] has started the game."))
-		 
+
 		return TRUE
 	else
 		to_chat(usr, "<font color='red'>Error: Start Now: Game has already started.</font>")

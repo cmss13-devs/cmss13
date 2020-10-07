@@ -182,7 +182,7 @@
 			if(wear_suit && wear_suit.flags_inventory & BLOCKSHARPOBJ)
 				. = 0
 	if(!. && error_msg && user)
- 		// Might need re-wording.
+		// Might need re-wording.
 		to_chat(user, SPAN_WARNING("There is no exposed flesh or thin material [target_zone == "head" ? "on their head" : "on their body"] to inject into."))
 
 

@@ -333,6 +333,7 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/mateba/admiral(H), WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/beret/marine/commander/cdre(H), WEAR_HEAD)
 	. = ..()
+	H.equip_to_slot_or_del(new /obj/item/storage/mateba_case/commodore(H.back), WEAR_IN_BACK)
 
 /datum/equipment_preset/uscm_ship/commander/commodore/plus
 	name = "USCM Commodore (CO++)"

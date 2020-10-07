@@ -66,13 +66,22 @@
 	storage_slots = 4
 	can_hold = list(/obj/item/attachable/mateba, /obj/item/weapon/gun/revolver/mateba, /obj/item/weapon/mateba_key)
 
-/obj/item/storage/mateba_case/Initialize()
+/obj/item/storage/mateba_case/captain/Initialize()
 	. = ..()
 	new /obj/item/attachable/mateba/short(src)
 	new /obj/item/attachable/mateba/long(src)
 	new /obj/item/weapon/mateba_key(src)
 
+/obj/item/storage/mateba_case/commodore
+	icon_state = "c_matebacase"
+	name = "engraved mateba customization kit case"
+	desc = "An ebony black case used for storing the tools and parts needed to customize a mateba revolver. This variant is made for engraved Matebas and comes with golden barrel attachments."
 
+/obj/item/storage/mateba_case/commodore/Initialize()
+	. = ..()
+	new /obj/item/attachable/mateba/short/dark(src)
+	new /obj/item/attachable/mateba/long/dark(src)
+	new /obj/item/weapon/mateba_key(src)
 
 //6 pack
 

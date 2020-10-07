@@ -14,8 +14,8 @@ GLOBAL_LIST_EMPTY(co_secure_boxes)
 	icon_off = "secure_closed_commander"
 
 /obj/structure/closet/secure_closet/commander/Initialize()
-	. = ..()
-	new /obj/item/storage/mateba_case(src)
+	..()
+	new /obj/item/storage/mateba_case/captain(src)
 	new /obj/item/storage/backpack/mcommander(src)
 	new /obj/item/clothing/glasses/sunglasses(src)
 	new /obj/item/device/radio/headset/almayer/mcom/cdrcom(src)

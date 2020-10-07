@@ -2264,7 +2264,6 @@
 	},
 /area/prison/security/monitoring/highsec)
 "er" = (
-/turf/open/floor/prison,
 /obj/structure/pipes/standard/simple/hidden/scrubbers{
 	dir = 6
 	},
@@ -2276,10 +2275,10 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
+/turf/open/floor/prison,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/prison/security/monitoring/highsec)
 "es" = (
-/turf/open/floor/prison,
 /obj/structure/pipes/standard/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
@@ -2296,10 +2295,10 @@
 	icon_state = "4-8";
 	pixel_x = 0
 	},
+/turf/open/floor/prison,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/prison/security/monitoring/highsec)
 "et" = (
-/turf/open/floor/prison,
 /obj/structure/pipes/standard/manifold/hidden/scrubbers,
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 9;
@@ -2311,6 +2310,7 @@
 	d2 = 8;
 	icon_state = "1-8"
 	},
+/turf/open/floor/prison,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/prison/security/monitoring/highsec)
 "eu" = (
@@ -2326,7 +2326,6 @@
 	},
 /area/prison/security/monitoring/highsec)
 "ev" = (
-/turf/open/floor/prison,
 /obj/structure/pipes/standard/simple/hidden/scrubbers,
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/cable{
@@ -2334,6 +2333,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/turf/open/floor/prison,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/prison/security/monitoring/highsec)
 "ew" = (
@@ -2393,7 +2393,6 @@
 /turf/open/floor/wood,
 /area/prison/security/monitoring/highsec)
 "eD" = (
-/turf/open/floor/prison,
 /obj/structure/pipes/standard/simple/hidden/scrubbers{
 	tag = "icon-intact-scrubbers (NORTHEAST)";
 	icon_state = "intact-scrubbers";
@@ -2405,10 +2404,10 @@
 	d2 = 4;
 	icon_state = "1-4"
 	},
+/turf/open/floor/prison,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/prison/security/monitoring/highsec)
 "eE" = (
-/turf/open/floor/prison,
 /obj/structure/pipes/standard/manifold/hidden/scrubbers{
 	dir = 1
 	},
@@ -2422,6 +2421,7 @@
 	d2 = 8;
 	icon_state = "2-8"
 	},
+/turf/open/floor/prison,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/prison/security/monitoring/highsec)
 "eF" = (

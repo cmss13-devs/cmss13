@@ -157,14 +157,6 @@
 	icon_state = "grass2"
 	},
 /area/lv624/ground/jungle3)
-"tr" = (
-/obj/structure/flora/jungle/vines/heavy{
-	icon_state = "heavy_6";
-	icon_tag = "heavy";
-	pixel_x = 0
-	},
-/turf/open/gm/grass,
-/area/lv624/ground/jungle3)
 "ub" = (
 /obj/structure/flora/jungle/vines,
 /obj/structure/flora/jungle/vines/heavy{
@@ -485,7 +477,7 @@ LW
 LW
 MY
 Bs
-tr
+kN
 aq
 "}
 (4,1,1) = {"
@@ -506,7 +498,7 @@ kN
 "}
 (5,1,1) = {"
 LW
-tr
+kN
 lf
 LV
 vT
@@ -652,7 +644,7 @@ LW
 LV
 qZ
 LW
-tr
+kN
 Bs
 vt
 LW
@@ -669,8 +661,8 @@ LW
 LW
 LW
 LF
-tr
-tr
+kN
+kN
 LW
 LW
 LW

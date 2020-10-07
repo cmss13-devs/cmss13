@@ -55,11 +55,6 @@
 	icon_state = "grimy"
 	},
 /area/bigredv2/outside/dorms)
-"am" = (
-/turf/open/floor{
-	icon_state = "grimy"
-	},
-/area/bigredv2/outside/dorms)
 "an" = (
 /obj/item/trash/chunk,
 /turf/open/floor{
@@ -565,7 +560,7 @@ bm
 "}
 (15,1,1) = {"
 ag
-am
+al
 al
 al
 aS

@@ -871,6 +871,7 @@
 /obj/structure/pipes/unary/freezer{
 	dir = 2;
 	icon_state = "freezer_1" ;
+	
 	},
 /turf/open/floor/prison,
 /area/prison/medbay)

@@ -1,15 +1,193 @@
-"a" = (/obj/structure/interior_wall/tank{dir = 8; icon_state = "tank_back_3"},/obj/structure/interior_wall/tank{dir = 1; icon_state = "tank_left_1"; layer = 2; pixel_y = 30},/obj/structure/closet/vehicle{pixel_y = 25; pixel_x = 4},/turf/open/shuttle/dropship{tag = "icon-rasputin15"; icon_state = "rasputin2"},/area/vehicle/tank)
-"b" = (/obj/structure/interior_wall/tank{dir = 1; icon_state = "tank_left_2"; layer = 2; pixel_y = 30},/obj/structure/prop/tank{density = 0; icon_state = "prop4"; layer = 3; pixel_x = 0},/obj/structure/prop/tank{density = 0; icon_state = "prop6"; pixel_x = 0; pixel_y = 32},/obj/structure/prop/tank{density = 0; icon_state = "prop8_extra"; layer = 4.12; pixel_x = 0},/obj/effect/landmark/interior/spawn/vehicle_driver_seat/tank{dir = 4},/turf/open/shuttle/dropship{tag = "icon-rasputin15"; icon_state = "rasputin14"},/area/vehicle/tank)
-"c" = (/obj/structure/interior_wall/tank{dir = 1; icon_state = "tank_left_3"; layer = 2; pixel_x = 0; pixel_y = 30},/obj/structure/interior_wall/tank{dir = 4; icon_state = "tank_front_3"},/obj/structure/prop/tank{icon_state = "prop5"; pixel_x = 0},/obj/structure/prop/tank{icon_state = "prop7"; pixel_x = 0; pixel_y = 32},/turf/open/shuttle/dropship{tag = "icon-rasputin15"; icon_state = "rasputin14"},/area/vehicle/tank)
-"d" = (/obj/effect/landmark/interior/spawn/entrance{dir = 8; exit_type = /obj/structure/interior_exit/vehicle/tank; name = "back entrance marker"; tag = "back"},/obj/structure/interior_wall/tank{dir = 8; icon_state = "tank_back_2"},/turf/open/shuttle/dropship{icon_state = "rasputin4"; tag = "icon-rasputin7"},/area/vehicle/tank)
-"e" = (/obj/effect/landmark/interior/spawn/weapons_loader{layer = 2; pixel_x = -7},/obj/structure/prop/tank{icon_state = "prop2"; layer = 3; pixel_x = 0},/turf/open/shuttle/dropship{tag = "icon-floor8"; icon_state = "floor8"},/area/vehicle/tank)
-"f" = (/obj/structure/interior_wall/tank{dir = 4; icon_state = "tank_front_2"},/obj/structure/prop/tank{icon_state = "prop3"; pixel_x = 0},/turf/open/shuttle/dropship{tag = "icon-floor8"; icon_state = "floor8"},/area/vehicle/tank)
-"g" = (/obj/structure/interior_wall/tank{alpha = 50; layer = 4},/obj/structure/interior_wall/tank{dir = 8; icon_state = "tank_back_1"},/obj/effect/landmark/interior/spawn/vehicle_gunner_seat/tank{dir = 4},/turf/open/shuttle/dropship{tag = "icon-rasputin15"; icon_state = "rasputin14"},/area/vehicle/tank)
-"h" = (/obj/structure/interior_wall/tank{alpha = 50; dir = 2; icon_state = "tank_right_2"; layer = 4; pixel_y = 0},/obj/structure/prop/tank{pixel_x = 0},/turf/open/shuttle/dropship{tag = "icon-rasputin15"; icon_state = "rasputin14"},/area/vehicle/tank)
-"i" = (/obj/structure/interior_wall/tank{alpha = 50; icon_state = "tank_right_3"; layer = 4},/obj/structure/interior_wall/tank{dir = 4; icon_state = "trank_front_1"},/obj/structure/prop/tank{icon_state = "prop1"; pixel_x = 0},/turf/open/shuttle/dropship{tag = "icon-rasputin15"; icon_state = "rasputin14"},/area/vehicle/tank)
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/obj/structure/interior_wall/tank{
+	dir = 8;
+	icon_state = "tank_back_3"
+	},
+/obj/structure/interior_wall/tank{
+	dir = 1;
+	icon_state = "tank_left_1";
+	layer = 2;
+	pixel_y = 30
+	},
+/obj/structure/closet/vehicle{
+	pixel_y = 25;
+	pixel_x = 4
+	},
+/turf/open/shuttle/dropship{
+	tag = "icon-rasputin15";
+	icon_state = "rasputin2"
+	},
+/area/vehicle/tank)
+"b" = (
+/obj/structure/interior_wall/tank{
+	dir = 1;
+	icon_state = "tank_left_2";
+	layer = 2;
+	pixel_y = 30
+	},
+/obj/structure/prop/tank{
+	density = 0;
+	icon_state = "prop4";
+	layer = 3;
+	pixel_x = 0
+	},
+/obj/structure/prop/tank{
+	density = 0;
+	icon_state = "prop6";
+	pixel_x = 0;
+	pixel_y = 32
+	},
+/obj/structure/prop/tank{
+	density = 0;
+	icon_state = "prop8_extra";
+	layer = 4.12;
+	pixel_x = 0
+	},
+/obj/effect/landmark/interior/spawn/vehicle_driver_seat/tank{
+	dir = 4
+	},
+/turf/open/shuttle/dropship{
+	tag = "icon-rasputin15";
+	icon_state = "rasputin14"
+	},
+/area/vehicle/tank)
+"c" = (
+/obj/structure/interior_wall/tank{
+	dir = 1;
+	icon_state = "tank_left_3";
+	layer = 2;
+	pixel_x = 0;
+	pixel_y = 30
+	},
+/obj/structure/interior_wall/tank{
+	dir = 4;
+	icon_state = "tank_front_3"
+	},
+/obj/structure/prop/tank{
+	icon_state = "prop5";
+	pixel_x = 0
+	},
+/obj/structure/prop/tank{
+	icon_state = "prop7";
+	pixel_x = 0;
+	pixel_y = 32
+	},
+/turf/open/shuttle/dropship{
+	tag = "icon-rasputin15";
+	icon_state = "rasputin14"
+	},
+/area/vehicle/tank)
+"d" = (
+/obj/effect/landmark/interior/spawn/entrance{
+	dir = 8;
+	exit_type = /obj/structure/interior_exit/vehicle/tank;
+	name = "back entrance marker";
+	tag = "back"
+	},
+/obj/structure/interior_wall/tank{
+	dir = 8;
+	icon_state = "tank_back_2"
+	},
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin4";
+	tag = "icon-rasputin7"
+	},
+/area/vehicle/tank)
+"e" = (
+/obj/effect/landmark/interior/spawn/weapons_loader{
+	layer = 2;
+	pixel_x = -7
+	},
+/obj/structure/prop/tank{
+	icon_state = "prop2";
+	layer = 3;
+	pixel_x = 0
+	},
+/turf/open/shuttle/dropship{
+	tag = "icon-floor8";
+	icon_state = "floor8"
+	},
+/area/vehicle/tank)
+"f" = (
+/obj/structure/interior_wall/tank{
+	dir = 4;
+	icon_state = "tank_front_2"
+	},
+/obj/structure/prop/tank{
+	icon_state = "prop3";
+	pixel_x = 0
+	},
+/turf/open/shuttle/dropship{
+	tag = "icon-floor8";
+	icon_state = "floor8"
+	},
+/area/vehicle/tank)
+"g" = (
+/obj/structure/interior_wall/tank{
+	alpha = 50;
+	layer = 4
+	},
+/obj/structure/interior_wall/tank{
+	dir = 8;
+	icon_state = "tank_back_1"
+	},
+/obj/effect/landmark/interior/spawn/vehicle_gunner_seat/tank{
+	dir = 4
+	},
+/turf/open/shuttle/dropship{
+	tag = "icon-rasputin15";
+	icon_state = "rasputin14"
+	},
+/area/vehicle/tank)
+"h" = (
+/obj/structure/interior_wall/tank{
+	alpha = 50;
+	dir = 2;
+	icon_state = "tank_right_2";
+	layer = 4;
+	pixel_y = 0
+	},
+/obj/structure/prop/tank{
+	pixel_x = 0
+	},
+/turf/open/shuttle/dropship{
+	tag = "icon-rasputin15";
+	icon_state = "rasputin14"
+	},
+/area/vehicle/tank)
+"i" = (
+/obj/structure/interior_wall/tank{
+	alpha = 50;
+	icon_state = "tank_right_3";
+	layer = 4
+	},
+/obj/structure/interior_wall/tank{
+	dir = 4;
+	icon_state = "trank_front_1"
+	},
+/obj/structure/prop/tank{
+	icon_state = "prop1";
+	pixel_x = 0
+	},
+/turf/open/shuttle/dropship{
+	tag = "icon-rasputin15";
+	icon_state = "rasputin14"
+	},
+/area/vehicle/tank)
 
 (1,1,1) = {"
-abc
-def
-ghi
+a
+d
+g
+"}
+(2,1,1) = {"
+b
+e
+h
+"}
+(3,1,1) = {"
+c
+f
+i
 "}

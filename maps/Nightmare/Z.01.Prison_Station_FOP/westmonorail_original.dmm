@@ -1,6 +1,5 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aaa" = (
-/turf/open/floor/prison,
 /obj/structure/pipes/standard/simple/hidden/scrubbers{
 	tag = "icon-intact-scrubbers (NORTHEAST)";
 	icon_state = "intact-scrubbers";
@@ -12,13 +11,13 @@
 	d2 = 4;
 	icon_state = "1-4"
 	},
+/turf/open/floor/prison,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/prison/security/monitoring/highsec)
 "aab" = (
 /turf/open/space,
 /area/space)
 "aac" = (
-/turf/open/floor/prison,
 /obj/structure/pipes/standard/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
@@ -35,6 +34,7 @@
 	icon_state = "4-8";
 	pixel_x = 0
 	},
+/turf/open/floor/prison,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/prison/security/monitoring/highsec)
 "aad" = (

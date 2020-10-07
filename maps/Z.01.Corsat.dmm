@@ -1355,7 +1355,7 @@
 /obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
 	id = "GammaHangarH";
-	name = "Hangar Lockdown"
+	name = "Hangar Lockdown";
 	use_power = 0
 	},
 /turf/open/floor/plating,
@@ -15609,7 +15609,7 @@
 /obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
 	id = "GammaHangarH";
-	name = "Hangar Lockdown"
+	name = "Hangar Lockdown";
 	use_power = 0
 	},
 /turf/open/floor/plating,
@@ -24535,7 +24535,7 @@
 /obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
 	id = "GammaHangarH";
-	name = "Hangar Lockdown"
+	name = "Hangar Lockdown";
 	use_power = 0
 	},
 /turf/open/floor/corsat{
@@ -66694,7 +66694,7 @@
 /obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
 	id = "GammaHangarH";
-	name = "Hangar Lockdown"
+	name = "Hangar Lockdown";
 	use_power = 0
 	},
 /obj/structure/pipes/standard/simple/hidden/green{

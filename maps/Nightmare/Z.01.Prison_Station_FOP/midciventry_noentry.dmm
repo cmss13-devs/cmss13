@@ -129,7 +129,6 @@
 /turf/open/space,
 /area/space)
 "au" = (
-/turf/open/floor/prison,
 /obj/structure/cable{
 	d1 = 2;
 	d2 = 4;
@@ -143,6 +142,7 @@
 /obj/structure/pipes/standard/simple/hidden/scrubbers{
 	dir = 6
 	},
+/turf/open/floor/prison,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/prison/security/monitoring/highsec)
 "av" = (
@@ -153,7 +153,6 @@
 /turf/open/floor/prison,
 /area/prison/security/monitoring/highsec)
 "ax" = (
-/turf/open/floor/prison,
 /obj/structure/pipes/standard/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
@@ -170,6 +169,7 @@
 	icon_state = "4-8";
 	pixel_x = 0
 	},
+/turf/open/floor/prison,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/prison/security/monitoring/highsec)
 "ay" = (
@@ -229,7 +229,6 @@
 /turf/open/floor/prison,
 /area/prison/security/monitoring/highsec)
 "aC" = (
-/turf/open/floor/prison,
 /obj/structure/pipes/standard/manifold/hidden/scrubbers,
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 9;
@@ -241,6 +240,7 @@
 	d2 = 8;
 	icon_state = "1-8"
 	},
+/turf/open/floor/prison,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/prison/security/monitoring/highsec)
 "aD" = (
@@ -303,7 +303,6 @@
 /turf/closed/wall/prison,
 /area/prison/maintenance/residential/ne)
 "aJ" = (
-/turf/open/space,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
@@ -311,6 +310,7 @@
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/pipes/standard/simple/hidden/scrubbers,
+/turf/open/space,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/prison/security/monitoring/highsec)
 "aK" = (
@@ -336,7 +336,6 @@
 	},
 /area/prison/residential/central)
 "aL" = (
-/turf/open/space,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
@@ -346,6 +345,7 @@
 /obj/structure/pipes/standard/manifold/hidden/scrubbers{
 	dir = 8
 	},
+/turf/open/space,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/prison/security/monitoring/highsec)
 "aM" = (
@@ -467,7 +467,6 @@
 /turf/open/floor/plating,
 /area/prison/security/monitoring/highsec)
 "bb" = (
-/turf/open/space,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
@@ -477,6 +476,7 @@
 	dir = 4
 	},
 /obj/structure/pipes/standard/simple/hidden/scrubbers,
+/turf/open/space,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/prison/security/monitoring/highsec)
 "bc" = (
@@ -914,7 +914,6 @@
 	},
 /area/prison/security/monitoring/highsec)
 "bU" = (
-/turf/open/floor/prison,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 4;
@@ -931,6 +930,7 @@
 	icon_state = "intact-scrubbers";
 	dir = 5
 	},
+/turf/open/floor/prison,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/prison/security/monitoring/highsec)
 "bV" = (
@@ -1075,7 +1075,6 @@
 /turf/closed/wall/r_wall/prison,
 /area/prison/security/monitoring/highsec)
 "ck" = (
-/turf/open/floor/prison,
 /obj/structure/pipes/standard/manifold/hidden/scrubbers{
 	dir = 1
 	},
@@ -1089,6 +1088,7 @@
 	d2 = 8;
 	icon_state = "2-8"
 	},
+/turf/open/floor/prison,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/prison/security/monitoring/highsec)
 "cl" = (

@@ -3,6 +3,7 @@ Thumbs.db
 *.log
 *.int
 *.rsc
+*.rej
 *.dmb
 *.lk
 *.backup
@@ -18,6 +19,7 @@ sound/music/*.ogg
 sound/music/walkman/*/*.ogg
 sound/music/walkman/*.txt
 icons/custom/*
+maps/**/backup
 *.json
 *.before
 __pycache__

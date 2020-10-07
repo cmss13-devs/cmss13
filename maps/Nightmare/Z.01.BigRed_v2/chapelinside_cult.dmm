@@ -459,13 +459,6 @@
 	dir = 2
 	},
 /area/bigredv2/outside/chapel)
-"aY" = (
-/turf/open/floor{
-	tag = "icon-darkish";
-	icon_state = "darkish";
-	dir = 2
-	},
-/area/bigredv2/outside/chapel)
 "aZ" = (
 /obj/structure/surface/table/woodentable,
 /turf/open/floor{
@@ -511,13 +504,6 @@
 /turf/open/floor{
 	tag = "icon-rampbottom";
 	icon_state = "rampbottom";
-	dir = 2
-	},
-/area/bigredv2/outside/chapel)
-"bf" = (
-/obj/structure/surface/table/woodentable,
-/turf/open/floor{
-	icon_state = "cult";
 	dir = 2
 	},
 /area/bigredv2/outside/chapel)
@@ -570,14 +556,6 @@
 	tag = "icon-gib6";
 	icon_state = "gib6"
 	},
-/turf/open/floor{
-	tag = "icon-darkish";
-	icon_state = "darkish";
-	dir = 2
-	},
-/area/bigredv2/outside/chapel)
-"bo" = (
-/obj/structure/machinery/light,
 /turf/open/floor{
 	tag = "icon-darkish";
 	icon_state = "darkish";
@@ -643,11 +621,11 @@ ab
 (4,1,1) = {"
 ac
 ae
-bf
+aZ
 aD
 aO
 aZ
-bf
+aZ
 ae
 ab
 "}
@@ -758,7 +736,7 @@ aI
 aQ
 av
 aI
-bo
+bl
 ab
 "}
 (15,1,1) = {"
@@ -788,7 +766,7 @@ ab
 ae
 aB
 aB
-aY
+ae
 bd
 bj
 bp

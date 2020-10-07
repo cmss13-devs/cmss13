@@ -1321,6 +1321,7 @@
 "bTu" = (
 /obj/structure/pipes/binary/pump/high_power{
 	dir = 1;
+	
 	},
 /turf/open/floor/plating,
 /area/prison/engineering/atmos)
@@ -1590,6 +1591,7 @@
 "bWo" = (
 /obj/structure/pipes/binary/pump/high_power{
 	on = 1;
+	
 	},
 /turf/open/floor/plating,
 /area/prison/engineering/atmos)
@@ -2742,13 +2744,6 @@
 	},
 /turf/open/floor/prison,
 /area/prison/security)
-"cdA" = (
-/turf/open/floor/prison{
-	tag = "icon-darkredfull2 (SOUTHWEST)";
-	icon_state = "darkredfull2";
-	dir = 10
-	},
-/area/prison/security)
 "cdB" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -3626,8 +3621,7 @@
 /area/prison/security/armory/riot)
 "cjl" = (
 /obj/structure/machinery/door/poddoor/two_tile/vertical/open{
-	id = "lethal_armory"
-	unacidable = 0
+	id = "lethal_armory"unacidable = 0
 	},
 /turf/open/floor/prison{
 	tag = "icon-darkredfull2 (SOUTHWEST)";
@@ -4946,7 +4940,7 @@ bXR
 bZp
 caF
 ccc
-cdA
+bVh
 bMs
 cfG
 cfD
@@ -5261,7 +5255,7 @@ bON
 bZp
 caK
 cck
-cdA
+bVh
 bNS
 cfK
 cgN

@@ -27,6 +27,8 @@ To start contributing:
 
 5. Clone the repository with your git client.
 
+6. [Read the contributor guidelines.](https://cm-ss13.com/wiki/Contributing_to_the_Game)
+
 ## Meet the Team
 
 **Host**

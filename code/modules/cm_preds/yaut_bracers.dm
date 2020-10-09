@@ -685,7 +685,12 @@
 		qdel(S)
 
 	for(var/obj/item/explosive/grenade/spawnergrenade/smartdisc/D in range(10))
-		D.launch_towards(usr, 10, SPEED_FAST, usr)
+		var/datum/launch_metadata/LM = new()
+		LM.target = usr
+		LM.range = 10
+		LM.speed = SPEED_FAST
+		LM.thrower = usr
+		D.launch_towards(LM)
 	return 1
 
 /obj/item/clothing/gloves/yautja/verb/remove_tracked_item()

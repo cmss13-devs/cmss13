@@ -288,9 +288,9 @@ var/list/global/item_storage_box_cache = list()
 		var/list/screen_loc_X = splittext(screen_loc_params[1],":")
 		var/click_x = text2num(screen_loc_X[1])*32+text2num(screen_loc_X[2]) - 144
 
-		for(var/i=1,i<=S.click_border_start.len,i++)
+		for(var/i in 1 to length(S.click_border_start))
 			if (S.click_border_start[i] <= click_x && click_x <= S.click_border_end[i])
-				I = S.contents[i]
+				I = LAZYACCESS(S.contents, i)
 				if (I)
 					if (I.clicked(user, mods))
 						return 1

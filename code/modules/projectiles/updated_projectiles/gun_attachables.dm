@@ -568,6 +568,10 @@ Defined in conflicts.dm of the #defines folder.
 	scope = _scope
 
 /datum/event_handler/scope_zoomout_removebuffs/handle(sender, datum/event_args/ev_args)
+	if(isnull(G))
+		qdel(src)
+		return
+
 	if(!G.zoom)
 		G.accuracy_mult -= scope.accuracy_scoped_buff
 		G.fire_delay -= scope.delay_scoped_nerf
@@ -634,6 +638,10 @@ Defined in conflicts.dm of the #defines folder.
 	flags_handler = HNDLR_FLAG_SINGLE_FIRE
 
 /datum/event_handler/miniscope_zoomout/handle(sender, datum/event_args/ev_args)
+	if(isnull(G))
+		qdel(src)
+		return
+
 	G.slowdown -= aim_slowdown
 	G.fire_delay -= fire_delay
 

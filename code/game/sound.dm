@@ -75,6 +75,9 @@
 		if(!I.ready)
 			continue
 
+		if(!I.exterior)
+			continue
+
 		if(I.exterior.z == turf_source.z && get_dist(I.exterior, turf_source) <= sound_range)
 			var/list/bounds = I.get_bound_turfs()
 			if(!bounds)

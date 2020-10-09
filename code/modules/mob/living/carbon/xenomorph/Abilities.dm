@@ -129,7 +129,7 @@
 
 	var/area/AR = get_area(T)
 
-	if(!(AR.is_resin_allowed))
+	if(isnull(AR) || !(AR.is_resin_allowed))
 		to_chat(X, SPAN_XENOWARNING("It's too early to spread the hive this far."))
 		return
 
@@ -301,7 +301,7 @@
 	var/turf/T = get_turf(A)
 
 	var/area/AR = get_area(T)
-	if(!(AR.is_resin_allowed))
+	if(isnull(AR) || !(AR.is_resin_allowed))
 		to_chat(X, SPAN_XENOWARNING("It's too early to spread the hive this far."))
 		return FALSE
 

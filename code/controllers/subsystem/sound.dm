@@ -29,4 +29,3 @@ SUBSYSTEM_DEF(sound)
 	if(!hearers)
 		hearers = list()
 	template_queue[template] = hearers
-	

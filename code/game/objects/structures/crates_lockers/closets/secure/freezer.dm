@@ -146,7 +146,7 @@
 	var/obj/structure/closet/secure_closet/freezer/industry/freezer
 
 /obj/structure/machinery/paraform_cooler/process()
-	if(freezer.opened)
+	if(!istype(freezer) || freezer.opened)
 		return
 	if(cooldown)
 		cooldown--

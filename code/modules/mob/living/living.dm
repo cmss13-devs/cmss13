@@ -405,7 +405,7 @@
 	..()
 
 /mob/living/launch_towards(var/datum/launch_metadata/LM)
-	if(!LM.target || !src || buckled)
+	if(!istype(LM) || !LM.target || !src || buckled)
 		return
 	if(pulling)
 		stop_pulling() //being thrown breaks pulls.

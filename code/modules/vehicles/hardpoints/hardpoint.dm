@@ -477,7 +477,7 @@ obj/item/hardpoint/proc/remove_buff(var/obj/vehicle/multitile/V)
 	var/obj/item/projectile/P = new(initial(name), user)
 	P.loc = origin_turf
 	P.generate_bullet(new ammo.default_ammo)
-	if(iff_on)
+	if(iff_on && owner.seats[VEHICLE_GUNNER])
 		P.fire_at(A, owner.seats[VEHICLE_GUNNER], src, P.ammo.max_range, P.ammo.shell_speed, iff_group = owner.seats[VEHICLE_GUNNER].faction_group)
 	else
 		P.fire_at(A, owner.seats[VEHICLE_GUNNER], src, P.ammo.max_range, P.ammo.shell_speed)

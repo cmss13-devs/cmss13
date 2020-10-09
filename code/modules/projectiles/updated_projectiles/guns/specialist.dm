@@ -1101,7 +1101,7 @@
 		if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_TRAINED) && user.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_ROCKET)
 			to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 			return 0
-		if(current_mag.current_rounds > 0)
+		if(current_mag && current_mag.current_rounds > 0)
 			make_rocket(user, 0, 1)
 
 /obj/item/weapon/gun/launcher/rocket/load_into_chamber(mob/user)

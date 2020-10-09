@@ -33,14 +33,17 @@
 		return
 
 	var/obj/O = AM
-	var/datum/launch_metadata/LM = O.launch_metadata
 	var/dtype = BRUTE
 	if(istype(O, /obj/item/weapon))
 		var/obj/item/weapon/W = O
 		dtype = W.damtype
 	var/impact_damage = (1 + O.throwforce*THROWFORCE_COEFF)*O.throwforce*THROW_SPEED_IMPACT_COEFF*O.cur_speed
 
-	var/miss_chance = min(15*(LM.dist-2), 0)
+	var/datum/launch_metadata/LM = O.launch_metadata
+	var/dist = 2
+	if(istype(LM))
+		dist = LM.dist
+	var/miss_chance = min(15*(dist - 2), 0)
 
 	if (prob(miss_chance))
 		visible_message(SPAN_NOTICE("\The [O] misses [src] narrowly!"), null, null, 5)

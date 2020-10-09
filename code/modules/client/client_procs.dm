@@ -364,7 +364,9 @@
 
 	var/list/macro_sets = params2list(winget(src, null, "macros"))
 	if (!(parent in macro_sets))
-		var/old = params2list(winget(src, "mainwindow", "macro"))[1]
+		var/old = LAZYACCESS(params2list(winget(src, "mainwindow", "macro")), 1)
+		if(!old)
+			return
 		winset(src, null, "mainwindow.macro=[parent]")
 		winset(src, null, "mainwindow.macro=[old]")
 

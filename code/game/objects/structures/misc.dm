@@ -112,19 +112,21 @@ obj/structure/xenoautopsy/tank/larva
 	icon_state = "tank_larva"
 	desc = "There is something worm-like inside..."
 
-obj/item/alienjar
+/obj/item/alienjar
 	name = "sample jar"
 	icon = 'icons/obj/structures/props/alien_autopsy.dmi'
 	icon_state = "jar_sample"
 	desc = "Used to store organic samples inside for preservation."
 
-	New()
-		var/image/I
-		I = image('icons/obj/structures/props/alien_autopsy.dmi', "sample_[rand(0,11)]")
-		I.layer = src.layer - 0.1
-		overlays += I
-		pixel_x += rand(-3,3)
-		pixel_y += rand(-3,3)
+/obj/item/alienjar/Initialize(mapload, ...)
+	. = ..()
+	
+	var/image/I
+	I = image('icons/obj/structures/props/alien_autopsy.dmi', "sample_[rand(0,11)]")
+	I.layer = src.layer - 0.1
+	overlays += I
+	pixel_x += rand(-3,3)
+	pixel_y += rand(-3,3)
 
 
 //stairs

@@ -6,7 +6,7 @@
 
 	var/turf/T = get_turf(A)
 
-	if(istype(T, /turf/closed) || !T.can_bombard(owner))
+	if(isnull(T) || istype(T, /turf/closed) || !T.can_bombard(owner))
 		to_chat(X, SPAN_XENODANGER("You can't bombard that!"))
 		return
 

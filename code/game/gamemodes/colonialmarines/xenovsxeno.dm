@@ -102,7 +102,11 @@
     for(var/atom/A in world)
         for(var/type in structures_to_delete)
             if(istype(A, type))
-                qdel(A)
+                if(istype(A, /turf))
+                    var/turf/T = A
+                    T.ScrapeAway()
+                else
+                    qdel(A)
     
     round_time_sd = (time_until_sd + world.time)
 

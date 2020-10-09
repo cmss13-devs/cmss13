@@ -172,7 +172,6 @@
 /obj/effect/xenomorph/spray/process()
 	var/turf/T = loc
 	if(!istype(T))
-		die()
 		return
 
 	for(var/mob/living/carbon/human/H in loc)

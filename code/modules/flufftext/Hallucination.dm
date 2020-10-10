@@ -279,21 +279,11 @@ proc/check_panel(mob/M)
 		my_target.hallucinations -= src
 		my_target = null
 	weap = null
-	if(currentimage)
-		qdel(currentimage)
-		currentimage = null
-	if(left)
-		qdel(left)
-		left = null
-	if(right)
-		qdel(right)
-		right = null
-	if(up)
-		qdel(up)
-		up = null
-	if(down)
-		qdel(down)
-		down = null
+	QDEL_NULL(currentimage)
+	QDEL_NULL(left)
+	QDEL_NULL(right)
+	QDEL_NULL(up)
+	QDEL_NULL(down)
 	return ..()
 
 /obj/effect/fake_attacker

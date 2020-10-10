@@ -85,9 +85,7 @@
     M.layer = MOB_LAYER
     M.update_canmove()
 
-    if(mask_item)
-        qdel(mask_item)
-        mask_item = null
+    QDEL_NULL(mask_item)
 
 /obj/item/clothing/mask/cloth
     name = "cloth"

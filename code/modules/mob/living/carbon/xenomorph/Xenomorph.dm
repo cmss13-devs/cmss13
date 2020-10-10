@@ -514,9 +514,7 @@
 	selected_ability = null
 	queued_action = null
 
-	if(mutators)
-		qdel(mutators)
-		mutators = null
+	QDEL_NULL(mutators)
 
 	. = ..()
 

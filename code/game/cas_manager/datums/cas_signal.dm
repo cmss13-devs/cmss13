@@ -10,9 +10,7 @@
 	loc = location
 
 /datum/cas_signal/Destroy()
-	if(linked_cam)
-		qdel(linked_cam)
-		linked_cam = null
+	QDEL_NULL(linked_cam)
 	. = ..()
 
 /datum/cas_signal/proc/get_name()

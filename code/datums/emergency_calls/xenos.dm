@@ -36,8 +36,7 @@
 
 	M.transfer_to(new_xeno, TRUE)
 
-	if(current_mob)
-		qdel(current_mob)
+	QDEL_NULL(current_mob)
 
 
 /datum/emergency_call/xenos/platoon

@@ -57,9 +57,7 @@
 
 
 /turf/closed/wall/ChangeTurf(newtype)
-	if(acided_hole)
-		qdel(acided_hole)
-		acided_hole = null
+	QDEL_NULL(acided_hole)
 
 	. = ..()
 	if(.) //successful turf change

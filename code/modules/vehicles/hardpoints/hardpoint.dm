@@ -104,14 +104,8 @@
 		owner.remove_hardpoint(src)
 		owner.update_icon()
 		owner = null
-	if(LAZYLEN(backup_clips))
-		for(var/obj/O in backup_clips)
-			qdel(O)
-	backup_clips = null
-
-	if(ammo)
-		qdel(ammo)
-	ammo = null
+	QDEL_NULL_LIST(backup_clips)
+	QDEL_NULL(ammo)
 
 	return ..()
 

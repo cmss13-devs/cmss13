@@ -21,9 +21,7 @@
 
 /obj/structure/morgue/Destroy()
 	. = ..()
-	if(connected)
-		qdel(connected)
-		connected = null
+	QDEL_NULL(connected)
 
 /obj/structure/morgue/update_icon()
 	if(morgue_open)

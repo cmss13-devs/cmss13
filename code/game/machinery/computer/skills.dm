@@ -343,8 +343,7 @@ What a mess.*/
 									data_core.medical -= R
 									qdel(R)
 								else
-							qdel(active1)
-							active1 = null
+							QDEL_NULL(active1)
 					else
 						temp = "This function does not appear to be working at the moment. Our apologies."
 

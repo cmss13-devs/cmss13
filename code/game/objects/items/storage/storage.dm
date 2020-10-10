@@ -650,30 +650,14 @@ var/list/global/item_storage_box_cache = list()
 /obj/item/storage/Destroy()
 	for(var/mob/M in content_watchers)
 		hide_from(M)
-	if(boxes)
-		qdel(boxes)
-		boxes = null
-	if(storage_start)
-		qdel(storage_start)
-		storage_start = null
-	if(storage_continue)
-		qdel(storage_continue)
-		storage_continue = null
-	if(storage_end)
-		qdel(storage_end)
-		storage_end = null
-	if(stored_start)
-		qdel(stored_start)
-		stored_start = null
-	if(src.stored_continue)
-		qdel(src.stored_continue)
-		src.stored_continue = null
-	if(stored_end)
-		qdel(stored_end)
-		stored_end = null
-	if(closer)
-		qdel(closer)
-		closer = null
+	QDEL_NULL(boxes)
+	QDEL_NULL(storage_start)
+	QDEL_NULL(storage_continue)
+	QDEL_NULL(storage_end)
+	QDEL_NULL(stored_start)
+	QDEL_NULL(stored_continue)
+	QDEL_NULL(stored_end)
+	QDEL_NULL(closer)
 	return ..()
 
 /obj/item/storage/emp_act(severity)

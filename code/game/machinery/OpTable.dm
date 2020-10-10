@@ -35,9 +35,7 @@
 	anes_tank = new(src)
 
 /obj/structure/machinery/optable/Destroy()
-	if(anes_tank)
-		qdel(anes_tank)
-		anes_tank = null
+	QDEL_NULL(anes_tank)
 	. = ..()
 
 /obj/structure/machinery/optable/initialize_pass_flags(var/datum/pass_flags_container/PF)

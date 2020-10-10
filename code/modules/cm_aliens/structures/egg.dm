@@ -102,9 +102,8 @@
 			i++
 
 /obj/effect/alien/egg/proc/delete_egg_triggers()
-	for(var/atom/trigger in egg_triggers)
-		egg_triggers -= trigger
-		qdel(trigger)
+	QDEL_NULL_LIST(egg_triggers)
+	egg_triggers = list()
 
 /obj/effect/alien/egg/proc/Burst(var/kill = TRUE, var/instant_trigger = FALSE, var/mob/living/carbon/Xenomorph/X = null) //drops and kills the hugger if any is remaining
 	set waitfor = 0

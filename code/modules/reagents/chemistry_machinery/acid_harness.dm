@@ -64,9 +64,9 @@
 	. = ..()
 
 /obj/item/clothing/accessory/storage/black_vest/acid_harness/Destroy()
-	vial = null
-	battery = null
-	qdel(acid_core)
+	QDEL_NULL(vial)
+	QDEL_NULL(battery)
+	QDEL_NULL(acid_core)
 	. = ..()
 
 /obj/item/clothing/accessory/storage/black_vest/acid_harness/equipped(mob/user, slot)

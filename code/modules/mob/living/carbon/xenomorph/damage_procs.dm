@@ -99,8 +99,7 @@
 			if(damage > 0)
 				XS.on_removal()
 				xeno_shields -= XS
-				qdel(XS)
-				XS = null
+				QDEL_NULL(XS)
 
 			if(damage == 0)
 				return

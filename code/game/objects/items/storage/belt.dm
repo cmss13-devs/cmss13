@@ -546,12 +546,8 @@
 		overlays += "+[icon_state_text]_full"
 
 /obj/item/storage/belt/gun/Destroy()
-	if(gun_underlay)
-		qdel(gun_underlay)
-		gun_underlay = null
-	if(current_gun)
-		qdel(current_gun)
-		current_gun = null
+	QDEL_NULL(gun_underlay)
+	QDEL_NULL(current_gun)
 	. = ..()
 
 
@@ -584,8 +580,7 @@
 		underlays -= gun_underlay
 		icon_state = copytext(icon_state,1,-2)
 		item_state = icon_state
-		qdel(gun_underlay)
-		gun_underlay = null
+		QDEL_NULL(gun_underlay)
 	if(istype(user)) user.update_inv_belt()
 	if(istype(user)) user.update_inv_s_store()
 

@@ -21,9 +21,7 @@
 	hide(T.intact_tile)
 
 /obj/structure/machinery/bluespace_beacon/Destroy()
-	if(Beacon)
-		qdel(Beacon)
-		Beacon = null
+	QDEL_NULL(Beacon)
 	return ..()
 
 /obj/structure/machinery/bluespace_beacon

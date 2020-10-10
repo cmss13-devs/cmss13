@@ -349,8 +349,7 @@
 					if(acid_t.loc) M.forceMove(acid_t.loc)
 				for(var/obj/item/document_objective/O in acid_t.contents)
 					if(acid_t.loc) O.forceMove(acid_t.loc)
-			qdel(acid_t)
-			acid_t = null
+			QDEL_NULL(acid_t)
 
 		qdel(src)
 		return

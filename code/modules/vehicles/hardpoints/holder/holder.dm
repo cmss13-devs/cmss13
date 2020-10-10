@@ -9,11 +9,7 @@
 	var/list/hardpoints
 
 /obj/item/hardpoint/holder/Destroy()
-	if(LAZYLEN(hardpoints))
-		for(var/obj/item/hardpoint/H in hardpoints)
-			qdel(H)
-			hardpoints -= H
-		hardpoints = null
+	QDEL_NULL_LIST(hardpoints)
 
 	. = ..()
 

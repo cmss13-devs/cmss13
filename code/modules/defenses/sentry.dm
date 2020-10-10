@@ -27,6 +27,17 @@
 		set_range()
 	update_icon()
 
+/obj/structure/machinery/defenses/sentry/Destroy() //Clear these for safety's sake.
+	targets = null
+	other_targets = null
+	target = null
+	QDEL_NULL(range_bounds)
+	QDEL_NULL(spark_system)
+	QDEL_NULL(ammo)
+	stop_processing()
+	SetLuminosity(0)
+	. = ..()
+
 /obj/structure/machinery/defenses/sentry/process()
 	if(!turned_on)
 		stop_processing()
@@ -338,14 +349,6 @@
 		return
 
 	fire(target.loc)
-
-/obj/structure/machinery/defenses/sentry/Destroy() //Clear these for safety's sake.
-	target = null
-	qdel(range_bounds)
-	stop_processing()
-	SetLuminosity(0)
-	. = ..()
-
 
 /obj/structure/machinery/defenses/sentry/premade
 	name = "UA-577 Gauss Turret"

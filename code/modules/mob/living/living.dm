@@ -26,22 +26,13 @@
 /mob/living/Destroy()
 	pipes_shown = null
 
-	if(attack_icon)
-		qdel(attack_icon)
-		attack_icon = null
-	if(event_zoomout)
-		qdel(event_zoomout)
-		event_zoomout = null
-	if(event_movement)
-		qdel(event_movement)
-		event_movement = null
+	QDEL_NULL(attack_icon)
+	QDEL_NULL(event_zoomout)
+	QDEL_NULL(event_movement)
 
 	. = ..()
 
-	if(actions)
-		for(var/datum/action/A in actions)
-			qdel(A)
-		actions = null
+	QDEL_NULL_LIST(actions)
 
 //This proc is used for mobs which are affected by pressure to calculate the amount of pressure that actually
 //affects them once clothing is factored in. ~Errorage

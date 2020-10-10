@@ -161,8 +161,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	if(owning_client)
 		to_chat_forced(owning_client, SPAN_WARNING("<BIG><B>You have been banned by [admin.ckey].\nReason: [sanitize(ban_text)].</B></BIG>"))
 		to_chat_forced(owning_client, SPAN_WARNING("This is a temporary ban, it will be removed in [duration] minutes."))
-		qdel(owning_client)
-		owning_client = null
+		QDEL_NULL(owning_client)
 
 	return TRUE
 

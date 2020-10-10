@@ -94,7 +94,6 @@
 
 	if (rav_shield && ((rav_shield.last_damage_taken + shield_decay_time) < world.time))
 		bound_xeno.xeno_shields -= rav_shield
-		qdel(rav_shield)
-		rav_shield = null
+		QDEL_NULL(rav_shield)
 		to_chat(bound_xeno, SPAN_XENODANGER("You feel your shield decay!"))
 		bound_xeno.overlay_shields()

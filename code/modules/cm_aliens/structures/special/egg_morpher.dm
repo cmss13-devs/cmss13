@@ -33,9 +33,7 @@
 				step_away(F,src,1)
 
 	vis_contents.Cut()
-	if(captured_mob)
-		qdel(captured_mob)
-		captured_mob = null
+	QDEL_NULL(captured_mob)
 
 	. = ..()
 
@@ -123,8 +121,7 @@
 		if(huggers_to_grow <= 0)
 			visible_message(SPAN_DANGER("\The [src] groans as its contents are reduced to nothing!"))
 			vis_contents.Cut()
-			qdel(captured_mob)
-			captured_mob = null
+			QDEL_NULL(captured_mob)
 			update_icon()
 
 /obj/effect/alien/resin/special/eggmorph/proc/check_facehugger_target()

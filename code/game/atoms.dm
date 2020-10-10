@@ -87,11 +87,8 @@ directive is properly returned.
 */
 //===========================================================================
 /atom/Destroy()
-	if(reagents)
-		qdel(reagents)
-	if(light)
-		qdel(light)
-		light = null
+	QDEL_NULL(reagents)
+	QDEL_NULL(light)
 	. = ..()
 
 //===========================================================================

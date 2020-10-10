@@ -23,9 +23,7 @@
 /obj/item/clothing/accessory/Destroy()
 	if(has_suit)
 		has_suit.remove_accessory()
-	if(inv_overlay)
-		qdel(inv_overlay)
-		inv_overlay = null
+	QDEL_NULL(inv_overlay)
 	. = ..()
 
 //when user attached an accessory to S
@@ -360,9 +358,7 @@
 	high_visibility = TRUE
 
 /obj/item/clothing/accessory/holster/Destroy()
-	if(holstered)
-		qdel(holstered)
-		holstered = null
+	QDEL_NULL(holstered)
 	. = ..()
 
 //subtypes can override this to specify what can be holstered
@@ -464,9 +460,7 @@
 	hold.storage_slots = slots
 
 /obj/item/clothing/accessory/storage/Destroy()
-	if(hold)
-		qdel(hold)
-		hold = null
+	QDEL_NULL(hold)
 	return ..()
 
 /obj/item/clothing/accessory/storage/attack_hand(mob/user as mob)

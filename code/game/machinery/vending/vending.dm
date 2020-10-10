@@ -593,11 +593,9 @@
 				to_chat(user, SPAN_NOTICE(" You successfully pull the coin out before the [src] could swallow it."))
 			else
 				to_chat(user, SPAN_NOTICE(" You weren't able to pull the coin out fast enough, the machine ate it, string and all."))
-				qdel(coin)
-				coin = null
+				QDEL_NULL(coin)
 		else
-			qdel(coin)
-			coin = null
+			QDEL_NULL(coin)
 
 	vend_ready = 0 //One thing at a time!!
 	R.amount--

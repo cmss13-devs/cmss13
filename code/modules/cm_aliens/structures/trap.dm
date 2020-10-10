@@ -183,8 +183,8 @@
 				to_chat(X, SPAN_XENOMINORWARNING("You sense one of your Hive's [trap_type_name] traps at [A.name] has been triggered!"))
 
 /obj/effect/alien/resin/trap/proc/clear_tripwires()
-	for(var/obj/effect/hole_tripwire/HT in tripwires)
-		qdel(HT)
+	QDEL_NULL_LIST(tripwires)
+	tripwires = list()
 
 /obj/effect/alien/resin/trap/attack_alien(mob/living/carbon/Xenomorph/X)
 	if(X.hivenumber != hivenumber)
@@ -322,8 +322,7 @@
 /obj/effect/alien/resin/trap/Destroy()
 	if(trap_type != RESIN_TRAP_EMPTY && loc)
 		trigger_trap()
-	for(var/obj/effect/hole_tripwire/HT in tripwires)
-		qdel(HT)
+	QDEL_NULL_LIST(tripwires)
 	. = ..()
 
 /obj/effect/hole_tripwire

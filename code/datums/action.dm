@@ -28,8 +28,7 @@
 /datum/action/Destroy()
 	if(owner)
 		remove_action(owner)
-	qdel(button)
-	button = null
+	QDEL_NULL(button)
 	target = null
 	return ..()
 

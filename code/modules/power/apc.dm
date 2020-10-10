@@ -162,9 +162,7 @@
 	if(terminal)
 		terminal.master = null
 		terminal = null
-	if(cell)
-		qdel(cell)
-		cell = null
+	QDEL_NULL(cell)
 	. = ..()
 
 // the very fact that i have to override this screams to me that apcs shouldnt be under machinery - spookydonut

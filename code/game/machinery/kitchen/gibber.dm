@@ -211,8 +211,7 @@
 		src.occupant.death("gibber", 1)
 		src.occupant.ghostize()
 
-	qdel(occupant)
-	occupant = null
+	QDEL_NULL(occupant)
 
 	spawn(src.gibtime)
 		playsound(src.loc, 'sound/effects/splat.ogg', 25, 1)

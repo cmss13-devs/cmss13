@@ -122,8 +122,7 @@
 	iterations -= 1
 	if(!iterations)
 		vis_contents.Cut()
-		qdel(melting_body)
-		melting_body = null
+		QDEL_NULL(melting_body)
 	else
 		addtimer(CALLBACK(src, /obj/effect/alien/resin/special/pool/proc/melt_body, iterations), SECONDS_2)
 
@@ -156,8 +155,6 @@
 /obj/effect/alien/resin/special/pool/Destroy()
 	linked_hive.spawn_pool = null
 	vis_contents.Cut()
-	if(melting_body)
-		qdel(melting_body)
-		melting_body = null
+	QDEL_NULL(melting_body)
 
 	. = ..()

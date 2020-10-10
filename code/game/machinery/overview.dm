@@ -311,9 +311,6 @@ proc/getb(col)
 
 /mob/proc/clearmap()
 	src.client.screen -= src.mapobjs
-	for(var/obj/screen/O in mapobjs)
-		qdel(O)
-
-	mapobjs = null
+	QDEL_NULL_LIST(mapobjs)
 	src.unset_interaction()
 

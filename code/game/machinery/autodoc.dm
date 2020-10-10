@@ -51,8 +51,7 @@
 			connected.stop_processing()
 	if(connected)
 		connected.connected = null
-		qdel(connected)
-		connected = null
+		QDEL_NULL(connected)
 	. = ..()
 
 

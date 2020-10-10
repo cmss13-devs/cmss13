@@ -95,7 +95,7 @@
 			SPAN_NOTICE("You install a new window on the frame."))
 			sheet.use(2)
 			new window_type(loc) //This only works on Almayer windows!
-			raiseEvent(GLOBAL_EVENT, EVENT_WINDOW_BUILT + "\ref[user]", window_type)
+			SEND_SIGNAL(user, COMSIG_MOB_CONSTRUCT_WINDOW, window_type)
 			qdel(src)
 
 	else if(istype(W, /obj/item/tool/wrench))
@@ -106,7 +106,7 @@
 				playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 				new buildstacktype(loc, buildstackamount)
 				to_chat(user, SPAN_NOTICE(" You deconstruct [src]."))
-				raiseEvent(GLOBAL_EVENT, EVENT_W_FRAME_DESTROYED + "\ref[user]", src.type, get_area(src))
+				SEND_SIGNAL(user, COMSIG_MOB_DESTROY_W_FRAME, src)
 				qdel(src)
 
 	else if(istype(W, /obj/item/grab))

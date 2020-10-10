@@ -549,14 +549,12 @@ Defined in conflicts.dm of the #defines folder.
 	accuracy_unwielded_mod = -config.min_hit_accuracy_mult
 
 /obj/item/attachable/magnetic_harness/Attach(var/obj/item/weapon/gun/G)
-	..()
-	registerListener(G, EVENT_GUN_DROPPED, "gdrp_\ref[src]", CALLBACK(G, /obj/item/weapon/gun.proc/handle_harness))
-	registerListener(G, EVENT_LAUNCH_CHECK, "lc_\ref[src]", CALLBACK(G, /obj/item/weapon/gun.proc/harness_launch_cancel))
+	. = ..()
+	G.AddElement(/datum/element/magharness)
 
 /obj/item/attachable/magnetic_harness/Detach(var/obj/item/weapon/gun/G)
-	..()
-	unregisterListener(G, EVENT_GUN_DROPPED, "gdrp_\ref[src]")
-	unregisterListener(G, EVENT_LAUNCH_CHECK, "lc_\ref[src]")
+	. = ..()
+	G.RemoveElement(/datum/element/magharness)
 
 /datum/event_handler/scope_zoomout_removebuffs
 	var/obj/item/weapon/gun/G = null

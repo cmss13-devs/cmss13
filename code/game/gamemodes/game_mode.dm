@@ -75,7 +75,7 @@ var/global/cas_tracking_id_increment = 0	//this var used to assign unique tracki
 
 ///process()
 ///Called by the gameticker
-/datum/game_mode/proc/process()
+/datum/game_mode/process()
 	return 0
 
 

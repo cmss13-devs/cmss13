@@ -151,7 +151,7 @@
 	if(damage >= damage_cap)
 		if(M && istype(M))
 			M.count_niche_stat(STATISTICS_NICHE_DESCTRUCTION_WALLS, 1)
-			raiseEvent(GLOBAL_EVENT, EVENT_WALL_DESTROYED + "\ref[M]", src.type, get_area(src))
+			SEND_SIGNAL(M, COMSIG_MOB_DESTROY_WALL, src)
 		// Xenos used to be able to crawl through the wall, should suggest some structural damage to the girder
 		if (acided_hole)
 			dismantle_wall(1)
@@ -194,6 +194,7 @@
 
 	if ( damage + exp_damage > damage_cap*2 )
 		dismantle_wall(FALSE, TRUE)
+		SEND_SIGNAL(source_mob, COMSIG_MOB_EXPLODED_WALL, src)
 		if(!istype(src, /turf/closed/wall/resin))
 			create_shrapnel(location, rand(2,5), explosion_direction, , /datum/ammo/bullet/shrapnel/light)
 	else

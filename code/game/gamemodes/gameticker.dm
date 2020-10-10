@@ -206,7 +206,7 @@ var/global/datum/controller/gameticker/ticker = new()
 			if(!istype(M,/mob/new_player))
 				to_chat(M, "Marine commanding officer position not forced on anyone.")
 
-/datum/controller/gameticker/proc/process()
+/datum/controller/gameticker/process()
 	if(current_state != GAME_STATE_PLAYING)
 		return 0
 

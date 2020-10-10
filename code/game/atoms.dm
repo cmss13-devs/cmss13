@@ -419,7 +419,7 @@ Parameters are passed from New.
 	return
 
 
-/atom/proc/process()
+/atom/process()
 	return
 
 /atom/proc/Decorate()

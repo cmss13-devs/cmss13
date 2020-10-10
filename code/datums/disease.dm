@@ -129,7 +129,7 @@ var/list/diseases = typesof(/datum/disease) - /datum/disease
 	return
 
 
-/datum/disease/proc/process()
+/datum/disease/process()
 	if(!holder)
 		active_diseases -= src
 		return

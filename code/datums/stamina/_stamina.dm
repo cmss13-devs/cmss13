@@ -48,7 +48,7 @@
 
     update_stamina_level()
 
-/datum/stamina/proc/process()
+/datum/stamina/process()
     if(stamina_rest_period < world.time)
         apply_damage(-STAMINA_INCREASE_RATE)
 

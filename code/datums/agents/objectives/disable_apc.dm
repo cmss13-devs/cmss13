@@ -12,7 +12,12 @@
 
 	var/mob/living/carbon/human/H = belonging_to_agent.source_human
 
-	registerListener(GLOBAL_EVENT, EVENT_APC_DISABLED + "\ref[H]", "\ref[src]_\ref[H]", CALLBACK(src, .proc/disabled_apc))
+	RegisterSignal(H, list(
+		COMSIG_MOB_APC_REMOVE_BOARD,
+		COMSIG_MOB_APC_REMOVE_CELL,
+		COMSIG_MOB_APC_CUT_WIRE,
+		COMSIG_MOB_APC_POWER_PULSE,
+	), .proc/disabled_apc)
 
 /datum/agent_objective/disable_apc/generate_objective_body_message()
 	var/obj/O = picked_area_path
@@ -24,11 +29,12 @@
 	var/area_name = initial(O.name)
 	description = "Cause a blackout. Disable an APC in [area_name]."
 
-/datum/agent_objective/disable_apc/proc/disabled_apc(var/disabled_area)
+/datum/agent_objective/disable_apc/proc/disabled_apc(mob/agent, obj/structure/machinery/power/apc/source)
+	SIGNAL_HANDLER
 	if(completed)
 		return
 
-	if(istype(disabled_area, picked_area_path))
+	if(istype(get_area(source), picked_area_path))
 		completed = TRUE
 
 /datum/agent_objective/disable_apc/check_completion_round_end()

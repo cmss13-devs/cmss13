@@ -408,7 +408,7 @@
 					user.visible_message(SPAN_NOTICE("[user] removes [src]'s power control board."),
 					SPAN_NOTICE("You remove [src]'s power control board."))
 					new /obj/item/circuitboard/apc(loc)
-				raiseEvent(GLOBAL_EVENT, EVENT_APC_DISABLED + "\ref[user]", get_area(src))
+				SEND_SIGNAL(user, COMSIG_MOB_APC_REMOVE_BOARD, src)
 
 		else if(opened != APC_COVER_REMOVED) //Cover isn't removed
 			opened = APC_COVER_CLOSED
@@ -690,7 +690,7 @@
 			SPAN_NOTICE("You remove the power cell from [src]."))
 			charging = 0
 			update_icon()
-			raiseEvent(GLOBAL_EVENT, EVENT_APC_DISABLED + "\ref[user]", get_area(src))
+			SEND_SIGNAL(user, COMSIG_MOB_APC_REMOVE_CELL, src)
 		return
 	if(stat & (BROKEN|MAINT))
 		return
@@ -789,7 +789,7 @@
 	var/wireFlag = getWireFlag(wire)
 	return !(apcwires & wireFlag)
 
-/obj/structure/machinery/power/apc/proc/cut(var/wire, var/user)
+/obj/structure/machinery/power/apc/proc/cut(wire, mob/user)
 	apcwires ^= getWireFlag(wire)
 
 	switch(wire)
@@ -797,8 +797,8 @@
 			shock(usr, 50)
 			shorted = 1
 			visible_message(SPAN_WARNING("\The [src] begins flashing error messages wildly!"))
-			if(ishuman(user))
-				raiseEvent(GLOBAL_EVENT, EVENT_APC_DISABLED + "\ref[user]", get_area(src))
+			SEND_SIGNAL(user, COMSIG_MOB_APC_CUT_WIRE, src)
+				
 		if(APC_WIRE_IDSCAN)
 			locked = 0
 			visible_message(SPAN_NOTICE("\The [src] emits a click."))
@@ -818,7 +818,7 @@
 			locked = 1
 			visible_message(SPAN_NOTICE("\The [src] emits a slight thunk."))
 
-/obj/structure/machinery/power/apc/proc/pulse(var/wire, var/user)
+/obj/structure/machinery/power/apc/proc/pulse(wire, mob/user)
 	switch(wire)
 		if(APC_WIRE_IDSCAN) //Unlocks the APC for 30 seconds, if you have a better way to hack an APC I'm all ears
 			locked = 0
@@ -831,8 +831,7 @@
 			if(shorted == 0)
 				shorted = 1
 				visible_message(SPAN_WARNING("\The [src] begins flashing error messages wildly!"))
-				if(ishuman(user))
-					raiseEvent(GLOBAL_EVENT, EVENT_APC_DISABLED + "\ref[user]", get_area(src))
+				SEND_SIGNAL(user, COMSIG_MOB_APC_POWER_PULSE, src)
 			addtimer(VARSET_CALLBACK(src, shorted, FALSE), 2 MINUTES)
 
 /obj/structure/machinery/power/apc/proc/can_use(mob/user as mob, var/loud = 0) //used by attack_hand() and Topic()

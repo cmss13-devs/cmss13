@@ -53,7 +53,7 @@
 
 	STUI.debug.Add("\[[time_stamp()]]DEBUG: [text]<br>")
 	STUI.processing |= STUI_LOG_DEBUG
-	for(var/client/C in admins)
+	for(var/client/C in GLOB.admins)
 		if(C.prefs.toggles_chat & CHAT_DEBUGLOGS)
 			to_chat(C, "DEBUG: [text]")
 

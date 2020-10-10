@@ -86,7 +86,7 @@ SUBSYSTEM_DEF(chat)
 	var/type_of_list = GCHAT_UNDEFINED_LIST
 
 	if(target == world)
-		target = clients
+		target = GLOB.clients
 		type_of_list = GCHAT_CLIENT_LIST
 
 	var/clean_message = message

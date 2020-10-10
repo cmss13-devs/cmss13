@@ -122,7 +122,7 @@
 
 	ticker.mode.round_finished = MODE_INFESTATION_DRAW_DEATH
 	message_staff(SPAN_NOTICE("[key_name(usr)] has made the round end early."))
-	for(var/client/C in admins)
+	for(var/client/C in GLOB.admins)
 		to_chat(C, {"
 		<hr>
 		[SPAN_CENTERBOLD("Staff-Only Alert: <EM>[usr.key]</EM> has made the round end early")]
@@ -140,7 +140,7 @@
 	if (!ticker || ticker.current_state != GAME_STATE_PREGAME)
 		ticker.delay_end = !ticker.delay_end
 		message_staff("[SPAN_NOTICE("[key_name(usr)] [ticker.delay_end ? "delayed the round end" : "has made the round end normally"].")]")
-		for(var/client/C in admins)
+		for(var/client/C in GLOB.admins)
 			to_chat(C, {"<hr>
 			[SPAN_CENTERBOLD("Staff-Only Alert: <EM>[usr.key]</EM> [ticker.delay_end ? "delayed the round end" : "has made the round end normally"]")]
 			<hr>"})

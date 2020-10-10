@@ -53,7 +53,7 @@
 		if(STATE_DEFAULT)
 			dat += "Alert Level: <A href='?src=\ref[src];operation=changeseclevel'>[get_security_level()]</A><BR>"
 			dat += "<BR><A HREF='?src=\ref[src];operation=ship_announce'>[is_announcement_active ? "Make a ship announcement" : "*Unavaliable*"]</A>"
-			dat += admins.len > 0 ? "<BR><A HREF='?src=\ref[src];operation=messageUSCM'>Send a message to USCM</A>" : "<BR>USCM communication offline"
+			dat += GLOB.admins.len > 0 ? "<BR><A HREF='?src=\ref[src];operation=messageUSCM'>Send a message to USCM</A>" : "<BR>USCM communication offline"
 			dat += "<BR><A HREF='?src=\ref[src];operation=award'>Award a medal</A>"
 			dat += "<BR><hr>"
 			dat += "<BR>DEFCON [defcon_controller.current_defcon_level]: [defcon_controller.check_defcon_percentage()]%"
@@ -197,7 +197,7 @@
 					to_chat(usr, SPAN_WARNING("The ship is already undergoing self destruct procedures!"))
 					return FALSE
 
-				for(var/client/C in admins)
+				for(var/client/C in GLOB.admins)
 					if((R_ADMIN|R_MOD) & C.admin_holder.rights)
 						C << 'sound/effects/sos-morse-code.ogg'
 				message_staff("[key_name(usr)] has requested a Distress Beacon! (<A HREF='?_src_=admin_holder;ccmark=\ref[usr]'>Mark</A>) (<A HREF='?_src_=admin_holder;distress=\ref[usr]'>SEND</A>) (<A HREF='?_src_=admin_holder;ccdeny=\ref[usr]'>DENY</A>) (<A HREF='?_src_=admin_holder;adminplayerobservejump=\ref[usr]'>JMP</A>) (<A HREF='?_src_=admin_holder;CentcommReply=\ref[usr]'>RPLY</A>)")
@@ -230,7 +230,7 @@
 					to_chat(usr, SPAN_WARNING("The [MAIN_SHIP_NAME]'s self destruct is already activated."))
 					return FALSE
 
-				for(var/client/C in admins)
+				for(var/client/C in GLOB.admins)
 					if((R_ADMIN|R_MOD) & C.admin_holder.rights)
 						C << 'sound/effects/sos-morse-code.ogg'
 				message_staff("[key_name(usr)] has requested Self Destruct! (<A HREF='?_src_=admin_holder;ccmark=\ref[usr]'>Mark</A>) (<A HREF='?_src_=admin_holder;destroyship=\ref[usr]'>GRANT</A>) (<A HREF='?_src_=admin_holder;sddeny=\ref[usr]'>DENY</A>) (<A HREF='?_src_=admin_holder;adminplayerobservejump=\ref[usr]'>JMP</A>) (<A HREF='?_src_=admin_holder;CentcommReply=\ref[usr]'>RPLY</A>)")

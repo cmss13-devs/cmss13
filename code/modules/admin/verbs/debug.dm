@@ -103,7 +103,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 
 			if("client")
 				var/list/keys = list()
-				for(var/mob/M in player_list)
+				for(var/mob/M in GLOB.player_list)
 					keys += M.client
 				lst[i] = input("Please, select a player!", "Selection", null, null) as null|anything in keys
 
@@ -205,7 +205,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 
 			if("client")
 				var/list/keys = list()
-				for(var/mob/M in player_list)
+				for(var/mob/M in GLOB.player_list)
 					keys += M.client
 				lst[i] = input("Please, select a player!", "Selection", null, null) as null|anything in keys
 
@@ -453,21 +453,6 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 	set desc = "For when you just gotta know"
 
 	switch(input("Which list?") in list("Players","Admins","Clients","Mobs","Living Mobs","Dead Mobs","Human Mobs","Living Human Mobs","Xeno Mobs","Xeno Living Mobs","Yautja Mobs"))
-		if("Players")
-			if(player_list.len)
-				to_chat(usr, jointext(player_list," | "))
-			else
-				to_chat(usr, SPAN_WARNING("No mobs in player list found."))
-		if("Admins")
-			if(admins.len)
-				to_chat(usr, jointext(admins," | "))
-			else
-				to_chat(usr, SPAN_WARNING("No mobs in player list found."))
-		if("Clients")
-			if(clients.len)
-				to_chat(usr, jointext(clients," | "))
-			else
-				to_chat(usr, SPAN_WARNING("No mobs in player list found."))
 		if("Mobs")
 			if(mob_list.len)
 				to_chat(usr, jointext(mob_list," | "))

@@ -144,7 +144,7 @@
 			if(U.name == "Unknown") to_chat(O, "<b>[U]</b> holds \a [itemname] up to one of your cameras ...")
 			else to_chat(O, "<b><a href='byond://?src=\ref[O];track2=\ref[O];track=\ref[U]'>[U]</a></b> holds \a [itemname] up to one of your cameras ...")
 			show_browser(O, info, itemname, itemname)
-		for(var/mob/O in player_list)
+		for(var/mob/O in GLOB.player_list)
 			if (istype(O.interactee, /obj/structure/machinery/computer/security))
 				var/obj/structure/machinery/computer/security/S = O.interactee
 				if (S.current == src)
@@ -184,7 +184,7 @@
 
 //This might be redundant, because of check_eye()
 /obj/structure/machinery/camera/proc/kick_viewers()
-	for(var/mob/O in player_list)
+	for(var/mob/O in GLOB.player_list)
 		if (istype(O.interactee, /obj/structure/machinery/computer/security))
 			var/obj/structure/machinery/computer/security/S = O.interactee
 			if (S.current == src)

@@ -272,7 +272,7 @@
 	if(round_statistics)
 		round_statistics.game_mode = name
 		round_statistics.round_length = world.time
-		round_statistics.end_round_player_population = clients.len
+		round_statistics.end_round_player_population = GLOB.clients.len
 
 		round_statistics.log_round_statistics()
 

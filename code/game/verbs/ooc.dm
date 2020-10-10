@@ -67,7 +67,7 @@ var/global/normal_ooc_colour = "#1c52f5"
 	if(donator)
 		display_colour = prefs.ooccolor
 
-	for(var/client/C in clients)
+	for(var/client/C in GLOB.clients)
 		if(C.prefs.toggles_chat & CHAT_OOC)
 			var/display_name = src.key
 			if(admin_holder && (admin_holder.rights & R_MOD))
@@ -170,7 +170,7 @@ var/global/normal_ooc_colour = "#1c52f5"
 	if(S.stat != DEAD && !isobserver(S))
 		display_name = "[S.name]/([S.key])"
 
-	for(var/client/C in admins)
+	for(var/client/C in GLOB.admins)
 		if(!C.admin_holder || !(C.admin_holder.rights & R_MOD))
 			continue
 

@@ -12,13 +12,13 @@
 
 /// Called when the transport is loaded by the config controller, not called on the default transport unless it gets loaded by a config change.
 /datum/asset_transport/proc/Load()
-	for(var/client/C in clients)
+	for(var/client/C in GLOB.clients)
 		addtimer(CALLBACK(src, .proc/send_assets_slow, C, preload), 1 SECONDS)
 
 /// Initialize - Called when SSassets initializes.
 /datum/asset_transport/proc/Initialize(list/assets)
 	preload = assets.Copy()
-	for(var/client/C in clients)
+	for(var/client/C in GLOB.clients)
 		addtimer(CALLBACK(src, .proc/send_assets_slow, C, preload), 1 SECONDS)
 
 

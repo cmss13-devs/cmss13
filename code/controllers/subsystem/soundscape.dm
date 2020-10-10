@@ -13,7 +13,7 @@ SUBSYSTEM_DEF(soundscape)
 
 /datum/controller/subsystem/soundscape/fire(resumed = FALSE)
 	if(!resumed)
-		currentrun = clients.Copy()
+		currentrun = GLOB.clients.Copy()
 	
 	while(currentrun.len)
 		var/client/C = currentrun[currentrun.len]

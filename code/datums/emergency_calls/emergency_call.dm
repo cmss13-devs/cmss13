@@ -85,7 +85,7 @@
 	if(!mob_max || !ticker || !ticker.mode) //Just a supply drop, don't bother.
 		return
 
-	for(var/mob/dead/observer/M in player_list)
+	for(var/mob/dead/observer/M in GLOB.observer_list)
 		if(M.client)
 			to_chat(M, FONT_SIZE_LARGE("\n<span class='attack'>[ert_message]. Use the <B>Ghost > Join Response Team</b> verb to join!</span>"))
 			to_chat(M, "<span class='attack'>You cannot join if you have Ghosted recently.</span>\n")
@@ -217,7 +217,7 @@
 		message_staff("Distress beacon: [src.name] finalized, setting up candidates.")
 
 		//Let the deadchat know what's up since they are usually curious
-		for(var/mob/dead/observer/M in player_list)
+		for(var/mob/dead/observer/M in GLOB.observer_list)
 			if(M.client)
 				to_chat(M, SPAN_NOTICE("Distress beacon: [src.name] finalized."))
 

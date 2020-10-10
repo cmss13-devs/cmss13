@@ -131,11 +131,7 @@ var/world_topic_spam_protect_time = world.timeofday
 		return x
 
 	else if(T == "players")
-		var/n = 0
-		for(var/mob/M in player_list)
-			if(M.client)
-				n++
-		return n
+		return length(GLOB.clients)
 
 	else if (T == "status")
 		var/list/s = list()
@@ -151,7 +147,7 @@ var/world_topic_spam_protect_time = world.timeofday
 		var/n = 0
 		var/admins = 0
 
-		for(var/client/C in clients)
+		for(var/client/C in GLOB.clients)
 			if(C.admin_holder)
 				if(C.admin_holder.fakekey)
 					continue	//so stealthmins aren't revealed by the hub
@@ -169,7 +165,7 @@ var/world_topic_spam_protect_time = world.timeofday
 		var/retdata = ""
 		if(addr != "127.0.0.1")
 			return "Nah ah ah, you didn't say the magic word"
-		for(var/client/C in clients)
+		for(var/client/C in GLOB.clients)
 			retdata  += C.key+","+C.address+","+C.computer_id+"|"
 
 		return retdata
@@ -250,7 +246,7 @@ var/world_topic_spam_protect_time = world.timeofday
 
 			if(!ticker) return "ERROR"
 
-			addtimer(CALLBACK(src, .proc/announce_mapvote), 200) // TODO: change this to use SECONDS after !101 is merged
+			addtimer(CALLBACK(src, .proc/announce_mapvote), 20 SECONDS)
 
 			ticker.automatic_delay_end = TRUE
 			message_staff("World/Topic() call (likely MapDaemon.exe) has delayed the round end.", 1)
@@ -285,7 +281,7 @@ var/list/datum/entity/map_vote/all_votes
 	to_world(text)
 	world << 'sound/voice/start_your_voting.ogg'
 
-	for(var/client/C in clients)
+	for(var/client/C in GLOB.clients)
 		C.mapVote()
 
 	load_maps_for_vote()
@@ -397,7 +393,7 @@ var/list/datum/entity/map_vote/all_votes
 		round_extra_data = "&message=[ticker.mode.end_round_message()]"
 		
 	world.Export("http://127.0.0.1:8888/?rebooting=1[round_extra_data]")
-	for(var/client/C in clients)
+	for(var/client/C in GLOB.clients)
 		var/datum/chatOutput/chat = C.chatOutput
 		if(chat)
 			chat.browser_send(C, "roundrestart")
@@ -506,7 +502,7 @@ proc/setup_database_connection()
 
 /proc/set_global_view(view_size)
 	world_view_size = view_size
-	for(var/client/c in clients)
+	for(var/client/c in GLOB.clients)
 		c.view = world_view_size
 
 #undef FAILED_DB_CONNECTION_CUTOFF
@@ -514,7 +510,7 @@ proc/setup_database_connection()
 /proc/give_image_to_client(var/obj/O, icon_text)	
 	var/image/I = image(null, O)
 	I.maptext = icon_text
-	for(var/client/c in clients)
+	for(var/client/c in GLOB.clients)
 		if(!ishuman(c.mob))
 			continue
 		c.images += I

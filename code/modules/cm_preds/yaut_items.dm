@@ -292,7 +292,7 @@
 		to_chat(M, SPAN_WARNING("You try to talk into the headset, but just get a horrible shrieking in your ears!"))
 		return
 
-	for(var/mob/living/carbon/hellhound/H in player_list)
+	for(var/mob/living/carbon/hellhound/H in GLOB.player_list)
 		if(istype(H) && !H.stat)
 			to_chat(H, "\[Radio\]: [M.real_name] [verb], '<B>[message]</b>'.")
 	..()

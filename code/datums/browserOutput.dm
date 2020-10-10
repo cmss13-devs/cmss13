@@ -175,7 +175,7 @@ var/savefile/iconCache = new /savefile("data/iconCache.sav") //Cache of icons fo
 		return
 
 	if(target == world)
-		target = clients
+		target = GLOB.clients
 
 	var/list/targets
 	if(!islist(target))
@@ -220,7 +220,7 @@ var/savefile/iconCache = new /savefile("data/iconCache.sav") //Cache of icons fo
 		return
 
 	if(target == world)
-		target = clients
+		target = GLOB.clients
 
 	var/clean_message = message
 

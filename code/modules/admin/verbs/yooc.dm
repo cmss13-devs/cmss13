@@ -21,12 +21,12 @@
 			to_chat(Y, SPAN_YOOC(yooc_message))
 
 	// Send to observers
-	for(var/mob/dead/observer/O in player_list)
+	for(var/mob/dead/observer/O in GLOB.observer_list)
 		if(O.client && !O.client.admin_holder)	// Send to observers who are non-staff
 			to_chat(O, SPAN_YOOC(yooc_message))
 
 	// Send to staff
-	for(var/client/C in admins)	// Send to staff
+	for(var/client/C in GLOB.admins)	// Send to staff
 		if(!(C.admin_holder.rights & R_MOD))
 			continue
 		to_chat(C, SPAN_YOOC(yooc_message))

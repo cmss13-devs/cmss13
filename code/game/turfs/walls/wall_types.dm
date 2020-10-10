@@ -244,7 +244,7 @@
 	var/turf/closed/wall/indestructible/splashscreen/SS = locate("LOBBYART")
 	SS.icon_state = "lobbyart[displayed_lobby_art]"
 	SS.desc = "Artwork by [lobby_art_authors[displayed_lobby_art]]"
-	for(var/client/C in clients)
+	for(var/client/C in GLOB.clients)
 		if(displayed_lobby_art != -1)
 			var/author = "[lobby_art_authors[displayed_lobby_art]]"
 			if(author != "Unknown")

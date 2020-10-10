@@ -108,7 +108,7 @@
 	var/ghostrend
 	var/rendered
 
-	for (var/mob/S in player_list)
+	for (var/mob/S in GLOB.player_list)
 		var/hear_hivemind = 0
 		if(ishuman(S))
 			var/mob/living/carbon/human/H = S

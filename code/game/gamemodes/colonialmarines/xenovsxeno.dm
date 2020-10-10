@@ -91,7 +91,7 @@
     
     if(monkey_amount)
         if(monkey_types.len)
-            for(var/i = min(round(monkey_amount*clients.len), monkey_spawns.len), i > 0, i--)
+            for(var/i = min(round(monkey_amount*GLOB.clients.len), monkey_spawns.len), i > 0, i--)
                 
                 var/turf/T = pick(monkey_spawns)
                 monkey_spawns -= T
@@ -221,7 +221,7 @@
     for(var/datum/hive_status/H in hive_datum)
         hivenumbers += list(H.name = list())
 
-    for(var/mob/M in player_list)
+    for(var/mob/M in GLOB.player_list)
         if(M.z && (M.z in z_levels) && M.stat != DEAD && !istype(M.loc, /turf/open/space)) //If they have a z var, they are on a turf.
             var/mob/living/carbon/Xenomorph/X = M
             var/datum/hive_status/hive = hive_datum[X.hivenumber]
@@ -282,7 +282,7 @@
     if(round_statistics)
         round_statistics.game_mode = name
         round_statistics.round_length = world.time
-        round_statistics.end_round_player_population = clients.len
+        round_statistics.end_round_player_population = GLOB.clients.len
 
         round_statistics.log_round_statistics()
 

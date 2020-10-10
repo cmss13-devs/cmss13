@@ -9,7 +9,8 @@ SUBSYSTEM_DEF(inactivity)
 
 /datum/controller/subsystem/inactivity/fire(resumed = FALSE)
 	if (config.kick_inactive)
-		for (var/client/C in clients)
+		for(var/i in GLOB.clients)
+			var/client/C = i
 			if(C.admin_holder && C.admin_holder.rights & R_ADMIN) //Skip admins.
 				continue
 			if (C.is_afk(INACTIVITY_KICK))

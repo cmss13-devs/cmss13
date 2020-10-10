@@ -125,7 +125,7 @@ var/global/datum/controller/gameticker/ticker = new()
 
 	current_state = GAME_STATE_PLAYING
 
-	for(var/mob/new_player/np in player_list)
+	for(var/mob/new_player/np in GLOB.new_player_list)
 		np.new_player_panel_proc(TRUE)
 	
 	callHook("roundstart")
@@ -168,7 +168,7 @@ var/global/datum/controller/gameticker/ticker = new()
 	return 1
 
 /datum/controller/gameticker/proc/create_characters()
-	for(var/mob/new_player/player in player_list)
+	for(var/mob/new_player/player in GLOB.new_player_list)
 		if(!(player && player.ready && player.mind))
 			continue
 		
@@ -179,7 +179,7 @@ var/global/datum/controller/gameticker/ticker = new()
 		qdel(player)
 
 /datum/controller/gameticker/proc/collect_minds()
-	for(var/mob/living/player in player_list)
+	for(var/mob/living/player in living_mob_list)
 		if(player.mind)
 			ticker.minds += player.mind
 
@@ -188,7 +188,7 @@ var/global/datum/controller/gameticker/ticker = new()
 	if(mode && istype(mode,/datum/game_mode/huntergames)) // || istype(mode,/datum/game_mode/whiskey_outpost)
 		return
 
-	for(var/mob/living/carbon/human/player in player_list)
+	for(var/mob/living/carbon/human/player in human_mob_list)
 		if(player.mind)
 			if(player.job == "Commanding Officers")
 				captainless = FALSE
@@ -200,7 +200,7 @@ var/global/datum/controller/gameticker/ticker = new()
 				if(C.player_data && C.player_data.playtime_loaded && length(C.player_data.playtimes) == 0)
 					msg_admin_niche("NEW PLAYER: <b>[key_name(player, 1, 1, 0)] (<A HREF='?_src_=admin_holder;ahelp=adminmoreinfo;extra=\ref[player]'>?</A>)</b>. IP: [player.lastKnownIP], CID: [player.computer_id]")
 	if(captainless)
-		for(var/mob/M in player_list)
+		for(var/mob/M in GLOB.player_list)
 			if(!istype(M,/mob/new_player))
 				to_chat(M, "Marine commanding officer position not forced on anyone.")
 

@@ -120,7 +120,7 @@
 		return
 
 	var/list/keys = list()
-	for(var/mob/M in player_list)
+	for(var/mob/M in GLOB.player_list)
 		keys += M.client
 	var/client/selection = input("Please, select a player!", "Admin Jumping", null, null) as null|anything in sortKey(keys)
 	if(!selection)
@@ -162,7 +162,7 @@
 		return
 
 	var/list/keys = list()
-	for(var/mob/M in player_list)
+	for(var/mob/M in GLOB.player_list)
 		keys += M.client
 	var/selection = input("Please, select a player!", "Admin Jumping", null, null) as null|anything in sortKey(keys)
 	if(!selection)

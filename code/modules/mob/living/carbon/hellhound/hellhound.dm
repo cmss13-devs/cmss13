@@ -35,7 +35,7 @@
 	see_in_dark = 8
 	living_misc_mobs += src
 
-	for(var/mob/dead/observer/M in player_list)
+	for(var/mob/dead/observer/M in GLOB.observer_list)
 		to_chat(M, SPAN_WARNING("<B>A hellhound is now available to play!</b> Please be sure you can follow the rules."))
 		to_chat(M, SPAN_WARNING("Click 'Join as hellhound' in the ghost panel to become one. First come first serve!"))
 		to_chat(M, SPAN_WARNING("If you need help during play, click adminhelp and ask."))

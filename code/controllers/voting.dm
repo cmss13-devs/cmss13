@@ -81,7 +81,7 @@ datum/controller/vote
 				greatest_votes = votes
 		//default-vote for everyone who didn't vote
 		if(!config.vote_no_default && choices.len)
-			var/non_voters = (clients.len - total_votes)
+			var/non_voters = (GLOB.clients.len - total_votes)
 			if(non_voters > 0)
 				if(mode == "restart")
 					choices["Continue Playing"] += non_voters
@@ -343,7 +343,7 @@ var/force_mapdaemon_vote = 0
 	L += "Don't care"
 
 	// For future modularity and maybe more subtle solutions here?
-	switch(clients.len)
+	switch(GLOB.clients.len)
 		if (0 to PLAYERCOUNT_LOWPOP_MAP_LIMIT)
 			L += LOWPOP_NEXT_MAP_CANDIDATES.Copy()
 		else

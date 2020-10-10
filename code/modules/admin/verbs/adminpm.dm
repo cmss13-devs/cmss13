@@ -99,7 +99,7 @@
 	STUI.staff.Add("PM: [key_name(src)]->[key_name(C)]: [msg]<br>")
 	STUI.processing |= STUI_LOG_STAFF_CHAT
 	//we don't use message_admins here because the sender/receiver might get it too
-	for(var/client/X in admins)
+	for(var/client/X in GLOB.admins)
 		//check client/X is an admin and isn't the sender or recipient
 		if(X == C || X == src)
 			continue

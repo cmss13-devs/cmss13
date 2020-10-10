@@ -260,7 +260,7 @@ var/nextAdminBioscan = MINUTES_30//30 minutes in
 		var/xeno_ship_location = "[RandomXenosShipLocation?", including one in [RandomXenosShipLocation].":"."]"
 		var/marine_colony_location = "[RandomHostsPlanetLocation?", including one in [RandomHostsPlanetLocation].":"."]"
 		var/marine_ship_location = "[RandomHostsShipLocation?", including one in [RandomHostsShipLocation].":"."]"
-		for(var/mob/M in player_list)
+		for(var/mob/M in GLOB.player_list)
 			//Announce the numbers to Yautja, they have good scanners
 			if (isYautja(M))
 				to_chat(M, "<h2 class='alert'>Bioscan complete</h2>")
@@ -286,7 +286,7 @@ var/nextAdminBioscan = MINUTES_30//30 minutes in
 	if(world.time > nextXenoBioscan)
 		lastXenoBioscan = world.time
 		// The announcement to all Xenos. Slightly off for the human ship, accurate otherwise.
-		for(var/mob/M in player_list)
+		for(var/mob/M in living_xeno_list)
 			if(isXeno(M))
 				M << sound(get_sfx("queen"), wait = 0, volume = 50)
 				to_chat(M, SPAN_XENOANNOUNCE("The Queen Mother reaches into your mind from worlds away."))
@@ -313,7 +313,7 @@ Only checks living mobs with a client attached.
 
 /datum/game_mode/proc/count_xenos(list/z_levels = GAME_PLAY_Z_LEVELS)
 	var/num_xenos = 0
-	for(var/mob/M in player_list)
+	for(var/mob/M in living_xeno_list)
 		if(M.z && (M.z in z_levels) && M.stat != DEAD && !istype(M.loc, /turf/open/space)) //If they have a z var, they are on a turf.
 			if(isXeno(M)) num_xenos++
 	return num_xenos
@@ -322,7 +322,7 @@ Only checks living mobs with a client attached.
 	var/num_humans = 0
 	var/num_xenos = 0
 
-	for(var/mob/M in player_list)
+	for(var/mob/M in GLOB.player_list)
 		if(M.z && (M.z in z_levels) && M.stat != DEAD && !istype(M.loc, /turf/open/space)) //If they have a z var, they are on a turf.
 			if(ishuman(M) && !isYautja(M) && !(M.status_flags & XENO_HOST) && !iszombie(M))
 				var/mob/living/carbon/human/H = M

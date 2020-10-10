@@ -539,7 +539,7 @@
 	switch(alert("Play sound globally or locally?\n(NOTE : If an admin sound is already being played, this one will override it)", "Sound", "Global", "Local", "Individual", "Cancel"))
 		if("Global")
 			var/sound/S = sound(soundin, 0, 0, SOUND_CHANNEL_ADMIN_MIDI)
-			for(var/mob/M in player_list)
+			for(var/mob/M in GLOB.player_list)
 				if(M.client.prefs.toggles_sound & SOUND_MIDI)
 					S.volume = 100 * M.client.volume_preferences[VOLUME_ADM]
 					sound_to(M, S)
@@ -561,9 +561,8 @@
 					heard_midi = 0
 		if("Cancel")
 			return
-
 	if(isnum(heard_midi))
-		message_staff("[key_name_admin(src)] played sound `[soundin]` for [heard_midi] player(s). [length(player_list) - heard_midi] player(s) have disabled admin midis.")
+		message_staff("[key_name_admin(src)] played sound `[soundin]` for [heard_midi] player(s). [length(GLOB.player_list) - heard_midi] player(s) have disabled admin midis.")
 	else
 		message_staff("[key_name_admin(src)] played sound `[soundin]` for [heard_midi].")
 		return

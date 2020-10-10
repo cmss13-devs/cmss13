@@ -18,7 +18,7 @@
 
 	log_say("[key_name(speaker)] : ([name]) [message]")
 
-	for(var/mob/player in player_list)
+	for(var/mob/player in GLOB.player_list)
 
 		var/understood = 0
 

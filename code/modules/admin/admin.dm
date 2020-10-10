@@ -2,7 +2,7 @@
 /proc/message_admins(var/msg) // +ADMIN and above
 	msg = "<span class=\"admin\"><span class=\"prefix\">ADMIN LOG:</span> <span class=\"message\">[msg]</span></span>"
 	log_admin(msg)
-	for(var/client/C in admins)
+	for(var/client/C in GLOB.admins)
 		if(C && C.admin_holder && (R_ADMIN & C.admin_holder.rights))
 			to_chat(C, msg)
 
@@ -14,14 +14,14 @@
 		msg += " (<a href='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[jmp_x];Y=[jmp_y];Z=[jmp_z]'>JMP</a>)"
 	msg += "</span></span>"
 
-	for(var/client/C in admins)
+	for(var/client/C in GLOB.admins)
 		if(C && C.admin_holder && (R_MOD & C.admin_holder.rights))
 			to_chat(C, msg)
 
 /proc/msg_admin_attack(var/text, jump_x, jump_y, jump_z) //Toggleable Attack Messages; server logs don't include the JMP part
 	log_attack(text)
 	var/rendered = "<span class=\"admin\"><span class=\"prefix\">ATTACK:</span> <span class=\"message\">[text] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[jump_x];Y=[jump_y];Z=[jump_z]'>JMP</a>)</span></span>"
-	for(var/client/C in admins)
+	for(var/client/C in GLOB.admins)
 		if(C && C.admin_holder && (R_MOD & C.admin_holder.rights))
 			if(C.prefs.toggles_chat & CHAT_ATTACKLOGS)
 				var/msg = rendered
@@ -30,7 +30,7 @@
 /proc/msg_admin_niche(var/msg) //Toggleable Niche Messages
 	log_admin(msg)
 	msg = "<span class=\"admin\"><span class=\"prefix\">ADMIN NICHE LOG:</span> <span class=\"message\">[msg]</span></span>"
-	for(var/client/C in admins)
+	for(var/client/C in GLOB.admins)
 		if(C && C.admin_holder && (R_MOD & C.admin_holder.rights))
 			if(C.prefs.toggles_chat & CHAT_NICHELOGS)
 				to_chat(C, msg)
@@ -38,7 +38,7 @@
 /proc/msg_admin_ff(var/text)
 	log_attack(text) //Do everything normally BUT IN GREEN SO THEY KNOW
 	var/rendered = "<span class=\"admin\"><span class=\"prefix\">ATTACK:</span> <font color=#00ff00><b>[text]</b></font></span>" //I used <font> because I never learned html correctly, fix this if you want
-	for(var/client/C in admins)
+	for(var/client/C in GLOB.admins)
 		if(C && C.admin_holder && (R_MOD & C.admin_holder.rights))
 			if(C.prefs.toggles_chat & CHAT_FFATTACKLOGS)
 				var/msg = rendered

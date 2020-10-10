@@ -22,7 +22,7 @@ SUBSYSTEM_DEF(quadtree)
 
 /datum/controller/subsystem/quadtree/fire(resumed = FALSE)
     if(!resumed)
-        player_feed = player_list.Copy()
+        player_feed = GLOB.player_list.Copy()
         cur_quadtrees = new_quadtrees.Copy()
         if(new_quadtrees.len < world.maxz)
             new_quadtrees.len = world.maxz

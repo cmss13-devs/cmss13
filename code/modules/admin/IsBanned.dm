@@ -7,7 +7,7 @@ world/IsBanned(key,address,computer_id, type)
 	if (type == "world")
 		return ..() //shunt world topic banchecks to purely to byond's internal ban system
 
-	var/client/C = directory[ckey]
+	var/client/C = GLOB.directory[ckey]
 	if (C && ckey == C.ckey && computer_id == C.computer_id && address == C.address)
 		return //don't recheck connected clients.
 
@@ -21,7 +21,7 @@ world/IsBanned(key,address,computer_id, type)
 	if(admin_datums[ckey] && (admin_datums[ckey].rights & R_MOD))
 		return ..()
 
-	if(config.limit_players && config.limit_players < clients.len)
+	if(config.limit_players && config.limit_players < GLOB.clients.len)
 		return list("reason"="POP CAPPED", "desc"="\nReason: Server is pop capped at the moment at [config.limit_players] players. Attempt reconnection in 2-3 minutes.")
 	
 	var/datum/entity/player/P = get_player_from_key(ckey)

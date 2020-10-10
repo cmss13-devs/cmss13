@@ -150,7 +150,7 @@ var/global/list/ahelp_msgs = list()
 	var/list/adminadmin_holders = list()
 	var/list/afk_staff = list()
 	var/list/staff = list("mentors","devs","admins","afk")
-	for(var/client/X in admins)
+	for(var/client/X in GLOB.admins)
 		if(AHOLD_IS_ONLY_MENTOR(X.admin_holder)) // we don't want to count admins twice. This list should be JUST mentors
 			mentoradmin_holders += X
 		if(R_DEBUG & X.admin_holder.rights) // Looking for anyone with +Debug which will be devs and host-tier permissions

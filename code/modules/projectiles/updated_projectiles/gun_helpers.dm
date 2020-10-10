@@ -132,7 +132,7 @@ Note: pickup and dropped on weapons must have both the ..() to update zoom AND t
 As sniper rifles have both and weapon mods can change them as well. ..() deals with zoom only.
 */
 /obj/item/weapon/gun/dropped(mob/user)
-	..()
+	. = ..()
 
 	stop_aim()
 	if (user && user.client)
@@ -141,7 +141,6 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	turn_off_light(user)
 
 	unwield(user)
-	raiseEvent(src, EVENT_GUN_DROPPED, user)
 
 /obj/item/weapon/gun/proc/turn_off_light(mob/bearer)
 	if (!(flags_gun_features & GUN_FLASHLIGHT_ON))
@@ -202,31 +201,26 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	return TRUE
 
 /obj/item/weapon/gun/proc/harness_return(var/mob/living/carbon/human/user)
-	var/obj/item/I = user.wear_suit
-	user.equip_to_slot_if_possible(src, WEAR_J_STORE)
-	if(user.s_store == src)
-		to_chat(user, SPAN_WARNING("[src] snaps into place on [I]."))
-	user.update_inv_s_store()
-
-/obj/item/weapon/gun/proc/handle_harness(var/mob/living/carbon/human/user)
-	set waitfor = 0
-
-	if (!ishuman(user))
-		return
-
-	if (!harness_check(user))
-		return
-	
-	sleep(3)
-
 	if (!loc || !user)
 		return
 	if (!isturf(loc))
 		return
 	if (!harness_check(user))
 		return
+	var/obj/item/I = user.wear_suit
+	user.equip_to_slot_if_possible(src, WEAR_J_STORE)
+	if(user.s_store == src)
+		to_chat(user, SPAN_WARNING("[src] snaps into place on [I]."))
+	user.update_inv_s_store()
 
-	harness_return(user)
+/obj/item/weapon/gun/proc/handle_harness(mob/living/carbon/human/user)
+	if (!ishuman(user))
+		return
+
+	if (!harness_check(user))
+		return
+	
+	addtimer(CALLBACK(src, .proc/harness_return, user), 3, TIMER_UNIQUE|TIMER_OVERRIDE)
 
 /obj/item/weapon/gun/attack_self(mob/user)
 	..()
@@ -911,11 +905,4 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 /obj/item/weapon/gun/item_action_slot_check(mob/user, slot)
 	if(slot != WEAR_L_HAND && slot != WEAR_R_HAND)
 		return FALSE
-	return TRUE
-
-/obj/item/weapon/gun/proc/harness_launch_cancel(var/mob/thrower)
-	if (!istype(thrower))
-		return TRUE
-	
-	to_chat(thrower, SPAN_WARNING("\The [src] clanks on the ground."))
 	return TRUE

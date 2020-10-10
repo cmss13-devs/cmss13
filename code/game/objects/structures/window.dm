@@ -100,7 +100,7 @@
 	if(health <= 0)
 		if(user && istype(user))
 			user.count_niche_stat(STATISTICS_NICHE_DESCTRUCTION_WINDOWS, 1)
-			raiseEvent(GLOBAL_EVENT, EVENT_WINDOW_DESTROYED + "\ref[user]", src.type, get_area(src))
+			SEND_SIGNAL(user, COMSIG_MOB_DESTROY_WINDOW, src)
 			user.visible_message(SPAN_DANGER("[user] smashes through [src][AM ? " with [AM]":""]!"))
 		if(make_shatter_sound)
 			playsound(src, "shatter", 50, 1)
@@ -256,7 +256,7 @@
 			playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
 			to_chat(user, (anchored ? SPAN_NOTICE("You have fastened the window to the floor.") : SPAN_NOTICE("You have unfastened the window.")))
 		else if(static_frame && state == 0)
-			raiseEvent(GLOBAL_EVENT, EVENT_WINDOW_DESTROYED + "\ref[user]", src.type, get_area(src))
+			SEND_SIGNAL(user, COMSIG_MOB_DISASSEMBLE_WINDOW, src)
 			disassemble_window()
 	else if(istype(W, /obj/item/tool/crowbar) && reinf && state <= 1 && !not_deconstructable)
 		state = 1 - state

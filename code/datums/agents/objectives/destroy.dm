@@ -2,7 +2,7 @@
 	description = ""
 	var/max_amount = 5
 	var/min_amount = 2
-	var/event_to_listen_on = EVENT_WALL_DESTROYED
+	var/event_to_listen_on = list(COMSIG_MOB_DESTROY_WALL, COMSIG_MOB_EXPLODED_WALL)
 	var/obj_to_destroy_type = /turf/closed/wall
 	var/destroyed_so_far = 0
 	var/amount_to_destroy = 0
@@ -13,7 +13,7 @@
 
 	. = ..()
 
-	registerListener(GLOBAL_EVENT, event_to_listen_on + "\ref[belonging_to_agent.source_human]", "\ref[src]_\ref[belonging_to_agent.source_human]", CALLBACK(src, .proc/count_destruction))
+	RegisterSignal(A.source_human, event_to_listen_on, .proc/count_destruction)
 
 /datum/agent_objective/destroy/generate_objective_body_message()
 	var/text_string = ""
@@ -43,11 +43,13 @@
 	var/obj/thing = obj_to_destroy_type
 	description = "Weaken the structurals of [MAIN_SHIP_NAME] by destroying [amount_to_destroy] [initial(thing.name)]s at[text_string]."
 
-/datum/agent_objective/destroy/proc/count_destruction(var/type_path, var/area/area_passed)
-	if(!ispath(type_path, obj_to_destroy_type) || !istype(area_passed))
+/datum/agent_objective/destroy/proc/count_destruction(mob/agent, atom/source)
+	SIGNAL_HANDLER
+	if(!istype(source, obj_to_destroy_type))
 		return
 
-	if(area_passed.type in areas_to_destroy_in)
+	var/area/A = get_area(source)
+	if(A.type in areas_to_destroy_in)
 		destroyed_so_far++
 
 
@@ -63,11 +65,11 @@
 	return FALSE
 
 /datum/agent_objective/destroy/window
-	event_to_listen_on = EVENT_WINDOW_DESTROYED
+	event_to_listen_on = COMSIG_MOB_DESTROY_W_FRAME
 	obj_to_destroy_type = /obj/structure/window
 
 /datum/agent_objective/destroy/airlock
 	max_amount = 1
 	min_amount = 1
-	event_to_listen_on = EVENT_AIRLOCK_DESTROYED
+	event_to_listen_on = list(COMSIG_MOB_DESTROY_AIRLOCK, COMSIG_MOB_DISASSEMBLE_AIRLOCK)
 	obj_to_destroy_type = /obj/structure/machinery/door/airlock

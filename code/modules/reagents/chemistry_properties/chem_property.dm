@@ -21,7 +21,7 @@
 
 	return
 
-/datum/chem_property/proc/process(mob/living/M, var/potency = 1)
+/datum/chem_property/process(mob/living/M, var/potency = 1)
 	if(deleted)
 		return FALSE
 

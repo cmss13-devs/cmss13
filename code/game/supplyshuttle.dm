@@ -355,7 +355,7 @@ var/datum/controller/supply/supply_controller = new()
 		ordernum = rand(1,9000)
 
 //Supply shuttle ticker - handles supply point regenertion and shuttle travelling between centcomm and the station
-/datum/controller/supply/proc/process()
+/datum/controller/supply/process()
 	for(var/typepath in (typesof(/datum/supply_packs) - /datum/supply_packs - /datum/supply_packs/asrs))
 		var/datum/supply_packs/P = new typepath()
 		supply_packs[P.name] = P
@@ -1068,7 +1068,7 @@ var/datum/controller/supply/supply_controller = new()
 
 		elevator.launch(src)
 
-		raiseEvent(GLOBAL_EVENT, EVENT_VEHICLE_ORDERED, ordered_vehicle)
+		SEND_GLOBAL_SIGNAL(COMSIG_GLOB_VEHICLE_ORDERED, ordered_vehicle)
 		spent = TRUE
 
 	add_fingerprint(usr)

@@ -92,7 +92,7 @@
 	if(damage >= damage_cap)
 		if(M && istype(M))
 			M.count_niche_stat(STATISTICS_NICHE_DESCTRUCTION_DOORS, 1)
-			raiseEvent(GLOBAL_EVENT, EVENT_AIRLOCK_DESTROYED + "\ref[M]", src.type, get_area(src))
+			SEND_SIGNAL(M, COMSIG_MOB_DESTROY_AIRLOCK, src)
 		destroy_airlock()
 		return TRUE
 
@@ -672,8 +672,8 @@
 					ae.icon_state = "door_electronics_smoked"
 					operating = 0
 
-				raiseEvent(GLOBAL_EVENT, EVENT_AIRLOCK_DESTROYED + "\ref[user]", src.type, get_area(src))
 				msg_admin_niche("[key_name(user)] deconstructed [src] in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z])")
+				SEND_SIGNAL(user, COMSIG_MOB_DISASSEMBLE_AIRLOCK, src)
 				qdel(src)
 				return
 

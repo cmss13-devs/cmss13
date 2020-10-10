@@ -1,6 +1,6 @@
 /datum/agent_objective/build
 	description = ""
-	var/list_events_to_listen_on = list(EVENT_WALL_BUILT)
+	var/list_events_to_listen_on = COMSIG_MOB_CONSTRUCT_WALL
 	var/list_obj_types = list(/turf/closed/wall)
 
 	// These are automatically setup in New
@@ -19,8 +19,7 @@
 	var/mob/living/carbon/human/H = belonging_to_agent.source_human
 	H.skills.set_skill(SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_ENGI)
 
-	for(var/event in list_events_to_listen_on)
-		registerListener(GLOBAL_EVENT, event + "\ref[belonging_to_agent.source_human]", "\ref[src]_\ref[belonging_to_agent.source_human]", CALLBACK(src, .proc/count_built))
+	RegisterSignal(A.source_human, list_events_to_listen_on, .proc/count_built)
 
 /datum/agent_objective/build/generate_objective_body_message()
 	var/text_string = ""
@@ -48,7 +47,8 @@
 
 	description = "Prepare a hideout by building[text_string]."
 
-/datum/agent_objective/build/proc/count_built(var/type_path)
+/datum/agent_objective/build/proc/count_built(datum/source, type_path)
+	SIGNAL_HANDLER
 	var/path_found = null
 	for(var/i in list_obj_types)
 		if(ispath(type_path, i))
@@ -74,5 +74,5 @@
 
 
 /datum/agent_objective/build/simple_base
-	list_events_to_listen_on = list(EVENT_WALL_BUILT, EVENT_WINDOW_BUILT)
+	list_events_to_listen_on = list(COMSIG_MOB_CONSTRUCT_WALL, COMSIG_MOB_CONSTRUCT_WINDOW)
 	list_obj_types = list(/turf/closed/wall, /obj/structure/window)

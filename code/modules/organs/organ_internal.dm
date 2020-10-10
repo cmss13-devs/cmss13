@@ -22,7 +22,7 @@
 	var/list/transplant_data
 
 
-/datum/internal_organ/proc/process()
+/datum/internal_organ/process()
 	if(!owner && !organ_holder)
 		qdel(src)
 	

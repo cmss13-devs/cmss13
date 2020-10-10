@@ -3,7 +3,7 @@
 	var/list/process_shuttles	//simple list of shuttles, for processing
 	var/list/locs_crash
 
-/datum/controller/shuttle_controller/proc/process()
+/datum/controller/shuttle_controller/process()
 	//process ferry shuttles
 	for (var/datum/shuttle/ferry/shuttle in process_shuttles)
 

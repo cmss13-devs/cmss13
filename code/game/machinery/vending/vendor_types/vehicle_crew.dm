@@ -19,10 +19,9 @@
 	var/budget_points = 0
 	var/available_categories = VEHICLE_ALL_AVAILABLE
 
-/obj/structure/machinery/cm_vending/gear/vehicle_crew/New()
-	..()
-
-	registerListener(GLOBAL_EVENT, EVENT_VEHICLE_ORDERED, "vehicle_vendor_populate", CALLBACK(src, .proc/populate_products))
+/obj/structure/machinery/cm_vending/gear/vehicle_crew/Initialize(mapload, ...)
+	. = ..()
+	RegisterSignal(SSdcs, COMSIG_GLOB_VEHICLE_ORDERED, .proc/populate_products)
 
 /obj/structure/machinery/cm_vending/gear/vehicle_crew/get_appropriate_vend_turf(var/mob/living/carbon/human/H)
 	var/turf/T = loc
@@ -41,8 +40,9 @@
 			malfunction()
 			return
 
-/obj/structure/machinery/cm_vending/gear/vehicle_crew/proc/populate_products(var/obj/vehicle/multitile/V)
-	unregisterListener(GLOBAL_EVENT, EVENT_VEHICLE_ORDERED, "vehicle_vendor_populate")
+/obj/structure/machinery/cm_vending/gear/vehicle_crew/proc/populate_products(datum/source, obj/vehicle/multitile/V)
+	SIGNAL_HANDLER
+	UnregisterSignal(SSdcs, COMSIG_GLOB_VEHICLE_ORDERED)
 
 	if(istype(V, /obj/vehicle/multitile/tank))
 		selected_vehicle = "TANK"

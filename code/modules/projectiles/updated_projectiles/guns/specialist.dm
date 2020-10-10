@@ -315,10 +315,11 @@
 	starting_attachment_types = list(/obj/item/attachable/smartbarrel)
 
 
-/obj/item/weapon/gun/smartgun/New()
-	..()
+/obj/item/weapon/gun/smartgun/Initialize(mapload, ...)
+	. = ..()
 	ammo_primary = ammo_list[ammo_primary]
 	ammo_secondary = ammo_list[ammo_secondary]
+	AddElement(/datum/element/magharness)
 
 /obj/item/weapon/gun/smartgun/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 16,"rail_x" = 17, "rail_y" = 18, "under_x" = 22, "under_y" = 14, "stock_x" = 22, "stock_y" = 14)
@@ -727,11 +728,6 @@
 		src.drain -= 15
 		if(!auto_fire)
 			processing_objects.Remove(src)
-
-/obj/item/weapon/gun/smartgun/equipped(mob/living/carbon/human/H, slot)
-	..()
-	registerListener(src, EVENT_GUN_DROPPED, "gdrp_sg", CALLBACK(src, .proc/handle_harness))
-	registerListener(src, EVENT_LAUNCH_CHECK, "lc_sg", CALLBACK(src, .proc/harness_launch_cancel))
 
 /obj/item/weapon/gun/smartgun/dirty
 	name = "\improper M56D 'Dirty' smartgun"

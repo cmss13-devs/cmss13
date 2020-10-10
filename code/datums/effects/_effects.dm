@@ -58,7 +58,7 @@
 
 	return FALSE
 
-/datum/effects/proc/process()
+/datum/effects/process()
 	if(!affected_atom || (duration <= 0 && !(flags & INF_DURATION)))
 		qdel(src)
 		return

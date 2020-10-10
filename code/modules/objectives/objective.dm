@@ -60,7 +60,7 @@
 	//For returning labels of related items (folders, discs, etc.)
 	return
 
-/datum/cm_objective/proc/process()
+/datum/cm_objective/process()
 	if(!is_prerequisites_completed())
 		deactivate()
 		return FALSE

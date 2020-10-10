@@ -32,7 +32,7 @@
 
 	var/called_callback = FALSE
 
-/datum/db/query_response/proc/process()
+/datum/db/query_response/process()
 	if(!query)
 		if(fail_callback && !called_callback)
 			called_callback = TRUE

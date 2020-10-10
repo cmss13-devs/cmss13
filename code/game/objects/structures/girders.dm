@@ -225,7 +225,7 @@
 			playsound(loc, 'sound/items/Welder2.ogg', 25, 1)
 			var/turf/T = get_turf(src)
 			T.ChangeTurf(/turf/closed/wall)
-			raiseEvent(GLOBAL_EVENT, EVENT_WALL_BUILT + "\ref[user]", /turf/closed/wall)
+			SEND_SIGNAL(user, COMSIG_MOB_CONSTRUCT_WALL, /turf/closed/wall)
 			qdel(src)
 		return TRUE
 	return FALSE

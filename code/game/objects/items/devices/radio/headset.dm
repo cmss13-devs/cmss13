@@ -189,6 +189,7 @@
 	))
 
 /obj/item/device/radio/headset/proc/turn_on()
+	SIGNAL_HANDLER
 	on = TRUE
 
 

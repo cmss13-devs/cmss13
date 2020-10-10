@@ -131,9 +131,9 @@
 	if (!LM.target || !src)
 		return
 	
-	if (raiseEventSync(src, EVENT_LAUNCH_CHECK, LM.thrower) == HALTED)
+	if(SEND_SIGNAL(src, COMSIG_MOVABLE_PRE_THROW, LM.thrower) & COMPONENT_CANCEL_THROW)
 		return
-		
+
 	// If we already have launch_metadata (from a previous throw), reset it and qdel the old launch_metadata datum
 	if (istype(launch_metadata))
 		qdel(launch_metadata)

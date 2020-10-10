@@ -302,3 +302,22 @@
 	stats += "[log_end]"
 
 	round_stats << stats // Logging to data/logs/round_stats.log
+
+/datum/action/show_round_statistics
+	name = "View End-Round Statistics"
+
+/datum/action/show_round_statistics/can_use_action()
+	if(!..())
+		return FALSE
+	
+	if(!owner.client || !owner.client.player_entity)
+		return FALSE
+
+	return TRUE
+
+/datum/action/show_round_statistics/action_activate()
+	if(!can_use_action())
+		return
+
+	owner.client.player_entity.show_statistics(owner, round_statistics, TRUE)
+	

@@ -9,7 +9,7 @@
 	var/cost = 0 // By default an action has no cost -> will be utilized by skill actions/xeno actions
 	var/action_flags = 0 // Check out __game.dm for flags
 
-/datum/action/New(Target)
+/datum/action/New(Target, override_icon_state)
 	target = Target
 	button = new
 	if(target)
@@ -20,7 +20,9 @@
 	button.source_action = src
 	button.name = name
 
-	if(action_icon_state)
+	if(override_icon_state)
+		button.overlays += image('icons/mob/hud/actions.dmi', button, override_icon_state)
+	else if(action_icon_state)
 		button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
 
 /datum/action/Destroy()

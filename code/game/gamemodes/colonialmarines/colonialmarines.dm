@@ -304,12 +304,23 @@
 /datum/game_mode/colonialmarines/declare_completion()
 	announce_ending()
 	var/musical_track
+	var/end_icon = "draw"
 	switch(round_finished)
-		if(MODE_INFESTATION_X_MAJOR) musical_track = pick('sound/theme/sad_loss1.ogg','sound/theme/sad_loss2.ogg')
-		if(MODE_INFESTATION_M_MAJOR) musical_track = pick('sound/theme/winning_triumph1.ogg','sound/theme/winning_triumph2.ogg')
-		if(MODE_INFESTATION_X_MINOR) musical_track = pick('sound/theme/neutral_melancholy1.ogg','sound/theme/neutral_melancholy2.ogg')
-		if(MODE_INFESTATION_M_MINOR) musical_track = pick('sound/theme/neutral_hopeful1.ogg','sound/theme/neutral_hopeful2.ogg')
-		if(MODE_INFESTATION_DRAW_DEATH) musical_track = pick('sound/theme/nuclear_detonation1.ogg','sound/theme/nuclear_detonation2.ogg')
+		if(MODE_INFESTATION_X_MAJOR) 
+			musical_track = pick('sound/theme/sad_loss1.ogg','sound/theme/sad_loss2.ogg')
+			end_icon = "xeno_major"
+		if(MODE_INFESTATION_M_MAJOR) 
+			musical_track = pick('sound/theme/winning_triumph1.ogg','sound/theme/winning_triumph2.ogg')
+			end_icon = "marine_major"
+		if(MODE_INFESTATION_X_MINOR) 
+			musical_track = pick('sound/theme/neutral_melancholy1.ogg','sound/theme/neutral_melancholy2.ogg')
+			end_icon = "xeno_minor"
+		if(MODE_INFESTATION_M_MINOR) 
+			musical_track = pick('sound/theme/neutral_hopeful1.ogg','sound/theme/neutral_hopeful2.ogg')
+			end_icon = "marine_minor"
+		if(MODE_INFESTATION_DRAW_DEATH) 
+			end_icon = "draw"
+			musical_track = pick('sound/theme/nuclear_detonation1.ogg','sound/theme/nuclear_detonation2.ogg')
 	var/sound/S = sound(musical_track, channel = SOUND_CHANNEL_LOBBY)
 	S.status = SOUND_STREAM
 	sound_to(world, S)
@@ -319,6 +330,9 @@
 		round_statistics.end_round_player_population = clients.len
 
 		round_statistics.log_round_statistics()
+
+	calculate_end_statistics()
+	show_end_statistics(end_icon)
 
 	declare_completion_announce_fallen_soldiers()
 	announce_agents()

@@ -34,7 +34,7 @@
 
 /obj/item/facepaint/skull
 	name = "skull paint"
-	desc = "Paint, for your face. Make your enemies need a change of underwear from the sheer terror a goddamn skull on your face will bring to them."
+	desc = "Paint, for your face. Make your enemies need a change of underwear from the sheer terror a goddamn skull on your face will bring to them. WARNING: DOES NOT MIX WELL WITH BEARDS."
 	colour = "skull"
 	icon_state = "skull_cammo"
 

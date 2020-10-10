@@ -134,6 +134,13 @@ var/global/cas_tracking_id_increment = 0	//this var used to assign unique tracki
 		M.track_death_calculations()
 		M.statistic_exempt = TRUE
 
+/datum/game_mode/proc/show_end_statistics(var/icon_state)
+	round_statistics.update_panel_data()
+	for(var/mob/M in player_list)
+		if(M.client)
+			var/datum/action/show_round_statistics/Sability = new(null, icon_state)
+			Sability.give_action(M)
+
 /datum/game_mode/proc/check_win() //universal trigger to be called at mob death, nuke explosion, etc. To be called from everywhere.
 	return 0
 

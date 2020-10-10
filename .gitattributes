@@ -12,3 +12,4 @@ html/changelog.html merge=union
 # Declare files that will always have LF line endings on checkout.
 *.dm text eol=lf
 *.dmm text eol=lf
+*.dme text eol=lf

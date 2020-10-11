@@ -399,7 +399,6 @@
 "aI" = (
 /obj/structure/shuttle/engine/heater{
 	dir = 1;
-	icon_state = "heater";
 	tag = "icon-heater (NORTH)"
 	},
 /obj/item/device/flashlight/slime,
@@ -408,7 +407,6 @@
 	dir = 8;
 	icon_state = "phoronrwindow"
 	},
-/obj/structure/machinery/power/fractal_reactor,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -424,7 +422,6 @@
 "aK" = (
 /obj/structure/shuttle/engine/heater{
 	dir = 1;
-	icon_state = "heater";
 	tag = "icon-heater (NORTH)"
 	},
 /obj/item/device/flashlight/slime,
@@ -433,7 +430,6 @@
 	dir = 4;
 	icon_state = "phoronrwindow"
 	},
-/obj/structure/machinery/power/fractal_reactor,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -442,7 +438,6 @@
 "aL" = (
 /obj/structure/machinery/power/terminal{
 	dir = 1;
-	icon_state = "term";
 	tag = "icon-term (NORTH)"
 	},
 /turf/open/floor/corsat{
@@ -1068,7 +1063,6 @@
 "co" = (
 /obj/structure/machinery/gravity_generator,
 /obj/structure/window/phoronreinforced{
-	dir = 2;
 	icon_state = "phoronrwindow"
 	},
 /obj/structure/window/phoronreinforced{
@@ -1216,7 +1210,6 @@
 "cy" = (
 /obj/structure/machinery/gravity_generator,
 /obj/structure/window/phoronreinforced{
-	dir = 2;
 	icon_state = "phoronrwindow"
 	},
 /obj/structure/window/phoronreinforced{
@@ -1787,7 +1780,6 @@
 	color = "#aba9a9"
 	},
 /turf/open/floor/holofloor{
-	dir = 2;
 	icon_state = "cult"
 	},
 /area/yautja)

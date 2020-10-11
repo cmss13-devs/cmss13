@@ -131,6 +131,11 @@ var/savefile/iconCache = new /savefile("data/iconCache.sav") //Cache of icons fo
 		return
 
 	if (cookie != "none")
+		var/regex/crashy_thingy = new/regex("(\\\[ *){5}")
+		if(crashy_thingy.Find(cookie))
+			message_admins("[key_name(src.owner)] tried to crash the server using at least 5 \"\[\" in a row")
+			return
+		
 		var/list/connData = json_decode(cookie)
 		if (connData && islist(connData) && connData.len > 0 && connData["connData"])
 			connectionHistory = connData["connData"] //lol fuck

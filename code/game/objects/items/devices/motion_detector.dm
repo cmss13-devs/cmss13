@@ -98,7 +98,10 @@
 
 /obj/item/device/motiondetector/Destroy()
 	processing_objects.Remove(src)
-	QDEL_NULL_LIST(blip_pool)
+	for(var/to_delete in blip_pool)
+		qdel(blip_pool[to_delete])
+		blip_pool.Remove(to_delete)
+	blip_pool = null
 	..()
 
 /obj/item/device/motiondetector/process()

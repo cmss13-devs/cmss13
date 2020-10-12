@@ -13,7 +13,9 @@
 #define JOB_SQUAD_SPECIALIST			"Squad Specialist"
 #define JOB_SQUAD_SMARTGUN				"Squad Smartgunner"
 #define JOB_SQUAD_ROLES					"Squad Roles"
-var/global/list/JOB_SQUAD_ROLES_LIST    = list(JOB_SQUAD_MARINE, JOB_SQUAD_LEADER, JOB_SQUAD_ENGI, JOB_SQUAD_MEDIC, JOB_SQUAD_SPECIALIST, JOB_SQUAD_SMARTGUN)
+#define JOB_SQUAD_ROLES_LIST            list(JOB_SQUAD_ROLES, JOB_SQUAD_MARINE, JOB_SQUAD_LEADER, JOB_SQUAD_ENGI, JOB_SQUAD_MEDIC, JOB_SQUAD_SPECIALIST, JOB_SQUAD_SMARTGUN)
+
+var/global/list/job_squad_roles = JOB_SQUAD_ROLES_LIST
 
 #define JOB_COLONIST					"Colonist"
 #define JOB_PASSENGER					"Passenger"
@@ -32,7 +34,8 @@ var/global/list/JOB_SQUAD_ROLES_LIST    = list(JOB_SQUAD_MARINE, JOB_SQUAD_LEADE
 #define JOB_XO							"Executive Officer"
 #define JOB_SO							"Staff Officer"
 #define JOB_COMMAND_ROLES				"CIC Roles"
-var/global/list/JOB_COMMAND_ROLES_LIST  = list(JOB_CO, JOB_XO, JOB_SO)
+#define JOB_COMMAND_ROLES_LIST          list(JOB_COMMAND_ROLES, JOB_CO, JOB_XO, JOB_SO)
+var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_PILOT						"Pilot Officer"
 #define JOB_CREWMAN						"Vehicle Crewman"
 #define JOB_INTEL						"Intelligence Officer"

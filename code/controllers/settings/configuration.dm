@@ -192,7 +192,7 @@
 			config.ban_legacy_system = 1
 
 		if ("use_timelocks")
-			config.use_timelocks = 0
+			config.use_timelocks = TRUE
 
 		if ("use_recursive_explosions")
 			use_recursive_explosions = 1

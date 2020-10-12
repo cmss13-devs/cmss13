@@ -374,7 +374,7 @@ roles willy nilly.
 //here is the main reason this proc exists - to remove freed squad jobs from squad,
 //so latejoining person ends in the squad which's job was freed and not random one
 	var/datum/squad/sq = null
-	if(JOB_SQUAD_ROLES_LIST.Find(J.title))
+	if(job_squad_roles.Find(J.title))
 		var/list/squad_list = list()
 		for(sq in RoleAuthority.squads)
 			if(sq.usable)
@@ -531,7 +531,7 @@ roles willy nilly.
 		if(J.flags_startup_parameters & ROLE_ADD_TO_SQUAD) //Are we a muhreen? Randomize our squad. This should go AFTER IDs. //TODO Robust this later.
 			randomize_squad(H)
 
-		if(Check_WO() && JOB_SQUAD_ROLES_LIST.Find(H.job))	//activates self setting proc for marine headsets for WO
+		if(Check_WO() && job_squad_roles.Find(H.job))	//activates self setting proc for marine headsets for WO
 			var/datum/game_mode/whiskey_outpost/WO = ticker.mode
 			WO.self_set_headset(H)
 

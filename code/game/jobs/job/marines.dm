@@ -26,7 +26,7 @@
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE|ROLE_ADD_TO_SQUAD
 	gear_preset = "USCM (Cryo) Squad Leader"
 	minimum_playtimes = list(
-		JOB_SQUAD_ROLES = HOURS_9
+		JOB_SQUAD_ROLES_LIST = HOURS_9
 	)
 
 /datum/job/marine/leader/generate_entry_message()
@@ -50,7 +50,7 @@
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE|ROLE_ADD_TO_SQUAD
 	gear_preset = "USCM (Cryo) Squad Engineer"
 	minimum_playtimes = list(
-		JOB_SQUAD_ROLES = HOURS_3
+		JOB_SQUAD_ROLES_LIST = HOURS_3
 	)
 
 /datum/job/marine/engineer/generate_entry_message()
@@ -129,7 +129,7 @@
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE|ROLE_ADD_TO_SQUAD
 	gear_preset = "USCM (Cryo) Squad Specialist"
 	minimum_playtimes = list(
-		JOB_SQUAD_ROLES = HOURS_6
+		JOB_SQUAD_ROLES_LIST = HOURS_6
 	)
 
 /datum/job/marine/specialist/generate_entry_message()
@@ -168,7 +168,7 @@
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE|ROLE_ADD_TO_SQUAD
 	gear_preset = "USCM (Cryo) Smartgunner"
 	minimum_playtimes = list(
-		JOB_SQUAD_ROLES = HOURS_3
+		JOB_SQUAD_ROLES_LIST = HOURS_3
 	)
 
 /datum/job/marine/smartgunner/generate_entry_message()

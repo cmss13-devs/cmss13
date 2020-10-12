@@ -69,7 +69,7 @@
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE|ROLE_ADMIN_NOTIFY
 	gear_preset = "USCM Executive Officer (XO)"
 	minimum_playtimes = list(
-		JOB_COMMAND_ROLES = HOURS_3
+		JOB_COMMAND_ROLES_LIST = HOURS_3
 	)
 
 /datum/job/command/executive/generate_entry_message(mob/living/carbon/human/H)
@@ -120,7 +120,7 @@
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE
 	gear_preset = "USCM Pilot Officer (PO) (Cryo)"
 	minimum_playtimes = list(
-		JOB_SQUAD_ROLES = HOURS_6
+		JOB_SQUAD_ROLES_LIST = HOURS_6
 	)
 
 /datum/job/command/pilot/set_spawn_positions(var/count)
@@ -152,7 +152,7 @@
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE
 	gear_preset = "USCM Vehicle Crewman (CRMN) (Cryo)"
 	minimum_playtimes = list(
-		JOB_SQUAD_ROLES = HOURS_6,
+		JOB_SQUAD_ROLES_LIST = HOURS_6,
 		JOB_SQUAD_ENGI = HOURS_3
 	)
 
@@ -171,7 +171,7 @@
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE
 	gear_preset = "USCM Intelligence Officer (IO) (Cryo)"
 	minimum_playtimes = list(
-		JOB_SQUAD_ROLES = HOURS_6
+		JOB_SQUAD_ROLES_LIST = HOURS_6
 	)
 
 /datum/job/command/intel/generate_entry_message(mob/living/carbon/human/H)
@@ -204,7 +204,7 @@
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE
 	gear_preset = "USCM Military Police (MP)"
 	minimum_playtimes = list(
-		JOB_SQUAD_ROLES = HOURS_9
+		JOB_SQUAD_ROLES_LIST = HOURS_9
 	)
 
 /datum/job/command/police/set_spawn_positions(var/count)
@@ -248,7 +248,7 @@
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE
 	gear_preset = "USCM Chief MP (CMP)"
 	minimum_playtimes = list(
-		JOB_COMMAND_ROLES = HOURS_3,
+		JOB_COMMAND_ROLES_LIST = HOURS_3,
 		JOB_POLICE = HOURS_9
 	)
 
@@ -263,13 +263,13 @@
 	flags_whitelist = WHITELIST_MENTOR
 	gear_preset = "USCM Senior Enlisted Advisor (SEA)"
 	minimum_playtimes = list(
-		JOB_SQUAD_ROLES = HOURS_9,
+		JOB_SQUAD_ROLES_LIST = HOURS_9,
 		JOB_SQUAD_LEADER = HOURS_3,
 		JOB_ORDNANCE_TECH = HOURS_3,
 		JOB_REQUISITION = HOURS_3,
 		JOB_DOCTOR = HOURS_3,
 		JOB_PILOT = HOURS_3,
-		JOB_COMMAND_ROLES = HOURS_3,
+		JOB_COMMAND_ROLES_LIST = HOURS_3,
 		JOB_POLICE = HOURS_6
 	)
 

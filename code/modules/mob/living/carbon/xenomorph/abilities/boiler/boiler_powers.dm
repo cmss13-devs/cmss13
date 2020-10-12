@@ -330,7 +330,7 @@
 		return
 
 	var/turf/T = get_turf(A)
-	X.visible_message("[X] fires a bolt of acid at [A]!", "You fire a bolt of acid at [A]!")
+	X.visible_message(SPAN_XENODANGER("[X] fires a bolt of acid at [A]!"), SPAN_XENODANGER("You fire a bolt of acid at [A]!"))
 
 	new /obj/effect/xenomorph/acid_damage_delay/boiler_landmine(T, damage, delay, "You are blasted with a bolt of acid!", X)
 

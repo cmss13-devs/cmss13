@@ -40,6 +40,7 @@ var/list/admin_ranks = list()								//list of all ranks with associated rights
 				if("varedit")					rights |= R_VAREDIT
 				if("everything","host","all")	rights |= (R_HOST|R_BUILDMODE|R_ADMIN|R_BAN|R_FUN|R_SERVER|R_DEBUG|R_PERMISSIONS|R_POSSESS|R_STEALTH|R_REJUVINATE|R_COLOR|R_VAREDIT|R_SOUNDS|R_SPAWN|R_MOD|R_MENTOR)
 				if("sound","sounds")			rights |= R_SOUNDS
+				if("nolock")					rights |= R_NOLOCK
 				if("spawn","create")			rights |= R_SPAWN
 				if("mod")						rights |= R_MOD
 				if("mentor")					rights |= R_MENTOR

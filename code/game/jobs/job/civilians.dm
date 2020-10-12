@@ -8,7 +8,7 @@
 /datum/job/civilian/survivor
 	title = JOB_SURVIVOR
 	minimum_playtimes = list(
-		JOB_SQUAD_ROLES = HOURS_3
+		JOB_SQUAD_ROLES_LIST = HOURS_3
 	)
 
 /datum/job/civilian/passenger
@@ -41,7 +41,7 @@
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE
 	gear_preset = "USCM Nurse"
 	minimum_playtimes = list(
-		JOB_SQUAD_ROLES = HOURS_3
+		JOB_SQUAD_ROLES_LIST = HOURS_3
 	)
 
 /datum/job/civilian/nurse/generate_entry_message(mob/living/carbon/human/H)
@@ -61,7 +61,7 @@
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE
 	gear_preset = "USCM Doctor"
 	minimum_playtimes = list(
-		JOB_SQUAD_ROLES = HOURS_3
+		JOB_SQUAD_ROLES_LIST = HOURS_3
 	)
 
 /datum/job/civilian/doctor/set_spawn_positions(var/count)
@@ -127,7 +127,7 @@
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE
 	gear_preset = "USCM Corporate Liaison (CL)"
 	minimum_playtimes = list(
-		JOB_SQUAD_ROLES = HOURS_3
+		JOB_SQUAD_ROLES_LIST = HOURS_3
 	)
 
 /datum/job/civilian/liaison/generate_entry_message(mob/living/carbon/human/H)

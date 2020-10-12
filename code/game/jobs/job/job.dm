@@ -19,7 +19,7 @@
 
 	//If you have use_timelocks config option enabled, this option will add a requirement for players to have the prerequisite roles have at least x minimum playtime before unlocking.
 	var/list/minimum_playtimes = list(
-		JOB_SQUAD_ROLES = HOURS_3
+		JOB_SQUAD_ROLES_LIST = HOURS_3
 	)
 
 	var/minimum_playtime_as_job = HOURS_3
@@ -55,9 +55,12 @@
 	
 	for(var/prereq in minimum_playtimes)
 		if(islist(prereq))
-			for(var/prequisite_only_one in prereq)
-				if(get_job_playtime(client, prequisite_only_one) >= LAZYACCESS(prereq, prequisite_only_one))
-					return TRUE
+			var/total = 0
+			for(var/prequisite_added in prereq)
+				total += get_job_playtime(client, prequisite_added)
+
+			if(total < LAZYACCESS(minimum_playtimes, prereq))
+				return FALSE
 		else
 			if(get_job_playtime(client, prereq) < LAZYACCESS(minimum_playtimes, prereq))
 				return FALSE
@@ -67,9 +70,18 @@
 /datum/job/proc/get_role_requirements(var/client/C)
 	var/list/return_requirements = list()
 	for(var/prereq in minimum_playtimes)
-		var/playtime = get_job_playtime(C, title)
+		var/playtime = get_job_playtime(C, prereq)
+		var/prereq_name = prereq
+
+		if(islist(prereq))
+			var/list/L = prereq
+			for(var/prequisite_added in prereq)
+				playtime += get_job_playtime(C, prequisite_added) 
+			
+			prereq_name = LAZYACCESS(L, 1)
+
 		if(playtime < LAZYACCESS(minimum_playtimes, prereq))
-			return_requirements[prereq] = LAZYACCESS(minimum_playtimes, prereq) - playtime
+			return_requirements[prereq_name] = LAZYACCESS(minimum_playtimes, prereq) - playtime
 	return return_requirements
 
 /datum/job/proc/get_access()

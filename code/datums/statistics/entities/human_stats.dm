@@ -15,7 +15,7 @@
 		return ..()
 	if(type == JOB_SQUAD_ROLES)
 		var/total_squad_time = 0
-		for(var/squad_type in JOB_SQUAD_ROLES_LIST)
+		for(var/squad_type in job_squad_roles)
 			var/datum/entity/player_stats/job/squad_stat = job_stats_list["[squad_type]"]
 			if(!squad_stat) // Have not played the squad role yet
 				continue
@@ -23,7 +23,7 @@
 		return total_squad_time
 	else if(type == JOB_COMMAND_ROLES)
 		var/total_command_time = 0
-		for(var/command_type in JOB_COMMAND_ROLES_LIST)
+		for(var/command_type in job_command_roles)
 			var/datum/entity/player_stats/job/command_stat = job_stats_list["[command_type]"]
 			if(!command_stat) // Have not played the command role yet
 				continue

@@ -129,7 +129,9 @@
 /datum/skills/Destroy()
 	owner = null
 
-	QDEL_NULL_LIST(skills)
+	for(var/datum/skill/S in skills)
+		qdel(S)
+		skills -= S
 
 	return ..()
 

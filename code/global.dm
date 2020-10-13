@@ -198,9 +198,6 @@ var/destroy_cancel = 0
 var/global/obfs_x = 0 //A number between -500 and 500
 var/global/obfs_y = 0 //A number between -500 and 500
 
-// STUI
-var/datum/STUI/STUI = new()
-
 // Which lobby art is on display
 // This is updated by the lobby art turf when it initializes
 var/displayed_lobby_art = -1

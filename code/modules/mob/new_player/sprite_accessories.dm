@@ -195,6 +195,10 @@
 	icon_state = "hair_combover"
 	gender = MALE
 
+/datum/sprite_accessory/hair/combover2
+	name = "Combover 2"
+	icon_state = "hair_combover2"
+	gender = MALE
 
 /datum/sprite_accessory/hair/father
 	name = "Father"
@@ -523,6 +527,11 @@
 	icon_state = "hair_fbun"
 	gender = FEMALE
 
+/datum/sprite_accessory/hair/marine_bun2
+	name = "Marine Bun 2"
+	icon_state = "hair_fbun2"
+	gender = FEMALE
+
 /datum/sprite_accessory/hair/marine_flat_top
 	name = "Marine Flat Top"
 	icon_state = "hair_uflat"
@@ -675,6 +684,11 @@
 /datum/sprite_accessory/hair/gentle2
 	name = "Gentle 2"
 	icon_state = "hair_gentle2"
+	gender = FEMALE
+
+/datum/sprite_accessory/hair/flair2
+	name = "Flaired Hair 2"
+	icon_state = "hair_flair2"
 	gender = FEMALE
 
 /*

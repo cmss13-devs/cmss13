@@ -128,6 +128,11 @@
 	master = null
 	locked_to_mob = null
 	item_list -= src
+
+	var/obj/item/storage/S = loc
+	if(istype(S))
+		S.remove_from_storage(src)
+
 	return ..()
 
 /obj/item/ex_act(severity, explosion_direction)

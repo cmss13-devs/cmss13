@@ -131,6 +131,9 @@ BSQL_PROTECT_DATUM(/datum/entity/player_time)
     for(var/datum/view_record/playtime/PT in PTs)
         var/isXeno = (PT.role_id in RoleAuthority.castes_by_name)
 
+        if(PT.role_id == JOB_XENOMORPH)
+            continue // Snowflake check, will need to be removed in the future
+
         if(!(PT.role_id in RoleAuthority.roles_by_name) && !isXeno)
             continue
 

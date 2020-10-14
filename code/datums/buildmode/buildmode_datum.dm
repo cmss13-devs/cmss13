@@ -83,7 +83,7 @@
         if(ispath(selected_object,/turf))
             var/turf/T = get_turf(object)
             if(T)
-                var/turf/newTurf = T.ChangeTurf(selected_object, TRUE)
+                var/turf/newTurf = T.ChangeTurf(selected_object)
                 
                 if(!newTurf)
                     newTurf = T
@@ -115,14 +115,19 @@
                 qdel(AM)
             
             var/turf/T = get_turf(object)
-            if(T.contents)
-                for(var/atom/movable/AM in T.contents)
-                    if(isobserver(AM)) continue
-                    qdel(AM)
-            
-            qdel(T)
-        
-        qdel(object)
+            if(T)
+                if(T.contents)
+                    for(var/atom/movable/AM in T.contents)
+                        if(isobserver(AM)) continue
+                        qdel(AM)
+
+                T.ScrapeAway()
+
+        if(isturf(object))
+            var/turf/T = object
+            T.ScrapeAway()
+        else
+            qdel(object)
 
 /datum/buildmode/build/proc/filter_vars(var/atom/A)
     var/list/filtered_vars = list()

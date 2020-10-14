@@ -95,7 +95,7 @@
 	if(ticker && ticker.mode)
 		ticker.mode.initialize_predator(M, whitelist_status == CLAN_RANK_ADMIN)
 
-#define XENO_TO_MARINES_SPAWN_RATIO 1/5
+#define XENO_TO_MARINES_SPAWN_RATIO 1/4
 
 /datum/job/antag/xenos
 	title = JOB_XENOMORPH

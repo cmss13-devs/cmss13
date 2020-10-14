@@ -40,19 +40,15 @@
 #define MODE_HUMAN_ANTAGS		64
 #define MODE_NO_SPAWN 			128 // Disables marines from spawning in normally
 #define MODE_XVX_SPAWNPOOL		256 // Allows xenos to place hostile xeno bodies into their spawnpool
+#define MODE_NEW_SPAWN 			512 // Enables the new spawning, only works for Distress currently
 
 #define ROUNDSTATUS_FOG_DOWN 		1
 #define ROUNDSTATUS_PODDOORS_OPEN	2
 
-#define LATEJOIN_MARINES_PER_LATEJOIN_LARVA 5
+#define LATEJOIN_MARINES_PER_LATEJOIN_LARVA 4
 
-#define BE_ALIEN				1
-#define BE_ALIEN_AFTER_DEATH	2
-#define BE_QUEEN				4
-#define BE_SURVIVOR				8
-#define BE_SYNTH_SURVIVOR		16
-#define BE_PREDATOR				32
-#define BE_AGENT				64
+#define BE_ALIEN_AFTER_DEATH	1
+#define BE_AGENT				2
 
 #define TOGGLE_IGNORE_SELF					1 	// Determines whether you will not hurt yourself when clicking yourself
 #define TOGGLE_HELP_INTENT_SAFETY			2 	// Determines whether help intent will be completely harmless
@@ -69,12 +65,7 @@
 //=================================================
 
 var/list/be_special_flags = list(
-	"Xenomorph" = BE_ALIEN,
 	"Xenomorph after unrevivable death" = BE_ALIEN_AFTER_DEATH,
-	"Survivor" = BE_SURVIVOR,
-	"Synth Survivor" = BE_SYNTH_SURVIVOR,
-	"Predator" = BE_PREDATOR,
-	"Queen" = BE_QUEEN,
 	"Agent" = BE_AGENT,
 )
 
@@ -90,66 +81,13 @@ var/list/be_special_flags = list(
 
 //=================================================
 
-//Various roles and their suggested bitflags or defines.
-
-#define ROLEGROUP_MARINE_COMMAND		1
-
-#define ROLE_COMMANDING_OFFICER			1
-#define ROLE_EXECUTIVE_OFFICER			2
-#define ROLE_BRIDGE_OFFICER				4
-#define ROLE_MILITARY_POLICE			8
-#define ROLE_CORPORATE_LIAISON			16
-#define ROLE_REQUISITION_OFFICER		32
-#define ROLE_PILOT_OFFICER				64
-#define ROLE_CHIEF_MP					128
-#define ROLE_SYNTHETIC					256
-#define ROLE_CREWMAN					512
-#define ROLE_INTEL_OFFICER				1024
-#define ROLE_SEA						2048
-#define ROLE_WARDEN						4096
-//=================================================
-
-#define ROLEGROUP_MARINE_ENGINEERING 	2
-
-#define ROLE_CHIEF_ENGINEER				1
-#define ROLE_ORDNANCE_TECH				2
-#define ROLE_MAINT_TECH					4
-#define ROLE_REQUISITION_TECH			8
-//=================================================
-
-#define ROLEGROUP_MARINE_MED_SCIENCE 	4
-
-#define ROLE_CHIEF_MEDICAL_OFFICER		1
-#define ROLE_CIVILIAN_DOCTOR			2
-#define ROLE_CIVILIAN_RESEARCHER		4
-#define ROLE_CIVILIAN_NURSE				8
-//=================================================
-
-#define ROLEGROUP_MARINE_SQUAD_MARINES 	8
-
-#define ROLE_MARINE_LEADER			1
-#define ROLE_MARINE_MEDIC			2
-#define ROLE_MARINE_ENGINEER		4
-#define ROLE_MARINE_STANDARD		8
-#define ROLE_MARINE_SPECIALIST		16
-#define ROLE_MARINE_SMARTGUN		32
-//=================================================
-#define ROLEGROUP_ANTAG					16
-
-#define ROLE_YAUTJA						1
-
-//=================================================
-#define ROLEGROUP_MARINE_FLUFF 	17
-
-#define ROLE_MESS_SERGEANT		1
-//=================================================
-
 #define ROLE_ADMIN_NOTIFY			1
 #define ROLE_ADD_TO_SQUAD			2
 #define ROLE_ADD_TO_DEFAULT			4
 #define ROLE_ADD_TO_MODE			8
 #define ROLE_WHITELISTED			16
 #define ROLE_NO_ACCOUNT				32
+#define ROLE_CUSTOM_SPAWN			64
 //=================================================
 
 //Role defines, specifically lists of roles for job bans, crew manifests and the like.
@@ -165,7 +103,12 @@ var/global/list/ROLES_REQUISITION 	= list(JOB_CHIEF_REQUISITION, JOB_REQUISITION
 var/global/list/ROLES_MEDICAL 	  	= list(JOB_CMO, JOB_DOCTOR, JOB_NURSE, JOB_RESEARCHER)
 var/global/list/ROLES_MARINES	  	= list(JOB_SQUAD_LEADER, JOB_SQUAD_SPECIALIST, JOB_SQUAD_SMARTGUN, JOB_SQUAD_MEDIC, JOB_SQUAD_ENGI, JOB_SQUAD_MARINE)
 var/global/list/ROLES_SQUAD_ALL	  	= list(SQUAD_NAME_1, SQUAD_NAME_2, SQUAD_NAME_3, SQUAD_NAME_4)
-var/global/list/ROLES_REGULAR_ALL 	= ROLES_CIC + ROLES_AUXIL_SUPPORT + ROLES_MISC + ROLES_POLICE + ROLES_ENGINEERING + ROLES_REQUISITION + ROLES_MEDICAL + ROLES_MARINES - ROLES_WO
+
+var/global/list/ROLES_XENO	  		= list(JOB_XENOMORPH_QUEEN, JOB_XENOMORPH)
+var/global/list/ROLES_WHITELISTED	= list(JOB_SYNTH_SURVIVOR, JOB_PREDATOR)
+var/global/list/ROLES_SPECIAL		= list(JOB_SURVIVOR)
+
+var/global/list/ROLES_REGULAR_ALL 	= ROLES_CIC + ROLES_AUXIL_SUPPORT + ROLES_MISC + ROLES_POLICE + ROLES_ENGINEERING + ROLES_REQUISITION + ROLES_MEDICAL + ROLES_MARINES + ROLES_SPECIAL + ROLES_WHITELISTED + ROLES_XENO - ROLES_WO
 
 var/global/list/ROLES_UNASSIGNED  	= list(JOB_SQUAD_MARINE)
 var/global/list/ROLES_WO			= list(JOB_WO_CO, JOB_WO_XO, JOB_WO_CORPORATE_LIAISON, JOB_WO_SYNTH, JOB_WO_CHIEF_POLICE, JOB_WO_SO, JOB_WO_CREWMAN, JOB_WO_POLICE, JOB_WO_PILOT, JOB_WO_CHIEF_ENGINEER, JOB_WO_ORDNANCE_TECH, JOB_WO_CHIEF_REQUISITION, JOB_WO_REQUISITION, JOB_WO_CMO, JOB_WO_DOCTOR, JOB_WO_RESEARCHER)

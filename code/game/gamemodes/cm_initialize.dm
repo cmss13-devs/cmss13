@@ -176,7 +176,7 @@ Additional game mode variables.
 			if(!player.client.prefs)
 				player.client.prefs = new /datum/preferences(player.client) //Somehow they don't have one.
 
-			if(player.client.prefs.be_special & BE_PREDATOR) //Are their prefs turned on?
+			if(player.client.prefs.get_job_priority(JOB_PREDATOR) > 0) //Are their prefs turned on?
 				if(!player.mind) //They have to have a key if they have a client.
 					player.mind_initialize() //Will work on ghosts too, but won't add them to active minds.
 				player.mind.setup_human_stats()
@@ -268,8 +268,8 @@ Additional game mode variables.
 //If we are selecting xenomorphs, we NEED them to play the round. This is the expected behavior.
 //If this is an optional behavior, just override this proc or make an override here.
 /datum/game_mode/proc/initialize_starting_xenomorph_list(var/list/hives = list(XENO_HIVE_NORMAL), var/force_xenos = FALSE)
-	var/list/datum/mind/possible_xenomorphs = get_players_for_role(BE_ALIEN, force_xenos)
-	var/list/datum/mind/possible_queens = get_players_for_role(BE_QUEEN, force_xenos)
+	var/list/datum/mind/possible_xenomorphs = get_players_for_role(JOB_XENOMORPH)
+	var/list/datum/mind/possible_queens = get_players_for_role(JOB_XENOMORPH_QUEEN)
 	if(possible_xenomorphs.len < xeno_required_num) //We don't have enough aliens, we don't consider people rolling for only Queen.
 		to_world("<h2 style=\"color:red\">Not enough players have chosen to be a xenomorph in their character setup. <b>Aborting</b>.</h2>")
 		return
@@ -278,7 +278,7 @@ Additional game mode variables.
 	for(var/datum/mind/A in possible_queens)
 		var/mob/living/original = A.current
 		var/client/client = GLOB.directory[A.ckey]
-		if(A.roundstart_picked || jobban_isbanned(original, CASTE_QUEEN) || !can_play_special_job(client, CASTE_QUEEN))
+		if(jobban_isbanned(original, CASTE_QUEEN) || !can_play_special_job(client, CASTE_QUEEN))
 			possible_queens -= A
 
 	if(possible_queens.len) // Pink one of the people who want to be Queen and put them in
@@ -595,8 +595,8 @@ Additional game mode variables.
 
 //We don't actually need survivors to play, so long as aliens are present.
 /datum/game_mode/proc/initialize_starting_survivor_list()
-	var/list/datum/mind/possible_human_survivors = get_players_for_role(BE_SURVIVOR)
-	var/list/datum/mind/possible_synth_survivors = get_players_for_role(BE_SYNTH_SURVIVOR)
+	var/list/datum/mind/possible_human_survivors = get_players_for_role(JOB_SURVIVOR)
+	var/list/datum/mind/possible_synth_survivors = get_players_for_role(JOB_SYNTH_SURVIVOR)
 
 	var/list/datum/mind/possible_survivors = possible_human_survivors.Copy() //making a copy so we'd be able to distinguish between survivor types
 

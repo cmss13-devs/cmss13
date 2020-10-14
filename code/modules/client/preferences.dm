@@ -2,16 +2,6 @@
 
 var/list/preferences_datums = list()
 
-var/global/list/special_roles = list(
-	"Xenomorph" = 1,
-	"Xenomorph after<br>unrevivably dead" = 1,
-	"Xenomorph Queen" = 0,
-	"Survivor" = 0,
-	"Synth Survivor" = 1,
-	"Predator" = 1,
-	"Agent" = 0,
-)
-
 var/global/list/stylesheets = list(
 	"Modern" = 'html/browser/common.css',
 	"Legacy" = 'html/browser/legacy.css'
@@ -117,25 +107,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/icon/preview_icon_side = null
 
 		//Jobs, uses bitflags
-	var/job_command_high = 0
-	var/job_command_med = 0
-	var/job_command_low = 0
-
-	var/job_medsci_high = 0
-	var/job_medsci_med = 0
-	var/job_medsci_low = 0
-
-	var/job_engi_high = 0
-	var/job_engi_med = 0
-	var/job_engi_low = 0
-
-	var/job_marines_high = 0
-	var/job_marines_med = 0
-	var/job_marines_low = 0
-
-	var/job_fluff_high = 0
-	var/job_fluff_med = 0
-	var/job_fluff_low = 0
+	var/list/job_preference_list = list()
 
 	//Keeps track of preferrence for not getting any wanted jobs
 	var/alternate_option = RETURN_TO_LOBBY //Be a marine.
@@ -252,6 +224,11 @@ var/const/MAX_SAVE_SLOTS = 10
 
 	var/n = 0
 
+	var/list/special_roles = list(
+	"Xenomorph after<br>unrevivably dead" = 1,
+	"Agent" = 0,
+	)
+
 	for(var/role_name in special_roles)
 		var/ban_check_name
 		var/list/missing_requirements = list()
@@ -311,7 +288,7 @@ var/const/MAX_SAVE_SLOTS = 10
 		n++
 
 	dat += "<br>"
-	dat += "\t<a href='?_src_=prefs;preference=job;task=menu'><b>Set Marine Role Preferences</b></a>"
+	dat += "\t<a href='?_src_=prefs;preference=job;task=menu'><b>Set Role Preferences</b></a>"
 	dat += "</div>"
 
 	dat += "<div id='column2'>"
@@ -463,7 +440,7 @@ var/const/MAX_SAVE_SLOTS = 10
 //splitJobs 	- Allows you split the table by job. You can make different tables for each department by including their heads. Defaults to CE to make it look nice.
 //width	 		- Screen' width. Defaults to 550 to make it look nice.
 //height 	 	- Screen's height. Defaults to 500 to make it look nice.
-/datum/preferences/proc/SetChoices(mob/user, limit = 16, list/splitJobs = list(), width = 800, height = 850)
+/datum/preferences/proc/SetChoices(mob/user, limit = 18, list/splitJobs = list(), width = 800, height = 850)
 	if(!RoleAuthority) 
 		return
 
@@ -477,9 +454,8 @@ var/const/MAX_SAVE_SLOTS = 10
 
 	//The job before the current job. I only use this to get the previous jobs color when I'm filling in blank rows.
 	var/datum/job/lastJob
-	var/datum/job/job
 	for(var/i in RoleAuthority.roles_for_mode)
-		job = RoleAuthority.roles_for_mode[i]
+		var/datum/job/job = RoleAuthority.roles_for_mode[i]
 		index += 1
 		if((index >= limit) || (job.title in splitJobs))
 			if((index < limit) && (lastJob != null))
@@ -510,31 +486,24 @@ var/const/MAX_SAVE_SLOTS = 10
 
 		HTML += "</td><td width='60%'>"
 
-		var/cur_priority = 4
-
-		if(GetJobDepartment(job, 1) & job.flag)
-			cur_priority = 1
-		else if(GetJobDepartment(job, 2) & job.flag)
-			cur_priority = 2
-		else if(GetJobDepartment(job, 3) & job.flag)
-			cur_priority = 3
+		var/cur_priority = get_job_priority(job.title)
 
 		var/b_color
 		var/priority_text
-		for (var/j in 1 to 4)
+		for (var/j in NEVER_PRIORITY to LOW_PRIORITY)
 			switch (j)
-				if(1)
-					b_color = "blue"
-					priority_text = "HIGH"
-				if(2)
-					b_color = "green"
-					priority_text = "MEDIUM"
-				if(3)
-					b_color = "orange"
-					priority_text = "LOW"
-				else
+				if(NEVER_PRIORITY)
 					b_color = "red" 
 					priority_text = "NEVER"
+				if(HIGH_PRIORITY)
+					b_color = "blue"
+					priority_text = "HIGH"
+				if(MED_PRIORITY)
+					b_color = "green"
+					priority_text = "MEDIUM"
+				if(LOW_PRIORITY)
+					b_color = "orange"
+					priority_text = "LOW"
 				
 			HTML += "<a class='[j == cur_priority ? b_color : "inactive"]' href='?_src_=prefs;preference=job;task=input;text=[job.title];target_priority=[j];'>[priority_text]</a>"
 			if (j < 4)
@@ -549,7 +518,7 @@ var/const/MAX_SAVE_SLOTS = 10
 		var/b_color = "green"
 		var/msg = "Get random job if preferences unavailable"
 
-		if(user.client.prefs.alternate_option == BE_ASSISTANT)
+		if(user.client.prefs.alternate_option == BE_MARINE)
 			b_color = "red"
 			msg = "Be marine if preference unavailable"
 		else if(user.client.prefs.alternate_option == RETURN_TO_LOBBY)
@@ -614,154 +583,49 @@ var/const/MAX_SAVE_SLOTS = 10
 		ShowChoices(user)
 		return
 
-	if (priority < 1 || priority > 4)
-		return
-
 	SetJobDepartment(job, priority)
 
 	SetChoices(user)
 	return 1
 
 /datum/preferences/proc/ResetJobs()
-	job_command_high = 0
-	job_command_med = 0
-	job_command_low = 0
+	if(length(job_preference_list))
+		for(var/job in job_preference_list)
+			job_preference_list[job] = NEVER_PRIORITY
+		return
+	
+	if(!RoleAuthority)
+		return
 
-	job_medsci_high = 0
-	job_medsci_med = 0
-	job_medsci_low = 0
+	job_preference_list = list()
+	for(var/role in RoleAuthority.roles_by_path)
+		var/datum/job/J = RoleAuthority.roles_by_path[role]
+		job_preference_list[J.title] = NEVER_PRIORITY
 
-	job_engi_high = 0
-	job_engi_med = 0
-	job_engi_low = 0
-
-	job_marines_high = 0
-	job_marines_med = 0
-	job_marines_low = 0
-
-	job_fluff_high = 0
-	job_fluff_med = 0
-	job_fluff_low = 0
-
-/datum/preferences/proc/GetJobDepartment(var/datum/job/job, var/level)
-	if(!job || !level)	
+/datum/preferences/proc/get_job_priority(var/J)
+	if(!J)	
 		return FALSE
-	switch(job.department_flag)
-		if(ROLEGROUP_MARINE_COMMAND)
-			switch(level)
-				if(1)
-					return job_command_high
-				if(2)
-					return job_command_med
-				if(3)
-					return job_command_low
-		if(ROLEGROUP_MARINE_MED_SCIENCE)
-			switch(level)
-				if(1)
-					return job_medsci_high
-				if(2)
-					return job_medsci_med
-				if(3)
-					return job_medsci_low
-		if(ROLEGROUP_MARINE_ENGINEERING)
-			switch(level)
-				if(1)
-					return job_engi_high
-				if(2)
-					return job_engi_med
-				if(3)
-					return job_engi_low
-		if(ROLEGROUP_MARINE_SQUAD_MARINES)
-			switch(level)
-				if(1)
-					return job_marines_high
-				if(2)
-					return job_marines_med
-				if(3)
-					return job_marines_low
-		if(ROLEGROUP_MARINE_FLUFF)
-			switch(level)
-				if(1)
-					return job_fluff_high
-				if(2)
-					return job_fluff_med
-				if(3)
-					return job_fluff_low
-	return FALSE
 
-/datum/preferences/proc/SetJobDepartment(var/datum/job/job, var/level)
-	if(!job || !level)	
+	if(!length(job_preference_list))
+		ResetJobs()
+
+	return job_preference_list[J]
+
+/datum/preferences/proc/SetJobDepartment(var/datum/job/J, var/priority)
+	if(!J || priority < 0 || priority > 4)
 		return FALSE
-	switch(level)
-		if(1)//Set current highs to med, then reset them
-			job_command_med |= job_command_high
-			job_medsci_med |= job_medsci_high
-			job_engi_med |= job_engi_high
-			job_marines_med |= job_marines_high
-			job_fluff_med |= job_fluff_high
-			job_fluff_high = 0
-			job_command_high = 0
-			job_medsci_high = 0
-			job_engi_high = 0
-			job_marines_high = 0
 
-	switch(job.department_flag)
-		if(ROLEGROUP_MARINE_COMMAND)
-			job_command_high &= ~job.flag
-			job_command_med &= ~job.flag
-			job_command_low &= ~job.flag
-			switch(level)
-				if(1)
-					job_command_high = job.flag
-				if(2)
-					job_command_med |= job.flag
-				if(3)
-					job_command_low |= job.flag
-		if(ROLEGROUP_MARINE_MED_SCIENCE)
-			job_medsci_high &= ~job.flag
-			job_medsci_med &= ~job.flag
-			job_medsci_low &= ~job.flag
-			switch(level)
-				if(1)
-					job_medsci_high = job.flag
-				if(2)
-					job_medsci_med |= job.flag
-				if(3)
-					job_medsci_low |= job.flag
-		if(ROLEGROUP_MARINE_ENGINEERING)
-			job_engi_high &= ~job.flag
-			job_engi_med &= ~job.flag
-			job_engi_low &= ~job.flag
-			switch(level)
-				if(1)
-					job_engi_high = job.flag
-					job_engi_med &= ~job.flag
-				if(2)
-					job_engi_med |= job.flag
-				if(3)
-					job_engi_low |= job.flag
-		if(ROLEGROUP_MARINE_SQUAD_MARINES)
-			job_marines_high &= ~job.flag
-			job_marines_med &= ~job.flag
-			job_marines_low &= ~job.flag
-			switch(level)
-				if(1)
-					job_marines_high = job.flag
-				if(2)
-					job_marines_med |= job.flag
-				if(3)
-					job_marines_low |= job.flag
-		if(ROLEGROUP_MARINE_FLUFF)
-			job_fluff_high &= ~job.flag
-			job_fluff_med &= ~job.flag
-			job_fluff_low &= ~job.flag
-			switch(level)
-				if(1)
-					job_fluff_high = job.flag
-				if(2)
-					job_fluff_med |= job.flag
-				if(3)
-					job_fluff_low |= job.flag
+
+	if(!length(job_preference_list))
+		ResetJobs()
+
+	// Need to set old HIGH priority to 2
+	if(priority == HIGH_PRIORITY)
+		for(var/job in job_preference_list)
+			if(job_preference_list[job] == HIGH_PRIORITY)
+				job_preference_list[job] = MED_PRIORITY
+	
+	job_preference_list[J.title] = priority
 	return TRUE
 
 /datum/preferences/proc/process_link(mob/user, list/href_list)
@@ -779,7 +643,7 @@ var/const/MAX_SAVE_SLOTS = 10
 					ResetJobs()
 					SetChoices(user)
 				if("random")
-					if(alternate_option == GET_RANDOM_JOB || alternate_option == BE_ASSISTANT || alternate_option == RETURN_TO_LOBBY)
+					if(alternate_option == GET_RANDOM_JOB || alternate_option == BE_MARINE || alternate_option == RETURN_TO_LOBBY)
 						alternate_option += 1
 					else if(alternate_option == BE_XENOMORPH)
 						alternate_option = 0

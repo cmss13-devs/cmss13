@@ -1,7 +1,6 @@
 //Marine jobs. All marines are genericized when they first log in, then it auto assigns them to squads.
 
 /datum/job/marine
-	department_flag = ROLEGROUP_MARINE_SQUAD_MARINES
 	supervisors = "the acting squad leader"
 	selection_class = "job_marine"
 	total_positions = 8
@@ -19,7 +18,6 @@
 
 /datum/job/marine/leader
 	title = JOB_SQUAD_LEADER
-	flag = ROLE_MARINE_LEADER
 	total_positions = 4
 	spawn_positions = 4
 	supervisors = "the acting commanding officer"
@@ -46,7 +44,6 @@
 	total_positions = 12
 	spawn_positions = 12
 	allow_additional = 1
-	flag = ROLE_MARINE_ENGINEER
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE|ROLE_ADD_TO_SQUAD
 	gear_preset = "USCM (Cryo) Squad Engineer"
 	minimum_playtimes = list(
@@ -56,6 +53,11 @@
 /datum/job/marine/engineer/generate_entry_message()
 	entry_message_body = "You have the equipment and skill to build fortifications, reroute power lines, and bunker down. Your squaddies will look to you when it comes to construction in the field of battle."
 	return ..()
+
+/datum/job/marine/engineer/set_spawn_positions(var/count)
+	for(var/datum/squad/sq in RoleAuthority.squads)
+		if(sq)
+			sq.max_engineers = engi_slot_formula(count)
 
 /datum/job/marine/engineer/get_total_positions(var/latejoin=0)
 	var/slots = engi_slot_formula(get_total_marines())
@@ -85,7 +87,6 @@
 	total_positions = 16
 	spawn_positions = 16
 	allow_additional = 1
-	flag = ROLE_MARINE_MEDIC
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE|ROLE_ADD_TO_SQUAD
 	gear_preset = "USCM (Cryo) Squad Medic"
 	minimum_playtimes = list(
@@ -95,6 +96,11 @@
 /datum/job/marine/medic/generate_entry_message()
 	entry_message_body = "You must tend the wounds of your squad mates and make sure they are healthy and active. You may not be a fully-fledged doctor, but you stand between life and death when it matters."
 	return ..()
+
+/datum/job/marine/medic/set_spawn_positions(var/count)
+	for(var/datum/squad/sq in RoleAuthority.squads)
+		if(sq)
+			sq.max_medics = medic_slot_formula(count)
 
 /datum/job/marine/medic/get_total_positions(var/latejoin=0)
 	var/slots = medic_slot_formula(get_total_marines())
@@ -121,7 +127,6 @@
 
 /datum/job/marine/specialist
 	title = JOB_SQUAD_SPECIALIST
-	flag = ROLE_MARINE_SPECIALIST
 	total_positions = 4
 	spawn_positions = 4
 	allow_additional = 1
@@ -160,7 +165,6 @@
 
 /datum/job/marine/smartgunner
 	title = JOB_SQUAD_SMARTGUN
-	flag = ROLE_MARINE_SMARTGUN
 	total_positions = 4
 	spawn_positions = 4
 	allow_additional = 1
@@ -198,8 +202,6 @@
 
 /datum/job/marine/standard
 	title = JOB_SQUAD_MARINE
-	flag = ROLE_MARINE_STANDARD
-	department_flag = ROLEGROUP_MARINE_SQUAD_MARINES
 	total_positions = -1
 	spawn_positions = -1
 	minimum_playtimes = list()

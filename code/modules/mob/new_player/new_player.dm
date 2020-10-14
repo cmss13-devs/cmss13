@@ -56,7 +56,7 @@
 
 	if(round_start)
 		output += "<p>\[ [ready? "<b>Ready</b>":"<a href='byond://?src=\ref[src];lobby_choice=ready'>Ready</a>"] | [ready? "<a href='byond://?src=\ref[src];lobby_choice=unready'>Not Ready</a>":"<b>Not Ready</b>"] \]</p>"
-		output += "<b>Be Xenomorph:</b> [(client.prefs && (client.prefs.be_special & BE_ALIEN)) ? "Yes" : "No"]"
+		output += "<b>Be Xenomorph:</b> [(client.prefs && (client.prefs.get_job_priority(JOB_XENOMORPH))) ? "Yes" : "No"]"
 
 	else
 		output += "<a href='byond://?src=\ref[src];lobby_choice=manifest'>View the Crew Manifest</A><br><br>"
@@ -305,15 +305,14 @@
 	dat += "Choose from the following open positions:<br>"
 	var/roles_show = FLAG_SHOW_ALL
 
-	var/datum/job/J
-	var/i
-	for(i in RoleAuthority.roles_for_mode)
-		J = RoleAuthority.roles_for_mode[i]
-		if(!RoleAuthority.check_role_entry(src, J, 1)) continue
+	for(var/i in RoleAuthority.roles_for_mode)
+		var/datum/job/J = RoleAuthority.roles_for_mode[i]
+		if(!RoleAuthority.check_role_entry(src, J, TRUE)) 
+			continue
 		var/active = 0
 		// Only players with the job assigned and AFK for less than 10 minutes count as active
 		for(var/mob/M in GLOB.player_list)
-			if(M.client && M.job == J.title && M.client.inactivity <= 10 * 60 * 10)
+			if(M.client && M.job == J.title)
 				active++
 		if(roles_show & FLAG_SHOW_CIC && ROLES_CIC.Find(J.title))
 			dat += "Command:<br>"

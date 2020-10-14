@@ -143,7 +143,7 @@
 	faction = FACTION_SURVIVOR
 	idtype = /obj/item/card/id/lanyard
 	assignment = JOB_SURVIVOR
-	rank = JOB_SYNTH
+	rank = JOB_SYNTH_SURVIVOR
 	skills = /datum/skills/early_synthetic
 
 /datum/equipment_preset/synth/survivor/load_race(mob/living/carbon/human/H)

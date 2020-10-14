@@ -205,67 +205,69 @@ datum/preferences/proc/randomize_skin_color()
 	preview_front.screen_loc = "preview:0,0"
 
 datum/preferences/proc/job_pref_to_gear_preset()
-	switch(job_marines_high)
-		if(ROLE_MARINE_STANDARD)
+	var/high_priority
+	for(var/job in job_preference_list)
+		if(job_preference_list[job] == 1)
+			high_priority = job
+	
+	switch(high_priority)
+		if(JOB_SQUAD_MARINE)
 			return "USCM Cryo Private (Equipped)"
-		if(ROLE_MARINE_ENGINEER)
+		if(JOB_SQUAD_ENGI)
 			return "USCM Cryo Engineer (Equipped)"
-		if(ROLE_MARINE_LEADER)
+		if(JOB_SQUAD_LEADER)
 			return "USCM Cryo Squad Leader (Equipped)"
-		if(ROLE_MARINE_MEDIC)
+		if(JOB_SQUAD_MEDIC)
 			return "USCM Cryo Medic (Equipped)"
-		if(ROLE_MARINE_SPECIALIST)
+		if(JOB_SQUAD_SPECIALIST)
 			return "USCM Cryo Specialist (Equipped)"
-		if(ROLE_MARINE_SMARTGUN)
+		if(JOB_SQUAD_SMARTGUN)
 			return "USCM Cryo Smartgunner (Equipped)"
-	switch(job_command_high)
-		if(ROLE_COMMANDING_OFFICER)
+		if(JOB_CO)
 			return "USCM Captain (CO)"
-		if(ROLE_BRIDGE_OFFICER)
+		if(JOB_SO)
 			return "USCM Staff Officer (SO)"
-		if(ROLE_EXECUTIVE_OFFICER)
+		if(JOB_XO)
 			return "USCM Executive Officer (XO)"
-		if(ROLE_PILOT_OFFICER)
+		if(JOB_PILOT)
 			return "USCM Pilot Officer (PO)"
-		if(ROLE_CORPORATE_LIAISON)
+		if(JOB_CORPORATE_LIAISON)
 			return "USCM Corporate Liaison (CL)"
-		if(ROLE_SYNTHETIC)
+		if(JOB_SYNTH)
 			return "USCM Synthetic"
-		if(ROLE_MILITARY_POLICE)
+		if(JOB_POLICE)
 			return "USCM Military Police (MP)"
-		if(ROLE_CHIEF_MP)
+		if(JOB_CHIEF_POLICE)
 			return "USCM Chief MP (CMP)"
-		if(ROLE_WARDEN)
+		if(JOB_WARDEN)
 			return "USCM Military Warden (MW)"
-		if(ROLE_CREWMAN)
+		if(JOB_CREWMAN)
 			return "USCM Vehicle Crewman (CRMN)"
-		if(ROLE_INTEL_OFFICER)
+		if(JOB_INTEL)
 			return "USCM Intelligence Officer (IO)"
-		if(ROLE_SEA)
+		if(JOB_SEA)
 			return "USCM Senior Enlisted Advisor (SEA)"
-	switch(job_engi_high)
-		if(ROLE_CHIEF_ENGINEER)
+		if(JOB_CHIEF_ENGINEER)
 			return "USCM Chief Engineer (CE)"
-		if(ROLE_ORDNANCE_TECH)
+		if(JOB_ORDNANCE_TECH)
 			return "USCM Ordnance Technician (OT)"
-		if(ROLE_MAINT_TECH)
+		if(JOB_MAINT_TECH)
 			return "USCM Maintenance Technician (MT)"
-		if(ROLE_REQUISITION_OFFICER)
+		if(JOB_CHIEF_REQUISITION)
 			return "USCM Requisitions Officer (RO)"
-		if(ROLE_REQUISITION_TECH)
+		if(JOB_REQUISITION)
 			return "USCM Cargo Technician (CT)"
-	switch(job_medsci_high)
-		if(ROLE_CHIEF_MEDICAL_OFFICER)
+		if(JOB_CMO)
 			return "USCM Chief Medical Officer (CMO)"
-		if(ROLE_CIVILIAN_DOCTOR)
+		if(JOB_DOCTOR)
 			return "USCM Doctor"
-		if(ROLE_CIVILIAN_RESEARCHER)
+		if(JOB_RESEARCHER)
 			return "USCM Researcher"
-		if(ROLE_CIVILIAN_NURSE)
+		if(JOB_NURSE)
 			return "USCM Nurse"
-	switch(job_fluff_high)
-		if(ROLE_MESS_SERGEANT)
-			return "USCM Mess Sergeant (MS)"		
+		if(JOB_MESS_SERGEANT)
+			return "USCM Mess Sergeant (MS)"	
+
 	return "USCM Cryo Private (Equipped)"
 
 datum/preferences/proc/clear_equipment()

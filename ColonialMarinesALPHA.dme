@@ -466,6 +466,7 @@
 #include "code\game\jobs\job\marines.dm"
 #include "code\game\jobs\job\squad_info.dm"
 #include "code\game\jobs\job\squads.dm"
+#include "code\game\jobs\job\survivors.dm"
 #include "code\game\machinery\adv_med.dm"
 #include "code\game\machinery\air_alarm.dm"
 #include "code\game\machinery\air_sensor.dm"

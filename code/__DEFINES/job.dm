@@ -20,6 +20,7 @@ var/global/list/job_squad_roles = JOB_SQUAD_ROLES_LIST
 #define JOB_COLONIST					"Colonist"
 #define JOB_PASSENGER					"Passenger"
 #define JOB_SURVIVOR					"Survivor"
+#define JOB_SYNTH_SURVIVOR				"Synth Survivor"
 
 #define JOB_CMO							"Chief Medical Officer"
 #define JOB_DOCTOR						"Doctor"
@@ -127,6 +128,7 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 
 #define JOB_PREDATOR                    "Predator"
 #define JOB_XENOMORPH                   "Xenomorph"
+#define JOB_XENOMORPH_QUEEN             "Queen"
 
 // For colouring the ranks in the statistics menu
 #define JOB_PLAYTIME_TIER_1         (10 HOURS)

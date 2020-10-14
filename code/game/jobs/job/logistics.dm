@@ -6,8 +6,6 @@
 //Chief Engineer
 /datum/job/logistics/engineering
 	title = JOB_CHIEF_ENGINEER
-	flag = ROLE_CHIEF_ENGINEER
-	department_flag = ROLEGROUP_MARINE_ENGINEERING
 	selection_class = "job_ce"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE
 	gear_preset = "USCM Chief Engineer (CE)"
@@ -22,8 +20,6 @@
 //Requisitions Officer
 /datum/job/logistics/requisition
 	title = JOB_CHIEF_REQUISITION
-	flag = ROLE_REQUISITION_OFFICER
-	department_flag = ROLEGROUP_MARINE_ENGINEERING
 	selection_class = "job_ro"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE
 	gear_preset = "USCM Requisitions Officer (RO)"
@@ -38,8 +34,6 @@
 //Ordnance Technician
 /datum/job/logistics/tech
 	title = JOB_ORDNANCE_TECH
-	flag = ROLE_ORDNANCE_TECH
-	department_flag = ROLEGROUP_MARINE_ENGINEERING
 	total_positions = 3
 	spawn_positions = 3
 	allow_additional = 1
@@ -72,8 +66,6 @@
 
 /datum/job/logistics/maint
 	title = JOB_MAINT_TECH
-	flag = ROLE_MAINT_TECH
-	department_flag = ROLEGROUP_MARINE_ENGINEERING
 	supervisors = "the chief engineer"
 	selection_class = "job_ot"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE
@@ -89,8 +81,6 @@
 //Cargo Tech. Don't ask why this is in engineering
 /datum/job/logistics/tech/cargo
 	title = JOB_REQUISITION
-	flag = ROLE_REQUISITION_TECH
-	department_flag = ROLEGROUP_MARINE_ENGINEERING
 	total_positions = 2
 	spawn_positions = 2
 	allow_additional = 1
@@ -120,8 +110,6 @@
 
 /datum/job/logistics/chef
 	title = JOB_MESS_SERGEANT
-	flag = ROLE_MESS_SERGEANT
-	department_flag = ROLEGROUP_MARINE_FLUFF
 	selection_class = "job_ot"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE
 	gear_preset = "USCM Mess Sergeant (MS)"

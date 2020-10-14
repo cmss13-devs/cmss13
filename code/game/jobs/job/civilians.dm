@@ -1,22 +1,14 @@
 /datum/job/civilian
-	department_flag = ROLEGROUP_MARINE_MED_SCIENCE
 	gear_preset = "Colonist"
 
 /datum/job/civilian/colonist
 	title = JOB_COLONIST
 
-/datum/job/civilian/survivor
-	title = JOB_SURVIVOR
-	minimum_playtimes = list(
-		JOB_SQUAD_ROLES_LIST = HOURS_3
-	)
-
 /datum/job/civilian/passenger
 	title = JOB_PASSENGER
-
+	
 /datum/job/civilian/professor
 	title = JOB_CMO
-	flag = ROLE_CHIEF_MEDICAL_OFFICER
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "the acting commanding officer"
@@ -33,7 +25,6 @@
 
 /datum/job/civilian/nurse
 	title = JOB_NURSE
-	flag = ROLE_CIVILIAN_NURSE
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "the chief medical officer"
@@ -51,7 +42,6 @@
 //Doctor
 /datum/job/civilian/doctor
 	title = JOB_DOCTOR
-	flag = ROLE_CIVILIAN_DOCTOR
 	total_positions = 6
 	spawn_positions = 6
 	allow_additional = 1	
@@ -84,7 +74,6 @@
 //Researcher
 /datum/job/civilian/researcher
 	title = JOB_RESEARCHER
-	flag = ROLE_CIVILIAN_RESEARCHER
 	total_positions = 2
 	spawn_positions = 2
 	allow_additional = 1
@@ -118,8 +107,6 @@
 //Liaison
 /datum/job/civilian/liaison
 	title = JOB_CORPORATE_LIAISON
-	flag = ROLE_CORPORATE_LIAISON
-	department_flag = ROLEGROUP_MARINE_COMMAND
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "the W-Y corporate office"
@@ -147,15 +134,13 @@
 
 /datum/job/civilian/synthetic
 	title = JOB_SYNTH
-	flag = ROLE_SYNTHETIC
-	department_flag = ROLEGROUP_MARINE_COMMAND
 	total_positions = 2
 	spawn_positions = 1
 	allow_additional = 1
 	scaled = 1
 	supervisors = "the acting commanding officer"
 	selection_class = "job_synth"
-	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE|ROLE_ADMIN_NOTIFY|ROLE_WHITELISTED
+	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE|ROLE_ADMIN_NOTIFY|ROLE_WHITELISTED|ROLE_CUSTOM_SPAWN
 	flags_whitelist = WHITELIST_SYNTHETIC
 	gear_preset = "USCM Synthetic"
 	minimum_playtimes = list()

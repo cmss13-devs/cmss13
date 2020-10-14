@@ -2,7 +2,7 @@
 
 //Global proc for checking if the game is whiskey outpost so I dont need to type if(gamemode == whiskey outpost) 50000 times
 /proc/Check_WO()
-	if(ticker.mode == "Whiskey Outpost" || map_tag == "Whiskey Outpost")
+	if(ticker.mode == "Whiskey Outpost" || map_tag == "Whiskey Outpost" || master_mode == "Whiskey Outpost")
 		return 1
 	return 0
 

@@ -4,7 +4,7 @@
 	required_players = 1 //Need at least one player, but really we need 2.
 	xeno_required_num = 1 //Need at least one xeno.
 	monkey_amount = 5
-	flags_round_type = MODE_INFESTATION|MODE_FOG_ACTIVATED
+	flags_round_type = MODE_INFESTATION|MODE_FOG_ACTIVATED|MODE_NEW_SPAWN
 	var/round_status_flags
 
 ////////////////////////////////////////////////////////////////////////////////////////
@@ -12,12 +12,7 @@
 
 /* Pre-pre-startup */
 /datum/game_mode/colonialmarines/can_start()
-	initialize_special_clamps()
-	initialize_starting_predator_list()
-	if(!initialize_starting_xenomorph_list())
-		return
-	initialize_starting_survivor_list()
-	return 1
+	return TRUE
 
 /datum/game_mode/colonialmarines/announce()
 	to_world("<span class='round_header'>The current map is - [map_tag]!</span>")
@@ -48,7 +43,6 @@
 	round_fog = new
 	round_toxic_river = new
 	var/xeno_tunnels[] = new
-	var/monkey_spawns[] = new
 	var/map_items[] = new
 	var/obj/structure/blocker/fog/F
 	var/fog_timer = 0
@@ -80,9 +74,6 @@
 			if("xeno tunnel")
 				xeno_tunnels += L.loc
 				qdel(L)
-			if("monkey_spawn")
-				monkey_spawns += L.loc
-				qdel(L)
 			if("map item")
 				map_items += L.loc
 				qdel(L)
@@ -100,28 +91,6 @@
 			if(MAP_SOROKYNE_STRATA) new /obj/item/map/sorokyne_map(T)
 			if(MAP_CORSAT) new /obj/item/map/corsat(T)
 			if(MAP_KUTJEVO) new /obj/item/map/kutjevo_map(T)
-	if(monkey_amount)
-		//var/debug_tally = 0
-		switch(map_tag)
-			if(MAP_LV_624) monkey_types = list(/mob/living/carbon/human/farwa, /mob/living/carbon/human/monkey, /mob/living/carbon/human/neaera, /mob/living/carbon/human/stok)
-			if(MAP_ICE_COLONY) monkey_types = list(/mob/living/carbon/human/yiren)
-			if(MAP_BIG_RED) monkey_types = list(/mob/living/carbon/human/neaera)
-			if(MAP_KUTJEVO) monkey_types = list(/mob/living/carbon/human/neaera, /mob/living/carbon/human/stok)
-			if(MAP_PRISON_STATION) monkey_types = list(/mob/living/carbon/human/monkey)
-			if(MAP_DESERT_DAM) monkey_types = list(/mob/living/carbon/human/stok)
-			if(MAP_SOROKYNE_STRATA) monkey_types = list(/mob/living/carbon/human/yiren)
-			if(MAP_CORSAT) monkey_types = list(/mob/living/carbon/human/yiren, /mob/living/carbon/human/farwa, /mob/living/carbon/human/monkey, /mob/living/carbon/human/neaera, /mob/living/carbon/human/stok)
-			else monkey_types = list(/mob/living/carbon/human/monkey) //make sure we always have a monkey type
-		if(monkey_types.len)
-			for(var/i = min(monkey_amount,monkey_spawns.len), i > 0, i--)
-				//I added this in so that if the amount of monkey_spawns (landmark) on the map are less then the monkey_spawns variable the game still works.
-				var/turf/T = pick(monkey_spawns)
-				monkey_spawns -= T
-				var/monkey_to_spawn = pick(monkey_types)
-				new monkey_to_spawn(T)
-				//debug_tally++
-
-		//message_admins("SPAWNED [debug_tally] MONKEYS") //DO NOT LEAVE THIS UNCOMMENTED, THIS IS DEV INFO ONLY
 
 	if(!round_fog.len) round_fog = null //No blockers?
 	else
@@ -154,16 +123,57 @@
 //We move it later with transform_survivor but they might flicker at any start_loc spawn landmark effects then disappear.
 //Xenos and survivors should not spawn anywhere until we transform them.
 /datum/game_mode/colonialmarines/post_setup()
-	initialize_post_predator_list()
-	initialize_post_xenomorph_list()
-	initialize_post_survivor_list()
 	initialize_post_marine_gear_list()
 	initialize_map_resource_list()
+	spawn_smallhosts()
 
 	round_time_lobby = world.time
 
 	addtimer(CALLBACK(src, .proc/ares_online), SECONDS_5)
 	addtimer(CALLBACK(src, .proc/map_announcement), SECONDS_20)
+
+#define MONKEYS_TO_MARINES_RATIO 1/20
+
+/datum/game_mode/colonialmarines/proc/spawn_smallhosts()
+	if(!marines_assigned)
+		return
+
+	var/list/monkey_spawns = list()
+	for(var/obj/effect/landmark/L in landmarks_list)
+		if(L.name == "monkey_spawn")
+			monkey_spawns += L.loc
+			qdel(L)
+
+	switch(map_tag)
+		if(MAP_LV_624) 
+			monkey_types = list(/mob/living/carbon/human/farwa, /mob/living/carbon/human/monkey, /mob/living/carbon/human/neaera, /mob/living/carbon/human/stok)
+		if(MAP_ICE_COLONY) 
+			monkey_types = list(/mob/living/carbon/human/yiren)
+		if(MAP_BIG_RED) 
+			monkey_types = list(/mob/living/carbon/human/neaera)
+		if(MAP_KUTJEVO) 
+			monkey_types = list(/mob/living/carbon/human/neaera, /mob/living/carbon/human/stok)
+		if(MAP_PRISON_STATION) 
+			monkey_types = list(/mob/living/carbon/human/monkey)
+		if(MAP_DESERT_DAM) 
+			monkey_types = list(/mob/living/carbon/human/stok)
+		if(MAP_SOROKYNE_STRATA) 
+			monkey_types = list(/mob/living/carbon/human/yiren)
+		if(MAP_CORSAT) 
+			monkey_types = list(/mob/living/carbon/human/yiren, /mob/living/carbon/human/farwa, /mob/living/carbon/human/monkey, /mob/living/carbon/human/neaera, /mob/living/carbon/human/stok)
+		else 
+			monkey_types = list(/mob/living/carbon/human/monkey) //make sure we always have a monkey type
+
+	if(!length(monkey_types))
+		return
+	
+	var/amount_to_spawn = round(marines_assigned * MONKEYS_TO_MARINES_RATIO)
+
+	for(var/i in 0 to min(amount_to_spawn, length(monkey_spawns)))
+		var/turf/T = pick(monkey_spawns)
+		monkey_spawns -= T
+		var/monkey_to_spawn = pick(monkey_types)
+		new monkey_to_spawn(T)
 
 /datum/game_mode/colonialmarines/proc/ares_online()
 	var/name = "ARES Online"
@@ -185,9 +195,9 @@
 		if (MAP_SOROKYNE_STRATA)
 			marine_announcement("An automated distress signal has been recieved from a mining colony on border world LV-976, \"Sorokyne Outpost\". A response team from the [MAIN_SHIP_NAME] will be dispatched shortly to investigate.", "[MAIN_SHIP_NAME]")
 		if (MAP_CORSAT)
-			marine_announcement("An automated distress signal has been received from Weyland-Yutani's Corporate Orbital Research Station for Advanced Technology, or CORSAT. The [MAIN_SHIP_NAME] has been dispatched to investigate.", "[MAIN_SHIP_NAME]")
+			marine_announcement("An automated distress signal has been received from Weston-Yamada's Corporate Orbital Research Station for Advanced Technology, or CORSAT. The [MAIN_SHIP_NAME] has been dispatched to investigate.", "[MAIN_SHIP_NAME]")
 		if (MAP_KUTJEVO)
-			marine_announcement("An automated distress signal has been received from Weston Yamada colony Kutjevo Refinery, known for botanical research, export, and raw materials processing and refinement. The [MAIN_SHIP_NAME] has been dispatched to investigate.", "[MAIN_SHIP_NAME]")
+			marine_announcement("An automated distress signal has been received from Weston-Yamada colony Kutjevo Refinery, known for botanical research, export, and raw materials processing and refinement. The [MAIN_SHIP_NAME] has been dispatched to investigate.", "[MAIN_SHIP_NAME]")
 
 ////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////

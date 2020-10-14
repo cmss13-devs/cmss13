@@ -480,3 +480,19 @@ a.purple:hover {
 .job_marine {
 	background-color: #ed5e5e;
 }
+
+.job_xeno {
+	background-color: #a268b1;
+}
+
+.job_xeno_queen {
+	background-color: #744580;
+}
+
+.job_predator {
+	background-color: #b9b9b9;
+}
+
+.job_special {
+	background-color: #663e2b;
+}

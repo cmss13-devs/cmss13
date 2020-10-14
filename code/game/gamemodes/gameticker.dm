@@ -113,9 +113,13 @@ var/global/datum/controller/gameticker/ticker = new()
 
 	//Configure mode and assign player to special mode stuff
 	if (!(mode.flags_round_type & MODE_NO_SPAWN))
-		RoleAuthority.setup_candidates_and_roles() //Distribute jobs
-		create_characters() //Create player characters and transfer them
-		equip_characters()
+		if(mode.flags_round_type & MODE_NEW_SPAWN)
+			RoleAuthority.setup_candidates_and_roles() //Distribute jobs
+			create_characters() // Create and equip characters
+		else
+			RoleAuthority.setup_candidates_and_roles() //Distribute jobs
+			old_create_characters() //Create player characters and transfer them
+			equip_characters()
 	
 	collect_minds()
 	data_core.manifest()
@@ -168,7 +172,31 @@ var/global/datum/controller/gameticker/ticker = new()
 	return 1
 
 /datum/controller/gameticker/proc/create_characters()
-	for(var/mob/new_player/player in GLOB.new_player_list)
+	if(!RoleAuthority)
+		return
+
+	for(var/mob/new_player/player in GLOB.player_list)
+		if(!player || !player.ready || !player.mind || !player.job)
+			continue
+		
+		INVOKE_ASYNC(src, .proc/spawn_and_equip_char, player)
+
+/datum/controller/gameticker/proc/spawn_and_equip_char(var/mob/new_player/player)
+	var/datum/job/J = RoleAuthority.roles_for_mode[player.job]
+	var/mob/M = J.spawn_in_player(player)
+	if(istype(M))
+		J.equip_job(M)
+		EquipCustomItems(M)
+
+		if(M.client)
+			var/client/C = M.client
+			if(C.player_data && C.player_data.playtime_loaded && length(C.player_data.playtimes) == 0)
+				msg_admin_niche("NEW PLAYER: <b>[key_name(player, 1, 1, 0)] (<A HREF='?_src_=admin_holder;ahelp=adminmoreinfo;extra=\ref[player]'>?</A>)</b>. IP: [player.lastKnownIP], CID: [player.computer_id]")
+		
+	QDEL_IN(player, 5)
+
+/datum/controller/gameticker/proc/old_create_characters()
+	for(var/mob/new_player/player in GLOB.player_list)
 		if(!(player && player.ready && player.mind))
 			continue
 		

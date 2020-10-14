@@ -1,5 +1,4 @@
 /datum/job/command
-	department_flag = ROLEGROUP_MARINE_COMMAND
 	selection_class = "job_command"
 	supervisors = "the acting commanding officer"
 	total_positions = 1
@@ -8,7 +7,6 @@
 //Commander
 /datum/job/command/commander
 	title = JOB_CO
-	flag = ROLE_COMMANDING_OFFICER
 	supervisors = "USCM high command"
 	selection_class = "job_co"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE|ROLE_ADMIN_NOTIFY|ROLE_WHITELISTED
@@ -65,7 +63,6 @@
 //Executive Officer
 /datum/job/command/executive
 	title = JOB_XO
-	flag = ROLE_EXECUTIVE_OFFICER
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE|ROLE_ADMIN_NOTIFY
 	gear_preset = "USCM Executive Officer (XO)"
 	minimum_playtimes = list(
@@ -79,7 +76,6 @@
 //Staff Officer
 /datum/job/command/bridge
 	title = JOB_SO
-	flag = ROLE_BRIDGE_OFFICER
 	total_positions = 5
 	spawn_positions = 5
 	allow_additional = 1
@@ -112,7 +108,6 @@
 //Pilot Officer
 /datum/job/command/pilot
 	title = JOB_PILOT
-	flag = ROLE_PILOT_OFFICER
 	total_positions = 3
 	spawn_positions = 2
 	allow_additional = 1
@@ -144,7 +139,6 @@
 //Tank Crewmen //For now, straight up copied from the pilot officers until their role is more solidified
 /datum/job/command/tank_crew
 	title = JOB_CREWMAN
-	flag = ROLE_CREWMAN
 	total_positions = 2
 	spawn_positions = 2
 	allow_additional = 1
@@ -163,7 +157,6 @@
 //Intelligence Officer
 /datum/job/command/intel
 	title = JOB_INTEL
-	flag = ROLE_INTEL_OFFICER
 	total_positions = 3
 	spawn_positions = 3
 	allow_additional = 1
@@ -195,7 +188,6 @@
 //Military Police
 /datum/job/command/police
 	title = JOB_POLICE
-	flag = ROLE_MILITARY_POLICE
 	total_positions = 5
 	spawn_positions = 5
 	allow_additional = 1
@@ -228,7 +220,6 @@
 // Warden
 /datum/job/command/warden
 	title = JOB_WARDEN
-	flag = ROLE_WARDEN
 	selection_class = "job_mp"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE
 	gear_preset = "USCM Military Warden (MW)"
@@ -243,7 +234,6 @@
 //Chief MP
 /datum/job/command/warrant
 	title = JOB_CHIEF_POLICE
-	flag = ROLE_CHIEF_MP
 	selection_class = "job_cmp"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE
 	gear_preset = "USCM Chief MP (CMP)"
@@ -258,7 +248,6 @@
 
 /datum/job/command/senior
 	title = JOB_SEA
-	flag = ROLE_SEA
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE|ROLE_ADMIN_NOTIFY|ROLE_WHITELISTED
 	flags_whitelist = WHITELIST_MENTOR
 	gear_preset = "USCM Senior Enlisted Advisor (SEA)"

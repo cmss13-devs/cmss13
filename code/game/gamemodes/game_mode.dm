@@ -148,18 +148,17 @@ var/global/cas_tracking_id_increment = 0	//this var used to assign unique tracki
 	var/list/players = list()
 	var/list/candidates = list()
 
-	var/roletext
+	var/ban_check = role
 	switch(role)
-		if(BE_ALIEN)				roletext = "Alien"
-		if(BE_QUEEN)				roletext = "Queen"
-		if(BE_SURVIVOR)				roletext = "Survivor"
-		if(BE_PREDATOR)				roletext = "Predator"
-		if(BE_SYNTH_SURVIVOR)		roletext = "Synth Survivor"
+		if(JOB_XENOMORPH)
+			ban_check = "Alien"
+		if(JOB_XENOMORPH_QUEEN)
+			ban_check = "Queen"
 
 	//Assemble a list of active players without jobbans.
 	for(var/mob/new_player/player in GLOB.player_list)
 		if(player.client && player.ready)
-			if(!jobban_isbanned(player, roletext))
+			if(!jobban_isbanned(player, ban_check))
 				players += player
 
 	//Shuffle the players list so that it becomes ping-independent.
@@ -167,8 +166,8 @@ var/global/cas_tracking_id_increment = 0	//this var used to assign unique tracki
 
 	//Get a list of all the people who want to be the antagonist for this round
 	for(var/mob/new_player/player in players)
-		if(player.client.prefs.be_special & role)
-			log_debug("[player.key] had [roletext] enabled, so we are drafting them.")
+		if(player.client.prefs.get_job_priority(role) > 0)
+			log_debug("[player.key] had [role] enabled, so we are drafting them.")
 			candidates += player.mind
 			players -= player
 

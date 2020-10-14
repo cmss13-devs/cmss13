@@ -222,6 +222,21 @@ var/const/MAX_SAVE_SLOTS = 10
 
 	dat += "<h2><b><u>Occupation Choices:</u></b></h2>"
 
+	var/display_prefix = xeno_prefix ? xeno_prefix : "------"
+	var/display_postfix = xeno_postfix ? xeno_postfix : "------"
+	dat += "<b>Xeno prefix:</b> <a href='?_src_=prefs;preference=xeno_prefix;task=input'>[display_prefix]</a><br>"
+	dat += "<b>Xeno postfix:</b> <a href='?_src_=prefs;preference=xeno_postfix;task=input'>[display_postfix]</a><br>"
+
+	dat += "<b>Show Xeno Age:</b> <a href='?_src_=prefs;preference=xeno_show_age'><b>[show_xeno_age? "Yes" : "No"]</b></a><br>"
+
+	var/tempnumber = rand(1, 999)
+	var/postfix_text = xeno_postfix ? ("-"+xeno_postfix) : ""
+	var/prefix_text = xeno_prefix ? xeno_prefix : "XX"
+	var/xeno_text = "[prefix_text]-[tempnumber][postfix_text]"
+
+	dat += "<b>Xeno sample name:</b> [xeno_text]<br>"
+	dat += "<br>"
+	
 	var/n = 0
 
 	var/list/special_roles = list(
@@ -234,29 +249,8 @@ var/const/MAX_SAVE_SLOTS = 10
 		var/list/missing_requirements = list()
 
 		switch(role_name)
-			if("Xenomorph")
-				ban_check_name = "Alien"
-
 			if("Xenomorph after<br>unrevivably dead")
 				ban_check_name = "Alien"
-
-			if("Xenomorph Queen")
-				ban_check_name = "Queen"
-				var/datum/caste_datum/C = RoleAuthority.castes_by_name[CASTE_QUEEN]
-
-				LAZYSET(missing_requirements, JOB_XENOMORPH, C.get_caste_requirement(user.client))
-
-			if("Survivor")
-				ban_check_name = "Survivor"
-				var/client/C = user.client
-				var/datum/job/J = RoleAuthority.roles_by_path[/datum/job/civilian/survivor]
-				missing_requirements = J.get_role_requirements(C)
-
-			if("Predator")
-				ban_check_name = "Predator"
-
-			if("Synth Survivor")
-				ban_check_name = "Synth Survivor"
 
 			if("Agent")
 				ban_check_name = "Agent"
@@ -269,22 +263,7 @@ var/const/MAX_SAVE_SLOTS = 10
 				dat += "\t[requirement] - [duration2text(missing_requirements[requirement])] Hours<br>"
 		else
 			dat += "<b>Be [role_name]:</b> <a href='?_src_=prefs;preference=be_special;num=[n]'><b>[be_special & (1<<n) ? "Yes" : "No"]</b></a><br>"
-			if(role_name == "Xenomorph")
-				var/display_prefix = xeno_prefix ? xeno_prefix : "------"
-				var/display_postfix = xeno_postfix ? xeno_postfix : "------"
-
-				dat += "<b>Xeno prefix:</b> <a href='?_src_=prefs;preference=xeno_prefix;task=input'>[display_prefix]</a><br>"
-				dat += "<b>Xeno postfix:</b> <a href='?_src_=prefs;preference=xeno_postfix;task=input'>[display_postfix]</a><br>"
-
-				dat += "<b>Show Xeno Age:</b> <a href='?_src_=prefs;preference=xeno_show_age'><b>[show_xeno_age? "Yes" : "No"]</b></a><br>"
-
-				var/tempnumber = rand(1, 999)
-				var/postfix_text = xeno_postfix ? ("-"+xeno_postfix) : ""
-				var/prefix_text = xeno_prefix ? xeno_prefix : "XX"
-				var/xeno_text = "[prefix_text]-[tempnumber][postfix_text]"
-
-				dat += "<b>Xeno sample name:</b> [xeno_text]<br>"
-
+	
 		n++
 
 	dat += "<br>"

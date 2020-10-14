@@ -279,30 +279,34 @@ Additional game mode variables.
 		var/mob/living/original = A.current
 		var/client/client = GLOB.directory[A.ckey]
 		if(jobban_isbanned(original, CASTE_QUEEN) || !can_play_special_job(client, CASTE_QUEEN))
-			possible_queens -= A
+			LAZYREMOVE(possible_queens, A)
 
-	if(possible_queens.len) // Pink one of the people who want to be Queen and put them in
+	if(LAZYLEN(possible_queens)) // Pink one of the people who want to be Queen and put them in
 		for(var/hive in hives)
 			var/new_queen = pick(possible_queens)
 			if(new_queen)
 				setup_new_xeno(new_queen)
 				picked_queens += list(hive_datum[hive] = new_queen)
-				possible_xenomorphs -= new_queen
+				LAZYREMOVE(possible_xenomorphs, new_queen)
 
 	for(var/datum/mind/A in possible_xenomorphs)
 		if(A.roundstart_picked)
-			possible_xenomorphs -= A
+			LAZYREMOVE(possible_xenomorphs, A)
 
 	for(var/hive in hives)
 		xenomorphs[hive_datum[hive]] = list()
 
 	var/datum/mind/new_xeno
 	var/current_index = 1
+	var/remaining_slots = 0
 	for(var/i in 1 to xeno_starting_num) //While we can still pick someone for the role.
-		var/datum/hive_status/hive = hive_datum[hives[current_index]]
-		if(possible_xenomorphs.len) //We still have candidates
+		if(current_index > LAZYLEN(hives))
+			current_index = 1
+
+		var/datum/hive_status/hive = hive_datum[LAZYACCESS(hives, current_index)]
+		if(LAZYLEN(possible_xenomorphs)) //We still have candidates
 			new_xeno = pick(possible_xenomorphs)
-			possible_xenomorphs -= new_xeno
+			LAZYREMOVE(possible_xenomorphs, new_xeno)
 
 			if(!new_xeno)
 				hive.stored_larva++
@@ -313,22 +317,23 @@ Additional game mode variables.
 
 			xenomorphs[hive] += new_xeno
 		else //Out of candidates, fill the xeno hive with pooled larva
-			hive.stored_larva += round((xeno_starting_num - i))
-			hive.hive_ui.update_pooled_larva()
+			remaining_slots = round((xeno_starting_num - i))
 			break
 
-		if(hives.len > 1)
-			if(current_index < hives.len)
-				current_index++
-			else
-				current_index = 1
+		current_index++
 
+
+	if(remaining_slots)
+		var/larva_per_hive = round(remaining_slots / LAZYLEN(hives))
+		for(var/hivenumb in hives)
+			var/datum/hive_status/hive = hive_datum[hivenumb]
+			hive.stored_larva = larva_per_hive
 
 	/*
 	Our list is empty. This can happen if we had someone ready as alien and predator, and predators are picked first.
 	So they may have been removed from the list, oh well.
 	*/
-	if(xenomorphs.len < xeno_required_num && picked_queens.len != hives.len)
+	if(LAZYLEN(xenomorphs) < xeno_required_num && LAZYLEN(picked_queens) != LAZYLEN(hives))
 		to_world("<h2 style=\"color:red\">Could not find any candidates after initial alien list pass. <b>Aborting</b>.</h2>")
 		return
 

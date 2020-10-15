@@ -58,6 +58,16 @@ AMMO
 	containername = "\improper M4A3 AP magazines crate"
 	group = "Ammo"
 
+/datum/supply_packs/ammo_m4a3_mag_box_hp
+	name = "Magazine box (M4A3, 16x HP mags)"
+	contains = list(
+					/obj/item/ammo_box/magazine/m4a3/hp
+					)
+	cost = RO_PRICE_CHEAP
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "\improper M4A3 HP magazines crate"
+	group = "Ammo"
+
 /datum/supply_packs/ammo_mod88_mag_box_ap
 	name = "Magazine box (88 Mod 4 AP, 16x mags)"
 	contains = list(

@@ -56,25 +56,24 @@ datum/objective_memory_storage
 /datum/objective_memory_storage/proc/view_objective_memories(mob/recipient, var/real_name)
 	synchronize_objectives()
 	var/output
-	
+
 	// Do we have DEFCON?
-	if(objectives_controller)
-		output += "<b>DEFCON [defcon_controller.current_defcon_level]:</b> [defcon_controller.check_defcon_percentage()]%"
-					
-		output += format_objective_list(folders, "FOLDERS")
-		output += format_objective_list(progress_reports, "PROGRESS REPORTS")
-		output += format_objective_list(technical_manuals, "TECHNICAL MANUALS")
-		output += format_objective_list(disks, "DISKS")
-		output += format_objective_list(terminals, "TERMINALS")
-		output += format_objective_list(retrieve_items, "RETRIEVE ITEMS")
-		output += format_objective_list(other, "OTHER")
+	output += "<b>DEFCON [defcon_controller.current_defcon_level]:</b> [defcon_controller.check_defcon_percentage()]%"
 
-		output += "<br>"
-		output += "<hr>"
-		output += "<br>"
+	output += format_objective_list(folders, "FOLDERS")
+	output += format_objective_list(progress_reports, "PROGRESS REPORTS")
+	output += format_objective_list(technical_manuals, "TECHNICAL MANUALS")
+	output += format_objective_list(disks, "DISKS")
+	output += format_objective_list(terminals, "TERMINALS")
+	output += format_objective_list(retrieve_items, "RETRIEVE ITEMS")
+	output += format_objective_list(other, "OTHER")
 
-		// Item and body retrieval %, power, etc.
-		output += objectives_controller.get_objectives_progress()
+	output += "<br>"
+	output += "<hr>"
+	output += "<br>"
+
+	// Item and body retrieval %, power, etc.
+	output += SSobjectives.get_objectives_progress()
 	var/window_name = "objective clues"
 	if(real_name)
 		window_name = "[real_name]'s objective clues"

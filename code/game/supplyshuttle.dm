@@ -333,7 +333,7 @@ var/datum/controller/supply/supply_controller = new()
 	var/points_per_process = 1.5
 	var/points_per_slip = 1
 	var/points_per_crate = 2
-	
+
 	var/base_random_crate_interval = 10 //Every how many processing intervals do we get a random crates.
 
 	var/crate_iteration = 0
@@ -383,7 +383,7 @@ var/datum/controller/supply/supply_controller = new()
 //Marines get one crate for each the amount of marines on the surface devided by the amount of marines per crate.
 //They always get the mincrates amount.
 /datum/controller/supply/proc/calculate_crate_amount()
-	
+
 	// Sqrt(NUM_XENOS/4)
 	var/crate_amount = Floor(max(0, sqrt(ticker.mode.count_xenos(SURFACE_Z_LEVELS)/3)))
 
@@ -459,7 +459,6 @@ var/datum/controller/supply/supply_controller = new()
 
 	// Sell crates.
 	for(var/obj/structure/closet/crate/C in area_shuttle)
-		callHook("sell_crate", list(C, area_shuttle))
 		points += points_per_crate
 		qdel(C)
 
@@ -926,7 +925,7 @@ var/datum/controller/supply/supply_controller = new()
 
 /obj/structure/machinery/computer/supplycomp/proc/post_signal(var/command)
 
-	var/datum/radio_frequency/frequency = radio_controller.return_frequency(1435)
+	var/datum/radio_frequency/frequency = SSradio.return_frequency(1435)
 
 	if(!frequency) return
 

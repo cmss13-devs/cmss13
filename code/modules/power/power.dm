@@ -94,10 +94,6 @@
 
 
 // rebuild all power networks from scratch
-
-/hook/startup/proc/buildPowernets()
-	return makepowernets()
-
 /proc/makepowernets()
 	for(var/datum/powernet/PN in powernets)
 		del(PN) //not qdel on purpose, powernet is still using del.

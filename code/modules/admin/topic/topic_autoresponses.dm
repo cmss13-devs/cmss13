@@ -59,8 +59,8 @@
 		else return
 	msgplayer += " <b><i>You may click on the staff member's name to ask more about this response.</i></b>"
 	message_staff("[usr.key] is autoresponding to [ref_person] with <font color='#009900'>'[choice]'</font>. They have been shown the following:\n[msgplayer]", 1)
-	STUI.staff.Add("\[[time_stamp()]][usr.key] is autoresponding to [ref_person] with [choice].<br>")
-	STUI.processing |= STUI_LOG_STAFF_CHAT
+	GLOB.STUI.staff.Add("\[[time_stamp()]][usr.key] is autoresponding to [ref_person] with [choice].<br>")
+	GLOB.STUI.processing |= STUI_LOG_STAFF_CHAT
 	to_chat(ref_person, msgplayer) //send a message to the player when the Admin clicks "Mark"
 	ref_person << sound('sound/effects/adminhelp-reply.ogg')
 

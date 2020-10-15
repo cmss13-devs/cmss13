@@ -56,7 +56,7 @@
 			O.forceMove(src)
 			scanner = O
 			to_chat(user, "You insert [O].")
-	
+
 	..()
 
 /obj/structure/machinery/computer/secure_data/attack_remote(mob/user as mob)
@@ -97,10 +97,10 @@
 <th><A href='?src=\ref[src];choice=Sorting;sort=rank'>Rank</A></th>
 <th>Criminal Status</th>
 </tr>"}
-				if(!isnull(data_core.general))
-					for(var/datum/data/record/R in sortRecord(data_core.general, sortBy, order))
+				if(!isnull(GLOB.data_core.general))
+					for(var/datum/data/record/R in sortRecord(GLOB.data_core.general, sortBy, order))
 						var/crimstat = ""
-						for(var/datum/data/record/E in data_core.security)
+						for(var/datum/data/record/E in GLOB.data_core.security)
 							if ((E.fields["name"] == R.fields["name"] && E.fields["id"] == R.fields["id"]))
 								crimstat = E.fields["criminal"]
 						var/background
@@ -127,7 +127,7 @@
 				dat += "<BR><A href='?src=\ref[src];choice=Delete All Records'>Delete All Records</A><BR><BR><A href='?src=\ref[src];choice=Return'>Back</A>"
 			if(3.0)
 				dat += "<CENTER><B>Security Record</B></CENTER><BR>"
-				if ((istype(active1, /datum/data/record) && data_core.general.Find(active1)))
+				if ((istype(active1, /datum/data/record) && GLOB.data_core.general.Find(active1)))
 					dat += text("<table><tr><td>	\
 					Name: <A href='?src=\ref[src];choice=Edit Field;field=name'>[active1.fields["name"]]</A><BR> \
 					ID: [active1.fields["id"]]<BR>\n \
@@ -142,7 +142,7 @@
 					</td></tr></table>")
 				else
 					dat += "<B>General Record Lost!</B><BR>"
-				if ((istype(active2, /datum/data/record) && data_core.security.Find(active2)))
+				if ((istype(active2, /datum/data/record) && GLOB.data_core.security.Find(active2)))
 					dat += text("<BR>\n<CENTER><B>Security Data</B></CENTER><BR>\n \
 								Criminal Status: <A href='?src=\ref[];choice=Edit Field;field=criminal'>[]</A><BR> \n \
 								Incidents: [active2.fields["incident"]]<BR>\n \
@@ -212,9 +212,9 @@ What a mess.*/
 /obj/structure/machinery/computer/secure_data/Topic(href, href_list)
 	if(..())
 		return
-	if (!( data_core.general.Find(active1) ))
+	if (!( GLOB.data_core.general.Find(active1) ))
 		active1 = null
-	if (!( data_core.security.Find(active2) ))
+	if (!( GLOB.data_core.security.Find(active2) ))
 		active2 = null
 	if ((usr.contents.Find(src) || (in_range(src, usr) && istype(loc, /turf))) || (ishighersilicon(usr)))
 		usr.set_interaction(src)
@@ -271,7 +271,7 @@ What a mess.*/
 				var/list/components = splittext(t1, " ")
 				if(components.len > 5)
 					return //Lets not let them search too greedily.
-				for(var/datum/data/record/R in data_core.general)
+				for(var/datum/data/record/R in GLOB.data_core.general)
 					var/temptext = R.fields["name"] + " " + R.fields["id"] + " " + R.fields["rank"]
 					for(var/i = 1, i<=components.len, i++)
 						if(findtext(temptext,components[i]))
@@ -279,7 +279,7 @@ What a mess.*/
 							prelist[1] = R
 							Perp += prelist
 				for(var/i = 1, i<=Perp.len, i+=2)
-					for(var/datum/data/record/E in data_core.security)
+					for(var/datum/data/record/E in GLOB.data_core.security)
 						var/datum/data/record/R = Perp[i]
 						if ((E.fields["name"] == R.fields["name"] && E.fields["id"] == R.fields["id"]))
 							Perp[i+1] = E
@@ -294,10 +294,10 @@ What a mess.*/
 			if ("Browse Record")
 				var/datum/data/record/R = locate(href_list["d_rec"])
 				var/S = locate(href_list["d_rec"])
-				if (!( data_core.general.Find(R) ))
+				if (!( GLOB.data_core.general.Find(R) ))
 					temp = "Record Not Found!"
 				else
-					for(var/datum/data/record/E in data_core.security)
+					for(var/datum/data/record/E in GLOB.data_core.security)
 						if ((E.fields["name"] == R.fields["name"] || E.fields["id"] == R.fields["id"]))
 							S = E
 					active1 = R
@@ -310,9 +310,9 @@ What a mess.*/
 					printing = 1
 					var/datum/data/record/record1 = null
 					var/datum/data/record/record2 = null
-					if ((istype(active1, /datum/data/record) && data_core.general.Find(active1)))
+					if ((istype(active1, /datum/data/record) && GLOB.data_core.general.Find(active1)))
 						record1 = active1
-					if ((istype(active2, /datum/data/record) && data_core.security.Find(active2)))
+					if ((istype(active2, /datum/data/record) && GLOB.data_core.security.Find(active2)))
 						record2 = active2
 					sleep(50)
 					var/obj/item/paper/P = new /obj/item/paper( loc )
@@ -342,8 +342,8 @@ What a mess.*/
 				temp += "<a href='?src=\ref[src];choice=Clear Screen'>No</a>"
 
 			if ("Purge All Records")
-				for(var/datum/data/record/R in data_core.security)
-					data_core.security -= R
+				for(var/datum/data/record/R in GLOB.data_core.security)
+					GLOB.data_core.security -= R
 					qdel(R)
 				temp = "All Security records deleted."
 
@@ -467,7 +467,7 @@ What a mess.*/
 	dat += "<a href='?src=\ref[src];choice=print_report'>Print Evidence</a><BR>"
 	dat += "<a href='?src=\ref[src];choice=return_menu'>Return</a><BR>"
 	dat += "<a href='?src=\ref[src];choice=return_clear'>Clear Print and Return</a>"
-	
+
 	return dat
 
 /obj/structure/machinery/computer/secure_data/proc/is_not_allowed(var/mob/user)
@@ -488,7 +488,7 @@ What a mess.*/
 		..(severity)
 		return
 
-	for(var/datum/data/record/R in data_core.security)
+	for(var/datum/data/record/R in GLOB.data_core.security)
 		if(prob(10/severity))
 			switch(rand(1,6))
 				if(1)
@@ -506,7 +506,7 @@ What a mess.*/
 			continue
 
 		else if(prob(1))
-			data_core.security -= R
+			GLOB.data_core.security -= R
 			qdel(R)
 			continue
 

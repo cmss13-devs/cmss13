@@ -24,9 +24,9 @@
 	sleep(5)
 	arm_equipment(H, "USCM Vehicle Crewman (CRMN)", TRUE, TRUE)
 	to_chat(H, "<font size='3'>\red You are a vehicle crewman in the USCM, you are here to assist in the defence of the [map_tag]. Listen to the chain of command.</B>")
-		
+
 	sleep(10)
 	to_chat(H, "<B>Objectives:</b> [objectives]")
 
-	data_core.manifest_inject(H) //Put people in crew manifest
+	GLOB.data_core.manifest_inject(H) //Put people in crew manifest
 

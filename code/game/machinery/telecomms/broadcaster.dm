@@ -110,7 +110,7 @@
 	// --- Broadcast to antag radios! ---
 	else if(data == RADIO_FILTER_TYPE_ANTAG_RADIOS)
 		for(var/antag_freq in ANTAG_FREQS)
-			var/datum/radio_frequency/antag_connection = radio_controller.return_frequency(antag_freq)
+			var/datum/radio_frequency/antag_connection = SSradio.return_frequency(antag_freq)
 			for (var/obj/item/device/radio/R in antag_connection.devices["[RADIO_CHAT]"])
 				var/atom/loc = R.loc
 				if(R.receive_range(display_freq, level) > -1 && OBJECTS_CAN_REACH(loc, radio_loc))
@@ -159,7 +159,7 @@
 							comm_title = H.comm_title + " [H.assigned_fireteam]"
 
 
-		else if(istype(M,/mob/living/silicon/decoy/ship_ai)) 
+		else if(istype(M,/mob/living/silicon/decoy/ship_ai))
 			command = 3
 
 	for (var/mob/R in receive)

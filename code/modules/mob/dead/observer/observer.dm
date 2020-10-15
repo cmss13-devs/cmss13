@@ -12,7 +12,7 @@
 	icon = 'icons/mob/mob.dmi'
 	icon_state = "ghost"
 	density = 0
-	canmove = TRUE 
+	canmove = TRUE
 	blinded = 0
 	anchored = 1	//  don't get pushed around
 	invisibility = INVISIBILITY_OBSERVER
@@ -215,10 +215,10 @@ Works together with spawning an observer, noted above.
 			ghost.client.soundOutput.update_ambience()
 			ghost.client.soundOutput.status_flags = 0 //Clear all effects that would affect a living mob
 			ghost.client.soundOutput.apply_status()
-		
+
 		if(ghost.client.player_data)
 			ghost.client.player_data.load_timestat_data()
-		
+
 	ghost.set_huds_from_prefs()
 
 	return ghost
@@ -270,7 +270,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		return
 
 	var/area/new_area = new_turf.loc
-	
+
 	if((new_area != last_area) && new_area)
 		new_area.Entered(src)
 		if(last_area)
@@ -302,7 +302,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set category = "Ghost"
 	set name = "Re-enter Corpse"
 
-	if(!client)	
+	if(!client)
 		return
 
 	if(!mind || !mind.original || QDELETED(mind.original) || !can_reenter_corpse)
@@ -528,7 +528,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set name = "View Crew Manifest"
 	set category = "Ghost"
 
-	var/dat = data_core.get_manifest()
+	var/dat = GLOB.data_core.get_manifest()
 
 	show_browser(src, dat, "Crew Manifest", "manifest", "size=450x750")
 
@@ -610,7 +610,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 	if(QDELETED(Z)) //should never occur,just to be sure.
 		return
-	
+
 	if(Z.stat == DEAD)
 		to_chat(src, SPAN_WARNING("This zombie is dead!"))
 		return

@@ -29,18 +29,18 @@
 	var/center_y = 0
 	var/max_dist = 20 // absolute value of center_x,y cannot exceed this integer
 
-	New()
-		..()
-		var/turf/T = loc
-		hide(T.intact_tile)
-		center = T
+/obj/structure/machinery/magnetic_module/Initialize(mapload, ...)
+	. = ..()
 
-		spawn(10)	// must wait for map loading to finish
-			if(radio_controller)
-				radio_controller.add_object(src, freq, RADIO_MAGNETS)
+	var/turf/T = loc
+	hide(T.intact_tile)
+	center = T
 
-		INVOKE_ASYNC(src, .proc/magnetic_process)
+	SSradio.add_object(src, freq, RADIO_MAGNETS)
 
+	INVOKE_ASYNC(src, .proc/magnetic_process)
+
+/obj/structure/machinery/magnetic_module
 	// update the invisibility and icon
 	hide(var/intact)
 		invisibility = intact ? 101 : 0
@@ -215,25 +215,19 @@
 
 	var/datum/radio_frequency/radio_connection
 
+/obj/structure/machinery/magnetic_controller/Initialize(mapload, ...)
+	. = ..()
+	if(autolink)
+		for(var/obj/structure/machinery/magnetic_module/M in machines)
+			if(M.freq == frequency && M.code == code)
+				magnets.Add(M)
 
-	New()
-		..()
+	SSradio.add_object(src, frequency, RADIO_MAGNETS)
 
-		if(autolink)
-			for(var/obj/structure/machinery/magnetic_module/M in machines)
-				if(M.freq == frequency && M.code == code)
-					magnets.Add(M)
+	if(path) // check for default path
+		filter_path() // renders rpath
 
-
-		spawn(45)	// must wait for map loading to finish
-			if(radio_controller)
-				radio_connection = radio_controller.add_object(src, frequency, RADIO_MAGNETS)
-
-
-		if(path) // check for default path
-			filter_path() // renders rpath
-
-
+/obj/structure/machinery/magnetic_controller
 	process()
 		if(magnets.len == 0 && autolink)
 			for(var/obj/structure/machinery/magnetic_module/M in machines)

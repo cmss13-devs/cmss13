@@ -4,7 +4,7 @@
 	icon_state = "signaller"
 	item_state = "signaler"
 	matter = list("metal" = 1000, "glass" = 200, "waste" = 100)
-	
+
 	wires = WIRE_RECEIVE|WIRE_PULSE|WIRE_RADIO_PULSE|WIRE_RADIO_RECEIVE
 
 	secured = 1
@@ -123,11 +123,11 @@ Code:
 
 
 /obj/item/device/assembly/signaler/receive_signal(datum/signal/signal)
-	if(!signal)	
+	if(!signal)
 		return FALSE
-	if(signal.encryption != code)	
+	if(signal.encryption != code)
 		return FALSE
-	if(!(src.wires & WIRE_RADIO_RECEIVE))	
+	if(!(src.wires & WIRE_RADIO_RECEIVE))
 		return FALSE
 
 	pulse(TRUE)
@@ -138,14 +138,9 @@ Code:
 
 
 /obj/item/device/assembly/signaler/proc/set_frequency(new_frequency)
-	if(!radio_controller)
-		sleep(20)
-	if(!radio_controller)
-		return
-	radio_controller.remove_object(src, frequency)
+	SSradio.remove_object(src, frequency)
 	frequency = new_frequency
-	radio_connection = radio_controller.add_object(src, frequency, RADIO_CHAT)
-	return
+	radio_connection = SSradio.add_object(src, frequency, RADIO_CHAT)
 
 /obj/item/device/assembly/signaler/Destroy()
 	radio_connection = null

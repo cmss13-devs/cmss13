@@ -36,9 +36,9 @@
 
 
 /obj/structure/machinery/computer/atmos_alert/proc/set_frequency(new_frequency)
-	radio_controller.remove_object(src, receive_frequency)
+	SSradio.remove_object(src, receive_frequency)
 	receive_frequency = new_frequency
-	radio_connection = radio_controller.add_object(src, receive_frequency, RADIO_ATMOSIA)
+	radio_connection = SSradio.add_object(src, receive_frequency, RADIO_ATMOSIA)
 
 
 /obj/structure/machinery/computer/atmos_alert/attack_hand(mob/user)

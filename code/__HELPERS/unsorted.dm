@@ -391,7 +391,7 @@ Turf and target are seperate in case you want to teleport some distance from a t
 
 	if(oldname)
 		//update the datacore records! This is goig to be a bit costly.
-		for(var/list/L in list(data_core.general,data_core.medical,data_core.security,data_core.locked))
+		for(var/list/L in list(GLOB.data_core.general, GLOB.data_core.medical, GLOB.data_core.security, GLOB.data_core.locked))
 			for(var/datum/data/record/R in L)
 				if(R.fields["name"] == oldname)
 					R.fields["name"] = newname
@@ -446,7 +446,7 @@ Turf and target are seperate in case you want to teleport some distance from a t
 			var/mob/living/silicon/ai/A = src
 			oldname = null//don't bother with the records update crap
 			A.SetName(newname)
-			
+
 	fully_replace_character_name(oldname,newname)
 
 
@@ -1092,7 +1092,7 @@ var/global/image/action_blue_power_up
 			action_blue_power_up = image('icons/effects/effects.dmi', null,"shock", "pixel_x" = 14)
 			action_blue_power_up.layer = FLY_LAYER
 		return action_blue_power_up
-		
+
 
 /*
  *	do_after handles timed actions

@@ -69,9 +69,9 @@
 	return attack_hand(user)
 
 /obj/structure/machinery/computer/card/attack_hand(mob/user as mob)
-	if(..()) 
+	if(..())
 		return
-	if(inoperable()) 
+	if(inoperable())
 		return
 	ui_interact(user)
 
@@ -84,7 +84,7 @@
 	data["station_name"] = station_name
 	data["mode"] = mode
 	data["printing"] = printing
-	data["manifest"] = data_core ? data_core.get_manifest(0) : null
+	data["manifest"] = GLOB.data_core.get_manifest(0)
 	data["target_name"] = modify ? modify.name : "-----"
 	data["target_owner"] = modify && modify.registered_name ? modify.registered_name : "-----"
 	data["target_rank"] = get_target_rank()
@@ -142,7 +142,7 @@
 	switch(href_list["choice"])
 		if ("modify")
 			if (modify)
-				data_core.manifest_modify(modify.registered_name, modify.assignment, modify.rank)
+				GLOB.data_core.manifest_modify(modify.registered_name, modify.assignment, modify.rank)
 				modify.name = text("[modify.registered_name]'s ID Card ([modify.assignment])")
 				if(ishuman(usr))
 					modify.loc = usr.loc
@@ -197,12 +197,12 @@
 				var/list/new_faction_group = list()
 				if(islist(modify.faction_group))
 					new_faction_group = modify.faction_group
-				
+
 				if(faction_unlocked)
 					new_faction_group.Remove(faction)
 				else
 					new_faction_group.Add(faction)
-				
+
 				modify.faction_group = new_faction_group
 
 		if ("assign")
@@ -217,7 +217,7 @@
 				else
 					var/list/access = list()
 					var/datum/job/jobdatum
-					
+
 					for(var/jobtype in typesof(/datum/job))
 						var/datum/job/J = new jobtype
 						if(ckey(J.title) == ckey(t1))
@@ -233,7 +233,6 @@
 					modify.assignment = t1
 					modify.rank = t1
 					message_staff("[key_name_admin(usr)] gave the ID of [modify.registered_name] the assignment [modify.assignment].")
-				callHook("reassign_employee", list(modify))
 
 		if ("reg")
 			if (is_authenticated())
@@ -269,7 +268,7 @@
 						P.name = text("crew manifest ([])", worldtime2text())
 						P.info = {"<h4>Crew Manifest</h4>
 							<br>
-							[data_core ? data_core.get_manifest(0) : ""]
+							[GLOB.data_core.get_manifest(0)]
 						"}
 					else if (modify)
 						P.name = "access report"
@@ -291,8 +290,6 @@
 				modify.assignment = "Terminated"
 				modify.access = list()
 				message_staff("[key_name_admin(usr)] terminated the ID of [modify.registered_name].")
-
-				callHook("terminate_employee", list(modify))
 
 	if (modify)
 		modify.name = text("[modify.registered_name]'s ID Card ([modify.assignment])")

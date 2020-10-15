@@ -17,13 +17,11 @@
 
 /datum/cm_objective/New()
 	cm_objectives += src
-	if(objectives_controller)
-		objectives_controller.add_objective(src)
+	SSobjectives.add_objective(src)
 
 /datum/cm_objective/Destroy()
 	cm_objectives -= src
-	if(objectives_controller)
-		objectives_controller.remove_objective(src)
+	SSobjectives.remove_objective(src)
 	for(var/datum/cm_objective/R in required_objectives)
 		R.enables_objectives -= src
 	for(var/datum/cm_objective/E in enables_objectives)
@@ -122,17 +120,17 @@
 	if(can_be_activated())
 		active = TRUE
 		if(!(objective_flags & OBJ_PROCESS_ON_DEMAND))
-			if(!(src in objectives_controller.active_objectives))
-				objectives_controller.active_objectives += src
-			objectives_controller.inactive_objectives -= src
+			if(!(src in SSobjectives.active_objectives))
+				SSobjectives.active_objectives += src
+			SSobjectives.inactive_objectives -= src
 
 /datum/cm_objective/proc/deactivate()
 	if(can_be_deactivated())
 		active = FALSE
 		if(!(objective_flags & OBJ_PROCESS_ON_DEMAND))
-			objectives_controller.active_objectives -= src
-			if(!(src in objectives_controller.inactive_objectives))
-				objectives_controller.inactive_objectives += src
+			SSobjectives.active_objectives -= src
+			if(!(src in SSobjectives.inactive_objectives))
+				SSobjectives.inactive_objectives += src
 
 /datum/cm_objective/proc/can_be_activated()
 	if(is_active())

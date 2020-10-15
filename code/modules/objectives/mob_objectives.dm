@@ -299,6 +299,10 @@
 	name = "Recover KIA Marines"
 	display_flags = OBJ_DISPLAY_AT_END
 
+/datum/cm_objective/recover_corpses/marines/New()
+	. = ..()
+	RegisterSignal(SSdcs, COMSIG_GLOB_MARINE_DEATH, .proc/handle_marine_deaths)
+
 /datum/cm_objective/recover_corpses/marines/proc/add_marine(var/mob/living/carbon/human/H)
 	if(!(H in corpses))
 		corpses += H
@@ -306,22 +310,34 @@
 /datum/cm_objective/recover_corpses/marines/proc/remove_marine(var/mob/living/carbon/human/H)
 	corpses -= H
 
-/hook/death/proc/handle_marine_deaths(var/mob/living/carbon/human/H, var/gibbed)
+/datum/cm_objective/recover_corpses/marines/proc/handle_marine_deaths(datum/source, mob/living/carbon/human/H, gibbed)
 	if(!istype(H))
 		return TRUE
-	if(!istype(H.assigned_squad) || gibbed || !objectives_controller)
+	if(!istype(H.assigned_squad) || gibbed)
 		return TRUE
-	objectives_controller.marines.add_marine(H)
+	add_marine(H)
+	RegisterSignal(H, list(
+		COMSIG_LIVING_REJUVENATED,
+		COMSIG_HUMAN_REVIVED,
+	), .proc/handle_marine_revival)
 	return TRUE
 
-/hook/clone/proc/handle_marine_revival(var/mob/living/carbon/human/H)
-	objectives_controller.marines.remove_marine(H)
+/datum/cm_objective/recover_corpses/marines/proc/handle_marine_revival(var/mob/living/carbon/human/H)
+	UnregisterSignal(H, list(
+		COMSIG_LIVING_REJUVENATED,
+		COMSIG_HUMAN_REVIVED,
+	))
+	remove_marine(H)
 	return TRUE
 
 /datum/cm_objective/recover_corpses/xenos
 	name = "Recover Xeno corpse specimens"
 	display_flags = OBJ_DISPLAY_AT_END
 	recovery_area = /area/almayer/medical/containment/cell
+
+/datum/cm_objective/recover_corpses/xenos/New()
+	. = ..()
+	RegisterSignal(SSdcs, COMSIG_GLOB_XENO_DEATH, .proc/handle_xeno_deaths)
 
 /datum/cm_objective/recover_corpses/xenos/proc/add_xeno(var/mob/living/X)
 	if(!(X in corpses))
@@ -333,11 +349,11 @@
 /datum/cm_objective/recover_corpses/xenos/get_completion_status()
 	return "[get_point_value()]pts Recovered"
 
-/hook/death/proc/handle_xeno_deaths(var/mob/living/X, var/gibbed)
-	if(!istype(X) || gibbed || !objectives_controller)
+/datum/cm_objective/recover_corpses/xenos/proc/handle_xeno_deaths(datum/source, mob/living/X, gibbed)
+	if(!istype(X) || gibbed)
 		return TRUE
 	if(isXeno(X) || isYautja(X))
-		objectives_controller.xenos.add_xeno(X)
+		add_xeno(X)
 	return TRUE
 
 /datum/cm_objective/contain

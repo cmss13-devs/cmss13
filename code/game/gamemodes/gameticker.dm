@@ -120,9 +120,9 @@ var/global/datum/controller/gameticker/ticker = new()
 			RoleAuthority.setup_candidates_and_roles() //Distribute jobs
 			old_create_characters() //Create player characters and transfer them
 			equip_characters()
-	
+
 	collect_minds()
-	data_core.manifest()
+	GLOB.data_core.manifest()
 
 	spawn(2)
 		mode.initialize_emergency_calls()
@@ -131,8 +131,9 @@ var/global/datum/controller/gameticker/ticker = new()
 
 	for(var/mob/new_player/np in GLOB.new_player_list)
 		np.new_player_panel_proc(TRUE)
-	
-	callHook("roundstart")
+
+	run_mapdaemon_batch()
+	begin_game_recording()
 
 	if((master_mode == "Distress Signal") && SSevents)
 		SSevents.Initialize()
@@ -178,7 +179,7 @@ var/global/datum/controller/gameticker/ticker = new()
 	for(var/mob/new_player/player in GLOB.player_list)
 		if(!player || !player.ready || !player.mind || !player.job)
 			continue
-		
+
 		INVOKE_ASYNC(src, .proc/spawn_and_equip_char, player)
 
 /datum/controller/gameticker/proc/spawn_and_equip_char(var/mob/new_player/player)
@@ -192,14 +193,14 @@ var/global/datum/controller/gameticker/ticker = new()
 			var/client/C = M.client
 			if(C.player_data && C.player_data.playtime_loaded && length(C.player_data.playtimes) == 0)
 				msg_admin_niche("NEW PLAYER: <b>[key_name(player, 1, 1, 0)] (<A HREF='?_src_=admin_holder;ahelp=adminmoreinfo;extra=\ref[player]'>?</A>)</b>. IP: [player.lastKnownIP], CID: [player.computer_id]")
-		
+
 	QDEL_IN(player, 5)
 
 /datum/controller/gameticker/proc/old_create_characters()
 	for(var/mob/new_player/player in GLOB.player_list)
 		if(!(player && player.ready && player.mind))
 			continue
-		
+
 		if(!player.job && !player.mind.roundstart_picked)
 			continue
 
@@ -254,7 +255,7 @@ var/global/datum/controller/gameticker/ticker = new()
 			declare_completion()
 
 		spawn(50)
-			callHook("roundend")
+			end_game_recording()
 
 			if (EvacuationAuthority.dest_status == NUKE_EXPLOSION_FINISHED || EvacuationAuthority.dest_status == NUKE_EXPLOSION_GROUND_FINISHED)
 				log_game("Round ended by nuke")

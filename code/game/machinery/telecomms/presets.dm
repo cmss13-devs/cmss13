@@ -51,8 +51,8 @@
 	add_tcomm_machine()
 
 /obj/structure/machinery/telecomms/relay/preset/tower/add_tcomm_machine()
-	if(powered() && radio_controller)
-		radio_controller.add_tcomm_machine(src)
+	if(powered())
+		SSradio.add_tcomm_machine(src)
 
 /obj/structure/machinery/telecomms/relay/preset/tower/powered()
 	return on && health > 0

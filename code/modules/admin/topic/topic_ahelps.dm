@@ -11,8 +11,8 @@
 				return
 
 			message_staff("[usr.key] has used 'Mark' on the Adminhelp from [key_name_admin(ref_person)] and is preparing to respond...", 1)
-			STUI.staff.Add("\[[time_stamp()]][usr.key] has used 'Mark' on the Adminhelp from [key_name_admin(ref_person)].<br>")
-			STUI.processing |= STUI_LOG_STAFF_CHAT
+			GLOB.STUI.staff.Add("\[[time_stamp()]][usr.key] has used 'Mark' on the Adminhelp from [key_name_admin(ref_person)].<br>")
+			GLOB.STUI.processing |= STUI_LOG_STAFF_CHAT
 			var/msgplayer = SPAN_NOTICE("<b>NOTICE: <font color=red>[usr.key]</font> has marked your request and is preparing to respond...</b>")
 
 			to_chat(ref_person, msgplayer)
@@ -36,8 +36,8 @@
 				return
 
 			message_staff("[usr.key] has used 'No Response' on the Adminhelp from [key_name_admin(ref_person)]. The player has been notified that their issue 'is being handled, it's fixed, or it's nonsensical'.", 1)
-			STUI.staff.Add("\[[time_stamp()]][usr.key] has used 'No Response' on the Adminhelp from [key_name_admin(ref_person)].<br>")
-			STUI.processing |= STUI_LOG_STAFF_CHAT
+			GLOB.STUI.staff.Add("\[[time_stamp()]][usr.key] has used 'No Response' on the Adminhelp from [key_name_admin(ref_person)].<br>")
+			GLOB.STUI.processing |= STUI_LOG_STAFF_CHAT
 			var/msgplayer = SPAN_NOTICE("<b>NOTICE: <font color=red>[usr.key]</font> has received your Adminhelp and marked it as 'No response necessary'. Either your Adminhelp is being handled, it's fixed, or it's nonsensical.</font></b>")
 
 			to_chat(ref_person, msgplayer) //send a message to the player when the Admin clicks "Mark"
@@ -61,8 +61,8 @@
 				return
 
 			message_staff("[usr.key] has used 'Warn' on the Adminhelp from [key_name_admin(ref_person)]. The player has been warned for abusing the Adminhelp system.", 1)
-			STUI.staff.Add("\[[time_stamp()]][usr.key] has used 'Warn' on the Adminhelp from [key_name_admin(ref_person)].<br>")
-			STUI.processing |= STUI_LOG_STAFF_CHAT
+			GLOB.STUI.staff.Add("\[[time_stamp()]][usr.key] has used 'Warn' on the Adminhelp from [key_name_admin(ref_person)].<br>")
+			GLOB.STUI.processing |= STUI_LOG_STAFF_CHAT
 			var/msgplayer = SPAN_NOTICE("<b>NOTICE: <font color=red>[usr.key]</font> has given you a <font color=red>warning</font>. Adminhelps are for serious inquiries only. Please do not abuse this system.</b>")
 
 			to_chat(ref_person, msgplayer) //send a message to the player when the Admin clicks "Mark"
@@ -131,11 +131,11 @@
 				var/mob/living/L = M
 				var/status
 				switch(M.stat)
-					if(0) 
+					if(0)
 						status = "Alive"
-					if(1) 
+					if(1)
 						status = "<font color='orange'><b>Unconscious</b></font>"
-					if(2) 
+					if(2)
 						status = "<font color='red'><b>Dead</b></font>"
 				health_description = "Status = [status]"
 				health_description += "<BR>Oxy: [L.getOxyLoss()] - Tox: [L.getToxLoss()] - Fire: [L.getFireLoss()] - Brute: [L.getBruteLoss()] - Clone: [L.getCloneLoss()] - Brain: [L.getBrainLoss()]"
@@ -144,9 +144,9 @@
 
 			//Gener
 			switch(M.gender)
-				if(MALE,FEMALE)	
+				if(MALE,FEMALE)
 					gender_description = "[M.gender]"
-				else			
+				else
 					gender_description = "<font color='red'><b>[M.gender]</b></font>"
 
 			to_chat(owner, "<b>Info about [M.name]:</b> ")

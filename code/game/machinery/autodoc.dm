@@ -75,7 +75,7 @@
 	else
 		human.apply_damage(-brute, BRUTE, picked)
 		human.apply_damage(-burn, BURN, picked)
-		
+
 	human.UpdateDamageIcon()
 	human.updatehealth()
 
@@ -240,7 +240,7 @@
 
 	var/mob/living/carbon/human/H = M
 	var/datum/data/record/N = null
-	for(var/datum/data/record/R in data_core.medical)
+	for(var/datum/data/record/R in GLOB.data_core.medical)
 		if (R.fields["name"] == H.real_name)
 			N = R
 	if(isnull(N))
@@ -761,7 +761,7 @@
 
 			var/list/surgeryqueue = list()
 			var/datum/data/record/N = null
-			for(var/datum/data/record/R in data_core.medical)
+			for(var/datum/data/record/R in GLOB.data_core.medical)
 				if (R.fields["name"] == connected.occupant.real_name)
 					N = R
 			if(isnull(N))
@@ -870,7 +870,7 @@
 		if(connected.occupant && ishuman(connected.occupant))
 			// manual surgery handling
 			var/datum/data/record/N = null
-			for(var/datum/data/record/R in data_core.medical)
+			for(var/datum/data/record/R in GLOB.data_core.medical)
 				if (R.fields["name"] == connected.occupant.real_name)
 					N = R
 			if(isnull(N))

@@ -9,7 +9,7 @@
 	var/input = input(usr, "Enter the description of the custom event. Be descriptive. To cancel the event, make this blank or hit cancel.", "Custom Event", custom_event_msg) as message|null
 	if(!input)
 		return
-	
+
 	if(input == "")
 		custom_event_msg = null
 		message_staff("[key_name_admin(usr)] has cleared the custom event text.")
@@ -45,7 +45,7 @@
 	config.remove_gun_restrictions = !config.remove_gun_restrictions
 
 /client/proc/adjust_weapon_mult()
-	if(!admin_holder || !config)	
+	if(!admin_holder || !config)
 		return
 
 	var/acc = input("Select the new accuracy multiplier.","ACCURACY MULTIPLIER", 1) as num
@@ -108,14 +108,14 @@
 	set name = "EM Pulse"
 	set category = "Event"
 
-	if(!check_rights(R_DEBUG|R_FUN))	
+	if(!check_rights(R_DEBUG|R_FUN))
 		return
 
 	var/heavy = input("Range of heavy pulse.", text("Input"))  as num|null
-	if(heavy == null) 
+	if(heavy == null)
 		return
 	var/light = input("Range of light pulse.", text("Input"))  as num|null
-	if(light == null) 
+	if(light == null)
 		return
 
 	if(!heavy && !light)
@@ -130,9 +130,9 @@
 	set desc = "Force Launch the ERT Shuttle."
 	set category = "Event"
 
-	if (!ticker  || !ticker.mode) 
+	if (!ticker  || !ticker.mode)
 		return
-	if(!check_rights(R_ADMIN))	
+	if(!check_rights(R_ADMIN))
 		return
 
 	var/tag = input("Which ERT shuttle should be force launched?", "Select an ERT Shuttle:") as null|anything in list("Distress", "Distress_PMC", "Distress_UPP", "Distress_Big")
@@ -278,9 +278,8 @@
 		to_chat(src, "Only administrators may use this command.")
 		return
 
-	if(objectives_controller)
-		to_chat(src, objectives_controller.get_objectives_progress())
-		to_chat(src, "<b>DEFCON:</b> [objectives_controller.get_scored_points()] / [objectives_controller.get_total_points()] points")
+	to_chat(src, SSobjectives.get_objectives_progress())
+	to_chat(src, "<b>DEFCON:</b> [SSobjectives.get_scored_points()] / [SSobjectives.get_total_points()] points")
 
 	for(var/datum/hive_status/hive in hive_datum)
 		if(hive.xenocon_points)
@@ -416,14 +415,14 @@
 	var/hive_choice = input(usr, "Please choose the hive you want to see your announcement. Selecting \"All hives\" option will change title to \"Unknown Higher Force\"", "Hive Selection", "") as null|anything in hives
 	if(!hive_choice)
 		return FALSE
-	
+
 	var/hivenumber = hives[hive_choice]
-	
-	
+
+
 	var/input = input(usr, "This should be a message from the ruler of the Xenomorph race.", "What?", "") as message|null
 	if(!input)
 		return FALSE
-	
+
 	var/hive_prefix = ""
 	if(hive_datum[hivenumber])
 		var/datum/hive_status/hive = hive_datum[hivenumber]
@@ -507,7 +506,7 @@
 
 	if(!msg)
 		return
-		
+
 	to_world(SPAN_ANNOUNCEMENT_HEADER_BLUE(msg))
 	message_staff(SPAN_NOTICE("\bold GlobalNarrate: [key_name_admin(usr)] : [msg]"))
 
@@ -530,7 +529,7 @@
 			return
 
 /client/proc/play_imported_sound(soundin as sound)
-	if(!check_rights(R_SOUNDS))	
+	if(!check_rights(R_SOUNDS))
 		return
 	if(midi_playing)
 		to_chat(usr, "No. An Admin already played a midi recently.")
@@ -577,7 +576,7 @@
 		total_silenced = 0
 
 /client/proc/play_sound_from_list()
-	if(!check_rights(R_SOUNDS))	
+	if(!check_rights(R_SOUNDS))
 		return
 	var/list/sounds = file2list("sound/soundlist.txt");
 	sounds += "--CANCEL--"
@@ -605,14 +604,14 @@
 	set name = "Z: Mob Event Verbs - Show"
 	set category = "Event"
 
-	verbs += admin_mob_event_verbs_hideable 
+	verbs += admin_mob_event_verbs_hideable
 	verbs -= /client/proc/enable_event_mob_verbs
 
 /client/proc/hide_event_mob_verbs()
 	set name = "Z: Mob Event Verbs - Hide"
 	set category = "Event"
 
-	verbs -= admin_mob_event_verbs_hideable 
+	verbs -= admin_mob_event_verbs_hideable
 	verbs += /client/proc/enable_event_mob_verbs
 
 // ----------------------------
@@ -620,7 +619,7 @@
 // ----------------------------
 
 /datum/admins/proc/event_panel()
-	if(!check_rights(R_FUN,0))	
+	if(!check_rights(R_FUN,0))
 		return
 
 	var/dat = {"

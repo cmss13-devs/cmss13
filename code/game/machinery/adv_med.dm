@@ -243,7 +243,7 @@
 	else if (connected) //Is something connected?
 		var/mob/living/carbon/human/H = connected.occupant
 		var/datum/data/record/N = null
-		for(var/datum/data/record/R in data_core.medical)
+		for(var/datum/data/record/R in GLOB.data_core.medical)
 			if (R.fields["name"] == H.real_name)
 				N = R
 		if(isnull(N))
@@ -335,10 +335,10 @@
 	if (occ["virus_present"])
 		dat += SET_CLASS("Viral pathogen detected in blood stream.", INTERFACE_RED)
 		dat += "<br>"
-		
+
 	s_class = occ["bruteloss"] < 60 ? INTERFACE_GOOD : INTERFACE_BAD
 	dat += "[SET_CLASS("&nbsp&nbspBrute Damage:", INTERFACE_RED)] [SET_CLASS("[occ["bruteloss"]]%", s_class)]<br>"
-	
+
 	s_class = occ["oxyloss"] < 60 ? INTERFACE_GOOD : INTERFACE_BAD
 	dat += "[SET_CLASS("&nbsp&nbspRespiratory Damage:", INTERFACE_BLUE)] [SET_CLASS("[occ["oxyloss"]]%", s_class)]<br>"
 
@@ -433,7 +433,7 @@
 
 		if(!AN && !open && !imp && !bled && !internal_bleeding && !lung_ruptured)
 			AN = "None"
-		
+
 		if(!(e.status & LIMB_DESTROYED))
 			dat += "<td>[e.display_name]</td><td>[e.burn_dam]</td><td>[e.brute_dam]</td><td>[robot][bled][AN][splint][open][imp][internal_bleeding][lung_ruptured]</td>"
 		else
@@ -446,7 +446,7 @@
 			mech += "Assisted<br>"
 		if(i.robotic == ORGAN_ROBOT)
 			mech += "Mechanical<br>"
-		
+
 		if(!mech)
 			mech = "None"
 
@@ -467,7 +467,7 @@
 	if(occ["sdisabilities"] & NEARSIGHTED)
 		dat += SET_CLASS("Retinal misalignment detected.", INTERFACE_RED)
 		dat += "<BR>"
-	
+
 	dat += "</body></html>"
 	return dat
 

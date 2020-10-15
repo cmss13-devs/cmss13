@@ -58,9 +58,6 @@ var/savefile/Banlist
 	CMinutes = (world.realtime / 10) / 60
 	return 1
 
-/hook/startup/proc/loadBans()
-	return LoadBans()
-
 /proc/LoadBans()
 
 	Banlist = new("data/banlist.bdb")
@@ -173,7 +170,7 @@ var/savefile/Banlist
 
 /datum/admins/proc/unbanpanel()
 	var/dat
-	
+
 	var/list/datum/view_record/player_ban_view/PBV = DB_VIEW(/datum/view_record/player_ban_view) // no filter
 
 	for(var/datum/view_record/player_ban_view/ban in PBV)

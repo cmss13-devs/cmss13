@@ -51,17 +51,10 @@
 
 
 /obj/structure/machinery/air_sensor/proc/set_frequency(new_frequency)
-	radio_controller.remove_object(src, frequency)
+	SSradio.remove_object(src, frequency)
 	frequency = new_frequency
-	radio_connection = radio_controller.add_object(src, frequency, RADIO_ATMOSIA)
+	radio_connection = SSradio.add_object(src, frequency, RADIO_ATMOSIA)
 
 /obj/structure/machinery/air_sensor/Initialize()
 	. = ..()
 	set_frequency(frequency)
-
-/obj/structure/machinery/air_sensor/New()
-	..()
-
-	if(radio_controller)
-		set_frequency(frequency)
-

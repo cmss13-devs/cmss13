@@ -50,8 +50,8 @@ var/global/normal_ooc_colour = "#1c52f5"
 			return
 
 	log_ooc("[mob.name]/[key] : [msg]")
-	STUI.ooc.Add("\[[time_stamp()]] <font color='#display_colour'>OOC: [mob.name]/[key]: [msg]</font><br>")
-	STUI.processing |= STUI_LOG_OOC_CHAT
+	GLOB.STUI.ooc.Add("\[[time_stamp()]] <font color='#display_colour'>OOC: [mob.name]/[key]: [msg]</font><br>")
+	GLOB.STUI.processing |= STUI_LOG_OOC_CHAT
 	var/display_colour = normal_ooc_colour
 	if(admin_holder && !admin_holder.fakekey && !AHOLD_IS_ONLY_MENTOR(admin_holder))
 		display_colour = "#2e78d9"	//light blue
@@ -77,7 +77,7 @@ var/global/normal_ooc_colour = "#1c52f5"
 					else
 						display_name = admin_holder.fakekey
 			to_chat(C, "<font color='[display_colour]'><span class='ooc'>[src.donator ? "\[D\] " : ""]<span class='prefix'>OOC: [display_name]</span>: <span class='message'>[msg]</span></span></font>")
-	
+
 	usr.talked = 1
 	addtimer(CALLBACK(usr, .proc/clear_chat_spam_mute, usr.talked), CHAT_OOC_DELAY, TIMER_UNIQUE)
 
@@ -139,8 +139,8 @@ var/global/normal_ooc_colour = "#1c52f5"
 			return
 
 	log_ooc("(LOCAL) [mob.name]/[key] : [msg]")
-	STUI.ooc.Add("\[[time_stamp()]] <font color='#6699CC'>LOOC: [mob.name]/[key]: [msg]</font><br>")
-	STUI.processing |= STUI_LOG_OOC_CHAT
+	GLOB.STUI.ooc.Add("\[[time_stamp()]] <font color='#6699CC'>LOOC: [mob.name]/[key]: [msg]</font><br>")
+	GLOB.STUI.processing |= STUI_LOG_OOC_CHAT
 	var/list/heard = get_mobs_in_view(7, src.mob)
 	var/mob/S = src.mob
 

@@ -3,7 +3,7 @@
 /mob/living/carbon/Xenomorph/death(var/cause, var/gibbed)
 	var/msg = "lets out a waning guttural screech, green blood bubbling from its maw."
 	. = ..(cause, gibbed, msg)
-	if(!.) 
+	if(!.)
 		return //If they're already dead, it will return.
 
 	living_xeno_list -= src
@@ -41,7 +41,7 @@
 				var/list/players_with_xeno_pref = get_alien_candidates()
 				while(hive_datum[hivenumber].stored_larva > 0 && istype(hive_datum[hivenumber].spawn_pool, /obj/effect/alien/resin/special/pool)) // stil some left
 					larva_spawn = get_turf(hive_datum[hivenumber].spawn_pool)
-					if(players_with_xeno_pref && players_with_xeno_pref.len)	
+					if(players_with_xeno_pref && players_with_xeno_pref.len)
 						var/mob/xeno_candidate = pick(players_with_xeno_pref)
 						var/mob/living/carbon/Xenomorph/Larva/new_xeno = new /mob/living/carbon/Xenomorph/Larva(larva_spawn)
 						new_xeno.set_hive_and_update(hivenumber)
@@ -108,7 +108,7 @@
 	if(hardcore)
 		QDEL_IN(src, 3 SECONDS)
 
-	callHook("death", list(src, gibbed))
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_XENO_DEATH, src, gibbed)
 
 /mob/living/carbon/Xenomorph/gib(var/cause = "gibbing")
 	var/obj/effect/decal/remains/xeno/remains = new(get_turf(src))

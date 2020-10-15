@@ -413,9 +413,9 @@
 			perpname = name
 
 		if(perpname)
-			for (var/datum/data/record/E in data_core.general)
+			for (var/datum/data/record/E in GLOB.data_core.general)
 				if(E.fields["name"] == perpname)
-					for (var/datum/data/record/R in data_core.security)
+					for (var/datum/data/record/R in GLOB.data_core.security)
 						if(R.fields["id"] == E.fields["id"])
 							criminal = R.fields["criminal"]
 
@@ -429,7 +429,7 @@
 
 		// scan reports
 		var/datum/data/record/N = null
-		for(var/datum/data/record/R in data_core.medical)
+		for(var/datum/data/record/R in GLOB.data_core.medical)
 			if (R.fields["name"] == real_name)
 				N = R
 				break
@@ -456,7 +456,7 @@
 		if( findtext(pose,".",length(pose)) == 0 && findtext(pose,"!",length(pose)) == 0 && findtext(pose,"?",length(pose)) == 0 )
 			pose = addtext(pose,".") //Makes sure all emotes end with a period.
 		msg += "\n[t_He] is [pose]"
-	
+
 	to_chat(user, msg)
 
 	if(isYautja(user))

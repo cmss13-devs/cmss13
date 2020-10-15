@@ -69,8 +69,8 @@
 
 	var/bloodiness = 0		// count of bloodiness
 
-/obj/structure/machinery/bot/mulebot/New()
-	..()
+/obj/structure/machinery/bot/mulebot/Initialize(mapload, ...)
+	. = ..()
 	botcard = new(src)
 	var/datum/job/J = RoleAuthority ? RoleAuthority.roles_by_path[/datum/job/logistics/tech/cargo] : new /datum/job/logistics/tech/cargo
 	botcard.access = J.get_access()
@@ -80,17 +80,15 @@
 	cell.maxcharge = 2000
 	setup_wires()
 
-	spawn(5)	// must wait for map loading to finish
-		if(radio_controller)
-			radio_controller.add_object(src, control_freq, filter = RADIO_MULEBOT)
-			radio_controller.add_object(src, beacon_freq, filter = RADIO_NAVBEACONS)
+	SSradio.add_object(src, control_freq, filter = RADIO_MULEBOT)
+	SSradio.add_object(src, beacon_freq, filter = RADIO_NAVBEACONS)
 
-		var/count = 0
-		for(var/obj/structure/machinery/bot/mulebot/other in machines)
-			count++
-		if(!suffix)
-			suffix = "#[count]"
-		name = "Mulebot ([suffix])"
+	var/count = 0
+	for(var/obj/structure/machinery/bot/mulebot/other in machines)
+		count++
+	if(!suffix)
+		suffix = "#[count]"
+	name = "Mulebot ([suffix])"
 
 	verbs -= /atom/movable/verb/pull
 
@@ -875,7 +873,7 @@
 	if(freq == control_freq && !(wires & wire_remote_tx))
 		return
 
-	var/datum/radio_frequency/frequency = radio_controller.return_frequency(freq)
+	var/datum/radio_frequency/frequency = SSradio.return_frequency(freq)
 
 	if(!frequency) return
 

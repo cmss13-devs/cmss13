@@ -36,8 +36,6 @@
 #define AHOLD_IS_MOD(ahold) (ahold && (ahold.rights & R_MOD))
 #define AHOLD_IS_ADMIN(ahold) (ahold && (ahold.rights & R_ADMIN))
 
-var/global/obj/effect/datacore/data_core = null
-
 		//items that ask to be called every cycle
 
 var/global/list/global_map = null

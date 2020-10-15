@@ -56,10 +56,6 @@ var/list/admin_ranks = list()								//list of all ranks with associated rights
 	testing(msg)
 	#endif
 
-/hook/startup/proc/loadAdmins()
-	load_admins()
-	return 1
-
 /proc/load_admins()
 	//clear the datums references
 	admin_datums.Cut()
@@ -98,7 +94,7 @@ var/list/admin_ranks = list()								//list of all ranks with associated rights
 		var/datum/admins/D = new /datum/admins(rank, rights, ckey)
 
 		//find the client for a ckey if they are connected and associate them with the new admin datum
-		D.associate(GLOB.directory[ckey])	
+		D.associate(GLOB.directory[ckey])
 
 	#ifdef TESTING
 	var/msg = "Admins Built:\n"

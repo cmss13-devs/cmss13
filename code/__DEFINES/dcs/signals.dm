@@ -8,6 +8,14 @@
 
 ///from base of datum/controller/subsystem/mapping/proc/add_new_zlevel(): (list/args)
 #define COMSIG_GLOB_VEHICLE_ORDERED "!vehicle_ordered"
+///from /datum/game_mode/proc/pre_setup
+#define COMSIG_GLOB_MODE_PRESETUP "!mode_presetup"
+///from /datum/game_mode/proc/post_setup
+#define COMSIG_GLOB_MODE_POSTSETUP "!mode_postsetup"
+///from /mob/living/carbon/human/death
+#define COMSIG_GLOB_MARINE_DEATH "!marine_death"
+///from /mob/living/carbon/Xenomorph/death
+#define COMSIG_GLOB_XENO_DEATH "!xeno_death"
 
 //////////////////////////////////////////////////////////////////
 

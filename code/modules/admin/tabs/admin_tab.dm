@@ -27,9 +27,9 @@
 	set desc = "Remove your protection from becoming a larva."
 	set category = "Admin"
 
-	if(!admin_holder)	
+	if(!admin_holder)
 		return
-		
+
 	if(istype(mob,/mob/dead/observer))
 		var/mob/dead/observer/ghost = mob
 		if(ghost.adminlarva == 0)
@@ -88,7 +88,7 @@
 	if(istype(mob,/mob/new_player))
 		to_chat(src, "<font color='red'>Error: Aghost: Can't admin-ghost whilst in the lobby. Join or Observe first.</font>")
 		return
-	
+
 	//ghostize
 	log_admin("[key_name(usr)] admin ghosted.")
 
@@ -96,19 +96,19 @@
 	body.ghostize(TRUE)
 	if(body && !body.key)
 		body.key = "@[key]"	//Haaaaaaaack. But the people have spoken. If it breaks; blame adminbus
-		if(body.client) 
+		if(body.client)
 			body.client.change_view(world_view_size) //reset view range to default.
 
 		//re-open STUI
 	if(new_STUI)
-		STUI.ui_interact(mob)
+		GLOB.STUI.ui_interact(mob)
 
 /datum/admins/proc/announce()
 	set name = "X: Admin Announcement"
 	set desc = "Announce your desires to the world"
 	set category = "Admin"
 
-	if(!check_rights(0))	
+	if(!check_rights(0))
 		return
 	var/message = input("Global message to send:", "Admin Announce", null, null)  as message
 	if(message)
@@ -125,7 +125,7 @@
 	if (!istype(src,/datum/admins) || !(src.rights & R_MOD))
 		to_chat(usr, "Error: you are not an admin!")
 		return
-	
+
 	var/datum/entity/player/P = get_player_from_key(key)
 	if(!P.migrated_notes)
 		to_chat(usr, "Error: notes not yet migrated for that key. Please try again in 5 minutes.")
@@ -162,7 +162,7 @@
 	set category = "Admin"
 	set hidden = 1
 
-	if(!check_rights(0))	
+	if(!check_rights(0))
 		return
 
 	if(alert("This will toggle a sleep/awake status on ALL mobs within your view range (for Administration purposes). Are you sure?",,"Yes","Cancel") == "Cancel")
@@ -196,16 +196,16 @@
 	set category = "Admin"
 	set hidden = 1
 
-	if(!check_rights(R_ADMIN))	
+	if(!check_rights(R_ADMIN))
 		return
 
 	msg = copytext(sanitize(msg), 1, MAX_MESSAGE_LEN)
-	if(!msg)	
+	if(!msg)
 		return
 
 	log_admin("ADMIN : [key_name(src)] : [msg]")
-	STUI.staff.Add("\[[time_stamp()]] <font color='#800080'>ADMIN: [key_name(src)] : [msg]</font><br>")
-	STUI.processing |= STUI_LOG_STAFF_CHAT
+	GLOB.STUI.staff.Add("\[[time_stamp()]] <font color='#800080'>ADMIN: [key_name(src)] : [msg]</font><br>")
+	GLOB.STUI.processing |= STUI_LOG_STAFF_CHAT
 
 	var/color = "adminsay"
 	if(ishost(usr))
@@ -222,13 +222,13 @@
 	set category = "Admin"
 	set hidden = 1
 
-	if(!check_rights(R_ADMIN|R_MOD))	
+	if(!check_rights(R_ADMIN|R_MOD))
 		return
 
 	msg = copytext(sanitize(msg), 1, MAX_MESSAGE_LEN)
 	log_admin("MOD: [key_name(src)] : [msg]")
-	STUI.staff.Add("\[[time_stamp()]] <font color='#b82e00'>MOD: [key_name(src)] : [msg]</font><br>")
-	STUI.processing |= STUI_LOG_STAFF_CHAT
+	GLOB.STUI.staff.Add("\[[time_stamp()]] <font color='#b82e00'>MOD: [key_name(src)] : [msg]</font><br>")
+	GLOB.STUI.processing |= STUI_LOG_STAFF_CHAT
 
 	if (!msg)
 		return
@@ -246,7 +246,7 @@
 	set name = "Z: Mob Admin Verbs - Show"
 	set category = "Admin"
 
-	verbs += admin_mob_verbs_hideable 
+	verbs += admin_mob_verbs_hideable
 	verbs -= /client/proc/enable_admin_mob_verbs
 
 /client/proc/hide_admin_mob_verbs()
@@ -338,7 +338,7 @@
 // PANELS
 // ----------------------------
 /datum/admins/proc/teleport_panel()
-	if(!check_rights(R_MOD, 0))	
+	if(!check_rights(R_MOD, 0))
 		return
 
 	var/dat = {"
@@ -365,11 +365,11 @@
 
 	if(!admin_holder || !check_rights(R_MOD, FALSE))
 		return
-		
+
 	admin_holder.teleport_panel()
 
 /datum/admins/proc/vehicle_panel()
-	if(!check_rights(R_MOD, 0))	
+	if(!check_rights(R_MOD, 0))
 		return
 
 	var/dat = {"
@@ -412,5 +412,5 @@
 
 	if(!admin_holder || !check_rights(R_MOD, FALSE))
 		return
-		
+
 	admin_holder.in_view_panel()

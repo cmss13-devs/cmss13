@@ -58,3 +58,6 @@
 
 /// Create a typed null global
 #define GLOBAL_DATUM(X, Typepath) GLOBAL_RAW(Typepath/##X); GLOBAL_UNMANAGED(X)
+
+/// Load a file in as a global list
+#define GLOBAL_LIST_FILE_LOAD(X, F) GLOBAL_LIST_INIT(X, file2list(F))

@@ -50,10 +50,9 @@
 		cameranet.updateVisibility(src)
 	. = ..()
 
-/obj/effect/New()
-	..()
-	if(ticker)
-		cameranet.updateVisibility(src)
+/obj/effect/Initialize(mapload, ...)
+	. = ..()
+	cameranet.updateVisibility(src)
 
 
 

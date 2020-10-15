@@ -4,15 +4,10 @@
 //for multiple items just add mutliple entries, unless i change it to be a listlistlist
 //yes, it has to be an item, you can't pick up nonitems
 
-/var/list/custom_items = list()
-
-/hook/startup/proc/loadCustomItems()
-	var/custom_items_file = file2text("config/custom_items.txt")
-	custom_items = splittext(custom_items_file, "\n")
-	return 1
+GLOBAL_LIST_FILE_LOAD(custom_items, "config/custom_items.txt")
 
 /proc/EquipCustomItems(mob/living/carbon/human/M)
-	for(var/line in custom_items)
+	for(var/line in GLOB.custom_items)
 		// split & clean up
 		var/list/Entry = splittext(line, ":")
 		for(var/i = 1 to Entry.len)

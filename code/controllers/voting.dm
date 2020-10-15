@@ -461,15 +461,8 @@ var/kill_map_daemon = 0
 	kill_map_daemon = 0
 
 	message_staff("[src] is attempting to restart MapDaemon.")
-	
-	run_mapdaemon_batch()
-
-//Need to return 1 so that the thing calling hooks wont think that this failed
-/hook/roundstart/proc/launchMapDaemon()
 
 	run_mapdaemon_batch()
-
-	return 1
 
 /proc/run_mapdaemon_batch()
 

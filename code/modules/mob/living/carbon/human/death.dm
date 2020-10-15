@@ -35,15 +35,11 @@
 /mob/living/carbon/human/dust_animation()
 	new /obj/effect/overlay/temp/dust_animation(loc, src, "dust-h")
 
-/mob/living/carbon/human/rejuvenate()
-	..()
-	callHook("clone", list(src))
-
 /mob/living/carbon/human/death(var/cause, var/gibbed)
-	if(stat == DEAD) 
+	if(stat == DEAD)
 		return
 	living_human_list -= src
-	if(!gibbed) 
+	if(!gibbed)
 		disable_special_flags()
 		disable_lights()
 		disable_special_items()
@@ -51,10 +47,11 @@
 	if(pulledby && isXeno(pulledby)) // Xenos lose grab on dead humans
 		pulledby.stop_pulling()
 	//Handle species-specific deaths.
-	if(species) 
+	if(species)
 		species.handle_death(src, gibbed)
 
-	callHook("death", list(src, gibbed))
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_MARINE_DEATH, src, gibbed)
+
 	if(!gibbed && species.death_sound)
 		playsound(loc, species.death_sound, 50, 1)
 

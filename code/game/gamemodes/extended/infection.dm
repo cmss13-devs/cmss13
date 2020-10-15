@@ -14,7 +14,7 @@
 
 /datum/game_mode/infection/pre_setup()
 	setup_round_stats()
-	return 1
+	return ..()
 
 /datum/game_mode/infection/post_setup()
 	initialize_post_survivor_list()
@@ -24,6 +24,7 @@
 		np.new_player_panel_proc()
 	spawn(50)
 		marine_announcement("We've lost contact with the Weston-Yamada's research facility, [name]. The [MAIN_SHIP_NAME] has been dispatched to assist.", "[MAIN_SHIP_NAME]")
+	return ..()
 
 /datum/game_mode/infection/can_start()
 	initialize_starting_survivor_list()
@@ -42,7 +43,7 @@
 
 /datum/game_mode/infection/process()
 	. = ..()
-	if(--round_started > 0) 
+	if(--round_started > 0)
 		return FALSE //Initial countdown, just to be safe, so that everyone has a chance to spawn before we check anything.
 
 	if(!round_finished)

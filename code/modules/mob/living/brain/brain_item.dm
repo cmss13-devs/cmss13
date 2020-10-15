@@ -9,7 +9,7 @@
 	throwforce = 1.0
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 5
-	
+
 	attack_verb = list("attacked", "slapped", "whacked")
 	organ_type = /datum/internal_organ/brain
 	organ_tag = "brain"
@@ -38,7 +38,6 @@
 		H.mind.transfer_to(brainmob)
 
 	to_chat(brainmob, SPAN_NOTICE(" You feel slightly disoriented. That's normal when you're just a brain."))
-	callHook("debrain", list(brainmob))
 
 /obj/item/organ/brain/examine(mob/user)
 	..()

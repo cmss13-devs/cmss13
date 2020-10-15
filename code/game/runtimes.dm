@@ -8,7 +8,7 @@ var/global/report_runtimes = FALSE
 // Used to store hashes for runtimes that've occured. Runtimes will not be reported twice
 var/global/runtime_hashes = list()
 
-/hook/startup/proc/loadRuntimeConfig()
+/proc/loadRuntimeConfig()
 	var/list/lines = file2list("config/runtime_reports.txt")
 
 	if(!lines || !length(lines))
@@ -41,13 +41,13 @@ var/global/runtime_hashes = list()
 		runtime_hashes[hash] += 1
 		// Repeat runtimes aren't logged every time
 		if(!(runtime_hashes[hash] % 100))
-			STUI.runtime.Add("\[[time_stamp()]]RUNTIME: [E.name] - [E.file]@[E.line] ([runtime_hashes[hash]] total)<br>")
+			GLOB.STUI.runtime.Add("\[[time_stamp()]]RUNTIME: [E.name] - [E.file]@[E.line] ([runtime_hashes[hash]] total)<br>")
 		return
 	runtime_hashes[hash] = 1
 
 	// Log it in STUI
-	STUI.runtime.Add("\[[time_stamp()]]RUNTIME: [E.name] - [E.file]@[E.line]<br>")
-	STUI.processing |= STUI_LOG_RUNTIME
+	GLOB.STUI.runtime.Add("\[[time_stamp()]]RUNTIME: [E.name] - [E.file]@[E.line]<br>")
+	GLOB.STUI.processing |= STUI_LOG_RUNTIME
 
 	// Report the runtime on gitlab if the script is enabled
 	if(!report_runtimes)

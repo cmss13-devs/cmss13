@@ -68,6 +68,11 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 /datum/controller/master/New()
 	if(!config)
 		config = new
+		config.load("config/config.txt")
+		config.load("config/game_options.txt","game_options")
+		config.load("config/icon_source.txt","icon_source")
+		// apply some settings from config..
+		abandon_allowed = config.respawn
 	// Highlander-style: there can only be one! Kill off the old and replace it with the new.
 
 	if(!random_seed)

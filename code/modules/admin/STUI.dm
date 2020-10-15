@@ -14,6 +14,9 @@
 			** setup a way of opening a single log
 */
 
+// STUI
+GLOBAL_DATUM_INIT(STUI, /datum/STUI, new)
+
 /datum/STUI
 	var/name = "STUI"
 	var/list/attack	= list()		//Attack logs
@@ -107,4 +110,4 @@
 	set name = "S: Open STUI"
 	set category = "Admin"
 
-	STUI.ui_interact(usr, force_start=1)
+	GLOB.STUI.ui_interact(usr, force_start=1)

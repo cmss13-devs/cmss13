@@ -1,10 +1,9 @@
-var/global/datum/global_init/init = new ()
+GLOBAL_DATUM_INIT(init, /datum/global_init, new)
 
 /*
 	Pre-map initialization stuff should go here.
 */
 /datum/global_init/New()
-	load_configuration()
 	makeDatumRefLists()
 
 var/world_view_size = 7
@@ -51,7 +50,16 @@ var/internal_tick_usage = 0
 	if(config && config.log_runtime)
 		log = file("data/logs/runtime/[time2text(world.realtime,"YYYY-MM-DD-(hh-mm-ss)")]-runtime.log")
 
-	callHook("startup")
+	load_admins()
+	jobban_loadbanfile()
+	LoadBans()
+	load_motd()
+	load_mode()
+	setupGhostTeleportLocs()
+	loadShuttleInfoDatums()
+	populate_gear_list()
+	loadRuntimeConfig()
+
 	//Emergency Fix
 	//end-emergency fix
 
@@ -184,7 +192,7 @@ var/world_topic_spam_protect_time = world.timeofday
 		P.load_refs()
 		if(!P.notes || !P.notes.len)
 			return dat + "No information found on the given key."
-		
+
 		for(var/datum/entity/player_note/N in P.notes)
 			var/admin_name = (N.admin && N.admin.ckey) ? "[N.admin.ckey]" : "-LOADING-"
 			var/ban_text = N.ban_time ? "Banned for [N.ban_time] minutes | " : ""
@@ -299,7 +307,7 @@ var/list/datum/entity/map_vote/all_votes
 				found = TRUE
 				vote = in_vote
 				break
-		
+
 		if(!found)
 			vote = SSentity_manager.select(/datum/entity/map_vote)
 			vote.map_name = i
@@ -307,7 +315,7 @@ var/list/datum/entity/map_vote/all_votes
 			vote.save()
 
 		all_votes[i] = vote
-		
+
 /world/proc/count_votes()
 	var/list/L = list()
 
@@ -362,13 +370,13 @@ var/list/datum/entity/map_vote/all_votes
 			else
 				all_votes[name].total_votes = 0
 			all_votes[name].save()
-		
+
 		text += item_text + "<br>"
 		log_text += item_text + ","
 
 	log_text += ")\n"
 
-	if(forced) 
+	if(forced)
 		text += "<b>An admin has forced the next map.</b><br>"
 	else
 		text2file(log_text, "data/map_votes.txt")
@@ -391,7 +399,7 @@ var/list/datum/entity/map_vote/all_votes
 	// Notify helper daemon of reboot, regardless of reason.
 	if(ticker && ticker.mode)
 		round_extra_data = "&message=[ticker.mode.end_round_message()]"
-		
+
 	world.Export("http://127.0.0.1:8888/?rebooting=1[round_extra_data]")
 	for(var/client/C in GLOB.clients)
 		var/datum/chatOutput/chat = C.chatOutput
@@ -405,10 +413,6 @@ var/list/datum/entity/map_vote/all_votes
 
 
 
-/hook/startup/proc/loadMode()
-	world.load_mode()
-	return 1
-
 /world/proc/load_mode()
 	var/list/Lines = file2list("data/mode.txt")
 	if(Lines.len)
@@ -421,21 +425,8 @@ var/list/datum/entity/map_vote/all_votes
 	fdel(F)
 	F << the_mode
 
-/hook/startup/proc/loadMOTD()
-	world.load_motd()
-	return 1
-
 /world/proc/load_motd()
 	join_motd = file2text("config/motd.txt")
-
-/proc/load_configuration()
-	config = new /datum/configuration()
-	config.load("config/config.txt")
-	config.load("config/game_options.txt","game_options")
-	config.load("config/icon_source.txt","icon_source")
-	// apply some settings from config..
-	abandon_allowed = config.respawn
-
 
 /world/proc/update_status()
 	//Note: Hub content is limited to 254 characters, including HTML/CSS. Image width is limited to 450 pixels.
@@ -507,7 +498,7 @@ proc/setup_database_connection()
 
 #undef FAILED_DB_CONNECTION_CUTOFF
 
-/proc/give_image_to_client(var/obj/O, icon_text)	
+/proc/give_image_to_client(var/obj/O, icon_text)
 	var/image/I = image(null, O)
 	I.maptext = icon_text
 	for(var/client/c in GLOB.clients)

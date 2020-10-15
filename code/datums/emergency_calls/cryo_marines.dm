@@ -35,14 +35,14 @@
 	else
 		arm_equipment(H, "USCM (Cryo) Squad Marine (PFC)", TRUE, TRUE)
 		to_chat(H, "<font size='3'>\red You are a private in the USCM, you are here to assist in the defence of the [map_tag]. Listen to the chain of command. </B>")
-		
+
 	sleep(10)
 	to_chat(H, "<B>Objectives:</b> [objectives]")
 	RoleAuthority.randomize_squad(H, TRUE) //we force put people in squads so even if we have a max amount of medics / engis we still give them a squad
 	H.sec_hud_set_ID()
 	H.hud_set_squad()
 
-	data_core.manifest_inject(H) //Put people in crew manifest
+	GLOB.data_core.manifest_inject(H) //Put people in crew manifest
 
 datum/emergency_call/cryo_squad/platoon
 	name = "Marine Cryo Reinforcements (Platoon)"

@@ -70,7 +70,7 @@
 			var/amount = input(usr, "How many points to add?") as num
 			if(amount != 0) //can add negative numbers too!
 				message_staff(SPAN_NOTICE("[key_name_admin(usr)] added [amount] DEFCON points."), 1)
-				objectives_controller.add_admin_points(amount)
+				SSobjectives.add_admin_points(amount)
 		if("change_clearance")
 			var/list/clearance_levels = list(0,1,2,3,4,5)
 			var/level = input("Select new clearance level:","Current level: [chemical_data.clearance_level]") as null|anything in clearance_levels
@@ -102,7 +102,7 @@
 	var/offer_as_ert = FALSE
 	if(href_list["spawn_as"] == "freed")
 		free_the_humans = TRUE
-	
+
 	else if(href_list["spawn_as"] == "ert")
 		offer_as_ert = TRUE
 
@@ -127,14 +127,14 @@
 
 			if(!H.hud_used)
 				H.create_hud()
-		
+
 			arm_equipment(H, job_name, TRUE, FALSE)
 
 			if(free_the_humans)
 				owner.free_for_ghosts(H)
 
 			humans += H
-		
+
 		if (offer_as_ert)
 			var/datum/emergency_call/custom/em_call = new()
 			var/name = input(usr, "Please name your ERT", "ERT Name", "Admin spawned humans")

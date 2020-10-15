@@ -618,6 +618,15 @@
 	can_hold = list(/obj/item/explosive/grenade/HE/frag)
 	grenade_type = /obj/item/explosive/grenade/HE/frag
 
+/obj/item/storage/box/nade_box/airburst
+	name = "\improper M74 AGM-F grenade box"
+	desc = "A secure box holding 25 M74 AGM Fragmentation grenades. Explosive, don't store near the flamer fuel."
+	icon_state = "airburst_nade_placeholder"
+	w_class = SIZE_LARGE
+	storage_slots = 25
+	max_storage_space = 50
+	can_hold = list(/obj/item/explosive/grenade/HE/airburst)
+	grenade_type = /obj/item/explosive/grenade/HE/airburst
 
 /obj/item/storage/box/nade_box/training
 	name = "\improper M07 training grenade box"

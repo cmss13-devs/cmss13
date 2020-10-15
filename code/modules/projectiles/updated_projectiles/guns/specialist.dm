@@ -881,7 +881,7 @@
 	last_fired = world.time
 	for(var/mob/O in viewers(world_view_size, user))
 		O.show_message(SPAN_DANGER("[user] fired a grenade!"), 1)
-	to_chat(user, SPAN_WARNING("You fire the grenade launcher!"))
+	to_chat(user, SPAN_WARNING("You fire the grenade launcher! [grenades.len-1]/[max_grenades] grenades remaining"))
 	var/obj/item/explosive/grenade/F = grenades[1]
 	grenades -= F
 	F.loc = user.loc
@@ -890,16 +890,15 @@
 	var/pass_flags = NO_FLAGS
 	if(is_lobbing)
 		pass_flags = LIST_FLAGS_ADD(pass_flags, PASS_MOB_THRU, PASS_HIGH_OVER)
-
+	F.active = 1
+	F.icon_state = initial(F.icon_state) + "_active"
 	F.throw_atom(target, 20, SPEED_VERY_FAST, user, null, NORMAL_LAUNCH, pass_flags)
 	if(F && F.loc) //Apparently it can get deleted before the next thing takes place, so it runtimes.
 		msg_admin_attack("[key_name_admin(user)] fired a grenade ([F.name]) from \a ([name]).")
 		log_game("[key_name_admin(user)] used a grenade ([name]).")
-		F.icon_state = initial(F.icon_state) + "_active"
-		F.active = 1
 		F.update_icon()
 		playsound(F.loc, fire_sound, 50, 1)
-		addtimer(CALLBACK(F, /obj/item/explosive.proc/prime), 1 SECONDS)
+		addtimer(CALLBACK(F, /obj/item/explosive.proc/prime), min(10, F.det_time))
 
 /obj/item/weapon/gun/launcher/m81
 	name = "\improper M81 grenade launcher"
@@ -1015,14 +1014,14 @@
 	F.loc = user.loc
 	F.throw_range = 20
 	F.throw_atom(target, 20, SPEED_VERY_FAST, user)
+	F.icon_state = initial(F.icon_state) + "_active"
+	F.active = 1
 	if(F && F.loc) //Apparently it can get deleted before the next thing takes place, so it runtimes.
 		msg_admin_attack("[key_name_admin(user)] fired a grenade ([F.name]) from \a ([name]).")
 		log_game("[key_name_admin(user)] used a grenade ([name]).")
-		F.icon_state = initial(F.icon_state) + "_active"
-		F.active = 1
 		F.update_icon()
 		playsound(F.loc, fire_sound, 50, 1)
-		addtimer(CALLBACK(F, /obj/item/explosive.proc/prime), 1 SECONDS)
+		addtimer(CALLBACK(F, /obj/item/explosive.proc/prime), min(10, F.det_time))
 
 
 /obj/item/weapon/gun/launcher/m81/riot

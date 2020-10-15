@@ -118,7 +118,53 @@
 	shrapnel_count = 56
 	falloff_mode = EXPLOSION_FALLOFF_SHAPE_LINEAR
 
+/*
+//================================================
+				Airburst Grenades
+//================================================
+*/
+// M74 are the launcher-only variant. Flag with hand_throwable = FALSE.
+/obj/item/explosive/grenade/HE/airburst
+	name = "\improper M74 AGM-F 40mm Grenade"
+	desc = "M74 - Airburst Grenade Munition - Fragmentation. This grenade must be launched with a grenade launcher, and detonates once it reaches its destination. It disperse jagged shrapnel in a cone in front of itself, tearing through sinews and armor alike. Dispersion pattern is optimized against large target. Suffers from overpenetration on a direct hit."
+	icon_state = "grenade_m74_airburst_f"
+	item_state = "grenade_m74_airburst_f_active"
+	explosion_power = 0
+	explosion_falloff = 25
+	shrapnel_count = 16
+	det_time = 0 // Unused, because we don't use prime.
+	hand_throwable = FALSE
+	falloff_mode = EXPLOSION_FALLOFF_SHAPE_LINEAR
+	shrapnel_type = /datum/ammo/bullet/shrapnel/jagged
+	var/direct_hit_shrapnel = 5
 
+/obj/item/explosive/grenade/HE/airburst/prime()
+// We don't prime, we use launch_impact.
+
+/obj/item/explosive/grenade/HE/airburst/launch_impact(atom/hit_atom)
+	..()
+	var/detonate = TRUE
+	var/turf/hit_turf = null
+	if(isobj(hit_atom) && !rebounding)
+		detonate = FALSE
+	if(isturf(hit_atom))
+		hit_turf = hit_atom
+		if(hit_turf.density && !rebounding)
+			detonate = FALSE
+	if(active && detonate) // Active, and we reached our destination.
+		if(hit_turf)
+			for(var/mob/M in hit_turf)
+				create_shrapnel(loc, direct_hit_shrapnel, 5 , 30 ,shrapnel_type, initial(name), source_mob, FALSE, 100)
+				M.Superslow(1.5)
+				shrapnel_count -= direct_hit_shrapnel
+				continue
+		if(shrapnel_count)
+			create_shrapnel(loc, shrapnel_count, last_move_dir , 30 ,shrapnel_type, initial(name), source_mob, FALSE, 0)
+			sleep(2) //so that mobs are not knocked down before being hit by shrapnel. shrapnel might also be getting deleted by explosions?
+		apply_explosion_overlay()
+		if(explosion_power)
+			cell_explosion(loc, explosion_power, explosion_falloff, falloff_mode, last_move_dir, initial(name), source_mob)
+		qdel(src)
 /*
 //================================================
 				Incendiary Grenades

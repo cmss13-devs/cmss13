@@ -284,6 +284,30 @@ WEAPONS
 	containername = "\improper explosive HEFA grenade crate (WARNING)"
 	group = "Weapons"
 
+/datum/supply_packs/explosives_M74_AGM_F
+	name = "M74 Airburst Grenade Munition fragmentation grenades crate (x5)"
+	contains = list(
+					/obj/item/explosive/grenade/HE/airburst,
+					/obj/item/explosive/grenade/HE/airburst,
+					/obj/item/explosive/grenade/HE/airburst,
+					/obj/item/explosive/grenade/HE/airburst,
+					/obj/item/explosive/grenade/HE/airburst
+					)
+	cost = RO_PRICE_NORMAL
+	containertype = /obj/structure/closet/crate/explosives
+	containername = "\improper explosive M74 AGM-F grenades crate (WARNING)"
+	group = "Weapons"
+
+/datum/supply_packs/explosives_AGMF
+	name = "M74 Airburst Grenade Munition fragmentation grenade box crate (x25)"
+	contains = list(
+					/obj/item/storage/box/nade_box/airburst
+					)
+	cost = RO_PRICE_VERY_PRICY
+	containertype = /obj/structure/closet/crate/explosives
+	containername = "\improper  explosive M74 AGM-F grenades crate (WARNING)"
+	group = "Weapons"
+
 
 /datum/supply_packs/mortar
 	name = "M402 mortar crate (x1)"

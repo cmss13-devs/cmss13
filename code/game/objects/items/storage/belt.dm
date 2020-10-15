@@ -472,15 +472,18 @@
 	new /obj/item/explosive/grenade/incendiary(src)
 	new /obj/item/explosive/grenade/incendiary(src)
 	new /obj/item/explosive/grenade/incendiary(src)
-	new /obj/item/explosive/grenade/incendiary(src)
-	new /obj/item/explosive/grenade/incendiary(src)
 	new /obj/item/explosive/grenade/HE(src)
 	new /obj/item/explosive/grenade/HE(src)
 	new /obj/item/explosive/grenade/HE(src)
 	new /obj/item/explosive/grenade/HE(src)
 	new /obj/item/explosive/grenade/HE(src)
 	new /obj/item/explosive/grenade/HE(src)
-	new /obj/item/explosive/grenade/HE(src)
+	new /obj/item/explosive/grenade/HE/airburst(src)
+	new /obj/item/explosive/grenade/HE/airburst(src)
+	new /obj/item/explosive/grenade/HE/airburst(src)
+	new /obj/item/explosive/grenade/HE/airburst(src)
+	new /obj/item/explosive/grenade/HE/airburst(src)
+	new /obj/item/explosive/grenade/HE/airburst(src)
 
 
 

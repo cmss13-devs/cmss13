@@ -7,7 +7,7 @@
 	unacidable = TRUE
 	layer = LOWER_ITEM_LAYER
 	var/turf/closed/wall/holed_wall
-
+	
 /obj/effect/acid_hole/Initialize()
 	. = ..()
 	if(istype(loc, /turf/closed/wall))
@@ -15,11 +15,7 @@
 		W.acided_hole = src
 		holed_wall = W
 		holed_wall.opacity = 0
-		if(W.junctiontype & (NORTH|SOUTH))
-			dir = EAST
-		if(W.junctiontype & (EAST|WEST))
-			dir = SOUTH
-
+		dir = W.acided_hole_dir
 
 /obj/effect/acid_hole/Destroy()
 	if(holed_wall)

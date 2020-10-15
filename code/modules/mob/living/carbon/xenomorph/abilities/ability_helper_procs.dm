@@ -1,4 +1,3 @@
-
 //Corrosive acid is consolidated -- it checks for specific castes for strength now, but works identically to each other.
 //The acid items are stored in XenoProcs.
 /mob/living/carbon/Xenomorph/proc/corrosive_acid(atom/O, acid_type, plasma_cost)
@@ -67,7 +66,38 @@
 				wait_time = 100
 			else
 				return
-		to_chat(src, SPAN_XENOWARNING("You begin generating enough acid to melt through [T]."))
+		if(istype(T, /turf/closed/wall))
+			var/turf/closed/wall/W = T
+			// Direction from wall to the mob generating acid on the wall turf
+			var/ambiguous_dir_msg = SPAN_XENOWARNING("You are unsure which direction to melt through [W]. Face it directly and try again.")
+			switch(get_dir(W, src))
+				if(WEST, EAST)
+					W.acided_hole_dir = EAST
+				if(NORTHWEST, NORTHEAST, SOUTHWEST, SOUTHEAST)
+					var/turf/wall_north_turf = get_step(W, NORTH)
+					var/turf/wall_south_turf = get_step(W, SOUTH)
+					var/turf/wall_east_turf = get_step(W, EAST)
+					var/turf/wall_west_turf = get_step(W, WEST)
+					// When wall is passable from all cardinal directions...
+					if(!istype(wall_north_turf, /turf/closed/wall) && !istype(wall_south_turf, /turf/closed/wall) && !istype(wall_east_turf, /turf/closed/wall) && !istype(wall_west_turf, /turf/closed/wall))
+						// ...don't make an acid hole
+						to_chat(src, ambiguous_dir_msg)
+						return
+					else if(!istype(wall_north_turf, /turf/closed/wall) && !istype(wall_south_turf, /turf/closed/wall))
+						W.acided_hole_dir = SOUTH
+					else if(!istype(wall_east_turf, /turf/closed/wall) && !istype(wall_west_turf, /turf/closed/wall))
+						W.acided_hole_dir = EAST
+					else
+						// ...don't make an acid hole for corners bordering other walls
+						to_chat(src, ambiguous_dir_msg)
+						return
+				else
+					W.acided_hole_dir = SOUTH
+
+			var/acided_hole_type = W.acided_hole_dir == EAST ? "a hole horizontally" : "a hole vertically"
+			to_chat(src, SPAN_XENOWARNING("You begin generating enough acid to melt [acided_hole_type] through [W]."))
+		else
+			to_chat(src, SPAN_XENOWARNING("You begin generating enough acid to melt through [T]."))
 	else
 		to_chat(src, SPAN_WARNING("You cannot dissolve [O]."))
 		return

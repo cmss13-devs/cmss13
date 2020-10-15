@@ -36,6 +36,7 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 		list("EXTRA GRENADES", 0, null, null, null),
 		list("M40 HEDP Grenade x6", 15, /obj/effect/essentials_set/hedp_6_pack, null, VENDOR_ITEM_REGULAR),
 		list("M40 HIDP Incendiary Grenade x6", 15, /obj/effect/essentials_set/hidp_6_pack, null, VENDOR_ITEM_REGULAR),
+		list("M74 AGM-F Fragmentation Grenades x6", 15, /obj/effect/essentials_set/agmf_6_pack, null, VENDOR_ITEM_REGULAR),
 
 		list("EXTRA FLAMETHROWER TANKS", 0, null, null, null),
 		list("Large Incinerator Tank", 15, /obj/item/ammo_magazine/flamer_tank/large, null, VENDOR_ITEM_REGULAR),
@@ -151,4 +152,14 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 		/obj/item/explosive/grenade/incendiary,
 		/obj/item/explosive/grenade/incendiary,
 		/obj/item/explosive/grenade/incendiary,
+	)
+
+/obj/effect/essentials_set/agmf_6_pack
+	spawned_gear_list = list(
+		/obj/item/explosive/grenade/HE/airburst,
+		/obj/item/explosive/grenade/HE/airburst,
+		/obj/item/explosive/grenade/HE/airburst,
+		/obj/item/explosive/grenade/HE/airburst,
+		/obj/item/explosive/grenade/HE/airburst,
+		/obj/item/explosive/grenade/HE/airburst,
 	)

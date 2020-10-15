@@ -54,6 +54,7 @@
 	var/projectile_override_flags = 0
 
 	var/iff_group
+	var/is_shrapnel
 
 	var/weapon_source
 	var/weapon_source_mob
@@ -117,6 +118,7 @@
 /obj/item/projectile/proc/fire_at(atom/target, atom/F, atom/S, range = 30, speed = 1, atom/original_override, is_shrapnel = FALSE, var/iff_group)
 	if(!original) 
 		original = istype(original_override) ? original_override : target
+	src.is_shrapnel = is_shrapnel
 	if(!loc) 
 		if (!is_shrapnel)
 			loc = get_turf(F)
@@ -266,7 +268,7 @@
 		return TRUE
 
 	// Firer's turf, keep moving
-	if(firer && T == firer.loc)
+	if(firer && T == firer.loc && !is_shrapnel)
 		return FALSE
 	var/ammo_flags = ammo.flags_ammo_behavior | projectile_override_flags
 	// Explosive ammo always explodes on the turf of the clicked target

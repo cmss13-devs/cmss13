@@ -2016,6 +2016,13 @@
 	..()
 	damage = 1 // Tickle tickle
 
+/datum/ammo/bullet/shrapnel/jagged/New()
+	..()
+	shrapnel_chance = config.med_shrapnel_chance
+
+/datum/ammo/bullet/shrapnel/jagged/on_hit_mob(mob/M, obj/item/projectile/P)
+	if(isXeno(M))
+		M.Slow(0.15)
 /*
 //================================================
 					Misc Ammo

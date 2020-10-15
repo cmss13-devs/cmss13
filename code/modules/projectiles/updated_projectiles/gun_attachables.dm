@@ -1187,7 +1187,7 @@ Defined in conflicts.dm of the #defines folder.
 	attach_icon = "grenade_a"
 	w_class = SIZE_MEDIUM
 	current_rounds = 0
-	max_rounds = 2
+	max_rounds = 1
 	max_range = 7
 	slot = "under"
 	fire_sound = 'sound/weapons/gun_m92_attachable.ogg'
@@ -1226,6 +1226,10 @@ Defined in conflicts.dm of the #defines folder.
 			user.drop_inv_item_to_loc(G, src)
 
 /obj/item/attachable/attached_gun/grenade/fire_attachment(atom/target,obj/item/weapon/gun/gun,mob/living/user)
+	if(!(gun.flags_item & WIELDED))
+		if(user)
+			to_chat(user, SPAN_WARNING("You must hold [gun] with two hands to use [src]."))
+		return
 	if(get_dist(user,target) > max_range)
 		to_chat(user, SPAN_WARNING("Too far to fire the attachment!"))
 		return
@@ -1245,11 +1249,14 @@ Defined in conflicts.dm of the #defines folder.
 	playsound(user.loc, fire_sound, 50, 1)
 	msg_admin_attack("[key_name_admin(user)] fired an underslung grenade launcher (<A HREF='?_src_=admin_holder;adminplayerobservejump=\ref[user]'>JMP</A>)")
 	log_game("[key_name_admin(user)] used an underslung grenade launcher.")
-	G.det_time = 15
+
+	var/pass_flags = NO_FLAGS
+	pass_flags = LIST_FLAGS_ADD(pass_flags, PASS_MOB_THRU, PASS_HIGH_OVER)
+	G.det_time = min(15, G.det_time)
 	G.throw_range = max_range
-	G.activate(user)
+	G.activate(user, FALSE)
 	G.forceMove(get_turf(gun))
-	G.throw_atom(target, max_range, SPEED_VERY_FAST, user)
+	G.throw_atom(target, max_range, SPEED_VERY_FAST, user, null, NORMAL_LAUNCH, pass_flags)
 	current_rounds--
 	loaded_grenades.Cut(1,2)
 

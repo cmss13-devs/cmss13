@@ -17,6 +17,7 @@
 	var/harmful = TRUE      //Is it harmful? Can synths use them?
 	var/arm_sound = 'sound/weapons/armbomb.ogg'
 	var/underslug_launchable = FALSE
+	var/hand_throwable = TRUE
 
 /obj/item/explosive/grenade/Initialize()
 	. = ..()
@@ -24,6 +25,9 @@
 
 /obj/item/explosive/grenade/attack_self(mob/user)
 	if(active)
+		return
+	if(!hand_throwable)
+		to_chat(user, SPAN_WARNING("This isn't a hand grenade!"))
 		return
 	if(!user.IsAdvancedToolUser())
 		to_chat(user, SPAN_WARNING("You don't have the dexterity to do this!"))
@@ -64,8 +68,11 @@
 		C.toggle_throw_mode(THROW_MODE_NORMAL)
 
 
-/obj/item/explosive/grenade/proc/activate(mob/user = null)
+/obj/item/explosive/grenade/proc/activate(mob/user = null, hand_throw = TRUE)
 	if(active)
+		return
+	if(!hand_throwable && hand_throw)
+		to_chat(user, SPAN_WARNING("This isn't a hand grenade!"))
 		return
 	source_mob = user
 	playsound(loc, arm_sound, 25, 1, 6)

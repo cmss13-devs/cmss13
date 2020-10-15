@@ -14,10 +14,13 @@
 
 /obj/item/ammo_magazine/pistol/hp
 	name = "\improper M4A3 hollowpoint magazine (9mm)"
+	desc = "A pistol magazine. This one contains hollowpoint bullets, which have noticeably higher stopping power on unarmoured targets, and noticeably less on armored targets."
+	icon_state = "m4a3_hp"
 	default_ammo = /datum/ammo/bullet/pistol/hollow
 
 /obj/item/ammo_magazine/pistol/ap
 	name = "\improper M4A3 AP magazine (9mm)"
+	desc = "A pistol magazine. This one contains armor-piercing bullets, which have noticeably higher stopping power on well-armoured targets, and noticeably less on unarmored or lightly-armored targets."
 	icon_state = "m4a3_ap"
 	default_ammo = /datum/ammo/bullet/pistol/ap
 

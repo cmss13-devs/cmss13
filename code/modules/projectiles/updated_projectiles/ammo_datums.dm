@@ -252,13 +252,22 @@
 		if(L.stamina)
 			L.stamina.apply_rest_period(knockout_period)
 
+//2020 rebalance: is supposed to counter runners and lurkers, dealing high damage to the only castes with no armor. 
+//Limited by its lack of versatility and lower supply, so marines finally have an answer for flanker castes that isn't just buckshot.
+//Runners are critted in 7 shots by normal m4a3 ammo, 5 shots with hollowpoint (230hp)
+//Lurkers are critted in 12 shots by normal m4a3 ammo, 9 shots with hollowpoint (450hp)
+//Drones are critted in 10 shots by normal m4a3 ammo, 11 shots with hollowpoint (330hp)
+//Hollowpoint shots to kill reduced by 1 using m4a3 custom, 2 for drone.
+
 /datum/ammo/bullet/pistol/hollow
 	name = "hollowpoint pistol bullet"
 
 /datum/ammo/bullet/pistol/hollow/New()
 	..()
-	accuracy = -config.med_hit_accuracy
-	shrapnel_chance = config.high_shrapnel_chance
+	damage = config.high_hit_damage //hollowpoint is strong
+	damage_falloff = config.med_damage_falloff //should be useful in close-range mostly
+	penetration = 0 //hollowpoint can't pierce armor!
+	shrapnel_chance = config.high_shrapnel_chance - config.med_shrapnel_chance/2 //(33) //hollowpoint causes shrapnel
 
 // Used by M4A3 AP, Highpower and mod88
 /datum/ammo/bullet/pistol/ap

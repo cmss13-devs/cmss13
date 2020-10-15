@@ -33,6 +33,7 @@
 	var/d_state = 0 //Normal walls are now as difficult to remove as reinforced walls
 
 	var/obj/effect/acid_hole/acided_hole //the acid hole inside the wall
+	var/acided_hole_dir = SOUTH
 
 	var/special_icon = 0
 	var/list/blend_turfs = list(/turf/closed/wall)

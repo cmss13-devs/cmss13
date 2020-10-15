@@ -148,11 +148,21 @@
 								Incidents: [active2.fields["incident"]]<BR>\n \
 								\n<BR>\n<CENTER><B>Comments/Log</B></CENTER><BR>", \
 								src, active2.fields["criminal"])
-					var/counter = 1
-					while(active2.fields[text("com_[]", counter)])
-						dat += text("[]<BR><A href='?src=\ref[];choice=Delete Entry;del_c=[]'>Delete Entry</A><BR><BR>", active2.fields[text("com_[]", counter)], src, counter)
-						counter++
-					dat += text("<A href='?src=\ref[];choice=Add Entry'>Add Entry</A><BR><BR>", src)
+					if(islist(active2.fields["comments"]))
+						var/counter = 1
+						for(var/com_i in active2.fields["comments"])
+							var/comment = active2.fields["comments"][com_i]
+							var/comment_markup = text("<b>[] / [] ([])</b>\n", comment["created_at"], comment["created_by"]["name"], comment["created_by"]["rank"])
+							if (isnull(comment["deleted_by"]))
+								comment_markup += text("<a href='?src=\ref[];choice=Delete Entry;del_c=[]'>Delete comment</a>", src, counter)
+								comment_markup += text("<br />[]", comment["entry"])
+							else
+								comment_markup += text("<br /><i>Comment deleted by [] at []</i>", comment["deleted_by"], comment["deleted_at"])
+							counter++
+							dat += "[comment_markup]<br /><br />"
+					else
+						dat += "No comments<br><br>"
+					dat += text("<a href='?src=\ref[];choice=Add Entry'>Add comment</a><br /><br />", src)
 				else
 					dat += "<B>Security Record Lost!</B><BR>"
 					dat += text("<A href='?src=\ref[];choice=New Record (Security)'>New Security Record</A><BR><BR>", src)
@@ -318,17 +328,24 @@ What a mess.*/
 					var/obj/item/paper/P = new /obj/item/paper( loc )
 					P.info = "<CENTER><B>Security Record</B></CENTER><BR>"
 					if (record1)
-						P.info += text("Name: [] ID: []<BR>\nSex: []<BR>\nAge: []<BR>\nPhysical Status: []<BR>\nMental Status: []<BR>Criminal Status: []<BR>", record1.fields["name"], record1.fields["id"], record1.fields["sex"], record1.fields["age"], record1.fields["p_stat"], record1.fields["m_stat"], record2.fields["criminal"])
+						P.info += text("Name: []<br />\nID: []<br />\nSex: []<br />\nAge: []<br />\nRank: []<br />\nPhysical Status: []<br />\nMental Status: []<br />Criminal Status: []<br />", record1.fields["name"], record1.fields["id"], record1.fields["sex"], record1.fields["age"], record1.fields["rank"], record1.fields["p_stat"], record1.fields["m_stat"], record2.fields["criminal"])
 						P.name = text("Security Record ([])", record1.fields["name"])
 					else
-						P.info += "<B>General Record Lost!</B><BR>"
+						P.info += "<b>General Record Lost!</b><br />"
 						P.name = "Security Record"
 					if (record2)
 						P.info += text("<BR>\n<CENTER><B>Security Data</B></CENTER><BR>\nIncidents: [record2.fields["incident"]]<BR>\n<BR>\n<CENTER><B>Comments/Log</B></CENTER><BR>")
-						var/counter = 1
-						while(record2.fields[text("com_[]", counter)])
-							P.info += text("[]<BR>", record2.fields[text("com_[]", counter)])
-							counter++
+						if(islist(record2.fields["comments"]) || length(record2.fields["comments"]) > 0)
+							for(var/com_i in record2.fields["comments"])
+								var/comment = record2.fields["comments"][com_i]
+								var/comment_markup = text("<b>[] / [] ([])</b><br />", comment["created_at"], comment["created_by"]["name"], comment["created_by"]["rank"])
+								if (isnull(comment["deleted_by"]))
+									comment_markup += comment["entry"]
+								else
+									comment_markup += text("<i>Comment deleted by [] at []</i>", comment["deleted_by"], comment["deleted_at"])
+								P.info += "[comment_markup]<br /><br />"
+						else
+							P.info += text("<b>No comments</b><br />")
 					else
 						P.info += "<B>Security Record Lost!</B><BR>"
 					P.info += "</TT>"
@@ -351,16 +368,40 @@ What a mess.*/
 				if (!(istype(active2, /datum/data/record)))
 					return
 				var/a2 = active2
-				var/t1 = copytext(trim(strip_html(input("Add Comment:", "Secure. records", null, null)  as message)),1,MAX_MESSAGE_LEN)
-				if ((!t1 || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!ishighersilicon(usr))) || active2 != a2))
+				var/t1 = copytext(trim(strip_html(input("Your name and time will be added to this new comment.", "Add a comment", null, null)  as message)),1,MAX_MESSAGE_LEN)
+				if((!t1 || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!ishighersilicon(usr))) || active2 != a2))
 					return
-				var/counter = 1
-				while(active2.fields[text("com_[]", counter)])
-					counter++
+				var/created_at = text("[]&nbsp;&nbsp;[]&nbsp;&nbsp;[]", time2text(world.realtime, "MMM DD"), time2text(world.time, "[worldtime2text()]:ss"), game_year)
+				var/new_comment = list("entry" = t1, "created_by" = list("name" = "", "rank" = ""), "deleted_by" = null, "deleted_at" = null, "created_at" = created_at)
+				if(istype(usr,/mob/living/carbon/human))
+					var/mob/living/carbon/human/U = usr
+					new_comment["created_by"] = list("name" = U.get_authentification_name(), "rank" = U.get_assignment())
+				else if(istype(usr,/mob/living/silicon/robot))
+					var/mob/living/silicon/robot/U = usr
+					new_comment["created_by"] = list("name" = U.name, "rank" = "[U.modtype] [U.braintype]")
+				if(!islist(active2.fields["comments"]))
+					active2.fields["comments"] = list("1" = new_comment)
+				else
+					var/new_com_i = length(active2.fields["comments"]) + 1
+					active2.fields["comments"]["[new_com_i]"] = new_comment
+				to_chat(usr, text("You have added a new comment to the Security Record of [].", active2.fields["name"]))
 
 			if ("Delete Entry")
-				if ((istype(active2, /datum/data/record) && active2.fields[text("com_[]", href_list["del_c"])]))
-					active2.fields[text("com_[]", href_list["del_c"])] = "<B>Deleted</B>"
+				if(!islist(active2.fields["comments"]))
+					return
+				if(active2.fields["comments"][href_list["del_c"]])
+					var/updated_comments = active2.fields["comments"]
+					var/deleter = ""
+					if(istype(usr,/mob/living/carbon/human))
+						var/mob/living/carbon/human/U = usr
+						deleter = "[U.get_authentification_name()] ([U.get_assignment()])"
+					else if(istype(usr,/mob/living/silicon/robot))
+						var/mob/living/silicon/robot/U = usr
+						deleter = "[U.name] ([U.modtype] [U.braintype])"
+					updated_comments[href_list["del_c"]]["deleted_by"] = deleter
+					updated_comments[href_list["del_c"]]["deleted_at"] = text("[]&nbsp;&nbsp;[]&nbsp;&nbsp;[]", time2text(world.realtime, "MMM DD"), time2text(world.time, "[worldtime2text()]:ss"), game_year)
+					active2.fields["comments"] = updated_comments
+					to_chat(usr, text("You have deleted a comment from the Security Record of [].", active2.fields["name"]))
 //RECORD CREATE
 			if ("New Record (Security)")
 				if ((istype(active1, /datum/data/record) && !( istype(active2, /datum/data/record) )))

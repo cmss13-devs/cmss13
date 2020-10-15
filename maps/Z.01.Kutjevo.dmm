@@ -39,13 +39,8 @@
 /obj/structure/platform/kutjevo{
 	dir = 8
 	},
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
-/turf/open/desert/desert_shore/desert_shore1{
-	dir = 1
-	},
-/area/kutjevo/exterior/lz_river)
+/turf/open/floor/kutjevo/colors,
+/area/kutjevo/interior/power)
 "aj" = (
 /obj/effect/spawner/random/tool,
 /turf/open/floor/plating/kutjevo,
@@ -79,10 +74,6 @@
 "am" = (
 /turf/closed/wall/kutjevo/colony/reinforced/hull,
 /area/kutjevo/interior/construction)
-"an" = (
-/obj/structure/blocker/invisible_wall,
-/turf/open/auto_turf/sand/layer0,
-/area/kutjevo/exterior/runoff_dunes)
 "ao" = (
 /obj/structure/flora/grass/tallgrass/desert/corner{
 	dir = 6
@@ -111,15 +102,6 @@
 	dir = 10
 	},
 /area/kutjevo/interior/colony_South/power2)
-"as" = (
-/obj/structure/platform/kutjevo/rock{
-	dir = 1
-	},
-/obj/structure/platform/kutjevo/rock{
-	dir = 8
-	},
-/turf/open/auto_turf/sand/layer0,
-/area/kutjevo/exterior/stonyfields)
 "at" = (
 /obj/effect/decal/cleanable/blood/xeno{
 	icon_state = "xgibleg"
@@ -136,18 +118,26 @@
 	},
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_S_East)
+"aw" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/exterior/runoff_bridge)
 "ax" = (
 /obj/structure/pipes/standard/manifold/visible,
 /turf/open/floor/kutjevo/colors/cyan,
 /area/kutjevo/interior/complex/med/cells)
 "ay" = (
-/obj/structure/machinery/colony_floodlight,
-/obj/structure/platform_decoration/kutjevo{
-	dir = 8
+/obj/structure/stairs/perspective/kutjevo{
+	dir = 10;
+	icon_state = "p_stair_full"
 	},
-/turf/open/desert/desert_shore/shore_edge1{
-	dir = 8
+/obj/structure/platform/kutjevo/smooth{
+	dir = 1;
+	icon_state = "kutjevo_platform_sm_stair"
 	},
+/turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/runoff_river)
 "az" = (
 /turf/open/gm/river/desert/deep/covered,
@@ -158,6 +148,10 @@
 	dir = 5
 	},
 /area/kutjevo/interior/oob)
+"aB" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/kutjevo/tiles,
+/area/kutjevo/interior/oob/dev_room)
 "aC" = (
 /obj/structure/prop/dam/torii,
 /turf/open/auto_turf/sand/layer0,
@@ -249,6 +243,9 @@
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/exterior/lz_dunes)
 "aS" = (
+/obj/structure/platform/kutjevo{
+	dir = 4
+	},
 /obj/structure/platform_decoration/kutjevo{
 	dir = 4
 	},
@@ -307,13 +304,12 @@
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/scrubland)
 "bf" = (
-/obj/structure/machinery/light{
-	dir = 8
+/obj/structure/platform/kutjevo{
+	dir = 1
 	},
-/turf/open/floor/kutjevo/multi_tiles{
-	dir = 4
-	},
-/area/kutjevo/exterior/runoff_bridge)
+/obj/structure/largecrate/random,
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/scrubland)
 "bg" = (
 /obj/structure/filtration/machine_32x64/indestructible{
 	bound_height = 32;
@@ -341,11 +337,10 @@
 /turf/closed/wall/kutjevo/rock/border,
 /area/kutjevo/exterior/runoff_dunes)
 "bm" = (
-/obj/structure/flora/grass/tallgrass/desert/corner{
-	dir = 8
-	},
-/turf/open/auto_turf/sand/layer0,
-/area/kutjevo/exterior/runoff_dunes)
+/obj/structure/largecrate/random,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/asphalt/cement_sunbleached,
+/area/kutjevo/exterior/scrubland)
 "bn" = (
 /obj/structure/flora/grass/desert{
 	icon_state = "lightgrass_9"
@@ -622,11 +617,18 @@
 /turf/open/floor/almayer/research/containment/floor2,
 /area/kutjevo/interior/complex/med/triage)
 "cj" = (
-/obj/structure/flora/grass/tallgrass/desert/corner{
-	dir = 4
-	},
-/turf/open/auto_turf/sand/layer0,
-/area/kutjevo/exterior/runoff_dunes)
+/obj/item/ammo_magazine/rifle/mar40/extended,
+/obj/item/ammo_magazine/rifle/mar40/extended,
+/obj/item/ammo_magazine/rifle/mar40/extended,
+/obj/item/ammo_magazine/rifle/mar40/extended,
+/obj/item/ammo_magazine/rifle/mar40/extended,
+/obj/item/ammo_magazine/rifle/mar40/extended,
+/obj/item/ammo_magazine/rifle/mar40/extended,
+/obj/item/ammo_magazine/rifle/mar40/extended,
+/obj/item/ammo_magazine/rifle/mar40/extended,
+/obj/structure/closet/crate/secure/ammo,
+/turf/open/asphalt/cement_sunbleached,
+/area/kutjevo/exterior/scrubland)
 "ck" = (
 /obj/structure/platform_decoration/kutjevo{
 	dir = 1
@@ -861,6 +863,15 @@
 	},
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/complex/med/cells)
+"cX" = (
+/obj/structure/stairs/perspective/kutjevo{
+	dir = 8;
+	icon_state = "p_stair_full"
+	},
+/turf/open/desert/desert_shore/desert_shore1{
+	dir = 1
+	},
+/area/kutjevo/exterior/runoff_bridge)
 "cY" = (
 /obj/effect/landmark/corpsespawner/engineer,
 /turf/open/auto_turf/sand/layer0,
@@ -1036,12 +1047,10 @@
 /turf/open/floor/kutjevo/tan/multi_tiles,
 /area/kutjevo/interior/complex/botany/east)
 "dA" = (
-/obj/structure/platform_decoration/kutjevo{
+/obj/structure/barricade/handrail/kutjevo{
 	dir = 4
 	},
-/turf/open/desert/desert_shore/shore_corner2{
-	dir = 4
-	},
+/turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/exterior/runoff_river)
 "dB" = (
 /obj/structure/bed/sofa/vert/white,
@@ -1152,9 +1161,7 @@
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1
 	},
-/turf/open/gm/river/desert/shallow_edge{
-	dir = 5
-	},
+/turf/open/gm/river/desert/shallow,
 /area/kutjevo/exterior/runoff_river)
 "dT" = (
 /obj/structure/blocker/invisible_wall,
@@ -1264,6 +1271,12 @@
 	},
 /turf/open/floor/kutjevo/colors/green,
 /area/kutjevo/interior/complex/botany)
+"el" = (
+/obj/structure/machinery/power/geothermal,
+/turf/open/floor/kutjevo/multi_tiles{
+	dir = 1
+	},
+/area/kutjevo/interior/power)
 "em" = (
 /obj/structure/bed/sofa/south/grey/right,
 /obj/effect/landmark/objective_landmark/far,
@@ -1291,6 +1304,12 @@
 	dir = 4
 	},
 /area/kutjevo/interior/oob/dev_room)
+"eq" = (
+/obj/structure/platform_decoration/kutjevo/rock{
+	dir = 8
+	},
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/lz_dunes)
 "er" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "kutjevo_medlock_pan";
@@ -1317,6 +1336,12 @@
 	},
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/scrubland)
+"ev" = (
+/obj/structure/machinery/colony_floodlight{
+	pixel_y = 10
+	},
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/lz_river)
 "ew" = (
 /obj/structure/mineral_door/resin/thick,
 /turf/open/floor/kutjevo/tan/multi_tiles,
@@ -1349,9 +1374,19 @@
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_north)
 "eA" = (
-/obj/structure/machinery/vending/hydroseeds,
-/turf/open/floor/kutjevo/colors/green/tile,
-/area/kutjevo/interior/complex/botany)
+/obj/item/ammo_magazine/rifle/mar40/extended,
+/obj/item/ammo_magazine/rifle/mar40/extended,
+/obj/item/ammo_magazine/rifle/mar40/extended,
+/obj/item/ammo_magazine/rifle/mar40/extended,
+/obj/item/ammo_magazine/rifle/mar40/extended,
+/obj/item/ammo_magazine/rifle/mar40/extended,
+/obj/item/ammo_magazine/rifle/mar40/extended,
+/obj/item/ammo_magazine/rifle/mar40/extended,
+/obj/item/ammo_magazine/rifle/mar40/extended,
+/obj/item/ammo_magazine/rifle/mar40/extended,
+/obj/structure/closet/crate/secure/ammo,
+/turf/open/asphalt/cement_sunbleached,
+/area/kutjevo/exterior/scrubland)
 "eB" = (
 /obj/structure/prop/dam/truck/mining,
 /turf/open/asphalt/cement_sunbleached,
@@ -1453,6 +1488,13 @@
 /obj/item/weapon/gun/rifle/m16,
 /turf/open/floor/kutjevo/colors/green,
 /area/kutjevo/interior/complex/botany)
+"eT" = (
+/obj/structure/stairs/perspective/kutjevo{
+	dir = 4;
+	icon_state = "p_stair_full"
+	},
+/turf/open/gm/river/desert/shallow,
+/area/kutjevo/exterior/runoff_bridge)
 "eU" = (
 /obj/structure/platform/kutjevo{
 	dir = 1
@@ -1523,6 +1565,18 @@
 /obj/structure/girder,
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/exterior/construction)
+"ff" = (
+/obj/structure/platform/kutjevo{
+	dir = 8
+	},
+/turf/open/desert/desert_shore/desert_shore1{
+	dir = 1
+	},
+/area/kutjevo/exterior/runoff_river)
+"fg" = (
+/obj/structure/flora/grass/tallgrass/desert/corner,
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/stonyfields)
 "fh" = (
 /obj/structure/platform/kutjevo{
 	dir = 1
@@ -1541,6 +1595,12 @@
 /obj/item/storage/briefcase,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/construction)
+"fk" = (
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	indestructible = 1
+	},
+/turf/open/floor/kutjevo/tiles,
+/area/kutjevo/interior/oob/dev_room)
 "fl" = (
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/construction)
@@ -1560,8 +1620,8 @@
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/interior/power)
 "fp" = (
-/obj/structure/platform_decoration/kutjevo/rock{
-	dir = 4
+/obj/structure/platform/kutjevo/rock{
+	dir = 1
 	},
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/stonyfields)
@@ -1649,6 +1709,13 @@
 	},
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/power)
+"fB" = (
+/obj/structure/flora/bush/desert{
+	icon_state = "tree_2";
+	pixel_y = 14
+	},
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/lz_river)
 "fC" = (
 /obj/structure/bed/sofa/vert/grey/bot{
 	pixel_y = 4
@@ -1681,11 +1748,14 @@
 	},
 /area/kutjevo/interior/oob/dev_room)
 "fG" = (
-/obj/structure/platform/kutjevo/rock{
-	dir = 1
-	},
-/turf/open/auto_turf/sand/layer0,
-/area/kutjevo/exterior/stonyfields)
+/obj/structure/largecrate/random,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/scrubland)
+"fH" = (
+/obj/item/weapon/gun/rifle/mar40/carbine,
+/turf/open/floor/kutjevo/colors/orange,
+/area/kutjevo/interior/power)
 "fI" = (
 /obj/item/stool{
 	pixel_y = 8
@@ -1693,11 +1763,11 @@
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/construction)
 "fJ" = (
-/obj/structure/platform_decoration/kutjevo/rock{
-	dir = 4
+/obj/structure/flora/bush/ausbushes/grassybush,
+/turf/open/gm/river/desert/shallow_edge{
+	dir = 9
 	},
-/turf/open/auto_turf/sand/layer1,
-/area/kutjevo/exterior/stonyfields)
+/area/kutjevo/exterior/runoff_river)
 "fK" = (
 /obj/effect/landmark/map_tag{
 	name = "Kutjevo Refinery"
@@ -1792,6 +1862,17 @@
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/oob)
+"fZ" = (
+/turf/open/floor/coagulation{
+	icon_state = "7,8-2"
+	},
+/area/kutjevo/interior/power)
+"ga" = (
+/obj/structure/platform/kutjevo/rock{
+	dir = 8
+	},
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/lz_dunes)
 "gb" = (
 /turf/open/gm/river/desert/shallow_corner{
 	dir = 1
@@ -1806,12 +1887,6 @@
 	},
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/complex_border/botany_medical_cave)
-"gd" = (
-/obj/structure/platform/kutjevo{
-	dir = 4
-	},
-/turf/open/gm/river/desert/deep,
-/area/kutjevo/exterior/runoff_river)
 "ge" = (
 /turf/open/floor/almayer/research/containment/floor1,
 /area/kutjevo/exterior/complex_border/med_rec)
@@ -1841,10 +1916,10 @@
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/complex_border/med_rec)
 "gk" = (
-/obj/structure/platform/kutjevo{
-	dir = 4
+/obj/structure/barricade/handrail/kutjevo{
+	dir = 8
 	},
-/turf/open/gm/river/desert/shallow_edge,
+/turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/exterior/runoff_river)
 "gl" = (
 /obj/structure/bed/chair,
@@ -1857,9 +1932,11 @@
 /turf/open/floor/kutjevo/tan/multi_tiles,
 /area/kutjevo/interior/colony_South/power2)
 "gn" = (
-/obj/structure/machinery/vending/hydronutrients,
-/turf/open/floor/kutjevo/colors/green/tile,
-/area/kutjevo/interior/complex/botany)
+/obj/structure/flora/bush/ausbushes/grassybush,
+/turf/open/gm/river/desert/shallow_edge{
+	dir = 6
+	},
+/area/kutjevo/exterior/runoff_river)
 "go" = (
 /obj/structure/stairs/perspective/kutjevo{
 	icon_state = "p_stair_ew_full_cap_butt"
@@ -2012,6 +2089,10 @@
 "gJ" = (
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/oob/dev_room)
+"gK" = (
+/obj/structure/largecrate/random,
+/turf/open/floor/kutjevo/colors/red/tile,
+/area/kutjevo/interior/oob/dev_room)
 "gL" = (
 /obj/structure/machinery/cm_vending/sorted/tech/electronics_storage,
 /turf/open/floor/kutjevo/colors/orange,
@@ -2021,6 +2102,11 @@
 /obj/effect/alien/weeds/node,
 /turf/open/floor/kutjevo/tan/multi_tiles,
 /area/kutjevo/interior/colony_South)
+"gN" = (
+/obj/structure/surface/rack,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/kutjevo/colors,
+/area/kutjevo/interior/power)
 "gO" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1
@@ -2124,6 +2210,10 @@
 /obj/structure/window/framed/kutjevo,
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/complex/med/operating)
+"hf" = (
+/obj/structure/flora/grass/tallgrass/desert,
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/stonyfields)
 "hg" = (
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/power_pt2_electric_boogaloo)
@@ -2232,11 +2322,11 @@
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/lz_dunes)
 "hz" = (
-/obj/structure/platform/kutjevo/rock{
-	dir = 8
+/obj/effect/landmark{
+	name = "hunter_primary"
 	},
-/turf/open/auto_turf/sand/layer0,
-/area/kutjevo/exterior/stonyfields)
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/scrubland)
 "hA" = (
 /obj/structure/machinery/light,
 /turf/open/floor/almayer/research/containment/floor2,
@@ -2284,6 +2374,10 @@
 /obj/structure/machinery/door/poddoor/shutters/almayer,
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/complex/botany)
+"hH" = (
+/obj/structure/barricade/wooden,
+/turf/open/floor/kutjevo/colors/red/tile,
+/area/kutjevo/interior/oob/dev_room)
 "hI" = (
 /obj/structure/stairs/perspective/kutjevo{
 	icon_state = "p_stair_ew_full_cap_butt"
@@ -2292,15 +2386,14 @@
 	dir = 1;
 	icon_state = "kutjevo_platform_sm_stair"
 	},
-/obj/structure/platform/kutjevo/smooth,
 /turf/open/floor/kutjevo/grey,
 /area/kutjevo/interior/complex/botany)
 "hJ" = (
-/obj/structure/flora/bush/desert{
-	icon_state = "tree_3"
+/obj/effect/landmark{
+	name = "hunter_secondary"
 	},
-/turf/open/auto_turf/sand/layer0,
-/area/kutjevo/interior/oob)
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/scrubland)
 "hK" = (
 /turf/open/gm/river/desert/shallow_edge,
 /area/kutjevo/exterior/lz_river)
@@ -2355,6 +2448,12 @@
 	},
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/complex/botany)
+"hT" = (
+/turf/open/mars_cave{
+	icon_state = "mars_cave_7";
+	tag = "icon-mars_cave_7"
+	},
+/area/kutjevo/exterior/lz_dunes)
 "hU" = (
 /obj/effect/decal/cleanable/blood{
 	icon_state = "xgib2";
@@ -2399,6 +2498,14 @@
 	name = "surv_spawn";
 	pixel_x = -1
 	},
+/obj/structure/machinery/computer/security/telescreen/entertainment{
+	icon_state = "ai_bsod";
+	pixel_y = 32
+	},
+/obj/structure/machinery/light/small{
+	dir = 1;
+	pixel_y = 20
+	},
 /turf/open/floor/kutjevo/colors/red,
 /area/kutjevo/interior/complex/botany)
 "ic" = (
@@ -2418,6 +2525,15 @@
 	},
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/construction)
+"if" = (
+/obj/structure/prop/dam/crane{
+	icon_state = "tractor";
+	name = "tractor"
+	},
+/turf/open/floor/kutjevo/tan/multi_tiles{
+	dir = 1
+	},
+/area/kutjevo/interior/power)
 "ig" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -2475,6 +2591,10 @@
 /obj/structure/prop/dam/boulder/boulder3,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/scrubland)
+"ip" = (
+/obj/item/weapon/gun/revolver/cmb,
+/turf/open/gm/river/desert/deep/covered,
+/area/kutjevo/interior/power)
 "iq" = (
 /obj/structure/reagent_dispensers/water_cooler,
 /turf/open/floor/kutjevo/multi_tiles{
@@ -2654,7 +2774,7 @@
 /area/kutjevo/interior/oob)
 "iS" = (
 /obj/item/reagent_container/glass/bucket,
-/turf/open/floor/kutjevo/colors/green/tile,
+/turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/complex/botany)
 "iT" = (
 /obj/structure/stairs/perspective/kutjevo{
@@ -2815,9 +2935,14 @@
 	},
 /area/kutjevo/exterior/runoff_river)
 "jx" = (
-/obj/structure/prop/dam/boulder/boulder2,
-/turf/open/auto_turf/sand/layer0,
-/area/kutjevo/exterior/lz_dunes)
+/obj/structure/flora/bush/ausbushes/grassybush{
+	pixel_x = -6;
+	pixel_y = 10
+	},
+/turf/open/gm/river/desert/shallow_edge{
+	dir = 9
+	},
+/area/kutjevo/exterior/runoff_river)
 "jy" = (
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/kutjevo/colors/green,
@@ -2868,6 +2993,12 @@
 "jG" = (
 /turf/open/floor/kutjevo/colors/orange,
 /area/kutjevo/exterior/complex_border/med_rec)
+"jH" = (
+/obj/structure/flora/bush/ausbushes/grassybush,
+/turf/open/gm/river/desert/shallow_edge{
+	dir = 10
+	},
+/area/kutjevo/exterior/runoff_river)
 "jI" = (
 /obj/structure/flora/grass/desert,
 /turf/open/auto_turf/sand/layer1,
@@ -2950,7 +3081,7 @@
 	pixel_y = 24;
 	start_charge = 0
 	},
-/turf/open/floor/kutjevo/colors/green/tile,
+/turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/complex/botany)
 "jX" = (
 /obj/item/weapon/melee/wirerod,
@@ -3167,6 +3298,11 @@
 	},
 /turf/open/floor/kutjevo/colors/red,
 /area/kutjevo/interior/complex/botany)
+"kI" = (
+/obj/structure/blocker/invisible_wall,
+/obj/structure/barricade/wooden,
+/turf/open/floor/kutjevo/colors/red/tile,
+/area/kutjevo/interior/oob/dev_room)
 "kJ" = (
 /obj/structure/stairs/perspective/kutjevo{
 	dir = 8;
@@ -3308,6 +3444,12 @@
 	dir = 1
 	},
 /area/kutjevo/interior/oob/dev_room)
+"lg" = (
+/turf/open/mars_cave{
+	icon_state = "mars_cave_10";
+	tag = "icon-mars_cave_10"
+	},
+/area/kutjevo/exterior/lz_dunes)
 "lh" = (
 /turf/open/floor/kutjevo/tan/multi_tiles,
 /area/kutjevo/interior/colony_South)
@@ -3336,12 +3478,6 @@
 	},
 /turf/open/floor/almayer/research/containment/floor2,
 /area/kutjevo/interior/complex/botany)
-"ll" = (
-/obj/structure/platform/kutjevo{
-	dir = 8
-	},
-/turf/open/gm/river/desert/shallow_edge,
-/area/kutjevo/exterior/lz_river)
 "lm" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/trash/plate{
@@ -3365,8 +3501,12 @@
 	},
 /area/kutjevo/interior/complex/botany)
 "lp" = (
-/turf/open/auto_turf/sand/layer2,
-/area/kutjevo/interior/oob)
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/computer/objective{
+	pixel_y = 3
+	},
+/turf/open/floor/kutjevo/colors/green/tile,
+/area/kutjevo/interior/complex/botany/east)
 "lq" = (
 /obj/structure/monorail,
 /obj/structure/platform/kutjevo/smooth{
@@ -3390,6 +3530,12 @@
 	},
 /turf/open/floor/kutjevo/colors/orange,
 /area/kutjevo/interior/power_pt2_electric_boogaloo)
+"lt" = (
+/obj/structure/platform_decoration/kutjevo/rock{
+	dir = 1
+	},
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/stonyfields)
 "lu" = (
 /obj/item/clipboard,
 /turf/open/floor/kutjevo/multi_tiles{
@@ -3419,14 +3565,27 @@
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/complex/botany)
 "lB" = (
-/turf/open/gm/river/desert/deep/covered,
+/obj/structure/platform_decoration/kutjevo,
+/turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/complex/botany)
+"lC" = (
+/obj/structure/platform/kutjevo{
+	dir = 1
+	},
+/turf/open/gm/river/desert/shallow_corner{
+	dir = 4
+	},
+/area/kutjevo/exterior/runoff_river)
 "lD" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/reagent_container/food/snacks/meatballspagetti,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/kutjevo/colors/purple,
 /area/kutjevo/interior/construction)
+"lE" = (
+/obj/item/ammo_magazine/rifle/mar40/extended,
+/turf/open/floor/kutjevo/colors/orange,
+/area/kutjevo/interior/power)
 "lF" = (
 /obj/structure/morgue{
 	dir = 8;
@@ -3631,6 +3790,12 @@
 	dir = 8
 	},
 /area/kutjevo/interior/complex/med/operating)
+"mn" = (
+/obj/structure/flora/grass/tallgrass/desert/corner{
+	dir = 1
+	},
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/runoff_dunes)
 "mo" = (
 /obj/structure/platform_decoration/kutjevo,
 /turf/open/auto_turf/sand/layer0,
@@ -3708,6 +3873,18 @@
 	},
 /turf/open/floor/kutjevo/tiles,
 /area/kutjevo/interior/complex/med/operating)
+"mz" = (
+/obj/structure/platform/kutjevo{
+	dir = 4
+	},
+/obj/structure/flora/bush/ausbushes/grassybush{
+	pixel_x = -6;
+	pixel_y = 10
+	},
+/turf/open/desert/desert_shore/shore_corner2{
+	dir = 4
+	},
+/area/kutjevo/exterior/runoff_river)
 "mA" = (
 /obj/structure/surface/rack,
 /obj/item/book/manual/orbital_cannon_manual,
@@ -3723,6 +3900,12 @@
 	},
 /turf/open/floor/kutjevo/colors/cyan/tile,
 /area/kutjevo/interior/complex/med/auto_doc)
+"mC" = (
+/obj/structure/platform/kutjevo/rock{
+	dir = 8
+	},
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/stonyfields)
 "mD" = (
 /obj/structure/bed/chair{
 	dir = 1;
@@ -3731,6 +3914,10 @@
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/kutjevo/colors/cyan,
 /area/kutjevo/interior/complex/med)
+"mE" = (
+/obj/structure/machinery/door/poddoor/shutters/almayer,
+/turf/closed/wall/kutjevo/colony/reinforced/hull,
+/area/kutjevo/interior/complex/botany)
 "mG" = (
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/construction)
@@ -3738,6 +3925,10 @@
 /obj/structure/flora/bush/ausbushes/grassybush{
 	pixel_x = 5;
 	pixel_y = -12
+	},
+/obj/structure/flora/bush/ausbushes/grassybush{
+	pixel_x = -6;
+	pixel_y = 10
 	},
 /turf/open/gm/river/desert/shallow_edge{
 	dir = 10
@@ -3758,6 +3949,13 @@
 /obj/item/tool/minihoe,
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/complex/botany)
+"mL" = (
+/obj/structure/stairs/perspective/kutjevo{
+	dir = 1;
+	icon_state = "p_stair_ew_full_cap"
+	},
+/turf/open/gm/river/desert/shallow,
+/area/kutjevo/exterior/runoff_bridge)
 "mM" = (
 /turf/open/desert/desert_shore/shore_corner2,
 /area/kutjevo/exterior/lz_dunes)
@@ -3766,6 +3964,10 @@
 /obj/structure/lattice,
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/construction)
+"mO" = (
+/obj/effect/landmark/corpsespawner/miner,
+/turf/open/gm/river/desert/deep/covered,
+/area/kutjevo/interior/power)
 "mP" = (
 /obj/structure/window/framed/kutjevo,
 /turf/open/floor/kutjevo/tan,
@@ -3845,6 +4047,12 @@
 	},
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_central)
+"nb" = (
+/obj/structure/platform_decoration/kutjevo/rock{
+	dir = 4
+	},
+/turf/open/auto_turf/sand/layer2,
+/area/kutjevo/exterior/lz_dunes)
 "nc" = (
 /obj/structure/surface/table/almayer,
 /obj/item/trash/candle,
@@ -3861,6 +4069,11 @@
 /obj/item/device/flashlight,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/complex_border/med_rec)
+"nf" = (
+/turf/open/floor/kutjevo/multi_tiles{
+	dir = 1
+	},
+/area/kutjevo/interior/power)
 "ng" = (
 /obj/structure/mineral_door/resin/thick,
 /obj/effect/alien/weeds/node,
@@ -4105,6 +4318,16 @@
 	dir = 4
 	},
 /area/kutjevo/exterior/runoff_bridge)
+"nO" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_29";
+	pixel_y = 6
+	},
+/obj/structure/machinery/light,
+/turf/open/floor/kutjevo/multi_tiles{
+	dir = 8
+	},
+/area/kutjevo/interior/power)
 "nP" = (
 /obj/structure/machinery/light/small{
 	dir = 1;
@@ -4126,13 +4349,14 @@
 /turf/open/floor/kutjevo/colors/cyan,
 /area/kutjevo/interior/complex/med/auto_doc)
 "nS" = (
-/obj/structure/barricade/wooden{
-	dir = 4;
-	pixel_y = 4
+/obj/structure/stairs/perspective/kutjevo{
+	dir = 8;
+	icon_state = "p_stair_ew_full_cap"
 	},
-/obj/item/storage/large_holster/m39,
-/turf/open/floor/kutjevo/multi_tiles,
-/area/kutjevo/interior/power)
+/turf/open/gm/river/desert/shallow_edge{
+	dir = 10
+	},
+/area/kutjevo/exterior/runoff_bridge)
 "nU" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1
@@ -4144,13 +4368,13 @@
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/runoff_dunes)
 "nW" = (
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
-/turf/open/desert/desert_shore/desert_shore1{
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/rack,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/kutjevo/multi_tiles{
 	dir = 1
 	},
-/area/kutjevo/exterior/lz_river)
+/area/kutjevo/interior/power)
 "nY" = (
 /obj/structure/flora/bush/desert{
 	icon_state = "tree_4"
@@ -4209,6 +4433,9 @@
 /obj/structure/blocker/invisible_wall,
 /turf/open/gm/river/desert/shallow_corner,
 /area/kutjevo/interior/oob)
+"oi" = (
+/turf/open/floor/kutjevo/tan/multi_tiles,
+/area/kutjevo/exterior/scrubland)
 "oj" = (
 /obj/structure/platform/kutjevo{
 	dir = 8
@@ -4231,6 +4458,10 @@
 	},
 /turf/open/floor/kutjevo/colors/cyan/tile,
 /area/kutjevo/interior/complex/med/auto_doc)
+"om" = (
+/obj/item/ammo_magazine/rifle/mar40/extended,
+/turf/open/floor/kutjevo/tiles,
+/area/kutjevo/interior/oob/dev_room)
 "on" = (
 /obj/structure/toilet{
 	dir = 1;
@@ -4477,6 +4708,12 @@
 	},
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/interior/complex/botany)
+"pa" = (
+/obj/structure/barricade/wooden,
+/turf/open/floor/kutjevo/tan/multi_tiles{
+	dir = 1
+	},
+/area/kutjevo/interior/power)
 "pb" = (
 /obj/structure/platform_decoration/kutjevo/rock{
 	dir = 8
@@ -4507,15 +4744,10 @@
 	},
 /area/kutjevo/interior/construction)
 "pf" = (
-/obj/structure/platform/kutjevo{
-	dir = 1
-	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8
 	},
-/turf/open/desert/desert_shore/shore_edge1{
-	dir = 4
-	},
+/turf/closed/wall/kutjevo/colony/reinforced/hull,
 /area/kutjevo/exterior/runoff_bridge)
 "pg" = (
 /obj/structure/machinery/door/airlock/almayer/maint/autoname{
@@ -4556,10 +4788,30 @@
 	},
 /turf/open/auto_turf/sand/layer2,
 /area/kutjevo/exterior/runoff_dunes)
+"pm" = (
+/obj/item/stack/sheet/wood,
+/obj/item/storage/belt/marine,
+/turf/open/floor/kutjevo/tan/multi_tiles{
+	dir = 1
+	},
+/area/kutjevo/interior/power)
+"pn" = (
+/turf/open/floor/kutjevo/tiles,
+/area/kutjevo/interior/oob/dev_room)
+"po" = (
+/obj/structure/machinery/colony_floodlight{
+	pixel_y = 10
+	},
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/lz_river)
 "pp" = (
 /obj/structure/platform_decoration/kutjevo,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/scrubland)
+"pq" = (
+/obj/structure/barricade/wooden,
+/turf/open/floor/kutjevo/tiles,
+/area/kutjevo/interior/oob/dev_room)
 "pt" = (
 /obj/structure/flora/grass/tallgrass/desert/corner,
 /turf/open/auto_turf/sand/layer0,
@@ -4583,6 +4835,12 @@
 /obj/item/stack/sandbags_empty,
 /turf/open/floor/kutjevo/colors/green,
 /area/kutjevo/interior/complex/botany)
+"py" = (
+/obj/structure/platform_decoration/kutjevo/rock{
+	dir = 4
+	},
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/stonyfields)
 "pz" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/effect/landmark/objective_landmark/far,
@@ -4594,6 +4852,12 @@
 	dir = 4
 	},
 /area/kutjevo/interior/colony_South/power2)
+"pA" = (
+/obj/structure/platform_decoration/kutjevo/rock{
+	dir = 4
+	},
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/stonyfields)
 "pB" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -4621,10 +4885,6 @@
 /turf/open/floor/kutjevo/colors/green,
 /area/kutjevo/interior/complex/botany)
 "pF" = (
-/obj/structure/platform/kutjevo,
-/obj/structure/barricade/handrail/kutjevo{
-	layer = 3.1
-	},
 /turf/open/gm/river/desert/deep,
 /area/kutjevo/exterior/runoff_bridge)
 "pG" = (
@@ -4638,6 +4898,16 @@
 "pI" = (
 /turf/open/desert/desert_shore/shore_edge1,
 /area/kutjevo/exterior/scrubland)
+"pJ" = (
+/obj/structure/barricade/wooden,
+/turf/open/floor/kutjevo/colors/orange,
+/area/kutjevo/interior/power)
+"pK" = (
+/mob/living/simple_animal/hostile/retaliate/clown{
+	name = "Gonzo The Magnificent"
+	},
+/turf/open/floor/kutjevo/colors/red/tile,
+/area/kutjevo/interior/oob/dev_room)
 "pL" = (
 /obj/structure/platform/kutjevo{
 	dir = 1
@@ -4680,6 +4950,12 @@
 	},
 /turf/open/floor/kutjevo/colors/green,
 /area/kutjevo/interior/complex/botany)
+"pR" = (
+/obj/item/ammo_magazine/rifle/mar40,
+/turf/open/floor/kutjevo/multi_tiles{
+	dir = 1
+	},
+/area/kutjevo/interior/power)
 "pS" = (
 /obj/structure/platform/kutjevo{
 	dir = 1
@@ -4885,10 +5161,9 @@
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/colony_South/power2)
 "qA" = (
-/obj/structure/platform/kutjevo{
-	dir = 1
+/turf/open/desert/desert_shore/shore_corner2{
+	dir = 4
 	},
-/turf/open/gm/river/desert/deep,
 /area/kutjevo/exterior/runoff_bridge)
 "qB" = (
 /turf/closed/wall/kutjevo/colony/reinforced,
@@ -4928,7 +5203,7 @@
 /turf/open/floor/kutjevo/colors/cyan/edge,
 /area/kutjevo/interior/complex/med/operating)
 "qJ" = (
-/obj/item/weapon/gun/smg/m39,
+/obj/item/weapon/gun/rifle/mar40/carbine,
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/interior/power)
 "qK" = (
@@ -4956,6 +5231,23 @@
 	},
 /turf/open/floor/kutjevo/colors/orange,
 /area/kutjevo/interior/colony_South/power2)
+"qN" = (
+/obj/structure/stairs/perspective/kutjevo{
+	dir = 1;
+	icon_state = "p_stair_full";
+	pixel_y = 16
+	},
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/interior/power)
+"qO" = (
+/obj/structure/flora/bush/ausbushes/reedbush{
+	pixel_x = -6;
+	pixel_y = 1
+	},
+/turf/open/desert/desert_shore/shore_corner2{
+	dir = 1
+	},
+/area/kutjevo/exterior/runoff_bridge)
 "qP" = (
 /obj/structure/sign/poster{
 	pixel_y = 32
@@ -5021,16 +5313,14 @@
 	},
 /area/kutjevo/interior/complex/med/operating)
 "qX" = (
-/obj/structure/platform/kutjevo{
-	dir = 4
-	},
-/obj/structure/platform/kutjevo,
-/turf/open/gm/river/desert/deep/covered,
-/area/kutjevo/interior/complex/botany)
+/turf/open/gm/river/desert/shallow_edge,
+/area/kutjevo/exterior/runoff_bridge)
 "qY" = (
-/obj/structure/flora/bush/desert,
-/turf/open/auto_turf/sand/layer0,
-/area/kutjevo/exterior/lz_river)
+/obj/item/stack/sheet/wood,
+/turf/open/floor/kutjevo/tan/multi_tiles{
+	dir = 1
+	},
+/area/kutjevo/interior/power)
 "qZ" = (
 /obj/structure/platform_decoration/kutjevo/rock{
 	dir = 1
@@ -5223,17 +5513,24 @@
 	},
 /turf/open/asphalt/cement_sunbleached,
 /area/kutjevo/exterior/scrubland)
-"rG" = (
-/obj/item/tool/minihoe,
-/obj/item/tool/minihoe,
-/obj/structure/surface/rack,
-/obj/effect/landmark/objective_landmark/close,
+"rF" = (
 /obj/structure/machinery/light,
-/turf/open/floor/kutjevo/colors/green/tile,
-/area/kutjevo/interior/complex/botany)
+/turf/open/floor/kutjevo/multi_tiles{
+	dir = 1
+	},
+/area/kutjevo/exterior/runoff_bridge)
+"rG" = (
+/obj/structure/stairs/perspective/kutjevo{
+	icon_state = "p_stair_ew_full_cap"
+	},
+/turf/open/gm/river/desert/shallow_edge{
+	dir = 6
+	},
+/area/kutjevo/exterior/runoff_bridge)
 "rH" = (
+/obj/effect/decal/cleanable/dirt,
 /turf/open/auto_turf/sand/layer0,
-/area/kutjevo/interior/oob)
+/area/kutjevo/interior/power)
 "rI" = (
 /obj/effect/landmark{
 	name = "yautja_teleport_loc"
@@ -5259,6 +5556,13 @@
 	},
 /turf/open/floor/kutjevo/colors/green,
 /area/kutjevo/interior/complex/botany)
+"rN" = (
+/obj/structure/platform_decoration/kutjevo{
+	dir = 4
+	},
+/obj/structure/machinery/colony_floodlight,
+/turf/open/desert/desert_shore/desert_shore1,
+/area/kutjevo/exterior/runoff_river)
 "rO" = (
 /obj/structure/platform_decoration/kutjevo{
 	dir = 4
@@ -5292,12 +5596,8 @@
 	},
 /area/kutjevo/interior/complex/med/auto_doc)
 "rV" = (
-/obj/structure/platform/kutjevo,
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8
-	},
-/obj/structure/barricade/handrail/kutjevo{
-	layer = 3.1
 	},
 /turf/open/gm/river/desert/shallow_edge{
 	dir = 8
@@ -5484,6 +5784,10 @@
 /obj/item/ammo_magazine/rifle/m16,
 /turf/open/floor/kutjevo/colors,
 /area/kutjevo/interior/complex/botany)
+"sB" = (
+/obj/item/ammo_magazine/revolver/cmb,
+/turf/open/floor/kutjevo/tan/multi_tiles,
+/area/kutjevo/interior/power)
 "sC" = (
 /obj/structure/monorail,
 /obj/structure/platform/kutjevo/smooth{
@@ -5586,16 +5890,16 @@
 /turf/open/floor/kutjevo/colors/red/tile,
 /area/kutjevo/interior/complex/med/operating)
 "sS" = (
-/obj/structure/platform_decoration/kutjevo/rock{
+/obj/structure/machinery/colony_floodlight,
+/turf/open/auto_turf/sand/layer2,
+/area/kutjevo/exterior/scrubland)
+"sT" = (
+/obj/structure/filtration/machine_96x96/indestructible{
+	icon_state = "distribution"
+	},
+/turf/open/gm/river/desert/shallow_edge{
 	dir = 8
 	},
-/turf/open/auto_turf/sand/layer1,
-/area/kutjevo/exterior/stonyfields)
-"sT" = (
-/obj/structure/flora/bush/desert{
-	icon_state = "tree_2"
-	},
-/turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/lz_river)
 "sU" = (
 /obj/structure/platform/kutjevo/rock,
@@ -5685,6 +5989,11 @@
 	},
 /turf/open/floor/kutjevo/tan/multi_tiles,
 /area/kutjevo/interior/complex/botany)
+"th" = (
+/turf/open/desert/desert_shore/desert_shore1{
+	dir = 1
+	},
+/area/kutjevo/exterior/runoff_bridge)
 "ti" = (
 /obj/structure/platform_decoration/kutjevo,
 /turf/open/auto_turf/sand/layer0,
@@ -5758,6 +6067,10 @@
 /obj/structure/platform/kutjevo,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/complex_border/med_rec)
+"tu" = (
+/obj/structure/platform_decoration/kutjevo,
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/interior/oob)
 "tv" = (
 /obj/structure/flora/bush/ausbushes/grassybush{
 	pixel_x = -6;
@@ -5836,9 +6149,7 @@
 /obj/structure/platform_decoration/kutjevo{
 	dir = 4
 	},
-/turf/open/gm/river/desert/shallow_edge{
-	dir = 8
-	},
+/turf/open/gm/river/desert/shallow,
 /area/kutjevo/exterior/runoff_river)
 "tI" = (
 /turf/closed/wall/kutjevo/colony/reinforced/hull,
@@ -5966,16 +6277,13 @@
 	},
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/complex_border/med_rec)
-"ub" = (
-/obj/structure/platform/kutjevo{
-	dir = 8
-	},
-/turf/open/desert/desert_shore/desert_shore1,
-/area/kutjevo/exterior/lz_river)
 "uc" = (
 /obj/structure/barricade/wooden,
 /turf/open/floor/kutjevo/colors/green,
 /area/kutjevo/interior/complex/botany)
+"ud" = (
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/interior/oob)
 "ue" = (
 /obj/structure/platform/kutjevo{
 	dir = 1
@@ -6195,7 +6503,7 @@
 	icon_state = "xgibleg"
 	},
 /turf/open/floor/kutjevo/multi_tiles,
-/area/kutjevo/interior/complex/botany)
+/area/kutjevo/exterior/runoff_bridge)
 "uL" = (
 /obj/effect/landmark{
 	name = "xeno_spawn";
@@ -6210,6 +6518,9 @@
 	},
 /turf/open/floor/kutjevo/colors/green,
 /area/kutjevo/interior/complex/botany)
+"uN" = (
+/turf/open/desert/desert_shore/desert_shore1,
+/area/kutjevo/exterior/runoff_bridge)
 "uO" = (
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/interior/construction)
@@ -6282,11 +6593,12 @@
 /turf/open/floor/kutjevo/tan/multi_tiles,
 /area/kutjevo/interior/complex/botany)
 "vb" = (
-/obj/structure/platform_decoration/kutjevo/rock{
-	dir = 4
-	},
-/turf/open/auto_turf/sand/layer2,
-/area/kutjevo/exterior/stonyfields)
+/obj/structure/machinery/colony_floodlight,
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/scrubland)
+"vc" = (
+/turf/open/floor/kutjevo/colors/orange,
+/area/kutjevo/exterior/runoff_dunes)
 "vd" = (
 /obj/structure/lattice,
 /obj/effect/landmark/objective_landmark/medium,
@@ -6308,6 +6620,9 @@
 	dir = 4
 	},
 /area/kutjevo/interior/power_pt2_electric_boogaloo)
+"vg" = (
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/interior/oob)
 "vh" = (
 /obj/structure/surface/table/gamblingtable,
 /obj/effect/landmark/objective_landmark/medium,
@@ -6320,11 +6635,9 @@
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/colony_central)
 "vj" = (
-/obj/structure/machinery/light,
-/turf/open/floor/kutjevo/multi_tiles{
-	dir = 1
-	},
-/area/kutjevo/interior/complex/botany)
+/obj/structure/machinery/colony_floodlight,
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/scrubland)
 "vk" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -6369,16 +6682,8 @@
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/construction)
 "vr" = (
-/obj/structure/machinery/computer/security/telescreen/entertainment{
-	icon_state = "ai_bsod";
-	pixel_y = 32
-	},
-/obj/structure/machinery/light/small{
-	dir = 1;
-	pixel_y = 20
-	},
-/turf/open/floor/kutjevo/colors/red,
-/area/kutjevo/interior/complex/botany)
+/turf/open/gm/river/desert/shallow,
+/area/kutjevo/exterior/runoff_bridge)
 "vs" = (
 /obj/effect/decal/medical_decals{
 	icon_state = "triagedecalbottomleft"
@@ -6413,15 +6718,6 @@
 	},
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/scrubland)
-"vx" = (
-/obj/structure/platform/kutjevo{
-	dir = 1
-	},
-/obj/structure/platform/kutjevo{
-	dir = 4
-	},
-/turf/open/gm/river/desert/deep,
-/area/kutjevo/exterior/runoff_river)
 "vy" = (
 /obj/structure/barricade/wooden{
 	dir = 1;
@@ -6430,8 +6726,13 @@
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/interior/power)
 "vz" = (
-/turf/open/auto_turf/sand/layer1,
-/area/kutjevo/interior/oob)
+/obj/structure/flora/bush/ausbushes/reedbush,
+/obj/structure/flora/bush/ausbushes/reedbush{
+	pixel_x = 5;
+	pixel_y = 12
+	},
+/turf/open/gm/river/desert/shallow,
+/area/kutjevo/exterior/runoff_bridge)
 "vA" = (
 /turf/open/gm/river/desert/shallow_corner{
 	dir = 4
@@ -6494,11 +6795,12 @@
 	},
 /area/kutjevo/exterior/lz_river)
 "vJ" = (
-/obj/structure/platform_decoration/kutjevo{
-	dir = 8
+/obj/structure/stairs/perspective/kutjevo{
+	dir = 8;
+	icon_state = "p_stair_full"
 	},
-/turf/open/auto_turf/sand/layer0,
-/area/kutjevo/exterior/runoff_dunes)
+/turf/open/gm/river/desert/shallow,
+/area/kutjevo/exterior/runoff_bridge)
 "vK" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4
@@ -6561,6 +6863,12 @@
 	},
 /turf/open/floor/kutjevo/colors/purple,
 /area/kutjevo/interior/complex/med/locks)
+"vU" = (
+/obj/structure/platform_decoration/kutjevo{
+	dir = 8
+	},
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/interior/oob)
 "vW" = (
 /obj/structure/filtration/machine_96x96{
 	icon_state = "distribution"
@@ -6651,6 +6959,17 @@
 "wl" = (
 /turf/open/floor/kutjevo/colors/orange,
 /area/kutjevo/exterior/scrubland)
+"wm" = (
+/turf/closed/wall/kutjevo/colony/reinforced/hull,
+/area/kutjevo/exterior/lz_river)
+"wn" = (
+/obj/structure/platform/kutjevo{
+	dir = 4
+	},
+/turf/open/gm/river/desert/shallow_edge{
+	dir = 10
+	},
+/area/kutjevo/exterior/runoff_river)
 "wo" = (
 /obj/structure/blocker/invisible_wall,
 /obj/structure/platform/kutjevo{
@@ -6716,6 +7035,11 @@
 	},
 /turf/open/floor/kutjevo/colors/orange,
 /area/kutjevo/interior/colony_South/power2)
+"wy" = (
+/turf/open/desert/desert_shore/shore_edge1{
+	dir = 4
+	},
+/area/kutjevo/exterior/runoff_bridge)
 "wz" = (
 /obj/structure/window/framed/kutjevo/reinforced/hull,
 /obj/structure/blocker/invisible_wall,
@@ -6778,6 +7102,12 @@
 	},
 /turf/open/floor/almayer/research/containment/floor2,
 /area/kutjevo/interior/complex/botany)
+"wN" = (
+/obj/structure/platform/kutjevo{
+	dir = 4
+	},
+/turf/open/gm/river/desert/deep,
+/area/kutjevo/exterior/runoff_river)
 "wO" = (
 /obj/structure/platform/kutjevo/smooth,
 /turf/open/desert/desert_shore/desert_shore1{
@@ -6845,14 +7175,6 @@
 	},
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/complex_border/botany_medical_cave)
-"wY" = (
-/obj/structure/platform/kutjevo{
-	dir = 1
-	},
-/turf/open/desert/desert_shore/shore_edge1{
-	dir = 1
-	},
-/area/kutjevo/exterior/runoff_river)
 "xa" = (
 /turf/open/gm/river/desert/shallow_corner,
 /area/kutjevo/exterior/lz_river)
@@ -7150,6 +7472,10 @@
 "xV" = (
 /turf/closed/wall/kutjevo/colony/reinforced,
 /area/kutjevo/interior/complex/med/operating)
+"xW" = (
+/obj/structure/flora/grass/tallgrass/desert,
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/stonyfields)
 "xX" = (
 /turf/open/desert/desert_shore/shore_corner2{
 	dir = 1
@@ -7221,6 +7547,15 @@
 	},
 /turf/open/floor/kutjevo/colors,
 /area/kutjevo/interior/complex/med)
+"yj" = (
+/obj/structure/stairs/perspective/kutjevo{
+	dir = 4;
+	icon_state = "p_stair_full"
+	},
+/turf/open/desert/desert_shore/desert_shore1{
+	dir = 1
+	},
+/area/kutjevo/exterior/runoff_bridge)
 "yk" = (
 /obj/structure/flora/grass/tallgrass/desert/corner{
 	dir = 1
@@ -7376,15 +7711,14 @@
 /turf/open/floor/kutjevo/multi_tiles{
 	dir = 4
 	},
-/area/kutjevo/interior/complex/botany)
+/area/kutjevo/exterior/runoff_bridge)
 "yM" = (
 /obj/structure/machinery/light,
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/complex/med)
 "yN" = (
-/obj/structure/prop/dam/boulder/boulder2,
-/turf/open/auto_turf/sand/layer0,
-/area/kutjevo/exterior/scrubland)
+/turf/open/gm/river/desert/deep/covered,
+/area/kutjevo/interior/power)
 "yO" = (
 /obj/structure/platform/kutjevo/rock{
 	dir = 1
@@ -7579,11 +7913,15 @@
 	},
 /area/kutjevo/exterior/runoff_river)
 "zw" = (
-/obj/structure/flora/bush/desert{
-	icon_state = "tree_4"
+/obj/structure/stairs/perspective/kutjevo{
+	dir = 1;
+	icon_state = "p_stair_full";
+	pixel_y = 16
 	},
-/turf/open/auto_turf/sand/layer0,
-/area/kutjevo/exterior/scrubland)
+/turf/open/floor/kutjevo/tan/multi_tiles{
+	dir = 1
+	},
+/area/kutjevo/interior/power)
 "zx" = (
 /obj/item/stool,
 /turf/open/floor/kutjevo/tan,
@@ -7630,6 +7968,9 @@
 /obj/structure/platform/kutjevo{
 	dir = 4
 	},
+/obj/structure/platform/kutjevo{
+	dir = 8
+	},
 /turf/open/desert/desert_shore/desert_shore1{
 	dir = 4
 	},
@@ -7645,6 +7986,11 @@
 /obj/structure/machinery/iv_drip,
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/complex/med)
+"zI" = (
+/turf/open/floor/kutjevo/tan/multi_tiles{
+	dir = 1
+	},
+/area/kutjevo/interior/power)
 "zJ" = (
 /obj/structure/blocker/invisible_wall,
 /obj/structure/filtration/machine_96x96/indestructible{
@@ -7687,6 +8033,15 @@
 /obj/structure/machinery/light,
 /turf/open/floor/kutjevo/colors/orange/edge,
 /area/kutjevo/interior/power_pt2_electric_boogaloo)
+"zP" = (
+/obj/structure/platform/kutjevo/rock{
+	dir = 1
+	},
+/obj/structure/platform/kutjevo/rock{
+	dir = 8
+	},
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/lz_dunes)
 "zQ" = (
 /obj/structure/blocker/invisible_wall,
 /obj/structure/platform/kutjevo{
@@ -7746,6 +8101,14 @@
 /obj/structure/machinery/door/poddoor/shutters/almayer,
 /turf/open/floor/almayer/research/containment/floor2,
 /area/kutjevo/interior/complex/med/locks)
+"zZ" = (
+/obj/structure/platform_decoration/kutjevo{
+	dir = 4
+	},
+/turf/open/desert/desert_shore/desert_shore1{
+	dir = 4
+	},
+/area/kutjevo/exterior/scrubland)
 "Aa" = (
 /obj/structure/platform_decoration/kutjevo/rock{
 	dir = 8
@@ -7788,6 +8151,10 @@
 	icon = 'icons/turf/floors/desert_water_toxic.dmi'
 	},
 /area/kutjevo/interior/power)
+"Af" = (
+/obj/structure/flora/grass/tallgrass/desert/corner,
+/turf/open/auto_turf/sand/layer2,
+/area/kutjevo/exterior/stonyfields)
 "Ag" = (
 /obj/structure/machinery/colony_floodlight,
 /obj/structure/platform/kutjevo/smooth{
@@ -7943,6 +8310,10 @@
 	},
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/complex/botany)
+"AH" = (
+/obj/item/weapon/gun/rifle/mar40,
+/turf/open/gm/river/desert/deep/covered,
+/area/kutjevo/interior/power)
 "AI" = (
 /obj/structure/surface/table/almayer,
 /obj/item/weapon/gun/revolver/cmb,
@@ -7959,6 +8330,11 @@
 /obj/effect/alien/weeds/node,
 /turf/open/auto_turf/sand/layer2,
 /area/kutjevo/interior/colony_S_East)
+"AL" = (
+/obj/structure/prop/dam/truck/mining,
+/obj/structure/blocker/invisible_wall,
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/interior/oob)
 "AM" = (
 /obj/item/stack/cable_coil/random,
 /turf/open/floor/kutjevo/tan/multi_tiles,
@@ -8052,6 +8428,12 @@
 	dir = 1
 	},
 /area/kutjevo/interior/oob)
+"Ba" = (
+/obj/structure/flora/grass/tallgrass/desert/corner{
+	dir = 9
+	},
+/turf/open/auto_turf/sand/layer2,
+/area/kutjevo/exterior/runoff_dunes)
 "Bb" = (
 /turf/open/floor/kutjevo/colors/orange,
 /area/kutjevo/interior/foremans_office)
@@ -8079,6 +8461,14 @@
 	},
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/scrubland)
+"Bf" = (
+/obj/structure/platform_decoration/kutjevo{
+	dir = 8
+	},
+/turf/open/desert/desert_shore/desert_shore1{
+	dir = 8
+	},
+/area/kutjevo/exterior/lz_river)
 "Bg" = (
 /obj/item/reagent_container/glass/bucket,
 /obj/item/reagent_container/glass/bucket,
@@ -8129,11 +8519,11 @@
 /turf/open/floor/kutjevo/colors/cyan,
 /area/kutjevo/interior/complex/med/cells)
 "Bo" = (
-/obj/structure/platform/kutjevo/rock{
-	dir = 1
+/obj/structure/platform/kutjevo{
+	dir = 4
 	},
-/turf/open/auto_turf/sand/layer1,
-/area/kutjevo/exterior/stonyfields)
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/interior/complex/botany)
 "Bp" = (
 /obj/structure/stairs/perspective/kutjevo{
 	dir = 8;
@@ -8178,6 +8568,16 @@
 "By" = (
 /obj/structure/platform/kutjevo{
 	dir = 4
+	},
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/runoff_river)
+"Bz" = (
+/obj/structure/stairs/perspective/kutjevo{
+	dir = 6;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform/kutjevo/smooth{
+	icon_state = "kutjevo_platform_sm_stair"
 	},
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/runoff_river)
@@ -8261,6 +8661,15 @@
 	},
 /turf/open/floor/kutjevo/colors/orange,
 /area/kutjevo/interior/power)
+"BN" = (
+/obj/structure/machinery/colony_floodlight,
+/obj/structure/platform_decoration/kutjevo{
+	dir = 8
+	},
+/turf/open/desert/desert_shore/shore_edge1{
+	dir = 8
+	},
+/area/kutjevo/exterior/runoff_river)
 "BO" = (
 /turf/open/floor/kutjevo/colors/orange/edge{
 	dir = 8
@@ -8421,6 +8830,16 @@
 /obj/structure/largecrate/machine/autodoc,
 /turf/open/auto_turf/sand/layer2,
 /area/kutjevo/interior/construction)
+"Cp" = (
+/turf/open/gm/river/desert/deep,
+/area/kutjevo/exterior/scrubland)
+"Cq" = (
+/obj/structure/stairs/perspective/kutjevo{
+	dir = 4;
+	icon_state = "p_stair_ew_full_cap"
+	},
+/turf/open/gm/river/desert/shallow,
+/area/kutjevo/exterior/runoff_bridge)
 "Cr" = (
 /obj/structure/machinery/light{
 	dir = 1;
@@ -8524,19 +8943,14 @@
 /obj/structure/cable/heavyduty,
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/colony_South/power2)
-"CF" = (
-/obj/structure/stairs/perspective/kutjevo{
-	icon_state = "p_stair_full"
-	},
-/turf/open/auto_turf/sand/layer1,
-/area/kutjevo/exterior/runoff_bridge)
 "CH" = (
 /turf/open/floor/kutjevo/tan/multi_tiles,
 /area/kutjevo/interior/complex/med/locks)
 "CJ" = (
-/obj/structure/prop/dam/large_boulder/boulder1,
+/obj/structure/largecrate/guns/merc,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/auto_turf/sand/layer0,
-/area/kutjevo/exterior/stonyfields)
+/area/kutjevo/interior/power)
 "CK" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/kutjevo/multi_tiles,
@@ -8599,6 +9013,10 @@
 	},
 /turf/open/floor/kutjevo/colors/orange,
 /area/kutjevo/interior/power_pt2_electric_boogaloo)
+"CS" = (
+/obj/item/stack/sheet/wood,
+/turf/open/floor/kutjevo/tan/multi_tiles,
+/area/kutjevo/interior/power)
 "CT" = (
 /obj/structure/largecrate/random/secure,
 /obj/structure/platform/kutjevo/smooth{
@@ -8661,13 +9079,9 @@
 /turf/open/floor/kutjevo/colors,
 /area/kutjevo/interior/complex/botany)
 "Dd" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
-	pixel_x = -28
-	},
-/turf/open/floor/kutjevo/multi_tiles{
-	dir = 6
-	},
-/area/kutjevo/interior/complex/botany)
+/obj/item/tool/pickaxe,
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/interior/power)
 "De" = (
 /turf/open/floor/kutjevo/colors/cyan/inner_corner{
 	dir = 8
@@ -8763,12 +9177,9 @@
 /turf/open/floor/kutjevo/colors,
 /area/kutjevo/interior/complex/botany)
 "Ds" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/objective{
-	pixel_y = 3
-	},
-/turf/open/floor/kutjevo/colors/green/tile,
-/area/kutjevo/interior/complex/botany)
+/obj/item/ammo_magazine/rifle/mar40,
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/scrubland)
 "Dt" = (
 /obj/effect/landmark{
 	icon_state = "monkey_spawn";
@@ -8807,9 +9218,11 @@
 /turf/open/floor/kutjevo/colors/cyan,
 /area/kutjevo/interior/complex/med/auto_doc)
 "Dz" = (
-/obj/structure/surface/table/almayer,
+/obj/item/clothing/suit/armor/vest/security,
+/obj/item/clothing/suit/armor/vest/security,
+/obj/item/clothing/suit/armor/vest/security,
+/obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/close,
-/obj/item/ashtray/glass,
 /turf/open/floor/kutjevo/colors/red,
 /area/kutjevo/interior/complex/botany)
 "DA" = (
@@ -8852,6 +9265,12 @@
 	},
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/foremans_office)
+"DI" = (
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	indestructible = 1
+	},
+/turf/open/floor/kutjevo/colors/red/tile,
+/area/kutjevo/interior/oob/dev_room)
 "DJ" = (
 /obj/structure/extinguisher_cabinet,
 /turf/closed/wall/kutjevo/colony/reinforced/hull,
@@ -8936,6 +9355,17 @@
 	dir = 10
 	},
 /area/kutjevo/interior/colony_South/power2)
+"DY" = (
+/obj/structure/platform/kutjevo{
+	dir = 1
+	},
+/obj/structure/platform/kutjevo{
+	dir = 8
+	},
+/turf/open/desert/desert_shore/desert_shore1{
+	dir = 4
+	},
+/area/kutjevo/exterior/scrubland)
 "DZ" = (
 /turf/open/desert/desert_shore/shore_edge1{
 	dir = 1
@@ -9017,6 +9447,10 @@
 	},
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/complex_border/med_rec)
+"Eo" = (
+/obj/item/ammo_magazine/rifle/mar40/extended,
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/interior/power)
 "Ep" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/kutjevo/colors/cyan,
@@ -9068,6 +9502,13 @@
 	dir = 10
 	},
 /area/kutjevo/interior/colony_South/power2)
+"Ew" = (
+/obj/structure/platform/kutjevo/rock{
+	dir = 8
+	},
+/obj/structure/platform/kutjevo/rock,
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/stonyfields)
 "Ey" = (
 /obj/structure/bed/stool,
 /turf/open/auto_turf/sand/layer0,
@@ -9227,6 +9668,12 @@
 /obj/item/stack/rods,
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/complex/botany)
+"EX" = (
+/obj/structure/flora/grass/tallgrass/desert/corner{
+	dir = 10
+	},
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/stonyfields)
 "EY" = (
 /obj/structure/window/framed/kutjevo,
 /turf/open/floor/plating/kutjevo,
@@ -9360,13 +9807,10 @@
 	},
 /area/kutjevo/exterior/lz_river)
 "Fv" = (
-/obj/structure/sign/safety/hazard{
-	pixel_x = -32
-	},
-/turf/open/floor/kutjevo/multi_tiles,
-/area/kutjevo/exterior/runoff_bridge)
+/obj/item/weapon/gun/rifle/mar40,
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/scrubland)
 "Fx" = (
-/obj/structure/platform,
 /turf/open/floor/coagulation{
 	icon_state = "2,0"
 	},
@@ -9516,6 +9960,10 @@
 	dir = 8
 	},
 /area/kutjevo/exterior/runoff_dunes)
+"FX" = (
+/obj/structure/platform/kutjevo/rock,
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/lz_dunes)
 "FY" = (
 /obj/structure/prop/dam/gravestone{
 	icon_state = "gravestone3"
@@ -9567,14 +10015,9 @@
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/foremans_office)
 "Gg" = (
-/obj/structure/platform/kutjevo{
-	dir = 4
-	},
-/obj/structure/platform/kutjevo{
-	dir = 1
-	},
-/turf/open/gm/river/desert/deep/covered,
-/area/kutjevo/interior/complex/botany)
+/obj/structure/platform/kutjevo,
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/scrubland)
 "Gh" = (
 /obj/structure/prop/dam/boulder/boulder2,
 /turf/open/auto_turf/sand/layer0,
@@ -9703,11 +10146,25 @@
 /obj/structure/machinery/light,
 /turf/open/floor/kutjevo/colors/purple,
 /area/kutjevo/interior/complex/med/locks)
+"GC" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/kutjevo/multi_tiles{
+	dir = 4
+	},
+/area/kutjevo/exterior/runoff_bridge)
 "GD" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1
 	},
 /turf/open/asphalt/cement_sunbleached,
+/area/kutjevo/interior/power)
+"GE" = (
+/obj/structure/barricade/wooden{
+	dir = 8
+	},
+/turf/open/floor/kutjevo/colors/orange,
 /area/kutjevo/interior/power)
 "GF" = (
 /obj/structure/platform_decoration/kutjevo,
@@ -9800,12 +10257,6 @@
 /obj/structure/platform/kutjevo/smooth,
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/power)
-"GS" = (
-/obj/structure/platform/kutjevo{
-	dir = 8
-	},
-/turf/open/gm/river/desert/deep,
-/area/kutjevo/exterior/lz_river)
 "GT" = (
 /obj/structure/blocker/invisible_wall,
 /turf/closed/wall/kutjevo/colony/reinforced/hull,
@@ -9842,6 +10293,12 @@
 	},
 /turf/open/gm/river/desert/deep,
 /area/kutjevo/exterior/runoff_river)
+"GZ" = (
+/obj/structure/flora/grass/tallgrass/desert/corner{
+	dir = 8
+	},
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/runoff_dunes)
 "Ha" = (
 /obj/structure/bed/chair{
 	dir = 4;
@@ -9868,6 +10325,12 @@
 	tag = "icon-mars_cave_10"
 	},
 /area/kutjevo/exterior/scrubland)
+"He" = (
+/obj/structure/stairs/perspective/kutjevo{
+	icon_state = "p_stair_full"
+	},
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/runoff_river)
 "Hf" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/desert/desert_shore/shore_corner2{
@@ -9886,6 +10349,12 @@
 /obj/structure/machinery/door/poddoor/shutters/almayer/open,
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/colony_South/power2)
+"Hi" = (
+/obj/structure/platform_decoration/kutjevo/rock{
+	dir = 1
+	},
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/lz_dunes)
 "Hj" = (
 /obj/structure/platform_decoration/kutjevo{
 	dir = 8
@@ -10052,6 +10521,12 @@
 	dir = 10
 	},
 /area/kutjevo/interior/colony_South/power2)
+"HM" = (
+/obj/structure/platform/kutjevo{
+	dir = 4
+	},
+/turf/open/gm/river/desert/shallow_edge,
+/area/kutjevo/exterior/runoff_river)
 "HN" = (
 /obj/structure/platform/kutjevo/smooth,
 /turf/open/floor/kutjevo/colors/orange,
@@ -10090,6 +10565,15 @@
 "HU" = (
 /turf/open/floor/kutjevo/colors/red,
 /area/kutjevo/interior/complex/botany)
+"HV" = (
+/obj/structure/platform/kutjevo/rock{
+	dir = 1
+	},
+/obj/structure/platform/kutjevo/rock{
+	dir = 8
+	},
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/stonyfields)
 "HW" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -10103,10 +10587,10 @@
 /turf/open/floor/kutjevo/colors/orange,
 /area/kutjevo/interior/complex/med/locks)
 "HY" = (
-/obj/structure/platform/kutjevo{
-	dir = 4
+/obj/structure/flora/bush/ausbushes/ausbush{
+	icon_state = "pointybush_3"
 	},
-/turf/open/floor/kutjevo/colors/green,
+/turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/complex/botany)
 "HZ" = (
 /obj/structure/flora/grass/tallgrass/desert/corner{
@@ -10135,6 +10619,12 @@
 	},
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/exterior/lz_dunes)
+"Ie" = (
+/obj/item/storage/belt/marine,
+/turf/open/floor/kutjevo/multi_tiles{
+	dir = 4
+	},
+/area/kutjevo/interior/power)
 "If" = (
 /obj/structure/platform/kutjevo/rock{
 	dir = 1
@@ -10202,6 +10692,12 @@
 	},
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_South)
+"Iq" = (
+/turf/open/mars_cave{
+	icon_state = "mars_cave_23";
+	tag = "icon-mars_cave_23"
+	},
+/area/kutjevo/exterior/lz_dunes)
 "Ir" = (
 /obj/structure/largecrate/supply/supplies/flares,
 /turf/open/auto_turf/sand/layer1,
@@ -10260,7 +10756,7 @@
 /obj/structure/platform_decoration/kutjevo{
 	dir = 8
 	},
-/turf/open/gm/river/desert/shallow_corner,
+/turf/open/desert/desert_shore/shore_corner2,
 /area/kutjevo/exterior/runoff_river)
 "IB" = (
 /obj/structure/platform/kutjevo/rock{
@@ -10358,8 +10854,8 @@
 /turf/open/gm/river/desert/shallow,
 /area/kutjevo/exterior/runoff_river)
 "IP" = (
-/obj/structure/platform_decoration/kutjevo{
-	dir = 8
+/obj/structure/platform/kutjevo{
+	dir = 4
 	},
 /turf/open/gm/river/desert/shallow_corner{
 	dir = 8
@@ -10420,6 +10916,12 @@
 	dir = 8
 	},
 /area/kutjevo/interior/complex/med)
+"Ja" = (
+/obj/structure/barricade/wooden{
+	dir = 8
+	},
+/turf/open/gm/river/desert/deep/covered,
+/area/kutjevo/interior/power)
 "Jb" = (
 /turf/open/floor/almayer/research/containment/floor2,
 /area/kutjevo/exterior/scrubland)
@@ -10451,19 +10953,20 @@
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/runoff_dunes)
 "Jh" = (
-/obj/item/clothing/suit/armor/vest/security,
-/obj/item/clothing/suit/armor/vest/security,
-/obj/item/clothing/suit/armor/vest/security,
-/obj/structure/surface/rack,
-/obj/effect/landmark/objective_landmark/close,
-/turf/open/floor/kutjevo/colors/red,
-/area/kutjevo/interior/complex/botany)
+/obj/structure/platform/kutjevo,
+/turf/open/auto_turf/sand/layer2,
+/area/kutjevo/exterior/scrubland)
 "Ji" = (
 /turf/open/auto_turf/sand/layer2,
 /area/kutjevo/interior/power)
 "Jj" = (
 /turf/open/desert/desert_shore/shore_edge1,
 /area/kutjevo/exterior/runoff_dunes)
+"Jk" = (
+/turf/open/desert/desert_shore/desert_shore1{
+	dir = 4
+	},
+/area/kutjevo/exterior/scrubland)
 "Jl" = (
 /obj/structure/flora/grass/tallgrass/desert,
 /turf/open/auto_turf/sand/layer1,
@@ -10514,7 +11017,7 @@
 /turf/open/floor/coagulation{
 	icon_state = "0,5"
 	},
-/area/kutjevo/interior/oob)
+/area/kutjevo/interior/power)
 "Jx" = (
 /obj/structure/platform/kutjevo/smooth,
 /turf/open/desert/desert_shore/desert_shore1{
@@ -10623,6 +11126,19 @@
 "JP" = (
 /obj/structure/machinery/light,
 /turf/open/floor/almayer/research/containment/floor1,
+/area/kutjevo/interior/power)
+"JQ" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_29";
+	pixel_y = 6
+	},
+/obj/structure/machinery/light{
+	dir = 1;
+	tag = "icon-tube1 (NORTH)"
+	},
+/turf/open/floor/kutjevo/multi_tiles{
+	dir = 8
+	},
 /area/kutjevo/interior/power)
 "JR" = (
 /obj/structure/window/framed/kutjevo/reinforced,
@@ -10761,6 +11277,10 @@
 	dir = 6
 	},
 /area/kutjevo/interior/colony_South/power2)
+"Kq" = (
+/obj/structure/flora/grass/tallgrass/desert/corner,
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/stonyfields)
 "Kr" = (
 /obj/structure/stairs/perspective/kutjevo{
 	icon_state = "p_stair_ew_full_cap_butt"
@@ -10892,10 +11412,10 @@
 /obj/structure/platform/kutjevo{
 	dir = 8
 	},
-/turf/open/gm/river/desert/shallow_edge{
-	dir = 1
+/turf/open/floor/kutjevo/multi_tiles{
+	dir = 4
 	},
-/area/kutjevo/exterior/lz_river)
+/area/kutjevo/interior/power)
 "KP" = (
 /obj/structure/machinery/portable_atmospherics/hydroponics{
 	draw_warnings = 0;
@@ -10910,12 +11430,11 @@
 /turf/open/floor/kutjevo/colors/green,
 /area/kutjevo/interior/complex/botany)
 "KR" = (
-/obj/structure/flora/grass/desert{
-	icon_state = "lightgrass_11";
-	pixel_y = -16
+/obj/structure/platform_decoration/kutjevo{
+	dir = 1
 	},
-/turf/open/desert/desert_shore/desert_shore1,
-/area/kutjevo/exterior/lz_river)
+/turf/open/auto_turf/sand/layer2,
+/area/kutjevo/exterior/scrubland)
 "KS" = (
 /obj/structure/machinery/cryo_cell,
 /turf/open/floor/kutjevo/grey/plate,
@@ -10973,7 +11492,7 @@
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/power)
 "Lc" = (
-/turf/open/gm/river/desert/deep/covered,
+/turf/open/desert/desert_shore/shore_corner2,
 /area/kutjevo/exterior/runoff_bridge)
 "Ld" = (
 /obj/item/stack/cable_coil/random,
@@ -11239,12 +11758,7 @@
 /area/kutjevo/interior/colony_South)
 "LU" = (
 /obj/structure/stairs/perspective/kutjevo{
-	dir = 10;
 	icon_state = "p_stair_full"
-	},
-/obj/structure/platform/kutjevo/smooth{
-	dir = 1;
-	icon_state = "kutjevo_platform_sm_stair"
 	},
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/runoff_bridge)
@@ -11280,11 +11794,12 @@
 /turf/open/floor/kutjevo/colors/red,
 /area/kutjevo/interior/complex/botany)
 "LY" = (
-/obj/item/stack/sheet/wood,
-/obj/item/weapon/gun/smg/m39,
-/obj/item/storage/large_holster/m39,
-/turf/open/floor/kutjevo/multi_tiles,
-/area/kutjevo/interior/power)
+/obj/structure/stairs/perspective/kutjevo{
+	dir = 4;
+	icon_state = "p_stair_full"
+	},
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/runoff_bridge)
 "LZ" = (
 /obj/effect/decal/cleanable/blood/xeno{
 	icon_state = "xgibarm"
@@ -11300,17 +11815,6 @@
 	},
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/complex/botany)
-"Mb" = (
-/obj/structure/platform/kutjevo{
-	dir = 1
-	},
-/obj/structure/platform/kutjevo{
-	dir = 8
-	},
-/turf/open/gm/river/desert/shallow_edge{
-	dir = 6
-	},
-/area/kutjevo/exterior/runoff_river)
 "Mc" = (
 /obj/structure/mineral_door/resin/thick,
 /turf/open/auto_turf/sand/layer0,
@@ -11344,14 +11848,8 @@
 /turf/open/floor/kutjevo/grey/plate,
 /area/kutjevo/interior/construction)
 "Mh" = (
-/obj/structure/flora/bush/ausbushes/grassybush{
-	pixel_x = -10;
-	pixel_y = 10
-	},
-/turf/open/gm/river/desert/shallow_edge{
-	dir = 10
-	},
-/area/kutjevo/exterior/runoff_river)
+/turf/open/desert/desert_shore/shore_edge1,
+/area/kutjevo/exterior/runoff_bridge)
 "Mi" = (
 /obj/structure/stairs/perspective/kutjevo{
 	dir = 6;
@@ -11423,12 +11921,11 @@
 /turf/open/floor/kutjevo/colors/green,
 /area/kutjevo/interior/complex/botany)
 "Mt" = (
-/obj/structure/stairs/perspective/kutjevo,
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4
 	},
-/obj/structure/platform/kutjevo/smooth{
-	dir = 8
+/obj/structure/stairs/perspective/kutjevo{
+	icon_state = "p_stair_sn_full_cap"
 	},
 /turf/open/floor/kutjevo/grey,
 /area/kutjevo/interior/complex/botany)
@@ -11524,6 +12021,12 @@
 	dir = 4
 	},
 /area/kutjevo/interior/complex/botany)
+"MG" = (
+/obj/item/ammo_magazine/rifle/mar40/extended,
+/turf/open/floor/kutjevo/tan/multi_tiles{
+	dir = 1
+	},
+/area/kutjevo/interior/power)
 "MH" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -11535,12 +12038,8 @@
 /turf/open/floor/kutjevo/grey,
 /area/kutjevo/interior/complex/botany/east)
 "MJ" = (
-/obj/structure/platform/kutjevo,
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4
-	},
-/obj/structure/barricade/handrail/kutjevo{
-	layer = 3.1
 	},
 /turf/open/gm/river/desert/shallow_edge{
 	dir = 4
@@ -11559,16 +12058,16 @@
 /turf/open/gm/river/desert/shallow,
 /area/kutjevo/interior/construction)
 "ML" = (
-/obj/structure/stairs/perspective/kutjevo,
-/obj/structure/platform/kutjevo/smooth{
-	dir = 4
-	},
-/turf/open/auto_turf/sand/layer0,
+/turf/closed/wall/kutjevo/rock,
 /area/kutjevo/exterior/runoff_bridge)
 "MM" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/river/desert/shallow_edge,
 /area/kutjevo/exterior/runoff_river)
+"MN" = (
+/obj/structure/platform/kutjevo/rock,
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/stonyfields)
 "MO" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -11598,6 +12097,12 @@
 	},
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/colony_N_East)
+"MR" = (
+/obj/structure/reagent_dispensers/watertank,
+/turf/open/floor/kutjevo/multi_tiles{
+	dir = 1
+	},
+/area/kutjevo/interior/power)
 "MS" = (
 /obj/structure/platform/kutjevo/rock,
 /turf/open/desert/desert_shore/desert_shore1{
@@ -11622,7 +12127,7 @@
 /area/kutjevo/interior/complex/med/auto_doc)
 "MW" = (
 /obj/structure/prop/dam/boulder/boulder3,
-/turf/open/auto_turf/sand/layer1,
+/turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/runoff_river)
 "MX" = (
 /turf/closed/wall/kutjevo/colony/reinforced/hull,
@@ -11639,10 +12144,11 @@
 /turf/open/gm/grass/weedable,
 /area/kutjevo/exterior/complex_border/med_park)
 "Na" = (
-/obj/item/tool/crowbar,
-/obj/item/tool/crowbar,
+/obj/item/tool/minihoe,
+/obj/item/tool/minihoe,
 /obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/close,
+/obj/structure/machinery/light,
 /turf/open/floor/kutjevo/colors/green/tile,
 /area/kutjevo/interior/complex/botany)
 "Nb" = (
@@ -11712,7 +12218,11 @@
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/scrubland)
 "Nk" = (
-/turf/open/floor/kutjevo/colors/green,
+/obj/structure/stairs/perspective/kutjevo{
+	dir = 4;
+	icon_state = "p_stair_full"
+	},
+/turf/open/desert/desert_shore/desert_shore1,
 /area/kutjevo/exterior/runoff_bridge)
 "Nl" = (
 /obj/structure/flora/pottedplant{
@@ -11785,13 +12295,12 @@
 	},
 /area/kutjevo/interior/power_pt2_electric_boogaloo)
 "Ny" = (
-/obj/structure/platform/kutjevo{
-	dir = 1
+/obj/structure/flora/bush/ausbushes/grassybush{
+	pixel_x = -6;
+	pixel_y = 10
 	},
-/turf/open/gm/river/desert/shallow_edge{
-	dir = 4
-	},
-/area/kutjevo/exterior/runoff_river)
+/turf/open/desert/desert_shore/desert_shore1,
+/area/kutjevo/exterior/runoff_bridge)
 "Nz" = (
 /obj/structure/machinery/sensortower,
 /turf/open/floor/almayer/research/containment/floor2,
@@ -11843,11 +12352,12 @@
 	},
 /area/kutjevo/interior/power_pt2_electric_boogaloo)
 "NH" = (
-/obj/structure/platform_decoration/kutjevo{
-	dir = 8
+/obj/structure/flora/bush/ausbushes/reedbush{
+	pixel_x = 5;
+	pixel_y = 12
 	},
-/turf/open/floor/kutjevo/colors/green,
-/area/kutjevo/interior/complex/botany)
+/turf/open/desert/desert_shore/desert_shore1,
+/area/kutjevo/exterior/runoff_bridge)
 "NI" = (
 /obj/structure/surface/rack,
 /obj/item/stack/sheet/metal/medium_stack,
@@ -11921,7 +12431,7 @@
 /area/kutjevo/interior/complex/med)
 "NT" = (
 /obj/structure/blocker/invisible_wall,
-/turf/open/auto_turf/sand/layer1,
+/turf/open/floor/plating/kutjevo,
 /area/kutjevo/exterior/runoff_dunes)
 "NU" = (
 /turf/closed/wall/kutjevo/colony/reinforced/hull,
@@ -11970,7 +12480,7 @@
 /turf/open/floor/kutjevo/colors/purple,
 /area/kutjevo/interior/construction)
 "Oe" = (
-/obj/item/storage/large_holster/m39/full,
+/obj/item/weapon/gun/rifle/mar40,
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/interior/power)
 "Of" = (
@@ -12087,6 +12597,10 @@
 	},
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/power)
+"Oy" = (
+/obj/structure/platform_decoration/kutjevo/rock,
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/lz_dunes)
 "Oz" = (
 /turf/open/floor/kutjevo/tan/multi_tiles,
 /area/kutjevo/interior/complex/med/auto_doc)
@@ -12143,10 +12657,19 @@
 	},
 /turf/open/floor/kutjevo/colors/green,
 /area/kutjevo/interior/complex/botany)
+"OI" = (
+/obj/structure/platform_decoration/kutjevo{
+	dir = 8
+	},
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/exterior/runoff_bridge)
 "OJ" = (
-/obj/structure/prop/dam/boulder/boulder3,
-/turf/open/auto_turf/sand/layer0,
-/area/kutjevo/interior/oob)
+/obj/structure/stairs/perspective/kutjevo{
+	dir = 8;
+	icon_state = "p_stair_full"
+	},
+/turf/open/desert/desert_shore/shore_corner2,
+/area/kutjevo/exterior/runoff_bridge)
 "OK" = (
 /obj/structure/stairs/perspective/kutjevo{
 	dir = 8;
@@ -12162,7 +12685,9 @@
 /area/kutjevo/interior/complex/med/operating)
 "OL" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
-/turf/open/gm/river/desert/shallow,
+/turf/open/gm/river/desert/shallow_edge{
+	dir = 4
+	},
 /area/kutjevo/exterior/lz_river)
 "OM" = (
 /obj/structure/machinery/light{
@@ -12229,6 +12754,18 @@
 /obj/item/stack/sheet/wood,
 /turf/open/auto_turf/sand/layer2,
 /area/kutjevo/exterior/runoff_river)
+"Pb" = (
+/obj/structure/platform/kutjevo{
+	dir = 1
+	},
+/obj/structure/platform/kutjevo{
+	dir = 4
+	},
+/obj/structure/platform/kutjevo{
+	dir = 8
+	},
+/turf/open/gm/river/desert/deep,
+/area/kutjevo/exterior/runoff_river)
 "Pc" = (
 /obj/structure/surface/table/almayer,
 /obj/item/bodybag/tarp/reactive,
@@ -12239,6 +12776,10 @@
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/complex/med)
+"Pe" = (
+/obj/structure/flora/grass/tallgrass/desert,
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/runoff_dunes)
 "Pf" = (
 /obj/structure/closet/secure_closet/medical3{
 	req_access = null
@@ -12276,6 +12817,12 @@
 "Pi" = (
 /turf/closed/wall/kutjevo/colony/reinforced,
 /area/kutjevo/exterior/construction)
+"Pj" = (
+/obj/structure/platform_decoration/kutjevo/rock{
+	dir = 4
+	},
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/lz_dunes)
 "Pk" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
@@ -12299,16 +12846,8 @@
 	},
 /area/kutjevo/exterior/runoff_river)
 "Pn" = (
-/obj/structure/platform/kutjevo{
-	dir = 1
-	},
-/obj/structure/machinery/light/small{
-	dir = 1;
-	pixel_y = 20
-	},
-/turf/open/floor/kutjevo/multi_tiles{
-	dir = 1
-	},
+/obj/item/tool/wirecutters/clippers,
+/turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/complex/botany)
 "Po" = (
 /obj/structure/stairs/perspective/kutjevo{
@@ -12318,6 +12857,12 @@
 /obj/structure/platform_decoration/kutjevo,
 /turf/open/floor/kutjevo/tan/multi_tiles,
 /area/kutjevo/interior/colony_South/power2)
+"Pp" = (
+/obj/structure/platform/kutjevo/rock{
+	dir = 1
+	},
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/stonyfields)
 "Pq" = (
 /obj/item/trash/bcigbutt,
 /turf/open/floor/kutjevo/multi_tiles,
@@ -12342,15 +12887,11 @@
 /turf/open/floor/kutjevo/colors/green,
 /area/kutjevo/interior/complex/botany)
 "Px" = (
-/obj/structure/stairs/perspective/kutjevo{
-	dir = 1;
-	icon_state = "p_stair_sn_solo_cap"
+/obj/structure/platform_decoration/kutjevo{
+	dir = 1
 	},
-/obj/structure/platform/kutjevo{
-	dir = 8
-	},
-/turf/open/auto_turf/sand/layer0,
-/area/kutjevo/exterior/scrubland)
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/interior/power)
 "Py" = (
 /obj/structure/surface/table/almayer,
 /obj/item/reagent_container/food/drinks/jar,
@@ -12445,6 +12986,15 @@
 	},
 /turf/open/floor/almayer/research/containment/floor1,
 /area/kutjevo/interior/complex/botany)
+"PN" = (
+/obj/structure/stairs/perspective/kutjevo{
+	icon_state = "p_stair_full"
+	},
+/obj/structure/sign/safety/hazard{
+	pixel_x = -32
+	},
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/interior/power)
 "PO" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/bed/chair{
@@ -12455,6 +13005,11 @@
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/kutjevo/colors/purple,
 /area/kutjevo/interior/construction)
+"PP" = (
+/obj/item/stack/sheet/wood,
+/obj/structure/machinery/light,
+/turf/open/floor/kutjevo/colors/orange,
+/area/kutjevo/interior/power)
 "PQ" = (
 /obj/structure/machinery/door/airlock/almayer/maint/autoname{
 	dir = 1;
@@ -12520,12 +13075,24 @@
 	dir = 6
 	},
 /area/kutjevo/interior/complex/botany)
+"Qa" = (
+/obj/structure/barricade/wooden{
+	dir = 4;
+	pixel_y = 4
+	},
+/turf/open/floor/kutjevo/tiles,
+/area/kutjevo/interior/oob/dev_room)
 "Qb" = (
 /obj/structure/platform/kutjevo{
 	dir = 8
 	},
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/runoff_river)
+"Qc" = (
+/turf/open/gm/river/desert/shallow_edge{
+	dir = 8
+	},
+/area/kutjevo/exterior/scrubland)
 "Qd" = (
 /obj/structure/surface/rack,
 /obj/item/storage/belt/utility/full,
@@ -12646,11 +13213,15 @@
 	},
 /area/kutjevo/interior/power)
 "Qu" = (
-/obj/structure/flora/grass/desert{
-	icon_state = "lightgrass_8"
+/obj/structure/stairs/perspective/kutjevo{
+	dir = 1;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/sign/safety/hazard{
+	pixel_x = -32
 	},
 /turf/open/auto_turf/sand/layer0,
-/area/kutjevo/exterior/runoff_dunes)
+/area/kutjevo/interior/power)
 "Qv" = (
 /obj/item/device/analyzer/plant_analyzer,
 /turf/open/floor/kutjevo/tan,
@@ -12752,6 +13323,10 @@
 	icon = 'icons/turf/floors/desert_water_toxic.dmi'
 	},
 /area/kutjevo/interior/oob)
+"QN" = (
+/obj/item/ammo_magazine/revolver/cmb,
+/turf/open/floor/kutjevo/colors/orange,
+/area/kutjevo/interior/power)
 "QO" = (
 /turf/open/desert/desert_shore/shore_edge1{
 	dir = 4
@@ -12886,9 +13461,32 @@
 /turf/open/floor/kutjevo/tiles,
 /area/kutjevo/interior/complex/med/auto_doc)
 "Rn" = (
-/obj/structure/platform_decoration/kutjevo,
-/turf/open/floor/kutjevo/colors/green,
-/area/kutjevo/interior/complex/botany)
+/obj/structure/stairs/perspective/kutjevo{
+	dir = 1;
+	icon_state = "p_stair_full"
+	},
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/interior/power)
+"Ro" = (
+/turf/open/desert/desert_shore/shore_edge1{
+	dir = 1
+	},
+/area/kutjevo/exterior/runoff_bridge)
+"Rp" = (
+/obj/structure/platform/kutjevo{
+	dir = 1
+	},
+/obj/structure/flora/bush/ausbushes/grassybush{
+	pixel_x = 5;
+	pixel_y = -12
+	},
+/obj/structure/platform/kutjevo{
+	dir = 4
+	},
+/turf/open/desert/desert_shore/desert_shore1{
+	dir = 8
+	},
+/area/kutjevo/exterior/lz_river)
 "Rq" = (
 /obj/structure/stairs/perspective/kutjevo{
 	dir = 8;
@@ -12978,6 +13576,10 @@
 	},
 /turf/open/floor/kutjevo/colors/orange,
 /area/kutjevo/interior/complex/med/locks)
+"RD" = (
+/obj/structure/flora/grass/tallgrass/desert,
+/turf/open/auto_turf/sand/layer2,
+/area/kutjevo/exterior/stonyfields)
 "RE" = (
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/kutjevo/grey/plate,
@@ -13001,7 +13603,7 @@
 /turf/open/floor/kutjevo/multi_tiles{
 	dir = 4
 	},
-/area/kutjevo/interior/complex/botany)
+/area/kutjevo/exterior/runoff_bridge)
 "RI" = (
 /obj/item/stack/sheet/wood,
 /turf/open/floor/kutjevo/multi_tiles,
@@ -13133,6 +13735,11 @@
 	},
 /turf/open/floor/kutjevo/colors/green,
 /area/kutjevo/interior/complex/botany)
+"Sa" = (
+/turf/open/gm/river/desert/shallow_edge{
+	dir = 4
+	},
+/area/kutjevo/exterior/scrubland)
 "Sb" = (
 /obj/structure/blocker/invisible_wall,
 /turf/open/gm/river/desert/deep,
@@ -13198,6 +13805,13 @@
 /obj/item/stack/sheet/wood,
 /turf/open/floor/kutjevo/tan/multi_tiles,
 /area/kutjevo/interior/complex/botany)
+"Sp" = (
+/obj/structure/filtration/machine_96x96/indestructible{
+	icon_state = "distribution-damaged"
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/plating/kutjevo,
+/area/kutjevo/exterior/runoff_river)
 "Sq" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/stack/medical/splint,
@@ -13224,6 +13838,10 @@
 	icon_state = "multi_tiles"
 	},
 /area/kutjevo/interior/complex/med)
+"St" = (
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/plating/kutjevo,
+/area/kutjevo/exterior/runoff_river)
 "Su" = (
 /obj/structure/platform/kutjevo/smooth,
 /obj/structure/machinery/smartfridge/chemistry,
@@ -13238,15 +13856,10 @@
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/complex_border/botany_medical_cave)
 "Sw" = (
-/obj/structure/platform/kutjevo{
-	dir = 1
-	},
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8
 	},
-/turf/open/gm/river/desert/shallow_edge{
-	dir = 8
-	},
+/turf/open/gm/river/desert/shallow,
 /area/kutjevo/exterior/runoff_bridge)
 "Sx" = (
 /turf/open/auto_turf/sand/layer1,
@@ -13269,13 +13882,13 @@
 "SC" = (
 /obj/structure/stairs/perspective/kutjevo{
 	dir = 1;
-	icon_state = "p_stair_sn_solo_cap"
+	icon_state = "p_stair_full"
 	},
-/obj/structure/platform/kutjevo{
-	dir = 4
+/obj/structure/sign/safety/hazard{
+	pixel_x = 32
 	},
 /turf/open/auto_turf/sand/layer0,
-/area/kutjevo/exterior/scrubland)
+/area/kutjevo/interior/power)
 "SD" = (
 /turf/open/floor/almayer/research/containment/floor2,
 /area/kutjevo/exterior/complex_border/botany_medical_cave)
@@ -13313,7 +13926,7 @@
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/scrubland)
 "SK" = (
-/obj/item/storage/large_holster/m39/full,
+/obj/item/weapon/gun/rifle/mar40,
 /turf/open/floor/almayer/research/containment/floor2,
 /area/kutjevo/interior/power)
 "SL" = (
@@ -13321,12 +13934,8 @@
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/lz_river)
 "SM" = (
-/obj/structure/platform/kutjevo{
-	dir = 8
-	},
-/obj/structure/stairs/perspective/kutjevo,
-/turf/open/auto_turf/sand/layer1,
-/area/kutjevo/exterior/scrubland)
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/runoff_bridge)
 "SN" = (
 /obj/structure/ladder,
 /obj/structure/blocker/invisible_wall,
@@ -13388,6 +13997,13 @@
 	},
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/colony_central)
+"SY" = (
+/obj/structure/barricade/wooden{
+	dir = 1;
+	pixel_y = 13
+	},
+/turf/open/floor/kutjevo/colors/orange,
+/area/kutjevo/interior/power)
 "SZ" = (
 /turf/open/desert/desert_shore/desert_shore1{
 	dir = 4
@@ -13574,7 +14190,7 @@
 /obj/structure/filtration/machine_96x96/indestructible{
 	icon_state = "distribution-damaged"
 	},
-/turf/open/auto_turf/sand/layer1,
+/turf/open/floor/plating/kutjevo,
 /area/kutjevo/exterior/runoff_dunes)
 "TE" = (
 /obj/item/fuelCell,
@@ -13621,13 +14237,19 @@
 	dir = 4
 	},
 /area/kutjevo/interior/complex/botany/east)
-"TK" = (
-/obj/structure/platform/kutjevo{
-	dir = 4
+"TJ" = (
+/obj/structure/stairs/perspective/kutjevo{
+	icon_state = "p_stair_full"
 	},
-/obj/structure/stairs/perspective/kutjevo,
 /turf/open/auto_turf/sand/layer0,
-/area/kutjevo/exterior/scrubland)
+/area/kutjevo/interior/power)
+"TK" = (
+/obj/structure/stairs/perspective/kutjevo{
+	dir = 8;
+	icon_state = "p_stair_full"
+	},
+/turf/open/desert/desert_shore/shore_edge1,
+/area/kutjevo/exterior/runoff_bridge)
 "TL" = (
 /turf/closed/wall/resin/thick,
 /area/kutjevo/interior/colony_South)
@@ -13678,6 +14300,15 @@
 	},
 /turf/open/floor/kutjevo/colors/orange,
 /area/kutjevo/interior/colony_South/power2)
+"TT" = (
+/obj/structure/flora/bush/ausbushes/grassybush{
+	pixel_x = 5;
+	pixel_y = -12
+	},
+/turf/open/desert/desert_shore/shore_corner2{
+	dir = 8
+	},
+/area/kutjevo/exterior/runoff_bridge)
 "TU" = (
 /turf/open/floor/kutjevo/colors/cyan/inner_corner,
 /area/kutjevo/interior/complex/med/operating)
@@ -13779,6 +14410,9 @@
 /obj/structure/platform_decoration/kutjevo{
 	dir = 8
 	},
+/obj/structure/platform/kutjevo{
+	dir = 8
+	},
 /turf/open/desert/desert_shore/shore_edge1{
 	dir = 8
 	},
@@ -13796,6 +14430,13 @@
 /obj/item/stack/sandbags/large_stack,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/complex_border/med_rec)
+"Up" = (
+/obj/structure/platform_decoration/kutjevo{
+	dir = 8
+	},
+/obj/structure/machinery/colony_floodlight,
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/stonyfields)
 "Uq" = (
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/scrubland)
@@ -13837,6 +14478,10 @@
 	},
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/runoff_dunes)
+"Uz" = (
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/kutjevo/colors/red/tile,
+/area/kutjevo/interior/oob/dev_room)
 "UA" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -13852,6 +14497,14 @@
 	},
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_central)
+"UD" = (
+/obj/structure/barricade/wooden{
+	dir = 4;
+	pixel_y = 4
+	},
+/obj/structure/barricade/wooden,
+/turf/open/floor/kutjevo/tiles,
+/area/kutjevo/interior/oob/dev_room)
 "UE" = (
 /obj/structure/pipes/standard/simple/visible{
 	dir = 5;
@@ -13870,16 +14523,11 @@
 /turf/open/floor/kutjevo/tan/grey_inner_edge,
 /area/kutjevo/interior/complex/med)
 "UH" = (
-/obj/structure/platform/kutjevo{
-	dir = 1
-	},
 /obj/structure/flora/bush/ausbushes/reedbush,
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4
 	},
-/turf/open/gm/river/desert/shallow_edge{
-	dir = 4
-	},
+/turf/open/gm/river/desert/shallow,
 /area/kutjevo/exterior/runoff_bridge)
 "UI" = (
 /obj/effect/decal/cleanable/blood/oil,
@@ -14127,6 +14775,10 @@
 "Vt" = (
 /turf/open/floor/kutjevo/colors/orange,
 /area/kutjevo/interior/colony_central/mine_elevator)
+"Vu" = (
+/obj/structure/blocker/invisible_wall,
+/turf/open/gm/river/desert/shallow,
+/area/kutjevo/exterior/runoff_river)
 "Vv" = (
 /obj/structure/window_frame/kutjevo,
 /turf/open/floor/plating/kutjevo,
@@ -14189,11 +14841,26 @@
 	},
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/complex/botany)
+"VF" = (
+/obj/structure/stairs/perspective/kutjevo{
+	icon_state = "p_stair_full"
+	},
+/obj/structure/sign/safety/hazard{
+	pixel_x = 32
+	},
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/interior/power)
+"VH" = (
+/turf/open/mars_cave{
+	icon_state = "mars_cave_11";
+	tag = "icon-mars_cave_11"
+	},
+/area/kutjevo/exterior/lz_dunes)
 "VI" = (
 /turf/open/floor/kutjevo/tan/grey_edge,
 /area/kutjevo/interior/complex/med)
 "VJ" = (
-/obj/item/ammo_box/magazine/m39/ext,
+/obj/item/ammo_magazine/rifle/mar40/extended,
 /turf/open/floor/almayer/research/containment/floor2,
 /area/kutjevo/interior/power)
 "VK" = (
@@ -14416,11 +15083,13 @@
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_north)
 "Ws" = (
-/obj/structure/platform/kutjevo{
-	dir = 1
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+	pixel_x = -28
 	},
-/turf/open/auto_turf/sand/layer0,
-/area/kutjevo/exterior/runoff_bridge)
+/turf/open/floor/kutjevo/multi_tiles{
+	dir = 6
+	},
+/area/kutjevo/interior/complex/botany)
 "Wt" = (
 /obj/structure/machinery/door/airlock/almayer/maint/autoname{
 	dir = 1;
@@ -14467,6 +15136,12 @@
 	},
 /turf/open/floor/almayer/research/containment/floor1,
 /area/kutjevo/interior/complex/med/locks)
+"WA" = (
+/obj/structure/platform_decoration/kutjevo/rock{
+	dir = 8
+	},
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/stonyfields)
 "WB" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -14482,6 +15157,12 @@
 /obj/structure/window/framed/kutjevo/reinforced,
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/power_pt2_electric_boogaloo)
+"WE" = (
+/obj/structure/sign/safety/hazard{
+	pixel_x = -32
+	},
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/exterior/runoff_bridge)
 "WF" = (
 /obj/structure/machinery/vending/cigarette/colony,
 /obj/structure/machinery/light{
@@ -14502,6 +15183,12 @@
 	},
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/colony_north)
+"WJ" = (
+/obj/structure/platform/kutjevo/rock{
+	dir = 1
+	},
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/lz_dunes)
 "WK" = (
 /obj/structure/platform/kutjevo/rock,
 /turf/open/auto_turf/sand/layer2,
@@ -14745,6 +15432,10 @@
 	dir = 10
 	},
 /area/kutjevo/exterior/lz_river)
+"XA" = (
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/kutjevo/tan/multi_tiles,
+/area/kutjevo/interior/power)
 "XB" = (
 /obj/structure/reagent_dispensers/water_cooler{
 	pixel_x = -8
@@ -14924,16 +15615,7 @@
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/lz_dunes)
 "Yc" = (
-/obj/structure/platform/kutjevo{
-	dir = 4
-	},
-/obj/structure/flora/bush/ausbushes/grassybush{
-	pixel_x = -6;
-	pixel_y = 10
-	},
-/turf/open/desert/desert_shore/shore_corner2{
-	dir = 4
-	},
+/turf/closed/wall/kutjevo/colony/reinforced/hull,
 /area/kutjevo/exterior/runoff_river)
 "Yd" = (
 /obj/structure/platform_decoration/kutjevo{
@@ -15021,6 +15703,10 @@
 /obj/structure/girder,
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/construction)
+"Yr" = (
+/obj/structure/barricade/wooden,
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/interior/power)
 "Ys" = (
 /obj/structure/blocker/invisible_wall,
 /obj/structure/platform/kutjevo{
@@ -15107,6 +15793,10 @@
 	dir = 4
 	},
 /area/kutjevo/interior/complex/med)
+"YC" = (
+/obj/structure/platform_decoration/kutjevo/rock,
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/stonyfields)
 "YD" = (
 /obj/structure/surface/table/almayer,
 /obj/item/toy/handcard/aceofspades,
@@ -15235,9 +15925,6 @@
 /turf/open/floor/almayer/research/containment/floor2,
 /area/kutjevo/interior/complex/botany)
 "Za" = (
-/obj/structure/flora/bush/ausbushes/ausbush{
-	icon_state = "pointybush_3"
-	},
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/complex/botany)
 "Zb" = (
@@ -15286,8 +15973,11 @@
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/lz_dunes)
 "Zl" = (
-/obj/structure/window/framed/kutjevo,
-/turf/open/floor/kutjevo/multi_tiles,
+/obj/structure/surface/rack,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/kutjevo/multi_tiles{
+	dir = 1
+	},
 /area/kutjevo/interior/power)
 "Zm" = (
 /obj/item/tool/wirecutters/clippers,
@@ -15345,6 +16035,9 @@
 	},
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_N_East)
+"Zv" = (
+/turf/open/floor/kutjevo/colors/red/tile,
+/area/kutjevo/interior/oob/dev_room)
 "Zw" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8
@@ -15378,6 +16071,12 @@
 	dir = 4
 	},
 /area/kutjevo/interior/foremans_office)
+"ZB" = (
+/obj/structure/platform/kutjevo/rock{
+	dir = 4
+	},
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/lz_dunes)
 "ZC" = (
 /turf/open/floor/kutjevo/colors/orange/edge{
 	dir = 8
@@ -19630,9 +20329,9 @@ dj
 dj
 dj
 dj
-dj
-dj
-dj
+hY
+hY
+hY
 hY
 wE
 wW
@@ -19797,9 +20496,9 @@ dj
 dj
 dj
 dj
-dj
-dj
-dj
+hY
+IU
+CJ
 hY
 wE
 Jw
@@ -19807,8 +20506,8 @@ Jw
 Jw
 Jw
 wE
-hY
-hY
+wE
+wE
 dj
 Kv
 Kv
@@ -19964,18 +20663,18 @@ dj
 dj
 dj
 dj
-dj
-dj
-dj
-dj
+hY
+rH
+Dd
+Px
 ai
 KO
-GS
-GS
-ll
-ub
-dj
-dj
+KO
+KO
+KO
+KO
+ai
+wE
 dj
 dj
 WG
@@ -20131,18 +20830,18 @@ dj
 dj
 dj
 dj
-dj
-dj
-dj
-dj
+hY
+hY
+hY
+NL
 nW
-UK
-xa
-ND
-hK
-Gj
-gw
-dj
+WR
+WR
+WR
+WR
+WR
+Zl
+wE
 dj
 dj
 WG
@@ -20152,7 +20851,7 @@ Kv
 Kv
 Kv
 Kv
-XT
+jk
 Kv
 Kv
 Kv
@@ -20301,15 +21000,15 @@ dj
 dj
 dj
 dj
-dj
-ty
-LJ
-UK
-xa
-hK
-ER
-je
-gw
+NL
+Zl
+WR
+ip
+sB
+yN
+WR
+Zl
+wE
 dj
 dj
 jk
@@ -20465,20 +21164,20 @@ dj
 dj
 dj
 dj
-dj
-dj
-dj
 Dn
-Uq
-ty
-LJ
-ss
-yp
-Xz
-ER
-je
-gw
-gw
+sS
+wE
+NL
+JQ
+WR
+yN
+rQ
+yN
+WR
+nO
+NL
+wm
+po
 Kv
 jk
 WG
@@ -20488,7 +21187,7 @@ Kv
 Kv
 Kv
 Kv
-XT
+jk
 WG
 jk
 Kv
@@ -20630,31 +21329,31 @@ dj
 dj
 dj
 dj
-lp
-lp
-vz
-rH
+Dn
 Dn
 wF
-Uq
-Uq
-vI
-UK
-zg
-Mj
-ET
-Gj
-cg
+Dn
+Dn
+Qu
+qN
+QN
+WR
+WR
+WR
+WR
+fo
+PN
+gw
 cg
 jk
 jk
 jk
 WG
 Kv
-Kv
-Kv
-Kv
-Kv
+Oy
+ZB
+ZB
+eq
 jk
 WG
 Kv
@@ -20796,32 +21495,32 @@ dj
 dj
 dj
 dj
-OJ
-lp
-lp
-rH
-rH
+io
 Dn
+Dn
+Uq
+Uq
 wF
+Rn
 zw
-wF
-vI
-ET
-ET
-ET
-ET
-Gj
+zI
+zI
+zI
+if
+zI
+zI
+TJ
+gw
 cg
-cg
 Kv
 WG
 WG
 jk
 jk
-WG
-Kv
-Kv
-jk
+FX
+lg
+Iq
+WJ
 WG
 Kv
 WG
@@ -20963,32 +21662,32 @@ dj
 dj
 dj
 dj
-lp
-rH
-rH
-rH
-vz
 Dn
+Uq
+Uq
+Uq
 wF
-wF
-wF
-vI
-ET
-dR
-LJ
-ET
-Gj
+Uq
+Rn
+zw
+zI
+zI
+zI
+zI
+zI
+zI
+TJ
+gw
 cg
-cg
 Kv
 Kv
 jk
 jk
 jk
-WG
-Kv
-Kv
-Kv
+FX
+hT
+VH
+WJ
 Kv
 WG
 jk
@@ -21130,32 +21829,32 @@ dj
 dj
 dj
 dj
-lp
-rH
-rH
-vz
-dj
-wF
 Dn
 Uq
+Uq
 wF
-vI
-ET
-KR
-vI
-ET
-Gj
+Uq
+wF
+SC
+qN
+WR
+WR
+WR
+WR
+WR
+fo
+VF
+gw
 cg
-cg
 Kv
 jk
 jk
 jk
 Kv
-WG
-Kv
-Kv
-Kv
+FX
+Kg
+zP
+nb
 Kv
 Kv
 XT
@@ -21297,31 +21996,31 @@ dj
 dj
 dj
 dj
-lp
-rH
-lp
-vz
-dj
-fX
 Dn
 Uq
-Uq
-vI
-ET
-ER
-Oc
-ET
-ER
-je
-cg
+Dn
+wF
+vb
+cE
+NL
+JQ
+WR
+rQ
+rQ
+rQ
+WR
+nO
+NL
+wm
+po
 jk
 jk
 Kv
 WG
 WG
-jk
-Kv
-Kv
+Hi
+ga
+Pj
 Kv
 Kv
 Kv
@@ -21464,23 +22163,23 @@ dj
 dj
 dj
 dj
-vz
-rH
-lp
-vz
+wF
+Uq
+Dn
+wF
 fX
 fX
-Uq
-Uq
-Uq
-vI
-ET
-ET
-ET
-ET
-ET
-ER
-je
+NL
+el
+WR
+yN
+rQ
+yN
+WR
+el
+NL
+Xh
+Xh
 jk
 jk
 WG
@@ -21631,25 +22330,25 @@ dj
 dj
 dj
 dj
-vz
-rH
-rH
-vz
+wF
+Uq
+Uq
+wF
 fX
-wF
-Uq
-wF
-Uq
-vI
-ET
-ET
-ET
-BS
-dc
-Xz
-ER
-Fu
-je
+fX
+NL
+el
+GE
+Ja
+rQ
+yN
+WR
+el
+NL
+Xh
+Xh
+Xh
+Xh
 jk
 WG
 WG
@@ -21797,26 +22496,26 @@ dj
 dj
 dj
 dj
-vz
-hJ
-rH
-rH
-rH
 wF
+Og
+Uq
 Uq
 Uq
 wF
-Uq
-ty
-PY
-PY
-LJ
-ss
-ND
-yp
-dc
-Xz
-Gj
+fX
+NL
+el
+WR
+yN
+CS
+Ja
+GE
+el
+NL
+Xh
+Xh
+Xh
+Xh
 Kv
 WG
 Kv
@@ -21964,30 +22663,30 @@ dj
 dj
 dj
 dj
-vz
-lp
-lp
-rH
-Uq
+wF
 Dn
-wF
+Dn
 Uq
 Uq
-wF
+sS
+cE
+NL
+kF
+DR
+XA
+rQ
+rQ
+kB
+NL
+NL
+wm
+Xh
+Xh
 gw
-gw
-gw
-vI
-UK
-zg
-xa
-ND
-hK
-Gj
 Kv
 WG
 Kv
-WG
+XT
 jk
 jk
 Kv
@@ -22132,30 +22831,30 @@ dj
 dj
 dj
 dj
-lp
-lp
+Dn
+Dn
 Uq
 wF
 Dn
 wF
-wF
-Uq
-Uq
-fX
-cg
+Qu
+qN
+SY
+WR
+WR
+WR
+WR
+Yr
+PN
 gw
-ty
-PY
-LJ
-ss
-ND
-hK
-ER
-je
-Kv
-WG
-Kv
-Kv
+gw
+gw
+gw
+gw
+jk
+XT
+XT
+XT
 jk
 WG
 Kv
@@ -22304,33 +23003,33 @@ Uq
 wF
 Uq
 wF
-wF
-wF
-Uq
-wF
-fX
-fX
-cg
+Ds
+Rn
+zw
+zI
+MG
+zI
+pa
 qY
+zI
+TJ
 gw
-vI
-UK
-xa
-yp
-Xz
-Gj
-jx
+gw
+gw
+gw
+gw
+jk
+jk
+Kv
+XT
 XT
 Kv
 Kv
 Kv
-Kv
-Kv
-Kv
 jk
 jk
-Kv
-jk
+XT
+XT
 Kv
 Kv
 Kv
@@ -22471,33 +23170,33 @@ Uq
 wF
 Uq
 wF
-wF
-wF
-wF
-fX
-fX
-fX
-hm
+Fv
+Rn
+zw
+zI
+pm
+zI
+zI
+zI
+zI
+TJ
 gw
 gw
-ty
-LJ
-ss
-ND
-hK
-ER
-je
+gw
+cg
+cg
+cg
+jk
+Kv
+XT
+XT
+Kv
 jk
 Kv
 Kv
 Kv
-Kv
-jk
-Kv
-Kv
-Kv
-jk
-jk
+XT
+XT
 jk
 jk
 WG
@@ -22639,31 +23338,31 @@ Og
 wF
 wF
 wF
-Uq
-fX
-fX
-fX
-fX
-cg
-cg
-Xh
+SC
+qN
+SY
+WR
+fH
+WR
+pJ
+fo
+VF
 gw
-vI
-ss
-ND
-hK
-ET
-ER
-je
+cg
+cg
+cg
+cg
+cg
+gw
 jk
-WG
+XT
 jk
 jk
 Kv
 Kv
 Kv
-Kv
-Kv
+XT
+XT
 jk
 DZ
 Fu
@@ -22804,33 +23503,33 @@ wF
 wF
 wF
 wF
-wF
-wF
-Uq
-fX
-fX
-fX
-fX
+vj
+cE
+NL
+NL
+DR
+mO
+rQ
+PP
+NL
+NL
+NL
+wm
+ev
 cg
-hm
-Xh
+cg
 gw
-vI
-UK
-xa
-yp
-Xz
-ET
-Gj
+gw
+gw
 jk
 Kv
 Kv
 Kv
 Kv
-jk
-Kv
-Kv
-Kv
+XT
+XT
+XT
+XT
 DZ
 Oc
 BS
@@ -22842,7 +23541,7 @@ BS
 dc
 Fz
 Fx
-Zl
+uh
 fo
 WR
 wu
@@ -22972,30 +23671,30 @@ wF
 wF
 wF
 wF
-wF
-Uq
-wF
-fX
-fX
-fX
-gw
-cg
-hm
-gw
-ty
-LJ
-UK
-xa
-yp
-Xz
-ER
+Gg
+zz
+gN
+WR
+WR
+lE
+WR
+uh
+fZ
+Rp
+Bf
+Fu
+Fu
+Fu
+Fu
+Fu
+Fu
 je
+fB
 gw
 gw
 gw
-gw
-gw
-gw
+Xh
+Xh
 gw
 DZ
 Oc
@@ -23009,7 +23708,7 @@ UK
 xa
 jr
 Fx
-Zl
+uh
 fo
 WR
 wu
@@ -23139,22 +23838,22 @@ wF
 Dn
 wF
 wF
-wF
-wF
-Uq
-Uq
-fX
-fX
-fX
-gw
-gw
-fX
+Gg
+uh
+nf
+mO
+AH
+yN
+nf
+uh
+fZ
+Qc
 sT
-ty
-LJ
-ss
-ND
-yp
+dc
+dc
+dc
+dc
+dc
 Xz
 ER
 Fu
@@ -23306,21 +24005,21 @@ Uq
 Uq
 Uq
 wF
-wF
-wF
-wF
-wF
-Uq
-fX
-fX
-fX
-fX
-fX
-fX
-gw
-vI
-UK
-xa
+Gg
+uh
+nf
+yN
+rQ
+yN
+pR
+zz
+fZ
+Cp
+Cp
+ND
+ND
+ND
+ND
 ND
 yp
 dc
@@ -23343,7 +24042,7 @@ vI
 ss
 Ue
 Fx
-Zl
+uh
 fo
 WR
 wu
@@ -23471,23 +24170,23 @@ wF
 Uq
 Dn
 Dn
-Dn
-Uq
 wF
 wF
-wF
+Gg
+uh
+MR
 yN
-wF
-Uq
-fX
-fX
-fX
-fX
-fX
-fX
-vI
+yN
+AH
+nf
+uh
+fZ
+Sa
+Sa
+Sa
+zg
 OL
-UK
+zg
 zg
 zg
 xa
@@ -23510,7 +24209,7 @@ Oc
 ss
 Ue
 Fx
-Zl
+uh
 fo
 Ch
 wu
@@ -23637,22 +24336,22 @@ Uq
 Uq
 fX
 fX
-fX
-fX
-wF
-Uq
 wF
 wF
-Dn
-Uq
-Uq
-Uq
-Uq
-Uq
-Uq
-fX
-fX
-ty
+wF
+tX
+zz
+gN
+Ie
+TQ
+TQ
+gN
+uh
+fZ
+DY
+zZ
+Jk
+PY
 PY
 PY
 PY
@@ -23796,7 +24495,7 @@ Uq
 Yl
 LV
 pI
-wF
+hz
 fX
 Uq
 fX
@@ -23804,25 +24503,25 @@ fX
 fX
 fX
 fX
-fX
-fX
-fX
-Dn
+wF
+wF
+wF
+Jh
+zz
+zz
+uh
+uh
+uh
+zz
+NL
+NL
+cE
+wF
 Uq
-wF
-wF
-wF
-wF
-wF
-Dn
-Dn
-wF
-wF
-Uq
-ao
-cj
-dp
-eD
+QY
+tT
+tT
+tT
 ty
 PY
 PY
@@ -23963,7 +24662,7 @@ fX
 XJ
 Mu
 rS
-wF
+hJ
 fX
 fX
 fX
@@ -23972,33 +24671,33 @@ fX
 fX
 fX
 fX
-fX
-Uq
-Dn
-Uq
+wF
+wF
+KR
+Uh
+NX
+NX
+NX
+NX
+NX
+xf
 wF
 wF
 wF
 wF
-wF
-wF
-wF
-wF
-wF
-wF
+eD
 Rh
-bm
 nM
+tT
+tT
 eD
-QY
-eD
 gw
 gw
 gw
 gw
 gw
 gw
-gw
+fB
 ty
 PY
 PY
@@ -24193,7 +24892,7 @@ fo
 cZ
 la
 Em
-fo
+Eo
 fo
 fo
 NL
@@ -24310,11 +25009,11 @@ wF
 wF
 wF
 Uq
-Dn
-Dn
-Dn
 Uq
-wF
+Uq
+Uq
+Uq
+Uq
 Uq
 Uq
 Uq
@@ -24333,7 +25032,7 @@ QY
 QY
 QY
 QY
-QY
+tT
 QY
 eD
 eD
@@ -24480,13 +25179,13 @@ wF
 Uq
 Uq
 Uq
-fX
-fX
-fX
+Uq
+Uq
 Uq
 wF
+wF
 Uq
-fX
+Uq
 eD
 QY
 QY
@@ -24494,7 +25193,7 @@ QY
 eD
 ao
 dp
-eD
+tT
 tT
 tT
 QY
@@ -24526,7 +25225,7 @@ fo
 fo
 fo
 Qz
-LY
+RI
 fo
 fo
 HJ
@@ -24644,16 +25343,16 @@ wF
 wF
 wF
 Uq
-fX
-fX
-fX
-fX
-fX
-fX
-fX
 Uq
-fX
-fX
+Uq
+Uq
+Uq
+Uq
+Uq
+wF
+Uq
+Uq
+Uq
 eD
 QY
 eD
@@ -24661,7 +25360,7 @@ QY
 eD
 Rh
 nM
-Qu
+tT
 tT
 tT
 tT
@@ -24671,10 +25370,10 @@ QY
 QY
 QY
 eD
-QY
 tT
-eD
-QY
+tT
+tT
+tT
 QY
 Tc
 eD
@@ -24695,7 +25394,7 @@ XZ
 wu
 fo
 fo
-fo
+qJ
 fo
 pg
 IU
@@ -24811,12 +25510,12 @@ wF
 wF
 Uq
 fX
-fX
-fX
-fX
-fX
-fX
-fX
+Uq
+Uq
+Uq
+wF
+wF
+wF
 fX
 fX
 fX
@@ -24829,17 +25528,17 @@ eD
 eD
 eD
 QY
-eD
-eD
 tT
 tT
 tT
+tT
+tT
 QY
 QY
 QY
 QY
-QY
-QY
+tT
+tT
 eD
 QY
 QY
@@ -24860,7 +25559,7 @@ fo
 fo
 fo
 Qz
-fo
+Eo
 fo
 gX
 HJ
@@ -24980,11 +25679,11 @@ fX
 fX
 fX
 fX
-fX
-fX
-fX
-eD
-fX
+cE
+wl
+oi
+vc
+cE
 fX
 fX
 fX
@@ -24997,10 +25696,10 @@ QY
 eD
 QY
 eD
-eD
-QY
-QY
-QY
+tT
+tT
+tT
+tT
 QY
 QY
 dk
@@ -25148,9 +25847,9 @@ fX
 fX
 fX
 fX
-fX
-eD
-eD
+wF
+QY
+QY
 eD
 eD
 fX
@@ -25164,8 +25863,8 @@ QY
 ao
 dp
 eD
-QY
-eD
+tT
+tT
 QY
 QY
 QY
@@ -25192,11 +25891,11 @@ Rz
 vv
 os
 fo
-HJ
+fo
 nU
 IR
 Lz
-fo
+Eo
 fo
 uh
 Pc
@@ -25331,8 +26030,8 @@ QY
 LM
 yk
 eD
-QY
-eD
+tT
+tT
 QY
 QY
 QY
@@ -25363,7 +26062,7 @@ WR
 Ox
 GR
 oX
-nS
+os
 RI
 NL
 dj
@@ -25498,7 +26197,7 @@ QY
 Rh
 nM
 Ta
-eD
+tT
 QY
 eD
 QY
@@ -26492,8 +27191,8 @@ QY
 eD
 tT
 eD
-QY
-QY
+eD
+eD
 cA
 jR
 jR
@@ -26593,8 +27292,8 @@ BC
 SJ
 wF
 wF
-fX
-fX
+Uq
+Uq
 Dn
 wF
 Uq
@@ -26825,8 +27524,8 @@ aT
 eD
 tT
 bl
-an
-an
+NT
+NT
 wq
 Ec
 xD
@@ -26867,7 +27566,7 @@ Fi
 Fi
 Fi
 Fi
-ma
+Ax
 dj
 dj
 dj
@@ -26992,8 +27691,8 @@ eD
 tT
 tT
 bl
-an
-an
+NT
+NT
 NT
 KA
 ia
@@ -27034,8 +27733,8 @@ Fi
 Fi
 Fi
 Fi
-iW
-iW
+Ax
+Ax
 dj
 dj
 dj
@@ -27201,9 +27900,9 @@ iW
 Fi
 Fi
 Fi
-Fi
-Fi
-ma
+Ax
+Ax
+Ax
 dj
 dj
 dj
@@ -27367,10 +28066,10 @@ Ax
 iW
 iW
 Fi
-Fi
-Fi
-Fi
-iW
+Ax
+Ax
+Ax
+Ax
 dj
 dj
 dj
@@ -27422,8 +28121,8 @@ wF
 wF
 Uq
 wF
-BC
-BC
+bm
+eA
 wF
 wF
 wF
@@ -27441,8 +28140,8 @@ wF
 Uq
 Uq
 Uq
-wF
-wF
+fX
+fX
 wF
 wF
 qZ
@@ -27534,10 +28233,10 @@ Ax
 Fi
 Fi
 ma
-Fi
-Fi
-Fi
-Fi
+Ax
+Ax
+Ax
+Ax
 dj
 dj
 dj
@@ -27608,9 +28307,9 @@ Uq
 wF
 wF
 wF
-Uq
-wF
-wF
+fX
+fX
+fX
 wF
 wF
 wF
@@ -27700,12 +28399,12 @@ Ax
 Ax
 Ax
 ma
-iW
-Fi
-Fi
-Fi
-ma
-ma
+Ax
+Ax
+Ax
+Ax
+Ax
+Ax
 dj
 dj
 ap
@@ -27756,9 +28455,9 @@ kA
 kA
 Yg
 wF
+cj
 BC
 BC
-BC
 Dn
 Uq
 wF
@@ -27776,8 +28475,8 @@ Uq
 wF
 wF
 wF
-wF
-wF
+fX
+fX
 Uq
 wF
 wF
@@ -27867,12 +28566,12 @@ Ax
 Ax
 Ax
 Ax
-ma
-Fi
-Fi
-Fi
-Fi
-iW
+Ax
+Ax
+Ax
+Ax
+Ax
+Ax
 dj
 dj
 ap
@@ -27921,7 +28620,7 @@ tX
 RQ
 DW
 eE
-Wf
+bf
 wF
 BC
 BC
@@ -27943,8 +28642,8 @@ wF
 Tj
 eu
 eu
-Rd
-Uq
+fX
+fX
 Uq
 Dn
 wF
@@ -27992,7 +28691,7 @@ Mn
 tT
 tT
 tT
-eD
+yk
 QY
 QY
 QY
@@ -28034,12 +28733,12 @@ Ax
 Ax
 Ax
 Ax
-Fi
-Fi
-Fi
-Fi
-Fi
-iW
+Ax
+Ax
+Ax
+Ax
+Ax
+Ax
 dj
 dj
 ap
@@ -28094,7 +28793,7 @@ BC
 BC
 BC
 wF
-wF
+fG
 fX
 fX
 fX
@@ -28153,13 +28852,13 @@ Ps
 Ps
 Ps
 Lf
-ed
+OW
 tT
 tT
 tT
 tT
-eD
-QY
+Pe
+mn
 aT
 QY
 QY
@@ -28194,19 +28893,19 @@ Fi
 ma
 ma
 ma
-Fi
-Fi
+Kq
+hf
 Ax
 Ax
 Ax
 Ax
 Ax
 Ax
-Fi
-Fi
-Fi
-Fi
-iW
+Ax
+Ax
+Ax
+Ax
+Ax
 dj
 dj
 ap
@@ -28320,13 +29019,13 @@ Ps
 Ps
 Ps
 Lf
-ed
+OW
 ML
-vJ
-QY
-QY
-QY
-aT
+tT
+tT
+GZ
+GZ
+Ba
 QY
 QY
 QY
@@ -28361,19 +29060,19 @@ Fi
 Fi
 Fi
 ma
-ma
-Fi
+fg
+hf
 Ax
 Ax
 Ax
 Ax
 Ax
 Ax
-Fi
-Fi
-iW
-Fi
-ma
+Ax
+Ax
+Ax
+Ax
+Ax
 dj
 dj
 ap
@@ -28419,9 +29118,9 @@ Uq
 Uq
 wF
 ur
-Px
+Uh
 Jb
-SM
+NX
 xf
 wF
 BC
@@ -28528,19 +29227,19 @@ Fi
 Fi
 Fi
 kZ
-ma
-Fi
+fg
+hf
 Ax
 Ax
 Ax
 Ax
 Ax
 Ax
-Fi
-Fi
-Fi
-Fi
-ma
+Ax
+Ax
+Ax
+Ax
+Ax
 dj
 dj
 ap
@@ -28586,9 +29285,9 @@ dj
 wF
 Uq
 Uq
-tX
+Uq
 Nz
-Wf
+Uq
 wF
 wF
 BC
@@ -28648,23 +29347,23 @@ dn
 dn
 zv
 rV
-ed
+nS
 Nk
-Ps
-Ps
-Ps
-Nk
-OW
+LY
+LY
+yj
+eT
+Cq
 Sw
 tH
-fd
+Ed
 Wh
 gT
 QY
 QY
 eD
 QY
-UV
+eD
 eD
 QY
 eD
@@ -28695,19 +29394,19 @@ Fi
 Fi
 Fi
 ma
-ma
-Fi
+fg
+hf
 Ax
 Ax
 Ax
 Ax
 Ax
-ma
-iW
-Fi
-Fi
-Fi
-ma
+Ax
+Ax
+Ax
+Ax
+Ax
+Ax
 dj
 dj
 ap
@@ -28753,9 +29452,9 @@ dj
 Dn
 Uq
 Uq
-tX
+Uq
 Jb
-Wf
+Uq
 Dn
 wF
 BC
@@ -28808,23 +29507,23 @@ fX
 fX
 fX
 hL
-xX
-Xp
+Hf
+jx
 TW
 sc
 sc
 sc
 pF
-ed
+qX
 Lc
-Lc
-Lc
-Lc
-Lc
-OW
+Mh
+SM
+wy
+TT
+vr
 qA
-sc
-up
+OC
+GO
 Ed
 lV
 eD
@@ -28844,11 +29543,11 @@ aT
 aT
 Ax
 Fi
+Fi
+Fi
+Fi
 ma
 ma
-Ax
-Ax
-Ax
 Ax
 Ax
 QY
@@ -28857,24 +29556,24 @@ QY
 QY
 AU
 lZ
-lZ
-sS
+iB
+Fi
 Fi
 Fi
 ma
-Fi
+Kq
 Ax
 Ax
 Ax
 Ax
 Ax
 Ax
-ma
-iW
-Fi
-Fi
-iW
-ma
+Ax
+Ax
+Ax
+Ax
+Ax
+Ax
 dj
 dj
 ap
@@ -28920,9 +29619,9 @@ Xn
 Dn
 wF
 ti
-SC
+kA
 Jb
-TK
+kA
 YQ
 wF
 BC
@@ -28975,24 +29674,24 @@ zT
 zT
 zT
 xX
-Xp
+jx
 TW
 sc
 sc
 sc
 sc
 pF
-ed
-Nk
-Ps
-Ps
-Ps
-Nk
-OW
-qA
-sc
-UJ
-fd
+qX
+vr
+Ny
+SM
+Ro
+qO
+vr
+uN
+dd
+Ug
+GO
 Wh
 gT
 eD
@@ -29011,11 +29710,11 @@ Ax
 Ax
 Ax
 ma
-as
-hz
-Ax
-Ax
-Ax
+Fi
+Fi
+Fi
+ma
+ma
 Ax
 Ax
 Ax
@@ -29024,24 +29723,24 @@ Ax
 Ax
 Ax
 iW
-iW
-Bo
+Pp
+Fi
 Fi
 Fi
 ma
-Fi
+Kq
 Ax
 Ax
 Ax
 Ax
 Ax
-ma
-ma
-iW
-Fi
-Fi
-iW
-ma
+Ax
+Ax
+Ax
+Ax
+Ax
+Ax
+Ax
 dj
 dj
 ap
@@ -29074,7 +29773,7 @@ dj
 dj
 dj
 dj
-ZM
+AL
 ZM
 ZM
 ZM
@@ -29149,23 +29848,23 @@ sc
 sc
 sc
 pF
-ed
+qX
+vz
+NH
+SM
+th
+vr
+vr
 Lc
-Lc
-Lc
-Lc
-Lc
-OW
-qA
-sc
-sc
-UJ
-fd
+gT
+dd
+NC
+Ed
 Wh
 zT
 gT
 eD
-aT
+eD
 Ax
 Ax
 Ax
@@ -29177,11 +29876,11 @@ Ax
 Ax
 Ax
 Ax
-ma
-fG
+WA
 Fi
-Ax
-Ax
+Fi
+Fi
+ma
 Ax
 Ax
 Ax
@@ -29191,24 +29890,24 @@ Ax
 Ax
 Ax
 iW
-Fi
-vb
-Fi
-ma
-Fi
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
-ma
-Fi
-Fi
-Fi
-Fi
+Pp
+iW
 Fi
 ma
+Fi
+Ax
+Ax
+Ax
+Ax
+Ax
+Ax
+Ax
+Ax
+Ax
+Ax
+Ax
+Ax
+Ax
 dj
 dj
 ap
@@ -29237,10 +29936,10 @@ dj
 dj
 dj
 dj
-dj
-dj
-dj
-dj
+wE
+wE
+wE
+wE
 ZM
 ZM
 ZM
@@ -29316,21 +30015,22 @@ Pm
 Pm
 xe
 MJ
-ed
-Nk
-Ps
-Ps
-Ps
-Nk
-OW
+rG
+vJ
+OJ
+TK
+cX
+vJ
+mL
 UH
 IA
-sc
-sc
-UJ
+zT
+xX
+Xp
 dn
-fd
+jH
 lV
+dd
 dd
 Ax
 Ax
@@ -29341,12 +30041,12 @@ Ax
 Ax
 Ax
 Ax
-Ax
-Ax
-Ax
-as
-fJ
 Fi
+ma
+fp
+Fi
+Fi
+ma
 ma
 Ax
 Ax
@@ -29355,27 +30055,26 @@ Ax
 Ax
 Ax
 Ax
-Ax
 ma
 Fi
-Fi
-Fi
-ma
-Fi
-Ax
-Ax
-Ax
-Ax
-Ax
+pA
 Fi
 ma
 Fi
-ma
-Fi
-Fi
-iW
-Fi
-ma
+Ax
+Ax
+Ax
+Ax
+Ax
+Ax
+Ax
+Ax
+Ax
+Ax
+Ax
+Ax
+Ax
+Ax
 dj
 dj
 ap
@@ -29404,11 +30103,11 @@ dj
 dj
 dj
 dj
-dj
-dj
-dj
-ZM
-ZM
+wE
+DI
+Zv
+pK
+hH
 ZM
 ZM
 ZM
@@ -29456,7 +30155,7 @@ Wh
 zT
 zT
 xX
-Xp
+fJ
 dn
 dn
 dn
@@ -29492,13 +30191,14 @@ Lf
 OW
 OA
 dS
-Pm
-Pm
-Cj
+Ed
+Ed
+Vm
 sc
 up
 lV
 dd
+NQ
 Ax
 Ax
 Ax
@@ -29507,14 +30207,13 @@ Ax
 Ax
 Ax
 Ax
-Ax
-Ax
-Ax
-Ax
+Fi
+ma
+ma
 fp
 iW
 iW
-iW
+ma
 ma
 Ax
 Ax
@@ -29529,20 +30228,20 @@ Fi
 Fi
 ma
 Fi
+ma
 Ax
 Ax
 Ax
 Ax
-iW
-iW
-ma
-ma
-ma
-CJ
-Fi
-Fi
-ma
-ma
+Ax
+Ax
+Ax
+Ax
+Ax
+Ax
+Ax
+Ax
+Ax
 dj
 dj
 ap
@@ -29571,11 +30270,11 @@ dj
 dj
 dj
 dj
-dj
-dj
-dj
-ZM
-ZM
+wE
+fk
+aB
+pn
+pq
 ZM
 ZM
 ZM
@@ -29637,7 +30336,7 @@ Pm
 Pm
 Pm
 Pm
-aI
+gn
 aP
 OC
 OC
@@ -29667,6 +30366,7 @@ up
 lV
 dd
 dd
+NQ
 Ax
 Ax
 Ax
@@ -29674,41 +30374,40 @@ Ax
 Ax
 Ax
 Ax
-Ax
-Ax
-Ax
+Fi
 ma
+HV
+py
 iW
-iW
-Fi
-iW
-ma
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
-ma
-Fi
-Fi
-Fi
 Fi
 ma
-Fi
+YC
 Ax
 Ax
 Ax
-iW
+Ax
+Ax
+Ax
 ma
 Fi
 Fi
 Fi
-ma
+Fi
 ma
 Fi
 ma
-ma
+Ax
+Ax
+RD
+Ax
+Ax
+Ax
+Ax
+Ax
+Ax
+Ax
+Ax
+Ax
 dj
 dj
 dj
@@ -29738,11 +30437,11 @@ dj
 dj
 dj
 dj
-dj
-dj
-dj
-ZM
-ZM
+wE
+fk
+om
+Qa
+UD
 ZM
 ZM
 ZM
@@ -29824,16 +30523,17 @@ Ps
 Ps
 Lf
 OW
-Ws
-dd
-dd
-Ug
-GO
+Mn
+St
+St
+Sp
+Ed
 fr
 aI
 Wh
 gT
 dd
+NQ
 Ax
 Ax
 Ax
@@ -29842,39 +30542,38 @@ Ax
 Ax
 Ax
 Ax
-Ax
-ma
-aM
+mC
+py
 ma
 Fi
 Fi
 iW
+MN
 ma
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
-ma
-Fi
-Fi
-Fi
-ma
-Fi
-Ax
-Ax
-Ax
 iW
+Ax
+Ax
+Ax
+Ax
 ma
 Fi
-ma
-Fi
-Fi
 Fi
 Fi
 ma
+Fi
+Ax
 ma
+ma
+Af
+xW
+Ax
+Ax
+Ax
+Ax
+Ax
+Ax
+Ax
+Ax
 dj
 dj
 dj
@@ -29905,11 +30604,11 @@ dj
 dj
 dj
 dj
-dj
-dj
-dj
-ZM
-ZM
+wE
+DI
+gK
+kI
+Uz
 ZM
 ZM
 ZM
@@ -29991,18 +30690,18 @@ lM
 Ps
 Lf
 OA
-SR
-SR
-dd
-dd
-NC
+Mn
+St
+St
+Vu
+Ed
 Ed
 Ed
 Ed
 lV
 dd
 dd
-Ax
+NQ
 Ax
 Ax
 Ax
@@ -30016,10 +30715,10 @@ Fi
 Fi
 Fi
 Fi
+MN
 ma
-Ax
-Ax
-Ax
+ma
+iW
 Ax
 Ax
 ma
@@ -30030,18 +30729,18 @@ Fi
 ma
 Ax
 Ax
+ma
+ma
+fg
+hf
 Ax
-ma
-ma
-Fi
-ma
-Fi
-Fi
-Fi
-iW
-Fi
-ma
-ma
+Ax
+Ax
+Ax
+Ax
+Ax
+Ax
+Ax
 dj
 dj
 dj
@@ -30072,10 +30771,10 @@ dj
 dj
 dj
 dj
-dj
-dj
-dj
-dj
+wE
+wE
+wE
+wE
 ZM
 ZM
 ZM
@@ -30156,46 +30855,24 @@ eV
 Ps
 Ps
 Ps
-SR
-SR
-SR
-SR
-dd
-dd
-Ug
+Mn
+Mn
+Mn
+St
+St
+St
+OC
 GO
 Ed
 Ed
 Wh
 gT
 dd
-Ax
-Ax
-Ax
-Ax
-ma
-ma
-ma
-ma
-Fi
-Fi
-Fi
-Fi
-Fi
-Fi
-Fi
-ma
-Ax
+dd
 Ax
 Ax
 Ax
 ma
-Fi
-ma
-Fi
-Fi
-Fi
-ma
 ma
 ma
 ma
@@ -30205,9 +30882,31 @@ Fi
 Fi
 Fi
 Fi
-iW
+lt
+Ew
 ma
 ma
+Ax
+Ax
+ma
+Fi
+ma
+Fi
+Fi
+Fi
+ma
+ma
+ma
+ma
+Kq
+hf
+Ax
+Ax
+Ax
+Ax
+Ax
+Ax
+Ax
 dj
 dj
 dj
@@ -30324,8 +31023,8 @@ wR
 PM
 aE
 SR
-gn
-eA
+SR
+SR
 SR
 SR
 SR
@@ -30351,10 +31050,10 @@ Fi
 Fi
 Fi
 Fi
-Fi
-ma
-ma
-ma
+lt
+mC
+mC
+py
 ma
 ma
 Fi
@@ -30366,14 +31065,14 @@ iW
 Fi
 Fi
 Fi
-Fi
-Fi
-Fi
-Fi
-Fi
-ma
-iW
-Fi
+Kq
+hf
+Ax
+Ax
+Ax
+Ax
+Ax
+Ax
 dj
 dj
 dj
@@ -30533,13 +31232,13 @@ iW
 Fi
 Fi
 Fi
-Fi
-Fi
-iW
-iW
-iW
-iW
-ma
+EX
+Ax
+Ax
+Ax
+Ax
+Ax
+Ax
 dj
 dj
 dj
@@ -30660,10 +31359,10 @@ JH
 mV
 TM
 pC
-SR
-SR
-SR
-SR
+LR
+Ma
+nn
+Ma
 NC
 Vm
 sc
@@ -30701,12 +31400,12 @@ Fi
 Fi
 Fi
 Fi
-Fi
-iW
-ma
-Fi
-ma
-ma
+Ax
+Ax
+Ax
+Ax
+Ax
+Ax
 dj
 dj
 dj
@@ -30827,10 +31526,10 @@ TF
 mV
 hX
 LR
-mV
-wY
-zT
-zT
+SR
+Yc
+Yc
+Yc
 xX
 Vm
 sc
@@ -30868,10 +31567,10 @@ Fi
 Fi
 Fi
 Fi
-ma
-ma
-ma
-ma
+Ax
+Ax
+Ax
+Ax
 dj
 dj
 dj
@@ -31028,15 +31727,15 @@ ma
 Fi
 Fi
 Fi
-Fi
+Ax
 Fi
 Fi
 Fi
 ma
 kc
 ma
-ma
-ma
+Ax
+Ax
 dj
 dj
 dj
@@ -31195,8 +31894,8 @@ ma
 ma
 Fi
 ma
-Fi
-Fi
+Ax
+Ax
 Fi
 ma
 Fi
@@ -31337,10 +32036,10 @@ IO
 IO
 Gp
 IP
-fd
-lV
-dd
-Fi
+wn
+Zh
+By
+Up
 ma
 Fi
 Fi
@@ -31463,7 +32162,7 @@ EB
 EB
 rk
 Je
-SR
+mE
 SR
 SR
 SR
@@ -31483,11 +32182,11 @@ GN
 YL
 Qm
 Jm
-lB
 YL
-lB
 YL
-lB
+YL
+YL
+YL
 YL
 YL
 YL
@@ -31495,20 +32194,20 @@ YL
 hQ
 YL
 Pw
-SR
-mV
-ZE
-ZE
-ZE
-ZE
-mV
-SR
-KI
-up
-lV
-dd
-dd
-Fi
+Mn
+YH
+Ur
+Ur
+Ur
+Ur
+YH
+Mn
+YH
+Ur
+YH
+Mn
+ay
+ma
 ma
 Fi
 Fi
@@ -31650,11 +32349,11 @@ YL
 YL
 Qm
 Jm
-lB
+YL
 Sz
-lB
 Sz
-lB
+Sz
+Sz
 Sz
 Sz
 Sz
@@ -31662,19 +32361,19 @@ Sz
 Sz
 Mw
 uc
-ii
+aw
 RH
-MF
-MF
-MF
-MF
-LR
-mV
-KI
-up
-Wh
-gT
-dd
+Do
+Do
+Do
+Do
+Zb
+GC
+Do
+Do
+Do
+WE
+He
 dd
 ma
 Fi
@@ -31817,11 +32516,11 @@ Qm
 Qm
 Qm
 Jm
-lB
+YL
 Sz
-lB
 Sz
-lB
+Sz
+Sz
 Sz
 Sz
 Sz
@@ -31829,19 +32528,19 @@ Sz
 Sz
 Yf
 LZ
-tW
-Qm
-Qm
-Qm
-Qm
-Qm
-Ng
-ZE
-KI
-UJ
-Mh
-Wh
-gT
+Lf
+Ps
+Ps
+Ps
+Ps
+Ps
+Ps
+Ps
+Ps
+Ps
+Ps
+Lf
+He
 dd
 ma
 Fi
@@ -31984,14 +32683,14 @@ SR
 Qm
 Qm
 Jm
-lB
 YL
-lB
-YL
-lB
 YL
 YL
 YL
+lB
+Bo
+Bo
+AG
 CX
 Yf
 YL
@@ -32000,15 +32699,15 @@ uK
 yL
 yL
 yL
-Hj
-Qm
-Ng
-mV
-KI
-sc
-UJ
-fd
-lV
+OI
+Ps
+Ps
+Ps
+Ps
+Ps
+Ps
+Lf
+He
 dd
 Fi
 Fi
@@ -32155,27 +32854,27 @@ Qe
 Jm
 Jm
 Qe
-Rn
+Ck
+VV
 HY
-HY
-NH
+WQ
 uu
 mV
 mV
 uu
-mV
-mV
-mV
-SR
-Pn
-Qm
-vj
-SR
-Ny
-Pm
-Cj
-up
-lV
+YH
+YH
+YH
+Mn
+hn
+Ps
+Zb
+ui
+Do
+Do
+Do
+An
+He
 dd
 Fi
 ma
@@ -32323,8 +33022,8 @@ vn
 uu
 Pv
 Ck
-VV
-Za
+HY
+Un
 WQ
 mV
 Dz
@@ -32336,13 +33035,13 @@ Li
 mV
 UZ
 Ps
-JB
-Mb
+rF
+Yc
 dA
-GO
-Vm
-up
-lV
+dA
+dA
+Yc
+Bz
 dd
 iW
 ma
@@ -32489,11 +33188,11 @@ mV
 YL
 Na
 uu
-qX
+BG
 Za
-Un
-Gg
-mV
+Pn
+uu
+uu
 ib
 ST
 mV
@@ -32506,10 +33205,10 @@ Ps
 JB
 zF
 Ul
-NC
-Vm
-up
-lV
+ff
+nr
+oj
+rN
 dd
 iW
 ma
@@ -32652,25 +33351,25 @@ gx
 eQ
 Qm
 MF
-ZE
+Ma
 YL
-rG
-uu
-BG
-ON
-ON
-uu
-uu
-vr
+YL
+Ma
+PZ
+bu
+bu
+Ws
+Ma
+HU
 aQ
-mV
+Ma
 mK
 YL
 lA
 SR
 hn
 Ps
-JB
+OS
 PF
 jM
 NC
@@ -32819,19 +33518,19 @@ On
 eQ
 Qm
 MF
-ZE
+Ma
 YL
 YL
 Ma
 PZ
 bu
 bu
-Dd
+PZ
 Ma
 HU
-Jh
-mV
-Ds
+HU
+Ma
+YL
 ON
 ON
 Hb
@@ -32986,7 +33685,7 @@ SR
 kM
 Qm
 MF
-ZE
+mV
 YL
 pM
 uu
@@ -33505,12 +34204,12 @@ lA
 SR
 hn
 Ps
-JB
+OS
 PF
 KI
 sc
-sc
-up
+eI
+aI
 lV
 dd
 ma
@@ -33524,7 +34223,7 @@ Fi
 Fi
 Ax
 Fi
-iW
+ma
 Fi
 Fi
 ma
@@ -33673,12 +34372,12 @@ JR
 UZ
 Ps
 JB
-GY
+Pb
 aS
-sc
-eI
-aI
-lV
+wN
+HM
+mz
+BN
 dd
 ma
 Fi
@@ -33686,9 +34385,9 @@ kZ
 Fi
 ma
 Fi
-iW
+ma
 Fi
-iW
+ma
 Fi
 Fi
 Fi
@@ -33839,10 +34538,10 @@ Ym
 JR
 uv
 Ps
-JB
-vx
-gd
-gd
+rF
+Yc
+gk
+gk
 gk
 Yc
 ay
@@ -33852,13 +34551,13 @@ Fi
 ma
 Fi
 ma
-iW
+ma
 Fi
 Fi
 Fi
-iW
+ma
 Fi
-iW
+ma
 Fi
 Fi
 Fi
@@ -34006,12 +34705,12 @@ YH
 Mn
 Wa
 Ps
-OS
-Mn
-YH
-Ur
-YH
-Mn
+Zb
+GC
+Do
+Do
+Do
+WE
 LU
 dd
 Fi
@@ -34024,7 +34723,7 @@ Fi
 Fi
 Fi
 Fi
-iW
+ma
 Fi
 Fi
 Fi
@@ -34173,19 +34872,19 @@ Vs
 At
 Hp
 Ps
-Zb
-bf
-Do
-Do
-Do
-Fv
-CF
+Ps
+Ps
+Ps
+Ps
+Ps
+Lf
+LU
 dd
 Fi
 ma
 Fi
 Fi
-iW
+ma
 Fi
 Fi
 Fi
@@ -34346,8 +35045,8 @@ Ps
 Ps
 Ps
 Lf
-CF
-OD
+LU
+dd
 ma
 Fi
 Fi
@@ -34362,7 +35061,7 @@ Fi
 Fi
 ma
 Fi
-iW
+ma
 dj
 dj
 dj
@@ -34513,8 +35212,8 @@ Do
 Do
 rd
 An
-CF
-OD
+LU
+dd
 ma
 Fi
 Fi
@@ -34689,7 +35388,7 @@ Fi
 Fi
 Fi
 Fi
-iW
+kZ
 Fi
 Fi
 ma
@@ -34856,7 +35555,7 @@ Fi
 Fi
 Fi
 Fi
-iW
+ma
 Fi
 Fi
 Fi
@@ -35010,8 +35709,8 @@ LR
 aO
 QX
 mV
-KI
-up
+lC
+aI
 lV
 dd
 OD
@@ -35021,15 +35720,15 @@ Fi
 Fi
 Fi
 Fi
-iW
-iW
+ma
+ma
 Fi
 Fi
 ma
 Fi
 Fi
-iW
-iW
+ma
+ma
 dj
 dj
 dj
@@ -35180,15 +35879,15 @@ SR
 Wj
 aP
 bR
-dj
-dj
+ud
+ud
 ma
 Fi
 Fi
 Fi
 Fi
-iW
-iW
+ma
+ma
 Fi
 Fi
 ma
@@ -35347,20 +36046,20 @@ Bj
 Nd
 lV
 dj
+ud
+ud
+ud
 dj
-dj
-dj
-dj
 Fi
 Fi
 Fi
 Fi
 Fi
 Fi
-iW
+ma
 Fi
 Fi
-iW
+ma
 dj
 dj
 dj
@@ -35493,7 +36192,7 @@ UX
 bN
 bN
 wD
-wD
+lp
 MA
 cO
 nq
@@ -35513,10 +36212,10 @@ sc
 sc
 MM
 lV
-dj
-dj
-dj
-dj
+ud
+ud
+vg
+vg
 dj
 Fi
 Fi
@@ -35525,9 +36224,9 @@ Fi
 Fi
 ma
 ma
-iW
+ma
 Fi
-iW
+ma
 dj
 dj
 dj
@@ -35674,14 +36373,14 @@ MI
 wC
 Ug
 GO
-Vm
-sc
-sc
-sc
-up
+fr
+Pm
+Pm
+Pm
+aI
 lV
-dj
-dj
+ud
+vg
 dj
 dj
 dj
@@ -35692,8 +36391,8 @@ Fi
 Fi
 ma
 Fi
-iW
-Fi
+ma
+ma
 dj
 dj
 dj
@@ -35836,18 +36535,18 @@ dz
 dz
 QH
 dz
-WZ
-WZ
-WZ
-dj
+wC
+MI
+wC
+tu
 Qi
-Gp
-gd
-gd
-gd
-gk
+IO
+IO
+IO
+IO
+IO
 Zh
-dj
+vU
 dj
 dj
 dj
@@ -36004,8 +36703,8 @@ WZ
 WZ
 WZ
 WZ
-dj
-dj
+wE
+wE
 wE
 wE
 Vj
@@ -50151,9 +50850,9 @@ Bi
 uj
 yx
 Bi
-au
-au
-au
+QG
+QG
+QG
 QG
 QG
 QG
@@ -50319,8 +51018,8 @@ QG
 QG
 QG
 QG
-au
-au
+QG
+QG
 QG
 QG
 QG
@@ -50487,7 +51186,7 @@ QG
 QG
 QG
 QG
-Bi
+QG
 QG
 QG
 QG
@@ -50654,7 +51353,7 @@ QG
 QG
 QG
 QG
-Bi
+QG
 QG
 QG
 QG
@@ -50821,8 +51520,8 @@ QG
 QG
 QG
 QG
-Bi
-Bi
+KV
+au
 QG
 QG
 QG
@@ -50987,7 +51686,7 @@ QG
 QG
 QG
 QG
-Bi
+KV
 Bi
 Bi
 Bi

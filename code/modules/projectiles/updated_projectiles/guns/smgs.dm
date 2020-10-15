@@ -9,7 +9,7 @@
 	w_class = SIZE_LARGE
 	movement_acc_penalty_mult = 4
 	aim_slowdown = SLOWDOWN_ADS_SMG
-	wield_delay = WIELD_DELAY_FAST
+	wield_delay = WIELD_DELAY_VERY_FAST
 	attachable_allowed = list(
 						/obj/item/attachable/suppressor,
 						/obj/item/attachable/reddot,
@@ -70,23 +70,18 @@
 /obj/item/weapon/gun/smg/m39/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 30, "muzzle_y" = 20,"rail_x" = 14, "rail_y" = 22, "under_x" = 21, "under_y" = 16, "stock_x" = 24, "stock_y" = 16)
 
-
 /obj/item/weapon/gun/smg/m39/set_gun_config_values()
 	..()
-	fire_delay = config.mlow_fire_delay
+	fire_delay = config.min_fire_delay
 	burst_delay = config.min_fire_delay
 	burst_amount = config.high_burst_value
 	accuracy_mult = config.base_hit_accuracy_mult
-	accuracy_mult_unwielded = config.base_hit_accuracy_mult - config.low_hit_accuracy_mult
-	scatter = config.med_scatter_value
-	burst_scatter_mult = config.low_scatter_value
+	accuracy_mult_unwielded = config.base_hit_accuracy_mult - config.hmed_hit_accuracy_mult
+	scatter = config.high_scatter_value
+	burst_scatter_mult = config.med_scatter_value
 	scatter_unwielded = config.high_scatter_value
 	damage_mult = config.base_hit_damage_mult
 	recoil_unwielded = config.min_recoil_value
-
-
-
-
 
 //-------------------------------------------------------
 
@@ -95,10 +90,8 @@
 	desc = "A modified version M-39 submachinegun, re-engineered for better weight, handling and accuracy. Given only to elite units."
 	icon_state = "m39b2"
 	item_state = "m39b2"
-
 	current_mag = /obj/item/ammo_magazine/smg/m39/ap
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_WY_RESTRICTED
-	wield_delay =  WIELD_DELAY_VERY_FAST
 	map_specific_decoration = FALSE
 
 	random_spawn_chance = 100
@@ -115,14 +108,13 @@
 
 /obj/item/weapon/gun/smg/m39/elite/set_gun_config_values()
 	..()
-	fire_delay = config.mlow_fire_delay
-	accuracy_mult = config.base_hit_accuracy_mult +  config.high_hit_accuracy_mult
+	fire_delay = config.min_fire_delay
+	accuracy_mult = config.base_hit_accuracy_mult + config.high_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult
 	scatter = config.mlow_scatter_value
 	burst_scatter_mult = config.min_scatter_value
 	scatter_unwielded = config.med_scatter_value
-
-
+	damage_mult =  config.base_hit_damage_mult + config.high_hit_damage_mult
 
 //-------------------------------------------------------
 //M5, a classic SMG used in a lot of action movies.

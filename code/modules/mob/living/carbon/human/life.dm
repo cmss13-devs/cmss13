@@ -10,7 +10,7 @@
 		return
 
 	if(undefibbable && stat == DEAD || spawned_corpse)
-		for (var/datum/data/record/R in data_core.general)	// Change their status on the Crew Manifest to Deceased
+		for (var/datum/data/record/R in GLOB.data_core.general)	// Change their status on the Crew Manifest to Deceased
 			if (R.fields["name"] == real_name)
 				R.fields["p_stat"] = "*Deceased*"
 		processable_human_list -= src
@@ -45,7 +45,7 @@
 
 			//Chemicals in the body
 			handle_chemicals_in_body()
-			
+
 			//Organs and blood
 			handle_organs()
 			handle_blood()
@@ -96,6 +96,6 @@
 	//Grabbing
 	for(var/obj/item/grab/G in src)
 		G.process()
-		
+
 	if(!client && !mind && species)
 		species.handle_npc(src)

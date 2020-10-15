@@ -94,7 +94,7 @@
 			stat("[player.key]", player.ready ? "(Playing)" : "")
 
 /mob/new_player/Topic(href, href_list[])
-	if(!client)	
+	if(!client)
 		return
 
 	switch(href_list["lobby_choice"])
@@ -118,7 +118,7 @@
 			if((!ticker || ticker.current_state <= GAME_STATE_PREGAME) && ready) // Make sure we don't ready up after the round has started
 				ready = FALSE
 				readied_players--
-			
+
 			new_player_panel_proc()
 
 		if("refresh")
@@ -126,7 +126,7 @@
 
 		if("observe")
 			if(alert(src,"Are you sure you wish to observe? When you observe, you will not be able to join as marine. It might also take some time to become a xeno or responder!","Player Setup","Yes","No") == "Yes")
-				if(!client)	
+				if(!client)
 					return TRUE
 				var/mob/dead/observer/observer = new()
 				spawning = TRUE
@@ -153,7 +153,7 @@
 
 				if(observer.client)
 					observer.client.change_view(world_view_size)
-				
+
 				observer.set_huds_from_prefs()
 
 				qdel(src)
@@ -262,7 +262,7 @@
 	RoleAuthority.equip_role(character, RoleAuthority.roles_for_mode[rank], T)
 	EquipCustomItems(character)
 
-	data_core.manifest_inject(character)
+	GLOB.data_core.manifest_inject(character)
 	if(map_tag == MAP_WHISKEY_OUTPOST)
 		call(/datum/game_mode/whiskey_outpost/proc/spawn_player)(character)
 	ticker.minds += character.mind//Cyborgs and AIs handle this in the transform proc.	//TODO!!!!! ~Carn
@@ -397,13 +397,13 @@
 		new_character.disabilities |= NEARSIGHTED
 
 	// Update the character icons
-	// This is done in set_species when the mob is created as well, but 
+	// This is done in set_species when the mob is created as well, but
 	INVOKE_ASYNC(new_character, /mob/living/carbon/human.proc/regenerate_icons)
 	INVOKE_ASYNC(new_character, /mob/living/carbon/human.proc/update_body, 1, 0)
 	INVOKE_ASYNC(new_character, /mob/living/carbon/human.proc/update_hair)
 
 	new_character.key = key		//Manually transfer the key to log them in
-	if(new_character.client) 
+	if(new_character.client)
 		new_character.client.change_view(world_view_size)
 
 	return new_character
@@ -411,7 +411,7 @@
 /mob/new_player/proc/ViewManifest()
 	var/dat = "<html><body>"
 	dat += "<h4><center>Crew Manifest:</center></h4>"
-	dat += data_core.get_manifest(FALSE, TRUE)
+	dat += GLOB.data_core.get_manifest(FALSE, TRUE)
 
 	show_browser(src, dat, "Crew Manifest", "manifest", "size=450x750")
 

@@ -198,7 +198,6 @@
 				cell_component.wrapped = O.cell
 				cell_component.installed = 1
 
-			callHook("borgify", list(O))
 			O.Namepick()
 
 			qdel(src)

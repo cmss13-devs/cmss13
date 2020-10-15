@@ -51,7 +51,7 @@
 	mob.sec_hud_set_ID()
 	mob.hud_set_squad()
 
-	data_core.manifest_inject(mob) //Put people in crew manifest
+	GLOB.data_core.manifest_inject(mob) //Put people in crew manifest
 
 
 /datum/game_mode/whiskey_outpost/activate_distress()

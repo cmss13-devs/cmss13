@@ -51,8 +51,8 @@
 				hive_prefix = "LING"
 			else if(speaking.name == "Xenomorph")
 				hive_prefix = "XENO"
-			STUI.game.Add("\[[time_stamp()]]<font color='#0099FF'>[hive_prefix]: [key_name(src)] : [message]</font><br>")
-			STUI.processing |= STUI_LOG_GAME_CHAT
+			GLOB.STUI.game.Add("\[[time_stamp()]]<font color='#0099FF'>[hive_prefix]: [key_name(src)] : [message]</font><br>")
+			GLOB.STUI.processing |= STUI_LOG_GAME_CHAT
 			speaking.broadcast(src, trim(message))
 			return
 		//If we've gotten this far, keep going!
@@ -88,7 +88,7 @@
 		if("whisper")
 			whisper_say(message, speaking, alt_name)
 			return
-		else			
+		else
 			if(message_mode)
 				if(wear_ear && istype(wear_ear,/obj/item/device/radio))
 					used_radios += wear_ear
@@ -101,8 +101,8 @@
 
 	//speaking into radios
 	if(used_radios.len)
-		STUI.game.Add("\[[time_stamp()]]<font color='#FF0000'>RADIO: [key_name(src)] : [message]</font><br>")
-		STUI.processing |= STUI_LOG_GAME_CHAT
+		GLOB.STUI.game.Add("\[[time_stamp()]]<font color='#FF0000'>RADIO: [key_name(src)] : [message]</font><br>")
+		GLOB.STUI.processing |= STUI_LOG_GAME_CHAT
 		if (speech_sound)
 			sound_vol *= 0.5
 
@@ -115,7 +115,7 @@
 		italics = 1
 		message_range = 2
 
-	
+
 	..(message, speaking, verb, alt_name, italics, message_range, speech_sound, sound_vol, 0, message_mode)	//ohgod we should really be passing a datum here.
 
 	INVOKE_ASYNC(src, /mob/living/carbon/human/proc/say_to_radios, used_radios, message, message_mode, verb, speaking)

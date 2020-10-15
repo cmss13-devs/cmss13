@@ -22,7 +22,7 @@ var/global/list/faction_phoron_stored_list = list(
 		new /obj/item/stack/sheet/metal(loc, DEFENSE_METAL_COST)
 		qdel(src)
 		return
-	
+
 	. = ..()
 
 /obj/structure/resource_node/attackby(obj/item/I, mob/user)
@@ -38,7 +38,7 @@ var/global/list/faction_phoron_stored_list = list(
 
 		qdel(I)
 		var/obj/structure/machinery/collector/C = new(loc)
-		C.RN = src 
+		C.RN = src
 		C.faction_group = user.faction
 		return
 
@@ -63,7 +63,7 @@ var/global/list/faction_phoron_stored_list = list(
 
 /obj/structure/machinery/collector/Initialize()
 	. = ..()
-	
+
 	if(!(faction_group in faction_phoron_stored_list))
 		faction_group = FACTION_MARINE
 
@@ -79,7 +79,7 @@ var/global/list/faction_phoron_stored_list = list(
 	faction_phoron_stored_list[faction_group] += RN.gather_resource(RN.collect_amount)
 
 	if(FACTION_MARINE == faction_group)
-		objectives_controller.add_admin_points(COLLECTOR_DEFCON_RATE)
+		SSobjectives.add_admin_points(COLLECTOR_DEFCON_RATE)
 
 	if(QDELETED(RN))
 		break_down()
@@ -117,7 +117,7 @@ var/global/list/faction_phoron_stored_list = list(
 			update_health(-50)
 			playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
 			return
-	
+
 	. = ..()
 
 /obj/structure/machinery/collector/update_health(var/damage = 0)
@@ -151,4 +151,3 @@ var/global/list/faction_phoron_stored_list = list(
 	RN = null
 
 	. = ..()
-	

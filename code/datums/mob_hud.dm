@@ -62,7 +62,7 @@ var/list/datum/mob_hud/huds = list(
 	for(var/mob/user in hudusers)
 		add_to_single_hud(user, target)
 
-// This is sufficient to ship a HUD rendered on target to user for 
+// This is sufficient to ship a HUD rendered on target to user for
 // all time. essentially, OR-ing the images with the client
 // makes the client able to 'see' them whenever they're offscreen
 // somewhat confusingly
@@ -89,13 +89,13 @@ var/list/datum/mob_hud/huds = list(
 /datum/mob_hud/medical/basic
 
 /datum/mob_hud/medical/basic/proc/check_sensors(mob/living/carbon/human/H)
-	if(!istype(H)) 
+	if(!istype(H))
 		return FALSE
 
 	var/obj/item/clothing/under/U = H.w_uniform
 	if(!istype(U))
 		return FALSE
-	
+
 	if(U.sensor_mode <= 2 || U.has_sensor == 0)
 		return FALSE
 
@@ -222,8 +222,8 @@ var/list/datum/mob_hud/huds = list(
 			hud.remove_from_hud(src)
 			hud.remove_hud_from(src)
 		else if (istype(hud, /datum/mob_hud/xeno_infection))
-			hud.remove_hud_from(src) 
-			
+			hud.remove_hud_from(src)
+
 
 
 
@@ -273,7 +273,7 @@ var/list/datum/mob_hud/huds = list(
 
 	if(percentage_shield > 1)
 		holder.overlays += image('icons/mob/hud/hud.dmi', "xenoshield[percentage_shield]")
-	else 
+	else
 		holder.overlays += image('icons/mob/hud/hud.dmi', "xenoshield0")
 
 /mob/living/carbon/Xenomorph/med_hud_set_armor()
@@ -294,11 +294,11 @@ var/list/datum/mob_hud/huds = list(
 		var/percentage = round(health*100/species.total_health, 10)
 		if(percentage > -1)
 			holder.icon_state = "hudhealth[percentage]"
-		else if(percentage > -49) 
+		else if(percentage > -49)
 			holder.icon_state = "hudhealth-0"
-		else if(percentage > -99) 
+		else if(percentage > -99)
 			holder.icon_state = "hudhealth-50"
-		else 
+		else
 			holder.icon_state = "hudhealth-100"
 
 
@@ -352,7 +352,7 @@ var/list/datum/mob_hud/huds = list(
 
 				if(hive && hive.color)
 					holder3.color = hive.color
-				
+
 			else if(locate(/mob/living/carbon/Xenomorph/Larva) in src)
 				holder.icon_state = "infected5"
 
@@ -446,7 +446,7 @@ var/list/datum/mob_hud/huds = list(
 			if("all")
 				has_frenzy_aura = TRUE
 				has_recovery_aura = TRUE
-				has_warding_aura = TRUE		
+				has_warding_aura = TRUE
 		switch(leader_current_aura)
 			if("frenzy")
 				has_frenzy_aura = TRUE
@@ -457,7 +457,7 @@ var/list/datum/mob_hud/huds = list(
 			if("all")
 				has_frenzy_aura = TRUE
 				has_recovery_aura = TRUE
-				has_warding_aura = TRUE	
+				has_warding_aura = TRUE
 
 		if (has_frenzy_aura)
 			holder.overlays += image('icons/mob/hud/hud.dmi',src, "hudaurafrenzy")
@@ -522,12 +522,12 @@ var/list/datum/mob_hud/huds = list(
 		if(I)
 			perpname = I.registered_name
 
-	if(!data_core)
+	if(!GLOB.data_core)
 		return
 
-	for(var/datum/data/record/E in data_core.general)
+	for(var/datum/data/record/E in GLOB.data_core.general)
 		if(E.fields["name"] == perpname)
-			for(var/datum/data/record/R in data_core.security)
+			for(var/datum/data/record/R in GLOB.data_core.security)
 				if((R.fields["id"] == E.fields["id"]) && (R.fields["criminal"] == "*Arrest*"))
 					holder.icon_state = "hudwanted"
 					break
@@ -575,7 +575,7 @@ var/list/datum/mob_hud/huds = list(
 		if(assigned_squad.squad_leader == src)
 			marine_rk = "leader"
 			langchat_styles = "langchat_bolded" // bold text for bold leaders
-		
+
 		langchat_color = squad_colors_chat[assigned_squad.color]
 
 		if(marine_rk)
@@ -691,7 +691,7 @@ var/global/image/hud_icon_hudfocus
 		if (!QDELETED(PAS))
 			acid_count = PAS.stack_count
 			acid_found = TRUE
-			break 
+			break
 
 	if (acid_found && acid_count > 0)
 		acid_holder.overlays += image('icons/mob/hud/hud.dmi',"acid_stacks[acid_count]")

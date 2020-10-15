@@ -57,8 +57,7 @@
 
 		title = "Crew Manifest"
 		dat += "Entries cannot be modified from this terminal.<br><br>"
-		if(data_core)
-			dat += data_core.get_manifest(0) // make it monochrome
+		dat += GLOB.data_core.get_manifest(0) // make it monochrome
 		dat += "<br>"
 		dat += "<a href='?src=\ref[src];choice=print'>Print</a><br>"
 		dat += "<br>"
@@ -66,7 +65,7 @@
 
 		/*var/crew = ""
 		var/list/L = list()
-		for (var/datum/data/record/t in data_core.general)
+		for (var/datum/data/record/t in GLOB.data_core.general)
 			var/R = t.fields["name"] + " - " + t.fields["rank"]
 			L += R
 		for(var/R in sortList(L))
@@ -214,7 +213,7 @@
 	switch(href_list["choice"])
 		if ("modify")
 			if (ID_to_modify)
-				data_core.manifest_modify(ID_to_modify.registered_name, ID_to_modify.assignment)
+				GLOB.data_core.manifest_modify(ID_to_modify.registered_name, ID_to_modify.assignment)
 				ID_to_modify.name = text("[ID_to_modify.registered_name]'s ID Card ([ID_to_modify.assignment])")
 				if(ishuman(usr))
 					ID_to_modify.loc = usr.loc
@@ -325,8 +324,7 @@
 
 				var/t1 = "<h4>Crew Manifest</h4>"
 				t1 += "<br>"
-				if(data_core)
-					t1 += data_core.get_manifest(0) // make it monochrome
+				t1 += GLOB.data_core.get_manifest(0) // make it monochrome
 
 				P.info = t1
 				P.name = "paper- 'Crew Manifest'"

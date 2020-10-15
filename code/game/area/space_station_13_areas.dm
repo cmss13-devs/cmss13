@@ -13,26 +13,9 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 */
 
-/*Adding a wizard area teleport list because motherfucking lag -- Urist*/
-/*I am far too lazy to make it a proper list of areas so I'll just make it run the usual telepot routine at the start of the game*/
-var/list/teleportlocs = list()
-
-/hook/startup/proc/setupTeleportLocs()
-	for(var/area/AR in all_areas)
-		if(istype(AR, /area/shuttle)) continue
-		if(teleportlocs.Find(AR.name)) continue
-		var/turf/picked = pick(get_area_turfs(AR.type))
-		if (picked.z == 1 || picked.z == MAIN_SHIP_Z_LEVEL)
-			teleportlocs += AR.name
-			teleportlocs[AR.name] = AR
-
-	teleportlocs = sortAssoc(teleportlocs)
-
-	return 1
-
 var/list/ghostteleportlocs = list()
 
-/hook/startup/proc/setupGhostTeleportLocs()
+/proc/setupGhostTeleportLocs()
 	for(var/area/AR in all_areas)
 		if(ghostteleportlocs.Find(AR.name)) continue
 		if(istype(AR, /area/tdome) || istype(AR, /area/adminlevel/bunker01/mainroom) || istype(AR, /area/adminlevel/ert_station))

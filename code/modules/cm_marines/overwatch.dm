@@ -67,7 +67,7 @@
 	if(!current_squad) //No squad has been set yet. Pick one.
 		dat += "Current Squad: <A href='?src=\ref[src];operation=pick_squad'>----------</A><BR>"
 		return dat;
-	
+
 	dat += "Current Squad: [current_squad.name] Squad</A>   "
 	dat += "<A href='?src=\ref[src];operation=message'>Message Squad</a><br><br>"
 	dat += "<A href='?src=\ref[src];operation=mapview'>Toggle Tactical Map</a>"
@@ -158,7 +158,7 @@
 
 
 		for(var/X in current_squad.marines_list)
-			if(!X) 
+			if(!X)
 				continue //just to be safe
 			var/mob_name = "unknown"
 			var/mob_state = ""
@@ -224,7 +224,7 @@
 					continue
 				if(z_hidden) //gibbed marines are neither on the colony nor on the almayer
 					continue
-				for(var/datum/data/record/t in data_core.general)
+				for(var/datum/data/record/t in GLOB.data_core.general)
 					if(t.fields["name"] == X)
 						role = t.fields["real_rank"]
 						break
@@ -294,7 +294,7 @@
 		dat += "<B>Launch Pad Status:</b> "
 		var/obj/structure/closet/crate/C = locate() in current_squad.drop_pad.loc
 		if(C)
-			dat += SET_CLASS("Supply crate loaded", INTERFACE_GREEN) 
+			dat += SET_CLASS("Supply crate loaded", INTERFACE_GREEN)
 			dat += "<BR>"
 		else
 			dat += "Empty<BR>"
@@ -698,9 +698,9 @@
 		to_chat(usr, "[htmlicon(src, usr)] [SPAN_WARNING("[wanted_marine] is missing in action.")]")
 		return
 
-	for(var/datum/data/record/E in data_core.general)
+	for(var/datum/data/record/E in GLOB.data_core.general)
 		if(E.fields["name"] == wanted_marine.real_name)
-			for(var/datum/data/record/R in data_core.security)
+			for(var/datum/data/record/R in GLOB.data_core.security)
 				if(R.fields["id"] == E.fields["id"])
 					if(!findtext(R.fields["ma_crim"],"Insubordination."))
 						R.fields["criminal"] = "*Arrest*"
@@ -788,7 +788,7 @@
 	new_squad.update_free_mar()
 	new_squad.update_squad_ui()
 
-	for(var/datum/data/record/t in data_core.general) //we update the crew manifest
+	for(var/datum/data/record/t in GLOB.data_core.general) //we update the crew manifest
 		if(t.fields["name"] == transfer_marine.real_name)
 			t.fields["squad"] = new_squad.name
 			break

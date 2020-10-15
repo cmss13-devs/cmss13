@@ -134,10 +134,10 @@
 
 
 /obj/structure/machinery/door/airlock/proc/set_frequency(new_frequency)
-	radio_controller.remove_object(src, frequency)
+	SSradio.remove_object(src, frequency)
 	if(new_frequency)
 		frequency = new_frequency
-		radio_connection = radio_controller.add_object(src, frequency, RADIO_AIRLOCK)
+		radio_connection = SSradio.add_object(src, frequency, RADIO_AIRLOCK)
 
 
 /obj/structure/machinery/door/airlock/Initialize()
@@ -146,17 +146,7 @@
 		set_frequency(frequency)
 
 	update_icon()
-
-
-/obj/structure/machinery/door/airlock/New()
-	..()
-
-	if(radio_controller)
-		set_frequency(frequency)
-
 	start_processing()
-
-
 
 /obj/structure/machinery/airlock_sensor
 	icon = 'icons/obj/structures/machinery/airlock_machines.dmi'
@@ -216,18 +206,13 @@
 			update_icon()
 
 /obj/structure/machinery/airlock_sensor/proc/set_frequency(new_frequency)
-	radio_controller.remove_object(src, frequency)
+	SSradio.remove_object(src, frequency)
 	frequency = new_frequency
-	radio_connection = radio_controller.add_object(src, frequency, RADIO_AIRLOCK)
+	radio_connection = SSradio.add_object(src, frequency, RADIO_AIRLOCK)
 
 /obj/structure/machinery/airlock_sensor/Initialize()
 	. = ..()
 	set_frequency(frequency)
-
-/obj/structure/machinery/airlock_sensor/New()
-	..()
-	if(radio_controller)
-		set_frequency(frequency)
 	start_processing()
 
 
@@ -283,21 +268,14 @@
 
 
 /obj/structure/machinery/access_button/proc/set_frequency(new_frequency)
-	radio_controller.remove_object(src, frequency)
+	SSradio.remove_object(src, frequency)
 	frequency = new_frequency
-	radio_connection = radio_controller.add_object(src, frequency, RADIO_AIRLOCK)
+	radio_connection = SSradio.add_object(src, frequency, RADIO_AIRLOCK)
 
 
 /obj/structure/machinery/access_button/Initialize()
 	. = ..()
 	set_frequency(frequency)
-
-
-/obj/structure/machinery/access_button/New()
-	..()
-
-	if(radio_controller)
-		set_frequency(frequency)
 
 /obj/structure/machinery/access_button/airlock_interior
 	frequency = 1379

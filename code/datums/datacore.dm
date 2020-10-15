@@ -1,6 +1,4 @@
-/hook/startup/proc/createDatacore()
-	data_core = new /obj/effect/datacore()
-	return 1
+GLOBAL_DATUM_INIT(data_core, /obj/effect/datacore, new)
 
 /obj/effect/datacore
 	name = "datacore"
@@ -39,7 +37,7 @@
 	var/even = 0
 	// sort mobs
 
-	for(var/datum/data/record/t in data_core.general)
+	for(var/datum/data/record/t in GLOB.data_core.general)
 		if(t.fields["mob_faction"] != FACTION_MARINE)	//we process only USCM humans
 			continue
 
@@ -155,7 +153,7 @@
 		if(!nosleep)
 			sleep(40)
 		for(var/mob/living/carbon/human/H in human_mob_list)
-			if(H.species && H.species.name == "Yautja") 
+			if(H.species && H.species.name == "Yautja")
 				continue
 			manifest_inject(H)
 		return
@@ -163,7 +161,7 @@
 /obj/effect/datacore/proc/manifest_modify(name, assignment, rank)
 	var/datum/data/record/foundrecord
 
-	for(var/datum/data/record/t in data_core.general)
+	for(var/datum/data/record/t in GLOB.data_core.general)
 		if (t)
 			if(t.fields["name"] == name)
 				foundrecord = t
@@ -255,7 +253,7 @@
 	L.fields["citizenship"]	= H.citizenship
 	L.fields["faction"]		= H.personal_faction
 	L.fields["religion"]	= H.religion
-	
+
 	if(H.exploit_record && !jobban_isbanned(H, "Records"))
 		L.fields["exploit_record"] = H.exploit_record
 	else

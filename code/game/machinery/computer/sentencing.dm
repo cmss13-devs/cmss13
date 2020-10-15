@@ -31,7 +31,7 @@
 
 		qdel(O)
 		return
-		
+
 	else if(istype(O, /obj/item/paper/) && menu_screen == IMPORT_INCIDENT)
 		to_chat(user, SPAN_ALERT("This console only accepts authentic incident reports. Copies are invalid."))
 		return
@@ -152,7 +152,7 @@
 	var/dat = ""
 	dat += "<table class='border'>"
 	dat += "<tr>"
-	
+
 	if(buttons)
 		dat += "<th colspan='3'>Charges <a href='?src=\ref[src];button=change_menu;choice=low_severity'>Add</a></th>"
 	else
@@ -353,7 +353,7 @@
 
 	if(!imported)
 		var/datum/data/record/found_record
-		for(var/datum/data/record/R in data_core.security)
+		for(var/datum/data/record/R in GLOB.data_core.security)
 			if(incident.criminal_gid == 0)
 				break
 

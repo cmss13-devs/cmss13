@@ -13,26 +13,26 @@ var/datum/STUI/STUI = new()
 
 /proc/error(msg)
 	world.log << "## ERROR: [msg][log_end]"
-	STUI.debug.Add("\[[time_stamp()]]DEBUG: [msg]<br>")
-	STUI.processing |= STUI_LOG_DEBUG
+	GLOB.STUI.debug.Add("\[[time_stamp()]]DEBUG: [msg]<br>")
+	GLOB.STUI.processing |= STUI_LOG_DEBUG
 #define WARNING(MSG) warning("[MSG] in [__FILE__] at line [__LINE__] src: [src] usr: [usr].")
 //print a warning message to world.log
 /proc/warning(msg)
 	world.log << "## WARNING: [msg][log_end]"
-	STUI.debug.Add("\[[time_stamp()]]WARNING: [msg]<br>")
-	STUI.processing |= STUI_LOG_DEBUG
+	GLOB.STUI.debug.Add("\[[time_stamp()]]WARNING: [msg]<br>")
+	GLOB.STUI.processing |= STUI_LOG_DEBUG
 //print a testing-mode debug message to world.log
 /proc/testing(msg)
 	world.log << "## TESTING: [msg][log_end]"
-	STUI.debug.Add("\[[time_stamp()]]TESTING: [msg]<br>")
-	STUI.processing |= STUI_LOG_DEBUG
+	GLOB.STUI.debug.Add("\[[time_stamp()]]TESTING: [msg]<br>")
+	GLOB.STUI.processing |= STUI_LOG_DEBUG
 
 /proc/log_admin(text)
 	admin_log.Add(text)
 	if (config.log_admin)
 		diary << "\[[time_stamp()]]ADMIN: [text][log_end]"
-	STUI.admin.Add("\[[time_stamp()]]ADMIN: [text]<br>")
-	STUI.processing |= STUI_LOG_ADMIN
+	GLOB.STUI.admin.Add("\[[time_stamp()]]ADMIN: [text]<br>")
+	GLOB.STUI.processing |= STUI_LOG_ADMIN
 
 /proc/log_asset(text)
 	asset_log.Add(text)
@@ -43,8 +43,8 @@ var/datum/STUI/STUI = new()
 	admin_log.Add(text)
 	if (config.log_admin)
 		diary << "\[[time_stamp()]]ADMIN: [text][log_end]"
-	STUI.staff.Add("\[[time_stamp()]]ADMIN: [text]<br>")
-	STUI.processing |= STUI_LOG_STAFF_CHAT
+	GLOB.STUI.staff.Add("\[[time_stamp()]]ADMIN: [text]<br>")
+	GLOB.STUI.processing |= STUI_LOG_STAFF_CHAT
 
 
 /proc/log_debug(text, diary_only=FALSE)
@@ -54,8 +54,8 @@ var/datum/STUI/STUI = new()
 	if(diary_only)
 		return
 
-	STUI.debug.Add("\[[time_stamp()]]DEBUG: [text]<br>")
-	STUI.processing |= STUI_LOG_DEBUG
+	GLOB.STUI?.debug.Add("\[[time_stamp()]]DEBUG: [text]<br>")
+	GLOB.STUI?.processing |= STUI_LOG_DEBUG
 	for(var/client/C in GLOB.admins)
 		if(C.prefs.toggles_chat & CHAT_DEBUGLOGS)
 			to_chat(C, "DEBUG: [text]")
@@ -64,8 +64,8 @@ var/datum/STUI/STUI = new()
 /proc/log_game(text)
 	if (config.log_game)
 		diary << html_decode("\[[time_stamp()]]GAME: [text][log_end]")
-	STUI.admin.Add("\[[time_stamp()]]GAME: [text]<br>")
-	STUI.processing |= STUI_LOG_ADMIN
+	GLOB.STUI.admin.Add("\[[time_stamp()]]GAME: [text]<br>")
+	GLOB.STUI.processing |= STUI_LOG_ADMIN
 /proc/log_vote(text)
 	if (config.log_vote)
 		diary << html_decode("\[[time_stamp()]]VOTE: [text][log_end]")
@@ -73,18 +73,18 @@ var/datum/STUI/STUI = new()
 /proc/log_access(text)
 	if (config.log_access)
 		diary << html_decode("\[[time_stamp()]]ACCESS: [text][log_end]")
-	STUI.debug.Add("\[[time_stamp()]]ACCESS: [text]<br>")
-	STUI.processing |= STUI_LOG_DEBUG
+	GLOB.STUI.debug.Add("\[[time_stamp()]]ACCESS: [text]<br>")
+	GLOB.STUI.processing |= STUI_LOG_DEBUG
 /proc/log_say(text)
 	if (config.log_say)
 		diary << html_decode("\[[time_stamp()]]SAY: [text][log_end]")
-	STUI.game.Add("\[[time_stamp()]]SAY: [text]<br>")
-	STUI.processing |= STUI_LOG_GAME_CHAT
+	GLOB.STUI.game.Add("\[[time_stamp()]]SAY: [text]<br>")
+	GLOB.STUI.processing |= STUI_LOG_GAME_CHAT
 /proc/log_hivemind(text)
 	if (config.log_hivemind)
 		diary << html_decode("\[[time_stamp()]]HIVEMIND: [text][log_end]")
-	STUI.game.Add("\[[time_stamp()]]HIVEMIND: [text]<br>")
-	STUI.processing |= STUI_LOG_GAME_CHAT
+	GLOB.STUI.game.Add("\[[time_stamp()]]HIVEMIND: [text]<br>")
+	GLOB.STUI.processing |= STUI_LOG_GAME_CHAT
 /proc/log_ooc(text)
 	if (config.log_ooc)
 		diary << html_decode("\[[time_stamp()]]OOC: [text][log_end]")
@@ -92,18 +92,18 @@ var/datum/STUI/STUI = new()
 /proc/log_whisper(text)
 	if (config.log_whisper)
 		diary << html_decode("\[[time_stamp()]]WHISPER: [text][log_end]")
-	STUI.game.Add("\[[time_stamp()]]WHISPER: [text]<br>")
-	STUI.processing |= STUI_LOG_GAME_CHAT
+	GLOB.STUI.game.Add("\[[time_stamp()]]WHISPER: [text]<br>")
+	GLOB.STUI.processing |= STUI_LOG_GAME_CHAT
 /proc/log_emote(text)
 	if (config.log_emote)
 		diary << html_decode("\[[time_stamp()]]EMOTE: [text][log_end]")
-	STUI.game.Add("\[[time_stamp()]]<font color='#999999'>EMOTE: [text]</font><br>")
-	STUI.processing |= STUI_LOG_GAME_CHAT
+	GLOB.STUI.game.Add("\[[time_stamp()]]<font color='#999999'>EMOTE: [text]</font><br>")
+	GLOB.STUI.processing |= STUI_LOG_GAME_CHAT
 /proc/log_attack(text)
 	if (config.log_attack)
 		diary << html_decode("\[[time_stamp()]]ATTACK: [text][log_end]")
-	STUI.attack.Add("\[[time_stamp()]]ATTACK: [text]<br>")
-	STUI.processing |= STUI_LOG_ATTACK
+	GLOB.STUI.attack.Add("\[[time_stamp()]]ATTACK: [text]<br>")
+	GLOB.STUI.processing |= STUI_LOG_ATTACK
 /proc/log_adminsay(text)
 	if (config.log_adminchat)
 		diary << html_decode("\[[time_stamp()]]ADMINSAY: [text][log_end]")
@@ -111,16 +111,16 @@ var/datum/STUI/STUI = new()
 /proc/log_adminwarn(text)
 	if (config.log_adminwarn)
 		diary << html_decode("\[[time_stamp()]]ADMINWARN: [text][log_end]")
-	STUI.admin.Add("\[[time_stamp()]]ADMIN: [text]<br>")
-	STUI.processing |= STUI_LOG_ADMIN
+	GLOB.STUI.admin.Add("\[[time_stamp()]]ADMIN: [text]<br>")
+	GLOB.STUI.processing |= STUI_LOG_ADMIN
 /proc/log_pda(text)
 	if (config.log_pda)
 		diary << html_decode("\[[time_stamp()]]PDA: [text][log_end]")
-	STUI.game.Add("\[[time_stamp()]]<font color='#cd6500'>PDA: [text]</font><br>")
-	STUI.processing |= STUI_LOG_GAME_CHAT
+	GLOB.STUI.game.Add("\[[time_stamp()]]<font color='#cd6500'>PDA: [text]</font><br>")
+	GLOB.STUI.processing |= STUI_LOG_GAME_CHAT
 /proc/log_misc(text)
 	diary << html_decode("\[[time_stamp()]]MISC: [text][log_end]")
-	STUI.debug.Add("\[[time_stamp()]]MISC: [text]<br>")
+	GLOB.STUI?.debug.Add("\[[time_stamp()]]MISC: [text]<br>")
 
 /proc/log_mutator(text)
 	if(!mutator_logs)
@@ -129,12 +129,28 @@ var/datum/STUI/STUI = new()
 
 /proc/log_hiveorder(text)
 	diary << html_decode("\[[time_stamp()]]HIVE ORDER: [text][log_end]")
-	STUI.debug.Add("\[[time_stamp()]]HIVE ORDER: [text]<br>")
+	GLOB.STUI.debug.Add("\[[time_stamp()]]HIVE ORDER: [text]<br>")
 
 /proc/log_announcement(text)
 	diary << html_decode("\[[time_stamp()]]ANNOUNCEMENT: [text][log_end]")
-	STUI.debug.Add("\[[time_stamp()]]ANNOUNCEMENT: [text]<br>")
+	GLOB.STUI.debug.Add("\[[time_stamp()]]ANNOUNCEMENT: [text]<br>")
 
 /proc/log_mhelp(text)
 	diary << html_decode("\[[time_stamp()]]MENTORHELP: [text][log_end]")
-	STUI.admin.Add("\[[time_stamp()]]MENTORHELP: [text]<br>")
+	GLOB.STUI.admin.Add("\[[time_stamp()]]MENTORHELP: [text]<br>")
+
+//wrapper macros for easier grepping
+#define DIRECT_OUTPUT(A, B) A << B
+#define SEND_TEXT(target, text) DIRECT_OUTPUT(target, text)
+#define WRITE_LOG(log, text) rustg_log_write(log, text, "true")
+
+GLOBAL_VAR(config_error_log)
+GLOBAL_PROTECT(config_error_log)
+
+/* Rarely gets called; just here in case the config breaks. */
+/proc/log_config(text)
+	WRITE_LOG(GLOB.config_error_log, text)
+	SEND_TEXT(world.log, text)
+
+/proc/log_admin_private(text)
+	log_admin(text)

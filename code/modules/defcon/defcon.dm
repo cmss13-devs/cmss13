@@ -50,7 +50,7 @@ var/global/datum/controller/defcon/defcon_controller
 		announce_defcon_level()
 
 /datum/controller/defcon/proc/check_defcon_level()
-	var/list/objectives_status = objectives_controller.get_objective_completion_stats()
+	var/list/objectives_status = SSobjectives.get_objective_completion_stats()
 	last_objectives_scored_points = objectives_status["scored_points"]
 	last_objectives_total_points = objectives_status["total_points"]
 	last_objectives_completion_percentage = last_objectives_scored_points / last_objectives_total_points
@@ -106,12 +106,12 @@ var/global/datum/controller/defcon/defcon_controller
 	return TRUE
 
 /datum/controller/defcon/proc/initialize_level_triggers_by_map()
-	// Sometimes map_tag won't be populated 
+	// Sometimes map_tag won't be populated
 	if (!map_tag)
-		return FALSE 
-	
-	// Leaving debug messages here in case this code has bugs. 
-	// Without these, it is -literally- impossible to debug this 
+		return FALSE
+
+	// Leaving debug messages here in case this code has bugs.
+	// Without these, it is -literally- impossible to debug this
 	// as this code can sometimes execute before world initialization.
 	//text2file("DEFCON lists began initialization","data/defcon_log.txt")
 	//text2file("Map tag: [map_tag]", "data/defcon_log.txt")
@@ -121,15 +121,15 @@ var/global/datum/controller/defcon/defcon_controller
 		defcon_level_triggers = list(3300, 2100, 1450, 580, 0.0)
 	else if (map_tag == MAP_BIG_RED)
 		defcon_level_triggers = list(4750, 3500, 2000, 1000, 0.0)
-	else 
-		// Defaults 
-		// Currently just LV 
+	else
+		// Defaults
+		// Currently just LV
 		defcon_level_triggers = list(5500, 4500, 3000, 1000, 0.0)
 	//text2file("Listing level triggers:","data/defcon_log.txt")
 	//for (var/i in defcon_level_triggers)
 		//text2file("Defcon level trigger: [i]","data/defcon_log.txt")
 	lists_initialized = 1
-	return TRUE 
+	return TRUE
 
 //A class for rewarding the next DEFCON level being reached
 /datum/defcon_reward

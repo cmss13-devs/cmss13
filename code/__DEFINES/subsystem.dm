@@ -72,7 +72,9 @@
 #define SS_INIT_DEFCON             9
 #define SS_INIT_LAW                6
 #define SS_INIT_FZ_TRANSITIONS     5
-#define SS_INIT_ATOMS              3
+#define SS_INIT_ATOMS              4
+#define SS_INIT_MACHINES              3
+#define SS_INIT_RADIO				2
 #define SS_INIT_TIMER              1
 #define SS_INIT_UNSPECIFIED        0
 #define SS_INIT_EMERGENCY_SHUTTLE -19
@@ -84,8 +86,8 @@
 #define SS_INIT_DATABASE		  -25
 #define SS_INIT_ENTITYMANAGER	  -26
 #define SS_INIT_PLAYTIME    	  -27
-#define SS_INIT_CORPSESPAWNER      -30
-#define SS_INIT_MAPVIEW            -31
+#define SS_INIT_OBJECTIVES         -31
+#define SS_INIT_MAPVIEW            -32
 
 #define SS_PRIORITY_TIMER          700
 #define SS_PRIORITY_CHAT		   300

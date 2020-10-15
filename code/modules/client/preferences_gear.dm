@@ -1,6 +1,6 @@
 var/global/list/gear_datums = list()
 
-/hook/startup/proc/populate_gear_list()
+/proc/populate_gear_list()
 	for(var/type in typesof(/datum/gear)-/datum/gear)
 		var/datum/gear/G = new type()
 		gear_datums[G.display_name] = G
@@ -41,7 +41,7 @@ var/global/list/gear_datums = list()
 
 /datum/gear/cmbeanie/tan
 	display_name = "USCM Beanie (tan)"
-	path = /obj/item/clothing/head/beanie/tan	
+	path = /obj/item/clothing/head/beanie/tan
 
 /datum/gear/cmberet
 	display_name = "USCM Beret (Green)"
@@ -131,7 +131,7 @@ var/global/list/gear_datums = list()
 	display_name = "Coif"
 	path = /obj/item/clothing/mask/rebreather/scarf
 	cost = 2
-	slot = WEAR_FACE	
+	slot = WEAR_FACE
 
 /datum/gear/cmbalaclava
 	display_name = "USCM Balaclava (Green)"
@@ -149,7 +149,7 @@ var/global/list/gear_datums = list()
 	display_name = "USCM Balaclava (Gray)"
 	path = /obj/item/clothing/mask/rebreather/scarf/gray
 	cost = 2
-	slot = WEAR_FACE	
+	slot = WEAR_FACE
 
 /datum/gear/cmgoggles
 	display_name = "Ballistic Goggles"

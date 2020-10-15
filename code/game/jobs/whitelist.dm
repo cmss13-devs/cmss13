@@ -1,20 +1,11 @@
 #define WHITELISTFILE "data/whitelist.txt"
 
-var/list/whitelist = list()
-
-/hook/startup/proc/loadWhitelist()
-	if(config.usewhitelist)
-		load_whitelist()
-	return 1
-
-/proc/load_whitelist()
-	whitelist = file2list(WHITELISTFILE)
-	if(!whitelist.len)	whitelist = null
+GLOBAL_LIST_FILE_LOAD(whitelist, WHITELISTFILE)
 
 /proc/check_whitelist(mob/M /*, var/rank*/)
-	if(!whitelist)
+	if(!config.usewhitelist || !GLOB.whitelist)
 		return 0
-	return ("[M.ckey]" in whitelist)
+	return ("[M.ckey]" in GLOB.whitelist)
 
 /proc/can_play_special_job(var/client/client, var/job)
 	if(client.admin_holder && (client.admin_holder.rights & R_ADMIN))
@@ -27,19 +18,7 @@ var/list/whitelist = list()
 		return J.can_play_role(client)
 	return TRUE
 
-/var/list/alien_whitelist = list()
-
-/hook/startup/proc/loadAlienWhitelist()
-	if(config.usealienwhitelist)
-		load_alienwhitelist()
-	return 1
-
-/proc/load_alienwhitelist()
-	var/text = file2text("config/alienwhitelist.txt")
-	if (!text)
-		log_misc("Failed to load config/alienwhitelist.txt")
-	else
-		alien_whitelist = splittext(text, "\n")
+GLOBAL_LIST_FILE_LOAD(alien_whitelist, "config/alienwhitelist.txt")
 
 //todo: admin aliens
 /proc/is_alien_whitelisted(mob/M, var/species)
@@ -49,10 +28,10 @@ var/list/whitelist = list()
 		return 1
 //	if(check_rights(R_ADMIN, 0)) //Admins are not automatically considered to be whitelisted anymore. ~N
 //		return 1				//This actually screwed up a bunch of procs, but I only noticed it with the wrong spawn point.
-	if(!alien_whitelist)
+	if(!config.usealienwhitelist || !GLOB.alien_whitelist)
 		return 0
 	if(M && species)
-		for (var/s in alien_whitelist)
+		for (var/s in GLOB.alien_whitelist)
 			if(findtext(lowertext(s),"[lowertext(M.key)] - [species]"))
 				return 1
 			//if(findtext(lowertext(s),"[lowertext(M.key)] - [species] Elder")) //Unnecessary.

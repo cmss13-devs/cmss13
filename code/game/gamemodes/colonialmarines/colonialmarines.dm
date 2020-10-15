@@ -132,6 +132,8 @@
 	addtimer(CALLBACK(src, .proc/ares_online), SECONDS_5)
 	addtimer(CALLBACK(src, .proc/map_announcement), SECONDS_20)
 
+	return ..()
+
 #define MONKEYS_TO_MARINES_RATIO 1/20
 
 /datum/game_mode/colonialmarines/proc/spawn_smallhosts()
@@ -145,28 +147,28 @@
 			qdel(L)
 
 	switch(map_tag)
-		if(MAP_LV_624) 
+		if(MAP_LV_624)
 			monkey_types = list(/mob/living/carbon/human/farwa, /mob/living/carbon/human/monkey, /mob/living/carbon/human/neaera, /mob/living/carbon/human/stok)
-		if(MAP_ICE_COLONY) 
+		if(MAP_ICE_COLONY)
 			monkey_types = list(/mob/living/carbon/human/yiren)
-		if(MAP_BIG_RED) 
+		if(MAP_BIG_RED)
 			monkey_types = list(/mob/living/carbon/human/neaera)
-		if(MAP_KUTJEVO) 
+		if(MAP_KUTJEVO)
 			monkey_types = list(/mob/living/carbon/human/neaera, /mob/living/carbon/human/stok)
-		if(MAP_PRISON_STATION) 
+		if(MAP_PRISON_STATION)
 			monkey_types = list(/mob/living/carbon/human/monkey)
-		if(MAP_DESERT_DAM) 
+		if(MAP_DESERT_DAM)
 			monkey_types = list(/mob/living/carbon/human/stok)
-		if(MAP_SOROKYNE_STRATA) 
+		if(MAP_SOROKYNE_STRATA)
 			monkey_types = list(/mob/living/carbon/human/yiren)
-		if(MAP_CORSAT) 
+		if(MAP_CORSAT)
 			monkey_types = list(/mob/living/carbon/human/yiren, /mob/living/carbon/human/farwa, /mob/living/carbon/human/monkey, /mob/living/carbon/human/neaera, /mob/living/carbon/human/stok)
-		else 
+		else
 			monkey_types = list(/mob/living/carbon/human/monkey) //make sure we always have a monkey type
 
 	if(!length(monkey_types))
 		return
-	
+
 	var/amount_to_spawn = round(marines_assigned * MONKEYS_TO_MARINES_RATIO)
 
 	for(var/i in 0 to min(amount_to_spawn, length(monkey_spawns)))
@@ -208,7 +210,7 @@
 //This is processed each tick, but check_win is only checked 5 ticks, so we don't go crazy with scanning for mobs.
 /datum/game_mode/colonialmarines/process()
 	. = ..()
-	if(--round_started > 0) 
+	if(--round_started > 0)
 		return FALSE //Initial countdown, just to be safe, so that everyone has a chance to spawn before we check anything.
 
 	if(!round_finished)
@@ -231,7 +233,7 @@
 				disperse_fog() //Some RNG thrown in.
 			if(!(round_status_flags & ROUNDSTATUS_PODDOORS_OPEN) && (map_tag == MAP_CORSAT || map_tag == MAP_PRISON_STATION) && world.time >= (PODLOCKS_OPEN_WAIT + round_time_lobby))
 				round_status_flags |= ROUNDSTATUS_PODDOORS_OPEN
-				
+
 				var/input = "Security lockdown will be lifting in 30 seconds per automated lockdown protocol."
 				var/name = "Automated Security Authority Announcement"
 				marine_announcement(input, name, 'sound/AI/commandreport.ogg')
@@ -316,19 +318,19 @@
 	var/musical_track
 	var/end_icon = "draw"
 	switch(round_finished)
-		if(MODE_INFESTATION_X_MAJOR) 
+		if(MODE_INFESTATION_X_MAJOR)
 			musical_track = pick('sound/theme/sad_loss1.ogg','sound/theme/sad_loss2.ogg')
 			end_icon = "xeno_major"
-		if(MODE_INFESTATION_M_MAJOR) 
+		if(MODE_INFESTATION_M_MAJOR)
 			musical_track = pick('sound/theme/winning_triumph1.ogg','sound/theme/winning_triumph2.ogg')
 			end_icon = "marine_major"
-		if(MODE_INFESTATION_X_MINOR) 
+		if(MODE_INFESTATION_X_MINOR)
 			musical_track = pick('sound/theme/neutral_melancholy1.ogg','sound/theme/neutral_melancholy2.ogg')
 			end_icon = "xeno_minor"
-		if(MODE_INFESTATION_M_MINOR) 
+		if(MODE_INFESTATION_M_MINOR)
 			musical_track = pick('sound/theme/neutral_hopeful1.ogg','sound/theme/neutral_hopeful2.ogg')
 			end_icon = "marine_minor"
-		if(MODE_INFESTATION_DRAW_DEATH) 
+		if(MODE_INFESTATION_DRAW_DEATH)
 			end_icon = "draw"
 			musical_track = pick('sound/theme/nuclear_detonation1.ogg','sound/theme/nuclear_detonation2.ogg')
 	var/sound/S = sound(musical_track, channel = SOUND_CHANNEL_LOBBY)

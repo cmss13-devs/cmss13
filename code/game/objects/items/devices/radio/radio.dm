@@ -42,9 +42,9 @@
 	var/list/datum/radio_frequency/secure_radio_connections = new
 
 	proc/set_frequency(new_frequency)
-		radio_controller.remove_object(src, frequency)
+		SSradio.remove_object(src, frequency)
 		frequency = new_frequency
-		radio_connection = radio_controller.add_object(src, frequency, RADIO_CHAT)
+		radio_connection = SSradio.add_object(src, frequency, RADIO_CHAT)
 
 /obj/item/device/radio/Destroy()
 	if(radio_connection)
@@ -62,8 +62,8 @@
 
 
 /obj/item/device/radio/proc/remove_all_freq()
-	for(var/X in radio_controller.frequencies)
-		var/datum/radio_frequency/F = radio_controller.frequencies[X]
+	for(var/X in SSradio.frequencies)
+		var/datum/radio_frequency/F = SSradio.frequencies[X]
 		if(F)
 			F.remove_listener(src)
 
@@ -74,7 +74,7 @@
 	set_frequency(frequency)
 
 	for (var/ch_name in channels)
-		secure_radio_connections[ch_name] = radio_controller.add_object(src, radiochannels[ch_name],  RADIO_CHAT)
+		secure_radio_connections[ch_name] = SSradio.add_object(src, radiochannels[ch_name],  RADIO_CHAT)
 
 
 /obj/item/device/radio/attack_self(mob/user as mob)
@@ -314,11 +314,10 @@
 
 	if(subspace_transmission)
 		if(!src.ignore_z)
-			if(radio_controller)
-				target_zs = radio_controller.get_available_tcomm_zs()
-				if(!(transmit_z in target_zs))
-					//We don't have a connection ourselves!
-					return null
+			target_zs = SSradio.get_available_tcomm_zs()
+			if(!(transmit_z in target_zs))
+				//We don't have a connection ourselves!
+				return null
 	return target_zs
 
 /obj/item/device/radio/hear_talk(mob/M as mob, msg, var/verb = "says", var/datum/language/speaking = null)
@@ -454,7 +453,7 @@
 
 
 			for(var/ch_name in channels)
-				radio_controller.remove_object(src, radiochannels[ch_name])
+				SSradio.remove_object(src, radiochannels[ch_name])
 				secure_radio_connections[ch_name] = null
 
 
@@ -507,15 +506,7 @@
 
 
 	for (var/ch_name in src.channels)
-		if(!radio_controller)
-			sleep(30) // Waiting for the radio_controller to be created.
-		if(!radio_controller)
-			src.name = "broken radio"
-			return
-
-		secure_radio_connections[ch_name] = radio_controller.add_object(src, radiochannels[ch_name],  RADIO_CHAT)
-
-	return
+		secure_radio_connections[ch_name] = SSradio.add_object(src, radiochannels[ch_name],  RADIO_CHAT)
 
 /obj/item/device/radio/borg/Topic(href, href_list)
 	if(usr.stat || !on)
@@ -566,15 +557,12 @@
 
 
 /obj/item/device/radio/proc/config(op)
-	if(radio_controller)
-		for (var/ch_name in channels)
-			radio_controller.remove_object(src, radiochannels[ch_name])
+	for (var/ch_name in channels)
+		SSradio.remove_object(src, radiochannels[ch_name])
 	secure_radio_connections = new
 	channels = op
-	if(radio_controller)
-		for (var/ch_name in op)
-			secure_radio_connections[ch_name] = radio_controller.add_object(src, radiochannels[ch_name],  RADIO_CHAT)
-	return
+	for (var/ch_name in op)
+		secure_radio_connections[ch_name] = SSradio.add_object(src, radiochannels[ch_name],  RADIO_CHAT)
 
 /obj/item/device/radio/off
 	listening = 0

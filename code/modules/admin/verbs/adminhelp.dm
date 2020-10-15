@@ -115,8 +115,8 @@ var/global/list/ahelp_msgs = list()
 
 	if(!mob)	return	//this doesn't happen
 
-	STUI.staff.Add("\[[time_stamp()]] <font color=red>[key_name(src)] AHELP: </font><font color='#006400'>[get_options_bar(mob, 4, 1, 1, 0)]:</b> [msg]</font><br>")
-	STUI.processing |= STUI_LOG_STAFF_CHAT
+	GLOB.STUI.staff.Add("\[[time_stamp()]] <font color=red>[key_name(src)] AHELP: </font><font color='#006400'>[get_options_bar(mob, 4, 1, 1, 0)]:</b> [msg]</font><br>")
+	GLOB.STUI.processing |= STUI_LOG_STAFF_CHAT
 	msg = "<font color='#009900'><b>[selected_upper]: [get_options_bar(mob, 2, 1, 1, msg=original_msg)]:</b></font> <br>&emsp;<font color='#DA6200'><b>[msg]</font></b><br>"
 
 	var/list/list/current_staff = get_staff_by_category()
@@ -131,7 +131,7 @@ var/global/list/ahelp_msgs = list()
 
 	//show it to the person adminhelping too
 	to_chat(src, "<br><font color='#009900'><b>PM to Staff ([selected_type]):</font><br>&emsp;<font color='#DA6200'>[original_msg]</b></font><br>")
-	
+
 	// Adminhelp cooldown
 	verbs -= /client/verb/adminhelp
 	spawn(2 MINUTES)
@@ -165,7 +165,7 @@ var/global/list/ahelp_msgs = list()
 	staff["afk"] = afk_staff
 
 	return staff
-	
+
 
 /proc/get_options_bar(whom, detail = 2, name = 0, link = 1, highlight_special = 1, msg = "")
 	if(!whom)

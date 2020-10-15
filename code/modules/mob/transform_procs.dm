@@ -153,8 +153,6 @@
 		if(O.mmi)
 			O.mmi.transfer_identity(src)
 
-	callHook("borgify", list(O))
-
 	O.Namepick()
 
 	qdel(src)

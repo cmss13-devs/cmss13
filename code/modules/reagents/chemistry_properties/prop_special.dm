@@ -62,8 +62,8 @@
 	ticker.mode.get_specific_call("Weston-Yamada PMC (Chemical Investigation Squad)", TRUE, FALSE, holder.name)
 	chemical_data.update_credits(10)
 	message_staff(SPAN_NOTICE("The research department has discovered DNA_Disintegrating in [holder.name] adding [OBJECTIVE_ABSOLUTE_VALUE * 2] bonus DEFCON points."), 1)
-	objectives_controller.add_admin_points(OBJECTIVE_ABSOLUTE_VALUE * 2)
-	defcon_controller.add_rewards_points(2);	
+	SSobjectives.add_admin_points(OBJECTIVE_ABSOLUTE_VALUE * 2)
+	defcon_controller.add_rewards_points(2);
 	ai_announcement("NOTICE: $20000 received from USCSS Royce and sent to DEFCON assets. Shuttle inbound.")
 
 /datum/chem_property/special/ciphering
@@ -95,7 +95,7 @@
 	var/obj/item/xeno_egg/E = A
 	if(!istype(E))
 		return
-	
+
 	if(amount < 10)
 		return
 
@@ -103,7 +103,7 @@
 		return
 
 	E.visible_message(SPAN_DANGER("\the [E] rapidly mutates"))
-	
+
 	playsound(E, 'sound/effects/attackblob.ogg', 25, TRUE)
 
 	E.hivenumber = level

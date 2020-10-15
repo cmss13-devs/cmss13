@@ -283,7 +283,6 @@
 /mob/living/carbon/human/proc/handle_revive()
 	track_revive(job)
 	living_mob_list.Add(src)
-	callHook("clone", list(src))
 	if(!isSynth(src) && !isYautja(src))
 		living_human_list.Add(src)
 	dead_mob_list.Remove(src)

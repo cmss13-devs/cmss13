@@ -25,10 +25,9 @@
 /datum/cm_objective/document/complete()
 	if(..())
 		if(important)
-			if(objectives_controller)
-				var/datum/cm_objective/O = new /datum/cm_objective/retrieve_item/almayer(document)
-				O.priority = priority //retrieving item gets you double the points for whatever the item is worth, rather than EXTREME value each time
-				objectives_controller.add_objective(O)
+			var/datum/cm_objective/O = new /datum/cm_objective/retrieve_item/almayer(document)
+			O.priority = priority //retrieving item gets you double the points for whatever the item is worth, rather than EXTREME value each time
+			SSobjectives.add_objective(O)
 
 /datum/cm_objective/document/get_clue()
 	return SPAN_DANGER("[document.name] in <u>[initial_area]</u>")
@@ -120,7 +119,7 @@
 	if(!objective.is_active() && !objective.is_complete())
 		display_fail_message(user)
 		return FALSE
-	
+
 	read = 1
 	objective.check_completion()
 	display_read_message(user)

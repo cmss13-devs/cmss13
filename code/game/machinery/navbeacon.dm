@@ -20,18 +20,16 @@
 
 	req_access = list(ACCESS_CIVILIAN_ENGINEERING)
 
-	New()
-		..()
+/obj/structure/machinery/navbeacon/Initialize(mapload, ...)
+	. = ..()
+	set_codes()
 
-		set_codes()
+	var/turf/T = loc
+	hide(T.intact_tile)
 
-		var/turf/T = loc
-		hide(T.intact_tile)
+	SSradio.add_object(src, freq, RADIO_NAVBEACONS)
 
-		spawn(5)	// must wait for map loading to finish
-			if(radio_controller)
-				radio_controller.add_object(src, freq, RADIO_NAVBEACONS)
-
+/obj/structure/machinery/navbeacon
 	// set the transponder codes assoc list from codes_txt
 	proc/set_codes()
 		if(!codes_txt)
@@ -83,7 +81,7 @@
 
 	proc/post_signal()
 
-		var/datum/radio_frequency/frequency = radio_controller.return_frequency(freq)
+		var/datum/radio_frequency/frequency = SSradio.return_frequency(freq)
 
 		if(!frequency) return
 

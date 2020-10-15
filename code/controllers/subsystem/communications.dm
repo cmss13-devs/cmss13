@@ -194,37 +194,21 @@ var/const/RADIO_AIRLOCK = "radio_airlock"
 var/const/RADIO_MULEBOT = "radio_mulebot"
 var/const/RADIO_MAGNETS = "radio_magnet"
 
-var/global/datum/controller/radio/radio_controller = new()
-
-/hook/startup/proc/createRadioController()
-	radio_controller = new /datum/controller/radio()
-	return 1
-
 //callback used by objects to react to incoming radio signals
 /obj/proc/receive_signal(datum/signal/signal, receive_method, receive_param)
 	return null
 
-//The global radio controller
-/datum/controller/radio
+SUBSYSTEM_DEF(radio)
+	name = "radio"
+	flags = SS_NO_FIRE
+	init_order = SS_INIT_RADIO
 	var/list/datum/radio_frequency/frequencies = list()
 
 	//Keeping a list of tcomm machines to see which Z level has comms
 	var/list/tcomm_machines_ground = list()
 	var/list/tcomm_machines_almayer = list()
 
-/datum/controller/radio/New()
-	. = ..()
-	spawn(10)
-		//Need to run this after New
-		//Otherwise tcomm machines won't be able to add themselves...
-		connect_tcomms()
-
-/datum/controller/radio/proc/connect_tcomms()
-	for(var/obj/structure/machinery/telecomms/i in telecomms_list)
-		//Calling the proc on the machine to add itself if its conditions are met
-		i.add_tcomm_machine()
-
-/datum/controller/radio/proc/add_object(obj/device as obj, var/new_frequency as num, var/filter = null as text|null)
+/datum/controller/subsystem/radio/proc/add_object(obj/device as obj, var/new_frequency as num, var/filter = null as text|null)
 	var/f_text = num2text(new_frequency)
 	var/datum/radio_frequency/frequency = frequencies[f_text]
 
@@ -236,7 +220,7 @@ var/global/datum/controller/radio/radio_controller = new()
 	frequency.add_listener(device, filter)
 	return frequency
 
-/datum/controller/radio/proc/remove_object(obj/device, old_frequency)
+/datum/controller/subsystem/radio/proc/remove_object(obj/device, old_frequency)
 	var/f_text = num2text(old_frequency)
 	var/datum/radio_frequency/frequency = frequencies[f_text]
 
@@ -249,7 +233,7 @@ var/global/datum/controller/radio/radio_controller = new()
 
 	return 1
 
-/datum/controller/radio/proc/return_frequency(var/new_frequency as num)
+/datum/controller/subsystem/radio/proc/return_frequency(var/new_frequency as num)
 	var/f_text = num2text(new_frequency)
 	var/datum/radio_frequency/frequency = frequencies[f_text]
 
@@ -260,7 +244,7 @@ var/global/datum/controller/radio/radio_controller = new()
 
 	return frequency
 
-/datum/controller/radio/proc/get_available_tcomm_zs()
+/datum/controller/subsystem/radio/proc/get_available_tcomm_zs()
 	//Returns lists of Z levels that have comms
 	var/list/target_zs = list(ADMIN_Z_LEVEL) //Admin level always has comms
 	if(tcomm_machines_ground.len > 0)
@@ -270,13 +254,13 @@ var/global/datum/controller/radio/radio_controller = new()
 		target_zs += LOW_ORBIT_Z_LEVEL
 	return target_zs
 
-/datum/controller/radio/proc/add_tcomm_machine(var/obj/machine)
+/datum/controller/subsystem/radio/proc/add_tcomm_machine(var/obj/machine)
 	if(machine.z == SURFACE_Z_LEVEL)
 		addToListNoDupe(tcomm_machines_ground, machine)
 	if(machine.z == MAIN_SHIP_Z_LEVEL)
 		addToListNoDupe(tcomm_machines_almayer, machine)
 
-/datum/controller/radio/proc/remove_tcomm_machine(var/obj/machine)
+/datum/controller/subsystem/radio/proc/remove_tcomm_machine(var/obj/machine)
 	tcomm_machines_ground -= machine
 	tcomm_machines_almayer -= machine
 
@@ -310,7 +294,7 @@ var/global/datum/controller/radio/radio_controller = new()
 
 		if(!OBJECTS_CAN_REACH(device, source))
 			continue
-		
+
 		if(range)
 			var/turf/end_point = get_turf(device)
 			if(!end_point)

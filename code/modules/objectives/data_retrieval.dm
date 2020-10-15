@@ -29,7 +29,7 @@
 
 /datum/cm_objective/retrieve_data/proc/data_is_avaliable()
 	if(objective_flags & OBJ_REQUIRES_COMMS)
-		if(objectives_controller && objectives_controller.comms && objectives_controller.comms.is_complete())
+		if(SSobjectives.comms?.is_complete())
 			return TRUE
 		else
 			return FALSE
@@ -201,7 +201,7 @@
 		to_chat(user, SPAN_WARNING("This terminal has no power!"))
 		return FALSE
 	if(objective.objective_flags & OBJ_REQUIRES_COMMS)
-		if(!objectives_controller || !objectives_controller.comms || !objectives_controller.comms.is_complete())
+		if(!SSobjectives.comms?.is_complete())
 			to_chat(user, SPAN_WARNING("The terminal flashes a network connection error."))
 			return FALSE
 	if(objective.is_complete())
@@ -219,7 +219,7 @@
 		to_chat(user, SPAN_WARNING("This terminal has no power!"))
 		return FALSE
 	if(objective.objective_flags & OBJ_REQUIRES_COMMS)
-		if(!objectives_controller || !objectives_controller.comms || !objectives_controller.comms.is_complete())
+		if(!SSobjectives.comms?.is_complete())
 			to_chat(user, SPAN_WARNING("The terminal flashes a network connection error."))
 			return FALSE
 	if(uploading)

@@ -1,8 +1,7 @@
-
-var/global/datum/controller/objectives_controller/objectives_controller
-
-/datum/controller/objectives_controller
-	name = "Objectives controller"
+SUBSYSTEM_DEF(objectives)
+	name = "objectives"
+	init_order = SS_INIT_OBJECTIVES
+	flags = SS_NO_FIRE
 	var/list/objectives = list()
 	var/list/active_objectives = list()
 	var/list/inactive_objectives = list()
@@ -17,7 +16,31 @@ var/global/datum/controller/objectives_controller/objectives_controller
 
 	var/nextDChatAnnouncement = MINUTES_5 //5 minutes in
 
-/datum/controller/objectives_controller/proc/generate_objectives()
+	var/corpses = 15
+
+/datum/controller/subsystem/objectives/Initialize(start_timeofday)
+	. = ..()
+	generate_objectives()
+	clear_objective_landmarks()
+	connect_objectives()
+	// Setup some global objectives
+	power = new /datum/cm_objective/establish_power
+	comms = new /datum/cm_objective/communications
+	marines = new /datum/cm_objective/recover_corpses/marines
+	xenos = new /datum/cm_objective/recover_corpses/xenos
+	contain = new /datum/cm_objective/contain
+	chems = new /datum/cm_objective/analyze_chems
+	//objectives_controller.add_objective(new /datum/cm_objective/minimise_losses/squad_marines)
+	add_objective(new /datum/cm_objective/recover_corpses/colonists)
+	active_objectives += power
+	active_objectives += comms
+
+	generate_corpses(corpses)
+
+	RegisterSignal(SSdcs, COMSIG_GLOB_MODE_PRESETUP, .proc/pre_round_start)
+	RegisterSignal(SSdcs, COMSIG_GLOB_MODE_POSTSETUP, .proc/post_round_start)
+
+/datum/controller/subsystem/objectives/proc/generate_objectives()
 	if(objective_spawn_close.len == 0 || objective_spawn_medium.len == 0 || objective_spawn_far.len == 0 || objective_spawn_science.len == 0)
 		//The map doesn't have the correct landmarks, so we generate nothing, hoping the map has normal objectives
 		return
@@ -80,7 +103,7 @@ var/global/datum/controller/objectives_controller/objectives_controller
 		var/dest = pick(15;"close", 30;"medium", 5;"far", 50;"science")
 		spawn_objective_at_landmark(dest, /obj/item/storage/fancy/vials/random)
 
-/datum/controller/objectives_controller/proc/generate_corpses(var/corpses)
+/datum/controller/subsystem/objectives/proc/generate_corpses(var/corpses)
 	if(!objective_spawn_corpse)
 		return
 	if(corpses > LAZYLEN(objective_spawn_corpse))
@@ -94,15 +117,15 @@ var/global/datum/controller/objectives_controller/objectives_controller
 		var/mob/living/carbon/human/M = new /mob/living/carbon/human(spawnpoint.loc)
 		M.create_hud() //Need to generate hud before we can equip anything apparently...
 		arm_equipment(M, "Corpse - [spawnpoint.name]", TRUE, FALSE)
-		
+
 		LAZYREMOVE(objective_spawn_corpse, spawnpoint)
 		qdel(spawnpoint)
-	
+
 	for(var/obj/effect/landmark/corpsespawner/C in objective_spawn_corpse)
 		qdel(C)
 	objective_spawn_corpse = null
 
-/datum/controller/objectives_controller/proc/clear_objective_landmarks()
+/datum/controller/subsystem/objectives/proc/clear_objective_landmarks()
 	//Don't need them anymore, so we remove them
 	objective_spawn_close = null
 	objective_spawn_medium = null
@@ -113,7 +136,7 @@ var/global/datum/controller/objectives_controller/objectives_controller
 	objective_spawn_far_documents = null
 	objective_spawn_science_documents = null
 
-/datum/controller/objectives_controller/proc/spawn_objective_at_landmark(var/dest, var/obj/item/it)
+/datum/controller/subsystem/objectives/proc/spawn_objective_at_landmark(var/dest, var/obj/item/it)
 	var/picked_locaton
 	switch(dest)
 		if("close")
@@ -165,7 +188,7 @@ var/global/datum/controller/objectives_controller/objectives_controller
 		new it(picked_locaton)
 
 
-/datum/controller/objectives_controller/proc/connect_objectives()
+/datum/controller/subsystem/objectives/proc/connect_objectives()
 	for(var/datum/cm_objective/C in cm_objectives)
 		if(!(C in objectives))
 			objectives += C
@@ -177,21 +200,15 @@ var/global/datum/controller/objectives_controller/objectives_controller
 	for(var/datum/cm_objective/N in non_processing_objectives)
 		N.activate()
 
-/hook/roundstart/proc/setup_objectives()
-	if(objectives_controller)
-		objectives_controller.pre_round_start()
-		objectives_controller.post_round_start()
-	return 1
-
-/datum/controller/objectives_controller/proc/pre_round_start()
+/datum/controller/subsystem/objectives/proc/pre_round_start()
 	for(var/datum/cm_objective/O in objectives)
 		O.pre_round_start()
 
-/datum/controller/objectives_controller/proc/post_round_start()
+/datum/controller/subsystem/objectives/proc/post_round_start()
 	for(var/datum/cm_objective/O in objectives)
 		O.post_round_start()
 
-/datum/controller/objectives_controller/proc/get_objectives_progress()
+/datum/controller/subsystem/objectives/proc/get_objectives_progress()
 	var/point_total = 0
 	var/complete = 0
 
@@ -231,7 +248,7 @@ var/global/datum/controller/objectives_controller/objectives_controller
 
 	return dat
 
-/datum/controller/objectives_controller/proc/setup_tree()
+/datum/controller/subsystem/objectives/proc/setup_tree()
 	//Sets up the objective interdependance tree
 	//Every objective that is not a dead end enables an objective of a higher tier
 	//Every objective that needs prerequisites gets them from objectives of lower tier
@@ -365,7 +382,7 @@ var/global/datum/controller/objectives_controller/objectives_controller
 			A.required_objectives += req
 			req.enables_objectives += A
 
-/datum/controller/objectives_controller/proc/add_objective(var/datum/cm_objective/O)
+/datum/controller/subsystem/objectives/proc/add_objective(var/datum/cm_objective/O)
 	if(!(O in objectives))
 		objectives += O
 	if((O.objective_flags & OBJ_PROCESS_ON_DEMAND) && !(O in non_processing_objectives))
@@ -374,31 +391,13 @@ var/global/datum/controller/objectives_controller/objectives_controller
 		inactive_objectives += O
 		O.activate()
 
-/datum/controller/objectives_controller/proc/remove_objective(var/datum/cm_objective/O)
+/datum/controller/subsystem/objectives/proc/remove_objective(var/datum/cm_objective/O)
 	objectives -= O
 	non_processing_objectives -= O
 	inactive_objectives -= O
 	active_objectives -= O
 
-/hook/startup/proc/create_objectives_controller()
-	objectives_controller = new /datum/controller/objectives_controller
-	objectives_controller.generate_objectives()
-	objectives_controller.clear_objective_landmarks()
-	objectives_controller.connect_objectives()
-	// Setup some global objectives
-	objectives_controller.power = new /datum/cm_objective/establish_power
-	objectives_controller.comms = new /datum/cm_objective/communications
-	objectives_controller.marines = new /datum/cm_objective/recover_corpses/marines
-	objectives_controller.xenos = new /datum/cm_objective/recover_corpses/xenos
-	objectives_controller.contain = new /datum/cm_objective/contain
-	objectives_controller.chems = new /datum/cm_objective/analyze_chems
-	//objectives_controller.add_objective(new /datum/cm_objective/minimise_losses/squad_marines)
-	objectives_controller.add_objective(new /datum/cm_objective/recover_corpses/colonists)
-	objectives_controller.active_objectives += objectives_controller.power
-	objectives_controller.active_objectives += objectives_controller.comms
-	return 1
-
-/datum/controller/objectives_controller/proc/get_total_points()
+/datum/controller/subsystem/objectives/proc/get_total_points()
 	var/total_points = 0
 
 	for(var/datum/cm_objective/L in objectives)
@@ -406,7 +405,7 @@ var/global/datum/controller/objectives_controller/objectives_controller
 
 	return total_points
 
-/datum/controller/objectives_controller/proc/get_scored_points()
+/datum/controller/subsystem/objectives/proc/get_scored_points()
 	var/scored_points = 0 + bonus_admin_points//bonus points only apply to scored points, not to total, to make admin lives easier
 
 	for(var/datum/cm_objective/L in objectives)
@@ -414,7 +413,7 @@ var/global/datum/controller/objectives_controller/objectives_controller
 
 	return scored_points
 
-/datum/controller/objectives_controller/proc/get_objective_completion_stats()
+/datum/controller/subsystem/objectives/proc/get_objective_completion_stats()
 	var/total_points = get_total_points()
 	var/scored_points = get_scored_points()
 
@@ -435,6 +434,6 @@ var/global/datum/controller/objectives_controller/objectives_controller
 
 	return answer
 
-/datum/controller/objectives_controller/proc/add_admin_points(var/amount)
+/datum/controller/subsystem/objectives/proc/add_admin_points(var/amount)
 	bonus_admin_points += amount
 	defcon_controller.check_defcon_level()

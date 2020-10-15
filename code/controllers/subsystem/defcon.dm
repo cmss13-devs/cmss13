@@ -17,8 +17,8 @@ SUBSYSTEM_DEF(defcon)
 /datum/controller/subsystem/defcon/fire(resumed = FALSE)
 	if(!resumed)
 		defcon_controller.check_defcon_level()
-		current_inactive_run = objectives_controller.inactive_objectives.Copy()
-		current_active_run = objectives_controller.active_objectives.Copy()
+		current_inactive_run = SSobjectives.inactive_objectives.Copy()
+		current_active_run = SSobjectives.active_objectives.Copy()
 
 	while(length(current_inactive_run))
 		var/datum/cm_objective/O = current_inactive_run[length(current_inactive_run)]

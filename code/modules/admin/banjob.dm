@@ -80,7 +80,7 @@ var/jobban_keylist[0]		//to store the keys & ranks
 	jobban_keylist[rank][ckey] = "Reason Unspecified"
 
 //returns a reason if M is banned from rank, returns 0 otherwise
-/proc/jobban_isbanned(mob/M, rank, var/datum/entity/player/P = null)	
+/proc/jobban_isbanned(mob/M, rank, var/datum/entity/player/P = null)
 	if(!rank)
 		return "Non-existant job"
 	rank = ckey(rank)
@@ -90,7 +90,7 @@ var/jobban_keylist[0]		//to store the keys & ranks
 			return "Not yet loaded"
 		var/datum/entity/player_job_ban/PJB = P.job_bans[rank]
 		return PJB ? PJB.text : null
-	if(M)	
+	if(M)
 		if(!M.client || !M.client.player_data || !M.client.player_data.jobbans_loaded)
 			return "Not yet loaded"
 		if(guest_jobbans(rank))
@@ -100,10 +100,6 @@ var/jobban_keylist[0]		//to store the keys & ranks
 				return "Whitelisted Job"
 		var/datum/entity/player_job_ban/PJB = M.client.player_data.job_bans[rank]
 		return PJB ? PJB.text : null
-
-/hook/startup/proc/loadJobBans()
-	jobban_loadbanfile()
-	return 1
 
 /proc/jobban_loadbanfile()
 	var/savefile/S=new("data/job_new.ban")

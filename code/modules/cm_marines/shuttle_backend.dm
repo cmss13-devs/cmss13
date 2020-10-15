@@ -71,8 +71,8 @@ TODO: Create /datum/shuttle/ferry/marine/elevator and depreciate this
 /*
 
 DOCUMENTATION ON HOW TO ADD A NEW SHUTTLE: Fourkhan, 6/7/19
- 
- - Step one is to map the physical shuttle somewhere on the map. 
+
+ - Step one is to map the physical shuttle somewhere on the map.
 
  - Step two is to add the shuttle datum to shuttle_controller.dm
 	- the shuttle_tag var is the primary identifier of the shuttle, we'll see this again later on
@@ -82,22 +82,22 @@ DOCUMENTATION ON HOW TO ADD A NEW SHUTTLE: Fourkhan, 6/7/19
 	- follow the examaples already here as a guideline and this should be fairly straightforward.
 	 - keep in mind this is will be retrieved with info_tag on the shuttle datum so those need to EXACTLY match.
 
- - Step four: decide which subtype of landmark you need you need the shuttle to be placed into, or 
-              define a new one to suit your needs. Either way, the landmarks need to properly register 
+ - Step four: decide which subtype of landmark you need you need the shuttle to be placed into, or
+              define a new one to suit your needs. Either way, the landmarks need to properly register
 			  (at ABSOLUTE MINIMUM) turfs in locs_move, locs_dock, and locs_land which map to the starting,
 			  transit, and end locations of the shuttle respectively.
 
- - Step five: map the landmarks onto the map. These need to have the EXACT same name and be translateable 
+ - Step five: map the landmarks onto the map. These need to have the EXACT same name and be translateable
               somehow to the master shuttle tag, the macros further down in this file are a good example
 			  for the most part. Convention is to name the landmarks 1, 2, 3, etc. as necessary.
-			  
- - Step six: add a shuttle console, this is code-by-copypaste for the most part. 
+
+ - Step six: add a shuttle console, this is code-by-copypaste for the most part.
 
 */
 
 var/global/list/s_info = null
 
-/hook/startup/proc/loadShuttleInfoDatums()
+/proc/loadShuttleInfoDatums()
 	s_info = list()
 
 	//This is how we switch from using those damn areas into using relative positions
@@ -460,7 +460,7 @@ qdel(src)
 
 // Stripped-down variant of the dropship effects. Here, we don't need crashes
 // or evacuation functionality
-// These are for use by GROUND shuttle analogs. 
+// These are for use by GROUND shuttle analogs.
 // Any ground transport should register a datum in the non-backend
 // shuttles code and then place these landmarks with a unique name to achieve functionality.
 /obj/effect/landmark/shuttle_loc/marine_src/ground/link_loc()
@@ -471,7 +471,7 @@ qdel(src)
 
 /obj/effect/landmark/shuttle_loc/marine_trg/ground/link_loc()
 	GROUND_LINK_LOCATIONS("Transport", S.locs_land)
-	
+
 
 #undef GROUND_LINK_LOCATIONS
 
@@ -551,7 +551,7 @@ qdel(src)
 		C = source[T]
 		var/turf/target = locate(reference.x + C.x_pos, reference.y + C.y_pos, reference.z)
 		landing_area = target.loc
-		if(istype(landing_area, /area/shuttle) && landing_area.base_muffle == 0)	
+		if(istype(landing_area, /area/shuttle) && landing_area.base_muffle == 0)
 			landing_area.base_muffle = shuttle.ambience_muffle
 
 		// Delete objects and gib living things in the destination
@@ -564,7 +564,7 @@ qdel(src)
 				var/mob/living/L = A
 				L.last_damage_mob = null
 				L.gib()
-		
+
 		target = target.ChangeTurf(/turf/open/gm/empty)
 
 		targets.Add(T)
@@ -592,7 +592,7 @@ qdel(src)
 
 			if (isobj(A))
 				A.loc = target
-				
+
 			if (ismob(A))
 				A.loc = target
 				if(iscarbon(A))

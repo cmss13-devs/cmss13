@@ -157,7 +157,7 @@ var/waiting_for_drop_votes = 0
 				if(player.client)
 					player.mind = new(player.key)
 					player.mind_initialize()
-	return TRUE
+	return ..()
 
 /datum/game_mode/huntergames/post_setup()
 	contestants = list()
@@ -179,6 +179,8 @@ var/waiting_for_drop_votes = 0
 
 	spawn(1000)
 		loop_package()
+
+	return ..()
 
 /datum/game_mode/huntergames/proc/spawn_contestant(var/mob/M)
 

@@ -17,7 +17,7 @@
 	G.fields["faction"]		= "Unknown"
 	G.fields["mob_faction"]	= "Unknown"
 	G.fields["religion"]	= "Unknown"
-	data_core.general += G
+	GLOB.data_core.general += G
 
 	qdel(dummy)
 	return G
@@ -28,7 +28,7 @@
 	R.fields["id"] = id
 	R.name = text("Security Record #[id]")
 	R.fields["incidents"] = "None"
-	data_core.security += R
+	GLOB.data_core.security += R
 	return R
 
 /proc/create_medical_record(var/mob/living/carbon/human/H)
@@ -48,5 +48,5 @@
 	M.fields["last_scan_result"]		= "No scan data on record"
 	M.fields["autodoc_data"] = list()
 	M.fields["autodoc_manual"] = list()
-	data_core.medical += M
+	GLOB.data_core.medical += M
 	return M

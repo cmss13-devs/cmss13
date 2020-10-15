@@ -347,17 +347,17 @@ var/global/list/frozen_items = list(SQUAD_NAME_1 = list(), SQUAD_NAME_2 = list()
 	RoleAuthority.free_role(RoleAuthority.roles_for_mode[occupant.job], TRUE)
 
 	//Delete them from datacore.
-	for(var/datum/data/record/R in data_core.medical)
+	for(var/datum/data/record/R in GLOB.data_core.medical)
 		if((R.fields["name"] == occupant.real_name))
-			data_core.medical -= R
+			GLOB.data_core.medical -= R
 			qdel(R)
-	for(var/datum/data/record/T in data_core.security)
+	for(var/datum/data/record/T in GLOB.data_core.security)
 		if((T.fields["name"] == occupant.real_name))
-			data_core.security -= T
+			GLOB.data_core.security -= T
 			qdel(T)
-	for(var/datum/data/record/G in data_core.general)
+	for(var/datum/data/record/G in GLOB.data_core.general)
 		if((G.fields["name"] == occupant.real_name))
-			data_core.general -= G
+			GLOB.data_core.general -= G
 			qdel(G)
 
 	icon_state = "body_scanner_0"

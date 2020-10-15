@@ -13,7 +13,7 @@
 	Look at radio.dm for the prequel to this code.
 */
 
-var/global/list/obj/structure/machinery/telecomms/telecomms_list = list()
+GLOBAL_LIST_EMPTY_TYPED(telecomms_list, /obj/structure/machinery/telecomms)
 
 /obj/structure/machinery/telecomms
 	var/list/links = list() // list of machines this machine is linked to
@@ -39,26 +39,25 @@ var/global/list/obj/structure/machinery/telecomms/telecomms_list = list()
 	var/tcomms_machine = FALSE //Set to true if the machine is enabling tcomms
 
 /obj/structure/machinery/telecomms/proc/add_tcomm_machine()
-	if(tcomms_machine && on && radio_controller)
-		radio_controller.add_tcomm_machine(src)
+	if(tcomms_machine && on)
+		SSradio.add_tcomm_machine(src)
 
 /obj/structure/machinery/telecomms/proc/remove_tcomm_machine()
-	if(radio_controller)
-		radio_controller.remove_tcomm_machine(src)
+	SSradio.remove_tcomm_machine(src)
 
 //Never allow tecommunications machinery being blown up
 /obj/structure/machinery/telecomms/ex_act(severity)
 	return
 
-/obj/structure/machinery/telecomms/New()
-	telecomms_list += src
-	..()
+/obj/structure/machinery/telecomms/Initialize(mapload, ...)
+	. = ..()
+	GLOB.telecomms_list += src
 	add_tcomm_machine()
 
 /obj/structure/machinery/telecomms/Destroy()
-	telecomms_list -= src
+	GLOB.telecomms_list -= src
 	remove_tcomm_machine()
-	. = ..()
+	return ..()
 
 /obj/structure/machinery/telecomms/update_icon()
 	if(on)

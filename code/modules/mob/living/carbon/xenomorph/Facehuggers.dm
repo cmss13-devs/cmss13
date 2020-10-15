@@ -9,7 +9,7 @@
 #define MAX_ACTIVE_TIME 150
 
 /obj/item/clothing/mask/facehugger
-	name = "alien"
+	name = "facehugger"
 	desc = "It has some sort of a tube at the end of its tail."
 	icon_source = "alien_effects"
 	icon_state = "facehugger"

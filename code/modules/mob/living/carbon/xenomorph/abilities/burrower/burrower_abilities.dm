@@ -19,7 +19,7 @@
 /datum/action/xeno_action/activable/tremor
 	name = "Tremor (100)"
 	action_icon_state = "screech"
-	ability_name = "screech"
+	ability_name = "tremor"
 	macro_path = /datum/action/xeno_action/verb/verb_tremor
 	action_type = XENO_ACTION_ACTIVATE
 	ability_primacy = XENO_PRIMARY_ACTION_4

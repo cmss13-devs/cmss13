@@ -2,7 +2,10 @@
 	var/mob/living/carbon/Xenomorph/X = owner
 
 	if (!action_cooldown_check())
-		return
+		if(twitch_message_cooldown < world.time )
+			X.visible_message(SPAN_XENOWARNING("\The [X]'s claws twitch.'"), SPAN_XENOWARNING("Your claws twitch as you try to lunge but lack the strength. Wait a moment to try again."))
+			twitch_message_cooldown = world.time + 5 SECONDS
+		return //this gives a little feedback on why your lunge didn't hit other than the lunge button going grey. Plus, it might spook marines that almost got lunged if they know why the message appeared, and extra spookiness is always good.
 	
 	if (!A)
 		return

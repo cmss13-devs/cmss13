@@ -946,8 +946,8 @@ Defined in conflicts.dm of the #defines folder.
 	accuracy_unwielded_mod = -config.low_hit_accuracy_mult
 	recoil_unwielded_mod = config.low_recoil_value
 	scatter_unwielded_mod = config.min_scatter_value
-	//but at the same time you are slow when 2 handed
-	aim_speed_mod = config.slowdown_med
+	//but at the same time you are slowish when 2 handed
+	aim_speed_mod = config.slowdown_low
 
 
 /obj/item/attachable/stock/smg/collapsible/proc/apply_on_weapon(obj/item/weapon/gun/G)
@@ -967,7 +967,7 @@ Defined in conflicts.dm of the #defines folder.
 	accuracy_unwielded_mod *= -1
 	recoil_unwielded_mod *= -1
 	//but at the same time you are slow when 2 handed
-	aim_speed_mod *= -1
+	aim_speed_mod *= 0 //setting it to -1 would increase movement speed beyond no-stock
 
 	G.recalculate_attachment_bonuses()
 

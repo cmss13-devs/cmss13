@@ -13,31 +13,38 @@
 	storage_slots = null
 	max_storage_space = 21
 	var/worn_accessible = FALSE //whether you can access its content while worn on the back
+	var/obj/item/card/id/locking_id = null
+	var/is_id_lockable = FALSE
 
 /obj/item/storage/backpack/attack_hand(mob/user)
-	if(!worn_accessible && ishuman(user))
-		var/mob/living/carbon/human/H = user
-		if(H.back == src)
-/*			if(user.drop_inv_item_on_ground(src))
-				pickup(user)
-				add_fingerprint(user)
-				if(!user.put_in_active_hand(src))
-					dropped(user)
-*/
-			to_chat(H, SPAN_NOTICE("You can't look in [src] while it's on your back."))
-			return
+	if(!is_accessible_by(user))
+		return
 	..()
 
 /obj/item/storage/backpack/attackby(obj/item/W, mob/user)
-/*	if(!worn_accessible && ishuman(user))
+	if(istype(W, /obj/item/card/id/) && is_id_lockable && ishuman(user))
 		var/mob/living/carbon/human/H = user
-		if(H.back == src)
-			to_chat(H, SPAN_NOTICE("You can't access [src] while it's on your back."))
-			return TRUE
-*/
+		var/obj/item/card/id/card = W
+		toggle_lock(card, H)
+		return
+	else if(!is_accessible_by(user, TRUE))
+		return
+
 	if (use_sound)
 		playsound(src.loc, src.use_sound, 15, 1, 6)
 	..()
+
+/obj/item/storage/backpack/proc/toggle_lock(obj/item/card/id/card, mob/living/carbon/human/H)
+	if(QDELETED(locking_id))
+		to_chat(H, SPAN_NOTICE("You lock the [src]!"))
+		locking_id = card
+	else
+		if(locking_id.registered_name == card.registered_name || (ACCESS_MARINE_COMMANDER in card.access))
+			to_chat(H, SPAN_NOTICE("You unlock the [src]!"))
+			locking_id = null
+		else
+			to_chat(H, SPAN_NOTICE("The ID lock rejects your ID"))
+	update_icon()
 
 /obj/item/storage/backpack/mob_can_equip(M as mob, slot)
 	if (!..())
@@ -73,16 +80,40 @@
 
 
 /obj/item/storage/backpack/open(mob/user)
-	if(!worn_accessible && ishuman(user))
+	if(!is_accessible_by(user))
+		return
+	..()
+
+/obj/item/storage/backpack/proc/is_accessible_by(mob/user, skip_worn_check = FALSE)
+	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
-		if(H.back == src)
-			to_chat(H, SPAN_NOTICE("You can't access [src] while it's on your back."))
-			return
+		if(!worn_accessible && !skip_worn_check)
+			if(H.back == src)
+				to_chat(H, SPAN_NOTICE("You can't look in [src] while it's on your back."))
+				return FALSE
+
+		if(!QDELETED(locking_id))
+			var/obj/item/card/id/card = H.wear_id
+			if(!card || locking_id.registered_name != card.registered_name)
+				to_chat(H, SPAN_NOTICE("[src] is locked by [locking_id.registered_name]'s ID! You decide to leave it alone."))
+				return FALSE
+	return TRUE
+
+obj/item/storage/backpack/empty(mob/user, turf/T)
+	if(!is_accessible_by(user))
+		return
 	..()
 
 /obj/item/storage/backpack/update_icon()
 	overlays.Cut()
 	var/sum_storage_cost = 0
+	if(locking_id) // if it's locked, we expect the casing to be shut.
+		overlays += "+[icon_state]_locked"
+		overlays += "+[icon_state]_full"
+		return
+	else if(is_id_lockable)
+		overlays += "+[icon_state]_unlocked"
+
 	for(var/obj/item/I in contents)
 		sum_storage_cost += I.get_storage_cost()
 	if(!sum_storage_cost)
@@ -320,6 +351,16 @@
 	icon_state = "rocketpack"
 	worn_accessible = TRUE
 	has_gamemode_skin = FALSE //monkeysfist101 never sprited a snowtype but included duplicate icons. Why?? Recolor and touch up sprite at a later date.
+
+/obj/item/storage/backpack/marine/grenadepack
+	name = "\improper USCM IMP M63A1 Grenade Satchel"
+	desc = "A satchel with dedicated grenades pouches meant to minimize risks of secondary ignition. To limit untrained marines tampering with the explosive content inside, it is equipped with a ID lock. Swipe your ID card to lock or unlock it."
+	icon_state = "grenadierpack"
+	overlays = list("+grenadierpack_unlocked")
+	worn_accessible = TRUE
+	max_storage_space = 24 //12 HEDP grenades or 8 custom large
+	can_hold = list(/obj/item/explosive/grenade)
+	is_id_lockable = TRUE
 
 // Scout Cloak
 /obj/item/storage/backpack/marine/satchel/scout_cloak

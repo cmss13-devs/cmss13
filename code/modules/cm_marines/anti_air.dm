@@ -93,6 +93,7 @@ var/obj/structure/anti_air_cannon/almayer_aa_cannon
 
 	if(href_list["protect"] && !almayer_aa_cannon.is_disabled)
 		almayer_aa_cannon.protecting_section = href_list["protect"]
+		message_staff("[key_name(usr)] has set the AA to [almayer_aa_cannon.protecting_section].")
 		attack_hand(usr)
 	else if(href_list["close"])
 		close_browser(usr, "aa_console")

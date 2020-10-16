@@ -785,7 +785,7 @@
 	var/max_grenades = 6
 	var/is_lobbing = TRUE
 	aim_slowdown = SLOWDOWN_ADS_SPECIALIST
-	attachable_allowed = list(/obj/item/attachable/magnetic_harness, /obj/item/attachable/scope/mini)
+	attachable_allowed = list(/obj/item/attachable/magnetic_harness)
 
 	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
 	map_specific_decoration = TRUE

@@ -131,8 +131,10 @@
 
 	var/obj/item/storage/S = loc
 	if(istype(S))
-		S.remove_from_storage(src)
-
+		for(var/mob/M in S.can_see_content())
+			if(M.client)
+				M.client.screen -= src
+				
 	return ..()
 
 /obj/item/ex_act(severity, explosion_direction)

@@ -107,6 +107,7 @@
 /obj/item/storage/proc/hide_from(mob/user as mob)
 	if(!user.client)
 		return
+		
 	user.client.screen -= src.boxes
 	user.client.screen -= storage_start
 	user.client.screen -= storage_continue

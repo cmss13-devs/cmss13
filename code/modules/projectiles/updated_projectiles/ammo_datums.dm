@@ -2027,7 +2027,7 @@
 
 /datum/ammo/bullet/shrapnel/jagged/on_hit_mob(mob/M, obj/item/projectile/P)
 	if(isXeno(M))
-		M.Slow(0.15)
+		M.Slow(0.4)
 /*
 //================================================
 					Misc Ammo

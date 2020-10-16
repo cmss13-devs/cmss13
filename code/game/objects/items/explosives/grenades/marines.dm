@@ -131,12 +131,13 @@
 	item_state = "grenade_m74_airburst_f_active"
 	explosion_power = 0
 	explosion_falloff = 25
-	shrapnel_count = 16
+	shrapnel_count = 30
 	det_time = 0 // Unused, because we don't use prime.
 	hand_throwable = FALSE
 	falloff_mode = EXPLOSION_FALLOFF_SHAPE_LINEAR
 	shrapnel_type = /datum/ammo/bullet/shrapnel/jagged
 	var/direct_hit_shrapnel = 5
+	var/dispersion_angle = 60
 
 /obj/item/explosive/grenade/HE/airburst/prime()
 // We don't prime, we use launch_impact.
@@ -154,12 +155,12 @@
 	if(active && detonate) // Active, and we reached our destination.
 		if(hit_turf)
 			for(var/mob/M in hit_turf)
-				create_shrapnel(loc, direct_hit_shrapnel, 5 , 30 ,shrapnel_type, initial(name), source_mob, FALSE, 100)
-				M.Superslow(1.5)
+				create_shrapnel(loc, direct_hit_shrapnel, last_move_dir , dispersion_angle ,shrapnel_type, initial(name), source_mob, FALSE, 100)
+				M.Superslow(3.0)
 				shrapnel_count -= direct_hit_shrapnel
 				continue
 		if(shrapnel_count)
-			create_shrapnel(loc, shrapnel_count, last_move_dir , 30 ,shrapnel_type, initial(name), source_mob, FALSE, 0)
+			create_shrapnel(loc, shrapnel_count, last_move_dir , dispersion_angle ,shrapnel_type, initial(name), source_mob, FALSE, 0)
 			sleep(2) //so that mobs are not knocked down before being hit by shrapnel. shrapnel might also be getting deleted by explosions?
 		apply_explosion_overlay()
 		if(explosion_power)

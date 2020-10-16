@@ -332,22 +332,24 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 	if(chosen_deletion)
 		chosen_deletion = text2path(chosen_deletion)
 		if(ispath(chosen_deletion))
-			if(!ispath(/mob) && !ispath(/obj))
-				to_chat(usr, SPAN_WARNING("Only works for types of /obj or /mob."))
-			else
-				var/hsbitem = input(usr, "Choose an object to delete.", "Delete:") as null|anything in typesof(chosen_deletion)
-				if(hsbitem)
-					var/do_delete = 1
-					if(hsbitem in blocked)
-						if(alert("Are you REALLY sure you wish to delete all instances of [hsbitem]? This will lead to catastrophic results!",,"Yes","No") != "Yes")
-							do_delete = 0
-					var/del_amt = 0
-					if(do_delete)
-						for(var/atom/O in world)
-							if(istype(O, hsbitem))
-								del_amt++
+			var/hsbitem = input(usr, "Choose an object to delete.", "Delete:") as null|anything in typesof(chosen_deletion)
+			if(hsbitem)
+				var/do_delete = 1
+				if(hsbitem in blocked)
+					if(alert("Are you REALLY sure you wish to delete all instances of [hsbitem]? This will lead to catastrophic results!",,"Yes","No") != "Yes")
+						do_delete = 0
+				var/del_amt = 0
+				if(do_delete)
+					var/is_turf = ispath(hsbitem, /turf)
+					for(var/atom/O in world)
+						if(istype(O, hsbitem))
+							if(is_turf)
+								var/turf/T = O
+								T.ScrapeAway()
+							else
 								qdel(O)
-						message_staff("[key_name_admin(src)] has deleted all instances of [hsbitem] ([del_amt]).", 0)
+							del_amt++
+					message_staff("[key_name_admin(src)] has deleted all instances of [hsbitem] ([del_amt]).", 0)
 		else
 			to_chat(usr, SPAN_WARNING("Not a valid type path."))
 

@@ -361,6 +361,7 @@ obj/item/storage/backpack/empty(mob/user, turf/T)
 	max_storage_space = 24 //12 HEDP grenades or 8 custom large
 	can_hold = list(/obj/item/explosive/grenade)
 	is_id_lockable = TRUE
+	has_gamemode_skin = FALSE 
 
 // Scout Cloak
 /obj/item/storage/backpack/marine/satchel/scout_cloak

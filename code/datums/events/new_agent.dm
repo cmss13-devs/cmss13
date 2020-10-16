@@ -33,6 +33,10 @@
 		if(!H.client || !H.client.prefs || !(H.client.prefs.be_special & BE_AGENT))
 			continue
 
+		var/datum/entity/player/P = get_player_from_key(H.ckey)
+		if(jobban_isbanned(H, "Agent", P))
+			continue
+
 		LAZYADD(possible_candidates, H)
 
 	if(!length(possible_candidates))

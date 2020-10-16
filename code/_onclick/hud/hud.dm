@@ -134,7 +134,8 @@
 
 
 /mob/proc/create_hud()
-	return
+	if(!hud_used)
+		hud_used = new /datum/hud(src)
 
 
 //Version denotes which style should be displayed. blank or 0 means "next version"

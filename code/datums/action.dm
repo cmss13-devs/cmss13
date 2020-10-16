@@ -4,7 +4,7 @@
 	var/action_icon_state
 	var/obj/target = null
 	var/obj/screen/action_button/button = null
-	var/mob/living/owner
+	var/mob/owner
 	var/cooldown = 0 // By default an action has no cooldown
 	var/cost = 0 // By default an action has no cost -> will be utilized by skill actions/xeno actions
 	var/action_flags = 0 // Check out __game.dm for flags
@@ -41,7 +41,7 @@
 /datum/action/proc/can_use_action()
 	if(owner) return TRUE
 
-/datum/action/proc/give_action(mob/living/L)
+/datum/action/proc/give_action(mob/L)
 	if(!L)
 		return
 	if(!L.actions)
@@ -56,7 +56,7 @@
 		L.client.screen += button
 	L.update_action_buttons()
 
-/datum/action/proc/remove_action(mob/living/L)
+/datum/action/proc/remove_action(mob/L)
 	if(L.client)
 		L.client.screen -= button
 	L.actions.Remove(src)
@@ -108,11 +108,11 @@
 
 //This is the proc used to update all the action buttons.
 /mob/proc/update_action_buttons(reload_screen)
-	return
-
-/mob/living/update_action_buttons(reload_screen)
-	if(!hud_used || !client)
+	if(!client)
 		return
+
+	if(!hud_used)
+		create_hud()
 
 	if(hud_used.hud_version == HUD_STYLE_NOHUD)
 		return

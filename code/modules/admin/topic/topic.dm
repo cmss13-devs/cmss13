@@ -332,117 +332,38 @@
 						      But it looks beautiful in-game
 						                -Nodrak
 	************************************WARNING!***********************************/
-		var/counter = 0
 //Regular jobs
 	//Command (Blue)
-		jobs += "<table cellpadding='1' cellspacing='0' width='100%'>"
-		jobs += "<tr align='center' bgcolor='ccccff'><th colspan='[length(ROLES_COMMAND)]'><a href='?src=\ref[src];jobban3=commanddept;jobban4=\ref[M]'>Command Positions</a></th></tr><tr align='center'>"
-		for(var/jobPos in ROLES_COMMAND)
-			if(!jobPos)	continue
-			var/datum/job/job = RoleAuthority.roles_by_name[jobPos]
-			if(!job) continue
-
-			if(jobban_isbanned(M, job.title, P))
-				jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=[job.title];jobban4=\ref[M]'><font color=red>[replacetext(job.title, " ", "&nbsp")]</font></a></td>"
-				counter++
-			else
-				jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=[job.title];jobban4=\ref[M]'>[replacetext(job.title, " ", "&nbsp")]</a></td>"
-				counter++
-
-			if(counter >= 5) //So things dont get squiiiiished!
-				jobs += "</tr><tr>"
-				counter = 0
-		jobs += "</tr></table>"
-
-
+		jobs += generate_job_ban_list(M, ROLES_CIC, "CIC", "ddddff")
+		jobs += "<br>"
+	// SUPPORT
+		jobs += generate_job_ban_list(M, ROLES_AUXIL_SUPPORT, "Support", "ccccff")
+		jobs += "<br>"
+	// MPs
+		jobs += generate_job_ban_list(M, ROLES_POLICE, "Police", "ffdddd")
+		jobs += "<br>"
 	//Engineering (Yellow)
-		counter = 0
-		jobs += "<table cellpadding='1' cellspacing='0' width='100%'>"
-		jobs += "<tr bgcolor='fff5cc'><th colspan='[length(ROLES_ENGINEERING)]'><a href='?src=\ref[src];jobban3=engineeringdept;jobban4=\ref[M]'>Engineering Positions</a></th></tr><tr align='center'>"
-		for(var/jobPos in ROLES_ENGINEERING)
-			if(!jobPos)	continue
-			var/datum/job/job = RoleAuthority.roles_by_name[jobPos]
-			if(!job) continue
-
-			if(jobban_isbanned(M, job.title, P))
-				jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=[job.title];jobban4=\ref[M]'><font color=red>[replacetext(job.title, " ", "&nbsp")]</font></a></td>"
-				counter++
-			else
-				jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=[job.title];jobban4=\ref[M]'>[replacetext(job.title, " ", "&nbsp")]</a></td>"
-				counter++
-
-			if(counter >= 5) //So things dont get squiiiiished!
-				jobs += "</tr><tr align='center'>"
-				counter = 0
-		jobs += "</tr></table>"
-
+		jobs += generate_job_ban_list(M, ROLES_ENGINEERING, "Engineering", "fff5cc")
+		jobs += "<br>"
 	//Cargo (Yellow) //Copy paste, yada, yada. Hopefully Snail can rework this in the future.
-		counter = 0
-		jobs += "<table cellpadding='1' cellspacing='0' width='100%'>"
-		jobs += "<tr bgcolor='fff5cc'><th colspan='[length(ROLES_REQUISITION)]'><a href='?src=\ref[src];jobban3=cargodept;jobban4=\ref[M]'>Requisition Positions</a></th></tr><tr align='center'>"
-		for(var/jobPos in ROLES_REQUISITION)
-			if(!jobPos)	continue
-			var/datum/job/job = RoleAuthority.roles_by_name[jobPos]
-			if(!job) continue
-
-			if(jobban_isbanned(M, job.title, P))
-				jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=[job.title];jobban4=\ref[M]'><font color=red>[replacetext(job.title, " ", "&nbsp")]</font></a></td>"
-				counter++
-			else
-				jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=[job.title];jobban4=\ref[M]'>[replacetext(job.title, " ", "&nbsp")]</a></td>"
-				counter++
-
-			if(counter >= 5) //So things dont get squiiiiished!
-				jobs += "</tr><tr align='center'>"
-				counter = 0
-		jobs += "</tr></table>"
-
+		jobs += generate_job_ban_list(M, ROLES_REQUISITION, "Requisition", "fff5cc")
+		jobs += "<br>"
 	//Medical (White)
-		counter = 0
-		jobs += "<table cellpadding='1' cellspacing='0' width='100%'>"
-		jobs += "<tr bgcolor='ffeef0'><th colspan='[length(ROLES_MEDICAL)]'><a href='?src=\ref[src];jobban3=medicaldept;jobban4=\ref[M]'>Medical Positions</a></th></tr><tr align='center'>"
-		for(var/jobPos in ROLES_MEDICAL)
-			if(!jobPos)	continue
-			var/datum/job/job = RoleAuthority.roles_by_name[jobPos]
-			if(!job) continue
-
-			if(jobban_isbanned(M, job.title, P))
-				jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=[job.title];jobban4=\ref[M]'><font color=red>[replacetext(job.title, " ", "&nbsp")]</font></a></td>"
-				counter++
-			else
-				jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=[job.title];jobban4=\ref[M]'>[replacetext(job.title, " ", "&nbsp")]</a></td>"
-				counter++
-
-			if(counter >= 5) //So things dont get squiiiiished!
-				jobs += "</tr><tr align='center'>"
-				counter = 0
-		jobs += "</tr></table>"
-
+		jobs += generate_job_ban_list(M, ROLES_MEDICAL, "Medical", "ffeef0")
+		jobs += "<br>"
 	//Marines
-		counter = 0
-		jobs += "<table cellpadding='1' cellspacing='0' width='100%'>"
-		jobs += "<tr bgcolor='fff5cc'><th colspan='[length(ROLES_MARINES)]'><a href='?src=\ref[src];jobban3=marinedept;jobban4=\ref[M]'>Marine Positions</a></th></tr><tr align='center'>"
-		for(var/jobPos in ROLES_MARINES)
-			if(!jobPos)	continue
-			var/datum/job/job = RoleAuthority.roles_by_name[jobPos]
-			if(!job) continue
-
-			if(jobban_isbanned(M, job.title, P))
-				jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=[job.title];jobban4=\ref[M]'><font color=red>[replacetext(job.title, " ", "&nbsp")]</font></a></td>"
-				counter++
-			else
-				jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=[job.title];jobban4=\ref[M]'>[replacetext(job.title, " ", "&nbsp")]</a></td>"
-				counter++
-
-			if(counter >= 5) //So things dont get squiiiiished!
-				jobs += "</tr><tr align='center'>"
-				counter = 0
-		jobs += "</tr></table>"
-
-	//Antagonist (Orange)
+		jobs += generate_job_ban_list(M, ROLES_MARINES, "Marines", "ffeeee")
+		jobs += "<br>"
+	// MISC
+		jobs += generate_job_ban_list(M, ROLES_MISC, "Misc", "aaee55")
+		jobs += "<br>"
+	// Xenos (Orange)
+		jobs += generate_job_ban_list(M, ROLES_XENO, "Xenos", "a268b1")
+		jobs += "<br>"
+	//Extra (Orange)
 		var/isbanned_dept = jobban_isbanned(M, "Syndicate", P)
 		jobs += "<table cellpadding='1' cellspacing='0' width='100%'>"
-		jobs += "<tr bgcolor='ffeeaa'><th colspan='10'><a href='?src=\ref[src];jobban3=Syndicate;jobban4=\ref[M]'>Antagonist Positions</a></th></tr><tr align='center'>"
+		jobs += "<tr bgcolor='ffeeaa'><th colspan='10'><a href='?src=\ref[src];jobban3=Syndicate;jobban4=\ref[M]'>Extras</a></th></tr><tr align='center'>"
 
 		//ERT
 		if(jobban_isbanned(M, "Emergency Response Team", P) || isbanned_dept)
@@ -450,33 +371,16 @@
 		else
 			jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=Emergency Response Team;jobban4=\ref[M]'>Emergency Response Team</a></td>"
 
-		//Xenos
-		if(jobban_isbanned(M, "Alien", P) || isbanned_dept)
-			jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=Alien;jobban4=\ref[M]'><font color=red>Alien</font></a></td>"
-		else
-			jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=Alien;jobban4=\ref[M]'>Alien</a></td>"
-
-		//Queen
-		if(jobban_isbanned(M, "Queen", P) || isbanned_dept)
-			jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=Queen;jobban4=\ref[M]'><font color=red>Queen</font></a></td>"
-		else
-			jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=Queen;jobban4=\ref[M]'>Queen</a></td>"
-
-
 		//Survivor
 		if(jobban_isbanned(M, "Survivor", P) || isbanned_dept)
 			jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=Survivor;jobban4=\ref[M]'><font color=red>Survivor</font></a></td>"
 		else
 			jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=Survivor;jobban4=\ref[M]'>Survivor</a></td>"
 
-		//Whiskey Outpost Role
-		if(jobban_isbanned(M, "WO Role", P) || isbanned_dept)
-			jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=WO Role;jobban4=\ref[M]'><font color=red>WO Role</font></a></td>"
+		if(jobban_isbanned(M, "Agent", P) || isbanned_dept)
+			jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=Agent;jobban4=\ref[M]'><font color=red>Agent</font></a></td>"
 		else
-			jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=WO Role;jobban4=\ref[M]'>WO Role</a></td>"
-
-
-		jobs += "</tr></table>"
+			jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=Agent;jobban4=\ref[M]'>Agent</a></td>"
 
 		body = "<body>[jobs]</body>"
 		dat = "<tt>[body]</tt>"
@@ -505,36 +409,24 @@
 		//get jobs for department if specified, otherwise just returnt he one job in a list.
 		var/list/joblist = list()
 		switch(href_list["jobban3"])
-			if("commanddept")
-				for(var/jobPos in ROLES_COMMAND)
-					if(!jobPos)	continue
-					var/datum/job/temp = RoleAuthority.roles_by_name[jobPos]
-					if(!temp) continue
-					joblist += temp.title
-			if("engineeringdept")
-				for(var/jobPos in ROLES_ENGINEERING)
-					if(!jobPos)	continue
-					var/datum/job/temp = RoleAuthority.roles_by_name[jobPos]
-					if(!temp) continue
-					joblist += temp.title
-			if("cargodept")
-				for(var/jobPos in ROLES_REQUISITION)
-					if(!jobPos)	continue
-					var/datum/job/temp = RoleAuthority.roles_by_name[jobPos]
-					if(!temp) continue
-					joblist += temp.title
-			if("medicaldept")
-				for(var/jobPos in ROLES_MEDICAL)
-					if(!jobPos)	continue
-					var/datum/job/temp = RoleAuthority.roles_by_name[jobPos]
-					if(!temp) continue
-					joblist += temp.title
-			if("marinedept")
-				for(var/jobPos in ROLES_MARINES)
-					if(!jobPos)	continue
-					var/datum/job/temp = RoleAuthority.roles_by_name[jobPos]
-					if(!temp) continue
-					joblist += temp.title
+			if("CICdept")
+				joblist += get_job_titles_from_list(ROLES_COMMAND)
+			if("Supportdept")
+				joblist += get_job_titles_from_list(ROLES_AUXIL_SUPPORT)
+			if("Policedept")
+				joblist += get_job_titles_from_list(ROLES_POLICE)
+			if("Engineeringdept")
+				joblist += get_job_titles_from_list(ROLES_ENGINEERING)
+			if("Requisitiondept")
+				joblist += get_job_titles_from_list(ROLES_REQUISITION)
+			if("Medicaldept")
+				joblist += get_job_titles_from_list(ROLES_MEDICAL)
+			if("Marinesdept")
+				joblist += get_job_titles_from_list(ROLES_MARINES)
+			if("Miscdept")
+				joblist += get_job_titles_from_list(ROLES_MISC)
+			if("Xenosdept")
+				joblist += get_job_titles_from_list(ROLES_XENO)
 			else
 				joblist += href_list["jobban3"]
 
@@ -1814,3 +1706,41 @@
 	ticker.mode.activate_distress()
 	log_game("[key_name_admin(usr)] has sent a randomized distress beacon, requested by [key_name_admin(ref_person)]")
 	message_staff("[key_name_admin(usr)] has sent a randomized distress beacon, requested by [key_name_admin(ref_person)]")
+
+/datum/admins/proc/generate_job_ban_list(var/mob/M, var/list/roles, var/department, var/color = "ccccff")
+	var/datum/entity/player/P = get_player_from_key(M.ckey)
+	var/counter = 0
+
+	var/dat = ""
+	dat += "<table cellpadding='1' cellspacing='0' width='100%'>"
+	dat += "<tr align='center' bgcolor='[color]'><th colspan='[length(roles)]'><a href='?src=\ref[src];jobban3=[department]dept;jobban4=\ref[M]'>[department]</a></th></tr><tr align='center'>"
+	for(var/jobPos in roles)
+		if(!jobPos)	
+			continue
+		var/datum/job/job = RoleAuthority.roles_by_name[jobPos]
+		if(!job) 
+			continue
+
+		if(jobban_isbanned(M, job.title, P))
+			dat += "<td width='20%'><a href='?src=\ref[src];jobban3=[job.title];jobban4=\ref[M]'><font color=red>[replacetext(job.title, " ", "&nbsp")]</font></a></td>"
+			counter++
+		else
+			dat += "<td width='20%'><a href='?src=\ref[src];jobban3=[job.title];jobban4=\ref[M]'>[replacetext(job.title, " ", "&nbsp")]</a></td>"
+			counter++
+
+		if(counter >= 5) //So things dont get squiiiiished!
+			dat += "</tr><tr>"
+			counter = 0
+	dat += "</tr></table>"
+	return dat
+
+/datum/admins/proc/get_job_titles_from_list(var/list/roles)
+	var/list/temp = list()
+	for(var/jobPos in roles)
+		if(!jobPos)	
+			continue
+		var/datum/job/J = RoleAuthority.roles_by_name[jobPos]
+		if(!J) 
+			continue
+		temp += J.title
+	return temp

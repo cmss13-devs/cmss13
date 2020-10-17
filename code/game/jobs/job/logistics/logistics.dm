@@ -8,11 +8,11 @@
 
 /datum/timelock/engineer/New(name, time_required, list/roles)
 	. = ..()
-	roles = JOB_ENGINEER_ROLES_LIST
+	src.roles = JOB_ENGINEER_ROLES_LIST
 
 /datum/timelock/requisition
 	name = "Requisition Roles"
 
 /datum/timelock/requisition/New(name, time_required, list/roles)
 	. = ..()
-	roles = JOB_REQUISITION_ROLES_LIST
+	src.roles = JOB_REQUISITION_ROLES_LIST

@@ -373,7 +373,7 @@ Additional game mode variables.
 	for(var/datum/hive_status/hive in hive_datum)
 		var/obj/effect/alien/resin/special/pool/SP = hive.spawn_pool
 		if(!isnull(SP) && SP.can_spawn_larva())
-			hives += list(hive = SP)
+			hives += hive
 
 	if(length(hives))
 		available_xenos += pooled_larva
@@ -389,11 +389,12 @@ Additional game mode variables.
 		// isnull() is checked here, in case the spawn pool gets destroyed while the menu is open.
 		if(userInput == pooled_larva)
 			var/datum/hive_status/H = pick(hives)
-			if(hives[H] && hives[H].can_spawn_larva())
+			var/obj/effect/alien/resin/special/pool/SP = H.spawn_pool
+			if(!isnull(SP) && SP.can_spawn_larva())
 				if(isnewplayer(xeno_candidate))
 					var/mob/new_player/N = xeno_candidate
 					N.close_spawn_windows()
-				hives[H].spawn_pooled_larva(xeno_candidate)
+				SP.spawn_pooled_larva(xeno_candidate)
 				return TRUE
 			else
 				to_chat(xeno_candidate, SPAN_WARNING("Seems like something went wrong. Try again"))

@@ -33,6 +33,20 @@
 	var/flipped_projectile_coverage = PROJECTILE_COVERAGE_HIGH
 	var/upright_projectile_coverage = PROJECTILE_COVERAGE_LOW
 
+/obj/structure/surface/table/Initialize()
+	. = ..()
+
+	for(var/obj/structure/surface/table/T in src.loc)
+		if(T != src)
+			qdel(T)
+	if(flipped)
+		projectile_coverage = flipped_projectile_coverage
+	else
+		projectile_coverage = upright_projectile_coverage
+
+	update_adjacent()
+	update_icon()
+
 /obj/structure/surface/table/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
 	if (PF)
@@ -56,17 +70,6 @@
 		var/obj/structure/surface/table/T = locate(/obj/structure/surface/table, get_step(location,direction))
 		if(T)
 			T.update_icon()
-
-/obj/structure/surface/table/New()
-	..()
-	for(var/obj/structure/surface/table/T in src.loc)
-		if(T != src)
-			qdel(T)
-	if(flipped)
-		projectile_coverage = flipped_projectile_coverage
-	else
-		projectile_coverage = upright_projectile_coverage
-	update_icon()
 
 /obj/structure/surface/table/Crossed(atom/movable/O)
 	..()

@@ -198,6 +198,8 @@
 	var/next_delay_delay = 10 // how much time we wait for next calc of move delay
 	var/move_delay
 
+	var/list/datum/action/actions = list()
+
 	can_block_movement = TRUE
 
 	appearance_flags = TILE_BOUND

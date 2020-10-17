@@ -9,6 +9,8 @@
 
 /datum/game_mode/extended/pre_setup()
 	setup_round_stats()
+	roles_to_roll = RoleAuthority.roles_for_mode - (RoleAuthority.roles_for_mode & (ROLES_XENO|ROLES_WHITELISTED|ROLES_SPECIAL))
+
 	return ..()
 
 /datum/game_mode/extended/post_setup()
@@ -20,9 +22,11 @@
 	return ..()
 
 /datum/game_mode/extended/check_finished()
-	if(round_finished) return 1
+	if(round_finished) 
+		return TRUE
 
 /datum/game_mode/extended/check_win()
+	return
 
 /datum/game_mode/extended/declare_completion()
 	announce_ending()
@@ -39,4 +43,4 @@
 	calculate_end_statistics()
 	declare_completion_announce_predators()
 	declare_completion_announce_medal_awards()
-	return 1
+	return TRUE

@@ -62,7 +62,7 @@ var/global/datum/controller/gameticker/ticker = new()
 /datum/controller/gameticker/proc/setup()
 	//Create and announce mode
 	if(master_mode=="secret")
-		src.hide_mode = 1
+		hide_mode = 1
 	var/list/datum/game_mode/runnable_modes
 	if((master_mode=="random") || (master_mode=="secret"))
 		runnable_modes = config.get_runnable_modes()
@@ -73,20 +73,20 @@ var/global/datum/controller/gameticker/ticker = new()
 		if(secret_force_mode != "secret")
 			var/datum/game_mode/M = config.pick_mode(secret_force_mode)
 			if(M.can_start())
-				src.mode = config.pick_mode(secret_force_mode)
+				mode = config.pick_mode(secret_force_mode)
 		RoleAuthority.reset_roles()
-		if(!src.mode)
-			src.mode = pickweight(runnable_modes)
-		if(src.mode)
+		if(!mode)
+			mode = pickweight(runnable_modes)
+		if(mode)
 			var/mtype = src.mode.type
-			src.mode = new mtype
+			mode = new mtype
 	else
 		if(map_tag == MAP_WHISKEY_OUTPOST)
-			src.mode = config.pick_mode("Whiskey Outpost")
+			mode = config.pick_mode("Whiskey Outpost")
 			RoleAuthority.replace_jobs(src.mode.roles_for_mode)
 		else
-			src.mode = config.pick_mode(master_mode)
-	if (!src.mode.can_start())
+			mode = config.pick_mode(master_mode)
+	if (!mode.can_start())
 		to_world("<B>Unable to start [mode.name].</B> Not enough players, [mode.required_players] players needed. Reverting to pre-game lobby.")
 		QDEL_NULL(mode)
 		current_state = GAME_STATE_PREGAME
@@ -114,10 +114,16 @@ var/global/datum/controller/gameticker/ticker = new()
 	//Configure mode and assign player to special mode stuff
 	if (!(mode.flags_round_type & MODE_NO_SPAWN))
 		if(mode.flags_round_type & MODE_NEW_SPAWN)
-			RoleAuthority.setup_candidates_and_roles() //Distribute jobs
+			var/roles_to_roll = null
+			if(length(mode.roles_to_roll))
+				roles_to_roll = mode.roles_to_roll
+			RoleAuthority.setup_candidates_and_roles(roles_to_roll) //Distribute jobs
 			create_characters() // Create and equip characters
 		else
-			RoleAuthority.setup_candidates_and_roles() //Distribute jobs
+			var/roles_to_roll = null
+			if(length(mode.roles_to_roll))
+				roles_to_roll = mode.roles_to_roll
+			RoleAuthority.setup_candidates_and_roles(roles_to_roll) //Distribute jobs
 			old_create_characters() //Create player characters and transfer them
 			equip_characters()
 

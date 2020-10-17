@@ -31,6 +31,8 @@ var/global/cas_tracking_id_increment = 0	//this var used to assign unique tracki
 
 	var/datum/entity/round_stats/round_stats = null
 
+	var/list/roles_to_roll
+
 /datum/game_mode/proc/announce() //to be calles when round starts
 	to_world("<B>Notice</B>: [src] did not define announce()")
 

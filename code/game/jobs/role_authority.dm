@@ -180,11 +180,10 @@ var/global/marines_assigned = 0
  */
 
 
-/datum/authority/branch/role/proc/setup_candidates_and_roles()
+/datum/authority/branch/role/proc/setup_candidates_and_roles(var/list/overwritten_roles_for_mode)
 	//===============================================================\\
 	//PART I: Initializing starting lists and such.
-
-	if(!roles_for_mode || !length(roles_for_mode)) 
+	if(!roles_for_mode && !overwritten_roles_for_mode || !length(roles_for_mode) && !length(overwritten_roles_for_mode)) 
 		return //Can't start if this doesn't exist.
 
 	var/datum/game_mode/G = ticker.mode
@@ -233,33 +232,37 @@ var/global/marines_assigned = 0
 	//===============================================================\\
 	//PART III: Here we're doing the main body of the loop and assigning everyone.
 
-	marines_assigned = do_assignment_count(roles_for_mode - (roles_for_mode & ROLES_XENO), unassigned_players)
+	var/temp_roles_for_mode = roles_for_mode
+	if(length(overwritten_roles_for_mode))
+		temp_roles_for_mode = overwritten_roles_for_mode
+
+	marines_assigned = do_assignment_count(temp_roles_for_mode - (temp_roles_for_mode & ROLES_XENO), unassigned_players)
 
 	// Set the xeno starting amount based on marines assigned
-	var/datum/job/XJ = roles_for_mode[JOB_XENOMORPH]
+	var/datum/job/XJ = temp_roles_for_mode[JOB_XENOMORPH]
 	if(istype(XJ))
 		XJ.set_spawn_positions(marines_assigned)
 
 	// Set survivor starting amount based on marines assigned
-	var/datum/job/SJ = roles_for_mode[JOB_SURVIVOR]
+	var/datum/job/SJ = temp_roles_for_mode[JOB_SURVIVOR]
 	if(istype(SJ))
 		SJ.set_spawn_positions(marines_assigned)
 
 	if(prob(CHANCE_OF_PRED_ROUND))
 		ticker?.mode?.flags_round_type |= MODE_PREDATOR
 		// Set predators starting amount based on marines assigned
-		var/datum/job/PJ = roles_for_mode[JOB_PREDATOR]
+		var/datum/job/PJ = temp_roles_for_mode[JOB_PREDATOR]
 		if(istype(PJ))
 			PJ.set_spawn_positions(marines_assigned)
 
 	var/list/roles_left = list()
 	for(var/priority in HIGH_PRIORITY to LOW_PRIORITY)		
 		// Assigning xenos first.
-		assign_initial_roles(priority, roles_for_mode & ROLES_XENO)
+		assign_initial_roles(priority, temp_roles_for_mode & ROLES_XENO)
 		// Assigning command second.
-		assign_initial_roles(priority, roles_for_mode & ROLES_COMMAND)
+		assign_initial_roles(priority, temp_roles_for_mode & ROLES_COMMAND)
 		// Assigning the rest
-		var/rest_roles_for_mode = roles_for_mode - (roles_for_mode & ROLES_XENO) - (roles_for_mode & ROLES_COMMAND)
+		var/rest_roles_for_mode = temp_roles_for_mode - (temp_roles_for_mode & ROLES_XENO) - (temp_roles_for_mode & ROLES_COMMAND)
 		roles_left = assign_initial_roles(priority, rest_roles_for_mode)
 
 	for(var/mob/new_player/M in unassigned_players)
@@ -267,9 +270,9 @@ var/global/marines_assigned = 0
 			if(GET_RANDOM_JOB) 	
 				roles_left = assign_random_role(M, roles_left) //We want to keep the list between assignments.
 			if(BE_MARINE)	
-				assign_role(M, roles_for_mode[JOB_SQUAD_MARINE]) //Should always be available, in all game modes, as a candidate. Even if it may not be a marine.
+				assign_role(M, temp_roles_for_mode[JOB_SQUAD_MARINE]) //Should always be available, in all game modes, as a candidate. Even if it may not be a marine.
 			if(BE_XENOMORPH)
-				assign_role(M, roles_for_mode[JOB_XENOMORPH])
+				assign_role(M, temp_roles_for_mode[JOB_XENOMORPH])
 			if(RETURN_TO_LOBBY) 
 				M.ready = 0
 		unassigned_players -= M

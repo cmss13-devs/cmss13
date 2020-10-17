@@ -29,7 +29,13 @@
 	if(!client)
 		return
 
+	logging_ckey = client.ckey
+
+	if(client.player_data)
+		client.player_data.playtime_start = world.time
+
 	GLOB.player_list |= src
+
 	update_Login_details()
 	world.update_status()
 

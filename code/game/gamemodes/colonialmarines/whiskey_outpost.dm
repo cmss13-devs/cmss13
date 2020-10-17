@@ -279,6 +279,9 @@
 		round_statistics.log_round_statistics()
 
 		round_finished = 1
+
+	calculate_end_statistics()
+	
 	return 1
 
 /datum/game_mode/proc/auto_declare_completion_whiskey_outpost()

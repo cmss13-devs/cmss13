@@ -36,6 +36,7 @@
 		round_statistics.log_round_statistics()
 
 	announce_agents()
+	calculate_end_statistics()
 	declare_completion_announce_predators()
 	declare_completion_announce_medal_awards()
 	return 1

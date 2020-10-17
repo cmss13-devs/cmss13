@@ -248,8 +248,8 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 	access = list(ACCESS_MARINE_CARGO, ACCESS_MARINE_PREP)
-	assignment = JOB_REQUISITION
-	rank = JOB_REQUISITION
+	assignment = JOB_CARGO_TECH
+	rank = JOB_CARGO_TECH
 	paygrade = "E5"
 	role_comm_title = "CT"
 	skills = /datum/skills/CT

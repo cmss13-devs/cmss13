@@ -1,3 +1,5 @@
+#define get_job_playtime(client, job) (client.player_data? LAZYACCESS(client.player_data.playtimes, job)? client.player_data.playtimes[job].total_minutes MINUTES_TO_DECISECOND : 0 : 0)
+
 // Squad name defines
 #define SQUAD_NAME_1					"Alpha"
 #define SQUAD_NAME_2					"Bravo"
@@ -12,8 +14,8 @@
 #define JOB_SQUAD_MEDIC					"Squad Medic"
 #define JOB_SQUAD_SPECIALIST			"Squad Specialist"
 #define JOB_SQUAD_SMARTGUN				"Squad Smartgunner"
-#define JOB_SQUAD_ROLES					"Squad Roles"
-#define JOB_SQUAD_ROLES_LIST            list(JOB_SQUAD_ROLES, JOB_SQUAD_MARINE, JOB_SQUAD_LEADER, JOB_SQUAD_ENGI, JOB_SQUAD_MEDIC, JOB_SQUAD_SPECIALIST, JOB_SQUAD_SMARTGUN)
+#define JOB_SQUAD_ROLES					/datum/timelock/squad
+#define JOB_SQUAD_ROLES_LIST            list(JOB_SQUAD_MARINE, JOB_SQUAD_LEADER, JOB_SQUAD_ENGI, JOB_SQUAD_MEDIC, JOB_SQUAD_SPECIALIST, JOB_SQUAD_SMARTGUN)
 
 var/global/list/job_squad_roles = JOB_SQUAD_ROLES_LIST
 
@@ -26,6 +28,8 @@ var/global/list/job_squad_roles = JOB_SQUAD_ROLES_LIST
 #define JOB_DOCTOR						"Doctor"
 #define JOB_NURSE						"Nurse"
 #define JOB_RESEARCHER					"Researcher"
+#define JOB_MEDIC_ROLES                 /datum/timelock/medic
+#define JOB_MEDIC_ROLES_LIST            list(JOB_SQUAD_MEDIC, JOB_CMO, JOB_DOCTOR, JOB_NURSE, JOB_RESEARCHER)
 
 #define JOB_CORPORATE_LIAISON			"Corporate Liaison"
 #define JOB_MESS_SERGEANT				"Mess Sergeant"
@@ -34,25 +38,51 @@ var/global/list/job_squad_roles = JOB_SQUAD_ROLES_LIST
 #define JOB_CO							"Commanding Officer"
 #define JOB_XO							"Executive Officer"
 #define JOB_SO							"Staff Officer"
-#define JOB_COMMAND_ROLES				"CIC Roles"
-#define JOB_COMMAND_ROLES_LIST          list(JOB_COMMAND_ROLES, JOB_CO, JOB_XO, JOB_SO)
+#define JOB_COMMAND_ROLES				/datum/timelock/command
+#define JOB_COMMAND_ROLES_LIST          list(JOB_CO, JOB_XO, JOB_SO)
 var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
+
 #define JOB_PILOT						"Pilot Officer"
 #define JOB_CREWMAN						"Vehicle Crewman"
 #define JOB_INTEL						"Intelligence Officer"
+
 #define JOB_POLICE						"Military Police"
 #define JOB_WARDEN						"Military Warden"
 #define JOB_CHIEF_POLICE				"Chief MP"
+#define JOB_POLICE_ROLES                /datum/timelock/mp
+#define JOB_POLICE_ROLES_LIST           list(JOB_POLICE, JOB_WARDEN, JOB_CHIEF_POLICE)
+
 #define JOB_SEA							"Senior Enlisted Advisor"
 
 #define JOB_CHIEF_ENGINEER				"Chief Engineer"
 #define JOB_MAINT_TECH					"Maintenance Technician"
 #define JOB_ORDNANCE_TECH				"Ordnance Technician"
+#define JOB_ENGINEER_ROLES              /datum/timelock/engineer
+#define JOB_ENGINEER_ROLES_LIST         list(JOB_SQUAD_ENGI, JOB_MAINT_TECH, JOB_ORDNANCE_TECH, JOB_CHIEF_ENGINEER)
 
 #define JOB_CHIEF_REQUISITION			"Requisitions Officer"
-#define JOB_REQUISITION					"Cargo Technician"
+#define JOB_CARGO_TECH					"Cargo Technician"
+#define JOB_REQUISITION_ROLES           /datum/timelock/requisition
+#define JOB_REQUISITION_ROLES_LIST      list(JOB_CHIEF_REQUISITION, JOB_CARGO_TECH)
+
+#define JOB_HUMAN_ROLES                 /datum/timelock/human
+#define JOB_XENO_ROLES                  /datum/timelock/xeno
 
 #define JOB_STOWAWAY					"Stowaway"
+
+// Used to add a timelock to a job. Will be passed onto derivatives
+#define AddTimelock(Path, timelockList) \
+##Path/setup_requirements(var/list/L){\
+    L += timelockList;\
+    . = ..(L);\
+}
+
+// Used to add a timelock to a job. Will be passed onto derivates. Will not include the parent's timelocks. 
+#define OverrideTimelock(Path, timelockList) \
+##Path/setup_requirements(var/list/L){\
+    L = timelockList;\
+    . = ..(L);\
+}
 
 //-------------WO roles---------------
 
@@ -144,3 +174,5 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define XENO_PRIME	4
 
 #define JOB_OBSERVER                    "Observer" // For monthly time tracking
+
+#define TIMELOCK_JOB(role_id, hours) new/datum/timelock(role_id, hours, role_id)

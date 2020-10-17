@@ -255,7 +255,7 @@ datum/preferences/proc/job_pref_to_gear_preset()
 			return "USCM Maintenance Technician (MT)"
 		if(JOB_CHIEF_REQUISITION)
 			return "USCM Requisitions Officer (RO)"
-		if(JOB_REQUISITION)
+		if(JOB_CARGO_TECH)
 			return "USCM Cargo Technician (CT)"
 		if(JOB_CMO)
 			return "USCM Chief Medical Officer (CMO)"

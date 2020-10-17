@@ -340,6 +340,7 @@
 #include "code\datums\entities\player_note.dm"
 #include "code\datums\entities\player_times.dm"
 #include "code\datums\entities\vending_stat.dm"
+#include "code\datums\entities\logs\player_times_log.dm"
 #include "code\datums\event_system\args.dm"
 #include "code\datums\event_system\datum_events.dm"
 #include "code\datums\event_system\event.dm"

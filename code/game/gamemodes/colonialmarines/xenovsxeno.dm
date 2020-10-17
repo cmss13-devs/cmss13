@@ -287,6 +287,7 @@
         round_statistics.log_round_statistics()
 
     declare_completion_announce_xenomorphs()
+    calculate_end_statistics()
     declare_random_fact()
 
     return TRUE

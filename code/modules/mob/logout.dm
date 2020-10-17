@@ -12,4 +12,15 @@
 	if(s_active)
 		s_active.hide_from(src)
 	..()
-	return 1
+
+	var/datum/entity/player/P = get_player_from_key(logging_ckey)
+
+	if(P)
+		if(stat == DEAD)
+			record_playtime(P, JOB_OBSERVER, type)
+		else
+			record_playtime(P, job, type)
+
+	logging_ckey = null
+
+	return TRUE

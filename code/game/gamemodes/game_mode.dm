@@ -138,6 +138,12 @@ var/global/cas_tracking_id_increment = 0	//this var used to assign unique tracki
 		M.track_death_calculations()
 		M.statistic_exempt = TRUE
 
+		if(M.client && M.client.player_data)
+			if(M.stat == DEAD)
+				record_playtime(M.client.player_data, JOB_OBSERVER, type)
+			else
+				record_playtime(M.client.player_data, M.job, type)
+
 /datum/game_mode/proc/show_end_statistics(var/icon_state)
 	round_statistics.update_panel_data()
 	for(var/mob/M in GLOB.player_list)

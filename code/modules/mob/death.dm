@@ -74,6 +74,9 @@
 	living_mob_list -= src
 	dead_mob_list |= src
 
+	if(client && client.player_data)
+		record_playtime(client.player_data, job, type)
+
 	track_death_calculations()
 	track_mob_death(cause, last_damage_mob)
 

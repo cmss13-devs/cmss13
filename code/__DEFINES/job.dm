@@ -142,3 +142,5 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define XENO_ELDER		2
 #define XENO_ANCIENT	3
 #define XENO_PRIME	4
+
+#define JOB_OBSERVER                    "Observer" // For monthly time tracking

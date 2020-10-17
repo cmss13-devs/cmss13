@@ -19,4 +19,4 @@
 
 /datum/timelock/squad/New(name, time_required, list/roles)
 	. = ..()
-	roles = JOB_SQUAD_ROLES_LIST
+	src.roles = JOB_SQUAD_ROLES_LIST

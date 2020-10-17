@@ -8,13 +8,15 @@
 	name = "Command Roles"
 
 /datum/timelock/command/New(name, time_required, list/roles)
-	roles = JOB_COMMAND_ROLES_LIST
+	. = ..()
+	src.roles = JOB_COMMAND_ROLES_LIST
 
 /datum/timelock/mp
 	name = "MP Roles"
 
 /datum/timelock/mp/New(name, time_required, list/roles)
-	roles = JOB_POLICE_ROLES_LIST
+	. = ..()
+	src.roles = JOB_POLICE_ROLES_LIST
 
 /datum/timelock/human
 	name = "Human Roles"

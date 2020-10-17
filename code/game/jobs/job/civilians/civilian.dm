@@ -6,4 +6,4 @@
 
 /datum/timelock/medic/New(name, time_required, list/roles)
 	. = ..()
-	roles = JOB_MEDIC_ROLES_LIST
+	src.roles = JOB_MEDIC_ROLES_LIST

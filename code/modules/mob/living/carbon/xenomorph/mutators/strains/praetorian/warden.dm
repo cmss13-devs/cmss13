@@ -71,8 +71,9 @@
 /datum/behavior_delegate/praetorian_warden/melee_attack_additional_effects_self()
 	add_internal_hitpoints(internal_hitpoints_per_attack)
 
-/datum/behavior_delegate/praetorian_warden/ranged_attack_additional_effects_self()
-	add_internal_hitpoints(internal_hitpoints_per_attack)
+/datum/behavior_delegate/praetorian_warden/ranged_attack_additional_effects_target(var/atom/A)
+	if(ismob(A))
+		add_internal_hitpoints(internal_hitpoints_per_attack)
 
 /datum/behavior_delegate/praetorian_warden/proc/add_internal_hitpoints(amount)
 	internal_hitpoints = Clamp(internal_hitpoints + amount, 0, internal_hitpoints_max)

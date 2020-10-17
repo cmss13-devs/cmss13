@@ -259,8 +259,9 @@ var/const/MAX_SAVE_SLOTS = 10
 			dat += "<b>Be [role_name]:</b> <font color=red><b>\[BANNED]</b></font><br>"
 		else if(!can_play_special_job(user.client, ban_check_name))
 			dat += "<b>Be [role_name]:</b> <font color=red><b>\[TIMELOCKED]</b></font><br>"
-			for(var/requirement in missing_requirements)
-				dat += "\t[requirement] - [duration2text(missing_requirements[requirement])] Hours<br>"
+			for(var/r in missing_requirements)
+				var/datum/timelock/T = r
+				dat += "\t[T.name] - [duration2text(missing_requirements[r])] Hours<br>"
 		else
 			dat += "<b>Be [role_name]:</b> <a href='?_src_=prefs;preference=be_special;num=[n]'><b>[be_special & (1<<n) ? "Yes" : "No"]</b></a><br>"
 	
@@ -457,8 +458,9 @@ var/const/MAX_SAVE_SLOTS = 10
 		else if(!job.can_play_role(user.client))
 			var/list/missing_requirements = job.get_role_requirements(user.client)
 			HTML += "<b><del>[job.disp_title]</del></b></td><td>TIMELOCKED</td></tr>"
-			for(var/requirement in missing_requirements)
-				HTML += "<tr class='[job.selection_class]'><td width='40%' align='right'>[requirement]</td><td>[duration2text(missing_requirements[requirement])] Hours</td></tr>"
+			for(var/r in missing_requirements)
+				var/datum/timelock/T = r
+				HTML += "<tr class='[job.selection_class]'><td width='40%' align='right'>[T.name]</td><td>[duration2text(missing_requirements[r])] Hours</td></tr>"
 			continue
 		
 		HTML += "<b>[job.disp_title]</b>"

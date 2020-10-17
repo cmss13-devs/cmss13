@@ -152,6 +152,10 @@
 	var/total_marine_playtime = 0
 
 	for(var/job in RoleAuthority.roles_by_name)
+		var/datum/job/J = RoleAuthority.roles_by_name[job]
+		if(istype(J, /datum/job/antag))
+			continue
+		
 		total_marine_playtime += get_job_playtime(src, job)
 
 	cached_human_playtime = total_marine_playtime

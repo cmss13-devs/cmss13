@@ -4,9 +4,6 @@
 	title = JOB_SURVIVOR
 	selection_class = "job_special"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE|ROLE_CUSTOM_SPAWN
-	minimum_playtimes = list(
-		JOB_SQUAD_ROLES_LIST = HOURS_3
-	)
 	late_joinable = FALSE
 	var/intro_text
 	var/story_text
@@ -175,7 +172,6 @@
 /datum/job/civilian/survivor/synth
 	title = JOB_SYNTH_SURVIVOR
 	selection_class = "job_synth"
-	minimum_playtimes = list()
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE|ROLE_ADMIN_NOTIFY|ROLE_WHITELISTED|ROLE_CUSTOM_SPAWN
 	flags_whitelist = WHITELIST_SYNTHETIC
 	total_positions = 1
@@ -190,3 +186,7 @@
 		)
 
 	arm_equipment(H, pick(survivor_types), FALSE, TRUE)
+
+AddTimelock(/datum/job/civilian/survivor, list(
+	JOB_SQUAD_ROLES = HOURS_3
+))

@@ -13,7 +13,7 @@
 /datum/entity/player_stats/human/get_playtime(var/type)
 	if(!type)
 		return ..()
-	if(type == JOB_SQUAD_ROLES)
+	if(type == "Squad Roles")
 		var/total_squad_time = 0
 		for(var/squad_type in job_squad_roles)
 			var/datum/entity/player_stats/job/squad_stat = job_stats_list["[squad_type]"]
@@ -21,7 +21,7 @@
 				continue
 			total_squad_time += squad_stat.get_playtime()
 		return total_squad_time
-	else if(type == JOB_COMMAND_ROLES)
+	else if(type == "CIC Roles")
 		var/total_command_time = 0
 		for(var/command_type in job_command_roles)
 			var/datum/entity/player_stats/job/command_stat = job_stats_list["[command_type]"]

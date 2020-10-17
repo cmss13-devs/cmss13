@@ -2,7 +2,7 @@
 	name = "New Faction Agent"
 	tickets = 5
 	var/list/possible_candidates
-	var/list/agent_approved_jobs = list(JOB_CORPORATE_LIAISON, JOB_REQUISITION, JOB_RESEARCHER, JOB_MAINT_TECH, JOB_MESS_SERGEANT, JOB_NURSE)
+	var/list/agent_approved_jobs = list(JOB_CORPORATE_LIAISON, JOB_CARGO_TECH, JOB_RESEARCHER, JOB_MAINT_TECH, JOB_MESS_SERGEANT, JOB_NURSE)
 
 /datum/round_event/new_agent/check_prerequisite()
 	if(!RoleAuthority)

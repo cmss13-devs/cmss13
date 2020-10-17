@@ -1,6 +1,3 @@
-
-#define get_job_playtime(client, job) (client.player_data? LAZYACCESS(client.player_data.playtimes, job)? client.player_data.playtimes[job].total_minutes MINUTES_TO_DECISECOND : 0 : 0)
-
 /datum/entity/player_time
     var/player_id
     var/role_id

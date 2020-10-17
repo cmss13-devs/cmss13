@@ -20,9 +20,7 @@
 	var/flags_whitelist = NO_FLAGS 			//Only used by whitelisted roles. Can be a single whitelist flag, or a combination of them.
 
 	//If you have use_timelocks config option enabled, this option will add a requirement for players to have the prerequisite roles have at least x minimum playtime before unlocking.
-	var/list/minimum_playtimes = list(
-		JOB_SQUAD_ROLES_LIST = HOURS_3
-	)
+	var/list/minimum_playtimes
 
 	var/minimum_playtime_as_job = HOURS_3
 
@@ -35,8 +33,9 @@
 	var/entry_message_end
 
 /datum/job/New()
-	..()
+	. = ..()
 
+	minimum_playtimes = setup_requirements(list())
 	if(!disp_title) disp_title = title
 
 /datum/job/proc/get_whitelist_status(var/list/roles_whitelist, var/client/player)
@@ -44,6 +43,47 @@
 		return FALSE
 
 	return WHITELIST_NORMAL
+
+/datum/timelock
+	var/name
+	var/time_required
+	var/roles
+
+/datum/timelock/New(var/name, var/time_required, var/list/roles)
+	. = ..()
+	if(name) src.name = name
+	if(time_required) src.time_required = time_required
+	if(roles) src.roles = roles
+
+/datum/job/proc/setup_requirements(var/list/L)
+	var/list/to_return = list()
+	for(var/PT in L)
+		if(ispath(PT))
+			LAZYADD(to_return, new PT(time_required = L[PT]))
+		else
+			LAZYADD(to_return, TIMELOCK_JOB(PT, L[PT]))
+
+	return to_return
+
+/datum/timelock/proc/can_play(var/client/C)
+	if(islist(roles))
+		var/total = 0
+		for(var/role_required in roles)
+			total += get_job_playtime(C, role_required)
+		
+		return total >= time_required
+	else
+		return get_job_playtime(C, roles) >= time_required
+
+/datum/timelock/proc/get_role_requirement(var/client/C)
+	if(islist(roles))
+		var/total = 0
+		for(var/role_required in roles)
+			total += get_job_playtime(C, role_required)
+		
+		return time_required - total
+	else
+		return time_required - get_job_playtime(C, roles)
 
 /datum/job/proc/can_play_role(var/client/client)
 	if(!config.use_timelocks)
@@ -56,34 +96,20 @@
 		return TRUE
 	
 	for(var/prereq in minimum_playtimes)
-		if(islist(prereq))
-			var/total = 0
-			for(var/prequisite_added in prereq)
-				total += get_job_playtime(client, prequisite_added)
-
-			if(total < LAZYACCESS(minimum_playtimes, prereq))
-				return FALSE
-		else
-			if(get_job_playtime(client, prereq) < LAZYACCESS(minimum_playtimes, prereq))
-				return FALSE
+		var/datum/timelock/T = prereq
+		if(!T.can_play(client))
+			return FALSE
 
 	return TRUE
 
 /datum/job/proc/get_role_requirements(var/client/C)
 	var/list/return_requirements = list()
 	for(var/prereq in minimum_playtimes)
-		var/playtime = get_job_playtime(C, prereq)
-		var/prereq_name = prereq
+		var/datum/timelock/T = prereq
+		var/time_required = T.get_role_requirement(C)
+		if(time_required > 0)
+			return_requirements[T] = time_required
 
-		if(islist(prereq))
-			var/list/L = prereq
-			for(var/prequisite_added in prereq)
-				playtime += get_job_playtime(C, prequisite_added)
-			
-			prereq_name = LAZYACCESS(L, 1)
-
-		if(playtime < LAZYACCESS(minimum_playtimes, prereq))
-			return_requirements[prereq_name] = LAZYACCESS(minimum_playtimes, prereq) - playtime
 	return return_requirements
 
 /datum/job/proc/get_access()

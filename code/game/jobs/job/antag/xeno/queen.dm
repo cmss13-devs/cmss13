@@ -52,6 +52,8 @@
 	if(QS in queen_spawn_list)
 		queen_spawn_list -= QS
 
+	spawn_start_hive_structs(QS)
+
 	var/mob/living/carbon/Xenomorph/new_queen = new /mob/living/carbon/Xenomorph/Queen(QS, null, hive.hivenumber)
 	queen_mind.transfer_to(new_queen)
 	queen_mind.name = queen_mind.current.name
@@ -67,6 +69,14 @@
 	to_chat(new_queen, "<B>Your job is to spread the hive.</B>")
 	to_chat(new_queen, "<B>You should start by building a hive core.</B>")
 	to_chat(new_queen, "Talk in Hivemind using <strong>;</strong> (e.g. ';Hello my children!')")
+
+/datum/job/antag/xenos/queen/proc/spawn_start_hive_structs(var/turf/T)
+	if(!istype(T))
+		return
+
+	for(var/obj/effect/landmark/structure_spawner/xenos/X in get_area(T))
+		new X.path_to_spawn(X.loc)
+		qdel(X)
 
 AddTimelock(/datum/job/antag/xenos/queen, list(
 	JOB_XENO_ROLES = 10 HOURS

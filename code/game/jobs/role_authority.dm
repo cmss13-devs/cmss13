@@ -259,10 +259,12 @@ var/global/marines_assigned = 0
 	for(var/priority in HIGH_PRIORITY to LOW_PRIORITY)		
 		// Assigning xenos first.
 		assign_initial_roles(priority, temp_roles_for_mode & ROLES_XENO)
-		// Assigning command second.
+		// Assigning special roles second. (survivor, predator)
+		assign_initial_roles(priority, temp_roles_for_mode & (ROLES_WHITELISTED|ROLES_SPECIAL))
+		// Assigning command third.
 		assign_initial_roles(priority, temp_roles_for_mode & ROLES_COMMAND)
 		// Assigning the rest
-		var/rest_roles_for_mode = temp_roles_for_mode - (temp_roles_for_mode & ROLES_XENO) - (temp_roles_for_mode & ROLES_COMMAND)
+		var/rest_roles_for_mode = temp_roles_for_mode - (temp_roles_for_mode & ROLES_XENO) - (temp_roles_for_mode & ROLES_COMMAND) - (temp_roles_for_mode & (ROLES_WHITELISTED|ROLES_SPECIAL))
 		roles_left = assign_initial_roles(priority, rest_roles_for_mode)
 
 	for(var/mob/new_player/M in unassigned_players)

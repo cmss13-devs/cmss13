@@ -1,7 +1,7 @@
 
 /datum/xeno_mutator/trapper
 	name = "STRAIN: Boiler - Trapper"
-	description = "You trade your resilient vision increase and ability to bombard for longer range vision, traps that immobilize your opponents, and unblockable acid mines."
+	description = "You trade your ability to bombard for longer range vision, traps that immobilize your opponents, and unblockable acid mines."
 	flavor_description = "I love the smell of burnin' tallhost flesh in the Mornin'."
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
@@ -22,7 +22,6 @@
 		B.zoom_out()
 
 	B.viewsize = 13
-
 	B.mutation_type = BOILER_TRAPPER
 	B.plasma_types -= PLASMA_NEUROTOXIN
 
@@ -73,11 +72,21 @@
 			found = F
 			break
 
+	var/datum/action/xeno_action/activable/boiler_trap/trap_ability = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/activable/boiler_trap)
 	if (found)
 		H.apply_armoured_damage(bonus_damage_shotgun_trapped, ARMOR_BIO, BURN)
+		trap_ability.empowering_charge_counter = trap_ability.empower_charge_max
 	else
 		H.AdjustSlowed(2)
+		trap_ability.empowering_charge_counter += 1
 
+	if(!trap_ability.empowered && trap_ability.empowering_charge_counter >= trap_ability.empower_charge_max)
+		trap_ability.empowered = TRUE
+		trap_ability.button.overlays += "+empowered"
+		to_chat(bound_xeno, SPAN_XENODANGER("You have gained sufficient insight in your prey to empower your next [trap_ability.name]."))
+
+	if(trap_ability.empowering_charge_counter > trap_ability.empower_charge_max)
+		trap_ability.empowering_charge_counter = trap_ability.empower_charge_max
 
 /datum/behavior_delegate/boiler_trapper/on_life()
 	if ((temp_movespeed_time_used + temp_movespeed_cooldown) < world.time)

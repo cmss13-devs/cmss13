@@ -13,9 +13,13 @@
 	layer = RESIN_STRUCTURE_LAYER
 	var/list/tripwires = list()
 	var/hivenumber = XENO_HIVE_NORMAL
+	var/root_duration = 17.5
 
 	var/mob/living/carbon/Xenomorph/bound_xeno // Boiler linked to this trap
-	
+
+/obj/effect/alien/resin/boilertrap/empowered
+	root_duration = 30.0
+
 /obj/effect/alien/resin/boilertrap/New(loc, mob/living/carbon/Xenomorph/X, ttl = 300)
 
 	if(!istype(X))
@@ -62,7 +66,7 @@
 
 	H.frozen = TRUE // cleaned up by the xeno freeze effect anyway
 	H.update_canmove()
-	new /datum/effects/xeno_freeze(H, bound_xeno, , , 17.5)
+	new /datum/effects/xeno_freeze(H, bound_xeno, , , root_duration)
 	to_chat(bound_xeno, SPAN_XENOHIGHDANGER("You feel one of your traps capture a tallhost!"))
 	to_chat(H, SPAN_XENOHIGHDANGER("You are caught by a trap made of foul resin!"))
 	delete_trap()

@@ -454,17 +454,26 @@
 	var/message = null
 	var/mob/living/carbon/Xenomorph/linked_xeno = null
 	var/hivenumber = XENO_HIVE_NORMAL
+	var/empowered = FALSE
 
-/obj/effect/xenomorph/acid_damage_delay/New(loc, damage = 20, delay = 10, message = null, mob/living/carbon/Xenomorph/linked_xeno = null)
+/obj/effect/xenomorph/acid_damage_delay/New(loc, damage = 20, delay = 10, empowered = FALSE, message = null, mob/living/carbon/Xenomorph/linked_xeno = null)
 	..(loc)
+	
 	addtimer(CALLBACK(src, .proc/die), delay)
 	src.damage = damage
 	src.message = message
 	src.linked_xeno = linked_xeno
 	if(src.linked_xeno)
 		hivenumber = src.linked_xeno.hivenumber
+	if(empowered)
+		icon_state = "boiler_bombard_danger"
+		src.empowered = empowered
 
 /obj/effect/xenomorph/acid_damage_delay/proc/deal_damage()
+	var/xeno_empower_modifier = 1
+	var/immobilized_multiplier = 1.45
+	if(empowered)
+		xeno_empower_modifier = 1.25
 	for (var/mob/living/carbon/H in loc)
 		if (H.stat == DEAD)
 			continue
@@ -475,9 +484,19 @@
 		animation_flash_color(H)
 
 		if(isXeno(H))
-			H.apply_armoured_damage(damage * XVX_ACID_DAMAGEMULT, ARMOR_BIO, BURN)
+			H.apply_armoured_damage(damage * XVX_ACID_DAMAGEMULT * xeno_empower_modifier, ARMOR_BIO, BURN)
 		else
-			H.apply_armoured_damage(damage, ARMOR_BIO, BURN)
+			if(empowered)
+				new /datum/effects/acid(H, linked_xeno, initial(linked_xeno.caste_name))
+			var/found = null
+			for (var/datum/effects/xeno_freeze/F in H.effects_list)
+				if (F.source_mob == linked_xeno)
+					found = F
+					break
+			if(found)
+				H.apply_armoured_damage(damage*immobilized_multiplier, ARMOR_BIO, BURN)
+			else
+				H.apply_armoured_damage(damage, ARMOR_BIO, BURN)
 
 		if (message)
 			to_chat(H, SPAN_XENODANGER(message))
@@ -490,9 +509,11 @@
 
 /obj/effect/xenomorph/acid_damage_delay/boiler_landmine
 
+/obj/effect/xenomorph/acid_damage_delay/boiler_landmine/
+	
+
 /obj/effect/xenomorph/acid_damage_delay/boiler_landmine/deal_damage()
 	for (var/obj/structure/barricade/B in loc)
-		B.take_acid_damage(damage*1.0)
+		B.take_acid_damage(damage*(1.2 + 0.55 * empowered))
 
 	return ..()
-

@@ -127,7 +127,7 @@
 
 			turfs_visited++
 			
-			new /obj/effect/xenomorph/acid_damage_delay(T, damage, 7, "You are blasted with a stream of high-velocity acid!", X)
+			new /obj/effect/xenomorph/acid_damage_delay(T, damage, 7, FALSE, "You are blasted with a stream of high-velocity acid!", X)
 
 		X.visible_message(SPAN_XENODANGER("[X] fires a massive blast of acid at [A]!"), SPAN_XENODANGER("You fire a massive blast of acid at [A]!"))
 		remove_stack_effects("You feel your speed return to normal!")
@@ -299,8 +299,20 @@
 
 		if (trap_found)
 			continue
-		
-		new /obj/effect/alien/resin/boilertrap(T, X, trap_ttl)
+		if(empowered)
+			new /obj/effect/alien/resin/boilertrap/empowered(T, X, trap_ttl)
+		else
+			new /obj/effect/alien/resin/boilertrap/(T, X, trap_ttl)
+
+	if(empowered)
+		empowered = FALSE
+		empowering_charge_counter = 0
+		button.overlays -= "+empowered"
+		var/datum/action/xeno_action/activable/acid_mine/mine = get_xeno_action_by_type(X, /datum/action/xeno_action/activable/acid_mine)
+		if(!mine.empowered)
+			mine.empowered = TRUE
+			mine.button.overlays += "+empowered"
+			to_chat(X, SPAN_XENODANGER("You tap in your reserves to prepare a stronger [mine.name]!"))
 
 	apply_cooldown()
 	..()
@@ -330,12 +342,19 @@
 		return
 
 	var/turf/T = get_turf(A)
-	X.visible_message(SPAN_XENODANGER("[X] fires a bolt of acid at [A]!"), SPAN_XENODANGER("You fire a bolt of acid at [A]!"))
+	var/acid_bolt_message = "a bolt of acid"
+	if(empowered)
+		acid_bolt_message = "a powerful bolt of acid"
 
-	new /obj/effect/xenomorph/acid_damage_delay/boiler_landmine(T, damage, delay, "You are blasted with a bolt of acid!", X)
+	X.visible_message(SPAN_XENODANGER("[X] fires " + acid_bolt_message + " at [A]!"), SPAN_XENODANGER("You fire " + acid_bolt_message + " at [A]!"))
+	new /obj/effect/xenomorph/acid_damage_delay/boiler_landmine(T, damage, delay, empowered, "You are blasted with " + acid_bolt_message + "!", X, )
 
 	for (var/turf/targetTurf in orange(1, T))
-		new /obj/effect/xenomorph/acid_damage_delay/boiler_landmine(targetTurf, damage, delay, "You are blasted with a bolt of acid!", X)
+		new /obj/effect/xenomorph/acid_damage_delay/boiler_landmine(targetTurf, damage, delay, empowered, "You are blasted with a " + acid_bolt_message + "!", X)
+
+	if(empowered)
+		empowered = FALSE
+		button.overlays -= "+empowered"
 
 	apply_cooldown()
 	..()

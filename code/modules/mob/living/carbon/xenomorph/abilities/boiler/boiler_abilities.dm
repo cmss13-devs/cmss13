@@ -78,6 +78,9 @@
 
 	/// Config
 	var/trap_ttl = 100
+	var/empowered = FALSE
+	var/empowering_charge_counter = 0
+	var/empower_charge_max = 10
 
 /datum/action/xeno_action/activable/acid_mine
 	name = "Acid Mine"
@@ -89,8 +92,11 @@
 	ability_primacy = XENO_PRIMARY_ACTION_2
 	xeno_cooldown = 55
 
-	var/damage = 55
-	var/delay = 15
+	var/empowered = FALSE
+
+	var/damage = 45
+	var/delay = 13.5
+	var/empowered_delay_bonus = 6.5
 
 /datum/action/xeno_action/activable/acid_shotgun
 	name = "Acid Shotgun"

@@ -105,20 +105,32 @@
 	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_result)
 
 ////////// Oppressor powers
-/datum/action/xeno_action/activable/prae_stomp
-	name = "Stomp"
+/datum/action/xeno_action/activable/prae_abduct
+	name = "Abduct"
 	action_icon_state = "stomp"
-	ability_name = "stomp"
-	macro_path = /datum/action/xeno_action/verb/verb_prae_stomp
+	ability_name = "abduct"
+	macro_path = /datum/action/xeno_action/verb/verb_prae_abduct
 	ability_primacy = XENO_PRIMARY_ACTION_1
 	action_type = XENO_ACTION_CLICK
-	xeno_cooldown = 130
+	xeno_cooldown = 180
 	plasma_cost = 50
 
 	// Config
-	var/max_distance = 5
-	var/windup = 3
-	var/knockdown_power = 1
+	var/max_distance = 7
+	var/windup = 4
+
+/datum/action/xeno_action/activable/oppressor_punch
+	name = "Dislocate"
+	action_icon_state = "punch"
+	ability_name = "dislocate"
+	macro_path = /datum/action/xeno_action/verb/verb_oppressor_punch
+	action_type = XENO_ACTION_CLICK
+	ability_primacy = XENO_PRIMARY_ACTION_2
+	xeno_cooldown = 100
+	plasma_cost = 30
+
+	// Configurables
+	var/damage = 40
 
 
 // This one is more tightly coupled than I'd like, but oh well
@@ -127,7 +139,7 @@
 	action_icon_state = "prae_crush"
 	ability_name = "crush"
 	macro_path = /datum/action/xeno_action/verb/verb_crush
-	ability_primacy = XENO_PRIMARY_ACTION_2
+	ability_primacy = XENO_PRIMARY_ACTION_3
 	action_type = XENO_ACTION_ACTIVATE
 	xeno_cooldown = 100
 	plasma_cost = 50
@@ -138,14 +150,14 @@
 	action_icon_state = "prae_tail_lash"
 	ability_name = "tail lash"
 	macro_path = /datum/action/xeno_action/verb/verb_crush
-	ability_primacy = XENO_PRIMARY_ACTION_3
+	ability_primacy = XENO_PRIMARY_ACTION_4
 	action_type = XENO_ACTION_CLICK
 	xeno_cooldown = 130
 	plasma_cost = 50
 
 	// Config
-	var/fling_dist = 5
-	var/windup = 3
+	var/fling_dist = 3
+	var/windup = 4
 
 ////////// Dancer Abilities
 

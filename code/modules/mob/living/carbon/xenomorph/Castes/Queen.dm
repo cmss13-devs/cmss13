@@ -75,6 +75,7 @@
 	crystal_max = XENO_CRYSTAL_MEDIUM
 	crystal_stored = XENO_CRYSTAL_MEDIUM
 	small_explosives_stun = FALSE
+	pull_speed = 3.0 //screech/neurodragging is cancer, at the very absolute least get some runner to do it for teamwork
 
 	var/map_view = 0
 	var/breathing_counter = 0

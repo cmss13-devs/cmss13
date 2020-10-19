@@ -1,13 +1,13 @@
 /datum/xeno_mutator/praetorian_oppressor
 	// Dread it, run from it, destiny still arrives.. or should I say, I do
 	name = "STRAIN: Praetorian - Oppressor"
-	description = "You abandon your speed to become a nigh-indestructible bulwark of the Queen. Your slashes deal increased damage to prone targets, and you gain a stomp that knocks over opponents in front of you as well as an ability that buffs your next slash and one that knocks your opponents back."
+	description = "You abandon your speed to gain a powerful hook ability. Your slashes deal increased damage to prone targets, and you gain a powerful punch that devastates weakened opponents as well as an ability that buffs your next slash and one that knocks your opponents back."
 	flavor_description = "Dread it. Run from it. The Hive still arrives. Or, more accurately, you do."
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
 	caste_whitelist = list("Praetorian")  
 	mutator_actions_to_remove = list("Xeno Spit","Dash", "Acid Ball", "Spray Acid")
-	mutator_actions_to_add = list(/datum/action/xeno_action/activable/prae_stomp, /datum/action/xeno_action/onclick/crush, /datum/action/xeno_action/activable/tail_lash)
+	mutator_actions_to_add = list(/datum/action/xeno_action/activable/prae_abduct, /datum/action/xeno_action/activable/oppressor_punch, /datum/action/xeno_action/activable/tail_lash)
 	behavior_delegate_type = /datum/behavior_delegate/oppressor_praetorian
 	keystone = TRUE
 
@@ -19,8 +19,9 @@
 	var/mob/living/carbon/Xenomorph/Praetorian/P = MS.xeno
 	
 	P.armor_modifier += XENO_ARMOR_MOD_VERYSMALL
+	P.health_modifier -= XENO_HEALTH_MOD_SMALL
 	P.damage_modifier -= XENO_DAMAGE_MOD_SMALL
-	P.explosivearmor_modifier += XENO_EXPOSIVEARMOR_MOD_LARGE
+	P.explosivearmor_modifier += XENO_EXPOSIVEARMOR_MOD_SMALL
 	P.small_explosives_stun = FALSE
 	P.speed_modifier += XENO_SPEED_MODIFIER_SLOWER
 	P.plasma_types = list(PLASMA_NEUROTOXIN, PLASMA_CHITIN)
@@ -36,11 +37,9 @@
 
 /datum/behavior_delegate/oppressor_praetorian
 	name = "Oppressor Praetorian Behavior Delegate"
-
-	// Config
-	var/additional_damage_vs_prone = 20
+	
 	var/crush_additional_damage = 15
-	var/root_duration = 25
+	var/crush_slow_duration = 30
 	
 	// State
 	// Check if our next slash is empowered by our 'crush' ability.
@@ -55,15 +54,13 @@
 		return
 
 	var/total_bonus_damage = next_slash_buffed ? crush_additional_damage : 0
+	
+	if (H.knocked_down || H.frozen || H.slowed)
+		total_bonus_damage += 15
 
-	if (H.knocked_down)
-		total_bonus_damage += additional_damage_vs_prone
-		if (next_slash_buffed)
-			to_chat(H, SPAN_XENOHIGHDANGER("[bound_xeno] has pinned you to the ground! You cannot move!"))
-			H.frozen = 1
-			H.update_canmove()
-			addtimer(CALLBACK(GLOBAL_PROC, .proc/unroot_human, H), root_duration)
-
+	if (next_slash_buffed)
+		to_chat(H, SPAN_XENOHIGHDANGER("[bound_xeno] knocks you off balance!"))
+		new /datum/effects/xeno_slow(H, bound_xeno, ttl = crush_slow_duration)
 
 	next_slash_buffed = FALSE
 	H.apply_armoured_damage(get_xeno_damage_slash(total_bonus_damage), ARMOR_MELEE, BRUTE)

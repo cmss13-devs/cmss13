@@ -33,12 +33,19 @@
 	var/action_name = "Toggle Cleave Type"
 	handle_xeno_macro(src, action_name) 
 
-/datum/action/xeno_action/verb/verb_prae_stomp()
+/datum/action/xeno_action/verb/verb_prae_abduct()
 	set category = "Alien"
-	set name = "Stomp"
+	set name = "Abduct"
 	set hidden = 1
-	var/action_name = "Stomp"
-	handle_xeno_macro(src, action_name) 
+	var/action_name = "Abduct"
+	handle_xeno_macro(src, action_name)
+
+/datum/action/xeno_action/verb/verb_oppressor_punch()
+	set category = "Alien"
+	set name = "Dislocate"
+	set hidden = 1
+	var/action_name = "Dislocate"
+	handle_xeno_macro(src, action_name)
 
 /datum/action/xeno_action/verb/verb_crush()
 	set category = "Alien"

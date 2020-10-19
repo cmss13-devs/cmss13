@@ -194,7 +194,7 @@
 	buffed = FALSE
 
 ///////// OPPRESSOR POWERS
-/datum/action/xeno_action/activable/prae_stomp/use_ability(atom/A)
+/datum/action/xeno_action/activable/prae_abduct/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
 
 	if(!A || A.layer >= FLY_LAYER || !isturf(X.loc)) 
@@ -209,7 +209,7 @@
 	if(!check_and_use_plasma_owner())
 		return
 
-	X.visible_message(SPAN_XENODANGER("[X] rears up and readies a massive stomp!"), SPAN_XENODANGER("You rear up and ready a massive stomp!"))
+	X.visible_message(SPAN_XENODANGER("[X] prepares to fire its resin spurs at [A]!"), SPAN_XENODANGER("You prepare to fire your resin spurs at [A]!"))
 	X.emote("roar")
 
 	// Build our turflist
@@ -225,39 +225,142 @@
 
 		var/blocked = FALSE
 		for(var/obj/structure/S in temp)
-			if(S.opacity)
+			if(S.opacity || ((istype(S, /obj/structure/barricade) || istype(S, /obj/structure/machinery/door)) && S.density))
 				blocked = TRUE
 				break
 		if(blocked)
 			break
 
 		T = temp
+
+		if (T in turflist)
+			break
+
 		turflist += T
 		facing = get_dir(T, A)
 		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/brown(T, windup)
 
-	// Need a more granular do_after
+	var/throw_target_turf = get_step(X.loc, facing)
+
+	X.frozen = 1
+	X.update_canmove()
 	if(!do_after(X, windup, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, null, null, FALSE, 1, FALSE, 1))
-		to_chat(X, SPAN_XENOWARNING("You cancel your stomp."))
+		to_chat(X, SPAN_XENOWARNING("You cancel your abduct."))
 
 		for (var/obj/effect/xenomorph/xeno_telegraph/XT in telegraph_atom_list)
 			telegraph_atom_list -= XT
 			qdel(XT)
 
+		X.frozen = 0
+		X.update_canmove()
+
 		return
+
+	X.frozen = 0
+	X.update_canmove()
 
 	playsound(get_turf(X), 'sound/effects/bang.ogg', 25, 0)
 
+	var/list/targets = list()
 	for (var/turf/target_turf in turflist)
 		for (var/mob/living/carbon/H in target_turf)
-			if(!isXenoOrHuman(H) || X.match_hivemind(H))
+			if(!isXenoOrHuman(H) || X.match_hivemind(H) || H.is_dead())
 				continue
+
+			targets += H
+
+	if (LAZYLEN(targets) == 1)
+		to_chat(X, SPAN_XENOHIGHDANGER("You hit one target! You will slow it."))
+	else if (LAZYLEN(targets) == 2)
+		to_chat(X, SPAN_XENOHIGHDANGER("You hit two targets! You will daze and root them!"))
+	else if (LAZYLEN(targets) >= 3)
+		to_chat(X, SPAN_XENOHIGHDANGER("You hit 3 or more targets! You will stun them!"))
+
+	for (var/mob/living/carbon/H in targets)
+		to_chat(H, SPAN_XENOHIGHDANGER("You are pulled toward [X]!"))
+
+		H.KnockDown(0.2)
+
+		if (LAZYLEN(targets) == 1)
+			new /datum/effects/xeno_slow(H, X, , ,25)
+		else if (LAZYLEN(targets) == 2)
 			
-			to_chat(H, SPAN_XENOHIGHDANGER("You are knocked over as the ground shakes underneath you!"))
-			if(H.mob_size < MOB_SIZE_BIG)
-				H.KnockDown(get_xeno_stun_duration(H, knockdown_power))
-			new /datum/effects/xeno_freeze(H, X, , , get_xeno_stun_duration(H, knockdown_power))
+			H.frozen = 1
+			H.update_canmove()
+			if (ishuman(H))
+				var/mob/living/carbon/human/Hu = H
+				Hu.update_xeno_hostile_hud()
+			addtimer(CALLBACK(GLOBAL_PROC, .proc/unroot_human, H), get_xeno_stun_duration(H, 25))
+			to_chat(H, SPAN_XENOHIGHDANGER("[X] has pinned you to the ground! You cannot move!"))
 			
+			H.SetDazed(2)
+		else if (LAZYLEN(targets) >= 3)
+			H.KnockDown(get_xeno_stun_duration(H, 1.3))
+			to_chat(H, SPAN_XENOHIGHDANGER("You are slammed into the other victims of [X]!"))
+			
+		
+		shake_camera(H, 10, 1)
+		H.throw_atom(throw_target_turf, get_dist(throw_target_turf, H)-1, SPEED_VERY_FAST)
+
+	apply_cooldown()
+	..()
+	return
+
+/datum/action/xeno_action/activable/oppressor_punch/use_ability(atom/A)
+	var/mob/living/carbon/Xenomorph/X = owner
+
+	if (!action_cooldown_check())
+		return
+
+	if (!isXenoOrHuman(A) || X.match_hivemind(A))
+		return
+
+	if (!X.check_state() || X.agility)
+		return
+
+	var/mob/living/carbon/H = A
+
+	if (!X.Adjacent(H))
+		return
+
+	if(H.stat == DEAD) return
+
+	var/obj/limb/L = H.get_limb(check_zone(X.zone_selected))
+
+	if (ishuman(H) && (!L || (L.status & LIMB_DESTROYED)))
+		return
+
+	if (!check_and_use_plasma_owner())
+		return
+
+	H.last_damage_mob = X
+	H.last_damage_source = initial(X.caste_name)
+
+	X.visible_message(SPAN_XENOWARNING("\The [X] hits [H] in the [L? L.display_name : "chest"] with a devastatingly powerful punch!"), \
+	SPAN_XENOWARNING("You hit [H] in the [L? L.display_name : "chest"] with a devastatingly powerful punch!"))
+	var/S = pick('sound/weapons/punch1.ogg','sound/weapons/punch2.ogg','sound/weapons/punch3.ogg','sound/weapons/punch4.ogg')
+	playsound(H,S, 50, 1)
+
+	if (H.frozen || H.slowed || H.knocked_down)
+		H.apply_damage(get_xeno_damage_slash(H, damage), BRUTE, L? L.name : "chest")
+		H.frozen = 1
+		H.update_canmove()
+
+		if (ishuman(H))
+			var/mob/living/carbon/human/Hu = H
+			Hu.update_xeno_hostile_hud()
+
+		addtimer(CALLBACK(GLOBAL_PROC, .proc/unroot_human, H), get_xeno_stun_duration(H, 12))
+		to_chat(H, SPAN_XENOHIGHDANGER("[X] has pinned you to the ground! You cannot move!"))
+	else
+		H.apply_armoured_damage(get_xeno_damage_slash(H, damage), ARMOR_MELEE, BRUTE, L? L.name : "chest")
+		step_away(H, X, 2)
+		
+
+	shake_camera(H, 2, 1)
+
+	
+
 	apply_cooldown()
 	..()
 	return
@@ -334,6 +437,13 @@
 		target_turfs += next_turf
 		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/brown(next_turf, windup)
 
+	if (facing in diagonals)
+		var/diag_turf = get_step(X, facing)
+
+		for (var/cardinal_dir in cardinal)
+			if ((facing & cardinal_dir) != 0)
+				target_turfs += get_step(diag_turf, cardinal_dir)
+
 	if(!do_after(X, windup, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 		to_chat(X, SPAN_XENOWARNING("You cancel your tail lash."))
 
@@ -363,7 +473,7 @@
 			xeno_throw_human(H, X, facing, fling_dist)
 
 			H.KnockDown(get_xeno_stun_duration(H, 0.5))
-			new /datum/effects/xeno_slow(H, X, , , get_xeno_stun_duration(H, 20))
+			new /datum/effects/xeno_slow(H, X, ttl = get_xeno_stun_duration(H, 25))
 
 	..()
 	return

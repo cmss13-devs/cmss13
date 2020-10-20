@@ -139,6 +139,8 @@
 		return
 	if(href_list["inject_amount"])
 		acid_core.inject_amount = input("Set inject amount:","[src]") as num
+		if(acid_core.inject_amount < 1)
+			acid_core.inject_amount = 1
 	else if(href_list["inject_damage_threshold"])
 		acid_core.inject_damage_threshold = input("Set damage threshold:","[src]") as num
 	else if(href_list["inject_logic"])

@@ -1,8 +1,8 @@
 // Doctor
 /datum/job/civilian/doctor
 	title = JOB_DOCTOR
-	total_positions = 6
-	spawn_positions = 6
+	total_positions = 5
+	spawn_positions = 5
 	allow_additional = 1	
 	scaled = 1
 	supervisors = "the chief medical officer"

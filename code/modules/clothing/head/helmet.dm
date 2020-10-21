@@ -168,47 +168,6 @@
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 	siemens_coefficient = 0.7
 
-//Non-hardsuit ERT helmets.
-/obj/item/clothing/head/helmet/ert
-	name = "emergency response team helmet"
-	desc = "An in-atmosphere helmet worn by members of the Emergency Response Team. Protects the head from impacts."
-	icon_state = "erthelmet_cmd"
-	item_state = "syndicate-helm-green"
-	armor_melee = 62
-	armor_bullet = 50
-	armor_laser = 50
-	armor_energy = 35
-	armor_bomb = 10
-	armor_bio = 2
-	armor_rad = 0
-	anti_hug = 5
-
-//Commander
-/obj/item/clothing/head/helmet/ert/command
-	name = "emergency response team commander helmet"
-	desc = "An in-atmosphere helmet worn by the commander of a Emergency Response Team. Has blue highlights."
-
-//Security
-/obj/item/clothing/head/helmet/ert/security
-	name = "emergency response team security helmet"
-	desc = "An in-atmosphere helmet worn by security members of the Emergency Response Team. Has red highlights."
-	icon_state = "erthelmet_sec"
-
-//Engineer
-/obj/item/clothing/head/helmet/ert/engineer
-	name = "emergency response team engineer helmet"
-	desc = "An in-atmosphere helmet worn by engineering members of the Emergency Response Team. Has orange highlights."
-	icon_state = "erthelmet_eng"
-
-//Medical
-/obj/item/clothing/head/helmet/ert/medical
-	name = "emergency response team medical helmet"
-	desc = "A set of armor worn by medical members of the Emergency Response Team. Has red and white highlights."
-	icon_state = "erthelmet_med"
-
-
-
-
 
 //===========================//MARINES HELMETS\\=================================\\
 //=======================================================================\\

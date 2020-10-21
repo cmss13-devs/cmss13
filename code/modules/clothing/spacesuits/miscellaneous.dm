@@ -1,37 +1,4 @@
 
-
-//Deathsquad suit
-/obj/item/clothing/head/helmet/space/deathsquad
-	name = "deathsquad helmet"
-	desc = "That's not red paint. That's real blood."
-	icon_state = "deathsquad"
-	item_state = "deathsquad"
-	armor_melee = CLOTHING_ARMOR_VERYHIGH
-	armor_bullet = CLOTHING_ARMOR_ULTRAHIGH
-	armor_laser = CLOTHING_ARMOR_HIGH
-	armor_energy = CLOTHING_ARMOR_HIGH
-	armor_bomb = CLOTHING_ARMOR_VERYHIGH
-	armor_bio = CLOTHING_ARMOR_VERYHIGH
-	armor_rad = CLOTHING_ARMOR_HIGH
-	armor_internaldamage = CLOTHING_ARMOR_HARDCORE
-	siemens_coefficient = 0.6
-
-/obj/item/clothing/head/helmet/space/deathsquad/beret
-	name = "officer's beret"
-	desc = "An armored beret commonly used by special operations officers."
-	icon_state = "beret_badge"
-	armor_melee = CLOTHING_ARMOR_MEDIUM
-	armor_bullet = CLOTHING_ARMOR_MEDIUM
-	armor_laser = CLOTHING_ARMOR_MEDIUMLOW
-	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
-	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
-	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
-	armor_rad = CLOTHING_ARMOR_MEDIUMLOW
-	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
-	flags_inventory = NOPRESSUREDMAGE|BLOCKSHARPOBJ
-	flags_inv_hide = HIDEEYES
-	siemens_coefficient = 0.9
-
 //Space santa outfit suit
 /obj/item/clothing/head/helmet/space/santahat
 	name = "Santa's hat"

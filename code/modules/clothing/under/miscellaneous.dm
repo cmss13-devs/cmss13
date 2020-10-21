@@ -10,11 +10,6 @@
 	icon_state = "blue_pyjamas"
 	item_state = "w_suit"
 
-/obj/item/clothing/under/captain_fly
-	name = "rogue captains uniform"
-	desc = "For the man who doesn't care because he's still free."
-	icon_state = "captain_fly"
-
 /obj/item/clothing/under/scratch
 	name = "white suit"
 	desc = "A white suit, suitable for an excellent host"
@@ -37,13 +32,6 @@
 	item_state = "b_suit"
 	rollable_sleeves = FALSE
 
-/obj/item/clothing/under/rank/vice
-	name = "vice officer's jumpsuit"
-	desc = "It's the standard issue pretty-boy outfit, as seen on Holo-Vision."
-	icon_state = "vice"
-	item_state = "gy_suit"
-	rollable_sleeves = FALSE
-
 /obj/item/clothing/under/rank/centcom_officer
 	desc = "It's a jumpsuit worn by CentCom Officers."
 	name = "\improper CentCom officer's jumpsuit"
@@ -58,12 +46,6 @@
 	item_state = "dg_suit"
 	rollable_sleeves = FALSE
 
-/obj/item/clothing/under/ert
-	name = "ERT tactical uniform"
-	desc = "A short-sleeved black uniform, paired with grey digital-camo cargo pants. It looks very tactical."
-	icon_state = "ert_uniform"
-	item_state = "bl_suit"
-
 /obj/item/clothing/under/space
 	name = "\improper NASA jumpsuit"
 	desc = "It has a NASA logo on it and is made of space-proofed materials."
@@ -75,17 +57,6 @@
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_FEET|BODY_FLAG_ARMS|BODY_FLAG_HANDS
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_ARMS //Needs gloves and shoes with cold protection to be fully protected.
 	min_cold_protection_temperature = SPACE_SUIT_min_cold_protection_temperature
-
-/obj/item/clothing/under/psysuit
-	name = "dark undersuit"
-	desc = "A thick, layered grey undersuit lined with power cables. Feels a little like wearing an electrical storm."
-	icon_state = "psysuit"
-	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_FEET|BODY_FLAG_ARMS|BODY_FLAG_HANDS
-
-/obj/item/clothing/under/gentlesuit
-	name = "Gentlemans Suit"
-	desc = "A silk black shirt with a white tie and a matching gray vest and slacks. Feels proper."
-	icon_state = "gentlesuit"
 
 /obj/item/clothing/under/suit_jacket
 	name = "black suit"

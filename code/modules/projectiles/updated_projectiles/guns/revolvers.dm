@@ -430,6 +430,7 @@
 						/obj/item/attachable/mateba/long,
 						/obj/item/attachable/mateba/short)
 	starting_attachment_types = list(/obj/item/attachable/mateba)
+	unacidable = TRUE
 
 /obj/item/weapon/gun/revolver/mateba/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/weapon/mateba_key))

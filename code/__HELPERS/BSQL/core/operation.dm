@@ -2,8 +2,7 @@
 	var/datum/BSQL_Connection/connection
 	var/id
 
-/datum/BSQL_Operation/can_vv_get()
-	return FALSE
+BSQL_PROTECT_DATUM(/datum/BSQL_Operation)
 
 /datum/BSQL_Operation/New(datum/BSQL_Connection/connection, id)
 	src.connection = connection

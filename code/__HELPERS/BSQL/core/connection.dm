@@ -2,8 +2,7 @@
 	var/id
 	var/connection_type
 
-/datum/BSQL_Connection/can_vv_get()
-	return FALSE
+BSQL_PROTECT_DATUM(/datum/BSQL_Connection)
 
 /datum/BSQL_Connection/New(connection_type, asyncTimeout, blockingTimeout, threadLimit)
 	if(asyncTimeout == null)

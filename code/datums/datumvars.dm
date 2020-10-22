@@ -1,19 +1,13 @@
 
 // reference: /client/proc/modify_variables(var/atom/O, var/param_var_name = null, var/autodetect_class = 0)
 
+/datum/proc/is_datum_protected()
+	return FALSE
+
 /datum/proc/can_vv_get()
 	return TRUE
 
 /datum/proc/can_vv_modify()
-	return TRUE
-
-/proc/can_modify(var/V)
-	if(isdatum(V))
-		var/datum/D = V
-		return D.can_vv_modify()
-	else if (istype(V, /atom))
-		var/atom/A = V
-		return A.can_vv_modify()
 	return TRUE
 
 /client/can_vv_modify()
@@ -38,7 +32,7 @@
 		to_chat(usr, SPAN_WARNING("You need host permission to access this."))
 		return
 
-	if(( !D.can_vv_get() ) && !(usr.client.admin_holder.rights & R_DEBUG))
+	if(( !D.can_vv_get() || D.is_datum_protected() ) && !(usr.client.admin_holder.rights & R_DEBUG))
 		to_chat(usr, SPAN_WARNING("You need debugging permission to access this."))
 		return
 
@@ -592,6 +586,10 @@ body
 		var/datum/D = locate(href_list["mark_object"])
 		if(!istype(D))
 			to_chat(usr, "This can only be done to instances of type /datum")
+			return
+
+		if(D.is_datum_protected())
+			to_chat(usr, SPAN_WARNING("This datum is protected. Access Denied"))
 			return
 
 		if(D in admin_holder.marked_datums)

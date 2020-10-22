@@ -2,8 +2,7 @@
 	var/last_result_json
 	var/list/last_result
 
-/datum/BSQL_Operation/Query/can_vv_get()
-	return FALSE
+BSQL_PROTECT_DATUM(/datum/BSQL_Operation/Query)
 
 /datum/BSQL_Operation/Query/CurrentRow()
 	return last_result

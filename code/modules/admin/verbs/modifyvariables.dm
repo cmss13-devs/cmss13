@@ -314,7 +314,11 @@ var/list/forbidden_varedit_object_types = list(
 
 	var/list/locked = list("vars", "key", "ckey", "client", "icon")
 
-	if(!can_modify(O) && !(admin_holder.rights & R_DEBUG))
+	if(O.is_datum_protected())
+		to_chat(usr, SPAN_WARNING("This datum is protected. Access Denied"))
+		return
+
+	if(!O.can_vv_modify() && !(admin_holder.rights & R_DEBUG))
 		to_chat(usr, "You can't modify this object! You require debugging permission")
 		return
 

@@ -17,7 +17,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 /client/proc/callproc(var/datum/target_datum=null)
 	set waitfor = 0
 
-	if(!check_rights(R_DEBUG) || (config.debugparanoid && !check_rights(R_ADMIN)) || (target_datum && !target_datum.can_vv_get()))
+	if(!check_rights(R_DEBUG) || (config.debugparanoid && !check_rights(R_ADMIN)))
 		return
 
 	var/datum/target = target_datum
@@ -55,8 +55,10 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 					target = world
 				else
 					return
-			if(target_datum && !target_datum.can_vv_get())
-				return
+
+	if(target.is_datum_protected())
+		to_chat(usr, SPAN_WARNING("This datum is protected. Access Denied"))
+		return
 
 	var/procname = input("Proc path, eg: /proc/fake_blood","Path:", null) as text|null
 	if(!procname)	

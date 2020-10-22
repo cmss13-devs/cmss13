@@ -59,7 +59,7 @@
 		if(!linked_hive || M.stat != DEAD)
 			return
 		
-		if(ticker && ticker.mode && !(ticker.mode.flags_round_type & MODE_XVX_SPAWNPOOL))
+		if(ticker && ticker.mode && !(ticker.mode.flags_round_type & MODE_XVX))
 			return // For now, disabled on gamemodes that don't support it (primarily distress signal)
 
 		// Will probably allow for hives to slowly gain larva by killing hostile xenos and taking them to the spawnpool

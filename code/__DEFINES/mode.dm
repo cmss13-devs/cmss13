@@ -39,7 +39,7 @@
 #define MODE_INFECTION			32
 #define MODE_HUMAN_ANTAGS		64
 #define MODE_NO_SPAWN 			128 // Disables marines from spawning in normally
-#define MODE_XVX_SPAWNPOOL		256 // Allows xenos to place hostile xeno bodies into their spawnpool
+#define MODE_XVX				256 // Affects several castes for XvX, as well as other things (e.g. spawnpool)
 #define MODE_NEW_SPAWN 			512 // Enables the new spawning, only works for Distress currently
 
 #define ROUNDSTATUS_FOG_DOWN 		1

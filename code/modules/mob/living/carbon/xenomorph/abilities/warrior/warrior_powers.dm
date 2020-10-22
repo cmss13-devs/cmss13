@@ -313,6 +313,10 @@
 
 	if (!X.Adjacent(H))
 		return
+	
+	if(H.mob_size >= MOB_SIZE_BIG)
+		to_chat(X, SPAN_XENOWARNING("[H] is too big for you to uppercut!"))
+		return
 
 	var/datum/action/xeno_action/activable/jab/JA = get_xeno_action_by_type(X, /datum/action/xeno_action/activable/jab)
 	if (istype(JA))
@@ -358,8 +362,12 @@
 	if(knockdown)
 		H.KnockDown(base_knockdown * ko_counter)
 
+	var/mob_multiplier = 1
+	if(isXeno(H))
+		mob_multiplier = XVX_WARRIOR_HEALMULT
+
 	if(ko_counter > 0)
-		X.gain_health(ko_counter * base_healthgain * X.maxHealth / 100)
+		X.gain_health(mob_multiplier * ko_counter * base_healthgain * X.maxHealth / 100)
 
 	apply_cooldown()
 	..()

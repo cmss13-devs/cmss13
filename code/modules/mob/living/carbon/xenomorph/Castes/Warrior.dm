@@ -94,6 +94,11 @@
 	. = ..(L, lunge, should_neckgrab)
 
 	if(.) //successful pull
+		if(isXeno(L))
+			var/mob/living/carbon/Xenomorph/X = L
+			if(X.tier >= 2) // Tier 2 castes or higher immune to warrior grab stuns
+				return .
+
 		if(should_neckgrab && L.mob_size < MOB_SIZE_BIG)
 			L.drop_held_items()
 			L.KnockDown(get_xeno_stun_duration(L, 2))
@@ -141,6 +146,13 @@
 
 	var/image/ko_icon
 	var/image/big_ko_icon
+
+/datum/behavior_delegate/boxer/New()
+	. = ..()
+	
+	if(ticker && ticker.mode && (ticker.mode.flags_round_type & MODE_XVX)) // this is pain to do, but how else? hopefully we can replace clarity with something better in the future
+		clear_head = 0
+		max_clear_head = 0
 
 /datum/behavior_delegate/boxer/append_to_stat()
 	if(punching_bag)

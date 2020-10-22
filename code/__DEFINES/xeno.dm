@@ -91,6 +91,10 @@
 
 #define XVX_STUN_LENGTHMULT 1.25
 
+
+// Caste-specific
+#define XVX_WARRIOR_HEALMULT 0.35
+
 // Weed defines
 #define WEED_LEVEL_STANDARD  1.5
 #define WEED_LEVEL_HIVE      4

@@ -19,6 +19,8 @@
 									"min_fire_rad" = 1,		"min_fire_int" = 3,		"min_fire_dur" = 3
 	)
 	var/falloff_mode = EXPLOSION_FALLOFF_SHAPE_LINEAR
+	var/use_dir = FALSE
+	var/angle = 360
 	var/has_blast_wave_dampener = FALSE; //Whether or not the casing can be toggle between different falloff_mode
 
 /obj/item/explosive/Initialize()

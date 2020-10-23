@@ -226,6 +226,7 @@
 			overlays += new /obj/effect/overlay/danger
 			layer = INTERIOR_DOOR_LAYER
 			addtimer(CALLBACK(src, .proc/delayed_prime, target_turf), SECONDS_3)
+			return
 		else
 			. = ..()
 		if(!QDELETED(src))

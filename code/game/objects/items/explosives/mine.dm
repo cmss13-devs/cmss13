@@ -1,4 +1,3 @@
-
 ///***MINES***///
 //Mines have an invisible "tripwire" atom that explodes when crossed
 //Stepping directly on the mine will also blow it up
@@ -21,7 +20,8 @@
 							"max_fire_rad" = 5,		"max_fire_int" = 12,	"max_fire_dur" = 18,
 							"min_fire_rad" = 2,		"min_fire_int" = 3,		"min_fire_dur" = 3
 	)
-
+	angle = 60
+	use_dir = TRUE
 	var/iff_signal = FACTION_MARINE
 	var/triggered = FALSE
 	var/obj/effect/mine_tripwire/tripwire
@@ -82,15 +82,9 @@
 	source_mob = user
 	anchored = TRUE
 	playsound(loc, 'sound/weapons/mine_armed.ogg', 25, 1)
-	user.drop_held_item(src)
+	user.drop_inv_item_on_ground(src)
 	dir = user.dir //The direction it is planted in is the direction the user faces at that time
-	if(customizable)
-		activate_sensors()
-	else
-		active = TRUE
-		var/tripwire_loc = get_turf(get_step(loc, dir))
-		tripwire = new(tripwire_loc)
-		tripwire.linked_claymore = src
+	activate_sensors()
 	update_icon()
 
 
@@ -116,13 +110,39 @@
 		return ..()
 
 /obj/item/explosive/mine/proc/disarm()
+	if(customizable)
+		activate_sensors()
 	anchored = FALSE
 	active = FALSE
 	triggered = FALSE
-	if(customizable)
-		activate_sensors()
 	update_icon()
 	QDEL_NULL(tripwire)
+
+/obj/item/explosive/mine/activate_sensors()
+	if(active)
+		return
+
+	if(!customizable)
+		set_tripwire()
+		return;
+
+	if(customizable && assembly_stage == ASSEMBLY_LOCKED)
+		if(!detonator || (isigniter(detonator.a_right) && isigniter(detonator.a_left)))
+			set_tripwire()
+			return
+		else
+			..()
+			use_dir = FALSE // Claymore defaults to radial in these case. Poor man C4
+			triggered = TRUE // Delegating the tripwire/crossed function to the sensor.
+
+
+/obj/item/explosive/mine/proc/set_tripwire()
+	if(!active && !tripwire)
+		var/tripwire_loc = get_turf(get_step(loc, dir))
+		tripwire = new(tripwire_loc)
+		tripwire.linked_claymore = src
+		active = TRUE
+
 
 //Mine can also be triggered if you "cross right in front of it" (same tile)
 /obj/item/explosive/mine/Crossed(atom/A)
@@ -159,7 +179,7 @@
 	set waitfor = 0
 
 	if(!customizable)
-		create_shrapnel(loc, 12, dir, 60, , initial(name), source_mob)
+		create_shrapnel(loc, 12, dir, angle, , initial(name), source_mob)
 		sleep(2) //so that shrapnel has time to hit mobs before they are knocked over by the explosion
 		cell_explosion(loc, 60, 20, EXPLOSION_FALLOFF_SHAPE_LINEAR, dir, initial(name), source_mob)
 		qdel(src)

@@ -593,6 +593,8 @@ var/const/INGEST = 2
 	var/ex_power = 0
 	var/ex_falloff = base_ex_falloff
 	var/ex_falloff_shape = EXPLOSION_FALLOFF_SHAPE_LINEAR
+	var/dir = null
+	var/angle = 360
 	//For chemical fire
 	var/radius = 0
 	var/intensity = 0
@@ -617,23 +619,29 @@ var/const/INGEST = 2
 	if(istype(my_atom, /obj/item/explosive))
 		var/obj/item/explosive/E = my_atom
 		ex_falloff_shape = E.falloff_mode
+		angle = E.angle
+		if(E.use_dir)
+			if(E.last_move_dir) // Higher precision for grenade and what not.
+				dir = E.last_move_dir
+			else
+				dir = E.dir
 		
 	//only integers please
 	radius = round(radius)
 	intensity = round(intensity)
 	duration = round(duration)
 	if(ex_power > 0)
-		explode(sourceturf, ex_power, ex_falloff, ex_falloff_shape)
+		explode(sourceturf, ex_power, ex_falloff, ex_falloff_shape, dir, angle)
 	if(intensity > 0)
 		var/firecolor = mix_burn_colors(supplements)
-		combust(sourceturf, radius, intensity, duration, supplemented, firecolor, smokerad)
+		combust(sourceturf, radius, intensity, duration, supplemented, firecolor, smokerad) // TODO: Implement directional flames
 	if(exploded && sourceturf)
 		sourceturf.chemexploded = TRUE // to prevent grenade stacking
 		addtimer(CALLBACK(sourceturf, /turf.proc/reset_chemexploded), SECONDS_2)
 	trigger_volatiles = FALSE
 	return exploded
 
-/datum/reagents/proc/explode(var/turf/sourceturf, var/ex_power, var/ex_falloff, var/ex_falloff_shape)
+/datum/reagents/proc/explode(var/turf/sourceturf, var/ex_power, var/ex_falloff, var/ex_falloff_shape, var/dir, var/angle)
 	if(!sourceturf)
 		return
 	if(sourceturf.chemexploded)
@@ -666,13 +674,12 @@ var/const/INGEST = 2
 			ex_falloff = 25
 
 		//Note: No need to log here as that is done in cell_explosion()
-
-		create_shrapnel(sourceturf, shards, , ,shard_type, "chemical explosion", source_mob)
+		create_shrapnel(sourceturf, shards, dir, angle, shard_type, "chemical explosion", source_mob)
 		sleep(2) // So mobs aren't knocked down before getting hit by shrapnel
 		if((istype(my_atom, /obj/item/explosive/plastic) || istype(my_atom, /obj/item/explosive/grenade)) && (ismob(my_atom.loc) || isStructure(my_atom.loc)))
 			my_atom.loc.ex_act(ex_power)
 			ex_power = ex_power / 2
-		cell_explosion(sourceturf, ex_power, ex_falloff, ex_falloff_shape, null, "chemical explosion", source_mob)
+		cell_explosion(sourceturf, ex_power, ex_falloff, ex_falloff_shape, dir, "chemical explosion", source_mob) //TODO? support angle
 
 		exploded = TRUE // clears reagents after all reactions processed
 

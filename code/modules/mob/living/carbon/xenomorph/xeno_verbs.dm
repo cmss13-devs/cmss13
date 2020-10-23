@@ -73,3 +73,9 @@
 		to_chat(src, SPAN_NOTICE("Attacks will now use directional assist."))
 	else
 		to_chat(src, SPAN_NOTICE("Attacks will no longer use directional assist."))
+
+/mob/living/carbon/Xenomorph/cancel_camera()
+	. = ..()
+
+	if(observed_xeno)
+		overwatch(observed_xeno, TRUE)

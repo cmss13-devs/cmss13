@@ -368,7 +368,6 @@
 	heat_level_2 = 480
 	heat_level_3 = 1100
 
-
 //Various horrors that spawn in and haunt the living.
 /datum/species/human/spook
 	name = "Horror"

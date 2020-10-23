@@ -441,7 +441,7 @@
 
 /proc/CanHug(mob/living/carbon/M, var/hivenumber)
 
-	if(!istype(M) || isXeno(M) || isSynth(M) || iszombie(M) || isHellhound(M) || M.stat == DEAD)
+	if(!istype(M) || isXeno(M) || isSynth(M) || iszombie(M) || isHellhound(M) || M.stat == DEAD || (M.huggable == FALSE))
 		return FALSE
 
 	if(M.status_flags & XENO_HOST)

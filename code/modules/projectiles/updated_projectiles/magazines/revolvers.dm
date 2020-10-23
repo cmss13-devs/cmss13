@@ -80,11 +80,8 @@
 	max_rounds = 7
 	gun_type = /obj/item/weapon/gun/revolver/m44
 
-/obj/item/ammo_magazine/internal/revolver/m44/custom
-	caliber = ".44"
-	max_rounds = 7
+/obj/item/ammo_magazine/internal/revolver/m44/marksman
 	default_ammo = /datum/ammo/bullet/revolver/marksman //because the starting m44 custom revolver belt is full of marksman ammo, but your gun would have normal ammo loaded
-	gun_type = /obj/item/weapon/gun/revolver/m44/custom
 
 //-------------------------------------------------------
 //RUSSIAN REVOLVER //Based on the 7.62mm Russian revolvers.

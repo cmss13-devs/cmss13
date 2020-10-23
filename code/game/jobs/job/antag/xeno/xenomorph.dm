@@ -1,5 +1,5 @@
 
-#define XENO_TO_MARINES_SPAWN_RATIO 1/4
+#define XENO_TO_MARINES_SPAWN_RATIO 1/3
 
 /datum/job/antag/xenos
 	title = JOB_XENOMORPH

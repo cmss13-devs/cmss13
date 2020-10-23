@@ -2600,7 +2600,7 @@
 "aha" = (
 /obj/structure/machinery/door/airlock/almayer/command{
 	name = "\improper Commanding Officer's Quarters";
-	req_access = list(1)
+	req_access = list(31)
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2;
@@ -13164,7 +13164,8 @@
 "aIB" = (
 /obj/structure/machinery/door/airlock/almayer/command{
 	dir = 2;
-	name = "\improper Commanding Officer's Office"
+	name = "\improper Commanding Officer's Office";
+	req_access = list(31)
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/machinery/door/firedoor/border_only/almayer{
@@ -49528,6 +49529,10 @@
 	tag = "icon-rasputin15"
 	},
 /area/almayer/hull/lower_hull)
+"pjb" = (
+/mob,
+/turf/closed/wall/almayer,
+/area/almayer/living/pilotbunks)
 "pjC" = (
 /obj/structure/machinery/autolathe,
 /turf/open/floor/almayer{
@@ -82195,7 +82200,7 @@ amh
 amb
 aiX
 aiX
-aiX
+pjb
 aiX
 aiX
 aiX

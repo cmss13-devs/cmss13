@@ -357,7 +357,7 @@
 
 /datum/equipment_preset/uscm_ship/xo/New()
 	. = ..()
-	access = get_all_marine_access()
+	access = get_all_marine_access() - ACCESS_MARINE_CAPTAIN
 
 /datum/equipment_preset/uscm_ship/xo/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/satchel
@@ -425,7 +425,7 @@
 
 /datum/equipment_preset/uscm_ship/sea/New()
 	. = ..()
-	access = get_all_marine_access()
+	access = get_all_marine_access() - ACCESS_MARINE_CAPTAIN
 
 /datum/equipment_preset/uscm_ship/sea/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/satchel

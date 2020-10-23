@@ -43,7 +43,6 @@
 		var/powerfactor_value = round( damage * 0.05 ,1)
 		powerfactor_value = min(powerfactor_value,20)
 		if(powerfactor_value > 0 && small_explosives_stun)
-			KnockDown(powerfactor_value/5)
 			KnockOut(powerfactor_value/5)
 			if(mob_size != MOB_SIZE_BIG)
 				Slow(powerfactor_value)
@@ -53,7 +52,6 @@
 			explosion_throw(severity, direction)
 		else if(powerfactor_value > 10)
 			powerfactor_value /= 5
-			KnockDown(powerfactor_value/5)
 			KnockOut(powerfactor_value/5)
 			if(mob_size != MOB_SIZE_BIG)
 				Slow(powerfactor_value)

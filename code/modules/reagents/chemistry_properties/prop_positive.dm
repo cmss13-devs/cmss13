@@ -370,7 +370,7 @@
 /datum/chem_property/positive/neurocryogenic/process(mob/living/M, var/potency = 1)
 	if(prob(20))
 		to_chat(M, SPAN_WARNING("You feel like you have the worst brain freeze ever!"))
-	M.knocked_out = max(M.knocked_out, 20)
+	M.KnockOut(20)
 	M.stunned = max(M.stunned,21)
 
 /datum/chem_property/positive/neurocryogenic/process_overdose(mob/living/M, var/potency = 1)
@@ -673,7 +673,7 @@
 
 /datum/chem_property/positive/cardiostabilizing/process_overdose(mob/living/M, var/potency = 1)
 	M.make_jittery(5) //Overdose causes a spasm
-	M.knocked_out = max(M.knocked_out, 20)
+	M.KnockOut(20)
 
 /datum/chem_property/positive/cardiostabilizing/process_critical(mob/living/M, var/potency = 1)
 	M.drowsyness = max(M.drowsyness, 20)
@@ -703,7 +703,7 @@
 	M.apply_damage(potency, TOX)
 
 /datum/chem_property/positive/aiding/process_critical(mob/living/M, var/potency = 1)
-	M.knocked_out = max(M.knocked_out, 20 * potency) //Total DNA collapse
+	M.KnockOut(20 * potency) //Total DNA collapse // That's some long goddamn stun
 	M.apply_damage(potency, TOX)
 	M.apply_damage(3 * potency, CLONE)
 

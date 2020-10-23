@@ -102,6 +102,26 @@
 		deltimer(knocked_down_timer)
 	knocked_down_timer = null
 
+/mob/var/knocked_out_timer
+
+/mob/proc/knocked_out_callback()
+	knocked_out = 0
+	handle_regular_status_updates(FALSE)
+	update_canmove()
+	knocked_out_timer = null
+
+/mob/proc/knocked_out_callback_check()
+	if(knocked_out && knocked_out < recovery_constant)
+		knocked_out_timer = addtimer(CALLBACK(src, .proc/knocked_out_callback), (knocked_out/recovery_constant) * 2 SECONDS, TIMER_OVERRIDE|TIMER_UNIQUE) // times whatever amount we have per tick
+		return
+	else if(!knocked_out)
+		//It's been called, and we're probably inconscious, so fix that.
+		knocked_out_callback()
+
+	if(knocked_out_timer)
+		deltimer(knocked_out_timer)
+	knocked_out_timer = null
+
 // adjust knockdown if needed, do not call it in adjust knockdown
 /mob/proc/knockdown_clock_adjustment()
 	return
@@ -129,19 +149,30 @@
 		update_canmove()	//updates lying, canmove and icons
 	return
 
+/mob/proc/knockout_clock_adjustment()
+	return
+
 /mob/proc/KnockOut(amount)
 	if(status_flags & CANKNOCKOUT)
 		knocked_out = max(max(knocked_out,amount),0)
+		knockout_clock_adjustment()
+		knocked_out_callback_check()
+		update_canmove()	//updates lying, canmove and icons
 	return
 
 /mob/proc/SetKnockedout(amount)
 	if(status_flags & CANKNOCKOUT)
 		knocked_out = max(amount,0)
+		knockout_clock_adjustment()
+		knocked_out_callback_check()
+		update_canmove()	//updates lying, canmove and icons
 	return
 
 /mob/proc/AdjustKnockedout(amount)
 	if(status_flags & CANKNOCKOUT)
 		knocked_out = max(knocked_out + amount,0)
+		knocked_out_callback_check()
+		update_canmove()	//updates lying, canmove and icons
 	return
 
 /mob/proc/Sleeping(amount)

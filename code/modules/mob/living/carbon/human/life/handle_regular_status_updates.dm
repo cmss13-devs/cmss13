@@ -58,8 +58,6 @@
 				new /datum/effects/crit/human(src)
 
 		if(knocked_out)
-			if(regular_update)
-				AdjustKnockedout(-species.knock_out_reduction)
 			blinded = 1
 			stat = UNCONSCIOUS
 			if(regular_update && halloss > 0)

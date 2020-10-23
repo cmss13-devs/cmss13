@@ -182,8 +182,6 @@
 		eye_blurry = 0
 
 		if(knocked_out) //If they're down, make sure they are actually down.
-			if(regular_update)
-				AdjustKnockedout(-3)
 			blinded = 1
 			stat = UNCONSCIOUS
 			if(regular_update && halloss > 0)
@@ -450,19 +448,25 @@ updatehealth()
 
 /mob/living/carbon/Xenomorph/handle_slowed()
 	if(slowed)
-		slowed = max(superslowed-1.5,0)
-	return stunned
+		slowed = max(slowed-1.5,0)
+	return slowed
 
 /mob/living/carbon/Xenomorph/handle_superslowed()
 	if(superslowed)
 		superslowed = max(superslowed-1.5,0)
-	return dazed
+	return superslowed
 
 /mob/living/carbon/Xenomorph/handle_knocked_down()
 	if(knocked_down)
 		knocked_down = max(knocked_down-1.5,0)
 		knocked_down_callback_check()
 	return knocked_down
+
+/mob/living/carbon/Xenomorph/handle_knocked_out()
+	if(knocked_out)
+		knocked_out = max(knocked_out - 1.5, 0)
+		knocked_out_callback_check()
+	return knocked_out
 
 //Returns TRUE if xeno is on weeds
 //Returns TRUE if xeno is off weeds AND doesn't need weeds for healing AND is not on Almayer UNLESS Queen is also on Almayer (aka - no solo Lurker Almayer hero)
@@ -493,3 +497,9 @@ updatehealth()
 	var/shift_left = (SSxeno.next_fire - world.time) * XENO_TIMER_TO_EFFECT_CONVERSION
 	if(knocked_down > shift_left)
 		knocked_down += SSxeno.wait * XENO_TIMER_TO_EFFECT_CONVERSION - shift_left
+
+/mob/living/carbon/Xenomorph/knockout_clock_adjustment()
+	var/shift_left = (SSxeno.next_fire - world.time) * XENO_TIMER_TO_EFFECT_CONVERSION
+	if(knocked_out > shift_left)
+		knocked_out += SSxeno.wait * XENO_TIMER_TO_EFFECT_CONVERSION - shift_left
+

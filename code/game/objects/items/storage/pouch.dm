@@ -400,6 +400,12 @@
 	else
 		return ..()
 
+/obj/item/storage/pouch/vials/full/Initialize()
+	. = ..()
+	for (var/i=1; i <= storage_slots; i++)
+		new /obj/item/reagent_container/glass/beaker/vial(src)
+	update_icon()
+
 /obj/item/storage/pouch/chem
 	name = "chemist pouch"
 	desc = "A pouch for carrying glass beakers."

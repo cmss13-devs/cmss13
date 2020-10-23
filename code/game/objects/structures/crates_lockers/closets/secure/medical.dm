@@ -67,8 +67,8 @@
 	new /obj/item/storage/pouch/medkit(src)
 	new /obj/item/storage/pouch/chem(src)
 	new /obj/item/storage/pouch/chem(src)
-	new /obj/item/storage/pouch/vials(src)
-	new /obj/item/storage/pouch/vials(src)
+	new /obj/item/storage/pouch/vials/full(src)
+	new /obj/item/storage/pouch/vials/full(src)
 	if(z == MAIN_SHIP_Z_LEVEL)
 		new /obj/item/device/radio/headset/almayer/doc(src)
 	return

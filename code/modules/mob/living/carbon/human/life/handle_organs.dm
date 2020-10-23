@@ -37,4 +37,4 @@
 		if(pain.feels_pain)
 			emote("pain")
 		emote("collapse")
-		knocked_out = 10
+		KnockOut(10)

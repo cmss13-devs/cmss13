@@ -89,7 +89,7 @@
 		H.vomit()
 
 /datum/chem_property/neutral/ketogenic/process_critical(mob/living/M, var/potency = 1)
-	M.knocked_out = max(M.knocked_out, 20)
+	M.KnockOut(20)
 
 /datum/chem_property/neutral/neuroinhibiting
 	name = PROPERTY_NEUROINHIBITING
@@ -170,7 +170,7 @@
 
 /datum/chem_property/neutral/hallucinogenic/process_critical(mob/living/M, var/potency = 1)
 	M.apply_damage(potency, BRAIN)
-	M.knocked_out = max(M.knocked_out, 20)
+	M.KnockOut(20)
 
 /datum/chem_property/neutral/relaxing
 	name = PROPERTY_RELAXING
@@ -222,7 +222,7 @@
 	M.apply_effect(2*potency,AGONY,0)
 
 /datum/chem_property/neutral/hyperthermic/process_critical(mob/living/M, var/potency = 1)
-	M.knocked_out = max(M.knocked_out, 20)
+	M.KnockOut(20)
 
 /datum/chem_property/neutral/hypothermic
 	name = PROPERTY_HYPOTHERMIC
@@ -242,7 +242,7 @@
 	M.drowsyness  = max(M.drowsyness, 30)
 
 /datum/chem_property/neutral/hypothermic/process_critical(mob/living/M, var/potency = 1)
-	M.knocked_out = max(M.knocked_out, 20)
+	M.KnockOut(20)
 
 /datum/chem_property/neutral/balding
 	name = PROPERTY_BALDING
@@ -508,7 +508,7 @@
 		M.recalculate_move_delay = TRUE
 
 /datum/chem_property/neutral/thermostabilizing/process_overdose(mob/living/M, var/potency = 1)
-	M.knocked_out = max(M.knocked_out, 20)
+	M.KnockOut(20)
 
 /datum/chem_property/neutral/thermostabilizing/process_critical(mob/living/M, var/potency = 1)
 	M.drowsyness  = max(M.drowsyness, 30)

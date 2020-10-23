@@ -793,6 +793,7 @@ mob/proc/yank_out_object()
 /mob/living/proc/handle_statuses()
 	handle_stunned()
 	handle_knocked_down()
+	handle_knocked_out()
 	handle_stuttering()
 	handle_silent()
 	handle_drugged()
@@ -814,12 +815,12 @@ mob/proc/yank_out_object()
 /mob/living/proc/handle_slowed()
 	if(slowed)
 		AdjustSlowed(-1)
-	return stunned
+	return slowed
 
 /mob/living/proc/handle_superslowed()
 	if(superslowed)
 		AdjustSuperslowed(-1)
-	return dazed
+	return superslowed
 
 
 /mob/living/proc/handle_knocked_down()
@@ -827,6 +828,12 @@ mob/proc/yank_out_object()
 		knocked_down = max(knocked_down-1,0)	//before you get mad Rockdtben: I done this so update_canmove isn't called multiple times
 		knocked_down_callback_check()
 	return knocked_down
+
+/mob/living/proc/handle_knocked_out()
+	if(knocked_out && client)
+		knocked_out = max(knocked_out-1,0)	//before you get mad Rockdtben: I done this so update_canmove isn't called multiple times
+		knocked_out_callback_check()
+	return knocked_out
 
 /mob/living/proc/handle_stuttering()
 	if(stuttering)
@@ -847,11 +854,6 @@ mob/proc/yank_out_object()
 	if(slurring)
 		slurring = max(slurring-1, 0)
 	return slurring
-
-/mob/living/proc/handle_knocked_out() // Currently only used by simple_animal.dm, treated as a special case in other mobs
-	if(knocked_out)
-		AdjustKnockedout(-1)
-	return knocked_out
 
 /mob/proc/slip(slip_source_name, stun_level, weaken_level, run_only, override_noslip, slide_steps)
 	return FALSE

@@ -353,7 +353,7 @@
 		if(volume > overdose_critical)
 			M.apply_damage(2, TOX) //Overdose starts getting bad
 			M.make_jittery(10)
-			M.knocked_out = max(M.knocked_out, 20)
+			M.KnockOut(20)
 			if(prob(10) && E)
 				E.damage += 0.5
 				M.emote(pick("twitch", "blink_r", "shiver"))

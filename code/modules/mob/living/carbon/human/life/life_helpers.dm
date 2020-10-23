@@ -250,6 +250,15 @@
 		knocked_down_callback_check()
 	return knocked_down
 
+/mob/living/carbon/human/handle_knocked_out()
+	if(knocked_out && client)
+		var/skill = species.knock_out_reduction
+		if(skills)
+			skill += (skills.get_skill_level(SKILL_ENDURANCE)-1)*0.1
+		knocked_out = max(knocked_out - skill, 0)
+		knocked_out_callback_check()
+	return knocked_out
+
 /mob/living/carbon/human/handle_stuttering()
 	if(..())
 		speech_problem_flag = 1
@@ -279,6 +288,18 @@
 	var/shift_left = (SShuman.next_fire - world.time) * HUMAN_TIMER_TO_EFFECT_CONVERSION * skill
 	if(knocked_down > shift_left)
 		knocked_down += SShuman.wait * HUMAN_TIMER_TO_EFFECT_CONVERSION * skill - shift_left
+
+/mob/living/carbon/human/knockout_clock_adjustment()
+	if(!species)
+		return FALSE
+
+	var/skill = species.knock_out_reduction
+	if(skills)
+		skill += (skills.get_skill_level(SKILL_ENDURANCE)-1) * 0.1
+
+	var/shift_left = (SShuman.next_fire - world.time) * HUMAN_TIMER_TO_EFFECT_CONVERSION * skill
+	if(knocked_out > shift_left)
+		knocked_out += SShuman.wait * HUMAN_TIMER_TO_EFFECT_CONVERSION * skill - shift_left
 
 /mob/living/carbon/human/proc/handle_revive()
 	track_revive(job)

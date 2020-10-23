@@ -18,7 +18,6 @@
 */
 
 /datum/sprite_accessory
-
 	var/icon			// the icon file the accessory is located in
 	var/icon_state		// the icon_state of the accessory
 	var/preview_state	// a custom preview state for whatever reason
@@ -29,7 +28,7 @@
 	var/gender = NEUTER
 
 	// Restrict some styles to specific species
-	var/list/species_allowed = list("Human","Human Hero", "Synthetic", "Early Synthetics", "Second Generation Synthetic")
+	var/list/species_allowed = list("Human", "Machine", "Human Hero", "Synthetic", "Early Synthetics", "Second Generation Synthetic")
 
 	// Whether or not the accessory can be affected by colouration
 	var/do_colouration = 1
@@ -45,7 +44,6 @@
 */
 
 /datum/sprite_accessory/hair
-	species_allowed = list("Human","Machine","Synthetic", "Early Synthetic", "Second Generation Synthetic")
 	icon = 'icons/mob/humans/human_hair.dmi'	  // default icon for all hairs
 
 /datum/sprite_accessory/hair/crew
@@ -57,7 +55,6 @@
 	name = "Bald"
 	icon_state = "bald"
 	gender = MALE
-	species_allowed = list("Human","Machine","Synthetic", "Early Synthetic", "Second Generation Synthetic")
 
 /datum/sprite_accessory/hair/short
 	name = "Short Hair"	  // try to capatilize the names please~
@@ -707,7 +704,6 @@
 	name = "Shaved"
 	icon_state = "bald"
 	gender = NEUTER
-	species_allowed = list("Human","Machine","Synthetic", "Early Synthetic", "Second Generation Synthetic")
 
 /datum/sprite_accessory/facial_hair/watson
 	name = "Watson Mustache"
@@ -857,9 +853,7 @@
 /datum/sprite_accessory/skin/human
 	name = "Default human skin"
 	icon_state = "default"
-	species_allowed = list("Human")
 
 /datum/sprite_accessory/skin/human_tatt01
 	name = "Tatt01 human skin"
 	icon_state = "tatt1"
-	species_allowed = list("Human")

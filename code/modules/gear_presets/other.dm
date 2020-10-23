@@ -584,3 +584,34 @@
 	for(var/type in types)
 		var/datum/action/human_action/activable/cult_leader/O = new type()
 		O.give_action(H)
+/*****************************************************************************************************/
+
+/datum/equipment_preset/other/professor_dummy
+	name = "DUMMY"
+	flags = EQUIPMENT_PRESET_EXTRA
+	assignment = "DUMMY"
+	rank = "DUMMY"
+	idtype = /obj/item/card/id/dogtag
+	uses_special_name = TRUE
+
+/datum/equipment_preset/other/professor_dummy/load_name(mob/living/carbon/human/H, var/randomise)
+	H.gender = pick(MALE, FEMALE)
+	H.real_name = "Professor DUMMY the Medical Mannequin"
+	H.name = H.real_name
+	H.age = rand(1,5)
+	var/datum/preferences/A = new
+	A.randomize_appearance(H)
+
+
+/datum/equipment_preset/other/professor_dummy/load_race(mob/living/carbon/human/H)
+	. = ..()
+	//Can't hug the dummy! Otherwise it's basically human...
+	H.huggable = FALSE
+
+/datum/equipment_preset/other/professor_dummy/load_gear(mob/living/carbon/human/H)
+	var/obj/item/device/professor_dummy_tablet/tablet = new /obj/item/device/professor_dummy_tablet(H)
+	tablet.link_mob(H)
+	H.equip_to_slot_or_del(tablet, WEAR_R_HAND)
+
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/medical, WEAR_BODY)
+	

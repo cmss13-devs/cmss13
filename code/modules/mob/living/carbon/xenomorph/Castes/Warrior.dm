@@ -121,7 +121,10 @@
 /datum/behavior_delegate/warrior_base/melee_attack_additional_effects_self()
 	if (stored_shield == stored_shield_max)
 		bound_xeno.add_xeno_shield(stored_shield, XENO_SHIELD_SOURCE_GENERIC)
-		to_chat(bound_xeno, SPAN_XENOHIGHDANGER("You feel your rage increase your resiliency to damage!"))
+		bound_xeno.visible_message(SPAN_XENOWARNING("\The [bound_xeno] roars as it mauls its target, its exoskeleton shimmering for a second!"), SPAN_XENOHIGHDANGER("You feel your rage increase your resiliency to damage!"))
+		bound_xeno.xeno_jitter(SECONDS_1)
+		bound_xeno.flick_heal_overlay(SECONDS_2, "#FFA800")
+		bound_xeno.emote("roar")
 		stored_shield = 0
 	else
 		stored_shield += stored_shield_per_slash

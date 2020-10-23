@@ -242,6 +242,7 @@
 	SPAN_NOTICE("You cauterize the incision on [target]'s [affected.display_name] with \the [tool]."))
 	affected.surgery_open_stage = 0
 	affected.remove_all_bleeding(TRUE)
+	target.pain.recalculate_pain()
 
 /datum/surgery_step/generic/cauterize/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
 	user.visible_message(SPAN_WARNING("[user]'s hand slips, leaving a small burn on [target]'s [affected.display_name] with \the [tool]!"), \

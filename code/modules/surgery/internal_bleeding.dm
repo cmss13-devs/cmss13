@@ -41,6 +41,8 @@
 		var/mob/living/carbon/human/H = user
 		H.bloody_hands(target, 0)
 
+	target.pain.recalculate_pain()
+
 /datum/surgery_step/fix_vein/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
 	user.visible_message(SPAN_WARNING("[user]'s hand slips, smearing [tool] in the incision in [target]'s [affected.display_name]!") , \
 	SPAN_WARNING("Your hand slips, smearing [tool] in the incision in [target]'s [affected.display_name]!"))

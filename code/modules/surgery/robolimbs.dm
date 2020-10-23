@@ -146,6 +146,8 @@
 	target.updatehealth()
 	target.UpdateDamageIcon()
 
+	target.pain.recalculate_pain()
+
 	//Deal with the limb item properly
 	user.temp_drop_inv_item(tool)
 	qdel(tool)

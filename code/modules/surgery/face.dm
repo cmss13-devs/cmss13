@@ -129,6 +129,7 @@
 	affected.disfigured = 0
 	affected.owner.name = affected.owner.get_visible_name()
 	affected.face_surgery_stage = 0
+	target.pain.recalculate_pain()
 
 /datum/surgery_step/face/cauterize/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/head/affected)
 	user.visible_message(SPAN_WARNING("[user]'s hand slips, leaving a small burn on [target]'s face with \the [tool]!"), \

@@ -186,11 +186,6 @@
 	path = /obj/item/reagent_container/glass/beaker/large
 	category = "Glassware"
 
-/datum/autolathe/recipe/vial
-	name = "glass vial"
-	path = /obj/item/reagent_container/glass/beaker/vial
-	category = "Glassware"
-
 /datum/autolathe/recipe/consolescreen
 	name = "console screen"
 	path = /obj/item/stock_parts/console_screen

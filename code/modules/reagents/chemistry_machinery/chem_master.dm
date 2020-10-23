@@ -11,6 +11,7 @@
 	var/req_skill = SKILL_MEDICAL
 	var/req_skill_level = SKILL_MEDICAL_MEDIC
 	var/pill_maker = TRUE
+	var/vial_maker = FALSE
 	var/obj/item/reagent_container/beaker = null
 	var/obj/item/storage/pill_bottle/loaded_pill_bottle = null
 	var/mode = 0
@@ -222,21 +223,30 @@
 						loaded_pill_bottle.handle_item_insertion(P, TRUE)
 						updateUsrDialog()
 
-		else if(href_list["createbottle"])
+		else if(href_list["createglass"])
 			if(!condi)
-				var/name = reject_bad_text(input(user,"Name:","Name your bottle!", reagents.get_master_reagent_name()) as text|null)
+				var/name = reject_bad_text(input(user,"Label:","Enter label!", reagents.get_master_reagent_name()) as text|null)
 				if(!name)
 					return
 
-				var/obj/item/reagent_container/glass/bottle/P = new/obj/item/reagent_container/glass/bottle()
-				P.name = "[name] bottle"
-				P.icon_state = "bottle-"+bottlesprite
-				reagents.trans_to(P, 60)
+				var/obj/item/reagent_container/glass/P
+				if(href_list["createbottle"])
+					P = new/obj/item/reagent_container/glass/bottle()
+					P.name = "[name] bottle"
+					P.icon_state = "bottle-"+bottlesprite
+					reagents.trans_to(P, 60)
+				else if(href_list["createvial"])
+					P = new/obj/item/reagent_container/glass/beaker/vial()
+					P.name = "[name] vial"
+					reagents.trans_to(P, 30)
+				
 				P.pixel_x = rand(-7, 7) //random position
 				P.pixel_y = rand(-7, 7)
 				P.update_icon()
 
-				if(!Adjacent(usr) || !usr.put_in_hands(P))
+				if(href_list["store"])
+					connected.add_item(P)
+				else if(!Adjacent(usr) || !usr.put_in_hands(P))
 					P.forceMove(loc)
 
 			else
@@ -349,11 +359,17 @@
 			if(pill_maker)
 				dat += "<HR><BR><A href='?src=\ref[src];createpill=1'>Create pill (60 units max)</A><a href=\"?src=\ref[src]&change_pill=1\"><img src=\"pill[pillsprite].png\" /></a><BR>"
 				dat += "<A href='?src=\ref[src];createpill_multiple=1'>Create multiple pills</A><BR>"
-			dat += "<A href='?src=\ref[src];createbottle=1;user=\ref[user]'>Create bottle (60 units max)<a href=\"?src=\ref[src]&change_bottle=1\"><img src=\"bottle-[bottlesprite].png\" /></A>"
+			dat += "<A href='?src=\ref[src];createglass=1;createbottle=1;user=\ref[user]'>Create bottle (60 units max)<a href=\"?src=\ref[src]&change_bottle=1\"><img src=\"bottle-[bottlesprite].png\" /></A>"
+			if(connected)
+				dat += "<BR><A href='?src=\ref[src];createglass=1;createbottle=1;store=1;user=\ref[user]'>Store bottle in smartfridge (60 units max)</A>"
+			if(vial_maker)
+				dat += "<BR><BR><A href='?src=\ref[src];createglass=1;createvial=1;user=\ref[user]'>Create vial (30 units max)</A>"
+				if(connected)
+					dat += "<BR><A href='?src=\ref[src];createglass=1;createvial=1;store=1;user=\ref[user]'>Store vial in smartfridge (30 units max)</A>"
 		else
-			dat += "<A href='?src=\ref[src];createbottle=1;user=\ref[user]'>Create bottle (50 units max)</A>"
+			dat += "<A href='?src=\ref[src];createglass=1;user=\ref[user]'>Create bottle (50 units max)</A>"
 	if(!condi)
-		show_browser(user, "[name] menu:<BR><BR>[dat]", name, "chem_master", "size=420x500")
+		show_browser(user, "[name] menu:<BR><BR>[dat]", name, "chem_master", "size=460x520")
 	else
 		show_browser(user, "Condimaster menu:<BR><BR>[dat]", name, "chem_master")
 	return

@@ -269,10 +269,10 @@
 	name = "vial"
 	desc = "A small glass vial. Can hold up to 30 units."
 	icon_state = "vial"
-	matter = list("glass" = 250)
 	volume = 30
 	amount_per_transfer_from_this = 10
-	possible_transfer_amounts = list(5,10,15,25)
+	matter = list()
+	possible_transfer_amounts = list(5,10,15,25,30)
 	flags_atom = FPRINT|OPENCONTAINER
 
 /obj/item/reagent_container/glass/beaker/vial/Initialize()

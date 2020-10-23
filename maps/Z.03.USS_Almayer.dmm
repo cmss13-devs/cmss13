@@ -6670,7 +6670,9 @@
 	},
 /area/almayer/command/cic)
 "aqO" = (
-/obj/structure/machinery/chem_master,
+/obj/structure/machinery/chem_master{
+	vial_maker = 1
+	},
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_side";
@@ -41628,7 +41630,9 @@
 /turf/closed/wall/almayer/research/containment/wall/west,
 /area/almayer/medical/containment/cell/cl)
 "ger" = (
-/obj/structure/machinery/chem_master,
+/obj/structure/machinery/chem_master{
+	vial_maker = 1
+	},
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
 	tag = "icon-sterile"
@@ -47756,7 +47760,9 @@
 	},
 /area/almayer/living/gym)
 "ncB" = (
-/obj/structure/machinery/chem_master,
+/obj/structure/machinery/chem_master{
+	vial_maker = 1
+	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side";
 	tag = "icon-sterile"

@@ -26,7 +26,7 @@
     icon_state = "pamphlet_construction"
     skill_to_increment = SKILL_ENGINEER
     secondary_skill = SKILL_CONSTRUCTION
-
+    bypass_pamphlet_limit = TRUE
     skill_increment = SKILL_ENGINEER_ENGI
 
 /obj/item/pamphlet/engineer/antag/attack_self(mob/living/carbon/human/user)

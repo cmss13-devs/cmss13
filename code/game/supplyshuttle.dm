@@ -421,6 +421,7 @@ var/datum/controller/supply/supply_controller = new()
 	O.ordernum = supply_controller.ordernum
 	O.object = C
 	O.orderedby = "ASRS"
+	O.approvedby = "ASRS"
 	//We add the order to the shopping list
 	supply_controller.shoppinglist += O
 

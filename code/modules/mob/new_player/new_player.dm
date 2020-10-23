@@ -225,7 +225,7 @@
 					to_chat(src, alert("Your current species,[client.prefs.species], is not available for play on the station."))
 					return 0
 
-			AttemptLateSpawn(href_list["job_selected"],client.prefs.spawnpoint)
+			AttemptLateSpawn(href_list["job_selected"])
 			return
 
 		else
@@ -233,7 +233,7 @@
 				if(client) client.prefs.process_link(src, href_list)
 			else new_player_panel()
 
-/mob/new_player/proc/AttemptLateSpawn(rank, spawning_at)
+/mob/new_player/proc/AttemptLateSpawn(rank)
 	if (src != usr)
 		return
 	if(!ticker || ticker.current_state != GAME_STATE_PLAYING)
@@ -249,12 +249,9 @@
 	spawning = TRUE
 	close_spawn_windows()
 
-	var/datum/spawnpoint/S //We need to find a spawn location for them.
 	var/turf/T
-	if(map_tag != MAP_WHISKEY_OUTPOST)
-		if(spawning_at) S = spawntypes[spawning_at]
-		if(istype(S)) 	T = pick(S.turfs)
-		else 			T = pick(latejoin)
+	if(map_tag != MAP_WHISKEY_OUTPOST)		
+		T = pick(latejoin)
 	else if (map_tag == MAP_WHISKEY_OUTPOST)
 		T = pick(latewhiskey)
 

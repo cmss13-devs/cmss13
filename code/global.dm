@@ -104,7 +104,6 @@ var/list/newplayer_start = list()
 
 //Spawnpoints.
 var/list/latejoin = list()
-var/list/latejoin_cryo = list()
 var/list/latewhiskey = list()
 
 var/list/xeno_spawn = list()//Aliens spawn at these.

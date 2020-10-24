@@ -509,11 +509,22 @@
 
 /obj/effect/xenomorph/acid_damage_delay/boiler_landmine
 
-/obj/effect/xenomorph/acid_damage_delay/boiler_landmine/
-	
-
 /obj/effect/xenomorph/acid_damage_delay/boiler_landmine/deal_damage()
+	var/total_hits = 0
 	for (var/obj/structure/barricade/B in loc)
 		B.take_acid_damage(damage*(1.2 + 0.55 * empowered))
+
+	for (var/mob/living/carbon/H in loc)
+		if (H.stat == DEAD)
+			continue
+
+		if(H.allied_to_hivenumber(hivenumber))
+			continue
+		
+		total_hits++
+
+	var/datum/action/xeno_action/activable/boiler_trap/trap = get_xeno_action_by_type(linked_xeno, /datum/action/xeno_action/activable/boiler_trap)
+		
+	trap.reduce_cooldown(total_hits*4 SECONDS)
 
 	return ..()

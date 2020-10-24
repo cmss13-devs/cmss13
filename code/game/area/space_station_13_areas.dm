@@ -47,7 +47,6 @@ var/list/ghostteleportlocs = list()
 
 /area/engine/
 	ambience = list('sound/ambience/ambisin1.ogg','sound/ambience/ambisin2.ogg','sound/ambience/ambisin3.ogg','sound/ambience/ambisin4.ogg')
-/area/turret_protected/
 
 /area/admin
 	name = "\improper Admin room"

@@ -816,32 +816,34 @@
 
 /obj/item/weapon/gun/launcher/m92/examine(mob/user)
 	..()
-	if(grenades.len)
+	if(length(grenades))
 		if (get_dist(user, src) > 2 && user != loc) return
-		to_chat(user, SPAN_NOTICE(" It is loaded with <b>[grenades.len] / [max_grenades]</b> grenades."))
+		to_chat(user, SPAN_NOTICE(" It is loaded with <b>[length(grenades)] / [max_grenades]</b> grenades."))
 
 /obj/item/weapon/gun/launcher/m92/attackby(obj/item/I, mob/user)
-	if(allowed_ammo_type(I))
-		if((istype(I, /obj/item/explosive/grenade)))
-			if(grenades.len < max_grenades)
-				if(user.drop_inv_item_to_loc(I, src))
-					grenades += I
-					to_chat(user, SPAN_NOTICE("You put [I] in the grenade launcher."))
-					to_chat(user, SPAN_INFO("Now storing: [grenades.len] / [max_grenades] grenades."))
-			else
-				to_chat(user, SPAN_WARNING("The grenade launcher cannot hold more grenades!"))
-
-		else if(istype(I,/obj/item/attachable))
-			if(check_inactive_hand(user)) attach_to_gun(user,I)
-	else
+	if(istype(I,/obj/item/attachable) && check_inactive_hand(user))
+		attach_to_gun(user,I)
+		return
+	else if(!istype(I, /obj/item/explosive/grenade) || !allowed_ammo_type(I))
 		to_chat(user, SPAN_WARNING("[src] can't use this type of grenade!"))
+		return
+
+	if(length(grenades) >= max_grenades)
+		to_chat(user, SPAN_WARNING("The grenade launcher cannot hold more grenades!"))
+		return
+
+	var/obj/item/explosive/grenade/G = I
+	if(!G.active && user.drop_inv_item_to_loc(I, src))
+		grenades += I
+		to_chat(user, SPAN_NOTICE("You put [I] in the grenade launcher."))
+		to_chat(user, SPAN_INFO("Now storing: [length(grenades)] / [max_grenades] grenades."))
 
 /obj/item/weapon/gun/launcher/m92/afterattack(atom/target, mob/user, flag)
 	if(able_to_fire(user))
 		if(get_dist(target,user) <= 2)
 			to_chat(user, SPAN_WARNING("The grenade launcher beeps a warning noise. You are too close!"))
 			return
-		if(grenades.len)
+		if(length(grenades))
 			fire_grenade(target,user)
 			playsound(user.loc, cocked_sound, 25, 1)
 		else to_chat(user, SPAN_WARNING("The grenade launcher is empty."))
@@ -854,8 +856,8 @@
 	return
 
 /obj/item/weapon/gun/launcher/m92/unload(mob/user)
-	if(grenades.len)
-		var/obj/item/explosive/grenade/nade = grenades[grenades.len] //Grab the last one.
+	if(length(grenades))
+		var/obj/item/explosive/grenade/nade = grenades[length(grenades)] //Grab the last one.
 		if(user)
 			user.put_in_hands(nade)
 			playsound(user, unload_sound, 25, 1)
@@ -869,7 +871,7 @@
 		if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_TRAINED) && user.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_GRENADIER)
 			to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 			return FALSE
-		if(grenades.len)
+		if(length(grenades))
 			var/obj/item/explosive/grenade/G = grenades[1]
 			if(grenade_grief_check(G))
 				to_chat(user, SPAN_WARNING("\The [name]'s IFF inhibitor prevents you from firing!"))
@@ -881,7 +883,7 @@
 	last_fired = world.time
 	for(var/mob/O in viewers(world_view_size, user))
 		O.show_message(SPAN_DANGER("[user] fired a grenade!"), 1)
-	to_chat(user, SPAN_WARNING("You fire the grenade launcher! [grenades.len-1]/[max_grenades] grenades remaining"))
+	to_chat(user, SPAN_WARNING("You fire the grenade launcher! [length(grenades)-1]/[max_grenades] grenades remaining"))
 	var/obj/item/explosive/grenade/F = grenades[1]
 	grenades -= F
 	F.loc = user.loc
@@ -890,15 +892,16 @@
 	var/pass_flags = NO_FLAGS
 	if(is_lobbing)
 		pass_flags = LIST_FLAGS_ADD(pass_flags, PASS_MOB_THRU, PASS_HIGH_OVER)
-	F.active = 1
-	F.icon_state = initial(F.icon_state) + "_active"
+	
+	msg_admin_attack("[key_name_admin(user)] fired a grenade ([F.name]) from \a ([name]).")
+	log_game("[key_name_admin(user)] used a grenade ([name]).")
+	
+	F.det_time = min(10, F.det_time)
+	F.activate(user, FALSE)
+	F.forceMove(get_turf(src))
 	F.throw_atom(target, 20, SPEED_VERY_FAST, user, null, NORMAL_LAUNCH, pass_flags)
-	if(F && F.loc) //Apparently it can get deleted before the next thing takes place, so it runtimes.
-		msg_admin_attack("[key_name_admin(user)] fired a grenade ([F.name]) from \a ([name]).")
-		log_game("[key_name_admin(user)] used a grenade ([name]).")
-		F.update_icon()
-		playsound(F.loc, fire_sound, 50, 1)
-		addtimer(CALLBACK(F, /obj/item/explosive.proc/prime), min(10, F.det_time))
+	playsound(F.loc, fire_sound, 50, 1)
+
 
 /obj/item/weapon/gun/launcher/m81
 	name = "\improper M81 grenade launcher"
@@ -946,23 +949,22 @@
 		if (get_dist(user, src) > 2 && user != loc) return
 		to_chat(user, SPAN_NOTICE(" It is loaded with a grenade."))
 
-/obj/item/weapon/gun/launcher/m81/attackby(obj/item/I, mob/user)
-	if(allowed_ammo_type(I))
-		if((istype(I, /obj/item/explosive/grenade)))
-			if((istype(I, grenade_type_allowed)))
-				if(!grenade)
-					if(user.drop_inv_item_to_loc(I, src))
-						grenade = I
-						to_chat(user, SPAN_NOTICE("You put [I] in the grenade launcher."))
-				else
-					to_chat(user, SPAN_WARNING("The grenade launcher cannot hold more grenades!"))
-			else
-				to_chat(user, SPAN_WARNING("[src] can't use this type of grenade!"))
-
-		else if(istype(I,/obj/item/attachable))
-			if(check_inactive_hand(user)) attach_to_gun(user,I)
-	else
+/obj/item/weapon/gun/launcher/m81/attackby(obj/item/I, mob/user)	
+	if(istype(I,/obj/item/attachable) && check_inactive_hand(user))
+		attach_to_gun(user,I)
+		return
+	else if(!istype(I, /obj/item/explosive/grenade) || !istype(I, grenade_type_allowed))
 		to_chat(user, SPAN_WARNING("[src] can't use this type of grenade!"))
+		return
+
+	if(grenade)
+		to_chat(user, SPAN_WARNING("The grenade launcher cannot hold more grenades!"))
+		return
+
+	var/obj/item/explosive/grenade/G = I
+	if(!G.active && user.drop_inv_item_to_loc(I, src))
+		grenade = I
+		to_chat(user, SPAN_NOTICE("You put [I] in the grenade launcher."))
 
 /obj/item/weapon/gun/launcher/m81/afterattack(atom/target, mob/user, flag)
 	if(able_to_fire(user))
@@ -1012,16 +1014,15 @@
 	var/obj/item/explosive/grenade/F = grenade
 	grenade = null
 	F.loc = user.loc
+	msg_admin_attack("[key_name_admin(user)] fired a grenade ([F.name]) from \a ([name]).")
+	log_game("[key_name_admin(user)] used a grenade ([name]).")
+	
 	F.throw_range = 20
+	F.det_time = min(10, F.det_time)
+	F.activate(user, FALSE)
+	F.forceMove(get_turf(src))
 	F.throw_atom(target, 20, SPEED_VERY_FAST, user)
-	F.icon_state = initial(F.icon_state) + "_active"
-	F.active = 1
-	if(F && F.loc) //Apparently it can get deleted before the next thing takes place, so it runtimes.
-		msg_admin_attack("[key_name_admin(user)] fired a grenade ([F.name]) from \a ([name]).")
-		log_game("[key_name_admin(user)] used a grenade ([name]).")
-		F.update_icon()
-		playsound(F.loc, fire_sound, 50, 1)
-		addtimer(CALLBACK(F, /obj/item/explosive.proc/prime), min(10, F.det_time))
+	playsound(F.loc, fire_sound, 50, 1)
 
 
 /obj/item/weapon/gun/launcher/m81/riot

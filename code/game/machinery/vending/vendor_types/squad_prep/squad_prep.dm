@@ -102,7 +102,7 @@
 		list("KIT", 0, null, null, null),
 		list("Combat Technician Support Kit", 45, /obj/item/storage/box/kit/mini_engineer, null, VENDOR_ITEM_REGULAR),
 		list("First Responder Medical Support Kit", 45, /obj/item/storage/box/kit/mini_medic, null, VENDOR_ITEM_REGULAR),
-		list("Frontline M40 Grenadier Kit", 45, /obj/item/storage/box/kit/mini_grenadier, null, VENDOR_ITEM_REGULAR),
+		list("Frontline Grenadier Kit", 45, /obj/item/storage/box/kit/mini_grenadier, null, VENDOR_ITEM_REGULAR),
 		list("L42A Sniper Kit", 30, /obj/item/storage/box/kit/mini_sniper, null, VENDOR_ITEM_REGULAR),
 		list("Personal Self Defense Kit", 45, /obj/item/storage/box/kit/self_defense, null, VENDOR_ITEM_REGULAR),
 		list("Veteran Enlisted Kit", 30, /obj/item/storage/box/kit/veteran_enlist, null, VENDOR_ITEM_REGULAR),

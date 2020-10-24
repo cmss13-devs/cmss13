@@ -192,7 +192,7 @@
                     break
                 hit_dense_atom_mid = TRUE
 
-        if(T == user.loc || T == F.loc)
+        if(T == F.loc)
             if (hit_dense_atom_mid)
                 break
 

@@ -1327,7 +1327,7 @@
 
 /datum/ammo/energy/taser/New()
 	..()
-	stamina_damage = config.high_hit_damage
+	stamina_damage = config.lhigh_hit_damage
 	accuracy = config.max_hit_accuracy
 	shell_speed = config.slow_shell_speed // Slightly faster
 
@@ -1344,7 +1344,7 @@
 /datum/ammo/energy/yautja/pistol
 	name = "plasma pistol bolt"
 	icon_state = "ion"
-	flags_ammo_behavior = AMMO_ENERGY
+	damage_type = BURN
 
 /datum/ammo/energy/yautja/pistol/New()
 	..()
@@ -1355,7 +1355,8 @@
 	name = "plasma bolt"
 	icon_state = "ion"
 	debilitate = list(2,2,0,0,0,1,0,0)
-	flags_ammo_behavior = AMMO_ENERGY|AMMO_IGNORE_RESIST
+	damage_type = BURN
+	flags_ammo_behavior = AMMO_IGNORE_RESIST
 
 /datum/ammo/energy/yautja/caster/bolt/New()
 	..()
@@ -1364,6 +1365,7 @@
 /datum/ammo/energy/yautja/caster/blast
 	name = "plasma blast"
 	icon_state = "pulse1"
+	damage_type = BURN
 
 /datum/ammo/energy/yautja/caster/blast/New()
 	..()
@@ -1373,7 +1375,8 @@
 /datum/ammo/energy/yautja/caster/sphere
 	name = "plasma eradication sphere"
 	icon_state = "bluespace"
-	flags_ammo_behavior = AMMO_EXPLOSIVE|AMMO_ENERGY|AMMO_HITS_TARGET_TURF
+	damage_type = BURN
+	flags_ammo_behavior = AMMO_EXPLOSIVE|AMMO_HITS_TARGET_TURF
 	var/stun_range = 4 // Big
 	var/stun_time = 6
 
@@ -1427,8 +1430,9 @@
 /datum/ammo/energy/yautja/rifle/bolt
 	name = "plasma rifle bolt"
 	icon_state = "ion"
+	damage_type = BURN
 	debilitate = list(0,2,0,0,0,0,0,0)
-	flags_ammo_behavior = AMMO_ENERGY|AMMO_IGNORE_RESIST
+	flags_ammo_behavior = AMMO_IGNORE_RESIST
 
 /datum/ammo/energy/yautja/rifle/bolt/New()
 	..()
@@ -1437,6 +1441,7 @@
 /datum/ammo/energy/yautja/rifle/blast
 	name = "plasma rifle blast"
 	icon_state = "bluespace"
+	damage_type = BURN
 
 /datum/ammo/energy/yautja/rifle/blast/New()
 	..()

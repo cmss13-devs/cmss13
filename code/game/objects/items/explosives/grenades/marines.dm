@@ -181,15 +181,17 @@
 	flags_equip_slot = SLOT_WAIST
 	dangerous = 1
 	underslug_launchable = TRUE
-	var/flame_level = 5
+	var/flame_level = 20
 	var/burn_level = 15
+	var/flameshape = FLAMESHAPE_DEFAULT
+	var/radius = 2
 
 /obj/item/explosive/grenade/incendiary/prime()
-	INVOKE_ASYNC(GLOBAL_PROC, .proc/flame_radius, initial(name), source_mob, 2, get_turf(src), flame_level, burn_level)
+	INVOKE_ASYNC(GLOBAL_PROC, .proc/flame_radius, initial(name), source_mob, radius, get_turf(src), flame_level, burn_level, flameshape, null)
 	playsound(src.loc, 'sound/weapons/gun_flamethrower2.ogg', 35, 1, 4)
 	qdel(src)
 
-/proc/flame_radius(var/source, var/source_mob, var/radius = 1, var/turf/T, var/flame_level = 14, var/burn_level = 15)
+/proc/flame_radius(var/source, var/source_mob, var/radius = 1, var/turf/T, var/flame_level = 14, var/burn_level = 15, var/flameshape = FLAMESHAPE_DEFAULT, var/target)
 	if(!istype(T))
 		return
 	var/datum/reagent/R = new /datum/reagent/napalm/ut()
@@ -202,7 +204,7 @@
 	R.intensityfire = burn_level
 	R.rangefire = radius
 
-	new /obj/flamer_fire(T, source, source_mob, R, R.rangefire)
+	new /obj/flamer_fire(T, source, source_mob, R, R.rangefire, null, flameshape, target)
 
 /obj/item/explosive/grenade/incendiary/molotov
 	name = "\improper improvised firebomb"
@@ -221,6 +223,57 @@
 /obj/item/explosive/grenade/incendiary/molotov/prime()
 	playsound(src.loc, 'sound/effects/hit_on_shattered_glass.ogg', 35, 1, 4)
 	..()
+
+/*
+//================================================
+				Airburst Incendiary Grenades
+//================================================
+*/
+// M74 are the launcher-only variant. Flag with hand_throwable = FALSE.
+/obj/item/explosive/grenade/incendiary/airburst
+	name = "\improper M74 AGM-I 40mm Grenade"
+	desc = "M74 - Airburst Grenade Munition - Incendiary. This grenade must be launched with a grenade launcher, and detonates once it reaches its destination. It disperse a cone of lingering flames in a small area in front of it. The warped pieces of the grenade can also set fire as they fly away."
+	icon_state = "grenade_m74_airburst_i"
+	item_state = "grenade_m74_airburst_i_active"
+	det_time = 0 // Unused, because we don't use prime.
+	hand_throwable = FALSE
+	flame_level = 15
+	burn_level = 20
+	flameshape = FLAMESHAPE_TRIANGLE
+	radius = 2
+	var/shrapnel_count = 5
+	var/shrapnel_type = /datum/ammo/bullet/shrapnel/incendiary
+
+/obj/item/explosive/grenade/incendiary/airburst/prime()
+	
+/obj/item/explosive/grenade/incendiary/airburst/launch_impact(atom/hit_atom)
+	..()
+	var/detonate = TRUE
+	var/turf/hit_turf = null
+	if(isobj(hit_atom) && !rebounding)
+		detonate = FALSE
+	if(isturf(hit_atom))
+		hit_turf = hit_atom
+		if(hit_turf.density && !rebounding)
+			detonate = FALSE
+	if(active && detonate) // Active, and we reached our destination.
+		var/angle = dir2angle(last_move_dir)
+		var/turf/target = locate(src.loc.x + sin(angle)*radius, src.loc.y + cos(angle)*radius, src.loc.z)
+		if(shrapnel_count)
+			create_shrapnel(loc, shrapnel_count, last_move_dir , 30 ,shrapnel_type, initial(name), source_mob, FALSE, 0)
+		if(target)
+			INVOKE_ASYNC(GLOBAL_PROC, .proc/flame_radius, initial(name), source_mob, radius, get_turf(src), flame_level, burn_level, flameshape, target)
+		else
+			//Not stellar, but if we can't find a direction, fall back to HIDP behaviour.
+			INVOKE_ASYNC(GLOBAL_PROC, .proc/flame_radius, initial(name), source_mob, radius, get_turf(src), flame_level, burn_level, FLAMESHAPE_DEFAULT, target)
+		playsound(src.loc, 'sound/weapons/gun_flamethrower2.ogg', 35, 1, 4)
+		qdel(src)
+
+/*
+//================================================
+				Smoke Grenades
+//================================================
+*/
 
 /obj/item/explosive/grenade/smokebomb
 	name = "\improper M40 HSDP smoke grenade"
@@ -316,3 +369,4 @@
 	det_time = 50
 	unacidable = TRUE
 	arm_sound = 'sound/voice/holy_chorus.ogg'//https://www.youtube.com/watch?v=hNV5sPZFuGg
+	falloff_mode = EXPLOSION_FALLOFF_SHAPE_LINEAR

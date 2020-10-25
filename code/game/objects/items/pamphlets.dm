@@ -19,17 +19,22 @@
 	if(user.has_used_pamphlet == TRUE && !bypass_pamphlet_limit)
 		to_chat(usr, SPAN_WARNING("You've already used a pamphlet!"))
 		return
-	if(skillcheck(user, skill_to_increment, skill_increment) || (secondary_skill && skillcheck(user, secondary_skill, skill_increment)))
+	var/needs_primary = !skillcheck(user, skill_to_increment, skill_increment)
+	var/needs_secondary = FALSE
+	if(secondary_skill)
+		needs_secondary = !skillcheck(user, secondary_skill, skill_increment)
+	if(!(needs_primary || needs_secondary))
 		to_chat(usr, SPAN_WARNING("You don't need this, you're already trained!"))
 		return
 
 	to_chat(usr, SPAN_NOTICE("You read over the pamphlet a few times, learning a new skill."))
-	user.skills.set_skill(skill_to_increment, skill_increment)
-	if(secondary_skill)
+	if(needs_primary)
+		user.skills.set_skill(skill_to_increment, skill_increment)
+	if(needs_secondary)
 		user.skills.set_skill(secondary_skill, skill_increment)
 	if(!bypass_pamphlet_limit)
 		user.has_used_pamphlet = TRUE
-	
+
 	qdel(src)
 
 /obj/item/pamphlet/medical

@@ -120,6 +120,9 @@
 				to_chat(X, SPAN_WARNING("Someone already ate \the [pulled]."))
 				return 0
 			if(X.pulling == pulled && !pulled.buckled && pulled.stat != DEAD && !X.stomach_contents.len) //make sure you've still got them in your claws, and alive
+				if(SEND_SIGNAL(pulled, COMSIG_MOB_DEVOURED, X) & COMPONENT_CANCEL_DEVOUR)
+					return FALSE
+				
 				X.visible_message(SPAN_WARNING("[X] devours [pulled]!"), \
 					SPAN_WARNING("You devour [pulled]!"), null, 5)
 				

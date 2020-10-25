@@ -18,24 +18,24 @@
         if(!do_after(user, hack_speed, INTERRUPT_ALL, BUSY_ICON_HOSTILE, target, INTERRUPT_ALL))
             to_chat(user, SPAN_WARNING("You decide not to hack [target]."))
             return
-        
+
         user.visible_message(SPAN_DANGER("[user] hacks open [target]."), SPAN_NOTICE("You hack open [target]."))
 
         D.unlock()
         D.open()
-    
+
     else if(istype(target, /obj/structure/machinery/door_control))
         var/obj/structure/machinery/door_control/D = target
 
         SHOW_HACK_MESSAGE
-        D.attack_hand(user, TRUE)
+        D.use_button(user, TRUE)
 
     else if(istype(target, /obj/structure/machinery/power/apc))
         var/obj/structure/machinery/power/apc/A = target
 
         if(!A.locked)
             return
-        
+
         SHOW_HACK_MESSAGE
         A.locked = FALSE
         A.update_icon()

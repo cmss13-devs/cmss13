@@ -52,3 +52,13 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick)
 			//SSblackbox.record_feedback("tally", "admin_verb", 1, "Restart Failsafe Controller")
 
 	message_admins("Admin [key_name_admin(usr)] has restarted the [controller] controller.")
+
+/client/proc/debug_role_authority()
+	set category = "Debug"
+	set name = "B: Debug Role Authority"
+
+	if(!RoleAuthority)
+		to_chat(usr, "RoleAuthority not found!")
+		return
+	debug_variables(RoleAuthority)
+	message_staff("Admin [key_name_admin(usr)] is debugging the Role Authority.")

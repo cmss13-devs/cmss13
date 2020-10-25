@@ -150,8 +150,8 @@
 /obj/item/clothing/mask/facehugger/HasProximity(atom/movable/AM)
 	if(stat == CONSCIOUS && CanHug(AM, hivenumber))
 		Attach(AM)
-		return 1
-	return 0
+		return TRUE
+	return FALSE
 
 /obj/item/clothing/mask/facehugger/launch_towards(var/datum/launch_metadata/LM)
 	..()

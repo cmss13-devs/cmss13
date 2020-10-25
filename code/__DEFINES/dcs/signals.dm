@@ -64,6 +64,13 @@
 /// From /obj/structure/machinery/power/apc/proc/pulse
 #define COMSIG_MOB_APC_POWER_PULSE "mob_apc_power_pulse"
 
+/// For when a mob is dragged
+#define COMSIG_MOB_DRAGGED "mob_dragged"
+
+/// For when a mob is devoured by a Xeno
+#define COMSIG_MOB_DEVOURED "mob_devoured"
+	#define COMPONENT_CANCEL_DEVOUR	(1<<0)
+
 /// From /mob/living/rejuvenate
 #define COMSIG_LIVING_REJUVENATED "living_rejuvenated"
 

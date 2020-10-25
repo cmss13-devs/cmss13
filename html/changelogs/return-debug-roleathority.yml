@@ -1,0 +1,6 @@
+author: Jeser
+
+delete-after: True
+
+changes: 
+  - bugfix: "Readded Debug RoleAuthority verb that was unintentionally deleted some time ago."

@@ -87,6 +87,7 @@ var/list/admin_verbs_server = list(
 )
 var/list/admin_verbs_debug = list(
     /client/proc/getruntimelog,                     /*allows us to access runtime logs to somebody*/
+	/client/proc/debug_role_authority,
 	/client/proc/cmd_debug_make_powernets,
 	/client/proc/cmd_debug_fire_ob,
 	/client/proc/cmd_debug_mob_lists,

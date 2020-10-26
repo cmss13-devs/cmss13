@@ -1,9 +1,0 @@
-author: Jeser
-
-delete-after: True
-
-changes: 
-  - bugfix: "Fixed vehicles being shown on tacmap regardless of their z-level."
-  - bugfix: "Fixed sudden momentum loss bug (thanks to Waltermeldron for help)."
-  - bugfix: "Fixed bug with momentum positive/negative values that resulted in additional delays before moving while driving and turning on reverse."
-  - rscadd: "Added vehicles current damage resistances and passengers count to Vehicle Status Info window."

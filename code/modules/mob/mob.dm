@@ -454,6 +454,10 @@
 		visible_message(SPAN_WARNING("[src] has broken [AM.pulledby]'s grip on [M]!"), null, null, 5)
 		AM.pulledby.stop_pulling()
 
+	var/pull_response = AM.pull_response(src)
+	if(!pull_response) // If I'm not allowed to pull you I won't. Stop here.
+		return FALSE
+
 	pulling = AM
 	AM.pulledby = src
 
@@ -486,8 +490,7 @@
 
 	if(hud_used && hud_used.pull_icon) 
 		hud_used.pull_icon.icon_state = "pull1"		
-
-	return AM.pull_response(src) //returns true if the response doesn't break the pull
+	return AM.pull_response(src) //returns true if the response doesn't break the pull. Asked again in case actually being pulled changes the answer.
 
 //how a movable atom reacts to being pulled.
 //returns true if the pull isn't severed by the response

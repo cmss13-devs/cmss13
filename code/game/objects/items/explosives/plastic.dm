@@ -126,6 +126,12 @@
 	else
 		return ..()
 
+/obj/item/explosive/plastic/pull_response(mob/puller)
+	if(active)
+		to_chat(puller, SPAN_WARNING("You can't just grab [src] while it is active! Use a multitool!"))
+		return FALSE
+	return TRUE
+
 /obj/item/explosive/plastic/proc/disarm()
 	pixel_x = 0
 	pixel_y = 0

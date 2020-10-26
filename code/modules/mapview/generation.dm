@@ -129,7 +129,7 @@
 		for(var/mob/living/carbon/human/sel in marines_with_helmets[selected])
 			newoverlay.DrawBox(colors[selected],sel.loc.x-1,sel.loc.y-1,sel.loc.x+1,sel.loc.y+1)
 	for(var/obj/vehicle/multitile/MULT in all_multi_vehicles)
-		if(MULT.visible_in_tacmap)	//don't need colony/hostile vehicle to show
+		if(MULT.visible_in_tacmap && MULT.z == 1)	//don't need colony/hostile vehicle to show
 			vehicles += MULT
 	if(vehicles.len)
 		for(var/obj/vehicle/multitile/V in vehicles)

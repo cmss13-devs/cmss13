@@ -110,7 +110,7 @@
 //opens vehicle status window with HP and ammo of hardpoints
 /obj/vehicle/multitile/proc/get_status_info()
 	set name = "I: Get Status Info"
-	set desc = "Shows all available information about your vehicle."
+	set desc = "Displays all available information about your vehicle in a small window."
 	set category = "Vehicle"
 
 	var/mob/user = usr
@@ -130,6 +130,20 @@
 		return
 
 	var/dat = "[V]<br>"
+	dat += "Current armor resistances:<br>"
+	var/list/resist_name = list("Bio" = "acid", "Slash" = "slash", "Bullet" = "bullet", "Expl" = "explosive", "Blunt" = "blunt")
+
+	for(var/i in resist_name)
+		var/resist = 1 - LAZYACCESS(V.dmg_multipliers, LAZYACCESS(resist_name, i))
+		if(resist > 0)
+			dat += SPAN_HELPFUL("[resist * 100]% [i] ")
+		else
+			dat += "<font color=\"red\">[resist * 100]% [i] </font>"
+
+	dat +="<br>"
+	V.interior.update_passenger_count()
+	dat += "Passenger capacity: [V.interior.humans_inside]/[V.interior.human_capacity].<br>"
+
 	for(var/obj/item/hardpoint/H in V.hardpoints)
 		dat += H.get_hardpoint_info()
 
@@ -140,7 +154,7 @@
 //opens vehicle controls guide, that contains description of all verbs and shortcuts in it
 /obj/vehicle/multitile/proc/open_controls_guide()
 	set name = "I: Vehicle Controls Guide"
-	set desc = "MANDATORY FOR FIRST PLAY AS VEHICLE CREWMAN."
+	set desc = "MANDATORY FOR FIRST PLAY AS VEHICLE CREWMAN OR AFTER UPDATES."
 	set category = "Vehicle"
 
 	var/mob/user = usr

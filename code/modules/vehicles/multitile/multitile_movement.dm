@@ -31,8 +31,11 @@
 		return FALSE
 
 	// The driver can start buffering movement inputs VEHICLE_INPUT_BUFFER_WINDOW ds before the next move
-	if(world.time > next_move - VEHICLE_INPUT_BUFFER_WINDOW)
-		buffered_move = direction
+	//disabled to prevent sudden loss of momentum. Movement refactor pending.
+	//if(world.time > next_move - VEHICLE_INPUT_BUFFER_WINDOW)
+	//	return FALSE
+
+	buffered_move = direction
 
 	// If we have momentum, the movement procs will loop themselves until it falls below 1
 	if(abs(momentum) >= 1)
@@ -117,7 +120,12 @@
 	if(!can_rotate(deg))
 		return FALSE
 
-	momentum = max(momentum * turn_momentum_loss_factor, 0.5)	//here is where "momentum bug" was occuring.
+	momentum = momentum * turn_momentum_loss_factor
+	if(abs(momentum) < 0.5)
+		if(momentum < 0)
+			momentum = -0.5
+		else
+			momentum = 0.5
 	update_next_move()
 
 	rotate_hardpoints(deg)

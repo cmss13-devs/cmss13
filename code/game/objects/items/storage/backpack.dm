@@ -27,8 +27,6 @@
 		var/obj/item/card/id/card = W
 		toggle_lock(card, H)
 		return
-	else if(!is_accessible_by(user, TRUE))
-		return
 
 	if (use_sound)
 		playsound(src.loc, src.use_sound, 15, 1, 6)
@@ -84,10 +82,10 @@
 		return
 	..()
 
-/obj/item/storage/backpack/proc/is_accessible_by(mob/user, skip_worn_check = FALSE)
+/obj/item/storage/backpack/proc/is_accessible_by(mob/user)
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
-		if(!worn_accessible && !skip_worn_check)
+		if(!worn_accessible)
 			if(H.back == src)
 				to_chat(H, SPAN_NOTICE("You can't look in [src] while it's on your back."))
 				return FALSE

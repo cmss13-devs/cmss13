@@ -145,12 +145,13 @@
 	HasProximity(target)
 
 /obj/item/clothing/mask/facehugger/on_found(mob/finder)
-	HasProximity(finder)
-	return 1
+	return HasProximity(finder)
 
 /obj/item/clothing/mask/facehugger/HasProximity(atom/movable/AM)
 	if(stat == CONSCIOUS && CanHug(AM, hivenumber))
 		Attach(AM)
+		return TRUE
+	return FALSE
 
 /obj/item/clothing/mask/facehugger/launch_towards(var/datum/launch_metadata/LM)
 	..()
@@ -225,7 +226,7 @@
 	attached++
 	reset_attach_status()
 	M.visible_message(SPAN_DANGER("[src] leaps at [M]'s face!"))
-	if(throwing) 
+	if(throwing)
 		throwing = FALSE
 
 	if(isXeno(loc)) //Being carried? Drop it
@@ -346,7 +347,7 @@
 		if(!embryos)
 			var/obj/item/alien_embryo/embryo = new /obj/item/alien_embryo(target)
 			embryo.hivenumber = hivenumber
-			
+
 			embryo.flags_embryo = flags_embryo
 			flags_embryo = NO_FLAGS
 
@@ -358,7 +359,7 @@
 		Die()
 	else
 		target.visible_message(SPAN_DANGER("[src] violates [target]'s face!"))
-	
+
 	if(round_statistics && ishuman(target))
 		round_statistics.total_huggers_applied++
 
@@ -448,7 +449,7 @@
 		for(var/obj/item/alien_embryo/embryo in M)
 			if(embryo.hivenumber == hivenumber)
 				return
-	
+
 	if(M.allied_to_hivenumber(hivenumber, XENO_SLASH_RESTRICTED))
 		return
 

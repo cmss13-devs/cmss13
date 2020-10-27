@@ -2,7 +2,7 @@
 // All reagents related to medicine
 
 /datum/reagent/medical
-	flags = REAGENT_TYPE_MEDICAL
+	flags = REAGENT_TYPE_MEDICAL | REAGENT_SCANNABLE
 
 /datum/reagent/medical/inaprovaline
 	name = "Inaprovaline"
@@ -12,7 +12,6 @@
 	color = "#C8A5DC" // rgb: 200, 165, 220
 	overdose = HIGH_REAGENTS_OVERDOSE
 	overdose_critical = HIGH_REAGENTS_OVERDOSE_CRITICAL
-	scannable = 1
 	chemclass = CHEM_CLASS_COMMON
 	properties = list(PROPERTY_CARDIOSTABILIZING = 3)
 
@@ -33,7 +32,6 @@
 	description = "Also known as Tylenol, this is a moderate long lasting painkiller that has been commonly available since 1950. Paracetamol is capable of both analgesic and antipyretic activity but no anti-inflammatory action. Overdosing on paracetamol is toxic, may induce hallucinations, and cause acute liver failure."
 	reagent_state = LIQUID
 	color = "#C855DC"
-	scannable = 1
 	custom_metabolism = 0.025 // Lasts 10 minutes for 15 units
 	overdose = HIGH_REAGENTS_OVERDOSE
 	overdose_critical = HIGH_REAGENTS_OVERDOSE_CRITICAL
@@ -46,7 +44,6 @@
 	description = "Tramadol is a centrally acting analgesic and is considered to be a relatively safe. The analgesic potency is claimed to be about one tenth that of morphine. It is used to treat both acute and chronic pain of moderate to (moderately) severe intensity. Tramadol is generally considered as a medicinal drug with a low potential for dependence relative to morphine. Overdosing on tramadol is highly toxic."
 	reagent_state = LIQUID
 	color = "#C8A5DC"
-	scannable = 1
 	custom_metabolism = 0.1 // Lasts 10 minutes for 15 units
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
@@ -59,7 +56,6 @@
 	description = "Oxycodone is an opioid agonist with addiction potential similar to that of morphine. It is approved for the treatment of patients with moderate to severe pain who are expected to need continuous opioids for an extended period of time. Overdosing on oxycodone can cause hallucinations, brain damage and be highly toxic."
 	reagent_state = LIQUID
 	color = "#C805DC"
-	scannable = 1
 	custom_metabolism = 0.2 // Lasts 5 minutes for 15 units
 	overdose = MED_REAGENTS_OVERDOSE
 	overdose_critical = MED_REAGENTS_OVERDOSE_CRITICAL
@@ -80,7 +76,6 @@
 	description = "A drug used to treat hypothermia and hyperthermia. Stabilizes patient body temperture. Prevents the use of cryogenics. Overdosing on leporazine can cause extreme drowsyness."
 	reagent_state = LIQUID
 	color = "#C8A5DC" // rgb: 200, 165, 220
-	scannable = 1
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_UNCOMMON
@@ -92,7 +87,6 @@
 	description = "Common medicine used to treat burns, caustic and corrosive trauma. Overdosing on kelotane can cause internal tissue damage."
 	reagent_state = LIQUID
 	color = "#D8C58C"
-	scannable = 1
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_COMMON
@@ -106,7 +100,6 @@
 	color = "#F8C57C"
 	overdose = LOWH_REAGENTS_OVERDOSE
 	overdose_critical = LOWH_REAGENTS_OVERDOSE_CRITICAL
-	scannable = 1
 	chemclass = CHEM_CLASS_UNCOMMON
 	properties = list(PROPERTY_ANTICORROSIVE = 3)
 
@@ -118,7 +111,6 @@
 	color = "#C865FC"
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
-	scannable = 1
 	chemclass = CHEM_CLASS_COMMON
 	properties = list(PROPERTY_OXYGENATING = 4)
 
@@ -130,7 +122,6 @@
 	color = "#C8A5FC"
 	overdose = LOWH_REAGENTS_OVERDOSE
 	overdose_critical = LOWH_REAGENTS_OVERDOSE_CRITICAL
-	scannable = 1
 	chemclass = CHEM_CLASS_UNCOMMON
 	properties = list(PROPERTY_OXYGENATING = 6)
 
@@ -140,7 +131,6 @@
 	description = "Tricordrazine is a highly potent stimulant, originally derived from cordrazine. Can be used to treat a wide range of injuries."
 	reagent_state = LIQUID
 	color = "#B865CC"
-	scannable = 1
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_UNCOMMON
@@ -152,7 +142,6 @@
 	description = "General use anti-toxin, that neutralizes most toxins in the bloodstream. Commonly used in many advanced chemicals. Can be used as a mild anti-hallucinogen and to reduce tiredness."
 	reagent_state = LIQUID
 	color = "#A8F59C"
-	scannable = 1
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_COMMON
@@ -165,6 +154,7 @@
 	reagent_state = LIQUID
 	color = "#C8A5DC" // rgb: 200, 165, 220
 	properties = list(PROPERTY_OMNIPOTENT = 2)
+	flags = REAGENT_TYPE_MEDICAL
 
 /datum/reagent/medical/thwei //OP yautja chem
 	name = "Thwei"
@@ -185,6 +175,7 @@
 						PROPERTY_ANTIHALLUCINOGENIC = 2,
 						PROPERTY_FOCUSING = 6,
 						PROPERTY_CURING = 4)
+	flags = REAGENT_TYPE_MEDICAL
 
 /datum/reagent/medical/synaptizine
 	name = "Synaptizine"
@@ -195,7 +186,6 @@
 	custom_metabolism = 0.1
 	overdose = LOW_REAGENTS_OVERDOSE
 	overdose_critical = LOW_REAGENTS_OVERDOSE_CRITICAL
-	scannable = 1
 	chemclass = CHEM_CLASS_UNCOMMON
 	properties = list(PROPERTY_PAINKILLING = 1, PROPERTY_NERVESTIMULATING = 2, PROPERTY_ANTIHALLUCINOGENIC = 2, PROPERTY_TOXIC = 1)
 
@@ -208,9 +198,9 @@
 	custom_metabolism = 0.4
 	overdose = 2
 	overdose_critical = 3
-	scannable = 0
 	chemclass = CHEM_CLASS_RARE
 	properties = list(PROPERTY_NERVESTIMULATING = 5)
+	flags = REAGENT_TYPE_MEDICAL
 
 /datum/reagent/medical/arithrazine
 	name = "Arithrazine"
@@ -233,7 +223,6 @@
 	custom_metabolism = 1
 	overdose = MED_REAGENTS_OVERDOSE
 	overdose_critical = MED_REAGENTS_OVERDOSE_CRITICAL
-	scannable = 1
 	properties = list(PROPERTY_ANTITOXIC = 1, PROPERTY_BIOCIDIC = 2)
 
 /datum/reagent/medical/alkysine
@@ -245,7 +234,6 @@
 	custom_metabolism = 0.05
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
-	scannable = 1
 	chemclass = CHEM_CLASS_UNCOMMON
 	properties = list(PROPERTY_NEUROPEUTIC = 2)
 
@@ -257,7 +245,6 @@
 	color = "#C8A5DC" // rgb: 200, 165, 220
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
-	scannable = 1
 	chemclass = CHEM_CLASS_UNCOMMON
 	properties = list(PROPERTY_OCULOPEUTIC = 2)
 
@@ -270,7 +257,6 @@
 	overdose = LOWH_REAGENTS_OVERDOSE
 	overdose_critical = LOWH_REAGENTS_OVERDOSE_CRITICAL
 	custom_metabolism = 0.05
-	scannable = 1
 	chemclass = CHEM_CLASS_COMMON
 	properties = list(PROPERTY_UNKNOWN = 4) //handled by organ code
 
@@ -282,7 +268,6 @@
 	color = "#E8756C"
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
-	scannable = 1
 	chemclass = CHEM_CLASS_COMMON
 	properties = list(PROPERTY_NEOGENETIC = 2)
 
@@ -294,7 +279,6 @@
 	color = "#CC00FF"
 	overdose = LOWH_REAGENTS_OVERDOSE
 	overdose_critical = LOWH_REAGENTS_OVERDOSE_CRITICAL
-	scannable = 1 //scannable now.  HUZZAH.
 	custom_metabolism = 0.05
 	chemclass = CHEM_CLASS_UNCOMMON
 	properties = list(PROPERTY_UNKNOWN = 6) //handled by blood code
@@ -304,14 +288,13 @@
 	id = "adrenaline"
 	description = "A natural muscle and heart stimulant. Useful for restarting the heart. Overdosing may stress the heart and cause tissue damage."
 	reagent_state = LIQUID
-	ingestible = FALSE
 	color = "FFE703" // Yellow-ish
 	overdose = LOWM_REAGENTS_OVERDOSE
 	overdose_critical = LOWM_REAGENTS_OVERDOSE_CRITICAL
-	scannable = 1
 	custom_metabolism = 0.4
 	chemclass = CHEM_CLASS_COMMON
 	properties = list(PROPERTY_PAINKILLING = 1.5, PROPERTY_MUSCLESTIMULATING = 1, PROPERTY_ELECTROGENETIC = 4)
+	flags = REAGENT_TYPE_MEDICAL | REAGENT_SCANNABLE | REAGENT_NOT_INGESTIBLE
 
 /datum/reagent/medical/hyperzine
 	name = "Hyperzine"
@@ -336,6 +319,7 @@
 	overdose_critical = LOWM_REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_RARE
 	properties = list(PROPERTY_MUSCLESTIMULATING = 40, PROPERTY_ADDICTIVE = 8)
+	flags = REAGENT_TYPE_MEDICAL
 
 /datum/reagent/medical/stimulant
 	name = "Stimulant"
@@ -348,6 +332,7 @@
 	overdose_critical = LOWH_REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_RARE
 	properties = list(PROPERTY_UNKNOWN = 1)
+	flags = REAGENT_TYPE_MEDICAL
 
 /datum/reagent/medical/cryoxadone
 	name = "Cryoxadone"
@@ -355,7 +340,6 @@
 	description = "Industrial grade cryogenic medicine. Treats most types of tissue damage. Its main limitation is that the patient's body temperature must be under 170K to metabolise correctly."
 	reagent_state = LIQUID
 	color = "#C8A5DC" // rgb: 200, 165, 220
-	scannable = 1
 	chemclass = CHEM_CLASS_UNCOMMON
 	properties = list(PROPERTY_CRYOMETABOLIZING = 2, PROPERTY_NEOGENETIC = 1, PROPERTY_ANTICORROSIVE = 1, PROPERTY_ANTITOXIC = 1, PROPERTY_ANTICARCINOGENIC = 1)
 
@@ -374,7 +358,6 @@
 	description = "Advanced cryogenic medicine made from cryoxadone. Treats most types of tissue damage. Requires temperatures below 170K to to metabolise correctly."
 	reagent_state = LIQUID
 	color = "#C8A5DC" // rgb: 200, 165, 220
-	scannable = 1
 	chemclass = CHEM_CLASS_UNCOMMON
 	properties = list(PROPERTY_CRYOMETABOLIZING = 6, PROPERTY_NEOGENETIC = 3, PROPERTY_ANTICORROSIVE = 3, PROPERTY_ANTITOXIC = 3, PROPERTY_ANTICARCINOGENIC = 3)
 
@@ -386,7 +369,6 @@
 	color = "#669900" // rgb: 102, 153, 0
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
-	scannable = 1
 	properties = list(PROPERTY_NEOGENETIC = 1, PROPERTY_AIDING = 3, PROPERTY_TOXIC = 2, PROPERTY_ANTICARCINOGENIC = 2)
 
 /datum/reagent/medical/spaceacillin
@@ -398,7 +380,6 @@
 	custom_metabolism = 0.01
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
-	scannable = 1
 	properties = list(PROPERTY_UNKNOWN = 1)
 
 /datum/reagent/medical/ethylredoxrazine	// FUCK YOU, ALCOHOL

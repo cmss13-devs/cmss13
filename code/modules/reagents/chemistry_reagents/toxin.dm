@@ -202,9 +202,9 @@
 	custom_metabolism = 0.1
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
-	scannable = 1
 	chemclass = CHEM_CLASS_COMMON
 	properties = list(PROPERTY_SEDATIVE = 2, PROPERTY_PAINKILLING = 10)
+	flags = REAGENT_SCANNABLE
 
 /datum/reagent/toxin/chloralhydrate
 	name = "Chloral Hydrate"

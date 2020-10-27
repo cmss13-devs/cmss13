@@ -6,7 +6,7 @@
 	reagent_state = LIQUID //why isn't this default, seriously
 	chemclass = CHEM_CLASS_ULTRA
 	objective_value = 20
-	scannable = 1
+	flags = REAGENT_SCANNABLE
 
 /datum/reagent/generated/New()
 	//Generate stats
@@ -33,25 +33,25 @@
 	id = "alpha"
 	result = "alpha"
 	gen_tier = 1
-		
+
 /datum/reagent/generated/alpha
 	id = "alpha"
 	gen_tier = 1
-		
+
 /datum/chemical_reaction/generated/beta
 	id = "beta"
 	result = "beta"
 	gen_tier = 1
-		
+
 /datum/reagent/generated/beta
 	id = "beta"
 	gen_tier = 1
-		
+
 /datum/chemical_reaction/generated/gamma
 	id = "gamma"
 	result = "gamma"
 	gen_tier = 1
-		
+
 /datum/reagent/generated/gamma
 	id = "gamma"
 	gen_tier = 1
@@ -60,7 +60,7 @@
 	id = "delta"
 	result = "delta"
 	gen_tier = 1
-		
+
 /datum/reagent/generated/delta
 	id = "delta"
 	gen_tier = 1
@@ -130,7 +130,7 @@
 /datum/reagent/generated/lambda
 	id = "lambda"
 	gen_tier = 4
-		
+
 /datum/chemical_reaction/generated/on_reaction(var/datum/reagents/holder, var/created_volume)
 	var/datum/reagent/R = holder.reagent_list[id]
 	if(!R || !R.properties)

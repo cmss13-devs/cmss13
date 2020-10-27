@@ -20,8 +20,13 @@
 	rarity = PROPERTY_LEGENDARY
 	category = PROPERTY_TYPE_METABOLITE
 
-/datum/chem_property/special/regulating/pre_process(mob/living/M)
-	return list(REAGENT_CANNOT_OD = TRUE)
+/datum/chem_property/special/regulating/reset_reagent()
+	holder.flags = initial(holder.flags)
+	..()
+
+/datum/chem_property/special/regulating/update_reagent()
+	holder.flags |= REAGENT_CANNOT_OVERDOSE
+	..()
 
 /datum/chem_property/special/hypergenetic
 	name = PROPERTY_HYPERGENETIC

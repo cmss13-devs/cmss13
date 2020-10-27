@@ -48,7 +48,7 @@
 /mob/living/proc/apply_stamina_damage(var/damage, var/def_zone, var/armor_type)
 	if(!stamina)
 		return
-	
+
 	stamina.apply_damage(damage)
 
 //sort of a legacy burn method for /electrocute, /shock, and the e_chair
@@ -180,7 +180,7 @@
 		if(pulling.anchored)
 			stop_pulling()
 			return
-		
+
 		var/pull_dir = get_dir(src, pulling)
 
 		if(grab_level >= GRAB_CARRY)
@@ -197,7 +197,7 @@
 						pmob.on_movement()
 				else
 					pulling.Move(NewLoc, direct)
-			
+
 			var/mob/living/pmob = pulling
 			if(istype(pmob))
 				pmob.on_movement()
@@ -654,8 +654,8 @@
 			for(var/A in src.reagents.reagent_list)
 				var/datum/reagent/R = A
 				reagents_in_body["[R.id]"] = R.volume
-				if(R.scannable)
-					reagentdata["[R.id]"] = "[R.overdose != 0 && R.volume >= R.overdose ? SPAN_WARNING("<b>OD: </b>") : ""] <font color='#9773C4'><b>[round(R.volume, 1)]u [R.name]</b></font>"
+				if(R.flags & REAGENT_SCANNABLE)
+					reagentdata["[R.id]"] = "[R.overdose != 0 && R.volume >= R.overdose && !(R.flags & REAGENT_CANNOT_OVERDOSE) ? SPAN_WARNING("<b>OD: </b>") : ""] <font color='#9773C4'><b>[round(R.volume, 1)]u [R.name]</b></font>"
 				else
 					unknown++
 			if(reagentdata.len)

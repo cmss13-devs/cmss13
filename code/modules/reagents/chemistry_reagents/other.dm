@@ -407,12 +407,11 @@
 	description = "Chemical element of atomic number 26. Has a broad range of uses in multiple industries particularly in engineering and construction. Iron is an important component of hemoglobin, the substance in red blood cells that carries oxygen. Overdosing on iron is extremely toxic."
 	reagent_state = SOLID
 	color = "#C8A5DC" // rgb: 200, 165, 220
-	scannable = 1
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_BASIC
 	properties = list(PROPERTY_HEMOGENIC = 3)
-	flags = REAGENT_TYPE_MEDICAL
+	flags = REAGENT_TYPE_MEDICAL | REAGENT_SCANNABLE
 
 /datum/reagent/gold
 	name = "Gold"
@@ -620,7 +619,7 @@
 	reagent_state = LIQUID
 	color = "#181818" // rgb: 24, 24, 24
 	chemclass = CHEM_CLASS_RARE
-	scannable = 1
+	flags = REAGENT_SCANNABLE
 
 /datum/reagent/ammonia
 	name = "Ammonia"

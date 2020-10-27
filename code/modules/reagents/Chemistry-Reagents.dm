@@ -17,9 +17,7 @@
 	var/overdose = 0 //The young brother of overdose. Side effects include
 	var/overdose_critical = 0 //The nastier brother of overdose. Expect to die
 	var/overdose_dam = 1//Handeled by heart damage
-	var/scannable = 0 //shows up on health analyzers
 	var/spray_warning = FALSE //whether spraying that reagent creates an admin message.
-	var/ingestible = TRUE // Set this to FALSE if the reagent must be delivered through injection only
 	//var/list/viruses = list()
 	var/color = "#000000" // rgb: 0, 0, 0 (does not support alpha channels - yet!)
 	var/last_source_mob
@@ -48,7 +46,7 @@
 	var/list/properties = list() //Decides properties
 	var/original_id //For tracing back
 	var/flags = 0 // Flags for misc. stuff
-	
+
 	var/deleted = FALSE //If the reagent was deleted
 
 /datum/reagent/New()
@@ -60,7 +58,7 @@
 	for(var/datum/chem_property/P in properties)
 		P.holder = src
 		P.reset_reagent()
-		
+
 	for(var/datum/chem_property/P in properties)
 		P.update_reagent()
 
@@ -116,10 +114,10 @@
 
 	if(mods[REAGENT_CANCEL])
 		return
-	
+
 	if((!isliving(M) || alien == IS_YAUTJA) && !mods[REAGENT_FORCE])
 		return
-	
+
 	handle_processing(M, mods)
 
 	return TRUE
@@ -127,7 +125,6 @@
 //Pre-processing
 /datum/reagent/proc/handle_pre_processing(mob/living/M)
 	var/list/mods = list(	REAGENT_EFFECT		= TRUE,
-							REAGENT_CANNOT_OD 	= FALSE,
 							REAGENT_BOOST 		= FALSE,
 							REAGENT_PURGE 		= FALSE,
 							REAGENT_FORCE 		= FALSE,
@@ -151,7 +148,9 @@
 		if(potency <= 0)
 			continue
 		P.process(M, potency)
-		if(overdose && volume >= overdose && !mods[REAGENT_CANNOT_OD])
+		if(flags & REAGENT_CANNOT_OVERDOSE)
+			continue
+		if(overdose && volume >= overdose)
 			P.process_overdose(M, potency)
 			if(overdose_critical && volume > overdose_critical)
 				P.process_critical(M, potency)
@@ -202,8 +201,6 @@
 	nutriment_factor = C.nutriment_factor
 	custom_metabolism = C.custom_metabolism
 	last_source_mob = C.last_source_mob
-	scannable = C.scannable
-	ingestible = C.ingestible
 	objective_value = C.objective_value
 	original_id = C.original_id
 	chemfiresupp = C.chemfiresupp
@@ -218,6 +215,7 @@
 	explosive = C.explosive
 	power = C.power
 	falloff_modifier =  C.falloff_modifier
+	flags = C.flags
 
 /datum/chemical_reaction/proc/make_alike(var/datum/chemical_reaction/C)
 	if(!C)
@@ -318,6 +316,7 @@
 /datum/reagent/proc/remove_property(var/property)
 	for(var/datum/chem_property/P in properties)
 		if(P.name == property)
+			P.reset_reagent()
 			LAZYREMOVE(properties, P)
 			recalculate_variables()
 			return TRUE

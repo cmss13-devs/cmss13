@@ -29,10 +29,10 @@
 	plasma_cost = 10
 
 	// Config options
-	distance = 5					
-	knockdown = FALSE				
-	slash = FALSE					
-	freeze_self = FALSE				
+	distance = 5
+	knockdown = FALSE
+	slash = FALSE
+	freeze_self = FALSE
 
 	var/buff_duration = 12
 	var/damage = 40
@@ -150,7 +150,7 @@
 	action_icon_state = "prae_tail_lash"
 	ability_name = "tail lash"
 	macro_path = /datum/action/xeno_action/verb/verb_crush
-	ability_primacy = XENO_PRIMARY_ACTION_4
+	ability_primacy = XENO_PRIMARY_ACTION_3
 	action_type = XENO_ACTION_CLICK
 	xeno_cooldown = 130
 	plasma_cost = 50
@@ -220,10 +220,10 @@
 	plasma_cost = 10
 
 	// Config options
-	distance = 4			
-	knockdown = FALSE				
-	slash = FALSE					
-	freeze_self = FALSE		
+	distance = 4
+	knockdown = FALSE
+	slash = FALSE
+	freeze_self = FALSE
 
 /datum/action/xeno_action/activable/prae_acid_ball
 	name = "Acid Ball"
@@ -245,22 +245,22 @@
 	macro_path = /datum/action/xeno_action/verb/verb_spray_acid
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_4
-	
+
 	plasma_cost = 40
 	xeno_cooldown = 100
 
 	// Configurable options
-	spray_type = ACID_SPRAY_LINE	
-	spray_distance = 7				
+	spray_type = ACID_SPRAY_LINE
+	spray_distance = 7
 	spray_effect_type = /obj/effect/xenomorph/spray/praetorian
-	activation_delay = TRUE		
+	activation_delay = TRUE
 	activation_delay_length = 5
 
 
 ///////////////////////// WARDEN PRAE
 
 /datum/action/xeno_action/activable/spray_acid/prae_warden
-	ability_primacy = XENO_PRIMARY_ACTION_2	
+	ability_primacy = XENO_PRIMARY_ACTION_2
 	plasma_cost = 60
 	xeno_cooldown = 130
 
@@ -270,7 +270,7 @@
 	spray_type = ACID_SPRAY_LINE	// Enum for the shape of spray to do
 	spray_distance = 7 				// Distance to spray
 
-	activation_delay = TRUE		 
+	activation_delay = TRUE
 	activation_delay_length = 5
 
 /datum/action/xeno_action/activable/warden_heal
@@ -325,16 +325,16 @@
 		action_icon_result = "warden_heal"
 		WH.curr_effect_type = WARDEN_HEAL_HP
 		to_chat(X, SPAN_XENOWARNING("You will now protect your allies with a heal!"))
-	
+
 	else if (WH.curr_effect_type == WARDEN_HEAL_HP)
 		action_icon_result = "warden_rejuvenate"
 		WH.curr_effect_type = WARDEN_HEAL_DEBUFFS
 		to_chat(X, SPAN_XENOWARNING("You will now protect your allies by rejuvenating them!"))
-		
+
 	else
 		action_icon_result = "warden_shield"
 		WH.curr_effect_type = WARDEN_HEAL_SHIELD
 		to_chat(X, SPAN_XENOWARNING("You will now protect your allies by increasing their resilience from afar!"))
-		
+
 	button.overlays.Cut()
 	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_result)

@@ -1,0 +1,168 @@
+<style type="text/css">
+	.underlineCell {
+		border-bottom: 1px solid #fff;
+	}
+
+	.whiteTitle {
+		color: white;
+	}
+
+	.whiteDescription {
+		color: white;
+		font-weight: bold;
+		font-family: inherit;
+
+		width: 100%;
+		word-wrap: break-word;
+	}
+
+	.noMargin {
+		margin: 0;
+	}
+
+	.noPadCell {
+		padding: 2px;
+	}
+
+	td, th {
+		padding: 10px 10px 10px 10px;
+    }
+	
+    .underlineCell{
+    	border-bottom: 3px solid #252933;
+    }
+
+	h3 {
+		margin: 0;
+		padding: 0;
+	}
+
+	h1 {
+		margin: 0;
+		padding: 0;
+	}
+
+	#filter {
+		background-color: #ffffff;
+		color: #000000;
+		border: 1px solid #161616;
+	}
+
+	#clan_list {
+		border-collapse: collapse; 
+		width: 100%;
+	}
+</style>
+<script type="text/javascript">
+	function updateSearch() {
+		var filter_text = document.getElementById("filter");
+		var filter = filter_text.value.toLowerCase();
+
+		var clan_list = document.getElementById("query_list");
+		var ltr = clan_list.getElementsByTagName("tr");
+
+		for (var i = 0; i < ltr.length; ++i) {
+			try {
+				var tr = ltr[i];
+				tr.style.display = '';
+				var td = tr.getElementsByTagName("td")[1];
+				if (td.innerText.toLowerCase().indexOf(filter) == -1) {
+					tr.style.display = 'none';
+				}
+			} catch(err) {}
+		}
+	}
+</script>
+
+{{:helper.basicBackground()}}
+<center>
+	<h1 class="whiteTitle">Stickyban Manager</h1>
+	<table>
+		<tr>
+			<td><div unselectable="on">{{:helper.link('Query Database', '', { 'switch_panel' : 'searchmenu' }, data.panel_menu == 'searchmenu' ? 'selected' : null)}}</div></td>
+            <td><div unselectable="on">{{:helper.link('Add Entry', '', { 'switch_panel' : 'addentry' }, data.panel_menu == 'addentry' ? 'selected' : null)}}</div></td>
+		</tr>
+	</table>
+</center>
+
+<hr>
+
+
+{{if data.panel_menu == 'searchmenu'}}
+<table>
+    <tr>
+        <td><div unselectable="on">{{:helper.link('Make Search Query', '', { 'stickyban_update_query' : 1 })}}</div></td>
+        <td><div unselectable="on">{{:helper.link('List All Entries', '', { 'stickyban_getall_query' : 1 })}}</div></td>
+    </tr>
+</table>
+
+<div style="text-align: center;">
+    <input type="text" id="filter" value="" onkeyup="updateSearch();" style="width:100%;">
+</div>
+
+<table id="query_list">
+	<tr style="text-align: left;">
+		<th class="noPadCell"></th>
+		<th class="underlineCell">Ckey</th>
+		<th class="underlineCell">IP Address</th>
+		<th class="underlineCell">CID</th>
+        <th class="underlineCell">Reason</th>
+		<th class="underlineCell">Date</th>
+        <th></th>
+        <th class="underlineCell">Source Ckey</th>
+        <th class="underlineCell">Source Reason</th>
+        <th class="underlineCell">Source Admin</th>
+        <th></th>
+	</tr>
+
+	{{props data.query_info :keys:index}}
+		<tr style="text-align: center;">
+			<td class="noPadCell"></td>
+			<td id="ckey">{{:keys.ckey}}</td>
+			<td>{{:keys.address}}</td>
+			<td>{{:keys.computer_id}}</td>
+            <td>{{:keys.reason}}</td>
+			<td>{{:keys.date}}</td>
+            <td></td>
+            <td>{{:keys.linked_ckey}}</td>
+            <td>{{:keys.linked_reason}}</td>
+            <td>{{:keys.admin_ckey}}</td>
+            {{if !keys.linked_ckey}}
+			    <td><div unselectable="on">{{:helper.link('Remove Stickyban', '', { 'row_href' : keys.id, 'remove_stickyban' : 1 })}}</div></td>
+            {{else keys.whitelisted == 1}}
+                <td><div unselectable="on">{{:helper.link('Unwhitelist Ckey', '', { 'row_href' : keys.id, 'whitelist_ckey' : 1})}}</div></td>
+            {{else}}
+                <td><div unselectable="on">{{:helper.link('Whitelist Ckey', '', { 'row_href' : keys.id, 'whitelist_ckey' : 1, 'should_whitelist_ckey' : 1 })}}</div></td>
+            {{/if}}
+		</tr>
+	{{/props}}
+</table>
+{{else data.panel_menu == 'addentry'}}
+    <table id="query_list">
+        <tr style="text-align: left;">
+            <th class="noPadCell"></th>
+            <th class="underlineCell">Ckey</th>
+            <th class="underlineCell">IP Address</th>
+            <th class="underlineCell">CID</th>
+            <th class="underlineCell">Reason</th>
+            <th></th>
+        </tr>
+
+        <tr style="text-align: center;">
+            <td class="noPadCell"></td>
+            <td>{{:data.entry_ckey}}</td>
+            <td>{{:data.entry_address}}</td>
+            <td>{{:data.entry_cid}}</td>
+            <td>{{:data.entry_reason}}</td>
+            <td><div unselectable="on">{{:helper.link('Finish Entry', '', { 'finish_entry': 1 })}}</div></td>
+        </tr>
+        <tr style="text-align: center;">
+            <td class="noPadCell"></td>
+            <td>{{:helper.link('Edit', '', { 'modify' : 'entry_ckey'})}}</td>
+            <td>{{:helper.link('Edit', '', { 'modify' : 'entry_address'})}}</td>
+            <td>{{:helper.link('Edit', '', { 'modify' : 'entry_cid'})}}</td>
+            <td>{{:helper.link('Edit', '', { 'modify' : 'entry_reason'})}}</td>
+            <td>{{:helper.link('Autofill Entry', '', { 'autofill_entry': 1 })}}</td>
+        </tr>
+    </table>
+{{/if}}

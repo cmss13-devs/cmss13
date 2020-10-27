@@ -106,7 +106,7 @@ var/list/admin_ranks = list()								//list of all ranks with associated rights
 	testing(msg)
 	#endif
 
-
+/*
 #ifdef TESTING
 /client/verb/changerank(newrank in admin_ranks)
 	if(holder)
@@ -126,3 +126,4 @@ var/list/admin_ranks = list()								//list of all ranks with associated rights
 	holder.associate(src)
 
 #endif
+*/

@@ -159,7 +159,7 @@ SUBSYSTEM_DEF(garbage)
 				#endif
 				var/type = D.type
 				var/datum/qdel_item/I = items[type]
-				#ifdef TESTING
+				/*#ifdef TESTING
 				log_world("## TESTING: GC: -- \ref[D] | [type] was unable to be GC'd --")
 				for(var/c in GLOB.admins) //Using testing() here would fill the logs with ADMIN_VV garbage
 					var/client/admin = c
@@ -167,7 +167,7 @@ SUBSYSTEM_DEF(garbage)
 						continue
 					to_chat(admin, "## TESTING: GC: -- [ADMIN_VV(D)] | [type] was unable to be GC'd --")
 				testing("GC: -- \ref[src] | [type] was unable to be GC'd --")
-				#endif
+				#endif*/
 				#ifdef REFERENCE_TRACKING
 				GLOB.deletion_failures += D //It should no longer be bothered by the GC, manual deletion only.
 				continue

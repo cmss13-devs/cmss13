@@ -35,7 +35,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player_job_ban)
 
 /datum/entity_link/player_to_player_job_bans
 	parent_entity = /datum/entity/player
-	child_entity = /datum/entity/player_note
+	child_entity = /datum/entity/player_job_ban
 	child_field = "player_id"
 
 	parent_name = "player"
@@ -43,7 +43,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player_job_ban)
 
 /datum/entity_link/admin_to_player_job_bans
 	parent_entity = /datum/entity/player
-	child_entity = /datum/entity/player_note
+	child_entity = /datum/entity/player_job_ban
 	child_field = "admin_id"
 
 	parent_name = "admin"

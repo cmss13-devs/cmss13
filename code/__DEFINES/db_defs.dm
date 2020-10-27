@@ -32,7 +32,6 @@
 #define NDATABASE_RUSTG_BRSQL_SUPPORT TRUE
 
 
-#define DB_CAN_VV_GET TRUE
 #define DB_LOCK_TIMEOUT 5 SECONDS
 #define DB_RECHECK_TIMEOUT 1 SECONDS
 #define DB_ENTITY_RECHECK_TIMEOUT 10
@@ -78,7 +77,7 @@
 // We are reading/writing about this record right now
 #define DB_ENTITY_STATE_PROCESSING 5
 // Something is wrong
-#define DB_ENTITY_STATE_BROKEN 6
+#define DB_ENTITY_STATE_BROKEN -1
 // We want to add this record to database.
 // But then we want to detach from this record
 #define DB_ENTITY_STATE_ADD_DETACH 7

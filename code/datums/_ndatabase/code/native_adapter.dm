@@ -389,6 +389,7 @@
 		if(!first)
 			idtext+=","
 		idtext += "[text2num(id)]"	
+		first = FALSE
 	return {"
 		DELETE FROM [table_name] WHERE id IN ([idtext]);
 	"}

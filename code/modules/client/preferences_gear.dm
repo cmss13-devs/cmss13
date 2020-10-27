@@ -326,6 +326,19 @@ var/global/list/gear_datums = list()
 	path = /obj/item/clothing/mask/gas
 	cost = 2
 	slot = WEAR_FACE
+
+/datum/gear/skull_balaclava_blue
+	display_name = "Blue Skull Balaclava"
+	path = /obj/item/clothing/mask/rebreather/skull
+	cost = 4 //same as skull facepaint
+	slot = WEAR_FACE
+
+/datum/gear/skull_balaclava_black
+	display_name = "Black Skull Balaclava"
+	path = /obj/item/clothing/mask/rebreather/skull/black
+	cost = 4
+	slot = WEAR_FACE
+
 /datum/gear/gunoil
 	display_name = "Gun Oil"
 	path = /obj/item/prop/helmetgarb/gunoil

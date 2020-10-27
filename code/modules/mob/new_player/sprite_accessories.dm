@@ -28,7 +28,7 @@
 	var/gender = NEUTER
 
 	// Restrict some styles to specific species
-	var/list/species_allowed = list("Human", "Machine", "Human Hero", "Synthetic", "Early Synthetics", "Second Generation Synthetic")
+	var/list/species_allowed = list("Human", "Machine", "Human Hero", "Synthetic", "Early Synthetic", "Second Generation Synthetic")
 
 	// Whether or not the accessory can be affected by colouration
 	var/do_colouration = 1

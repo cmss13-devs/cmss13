@@ -135,6 +135,7 @@
 		new /obj/item/weapon/gun/launcher/m92(src)
 		new /obj/item/storage/belt/grenade/large/full(src)
 		new /obj/item/storage/backpack/marine/grenadepack(src)
+		new /obj/item/storage/backpack/marine/grenadepack(src)
 		new /obj/item/clothing/gloves/marine/M3G(src)
 		new /obj/item/clothing/suit/storage/marine/M3G(src)
 		new /obj/item/clothing/head/helmet/marine/grenadier(src)

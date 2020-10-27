@@ -12,6 +12,7 @@
 
 /* Pre-pre-startup */
 /datum/game_mode/colonialmarines/can_start()
+	initialize_special_clamps()
 	return TRUE
 
 /datum/game_mode/colonialmarines/announce()

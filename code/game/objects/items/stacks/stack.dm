@@ -17,6 +17,7 @@
 	var/amount = 1
 	var/max_amount //also see stack recipes initialisation, param "max_res_amount" must be equal to this max_amount
 	var/stack_id //used to determine if two stacks are of the same kind.
+	attack_speed = 3	//makes collect stacks off the floor and such less of a pain
 
 /obj/item/stack/New(var/loc, var/amount = null)
 	..()
@@ -123,42 +124,29 @@
 				to_chat(usr, SPAN_WARNING("You need more [name] to build \the [R.title]!"))
 			return
 
-		//1 is absolute one per tile, 2 is directional one per tile. Hacky way to get around it without adding more vars
-		if(R.one_per_turf)
-			if(R.one_per_turf == 1 && (locate(R.result_type) in usr.loc))
-				to_chat(usr, SPAN_WARNING("There is already another [R.title] here!"))
-				return
-			for(var/obj/O in usr.loc) //Objects, we don't care about mobs. Turfs are checked elsewhere
-				if(O.density && !istype(O, R.result_type) && !((O.flags_atom & ON_BORDER) && R.one_per_turf == 2)) //Note: If no dense items, or if dense item, both it and result must be border tiles
-					to_chat(usr, SPAN_WARNING("You need a clear, open area to build \a [R.title]!"))
-					return
-				if(R.one_per_turf == 2 && (O.flags_atom & ON_BORDER) && O.dir == usr.dir) //We check overlapping dir here. Doesn't have to be the same type
-					to_chat(usr, SPAN_WARNING("There is already \a [O.name] in this direction!"))
-					return
+		if(check_one_per_turf(R,usr))
+			return
+
 		if(R.on_floor && istype(usr.loc, /turf/open))
 			var/turf/open/OT = usr.loc
 			if(!OT.allow_construction)
 				to_chat(usr, SPAN_WARNING("\The [R.title] must be constructed on a proper surface!"))
 				return
+
 		if(R.time)
 			if(usr.action_busy) return
 			usr.visible_message(SPAN_NOTICE("[usr] starts assembling \a [R.title]."), \
 				SPAN_NOTICE("You start assembling \a [R.title]."))
 			if(!do_after(usr, max(R.time * usr.get_skill_duration_multiplier(SKILL_CONSTRUCTION), R.min_time), INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				return
-		//We want to check this again for girder stacking
-		if(R.one_per_turf == 1 && (locate(R.result_type) in usr.loc))
-			to_chat(usr, SPAN_WARNING("There is already another [R.title] here!"))
-			return
-		for(var/obj/O in usr.loc) //Objects, we don't care about mobs. Turfs are checked elsewhere
-			if(O.density && !istype(O, R.result_type) && !((O.flags_atom & ON_BORDER) && R.one_per_turf == 2))
-				to_chat(usr, SPAN_WARNING("You need a clear, open area to build \a [R.title]!"))
+
+			//check again after some time has passed
+			if(amount < R.req_amount * multiplier)
 				return
-			if(R.one_per_turf == 2 && (O.flags_atom & ON_BORDER) && O.dir == usr.dir)
-				to_chat(usr, SPAN_WARNING("There is already \a [O.name] in this direction!"))
+
+			if(check_one_per_turf(R,usr))
 				return
-		if(amount < R.req_amount * multiplier)
-			return
+
 		var/atom/O = new R.result_type(usr.loc, usr)
 		usr.visible_message(SPAN_NOTICE("[usr] assembles \a [O]."),
 		SPAN_NOTICE("You assemble \a [O]."))
@@ -174,20 +162,18 @@
 			usr.drop_inv_item_on_ground(oldsrc)
 			qdel(oldsrc)
 
-		if(istype(O, /obj/item) && !istype(O, /obj/item/ammo_box) && ishuman(usr) && !usr.put_in_inactive_hand(O))
-			var/obj/item/stack/IH = usr.get_inactive_hand()
+		if(istype(O,/obj/item/stack))	//floor stacking convenience
 			var/obj/item/stack/S = O
-			if (istype(IH) && istype(S) && IH.stack_id == S.stack_id)
-				var/diff = IH.max_amount - IH.amount
-				if (S.amount < diff)
-					IH.amount += S.amount
-					qdel(S)
-				else
-					S.amount -= diff
-					IH.amount += diff
-					usr.put_in_active_hand(S)
-			else
-				usr.put_in_active_hand(O)
+			for(var/obj/item/stack/F in usr.loc)
+				if(S.stack_id == F.stack_id && S != F)
+					var/diff = F.max_amount - F.amount
+					if (S.amount < diff)
+						F.amount += S.amount
+						qdel(S)
+					else
+						S.amount -= diff
+						F.amount += diff
+					break
 
 		O?.add_fingerprint(usr)
 
@@ -198,6 +184,25 @@
 		//BubbleWrap END
 	if(src && usr.interactee == src) //do not reopen closed window
 		INVOKE_ASYNC(src, .proc/interact, usr)
+
+/obj/item/stack/proc/check_one_per_turf(var/datum/stack_recipe/R, var/mob/user)
+	switch(R.one_per_turf)
+
+		if(ONE_TYPE_PER_TURF)
+			if(locate(R.result_type) in user.loc)
+				to_chat(user, SPAN_WARNING("There is already another [R.title] here!"))
+				return TRUE
+
+		if(ONE_TYPE_PER_BORDER)
+			for(var/obj/O in user.loc) //Objects, we don't care about mobs. Turfs are checked elsewhere
+				if(O.density && !istype(O, R.result_type) && !((O.flags_atom & ON_BORDER))) //Note: If no dense items, or if dense item, both it and result must be border tiles
+					to_chat(user, SPAN_WARNING("You need a clear, open area to build \a [R.title]!"))
+					return TRUE
+				if((O.flags_atom & ON_BORDER) && O.dir == usr.dir) //We check overlapping dir here. Doesn't have to be the same type
+					to_chat(user, SPAN_WARNING("There is already \a [O.name] in this direction!"))
+					return TRUE
+	
+	return FALSE
 
 /obj/item/stack/proc/use(used)
 	if(used > amount) //If it's larger than what we have, no go.

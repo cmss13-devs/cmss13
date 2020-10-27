@@ -12,6 +12,7 @@
 	color = "#664330" // rgb: 102, 67, 48
 	chemclass = CHEM_CLASS_RARE
 	properties = list(PROPERTY_NEOGENETIC = 1, PROPERTY_NUTRITIOUS = 2, PROPERTY_HEMOGENIC = 1)
+	flags = REAGENT_SCANNABLE
 
 /datum/reagent/lipozine
 	name = "Lipozine" // The anti-nutriment.

@@ -42,7 +42,6 @@
 		return
 	for(var/datum/reagent/generated/R in reagents.reagent_list)
 		var/list/mods = list(	REAGENT_EFFECT		= TRUE,
-								REAGENT_CANNOT_OD 	= FALSE,
 								REAGENT_BOOST 		= FALSE,
 								REAGENT_PURGE 		= FALSE,
 								REAGENT_FORCE 		= FALSE,
@@ -57,7 +56,7 @@
 
 		if(mods[REAGENT_CANCEL])
 			return
-		
+
 		if(mods[REAGENT_FORCE])
 			R.handle_processing(src, mods)
 		else

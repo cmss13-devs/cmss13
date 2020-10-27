@@ -302,7 +302,7 @@
 	var/mob/living/carbon/human/H = M
 	var/obj/limb/L = pick(H.limbs)
 	if(L)
-		if(L.knitting_time > 0) 
+		if(L.knitting_time > 0)
 			return // only one knits at a time
 		switch(L.name)
 			if("groin","chest")
@@ -433,11 +433,11 @@
 		M.updatehealth()
 
 /datum/chem_property/positive/electrogenetic/reset_reagent()
-	holder.ingestible = initial(holder.ingestible)
+	holder.flags = initial(holder.flags)
 	..()
 
 /datum/chem_property/positive/electrogenetic/update_reagent()
-	holder.ingestible = FALSE
+	holder.flags |= REAGENT_NOT_INGESTIBLE
 	..()
 
 /datum/chem_property/positive/defibrillating
@@ -586,11 +586,11 @@
 	holder.radiusmod += radiusmod_per_level * level
 	holder.durationmod += durationmod_per_level * level
 	holder.intensitymod += intensitymod_per_level * level
-	
+
 	holder.rangefire = max(holder.rangefire + range_per_level * level, 1)
 	holder.durationfire = max(holder.durationfire + duration_per_level * level, 1)
 	holder.intensityfire = max(holder.intensityfire + intensity_per_level * level, 1)
-	
+
 	..()
 
 /datum/chem_property/positive/fire/fueling

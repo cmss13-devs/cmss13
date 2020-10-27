@@ -197,7 +197,7 @@
 				return
 
 			for(var/datum/reagent/R in reagents.reagent_list)
-				if(!R.ingestible)
+				if(R.flags & REAGENT_NOT_INGESTIBLE)
 					to_chat(user, SPAN_WARNING("[R.name] must be administered intravenously and cannot be made into a pill."))
 					return
 
@@ -326,7 +326,7 @@
 				dat += "<A href='?src=\ref[src];transferp=1;'>Transfer [loaded_pill_bottle] \[[loaded_pill_bottle.contents.len]/[loaded_pill_bottle.max_storage_space]\] to the smartfridge</A><BR><BR>"
 			else
 				dat += "No pill bottle inserted.<BR><BR>"
-		if(!connected && pill_maker)	
+		if(!connected && pill_maker)
 			dat += "<A href='?src=\ref[src];connect=1'>Connect Smartfridge</A><BR><BR>"
 		if(!beaker.reagents.total_volume)
 			dat += "Beaker is empty."

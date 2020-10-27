@@ -72,7 +72,7 @@ var/const/INGEST = 2
 		D.save_chemclass()
 		chemical_reagents_list[D.id] = D
 	chemical_data.initialize_saved_chem_data() //load and initialize chems that have been saved to DB
-	
+
 	//Chemical Reactions - Initialises all /datum/chemical_reaction into a list
 	// It is filtered into multiple lists within a list.
 	// For example:
@@ -201,7 +201,7 @@ var/const/INGEST = 2
 	trans_to(B, amount)
 
 	for(var/datum/reagent/RG in BR.reagent_list) // If it can't be ingested, remove it.
-		if(!RG.ingestible)
+		if(RG.flags & REAGENT_NOT_INGESTIBLE)
 			BR.del_reagent(RG.id)
 
 	addtimer(CALLBACK(BR, /datum/reagents/proc/reaction, target, INGEST), 95)
@@ -372,7 +372,7 @@ var/const/INGEST = 2
 			update_total()
 
 /datum/reagents/proc/del_reagent(var/reagent)
-	if(!my_atom) 
+	if(!my_atom)
 		return
 	for(var/datum/reagent/R in reagent_list)
 		if(R.id == reagent)
@@ -625,7 +625,7 @@ var/const/INGEST = 2
 				dir = E.last_move_dir
 			else
 				dir = E.dir
-		
+
 	//only integers please
 	radius = round(radius)
 	intensity = round(intensity)

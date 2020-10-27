@@ -46,7 +46,6 @@
 
 //Metabolization mods
 #define REAGENT_EFFECT			"effectiveness"
-#define REAGENT_CANNOT_OD 		"cannot_OD"
 #define REAGENT_BOOST			"boost"
 #define REAGENT_PURGE			"purge"
 #define REAGENT_FORCE			"force"
@@ -77,6 +76,9 @@
 
 // Flags for Reagent
 #define REAGENT_TYPE_MEDICAL	1 // Used to restrict recipes in the generator from employing all reagents of this type
+#define REAGENT_SCANNABLE		2 // Whether the reagent shows up on health analysers.
+#define REAGENT_NOT_INGESTIBLE	4 // Whether the reagent canNOT be ingested and must be delivered through injection. Used by electrogenetic property.
+#define REAGENT_CANNOT_OVERDOSE	8 // Whether the reagent canNOT trigger its overdose effects. Used by regulating property. For ordinary reagents with no overdose effect, instead keep var/overdose at 0.
 
 /*
 	properties defines

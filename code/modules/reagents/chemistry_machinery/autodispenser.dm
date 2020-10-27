@@ -212,7 +212,7 @@
 					//Check if there's enough and note if there isn't, then transfer
 					if(O < amount)
 						stage_missing = amount - O
-						amount = stage_missing
+						amount = O
 					else
 						stage_missing = 0
 
@@ -222,7 +222,9 @@
 						linked_storage.item_quants[C.name]--
 						qdel(C) //Might want to connect it to a disposal system later instead
 
-					if(!stage_missing)
+					if(stage_missing)
+						amount = stage_missing
+					else
 						next_stage()
 						skip = TRUE
 						break

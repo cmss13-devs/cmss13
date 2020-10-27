@@ -154,10 +154,13 @@
 		var/mob/living/L = usr
 		attack_hand(L)
 
-/obj/structure/machinery/door_control/attack_hand(mob/living/user, var/force = FALSE)
+/obj/structure/machinery/door_control/attack_hand(mob/living/user)
 	add_fingerprint(user)
 	if(istype(user,/mob/living/carbon/Xenomorph))
 		return
+	use_button(user)
+
+/obj/structure/machinery/door_control/proc/use_button(mob/living/user, var/force = FALSE)
 	if(inoperable())
 		to_chat(user, SPAN_WARNING("[src] doesn't seem to be working."))
 		return
@@ -272,10 +275,7 @@
 
 	var/busy = FALSE
 
-/obj/structure/machinery/door_control/railings/attack_hand(mob/living/user)
-	add_fingerprint(user)
-	if(istype(user,/mob/living/carbon/Xenomorph))
-		return
+/obj/structure/machinery/door_control/railings/use_button(mob/living/user, var/force = FALSE)
 	if(inoperable())
 		to_chat(user, SPAN_WARNING("[src] doesn't seem to be working."))
 		return
@@ -284,7 +284,7 @@
 		flick(initial(icon_state) + "-denied",src)
 		return
 
-	if(!allowed(user) && (wires & 1))
+	if(!allowed(user) && (wires & 1) && !force)
 		to_chat(user, SPAN_DANGER("Access Denied"))
 		flick(initial(icon_state) + "-denied",src)
 		return
@@ -325,6 +325,6 @@
 /obj/structure/machinery/door_control/brbutton
 	icon_state = "big_red_button_wallv"
 
-	
+
 /obj/structure/machinery/door_control/brbutton/alt
 	icon_state = "big_red_button_tablev"

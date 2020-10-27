@@ -242,6 +242,12 @@ macro "hotkeymode"
 		name = "SHIFT+E"
 		command = "holster shift"
 	elem 
+		name = "CTRL+E"
+		command = "holster ctrl"
+	elem 
+		name = "ALT+E"
+		command = "holster alt"
+	elem 
 		name = "Q"
 		command = ".northwest"
 	elem 

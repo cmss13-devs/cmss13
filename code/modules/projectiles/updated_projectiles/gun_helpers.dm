@@ -383,7 +383,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 
 	user.visible_message(SPAN_NOTICE("[user] begins attaching [attachment] to [src]."),
 	SPAN_NOTICE("You begin attaching [attachment] to [src]."), null, 4)
-	if(do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, numticks = 2))
+	if(do_after(user, 1.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, numticks = 2))
 		if(attachment && attachment.loc)
 			user.visible_message(SPAN_NOTICE("[user] attaches [attachment] to [src]."),
 			SPAN_NOTICE("You attach [attachment] to [src]."), null, 4)
@@ -470,6 +470,79 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 					//				   \\
 //----------------------------------------------------------
 
+/mob/living/carbon/human/proc/holster_unholster_from_suit_storage()
+	if(istype(s_store, /obj/item/storage)) //check storages(?)
+		var/obj/item/storage/S = s_store
+		for(var/obj/item/wep in S.return_inv())
+			if(isweapon(wep))
+				s_store.attack_hand(src)
+				return TRUE
+	else if(isweapon(s_store)) //then check for weapons
+		s_store.attack_hand(src)
+		return TRUE
+
+/mob/living/carbon/human/proc/holster_unholster_from_belt()
+	if(belt)
+		if(istype(belt, /obj/item/storage/belt/gun/) || istype(belt, /obj/item/storage/large_holster)) //check belts and holsters
+			var/obj/item/storage/G = belt
+			for(var/obj/item/weapon/gun in G.return_inv())
+				belt.attack_hand(src)
+				return TRUE
+		if(isweapon(belt)) //then check for weapons
+			belt.attack_hand(src)
+			return TRUE
+
+/mob/living/carbon/human/proc/holster_unholster_from_back()
+	if(back)
+		if(istype(back, /obj/item/storage/large_holster)) //check holsters
+			var/obj/item/storage/large_holster/B = back
+			if(B.return_inv().len)
+				back.attack_hand(src)
+				return TRUE
+		if(isweapon(back)) //then check for weapons
+			back.attack_hand(src)
+			return TRUE
+
+/mob/living/carbon/human/proc/holster_unholster_from_left_pocket()
+	if(l_store)
+		if(istype(l_store, /obj/item/storage/pouch))  //check pouches
+			var/obj/item/storage/pouch/P = l_store
+			for(var/obj/item/wep in P.return_inv())
+				if(isweapon(wep))
+					l_store.attack_hand(src)
+					return TRUE
+		if(isweapon(l_store)) //then check for weapons
+			l_store.attack_hand(src)
+			return TRUE
+
+/mob/living/carbon/human/proc/holster_unholster_from_right_pocket()
+	if(r_store)
+		if(istype(r_store, /obj/item/storage/pouch))  //check pouches
+			var/obj/item/storage/pouch/P = r_store
+			for(var/obj/item/wep in P.return_inv())
+				if(isweapon(wep))
+					r_store.attack_hand(src)
+					return TRUE
+		if(isweapon(r_store)) //then check for weapons
+			r_store.attack_hand(src)
+			return TRUE
+
+/mob/living/carbon/human/proc/holster_unholster_from_uniform()
+	if(!w_uniform)
+		return
+	for(var/obj/item/clothing/accessory/holster/T in w_uniform.accessories)
+		if(T.holstered)
+			w_uniform.attack_hand(src)
+			return TRUE
+
+/mob/living/carbon/human/proc/holster_unholster_from_shoes()
+	if(shoes)
+		if(istype(shoes, /obj/item/clothing/shoes))
+			var/obj/item/clothing/shoes/S = shoes
+			if(S.stored_item && isweapon(S.stored_item))
+				shoes.attack_hand(src)
+				return TRUE
+
 //For the holster hotkey
 /mob/living/silicon/robot/verb/holster_verb(var/keymod = "none" as text)
 	set name = "holster"
@@ -498,136 +571,70 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	else //empty hand, start checking slots and holsters
 		switch(keymod)
 			if("none") //default order: suit, belt, back, pockets, uniform, shoes
-				if(s_store)
-					if(istype(s_store, /obj/item/storage)) //check storages(?)
-						var/obj/item/storage/S = s_store
-						for(var/obj/item/wep in S.return_inv())
-							if(isweapon(wep))
-								s_store.attack_hand(src)
-								return
-					else if(isweapon(s_store)) //then check for weapons
-						s_store.attack_hand(src)
-						return
-
-				if(belt)
-					if(istype(belt, /obj/item/storage/belt/gun/) || istype(belt, /obj/item/storage/large_holster)) //check belts and holsters
-						var/obj/item/storage/G = belt
-						for(var/obj/item/weapon/gun in G.return_inv())
-							belt.attack_hand(src)
-							return
-					if(isweapon(belt)) //then check for weapons
-						belt.attack_hand(src)
-						return
-
-				if(back)
-					if(istype(back, /obj/item/storage/large_holster)) //check holsters
-						var/obj/item/storage/large_holster/B = back
-						if(B.return_inv().len)
-							back.attack_hand(src)
-							return
-					if(isweapon(back)) //then check for weapons
-						back.attack_hand(src)
-						return
-
-				if(l_store)
-					if(istype(l_store, /obj/item/storage/pouch))  //check pouches
-						var/obj/item/storage/pouch/P = l_store
-						for(var/obj/item/wep in P.return_inv())
-							if(isweapon(wep))
-								l_store.attack_hand(src)
-								return
-					if(isweapon(l_store)) //then check for weapons
-						l_store.attack_hand(src)
-						return
-
-				if(r_store)
-					if(istype(r_store, /obj/item/storage/pouch))  //check pouches
-						var/obj/item/storage/pouch/P = r_store
-						for(var/obj/item/wep in P.return_inv())
-							if(isweapon(wep))
-								r_store.attack_hand(src)
-								return
-					if(isweapon(r_store)) //then check for weapons
-						r_store.attack_hand(src)
-						return
-
-				if(w_uniform && T && T.holstered)
-					w_uniform.attack_hand(src)
+				if(holster_unholster_from_suit_storage())
 					return
 
-				if(shoes)
-					if(istype(shoes, /obj/item/clothing/shoes))
-						var/obj/item/clothing/shoes/S = shoes
-						if(S.stored_item && isweapon(S.stored_item))
-							shoes.attack_hand(src)
-							return
-
-			if("shift") //shift keymod, do common secondary weapon locations first. order: belt, back, pockets, uniform, shoes, suit.
-				if(belt)
-					if(istype(belt, /obj/item/storage/belt/gun/) || istype(belt, /obj/item/storage/large_holster))
-						var/obj/item/storage/G = belt
-						for(var/obj/item/weapon/gun in G.return_inv())
-							belt.attack_hand(src)
-							return
-					if(isweapon(belt))
-						belt.attack_hand(src)
-						return
-
-				if(back)
-					if(istype(back, /obj/item/storage/large_holster))
-						var/obj/item/storage/large_holster/B = back
-						if(B.return_inv().len)
-							back.attack_hand(src)
-							return
-					if(isweapon(back))
-						back.attack_hand(src)
-						return
-
-				if(l_store)
-					if(istype(l_store, /obj/item/storage/pouch))
-						var/obj/item/storage/pouch/P = l_store
-						for(var/obj/item/wep in P.return_inv())
-							if(isweapon(wep))
-								l_store.attack_hand(src)
-								return
-					if(isweapon(l_store))
-						l_store.attack_hand(src)
-						return
-
-				if(r_store)
-					if(istype(r_store, /obj/item/storage/pouch))
-						var/obj/item/storage/pouch/P = r_store
-						for(var/obj/item/wep in P.return_inv())
-							if(isweapon(wep))
-								r_store.attack_hand(src)
-								return
-					if(isweapon(r_store))
-						r_store.attack_hand(src)
-						return
-
-				if(w_uniform && T && T.holstered)
-					w_uniform.attack_hand(src)
+				if(holster_unholster_from_belt()) //if you think this code is bad see how it was beforehand
 					return
 
-				if(shoes)
-					if(istype(shoes, /obj/item/clothing/shoes))
-						var/obj/item/clothing/shoes/S = shoes
-						if(S.stored_item && isweapon(S.stored_item))
-							shoes.attack_hand(src)
-							return
+				if(holster_unholster_from_back())
+					return
 
-				if(s_store)
-					if(istype(s_store, /obj/item/storage))
-						var/obj/item/storage/S = s_store
-						for(var/obj/item/wep in S.return_inv())
-							if(isweapon(wep))
-								s_store.attack_hand(src)
-								return
-					else if(isweapon(s_store))
-						s_store.attack_hand(src)
-						return
+				if(holster_unholster_from_left_pocket())
+					return
 
+				if(holster_unholster_from_right_pocket())
+					return
 
+				if(holster_unholster_from_uniform())
+					return
+
+				if(holster_unholster_from_shoes())
+					return
+
+			if("shift") //shift keymod, do common secondary weapon locations first. order: back, belt, pockets, uniform, shoes, suit.
+				if(holster_unholster_from_back())
+					return
+
+				if(holster_unholster_from_belt())
+					return
+
+				if(holster_unholster_from_left_pocket())
+					return
+
+				if(holster_unholster_from_right_pocket())
+					return
+
+				if(holster_unholster_from_uniform())
+					return
+
+				if(holster_unholster_from_shoes())
+					return
+
+				if(holster_unholster_from_suit_storage())
+					return
+
+			if("ctrl", "alt") //control and alt keymods, do common tertiary weapon locations first. order: belt, pockets, uniform, shoes, back, suit.
+				if(holster_unholster_from_belt()) //in case ctrl is awkward for some people but alt is not.
+					return
+
+				if(holster_unholster_from_left_pocket())
+					return
+
+				if(holster_unholster_from_right_pocket())
+					return
+
+				if(holster_unholster_from_uniform())
+					return
+
+				if(holster_unholster_from_shoes())
+					return
+
+				if(holster_unholster_from_suit_storage())
+					return
+
+				if(holster_unholster_from_back())
+					return
 
 /obj/item/weapon/gun/verb/field_strip()
 	set category = "Weapons"
@@ -671,7 +678,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	usr.visible_message(SPAN_NOTICE("[usr] begins stripping [A] from [src]."),
 	SPAN_NOTICE("You begin stripping [A] from [src]."), null, 4)
 
-	if(!do_after(usr, 35, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
+	if(!do_after(usr, 1.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 		return
 
 	if(!(A == attachments[A.slot]))

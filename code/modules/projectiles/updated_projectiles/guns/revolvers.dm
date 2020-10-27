@@ -56,7 +56,7 @@
 		current_mag.chamber_position = rand(1,current_mag.max_rounds)
 		to_chat(user, SPAN_NOTICE("You spin the cylinder."))
 		playsound(user, cocked_sound, 25, 1)
-		russian_roulette = !russian_roulette //Sets to play RR. Resets when the gun is emptied.
+		russian_roulette = TRUE //Sets to play RR. Resets when the gun is emptied.
 
 /obj/item/weapon/gun/revolver/proc/replace_cylinder(number_to_replace)
 	if(current_mag)
@@ -138,7 +138,7 @@
 			empty_cylinder()
 			current_mag.create_handful(user)
 			current_mag.chamber_closed = !current_mag.chamber_closed
-			russian_roulette = !russian_roulette //Resets the RR variable.
+			russian_roulette = FALSE //Resets the RR variable.
 			playsound(src, chamber_close_sound, 25, 1)
 		else
 			current_mag.chamber_closed = !current_mag.chamber_closed

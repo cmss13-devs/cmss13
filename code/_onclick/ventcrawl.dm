@@ -77,13 +77,17 @@
 			return
 
 		visible_message(SPAN_NOTICE("[src] begins climbing into [vent_found]."), SPAN_NOTICE("You begin climbing into [vent_found]."))
+		INVOKE_ASYNC(vent_found,/obj/structure/pipes/proc/animate_ventcrawl)
 		if(!do_after(src, 45, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
+			vent_found.animate_ventcrawl_reset()
 			return
 
 		updatehealth()
 		if(stat || stunned || dazed || knocked_down || lying || health < 0 || !client || !ventcrawl_carry())
+			vent_found.animate_ventcrawl_reset()
 			return
 
+		vent_found.animate_ventcrawl_reset()
 		visible_message(SPAN_DANGER("[src] scrambles into [vent_found]!"), SPAN_WARNING("You climb into [vent_found]."))
 		playsound(src, pick('sound/effects/alien_ventpass1.ogg', 'sound/effects/alien_ventpass2.ogg'), 35, 1)
 		forceMove(vent_found)

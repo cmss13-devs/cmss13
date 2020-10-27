@@ -21,6 +21,8 @@
 	var/migrated_notes = FALSE
 	var/migrated_bans = FALSE
 	var/migrated_jobbans = FALSE
+
+	var/stickyban_whitelisted = FALSE
 	
 
 // UNTRACKED FIELDS
@@ -64,7 +66,8 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		"time_ban_date" = DB_FIELDTYPE_STRING_LARGE,
 		"migrated_notes" = DB_FIELDTYPE_INT,
 		"migrated_bans" = DB_FIELDTYPE_INT,
-		"migrated_jobbans" = DB_FIELDTYPE_INT)
+		"migrated_jobbans" = DB_FIELDTYPE_INT,
+		"stickyban_whitelisted" = DB_FIELDTYPE_INT)
 
 // NOTE: good example of database operations using NDatabase, so it is well commented
 // is_ban DOES NOT MEAN THAT NOTE IS _THE_ BAN, IT MEANS THAT NOTE WAS CREATED FOR A BAN
@@ -342,6 +345,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	player.notes_loaded = FALSE
 	player.jobbans_loaded = FALSE
 	player.playtime_loaded = FALSE
+	player.stickyban_whitelisted = FALSE
 
 	player.load_rels()
 
@@ -425,10 +429,46 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	record_login_triplet(player.ckey, address, computer_id)
 	player_data.sync()
 
-/datum/entity/player/proc/check_ban()
+/datum/entity/player/proc/check_ban(var/computer_id, var/address)
+	. = list()
+
+	var/list/linked_bans = check_for_sticky_ban(address, computer_id)
+	if(islist(linked_bans))
+		var/datum/view_record/stickyban_list_view/SLW = LAZYACCESS(linked_bans, 1)
+		if(SLW)
+			var/reason = ""
+
+			if(SLW.address == address)
+				reason += "IP Address Matches; "
+			if(SLW.computer_id == computer_id)
+				reason += "CID Matches; "
+			if(SLW.ckey == ckey)
+				reason += "Ckey Matches; "
+
+			var/source_id = SLW.linked_stickyban
+			var/source_reason = SLW.linked_reason
+			var/source_ckey = SLW.linked_ckey
+			if(!source_id)
+				source_id = "[SLW.entry_id]"
+				source_reason = SLW.reason
+				source_ckey = SLW.ckey
+
+			log_access("Failed Login: [ckey] [last_known_cid] [last_known_ip] - Stickybanned (Linked to [source_ckey]; Reason: [source_reason])")
+			message_staff(SPAN_NOTICE("Failed Login: [ckey] (IP: [last_known_ip], CID: [last_known_cid]) - Stickybanned (Linked to ckey [source_ckey]; Reason: [source_reason])"))
+
+			DB_FILTER(/datum/entity/player_sticky_ban,
+				DB_AND(
+					DB_COMP("ckey", DB_EQUALS, ckey),
+					DB_COMP("address", DB_EQUALS, address),
+					DB_COMP("computer_id", DB_EQUALS, computer_id)
+				), CALLBACK(src, .proc/process_stickyban, address, computer_id, source_id, reason, null))
+
+			.["desc"]	= "\nReason: Stickybanned\nExpires: PERMANENT"
+			.["reason"]	= "ckey/id"
+			return .
+	
 	if(!is_time_banned && !is_permabanned)
 		return null
-	. = list()
 	var/appeal
 	if(config && config.banappeals)
 		appeal = "\nFor more information on your ban, or to appeal, head to <a href='[config.banappeals]'>[config.banappeals]</a>"
@@ -436,7 +476,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		permaban_admin.sync()
 		log_access("Failed Login: [ckey] [last_known_cid] [last_known_ip] - Banned [permaban_reason]")
 		message_staff(SPAN_NOTICE("Failed Login: [ckey] id:[last_known_cid] ip:[last_known_ip] - Banned [permaban_reason]"))		
-		.["desc"]	= "\nReason: [permaban_reason]\nExpires: <B>PERMENANT</B>\nBy: [permaban_admin.ckey][appeal]"
+		.["desc"]	= "\nReason: [permaban_reason]\nExpires: <B>PERMANENT</B>\nBy: [permaban_admin.ckey][appeal]"
 		.["reason"]	= "ckey/id"
 		return .
 	if(is_time_banned)

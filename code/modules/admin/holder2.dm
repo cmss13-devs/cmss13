@@ -92,3 +92,4 @@ you will have to do something like if(client.admin_holder.rights & R_ADMIN) your
 	if(admin_datums[ckey])
 		admin_datums[ckey].associate(src)
 	return 1
+

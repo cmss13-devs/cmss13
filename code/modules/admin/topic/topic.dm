@@ -1699,6 +1699,8 @@
 		destroy_cancel = 1
 		return
 
+	return
+
 /datum/admins/proc/accept_ert(var/mob/ref_person)
 	if(distress_cancel)
 		return

@@ -40,7 +40,6 @@ var/savefile/Banlist
 				if(matches)
 					matches += "/"
 				matches += "ip"
-
 			if(matches)
 				if(Banlist["temp"])
 					if (!GetExp(Banlist["minutes"]))

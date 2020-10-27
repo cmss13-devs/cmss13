@@ -64,6 +64,12 @@ NanoBaseHelpers = function ()
 
 				return '';
 			},
+			basicBackground: function() {
+				$('body').css("background-color", "#282828");
+				$('body').css("background-image", "none");
+
+				return '';
+			},
 			// Generate a Byond link
 			link: function( text, icon, parameters, status, elementClass, elementId) {
 

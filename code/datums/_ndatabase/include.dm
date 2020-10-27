@@ -28,5 +28,3 @@
 #include "tests/test_entity.dm"
 #include "subsystems/database_query_manager.dm"
 #include "subsystems/entity_manager.dm"
-
-#undef DB_CAN_VV_GET

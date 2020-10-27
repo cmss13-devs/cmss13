@@ -457,6 +457,7 @@
 		if(!first)
 			idtext+=","
 		idtext += "[text2num(id)]"	
+		first = FALSE
 	return {"
 		DELETE FROM `[connection.database]`.`[table_name]` WHERE id IN ([idtext]);
 	"}

@@ -137,6 +137,11 @@
 	icon_state = "hair_pompadour"
 	gender = MALE
 
+/datum/sprite_accessory/hair/cleancut
+	name = "Gentleman's Cut"
+	icon_state = "hair_cleancut"
+	gender = MALE
+
 /datum/sprite_accessory/hair/quiff
 	name = "Quiff"
 	icon_state = "hair_quiff"

@@ -49,7 +49,7 @@ WEAPONS
 					/obj/item/ammo_magazine/revolver,
 					/obj/item/ammo_magazine/revolver
 					)
-	name = "surplus sidearms crate (M4A3 x2, M44 x2, ammo x2 each)"
+	name = "surplus sidearms crate (M4A3 x2, M44 x2, ammunition x2 each)" //speedloader and magazine
 	cost = RO_PRICE_NORMAL
 	containertype = /obj/structure/closet/crate
 	containername = "\improper sidearms crate"
@@ -64,7 +64,7 @@ WEAPONS
 					/obj/item/ammo_magazine/shotgun/buckshot,
 					/obj/item/ammo_magazine/shotgun/buckshot
 					)
-	name = "surplus shotguns crate (M37A2 x2, M37A2 ammo x2 each)"
+	name = "surplus shotguns crate (M37A2 x2, 12g slug box x2, 12g buckshot box x2)"
 	cost = RO_PRICE_NORMAL
 	containertype = /obj/structure/closet/crate
 	containername = "\improper shotguns crate"
@@ -77,7 +77,7 @@ WEAPONS
 					/obj/item/ammo_magazine/smg/m39,
 					/obj/item/ammo_magazine/smg/m39
 					)
-	name = "surplus SMG crate (M39 x2, M39 ammo x2)"
+	name = "surplus SMG crate (M39 x2, M39 HV magazines x2)"
 	cost = RO_PRICE_NORMAL
 	containertype = /obj/structure/closet/crate
 	containername = "\improper SMGs crate"
@@ -90,7 +90,7 @@ WEAPONS
 					/obj/item/ammo_magazine/rifle,
 					/obj/item/ammo_magazine/rifle
 					)
-	name = "surplus rifles crate (M41A x2, M41A ammo x2)"
+	name = "surplus rifles crate (M41A x2, M41A rifle magazines x2)"
 	cost = RO_PRICE_NORMAL
 	containertype = /obj/structure/closet/crate
 	containername = "\improper rifles crate"
@@ -103,7 +103,7 @@ WEAPONS
 					/obj/item/ammo_magazine/rifle/m41aMK1,
 					/obj/item/ammo_magazine/rifle/m41aMK1
 					)
-	name = "surplus rifles crate (M41A x2, M41A ammo x2)"
+	name = "surplus rifles crate (M41A Mk1 x2, M41A Mk1 rifle magazines x2)"
 	cost = RO_PRICE_NORMAL
 	containertype = /obj/structure/closet/crate
 	containername = "\improper rifles crate"

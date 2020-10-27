@@ -164,7 +164,7 @@ Burn time = How long do we want our flames to last?
 	var/tactical_damage_falloff = 0.8 //MK221 Tactical, auto-shotty.
 	var/reg_damage_falloff = 1 //in config it was 0.89 but referenced wrong var
 	var/med_damage_falloff = 2
-	var/high_damage_falloff = 3 //used for the smg
+	var/high_damage_falloff = 3 //used for the smg ap
 	var/buckshot_v2_damage_falloff = 3
 	var/buckshot_damage_falloff = 5 //ditto but 18.3 (!!!)
 	var/extra_damage_falloff = 10 //ditto but 9.75
@@ -258,10 +258,11 @@ We don't really use the higher values, but they're there.
 	var/reg_shell_speed = 2
 	var/fast_shell_speed = 3
 	var/super_shell_speed = 4
+	var/great_shell_speed = 5
 	var/ultra_shell_speed = 6
 
 	var/min_armor_penetration = 5 //See Neth's armor comments for how this works. Higher is better.
-	var/vlow_armor_penetration = 8 
+	var/vlow_armor_penetration = 8
 	var/mlow_armor_penetration = 12
 	var/low_armor_penetration = 23
 	var/hlow_armor_penetration = 26

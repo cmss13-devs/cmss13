@@ -309,7 +309,7 @@
 	)
 	bypass_w_limit = list(
 		/obj/item/ammo_magazine/rifle,
-		/obj/item/ammo_magazine/smg/m39
+		/obj/item/ammo_magazine/smg
 	)
 	var/has_gamemode_skin = TRUE //whether it has a sprite for each gamemode.
 

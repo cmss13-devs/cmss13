@@ -155,8 +155,8 @@
 	supplies = list(/obj/item/ammo_magazine/shotgun/slugs = 8, /obj/item/ammo_magazine/shotgun/buckshot = 8, /obj/item/ammo_magazine/shotgun/flechette = 4)
 
 /obj/structure/largecrate/supply/ammo/m39
-	name = "\improper M39 magazine case (x16)"
-	desc = "An ammunition case containing sixteen M39 magazines."
+	name = "\improper M39 HV magazine case (x16)"
+	desc = "An ammunition case containing sixteen M39 HV magazines."
 	supplies = list(/obj/item/ammo_magazine/smg/m39 = 16)
 
 /obj/structure/largecrate/supply/ammo/pistol

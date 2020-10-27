@@ -105,7 +105,7 @@ AMMO
 					)
 	cost = RO_PRICE_VERY_CHEAP
 	containertype = /obj/structure/closet/crate/ammo
-	containername = "\improper M39 magazines crate"
+	containername = "\improper M39 HV magazines crate"
 	group = "Ammo"
 
 /datum/supply_packs/ammo_smg_mag_box_ap

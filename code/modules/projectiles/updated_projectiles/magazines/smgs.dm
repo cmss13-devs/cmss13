@@ -9,39 +9,41 @@
 //M39 SMG ammo
 
 /obj/item/ammo_magazine/smg/m39
-	name = "\improper M39 magazine (10x20mm)"
-	desc = "A 10x20mm caseless submachinegun magazine."
+	name = "\improper M39 HV magazine (10x20mm)"
+	desc = "A 10x20mm caseless high-velocity submachinegun magazine. Powerful propellant allows the bullet increased velocity and minor penetration capabilities, noticeably improving its efficacy at medium ranges, although it still suffers significantly compared to a rifle bullet."
 	caliber = "10x20mm"
-	icon_state = "m39"
+	icon_state = "m39_HV"
 	max_rounds = 48
 	w_class = SIZE_MEDIUM
 	gun_type = /obj/item/weapon/gun/smg/m39
+	default_ammo = /datum/ammo/bullet/smg/m39
 
 /obj/item/ammo_magazine/smg/m39/ap
 	name = "\improper M39 AP magazine (10x20mm)"
+	desc = "A 10x20mm caseless armor-piercing submachinegun magazine. The bullet tips are made out of high-density material, allowing them to pierce straight through armor, but also reducing the raw stopping power and velocity of the ammunition."
 	icon_state = "m39_AP"
 	default_ammo = /datum/ammo/bullet/smg/ap
-
 /obj/item/ammo_magazine/smg/m39/le
 	name = "\improper M39 LE magazine (10x20mm)"
-	desc = "A 10x20mm caseless submachinegun magazine made for the special light explosive rounds, designed to rapidly shred armor."
+	desc = "A 10x20mm caseless light-explosive submachinegun magazine containing special light explosive rounds, designed to rapidly decimate armor, at the cost of vastly reduced damage and penetration."
 	icon_state = "m39_le"
 	default_ammo = /datum/ammo/bullet/smg/le
 
 /obj/item/ammo_magazine/smg/m39/rubber
 	name = "\improper M39 rubber magazine (10x20mm)"
-	desc = "A 10x20mm caseless submachinegun magazine, containing rubber bullets. Used to disarm people"
+	desc = "A 10x20mm caseless rubber bullet submachinegun magazine, containing rubber bullets. Non-lethal, but terrible on bioforms."
 	icon_state = "m39_le"
 	default_ammo = /datum/ammo/bullet/smg/rubber
 
 /obj/item/ammo_magazine/smg/m39/incendiary
 	name = "\improper M39 incendiary magazine (10x20mm)"
-	desc = "A 10x20mm incendiary magazine."
+	desc = "A 10x20mm caseless incendiary submachinegun magazine. Incendiary payload sets targets ablaze, but causes the gun to have low stopping power and strongly decreased accuracy."
 	icon_state = "m39_incendiary"
 	default_ammo = /datum/ammo/bullet/smg/incendiary
 
 /obj/item/ammo_magazine/smg/m39/extended
-	name = "\improper M39 extended magazine (10x20mm)"
+	name = "\improper M39 HV extended magazine (10x20mm)"
+	desc = "A 10x20mm caseless HV extended submachinegun magazine. Powerful propellant allows the bullet increased travel speed and minor penetration capabilities, noticeably improving its efficacy at long ranges, although it still suffers significantly compared to a rifle bullet."
 	max_rounds = 72
 	icon_state = "m39_extended"
 	bonus_overlay = "m39_ex"

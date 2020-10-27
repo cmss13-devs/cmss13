@@ -503,6 +503,7 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	icon_state = "base_m39"
 	overlay_ammo_type = "_reg"
 	overlay_gun_type = "_m39"
+	overlay_content = "_hv"
 	num_of_magazines = 12
 	magazine_type = /obj/item/ammo_magazine/smg/m39
 
@@ -521,7 +522,7 @@ Turn() or Shift() as there is virtually no overhead. ~N
 /obj/item/ammo_box/magazine/m39/ext
 	name = "magazine box (Ext m39 x 10)"
 	overlay_ammo_type = "_ext"
-	overlay_content = "_reg"
+	overlay_content = "_hv"
 	num_of_magazines = 10
 	magazine_type = /obj/item/ammo_magazine/smg/m39/extended
 
@@ -1073,12 +1074,12 @@ Turn() or Shift() as there is virtually no overhead. ~N
 //SMG
 
 /obj/item/ammo_box/rounds/smg
-	name = "SMG ammunition box (10x20mm)"
-	desc = "A 10x20mm ammunition box. Used to refill M39 magazines. It comes with a leather strap allowing to wear it on the back."
+	name = "SMG HV ammunition box (10x20mm)"
+	desc = "A 10x20mm ammunition box. Used to refill M39 HV and extended magazines. It comes with a leather strap allowing to wear it on the back."
 	caliber = "10x20mm"
 	icon_state = "base_m39"
-	overlay_content = "_reg"
-	default_ammo = /datum/ammo/bullet/smg
+	overlay_content = "_hv"
+	default_ammo = /datum/ammo/bullet/smg/m39
 
 /obj/item/ammo_box/rounds/smg/empty
 	empty = TRUE

@@ -14,6 +14,37 @@
 	vendor_theme = VENDOR_THEME_COMPANY
 	vend_delay = 5
 
+	var/healthscan = TRUE
+	var/list/chem_refill = list(
+		/obj/item/reagent_container/hypospray/autoinjector/bicaridine,
+		/obj/item/reagent_container/hypospray/autoinjector/dexalinp,
+		/obj/item/reagent_container/hypospray/autoinjector/adrenaline,,
+		/obj/item/reagent_container/hypospray/autoinjector/inaprovaline,
+		/obj/item/reagent_container/hypospray/autoinjector/kelotane,
+		/obj/item/reagent_container/hypospray/autoinjector/oxycodone,
+		/obj/item/reagent_container/hypospray/autoinjector/quickclot,
+		/obj/item/reagent_container/hypospray/autoinjector/tramadol,
+		/obj/item/reagent_container/hypospray/autoinjector/tricord,
+		/obj/item/reagent_container/hypospray/autoinjector/emergency,
+		/obj/item/reagent_container/hypospray/autoinjector/skillless,
+		/obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol,
+
+		/obj/item/reagent_container/glass/bottle/bicaridine,
+		/obj/item/reagent_container/glass/bottle/antitoxin,
+		/obj/item/reagent_container/glass/bottle/dexalin,
+		/obj/item/reagent_container/glass/bottle/inaprovaline,
+		/obj/item/reagent_container/glass/bottle/kelotane,
+		/obj/item/reagent_container/glass/bottle/oxycodone,
+		/obj/item/reagent_container/glass/bottle/peridaxon,
+		/obj/item/reagent_container/glass/bottle/tramadol,
+		)
+
+/obj/structure/machinery/cm_vending/sorted/medical/examine(mob/living/carbon/human/user)
+	. = ..()
+
+	if(healthscan)
+		to_chat(user, SPAN_BLUE("The [src.name] offers assisted medical scan, for ease of usage with minimal training. Present the target infront of the scanner to scan."))
+
 /obj/structure/machinery/cm_vending/sorted/medical/vend_succesfully(var/list/L, var/mob/living/carbon/human/H, var/turf/T)
 	if(stat & IN_USE)
 		return
@@ -42,40 +73,46 @@
 	return
 
 /obj/structure/machinery/cm_vending/sorted/medical/attackby(var/obj/item/I, var/mob/user)
-	if(istype(I, /obj/item/reagent_container/hypospray/autoinjector) && stat == WORKING) // only if we are completely fine and working
+	if(stat == WORKING && LAZYLEN(chem_refill) && (istype(I, /obj/item/reagent_container/hypospray/autoinjector) || istype(I, /obj/item/reagent_container/glass/bottle))) // only if we are completely fine and working
 		if(!hacked)
 			if(!allowed(user))
 				to_chat(user, SPAN_WARNING("Access denied."))
 				return
 
-			var/mob/living/carbon/human/H = user
-			var/obj/item/card/id/ID = H.wear_id
-			if(!istype(ID)) //not wearing an ID
-				to_chat(H, SPAN_WARNING("Access denied. No ID card detected"))
+			if(LAZYLEN(vendor_role) && !vendor_role.Find(user.job))
+				to_chat(user, SPAN_WARNING("This machine isn't for you."))
 				return
 
-			if(ID.registered_name != H.real_name)
-				to_chat(H, SPAN_WARNING("Wrong ID card owner detected."))
-				return
+		var/obj/item/reagent_container/C = I
+		if(!(C.type in chem_refill))
+			to_chat(user, SPAN_WARNING("The [src] cannot refill the [C.name]."))
+			return
 
-			if(LAZYLEN(vendor_role) && !vendor_role.Find(H.job))
-				to_chat(H, SPAN_WARNING("This machine isn't for you."))
-				return
+		if(C.reagents.total_volume == C.reagents.maximum_volume)
+			to_chat(user, SPAN_WARNING("The [src] makes a warning noise. The [C.name] is currently full."))
+			return
 
-		var/obj/item/reagent_container/hypospray/autoinjector/AI = I
-		for(var/list/R in listed_products)
-			if(AI.type == R[3])
-				if(AI.reagents.total_volume > 0)
-					to_chat(user, SPAN_WARNING("\The [src] makes a warning noise. \The [AI.name] doesn't seem to be empty."))
-					return
-
-		to_chat(user, SPAN_NOTICE("\The [src] makes a whirring noise as it refills your [AI.name]."))
+		to_chat(user, SPAN_NOTICE("The [src] makes a whirring noise as it refills your [C.name]."))
 		// Since the reagent is deleted on use it's easier to make a new one instead of snowflake checking
-		var/obj/item/reagent_container/hypospray/autoinjector/new_injector = new AI.type(src)
-		qdel(AI)
-		user.put_in_hands(new_injector)
+		var/obj/item/reagent_container/new_container= new C.type(src)
+		qdel(C)
+		user.put_in_hands(new_container)
 	else
 		. = ..()
+
+/obj/structure/machinery/cm_vending/sorted/medical/MouseDrop(obj/over_object as obj)
+	if(stat == WORKING && over_object == usr && CAN_PICKUP(usr, src))
+		var/mob/living/carbon/human/user = usr
+		if(!allowed(user))
+			to_chat(user, SPAN_WARNING("Access denied."))
+			return
+
+		if(!healthscan)
+			to_chat(user, SPAN_WARNING("The [src] does not have health scanning function."))
+			return
+
+		user.health_scan(user, TRUE)
+		return
 
 /obj/structure/machinery/cm_vending/sorted/medical/populate_product_list(var/scale)
 	listed_products = list(
@@ -131,6 +168,8 @@
 	name = "\improper WestonChem Plus"
 	desc = "Medical chemistry dispenser. Provided by W-Y Pharmaceuticals Division(TM)."
 
+	healthscan = FALSE
+
 /obj/structure/machinery/cm_vending/sorted/medical/chemistry/populate_product_list(var/scale)
 	listed_products = list(
 		list("LIQUID BOTTLES", -1, null, null),
@@ -170,6 +209,11 @@
 	req_access = list()
 	req_one_access = list()
 	vendor_theme = VENDOR_THEME_USCM
+
+	chem_refill = list(
+		/obj/item/reagent_container/hypospray/autoinjector/skillless,
+		/obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol,
+	)
 
 /obj/structure/machinery/cm_vending/sorted/medical/marinemed/populate_product_list(var/scale)
 	listed_products = list(
@@ -212,6 +256,9 @@
 		list("Empty Blood Pack", 5, /obj/item/reagent_container/blood, VENDOR_ITEM_REGULAR)
 	)
 
+	healthscan = FALSE
+	chem_refill = null
+
 /obj/structure/machinery/cm_vending/sorted/medical/blood/populate_product_list(var/scale)
 	return
 
@@ -242,6 +289,11 @@
 	)
 
 	appearance_flags = TILE_BOUND
+
+	chem_refill = list(
+		/obj/item/reagent_container/hypospray/autoinjector/skillless,
+		/obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol,
+	)
 
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/populate_product_list(var/scale)
 	return

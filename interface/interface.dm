@@ -105,11 +105,11 @@ Any-Mode: (hotkey doesn't need to be on)
 \tCtrl+4 = harm-intent
 \tNum1 = swap target between right leg and right foot
 \tNum2 = target groin
-\tNum3 swap target between left leg and left foot
-\tNum4 swap target between right arm and right hand
-\tNum5 target chest
-\tNum6 swap target between left arm and left hand
-\tNum8 swap target between head, eyes, and mouth
+\tNum3 = swap target between left leg and left foot
+\tNum4 = swap target between right arm and right hand
+\tNum5 = target chest
+\tNum6 = swap target between left arm and left hand
+\tNum8 = swap target between head, eyes, and mouth
 \tDEL = pull
 \tINS = cycle-intents-right
 \tHOME = drop
@@ -126,10 +126,10 @@ Admin:
 \tF8 = Invisimin
 </font>"}
 
-	src << hotkey_mode
-	src << other
+	to_chat(src, hotkey_mode)
+	to_chat(src, other)
 	if(admin_holder)
-		src << admin
+		to_chat(src, admin)
 
 ///Max length of a keypress command before it's considered to be a forged packet/bogus command
 #define MAX_KEYPRESS_COMMANDLENGTH 16
@@ -150,7 +150,7 @@ Admin:
 	set hidden = TRUE
 
 	client_keysend_amount += 1
-		
+
 	var/cache = client_keysend_amount
 
 	if(keysend_tripped && next_keysend_trip_reset <= world.time)
@@ -165,7 +165,7 @@ Admin:
 	//don't want to kick people if a lag spike results in a huge flood of commands being sent
 	if(cache >= MAX_KEYPRESS_AUTOKICK)
 		if(!keysend_tripped)
-			keysend_tripped = TRUE		
+			keysend_tripped = TRUE
 			next_keysend_trip_reset = world.time + (2 SECONDS)
 		else
 			message_staff("Client [ckey] was just autokicked for flooding keysends; likely abuse but potentially lagspike.")

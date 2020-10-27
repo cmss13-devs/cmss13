@@ -988,9 +988,15 @@ and you're good to go.
 		if(!able_to_fire(user))
 			return
 
-		flags_gun_features ^= GUN_CAN_POINTBLANK //If they try to click again, they're going to hit themselves.
-		M.visible_message(SPAN_WARNING("[user] sticks their gun in their mouth, ready to pull the trigger."))
+		var/ffl = " (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[user.x];Y=[user.y];Z=[user.z]'>JMP</a>) (<a href='?priv_msg=\ref[user.client]'>PM</a>)"
 
+		var/obj/item/weapon/gun/revolver/current_revolver = src
+		if(istype(current_revolver) && current_revolver.russian_roulette)
+			M.visible_message(SPAN_WARNING("[user] puts their revolver to their head, ready to pull the trigger."))
+		else
+			M.visible_message(SPAN_WARNING("[user] sticks their gun in their mouth, ready to pull the trigger."))
+
+		flags_gun_features ^= GUN_CAN_POINTBLANK //If they try to click again, they're going to hit themselves.
 		if(!do_after(user, 40, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 			M.visible_message(SPAN_NOTICE("[user] decided life was worth living."))
 			flags_gun_features ^= GUN_CAN_POINTBLANK //Reset this.
@@ -1005,13 +1011,13 @@ and you're good to go.
 			var/sound_volume = (flags_gun_features & GUN_SILENCED && !active_attachable) ? 25 : 60
 			playsound(user, actual_sound, sound_volume, 1)
 			simulate_recoil(2, user)
-			var/obj/item/weapon/gun/revolver/current_revolver = src
 			var/t = "\[[time_stamp()]\] <b>[key_name(user)]</b> committed suicide with <b>[src]</b>" //Log it.
 			if(istype(current_revolver) && current_revolver.russian_roulette) //If it's a revolver set to Russian Roulette.
 				t += " after playing Russian Roulette"
 				user.apply_damage(projectile_to_fire.damage * 3, projectile_to_fire.ammo.damage_type, "head", used_weapon = "An unlucky pull of the trigger during Russian Roulette!", sharp = 1)
 				user.apply_damage(200, OXY) //In case someone tried to defib them. Won't work.
 				user.death("russian roulette with \a [name]")
+				msg_admin_ff("[key_name(user)] lost at Russian Roulette with \a [name] in [get_area(user)] [ffl]")
 				to_chat(user, SPAN_HIGHDANGER("Your life flashes before you as your spirit is torn from your body!"))
 				user.ghostize(0) //No return.
 			else
@@ -1025,6 +1031,7 @@ and you're good to go.
 						var/mob/living/carbon/human/HM = user
 						HM.undefibbable = TRUE //can't be defibbed back from self inflicted gunshot to head
 					user.death("suicide by [initial(name)]")
+					msg_admin_ff("[key_name(user)] committed suicide with \a [name] in [get_area(user)] [ffl]")
 			M.last_damage_source = initial(name)
 			M.last_damage_mob = null
 			user.attack_log += t //Apply the attack log.
@@ -1037,6 +1044,8 @@ and you're good to go.
 			reload_into_chamber(user) //Reload the sucker.
 		else
 			click_empty(user)//If there's no projectile, we can't do much.
+			if(istype(current_revolver) && current_revolver.russian_roulette && current_revolver.current_mag && current_revolver.current_mag.current_rounds)
+				msg_admin_niche("[key_name(user)] played live Russian Roulette with \a [name] in [get_area(user)] [ffl]") //someone might want to know anyway...
 
 		flags_gun_features ^= GUN_CAN_POINTBLANK //Reset this.
 		return

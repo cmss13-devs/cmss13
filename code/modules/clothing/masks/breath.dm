@@ -53,6 +53,22 @@
 	flags_inventory = COVERMOUTH|ALLOWREBREATH
 	flags_inv_hide = HIDELOWHAIR
 
+/obj/item/clothing/mask/rebreather/skull
+	name = "skull balaclava"
+	desc = "The face of your nightmares. Heed the call of duty as the ghost in the night with this metal 'clava. Additionally protects against the cold."
+	icon_state = "blue_skull_balaclava"
+	item_state = "blue_skull_balaclava"
+	flags_inventory = COVERMOUTH|ALLOWREBREATH|ALLOWCPR
+	flags_inv_hide = HIDEALLHAIR|HIDEEARS
+	flags_cold_protection = BODY_FLAG_HEAD
+	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
+
+/obj/item/clothing/mask/rebreather/skull/black
+	desc = "The face of your nightmares. Heed the call of duty as the ghost in the night with this metal 'clava. Additionally protects against the cold. Now in black!"
+	icon_state = "black_skull_balaclava"
+	item_state = "black_skull_balaclava"
+
+
 /obj/item/clothing/mask/rebreather/scarf
 	name = "heat absorbent coif"
 	desc = "A close-fitting cap that covers the top, back, and sides of the head. Can also be adjusted to cover the lower part of the face so it keeps the user warm in harsh conditions."
@@ -84,6 +100,8 @@
 
 
 	update_clothing_icon(src) //Update the on-mob icon.
+
+
 
 /obj/item/clothing/mask/rebreather/scarf/green
 	name = "Green Balaclava"

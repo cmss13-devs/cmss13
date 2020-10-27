@@ -398,12 +398,12 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /obj/item/clothing/mask/cigarette/cigar
 	name = "premium cigar"
 	desc = "A brown roll of tobacco and... well, you're not quite sure. This thing's huge!"
-	icon_state = "cigar2off"
-	icon_on = "cigar2on"
-	icon_off = "cigar2off"
+	icon_state = "cigar_off"
+	icon_on = "cigar_on"
+	icon_off = "cigar_off"
 	type_butt = /obj/item/trash/cigbutt/cigarbutt
 	throw_speed = SPEED_VERY_FAST
-	item_state = "cigar2off"
+	item_state = "cigar_off"
 	smoketime = 1500
 	chem_volume = 20
 

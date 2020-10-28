@@ -238,7 +238,14 @@
 								)
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 	unacidable = TRUE
+	indestructible = TRUE
 
+	var/mob/living/carbon/human/linked_human
+	var/is_locked = TRUE
+
+/obj/item/weapon/gun/rifle/m46c/Initialize(mapload, ...)
+	. = ..()
+	AddElement(/datum/element/magharness)
 
 /obj/item/weapon/gun/rifle/m46c/handle_starting_attachment()
 	..()
@@ -266,9 +273,63 @@
 	damage_mult = config.base_hit_damage_mult + config.med_hit_damage_mult
 	recoil_unwielded = config.high_recoil_value
 
+/obj/item/weapon/gun/rifle/m46c/able_to_fire(mob/user)
+	. = ..()
+	if(is_locked && linked_human && linked_human != user)
+		if(linked_human.is_revivable() || linked_human.stat != DEAD)
+			to_chat(user, SPAN_WARNING("[htmlicon(src)] A red light flashes at the side of [src]."))
+			return FALSE
+		
+		linked_human = null
+		is_locked = FALSE
+		UnregisterSignal(linked_human, COMSIG_PARENT_QDELETING)
+
+/obj/item/weapon/gun/rifle/m46c/verb/toggle_lock()
+	set category = "Weapons"
+	set name = "Toggle Lock"
+	set src in usr
+
+	if(usr != linked_human)
+		to_chat(usr, SPAN_WARNING("[htmlicon(src)] A red light flashes at the side of [src]."))
+		return
+
+	is_locked = !is_locked
+	to_chat(usr, SPAN_NOTICE("[htmlicon(src)] You [is_locked? "lock": "unlock"] [src]."))
+	playsound(loc,'sound/machines/click.ogg', 25, 1)
+
+
+/*/obj/item/weapon/gun/rifle/m46c/verb/toggle_iff()
+	set category = "Weapons"
+	set name = "Toggle Lethal Mode"
+	set src in usr
+
+	if(is_locked && linked_human && usr != linked_human)
+		to_chat(usr, SPAN_WARNING("[htmlicon(src)] A red light flashes at the side of [src]."))
+		return
+
+	iff_enabled = !iff_enabled
+	to_chat(usr, SPAN_NOTICE("[htmlicon(src)] You [iff_enabled? "enable": "disable"] the IFF on [src]."))
+	playsound(loc,'sound/machines/click.ogg', 25, 1)
+
+	recalculate_attachment_bonuses()
+
+/obj/item/weapon/gun/rifle/m46c/recalculate_attachment_bonuses()
+	. = ..()
+	if(iff_enabled)
+		damage_mult -= config.min_hit_damage_mult
+		fire_delay += config.min_fire_delay
+		burst_amount -= config.max_burst_value
+
+		flags_gun_features &= ~GUN_BURST_ON*/
 
 /obj/item/weapon/gun/rifle/m46c/proc/name_after_co(var/mob/living/carbon/human/H, var/obj/item/weapon/gun/rifle/m46c/I)
-	I.desc = "A prototype M46C, an experimental rifle platform built to outperform the standard M41A. Back issue only. Uses standard MK1 & MK2 rifle magazines. Property of [H.real_name]"
+	I.desc = "A prototype M46C, an experimental rifle platform built to outperform the standard M41A. Back issue only. Uses standard MK1 & MK2 rifle magazines. Property of [H.real_name]."
+	linked_human = H
+	RegisterSignal(linked_human, COMSIG_PARENT_QDELETING, .proc/remove_idlock)
+
+/obj/item/weapon/gun/rifle/m46c/proc/remove_idlock()
+	SIGNAL_HANDLER
+	linked_human = null
 
 /obj/item/weapon/gun/rifle/m46c/stripped
 	random_spawn_chance = 0//no extra attachies on spawn, still gets its stock though.
@@ -314,14 +375,11 @@
 							/obj/item/attachable/magnetic_harness
 							)
 	random_spawn_underbarrel = list(
-							/obj/item/attachable/angledgrip,
-							/obj/item/attachable/verticalgrip,
 							/obj/item/attachable/gyro,
 							/obj/item/attachable/bipod,
 							/obj/item/attachable/attached_gun/flamer,
 							/obj/item/attachable/attached_gun/extinguisher,
 							/obj/item/attachable/attached_gun/shotgun,
-							/obj/item/attachable/lasersight,
 							/obj/item/attachable/burstfire_assembly,
 									)
 	random_spawn_muzzle = list(
@@ -396,7 +454,6 @@
 	random_spawn_underbarrel = list(
 							/obj/item/attachable/angledgrip,
 							/obj/item/attachable/verticalgrip,
-							/obj/item/attachable/gyro,
 							/obj/item/attachable/bipod,
 							/obj/item/attachable/attached_gun/extinguisher,
 							/obj/item/attachable/attached_gun/shotgun,

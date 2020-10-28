@@ -71,9 +71,6 @@
 #define COMSIG_MOB_DEVOURED "mob_devoured"
 	#define COMPONENT_CANCEL_DEVOUR	(1<<0)
 
-/// From /mob/death
-#define CONSIG_MOB_DEATH "mob_death"
-
 /// From /mob/living/rejuvenate
 #define COMSIG_LIVING_REJUVENATED "living_rejuvenated"
 

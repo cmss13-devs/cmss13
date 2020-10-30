@@ -18,6 +18,8 @@ Giving objectives to an agent:
 
 	var/objectives_list
 
+	var/frequency_code = 100
+
 /datum/agent/New(var/mob/living/carbon/human/H, var/chosen_faction, var/start_with_objective = TRUE)
 	. = ..()
 	if(!istype(H))
@@ -31,11 +33,16 @@ Giving objectives to an agent:
 	else
 		faction = pick(FACTION_LIST_AGENT)
 
+	frequency_code = rand(100, 999)
+
 	generate_message()
 
 	log_game("[key_name(usr)] has been made an agent.")
 
 	LAZYADD(human_agent_list, source_human)
+
+	var/datum/action/human_action/activable/check_objectives/O = new()
+	O.give_action(source_human)
 
 	if(source_human.skills)
 		source_human.skills.set_skill(SKILL_ANTAG, SKILL_ANTAG_TRAINED)
@@ -48,13 +55,9 @@ Giving objectives to an agent:
 	apply_hud()
 
 /datum/agent/proc/receive_tools()
-	tools = new(source_human.loc, src)
+	tools = new()
 	tools.faction_belonging = faction
-
-	if(!source_human.equip_to_slot_if_possible(tools, WEAR_IN_BACK))
-		// Failed, trying to put in hands else drop
-		if(!source_human.put_in_any_hand_if_possible(tools))
-			tools.loc = source_human.loc
+	source_human.contents += tools
 
 /datum/agent/proc/generate_message()
 	var/faction_name = "Weston-Yamada"
@@ -68,13 +71,29 @@ Giving objectives to an agent:
 
 	var/text = {"
 		[SPAN_ROLE_BODY("|______________________|")]
-		[SPAN_ROLE_HEADER("You are an agent working for [faction_name].")]
+		[SPAN_ROLE_HEADER("You are being blackmailed by [faction_name].")]
+		[SPAN_ROLE_BODY("[generate_story()]")]
+		[SPAN_ROLE_BODY("|______________________|")]
 		[SPAN_ROLE_BODY("[faction_name] will periodically assign you new objectives, that you must complete in their interest. \
-			DO NOT under any circumstances kill people unless properly escalated, the situation is tense and we cannot risk another war breaking out. \
-			You may seek out other agents of [faction_name], you will know them when you see them.")]
+			<b>DO NOT</b> under any circumstances kill people unless properly escalated. [faction_name] does not want anyone finding out about their involvement. \
+			You may seek out other associated with [faction_name], you will know them when you see them. \
+			The Special Frequency code assigned to you is <b>[frequency_code]</b>, check your headset to use it.")]
 		[SPAN_ROLE_BODY("|______________________|")]
 		"}
 	to_chat(source_human, text)
+
+/datum/agent/proc/generate_story()
+	var/list/stories = list("We have your family. Follow our demands or they'll suffer. We will not hesistate to prove our point, don't try anything.",\
+	\
+	"We know your secret, we know what you're keeping hidden and want nobody to find out about. Follow our demands or we'll tell everyone. \
+	Ignoring our orders will have serious consequences, so we suggest you keep this hidden and just do it.",\
+	\
+	"We have aquired your massive debt through connections. It is time you pay what is owed, complete our demands or we'll have to take action. \
+	If you follow through, you can consider the debt gone.",\
+	\
+	"We are calling in the favour you owe us. Do the minor tasks and we'll consider it cleared.")
+
+	return pick(stories)
 
 /datum/agent/proc/apply_hud()
 	var/hud_name = MOB_HUD_FACTION_WY
@@ -107,6 +126,8 @@ Giving objectives to an agent:
 	. = ..()
 	
 	source_human.agent_holder = null
+	LAZYREMOVE(source_human.contents, tools)
+	QDEL_NULL(tools)
 
 	if(objectives_list)
 		for(var/datum/agent_objective/O in objectives_list)
@@ -135,7 +156,7 @@ Giving objectives to an agent:
 	return TRUE
 
 /datum/action/human_action/activable/receive_objective/action_activate()
-	if(alert(owner, "Are you sure you want to receive your next objective?", "Receive Objective", "Yes", "No") == "No")
+	if(alert(owner, "Are you sure you want to receive your next objective now?", "Receive Objective", "Yes", "No") == "No")
 		return
 
 	if(!can_use_action())
@@ -148,3 +169,36 @@ Giving objectives to an agent:
 	LAZYADD(H.agent_holder.objectives_list, new objective_to_receive(H.agent_holder))
 
 	remove_action(H)
+
+
+/datum/action/human_action/activable/check_objectives
+	name = "Check Objectives"
+	action_icon_state = "antag_check_objective"
+
+/datum/action/human_action/activable/check_objectives/can_use_action()
+	. = ..()
+	if(!.)
+		return FALSE
+
+	var/mob/living/carbon/human/H = owner
+	if(!H.agent_holder)
+		return FALSE
+
+	return TRUE
+
+/datum/action/human_action/activable/check_objectives/action_activate()
+	if(!can_use_action())
+		return
+
+	var/mob/living/carbon/human/H = owner
+
+	var/dat = "Special Frequency code is [H.agent_holder.frequency_code]. <BR>"
+	dat += "<BR>"
+	var/count = 1
+	for(var/datum/agent_objective/O in H.agent_holder.objectives_list)
+		dat += "OBJECTIVE [count]: <br>"
+		dat += "- [O.description] <br>"
+		dat += "<BR>"
+		count++
+
+	show_browser(H, dat, "Check Objectives", "objectives", "size=450x750")

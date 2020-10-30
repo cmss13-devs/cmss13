@@ -532,7 +532,7 @@
 /obj/structure/window/framed/almayer/healthcheck(make_hit_sound = 1, make_shatter_sound = 1, create_debris = 1, mob/user, atom/movable/AM)
 	if(health <= 0)
 		if(user && z == MAIN_SHIP_Z_LEVEL)
-			new /obj/effect/decal/prints(get_turf(src), user, "A small glass piece is found on the fingerprint.")
+			SSclues.create_print(get_turf(user), user, "A small glass piece is found on the fingerprint.")
 			if(user.detectable_by_ai())
 				ai_silent_announcement("DAMAGE REPORT: Structural damage detected at [get_area(src)], requesting Military Police supervision.")
 

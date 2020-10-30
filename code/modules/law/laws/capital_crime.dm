@@ -10,7 +10,6 @@
 	name = "Desertion"
 	desc = "Refusing to carry out the duties essential to one’s post or abandoning post unauthorized, without intent to return. (Retreating from the planet when the FOB is breached is not Desertion, refusing to return when ordered is)."
 	brig_time = PERMABRIG_SENTENCE
-	special_punishment = PERMABRIG
 
 /datum/law/capital_law/insanity
 	name = "Insanity"
@@ -21,17 +20,14 @@
 	name = "Jailbreak/Escape"
 	desc = "To escape, assist in an escape, attempt escape, or be willfully and knowingly broken out."
 	brig_time = PERMABRIG_SENTENCE
-	special_punishment = DOUBLE_TIME
 
 /datum/law/capital_law/murder
 	name = "Murder or Unauthorized Execution"
 	desc = "Killing someone with malicious intent. This includes Synthetic units. Executions are only authorized as outlined in the Execution Procedure."
-	special_punishment = "Demotion/removal of command"
+	special_punishment = "Demotion"
 	brig_time = PERMABRIG_SENTENCE
-	special_punishment = PERMABRIG
 
 /datum/law/capital_law/sedition
 	name = "Sedition"
 	desc = "To engage in actions or refuse to follow orders as to overthrow or usurp the legitimate command structure."
 	brig_time = PERMABRIG_SENTENCE
-	special_punishment = PERMABRIG

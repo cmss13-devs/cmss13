@@ -548,7 +548,7 @@
 
 			if(announce_hacked && z == MAIN_SHIP_Z_LEVEL)
 				announce_hacked = FALSE
-				new /obj/effect/decal/prints(get_turf(src), usr, "The fingerprint contains oil and wire pieces.")
+				SSclues.create_print(get_turf(usr), usr, "The fingerprint contains oil and wire pieces.")
 				if(usr.detectable_by_ai())
 					ai_silent_announcement("DAMAGE REPORT: Structural damage detected at [get_area(src)], requesting Military Police supervision.")
 

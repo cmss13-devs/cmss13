@@ -4,17 +4,12 @@
 /datum/law/major_law/damage_to_government_property
 	name = "Damage to Government Property"
 	desc = "Damaging the ship or making any unauthorized modifications to it as outlined in Standard Operating Procedure on a major level, such as destroying/dismantling multiple walls or windows."
-	special_punishment = "Damage Repairs"
+	special_punishment = "Repairation"
 	brig_time = 10
 
 /datum/law/major_law/disorderly_conduct
 	name = "Disorderly Conduct"
 	desc = "Directly and intentionally disrupting primary operations of the ship. Fighting in the RO line, disrupting the briefing."
-	brig_time = 10
-
-/datum/law/major_law/foreign_activity
-	name = "Foreign Activity"
-	desc = "Carrying out objectives or being tied to material that describe planned actions that go against the USCM."
 	brig_time = 10
 
 /datum/law/major_law/assault
@@ -41,7 +36,13 @@
 /datum/law/major_law/neglect_of_duty
 	name = "Neglect of duty"
 	desc = "Failure to perform one’s role to an acceptable standard. For example, a Commanding Officer failing to properly organize and ensure his personnel are given orders, failing to follow proper procedure in detriment of one’s duties, or ship crew leaving the ship without authorization from the Commanding Officer or their Department Head. Any officer who commits a crime may be charged with Neglect of Duty in addition to the appropriate crimes."
-	special_punishment = "Demotion/removal of command"
+	special_punishment = "Demotion"
+	brig_time = 15
+
+/datum/law/major_law/subterfuge
+	name = "Subterfuge"
+	desc = "Carrying out objectives or being tied to material that describe planned actions that go against the USCM. Strong proof is required that the invidivual is working against USCM."
+	special_punishment = "Termination of ID/Discharge to planet"
 	brig_time = 15
 
 /datum/law/major_law/assault_with_a_deadly_weapon
@@ -58,7 +59,7 @@
 	name = "Manslaughter"
 	desc = "Killing someone without malicious intent. Manslaughter may be applied if someone dies as a result of a fight where the intent was not to kill."
 	brig_time = 20
-	special_punishment = DEMOTION
+	special_punishment = "Demotion"
 
 /datum/law/major_law/prevarication
 	name = "Prevarication"

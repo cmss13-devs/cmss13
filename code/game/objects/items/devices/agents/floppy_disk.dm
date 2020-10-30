@@ -23,6 +23,7 @@
 	C.hacked = TRUE
 	C.update_icon()
 
+	SSclues.create_print(get_turf(user), user, "The fingerprint contains dust, looks like something from an old disk.")
 	SEND_SIGNAL(src, COMSIG_AGENT_DISK_INSERTED)
 
 	qdel(src)

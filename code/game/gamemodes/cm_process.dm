@@ -64,12 +64,12 @@ of predators), but can be added to include variant game modes (like humans vs. h
 	sleep(SECONDS_2)
 	if(length(human_agent_list))
 		var/dat = "<br>"
-		dat += SPAN_CENTERBOLD("The agents were: <br>")
+		dat += SPAN_CENTERBOLD("The Agents were: <br>")
 		for(var/mob/living/carbon/human/H in human_agent_list)
 			if(!H.agent_holder)
 				continue
 
-			dat += "[SPAN_BOLD("[H]")] was an agent of [H.agent_holder.faction], with the following objectives: <br>"
+			dat += "[SPAN_BOLD("[H]")] was being blackmailed by [H.agent_holder.faction], with the following objectives: <br>"
 			for(var/datum/agent_objective/O in H.agent_holder.objectives_list)
 				dat += "- [O.description]"
 				if(O.check_completion_round_end())

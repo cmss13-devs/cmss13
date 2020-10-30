@@ -7,7 +7,7 @@
 	shuttle_id = null
 	name_of_spawn = "Distress_Agent"
 	ert_message = "An Agent is spawning in, this is a shipside roleplay role"
-	var/list/possible_agents = list(JOB_RESS_REPRESENTATIVE, JOB_UPP_REPRESENTATIVE, JOB_STOWAWAY)
+	var/list/possible_agents = list(JOB_STOWAWAY)
 	var/picked_agent
 
 /datum/emergency_call/agent/New()

@@ -406,6 +406,7 @@
 					user.visible_message(SPAN_NOTICE("[user] removes [src]'s power control board."),
 					SPAN_NOTICE("You remove [src]'s power control board."))
 					new /obj/item/circuitboard/apc(loc)
+				SSclues.create_print(get_turf(user), user, "The fingerprint contains specks of electronics.")
 				SEND_SIGNAL(user, COMSIG_MOB_APC_REMOVE_BOARD, src)
 
 		else if(opened != APC_COVER_REMOVED) //Cover isn't removed
@@ -688,6 +689,7 @@
 			SPAN_NOTICE("You remove the power cell from [src]."))
 			charging = 0
 			update_icon()
+			SSclues.create_print(get_turf(user), user, "The fingerprint contains small parts of battery acid.")
 			SEND_SIGNAL(user, COMSIG_MOB_APC_REMOVE_CELL, src)
 		return
 	if(stat & (BROKEN|MAINT))
@@ -795,6 +797,7 @@
 			shock(usr, 50)
 			shorted = 1
 			visible_message(SPAN_WARNING("\The [src] begins flashing error messages wildly!"))
+			SSclues.create_print(get_turf(user), user, "The fingerprint contains specks of wire.")
 			SEND_SIGNAL(user, COMSIG_MOB_APC_CUT_WIRE, src)
 				
 		if(APC_WIRE_IDSCAN)
@@ -829,6 +832,7 @@
 			if(shorted == 0)
 				shorted = 1
 				visible_message(SPAN_WARNING("\The [src] begins flashing error messages wildly!"))
+				SSclues.create_print(get_turf(user), user, "The fingerprint looks like it held a multitool?")
 				SEND_SIGNAL(user, COMSIG_MOB_APC_POWER_PULSE, src)
 			addtimer(VARSET_CALLBACK(src, shorted, FALSE), 2 MINUTES)
 

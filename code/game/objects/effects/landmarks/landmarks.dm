@@ -17,15 +17,8 @@
 			newplayer_start += loc
 			qdel(src)
 
-		if("JoinLate")
-			latejoin += loc
-
 		if("latewhiskey")
 			latewhiskey += loc
-			qdel(src)
-
-		if("JoinLateCryo")
-			latejoin_cryo += loc
 			qdel(src)
 
 		if("SupplyElevator")
@@ -114,7 +107,6 @@
 
 /obj/effect/landmark/start
 	name = "start"
-	icon = 'icons/mob/hud/screen1.dmi'
 	icon_state = "x"
 	anchored = 1.0
 
@@ -125,12 +117,47 @@
 		tag = "start*[name]"
 		invisibility = 101
 
+/obj/effect/landmark/start/marine
+	name = JOB_SQUAD_MARINE
+	icon_state = "marine_spawn"
+
+/obj/effect/landmark/start/marine/engineer
+	name = JOB_SQUAD_ENGI
+	icon_state = "engi_spawn"
+
+/obj/effect/landmark/start/marine/medic
+	name = JOB_SQUAD_MEDIC
+	icon_state = "medic_spawn"
+
+/obj/effect/landmark/start/marine/spec
+	name = JOB_SQUAD_SPECIALIST
+	icon_state = "spec_spawn"
+
+/obj/effect/landmark/start/marine/smartgunner
+	name = JOB_SQUAD_SMARTGUN
+	icon_state = "smartgunner_spawn"
+
+/obj/effect/landmark/start/marine/leader
+	name = JOB_SQUAD_LEADER
+	icon_state = "leader_spawn"
+
 /obj/effect/landmark/start/AISloc
 	name = "AI"
 
 /obj/effect/landmark/start/whiskey
 	icon = 'icons/old_stuff/mark.dmi'
 	icon_state = "spawn_shuttle"
+
+
+/obj/effect/landmark/late_join
+	name = "late join"
+	icon_state = "x2"
+
+/obj/effect/landmark/late_join/Initialize(mapload, ...)
+	. = ..()
+
+	latejoin += loc
+	return INITIALIZE_HINT_QDEL
 
 /obj/effect/landmark/map_tag
 	name = "mapping tag"

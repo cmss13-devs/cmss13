@@ -1147,16 +1147,6 @@ var/const/MAX_SAVE_SLOTS = 10
 					var/skin_style_name = input(user, "Select a new skin style") as null|anything in list("default1", "default2", "default3")
 					if(!skin_style_name) return
 
-				if("spawnpoint")
-					var/list/spawnkeys = list()
-					for(var/S in spawntypes)
-						spawnkeys += S
-					var/choice = input(user, "Where would you like to spawn when latejoining?") as null|anything in spawnkeys
-					if(!choice || !spawntypes[choice])
-						spawnpoint = "Arrivals Shuttle"
-						return
-					spawnpoint = choice
-
 				if("citizenship")
 					var/choice = input(user, "Please choose your current citizenship.") as null|anything in citizenship_choices
 					if(choice)

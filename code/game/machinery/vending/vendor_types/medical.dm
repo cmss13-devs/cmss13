@@ -38,6 +38,13 @@
 		/obj/item/reagent_container/glass/bottle/peridaxon,
 		/obj/item/reagent_container/glass/bottle/tramadol,
 		)
+	var/list/stack_refill = list(
+		/obj/item/stack/medical/advanced/ointment,
+		/obj/item/stack/medical/advanced/bruise_pack,
+		/obj/item/stack/medical/ointment,
+		/obj/item/stack/medical/bruise_pack,
+		/obj/item/stack/medical/splint
+		)
 
 /obj/structure/machinery/cm_vending/sorted/medical/examine(mob/living/carbon/human/user)
 	. = ..()
@@ -85,18 +92,39 @@
 
 		var/obj/item/reagent_container/C = I
 		if(!(C.type in chem_refill))
-			to_chat(user, SPAN_WARNING("The [src] cannot refill the [C.name]."))
+			to_chat(user, SPAN_WARNING("[src] cannot refill the [C.name]."))
 			return
 
 		if(C.reagents.total_volume == C.reagents.maximum_volume)
-			to_chat(user, SPAN_WARNING("The [src] makes a warning noise. The [C.name] is currently full."))
+			to_chat(user, SPAN_WARNING("[src] makes a warning noise. The [C.name] is currently full."))
 			return
 
-		to_chat(user, SPAN_NOTICE("The [src] makes a whirring noise as it refills your [C.name]."))
+		to_chat(user, SPAN_NOTICE("[src] makes a whirring noise as it refills your [C.name]."))
 		// Since the reagent is deleted on use it's easier to make a new one instead of snowflake checking
-		var/obj/item/reagent_container/new_container= new C.type(src)
+		var/obj/item/reagent_container/new_container = new C.type(src)
 		qdel(C)
 		user.put_in_hands(new_container)
+	else if(stat == WORKING && LAZYLEN(stack_refill) && (istype(I, /obj/item/stack)))
+		if(!hacked)
+			if(!allowed(user))
+				to_chat(user, SPAN_WARNING("Access denied."))
+				return
+
+			if(LAZYLEN(vendor_role) && !vendor_role.Find(user.job))
+				to_chat(user, SPAN_WARNING("This machine isn't for you."))
+				return
+
+		var/obj/item/stack/S = I
+		if(!(S.type in stack_refill))
+			to_chat(user, SPAN_WARNING("[src] cannot restock the [S.name]."))
+			return
+
+		if(S.amount == S.max_amount)
+			to_chat(user, SPAN_WARNING("[src] makes a warning noise. The [S.name] is currently fully stacked."))
+			return
+
+		to_chat(user, SPAN_NOTICE("[src] makes a whirring noise as it restocks your [S.name]."))
+		S.amount = S.max_amount
 	else
 		. = ..()
 
@@ -169,6 +197,17 @@
 	desc = "Medical chemistry dispenser. Provided by W-Y Pharmaceuticals Division(TM)."
 
 	healthscan = FALSE
+	chem_refill = list(
+		/obj/item/reagent_container/glass/bottle/bicaridine,
+		/obj/item/reagent_container/glass/bottle/antitoxin,
+		/obj/item/reagent_container/glass/bottle/dexalin,
+		/obj/item/reagent_container/glass/bottle/inaprovaline,
+		/obj/item/reagent_container/glass/bottle/kelotane,
+		/obj/item/reagent_container/glass/bottle/oxycodone,
+		/obj/item/reagent_container/glass/bottle/peridaxon,
+		/obj/item/reagent_container/glass/bottle/tramadol,
+		)
+	stack_refill = null
 
 /obj/structure/machinery/cm_vending/sorted/medical/chemistry/populate_product_list(var/scale)
 	listed_products = list(
@@ -214,6 +253,11 @@
 		/obj/item/reagent_container/hypospray/autoinjector/skillless,
 		/obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol,
 	)
+	stack_refill = list(
+		/obj/item/stack/medical/ointment,
+		/obj/item/stack/medical/bruise_pack,
+		/obj/item/stack/medical/splint
+	)
 
 /obj/structure/machinery/cm_vending/sorted/medical/marinemed/populate_product_list(var/scale)
 	listed_products = list(
@@ -258,6 +302,7 @@
 
 	healthscan = FALSE
 	chem_refill = null
+	stack_refill = null
 
 /obj/structure/machinery/cm_vending/sorted/medical/blood/populate_product_list(var/scale)
 	return
@@ -294,6 +339,12 @@
 		/obj/item/reagent_container/hypospray/autoinjector/skillless,
 		/obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol,
 	)
+	stack_refill = list(
+		/obj/item/stack/medical/bruise_pack,
+		/obj/item/stack/medical/ointment,
+		/obj/item/stack/medical/splint
+	)
+
 
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/populate_product_list(var/scale)
 	return

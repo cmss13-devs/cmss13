@@ -50,7 +50,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player_time_log)
     PLog.role_id = role_id
     PLog.mob_type = mob_type
 
-    P.playtime_start = 0
+    P.playtime_start = world.time
 
     PLog.save()
     PLog.detach()

@@ -77,7 +77,7 @@
 		else
 			dat += main_menu()
 
-	show_browser(user, dat, "Criminal Sentencing", "crim_sentence", "size=710x725")
+	show_browser(user, dat, "Criminal Sentencing", "crim_sentence", "size=780x725")
 	onclose(user, "crim_sentence")
 
 /obj/structure/machinery/computer/sentencing/proc/main_menu()
@@ -163,6 +163,7 @@
 		dat += "<tr>"
 		dat += "<td><b>[L.name]</b></td>"
 		dat += "<td><i>[L.desc]</i></td>"
+		dat += "<td><i>[L.special_punishment]</i></td>"
 		if(buttons)
 			dat += "<td><a href='?src=\ref[src];button=remove_charge;law=\ref[L]'>Remove</a></td>"
 		dat += "</tr>"
@@ -330,6 +331,7 @@
 	dat += "<th>Name</th>"
 	dat += "<th>Description</th>"
 	dat += "<th>Brig Sentence</th>"
+	dat += "<th>Extra</th>"
 	dat += "<th>Button</th>"
 	dat += "</tr>"
 
@@ -338,6 +340,7 @@
 		dat += "<td><b>[L.name]</b></td>"
 		dat += "<td><i>[L.desc]</i></td>"
 		dat += "<td>[L.brig_time] minutes</td>"
+		dat += "<td><i>[L.special_punishment]</i></td>"
 		dat += "<td><a href='?src=\ref[src];button=add_charge;law=\ref[L]'>Charge</a></td>"
 		dat += "</tr>"
 

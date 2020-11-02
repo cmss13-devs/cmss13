@@ -33,7 +33,6 @@
 
 
 /obj/item/device/portable_vendor/attack_self(mob/user)
-
 	if(!ishuman(user))
 		return
 
@@ -162,8 +161,7 @@
 				var/type_p = L[3]
 				var/obj/IT = new type_p(get_turf(src))
 				vending_stat_bump(type_p, src.type)
-				if(loc == H)
-					H.put_in_any_hand_if_possible(IT)
+				H.put_in_any_hand_if_possible(IT)
 				fabricating = 0
 				update_overlays()
 

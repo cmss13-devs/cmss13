@@ -287,9 +287,12 @@
 
 		if ("terminate")
 			if (is_authenticated())
+				var/is_agent = FALSE
+				if(modify.registered_gid)
+					is_agent = modify.fail_agent_objectives()
 				modify.assignment = "Terminated"
 				modify.access = list()
-				message_staff("[key_name_admin(usr)] terminated the ID of [modify.registered_name].")
+				message_staff("[key_name_admin(usr)] terminated the ID of [modify.registered_name].[is_agent ? " They were an Agent." : ""]")
 
 	if (modify)
 		modify.name = text("[modify.registered_name]'s ID Card ([modify.assignment])")

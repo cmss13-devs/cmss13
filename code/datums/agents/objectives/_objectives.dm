@@ -21,6 +21,7 @@ Objective message,
 	var/description = ""
 	var/belonging_to_faction = ""
 	var/completed = FALSE
+	var/terminated = FALSE
 
 	var/datum/agent/belonging_to_agent = null
 	var/obj/item/objective_item = null
@@ -58,36 +59,25 @@ Objective message,
 	description = "You have no task."
 
 /datum/agent_objective/proc/create_objective_item()
-	objective_item = new /obj/item/paper/antag(src)
-	// Putting in the back
-	var/mob/living/carbon/human/H = belonging_to_agent.source_human
-	if(!H.equip_to_slot_if_possible(objective_item, WEAR_IN_BACK))
-		// Failed, trying to put in hands else drop
-		if(!H.put_in_any_hand_if_possible(objective_item))
-			objective_item.loc = H.loc
+	return
 
 /datum/agent_objective/proc/check_completion_now()
+	if(terminated)
+		return FALSE
+
 	if(completed)
 		return TRUE
-
-	if(objective_item in belonging_to_agent.source_human)
-		completed = TRUE
 
 	return FALSE
 
 /datum/agent_objective/proc/check_completion_round_end()
+	if(terminated)
+		return FALSE
+
 	if(completed)
 		return TRUE
 
-	var/list/brig_areas = list(/area/almayer/shipboard/brig, /area/almayer/shipboard/brig_cells, /area/almayer/shipboard/chief_mp_office)
-	if(!isnull(objective_item))
-		var/area/placed_area = get_area(objective_item)
-		if(placed_area.type in brig_areas)
-			return FALSE
-
-		return TRUE
-
-	return FALSE
+	return TRUE
 
 /datum/agent_objective/Destroy()
 	. = ..()

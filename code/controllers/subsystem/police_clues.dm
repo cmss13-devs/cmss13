@@ -26,3 +26,9 @@ SUBSYSTEM_DEF(clues)
 
 		if(MC_TICK_CHECK)
 			return
+
+/datum/controller/subsystem/clues/proc/create_print(var/turf/location, var/mob/living/carbon/human/criminal_mob, var/incident = "")
+	if(!location || !istype(criminal_mob) || ticker.mode.is_in_endgame)
+		return
+
+	new /obj/effect/decal/prints(location, criminal_mob, incident)

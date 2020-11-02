@@ -9,7 +9,7 @@
     name = "Aiding and Abetting"
     desc = "Assisting others in committing a crime, directly or indirectly, or encouraging them to commit one."
     brig_time = 10
-    special_punishment = SAME_AS_ACCUSED
+    special_punishment = "Same as accused"
 
 /datum/law/optional_law/resisting
     name = "Resisting Arrest"

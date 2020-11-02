@@ -71,6 +71,7 @@
 
 		update_icon()
 
+		SSclues.create_print(get_turf(user), user, "The fingerprint contains eletronic chip pieces.")
 		SEND_SIGNAL(src, COMSIG_TRACKING_DISARMED)
 	else
 		..()

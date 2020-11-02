@@ -10,7 +10,7 @@
 
 	health = 500
 
-	move_speed = VEHICLE_SPEED_FASTER
+	move_speed = VEHICLE_SPEED_FAST
 
 /obj/item/hardpoint/locomotion/treads/robust
 	name = "robus-treads"

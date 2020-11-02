@@ -1,6 +1,6 @@
 /obj/item/hardpoint/secondary/grenade_launcher
-	name = "Grenade Launcher"
-	desc = "A secondary weapon for tanks that shoots grenades"
+	name = "M92T Grenade Launcher"
+	desc = "A secondary weapon for tanks that shoots grenades."
 
 	icon_state = "glauncher"
 	disp_icon = "tank"
@@ -33,7 +33,7 @@
 
 	var/turf/origin_turf = get_turf(src)
 	origin_turf = locate(origin_turf.x + origins[1], origin_turf.y + origins[2], origin_turf.z)
-	if(get_dist(origin_turf, A) < 3)
+	if(get_dist(origin_turf, A) < 1)
 		to_chat(usr, SPAN_WARNING("The target is too close."))
 		return FALSE
 
@@ -53,7 +53,10 @@
 	var/obj/item/projectile/P = new(initial(name), user)
 	P.loc = origin_turf
 	P.generate_bullet(new ammo.default_ammo)
-	P.fire_at(A, owner.seats[VEHICLE_GUNNER], src, range, P.ammo.shell_speed, iff_group = owner.seats[VEHICLE_GUNNER].faction_group)
+	if(ammo.has_iff && owner.seats[VEHICLE_GUNNER])
+		P.fire_at(A, owner.seats[VEHICLE_GUNNER], src, P.ammo.max_range, P.ammo.shell_speed, iff_group = owner.seats[VEHICLE_GUNNER].faction_group)
+	else
+		P.fire_at(A, owner.seats[VEHICLE_GUNNER], src, P.ammo.max_range, P.ammo.shell_speed)
 
 	if(use_muzzle_flash)
 		muzzle_flash(Get_Angle(owner, A))

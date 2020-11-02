@@ -26,6 +26,10 @@
 	deploy_handheld(user)
 
 /obj/item/defenses/handheld/proc/deploy_handheld(var/mob/living/carbon/human/user)
+	if(interior_manager && user.z == interior_manager.interior_z)
+		to_chat(usr, SPAN_WARNING("It's too cramped in here to deploy \a [src]."))
+		return
+
 	var/turf/T = get_step(user, user.dir)
 	var/direction = user.dir
 

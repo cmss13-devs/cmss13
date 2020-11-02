@@ -63,13 +63,13 @@
 	icon_state = "apc_left_4";
 	pixel_y = 32
 	},
-/obj/structure/closet/vehicle{
-	pixel_y = 27;
-	pixel_x = -3
-	},
 /obj/effect/landmark/interior/spawn/vehicle_gunner_seat{
 	icon_state = "comfychair";
 	dir = 4
+	},
+/obj/structure/vehicle_locker{
+	pixel_y = 28;
+	pixel_x = -2
 	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin14";

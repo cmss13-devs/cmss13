@@ -23,9 +23,13 @@
 	if(QDELETED(buckled_mob))
 		vehicle.set_seated_mob(seat, null)
 		M.unset_interaction()
-		M.reset_view()
+		if(M.client)
+			M.client.change_view(7)
+			M.client.pixel_x = 0
+			M.client.pixel_y = 0
 	else
 		vehicle.set_seated_mob(seat, M)
+		M.client.change_view(8)
 
 // Pass movement relays to the vehicle
 /obj/structure/bed/chair/comfy/vehicle/relaymove(mob/user, direction)
@@ -62,10 +66,8 @@
 
 	return ..()
 
-/obj/structure/bed/chair/comfy/vehicle/gunner/afterbuckle(mob/M)
-	..()
-	if(buckled_mob != M && M.client)		//regards from artillery module. Not sure if this can be done less snowflakey
-		M.client.change_view(7)
-		M.client.pixel_x = 0
-		M.client.pixel_y = 0
+/obj/structure/bed/chair/comfy/vehicle/rotate()
+	set hidden = TRUE
 
+/obj/structure/bed/chair/comfy/vehicle/attackby(obj/item/W, mob/living/user)
+	return

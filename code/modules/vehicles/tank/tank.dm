@@ -30,7 +30,6 @@
 	// Rest (all the guns) is handled by the tank turret hardpoint
 	hardpoints_allowed = list(
 		/obj/item/hardpoint/holder/tank_turret,
-		/obj/item/hardpoint/support/smoke_launcher,
 		/obj/item/hardpoint/support/weapons_sensor,
 		/obj/item/hardpoint/support/overdrive_enhancer,
 		/obj/item/hardpoint/support/artillery_module,
@@ -54,12 +53,12 @@
 	)
 
 	dmg_multipliers = list(
-		"all" = 0.95,
+		"all" = 1,
 		"acid" = 1.5, // Acid melts the tank
-		"slash" = 0.5, // Slashing a massive, solid chunk of metal does very little except leave scratches
-		"bullet" = 0.9,
-		"explosive" = 0.9,
-		"blunt" = 1.1,
+		"slash" = 0.7, // Slashing a massive, solid chunk of metal does very little except leave scratches
+		"bullet" = 0.4,
+		"explosive" = 0.8,
+		"blunt" = 0.8,
 		"abstract" = 1.0
 	)
 
@@ -79,6 +78,7 @@
 /obj/vehicle/multitile/tank/add_seated_verbs(var/mob/living/M, var/seat)
 	if(!M.client)
 		return
+	M.client.verbs += /obj/vehicle/multitile/proc/switch_hardpoint
 	M.client.verbs += /obj/vehicle/multitile/proc/get_status_info
 	M.client.verbs += /obj/vehicle/multitile/proc/open_controls_guide
 	M.client.verbs += /obj/vehicle/multitile/proc/name_vehicle
@@ -86,7 +86,6 @@
 		M.client.verbs += /obj/vehicle/multitile/proc/toggle_door_lock
 		M.client.verbs += /obj/vehicle/multitile/proc/activate_horn
 	else if(seat == VEHICLE_GUNNER)
-		M.client.verbs += /obj/vehicle/multitile/proc/switch_hardpoint
 		M.client.verbs += /obj/vehicle/multitile/proc/cycle_hardpoint
 		M.client.verbs += /obj/vehicle/multitile/proc/toggle_gyrostabilizer
 		M.client.verbs += /obj/vehicle/multitile/proc/toggle_shift_click
@@ -98,31 +97,14 @@
 	M.client.verbs -= /obj/vehicle/multitile/proc/get_status_info
 	M.client.verbs -= /obj/vehicle/multitile/proc/open_controls_guide
 	M.client.verbs -= /obj/vehicle/multitile/proc/name_vehicle
+	M.client.verbs -= /obj/vehicle/multitile/proc/switch_hardpoint
 	if(seat == VEHICLE_DRIVER)
 		M.client.verbs -= /obj/vehicle/multitile/proc/toggle_door_lock
 		M.client.verbs -= /obj/vehicle/multitile/proc/activate_horn
 	else if(seat == VEHICLE_GUNNER)
-		M.client.verbs -= /obj/vehicle/multitile/proc/switch_hardpoint
 		M.client.verbs -= /obj/vehicle/multitile/proc/cycle_hardpoint
 		M.client.verbs -= /obj/vehicle/multitile/proc/toggle_gyrostabilizer
 		M.client.verbs -= /obj/vehicle/multitile/proc/toggle_shift_click
-
-/obj/vehicle/multitile/tank/toggle_gyrostabilizer()
-	var/mob/M = usr
-	if(!M || !istype(M))
-		return
-
-	var/obj/vehicle/multitile/V = M.interactee
-	if(!istype(V))
-		return
-
-	var/obj/item/hardpoint/holder/tank_turret/T = null
-	for(var/obj/item/hardpoint/holder/tank_turret/TT in V.hardpoints)
-		T = TT
-		break
-	if(!T)
-		return
-	T.toggle_gyro(usr)
 
 //Called when players try to move vehicle
 //Another wrapper for try_move()
@@ -185,7 +167,7 @@
 /obj/vehicle/multitile/tank/decrepit/load_hardpoints(var/obj/vehicle/multitile/R)
 	..()
 
-	add_hardpoint(new /obj/item/hardpoint/support/smoke_launcher)
+	add_hardpoint(new /obj/item/hardpoint/support/artillery_module)
 	add_hardpoint(new /obj/item/hardpoint/armor/ballistic)
 	add_hardpoint(new /obj/item/hardpoint/locomotion/treads)
 

@@ -9,8 +9,8 @@
 
 	health = 350
 	cooldown = 15
-	accuracy = 0.7
-	firing_arc = 90
+	accuracy = 0.9
+	firing_arc = 120
 	var/burst_amount = 3
 
 	origins = list(0, -2)
@@ -37,7 +37,7 @@
 			T = get_step(get_turf(A), pick(cardinal))
 		if(LAZYLEN(activation_sounds))
 			playsound(get_turf(src), pick(activation_sounds), 60, 1)
-		fire_projectile(user, T, TRUE)
+		fire_projectile(user, T)
 		if(ammo.current_rounds <= 0)
 			break
 		if(bullets_fired < burst_amount)	//we need to sleep only if there are more bullets to shoot in the burst

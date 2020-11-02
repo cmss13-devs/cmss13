@@ -19,7 +19,15 @@
 		var/image/I = H.get_hardpoint_image()
 		overlays += I
 
-/obj/item/hardpoint/holder/examine(var/mob/user)
+/obj/item/hardpoint/holder/examine(var/mob/user, integrity_only = FALSE)
+
+	if(!integrity_only)
+		..()
+	else
+		if(health <= 0)
+			to_chat(user, "It's busted!")
+		else if(isobserver(user) || (ishuman(user) && skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI)))
+			to_chat(user, "It's at [round(get_integrity_percent(), 1)]% integrity!")
 	for(var/obj/item/hardpoint/H in hardpoints)
 		to_chat(user, "There is a [H] module installed on \the [src].")
 		H.examine(user, TRUE)
@@ -160,7 +168,7 @@
 	var/list/images = list(I)
 	for(var/obj/item/hardpoint/H in hardpoints)
 		var/image/HI = H.get_hardpoint_image()
-		if(LAZYLEN(px_offsets))
+		if(LAZYLEN(px_offsets) && loc && HI)
 			HI.pixel_x += px_offsets["[loc.dir]"][1]
 			HI.pixel_y += px_offsets["[loc.dir]"][2]
 		images += HI

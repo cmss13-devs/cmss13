@@ -7,7 +7,9 @@
 	icon_state = "dual_cannon"
 	disp_icon = "apc"
 	disp_icon_state = "dualcannon"
-	activation_sounds = list('sound/weapons/tank_autocannon_fire.ogg')
+	activation_sounds = list('sound/weapons/vehicles/dual_autocannon_fire.ogg')
+
+	damage_multiplier = 0.2
 
 	health = 500
 	cooldown = 10

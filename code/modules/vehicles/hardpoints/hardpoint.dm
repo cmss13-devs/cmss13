@@ -89,7 +89,7 @@
 	//------AMMUNITION VARS----------
 
 	//Currently loaded ammo that we shoot from
-	var/obj/item/ammo_magazine/ammo
+	var/obj/item/ammo_magazine/hardpoint/ammo
 	//spare magazines that we can reload from
 	var/list/backup_clips
 	//maximum amount of spare mags
@@ -291,7 +291,7 @@ obj/item/hardpoint/proc/remove_buff(var/obj/vehicle/multitile/V)
 	return
 
 //examining a hardpoint
-/obj/item/hardpoint/examine(mob/user, var/integrity_only = null)
+/obj/item/hardpoint/examine(mob/user, var/integrity_only = FALSE)
 	if(!integrity_only)
 		..()
 	if(health <= 0)
@@ -344,69 +344,75 @@ obj/item/hardpoint/proc/remove_buff(var/obj/vehicle/multitile/V)
 		return FALSE
 
 	user.drop_inv_item_to_loc(A, src)
-	to_chat(user, SPAN_NOTICE("You load \the [A] into \the [name]."))
+
 	playsound(loc, 'sound/machines/hydraulics_2.ogg', 50)
 	LAZYADD(backup_clips, A)
+	to_chat(user, SPAN_NOTICE("You load \the [A] into \the [name]. Ammo: <b>[SPAN_HELPFUL(ammo.current_rounds)]/[SPAN_HELPFUL(ammo.max_rounds)]</b> | Mags: <b>[SPAN_HELPFUL(LAZYLEN(backup_clips))]/[SPAN_HELPFUL(max_clips)]</b>"))
 	return TRUE
 
+/obj/item/hardpoint/attackby(var/obj/item/O, var/mob/user)
+	if(iswelder(O))
+		handle_repair(O, user)
+		return
+	..()
+
 //repair procs
-/obj/item/hardpoint/proc/repair(var/obj/item/O, var/mob/user)
-	if(health > 0)
-		to_chat(user, SPAN_NOTICE("\The [name] doesn't require any critical repairs."))
+/obj/item/hardpoint/proc/handle_repair(var/obj/item/tool/weldingtool/WT, var/mob/user)
+	if(user.is_mob_incapacitated())
 		return
 
-	//Determine how many 3 second intervals to wait and if you have the right tool
-	var/num_delays = 1
+	if(health <= 0)
+		to_chat(user, SPAN_WARNING("\The [src] crumbles in your hands to unsalvageable mess."))
+		qdel(src)
+		return
+	if(health >= initial(health))
+		to_chat(user, SPAN_WARNING("\The [src]s structural integrity is at 100%."))
+		return
+	if(!WT.isOn())
+		to_chat(user, SPAN_WARNING("You need to light your [WT] first."))
+		return
+	if(WT.get_fuel() < 10)
+		to_chat(user, SPAN_WARNING("You need to refill \the [WT] first."))
+		return
+	if(being_repaired)
+		to_chat(user, SPAN_WARNING("\The [src] is already being repaired."))
+		return
+
+	var/needed_time = 1
 	switch(slot)
+		if(HDPT_TURRET)
+			needed_time = 6
 		if(HDPT_PRIMARY)
-			num_delays = 5
-			if(!iswelder(O))
-				to_chat(user, SPAN_WARNING("That's the wrong tool. Use a welder."))
-				return
-			var/obj/item/tool/weldingtool/WT = O
-			if(!WT.isOn())
-				to_chat(user, SPAN_WARNING("You need to light your [WT] first."))
-				return
-			WT.remove_fuel(num_delays, user)
-
+			needed_time = 5
 		if(HDPT_SECONDARY)
-			num_delays = 3
-			if(!iswrench(O))
-				to_chat(user, SPAN_WARNING("That's the wrong tool. Use a wrench."))
-				return
-
+			needed_time = 4
 		if(HDPT_SUPPORT)
-			num_delays = 2
-			if(!iswrench(O))
-				to_chat(user, SPAN_WARNING("That's the wrong tool. Use a wrench."))
-				return
-
+			needed_time = 4
 		if(HDPT_ARMOR)
-			num_delays = 10
-			if(!iswelder(O))
-				to_chat(user, SPAN_WARNING("That's the wrong tool. Use a welder."))
-				return
-			var/obj/item/tool/weldingtool/WT = O
-			if(!WT.isOn())
-				to_chat(user, SPAN_WARNING("You need to light your [WT] first."))
-				return
-			WT.remove_fuel(num_delays, user)
+			needed_time = 7
+		if(HDPT_TREADS)
+			needed_time = 3
 
-	user.visible_message(SPAN_NOTICE("[user] starts repairing \the [name]."),
-		SPAN_NOTICE("You start repairing \the [name]."))
-
-	if(!do_after(user, 30*num_delays * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL, BUSY_ICON_FRIENDLY, numticks = num_delays))
-		user.visible_message(SPAN_NOTICE("[user] stops repairing \the [name]."),
-			SPAN_NOTICE("You stop repairing \the [name]."))
+	being_repaired = TRUE
+	playsound(get_turf(user), 'sound/items/weldingtool_weld.ogg', 25)
+	user.visible_message(SPAN_NOTICE("[user] starts repairing \the [name]."), SPAN_NOTICE("You start repairing \the [name]."))
+	if(!do_after(user, SECONDS_1 * needed_time * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL, BUSY_ICON_FRIENDLY, numticks = needed_time))
+		user.visible_message(SPAN_NOTICE("[user] stops repairing \the [name]."), SPAN_NOTICE("You stop repairing \the [name]."))
+		being_repaired = FALSE
 		return
 
-	if(!Adjacent(user))
-		user.visible_message(SPAN_NOTICE("[user] stops repairing \the [name]."),
-			SPAN_NOTICE("You stop repairing \the [name]."))
+	//we check for adjacency only if we are not installed. This is for turret for now
+	if(!owner && !Adjacent(user))
+		user.visible_message(SPAN_NOTICE("[user] stops repairing \the [name]."), SPAN_NOTICE("You stop repairing \the [name]."))
+		being_repaired = FALSE
 		return
 
-	user.visible_message(SPAN_NOTICE("[user] repairs \the [name]."),
-		SPAN_NOTICE("You repair \the [name]."))
+	WT.remove_fuel(needed_time, user)
+	health += round(0.10 * initial(health))
+	health = Clamp(health, 0, initial(health))
+	user.visible_message(SPAN_NOTICE("[user] finishes repairing \the [name]."), SPAN_NOTICE("You finish repairing \the [name]. Integrity now at [round(get_integrity_percent())]%."))
+	being_repaired = FALSE
+	return
 
 //determines whether something is in firing arc of a hardpoint
 /obj/item/hardpoint/proc/in_firing_arc(var/atom/A)
@@ -462,7 +468,7 @@ obj/item/hardpoint/proc/remove_buff(var/obj/vehicle/multitile/V)
 	to_chat(user, SPAN_WARNING("[name] Ammo: <b>[SPAN_HELPFUL(ammo ? ammo.current_rounds : 0)]/[SPAN_HELPFUL(ammo ? ammo.max_rounds : 0)]</b> | Mags: <b>[SPAN_HELPFUL(LAZYLEN(backup_clips))]/[SPAN_HELPFUL(max_clips)]</b>"))
 
 //finally firing the gun
-/obj/item/hardpoint/proc/fire_projectile(var/mob/user, var/atom/A, var/iff_on = FALSE)
+/obj/item/hardpoint/proc/fire_projectile(var/mob/user, var/atom/A)
 	set waitfor = 0
 
 	var/turf/origin_turf = get_turf(src)
@@ -471,7 +477,7 @@ obj/item/hardpoint/proc/remove_buff(var/obj/vehicle/multitile/V)
 	var/obj/item/projectile/P = new(initial(name), user)
 	P.loc = origin_turf
 	P.generate_bullet(new ammo.default_ammo)
-	if(iff_on && owner.seats[VEHICLE_GUNNER])
+	if(ammo.has_iff && owner.seats[VEHICLE_GUNNER])
 		P.fire_at(A, owner.seats[VEHICLE_GUNNER], src, P.ammo.max_range, P.ammo.shell_speed, iff_group = owner.seats[VEHICLE_GUNNER].faction_group)
 	else
 		P.fire_at(A, owner.seats[VEHICLE_GUNNER], src, P.ammo.max_range, P.ammo.shell_speed)
@@ -490,7 +496,7 @@ obj/item/hardpoint/proc/remove_buff(var/obj/vehicle/multitile/V)
 	var/offset_x = 0
 	var/offset_y = 0
 
-	if(LAZYLEN(px_offsets))
+	if(LAZYLEN(px_offsets) && loc)
 		offset_x = px_offsets["[loc.dir]"][1]
 		offset_y = px_offsets["[loc.dir]"][2]
 
@@ -503,28 +509,6 @@ obj/item/hardpoint/proc/remove_buff(var/obj/vehicle/multitile/V)
 	if(health <= 0)
 		icon_state_suffix = "1"
 	return image(icon = disp_icon, icon_state = "[disp_icon_state]_[icon_state_suffix]", pixel_x = x_offset, pixel_y = y_offset, dir = new_dir)
-
-/obj/item/hardpoint/attackby(var/obj/item/O, var/mob/user)
-	if(iswelder(O) && health < initial(health))
-		if(being_repaired)
-			to_chat(user, SPAN_WARNING("You are already repairing the tank!"))
-			return
-		var/obj/item/tool/weldingtool/WT = O
-		if(!WT.isOn())
-			to_chat(user, SPAN_WARNING("You need to light \the [WT] first."))
-			return
-		if(WT.get_fuel() < 10)
-			to_chat(user, SPAN_WARNING("You need to refill \the [WT] first."))
-			return
-		being_repaired = TRUE
-		if(do_after(user, 8 SECONDS * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
-			WT.remove_fuel(10, user)
-			health += round(0.10 * initial(health))
-			health = Clamp(health, 0, initial(health))
-			to_chat(user, SPAN_WARNING("You repair [name]. Integrity now at [round(get_integrity_percent())]%."))
-		being_repaired = FALSE
-		return
-	..()
 
 // debug proc
 /obj/item/hardpoint/proc/set_offsets(var/dir, var/x, var/y)

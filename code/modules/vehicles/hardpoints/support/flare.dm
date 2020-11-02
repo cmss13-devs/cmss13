@@ -1,12 +1,14 @@
 /obj/item/hardpoint/support/flare_launcher
-	name = "Mounted Flare Launcher"
-	desc = "A support module for APCs that shoots flares"
+	name = "M-87F Flare Launcher"
+	desc = "A support module for APCs that shoots flares."
 	icon = 'icons/obj/vehicles/hardpoints/apc.dmi'
 
 	icon_state = "flare_launcher"
 	disp_icon = "apc"
 	disp_icon_state = "flare_launcher"
 	activation_sounds = list('sound/weapons/gun_m92_attachable.ogg')
+
+	damage_multiplier = 0.1
 
 	activatable = TRUE
 

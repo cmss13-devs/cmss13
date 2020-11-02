@@ -5,9 +5,8 @@
 	icon_state = "ace_autocannon"
 	w_class = SIZE_LARGE
 	default_ammo = /datum/ammo/bullet/tank/flak/weak
-	max_rounds = 30
+	max_rounds = 40
 	gun_type = /obj/item/hardpoint/primary/dualcannon
-	point_cost = 150
 
 /obj/item/ammo_magazine/hardpoint/boyars_dualcannon/update_icon()
 	if(current_rounds > 0)

@@ -98,6 +98,9 @@
 		return FALSE
 	if(!has_mount)
 		return FALSE
+	if(interior_manager && user.z == interior_manager.interior_z)
+		to_chat(usr, SPAN_WARNING("It's too cramped in here to deploy \a [src]."))
+		return
 	if(do_after(user, 1 SECOND, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		var/obj/structure/machinery/m56d_post/M = new /obj/structure/machinery/m56d_post(user.loc)
 		M.dir = user.dir // Make sure we face the right direction
@@ -142,7 +145,11 @@
 	icon_state = "folded_mount"
 
 /obj/item/device/m56d_post/attack_self(mob/user) //click the tripod to unfold it.
-	if(!ishuman(usr)) return
+	if(!ishuman(usr))
+		return
+	if(interior_manager && user.z == interior_manager.interior_z)
+		to_chat(usr, SPAN_WARNING("It's too cramped in here to deploy \a [src]."))
+		return
 	to_chat(user, SPAN_NOTICE("You deploy [src]."))
 	new /obj/structure/machinery/m56d_post(user.loc)
 	qdel(src)

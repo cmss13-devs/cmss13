@@ -118,6 +118,10 @@
 
 	if(!A)
 		return
+
+	if(istype(A, /obj/structure/barricade))
+		return FALSE
+
 	// Ensure we have an accurate count before trying to enter
 	update_passenger_count()
 

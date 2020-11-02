@@ -958,7 +958,7 @@ var/datum/controller/supply/supply_controller = new()
 		return
 	var/datum/game_mode/GM = ticker.mode
 
-	if(GM.marine_starting_num < 90)
+	if(GM.marine_starting_num < TANK_POPLOCK)
 		tank_unlocked = FALSE
 
 /obj/structure/machinery/computer/supplycomp/vehicle/attack_hand(var/mob/living/carbon/human/H as mob)

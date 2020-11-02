@@ -41,7 +41,7 @@
 			turret.add_hardpoint(new /obj/item/hardpoint/primary/autocannon)
 			turret.add_hardpoint(new /obj/item/hardpoint/secondary/m56cupola)
 		if("c", "d", "k", "l")
-			tank.add_hardpoint(new /obj/item/hardpoint/support/smoke_launcher)
+			tank.add_hardpoint(new /obj/item/hardpoint/support/overdrive_enhancer)
 			turret.add_hardpoint(new /obj/item/hardpoint/primary/flamer)
 			turret.add_hardpoint(new /obj/item/hardpoint/secondary/small_flamer)
 		if("e", "f", "m", "n")

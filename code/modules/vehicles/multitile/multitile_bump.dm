@@ -51,6 +51,12 @@
 				if (3)
 					damage_percentage = VEHICLE_TRAMPLE_DAMAGE_TIER_3 // 13.5%
 
+			//This is a temporary solution for trampling nerf for APC,
+			//trampling refactor coming soon where this will be done properly
+			//APC deals 0.5 of damage
+			if(istype(src, /obj/vehicle/multitile/apc))
+				damage_percentage *= VEHICLE_TRAMPLE_DAMAGE_APC_REDUCTION
+
 			damage_percentage -= round((X.armor_deflection*(X.armor_integrity/100)) / VEHICLE_TRAMPLE_DAMAGE_REDUCTION_ARMOR_MULT) // Ravager reduces percentage by ~50% by virtue of having very high armor.
 
 			if(locate(/obj/item/hardpoint/support/overdrive_enhancer) in src)

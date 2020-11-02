@@ -31,7 +31,10 @@
 		return
 
 	V.active_hp[seat] = HP
-	to_chat(M, SPAN_NOTICE("You select \the [HP]."))
+	var/msg = "You select \the [HP]."
+	if(HP.ammo)
+		msg += " Ammo: <b>[SPAN_HELPFUL(HP.ammo.current_rounds)]/[SPAN_HELPFUL(HP.ammo.max_rounds)]</b> | Mags: <b>[SPAN_HELPFUL(LAZYLEN(HP.backup_clips))]/[SPAN_HELPFUL(HP.max_clips)]</b>"
+	to_chat(M, SPAN_WARNING(msg))
 
 //cycles through hardpoints in a activatable hardpoints list without asking anything
 /obj/vehicle/multitile/proc/cycle_hardpoint()
@@ -64,7 +67,10 @@
 		return
 
 	V.active_hp[seat] = HP
-	to_chat(M, SPAN_NOTICE("You select \the [HP]."))
+	var/msg = "You select \the [HP]."
+	if(HP.ammo)
+		msg += " Ammo: <b>[SPAN_HELPFUL(HP.ammo.current_rounds)]/[SPAN_HELPFUL(HP.ammo.max_rounds)]</b> | Mags: <b>[SPAN_HELPFUL(LAZYLEN(HP.backup_clips))]/[SPAN_HELPFUL(HP.max_clips)]</b>"
+	to_chat(M, SPAN_WARNING(msg))
 
 // Used to lock/unlock the vehicle doors to anyone without proper access
 /obj/vehicle/multitile/proc/toggle_door_lock()
@@ -144,7 +150,17 @@
 	V.interior.update_passenger_count()
 	dat += "Passenger capacity: [V.interior.humans_inside]/[V.interior.human_capacity].<br>"
 
-	for(var/obj/item/hardpoint/H in V.hardpoints)
+	if(V.health <= 0)
+		dat += "Hull integrity: <font color=\"red\">\[CRITICAL FAILURE\]</font>"
+	else
+		dat += "Hull integrity: [round(100.0 * V.health / initial(V.health))]%"
+
+	var/list/hps = V.hardpoints.Copy()
+
+	for(var/obj/item/hardpoint/holder/H in hps)
+		dat += H.get_hardpoint_info()
+		LAZYREMOVE(hps, H)
+	for(var/obj/item/hardpoint/H in hps)
 		dat += H.get_hardpoint_info()
 
 	show_browser(user, dat, "Vehicle Status Info", "vehicle_info")
@@ -173,14 +189,14 @@
 	if(!seat)
 		return
 
-	var/dat = "<b><i>Common verbs:</i></b><br>1. <b>\"G: Name Vehicle\"</b> - used to add a custom name to the vehicle. Single use. 26 characters maximum.<br> \
-	 2. <b>\"I: Get Status Info\"</b> - brings up \"Vehicle Status Info\" window with all available information about your vehicle.<br> \
+	var/dat = "<b><i>Common verbs:</i></b><br>1. <b>\"A: Change Active Hardpoint\"</b> - brings up a list of all not destroyed activatable hardpoints you have access to and allows you to switch your current active hardpoint to one from the list. To activate currently selected hardpoint, click on your target. <font color='#cd6500'><b>MAKE SURE NOT TO HIT MARINES.</b></font><br>\
+	 2. <b>\"G: Name Vehicle\"</b> - used to add a custom name to the vehicle. Single use. 26 characters maximum.<br> \
+	 3. <b>\"I: Get Status Info\"</b> - brings up \"Vehicle Status Info\" window with all available information about your vehicle.<br> \
 	<font color='#cd6500'><b><i>Driver verbs:</i></b></font><br> 1. <b>\"G: Activate Horn\"</b> - activates vehicle horn. Keep in mind, that vehicle horn is very loud and can be heard from afar by both allies and foes.<br> \
 	 2. <b>\"G: Toggle Door Locks\"</b> - toggles vehicle's access restrictions. Crewman, Brig and Command accesses bypass these restrictions.<br> \
-	<font color=\"red\"><b><i>Gunner verbs:</i></b></font><br> 1. <b>\"A: Change Active Hardpoint\"</b> - brings up a list of all not destroyed activatable hardpoints you have access to and allows you to switch your current active hardpoint to one from the list. To activate currently selected hardpoint, click on your target. <b>MAKE SURE NOT TO HIT MARINES</b>.<br>\
-	 2. <b>\"A: Cycle Active Hardpoint\"</b> - works similarly to one above, except it automatically switches to next hardpoint in a list allowing you to switch faster.<br> \
-	 3. <b>\"G: Toggle Middle/Shift Clicking\"</b> - toggles between using <i>Middle Mouse Button</i> click and <i>Shift + Click</i> to fire not currently selected weapon if possible.<br> \
-	 4. <b>\"G: Toggle Turret Gyrostabilizer\"</b> - toggles Turret Gyrostabilizer allowing it to keep current direction ignoring hull turning. <i>(Exists only on vehicles with rotating turret, e.g. M34A2 Longstreet Light Tank)</i><br> \
+	<font color=\"red\"><b><i>Gunner verbs:</i></b></font><br> 1. <b>\"A: Cycle Active Hardpoint\"</b> - works similarly to one above, except it automatically switches to next hardpoint in a list allowing you to switch faster.<br> \
+	 2. <b>\"G: Toggle Middle/Shift Clicking\"</b> - toggles between using <i>Middle Mouse Button</i> click and <i>Shift + Click</i> to fire not currently selected weapon if possible.<br> \
+	 3. <b>\"G: Toggle Turret Gyrostabilizer\"</b> - toggles Turret Gyrostabilizer allowing it to keep current direction ignoring hull turning. <i>(Exists only on vehicles with rotating turret, e.g. M34A2 Longstreet Light Tank)</i><br> \
 	<font color='#cd6500'><b><i>Driver shortcuts:</i></b></font><br> 1. <b>\"CTRL + Click\"</b> - activates vehicle horn.<br> \
 	<font color=\"red\"><b><i>Gunner shortcuts:</i></b></font><br> 1. <b>\"ALT + Click\"</b> - toggles Turret Gyrostabilizer. <i>(Exists only on vehicles with rotating turret, e.g. M34A2 Longstreet Light Tank)</i><br> \
 	 2. <b>\"CTRL + Click\"</b> - activates not destroyed activatable support module.<br> \
@@ -196,6 +212,22 @@
 	set name = "G: Toggle Turret Gyrostabilizer"
 	set desc = "Toggles Turret Gyrostabilizer allowing it independant movement regardless of hull direction."
 	set category = "Vehicle"
+
+	var/mob/M = usr
+	if(!M || !istype(M))
+		return
+
+	var/obj/vehicle/multitile/V = M.interactee
+	if(!istype(V))
+		return
+
+	var/obj/item/hardpoint/holder/tank_turret/T = null
+	for(var/obj/item/hardpoint/holder/tank_turret/TT in V.hardpoints)
+		T = TT
+		break
+	if(!T)
+		return
+	T.toggle_gyro(usr)
 
 //single use verb that allows VCs to add a nickname in "" at the end of their vehicle name
 /obj/vehicle/multitile/proc/name_vehicle()

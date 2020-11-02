@@ -5,10 +5,10 @@
 	icon_state = "ace_autocannon"
 	disp_icon = "tank"
 	disp_icon_state = "ace_autocannon"
-	activation_sounds = list('sound/weapons/tank_autocannon_fire.ogg')
+	activation_sounds = list('sound/weapons/vehicles/autocannon_fire.ogg')
 
 	health = 500
-	cooldown = 10
+	cooldown = 7
 	accuracy = 0.98
 	firing_arc = 60
 

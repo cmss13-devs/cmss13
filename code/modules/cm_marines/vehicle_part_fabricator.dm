@@ -184,7 +184,7 @@
 	for(var/build_type in typesof(/obj/item/ammo_magazine/hardpoint))
 		var/obj/item/ammo_magazine/hardpoint/TA = build_type
 		var/build_name = initial(TA.name)
-		var/build_cost = initial(TA.point_cost)
+		var/build_cost = 0
 		if(build_cost)
 			dat += "<a href='byond://?src=\ref[src];produce=[build_type];cost=[build_cost]'>[build_name] ([build_cost])</a><br>"
 	show_browser(user, dat, "Vehicle Part Fabricator", "tank_part_fab")

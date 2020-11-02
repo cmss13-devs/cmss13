@@ -62,7 +62,7 @@
 				list("[selected_vehicle] STARTING KIT SELECTION:", 0, null, null, null),
 
 				list("INTEGRAL PARTS", 0, null, null, null),
-				list("M34A2-A Multipurpose Turret", 0, /obj/item/hardpoint/holder/tank_turret, VEHICLE_INTEGRAL_AVAILABLE, VENDOR_ITEM_MANDATORY),
+				list("M34A2-A Multipurpose Turret", 0, /obj/effect/essentials_set/tank/turret, VEHICLE_INTEGRAL_AVAILABLE, VENDOR_ITEM_MANDATORY),
 
 				list("PRIMARY WEAPON", 0, null, null, null),
 				list("AC3-E Autocannon", 0, /obj/effect/essentials_set/tank/autocannon, VEHICLE_PRIMARY_AVAILABLE, VENDOR_ITEM_RECOMMENDED),
@@ -70,15 +70,14 @@
 				list("LTAA-AP Minigun", 0, /obj/effect/essentials_set/tank/gatling, VEHICLE_PRIMARY_AVAILABLE, VENDOR_ITEM_REGULAR),
 
 				list("SECONDARY WEAPON", 0, null, null, null),
-				list("Grenade Launcher", 0, /obj/effect/essentials_set/tank/tankgl, VEHICLE_SECONDARY_AVAILABLE, VENDOR_ITEM_REGULAR),
-				list("M56 Cupola", 0, /obj/effect/essentials_set/tank/tank56, VEHICLE_SECONDARY_AVAILABLE, VENDOR_ITEM_REGULAR),
-				list("Secondary Flamer Unit", 0, /obj/effect/essentials_set/tank/tankflamer, VEHICLE_SECONDARY_AVAILABLE, VENDOR_ITEM_RECOMMENDED),
+				list("M92T Grenade Launcher", 0, /obj/effect/essentials_set/tank/tankgl, VEHICLE_SECONDARY_AVAILABLE, VENDOR_ITEM_REGULAR),
+				list("M56 Cupola", 0, /obj/effect/essentials_set/tank/m56cupola, VEHICLE_SECONDARY_AVAILABLE, VENDOR_ITEM_REGULAR),
+				list("LZR-N Flamer Unit", 0, /obj/effect/essentials_set/tank/tankflamer, VEHICLE_SECONDARY_AVAILABLE, VENDOR_ITEM_RECOMMENDED),
 
 				list("SUPPORT MODULE", 0, null, null, null),
 				list("Artillery Module", 0, /obj/item/hardpoint/support/artillery_module, VEHICLE_SUPPORT_AVAILABLE, VENDOR_ITEM_REGULAR),
 				list("Integrated Weapons Sensor Array", 0, /obj/item/hardpoint/support/weapons_sensor, VEHICLE_SUPPORT_AVAILABLE, VENDOR_ITEM_REGULAR),
 				list("Overdrive Enhancer", 0, /obj/item/hardpoint/support/overdrive_enhancer, VEHICLE_SUPPORT_AVAILABLE, VENDOR_ITEM_RECOMMENDED),
-				list("Smoke Launcher", 0, /obj/effect/essentials_set/tank/tanksl, VEHICLE_SUPPORT_AVAILABLE, VENDOR_ITEM_REGULAR),
 
 				list("ARMOR", 0, null, null, null),
 				list("Ballistic Armor", 0, /obj/item/hardpoint/armor/ballistic, VEHICLE_ARMOR_AVAILABLE, VENDOR_ITEM_RECOMMENDED),
@@ -98,6 +97,9 @@
 				list("INTEGRAL PARTS", 0, null, null, null),
 				list("M34A2-A Multipurpose Turret", 500, /obj/item/hardpoint/holder/tank_turret, null, VENDOR_ITEM_REGULAR),
 
+				list("SUPPORT AMMUNITION", 0, null, null, null),
+				list("Turret Smoke Screen Magazine", 50, /obj/item/ammo_magazine/hardpoint/turret_smoke, null, VENDOR_ITEM_REGULAR),
+
 				list("PRIMARY WEAPON", 0, null, null, null),
 				list("AC3-E Autocannon", 200, /obj/item/hardpoint/primary/autocannon, null, VENDOR_ITEM_REGULAR),
 				list("DRG-N Offensive Flamer Unit", 200, /obj/item/hardpoint/primary/flamer, null, VENDOR_ITEM_REGULAR),
@@ -106,30 +108,26 @@
 
 				list("PRIMARY AMMUNITION", 0, null, null, null),
 				list("AC3-E Autocannon Magazine", 100, /obj/item/ammo_magazine/hardpoint/ace_autocannon, null, VENDOR_ITEM_REGULAR),
-				list("DRG-N Flamer Magazine", 100, /obj/item/ammo_magazine/hardpoint/primary_flamer, null, VENDOR_ITEM_REGULAR),
+				list("DRG-N Offensive Flamer Unit Fuel Tank", 100, /obj/item/ammo_magazine/hardpoint/primary_flamer, null, VENDOR_ITEM_REGULAR),
 				list("LTAA-AP Minigun Magazine", 100, /obj/item/ammo_magazine/hardpoint/ltaaap_minigun, null, VENDOR_ITEM_REGULAR),
 				list("LTB Cannon Magazine", 100, /obj/item/ammo_magazine/hardpoint/ltb_cannon, null, VENDOR_ITEM_REGULAR),
 
 				list("SECONDARY WEAPON", 0, null, null, null),
-				list("Grenade Launcher", 200, /obj/item/hardpoint/secondary/grenade_launcher, null, VENDOR_ITEM_REGULAR),
+				list("M92T Grenade Launcher", 200, /obj/item/hardpoint/secondary/grenade_launcher, null, VENDOR_ITEM_REGULAR),
 				list("M56 Cupola", 200, /obj/item/hardpoint/secondary/m56cupola, null, VENDOR_ITEM_REGULAR),
-				list("Secondary Flamer Unit", 200, /obj/item/hardpoint/secondary/small_flamer, null, VENDOR_ITEM_REGULAR),
+				list("LZR-N Flamer Unit", 200, /obj/item/hardpoint/secondary/small_flamer, null, VENDOR_ITEM_REGULAR),
 				list("TOW Launcher", 300, /obj/item/hardpoint/secondary/towlauncher, null, VENDOR_ITEM_REGULAR),
 
 				list("SECONDARY AMMUNITION", 0, null, null, null),
-				list("Grenade Launcher Magazine", 50, /obj/item/ammo_magazine/hardpoint/tank_glauncher, null, VENDOR_ITEM_REGULAR),
+				list("M92T Grenade Launcher Magazine", 50, /obj/item/ammo_magazine/hardpoint/tank_glauncher, null, VENDOR_ITEM_REGULAR),
 				list("M56 Cupola Magazine", 50, /obj/item/ammo_magazine/hardpoint/m56_cupola, null, VENDOR_ITEM_REGULAR),
-				list("Secondary Flamer Magazine", 50, /obj/item/ammo_magazine/hardpoint/secondary_flamer, null, VENDOR_ITEM_REGULAR),
+				list("LZR-N Flamer Unit Fuel Tank", 50, /obj/item/ammo_magazine/hardpoint/secondary_flamer, null, VENDOR_ITEM_REGULAR),
 				list("TOW Launcher Magazine", 50, /obj/item/ammo_magazine/hardpoint/towlauncher, null, VENDOR_ITEM_REGULAR),
 
 				list("SUPPORT MODULE", 0, null, null, null),
 				list("Artillery Module", 300, /obj/item/hardpoint/support/artillery_module, null, VENDOR_ITEM_REGULAR),
 				list("Integrated Weapons Sensor Array", 200, /obj/item/hardpoint/support/weapons_sensor, null, VENDOR_ITEM_REGULAR),
 				list("Overdrive Enhancer", 200, /obj/item/hardpoint/support/overdrive_enhancer, null, VENDOR_ITEM_REGULAR),
-				list("Smoke Launcher", 100, /obj/item/hardpoint/support/smoke_launcher, null, VENDOR_ITEM_REGULAR),
-
-				list("SUPPORT AMMUNITION", 0, null, null, null),
-				list("Smoke Launcher Magazine", 50, /obj/item/ammo_magazine/hardpoint/tank_slauncher, null, VENDOR_ITEM_REGULAR),
 
 				list("ARMOR", 0, null, null, null),
 				list("Ballistic Armor", 300, /obj/item/hardpoint/armor/ballistic, null, VENDOR_ITEM_REGULAR),
@@ -155,7 +153,7 @@
 				list("RE-RE700 Frontal Cannon", 0, /obj/effect/essentials_set/apc/frontalcannon, VEHICLE_SECONDARY_AVAILABLE, VENDOR_ITEM_MANDATORY),
 
 				list("SUPPORT MODULE", 0, null, null, null),
-				list("Flare Launcher", 0, /obj/effect/essentials_set/apc/flarelauncher, VEHICLE_SUPPORT_AVAILABLE, VENDOR_ITEM_MANDATORY),
+				list("M-97F Flare Launcher", 0, /obj/effect/essentials_set/apc/flarelauncher, VEHICLE_SUPPORT_AVAILABLE, VENDOR_ITEM_MANDATORY),
 
 				list("WHEELS", 0, null, null, null),
 				list("APC Wheels", 0, /obj/item/hardpoint/locomotion/apc_wheels, VEHICLE_TREADS_AVAILABLE, VENDOR_ITEM_MANDATORY)
@@ -177,10 +175,10 @@
 				list("RE-RE700 Frontal Cannon Magazine", 150, /obj/item/ammo_magazine/hardpoint/tank_glauncher, null, VENDOR_ITEM_REGULAR),
 
 				list("SUPPORT MODULE", 0, null, null, null),
-				list("Flare Launcher", 300, /obj/item/hardpoint/support/flare_launcher, null, VENDOR_ITEM_REGULAR),
+				list("M-97F Flare Launcher", 300, /obj/item/hardpoint/support/flare_launcher, null, VENDOR_ITEM_REGULAR),
 
 				list("SUPPORT AMMUNITION", 0, null, null, null),
-				list("Flare Launcher Magazine", 50, /obj/item/ammo_magazine/hardpoint/tank_slauncher, null, VENDOR_ITEM_REGULAR),
+				list("M-97F Flare Launcher Magazine", 50, /obj/item/ammo_magazine/hardpoint/flare_launcher, null, VENDOR_ITEM_REGULAR),
 
 				list("WHEELS", 0, null, null, null),
 				list("APC Wheels", 200, /obj/item/hardpoint/locomotion/apc_wheels, null, VENDOR_ITEM_REGULAR)
@@ -476,7 +474,6 @@
 	spawned_gear_list = list(
 		/obj/item/hardpoint/primary/minigun,
 		/obj/item/ammo_magazine/hardpoint/ltaaap_minigun,
-		/obj/item/ammo_magazine/hardpoint/ltaaap_minigun,
 		/obj/item/ammo_magazine/hardpoint/ltaaap_minigun
 	)
 
@@ -485,7 +482,6 @@
 		/obj/item/hardpoint/primary/flamer,
 		/obj/item/ammo_magazine/hardpoint/primary_flamer,
 		/obj/item/ammo_magazine/hardpoint/primary_flamer,
-		/obj/item/ammo_magazine/hardpoint/primary_flamer
 	)
 
 /obj/effect/essentials_set/tank/autocannon
@@ -500,7 +496,6 @@
 /obj/effect/essentials_set/tank/tankflamer
 	spawned_gear_list = list(
 		/obj/item/hardpoint/secondary/small_flamer,
-		/obj/item/ammo_magazine/hardpoint/secondary_flamer,
 		/obj/item/ammo_magazine/hardpoint/secondary_flamer
 	)
 
@@ -511,7 +506,7 @@
 		/obj/item/ammo_magazine/hardpoint/towlauncher
 	)
 
-/obj/effect/essentials_set/tank/tank56
+/obj/effect/essentials_set/tank/m56cupola
 	spawned_gear_list = list(
 		/obj/item/hardpoint/secondary/m56cupola,
 		/obj/item/ammo_magazine/hardpoint/m56_cupola
@@ -523,18 +518,14 @@
 		/obj/item/ammo_magazine/hardpoint/tank_glauncher,
 		/obj/item/ammo_magazine/hardpoint/tank_glauncher,
 		/obj/item/ammo_magazine/hardpoint/tank_glauncher,
-		/obj/item/ammo_magazine/hardpoint/tank_glauncher,
 		/obj/item/ammo_magazine/hardpoint/tank_glauncher
 	)
 
-/obj/effect/essentials_set/tank/tanksl
+/obj/effect/essentials_set/tank/turret
 	spawned_gear_list = list(
-		/obj/item/hardpoint/support/smoke_launcher,
-		/obj/item/ammo_magazine/hardpoint/tank_slauncher,
-		/obj/item/ammo_magazine/hardpoint/tank_slauncher,
-		/obj/item/ammo_magazine/hardpoint/tank_slauncher,
-		/obj/item/ammo_magazine/hardpoint/tank_slauncher,
-		/obj/item/ammo_magazine/hardpoint/tank_slauncher
+		/obj/item/hardpoint/holder/tank_turret,
+		/obj/item/ammo_magazine/hardpoint/turret_smoke,
+		/obj/item/ammo_magazine/hardpoint/turret_smoke
 	)
 
 /obj/effect/essentials_set/apc/dualcannon
@@ -549,15 +540,12 @@
 /obj/effect/essentials_set/apc/frontalcannon
 	spawned_gear_list = list(
 		/obj/item/hardpoint/secondary/frontalcannon,
-		/obj/item/ammo_magazine/hardpoint/m56_cupola/frontal_cannon,
 		/obj/item/ammo_magazine/hardpoint/m56_cupola/frontal_cannon
 	)
 
 /obj/effect/essentials_set/apc/flarelauncher
 	spawned_gear_list = list(
 		/obj/item/hardpoint/support/flare_launcher,
-		/obj/item/ammo_magazine/hardpoint/flare_launcher,
-		/obj/item/ammo_magazine/hardpoint/flare_launcher,
 		/obj/item/ammo_magazine/hardpoint/flare_launcher,
 		/obj/item/ammo_magazine/hardpoint/flare_launcher,
 		/obj/item/ammo_magazine/hardpoint/flare_launcher

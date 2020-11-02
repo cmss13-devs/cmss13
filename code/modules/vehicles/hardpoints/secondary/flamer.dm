@@ -5,12 +5,12 @@
 	icon_state = "flamer"
 	disp_icon = "tank"
 	disp_icon_state = "flamer"
-	activation_sounds = list('sound/weapons/tank_flamethrower.ogg')
+	activation_sounds = list('sound/weapons/vehicles/flamethrower.ogg')
 
 	health = 300
-	cooldown = 40
+	cooldown = 30
 	accuracy = 0.68
-	firing_arc = 90
+	firing_arc = 120
 
 	origins = list(0, -2)
 

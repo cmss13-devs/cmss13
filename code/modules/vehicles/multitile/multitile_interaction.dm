@@ -73,8 +73,18 @@
 /obj/vehicle/multitile/proc/handle_repairs(var/obj/item/O, var/mob/user)
 	var/max_hp = initial(health)
 	if(health == max_hp)
-		to_chat(user, SPAN_NOTICE("The frame is fully intact!"))
-		return
+		to_chat(user, SPAN_NOTICE("The hull is fully intact."))
+		for(var/obj/item/hardpoint/holder/H in hardpoints)
+			if(H.health > 0)
+				if(!iswelder(O))
+					to_chat(user, SPAN_WARNING("You need welding tool to repair \the [H.name]."))
+					return
+				H.handle_repair(O, user)
+				update_icon()
+				return
+			else
+				to_chat(user, SPAN_WARNING("[H] is beyond repairs!"))
+				return
 
 	// For health < 75%, the frame needs welderwork
 	if(health < max_hp * 0.75)
@@ -218,6 +228,16 @@
 			activate_horn()
 			return
 
+		var/obj/item/hardpoint/HP = active_hp[seat]
+		if(!HP)
+			to_chat(user, SPAN_WARNING("Please select an active hardpoint first."))
+			return
+
+		if(!HP.can_activate(user, A))
+			return
+
+		HP.activate(user, A)
+
 	if(seat == VEHICLE_GUNNER)
 		if(mods["shift"] && !mods["middle"])
 			if(vehicle_flags & TOGGLE_SHIFT_CLICK_GUNNER)
@@ -273,14 +293,7 @@
 	if(health <= 0 && isXeno(M))
 		enter_msg = "You start prying away loose plates, squeezing into \the [src]..."
 
-	to_chat(M, SPAN_NOTICE(enter_msg))
-	if(!do_after(M, SECONDS_2, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
-		return
-
-	if(mob_x != M.x - src.x || mob_y != M.y - src.y)
-		return
-
-	// Dragged stuff comes with
+	// Check if drag anything
 	var/atom/dragged_atom
 	if(istype(M.get_inactive_hand(), /obj/item/grab))
 		var/obj/item/grab/G = M.get_inactive_hand()
@@ -288,6 +301,29 @@
 	else if(istype(M.get_active_hand(), /obj/item/grab))
 		var/obj/item/grab/G = M.get_active_hand()
 		dragged_atom = G.grabbed_thing
+
+	var/enter_time = SECONDS_1
+	to_chat(M, SPAN_NOTICE("1 second"))
+	if(dragged_atom)
+		enter_time = SECONDS_2
+		to_chat(M, SPAN_NOTICE("switched to 2 seconds"))
+
+	to_chat(M, SPAN_NOTICE(enter_msg))
+	if(!do_after(M, enter_time, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
+		return
+
+	if(mob_x != M.x - src.x || mob_y != M.y - src.y)
+		return
+
+	//Dragged stuff comes with us only if properly waited 2 seconds. No cheating!
+	if(dragged_atom)
+		dragged_atom = null
+		if(istype(M.get_inactive_hand(), /obj/item/grab))
+			var/obj/item/grab/G = M.get_inactive_hand()
+			dragged_atom = G.grabbed_thing
+		else if(istype(M.get_active_hand(), /obj/item/grab))
+			var/obj/item/grab/G = M.get_active_hand()
+			dragged_atom = G.grabbed_thing
 
 	// Transfer them to the interior
 	interior.enter(M, entrance_used)
@@ -319,8 +355,8 @@
 	next_move = world.time + move_delay
 	for(var/obj/item/vehicle_clamp/TC in src)
 		if(user)
-			TC.Move(get_turf(user))
+			TC.forceMove(get_turf(user))
 			message_admins("[key_name(user)] ([user.job]) detached vehicle clamp from [src]")
 		else
-			TC.Move(get_turf(src))
+			TC.forceMove(get_turf(src))
 	update_icon()

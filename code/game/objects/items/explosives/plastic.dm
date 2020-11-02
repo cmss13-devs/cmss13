@@ -154,6 +154,15 @@
 	if(istype(target, /obj/structure/ladder) || istype(target, /obj/item) || istype(target, /turf/open) || istype(target, /obj/structure/barricade) || istype(target, /obj/structure/closet/crate))
 		return FALSE
 
+	//vehicle interior stuff checks
+	if(istype(target, /obj/vehicle/multitile))
+		return FALSE
+
+	//vehicle interior stuff checks
+	if(interior_manager && target.z == interior_manager.interior_z)
+		if(istype(target, /obj/structure/interior_exit) || istype(target, /obj/structure/bed/chair/comfy/vehicle) || istype(target, /obj/structure/interior_viewport) || istype(target, /obj/structure/weapons_loader) || istype(target, /obj/structure/bed/chair/dropship/passenger/shuttle_chair))
+			return FALSE
+
 	if(istype(target, /obj/effect) || istype(target, /obj/structure/machinery))
 		var/obj/O = target
 		if(O.unacidable)

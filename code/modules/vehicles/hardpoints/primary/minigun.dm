@@ -7,15 +7,14 @@
 	disp_icon_state = "ltaaap_minigun"
 
 	health = 350
-	// Doesn't really matter, the minigun has fully custom firing (and therefore cooldown) logic
-	cooldown = 2
-	accuracy = 0.33
-	firing_arc = 60
+	cooldown = 8
+	accuracy = 0.6
+	firing_arc = 90
 
 	origins = list(0, -3)
 
 	ammo = new /obj/item/ammo_magazine/hardpoint/ltaaap_minigun
-	max_clips = 2
+	max_clips = 1
 
 	px_offsets = list(
 		"1" = list(0, 21),
@@ -31,51 +30,46 @@
 		"8" = list(-77, 0)
 	)
 
-	//Miniguns don't use a conventional cooldown
-	//If you fire quickly enough, the cooldown decreases according to chain_delays
-	//If you fire too slowly, you slowly slow back down
-	//Also, different sounds play and it sounds sick, thanks Rahlzel
-	var/chained = 0 //how many quick succession shots we've fired
-	var/list/chain_delays = list(4, 4, 3, 3, 2, 2, 2, 1, 1) //the different cooldowns in deciseconds, sequentially
+	//changed minigun mechanic so instead of having lowered cooldown with each shot it now has increased burst size.
+	//While it's still spammy, user doesn't have to click as fast as possible anymore and has margin of 2 seconds before minigun will start slowing down
 
-	//MAIN PROBLEM WITH THIS IMPLEMENTATION OF DELAYS:
-	//If you spin all the way up and then stop firing, your chained shots will only decrease by 1
-	//TODO: Implement a rolling average for seconds per shot that determines chain length without being slow or buggy
-	//You'd probably have to normalize it between the length of the list and the actual ROF
-	//But you don't want to map it below a certain point probably since seconds per shot would go to infinity
+	var/chained_shots = 1		//how many quick succession shots we've fired, 1 by default
+	var/last_shot_time = 0		//when was last shot fired, after 3 seconds we stop barrel
+	var/list/chain_bursts = list(1, 1, 2, 2, 3, 3, 3, 4, 4, 4)	//how many shots per click we do
 
-	//So, I came back to this and changed it by adding a fixed reset at 1.5 seconds or later, which seems reasonable
-	//Now the cutoff is a little abrupt, but at least it exists. --MadSnailDisease
 
 /obj/item/hardpoint/primary/minigun/fire(var/mob/user, var/atom/A)
-	if(ammo.current_rounds <= 0)
-		to_chat(usr, SPAN_WARNING("[name] does not have any ammo."))
-		return
 
-	var/S = 'sound/weapons/tank_minigun_start.ogg'
-	if(world.time - next_use <= 5)
-		chained++ //minigun spins up, minigun spins down
-		S = 'sound/weapons/tank_minigun_loop.ogg'
-	else if(world.time - next_use >= 15) //Too long of a delay, they restart the chain
-		chained = 1
-	else //In between 5 and 15 it slows down but doesn't stop
-		chained--
-		S = 'sound/weapons/tank_minigun_stop.ogg'
-	if(chained <= 0) chained = 1
+	var/S = 'sound/weapons/vehicles/minigun_stop.ogg'
+	//check how much time since last shot. 2 seconds are grace period before minigun starts to lose rotation momentum
+	var/t = world.time - last_shot_time - SECONDS_2
+	t = round(t / 10)
+	if(t > 0)
+		chained_shots = max(chained_shots - t * 3, 1)	//we lose 3 chained_shots per second
+	else
+		if(chained_shots < 11)
+			chained_shots++
+		S = 'sound/weapons/vehicles/minigun_loop.ogg'
 
-	next_use = world.time + (chained > chain_delays.len ? 0.5 : chain_delays[chained])
-	if(!prob((accuracy * 100) / owner.misc_multipliers["accuracy"]))
-		A = get_step(get_turf(A), pick(cardinal))
+	if(chained_shots == 1)
+		playsound(get_turf(src), 'sound/weapons/vehicles/minigun_start.ogg', 40, 1)
 
-	var/turf/origin_turf = get_turf(src)
-	origin_turf = locate(origin_turf.x + origins[1], origin_turf.y + origins[2], origin_turf.z)
+	next_use = world.time + cooldown * owner.misc_multipliers["cooldown"]
 
-	var/obj/item/projectile/P = new(initial(name), user)
-	P.loc = origin_turf
+	//how many rounds we will shoot in this burst
+	if(chained_shots > LAZYLEN(chain_bursts))	//5 shots at maximum rotation
+		t = 5
+	else
+		t = LAZYACCESS(chain_bursts, chained_shots)
+	for(var/i = 1; i <= t; i++)
+		var/atom/T = A
+		if(!prob((accuracy * 100) / owner.misc_multipliers["accuracy"]))
+			T = get_step(get_turf(T), pick(cardinal))
+		fire_projectile(user, T)
+		if(ammo.current_rounds <= 0)
+			break
+		sleep(2)
+	to_chat(user, SPAN_WARNING("[src] Ammo: <b>[SPAN_HELPFUL(ammo ? ammo.current_rounds : 0)]/[SPAN_HELPFUL(ammo ? ammo.max_rounds : 0)]</b> | Mags: <b>[SPAN_HELPFUL(LAZYLEN(backup_clips))]/[SPAN_HELPFUL(max_clips)]</b>"))
 
-	P.generate_bullet(new ammo.default_ammo)
-	P.fire_at(A, owner, src, P.ammo.max_range, P.ammo.shell_speed)
-	muzzle_flash(Get_Angle(owner, A))
-
-	playsound(get_turf(src), S, 60)
-	ammo.current_rounds--
+	playsound(get_turf(src), S, 40, 1)
+	last_shot_time = world.time

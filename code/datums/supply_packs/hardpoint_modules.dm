@@ -3,12 +3,8 @@ Vehicle Modules and Ammo
 *******************************************************************************/
 
 /datum/supply_packs/ammo_ltb_cannon
-	name = "LTB cannon magazines (x10)"
+	name = "LTB cannon magazines (x6)"
 	contains = list(
-					/obj/item/ammo_magazine/hardpoint/ltb_cannon,
-					/obj/item/ammo_magazine/hardpoint/ltb_cannon,
-					/obj/item/ammo_magazine/hardpoint/ltb_cannon,
-					/obj/item/ammo_magazine/hardpoint/ltb_cannon,
 					/obj/item/ammo_magazine/hardpoint/ltb_cannon,
 					/obj/item/ammo_magazine/hardpoint/ltb_cannon,
 					/obj/item/ammo_magazine/hardpoint/ltb_cannon,
@@ -32,9 +28,8 @@ Vehicle Modules and Ammo
 	group = "Vehicle Modules and Ammo"
 
 /datum/supply_packs/ammo_ace_autocannon
-	name = "AC3-E autocannon magazines (x6)"
+	name = "AC3-E autocannon magazines (x5)"
 	contains = list(
-					/obj/item/ammo_magazine/hardpoint/ace_autocannon,
 					/obj/item/ammo_magazine/hardpoint/ace_autocannon,
 					/obj/item/ammo_magazine/hardpoint/ace_autocannon,
 					/obj/item/ammo_magazine/hardpoint/ace_autocannon,
@@ -46,9 +41,8 @@ Vehicle Modules and Ammo
 	group = "Vehicle Modules and Ammo"
 
 /datum/supply_packs/ammo_drgn_flamer
-	name = "Primary flamethrower fuel tanks (x4)"
+	name = "DRG-N offensive flamer unit fuel tanks (x3)"
 	contains = list(
-					/obj/item/ammo_magazine/hardpoint/primary_flamer,
 					/obj/item/ammo_magazine/hardpoint/primary_flamer,
 					/obj/item/ammo_magazine/hardpoint/primary_flamer,
 					/obj/item/ammo_magazine/hardpoint/primary_flamer)
@@ -58,9 +52,8 @@ Vehicle Modules and Ammo
 	group = "Vehicle Modules and Ammo"
 
 /datum/supply_packs/ammo_dualcannon
-	name = "Boyars dualcannon magazines (x6)"
+	name = "PARS-159 Boyars dualcannon magazines (x5)"
 	contains = list(
-					/obj/item/ammo_magazine/hardpoint/boyars_dualcannon,
 					/obj/item/ammo_magazine/hardpoint/boyars_dualcannon,
 					/obj/item/ammo_magazine/hardpoint/boyars_dualcannon,
 					/obj/item/ammo_magazine/hardpoint/boyars_dualcannon,
@@ -72,45 +65,32 @@ Vehicle Modules and Ammo
 	group = "Vehicle Modules and Ammo"
 
 /datum/supply_packs/ammo_glauncher
-	name = "Grenade launcher magazines (x10)"
+	name = "M92T grenade launcher magazines (x5)"
 	contains = list(
-					/obj/item/ammo_magazine/hardpoint/tank_glauncher,
-					/obj/item/ammo_magazine/hardpoint/tank_glauncher,
-					/obj/item/ammo_magazine/hardpoint/tank_glauncher,
-					/obj/item/ammo_magazine/hardpoint/tank_glauncher,
-					/obj/item/ammo_magazine/hardpoint/tank_glauncher,
 					/obj/item/ammo_magazine/hardpoint/tank_glauncher,
 					/obj/item/ammo_magazine/hardpoint/tank_glauncher,
 					/obj/item/ammo_magazine/hardpoint/tank_glauncher,
 					/obj/item/ammo_magazine/hardpoint/tank_glauncher,
 					/obj/item/ammo_magazine/hardpoint/tank_glauncher)
-	cost = RO_PRICE_CHEAP
+	cost = RO_PRICE_VERY_CHEAP
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "grenade launcher ammo crate"
 	group = "Vehicle Modules and Ammo"
 
 /datum/supply_packs/ammo_slauncher
-	name = "Smoke launcher magazines (x10)"
+	name = "Tank turret smoke screen magazines (x4)"
 	contains = list(
-					/obj/item/ammo_magazine/hardpoint/tank_slauncher,
-					/obj/item/ammo_magazine/hardpoint/tank_slauncher,
-					/obj/item/ammo_magazine/hardpoint/tank_slauncher,
-					/obj/item/ammo_magazine/hardpoint/tank_slauncher,
-					/obj/item/ammo_magazine/hardpoint/tank_slauncher,
-					/obj/item/ammo_magazine/hardpoint/tank_slauncher,
-					/obj/item/ammo_magazine/hardpoint/tank_slauncher,
-					/obj/item/ammo_magazine/hardpoint/tank_slauncher,
-					/obj/item/ammo_magazine/hardpoint/tank_slauncher,
-					/obj/item/ammo_magazine/hardpoint/tank_slauncher)
-	cost = RO_PRICE_CHEAP
+					/obj/item/ammo_magazine/hardpoint/turret_smoke,
+					/obj/item/ammo_magazine/hardpoint/turret_smoke,
+					/obj/item/ammo_magazine/hardpoint/turret_smoke)
+	cost = RO_PRICE_VERY_CHEAP
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "smoke launcher ammo crate"
 	group = "Vehicle Modules and Ammo"
 
 /datum/supply_packs/ammo_towlauncher
-	name = "TOW launcher magazines (x4)"
+	name = "TOW launcher magazines (x3)"
 	contains = list(
-					/obj/item/ammo_magazine/hardpoint/towlauncher,
 					/obj/item/ammo_magazine/hardpoint/towlauncher,
 					/obj/item/ammo_magazine/hardpoint/towlauncher,
 					/obj/item/ammo_magazine/hardpoint/towlauncher)
@@ -120,47 +100,43 @@ Vehicle Modules and Ammo
 	group = "Vehicle Modules and Ammo"
 
 /datum/supply_packs/ammo_m56_cupola
-	name = "M56 cupola magazines (x3)"
+	name = "M56 Cupola magazines (x2)"
 	contains = list(
 					/obj/item/ammo_magazine/hardpoint/m56_cupola,
-					/obj/item/ammo_magazine/hardpoint/m56_cupola,
 					/obj/item/ammo_magazine/hardpoint/m56_cupola)
-	cost = RO_PRICE_CHEAP
+	cost = RO_PRICE_VERY_CHEAP
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "M56 Cupola ammo crate"
 	group = "Vehicle Modules and Ammo"
 
 /datum/supply_packs/tank_flamer_ammo
-	name = "Secondary Flamer Magazines (x2)"
+	name = "LZR-N flamer unit fuel tanks (x2)"
 	contains = list(
 					/obj/item/ammo_magazine/hardpoint/secondary_flamer,
 					/obj/item/ammo_magazine/hardpoint/secondary_flamer)
-	cost = RO_PRICE_CHEAP
+	cost = RO_PRICE_VERY_CHEAP
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "secondary flamer fuel tanks crate"
 	group = "Vehicle Modules and Ammo"
 
 /datum/supply_packs/ammo_frontalcannon
-	name = "Bleihagel RE-RE700 Frontal Cannon magazines (x3)"
+	name = "Bleihagel RE-RE700 frontal cannon magazines (x2)"
 	contains = list(
 					/obj/item/ammo_magazine/hardpoint/m56_cupola/frontal_cannon,
-					/obj/item/ammo_magazine/hardpoint/m56_cupola/frontal_cannon,
 					/obj/item/ammo_magazine/hardpoint/m56_cupola/frontal_cannon)
-	cost = RO_PRICE_CHEAP
+	cost = RO_PRICE_VERY_CHEAP
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "frontal cannon ammo crate"
 	group = "Vehicle Modules and Ammo"
 
 /datum/supply_packs/ammo_flarelauncher
-	name = "Flare launcher magazines (x10)"
+	name = "M-87F flare launcher magazines (x4)"
 	contains = list(
 					/obj/item/ammo_magazine/hardpoint/flare_launcher,
 					/obj/item/ammo_magazine/hardpoint/flare_launcher,
 					/obj/item/ammo_magazine/hardpoint/flare_launcher,
-					/obj/item/ammo_magazine/hardpoint/flare_launcher,
-					/obj/item/ammo_magazine/hardpoint/flare_launcher,
 					/obj/item/ammo_magazine/hardpoint/flare_launcher)
-	cost = RO_PRICE_CHEAP
+	cost = RO_PRICE_VERY_CHEAP
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "flare launcher ammo crate"
 	group = "Vehicle Modules and Ammo"

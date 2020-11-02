@@ -5,7 +5,7 @@
 	icon_state = "ltb_cannon"
 	disp_icon = "tank"
 	disp_icon_state = "ltb_cannon"
-	activation_sounds = list('sound/weapons/tank_cannon_fire1.ogg', 'sound/weapons/tank_cannon_fire2.ogg')
+	activation_sounds = list('sound/weapons/vehicles/cannon_fire1.ogg', 'sound/weapons/vehicles/cannon_fire2.ogg')
 
 	health = 500
 	cooldown = 200

@@ -1,20 +1,30 @@
 /obj/item/hardpoint/holder/tank_turret
 	name = "M34A2-A Multipurpose Turret"
-	desc = "The centerpiece of the tank. Everything else is just there to carry this turret around. It has been carefully designed to allow for easy fitting of various selections of large, powerful weapons."
+	desc = "The centerpiece of the tank. Designed to support quick installation and deinstallation of various tank weapon modules. Has inbuilt smoke screen deployment system."
 
 	icon = 'icons/obj/vehicles/tank.dmi'
 	icon_state = "tank_turret_0"
 	disp_icon = "tank"
 	disp_icon_state = "tank_turret"
+	activation_sounds = list('sound/weapons/vehicles/smokelauncher_fire.ogg')
 	pixel_x = -48
 	pixel_y = -48
 
 	density = TRUE	//come on, it's huge
 
+	activatable = TRUE
+	cooldown = 150
+	accuracy = 0.8
+
+	ammo = new /obj/item/ammo_magazine/hardpoint/turret_smoke
+	max_clips = 2
+	use_muzzle_flash = FALSE
 
 	w_class = SIZE_MASSIVE
 	density = TRUE
 	anchored = TRUE
+
+	allowed_seat = VEHICLE_DRIVER
 
 	slot = HDPT_TURRET
 
@@ -46,7 +56,7 @@
 	var/gyro = FALSE
 
 	// How long the windup is before the turret rotates
-	var/rotation_windup = 20
+	var/rotation_windup = 15
 	// Used during the windup
 	var/rotating = FALSE
 
@@ -93,6 +103,20 @@
 
 	..()
 
+/obj/item/hardpoint/holder/tank_turret/get_hardpoint_info()
+	var/dat = "<hr>"
+	dat += "M34A2-A Turret Smoke Screen<br>"
+	if(health <= 0)
+		dat += "Integrity: <font color=\"red\">\[DESTROYED\]</font>"
+	else
+		dat += "Integrity: [round(get_integrity_percent())]%"
+		if(ammo)
+			dat += " | Uses left: [ammo ? (ammo.current_rounds ? ammo.current_rounds / 2 : "<font color=\"red\">0</font>") : "<font color=\"red\">0</font>"]/[ammo ? ammo.max_rounds / 2 : "<font color=\"red\">0</font>"] | Mags: [LAZYLEN(backup_clips) ? LAZYLEN(backup_clips) : "<font color=\"red\">0</font>"]/[max_clips]"
+
+	for(var/obj/item/hardpoint/H in hardpoints)
+		dat += H.get_hardpoint_info()
+	return dat
+
 //gyro ON locks the turret in one direction, OFF will make turret turning when tank turns
 /obj/item/hardpoint/holder/tank_turret/proc/toggle_gyro(var/mob/user)
 	if(health <= 0)
@@ -101,12 +125,6 @@
 
 	gyro = !gyro
 	to_chat(user, SPAN_NOTICE("You toggle \the [src]'s gyroscopic stabilizer [gyro ? "ON" :"OFF"]."))
-
-/obj/item/hardpoint/holder/tank_turret/activate()
-	gyro = TRUE
-
-/obj/item/hardpoint/holder/tank_turret/deactivate()
-	gyro = FALSE
 
 /obj/item/hardpoint/holder/tank_turret/proc/user_rotation(var/mob/user, var/deg)
 	// no rotating a broken turret
@@ -155,3 +173,53 @@
 				if(WEST)
 					user.client.pixel_x = -1 * AM.view_tile_offset * 32
 					user.client.pixel_y = 0
+
+/obj/item/hardpoint/holder/tank_turret/fire(var/mob/user, var/atom/A)
+	if(ammo.current_rounds <= 0)
+		return
+
+	next_use = world.time + cooldown
+
+	var/turf/L
+	var/turf/R
+	switch(owner.dir)
+		if(NORTH)
+			L = locate(owner.x - 2, owner.y + 4, owner.z)
+			R = locate(owner.x + 2, owner.y + 4, owner.z)
+		if(SOUTH)
+			L = locate(owner.x + 2, owner.y - 4, owner.z)
+			R = locate(owner.x - 2, owner.y - 4, owner.z)
+		if(EAST)
+			L = locate(owner.x + 4, owner.y + 2, owner.z)
+			R = locate(owner.x + 4, owner.y - 2, owner.z)
+		else
+			L = locate(owner.x - 4, owner.y + 2, owner.z)
+			R = locate(owner.x - 4, owner.y - 2, owner.z)
+
+	if(LAZYLEN(activation_sounds))
+		playsound(get_turf(src), pick(activation_sounds), 60, 1)
+	fire_projectile(user, L)
+
+	sleep(10)
+
+	if(LAZYLEN(activation_sounds))
+		playsound(get_turf(src), pick(activation_sounds), 60, 1)
+	fire_projectile(user, R)
+
+	to_chat(user, SPAN_WARNING("Smoke Screen uses left: <b>[SPAN_HELPFUL(ammo ? ammo.current_rounds / 2 : 0)]/[SPAN_HELPFUL(ammo ? ammo.max_rounds / 2 : 0)]</b> | Mags: <b>[SPAN_HELPFUL(LAZYLEN(backup_clips))]/[SPAN_HELPFUL(max_clips)]</b>"))
+
+/obj/item/hardpoint/holder/tank_turret/fire_projectile(var/mob/user, var/atom/A)
+	set waitfor = 0
+
+	var/turf/origin_turf = get_turf(src)
+	origin_turf = locate(origin_turf.x + origins[1], origin_turf.y + origins[2], origin_turf.z)
+	origin_turf = get_step(get_step(origin_turf, owner.dir), owner.dir)	//this should get us tile in front of tank to prevent grenade being stuck under us.
+
+	var/obj/item/projectile/P = new(initial(name), user)
+	P.loc = origin_turf
+	P.generate_bullet(new ammo.default_ammo)
+	if(ammo.has_iff && owner.seats[VEHICLE_GUNNER])
+		P.fire_at(A, owner.seats[VEHICLE_GUNNER], src, get_dist(origin_turf, A) + 1, P.ammo.shell_speed, iff_group = owner.seats[VEHICLE_GUNNER].faction_group)
+	else
+		P.fire_at(A, owner.seats[VEHICLE_GUNNER], src, get_dist(origin_turf, A) + 1, P.ammo.shell_speed)
+	ammo.current_rounds--

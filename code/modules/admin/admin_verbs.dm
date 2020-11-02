@@ -32,6 +32,8 @@ var/list/admin_verbs_admin = list(
 	/client/proc/adjust_predator_round,
 	/client/proc/cmd_admin_change_custom_event,
 	/client/proc/cmd_admin_rejuvenate,
+	/client/proc/cmd_admin_remove_clamp,
+	/client/proc/cmd_admin_repair_multitile,
 	/datum/admins/proc/admin_force_distress,
 	/datum/admins/proc/admin_force_ERT_shuttle,
 	/datum/admins/proc/admin_force_selfdestruct,

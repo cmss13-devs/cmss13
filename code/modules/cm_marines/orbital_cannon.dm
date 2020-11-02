@@ -199,7 +199,7 @@ var/list/ob_type_fuel_requirements
 
 	last_orbital_firing = world.time
 
-	playsound(loc, 'sound/weapons/tank_smokelauncher_fire.ogg', 70, 1)
+	playsound(loc, 'sound/weapons/vehicles/smokelauncher_fire.ogg', 70, 1)
 	playsound(loc, 'sound/weapons/pred_plasma_shot.ogg', 70, 1)
 
 	var/inaccurate_fuel = 0

@@ -43,6 +43,16 @@
 		VEHICLE_GUNNER = null
 	)
 
+	dmg_multipliers = list(
+		"all" = 1,
+		"acid" = 1.5,
+		"slash" = 0.7,
+		"bullet" = 0.6,
+		"explosive" = 0.9,
+		"blunt" = 0.9,
+		"abstract" = 1.0
+	)
+
 /obj/vehicle/multitile/apc/add_seated_verbs(var/mob/living/M, var/seat)
 	if(!M.client)
 		return

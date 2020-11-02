@@ -8,7 +8,7 @@
 	default_ammo = /datum/ammo/bullet/smartgun
 	max_rounds = 500
 	gun_type = /obj/item/hardpoint/secondary/m56cupola
-	point_cost = 100
+	has_iff = TRUE
 
 /obj/item/ammo_magazine/hardpoint/m56_cupola/update_icon()
 	icon_state = "cupola_[current_rounds <= 0 ? "0" : "1"]"

@@ -10,9 +10,9 @@
 	layer = 2;
 	pixel_y = 30
 	},
-/obj/structure/closet/vehicle{
-	pixel_y = 25;
-	pixel_x = 4
+/obj/structure/vehicle_locker{
+	pixel_x = 2;
+	pixel_y = 28
 	},
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin15";

@@ -8,10 +8,12 @@
 	disp_icon_state = "frontalcannon"
 	activation_sounds = list('sound/weapons/gun_smartgun1.ogg', 'sound/weapons/gun_smartgun2.ogg', 'sound/weapons/gun_smartgun3.ogg')
 
+	damage_multiplier = 0.11
+
 	health = 350
 	cooldown = 16
-	accuracy = 0.7
-	firing_arc = 90
+	accuracy = 0.8
+	firing_arc = 120
 	var/burst_amount = 4
 
 	origins = list(0, -2)
@@ -38,7 +40,7 @@
 			T = get_step(get_turf(A), pick(cardinal))
 		if(LAZYLEN(activation_sounds))
 			playsound(get_turf(src), pick(activation_sounds), 60, 1)
-		fire_projectile(user, T, TRUE)
+		fire_projectile(user, T)
 		if(ammo.current_rounds <= 0)
 			break
 		if(bullets_fired < burst_amount)	//we need to sleep only if there are more bullets to shoot in the burst

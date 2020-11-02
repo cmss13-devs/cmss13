@@ -4,7 +4,6 @@
 	caliber = "7.62x51mm" //Correlates to miniguns
 	icon_state = "painless"
 	w_class = SIZE_LARGE //Primary weapon ammo should probably all be the same w_class
-	default_ammo = /datum/ammo/bullet/minigun
-	max_rounds = 300
+	default_ammo = /datum/ammo/bullet/minigun/tank
+	max_rounds = 500
 	gun_type = /obj/item/hardpoint/primary/minigun
-	point_cost = 200

@@ -141,6 +141,7 @@
 	name = "Survivor - Synthetic"
 	flags = EQUIPMENT_PRESET_EXTRA
 	faction = FACTION_SURVIVOR
+	faction_group = list(FACTION_MARINE, FACTION_SURVIVOR)
 	idtype = /obj/item/card/id/lanyard
 	assignment = JOB_SURVIVOR
 	rank = JOB_SYNTH_SURVIVOR

@@ -43,7 +43,7 @@
 		if(RESIN_TRAP_GAS)
 			to_chat(user, "It's filled with pressurised gas.")
 		if(RESIN_TRAP_ACID1, RESIN_TRAP_ACID2, RESIN_TRAP_ACID3)
-			to_chat(user, "It's filled with pressurised acid.")		
+			to_chat(user, "It's filled with pressurised acid.")
 
 /obj/effect/alien/resin/trap/proc/facehugger_die()
 	var/obj/item/clothing/mask/facehugger/FH = new (loc)
@@ -71,7 +71,7 @@
 	var/mob/living/carbon/Xenomorph/X = P.firer
 	if(istype(X) && X.hivenumber == hivenumber)
 		return
-	
+
 	. = ..()
 
 /obj/effect/alien/resin/trap/HasProximity(atom/movable/AM)
@@ -225,7 +225,7 @@
 				return
 
 			to_chat(X, SPAN_XENONOTICE("You begin charging the resin hole with acid gas."))
-			if(!do_after(B, 30, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
+			if(!do_after(B, 30, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, src))
 				return
 
 			if(trap_type != RESIN_TRAP_EMPTY)
@@ -259,7 +259,7 @@
 				return
 
 			to_chat(X, SPAN_XENONOTICE("You begin charging the resin hole with acid."))
-			if(!do_after(X, 30, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
+			if(!do_after(X, 30, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, src))
 				return
 
 			if (!X.check_plasma(acid_cost))
@@ -268,12 +268,12 @@
 			X.use_plasma(acid_cost)
 			setup_tripwires()
 			playsound(loc, 'sound/effects/refill.ogg', 25, 1)
-			
+
 			if(isXenoBurrower(X))
 				set_state(RESIN_TRAP_ACID3)
 			else
 				set_state(RESIN_TRAP_ACID1 + X.acid_level - 1)
-			
+
 			X.visible_message(SPAN_XENOWARNING("\The [X] pressurises the resin hole with acid!"), \
 			SPAN_XENOWARNING("You pressurise the resin hole with acid!"), null, 5)
 			return

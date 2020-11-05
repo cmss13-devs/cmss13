@@ -106,13 +106,13 @@
 						var/background
 						switch(crimstat)
 							if("*Arrest*")
-								background = "'background-color:#DC143C;'"
+								background = "'background-color:#990c28;'"
 							if("Incarcerated")
-								background = "'background-color:#CD853F;'"
+								background = "'background-color:#a16832;'"
 							if("Released")
-								background = "'background-color:#3BB9FF;'"
+								background = "'background-color:#2981b3;'"
 							if("None")
-								background = "'background-color:#00FF7F;'"
+								background = "'background-color:#008743;'"
 							if("")
 								background = "'background-color:#FFFFFF;'"
 								crimstat = "No Record."

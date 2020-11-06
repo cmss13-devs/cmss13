@@ -15,6 +15,7 @@
 	var/worn_accessible = FALSE //whether you can access its content while worn on the back
 	var/obj/item/card/id/locking_id = null
 	var/is_id_lockable = FALSE
+	var/lock_overridable = TRUE
 
 /obj/item/storage/backpack/attack_hand(mob/user)
 	if(!is_accessible_by(user))
@@ -37,7 +38,7 @@
 		to_chat(H, SPAN_NOTICE("You lock the [src]!"))
 		locking_id = card
 	else
-		if(locking_id.registered_name == card.registered_name || (ACCESS_MARINE_COMMANDER in card.access))
+		if(locking_id.registered_name == card.registered_name || (lock_overridable && (ACCESS_MARINE_COMMANDER in card.access)))
 			to_chat(H, SPAN_NOTICE("You unlock the [src]!"))
 			locking_id = null
 		else
@@ -106,8 +107,8 @@ obj/item/storage/backpack/empty(mob/user, turf/T)
 	overlays.Cut()
 	var/sum_storage_cost = 0
 	if(locking_id) // if it's locked, we expect the casing to be shut.
-		overlays += "+[icon_state]_locked"
 		overlays += "+[icon_state]_full"
+		overlays += "+[icon_state]_locked"
 		return
 	else if(is_id_lockable)
 		overlays += "+[icon_state]_unlocked"
@@ -122,6 +123,12 @@ obj/item/storage/backpack/empty(mob/user, turf/T)
 	else
 		overlays += "+[icon_state]_full"
 
+/obj/item/storage/backpack/examine(mob/user)
+	..()
+	if(is_id_lockable)
+		to_chat(user, "Features an ID lock. Swipe your ID card to lock or unlock it.")
+		if(lock_overridable)
+			to_chat(user, "This lock can be overridden with command-level access.")
 
 /*
  * Backpack Types
@@ -240,6 +247,12 @@ obj/item/storage/backpack/empty(mob/user, turf/T)
 	. = ..()
 	new /obj/item/storage/wallet/random( src )
 
+/obj/item/storage/backpack/satchel/lockable
+	is_id_lockable = TRUE
+
+/obj/item/storage/backpack/satchel/lockable/liaison
+	lock_overridable = FALSE
+
 /obj/item/storage/backpack/satchel/norm
 	name = "satchel"
 	desc = "A trendy looking satchel."
@@ -352,7 +365,7 @@ obj/item/storage/backpack/empty(mob/user, turf/T)
 
 /obj/item/storage/backpack/marine/grenadepack
 	name = "\improper USCM IMP M63A1 Grenade Satchel"
-	desc = "A satchel with dedicated grenades pouches meant to minimize risks of secondary ignition. To limit untrained marines tampering with the explosive content inside, it is equipped with a ID lock. Swipe your ID card to lock or unlock it."
+	desc = "A satchel with dedicated grenades pouches meant to minimize risks of secondary ignition."
 	icon_state = "grenadierpack"
 	overlays = list("+grenadierpack_unlocked")
 	worn_accessible = TRUE

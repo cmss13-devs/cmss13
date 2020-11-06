@@ -255,7 +255,7 @@
 		to_chat(user, SPAN_WARNING("Vehicle already has a \"[V.nickname]\" nickname."))
 		return
 
-	var/new_nickname = stripped_input(user, "Enter a unique name or callsign to add to your vehicle's name. 26 characters maximum. SINGLE USE ONLY.", "Name your vehicle", "", MAX_NAME_LEN)
+	var/new_nickname = stripped_input(user, "Enter a unique name or callsign to add to your vehicle's name. 26 characters maximum. \n\nThis is IC nickname/callsign for your vehicle.\nSINGLE USE ONLY.", "Name your vehicle", "", MAX_NAME_LEN)
 	if(!new_nickname)
 		return
 	if(alert(user, "Vehicle's name will be [initial(V.name) + "\"[new_nickname]\""]. Confirm?", "Confirmation?", "Yes", "No") == "No")
@@ -273,6 +273,9 @@
 	V.nickname = new_nickname
 	V.name = initial(V.name) + " \"[V.nickname]\""
 	to_chat(user, SPAN_NOTICE("You've added \"[V.nickname]\" nickname to your vehicle."))
+
+	message_staff(WRAP_STAFF_LOG(user, "added \"[V.nickname]\" nickname to their [initial(V.name)]. ([V.x],[V.y],[V.z])"), V.x, V.y, V.z)
+
 	V.initialize_cameras(TRUE)
 
 //Activates vehicle horn. Yes, it is annoying.

@@ -102,7 +102,8 @@ var/global/datum/interior_manager/interior_manager = new
 	for(var/turf/T in block(min, max))
 		for(var/atom/A in T)
 			qdel(A)
-		qdel(T)
+		T.ChangeTurf(/turf/open/void)
+
 
 	chunk_availability[chunk_id] = TRUE
 	interiors[chunk_id] = null

@@ -303,10 +303,8 @@
 		dragged_atom = G.grabbed_thing
 
 	var/enter_time = SECONDS_1
-	to_chat(M, SPAN_NOTICE("1 second"))
 	if(dragged_atom)
 		enter_time = SECONDS_2
-		to_chat(M, SPAN_NOTICE("switched to 2 seconds"))
 
 	to_chat(M, SPAN_NOTICE(enter_msg))
 	if(!do_after(M, enter_time, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))

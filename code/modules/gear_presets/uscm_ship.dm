@@ -68,7 +68,7 @@
 	dress_shoes = list(/obj/item/clothing/shoes/laceup)
 
 /datum/equipment_preset/uscm_ship/liaison/load_gear(mob/living/carbon/human/H)
-	var/backItem = /obj/item/storage/backpack/satchel
+	var/backItem = /obj/item/storage/backpack/satchel/lockable/liaison
 	//There is no suitable backpack for a CL really...
 	//if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
 		//backItem = /obj/item/storage/backpack
@@ -300,7 +300,7 @@
 	access = get_all_marine_access()
 
 /datum/equipment_preset/uscm_ship/commander/load_gear(mob/living/carbon/human/H)
-	var/backItem = /obj/item/storage/backpack/satchel
+	var/backItem = /obj/item/storage/backpack/satchel/lockable
 	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
 		backItem = /obj/item/storage/backpack/mcommander
 

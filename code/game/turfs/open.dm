@@ -40,6 +40,9 @@
 	mouse_opacity = FALSE
 	can_bloody = FALSE
 
+/turf/open/void/is_weedable()
+	return FALSE
+
 /turf/open/river
 	can_bloody = FALSE
 

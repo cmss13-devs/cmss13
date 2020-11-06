@@ -391,7 +391,7 @@
 
 			if(weapon_source_mob)
 				var/mob/user = weapon_source_mob
-				if(user.faction == H.faction)
+				if(user.faction == H.faction && !get_area(user)?.statistic_exempt)
 					H.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> shot <b>[key_name(H)]</b> with \a <b>[name]</b> in [get_area(user)]."
 					user.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> shot <b>[key_name(H)]</b> with \a <b>[name]</b> in [get_area(user)]."
 					if(weapon_source)

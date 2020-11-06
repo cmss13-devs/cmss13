@@ -1,0 +1,6 @@
+author: Jeser
+
+delete-after: True
+
+changes: 
+  - tweak: "Friendly fire logs won't be triggered in statistic exempt areas anymore, saving staff from headache during thunderdome shenanigans."

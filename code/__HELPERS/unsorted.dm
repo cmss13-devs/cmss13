@@ -518,6 +518,10 @@ Turf and target are seperate in case you want to teleport some distance from a t
 	var/list/creatures = list()
 	var/list/namecounts = list()
 	for(var/mob/M in mobs)
+		// This thing doesnt want to be seen, a bit snowflake.
+		if(M.invisibility == INVISIBILITY_MAXIMUM && M.alpha == 0)
+			continue
+
 		var/name = M.name
 		if (name in names)
 			namecounts[name]++

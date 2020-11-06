@@ -204,6 +204,7 @@ var/list/admin_verbs_mod = list(
 	/client/proc/togglenichelogs,
 	/datum/admins/proc/player_notes_show,
 	/client/proc/admin_ghost,			/*allows us to ghost/reenter body at will*/
+	/client/proc/invismin,
 	/client/proc/cmd_mod_say,
 	/client/proc/dsay,
 	/client/proc/chem_panel,			/*chem panel, allows viewing, editing and creation of reagent and chemical_reaction datums*/

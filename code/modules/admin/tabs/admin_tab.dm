@@ -103,6 +103,28 @@
 	if(new_STUI)
 		GLOB.STUI.ui_interact(mob)
 
+/client/proc/invismin()
+	set name = "I: Invismin"
+	set category = "Admin"
+
+	if(!check_rights(R_MOD))
+		return
+
+	if(admin_holder.fakekey)
+		admin_holder.fakekey = null
+		if(isobserver(mob))
+			mob.invisibility = initial(mob.invisibility)
+			mob.alpha = initial(mob.alpha)
+			mob.mouse_opacity = initial(mob.mouse_opacity)
+	else
+		admin_holder.fakekey = "John Titor"
+		if(isobserver(mob))
+			mob.invisibility = INVISIBILITY_MAXIMUM
+			mob.alpha = 0
+			mob.mouse_opacity = 0
+
+	log_admin("[key_name_admin(usr)] has turned invismin [admin_holder.fakekey ? "ON" : "OFF"]")
+
 /datum/admins/proc/announce()
 	set name = "X: Admin Announcement"
 	set desc = "Announce your desires to the world"

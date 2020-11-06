@@ -40,11 +40,8 @@
 	var/msg = "<b>Current Players:</b>\n"
 	var/list/Lines = list()
 	if(admin_holder && ((R_ADMIN & admin_holder.rights) || (R_MOD & admin_holder.rights)))
-
 		for(var/client/C in GLOB.clients)
 			var/entry = "\t[C.key]"
-			if(C.admin_holder && C.admin_holder.fakekey)
-				entry += " <i>(as [C.admin_holder.fakekey])</i>"
 			if(C.mob)	//Juuuust in case
 				if(istype(C.mob, /mob/new_player))
 					entry += " - In Lobby"
@@ -139,9 +136,9 @@
 	else
 		for(var/client/C in GLOB.clients)
 			if(C.admin_holder && C.admin_holder.fakekey)
-				Lines += C.admin_holder.fakekey
-			else
-				Lines += C.key
+				continue
+
+			Lines += C.key
 		for(var/line in sortList(Lines))
 			msg += "[line]\n"
 		msg += "<b>Total Players: [length(Lines)]</b>"
@@ -158,17 +155,14 @@
 	var/num_mods_online = 0
 	var/num_admins_online = 0
 	var/num_mentors_online = 0
-	if(admin_holder)
+
+	if(admin_holder && !AHOLD_IS_ONLY_MENTOR(admin_holder))
 		for(var/client/C in GLOB.admins)
 			if(AHOLD_IS_ADMIN(C.admin_holder))	//Used to determine who shows up in admin rows
-
-				if(C.admin_holder.fakekey && AHOLD_IS_ONLY_MENTOR(admin_holder))		//Mentors can't see stealthmins
-					continue
-
 				msg += "\t[C] is a [C.admin_holder.rank]"
 
 				if(C.admin_holder.fakekey)
-					msg += " <i>(as [C.admin_holder.fakekey])</i>"
+					msg += " <i>(HIDDEN)</i>"
 
 				if(isobserver(C.mob))
 					msg += " - Observing"
@@ -184,6 +178,9 @@
 				num_admins_online++
 			else if(AHOLD_IS_MOD(C.admin_holder))				//Who shows up in mod/mentor rows.
 				modmsg += "\t[C] is a [C.admin_holder.rank]"
+
+				if(C.admin_holder.fakekey)
+					msg += " <i>(HIDDEN)</i>"
 
 				if(isobserver(C.mob))
 					modmsg += " - Observing"
@@ -219,8 +216,6 @@
 				mentmsg += "\t[C] is a [C.admin_holder.rank]\n"
 				num_mentors_online++
 
-	if(config.admin_irc)
-		to_chat(src, SPAN_INFO("Adminhelps are also sent to IRC. If no admins are available in game try anyway and an admin on IRC may see it and respond."))
 	msg = "<b>Current Admins ([num_admins_online]):</b>\n" + msg
 
 	if(config.show_mods)

@@ -47,10 +47,7 @@
 		//PMs sent from admins and mods display their rank
 		recieve_color = "#009900"
 		send_pm_type = admin_holder.rank + " "
-		if(!C.admin_holder && admin_holder && admin_holder.fakekey)
-			recieve_pm_type = "Admin"
-		else
-			recieve_pm_type = admin_holder.rank
+		recieve_pm_type = admin_holder.rank
 		// Automatically link certain phrases from staff.
 		msg = replacetext(msg,"T:Marine","<a href=\"[URL_WIKI_MARINE_QUICKSTART]\">Marine Quickstart Guide</a>")
 		msg = replacetext(msg,"T:Xeno","<a href=\"[URL_WIKI_XENO_QUICKSTART]\">Xeno Quickstart Guide</a>")

@@ -70,12 +70,6 @@ var/global/normal_ooc_colour = "#1c52f5"
 	for(var/client/C in GLOB.clients)
 		if(C.prefs.toggles_chat & CHAT_OOC)
 			var/display_name = src.key
-			if(admin_holder && (admin_holder.rights & R_MOD))
-				if(admin_holder.fakekey)
-					if(C.admin_holder)
-						display_name = "[admin_holder.fakekey]/([src.key])"
-					else
-						display_name = admin_holder.fakekey
 			to_chat(C, "<font color='[display_colour]'><span class='ooc'>[src.donator ? "\[D\] " : ""]<span class='prefix'>OOC: [display_name]</span>: <span class='message'>[msg]</span></span></font>")
 
 	usr.talked = 1
@@ -157,12 +151,6 @@ var/global/normal_ooc_colour = "#1c52f5"
 			continue //they are handled after that
 
 		if(C.prefs.toggles_chat & CHAT_LOOC)
-			if(admin_holder && (admin_holder.rights & R_MOD))
-				if(admin_holder.fakekey)
-					if(C.admin_holder)
-						display_name = "[admin_holder.fakekey]/([src.key])"
-					else
-						display_name = admin_holder.fakekey
 			to_chat(C, "<font color='#6699CC'><span class='ooc'><span class='prefix'>LOOC:</span> <EM>[display_name]:</EM> <span class='message'>[msg]</span></span></font>")
 
 	// Now handle admins

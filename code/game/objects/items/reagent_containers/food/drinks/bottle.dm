@@ -94,10 +94,10 @@
 			var/datum/reagent/ethanol/RA = R
 			alcohol_potency += RA.boozepwr * (R.volume / 8)
 
-	if(alcohol_potency < config.min_burnlevel)
+	if(alcohol_potency < BURN_LEVEL_TIER_1)
 		to_chat(user, SPAN_NOTICE("There's not enough flammable liquid in [src]!"))
 		return
-	alcohol_potency = Clamp(alcohol_potency, config.min_burnlevel, config.high_burnlevel)
+	alcohol_potency = Clamp(alcohol_potency, BURN_LEVEL_TIER_1, BURN_LEVEL_TIER_7)
 	if(!do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		return
 	var/turf/T = get_turf(src)

@@ -398,10 +398,10 @@
 	damage = 10
 	max_range = 5
 	damage_type = BURN
-	accuracy = config.max_hit_accuracy
-	accuracy_var_low = config.med_proj_variance
-	accuracy_var_high = config.med_proj_variance
-	bonus_projectiles_amount = config.max_proj_extra
+	accuracy = HIT_ACCURACY_TIER_8
+	accuracy_var_low = PROJECTILE_VARIANCE_TIER_6
+	accuracy_var_high = PROJECTILE_VARIANCE_TIER_6
+	bonus_projectiles_amount = EXTRA_PROJECTILES_TIER_8
 	shrapnel_type = /datum/ammo/xeno/acid_shotgun/spread
 	shrapnel_chance = 100
 
@@ -410,6 +410,6 @@
 
 /datum/ammo/xeno/acid_shotgun/spread/New()
 	..()
-	scatter = config.super_scatter_value
+	scatter = SCATTER_AMOUNT_TIER_1
 	bonus_projectiles_amount = 0
 	max_range = 4

@@ -26,15 +26,15 @@ can cause issues with ammo types getting mixed up during the burst.
 
 /obj/item/weapon/gun/shotgun/set_gun_config_values()
 	..()
-	fire_delay = config.mhigh_fire_delay
-	accuracy_mult = config.base_hit_accuracy_mult + config.low_hit_accuracy_mult
-	accuracy_mult_unwielded = config.base_hit_accuracy_mult + config.low_hit_accuracy_mult - config.hmed_hit_accuracy_mult
-	scatter = config.med_scatter_value
-	burst_scatter_mult = config.med_scatter_value
-	scatter_unwielded = config.max_scatter_value
-	damage_mult = config.base_hit_damage_mult
-	recoil = config.low_recoil_value
-	recoil_unwielded = config.high_recoil_value
+	fire_delay = FIRE_DELAY_TIER_5
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_3
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_3 - HIT_ACCURACY_MULT_TIER_5
+	scatter = SCATTER_AMOUNT_TIER_6
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_6
+	scatter_unwielded = SCATTER_AMOUNT_TIER_2
+	damage_mult = BASE_BULLET_DAMAGE_MULT
+	recoil = RECOIL_AMOUNT_TIER_4
+	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 
 /obj/item/weapon/gun/shotgun/proc/replace_tube(number_to_replace)
 	if(!current_mag)
@@ -177,17 +177,17 @@ can cause issues with ammo types getting mixed up during the burst.
 
 /obj/item/weapon/gun/shotgun/merc/set_gun_config_values()
 	..()
-	fire_delay = config.high_fire_delay*2
-	burst_amount = config.low_burst_value
-	burst_delay = config.mlow_fire_delay
-	accuracy_mult = config.base_hit_accuracy_mult - config.med_hit_accuracy_mult
-	accuracy_mult_unwielded = config.base_hit_accuracy_mult - config.med_hit_accuracy_mult - config.hmed_hit_accuracy_mult
-	scatter = config.med_scatter_value
-	burst_scatter_mult = config.high_scatter_value
-	scatter_unwielded = config.max_scatter_value
-	damage_mult = config.base_hit_damage_mult
-	recoil = config.low_recoil_value
-	recoil_unwielded = config.high_recoil_value
+	fire_delay = FIRE_DELAY_TIER_6*2
+	burst_amount = BURST_AMOUNT_TIER_2
+	burst_delay = FIRE_DELAY_TIER_9
+	accuracy_mult = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_4
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_4 - HIT_ACCURACY_MULT_TIER_5
+	scatter = SCATTER_AMOUNT_TIER_6
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_4
+	scatter_unwielded = SCATTER_AMOUNT_TIER_2
+	damage_mult = BASE_BULLET_DAMAGE_MULT
+	recoil = RECOIL_AMOUNT_TIER_4
+	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 
 
 /obj/item/weapon/gun/shotgun/merc/examine(mob/user)
@@ -236,15 +236,15 @@ can cause issues with ammo types getting mixed up during the burst.
 
 /obj/item/weapon/gun/shotgun/combat/set_gun_config_values()
 	..()
-	fire_delay = config.mhigh_fire_delay*2
-	accuracy_mult = config.base_hit_accuracy_mult + config.low_hit_accuracy_mult
-	accuracy_mult_unwielded = config.base_hit_accuracy_mult + config.low_hit_accuracy_mult - config.hmed_hit_accuracy_mult
-	scatter = config.med_scatter_value
-	burst_scatter_mult = config.med_scatter_value
-	scatter_unwielded = config.max_scatter_value
-	damage_mult = config.base_hit_damage_mult
-	recoil = config.low_recoil_value
-	recoil_unwielded = config.high_recoil_value
+	fire_delay = FIRE_DELAY_TIER_5*2
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_3
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_3 - HIT_ACCURACY_MULT_TIER_5
+	scatter = SCATTER_AMOUNT_TIER_6
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_6
+	scatter_unwielded = SCATTER_AMOUNT_TIER_2
+	damage_mult = BASE_BULLET_DAMAGE_MULT
+	recoil = RECOIL_AMOUNT_TIER_4
+	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 
 
 /obj/item/weapon/gun/shotgun/combat/examine(mob/user)
@@ -287,16 +287,16 @@ can cause issues with ammo types getting mixed up during the burst.
 
 /obj/item/weapon/gun/shotgun/double/set_gun_config_values()
 	..()
-	burst_amount = config.low_burst_value
-	fire_delay = config.mlow_fire_delay
-	accuracy_mult = config.base_hit_accuracy_mult + config.low_hit_accuracy_mult
-	accuracy_mult_unwielded = config.base_hit_accuracy_mult + config.low_hit_accuracy_mult - config.hmed_hit_accuracy_mult
-	scatter = config.med_scatter_value
-	burst_scatter_mult = config.min_scatter_value
-	scatter_unwielded = config.max_scatter_value
-	damage_mult = config.base_hit_damage_mult
-	recoil = config.low_recoil_value
-	recoil_unwielded = config.high_recoil_value
+	burst_amount = BURST_AMOUNT_TIER_2
+	fire_delay = FIRE_DELAY_TIER_9
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_3
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_3 - HIT_ACCURACY_MULT_TIER_5
+	scatter = SCATTER_AMOUNT_TIER_6
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_10
+	scatter_unwielded = SCATTER_AMOUNT_TIER_2
+	damage_mult = BASE_BULLET_DAMAGE_MULT
+	recoil = RECOIL_AMOUNT_TIER_4
+	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 
 /obj/item/weapon/gun/shotgun/double/examine(mob/user)
 	..()
@@ -395,15 +395,15 @@ can cause issues with ammo types getting mixed up during the burst.
 
 /obj/item/weapon/gun/shotgun/double/sawn/set_gun_config_values()
 	..()
-	fire_delay = config.mlow_fire_delay
-	accuracy_mult = config.base_hit_accuracy_mult + config.low_hit_accuracy_mult - config.hmed_hit_accuracy_mult
-	accuracy_mult_unwielded = config.base_hit_accuracy_mult + config.low_hit_accuracy_mult - config.hmed_hit_accuracy_mult
-	scatter = config.med_scatter_value
-	burst_scatter_mult = config.min_scatter_value
-	scatter_unwielded = config.max_scatter_value
-	damage_mult = config.base_hit_damage_mult + config.high_hit_damage_mult
-	recoil = config.med_recoil_value
-	recoil_unwielded = config.max_recoil_value
+	fire_delay = FIRE_DELAY_TIER_9
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_3 - HIT_ACCURACY_MULT_TIER_5
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_3 - HIT_ACCURACY_MULT_TIER_5
+	scatter = SCATTER_AMOUNT_TIER_6
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_10
+	scatter_unwielded = SCATTER_AMOUNT_TIER_2
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_7
+	recoil = RECOIL_AMOUNT_TIER_3
+	recoil_unwielded = RECOIL_AMOUNT_TIER_1
 
 //M-OU53 SHOTGUN | Marine mid-range slug/flechette only coach gun (except its an over-under). Support weapon for slug stuns / flechette DOTS (when implemented). Buckshot in this thing is just stupidly strong, hence the denial.
 
@@ -441,15 +441,15 @@ can cause issues with ammo types getting mixed up during the burst.
 
 /obj/item/weapon/gun/shotgun/double/mou53/set_gun_config_values()
 	..()
-	burst_amount = config.min_burst_value
-	fire_delay = config.low_fire_delay
-	accuracy_mult = config.base_hit_accuracy_mult
-	accuracy_mult_unwielded = config.base_hit_accuracy_mult + config.low_hit_accuracy_mult - config.hmed_hit_accuracy_mult
-	scatter = config.min_scatter_value
-	scatter_unwielded = config.max_scatter_value
-	damage_mult = config.base_hit_damage_mult + config.low_hit_damage_mult
-	recoil = config.med_recoil_value
-	recoil_unwielded = config.high_recoil_value
+	burst_amount = BURST_AMOUNT_TIER_1
+	fire_delay = FIRE_DELAY_TIER_8
+	accuracy_mult = BASE_ACCURACY_MULT
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_3 - HIT_ACCURACY_MULT_TIER_5
+	scatter = SCATTER_AMOUNT_TIER_10
+	scatter_unwielded = SCATTER_AMOUNT_TIER_2
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_2
+	recoil = RECOIL_AMOUNT_TIER_3
+	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 
 /obj/item/weapon/gun/shotgun/double/mou53/reload(mob/user, obj/item/ammo_magazine/magazine)
 	if(magazine.default_ammo == /datum/ammo/bullet/shotgun/buckshot) // No buckshot in this gun
@@ -496,7 +496,7 @@ can cause issues with ammo types getting mixed up during the burst.
 
 /obj/item/weapon/gun/shotgun/pump/New()
 	..()
-	pump_delay = config.max_fire_delay*2
+	pump_delay = FIRE_DELAY_TIER_4*2
 
 
 /obj/item/weapon/gun/shotgun/pump/set_gun_attachment_offsets()
@@ -505,16 +505,16 @@ can cause issues with ammo types getting mixed up during the burst.
 
 /obj/item/weapon/gun/shotgun/pump/set_gun_config_values()
 	..()
-	burst_amount = config.min_burst_value
-	fire_delay = config.med_fire_delay * 5
-	accuracy_mult = config.base_hit_accuracy_mult + config.low_hit_accuracy_mult
-	accuracy_mult_unwielded = config.base_hit_accuracy_mult + config.low_hit_accuracy_mult - config.hmed_hit_accuracy_mult
-	scatter = config.med_scatter_value
-	burst_scatter_mult = config.med_scatter_value
-	scatter_unwielded = config.max_scatter_value
-	damage_mult = config.base_hit_damage_mult
-	recoil = config.low_recoil_value
-	recoil_unwielded = config.high_recoil_value
+	burst_amount = BURST_AMOUNT_TIER_1
+	fire_delay = FIRE_DELAY_TIER_7 * 5
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_3
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_3 - HIT_ACCURACY_MULT_TIER_5
+	scatter = SCATTER_AMOUNT_TIER_6
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_6
+	scatter_unwielded = SCATTER_AMOUNT_TIER_2
+	damage_mult = BASE_BULLET_DAMAGE_MULT
+	recoil = RECOIL_AMOUNT_TIER_4
+	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 
 /obj/item/weapon/gun/shotgun/pump/unique_action(mob/user)
 	pump_shotgun(user)
@@ -600,7 +600,7 @@ can cause issues with ammo types getting mixed up during the burst.
 
 /obj/item/weapon/gun/shotgun/pump/cmb/New()
 	..()
-	pump_delay = config.mhigh_fire_delay*2
+	pump_delay = FIRE_DELAY_TIER_5*2
 
 
 /obj/item/weapon/gun/shotgun/pump/cmb/set_gun_attachment_offsets()
@@ -609,15 +609,15 @@ can cause issues with ammo types getting mixed up during the burst.
 
 /obj/item/weapon/gun/shotgun/pump/cmb/set_gun_config_values()
 	..()
-	fire_delay = config.med_fire_delay*4
-	accuracy_mult = config.base_hit_accuracy_mult + config.low_hit_accuracy_mult
-	accuracy_mult_unwielded = config.base_hit_accuracy_mult + config.low_hit_accuracy_mult - config.hmed_hit_accuracy_mult
-	scatter = config.med_scatter_value
-	burst_scatter_mult = config.med_scatter_value
-	scatter_unwielded = config.max_scatter_value
-	damage_mult = config.base_hit_damage_mult
-	recoil = config.low_recoil_value
-	recoil_unwielded = config.high_recoil_value
+	fire_delay = FIRE_DELAY_TIER_7*4
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_3
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_3 - HIT_ACCURACY_MULT_TIER_5
+	scatter = SCATTER_AMOUNT_TIER_6
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_6
+	scatter_unwielded = SCATTER_AMOUNT_TIER_2
+	damage_mult = BASE_BULLET_DAMAGE_MULT
+	recoil = RECOIL_AMOUNT_TIER_4
+	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 
 
 //-------------------------------------------------------

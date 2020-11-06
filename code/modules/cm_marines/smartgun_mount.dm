@@ -377,7 +377,7 @@
 	..()
 	
 	ammo = ammo_list[ammo] //dunno how this works but just sliding this in from sentry-code.
-	burst_scatter_mult = config.lmed_scatter_value
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_7
 	update_icon()
 
 /obj/structure/machinery/m56d_hmg/Destroy() //Make sure we pick up our trash.

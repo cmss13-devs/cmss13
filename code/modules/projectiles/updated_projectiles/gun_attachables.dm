@@ -192,14 +192,14 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/suppressor/New()
 	..()
-	accuracy_mod = config.low_hit_accuracy_mult
-	damage_mod = -config.min_hit_damage_mult
-	recoil_mod = -config.min_recoil_value
-	scatter_mod = -config.min_scatter_value
+	accuracy_mod = HIT_ACCURACY_MULT_TIER_3
+	damage_mod = -BULLET_DAMAGE_MULT_TIER_1
+	recoil_mod = -RECOIL_AMOUNT_TIER_5
+	scatter_mod = -SCATTER_AMOUNT_TIER_10
 	attach_icon = pick("suppressor_a","suppressor2_a")
 
-	recoil_unwielded_mod = -config.min_recoil_value
-	scatter_unwielded_mod = -config.min_scatter_value
+	recoil_unwielded_mod = -RECOIL_AMOUNT_TIER_5
+	scatter_unwielded_mod = -SCATTER_AMOUNT_TIER_10
 	damage_falloff_mod = 0.4
 
 /obj/item/attachable/bayonet
@@ -225,7 +225,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/bayonet/New()
 	..()
-	accuracy_unwielded_mod = -config.min_hit_accuracy_mult
+	accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_1
 
 /obj/item/attachable/bayonet/attack(mob/living/target, mob/living/carbon/human/user)
 	if(!dig_out_shrapnel_check(target,user))
@@ -257,8 +257,8 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/extended_barrel/New()
 	..()
-	accuracy_mod = config.med_hit_accuracy_mult
-	damage_mod = -config.min_hit_damage_mult
+	accuracy_mod = HIT_ACCURACY_MULT_TIER_4
+	damage_mod = -BULLET_DAMAGE_MULT_TIER_1
 
 
 
@@ -272,17 +272,17 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/heavy_barrel/New()
 	..()
-	accuracy_mod = -config.low_hit_accuracy_mult
-	damage_mod = config.hmed_hit_damage_mult
-	delay_mod = config.mlow_fire_delay
+	accuracy_mod = -HIT_ACCURACY_MULT_TIER_3
+	damage_mod = BULLET_DAMAGE_MULT_TIER_6
+	delay_mod = FIRE_DELAY_TIER_9
 
-	accuracy_unwielded_mod = -config.high_hit_accuracy_mult
+	accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_7
 
 /obj/item/attachable/heavy_barrel/Attach(obj/item/weapon/gun/G)
 	if(istype(G, /obj/item/weapon/gun/shotgun))
-		damage_mod = config.min_hit_damage_mult
+		damage_mod = BULLET_DAMAGE_MULT_TIER_1
 	else
-		damage_mod = config.hmed_hit_damage_mult
+		damage_mod = BULLET_DAMAGE_MULT_TIER_6
 	..()
 
 /obj/item/attachable/compensator
@@ -295,13 +295,13 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/compensator/New()
 	..()
-	accuracy_mod = config.med_hit_accuracy_mult
-	damage_mod = -config.low_hit_damage_mult
-	recoil_mod = -config.med_recoil_value
+	accuracy_mod = HIT_ACCURACY_MULT_TIER_4
+	damage_mod = -BULLET_DAMAGE_MULT_TIER_2
+	recoil_mod = -RECOIL_AMOUNT_TIER_3
 
 	damage_falloff_mod = 0.1
-	accuracy_unwielded_mod = config.med_hit_accuracy_mult
-	recoil_unwielded_mod = -config.low_recoil_value
+	accuracy_unwielded_mod = HIT_ACCURACY_MULT_TIER_4
+	recoil_unwielded_mod = -RECOIL_AMOUNT_TIER_4
 
 
 /obj/item/attachable/slavicbarrel
@@ -316,8 +316,8 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/slavicbarrel/New()
 	..()
-	accuracy_mod = config.min_hit_accuracy_mult
-	scatter_mod = -config.low_scatter_value
+	accuracy_mod = HIT_ACCURACY_MULT_TIER_1
+	scatter_mod = -SCATTER_AMOUNT_TIER_8
 
 /obj/item/attachable/sniperbarrel
 	name = "sniper barrel"
@@ -328,8 +328,8 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/sniperbarrel/New()
 	..()
-	accuracy_mod = config.low_hit_accuracy_mult
-	scatter_mod = -config.low_scatter_value
+	accuracy_mod = HIT_ACCURACY_MULT_TIER_3
+	scatter_mod = -SCATTER_AMOUNT_TIER_8
 
 /obj/item/attachable/m60barrel
 	name = "M60 barrel"
@@ -340,8 +340,8 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/m60barrel/New()
 	..()
-	accuracy_mod = config.low_hit_accuracy_mult
-	scatter_mod = -config.low_scatter_value
+	accuracy_mod = HIT_ACCURACY_MULT_TIER_3
+	scatter_mod = -SCATTER_AMOUNT_TIER_8
 
 /obj/item/attachable/smartbarrel
 	name = "smartgun barrel"
@@ -362,7 +362,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/mateba/New()
 	..()
-	accuracy_mod = config.low_hit_accuracy_mult
+	accuracy_mod = HIT_ACCURACY_MULT_TIER_3
 
 /obj/item/attachable/mateba/Attach(obj/item/weapon/gun/G)
 	..()
@@ -383,9 +383,9 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/mateba/long/New()
 	..()
-	accuracy_mod = config.med_hit_accuracy_mult
-	scatter_mod = -config.med_scatter_value
-	delay_mod = config.med_fire_delay
+	accuracy_mod = HIT_ACCURACY_MULT_TIER_4
+	scatter_mod = -SCATTER_AMOUNT_TIER_6
+	delay_mod = FIRE_DELAY_TIER_7
 
 /obj/item/attachable/mateba/long/Attach(obj/item/weapon/gun/G)
 	..()
@@ -401,9 +401,9 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/mateba/short/New()
 	..()
-	accuracy_mod = -config.med_hit_accuracy_mult
-	scatter_mod = config.med_scatter_value
-	delay_mod = -config.med_fire_delay
+	accuracy_mod = -HIT_ACCURACY_MULT_TIER_4
+	scatter_mod = SCATTER_AMOUNT_TIER_6
+	delay_mod = -FIRE_DELAY_TIER_7
 
 /obj/item/attachable/mateba/short/Attach(obj/item/weapon/gun/G)
 	..()
@@ -423,9 +423,9 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/reddot/New()
 	..()
-	accuracy_mod = config.med_hit_accuracy_mult
-	accuracy_unwielded_mod = config.min_hit_accuracy_mult
-	movement_acc_penalty_mod = config.low_movement_accuracy_penalty_mult
+	accuracy_mod = HIT_ACCURACY_MULT_TIER_4
+	accuracy_unwielded_mod = HIT_ACCURACY_MULT_TIER_1
+	movement_acc_penalty_mod = MOVEMENT_ACCURACY_PENALTY_MULT_TIER_5
 
 /obj/item/attachable/reflex
 	name = "S6 reflex sight"
@@ -436,11 +436,11 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/reflex/New()
 	..()
-	accuracy_mod = config.low_hit_accuracy_mult
-	accuracy_unwielded_mod = config.min_hit_accuracy_mult
-	scatter_mod = -config.min_scatter_value
+	accuracy_mod = HIT_ACCURACY_MULT_TIER_3
+	accuracy_unwielded_mod = HIT_ACCURACY_MULT_TIER_1
+	scatter_mod = -SCATTER_AMOUNT_TIER_10
 	burst_scatter_mod = -1
-	movement_acc_penalty_mod = config.low_movement_accuracy_penalty_mult
+	movement_acc_penalty_mod = MOVEMENT_ACCURACY_PENALTY_MULT_TIER_5
 
 
 /obj/item/attachable/flashlight
@@ -509,9 +509,9 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/flashlight/grip/New()
 	..()
-	accuracy_mod = config.min_hit_accuracy_mult
-	recoil_mod = -config.min_recoil_value
-	scatter_mod = -config.min_scatter_value
+	accuracy_mod = HIT_ACCURACY_MULT_TIER_1
+	recoil_mod = -RECOIL_AMOUNT_TIER_5
+	scatter_mod = -SCATTER_AMOUNT_TIER_10
 
 /obj/item/attachable/flashlight/grip/attackby(obj/item/I, mob/user)
 	if(istype(I,/obj/item/tool/screwdriver))
@@ -527,12 +527,12 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/quickfire/New()
 	..()
-	accuracy_mod = -config.hmed_hit_accuracy_mult
-	scatter_mod = config.mlow_scatter_value
-	delay_mod = -config.mlow_fire_delay
-	burst_mod = -config.min_burst_value
-	accuracy_unwielded_mod = -config.med_hit_accuracy_mult
-	scatter_unwielded_mod = config.med_scatter_value
+	accuracy_mod = -HIT_ACCURACY_MULT_TIER_5
+	scatter_mod = SCATTER_AMOUNT_TIER_9
+	delay_mod = -FIRE_DELAY_TIER_9
+	burst_mod = -BURST_AMOUNT_TIER_1
+	accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_4
+	scatter_unwielded_mod = SCATTER_AMOUNT_TIER_6
 
 
 /obj/item/attachable/magnetic_harness
@@ -545,8 +545,8 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/magnetic_harness/New()
 	..()
-	accuracy_mod = -config.min_hit_accuracy_mult
-	accuracy_unwielded_mod = -config.min_hit_accuracy_mult
+	accuracy_mod = -HIT_ACCURACY_MULT_TIER_1
+	accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_1
 
 /obj/item/attachable/magnetic_harness/Attach(var/obj/item/weapon/gun/G)
 	. = ..()
@@ -595,13 +595,13 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/scope/New()
 	..()
-	delay_mod = config.min_fire_delay
-	accuracy_mod = -config.min_hit_accuracy_mult
-	movement_acc_penalty_mod = config.mlow_movement_accuracy_penalty_mult
+	delay_mod = FIRE_DELAY_TIER_10
+	accuracy_mod = -HIT_ACCURACY_MULT_TIER_1
+	movement_acc_penalty_mod = MOVEMENT_ACCURACY_PENALTY_MULT_TIER_4
 	accuracy_unwielded_mod = 0
 
-	accuracy_scoped_buff = config.high_hit_accuracy_mult + config.min_hit_accuracy_mult //to compensate initial debuff
-	delay_scoped_nerf = config.low_fire_delay - config.min_fire_delay //to compensate initial debuff. We want "high_fire_delay"
+	accuracy_scoped_buff = HIT_ACCURACY_MULT_TIER_7 + HIT_ACCURACY_MULT_TIER_1 //to compensate initial debuff
+	delay_scoped_nerf = FIRE_DELAY_TIER_8 - FIRE_DELAY_TIER_10 //to compensate initial debuff. We want "high_fire_delay"
 	damage_falloff_scoped_buff = -0.4 //has to be negative
 
 /obj/item/attachable/scope/proc/apply_scoped_buff(obj/item/weapon/gun/G, mob/living/carbon/user)
@@ -675,8 +675,8 @@ Defined in conflicts.dm of the #defines folder.
 
 			G.slowdown += dynamic_aim_slowdown
 			if(istype(G, /obj/item/weapon/gun/launcher/m92))
-				G.fire_delay += config.max_fire_delay
-				handler.fire_delay = config.max_fire_delay
+				G.fire_delay += FIRE_DELAY_TIER_4
+				handler.fire_delay = FIRE_DELAY_TIER_4
 
 			user.add_zoomout_handler(handler)
 
@@ -702,10 +702,10 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/scope/mini_iff/New()
 	..()
-	movement_acc_penalty_mod = config.no_movement_accuracy_penalty_mult
+	movement_acc_penalty_mod = MOVEMENT_ACCURACY_PENALTY_MULT_TIER_6
 	accuracy_unwielded_mod = 0
 
-	accuracy_scoped_buff = config.min_hit_accuracy_mult
+	accuracy_scoped_buff = HIT_ACCURACY_MULT_TIER_1
 	delay_scoped_nerf = 0
 	damage_falloff_scoped_buff = 0
 
@@ -755,14 +755,14 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/stock/shotgun/New()
 	..()
 	//it makes stuff much better when two-handed
-	accuracy_mod = config.med_hit_accuracy_mult
-	recoil_mod = -config.low_recoil_value
-	scatter_mod = -config.low_scatter_value
-	movement_acc_penalty_mod = -config.low_movement_accuracy_penalty_mult
+	accuracy_mod = HIT_ACCURACY_MULT_TIER_4
+	recoil_mod = -RECOIL_AMOUNT_TIER_4
+	scatter_mod = -SCATTER_AMOUNT_TIER_8
+	movement_acc_penalty_mod = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_5
 	//it makes stuff much worse when one handed
-	accuracy_unwielded_mod = -config.low_hit_accuracy_mult
-	recoil_unwielded_mod = config.low_recoil_value
-	scatter_unwielded_mod = config.low_scatter_value
+	accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_3
+	recoil_unwielded_mod = RECOIL_AMOUNT_TIER_4
+	scatter_unwielded_mod = SCATTER_AMOUNT_TIER_8
 	//but at the same time you are slow when 2 handed
 	aim_speed_mod = config.slowdown_med
 
@@ -778,12 +778,12 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/stock/mou53/New()
 	..()
-	accuracy_mod = config.min_hit_accuracy_mult
-	recoil_mod = -config.min_recoil_value
-	scatter_mod = -config.min_scatter_value
-	accuracy_unwielded_mod = config.min_hit_accuracy_mult
-	recoil_unwielded_mod = -config.min_recoil_value
-	scatter_unwielded_mod = -config.min_scatter_value
+	accuracy_mod = HIT_ACCURACY_MULT_TIER_1
+	recoil_mod = -RECOIL_AMOUNT_TIER_5
+	scatter_mod = -SCATTER_AMOUNT_TIER_10
+	accuracy_unwielded_mod = HIT_ACCURACY_MULT_TIER_1
+	recoil_unwielded_mod = -RECOIL_AMOUNT_TIER_5
+	scatter_unwielded_mod = -SCATTER_AMOUNT_TIER_10
 
 /obj/item/attachable/stock/tactical
 	name = "\improper MK221 tactical stock"
@@ -792,13 +792,13 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/stock/tactical/New()
 	..()
-	accuracy_mod = config.min_hit_accuracy_mult
-	recoil_mod = -config.min_recoil_value
-	scatter_mod = -config.min_scatter_value
-	movement_acc_penalty_mod = -config.low_movement_accuracy_penalty_mult
-	accuracy_unwielded_mod = config.min_hit_accuracy_mult
-	recoil_unwielded_mod = -config.min_recoil_value
-	scatter_unwielded_mod = -config.min_scatter_value
+	accuracy_mod = HIT_ACCURACY_MULT_TIER_1
+	recoil_mod = -RECOIL_AMOUNT_TIER_5
+	scatter_mod = -SCATTER_AMOUNT_TIER_10
+	movement_acc_penalty_mod = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_5
+	accuracy_unwielded_mod = HIT_ACCURACY_MULT_TIER_1
+	recoil_unwielded_mod = -RECOIL_AMOUNT_TIER_5
+	scatter_unwielded_mod = -SCATTER_AMOUNT_TIER_10
 
 /obj/item/attachable/stock/slavic
 	name = "wooden stock"
@@ -810,14 +810,14 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/stock/slavic/New()
 	..()
-	accuracy_mod = config.min_hit_accuracy_mult
-	recoil_mod = -config.min_recoil_value
-	scatter_mod = -config.min_scatter_value
-	delay_mod = config.med_fire_delay
-	movement_acc_penalty_mod = -config.low_movement_accuracy_penalty_mult
-	accuracy_unwielded_mod = config.min_hit_accuracy_mult
-	recoil_unwielded_mod = -config.min_recoil_value
-	scatter_unwielded_mod = -config.min_scatter_value
+	accuracy_mod = HIT_ACCURACY_MULT_TIER_1
+	recoil_mod = -RECOIL_AMOUNT_TIER_5
+	scatter_mod = -SCATTER_AMOUNT_TIER_10
+	delay_mod = FIRE_DELAY_TIER_7
+	movement_acc_penalty_mod = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_5
+	accuracy_unwielded_mod = HIT_ACCURACY_MULT_TIER_1
+	recoil_unwielded_mod = -RECOIL_AMOUNT_TIER_5
+	scatter_unwielded_mod = -SCATTER_AMOUNT_TIER_10
 
 /obj/item/attachable/stock/hunting
 	name = "wooden stock"
@@ -830,14 +830,14 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/stock/hunting/New()
 	..()
 	//it makes stuff much better when two-handed
-	accuracy_mod = config.med_hit_accuracy_mult
-	recoil_mod = -config.low_recoil_value
-	scatter_mod = -config.low_scatter_value
-	movement_acc_penalty_mod = -config.low_movement_accuracy_penalty_mult
+	accuracy_mod = HIT_ACCURACY_MULT_TIER_4
+	recoil_mod = -RECOIL_AMOUNT_TIER_4
+	scatter_mod = -SCATTER_AMOUNT_TIER_8
+	movement_acc_penalty_mod = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_5
 	//it makes stuff much worse when one handed
-	accuracy_unwielded_mod = -config.low_hit_accuracy_mult
-	recoil_unwielded_mod = config.low_recoil_value
-	scatter_unwielded_mod = config.low_scatter_value
+	accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_3
+	recoil_unwielded_mod = RECOIL_AMOUNT_TIER_4
+	scatter_unwielded_mod = SCATTER_AMOUNT_TIER_8
 
 /obj/item/attachable/stock/rifle
 	name = "\improper M41A solid stock"
@@ -854,14 +854,14 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/stock/rifle/New()
 	..()
 	//it makes stuff much better when two-handed
-	accuracy_mod = config.med_hit_accuracy_mult
-	recoil_mod = -config.low_recoil_value
-	scatter_mod = -config.low_scatter_value
-	movement_acc_penalty_mod = -config.low_movement_accuracy_penalty_mult
+	accuracy_mod = HIT_ACCURACY_MULT_TIER_4
+	recoil_mod = -RECOIL_AMOUNT_TIER_4
+	scatter_mod = -SCATTER_AMOUNT_TIER_8
+	movement_acc_penalty_mod = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_5
 	//it makes stuff much worse when one handed
-	accuracy_unwielded_mod = -config.low_hit_accuracy_mult
-	recoil_unwielded_mod = config.low_recoil_value
-	scatter_unwielded_mod = config.low_scatter_value
+	accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_3
+	recoil_unwielded_mod = RECOIL_AMOUNT_TIER_4
+	scatter_unwielded_mod = SCATTER_AMOUNT_TIER_8
 	//but at the same time you are slow when 2 handed
 	aim_speed_mod = config.slowdown_med
 
@@ -879,14 +879,14 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/stock/carbine/New()
 	..()
 	//it makes stuff much better when two-handed
-	accuracy_mod = config.med_hit_accuracy_mult
-	recoil_mod = -config.low_recoil_value
-	scatter_mod = -config.low_scatter_value
-	movement_acc_penalty_mod = -config.low_movement_accuracy_penalty_mult
+	accuracy_mod = HIT_ACCURACY_MULT_TIER_4
+	recoil_mod = -RECOIL_AMOUNT_TIER_4
+	scatter_mod = -SCATTER_AMOUNT_TIER_8
+	movement_acc_penalty_mod = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_5
 	//it makes stuff much worse when one handed
-	accuracy_unwielded_mod = -config.low_hit_accuracy_mult
-	recoil_unwielded_mod = config.low_recoil_value
-	scatter_unwielded_mod = config.low_scatter_value
+	accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_3
+	recoil_unwielded_mod = RECOIL_AMOUNT_TIER_4
+	scatter_unwielded_mod = SCATTER_AMOUNT_TIER_8
 
 
 /obj/item/attachable/stock/rifle/marksman
@@ -910,11 +910,11 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/stock/smg/New()
 	..()
-	accuracy_mod = config.high_hit_accuracy_mult
-	recoil_mod = -config.med_recoil_value
-	scatter_mod = -config.med_scatter_value
+	accuracy_mod = HIT_ACCURACY_MULT_TIER_7
+	recoil_mod = -RECOIL_AMOUNT_TIER_3
+	scatter_mod = -SCATTER_AMOUNT_TIER_6
 	delay_mod = 0
-	movement_acc_penalty_mod = -config.low_movement_accuracy_penalty_mult
+	movement_acc_penalty_mod = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_5
 	aim_speed_mod = config.slowdown_low
 
 
@@ -936,26 +936,26 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/stock/smg/collapsible/New()
 	..()
 	//it makes stuff much better when two-handed
-	accuracy_mod = config.low_hit_accuracy_mult
-	recoil_mod = -config.low_recoil_value
-	scatter_mod = -config.low_scatter_value
+	accuracy_mod = HIT_ACCURACY_MULT_TIER_3
+	recoil_mod = -RECOIL_AMOUNT_TIER_4
+	scatter_mod = -SCATTER_AMOUNT_TIER_8
 	wield_delay_mod = WIELD_DELAY_FAST
 	delay_mod = 0
-	movement_acc_penalty_mod = -config.low_movement_accuracy_penalty_mult
+	movement_acc_penalty_mod = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_5
 	//it makes stuff much worse when one handed
-	accuracy_unwielded_mod = -config.low_hit_accuracy_mult
-	recoil_unwielded_mod = config.low_recoil_value
-	scatter_unwielded_mod = config.min_scatter_value
+	accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_3
+	recoil_unwielded_mod = RECOIL_AMOUNT_TIER_4
+	scatter_unwielded_mod = SCATTER_AMOUNT_TIER_10
 	//but at the same time you are slowish when 2 handed
 	aim_speed_mod = config.slowdown_low
 
 
 /obj/item/attachable/stock/smg/collapsible/proc/apply_on_weapon(obj/item/weapon/gun/G)
 	if(activated)
-		scatter_unwielded_mod = config.min_scatter_value
+		scatter_unwielded_mod = SCATTER_AMOUNT_TIER_10
 		size_mod = 1
 	else
-		scatter_unwielded_mod = -config.low_scatter_value + config.mlow_scatter_value
+		scatter_unwielded_mod = -SCATTER_AMOUNT_TIER_8 + SCATTER_AMOUNT_TIER_9
 		size_mod = 0
 
 	accuracy_mod *= -1
@@ -1020,13 +1020,13 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/stock/smg/brace/New()
 	..()
 	//Makes stuff better when one handed by a LOT.
-	accuracy_unwielded_mod = config.med_hit_accuracy_mult
-	recoil_unwielded_mod = -config.high_recoil_value
-	delay_mod = config.mlow_fire_delay
+	accuracy_unwielded_mod = HIT_ACCURACY_MULT_TIER_4
+	recoil_unwielded_mod = -RECOIL_AMOUNT_TIER_2
+	delay_mod = FIRE_DELAY_TIER_9
 	burst_scatter_mod = -1 //Don't ghandi this, aka don't make the value push the stat bonus into the negative, which wraps around into a debuff.
 	//But... it makes wielding something really, really bad.
-	accuracy_mod = config.low_hit_accuracy_mult
-	recoil_mod = config.high_recoil_value
+	accuracy_mod = HIT_ACCURACY_MULT_TIER_3
+	recoil_mod = RECOIL_AMOUNT_TIER_2
 	scatter_unwielded_mod = -1
 
 /obj/item/attachable/stock/revolver
@@ -1050,13 +1050,13 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/stock/revolver/New()
 	..()
 	//it makes stuff much better when two-handed
-	accuracy_mod = config.high_hit_accuracy_mult
-	recoil_mod = -config.low_recoil_value
-	scatter_mod = -config.low_scatter_value
+	accuracy_mod = HIT_ACCURACY_MULT_TIER_7
+	recoil_mod = -RECOIL_AMOUNT_TIER_4
+	scatter_mod = -SCATTER_AMOUNT_TIER_8
 	//it makes stuff much worse when one handed
-	accuracy_unwielded_mod = -config.low_hit_accuracy_mult
-	recoil_unwielded_mod = config.low_recoil_value
-	scatter_unwielded_mod = config.low_scatter_value
+	accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_3
+	recoil_unwielded_mod = RECOIL_AMOUNT_TIER_4
+	scatter_unwielded_mod = SCATTER_AMOUNT_TIER_8
 	//but at the same time you are slow when 2 handed
 	aim_speed_mod = config.slowdown_med
 
@@ -1196,7 +1196,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/attached_gun/grenade/New()
 	..()
-	attachment_firing_delay = config.max_fire_delay * 3
+	attachment_firing_delay = FIRE_DELAY_TIER_4 * 3
 	loaded_grenades = list()
 
 /obj/item/attachable/attached_gun/grenade/examine(mob/user)
@@ -1278,7 +1278,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/attached_gun/flamer/New()
 	..()
-	attachment_firing_delay = config.max_fire_delay * 5
+	attachment_firing_delay = FIRE_DELAY_TIER_4 * 5
 
 /obj/item/attachable/attached_gun/flamer/examine(mob/user)
 	..()
@@ -1350,8 +1350,8 @@ Defined in conflicts.dm of the #defines folder.
 	if(!locate(/obj/flamer_fire) in T) // No stacking flames!
 		var/datum/reagent/napalm/ut/R = new()
 
-		R.intensityfire = config.min_burnlevel
-		R.durationfire = config.min_burntime
+		R.intensityfire = BURN_LEVEL_TIER_1
+		R.durationfire = BURN_TIME_TIER_1
 
 		new/obj/flamer_fire(T, initial(name), user, R)
 
@@ -1372,7 +1372,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/attached_gun/shotgun/New()
 	..()
-	attachment_firing_delay = config.mhigh_fire_delay*3
+	attachment_firing_delay = FIRE_DELAY_TIER_5*3
 
 /obj/item/attachable/attached_gun/shotgun/examine(mob/user)
 	..()
@@ -1451,13 +1451,13 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/verticalgrip/New()
 	..()
-	accuracy_mod = config.low_hit_accuracy_mult
-	recoil_mod = -config.min_recoil_value
-	scatter_mod = -config.min_scatter_value
+	accuracy_mod = HIT_ACCURACY_MULT_TIER_3
+	recoil_mod = -RECOIL_AMOUNT_TIER_5
+	scatter_mod = -SCATTER_AMOUNT_TIER_10
 	burst_scatter_mod = -2
-	movement_acc_penalty_mod = config.low_movement_accuracy_penalty_mult
-	accuracy_unwielded_mod = -config.low_hit_accuracy_mult
-	scatter_unwielded_mod = config.min_scatter_value
+	movement_acc_penalty_mod = MOVEMENT_ACCURACY_PENALTY_MULT_TIER_5
+	accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_3
+	scatter_unwielded_mod = SCATTER_AMOUNT_TIER_10
 
 
 /obj/item/attachable/angledgrip
@@ -1472,11 +1472,11 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/angledgrip/New()
 	..()
-	recoil_mod = -config.min_recoil_value
-	accuracy_mod = config.min_hit_accuracy_mult
-	accuracy_unwielded_mod = -config.min_hit_accuracy_mult
-	scatter_mod = -config.min_scatter_value
-	scatter_unwielded_mod = config.min_scatter_value
+	recoil_mod = -RECOIL_AMOUNT_TIER_4
+	accuracy_mod = HIT_ACCURACY_MULT_TIER_1
+	accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_1
+	scatter_mod = -SCATTER_AMOUNT_TIER_10
+	scatter_unwielded_mod = SCATTER_AMOUNT_TIER_10
 
 
 
@@ -1489,12 +1489,12 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/gyro/New()
 	..()
-	delay_mod = config.mlow_fire_delay
-	scatter_mod = -config.min_scatter_value
+	delay_mod = FIRE_DELAY_TIER_9
+	scatter_mod = -SCATTER_AMOUNT_TIER_10
 	burst_scatter_mod = -2
-	movement_acc_penalty_mod = -config.med_movement_accuracy_penalty_mult
-	scatter_unwielded_mod = -config.med_scatter_value
-	accuracy_unwielded_mod = config.low_hit_accuracy_mult
+	movement_acc_penalty_mod = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_3
+	scatter_unwielded_mod = -SCATTER_AMOUNT_TIER_6
+	accuracy_unwielded_mod = HIT_ACCURACY_MULT_TIER_3
 
 
 /obj/item/attachable/lasersight
@@ -1508,11 +1508,11 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/lasersight/New()
 	..()
-	accuracy_mod = config.min_hit_accuracy_mult
-	movement_acc_penalty_mod = -config.low_movement_accuracy_penalty_mult
-	scatter_mod = -config.min_scatter_value
-	scatter_unwielded_mod = -config.mlow_scatter_value
-	accuracy_unwielded_mod = config.min_hit_accuracy_mult
+	accuracy_mod = HIT_ACCURACY_MULT_TIER_1
+	movement_acc_penalty_mod = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_5
+	scatter_mod = -SCATTER_AMOUNT_TIER_10
+	scatter_unwielded_mod = -SCATTER_AMOUNT_TIER_9
+	accuracy_unwielded_mod = HIT_ACCURACY_MULT_TIER_1
 
 
 /datum/event_handler/bipod_movement
@@ -1536,7 +1536,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/bipod/New()
 	..()
-	delay_mod = config.mlow_fire_delay
+	delay_mod = FIRE_DELAY_TIER_9
 
 /obj/item/attachable/bipod/Detach(obj/item/weapon/gun/G)
 	if(bipod_deployed)
@@ -1546,12 +1546,12 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/bipod/proc/undeploy_bipod(obj/item/weapon/gun/G)
 	bipod_deployed = FALSE
 	wield_delay_mod -= WIELD_DELAY_FAST
-	accuracy_mod -= config.hmed_hit_accuracy_mult
-	burst_scatter_mod += config.low_scatter_value
+	accuracy_mod -= HIT_ACCURACY_MULT_TIER_5
+	burst_scatter_mod += SCATTER_AMOUNT_TIER_8
 	if(istype(G,/obj/item/weapon/gun/rifle/sniper/M42A))
-		delay_mod += config.high_fire_delay + config.min_fire_delay
+		delay_mod += FIRE_DELAY_TIER_6 + FIRE_DELAY_TIER_10
 	else
-		delay_mod += config.min_fire_delay + config.mlow_fire_delay
+		delay_mod += FIRE_DELAY_TIER_10 + FIRE_DELAY_TIER_9
 	G.recalculate_attachment_bonuses()
 
 /obj/item/attachable/bipod/activate_attachment(obj/item/weapon/gun/G,mob/living/user, turn_off)
@@ -1571,12 +1571,12 @@ Defined in conflicts.dm of the #defines folder.
 			if(bipod_deployed)
 				to_chat(user, SPAN_NOTICE("You deploy [src][support ? " on [support]" : ""]."))
 				wield_delay_mod += WIELD_DELAY_FAST
-				accuracy_mod += config.hmed_hit_accuracy_mult
-				burst_scatter_mod -= config.low_scatter_value
+				accuracy_mod += HIT_ACCURACY_MULT_TIER_5
+				burst_scatter_mod -= SCATTER_AMOUNT_TIER_8
 				if(istype(G,/obj/item/weapon/gun/rifle/sniper/M42A))
-					delay_mod -= config.high_fire_delay + config.min_fire_delay
+					delay_mod -= FIRE_DELAY_TIER_6 + FIRE_DELAY_TIER_10
 				else
-					delay_mod -= config.min_fire_delay + config.mlow_fire_delay
+					delay_mod -= FIRE_DELAY_TIER_10 + FIRE_DELAY_TIER_9
 				G.recalculate_attachment_bonuses()
 
 				if(!bipod_movement)
@@ -1643,7 +1643,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/burstfire_assembly/New()
 	..()
-	accuracy_mod = -config.low_hit_accuracy_mult
-	burst_mod = config.low_burst_value
+	accuracy_mod = -HIT_ACCURACY_MULT_TIER_3
+	burst_mod = BURST_AMOUNT_TIER_2
 
-	accuracy_unwielded_mod = -config.med_hit_accuracy_mult
+	accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_4

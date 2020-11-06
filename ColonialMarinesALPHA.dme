@@ -68,6 +68,7 @@
 #include "code\__DEFINES\urls.dm"
 #include "code\__DEFINES\vehicle.dm"
 #include "code\__DEFINES\vendors.dm"
+#include "code\__DEFINES\weapon_stats.dm"
 #include "code\__DEFINES\weather.dm"
 #include "code\__DEFINES\xeno.dm"
 #include "code\__DEFINES\dcs\flags.dm"

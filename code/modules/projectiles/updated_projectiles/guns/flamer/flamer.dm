@@ -36,7 +36,7 @@
 
 /obj/item/weapon/gun/flamer/set_gun_config_values()
 	..()
-	fire_delay = config.max_fire_delay * 5
+	fire_delay = FIRE_DELAY_TIER_4 * 5
 
 /obj/item/weapon/gun/flamer/unique_action(mob/user)
 	toggle_flame(user)

@@ -27,10 +27,10 @@
 
 /obj/item/weapon/gun/energy/taser/set_gun_config_values()
 	..()
-	fire_delay = config.med_fire_delay
-	accuracy_mult = config.base_hit_accuracy_mult
-	accuracy_mult_unwielded = config.base_hit_accuracy_mult
-	damage_mult = config.base_hit_damage_mult
+	fire_delay = FIRE_DELAY_TIER_7
+	accuracy_mult = BASE_ACCURACY_MULT
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT
+	damage_mult = BASE_BULLET_DAMAGE_MULT
 	movement_acc_penalty_mult = 0
 	scatter = 0
 	scatter_unwielded = 0
@@ -139,12 +139,12 @@
 
 /obj/item/weapon/gun/energy/plasmarifle/set_gun_config_values()
 	..()
-	fire_delay = config.high_fire_delay*2
-	accuracy_mult = config.base_hit_accuracy_mult + config.max_hit_accuracy_mult
-	accuracy_mult_unwielded = config.base_hit_accuracy_mult + config.max_hit_accuracy_mult
-	scatter = config.med_scatter_value
-	scatter_unwielded = config.med_scatter_value
-	damage_mult = config.base_hit_damage_mult
+	fire_delay = FIRE_DELAY_TIER_6*2
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_10
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_10
+	scatter = SCATTER_AMOUNT_TIER_6
+	scatter_unwielded = SCATTER_AMOUNT_TIER_6
+	damage_mult = BASE_BULLET_DAMAGE_MULT
 
 
 /obj/item/weapon/gun/energy/plasmarifle/examine(mob/user)
@@ -263,12 +263,12 @@
 
 /obj/item/weapon/gun/energy/plasmapistol/set_gun_config_values()
 	..()
-	fire_delay = config.med_fire_delay
-	accuracy_mult = config.base_hit_accuracy_mult + config.med_hit_accuracy_mult
-	accuracy_mult_unwielded = config.base_hit_accuracy_mult + config.high_hit_accuracy_mult
-	scatter = config.low_scatter_value
-	scatter_unwielded = config.med_scatter_value
-	damage_mult = config.base_hit_damage_mult
+	fire_delay = FIRE_DELAY_TIER_7
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_7
+	scatter = SCATTER_AMOUNT_TIER_8
+	scatter_unwielded = SCATTER_AMOUNT_TIER_6
+	damage_mult = BASE_BULLET_DAMAGE_MULT
 
 
 
@@ -348,26 +348,26 @@
 
 /obj/item/weapon/gun/energy/plasma_caster/set_gun_config_values()
 	..()
-	fire_delay = config.high_fire_delay
-	accuracy_mult = config.base_hit_accuracy_mult
-	accuracy_mult_unwielded = config.base_hit_accuracy_mult + config.high_fire_delay
-	scatter = config.med_scatter_value
-	scatter_unwielded = config.med_scatter_value
-	damage_mult = config.base_hit_damage_mult
+	fire_delay = FIRE_DELAY_TIER_6
+	accuracy_mult = BASE_ACCURACY_MULT
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT + FIRE_DELAY_TIER_6
+	scatter = SCATTER_AMOUNT_TIER_6
+	scatter_unwielded = SCATTER_AMOUNT_TIER_6
+	damage_mult = BASE_BULLET_DAMAGE_MULT
 
 /obj/item/weapon/gun/energy/plasma_caster/attack_self(mob/living/user)
 	switch(mode)
 		if(0)
 			mode = 1
 			charge_cost = 300
-			fire_delay = config.high_fire_delay * 20
+			fire_delay = FIRE_DELAY_TIER_6 * 20
 			fire_sound = 'sound/weapons/pulse.ogg'
 			to_chat(user, SPAN_NOTICE("[src] is now set to fire heavy plasma spheres."))
 			ammo = ammo_list[/datum/ammo/energy/yautja/caster/sphere]
 		if(1)
 			mode = 0
 			charge_cost = 30
-			fire_delay = config.high_fire_delay
+			fire_delay = FIRE_DELAY_TIER_6
 			fire_sound = 'sound/weapons/pred_lasercannon.ogg'
 			to_chat(user, SPAN_NOTICE("[src] is now set to fire light plasma bolts."))
 			ammo = ammo_list[/datum/ammo/energy/yautja/caster/bolt]

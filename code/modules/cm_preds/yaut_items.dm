@@ -463,8 +463,8 @@
 /obj/item/weapon/melee/harpoon/yautja/New()
 	. = ..()
 
-	force = config.min_hit_damage
-	throwforce = config.hmed_hit_damage
+	force = BULLET_DAMAGE_TIER_3
+	throwforce = BULLET_DAMAGE_TIER_8
 	
 /obj/item/weapon/wristblades
 	name = "wrist blades"
@@ -488,7 +488,7 @@
 		if(istype(W)) //wristblade in usr's other hand.
 			attack_speed = attack_speed - attack_speed/3
 	attack_verb = list("sliced", "slashed", "jabbed", "torn", "gored")
-	force = config.hlmed_hit_damage
+	force = BULLET_DAMAGE_TIER_5
 
 /obj/item/weapon/wristblades/dropped(mob/living/carbon/human/M)
 	playsound(M,'sound/weapons/wristblades_off.ogg', 15, 1)
@@ -538,8 +538,8 @@
 /obj/item/weapon/yautja_chain/New()
 	. = ..()
 
-	force = config.mhigh_hit_damage
-	throwforce = config.base_hit_damage
+	force = BULLET_DAMAGE_TIER_12
+	throwforce = BULLET_DAMAGE_TIER_2
 
 /obj/item/weapon/yautja_chain/attack(mob/target, mob/living/user)
 	. = ..()
@@ -574,8 +574,8 @@
 /obj/item/weapon/melee/yautja_sword/New()
 	. = ..()
 
-	force = config.med_hit_damage //More damage than other weapons like it. Considering how "strong" this sword is supposed to be, 38 damage was laughable.
-	throwforce = config.min_hit_damage
+	force = BULLET_DAMAGE_TIER_7 //More damage than other weapons like it. Considering how "strong" this sword is supposed to be, 38 damage was laughable.
+	throwforce = BULLET_DAMAGE_TIER_3
 
 /obj/item/weapon/melee/yautja_sword/Destroy()
 	remove_from_missing_pred_gear(src)
@@ -644,8 +644,8 @@
 	. = ..()
 
 	icon_state = pick("predscythe","predscythe_alt")
-	force = config.hmed_hit_damage
-	throwforce = config.mlow_hit_damage
+	force = BULLET_DAMAGE_TIER_8
+	throwforce = BULLET_DAMAGE_TIER_4
 
 /obj/item/weapon/melee/yautja_scythe/Destroy()
 	remove_from_missing_pred_gear(src)
@@ -695,8 +695,8 @@
 /obj/item/weapon/melee/combistick/New()
 	. = ..()
 
-	throwforce = config.med_hit_damage
-	force = config.hlmed_hit_damage
+	throwforce = BULLET_DAMAGE_TIER_7
+	force = BULLET_DAMAGE_TIER_5
 
 /obj/item/weapon/melee/combistick/IsShield()
 	return on
@@ -716,12 +716,12 @@
 
 /obj/item/weapon/melee/combistick/wield(var/mob/user)
 	..()
-	force = config.lmed_plus_hit_damage
+	force = BULLET_DAMAGE_TIER_7
 	update_icon()
 
 /obj/item/weapon/melee/combistick/unwield(mob/user)
 	..()
-	force = config.hlmed_hit_damage
+	force = BULLET_DAMAGE_TIER_5
 	update_icon()
 
 /obj/item/weapon/melee/combistick/verb/use_unique_action()
@@ -758,8 +758,8 @@
 		flags_equip_slot = initial(flags_equip_slot)
 		flags_item |= TWOHANDED
 		w_class = SIZE_LARGE
-		force = config.lmed_hit_damage
-		throwforce = config.med_hit_damage
+		force = BULLET_DAMAGE_TIER_6
+		throwforce = BULLET_DAMAGE_TIER_7
 		attack_verb = list("speared", "stabbed", "impaled")
 		timer = 1
 		addtimer(VARSET_CALLBACK(src, timer, FALSE), 1 SECONDS)
@@ -775,8 +775,8 @@
 		flags_equip_slot = SLOT_STORE
 		flags_item &= ~TWOHANDED
 		w_class = SIZE_TINY
-		force = config.base_hit_damage
-		throwforce = config.med_hit_damage - config.lmed_plus_hit_damage
+		force = BULLET_DAMAGE_TIER_2
+		throwforce = BULLET_DAMAGE_TIER_7 - BULLET_DAMAGE_TIER_7
 		attack_verb = list("thwacked", "smacked")
 		timer = 1
 		addtimer(VARSET_CALLBACK(src, timer, FALSE), 1 SECONDS)
@@ -911,8 +911,8 @@
 /obj/item/explosive/grenade/spawnergrenade/hellhound/New()
 	. = ..()
 
-	force = config.mlow_hit_damage
-	throwforce = config.hmed_hit_damage
+	force = BULLET_DAMAGE_TIER_4
+	throwforce = BULLET_DAMAGE_TIER_8
 
 /obj/item/explosive/grenade/spawnergrenade/hellhound/on_set_interaction(mob/user)
 	..()

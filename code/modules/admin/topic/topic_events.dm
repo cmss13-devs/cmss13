@@ -10,8 +10,6 @@
 			admin_force_selfdestruct()
 		if("medal")
 			owner.award_medal()
-		if("weaponmults")
-			owner.adjust_weapon_mult()
 		if("pmcguns")
 			owner.toggle_gun_restrictions()
 		if("monkify")

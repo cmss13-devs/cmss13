@@ -17,15 +17,15 @@
 
 /obj/item/weapon/gun/rifle/set_gun_config_values()
 	..()
-	fire_delay = config.mhigh_fire_delay
-	burst_amount = config.med_burst_value
-	burst_delay = config.mlow_fire_delay
-	accuracy_mult = config.base_hit_accuracy_mult
-	accuracy_mult_unwielded = config.base_hit_accuracy_mult - config.high_hit_accuracy_mult
-	scatter = config.med_scatter_value
-	scatter_unwielded = config.max_scatter_value
-	damage_mult = config.base_hit_damage_mult
-	recoil_unwielded = config.high_recoil_value
+	fire_delay = FIRE_DELAY_TIER_5
+	burst_amount = BURST_AMOUNT_TIER_3
+	burst_delay = FIRE_DELAY_TIER_9
+	accuracy_mult = BASE_ACCURACY_MULT
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_7
+	scatter = SCATTER_AMOUNT_TIER_6
+	scatter_unwielded = SCATTER_AMOUNT_TIER_2
+	damage_mult = BASE_BULLET_DAMAGE_MULT
+	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 
 /obj/item/weapon/gun/rifle/unique_action(mob/user)
 	cock(user)
@@ -80,16 +80,16 @@
 
 /obj/item/weapon/gun/rifle/m41a/set_gun_config_values()
 	..()
-	fire_delay = config.med_fire_delay
-	burst_amount = config.med_burst_value
-	burst_delay = config.mlow_fire_delay
-	accuracy_mult = config.base_hit_accuracy_mult + config.med_hit_accuracy_mult + 2*config.min_hit_accuracy_mult
-	accuracy_mult_unwielded = config.base_hit_accuracy_mult - config.high_hit_accuracy_mult
-	scatter = config.low_scatter_value
-	burst_scatter_mult = config.min_scatter_value
-	scatter_unwielded = config.max_scatter_value
-	damage_mult = config.base_hit_damage_mult + config.low_hit_damage_mult
-	recoil_unwielded = config.high_recoil_value
+	fire_delay = FIRE_DELAY_TIER_7
+	burst_amount = BURST_AMOUNT_TIER_3
+	burst_delay = FIRE_DELAY_TIER_9
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4 + 2*HIT_ACCURACY_MULT_TIER_1
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_7
+	scatter = SCATTER_AMOUNT_TIER_8
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_10
+	scatter_unwielded = SCATTER_AMOUNT_TIER_2
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_2
+	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 
 
 //variant without ugl attachment
@@ -126,14 +126,14 @@
 
 /obj/item/weapon/gun/rifle/m41a/elite/set_gun_config_values()
 	..()
-	fire_delay = config.mlow_fire_delay
-	burst_amount = config.low_burst_value
-	burst_delay = config.min_fire_delay
-	accuracy_mult = config.base_hit_accuracy_mult + config.max_hit_accuracy_mult
-	accuracy_mult_unwielded = config.base_hit_accuracy_mult - config.med_hit_accuracy_mult
-	scatter = config.min_scatter_value
-	burst_scatter_mult = config.min_scatter_value
-	scatter_unwielded = config.high_scatter_value
+	fire_delay = FIRE_DELAY_TIER_9
+	burst_amount = BURST_AMOUNT_TIER_2
+	burst_delay = FIRE_DELAY_TIER_10
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_10
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_4
+	scatter = SCATTER_AMOUNT_TIER_10
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_10
+	scatter_unwielded = SCATTER_AMOUNT_TIER_4
 
 
 //-------------------------------------------------------
@@ -167,16 +167,16 @@
 
 /obj/item/weapon/gun/rifle/m41aMK1/set_gun_config_values()
 	..()
-	fire_delay = config.mhigh_fire_delay
-	burst_amount = config.high_burst_value
-	burst_delay = config.mlow_fire_delay
-	accuracy_mult = config.base_hit_accuracy_mult - config.min_hit_accuracy_mult
-	accuracy_mult_unwielded = config.base_hit_accuracy_mult - config.high_hit_accuracy_mult
-	scatter = config.med_scatter_value
-	burst_scatter_mult = config.med_scatter_value
-	scatter_unwielded = config.max_scatter_value
-	damage_mult = config.base_hit_damage_mult
-	recoil_unwielded = config.high_recoil_value
+	fire_delay = FIRE_DELAY_TIER_5
+	burst_amount = BURST_AMOUNT_TIER_4
+	burst_delay = FIRE_DELAY_TIER_9
+	accuracy_mult = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_1
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_7
+	scatter = SCATTER_AMOUNT_TIER_6
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_6
+	scatter_unwielded = SCATTER_AMOUNT_TIER_2
+	damage_mult = BASE_BULLET_DAMAGE_MULT
+	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 
 //----------------------------------------------
 //Special gun for the CO to replace the smartgun
@@ -262,16 +262,16 @@
 
 /obj/item/weapon/gun/rifle/m46c/set_gun_config_values()
 	..()
-	fire_delay = config.mhigh_fire_delay
-	burst_amount = config.mhigh_burst_value
-	burst_delay = config.mlow_fire_delay
-	accuracy_mult = config.base_hit_accuracy_mult + config.hmed_hit_accuracy_mult
-	accuracy_mult_unwielded = config.base_hit_accuracy_mult - config.high_hit_accuracy_mult
-	scatter = config.low_scatter_value
-	burst_scatter_mult = config.low_scatter_value
-	scatter_unwielded = config.max_scatter_value
-	damage_mult = config.base_hit_damage_mult + config.med_hit_damage_mult
-	recoil_unwielded = config.high_recoil_value
+	fire_delay = FIRE_DELAY_TIER_5
+	burst_amount = BURST_AMOUNT_TIER_5
+	burst_delay = FIRE_DELAY_TIER_9
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_5
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_7
+	scatter = SCATTER_AMOUNT_TIER_8
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_8
+	scatter_unwielded = SCATTER_AMOUNT_TIER_2
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_4
+	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 
 /obj/item/weapon/gun/rifle/m46c/able_to_fire(mob/user)
 	. = ..()
@@ -399,17 +399,17 @@
 
 /obj/item/weapon/gun/rifle/mar40/set_gun_config_values()
 	..()
-	fire_delay = config.med_fire_delay
-	burst_amount = config.high_burst_value
-	burst_delay = config.mlow_fire_delay
-	accuracy_mult = config.base_hit_accuracy_mult
-	accuracy_mult_unwielded = config.base_hit_accuracy_mult - config.high_hit_accuracy_mult
-	scatter = config.med_scatter_value
-	burst_scatter_mult = config.low_scatter_value
-	scatter_unwielded = config.max_scatter_value
-	damage_mult = config.base_hit_damage_mult
-	recoil_unwielded = config.high_recoil_value
-	recoil = config.min_recoil_value
+	fire_delay = FIRE_DELAY_TIER_7
+	burst_amount = BURST_AMOUNT_TIER_4
+	burst_delay = FIRE_DELAY_TIER_9
+	accuracy_mult = BASE_ACCURACY_MULT
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_7
+	scatter = SCATTER_AMOUNT_TIER_6
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_8
+	scatter_unwielded = SCATTER_AMOUNT_TIER_2
+	damage_mult = BASE_BULLET_DAMAGE_MULT
+	recoil_unwielded = RECOIL_AMOUNT_TIER_2
+	recoil = RECOIL_AMOUNT_TIER_5
 
 
 /obj/item/weapon/gun/rifle/mar40/carbine
@@ -467,11 +467,11 @@
 
 /obj/item/weapon/gun/rifle/mar40/carbine/set_gun_config_values()
 	..()
-	fire_delay = config.low_fire_delay
-	accuracy_mult_unwielded = config.base_hit_accuracy_mult - config.med_hit_accuracy_mult
-	damage_mult = config.base_hit_damage_mult - config.low_hit_damage_mult
-	scatter_unwielded = config.high_scatter_value
-	recoil_unwielded = config.med_recoil_value
+	fire_delay = FIRE_DELAY_TIER_8
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_4
+	damage_mult = BASE_BULLET_DAMAGE_MULT - BULLET_DAMAGE_MULT_TIER_2
+	scatter_unwielded = SCATTER_AMOUNT_TIER_4
+	recoil_unwielded = RECOIL_AMOUNT_TIER_3
 
 
 //-------------------------------------------------------
@@ -539,16 +539,16 @@
 
 /obj/item/weapon/gun/rifle/m16/set_gun_config_values()
 	..()
-	fire_delay = config.med_fire_delay
-	burst_amount = config.med_burst_value
-	burst_delay = config.mlow_fire_delay
-	accuracy_mult = config.base_hit_accuracy_mult + config.min_hit_accuracy_mult
-	accuracy_mult_unwielded = config.base_hit_accuracy_mult - config.high_hit_accuracy_mult
-	scatter = config.low_scatter_value
-	burst_scatter_mult = config.mlow_scatter_value
-	scatter_unwielded = config.max_scatter_value
-	damage_mult = config.base_hit_damage_mult + config.min_hit_damage_mult
-	recoil_unwielded = config.high_recoil_value
+	fire_delay = FIRE_DELAY_TIER_7
+	burst_amount = BURST_AMOUNT_TIER_3
+	burst_delay = FIRE_DELAY_TIER_9
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_1
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_7
+	scatter = SCATTER_AMOUNT_TIER_8
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_9
+	scatter_unwielded = SCATTER_AMOUNT_TIER_2
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_1
+	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 
 //-------------------------------------------------------
 //DUTCH'S GEAR
@@ -589,16 +589,16 @@
 
 /obj/item/weapon/gun/rifle/m16/set_gun_config_values()
 	..()
-	fire_delay = config.mlow_fire_delay
-	burst_amount = config.med_burst_value
-	burst_delay = config.mlow_fire_delay
-	accuracy_mult = config.base_hit_accuracy_mult + config.high_hit_accuracy_mult
-	accuracy_mult_unwielded = config.base_hit_accuracy_mult - config.high_hit_accuracy_mult
-	scatter = config.min_scatter_value
-	burst_scatter_mult = config.min_scatter_value
-	scatter_unwielded = config.max_scatter_value
-	damage_mult = config.base_hit_damage_mult + config.med_hit_damage_mult
-	recoil_unwielded = config.high_recoil_value
+	fire_delay = FIRE_DELAY_TIER_9
+	burst_amount = BURST_AMOUNT_TIER_3
+	burst_delay = FIRE_DELAY_TIER_9
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_7
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_7
+	scatter = SCATTER_AMOUNT_TIER_10
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_10
+	scatter_unwielded = SCATTER_AMOUNT_TIER_2
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_4
+	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 
 //-------------------------------------------------------
 //M41AE2 HEAVY PULSE RIFLE
@@ -636,19 +636,19 @@
 
 /obj/item/weapon/gun/rifle/lmg/set_gun_config_values()
 	..()
-	fire_delay = config.mlow_fire_delay
-	burst_amount = config.high_burst_value
-	burst_delay = config.mlow_fire_delay
-	fa_delay = config.mlow_fire_delay
-	fa_scatter_peak = config.hmed_scatter_peak
-	fa_max_scatter = config.high_scatter_value
-	accuracy_mult = config.base_hit_accuracy_mult
-	accuracy_mult_unwielded = config.base_hit_accuracy_mult - config.max_hit_accuracy_mult
-	scatter = config.med_scatter_value
-	burst_scatter_mult = config.hmed_scatter_value
-	scatter_unwielded = config.max_scatter_value
-	damage_mult = config.base_hit_damage_mult
-	recoil_unwielded = config.max_recoil_value
+	fire_delay = FIRE_DELAY_TIER_9
+	burst_amount = BURST_AMOUNT_TIER_4
+	burst_delay = FIRE_DELAY_TIER_9
+	fa_delay = FIRE_DELAY_TIER_9
+	fa_scatter_peak = FULL_AUTO_SCATTER_PEAK_TIER_3
+	fa_max_scatter = SCATTER_AMOUNT_TIER_4
+	accuracy_mult = BASE_ACCURACY_MULT
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_10
+	scatter = SCATTER_AMOUNT_TIER_6
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_5
+	scatter_unwielded = SCATTER_AMOUNT_TIER_2
+	damage_mult = BASE_BULLET_DAMAGE_MULT
+	recoil_unwielded = RECOIL_AMOUNT_TIER_1
 
 
 
@@ -697,16 +697,16 @@
 
 /obj/item/weapon/gun/rifle/type71/set_gun_config_values()
 	..()
-	fire_delay = config.low_fire_delay
-	burst_amount = config.high_burst_value
-	burst_delay = config.mlow_fire_delay
-	accuracy_mult = config.base_hit_accuracy_mult + config.med_hit_accuracy_mult
-	accuracy_mult_unwielded = config.base_hit_accuracy_mult - config.high_hit_accuracy_mult
-	scatter = config.med_scatter_value
-	burst_scatter_mult = config.min_scatter_value
-	scatter_unwielded = config.high_scatter_value
-	damage_mult = config.base_hit_damage_mult
-	recoil_unwielded = config.med_recoil_value
+	fire_delay = FIRE_DELAY_TIER_8
+	burst_amount = BURST_AMOUNT_TIER_4
+	burst_delay = FIRE_DELAY_TIER_9
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_7
+	scatter = SCATTER_AMOUNT_TIER_6
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_10
+	scatter_unwielded = SCATTER_AMOUNT_TIER_4
+	damage_mult = BASE_BULLET_DAMAGE_MULT
+	recoil_unwielded = RECOIL_AMOUNT_TIER_3
 
 
 /obj/item/weapon/gun/rifle/type71/flamer
@@ -747,10 +747,10 @@
 
 /obj/item/weapon/gun/rifle/type71/carbine/set_gun_config_values()
 	..()
-	fire_delay = config.mlow_fire_delay
-	damage_mult = config.base_hit_damage_mult - config.low_hit_damage_mult
-	scatter_unwielded = config.hmed_scatter_value
-	recoil_unwielded = config.low_recoil_value
+	fire_delay = FIRE_DELAY_TIER_9
+	damage_mult = BASE_BULLET_DAMAGE_MULT - BULLET_DAMAGE_MULT_TIER_2
+	scatter_unwielded = SCATTER_AMOUNT_TIER_5
+	recoil_unwielded = RECOIL_AMOUNT_TIER_4
 
 
 /obj/item/weapon/gun/rifle/type71/carbine/commando
@@ -792,11 +792,11 @@
 
 /obj/item/weapon/gun/rifle/type71/carbine/commando/set_gun_config_values()
 	..()
-	accuracy_mult = config.base_hit_accuracy_mult + config.high_hit_accuracy_mult
-	accuracy_mult_unwielded = config.base_hit_accuracy_mult - config.med_hit_accuracy_mult
-	fire_delay = config.mlow_fire_delay
-	burst_delay = config.min_fire_delay
-	scatter = config.low_scatter_value
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_7
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_4
+	fire_delay = FIRE_DELAY_TIER_9
+	burst_delay = FIRE_DELAY_TIER_10
+	scatter = SCATTER_AMOUNT_TIER_8
 
 //-------------------------------------------------------
 
@@ -865,16 +865,16 @@
 
 /obj/item/weapon/gun/rifle/type71/hvh/set_gun_config_values()
 	..()
-	fire_delay = config.low_fire_delay
-	burst_amount = config.high_burst_value
-	burst_delay = config.mlow_fire_delay
-	accuracy_mult = config.base_hit_accuracy_mult + config.med_hit_accuracy_mult + 2*config.low_hit_accuracy_mult
-	accuracy_mult_unwielded = config.base_hit_accuracy_mult - config.high_hit_accuracy_mult
-	scatter = config.med_scatter_value
-	burst_scatter_mult = config.min_scatter_value
-	scatter_unwielded = config.high_scatter_value
-	damage_mult = config.base_hit_damage_mult + config.low_hit_damage_mult
-	recoil_unwielded = config.med_recoil_value
+	fire_delay = FIRE_DELAY_TIER_8
+	burst_amount = BURST_AMOUNT_TIER_4
+	burst_delay = FIRE_DELAY_TIER_9
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4 + 2*HIT_ACCURACY_MULT_TIER_3
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_7
+	scatter = SCATTER_AMOUNT_TIER_6
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_10
+	scatter_unwielded = SCATTER_AMOUNT_TIER_4
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_2
+	recoil_unwielded = RECOIL_AMOUNT_TIER_3
 
 // Flamer Type 71 HvH Rifle
 /obj/item/weapon/gun/rifle/type71/flamer/hvh/Initialize()
@@ -888,15 +888,15 @@
 
 /obj/item/weapon/gun/rifle/type71/carbine/hvh/set_gun_config_values()
 	..()
-	fire_delay = config.mlow_fire_delay
-	burst_delay = config.min_fire_delay
-	accuracy_mult = config.base_hit_accuracy_mult
-	accuracy_mult_unwielded = config.base_hit_accuracy_mult - config.low_hit_accuracy_mult
-	scatter = config.low_scatter_value
-	burst_scatter_mult = config.low_scatter_value
-	scatter_unwielded = config.med_scatter_value
-	damage_mult = config.base_hit_damage_mult - config.low_hit_damage_mult
-	recoil_unwielded = config.low_recoil_value
+	fire_delay = FIRE_DELAY_TIER_9
+	burst_delay = FIRE_DELAY_TIER_10
+	accuracy_mult = BASE_ACCURACY_MULT
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_3
+	scatter = SCATTER_AMOUNT_TIER_8
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_8
+	scatter_unwielded = SCATTER_AMOUNT_TIER_6
+	damage_mult = BASE_BULLET_DAMAGE_MULT - BULLET_DAMAGE_MULT_TIER_2
+	recoil_unwielded = RECOIL_AMOUNT_TIER_4
 
 // Commando Type 71 HvH Rifle
 /obj/item/weapon/gun/rifle/type71/carbine/commando/hvh/Initialize()
@@ -905,18 +905,18 @@
 
 /obj/item/weapon/gun/rifle/type71/carbine/commando/hvh/set_gun_config_values()
 	..()
-	fire_delay = config.mlow_fire_delay
-	burst_amount = config.med_burst_value
-	burst_delay = config.mlow_fire_delay
-	accuracy_mult = config.base_hit_accuracy_mult + config.max_hit_accuracy_mult
-	accuracy_mult_unwielded = config.base_hit_accuracy_mult - config.min_hit_accuracy_mult
-	damage_mult = config.base_hit_damage_mult + config.low_hit_damage_mult
-	scatter = config.min_scatter_value
-	burst_scatter_mult = config.min_scatter_value
-	scatter_unwielded = config.lmed_scatter_value
-	recoil = config.min_recoil_value
-	recoil_unwielded = config.min_recoil_value
-	movement_acc_penalty_mult = config.mlow_movement_accuracy_penalty_mult
+	fire_delay = FIRE_DELAY_TIER_9
+	burst_amount = BURST_AMOUNT_TIER_3
+	burst_delay = FIRE_DELAY_TIER_9
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_10
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_1
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_2
+	scatter = SCATTER_AMOUNT_TIER_10
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_10
+	scatter_unwielded = SCATTER_AMOUNT_TIER_7
+	recoil = RECOIL_AMOUNT_TIER_5
+	recoil_unwielded = RECOIL_AMOUNT_TIER_5
+	movement_acc_penalty_mult = MOVEMENT_ACCURACY_PENALTY_MULT_TIER_4
 
 //-------------------------------------------------------
 #undef UPP_HVH_ATTACHABLES_CARBINE
@@ -961,14 +961,14 @@
 
 /obj/item/weapon/gun/rifle/l42a/set_gun_config_values()
 	..()
-	fire_delay = config.high_fire_delay
+	fire_delay = FIRE_DELAY_TIER_6
 	burst_amount = 0
-	accuracy_mult = config.base_hit_accuracy_mult + config.hmed_hit_accuracy_mult
-	accuracy_mult_unwielded = config.base_hit_accuracy_mult - config.med_hit_accuracy_mult
-	damage_mult = config.base_hit_damage_mult + config.hmed_hit_damage_mult
-	recoil_unwielded = config.low_recoil_value
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_5
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_4
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_6
+	recoil_unwielded = RECOIL_AMOUNT_TIER_4
 	damage_falloff_mult = 0
-	scatter = config.low_scatter_value
+	scatter = SCATTER_AMOUNT_TIER_8
 
 //-------------------------------------------------------
 //-------------------------------------------------------
@@ -1009,11 +1009,11 @@
 
 /obj/item/weapon/gun/rifle/hunting/set_gun_config_values()
 	..()
-	fire_delay = config.med_fire_delay
+	fire_delay = FIRE_DELAY_TIER_7
 	burst_amount = 0
-	accuracy_mult = config.base_hit_accuracy_mult + config.max_hit_accuracy_mult
-	accuracy_mult_unwielded = config.base_hit_accuracy_mult - config.med_hit_accuracy_mult
-	scatter = config.min_scatter_value
-	damage_mult = config.base_hit_damage_mult + config.hmed_hit_damage_mult
-	recoil_unwielded = config.low_recoil_value
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_10
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_4
+	scatter = SCATTER_AMOUNT_TIER_10
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_6
+	recoil_unwielded = RECOIL_AMOUNT_TIER_4
 	damage_falloff_mult = 0

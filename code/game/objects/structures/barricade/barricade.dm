@@ -307,7 +307,7 @@
 obj/structure/barricade/acid_spray_act()
 	take_damage(rand(20, 30) * burn_multiplier)
 
-/obj/structure/barricade/flamer_fire_act(var/dam = config.min_burnlevel)
+/obj/structure/barricade/flamer_fire_act(var/dam = BURN_LEVEL_TIER_1)
 	take_damage(dam * burn_multiplier)
 
 /obj/structure/barricade/proc/hit_barricade(obj/item/I)

@@ -195,9 +195,9 @@
 	if(!istype(T))
 		return
 	var/datum/reagent/R = new /datum/reagent/napalm/ut()
-	if(burn_level >= config.high_burnlevel)
+	if(burn_level >= BURN_LEVEL_TIER_7)
 		R = new /datum/reagent/napalm/blue()
-	else if(burn_level <= config.low_burnlevel)
+	else if(burn_level <= BURN_LEVEL_TIER_2)
 		R = new /datum/reagent/napalm/green()
 
 	R.durationfire = flame_level

@@ -72,16 +72,16 @@
 
 /obj/item/weapon/gun/smg/m39/set_gun_config_values()
 	..()
-	fire_delay = config.min_fire_delay
-	burst_delay = config.min_fire_delay
-	burst_amount = config.high_burst_value
-	accuracy_mult = config.base_hit_accuracy_mult
-	accuracy_mult_unwielded = config.base_hit_accuracy_mult - config.hmed_hit_accuracy_mult
-	scatter = config.high_scatter_value
-	burst_scatter_mult = config.med_scatter_value
-	scatter_unwielded = config.high_scatter_value
-	damage_mult = config.base_hit_damage_mult
-	recoil_unwielded = config.min_recoil_value
+	fire_delay = FIRE_DELAY_TIER_10
+	burst_delay = FIRE_DELAY_TIER_10
+	burst_amount = BURST_AMOUNT_TIER_4
+	accuracy_mult = BASE_ACCURACY_MULT
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_5
+	scatter = SCATTER_AMOUNT_TIER_4
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_6
+	scatter_unwielded = SCATTER_AMOUNT_TIER_4
+	damage_mult = BASE_BULLET_DAMAGE_MULT
+	recoil_unwielded = RECOIL_AMOUNT_TIER_5
 
 //-------------------------------------------------------
 
@@ -108,13 +108,13 @@
 
 /obj/item/weapon/gun/smg/m39/elite/set_gun_config_values()
 	..()
-	fire_delay = config.min_fire_delay
-	accuracy_mult = config.base_hit_accuracy_mult + config.high_hit_accuracy_mult
-	accuracy_mult_unwielded = config.base_hit_accuracy_mult
-	scatter = config.mlow_scatter_value
-	burst_scatter_mult = config.min_scatter_value
-	scatter_unwielded = config.med_scatter_value
-	damage_mult =  config.base_hit_damage_mult + config.high_hit_damage_mult
+	fire_delay = FIRE_DELAY_TIER_10
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_7
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT
+	scatter = SCATTER_AMOUNT_TIER_9
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_10
+	scatter_unwielded = SCATTER_AMOUNT_TIER_6
+	damage_mult =  BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_7
 
 //-------------------------------------------------------
 //M5, a classic SMG used in a lot of action movies.
@@ -161,17 +161,17 @@
 
 /obj/item/weapon/gun/smg/mp5/set_gun_config_values()
 	..()
-	fire_delay = config.mlow_fire_delay
-	burst_delay = config.min_fire_delay
-	burst_amount = config.high_burst_value
+	fire_delay = FIRE_DELAY_TIER_9
+	burst_delay = FIRE_DELAY_TIER_10
+	burst_amount = BURST_AMOUNT_TIER_4
 
-	accuracy_mult = config.base_hit_accuracy_mult + config.min_hit_accuracy_mult
-	accuracy_mult_unwielded = config.base_hit_accuracy_mult + config.min_hit_accuracy_mult - config.hmed_hit_accuracy_mult
-	scatter = config.lmed_scatter_value
-	burst_scatter_mult = config.low_scatter_value
-	scatter_unwielded = config.hmed_scatter_value
-	damage_mult = config.base_hit_damage_mult + config.med_hit_damage_mult
-	recoil_unwielded = config.min_recoil_value
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_1
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_1 - HIT_ACCURACY_MULT_TIER_5
+	scatter = SCATTER_AMOUNT_TIER_7
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_8
+	scatter_unwielded = SCATTER_AMOUNT_TIER_5
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_4
+	recoil_unwielded = RECOIL_AMOUNT_TIER_5
 
 
 //-------------------------------------------------------
@@ -212,17 +212,17 @@
 
 /obj/item/weapon/gun/smg/mp7/set_gun_config_values()
 	..()
-	fire_delay = config.mlow_fire_delay
-	burst_delay = config.min_fire_delay
-	burst_amount = config.high_burst_value
+	fire_delay = FIRE_DELAY_TIER_9
+	burst_delay = FIRE_DELAY_TIER_10
+	burst_amount = BURST_AMOUNT_TIER_4
 
-	accuracy_mult = config.base_hit_accuracy_mult + config.min_hit_accuracy_mult
-	accuracy_mult_unwielded = config.base_hit_accuracy_mult + config.min_hit_accuracy_mult - config.hmed_hit_accuracy_mult
-	scatter = config.med_scatter_value
-	burst_scatter_mult = config.mlow_scatter_value
-	scatter_unwielded = config.high_scatter_value
-	damage_mult = config.base_hit_damage_mult + config.low_hit_damage_mult
-	recoil_unwielded = config.min_recoil_value
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_1
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_1 - HIT_ACCURACY_MULT_TIER_5
+	scatter = SCATTER_AMOUNT_TIER_6
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_9
+	scatter_unwielded = SCATTER_AMOUNT_TIER_4
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_2
+	recoil_unwielded = RECOIL_AMOUNT_TIER_5
 
 //-------------------------------------------------------
 //SKORPION //Based on the same thing.
@@ -258,17 +258,17 @@
 
 /obj/item/weapon/gun/smg/skorpion/set_gun_config_values()
 	..()
-	fire_delay = config.min_fire_delay
-	burst_delay = config.min_fire_delay
-	burst_amount = config.med_burst_value
+	fire_delay = FIRE_DELAY_TIER_10
+	burst_delay = FIRE_DELAY_TIER_10
+	burst_amount = BURST_AMOUNT_TIER_3
 
-	accuracy_mult = config.base_hit_accuracy_mult + config.min_hit_accuracy_mult
-	accuracy_mult_unwielded = config.base_hit_accuracy_mult + config.min_hit_accuracy_mult - config.hmed_hit_accuracy_mult
-	scatter = config.med_scatter_value
-	burst_scatter_mult = config.low_scatter_value
-	scatter_unwielded = config.hmed_scatter_value
-	damage_mult = config.base_hit_damage_mult
-	recoil_unwielded = config.min_recoil_value
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_1
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_1 - HIT_ACCURACY_MULT_TIER_5
+	scatter = SCATTER_AMOUNT_TIER_6
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_8
+	scatter_unwielded = SCATTER_AMOUNT_TIER_5
+	damage_mult = BASE_BULLET_DAMAGE_MULT
+	recoil_unwielded = RECOIL_AMOUNT_TIER_5
 
 
 /obj/item/weapon/gun/smg/skorpion/upp
@@ -294,17 +294,17 @@
 
 /obj/item/weapon/gun/smg/ppsh/set_gun_config_values()
 	..()
-	fire_delay = config.mlow_fire_delay
-	burst_delay = config.min_fire_delay
-	burst_amount = config.med_burst_value
+	fire_delay = FIRE_DELAY_TIER_9
+	burst_delay = FIRE_DELAY_TIER_10
+	burst_amount = BURST_AMOUNT_TIER_3
 
-	accuracy_mult = config.base_hit_accuracy_mult - config.min_hit_accuracy_mult
-	accuracy_mult_unwielded = config.base_hit_accuracy_mult - config.min_hit_accuracy_mult - config.hmed_hit_accuracy_mult
-	scatter = config.hmed_scatter_value
-	burst_scatter_mult = config.low_scatter_value
-	scatter_unwielded = config.mhigh_scatter_value
-	damage_mult = config.base_hit_damage_mult
-	recoil_unwielded = config.min_recoil_value
+	accuracy_mult = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_1
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_1 - HIT_ACCURACY_MULT_TIER_5
+	scatter = SCATTER_AMOUNT_TIER_5
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_8
+	scatter_unwielded = SCATTER_AMOUNT_TIER_3
+	damage_mult = BASE_BULLET_DAMAGE_MULT
+	recoil_unwielded = RECOIL_AMOUNT_TIER_5
 
 
 
@@ -341,17 +341,17 @@
 
 /obj/item/weapon/gun/smg/uzi/set_gun_config_values()
 	..()
-	fire_delay = config.min_fire_delay
-	burst_delay = config.min_fire_delay
-	burst_amount = config.high_burst_value
+	fire_delay = FIRE_DELAY_TIER_10
+	burst_delay = FIRE_DELAY_TIER_10
+	burst_amount = BURST_AMOUNT_TIER_4
 
-	accuracy_mult = config.base_hit_accuracy_mult
-	accuracy_mult_unwielded = config.base_hit_accuracy_mult - config.hmed_hit_accuracy_mult
-	scatter = config.hmed_scatter_value
-	burst_scatter_mult = config.low_scatter_value
-	scatter_unwielded = config.high_scatter_value
-	damage_mult = config.base_hit_damage_mult - config.low_hit_damage_mult
-	recoil_unwielded = config.min_recoil_value
+	accuracy_mult = BASE_ACCURACY_MULT
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_5
+	scatter = SCATTER_AMOUNT_TIER_5
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_8
+	scatter_unwielded = SCATTER_AMOUNT_TIER_4
+	damage_mult = BASE_BULLET_DAMAGE_MULT - BULLET_DAMAGE_MULT_TIER_2
+	recoil_unwielded = RECOIL_AMOUNT_TIER_5
 
 
 //-------------------------------------------------------
@@ -398,17 +398,17 @@
 
 /obj/item/weapon/gun/smg/fp9000/set_gun_config_values()
 	..()
-	fire_delay = config.mlow_fire_delay
-	burst_delay = config.min_fire_delay
-	burst_amount = config.med_burst_value
+	fire_delay = FIRE_DELAY_TIER_9
+	burst_delay = FIRE_DELAY_TIER_10
+	burst_amount = BURST_AMOUNT_TIER_3
 
-	accuracy_mult = config.base_hit_accuracy_mult + config.low_hit_accuracy_mult
-	accuracy_mult_unwielded = config.base_hit_accuracy_mult + config.high_hit_accuracy_mult - config.hmed_hit_accuracy_mult
-	scatter = config.low_scatter_value
-	burst_scatter_mult = config.min_scatter_value
-	scatter_unwielded = config.high_scatter_value
-	damage_mult = config.base_hit_damage_mult
-	recoil_unwielded = config.min_recoil_value
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_3
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_7 - HIT_ACCURACY_MULT_TIER_5
+	scatter = SCATTER_AMOUNT_TIER_8
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_10
+	scatter_unwielded = SCATTER_AMOUNT_TIER_4
+	damage_mult = BASE_BULLET_DAMAGE_MULT
+	recoil_unwielded = RECOIL_AMOUNT_TIER_5
 
 /obj/item/weapon/gun/smg/fp9000/pmc
 	name = "\improper FN FP9000 Submachinegun"
@@ -428,7 +428,7 @@
 
 /obj/item/weapon/gun/smg/fp9000/pmc/set_gun_config_values()
 	..()
-	scatter = config.mlow_scatter_value
-	accuracy_mult = config.base_hit_accuracy_mult + config.high_hit_accuracy_mult
+	scatter = SCATTER_AMOUNT_TIER_9
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_7
 
 //-------------------------------------------------------

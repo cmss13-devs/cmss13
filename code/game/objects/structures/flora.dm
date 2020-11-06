@@ -550,7 +550,7 @@ ICE GRASS
 		else
 			qdel(src)
 
-/obj/structure/flora/jungle/thickbush/flamer_fire_act(var/dam = config.min_burnlevel)
+/obj/structure/flora/jungle/thickbush/flamer_fire_act(var/dam = BURN_LEVEL_TIER_1)
 	health -= dam
 	healthcheck(src)
 

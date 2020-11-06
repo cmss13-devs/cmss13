@@ -20,15 +20,15 @@
 
 /obj/item/weapon/gun/minigun/set_gun_config_values()
 	..()
-	fire_delay = config.min_fire_delay
+	fire_delay = FIRE_DELAY_TIER_10
 	
-	accuracy_mult = config.base_hit_accuracy_mult + config.low_hit_accuracy_mult
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_3
 	
-	scatter = config.mlow_scatter_value // Most of the scatter should come from the recoil
+	scatter = SCATTER_AMOUNT_TIER_9 // Most of the scatter should come from the recoil
 
-	damage_mult = config.base_hit_damage_mult
-	recoil = config.min_recoil_value
-	recoil_buildup_limit = config.med_recoil_value / RECOIL_BUILDUP_VIEWPUNCH_MULTIPLIER
+	damage_mult = BASE_BULLET_DAMAGE_MULT
+	recoil = RECOIL_AMOUNT_TIER_5
+	recoil_buildup_limit = RECOIL_AMOUNT_TIER_3 / RECOIL_BUILDUP_VIEWPUNCH_MULTIPLIER
 
 //Minigun UPP
 /obj/item/weapon/gun/minigun/upp
@@ -62,8 +62,8 @@
 
 /obj/item/weapon/gun/minigun/upp/hvh/set_gun_config_values()
 	..()
-	damage_mult = config.base_hit_damage_mult + config.low_hit_damage_mult
-	recoil_buildup_limit = config.low_recoil_value / RECOIL_BUILDUP_VIEWPUNCH_MULTIPLIER
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_2
+	recoil_buildup_limit = RECOIL_AMOUNT_TIER_4 / RECOIL_BUILDUP_VIEWPUNCH_MULTIPLIER
 
 //M60
 /obj/item/weapon/gun/m60
@@ -95,16 +95,16 @@
 
 /obj/item/weapon/gun/m60/set_gun_config_values()
 	..()
-	fire_delay = config.low_fire_delay
+	fire_delay = FIRE_DELAY_TIER_8
 	burst_amount = 5
-	burst_delay = config.min_fire_delay
-	accuracy_mult = config.base_hit_accuracy_mult
-	accuracy_mult_unwielded = config.base_hit_accuracy_mult
-	scatter = config.min_scatter_value
-	burst_scatter_mult = config.low_scatter_value
-	scatter_unwielded = config.min_scatter_value
-	damage_mult = config.base_hit_damage_mult
-	recoil = config.min_recoil_value
+	burst_delay = FIRE_DELAY_TIER_10
+	accuracy_mult = BASE_ACCURACY_MULT
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT
+	scatter = SCATTER_AMOUNT_TIER_10
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_8
+	scatter_unwielded = SCATTER_AMOUNT_TIER_10
+	damage_mult = BASE_BULLET_DAMAGE_MULT
+	recoil = RECOIL_AMOUNT_TIER_5
 	empty_sound = 'sound/weapons/gun_empty.ogg'
 
 /obj/item/weapon/gun/m60/toggle_burst()
@@ -163,12 +163,12 @@
 
 /obj/item/weapon/gun/launcher/spike/set_gun_config_values()
 	..()
-	fire_delay = config.high_fire_delay
-	accuracy_mult = config.base_hit_accuracy_mult
-	accuracy_mult_unwielded = config.base_hit_accuracy_mult
-	scatter = config.med_scatter_value
-	scatter_unwielded = config.med_scatter_value
-	damage_mult = config.base_hit_damage_mult
+	fire_delay = FIRE_DELAY_TIER_6
+	accuracy_mult = BASE_ACCURACY_MULT
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT
+	scatter = SCATTER_AMOUNT_TIER_6
+	scatter_unwielded = SCATTER_AMOUNT_TIER_6
+	damage_mult = BASE_BULLET_DAMAGE_MULT
 
 
 /obj/item/weapon/gun/launcher/spike/examine(mob/user)

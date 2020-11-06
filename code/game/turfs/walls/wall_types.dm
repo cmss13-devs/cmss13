@@ -576,7 +576,7 @@
 /turf/closed/wall/resin/make_girder()
 	ScrapeAway()
 
-/turf/closed/wall/resin/flamer_fire_act(var/dam = config.min_burnlevel)
+/turf/closed/wall/resin/flamer_fire_act(var/dam = BURN_LEVEL_TIER_1)
 	take_damage(dam)
 
 //this one is only for map use

@@ -472,10 +472,9 @@
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemfiresupp = TRUE
 	//------------------//
-	// THESE NEED TO BE HERE DURING COMPILE TIME. THEY CANNOT BE IN A New() PROC
-	intensityfire = 10 // config.min_burnlevel REPLACE WITH AN ENUM IF POSSIBLE
-	durationfire = 10 // config.min_burntime REPLACE WITH AN ENUM IF POSSIBLE
-	rangefire = 4 // config.min_shell_range REPLACE WITH AN ENUM IF POSSIBLE
+	intensityfire = BURN_LEVEL_TIER_1 
+	durationfire = BURN_TIME_TIER_1
+	rangefire = AMMO_RANGE_TIER_1
 	//------------------//
 	explosive = TRUE
 	power = 0.12
@@ -697,9 +696,9 @@
 
 /datum/reagent/napalm/ut/New()
 	properties = list(
-		PROPERTY_INTENSITY 	= config.med_burnlevel,
-		PROPERTY_DURATION 	= config.low_burntime,
-		PROPERTY_RADIUS 	= config.close_shell_range
+		PROPERTY_INTENSITY 	= BURN_LEVEL_TIER_5,
+		PROPERTY_DURATION 	= BURN_TIME_TIER_2,
+		PROPERTY_RADIUS 	= AMMO_SPEED_TIER_2
 	)
 	. = ..()
 
@@ -713,9 +712,9 @@
 
 /datum/reagent/napalm/gel/New()
 	properties = list(
-		PROPERTY_INTENSITY 	= config.low_burnlevel,
-		PROPERTY_DURATION 	= config.instant_burntime,
-		PROPERTY_RADIUS 	= config.near_shell_range
+		PROPERTY_INTENSITY 	= BURN_LEVEL_TIER_2,
+		PROPERTY_DURATION 	= BURN_TIME_INSTANT,
+		PROPERTY_RADIUS 	= AMMO_SPEED_TIER_2
 	)
 	. = ..()
 
@@ -729,9 +728,9 @@
 
 /datum/reagent/napalm/blue/New()
 	properties = list(
-		PROPERTY_INTENSITY 	= config.high_burnlevel,
-		PROPERTY_DURATION 	= config.high_burntime,
-		PROPERTY_RADIUS 	= config.near_shell_range
+		PROPERTY_INTENSITY 	= BURN_LEVEL_TIER_7,
+		PROPERTY_DURATION 	= BURN_TIME_TIER_4,
+		PROPERTY_RADIUS 	= AMMO_SPEED_TIER_2
 	)
 	. = ..()
 
@@ -746,9 +745,9 @@
 
 /datum/reagent/napalm/green/New()
 	properties = list(
-		PROPERTY_INTENSITY 	= config.low_burnlevel,
-		PROPERTY_DURATION 	= config.max_burntime,
-		PROPERTY_RADIUS 	= config.near_shell_range
+		PROPERTY_INTENSITY 	= BURN_LEVEL_TIER_2,
+		PROPERTY_DURATION 	= BURN_TIME_TIER_5,
+		PROPERTY_RADIUS 	= AMMO_SPEED_TIER_2
 	)
 	. = ..()
 

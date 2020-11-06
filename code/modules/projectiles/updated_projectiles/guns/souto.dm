@@ -15,9 +15,9 @@
 
 /obj/item/weapon/gun/souto/set_gun_config_values()
 	. = ..()
-	accuracy_mult = config.base_hit_accuracy_mult + 2*config.max_hit_accuracy_mult
-	scatter = config.min_scatter_value
-	burst_scatter_mult = config.min_scatter_value
+	accuracy_mult = BASE_ACCURACY_MULT + 2*HIT_ACCURACY_MULT_TIER_10
+	scatter = SCATTER_AMOUNT_TIER_10
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_10
 	
 /obj/item/weapon/gun/souto/Fire(atom/target, mob/living/user, params, reflex = 0, dual_wield)
 	if(!soutopack)

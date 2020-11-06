@@ -14,8 +14,8 @@
 
 /obj/item/explosive/grenade/spawnergrenade/smartdisc/New()
 	..()
-	force = config.min_hit_damage
-	throwforce = config.hlow_hit_damage
+	force = BULLET_DAMAGE_TIER_3
+	throwforce = BULLET_DAMAGE_TIER_5
 	if(!isYautja(loc))
 		add_to_missing_pred_gear(src)
 
@@ -162,8 +162,8 @@
 
 
 /mob/living/simple_animal/hostile/smartdisc/New()
-	melee_damage_lower = config.min_hit_damage
-	melee_damage_upper = config.low_hit_damage
+	melee_damage_lower = BULLET_DAMAGE_TIER_3
+	melee_damage_upper = BULLET_DAMAGE_TIER_5
 	..()
 /mob/living/simple_animal/hostile/smartdisc/Process_Spacemove(var/check_drift = 0)
 	return 1

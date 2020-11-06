@@ -9,11 +9,11 @@
 
 /obj/item/weapon/gun/pistol/tranquilizer/set_gun_config_values()
     ..()
-    fire_delay = config.high_fire_delay
-    accuracy_mult = config.base_hit_accuracy_mult + config.high_hit_accuracy_mult
-    accuracy_mult_unwielded = config.base_hit_accuracy_mult + config.max_hit_accuracy_mult
-    scatter = config.min_scatter_value
-    scatter_unwielded = config.min_scatter_value
+    fire_delay = FIRE_DELAY_TIER_6
+    accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_7
+    accuracy_mult_unwielded = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_10
+    scatter = SCATTER_AMOUNT_TIER_10
+    scatter_unwielded = SCATTER_AMOUNT_TIER_10
     damage_mult = 0 // Miniscule amounts of damage
 
 /obj/item/weapon/gun/pistol/tranquilizer/handle_starting_attachment()//Making the gun have an invisible silencer since it's supposed to have one.

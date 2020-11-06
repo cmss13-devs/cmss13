@@ -51,12 +51,12 @@
 
 /obj/item/weapon/gun/rifle/sniper/M42A/set_gun_config_values()
 	..()
-	fire_delay = config.high_fire_delay*3
-	burst_amount = config.min_burst_value
-	accuracy_mult = config.base_hit_accuracy_mult * 3 //you HAVE to be able to hit
-	scatter = config.low_scatter_value
-	damage_mult = config.base_hit_damage_mult
-	recoil = config.min_recoil_value
+	fire_delay = FIRE_DELAY_TIER_6*3
+	burst_amount = BURST_AMOUNT_TIER_1
+	accuracy_mult = BASE_ACCURACY_MULT * 3 //you HAVE to be able to hit
+	scatter = SCATTER_AMOUNT_TIER_8
+	damage_mult = BASE_BULLET_DAMAGE_MULT
+	recoil = RECOIL_AMOUNT_TIER_5
 
 /obj/item/weapon/gun/rifle/sniper/M42B
 	name = "\improper XM42B experimental anti-tank rifle"
@@ -93,12 +93,12 @@
 
 /obj/item/weapon/gun/rifle/sniper/M42B/set_gun_config_values()
 	..()
-	fire_delay = config.max_fire_delay * 8 //Big boy damage, but it takes a lot of time to fire a shot.
-	burst_amount = config.min_burst_value
-	accuracy_mult = config.base_hit_accuracy_mult + 2*config.max_hit_accuracy_mult
-	scatter = config.min_scatter_value
-	damage_mult = config.base_hit_damage_mult
-	recoil = config.max_recoil_value
+	fire_delay = FIRE_DELAY_TIER_4 * 8 //Big boy damage, but it takes a lot of time to fire a shot.
+	burst_amount = BURST_AMOUNT_TIER_1
+	accuracy_mult = BASE_ACCURACY_MULT + 2*HIT_ACCURACY_MULT_TIER_10
+	scatter = SCATTER_AMOUNT_TIER_10
+	damage_mult = BASE_BULLET_DAMAGE_MULT
+	recoil = RECOIL_AMOUNT_TIER_1
 
 /obj/item/weapon/gun/rifle/sniper/M42B/afterattack(atom/target, mob/user, flag)
 	if(able_to_fire(user))
@@ -138,12 +138,12 @@
 
 /obj/item/weapon/gun/rifle/sniper/elite/set_gun_config_values()
 	..()
-	fire_delay = config.high_fire_delay*5
-	burst_amount = config.min_burst_value
-	accuracy_mult = config.base_hit_accuracy_mult + config.max_hit_accuracy_mult
-	scatter = config.low_scatter_value
-	damage_mult = config.base_hit_damage_mult
-	recoil = config.max_recoil_value
+	fire_delay = FIRE_DELAY_TIER_6*5
+	burst_amount = BURST_AMOUNT_TIER_1
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_10
+	scatter = SCATTER_AMOUNT_TIER_8
+	damage_mult = BASE_BULLET_DAMAGE_MULT
+	recoil = RECOIL_AMOUNT_TIER_1
 
 /obj/item/weapon/gun/rifle/sniper/elite/simulate_recoil(total_recoil = 0, mob/user, atom/target)
 	. = ..()
@@ -195,12 +195,12 @@
 
 /obj/item/weapon/gun/rifle/sniper/svd/set_gun_config_values()
 	..()
-	fire_delay = config.mhigh_fire_delay*2
-	burst_amount = config.low_burst_value
-	accuracy_mult = config.base_hit_accuracy_mult * 3 //you HAVE to be able to hit
-	scatter = config.low_scatter_value
-	damage_mult = config.base_hit_damage_mult
-	recoil = config.min_recoil_value
+	fire_delay = FIRE_DELAY_TIER_5*2
+	burst_amount = BURST_AMOUNT_TIER_2
+	accuracy_mult = BASE_ACCURACY_MULT * 3 //you HAVE to be able to hit
+	scatter = SCATTER_AMOUNT_TIER_8
+	damage_mult = BASE_BULLET_DAMAGE_MULT
+	recoil = RECOIL_AMOUNT_TIER_5
 
 
 
@@ -241,14 +241,14 @@
 //also logs for AA canno
 /obj/item/weapon/gun/rifle/m4ra/set_gun_config_values()
 	..()
-	fire_delay = config.high_fire_delay
-	burst_amount = config.low_burst_value
-	burst_delay = config.min_fire_delay
-	accuracy_mult = config.base_hit_accuracy_mult
-	scatter = config.low_scatter_value
-	burst_scatter_mult = config.low_scatter_value
-	damage_mult = config.base_hit_damage_mult
-	recoil = config.min_recoil_value
+	fire_delay = FIRE_DELAY_TIER_6
+	burst_amount = BURST_AMOUNT_TIER_2
+	burst_delay = FIRE_DELAY_TIER_10
+	accuracy_mult = BASE_ACCURACY_MULT
+	scatter = SCATTER_AMOUNT_TIER_8
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_8
+	damage_mult = BASE_BULLET_DAMAGE_MULT
+	recoil = RECOIL_AMOUNT_TIER_5
 
 /obj/item/weapon/gun/rifle/m4ra/able_to_fire(mob/living/user)
 	. = ..()
@@ -327,17 +327,17 @@
 
 /obj/item/weapon/gun/smartgun/set_gun_config_values()
 	..()
-	fire_delay = config.min_fire_delay
-	burst_amount = config.med_burst_value
-	burst_delay = config.mlow_fire_delay
-	fa_delay = config.mlow_fire_delay
-	fa_scatter_peak = config.ultra_scatter_peak
-	fa_max_scatter = config.hmed_scatter_value
-	accuracy_mult = config.base_hit_accuracy_mult + config.min_hit_accuracy_mult
-	scatter = config.med_scatter_value
-	burst_scatter_mult = config.low_scatter_value
-	damage_mult = config.base_hit_damage_mult
-	recoil = config.min_recoil_value
+	fire_delay = FIRE_DELAY_TIER_10
+	burst_amount = BURST_AMOUNT_TIER_3
+	burst_delay = FIRE_DELAY_TIER_9
+	fa_delay = FIRE_DELAY_TIER_9
+	fa_scatter_peak = FULL_AUTO_SCATTER_PEAK_TIER_6
+	fa_max_scatter = SCATTER_AMOUNT_TIER_5
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_1
+	scatter = SCATTER_AMOUNT_TIER_6
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_8
+	damage_mult = BASE_BULLET_DAMAGE_MULT
+	recoil = RECOIL_AMOUNT_TIER_5
 
 /obj/item/weapon/gun/smartgun/examine(mob/user)
 	..()
@@ -494,12 +494,12 @@
 
 /obj/item/weapon/gun/smartgun/proc/recoil_compensation()
 	if(recoil_compensation)
-		src.scatter = config.min_scatter_value
-		src.recoil = config.no_recoil_value
+		src.scatter = SCATTER_AMOUNT_TIER_10
+		src.recoil = RECOIL_OFF
 		src.drain += 50
 	if(!recoil_compensation)
-		src.scatter = config.med_scatter_value
-		src.recoil = config.med_recoil_value
+		src.scatter = SCATTER_AMOUNT_TIER_6
+		src.recoil = RECOIL_AMOUNT_TIER_3
 		src.drain -= 50
 
 /obj/item/weapon/gun/smartgun/proc/toggle_accuracy_improvement(mob/user)
@@ -510,10 +510,10 @@
 
 /obj/item/weapon/gun/smartgun/proc/accuracy_improvement()
 	if(accuracy_improvement)
-		src.accuracy_mult += config.min_hit_accuracy_mult
+		src.accuracy_mult += HIT_ACCURACY_MULT_TIER_1
 		src.drain += 50
 	if(!accuracy_improvement)
-		src.accuracy_mult -= config.min_hit_accuracy_mult
+		src.accuracy_mult -= HIT_ACCURACY_MULT_TIER_1
 		src.drain -= 50
 
 /obj/item/weapon/gun/smartgun/proc/toggle_auto_fire(mob/user)
@@ -748,10 +748,10 @@
 
 /obj/item/weapon/gun/smartgun/dirty/elite/set_gun_config_values()
 	..()
-	burst_amount = config.mhigh_burst_value
-	burst_delay = config.min_fire_delay
-	scatter = config.low_scatter_value
-	burst_scatter_mult = config.min_scatter_value
+	burst_amount = BURST_AMOUNT_TIER_5
+	burst_delay = FIRE_DELAY_TIER_10
+	scatter = SCATTER_AMOUNT_TIER_8
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_10
 
 
 //-------------------------------------------------------
@@ -806,12 +806,12 @@
 
 /obj/item/weapon/gun/launcher/m92/set_gun_config_values()
 	..()
-	fire_delay = config.max_fire_delay*4
-	accuracy_mult = config.base_hit_accuracy_mult
-	accuracy_mult_unwielded = config.base_hit_accuracy_mult
-	scatter = config.med_scatter_value
-	scatter_unwielded = config.med_scatter_value
-	damage_mult = config.base_hit_damage_mult
+	fire_delay = FIRE_DELAY_TIER_4*4
+	accuracy_mult = BASE_ACCURACY_MULT
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT
+	scatter = SCATTER_AMOUNT_TIER_6
+	scatter_unwielded = SCATTER_AMOUNT_TIER_6
+	damage_mult = BASE_BULLET_DAMAGE_MULT
 
 
 /obj/item/weapon/gun/launcher/m92/examine(mob/user)
@@ -937,10 +937,10 @@
 
 /obj/item/weapon/gun/launcher/m81/set_gun_config_values()
 	..()
-	fire_delay = config.max_fire_delay * 1.5
-	accuracy_mult = config.base_hit_accuracy_mult
-	scatter = config.med_scatter_value
-	damage_mult = config.base_hit_damage_mult
+	fire_delay = FIRE_DELAY_TIER_4 * 1.5
+	accuracy_mult = BASE_ACCURACY_MULT
+	scatter = SCATTER_AMOUNT_TIER_6
+	damage_mult = BASE_BULLET_DAMAGE_MULT
 
 
 /obj/item/weapon/gun/launcher/m81/examine(mob/user)
@@ -1072,11 +1072,11 @@
 
 /obj/item/weapon/gun/launcher/rocket/set_gun_config_values()
 	..()
-	fire_delay = config.high_fire_delay*2
-	accuracy_mult = config.base_hit_accuracy_mult
-	scatter = config.med_scatter_value
-	damage_mult = config.base_hit_damage_mult
-	recoil = config.med_recoil_value
+	fire_delay = FIRE_DELAY_TIER_6*2
+	accuracy_mult = BASE_ACCURACY_MULT
+	scatter = SCATTER_AMOUNT_TIER_6
+	damage_mult = BASE_BULLET_DAMAGE_MULT
+	recoil = RECOIL_AMOUNT_TIER_3
 
 
 /obj/item/weapon/gun/launcher/rocket/examine(mob/user)
@@ -1231,13 +1231,13 @@
 
 /obj/item/weapon/gun/launcher/rocket/m57a4/set_gun_config_values()
 	..()
-	fire_delay = config.mhigh_fire_delay
-	burst_delay = config.med_fire_delay
-	burst_amount = config.high_burst_value
-	accuracy_mult = config.base_hit_accuracy_mult - config.med_hit_accuracy_mult
-	scatter = config.med_scatter_value
-	damage_mult = config.base_hit_damage_mult
-	recoil = config.med_recoil_value
+	fire_delay = FIRE_DELAY_TIER_5
+	burst_delay = FIRE_DELAY_TIER_7
+	burst_amount = BURST_AMOUNT_TIER_4
+	accuracy_mult = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_4
+	scatter = SCATTER_AMOUNT_TIER_6
+	damage_mult = BASE_BULLET_DAMAGE_MULT
+	recoil = RECOIL_AMOUNT_TIER_3
 
 //-------------------------------------------------------
 //Flare gun. Close enough to a specialist gun?
@@ -1271,12 +1271,12 @@
 
 /obj/item/weapon/gun/flare/set_gun_config_values()
 	..()
-	fire_delay = config.min_fire_delay
-	accuracy_mult = config.base_hit_accuracy_mult
+	fire_delay = FIRE_DELAY_TIER_10
+	accuracy_mult = BASE_ACCURACY_MULT
 	scatter = 0
-	recoil = config.min_recoil_value
-	recoil_unwielded = config.low_recoil_value
-	recoil = config.min_recoil_value
+	recoil = RECOIL_AMOUNT_TIER_5
+	recoil_unwielded = RECOIL_AMOUNT_TIER_4
+	recoil = RECOIL_AMOUNT_TIER_5
 
 
 /obj/item/weapon/gun/flare/apply_bullet_effects(obj/item/projectile/projectile_to_fire, mob/user, bullets_fired, reflex, dual_wield)

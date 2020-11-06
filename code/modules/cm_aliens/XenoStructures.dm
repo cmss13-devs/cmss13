@@ -168,7 +168,7 @@
 
 	set_hive_data(src, hivenumber)
 
-/obj/structure/mineral_door/resin/flamer_fire_act(var/dam = config.min_burnlevel)
+/obj/structure/mineral_door/resin/flamer_fire_act(var/dam = BURN_LEVEL_TIER_1)
 	health -= dam
 	healthcheck()
 

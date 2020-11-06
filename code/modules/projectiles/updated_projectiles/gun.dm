@@ -163,24 +163,24 @@
 //amounts to get specific values in each gun subtype's New().
 //This makes reading each gun's values MUCH easier.
 /obj/item/weapon/gun/proc/set_gun_config_values()
-	fire_delay = config.mhigh_fire_delay
-	accuracy_mult = config.base_hit_accuracy_mult
-	accuracy_mult_unwielded = config.base_hit_accuracy_mult
-	scatter = config.med_scatter_value
-	burst_scatter_mult = config.lmed_scatter_value
-	burst_amount = config.min_burst_value
-	scatter_unwielded = config.med_scatter_value
-	damage_mult = config.base_hit_damage_mult
-	damage_falloff_mult = config.reg_damage_falloff
-	damage_buildup_mult = config.reg_damage_buildup
-	recoil = config.no_recoil_value
-	recoil_unwielded = config.no_recoil_value
-	movement_acc_penalty_mult = config.high_movement_accuracy_penalty_mult
+	fire_delay = FIRE_DELAY_TIER_5
+	accuracy_mult = BASE_ACCURACY_MULT
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT
+	scatter = SCATTER_AMOUNT_TIER_6
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_7
+	burst_amount = BURST_AMOUNT_TIER_1
+	scatter_unwielded = SCATTER_AMOUNT_TIER_6
+	damage_mult = BASE_BULLET_DAMAGE_MULT
+	damage_falloff_mult = DAMAGE_FALLOFF_TIER_10
+	damage_buildup_mult = DAMAGE_BUILDUP_TIER_1
+	recoil = RECOIL_OFF
+	recoil_unwielded = RECOIL_OFF
+	movement_acc_penalty_mult = MOVEMENT_ACCURACY_PENALTY_MULT_TIER_1
 
-	effective_range_min = config.no_effective_range_min
-	effective_range_max = config.no_effective_range_max
+	effective_range_min = EFFECTIVE_RANGE_OFF
+	effective_range_max = EFFECTIVE_RANGE_OFF
 
-	recoil_buildup_limit = config.max_recoil_value / RECOIL_BUILDUP_VIEWPUNCH_MULTIPLIER
+	recoil_buildup_limit = RECOIL_AMOUNT_TIER_1 / RECOIL_BUILDUP_VIEWPUNCH_MULTIPLIER
 
 	//reset initial define-values
 	aim_slowdown = initial(aim_slowdown)
@@ -493,14 +493,14 @@
 		"firerate_second" = round(SECONDS_1 / rpm, 0.01),
 		"burst_firerate_second" = round(SECONDS_1 / burst_rpm, 0.01),
 
-		"recoil_max" = config.max_recoil_value,
-		"scatter_max" = config.max_scatter_value,
-		"firerate_max" = MINUTES_1 / config.min_fire_delay,
-		"damage_max" = config.ultra_hit_damage,
-		"accuracy_max" = config.max_shell_range,
-		"range_max" = config.max_shell_range,
-		"falloff_max" = config.extra_damage_falloff,
-		"penetration_max" = config.max_armor_penetration,
+		"recoil_max" = RECOIL_AMOUNT_TIER_1,
+		"scatter_max" = SCATTER_AMOUNT_TIER_1,
+		"firerate_max" = MINUTES_1 / FIRE_DELAY_TIER_10,
+		"damage_max" = BULLET_DAMAGE_TIER_20,
+		"accuracy_max" = AMMO_RANGE_TIER_15,
+		"range_max" = AMMO_RANGE_TIER_15,
+		"falloff_max" = DAMAGE_FALLOFF_TIER_1,
+		"penetration_max" = ARMOR_PENETRATION_TIER_10,
 		"punch_max" = 5,
 
 		"damage_armor_profile_headers" = damage_armor_profile_headers,
@@ -1072,10 +1072,10 @@ and you're good to go.
 	//We actually have a projectile, let's move on. We're going to simulate the fire cycle.
 	if(projectile_to_fire.ammo.on_pointblank(M, projectile_to_fire, user)==-1)
 		return FALSE
-	var/damage_buff = config.base_hit_damage_mult
+	var/damage_buff = BASE_BULLET_DAMAGE_MULT
 	//if target is lying or unconscious - add damage bonus
 	if(M.lying == 1 || M.stat == UNCONSCIOUS)
-		damage_buff += config.med_hit_damage_mult
+		damage_buff += BULLET_DAMAGE_MULT_TIER_4
 	damage_buff *= damage_mult
 	projectile_to_fire.damage *= damage_buff //Multiply the damage for point blank.
 	user.visible_message(SPAN_DANGER("[user] fires [src] point blank at [M]!"), null, null, null, CHAT_TYPE_WEAPON_USE)
@@ -1161,7 +1161,7 @@ and you're good to go.
 		else
 			if(user && user.skills)
 				if(user.skills.get_skill_level(SKILL_FIREARMS) == 0) //no training in any firearms
-					added_delay += config.low_fire_delay //untrained humans fire more slowly.
+					added_delay += FIRE_DELAY_TIER_8 //untrained humans fire more slowly.
 		if(world.time >= last_fired + added_delay + extra_delay) //check the last time it was fired.
 			extra_delay = 0
 		else
@@ -1189,12 +1189,12 @@ and you're good to go.
 		gun_scatter = scatter
 	else if(user && world.time - user.l_move_time < 5) //moved during the last half second
 		//accuracy and scatter penalty if the user fires unwielded right after moving
-		gun_accuracy_mult = max(0.1, gun_accuracy_mult - max(0,movement_acc_penalty_mult * config.low_hit_accuracy_mult))
-		gun_scatter += max(0, movement_acc_penalty_mult * config.min_scatter_value)
+		gun_accuracy_mult = max(0.1, gun_accuracy_mult - max(0,movement_acc_penalty_mult * HIT_ACCURACY_MULT_TIER_3))
+		gun_scatter += max(0, movement_acc_penalty_mult * SCATTER_AMOUNT_TIER_10)
 
 	if(dual_wield) //akimbo firing gives terrible accuracy
 		gun_accuracy_mult = max(0.1, gun_accuracy_mult - 0.1*rand(3,5))
-		gun_scatter += config.high_scatter_value
+		gun_scatter += SCATTER_AMOUNT_TIER_4
 
 	// Apply any skill-based bonuses to accuracy
 	if(user && user.mind && user.skills)
@@ -1204,7 +1204,7 @@ and you're good to go.
 		else
 			skill_accuracy = user.skills.get_skill_level(SKILL_FIREARMS)
 		if(skill_accuracy)
-			gun_accuracy_mult += skill_accuracy * config.low_hit_accuracy_mult // Accuracy mult increase/decrease per level is equal to attaching/removing a red dot sight
+			gun_accuracy_mult += skill_accuracy * HIT_ACCURACY_MULT_TIER_3 // Accuracy mult increase/decrease per level is equal to attaching/removing a red dot sight
 
 	projectile_to_fire.accuracy = round(projectile_to_fire.accuracy * gun_accuracy_mult) // Apply gun accuracy multiplier to projectile accuracy
 	projectile_to_fire.scatter += gun_scatter
@@ -1214,10 +1214,10 @@ and you're good to go.
 		var/new_time = world.time
 		var/pct_settled = 1 - (new_time-old_time + 1)/wield_delay
 		if(delay_style & WEAPON_DELAY_ACCURACY)
-			var/accuracy_debuff = 1 + (config.weapon_settle_accuracy_multiplier - 1) * pct_settled
+			var/accuracy_debuff = 1 + (SETTLE_ACCURACY_MULTIPLIER - 1) * pct_settled
 			projectile_to_fire.accuracy /=accuracy_debuff
 		if(delay_style & WEAPON_DELAY_SCATTER)
-			var/scatter_debuff = 1 + (config.weapon_settle_scatter_multiplier - 1) * pct_settled
+			var/scatter_debuff = 1 + (SETTLE_SCATTER_MULTIPLIER - 1) * pct_settled
 			projectile_to_fire.scatter *= scatter_debuff
 
 	projectile_to_fire.damage = round(projectile_to_fire.damage * damage_mult) 		// Apply gun damage multiplier to projectile damage
@@ -1262,7 +1262,7 @@ and you're good to go.
 	total_scatter_angle += projectile_to_fire.scatter
 
 	if(flags_gun_features & GUN_BURST_ON && bullets_fired > 1)//Much higher scatter on burst. Each additional bullet adds scatter
-		var/bullet_amt_scat = min(bullets_fired-1, config.med_scatter_value)//capped so we don't penalize large bursts too much.
+		var/bullet_amt_scat = min(bullets_fired-1, SCATTER_AMOUNT_TIER_6)//capped so we don't penalize large bursts too much.
 		if(flags_item & WIELDED)
 			total_scatter_angle += max(0, bullet_amt_scat * (burst_scatter_mult + burst_scatter_mod))
 		else
@@ -1280,9 +1280,9 @@ and you're good to go.
 
 	if(user && user.mind && user.skills)
 		if(user.skills.get_skill_level(SKILL_FIREARMS) == 0) //no training in any firearms
-			total_scatter_angle += config.low_scatter_value
+			total_scatter_angle += SCATTER_AMOUNT_TIER_8
 		else
-			total_scatter_angle -= user.skills.get_skill_level(SKILL_FIREARMS)*config.low_scatter_value
+			total_scatter_angle -= user.skills.get_skill_level(SKILL_FIREARMS)*SCATTER_AMOUNT_TIER_8
 
 
 	//Not if the gun doesn't scatter at all, or negative scatter.
@@ -1321,9 +1321,9 @@ and you're good to go.
 
 	if(user && user.mind && user.skills)
 		if(user.skills.get_skill_level(SKILL_FIREARMS) == 0) //no training in any firearms
-			total_recoil += config.min_recoil_value
+			total_recoil += RECOIL_AMOUNT_TIER_5
 		else
-			total_recoil -= user.skills.get_skill_level(SKILL_FIREARMS)*config.min_recoil_value
+			total_recoil -= user.skills.get_skill_level(SKILL_FIREARMS)*RECOIL_AMOUNT_TIER_5
 				
 	if(total_recoil > 0 && ishuman(user))
 		shake_camera(user, total_recoil + 1, total_recoil)

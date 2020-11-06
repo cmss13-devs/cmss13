@@ -123,6 +123,7 @@
 			mob.alpha = 0
 			mob.mouse_opacity = 0
 
+	to_chat(src, SPAN_NOTICE("You have turned invismin [admin_holder.fakekey ? "ON" : "OFF"]"))
 	log_admin("[key_name_admin(usr)] has turned invismin [admin_holder.fakekey ? "ON" : "OFF"]")
 
 /datum/admins/proc/announce()

@@ -180,7 +180,7 @@
 				modmsg += "\t[C] is a [C.admin_holder.rank]"
 
 				if(C.admin_holder.fakekey)
-					msg += " <i>(HIDDEN)</i>"
+					modmsg += " <i>(HIDDEN)</i>"
 
 				if(isobserver(C.mob))
 					modmsg += " - Observing"
@@ -206,10 +206,15 @@
 	else
 		for(var/client/C in GLOB.admins)
 			if(AHOLD_IS_ADMIN(C.admin_holder))
-				if(!C.admin_holder.fakekey)
-					msg += "\t[C] is a [C.admin_holder.rank]\n"
-					num_admins_online++
+				if(C.admin_holder.fakekey)
+					continue
+
+				msg += "\t[C] is a [C.admin_holder.rank]\n"
+				num_admins_online++
 			else if (AHOLD_IS_MOD(C.admin_holder))
+				if(C.admin_holder.fakekey)
+					continue
+
 				modmsg += "\t[C] is a [C.admin_holder.rank]\n"
 				num_mods_online++
 			else if (AHOLD_IS_MENTOR(C.admin_holder))

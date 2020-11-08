@@ -1182,7 +1182,7 @@ Defined in conflicts.dm of the #defines folder.
 //The requirement for an attachable being alt fire is AMMO CAPACITY > 0.
 /obj/item/attachable/attached_gun/grenade
 	name = "underslung grenade launcher"
-	desc = "A weapon-mounted, reloadable, two shot grenade launcher."
+	desc = "A weapon-mounted, reloadable grenade launcher."
 	icon_state = "grenade"
 	attach_icon = "grenade_a"
 	w_class = SIZE_MEDIUM
@@ -1192,7 +1192,12 @@ Defined in conflicts.dm of the #defines folder.
 	slot = "under"
 	fire_sound = 'sound/weapons/gun_m92_attachable.ogg'
 	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION|ATTACH_RELOADABLE|ATTACH_WEAPON
+	var/list/grenade_pass_flags
 	var/list/loaded_grenades //list of grenade types loaded in the UGL
+
+/obj/item/attachable/attached_gun/grenade/Initialize()
+	. = ..()
+	grenade_pass_flags = list(PASS_HIGH_OVER, PASS_MOB_THRU)
 
 /obj/item/attachable/attached_gun/grenade/New()
 	..()
@@ -1251,7 +1256,7 @@ Defined in conflicts.dm of the #defines folder.
 	log_game("[key_name_admin(user)] used an underslung grenade launcher.")
 
 	var/pass_flags = NO_FLAGS
-	pass_flags = LIST_FLAGS_ADD(pass_flags, PASS_MOB_THRU, PASS_HIGH_OVER)
+	pass_flags = LIST_FLAGS_ADD(pass_flags, grenade_pass_flags)
 	G.det_time = min(15, G.det_time)
 	G.throw_range = max_range
 	G.activate(user, FALSE)
@@ -1260,6 +1265,19 @@ Defined in conflicts.dm of the #defines folder.
 	current_rounds--
 	loaded_grenades.Cut(1,2)
 
+//For the Mk1
+/obj/item/attachable/attached_gun/grenade/mk1
+	name = "MK1 underslung grenade launcher"
+	desc = "An older version of the classic underslung grenade launcher. Does not have IFF capabilities but can store three grenades."
+	icon_state = "grenade-mk1"
+	attach_icon = "grenade-mk1_a"
+	current_rounds = 0
+	max_rounds = 3
+	max_range = 10
+
+/obj/item/attachable/attached_gun/grenade/mk1/Initialize()
+	. = ..()
+	grenade_pass_flags = list(PASS_HIGH_OVER)
 
 //"ammo/flamethrower" is a bullet, but the actual process is handled through fire_attachment, linked through Fire().
 /obj/item/attachable/attached_gun/flamer

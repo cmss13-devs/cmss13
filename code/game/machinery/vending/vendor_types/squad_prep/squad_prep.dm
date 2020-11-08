@@ -105,7 +105,6 @@
 		list("Frontline Grenadier Kit", 45, /obj/item/storage/box/kit/mini_grenadier, null, VENDOR_ITEM_REGULAR),
 		list("L42A Sniper Kit", 30, /obj/item/storage/box/kit/mini_sniper, null, VENDOR_ITEM_REGULAR),
 		list("Personal Self Defense Kit", 45, /obj/item/storage/box/kit/self_defense, null, VENDOR_ITEM_REGULAR),
-		list("Veteran Enlisted Kit", 30, /obj/item/storage/box/kit/veteran_enlist, null, VENDOR_ITEM_REGULAR),
 
 		list("ATTACHMENTS", 0, null, null, null),
 		list("Angled Grip", 15, /obj/item/attachable/angledgrip, null, VENDOR_ITEM_REGULAR),

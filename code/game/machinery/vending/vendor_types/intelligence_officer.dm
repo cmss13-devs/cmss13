@@ -11,6 +11,9 @@
 		list("INTELLIGENCE SET (MANDATORY)", 0, null, null, null),
 		list("Essential Intelligence Set", 0, /obj/effect/essentials_set/intelligence_officer, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
 
+		list("WEAPONS", 0, null, null, null),
+		list("M41A Pulse Rifle MK1", 30, /obj/item/weapon/gun/rifle/m41aMK1 , null, VENDOR_ITEM_RECOMMENDED),
+
 		list("SUPPLIES", 0, null, null, null),
 		list("Autoinjector Pouch (Full)", 15, /obj/item/storage/pouch/autoinjector/full, null, VENDOR_ITEM_RECOMMENDED),
 		list("Binoculars", 5, /obj/item/device/binoculars, null, VENDOR_ITEM_REGULAR),
@@ -71,6 +74,7 @@
 		list("L42A Magazine (10x24mm)", 24, /obj/item/ammo_magazine/rifle/l42a, VENDOR_ITEM_REGULAR),
 		list("M39 HV Magazine (10x20mm)", 24, /obj/item/ammo_magazine/smg/m39, VENDOR_ITEM_REGULAR),
 		list("M41A Magazine (10x24mm)", 24, /obj/item/ammo_magazine/rifle, VENDOR_ITEM_REGULAR),
+		list("M41A MK1 Magazine (10x24mm)", 9, /obj/item/ammo_magazine/rifle/m41aMK1, VENDOR_ITEM_REGULAR),
 
 		list("SIDEARMS", -1, null, null),
 		list("88 Mod 4 Combat Pistol", 4, /obj/item/weapon/gun/pistol/mod88, VENDOR_ITEM_REGULAR),

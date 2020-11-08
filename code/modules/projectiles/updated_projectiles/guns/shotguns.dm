@@ -380,7 +380,7 @@ can cause issues with ammo types getting mixed up during the burst.
 		playsound(user, break_sound, 25, 1)
 	else
 		playsound(user, seal_sound, 25, 1)
-	
+
 
 /obj/item/weapon/gun/shotgun/double/sawn
 	name = "sawn-off shotgun"

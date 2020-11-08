@@ -20,6 +20,8 @@
 #define LANGCHAT_MESSAGE_POP_TIME 3
 #define LANGCHAT_MESSAGE_POP_Y_SINK 8
 
+#define langchat_client_enabled(M) (M && M.client && M.client.prefs && !M.client.prefs.lang_chat_disabled)
+
 /mob/var/image/langchat_image
 /mob/var/list/mob/langchat_listeners
 
@@ -59,7 +61,7 @@
 	langchat_image.alpha = 0
 	langchat_listeners = listeners
 	for(var/mob/M in langchat_listeners)
-		if(M.client && M.client.prefs && !M.client.prefs.lang_chat_disabled && M.say_understands(src,language) && !M.ear_deaf)
+		if(langchat_client_enabled(M) && !M.ear_deaf && M.say_understands(src, language))
 			M.client.images += langchat_image
 	animate(langchat_image, pixel_y = langchat_image.pixel_y + LANGCHAT_MESSAGE_POP_Y_SINK, alpha = LANGCHAT_MAX_ALPHA, time = LANGCHAT_MESSAGE_POP_TIME)
 
@@ -97,7 +99,7 @@
 	langchat_image.alpha = 0
 	langchat_listeners = listeners
 	for(var/mob/M in langchat_listeners)
-		if(M.client && M.client.prefs && !M.client.prefs.lang_chat_disabled && M.say_understands(src,language))
+		if(langchat_client_enabled(M) && !M.ear_deaf && M.say_understands(src, language))
 			M.client.images += langchat_image
 
 	animate(langchat_image, pixel_y = langchat_image.pixel_y + LANGCHAT_MESSAGE_POP_Y_SINK, alpha = LANGCHAT_MAX_ALPHA, time = LANGCHAT_MESSAGE_POP_TIME)
@@ -105,3 +107,14 @@
 		addtimer(CALLBACK(src, /mob.proc/langchat_long_speech, text_left, listeners, language), timer, TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_NO_HASH_WAIT)
 	else
 		addtimer(CALLBACK(src, /mob.proc/langchat_drop_image, language), timer, TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_NO_HASH_WAIT)
+
+// Displays image to a single listener after it was built above eg. for chaining different game logic than speech code
+// This does just that, doesn't check deafness or language! Do what you will in that regard
+/mob/proc/langchat_display_image(var/mob/M)
+	if(langchat_image)
+		if(!langchat_client_enabled(M))
+			return
+		if(!langchat_listeners) // shouldn't happen
+			langchat_listeners = list()
+		langchat_listeners |= M
+		M.client.images += langchat_image

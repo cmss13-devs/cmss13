@@ -343,7 +343,14 @@
 	update_use_power(1)
 	update_icon()
 
-
+#ifdef OBJECTS_PROXY_SPEECH
+// Transfers speech to occupant
+/obj/structure/machinery/sleeper/hear_talk(mob/living/sourcemob, message, verb, language, italics)
+	if(!QDELETED(occupant) && istype(occupant) && occupant.stat != DEAD)
+		proxy_object_heard(src, sourcemob, occupant, message, verb, language, italics)
+	else
+		..(sourcemob, message, verb, language, italics)
+#endif // ifdef OBJECTS_PROXY_SPEECH
 
 /obj/structure/machinery/sleeper/proc/inject_chemical(mob/living/user as mob, chemical, amount)
 	if(occupant && occupant.reagents)

@@ -302,11 +302,17 @@
 	else
 		icon_state = icon_opened
 
-/obj/structure/closet/hear_talk(mob/M as mob, text)
+/obj/structure/closet/hear_talk(mob/M as mob, text, verb, language, italics)
 	for (var/atom/A in src)
 		if(istype(A,/obj/))
 			var/obj/O = A
 			O.hear_talk(M, text)
+#ifdef OBJECTS_PROXY_SPEECH
+			continue
+		var/mob/living/TM = A
+		if(istype(TM) && TM.stat != DEAD)
+			proxy_object_heard(src, M, TM, text, verb, language, italics)
+#endif // ifdef OBJECTS_PROXY_SPEECH
 
 /obj/structure/closet/proc/break_open()
 	if(!opened)

@@ -183,7 +183,11 @@ obj/item/limb/New(loc, mob/living/carbon/human/H)
 				G.mind.original = brainmob
 				break
 
-/obj/item/limb/head/synth/hear_talk(mob/sourcemob, var/message, var/verb, var/language, var/italics)
-	if(brainmob)
-		brainmob.hear_say(message, verb, language, "", italics, sourcemob)
-	..()
+#ifdef OBJECTS_PROXY_SPEECH
+// Transfers speech to synth brainmob (ie the player)
+/obj/item/limb/head/synth/hear_talk(mob/living/sourcemob, message, verb, language, italics)
+	if(istype(brainmob))
+		proxy_object_heard(src, sourcemob, brainmob, message, verb, language, italics)
+	else
+		..(sourcemob, message, verb, language, italics)
+#endif // ifdef OBJECTS_PROXY_SPEECH

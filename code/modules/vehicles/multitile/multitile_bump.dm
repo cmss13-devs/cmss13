@@ -74,8 +74,10 @@
 			if(takes_damage)
 				L.apply_damage(7 + rand(0, 5), BRUTE)
 
-		if(!L.is_mob_incapacitated())
-			step_away(L, src)
+		var/mob_moved = FALSE
+		var/mob_knocked_down = L.is_mob_incapacitated()
+		if(!mob_knocked_down)
+			mob_moved = step(L, last_move_dir)
 
 		playsound(loc, "punch", 25, 1)
 		L.last_damage_mob = seats[VEHICLE_DRIVER]
@@ -88,7 +90,17 @@
 			if(!H) continue
 			H.livingmob_interact(L)
 
-		return TRUE
+		// If the mob is knocked down or was pushed away from the APC (aka have actual space to move), allow movement in desired direction
+		if(mob_knocked_down)
+			return TRUE
+		else if (mob_moved && L.last_move_dir & last_move_dir)
+			// Big xenos shouldn't be pushed at mach 10 by the APC for a long time
+			if(L.mob_size >= MOB_SIZE_BIG)
+				momentum = Floor(momentum/2)
+				update_next_move()
+				interior_crash_effect()
+			return TRUE
+		return FALSE
 
 	// Attempt to open doors before crushing them
 	if(istype(A, /obj/structure/machinery/door))

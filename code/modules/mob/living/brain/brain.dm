@@ -63,3 +63,28 @@
 		see_in_dark = 2
 		see_invisible = SEE_INVISIBLE_LIVING
 
+/mob/living/brain/synth
+	icon = 'icons/obj/items/assemblies.dmi'
+	icon_state = "mmi_full"
+
+/mob/living/brain/synth/say_understands(var/mob/other)
+	return TRUE
+
+//synth heads can ghost and re-enter given they're basically dead anyway
+/mob/living/brain/synth/ghost()
+	set desc = "Relinquish your sentience and visit the land of the past."
+
+	if(mind && mind.player_entity)
+		mind.player_entity.update_panel_data(round_statistics)
+	ghostize(TRUE)
+
+//mostly so the pane isn't empty
+/mob/living/brain/synth/Stat()
+	if(!..())
+		return FALSE
+
+	if(statpanel("Stats"))
+		stat("Operation Time:","[worldtime2text()]")
+		stat("Status:","CRITICAL")
+
+	return TRUE

@@ -72,6 +72,7 @@ obj/item/limb/New(loc, mob/living/carbon/human/H)
 	var/mob/living/brain/brainmob
 	var/brain_op_stage = 0
 	var/brain_item_type = /obj/item/organ/brain
+	var/brain_mob_type = /mob/living/brain
 	var/braindeath_on_decap = 1 //whether the brainmob dies when head is decapitated (used by synthetics)
 
 /obj/item/limb/head/New(loc, mob/living/carbon/human/H, var/cause = "decapitation")
@@ -111,7 +112,7 @@ obj/item/limb/New(loc, mob/living/carbon/human/H)
 		brainmob.death(cause)
 
 /obj/item/limb/head/proc/transfer_identity(var/mob/living/carbon/human/H)//Same deal as the regular brain proc. Used for human-->head
-	brainmob = new(src)
+	brainmob = new brain_mob_type(src)
 	brainmob.name = H.real_name
 	brainmob.real_name = H.real_name
 	brainmob.blood_type = H.blood_type
@@ -170,4 +171,19 @@ obj/item/limb/New(loc, mob/living/carbon/human/H)
 /obj/item/limb/head/synth
 	name = "synthetic head"
 	brain_item_type = /obj/item/organ/brain/prosthetic
+	brain_mob_type = /mob/living/brain/synth
 	braindeath_on_decap = 0
+
+//as ugly and painful as it is to write, the synth can still be revived, and mind needs to be updated if ghosted
+/obj/item/limb/head/synth/transfer_identity(var/mob/living/carbon/human/H)
+	..()
+	if(!brainmob.mind)
+		for(var/mob/dead/observer/G in GLOB.observer_list)
+			if(istype(G) && G.mind && G.mind.original == H && G.can_reenter_corpse)
+				G.mind.original = brainmob
+				break
+
+/obj/item/limb/head/synth/hear_talk(mob/sourcemob, var/message, var/verb, var/language, var/italics)
+	if(brainmob)
+		brainmob.hear_say(message, verb, language, "", italics, sourcemob)
+	..()

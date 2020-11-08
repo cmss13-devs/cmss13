@@ -177,6 +177,12 @@
 	if(B.brainmob.mind)
 		B.brainmob.mind.transfer_to(target)
 
+	else	// attempt to transfer linked ghost if not found
+		for(var/mob/dead/observer/G in GLOB.observer_list)
+			if(istype(G) && G.mind && G.mind.original == B.brainmob && G.can_reenter_corpse)
+				G.mind.original = target
+				break
+
 	//Deal with the head item properly
 	user.temp_drop_inv_item(B)
 	qdel(B)

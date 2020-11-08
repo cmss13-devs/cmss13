@@ -20,6 +20,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 #define BRSQL_SYSTABLENAME "__entity_master"
+#define BRSQL_SYSINDEXNAME "__index_master"
 #define BRSQL_BACKUP_PREFIX "__backup_"
 #define BRSQL_COUNT_COLUMN_NAME "total"
 #define BRSQL_ROOT_NAME "__root"
@@ -75,6 +76,11 @@
 	var/datum/db/query_response/sys_table = SSdatabase.create_query_sync(query)
 	if(sys_table.status != DB_QUERY_FINISHED)
 		issue_log += "Unable to create or access system table, error: '[sys_table.error]'"
+		return FALSE // OH SHIT OH FUCK
+	query = getquery_sysindex_check()
+	var/datum/db/query_response/sys_index = SSdatabase.create_query_sync(query)
+	if(sys_index.status != DB_QUERY_FINISHED)
+		issue_log += "Unable to create or access system index table, error: '[sys_table.error]'"
 		return FALSE // OH SHIT OH FUCK
 	return TRUE
 
@@ -165,7 +171,26 @@
 	return internal_drop_backup_table(table_name) && internal_create_backup_table(table_name, old_fields) && internal_migrate_to_backup(table_name, old_fields) && \
 		internal_update_table(table_name, field_types, old_fields) && internal_record_table_in_sys(type_name, table_name, field_types, id)
 	
+/datum/db/adapter/brsql_adapter/sync_index(index_name, table_name, var/list/fields, unique, cluster)
+	var/list/qpars = list()
+	var/query_getindex = getquery_sysindex_getindex(index_name, table_name, qpars)
+	var/datum/db/query_response/index_meta = SSdatabase.create_parametric_query_sync(query_getindex, qpars)
+	if(index_meta.status != DB_QUERY_FINISHED)
+		issue_log += "Unable to access system index table, error: '[index_meta.error]'"
+		return FALSE // OH SHIT OH FUCK
+	if(!index_meta.results.len) // Index doesn't exist
+		return internal_create_index(index_name, table_name, fields, unique, cluster) && internal_record_index_in_sys(index_name, table_name, fields)
 
+	var/id =  index_meta.results[1][DB_DEFAULT_ID_FIELD]
+	var/old_hash = index_meta.results[1]["fields_hash"]
+	var/field_text = jointext(fields, ",")
+	var/new_hash = sha1(field_text)
+
+	if(old_hash == new_hash)
+		return TRUE // no action required
+
+	// Index can be updated only by recreating it
+	return internal_drop_index(index_name, table_name) && internal_create_index(index_name, table_name, fields, unique, cluster) && internal_record_index_in_sys(index_name, table_name, fields, id)
 
 /datum/db/adapter/brsql_adapter/proc/internal_create_table(table_name, field_types)
 	var/query = getquery_systable_maketable(table_name, field_types)
@@ -184,11 +209,37 @@
 		return FALSE // OH SHIT OH FUCK
 	return TRUE
 
+/datum/db/adapter/brsql_adapter/proc/internal_create_index(index_name, table_name, fields, unique, cluster)
+	var/query = getquery_sysindex_makeindex(index_name, table_name, fields, unique, cluster)
+	var/datum/db/query_response/sit_check = SSdatabase.create_query_sync(query)
+	if(sit_check.status != DB_QUERY_FINISHED)
+		issue_log += "Unable to create new index [index_name], error: '[sit_check.error]'"
+		return FALSE // OH SHIT OH FUCK
+	return TRUE
+
+/datum/db/adapter/brsql_adapter/proc/internal_record_index_in_sys(index_name, table_name, fields, id)
+	var/list/qpars = list()
+	var/query = getquery_sysindex_recordindex(index_name, table_name, fields, qpars, id)
+	var/datum/db/query_response/sit_check = SSdatabase.create_parametric_query_sync(query, qpars)
+	if(sit_check.status != DB_QUERY_FINISHED)
+		issue_log += "Unable to record meta for index [index_name], error: '[sit_check.error]'"
+		return FALSE // OH SHIT OH FUCK
+	return TRUE
+
+
 /datum/db/adapter/brsql_adapter/proc/internal_drop_table(table_name)
 	var/query = getcommand_droptable(table_name)
 	var/datum/db/query_response/sit_check = SSdatabase.create_query_sync(query)
 	if(sit_check.status != DB_QUERY_FINISHED)
 		issue_log += "Unable to drop table [table_name], error: '[sit_check.error]'"
+		return FALSE // OH SHIT OH FUCK
+	return TRUE
+
+/datum/db/adapter/brsql_adapter/proc/internal_drop_index(index_name, table_name)
+	var/query = getcommand_dropindex(index_name, table_name)
+	var/datum/db/query_response/sit_check = SSdatabase.create_query_sync(query)
+	if(sit_check.status != DB_QUERY_FINISHED)
+		issue_log += "Unable to drop index [index_name], error: '[sit_check.error]'"
 		return FALSE // OH SHIT OH FUCK
 	return TRUE
 
@@ -283,11 +334,24 @@
 		CREATE TABLE IF NOT EXISTS `[connection.database]`.`[BRSQL_SYSTABLENAME]` (id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,type_name TEXT NOT NULL,table_name TEXT NOT NULL,fields_hash TEXT NOT NULL,fields_current TEXT NOT NULL)
 	"}
 
+/datum/db/adapter/brsql_adapter/proc/getquery_sysindex_check()
+	return {"
+		CREATE TABLE IF NOT EXISTS `[connection.database]`.`[BRSQL_SYSINDEXNAME]` (id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,index_name TEXT NOT NULL,table_name TEXT NOT NULL,fields_hash TEXT NOT NULL,fields_current TEXT NOT NULL)
+	"}
+
 /datum/db/adapter/brsql_adapter/proc/getquery_systable_gettable(table_name, var/list/qpar)
 	qpar.Add("[table_name]")
 	return {"
 		SELECT id, type_name, table_name, fields_hash, fields_current FROM `[connection.database]`.`[BRSQL_SYSTABLENAME]` WHERE table_name = ?
 	"}
+
+/datum/db/adapter/brsql_adapter/proc/getquery_sysindex_getindex(index_name, table_name, var/list/qpar)
+	qpar.Add("[index_name]")
+	qpar.Add("[table_name]")
+	return {"
+		SELECT id, index_name, table_name, fields_hash, fields_current FROM `[connection.database]`.`[BRSQL_SYSINDEXNAME]` WHERE index_name = ? AND table_name = ?
+	"}
+
 
 /datum/db/adapter/brsql_adapter/proc/getquery_get_rowcount(table_name)
 	return {"
@@ -297,6 +361,20 @@
 /datum/db/adapter/brsql_adapter/proc/getcommand_droptable(table_name)
 	return {"
 		DROP TABLE IF EXISTS `[connection.database]`.`[table_name]`
+	"}
+
+/datum/db/adapter/brsql_adapter/proc/getcommand_dropindex(index_name, table_name)
+	return {"
+		DROP INDEX IF EXISTS `[index_name]` on `[connection.database]`.`[table_name]`
+	"}
+
+/datum/db/adapter/brsql_adapter/proc/getquery_sysindex_makeindex(index_name, table_name, fields, unique, cluster)
+	var/unique_text = unique?"UNIQUE":""
+	var/field_text = jointext(fields,",")
+	return {"
+		CREATE [unique_text] INDEX [index_name]  on `[connection.database]`.`[table_name]` (
+			[field_text]
+		);
 	"}
 
 /datum/db/adapter/brsql_adapter/proc/getquery_systable_maketable(table_name, field_types)
@@ -320,6 +398,22 @@
 
 	return {"
 			UPDATE `[connection.database]`.`[BRSQL_SYSTABLENAME]` SET type_name = ?, table_name = ?, fields_hash = ?, fields_current= ? WHERE id=[text2num(id)];
+		"}
+		
+/datum/db/adapter/brsql_adapter/proc/getquery_sysindex_recordindex(index_name, table_name, fields, var/list/qpar, id = null)
+	var/field_text = jointext(fields, ",")
+	var/new_hash = sha1(field_text)
+	qpar.Add("[index_name]")
+	qpar.Add("[table_name]")
+	qpar.Add("[new_hash]")
+	qpar.Add("[field_text]")
+	if(!id)
+		return {"
+			INSERT INTO `[connection.database]`.`[BRSQL_SYSINDEXNAME]` (index_name, table_name, fields_hash, fields_current) VALUES (?, ?, ?, ?);
+		"}
+
+	return {"
+			UPDATE `[connection.database]`.`[BRSQL_SYSINDEXNAME]` SET index_name = ?, table_name = ?, fields_hash = ?, fields_current= ? WHERE id=[text2num(id)];
 		"}
 
 /datum/db/adapter/brsql_adapter/proc/getquery_insert_into_backup(table_name, var/list/fields)

@@ -58,6 +58,8 @@
 //DB Entity State
 //this CANNOT be bit-flag
 
+// Something is wrong or entry is dead
+#define DB_ENTITY_STATE_BROKEN -1
 // We just requested this object from the pool and we didn't specify its ID,
 // or we want to change only some fields (not recommended)
 // this status is set when you try to select datum from DB
@@ -76,8 +78,6 @@
 #define DB_ENTITY_STATE_DELETED 4
 // We are reading/writing about this record right now
 #define DB_ENTITY_STATE_PROCESSING 5
-// Something is wrong
-#define DB_ENTITY_STATE_BROKEN -1
 // We want to add this record to database.
 // But then we want to detach from this record
 #define DB_ENTITY_STATE_ADD_DETACH 7
@@ -111,3 +111,18 @@
 #define DB_ISNOT 7 // is not null
 #define DB_IN 8
 #define DB_NOTIN 9
+
+// list of hints for indexes
+
+// this is cluster index. This means that this index sets the default order of the table
+// if there are more than one cluster index on the table, you won't be able to start the app
+#define DB_INDEXHINT_CLUSTER 1
+
+// this is unique index. This means that if you try to add a record with same values for this set of fields
+// it will fail
+#define DB_INDEXHINT_UNIQUE 2
+
+// list of hints for tables
+
+// This table is for local filtering only. Use for logs that you want to query this round
+#define DB_TABLEHINT_LOCAL 1

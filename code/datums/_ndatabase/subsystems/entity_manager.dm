@@ -86,6 +86,12 @@ var/datum/controller/subsystem/entity_manager/SSentity_manager
 	for(var/ET in tables)
 		var/datum/entity_meta/EM = tables[ET]
 		adapter.sync_table(EM.entity_type, EM.table_name, EM.field_types)
+		if(EM.indexes)
+			for(var/datum/db/index/I in EM.indexes)
+				adapter.sync_index(I.name, EM.table_name, I.fields, I.hints & DB_INDEXHINT_UNIQUE, I.hints & DB_INDEXHINT_CLUSTER)
+		if(EM.key_field)
+			adapter.sync_index("keyfield_index_[EM.key_field]", EM.table_name, list(EM.key_field), TRUE, TRUE)
+		
 
 /datum/controller/subsystem/entity_manager/fire(resumed = FALSE)
 	if (!resumed)
@@ -197,33 +203,43 @@ var/datum/controller/subsystem/entity_manager/SSentity_manager
 	var/datum/entity_meta/meta = tables[entity_type]
 	if(!meta)
 		return null
+	if(meta.hints & DB_TABLEHINT_LOCAL)
+		after_filter(filter, meta, CB, null, meta.filter_assoc_list(meta.managed, filter))
+		return
 	adapter.read_filter(meta.table_name, filter, CALLBACK(src, /datum/controller/subsystem/entity_manager.proc/after_filter, filter, meta, CB), sync)
 
 /datum/controller/subsystem/entity_manager/proc/after_filter(var/datum/db/filter, var/datum/entity_meta/meta, var/datum/callback/CB, quid, var/list/results)
-	var/list/datum/entity/resultset = list()
-	for(var/list/IE in results)
-		var/id = "[IE[DB_DEFAULT_ID_FIELD]]"
-		var/datum/entity/ET = meta.managed[id]
-		if(!ET)
-			ET = meta.make_new(id, FALSE)
+	var/list/datum/entity/resultset
+
+	if(meta.hints & DB_TABLEHINT_LOCAL)
+		resultset = results
+	else
+		resultset = list()
+		for(var/list/IE in results)
+			var/id = "[IE[DB_DEFAULT_ID_FIELD]]"
+			var/datum/entity/ET = meta.managed[id]
+			if(!ET)
+				ET = meta.make_new(id, FALSE)
+				ET.status = DB_ENTITY_STATE_SYNCED
+				meta.map(ET, IE)
+				meta.managed[id] = ET
+				meta.on_read(ET)
+				meta.on_action(ET)
+				resultset.Add(ET)
+				continue
+
+			if(ET.status != DB_ENTITY_STATE_DETACHED)
+				resultset.Add(ET)
+				continue //already synced
+			
 			ET.status = DB_ENTITY_STATE_SYNCED
+			meta.to_read -= ET // just for safety sake
 			meta.map(ET, IE)
-			meta.managed[id] = ET
 			meta.on_read(ET)
 			meta.on_action(ET)
 			resultset.Add(ET)
-			continue
+	
 
-		if(ET.status != DB_ENTITY_STATE_DETACHED)
-			resultset.Add(ET)
-			continue //already synced
-		
-		ET.status = DB_ENTITY_STATE_SYNCED
-		meta.to_read -= ET // just for safety sake
-		meta.map(ET, IE)
-		meta.on_read(ET)
-		meta.on_action(ET)
-		resultset.Add(ET)
 	if(length(meta.to_insert))
 		resultset.Add(meta.filter_list(meta.to_insert, filter))
 	if(length(meta.inserting))

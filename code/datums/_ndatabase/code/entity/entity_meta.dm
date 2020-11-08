@@ -26,6 +26,11 @@
 	var/active_entity = TRUE
 	var/key_field = null
 
+	// bitwise hint field
+	var/hints = 0
+
+	var/list/datum/db/index/indexes
+
 	var/list/datum/entity/managed
 	var/list/datum/entity/key_managed
 	var/list/datum/entity/to_read

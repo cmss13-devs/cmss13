@@ -390,7 +390,10 @@
 	color = "#6b675e";
 	layer = 2.79
 	},
-/obj/item/explosive/grenade/spawnergrenade/smartdisc,
+/obj/item/device/healthanalyzer,
+/obj/item/device/healthanalyzer,
+/obj/item/device/healthanalyzer,
+/obj/item/device/healthanalyzer,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -930,7 +933,9 @@
 	},
 /area/yautja)
 "bY" = (
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
 /obj/item/XenoItem/ChitinPlate,
 /obj/item/XenoItem/ChitinPlate,
 /obj/item/stack/sheet/xenochitin,
@@ -1115,7 +1120,9 @@
 	},
 /area/yautja)
 "cq" = (
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
 /obj/item/alien_embryo,
 /turf/open/floor{
 	icon_state = "dark2"
@@ -1335,7 +1342,9 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/weapon/melee/twohanded/sledgehammer,
+/obj/item/weapon/melee/twohanded/sledgehammer{
+	anchored = 1
+	},
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -1853,7 +1862,9 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/weapon/melee/twohanded/dualsaber,
+/obj/item/weapon/melee/twohanded/dualsaber{
+	force_wielded = 35
+	},
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -4613,7 +4624,7 @@ aa
 ac
 bj
 af
-aH
+af
 aV
 bn
 bj
@@ -4700,7 +4711,7 @@ bj
 cp
 cP
 bL
-bL
+aH
 rH
 bd
 rH
@@ -5852,7 +5863,7 @@ bj
 cQ
 cP
 bL
-bL
+cH
 ti
 bd
 ti
@@ -5909,7 +5920,7 @@ aa
 ad
 bj
 af
-aH
+af
 aV
 bn
 bj

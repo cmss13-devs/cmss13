@@ -233,7 +233,7 @@
 		if(L.stamina)
 			L.stamina.apply_rest_period(knockout_period)
 
-//2020 rebalance: is supposed to counter runners and lurkers, dealing high damage to the only castes with no armor. 
+//2020 rebalance: is supposed to counter runners and lurkers, dealing high damage to the only castes with no armor.
 //Limited by its lack of versatility and lower supply, so marines finally have an answer for flanker castes that isn't just buckshot.
 //Runners are critted in 7 shots by normal m4a3 ammo, 5 shots with hollowpoint (230hp)
 //Lurkers are critted in 12 shots by normal m4a3 ammo, 9 shots with hollowpoint (450hp)
@@ -379,7 +379,7 @@
 	knockback(M, P, 4)
 
 /datum/ammo/bullet/revolver/highimpact/on_pointblank(mob/M, obj/item/projectile/P, mob/living/user) //Special effects when pointblanking mobs.
-	if(!user || !isHumanStrict(M) || user.zone_selected != "head")
+	if(!user || !isHumanStrict(M) || user.zone_selected != "head" || user.a_intent != INTENT_HARM)
 		return ..()
 	var/mob/living/carbon/human/H = M
 	user.visible_message(SPAN_DANGER("[user] aims at [M]'s head!"), SPAN_HIGHDANGER("You aim at [M]'s head!"))
@@ -407,7 +407,7 @@
  //has reduced falloff compared to the m39. this means it is best for kiting castes (mostly t2s and below admittedly)
  //while the m39 ap is better for shredding them at close range, but has reduced velocity, so it's better for just running in and erasing armor-centric castes (defender, crusher)
  // which i think is really interesting and good balance, giving both ammo types a reason to exist even against ravagers.
- //i feel it is necessary to reflavor the default bullet, because otherwise, people won't be able to notice it has less falloff and faster bullet speed. even with a changelog, 
+ //i feel it is necessary to reflavor the default bullet, because otherwise, people won't be able to notice it has less falloff and faster bullet speed. even with a changelog,
  //way too many people don't read the changelog, and after one or two months the changelog entry is all but archive, so there needs to be an ingame description of what the ammo does
  //in comparison to armor-piercing rounds.
 
@@ -1364,7 +1364,7 @@
 	if(M.knocked_out || pass_down_the_line) //second part is always false, but consistency is a great thing
 		pass_down_the_line = TRUE
 
-	if(!isXeno(M))		
+	if(!isXeno(M))
 		if(insta_neuro)
 			if(M.knocked_down < 3)
 				M.AdjustKnockeddown(1 * power)
@@ -1375,7 +1375,7 @@
 				M.visible_message(SPAN_DANGER("[M] falls limp on the ground."))
 			M.KnockOut(30) //KO them. They already got rekt too much
 			pass_down_the_line = TRUE
-		
+
 		var/no_clothes_neuro = FALSE
 
 		if(ishuman(M))
@@ -1596,7 +1596,7 @@
 
 	var/mob/living/carbon/human/H = M
 
-	var/datum/effects/prae_acid_stacks/PAS = null 
+	var/datum/effects/prae_acid_stacks/PAS = null
 	for (var/datum/effects/prae_acid_stacks/prae_acid_stacks in H.effects_list)
 		PAS = prae_acid_stacks
 		break
@@ -1640,7 +1640,7 @@
 	for (var/mob/living/carbon/human/H in orange(1, T))
 		to_chat(H, SPAN_XENODANGER("You are spattered with acid!"))
 		animation_flash_color(H)
-		var/datum/effects/prae_acid_stacks/PAS = null 
+		var/datum/effects/prae_acid_stacks/PAS = null
 		for (var/datum/effects/prae_acid_stacks/prae_acid_stacks in H.effects_list)
 			PAS = prae_acid_stacks
 			break
@@ -1747,7 +1747,7 @@
     scatter = 0
     max_range = 5
     damage = 10
-    shrapnel_chance = 0    
+    shrapnel_chance = 0
 
 /datum/ammo/xeno/bone_chips/spread/runner/on_hit_mob(mob/M, obj/item/projectile/P)
     if(isHumanStrict(M) || isXeno(M))
@@ -1894,9 +1894,9 @@
 	drop_flame(get_turf(P))
 
 /datum/ammo/flamethrower/tank_flamer/drop_flame(var/turf/T, var/source, var/source_mob)
-	if(!istype(T)) 
+	if(!istype(T))
 		return
-	if(locate(/obj/flamer_fire) in T) 
+	if(locate(/obj/flamer_fire) in T)
 		return
 	var/datum/reagent/napalm/blue/R = new()
 	new /obj/flamer_fire(T, source, source_mob, R, 2)
@@ -1910,7 +1910,7 @@
 	shell_speed = AMMO_SPEED_TIER_3
 
 /datum/ammo/flamethrower/sentry_flamer/drop_flame(var/turf/T, var/source, var/source_mob)
-	if(!istype(T)) 
+	if(!istype(T))
 		return
 	var/datum/reagent/napalm/blue/R = new()
 	new /obj/flamer_fire(T, source, source_mob, R, 0)

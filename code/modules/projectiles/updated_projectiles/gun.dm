@@ -369,7 +369,7 @@
 		else 									dat += "It's unloaded[in_chamber?" but has a round chambered":""].<br>"
 	if(!(flags_gun_features & GUN_UNUSUAL_DESIGN))
 		dat += "[htmlicon(src)] <a href='?src=\ref[src];list_stats=1'>\[See combat statistics]</a><br>"
-	
+
 	if(dat)
 		to_chat(user, dat)
 
@@ -408,7 +408,7 @@
 
 	var/max_range = 0
 	var/scatter = 0
-	
+
 	var/list/damage_armor_profile_xeno = list()
 	var/list/damage_armor_profile_marine = list()
 	var/list/damage_armor_profile_armorbreak = list()
@@ -452,7 +452,7 @@
 				damage_armor_profile_armorbreak.Add("[round(armor_break_calculation(config.xeno_ranged_stats, damage, i, penetration, in_ammo.pen_armor_punch, armor_punch)/i)]%")
 			else
 				damage_armor_profile_armorbreak.Add("N/A")
-	
+
 	var/rpm = max(fire_delay, 0.0001)
 	var/burst_rpm = max(((fire_delay + (burst_delay * burst_amount)) / max(burst_amount, 1)), 0.0001)
 
@@ -474,7 +474,7 @@
 		"damage" = damage,
 		"falloff" = falloff,
 		"total_projectile_amount" = bonus_projectile_amount+1,
-		
+
 		"armor_punch" = armor_punch,
 		"penetration" = penetration,
 
@@ -980,6 +980,8 @@ and you're good to go.
 /obj/item/weapon/gun/proc/reset_iff_group_cache()
 	iff_group_cache = null
 
+#define EXECUTION_CHECK M.stat == UNCONSCIOUS && ((user.a_intent == INTENT_GRAB)||(user.a_intent == INTENT_DISARM))
+
 /obj/item/weapon/gun/attack(mob/living/M, mob/living/user, def_zone)
 	if(!(flags_gun_features & GUN_CAN_POINTBLANK)) // If it can't point blank, you can't suicide and such.
 		return ..()
@@ -1049,13 +1051,13 @@ and you're good to go.
 
 		flags_gun_features ^= GUN_CAN_POINTBLANK //Reset this.
 		return
-	else if(user.a_intent != INTENT_HARM) //Thwack them
-		return ..()
 
-	if(M.stat == UNCONSCIOUS && ((user.a_intent == INTENT_GRAB)||(user.a_intent == INTENT_DISARM))) //Execution
+	else if(EXECUTION_CHECK) //Execution
 		user.visible_message(SPAN_DANGER("[user] puts [src] up to [M], steadying their aim."), SPAN_WARNING("You put [src] up to [M], steadying your aim."),null, null, CHAT_TYPE_COMBAT_ACTION)
 		if(!do_after(user, SECONDS_3, INTERRUPT_ALL|INTERRUPT_DIFF_INTENT, BUSY_ICON_HOSTILE))
 			return FALSE
+	else if(user.a_intent != INTENT_HARM) //Thwack them
+		return ..()
 
 	//Point blanking doesn't actually fire the projectile. Instead, it simulates firing the bullet proper.
 	flags_gun_features &= ~GUN_BURST_FIRING
@@ -1098,15 +1100,17 @@ and you're good to go.
 
 	last_fired = world.time
 
-	if(M.stat == UNCONSCIOUS && ((user.a_intent == INTENT_GRAB)||(user.a_intent == INTENT_DISARM))) //Continue execution if on the correct intent. Accounts for change via the earlier do_after
+	if(EXECUTION_CHECK) //Continue execution if on the correct intent. Accounts for change via the earlier do_after
+		user.visible_message(SPAN_DANGER("[user] has executed [M] with [src]!"), SPAN_DANGER("You have executed [M] with [src]!"), message_flags = CHAT_TYPE_WEAPON_USE)
 		M.death()
 
 	if(!delete_bullet(projectile_to_fire))
 		qdel(projectile_to_fire)
-	
+
 	reload_into_chamber(user) //Reload into the chamber if the gun supports it.
 	return TRUE
 
+#undef EXECUTION_CHECK
 //----------------------------------------------------------
 				//							\\
 				// FIRE CYCLE RELATED PROCS \\
@@ -1248,7 +1252,7 @@ and you're good to go.
 					playsound(user, fire_rattle, 60, FALSE)//if the gun has a unique 'mag rattle' SFX play that instead of pitch shifting.
 				else
 					playsound(user, actual_sound, 60, firing_sndfreq)
-			else 
+			else
 				playsound(user, actual_sound, 25, firing_sndfreq)
 
 	return 1
@@ -1297,7 +1301,7 @@ and you're good to go.
 
 	seconds_since_fired = max(seconds_since_fired - (fire_delay * 0.3), 0) // Takes into account firerate, so that recoil cannot fall whilst firing.
 	// You have to be shooting at a third of the firerate of a gun to not build up any recoil if the recoil_loss_per_second is greater than the recoil_gain_per_second
-	
+
 	recoil_buildup = max(recoil_buildup - recoil_loss_per_second*seconds_since_fired, 0)
 
 	last_recoil_update = world.timeofday
@@ -1324,7 +1328,7 @@ and you're good to go.
 			total_recoil += RECOIL_AMOUNT_TIER_5
 		else
 			total_recoil -= user.skills.get_skill_level(SKILL_FIREARMS)*RECOIL_AMOUNT_TIER_5
-				
+	
 	if(total_recoil > 0 && ishuman(user))
 		shake_camera(user, total_recoil + 1, total_recoil)
 		return TRUE

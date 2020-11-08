@@ -966,13 +966,13 @@ Turn() or Shift() as there is virtually no overhead. ~N
 			var/bullets_transferred = 0
 
 			//Amount of times timed action will be activated.
-			//Standard M41A mag of 40 rounds takes 1.5 to refill from the box.
-			for(var/i = 1;i <= Ceiling(S / 40); i++)
+			//Standard M41A mag of 40 rounds or SMG mag of 48 takes 1.5 to refill from the box.
+			for(var/i = 1;i <= Ceiling(S / 48); i++)
 				if(!do_after(user, 15, INTERRUPT_ALL, action_icon))
 					to_chat(user, SPAN_NOTICE("You stop transferring rounds from [source] into [destination]."))
 					break
 				playsound(loc, pick('sound/weapons/handling/mag_refill_1.ogg', 'sound/weapons/handling/mag_refill_2.ogg', 'sound/weapons/handling/mag_refill_3.ogg'), 25, 1)
-				var/transfer = min(S - bullets_transferred, 40)
+				var/transfer = min(S - bullets_transferred, 48)
 				destination_current += transfer
 				source_current -= transfer
 				bullets_transferred += transfer

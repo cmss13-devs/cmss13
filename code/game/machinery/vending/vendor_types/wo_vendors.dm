@@ -184,7 +184,7 @@
 		list("AMMUNITION BOXES", -1, null, null),
 		list("Rifle Ammunition Box (10x24mm)", round(scale * 0.9), /obj/item/ammo_box/rounds, VENDOR_ITEM_REGULAR),
 		list("Rifle Ammunition Box (10x24mm AP)", round(scale * 0.75), /obj/item/ammo_box/rounds/ap, VENDOR_ITEM_REGULAR),
-		list("SMG Ammunition Box (10x20mm)", round(scale * 0.9), /obj/item/ammo_box/rounds/smg, VENDOR_ITEM_REGULAR),
+		list("SMG Ammunition Box (10x20mm HV)", round(scale * 0.9), /obj/item/ammo_box/rounds/smg, VENDOR_ITEM_REGULAR),
 		list("SMG Ammunition Box (10x20mm AP)", round(scale * 0.75), /obj/item/ammo_box/rounds/smg/ap, VENDOR_ITEM_REGULAR),
 		)
 

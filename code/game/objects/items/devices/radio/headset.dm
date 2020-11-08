@@ -44,6 +44,32 @@
 			return ..(freq, level)
 	return -1
 
+/obj/item/device/radio/headset/attack_hand(mob/user as mob)
+	if(!ishuman(user) || loc != user)
+		return ..()
+	var/mob/living/carbon/human/H = user
+	if (H.wear_ear != src)
+		return ..()
+	user.set_interaction(src)
+	interact(user)
+
+/obj/item/device/radio/headset/MouseDrop(obj/over_object as obj)
+	if(!CAN_PICKUP(usr, src))
+		return ..()
+	if(!istype(over_object, /obj/screen))
+		return ..()
+	if(loc != usr) //Makes sure that the headset is equipped, so that we can't drag it into our hand from miles away.
+		return ..()
+
+	switch(over_object.name)
+		if("r_hand")
+			usr.drop_inv_item_on_ground(src)
+			usr.put_in_r_hand(src)
+		if("l_hand")
+			usr.drop_inv_item_on_ground(src)
+			usr.put_in_l_hand(src)
+	add_fingerprint(usr)
+
 /obj/item/device/radio/headset/attackby(obj/item/W as obj, mob/user as mob)
 //	..()
 	user.set_interaction(src)

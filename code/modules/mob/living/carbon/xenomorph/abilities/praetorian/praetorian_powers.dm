@@ -458,6 +458,8 @@
 	apply_cooldown()
 
 	X.visible_message(SPAN_XENODANGER("[X] lashes its tail furiously, hitting everything in front of it!"), SPAN_XENODANGER("You lash your tail furiously, hitting everything in front of you!"))
+	X.spin_circle()
+	X.emote("tail")
 
 	for (var/turf/T in target_turfs)
 		for (var/mob/living/carbon/H in T)
@@ -676,6 +678,8 @@
 		if (stun_duration > 0)
 			T.KnockDown(stun_duration)
 		X.visible_message(SPAN_XENODANGER("[X] trips [A] with it's tail!"), SPAN_XENODANGER("You trip [A] with your tail!"))
+		X.spin_circle()
+		X.emote("tail")
 		to_chat(T, SPAN_XENOHIGHDANGER("You are swept off your feet by [X]!"))
 
 	if (daze_duration > 0)

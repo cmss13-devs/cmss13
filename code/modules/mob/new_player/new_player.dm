@@ -1,14 +1,4 @@
 //This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:33
-#define FLAG_SHOW_CIC			1
-#define FLAG_SHOW_AUXIL_SUPPORT	2
-#define FLAG_SHOW_MISC			4
-#define FLAG_SHOW_POLICE		8
-#define FLAG_SHOW_ENGINEERING	16
-#define FLAG_SHOW_REQUISITION	32
-#define FLAG_SHOW_MEDICAL		64
-#define FLAG_SHOW_MARINES		128
-#define FLAG_SHOW_ALL			FLAG_SHOW_CIC|FLAG_SHOW_AUXIL_SUPPORT|FLAG_SHOW_MISC|FLAG_SHOW_POLICE|FLAG_SHOW_ENGINEERING|FLAG_SHOW_REQUISITION|FLAG_SHOW_MEDICAL|FLAG_SHOW_MARINES
-
 /mob/new_player
 	var/ready = FALSE
 	var/spawning = FALSE//Referenced when you want to delete the new_player later on in the code.
@@ -250,7 +240,7 @@
 	close_spawn_windows()
 
 	var/turf/T
-	if(map_tag != MAP_WHISKEY_OUTPOST)		
+	if(map_tag != MAP_WHISKEY_OUTPOST)
 		T = pick(latejoin)
 	else if (map_tag == MAP_WHISKEY_OUTPOST)
 		T = pick(latewhiskey)
@@ -300,11 +290,11 @@
 			if(EVACUATION_STATUS_COMPLETE) dat += "<font color='red'>The [MAIN_SHIP_NAME] has undergone evacuation.</font><br>"
 
 	dat += "Choose from the following open positions:<br>"
-	var/roles_show = FLAG_SHOW_ALL
+	var/roles_show = FLAG_SHOW_ALL_JOBS
 
 	for(var/i in RoleAuthority.roles_for_mode)
 		var/datum/job/J = RoleAuthority.roles_for_mode[i]
-		if(!RoleAuthority.check_role_entry(src, J, TRUE)) 
+		if(!RoleAuthority.check_role_entry(src, J, TRUE))
 			continue
 		var/active = 0
 		// Only players with the job assigned and AFK for less than 10 minutes count as active
@@ -457,13 +447,3 @@
 
 /mob/new_player/hear_radio(var/message, var/verb="says", var/datum/language/language=null, var/part_a, var/part_b, var/mob/speaker = null, var/hard_to_hear = 0)
 	return
-
-#undef FLAG_SHOW_CIC
-#undef FLAG_SHOW_AUXIL_SUPPORT
-#undef FLAG_SHOW_MISC
-#undef FLAG_SHOW_POLICE
-#undef FLAG_SHOW_ENGINEERING
-#undef FLAG_SHOW_REQUISITION
-#undef FLAG_SHOW_MEDICAL
-#undef FLAG_SHOW_MARINES
-#undef FLAG_SHOW_ALL

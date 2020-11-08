@@ -77,7 +77,7 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
     . = ..(L);\
 }
 
-// Used to add a timelock to a job. Will be passed onto derivates. Will not include the parent's timelocks. 
+// Used to add a timelock to a job. Will be passed onto derivates. Will not include the parent's timelocks.
 #define OverrideTimelock(Path, timelockList) \
 ##Path/setup_requirements(var/list/L){\
     L = timelockList;\
@@ -176,3 +176,14 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_OBSERVER                    "Observer" // For monthly time tracking
 
 #define TIMELOCK_JOB(role_id, hours) new/datum/timelock(role_id, hours, role_id)
+
+//For displaying groups of jobs. Used by new player's latejoin menu and by crew manifest.
+#define FLAG_SHOW_CIC			1
+#define FLAG_SHOW_AUXIL_SUPPORT	2
+#define FLAG_SHOW_MISC			4
+#define FLAG_SHOW_POLICE		8
+#define FLAG_SHOW_ENGINEERING	16
+#define FLAG_SHOW_REQUISITION	32
+#define FLAG_SHOW_MEDICAL		64
+#define FLAG_SHOW_MARINES		128
+#define FLAG_SHOW_ALL_JOBS		FLAG_SHOW_CIC|FLAG_SHOW_AUXIL_SUPPORT|FLAG_SHOW_MISC|FLAG_SHOW_POLICE|FLAG_SHOW_ENGINEERING|FLAG_SHOW_REQUISITION|FLAG_SHOW_MEDICAL|FLAG_SHOW_MARINES

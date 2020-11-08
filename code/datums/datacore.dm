@@ -9,16 +9,17 @@ GLOBAL_DATUM_INIT(data_core, /obj/effect/datacore, new)
 	var/locked[] = list()
 
 /obj/effect/datacore/proc/get_manifest(monochrome, OOC)
-	var/list/cic = new()
-	var/list/auxil = new()
-	var/list/misc = new()
-	var/list/mp = new()
-	var/list/eng = new()
-	var/list/req = new()
-	var/list/med = new()
-	var/list/mar = new()
+	var/list/cic = ROLES_CIC.Copy()
+	var/list/auxil = ROLES_AUXIL_SUPPORT.Copy()
+	var/list/misc = ROLES_MISC.Copy()
+	var/list/mp = ROLES_POLICE.Copy()
+	var/list/eng = ROLES_ENGINEERING.Copy()
+	var/list/req = ROLES_REQUISITION.Copy()
+	var/list/med = ROLES_MEDICAL.Copy()
+	var/list/marines_by_squad = ROLES_SQUAD_ALL.Copy()
+	for(var/squad_name in marines_by_squad)
+		marines_by_squad[squad_name] = ROLES_MARINES.Copy()
 	var/list/isactive = new()
-	var/list/squads = new()
 
 	var/dat = {"
 	<div align='center'>
@@ -35,7 +36,10 @@ GLOBAL_DATUM_INIT(data_core, /obj/effect/datacore, new)
 	"}
 
 	var/even = 0
+
 	// sort mobs
+	var/dept_flags = NO_FLAGS //Is there anybody in the department?.
+	var/list/squad_sublists = ROLES_SQUAD_ALL.Copy() //Are there any marines in the squad?
 
 	for(var/datum/data/record/t in GLOB.data_core.general)
 		if(t.fields["mob_faction"] != FACTION_MARINE)	//we process only USCM humans
@@ -58,90 +62,87 @@ GLOBAL_DATUM_INIT(data_core, /obj/effect/datacore, new)
 			//cael - to prevent multiple appearances of a player/job combination, add a continue after each line
 
 		if(real_rank in ROLES_CIC)
-			cic[name] = rank
+			dept_flags |= FLAG_SHOW_CIC
+			LAZYSET(cic[real_rank], name, rank)
 		else if(real_rank in ROLES_AUXIL_SUPPORT)
-			auxil[name] = rank
+			dept_flags |= FLAG_SHOW_AUXIL_SUPPORT
+			LAZYSET(auxil[real_rank], name, rank)
 		else if(real_rank in ROLES_MISC)
-			misc[name] = rank
+			dept_flags |= FLAG_SHOW_MISC
+			LAZYSET(misc[real_rank], name, rank)
 		else if(real_rank in ROLES_POLICE)
-			mp[name] = rank
+			dept_flags |= FLAG_SHOW_POLICE
+			LAZYSET(mp[real_rank], name, rank)
 		else if(real_rank in ROLES_ENGINEERING)
-			eng[name] = rank
+			dept_flags |= FLAG_SHOW_ENGINEERING
+			LAZYSET(eng[real_rank], name, rank)
 		else if(real_rank in ROLES_REQUISITION)
-			req[name] = rank
+			dept_flags |= FLAG_SHOW_REQUISITION
+			LAZYSET(req[real_rank], name, rank)
 		else if(real_rank in ROLES_MEDICAL)
-			med[name] = rank
+			dept_flags |= FLAG_SHOW_MEDICAL
+			LAZYSET(med[real_rank], name, rank)
 		else if(real_rank in ROLES_MARINES)
-			squads[name] = squad_name
-			mar[name] = rank
-
-	//here we sort marines
-	var/mar_sl = list()
-	var/mar_spc = list()
-	var/mar_sg = list()
-	var/mar_med = list()
-	var/mar_eng = list()
-	var/mar_pfc = list()
-	for(var/i in mar)
-		if(mar[i] == JOB_SQUAD_LEADER)
-			mar_sl[i] = mar[i]
-		else if(mar[i] == JOB_SQUAD_SPECIALIST)
-			mar_spc[i] = mar[i]
-		else if(mar[i] == JOB_SQUAD_SMARTGUN)
-			mar_sg[i] = mar[i]
-		else if(mar[i] == JOB_SQUAD_MEDIC)
-			mar_med[i] = mar[i]
-		else if(mar[i] == JOB_SQUAD_ENGI)
-			mar_eng[i] = mar[i]
-		else if(mar[i] == JOB_SQUAD_MARINE)
-			mar_pfc[i] = mar[i]
-	mar.Cut()
-	mar = mar_sl + mar_spc + mar_sg + mar_med + mar_eng + mar_pfc
+			dept_flags |= FLAG_SHOW_MARINES
+			squad_sublists[squad_name] = TRUE
+			LAZYSET(marines_by_squad[squad_name][real_rank], name, rank)
 
 	//here we fill manifest
-	if(LAZYLEN(cic))
+	var/name
+	var/real_rank
+	if(dept_flags & FLAG_SHOW_CIC)
 		dat += "<tr><th colspan=3>Command</th></tr>"
-		for(name in cic)
-			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[cic[name]]</td><td>[isactive[name]]</td></tr>"
-			even = !even
-	if(LAZYLEN(auxil))
+		for(real_rank in cic)
+			for(name in cic[real_rank])
+				dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[cic[real_rank][name]]</td><td>[isactive[name]]</td></tr>"
+				even = !even
+	if(dept_flags & FLAG_SHOW_AUXIL_SUPPORT)
 		dat += "<tr><th colspan=3>Auxiliary Combat Support</th></tr>"
-		for(name in auxil)
-			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[auxil[name]]</td><td>[isactive[name]]</td></tr>"
-			even = !even
-	if(LAZYLEN(mar))
+		for(real_rank in auxil)
+			for(name in auxil[real_rank])
+				dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[auxil[real_rank][name]]</td><td>[isactive[name]]</td></tr>"
+				even = !even
+	if(dept_flags & FLAG_SHOW_MARINES)
 		dat += "<tr><th colspan=3>Marines</th></tr>"
-		for(var/j in list(SQUAD_NAME_1, SQUAD_NAME_2, SQUAD_NAME_3, SQUAD_NAME_4))
-			dat += "<tr><th colspan=3>[j]</th></tr>"
-			for(name in mar)
-				if(squads[name] == j)
-					dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[mar[name]]</td><td>[isactive[name]]</td></tr>"
+		for(var/squad_name in ROLES_SQUAD_ALL)
+			if(!squad_sublists[squad_name])
+				continue
+			dat += "<tr><th colspan=3>[squad_name]</th></tr>"
+			for(real_rank in marines_by_squad[squad_name])
+				for(name in marines_by_squad[squad_name][real_rank])
+					dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[marines_by_squad[squad_name][real_rank][name]]</td><td>[isactive[name]]</td></tr>"
 					even = !even
-	if(LAZYLEN(mp))
+	if(dept_flags & FLAG_SHOW_POLICE)
 		dat += "<tr><th colspan=3>Military Police</th></tr>"
-		for(name in mp)
-			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[mp[name]]</td><td>[isactive[name]]</td></tr>"
-			even = !even
-	if(LAZYLEN(eng))
+		for(real_rank in mp)
+			for(name in mp[real_rank])
+				dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[mp[real_rank][name]]</td><td>[isactive[name]]</td></tr>"
+				even = !even
+	if(dept_flags & FLAG_SHOW_ENGINEERING)
 		dat += "<tr><th colspan=3>Engineering</th></tr>"
-		for(name in eng)
-			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[eng[name]]</td><td>[isactive[name]]</td></tr>"
-			even = !even
-	if(LAZYLEN(req))
+		for(real_rank in eng)
+			for(name in eng[real_rank])
+				dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[eng[real_rank][name]]</td><td>[isactive[name]]</td></tr>"
+				even = !even
+	if(dept_flags & FLAG_SHOW_REQUISITION)
 		dat += "<tr><th colspan=3>Requisition</th></tr>"
-		for(name in req)
-			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[req[name]]</td><td>[isactive[name]]</td></tr>"
-			even = !even
-	if(LAZYLEN(med))
+		for(real_rank in req)
+			for(name in req[real_rank])
+				dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[req[real_rank][name]]</td><td>[isactive[name]]</td></tr>"
+				even = !even
+	if(dept_flags & FLAG_SHOW_MEDICAL)
 		dat += "<tr><th colspan=3>Medbay</th></tr>"
-		for(name in med)
-			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[med[name]]</td><td>[isactive[name]]</td></tr>"
-			even = !even
-	if(LAZYLEN(misc))
+		for(real_rank in med)
+			for(name in med[real_rank])
+				dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[med[real_rank][name]]</td><td>[isactive[name]]</td></tr>"
+				even = !even
+	if(dept_flags & FLAG_SHOW_MISC)
 		dat += "<tr><th colspan=3>Other</th></tr>"
-		for(name in misc)
-			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[misc[name]]</td><td>[isactive[name]]</td></tr>"
-			even = !even
+		for(real_rank in misc)
+			for(name in misc[real_rank])
+				dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[misc[real_rank][name]]</td><td>[isactive[name]]</td></tr>"
+				even = !even
+
 
 	dat += "</table></div>"
 	dat = replacetext(dat, "\n", "") // so it can be placed on paper correctly

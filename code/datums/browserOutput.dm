@@ -155,7 +155,7 @@ var/savefile/iconCache = new /savefile("data/iconCache.sav") //Cache of icons fo
 
 //Called by js client on js error
 /datum/chatOutput/proc/debug(error)
-	world.log = "\[[time2text(world.realtime, "YYYY-MM-DD hh:mm:ss")]\] Client: [(src.owner.key ? src.owner.key : src.owner)] triggered JS error: [error]"
+	world.log << "\[[time2text(world.realtime, "YYYY-MM-DD hh:mm:ss")]\] Client: [(src.owner.key ? src.owner.key : src.owner)] triggered JS error: [error]"
 
 // Budget version of ehjax
 /datum/chatOutput/proc/browser_send(var/C = owner, var/data)

@@ -740,7 +740,10 @@
 		for(var/i = 0 to total_seconds)
 			sleep(10)
 			if(!selected_target || !selected_target.loc)//if laser disappeared before we reached the target,
-				ammo_accuracy_range = min(ammo_accuracy_range + 1, ammo_max_inaccuracy) //accuracy decreases
+				ammo_accuracy_range++ //accuracy decreases
+
+	// clamp back to maximum inaccuracy
+	ammo_accuracy_range = min(ammo_accuracy_range, ammo_max_inaccuracy)
 
 	var/list/possible_turfs = list()
 	for(var/turf/TU in range(ammo_accuracy_range, target_turf))
@@ -766,7 +769,7 @@
 	last_fired = world.time
 	if(linked_shuttle)
 		for(var/obj/structure/dropship_equipment/electronics/targeting_system/TS in linked_shuttle.equipments)
-			ammo_accuracy_range = max(ammo_accuracy_range-2, 0) //targeting system increase accuracy and reduce travelling time.
+			ammo_accuracy_range = max(ammo_accuracy_range-2, 0) //targeting system increase accuracy
 			break
 
 	ammo_accuracy_range /= 2 //buff for basically pointblanking the ground

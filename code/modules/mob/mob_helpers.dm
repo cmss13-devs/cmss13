@@ -457,6 +457,9 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 		if(SKILL_MEDICAL)
 			if(skillcheck(src, SKILL_MEDICAL, SKILL_MEDICAL_MASTER))
 				return DURATION_MULTIPLIER_TIER_3
+			else if(skillcheck(src, SKILL_MEDICAL, SKILL_MEDICAL_DOCTOR))
+				return DURATION_MULTIPLIER_TIER_1
+			
 		if(SKILL_SURGERY)
 			if(skillcheck(src, SKILL_SURGERY, SKILL_SURGERY_EXPERT))
 				return DURATION_MULTIPLIER_TIER_3

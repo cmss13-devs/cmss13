@@ -7,6 +7,7 @@
 /datum/entity_meta/vending_stat
 	entity_type = /datum/entity/vending_stat
 	table_name = "vending_stat"
+	hints = DB_TABLEHINT_LOCAL
 	field_types = list(
 		"round_id" = DB_FIELDTYPE_BIGINT,
 		"item" = DB_FIELDTYPE_STRING_LARGE,

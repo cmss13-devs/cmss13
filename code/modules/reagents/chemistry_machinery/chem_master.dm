@@ -9,7 +9,7 @@
 	idle_power_usage = 20
 	layer = BELOW_OBJ_LAYER //So bottles/pills reliably appear above it
 	var/req_skill = SKILL_MEDICAL
-	var/req_skill_level = SKILL_MEDICAL_MEDIC
+	var/req_skill_level = SKILL_MEDICAL_DOCTOR
 	var/pill_maker = TRUE
 	var/vial_maker = FALSE
 	var/obj/item/reagent_container/beaker = null
@@ -22,6 +22,7 @@
 	var/pillsprite = "1"
 	var/client/has_sprites = list()
 	var/max_pill_count = 20
+	var/tether_range = 3
 	var/obj/structure/machinery/smartfridge/chemistry/connected
 
 /obj/structure/machinery/chem_master/Initialize()
@@ -29,15 +30,17 @@
 	create_reagents(240)
 	connect_smartfridge()
 
-/obj/structure/machinery/bodyscanner/Destroy()
-	connected = null
+/obj/structure/machinery/chem_master/Destroy()
+	cleanup()
 	. = ..()
 
 /obj/structure/machinery/chem_master/proc/connect_smartfridge()
 	if(connected)
 		return
-	connected = locate(/obj/structure/machinery/smartfridge/chemistry) in range(3, src)
-	visible_message(SPAN_NOTICE("<b>The [src] beeps:</b> Smartfridge connected."))
+	connected = locate(/obj/structure/machinery/smartfridge/chemistry) in range(tether_range, src)
+	if(connected)
+		RegisterSignal(connected, COMSIG_PARENT_QDELETING, .proc/cleanup)
+		visible_message(SPAN_NOTICE("<b>The [src] beeps:</b> Smartfridge connected."))
 
 /obj/structure/machinery/chem_master/ex_act(severity)
 	switch(severity)
@@ -280,8 +283,14 @@
 		if(!loaded_pill_bottle)
 			return
 
-		if(!connected)
+		if(QDELETED(connected))
 			to_chat(user, SPAN_WARNING("Connect a smartfridge first."))
+			return
+		
+		if(src.z != connected.z || get_dist(src, connected) > tether_range)
+			to_chat(user, SPAN_WARNING("Smartfridge is out of range. Connection severed."))
+			cleanup()
+			attack_hand(user)
 			return
 
 		connected.add_item(loaded_pill_bottle)
@@ -373,6 +382,11 @@
 	else
 		show_browser(user, "Condimaster menu:<BR><BR>[dat]", name, "chem_master")
 	return
+
+/obj/structure/machinery/chem_master/proc/cleanup()
+	SIGNAL_HANDLER
+	if(connected)
+		connected = null
 
 /obj/structure/machinery/chem_master/condimaster
 	name = "CondiMaster 3000"

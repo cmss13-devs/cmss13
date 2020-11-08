@@ -2,7 +2,7 @@
 	name = "sheet"
 	layer = UPPER_ITEM_LAYER
 	w_class = SIZE_MEDIUM
-	force = 5
+	force = 0
 	throwforce = 5
 	max_amount = 50
 	throw_speed = SPEED_VERY_FAST

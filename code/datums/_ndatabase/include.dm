@@ -17,6 +17,7 @@
 #include "code/entity/entity_meta.dm"
 #include "code/entity/link.dm"
 #include "code/entity/entity_view.dm"
+#include "code/entity/index.dm"
 
 #include "code/interfaces/adapter.dm"
 #include "code/interfaces/connection.dm"

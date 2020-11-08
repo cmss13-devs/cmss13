@@ -92,7 +92,7 @@
 	chemclass = CHEM_CLASS_COMMON
 	properties = list(PROPERTY_ANTICORROSIVE = 2)
 
-/datum/reagent/dermaline
+/datum/reagent/medical/dermaline
 	name = "Dermaline"
 	id = "dermaline"
 	description = "Advanced medicine used to treat severe burn trauma. Enables the body to restore even the direst heat-damaged tissue. Overdosing on dermaline can cause severe internal tissue damage."

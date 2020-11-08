@@ -441,7 +441,7 @@
 		if(N.note_type == "synthesis")
 			CR.data = N.data
 			if(N.full_report)
-				CR.completed = TRUE				
+				CR.completed = TRUE
 	CR.info = info
 	CR.info_links = info_links
 	CR.stamps = stamps
@@ -598,7 +598,7 @@
 				txt += "<BR><B>\nWARNING: UNSTABLE REAGENT. MIX CAREFULLY.</B><BR>\n"
 			txt += "<BR>\n<HR> - <I>Weston-Yamada</I>"
 		if("test")
-			txt = "Experiment [pick("C","Q","V","W","X","Y","Z")][rand(100,999)][pick("a","b","c")]"
+			name = "Experiment [pick("C","Q","V","W","X","Y","Z")][rand(100,999)][pick("a","b","c")]"
 			txt += "Note for [name]</H2></center>"
 			txt += "Subject <I>[rand(10000,99999)]</I> experienced [pick(C.properties)] effects during testing of [C.name]. <BR>\nTesting for additional chemical properties is currently pending. <BR>\n"
 			txt += "<BR>\n<HR> - <I>Weston-Yamada</I>"
@@ -690,7 +690,8 @@
 		if(chemical_data.clearance_level >= S.gen_tier || info_only)
 			info += "<I>The following information relating to [S.name] is restricted with a level [S.gen_tier] clearance classification.</I><BR>"
 			info += "<font size = \"2.5\">[S.description]\n"
-			info += "<BR>Overdoses at: [S.overdose] units</font><BR>\n"
+			info += "<BR>Overdoses at: [S.overdose] units<BR>\n"
+			info += "<BR>Standard duration multiplier of [REAGENTS_METABOLISM/S.custom_metabolism]x</font><BR>\n"
 			completed = TRUE
 		else
 			info += "CLASSIFIED:<I> Clearance level [S.gen_tier] required to read the database entry.</I><BR>\n"
@@ -698,7 +699,8 @@
 		info += "CLASSIFIED:<I> Clearance level <B>X</B> required to read the database entry.</I><BR>\n"
 	else if(S.description)
 		info += "<font size = \"2.5\">[S.description]\n"
-		info += "<BR>Overdoses at: [S.overdose] units</font><BR>\n"
+		info += "<BR>Overdoses at: [S.overdose] units<BR>\n"
+		info += "<BR>Standard duration multiplier of [REAGENTS_METABOLISM/S.custom_metabolism]x</font><BR>\n"
 		completed = TRUE
 	else
 		info += "<I>No details on this reagent could be found in the database.</I><BR>\n"
@@ -739,7 +741,7 @@
 			completed = FALSE
 		if(S.chemclass == CHEM_CLASS_SPECIAL && chemical_data.clearance_x_access)
 			completed = TRUE
-	
+
 	data = S
 
 /obj/item/paper/incident

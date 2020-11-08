@@ -441,7 +441,7 @@
 		if(N.note_type == "synthesis")
 			CR.data = N.data
 			if(N.full_report)
-				CR.completed = TRUE				
+				CR.completed = TRUE
 	CR.info = info
 	CR.info_links = info_links
 	CR.stamps = stamps
@@ -598,7 +598,7 @@
 				txt += "<BR><B>\nWARNING: UNSTABLE REAGENT. MIX CAREFULLY.</B><BR>\n"
 			txt += "<BR>\n<HR> - <I>Weston-Yamada</I>"
 		if("test")
-			txt = "Experiment [pick("C","Q","V","W","X","Y","Z")][rand(100,999)][pick("a","b","c")]"
+			name = "Experiment [pick("C","Q","V","W","X","Y","Z")][rand(100,999)][pick("a","b","c")]"
 			txt += "Note for [name]</H2></center>"
 			txt += "Subject <I>[rand(10000,99999)]</I> experienced [pick(C.properties)] effects during testing of [C.name]. <BR>\nTesting for additional chemical properties is currently pending. <BR>\n"
 			txt += "<BR>\n<HR> - <I>Weston-Yamada</I>"
@@ -739,7 +739,7 @@
 			completed = FALSE
 		if(S.chemclass == CHEM_CLASS_SPECIAL && chemical_data.clearance_x_access)
 			completed = TRUE
-	
+
 	data = S
 
 /obj/item/paper/incident

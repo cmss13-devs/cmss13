@@ -4,7 +4,7 @@
 	return
 
 // No comment
-/atom/proc/attackby(obj/item/W, mob/living/user)
+/atom/proc/attackby(obj/item/W, mob/living/user,list/mods)
 	return
 
 /atom/movable/attackby(obj/item/W, mob/living/user)

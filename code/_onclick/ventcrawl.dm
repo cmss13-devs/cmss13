@@ -14,7 +14,7 @@
 	if(mods["alt"])
 		if(can_ventcrawl() && istype(A, /obj/structure/pipes/vents))
 			handle_ventcrawl(A)
-		return TRUE
+			return TRUE
 
 /mob/proc/start_ventcrawl()
 	var/atom/pipe

@@ -344,34 +344,35 @@ obj/structure/barricade/proc/take_damage(var/damage)
 		if(50 to 75) damage_state = BARRICADE_DMG_SLIGHT
 		if(75 to INFINITY) damage_state = BARRICADE_DMG_NONE
 
-/obj/structure/barricade/verb/rotate()
+/obj/structure/barricade/verb/count_rotate()
 	set name = "Rotate Barricade Counter-Clockwise"
 	set category = "Object"
 	set src in oview(1)
 
-	if(isobserver(usr))
-		return
+	rotate(usr,1)
 
-	if(anchored)
-		to_chat(usr, SPAN_WARNING("It is fastened to the floor, you can't rotate it!"))
-		return 0
-
-	dir = turn(dir, 90)
-	update_icon()
-	return
-
-/obj/structure/barricade/verb/revrotate()
+/obj/structure/barricade/verb/clock_rotate()
 	set name = "Rotate Barricade Clockwise"
 	set category = "Object"
 	set src in oview(1)
 
-	if(isobserver(usr))
+	rotate(usr,-1)
+
+/obj/structure/barricade/proc/rotate(var/mob/user, var/rotation_dir = -1)//-1 for clockwise, 1 for counter clockwise
+	if(world.time <= user.next_move || !ishuman(user) || !Adjacent(user) || user.is_mob_incapacitated())
 		return
 
 	if(anchored)
 		to_chat(usr, SPAN_WARNING("It is fastened to the floor, you can't rotate it!"))
-		return 0
+		return
 
-	dir = turn(dir, 270)
+	user.next_move = world.time + 3	//slight spam prevention? you don't want every metal cade to turn into a doorway
+	dir = turn(dir, 90 * rotation_dir)
 	update_icon()
-	return
+
+/obj/structure/barricade/clicked(mob/user, list/mods)
+	if(mods["alt"])
+		rotate(user)
+		return TRUE
+
+	return ..()

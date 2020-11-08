@@ -405,14 +405,17 @@
 
 /obj/item/storage/belt/knifepouch
 	name="\improper M276 pattern knife rig"
-	desc="The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is specially designed with four holsters to store throwing knives. Not commonly issued, but kept in service."
+	desc="The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is specially designed to store knives. Not commonly issued, but kept in service."
 	icon_state = "knifebelt"
 	item_state = "marinebelt" // aslo temp, maybe somebody update these icons with better ones?
 	w_class = SIZE_LARGE
 	storage_slots = 6
-	max_w_class = SIZE_TINY
+	max_w_class = SIZE_SMALL
 	max_storage_space = 6
-	can_hold=list(/obj/item/weapon/melee/throwing_knife)
+	can_hold = list(
+		/obj/item/weapon/melee/throwing_knife,
+		/obj/item/attachable/bayonet
+	)
 
 /obj/item/storage/belt/knifepouch/Initialize()
 	. = ..()

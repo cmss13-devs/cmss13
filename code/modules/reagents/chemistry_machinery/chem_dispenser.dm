@@ -8,7 +8,7 @@
 	idle_power_usage = 40
 	layer = BELOW_OBJ_LAYER //So beakers reliably appear above it
 	var/req_skill = SKILL_MEDICAL
-	var/req_skill_level = SKILL_MEDICAL_MEDIC
+	var/req_skill_level = SKILL_MEDICAL_DOCTOR
 	var/ui_title = "Chem Dispenser 5000"
 	var/obj/structure/machinery/chem_storage/chem_storage
 	var/network = "Ground"

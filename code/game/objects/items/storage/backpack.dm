@@ -369,10 +369,17 @@ obj/item/storage/backpack/empty(mob/user, turf/T)
 	icon_state = "grenadierpack"
 	overlays = list("+grenadierpack_unlocked")
 	worn_accessible = TRUE
-	max_storage_space = 24 //12 HEDP grenades or 8 custom large
+	max_storage_space = 36 //12 grenades
+	storage_slots = 12
 	can_hold = list(/obj/item/explosive/grenade)
 	is_id_lockable = TRUE
 	has_gamemode_skin = FALSE 
+
+/obj/item/storage/backpack/marine/grenadepack/attackby(obj/item/W, mob/user)
+	if(istype(W, /obj/item/storage/box/nade_box) || istype(W, /obj/item/storage/backpack/marine/grenadepack) || istype(W, /obj/item/storage/belt/grenade))
+		dump_into(W,user)
+	else
+		return ..()
 
 // Scout Cloak
 /obj/item/storage/backpack/marine/satchel/scout_cloak

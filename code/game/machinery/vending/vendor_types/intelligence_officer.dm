@@ -106,6 +106,7 @@
 
 //------------CLOTHING VENDOR---------------
 
+//MARINE_CAN_BUY_SHOES MARINE_CAN_BUY_UNIFORM currently not used
 /obj/structure/machinery/cm_vending/clothing/intelligence_officer
 	name = "\improper ColMarTech Intelligence Officer Equipment Rack"
 	desc = "An automated rack hooked up to a colossal storage of Intelligence Officer standard-issue equipment."
@@ -114,8 +115,6 @@
 
 	listed_products = list(
 		list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
-		list("Boots", 0, /obj/item/clothing/shoes/marine/knife, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
-		list("Uniform", 0, /obj/item/clothing/under/marine/officer/intel, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_MANDATORY),
 		list("Gloves", 0, /obj/item/clothing/gloves/yellow, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_MANDATORY),
 		list("Armor", 0, /obj/item/clothing/suit/storage/marine/intel, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
 		list("Headset", 0, /obj/item/device/radio/headset/almayer/mcom, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),

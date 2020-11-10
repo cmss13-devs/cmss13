@@ -3,6 +3,7 @@
 
 	languages = list("Russian", "English")
 	faction = FACTION_UPP
+	idtype = /obj/item/card/id/dogtag
 
 /datum/equipment_preset/upp/New()
 	. = ..()
@@ -80,6 +81,7 @@
 	name = "UPP Survivor"
 	flags = EQUIPMENT_PRESET_EXTRA
 
+	idtype = /obj/item/card/id
 	skills = /datum/skills/civilian/survivor/doctor
 	assignment = JOB_UPP
 	rank = JOB_UPP
@@ -106,6 +108,7 @@
 	assignment = "UPP Combat Synthetic"
 	rank = "UPP Combat Synthetic"
 	paygrade = "SYN"
+	idtype = /obj/item/card/id/gold
 
 /datum/equipment_preset/upp/synth/load_name(mob/living/carbon/human/H, var/randomise)
 	H.gender = pick(50;MALE,50;FEMALE)
@@ -433,3 +436,39 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/box/handcuffs, WEAR_IN_BACK)
 
 	spawn_weapon(/obj/item/weapon/gun/rifle/type71/carbine/commando, /obj/item/ammo_magazine/rifle/type71/ap, H, 0, 7)
+
+/*****************************************************************************************************/
+
+/datum/equipment_preset/upp/tank
+	name = "UPP Vehicle Crewman (TANK)"
+	flags = EQUIPMENT_PRESET_EXTRA
+
+	assignment = JOB_UPP_CREWMAN
+	rank = JOB_UPP_CREWMAN
+	paygrade = "E7"
+	role_comm_title = "TANK"
+	minimum_age = 30
+	skills = /datum/skills/tank_crew
+
+/datum/equipment_preset/upp/tank/load_gear(mob/living/carbon/human/H)
+
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp_knife(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/bears(H), WEAR_EAR)
+	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/welding(H), WEAR_EYES)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(H), WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/korovin/standard(H), WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/UPP(H), WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/tool/weldpack(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/tank(H), WEAR_R_STORE)
+	H.equip_to_slot_or_del(pick(new /obj/item/clothing/head/helmet/UPP, new /obj/item/clothing/head/uppcap/beret), WEAR_HEAD)
+
+	spawn_weapon(/obj/item/weapon/gun/rifle/type71/carbine, /obj/item/ammo_magazine/rifle/type71, H, 0, 3)
+
+	H.hud_set_squad()
+
+/datum/equipment_preset/upp/tank/load_status()
+	return
+
+/*****************************************************************************************************/

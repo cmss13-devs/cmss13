@@ -1,0 +1,11 @@
+author: Jeser
+
+delete-after: True
+
+changes: 
+  - tweak: "Auxiliary Combat Support roles (Vehicle Crewman, Intelligence Officer, Pilot Officer) now spawn in their respective uniform and marine boots with a knife."
+  - rscdel: "Removed uniforms and boots from ACS roles equipment vendors."
+  - bugfix: "Fixed Squad Requisition Munition Vendor vending M41A AP instead of M4A3 HP magazines."
+  - tweak: "USCM VC geared loadout now has pistol belt with M4A3 Custom instead of vehicle ammo belt, M39 SMG and 3 extended magazines."
+  - rscadd: "Added Event VC loadout, identical to USCM, belongs to Neutral faction. Added UPP VC loadout Tankist."
+  - tweak: "Regular UPP soldiers now use dogtags."

@@ -369,6 +369,7 @@
 
 //------------CLOTHING RACK---------------
 
+//MARINE_CAN_BUY_SHOES MARINE_CAN_BUY_UNIFORM currently not used
 /obj/structure/machinery/cm_vending/clothing/vehicle_crew
 	name = "\improper ColMarTech Vehicle Crewman Equipment Rack"
 	desc = "An automated rack hooked up to a colossal storage of Vehicle Crewmen standard-issue equipment."
@@ -377,8 +378,6 @@
 
 	listed_products = list(
 		list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
-		list("Boots", 0, /obj/item/clothing/shoes/marine/knife, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
-		list("Uniform", 0, /obj/item/clothing/under/marine/officer/tanker, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_MANDATORY),
 		list("Gloves", 0, /obj/item/clothing/gloves/yellow, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_MANDATORY),
 		list("Tanker Armor", 0, /obj/item/clothing/suit/storage/marine/tanker, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
 		list("Headset", 0, /obj/item/device/radio/headset/almayer/mcom, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),

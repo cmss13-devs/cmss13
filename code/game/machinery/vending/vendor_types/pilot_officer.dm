@@ -51,6 +51,7 @@
 
 //------------CLOTHING VENDOR---------------
 
+//MARINE_CAN_BUY_SHOES MARINE_CAN_BUY_UNIFORM currently not used
 obj/structure/machinery/cm_vending/clothing/pilot_officer
 	name = "\improper ColMarTech Pilot Officer Equipment Rack"
 	desc = "An automated rack hooked up to a colossal storage of Pilot Officer standard-issue equipment."
@@ -59,8 +60,6 @@ obj/structure/machinery/cm_vending/clothing/pilot_officer
 
 	listed_products = list(
 		list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
-		list("Boots", 0, /obj/item/clothing/shoes/marine/knife, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
-		list("Bodysuit", 0, /obj/item/clothing/under/marine/officer/pilot, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_MANDATORY),
 		list("Gloves", 0, /obj/item/clothing/gloves/yellow, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_MANDATORY),
 		list("M70 Flak Jacket", 0, /obj/item/clothing/suit/armor/vest/pilot, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
 		list("Headset", 0, /obj/item/device/radio/headset/almayer/mcom, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),

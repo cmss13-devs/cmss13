@@ -140,6 +140,8 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 
 #define JOB_UPP_REPRESENTATIVE			"UPP Representative"
 
+#define JOB_UPP_CREWMAN					"UPP Tankist"
+
 //-------- CLF --------//
 #define JOB_CLF							"CLF Guerilla"
 #define JOB_CLF_ENGI					"CLF Field Technician"

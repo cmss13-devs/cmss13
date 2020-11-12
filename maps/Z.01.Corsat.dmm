@@ -7869,7 +7869,7 @@
 	},
 /area/corsat/gamma/residential)
 "awl" = (
-/obj/structure/surface/rack/holorack,
+/obj/structure/surface/rack,
 /obj/item/storage/fancy/vials/random,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/corsat{
@@ -14730,7 +14730,7 @@
 	},
 /area/corsat/gamma/hangar/arrivals)
 "aNj" = (
-/obj/structure/surface/rack/holorack,
+/obj/structure/surface/rack,
 /obj/item/evidencebag,
 /obj/structure/machinery/power/apc/high{
 	dir = 8;
@@ -20716,7 +20716,7 @@
 	},
 /area/corsat/theta/airlock/east)
 "bbv" = (
-/obj/structure/surface/rack/holorack,
+/obj/structure/surface/rack,
 /obj/item/device/flashlight,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/corsat{
@@ -25554,7 +25554,7 @@
 	},
 /area/corsat/gamma/canteen)
 "boX" = (
-/obj/structure/surface/rack/holorack,
+/obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/corsat{
 	icon_state = "cargo"
@@ -26501,7 +26501,7 @@
 	},
 /area/corsat/omega/security)
 "bso" = (
-/obj/structure/surface/rack/holorack,
+/obj/structure/surface/rack,
 /obj/item/device/flashlight,
 /obj/item/device/flashlight,
 /turf/open/floor/corsat{
@@ -26528,7 +26528,7 @@
 	},
 /area/corsat/omega/security)
 "bsr" = (
-/obj/structure/surface/rack/holorack,
+/obj/structure/surface/rack,
 /obj/item/evidencebag,
 /turf/open/floor/corsat{
 	dir = 5;
@@ -29864,7 +29864,7 @@
 	},
 /area/corsat/gamma/medbay/surgery)
 "bBj" = (
-/obj/structure/surface/rack/holorack,
+/obj/structure/surface/rack,
 /obj/item/storage/pill_bottle/inaprovaline{
 	pixel_x = 7
 	},
@@ -29888,7 +29888,7 @@
 	},
 /area/corsat/gamma/medbay/chemistry)
 "bBl" = (
-/obj/structure/surface/rack/holorack,
+/obj/structure/surface/rack,
 /obj/item/storage/pill_bottle/tramadol,
 /obj/item/storage/pill_bottle/bicaridine{
 	pixel_x = 5
@@ -30434,7 +30434,7 @@
 /area/corsat/gamma/security)
 "bCH" = (
 /obj/item/storage/toolbox/mechanical,
-/obj/structure/surface/rack/holorack,
+/obj/structure/surface/rack,
 /turf/open/floor/corsat{
 	dir = 4;
 	icon_state = "red"
@@ -30821,7 +30821,7 @@
 	},
 /area/corsat/omega/security)
 "bDZ" = (
-/obj/structure/surface/rack/holorack,
+/obj/structure/surface/rack,
 /obj/item/storage/toolbox/mechanical,
 /obj/effect/spawner/random/toolbox,
 /turf/open/floor/corsat{
@@ -35019,7 +35019,7 @@
 	},
 /area/corsat/omega/offices)
 "bRk" = (
-/obj/structure/surface/rack/holorack,
+/obj/structure/surface/rack,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/spawner/random/toolbox,
 /turf/open/floor/corsat{
@@ -35028,7 +35028,7 @@
 	},
 /area/corsat/omega/checkpoint)
 "bRn" = (
-/obj/structure/surface/rack/holorack,
+/obj/structure/surface/rack,
 /obj/item/handcuffs,
 /obj/item/handcuffs,
 /turf/open/floor/corsat{
@@ -35058,7 +35058,7 @@
 	},
 /area/corsat/omega/maint)
 "bRq" = (
-/obj/structure/surface/rack/holorack,
+/obj/structure/surface/rack,
 /obj/item/device/flashlight,
 /turf/open/floor/corsat{
 	dir = 4;
@@ -35200,7 +35200,7 @@
 	},
 /area/corsat/sigma/south/security)
 "bRX" = (
-/obj/structure/surface/rack/holorack,
+/obj/structure/surface/rack,
 /obj/item/device/flashlight,
 /obj/item/device/flashlight,
 /obj/effect/landmark/objective_landmark/medium,
@@ -35210,14 +35210,14 @@
 /area/corsat/sigma/south/security)
 "bRY" = (
 /obj/effect/spawner/random/toolbox,
-/obj/structure/surface/rack/holorack,
+/obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
 /area/corsat/sigma/south/security)
 "bRZ" = (
-/obj/structure/surface/rack/holorack,
+/obj/structure/surface/rack,
 /obj/item/evidencebag,
 /obj/item/evidencebag,
 /obj/effect/landmark/objective_landmark/medium,
@@ -49760,7 +49760,7 @@
 	},
 /area/corsat/gamma/cargo)
 "kyb" = (
-/obj/structure/surface/rack/holorack,
+/obj/structure/surface/rack,
 /obj/item/storage/donut_box,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/corsat{

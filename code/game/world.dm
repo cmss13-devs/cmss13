@@ -20,8 +20,6 @@ var/internal_tick_usage = 0
 
 /world/New()
 	internal_tick_usage = 0.2 * world.tick_lag
-	extools_initialize()
-	maptick_initialize()
 	hub_password = "[config.hub_password]"
 
 	//logs

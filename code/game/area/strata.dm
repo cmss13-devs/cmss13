@@ -310,7 +310,7 @@ However, this might break the tacmap. This entire system might be replaced by Sl
 	icon_state = "offices"
 
 /area/strata/ag/interior/dorms
-	name = "External Mining Dormitories"
+	name = "External Mining"
 	icon_state = "dorms_0"
 	is_resin_allowed = FALSE
 

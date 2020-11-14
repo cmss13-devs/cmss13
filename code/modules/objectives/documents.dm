@@ -14,10 +14,16 @@
 	display_category = "Documents"
 
 /datum/cm_objective/document/New(var/obj/item/document_objective/D)
-	..()
+	. = ..()
 	document = D
 	initial_area = get_area(document)
 	important = rand(0,1)
+
+/datum/cm_objective/document/Destroy()
+	document.objective = null
+	document = null
+	initial_area = null
+	return ..()
 
 /datum/cm_objective/document/get_related_label()
 	return document.label
@@ -77,15 +83,16 @@
 	var/label // label on the document
 	var/renamed = FALSE //Once someone reads a document the item gets renamed based on the objective they are linked to)
 
-/obj/item/document_objective/New()
-	..()
+/obj/item/document_objective/Initialize(mapload, ...)
+	. = ..()
 	label = "[pick(alphabet_uppercase)][rand(100,999)]"
 	objective = new objective_type(src)
 
 /obj/item/document_objective/Destroy()
-	if(objective)
-		objective.fail()
-	..()
+	objective?.fail()
+	objective.document = null
+	objective = null
+	return ..()
 
 /obj/item/document_objective/proc/display_read_message(mob/living/user)
 	if(user && user.mind)
@@ -134,7 +141,7 @@
 	icon_state = "paper_words"
 	w_class = SIZE_TINY
 
-/obj/item/document_objective/paper/New()
+/obj/item/document_objective/paper/Initialize(mapload, ...)
 	. = ..()
 	pixel_y = rand(-8, 8)
 	pixel_x = rand(-9, 9)
@@ -148,7 +155,7 @@
 	reading_time = 60
 	objective_type = /datum/cm_objective/document/progress_report
 
-/obj/item/document_objective/report/New()
+/obj/item/document_objective/report/Initialize(mapload, ...)
 	. = ..()
 	pixel_y = rand(-8, 8)
 	pixel_x = rand(-9, 9)
@@ -163,8 +170,8 @@
 	objective_type = /datum/cm_objective/document/folder
 	w_class = SIZE_TINY
 
-/obj/item/document_objective/folder/New()
-	..()
+/obj/item/document_objective/folder/Initialize(mapload, ...)
+	. = ..()
 	var/datum/cm_objective/document/folder/F = objective
 	var/col = pick("red", "black", "blue", "yellow", "white")
 	switch(col)
@@ -200,6 +207,6 @@
 	reading_time = 200
 	objective_type = /datum/cm_objective/document/technical_manual
 
-/obj/item/document_objective/technical_manual/New()
-	..()
+/obj/item/document_objective/technical_manual/Initialize(mapload, ...)
+	. = ..()
 	name = "[initial(name)] ([label])"

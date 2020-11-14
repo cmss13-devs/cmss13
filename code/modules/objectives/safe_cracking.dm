@@ -6,13 +6,18 @@
 	prerequisites_required = PREREQUISITES_NONE
 	objective_flags = OBJ_DEAD_END
 	number_of_clues_to_generate = 4
-	
+
 /datum/cm_objective/crack_safe/New(var/obj/structure/safe/safe)
 	if(!istype(safe))
 		CRASH("Object is not of type safe - [safe]")
 	target = safe
 	initial_location = get_area(target)
 	. = ..()
+
+/datum/cm_objective/crack_safe/Destroy()
+	target = null
+	initial_location = null
+	return ..()
 
 /datum/cm_objective/crack_safe/check_completion()
 	if(!target)

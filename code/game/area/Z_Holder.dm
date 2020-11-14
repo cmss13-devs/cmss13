@@ -10,7 +10,7 @@
 ////////////////////////////////////////////////////////////
 
 
-/obj/item/z_holder/
+/obj/item/z_holder
 	name = "Default" //Name of the item
 	var/MapName = "Default" //This should be the name of the map, without the Z.##
 	desc = "Something you shouldn't be fucking with while the server is running." //This shouldn't be changed

@@ -283,7 +283,7 @@
 
 
 // Transit Shuttle
-/turf/closed/shuttle/transit/
+/turf/closed/shuttle/transit
 	icon = 'icons/turf/shuttle.dmi'
 	icon_state = "wall"
 

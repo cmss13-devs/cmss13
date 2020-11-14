@@ -148,7 +148,7 @@
 	return 1
 
 
-/obj/item/robot/upgrade/syndicate/
+/obj/item/robot/upgrade/syndicate
 	name = "illegal equipment module"
 	desc = "Unlocks the hidden, deadlier functions of a robot"
 	construction_cost = list("metal"=10000,"glass"=15000,"diamond" = 10000)

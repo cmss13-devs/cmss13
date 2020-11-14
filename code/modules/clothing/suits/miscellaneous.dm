@@ -17,7 +17,7 @@
 	flags_armor_protection = BODY_FLAG_CHEST
 	allowed = list(
 		/obj/item/weapon/gun,
-		
+
 		/obj/item/device/flashlight,
 		/obj/item/device/healthanalyzer,
 		/obj/item/device/radio,
@@ -36,7 +36,7 @@
 	flags_armor_protection = BODY_FLAG_CHEST
 	allowed = list (
 		/obj/item/weapon/gun,
-		
+
 		/obj/item/device/flashlight,
 		/obj/item/device/healthanalyzer,
 		/obj/item/device/radio,
@@ -132,7 +132,7 @@
 		/obj/item/storage/fancy/cigarettes,
 		/obj/item/tool/lighter,
 		/obj/item/device/taperecorder,
-		
+
 		/obj/item/device/flashlight,
 		/obj/item/device/healthanalyzer,
 		/obj/item/device/radio,
@@ -157,7 +157,7 @@
 		/obj/item/storage/fancy/cigarettes,
 		/obj/item/tool/lighter,
 		/obj/item/device/taperecorder,
-		
+
 		/obj/item/device/flashlight,
 		/obj/item/device/healthanalyzer,
 		/obj/item/device/radio,
@@ -175,7 +175,7 @@
 	w_class = SIZE_MEDIUM
 	allowed = list(
 		/obj/item/toy,
-		
+
 		/obj/item/device/flashlight,
 		/obj/item/device/healthanalyzer,
 		/obj/item/device/radio,
@@ -346,7 +346,7 @@
 	flags_inv_hide = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
 	siemens_coefficient = 2.0
 //swimsuit
-/obj/item/clothing/under/swimsuit/
+/obj/item/clothing/under/swimsuit
 	siemens_coefficient = 1
 	flags_armor_protection = 0
 
@@ -413,7 +413,7 @@
 		/obj/item/tool/wirecutters,
 		/obj/item/tool/wrench,
 		/obj/item/clothing/mask/gas,
-		
+
 		/obj/item/device/flashlight,
 		/obj/item/device/healthanalyzer,
 		/obj/item/device/radio,

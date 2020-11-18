@@ -332,6 +332,7 @@ Turn() or Shift() as there is virtually no overhead. ~N
 
 /obj/item/ammo_box/magazine/examine(mob/living/user)
 	..()
+	to_chat(user, SPAN_INFO("[SPAN_HELPFUL("Activate")] box in hand or [SPAN_HELPFUL("click")] with it on the ground to deploy it. Activating it while empty will fold it into cardboard sheet."))
 	if(src.loc != user)		//feeling box weight in a distance is unnatural and bad
 		return
 	if(!handfuls)
@@ -748,7 +749,6 @@ Turn() or Shift() as there is virtually no overhead. ~N
 
 /obj/structure/magazine_box
 	name = "magazine_box"
-	desc = "a box for holding many magazines, this one is open and needs to be closed before you can pick it up."
 	icon = 'icons/obj/items/weapons/guns/ammo_box.dmi'
 	icon_state = "base_m41"
 	var/obj/item/ammo_box/magazine/item_box
@@ -767,6 +767,7 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	..()
 	if(get_dist(src,user) > 2 && !isobserver(user))
 		return
+	to_chat(user, SPAN_INFO("[SPAN_HELPFUL("Click")] on the box with an empty hand to take a magazine out. [SPAN_HELPFUL("Drag")] it onto yourself to pick it up."))
 	if(item_box.handfuls)
 		var/obj/item/ammo_magazine/AM = locate(/obj/item/ammo_magazine) in item_box.contents
 		if(AM)
@@ -900,6 +901,7 @@ Turn() or Shift() as there is virtually no overhead. ~N
 
 /obj/item/ammo_box/rounds/examine(mob/user)
 	..()
+	to_chat(user, SPAN_INFO("To refill a magazine click on the box with it in your hand. Being on [SPAN_HELPFUL("HARM")] intent will fill box from the magazine."))
 	if(bullet_amount)
 		to_chat(user, "It contains [bullet_amount] round\s.")
 	else

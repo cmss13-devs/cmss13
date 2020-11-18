@@ -1,6 +1,0 @@
-author: Jeser
-
-delete-after: True
-
-changes: 
-  - bugfix: "CTRL-clicking a xeno to join it, will now properly cancel upon clicking No."

@@ -1,6 +1,0 @@
-author: Jeser
-
-delete-after: True
-
-changes: 
-  - rscadd: "Examining ammo boxes will now show instructions to them."

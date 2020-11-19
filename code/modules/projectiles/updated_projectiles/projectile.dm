@@ -109,23 +109,23 @@
 
 /obj/item/projectile/proc/calculate_damage()
 	if(effective_range_min && distance_travelled < effective_range_min)
-		return max(0, damage - round((effective_range_min - distance_travelled) * damage_falloff)) 
+		return max(0, damage - round((effective_range_min - distance_travelled) * damage_falloff))
 	else if(distance_travelled > effective_range_max)
-		return max(0, damage - round((distance_travelled - effective_range_max) * damage_falloff)) 
+		return max(0, damage - round((distance_travelled - effective_range_max) * damage_falloff))
 	return damage
 
 // Target, firer, shot from (i.e. the gun), projectile range, projectile speed, original target (who was aimed at, not where projectile is going towards), is_shrapnel (whether it should miss the firer or not)
 /obj/item/projectile/proc/fire_at(atom/target, atom/F, atom/S, range = 30, speed = 1, atom/original_override, is_shrapnel = FALSE, var/iff_group)
-	if(!original) 
+	if(!original)
 		original = istype(original_override) ? original_override : target
 	src.is_shrapnel = is_shrapnel
-	if(!loc) 
+	if(!loc)
 		if (!is_shrapnel)
 			loc = get_turf(F)
 		else
 			loc = get_turf(S)
 	starting = get_turf(src)
-	if(starting != loc) 
+	if(starting != loc)
 		loc = starting //Put us on the turf, if we're not.
 	target_turf = get_turf(target)
 	if(!target_turf || !starting || target_turf == starting) //This shouldn't happen, but it can.
@@ -136,7 +136,7 @@
 	if(!isnull(iff_group))
 		src.iff_group = iff_group
 
-	if(F && !is_shrapnel) 
+	if(F && !is_shrapnel)
 		permutated += F //Don't hit the shooter (firer)
 	else if (S && is_shrapnel)
 		permutated += S
@@ -157,7 +157,7 @@
 		M.track_shot(weapon_source)
 
 	//If we have the the right kind of ammo, we can fire several projectiles at once.
-	if(ammo.bonus_projectiles_amount && ammo.bonus_projectiles_type) 
+	if(ammo.bonus_projectiles_amount && ammo.bonus_projectiles_type)
 		ammo.fire_bonus_projectiles(src)
 
 	path = getline2(starting,target_turf)
@@ -488,7 +488,7 @@
 	var/accuracy_factor = 50 //degree to which accuracy affects probability   (if accuracy is 100, probability is unaffected. Lower accuracies will increase block chance)
 
 	var/hitchance = min(projectile_coverage, (projectile_coverage * distance/distance_limit) + accuracy_factor * (1 - effective_accuracy/100))
-	
+
 	#if DEBUG_HIT_CHANCE
 	to_world(SPAN_DEBUG("([name] as cover) Distance travelled: [distance]  |  Effective accuracy: [effective_accuracy]  |  Hit chance: [hitchance]"))
 	#endif
@@ -766,16 +766,8 @@
 	if(P.ammo.stamina_damage)
 		apply_stamina_damage(P.ammo.stamina_damage, P.def_zone, ARMOR_ENERGY) // Stamina damage is energy
 
-	//Any projectile can decloak a predator. It does defeat one free bullet though.
-	if(gloves)
-		var/obj/item/clothing/gloves/yautja/Y = gloves
-		if(istype(Y) && Y.cloaked)
-			if( ammo_flags & (AMMO_ROCKET|AMMO_ENERGY|AMMO_XENO_ACID) ) //<--- These will auto uncloak.
-				Y.decloak(src) //Continue on to damage.
-			else if(rand(0,100) < 20)
-				Y.decloak(src)
-				return //Absorb one free bullet.
-			//Else we're moving on to damage.
+	if(SEND_SIGNAL(src, COMSIG_HUMAN_BULLET_ACT, P) & COMPONENT_BULLET_NO_HIT)
+		return
 
 	//Shields
 	if( !(ammo_flags & AMMO_ROCKET) ) //No, you can't block rockets.
@@ -816,7 +808,7 @@
 	if(damage || (ammo_flags && AMMO_SPECIAL_EMBED))
 		apply_damage(damage_result, P.ammo.damage_type, P.def_zone, impact_name = P.ammo.impact_name, impact_limbs = P.ammo.impact_limbs, firer = P.firer)
 		P.play_damage_effect(src)
-		
+
 		if(ammo_flags & AMMO_INCENDIARY)
 			var/datum/reagent/napalm/ut/N = new()
 			adjust_fire_stacks(20, N)
@@ -838,7 +830,7 @@
 						qdel(new_embed)
 						found_one = TRUE
 						break
-					
+
 				if(!found_one)
 					new_embed.on_embed(src, organ)
 

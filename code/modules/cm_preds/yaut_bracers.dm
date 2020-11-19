@@ -36,8 +36,8 @@
 	var/combistick_cooldown = 0 //Let's add a cooldown for Yank Combistick so that it can't be spammed.
 	var/notification_sound = TRUE	// Whether the bracer pings when a message comes or not
 
-/obj/item/clothing/gloves/yautja/New()
-	..()
+/obj/item/clothing/gloves/yautja/Initialize(mapload, ...)
+	. = ..()
 	caster = new(src)
 
 /obj/item/clothing/gloves/yautja/emp_act(severity)
@@ -49,16 +49,28 @@
 			decloak(usr)
 
 /obj/item/clothing/gloves/yautja/equipped(mob/user, slot)
-	..()
-	if(slot == WEAR_HANDS)
-		flags_item ^= NODROP
-		START_PROCESSING(SSobj, src)
-		if(isYautja(user))
-			to_chat(user, SPAN_WARNING("The bracer clamps securely around your forearm and beeps in a comfortable, familiar way."))
-		else
-			to_chat(user, SPAN_WARNING("The bracer clamps painfully around your forearm and beeps angrily. It won't come off!"))
+	. = ..()
+	if(slot != WEAR_HANDS)
+		return
+	flags_item ^= NODROP
+	START_PROCESSING(SSobj, src)
+	if(isYautja(user))
+		to_chat(user, SPAN_WARNING("The bracer clamps securely around your forearm and beeps in a comfortable, familiar way."))
+	else
+		to_chat(user, SPAN_WARNING("The bracer clamps painfully around your forearm and beeps angrily. It won't come off!"))
+
+//Any projectile can decloak a predator. It does defeat one free bullet though.
+/obj/item/clothing/gloves/yautja/proc/bullet_hit(mob/living/carbon/human/H, obj/item/projectile/P)
+	SIGNAL_HANDLER
+	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
+	if( ammo_flags & (AMMO_ROCKET|AMMO_ENERGY|AMMO_XENO_ACID) ) //<--- These will auto uncloak.
+		decloak(H) //Continue on to damage.
+	else if(rand(0,100) < 20)
+		decloak(H)
+		return COMPONENT_BULLET_NO_HIT //Absorb one free bullet.
 
 /obj/item/clothing/gloves/yautja/Destroy()
+	QDEL_NULL(caster)
 	STOP_PROCESSING(SSobj, src)
 	remove_from_missing_pred_gear(src)
 	..()
@@ -389,6 +401,7 @@
 			return 0
 		if(!drain_power(M,50)) return
 		cloaked = 1
+		RegisterSignal(M, COMSIG_HUMAN_BULLET_ACT, .proc/bullet_hit)
 		to_chat(M, SPAN_NOTICE("You are now invisible to normal detection."))
 		for(var/mob/O in oviewers(M))
 			O.show_message("[M] vanishes into thin air!",1)
@@ -406,6 +419,7 @@
 
 /obj/item/clothing/gloves/yautja/proc/decloak(var/mob/user)
 	if(!user) return
+	UnregisterSignal(user, COMSIG_HUMAN_BULLET_ACT)
 	to_chat(user, "Your cloaking device deactivates.")
 	cloaked = 0
 	for(var/mob/O in oviewers(user))

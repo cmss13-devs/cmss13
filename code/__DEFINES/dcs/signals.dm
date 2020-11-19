@@ -78,6 +78,9 @@
 
 /// From /obj/item/device/defibrillator/attack
 #define COMSIG_HUMAN_REVIVED "human_revived"
+/// From /mob/living/carbon/human/bullet_act
+#define COMSIG_HUMAN_BULLET_ACT "human_bullet_act"
+	#define COMPONENT_BULLET_NO_HIT (1<<0)
 
 // /obj/item signals
 ///from base of obj/item/dropped(): (mob/user)

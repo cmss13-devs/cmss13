@@ -39,7 +39,16 @@
 	add_to_all_mob_huds()
 
 /mob/living/carbon/human/initialize_pain()
+	if(species)
+		return species.initialize_pain(src)
+	QDEL_NULL(pain)
 	pain = new /datum/pain/human(src)
+
+/mob/living/carbon/human/initialize_stamina()
+	if(species)
+		return species.initialize_stamina(src)
+	QDEL_NULL(stamina)
+	stamina = new /datum/stamina(src)
 
 /mob/living/carbon/human/Destroy()
 	if(assigned_squad)
@@ -73,10 +82,6 @@
 	processable_human_list -= src
 
 	. = ..()
-
-	if(pain && pain.source_mob == src)
-		pain.source_mob = null
-		qdel(pain)
 
 	if(agent_holder)
 		agent_holder.source_human = null
@@ -1100,6 +1105,9 @@
 		g_hair = hex2num(copytext(species.hair_color, 4, 6))
 		b_hair = hex2num(copytext(species.hair_color, 6, 8))
 
+	// Switches old pain and stamina over
+	species.initialize_pain(src)
+	species.initialize_stamina(src)
 	species.handle_post_spawn(src)
 
 	INVOKE_ASYNC(src, .proc/regenerate_icons)
@@ -1382,69 +1390,31 @@
 /mob/living/carbon/human/yautja/Initialize(mapload)
 	. = ..(mapload, new_species = "Yautja")
 
-/mob/living/carbon/human/yautja/initialize_pain()
-	pain = new /datum/pain/yautja(src)
-
-/mob/living/carbon/human/yautja/initialize_stamina()
-	stamina = new /datum/stamina/yautja(src)
-
-
 /mob/living/carbon/human/monkey/Initialize(mapload)
 	. = ..(mapload, new_species = "Monkey")
 
-/mob/living/carbon/human/monkey/initialize_pain()
-	pain = new /datum/pain/monkey(src)
 
 /mob/living/carbon/human/farwa/Initialize(mapload)
 	. = ..(mapload, new_species = "Farwa")
 
-/mob/living/carbon/human/farwa/initialize_pain()
-	pain = new /datum/pain/monkey(src)
 
 /mob/living/carbon/human/neaera/Initialize(mapload)
 	. = ..(mapload, new_species = "Neaera")
 
-/mob/living/carbon/human/neaera/initialize_pain()
-	pain = new /datum/pain/monkey(src)
-
 /mob/living/carbon/human/stok/Initialize(mapload)
 	. = ..(mapload, new_species = "Stok")
-
-/mob/living/carbon/human/stok/initialize_pain()
-	pain = new /datum/pain/monkey(src)
 
 /mob/living/carbon/human/yiren/Initialize(mapload)
 	. = ..(mapload, new_species = "Yiren")
 
-/mob/living/carbon/human/yiren/initialize_pain()
-	pain = new /datum/pain/monkey(src)
-
 /mob/living/carbon/human/synthetic/Initialize(mapload)
 	. = ..(mapload, "Synthetic")
-
-/mob/living/carbon/human/synthetic/initialize_pain()
-	pain = new /datum/pain/synthetic(src)
-
-/mob/living/carbon/human/synthetic/initialize_stamina()
-	stamina = new /datum/stamina/synthetic(src)
 
 /mob/living/carbon/human/synthetic_old/Initialize(mapload)
 	. = ..(mapload, "Early Synthetic")
 
-/mob/living/carbon/human/synthetic_old/initialize_pain()
-	pain = new /datum/pain/synthetic(src)
-
-/mob/living/carbon/human/synthetic_old/initialize_stamina()
-	stamina = new /datum/stamina/synthetic(src)
-
 /mob/living/carbon/human/synthetic_2nd_gen/Initialize(mapload)
 	. = ..(mapload, "Second Generation Synthetic")
-
-/mob/living/carbon/human/synthetic_2nd_gen/initialize_pain()
-	pain = new /datum/pain/synthetic(src)
-
-/mob/living/carbon/human/synthetic_2nd_gen/initialize_stamina()
-	stamina = new /datum/stamina/synthetic(src)
 
 
 /mob/living/carbon/human/resist_fire()

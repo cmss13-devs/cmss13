@@ -5,6 +5,8 @@
 	blood_color = "#333333"
 	icobase = 'icons/mob/humans/species/r_goo_zed.dmi'
 	deform = 'icons/mob/humans/species/r_goo_zed.dmi'
+	pain_type = /datum/pain/zombie
+	stamina_type = /datum/stamina/none
 	death_message = "seizes up and falls limp..."
 	flags = NO_BREATHE|NO_SCAN|NO_POISON
 	brute_mod = 0.25 //EXTREME BULLET RESISTANCE
@@ -41,8 +43,6 @@
 	H.equip_to_slot_or_del(ZC, WEAR_R_HAND, TRUE)
 	H.equip_to_slot_or_del(new /obj/item/weapon/zombie_claws(H), WEAR_L_HAND, TRUE)
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/zombie_eyes(H), WEAR_EYES, TRUE)
-
-	H.pain = new /datum/pain/zombie(H) // Has to be here, cause of stupid spawn code
 
 	var/datum/disease/D
 	

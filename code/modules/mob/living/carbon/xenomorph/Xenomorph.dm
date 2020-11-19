@@ -375,7 +375,7 @@
 	pain = new /datum/pain/xeno(src)
 
 /mob/living/carbon/Xenomorph/initialize_stamina()
-	stamina = new /datum/stamina/xeno(src)
+	stamina = new /datum/stamina/none(src)
 
 /mob/living/carbon/Xenomorph/proc/update_caste()
 	if(caste_name && xeno_datum_list[caste_name])

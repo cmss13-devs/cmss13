@@ -5,6 +5,7 @@
 	deform = 'icons/mob/humans/species/monkeys/r_monkey.dmi'
 	brute_mod = 1.5
 	burn_mod = 1.5
+	pain_type = /datum/pain/monkey
 	unarmed_type = /datum/unarmed_attack/bite
 	secondary_unarmed_type = /datum/unarmed_attack
 	death_message = "lets out a faint chimper as it collapses and stops moving..."

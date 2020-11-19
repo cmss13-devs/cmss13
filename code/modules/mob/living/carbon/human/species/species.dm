@@ -22,6 +22,8 @@
 	var/rarity_value = 1  // Relative rarity/collector value for this species. Only used by ninja and cultists atm.
 	var/unarmed_type =           /datum/unarmed_attack
 	var/secondary_unarmed_type = /datum/unarmed_attack/bite
+	var/pain_type              = /datum/pain/human
+	var/stamina_type           = /datum/stamina
 
 	var/timed_hug = TRUE
 
@@ -142,6 +144,16 @@
 			E.status |= LIMB_ROBOT
 		for(var/datum/internal_organ/I in H.internal_organs)
 			I.mechanize()
+
+/datum/species/proc/initialize_pain(mob/living/carbon/human/H)
+	if(pain_type)
+		QDEL_NULL(H.pain)
+		H.pain = new pain_type(H)
+
+/datum/species/proc/initialize_stamina(mob/living/carbon/human/H)
+	if(stamina_type)
+		QDEL_NULL(H.stamina)
+		H.stamina = new stamina_type(H)
 
 /datum/species/proc/hug(var/mob/living/carbon/human/H, var/mob/living/carbon/target, var/target_zone = "chest")
 	if(H.flags_emote)

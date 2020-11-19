@@ -29,6 +29,8 @@
 	QDEL_NULL(attack_icon)
 	QDEL_NULL(event_zoomout)
 	QDEL_NULL(event_movement)
+	QDEL_NULL(pain)
+	QDEL_NULL(stamina)
 
 	. = ..()
 

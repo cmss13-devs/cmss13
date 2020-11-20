@@ -19,7 +19,7 @@ var/bomb_set = FALSE
 	var/timer_announcements_flags = NUKE_SHOW_TIMER_ALL
 	pixel_x = -16
 	use_power = 0
-	req_access = list(ACCESS_MARINE_PREP)
+	req_access = list()
 	flags_atom = FPRINT
 	var/command_lockout = FALSE //If set to TRUE, only command staff would be able to disable the nuke
 

@@ -109,7 +109,7 @@
 	access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
 	assignment = JOB_NURSE
 	rank = JOB_NURSE
-	paygrade = "CD"
+	paygrade = "CN"
 	role_comm_title = "Nurse"
 	skills = /datum/skills/nurse
 

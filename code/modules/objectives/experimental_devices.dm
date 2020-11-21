@@ -26,38 +26,58 @@
 	var/datum/cm_objective/retrieve_item/almayer/device/objective
 	unacidable = TRUE
 
-/obj/item/device/mass_spectrometer/adv/objective/New()
-	..()
+/obj/item/device/mass_spectrometer/adv/objective/Initialize()
+	. = ..()
 	if(prob(50))
 		objective = new /datum/cm_objective/retrieve_item/almayer/device(src)
 	name += " #[serial_number]"
+
+/obj/item/device/mass_spectrometer/adv/objective/Destroy()
+	objective = null
+	// see [/datum/cm_objective/retrieve_item/proc/clean_up_ref]
+	return ..()
 
 /obj/item/device/reagent_scanner/adv/objective
 	var/datum/cm_objective/retrieve_item/almayer/device/objective
 	unacidable = TRUE
 
-/obj/item/device/reagent_scanner/adv/objective/New()
-	..()
+/obj/item/device/reagent_scanner/adv/objective/Initialize(mapload, ...)
+	. = ..()
 	if(prob(50))
 		objective = new /datum/cm_objective/retrieve_item/almayer/device(src)
 	name += " #[serial_number]"
+
+/obj/item/device/reagent_scanner/adv/objective/Destroy()
+	objective = null
+	// see [/datum/cm_objective/retrieve_item/proc/clean_up_ref]
+	return ..()
 
 /obj/item/device/healthanalyzer/objective
 	var/datum/cm_objective/retrieve_item/almayer/device/objective
 	unacidable = TRUE
 
-/obj/item/device/healthanalyzer/objective/New()
-	..()
+/obj/item/device/healthanalyzer/objective/Initialize(mapload, ...)
+	. = ..()
 	if(prob(50))
 		objective = new /datum/cm_objective/retrieve_item/almayer/device(src)
 	name += " #[serial_number]"
+
+/obj/item/device/healthanalyzer/objective/Destroy()
+	objective = null
+	// see [/datum/cm_objective/retrieve_item/proc/clean_up_ref]
+	return ..()
 
 /obj/item/device/autopsy_scanner/objective
 	var/datum/cm_objective/retrieve_item/almayer/device/objective
 	unacidable = TRUE
 
-/obj/item/device/autopsy_scanner/objective/New()
-	..()
+/obj/item/device/autopsy_scanner/objective/Initialize(mapload, ...)
+	. = ..()
 	if(prob(50))
 		objective = new /datum/cm_objective/retrieve_item/almayer/device(src)
 	name += " #[serial_number]"
+
+/obj/item/device/autopsy_scanner/objective/Destroy()
+	objective = null
+	// see [/datum/cm_objective/retrieve_item/proc/clean_up_ref]
+	return ..()

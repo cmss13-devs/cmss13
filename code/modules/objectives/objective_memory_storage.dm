@@ -1,5 +1,5 @@
 //A datum for storing objective data in the mind in an organised fashion
-datum/objective_memory_storage
+/datum/objective_memory_storage
 	var/list/datum/cm_objective/folders = list()
 	var/list/datum/cm_objective/progress_reports = list()
 	var/list/datum/cm_objective/technical_manuals = list()

@@ -50,7 +50,7 @@
 	. = ..()
 
 	if(healthscan)
-		to_chat(user, SPAN_BLUE("The [src.name] offers assisted medical scan, for ease of usage with minimal training. Present the target infront of the scanner to scan."))
+		to_chat(user, SPAN_NOTICE("The [src.name] offers assisted medical scan, for ease of usage with minimal training. Present the target infront of the scanner to scan."))
 
 /obj/structure/machinery/cm_vending/sorted/medical/vend_succesfully(var/list/L, var/mob/living/carbon/human/H, var/turf/T)
 	if(stat & IN_USE)
@@ -131,7 +131,7 @@
 /obj/structure/machinery/cm_vending/sorted/medical/MouseDrop(obj/over_object as obj)
 	if(stat == WORKING && over_object == usr && CAN_PICKUP(usr, src))
 		var/mob/living/carbon/human/user = usr
-		if(!allowed(user))
+		if(!hacked && !allowed(user))
 			to_chat(user, SPAN_WARNING("Access denied."))
 			return
 

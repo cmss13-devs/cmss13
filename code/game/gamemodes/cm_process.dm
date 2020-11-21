@@ -84,15 +84,21 @@ of predators), but can be added to include variant game modes (like humans vs. h
 /datum/game_mode/proc/declare_completion_announce_xenomorphs()
 	set waitfor = 0
 	sleep(SECONDS_2)
-	if(xenomorphs.len)
+	if(LAZYLEN(xenomorphs) || LAZYLEN(dead_queens))
 		var/dat = "<br>"
 		dat += SPAN_ROUNDBODY("<br>The xenomorph Queen(s) were:")
 		var/mob/M
+		for (var/msg in dead_queens)
+			dat += msg
 		for(var/datum/mind/X in xenomorphs)
-			if(istype(X))
-				M = X.current
-				if(!M || !M.loc) M = X.original
-				if(M && M.loc && istype(M,/mob/living/carbon/Xenomorph/Queen)) dat += "<br>[X.key] was [M] [SPAN_BOLDNOTICE("([M.stat == DEAD? "DIED":"SURVIVED"])")]"
+			if(!istype(X))
+				continue
+			
+			M = X.current
+			if(!M || !M.loc)
+				M = X.original
+			if(M && M.loc && isXenoQueen(M) && M.stat != DEAD) // Dead queens handled separately
+				dat += "<br>[X.key] was [M] [SPAN_BOLDNOTICE("(SURVIVED)")]"
 
 		to_world("[dat]")
 

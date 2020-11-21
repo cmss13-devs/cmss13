@@ -68,6 +68,7 @@
 				hive.handle_xeno_leader_pheromones()
 				if(ticker && ticker.mode)
 					ticker.mode.check_queen_status(hive.queen_time, hivenumber)
+					LAZYADD(ticker.mode.dead_queens, "<br>[!isnull(src.key) ? src.key : "?"] was [src] [SPAN_BOLDNOTICE("(DIED)")]")
 
 		else
 			playsound(loc, prob(50) == 1 ? 'sound/voice/alien_death.ogg' : 'sound/voice/alien_death2.ogg', 25, 1)

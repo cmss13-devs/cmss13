@@ -45,6 +45,7 @@ Additional game mode variables.
 	var/datum/mind/synth_survivor = null
 	var/datum/mind/predators[] = list()
 	var/datum/mind/hellhounds[] = list() //Hellhound spawning is not supported at round start.
+	var/list/dead_queens // A list of messages listing the dead queens
 	var/pred_keys[] = list() //People who are playing predators, we can later reference who was a predator during the round.
 
 	var/xeno_required_num 	= 0 //We need at least one. You can turn this off in case we don't care if we spawn or don't spawn xenos.

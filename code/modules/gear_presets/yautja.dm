@@ -75,10 +75,6 @@
     var/new_name = "Elite [H.real_name]"
     H.change_real_name(H, new_name)
 
-/datum/equipment_preset/yautja/elite/load_gear(mob/living/carbon/human/H)
-    H.equip_to_slot_or_del(new /obj/item/clothing/cape/eldercape(H), WEAR_BACK)
-    . = ..()
-
 // ELDER
 /datum/equipment_preset/yautja/elder
     name = "Yautja Elder"

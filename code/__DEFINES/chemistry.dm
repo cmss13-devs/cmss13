@@ -191,6 +191,7 @@
 #define PROPERTY_ADMIN				5 //can only be spawned through admin powers
 
 //Property category
+#define PROPERTY_TYPE_ALL				0
 #define PROPERTY_TYPE_MEDICINE			1
 #define PROPERTY_TYPE_TOXICANT			2
 #define PROPERTY_TYPE_STIMULANT			4

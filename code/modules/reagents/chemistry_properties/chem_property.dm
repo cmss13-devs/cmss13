@@ -7,6 +7,7 @@
 	var/category = PROPERTY_TYPE_MEDICINE
 	var/level = 1 //used to calculate potency
 	var/value //how much value per level? Negative properties should have a high negative value, neutral should have a value near zero, and positive ones should have a high value
+	var/starter = FALSE //whether or not this is a starter property and should be added to the property database on startup
 	var/updates_stats = FALSE //should the property change other variables in the reagent when added or removed?
 	var/deleted = FALSE
 

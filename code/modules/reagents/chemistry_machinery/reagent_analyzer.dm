@@ -90,6 +90,8 @@
 		S.print_report(report = report, sample_number = sample_number)
 		sample.name = "vial ([S.name])"
 		chemical_data.save_document(report, "XRF Scans", "[sample_number] - [report.name]")
+		if(S.chemclass < CHEM_CLASS_SPECIAL || (S.chemclass >= CHEM_CLASS_SPECIAL && report.completed))
+			chemical_data.save_new_properties(S.properties)
 		if(S.chemclass >= CHEM_CLASS_SPECIAL && !chemical_identified_list[S.id])
 			if(last_used)
 				last_used.count_niche_stat(STATISTICS_NICHE_CHEMS)

@@ -31,6 +31,7 @@
 	code = "TXC"
 	description = "Poisonous substance which causes harm on contact with or through absorption by organic tissues, resulting in bad health or severe illness."
 	rarity = PROPERTY_COMMON
+	starter = TRUE
 
 /datum/chem_property/negative/toxic/process(mob/living/M, var/potency = 1)
 	..()
@@ -47,6 +48,7 @@
 	code = "CRS"
 	description = "Damages or destroys other substances on contact through a chemical reaction. Causes chemical burns on contact with living tissue."
 	rarity = PROPERTY_COMMON
+	starter = TRUE
 
 /datum/chem_property/negative/corrosive/process(mob/living/M, var/potency = 1)
 	..()
@@ -63,6 +65,7 @@
 	code = "BCD"
 	description = "Ruptures cell membranes on contact, destroying most types of organic tissue."
 	rarity = PROPERTY_COMMON
+	starter = TRUE
 
 /datum/chem_property/negative/biocidic/process(mob/living/M, var/potency = 1)
 	..()

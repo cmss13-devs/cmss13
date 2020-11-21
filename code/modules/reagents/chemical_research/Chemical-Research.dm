@@ -5,8 +5,10 @@ var/global/datum/chemical_data/chemical_data = new /datum/chemical_data/
 	var/clearance_level = 1
 	var/clearance_x_access = FALSE
 	var/reached_x_access = FALSE
+	var/has_new_properties = FALSE
 	var/list/research_documents = list()
 	var/list/research_publications = list()
+	var/list/research_property_data = list() //starter properties are stored here
 	var/list/transmitted_data = list()
 	var/list/chemical_networks = list()
 
@@ -31,6 +33,22 @@ var/global/datum/chemical_data/chemical_data = new /datum/chemical_data/
 	if(research_publications["[document_type]"]["[title]"])
 		research_publications["[document_type]"] -= title
 		return TRUE
+
+/datum/chemical_data/proc/save_new_properties(var/list/properties)
+	var/list/property_names = list()
+	for(var/datum/chem_property/P in properties) //just save the names
+		if(P.category & PROPERTY_TYPE_UNADJUSTABLE || P.category & PROPERTY_TYPE_ANOMALOUS)
+			continue
+		property_names += P.name
+	for(var/name in research_property_data)
+		property_names -= name
+	if(LAZYLEN(property_names))
+		has_new_properties = TRUE
+		for(var/name in property_names)
+			var/datum/chem_property/ref = chemical_properties_list[name]
+			var/datum/chem_property/P = new ref.type
+			P.level = 0
+			research_property_data += P
 
 //Chem storage for various chem dispensers
 /datum/chemical_data/proc/add_chem_storage(var/obj/structure/machinery/chem_storage/C)

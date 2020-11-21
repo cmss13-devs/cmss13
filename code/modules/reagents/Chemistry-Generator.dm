@@ -16,7 +16,7 @@
 */
 
 ///////////////////////////////RECIPE GENERATOR///////////////////////////////
-/datum/chemical_reaction/proc/generate_recipe()
+/datum/chemical_reaction/proc/generate_recipe(var/list/complexity)
 	//Determine modifier for uneven recipe balance
 	var/modifier = rand(0,100)
 	if(modifier<=60)
@@ -32,15 +32,22 @@
 	else
 		modifier = 6
 
+	var/failed_attempts = 0 //safety for if a recipe can not be found
 	//pick components
-	for(var/i=1,i<=3,i++)
-		if(i>=2) //only the first component should have a modifier higher than 1
+	for(var/i = 1, i <= 3, i++)
+		if(i >= 2) //only the first component should have a modifier higher than 1
 			modifier = 1
-		add_component(null, modifier)
+		if(complexity)
+			add_component(my_modifier = modifier, class = complexity[i])
+		else
+			add_component(null, modifier)
 		//make sure the final recipe is not already being used. If it is, start over.
-		if(i==3 && (check_duplicate() || check_reaction_uses_all_default_medical()))
+		if(i == 3 && (check_duplicate() || check_reaction_uses_all_default_medical()))
 			required_reagents = list()
+			if(failed_attempts > 10)
+				return FALSE
 			i = 0
+			failed_attempts++
 
 	//pick catalyst
 	if(prob(40) || gen_tier >= 4)//chance of requiring a catalyst
@@ -48,7 +55,7 @@
 	
 	return TRUE
 
-/datum/chemical_reaction/proc/add_component(var/my_chemid,var/my_modifier,var/is_catalyst)
+/datum/chemical_reaction/proc/add_component(var/my_chemid, var/my_modifier, var/is_catalyst, var/tier, var/class)
 	var/chem_id		//The id of the picked chemical
 	var/modifier	//The number of required reagents
 
@@ -57,14 +64,19 @@
 	else
 		modifier = 1
 
-	for(var/i=0,i<1,i++)
+	if(!tier)
+		tier = gen_tier
+
+	for(var/i = 0, i < 1, i++)
 		if(my_chemid) //Do we want a specific chem?
 			chem_id = my_chemid
+		else if(class) //do we want a specific class?
+			chem_id = pick(chemical_gen_classes_list["C[class]"])
 		else
 			var/roll = rand(0,100)
-			switch(gen_tier)
+			switch(tier)
 				if(0)
-					chem_id = pick(chemical_gen_classes_list["C"])//If gen_tier is 0, we can add any classed chemical
+					chem_id = pick(chemical_gen_classes_list["C"])//If tier is 0, we can add any classed chemical
 				if(1)
 					if(roll<=35)
 						chem_id = pick(chemical_gen_classes_list["C1"])
@@ -115,7 +127,6 @@
 				i--
 				continue
 		else if(is_catalyst)
-
 			if(required_catalysts && required_catalysts.Find(chem_id))
 				if(my_chemid) //If this was a manually set chemid, return FALSE so we don't cause an infinite loop
 					return FALSE
@@ -396,13 +407,14 @@
 		value += P.value * P.level
 	return max(value, 3)
 
-/datum/reagent/proc/generate_assoc_recipe()
+/datum/reagent/proc/generate_assoc_recipe(var/list/complexity)
 	var/datum/chemical_reaction/generated/C = new /datum/chemical_reaction/generated
 	C.id = id
 	C.result = id
 	C.name = name
 	C.gen_tier = gen_tier
-	C.generate_recipe()
+	if(!C.generate_recipe(complexity))
+		return //Generating a recipe failed, so return null
 	chemical_reactions_list[C.id] = C
 	var/filter_id = C.get_filter()
 	if(filter_id)

@@ -474,7 +474,7 @@
 	//------------------//
 	intensityfire = BURN_LEVEL_TIER_1 
 	durationfire = BURN_TIME_TIER_1
-	rangefire = AMMO_RANGE_TIER_1
+	rangefire = 4
 	//------------------//
 	explosive = TRUE
 	power = 0.12
@@ -698,7 +698,7 @@
 	properties = list(
 		PROPERTY_INTENSITY 	= BURN_LEVEL_TIER_5,
 		PROPERTY_DURATION 	= BURN_TIME_TIER_2,
-		PROPERTY_RADIUS 	= AMMO_RANGE_TIER_2
+		PROPERTY_RADIUS 	= 6
 	)
 	. = ..()
 
@@ -714,7 +714,7 @@
 	properties = list(
 		PROPERTY_INTENSITY 	= BURN_LEVEL_TIER_2,
 		PROPERTY_DURATION 	= BURN_TIME_INSTANT,
-		PROPERTY_RADIUS 	= AMMO_RANGE_TIER_2
+		PROPERTY_RADIUS 	= 6
 	)
 	. = ..()
 
@@ -730,7 +730,7 @@
 	properties = list(
 		PROPERTY_INTENSITY 	= BURN_LEVEL_TIER_7,
 		PROPERTY_DURATION 	= BURN_TIME_TIER_4,
-		PROPERTY_RADIUS 	= AMMO_RANGE_TIER_2
+		PROPERTY_RADIUS 	= 6
 	)
 	. = ..()
 
@@ -747,7 +747,7 @@
 	properties = list(
 		PROPERTY_INTENSITY 	= BURN_LEVEL_TIER_2,
 		PROPERTY_DURATION 	= BURN_TIME_TIER_5,
-		PROPERTY_RADIUS 	= AMMO_RANGE_TIER_2
+		PROPERTY_RADIUS 	= 6
 	)
 	. = ..()
 

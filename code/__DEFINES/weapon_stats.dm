@@ -249,32 +249,6 @@ As such, don't expect any values assigned to common firearms to even consider ho
 #define SHRAPNEL_CHANCE_TIER_10		100
 
 /*
-////AMMO RANGE////
-//How many tiles should our gun/bullet stay accurate? Maps are generally 256x256, so keep that in mind. Player screen width is 7x7 tiles.
-Ammo ranges = tiles.
-A range of 7 is screen max.
-~12 is miniscope/IFF
-~18 is railscope.
-We don't really use the higher values, but they're there.
-*/
-
-#define AMMO_RANGE_TIER_1	4
-#define AMMO_RANGE_TIER_2	6
-#define AMMO_RANGE_TIER_3	8
-#define AMMO_RANGE_TIER_4	10
-#define AMMO_RANGE_TIER_5	12
-#define AMMO_RANGE_TIER_6	14
-#define AMMO_RANGE_TIER_7	16
-#define AMMO_RANGE_TIER_8	18
-#define AMMO_RANGE_TIER_9	20
-#define AMMO_RANGE_TIER_10	22
-#define AMMO_RANGE_TIER_11	24
-#define AMMO_RANGE_TIER_12	26
-#define AMMO_RANGE_TIER_13	28
-#define AMMO_RANGE_TIER_14	30
-#define AMMO_RANGE_TIER_15	32
-
-/*
 ////AMMO TRAVEL SPEED////
 //How many tiles it travels per tick.
 */

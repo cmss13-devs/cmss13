@@ -34,16 +34,16 @@
 		return id // We don't have to bother adding ourselves to other reagent ids, it is redundant.
 
 /datum/chemical_reaction/proc/check_duplicate()
-	var/matches = 0
 	for(var/R in required_reagents)
 		if(chemical_reactions_filtered_list[R])
 			for(var/reaction in chemical_reactions_filtered_list[R])//We filter the chemical_reactions_filtered_list so we don't have to search through as much
 				var/datum/chemical_reaction/C = reaction
-				for(var/B in C.required_reagents)
-					if(required_reagents.Find(B))
+				var/matches = 0
+				for(var/B in required_reagents)
+					if(C.required_reagents.Find(B))
 						matches++
-	if(matches >= required_reagents.len)
-		return TRUE
+				if(matches >= length(required_reagents))
+					return TRUE
 
 // As funny as it may sound, spawning a chemical which's recipe is Bicaridine, Tramadol and Kelotane that instantly kills or cripple marine is not nice.
 // To prevent such a situation, if ALL reagent inside a reaction are medical chemicals, the recipe is considered flawed.

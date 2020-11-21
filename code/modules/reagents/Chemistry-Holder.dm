@@ -49,6 +49,11 @@ var/const/INGEST = 2
 		if(!P.name)
 			continue
 		chemical_properties_list[P.name] = P
+		if(P.starter)
+			//Add a separate instance to the chemical property database
+			var/datum/chem_property/D = new path()
+			D.level = 0
+			chemical_data.research_property_data += D
 		if(P.rarity > PROPERTY_DISABLED)
 			//Filters for the generator picking properties
 			if(P.rarity == PROPERTY_RARE || P.rarity == PROPERTY_LEGENDARY)

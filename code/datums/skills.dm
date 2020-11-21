@@ -614,12 +614,10 @@ COLONIAL LIBERATION FRONT
 -------------------------
 */
 
-//NOTE: The CLF have less firearms skill, but compensate with additional civilian skills and resourcefulness
-
 /datum/skills/clf
 	name = "CLF Soldier"
 	skills = list(
-		SKILL_FIREARMS = SKILL_FIREARMS_UNTRAINED,
+		SKILL_FIREARMS = SKILL_FIREARMS_DEFAULT,
 		SKILL_MELEE = SKILL_MELEE_TRAINED,
 		SKILL_POLICE = SKILL_POLICE_MP,
 		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_TRAINED,
@@ -649,7 +647,6 @@ COLONIAL LIBERATION FRONT
 	name = "CLF Specialist"
 	skills = list(
 		SKILL_CQC = SKILL_CQC_MP,
-		SKILL_FIREARMS = SKILL_FIREARMS_DEFAULT,
 		SKILL_LEADERSHIP = SKILL_LEAD_TRAINED,
 		SKILL_SPEC_WEAPONS = SKILL_SPEC_TRAINED,
 	)

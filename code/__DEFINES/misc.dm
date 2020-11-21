@@ -163,9 +163,9 @@
 #define STATISTICS_NICHE_SURGERY_ORGAN_ATTACH       "Organs Implanted"
 #define STATISTICS_NICHE_SURGERY_ORGAN_REMOVE       "Organs Harvested"
 
-#define STATISTICS_NICHE_DESCTRUCTION_WALLS         "Walls Destroyed"
-#define STATISTICS_NICHE_DESCTRUCTION_DOORS         "Doors Destroyed"
-#define STATISTICS_NICHE_DESCTRUCTION_WINDOWS       "Windows Destroyed"
+#define STATISTICS_NICHE_DESTRUCTION_WALLS          "Walls Destroyed"
+#define STATISTICS_NICHE_DESTRUCTION_DOORS          "Doors Destroyed"
+#define STATISTICS_NICHE_DESTRUCTION_WINDOWS        "Windows Destroyed"
 
 //Multiplier for turning points into cash
 #define DEFCON_TO_MONEY_MULTIPLIER 10000

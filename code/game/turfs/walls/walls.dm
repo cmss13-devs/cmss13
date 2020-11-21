@@ -149,7 +149,7 @@
 
 	if(damage >= damage_cap)
 		if(M && istype(M))
-			M.count_niche_stat(STATISTICS_NICHE_DESCTRUCTION_WALLS, 1)
+			M.count_niche_stat(STATISTICS_NICHE_DESTRUCTION_WALLS, 1)
 			SEND_SIGNAL(M, COMSIG_MOB_DESTROY_WALL, src)
 		// Xenos used to be able to crawl through the wall, should suggest some structural damage to the girder
 		if (acided_hole)

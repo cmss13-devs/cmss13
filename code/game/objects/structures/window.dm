@@ -99,7 +99,7 @@
 		return
 	if(health <= 0)
 		if(user && istype(user))
-			user.count_niche_stat(STATISTICS_NICHE_DESCTRUCTION_WINDOWS, 1)
+			user.count_niche_stat(STATISTICS_NICHE_DESTRUCTION_WINDOWS, 1)
 			SEND_SIGNAL(user, COMSIG_MOB_DESTROY_WINDOW, src)
 			user.visible_message(SPAN_DANGER("[user] smashes through [src][AM ? " with [AM]":""]!"))
 		if(make_shatter_sound)
@@ -127,18 +127,21 @@
 
 	health -= severity * EXPLOSION_DAMAGE_MULTIPLIER_WINDOW
 
-	switch(health)
-		if(0 to INFINITY)
-			healthcheck(0, 1, user = source_mob)
-		if(-2000 to 0)
-			var/location = get_turf(src)
-			playsound(src, "shatter", 50, 1)
-			handle_debris(severity,explosion_direction)
-			qdel(src)
-			create_shrapnel(location, rand(1,5), explosion_direction, , /datum/ammo/bullet/shrapnel/light/glass)
-		else
-			handle_debris(severity,explosion_direction)
-			qdel(src)
+	if(health > 0)
+		healthcheck(FALSE, TRUE, user = source_mob)
+		return
+
+	if(health >= -2000)
+		var/location = get_turf(src)
+		playsound(src, "shatter", 50, 1)
+		create_shrapnel(location, rand(1,5), explosion_direction, shrapnel_type = /datum/ammo/bullet/shrapnel/light/glass)
+
+	if(source_mob)
+		source_mob.count_niche_stat(STATISTICS_NICHE_DESTRUCTION_WINDOWS, 1)
+		SEND_SIGNAL(source_mob, COMSIG_MOB_DESTROY_WINDOW, src)
+	
+	handle_debris(severity, explosion_direction)
+	qdel(src)
 	return
 
 /obj/structure/window/get_explosion_resistance(direction)
@@ -483,17 +486,22 @@
 
 	health -= severity * EXPLOSION_DAMAGE_MULTIPLIER_WINDOW
 
-	switch(health)
-		if(0 to INFINITY)
-			healthcheck(0, 1, user = source_mob)
-		if(-3000 to 0)
-			var/location = get_turf(src)
-			playsound(src, "shatter", 50, 1)
-			handle_debris(severity,explosion_direction)
-			shatter_window(0)
-			create_shrapnel(location, rand(1,5), explosion_direction, , /datum/ammo/bullet/shrapnel/light/glass)
-		else
-			qdel(src)
+	if(health > 0)
+		healthcheck(FALSE, TRUE, user = source_mob)
+		return
+
+	if(source_mob)
+		source_mob.count_niche_stat(STATISTICS_NICHE_DESTRUCTION_WINDOWS, 1)
+		SEND_SIGNAL(source_mob, COMSIG_MOB_DESTROY_WINDOW, src)
+
+	if(health >= -3000)
+		var/location = get_turf(src)
+		playsound(src, "shatter", 50, 1)
+		handle_debris(severity, explosion_direction)
+		shatter_window(0)
+		create_shrapnel(location, rand(1,5), explosion_direction, , /datum/ammo/bullet/shrapnel/light/glass)
+	else
+		qdel(src)
 	return
 
 

@@ -9,19 +9,19 @@
 	name = "Alien Resin"
 	desc = "A piece of alien Resin"
 	icon_state = "biomass"
-	
+
 
 /obj/item/XenoBio/Chitin
 	name = "Alien Chitin"
 	desc = "A chunk of alien Chitin"
 	icon_state = "chitin-chunk"
-	
+
 
 /obj/item/XenoBio/Blood
 	name = "Alien Blood"
 	desc = "A sample of alien Blood"
 	icon_state = "blood-vial"
-	
+
 
 
 
@@ -31,7 +31,7 @@
 
 //////////////ITEMS YOU CAN MAKE THAT ARE BADASS////////////////////
 
-/obj/item/XenoItem/
+/obj/item/XenoItem
 	name = "Strange Item"
 	desc = "Some sort of fucked up item from the Weston-Yamada brand 3D Biometric Printer...  Probably should make a bug report if you got this..."
 	icon_state = "chitin-chunk"

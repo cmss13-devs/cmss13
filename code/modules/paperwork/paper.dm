@@ -527,7 +527,7 @@
 /obj/item/paper/crumpled/update_icon()
 	return
 
-/obj/item/paper/crumpled/bloody/
+/obj/item/paper/crumpled/bloody
 	icon_state = "scrap_bloodied"
 
 /obj/item/paper/crumpled/bloody/csheet

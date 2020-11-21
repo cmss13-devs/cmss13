@@ -1945,7 +1945,7 @@
 	var/obj/item/device/flashlight/flare/on/G = new (T)
 	G.visible_message(SPAN_WARNING("\A [G] bursts into brilliant light nearby!"))
 
-/datum/ammo/souto/
+/datum/ammo/souto
 	name = "Souto Can"
 	ping = null //no bounce off.
 	damage_type = BRUTE

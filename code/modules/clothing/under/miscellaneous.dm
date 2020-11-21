@@ -129,7 +129,7 @@
 
 
 //wedding stuff
-/obj/item/clothing/under/wedding/
+/obj/item/clothing/under/wedding
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS
 
 /obj/item/clothing/under/wedding/bride_orange

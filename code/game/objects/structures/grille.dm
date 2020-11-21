@@ -16,7 +16,7 @@
 	if (PF)
 		PF.flags_can_pass_all = SETUP_LIST_FLAGS(PASS_THROUGH, PASS_BUILDING_ONLY)
 
-/obj/structure/grille/fence/
+/obj/structure/grille/fence
 	var/width = 3
 	health = 50
 

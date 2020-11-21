@@ -1,6 +1,6 @@
 var/global/datum/chemical_data/chemical_data = new /datum/chemical_data/
 
-/datum/chemical_data/
+/datum/chemical_data
 	var/rsc_credits = 2
 	var/clearance_level = 1
 	var/clearance_x_access = FALSE

@@ -1,6 +1,6 @@
 #define IMPORT_INCIDENT "import_incident"
 #define PERMABRIG_SENTENCE 60 // Measured in minutes
-/obj/structure/machinery/computer/sentencing/
+/obj/structure/machinery/computer/sentencing
 	name = "\improper Jurisdictional Automated System"
 	desc = "A powerful machine produced by Weston-Yamada to streamline all punishment of prisoners. The best grade policing gear seen on this side of the galaxy."
 	icon_state = "jas"

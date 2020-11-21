@@ -3,7 +3,7 @@
 //  EXO-SUITS/ARMORS COSMETICS  ////////////////////////////////////////////////
 
 //SUIT TEMPLATE (for armor/exosuit)  ONLY TAKE NAME, DESC, ICON_STATE, AND ITEM_STATE.  Make a copy of those, and put the ckey of the person at the end after fluff
-/obj/item/clothing/suit/storage/marine/fluff/
+/obj/item/clothing/suit/storage/marine/fluff
 	name = "ITEM NAME"
 	desc = "ITEM DESCRIPTION.  DONOR ITEM" //Add UNIQUE if Unique
 	icon_state = "state"
@@ -1240,7 +1240,7 @@
 //	BOOTS/SHOES COSMETICS  ////////////////////////////////////////////////
 
 //FEET TEMPLATE (for masks)  ONLY TAKE NAME, DESC, ICON_STATE, ITEM_STATE,  AND ITEM_COLOR.  Make a copy of those, and put the ckey of the person at the end after fluff
-/obj/item/clothing/shoes/marine/fluff/
+/obj/item/clothing/shoes/marine/fluff
 	name = "ITEM NAME"
 	desc = "ITEM DESCRIPTION.  DONOR ITEM" //Add UNIQUE if Unique
 	icon_state = "state"

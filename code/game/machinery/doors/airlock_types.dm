@@ -637,7 +637,7 @@
 	icon = 'icons/obj/structures/doors/dropship2_pilot.dmi'
 
 //PRISON AIRLOCKS
-/obj/structure/machinery/door/airlock/prison/
+/obj/structure/machinery/door/airlock/prison
 	name = "cell Door"
 	icon = 'icons/obj/structures/doors/celldoor.dmi'
 	glass = 0

@@ -1,7 +1,7 @@
 // --------------------------------------------
 // *** The core objective interface to allow generic handling of objectives ***
 // --------------------------------------------
-/datum/cm_objective/
+/datum/cm_objective
 	var/name = "An objective to complete"
 	var/complete = FALSE
 	var/failed = FALSE

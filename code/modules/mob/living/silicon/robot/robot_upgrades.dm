@@ -1,7 +1,7 @@
 // robot_upgrades.dm
 // Contains various borg upgrades.
 
-/obj/item/robot/upgrade/
+/obj/item/robot/upgrade
 	name = "A borg upgrade module."
 	desc = "Protected by FRM."
 	icon = 'icons/obj/module.dmi'
@@ -16,7 +16,7 @@
 	return
 
 
-/obj/item/robot/upgrade/reset/
+/obj/item/robot/upgrade/reset
 	name = "Borg module reset board"
 	desc = "Used to reset a borg's module. Destroys any other upgrades applied to the borg."
 	icon_state = "cyborg_upgrade1"
@@ -41,7 +41,7 @@
 
 
 
-/obj/item/robot/upgrade/flashproof/
+/obj/item/robot/upgrade/flashproof
 	name = "Borg Flash-Supression"
 	desc = "A highly advanced, complicated system for supressing incoming flashes directed at the borg's optical processing system."
 	construction_cost = list("metal"=10000,"gold"=2000,"silver"=3000,"glass"=2000, "diamond"=5000)
@@ -58,7 +58,7 @@
 
 	return 1
 
-/obj/item/robot/upgrade/restart/
+/obj/item/robot/upgrade/restart
 	name = "Borg emergancy restart module"
 	desc = "Used to force a restart of a disabled-but-repaired borg, bringing it back online."
 	construction_cost = list("metal"=60000 , "glass"=5000)
@@ -79,7 +79,7 @@
 	return 1
 
 
-/obj/item/robot/upgrade/vtec/
+/obj/item/robot/upgrade/vtec
 	name = "Borg VTEC Module"
 	desc = "Used to kick in a borgs VTEC systems, increasing their speed."
 	construction_cost = list("metal"=80000 , "glass"=6000 , "gold"= 5000)
@@ -94,7 +94,7 @@
 	return 1
 
 
-/obj/item/robot/upgrade/tasercooler/
+/obj/item/robot/upgrade/tasercooler
 	name = "Borg Rapid Taser Cooling Module"
 	desc = "Used to cool a mounted taser, increasing the potential current in it and thus its recharge rate.."
 	construction_cost = list("metal"=80000 , "glass"=6000 , "gold"= 2000, "diamond" = 500)
@@ -127,7 +127,7 @@
 
 	return 1
 
-/obj/item/robot/upgrade/jetpack/
+/obj/item/robot/upgrade/jetpack
 	name = "Mining Borg Jetpack"
 	desc = "A carbon dioxide jetpack suitable for low-gravity mining operations"
 	construction_cost = list("metal"=10000,"phoron"=15000,"uranium" = 20000)

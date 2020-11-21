@@ -161,7 +161,7 @@ proc/sort_surgeries()
 
 
 
-/datum/surgery_status/
+/datum/surgery_status
 	var/eyes	=	0
 	var/face	=	0
 	var/head_reattach = 0

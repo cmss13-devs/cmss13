@@ -468,7 +468,7 @@
 	icon_state = "strata_ribbed_outpost_"
 	desc = "A thick and chunky metal wall covered in jagged ribs."
 	walltype = WALL_STRATA_OUTPOST_RIBBED
-	damage_cap = 1000
+	damage_cap = HEALTH_WALL_REINFORCED
 	max_temperature = 28000
 
 /turf/closed/wall/strata_outpost_bare
@@ -490,7 +490,7 @@
 /turf/closed/wall/solaris/reinforced
 	icon_state = "solaris_interior_r"
 	walltype = WALL_SOLARISR
-	damage_cap = 1000
+	damage_cap = HEALTH_WALL_REINFORCED
 	max_temperature = 28000
 
 /turf/closed/wall/solaris/reinforced/hull
@@ -516,7 +516,7 @@
 	icon_state = "devwall_r"
 	desc = "Just like in the orange box! This one is reinforced"
 	walltype = WALL_DEVWALL_R
-	damage_cap = 1000
+	damage_cap = HEALTH_WALL_REINFORCED
 	max_temperature = 28000
 
 /turf/closed/wall/dev/reinforced/hull
@@ -550,7 +550,7 @@
 	icon_state = "colonyr"
 	desc = "Dusty worn down walls that were once built to last. This one is reinforced"
 	walltype = WALL_KUTJEVO_COLONYR
-	damage_cap = 1000
+	damage_cap = HEALTH_WALL_REINFORCED
 	max_temperature = 28000
 
 /turf/closed/wall/kutjevo/colony/reinforced/hull

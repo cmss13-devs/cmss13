@@ -73,7 +73,7 @@
 		if(on)
 			to_chat(user, SPAN_WARNING("Turn off [src] first."))
 			return
-		if(istype(loc, /obj/item/storage))
+		if(isstorage(loc))
 			var/obj/item/storage/S = loc
 			S.remove_from_storage(src)
 		if(loc == user)

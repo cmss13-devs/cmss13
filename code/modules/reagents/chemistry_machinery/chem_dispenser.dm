@@ -128,7 +128,7 @@
 			amount = 240
 
 	if(href_list["dispense"])
-		if(dispensable_reagents.Find(href_list["dispense"]) && beaker != null && beaker.is_open_container())
+		if(dispensable_reagents.Find(href_list["dispense"]) && beaker != null && (beaker.is_open_container() || beaker.flags_atom & CAN_BE_DISPENSED_INTO))
 			var/obj/item/reagent_container/B = beaker
 			var/datum/reagents/R = B.reagents
 			var/space = R.maximum_volume - R.total_volume

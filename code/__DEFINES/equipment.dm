@@ -22,7 +22,8 @@
 #define NO_SNOW_TYPE			2048	// Used for armors or uniforms that don't have a snow icon state.
 #define INVULNERABLE			4096
 #define CAN_BE_SYRINGED			8192	// syringes can inject or drain reagents in this even if it isn't an OPENCONTAINER
-#define INITIALIZED				16384	// Initialized by SSatoms.
+#define CAN_BE_DISPENSED_INTO	16384	// Chem dispenser can dispense in this even if it isn't an OPENCONTAINER
+#define INITIALIZED				32768	// Initialized by SSatoms.
 //==========================================================================================
 
 #define HANDLE_BARRIER_CHANCE 1
@@ -325,7 +326,7 @@ var/global/list/uniform_categories = list(
 
 // Autolathe defines
 
-#define AUTOLATHE_MAX_QUEUE			5
+#define AUTOLATHE_MAX_QUEUE			6
 #define AUTOLATHE_FAILED			0
 #define AUTOLATHE_START_PRINTING	1
 #define AUTOLATHE_QUEUED			2

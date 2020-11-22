@@ -11,6 +11,8 @@ var/global/datum/chemical_data/chemical_data = new /datum/chemical_data/
 	var/list/research_property_data = list() //starter properties are stored here
 	var/list/transmitted_data = list()
 	var/list/chemical_networks = list()
+	var/list/shared_item_storage = list()
+	var/list/shared_item_quantity = list()
 
 /datum/chemical_data/proc/update_credits(var/change)
 	rsc_credits = max(0, rsc_credits + change)
@@ -67,6 +69,7 @@ var/global/datum/chemical_data/chemical_data = new /datum/chemical_data/
 	C.energy = C.max_energy
 	return C
 
+
 //For research sending DeLorean mail to the WY of next round
 /datum/chemical_data/proc/transmit_chem_data(var/datum/reagent/R)
 	if(!R || transmitted_data["[R.id]"])
@@ -101,21 +104,6 @@ var/global/datum/chemical_data/chemical_data = new /datum/chemical_data/
 				R.vars[V] = data.vars[V]
 		R.properties = data.properties
 		R.properties = R.properties_to_datums()
-		//I hate doing this, but until the DB converts stuff into proper types we have to do this ourselves
-		for(var/datum/chem_property/P in R.properties)
-			P.level = text2num(P.level)
-		R.nutriment_factor = text2num(R.nutriment_factor)
-		R.custom_metabolism = text2num(R.custom_metabolism)
-		R.overdose = text2num(R.overdose)
-		R.overdose_critical = text2num(R.overdose_critical)
-		R.explosive = text2num(R.explosive)
-		R.power = text2num(R.power)
-		R.falloff_modifier = text2num(R.falloff_modifier)
-		R.chemfiresupp = text2num(R.chemfiresupp)
-		R.intensitymod = text2num(R.intensitymod)
-		R.durationmod = text2num(R.durationmod)
-		R.radiusmod = text2num(R.radiusmod)
-		R.burncolormod = text2num(R.burncolormod)
 		//And the final generation part
 		R.generate_name()
 		R.id = "omega-[i]"

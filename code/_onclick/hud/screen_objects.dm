@@ -43,7 +43,7 @@
 
 /obj/screen/close/clicked(var/mob/user)
 	if(master)
-		if(istype(master, /obj/item/storage))
+		if(isstorage(master))
 			var/obj/item/storage/S = master
 			S.close(user)
 	return TRUE

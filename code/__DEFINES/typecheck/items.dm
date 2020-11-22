@@ -9,6 +9,7 @@
 #define isweapon(O)		(O && is_type_in_list(O, weapons))
 #define istool(O)		(O && is_type_in_list(O, common_tools))
 #define ispowerclamp(O) (istype(O, /obj/item/powerloader_clamp))
+#define isstorage(O) 	(istype(O, /obj/item/storage))
 
 //Quick type checks for weapons
 var/global/list/weapons = list(

@@ -134,7 +134,7 @@
 		for(var/mob/M in S.can_see_content())
 			if(M.client)
 				M.client.screen -= src
-				
+
 	return ..()
 
 /obj/item/ex_act(severity, explosion_direction)
@@ -192,9 +192,9 @@ cases. Override_icon_state should be a list.*/
 		var/new_icon_state
 		var/new_protection
 		var/new_item_state
-		if(override_icon_state && override_icon_state.len) 
+		if(override_icon_state && override_icon_state.len)
 			new_icon_state = override_icon_state[map_tag]
-		if(override_protection && override_protection.len) 
+		if(override_protection && override_protection.len)
 			new_protection = override_protection[map_tag]
 		switch(map_tag)
 			if(MAP_ICE_COLONY, MAP_CORSAT, MAP_SOROKYNE_STRATA)
@@ -206,7 +206,7 @@ cases. Override_icon_state should be a list.*/
 			if(MAP_PRISON_STATION)
 				icon_state = new_icon_state ? new_icon_state : "c_" + icon_state
 				item_state = new_item_state ? new_item_state : "c_" + item_state
-		if(new_protection) 
+		if(new_protection)
 			min_cold_protection_temperature = new_protection
 	else return
 
@@ -245,7 +245,7 @@ cases. Override_icon_state should be a list.*/
 	if(istype(loc, /obj/item/weapon/gun)) // more alt-click hijinx
 		return
 
-	if (istype(loc, /obj/item/storage))
+	if(isstorage(loc))
 		var/obj/item/storage/S = loc
 		S.remove_from_storage(src, user.loc)
 
@@ -523,7 +523,7 @@ cases. Override_icon_state should be a list.*/
 							return 1
 				return FALSE
 			if(WEAR_IN_BACK)
-				if (H.back && istype(H.back, /obj/item/storage))
+				if (H.back && isstorage(H.back))
 					var/obj/item/storage/B = H.back
 					if(B.can_be_inserted(src, 1))
 						return 1
@@ -543,13 +543,13 @@ cases. Override_icon_state should be a list.*/
 						return 1
 				return FALSE
 			if(WEAR_IN_BELT)
-				if(H.belt && istype(H.belt, /obj/item/storage))
+				if(H.belt &&  isstorage(H.belt))
 					var/obj/item/storage/B = H.belt
 					if(B.can_be_inserted(src, 1))
 						return 1
 				return FALSE
 			if(WEAR_IN_J_STORE)
-				if(H.s_store && istype(H.s_store, /obj/item/storage))
+				if(H.s_store && isstorage(H.s_store))
 					var/obj/item/storage/B = H.s_store
 					if(B.can_be_inserted(src, 1))
 						return 1

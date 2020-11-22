@@ -112,7 +112,7 @@
 
 	if(ishuman(user) || isrobot(user))
 		var/obj/item/O = get_item(mods)
-		if(O && istype(O, /obj/item/storage))
+		if(O && isstorage(O))
 			var/obj/item/storage/S = O
 			S.open(usr)
 			return TRUE

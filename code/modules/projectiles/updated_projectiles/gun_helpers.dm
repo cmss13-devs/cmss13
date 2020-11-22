@@ -169,7 +169,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	unwield(user)
 
 /obj/item/weapon/gun/proc/wy_allowed_check(mob/living/carbon/human/user)
-	if(config && config.remove_gun_restrictions) 
+	if(config && config.remove_gun_restrictions)
 		return TRUE //Not if the config removed it.
 
 	if(user.mind)
@@ -189,7 +189,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 			) return TRUE
 		if(user.faction in FACTION_LIST_WY)
 			return TRUE
-		
+
 	to_chat(user, SPAN_WARNING("[src] flashes a warning sign indicating unauthorized use!"))
 
 // Checks whether there is anything to put your harness
@@ -197,7 +197,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	var/obj/item/I = user.wear_suit
 	if(!istype(I, /obj/item/clothing/suit/storage/marine))
 		return FALSE
-	
+
 	return TRUE
 
 /obj/item/weapon/gun/proc/harness_return(var/mob/living/carbon/human/user)
@@ -219,7 +219,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 
 	if (!harness_check(user))
 		return
-	
+
 	addtimer(CALLBACK(src, .proc/harness_return, user), 3, TIMER_UNIQUE|TIMER_OVERRIDE)
 
 /obj/item/weapon/gun/attack_self(mob/user)
@@ -242,7 +242,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 /obj/item/weapon/gun/attackby(obj/item/I, mob/user)
 	if(flags_gun_features & GUN_BURST_FIRING)
 		return
-	
+
 	if(istype(I, /obj/item/prop/helmetgarb/gunoil))
 		var/oil_verb = pick("lubes", "oils", "cleans", "tends to", "gently strokes")
 		if(do_after(user, 30, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, user, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
@@ -250,7 +250,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 			src.clean_blood()
 		else
 			return
-		
+
 
 	if(istype(I,/obj/item/attachable))
 		if(check_inactive_hand(user)) attach_to_gun(user,I)
@@ -298,7 +298,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 			if(user.skills)
 				tac_reload_time = max(15 - 5*user.skills.get_skill_level(SKILL_FIREARMS), 5)
 			if(do_after(user,tac_reload_time, INTERRUPT_ALL, BUSY_ICON_FRIENDLY) && AM.loc == old_mag_loc && !current_mag)
-				if(istype(AM.loc, /obj/item/storage))
+				if(isstorage(AM.loc))
 					var/obj/item/storage/S = AM.loc
 					S.remove_from_storage(AM)
 				reload(user, AM)
@@ -471,7 +471,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 //----------------------------------------------------------
 
 /mob/living/carbon/human/proc/holster_unholster_from_suit_storage()
-	if(istype(s_store, /obj/item/storage)) //check storages(?)
+	if(isstorage(s_store)) //check storages(?)
 		var/obj/item/storage/S = s_store
 		for(var/obj/item/wep in S.return_inv())
 			if(isweapon(wep))

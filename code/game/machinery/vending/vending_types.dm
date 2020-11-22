@@ -101,6 +101,18 @@
 					/obj/item/reagent_container/food/drinks/cans/cola = 10)
 	idle_power_usage = 211 //refrigerator - believe it or not, this is actually the average power consumption of a refrigerated vending machine according to NRCan.
 
+/obj/structure/machinery/vending/cola/research
+	desc = "A softdrink vendor provided by Souto Soda Company, Havana. This one is bound to the Research Budget card and doesn't require swiping"
+	products = list(/obj/item/reagent_container/food/drinks/cans/souto/classic = 10,
+					/obj/item/reagent_container/food/drinks/cans/souto/cherry = 10,
+					/obj/item/reagent_container/food/drinks/cans/souto/lime = 10,
+					/obj/item/reagent_container/food/drinks/cans/souto/grape = 10,
+					/obj/item/reagent_container/food/drinks/cans/souto/blue = 10,
+					/obj/item/reagent_container/food/drinks/cans/souto/peach = 10,
+					/obj/item/reagent_container/food/drinks/cans/souto/cranberry = 10)
+
+	prices = list()
+
 /obj/structure/machinery/vending/cigarette
 	name = "cigarette machine" //OCD had to be uppercase to look nice with the new formating
 	desc = "If you want to get cancer, might as well do it in style!"

@@ -45,7 +45,7 @@
 
 		var/mob/living/carbon/human/H = M
 		if(H.species.flags & IS_SYNTHETIC)
-			to_chat(H, SPAN_DANGER("They have a monitor for a head, where do you think you're going to put that?"))
+			to_chat(user, SPAN_DANGER("They have a monitor for a head, where do you think you're going to put that?"))
 			return
 
 		user.affected_message(M,
@@ -68,7 +68,7 @@
 		if(reagents.total_volume)
 			reagents.set_source_mob(user)
 			reagents.trans_to_ingest(M, gulp_size)
-
+			
 		if(isrobot(user)) //Cyborg modules that include drinks automatically refill themselves, but drain the borg's cell
 			var/mob/living/silicon/robot/bro = user
 			bro.cell.use(30)

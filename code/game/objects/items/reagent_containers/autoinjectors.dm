@@ -34,7 +34,9 @@
 	uses_left--
 	update_icon()
 
-/obj/item/reagent_container/hypospray/autoinjector/attackby()
+/obj/item/reagent_container/hypospray/autoinjector/attackby(obj/item/W, mob/user)
+	if(isstorage(W))
+		..(W, user)
 	return
 
 /obj/item/reagent_container/hypospray/autoinjector/update_icon()
@@ -157,7 +159,7 @@
 /obj/item/reagent_container/hypospray/autoinjector/yautja/attack(mob/M as mob, mob/user as mob)
 	if(isYautja(user))
 		..()
-	else 
+	else
 		to_chat(user, SPAN_DANGER("You have no idea where to inject [src]."))
 
 /obj/item/reagent_container/hypospray/autoinjector/skillless
@@ -200,13 +202,64 @@
 	icon_state = "tramadol"
 
 /obj/item/reagent_container/hypospray/autoinjector/empty
-	name = "autoinjector"
+	name = "autoinjector (C-T)"
 	desc = "A custom made auto-injector, likely from research."
 	chemname = "custom"
 	mixed_chem = TRUE
 	amount_per_transfer_from_this = 5
 	volume = 15
 	uses_left = 0
+
+/obj/item/reagent_container/hypospray/autoinjector/empty/examine(mob/user)
+	..()
+	to_chat(user, SPAN_NOTICE("It transfers [amount_per_transfer_from_this]u per injection and has a maximum of [volume/amount_per_transfer_from_this] injections."))
+
+/obj/item/reagent_container/hypospray/autoinjector/empty/small
+	name = "autoinjector (C-S)"
+	amount_per_transfer_from_this = 15
+	volume = 45
+
+/obj/item/reagent_container/hypospray/autoinjector/empty/medium
+	name = "autoinjector (C-M)"
+	amount_per_transfer_from_this = 30
+	volume = 90
+
+/obj/item/reagent_container/hypospray/autoinjector/empty/large
+	name = "autoinjector (C-L)"
+	amount_per_transfer_from_this = 60
+	volume = 180
+
+/obj/item/reagent_container/hypospray/autoinjector/empty/skillless
+	name = "Autoinjector (E-T)"
+	desc = "A custom made EZ autoinjector, likely from research. Injects its entire payload immediately and doesn't require any training."
+	chemname = "custom_ez"
+	icon_state = "empty_ez"
+	item_state = "empty_ez"
+	skilllock = 0
+	amount_per_transfer_from_this = 15
+	uses_left = 0
+
+/obj/item/reagent_container/hypospray/autoinjector/empty/skillless/small
+	name = "Autoinjector (E-S)"
+	volume = 45
+	amount_per_transfer_from_this = 45
+
+/obj/item/reagent_container/hypospray/autoinjector/empty/medic/
+	name = "Medic Autoinjector (M-M)"
+	desc = "A custom made professional injector, likely from research. Has a similar lock to pill bottles, and fits up to 6 injections."
+	skilllock = SKILL_MEDICAL_MEDIC
+	volume = 90
+	amount_per_transfer_from_this = 15
+	chemname = "custom_medic"
+	icon_state = "empty_medic"
+	item_state = "empty_medic"
+	uses_left = 0
+
+/obj/item/reagent_container/hypospray/autoinjector/empty/medic/large
+	name = "Medic Autoinjector (M-L)"
+	volume = 180
+	amount_per_transfer_from_this = 30
+
 
 #undef INJECTOR_USES
 #undef INJECTOR_PERCENTAGE_OF_OD

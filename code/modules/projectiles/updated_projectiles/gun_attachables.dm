@@ -487,7 +487,7 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/flashlight/attackby(obj/item/I, mob/user)
 	if(istype(I,/obj/item/tool/screwdriver))
 		to_chat(user, SPAN_NOTICE("You strip the the rail flashlight of its mount, converting it to a normal flashlight."))
-		if(istype(loc, /obj/item/storage))
+		if(isstorage(loc))
 			var/obj/item/storage/S = loc
 			S.remove_from_storage(src)
 		if(loc == user)

@@ -26,7 +26,7 @@
 
 	for(var/obj/item/I in belonging_to_agent.source_human)
 		// Found a backpack, storage
-		if(istype(I, /obj/item/storage))
+		if(isstorage(I))
 			for(var/obj/item/backpackI in I)
 				if(istypestrict(backpackI, item_to_steal_type))
 					return TRUE

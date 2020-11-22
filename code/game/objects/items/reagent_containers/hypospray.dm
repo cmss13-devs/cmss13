@@ -14,11 +14,14 @@
 	flags_atom = FPRINT
 	flags_equip_slot = SLOT_WAIST
 	matter = list("plastic" = 1250, "glass" = 250)
-	var/skilllock = 1
+	var/skilllock = SKILL_MEDICAL_TRAINED
 	var/obj/item/reagent_container/glass/beaker/vial/mag
 	var/locked = TRUE
 
 /obj/item/reagent_container/hypospray/attackby(obj/item/B, mob/living/user)
+	if(istype(B,/obj/item/storage))
+		..(B, user)
+		return
 	if(mag && istype(B,/obj/item/reagent_container))
 		if(B.reagents)
 			var/obj/item/reagent_container/C = B
@@ -78,10 +81,13 @@
 	if(!istype(M))
 		return
 
-	if(skilllock && !skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_TRAINED))
+	if(skilllock == SKILL_MEDICAL_TRAINED && !skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_TRAINED))
 		user.visible_message(SPAN_WARNING("[user] fumbles with [src]..."), SPAN_WARNING("You fumble with [src]..."))
 		if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, M, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
 			return
+	else if(!skillcheck(user, SKILL_MEDICAL, skilllock))
+		to_chat(user, SPAN_WARNING("The [src] beeps and refuses to inject: Insufficient training or clearance!"))
+		return
 	var/sleeptoxin = 0
 	for(var/datum/reagent/R in liquid.reagent_list)
 		if(istype(R, /datum/reagent/toxin/chloralhydrate) || istype(R, /datum/reagent/toxin/stoxin))

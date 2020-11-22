@@ -1,5 +1,8 @@
 #define PROGRAM_MEMORY 			1
 #define PROGRAM_BOX 			2
+#define OUTPUT_TO_CONTAINER		0
+#define OUTPUT_TO_SMARTFRIDGE	1
+#define OUTPUT_TO_CENTRIFUGE	2
 
 /obj/structure/machinery/autodispenser
 	name = "Turing Dispenser"
@@ -29,11 +32,27 @@
 	var/error //Error status message
 	var/automode = FALSE
 	var/smartlink = TRUE
+	var/outputmode = OUTPUT_TO_CONTAINER
+	var/centrifuge_tether_range = 20
+	var/smartfridge_tether_range = 3
+	var/buffer_size = 1080 // 180 * 6
 
 /obj/structure/machinery/autodispenser/Initialize()
 	. = ..()
-	linked_storage = locate(/obj/structure/machinery/smartfridge/chemistry,get_step(src, dir))
+	create_reagents(buffer_size) // Inner buffer.
+	connect_storage()
 	start_processing()
+
+/obj/structure/machinery/autodispenser/Destroy()
+	cleanup()
+	. = ..()
+
+/obj/structure/machinery/autodispenser/proc/connect_storage()
+	if(linked_storage)
+		return
+	linked_storage = locate(/obj/structure/machinery/smartfridge/chemistry) in range(smartfridge_tether_range, src)
+	if(linked_storage)
+		RegisterSignal(linked_storage, COMSIG_PARENT_QDELETING, .proc/cleanup)
 
 /obj/structure/machinery/autodispenser/attackby(obj/item/B, mob/living/user)
 	if(!skillcheck(user, SKILL_RESEARCH, SKILL_RESEARCH_TRAINED))
@@ -54,7 +73,7 @@
 			else
 				icon_state = "autodispenser_empty_closed"
 		get_program()
-	else if(B.is_open_container())
+	else if(B.is_open_container() || B.flags_atom & CAN_BE_DISPENSED_INTO)
 		if(output_container)
 			to_chat(user, SPAN_WARNING("A container is already loaded into the [src]."))
 			return
@@ -69,7 +88,7 @@
 		to_chat(user, SPAN_WARNING("[B] doesn't fit in the [src]."))
 		return
 	to_chat(user, SPAN_NOTICE("You insert [B] into the [src]."))
-	if(input_container && output_container)
+	if(input_container && output_container && outputmode == OUTPUT_TO_CONTAINER)
 		if(automode)
 			run_program()
 	nanomanager.update_uis(src) // update all UIs attached to src
@@ -92,7 +111,11 @@
 		"cycle_limit" = cycle_limit,
 		"automode" = automode,
 		"linked_storage" = linked_storage,
-		"smartlink" = smartlink
+		"networked_storage" = linked_storage.is_in_network(),
+		"smartlink" = smartlink,
+		"outputmode" = outputmode,
+		"buffervolume" = reagents.total_volume,
+		"buffermax" = buffer_size
 	)
 	if(output_container)
 		data["output_container"] = list(
@@ -133,7 +156,8 @@
 			output_container = null
 		stop_program()
 	else if(href_list["runprogram"])
-		run_program()
+		if(outputmode != OUTPUT_TO_CENTRIFUGE)
+			run_program()
 	else if(href_list["saveprogram"])
 		get_program(PROGRAM_MEMORY)
 	else if(href_list["clearmemory"])
@@ -156,6 +180,22 @@
 		automode = !automode
 	else if(href_list["togglesmart"])
 		smartlink = !smartlink
+	else if(href_list["toggleoutput"])
+		switch(outputmode)
+			if(OUTPUT_TO_CONTAINER)
+				if(linked_storage)
+					outputmode = OUTPUT_TO_SMARTFRIDGE
+				else if(locate(/obj/structure/machinery/centrifuge) in range(centrifuge_tether_range, src))
+					outputmode = OUTPUT_TO_CENTRIFUGE
+			if(OUTPUT_TO_SMARTFRIDGE)
+				flush_buffer()
+				if(locate(/obj/structure/machinery/centrifuge) in range(centrifuge_tether_range, src))
+					outputmode = OUTPUT_TO_CENTRIFUGE
+				else
+					outputmode = OUTPUT_TO_CONTAINER
+			if(OUTPUT_TO_CENTRIFUGE)
+				flush_buffer()
+				outputmode = OUTPUT_TO_CONTAINER
 
 	nanomanager.update_uis(src) // update all UIs attached to src
 	add_fingerprint(user)
@@ -176,7 +216,18 @@
 	if(status == 0 || status == 1) //Nothing to do
 		return
 
-	var/space = output_container.reagents.maximum_volume - output_container.reagents.total_volume
+	if(!linked_storage)
+		connect_storage()
+
+	if(QDELETED(linked_storage) || src.z != linked_storage.z || get_dist(src, linked_storage) > smartfridge_tether_range)
+		visible_message(SPAN_WARNING("Smartfridge is out of range. Connection severed."))
+		cleanup()
+
+	var/obj/item/reagent_container/container = output_container
+	if(outputmode != OUTPUT_TO_CONTAINER)
+		container = src
+
+	var/space = container.reagents.maximum_volume - container.reagents.total_volume
 	if(!space || cycle >= cycle_limit) //We done boys
 		stop_program(1)
 		icon_state = "autodispenser_full"
@@ -216,7 +267,7 @@
 					else
 						stage_missing = 0
 
-					C.reagents.trans_to(output_container,amount)
+					C.reagents.trans_to(container, amount)
 					//We don't care about keeping empty bottles stored
 					if(C.reagents.total_volume <= 0 && istypestrict(C,/obj/item/reagent_container/glass/bottle))
 						linked_storage.item_quants[C.name]--
@@ -241,7 +292,7 @@
 			var/savings = energy - amount * 0.1
 			if(savings < 0) //Check if we can afford dispensing the chemical
 				break
-			output_container.reagents.add_reagent(R.id,amount)
+			container.reagents.add_reagent(R.id,amount)
 			energy = savings
 			stage_missing = 0
 			next_stage()
@@ -271,7 +322,7 @@
 		program = PROGRAM_MEMORY
 	else
 		program = PROGRAM_BOX
-	if(programs[program].len && output_container)
+	if(programs[program].len && (outputmode == OUTPUT_TO_CONTAINER && output_container) || outputmode != OUTPUT_TO_CONTAINER)
 		status = 2
 		icon_state = "autodispenser_running"
 	else
@@ -289,6 +340,9 @@
 		else
 			cycle++
 		stage = 1
+		if(outputmode == OUTPUT_TO_SMARTFRIDGE)
+			flush_buffer()
+
 
 /obj/structure/machinery/autodispenser/proc/stop_program(var/set_status = 0)
 	stage = 1
@@ -296,6 +350,10 @@
 	stage_missing = 0
 	error = 0
 	status = set_status
+
+	if(outputmode == OUTPUT_TO_SMARTFRIDGE)
+		flush_buffer()
+
 	if(input_container && output_container)
 		icon_state = "autodispenser_idle"
 	else if(input_container && !output_container)
@@ -305,5 +363,32 @@
 	else
 		icon_state = "autodispenser_empty_open"
 
+/obj/structure/machinery/autodispenser/proc/flush_buffer()
+	if(reagents.total_volume > 0)
+		if(!linked_storage)
+			reagents.clear_reagents()
+			return
+
+		var/name = reagents.get_master_reagent_name()
+		var/obj/item/reagent_container/glass/P
+		while(reagents.total_volume > 0)
+			P = new /obj/item/reagent_container/glass/bottle()
+			P.name = "[name] bottle"
+			P.icon_state = "bottle-1" // Default bottle
+			P.amount_per_transfer_from_this = 60
+			reagents.trans_to(P, 60)
+			if(!linked_storage.add_network_item(P)) // Prefer network to avoid recursion (create bottle, then consume from bottle)
+				linked_storage.add_item(P)
+
+
+
+/obj/structure/machinery/autodispenser/proc/cleanup()
+	SIGNAL_HANDLER
+	if(linked_storage)
+		linked_storage = null
+
 #undef PROGRAM_MEMORY
 #undef PROGRAM_BOX
+#undef OUTPUT_TO_CONTAINER
+#undef OUTPUT_TO_SMARTFRIDGE
+#undef OUTPUT_TO_CENTRIFUGE

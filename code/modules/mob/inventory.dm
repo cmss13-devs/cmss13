@@ -52,7 +52,7 @@
 //If both fail it drops it on the floor and returns 0.
 //This is probably the main one you need to know :)
 /mob/proc/put_in_hands(var/obj/item/W)
-	if(!W)		
+	if(!W)
 		return 0
 	if(put_in_active_hand(W))
 		update_inv_l_hand(0)
@@ -95,9 +95,9 @@
 			return drop_r_hand()
 		else if (I == l_hand)
 			return drop_l_hand()
-	else if(hand)	
+	else if(hand)
 		return drop_l_hand()
-	else		
+	else
 		return drop_r_hand()
 
 //Drops the items in our hands.
@@ -138,7 +138,7 @@
 		else
 			I.loc = newloc
 	I.dropped(src)
-	if(I.unequip_sounds.len)	
+	if(I.unequip_sounds.len)
 		playsound_client(client, pick(I.unequip_sounds), null, ITEM_EQUIP_VOLUME)
 
 	return TRUE
@@ -256,7 +256,7 @@
 				src.s_store = W
 				equipped = 1
 		if(WEAR_IN_BACK)
-			if (src.back && istype(src.back, /obj/item/storage/))
+			if (src.back && isstorage(src.back))
 				var/obj/item/storage/B = src.back
 				if(B.contents.len < B.storage_slots && W.w_class <= B.max_w_class)
 					W.loc = B
@@ -288,13 +288,13 @@
 				W.loc = S.pockets
 				equipped = 1
 		if(WEAR_IN_BELT)
-			if(src.belt && istype(src.belt, /obj/item/storage))
+			if(src.belt && isstorage(src.belt))
 				var/obj/item/storage/B = src.belt
 				if(B.contents.len < B.storage_slots && W.w_class <= B.max_w_class)
 					W.loc = B
 					equipped = 1
 		if(WEAR_IN_J_STORE)
-			if(src.s_store && istype(src.s_store, /obj/item/storage/))
+			if(src.s_store && isstorage(src.s_store))
 				var/obj/item/storage/B = src.s_store
 				if(B.contents.len < B.storage_slots && W.w_class <= B.max_w_class)
 					W.loc = B

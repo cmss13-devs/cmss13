@@ -257,7 +257,7 @@ var/global/list/frozen_items = list(SQUAD_NAME_1 = list(), SQUAD_NAME_2 = list()
 						SS.pockets.remove_from_storage(I, loc)
 						strippeditems += I
 						I.loc = null
-				if(istype(W, /obj/item/storage))
+				if(isstorage(W))
 					var/obj/item/storage/S = W
 					for(var/obj/item/I in S)
 						S.remove_from_storage(I, loc)

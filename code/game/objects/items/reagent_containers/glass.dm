@@ -173,6 +173,8 @@
 								 SPAN_NOTICE("You label [src] as \"[tmp_label]\"."))
 			label_text = tmp_label
 			update_name_label()
+	else
+		. = ..()
 
 /obj/item/reagent_container/glass/proc/update_name_label()
 	if(label_text == "")
@@ -431,6 +433,33 @@
 	desc = "A canister containing pressurized oxygen. Can be used to refill storage tanks."
 	icon_state = "canister_oxygen"
 	reagent = "oxygen"
+
+/obj/item/reagent_container/glass/pressurized_canister // See the Pressurized Reagent Canister Pouch
+	name = "Pressurized canister"
+	desc = "A pressurized container. The inner part of a pressurized reagent canister pouch. Only compatible with its pouch, machinery or a storage tank."
+	icon = 'icons/obj/items/tank.dmi'
+	icon_state = "pressurized_reagent_container"
+	item_state = "anesthetic"
+	amount_per_transfer_from_this = 0
+	possible_transfer_amounts = list(0)
+	volume = 480
+	w_class = SIZE_MASSIVE
+	flags_atom = CAN_BE_DISPENSED_INTO
+
+/obj/item/reagent_container/glass/pressurized_canister/attackby(obj/item/I, mob/user)
+	return
+
+/obj/item/reagent_container/glass/pressurized_canister/afterattack(obj/target, mob/user, flag)
+	if(!istype(target, /obj/structure/reagent_dispensers))
+		return
+	. = ..()
+
+/obj/item/reagent_container/glass/pressurized_canister/attack_self()
+	return
+
+/obj/item/reagent_container/glass/pressurized_canister/set_APTFT()
+	to_chat(usr, SPAN_WARNING("[src] has no transfer control valve! Use a dispenser to fill it!"))
+	return
 
 /obj/item/reagent_container/glass/bucket
 	desc = "It's a bucket. Holds 120 units."

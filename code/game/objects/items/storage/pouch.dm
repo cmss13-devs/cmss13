@@ -471,6 +471,164 @@
 	. = ..()
 	new /obj/item/storage/firstaid/adv(src)
 
+
+/obj/item/storage/pouch/pressurized_reagent_canister
+	name = "Pressurized Reagent Canister Pouch"
+	max_w_class = SIZE_SMALL
+	storage_flags = STORAGE_FLAGS_POUCH|STORAGE_USING_DRAWING_METHOD
+	icon_state = "pressurized_reagent_canister"
+	desc = "A pressurized reagent canister pouch. It is used to refill custom injectors, and can also store one. May be refilled with a reagent tank or a Chemical Dispenser."
+	can_hold = list(/obj/item/reagent_container/hypospray/autoinjector/empty)
+	var/obj/item/reagent_container/glass/pressurized_canister/inner
+	matter = list("plastic" = 3000)
+
+/obj/item/storage/pouch/pressurized_reagent_canister/Initialize()
+	. = ..()
+	inner = new /obj/item/reagent_container/glass/pressurized_canister()
+	update_icon()
+
+/obj/item/storage/pouch/pressurized_reagent_canister/bicaridine/Initialize()
+	. = ..()
+	inner.reagents.add_reagent("bicaridine", inner.volume)
+	new /obj/item/reagent_container/hypospray/autoinjector/empty/medic(src)
+	update_icon()
+
+/obj/item/storage/pouch/pressurized_reagent_canister/kelotane/Initialize()
+	. = ..()
+	inner.reagents.add_reagent("kelotane", inner.volume)
+	new /obj/item/reagent_container/hypospray/autoinjector/empty/medic/(src)
+	update_icon()
+
+/obj/item/storage/pouch/pressurized_reagent_canister/revival/Initialize()
+	. = ..()
+	inner.reagents.add_reagent("adrenaline", inner.volume/3)
+	inner.reagents.add_reagent("inaprovaline", inner.volume/3)
+	inner.reagents.add_reagent("peridaxon", inner.volume/3)
+	new /obj/item/reagent_container/hypospray/autoinjector/empty/medic(src)
+	update_icon()
+
+/obj/item/storage/pouch/pressurized_reagent_canister/attackby(obj/item/W, mob/user)
+	if(istype(W, /obj/item/reagent_container/glass/pressurized_canister))
+		if(inner)
+			to_chat(user, SPAN_WARNING("There already is a container inside [src]!"))
+		else
+			user.drop_inv_item_to_loc(W, src)
+			inner = W
+			contents -= W
+			to_chat(user, SPAN_NOTICE("You insert [W] into [src]!"))
+			update_icon()
+		return
+
+	if(istype(W, /obj/item/reagent_container/hypospray/autoinjector/empty))
+		var/obj/item/reagent_container/hypospray/autoinjector/A = W
+		var/max_uses = A.volume / A.amount_per_transfer_from_this
+		max_uses = round(max_uses) == max_uses ? max_uses : round(max_uses) + 1
+		if(inner && inner.reagents.total_volume > 0 && (A.uses_left < max_uses))
+			inner.reagents.trans_to(A, A.volume)
+			var/uses_left = A.reagents.total_volume / A.amount_per_transfer_from_this
+			uses_left = round(uses_left) == uses_left ? uses_left : round(uses_left) + 1
+			A.uses_left = uses_left
+			playsound(loc, 'sound/effects/refill.ogg', 25, 1, 3)
+			A.update_icon()
+		return ..()
+	else if(istype(W, /obj/item/reagent_container/hypospray/autoinjector))
+		to_chat(user, SPAN_WARNING("[W] is not compatible with this system!"))
+	return ..()
+
+
+/obj/item/storage/pouch/pressurized_reagent_canister/afterattack(obj/target, mob/user, flag) //refuel at fueltanks & chem dispensers.
+	if(!inner)
+		to_chat(user, SPAN_WARNING("[src] has no internal container!"))
+		return ..()
+
+	if(istype(target, /obj/structure/machinery/chem_dispenser))
+		var/obj/structure/machinery/chem_dispenser/cd = target
+		if(!cd.beaker)
+			to_chat(user, SPAN_NOTICE("You unhook the inner container and connect it to [target]."))
+			inner.loc = cd
+			cd.beaker = inner
+			inner = null
+			update_icon()
+		else
+			to_chat(user, SPAN_WARNING("[cd] already has a container!"))
+		return
+
+	if(!istype(target, /obj/structure/reagent_dispensers/fueltank))
+		return ..()
+
+	if(get_dist(user,target) > 1)
+		return ..()
+
+	var/obj/O = target
+	if(!O.reagents || O.reagents.reagent_list.len < 1)
+		to_chat(user, SPAN_WARNING("[O] is empty!"))
+		return
+
+	var/amt_to_remove = Clamp(O.reagents.total_volume, 0, inner.volume)
+	if(!amt_to_remove)
+		to_chat(user, SPAN_WARNING("[O] is empty!"))
+		return
+
+	O.reagents.trans_to(inner, amt_to_remove)
+	playsound(loc, 'sound/effects/refill.ogg', 25, 1, 3)
+
+	to_chat(user, SPAN_NOTICE("You refill the [src]."))
+	update_icon()
+
+/obj/item/storage/pouch/pressurized_reagent_canister/examine(mob/user)
+	..()
+	display_contents(user)
+
+/obj/item/storage/pouch/pressurized_reagent_canister/update_icon()
+	..()
+	if(inner)
+		overlays += "+[icon_state]_loaded"
+
+
+/obj/item/storage/pouch/pressurized_reagent_canister/empty(mob/user)
+	return //Useless, it's a one slot.
+
+/obj/item/storage/pouch/pressurized_reagent_canister/proc/display_contents(mob/user) // Used on examine for properly skilled people to see contents.
+	if(isXeno(user))
+		return
+	if(!inner)
+		to_chat(user, "This [src] has no container inside!")
+		return
+	if(skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_TRAINED))
+		to_chat(user, "This [src] contains: [get_reagent_list_text()]")
+	else
+		to_chat(user, "You don't know what's in it.")
+
+//returns a text listing the reagents (and their volume) in the atom. Used by Attack logs for reagents in pills
+/obj/item/storage/pouch/pressurized_reagent_canister/proc/get_reagent_list_text()
+	if(inner && inner.reagents && inner.reagents.reagent_list && inner.reagents.reagent_list.len)
+		var/datum/reagent/R = inner.reagents.reagent_list[1]
+		. = "[R.name]([R.volume]u)"
+
+		if(inner.reagents.reagent_list.len < 2)
+			return
+
+		for(var/i in 2 to inner.reagents.reagent_list.len)
+			R = inner.reagents.reagent_list[i]
+
+			if(!R)
+				continue
+
+			. += "; [R.name]([R.volume]u)"
+	else
+		. = "No reagents"
+
+/obj/item/storage/pouch/pressurized_reagent_canister/verb/flush_container()
+	set category = "Weapons"
+	set name = "Flush Container"
+	set desc = "Forces the container to empty its reagents."
+
+	to_chat(usr, SPAN_NOTICE("You hold down the emergency flush button. Wait 3 seconds..."))
+	if(do_after(usr, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+		to_chat(usr, SPAN_NOTICE("You flush the [src]."))
+		inner.reagents.clear_reagents()
+
+
 /obj/item/storage/pouch/document
 	name = "large document pouch"
 	desc = "It can contain papers and clipboards."

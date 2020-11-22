@@ -178,7 +178,7 @@
 		O?.add_fingerprint(usr)
 
 		//BubbleWrap - so newly formed boxes are empty
-		if(istype(O, /obj/item/storage))
+		if(isstorage(O))
 			for (var/obj/item/I in O)
 				qdel(I)
 		//BubbleWrap END
@@ -201,7 +201,7 @@
 				if((O.flags_atom & ON_BORDER) && O.dir == usr.dir) //We check overlapping dir here. Doesn't have to be the same type
 					to_chat(user, SPAN_WARNING("There is already \a [O.name] in this direction!"))
 					return TRUE
-	
+
 	return FALSE
 
 /obj/item/stack/proc/use(used)

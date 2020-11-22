@@ -21,7 +21,7 @@
 	var/list/printable = list() // data list of each printable item (for NanoUI)
 	var/list/recipes
 	var/list/categories
-	var/list/disabled_categories = list("Explosives", "Medical", "Medical Containers")
+	var/list/disabled_categories = list("Explosives", "Medical", "Medical Containers", "Injectors")
 	var/list/components = list(
 		/obj/item/circuitboard/machine/autolathe,
 		/obj/item/stock_parts/matter_bin,
@@ -526,7 +526,7 @@
 	base_state = "armylathe"
 	recipes = null
 	categories = null
-	disabled_categories = list("General", "Tools", "Engineering", "Devices and Components", "Medical", "Medical Containers", "Surgery", "Glassware")
+	disabled_categories = list("General", "Tools", "Engineering", "Devices and Components", "Medical", "Medical Containers", "Surgery", "Glassware", "Injectors")
 	storage_capacity = list("metal" = 0, "plastic" = 0)
 	components = list(
 		/obj/item/circuitboard/machine/autolathe/armylathe,

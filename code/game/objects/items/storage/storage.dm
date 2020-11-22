@@ -73,7 +73,7 @@
 		L += S.return_inv()
 	for(var/obj/item/gift/G in src)
 		L += G.gift
-		if (istype(G.gift, /obj/item/storage))
+		if (isstorage(G.gift))
 			L += G.gift:return_inv()
 	return L
 
@@ -107,7 +107,7 @@
 /obj/item/storage/proc/hide_from(mob/user as mob)
 	if(!user.client)
 		return
-		
+
 	user.client.screen -= src.boxes
 	user.client.screen -= storage_start
 	user.client.screen -= storage_continue
@@ -407,7 +407,7 @@ var/list/global/item_storage_box_cache = list()
 				to_chat(usr, SPAN_NOTICE("[src] is full, make some space."))
 			return 0
 
-	if(W.w_class >= src.w_class && (istype(W, /obj/item/storage)))
+	if(W.w_class >= src.w_class && (isstorage(W)))
 		if(!istype(src, /obj/item/storage/backpack/holding))	//bohs should be able to hold backpacks again. The override for putting a boh in a boh is in backpack.dm.
 			if(!stop_messages)
 				to_chat(usr, SPAN_NOTICE("[src] cannot hold [W] as it's a storage item of the same size."))
@@ -717,7 +717,7 @@ var/list/global/item_storage_box_cache = list()
 	while (cur_atom && !(cur_atom in container.contents))
 		if (isarea(cur_atom))
 			return -1
-		if (istype(cur_atom.loc, /obj/item/storage))
+		if (isstorage(cur_atom.loc))
 			depth++
 		cur_atom = cur_atom.loc
 
@@ -735,7 +735,7 @@ var/list/global/item_storage_box_cache = list()
 	while (cur_atom && !isturf(cur_atom))
 		if (isarea(cur_atom))
 			return -1
-		if (istype(cur_atom.loc, /obj/item/storage))
+		if (isstorage(cur_atom.loc))
 			depth++
 		cur_atom = cur_atom.loc
 

@@ -20,7 +20,7 @@
 
 	var/amount_collected = 0
 	for(var/obj/item/I in belonging_to_agent.source_human)
-		if(istype(I, /obj/item/storage))
+		if(isstorage(I))
 			for(var/obj/item/backpackI in I)
 				if(istype(backpackI, /obj/item/spacecash))
 					var/obj/item/spacecash/C = backpackI

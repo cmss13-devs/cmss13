@@ -623,10 +623,15 @@
 	set name = "Flush Container"
 	set desc = "Forces the container to empty its reagents."
 
+	if(!inner)
+		to_chat(usr, SPAN_WARNING("There is no container inside this pouch!"))
+		return
+
 	to_chat(usr, SPAN_NOTICE("You hold down the emergency flush button. Wait 3 seconds..."))
 	if(do_after(usr, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-		to_chat(usr, SPAN_NOTICE("You flush the [src]."))
-		inner.reagents.clear_reagents()
+		if(inner)
+			to_chat(usr, SPAN_NOTICE("You flush the [src]."))
+			inner.reagents.clear_reagents()
 
 
 /obj/item/storage/pouch/document

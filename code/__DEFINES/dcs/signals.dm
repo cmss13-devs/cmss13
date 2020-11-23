@@ -47,12 +47,14 @@
 #define COMSIG_MOB_EXPLODED_WALL "mob_exploded_wall"
 /// From /obj/structure/girder/proc/do_wall
 #define COMSIG_MOB_CONSTRUCT_WALL "mob_construct_wall"
-/// Currently unused
-#define COMSIG_MOB_DESTROY_W_FRAME "mob_destroy_w_frame"
+/// From /obj/structure/window/framed/ex_act
+#define COMSIG_MOB_EXPLODE_W_FRAME "mob_destroy_w_frame"
 /// From /obj/structure/window_frame/attackby
 #define COMSIG_MOB_DISASSEMBLE_W_FRAME "mob_disassemble_w_frame"
 /// From /obj/structure/window/proc/healthcheck
 #define COMSIG_MOB_DESTROY_WINDOW "mob_destroy_window"
+/// From /obj/structure/window/ex_act
+#define COMSIG_MOB_WINDOW_EXPLODED "mob_window_exploded"
 /// From /obj/structure/window_frame/attackby
 #define COMSIG_MOB_CONSTRUCT_WINDOW "mob_construct_window"
 /// From /obj/structure/window/attackby

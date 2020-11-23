@@ -138,7 +138,7 @@
 
 	if(source_mob)
 		source_mob.count_niche_stat(STATISTICS_NICHE_DESTRUCTION_WINDOWS, 1)
-		SEND_SIGNAL(source_mob, COMSIG_MOB_DESTROY_WINDOW, src)
+		SEND_SIGNAL(source_mob, COMSIG_MOB_WINDOW_EXPLODED, src)
 
 	handle_debris(severity, explosion_direction)
 	qdel(src)
@@ -492,7 +492,7 @@
 
 	if(source_mob)
 		source_mob.count_niche_stat(STATISTICS_NICHE_DESTRUCTION_WINDOWS, 1)
-		SEND_SIGNAL(source_mob, COMSIG_MOB_DESTROY_WINDOW, src)
+		SEND_SIGNAL(source_mob, COMSIG_MOB_EXPLODE_W_FRAME, src)
 
 	if(health >= -3000)
 		var/location = get_turf(src)

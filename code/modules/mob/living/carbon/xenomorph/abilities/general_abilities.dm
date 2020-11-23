@@ -1,7 +1,7 @@
 //// Abilities used by multiple Xenos.
 //// README
 /*
-	When I migrated abilities to these files c. 1/2020, I *tried* to mostly 
+	When I migrated abilities to these files c. 1/2020, I *tried* to mostly
 	move the plasma cost and cooldown stuff to the new xeno_action format.
 	however certain abilities (read: acid and resin-related) still deduct
 	plasma internally. Bear that in mind. -4khan
@@ -186,7 +186,7 @@
 
 	var/slash = FALSE					// Do we slash upon reception?
 	var/slash_bonus_damage = 0			// Any bonus damage to apply on the tackle slash, if applicable
-	
+
 	var/freeze_self = TRUE				// Should we freeze ourselves after the lunge?
 	var/freeze_time = 5					// 5 for runners, 15 for lurkers
 
@@ -212,7 +212,7 @@
 	pounce_callbacks[/turf] = DYNAMIC(/mob/living/carbon/Xenomorph/proc/pounced_turf_wrapper)
 
 /datum/action/xeno_action/activable/pounce/proc/initialize_pounce_pass_flags()
-	pounce_pass_flags = list(PASS_OVER_THROW_MOB)
+	pounce_pass_flags = PASS_OVER_THROW_MOB
 
 // Any additional effects to apply to the target
 // is called if and only if we actually hit a human target
@@ -251,7 +251,7 @@
 		if(X.is_zoomed) return
 		X.zoom_in(movement_datum_type)
 
-// General use acid spray, can be subtyped to customize behavior. 
+// General use acid spray, can be subtyped to customize behavior.
 // ... or mutated at runtime by another action that retrieves and edits these values
 // ... as they are all safely mutable. (Except possibly xeno_cooldown)
 /datum/action/xeno_action/activable/spray_acid
@@ -260,7 +260,7 @@
 	ability_name = "spray acid"
 	macro_path = /datum/action/xeno_action/verb/verb_spray_acid
 	action_type = XENO_ACTION_CLICK
-	
+
 	plasma_cost = 40
 	xeno_cooldown = 80
 

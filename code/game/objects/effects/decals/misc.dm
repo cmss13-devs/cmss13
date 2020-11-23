@@ -15,7 +15,7 @@
 /obj/effect/decal/chempuff/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
 	if (PF)
-		PF.flags_pass = SETUP_LIST_FLAGS(PASS_OVER, PASS_AROUND, PASS_UNDER, PASS_THROUGH)
+		PF.flags_pass = PASS_OVER|PASS_AROUND|PASS_UNDER|PASS_THROUGH
 
 /obj/effect/decal/chempuff/proc/move_towards(atom/A, move_delay = 3, tiles_left = 1)
 	if(!step_towards(src, A))
@@ -36,7 +36,7 @@
 	reagents.reaction(T)
 	for(var/atom/A in T)
 		reagents.reaction(A)
-		
+
 		// Are we hitting someone?
 		if(ishuman(A))
 			// Check what they are hit with
@@ -78,7 +78,7 @@
 /obj/effect/decal/mecha_wreckage/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
 	if (PF)
-		PF.flags_pass = SETUP_LIST_FLAGS(PASS_HIGH_OVER_ONLY, PASS_AROUND)
+		PF.flags_pass = PASS_HIGH_OVER_ONLY|PASS_AROUND
 
 /obj/effect/decal/mecha_wreckage/ex_act(severity)
 	if(severity > EXPLOSION_THRESHOLD_MEDIUM)

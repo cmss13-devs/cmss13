@@ -102,17 +102,17 @@
 			T = get_turf(src)
 
 	var/turf/U = get_turf(user)
-	if(!istype(T) || !istype(U)) 
+	if(!istype(T) || !istype(U))
 		return FALSE
 
-	user.add_temp_pass_flags(PASS_MOB_THRU, PASS_OVER_THROW_MOB)
+	user.add_temp_pass_flags(PASS_MOB_THRU|PASS_OVER_THROW_MOB)
 	var/atom/blocker = LinkBlocked(user, U, T, list(src))
-	user.remove_temp_pass_flags(PASS_MOB_THRU, PASS_OVER_THROW_MOB)
+	user.remove_temp_pass_flags(PASS_MOB_THRU|PASS_OVER_THROW_MOB)
 
 	if(blocker)
 		to_chat(user, SPAN_WARNING("\The [blocker] prevents you from climbing [src]."))
 		return FALSE
-	
+
 	return TRUE
 
 /obj/structure/proc/do_climb(var/mob/living/user, mods)
@@ -132,7 +132,7 @@
 		TT = get_step(get_turf(src), dir)
 		if(user.loc == TT)
 			TT = get_turf(src)
-	
+
 	user.visible_message(SPAN_WARNING("[user] climbs onto \the [src]!"))
 	user.forceMove(TT)
 

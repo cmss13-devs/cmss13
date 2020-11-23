@@ -114,7 +114,7 @@
 /obj/structure/holowindow/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
 	if (PF)
-		PF.flags_can_pass_all = SETUP_LIST_FLAGS(PASS_GLASS)
+		PF.flags_can_pass_all = PASS_GLASS
 
 //BASKETBALL OBJECTS
 
@@ -176,7 +176,7 @@
 		else
 			visible_message(SPAN_DANGER("\the [I] bounces off of \the [src]'s rim!"), null, null, 3)
 		return NO_BLOCKED_MOVEMENT
-	
+
 	return ..()
 
 

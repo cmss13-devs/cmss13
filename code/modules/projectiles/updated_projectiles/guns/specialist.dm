@@ -891,11 +891,11 @@
 
 	var/pass_flags = NO_FLAGS
 	if(is_lobbing)
-		pass_flags = LIST_FLAGS_ADD(pass_flags, PASS_MOB_THRU, PASS_HIGH_OVER)
-	
+		pass_flags |= PASS_MOB_THRU|PASS_HIGH_OVER
+
 	msg_admin_attack("[key_name_admin(user)] fired a grenade ([F.name]) from \a ([name]).")
 	log_game("[key_name_admin(user)] used a grenade ([name]).")
-	
+
 	F.det_time = min(10, F.det_time)
 	F.activate(user, FALSE)
 	F.forceMove(get_turf(src))
@@ -949,7 +949,7 @@
 		if (get_dist(user, src) > 2 && user != loc) return
 		to_chat(user, SPAN_NOTICE(" It is loaded with a grenade."))
 
-/obj/item/weapon/gun/launcher/m81/attackby(obj/item/I, mob/user)	
+/obj/item/weapon/gun/launcher/m81/attackby(obj/item/I, mob/user)
 	if(istype(I,/obj/item/attachable) && check_inactive_hand(user))
 		attach_to_gun(user,I)
 		return
@@ -1016,7 +1016,7 @@
 	F.loc = user.loc
 	msg_admin_attack("[key_name_admin(user)] fired a grenade ([F.name]) from \a ([name]).")
 	log_game("[key_name_admin(user)] used a grenade ([name]).")
-	
+
 	F.throw_range = 20
 	F.det_time = min(10, F.det_time)
 	F.activate(user, FALSE)
@@ -1140,7 +1140,7 @@
 		r.current_rounds = 0
 	if(drop_override || !user) //If we want to drop it on the ground or there's no user.
 		r.forceMove(get_turf(src)) //Drop it on the ground.
-	else 
+	else
 		user.put_in_hands(r)
 		r.update_icon()
 
@@ -1253,7 +1253,7 @@
 	flags_gun_features = GUN_INTERNAL_MAG
 	attachable_allowed = list(/obj/item/attachable/scope/mini)
 	iff_enabled = TRUE
-	iff_enabled_current = TRUE	
+	iff_enabled_current = TRUE
 	var/popped_state = "m82f_e" //Icon state that represents an unloaded flare gun. The tube's just popped out.
 
 

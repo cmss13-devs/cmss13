@@ -41,7 +41,7 @@
 /obj/structure/machinery/optable/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
 	if (PF)
-		PF.flags_can_pass_all = SETUP_LIST_FLAGS(PASS_OVER, PASS_AROUND)
+		PF.flags_can_pass_all = PASS_OVER|PASS_AROUND
 
 /obj/structure/machinery/optable/ex_act(severity)
 

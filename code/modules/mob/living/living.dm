@@ -384,8 +384,8 @@
 			L.Move(oldloc)
 			Move(oldLloc)
 
-			remove_temp_pass_flags(SETUP_LIST_FLAGS(PASS_MOB_THRU))
-			L.remove_temp_pass_flags(SETUP_LIST_FLAGS(PASS_MOB_THRU))
+			remove_temp_pass_flags(PASS_MOB_THRU)
+			L.remove_temp_pass_flags(PASS_MOB_THRU)
 
 			now_pushing = FALSE
 			return

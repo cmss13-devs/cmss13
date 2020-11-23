@@ -28,7 +28,7 @@
 /obj/structure/machinery/door/window/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
 	if (PF)
-		PF.flags_can_pass_all = SETUP_LIST_FLAGS(PASS_GLASS)
+		PF.flags_can_pass_all = PASS_GLASS
 
 //Enforces perspective layering like it's contemporary; windows.
 /obj/structure/machinery/door/window/update_icon(loc, direction)

@@ -7,7 +7,7 @@
 	if (!X.check_state())
 		return
 
-	if(!A || A.layer >= FLY_LAYER || !isturf(X.loc)) 
+	if(!A || A.layer >= FLY_LAYER || !isturf(X.loc))
 		return
 
 	// Get list of target mobs
@@ -59,7 +59,7 @@
 			continue
 
 		if (H.stat)
-			continue 
+			continue
 
 		X.flick_attack_overlay(H, "slash")
 		H.apply_armoured_damage(get_xeno_damage_slash(H, damage), ARMOR_MELEE, BRUTE, null, 20)
@@ -116,11 +116,11 @@
 
 	for (var/mob/living/carbon/H in target_mobs)
 		if (H.stat)
-			continue 
-		
+			continue
+
 		if (!isXenoOrHuman(H) || X.match_hivemind(H))
 			continue
-	
+
 
 		X.flick_attack_overlay(H, "slash")
 		H.apply_armoured_damage(get_xeno_damage_slash(H, damage), ARMOR_MELEE, BRUTE)
@@ -197,7 +197,7 @@
 /datum/action/xeno_action/activable/prae_abduct/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
 
-	if(!A || A.layer >= FLY_LAYER || !isturf(X.loc)) 
+	if(!A || A.layer >= FLY_LAYER || !isturf(X.loc))
 		return
 
 	if(!action_cooldown_check() || X.action_busy)
@@ -284,7 +284,7 @@
 		if (LAZYLEN(targets) == 1)
 			new /datum/effects/xeno_slow(H, X, , ,25)
 		else if (LAZYLEN(targets) == 2)
-			
+
 			H.frozen = 1
 			H.update_canmove()
 			if (ishuman(H))
@@ -292,13 +292,13 @@
 				Hu.update_xeno_hostile_hud()
 			addtimer(CALLBACK(GLOBAL_PROC, .proc/unroot_human, H), get_xeno_stun_duration(H, 25))
 			to_chat(H, SPAN_XENOHIGHDANGER("[X] has pinned you to the ground! You cannot move!"))
-			
+
 			H.SetDazed(2)
 		else if (LAZYLEN(targets) >= 3)
 			H.KnockDown(get_xeno_stun_duration(H, 1.3))
 			to_chat(H, SPAN_XENOHIGHDANGER("You are slammed into the other victims of [X]!"))
-			
-		
+
+
 		shake_camera(H, 10, 1)
 		H.throw_atom(throw_target_turf, get_dist(throw_target_turf, H)-1, SPEED_VERY_FAST)
 
@@ -355,11 +355,11 @@
 	else
 		H.apply_armoured_damage(get_xeno_damage_slash(H, damage), ARMOR_MELEE, BRUTE, L? L.name : "chest")
 		step_away(H, X, 2)
-		
+
 
 	shake_camera(H, 2, 1)
 
-	
+
 
 	apply_cooldown()
 	..()
@@ -400,7 +400,7 @@
 	if (!istype(X) || !X.check_state() || !action_cooldown_check())
 		return
 
-	if(!A || A.layer >= FLY_LAYER || !isturf(X.loc)) 
+	if(!A || A.layer >= FLY_LAYER || !isturf(X.loc))
 		return
 
 	if (!check_and_use_plasma_owner())
@@ -422,10 +422,10 @@
 
 	for(var/turf/T in temp_turfs)
 		if (!istype(T))
-			continue 
+			continue
 
 		if (T.density)
-			continue 
+			continue
 
 		target_turfs += T
 		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/brown(T, windup)
@@ -464,8 +464,8 @@
 	for (var/turf/T in target_turfs)
 		for (var/mob/living/carbon/H in T)
 			if (H.stat == DEAD)
-				continue 
-				
+				continue
+
 			if(!isXenoOrHuman(H) || X.match_hivemind(H))
 				continue
 
@@ -507,7 +507,7 @@
 		to_chat(X, SPAN_XENOWARNING("[A] is dead, why would you want to attack it?"))
 		apply_cooldown_override(click_miss_cooldown)
 		return
-	
+
 	if (!check_and_use_plasma_owner())
 		return
 
@@ -535,22 +535,22 @@
 					SPAN_DANGER("You slice [A] with your tail[buffed?" twice":""]!"))
 
 	if (buffed)
-		// Do two attacks instead of one 
+		// Do two attacks instead of one
 		X.animation_attack_on(A)
 		X.flick_attack_overlay(A, "slash")
 		X.emote("roar") // Feedback for the player that we got the magic double impale
-		
+
 		H.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE, "chest", 10)
 		playsound(get_turf(A), "alien_claw_flesh", 30, 1)
-		
+
 		// Reroll damage
 		damage = get_xeno_damage_slash(H, rand(X.melee_damage_lower, X.melee_damage_upper))
-		sleep(4) // Short sleep so the animation and sounds will be distinct, but this creates some strange effects if the prae runs away 
+		sleep(4) // Short sleep so the animation and sounds will be distinct, but this creates some strange effects if the prae runs away
 				 // not entirely happy with this, but I think its benefits outweigh its drawbacks
 
 	X.animation_attack_on(A)
 	X.flick_attack_overlay(A, "slash")
-				
+
 	H.last_damage_mob = X
 	H.last_damage_source = initial(X.caste_name)
 	H.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE, "chest", 10)
@@ -574,7 +574,7 @@
 
 	to_chat(X, SPAN_XENOHIGHDANGER("You can now dodge through mobs!"))
 	X.speed_modifier -= speed_buff_amount
-	X.flags_pass_temp = LIST_FLAGS_ADD(X.flags_pass_temp, PASS_MOB_THRU)
+	X.flags_pass_temp |= PASS_MOB_THRU
 	X.recalculate_speed()
 
 	addtimer(CALLBACK(src, .proc/remove_effects), duration)
@@ -589,9 +589,9 @@
 	if (!istype(X))
 		return
 
-	if (LIST_FLAGS_COMPARE(X.flags_pass_temp, PASS_MOB_THRU))
+	if (X.flags_pass_temp & PASS_MOB_THRU)
 		X.speed_modifier += speed_buff_amount
-		X.flags_pass_temp = LIST_FLAGS_REMOVE(X.flags_pass_temp, PASS_MOB_THRU)
+		X.flags_pass_temp &= ~PASS_MOB_THRU
 		X.recalculate_speed()
 		to_chat(X, SPAN_XENOHIGHDANGER("You can no longer dodge through mobs!"))
 
@@ -615,7 +615,7 @@
 		to_chat(X, SPAN_XENOWARNING("[A] is dead, why would you want to attack it?"))
 		apply_cooldown_override(click_miss_cooldown)
 		return
-	
+
 	if (!check_and_use_plasma_owner())
 		return
 
@@ -633,12 +633,12 @@
 	if(ishuman(T))
 		var/mob/living/carbon/human/Hu = T
 		Hu.update_xeno_hostile_hud()
-	
+
 	var/dist = get_dist(X, T)
 
 	if (dist > range)
 		to_chat(X, SPAN_WARNING("[T] is too far away!"))
-		return 
+		return
 
 	if (dist > 1)
 		var/turf/targetTurf = get_step(X, get_dir(X, T))
@@ -673,7 +673,7 @@
 			shake_camera(Xeno, 10, 1)
 			X.visible_message(SPAN_XENODANGER("[X] smashes [Xeno] with it's tail!"), SPAN_XENODANGER("You smash [Xeno] with your tail!"))
 			to_chat(Xeno, SPAN_XENOHIGHDANGER("You feel dizzy as [X] smashes you with their tail!"))
-	
+
 	if(!xeno_smashed)
 		if (stun_duration > 0)
 			T.KnockDown(stun_duration)
@@ -712,7 +712,7 @@
 	apply_cooldown()
 
 	to_chat(X, SPAN_XENOWARNING("You lob a compressed ball of acid into the air!"))
-	
+
 	var/obj/item/explosive/grenade/xeno_acid_grenade/grenade = new /obj/item/explosive/grenade/xeno_acid_grenade
 	grenade.source_mob = X
 	grenade.loc = get_turf(X)
@@ -729,8 +729,8 @@
 
 	if (!action_cooldown_check())
 		return
-	
-	if(!A || A.layer >= FLY_LAYER || !isturf(X.loc) || !X.check_state()) 
+
+	if(!A || A.layer >= FLY_LAYER || !isturf(X.loc) || !X.check_state())
 		return
 
 	if (!isXeno(A) || !X.match_hivemind(A))
@@ -774,7 +774,7 @@
 			total_shield_amount = total_shield_amount/4
 			targetXeno.visible_message(SPAN_BOLDNOTICE("[targetXeno]'s exoskeleton shimmers for a fraction of a second."))//marines probably should know if a xeno gets healed
 		else //so both visible messages don't appear at the same time
-			targetXeno.visible_message(SPAN_BOLDNOTICE("[X] points at [targetXeno], and it shudders as its exoskeleton shimmers for a second!")) //this one is a bit less important than healing and rejuvenating 
+			targetXeno.visible_message(SPAN_BOLDNOTICE("[X] points at [targetXeno], and it shudders as its exoskeleton shimmers for a second!")) //this one is a bit less important than healing and rejuvenating
 		to_chat(X, SPAN_XENODANGER("You bolster the defenses of [targetXeno]!"))	//but i imagine it'll be useful for predators, survivors and for battle flavor
 		to_chat(targetXeno, SPAN_XENOHIGHDANGER("You feel your defenses bolstered by [X]!"))
 		targetXeno.add_xeno_shield(total_shield_amount, XENO_SHIELD_SOURCE_WARDEN_PRAE)
@@ -808,7 +808,7 @@
 		to_chat(targetXeno, SPAN_XENOHIGHDANGER("You are healed by [X]!"))
 		targetXeno.gain_health(heal_amount + bonus_heal)
 		targetXeno.visible_message(SPAN_BOLDNOTICE("[X] places its claws on [targetXeno], and its wounds are quickly sealed!"))	//marines probably should know if a xeno gets healed
-		use_plasma = TRUE	//it's already hard enough to gauge health without hp showing on the mob 
+		use_plasma = TRUE	//it's already hard enough to gauge health without hp showing on the mob
 		targetXeno.flick_heal_overlay(SECONDS_3, "#00B800")//so the visible_message and recovery overlay will warn marines and possibly predators that the xenomorph has been healed!
 
 	else if (curr_effect_type == WARDEN_HEAL_DEBUFFS)
@@ -840,5 +840,5 @@
 		use_plasma_owner()
 
 	apply_cooldown()
-	..() 
+	..()
 	return

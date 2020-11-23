@@ -50,7 +50,7 @@
 /atom/movable/proc/launch_impact(atom/hit_atom)
 	if (isnull(launch_metadata))
 		CRASH("launch_impact called without any stored metadata")
-	
+
 	var/list/collision_callbacks = launch_metadata.get_collision_callbacks(hit_atom)
 	if (islist(collision_callbacks))
 		for (var/datum/callback/CB in collision_callbacks)
@@ -90,7 +90,7 @@
 		var/oldloc = loc
 		var/launched_speed = cur_speed
 		addtimer(CALLBACK(src, .proc/rebound, oldloc, launched_speed), 0.5)
-		
+
 	if (!rebounding)
 		T.hitby(src)
 
@@ -101,7 +101,7 @@
 		LM.target = get_step(src, turn(dir, 180))
 		LM.range = 1
 		LM.speed = launched_speed
-		LM.pass_flags = SETUP_LIST_FLAGS(PASS_UNDER, PASS_OVER)
+		LM.pass_flags = PASS_UNDER|PASS_OVER
 
 		launch_towards(LM)
 
@@ -110,9 +110,9 @@
 	var/temp_pass_flags = pass_flags
 	switch (launch_type)
 		if (NORMAL_LAUNCH)
-			temp_pass_flags = LIST_FLAGS_ADD(temp_pass_flags, ismob(src) ? PASS_OVER_THROW_MOB : PASS_OVER_THROW_ITEM)
+			temp_pass_flags |= (ismob(src) ? PASS_OVER_THROW_MOB : PASS_OVER_THROW_ITEM)
 		if (HIGH_LAUNCH)
-			temp_pass_flags = LIST_FLAGS_ADD(temp_pass_flags, PASS_HIGH_OVER)
+			temp_pass_flags |= PASS_HIGH_OVER
 
 	var/datum/launch_metadata/LM = new()
 	LM.pass_flags = temp_pass_flags
@@ -130,7 +130,7 @@
 		CRASH("invalid launch_metadata passed to launch_towards")
 	if (!LM.target || !src)
 		return
-	
+
 	if(SEND_SIGNAL(src, COMSIG_MOVABLE_PRE_THROW, LM.thrower) & COMPONENT_CANCEL_THROW)
 		return
 

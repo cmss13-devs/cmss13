@@ -1192,12 +1192,12 @@ Defined in conflicts.dm of the #defines folder.
 	slot = "under"
 	fire_sound = 'sound/weapons/gun_m92_attachable.ogg'
 	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION|ATTACH_RELOADABLE|ATTACH_WEAPON
-	var/list/grenade_pass_flags
+	var/grenade_pass_flags
 	var/list/loaded_grenades //list of grenade types loaded in the UGL
 
 /obj/item/attachable/attached_gun/grenade/Initialize()
 	. = ..()
-	grenade_pass_flags = list(PASS_HIGH_OVER, PASS_MOB_THRU)
+	grenade_pass_flags = PASS_HIGH_OVER|PASS_MOB_THRU
 
 /obj/item/attachable/attached_gun/grenade/New()
 	..()
@@ -1256,7 +1256,7 @@ Defined in conflicts.dm of the #defines folder.
 	log_game("[key_name_admin(user)] used an underslung grenade launcher.")
 
 	var/pass_flags = NO_FLAGS
-	pass_flags = LIST_FLAGS_ADD(pass_flags, grenade_pass_flags)
+	pass_flags |= grenade_pass_flags
 	G.det_time = min(15, G.det_time)
 	G.throw_range = max_range
 	G.activate(user, FALSE)
@@ -1277,7 +1277,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/attached_gun/grenade/mk1/Initialize()
 	. = ..()
-	grenade_pass_flags = list(PASS_HIGH_OVER)
+	grenade_pass_flags = PASS_HIGH_OVER
 
 //"ammo/flamethrower" is a bullet, but the actual process is handled through fire_attachment, linked through Fire().
 /obj/item/attachable/attached_gun/flamer

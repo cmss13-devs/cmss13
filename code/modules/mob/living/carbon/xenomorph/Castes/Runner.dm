@@ -36,7 +36,7 @@
 	old_x = -16
 	pull_speed = -0.5
 	viewsize = 9
-	
+
 	actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/regurgitate,
@@ -54,4 +54,4 @@
 /mob/living/carbon/Xenomorph/Runner/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
 	if (PF)
-		PF.flags_pass = SETUP_LIST_FLAGS(PASS_FLAGS_CRAWLER)
+		PF.flags_pass = PASS_FLAGS_CRAWLER

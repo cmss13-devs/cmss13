@@ -226,7 +226,7 @@ var/list/ob_type_fuel_requirements
 	sleep(OB_TRAVEL_TIMING/3)
 	target.ranged_message(SPAN_HIGHDANGER("OH GOD THE SKY WILL EXPLODE!!!"), SPAN_HIGHDANGER("YOU SHOULDN'T BE HERE!"), 15)
 	sleep(OB_TRAVEL_TIMING/3)
-	if(orbital_cannon_cancellation["[cancellation_token]"]) // the cancelling notification is in the topic		
+	if(orbital_cannon_cancellation["[cancellation_token]"]) // the cancelling notification is in the topic
 		target.ceiling_debris_check(5)
 		tray.warhead.warhead_impact(target, inaccurate_fuel)
 		orbital_cannon_cancellation["[cancellation_token]"] = null
@@ -404,7 +404,7 @@ var/list/ob_type_fuel_requirements
 		sleep(double_explosion_delay)
 		cell_explosion(target, standard_power, standard_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, initial(name), source_mob)
 		return
-	
+
 	for(var/turf/T in range(2, target))
 		if(!T.density)
 			cell_explosion(target, standard_power, standard_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, initial(name), source_mob)
@@ -487,7 +487,7 @@ var/list/ob_type_fuel_requirements
 /obj/structure/machinery/computer/orbital_cannon_console/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
 	if (PF)
-		PF.flags_can_pass_all = SETUP_LIST_FLAGS(PASS_ALL)
+		PF.flags_can_pass_all = PASS_ALL
 
 /obj/structure/machinery/computer/orbital_cannon_console/ex_act()
 	return

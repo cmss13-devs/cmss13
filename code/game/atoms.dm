@@ -56,12 +56,12 @@
 	// what icon we use
 	var/icon_source
 
-/atom/New(loc, ...)	
+/atom/New(loc, ...)
 	if(icon_source)
 		if(!icon_source_files[icon_source])
 			icon_source_files[icon_source] = file(icon_source_master[icon_source])
 		icon = icon_source_files[icon_source]
-	
+
 	var/do_initialize = SSatoms.initialized
 	if(do_initialize != INITIALIZATION_INSSATOMS)
 		args[1] = do_initialize == INITIALIZATION_INNEW_MAPLOAD
@@ -76,7 +76,7 @@
 		pass_flags_cache[type] = pass_flags
 	else
 		initialize_pass_flags()
-	
+
 	Decorate()
 
 /*
@@ -399,8 +399,8 @@ its easier to just keep the beam vertical.
 	return FALSE
 
 /*
-Called after New. 
-Must refer back to this parent or manually set initialized to TRUE. 
+Called after New.
+Must refer back to this parent or manually set initialized to TRUE.
 Parameters are passed from New.
 */
 /atom/proc/Initialize(mapload, ...)
@@ -448,34 +448,33 @@ Parameters are passed from New.
 		qdel(W)
 
 // Movement
-/atom/proc/add_temp_pass_flags(...)
+/atom/proc/add_temp_pass_flags(flags_to_add)
 	if (isnull(temp_flag_counter))
 		temp_flag_counter = list()
 
-	var/list/flags = SETUP_LIST_FLAGS(arglist(args))
-	for (var/flag in flags)
+	for (var/flag in GLOB.bitflags)
+		if(!(flags_to_add & flag))
+			continue
 		var/flag_str = "[flag]"
 		if (temp_flag_counter[flag_str])
 			temp_flag_counter[flag_str] += 1
 		else
 			temp_flag_counter[flag_str] = 1
-			if (isnull(flags_pass_temp))
-				flags_pass_temp = list()
-			flags_pass_temp = LIST_FLAGS_ADD(flags_pass_temp, flag)
+			flags_pass_temp |= flag
 
-/atom/proc/remove_temp_pass_flags(...)
+/atom/proc/remove_temp_pass_flags(flags_to_remove)
 	if (isnull(temp_flag_counter))
 		return
 
-	var/list/flags = SETUP_LIST_FLAGS(arglist(args))
-	
-	for (var/flag in flags)
+	for (var/flag in GLOB.bitflags)
+		if(!(flags_to_remove & flag))
+			continue
 		var/flag_str = "[flag]"
 		if (temp_flag_counter[flag_str])
 			temp_flag_counter[flag_str] -= 1
 			if (temp_flag_counter[flag_str] == 0)
 				temp_flag_counter -= flag_str
-				flags_pass_temp = LIST_FLAGS_REMOVE(flags_pass_temp, flag)
+				flags_pass_temp &= ~flag
 
 // This proc is for initializing pass flags (allows for inheriting pass flags and list-based pass flags)
 /atom/proc/initialize_pass_flags(var/datum/pass_flags_container/PF)

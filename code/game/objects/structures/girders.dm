@@ -28,7 +28,7 @@
 /obj/structure/girder/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
 	if (PF)
-		PF.flags_can_pass_all = SETUP_LIST_FLAGS(PASS_THROUGH, PASS_HIGH_OVER_ONLY)
+		PF.flags_can_pass_all = PASS_THROUGH|PASS_HIGH_OVER_ONLY
 
 /obj/structure/girder/examine(mob/user)
 	..()
@@ -66,7 +66,7 @@
 
 /obj/structure/girder/update_icon()
 	. = ..()
-	
+
 	if(!anchored)
 		icon_state = "displaced"
 	else
@@ -90,7 +90,7 @@
 			return
 	else if(iswelder(W))
 		if(do_after(user,30, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-			if(QDELETED(src)) 
+			if(QDELETED(src))
 				return
 			to_chat(user, SPAN_NOTICE("You weld the girder together!"))
 			repair()
@@ -266,7 +266,7 @@
 			T.ChangeTurf(/turf/closed/wall/r_wall)
 			qdel(src)
 		return TRUE
-	
+
 	return FALSE
 
 /obj/structure/girder/bullet_act(var/obj/item/projectile/Proj)

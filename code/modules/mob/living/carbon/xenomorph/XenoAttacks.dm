@@ -106,6 +106,10 @@
 				if(M.behavior_delegate && M.behavior_delegate.handle_slash(src))
 					return
 				
+				if(stat == DEAD)
+					to_chat(M, SPAN_WARNING("[src] is dead, why would you want to touch it?"))
+					return FALSE
+
 				M.animation_attack_on(src)
 				if(hivenumber == M.hivenumber && !banished)
 					M.visible_message(SPAN_WARNING("\The [M] nibbles \the [src]."), \

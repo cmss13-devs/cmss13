@@ -28,7 +28,7 @@
 	var/throwpass = 0
 
 	//Effects
-	var/list/effects_list = list()
+	var/list/effects_list
 
 	// Base transform matrix
 	var/matrix/base_transform = null

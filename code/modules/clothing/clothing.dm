@@ -10,7 +10,7 @@
 	var/armor_rad = 0
 	var/armor_internaldamage = 0
 	var/movement_compensation = 0
-	var/list/accessories = list()
+	var/list/accessories
 	var/list/valid_accessory_slots = list()
 	var/list/restricted_accessory_slots = list()
 	var/drag_unequip = FALSE
@@ -24,12 +24,12 @@
 			ties += "\a [accessory.get_examine_line()]"
 	if(ties.len)
 		.+= " with [english_list(ties)] attached"
-	if(accessories && accessories.len > ties.len)
+	if(LAZYLEN(accessories) > ties.len)
 		.+= ". <a href='?src=\ref[src];list_acc=1'>\[See accessories\]</a>"
 
 /obj/item/clothing/Topic(href, href_list)
 	if(href_list["list_acc"])
-		if(accessories && accessories.len)
+		if(LAZYLEN(accessories))
 			var/list/ties = list()
 			for(var/accessory in accessories)
 				ties += "[htmlicon(accessory)] \a [accessory]"
@@ -88,7 +88,7 @@
 		bloodsies.appearance_flags |= NO_CLIENT_COLOR
 		ret.overlays += bloodsies
 
-	if(length(accessories))
+	if(LAZYLEN(accessories))
 		for(var/obj/item/clothing/accessory/A in accessories)
 			ret.overlays |= A.get_mob_overlay(user_mob, slot)
 	return ret
@@ -136,12 +136,12 @@
 
 /obj/item/clothing/ears/earmuffs/New()
 	. = ..()
-	
+
 	LAZYADD(objects_of_interest, src)
 
 /obj/item/clothing/ears/earmuffs/Destroy()
 	. = ..()
-	
+
 	LAZYREMOVE(objects_of_interest, src)
 
 
@@ -269,7 +269,7 @@
 	var/mob/living/carbon/C = usr
 	if(C.is_mob_incapacitated())
 		return
-	
+
 	if(C.internal)
 		C.internal = null
 		to_chat(C, SPAN_NOTICE("No longer running on internals."))
@@ -342,7 +342,7 @@
 	var/obj/item/stored_item
 	var/list/items_allowed
 	var/shoes_blood_amt = 0
-	
+
 /obj/item/clothing/shoes/update_clothing_icon()
 	if (ismob(src.loc))
 		var/mob/M = src.loc
@@ -382,4 +382,4 @@
 /obj/item/clothing/equipped(mob/user, slot)
 	if(slot != WEAR_L_HAND && slot != WEAR_R_HAND && equip_sounds.len)
 		playsound_client(user.client, pick(equip_sounds), null, ITEM_EQUIP_VOLUME)
-	..()	
+	..()

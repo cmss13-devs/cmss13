@@ -4,7 +4,7 @@
 
 	How does it work?
 	Atom has a var/list/effects_list which is used to hold all the active effects on that atom.
-	A subystem called "Effects" is used to process() every effect every second. 
+	A subystem called "Effects" is used to process() every effect every second.
 
 	How to create one?
 	Make a new /datum/effects/name in the folder effects
@@ -41,11 +41,11 @@
 	if(!validate_atom(A))
 		qdel(src)
 		return
-	
+
 	active_effects += src
 
 	affected_atom = A
-	affected_atom.effects_list += src
+	LAZYADD(affected_atom.effects_list, src)
 	def_zone = zone
 	if(from && istype(from))
 		source_mob = from
@@ -62,7 +62,7 @@
 	if(!affected_atom || (duration <= 0 && !(flags & INF_DURATION)))
 		qdel(src)
 		return
-	
+
 	duration--
 
 	if(iscarbon(affected_atom))
@@ -79,7 +79,7 @@
 	if((flags & DEL_ON_LIVING) && affected_mob.stat != DEAD)
 		qdel(src)
 		return FALSE
-	
+
 	if((flags & DEL_ON_UNDEFIBBABLE) && ishuman(affected_atom))
 		var/mob/living/carbon/human/H = affected_atom
 		if(H.undefibbable && H.stat == DEAD)
@@ -106,10 +106,10 @@
 
 /datum/effects/Destroy()
 	if(affected_atom)
-		affected_atom.effects_list -= src
+		LAZYREMOVE(affected_atom.effects_list, src)
 		affected_atom = null
 	active_effects -= src
 	. = ..()
-	
+
 
 

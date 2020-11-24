@@ -41,5 +41,5 @@
 
 /datum/effects/weather/Destroy()
 	if(affected_atom)
-		affected_atom.effects_list -= src
+		LAZYREMOVE(affected_atom.effects_list, src)
 	return ..()

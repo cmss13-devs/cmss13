@@ -8,7 +8,7 @@
 	flags_atom = FPRINT|CONDUCT|NOBLOODY
 	var/number = 0
 	var/anyai = 1
-	var/mob/living/silicon/ai/ai = list()
+	var/list/mob/living/silicon/ai/ai
 	var/last_tick //used to delay the powercheck
 
 	appearance_flags = TILE_BOUND
@@ -19,6 +19,7 @@
 
 /obj/item/device/radio/intercom/Destroy()
 	processing_objects -= src
+	ai = null
 	. = ..()
 
 /obj/item/device/radio/intercom/attack_remote(mob/user as mob)

@@ -66,7 +66,7 @@
 					for(var/datum/disease/D in viruses)
 						if(prob(virusProb))
 							var/datum/disease/viruus = D.Copy(1)
-							gib.viruses += viruus
+							LAZYADD(gib.viruses, viruus)
 							viruus.holder = gib
 
 				var/list/directions = gibdirections[i]

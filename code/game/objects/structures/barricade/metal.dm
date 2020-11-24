@@ -30,7 +30,7 @@
 	switch(upgrade)
 		if(BARRICADE_UPGRADE_BURN)
 			to_chat(user, SPAN_NOTICE("The cade is protected by a biohazardous upgrade."))
-		if(BARRICADE_UPGRADE_BRUTE) 
+		if(BARRICADE_UPGRADE_BRUTE)
 			to_chat(user, SPAN_NOTICE("The cade is protected by a reinforced upgrade."))
 		if(BARRICADE_UPGRADE_EXPLOSIVE)
 			to_chat(user, SPAN_NOTICE("The cade is protected by an explosive upgrade."))
@@ -79,7 +79,7 @@
 				if(user.action_busy)
 					return
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
-				if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src)) 
+				if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
 					return
 				user.visible_message(SPAN_NOTICE("[user] removes [src]'s protection panel."),
 				SPAN_NOTICE("You remove [src]'s protection panels, exposing the anchor bolts."))
@@ -111,7 +111,7 @@
 						brute_multiplier = 1.5
 						upgraded = BARRICADE_UPGRADE_BURN
 						to_chat(user, SPAN_NOTICE("You applied a biohazardous upgrade."))
-					if(BARRICADE_UPGRADE_BRUTE) 
+					if(BARRICADE_UPGRADE_BRUTE)
 						brute_multiplier = 0.5
 						burn_multiplier = 1.5
 						upgraded = BARRICADE_UPGRADE_BRUTE
@@ -222,5 +222,5 @@
 
 /obj/structure/barricade/metal/wired/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	flags_can_pass_front_temp = LIST_FLAGS_REMOVE(flags_can_pass_front_temp, PASS_OVER_THROW_MOB)
-	flags_can_pass_behind_temp = LIST_FLAGS_REMOVE(flags_can_pass_behind_temp, PASS_OVER_THROW_MOB)
+	flags_can_pass_front_temp &= ~PASS_OVER_THROW_MOB
+	flags_can_pass_behind_temp &= ~PASS_OVER_THROW_MOB

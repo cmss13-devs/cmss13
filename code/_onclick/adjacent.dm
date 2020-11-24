@@ -79,14 +79,14 @@ Quick adjacency (to turf):
 	This is not used in stock /tg/station currently.
 */
 /atom/movable/Adjacent(var/atom/neighbor)
-	if(neighbor == loc) 
+	if(neighbor == loc)
 		return TRUE
-	if(!isturf(loc)) 
+	if(!isturf(loc))
 		return FALSE
 	for(var/turf/T in locs)
-		if(isnull(T)) 
+		if(isnull(T))
 			continue
-		if(T.Adjacent(neighbor,src)) 
+		if(T.Adjacent(neighbor,src))
 			return TRUE
 	return FALSE
 
@@ -122,7 +122,7 @@ Quick adjacency (to turf):
 */
 /turf/proc/ClickCross(var/target_dir, var/border_only, var/target_atom = null)
 	for(var/obj/O in src)
-		if(!O.density || O == target_atom || O.throwpass) 
+		if(!O.density || O == target_atom || O.throwpass)
 			continue // throwpass is used for anything you can click through
 
 		if(O.flags_atom & ON_BORDER) // windows have throwpass but are on border, check them first
@@ -145,7 +145,7 @@ Quick adjacency (to turf):
  *	for performance impact.
  *	Assumes dist <= 1
  */
-/atom/proc/handle_barriers(var/atom/A, var/list/atom/ignore = list(), var/pass_flags)
+/atom/proc/handle_barriers(var/atom/A, var/list/atom/ignore = list(), pass_flags)
 	ignore |= src // Make sure that you ignore your target
 	A.add_temp_pass_flags(pass_flags)
 
@@ -280,10 +280,10 @@ Quick adjacency (to turf):
 /atom/proc/clear_path(var/atom/A, var/list/atom/ignore = list())
 	if(get_dist(src, A) <= 1)
 		return handle_barriers(A, ignore)
-	
+
 	var/turf/curT = get_turf(A)
 	var/is_turf = isturf(A)
-	for(var/turf/T in getline2(A, src))		
+	for(var/turf/T in getline2(A, src))
 		if(curT == T)
 			continue
 		if(T.density)

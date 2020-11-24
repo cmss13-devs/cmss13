@@ -31,7 +31,7 @@
 	source = new_source
 	source_mob = new_source_mob
 	time_to_live += rand(-1,1)
-	active_smoke_effects += src	
+	active_smoke_effects += src
 
 /obj/effect/particle_effect/smoke/Destroy()
 	. = ..()
@@ -42,8 +42,8 @@
 /obj/effect/particle_effect/smoke/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
 	if (PF)
-		PF.flags_pass = SETUP_LIST_FLAGS(PASS_FLAGS_SMOKE)
-	
+		PF.flags_pass = PASS_FLAGS_SMOKE
+
 /obj/effect/particle_effect/smoke/process()
 	time_to_live--
 	if(time_to_live <= 0)
@@ -262,7 +262,7 @@
 		set_hive_data(src, hivenumber)
 
 	. = ..()
-	
+
 
 /obj/effect/particle_effect/smoke/xeno_burn/apply_smoke_effect(turf/T)
 	..()
@@ -372,16 +372,16 @@
 
 /obj/effect/particle_effect/smoke/xeno_weak_fire
 	time_to_live = 16
-	color = "#b33e1e" 
+	color = "#b33e1e"
 	spread_speed = 7
-	amount = 1 
+	amount = 1
 	smokeranking = SMOKE_RANK_BOILER
 
 //No effect when merely entering the smoke turf, for balance reasons
 /obj/effect/particle_effect/smoke/xeno_weak_fire/Crossed(var/mob/living/carbon/M as mob)
 	if(!istype(M))
 		return
-		
+
 	M.ExtinguishMob()
 	. = ..()
 
@@ -435,7 +435,7 @@
 		if(check_airblock(U,T)) //smoke can't spread that way
 			continue
 		var/obj/effect/particle_effect/smoke/foundsmoke = locate() in T // Check for existing smoke and act accordingly
-		if(foundsmoke) 
+		if(foundsmoke)
 			if(foundsmoke.smokeranking <= src.smokeranking)
 				qdel(foundsmoke)
 			else
@@ -520,7 +520,7 @@
 	if(holder)
 		location = get_turf(holder)
 	var/obj/effect/particle_effect/smoke/S = new smoke_type(location, amount+1, source, source_mob)
-	
+
 	for (var/atom/A in location)
 		if (istype(A, /mob/living))
 			var/mob/living/M = A

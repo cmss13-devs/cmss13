@@ -53,12 +53,12 @@
 	var/stun_duration = 1
 	var/damage_amount = 25
 	var/fire_level_to_extinguish = 13
-	
+
 	var/time_to_live = 10
 
 /obj/effect/xenomorph/spray/Initialize(mapload, new_source_name, mob/new_source_mob) //Self-deletes
 	. = ..()
-	
+
 	// Stats tracking
 	if(new_source_mob)
 		source_mob = new_source_mob
@@ -72,7 +72,7 @@
 
 	// check what's in our turf
 	for(var/atom/atm in loc)
-		
+
 		// Other acid sprays? delete ourself
 		if (atm != src && istype(atm, /obj/effect/xenomorph/spray))
 			return INITIALIZE_HINT_QDEL
@@ -91,7 +91,7 @@
 			var/obj/structure/barricade/B = atm
 			B.acid_spray_act()
 			continue
-		
+
 		if(istype(atm, /obj/effect/alien/weeds/))
 			var/obj/effect/alien/weeds/W = atm
 
@@ -112,7 +112,7 @@
 				M.apply_armoured_damage(damage_amount, ARMOR_BIO, BURN) // Deal extra damage when first placing ourselves down.
 
 			continue
-			
+
 	processing_objects.Add(src)
 	addtimer(CALLBACK(src, .proc/die), time_to_live)
 
@@ -124,7 +124,7 @@
 /obj/effect/xenomorph/spray/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
 	if (PF)
-		PF.flags_pass = SETUP_LIST_FLAGS(PASS_FLAGS_ACID_SPRAY)
+		PF.flags_pass = PASS_FLAGS_ACID_SPRAY
 
 /obj/effect/xenomorph/spray/proc/die()
 	processing_objects.Remove(src)
@@ -322,7 +322,7 @@
 		sleep(50)
 		.()
 		return
-	
+
 	if(++ticks >= strength_t)
 		visible_message(SPAN_XENODANGER("[acid_t] collapses under its own weight into a puddle of goop and undigested debris!"))
 		playsound(src, "acid_hit", 25)
@@ -423,7 +423,7 @@
 	var/obj/effect/particle_effect/smoke/S = new smoke_type(loc, 1, source_xeno, source_xeno)
 	S.time_to_live = smoke_duration
 	S.spread_speed = smoke_duration + 5 // No spreading
-	
+
 	qdel(src)
 
 /obj/effect/xenomorph/xeno_telegraph
@@ -458,7 +458,7 @@
 
 /obj/effect/xenomorph/acid_damage_delay/New(loc, damage = 20, delay = 10, empowered = FALSE, message = null, mob/living/carbon/Xenomorph/linked_xeno = null)
 	..(loc)
-	
+
 	addtimer(CALLBACK(src, .proc/die), delay)
 	src.damage = damage
 	src.message = message
@@ -500,7 +500,7 @@
 
 		if (message)
 			to_chat(H, SPAN_XENODANGER(message))
-		
+
 		. = TRUE
 
 /obj/effect/xenomorph/acid_damage_delay/proc/die()
@@ -520,11 +520,11 @@
 
 		if(H.allied_to_hivenumber(hivenumber))
 			continue
-		
+
 		total_hits++
 
 	var/datum/action/xeno_action/activable/boiler_trap/trap = get_xeno_action_by_type(linked_xeno, /datum/action/xeno_action/activable/boiler_trap)
-		
+
 	trap.reduce_cooldown(total_hits*4 SECONDS)
 
 	return ..()

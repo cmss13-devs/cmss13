@@ -43,7 +43,7 @@
 /obj/structure/window/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
 	if (PF)
-		PF.flags_can_pass_all = SETUP_LIST_FLAGS(PASS_HIGH_OVER_ONLY, PASS_GLASS)
+		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_GLASS
 
 /obj/structure/window/proc/set_constructed_window(start_dir)
 	state = 0
@@ -139,7 +139,7 @@
 	if(source_mob)
 		source_mob.count_niche_stat(STATISTICS_NICHE_DESTRUCTION_WINDOWS, 1)
 		SEND_SIGNAL(source_mob, COMSIG_MOB_DESTROY_WINDOW, src)
-	
+
 	handle_debris(severity, explosion_direction)
 	qdel(src)
 	return
@@ -232,12 +232,12 @@
 					if(!not_damageable) //Impossible to destroy
 						health -= 25
 				if(GRAB_CHOKE)
-					M.visible_message(SPAN_DANGER("[user] crushes [M] against \the [src]!"))	
+					M.visible_message(SPAN_DANGER("[user] crushes [M] against \the [src]!"))
 					M.KnockDown(5)
 					M.apply_damage(20)
 					if(!not_damageable) //Impossible to destroy
 						health -= 50
-					
+
 			healthcheck(1, 1, 1, M) //The person thrown into the window literally shattered it
 		return
 
@@ -472,7 +472,7 @@
 /obj/structure/window/framed/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
 	if (PF)
-		PF.flags_can_pass_all = SETUP_LIST_FLAGS(PASS_GLASS)
+		PF.flags_can_pass_all = PASS_GLASS
 
 /obj/structure/window/framed/update_nearby_icons()
 	relativewall_neighbours()
@@ -905,5 +905,5 @@
 			P.dir = 2
 		else
 			P.dir = 4
-	
+
 	INVOKE_ASYNC(P, /obj/structure/machinery/door.proc/close)

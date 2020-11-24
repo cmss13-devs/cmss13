@@ -79,7 +79,7 @@
 /mob/living/silicon/robot/drone/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
 	if (PF)
-		PF.flags_pass = SETUP_LIST_FLAGS(PASS_MOB_THRU, PASS_FLAGS_CRAWLER)
+		PF.flags_pass = PASS_MOB_THRU|PASS_FLAGS_CRAWLER
 
 /mob/living/silicon/robot/drone/init()
 	connected_ai = null

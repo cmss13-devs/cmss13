@@ -23,8 +23,8 @@
 /mob/living/carbon/human/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
 	if (PF)
-		PF.flags_pass = SETUP_LIST_FLAGS(PASS_MOB_IS_HUMAN)
-		PF.flags_can_pass_all = SETUP_LIST_FLAGS(PASS_MOB_THRU_HUMAN, PASS_AROUND, PASS_HIGH_OVER_ONLY)
+		PF.flags_pass = PASS_MOB_IS_HUMAN
+		PF.flags_can_pass_all = PASS_MOB_THRU_HUMAN|PASS_AROUND|PASS_HIGH_OVER_ONLY
 
 /mob/living/carbon/human/prepare_huds()
 	..()

@@ -184,7 +184,7 @@
 /mob/living/simple_animal/chick/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
 	if (PF)
-		PF.flags_pass = SETUP_LIST_FLAGS(PASS_UNDER)
+		PF.flags_pass = PASS_UNDER
 
 /mob/living/simple_animal/chick/Life()
 	. =..()
@@ -236,7 +236,7 @@ var/global/chicken_count = 0
 /mob/living/simple_animal/chicken/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
 	if (PF)
-		PF.flags_pass = SETUP_LIST_FLAGS(PASS_UNDER)
+		PF.flags_pass = PASS_UNDER
 
 /mob/living/simple_animal/chicken/death()
 	..()

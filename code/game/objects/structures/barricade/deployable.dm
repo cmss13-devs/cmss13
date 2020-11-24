@@ -116,7 +116,7 @@
 /obj/structure/barricade/metal/wired/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
 	if (PF)
-		PF.flags_can_pass_front = LIST_FLAGS_REMOVE(PF.flags_can_pass_front, PASS_OVER_THROW_MOB)
+		PF.flags_can_pass_front &= ~PASS_OVER_THROW_MOB
 
 /obj/item/folding_barricade/attack_self(mob/user as mob)
 	for(var/obj/structure/barricade/B in loc)

@@ -27,7 +27,7 @@
 /obj/structure/machinery/deployable/barrier/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
 	if (PF)
-		PF.flags_can_pass_all = SETUP_LIST_FLAGS(PASS_HIGH_OVER_ONLY, PASS_AROUND, PASS_UNDER)
+		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND|PASS_UNDER
 
 /obj/structure/machinery/deployable/barrier/attackby(obj/item/W as obj, mob/user as mob)
 	if (istype(W, /obj/item/card/id/))
@@ -65,7 +65,7 @@
 	if (src.health <= 0)
 		src.explode()
 	return
-	
+
 /obj/structure/machinery/deployable/barrier/emp_act(severity)
 	if(inoperable())
 		return

@@ -31,7 +31,7 @@
 /obj/structure/machinery/door/poddoor/railing/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
 	if (PF)
-		PF.flags_can_pass_all = SETUP_LIST_FLAGS(LIST_FLAGS_REMOVE(PASS_OVER, PASS_OVER_FIRE), PASS_CRUSHER_CHARGE)
+		PF.flags_can_pass_all = (PASS_OVER^PASS_OVER_FIRE)|PASS_CRUSHER_CHARGE
 
 /obj/structure/machinery/door/poddoor/railing/open()
 	if (operating == 1) //doors can still open when emag-disabled

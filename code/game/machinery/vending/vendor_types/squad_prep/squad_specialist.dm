@@ -2,15 +2,7 @@
 //the global list of specialist sets that haven't been claimed yet.
 var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolitionist Set", "Heavy Grenadier Set", "Pyro Set")
 
-
-/obj/structure/machinery/cm_vending/gear/spec
-	name = "\improper ColMarTech Squad Specialist Gear Rack"
-	desc = "An automated gear rack for Squad Specialists."
-	icon_state = "spec_gear"
-	vendor_role = list(JOB_SQUAD_SPECIALIST)
-	req_access = list(ACCESS_MARINE_SPECPREP)
-
-	listed_products = list(
+GLOBAL_LIST_INIT(cm_vending_gear_spec, list(
 		list("SPECIALIST SETS (CHOOSE 1)", 0, null, null, null),
 		list("Demolitionist Set", 0, /obj/item/storage/box/spec/demolitionist, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_REGULAR),
 		list("Heavy Grenadier Set", 0, /obj/item/storage/box/spec/heavy_grenadier, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_REGULAR),
@@ -49,17 +41,22 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 		list("Fuel Tank Strap Pouch", 15, /obj/item/storage/pouch/flamertank, null, VENDOR_ITEM_REGULAR),
 		list("Large General Pouch", 15, /obj/item/storage/pouch/general/large, null, VENDOR_ITEM_REGULAR),
 		list("Motion Detector", 15, /obj/item/device/motiondetector, null, VENDOR_ITEM_REGULAR)
-	)
+	))
+
+/obj/structure/machinery/cm_vending/gear/spec
+	name = "\improper ColMarTech Squad Specialist Gear Rack"
+	desc = "An automated gear rack for Squad Specialists."
+	icon_state = "spec_gear"
+	vendor_role = list(JOB_SQUAD_SPECIALIST)
+	req_access = list(ACCESS_MARINE_SPECPREP)
+
+/obj/structure/machinery/cm_vending/gear/spec/Initialize(mapload, ...)
+	. = ..()
+	listed_products = GLOB.cm_vending_gear_spec
 
 //------------CLOTHING VENDOR---------------
 
-/obj/structure/machinery/cm_vending/clothing/specialist
-	name = "\improper ColMarTech Squad Specialist Equipment Rack"
-	desc = "An automated rack hooked up to a colossal storage of Squad Specialist standard-issue equipment."
-	req_access = list(ACCESS_MARINE_SPECPREP)
-	vendor_role = list(JOB_SQUAD_SPECIALIST)
-
-	listed_products = list(
+GLOBAL_LIST_INIT(cm_vending_clothing_specialist, list(
 		list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
 		list("Boots", 0, /obj/item/clothing/shoes/marine/knife, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
 		list("Uniform", 0, /obj/item/clothing/under/marine, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_MANDATORY),
@@ -97,7 +94,17 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 		list("MASK (CHOOSE 1)", 0, null, null, null),
 		list("Gas Mask", 0, /obj/item/clothing/mask/gas, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
 		list("Heat Absorbent Coif", 0, /obj/item/clothing/mask/rebreather/scarf, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
-	)
+	))
+
+/obj/structure/machinery/cm_vending/clothing/specialist
+	name = "\improper ColMarTech Squad Specialist Equipment Rack"
+	desc = "An automated rack hooked up to a colossal storage of Squad Specialist standard-issue equipment."
+	req_access = list(ACCESS_MARINE_SPECPREP)
+	vendor_role = list(JOB_SQUAD_SPECIALIST)
+
+/obj/structure/machinery/cm_vending/clothing/specialist/Initialize(mapload, ...)
+	. = ..()
+	listed_products = GLOB.cm_vending_clothing_specialist
 
 /obj/structure/machinery/cm_vending/clothing/specialist/alpha
 	squad_tag = SQUAD_NAME_1

@@ -1,13 +1,6 @@
 //------------GEAR VENDOR---------------
 
-/obj/structure/machinery/cm_vending/gear/smartgun
-	name = "\improper ColMarTech Squad Smartgunner Gear Rack"
-	desc = "An automated gear rack for Squad Smartgunners."
-	icon_state = "sg_gear"
-	vendor_role = list(JOB_SQUAD_SMARTGUN)
-	req_access = list(ACCESS_MARINE_SMARTPREP)
-
-	listed_products = list(
+GLOBAL_LIST_INIT(cm_vending_gear_smartgun, list(
 		list("SMARTGUN SET (MANDATORY)", 0, null, null, null),
 		list("Essential Smartgunner Set", 0, /obj/item/storage/box/m56_system, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
 
@@ -23,17 +16,22 @@
 		list("Quickfire Adapter", 0, /obj/item/attachable/quickfire, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_REGULAR),
 		list("Red-Dot Sight", 0, /obj/item/attachable/reddot, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_REGULAR),
 		list("Reflex Sight", 0, /obj/item/attachable/reflex, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_REGULAR),
-	)
+	))
+
+/obj/structure/machinery/cm_vending/gear/smartgun
+	name = "\improper ColMarTech Squad Smartgunner Gear Rack"
+	desc = "An automated gear rack for Squad Smartgunners."
+	icon_state = "sg_gear"
+	vendor_role = list(JOB_SQUAD_SMARTGUN)
+	req_access = list(ACCESS_MARINE_SMARTPREP)
+
+/obj/structure/machinery/cm_vending/gear/smartgun/Initialize(mapload, ...)
+	. = ..()
+	listed_products = GLOB.cm_vending_gear_smartgun
 
 //------------CLOTHING VENDOR---------------
 
-/obj/structure/machinery/cm_vending/clothing/smartgun
-	name = "\improper ColMarTech Squad Smartgun Equipment Rack"
-	desc = "An automated rack hooked up to a colossal storage of Squad Smartgun standard-issue equipment."
-	req_access = list(ACCESS_MARINE_SMARTPREP)
-	vendor_role = list(JOB_SQUAD_SMARTGUN)
-
-	listed_products = list(
+GLOBAL_LIST_INIT(cm_vending_clothing_smartgun, list(
 		list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
 		list("Boots", 0, /obj/item/clothing/shoes/marine/knife, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
 		list("Uniform", 0, /obj/item/clothing/under/marine, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_MANDATORY),
@@ -62,7 +60,17 @@
 		list("MASK (CHOOSE 1)", 0, null, null, null),
 		list("Gas Mask", 0, /obj/item/clothing/mask/gas, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
 		list("Heat Absorbent Coif", 0, /obj/item/clothing/mask/rebreather/scarf, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
-)
+))
+
+/obj/structure/machinery/cm_vending/clothing/smartgun
+	name = "\improper ColMarTech Squad Smartgun Equipment Rack"
+	desc = "An automated rack hooked up to a colossal storage of Squad Smartgun standard-issue equipment."
+	req_access = list(ACCESS_MARINE_SMARTPREP)
+	vendor_role = list(JOB_SQUAD_SMARTGUN)
+
+/obj/structure/machinery/cm_vending/clothing/smartgun/Initialize(mapload, ...)
+	. = ..()
+	listed_products = GLOB.cm_vending_clothing_smartgun
 
 /obj/structure/machinery/cm_vending/clothing/smartgun/alpha
 	squad_tag = SQUAD_NAME_1

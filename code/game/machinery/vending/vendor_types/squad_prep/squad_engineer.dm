@@ -1,13 +1,6 @@
 //------------GEAR VENDOR---------------
 
-/obj/structure/machinery/cm_vending/gear/engi
-	name = "\improper ColMarTech Squad Engineer Gear Rack"
-	desc = "An automated gear rack for Squad Engineers."
-	icon_state = "eng_gear"
-	vendor_role = list(JOB_SQUAD_ENGI)
-	req_access = list(ACCESS_MARINE_ENGPREP)
-
-	listed_products = list(
+GLOBAL_LIST_INIT(cm_vending_gear_engi, list(
 		list("ENGINEER SET (MANDATORY)", 0, null, null, null),
 		list("Essential Engineer Set", 0, /obj/effect/essentials_set/engi, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
 
@@ -56,17 +49,22 @@
 		list("Reflex Sight", 6, /obj/item/attachable/reflex, null, VENDOR_ITEM_REGULAR),
 		list("Suppressor", 6, /obj/item/attachable/suppressor, null, VENDOR_ITEM_REGULAR),
 		list("Vertical Grip", 6, /obj/item/attachable/verticalgrip, null, VENDOR_ITEM_REGULAR)
-	)
+	))
+
+/obj/structure/machinery/cm_vending/gear/engi
+	name = "\improper ColMarTech Squad Engineer Gear Rack"
+	desc = "An automated gear rack for Squad Engineers."
+	icon_state = "eng_gear"
+	vendor_role = list(JOB_SQUAD_ENGI)
+	req_access = list(ACCESS_MARINE_ENGPREP)
+
+/obj/structure/machinery/cm_vending/gear/engi/Initialize(mapload, ...)
+	. = ..()
+	listed_products = GLOB.cm_vending_gear_engi
 
 //------------CLOTHING VENDOR---------------
 
-/obj/structure/machinery/cm_vending/clothing/engi
-	name = "\improper ColMarTech Squad Engineer Equipment Rack"
-	desc = "An automated rack hooked up to a colossal storage of Squad Engineer standard-issue equipment."
-	req_access = list(ACCESS_MARINE_ENGPREP)
-	vendor_role = list(JOB_SQUAD_ENGI)
-
-	listed_products = list(
+GLOBAL_LIST_INIT(cm_vending_clothing_engi, list(
 		list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
 		list("Boots", 0, /obj/item/clothing/shoes/marine/knife, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
 		list("Uniform", 0, /obj/item/clothing/under/marine/engineer, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_MANDATORY),
@@ -116,7 +114,17 @@
 		list("MASK (CHOOSE 1)", 0, null, null, null),
 		list("Gas Mask", 0, /obj/item/clothing/mask/gas, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
 		list("Heat Absorbent Coif", 0, /obj/item/clothing/mask/rebreather/scarf, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
-	)
+	))
+
+/obj/structure/machinery/cm_vending/clothing/engi
+	name = "\improper ColMarTech Squad Engineer Equipment Rack"
+	desc = "An automated rack hooked up to a colossal storage of Squad Engineer standard-issue equipment."
+	req_access = list(ACCESS_MARINE_ENGPREP)
+	vendor_role = list(JOB_SQUAD_ENGI)
+
+/obj/structure/machinery/cm_vending/clothing/engi/Initialize(mapload, ...)
+	. = ..()
+	listed_products = GLOB.cm_vending_clothing_engi
 
 /obj/structure/machinery/cm_vending/clothing/engi/alpha
 	squad_tag = SQUAD_NAME_1

@@ -63,13 +63,7 @@
 
 //------------CLOTHING VENDOR---------------
 
-/obj/structure/machinery/cm_vending/clothing/synth
-	name = "\improper ColMarTech Synthetic Equipment Rack"
-	desc = "An automated rack hooked up to a colossal storage of various equipment. Can be accessed only by synthetic units."
-	req_access = list(ACCESS_MARINE_COMMANDER)
-	vendor_role = list(JOB_SYNTH, JOB_SYNTH_SURVIVOR)
-
-	listed_products = list(
+GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 		list("Headset", 0, /obj/item/device/radio/headset/almayer/mcom/cdrcom, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),
 
 		list("UNIFORM (CHOOSE 1)", 0, null, null, null),
@@ -129,7 +123,17 @@
 
 		list("MASK", 0, null, null, null),
 		list("Sterile mask", 0, /obj/item/clothing/mask/surgical, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR)
-	)
+	))
+
+/obj/structure/machinery/cm_vending/clothing/synth
+	name = "\improper ColMarTech Synthetic Equipment Rack"
+	desc = "An automated rack hooked up to a colossal storage of various equipment. Can be accessed only by synthetic units."
+	req_access = list(ACCESS_MARINE_COMMANDER)
+	vendor_role = list(JOB_SYNTH, JOB_SYNTH_SURVIVOR)
+
+/obj/structure/machinery/cm_vending/clothing/synth/Initialize(mapload, ...)
+	. = ..()
+	listed_products = GLOB.cm_vending_clothing_synth
 
 //------------SNOWFLAKE VENDOR---------------
 

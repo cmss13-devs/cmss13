@@ -51,14 +51,7 @@
 
 //------------CLOTHING VENDOR---------------
 
-//MARINE_CAN_BUY_SHOES MARINE_CAN_BUY_UNIFORM currently not used
-obj/structure/machinery/cm_vending/clothing/pilot_officer
-	name = "\improper ColMarTech Pilot Officer Equipment Rack"
-	desc = "An automated rack hooked up to a colossal storage of Pilot Officer standard-issue equipment."
-	req_access = list(ACCESS_MARINE_PILOT)
-	vendor_role = list(JOB_PILOT)
-
-	listed_products = list(
+GLOBAL_LIST_INIT(cm_vending_clothing_pilot_officer, list(
 		list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
 		list("Gloves", 0, /obj/item/clothing/gloves/yellow, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_MANDATORY),
 		list("M70 Flak Jacket", 0, /obj/item/clothing/suit/armor/vest/pilot, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
@@ -136,4 +129,15 @@ obj/structure/machinery/cm_vending/clothing/pilot_officer
 		list("Large Magazine Pouch", 15, /obj/item/storage/pouch/magazine/large, null, VENDOR_ITEM_REGULAR),
 		list("Machete Scabbard (Full)", 2, /obj/item/storage/large_holster/machete/full, null, VENDOR_ITEM_REGULAR),
 		list("Motion Detector", 15, /obj/item/device/motiondetector, null, VENDOR_ITEM_RECOMMENDED)
-	)
+	))
+
+//MARINE_CAN_BUY_SHOES MARINE_CAN_BUY_UNIFORM currently not used
+/obj/structure/machinery/cm_vending/clothing/pilot_officer
+	name = "\improper ColMarTech Pilot Officer Equipment Rack"
+	desc = "An automated rack hooked up to a colossal storage of Pilot Officer standard-issue equipment."
+	req_access = list(ACCESS_MARINE_PILOT)
+	vendor_role = list(JOB_PILOT)
+
+/obj/structure/machinery/cm_vending/clothing/pilot_officer/Initialize(mapload, ...)
+	. = ..()
+	listed_products = GLOB.cm_vending_clothing_pilot_officer

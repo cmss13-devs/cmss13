@@ -25,7 +25,7 @@
 	ability_name = "throw facehugger"
 	macro_path = /datum/action/xeno_action/verb/verb_throw_facehugger
 	action_type = XENO_ACTION_CLICK
-	ability_primacy = XENO_PRIMARY_ACTION_1
+	ability_primacy = XENO_PRIMARY_ACTION_3
 
 /datum/action/xeno_action/activable/throw_hugger/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/Carrier/X = owner
@@ -42,7 +42,7 @@
 	ability_name = "retrieve egg"
 	macro_path = /datum/action/xeno_action/verb/verb_retrieve_egg
 	action_type = XENO_ACTION_CLICK
-	ability_primacy = XENO_PRIMARY_ACTION_2
+	ability_primacy = XENO_PRIMARY_ACTION_4
 
 /datum/action/xeno_action/activable/retrieve_egg/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/Carrier/X = owner
@@ -57,6 +57,7 @@
 	plasma_cost = 50
 	macro_path = /datum/action/xeno_action/verb/verb_resin_walker
 	action_type = XENO_ACTION_CLICK
+	ability_primacy = XENO_PRIMARY_ACTION_4
 
 /datum/action/xeno_action/onclick/toggle_speed/can_use_action()
 	var/mob/living/carbon/Xenomorph/Hivelord/X = owner
@@ -86,8 +87,7 @@
 	action_icon_state = "build_tunnel"
 	plasma_cost = 200
 	macro_path = /datum/action/xeno_action/verb/verb_dig_tunnel
-	action_type = XENO_ACTION_ACTIVATE
-	ability_primacy = XENO_PRIMARY_ACTION_2
+	action_type = XENO_ACTION_ACTIVATE //doesn't really need a macro
 
 /datum/action/xeno_action/onclick/build_tunnel/can_use_action()
 	var/mob/living/carbon/Xenomorph/X = owner
@@ -222,6 +222,7 @@
 	plasma_cost = 600
 	macro_path = /datum/action/xeno_action/verb/verb_plasma_xeno
 	action_type = XENO_ACTION_CLICK
+	ability_primacy = XENO_PRIMARY_ACTION_3
 
 /datum/action/xeno_action/onclick/queen_give_plasma/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/Queen/X = owner

@@ -15,6 +15,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_plant_weeds
 	action_type = XENO_ACTION_CLICK
 	xeno_cooldown = 10
+	ability_primacy = XENO_PRIMARY_ACTION_1
 
 // Resting
 /datum/action/xeno_action/onclick/xeno_resting
@@ -44,6 +45,7 @@
 	plasma_cost = 0
 	macro_path = /datum/action/xeno_action/verb/verb_toggle_spit_type
 	action_type = XENO_ACTION_CLICK
+	ability_primacy = XENO_PRIMARY_ACTION_2
 
 /datum/action/xeno_action/onclick/shift_spits/can_use_action()
 	var/mob/living/carbon/Xenomorph/X = owner
@@ -65,6 +67,10 @@
 	plasma_cost = 0
 	macro_path = /datum/action/xeno_action/verb/verb_choose_resin_structure
 	action_type = XENO_ACTION_CLICK
+	ability_primacy = XENO_PRIMARY_ACTION_2
+
+/datum/action/xeno_action/onclick/choose_resin/queen_macro //so it doesn't screw other macros up
+	ability_primacy = XENO_PRIMARY_ACTION_3 //it's important that hivelord and drone have the same macros because their playstyle is similar, but it's not as important for queen since her playstyle is very different
 
 // Secrete Resin
 /datum/action/xeno_action/activable/secrete_resin
@@ -75,6 +81,10 @@
 	var/make_message = TRUE
 	macro_path = /datum/action/xeno_action/verb/verb_secrete_resin
 	action_type = XENO_ACTION_CLICK
+	ability_primacy = XENO_PRIMARY_ACTION_3
+
+/datum/action/xeno_action/activable/secrete_resin/queen_macro //see above for reasoning
+	ability_primacy = XENO_PRIMARY_ACTION_4
 
 /datum/action/xeno_action/activable/secrete_resin/hivelord
 	name = "Secrete Thick Resin"
@@ -308,4 +318,4 @@
 	plasma_cost = 200
 	macro_path = /datum/action/xeno_action/verb/verb_resin_hole
 	action_type = XENO_ACTION_CLICK
-	ability_primacy = XENO_PRIMARY_ACTION_3
+	ability_primacy = XENO_PRIMARY_ACTION_2

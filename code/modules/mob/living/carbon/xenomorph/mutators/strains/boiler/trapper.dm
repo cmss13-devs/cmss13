@@ -7,7 +7,7 @@
 	individual_only = TRUE
 	caste_whitelist = list("Boiler") //Only boiler.
 	mutator_actions_to_remove = list("Toggle Long Range Sight", "Bombard", "Acid Lance", "Dump Acid")
-	mutator_actions_to_add = list(/datum/action/xeno_action/onclick/toggle_long_range/trapper, /datum/action/xeno_action/activable/boiler_trap, /datum/action/xeno_action/activable/acid_mine, /datum/action/xeno_action/activable/acid_shotgun)
+	mutator_actions_to_add = list(/datum/action/xeno_action/activable/boiler_trap, /datum/action/xeno_action/activable/acid_mine, /datum/action/xeno_action/activable/acid_shotgun, /datum/action/xeno_action/onclick/toggle_long_range/trapper)
 	keystone = TRUE
 
 	behavior_delegate_type = /datum/behavior_delegate/boiler_trapper

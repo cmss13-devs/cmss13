@@ -48,8 +48,9 @@
 		/datum/action/xeno_action/activable/place_construction,
 		/datum/action/xeno_action/onclick/plant_weeds, //first macro
 		/datum/action/xeno_action/onclick/choose_resin, //second macro
-		/datum/action/xeno_action/activable/secrete_resin //third macro
-		) //no fourth macro for now, doesnt really need one
+		/datum/action/xeno_action/activable/secrete_resin, //third macro
+		/datum/action/xeno_action/onclick/emit_pheromones
+		)
 	inherent_verbs = list(
 		/mob/living/carbon/Xenomorph/proc/vent_crawl,
 		/mob/living/carbon/Xenomorph/proc/rename_tunnel,

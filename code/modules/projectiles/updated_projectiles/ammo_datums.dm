@@ -1447,11 +1447,6 @@
 /datum/ammo/xeno/toxin/queen/on_hit_mob(mob/M,obj/item/projectile/P)
 	apply_neuro(M, effect_power, TRUE)
 
-/datum/ammo/xeno/toxin/heavy //Praetorian
-	name = "neurotoxic splash"
-	effect_power = 1.5
-	spit_cost = 50
-
 /datum/ammo/xeno/toxin/burst //sentinel burst
 	name = "neurotoxic air splash"
 	effect_power = 1
@@ -1488,7 +1483,7 @@
 /datum/ammo/xeno/toxin/burst/on_near_target(turf/T, obj/item/projectile/P)
 	return neuro_flak(T,P, effect_power, FALSE, 1)
 
-/datum/ammo/xeno/sticky
+/*datum/ammo/xeno/sticky
 	name = "sticky resin spit"
 	icon_state = "sticky"
 	ping = null
@@ -1526,7 +1521,7 @@
 		if(O.density && !(O.flags_atom & ON_BORDER))
 			return
 
-	new /obj/effect/alien/resin/sticky/thin(T)
+	new /obj/effect/alien/resin/sticky/thin(T) */
 
 
 
@@ -1606,7 +1601,7 @@
 	else
 		PAS.increment_stack_count()
 
-/datum/ammo/xeno/prae_skillshot
+/*datum/ammo/xeno/prae_skillshot
 	name = "blob of acid"
 	icon_state = "boiler_gas2"
 	ping = "ping_x"
@@ -1650,7 +1645,7 @@
 			PAS.increment_stack_count()
 		else
 			PAS.increment_stack_count()
-			PAS.increment_stack_count()
+			PAS.increment_stack_count() */
 
 /datum/ammo/xeno/boiler_gas
 	name = "glob of gas"

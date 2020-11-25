@@ -43,8 +43,8 @@
 		/datum/action/xeno_action/onclick/regurgitate,
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/activable/corrosive_acid/weak,
-		/datum/action/xeno_action/onclick/shift_spits,
-		/datum/action/xeno_action/activable/xeno_spit
+		/datum/action/xeno_action/activable/xeno_spit, //first macro
+		/datum/action/xeno_action/onclick/shift_spits, //second macro
 		)
 	inherent_verbs = list(
 		/mob/living/carbon/Xenomorph/proc/vent_crawl,

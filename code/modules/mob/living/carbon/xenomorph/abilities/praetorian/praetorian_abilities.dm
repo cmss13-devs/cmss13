@@ -71,6 +71,7 @@
 	plasma_cost = 0
 	macro_path = /datum/action/xeno_action/verb/verb_toggle_cleave
 	action_type = XENO_ACTION_CLICK
+	ability_primacy = XENO_PRIMARY_ACTION_4
 
 /datum/action/xeno_action/onclick/toggle_cleave/can_use_action()
 	var/mob/living/carbon/Xenomorph/X = owner
@@ -134,15 +135,15 @@
 
 
 // This one is more tightly coupled than I'd like, but oh well
-/datum/action/xeno_action/onclick/crush
+// unused
+/*datum/action/xeno_action/onclick/crush
 	name = "Crush"
 	action_icon_state = "prae_crush"
 	ability_name = "crush"
 	macro_path = /datum/action/xeno_action/verb/verb_crush
-	ability_primacy = XENO_PRIMARY_ACTION_3
 	action_type = XENO_ACTION_ACTIVATE
 	xeno_cooldown = 100
-	plasma_cost = 50
+	plasma_cost = 50*/
 
 // Tail lash
 /datum/action/xeno_action/activable/tail_lash
@@ -303,6 +304,7 @@
 	action_icon_state = "warden_shield" // default = shield
 	macro_path = /datum/action/xeno_action/verb/verb_prae_switch_heal_types
 	action_type = XENO_ACTION_ACTIVATE
+	ability_primacy = XENO_PRIMARY_ACTION_4
 
 /datum/action/xeno_action/onclick/prae_switch_heal_type/can_use_action()
 	var/mob/living/carbon/Xenomorph/X = owner

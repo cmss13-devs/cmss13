@@ -93,18 +93,20 @@
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/regurgitate,
 		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/onclick/plant_weeds,
-		/datum/action/xeno_action/onclick/choose_resin,
-		/datum/action/xeno_action/activable/secrete_resin,
 		/datum/action/xeno_action/activable/place_construction,
 		/datum/action/xeno_action/onclick/grow_ovipositor,
-		/datum/action/xeno_action/activable/screech,
 		/datum/action/xeno_action/activable/corrosive_acid,
 		/datum/action/xeno_action/onclick/emit_pheromones,
-		/datum/action/xeno_action/activable/gut,
 		/datum/action/xeno_action/onclick/psychic_whisper,
-		/datum/action/xeno_action/onclick/shift_spits,
-		/datum/action/xeno_action/activable/xeno_spit,
+		/datum/action/xeno_action/activable/gut,
+		/datum/action/xeno_action/activable/screech, //custom macro, "Screech"
+		/datum/action/xeno_action/activable/xeno_spit, //first macro
+		/datum/action/xeno_action/onclick/shift_spits, //second macro
+		/datum/action/xeno_action/onclick/plant_weeds, //here so its overridden by xeno_spit, and fits near the resin structure macros.
+		/datum/action/xeno_action/onclick/choose_resin/queen_macro, //third macro
+		/datum/action/xeno_action/activable/secrete_resin/queen_macro, //fourth macro
+		/datum/action/xeno_action/onclick/banish,
+		/datum/action/xeno_action/onclick/readmit,
 		)
 
 	inherent_verbs = list(
@@ -121,18 +123,20 @@
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/regurgitate,
 		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/onclick/plant_weeds,
-		/datum/action/xeno_action/onclick/choose_resin,
-		/datum/action/xeno_action/activable/secrete_resin,
 		/datum/action/xeno_action/activable/place_construction,
 		/datum/action/xeno_action/onclick/grow_ovipositor,
-		/datum/action/xeno_action/activable/screech,
 		/datum/action/xeno_action/activable/corrosive_acid,
 		/datum/action/xeno_action/onclick/emit_pheromones,
-		/datum/action/xeno_action/activable/gut,
 		/datum/action/xeno_action/onclick/psychic_whisper,
-		/datum/action/xeno_action/onclick/shift_spits,
-		/datum/action/xeno_action/activable/xeno_spit,
+		/datum/action/xeno_action/activable/gut,
+		/datum/action/xeno_action/activable/screech, //custom macro, Screech
+		/datum/action/xeno_action/activable/xeno_spit, //first macro
+		/datum/action/xeno_action/onclick/shift_spits, //second macro
+		/datum/action/xeno_action/onclick/plant_weeds, //here so its overridden by xeno_spit, and fits near the resin structure macros.
+		/datum/action/xeno_action/onclick/choose_resin/queen_macro, //third macro
+		/datum/action/xeno_action/activable/secrete_resin/queen_macro, //fourth macro
+		/datum/action/xeno_action/onclick/banish,
+		/datum/action/xeno_action/onclick/readmit,
 			)
 	mutation_type = QUEEN_NORMAL
 	claw_type = CLAW_TYPE_VERY_SHARP
@@ -503,22 +507,22 @@
 	for(var/datum/action/A in actions)
 		qdel(A)
 
-	var/list/immobile_abilities = list(\
-		/datum/action/xeno_action/onclick/regurgitate,\
-		/datum/action/xeno_action/onclick/remove_eggsac,\
-		/datum/action/xeno_action/activable/screech,\
-		/datum/action/xeno_action/onclick/emit_pheromones,\
-		/datum/action/xeno_action/onclick/psychic_whisper,\
-		/datum/action/xeno_action/watch_xeno,\
-		/datum/action/xeno_action/onclick/toggle_queen_zoom,\
-		/datum/action/xeno_action/onclick/set_xeno_lead,\
-		/datum/action/xeno_action/onclick/queen_heal,\
-		/datum/action/xeno_action/onclick/queen_give_plasma,\
-		/datum/action/xeno_action/onclick/queen_order,\
-		/datum/action/xeno_action/activable/place_construction,\
-		/datum/action/xeno_action/onclick/deevolve, \
-		/datum/action/xeno_action/onclick/banish, \
-		/datum/action/xeno_action/onclick/readmit, \
+	var/list/immobile_abilities = list(
+		/datum/action/xeno_action/onclick/regurgitate,
+		/datum/action/xeno_action/onclick/remove_eggsac,
+		/datum/action/xeno_action/activable/screech,
+		/datum/action/xeno_action/onclick/emit_pheromones,
+		/datum/action/xeno_action/onclick/psychic_whisper,
+		/datum/action/xeno_action/watch_xeno,
+		/datum/action/xeno_action/onclick/toggle_queen_zoom,
+		/datum/action/xeno_action/onclick/set_xeno_lead,//first macro
+		/datum/action/xeno_action/onclick/queen_heal,//second macro 
+		/datum/action/xeno_action/onclick/queen_give_plasma,//third macro
+		/datum/action/xeno_action/onclick/queen_order,
+		/datum/action/xeno_action/activable/place_construction,
+		/datum/action/xeno_action/onclick/deevolve,//fourth macro
+		/datum/action/xeno_action/onclick/banish,
+		/datum/action/xeno_action/onclick/readmit,
 		)
 
 	for(var/path in immobile_abilities)

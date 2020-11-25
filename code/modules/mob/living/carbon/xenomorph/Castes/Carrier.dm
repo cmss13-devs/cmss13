@@ -56,15 +56,14 @@
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/regurgitate,
 		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/onclick/plant_weeds,
 		/datum/action/xeno_action/activable/place_construction,
 		/datum/action/xeno_action/onclick/emit_pheromones,
-		/datum/action/xeno_action/activable/throw_hugger,
-		/datum/action/xeno_action/activable/retrieve_egg,
-		/datum/action/xeno_action/onclick/place_trap
+		/datum/action/xeno_action/onclick/plant_weeds, //1st macro
+		/datum/action/xeno_action/onclick/place_trap, //2nd macro
+		/datum/action/xeno_action/activable/throw_hugger, //3rd macro
+		/datum/action/xeno_action/activable/retrieve_egg, //4th macro
 		)
 	mutation_type = CARRIER_NORMAL
-
 
 /mob/living/carbon/Xenomorph/Carrier/death(var/cause, var/gibbed)
 	. = ..(cause, gibbed)

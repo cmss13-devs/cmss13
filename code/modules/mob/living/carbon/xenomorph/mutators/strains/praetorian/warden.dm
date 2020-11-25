@@ -7,7 +7,7 @@
 	individual_only = TRUE
 	caste_whitelist = list("Praetorian")  	// Only bae
 	mutator_actions_to_remove = list("Acid Ball", "Dash", "Spray Acid")
-	mutator_actions_to_add = list(/datum/action/xeno_action/onclick/emit_pheromones, /datum/action/xeno_action/activable/spray_acid/prae_warden, /datum/action/xeno_action/activable/warden_heal, /datum/action/xeno_action/onclick/prae_switch_heal_type)
+	mutator_actions_to_add = list(/datum/action/xeno_action/activable/spray_acid/prae_warden, /datum/action/xeno_action/activable/warden_heal, /datum/action/xeno_action/onclick/prae_switch_heal_type, /datum/action/xeno_action/onclick/emit_pheromones)
 	behavior_delegate_type = /datum/behavior_delegate/praetorian_warden
 	keystone = TRUE
 

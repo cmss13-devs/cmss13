@@ -19,6 +19,7 @@
 /datum/action/xeno_action/onclick/toggle_long_range/runner
 	movement_datum_type = XENOZOOM_NO_MOVEMENT_HANDLER
 	should_delay = FALSE
+	ability_primacy = XENO_PRIMARY_ACTION_3
 
 /datum/action/xeno_action/activable/runner_skillshot
 	name = "Bone Spur"

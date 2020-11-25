@@ -57,13 +57,13 @@
 
 	var/obj/affected_obj = affected_atom
 	affected_obj.update_health((damage_in_total_obj * acid_multiplier)/original_duration)
-	
+
 	return TRUE
 
 /datum/effects/acid/Destroy()
 	if(affected_atom)
-		affected_atom.effects_list -= src
-	
+		LAZYREMOVE(affected_atom.effects_list, src)
+
 	if(ishuman(affected_atom))
 		var/mob/living/carbon/human/H = affected_atom
 		H.update_effects()

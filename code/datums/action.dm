@@ -75,12 +75,12 @@
 	if(!holder)
 		holder = target
 	holder_item = holder
-	holder_item.actions += src
+	LAZYADD(holder_item.actions, src)
 	name = "Use [target]"
 	button.name = name
 
 /datum/action/item_action/Destroy()
-	holder_item.actions -= src
+	LAZYREMOVE(holder_item.actions, src)
 	holder_item = null
 	return ..()
 

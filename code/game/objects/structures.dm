@@ -8,7 +8,7 @@
 	var/climb_delay = CLIMB_DELAY_MEDIUM
 	var/breakable
 	var/parts
-	var/list/debris = list()
+	var/list/debris
 	var/unslashable = FALSE
 	var/wrenchable = FALSE
 	health = 100
@@ -32,6 +32,7 @@
 		if(O.unacidable)
 			O.forceMove(get_turf(loc))
 	structure_list -= src
+	debris = null
 	. = ..()
 
 /obj/structure/proc/destroy(deconstruct)
@@ -63,7 +64,7 @@
 			qdel(src)
 
 /obj/structure/proc/handle_debris(severity = 0, direction = 0)
-	if(!debris.len)
+	if(!LAZYLEN(debris))
 		return
 	switch(severity)
 		if(0)

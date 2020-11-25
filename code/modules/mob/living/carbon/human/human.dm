@@ -280,7 +280,7 @@
 	<BR>
 	[handcuffed ? "<BR><A href='?src=\ref[src];item=[WEAR_HANDCUFFS]'>Handcuffed</A>" : ""]
 	[legcuffed ? "<BR><A href='?src=\ref[src];item=[WEAR_LEGCUFFS]'>Legcuffed</A>" : ""]
-	[suit && suit.accessories.len ? "<BR><A href='?src=\ref[src];tie=1'>Remove Accessory</A>" : ""]
+	[suit && LAZYLEN(suit.accessories) ? "<BR><A href='?src=\ref[src];tie=1'>Remove Accessory</A>" : ""]
 	[internal ? "<BR><A href='?src=\ref[src];internal=1'>Remove Internal</A>" : ""]
 	[istype(wear_id, /obj/item/card/id/dogtag) ? "<BR><A href='?src=\ref[src];item=id'>Retrieve Info Tag</A>" : ""]
 	<BR><A href='?src=\ref[src];splints=1'>Remove Splints</A>
@@ -467,10 +467,10 @@
 		if(!usr.action_busy)
 			if(w_uniform && istype(w_uniform, /obj/item/clothing))
 				var/obj/item/clothing/under/U = w_uniform
-				if(U.accessories.len < 1)
+				if(!LAZYLEN(U.accessories))
 					return FALSE
-				var/obj/item/clothing/accessory/A = U.accessories[1]
-				if(U.accessories.len > 1)
+				var/obj/item/clothing/accessory/A = LAZYACCESS(U.accessories, 1)
+				if(LAZYLEN(U.accessories) > 1)
 					A = input("Select an accessory to remove from [U]") as null|anything in U.accessories
 				if(!istype(A))
 					return

@@ -85,7 +85,7 @@
 
 			var/obj/item/IT = new item_path(get_appropriate_vend_turf())
 			IT.add_fingerprint(usr)
-			I.vended_items += item_path
+			LAZYADD(I.vended_items, item_path)
 
 		add_fingerprint(usr)
 		ui_interact(usr) //updates the nanoUI window

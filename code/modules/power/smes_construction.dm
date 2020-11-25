@@ -18,17 +18,17 @@
 /obj/structure/machinery/power/smes/buildable/charged
 	charge = 1e+006
 
-/obj/structure/machinery/power/smes/buildable/New()
-	component_parts = list()
-	component_parts += new /obj/item/stack/cable_coil(src,30)
-	component_parts += new /obj/item/circuitboard/machine/smes(src)
+/obj/structure/machinery/power/smes/buildable/Initialize()
+	. = ..()
+	QDEL_NULL_LIST(component_parts)
+	LAZYADD(component_parts, new /obj/item/stack/cable_coil(src,30))
+	LAZYADD(component_parts, new /obj/item/circuitboard/machine/smes(src))
 
 	// Allows for mapped-in SMESs with larger capacity/IO
 	for(var/i = 1, i <= cur_coils, i++)
-		component_parts += new /obj/item/stock_parts/smes_coil(src)
+		LAZYADD(component_parts, new /obj/item/stock_parts/smes_coil(src))
 
 	recalc_coils()
-	..()
 
 /obj/structure/machinery/power/smes/buildable/proc/recalc_coils()
 	if ((cur_coils <= max_coils) && (cur_coils >= 1))
@@ -241,7 +241,7 @@
 				to_chat(usr, "You install the coil into the SMES unit!")
 				if(user.drop_inv_item_to_loc(W, src))
 					cur_coils ++
-					component_parts += W
+					LAZYADD(component_parts, W)
 					recalc_coils()
 			else
 				to_chat(usr, SPAN_DANGER("You can't insert more coils to this SMES unit!"))

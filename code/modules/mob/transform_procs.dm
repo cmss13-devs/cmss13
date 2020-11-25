@@ -94,7 +94,7 @@
 	if(loc_landmark && loc_landmark.loc)
 		O.loc = loc_landmark.loc
 		for (var/obj/item/device/radio/intercom/comm in O.loc)
-			comm.ai += O
+			LAZYADD(comm.ai, O)
 
 		to_chat(O, "<B>You are playing the ship's AI. The AI cannot move, but can interact with many objects while viewing them (through cameras).</B>")
 		to_chat(O, "<B>To look at other parts of the station, click on yourself to get a camera menu.</B>")

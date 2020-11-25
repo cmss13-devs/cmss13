@@ -12,7 +12,7 @@
 	random_icon_states = list("mfloor1", "mfloor2", "mfloor3", "mfloor4", "mfloor5", "mfloor6", "mfloor7")
 	dirt_type = DIRT_SPLATTER
 	var/base_icon = 'icons/effects/blood.dmi'
-	var/list/viruses = list()
+	var/list/viruses
 	var/basecolor= "#830303" // Color when wet.
 	var/amount = 5
 	var/drying_blood = TRUE //whether the blood will dry
@@ -149,7 +149,7 @@
                                 b.update_icon()
                                 for(var/datum/disease/D in src.viruses)
                                         var/datum/disease/ND = D.Copy(1)
-                                        b.viruses += ND
+                                        LAZYADD(b.viruses, ND)
                                         ND.holder = b
 
                         if (step_to(src, get_step(src, direction), 0))

@@ -77,7 +77,7 @@
 	var/claimedgear = 1 // For medics and engineers to 'claim' a locker
 
 	var/list/uniform_sets = null
-	var/list/vended_items = list()
+	var/list/vended_items
 
 	var/pinned_on_uniform = TRUE //whether the id's onmob overlay only appear when wearing a uniform
 
@@ -120,7 +120,7 @@
 
 	for(var/datum/agent_objective/O in A.agent_holder.objectives_list)
 		O.terminated = TRUE
-		
+
 	return TRUE
 
 /obj/item/card/id/verb/read()
@@ -366,7 +366,7 @@
 
 /obj/item/dogtag/Initialize()
 	. = ..()
-	
+
 	fallen_names = list()
 	fallen_blood_types = list()
 	fallen_assgns = list()

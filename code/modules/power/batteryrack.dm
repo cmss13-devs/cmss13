@@ -17,6 +17,12 @@
 	var/cells_amount = 0
 	var/capacitors_amount = 0
 	power_machine = TRUE
+	var/list/parts_to_add = list(
+		/obj/item/circuitboard/machine/batteryrack,
+		/obj/item/cell/high,
+		/obj/item/cell/high,
+		/obj/item/cell/high,
+	)
 
 	// Smaller capacity, but higher I/O
 	// Starts fully charged, as it's used in substations. This replaces Engineering SMESs round start charge.
@@ -26,20 +32,20 @@
 	output = 150000
 	chargelevel = 150000
 	online = 1
+	parts_to_add = list(
+		/obj/item/circuitboard/machine/batteryrack,
+		/obj/item/cell/high,
+		/obj/item/cell,
+		/obj/item/cell,
+		/obj/item/stock_parts/capacitor,
+		/obj/item/stock_parts/capacitor,
+		/obj/item/stock_parts/capacitor,
+		/obj/item/stock_parts/capacitor,
+		/obj/item/stock_parts/capacitor,
+	)
 
 	// One high capacity cell, two regular cells. Lots of room for engineer upgrades
 	// Also five basic capacitors. Again, upgradeable.
-/obj/structure/machinery/power/smes/batteryrack/substation/add_parts()
-	component_parts = list()
-	component_parts += new /obj/item/circuitboard/machine/batteryrack
-	component_parts += new /obj/item/cell/high
-	component_parts += new /obj/item/cell
-	component_parts += new /obj/item/cell
-	component_parts += new /obj/item/stock_parts/capacitor
-	component_parts += new /obj/item/stock_parts/capacitor
-	component_parts += new /obj/item/stock_parts/capacitor
-	component_parts += new /obj/item/stock_parts/capacitor
-	component_parts += new /obj/item/stock_parts/capacitor
 
 /obj/structure/machinery/power/smes/batteryrack/New()
 	..()
@@ -51,13 +57,9 @@
 
 //Maybe this should be moved up to obj/structure/machinery
 /obj/structure/machinery/power/smes/batteryrack/proc/add_parts()
-	component_parts = list()
-	component_parts += new /obj/item/circuitboard/machine/batteryrack
-	component_parts += new /obj/item/cell/high
-	component_parts += new /obj/item/cell/high
-	component_parts += new /obj/item/cell/high
-	return
-
+	QDEL_NULL_LIST(component_parts)
+	for(var/typepath in parts_to_add)
+		LAZYADD(component_parts, new typepath(src))
 
 /obj/structure/machinery/power/smes/batteryrack/RefreshParts()
 	capacitors_amount = 0
@@ -119,7 +121,7 @@
 			if (charge < (capacity / 100))
 				if (!online && !chargemode)
 					if(user.drop_inv_item_to_loc(W, src))
-						component_parts += W
+						LAZYADD(component_parts, W)
 						RefreshParts()
 						to_chat(user, SPAN_NOTICE("You upgrade the [src] with [W.name]."))
 				else
@@ -138,16 +140,12 @@
 	name = "makeshift PSU"
 	desc = "A rack of batteries connected by a mess of wires posing as a PSU."
 	var/overcharge_percent = 0
-
-
-/obj/structure/machinery/power/smes/batteryrack/makeshift/add_parts()
-	component_parts = list()
-	component_parts += new /obj/item/circuitboard/machine/ghettosmes
-	component_parts += new /obj/item/cell/high
-	component_parts += new /obj/item/cell/high
-	component_parts += new /obj/item/cell/high
-
-
+	parts_to_add = list(
+		/obj/item/circuitboard/machine/ghettosmes,
+		/obj/item/cell/high,
+		/obj/item/cell/high,
+		/obj/item/cell/high,
+	)
 
 /obj/structure/machinery/power/smes/batteryrack/makeshift/updateicon()
 	overlays.Cut()

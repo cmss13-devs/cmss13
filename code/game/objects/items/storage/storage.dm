@@ -28,7 +28,7 @@
 	var/foldable = null
 	var/use_sound = "rustle"	//sound played when used. null for no sound.
 	var/opened = FALSE //Has it been opened before?
-	var/list/content_watchers = list() //list of mobs currently seeing the storage's contents
+	var/list/content_watchers //list of mobs currently seeing the storage's contents
 	var/storage_flags = STORAGE_FLAGS_DEFAULT
 
 
@@ -101,7 +101,7 @@
 		user.client.screen += storage_end
 
 	user.s_active = src
-	content_watchers |= user
+	LAZYDISTINCTADD(content_watchers, user)
 	return
 
 /obj/item/storage/proc/hide_from(mob/user as mob)
@@ -116,7 +116,7 @@
 	user.client.screen -= src.contents
 	if(user.s_active == src)
 		user.s_active = null
-	content_watchers -= user
+	LAZYREMOVE(content_watchers, user)
 	return
 
 /obj/item/storage/proc/can_see_content()
@@ -125,7 +125,7 @@
 		if(M.s_active == src && M.client)
 			lookers |= M
 		else
-			content_watchers -= M
+			LAZYREMOVE(content_watchers, M)
 	return lookers
 
 /obj/item/storage/proc/open(mob/user)

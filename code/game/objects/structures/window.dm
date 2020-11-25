@@ -25,13 +25,13 @@
 	update_icon()
 
 	if(shardtype)
-		debris += shardtype
+		LAZYADD(debris, shardtype)
 
 	if(reinf)
-		debris += /obj/item/stack/rods
+		LAZYADD(debris, /obj/item/stack/rods)
 
 	if(is_full_window())
-		debris += shardtype
+		LAZYADD(debris, shardtype)
 		update_nearby_icons()
 
 /obj/structure/window/Destroy()

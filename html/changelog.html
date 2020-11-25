@@ -64,6 +64,34 @@
 		</td>
 	</tr>
 </table>
+			<h2 class="date">25 November 2020</h2>
+			<h3 class="author">Carlarc updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Many xenomorph abilities that were unmacroed now have an assigned macro.</li>
+				<li class="tweak">Planting weeds is set to Xeno-Primary-Action-One, except for queen.</li>
+				<li class="tweak">Toggling between spit types is set to Xeno-Primary-Action-Two (Including for queen! Yes, she can switch between neuro and acid spit. Did you know you can macro Screech with "Screech"? It activates it instantly, though.)</li>
+				<li class="tweak">Switching between resin structure type is set to Xeno-Primary-Action-Two. (Three, for queen.)</li>
+				<li class="tweak">Placing a resin structure down is set to Xeno-Primary-Action-Three. (Four, for queen.)</li>
+				<li class="tweak">Queen's macros while on ovipositor are Xeno-Primary-Action-One for setting leaders, -Two for healing, -Three for plasma, and -Four for devolving.</li>
+				<li class="tweak">Hivelord's resin walker is set to Xeno-Primary-Action-Four.</li>
+				<li class="tweak">Praetorian's Vanguard Cleave, and Warden Heal type can be toggled with Xeno-Primary-Action-Four.</li>
+				<li class="tweak">Burrower's macros are now 1 for weeding, 2 for resin holes, 3 for burrowing, and 4 for tremor.</li>
+				<li class="imageadd">Burrower tremor icon looks more accurate.</li>
+				<li class="tweak">Carrier's macros are now 1 for weeding, 2 for resin holes, 3 for grabbing a facehugger, and 4 for grabbing an egg.</li>
+				<li class="tweak">Runner's long-range toggle is set to Xeno-Primary-Action-Three, and Boiler's to Xeno-Primary-Action-Four.</li>
+				<li class="rscadd">Queen can now banish and readmit xenomorphs off the ovipositor.</li>
+			</ul>
+			<h3 class="author">TheDonkified updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="tweak">AT rocket range is now 5 tiles max.</li>
+				<li class="tweak">HE rocket range is now 6 tiles max.</li>
+			</ul>
+			<h3 class="author">spookydonut updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="tweak">Refactors pass flags to use bitmath</li>
+				<li class="tweak">Slightly reduced memory usage with lazy lists</li>
+			</ul>
+
 			<h2 class="date">24 November 2020</h2>
 			<h3 class="author">alardun updated:</h3>
 			<ul class="changes bgimages16">
@@ -2992,52 +3020,6 @@
 				<li class="maptweak">Added random objective landmarks to Prison Station.</li>
 				<li class="maptweak">Added random objective landmarks to CORSAT.</li>
 				<li class="bugfix">Fixed objectives not being generated on some maps.</li>
-			</ul>
-
-			<h2 class="date">27 May 2020</h2>
-			<h3 class="author">Neth updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">metal barricade repair fuel cost 2 -> 1</li>
-				<li class="tweak">plasteel barricade repair fuel cost 5 -> 1</li>
-				<li class="tweak">folding barricade repair fuel cost 2 -> 1</li>
-				<li class="tweak">Acid now deal DOT damage to barricades once per 5 seconds for 50 seconds (10 procs). After that acid is removed and barricade stands (if it still has health)</li>
-				<li class="tweak">medium acid - 40 damage per 5 seconds per stack - 400 damage total</li>
-				<li class="tweak">strong acid - 100 damage per 5 seconds per stack - 1000 damage total</li>
-				<li class="tweak">Added variables so that admins can customize OB warheads more easily</li>
-				<li class="tweak">Green blinking laser will appear 1 second before OB strike, so you can say "OH FUCK" before you get gibbed</li>
-				<li class="tweak">Incendiary and HE Warheads will clear impact location with immense damage in radius 2. Whatever is there will get gibbed</li>
-				<li class="tweak">HE Warhead now spawns two waves (effectively doubling the damage) in the same radius with small delay between waves</li>
-				<li class="tweak">HE Warhead will try to find open terrain in radius 2 from impact to prevent bad hits into cave walls</li>
-				<li class="tweak">Incendiary Warhead radius buffed from 12 to 18</li>
-				<li class="tweak">Cluster OB now bombards in radius 12 for 30 seconds, firing 6 bombs every second</li>
-			</ul>
-			<h3 class="author">ThePiachu updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Fixed a runtime error with chemistry holders mixing some odd chemicals.</li>
-				<li class="bugfix">Fixed a CPU hog issue caused by Stat() proc being called a bit too often when not needed.</li>
-				<li class="rscadd">Added a new objective - alien containment. Works like retrieving xeno corpses, but for living aliens. Put them in your containment cell, keep them alive and they will be worth more points than corpses!</li>
-				<li class="tweak">Yautja now also count for containment and corpse retrieval. Happy hunting!</li>
-				<li class="tweak">On the flip side, the research containment will now open if the related terminal gets destroyed, or in an event of a dropship crash. This is to let xenos in containment be rescued without admin intervention, as well as give contained players an opportunity for revenge. .</li>
-				<li class="bugfix">Fixed a wrong var being passed to an admin function.</li>
-				<li class="bugfix">Fixed a runtime error around addiction.</li>
-				<li class="tweak">Changed DEFCON level accounting to a controller type for easier debugging.</li>
-				<li class="tweak">Added a description for synth smartpack recharging method (use grab intent on an APC to recharge your smartpack. I bet you were today years old when you learned you could've been doing that since November).</li>
-				<li class="tweak">Paper scraps with a safe clue get renamed properly</li>
-				<li class="spellcheck">Disks are now 'bloodied', instead of 'bloddied'.</li>
-			</ul>
-			<h3 class="author">Vampmare updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">All xeno abilities now consider marine armour when attacking. Even acid, which will consider the acid resistance of the armour. This will result in xenos doing less damage than before for the initial stage, but it will be rebalanced over time.</li>
-				<li class="tweak">Adjusted most ability damage values slightly to compensate for the armour.</li>
-				<li class="tweak">Removed the RNG chance of marine armour blocking attacks.</li>
-				<li class="tweak">Berserker Eviscarate and Vanguard Pierce now ignores 20% of the target armour and Dancer Impale ignores 10%.</li>
-				<li class="tweak">Heavy armour no longer cover feet and hands.</li>
-				<li class="bugfix">Fixed Spitter acid spit not applying DoT to barricades.</li>
-				<li class="tweak">Upped Spitter DoT barricade damage slightly.</li>
-				<li class="tweak">Decreased Prae acid spit damage.</li>
-				<li class="tweak">Decreased Spitter acid DoT damage. Increased duration of Spitter acid DoT.</li>
-				<li class="tweak">Decreased acid spray damage slightly across the board when standing up.</li>
-				<li class="tweak">Lowered Oppressor Tail Lash windup. It now has a telegraph. Increased throw range to 5 tiles.</li>
 			</ul>
 </div>
 </body>

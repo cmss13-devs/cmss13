@@ -37,8 +37,7 @@
 			playtitlemusic()
 	else
 		to_chat(src, "You will no longer hear music in the game lobby.")
-		if(istype(mob, /mob/new_player))
-			src << sound(null, repeat = 0, wait = 0, volume = 85, channel = 1) // stop the jamsz
+		src << sound(null, repeat = 0, wait = 0, volume = 85, channel = SOUND_CHANNEL_LOBBY) // stop the jamsz
 
 /client/verb/togglemidis()
 	set name = "Silence Current Midi"
@@ -50,7 +49,7 @@
 		to_chat(src, "The currently playing midi has been silenced.")
 		var/sound/break_sound = sound(null, repeat = 0, wait = 0, channel = SOUND_CHANNEL_ADMIN_MIDI)
 		break_sound.priority = 250
-		src << break_sound	//breaks the client's sound output on channel 777
+		src << break_sound	//breaks the client's sound output on SOUND_CHANNEL_ADMIN_MIDI
 		if(src.mob.client.midi_silenced)	return
 		if(midi_playing)
 			total_silenced++
@@ -95,10 +94,12 @@
 	prefs.save_preferences()
 	if(prefs.toggles_sound & SOUND_AMBIENCE)
 		to_chat(src, "You will now hear ambient sounds.")
+		if(soundOutput)
+			soundOutput.update_ambience(null, TRUE)
 	else
 		to_chat(src, "You will no longer hear ambient sounds.")
-		src << sound(null, repeat = 0, wait = 0, volume = 0, channel = 1)
-		src << sound(null, repeat = 0, wait = 0, volume = 0, channel = 2)
+		src << sound(null, repeat = 0, wait = 0, volume = 0, channel = SOUND_CHANNEL_AMBIENCE)
+		src << sound(null, repeat = 0, wait = 0, volume = 0, channel = SOUND_CHANNEL_SOUNDSCAPE)
 
 //be special
 /client/verb/toggle_be_special(role in be_special_flags)

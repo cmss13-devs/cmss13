@@ -36,7 +36,7 @@
 	var/played			= 0
 	var/midi_silenced	= 0
 	var/datum/soundOutput/soundOutput
-	var/list/volume_preferences = list(1, 0.5, 1)//Game, music, admin midis
+	var/list/volume_preferences = list(1, 0.5, 1, 0.85)//Game, music, admin midis, lobby music
 
 		////////////
 		//SECURITY//

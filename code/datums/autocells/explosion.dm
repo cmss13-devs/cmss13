@@ -148,11 +148,11 @@
 		resistance += max(0, A.get_explosion_resistance())
 
 	// Blow stuff up
-	in_turf.ex_act(power, direction)
+	INVOKE_ASYNC(in_turf, /atom.proc/ex_act, power, direction, explosion_source, explosion_source_mob)
 	for(var/atom/A in in_turf)
 		if(A in exploded_atoms)
 			continue
-		A.ex_act(power, direction, explosion_source, explosion_source_mob)
+		INVOKE_ASYNC(A, /atom.proc/ex_act, power, direction, explosion_source, explosion_source_mob)
 		exploded_atoms += A
 		log_explosion(A, src)
 

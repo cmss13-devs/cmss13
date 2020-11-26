@@ -8,7 +8,7 @@
 	if(alert("Confirm deadmin? This procedure can be reverted at any time and will not carry over to next round, but you will lose all your admin powers in the meantime.", , "Yes", "No") == "No")
 		return
 
-	message_staff("[src] deadmined themselves.")
+	message_staff("[src] de-admined themselves.")
 	verbs += /client/proc/readmin_self
 	deadmin()
 	to_chat(src, "<br><br><span class='centerbold'><big>You are now a normal player. You can ascend back to adminhood at any time using the 'Re-admin Self' verb in your Admin panel.</big></span><br>")
@@ -20,7 +20,7 @@
 	verbs -= /client/proc/readmin_self
 	readmin()
 	to_chat(src, "<br><br><span class='centerbold'><big>You have ascended back to adminhood. All your verbs should be back where you left them.</big></span><br>")
-	message_staff("[src] readmined themselves.")
+	message_staff("[src] re-admined themselves.")
 
 /client/proc/becomelarva()
 	set name = "X: Lose Larva Protection"
@@ -168,10 +168,12 @@
 	if(alert("This will toggle a sleep/awake status on ALL mobs within your view range (for Administration purposes). Are you sure?",,"Yes","Cancel") == "Cancel")
 		return
 	for(var/mob/living/M in view())
-		if (M.sleeping > 0)
+		if (M.sleeping > 0) //if they're already slept, set their sleep to zero and remove the icon
 			M.sleeping = 0
+			M.RemoveSleepingIcon()
 		else
-			M.sleeping = 9999999
+			M.sleeping = 9999999 //if they're not, sleep them and add the sleep icon, so other marines nearby know not to mess with them.
+			M.AddSleepingIcon()
 
 	message_staff("[key_name(usr)] used Toggle Sleep In View.")
 	return

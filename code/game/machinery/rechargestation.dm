@@ -265,3 +265,12 @@
 			user.stop_pulling()
 			move_mob_inside(M)
 			add_fingerprint(user)
+
+#ifdef OBJECTS_PROXY_SPEECH
+// Transfers speech to occupant
+/obj/structure/machinery/recharge_station/hear_talk(mob/living/sourcemob, message, verb, language, italics)
+	if(!QDELETED(occupant) && istype(occupant) && occupant.stat != DEAD)
+		proxy_object_heard(src, sourcemob, occupant, message, verb, language, italics)
+	else
+		..(sourcemob, message, verb, language, italics)
+#endif // ifdef OBJECTS_PROXY_SPEECH

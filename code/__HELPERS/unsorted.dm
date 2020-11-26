@@ -2110,3 +2110,18 @@ var/list/WALLITEMS = list(
 /proc/CallAsync(datum/source, proctype, list/arguments)
 	set waitfor = FALSE
 	return call(source, proctype)(arglist(arguments))
+
+// Helper to proxy speech from an hearing object to a mob, usually containing
+// This allows hearing independently of speech broadcast by say.dm
+// Currently useful due to the lack of recursion by speech code and its perf impact
+// Disable by commenting/undefining the line below!
+#define OBJECTS_PROXY_SPEECH
+#ifdef OBJECTS_PROXY_SPEECH
+/proc/proxy_object_heard(obj/object, mob/living/sourcemob, mob/living/targetmob, message, verb, language, italics)
+	if(QDELETED(sourcemob) || !istype(sourcemob) || QDELETED(targetmob) || !istype(targetmob) || (targetmob.stat == DEAD))
+		return
+	targetmob.hear_say(message, verb, language, "", italics, sourcemob) // proxies speech itself to the mob
+	if(targetmob && targetmob.client && targetmob.client.prefs && !targetmob.client.prefs.lang_chat_disabled \
+	   && !targetmob.ear_deaf && targetmob.say_understands(sourcemob, language))
+		sourcemob.langchat_display_image(targetmob) // strap langchat display on
+#endif // ifdef OBJECTS_PROXY_SPEECH

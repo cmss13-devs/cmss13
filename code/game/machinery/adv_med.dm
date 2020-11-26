@@ -149,7 +149,14 @@
 		else
 	return
 
-
+#ifdef OBJECTS_PROXY_SPEECH
+// Transfers speech to occupant
+/obj/structure/machinery/bodyscanner/hear_talk(mob/living/sourcemob, message, verb, language, italics)
+	if(!QDELETED(occupant) && istype(occupant) && occupant.stat != DEAD)
+		proxy_object_heard(src, sourcemob, occupant, message, verb, language, italics)
+	else
+		..(sourcemob, message, verb, language, italics)
+#endif // ifdef OBJECTS_PROXY_SPEECH
 
 /obj/structure/machinery/body_scanconsole
 	name = "Body Scanner Console"

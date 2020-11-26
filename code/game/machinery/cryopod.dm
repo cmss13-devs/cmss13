@@ -509,3 +509,12 @@ var/global/list/frozen_items = list(SQUAD_NAME_1 = list(), SQUAD_NAME_2 = list()
 	stop_processing()
 	icon_state = "body_scanner_0"
 	playsound(src, 'sound/machines/pod_open.ogg', 30)
+
+#ifdef OBJECTS_PROXY_SPEECH
+// Transfers speech to occupant
+/obj/structure/machinery/cryopod/hear_talk(mob/living/sourcemob, message, verb, language, italics)
+	if(!QDELETED(occupant) && istype(occupant))
+		proxy_object_heard(src, sourcemob, occupant, message, verb, language, italics)
+	else
+		..(sourcemob, message, verb, language, italics)
+#endif // ifdef OBJECTS_PROXY_SPEECH

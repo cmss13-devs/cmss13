@@ -4,6 +4,8 @@
 	uses_ethnicity = TRUE //Uses ethnic presets
 
 	unarmed_type = /datum/unarmed_attack/punch/strong
+	pain_type = /datum/pain/synthetic
+	stamina_type = /datum/stamina/none
 	rarity_value = 2
 
 	total_health = 150 //more health than regular humans
@@ -40,8 +42,6 @@
 /datum/species/synthetic/handle_post_spawn(mob/living/carbon/human/H)
 	H.set_languages(list("English", "Russian", "Tradeband", "Sainja", "Xenomorph"))
 	living_human_list -= H
-	H.pain = new /datum/pain/synthetic(H) // Has to be here, cause of stupid spawn code
-	H.stamina = new /datum/stamina/synthetic(H)
 	return ..()
 
 /datum/species/synthetic/second_gen_synthetic
@@ -56,6 +56,7 @@
 	icobase = 'icons/mob/humans/species/r_synthetic.dmi'
 	deform = 'icons/mob/humans/species/r_synthetic.dmi'
 
+	pain_type = /datum/pain/synthetic/early_synthetic
 	rarity_value = 1.5
 	//slowdown = 1.3 //Slower than later synths
 	total_health = 200 //But more durable
@@ -67,7 +68,3 @@
 	stun_reduction = 2
 
 	inherent_verbs = null
-
-/datum/species/synthetic/early_synthetic/handle_post_spawn(mob/living/carbon/human/H)
-	. = ..()
-	H.pain = new /datum/pain/synthetic/early_synthetic(H) // Has to be here, cause of stupid spawn code

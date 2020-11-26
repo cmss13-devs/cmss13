@@ -9,6 +9,8 @@
 	flags = IS_WHITELISTED|HAS_SKIN_COLOR|NO_SCAN|NO_POISON
 	unarmed_type = /datum/unarmed_attack/punch/strong
 	secondary_unarmed_type = /datum/unarmed_attack/bite/strong
+	pain_type = /datum/pain/yautja
+	stamina_type = /datum/stamina/none
 	blood_color = "#20d450"
 	flesh_color = "#907E4A"
 	speech_sounds = list('sound/voice/pred_click1.ogg', 'sound/voice/pred_click2.ogg')
@@ -137,7 +139,4 @@
 	var/datum/mob_hud/medical/advanced/A = huds[MOB_HUD_MEDICAL_ADVANCED]
 	A.remove_from_hud(H)
 	H.set_languages(list("Sainja"))
-	H.pain = new /datum/pain/yautja(H) // Has to be here, cause of stupid spawn code
-	H.stamina = new /datum/stamina/yautja(H)
-
 	return ..()

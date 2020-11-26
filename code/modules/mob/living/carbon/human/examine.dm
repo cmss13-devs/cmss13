@@ -150,6 +150,10 @@
 	if(wear_id)
 		msg += "[t_He] [t_is] wearing [wear_id.get_examine_line()].\n"
 
+	//Admin-slept
+	if(sleeping > 8000000)
+		msg += SPAN_HIGHDANGER("<B>This player has been slept by staff.</B>\n")
+
 	//Jitters
 	if(is_jittery)
 		if(jitteriness >= 300)

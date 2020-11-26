@@ -412,10 +412,11 @@
 	var/list/telegraph_atom_list = list()
 
 	// Code to get a 2x3 area of turfs
-	var/facing = get_dir(X, A)
-	var/turf/infront = get_step(get_turf(X), facing)
-	var/turf/infront_left = get_step(infront, turn(facing, 90))
-	var/turf/infront_right = get_step(infront, turn(facing, -90))
+	var/turf/root = get_turf(X)
+	var/facing = Get_Compass_Dir(X, A)
+	var/turf/infront = get_step(root, facing)
+	var/turf/infront_left = get_step(root, turn(facing, 45))
+	var/turf/infront_right = get_step(root, turn(facing, -45))
 	temp_turfs += infront
 	temp_turfs += infront_left
 	temp_turfs += infront_right
@@ -436,13 +437,6 @@
 
 		target_turfs += next_turf
 		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/brown(next_turf, windup)
-
-	if (facing in diagonals)
-		var/diag_turf = get_step(X, facing)
-
-		for (var/cardinal_dir in cardinal)
-			if ((facing & cardinal_dir) != 0)
-				target_turfs += get_step(diag_turf, cardinal_dir)
 
 	if(!do_after(X, windup, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 		to_chat(X, SPAN_XENOWARNING("You cancel your tail lash."))

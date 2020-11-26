@@ -71,27 +71,28 @@
 
 
 /obj/item/device/walkman/proc/break_sound()
-	var/sound/break_sound = sound(null,0,0,3)
+	var/sound/break_sound = sound(null, 0, 0, SOUND_CHANNEL_WALKMAN)
 	break_sound.priority = 255
-	update_song(break_sound,current_listener,0)
+	update_song(break_sound, current_listener, 0)
 
-/obj/item/device/walkman/proc/update_song(sound/S,mob/M,flags = SOUND_UPDATE)
+/obj/item/device/walkman/proc/update_song(sound/S, mob/M, flags = SOUND_UPDATE)
 	if(!istype(M) || !istype(S)) return
 	if(M.ear_deaf > 0)
 		flags |= SOUND_MUTE
 	S.status = flags
 	S.volume = src.volume
+	S.channel = SOUND_CHANNEL_WALKMAN
 	sound_to(M,S)
 
 /obj/item/device/walkman/proc/pause(mob/user)
 	if(!current_song) return
 	paused = TRUE
-	update_song(current_song,current_listener,SOUND_PAUSED | SOUND_UPDATE)
+	update_song(current_song,current_listener, SOUND_PAUSED | SOUND_UPDATE)
 
 /obj/item/device/walkman/proc/play()
 	if(!current_song)
 		if(current_playlist.len > 0)
-			current_song = sound(current_playlist[pl_index],0,0,3,volume)
+			current_song = sound(current_playlist[pl_index], 0, 0, SOUND_CHANNEL_WALKMAN, volume)
 			current_song.status = SOUND_STREAM
 		else
 			return
@@ -149,7 +150,7 @@
 		pl_index++
 	else
 		pl_index = 1
-	current_song = sound(current_playlist[pl_index],0,0,3,volume)
+	current_song = sound(current_playlist[pl_index], 0, 0, SOUND_CHANNEL_WALKMAN, volume)
 	current_song.status = SOUND_STREAM
 	play()
 	to_chat(user,SPAN_INFO("You change the song"))
@@ -182,9 +183,9 @@
 		return
 
 	if(current_listener.ear_deaf > 0 && current_song && !(current_song.status & SOUND_MUTE))
-		update_song(current_song,current_listener)
+		update_song(current_song, current_listener)
 	if(current_listener.ear_deaf == 0 && current_song && current_song.status & SOUND_MUTE)
-		update_song(current_song,current_listener)
+		update_song(current_song, current_listener)
 
 /obj/item/device/walkman/verb/play_pause()
 	set name = "Play/Pause"
@@ -221,12 +222,12 @@
 	if(tmp > 100) tmp = 100
 	if(tmp < 0) tmp = 0
 	volume = tmp
-	update_song(current_song,current_listener)
+	update_song(current_song, current_listener)
 
 /obj/item/device/walkman/proc/restart_song(mob/user)
 	if(user.is_mob_incapacitated() || !current_song) return
 
-	update_song(current_song,current_listener,0)
+	update_song(current_song, current_listener, 0)
 	to_chat(user,SPAN_INFO("You restart the song"))
 
 /obj/item/device/walkman/verb/restart_current_song()

@@ -77,6 +77,8 @@
 		return 0
 	if(!operating) //in case of emag
 		operating = 1
+
+	playsound(loc, 'sound/machines/blastdoor.ogg', 20, 0)
 	flick(initial(icon_state) + "c0", src)
 	icon_state = initial(icon_state) + "0"
 	SetOpacity(0)
@@ -94,6 +96,8 @@
 	if(operating)
 		return
 	operating = 1
+	playsound(loc, 'sound/machines/blastdoor.ogg', 20, 0)
+
 	layer = PODDOOR_CLOSED_LAYER
 	flick(initial(icon_state) + "c1", src)
 	icon_state = initial(icon_state) + "1"

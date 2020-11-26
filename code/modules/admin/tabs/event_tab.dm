@@ -528,7 +528,7 @@
 			var/sound/S = sound(soundin, 0, 0, SOUND_CHANNEL_ADMIN_MIDI)
 			for(var/mob/M in GLOB.player_list)
 				if(M.client.prefs.toggles_sound & SOUND_MIDI)
-					S.volume = 100 * M.client.volume_preferences[VOLUME_ADM]
+					S.volume = 50 * M.client.volume_preferences[VOLUME_ADM]
 					sound_to(M, S)
 					heard_midi++
 		if("Local")
@@ -542,7 +542,7 @@
 					return
 
 				if(target.client.prefs.toggles_sound & SOUND_MIDI)
-					playsound_client(src, soundin, channel = SOUND_CHANNEL_ADMIN_MIDI, vol_cat = VOLUME_ADM)
+					playsound_client(src, soundin, null, 50, channel = SOUND_CHANNEL_ADMIN_MIDI, vol_cat = VOLUME_ADM)
 					heard_midi = "[target] ([target.key])"
 				else
 					heard_midi = 0

@@ -9,7 +9,7 @@
 	throwforce = 2
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 10
-	
+
 
 	var/secured = 1
 	var/list/attached_overlays = null
@@ -85,7 +85,7 @@
 	..()
 
 /obj/item/device/assembly/process()
-	processing_objects.Remove(src)
+	STOP_PROCESSING(SSobj, src)
 	return
 
 /obj/item/device/assembly/examine(mob/user)

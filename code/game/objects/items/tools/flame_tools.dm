@@ -41,7 +41,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 /obj/item/tool/candle/Destroy()
 	if(heat_source)
-		processing_objects.Remove(src)
+		STOP_PROCESSING(SSobj, src)
 	if(ismob(src.loc))
 		src.loc.SetLuminosity(-CANDLE_LUM)
 	else
@@ -67,11 +67,11 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			O.show_message(flavor_text, 1)
 		SetLuminosity(CANDLE_LUM)
 		update_icon()
-		processing_objects.Add(src)
+		START_PROCESSING(SSobj, src)
 
 /obj/item/tool/candle/process()
 	if(!heat_source)
-		processing_objects.Remove(src)
+		STOP_PROCESSING(SSobj, src)
 		return
 	wax--
 	if(!wax)
@@ -88,7 +88,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		update_icon()
 		SetLuminosity(0)
 		user.SetLuminosity(-CANDLE_LUM)
-		processing_objects.Remove(src)
+		STOP_PROCESSING(SSobj, src)
 
 
 /obj/item/tool/candle/pickup(mob/user)
@@ -114,13 +114,13 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	icon = 'icons/obj/items/cigarettes.dmi'
 	icon_state = "match_unlit"
 	var/burnt = 0
-	var/smoketime = 5
+	var/smoketime = 10 SECONDS
 	w_class = SIZE_TINY
 
 	attack_verb = list("burnt", "singed")
 
-/obj/item/tool/match/process()
-	smoketime--
+/obj/item/tool/match/process(delta_time)
+	smoketime -= delta_time SECONDS
 	if(smoketime < 1)
 		burn_out()
 		return
@@ -129,7 +129,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 /obj/item/tool/match/Destroy()
 	if(heat_source)
-		processing_objects.Remove(src)
+		STOP_PROCESSING(SSobj, src)
 	. = ..()
 
 /obj/item/tool/match/dropped(mob/user)
@@ -147,7 +147,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		loc.SetLuminosity(2)
 	else
 		SetLuminosity(2)
-	processing_objects.Add(src)
+	START_PROCESSING(SSobj, src)
 	update_icon()
 
 /obj/item/tool/match/proc/burn_out(mob/user)
@@ -161,7 +161,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	SetLuminosity(0)
 	name = "burnt match"
 	desc = "A match. This one has seen better days."
-	processing_objects.Remove(src)
+	STOP_PROCESSING(SSobj, src)
 
 /obj/item/tool/lighter/dropped(mob/user)
 	if(heat_source && src.loc != user)
@@ -186,7 +186,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	var/icon_off = "cigoff"
 	var/type_butt = /obj/item/trash/cigbutt
 	var/lastHolder = null
-	var/smoketime = 300
+	var/smoketime = 10 MINUTES
 	var/chem_volume = 15
 
 /obj/item/clothing/mask/cigarette/Initialize()
@@ -328,13 +328,13 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		if(flavor_text)
 			var/turf/T = get_turf(src)
 			T.visible_message(flavor_text)
-		processing_objects.Add(src)
+		START_PROCESSING(SSobj, src)
 
-/obj/item/clothing/mask/cigarette/process()
+/obj/item/clothing/mask/cigarette/process(delta_time)
 	var/mob/living/M = loc
 	if(isliving(loc) && raiseEventSync(M, EVENT_PREIGNITION_CHECK) != HALTED)
 		M.IgniteMob()
-	smoketime--
+	smoketime -= delta_time SECONDS
 	if(smoketime < 1)
 		die()
 		return
@@ -371,7 +371,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		to_chat(M, SPAN_NOTICE("Your [name] goes out."))
 		M.temp_drop_inv_item(src)	//un-equip it so the overlays can update
 		M.update_inv_wear_mask()
-	processing_objects.Remove(src)
+	STOP_PROCESSING(SSobj, src)
 	qdel(src)
 
 /obj/item/clothing/mask/cigarette/ucigarette
@@ -404,7 +404,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	type_butt = /obj/item/trash/cigbutt/cigarbutt
 	throw_speed = SPEED_VERY_FAST
 	item_state = "cigar_off"
-	smoketime = 1500
+	smoketime = 50 MINUTES
 	chem_volume = 20
 
 /obj/item/clothing/mask/cigarette/cigar/Initialize()
@@ -495,11 +495,11 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	item_state = "pipeoff"
 	icon_on = "pipeon"  //Note - these are in masks.dmi
 	icon_off = "pipeoff"
-	smoketime = 100
+	smoketime = 200 SECONDS
 
-/obj/item/clothing/mask/cigarette/pipe/process()
+/obj/item/clothing/mask/cigarette/pipe/process(delta_time)
 	var/turf/location = get_turf(src)
-	smoketime--
+	smoketime -= delta_time SECONDS
 	if(smoketime < 1)
 		new /obj/effect/decal/cleanable/ash(location)
 		if(ismob(loc))
@@ -509,7 +509,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			icon_state = icon_off
 			item_state = icon_off
 			M.update_inv_wear_mask(0)
-		processing_objects.Remove(src)
+		STOP_PROCESSING(SSobj, src)
 		return
 
 /obj/item/clothing/mask/cigarette/pipe/attack_self(mob/user as mob) //Refills the pipe. Can be changed to an attackby later, if loose tobacco is added to vendors or something.
@@ -518,7 +518,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		heat_source = 0
 		icon_state = icon_off
 		item_state = icon_off
-		processing_objects.Remove(src)
+		STOP_PROCESSING(SSobj, src)
 		return
 	if(smoketime <= 0)
 		to_chat(user, SPAN_NOTICE("You refill the pipe with tobacco."))
@@ -561,7 +561,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	item_state = "cobpipeoff"
 	icon_on = "cobpipeon"  //Note - these are in masks.dmi
 	icon_off = "cobpipeoff"
-	smoketime = 400
+	smoketime = 800 SECONDS
 
 
 
@@ -630,7 +630,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 					user.visible_message(SPAN_NOTICE("After a few attempts, [user] manages to light the [src], they however burn their finger in the process."))
 
 			user.SetLuminosity(2)
-			processing_objects.Add(src)
+			START_PROCESSING(SSobj, src)
 		else
 			turn_off(user, 0)
 	else
@@ -650,7 +650,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 				bearer.visible_message(SPAN_NOTICE("[bearer] quietly shuts off the [src]."))
 
 		bearer.SetLuminosity(-2)
-		processing_objects.Remove(src)
+		STOP_PROCESSING(SSobj, src)
 		return 1
 	return 0
 

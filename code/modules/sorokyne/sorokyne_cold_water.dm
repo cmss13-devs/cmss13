@@ -22,7 +22,7 @@
 		return
 
 	cause_damage(M)
-	processing_objects.Add(src)
+	START_PROCESSING(SSobj, src)
 
 
 /obj/effect/blocker/sorokyne_cold_water/process()
@@ -31,7 +31,7 @@
 		mobs_present++
 		cause_damage(M)
 	if(mobs_present < 1)
-		processing_objects.Remove(src)
+		STOP_PROCESSING(SSobj, src)
 
 
 /obj/effect/blocker/sorokyne_cold_water/proc/cause_damage(mob/living/M)
@@ -39,9 +39,9 @@
 		return
 	if(isXeno(M))
 		return
-	
+
 	var/dam_amount = COLD_WATER_DAMAGE
-	if(isSynth(M) || isYautja(M)) 
+	if(isSynth(M) || isYautja(M))
 		dam_amount -= 0.5
 	if(M.lying)
 		M.apply_damage(5*dam_amount,BURN)
@@ -56,7 +56,7 @@
 			M.bodytemperature -= COLD_WATER_TEMP_EFFECT
 		else
 			M.bodytemperature = MINIMUM_TEMP
-		if(!isSynth(M)) 
+		if(!isSynth(M))
 			to_chat(M, SPAN_DANGER("You feel your body start to shake as the water chills you to the bone.."))
 
 #undef COLD_WATER_DAMAGE

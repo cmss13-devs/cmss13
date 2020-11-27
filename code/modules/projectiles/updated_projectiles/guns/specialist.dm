@@ -529,15 +529,15 @@
 	if(auto_fire)
 		src.drain += 150
 		if(!motion_detector)
-			processing_objects.Add(src)
+			START_PROCESSING(SSobj, src)
 	if(!auto_fire)
 		src.drain -= 150
 		if(!motion_detector)
-			processing_objects.Remove(src)
+			STOP_PROCESSING(SSobj, src)
 
 /obj/item/weapon/gun/smartgun/process()
 	if(!auto_fire && !motion_detector)
-		processing_objects.Remove(src)
+		STOP_PROCESSING(SSobj, src)
 	if(auto_fire)
 		if(ishuman(loc) && (flags_item & WIELDED))
 			var/human_user = loc
@@ -724,11 +724,11 @@
 	if(motion_detector)
 		src.drain += 15
 		if(!auto_fire)
-			processing_objects.Add(src)
+			START_PROCESSING(SSobj, src)
 	if(!motion_detector)
 		src.drain -= 15
 		if(!auto_fire)
-			processing_objects.Remove(src)
+			STOP_PROCESSING(SSobj, src)
 
 /obj/item/weapon/gun/smartgun/dirty
 	name = "\improper M56D 'Dirty' smartgun"

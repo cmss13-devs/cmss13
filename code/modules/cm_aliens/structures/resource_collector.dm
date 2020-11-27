@@ -26,7 +26,7 @@
 	if(new_node)
 		connected_node = new_node
 		connected_node.update_icon()
-	processing_objects.Add(src)
+	START_PROCESSING(SSobj, src)
 	update_icon()
 
 /obj/effect/alien/resin/collector/Destroy()
@@ -34,7 +34,7 @@
 	if(connected_node)
 		connected_node.update_icon()
 	connected_node = null
-	processing_objects.Remove(src)
+	STOP_PROCESSING(SSobj, src)
 	. = ..()
 
 

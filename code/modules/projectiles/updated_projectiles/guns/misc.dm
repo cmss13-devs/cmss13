@@ -21,9 +21,9 @@
 /obj/item/weapon/gun/minigun/set_gun_config_values()
 	..()
 	fire_delay = FIRE_DELAY_TIER_10
-	
+
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_3
-	
+
 	scatter = SCATTER_AMOUNT_TIER_9 // Most of the scatter should come from the recoil
 
 	damage_mult = BASE_BULLET_DAMAGE_MULT
@@ -143,7 +143,7 @@
 /obj/item/weapon/gun/launcher/spike/Destroy()
 	. = ..()
 	remove_from_missing_pred_gear(src)
-	processing_objects.Remove(src)
+	STOP_PROCESSING(SSobj, src)
 
 /obj/item/weapon/gun/launcher/spike/process()
 	if(spikes < max_spikes && world.time > last_regen + 100 && prob(70))
@@ -153,7 +153,7 @@
 
 /obj/item/weapon/gun/launcher/spike/New()
 	..()
-	processing_objects.Add(src)
+	START_PROCESSING(SSobj, src)
 	last_regen = world.time
 	update_icon()
 	verbs -= /obj/item/weapon/gun/verb/field_strip //We don't want these to show since they're useless.

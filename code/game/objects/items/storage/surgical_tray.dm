@@ -8,20 +8,16 @@
 	max_storage_space = 24
 	use_sound = "toolbox"
 	matter = list("plastic" = 3000)
-	var/empty = FALSE
 	can_hold = list(
 		/obj/item/tool/surgery,
 		/obj/item/stack/medical/advanced/bruise_pack,
 		/obj/item/stack/nanopaste
 	)
 
-/obj/item/storage/surgical_tray/empty
-	empty = TRUE
+/obj/item/storage/surgical_tray/empty/fill_preset_inventory()
+	return
 
-/obj/item/storage/surgical_tray/New()
-	..()
-	if(empty)
-		return
+/obj/item/storage/surgical_tray/fill_preset_inventory()
 	new /obj/item/tool/surgery/scalpel/manager(src)
 	new /obj/item/tool/surgery/scalpel(src)
 	new /obj/item/tool/surgery/hemostat(src)

@@ -20,7 +20,6 @@
 		/obj/item/explosive/grenade,
 		/obj/item/tool
 	) //to prevent powergaming.
-	var/empty = 0 //whether the kit starts empty
 	var/icon_full //icon state to use when kit is full
 	var/possible_icons_full
 
@@ -32,14 +31,10 @@
 	else
 		icon_full = icon_state
 
-	if(!empty)
-		fill_firstaid_kit()
-
 	update_icon()
 
-
 /obj/item/storage/firstaid/update_icon()
-	if(!contents.len  || empty)
+	if(!contents.len)
 		icon_state = "kit_empty"
 	else
 		icon_state = icon_full
@@ -50,11 +45,6 @@
 		C.swap_hand()
 		open(user)
 
-//to fill medkits with stuff when spawned
-/obj/item/storage/firstaid/proc/fill_firstaid_kit()
-	return
-
-
 /obj/item/storage/firstaid/fire
 	name = "fire first-aid kit"
 	desc = "It's an emergency medical kit for when the toxins lab <i>-spontaneously-</i> burns down."
@@ -62,22 +52,23 @@
 	item_state = "firstaid-ointment"
 	possible_icons_full = list("ointment","firefirstaid")
 
-	fill_firstaid_kit()
-		new /obj/item/device/healthanalyzer(src)
-		new /obj/item/stack/medical/ointment(src)
-		new /obj/item/stack/medical/ointment(src)
-		new /obj/item/reagent_container/hypospray/autoinjector/kelotane(src)
-		new /obj/item/reagent_container/hypospray/autoinjector/kelotane(src)
-		new /obj/item/reagent_container/hypospray/autoinjector/kelotane(src)
-		new /obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol(src)
 
-/obj/item/storage/firstaid/fire/empty
-	empty = TRUE
+/obj/item/storage/firstaid/fire/fill_preset_inventory()
+	new /obj/item/device/healthanalyzer(src)
+	new /obj/item/stack/medical/ointment(src)
+	new /obj/item/stack/medical/ointment(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/kelotane(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/kelotane(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/kelotane(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol(src)
+
+/obj/item/storage/firstaid/fire/empty/fill_preset_inventory()
+	return
 
 /obj/item/storage/firstaid/regular
 	icon_state = "firstaid"
 
-	fill_firstaid_kit()
+/obj/item/storage/firstaid/regular/fill_preset_inventory()
 		new /obj/item/device/healthanalyzer(src)
 		new /obj/item/reagent_container/hypospray/autoinjector/skillless(src)
 		new /obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol(src)
@@ -86,8 +77,8 @@
 		new /obj/item/stack/medical/ointment(src)
 		new /obj/item/stack/medical/splint(src)
 
-/obj/item/storage/firstaid/regular/empty
-	empty = TRUE
+/obj/item/storage/firstaid/regular/empty/fill_preset_inventory()
+	return
 
 /obj/item/storage/firstaid/toxin
 	name = "toxin first aid"
@@ -96,15 +87,15 @@
 	item_state = "firstaid-toxin"
 	possible_icons_full = list("antitoxin","antitoxfirstaid","antitoxfirstaid2","antitoxfirstaid3")
 
-	fill_firstaid_kit()
-		new /obj/item/device/healthanalyzer(src)
-		new /obj/item/storage/pill_bottle/antitox(src)
-		new /obj/item/reagent_container/pill/antitox(src)
-		new /obj/item/reagent_container/pill/antitox(src)
-		new /obj/item/reagent_container/pill/antitox(src)
+/obj/item/storage/firstaid/toxin/fill_preset_inventory()
+	new /obj/item/device/healthanalyzer(src)
+	new /obj/item/storage/pill_bottle/antitox(src)
+	new /obj/item/reagent_container/pill/antitox(src)
+	new /obj/item/reagent_container/pill/antitox(src)
+	new /obj/item/reagent_container/pill/antitox(src)
 
-/obj/item/storage/firstaid/toxin/empty
-	empty = TRUE
+/obj/item/storage/firstaid/toxin/empty/fill_preset_inventory()
+	return
 
 /obj/item/storage/firstaid/o2
 	name = "oxygen deprivation first aid"
@@ -112,17 +103,17 @@
 	icon_state = "o2"
 	item_state = "firstaid-o2"
 
-	fill_firstaid_kit()
-		new /obj/item/device/healthanalyzer(src)
-		new /obj/item/reagent_container/pill/dexalin(src)
-		new /obj/item/reagent_container/pill/dexalin(src)
-		new /obj/item/reagent_container/hypospray/autoinjector/dexalinp(src)
-		new /obj/item/reagent_container/hypospray/autoinjector/dexalinp(src)
-		new /obj/item/reagent_container/hypospray/autoinjector/dexalinp(src)
-		new /obj/item/reagent_container/hypospray/autoinjector/inaprovaline(src)
+/obj/item/storage/firstaid/o2/fill_preset_inventory()
+	new /obj/item/device/healthanalyzer(src)
+	new /obj/item/reagent_container/pill/dexalin(src)
+	new /obj/item/reagent_container/pill/dexalin(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/dexalinp(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/dexalinp(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/dexalinp(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/inaprovaline(src)
 
-/obj/item/storage/firstaid/o2/empty
-	empty = TRUE
+/obj/item/storage/firstaid/o2/empty/fill_preset_inventory()
+	return
 
 /obj/item/storage/firstaid/adv
 	name = "advanced first-aid kit"
@@ -130,33 +121,33 @@
 	icon_state = "advfirstaid"
 	item_state = "firstaid-advanced"
 
-	fill_firstaid_kit()
-		new /obj/item/reagent_container/hypospray/autoinjector/tricord(src)
-		new /obj/item/stack/medical/advanced/bruise_pack(src)
-		new /obj/item/stack/medical/advanced/bruise_pack(src)
-		new /obj/item/stack/medical/advanced/bruise_pack(src)
-		new /obj/item/stack/medical/advanced/ointment(src)
-		new /obj/item/stack/medical/advanced/ointment(src)
-		new /obj/item/stack/medical/splint(src)
+/obj/item/storage/firstaid/adv/fill_preset_inventory()
+	new /obj/item/reagent_container/hypospray/autoinjector/tricord(src)
+	new /obj/item/stack/medical/advanced/bruise_pack(src)
+	new /obj/item/stack/medical/advanced/bruise_pack(src)
+	new /obj/item/stack/medical/advanced/bruise_pack(src)
+	new /obj/item/stack/medical/advanced/ointment(src)
+	new /obj/item/stack/medical/advanced/ointment(src)
+	new /obj/item/stack/medical/splint(src)
 
-/obj/item/storage/firstaid/adv/empty
-	empty = TRUE
+/obj/item/storage/firstaid/adv/empty/fill_preset_inventory()
+	return
 
 /obj/item/storage/firstaid/rad
 	name = "radiation first-aid kit"
 	desc = "Contains treatment for radiation exposure"
 	icon_state = "purplefirstaid"
 
-	fill_firstaid_kit()
-		new /obj/item/reagent_container/pill/russianRed(src)
-		new /obj/item/reagent_container/pill/russianRed(src)
-		new /obj/item/reagent_container/pill/russianRed(src)
-		new /obj/item/reagent_container/pill/russianRed(src)
-		new /obj/item/reagent_container/hypospray/autoinjector/bicaridine(src)
-		new /obj/item/reagent_container/hypospray/autoinjector/bicaridine(src)
+/obj/item/storage/firstaid/rad/fill_preset_inventory()
+	new /obj/item/reagent_container/pill/russianRed(src)
+	new /obj/item/reagent_container/pill/russianRed(src)
+	new /obj/item/reagent_container/pill/russianRed(src)
+	new /obj/item/reagent_container/pill/russianRed(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/bicaridine(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/bicaridine(src)
 
-/obj/item/storage/firstaid/rad/empty
-	empty = TRUE
+/obj/item/storage/firstaid/rad/empty/fill_preset_inventory()
+	return
 
 	/*
  * Syringe Case
@@ -182,32 +173,28 @@
 
 /obj/item/storage/syringe_case/regular
 
-/obj/item/storage/syringe_case/regular/Initialize()
-	. = ..()
+/obj/item/storage/syringe_case/regular/fill_preset_inventory()
 	new /obj/item/reagent_container/syringe( src )
 	new /obj/item/reagent_container/glass/bottle/inaprovaline( src )
 	new /obj/item/reagent_container/glass/bottle/tricordrazine( src )
 
 /obj/item/storage/syringe_case/burn
 
-/obj/item/storage/syringe_case/burn/Initialize()
-	. = ..()
+/obj/item/storage/syringe_case/burn/fill_preset_inventory()
 	new /obj/item/reagent_container/syringe( src )
 	new /obj/item/reagent_container/glass/bottle/kelotane( src )
 	new /obj/item/reagent_container/glass/bottle/tricordrazine( src )
 
 /obj/item/storage/syringe_case/tox
 
-/obj/item/storage/syringe_case/tox/Initialize()
-	. = ..()
+/obj/item/storage/syringe_case/tox/fill_preset_inventory()
 	new /obj/item/reagent_container/syringe( src )
 	new /obj/item/reagent_container/glass/bottle/antitoxin( src )
 	new /obj/item/reagent_container/glass/bottle/antitoxin( src )
 
 /obj/item/storage/syringe_case/oxy
 
-/obj/item/storage/syringe_case/oxy/Initialize()
-	. = ..()
+/obj/item/storage/syringe_case/oxy/fill_preset_inventory()
 	new /obj/item/reagent_container/syringe( src )
 	new /obj/item/reagent_container/glass/bottle/inaprovaline( src )
 	new /obj/item/reagent_container/glass/bottle/dexalin( src )
@@ -237,8 +224,7 @@
 	var/skilllock = 1
 	var/pill_type_to_fill //type of pill to use to fill in the bottle in /Initialize()
 
-/obj/item/storage/pill_bottle/Initialize()
-	. = ..()
+/obj/item/storage/pill_bottle/fill_preset_inventory()
 	if(pill_type_to_fill)
 		for(var/i=1 to max_storage_space)
 			new pill_type_to_fill(src)

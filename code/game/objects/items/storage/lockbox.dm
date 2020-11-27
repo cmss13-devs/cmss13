@@ -53,8 +53,7 @@
 	name = "\improper lockbox of W-Y implants"
 	req_access = list(ACCESS_MARINE_BRIG)
 
-/obj/item/storage/lockbox/loyalty/Initialize()
-	. = ..()
+/obj/item/storage/lockbox/loyalty/fill_preset_inventory()
 	new /obj/item/implantcase/loyalty(src)
 	new /obj/item/implantcase/loyalty(src)
 	new /obj/item/implantcase/loyalty(src)
@@ -66,6 +65,5 @@
 	desc = "You have a bad feeling about opening this."
 	req_access = list(ACCESS_MARINE_BRIG)
 
-/obj/item/storage/lockbox/clusterbang/Initialize()
-	. = ..()
+/obj/item/storage/lockbox/clusterbang/fill_preset_inventory()
 	new /obj/item/explosive/grenade/flashbang/clusterbang(src)

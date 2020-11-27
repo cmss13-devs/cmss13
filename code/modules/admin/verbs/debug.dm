@@ -56,9 +56,12 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 				else
 					return
 
-	if(target.is_datum_protected())
-		to_chat(usr, SPAN_WARNING("This datum is protected. Access Denied"))
-		return
+	if (targetselected)
+		if(QDELETED(target))
+			return
+		if(istype(target) && target.is_datum_protected())
+			to_chat(usr, SPAN_WARNING("This datum is protected. Access Denied"))
+			return
 
 	var/procname = input("Proc path, eg: /proc/fake_blood","Path:", null) as text|null
 	if(!procname)	

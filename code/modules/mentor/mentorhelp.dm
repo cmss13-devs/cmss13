@@ -12,6 +12,9 @@
 	// If this thread is still open
 	var/open = TRUE
 
+	// Whether the thread is actually ready to use or was just blindly instanciated
+	var/ready = FALSE
+
 	// History of messages sent between the author and the mentor
 	var/list/history = list()
 
@@ -201,11 +204,10 @@
 			return
 
 	var/message = input("Please enter your message:", "Mentor Help", null, null) as message|null
-	if(!message)
-		open = FALSE
-		return
-
-	send_message(sender, message)
+	if(message)
+		ready = TRUE
+		send_message(sender, message)
+	return
 
 /*
  *    Marking
@@ -274,18 +276,20 @@
 		return
 
 	// Make sure it's being closed by staff or the mentor handling the thread
-	if(mentor && closer && closer != mentor && !AHOLD_IS_MOD(closer.admin_holder))
+	if(mentor && closer && (closer != mentor) && (closer != author) && !AHOLD_IS_MOD(closer.admin_holder))
 		to_chat(closer, SPAN_NOTICE("<b>NOTICE:</b> Another mentor is handling this thread!"))
 		return
 
 	open = FALSE
 
+	if(closer)
+		log_message("[closer.key] closed [author_key]'s mentorhelp")
+		if(closer == author)
+			to_chat(author, SPAN_NOTICE("You have closed your mentorhelp thread."))
+			message_staff(SPAN_NOTICE("<b>NOTICE:</b> <font style='color:red;'>[author_key]</font> closed their mentorhelp thread."))
+			return
 	to_chat(author, SPAN_NOTICE("Your mentorhelp thread has been closed."))
 	message_staff(SPAN_NOTICE("<b>NOTICE:</b> <font style='color:red;'>[author_key]</font>'s mentorhelp thread has been closed."))
-	if(!closer)
-		return
-
-	log_message("[closer.key] closed [author_key]'s mentorhelp")
 
 // We handle all clicks and links and yadda internally
 /datum/mentorhelp/Topic(var/href, var/list/href_list)

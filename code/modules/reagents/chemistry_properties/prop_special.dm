@@ -19,6 +19,7 @@
 	description = "The chemical regulates its own metabolization and can thus never cause overdosis."
 	rarity = PROPERTY_LEGENDARY
 	category = PROPERTY_TYPE_METABOLITE
+	max_level = 1
 
 /datum/chem_property/special/regulating/reset_reagent()
 	holder.flags = initial(holder.flags)
@@ -78,6 +79,7 @@
 	rarity = PROPERTY_DISABLED
 	category = PROPERTY_TYPE_ANOMALOUS
 	value = 16
+	max_level = 6
 
 /datum/chem_property/special/ciphering/process(mob/living/M, var/potency = 1)
 	if(!hive_datum[level]) // This should probably always be valid
@@ -94,6 +96,7 @@
 	name = PROPERTY_CIPHERING_PREDATOR
 	code = "PCI"
 	rarity = PROPERTY_DISABLED // this one should always be disabled, even if ciphering is not
+	max_level = 6
 
 /datum/chem_property/special/ciphering/predator/reagent_added(atom/A, datum/reagent/R, amount)
 	. = ..()
@@ -122,6 +125,7 @@
 	rarity = PROPERTY_ADMIN
 	category = PROPERTY_TYPE_METABOLITE|PROPERTY_TYPE_ANOMALOUS|PROPERTY_TYPE_CATALYST
 	value = 666
+	max_level = 2
 
 /datum/chem_property/special/crossmetabolizing/pre_process(mob/living/M)
 	if(!ishuman(M))
@@ -186,6 +190,7 @@
 	rarity = PROPERTY_ADMIN
 	category = PROPERTY_TYPE_MEDICINE|PROPERTY_TYPE_ANOMALOUS
 	value = 666
+	max_level = 4
 
 /datum/chem_property/special/curing/process(mob/living/M, var/potency = 1)
 	var/datum/species/zombie/zs = all_species["Zombie"]

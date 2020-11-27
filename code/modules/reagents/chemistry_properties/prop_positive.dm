@@ -456,6 +456,7 @@
 	rarity = PROPERTY_RARE
 	category = PROPERTY_TYPE_REACTANT
 	value = 3
+	max_level = 1
 
 /datum/chem_property/positive/defibrillating/on_delete(mob/living/M)
 	..()
@@ -496,6 +497,7 @@
 	rarity = PROPERTY_RARE
 	category = PROPERTY_TYPE_STIMULANT
 	value = 3
+	max_level = 1
 
 /datum/chem_property/positive/hyperdensificating/process(mob/living/M, var/potency = 1)
 	if(!ishuman(M))
@@ -522,6 +524,7 @@
 	rarity = PROPERTY_RARE
 	category = PROPERTY_TYPE_STIMULANT
 	value = 3
+	max_level = 1
 
 /datum/chem_property/positive/neuroshielding/process(mob/living/M, var/potency = 1)
 	if(!ishuman(M))
@@ -566,7 +569,7 @@
 
 /datum/chem_property/positive/fire
 	rarity = PROPERTY_DISABLED
-	category = PROPERTY_TYPE_REACTANT
+	category = PROPERTY_TYPE_REACTANT|PROPERTY_TYPE_COMBUSTIBLE
 	value = 2
 
 	var/intensitymod_per_level = 0
@@ -644,7 +647,7 @@
 	code = "EXP"
 	description = "The chemical is highly explosive. Do not ignite. Careful when handling, sensitivity is based off the OD threshold, which can lead to spontanous detonation."
 	rarity = PROPERTY_UNCOMMON
-	category = PROPERTY_TYPE_REACTANT
+	category = PROPERTY_TYPE_REACTANT|PROPERTY_TYPE_COMBUSTIBLE
 
 /datum/chem_property/positive/explosive/reset_reagent()
 	holder.explosive = initial(holder.explosive)
@@ -700,6 +703,7 @@
 	rarity = PROPERTY_DISABLED
 	category = PROPERTY_TYPE_MEDICINE
 	value = 1
+	max_level = 1
 
 /datum/chem_property/positive/aiding/process(mob/living/M, var/potency = 1)
 	M.disabilities = 0
@@ -725,6 +729,7 @@
 	rarity = PROPERTY_DISABLED
 	category = PROPERTY_TYPE_MEDICINE
 	value = 1
+	max_level = 6
 
 /datum/chem_property/positive/oxygenating/process(mob/living/M, var/potency = 1)
 	if(potency >= 2)

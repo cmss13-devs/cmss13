@@ -182,8 +182,16 @@
 		L.emote("pain")
 		L.apply_stamina_damage(stun, target_zone, ARMOR_ENERGY)
 
+		// Logging
+		if(user == L)
+			user.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> stunned themselves with the [src] in [get_area(user)]"
+		else
+			msg_admin_attack("[key_name(user)] stunned [key_name(L)] with the [src] in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
+			var/logentry = "\[[time_stamp()]\] <b>[key_name(user)]</b> stunned <b>[key_name(L)]</b> with the [src] in [get_area(user)]"
+			L.attack_log += logentry
+			user.attack_log += logentry
+
 	playsound(loc, 'sound/weapons/Egloves.ogg', 25, 1, 6)
-	msg_admin_attack("[key_name(user)] stunned [key_name(L)] with the [src] in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
 
 	deductcharge(hitcost)
 

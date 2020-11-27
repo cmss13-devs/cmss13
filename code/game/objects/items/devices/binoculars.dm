@@ -289,6 +289,11 @@
 		to_chat(user, SPAN_NOTICE("TARGET ACQUIRED. LASER TARGETING IS ONLINE. DON'T MOVE."))
 		var/obj/effect/overlay/temp/laser_target/LT = new (TU, las_name, user, tracking_id)
 		laser = LT
+
+		var/turf/userloc = get_turf(user)
+		msg_admin_niche("Laser target [las_name] has been designated by [key_name(user, 1)] at ([TU.x], [TU.y], [TU.z]). (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[userloc.x];Y=[userloc.y];Z=[userloc.z]'>JMP SRC</a>) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[TU.x];Y=[TU.y];Z=[TU.z]'>JMP LOC</a>)")
+		log_game("Laser target [las_name] has been designated by [key_name(user, 1)] at ([x], [y], [z]).")
+
 		playsound(src, 'sound/effects/binoctarget.ogg', 35)
 		while(laser)
 			if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_GENERIC))

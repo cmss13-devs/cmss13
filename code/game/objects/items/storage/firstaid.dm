@@ -29,12 +29,12 @@
 	if(possible_icons_full)
 		icon_full = pick(possible_icons_full)
 	else
-		icon_full = icon_state
+		icon_full = initial(icon_state)
 
 	update_icon()
 
 /obj/item/storage/firstaid/update_icon()
-	if(!contents.len)
+	if(!length(contents))
 		icon_state = "kit_empty"
 	else
 		icon_state = icon_full
@@ -69,13 +69,13 @@
 	icon_state = "firstaid"
 
 /obj/item/storage/firstaid/regular/fill_preset_inventory()
-		new /obj/item/device/healthanalyzer(src)
-		new /obj/item/reagent_container/hypospray/autoinjector/skillless(src)
-		new /obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol(src)
-		new /obj/item/reagent_container/hypospray/autoinjector/inaprovaline(src)
-		new /obj/item/stack/medical/bruise_pack(src)
-		new /obj/item/stack/medical/ointment(src)
-		new /obj/item/stack/medical/splint(src)
+	new /obj/item/device/healthanalyzer(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/skillless(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/inaprovaline(src)
+	new /obj/item/stack/medical/bruise_pack(src)
+	new /obj/item/stack/medical/ointment(src)
+	new /obj/item/stack/medical/splint(src)
 
 /obj/item/storage/firstaid/regular/empty/fill_preset_inventory()
 	return

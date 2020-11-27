@@ -573,7 +573,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	slowdown = SLOWDOWN_ARMOR_HEAVY
 	unacidable = TRUE
 	specialty = "M3-G4 grenadier"
-	flags_item = MOB_LOCK_ON_EQUIP
+	flags_item = MOB_LOCK_ON_EQUIP|NO_CRYO_STORE
 
 /obj/item/clothing/suit/storage/marine/M3T
 	name = "\improper M3-T light armor"
@@ -589,7 +589,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	slowdown = SLOWDOWN_ARMOR_LIGHT
 	unacidable = TRUE
 	specialty = "M3-T light"
-	flags_item = MOB_LOCK_ON_EQUIP
+	flags_item = MOB_LOCK_ON_EQUIP|NO_CRYO_STORE
 
 /obj/item/clothing/suit/storage/marine/M3S
 	name = "\improper M3-S light armor"
@@ -605,7 +605,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	slowdown = SLOWDOWN_ARMOR_LIGHT
 	unacidable = TRUE
 	specialty = "M3-S light"
-	flags_item = MOB_LOCK_ON_EQUIP
+	flags_item = MOB_LOCK_ON_EQUIP|NO_CRYO_STORE
 
 #define FIRE_SHIELD_CD 150
 
@@ -626,7 +626,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_FEET
 	unacidable = TRUE
 	specialty = "M35 pyrotechnician"
-	flags_item = MOB_LOCK_ON_EQUIP
+	flags_item = MOB_LOCK_ON_EQUIP|NO_CRYO_STORE
 	actions_types = list(/datum/action/item_action/toggle, /datum/action/item_action/specialist/fire_shield)
 	var/fire_shield_on = FALSE
 	var/can_activate = TRUE

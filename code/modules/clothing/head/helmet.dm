@@ -529,7 +529,7 @@
 	unacidable = TRUE
 	anti_hug = 6
 	specialty = "M3-G4 grenadier"
-	flags_item = MOB_LOCK_ON_EQUIP
+	flags_item = MOB_LOCK_ON_EQUIP|NO_CRYO_STORE
 
 /obj/item/clothing/head/helmet/marine/scout
 	name = "\improper M3-S light helmet"
@@ -544,7 +544,7 @@
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
 	specialty = "M3-S light"
-	flags_item = MOB_LOCK_ON_EQUIP
+	flags_item = MOB_LOCK_ON_EQUIP|NO_CRYO_STORE
 
 /obj/item/clothing/head/helmet/marine/pyro
 	name = "\improper M35 pyrotechnician helmet"
@@ -560,7 +560,7 @@
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
 	max_heat_protection_temperature = FIRESUIT_max_heat_protection_temperature
 	specialty = "M35 pyrotechnician"
-	flags_item = MOB_LOCK_ON_EQUIP
+	flags_item = MOB_LOCK_ON_EQUIP|NO_CRYO_STORE
 
 /obj/item/clothing/head/helmet/marine/pilot
 	name = "\improper M30 tactical helmet"

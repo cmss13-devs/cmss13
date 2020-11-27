@@ -287,7 +287,7 @@ var/global/marines_assigned = 0
 
 	// Now we take spare unfilled xeno slots and make them larva
 	var/datum/hive_status/hive = hive_datum[XENO_HIVE_NORMAL]
-	if(istype(hive))
+	if(istype(hive) && istype(XJ))
 		hive.stored_larva += max(0, (XJ.total_positions - XJ.current_positions))
 
 	/*===============================================================*/

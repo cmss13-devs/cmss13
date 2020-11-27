@@ -18,7 +18,7 @@
 
 	var/mob/living/carbon/Xenomorph/Praetorian/P = MS.xeno
 	P.speed_modifier += XENO_SPEED_MODIFIER_FASTER
-	P.evasion_modifier += XENO_EVASION_MOD_VERYLARGE // Best in game evasion.
+	P.armor_modifier += XENO_ARMOR_MOD_VERYLARGE
 	P.plasma_types = list(PLASMA_CATECHOLAMINE)
 	P.claw_type = CLAW_TYPE_VERY_SHARP
 

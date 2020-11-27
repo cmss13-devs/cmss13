@@ -6,7 +6,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_empower
 	action_type = XENO_ACTION_ACTIVATE
 	ability_primacy = XENO_PRIMARY_ACTION_1
-	plasma_cost = 70
+	plasma_cost = 100
 	xeno_cooldown = 180
 
 	// Config values (mutable)
@@ -29,6 +29,7 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
 	xeno_cooldown = 140
+	plasma_cost = 50
 
 	// Pounce config
 	distance = 5					
@@ -46,7 +47,7 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	xeno_cooldown = 100
-	plasma_cost = 20
+	plasma_cost = 50
 
 	// Config
 	var/damage = 45
@@ -62,7 +63,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_apprehend
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1
-	plasma_cost = 10
+	plasma_cost = 0
 	xeno_cooldown = 200
 
 	// Config values
@@ -77,7 +78,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_clothesline
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
-	plasma_cost = 10
+	plasma_cost = 0
 	xeno_cooldown = 140
 
 	// Config values
@@ -93,7 +94,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_eviscerate
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
-	plasma_cost = 10
+	plasma_cost = 0
 	xeno_cooldown = 230
 
 	// Config values

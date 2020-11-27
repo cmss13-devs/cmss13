@@ -63,12 +63,12 @@
 		qdel(src)
 		return
 
-	duration--
-
 	if(iscarbon(affected_atom))
 		process_mob()
 	else if (isobj(affected_atom))
 		process_obj()
+
+	duration--
 
 /datum/effects/proc/process_mob()
 	var/mob/living/carbon/affected_mob = affected_atom

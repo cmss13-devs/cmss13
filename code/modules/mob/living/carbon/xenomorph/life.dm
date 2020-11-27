@@ -275,12 +275,15 @@
 			hud_used.healths.icon_state = "health_critical"
 
 	if(hud_used.alien_plasma_display)
-		var/plasma_stacks = (get_plasma_percentage() * 0.01) * HUD_PLASMA_STATES_XENO
-		hud_used.alien_plasma_display.icon_state = "power_display_[Ceiling(plasma_stacks)]"
-		if(plasma_stacks >= HUD_PLASMA_STATES_XENO)
-			hud_used.alien_plasma_display.icon_state = "power_display_full"
-		else if(plasma_stacks <= 0)
+		if(plasma_max == 0)
 			hud_used.alien_plasma_display.icon_state = "power_display_empty"
+		else	
+			var/plasma_stacks = (get_plasma_percentage() * 0.01) * HUD_PLASMA_STATES_XENO
+			hud_used.alien_plasma_display.icon_state = "power_display_[Ceiling(plasma_stacks)]"
+			if(plasma_stacks >= HUD_PLASMA_STATES_XENO)
+				hud_used.alien_plasma_display.icon_state = "power_display_full"
+			else if(plasma_stacks <= 0)
+				hud_used.alien_plasma_display.icon_state = "power_display_empty"
 
 	if(hud_used.alien_armor_display)
 		var/armor_stacks = min((get_armor_integrity_percentage() * 0.01) * HUD_ARMOR_STATES_XENO, HUD_ARMOR_STATES_XENO)
@@ -415,7 +418,6 @@ updatehealth()
 	recalculate_move_delay = TRUE
 
 	med_hud_set_health()
-	med_hud_set_armor()
 
 /mob/living/carbon/Xenomorph/proc/handle_luminosity()
 	var/new_luminosity = 0

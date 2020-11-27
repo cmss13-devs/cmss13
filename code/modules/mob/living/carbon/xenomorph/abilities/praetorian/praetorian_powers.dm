@@ -1,6 +1,5 @@
 /datum/action/xeno_action/activable/pierce/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
-
 	if (!action_cooldown_check())
 		return
 
@@ -8,6 +7,9 @@
 		return
 
 	if(!A || A.layer >= FLY_LAYER || !isturf(X.loc))
+		return
+
+	if (!check_and_use_plasma_owner())
 		return
 
 	// Get list of target mobs
@@ -134,7 +136,6 @@
 
 /datum/action/xeno_action/activable/cleave/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
-
 	if (!action_cooldown_check())
 		return
 

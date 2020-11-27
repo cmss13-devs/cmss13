@@ -9,7 +9,6 @@
 	plasma_max = XENO_PLASMA_TIER_4
 	xeno_explosion_resistance = XENO_EXPLOSIVE_ARMOR_TIER_2
 	armor_deflection = XENO_NO_ARMOR
-	armor_hardiness_mult = XENO_ARMOR_FACTOR_HIGH
 	evasion = XENO_EVASION_NONE
 	speed = XENO_SPEED_TIER_1
 

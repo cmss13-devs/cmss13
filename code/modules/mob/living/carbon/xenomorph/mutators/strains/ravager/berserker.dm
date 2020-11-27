@@ -19,6 +19,8 @@
 
 	var/mob/living/carbon/Xenomorph/Ravager/R = MS.xeno
 	R.mutation_type = RAVAGER_BERSERKER
+	R.plasma_max = 0
+	R.health_modifier -= XENO_HEALTH_MOD_MED
 	R.armor_modifier += XENO_ARMOR_MOD_VERYSMALL
 	R.speed_modifier += XENO_SPEED_MODIFIER_FAST
 	

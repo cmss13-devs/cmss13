@@ -3,7 +3,7 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1
 	xeno_cooldown = 60
-	plasma_cost = 10
+	plasma_cost = 30
 
 	// Config options
 	distance = 6
@@ -38,7 +38,7 @@
 	action_type = XENO_ACTION_CLICK
 	xeno_cooldown = 1 // This ability never goes off cooldown 'naturally'. Cooldown is applied manually as a super-large value in the use_ability proc
 								 // and reset by the behavior_delegate whenever the ability ends (because it can be ended by things like slashes, that we can't easily track here)
-	plasma_cost = 10
+	plasma_cost = 50
 
 	var/duration = 300 			// 30 seconds base
 	var/invis_timer_id = TIMER_ID_NULL

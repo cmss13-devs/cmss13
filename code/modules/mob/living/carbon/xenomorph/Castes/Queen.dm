@@ -9,8 +9,7 @@
 	plasma_max = XENO_PLASMA_TIER_10
 	crystal_max = XENO_CRYSTAL_MEDIUM
 	xeno_explosion_resistance = XENO_EXPLOSIVE_ARMOR_TIER_10
-	armor_deflection = XENO_ARMOR_TIER_2
-	armor_hardiness_mult = XENO_ARMOR_FACTOR_SUPER
+	armor_deflection = XENO_ARMOR_TIER_4
 	evasion = XENO_EVASION_NONE
 	speed = XENO_SPEED_QUEEN
 
@@ -414,12 +413,14 @@
 		var/dist = get_dist(src, M)
 		if(dist <= 4)
 			to_chat(M, SPAN_DANGER("An ear-splitting guttural roar shakes the ground beneath your feet!"))
-			M.stunned += 4 //Seems the effect lasts between 3-8 seconds.
+			M.AdjustStunned(4)
 			M.KnockDown(4)
 			if(!M.ear_deaf)
-				M.ear_deaf += 8 //Deafens them temporarily
+				M.ear_deaf += 5 //Deafens them temporarily
 		else if(dist >= 5 && dist < 7)
-			M.stunned += 3
+			M.AdjustStunned(3)
+			if(!M.ear_deaf)
+				M.ear_deaf += 2
 			to_chat(M, SPAN_DANGER("The roar shakes your body to the core, freezing you in place!"))
 
 /mob/living/carbon/Xenomorph/Queen/proc/screech_ready()
@@ -507,28 +508,31 @@
 	for(var/datum/action/A in actions)
 		qdel(A)
 
-	var/list/immobile_abilities = list(
-		/datum/action/xeno_action/onclick/regurgitate,
-		/datum/action/xeno_action/onclick/remove_eggsac,
-		/datum/action/xeno_action/activable/screech,
-		/datum/action/xeno_action/onclick/emit_pheromones,
-		/datum/action/xeno_action/onclick/psychic_whisper,
-		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/onclick/toggle_queen_zoom,
-		/datum/action/xeno_action/onclick/set_xeno_lead,//first macro
-		/datum/action/xeno_action/onclick/queen_heal,//second macro 
-		/datum/action/xeno_action/onclick/queen_give_plasma,//third macro
-		/datum/action/xeno_action/onclick/queen_order,
-		/datum/action/xeno_action/activable/place_construction,
-		/datum/action/xeno_action/onclick/deevolve,//fourth macro
-		/datum/action/xeno_action/onclick/banish,
-		/datum/action/xeno_action/onclick/readmit,
+	var/list/immobile_abilities = list(\
+		/datum/action/xeno_action/onclick/regurgitate,\
+		/datum/action/xeno_action/onclick/remove_eggsac,\
+		/datum/action/xeno_action/activable/screech,\
+		/datum/action/xeno_action/onclick/emit_pheromones,\
+		/datum/action/xeno_action/onclick/psychic_whisper,\
+		/datum/action/xeno_action/onclick/toggle_queen_zoom,\
+		/datum/action/xeno_action/watch_xeno,\
+		/datum/action/xeno_action/onclick/set_xeno_lead,\
+		/datum/action/xeno_action/onclick/queen_heal,\
+		/datum/action/xeno_action/onclick/queen_give_plasma,\
+		/datum/action/xeno_action/onclick/queen_order,\
+		/datum/action/xeno_action/onclick/choose_resin, \
+		/datum/action/xeno_action/activable/secrete_resin/ovipositor, \
+		/datum/action/xeno_action/activable/place_construction,\
+		/datum/action/xeno_action/onclick/deevolve, \
+		/datum/action/xeno_action/onclick/banish, \
+		/datum/action/xeno_action/onclick/readmit, \
 		)
 
 	for(var/path in immobile_abilities)
 		var/datum/action/xeno_action/A = new path()
 		A.give_action(src)
 
+	extra_build_dist = IGNORE_BUILD_DISTANCE
 	anchored = TRUE
 	resting = FALSE
 	update_canmove()
@@ -572,6 +576,7 @@
 	recalculate_actions()
 
 	egg_amount = 0
+	extra_build_dist = initial(extra_build_dist)
 	ovipositor_cooldown = world.time + MINUTES_5 //5 minutes
 	anchored = FALSE
 	update_canmove()

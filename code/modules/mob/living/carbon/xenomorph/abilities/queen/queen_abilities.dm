@@ -28,6 +28,8 @@
 	plasma_cost = 600
 	macro_path = /datum/action/xeno_action/verb/verb_heal_xeno
 	ability_primacy = XENO_PRIMARY_ACTION_2
+	action_type = XENO_ACTION_CLICK
+	xeno_cooldown = 20 SECONDS
 
 /datum/action/xeno_action/onclick/toggle_queen_zoom
 	name = "Toggle Queen Zoom"
@@ -45,3 +47,16 @@
 	name = "Readmit a Xenomorph"
 	action_icon_state = "xeno_readmit"
 	plasma_cost = 100
+
+/datum/action/xeno_action/activable/secrete_resin/ovipositor
+	name = "Projected Resin (100)"
+	action_icon_state = "secrete_resin"
+	ability_name = "projected resin"
+	var/last_use = 0
+	plasma_cost = 100
+	cooldown = 20
+	thick = FALSE
+	make_message = FALSE
+
+	macro_path = /datum/action/xeno_action/verb/verb_projected_resin
+	action_type = XENO_ACTION_CLICK

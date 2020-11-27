@@ -4,7 +4,8 @@
 	name = "glass"
 	desc = "Your standard drinking glass."
 	icon_state = "glass_empty"
-	amount_per_transfer_from_this = 10
+	matter = list("glass" = 500)
+	amount_per_transfer_from_this = 5
 	volume = 50
 	center_of_mass = "x=16;y=10"
 

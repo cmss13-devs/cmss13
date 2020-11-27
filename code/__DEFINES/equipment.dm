@@ -43,6 +43,7 @@
 #define ITEM_PREDATOR			128 // Specific predator item interactions.
 #define MOB_LOCK_ON_EQUIP		256	// Lock this item to the mob that equips it up until permadeath
 #define BLOCK_KNOCKDOWN			512	// Wearing this will stop you from being pushed over
+#define NO_CRYO_STORE			1024 // This item deletes itself when put in cryo storage
 
 //==========================================================================================
 

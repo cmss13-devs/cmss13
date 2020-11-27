@@ -36,6 +36,8 @@
 	iff_enabled = TRUE
 	iff_enabled_current = TRUE
 
+	flags_item = TWOHANDED|NO_CRYO_STORE
+
 /obj/item/weapon/gun/rifle/sniper/M42A/handle_starting_attachment()
 	..()
 	var/obj/item/attachable/scope/S = new(src)
@@ -226,6 +228,8 @@
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 	starting_attachment_types = list(/obj/item/attachable/stock/rifle/marksman)
+
+	flags_item = TWOHANDED|NO_CRYO_STORE
 
 /obj/item/weapon/gun/rifle/m4ra/handle_starting_attachment()
 	..()
@@ -787,6 +791,7 @@
 	aim_slowdown = SLOWDOWN_ADS_SPECIALIST
 	attachable_allowed = list(/obj/item/attachable/magnetic_harness)
 
+	flags_item = TWOHANDED|NO_CRYO_STORE
 	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
 	map_specific_decoration = TRUE
 
@@ -1059,6 +1064,8 @@
 
 	flags_gun_features = GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
 	var/datum/effect_system/smoke_spread/smoke
+
+	flags_item = TWOHANDED|NO_CRYO_STORE
 
 /obj/item/weapon/gun/launcher/rocket/New()
 	..()

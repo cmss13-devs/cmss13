@@ -207,6 +207,8 @@
 	var/obj/item/storage/large_holster/fuelpack/fuelpack
 	starting_attachment_types = list(/obj/item/attachable/attached_gun/extinguisher/pyro)
 
+	flags_item = TWOHANDED|NO_CRYO_STORE
+
 /obj/item/weapon/gun/flamer/M240T/Destroy()
 	if(fuelpack)
 		if(fuelpack.linked_flamer == src)

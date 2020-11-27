@@ -10,7 +10,7 @@
 	listed_products = list(
 		list("SQUAD LEADER KIT (CHOOSE 1)", 0, null, null, null),
 		list("Essential SL Flamethrower Kit", 0, /obj/effect/essentials_set/leader/flamethrower, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
-		list("Essential SL Rifle Kit", 0, /obj/effect/essentials_set/leader, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
+		list("Essential SL MK1 Rifle Kit", 0, /obj/effect/essentials_set/leader, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
 
 		list("GENERAL SUPPLIES", 0, null, null, null),
 		list("Flamethrower", 12, /obj/item/weapon/gun/flamer/underextinguisher, null, VENDOR_ITEM_REGULAR),
@@ -174,7 +174,7 @@
 		/obj/item/explosive/plastic,
 		/obj/item/device/binoculars/range/designator,
 		/obj/item/map/current_map,
-		/obj/item/weapon/gun/flamer,
+		/obj/item/weapon/gun/flamer/underextinguisher,
 		/obj/item/ammo_magazine/flamer_tank,
 		/obj/item/ammo_magazine/flamer_tank,
 		/obj/item/tool/extinguisher/mini,

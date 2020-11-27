@@ -98,7 +98,8 @@
 	description = "Inhibits neurological processes in the brain such to sight, hearing and speech which can result in various associated disabilities. Restoration will require surgery."
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_TOXICANT
-	value = -2
+	value = -1
+	max_level = 7
 
 /datum/chem_property/neutral/neuroinhibiting/process(mob/living/M, var/potency = 1)
 	if(ishuman(M))
@@ -127,6 +128,7 @@
 	description = "Binds to glutamate neurotransmitters and gamma aminobutyric acid (GABA), slowing brain functions response to stimuli. This effect is also known as intoxication."
 	rarity = PROPERTY_COMMON
 	category = PROPERTY_TYPE_STIMULANT
+	value = 0
 
 /datum/chem_property/neutral/alcoholic/process(mob/living/M, var/potency = 1)
 	if(ishuman(M))
@@ -206,7 +208,7 @@
 	code = "HPR"
 	description = "Causes an exothermic reaction when metabolized in the body, increasing internal body temperature. Warning: this can ignite chemicals on reaction."
 	rarity = PROPERTY_COMMON
-	category = PROPERTY_TYPE_REACTANT
+	category = PROPERTY_TYPE_METABOLITE
 
 /datum/chem_property/neutral/hyperthermic/process(mob/living/M, var/potency = 1)
 	if(prob(10))
@@ -230,7 +232,7 @@
 	code = "HPO"
 	description = "Causes an endothermic reaction when metabolized in the body, decreasing internal body temperature."
 	rarity = PROPERTY_UNCOMMON
-	category = PROPERTY_TYPE_REACTANT
+	category = PROPERTY_TYPE_METABOLITE
 
 /datum/chem_property/neutral/hypothermic/process(mob/living/M, var/potency = 1)
 	if(prob(10))
@@ -252,6 +254,7 @@
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_IRRITANT
 	value = 0
+	max_level = 2
 
 /datum/chem_property/neutral/balding/process(mob/living/M, var/potency = 1)
 	if(ishuman(M))
@@ -301,6 +304,7 @@
 	description = "Creates a hyperactive immune response in the body, resulting in irritation."
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_IRRITANT
+	value = 0
 
 /datum/chem_property/neutral/allergenic/process(mob/living/M, var/potency = 1)
 	if(prob(5*potency))
@@ -360,6 +364,7 @@
 	rarity = PROPERTY_COMMON
 	category = PROPERTY_TYPE_STIMULANT
 	value = 0
+	max_level = 7
 
 /datum/chem_property/neutral/psychostimulating/process(mob/living/M, var/potency = 1)
 	if(holder.volume <= 0.1 && holder.data != -1)
@@ -486,7 +491,7 @@
 	code = "VIS"
 	description = "The chemical is thick and gooey due to high surface tension. It will not spread very far when spilled. This would decrease the radius of a chemical fire."
 	rarity = PROPERTY_COMMON
-	category = PROPERTY_TYPE_REACTANT
+	category = PROPERTY_TYPE_REACTANT|PROPERTY_TYPE_COMBUSTIBLE
 
 /datum/chem_property/neutral/viscous/reset_reagent()
 	holder.chemfiresupp = initial(holder.chemfiresupp)

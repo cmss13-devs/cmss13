@@ -293,6 +293,9 @@
 			creation_name = newname
 	else if(href_list["set_level"] && target_property)
 		target_property.level = input("Set target level for [target_property.name]:","[src]") as anything in list(1,2,3,4,5,6,7,8,9,10)
+		if(target_property.max_level && target_property.level > target_property.max_level)
+			target_property.level = target_property.max_level
+			to_chat(user, "Max level for [target_property.name] is [target_property.max_level].")
 		calculate_creation_cost()
 	else if(href_list["set_od"])
 		new_od_level = input("Set new OD:","[src]") as anything in list(5,10,15,20,25,30,35,40,45,50,55,60)
@@ -412,10 +415,17 @@
 	creation_cost = 0
 	var/slots_used = LAZYLEN(creation_template)
 	creation_cost += slots_used * 3 - 6 //3 cost for each slot after the 2nd
+	var/has_combustibles = FALSE
 	for(var/datum/chem_property/P in creation_template)
 		creation_cost += P.value * P.level
 		if(P.level > 5) // a penalty is added at each level above 5 (+1 at 6, +2 at 7, +4 at 8, +5 at 9, +7 at 10)
 			creation_cost += P.level - 6 + n_ceil((P.level - 5) / 2)
+		if(P.category & PROPERTY_TYPE_COMBUSTIBLE)
+			has_combustibles = TRUE
+	if(has_combustibles) //negative values are not applied in templates that use combustibles unless those properties are also of the combustible category
+		for(var/datum/chem_property/P in creation_template)
+			if(P.value < 0 && !(P.category & PROPERTY_TYPE_COMBUSTIBLE))
+				creation_cost += P.value * P.level * -1 //revert
 	creation_cost += ((new_od_level - 10) / 5) * 3 //3 cost for every 5 units above 10
 	for(var/rarity in creation_complexity)
 		switch(rarity)

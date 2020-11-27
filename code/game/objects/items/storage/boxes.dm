@@ -542,8 +542,10 @@
 
 /obj/item/storage/box/nade_box/Initialize()
 	. = ..()
+
 	select_gamemode_skin(/obj/item/storage/box/nade_box)
-	nade_box_icon = icon_state
+	nade_box_icon = initial(icon_state)
+	update_icon()
 
 /obj/item/storage/box/nade_box/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)

@@ -649,6 +649,7 @@ var/list/global/item_storage_box_cache = list()
 	closer.master = src
 
 	fill_preset_inventory()
+	
 	update_icon()
 
 /obj/item/storage/Destroy()

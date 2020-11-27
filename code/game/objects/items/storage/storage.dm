@@ -648,6 +648,9 @@ var/list/global/item_storage_box_cache = list()
 	closer = new
 	closer.master = src
 
+	fill_preset_inventory()
+	update_icon()
+
 /obj/item/storage/Destroy()
 	for(var/mob/M in content_watchers)
 		hide_from(M)
@@ -707,6 +710,9 @@ var/list/global/item_storage_box_cache = list()
 		return storage_cost
 	else
 		return w_class
+
+/obj/item/storage/proc/fill_preset_inventory()
+	return
 
 //Returns the storage depth of an atom. This is the number of storage items the atom is contained in before reaching toplevel (the area).
 //Returns -1 if the atom was not found on container.

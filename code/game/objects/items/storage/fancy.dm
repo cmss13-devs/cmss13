@@ -51,8 +51,7 @@
 	max_storage_space = 24
 	can_hold = list(/obj/item/reagent_container/food/snacks/egg)
 
-/obj/item/storage/fancy/egg_box/Initialize()
-	. = ..()
+/obj/item/storage/fancy/egg_box/fill_preset_inventory()
 	for(var/i=1; i <= storage_slots; i++)
 		new /obj/item/reagent_container/food/snacks/egg(src)
 	return
@@ -73,8 +72,7 @@
 	flags_equip_slot = SLOT_WAIST
 
 
-/obj/item/storage/fancy/candle_box/Initialize()
-	. = ..()
+/obj/item/storage/fancy/candle_box/fill_preset_inventory()
 	for(var/i=1; i <= storage_slots; i++)
 		new /obj/item/tool/candle(src)
 	return
@@ -93,15 +91,13 @@
 	icon_type = "crayon"
 	can_hold = list(/obj/item/toy/crayon)
 
-/obj/item/storage/fancy/crayons/Initialize()
-	. = ..()
+/obj/item/storage/fancy/crayons/fill_preset_inventory()
 	new /obj/item/toy/crayon/red(src)
 	new /obj/item/toy/crayon/orange(src)
 	new /obj/item/toy/crayon/yellow(src)
 	new /obj/item/toy/crayon/green(src)
 	new /obj/item/toy/crayon/blue(src)
 	new /obj/item/toy/crayon/purple(src)
-	update_icon()
 
 /obj/item/storage/fancy/crayons/update_icon()
 	overlays = list() //resets list
@@ -138,8 +134,7 @@
 	icon_type = "cigarette"
 	var/default_cig_type=/obj/item/clothing/mask/cigarette
 
-/obj/item/storage/fancy/cigarettes/Initialize()
-	. = ..()
+/obj/item/storage/fancy/cigarettes/fill_preset_inventory()
 	flags_atom |= NOREACT
 	for(var/i = 1 to storage_slots)
 		new default_cig_type(src)
@@ -228,8 +223,7 @@
 	can_hold = list(/obj/item/clothing/mask/cigarette/cigar)
 	icon_type = "cigar"
 
-/obj/item/storage/fancy/cigar/Initialize()
-	. = ..()
+/obj/item/storage/fancy/cigar/fill_preset_inventory()
 	flags_atom |= NOREACT
 	for(var/i = 1 to storage_slots)
 		new /obj/item/clothing/mask/cigarette/cigar(src)
@@ -276,8 +270,7 @@
 	var/is_random
 
 
-/obj/item/storage/fancy/vials/Initialize()
-	. = ..()
+/obj/item/storage/fancy/vials/fill_preset_inventory()
 	if(is_random)
 		var/spawns = rand(1,4)
 		for(var/i=1; i <= storage_slots; i++)
@@ -288,8 +281,6 @@
 	else
 		for(var/i=1; i <= start_vials; i++)
 			new /obj/item/reagent_container/glass/beaker/vial(src)
-	update_icon()
-	return
 
 /obj/item/storage/fancy/vials/random
 	unacidable = TRUE
@@ -319,10 +310,6 @@
 	max_storage_space = 14 //The sum of the w_classes of all the items in this storage item.
 	storage_slots = 6
 	req_access = list(ACCESS_MARINE_MEDBAY)
-
-/obj/item/storage/lockbox/vials/Initialize()
-	. = ..()
-	update_icon()
 
 /obj/item/storage/lockbox/vials/update_icon(var/itemremoved = 0)
 	var/total_contents = src.contents.len - itemremoved

@@ -290,9 +290,11 @@
 
 	service_hat = list(/obj/item/clothing/head/beret/cm)
 	service_shoes = list(/obj/item/clothing/shoes/dress/commander)
+	service_extra = list(/obj/item/clothing/under/marine/officer/casual, /obj/item/clothing/suit/storage/jacket/marine/dress/officer/bomber)
 
+	dress_under = list(/obj/item/clothing/under/marine/officer/formal/white, /obj/item/clothing/under/marine/officer/formal/black, /obj/item/clothing/under/marine/officer/dining)
 	dress_extra = list(/obj/item/clothing/head/beret/marine/commander/dress, /obj/item/storage/large_holster/ceremonial_sword/full)
-	dress_hat = list(/obj/item/clothing/head/marine/peaked/captain)
+	dress_hat = list(/obj/item/clothing/head/marine/peaked/captain, /obj/item/clothing/head/cmcap/co/formal/white, /obj/item/clothing/head/cmcap/co/formal/black)
 	dress_shoes = list(/obj/item/clothing/shoes/dress/commander)
 
 /datum/equipment_preset/uscm_ship/commander/New()

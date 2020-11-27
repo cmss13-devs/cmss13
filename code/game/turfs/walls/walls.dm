@@ -192,8 +192,9 @@
 	var/exp_damage = severity*EXPLOSION_DAMAGE_MULTIPLIER_WALL
 
 	if ( damage + exp_damage > damage_cap*2 )
+		if(source_mob)
+			SEND_SIGNAL(source_mob, COMSIG_MOB_EXPLODED_WALL, src)
 		dismantle_wall(FALSE, TRUE)
-		SEND_SIGNAL(source_mob, COMSIG_MOB_EXPLODED_WALL, src)
 		if(!istype(src, /turf/closed/wall/resin))
 			create_shrapnel(location, rand(2,5), explosion_direction, , /datum/ammo/bullet/shrapnel/light)
 	else

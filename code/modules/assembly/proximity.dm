@@ -11,7 +11,7 @@
 
 	var/scanning = 0
 	var/timing = FALSE
-	var/time = 10
+	var/time = 10 SECONDS
 	var/range = 2
 	var/iff_signal = FACTION_MARINE
 
@@ -29,11 +29,11 @@
 /obj/item/device/assembly/prox_sensor/toggle_secure()
 	secured = !secured
 	if(secured)
-		processing_objects.Add(src)
+		START_PROCESSING(SSobj, src)
 	else
 		scanning = 0
 		timing = 0
-		processing_objects.Remove(src)
+		STOP_PROCESSING(SSobj, src)
 	update_icon()
 	return secured
 
@@ -69,7 +69,7 @@
 	..()
 
 
-/obj/item/device/assembly/prox_sensor/process()
+/obj/item/device/assembly/prox_sensor/process(delta_time)
 	if(scanning)
 		var/turf/mainloc = get_turf(src)
 		for(var/mob/living/M in range(range,mainloc))
@@ -80,11 +80,11 @@
 			HasProximity(M)
 
 	if(timing && (time >= 0))
-		time--
+		time -= delta_time SECONDS
 	if(timing && time <= 0)
 		timing = 0
 		toggle_scan()
-		time = 10
+		time = 10 SECONDS
 	return
 
 
@@ -137,13 +137,13 @@
 	if(href_list["time"])
 		timing = text2num(href_list["time"])
 		if(!timing)
-			time = min(max(round(time), 3), 600)
+			time = min(max(round(time), 3), 600) SECONDS
 		update_icon()
 
 	if(href_list["tp"])
 		var/tp = text2num(href_list["tp"])
 		time += tp
-		time = min(max(round(time), 3), 600)
+		time = min(max(round(time), 3), 600) SECONDS
 
 	if(href_list["range"])
 		var/r = text2num(href_list["range"])

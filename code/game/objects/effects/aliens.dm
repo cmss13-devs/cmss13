@@ -113,11 +113,11 @@
 
 			continue
 
-	processing_objects.Add(src)
+	START_PROCESSING(SSobj, src)
 	addtimer(CALLBACK(src, .proc/die), time_to_live)
 
 /obj/effect/xenomorph/spray/Destroy()
-	processing_objects -= src
+	STOP_PROCESSING(SSobj, src)
 	source_mob = null
 	return ..()
 
@@ -127,7 +127,7 @@
 		PF.flags_pass = PASS_FLAGS_ACID_SPRAY
 
 /obj/effect/xenomorph/spray/proc/die()
-	processing_objects.Remove(src)
+	STOP_PROCESSING(SSobj, src)
 	qdel(src)
 
 /obj/effect/xenomorph/spray/Crossed(AM as mob|obj)

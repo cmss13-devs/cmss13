@@ -13,12 +13,12 @@
 
 	appearance_flags = TILE_BOUND
 
-/obj/item/device/radio/intercom/New()
-	..()
-	processing_objects += src
+/obj/item/device/radio/intercom/Initialize()
+	. = ..()
+	START_PROCESSING(SSobj, src)
 
 /obj/item/device/radio/intercom/Destroy()
-	processing_objects -= src
+	STOP_PROCESSING(SSobj, src)
 	ai = null
 	. = ..()
 

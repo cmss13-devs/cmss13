@@ -33,7 +33,7 @@
 	break_sound()
 	current_song = null
 	current_listener = null
-	processing_objects -= src
+	STOP_PROCESSING(SSobj, src)
 	. = ..()
 
 /obj/item/device/walkman/attackby(obj/item/W, mob/user)
@@ -49,7 +49,7 @@
 /obj/item/device/walkman/attack_self(mob/user)
 	if(!current_listener)
 		current_listener = user
-		processing_objects += src
+		START_PROCESSING(SSobj, src)
 	if(istype(tape))
 		if(paused)
 			play()
@@ -179,7 +179,7 @@
 		paused = TRUE
 		current_listener = null
 		update_icon()
-		processing_objects -= src
+		STOP_PROCESSING(SSobj, src)
 		return
 
 	if(current_listener.ear_deaf > 0 && current_song && !(current_song.status & SOUND_MUTE))

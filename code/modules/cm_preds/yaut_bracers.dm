@@ -52,19 +52,19 @@
 	..()
 	if(slot == WEAR_HANDS)
 		flags_item ^= NODROP
-		processing_objects.Add(src)
+		START_PROCESSING(SSobj, src)
 		if(isYautja(user))
 			to_chat(user, SPAN_WARNING("The bracer clamps securely around your forearm and beeps in a comfortable, familiar way."))
 		else
 			to_chat(user, SPAN_WARNING("The bracer clamps painfully around your forearm and beeps angrily. It won't come off!"))
 
 /obj/item/clothing/gloves/yautja/Destroy()
-	processing_objects.Remove(src)
+	STOP_PROCESSING(SSobj, src)
 	remove_from_missing_pred_gear(src)
 	..()
 
 /obj/item/clothing/gloves/yautja/dropped(mob/user)
-	processing_objects.Remove(src)
+	STOP_PROCESSING(SSobj, src)
 	add_to_missing_pred_gear(src)
 	flags_item = initial(flags_item)
 	..()
@@ -76,7 +76,7 @@
 
 /obj/item/clothing/gloves/yautja/process()
 	if(!ishuman(loc))
-		processing_objects.Remove(src)
+		STOP_PROCESSING(SSobj, src)
 		return
 	var/mob/living/carbon/human/H = loc
 	if(cloak_timer)
@@ -161,7 +161,7 @@
 			. = call_combi(TRUE)
 		else
 			. = delimb_user()
-			
+
 	return
 
 //We use this to determine whether we should activate the given verb, or a random verb
@@ -720,7 +720,7 @@
 		untracked_yautja_gear += pickeditem
 		remove_from_missing_pred_gear(pickeditem)
 
-	
+
 /obj/item/clothing/gloves/yautja/verb/add_tracked_item()
 	set name = "Add item to tracker"
 	set category = "Yautja"
@@ -826,12 +826,12 @@
 	   //Preds now speak in bastardized 1337speak BECAUSE. -because abby is retarded -spookydonut
 
 	spawn(10)
-		if(!drain_power(usr,50)) 
+		if(!drain_power(usr,50))
 			return //At this point they've upgraded.
 
 		log_say("Yautja Translator/[usr.client.ckey] : [msg]")
 
 		for(var/mob/Q in hearers(usr))
-			if(Q.stat && !isobserver(Q)) 
+			if(Q.stat && !isobserver(Q))
 				continue //Unconscious
 			to_chat(Q, "[SPAN_INFO("A strange voice says")] <span class='prefix'>'[msg]'</span>.")

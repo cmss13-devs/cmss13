@@ -5,7 +5,7 @@
 	desc = "Emits a visible or invisible beam and is triggered when the beam is interrupted."
 	icon_state = "infrared"
 	matter = list("metal" = 1000, "glass" = 500, "waste" = 100)
-	
+
 
 	wires = WIRE_PULSE
 
@@ -17,7 +17,7 @@
 
 /obj/item/device/assembly/infra/Destroy()
 	QDEL_NULL(first)
-	processing_objects.Remove(src)
+	STOP_PROCESSING(SSobj, src)
 	. = ..()
 
 /obj/item/device/assembly/infra/activate()
@@ -30,11 +30,11 @@
 /obj/item/device/assembly/infra/toggle_secure()
 	secured = !secured
 	if(secured)
-		processing_objects.Add(src)
+		START_PROCESSING(SSobj, src)
 	else
 		on = 0
 		QDEL_NULL(first)
-		processing_objects.Remove(src)
+		STOP_PROCESSING(SSobj, src)
 	update_icon()
 	return secured
 
@@ -127,7 +127,7 @@
 		dat += "<A href='?src=\ref[src];visible=0'>Visible</A>"
 	else
 		dat += "<A href='?src=\ref[src];visible=1'>Invisible</A>"
-	
+
 	dat += "<BR>\n</TT>"
 	dat += "<BR><BR><A href='?src=\ref[src];refresh=1'>Refresh</A>"
 	dat += "<BR><BR><A href='?src=\ref[src];close=1'>Close</A>"
@@ -200,7 +200,7 @@
 	return
 
 /obj/effect/beam/i_beam/Destroy()
-	processing_objects.Remove(src)
+	STOP_PROCESSING(SSobj, src)
 	. = ..()
 
 /obj/effect/beam/i_beam/process()

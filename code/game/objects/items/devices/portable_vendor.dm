@@ -185,11 +185,11 @@
 
 /obj/item/device/portable_vendor/New()
 	. = ..()
-	processing_objects.Add(src)
+	START_PROCESSING(SSobj, src)
 	update_overlays()
 
 /obj/item/device/portable_vendor/Destroy()
-	processing_objects.Remove(src)
+	STOP_PROCESSING(SSobj, src)
 	. = ..()
 
 
@@ -197,7 +197,7 @@
 	var/turf/T = get_turf(src)
 	T.visible_message(SPAN_WARNING("[src] shudders as its internal components break apart!"))
 	broken = 1
-	processing_objects.Remove(src)
+	STOP_PROCESSING(SSobj, src)
 	update_overlays()
 
 	playsound(src, 'sound/effects/sparks4.ogg', 60, 1)
@@ -243,7 +243,7 @@
 		list("Ultrazine Pills", 20, /obj/item/storage/pill_bottle/ultrazine, "white", "Highly-addictive stimulant. Enhances short-term physical performance, particularly running speed. Effects last approximately 10 minutes per pill. More than two pills at a time will result in overdose. Withdrawal causes extreme discomfort and hallucinations. Long-term use results in halluciations and organ failure. Conditional distribution secures subject compliance. Not for personal use."),
 		list("Cash", 5, /obj/item/spacecash/c1000, "white", "$1000 USD, unmarked bills"),
 		list("WY Encryption Key", 5, /obj/item/device/encryptionkey/WY, "white", "WY private comms encryption key, for conducting private business."),
-		
+
 		list("Cigars", 5, /obj/item/storage/fancy/cigar, "white", "Case of premium cigars, untampered."),
 		list("Cigarettes", 5, /obj/item/storage/fancy/cigarettes/wypacket, "white", "Weston-Yamada Gold packet, for the more sophisticated taste."),
 		list("Zippo", 5, /obj/item/tool/lighter/zippo, "white", "A Zippo lighter, for those smoking in style."),

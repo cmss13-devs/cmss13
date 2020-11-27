@@ -23,7 +23,7 @@
 		add_to_garbage(src)
 
 /obj/Destroy()
-	if(buckled_mob) 
+	if(buckled_mob)
 		unbuckle()
 	. = ..()
 	remove_from_garbage(src)
@@ -33,7 +33,7 @@
 /obj/item/proc/is_used_on(obj/O, mob/user)
 
 /obj/process()
-	processing_objects.Remove(src)
+	STOP_PROCESSING(SSobj, src)
 	return 0
 
 /obj/proc/set_pixel_location()

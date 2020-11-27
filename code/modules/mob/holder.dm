@@ -7,10 +7,10 @@
 
 /obj/item/holder/New()
 	..()
-	processing_objects.Add(src)
+	START_PROCESSING(SSobj, src)
 
 /obj/item/holder/Destroy()
-	processing_objects.Remove(src)
+	STOP_PROCESSING(SSobj, src)
 	. = ..()
 
 /obj/item/holder/process()
@@ -56,7 +56,7 @@
 	name = "maintenance drone"
 	desc = "It's a small maintenance robot."
 	icon_state = "drone"
-	
+
 
 /obj/item/holder/cat
 	name = "cat"

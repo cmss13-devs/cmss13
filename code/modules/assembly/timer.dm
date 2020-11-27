@@ -10,7 +10,11 @@
 	secured = 0
 
 	var/timing = 0
-	var/time = 4
+	var/time = 4 SECONDS
+
+/obj/item/device/assembly/timer/Destroy()
+	STOP_PROCESSING(SSobj, src)
+	return ..()
 
 /obj/item/device/assembly/timer/activate()
 	if(!..())	return 0//Cooldown check
@@ -24,10 +28,10 @@
 /obj/item/device/assembly/timer/toggle_secure()
 	secured = !secured
 	if(secured)
-		processing_objects.Add(src)
+		START_PROCESSING(SSobj, src)
 	else
 		timing = 0
-		processing_objects.Remove(src)
+		STOP_PROCESSING(SSobj, src)
 	update_icon()
 	return secured
 
@@ -42,13 +46,13 @@
 	return
 
 
-/obj/item/device/assembly/timer/process()
+/obj/item/device/assembly/timer/process(delta_time)
 	if(timing && (time > 0))
-		time--
+		time -= delta_time SECONDS
 	if(timing && time <= 0)
 		timing = 0
 		timer_end()
-		time = 10
+		time = 10 SECONDS
 	return
 
 
@@ -85,13 +89,13 @@
 	if(href_list["time"])
 		timing = text2num(href_list["time"])
 		if(!timing)
-			time = min(max(round(time), 2), 600)
+			time = min(max(round(time), 2), 600) SECONDS
 		update_icon()
 
 	if(href_list["tp"])
 		var/tp = text2num(href_list["tp"])
 		time += tp
-		time = min(max(round(time), 2), 600)
+		time = min(max(round(time), 2), 600) SECONDS
 
 	if(href_list["close"])
 		close_browser(usr, "timer")

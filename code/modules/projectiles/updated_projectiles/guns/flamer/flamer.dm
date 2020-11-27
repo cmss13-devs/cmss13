@@ -342,7 +342,7 @@
 	firelevel = R.durationfire
 	burnlevel = R.intensityfire
 
-	processing_objects.Add(src)
+	START_PROCESSING(SSobj, src)
 
 	to_call = C
 
@@ -434,7 +434,7 @@
 
 /obj/flamer_fire/Destroy()
 	SetLuminosity(0)
-	processing_objects.Remove(src)
+	STOP_PROCESSING(SSobj, src)
 	. = ..()
 
 /obj/flamer_fire/initialize_pass_flags(var/datum/pass_flags_container/PF)

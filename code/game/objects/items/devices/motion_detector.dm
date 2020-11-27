@@ -81,23 +81,23 @@
 
 // var/active is used to forcefully toggle it to a specific state
 /obj/item/device/motiondetector/proc/toggle_active(mob/user, var/old_active)
-	active = !old_active	
+	active = !old_active
 	if(active)
 		update_icon()
 		if(user)
 			to_chat(user, SPAN_NOTICE("You activate [src]."))
 		playsound(loc, 'sound/items/detector_turn_on.ogg', 30, 0, 5, 2)
-		processing_objects.Add(src)
+		START_PROCESSING(SSobj, src)
 	else
 		scanning = FALSE // safety if MD runtimes in scan and stops scanning
 		icon_state = "[initial(icon_state)]"
 		if(user)
 			to_chat(user, SPAN_NOTICE("You deactivate [src]."))
 		playsound(loc, 'sound/items/detector_turn_off.ogg', 30, 0, 5, 2)
-		processing_objects.Remove(src)
+		STOP_PROCESSING(SSobj, src)
 
 /obj/item/device/motiondetector/Destroy()
-	processing_objects.Remove(src)
+	STOP_PROCESSING(SSobj, src)
 	for(var/to_delete in blip_pool)
 		qdel(blip_pool[to_delete])
 		blip_pool.Remove(to_delete)
@@ -108,7 +108,7 @@
 	if(isturf(loc))
 		toggle_active(null, TRUE)
 	if(!active)
-		processing_objects.Remove(src)
+		STOP_PROCESSING(SSobj, src)
 		return
 	recycletime--
 	if(!recycletime)
@@ -261,7 +261,7 @@
 
 		if(detected)
 			detected_sound = TRUE
-		
+
 		CHECK_TICK
 
 	for(var/mob/M in orange(detector_range, loc))

@@ -21,7 +21,9 @@ FORENSIC SCANNER
 
 	matter = list("metal" = 150)
 
-	
+/obj/item/device/t_scanner/Destroy()
+	STOP_PROCESSING(SSobj, src)
+	return ..()
 
 /obj/item/device/t_scanner/attack_self(mob/user)
 
@@ -29,12 +31,12 @@ FORENSIC SCANNER
 	icon_state = "t-ray[on]"
 
 	if(on)
-		processing_objects.Add(src)
+		START_PROCESSING(SSobj, src)
 
 
 /obj/item/device/t_scanner/process()
 	if(!on)
-		processing_objects.Remove(src)
+		STOP_PROCESSING(SSobj, src)
 		return null
 
 	for(var/turf/T in range(1, src.loc) )
@@ -77,7 +79,7 @@ FORENSIC SCANNER
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 10
 	matter = list("metal" = 200)
-	
+
 	var/mode = 1
 	var/hud_mode = 1
 
@@ -120,7 +122,7 @@ FORENSIC SCANNER
 
 	matter = list("metal" = 30,"glass" = 20)
 
-	
+
 
 /obj/item/device/analyzer/attack_self(mob/user as mob)
 
@@ -164,7 +166,7 @@ FORENSIC SCANNER
 
 	matter = list("metal" = 30,"glass" = 20)
 
-	
+
 	var/details = 0
 	var/recent_fail = 0
 
@@ -194,7 +196,7 @@ FORENSIC SCANNER
 	name = "advanced mass-spectrometer"
 	icon_state = "adv_spectrometer"
 	details = 1
-	
+
 
 /obj/item/device/reagent_scanner
 	name = "reagent scanner"
@@ -209,7 +211,7 @@ FORENSIC SCANNER
 	throw_range = 20
 	matter = list("metal" = 30,"glass" = 20)
 
-	
+
 	var/details = 0
 	var/recent_fail = 0
 
@@ -254,7 +256,7 @@ FORENSIC SCANNER
 	name = "advanced reagent scanner"
 	icon_state = "adv_spectrometer"
 	details = 1
-	
+
 /obj/item/device/demo_scanner
 	name = "demolitions scanner"
 	desc = "A hand-held specially designed reagent scanner meant for analyzing bombs. It can report explosive and fire hazards from chemical containers and explosive casings, including explosive and fire intensity. However, it can not predict effects such as shrapnel or burn duration nor predict hazards caused from immediate chemical reactions."

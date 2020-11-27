@@ -149,13 +149,13 @@ var/global/east_riverstart = 0
 			M.stop_pulling()
 
 	cause_damage(M)
-	processing_objects.Add(src)
+	START_PROCESSING(SSobj, src)
 
 
 /obj/effect/blocker/toxic_water/process()
 
 	if(!toxic)
-		processing_objects.Remove(src)
+		STOP_PROCESSING(SSobj, src)
 		return
 
 	if(istype(src.loc, /turf/open/gm/river/desert))
@@ -170,7 +170,7 @@ var/global/east_riverstart = 0
 		mobs_present++
 		cause_damage(M)
 	if(mobs_present < 1)
-		processing_objects.Remove(src)
+		STOP_PROCESSING(SSobj, src)
 
 
 /obj/effect/blocker/toxic_water/proc/cause_damage(mob/living/M)

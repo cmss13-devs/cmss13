@@ -244,8 +244,12 @@
 /obj/structure/machinery/door_control/timed_automatic/New()
 	..()
 	trigger_time = world.time + trigger_delay*600
-	processing_objects.Add(src)
+	START_PROCESSING(SSobj, src)
 	start_processing()  // should really be using this -spookydonut
+
+/obj/structure/machinery/door_control/timed_automatic/Destroy()
+	STOP_PROCESSING(SSobj, src)
+	return ..()
 
 /obj/structure/machinery/door_control/timed_automatic/process()
 	if (!triggered && world.time >= trigger_time)
@@ -261,7 +265,7 @@
 
 		desiredstate = !desiredstate
 		triggered = 1
-		processing_objects.Remove(src)
+		STOP_PROCESSING(SSobj, src)
 		//stop_processing()
 		spawn(15)
 			if(!(stat & NOPOWER))

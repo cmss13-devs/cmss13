@@ -4,7 +4,7 @@
 //Bottles now weaken and break when smashed on people's heads. - Giacom
 
 /obj/item/reagent_container/food/drinks/bottle
-	amount_per_transfer_from_this = 10
+	amount_per_transfer_from_this = 5
 	volume = 100
 	item_state = "broken_beer" //Generic held-item sprite until unique ones are made.
 	var/const/duration = 13 //Directly relates to the 'weaken' duration. Lowered by armor (i.e. helmets)

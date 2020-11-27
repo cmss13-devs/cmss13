@@ -133,7 +133,7 @@
 			if("blackpepper")
 				name = "Pepper Mill"
 				desc = "Often used to flavor food or make people sneeze."
-				icon_state = "peppermillsmall"
+				icon_state = "peppermill"
 				center_of_mass = "x=16;y=10"
 			if("cornoil")
 				name = "Corn Oil"

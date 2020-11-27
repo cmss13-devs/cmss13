@@ -186,6 +186,11 @@
 	path = /obj/item/reagent_container/glass/beaker/large
 	category = "Glassware"
 
+/datum/autolathe/recipe/drinkingglass
+	name = "drinking glass"
+	path = /obj/item/reagent_container/food/drinks/drinkingglass
+	category = "Glassware"
+
 /datum/autolathe/recipe/consolescreen
 	name = "console screen"
 	path = /obj/item/stock_parts/console_screen

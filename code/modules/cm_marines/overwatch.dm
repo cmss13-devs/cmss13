@@ -18,6 +18,8 @@
 	var/busy = 0 //The overwatch computer is busy launching an OB/SB, lock controls
 	var/dead_hidden = FALSE //whether or not we show the dead marines in the squad
 	var/z_hidden = 0 //which z level is ignored when showing marines.
+	var/marine_filter = list() // individual marine hiding control - list of string references
+	var/marine_filter_enabled = TRUE
 
 /obj/structure/machinery/computer/overwatch/attackby(var/obj/I as obj, var/mob/user as mob)  //Can't break or disassemble.
 	return
@@ -168,6 +170,11 @@
 			var/dist = "<b>???</b>"
 			var/area_name = "<b>???</b>"
 			var/mob/living/carbon/human/H
+
+			var/is_filtered = FALSE
+			if(X && ("\ref[X]" in marine_filter))
+				is_filtered = TRUE
+
 			if(ishuman(X))
 				H = X
 				mob_name = H.real_name
@@ -193,22 +200,25 @@
 					else if(M_turf && (M_turf.z == SL_z))
 						dist = "[get_dist(H, current_squad.squad_leader)] ([dir2text_short(get_dir(current_squad.squad_leader, H))])"
 
+				if(is_filtered && marine_filter_enabled)
+					continue
+
 				switch(H.stat)
 					if(CONSCIOUS)
 						mob_state = "Conscious"
 						living_count++
-						conscious_text += "<tr><td><A href='?src=\ref[src];operation=use_cam;cam_target=\ref[H]'>[mob_name]</a></td><td>[role][act_sl]</td><td>[mob_state]</td><td>[area_name]</td><td>[dist]</td></tr>"
+						conscious_text += "<tr><td><A href='?src=\ref[src];operation=use_cam;cam_target=\ref[H]'>[mob_name]</a></td><td>[role][act_sl]</td><td>[mob_state]</td><td>[area_name]</td><td>[dist]</td><td><A class='[is_filtered ? "green" : "red"]' href='?src=\ref[src];operation=filter_marine;squaddie=\ref[H]'>[is_filtered ? "Show" : "Hide"]</a></td></tr>"
 
 					if(UNCONSCIOUS)
 						mob_state = "<b>Unconscious</b>"
 						living_count++
-						unconscious_text += "<tr><td><A href='?src=\ref[src];operation=use_cam;cam_target=\ref[H]'>[mob_name]</a></td><td>[role][act_sl]</td><td>[mob_state]</td><td>[area_name]</td><td>[dist]</td></tr>"
+						unconscious_text += "<tr><td><A href='?src=\ref[src];operation=use_cam;cam_target=\ref[H]'>[mob_name]</a></td><td>[role][act_sl]</td><td>[mob_state]</td><td>[area_name]</td><td>[dist]</td><td><A class='[is_filtered ? "green" : "red"]' href='?src=\ref[src];operation=filter_marine;squaddie=\ref[H]'>[is_filtered ? "Show" : "Hide"]</a></td></tr>"
 
 					if(DEAD)
 						if(dead_hidden)
 							continue
 						mob_state = SET_CLASS("DEAD", INTERFACE_RED)
-						dead_text += "<tr><td><A href='?src=\ref[src];operation=use_cam;cam_target=\ref[H]'>[mob_name]</a></td><td>[role][act_sl]</td><td>[mob_state]</td><td>[area_name]</td><td>[dist]</td></tr>"
+						dead_text += "<tr><td><A href='?src=\ref[src];operation=use_cam;cam_target=\ref[H]'>[mob_name]</a></td><td>[role][act_sl]</td><td>[mob_state]</td><td>[area_name]</td><td>[dist]</td><td><A class='[is_filtered ? "green" : "red"]' href='?src=\ref[src];operation=filter_marine;squaddie=\ref[H]'>[is_filtered ? "Show" : "Hide"]</a></td></tr>"
 
 
 				if(!H.key || !H.client)
@@ -230,10 +240,11 @@
 						break
 				mob_state = SET_CLASS("DEAD", INTERFACE_RED)
 				mob_name = X
-				dead_text += "<tr><td><A href='?src=\ref[src];operation=use_cam;cam_target=\ref[H]'>[mob_name]</a></td><td>[role][act_sl]</td><td>[mob_state]</td><td>[area_name]</td><td>[dist]</td></tr>"
+
+				dead_text += "<tr><td><A href='?src=\ref[src];operation=use_cam;cam_target=\ref[H]'>[mob_name]</a></td><td>[role][act_sl]</td><td>[mob_state]</td><td>[area_name]</td><td>[dist]</td><td><A class='[is_filtered ? "green" : "red"]' href='?src=\ref[src];operation=filter_marine;squaddie=\ref[H]'>[is_filtered ? "Show" : "Hide"]</a></td></tr>"
 
 
-			var/marine_infos = "<tr><td><A href='?src=\ref[src];operation=use_cam;cam_target=\ref[H]'>[mob_name]</a></td><td>[role][act_sl][fteam]</td><td>[mob_state]</td><td>[area_name]</td><td>[dist]</td></tr>"
+			var/marine_infos = "<tr><td><A href='?src=\ref[src];operation=use_cam;cam_target=\ref[H]'>[mob_name]</a></td><td>[role][act_sl][fteam]</td><td>[mob_state]</td><td>[area_name]</td><td>[dist]</td><td><A class='[is_filtered ? "green" : "red"]' href='?src=\ref[src];operation=filter_marine;squaddie=\ref[H]'>[is_filtered ? "Show" : "Hide"]</a></td></tr>"
 			switch(role)
 				if(JOB_SQUAD_LEADER)
 					leader_text += marine_infos
@@ -265,7 +276,7 @@
 		dat += "<b>Marines alive: [living_count]</b><BR><BR><BR>"
 		dat += "<center><b>Search:</b> <input type='text' id='filter' value='' onkeyup='updateSearch();' style='width:300px;'></center>"
 		dat += "<table id='marine_list' border='2px' style='width: 100%; border-collapse: collapse;' align='center'><tr>"
-		dat += "<th>Name</th><th>Role</th><th>State</th><th>Location</th><th>SL Distance</th></tr>"
+		dat += "<th>Name</th><th>Role</th><th>State</th><th>Location</th><th>SL Distance</th><th>Filter</th></tr>"
 		if(!living_marines_sorting)
 			dat += leader_text + spec_text + medic_text + engi_text + smart_text + marine_text + misc_text
 		else
@@ -275,6 +286,7 @@
 	dat += "<A href='?src=\ref[src];operation=refresh'>Refresh</a><br>"
 	dat += "<A href='?src=\ref[src];operation=change_sort'>Change Sorting Method</a><br>"
 	dat += "<A href='?src=\ref[src];operation=hide_dead'>[dead_hidden ? "Show Dead Marines" : "Hide Dead Marines" ]</a><br>"
+	dat += "<A href='?src=\ref[src];operation=toggle_marine_filter'>[marine_filter_enabled ? "Disable Marine Filter" : "Enable Marine Filter"]</a><br>"
 	dat += "<A href='?src=\ref[src];operation=choose_z'>Change Locations Ignored</a><br>"
 	dat += "<br><A href='?src=\ref[src];operation=back'>Back</a></body>"
 	return dat
@@ -529,6 +541,22 @@
 					z_hidden = 0
 					to_chat(usr, "[htmlicon(src, usr)] [SPAN_NOTICE("No location is ignored anymore.")]")
 
+		if("toggle_marine_filter")
+			if(marine_filter_enabled)
+				marine_filter_enabled = FALSE
+				to_chat(usr, "[htmlicon(src, usr)] [SPAN_NOTICE("All marines will now be shown regardless of filter.")]")
+			else
+				marine_filter_enabled = TRUE
+				to_chat(usr, "[htmlicon(src, usr)] [SPAN_NOTICE("Individual Marine Filter is now enabled.")]")
+		if("filter_marine")
+			if (current_squad)
+				var/squaddie = href_list["squaddie"]
+				if(!(squaddie in marine_filter))
+					marine_filter += squaddie
+					to_chat(usr, "[htmlicon(src, usr)] [SPAN_NOTICE("Marine now hidden.")]")
+				else
+					marine_filter -= squaddie
+					to_chat(usr, "[htmlicon(src, usr)] [SPAN_NOTICE("Marine will now be shown.")]")
 		if("change_lead")
 			change_lead()
 		if("insubordination")

@@ -735,6 +735,7 @@
 			ammo_travelling_time = max(ammo_travelling_time - 20, 10)
 			break
 
+	msg_admin_niche("[key_name(user)] is direct-firing [SA] onto [selected_target] at ([target_turf.x],[target_turf.y],[target_turf.z]) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[target_turf.x];Y=[target_turf.y];Z=[target_turf.z]'>JMP LOC</a>)")
 	if(ammo_travelling_time)
 		var/total_seconds = max(round(ammo_travelling_time/10),1)
 		for(var/i = 0 to total_seconds)

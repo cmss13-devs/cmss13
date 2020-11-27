@@ -67,8 +67,8 @@
 	if(armour_type == ARMOR_MELEE)
 		armour_config = config.xeno_melee
 
-	var/modified_damage = armor_damage_reduction(armour_config, damage, null, penetration, armour_break_pr_pen, armour_break_flat)
-	var/armor_punch = armor_break_calculation(armour_config, damage, null, penetration, armour_break_pr_pen, armour_break_flat, armor_integrity)
+	var/modified_damage = armor_damage_reduction(armour_config, damage, armor_deflection + armor_deflection_buff, penetration, armour_break_pr_pen, armour_break_flat)
+	var/armor_punch = armor_break_calculation(armour_config, damage, armor_deflection + armor_deflection_buff, penetration, armour_break_pr_pen, armour_break_flat, armor_integrity)
 	apply_armorbreak(armor_punch)
 
 	apply_damage(modified_damage, damage_type)
@@ -121,11 +121,12 @@
 
 /mob/living/carbon/Xenomorph/var/armor_break_to_apply = 0
 /mob/living/carbon/Xenomorph/proc/apply_armorbreak(armorbreak = 0)
-	if(!armorbreak || !caste) return
+	if(isnull(config.xeno_general) || config.xeno_general.armor_ignore_integrity)
+		return FALSE
 
 	if(stat == DEAD) return
 
-	if(caste.armor_hardiness_mult <= 0 || armor_deflection<=0)
+	if(armor_deflection<=0)
 		return
 
 	//Immunity check
@@ -138,7 +139,7 @@
 		armor_break_to_apply = 0
 		post_apply_armorbreak()
 
-	var/delay = ((armor_integrity - armorbreak / caste.armor_hardiness_mult)/25)*XENO_ARMOR_BREAK_25PERCENT_IMMUNITY_TIME
+	var/delay = ((armor_integrity - armorbreak / 10)/25)*XENO_ARMOR_BREAK_25PERCENT_IMMUNITY_TIME
 	armor_break_to_apply += armorbreak
 	armor_integrity_immunity_time += delay
 
@@ -154,7 +155,7 @@
 	if(warding_aura && armor_break_to_apply > 0) //Damage to armor reduction
 		armor_break_to_apply = round(armor_break_to_apply * ((100 - (warding_aura * 15)) / 100))
 	if(caste)
-		armor_integrity -= armor_break_to_apply / caste.armor_hardiness_mult
+		armor_integrity -= armor_break_to_apply
 	if(armor_integrity < 0)
 		armor_integrity = 0
 	armor_break_to_apply = 0

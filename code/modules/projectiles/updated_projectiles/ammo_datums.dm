@@ -254,7 +254,7 @@
 
 	damage = BULLET_DAMAGE_TIER_5
 	accuracy = HIT_ACCURACY_TIER_2
-	penetration= ARMOR_PENETRATION_TIER_6
+	penetration= ARMOR_PENETRATION_TIER_8
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_2
 
 /datum/ammo/bullet/pistol/le
@@ -428,13 +428,10 @@
 /datum/ammo/bullet/smg/ap
 	name = "armor-piercing submachinegun bullet"
 
-	damage = BULLET_DAMAGE_TIER_7
-	penetration = ARMOR_PENETRATION_TIER_6
+	damage = BULLET_DAMAGE_TIER_5
+	penetration = ARMOR_PENETRATION_TIER_8
 	damage_falloff = DAMAGE_FALLOFF_TIER_8
 	shell_speed = AMMO_SPEED_TIER_4
-
-	damage = BULLET_DAMAGE_TIER_7
-	penetration = ARMOR_PENETRATION_TIER_6
 
 /datum/ammo/bullet/smg/incendiary
 	name = "incendiary submachinegun bullet"
@@ -472,8 +469,8 @@
 /datum/ammo/bullet/rifle
 	name = "rifle bullet"
 
-	accurate_range = 16
 	damage = BULLET_DAMAGE_TIER_8
+	accurate_range = 16
 	accuracy = HIT_ACCURACY_TIER_4
 	scatter = SCATTER_AMOUNT_TIER_10
 	shell_speed = AMMO_SPEED_TIER_6
@@ -482,8 +479,8 @@
 /datum/ammo/bullet/rifle/explosive
 	name = "explosive rifle bullet"
 
-	accurate_range = 22
 	damage = BULLET_DAMAGE_TIER_5
+	accurate_range = 22
 	accuracy = 0
 	shell_speed = AMMO_SPEED_TIER_4
 	damage_falloff = DAMAGE_FALLOFF_TIER_9
@@ -501,8 +498,8 @@
 /datum/ammo/bullet/rifle/ap
 	name = "armor-piercing rifle bullet"
 
-	damage = BULLET_DAMAGE_TIER_5
-	penetration = ARMOR_PENETRATION_TIER_6
+	damage = BULLET_DAMAGE_TIER_6
+	penetration = ARMOR_PENETRATION_TIER_8
 
 /datum/ammo/bullet/rifle/le
 	name = "armor-shredding rifle bullet"
@@ -525,7 +522,7 @@
 	shrapnel_chance = 0
 	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_INCENDIARY
 
-	damage = BULLET_DAMAGE_TIER_5
+	damage = BULLET_DAMAGE_TIER_6
 	shell_speed = AMMO_SPEED_TIER_4
 	accuracy = -HIT_ACCURACY_TIER_2
 	damage_falloff = DAMAGE_FALLOFF_TIER_10
@@ -621,7 +618,7 @@
 
 	accuracy = -HIT_ACCURACY_TIER_2
 	max_range = 12
-	damage = BULLET_DAMAGE_TIER_7
+	damage = BULLET_DAMAGE_TIER_11
 	penetration= ARMOR_PENETRATION_TIER_1
 
 /datum/ammo/bullet/shotgun/incendiary/on_hit_mob(mob/M,obj/item/projectile/P)
@@ -656,10 +653,10 @@
 	accuracy_var_low = PROJECTILE_VARIANCE_TIER_6
 	accuracy_var_high = PROJECTILE_VARIANCE_TIER_6
 	max_range = 12
-	damage = BULLET_DAMAGE_TIER_5
+	damage = BULLET_DAMAGE_TIER_6
 	damage_var_low = PROJECTILE_VARIANCE_TIER_8
 	damage_var_high = PROJECTILE_VARIANCE_TIER_8
-	penetration	= ARMOR_PENETRATION_TIER_5
+	penetration	= ARMOR_PENETRATION_TIER_7
 	scatter = SCATTER_AMOUNT_TIER_5
 
 /datum/ammo/bullet/shotgun/buckshot
@@ -702,7 +699,7 @@
 	damage_var_low = PROJECTILE_VARIANCE_TIER_8
 	damage_var_high = PROJECTILE_VARIANCE_TIER_8
 	damage_falloff = DAMAGE_FALLOFF_TIER_8
-	penetration = ARMOR_PENETRATION_TIER_1
+	penetration = 0
 	shell_speed = AMMO_SPEED_TIER_2
 	scatter = SCATTER_AMOUNT_TIER_1
 	damage_armor_punch = 0
@@ -834,7 +831,7 @@
 	max_range = 12
 	accuracy = HIT_ACCURACY_TIER_3
 	damage_falloff = DAMAGE_FALLOFF_TIER_10
-	damage = BULLET_DAMAGE_TIER_7
+	damage = BULLET_DAMAGE_TIER_6
 	penetration = 0
 
 /datum/ammo/bullet/smartgun/armor_piercing
@@ -845,7 +842,7 @@
 	accuracy = HIT_ACCURACY_TIER_1
 	damage_falloff = DAMAGE_FALLOFF_TIER_10
 	damage = BULLET_DAMAGE_TIER_4
-	penetration = ARMOR_PENETRATION_TIER_7
+	penetration = ARMOR_PENETRATION_TIER_8
 	damage_armor_punch = 1
 
 /datum/ammo/bullet/smartgun/marine/armor_piercing
@@ -855,7 +852,7 @@
 	accuracy = HIT_ACCURACY_TIER_1
 	damage_falloff = DAMAGE_FALLOFF_TIER_10
 	damage = BULLET_DAMAGE_TIER_4
-	penetration = ARMOR_PENETRATION_TIER_7
+	penetration = ARMOR_PENETRATION_TIER_8
 	damage_armor_punch = 1
 
 /datum/ammo/bullet/smartgun/dirty
@@ -875,7 +872,7 @@
 	accurate_range = 22
 	accuracy = HIT_ACCURACY_TIER_3
 	damage_falloff = DAMAGE_FALLOFF_TIER_10
-	damage = BULLET_DAMAGE_TIER_7
+	damage = BULLET_DAMAGE_TIER_6
 	penetration = ARMOR_PENETRATION_TIER_7
 	damage_armor_punch = 3
 
@@ -967,24 +964,24 @@
 	. = ..()
 
 /datum/ammo/rocket/on_hit_mob(mob/M, obj/item/projectile/P)
-	cell_explosion(get_turf(M), 200, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_source, P.weapon_source_mob)
+	cell_explosion(get_turf(M), 150, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_source, P.weapon_source_mob)
 	smoke.set_up(1, get_turf(M))
 	if(isHumanStrict(M)) // No yautya or synths. Makes humans gib on direct hit.
 		M.ex_act(350, P.dir, P.weapon_source, P.weapon_source_mob, 100)
 	smoke.start()
 
 /datum/ammo/rocket/on_hit_obj(obj/O, obj/item/projectile/P)
-	cell_explosion(get_turf(O), 200, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_source, P.weapon_source_mob)
+	cell_explosion(get_turf(O), 150, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_source, P.weapon_source_mob)
 	smoke.set_up(1, get_turf(O))
 	smoke.start()
 
 /datum/ammo/rocket/on_hit_turf(turf/T, obj/item/projectile/P)
-	cell_explosion(T, 200, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_source, P.weapon_source_mob)
+	cell_explosion(T, 150, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_source, P.weapon_source_mob)
 	smoke.set_up(1, T)
 	smoke.start()
 
 /datum/ammo/rocket/do_at_max_range(obj/item/projectile/P)
-	cell_explosion(get_turf(P), 200, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_source, P.weapon_source_mob)
+	cell_explosion(get_turf(P), 150, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_source, P.weapon_source_mob)
 	smoke.set_up(1, get_turf(P))
 	smoke.start()
 
@@ -1006,7 +1003,7 @@
 	M.KnockDown(2)
 	M.KnockOut(2)
 	if(isHumanStrict(M)) // No yautya or synths. Makes humans gib on direct hit.
-		M.ex_act(350, P.dir, P.weapon_source, P.weapon_source_mob, 100)
+		M.ex_act(300, P.dir, P.weapon_source, P.weapon_source_mob, 100)
 	cell_explosion(T, 100, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_source, P.weapon_source_mob)
 	smoke.set_up(1, T)
 	smoke.start()
@@ -1094,7 +1091,7 @@
 
 	accuracy_var_low = PROJECTILE_VARIANCE_TIER_6
 	accurate_range = 8
-	damage = BULLET_DAMAGE_TIER_19
+	damage = BULLET_DAMAGE_TIER_18
 	max_range = 8
 
 /datum/ammo/rocket/wp/drop_flame(turf/T, var/source, var/source_mob)

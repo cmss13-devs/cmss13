@@ -205,6 +205,7 @@
 			if(new_xeno)
 				qdel(new_xeno)
 			return
+
 		switch(new_xeno.tier) //They have evolved, add them to the slot count
 			if(2)
 				hive.tier_2_xenos |= new_xeno
@@ -230,13 +231,17 @@
 			new_xeno.fireloss = src.fireloss //Transfers the damage over.
 			new_xeno.updatehealth()
 
-		new_xeno.plasma_stored = new_xeno.plasma_max*(plasma_stored/plasma_max) //preserve the ratio of plasma
+		if(plasma_max == 0)
+			new_xeno.plasma_stored = new_xeno.plasma_max
+		else
+			new_xeno.plasma_stored = new_xeno.plasma_max*(plasma_stored/plasma_max) //preserve the ratio of plasma
 
 		new_xeno.visible_message(SPAN_XENODANGER("A [new_xeno.caste.caste_name] emerges from the husk of \the [src]."), \
 		SPAN_XENODANGER("You emerge in a greater form from the husk of your old body. For the hive!"))
 
 		if(hive.living_xeno_queen && hive.living_xeno_queen.observed_xeno == src)
 			hive.living_xeno_queen.set_queen_overwatch(new_xeno)
+
 		qdel(src)
 		new_xeno.xeno_jitter(25)
 

@@ -18,8 +18,8 @@
 	
 	var/mob/living/carbon/Xenomorph/Praetorian/P = MS.xeno
 	
-	P.armor_modifier += XENO_ARMOR_MOD_VERYSMALL
-	P.health_modifier -= XENO_HEALTH_MOD_SMALL
+	P.armor_modifier += XENO_ARMOR_MOD_VERYLARGE
+	P.health_modifier -= XENO_HEALTH_MOD_MED
 	P.damage_modifier -= XENO_DAMAGE_MOD_SMALL
 	P.explosivearmor_modifier += XENO_EXPOSIVEARMOR_MOD_SMALL
 	P.small_explosives_stun = FALSE

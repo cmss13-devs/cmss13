@@ -11,7 +11,6 @@
 	crystal_max = XENO_CRYSTAL_LOW
 	xeno_explosion_resistance = XENO_EXPLOSIVE_ARMOR_TIER_4
 	armor_deflection = XENO_ARMOR_TIER_3
-	armor_hardiness_mult = XENO_ARMOR_FACTOR_VERYHIGH
 	evasion = XENO_EVASION_NONE
 	speed = XENO_SPEED_TIER_4
 

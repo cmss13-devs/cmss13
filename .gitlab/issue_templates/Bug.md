@@ -29,5 +29,5 @@
 - [ ] Issue could be reproduced by different players
 - [ ] Issue could be reproduced in multiple rounds
 - [ ] Issue happened in a recent (less than 7 days ago) round
-- [ ] [Couldn't find an existing issue about this](https://gitlab.com/cmdevs/ColonialMarines/issues)
+- [ ] [Couldn't find an existing issue about this](https://gitlab.com/cmdevs/colonial-warfare/issues)
 

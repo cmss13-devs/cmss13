@@ -5,47 +5,47 @@
 #define GRAB_CHOKE      3
 
 //Ammo defines for gun/projectile related things.
-#define AMMO_EXPLOSIVE 			1
-#define AMMO_XENO_ACID 			2
-#define AMMO_XENO_TOX			4
-#define AMMO_ENERGY 			8
-#define AMMO_ROCKET				16
-#define AMMO_SNIPER				32
-#define AMMO_INCENDIARY			64
-#define AMMO_ANTISTRUCT         128 // Primarily for railgun but can be implemented for other projectiles that are for antitank and antistructure (wall/machine)
-#define AMMO_SKIPS_ALIENS 		512
-#define AMMO_IS_SILENCED 		1024 //Unused right now.
-#define AMMO_IGNORE_ARMOR		2048
-#define AMMO_IGNORE_RESIST		4096
-#define AMMO_BALLISTIC			8192
-#define AMMO_IGNORE_COVER		16384
-#define AMMO_SCANS_NEARBY		32768 //ammo that is scanning stuff nearby - VERY resource intensive
-#define AMMO_STOPPED_BY_COVER	65536
-#define AMMO_SPECIAL_EMBED      131072
-#define AMMO_STRIKES_SURFACE    262144 // If the projectile hits a dense turf it'll do on_hit_turf on the turf just in front of the turf instead of on the turf itself
-#define AMMO_HITS_TARGET_TURF   524288 // Whether or not the bullet hits the target that was clicked or if it keeps travelling
-#define AMMO_ALWAYS_FF          1048576
+#define AMMO_EXPLOSIVE 			(1<<0)
+#define AMMO_XENO_ACID 			(1<<1)
+#define AMMO_XENO_TOX			(1<<2)
+#define AMMO_ENERGY 			(1<<3)
+#define AMMO_ROCKET				(1<<4)
+#define AMMO_SNIPER				(1<<5)
+#define AMMO_INCENDIARY			(1<<6)
+#define AMMO_ANTISTRUCT			(1<<7) // Primarily for railgun but can be implemented for other projectiles that are for antitank and antistructure (wall/machine)
+#define AMMO_SKIPS_ALIENS 		(1<<8)
+#define AMMO_IS_SILENCED 		(1<<9) //Unused right now.
+#define AMMO_IGNORE_ARMOR		(1<<10)
+#define AMMO_IGNORE_RESIST		(1<<11)
+#define AMMO_BALLISTIC			(1<<12)
+#define AMMO_IGNORE_COVER		(1<<13)
+#define AMMO_SCANS_NEARBY		(1<<14) //ammo that is scanning stuff nearby - VERY resource intensive
+#define AMMO_STOPPED_BY_COVER	(1<<15)
+#define AMMO_SPECIAL_EMBED		(1<<16)
+#define AMMO_STRIKES_SURFACE	(1<<17) // If the projectile hits a dense turf it'll do on_hit_turf on the turf just in front of the turf instead of on the turf itself
+#define AMMO_HITS_TARGET_TURF	(1<<18) // Whether or not the bullet hits the target that was clicked or if it keeps travelling
+#define AMMO_ALWAYS_FF			(1<<19)
 
 //Gun defines for gun related thing. More in the projectile folder.
-#define GUN_CAN_POINTBLANK		1
-#define GUN_TRIGGER_SAFETY		2
-#define GUN_UNUSUAL_DESIGN		4
-#define GUN_SILENCED			8
-#define GUN_AUTOMATIC			16
-#define GUN_INTERNAL_MAG		32
-#define GUN_AUTO_EJECTOR		64
-#define GUN_AMMO_COUNTER		128
-#define GUN_BURST_ON			256
-#define GUN_BURST_FIRING		512
-#define GUN_FLASHLIGHT_ON		1024
-#define GUN_WY_RESTRICTED		2048
-#define GUN_SPECIALIST			4096
-#define GUN_WIELDED_FIRING_ONLY	8192
-#define GUN_HAS_FULL_AUTO		16384
-#define GUN_FULL_AUTO_ON		32768
-#define GUN_ONE_HAND_WIELDED    65536 //removes one-hand accuracy penalty
-#define GUN_ANTIQUE 			131072
-#define GUN_RECOIL_BUILDUP      262144
+#define GUN_CAN_POINTBLANK		(1<<0)
+#define GUN_TRIGGER_SAFETY		(1<<1)
+#define GUN_UNUSUAL_DESIGN		(1<<2)
+#define GUN_SILENCED			(1<<3)
+#define GUN_AUTOMATIC			(1<<4)
+#define GUN_INTERNAL_MAG		(1<<5)
+#define GUN_AUTO_EJECTOR		(1<<6)
+#define GUN_AMMO_COUNTER		(1<<7)
+#define GUN_BURST_ON			(1<<8)
+#define GUN_BURST_FIRING		(1<<9)
+#define GUN_FLASHLIGHT_ON		(1<<10)
+#define GUN_WY_RESTRICTED		(1<<11)
+#define GUN_SPECIALIST			(1<<12)
+#define GUN_WIELDED_FIRING_ONLY	(1<<13)
+#define GUN_HAS_FULL_AUTO		(1<<14)
+#define GUN_FULL_AUTO_ON		(1<<15)
+#define GUN_ONE_HAND_WIELDED	(1<<16) //removes one-hand accuracy penalty
+#define GUN_ANTIQUE 			(1<<17)
+#define GUN_RECOIL_BUILDUP		(1<<18)
 
 //Gun attachable related flags.
 #define ATTACH_REMOVABLE	1

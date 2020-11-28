@@ -216,11 +216,19 @@
 	if((byond_version < GOOD_BYOND_MAJOR) || ((byond_version == GOOD_BYOND_MAJOR) && (byond_build < GOOD_BYOND_MINOR)))
 		to_chat(src, FONT_SIZE_HUGE(SPAN_BOLDNOTICE("YOUR BYOND VERSION IS NOT WELL SUITED FOR THIS SERVER. Download latest BETA build or you may suffer random crashes or disconnects.")))
 
-	if(custom_event_msg && custom_event_msg != "")
-		to_chat(src, "<h1 class='alert'>Custom Event</h1>")
-		to_chat(src, "<h2 class='alert'>A custom event is taking place. OOC Info:</h2>")
-		to_chat(src, SPAN_ALERT("[html_encode(custom_event_msg)]"))
-		to_chat(src, "<br>")
+	var/datum/custom_event_info/CEI = GLOB.custom_event_info_list["Global"]
+	CEI.show_player_event_info(src)
+
+	if(mob && !isobserver(mob) && !isnewplayer(mob))
+		if(isXeno(mob))
+			var/mob/living/carbon/Xenomorph/X = mob
+			if(X.hive && GLOB.custom_event_info_list[X.hive])
+				CEI = GLOB.custom_event_info_list[X.hive]
+				CEI.show_player_event_info(src)
+
+		else if(mob.faction && GLOB.custom_event_info_list[mob.faction])
+			CEI = GLOB.custom_event_info_list[mob.faction]
+			CEI.show_player_event_info(src)
 
 	if( (world.address == address || !address) && !host )
 		host = key

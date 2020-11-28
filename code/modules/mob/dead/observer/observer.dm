@@ -620,7 +620,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		return
 
 	mind.transfer_to(Z, TRUE)
-
 	msg_admin_niche("[key_name(usr)] has joined as a [Z].")
 
 
@@ -652,7 +651,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 	freed_mob_list -= L
 	M.mind.transfer_to(L, TRUE)
-
 
 /mob/dead/verb/join_as_hellhound()
 	set category = "Ghost"

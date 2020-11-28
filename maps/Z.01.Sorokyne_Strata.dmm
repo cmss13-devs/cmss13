@@ -3797,9 +3797,7 @@
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 2
 	},
-/turf/closed/shuttle/ert{
-	icon_state = "upp2"
-	},
+/turf/open/floor/strata,
 /area/strata/ug/interior/jungle/deep/structures/res)
 "akk" = (
 /turf/closed/shuttle/ert{

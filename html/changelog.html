@@ -64,6 +64,14 @@
 		</td>
 	</tr>
 </table>
+			<h2 class="date">28 November 2020</h2>
+			<h3 class="author">Jeser updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="tweak">Changed how Custom Event Info works:</li>
+				<li class="rscadd">In addition to global custom event info, that everyone on server can see, staff can set faction-specific event messages that are visible only to mobs of respective faction.</li>
+				<li class="rscadd">Upon taking control of mob during round, event info for mob's faction will be displayed if it was set prior.</li>
+			</ul>
+
 			<h2 class="date">27 November 2020</h2>
 			<h3 class="author">Dubszor updated:</h3>
 			<ul class="changes bgimages16">
@@ -3043,92 +3051,6 @@
 			<ul class="changes bgimages16">
 				<li class="rscdel">Removed some unused closets from the codebase.</li>
 				<li class="tweak">Tweaked how some paper objectives display their messages when they are not active.</li>
-			</ul>
-
-			<h2 class="date">30 May 2020</h2>
-			<h3 class="author">Awan updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">Yautja can now use their relay to add teleport locations</li>
-				<li class="tweak">Yautja can now exit the teleporter with what they are dragging.</li>
-				<li class="tweak">Yautja can now pick their teleport location.</li>
-				<li class="tweak">The plasma rifle has been removed.</li>
-				<li class="tweak">Yautja Self Destruct is now small by default.</li>
-				<li class="tweak">Yautja Self Destruct detonation source is bracer.</li>
-				<li class="tweak">Yautja can now edit tracked items.</li>
-				<li class="tweak">Scythe no longer delimbs. Scythe has a chance to slice twice now.</li>
-				<li class="tweak">Yautja can heal humans with Thwei. Humans still can't self apply Thwei.</li>
-				<li class="tweak">You can throw smartdisk without activating it.</li>
-				<li class="tweak">Yautja can now make floors.</li>
-				<li class="tweak">Yautja heal more from healing herbs.</li>
-				<li class="tweak">Various spelling errors around Yautja items and abilities were fixed.</li>
-			</ul>
-			<h3 class="author">John Titor updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">Removed duplicate alphabet lists.</li>
-				<li class="tweak">Xeno tunnels get a more unique default name to help distinguish them on some maps.</li>
-				<li class="tweak">Drones and Queens can now rename xeno tunnels.</li>
-				<li class="tweak">Scout cloak disables itself when user gets hugged.</li>
-				<li class="tweak">Motion detectors and data detectors disable themselves on huggers applied, death and when dropped onto the floor to save some processing cycles.</li>
-				<li class="tweak">Document pouches now specify if they are large or small by name.</li>
-				<li class="tweak">WY Chemical Investigation Squad now gets some handy large document pouches for their research work.</li>
-				<li class="tweak">Cleaned up how radio channels are displayed in the headset UI.</li>
-			</ul>
-			<h3 class="author">Neth updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">Only one stack of acid vomit can be applied per level</li>
-			</ul>
-			<h3 class="author">Slywater updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="maptweak">Added random objective landmarks to Big Red.</li>
-			</ul>
-			<h3 class="author">ThePiachu updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Added a random objective spawner system. It's meant to give more variety to where objectives are spawned around various maps, as well as allow easier tweaking of objective generation for those maps. The system will slowly be rolled out on a few maps.</li>
-				<li class="maptweak">Added random objective landmarks to LV-624.</li>
-			</ul>
-			<h3 class="author">Triiodine updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Boxing gloves now actually work. You must be on HARM INTENT to box. You can only box other people wearing boxing gloves. You can stay in the fight longer by taking painkillers. You can't box Yautja or Xenos. #7924, #7952, #11840.</li>
-				<li class="bugfix">Fixed the flicker rebound on the animated muzzle flash by slowing the frame speed down to 1 byond tick instead of .5</li>
-				<li class="rscadd">Added back in the missing ceremonial sword icon.</li>
-				<li class="spellcheck">Fixed the Mateba naming inconsistencies.</li>
-				<li class="spellcheck">Changed the description of the M44 Custom to reflect its appearance.</li>
-				<li class="imageadd">Resprited the M56B 'Smartgun', L42A, M41A Mk2, M41A2 Mk2, M41AE2 (HPR), M39, M39/B2, M44, M4A3, M4A3 Custom, VP78, 88 Mod 4, M46C, M92 Grenade Launcher, HG 37-12, PPSH17-B, MAR40, and MAR30.</li>
-				<li class="imageadd">Resprited the M41A skeleton stock.</li>
-				<li class="spellcheck">Renamed the M41A skeleton stock to solid stock.</li>
-				<li class="imageadd">Added the original teal map color variation back to Prison Station. This applies to armors and weapons.</li>
-				<li class="imagedel">Removed map variants of the M4A3.</li>
-				<li class="imageadd">Added M37-12 and M79 icons. Presently unused.</li>
-				<li class="imageadd">Added partial support for 'urban' armor and weapon coloring. Presently unused.</li>
-				<li class="imageadd">Slightly adjusted the S4 Telescopic attached icon.</li>
-				<li class="imageadd">Added Redikal.zip's animated muzzle flash.</li>
-				<li class="rscadd">Added the M44 Custom.</li>
-				<li class="rscadd">Armed the Requisitions Officer and Senioer Enlisted Advisor with the M44 Custom.</li>
-				<li class="soundadd">Changed the firing audio of the M41AE2 (HPR), L42A, MAR40, MAR30, and M16.</li>
-				<li class="soundadd">Changed the reload and unload audio of the MAR40, MAR30, and M16.</li>
-				<li class="soundadd">Added support for alternate 'magazine rattle' sounds for low ammo firearms as an alternative to pitch shifting. Presently unused.</li>
-				<li class="bugfix">Fixed jungle uniforms of Staff Officer's not being green.</li>
-				<li class="bugfix">Fixed the Commanding Officer's armor looking for map variant icons where there were none.</li>
-				<li class="experiment">Sorted numerous icon sheets internally with 'marker sorting'.</li>
-				<li class="imagedel">Removed a lot of legacy icons.</li>
-				<li class="rscdel">Removed the last traces of wizards from the code.</li>
-			</ul>
-			<h3 class="author">thepiachu updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Limited spam caused by messaging the High Command.</li>
-				<li class="tweak">ERTs will now let admins know more explicitly if they are hostile.</li>
-				<li class="tweak">Freelancers' objective will be more explicitly worded in case they are hostile.</li>
-				<li class="tweak">Deadchat will receive notification of which ERT shuttle was called.</li>
-				<li class="bugfix">Squashed some null errors around uniforms, praetorian powers, mutator lists, reagent samples, etc.</li>
-				<li class="tweak">SEAs now start with a back item.</li>
-				<li class="tweak">You can't add a sandwitch to a sandwitch anymore to avoid sandwitchceptions causing bugs.</li>
-				<li class="rscdel">Collapsed unused cloaking device into the chameleon projector.</li>
-				<li class="bugfix">Fixed runtime bugs around primary LZ, reagents, mutators, reviving, movement events, hallucinations and chat printouts.</li>
-				<li class="maptweak">Added random objective landmarks to Ice Colony</li>
-				<li class="imageadd">Added some programmer art sprites for objective landmarks for our mappers.</li>
-				<li class="maptweak">Added random objective landmarks to Prison Station.</li>
-				<li class="maptweak">Added random objective landmarks to CORSAT.</li>
-				<li class="bugfix">Fixed objectives not being generated on some maps.</li>
 			</ul>
 </div>
 </body>

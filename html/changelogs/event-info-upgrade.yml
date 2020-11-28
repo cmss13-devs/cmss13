@@ -1,8 +1,0 @@
-author: Jeser
-
-delete-after: True
-
-changes: 
-  - tweak: "Changed how Custom Event Info works:"
-  - rscadd: "In addition to global custom event info, that everyone on server can see, staff can set faction-specific event messages that are visible only to mobs of respective faction."
-  - rscadd: "Upon taking control of mob during round, event info for mob's faction will be displayed if it was set prior."

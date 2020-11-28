@@ -102,7 +102,7 @@
 	SPAN_XENODANGER("[X] makes you regress into your previous form."))
 
 	if(X.hive.living_xeno_queen && X.hive.living_xeno_queen.observed_xeno == T)
-		X.hive.living_xeno_queen.set_queen_overwatch(new_xeno)
+		X.hive.living_xeno_queen.overwatch(new_xeno)
 
 	message_staff("[key_name_admin(X)] has deevolved [key_name_admin(T)]. Reason: [reason]")
 	log_admin("[key_name_admin(X)] has deevolved [key_name_admin(T)]. Reason: [reason]")
@@ -216,9 +216,9 @@
 			var/mob/living/carbon/Xenomorph/selected_xeno = input(X, "Target", "Watch which xenomorph leader?") as null|anything in possible_xenos
 			if(!selected_xeno || selected_xeno.hive_pos == NORMAL_XENO || selected_xeno == X.observed_xeno || selected_xeno.stat == DEAD || selected_xeno.z != X.z || !X.check_state())
 				return
-			X.set_queen_overwatch(selected_xeno)
+			X.overwatch(selected_xeno)
 		else if(possible_xenos.len)
-			X.set_queen_overwatch(possible_xenos[1])
+			X.overwatch(possible_xenos[1])
 		else
 			to_chat(X, SPAN_XENOWARNING("There are no Xenomorph leaders. Overwatch a Xenomorph to make it a leader."))
 
@@ -352,6 +352,14 @@
 	else
 		to_chat(X, SPAN_WARNING("You must overwatch the xeno you want to readmit."))
 
+
+/datum/action/xeno_action/onclick/eye/use_ability(atom/A)
+	. = ..()
+	if(!owner)
+		return
+
+	new /mob/hologram/queen(owner.loc, owner)
+	qdel(src)
 
 /datum/action/xeno_action/activable/secrete_resin/ovipositor/action_cooldown_check()
 	var/mob/living/carbon/Xenomorph/X = owner

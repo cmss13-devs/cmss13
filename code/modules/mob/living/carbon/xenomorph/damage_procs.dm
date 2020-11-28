@@ -76,6 +76,7 @@
 /mob/living/carbon/Xenomorph/apply_damage(damage = 0, damagetype = BRUTE, def_zone = null, used_weapon = null, sharp = 0, edge = 0, force = FALSE)
 	if(!damage) return
 
+	if(SEND_SIGNAL(src, COMSIG_XENO_TAKE_DAMAGE, damage, damagetype) & COMPONENT_BLOCK_DAMAGE) return
 	//We still want to check for blood splash before we get to the damage application.
 	var/chancemod = 0
 	if(used_weapon && sharp)

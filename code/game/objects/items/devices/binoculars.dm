@@ -11,6 +11,7 @@
 	throw_range = 15
 	throw_speed = SPEED_VERY_FAST
 
+
 	//matter = list("metal" = 50,"glass" = 50)
 
 /obj/item/device/binoculars/Initialize()
@@ -18,7 +19,11 @@
 	select_gamemode_skin(type)
 
 /obj/item/device/binoculars/attack_self(mob/user)
+	if(SEND_SIGNAL(user, COMSIG_BINOCULAR_ATTACK_SELF, src))
+		return FALSE
+
 	zoom(user, 11, 12)
+	return TRUE
 
 /obj/item/device/binoculars/on_set_interaction(var/mob/user)
 	flags_atom |= RELAY_CLICK
@@ -87,6 +92,9 @@
 	if(!istype(user))
 		return
 	if(mods["ctrl"])
+		if(SEND_SIGNAL(user, COMSIG_BINOCULAR_HANDLE_CLICK, src))
+			return FALSE
+		
 		acquire_target(A, user)
 		return TRUE
 	return FALSE
@@ -384,7 +392,11 @@
 	return
 
 /obj/item/device/binoculars/designator/attack_self(mob/living/carbon/human/user)
-	zoom(user)
+	. = ..()
+
+	if(!.)
+		return
+
 	if(!FAC)
 		FAC = user
 		return

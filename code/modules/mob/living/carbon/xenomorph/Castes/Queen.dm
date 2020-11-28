@@ -48,7 +48,144 @@
 					continue outer_loop
 			hive.living_xeno_queen = null
 
+/mob/hologram/queen
+	name = "Queen Eye"
+	action_icon_state = "queen_eye"
 
+	color = "#a800a8"
+
+	hud_possible = list(XENO_STATUS_HUD)
+	var/mob/is_watching
+
+
+/mob/hologram/queen/Initialize(mapload, mob/M)
+	if(!isXenoQueen(M))
+		return INITIALIZE_HINT_QDEL
+	
+	var/mob/living/carbon/Xenomorph/Queen/Q = M
+	if(!Q.ovipositor)
+		return INITIALIZE_HINT_QDEL
+
+	. = ..(mapload, M)
+	RegisterSignal(Q, COMSIG_MOB_PRE_CLICK, .proc/handle_overwatch)
+	RegisterSignal(Q, COMSIG_QUEEN_DISMOUNT_OVIPOSITOR, .proc/exit_hologram)
+	RegisterSignal(Q, COMSIG_XENOMORPH_OVERWATCH_XENO, .proc/start_watching)
+	RegisterSignal(Q, list(
+		COMSIG_XENOMORPH_STOP_OVERWATCH,
+		COMSIG_XENOMORPH_STOP_OVERWATCH_XENO
+	), .proc/stop_watching)
+	RegisterSignal(src, COMSIG_TURF_ENTER, .proc/turf_weed_only)
+	
+
+	med_hud_set_status()
+	add_to_all_mob_huds()
+
+	M.sight |= SEE_TURFS|SEE_OBJS
+
+/mob/hologram/queen/proc/exit_hologram()
+	SIGNAL_HANDLER
+	qdel(src)
+
+/mob/hologram/queen/handle_move(mob/living/carbon/Xenomorph/X, NewLoc, direct)
+	X.overwatch(stop_overwatch = TRUE)
+
+	return ..()
+	
+
+/mob/hologram/queen/proc/start_watching(var/mob/living/carbon/Xenomorph/X, var/mob/living/carbon/Xenomorph/target)
+	SIGNAL_HANDLER
+	loc = target
+	is_watching = target
+
+	RegisterSignal(target, COMSIG_PARENT_QDELETING, .proc/target_watching_qdeleted)
+	return
+
+// able to stop watching here before the loc is set to null
+/mob/hologram/queen/proc/target_watching_qdeleted(var/mob/living/carbon/Xenomorph/target)
+	SIGNAL_HANDLER
+	stop_watching(linked_mob, target)
+
+/mob/hologram/queen/proc/stop_watching(var/mob/living/carbon/Xenomorph/X, var/mob/living/carbon/Xenomorph/target)
+	SIGNAL_HANDLER
+	if(target)
+		if(loc == target)
+			var/turf/T = get_turf(target)
+
+			if(T)
+				loc = T
+		UnregisterSignal(target, COMSIG_PARENT_QDELETING)
+
+	if(!isturf(loc))
+		loc = X.loc
+
+	is_watching = null
+	X.reset_view()
+	return
+
+/mob/hologram/queen/proc/turf_weed_only(var/mob/self, var/turf/T)
+	SIGNAL_HANDLER
+
+	if(!T)
+		return COMPONENT_TURF_DENY_MOVEMENT
+
+	if(istype(T, /turf/closed/wall))
+		var/turf/closed/wall/W = T
+		if(W.hull)
+			return COMPONENT_TURF_DENY_MOVEMENT
+
+	var/obj/effect/alien/weeds/W = locate() in T
+	if(W)
+		return COMPONENT_TURF_ALLOW_MOVEMENT
+
+	return COMPONENT_TURF_DENY_MOVEMENT	
+
+/mob/hologram/queen/proc/handle_overwatch(var/mob/living/carbon/Xenomorph/Queen/Q, var/atom/A, var/mods)
+	SIGNAL_HANDLER
+	if(!mods["ctrl"])
+		return
+	
+	if(isXeno(A))
+		Q.overwatch(A)
+		return COMPONENT_INTERRUPT_CLICK
+
+	var/turf/T = get_turf(A)
+	if(!istype(T))
+		return
+
+	if(!(turf_weed_only(src, T) & COMPONENT_TURF_ALLOW_MOVEMENT))
+		return
+	
+	loc = T
+	if(is_watching)
+		Q.overwatch(stop_overwatch = TRUE)
+	
+	return COMPONENT_INTERRUPT_CLICK
+
+/mob/hologram/queen/handle_view(var/mob/M, var/atom/target)
+	if(M.client)
+		M.client.perspective = EYE_PERSPECTIVE
+
+		if(is_watching)
+			M.client.eye = is_watching
+		else
+			M.client.eye = src
+	
+	return COMPONENT_OVERRIDE_VIEW
+
+
+/mob/hologram/queen/Destroy()
+	if(linked_mob)
+		var/mob/living/carbon/Xenomorph/Queen/Q = linked_mob
+		if(Q.ovipositor)
+			var/datum/action/xeno_action/onclick/eye/E = new()
+			E.give_action(linked_mob)
+
+		linked_mob.sight &= ~(SEE_TURFS|SEE_OBJS)
+
+	remove_from_all_mob_huds()
+
+	return ..()
+	
 /mob/living/carbon/Xenomorph/Queen
 	caste_name = "Queen"
 	name = "Queen"
@@ -105,7 +242,7 @@
 		/datum/action/xeno_action/onclick/choose_resin/queen_macro, //third macro
 		/datum/action/xeno_action/activable/secrete_resin/queen_macro, //fourth macro
 		/datum/action/xeno_action/onclick/banish,
-		/datum/action/xeno_action/onclick/readmit,
+		/datum/action/xeno_action/onclick/readmit
 		)
 
 	inherent_verbs = list(
@@ -166,7 +303,7 @@
 
 /mob/living/carbon/Xenomorph/Queen/Destroy()
 	if(observed_xeno)
-		set_queen_overwatch(observed_xeno, TRUE)
+		overwatch(observed_xeno, TRUE)
 	if(hive && hive.living_xeno_queen == src)
 		hive.set_living_xeno_queen(null)
 	return ..()
@@ -181,7 +318,7 @@
 
 		if(observed_xeno)
 			if(observed_xeno.stat == DEAD || QDELETED(observed_xeno))
-				set_queen_overwatch(observed_xeno, TRUE)
+				overwatch(observed_xeno, TRUE)
 
 		if(ovipositor && !is_mob_incapacitated(TRUE))
 			egg_amount += 0.07 * mutators.egg_laying_multiplier //one egg approximately every 30 seconds
@@ -526,6 +663,7 @@
 		/datum/action/xeno_action/onclick/deevolve, \
 		/datum/action/xeno_action/onclick/banish, \
 		/datum/action/xeno_action/onclick/readmit, \
+		/datum/action/xeno_action/onclick/eye
 		)
 
 	for(var/path in immobile_abilities)
@@ -547,7 +685,7 @@
 	set waitfor = 0
 	if(!instant_dismount)
 		if(observed_xeno)
-			set_queen_overwatch(observed_xeno, TRUE)
+			overwatch(observed_xeno, TRUE)
 		flick("ovipositor_dismount", src)
 		sleep(5)
 	else
@@ -564,7 +702,7 @@
 	new /obj/ovipositor(loc)
 
 	if(observed_xeno)
-		set_queen_overwatch(observed_xeno, TRUE)
+		overwatch(observed_xeno, TRUE)
 	zoom_out()
 
 	for(var/datum/action/A in actions)
@@ -586,6 +724,8 @@
 
 	if(!instant_dismount)
 		xeno_message(SPAN_XENOANNOUNCE("The Queen has shed her ovipositor, evolution progress paused."), 3, hivenumber)
+
+	SEND_SIGNAL(src, COMSIG_QUEEN_DISMOUNT_OVIPOSITOR, instant_dismount)
 
 /mob/living/carbon/Xenomorph/Queen/update_canmove()
 	. = ..()
@@ -618,19 +758,6 @@
 		icon_state = "[mutation_type] Queen Running"
 
 	update_fire() //the fire overlay depends on the xeno's stance, so we must update it.
-
-//proc to modify which xeno, if any, the queen is observing.
-/mob/living/carbon/Xenomorph/Queen/proc/set_queen_overwatch(mob/living/carbon/Xenomorph/target, stop_overwatch)
-	if(stop_overwatch)
-		observed_xeno = null
-	else
-		var/mob/living/carbon/Xenomorph/old_xeno = observed_xeno
-		observed_xeno = target
-		if(old_xeno)
-			old_xeno.hud_set_queen_overwatch()
-	if(!QDELETED(target)) //not qdel'd
-		target.hud_set_queen_overwatch()
-	reset_view()
 
 
 /mob/living/carbon/Xenomorph/Queen/gib(var/cause = "gibbing")

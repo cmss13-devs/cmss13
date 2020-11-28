@@ -70,9 +70,10 @@ var/list/datum/mob_hud/huds = list(
 	if(!user.client)
 		return
 	for(var/i in hud_icons)
-		user.client.images |= target.hud_list[i]
-		if(target.clone)
-			user.client.images |= target.clone.hud_list[i]
+		if(i in target.hud_list)
+			user.client.images |= target.hud_list[i]
+			if(target.clone)
+				user.client.images |= target.clone.hud_list[i]
 
 
 
@@ -194,6 +195,10 @@ var/list/datum/mob_hud/huds = list(
 /mob/proc/add_to_all_mob_huds()
 	return
 
+/mob/hologram/queen/add_to_all_mob_huds()
+	var/datum/mob_hud/hud = huds[MOB_HUD_XENO_STATUS]
+	hud.add_to_hud(src)
+
 /mob/living/carbon/human/add_to_all_mob_huds()
 	for(var/datum/mob_hud/hud in huds)
 		if(istype(hud, /datum/mob_hud/xeno)) //this one is xeno only
@@ -209,6 +214,10 @@ var/list/datum/mob_hud/huds = list(
 
 /mob/proc/remove_from_all_mob_huds()
 	return
+
+/mob/hologram/queen/remove_from_all_mob_huds()
+	var/datum/mob_hud/hud = huds[XENO_STATUS_HUD]
+	hud.remove_from_hud(src)
 
 /mob/living/carbon/human/remove_from_all_mob_huds()
 	for(var/datum/mob_hud/hud in huds)
@@ -312,6 +321,10 @@ var/list/datum/mob_hud/huds = list(
 /mob/living/carbon/Xenomorph/med_hud_set_status()
 	hud_set_plasma()
 	hud_set_pheromone()
+
+/mob/hologram/queen/med_hud_set_status()
+	var/image/holder = hud_list[XENO_STATUS_HUD]
+	holder.icon_state = "hudeye"
 
 /mob/living/carbon/human/med_hud_set_status()
 	var/image/holder = hud_list[STATUS_HUD]

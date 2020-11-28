@@ -60,3 +60,8 @@
 
 	macro_path = /datum/action/xeno_action/verb/verb_projected_resin
 	action_type = XENO_ACTION_CLICK
+
+/datum/action/xeno_action/onclick/eye
+	name = "Enter Eye Form"
+	action_icon_state = "queen_eye"
+	plasma_cost = 0

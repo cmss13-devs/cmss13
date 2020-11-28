@@ -73,11 +73,36 @@
 #define COMSIG_MOB_DEVOURED "mob_devoured"
 	#define COMPONENT_CANCEL_DEVOUR	(1<<0)
 
+// Reserved for tech trees
+#define COMSIG_MOB_ENTER_TREE "mob_enter_tree"
+	#define COMPONENT_CANCEL_TREE_ENTRY (1<<0)
+
+#define COMSIG_MOB_TAKE_DAMAGE "mob_take_damage"
+#define COMSIG_XENO_TAKE_DAMAGE "xeno_take_damage"
+#define COMSIG_HUMAN_TAKE_DAMAGE "human_take_damage"
+	#define COMPONENT_BLOCK_DAMAGE (1<<0)
+
+#define COMSIG_MOB_RESET_VIEW "mob_reset_view"
+	#define COMPONENT_OVERRIDE_VIEW	(1<<0)
+
+// Return a nonzero value to cancel these actions
+#define COMSIG_BINOCULAR_ATTACK_SELF "binocular_attack_self"
+#define COMSIG_BINOCULAR_HANDLE_CLICK "binocular_handle_click"
+
+#define COMSIG_MOB_PRE_CLICK "mob_pre_click"
+	#define COMPONENT_INTERRUPT_CLICK (1<<0)
+
 /// From /mob/living/rejuvenate
 #define COMSIG_LIVING_REJUVENATED "living_rejuvenated"
 
 /// From /obj/item/device/defibrillator/attack
 #define COMSIG_HUMAN_REVIVED "human_revived"
+
+#define COMSIG_XENOMORPH_OVERWATCH_XENO "xenomorph_overwatch_xeno"
+#define COMSIG_XENOMORPH_STOP_OVERWATCH	"xenomorph_stop_overwatch"
+#define COMSIG_XENOMORPH_STOP_OVERWATCH_XENO "xenomorph_stop_overwatch_xeno"
+
+#define COMSIG_QUEEN_DISMOUNT_OVIPOSITOR "queen_dismount_ovipositor"
 
 // /obj/item signals
 ///from base of obj/item/dropped(): (mob/user)
@@ -96,3 +121,10 @@
 #define COMSIG_TRACKING_PLANTED "tracking_planted"
 ///from /obj/item/device/agents/tracking_device/attackby
 #define COMSIG_TRACKING_DISARMED "tracking_disarmed"
+
+#define COMSIG_CLIENT_MOB_MOVE	"client_mob_move"
+	#define COMPONENT_OVERRIDE_MOVE	(1<<0)
+
+#define COMSIG_TURF_ENTER "turf_enter"
+	#define COMPONENT_TURF_ALLOW_MOVEMENT (1<<0)
+	#define COMPONENT_TURF_DENY_MOVEMENT  (1<<1)

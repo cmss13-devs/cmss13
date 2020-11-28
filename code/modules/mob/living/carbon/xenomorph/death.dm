@@ -31,7 +31,7 @@
 			var/mob/living/carbon/Xenomorph/Queen/XQ = src
 			playsound(loc, 'sound/voice/alien_queen_died.ogg', 75, 0)
 			if(XQ.observed_xeno)
-				XQ.set_queen_overwatch(XQ.observed_xeno, TRUE)
+				XQ.overwatch(XQ.observed_xeno, TRUE)
 			if(XQ.ovipositor)
 				XQ.dismount_ovipositor(TRUE)
 

@@ -292,6 +292,8 @@
 	return 0
 
 /mob/proc/reset_view(atom/A)
+	if(SEND_SIGNAL(src, COMSIG_MOB_RESET_VIEW, A) & COMPONENT_OVERRIDE_VIEW) return TRUE
+
 	if (client)
 		if (istype(A, /atom/movable))
 			client.perspective = EYE_PERSPECTIVE

@@ -330,7 +330,6 @@
 				node_activator.trigger()
 
 	transit_optimized = 0 //De-optimize the flight plans
-	transit_gun_mission = 0 //no longer on a fire mission.
 
 	//Simple, cheap ticker
 	if(recharge_time)

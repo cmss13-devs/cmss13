@@ -222,7 +222,7 @@
 		mission_error = "Target Lost."
 		return
 	var/turf/tt_turf = get_turf(target_turf.loc)
-	if(!tt_turf  || !check_firemission_loc(target_turf))
+	if(!tt_turf || !check_firemission_loc(target_turf))
 		stat = FIRE_MISSION_STATE_IDLE
 		mission_error = "Target is off bounds or obstructed."
 		return

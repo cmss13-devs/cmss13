@@ -209,7 +209,6 @@
 						/obj/item/attachable/flashlight,
 						/obj/item/attachable/extended_barrel,
 						/obj/item/attachable/heavy_barrel,
-						/obj/item/attachable/magnetic_harness,
 						/obj/item/attachable/scope/mini,
 						/obj/item/attachable/scope/mini_iff,
 						/obj/item/attachable/verticalgrip,
@@ -225,7 +224,6 @@
 							/obj/item/attachable/reddot,
 							/obj/item/attachable/reflex/,
 							/obj/item/attachable/scope/mini_iff,
-							/obj/item/attachable/magnetic_harness,
 							)
 	random_spawn_underbarrel = list(
 							/obj/item/attachable/angledgrip,

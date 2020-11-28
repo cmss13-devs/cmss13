@@ -492,7 +492,7 @@
 		SPAN_XENODANGER("[X] makes you regress into your previous form."))
 
 		if(X.hive.living_xeno_queen && X.hive.living_xeno_queen.observed_xeno == T)
-			X.hive.living_xeno_queen.set_queen_overwatch(new_xeno)
+			X.hive.living_xeno_queen.overwatch(new_xeno)
 
 		message_staff("[key_name_admin(X)] has deevolved [key_name_admin(T)]. Reason: [reason]")
 

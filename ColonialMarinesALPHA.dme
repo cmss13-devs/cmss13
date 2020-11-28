@@ -1199,6 +1199,7 @@
 #include "code\modules\cm_resources\defines.dm"
 #include "code\modules\cm_resources\node_spawn.dm"
 #include "code\modules\cm_resources\resource_node.dm"
+#include "code\modules\cm_tech\hologram.dm"
 #include "code\modules\customitems\item_spawning.dm"
 #include "code\modules\decorators\admin_runtime_decorator.dm"
 #include "code\modules\decorators\cassette_decorator.dm"

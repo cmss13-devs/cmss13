@@ -17,6 +17,9 @@
 /mob/living/proc/apply_damage(var/damage = 0, var/damagetype = BRUTE, var/def_zone = null, var/used_weapon = null, var/sharp = 0, var/edge = 0, var/force = FALSE)
 	if(!damage)	
 		return FALSE
+
+	if(SEND_SIGNAL(src, COMSIG_MOB_TAKE_DAMAGE, damage, damagetype) & COMPONENT_BLOCK_DAMAGE) return
+
 	switch(damagetype)
 		if(BRUTE)
 			adjustBruteLoss(damage)

@@ -63,9 +63,15 @@
 /mob/living/carbon/Xenomorph/proc/overwatch(mob/living/carbon/Xenomorph/targetXeno, stop_overwatch = FALSE, movement_event_handler = /datum/event_handler/xeno_overwatch_onmovement)
 
 	if (stop_overwatch)
-		if (observed_xeno)
-			to_chat(src, SPAN_XENOWARNING("You stop watching [observed_xeno]."))
+		var/mob/living/carbon/Xenomorph/oldXeno = observed_xeno
 		observed_xeno = null
+
+		SEND_SIGNAL(src, COMSIG_XENOMORPH_STOP_OVERWATCH, oldXeno)
+
+		if(oldXeno)
+			to_chat(src, SPAN_XENOWARNING("You stop watching [oldXeno]."))
+			oldXeno.hud_set_queen_overwatch()
+		
 
 	else
 		if(!hive)
@@ -89,10 +95,21 @@
 
 		if (caste_name != "Queen" && is_zoomed)
 			zoom_out()
-			visible_message(SPAN_NOTICE("[src] stops looking off into the distance."), \
-			SPAN_NOTICE("You stop looking off into the distance."), null, 5)
+
+		
+
+
+		if(observed_xeno)
+			var/mob/living/carbon/Xenomorph/oldXeno = observed_xeno
+			observed_xeno = null
+
+			SEND_SIGNAL(src, COMSIG_XENOMORPH_STOP_OVERWATCH_XENO, oldXeno)
+			oldXeno.hud_set_queen_overwatch()
 
 		observed_xeno = targetXeno 
+
+		observed_xeno.hud_set_queen_overwatch()
+		SEND_SIGNAL(src, COMSIG_XENOMORPH_OVERWATCH_XENO, observed_xeno)
 		src.add_movement_handler(new movement_event_handler(src))
 
 	src.reset_view()
@@ -106,16 +123,16 @@
 // Sets the Xeno's view to its observed target if that target is set. Otherwise, resets the xeno's view to itself.
 // Please handle typechecking outside this proc
 /mob/living/carbon/Xenomorph/reset_view(atom/A)
+	. = ..(A)
+	if(.)
+		return
+
 	if (client)
 
 		// Is our observed xeno configured and are we alive?
 		if(observed_xeno && !stat)
 			client.perspective = EYE_PERSPECTIVE
 			client.eye = observed_xeno
-
-		// Otherwise, use default reset_view 
-		else
-			. = ..(A)
 
 // Handle HREF clicks through hive status and hivemind
 /mob/living/carbon/Xenomorph/Topic(href, href_list)

@@ -703,6 +703,22 @@ Turf and target are seperate in case you want to teleport some distance from a t
 
 	return vehicles
 
+/proc/get_holograms()
+	var/list/holograms = list()
+	var/list/namecounts = list()
+	for(var/i in GLOB.hologram_list)
+		var/mob/hologram/H = i
+		var/name = H.name
+		if(name in namecounts)
+			namecounts[name]++
+			name = "[name] #([namecounts[name]])"
+		else
+			namecounts[name] = 1
+
+		holograms[name] = H
+
+	return holograms
+
 //Orders mobs by type then by name
 /proc/sortmobs()
 	var/list/moblist = list()
@@ -856,6 +872,24 @@ Turf and target are seperate in case you want to teleport some distance from a t
 		target = locate(1, target.y, target.z)
 
 	return target
+
+/proc/urange(dist=0, atom/center=usr, orange=0, areas=0)
+	if(!dist)
+		if(!orange)
+			return list(center)
+		else
+			return list()
+
+	var/list/turfs = RANGE_TURFS(dist, center)
+	if(orange)
+		turfs -= get_turf(center)
+	. = list()
+	for(var/V in turfs)
+		var/turf/T = V
+		. += T
+		. += T.contents
+		if(areas)
+			. |= T.loc
 
 // returns turf relative to A in given direction at set range
 // result is bounded to map size

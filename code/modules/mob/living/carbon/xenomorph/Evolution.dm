@@ -240,7 +240,7 @@
 		SPAN_XENODANGER("You emerge in a greater form from the husk of your old body. For the hive!"))
 
 		if(hive.living_xeno_queen && hive.living_xeno_queen.observed_xeno == src)
-			hive.living_xeno_queen.set_queen_overwatch(new_xeno)
+			hive.living_xeno_queen.overwatch(new_xeno)
 
 		qdel(src)
 		new_xeno.xeno_jitter(25)

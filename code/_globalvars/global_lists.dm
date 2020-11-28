@@ -5,6 +5,9 @@ var/list/fax_contents = list() 				//List of fax contents to maintain it even if
 var/list/USCMFaxes = list()					//List of all USCM faxes sent this round
 var/list/active_tracking_beacons = list()	//List of all active squad tracking beacons
 
+
+GLOBAL_LIST_EMPTY(custom_event_info_list)
+
 //Names of maps that can be compiled on
 var/list/DEFAULT_NEXT_MAP_CANDIDATES = list(MAP_LV_624, MAP_BIG_RED, MAP_WHISKEY_OUTPOST, MAP_DESERT_DAM, MAP_ICE_COLONY, MAP_PRISON_STATION, MAP_CORSAT, MAP_SOROKYNE_STRATA, MAP_KUTJEVO)
 var/list/LOWPOP_NEXT_MAP_CANDIDATES = list(MAP_LV_624, MAP_BIG_RED, MAP_PRISON_STATION, MAP_KUTJEVO)
@@ -333,6 +336,21 @@ var/global/list/resin_build_order_hivelord = list()
 		var/datum/defcon_reward/DR = new T
 		defcon_reward_list[DR.name] = DR
 	defcon_reward_list = sortAssoc(defcon_reward_list)
+
+	//faction event messages
+	var/datum/custom_event_info/CEI = new /datum/custom_event_info
+	CEI.faction = "Global"		//the old public one for whole server to see
+	GLOB.custom_event_info_list[CEI.faction] = CEI
+	for(var/T in FACTION_LIST_HUMANOID)
+		CEI = new /datum/custom_event_info
+		CEI.faction = T
+		GLOB.custom_event_info_list[T] = CEI
+
+	var/datum/hive_status/hive
+	for(hive in hive_datum)
+		CEI = new /datum/custom_event_info
+		CEI.faction = hive.name
+		GLOB.custom_event_info_list[hive.name] = CEI
 
 	return 1
 

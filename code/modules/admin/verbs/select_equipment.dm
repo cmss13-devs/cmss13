@@ -174,4 +174,7 @@
 	if(!gear_presets_list[dresscode])
 		CRASH("arm_equipment !gear_presets_list[dresscode]")
 	gear_presets_list[dresscode].load_preset(M, randomise, count_participant)
+
+	if(M.faction)
+		M.check_event_info(M.faction)
 	return

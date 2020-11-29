@@ -141,7 +141,8 @@
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_auto_eject'>Toggle Guns Auto-Ejecting Magazines</a><br>",
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_auto_eject_to_hand'>Toggle Guns Auto-Ejecting Magazines to Your Hands</a><br>",
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_eject_to_hand'>Toggle 'Unload Weapon' Ejecting Magazines to Your Hands</a><br>",
-		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_automatic_punctuation'>Toggle Automatic Punctuation</a><br>"
+		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_automatic_punctuation'>Toggle Automatic Punctuation</a><br>",
+		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_middle_mouse_click'>Toggle Middle Mouse Ability Activation</a><br>"
 	)
 
 	var/dat = ""
@@ -208,6 +209,14 @@
 		to_chat(src, "Your messages will no longer be automatically punctuated if they are not punctuated already.")
 	prefs.save_preferences()
 
+/client/proc/toggle_middle_mouse_click() // Toggle whether abilities should use middle or shift clicking
+	prefs.toggle_prefs ^= TOGGLE_MIDDLE_MOUSE_CLICK
+	if (prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK)
+		to_chat(src, SPAN_NOTICE("Your selected ability will now be activated with middle clicking."))
+	else
+		to_chat(src, SPAN_NOTICE("Your selected ability will now be activated with shift clicking."))
+
+	prefs.save_preferences()
 
 //------------ GHOST PREFERENCES ---------------------------------
 

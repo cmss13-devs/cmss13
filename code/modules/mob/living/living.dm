@@ -400,6 +400,10 @@
 	..()
 
 /mob/living/launch_towards(var/datum/launch_metadata/LM)
+	if(src && event_movement)
+		var/datum/event_args/mob_movement/ev_args = new /datum/event_args/mob_movement()
+		ev_args.moving = TRUE
+		event_movement.fire_event(src, ev_args)
 	if(!istype(LM) || !LM.target || !src || buckled)
 		return
 	if(pulling)

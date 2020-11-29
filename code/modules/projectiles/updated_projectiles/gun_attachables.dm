@@ -176,7 +176,9 @@ Defined in conflicts.dm of the #defines folder.
 	return
 
 /obj/item/attachable/proc/fire_attachment(atom/target,obj/item/weapon/gun/gun, mob/user) //For actually shooting those guns.
-	return
+	SHOULD_CALL_PARENT(TRUE)
+	SEND_SIGNAL(user, COMSIG_MOB_FIRED_GUN_ATTACHMENT, src) // Because of this, the . = ..() check should be called last, just before firing
+	return TRUE
 
 
 /////////// Muzzle Attachments /////////////////////////////////
@@ -1239,7 +1241,7 @@ Defined in conflicts.dm of the #defines folder.
 		to_chat(user, SPAN_WARNING("Too far to fire the attachment!"))
 		return
 
-	if(current_rounds > 0)
+	if(current_rounds > 0 && ..())
 		prime_grenade(target,gun,user)
 
 /obj/item/attachable/attached_gun/grenade/proc/prime_grenade(atom/target,obj/item/weapon/gun/gun,mob/living/user)
@@ -1322,7 +1324,8 @@ Defined in conflicts.dm of the #defines folder.
 	if(get_dist(user,target) > max_range+4)
 		to_chat(user, SPAN_WARNING("Too far to fire the attachment!"))
 		return
-	if(current_rounds) unleash_flame(target, user)
+	if(current_rounds && ..())
+		unleash_flame(target, user)
 
 
 /obj/item/attachable/attached_gun/flamer/proc/unleash_flame(atom/target, mob/living/user)
@@ -1439,7 +1442,8 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/attached_gun/extinguisher/fire_attachment(atom/target, obj/item/weapon/gun/gun, mob/living/user)
 	if(!internal_extinguisher)
 		return
-	return internal_extinguisher.afterattack(target, user)
+	if(..())
+		return internal_extinguisher.afterattack(target, user)
 
 /obj/item/attachable/attached_gun/extinguisher/proc/initialize_internal_extinguisher()
 	internal_extinguisher = new /obj/item/tool/extinguisher/mini()

@@ -730,6 +730,11 @@
 	shell_speed = AMMO_SPEED_TIER_6
 	damage_falloff = 0
 
+/datum/ammo/bullet/sniper/on_hit_mob(mob/M,obj/item/projectile/P)
+	if(P.homing_target && M == P.homing_target)
+		var/mob/living/L = M
+		L.apply_armoured_damage(damage*2, ARMOR_BULLET, BRUTE)
+
 /datum/ammo/bullet/sniper/incendiary
 	name = "incendiary sniper bullet"
 	accuracy = 0
@@ -740,6 +745,17 @@
 	scatter = 0
 	damage = BULLET_DAMAGE_TIER_12
 	penetration = ARMOR_PENETRATION_TIER_4
+
+/datum/ammo/bullet/sniper/incendiary/on_hit_mob(mob/M,obj/item/projectile/P)
+	if(P.homing_target && M == P.homing_target)
+		var/mob/living/L = M
+		var/blind_duration = 5
+		if(isXeno(M))
+			var/mob/living/carbon/Xenomorph/target = M
+			if(target.mob_size == MOB_SIZE_BIG)
+				blind_duration = 2
+		L.AdjustEyeBlur(blind_duration)
+		L.adjust_fire_stacks(10)
 
 /datum/ammo/bullet/sniper/flak
 	name = "flak sniper bullet"
@@ -753,8 +769,18 @@
 	penetration = 0
 
 /datum/ammo/bullet/sniper/flak/on_hit_mob(mob/M,obj/item/projectile/P)
-	burst(get_turf(M),P,damage_type, 2 , 2)
-	burst(get_turf(M),P,damage_type, 1 , 2 , 0)
+	if(P.homing_target && M == P.homing_target)
+		var/slow_duration = 7
+		var/mob/living/L = M
+		if(isXeno(M))
+			var/mob/living/carbon/Xenomorph/target = M
+			if(target.mob_size == MOB_SIZE_BIG)
+				slow_duration = 4
+		M.AdjustSuperslowed(slow_duration)
+		L.apply_armoured_damage(damage, ARMOR_BULLET, BRUTE)
+	else
+		burst(get_turf(M),P,damage_type, 2 , 2)
+		burst(get_turf(M),P,damage_type, 1 , 2 , 0)
 
 /datum/ammo/bullet/sniper/flak/on_near_target(turf/T, obj/item/projectile/P)
 	burst(T,P,damage_type, 2 , 2)

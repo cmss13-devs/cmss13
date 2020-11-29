@@ -57,7 +57,7 @@
 /mob/living/carbon/Xenomorph/proc/handle_xeno_fire()
 	if(!on_fire)
 		return
-	
+
 	var/obj/item/clothing/mask/facehugger/F = get_active_hand()
 	var/obj/item/clothing/mask/facehugger/G = get_inactive_hand()
 	if(istype(F))
@@ -123,7 +123,7 @@
 					Z.warding_new = leader_aura_strength
 				if((leader_current_aura == "all" || leader_current_aura == "recovery") && leader_aura_strength > Z.recovery_new && hivenumber == Z.hivenumber)
 					Z.recovery_new = leader_aura_strength
-	
+
 	if(ignores_pheromones)
 		frenzy_aura = 0
 		warding_aura = 0
@@ -179,7 +179,6 @@
 		ear_deaf = 0 //All this stuff is prob unnecessary
 		ear_damage = 0
 		eye_blind = 0
-		eye_blurry = 0
 
 		if(knocked_out) //If they're down, make sure they are actually down.
 			blinded = 1
@@ -204,6 +203,13 @@
 					apply_damage(-1, HALLOSS)
 
 		if(regular_update)
+			if(eye_blurry)
+				overlay_fullscreen("eye_blurry", /obj/screen/fullscreen/impaired, 5)
+				src.eye_blurry--
+				src.eye_blurry = max(0, src.eye_blurry)
+			else
+				clear_fullscreen("eye_blurry")
+
 			handle_statuses()//natural decrease of stunned, knocked_down, etc...
 			handle_interference()
 
@@ -338,8 +344,8 @@ updatehealth()
 						XENO_HEAL_WOUNDS(caste.heal_knocked_out,recoveryActual) //Healing is much slower. Warding pheromones make up for the rest if you're curious
 					else
 						XENO_HEAL_WOUNDS(caste.heal_resting,recoveryActual)
-				else 
-					XENO_HEAL_WOUNDS(caste.heal_standing,recoveryActual)				
+				else
+					XENO_HEAL_WOUNDS(caste.heal_standing,recoveryActual)
 				updatehealth()
 
 			if(armor_integrity < armor_integrity_max && armor_deflection > 0 && world.time > armor_integrity_last_damage_time + XENO_ARMOR_REGEN_DELAY)

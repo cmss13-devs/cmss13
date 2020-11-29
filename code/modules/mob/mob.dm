@@ -650,6 +650,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 			drop_r_hand()
 		else
 			density = TRUE
+			SEND_SIGNAL(src, COMSIG_MOB_GETTING_UP)
 			remove_temp_pass_flags(PASS_MOB_THRU)
 		update_transform()
 

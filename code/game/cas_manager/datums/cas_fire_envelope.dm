@@ -120,6 +120,11 @@
 	if(check_result != FIRE_MISSION_ALL_GOOD)
 		mission_error = mission.error_message(check_result)
 		return 0
+
+	if(target_turf && target_turf.loc)
+		var/turf/TT = get_turf(target_turf.loc)
+		if(TT && TT.z)
+			msg_admin_niche("[key_name(usr)] launching Fire Mission '[mission.name]' onto [target_turf.name] at ([TT.x],[TT.y],[TT.z]) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[TT.x];Y=[TT.y];Z=[TT.z]'>JMP LOC</a>)")
 	//actual firemission code
 	execute_firemission_unsafe(target_turf, offset, dir, mission)
 	return 1
@@ -217,7 +222,7 @@
 		mission_error = "Target Lost."
 		return
 	var/turf/tt_turf = get_turf(target_turf.loc)
-	if(!tt_turf  || !check_firemission_loc(target_turf))
+	if(!tt_turf || !check_firemission_loc(target_turf))
 		stat = FIRE_MISSION_STATE_IDLE
 		mission_error = "Target is off bounds or obstructed."
 		return

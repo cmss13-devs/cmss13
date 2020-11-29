@@ -8,21 +8,22 @@
 
 //flags_atom
 
-#define NOINTERACT				1		// You can't interact with it, at all. Useful when doing certain animations.
-#define FPRINT					2		// takes a fingerprint
-#define CONDUCT					4		// conducts electricity (metal etc.)
-#define ON_BORDER				8		// 'border object'. item has priority to check when entering or leaving
-#define NOBLOODY				16		// Don't want a blood overlay on this one.
-#define DIRLOCK					32		// movable atom won't change direction when Moving()ing. Useful for items that have several dir states.
-#define	NOREACT					64		//Reagents dont' react inside this container.
-#define OPENCONTAINER			128		//is an open container for chemistry purposes
-#define RELAY_CLICK				256		//This is used for /obj/ that relay your clicks via handle_click(), mostly for MGs ~Art
-#define ITEM_UNCATCHABLE		512 	// The item can't be caught out of the air.
-#define UNIQUE_ITEM_TYPE		1024 	// Used for donor items to exclude them for checks.
-#define NO_SNOW_TYPE			2048	// Used for armors or uniforms that don't have a snow icon state.
-#define INVULNERABLE			4096
-#define CAN_BE_SYRINGED			8192	// syringes can inject or drain reagents in this even if it isn't an OPENCONTAINER
-#define INITIALIZED				16384	// Initialized by SSatoms.
+#define NOINTERACT				(1<<0)		// You can't interact with it, at all. Useful when doing certain animations.
+#define FPRINT					(1<<1)		// takes a fingerprint
+#define CONDUCT					(1<<2)		// conducts electricity (metal etc.)
+#define ON_BORDER				(1<<3)		// 'border object'. item has priority to check when entering or leaving
+#define NOBLOODY				(1<<4)		// Don't want a blood overlay on this one.
+#define DIRLOCK					(1<<5)		// movable atom won't change direction when Moving()ing. Useful for items that have several dir states.
+#define	NOREACT					(1<<6)		//Reagents dont' react inside this container.
+#define OPENCONTAINER			(1<<7)		//is an open container for chemistry purposes
+#define RELAY_CLICK				(1<<8)		//This is used for /obj/ that relay your clicks via handle_click(), mostly for MGs ~Art
+#define ITEM_UNCATCHABLE		(1<<9) 	// The item can't be caught out of the air.
+#define UNIQUE_ITEM_TYPE		(1<<10) 	// Used for donor items to exclude them for checks.
+#define NO_SNOW_TYPE			(1<<11)	// Used for armors or uniforms that don't have a snow icon state.
+#define INVULNERABLE			(1<<12)
+#define CAN_BE_SYRINGED			(1<<13)	// syringes can inject or drain reagents in this even if it isn't an OPENCONTAINER
+#define CAN_BE_DISPENSED_INTO	(1<<14)	// Chem dispenser can dispense in this even if it isn't an OPENCONTAINER
+#define INITIALIZED				(1<<15)	// Initialized by SSatoms.
 //==========================================================================================
 
 #define HANDLE_BARRIER_CHANCE 1
@@ -32,16 +33,17 @@
 //bitflags that were previously under flags_atom, these only apply to items.
 //clothing specific stuff uses flags_inventory.
 
-#define NODROP					1	// Cannot be dropped/unequipped at all, only deleted.
-#define NOBLUDGEON  			2	// when an item has this it produces no "X has been hit by Y with Z" message with the default handler
-#define NOSHIELD				4	// weapon not affected by shield (does nothing currently)
-#define DELONDROP				8	// Deletes on drop instead of falling on the floor.
-#define TWOHANDED				16	// The item is twohanded.
-#define WIELDED					32	// The item is wielded with both hands.
-#define	ITEM_ABSTRACT			64	// The item is abstract (grab, powerloader_clamp, etc)
-#define ITEM_PREDATOR			128 // Specific predator item interactions.
-#define MOB_LOCK_ON_EQUIP		256	// Lock this item to the mob that equips it up until permadeath
-#define BLOCK_KNOCKDOWN			512	// Wearing this will stop you from being pushed over
+#define NODROP					(1<<0)	// Cannot be dropped/unequipped at all, only deleted.
+#define NOBLUDGEON  			(1<<1)	// when an item has this it produces no "X has been hit by Y with Z" message with the default handler
+#define NOSHIELD				(1<<2)	// weapon not affected by shield (does nothing currently)
+#define DELONDROP				(1<<3)	// Deletes on drop instead of falling on the floor.
+#define TWOHANDED				(1<<4)	// The item is twohanded.
+#define WIELDED					(1<<5)	// The item is wielded with both hands.
+#define	ITEM_ABSTRACT			(1<<6)	// The item is abstract (grab, powerloader_clamp, etc)
+#define ITEM_PREDATOR			(1<<7) // Specific predator item interactions.
+#define MOB_LOCK_ON_EQUIP		(1<<8)	// Lock this item to the mob that equips it up until permadeath
+#define BLOCK_KNOCKDOWN			(1<<9)	// Wearing this will stop you from being pushed over
+#define NO_CRYO_STORE			(1<<10) // This item deletes itself when put in cryo storage
 
 //==========================================================================================
 
@@ -49,18 +51,18 @@
 //flags_inv_hide
 //Bit flags for the flags_inv_hide variable, which determine when a piece of clothing hides another. IE a helmet hiding glasses.
 
-#define HIDEGLOVES		1
-#define HIDESUITSTORAGE	2
-#define HIDEJUMPSUIT	4
-#define HIDESHOES		8
-#define HIDEMASK		16
-#define HIDEEARS		32		//(ears means headsets and such)
-#define HIDEEYES		64		//(eyes means glasses)
-#define HIDELOWHAIR		128		// temporarily removes the user's facial hair overlay.
-#define HIDETOPHAIR		256		// temporarily removes the user's hair overlay. Leaves facial hair.
-#define HIDEALLHAIR		512		// temporarily removes the user's hair, facial and otherwise.
-#define HIDETAIL 		1024
-#define HIDEFACE		2056	//Dictates whether we appear as unknown.
+#define HIDEGLOVES		(1<<0)
+#define HIDESUITSTORAGE	(1<<1)
+#define HIDEJUMPSUIT	(1<<2)
+#define HIDESHOES		(1<<3)
+#define HIDEMASK		(1<<4)
+#define HIDEEARS		(1<<5)		//(ears means headsets and such)
+#define HIDEEYES		(1<<6)		//(eyes means glasses)
+#define HIDELOWHAIR		(1<<7)		// temporarily removes the user's facial hair overlay.
+#define HIDETOPHAIR		(1<<8)		// temporarily removes the user's hair overlay. Leaves facial hair.
+#define HIDEALLHAIR		(1<<9)		// temporarily removes the user's hair, facial and otherwise.
+#define HIDETAIL 		(1<<10)
+#define HIDEFACE		(1<<11)	//Dictates whether we appear as unknown.
 
 
 //==========================================================================================
@@ -68,20 +70,27 @@
 //flags_inventory
 
 //Another flag for clothing items that determines a few other things now
-#define CANTSTRIP		1		// Can't be removed by others. No longer used by donor items, now only for facehuggers
+#define CANTSTRIP		(1<<0)		// Can't be removed by others. No longer used by donor items, now only for facehuggers
 
 //SHOES ONLY===========================================================================================
-#define NOSLIPPING		2	//prevents from slipping on wet floors, in space etc
+#define NOSLIPPING		(1<<1)	//prevents from slipping on wet floors, in space etc
 //SHOES ONLY===========================================================================================
 
 //HELMET AND MASK======================================================================================
-#define COVEREYES		4 // Covers the eyes/protects them.
-#define COVERMOUTH		8 // Covers the mouth.
-#define ALLOWINTERNALS	16	//mask allows internals
-#define ALLOWREBREATH	32 //Mask allows to breath in really hot or really cold air.
-#define BLOCKGASEFFECT	64 // blocks the effect that chemical clouds would have on a mob --glasses, mask and helmets
-#define ALLOWCPR		512 // Allows CPR even though the face is covered by a mask
+#define COVEREYES		(1<<2) // Covers the eyes/protects them.
+#define COVERMOUTH		(1<<3) // Covers the mouth.
+#define ALLOWINTERNALS	(1<<4)	//mask allows internals
+#define ALLOWREBREATH	(1<<5) //Mask allows to breath in really hot or really cold air.
+#define BLOCKGASEFFECT	(1<<6) // blocks the effect that chemical clouds would have on a mob --glasses, mask and helmets
+#define ALLOWCPR		(1<<7) // Allows CPR even though the face is covered by a mask
 //HELMET AND MASK======================================================================================
+
+//SUITS AND HELMETS====================================================================================
+//To successfully stop taking all pressure damage you must have both a suit and head item with this flag.
+#define BLOCKSHARPOBJ 	(1<<8)  //From /tg: prevents syringes, parapens and hypos if the external suit or helmet (if targeting head) has this flag. Example: space suits, biosuit, bombsuits, thick suits that cover your body.
+#define NOPRESSUREDMAGE (1<<9) //This flag is used on the flags variable for SUIT and HEAD items which stop pressure damage.
+//SUITS AND HELMETS====================================================================================
+
 
 //GASMASK IMPAIRMENT LEVELS===========================================================================
 #define VISION_IMPAIR_NONE		0	//No visual impairment
@@ -92,11 +101,6 @@
 #define VISION_IMPAIR_MAX		5	//3 tiles of full and 2 of partial impairment (original one)
 //GASMASK IMPAIRMENT LEVELS===========================================================================
 
-//SUITS AND HELMETS====================================================================================
-//To successfully stop taking all pressure damage you must have both a suit and head item with this flag.
-#define BLOCKSHARPOBJ 	128  //From /tg: prevents syringes, parapens and hypos if the external suit or helmet (if targeting head) has this flag. Example: space suits, biosuit, bombsuits, thick suits that cover your body.
-#define NOPRESSUREDMAGE 256 //This flag is used on the flags variable for SUIT and HEAD items which stop pressure damage.
-//SUITS AND HELMETS====================================================================================
 
 
 
@@ -120,21 +124,21 @@
 //===========================================================================================
 
 //ITEM INVENTORY SLOT BITMASKS
-#define SLOT_OCLOTHING 		1
-#define SLOT_ICLOTHING 		2
-#define SLOT_HANDS 			4
-#define SLOT_EYES 			8
-#define SLOT_EAR 			16
-#define SLOT_FACE 			32
-#define SLOT_HEAD 			64
-#define SLOT_FEET 			128
-#define SLOT_ID 			256
-#define SLOT_WAIST			512
-#define SLOT_BACK 			1024
-#define SLOT_STORE 			2048	//this is to allow items with a w_class of 3 or 4 to fit in pockets.
-#define SLOT_NO_STORE		4096	//this is to deny items with a w_class of 2 or 1 to fit in pockets.
-#define SLOT_LEGS 			16384
-#define SLOT_ACCESSORY		32768
+#define SLOT_OCLOTHING 		(1<<0)
+#define SLOT_ICLOTHING 		(1<<1)
+#define SLOT_HANDS 			(1<<2)
+#define SLOT_EYES 			(1<<3)
+#define SLOT_EAR 			(1<<4)
+#define SLOT_FACE 			(1<<5)
+#define SLOT_HEAD 			(1<<6)
+#define SLOT_FEET 			(1<<7)
+#define SLOT_ID 			(1<<8)
+#define SLOT_WAIST			(1<<9)
+#define SLOT_BACK 			(1<<10)
+#define SLOT_STORE 			(1<<11)	//this is to allow items with a w_class of 3 or 4 to fit in pockets.
+#define SLOT_NO_STORE		(1<<12)	//this is to deny items with a w_class of 2 or 1 to fit in pockets.
+#define SLOT_LEGS 			(1<<13)
+#define SLOT_ACCESSORY		(1<<14)
 //=================================================
 
 //slots
@@ -205,24 +209,24 @@
 
 // bitflags for clothing parts
 #define BODY_FLAG_NO_BODY		0
-#define BODY_FLAG_HEAD			1
-#define BODY_FLAG_FACE			2
-#define BODY_FLAG_EYES			4
-#define BODY_FLAG_CHEST		8
-#define BODY_FLAG_GROIN		16
-#define BODY_FLAG_LEG_LEFT		32
-#define BODY_FLAG_LEG_RIGHT	64
-#define BODY_FLAG_LEGS			96
-#define BODY_FLAG_FOOT_LEFT	128
-#define BODY_FLAG_FOOT_RIGHT	256
-#define BODY_FLAG_FEET			384
-#define BODY_FLAG_ARM_LEFT		512
-#define BODY_FLAG_ARM_RIGHT	1024
-#define BODY_FLAG_ARMS			1536
-#define BODY_FLAG_HAND_LEFT	2048
-#define BODY_FLAG_HAND_RIGHT	4096
-#define BODY_FLAG_HANDS		6144
-#define BODY_FLAG_FULL_BODY	8191
+#define BODY_FLAG_HEAD			(1<<0)
+#define BODY_FLAG_FACE			(1<<1)
+#define BODY_FLAG_EYES			(1<<2)
+#define BODY_FLAG_CHEST			(1<<3)
+#define BODY_FLAG_GROIN			(1<<4)
+#define BODY_FLAG_LEG_LEFT		(1<<5)
+#define BODY_FLAG_LEG_RIGHT		(1<<6)
+#define BODY_FLAG_LEGS			(BODY_FLAG_LEG_LEFT|BODY_FLAG_LEG_RIGHT)
+#define BODY_FLAG_FOOT_LEFT		(1<<7)
+#define BODY_FLAG_FOOT_RIGHT	(1<<8)
+#define BODY_FLAG_FEET			(BODY_FLAG_FOOT_LEFT|BODY_FLAG_FOOT_RIGHT)
+#define BODY_FLAG_ARM_LEFT		(1<<9)
+#define BODY_FLAG_ARM_RIGHT		(1<<10)
+#define BODY_FLAG_ARMS			(BODY_FLAG_ARM_LEFT|BODY_FLAG_ARM_RIGHT)
+#define BODY_FLAG_HAND_LEFT		(1<<11)
+#define BODY_FLAG_HAND_RIGHT	(1<<12)
+#define BODY_FLAG_HANDS			(BODY_FLAG_HAND_LEFT|BODY_FLAG_HAND_RIGHT)
+#define BODY_FLAG_FULL_BODY		((1<<13)-1)
 //=================================================
 
 //defense zones for selecting them via the hud.
@@ -310,11 +314,11 @@
 */
 
 var/global/list/uniform_categories = list(
-	"UTILITY" = list(UNIFORM_VEND_UTILITY_UNIFORM, UNIFORM_VEND_UTILITY_JACKET, UNIFORM_VEND_UTILITY_HEAD, UNIFORM_VEND_UTILITY_GLOVES, UNIFORM_VEND_UTILITY_SHOES), 
-	"UTILITY EXTRAS" = list(UNIFORM_VEND_UTILITY_EXTRA), 
-	"SERVICE" = list(UNIFORM_VEND_SERVICE_UNIFORM, UNIFORM_VEND_SERVICE_JACKET, UNIFORM_VEND_SERVICE_HEAD, UNIFORM_VEND_SERVICE_GLOVES, UNIFORM_VEND_SERVICE_SHOES), 
-	"SERVICE EXTRAS" = list(UNIFORM_VEND_SERVICE_EXTRA), 
-	"DRESS" = list(UNIFORM_VEND_DRESS_UNIFORM, UNIFORM_VEND_DRESS_JACKET, UNIFORM_VEND_DRESS_HEAD, UNIFORM_VEND_DRESS_GLOVES, UNIFORM_VEND_DRESS_SHOES), 
+	"UTILITY" = list(UNIFORM_VEND_UTILITY_UNIFORM, UNIFORM_VEND_UTILITY_JACKET, UNIFORM_VEND_UTILITY_HEAD, UNIFORM_VEND_UTILITY_GLOVES, UNIFORM_VEND_UTILITY_SHOES),
+	"UTILITY EXTRAS" = list(UNIFORM_VEND_UTILITY_EXTRA),
+	"SERVICE" = list(UNIFORM_VEND_SERVICE_UNIFORM, UNIFORM_VEND_SERVICE_JACKET, UNIFORM_VEND_SERVICE_HEAD, UNIFORM_VEND_SERVICE_GLOVES, UNIFORM_VEND_SERVICE_SHOES),
+	"SERVICE EXTRAS" = list(UNIFORM_VEND_SERVICE_EXTRA),
+	"DRESS" = list(UNIFORM_VEND_DRESS_UNIFORM, UNIFORM_VEND_DRESS_JACKET, UNIFORM_VEND_DRESS_HEAD, UNIFORM_VEND_DRESS_GLOVES, UNIFORM_VEND_DRESS_SHOES),
 	"DRESS EXTRAS" = list(UNIFORM_VEND_DRESS_EXTRA)
 )
 //=================================================
@@ -325,7 +329,7 @@ var/global/list/uniform_categories = list(
 
 // Autolathe defines
 
-#define AUTOLATHE_MAX_QUEUE			5
+#define AUTOLATHE_MAX_QUEUE			6
 #define AUTOLATHE_FAILED			0
 #define AUTOLATHE_START_PRINTING	1
 #define AUTOLATHE_QUEUED			2
@@ -339,7 +343,7 @@ var/global/list/uniform_categories = list(
 #define STORAGE_ALLOW_DRAWING_METHOD_TOGGLE	8	// Whether this storage object can have its items drawn (pouches)
 #define STORAGE_USING_DRAWING_METHOD		16	// Whether this storage object has its items drawn (versus just opening it)
 #define STORAGE_CLICK_EMPTY					32 	// Whether you can click to empty an item
-#define STORAGE_CLICK_GATHER				64 	// Whether it is possible to use this storage object in an inverse way, 
+#define STORAGE_CLICK_GATHER				64 	// Whether it is possible to use this storage object in an inverse way,
 										   		// so you can have the item in your hand and click items on the floor to pick them up
 #define STORAGE_SHOW_FULLNESS				128	// Whether our storage object on hud changes color when full
 #define STORAGE_CONTENT_NUM_DISPLAY			256	// Whether the storage object groups contents of the same type and displays them as a number

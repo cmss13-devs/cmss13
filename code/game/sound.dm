@@ -136,7 +136,7 @@
 	if(!ticker || !ticker.login_music)
 		return FALSE
 	if(prefs && prefs.toggles_sound & SOUND_LOBBY)
-		playsound_client(src, ticker.login_music, null, 85, 0, VOLUME_ADM, SOUND_CHANNEL_LOBBY, SOUND_STREAM)
+		playsound_client(src, ticker.login_music, null, 70, 0, VOLUME_LOBBY, SOUND_CHANNEL_LOBBY, SOUND_STREAM)
 
 
 /proc/playsound_z(z, soundin, volume = 100, vol_cat = VOLUME_SFX) // Play sound for all online mobs on a given Z-level. Good for ambient sounds.
@@ -289,8 +289,18 @@
 	var/datum/sound_template/S
 	for(var/i = 1, i <= ammount, i++)
 		S = new
+		S.file = get_sfx("male_warcry") // warcry has variable length, lots of variations
+		S.channel = get_free_channel() // i'm convinced this is bad, but it's here to mirror playsound() behaviour
 		S.range = range
 		S.x = x
 		S.y = y
 		S.z = z
 		SSsound.queue(S)
+
+/client/proc/sound_debug_query()
+	set name = "X: Dump Playing Client Sounds"
+	set desc = "dumps info about locally, playing sounds"
+	set category = "Debug"
+
+	for(var/sound/S in SoundQuery())
+		UNLINT(to_chat(src, "channel#[S.channel]: [S.status] - [S.file] - len=[S.len], wait=[S.wait], offset=[S.offset], repeat=[S.repeat]")) // unlint until spacemandmm suite-1.7

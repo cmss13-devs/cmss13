@@ -183,7 +183,7 @@ var/global/datum/controller/defcon/defcon_controller
 	name = "Additional OB projectiles - HE x2"
 	cost = DEFCON_COST_CHEAP
 	minimum_defcon_level = 5
-	announcement_message = "Additional Orbital Bombardment ornaments (HE, count:2) have been delivered to Requisitions' ASRS."
+	announcement_message = "Additional Orbital Bombardment ordnance (HE, count:2) have been delivered to Requisitions' ASRS."
 
 /datum/defcon_reward/ob_he/apply_reward(var/datum/controller/defcon/d)
 	. = ..()
@@ -202,7 +202,7 @@ var/global/datum/controller/defcon/defcon_controller
 	name = "Additional OB projectiles - Cluster x2"
 	cost = DEFCON_COST_CHEAP
 	minimum_defcon_level = 5
-	announcement_message = "Additional Orbital Bombardment ornaments (Cluster, count:2) have been delivered to Requisitions' ASRS."
+	announcement_message = "Additional Orbital Bombardment ordnance (Cluster, count:2) have been delivered to Requisitions' ASRS."
 
 /datum/defcon_reward/ob_cluster/apply_reward(var/datum/controller/defcon/d)
 	. = ..()
@@ -221,7 +221,7 @@ var/global/datum/controller/defcon/defcon_controller
 	name = "Additional OB projectiles - Incendiary x2"
 	cost = DEFCON_COST_CHEAP
 	minimum_defcon_level = 5
-	announcement_message = "Additional Orbital Bombardment ornaments (Incendiary, count:2) have been delivered to Requisitions' ASRS."
+	announcement_message = "Additional Orbital Bombardment ordnance (Incendiary, count:2) have been delivered to Requisitions' ASRS."
 
 /datum/defcon_reward/ob_incendiary/apply_reward(var/datum/controller/defcon/d)
 	. = ..()

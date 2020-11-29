@@ -167,6 +167,7 @@
 	icon_state = "BO_jumpsuit"
 	worn_state = "BO_jumpsuit"
 	specialty = "marine service"
+	rollable_sleeves = TRUE
 
 /obj/item/clothing/under/marine/officer/exec
 	name = "executive officer uniform"
@@ -174,6 +175,7 @@
 	icon_state = "BO_jumpsuit"
 	worn_state = "BO_jumpsuit"
 	specialty = "executive officer"
+	rollable_sleeves = TRUE
 
 /obj/item/clothing/under/marine/officer/command
 	name = "\improper USCM officer uniform"
@@ -256,6 +258,7 @@
 	worn_state = "CO_formal_white"
 	specialty = "USCM officer"
 	flags_atom = NO_SNOW_TYPE
+	rollable_sleeves = TRUE
 
 /obj/item/clothing/under/marine/officer/formal/black
 	name = "formal commanding officer's black uniform"
@@ -264,6 +267,7 @@
 	worn_state = "CO_formal_black"
 	specialty = "USCM officer"
 	flags_atom = NO_SNOW_TYPE
+	rollable_sleeves = TRUE
 
 /obj/item/clothing/under/marine/officer/dining
 	name = "dining commanding officer uniform"
@@ -280,6 +284,7 @@
 	worn_state = "CO_casual"
 	specialty = "USCM officer"
 	flags_atom = NO_SNOW_TYPE
+	rollable_sleeves = TRUE
 
 /obj/item/clothing/under/marine/dress
 	name = "marine dress uniform"

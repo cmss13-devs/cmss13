@@ -27,13 +27,13 @@
 /obj/structure/window_frame/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
 	if (PF)
-		PF.flags_can_pass_all = SETUP_LIST_FLAGS(PASS_OVER, PASS_TYPE_CRAWLER)
+		PF.flags_can_pass_all = PASS_OVER|PASS_TYPE_CRAWLER
 
 /obj/structure/window_frame/BlockedPassDirs(atom/movable/mover, target_dir)
 	for(var/obj/structure/S in get_turf(mover))
 		if(S && S.climbable && !(S.flags_atom & ON_BORDER) && climbable && isliving(mover)) //Climbable non-border objects allow you to universally climb over others
 			return NO_BLOCKED_MOVEMENT
-	
+
 	return ..()
 
 /obj/structure/window_frame/New(loc, from_window_shatter)
@@ -106,7 +106,7 @@
 				playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 				new buildstacktype(loc, buildstackamount)
 				to_chat(user, SPAN_NOTICE(" You deconstruct [src]."))
-				SEND_SIGNAL(user, COMSIG_MOB_DESTROY_W_FRAME, src)
+				SEND_SIGNAL(user, COMSIG_MOB_DISASSEMBLE_W_FRAME, src)
 				qdel(src)
 
 	else if(istype(W, /obj/item/grab))

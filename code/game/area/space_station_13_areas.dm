@@ -45,7 +45,7 @@ var/list/ghostteleportlocs = list()
 	flags_atom = AREA_NOTUNNEL
 	test_exemptions = MAP_TEST_EXEMPTION_SPACE
 
-/area/engine/
+/area/engine
 	ambience = list('sound/ambience/ambisin1.ogg','sound/ambience/ambisin2.ogg','sound/ambience/ambisin3.ogg','sound/ambience/ambisin4.ogg')
 
 /area/admin

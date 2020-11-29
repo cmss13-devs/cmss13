@@ -54,10 +54,10 @@ var/datum/controller/supply/supply_controller = new()
 /obj/structure/plasticflaps/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
 	if (PF)
-		PF.flags_can_pass_all = SETUP_LIST_FLAGS(PASS_UNDER, PASS_THROUGH)
+		PF.flags_can_pass_all = PASS_UNDER|PASS_THROUGH
 
 /obj/structure/plasticflaps/BlockedPassDirs(atom/movable/mover, target_dir)
-	if(LIST_FLAGS_COMPARE(mover.pass_flags.flags_pass, pass_flags.flags_can_pass_all) || !iscarbon(mover))
+	if((mover.pass_flags.flags_pass & pass_flags.flags_can_pass_all) || !iscarbon(mover))
 		return NO_BLOCKED_MOVEMENT
 
 	return BLOCKED_MOVEMENT

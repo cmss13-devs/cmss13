@@ -176,7 +176,9 @@ Defined in conflicts.dm of the #defines folder.
 	return
 
 /obj/item/attachable/proc/fire_attachment(atom/target,obj/item/weapon/gun/gun, mob/user) //For actually shooting those guns.
-	return
+	SHOULD_CALL_PARENT(TRUE)
+	SEND_SIGNAL(user, COMSIG_MOB_FIRED_GUN_ATTACHMENT, src) // Because of this, the . = ..() check should be called last, just before firing
+	return TRUE
 
 
 /////////// Muzzle Attachments /////////////////////////////////
@@ -487,7 +489,7 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/flashlight/attackby(obj/item/I, mob/user)
 	if(istype(I,/obj/item/tool/screwdriver))
 		to_chat(user, SPAN_NOTICE("You strip the the rail flashlight of its mount, converting it to a normal flashlight."))
-		if(istype(loc, /obj/item/storage))
+		if(isstorage(loc))
 			var/obj/item/storage/S = loc
 			S.remove_from_storage(src)
 		if(loc == user)
@@ -1192,12 +1194,12 @@ Defined in conflicts.dm of the #defines folder.
 	slot = "under"
 	fire_sound = 'sound/weapons/gun_m92_attachable.ogg'
 	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION|ATTACH_RELOADABLE|ATTACH_WEAPON
-	var/list/grenade_pass_flags
+	var/grenade_pass_flags
 	var/list/loaded_grenades //list of grenade types loaded in the UGL
 
 /obj/item/attachable/attached_gun/grenade/Initialize()
 	. = ..()
-	grenade_pass_flags = list(PASS_HIGH_OVER, PASS_MOB_THRU)
+	grenade_pass_flags = PASS_HIGH_OVER|PASS_MOB_THRU
 
 /obj/item/attachable/attached_gun/grenade/New()
 	..()
@@ -1239,7 +1241,7 @@ Defined in conflicts.dm of the #defines folder.
 		to_chat(user, SPAN_WARNING("Too far to fire the attachment!"))
 		return
 
-	if(current_rounds > 0)
+	if(current_rounds > 0 && ..())
 		prime_grenade(target,gun,user)
 
 /obj/item/attachable/attached_gun/grenade/proc/prime_grenade(atom/target,obj/item/weapon/gun/gun,mob/living/user)
@@ -1256,7 +1258,7 @@ Defined in conflicts.dm of the #defines folder.
 	log_game("[key_name_admin(user)] used an underslung grenade launcher.")
 
 	var/pass_flags = NO_FLAGS
-	pass_flags = LIST_FLAGS_ADD(pass_flags, grenade_pass_flags)
+	pass_flags |= grenade_pass_flags
 	G.det_time = min(15, G.det_time)
 	G.throw_range = max_range
 	G.activate(user, FALSE)
@@ -1277,7 +1279,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/attached_gun/grenade/mk1/Initialize()
 	. = ..()
-	grenade_pass_flags = list(PASS_HIGH_OVER)
+	grenade_pass_flags = PASS_HIGH_OVER
 
 //"ammo/flamethrower" is a bullet, but the actual process is handled through fire_attachment, linked through Fire().
 /obj/item/attachable/attached_gun/flamer
@@ -1322,7 +1324,8 @@ Defined in conflicts.dm of the #defines folder.
 	if(get_dist(user,target) > max_range+4)
 		to_chat(user, SPAN_WARNING("Too far to fire the attachment!"))
 		return
-	if(current_rounds) unleash_flame(target, user)
+	if(current_rounds && ..())
+		unleash_flame(target, user)
 
 
 /obj/item/attachable/attached_gun/flamer/proc/unleash_flame(atom/target, mob/living/user)
@@ -1439,7 +1442,8 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/attached_gun/extinguisher/fire_attachment(atom/target, obj/item/weapon/gun/gun, mob/living/user)
 	if(!internal_extinguisher)
 		return
-	return internal_extinguisher.afterattack(target, user)
+	if(..())
+		return internal_extinguisher.afterattack(target, user)
 
 /obj/item/attachable/attached_gun/extinguisher/proc/initialize_internal_extinguisher()
 	internal_extinguisher = new /obj/item/tool/extinguisher/mini()

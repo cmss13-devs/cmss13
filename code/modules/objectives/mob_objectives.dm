@@ -79,6 +79,11 @@
 		target = H
 	. = ..()
 
+/datum/cm_objective/move_mob/Destroy()
+	destination = null
+	target = null
+	return ..()
+
 /datum/cm_objective/move_mob/check_completion()
 	. = ..()
 	if(target.stat == DEAD && mob_can_die & MOB_FAILS_ON_DEATH)
@@ -115,14 +120,14 @@
 
 /mob/living/carbon/human/vip
 
-/mob/living/carbon/human/vip/New()
-	..()
+/mob/living/carbon/human/vip/Initialize(mapload, new_species)
+	. = ..()
 	new /datum/cm_objective/move_mob/almayer/vip(src)
 
 /mob/living/carbon/human/survivor
 
-/mob/living/carbon/human/survivor/New()
-	..()
+/mob/living/carbon/human/survivor/Initialize(mapload, new_species)
+	. = ..()
 	new /datum/cm_objective/move_mob/almayer/survivor(src)
 
 // --------------------------------------------

@@ -39,11 +39,11 @@
 /obj/structure/barricade/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
 	if (PF)
-		PF.flags_can_pass_all = null
-		PF.flags_can_pass_front = SETUP_LIST_FLAGS(LIST_FLAGS_REMOVE(PASS_OVER, PASS_OVER_ACID_SPRAY, PASS_OVER_THROW_MOB))
-		PF.flags_can_pass_behind = SETUP_LIST_FLAGS(LIST_FLAGS_REMOVE(PASS_OVER, PASS_OVER_ACID_SPRAY, PASS_OVER_THROW_MOB))
-	flags_can_pass_front_temp = SETUP_LIST_FLAGS(PASS_OVER_THROW_MOB)
-	flags_can_pass_behind_temp = SETUP_LIST_FLAGS(PASS_OVER_THROW_MOB)
+		PF.flags_can_pass_all = NONE
+		PF.flags_can_pass_front = PASS_OVER^(PASS_OVER_ACID_SPRAY|PASS_OVER_THROW_MOB)
+		PF.flags_can_pass_behind = PASS_OVER^(PASS_OVER_ACID_SPRAY|PASS_OVER_THROW_MOB)
+	flags_can_pass_front_temp = PASS_OVER_THROW_MOB
+	flags_can_pass_behind_temp = PASS_OVER_THROW_MOB
 
 /obj/structure/barricade/examine(mob/user)
 	..()
@@ -201,8 +201,8 @@
 				update_health(-50)
 				can_wire = FALSE
 				is_wired = TRUE
-				flags_can_pass_front_temp = LIST_FLAGS_REMOVE(flags_can_pass_front_temp, PASS_OVER_THROW_MOB)
-				flags_can_pass_behind_temp = LIST_FLAGS_REMOVE(flags_can_pass_behind_temp, PASS_OVER_THROW_MOB)
+				flags_can_pass_front_temp &= ~PASS_OVER_THROW_MOB
+				flags_can_pass_behind_temp &= ~PASS_OVER_THROW_MOB
 				climbable = FALSE
 				update_icon()
 		return
@@ -222,8 +222,8 @@
 				update_health(50)
 				can_wire = TRUE
 				is_wired = FALSE
-				flags_can_pass_front_temp = LIST_FLAGS_REMOVE(flags_can_pass_front_temp, PASS_OVER_THROW_MOB)
-				flags_can_pass_behind_temp = LIST_FLAGS_REMOVE(flags_can_pass_behind_temp, PASS_OVER_THROW_MOB)
+				flags_can_pass_front_temp &= ~PASS_OVER_THROW_MOB
+				flags_can_pass_behind_temp &= ~PASS_OVER_THROW_MOB
 				climbable = TRUE
 				update_icon()
 				new/obj/item/stack/barbed_wire( src.loc )
@@ -264,8 +264,8 @@
 			stack_amt = round(stack_amount * (health/maxhealth)) //Get an amount of sheets back equivalent to remaining health. Obviously, fully destroyed means 0
 		if(upgraded)
 			stack_amt += round(2 * (health/maxhealth))
-			
-		if(stack_amt) 
+
+		if(stack_amt)
 			new stack_type (loc, stack_amt)
 	qdel(src)
 

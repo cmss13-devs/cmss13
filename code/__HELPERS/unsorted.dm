@@ -518,6 +518,10 @@ Turf and target are seperate in case you want to teleport some distance from a t
 	var/list/creatures = list()
 	var/list/namecounts = list()
 	for(var/mob/M in mobs)
+		// This thing doesnt want to be seen, a bit snowflake.
+		if(M.invisibility == INVISIBILITY_MAXIMUM && M.alpha == 0)
+			continue
+
 		var/name = M.name
 		if (name in names)
 			namecounts[name]++
@@ -699,6 +703,22 @@ Turf and target are seperate in case you want to teleport some distance from a t
 
 	return vehicles
 
+/proc/get_holograms()
+	var/list/holograms = list()
+	var/list/namecounts = list()
+	for(var/i in GLOB.hologram_list)
+		var/mob/hologram/H = i
+		var/name = H.name
+		if(name in namecounts)
+			namecounts[name]++
+			name = "[name] #([namecounts[name]])"
+		else
+			namecounts[name] = 1
+
+		holograms[name] = H
+
+	return holograms
+
 //Orders mobs by type then by name
 /proc/sortmobs()
 	var/list/moblist = list()
@@ -852,6 +872,24 @@ Turf and target are seperate in case you want to teleport some distance from a t
 		target = locate(1, target.y, target.z)
 
 	return target
+
+/proc/urange(dist=0, atom/center=usr, orange=0, areas=0)
+	if(!dist)
+		if(!orange)
+			return list(center)
+		else
+			return list()
+
+	var/list/turfs = RANGE_TURFS(dist, center)
+	if(orange)
+		turfs -= get_turf(center)
+	. = list()
+	for(var/V in turfs)
+		var/turf/T = V
+		. += T
+		. += T.contents
+		if(areas)
+			. |= T.loc
 
 // returns turf relative to A in given direction at set range
 // result is bounded to map size
@@ -2106,3 +2144,18 @@ var/list/WALLITEMS = list(
 /proc/CallAsync(datum/source, proctype, list/arguments)
 	set waitfor = FALSE
 	return call(source, proctype)(arglist(arguments))
+
+// Helper to proxy speech from an hearing object to a mob, usually containing
+// This allows hearing independently of speech broadcast by say.dm
+// Currently useful due to the lack of recursion by speech code and its perf impact
+// Disable by commenting/undefining the line below!
+#define OBJECTS_PROXY_SPEECH
+#ifdef OBJECTS_PROXY_SPEECH
+/proc/proxy_object_heard(obj/object, mob/living/sourcemob, mob/living/targetmob, message, verb, language, italics)
+	if(QDELETED(sourcemob) || !istype(sourcemob) || QDELETED(targetmob) || !istype(targetmob) || (targetmob.stat == DEAD))
+		return
+	targetmob.hear_say(message, verb, language, "", italics, sourcemob) // proxies speech itself to the mob
+	if(targetmob && targetmob.client && targetmob.client.prefs && !targetmob.client.prefs.lang_chat_disabled \
+	   && !targetmob.ear_deaf && targetmob.say_understands(sourcemob, language))
+		sourcemob.langchat_display_image(targetmob) // strap langchat display on
+#endif // ifdef OBJECTS_PROXY_SPEECH

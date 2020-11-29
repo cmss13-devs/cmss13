@@ -36,6 +36,8 @@
 	iff_enabled = TRUE
 	iff_enabled_current = TRUE
 
+	flags_item = TWOHANDED|NO_CRYO_STORE
+
 /obj/item/weapon/gun/rifle/sniper/M42A/handle_starting_attachment()
 	..()
 	var/obj/item/attachable/scope/S = new(src)
@@ -226,6 +228,8 @@
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 	starting_attachment_types = list(/obj/item/attachable/stock/rifle/marksman)
+
+	flags_item = TWOHANDED|NO_CRYO_STORE
 
 /obj/item/weapon/gun/rifle/m4ra/handle_starting_attachment()
 	..()
@@ -529,15 +533,15 @@
 	if(auto_fire)
 		src.drain += 150
 		if(!motion_detector)
-			processing_objects.Add(src)
+			START_PROCESSING(SSobj, src)
 	if(!auto_fire)
 		src.drain -= 150
 		if(!motion_detector)
-			processing_objects.Remove(src)
+			STOP_PROCESSING(SSobj, src)
 
 /obj/item/weapon/gun/smartgun/process()
 	if(!auto_fire && !motion_detector)
-		processing_objects.Remove(src)
+		STOP_PROCESSING(SSobj, src)
 	if(auto_fire)
 		if(ishuman(loc) && (flags_item & WIELDED))
 			var/human_user = loc
@@ -724,11 +728,11 @@
 	if(motion_detector)
 		src.drain += 15
 		if(!auto_fire)
-			processing_objects.Add(src)
+			START_PROCESSING(SSobj, src)
 	if(!motion_detector)
 		src.drain -= 15
 		if(!auto_fire)
-			processing_objects.Remove(src)
+			STOP_PROCESSING(SSobj, src)
 
 /obj/item/weapon/gun/smartgun/dirty
 	name = "\improper M56D 'Dirty' smartgun"
@@ -787,6 +791,7 @@
 	aim_slowdown = SLOWDOWN_ADS_SPECIALIST
 	attachable_allowed = list(/obj/item/attachable/magnetic_harness)
 
+	flags_item = TWOHANDED|NO_CRYO_STORE
 	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
 	map_specific_decoration = TRUE
 
@@ -891,11 +896,11 @@
 
 	var/pass_flags = NO_FLAGS
 	if(is_lobbing)
-		pass_flags = LIST_FLAGS_ADD(pass_flags, PASS_MOB_THRU, PASS_HIGH_OVER)
-	
+		pass_flags |= PASS_MOB_THRU|PASS_HIGH_OVER
+
 	msg_admin_attack("[key_name_admin(user)] fired a grenade ([F.name]) from \a ([name]).")
 	log_game("[key_name_admin(user)] used a grenade ([name]).")
-	
+
 	F.det_time = min(10, F.det_time)
 	F.activate(user, FALSE)
 	F.forceMove(get_turf(src))
@@ -949,7 +954,7 @@
 		if (get_dist(user, src) > 2 && user != loc) return
 		to_chat(user, SPAN_NOTICE(" It is loaded with a grenade."))
 
-/obj/item/weapon/gun/launcher/m81/attackby(obj/item/I, mob/user)	
+/obj/item/weapon/gun/launcher/m81/attackby(obj/item/I, mob/user)
 	if(istype(I,/obj/item/attachable) && check_inactive_hand(user))
 		attach_to_gun(user,I)
 		return
@@ -1016,7 +1021,7 @@
 	F.loc = user.loc
 	msg_admin_attack("[key_name_admin(user)] fired a grenade ([F.name]) from \a ([name]).")
 	log_game("[key_name_admin(user)] used a grenade ([name]).")
-	
+
 	F.throw_range = 20
 	F.det_time = min(10, F.det_time)
 	F.activate(user, FALSE)
@@ -1059,6 +1064,8 @@
 
 	flags_gun_features = GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
 	var/datum/effect_system/smoke_spread/smoke
+
+	flags_item = TWOHANDED|NO_CRYO_STORE
 
 /obj/item/weapon/gun/launcher/rocket/New()
 	..()
@@ -1140,7 +1147,7 @@
 		r.current_rounds = 0
 	if(drop_override || !user) //If we want to drop it on the ground or there's no user.
 		r.forceMove(get_turf(src)) //Drop it on the ground.
-	else 
+	else
 		user.put_in_hands(r)
 		r.update_icon()
 
@@ -1253,7 +1260,7 @@
 	flags_gun_features = GUN_INTERNAL_MAG
 	attachable_allowed = list(/obj/item/attachable/scope/mini)
 	iff_enabled = TRUE
-	iff_enabled_current = TRUE	
+	iff_enabled_current = TRUE
 	var/popped_state = "m82f_e" //Icon state that represents an unloaded flare gun. The tube's just popped out.
 
 

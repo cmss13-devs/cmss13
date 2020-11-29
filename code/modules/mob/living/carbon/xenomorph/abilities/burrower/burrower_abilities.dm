@@ -7,7 +7,7 @@
 	ability_name = "burrow"
 	macro_path = /datum/action/xeno_action/verb/verb_burrow
 	action_type = XENO_ACTION_CLICK
-	ability_primacy = XENO_PRIMARY_ACTION_1
+	ability_primacy = XENO_PRIMARY_ACTION_3
 
 /datum/action/xeno_action/activable/burrow/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
@@ -18,7 +18,7 @@
 
 /datum/action/xeno_action/activable/tremor
 	name = "Tremor (100)"
-	action_icon_state = "screech"
+	action_icon_state = "stomp"
 	ability_name = "tremor"
 	macro_path = /datum/action/xeno_action/verb/verb_tremor
 	action_type = XENO_ACTION_ACTIVATE

@@ -9,7 +9,7 @@
 /obj/structure/blocker/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
 	if (PF)
-		PF.flags_can_pass_all = list()
+		PF.flags_can_pass_all = NONE
 
 /obj/structure/blocker/ex_act(severity)
 	return
@@ -60,7 +60,7 @@
 
 	var/is_whitelist = FALSE
 	var/strict_types = FALSE
-	
+
 	var/list/types = list()
 	var/visible = FALSE
 
@@ -79,12 +79,12 @@
 		for(var/type in types)
 			if(istype(AM, type))
 				return whitelist_no_block
-	
+
 	return !whitelist_no_block
 
 /obj/structure/blocker/forcefield/Initialize(mapload, ...)
 	. = ..()
-	
+
 	if(!visible)
 		invisibility = 101
 

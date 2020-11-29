@@ -191,6 +191,7 @@
 #define PROPERTY_ADMIN				5 //can only be spawned through admin powers
 
 //Property category
+#define PROPERTY_TYPE_ALL				0
 #define PROPERTY_TYPE_MEDICINE			1
 #define PROPERTY_TYPE_TOXICANT			2
 #define PROPERTY_TYPE_STIMULANT			4
@@ -200,6 +201,7 @@
 #define PROPERTY_TYPE_ANOMALOUS			64
 #define PROPERTY_TYPE_UNADJUSTABLE		128
 #define PROPERTY_TYPE_CATALYST 			256
+#define PROPERTY_TYPE_COMBUSTIBLE		512
 
 // Defines for pain applied pr tick by chems
 #define PROPERTY_PAINING_PAIN 		0.5

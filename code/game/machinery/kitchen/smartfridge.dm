@@ -1,7 +1,6 @@
 #define FRIDGE_WIRE_SHOCK 1
 #define FRIDGE_WIRE_SHOOT_INV 2
 #define FRIDGE_WIRE_IDSCAN 3
-
 /* SmartFridge.  Much todo
 */
 /obj/structure/machinery/smartfridge
@@ -28,6 +27,8 @@
 	var/locked = 0
 	var/panel_open = 0 //Hacking a smartfridge
 	var/wires = 7
+	var/networked = FALSE
+	var/transfer_mode = FALSE
 
 /obj/structure/machinery/smartfridge/proc/accept_check(var/obj/item/O as obj)
 	if(istype(O,/obj/item/reagent_container/food/snacks/grown/) || istype(O,/obj/item/seeds/))
@@ -135,6 +136,17 @@
 	else
 		item_quants[O.name] = 1
 
+/obj/structure/machinery/smartfridge/proc/add_network_item(var/obj/item/O)
+	if(is_in_network())
+		chemical_data.shared_item_storage.Add(O)
+
+		if(chemical_data.shared_item_quantity[O.name])
+			chemical_data.shared_item_quantity[O.name]++
+		else
+			chemical_data.shared_item_quantity[O.name] = 1
+		return TRUE
+	return FALSE
+
 /*******************
 *   SmartFridge Menu
 ********************/
@@ -150,6 +162,8 @@
 	data["shoot_inventory"] = shoot_inventory
 	data["locked"] = locked
 	data["secure"] = is_secure_fridge
+	data["networked"] = is_in_network()
+	data["transfer_mode"] = transfer_mode
 
 	var/list/items[0]
 	for (var/i=1 to length(item_quants))
@@ -158,8 +172,19 @@
 		if (count > 0)
 			items.Add(list(list("display_name" = html_encode(capitalize(K)), "vend" = i, "quantity" = count)))
 
-	if (items.len > 0)
+	if (length(items) > 0)
 		data["contents"] = items
+
+	if(is_in_network())
+		var/list/networked_items = list()
+		for (var/i=1 to length(chemical_data.shared_item_quantity))
+			var/K = chemical_data.shared_item_quantity[i]
+			var/count = chemical_data.shared_item_quantity[K]
+			if (count > 0)
+				networked_items.Add(list(list("display_name" = html_encode(capitalize(K)), "vend" = i, "quantity" = count)))
+
+		if (length(networked_items) > 0)
+			data["networked_contents"] = networked_items
 
 	var/list/wire_descriptions = get_wire_descriptions()
 	var/list/panel_wires = list()
@@ -186,64 +211,101 @@
 	if (href_list["close"])
 		user.unset_interaction()
 		ui.close()
-		return 0
+		return FALSE
+
+	if (href_list["toggletransfer"])
+		if(is_secure_fridge)
+			if(!allowed(usr) && locked != -1)
+				to_chat(usr, SPAN_DANGER("Access denied."))
+				return FALSE
+		if(is_in_network() && !transfer_mode)
+			transfer_mode = TRUE
+		else
+			transfer_mode = FALSE
+		return TRUE
 
 	if (href_list["vend"])
 		if(!ispowered)
 			to_chat(usr, SPAN_WARNING("[src] has no power."))
-			return 0
+			return FALSE
 		if (!in_range(src, usr))
-			return 0
+			return FALSE
 		if(is_secure_fridge)
 			if(!allowed(usr) && locked != -1)
 				to_chat(usr, SPAN_DANGER("Access denied."))
-				return 0
+				return FALSE
 		var/index = text2num(href_list["vend"])
 		var/amount = text2num(href_list["amount"])
-		var/K = item_quants[index]
-		var/count = item_quants[K]
+		var/from_network = text2num(href_list["network"])
+
 
 		// Sanity check, there are probably ways to press the button when it shouldn't be possible.
+		var/list/source = contents
+		var/list/quantity_holder = item_quants
+		// Validate we can reach the shared network.
+		transfer_mode = transfer_mode && is_in_network()
+
+		if(is_in_network() && from_network)
+			source = chemical_data.shared_item_storage
+			quantity_holder = chemical_data.shared_item_quantity
+
+		var/K = quantity_holder[index]
+		var/count = quantity_holder[K]
+
 		if(count > 0)
-			item_quants[K] = max(count - amount, 0)
-
+			quantity_holder[K] = max(count - amount, 0)
 			var/i = amount
-			for(var/obj/O in contents)
-				if(O.name == K)
-					O.loc = loc
-					i--
-					if (i <= 0)
-						return 1
+			if(!transfer_mode)
+				for(var/obj/O in source)
+					if(O.name == K)
+						O.loc = loc
+						i--
+						if (i <= 0)
+							return TRUE
+			else
+				for(var/obj/O in source)
+					if(O.name == K)
+						if(from_network)
+							contents.Add(O)
+							item_quants[K] += 1
+							source.Remove(O)
+						else
+							chemical_data.shared_item_storage.Add(O)
+							chemical_data.shared_item_quantity[K] += 1
+							source.Remove(O)
+						i--
+						if(i <= 0)
+							return TRUE
 
-		return 1
+		return TRUE
 
 	if (panel_open)
 		if (href_list["cutwire"])
 			if (!( istype(usr.get_active_hand(), /obj/item/tool/wirecutters) ))
 				to_chat(user, "You need wirecutters!")
-				return 1
+				return TRUE
 
 			var/wire = text2num(href_list["cutwire"])
 			if (isWireCut(wire))
 				mend(wire)
 			else
 				cut(wire)
-			return 1
+			return TRUE
 
 		if (href_list["pulsewire"])
 			if (!istype(usr.get_active_hand(), /obj/item/device/multitool))
 				to_chat(usr, "You need a multitool!")
-				return 1
+				return TRUE
 
 			var/wire = text2num(href_list["pulsewire"])
 			if (isWireCut(wire))
 				to_chat(usr, "You can't pulse a cut wire.")
-				return 1
+				return TRUE
 
 			pulse(wire)
-			return 1
+			return TRUE
 
-	return 0
+	return FALSE
 
 /*************
 *	Hacking
@@ -324,6 +386,8 @@
 	src.visible_message(SPAN_DANGER("<b>[src] launches [throw_item.name] at [target.name]!</b>"))
 	return 1
 
+/obj/structure/machinery/smartfridge/proc/is_in_network()
+	return networked && z == MAIN_SHIP_Z_LEVEL
 
 
 
@@ -383,6 +447,7 @@
 	desc = "A refrigerated storage unit for medicine and chemical storage."
 	is_secure_fridge = TRUE
 	req_one_access = list(ACCESS_MARINE_CMO, ACCESS_MARINE_CHEMISTRY)
+	networked = TRUE
 
 /obj/structure/machinery/smartfridge/chemistry/accept_check(var/obj/item/O as obj)
 	if(istype(O,/obj/item/storage/pill_bottle) || istype(O,/obj/item/reagent_container) || istype(O,/obj/item/storage/fancy/vials))

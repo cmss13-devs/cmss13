@@ -50,7 +50,7 @@
 /proc/get_actual_job_name(var/mob/M)
 	if(!M)
 		return null
-		
+
 	var/job_name = M.job
 	return job_name
 
@@ -129,7 +129,7 @@ var/global/list/wy_ranks = list(
 		comm_title = c_title
 	else
 		comm_title = trim(get_paygrades(code, TRUE))
-	
+
 	var/obj/item/card/id/I = wear_id
 
 	if(istype(I))
@@ -179,6 +179,7 @@ var/global/list/wy_ranks = list(
 
 	switch(paygrade)
 		if("C") . = size ? "" : "Civilian"
+		if("CN") . = size ? "Nrs. " : "Nurse"
 		if("CD") . = size ? "Dr. " : "Doctor"
 		if("CCMO") . = size ? "Prof. " : "Professor"
 		if("PMC1") . = size ? "SCE " : "Security Expert"

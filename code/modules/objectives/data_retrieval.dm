@@ -13,8 +13,12 @@
 	number_of_clues_to_generate = 2
 
 /datum/cm_objective/retrieve_data/New()
-	..()
+	. = ..()
 	decryption_password = "[pick(alphabet_uppercase)][rand(100,999)][pick(alphabet_uppercase)][rand(10,99)]"
+
+/datum/cm_objective/retrieve_data/Destroy()
+	initial_location = null
+	return ..()
 
 /datum/cm_objective/retrieve_data/check_completion()
 	. = ..()
@@ -52,9 +56,14 @@
 	prerequisites_required = PREREQUISITES_MAJORITY
 
 /datum/cm_objective/retrieve_data/terminal/New(var/obj/structure/machinery/computer/objective/D)
+	. = ..()
 	data_source = D
 	initial_location = get_area(data_source)
-	..()
+
+/datum/cm_objective/retrieve_data/terminal/Destroy()
+	data_source.objective = null
+	data_source = null
+	return ..()
 
 /datum/cm_objective/retrieve_data/terminal/get_related_label()
 	return data_source.label
@@ -83,11 +92,16 @@
 	prerequisites_required = PREREQUISITES_ONE
 
 /datum/cm_objective/retrieve_data/disk/New(var/obj/item/disk/objective/O)
+	. = ..()
 	disk = O
 	data_total = disk.data_amount
 	data_transfer_rate = disk.read_speed
 	initial_location = get_area(disk)
-	..()
+
+/datum/cm_objective/retrieve_data/disk/Destroy()
+	disk?.objective = null
+	disk = null
+	return ..()
 
 /datum/cm_objective/retrieve_data/disk/get_related_label()
 	return disk.label
@@ -132,8 +146,8 @@
 	var/display_color = "white"
 	var/disk_color = "white"
 
-/obj/item/disk/objective/New()
-	..()
+/obj/item/disk/objective/Initialize(mapload, ...)
+	. = ..()
 	var/diskvar = rand(1,15)
 	icon_state = "disk_[diskvar]"
 
@@ -168,9 +182,10 @@
 	w_class = SIZE_TINY
 
 /obj/item/disk/objective/Destroy()
-	if(objective)
-		objective.fail()
-	..()
+	objective?.fail()
+	objective?.disk = null
+	objective = null
+	return ..()
 
 // --------------------------------------------
 // *** Upload data from a terminal ***
@@ -185,16 +200,17 @@
 	unacidable = TRUE
 	var/datum/cm_objective/retrieve_data/terminal/objective
 
-/obj/structure/machinery/computer/objective/New()
-	..()
+/obj/structure/machinery/computer/objective/Initialize()
+	. = ..()
 	label = "[pick(greek_letters)]-[rand(100,999)]"
 	name = "data terminal [label]"
 	objective = new /datum/cm_objective/retrieve_data/terminal(src)
 
 /obj/structure/machinery/computer/objective/Destroy()
-	if(objective)
-		objective.fail()
-	..()
+	objective?.data_source = null
+	objective?.fail()
+	objective = null
+	return ..()
 
 /obj/structure/machinery/computer/objective/attack_hand(mob/living/user)
 	if(!powered())

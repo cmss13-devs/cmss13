@@ -10,7 +10,7 @@
 	var/obj/structure/machinery/gravity_generator = null
 
 
-/obj/structure/machinery/gravity_generator/
+/obj/structure/machinery/gravity_generator
 	name = "Gravitational Generator"
 	desc = "A device which produces a gravaton field when set up."
 	icon = 'icons/obj/structures/props/singularity.dmi'

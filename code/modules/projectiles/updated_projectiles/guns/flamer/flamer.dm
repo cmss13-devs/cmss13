@@ -6,7 +6,7 @@
 /obj/item/weapon/gun/flamer
 	name = "\improper M240A1 incinerator unit"
 	desc = "M240A1 incinerator unit has proven to be one of the most effective weapons at clearing out soft-targets. This is a weapon to be feared and respected as it is quite deadly."
-	
+
 	icon_state = "m240"
 	item_state = "m240"
 	flags_equip_slot = SLOT_BACK
@@ -153,7 +153,7 @@
 		playsound(user, unload_sound, 25, 1)
 		user.visible_message(SPAN_NOTICE("[user] unloads [current_mag] from [src]."),
 		SPAN_NOTICE("You unload [current_mag] from [src]."))
-	
+
 	current_mag.update_icon()
 	current_mag = null
 
@@ -207,6 +207,8 @@
 	var/obj/item/storage/large_holster/fuelpack/fuelpack
 	starting_attachment_types = list(/obj/item/attachable/attached_gun/extinguisher/pyro)
 
+	flags_item = TWOHANDED|NO_CRYO_STORE
+
 /obj/item/weapon/gun/flamer/M240T/Destroy()
 	if(fuelpack)
 		if(fuelpack.linked_flamer == src)
@@ -217,7 +219,7 @@
 /obj/item/weapon/gun/flamer/M240T/harness_check(var/mob/living/carbon/human/user)
 	if (..())
 		return TRUE
-	
+
 	var/obj/item/I = user.back
 	if(!istype(I, /obj/item/storage/large_holster/fuelpack))
 		return FALSE
@@ -228,7 +230,7 @@
 	if (istype(FP) && FP.handle_item_insertion(src, TRUE))
 		to_chat(user, SPAN_WARNING("[src] snaps into place on [FP]."))
 		return
-	
+
 	..()
 
 /obj/item/weapon/gun/flamer/M240T/set_gun_attachment_offsets()
@@ -328,7 +330,7 @@
 
 	tied_reagent = new R.type() // Can't get deleted this way
 	tied_reagent.make_alike(R)
-	
+
 	tied_reagents = obj_reagents
 
 	target_clicked = target
@@ -340,7 +342,7 @@
 	firelevel = R.durationfire
 	burnlevel = R.intensityfire
 
-	processing_objects.Add(src)
+	START_PROCESSING(SSobj, src)
 
 	to_call = C
 
@@ -404,7 +406,7 @@
 				if(weapon_source)
 					H.track_shot_hit(weapon_source, H)
 
-				
+
 		if (raiseEventSync(M, EVENT_PREIGNITION_CHECK) != HALTED || tied_reagent.fire_penetrating)
 			M.adjust_fire_stacks(tied_reagent.durationfire, tied_reagent)
 			M.IgniteMob()
@@ -412,7 +414,7 @@
 		// If fire shield is on, do not receive burn damage
 		if (raiseEventSync(M, EVENT_PRE_FIRE_BURNED_CHECK) == HALTED && !tied_reagent.fire_penetrating)
 			continue
-		
+
 		M.last_damage_mob = weapon_source_mob
 		M.apply_damage(burn_dam, BURN)
 
@@ -421,7 +423,7 @@
 			to_chat(M, SPAN_XENODANGER(msg))
 		else
 			to_chat(M, SPAN_HIGHDANGER(msg))
-		
+
 		if(weapon_source)
 			M.last_damage_source = weapon_source
 		else
@@ -432,18 +434,18 @@
 
 /obj/flamer_fire/Destroy()
 	SetLuminosity(0)
-	processing_objects.Remove(src)
+	STOP_PROCESSING(SSobj, src)
 	. = ..()
 
 /obj/flamer_fire/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
 	if (PF)
-		PF.flags_pass = SETUP_LIST_FLAGS(PASS_FLAGS_FLAME)
+		PF.flags_pass = PASS_FLAGS_FLAME
 
 /obj/flamer_fire/Crossed(mob/living/M) //Only way to get it to reliable do it when you walk into it.
 	if(!istype(M))
 		return
-	
+
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if(isXeno(H.pulledby))
@@ -457,14 +459,14 @@
 			H.show_message(text("Your suit protects you from the flames."),1)
 			H.apply_damage(burnlevel*0.25, BURN) //Does small burn damage to a person wearing one of the suits.
 			return
-	
+
 	if(isXeno(M))
 		var/mob/living/carbon/Xenomorph/X = M
 		if(X.caste.fire_immune && !tied_reagent.fire_penetrating)
 			return
 		if(X.burrow)
 			return
-	
+
 	if (raiseEventSync(M, EVENT_PREIGNITION_CHECK) != HALTED || tied_reagent.fire_penetrating)
 		M.adjust_fire_stacks(tied_reagent.durationfire, tied_reagent) //Make it possible to light them on fire later.
 		M.IgniteMob()
@@ -473,7 +475,7 @@
 		M.last_damage_source = weapon_source
 	else
 		M.last_damage_source = initial(name)
-	
+
 	M.last_damage_mob = weapon_source_mob
 	M.apply_damage(round(burnlevel*0.5), BURN) //This makes fire stronk.
 	to_chat(M, SPAN_DANGER("You are burned!"))

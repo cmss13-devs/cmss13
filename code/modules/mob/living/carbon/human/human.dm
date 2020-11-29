@@ -23,8 +23,8 @@
 /mob/living/carbon/human/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
 	if (PF)
-		PF.flags_pass = SETUP_LIST_FLAGS(PASS_MOB_IS_HUMAN)
-		PF.flags_can_pass_all = SETUP_LIST_FLAGS(PASS_MOB_THRU_HUMAN, PASS_AROUND, PASS_HIGH_OVER_ONLY)
+		PF.flags_pass = PASS_MOB_IS_HUMAN
+		PF.flags_can_pass_all = PASS_MOB_THRU_HUMAN|PASS_AROUND|PASS_HIGH_OVER_ONLY
 
 /mob/living/carbon/human/prepare_huds()
 	..()
@@ -39,7 +39,16 @@
 	add_to_all_mob_huds()
 
 /mob/living/carbon/human/initialize_pain()
+	if(species)
+		return species.initialize_pain(src)
+	QDEL_NULL(pain)
 	pain = new /datum/pain/human(src)
+
+/mob/living/carbon/human/initialize_stamina()
+	if(species)
+		return species.initialize_stamina(src)
+	QDEL_NULL(stamina)
+	stamina = new /datum/stamina(src)
 
 /mob/living/carbon/human/Destroy()
 	if(assigned_squad)
@@ -73,10 +82,6 @@
 	processable_human_list -= src
 
 	. = ..()
-
-	if(pain && pain.source_mob == src)
-		pain.source_mob = null
-		qdel(pain)
 
 	if(agent_holder)
 		agent_holder.source_human = null
@@ -280,7 +285,7 @@
 	<BR>
 	[handcuffed ? "<BR><A href='?src=\ref[src];item=[WEAR_HANDCUFFS]'>Handcuffed</A>" : ""]
 	[legcuffed ? "<BR><A href='?src=\ref[src];item=[WEAR_LEGCUFFS]'>Legcuffed</A>" : ""]
-	[suit && suit.accessories.len ? "<BR><A href='?src=\ref[src];tie=1'>Remove Accessory</A>" : ""]
+	[suit && LAZYLEN(suit.accessories) ? "<BR><A href='?src=\ref[src];tie=1'>Remove Accessory</A>" : ""]
 	[internal ? "<BR><A href='?src=\ref[src];internal=1'>Remove Internal</A>" : ""]
 	[istype(wear_id, /obj/item/card/id/dogtag) ? "<BR><A href='?src=\ref[src];item=id'>Retrieve Info Tag</A>" : ""]
 	<BR><A href='?src=\ref[src];splints=1'>Remove Splints</A>
@@ -467,10 +472,10 @@
 		if(!usr.action_busy)
 			if(w_uniform && istype(w_uniform, /obj/item/clothing))
 				var/obj/item/clothing/under/U = w_uniform
-				if(U.accessories.len < 1)
+				if(!LAZYLEN(U.accessories))
 					return FALSE
-				var/obj/item/clothing/accessory/A = U.accessories[1]
-				if(U.accessories.len > 1)
+				var/obj/item/clothing/accessory/A = LAZYACCESS(U.accessories, 1)
+				if(LAZYLEN(U.accessories) > 1)
 					A = input("Select an accessory to remove from [U]") as null|anything in U.accessories
 				if(!istype(A))
 					return
@@ -1100,6 +1105,9 @@
 		g_hair = hex2num(copytext(species.hair_color, 4, 6))
 		b_hair = hex2num(copytext(species.hair_color, 6, 8))
 
+	// Switches old pain and stamina over
+	species.initialize_pain(src)
+	species.initialize_stamina(src)
 	species.handle_post_spawn(src)
 
 	INVOKE_ASYNC(src, .proc/regenerate_icons)
@@ -1382,69 +1390,31 @@
 /mob/living/carbon/human/yautja/Initialize(mapload)
 	. = ..(mapload, new_species = "Yautja")
 
-/mob/living/carbon/human/yautja/initialize_pain()
-	pain = new /datum/pain/yautja(src)
-
-/mob/living/carbon/human/yautja/initialize_stamina()
-	stamina = new /datum/stamina/yautja(src)
-
-
 /mob/living/carbon/human/monkey/Initialize(mapload)
 	. = ..(mapload, new_species = "Monkey")
 
-/mob/living/carbon/human/monkey/initialize_pain()
-	pain = new /datum/pain/monkey(src)
 
 /mob/living/carbon/human/farwa/Initialize(mapload)
 	. = ..(mapload, new_species = "Farwa")
 
-/mob/living/carbon/human/farwa/initialize_pain()
-	pain = new /datum/pain/monkey(src)
 
 /mob/living/carbon/human/neaera/Initialize(mapload)
 	. = ..(mapload, new_species = "Neaera")
 
-/mob/living/carbon/human/neaera/initialize_pain()
-	pain = new /datum/pain/monkey(src)
-
 /mob/living/carbon/human/stok/Initialize(mapload)
 	. = ..(mapload, new_species = "Stok")
-
-/mob/living/carbon/human/stok/initialize_pain()
-	pain = new /datum/pain/monkey(src)
 
 /mob/living/carbon/human/yiren/Initialize(mapload)
 	. = ..(mapload, new_species = "Yiren")
 
-/mob/living/carbon/human/yiren/initialize_pain()
-	pain = new /datum/pain/monkey(src)
-
 /mob/living/carbon/human/synthetic/Initialize(mapload)
 	. = ..(mapload, "Synthetic")
-
-/mob/living/carbon/human/synthetic/initialize_pain()
-	pain = new /datum/pain/synthetic(src)
-
-/mob/living/carbon/human/synthetic/initialize_stamina()
-	stamina = new /datum/stamina/synthetic(src)
 
 /mob/living/carbon/human/synthetic_old/Initialize(mapload)
 	. = ..(mapload, "Early Synthetic")
 
-/mob/living/carbon/human/synthetic_old/initialize_pain()
-	pain = new /datum/pain/synthetic(src)
-
-/mob/living/carbon/human/synthetic_old/initialize_stamina()
-	stamina = new /datum/stamina/synthetic(src)
-
 /mob/living/carbon/human/synthetic_2nd_gen/Initialize(mapload)
 	. = ..(mapload, "Second Generation Synthetic")
-
-/mob/living/carbon/human/synthetic_2nd_gen/initialize_pain()
-	pain = new /datum/pain/synthetic(src)
-
-/mob/living/carbon/human/synthetic_2nd_gen/initialize_stamina()
-	stamina = new /datum/stamina/synthetic(src)
 
 
 /mob/living/carbon/human/resist_fire()

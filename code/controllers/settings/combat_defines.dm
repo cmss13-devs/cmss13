@@ -10,6 +10,7 @@
 	var/datum/combat_configuration/marine_fire
 	var/datum/combat_configuration/marine_organ_damage
 
+	var/datum/combat_configuration/xeno_general
 	var/datum/combat_configuration/xeno_melee
 	var/datum/combat_configuration/xeno_ranged
 	var/datum/combat_configuration/xeno_ranged_stats
@@ -34,6 +35,7 @@
 	marine_fire = new /datum/combat_configuration/marine/fire()
 	marine_organ_damage = new /datum/combat_configuration/marine/organ_damage()
 
+	xeno_general = new /datum/combat_configuration/xeno()
 	xeno_melee = new /datum/combat_configuration/xeno/melee()
 	xeno_ranged = new /datum/combat_configuration/xeno/ranged()
 	xeno_ranged_stats = new /datum/combat_configuration/xeno/ranged/stats()

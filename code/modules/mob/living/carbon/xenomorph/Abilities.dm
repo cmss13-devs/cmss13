@@ -25,7 +25,7 @@
 	ability_name = "throw facehugger"
 	macro_path = /datum/action/xeno_action/verb/verb_throw_facehugger
 	action_type = XENO_ACTION_CLICK
-	ability_primacy = XENO_PRIMARY_ACTION_1
+	ability_primacy = XENO_PRIMARY_ACTION_3
 
 /datum/action/xeno_action/activable/throw_hugger/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/Carrier/X = owner
@@ -42,7 +42,7 @@
 	ability_name = "retrieve egg"
 	macro_path = /datum/action/xeno_action/verb/verb_retrieve_egg
 	action_type = XENO_ACTION_CLICK
-	ability_primacy = XENO_PRIMARY_ACTION_2
+	ability_primacy = XENO_PRIMARY_ACTION_4
 
 /datum/action/xeno_action/activable/retrieve_egg/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/Carrier/X = owner
@@ -57,6 +57,7 @@
 	plasma_cost = 50
 	macro_path = /datum/action/xeno_action/verb/verb_resin_walker
 	action_type = XENO_ACTION_CLICK
+	ability_primacy = XENO_PRIMARY_ACTION_4
 
 /datum/action/xeno_action/onclick/toggle_speed/can_use_action()
 	var/mob/living/carbon/Xenomorph/Hivelord/X = owner
@@ -86,8 +87,7 @@
 	action_icon_state = "build_tunnel"
 	plasma_cost = 200
 	macro_path = /datum/action/xeno_action/verb/verb_dig_tunnel
-	action_type = XENO_ACTION_ACTIVATE
-	ability_primacy = XENO_PRIMARY_ACTION_2
+	action_type = XENO_ACTION_ACTIVATE //doesn't really need a macro
 
 /datum/action/xeno_action/onclick/build_tunnel/can_use_action()
 	var/mob/living/carbon/Xenomorph/X = owner
@@ -217,19 +217,22 @@
 		to_chat(X, SPAN_XENONOTICE("You said: \"[msg]\" to [M]"))
 
 /datum/action/xeno_action/onclick/queen_give_plasma
-	name = "Give Plasma (600)"
+	name = "Give Plasma (400)"
 	action_icon_state = "queen_give_plasma"
-	plasma_cost = 600
+	plasma_cost = 400
 	macro_path = /datum/action/xeno_action/verb/verb_plasma_xeno
 	action_type = XENO_ACTION_CLICK
+	ability_primacy = XENO_PRIMARY_ACTION_3
+	xeno_cooldown = 15 SECONDS
 
 /datum/action/xeno_action/onclick/queen_give_plasma/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/Queen/X = owner
 	if(!X.check_state())
 		return
-	if(X.queen_ability_cooldown > world.time)
-		to_chat(X, SPAN_XENOWARNING("You're still recovering from your last overwatch ability. Wait [round((X.queen_ability_cooldown-world.time)*0.1)] seconds."))
+
+	if(!action_cooldown_check())
 		return
+
 	if(X.observed_xeno)
 		var/mob/living/carbon/Xenomorph/target = X.observed_xeno
 		if(!target.caste.can_be_queen_healed)
@@ -239,16 +242,20 @@
 			to_chat(X, SPAN_XENOWARNING("You cannot give plasma to xenos that are on fire!"))
 			return
 		if(target.stat != DEAD)
-			if(target.plasma_stored < target.plasma_max)
-				if(X.check_plasma(plasma_cost))
-					X.use_plasma(plasma_cost)
-					target.gain_plasma(400)
-					X.queen_ability_cooldown = world.time + 150 //15 seconds
-					to_chat(X, SPAN_XENONOTICE("You transfer some plasma to [target]."))
+			if(check_and_use_plasma_owner())
+				for(var/mob/living/carbon/Xenomorph/Xa in range(4, target))
+					if(Xa.on_fire)
+						continue
 
-			else
+					if(Xa.stat == DEAD || QDELETED(Xa))
+						continue
 
-				to_chat(X, SPAN_WARNING("[target] is at full plasma."))
+					if(Xa.plasma_stored >= Xa.plasma_max)
+						continue
+
+					Xa.gain_plasma(target.plasma_max * 0.5)
+				apply_cooldown()
+				to_chat(X, SPAN_XENONOTICE("You transfer some plasma to [target]."))
 	else
 		to_chat(X, SPAN_WARNING("You must overwatch the xeno you want to give plasma to."))
 
@@ -485,7 +492,7 @@
 		SPAN_XENODANGER("[X] makes you regress into your previous form."))
 
 		if(X.hive.living_xeno_queen && X.hive.living_xeno_queen.observed_xeno == T)
-			X.hive.living_xeno_queen.set_queen_overwatch(new_xeno)
+			X.hive.living_xeno_queen.overwatch(new_xeno)
 
 		message_staff("[key_name_admin(X)] has deevolved [key_name_admin(T)]. Reason: [reason]")
 

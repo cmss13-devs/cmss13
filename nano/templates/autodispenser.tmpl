@@ -78,7 +78,9 @@
 			</b></p>
 			<br>
 			{{:helper.link("CLEAR MEMORY", 'alert', {'clearmemory' : 1})}}
-			{{:helper.link("RUN PROGRAM", 'radiation', {'runprogram' : 1})}}
+			{{if data.outputmode != 2 }}
+				{{:helper.link("RUN PROGRAM", 'radiation', {'runprogram' : 1})}}
+			{{/if}}
 			<br><br>
 			{{if data.input_container }}
 				<p>
@@ -91,16 +93,39 @@
 				</p>
 			{{/if}}
 			<br><br>
-			{{if data.output_container }}
+			{{if data.outputmode == 0 }}
+				{{if data.output_container }}
 				<p>
 					<b>OUTPUT BEAKER:</b> {{:data.output_container.name}}<br>
 					VOLUME: {{:data.output_container.total}}/{{:data.output_container.max}} {{:helper.link("DISPOSE", 'trash', {'dispose' : 1})}} {{:helper.link("EJECT", 'eject', {'ejectO' : 1})}} 
 				</p>
+				{{else}}
+					<p>
+						<b>OUTPUT:</b> NOT FOUND
+					</p>
+				{{/if}}
 			{{else}}
-				<p>
-					<b>OUTPUT:</b> NOT FOUND
-				</p>
+				{{if data.outputmode == 1 }}
+					{{if data.networked_storage}}
+						<p>
+							<b>OUTPUT:</b> BOTTLING TO SMARTFRIDGE NETWORK
+						</p>
+					{{else}}
+						<p>
+							<b>OUTPUT:</b> BOTTLING TO SMARTFRIDGE
+						</p>
+					{{/if}}
+				{{else}}
+					<p>
+						<b>OUTPUT:</b> INTERNAL BUFFER : {{:data.buffervolume}} / {{:data.buffermax}}
+					</p>
+					{{if data.status != 2}}
+						<b>AWAITING CENTRIFUGE</b>
+					{{/if}}
+				{{/if}}
+				
 			{{/if}}
+			
 		</div>
 		<div class="settings">
 			<h2>SETTINGS:</h2>
@@ -123,6 +148,17 @@
 					{{/if}}
 				</li>
 			{{/if}}
+			<li>
+				{{if data.outputmode == 0 }}
+					{{:helper.link("<b>OUTPUT:</b> CONTAINER", 'gear', {'toggleoutput' : 1})}}
+				{{else}}
+					{{if data.outputmode == 1 }}
+						{{:helper.link("<b>OUTPUT:</b> SMARTFRIDGE", 'gear', {'toggleoutput' : 1})}}
+					{{else}}
+						{{:helper.link("<b>OUTPUT:</b> CENTRIFUGE", 'gear', {'toggleoutput' : 1})}}
+					{{/if}}
+				{{/if}}
+			</li>
 			</ul>
 		</div>
 	</div>

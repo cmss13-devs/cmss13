@@ -180,7 +180,6 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 /obj/item/spec_kit/asrs/attack_self(mob/user)
 	if(user.job == JOB_SQUAD_MARINE)
 		if (select_and_spawn(user))
-			user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_TRAINED)
 			qdel(src)
 	else
 		to_chat(user, SPAN_NOTICE("This box is not for you, give it to a squad marine!"))
@@ -197,22 +196,27 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 		if("Pyro")
 			new /obj/item/storage/box/spec/pyro (T)
 			kits["Pyro"] --
+			user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_PYRO)
 			return TRUE
 		if("Grenadier")
 			new /obj/item/storage/box/spec/heavy_grenadier (T)
 			kits["Grenadier"] --
+			user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_GRENADIER)
 			return TRUE
 		if("Sniper")
 			new /obj/item/storage/box/spec/sniper (T)
 			kits["Sniper"] --
+			user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_SNIPER)
 			return TRUE
 		if("Scout")
 			new /obj/item/storage/box/spec/scout (T)
 			kits["Scout"] --
+			user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_SCOUT)
 			return TRUE
 		if("Demo")
 			new /obj/item/storage/box/spec/demolitionist (T)
 			kits["Demo"] --
+			user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_ROCKET)
 			return TRUE
 	return FALSE
 
@@ -240,12 +244,13 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 /obj/item/storage/box/kit/mou53_sapper/New()
 	..()
 	overlays += image('icons/obj/items/pro_case.dmi', "+mou53")
-	spawn(1)
-		new /obj/item/weapon/gun/shotgun/double/mou53(src)
-		new /obj/item/attachable/stock/mou53(src)
-		new /obj/item/ammo_magazine/shotgun/slugs(src)
-		new /obj/item/ammo_magazine/shotgun/flechette(src)
-		new /obj/item/storage/belt/shotgun(src)
+
+/obj/item/storage/box/kit/mou53_sapper/fill_preset_inventory()
+	new /obj/item/weapon/gun/shotgun/double/mou53(src)
+	new /obj/item/attachable/stock/mou53(src)
+	new /obj/item/ammo_magazine/shotgun/slugs(src)
+	new /obj/item/ammo_magazine/shotgun/flechette(src)
+	new /obj/item/storage/belt/shotgun(src)
 
 /obj/item/storage/box/kit/update_icon()
 	if(!contents.len)
@@ -257,26 +262,28 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 /obj/item/storage/box/kit/mini_pyro/New()
 	..()
 	overlays += image('icons/obj/items/pro_case.dmi', "+flamer")
-	spawn(1)
-		new /obj/item/storage/backpack/marine/engineerpack/flamethrower/kit(src)
-		new /obj/item/weapon/gun/flamer/underextinguisher(src)
-		new /obj/item/ammo_magazine/flamer_tank(src)
-		new /obj/item/ammo_magazine/flamer_tank(src)
-		new /obj/item/ammo_magazine/flamer_tank/gellied(src)
-		new /obj/item/tool/extinguisher/mini(src)
+
+/obj/item/storage/box/kit/mini_pyro/fill_preset_inventory()
+	new /obj/item/storage/backpack/marine/engineerpack/flamethrower/kit(src)
+	new /obj/item/weapon/gun/flamer/underextinguisher(src)
+	new /obj/item/ammo_magazine/flamer_tank(src)
+	new /obj/item/ammo_magazine/flamer_tank(src)
+	new /obj/item/ammo_magazine/flamer_tank/gellied(src)
+	new /obj/item/tool/extinguisher/mini(src)
 /obj/item/storage/box/kit/mini_sniper
 	name = "\improper L42A Sniper Kit"
 
 /obj/item/storage/box/kit/mini_sniper/New()
 	..()
 	overlays += image('icons/obj/items/pro_case.dmi', "+sniper")
-	spawn(1)
-		new /obj/item/weapon/gun/rifle/l42a(src)
-		new /obj/item/attachable/scope(src)
-		new /obj/item/attachable/suppressor(src)
-		new /obj/item/attachable/extended_barrel(src)
-		new /obj/item/ammo_magazine/rifle/l42a/ap(src)
-		new /obj/item/ammo_magazine/rifle/l42a/ap(src)
+
+/obj/item/storage/box/kit/mini_sniper/fill_preset_inventory()
+	new /obj/item/weapon/gun/rifle/l42a(src)
+	new /obj/item/attachable/scope(src)
+	new /obj/item/attachable/suppressor(src)
+	new /obj/item/attachable/extended_barrel(src)
+	new /obj/item/ammo_magazine/rifle/l42a/ap(src)
+	new /obj/item/ammo_magazine/rifle/l42a/ap(src)
 
 /obj/item/storage/box/kit/heavy_support
 	name = "\improper Forward HPR Shield Kit"
@@ -284,13 +291,14 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 /obj/item/storage/box/kit/heavy_support/New()
 	..()
 	overlays += image('icons/obj/items/pro_case.dmi', "+shield")
-	spawn(1)
-		new /obj/item/weapon/gun/rifle/lmg(src)
-		new /obj/item/ammo_magazine/rifle/lmg(src)
-		new /obj/item/attachable/bipod(src)
-		new /obj/item/folding_barricade(src)
-		new /obj/item/clothing/glasses/welding(src)
-		new /obj/item/tool/weldingtool(src)
+
+/obj/item/storage/box/kit/heavy_support/fill_preset_inventory()
+	new /obj/item/weapon/gun/rifle/lmg(src)
+	new /obj/item/ammo_magazine/rifle/lmg(src)
+	new /obj/item/attachable/bipod(src)
+	new /obj/item/folding_barricade(src)
+	new /obj/item/clothing/glasses/welding(src)
+	new /obj/item/tool/weldingtool(src)
 
 /obj/item/storage/box/kit/pursuit
 	name = "\improper M39 Point Man Kit"
@@ -298,12 +306,13 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 /obj/item/storage/box/kit/pursuit/New()
 	..()
 	overlays += image('icons/obj/items/pro_case.dmi', "+pursuit")
-	spawn(1)
-		new /obj/item/weapon/gun/smg/m39(src)
-		new /obj/item/attachable/stock/smg/brace(src)
-		new /obj/item/attachable/magnetic_harness(src)
-		new /obj/item/storage/large_holster/machete/full(src)
-		new /obj/item/ammo_magazine/smg/m39/extended(src)
+
+/obj/item/storage/box/kit/pursuit/fill_preset_inventory()
+	new /obj/item/weapon/gun/smg/m39(src)
+	new /obj/item/attachable/stock/smg/brace(src)
+	new /obj/item/attachable/magnetic_harness(src)
+	new /obj/item/storage/large_holster/machete/full(src)
+	new /obj/item/ammo_magazine/smg/m39/extended(src)
 
 /obj/item/storage/box/kit/mini_engineer
 	name = "\improper Combat Technician Support Kit"
@@ -311,15 +320,16 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 /obj/item/storage/box/kit/mini_engineer/New()
 	..()
 	overlays += image('icons/obj/items/pro_case.dmi', "+engi")
-	spawn(1)
-		new /obj/item/storage/backpack/marine/engineerpack(src)
-		new /obj/item/pamphlet/engineer(src)
-		new /obj/item/clothing/gloves/marine/insulated(src)
-		new /obj/item/tool/crowbar(src)
-		new /obj/item/clothing/glasses/welding(src)
-		new /obj/item/storage/pouch/tools/pfc(src)
-		new /obj/item/folding_barricade(src)
-		new /obj/item/device/m56d_gun/mounted(src)
+
+/obj/item/storage/box/kit/mini_engineer/fill_preset_inventory()
+	new /obj/item/storage/backpack/marine/engineerpack(src)
+	new /obj/item/pamphlet/engineer(src)
+	new /obj/item/clothing/gloves/marine/insulated(src)
+	new /obj/item/tool/crowbar(src)
+	new /obj/item/clothing/glasses/welding(src)
+	new /obj/item/storage/pouch/tools/pfc(src)
+	new /obj/item/folding_barricade(src)
+	new /obj/item/device/m56d_gun/mounted(src)
 
 /obj/item/storage/box/kit/mini_medic
 	name = "\improper First Responder Medical Support Kit"
@@ -327,12 +337,13 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 /obj/item/storage/box/kit/mini_medic/New()
 	..()
 	overlays += image('icons/obj/items/pro_case.dmi', "+medic")
-	spawn(1)
-		new /obj/item/pamphlet/medical(src)
-		new /obj/item/storage/pouch/medical/frt_kit/full(src)
-		new /obj/item/storage/pouch/autoinjector/full(src)
-		new /obj/item/clothing/glasses/hud/sensor(src)
-		new /obj/item/roller(src)
+
+/obj/item/storage/box/kit/mini_medic/fill_preset_inventory()
+	new /obj/item/pamphlet/medical(src)
+	new /obj/item/storage/pouch/medical/frt_kit/full(src)
+	new /obj/item/storage/pouch/autoinjector/full(src)
+	new /obj/item/clothing/glasses/hud/sensor(src)
+	new /obj/item/roller(src)
 
 /obj/item/storage/box/kit/mini_jtac
 	name = "\improper JTAC Radio Kit"
@@ -340,13 +351,14 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 /obj/item/storage/box/kit/mini_jtac/New()
 	..()
 	overlays += image('icons/obj/items/pro_case.dmi', "+jtac")
-	spawn(1)
-		new /obj/item/weapon/gun/flare(src)
-		new /obj/item/storage/belt/gun/flaregun/full_nogun(src)
-		new /obj/item/storage/box/m94/signal(src)
-		new /obj/item/storage/box/m94/signal(src)
-		new /obj/item/device/binoculars/range/designator(src)
-		new /obj/item/device/encryptionkey/jtac(src)
+
+/obj/item/storage/box/kit/mini_jtac/fill_preset_inventory()
+	new /obj/item/weapon/gun/flare(src)
+	new /obj/item/storage/belt/gun/flaregun/full_nogun(src)
+	new /obj/item/storage/box/m94/signal(src)
+	new /obj/item/storage/box/m94/signal(src)
+	new /obj/item/device/binoculars/range/designator(src)
+	new /obj/item/device/encryptionkey/jtac(src)
 
 /obj/item/storage/box/kit/mini_intel
 	name = "\improper Field Intelligence Support Kit"
@@ -354,11 +366,12 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 /obj/item/storage/box/kit/mini_intel/New()
 	..()
 	overlays += image('icons/obj/items/pro_case.dmi', "+intel")
-	spawn(1)
-		new /obj/item/stack/fulton(src)
-		new /obj/item/storage/pouch/document/small(src)
-		new /obj/item/device/motiondetector/intel(src)
-		new /obj/item/device/encryptionkey/intel(src)
+
+/obj/item/storage/box/kit/mini_intel/fill_preset_inventory()
+	new /obj/item/stack/fulton(src)
+	new /obj/item/storage/pouch/document/small(src)
+	new /obj/item/device/motiondetector/intel(src)
+	new /obj/item/device/encryptionkey/intel(src)
 
 /obj/item/storage/box/kit/mini_grenadier
 	name = "\improper Frontline M40 Grenadier Kit"
@@ -366,9 +379,10 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 /obj/item/storage/box/kit/mini_grenadier/New()
 	..()
 	overlays += image('icons/obj/items/pro_case.dmi', "+grenadier")
-	spawn(1)
-		new /obj/item/storage/belt/grenade/full(src)
-		new /obj/item/storage/pouch/explosive(src)
+
+/obj/item/storage/box/kit/mini_grenadier/fill_preset_inventory()
+	new /obj/item/storage/belt/grenade/full(src)
+	new /obj/item/storage/pouch/explosive(src)
 
 /obj/item/storage/box/kit/self_defense
 	name = "\improper Personal Self Defense Kit"
@@ -376,16 +390,17 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 /obj/item/storage/box/kit/self_defense/New()
 	..()
 	overlays += image('icons/obj/items/pro_case.dmi', "+defense")
-	spawn(1)
-		new /obj/item/weapon/gun/pistol/vp78(src)
-		new /obj/item/ammo_magazine/pistol/vp78(src)
-		new /obj/item/ammo_magazine/pistol/vp78(src)
-		new /obj/item/ammo_magazine/pistol/vp78(src)
-		new /obj/item/ammo_magazine/pistol/vp78(src)
-		new /obj/item/ammo_magazine/pistol/vp78(src)
-		new /obj/item/attachable/reddot(src)
-		new /obj/item/attachable/lasersight(src)
-		new /obj/item/storage/belt/gun/m4a3(src)
+
+/obj/item/storage/box/kit/self_defense/fill_preset_inventory()
+	new /obj/item/weapon/gun/pistol/vp78(src)
+	new /obj/item/ammo_magazine/pistol/vp78(src)
+	new /obj/item/ammo_magazine/pistol/vp78(src)
+	new /obj/item/ammo_magazine/pistol/vp78(src)
+	new /obj/item/ammo_magazine/pistol/vp78(src)
+	new /obj/item/ammo_magazine/pistol/vp78(src)
+	new /obj/item/attachable/reddot(src)
+	new /obj/item/attachable/lasersight(src)
+	new /obj/item/storage/belt/gun/m4a3(src)
 
 /obj/item/storage/box/kit/exp_trooper
 	name = "\improper Experimental Trooper Kit"
@@ -393,14 +408,15 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 /obj/item/storage/box/kit/exp_trooper/New()
 	..()
 	overlays += image('icons/obj/items/pro_case.dmi', "+smart")
-	spawn(1)
-		new /obj/item/weapon/gun/pistol/smart(src)
-		new /obj/item/ammo_magazine/pistol/smart(src)
-		new /obj/item/ammo_magazine/pistol/smart(src)
-		new /obj/item/ammo_magazine/pistol/smart(src)
-		new /obj/item/ammo_magazine/pistol/smart(src)
-		new /obj/item/ammo_magazine/pistol/smart(src)
-		new /obj/item/attachable/extended_barrel(src)
-		new /obj/item/attachable/quickfire(src)
-		new /obj/item/attachable/lasersight(src)
-		new /obj/item/storage/belt/gun/smartpistol(src)
+
+/obj/item/storage/box/kit/exp_trooper/fill_preset_inventory()
+	new /obj/item/weapon/gun/pistol/smart(src)
+	new /obj/item/ammo_magazine/pistol/smart(src)
+	new /obj/item/ammo_magazine/pistol/smart(src)
+	new /obj/item/ammo_magazine/pistol/smart(src)
+	new /obj/item/ammo_magazine/pistol/smart(src)
+	new /obj/item/ammo_magazine/pistol/smart(src)
+	new /obj/item/attachable/extended_barrel(src)
+	new /obj/item/attachable/quickfire(src)
+	new /obj/item/attachable/lasersight(src)
+	new /obj/item/storage/belt/gun/smartpistol(src)

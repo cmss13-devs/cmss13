@@ -15,10 +15,10 @@
 	. = ..()
 	if (. == 0)
 		return
-	
+
 	var/mob/living/carbon/Xenomorph/Praetorian/P = MS.xeno
 	P.speed_modifier += XENO_SPEED_MODIFIER_FASTER
-	P.evasion_modifier += XENO_EVASION_MOD_VERYLARGE // Best in game evasion.
+	P.armor_modifier += XENO_ARMOR_MOD_VERYLARGE
 	P.plasma_types = list(PLASMA_CATECHOLAMINE)
 	P.claw_type = CLAW_TYPE_VERY_SHARP
 
@@ -26,7 +26,7 @@
 	MS.recalculate_actions(description, flavor_description)
 
 	P.recalculate_everything()
-	
+
 	apply_behavior_holder(P)
 	P.mutation_type = PRAETORIAN_DANCER
 
@@ -35,7 +35,7 @@
 
 	var/evasion_buff_amount = 40
 	var/evasion_buff_ttl = 25     // 2.5 seconds seems reasonable
-		
+
 	// State
 	var/next_slash_buffed = FALSE
 	var/slash_evasion_buffed = FALSE
@@ -54,11 +54,11 @@
 		X.recalculate_evasion()
 		to_chat(X, SPAN_XENODANGER("You feel your slash make you more evasive!"))
 
-	else 
+	else
 		slash_evasion_timer = addtimer(CALLBACK(src, .proc/remove_evasion_buff), evasion_buff_ttl, TIMER_STOPPABLE | TIMER_OVERRIDE|TIMER_UNIQUE)
 
-	if (LIST_FLAGS_COMPARE(PASS_MOB_THRU, X.flags_pass_temp))
-		X.flags_pass_temp = LIST_FLAGS_REMOVE(X.flags_pass_temp, PASS_MOB_THRU)
+	if (X.flags_pass_temp & PASS_MOB_THRU)
+		X.flags_pass_temp &= ~PASS_MOB_THRU
 		X.speed_modifier += 0.5
 		X.recalculate_speed()
 		to_chat(X, SPAN_XENOHIGHDANGER("You can no longer move through creatures!"))
@@ -66,16 +66,16 @@
 
 /datum/behavior_delegate/praetorian_dancer/melee_attack_additional_effects_target(atom/A)
 	if (!isXenoOrHuman(A))
-		return 
-	
+		return
+
 	var/mob/living/carbon/H = A
 	if (H.stat)
-		return 
+		return
 
 	// Clean up all tags to 'refresh' our TTL
 	for (var/datum/effects/dancer_tag/DT in H.effects_list)
 		qdel(DT)
-		
+
 	new /datum/effects/dancer_tag(H, bound_xeno, , , 35)
 
 	if(ishuman(H))

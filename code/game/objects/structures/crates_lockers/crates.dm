@@ -16,7 +16,7 @@
 /obj/structure/closet/crate/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
 	if (PF)
-		PF.flags_can_pass_all = SETUP_LIST_FLAGS(PASS_OVER, PASS_AROUND)
+		PF.flags_can_pass_all = PASS_OVER|PASS_AROUND
 
 /obj/structure/closet/crate/can_open()
 	return 1
@@ -32,7 +32,7 @@
 			return NO_BLOCKED_MOVEMENT
 	if(opened) //Open crate, you can cross over it
 		return NO_BLOCKED_MOVEMENT
-	
+
 	return ..()
 
 /obj/structure/closet/crate/open()

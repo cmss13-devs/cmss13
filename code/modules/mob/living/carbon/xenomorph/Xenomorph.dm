@@ -368,14 +368,14 @@
 /mob/living/carbon/Xenomorph/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
 	if (PF)
-		PF.flags_pass = SETUP_LIST_FLAGS(PASS_MOB_IS_XENO)
-		PF.flags_can_pass_all = SETUP_LIST_FLAGS(PASS_MOB_THRU_XENO, PASS_AROUND, PASS_HIGH_OVER_ONLY)
+		PF.flags_pass = PASS_MOB_IS_XENO
+		PF.flags_can_pass_all = PASS_MOB_THRU_XENO|PASS_AROUND|PASS_HIGH_OVER_ONLY
 
 /mob/living/carbon/Xenomorph/initialize_pain()
 	pain = new /datum/pain/xeno(src)
 
 /mob/living/carbon/Xenomorph/initialize_stamina()
-	stamina = new /datum/stamina/xeno(src)
+	stamina = new /datum/stamina/none(src)
 
 /mob/living/carbon/Xenomorph/proc/update_caste()
 	if(caste_name && xeno_datum_list[caste_name])

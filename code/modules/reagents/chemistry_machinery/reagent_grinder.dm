@@ -11,6 +11,8 @@
 	var/inuse = 0
 	var/obj/item/reagent_container/beaker = null
 	var/limit = 10
+	var/tether_range = 8
+	var/obj/structure/machinery/smartfridge/chemistry/linked_storage //Where we send bottle chemicals
 	var/list/blend_items = list (
 
 		//Sheets
@@ -59,7 +61,12 @@
 /obj/structure/machinery/reagentgrinder/Initialize()
 	. = ..()
 	beaker = new /obj/item/reagent_container/glass/beaker/large(src)
+	connect_smartfridge()
 	return
+
+/obj/structure/machinery/reagentgrinder/Destroy()
+	cleanup()
+	. = ..()
 
 /obj/structure/machinery/reagentgrinder/update_icon()
 	icon_state = "juicer"+num2text(!isnull(beaker))
@@ -142,7 +149,7 @@
 			var/anything = 0
 			for(var/datum/reagent/R in beaker.reagents.reagent_list)
 				anything = 1
-				beaker_contents += "[R.volume] - [R.name] <A href='?src=\ref[src];action=[R.id]'>Dispose</a><br>"
+				beaker_contents += "[R.volume] - [R.name] <A href='?src=\ref[src];bottle=[R.id]'>Bottle</a><A href='?src=\ref[src];dispose=[R.id]'>Dispose</a><br>"
 			if(!anything)
 				beaker_contents += "Nothing<br>"
 
@@ -159,6 +166,8 @@
 			dat += "<A href='?src=\ref[src];action=eject'>Eject the reagents</a><BR>"
 		if(beaker)
 			dat += "<A href='?src=\ref[src];action=detach'>Detach the beaker</a><BR>"
+		if(!linked_storage && tether_range > 0)
+			dat += "<A href='?src=\ref[src];action=connect'>Connect to smartfridge</a><BR>"
 	else
 		dat += "Please wait..."
 	show_browser(user, "<HEAD><TITLE>[name]</TITLE></HEAD><TT>[dat]</TT>", name, "reagentgrinder")
@@ -169,19 +178,37 @@
 /obj/structure/machinery/reagentgrinder/Topic(href, href_list)
 	if(..())
 		return
+	var/mob/living/carbon/human/user = usr
+	if(!in_range(src, user))
+		return
 	usr.set_interaction(src)
-	switch(href_list["action"])
-		if("grind")
-			grind()
-		if("juice")
-			juice()
-		if("eject")
-			eject()
-		if("detach")
-			detach()
-		else
-			if(beaker)
-				beaker.reagents.del_reagent(href_list["action"])
+	if(href_list["bottle"])
+		var/id = href_list["bottle"]
+		if(QDELETED(linked_storage) || src.z != linked_storage.z || get_dist(src, linked_storage) > tether_range)
+			visible_message(SPAN_WARNING("Smartfridge is out of range. Connection severed."))
+			cleanup()
+			return
+
+		var/obj/item/reagent_container/glass/bottle/P = new /obj/item/reagent_container/glass/bottle()
+		P.name = "[id] bottle"
+		P.icon_state = "bottle-1" // Default bottle
+		beaker.reagents.trans_id_to(P, id, P.reagents.maximum_volume)
+		linked_storage.add_item(P)
+	else if(href_list["dispose"])
+		var/id = href_list["dispose"]
+		beaker.reagents.del_reagent(id)
+	else
+		switch(href_list["action"])
+			if("grind")
+				grind()
+			if("juice")
+				juice()
+			if("eject")
+				eject()
+			if("detach")
+				detach()
+			if("connect")
+				connect_smartfridge()
 	updateUsrDialog()
 	return
 
@@ -206,6 +233,14 @@
 		O.forceMove(loc)
 		holdingitems -= O
 	holdingitems = list()
+
+/obj/structure/machinery/reagentgrinder/proc/connect_smartfridge()
+	if(linked_storage || tether_range <= 0)
+		return
+	linked_storage = locate(/obj/structure/machinery/smartfridge/chemistry) in range(tether_range, src)
+	if(linked_storage)
+		RegisterSignal(linked_storage, COMSIG_PARENT_QDELETING, .proc/cleanup)
+		visible_message(SPAN_NOTICE("<b>The [src] beeps:</b> Smartfridge connected."))
 
 /obj/structure/machinery/reagentgrinder/proc/is_allowed(var/obj/item/reagent_container/O)
 	for(var/i in blend_items)
@@ -329,15 +364,18 @@
 		var/allowed = get_allowed_by_id(O)
 		if(beaker.reagents.total_volume >= beaker.reagents.maximum_volume)
 			break
-		for(var/i = 1; i <= round(O.amount, 1); i++)
+		while(round(O.amount, 1)) // Technically possible to get a full quantity from a half bar, but shouldn't happen here
 			for(var/r_id in allowed)
 				var/space = beaker.reagents.maximum_volume - beaker.reagents.total_volume
 				var/amount = allowed[r_id]
 				beaker.reagents.add_reagent(r_id,min(amount, space))
 				if(space < amount)
 					break
-			if(i == round(O.amount, 1))
+			O.amount--
+			if(O.amount <= 0)
 				remove_object(O)
+				break
+			if(beaker.reagents.total_volume >= beaker.reagents.maximum_volume)
 				break
 	//Plants
 	for(var/obj/item/grown/O in holdingitems)
@@ -375,6 +413,12 @@
 		if(!O.reagents.total_volume)
 			remove_object(O)
 
+/obj/structure/machinery/reagentgrinder/proc/cleanup()
+	SIGNAL_HANDLER
+	if(linked_storage)
+		linked_storage = null
+
+
 /obj/structure/machinery/reagentgrinder/industrial
 	name = "Industrial Grinder"
 	desc = "a heavy duty variant of the all-in-one grinder meant for grinding large amounts of industrial material. Not food safe."
@@ -397,7 +441,7 @@
 		//Blender Stuff
 		/obj/item/reagent_container/food/snacks/grown/corn = list("cornoil" = 0)
 	)
-
+	tether_range = 0
 	juice_items = list ()
 
 /obj/structure/machinery/reagentgrinder/industrial/Initialize()

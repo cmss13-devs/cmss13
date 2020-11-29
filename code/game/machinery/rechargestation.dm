@@ -29,7 +29,7 @@
 /obj/structure/machinery/recharge_station/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
 	if (PF)
-		PF.flags_can_pass_all = SETUP_LIST_FLAGS(PASS_HIGH_OVER_ONLY, PASS_AROUND, PASS_OVER_THROW_ITEM)
+		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND|PASS_OVER_THROW_ITEM
 
 /obj/structure/machinery/recharge_station/process()
 	if(stat & (BROKEN))
@@ -265,3 +265,12 @@
 			user.stop_pulling()
 			move_mob_inside(M)
 			add_fingerprint(user)
+
+#ifdef OBJECTS_PROXY_SPEECH
+// Transfers speech to occupant
+/obj/structure/machinery/recharge_station/hear_talk(mob/living/sourcemob, message, verb, language, italics)
+	if(!QDELETED(occupant) && istype(occupant) && occupant.stat != DEAD)
+		proxy_object_heard(src, sourcemob, occupant, message, verb, language, italics)
+	else
+		..(sourcemob, message, verb, language, italics)
+#endif // ifdef OBJECTS_PROXY_SPEECH

@@ -31,7 +31,7 @@
 			var/mob/living/carbon/Xenomorph/Queen/XQ = src
 			playsound(loc, 'sound/voice/alien_queen_died.ogg', 75, 0)
 			if(XQ.observed_xeno)
-				XQ.set_queen_overwatch(XQ.observed_xeno, TRUE)
+				XQ.overwatch(XQ.observed_xeno, TRUE)
 			if(XQ.ovipositor)
 				XQ.dismount_ovipositor(TRUE)
 
@@ -68,6 +68,7 @@
 				hive.handle_xeno_leader_pheromones()
 				if(ticker && ticker.mode)
 					ticker.mode.check_queen_status(hive.queen_time, hivenumber)
+					LAZYADD(ticker.mode.dead_queens, "<br>[!isnull(src.key) ? src.key : "?"] was [src] [SPAN_BOLDNOTICE("(DIED)")]")
 
 		else
 			playsound(loc, prob(50) == 1 ? 'sound/voice/alien_death.ogg' : 'sound/voice/alien_death2.ogg', 25, 1)

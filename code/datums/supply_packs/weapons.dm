@@ -22,7 +22,7 @@ WEAPONS
 	containername = "\improper M240 Incinerator crate"
 	group = "Weapons"
 
-/datum/supply_packs/m56_system/
+/datum/supply_packs/m56_system
 	name = "m56 system crate (x1)"
 	contains = list()
 	cost = RO_PRICE_VERY_PRICY
@@ -96,7 +96,7 @@ WEAPONS
 	containername = "\improper rifles crate"
 	group = "Weapons"
 
-/datum/supply_packs/gun/
+/datum/supply_packs/gun
 	contains = list(
 					/obj/item/weapon/gun/rifle/m41aMK1,
 					/obj/item/weapon/gun/rifle/m41aMK1,

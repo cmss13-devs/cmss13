@@ -139,11 +139,11 @@
 				if(component_check)
 					playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 					var/obj/structure/machinery/new_machine = new src.circuit.build_path(src.loc)
-					new_machine.component_parts.Cut()
+					QDEL_NULL_LIST(new_machine.component_parts)
 					src.circuit.construct(new_machine)
 					for(var/obj/O in src)
 						O.loc = new_machine
-						new_machine.component_parts += O
+						LAZYADD(new_machine.component_parts, O)
 					circuit.loc = new_machine
 					new_machine.RefreshParts()
 					qdel(src)

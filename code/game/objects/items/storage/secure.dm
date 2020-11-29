@@ -132,8 +132,7 @@
 	w_class = SIZE_LARGE
 
 
-/obj/item/storage/secure/briefcase/Initialize()
-	. = ..()
+/obj/item/storage/secure/briefcase/fill_preset_inventory()
 	new /obj/item/paper(src)
 	new /obj/item/tool/pen(src)
 
@@ -169,8 +168,7 @@
 	density = 0
 	cant_hold = list(/obj/item/storage/secure/briefcase)
 
-/obj/item/storage/secure/safe/Initialize()
-	. = ..()
+/obj/item/storage/secure/safe/fill_preset_inventory()
 	new /obj/item/paper(src)
 	new /obj/item/tool/pen(src)
 

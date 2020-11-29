@@ -11,7 +11,7 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1
 	xeno_cooldown = 30
-	plasma_cost = 20
+	plasma_cost = 80
 
 	// Config
 	var/damage = 45
@@ -26,7 +26,7 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
 	xeno_cooldown = 110
-	plasma_cost = 10
+	plasma_cost = 80
 
 	// Config options
 	distance = 5
@@ -42,7 +42,7 @@
 	var/time_until_timeout = 20
 
 /datum/action/xeno_action/activable/pounce/prae_dash/initialize_pounce_pass_flags()
-	pounce_pass_flags = list(PASS_MOB_THRU, PASS_OVER_THROW_MOB)
+	pounce_pass_flags = PASS_MOB_THRU|PASS_OVER_THROW_MOB
 
 /datum/action/xeno_action/activable/cleave
 	name = "Cleave"
@@ -51,7 +51,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_cleave
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	action_type = XENO_ACTION_CLICK
-	xeno_cooldown = 70
+	xeno_cooldown = 120
 
 	// Root config
 	var/root_duration_unbuffed = 5
@@ -71,6 +71,7 @@
 	plasma_cost = 0
 	macro_path = /datum/action/xeno_action/verb/verb_toggle_cleave
 	action_type = XENO_ACTION_CLICK
+	ability_primacy = XENO_PRIMARY_ACTION_4
 
 /datum/action/xeno_action/onclick/toggle_cleave/can_use_action()
 	var/mob/living/carbon/Xenomorph/X = owner
@@ -113,7 +114,7 @@
 	ability_primacy = XENO_PRIMARY_ACTION_1
 	action_type = XENO_ACTION_CLICK
 	xeno_cooldown = 180
-	plasma_cost = 50
+	plasma_cost = 180
 
 	// Config
 	var/max_distance = 7
@@ -127,22 +128,22 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
 	xeno_cooldown = 100
-	plasma_cost = 30
+	plasma_cost = 55
 
 	// Configurables
 	var/damage = 40
 
 
 // This one is more tightly coupled than I'd like, but oh well
-/datum/action/xeno_action/onclick/crush
+// unused
+/*datum/action/xeno_action/onclick/crush
 	name = "Crush"
 	action_icon_state = "prae_crush"
 	ability_name = "crush"
 	macro_path = /datum/action/xeno_action/verb/verb_crush
-	ability_primacy = XENO_PRIMARY_ACTION_3
 	action_type = XENO_ACTION_ACTIVATE
 	xeno_cooldown = 100
-	plasma_cost = 50
+	plasma_cost = 80*/
 
 // Tail lash
 /datum/action/xeno_action/activable/tail_lash
@@ -153,7 +154,7 @@
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	action_type = XENO_ACTION_CLICK
 	xeno_cooldown = 130
-	plasma_cost = 50
+	plasma_cost = 80
 
 	// Config
 	var/fling_dist = 3
@@ -169,7 +170,7 @@
 	ability_primacy = XENO_PRIMARY_ACTION_1
 	action_type = XENO_ACTION_CLICK
 	xeno_cooldown = 130
-	plasma_cost = 100
+	plasma_cost = 80
 
 	var/click_miss_cooldown = 15
 
@@ -180,8 +181,8 @@
 	macro_path = /datum/action/xeno_action/verb/verb_prae_dodge
 	ability_primacy = XENO_PRIMARY_ACTION_2
 	action_type = XENO_ACTION_ACTIVATE
-	plasma_cost = 100
-	xeno_cooldown = 210
+	plasma_cost = 200
+	xeno_cooldown = 190
 
 	// Config
 	var/duration = 70
@@ -195,7 +196,7 @@
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	action_type = XENO_ACTION_CLICK
 	xeno_cooldown = 130
-	plasma_cost = 50
+	plasma_cost = 30
 
 	// Config
 	var/range = 2
@@ -217,7 +218,7 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
 	xeno_cooldown = 50
-	plasma_cost = 10
+	plasma_cost = 80
 
 	// Config options
 	distance = 4
@@ -233,7 +234,7 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	xeno_cooldown = 180
-	plasma_cost = 75
+	plasma_cost = 180
 
 	var/activation_delay = 10
 	var/prime_delay = 10
@@ -246,7 +247,7 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_4
 
-	plasma_cost = 40
+	plasma_cost = 180
 	xeno_cooldown = 100
 
 	// Configurable options
@@ -261,7 +262,7 @@
 
 /datum/action/xeno_action/activable/spray_acid/prae_warden
 	ability_primacy = XENO_PRIMARY_ACTION_2
-	plasma_cost = 60
+	plasma_cost = 130
 	xeno_cooldown = 130
 
 
@@ -281,7 +282,7 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	xeno_cooldown = 100
-	plasma_cost = 75
+	plasma_cost = 100
 
 	// Config
 
@@ -303,6 +304,7 @@
 	action_icon_state = "warden_shield" // default = shield
 	macro_path = /datum/action/xeno_action/verb/verb_prae_switch_heal_types
 	action_type = XENO_ACTION_ACTIVATE
+	ability_primacy = XENO_PRIMARY_ACTION_4
 
 /datum/action/xeno_action/onclick/prae_switch_heal_type/can_use_action()
 	var/mob/living/carbon/Xenomorph/X = owner

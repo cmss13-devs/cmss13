@@ -351,7 +351,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set category = "Ghost"
 	set name = "Follow"
 
-	var/list/choices = list("Humans", "Xenomorphs", "Predators", "Synthetics", "ERT Members", "Survivors", "Any Mobs", "Mobs by Faction", "Xenos by Hive", "Vehicles")
+	var/list/choices = list("Humans", "Xenomorphs", "Holograms", "Predators", "Synthetics", "ERT Members", "Survivors", "Any Mobs", "Mobs by Faction", "Xenos by Hive", "Vehicles")
 	var/input = input("Please, select a category:", "Follow", null, null) as null|anything in choices
 	var/atom/movable/target
 	var/list/targets = list()
@@ -372,6 +372,9 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			targets = getmobs()
 		if("Vehicles")
 			targets = get_multi_vehicles()
+
+		if("Holograms")
+			targets = get_holograms()
 
 		if("Mobs by Faction")
 			choices = FACTION_LIST_HUMANOID
@@ -620,7 +623,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		return
 
 	mind.transfer_to(Z, TRUE)
-
 	msg_admin_niche("[key_name(usr)] has joined as a [Z].")
 
 
@@ -652,7 +654,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 	freed_mob_list -= L
 	M.mind.transfer_to(L, TRUE)
-
 
 /mob/dead/verb/join_as_hellhound()
 	set category = "Ghost"

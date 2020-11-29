@@ -17,6 +17,7 @@ Mineral Sheets
 var/global/list/datum/stack_recipe/sandstone_recipes = list ( \
 	new/datum/stack_recipe("pile of dirt", /obj/structure/machinery/portable_atmospherics/hydroponics/soil, 3, time = 10, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
 	new/datum/stack_recipe("sandstone door", /obj/structure/mineral_door/sandstone, 10, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
+	new/datum/stack_recipe("sandstone wall", /turf/closed/wall/mineral/sandstone, 5, time = 50, skill_req = SKILL_CONSTRUCTION_ENGI, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
 	new/datum/stack_recipe("sandstone floor", /turf/open/floor/sandstone, 5, on_floor = 0), \
 	)
 
@@ -72,7 +73,7 @@ var/global/list/datum/stack_recipe/iron_recipes = list ( \
 	desc = "Iron is the most basic building material in space, a metal solid at room temperature, easy to shape and available in immense quantities."
 	singular_name = "iron sheet"
 	icon_state = "sheet-silver"
-	
+
 	sheettype = "iron"
 	color = "#333333"
 	perunit = 3750
@@ -89,7 +90,7 @@ var/global/list/datum/stack_recipe/iron_recipes = list ( \
 	icon_state = "sheet-sandstone"
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 5
-	
+
 	sheettype = "sandstone"
 	stack_id = "sandstone"
 
@@ -102,7 +103,7 @@ var/global/list/datum/stack_recipe/iron_recipes = list ( \
 	desc = "Diamond is a specific arrangement of carbon created under extreme pressure and heat. Valued for its look and properties, despite artificial manufacturing possibilities."
 	singular_name = "diamond gem"
 	icon_state = "sheet-diamond"
-	
+
 	perunit = 3750
 	sheettype = "diamond"
 	stack_id = "diamond"
@@ -117,7 +118,7 @@ var/global/list/datum/stack_recipe/iron_recipes = list ( \
 	desc = "Uranium is a radioactive metal of the actinide series. Valued as reactor fuel for fission-type generators, and as a primer for fusion bombs."
 	singular_name = "uranium rod"
 	icon_state = "sheet-uranium"
-	
+
 	perunit = 2000
 	sheettype = "uranium"
 	stack_id = "uranium"
@@ -134,7 +135,7 @@ var/global/list/datum/stack_recipe/iron_recipes = list ( \
 	desc = "Phoron is an extremely rare mineral with exotic properties, often used in cutting-edge research. Just getting it into a stable, solid form is already hard enough."
 	singular_name = "phoron ingot"
 	icon_state = "sheet-phoron"
-	
+
 	perunit = 2000
 	sheettype = "phoron"
 	stack_id = "phoron"
@@ -155,7 +156,7 @@ var/global/list/datum/stack_recipe/iron_recipes = list ( \
 	singular_name = "plastic sheet"
 	icon_state = "sheet-plastic"
 	matter = list("plastic" = 2000)
-	
+
 	perunit = 2000
 	stack_id = "plastic"
 
@@ -178,7 +179,7 @@ var/global/list/datum/stack_recipe/iron_recipes = list ( \
 	desc = "Gold is a transition metal. A relatively rare metal, known for its color, shine, chemical and electrical properties, it is sought after for both cosmetic, engineering and scientific uses."
 	singular_name = "gold ingot"
 	icon_state = "sheet-gold"
-	
+
 	perunit = 2000
 	sheettype = "gold"
 	stack_id = "gold"
@@ -195,7 +196,7 @@ var/global/list/datum/stack_recipe/iron_recipes = list ( \
 	desc = "Silver is a transition metal. It is known for its namesake silver, gray color. It is used both for cosmetics as a cheaper alternative to gold, or for engineering."
 	singular_name = "silver ingot"
 	icon_state = "sheet-silver"
-	
+
 	perunit = 2000
 	sheettype = "silver"
 	stack_id = "silver"
@@ -212,7 +213,7 @@ var/global/list/datum/stack_recipe/iron_recipes = list ( \
 	desc = "Enriched uranium rods are made out of around 3 to 5 percent of U-235 mixed with regular U-238. While nowhere near weapons-grade, it is good enough to be used in a fission engine."
 	singular_name = "enriched uranium rod"
 	icon_state = "sheet-enruranium"
-	
+
 	perunit = 1000
 	stack_id = "uranium"
 
@@ -222,7 +223,7 @@ var/global/list/datum/stack_recipe/iron_recipes = list ( \
 	desc = "Platinum is a transition metal. Relatively rare and pretty, it is used for its cosmetic value and chemical properties as a catalytic agent. It is also used in electrodes."
 	singular_name = "platinum ingot"
 	icon_state = "sheet-adamantine"
-	
+
 	sheettype = "platinum"
 	perunit = 2000
 	stack_id = "platinum"
@@ -233,7 +234,7 @@ var/global/list/datum/stack_recipe/iron_recipes = list ( \
 	desc = "Metallic hydrogen is regular hydrogen in a near-solid state, turned into an ingot under immense pressures. The exact procedure to create and stabilize such ingots is still a trade secret."
 	singular_name = "hydrogen ingot"
 	icon_state = "sheet-mythril"
-	
+
 	sheettype = "mhydrogen"
 	perunit = 2000
 	stack_id = "mhydrogen"
@@ -245,7 +246,7 @@ var/global/list/datum/stack_recipe/iron_recipes = list ( \
 	singular_name = "tritium ingot"
 	icon_state = "sheet-silver"
 	sheettype = "tritium"
-	
+
 	color = "#777777"
 	perunit = 2000
 	stack_id = "tritium"
@@ -256,7 +257,7 @@ var/global/list/datum/stack_recipe/iron_recipes = list ( \
 	singular_name = "tritium ingot"
 	icon_state = "sheet-silver"
 	sheettype = "osmium"
-	
+
 	color = "#9999FF"
 	perunit = 2000
 	stack_id = "osmium"

@@ -12,7 +12,7 @@
 	throw_speed = SPEED_FAST
 	throw_range = 4
 
-	
+
 
 	var/on = 0				//is it turned on?
 	var/cover_open = 0		//is the cover open?
@@ -23,13 +23,16 @@
 
 	//TODO: make it heat up the surroundings when not in space
 
-/obj/item/device/suit_cooling_unit/New()
-	..()
-	
-	processing_objects |= src
+/obj/item/device/suit_cooling_unit/Initialize(mapload, ...)
+	. = ..()
 
-	cell = new/obj/item/cell()	//comes with the crappy default power cell - high-capacity ones shouldn't be hard to find
-	cell.loc = src
+	START_PROCESSING(SSobj, src)
+
+	cell = new/obj/item/cell(src)	//comes with the crappy default power cell - high-capacity ones shouldn't be hard to find
+
+/obj/item/device/suit_cooling_unit/Destroy()
+	STOP_PROCESSING(SSobj, src)
+	return ..()
 
 /obj/item/device/suit_cooling_unit/process()
 	if (!on || !cell)

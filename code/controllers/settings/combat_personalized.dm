@@ -110,6 +110,7 @@
 	armor_integrity_damage_mult = 4
 	//Xeno has low randomness of armor
 	armor_random_range = 10
+	armor_ignore_integrity = 1
 
 /datum/combat_configuration/xeno/ranged
 

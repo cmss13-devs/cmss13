@@ -8,7 +8,7 @@
 
 //INTERIOR
 // areas under rock
-/area/desert_dam/interior/
+/area/desert_dam/interior
 	ceiling = CEILING_UNDERGROUND_METAL
 //NorthEastern Lab Section
 /area/desert_dam/interior/lab_northeast
@@ -162,13 +162,13 @@
 	name = "Engineering South Tunnel Entrance"
 	icon_state = "red"
 
-/area/desert_dam/interior/caves/
+/area/desert_dam/interior/caves
 	name = "Caves"
 	ceiling = CEILING_DEEP_UNDERGROUND
 	icon_state = "red"
 	ambience_exterior = AMBIENCE_CAVE
 	soundscape_playlist = SCAPE_PL_CAVE
-	soundscape_interval = 25 
+	soundscape_interval = 25
 	sound_environment = 6
 /area/desert_dam/interior/caves/northern_caves
 	name = "Northern Caves"
@@ -193,7 +193,7 @@
 //BUILDING
 //areas not under rock
 // ceiling = CEILING_METAL
-/area/desert_dam/building/
+/area/desert_dam/building
 	ceiling = CEILING_METAL
 //Substations
 /area/desert_dam/building/substation

@@ -28,7 +28,7 @@
 /obj/structure/reagent_dispensers/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
 	if (PF)
-		PF.flags_can_pass_all = SETUP_LIST_FLAGS(PASS_OVER, PASS_AROUND, PASS_UNDER)
+		PF.flags_can_pass_all = PASS_OVER|PASS_AROUND|PASS_UNDER
 
 /obj/structure/reagent_dispensers/examine(mob/user)
 	..()
@@ -93,7 +93,7 @@
 /obj/structure/reagent_dispensers/attack_hand()
 	if(!reagents || reagents.locked)
 		return
-	
+
 	var/N = input("Amount per transfer from this:","[src]") as null|anything in possible_transfer_amounts
 	if(N)
 		amount_per_transfer_from_this = N
@@ -203,7 +203,7 @@
 
 			rig = W
 			user.drop_inv_item_to_loc(W, src)
-			
+
 			update_icon()
 
 	else if(istype(W,/obj/item/stack/sheet/metal/))
@@ -229,7 +229,7 @@
 		update_icon()
 
 	else if(istype(W, /obj/item/tool/crowbar))
-		
+
 		user.visible_message(SPAN_DANGER("[user] begins to remove the shielding from [src]."),\
 		SPAN_NOTICE("You begin to remove the shielding from [src]."))
 
@@ -281,7 +281,7 @@
 	if(cut_overlays)
 		overlays.Cut()
 	. = ..()
-	
+
 	if(rig)
 		overlays += image(icon, "t_signaller")
 		if(exploding)

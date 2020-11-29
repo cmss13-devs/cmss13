@@ -73,9 +73,6 @@ var/global/list/frozen_items = list(SQUAD_NAME_1 = list(), SQUAD_NAME_2 = list()
 
 /obj/structure/machinery/computer/cryopod/Topic(href, href_list)
 
-	//if(..())
-	//	return
-
 	var/mob/user = usr
 	var/list/frozen_items_for_type = frozen_items[cryotype]
 
@@ -250,14 +247,14 @@ var/global/list/frozen_items = list(SQUAD_NAME_1 = list(), SQUAD_NAME_2 = list()
 
 	item_loop:
 		for(var/obj/item/W in items)
-			if(((W.flags_inventory & CANTSTRIP) || (W.flags_item & NODROP)) && !isYautja(occupant)) //We don't keep donor items and undroppable/unremovable items
+			if(((W.flags_inventory & CANTSTRIP) || (W.flags_item & NODROP) || (W.flags_item & NO_CRYO_STORE)) && !isYautja(occupant)) //We don't keep donor items, undroppable/unremovable items, and specifically filtered items
 				if(istype(W, /obj/item/clothing/suit/storage))
 					var/obj/item/clothing/suit/storage/SS = W
 					for(var/obj/item/I in SS.pockets) //But we keep stuff inside them
 						SS.pockets.remove_from_storage(I, loc)
 						strippeditems += I
 						I.loc = null
-				if(istype(W, /obj/item/storage))
+				if(isstorage(W))
 					var/obj/item/storage/S = W
 					for(var/obj/item/I in S)
 						S.remove_from_storage(I, loc)
@@ -509,3 +506,12 @@ var/global/list/frozen_items = list(SQUAD_NAME_1 = list(), SQUAD_NAME_2 = list()
 	stop_processing()
 	icon_state = "body_scanner_0"
 	playsound(src, 'sound/machines/pod_open.ogg', 30)
+
+#ifdef OBJECTS_PROXY_SPEECH
+// Transfers speech to occupant
+/obj/structure/machinery/cryopod/hear_talk(mob/living/sourcemob, message, verb, language, italics)
+	if(!QDELETED(occupant) && istype(occupant))
+		proxy_object_heard(src, sourcemob, occupant, message, verb, language, italics)
+	else
+		..(sourcemob, message, verb, language, italics)
+#endif // ifdef OBJECTS_PROXY_SPEECH

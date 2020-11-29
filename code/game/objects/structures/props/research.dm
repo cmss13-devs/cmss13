@@ -4,7 +4,14 @@
 	density = 1
 	anchored = 1
 	use_power = 1
+	var/list/parts_to_build
 
+/obj/structure/machinery/r_n_d/Initialize(mapload, ...)
+	. = ..()
+	QDEL_NULL_LIST(component_parts)
+	for(var/typepath in parts_to_build)
+		LAZYADD(component_parts, new typepath(src))
+	RefreshParts()
 
 /obj/structure/machinery/r_n_d/circuit_imprinter
 	name = "Circuit Imprinter"
@@ -13,16 +20,13 @@
 	use_power = 1
 	idle_power_usage = 30
 	active_power_usage = 2500
-
-/obj/structure/machinery/r_n_d/circuit_imprinter/Initialize()
-	. = ..()
-	component_parts = list()
-	component_parts += new /obj/item/circuitboard/machine/circuit_imprinter(src)
-	component_parts += new /obj/item/stock_parts/matter_bin(src)
-	component_parts += new /obj/item/stock_parts/manipulator(src)
-	component_parts += new /obj/item/reagent_container/glass/beaker(src)
-	component_parts += new /obj/item/reagent_container/glass/beaker(src)
-	RefreshParts()
+	parts_to_build = list(
+		/obj/item/circuitboard/machine/circuit_imprinter,
+		/obj/item/stock_parts/matter_bin,
+		/obj/item/stock_parts/manipulator,
+		/obj/item/reagent_container/glass/beaker,
+		/obj/item/reagent_container/glass/beaker,
+	)
 
 /obj/structure/machinery/r_n_d/server
 	name = "R&D Server"
@@ -31,16 +35,12 @@
 	health = 100
 	idle_power_usage = 800
 	req_access = list(ACCESS_MARINE_CMO) //Only the R&D can change server settings.
-
-
-/obj/structure/machinery/r_n_d/server/Initialize()
-	. = ..()
-	component_parts = list()
-	component_parts += new /obj/item/circuitboard/machine/rdserver(src)
-	component_parts += new /obj/item/stock_parts/scanning_module(src)
-	component_parts += new /obj/item/stack/cable_coil(src)
-	component_parts += new /obj/item/stack/cable_coil(src)
-	RefreshParts()
+	parts_to_build = list(
+		/obj/item/circuitboard/machine/rdserver,
+		/obj/item/stock_parts/scanning_module,
+		/obj/item/stack/cable_coil,
+		/obj/item/stack/cable_coil,
+	)
 
 /obj/structure/machinery/r_n_d/server/centcom
 	name = "Centcom Central R&D Database"
@@ -52,7 +52,7 @@
 
 /obj/structure/machinery/r_n_d/server/robotics
 	name = "Robotics R&D Server"
-	
+
 /obj/structure/machinery/r_n_d/server/core
 	name = "Core R&D Server"
 
@@ -63,16 +63,12 @@
 	use_power = 1
 	idle_power_usage = 30
 	active_power_usage = 2500
-
-/obj/structure/machinery/r_n_d/destructive_analyzer/Initialize()
-	. = ..()
-	component_parts = list()
-	component_parts += new /obj/item/circuitboard/machine/destructive_analyzer(src)
-	component_parts += new /obj/item/stock_parts/scanning_module(src)
-	component_parts += new /obj/item/stock_parts/manipulator(src)
-	component_parts += new /obj/item/stock_parts/micro_laser(src)
-	RefreshParts()
-
+	parts_to_build = list(
+		/obj/item/circuitboard/machine/destructive_analyzer,
+		/obj/item/stock_parts/scanning_module,
+		/obj/item/stock_parts/manipulator,
+		/obj/item/stock_parts/micro_laser,
+	)
 
 /obj/structure/machinery/r_n_d/protolathe
 	name = "Protolathe"
@@ -81,19 +77,15 @@
 	use_power = 1
 	idle_power_usage = 30
 	active_power_usage = 5000
-
-/obj/structure/machinery/r_n_d/protolathe/Initialize()
-	. = ..()
-	component_parts = list()
-	component_parts += new /obj/item/circuitboard/machine/protolathe(src)
-	component_parts += new /obj/item/stock_parts/matter_bin(src)
-	component_parts += new /obj/item/stock_parts/matter_bin(src)
-	component_parts += new /obj/item/stock_parts/manipulator(src)
-	component_parts += new /obj/item/stock_parts/manipulator(src)
-	component_parts += new /obj/item/reagent_container/glass/beaker(src)
-	component_parts += new /obj/item/reagent_container/glass/beaker(src)
-	RefreshParts()
-
+	parts_to_build = list(
+		/obj/item/circuitboard/machine/protolathe,
+		/obj/item/stock_parts/matter_bin,
+		/obj/item/stock_parts/matter_bin,
+		/obj/item/stock_parts/manipulator,
+		/obj/item/stock_parts/manipulator,
+		/obj/item/reagent_container/glass/beaker,
+		/obj/item/reagent_container/glass/beaker,
+	)
 
 /obj/structure/machinery/r_n_d/server
 	name = "R&D Server"
@@ -102,22 +94,19 @@
 	health = 100
 	idle_power_usage = 800
 	req_access = list(ACCESS_MARINE_CMO) //Only the R&D can change server settings.
-
-/obj/structure/machinery/r_n_d/server/Initialize()
-	. = ..()
-	component_parts = list()
-	component_parts += new /obj/item/circuitboard/machine/rdserver(src)
-	component_parts += new /obj/item/stock_parts/scanning_module(src)
-	component_parts += new /obj/item/stack/cable_coil(src)
-	component_parts += new /obj/item/stack/cable_coil(src)
-	RefreshParts()
+	parts_to_build = list(
+		/obj/item/circuitboard/machine/rdserver,
+		/obj/item/stock_parts/scanning_module,
+		/obj/item/stack/cable_coil,
+		/obj/item/stack/cable_coil,
+	)
 
 /obj/structure/machinery/r_n_d/server/centcom
 	name = "Centcom Central R&D Database"
 
 /obj/structure/machinery/r_n_d/server/robotics
 	name = "Robotics R&D Server"
-	
+
 /obj/structure/machinery/r_n_d/server/core
 	name = "Core R&D Server"
 
@@ -155,16 +144,12 @@
 	use_power = 1
 	idle_power_usage = 30
 	active_power_usage = 2500
-
-/obj/structure/machinery/r_n_d/organic_analyzer/Initialize()
-	. = ..()
-	component_parts = list()
-	component_parts += new /obj/item/circuitboard/machine/destructive_analyzer(src) //We'll need it's own board one day.
-	component_parts += new /obj/item/stock_parts/scanning_module(src)
-	component_parts += new /obj/item/stock_parts/manipulator(src)
-	component_parts += new /obj/item/stock_parts/micro_laser(src)
-	RefreshParts()
-
+	parts_to_build = list(
+		/obj/item/circuitboard/machine/destructive_analyzer,
+		/obj/item/stock_parts/scanning_module,
+		/obj/item/stock_parts/manipulator,
+		/obj/item/stock_parts/micro_laser,
+	)
 
 /obj/structure/machinery/r_n_d/bioprinter
 	name = "Weston-Yamada Brand Bio-Organic Printer(TM)"
@@ -173,18 +158,15 @@
 	use_power = 1
 	idle_power_usage = 30
 	active_power_usage = 5000
-
-/obj/structure/machinery/r_n_d/bioprinter/Initialize()
-	. = ..()
-	component_parts = list()
-	component_parts += new /obj/item/circuitboard/machine/protolathe(src) //We'll need to make our own board one day
-	component_parts += new /obj/item/stock_parts/matter_bin(src)
-	component_parts += new /obj/item/stock_parts/matter_bin(src)
-	component_parts += new /obj/item/stock_parts/manipulator(src)
-	component_parts += new /obj/item/stock_parts/manipulator(src)
-	component_parts += new /obj/item/reagent_container/glass/beaker(src)
-	component_parts += new /obj/item/reagent_container/glass/beaker(src)
-	RefreshParts()
+	parts_to_build = list(
+		/obj/item/circuitboard/machine/protolathe,
+		/obj/item/stock_parts/matter_bin,
+		/obj/item/stock_parts/matter_bin,
+		/obj/item/stock_parts/manipulator,
+		/obj/item/stock_parts/manipulator,
+		/obj/item/reagent_container/glass/beaker,
+		/obj/item/reagent_container/glass/beaker,
+	)
 
 
 /obj/structure/machinery/blackbox_recorder

@@ -50,8 +50,8 @@
 /obj/structure/surface/table/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
 	if (PF)
-		PF.flags_can_pass_all = SETUP_LIST_FLAGS(PASS_OVER, PASS_AROUND, PASS_TYPE_CRAWLER, PASS_CRUSHER_CHARGE)
-	flags_can_pass_all_temp = SETUP_LIST_FLAGS(PASS_UNDER)
+		PF.flags_can_pass_all = PASS_OVER|PASS_AROUND|PASS_TYPE_CRAWLER|PASS_CRUSHER_CHARGE
+	flags_can_pass_all_temp = PASS_UNDER
 
 /obj/structure/surface/table/destroy(deconstruct)
 	if(deconstruct)
@@ -234,7 +234,7 @@
 	for(var/obj/structure/S in get_turf(mover))
 		if(S && S.climbable && !(S.flags_atom & ON_BORDER) && climbable && isliving(mover)) //Climbable non-border objects allow you to universally climb over others
 			return NO_BLOCKED_MOVEMENT
-	
+
 	return ..()
 
 //Flipping tables, nothing more, nothing less
@@ -303,7 +303,7 @@
 		else
 			to_chat(user, SPAN_WARNING("You slice at the table, but only claw it up a little."))
 		return
-	
+
 	//clicking the table
 	if(flipped)
 		return
@@ -413,7 +413,7 @@
 	if(dir != NORTH)
 		layer = FLY_LAYER
 	flipped = 1
-	flags_can_pass_all_temp = LIST_FLAGS_REMOVE(flags_can_pass_all_temp, PASS_UNDER)
+	flags_can_pass_all_temp &= ~PASS_UNDER
 	flags_atom |= ON_BORDER
 	for(var/D in list(turn(direction, 90), turn(direction, -90)))
 		var/obj/structure/surface/table/T = locate() in get_step(src,D)
@@ -433,7 +433,7 @@
 	layer = initial(layer)
 	flipped = FALSE
 	climbable = initial(climbable)
-	flags_can_pass_all_temp = LIST_FLAGS_ADD(flags_can_pass_all_temp, PASS_UNDER)
+	flags_can_pass_all_temp |= PASS_UNDER
 	flags_atom &= ~ON_BORDER
 	for(var/D in list(turn(dir, 90), turn(dir, -90)))
 		var/obj/structure/surface/table/T = locate() in get_step(src.loc,D)
@@ -561,13 +561,13 @@
 /obj/structure/surface/rack/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
 	if (PF)
-		PF.flags_can_pass_all = SETUP_LIST_FLAGS(PASS_OVER, PASS_AROUND, PASS_UNDER, PASS_THROUGH, PASS_CRUSHER_CHARGE)
+		PF.flags_can_pass_all = PASS_OVER|PASS_AROUND|PASS_UNDER|PASS_THROUGH|PASS_CRUSHER_CHARGE
 
 /obj/structure/surface/rack/BlockedPassDirs(atom/movable/mover, target_dir)
 	for(var/obj/structure/S in get_turf(mover))
 		if(S && S.climbable && !(S.flags_atom & ON_BORDER) && climbable && isliving(mover)) //Climbable non-border objects allow you to universally climb over others
-			return NO_BLOCKED_MOVEMENT		
-	
+			return NO_BLOCKED_MOVEMENT
+
 	return ..()
 
 /obj/structure/surface/rack/MouseDrop_T(obj/item/I, mob/user)

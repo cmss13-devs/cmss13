@@ -19,7 +19,7 @@
 
 	if(isSynth(src) && pulledby && health <= 0 && isXeno(pulledby))	// Xenos lose grab on critted synths
 		pulledby.stop_pulling()
-	
+
 	recalculate_move_delay = TRUE
 
 	med_hud_set_health()
@@ -246,7 +246,7 @@
 //It automatically updates health status
 /mob/living/carbon/human/heal_limb_damage(var/brute, var/burn)
 	var/list/obj/limb/parts = get_damaged_limbs(brute,burn)
-	if(!parts.len)	
+	if(!parts.len)
 		return
 	var/obj/limb/picked = pick(parts)
 	if(brute != 0)
@@ -398,11 +398,13 @@ This function restores all limbs.
 		..(damage, damagetype, def_zone)
 		return TRUE
 
+	if(SEND_SIGNAL(src, COMSIG_HUMAN_TAKE_DAMAGE, damage, damagetype) & COMPONENT_BLOCK_DAMAGE) return
+
 	var/obj/limb/organ = null
 	if(isorgan(def_zone))
 		organ = def_zone
 	else
-		if(!def_zone)	
+		if(!def_zone)
 			def_zone = ran_zone(def_zone)
 		organ = get_limb(check_zone(def_zone))
 	if(!organ)
@@ -466,7 +468,7 @@ This function restores all limbs.
 		else
 			// The damage is negative so we want to heal, but heal damage only takes positive numbers.
 			I.heal_damage(-1 * damage)
-	
+
 	pain.apply_pain(damage * PAIN_ORGAN_DAMAGE_MULTIPLIER)
 
 /mob/living/carbon/human/apply_stamina_damage(var/damage, var/def_zone, var/armor_type)

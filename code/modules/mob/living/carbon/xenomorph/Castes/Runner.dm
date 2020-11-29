@@ -5,12 +5,11 @@
 	melee_damage_lower = XENO_DAMAGE_TIER_1
 	melee_damage_upper = XENO_DAMAGE_TIER_2
 	plasma_gain = XENO_PLASMA_GAIN_TIER_1
-	plasma_max = XENO_PLASMA_TIER_2
+	plasma_max = XENO_NO_PLASMA
 	xeno_explosion_resistance = XENO_EXPLOSIVE_ARMOR_TIER_1
 	armor_deflection = XENO_NO_ARMOR
 	max_health = XENO_HEALTH_RUNNER
-	armor_hardiness_mult = XENO_ARMOR_FACTOR_LOW
-	evasion = XENO_EVASION_HIGH
+	evasion = XENO_EVASION_NONE
 	speed = XENO_SPEED_RUNNER
 	attack_delay = -4
 	evolves_to = list("Lurker")
@@ -36,7 +35,7 @@
 	old_x = -16
 	pull_speed = -0.5
 	viewsize = 9
-	
+
 	actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/regurgitate,
@@ -54,4 +53,4 @@
 /mob/living/carbon/Xenomorph/Runner/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
 	if (PF)
-		PF.flags_pass = SETUP_LIST_FLAGS(PASS_FLAGS_CRAWLER)
+		PF.flags_pass = PASS_FLAGS_CRAWLER

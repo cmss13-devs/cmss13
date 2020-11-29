@@ -8,6 +8,8 @@
 	code = "ATX"
 	description = "Absorbs and neutralizes toxic chemicals in the bloodstream and allowing them to be excreted safely."
 	rarity = PROPERTY_COMMON
+	starter = TRUE
+	value = 1
 
 /datum/chem_property/positive/antitoxic/process(mob/living/M, var/potency = 1)
 	M.apply_damage(-(potency), TOX)
@@ -24,6 +26,8 @@
 	code = "ACR"
 	description = "Accelerates cell division around corroded areas in order to replace the lost tissue. Excessive use can trigger apoptosis."
 	rarity = PROPERTY_COMMON
+	starter = TRUE
+	value = 1
 
 /datum/chem_property/positive/anticorrosive/process(mob/living/M, var/potency = 1)
 	M.heal_limb_damage(0, potency)
@@ -39,6 +43,8 @@
 	code = "NGN"
 	description = "Regenerates ruptured membranes resulting in the repair of damaged organic tissue. High concentrations can corrode the cell membranes."
 	rarity = PROPERTY_COMMON
+	starter = TRUE
+	value = 1
 
 /datum/chem_property/positive/neogenetic/process(mob/living/M, var/potency = 1)
 	M.heal_limb_damage(potency, 0)
@@ -126,6 +132,7 @@
 	description = "Stimulates neuromuscular junctions increasing the force of muscle contractions, resulting in increased strength. High doses might exhaust the cardiac muscles."
 	rarity = PROPERTY_COMMON
 	category = PROPERTY_TYPE_STIMULANT
+	value = 1
 
 /datum/chem_property/positive/musclestimulating/process(mob/living/M, var/potency = 1)
 	M.reagent_move_delay_modifier -= 0.25 * potency
@@ -147,6 +154,7 @@
 	description = "Binds to opioid receptors in the brain and spinal cord reducing the amount of pain signals being sent to the brain."
 	rarity = PROPERTY_COMMON
 	category = PROPERTY_TYPE_STIMULANT
+	value = 1
 
 /datum/chem_property/positive/painkilling/on_delete(mob/living/M)
 	..()
@@ -423,6 +431,7 @@
 	description = "Stimulates cardiac muscles when exposed to electric shock and provides general healing. Useful in restarting the heart in combination with a defibrilator. Can not be ingested."
 	rarity = PROPERTY_COMMON
 	category = PROPERTY_TYPE_REACTANT
+	value = 1
 
 /datum/chem_property/positive/electrogenetic/trigger(var/A)
 	if(isliving(A))
@@ -447,6 +456,7 @@
 	rarity = PROPERTY_RARE
 	category = PROPERTY_TYPE_REACTANT
 	value = 3
+	max_level = 1
 
 /datum/chem_property/positive/defibrillating/on_delete(mob/living/M)
 	..()
@@ -487,6 +497,7 @@
 	rarity = PROPERTY_RARE
 	category = PROPERTY_TYPE_STIMULANT
 	value = 3
+	max_level = 1
 
 /datum/chem_property/positive/hyperdensificating/process(mob/living/M, var/potency = 1)
 	if(!ishuman(M))
@@ -513,6 +524,7 @@
 	rarity = PROPERTY_RARE
 	category = PROPERTY_TYPE_STIMULANT
 	value = 3
+	max_level = 1
 
 /datum/chem_property/positive/neuroshielding/process(mob/living/M, var/potency = 1)
 	if(!ishuman(M))
@@ -557,7 +569,7 @@
 
 /datum/chem_property/positive/fire
 	rarity = PROPERTY_DISABLED
-	category = PROPERTY_TYPE_REACTANT
+	category = PROPERTY_TYPE_REACTANT|PROPERTY_TYPE_COMBUSTIBLE
 	value = 2
 
 	var/intensitymod_per_level = 0
@@ -635,7 +647,7 @@
 	code = "EXP"
 	description = "The chemical is highly explosive. Do not ignite. Careful when handling, sensitivity is based off the OD threshold, which can lead to spontanous detonation."
 	rarity = PROPERTY_UNCOMMON
-	category = PROPERTY_TYPE_REACTANT
+	category = PROPERTY_TYPE_REACTANT|PROPERTY_TYPE_COMBUSTIBLE
 
 /datum/chem_property/positive/explosive/reset_reagent()
 	holder.explosive = initial(holder.explosive)
@@ -656,6 +668,7 @@
 	description = "Stabilizes the cardiac cycle when under shock."
 	rarity = PROPERTY_DISABLED
 	category = PROPERTY_TYPE_STIMULANT
+	value = 1
 
 /datum/chem_property/positive/cardiostabilizing/on_delete(mob/living/M)
 	..()
@@ -689,6 +702,8 @@
 	description = "Fixes genetic defects, disfigurments and disabilities."
 	rarity = PROPERTY_DISABLED
 	category = PROPERTY_TYPE_MEDICINE
+	value = 1
+	max_level = 1
 
 /datum/chem_property/positive/aiding/process(mob/living/M, var/potency = 1)
 	M.disabilities = 0
@@ -713,6 +728,8 @@
 	description = "Treats oxygen deprivation by improving the ability of erythrocytes to absorb oxygen and increases oxygen intake."
 	rarity = PROPERTY_DISABLED
 	category = PROPERTY_TYPE_MEDICINE
+	value = 1
+	max_level = 6
 
 /datum/chem_property/positive/oxygenating/process(mob/living/M, var/potency = 1)
 	if(potency >= 2)
@@ -735,6 +752,7 @@
 	description = "Fixes genetic damage in cells that have been exposed carcinogens."
 	rarity = PROPERTY_DISABLED
 	category = PROPERTY_TYPE_MEDICINE
+	value = 1
 
 /datum/chem_property/positive/anticarcinogenic/process(mob/living/M, var/potency = 1)
 	M.adjustCloneLoss(-potency)

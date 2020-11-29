@@ -243,8 +243,7 @@ obj/item/storage/backpack/empty(mob/user, turf/T)
 
 /obj/item/storage/backpack/satchel/withwallet
 
-/obj/item/storage/backpack/satchel/withwallet/Initialize()
-	. = ..()
+/obj/item/storage/backpack/satchel/withwallet/fill_preset_inventory()
 	new /obj/item/storage/wallet/random( src )
 
 /obj/item/storage/backpack/satchel/lockable

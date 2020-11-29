@@ -43,7 +43,7 @@
 
 	if(!cell)
 		return
-	
+
 	switch(cell.percent())
 		if(75 to 100)
 			overlays += "+charge_100"
@@ -55,7 +55,7 @@
 			overlays += "+charge_25"
 		else
 			overlays += "+charge_0"
-	
+
 
 /obj/item/weapon/gun/energy/taser/emp_act(severity)
 	cell.use(round(cell.maxcharge / severity))
@@ -113,7 +113,7 @@
 
 /obj/item/weapon/gun/energy/plasmarifle/New()
 	..()
-	processing_objects.Add(src)
+	START_PROCESSING(SSobj, src)
 	last_regen = world.time
 	update_icon()
 	verbs -= /obj/item/weapon/gun/verb/field_strip
@@ -127,7 +127,7 @@
 /obj/item/weapon/gun/energy/plasmarifle/Destroy()
 	remove_from_missing_pred_gear(src)
 	. = ..()
-	processing_objects.Remove(src)
+	STOP_PROCESSING(SSobj, src)
 
 /obj/item/weapon/gun/energy/plasmarifle/process()
 	if(charge_time < 100)
@@ -225,7 +225,7 @@
 	var/charge_time = 40
 	flags_gun_features = GUN_UNUSUAL_DESIGN
 	flags_item = ITEM_PREDATOR
-	
+
 /obj/item/weapon/gun/energy/plasmapistol/Destroy()
 	remove_from_missing_pred_gear(src)
 	return ..()
@@ -241,7 +241,7 @@
 
 /obj/item/weapon/gun/energy/plasmapistol/New()
 	..()
-	processing_objects.Add(src)
+	START_PROCESSING(SSobj, src)
 	verbs -= /obj/item/weapon/gun/verb/field_strip
 	verbs -= /obj/item/weapon/gun/verb/toggle_burst
 	verbs -= /obj/item/weapon/gun/verb/empty_mag
@@ -250,7 +250,7 @@
 
 /obj/item/weapon/gun/energy/plasmapistol/Destroy()
 	. = ..()
-	processing_objects.Remove(src)
+	STOP_PROCESSING(SSobj, src)
 
 
 /obj/item/weapon/gun/energy/plasmapistol/process()

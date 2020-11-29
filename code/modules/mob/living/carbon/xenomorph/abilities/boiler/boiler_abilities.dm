@@ -2,6 +2,7 @@
 	movement_datum_type = /datum/event_handler/xeno_zoom_onmovement/buffer
 	should_delay = TRUE
 	delay = 20
+	ability_primacy = XENO_PRIMARY_ACTION_4
 
 /datum/action/xeno_action/activable/bombard
 	name = "Bombard"
@@ -112,3 +113,4 @@
 /datum/action/xeno_action/onclick/toggle_long_range/trapper
 	movement_datum_type = XENOZOOM_NO_MOVEMENT_HANDLER
 	should_delay = FALSE
+	ability_primacy = XENO_PRIMARY_ACTION_4

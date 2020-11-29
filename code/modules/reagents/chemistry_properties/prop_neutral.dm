@@ -48,6 +48,7 @@
 	description = "The compound can be used as, or be broken into, nutrition for cell metabolism."
 	rarity = PROPERTY_COMMON
 	category = PROPERTY_TYPE_METABOLITE
+	value = 0
 
 /datum/chem_property/neutral/nutritious/pre_process(mob/living/M)
 	if(M.stat == DEAD)
@@ -97,7 +98,8 @@
 	description = "Inhibits neurological processes in the brain such to sight, hearing and speech which can result in various associated disabilities. Restoration will require surgery."
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_TOXICANT
-	value = -2
+	value = -1
+	max_level = 7
 
 /datum/chem_property/neutral/neuroinhibiting/process(mob/living/M, var/potency = 1)
 	if(ishuman(M))
@@ -126,6 +128,7 @@
 	description = "Binds to glutamate neurotransmitters and gamma aminobutyric acid (GABA), slowing brain functions response to stimuli. This effect is also known as intoxication."
 	rarity = PROPERTY_COMMON
 	category = PROPERTY_TYPE_STIMULANT
+	value = 0
 
 /datum/chem_property/neutral/alcoholic/process(mob/living/M, var/potency = 1)
 	if(ishuman(M))
@@ -205,7 +208,7 @@
 	code = "HPR"
 	description = "Causes an exothermic reaction when metabolized in the body, increasing internal body temperature. Warning: this can ignite chemicals on reaction."
 	rarity = PROPERTY_COMMON
-	category = PROPERTY_TYPE_REACTANT
+	category = PROPERTY_TYPE_METABOLITE
 
 /datum/chem_property/neutral/hyperthermic/process(mob/living/M, var/potency = 1)
 	if(prob(10))
@@ -229,7 +232,7 @@
 	code = "HPO"
 	description = "Causes an endothermic reaction when metabolized in the body, decreasing internal body temperature."
 	rarity = PROPERTY_UNCOMMON
-	category = PROPERTY_TYPE_REACTANT
+	category = PROPERTY_TYPE_METABOLITE
 
 /datum/chem_property/neutral/hypothermic/process(mob/living/M, var/potency = 1)
 	if(prob(10))
@@ -250,6 +253,8 @@
 	description = "Damages the hair follicles in the skin causing extreme alopecia, also refered to as baldness."
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_IRRITANT
+	value = 0
+	max_level = 2
 
 /datum/chem_property/neutral/balding/process(mob/living/M, var/potency = 1)
 	if(ishuman(M))
@@ -272,6 +277,7 @@
 	description = "Accelerates cell division in the hair follicles resulting in random and excessive hairgrowth."
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_IRRITANT
+	value = 0
 
 /datum/chem_property/neutral/fluffing/process(mob/living/M, var/potency = 1)
 	if(prob(5*potency) && ishuman(M))
@@ -298,6 +304,7 @@
 	description = "Creates a hyperactive immune response in the body, resulting in irritation."
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_IRRITANT
+	value = 0
 
 /datum/chem_property/neutral/allergenic/process(mob/living/M, var/potency = 1)
 	if(prob(5*potency))
@@ -309,6 +316,7 @@
 	description = "Causes the release of endorphin hormones resulting intense excitement and happiness."
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_STIMULANT
+	value = 1
 
 /datum/chem_property/neutral/euphoric/on_delete(mob/living/M)
 	..()
@@ -355,6 +363,8 @@
 	description = "Stimulates psychological functions causing increased awareness, focus and anti-depressing effects."
 	rarity = PROPERTY_COMMON
 	category = PROPERTY_TYPE_STIMULANT
+	value = 0
+	max_level = 7
 
 /datum/chem_property/neutral/psychostimulating/process(mob/living/M, var/potency = 1)
 	if(holder.volume <= 0.1 && holder.data != -1)
@@ -396,6 +406,7 @@
 	description = "Stabilizes perseptive abnormalities such as hallucinations caused by mindbreaker toxin."
 	rarity = PROPERTY_COMMON
 	category = PROPERTY_TYPE_STIMULANT
+	value = 1
 
 /datum/chem_property/neutral/antihallucinogenic/process(mob/living/M, var/potency = 1)
 	M.reagents.remove_reagent("mindbreaker", 5)
@@ -454,6 +465,7 @@
 	description = "Causes the brain to operate at several thousand times the normal speed. For some reason, this allows one to understand all languages spoken before them, even without knowing the language."
 	rarity = PROPERTY_RARE
 	category = PROPERTY_TYPE_STIMULANT
+	value = 3
 
 /datum/chem_property/neutral/hyperthrottling/process(mob/living/M, var/potency = 1)
 	if(!ishuman(M))
@@ -479,7 +491,7 @@
 	code = "VIS"
 	description = "The chemical is thick and gooey due to high surface tension. It will not spread very far when spilled. This would decrease the radius of a chemical fire."
 	rarity = PROPERTY_COMMON
-	category = PROPERTY_TYPE_REACTANT
+	category = PROPERTY_TYPE_REACTANT|PROPERTY_TYPE_COMBUSTIBLE
 
 /datum/chem_property/neutral/viscous/reset_reagent()
 	holder.chemfiresupp = initial(holder.chemfiresupp)
@@ -498,6 +510,7 @@
 	description = "Causes a mix of endothermic and exothermic reactions in the bloodstream in order to stabilize internal body temperature."
 	rarity = PROPERTY_DISABLED
 	category = PROPERTY_TYPE_REACTANT
+	value = 1
 
 /datum/chem_property/neutral/thermostabilizing/process(mob/living/M, var/potency = 1)
 	if(M.bodytemperature > 310)
@@ -519,6 +532,7 @@
 	description = "Removes common alcoholic substances from the bloodstream and increases focus."
 	rarity = PROPERTY_COMMON
 	category = PROPERTY_TYPE_STIMULANT
+	value = 1
 
 /datum/chem_property/neutral/focusing/process(mob/living/M, var/potency = 1)
 	M.reagents.remove_all_type(/datum/reagent/ethanol, potency, 0, 1)

@@ -16,7 +16,7 @@
 							  //then open it in a populated area to crash clients.
 	var/open_sound = 'sound/handling/hinge_squeak1.ogg'
 	var/close_sound = 'sound/handling/hinge_squeak2.ogg'
-	
+
 	var/store_items = TRUE
 	var/store_mobs = TRUE
 
@@ -28,7 +28,7 @@
 	. = ..()
 	if(!opened)		// if closed, any item at the crate's loc is put in the contents
 		for(var/obj/item/I in src.loc)
-			if(I.density || I.anchored || I == src) 
+			if(I.density || I.anchored || I == src)
 				continue
 			I.loc = src
 
@@ -39,7 +39,7 @@
 /obj/structure/closet/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
 	if (PF)
-		PF.flags_can_pass_all = SETUP_LIST_FLAGS(PASS_HIGH_OVER_ONLY, PASS_AROUND)
+		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND
 
 /obj/structure/closet/alter_health()
 	return get_turf(src)
@@ -283,7 +283,7 @@
 
 	if(!usr.canmove || usr.stat || usr.is_mob_restrained())
 		return
-	
+
 	if(usr.loc == src)
 		return
 
@@ -302,11 +302,17 @@
 	else
 		icon_state = icon_opened
 
-/obj/structure/closet/hear_talk(mob/M as mob, text)
+/obj/structure/closet/hear_talk(mob/M as mob, text, verb, language, italics)
 	for (var/atom/A in src)
 		if(istype(A,/obj/))
 			var/obj/O = A
 			O.hear_talk(M, text)
+#ifdef OBJECTS_PROXY_SPEECH
+			continue
+		var/mob/living/TM = A
+		if(istype(TM) && TM.stat != DEAD)
+			proxy_object_heard(src, M, TM, text, verb, language, italics)
+#endif // ifdef OBJECTS_PROXY_SPEECH
 
 /obj/structure/closet/proc/break_open()
 	if(!opened)

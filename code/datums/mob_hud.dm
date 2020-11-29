@@ -70,9 +70,10 @@ var/list/datum/mob_hud/huds = list(
 	if(!user.client)
 		return
 	for(var/i in hud_icons)
-		user.client.images |= target.hud_list[i]
-		if(target.clone)
-			user.client.images |= target.clone.hud_list[i]
+		if(i in target.hud_list)
+			user.client.images |= target.hud_list[i]
+			if(target.clone)
+				user.client.images |= target.clone.hud_list[i]
 
 
 
@@ -194,6 +195,10 @@ var/list/datum/mob_hud/huds = list(
 /mob/proc/add_to_all_mob_huds()
 	return
 
+/mob/hologram/queen/add_to_all_mob_huds()
+	var/datum/mob_hud/hud = huds[MOB_HUD_XENO_STATUS]
+	hud.add_to_hud(src)
+
 /mob/living/carbon/human/add_to_all_mob_huds()
 	for(var/datum/mob_hud/hud in huds)
 		if(istype(hud, /datum/mob_hud/xeno)) //this one is xeno only
@@ -209,6 +214,10 @@ var/list/datum/mob_hud/huds = list(
 
 /mob/proc/remove_from_all_mob_huds()
 	return
+
+/mob/hologram/queen/remove_from_all_mob_huds()
+	var/datum/mob_hud/hud = huds[XENO_STATUS_HUD]
+	hud.remove_from_hud(src)
 
 /mob/living/carbon/human/remove_from_all_mob_huds()
 	for(var/datum/mob_hud/hud in huds)
@@ -254,12 +263,14 @@ var/list/datum/mob_hud/huds = list(
 
 /mob/living/carbon/Xenomorph/med_hud_set_health()
 	var/image/holder = hud_list[HEALTH_HUD_XENO]
+
+	var/health_hud_type = "xenohealth"
 	if(stat == DEAD)
-		holder.icon_state = "xenohealth0"
+		holder.icon_state = "[health_hud_type]0"
 	else
 		var/amount = round(health*100/maxHealth, 10)
 		if(!amount) amount = 1 //don't want the 'zero health' icon when we still have 4% of our health
-		holder.icon_state = "xenohealth[amount]"
+		holder.icon_state = "[health_hud_type][amount]"
 
 /mob/living/carbon/Xenomorph/proc/overlay_shields()
 	var/image/holder = hud_list[HEALTH_HUD_XENO]
@@ -277,6 +288,9 @@ var/list/datum/mob_hud/huds = list(
 		holder.overlays += image('icons/mob/hud/hud.dmi', "xenoshield0")
 
 /mob/living/carbon/Xenomorph/med_hud_set_armor()
+	if(isnull(config.xeno_general) || config.xeno_general.armor_ignore_integrity)
+		return FALSE
+
 	var/image/holder = hud_list[ARMOR_HUD_XENO]
 	if(stat == DEAD || armor_deflection <=0)
 		holder.icon_state = "xenoarmor0"
@@ -284,7 +298,6 @@ var/list/datum/mob_hud/huds = list(
 		var/amount = round(armor_integrity*100/armor_integrity_max, 10)
 		if(!amount) amount = 1 //don't want the 'zero health' icon when we still have 4% of our health
 		holder.icon_state = "xenoarmor[amount]"
-
 
 /mob/living/carbon/human/med_hud_set_health()
 	var/image/holder = hud_list[HEALTH_HUD]
@@ -308,6 +321,10 @@ var/list/datum/mob_hud/huds = list(
 /mob/living/carbon/Xenomorph/med_hud_set_status()
 	hud_set_plasma()
 	hud_set_pheromone()
+
+/mob/hologram/queen/med_hud_set_status()
+	var/image/holder = hud_list[XENO_STATUS_HUD]
+	holder.icon_state = "hudeye"
 
 /mob/living/carbon/human/med_hud_set_status()
 	var/image/holder = hud_list[STATUS_HUD]
@@ -411,7 +428,7 @@ var/list/datum/mob_hud/huds = list(
 
 /mob/living/carbon/Xenomorph/proc/hud_set_plasma()
 	var/image/holder = hud_list[PLASMA_HUD]
-	if(stat == DEAD)
+	if(stat == DEAD || plasma_max == 0)
 		holder.icon_state = "plasma0"
 	else
 		var/amount = round(get_plasma_percentage(), 10)

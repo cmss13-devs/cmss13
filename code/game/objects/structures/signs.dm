@@ -186,7 +186,7 @@
 	desc = "A direction sign, pointing out which way the escape shuttle dock is."
 	icon_state = "direction_evac"
 
-/obj/structure/sign/safety/
+/obj/structure/sign/safety
 	name = "sign"
 	icon = 'icons/obj/structures/props/safety_signs.dmi'
 	desc = "A sign warning of a particular hazard"

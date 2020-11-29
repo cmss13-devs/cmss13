@@ -26,7 +26,7 @@
 
 /obj/item/reagent_container/spray/afterattack(atom/A, mob/user, proximity)
 	//this is what you get for using afterattack() TODO: make is so this is only called if attackby() returns 0 or something
-	if(istype(A, /obj/item/storage) || istype(A, /obj/structure/surface/table) || istype(A, /obj/structure/surface/rack) || istype(A, /obj/structure/closet) \
+	if(isstorage(A) || istype(A, /obj/structure/surface/table) || istype(A, /obj/structure/surface/rack) || istype(A, /obj/structure/closet) \
 	|| istype(A, /obj/item/reagent_container) || istype(A, /obj/structure/sink) || istype(A, /obj/structure/janitorialcart || istype(A, /obj/structure/ladder)))
 		return
 
@@ -156,7 +156,7 @@
 	w_class = SIZE_MEDIUM
 	possible_transfer_amounts = null
 	volume = 600
-	
+
 
 
 //this is a big copypasta clusterfuck, but it's still better than it used to be!

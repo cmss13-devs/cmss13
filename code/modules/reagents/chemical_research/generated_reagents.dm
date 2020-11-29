@@ -1,8 +1,8 @@
 /////////////////////////RANDOMLY GENERATED CHEMICALS/////////////////////////
-/datum/chemical_reaction/generated/
+/datum/chemical_reaction/generated
 	result_amount = 1 //Makes it a bit harder to mass produce
 
-/datum/reagent/generated/
+/datum/reagent/generated
 	reagent_state = LIQUID //why isn't this default, seriously
 	chemclass = CHEM_CLASS_ULTRA
 	objective_value = 20

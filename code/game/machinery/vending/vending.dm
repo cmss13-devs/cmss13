@@ -664,7 +664,7 @@
 					item_to_stock.unwield(user)
 				user.temp_drop_inv_item(item_to_stock)
 
-			if(istype(item_to_stock.loc, /obj/item/storage)) //inside a storage item
+			if(isstorage(item_to_stock.loc)) //inside a storage item
 				var/obj/item/storage/S = item_to_stock.loc
 				S.remove_from_storage(item_to_stock, user.loc)
 

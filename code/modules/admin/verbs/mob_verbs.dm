@@ -312,10 +312,12 @@
 
 	if(!check_rights(0))	return
 
-	if (M.sleeping > 0)
+	if (M.sleeping > 0) //if they're already slept, set their sleep to zero and remove the icon
 		M.sleeping = 0
+		M.RemoveSleepingIcon()
 	else
-		M.sleeping = 9999999
+		M.sleeping = 9999999 //if they're not, sleep them and add the sleep icon, so other marines nearby know not to mess with them.
+		M.AddSleepingIcon()
 
 	message_staff("[key_name(usr)] used Toggle Sleeping on [key_name(M)].")
 	return

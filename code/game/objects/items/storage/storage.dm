@@ -28,7 +28,7 @@
 	var/foldable = null
 	var/use_sound = "rustle"	//sound played when used. null for no sound.
 	var/opened = FALSE //Has it been opened before?
-	var/list/content_watchers = list() //list of mobs currently seeing the storage's contents
+	var/list/content_watchers //list of mobs currently seeing the storage's contents
 	var/storage_flags = STORAGE_FLAGS_DEFAULT
 
 
@@ -73,7 +73,7 @@
 		L += S.return_inv()
 	for(var/obj/item/gift/G in src)
 		L += G.gift
-		if (istype(G.gift, /obj/item/storage))
+		if (isstorage(G.gift))
 			L += G.gift:return_inv()
 	return L
 
@@ -101,13 +101,13 @@
 		user.client.screen += storage_end
 
 	user.s_active = src
-	content_watchers |= user
+	LAZYDISTINCTADD(content_watchers, user)
 	return
 
 /obj/item/storage/proc/hide_from(mob/user as mob)
 	if(!user.client)
 		return
-		
+
 	user.client.screen -= src.boxes
 	user.client.screen -= storage_start
 	user.client.screen -= storage_continue
@@ -116,7 +116,7 @@
 	user.client.screen -= src.contents
 	if(user.s_active == src)
 		user.s_active = null
-	content_watchers -= user
+	LAZYREMOVE(content_watchers, user)
 	return
 
 /obj/item/storage/proc/can_see_content()
@@ -125,7 +125,7 @@
 		if(M.s_active == src && M.client)
 			lookers |= M
 		else
-			content_watchers -= M
+			LAZYREMOVE(content_watchers, M)
 	return lookers
 
 /obj/item/storage/proc/open(mob/user)
@@ -407,7 +407,7 @@ var/list/global/item_storage_box_cache = list()
 				to_chat(usr, SPAN_NOTICE("[src] is full, make some space."))
 			return 0
 
-	if(W.w_class >= src.w_class && (istype(W, /obj/item/storage)))
+	if(W.w_class >= src.w_class && (isstorage(W)))
 		if(!istype(src, /obj/item/storage/backpack/holding))	//bohs should be able to hold backpacks again. The override for putting a boh in a boh is in backpack.dm.
 			if(!stop_messages)
 				to_chat(usr, SPAN_NOTICE("[src] cannot hold [W] as it's a storage item of the same size."))
@@ -648,6 +648,10 @@ var/list/global/item_storage_box_cache = list()
 	closer = new
 	closer.master = src
 
+	fill_preset_inventory()
+	
+	update_icon()
+
 /obj/item/storage/Destroy()
 	for(var/mob/M in content_watchers)
 		hide_from(M)
@@ -708,6 +712,9 @@ var/list/global/item_storage_box_cache = list()
 	else
 		return w_class
 
+/obj/item/storage/proc/fill_preset_inventory()
+	return
+
 //Returns the storage depth of an atom. This is the number of storage items the atom is contained in before reaching toplevel (the area).
 //Returns -1 if the atom was not found on container.
 /atom/proc/storage_depth(atom/container)
@@ -717,7 +724,7 @@ var/list/global/item_storage_box_cache = list()
 	while (cur_atom && !(cur_atom in container.contents))
 		if (isarea(cur_atom))
 			return -1
-		if (istype(cur_atom.loc, /obj/item/storage))
+		if (isstorage(cur_atom.loc))
 			depth++
 		cur_atom = cur_atom.loc
 
@@ -735,7 +742,7 @@ var/list/global/item_storage_box_cache = list()
 	while (cur_atom && !isturf(cur_atom))
 		if (isarea(cur_atom))
 			return -1
-		if (istype(cur_atom.loc, /obj/item/storage))
+		if (isstorage(cur_atom.loc))
 			depth++
 		cur_atom = cur_atom.loc
 

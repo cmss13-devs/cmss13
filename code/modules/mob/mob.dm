@@ -51,8 +51,8 @@
 /mob/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
 	if (PF)
-		PF.flags_pass = SETUP_LIST_FLAGS(PASS_MOB_IS_OTHER)
-		PF.flags_can_pass_all = SETUP_LIST_FLAGS(PASS_MOB_THRU_OTHER, PASS_AROUND, PASS_HIGH_OVER_ONLY)
+		PF.flags_pass = PASS_MOB_IS_OTHER
+		PF.flags_can_pass_all = PASS_MOB_THRU_OTHER|PASS_AROUND|PASS_HIGH_OVER_ONLY
 
 /mob/Stat()
 	if(!client)
@@ -292,6 +292,8 @@
 	return 0
 
 /mob/proc/reset_view(atom/A)
+	if(SEND_SIGNAL(src, COMSIG_MOB_RESET_VIEW, A) & COMPONENT_OVERRIDE_VIEW) return TRUE
+
 	if (client)
 		if (istype(A, /atom/movable))
 			client.perspective = EYE_PERSPECTIVE
@@ -405,7 +407,7 @@
 		return
 	if(M.pulling == src && (M.a_intent & INTENT_GRAB) && M.grab_level == GRAB_AGGRESSIVE)
 		return
-	
+
 	show_inv(M)
 
 /mob/proc/swap_hand()
@@ -439,7 +441,7 @@
 
 			if(client)
 				client.recalculate_move_delay()
-			
+
 			return
 		else
 			stop_pulling()
@@ -488,8 +490,8 @@
 		//Attempted fix for people flying away through space when cuffed and dragged.
 		M.inertia_dir = 0
 
-	if(hud_used && hud_used.pull_icon) 
-		hud_used.pull_icon.icon_state = "pull1"		
+	if(hud_used && hud_used.pull_icon)
+		hud_used.pull_icon.icon_state = "pull1"
 	return AM.pull_response(src) //returns true if the response doesn't break the pull. Asked again in case actually being pulled changes the answer.
 
 //how a movable atom reacts to being pulled.
@@ -625,7 +627,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 //Updates canmove, lying and icons. Could perhaps do with a rename but I can't think of anything to describe it.
 /mob/proc/update_canmove()
 	var/laid_down = (stat || knocked_down || knocked_out || !has_legs() || resting || (status_flags & FAKEDEATH) || (pulledby && pulledby.grab_level >= GRAB_AGGRESSIVE))
-	
+
 	if(laid_down)
 		lying = TRUE
 		flags_atom &= ~DIRLOCK
@@ -648,6 +650,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 			drop_r_hand()
 		else
 			density = TRUE
+			SEND_SIGNAL(src, COMSIG_MOB_GETTING_UP)
 			remove_temp_pass_flags(PASS_MOB_THRU)
 		update_transform()
 

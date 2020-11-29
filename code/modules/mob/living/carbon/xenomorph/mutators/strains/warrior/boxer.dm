@@ -15,6 +15,8 @@
 		return
 
 	var/mob/living/carbon/Xenomorph/Warrior/W = MS.xeno
+	W.health_modifier += XENO_HEALTH_MOD_MED
+	W.armor_modifier += XENO_ARMOR_MOD_VERYSMALL
 	W.agility = FALSE
 	W.mutation_type = WARRIOR_BOXER	
 	apply_behavior_holder(W)

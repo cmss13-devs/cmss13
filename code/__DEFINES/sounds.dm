@@ -8,6 +8,7 @@
 #define VOLUME_SFX 1
 #define VOLUME_AMB 2
 #define VOLUME_ADM 3
+#define VOLUME_LOBBY 4
 
 #define MUFFLE_LOW -500
 #define MUFFLE_MEDIUM -2000

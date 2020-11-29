@@ -3,7 +3,7 @@
 		.=1
 	else
 		return 0
-	if(accessories && accessories.len && restricted_accessory_slots && (A.slot in restricted_accessory_slots))
+	if(LAZYLEN(accessories) && restricted_accessory_slots && (A.slot in restricted_accessory_slots))
 		for(var/obj/item/clothing/accessory/AC in accessories)
 			if (AC.slot == A.slot)
 				return 0
@@ -62,7 +62,7 @@
 			to_chat(user, SPAN_WARNING("You cannot attach more accessories of this type to [src]."))
 		return
 
-	if(accessories && accessories.len)
+	if(LAZYLEN(accessories))
 		for(var/obj/item/clothing/accessory/A in accessories)
 			A.attackby(I, user)
 		return
@@ -71,7 +71,7 @@
 
 /obj/item/clothing/attack_hand(var/mob/user)
 	//only forward to the attached accessory if the clothing is equipped (not in a storage)
-	if(accessories && accessories.len && src.loc == user)
+	if(LAZYLEN(accessories) && src.loc == user)
 		for(var/obj/item/clothing/accessory/A in accessories)
 			A.attack_hand(user)
 		return
@@ -90,18 +90,18 @@
  *  items on spawn
  */
 /obj/item/clothing/proc/attach_accessory(mob/user, obj/item/clothing/accessory/A)
-	accessories += A
+	LAZYADD(accessories, A)
 	A.on_attached(src, user)
 	if(A.removable)
 		src.verbs |= /obj/item/clothing/proc/removetie_verb
 	update_clothing_icon()
 
 /obj/item/clothing/proc/remove_accessory(mob/user, obj/item/clothing/accessory/A)
-	if(!(A in accessories))
+	if(!LAZYISIN(accessories, A))
 		return
 
 	A.on_removed(user, src)
-	accessories -= A
+	LAZYREMOVE(accessories, A)
 	update_clothing_icon()
 
 /obj/item/clothing/proc/removetie_verb()
@@ -110,23 +110,24 @@
 	set src in usr
 	if(!istype(usr, /mob/living)) return
 	if(usr.stat) return
-	if(!accessories.len) return
+	if(!LAZYLEN(accessories))
+		return
 	var/obj/item/clothing/accessory/A
 	var/list/removables = list()
 	for(var/obj/item/clothing/accessory/ass in accessories)
 		if(ass.removable)
 			removables |= ass
-	if(accessories && accessories.len > 1)
+	if(LAZYLEN(accessories) > 1)
 		A = input("Select an accessory to remove from [src]") as null|anything in removables
 	else
-		A = accessories[1]
+		A = LAZYACCESS(accessories, 1)
 	src.remove_accessory(usr,A)
 	removables -= A
 	if(!removables.len)
 		src.verbs -= /obj/item/clothing/proc/removetie_verb
 
 /obj/item/clothing/emp_act(severity)
-	if(accessories && accessories.len)
+	if(LAZYLEN(accessories))
 		for(var/obj/item/clothing/accessory/A in accessories)
 			A.emp_act(severity)
 	..()

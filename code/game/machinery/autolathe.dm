@@ -21,7 +21,7 @@
 	var/list/printable = list() // data list of each printable item (for NanoUI)
 	var/list/recipes
 	var/list/categories
-	var/list/disabled_categories = list("Explosives", "Medical", "Medical Containers")
+	var/list/disabled_categories = list("Explosives", "Medical", "Medical Containers", "Injectors")
 	var/list/components = list(
 		/obj/item/circuitboard/machine/autolathe,
 		/obj/item/stock_parts/matter_bin,
@@ -68,9 +68,8 @@
 				qdel(I)
 
 	//Create parts for lathe.
-	component_parts = list()
 	for(var/component in components)
-		component_parts += new component(src)
+		LAZYADD(component_parts, new component(src))
 	RefreshParts()
 
 	update_printable()
@@ -158,7 +157,7 @@
 /obj/structure/machinery/autolathe/process()
 	if (seconds_electrified > 0)
 		seconds_electrified--
-	
+
 	if (seconds_electrified <= 0)
 		stop_processing()
 
@@ -181,7 +180,7 @@
 
 	if (href_list["change_category"])
 		var/choice = input("Which category do you wish to display?") as null|anything in categories+"All"
-		if(!choice) 
+		if(!choice)
 			return
 		show_category = choice
 		update_printable()
@@ -191,7 +190,7 @@
 		var/index = text2num(href_list["index"])
 		if (index < 1 || index > queue.len)
 			return
-		
+
 		var/list/to_del = queue[index]
 		var/datum/autolathe/recipe/making = to_del[1]
 		var/multiplier = to_del[2]
@@ -200,7 +199,7 @@
 			return
 		else if (multiplier != text2num(href_list["multiplier"]))
 			return
-		
+
 		for (var/material in making.resources)
 			projected_stored_material[material] = min(projected_stored_material[material]+(making.resources[material]*multiplier), storage_capacity[material])
 
@@ -217,7 +216,7 @@
 
 		if (!ishuman(usr))
 			return
-		
+
 		if(!initial(make_loc))
 			make_loc = get_step(loc, get_dir(src,usr))
 
@@ -234,14 +233,14 @@
 			if (try_queue(usr, making, make_loc, multiplier) == AUTOLATHE_START_PRINTING)
 				start_printing()
 			return
-		
+
 		for (var/i in 1 to multiplier)
 			var/result = try_queue(usr, making, make_loc)
 			switch (result)
 				if (AUTOLATHE_FAILED)
 					return
 				if (AUTOLATHE_START_PRINTING)
-					start_printing()			
+					start_printing()
 		updateUsrDialog()
 		return
 
@@ -353,7 +352,7 @@
 	icon_state = "[base_state]"
 
 	//Sanity check.
-	if(!making || !src) 
+	if(!making || !src)
 		return
 
 	//Create the desired item.
@@ -429,7 +428,7 @@
 
 		if (R.hidden && !hacked || (show_category != "All" && show_category != R.category))
 			continue
-		
+
 		var/list/print_data = list()
 
 		print_data["name"] = R.name
@@ -439,7 +438,7 @@
 		print_data["multipliers"] = null
 		print_data["has_multipliers"] = FALSE
 		print_data["hidden"] = R.hidden
-		
+
 		max_print_amt = -1
 
 		if (!R.resources || !R.resources.len)
@@ -452,10 +451,10 @@
 					max_print_amt = 0
 				else
 					print_amt = round(projected_stored_material[material]/R.resources[material])
-				
+
 				if (print_data["can_make"] && max_print_amt < 0 || max_print_amt > print_amt)
 					max_print_amt = print_amt
-				
+
 				print_data["materials"][material] = "[R.resources[material]] [material]"
 
 			if (print_data["can_make"] && max_print_amt > 1)
@@ -476,7 +475,7 @@
 		printable += list(print_data)
 
 /obj/structure/machinery/autolathe/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 0)
-	if (!ishuman(user)) 
+	if (!ishuman(user))
 		return
 
 	var/list/queue_list = list()
@@ -526,7 +525,7 @@
 	base_state = "armylathe"
 	recipes = null
 	categories = null
-	disabled_categories = list("General", "Tools", "Engineering", "Devices and Components", "Medical", "Medical Containers", "Surgery", "Glassware")
+	disabled_categories = list("General", "Tools", "Engineering", "Devices and Components", "Medical", "Medical Containers", "Surgery", "Glassware", "Injectors")
 	storage_capacity = list("metal" = 0, "plastic" = 0)
 	components = list(
 		/obj/item/circuitboard/machine/autolathe/armylathe,
@@ -537,7 +536,7 @@
 		/obj/item/stock_parts/manipulator,
 		/obj/item/stock_parts/console_screen
 	)
-	
+
 /obj/structure/machinery/autolathe/armylathe/full
 	stored_material =  list("metal" = 56250, "plastic" = 20000) //15 metal and 10 plastic sheets
 

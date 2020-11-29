@@ -59,6 +59,8 @@
 	var/weapon_source
 	var/weapon_source_mob
 
+	var/mob/living/homing_target = null
+
 /obj/item/projectile/New(var/source, var/source_mob)
 	..()
 	path = list()
@@ -109,23 +111,23 @@
 
 /obj/item/projectile/proc/calculate_damage()
 	if(effective_range_min && distance_travelled < effective_range_min)
-		return max(0, damage - round((effective_range_min - distance_travelled) * damage_falloff)) 
+		return max(0, damage - round((effective_range_min - distance_travelled) * damage_falloff))
 	else if(distance_travelled > effective_range_max)
-		return max(0, damage - round((distance_travelled - effective_range_max) * damage_falloff)) 
+		return max(0, damage - round((distance_travelled - effective_range_max) * damage_falloff))
 	return damage
 
 // Target, firer, shot from (i.e. the gun), projectile range, projectile speed, original target (who was aimed at, not where projectile is going towards), is_shrapnel (whether it should miss the firer or not)
 /obj/item/projectile/proc/fire_at(atom/target, atom/F, atom/S, range = 30, speed = 1, atom/original_override, is_shrapnel = FALSE, var/iff_group)
-	if(!original) 
+	if(!original)
 		original = istype(original_override) ? original_override : target
 	src.is_shrapnel = is_shrapnel
-	if(!loc) 
+	if(!loc)
 		if (!is_shrapnel)
 			loc = get_turf(F)
 		else
 			loc = get_turf(S)
 	starting = get_turf(src)
-	if(starting != loc) 
+	if(starting != loc)
 		loc = starting //Put us on the turf, if we're not.
 	target_turf = get_turf(target)
 	if(!target_turf || !starting || target_turf == starting) //This shouldn't happen, but it can.
@@ -136,7 +138,7 @@
 	if(!isnull(iff_group))
 		src.iff_group = iff_group
 
-	if(F && !is_shrapnel) 
+	if(F && !is_shrapnel)
 		permutated += F //Don't hit the shooter (firer)
 	else if (S && is_shrapnel)
 		permutated += S
@@ -157,7 +159,7 @@
 		M.track_shot(weapon_source)
 
 	//If we have the the right kind of ammo, we can fire several projectiles at once.
-	if(ammo.bonus_projectiles_amount && ammo.bonus_projectiles_type) 
+	if(ammo.bonus_projectiles_amount && ammo.bonus_projectiles_type)
 		ammo.fire_bonus_projectiles(src)
 
 	path = getline2(starting,target_turf)
@@ -171,8 +173,19 @@
 	rotate.Turn(angle)
 	apply_transform(rotate)
 
+	var/homing_projectile = homing_target && ammo_flags & AMMO_HOMING
+	if(homing_projectile)
+		var/mob/living/ht = homing_target //Dead or friendly target can't get it, so the homing get stucks.
+		if(ht.is_dead())
+			homing_target = null
+			homing_projectile = FALSE
+		if(ishuman(ht))
+			var/mob/living/carbon/human/H = ht
+			if(!isnull(iff_group) && H.get_target_lock(iff_group))
+				homing_target = null
+				homing_projectile = FALSE
 
-	follow_flightpath(speed,change_x,change_y,range) //pyew!
+	follow_flightpath(speed,change_x,change_y,range, homing_projectile) //pyew!
 
 /obj/item/projectile/proc/each_turf(speed = 1)
 	var/new_speed = speed
@@ -188,7 +201,7 @@
 				if(distance_travelled > 8) new_speed++
 	return new_speed //Need for speed.
 
-/obj/item/projectile/proc/follow_flightpath(speed = 1, change_x, change_y, range) //Everytime we reach the end of the turf list, we slap a new one and keep going.
+/obj/item/projectile/proc/follow_flightpath(speed = 1, change_x, change_y, range, homing = FALSE) //Everytime we reach the end of the turf list, we slap a new one and keep going.
 	set waitfor = 0
 
 	var/dist_since_sleep = 5 //Just so we always see the bullet.
@@ -197,6 +210,7 @@
 	var/turf/next_turf
 	var/this_iteration = 0
 	in_flight = 1
+
 	for(next_turf in path)
 		if(!loc || QDELETED(src) || !in_flight)
 			return
@@ -234,6 +248,18 @@
 			sleep(1)
 
 		current_turf = get_turf(src)
+
+		if(homing && !QDELETED(homing_target) && path && this_iteration >= (length(path)/ 2))
+			path = getline2(current_turf, homing_target)
+			speed *= 2 // Bullet needs to become inescapable quicker otherwise you get stuck with wonky projectiles just following people about.
+			if(length(path) > 0 && src)
+
+				if(length(path) < speed) // The projectile "should" connect with the target next tick. Either way, it loses guidances.
+					homing = FALSE
+
+				distance_travelled--
+				follow_flightpath(speed, change_x, change_y, range, homing) //Onwards!
+				return
 		if(path && this_iteration == path.len)
 			next_turf = locate(current_turf.x + change_x, current_turf.y + change_y, current_turf.z)
 			if(current_turf && next_turf)
@@ -488,7 +514,7 @@
 	var/accuracy_factor = 50 //degree to which accuracy affects probability   (if accuracy is 100, probability is unaffected. Lower accuracies will increase block chance)
 
 	var/hitchance = min(projectile_coverage, (projectile_coverage * distance/distance_limit) + accuracy_factor * (1 - effective_accuracy/100))
-	
+
 	#if DEBUG_HIT_CHANCE
 	to_world(SPAN_DEBUG("([name] as cover) Distance travelled: [distance]  |  Effective accuracy: [effective_accuracy]  |  Hit chance: [hitchance]"))
 	#endif
@@ -766,16 +792,8 @@
 	if(P.ammo.stamina_damage)
 		apply_stamina_damage(P.ammo.stamina_damage, P.def_zone, ARMOR_ENERGY) // Stamina damage is energy
 
-	//Any projectile can decloak a predator. It does defeat one free bullet though.
-	if(gloves)
-		var/obj/item/clothing/gloves/yautja/Y = gloves
-		if(istype(Y) && Y.cloaked)
-			if( ammo_flags & (AMMO_ROCKET|AMMO_ENERGY|AMMO_XENO_ACID) ) //<--- These will auto uncloak.
-				Y.decloak(src) //Continue on to damage.
-			else if(rand(0,100) < 20)
-				Y.decloak(src)
-				return //Absorb one free bullet.
-			//Else we're moving on to damage.
+	if(SEND_SIGNAL(src, COMSIG_HUMAN_BULLET_ACT, P) & COMPONENT_BULLET_NO_HIT)
+		return
 
 	//Shields
 	if( !(ammo_flags & AMMO_ROCKET) ) //No, you can't block rockets.
@@ -816,7 +834,7 @@
 	if(damage || (ammo_flags && AMMO_SPECIAL_EMBED))
 		apply_damage(damage_result, P.ammo.damage_type, P.def_zone, impact_name = P.ammo.impact_name, impact_limbs = P.ammo.impact_limbs, firer = P.firer)
 		P.play_damage_effect(src)
-		
+
 		if(ammo_flags & AMMO_INCENDIARY)
 			var/datum/reagent/napalm/ut/N = new()
 			adjust_fire_stacks(20, N)
@@ -838,7 +856,7 @@
 						qdel(new_embed)
 						found_one = TRUE
 						break
-					
+
 				if(!found_one)
 					new_embed.on_embed(src, organ)
 

@@ -9,7 +9,6 @@
 	plasma_max = XENO_PLASMA_TIER_4
 	xeno_explosion_resistance = XENO_EXPLOSIVE_ARMOR_TIER_2
 	armor_deflection = XENO_NO_ARMOR
-	armor_hardiness_mult = XENO_ARMOR_FACTOR_HIGH
 	evasion = XENO_EVASION_NONE
 	speed = XENO_SPEED_TIER_1
 
@@ -54,10 +53,10 @@
 		/datum/action/xeno_action/onclick/regurgitate,
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/activable/corrosive_acid/strong,
-		/datum/action/xeno_action/onclick/toggle_long_range/boiler,
-		/datum/action/xeno_action/activable/bombard, 
-		/datum/action/xeno_action/activable/acid_lance,
-		/datum/action/xeno_action/onclick/dump_acid,
+		/datum/action/xeno_action/activable/bombard, //1st macro
+		/datum/action/xeno_action/activable/acid_lance, //2nd macro
+		/datum/action/xeno_action/onclick/dump_acid, //3rd macro
+		/datum/action/xeno_action/onclick/toggle_long_range/boiler, //4th macro
 	)
 
 /mob/living/carbon/Xenomorph/Boiler/New()

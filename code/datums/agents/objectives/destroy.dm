@@ -65,7 +65,7 @@
 	return FALSE
 
 /datum/agent_objective/destroy/window
-	event_to_listen_on = COMSIG_MOB_DESTROY_W_FRAME
+	event_to_listen_on = list(COMSIG_MOB_DESTROY_WINDOW, COMSIG_MOB_EXPLODE_W_FRAME, COMSIG_MOB_WINDOW_EXPLODED)
 	obj_to_destroy_type = /obj/structure/window
 
 /datum/agent_objective/destroy/airlock

@@ -56,7 +56,7 @@
 		stack_amount = 1
 	if(changed && is_wired)
 		maxhealth += 50
-		
+
 /obj/structure/barricade/sandbags/attackby(obj/item/W, mob/user)
 	for(var/obj/effect/xenomorph/acid/A in src.loc)
 		if(A.acid_t == src)
@@ -86,7 +86,7 @@
 			SPAN_NOTICE("You start adding sandbags to [src]."))
 		if(!do_after(user, 5, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, src))
 			return
-		
+
 		user.visible_message(SPAN_NOTICE("[user] finishes stacking [SB] onto [src]."), \
 			SPAN_NOTICE("You stack [SB] onto [src]."))
 		SB.use(1)
@@ -135,5 +135,5 @@
 
 /obj/structure/barricade/sandbags/wired/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
-	flags_can_pass_front_temp = LIST_FLAGS_REMOVE(flags_can_pass_front_temp, PASS_OVER_THROW_MOB)
-	flags_can_pass_behind_temp = LIST_FLAGS_REMOVE(flags_can_pass_behind_temp, PASS_OVER_THROW_MOB)
+	flags_can_pass_front_temp &= ~PASS_OVER_THROW_MOB
+	flags_can_pass_behind_temp &= ~PASS_OVER_THROW_MOB

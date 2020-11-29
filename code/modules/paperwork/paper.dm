@@ -527,7 +527,7 @@
 /obj/item/paper/crumpled/update_icon()
 	return
 
-/obj/item/paper/crumpled/bloody/
+/obj/item/paper/crumpled/bloody
 	icon_state = "scrap_bloodied"
 
 /obj/item/paper/crumpled/bloody/csheet
@@ -690,7 +690,7 @@
 		if(chemical_data.clearance_level >= S.gen_tier || info_only)
 			info += "<I>The following information relating to [S.name] is restricted with a level [S.gen_tier] clearance classification.</I><BR>"
 			info += "<font size = \"2.5\">[S.description]\n"
-			info += "<BR>Overdoses at: [S.overdose] units<BR>\n"
+			info += "<BR>Overdoses at: [S.overdose] units\n"
 			info += "<BR>Standard duration multiplier of [REAGENTS_METABOLISM/S.custom_metabolism]x</font><BR>\n"
 			completed = TRUE
 		else
@@ -699,8 +699,8 @@
 		info += "CLASSIFIED:<I> Clearance level <B>X</B> required to read the database entry.</I><BR>\n"
 	else if(S.description)
 		info += "<font size = \"2.5\">[S.description]\n"
-		info += "<BR>Overdoses at: [S.overdose] units<BR>\n"
-		info += "<BR>Standard duration multiplier of [REAGENTS_METABOLISM/S.custom_metabolism]x</font><BR>\n"
+		info += "<BR>Overdoses at: [S.overdose] units\n"
+		info += "<BR>Standard duration multiplier: [REAGENTS_METABOLISM/S.custom_metabolism]x</font><BR>\n"
 		completed = TRUE
 	else
 		info += "<I>No details on this reagent could be found in the database.</I><BR>\n"

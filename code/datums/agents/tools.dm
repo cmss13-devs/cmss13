@@ -15,6 +15,7 @@
         list("<h2>ONE-USE TOOLS</h2>", -1, null, null, null),
         list("Experimental Stimulant Pills", 20, /obj/item/storage/pill_bottle/ultrazine/antag, "white", "Useful stimulants that allow you to resist stamina damage. Lasts for approximately 2 minutes. Take only 1 pill. Use with care."),
         list("Decoy", 14, /obj/item/explosive/grenade/decoy, "white", "A decoy grenade. Emits a loud explosion that can be heard from very far away, keep away from ears. Can be used 3 times."),
+        list("Concealing Gloves", 20, /obj/item/clothing/gloves/antag, "white", "Gloves able to conceal your actions from the AI's detection. Fingerprints will still be left behind."),
 
         list("<h2>UTILITY</h2>", -1, null, null, null),
         list("Security Access Tuner v2", 25, /obj/item/device/multitool/antag, "white", "An upgraded access tuner, able to rapidly hack various machinery. Disguised as a regular multitool"),
@@ -24,7 +25,7 @@
         list("Badass Kit", 12, /obj/item/storage/box/badass_kit, "white", "Contains MP private comms encryption key, for snooping into enemy communications and sunglasses that protect you from flashbangs"),
         list("Tools Kit", 15, /obj/item/storage/toolbox/antag, "white", "A toolbox containing general tools and an engineering pamphlet to help you break into places of interest."),
         list("Hacking Kit", 15, /obj/item/storage/box/antag_signaller, "white", "A box containing a screwdriver, a multi-tool and an engineering pamphlet, as well as 5 signallers to help you hack doors."),
-        
+
         list("<h2>TRANSFER POINTS</h2>", -1, null, null, "A method of transferring points between agents."),
         list("1 point", 1, /obj/item/stack/points/p1, "white", null),
         list("5 points", 5, /obj/item/stack/points/p5, "white", null),
@@ -78,10 +79,10 @@
         qdel(target)
 
         H.put_in_any_hand_if_possible(mag)
-        
+
 
 /obj/item/device/portable_vendor/antag/process()
-    processing_objects.Remove(src)
+	STOP_PROCESSING(SSobj, src)
 
 /obj/item/device/portable_vendor/antag/attackby(obj/item/W, mob/user)
     if(istype(W, /obj/item/stack/points))
@@ -127,7 +128,7 @@
         name = "[amount] [initial(singular_name)]"
     else
         name = "[amount] [initial(name)]"
-    
+
 /obj/item/stack/points/p1
     amount = 1
 

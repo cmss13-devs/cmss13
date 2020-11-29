@@ -1,28 +1,44 @@
 /client/proc/cmd_admin_change_custom_event()
-	set name = "A: Setup Event Text"
+	set name = "A: Setup Event Info"
 	set category = "Event"
 
 	if(!admin_holder)
-		to_chat(src, "Only administrators may use this command.")
+		to_chat(usr, "Only administrators may use this command.")
 		return
 
-	var/input = input(usr, "Enter the description of the custom event. Be descriptive. To cancel the event, make this blank or hit cancel.", "Custom Event", custom_event_msg) as message|null
-	if(!input)
+	if(!LAZYLEN(GLOB.custom_event_info_list))
+		to_chat(usr, "custom_event_info_list is not initialized, tell a dev.")
 		return
 
-	if(input == "")
-		custom_event_msg = null
-		message_staff("[key_name_admin(usr)] has cleared the custom event text.")
+	var/list/temp_list = list()
+
+	for(var/T in GLOB.custom_event_info_list)
+		var/datum/custom_event_info/CEI = GLOB.custom_event_info_list[T]
+		temp_list["[CEI.msg ? "(x) [CEI.faction]" : CEI.faction]"] = CEI.faction
+
+	var/faction = input(usr, "Select faction. Ghosts will see only \"Global\" category message. Factions with event message set are marked with (x).", "Faction Choice", "Global") as null|anything in temp_list
+	if(!faction)
 		return
 
-	message_staff("[key_name_admin(usr)] has changed the custom event text.")
+	faction = temp_list[faction]
 
-	custom_event_msg = input
+	if(!GLOB.custom_event_info_list[faction])
+		to_chat(usr, "Error has occured, [faction] category is not found.")
+		return
 
-	to_world("<h1 class='alert'>Custom Event</h1>")
-	to_world("<h2 class='alert'>A custom event is starting. OOC Info:</h2>")
-	to_world(SPAN_ALERT("[html_encode(custom_event_msg)]"))
-	to_world("<br>")
+	var/datum/custom_event_info/CEI = GLOB.custom_event_info_list[faction]
+
+	var/input = input(usr, "Enter the custom event message for \"[faction]\" category. Be descriptive. \nTo remove the event message, remove text and confirm.", "[faction] Event Message", CEI.msg) as message|null
+
+	if(input == "" || !input)
+		CEI.msg = ""
+		message_staff("[key_name_admin(usr)] has removed the event message for \"[faction]\" category.")
+		return
+
+	CEI.msg = html_encode(input)
+	message_staff("[key_name_admin(usr)] has changed the event message for \"[faction]\" category.")
+
+	CEI.handle_event_info_update(faction)
 
 /client/proc/change_security_level()
 	if(!check_rights(R_ADMIN))
@@ -528,7 +544,7 @@
 			var/sound/S = sound(soundin, 0, 0, SOUND_CHANNEL_ADMIN_MIDI)
 			for(var/mob/M in GLOB.player_list)
 				if(M.client.prefs.toggles_sound & SOUND_MIDI)
-					S.volume = 100 * M.client.volume_preferences[VOLUME_ADM]
+					S.volume = 50 * M.client.volume_preferences[VOLUME_ADM]
 					sound_to(M, S)
 					heard_midi++
 		if("Local")
@@ -542,7 +558,7 @@
 					return
 
 				if(target.client.prefs.toggles_sound & SOUND_MIDI)
-					playsound_client(src, soundin, channel = SOUND_CHANNEL_ADMIN_MIDI, vol_cat = VOLUME_ADM)
+					playsound_client(src, soundin, null, 50, channel = SOUND_CHANNEL_ADMIN_MIDI, vol_cat = VOLUME_ADM)
 					heard_midi = "[target] ([target.key])"
 				else
 					heard_midi = 0

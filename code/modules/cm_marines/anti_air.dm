@@ -39,7 +39,7 @@ var/obj/structure/anti_air_cannon/almayer_aa_cannon
 /obj/structure/machinery/computer/aa_console/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
 	if (PF)
-		PF.flags_can_pass_all = SETUP_LIST_FLAGS(PASS_ALL)
+		PF.flags_can_pass_all = PASS_ALL
 
 /obj/structure/machinery/computer/aa_console/ex_act()
 	return

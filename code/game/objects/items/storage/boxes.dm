@@ -37,17 +37,13 @@
 /obj/item/storage/box/survival
 	w_class = SIZE_MEDIUM
 
-/obj/item/storage/box/survival/Initialize()
-	. = ..()
-	contents = list()
+/obj/item/storage/box/survival/fill_preset_inventory()
 	new /obj/item/clothing/mask/breath( src )
 	new /obj/item/tank/emergency_oxygen( src )
 
 /obj/item/storage/box/engineer
 
-/obj/item/storage/box/engineer/Initialize()
-	. = ..()
-	contents = list()
+/obj/item/storage/box/engineer/fill_preset_inventory()
 	new /obj/item/clothing/mask/breath( src )
 	new /obj/item/tank/emergency_oxygen/engi( src )
 
@@ -60,8 +56,7 @@
 	w_class = SIZE_SMALL
 
 
-/obj/item/storage/box/gloves/Initialize()
-	. = ..()
+/obj/item/storage/box/gloves/fill_preset_inventory()
 	new /obj/item/clothing/gloves/latex(src)
 	new /obj/item/clothing/gloves/latex(src)
 	new /obj/item/clothing/gloves/latex(src)
@@ -77,8 +72,7 @@
 	can_hold = list(/obj/item/clothing/mask/surgical)
 	w_class = SIZE_SMALL
 
-/obj/item/storage/box/masks/Initialize()
-	. = ..()
+/obj/item/storage/box/masks/fill_preset_inventory()
 	new /obj/item/clothing/mask/surgical(src)
 	new /obj/item/clothing/mask/surgical(src)
 	new /obj/item/clothing/mask/surgical(src)
@@ -96,8 +90,7 @@
 	icon_state = "syringe"
 	w_class = SIZE_SMALL
 
-/obj/item/storage/box/syringes/Initialize()
-	. = ..()
+/obj/item/storage/box/syringes/fill_preset_inventory()
 	new /obj/item/reagent_container/syringe(src)
 	new /obj/item/reagent_container/syringe(src)
 	new /obj/item/reagent_container/syringe(src)
@@ -113,8 +106,7 @@
 	can_hold = list(/obj/item/reagent_container/glass/beaker)
 	w_class = SIZE_MEDIUM
 
-/obj/item/storage/box/beakers/Initialize()
-	. = ..()
+/obj/item/storage/box/beakers/fill_preset_inventory()
 	new /obj/item/reagent_container/glass/beaker(src)
 	new /obj/item/reagent_container/glass/beaker(src)
 	new /obj/item/reagent_container/glass/beaker(src)
@@ -129,8 +121,7 @@
 	can_hold = list(/obj/item/reagent_container/spray)
 	w_class = SIZE_MEDIUM
 
-/obj/item/storage/box/sprays/Initialize()
-	. = ..()
+/obj/item/storage/box/sprays/fill_preset_inventory()
 	new /obj/item/reagent_container/spray(src)
 	new /obj/item/reagent_container/spray(src)
 	new /obj/item/reagent_container/spray(src)
@@ -146,8 +137,7 @@
 	can_hold = list(/obj/item/explosive/grenade/flashbang)
 	w_class = SIZE_MEDIUM
 
-/obj/item/storage/box/flashbangs/Initialize()
-	. = ..()
+/obj/item/storage/box/flashbangs/fill_preset_inventory()
 	new /obj/item/explosive/grenade/flashbang(src)
 	new /obj/item/explosive/grenade/flashbang(src)
 	new /obj/item/explosive/grenade/flashbang(src)
@@ -161,8 +151,7 @@
 	desc = "A box with 5 emp grenades."
 	icon_state = "flashbang"
 
-/obj/item/storage/box/emps/Initialize()
-	. = ..()
+/obj/item/storage/box/emps/fill_preset_inventory()
 	new /obj/item/explosive/grenade/empgrenade(src)
 	new /obj/item/explosive/grenade/empgrenade(src)
 	new /obj/item/explosive/grenade/empgrenade(src)
@@ -175,8 +164,7 @@
 	desc = "Box full of scum-bag tracking utensils."
 	icon_state = "implant"
 
-/obj/item/storage/box/trackimp/Initialize()
-	. = ..()
+/obj/item/storage/box/trackimp/fill_preset_inventory()
 	new /obj/item/implantcase/tracking(src)
 	new /obj/item/implantcase/tracking(src)
 	new /obj/item/implantcase/tracking(src)
@@ -190,8 +178,7 @@
 	desc = "Box of stuff used to implant chemicals."
 	icon_state = "implant"
 
-/obj/item/storage/box/chemimp/Initialize()
-	. = ..()
+/obj/item/storage/box/chemimp/fill_preset_inventory()
 	new /obj/item/implantcase/chem(src)
 	new /obj/item/implantcase/chem(src)
 	new /obj/item/implantcase/chem(src)
@@ -209,8 +196,7 @@
 	can_hold = list(/obj/item/clothing/glasses/regular)
 	w_class = SIZE_MEDIUM
 
-/obj/item/storage/box/rxglasses/Initialize()
-	. = ..()
+/obj/item/storage/box/rxglasses/fill_preset_inventory()
 	new /obj/item/clothing/glasses/regular(src)
 	new /obj/item/clothing/glasses/regular(src)
 	new /obj/item/clothing/glasses/regular(src)
@@ -223,8 +209,7 @@
 	name = "box of drinking glasses"
 	desc = "It has a picture of drinking glasses on it."
 
-/obj/item/storage/box/drinkingglasses/Initialize()
-	. = ..()
+/obj/item/storage/box/drinkingglasses/fill_preset_inventory()
 	new /obj/item/reagent_container/food/drinks/drinkingglass(src)
 	new /obj/item/reagent_container/food/drinks/drinkingglass(src)
 	new /obj/item/reagent_container/food/drinks/drinkingglass(src)
@@ -238,8 +223,7 @@
 	icon_state = "implant"
 	item_state = "syringe_kit"
 
-/obj/item/storage/box/cdeathalarm_kit/Initialize()
-	. = ..()
+/obj/item/storage/box/cdeathalarm_kit/fill_preset_inventory()
 	new /obj/item/implanter(src)
 	new /obj/item/implantcase/death_alarm(src)
 	new /obj/item/implantcase/death_alarm(src)
@@ -252,8 +236,7 @@
 	name = "box of condiment bottles"
 	desc = "It has a large ketchup smear on it."
 
-/obj/item/storage/box/condimentbottles/Initialize()
-	. = ..()
+/obj/item/storage/box/condimentbottles/fill_preset_inventory()
 	new /obj/item/reagent_container/food/condiment(src)
 	new /obj/item/reagent_container/food/condiment(src)
 	new /obj/item/reagent_container/food/condiment(src)
@@ -267,8 +250,7 @@
 	name = "box of paper cups"
 	desc = "It has pictures of paper cups on the front."
 
-/obj/item/storage/box/cups/Initialize()
-	. = ..()
+/obj/item/storage/box/cups/fill_preset_inventory()
 	new /obj/item/reagent_container/food/drinks/sillycup( src )
 	new /obj/item/reagent_container/food/drinks/sillycup( src )
 	new /obj/item/reagent_container/food/drinks/sillycup( src )
@@ -285,8 +267,7 @@
 	can_hold = list(/obj/item/reagent_container/food/snacks)
 	w_class = SIZE_MEDIUM
 
-/obj/item/storage/box/donkpockets/Initialize()
-	. = ..()
+/obj/item/storage/box/donkpockets/fill_preset_inventory()
 	new /obj/item/reagent_container/food/snacks/donkpocket(src)
 	new /obj/item/reagent_container/food/snacks/donkpocket(src)
 	new /obj/item/reagent_container/food/snacks/donkpocket(src)
@@ -300,18 +281,15 @@
 	icon = 'icons/obj/items/food.dmi'
 	icon_state = "monkeycubebox"
 
-/obj/item/storage/box/monkeycubes/Initialize()
-	. = ..()
-	if(src.type == /obj/item/storage/box/monkeycubes)
-		for(var/i = 1; i <= 5; i++)
-			new /obj/item/reagent_container/food/snacks/monkeycube/wrapped(src)
+/obj/item/storage/box/monkeycubes/fill_preset_inventory()
+	for(var/i = 1; i <= 5; i++)
+		new /obj/item/reagent_container/food/snacks/monkeycube/wrapped(src)
 
 /obj/item/storage/box/monkeycubes/farwacubes
 	name = "farwa cube box"
 	desc = "Drymate brand farwa cubes, shipped from Ahdomai. Just add water!"
 
-/obj/item/storage/box/monkeycubes/farwacubes/Initialize()
-	. = ..()
+/obj/item/storage/box/monkeycubes/farwacubes/fill_preset_inventory()
 	for(var/i = 1; i <= 5; i++)
 		new /obj/item/reagent_container/food/snacks/monkeycube/wrapped/farwacube(src)
 
@@ -319,8 +297,7 @@
 	name = "stok cube box"
 	desc = "Drymate brand stok cubes, shipped from Moghes. Just add water!"
 
-/obj/item/storage/box/monkeycubes/stokcubes/Initialize()
-	. = ..()
+/obj/item/storage/box/monkeycubes/stokcubes/fill_preset_inventory()
 	for(var/i = 1; i <= 5; i++)
 		new /obj/item/reagent_container/food/snacks/monkeycube/wrapped/stokcube(src)
 
@@ -328,8 +305,7 @@
 	name = "neaera cube box"
 	desc = "Drymate brand neaera cubes, shipped from Jargon 4. Just add water!"
 
-/obj/item/storage/box/monkeycubes/neaeracubes/Initialize()
-	. = ..()
+/obj/item/storage/box/monkeycubes/neaeracubes/fill_preset_inventory()
 	for(var/i = 1; i <= 5; i++)
 		new /obj/item/reagent_container/food/snacks/monkeycube/wrapped/neaeracube(src)
 
@@ -338,8 +314,7 @@
 	desc = "Has so many empty IDs."
 	icon_state = "id"
 
-/obj/item/storage/box/ids/Initialize()
-	. = ..()
+/obj/item/storage/box/ids/fill_preset_inventory()
 	new /obj/item/card/id(src)
 	new /obj/item/card/id(src)
 	new /obj/item/card/id(src)
@@ -354,8 +329,7 @@
 	desc = "A box full of handcuffs."
 	icon_state = "handcuff"
 
-/obj/item/storage/box/handcuffs/Initialize()
-	. = ..()
+/obj/item/storage/box/handcuffs/fill_preset_inventory()
 	new /obj/item/handcuffs(src)
 	new /obj/item/handcuffs(src)
 	new /obj/item/handcuffs(src)
@@ -370,8 +344,7 @@
 	desc = "A box full of zip cuffs."
 	icon_state = "handcuff"
 
-/obj/item/storage/box/zipcuffs/Initialize()
-	. = ..()
+/obj/item/storage/box/zipcuffs/fill_preset_inventory()
 	new /obj/item/handcuffs/zip(src)
 	new /obj/item/handcuffs/zip(src)
 	new /obj/item/handcuffs/zip(src)
@@ -393,8 +366,7 @@
 	desc = "<B><FONT color='red'>WARNING:</FONT></B> <I>Keep out of reach of children</I>."
 	icon_state = "mousetraps"
 
-/obj/item/storage/box/mousetraps/Initialize()
-	. = ..()
+/obj/item/storage/box/mousetraps/fill_preset_inventory()
 	new /obj/item/device/assembly/mousetrap( src )
 	new /obj/item/device/assembly/mousetrap( src )
 	new /obj/item/device/assembly/mousetrap( src )
@@ -406,8 +378,7 @@
 	name = "box of pill bottles"
 	desc = "It has pictures of pill bottles on its front."
 
-/obj/item/storage/box/pillbottles/Initialize()
-	. = ..()
+/obj/item/storage/box/pillbottles/fill_preset_inventory()
 	new /obj/item/storage/pill_bottle( src )
 	new /obj/item/storage/pill_bottle( src )
 	new /obj/item/storage/pill_bottle( src )
@@ -424,8 +395,7 @@
 	icon_state = "spbox"
 	max_storage_space = 8
 
-/obj/item/storage/box/snappops/Initialize()
-	. = ..()
+/obj/item/storage/box/snappops/fill_preset_inventory()
 	for(var/i=1; i <= 8; i++)
 		new /obj/item/toy/snappop(src)
 
@@ -439,8 +409,7 @@
 	flags_equip_slot = SLOT_WAIST
 	can_hold = list(/obj/item/tool/match)
 
-/obj/item/storage/box/matches/Initialize()
-	. = ..()
+/obj/item/storage/box/matches/fill_preset_inventory()
 	for(var/i=1; i <= 14; i++)
 		new /obj/item/tool/match(src)
 
@@ -454,8 +423,7 @@
 	desc = "Contains quickclot autoinjectors."
 	icon_state = "syringe"
 
-/obj/item/storage/box/quickclot/Initialize()
-	. = ..()
+/obj/item/storage/box/quickclot/fill_preset_inventory()
 	for (var/i; i < 7; i++)
 		new /obj/item/reagent_container/hypospray/autoinjector/quickclot(src)
 
@@ -473,8 +441,7 @@
 	max_storage_space = 42	//holds 21 items of w_class 2
 	storage_flags = STORAGE_FLAGS_BOX|STORAGE_CLICK_GATHER
 
-/obj/item/storage/box/lights/bulbs/Initialize()
-	. = ..()
+/obj/item/storage/box/lights/bulbs/fill_preset_inventory()
 	for(var/i = 0; i < 21; i++)
 		new /obj/item/light_bulb/bulb(src)
 
@@ -483,8 +450,7 @@
 	icon_state = "lighttube"
 	w_class = SIZE_MEDIUM
 
-/obj/item/storage/box/lights/tubes/Initialize()
-	. = ..()
+/obj/item/storage/box/lights/tubes/fill_preset_inventory()
 	for(var/i = 0; i < 21; i++)
 		new /obj/item/light_bulb/tube/large(src)
 
@@ -492,8 +458,7 @@
 	name = "box of replacement lights"
 	icon_state = "lightmixed"
 
-/obj/item/storage/box/lights/mixed/Initialize()
-	. = ..()
+/obj/item/storage/box/lights/mixed/fill_preset_inventory()
 	for(var/i = 0; i < 14; i++)
 		new /obj/item/light_bulb/tube/large(src)
 	for(var/i = 0; i < 7; i++)
@@ -504,8 +469,7 @@
 	name = "box of autoinjectors"
 	icon_state = "syringe"
 
-/obj/item/storage/box/autoinjectors/Initialize()
-	. = ..()
+/obj/item/storage/box/autoinjectors/fill_preset_inventory()
 	for(var/i = 0; i < 7; i++)
 		new /obj/item/reagent_container/hypospray/autoinjector/empty(src)
 
@@ -521,9 +485,7 @@
 	max_storage_space = 8
 	can_hold = list(/obj/item/explosive/mine)
 
-/obj/item/storage/box/explosive_mines/Initialize()
-	. = ..()
-	contents = list()
+/obj/item/storage/box/explosive_mines/fill_preset_inventory()
 	var/I = type == /obj/item/storage/box/explosive_mines/pmc ? /obj/item/explosive/mine/pmc : /obj/item/explosive/mine
 	for(var/i in 1 to 5)
 		new I(src)
@@ -540,11 +502,8 @@
 	max_storage_space = 8
 	can_hold = list(/obj/item/device/flashlight/flare,/obj/item/device/flashlight/flare/signal)
 
-/obj/item/storage/box/m94/Initialize()
-	. = ..()
-	contents = list()
-	var/i = 0
-	while(i++ < max_storage_space)
+/obj/item/storage/box/m94/fill_preset_inventory()
+	for(var/i = 1 to max_storage_space)
 		new /obj/item/device/flashlight/flare(src)
 
 /obj/item/storage/box/m94/update_icon()
@@ -558,26 +517,14 @@
 	name = "\improper M89-S signal flare pack"
 	desc = "A packet of eight M89-S Signal Marking Flares."
 	icon_state = "m89"
-	w_class = SIZE_MEDIUM
-	max_storage_space = 10
-	can_hold = list(/obj/item/device/flashlight/flare,/obj/item/device/flashlight/flare/signal)
 
-/obj/item/storage/box/m94/signal/Initialize()
-	. = ..()
-	contents = list()
-	new /obj/item/device/flashlight/flare/signal(src)
-	new /obj/item/device/flashlight/flare/signal(src)
-	new /obj/item/device/flashlight/flare/signal(src)
-	new /obj/item/device/flashlight/flare/signal(src)
-	new /obj/item/device/flashlight/flare/signal(src)
-	new /obj/item/device/flashlight/flare/signal(src)
-	new /obj/item/device/flashlight/flare/signal(src)
-	new /obj/item/device/flashlight/flare/signal(src)
+/obj/item/storage/box/m94/signal/fill_preset_inventory()
+	for(var/i = 1 to max_storage_space)
+		new /obj/item/device/flashlight/flare/signal(src)
 
 /obj/item/storage/box/m94/signal/update_icon()
 	if(!contents.len)
 		icon_state = "m89_e"
-		qdel(src) //No reason to keep it - nobody will reuse it...
 	else
 		icon_state = "m89"
 
@@ -595,8 +542,12 @@
 
 /obj/item/storage/box/nade_box/Initialize()
 	. = ..()
+
 	select_gamemode_skin(/obj/item/storage/box/nade_box)
-	nade_box_icon = icon_state
+	nade_box_icon = initial(icon_state)
+	update_icon()
+
+/obj/item/storage/box/nade_box/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
 		new grenade_type(src)
 
@@ -654,8 +605,7 @@
 	icon_state = "lightstick"
 	can_hold = list(/obj/item/lightstick)
 
-/obj/item/storage/box/lightstick/Initialize()
-	. = ..()
+/obj/item/storage/box/lightstick/fill_preset_inventory()
 	new /obj/item/lightstick(src)
 	new /obj/item/lightstick(src)
 	new /obj/item/lightstick(src)
@@ -668,8 +618,7 @@
 	desc = "Contains red lightsticks."
 	icon_state = "lightstick2"
 
-/obj/item/storage/box/lightstick/red/Initialize()
-	. = ..()
+/obj/item/storage/box/lightstick/red/fill_preset_inventory()
 	new /obj/item/lightstick/red(src)
 	new /obj/item/lightstick/red(src)
 	new /obj/item/lightstick/red(src)
@@ -692,8 +641,7 @@
 	use_sound = "rip"
 	var/isopened = 0
 
-/obj/item/storage/box/MRE/Initialize()
-	. = ..()
+/obj/item/storage/box/MRE/fill_preset_inventory()
 	pickflavor()
 
 /obj/item/storage/box/MRE/proc/pickflavor()

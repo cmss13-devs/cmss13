@@ -91,7 +91,7 @@ Class Procs:
 	var/power_channel = POWER_CHANNEL_EQUIP
 	var/mob/living/carbon/human/operator = null //Had no idea where to put this so I put this here. Used for operating machines with RELAY_CLICK
 		//EQUIP,ENVIRON or LIGHT
-	var/list/component_parts = list() //list of all the parts used to build it, if made from certain kinds of frames.
+	var/list/component_parts //list of all the parts used to build it, if made from certain kinds of frames.
 	var/manual = 0
 	layer = OBJ_LAYER
 	var/machine_processing = 0 // whether the machine is busy and requires process() calls in scheduler.
@@ -118,7 +118,7 @@ Class Procs:
 /obj/structure/machinery/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
 	if (PF)
-		PF.flags_can_pass_all = SETUP_LIST_FLAGS(PASS_HIGH_OVER_ONLY, PASS_AROUND)
+		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND
 
 /obj/structure/machinery/proc/start_processing()
 	if(!machine_processing)

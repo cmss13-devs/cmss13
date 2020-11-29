@@ -40,7 +40,7 @@
 		user.temp_drop_inv_item(D)
 		if(D2.loc == user)
 			user.temp_drop_inv_item(D2)
-		else if(istype(D2.loc, /obj/item/storage))
+		else if(isstorage(D2.loc))
 			var/obj/item/storage/S = D2.loc
 			S.remove_from_storage(D2)
 
@@ -204,7 +204,7 @@
 		tmr.time = 5
 	tmr.secured = 1
 	tmr.holder = src
-	processing_objects.Add(tmr)
+	START_PROCESSING(SSobj, tmr)
 	a_left = tmr
 	a_right = ign
 	secured = 1

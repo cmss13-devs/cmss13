@@ -1,7 +1,7 @@
 // --------------------------------------------
 // *** The core objective interface to allow generic handling of objectives ***
 // --------------------------------------------
-/datum/cm_objective/
+/datum/cm_objective
 	var/name = "An objective to complete"
 	var/complete = FALSE
 	var/failed = FALSE
@@ -26,6 +26,8 @@
 		R.enables_objectives -= src
 	for(var/datum/cm_objective/E in enables_objectives)
 		E.required_objectives -= src
+	required_objectives = null
+	enables_objectives = null
 	return ..()
 
 /datum/cm_objective/proc/Initialize() // initial setup after the map has loaded

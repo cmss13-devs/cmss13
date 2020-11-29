@@ -110,12 +110,22 @@
 /mob/living/carbon/Xenomorph/proc/create_shriekwave(var/color = null)
 	var/image/screech_image
 
+	var/offset_x = 0
+	var/offset_y = 0
+	if(mob_size == MOB_SIZE_XENO)
+		offset_x = -7
+		offset_y = -10
+
 	if (color)
 		screech_image = image("icon"=get_icon_from_source("alien_overlay_64x64"), "icon_state" = "shriek_waves_greyscale") // For Praetorian screech
 		screech_image.color = color
+		screech_image.pixel_x = offset_x
+		screech_image.pixel_y = offset_y
 	else
 		screech_image = image("icon"=get_icon_from_source("alien_overlay_64x64"), "icon_state" = "shriek_waves") //Ehh, suit layer's not being used.
-	
+		screech_image.pixel_x = offset_x
+		screech_image.pixel_y = offset_y
+
 	remove_suit_layer()
 
 	overlays_standing[X_SUIT_LAYER] = screech_image

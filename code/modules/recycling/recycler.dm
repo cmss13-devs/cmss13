@@ -45,7 +45,7 @@
 			I.loc = loc
 			return
 
-	if(istype(I, /obj/item/storage))
+	if(isstorage(I))
 		var/obj/item/storage/S = I
 		for(var/obj/item/X in S.contents)
 			S.remove_from_storage(X, T)

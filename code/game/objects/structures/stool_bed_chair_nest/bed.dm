@@ -28,7 +28,7 @@
 /obj/structure/bed/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
 	if (PF)
-		PF.flags_can_pass_all = SETUP_LIST_FLAGS(PASS_OVER, PASS_AROUND, PASS_UNDER)
+		PF.flags_can_pass_all = PASS_OVER|PASS_AROUND|PASS_UNDER
 
 /obj/structure/bed/update_icon()
 	if(base_bed_icon)
@@ -210,7 +210,7 @@ obj/structure/bed/Destroy()
 	deploy_roller(user, user.loc)
 
 /obj/item/roller/afterattack(obj/target, mob/user, proximity)
-	if(!proximity) 
+	if(!proximity)
 		return
 	if(isturf(target))
 		var/turf/T = target

@@ -65,7 +65,7 @@
 /mob/living/simple_animal/hostile/giant_spider/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
 	if (PF)
-		PF.flags_pass = SETUP_LIST_FLAGS(PASS_FLAGS_CRAWLER)
+		PF.flags_pass = PASS_FLAGS_CRAWLER
 
 /mob/living/simple_animal/hostile/giant_spider/AttackingTarget()
 	..()

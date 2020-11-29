@@ -1,6 +1,6 @@
 //Areas for Biodomes Map
 
-/area/corsat/
+/area/corsat
 	icon = 'icons/turf/area_corsat.dmi'
 	ceiling = CEILING_GLASS
 	powernet_name = "ground"

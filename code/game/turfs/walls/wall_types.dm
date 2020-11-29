@@ -77,7 +77,7 @@
 		return
 
 	. = ..()
-	
+
 
 
 /turf/closed/wall/almayer/research/containment/wall/take_damage(dam, mob/M)
@@ -127,7 +127,7 @@
 	for(var/obj/effect/alien/W in src) // Destroy all alien things on the divider (traps, special structures, etc)
 		playsound(loc, "alien_resin_break", 25)
 		qdel(W)
-		
+
 
 /turf/closed/wall/almayer/research/containment/wall/south
 	icon_state = "containment_wall_south"
@@ -230,7 +230,7 @@
 	special_icon = 1
 
 /turf/closed/wall/indestructible/splashscreen/Initialize()
-	. = ..()	
+	. = ..()
 	tag = "LOBBYART"
 	if(icon_state == "lobbyart1") // default
 		// Only pick lobby art that credits the author
@@ -468,7 +468,7 @@
 	icon_state = "strata_ribbed_outpost_"
 	desc = "A thick and chunky metal wall covered in jagged ribs."
 	walltype = WALL_STRATA_OUTPOST_RIBBED
-	damage_cap = 1000
+	damage_cap = HEALTH_WALL_REINFORCED
 	max_temperature = 28000
 
 /turf/closed/wall/strata_outpost_bare
@@ -490,7 +490,7 @@
 /turf/closed/wall/solaris/reinforced
 	icon_state = "solaris_interior_r"
 	walltype = WALL_SOLARISR
-	damage_cap = 1000
+	damage_cap = HEALTH_WALL_REINFORCED
 	max_temperature = 28000
 
 /turf/closed/wall/solaris/reinforced/hull
@@ -516,7 +516,7 @@
 	icon_state = "devwall_r"
 	desc = "Just like in the orange box! This one is reinforced"
 	walltype = WALL_DEVWALL_R
-	damage_cap = 1000
+	damage_cap = HEALTH_WALL_REINFORCED
 	max_temperature = 28000
 
 /turf/closed/wall/dev/reinforced/hull
@@ -543,14 +543,14 @@
 	icon = 'icons/turf/walls/kutjevo/kutjevo.dmi'
 	icon_state = "colony"
 	desc = "Dusty worn down walls that were once built to last."
-	walltype = WALL_KUTJEVO_COLONY	
+	walltype = WALL_KUTJEVO_COLONY
 
 /turf/closed/wall/kutjevo/colony/reinforced
 	name = "reinforced colony wall"
 	icon_state = "colonyr"
 	desc = "Dusty worn down walls that were once built to last. This one is reinforced"
 	walltype = WALL_KUTJEVO_COLONYR
-	damage_cap = 1000
+	damage_cap = HEALTH_WALL_REINFORCED
 	max_temperature = 28000
 
 /turf/closed/wall/kutjevo/colony/reinforced/hull
@@ -611,7 +611,7 @@
 /turf/closed/wall/resin/membrane/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
 	if (PF)
-		PF.flags_can_pass_all = SETUP_LIST_FLAGS(PASS_GLASS)
+		PF.flags_can_pass_all = PASS_GLASS
 
 //this one is only for map use
 /turf/closed/wall/resin/membrane/ondirt
@@ -690,7 +690,7 @@
 			if(!istype(T)) continue
 			for(var/obj/structure/mineral_door/resin/R in T)
 				R.check_resin_support()
-		
+
 		var/turf/closed/wall/resin/W = .
 		if (istype(W))
 			W.hivenumber = hive

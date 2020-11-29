@@ -172,7 +172,7 @@
 /obj/structure/machinery/m56d_post/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
 	if (PF)
-		PF.flags_can_pass_all = SETUP_LIST_FLAGS(PASS_HIGH_OVER_ONLY, PASS_AROUND, PASS_OVER_THROW_ITEM)
+		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND|PASS_OVER_THROW_ITEM
 
 //Making so rockets don't hit M56D
 /obj/structure/machinery/m56d_post/calculate_cover_hit_boolean(obj/item/projectile/P, var/distance = 0, var/cade_direction_correct = FALSE)
@@ -375,7 +375,7 @@
 
 /obj/structure/machinery/m56d_hmg/New()
 	..()
-	
+
 	ammo = ammo_list[ammo] //dunno how this works but just sliding this in from sentry-code.
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_7
 	update_icon()
@@ -384,7 +384,7 @@
 	if(operator)
 		operator.unset_interaction()
 	SetLuminosity(0)
-	processing_objects.Remove(src)
+	STOP_PROCESSING(SSobj, src)
 	. = ..()
 
 /obj/structure/machinery/m56d_hmg/examine(mob/user) //Let us see how much ammo we got in this thing.

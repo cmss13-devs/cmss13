@@ -386,7 +386,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	armor_bullet = CLOTHING_ARMOR_HIGH
 	specialty = "M3 pattern captain"
 	item_state_slots = list(WEAR_JACKET = "co_officer")
-	
+
 
 
 /obj/item/clothing/suit/storage/marine/smartgunner
@@ -573,7 +573,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	slowdown = SLOWDOWN_ARMOR_HEAVY
 	unacidable = TRUE
 	specialty = "M3-G4 grenadier"
-	flags_item = MOB_LOCK_ON_EQUIP
+	flags_item = MOB_LOCK_ON_EQUIP|NO_CRYO_STORE
 
 /obj/item/clothing/suit/storage/marine/M3T
 	name = "\improper M3-T light armor"
@@ -589,7 +589,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	slowdown = SLOWDOWN_ARMOR_LIGHT
 	unacidable = TRUE
 	specialty = "M3-T light"
-	flags_item = MOB_LOCK_ON_EQUIP
+	flags_item = MOB_LOCK_ON_EQUIP|NO_CRYO_STORE
 
 /obj/item/clothing/suit/storage/marine/M3S
 	name = "\improper M3-S light armor"
@@ -605,7 +605,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	slowdown = SLOWDOWN_ARMOR_LIGHT
 	unacidable = TRUE
 	specialty = "M3-S light"
-	flags_item = MOB_LOCK_ON_EQUIP
+	flags_item = MOB_LOCK_ON_EQUIP|NO_CRYO_STORE
 
 #define FIRE_SHIELD_CD 150
 
@@ -626,7 +626,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_FEET
 	unacidable = TRUE
 	specialty = "M35 pyrotechnician"
-	flags_item = MOB_LOCK_ON_EQUIP
+	flags_item = MOB_LOCK_ON_EQUIP|NO_CRYO_STORE
 	actions_types = list(/datum/action/item_action/toggle, /datum/action/item_action/specialist/fire_shield)
 	var/fire_shield_on = FALSE
 	var/can_activate = TRUE
@@ -644,11 +644,11 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	if(!ishuman(usr))
 		return
 	var/mob/living/carbon/human/H = usr
-	
+
 	if(H.wear_suit != src)
 		to_chat(H, SPAN_WARNING("You must be wearing the M35 pyro armor to activate FIREWALK protocol!"))
 		return
-	
+
 	if(!skillcheck(H, SKILL_SPEC_WEAPONS, SKILL_SPEC_TRAINED) && H.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_PYRO)
 		to_chat(H, SPAN_WARNING("You don't seem to know how to use [src]..."))
 		return
@@ -656,7 +656,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	if(fire_shield_on)
 		to_chat(H, SPAN_WARNING("You already have FIREWALK protocol activated!"))
 		return
-	
+
 	if(!can_activate)
 		to_chat(H, SPAN_WARNING("FIREWALK protocol was recently activated, wait before trying to activate it again."))
 		return
@@ -678,7 +678,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	unregisterListener(user, EVENT_PREIGNITION_CHECK, "fireshield_\ref[src]")
 	unregisterListener(user, EVENT_PRE_FIRE_BURNED_CHECK, "fireshield_\ref[src]")
 	fire_shield_on = FALSE
-	
+
 	addtimer(CALLBACK(src, .proc/enable_fire_shield, user), FIRE_SHIELD_CD)
 
 /obj/item/clothing/suit/storage/marine/M35/proc/enable_fire_shield(var/mob/living/carbon/human/user)
@@ -718,7 +718,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	var/obj/item/clothing/suit/storage/marine/M35/armor = holder_item
 	if (!istype(armor))
 		return FALSE
-	
+
 	return !armor.can_activate
 
 /datum/action/item_action/specialist/fire_shield/can_use_action()
@@ -730,8 +730,10 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	var/obj/item/clothing/suit/storage/marine/M35/armor = holder_item
 	if (!istype(armor))
 		return
-	
+
 	armor.fire_shield()
+
+#define FULL_CAMOUFLAGE_ALPHA 15
 
 /obj/item/clothing/suit/storage/marine/ghillie
 	name = "\improper M45 pattern ghillie armor"
@@ -748,6 +750,297 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	specialty = "M45 pattern ghillie"
 	flags_marine_armor = ARMOR_LAMP_OVERLAY
 	flags_item = MOB_LOCK_ON_EQUIP
+
+	var/camo_active = FALSE
+	var/hide_in_progress = FALSE
+	var/full_camo_alpha = FULL_CAMOUFLAGE_ALPHA
+	var/incremental_shooting_camo_penalty = 35
+	var/current_camo = FULL_CAMOUFLAGE_ALPHA
+	var/camouflage_break = 5 SECONDS
+	var/camouflage_enter_delay = 4 SECONDS
+	var/aiming_time = 1.25 SECONDS
+	var/datum/event_handler/ghillie_movement/ghillie_movement
+
+	var/aimed_shot_cooldown
+	var/aimed_shot_cooldown_delay = 1.5 SECONDS
+
+	actions_types = list(/datum/action/item_action/toggle, \
+	 					 /datum/action/item_action/specialist/prepare_position, \
+						 /datum/action/item_action/specialist/aimed_shot)
+
+/obj/item/clothing/suit/storage/marine/ghillie/dropped(mob/user)
+	if(ishuman(user) && !isSynth(user))
+		deactivate_camouflage(user, FALSE)
+
+	. = ..()
+
+/obj/item/clothing/suit/storage/marine/ghillie/verb/camouflage()
+	set name = "Prepare Position"
+	set desc = "Use the ghillie suit and the nearby environment to become near invisible."
+	set category = "Object"
+
+	if(!usr || usr.is_mob_incapacitated(TRUE))
+		return
+
+	if(!ishuman(usr) || hide_in_progress)
+		return
+	var/mob/living/carbon/human/H = usr
+	if(!skillcheck(H, SKILL_SPEC_WEAPONS, SKILL_SPEC_TRAINED) && H.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_SNIPER)
+		to_chat(H, SPAN_WARNING("You don't seem to know how to use [src]..."))
+		return
+
+	if(H.wear_suit != src)
+		to_chat(H, SPAN_WARNING("You must be wearing the ghillie suit to activate it!"))
+		return
+
+	if(camo_active)
+		deactivate_camouflage(H)
+		return
+
+	H.visible_message(SPAN_DANGER("[H] goes prone, and begins adjusting his ghillie suit!"), SPAN_NOTICE("You go prone, and begins adjusting your ghillie suit."), max_distance = 4)
+	hide_in_progress = TRUE
+	if(!do_after(H, camouflage_enter_delay, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+		hide_in_progress = FALSE
+		return
+	hide_in_progress = FALSE
+	RegisterSignal(H,  list(
+		COMSIG_MOB_FIRED_GUN,
+		COMSIG_MOB_FIRED_GUN_ATTACHMENT)
+		, .proc/fade_in)
+	RegisterSignal(H, COMSIG_MOB_DEATH, .proc/deactivate_camouflage)
+	RegisterSignal(H, COMSIG_MOB_GETTING_UP, .proc/fix_density)
+	ghillie_movement = new /datum/event_handler/ghillie_movement()
+	ghillie_movement.gs = src
+	camo_active = TRUE
+	H.alpha = full_camo_alpha
+	H.FF_hit_evade = 1000
+	H.density = FALSE
+
+	H.add_movement_handler(ghillie_movement)
+
+	var/datum/mob_hud/security/advanced/SA = huds[MOB_HUD_SECURITY_ADVANCED]
+	SA.remove_from_hud(H)
+	var/datum/mob_hud/xeno_infection/XI = huds[MOB_HUD_XENO_INFECTION]
+	XI.remove_from_hud(H)
+
+	anim(H.loc, H, 'icons/mob/mob.dmi', null, "cloak", null, H.dir)
+
+
+/obj/item/clothing/suit/storage/marine/ghillie/proc/deactivate_camouflage(mob/user)
+	var/mob/living/carbon/human/H = user
+	if(!istype(H))
+		return FALSE
+
+	if(!camo_active)
+		return
+
+	H.visible_message(SPAN_DANGER("[H]'s camouflage fails!"), SPAN_WARNING("Your camouflage fails!"), max_distance = 4)
+
+	camo_active = FALSE
+	animate(H, alpha = initial(H.alpha), flags = ANIMATION_END_NOW)
+	H.FF_hit_evade = initial(H.FF_hit_evade)
+	H.density = initial(H.density)
+	H.remove_movement_handler(ghillie_movement)
+	UnregisterSignal(H, COMSIG_MOB_FIRED_GUN)
+	UnregisterSignal(H, COMSIG_MOB_FIRED_GUN_ATTACHMENT)
+	UnregisterSignal(H, COMSIG_MOB_DEATH)
+	UnregisterSignal(H, COMSIG_MOB_GETTING_UP)
+
+	var/datum/mob_hud/security/advanced/SA = huds[MOB_HUD_SECURITY_ADVANCED]
+	SA.add_to_hud(H)
+	var/datum/mob_hud/xeno_infection/XI = huds[MOB_HUD_XENO_INFECTION]
+	XI.add_to_hud(H)
+
+/obj/item/clothing/suit/storage/marine/ghillie/proc/fade_in()
+	SIGNAL_HANDLER
+	if(camo_active)
+		var/mob/living/carbon/human/H = usr
+		if(current_camo < full_camo_alpha)
+			current_camo = full_camo_alpha
+		current_camo = Clamp(current_camo + incremental_shooting_camo_penalty, full_camo_alpha, 255)
+		H.alpha = current_camo
+		addtimer(CALLBACK(src, .proc/fade_out_finish, H), camouflage_break, TIMER_OVERRIDE|TIMER_UNIQUE)
+		animate(H, alpha = full_camo_alpha + 5, time = camouflage_break, easing = LINEAR_EASING, flags = ANIMATION_END_NOW)
+
+/obj/item/clothing/suit/storage/marine/ghillie/proc/fix_density(mob/user)
+	SIGNAL_HANDLER
+	if(camo_active)
+		user.density = FALSE
+
+/obj/item/clothing/suit/storage/marine/ghillie/proc/fade_out_finish(var/mob/living/carbon/human/H)
+	if(camo_active)
+		to_chat(H, SPAN_BOLDNOTICE("The smoke clears and your position is once again hidden completely!"))
+		animate(H, alpha = full_camo_alpha)
+		current_camo = full_camo_alpha
+
+
+/datum/event_handler/ghillie_movement
+	var/obj/item/clothing/suit/storage/marine/ghillie/gs
+	handle(mob/living/sender, datum/event_args/mob_movement/ev_args)
+		if(gs.camo_active && ev_args.moving)
+			gs.deactivate_camouflage(sender)
+			ev_args.continue_movement = TRUE
+
+/datum/action/item_action/specialist/prepare_position
+	ability_primacy = SPEC_PRIMARY_ACTION_1
+
+/datum/action/item_action/specialist/aimed_shot
+	ability_primacy = SPEC_PRIMARY_ACTION_2
+
+/datum/action/item_action/specialist/prepare_position/New(var/mob/living/user, var/obj/item/holder)
+	..()
+	name = "Prepare Position"
+	button.name = name
+	button.overlays.Cut()
+	var/image/IMG = image('icons/mob/hud/actions.dmi', button, "prepare_position")
+	button.overlays += IMG
+
+/datum/action/item_action/specialist/prepare_position/can_use_action()
+	var/mob/living/carbon/human/H = owner
+	if(istype(H) && !H.is_mob_incapacitated() && !H.lying && holder_item == H.wear_suit)
+		return TRUE
+
+/datum/action/item_action/specialist/prepare_position/action_activate()
+	var/obj/item/clothing/suit/storage/marine/ghillie/GS = holder_item
+	GS.camouflage()
+
+/datum/action/item_action/specialist/aimed_shot/New(var/mob/living/user, var/obj/item/holder)
+	..()
+	name = "Aimed Shot"
+	button.name = name
+	button.overlays.Cut()
+	var/image/IMG = image('icons/mob/hud/actions.dmi', button, "sniper_aim")
+	button.overlays += IMG
+	var/obj/item/clothing/suit/storage/marine/ghillie/GS = holder_item
+	GS.aimed_shot_cooldown = world.time
+
+
+/datum/action/item_action/specialist/aimed_shot/action_activate()
+	if(!ishuman(owner))
+		return
+	var/mob/living/carbon/human/H = owner
+	if(H.selected_ability == src)
+		to_chat(H, "You will no longer use [name] with \
+			[H.client && H.client.prefs && H.client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK ? "middle-click" : "shift-click"].")
+		button.icon_state = "template"
+		H.selected_ability = null
+	else
+		to_chat(H, "You will now use [name] with \
+			[H.client && H.client.prefs && H.client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK ? "middle-click" : "shift-click"].")
+		if(H.selected_ability)
+			H.selected_ability.button.icon_state = "template"
+			H.selected_ability = null
+		button.icon_state = "template_on"
+		H.selected_ability = src
+
+/datum/action/item_action/specialist/aimed_shot/can_use_action()
+	var/mob/living/carbon/human/H = owner
+	if(istype(H) && !H.is_mob_incapacitated() && !H.lying && holder_item == H.wear_suit)
+
+		return TRUE
+
+/datum/action/item_action/specialist/aimed_shot/proc/use_ability(atom/A)
+	var/mob/living/carbon/human/H = owner
+	if(!istype(A, /mob/living))
+		return
+
+	var/mob/living/M = A
+
+	if(M.stat == DEAD || M == H)
+		return
+
+	var/obj/item/clothing/suit/storage/marine/ghillie/GS = holder_item
+
+	if(world.time < GS.aimed_shot_cooldown)
+		return
+
+	if(!check_can_use(M))
+		return
+
+	GS.aimed_shot_cooldown = world.time + GS.aimed_shot_cooldown_delay
+	var/I = image("icon" = 'icons/effects/Targeted.dmi', "icon_state" = "locking-sniper")
+	M.overlays += I
+	for(var/mob/living/K in viewers(M))
+		K << 'sound/weapons/TargetOn.ogg'
+
+	if(!do_after(H, GS.aiming_time, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, NO_BUSY_ICON))
+		M.overlays -= I
+		return
+
+	M.overlays -= I
+
+	if(!check_can_use(M))
+		return
+
+	var/obj/item/weapon/gun/rifle/sniper/G = istype(H.l_hand, /obj/item/weapon/gun/rifle/sniper/M42A) ? H.l_hand : H.r_hand
+	var/obj/item/projectile/P = G.in_chamber
+	P.homing_target = M
+	P.projectile_override_flags |= AMMO_HOMING
+	G.Fire(M, H)
+
+/datum/action/item_action/specialist/aimed_shot/proc/check_can_use(var/mob/M)
+	var/mob/living/carbon/human/H = owner
+	if(!can_use_action())
+		return FALSE
+
+	if(H.alpha == initial(H.alpha))
+		to_chat(H, SPAN_WARNING("You are not in a proper position to aim your shot accurately."))
+		return FALSE
+
+	if(H.alpha > FULL_CAMOUFLAGE_ALPHA)
+		to_chat(H, SPAN_WARNING("The smoke from your last gunshot is still obscuring your vision. Wait a little bit to get a clear shot."))
+		return FALSE
+
+	if(!H.l_hand && !H.r_hand)
+		to_chat(H, SPAN_WARNING("How do you expect to do this without your Sniper Rifle?"))
+		return FALSE
+
+	if(!istype(H.l_hand, /obj/item/weapon/gun/rifle/sniper/M42A) && !istype(H.r_hand, /obj/item/weapon/gun/rifle/sniper/M42A))
+		to_chat(H, SPAN_WARNING("Your weapon isn't accurate enough for this. Use the M42A Sniper Rifle!"))
+		return FALSE
+
+	if(!istype(H.l_hand, /obj/item/weapon/melee/twohanded/offhand) && !istype(H.r_hand, /obj/item/weapon/melee/twohanded/offhand))
+		to_chat(H, SPAN_WARNING("Your aim is not stable enough with one hand. Use both hands!"))
+		return FALSE
+
+	var/obj/item/weapon/gun/rifle/sniper/G = istype(H.l_hand, /obj/item/weapon/gun/rifle/sniper/M42A) ? H.l_hand : H.r_hand
+	if(!G.in_chamber)
+		to_chat(H, SPAN_WARNING("[G] is unloaded!"))
+		return FALSE
+
+	if(get_dist(H, M) < 2)
+		to_chat(H, SPAN_WARNING("[M] is too close to get a proper shot!"))
+		return FALSE
+
+	var/obj/item/projectile/P = G.in_chamber
+	if(check_shot_is_blocked(H, M, P))
+		to_chat(H, SPAN_WARNING("Something is in the way, or you're out of range!"))
+		return FALSE
+
+	return TRUE
+
+/datum/action/item_action/specialist/aimed_shot/proc/check_shot_is_blocked(var/mob/firer, var/mob/target, obj/item/projectile/P)
+	var/list/turf/path = getline2(firer, target, include_from_atom = FALSE)
+	if(!path.len || get_dist(firer, target) > P.ammo.max_range)
+		return TRUE
+
+	var/blocked = FALSE
+	for(var/turf/T in path)
+		if(T.density || T.opacity)
+			blocked = TRUE
+			break
+
+		for(var/obj/structure/S in T)
+			if(S.get_projectile_hit_boolean(P))
+				blocked = TRUE
+				break
+
+		for(var/obj/effect/particle_effect/smoke/S in T)
+			blocked = TRUE
+			break
+	return blocked
+
+#undef FULL_CAMOUFLAGE_ALPHA
 
 //=============================//PMCS\\==================================\\
 //=======================================================================\\

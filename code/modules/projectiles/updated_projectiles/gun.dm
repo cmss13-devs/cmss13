@@ -497,8 +497,8 @@
 		"scatter_max" = SCATTER_AMOUNT_TIER_1,
 		"firerate_max" = MINUTES_1 / FIRE_DELAY_TIER_10,
 		"damage_max" = BULLET_DAMAGE_TIER_20,
-		"accuracy_max" = AMMO_RANGE_TIER_15,
-		"range_max" = AMMO_RANGE_TIER_15,
+		"accuracy_max" = 32,
+		"range_max" = 32,
 		"falloff_max" = DAMAGE_FALLOFF_TIER_1,
 		"penetration_max" = ARMOR_PENETRATION_TIER_10,
 		"punch_max" = 5,
@@ -938,6 +938,7 @@ and you're good to go.
 			projectile_to_fire.fire_at(target, user, src, projectile_to_fire?.ammo?.max_range, projectile_to_fire?.ammo?.shell_speed, original_target, FALSE, iff_group_to_pass)
 			//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 			last_fired = world.time
+			SEND_SIGNAL(user, COMSIG_MOB_FIRED_GUN, src, projectile_to_fire)
 
 			if(flags_gun_features & GUN_FULL_AUTO_ON)
 				fa_shots++
@@ -1038,6 +1039,7 @@ and you're good to go.
 			M.last_damage_mob = null
 			user.attack_log += t //Apply the attack log.
 			last_fired = world.time
+			SEND_SIGNAL(user, COMSIG_MOB_FIRED_GUN, src, projectile_to_fire)
 
 			projectile_to_fire.play_damage_effect(user)
 			if(!delete_bullet(projectile_to_fire))
@@ -1099,6 +1101,7 @@ and you're good to go.
 	M.bullet_act(projectile_to_fire)
 
 	last_fired = world.time
+	SEND_SIGNAL(user, COMSIG_MOB_FIRED_GUN, src, projectile_to_fire)
 
 	if(EXECUTION_CHECK) //Continue execution if on the correct intent. Accounts for change via the earlier do_after
 		user.visible_message(SPAN_DANGER("[user] has executed [M] with [src]!"), SPAN_DANGER("You have executed [M] with [src]!"), message_flags = CHAT_TYPE_WEAPON_USE)
@@ -1328,7 +1331,7 @@ and you're good to go.
 			total_recoil += RECOIL_AMOUNT_TIER_5
 		else
 			total_recoil -= user.skills.get_skill_level(SKILL_FIREARMS)*RECOIL_AMOUNT_TIER_5
-	
+
 	if(total_recoil > 0 && ishuman(user))
 		shake_camera(user, total_recoil + 1, total_recoil)
 		return TRUE

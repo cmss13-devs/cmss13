@@ -113,6 +113,10 @@
 	if (!mover || !isturf(mover.loc))
 		return FALSE
 
+	var/override = SEND_SIGNAL(mover, COMSIG_TURF_ENTER, src)
+	if(override)
+		return override & COMPONENT_TURF_ALLOW_MOVEMENT
+
 	if(isobserver(mover) || istype(mover, /obj/item/projectile))
 		return TRUE
 

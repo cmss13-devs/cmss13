@@ -187,13 +187,13 @@ var/list/ob_type_fuel_requirements
 
 /var/global/list/orbital_cannon_cancellation = new
 
-/obj/structure/orbital_cannon/proc/fire_ob_cannon(turf/T, mob/user, x_offset, y_offset)
+/obj/structure/orbital_cannon/proc/fire_ob_cannon(turf/T, mob/user)
 	set waitfor = 0
 
 	if(!chambered_tray || !loaded_tray || !tray || !tray.warhead || ob_cannon_busy)
 		return
 
-	flick("OBC_firing",src)
+	flick("OBC_firing", src)
 
 	ob_cannon_busy = TRUE
 
@@ -215,21 +215,8 @@ var/list/ob_type_fuel_requirements
 	var/turf/target = locate(T.x + inaccurate_fuel * round(rand(-3,3), 1), T.y + inaccurate_fuel * round(rand(-3,3), 1), T.z)
 	if(user)
 		tray.warhead.source_mob = user
-	// make damn sure everyone hears it
-	playsound(target, 'sound/weapons/gun_orbital_travel.ogg', 100, 1, 75)
-	var/cancellation_token = rand(0,32000)
-	message_staff(FONT_SIZE_XL("<A HREF='?_src_=admin_holder;admincancelob=1;cancellation=[cancellation_token]'>CLICK TO CANCEL THIS OB</a>"))
-	orbital_cannon_cancellation["[cancellation_token]"] = src
-	target.ranged_message(SPAN_HIGHDANGER("The sky erupts into flames!"), SPAN_HIGHDANGER("You hear a very loud sound coming from above!"), 30)
-	sleep(OB_TRAVEL_TIMING/3)
-	target.ranged_message(SPAN_HIGHDANGER("The sky roars louder!"), SPAN_HIGHDANGER("The sound becomes louder!"), 25)
-	sleep(OB_TRAVEL_TIMING/3)
-	target.ranged_message(SPAN_HIGHDANGER("OH GOD THE SKY WILL EXPLODE!!!"), SPAN_HIGHDANGER("YOU SHOULDN'T BE HERE!"), 15)
-	sleep(OB_TRAVEL_TIMING/3)
-	if(orbital_cannon_cancellation["[cancellation_token]"]) // the cancelling notification is in the topic		
-		target.ceiling_debris_check(5)
-		tray.warhead.warhead_impact(target, inaccurate_fuel)
-		orbital_cannon_cancellation["[cancellation_token]"] = null
+
+	tray.warhead.warhead_impact(target)
 
 	sleep(OB_CRASHING_DOWN)
 
@@ -379,7 +366,44 @@ var/list/ob_type_fuel_requirements
 	var/warhead_kind
 
 
-/obj/structure/ob_ammo/warhead/proc/warhead_impact(turf/target, inaccuracy_amt = 0)
+/obj/structure/ob_ammo/warhead/proc/warhead_impact(var/turf/target)
+	// make damn sure everyone hears it
+	playsound(target, 'sound/weapons/gun_orbital_travel.ogg', 100, 1, 75)
+	
+	var/cancellation_token = rand(0,32000)
+	orbital_cannon_cancellation["[cancellation_token]"] = src
+	message_staff(FONT_SIZE_XL("<A HREF='?_src_=admin_holder;admincancelob=1;cancellation=[cancellation_token]'>CLICK TO CANCEL THIS OB</a>"))
+
+	var/relative_dir
+	for(var/mob/M in orange(30, target))
+		relative_dir = get_dir(M, target)
+		M.show_message( \
+			SPAN_HIGHDANGER("The sky erupts into flames to the [dir2text(relative_dir)]!"), 1, \
+			SPAN_HIGHDANGER("You hear a very loud sound coming from above to the [dir2text(relative_dir)]!"), 2 \
+		)
+	sleep(OB_TRAVEL_TIMING/3)
+
+	for(var/mob/M in orange(25, target))
+		relative_dir = get_dir(M, target)
+		M.show_message( \
+			SPAN_HIGHDANGER("The sky roars louder to the [dir2text(relative_dir)]!"), 1, \
+			SPAN_HIGHDANGER("The sound becomes louder to the [dir2text(relative_dir)]!"), 2 \
+		)
+	sleep(OB_TRAVEL_TIMING/3)
+
+	for(var/mob/M in orange(15, target))
+		relative_dir = get_dir(M, target)
+		M.show_message( \
+			SPAN_HIGHDANGER("OH GOD THE SKY WILL EXPLODE!!!"), 1, \
+			SPAN_HIGHDANGER("YOU SHOULDN'T BE HERE!"), 2 \
+		)
+	sleep(OB_TRAVEL_TIMING/3)
+
+	if(orbital_cannon_cancellation["[cancellation_token]"]) // the cancelling notification is in the topic
+		target.ceiling_debris_check(5)
+		orbital_cannon_cancellation["[cancellation_token]"] = null
+		return TRUE
+	return FALSE
 
 
 /obj/structure/ob_ammo/warhead/explosive
@@ -393,7 +417,11 @@ var/list/ob_type_fuel_requirements
 	var/clear_delay = 3
 	var/double_explosion_delay = 6
 
-/obj/structure/ob_ammo/warhead/explosive/warhead_impact(turf/target, inaccuracy_amt = 0)
+/obj/structure/ob_ammo/warhead/explosive/warhead_impact(turf/target)
+	. = ..()
+	if (!.)
+		return
+
 	new /obj/effect/overlay/temp/blinking_laser (target)
 	sleep(10)
 	cell_explosion(target, clear_power, clear_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, initial(name), source_mob) //break shit around
@@ -404,7 +432,7 @@ var/list/ob_type_fuel_requirements
 		sleep(double_explosion_delay)
 		cell_explosion(target, standard_power, standard_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, initial(name), source_mob)
 		return
-	
+
 	for(var/turf/T in range(2, target))
 		if(!T.density)
 			cell_explosion(target, standard_power, standard_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, initial(name), source_mob)
@@ -424,7 +452,11 @@ var/list/ob_type_fuel_requirements
 	var/burn_level = 80
 	var/fire_color = "white"
 
-/obj/structure/ob_ammo/warhead/incendiary/warhead_impact(turf/target, inaccuracy_amt = 0)
+/obj/structure/ob_ammo/warhead/incendiary/warhead_impact(turf/target)
+	. = ..()
+	if (!.)
+		return
+
 	new /obj/effect/overlay/temp/blinking_laser (target)
 	sleep(10)
 	cell_explosion(target, clear_power, clear_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, initial(name), source_mob) //break shit around
@@ -441,16 +473,25 @@ var/list/ob_type_fuel_requirements
 	var/explosion_power = 300
 	var/explosion_falloff = 150
 
-/obj/structure/ob_ammo/warhead/cluster/warhead_impact(turf/target, inaccuracy_amt = 0)
+/obj/structure/ob_ammo/warhead/cluster/warhead_impact(turf/target)
+	. = ..()
+	if (!.)
+		return
+
+	start_cluster(target)
+
+/obj/structure/ob_ammo/warhead/cluster/proc/start_cluster(turf/target)
 	set waitfor = 0
 
 	var/range_num = 12
 	var/list/turf_list = list()
+
 	for(var/turf/T in range(range_num, target))
 		if(protected_by_pylon(TURF_PROTECTION_OB, T))
 			continue
 
 		turf_list += T
+	
 	for(var/i = 1 to total_amount)
 		for(var/k = 1 to instant_amount)
 			var/turf/U = pick(turf_list)
@@ -487,7 +528,7 @@ var/list/ob_type_fuel_requirements
 /obj/structure/machinery/computer/orbital_cannon_console/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
 	if (PF)
-		PF.flags_can_pass_all = SETUP_LIST_FLAGS(PASS_ALL)
+		PF.flags_can_pass_all = PASS_ALL
 
 /obj/structure/machinery/computer/orbital_cannon_console/ex_act()
 	return

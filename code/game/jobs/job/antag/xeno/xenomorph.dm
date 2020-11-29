@@ -9,7 +9,7 @@
 	selection_class = "job_xeno"
 
 /datum/job/antag/xenos/set_spawn_positions(var/count)
-	spawn_positions = max((count * XENO_TO_MARINES_SPAWN_RATIO), 1)
+	spawn_positions = max((round(count * XENO_TO_MARINES_SPAWN_RATIO)), 1)
 	total_positions = spawn_positions
 
 /datum/job/antag/xenos/spawn_in_player(var/mob/new_player/NP)

@@ -167,6 +167,9 @@
 		to_chat(H, t)
 
 /datum/job/proc/generate_entry_conditions(mob/living/M, var/whitelist_status)
+	if (istype(M) && M.client)
+		M.client.soundOutput.update_ambience()
+
 	return //Anything special that should happen to the mob upon entering the world.
 
 //This lets you scale max jobs at runtime

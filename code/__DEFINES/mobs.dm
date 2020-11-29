@@ -99,20 +99,20 @@
 //=================================================
 
 //Bitflags defining which status effects could be or are inflicted on a mob
-#define CANSTUN				1
-#define CANKNOCKDOWN		2
-#define CANKNOCKOUT			4
-#define CANPUSH				8
-#define LEAPING				16
-#define PASSEMOTES			32      //holders inside of mob that need to see emotes.
-#define GODMODE				4096
-#define FAKEDEATH			8192	//Replaces stuff like changeling.changeling_fakedeath
-#define DISFIGURED			16384	//I'll probably move this elsewhere if I ever get wround to writing a bitflag mob-damage system
-#define XENO_HOST			32768	//Tracks whether we're gonna be a baby alien's mummy.
-#define IMMOBILE_ACTION		65536 	// If you are performing an action that prevents you from being pushed by your own people.
-#define PERMANENTLY_DEAD	131072
-#define CANDAZE				262144
-#define CANSLOW				262144*2
+#define CANSTUN				(1<<0)
+#define CANKNOCKDOWN		(1<<1)
+#define CANKNOCKOUT			(1<<2)
+#define CANPUSH				(1<<3)
+#define LEAPING				(1<<4)
+#define PASSEMOTES			(1<<5)	//holders inside of mob that need to see emotes.
+#define GODMODE				(1<<12)
+#define FAKEDEATH			(1<<13)	//Replaces stuff like changeling.changeling_fakedeath
+#define DISFIGURED			(1<<14)	//I'll probably move this elsewhere if I ever get wround to writing a bitflag mob-damage system
+#define XENO_HOST			(1<<15)	//Tracks whether we're gonna be a baby alien's mummy.
+#define IMMOBILE_ACTION		(1<<16) 	// If you are performing an action that prevents you from being pushed by your own people.
+#define PERMANENTLY_DEAD	(1<<17)
+#define CANDAZE				(1<<18)
+#define CANSLOW				(1<<19)
 
 // =============================
 // hive types

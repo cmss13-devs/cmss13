@@ -11,6 +11,7 @@
 	throw_range = 15
 	throw_speed = SPEED_VERY_FAST
 
+
 	//matter = list("metal" = 50,"glass" = 50)
 
 /obj/item/device/binoculars/Initialize()
@@ -18,7 +19,11 @@
 	select_gamemode_skin(type)
 
 /obj/item/device/binoculars/attack_self(mob/user)
+	if(SEND_SIGNAL(user, COMSIG_BINOCULAR_ATTACK_SELF, src))
+		return FALSE
+
 	zoom(user, 11, 12)
+	return TRUE
 
 /obj/item/device/binoculars/on_set_interaction(var/mob/user)
 	flags_atom |= RELAY_CLICK
@@ -43,6 +48,9 @@
 	var/cooldown_duration = 200 //20 seconds
 	var/obj/effect/overlay/temp/laser_coordinate/coord
 	var/target_acquisition_delay = 100 //10 seconds
+	var/rangefinder_popup = TRUE //Whether coordinates are displayed in a separate popup window.
+	var/last_x = "UNKNOWN"
+	var/last_y = "UNKNOWN"
 
 /obj/item/device/binoculars/range/Initialize()
 	. = ..()
@@ -54,6 +62,18 @@
 
 /obj/item/device/binoculars/range/update_icon()
 	overlays += "laser_range"
+
+/obj/item/device/binoculars/range/examine()
+	..()
+	to_chat(usr, SPAN_NOTICE("The rangefinder reads: LONGITUDE [last_x], LATITUDE [last_y]."))
+
+/obj/item/device/binoculars/range/verb/toggle_rangefinder_popup()
+	set name = "Toggle Rangefinder Display"
+	set category = "Object"
+	set desc = "Toggles display mode for rangefinder coordinates."
+
+	rangefinder_popup = !rangefinder_popup
+	to_chat(usr, "The rangefinder [rangefinder_popup ? "now" : "no longer"] shows coordinates on the display.")
 
 /obj/item/device/binoculars/range/on_unset_interaction(var/mob/user)
 	..()
@@ -72,6 +92,9 @@
 	if(!istype(user))
 		return
 	if(mods["ctrl"])
+		if(SEND_SIGNAL(user, COMSIG_BINOCULAR_HANDLE_CLICK, src))
+			return FALSE
+		
 		acquire_target(A, user)
 		return TRUE
 	return FALSE
@@ -114,7 +137,12 @@
 		return
 	var/obj/effect/overlay/temp/laser_coordinate/LT = new (TU, las_name, user)
 	coord = LT
-	interact(user)
+	last_x = obfuscate_x(coord.x)
+	last_y = obfuscate_y(coord.y)
+	if(rangefinder_popup)
+		interact(user)
+	else
+		to_chat(user, SPAN_NOTICE("SIMPLIFIED COORDINATES OF TARGET. LONGITUDE [last_x]. LATITUDE [last_y]."))
 	playsound(src, 'sound/effects/binoctarget.ogg', 35)
 	while(coord)
 		if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_GENERIC))
@@ -125,7 +153,7 @@
 	var/dat = "<html><head><title>[src]</title></head><body><TT>"
 
 	dat += "<h3>SIMPLIFIED COORDINATES OF TARGET:</h3><BR>"
-	dat += "<h4>LONGITUDE [obfuscate_x(coord.x)]. LATITUDE [obfuscate_y(coord.y)].</h4></TT></body></html>"
+	dat += "<h4>LONGITUDE [last_x]. LATITUDE [last_y].</h4></TT></body></html>"
 
 	show_browser(user, dat, "Coordinates successfully acquired", "rangebinos")
 	onclose(user, "rangebinos")
@@ -142,7 +170,6 @@
 /obj/item/device/binoculars/range/designator/Initialize()
 	. = ..()
 	tracking_id = ++cas_tracking_id_increment
-	desc = "A laser designator with two modes: target marking for CAS with IR laser and rangefinding. Tracking ID for CAS: [tracking_id]. Ctrl + Click turf to target something. Ctrl + Click designator to stop lasing. Alt + Click designator to switch modes."
 
 /obj/item/device/binoculars/range/designator/Destroy()
 	QDEL_NULL(laser)
@@ -157,7 +184,8 @@
 
 /obj/item/device/binoculars/range/designator/examine()
 	..()
-	to_chat(usr, SPAN_NOTICE("They are currently set to [mode ? "range finder" : "CAS marking"] mode."))
+	to_chat(usr, SPAN_NOTICE("Tracking ID for CAS: [tracking_id]."))
+	to_chat(usr, SPAN_NOTICE("[src] is currently set to [mode ? "range finder" : "CAS marking"] mode."))
 
 /obj/item/device/binoculars/range/designator/clicked(mob/user, list/mods)
 	if(!ishuman(usr))
@@ -254,7 +282,12 @@
 	if(mode)
 		var/obj/effect/overlay/temp/laser_coordinate/LT = new (TU, las_name, user)
 		coord = LT
-		interact(user)
+		last_x = obfuscate_x(coord.x)
+		last_y = obfuscate_y(coord.y)
+		if(rangefinder_popup)
+			interact(user)
+		else
+			to_chat(user, SPAN_NOTICE("SIMPLIFIED COORDINATES OF TARGET. LONGITUDE [last_x]. LATITUDE [last_y]."))
 		playsound(src, 'sound/effects/binoctarget.ogg', 35)
 		while(coord)
 			if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_GENERIC))
@@ -264,6 +297,11 @@
 		to_chat(user, SPAN_NOTICE("TARGET ACQUIRED. LASER TARGETING IS ONLINE. DON'T MOVE."))
 		var/obj/effect/overlay/temp/laser_target/LT = new (TU, las_name, user, tracking_id)
 		laser = LT
+
+		var/turf/userloc = get_turf(user)
+		msg_admin_niche("Laser target [las_name] has been designated by [key_name(user, 1)] at ([TU.x], [TU.y], [TU.z]). (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[userloc.x];Y=[userloc.y];Z=[userloc.z]'>JMP SRC</a>) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[TU.x];Y=[TU.y];Z=[TU.z]'>JMP LOC</a>)")
+		log_game("Laser target [las_name] has been designated by [key_name(user, 1)] at ([x], [y], [z]).")
+
 		playsound(src, 'sound/effects/binoctarget.ogg', 35)
 		while(laser)
 			if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_GENERIC))
@@ -354,7 +392,11 @@
 	return
 
 /obj/item/device/binoculars/designator/attack_self(mob/living/carbon/human/user)
-	zoom(user)
+	. = ..()
+
+	if(!.)
+		return
+
 	if(!FAC)
 		FAC = user
 		return

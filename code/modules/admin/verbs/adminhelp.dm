@@ -39,11 +39,14 @@ var/global/list/ahelp_msgs = list()
 	if(selected_type == "MentorHelp")
 		if(current_mhelp && current_mhelp.open)
 			if(alert("You already have a mentorhelp thread open, would you like to close it?", "Mentor Help", "Yes", "No") == "Yes")
-				current_mhelp.close()
+				current_mhelp.close(src)
 			return
 		current_mhelp = new(src)
 		current_mhelp.input_message(src)
-
+		if(!current_mhelp.ready)
+			// ... no question when opening ? nevermind then. outta here.
+			qdel(current_mhelp)
+			current_mhelp = null
 		return
 
 	var/selected_upper = uppertext(selected_type)

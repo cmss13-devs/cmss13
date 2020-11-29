@@ -41,7 +41,7 @@
 /obj/structure/machinery/disposal/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
 	if (PF)
-		PF.flags_can_pass_all = SETUP_LIST_FLAGS(PASS_HIGH_OVER_ONLY, PASS_AROUND)
+		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND
 
 //Attack by item places it in to disposal
 /obj/structure/machinery/disposal/attackby(var/obj/item/I, var/mob/user)
@@ -89,14 +89,16 @@
 				to_chat(user, SPAN_WARNING("You need more welding fuel to complete this task."))
 			return
 
-	if(istype(I, /obj/item/storage/bag/trash))
-		var/obj/item/storage/bag/trash/T = I
-		to_chat(user, SPAN_NOTICE("You empty the bag into [src]."))
-		for(var/obj/item/O in T.contents)
-			T.remove_from_storage(O, src)
-		T.update_icon()
-		update()
-		return
+
+	if(isstorage(I))
+		var/obj/item/storage/S = I
+		if(length(S.contents) > 0)
+			to_chat(user, SPAN_NOTICE("You empty [S] into [src]."))
+			for(var/obj/item/O in S.contents)
+				S.remove_from_storage(O, src)
+			S.update_icon()
+			update()
+			return
 
 	var/obj/item/grab/G = I
 	if(istype(G)) //Handle grabbed mob

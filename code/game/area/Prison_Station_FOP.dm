@@ -385,7 +385,7 @@
 	name = "\improper Morgue"
 	icon_state = "morgue"
 
-/area/prison/research/
+/area/prison/research
 	name = "\improper Biological Research Department"
 	icon_state = "research"
 	is_resin_allowed = FALSE
@@ -395,7 +395,7 @@
 	icon_state = "disposal"
 	is_resin_allowed = FALSE
 
-/area/prison/research/secret/
+/area/prison/research/secret
 	name = "\improper Classified Research"
 	icon_state = "toxlab"
 	is_resin_allowed = TRUE

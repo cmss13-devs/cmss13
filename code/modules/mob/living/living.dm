@@ -29,6 +29,8 @@
 	QDEL_NULL(attack_icon)
 	QDEL_NULL(event_zoomout)
 	QDEL_NULL(event_movement)
+	QDEL_NULL(pain)
+	QDEL_NULL(stamina)
 
 	. = ..()
 
@@ -103,12 +105,12 @@
 
 		for(var/obj/item/gift/G in Storage.return_inv()) //Check for gift-wrapped items
 			L += G.gift
-			if(istype(G.gift, /obj/item/storage))
+			if(isstorage(G.gift))
 				L += get_contents(G.gift)
 
 		for(var/obj/item/smallDelivery/D in Storage.return_inv()) //Check for package wrapped items
 			L += D.wrapped
-			if(istype(D.wrapped, /obj/item/storage)) //this should never happen
+			if(isstorage(D.wrapped)) //this should never happen
 				L += get_contents(D.wrapped)
 		return L
 
@@ -120,12 +122,12 @@
 
 		for(var/obj/item/gift/G in src.contents) //Check for gift-wrapped items
 			L += G.gift
-			if(istype(G.gift, /obj/item/storage))
+			if(isstorage(G.gift))
 				L += get_contents(G.gift)
 
 		for(var/obj/item/smallDelivery/D in src.contents) //Check for package wrapped items
 			L += D.wrapped
-			if(istype(D.wrapped, /obj/item/storage)) //this should never happen
+			if(isstorage(D.wrapped)) //this should never happen
 				L += get_contents(D.wrapped)
 		return L
 
@@ -384,8 +386,8 @@
 			L.Move(oldloc)
 			Move(oldLloc)
 
-			remove_temp_pass_flags(SETUP_LIST_FLAGS(PASS_MOB_THRU))
-			L.remove_temp_pass_flags(SETUP_LIST_FLAGS(PASS_MOB_THRU))
+			remove_temp_pass_flags(PASS_MOB_THRU)
+			L.remove_temp_pass_flags(PASS_MOB_THRU)
 
 			now_pushing = FALSE
 			return
@@ -398,6 +400,10 @@
 	..()
 
 /mob/living/launch_towards(var/datum/launch_metadata/LM)
+	if(src && event_movement)
+		var/datum/event_args/mob_movement/ev_args = new /datum/event_args/mob_movement()
+		ev_args.moving = TRUE
+		event_movement.fire_event(src, ev_args)
 	if(!istype(LM) || !LM.target || !src || buckled)
 		return
 	if(pulling)

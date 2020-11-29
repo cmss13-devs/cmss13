@@ -186,6 +186,11 @@
 	path = /obj/item/reagent_container/glass/beaker/large
 	category = "Glassware"
 
+/datum/autolathe/recipe/drinkingglass
+	name = "drinking glass"
+	path = /obj/item/reagent_container/food/drinks/drinkingglass
+	category = "Glassware"
+
 /datum/autolathe/recipe/consolescreen
 	name = "console screen"
 	path = /obj/item/stock_parts/console_screen
@@ -318,8 +323,37 @@
 	path = /obj/item/reagent_container/spray
 
 /datum/autolathe/recipe/medilathe/autoinjector
-	name = "autoinjector"
+	name = "autoinjector (C-T) (5x3)"
 	path = /obj/item/reagent_container/hypospray/autoinjector/empty
+	category = "Injectors"
+
+/datum/autolathe/recipe/medilathe/autoinjector/s15x3
+	name = "autoinjector (C-S) (15x3)"
+	path = /obj/item/reagent_container/hypospray/autoinjector/empty/small
+
+/datum/autolathe/recipe/medilathe/autoinjector/s30x3
+	name = "autoinjector (C-M) (30x3)"
+	path = /obj/item/reagent_container/hypospray/autoinjector/empty/medium
+
+datum/autolathe/recipe/medilathe/autoinjector/s60x3
+	name = "autoinjector (C-L) (60x3)"
+	path = /obj/item/reagent_container/hypospray/autoinjector/empty/large
+
+datum/autolathe/recipe/medilathe/autoinjector/s15x1
+	name = "EZ autoinjector (E-T) (15x1)"
+	path = /obj/item/reagent_container/hypospray/autoinjector/empty/skillless
+
+datum/autolathe/recipe/medilathe/autoinjector/s45x1
+	name = "EZ autoinjector (E-Z) (45x1)"
+	path = /obj/item/reagent_container/hypospray/autoinjector/empty/skillless/small
+
+datum/autolathe/recipe/medilathe/autoinjector/s15x6
+	name = "Medic autoinjector (M-M) (15x6)"
+	path = /obj/item/reagent_container/hypospray/autoinjector/empty/medic
+
+datum/autolathe/recipe/medilathe/autoinjector/s30x6
+	name = "Medic Autoinjector (M-L) (30x6)"
+	path = /obj/item/reagent_container/hypospray/autoinjector/empty/medic/large
 
 /datum/autolathe/recipe/medilathe/hypospray
 	name = "hypospray"
@@ -393,4 +427,9 @@
 /datum/autolathe/recipe/medilathe/surgical_tray
 	name = "surgical tray"
 	path = /obj/item/storage/surgical_tray/empty
+	category = "Medical Containers"
+
+/datum/autolathe/recipe/medilathe/pressurized_reagent_container
+	name = "Pressurized Reagent Container"
+	path = /obj/item/storage/pouch/pressurized_reagent_canister
 	category = "Medical Containers"

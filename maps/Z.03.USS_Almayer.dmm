@@ -38997,10 +38997,7 @@
 /turf/open/floor/almayer,
 /area/almayer/living/port_emb)
 "dvg" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_10";
-	tag = "icon-plant-10"
-	},
+/obj/structure/reagent_dispensers/fueltank/custom,
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_corner";
@@ -45394,7 +45391,7 @@
 	},
 /area/almayer/engineering/engineering_workshop/hangar)
 "kHB" = (
-/obj/structure/machinery/vending/cola,
+/obj/structure/machinery/vending/cola/research,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side";
 	tag = "icon-sterile"
@@ -45842,6 +45839,7 @@
 	},
 /area/almayer/command/airoom)
 "lmE" = (
+/obj/structure/reagent_dispensers/fueltank/custom,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_side";
@@ -48642,6 +48640,7 @@
 /area/almayer/shipboard/weapon_room)
 "oiY" = (
 /obj/structure/machinery/light,
+/obj/structure/machinery/iv_drip,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side";
 	tag = "icon-sterile"
@@ -53183,7 +53182,7 @@
 	},
 /area/almayer/squads/req)
 "tjn" = (
-/obj/structure/machinery/iv_drip,
+/obj/structure/reagent_dispensers/fueltank/custom,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side";
 	tag = "icon-sterile"

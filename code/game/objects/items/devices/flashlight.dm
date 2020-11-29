@@ -73,7 +73,7 @@
 		if(on)
 			to_chat(user, SPAN_WARNING("Turn off [src] first."))
 			return
-		if(istype(loc, /obj/item/storage))
+		if(isstorage(loc))
 			var/obj/item/storage/S = loc
 			S.remove_from_storage(src)
 		if(loc == user)
@@ -220,7 +220,7 @@
 	..()
 
 /obj/item/device/flashlight/flare/Destroy()
-	processing_objects -= src
+	STOP_PROCESSING(SSobj, src)
 	return ..()
 
 /obj/item/device/flashlight/flare/process()
@@ -230,7 +230,7 @@
 		if(!fuel)
 			icon_state = "[initial(icon_state)]-empty"
 			add_to_garbage(src)
-		processing_objects -= src
+		STOP_PROCESSING(SSobj, src)
 
 /obj/item/device/flashlight/flare/proc/turn_off()
 	on = 0
@@ -260,7 +260,7 @@
 		force = on_damage
 		heat_source = 1500
 		damtype = "fire"
-		processing_objects += src
+		START_PROCESSING(SSobj, src)
 		var/mob/living/carbon/U = user
 		if(istype(U) && !U.throw_mode)
 			U.toggle_throw_mode(THROW_MODE_NORMAL)
@@ -275,7 +275,7 @@
 		update_brightness()
 		force = on_damage
 		damtype = "fire"
-		processing_objects += src
+		START_PROCESSING(SSobj, src)
 
 /obj/item/device/flashlight/slime
 	gender = PLURAL
@@ -317,8 +317,8 @@
 	var/faction = ""
 	var/datum/cas_signal/signal
 
-/obj/item/device/flashlight/flare/signal/New()
-	..()
+/obj/item/device/flashlight/flare/signal/Initialize()
+	. = ..()
 	fuel = rand(80, 100)
 
 /obj/item/device/flashlight/flare/signal/attack_self(mob/living/carbon/human/user)
@@ -344,7 +344,7 @@
 	force = on_damage
 	heat_source = 1500
 	damtype = "fire"
-	processing_objects += src
+	START_PROCESSING(SSobj, src)
 	faction = user.faction
 	addtimer(CALLBACK(src, .proc/activate_signal, user), SECONDS_5)
 
@@ -357,8 +357,8 @@
 		cas_groups[user.faction].add_signal(signal)
 		anchored = TRUE
 		visible_message(SPAN_DANGER("[src]'s flame reaches full strength. It's fully active now."), null, 5)
-		msg_admin_niche("[src] has been activated by [key_name(user, 1)] at ([x], [y], [z]). (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP</a>)")
-		log_game("[src] has been activated by [key_name(user, 1)] at ([x], [y], [z]).")
+		msg_admin_niche("Flare target [src] has been activated by [key_name(user, 1)] at ([x], [y], [z]). (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP LOC</a>)")
+		log_game("Flare target [src] has been activated by [key_name(user, 1)] at ([x], [y], [z]).")
 
 /obj/item/device/flashlight/flare/signal/attack_hand(mob/user)
 	if (!user) return
@@ -369,10 +369,11 @@
 	..()
 
 /obj/item/device/flashlight/flare/signal/Destroy()
+	STOP_PROCESSING(SSobj, src)
 	if(signal)
 		cas_groups[faction].remove_signal(signal)
 		qdel(signal)
-	..()
+	return ..()
 
 /obj/item/device/flashlight/flare/signal/turn_off()
 	anchored = FALSE

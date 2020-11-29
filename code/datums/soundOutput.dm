@@ -24,9 +24,6 @@
 		var/turf/owner_turf = get_turf(owner.mob)
 		if(owner_turf)
 			if(T.z != owner_turf.z && owner_turf.z == interior_manager.interior_z)	//if we are in interior and hear sound from outside
-				S.x = owner_turf.x
-				S.y = owner_turf.y
-				S.z = owner_turf.z
 				S.falloff = T.falloff
 				S.volume *= 0.5
 			else
@@ -106,35 +103,36 @@
 		S.status = SOUND_UPDATE
 		sound_to(owner, S)
 
+/client/proc/adjust_volume_prefs(var/volume_key, var/prompt = "", var/channel_update = 0)
+	volume_preferences[volume_key]	= (input(prompt, "Volume", volume_preferences[volume_key]*100) as num) / 100
+	if(volume_preferences[volume_key] > 1)
+		volume_preferences[volume_key] = 1
+	if(volume_preferences[volume_key] < 0)
+		volume_preferences[volume_key] = 0
+	if(channel_update)
+		var/sound/S = sound()
+		S.channel = channel_update
+		S.volume = 100 * volume_preferences[volume_key]
+		S.status = SOUND_UPDATE
+		sound_to(src, S)	
+
 /client/verb/adjust_volume_sfx()
 	set name = "S : Adjust Volume SFX"
 	set category = "Preferences"
-	volume_preferences[VOLUME_SFX]	= (input("Set the volume for sound effects", "Volume", volume_preferences[VOLUME_SFX]*100) as num) / 100
-	if(volume_preferences[VOLUME_SFX] > 1)
-		volume_preferences[VOLUME_SFX] = 1
-	if(volume_preferences[VOLUME_SFX] < 0)
-		volume_preferences[VOLUME_SFX] = 0
+	adjust_volume_prefs(VOLUME_SFX, "Set the volume for sound effects", 0)
 			
 /client/verb/adjust_volume_ambience()
 	set name = "S : Adjust Volume Ambience"
 	set category = "Preferences"
-	volume_preferences[VOLUME_AMB]	= (input("Set the volume for ambience sounds and music", "Volume", volume_preferences[VOLUME_AMB]*100) as num) / 100
-	if(volume_preferences[VOLUME_AMB] > 1)
-		volume_preferences[VOLUME_AMB] = 1
-	if(volume_preferences[VOLUME_AMB] < 0)
-		volume_preferences[VOLUME_AMB] = 0			
+	adjust_volume_prefs(VOLUME_AMB, "Set the volume for ambience and soundscapes", 0)
 	soundOutput.update_ambience()
 
 /client/verb/adjust_volume_admin_music()
-	set name = "S : Adjust Volume Admin Music"
+	set name = "S : Adjust Volume Admin MIDIs"
 	set category = "Preferences"
-	volume_preferences[VOLUME_ADM]	= (input("Set the volume for admin music", "Volume", volume_preferences[VOLUME_ADM] *100) as num) / 100
-	if(volume_preferences[VOLUME_ADM] > 1)
-		volume_preferences[VOLUME_ADM] = 1
-	if(volume_preferences[VOLUME_ADM] < 0)
-		volume_preferences[VOLUME_ADM] = 0	
-	var/sound/S = sound()
-	S.channel = SOUND_CHANNEL_ADMIN_MIDI
-	S.volume = 100 * volume_preferences[VOLUME_ADM]
-	S.status = SOUND_UPDATE
-	sound_to(src, S)
+	adjust_volume_prefs(VOLUME_ADM, "Set the volume for admin MIDIs", SOUND_CHANNEL_ADMIN_MIDI)
+
+/client/verb/adjust_volume_lobby_music()
+	set name = "S : Adjust Volume LobbyMusic"
+	set category = "Preferences"
+	adjust_volume_prefs(VOLUME_LOBBY, "Set the volume for Lobby Music", SOUND_CHANNEL_LOBBY)

@@ -10,7 +10,7 @@
 /obj/structure/showcase/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
 	if (PF)
-		PF.flags_can_pass_all = SETUP_LIST_FLAGS(PASS_HIGH_OVER_ONLY)
+		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY
 
 /obj/structure/showcase/bullet_act(var/obj/item/projectile/P)
 	var/damage = P.damage
@@ -120,7 +120,7 @@ obj/structure/xenoautopsy/tank/larva
 
 /obj/item/alienjar/Initialize(mapload, ...)
 	. = ..()
-	
+
 	var/image/I
 	I = image('icons/obj/structures/props/alien_autopsy.dmi', "sample_[rand(0,11)]")
 	I.layer = src.layer - 0.1
@@ -164,7 +164,7 @@ obj/structure/xenoautopsy/tank/larva
 /obj/structure/ore_box/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
 	if (PF)
-		PF.flags_can_pass_all = SETUP_LIST_FLAGS(PASS_HIGH_OVER_ONLY, PASS_OVER_THROW_ITEM)
+		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_OVER_THROW_ITEM
 
 /obj/structure/computer3frame
 	density = 1

@@ -25,13 +25,13 @@
 	update_icon()
 
 	if(shardtype)
-		debris += shardtype
+		LAZYADD(debris, shardtype)
 
 	if(reinf)
-		debris += /obj/item/stack/rods
+		LAZYADD(debris, /obj/item/stack/rods)
 
 	if(is_full_window())
-		debris += shardtype
+		LAZYADD(debris, shardtype)
 		update_nearby_icons()
 
 /obj/structure/window/Destroy()
@@ -43,7 +43,7 @@
 /obj/structure/window/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
 	if (PF)
-		PF.flags_can_pass_all = SETUP_LIST_FLAGS(PASS_HIGH_OVER_ONLY, PASS_GLASS)
+		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_GLASS
 
 /obj/structure/window/proc/set_constructed_window(start_dir)
 	state = 0
@@ -99,7 +99,7 @@
 		return
 	if(health <= 0)
 		if(user && istype(user))
-			user.count_niche_stat(STATISTICS_NICHE_DESCTRUCTION_WINDOWS, 1)
+			user.count_niche_stat(STATISTICS_NICHE_DESTRUCTION_WINDOWS, 1)
 			SEND_SIGNAL(user, COMSIG_MOB_DESTROY_WINDOW, src)
 			user.visible_message(SPAN_DANGER("[user] smashes through [src][AM ? " with [AM]":""]!"))
 		if(make_shatter_sound)
@@ -127,18 +127,21 @@
 
 	health -= severity * EXPLOSION_DAMAGE_MULTIPLIER_WINDOW
 
-	switch(health)
-		if(0 to INFINITY)
-			healthcheck(0, 1, user = source_mob)
-		if(-2000 to 0)
-			var/location = get_turf(src)
-			playsound(src, "shatter", 50, 1)
-			handle_debris(severity,explosion_direction)
-			qdel(src)
-			create_shrapnel(location, rand(1,5), explosion_direction, , /datum/ammo/bullet/shrapnel/light/glass)
-		else
-			handle_debris(severity,explosion_direction)
-			qdel(src)
+	if(health > 0)
+		healthcheck(FALSE, TRUE, user = source_mob)
+		return
+
+	if(health >= -2000)
+		var/location = get_turf(src)
+		playsound(src, "shatter", 50, 1)
+		create_shrapnel(location, rand(1,5), explosion_direction, shrapnel_type = /datum/ammo/bullet/shrapnel/light/glass)
+
+	if(source_mob)
+		source_mob.count_niche_stat(STATISTICS_NICHE_DESTRUCTION_WINDOWS, 1)
+		SEND_SIGNAL(source_mob, COMSIG_MOB_WINDOW_EXPLODED, src)
+
+	handle_debris(severity, explosion_direction)
+	qdel(src)
 	return
 
 /obj/structure/window/get_explosion_resistance(direction)
@@ -229,12 +232,12 @@
 					if(!not_damageable) //Impossible to destroy
 						health -= 25
 				if(GRAB_CHOKE)
-					M.visible_message(SPAN_DANGER("[user] crushes [M] against \the [src]!"))	
+					M.visible_message(SPAN_DANGER("[user] crushes [M] against \the [src]!"))
 					M.KnockDown(5)
 					M.apply_damage(20)
 					if(!not_damageable) //Impossible to destroy
 						health -= 50
-					
+
 			healthcheck(1, 1, 1, M) //The person thrown into the window literally shattered it
 		return
 
@@ -469,7 +472,7 @@
 /obj/structure/window/framed/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
 	if (PF)
-		PF.flags_can_pass_all = SETUP_LIST_FLAGS(PASS_GLASS)
+		PF.flags_can_pass_all = PASS_GLASS
 
 /obj/structure/window/framed/update_nearby_icons()
 	relativewall_neighbours()
@@ -483,17 +486,22 @@
 
 	health -= severity * EXPLOSION_DAMAGE_MULTIPLIER_WINDOW
 
-	switch(health)
-		if(0 to INFINITY)
-			healthcheck(0, 1, user = source_mob)
-		if(-3000 to 0)
-			var/location = get_turf(src)
-			playsound(src, "shatter", 50, 1)
-			handle_debris(severity,explosion_direction)
-			shatter_window(0)
-			create_shrapnel(location, rand(1,5), explosion_direction, , /datum/ammo/bullet/shrapnel/light/glass)
-		else
-			qdel(src)
+	if(health > 0)
+		healthcheck(FALSE, TRUE, user = source_mob)
+		return
+
+	if(source_mob)
+		source_mob.count_niche_stat(STATISTICS_NICHE_DESTRUCTION_WINDOWS, 1)
+		SEND_SIGNAL(source_mob, COMSIG_MOB_EXPLODE_W_FRAME, src)
+
+	if(health >= -3000)
+		var/location = get_turf(src)
+		playsound(src, "shatter", 50, 1)
+		handle_debris(severity, explosion_direction)
+		shatter_window(0)
+		create_shrapnel(location, rand(1,5), explosion_direction, , /datum/ammo/bullet/shrapnel/light/glass)
+	else
+		qdel(src)
 	return
 
 
@@ -897,5 +905,5 @@
 			P.dir = 2
 		else
 			P.dir = 4
-	
+
 	INVOKE_ASYNC(P, /obj/structure/machinery/door.proc/close)

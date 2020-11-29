@@ -18,6 +18,7 @@
 	var/handheld_type = /obj/item/defenses/handheld
 	var/disassemble_time = 20
 	var/static = FALSE
+	var/locked = FALSE
 
 /obj/structure/machinery/defenses/New(var/loc, var/faction)
 	..(loc)
@@ -29,9 +30,13 @@
 
 /obj/structure/machinery/defenses/update_icon()
 	if(turned_on)
-		icon_state = "defense_base"
+		icon_state = "defense_base_on"
 	else
 		icon_state = "defense_base_off"
+	if(locked)
+		icon_state += "_locked"
+	else
+		icon_state += "_unlocked"
 
 /obj/structure/machinery/defenses/examine(mob/user)
 	. = ..()
@@ -39,6 +44,8 @@
 	if(ishuman(user))
 		var/message = ""
 		message += SPAN_INFO("Multitool is used to disassemble it.")
+		message += "\n"
+		message += SPAN_INFO("The turret is currently [locked? "locked" : "unlocked"] to non-engineers.")
 		message += "\n"
 		message += SPAN_INFO("It has [SPAN_HELPFUL("[health]/[health_max]")] health.")
 		to_chat(user, message)
@@ -149,10 +156,6 @@
 	return TRUE
 
 /obj/structure/machinery/defenses/attack_hand(var/mob/user)
-	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
-		to_chat(user, SPAN_WARNING("You don't have the training to do this."))
-		return
-
 	if(isYautja(user))
 		to_chat(user, SPAN_WARNING("You punch [src] but nothing happens."))
 		return
@@ -162,6 +165,14 @@
 	if(!anchored)
 		to_chat(user, SPAN_WARNING("It must be anchored to the ground before you can activate it."))
 		return
+
+	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+		if(locked)
+			to_chat(user, SPAN_WARNING("The control panel on [src] is locked to non-engineers."))
+			return
+		user.visible_message(SPAN_NOTICE("[user] begins switching the [src] [turned_on? "off" : "on"]."), SPAN_NOTICE("You begin switching the [src] [turned_on? "off" : "on"]."))
+		if(!(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, src)))
+			return
 
 	if(!turned_on)
 		power_on()
@@ -251,3 +262,20 @@
 		owner_mob = null
 
 	. = ..()
+
+/obj/structure/machinery/defenses/verb/toggle_turret_locks_verb()
+	set name = "Toggle Turret Lock"
+	set desc = "Toggles allowing non-engineers to turn turrets on and off"
+	set category = "Object"
+	set src in view(1)
+	if(static)
+		return
+	if(!ishuman(usr))
+		return
+	if(!skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+		to_chat(usr, SPAN_WARNING("You don't have the training to do this."))
+		return
+
+	locked = !locked
+	to_chat(usr, SPAN_NOTICE("You [locked? "lock" : "unlock"] [src] to non-engineers."))
+	update_icon()

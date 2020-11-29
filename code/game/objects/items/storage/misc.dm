@@ -2,8 +2,7 @@
 	name = "pack of dice"
 	desc = "It's a small container with dice inside."
 
-/obj/item/storage/pill_bottle/dice/Initialize()
-		..()
+/obj/item/storage/pill_bottle/dice/fill_preset_inventory()
 		new /obj/item/toy/dice( src )
 		new /obj/item/toy/dice/d20( src )
 
@@ -22,12 +21,9 @@
 	can_hold = list(/obj/item/reagent_container/food/snacks/donut)
 	foldable = /obj/item/stack/sheet/cardboard
 
-/obj/item/storage/donut_box/Initialize()
-	. = ..()
+/obj/item/storage/donut_box/fill_preset_inventory()
 	for(var/i=1; i <= startswith; i++)
 		new /obj/item/reagent_container/food/snacks/donut/normal(src)
-	update_icon()
-	return
 
 /obj/item/storage/donut_box/attack_self(mob/user as mob)
 	var/message = "You [open ? "close [src]. Another time, then." : "open [src]. Mmmmm... donuts."]"
@@ -66,8 +62,7 @@
 	storage_slots = 4
 	can_hold = list(/obj/item/attachable/mateba, /obj/item/weapon/gun/revolver/mateba, /obj/item/weapon/mateba_key)
 
-/obj/item/storage/mateba_case/captain/Initialize()
-	. = ..()
+/obj/item/storage/mateba_case/captain/fill_preset_inventory()
 	new /obj/item/attachable/mateba/short(src)
 	new /obj/item/attachable/mateba/long(src)
 	new /obj/item/weapon/mateba_key(src)
@@ -77,8 +72,7 @@
 	name = "engraved mateba customization kit case"
 	desc = "An ebony black case used for storing the tools and parts needed to customize a mateba revolver. This variant is made for engraved Matebas and comes with golden barrel attachments."
 
-/obj/item/storage/mateba_case/commodore/Initialize()
-	. = ..()
+/obj/item/storage/mateba_case/commodore/fill_preset_inventory()
 	new /obj/item/attachable/mateba/short/dark(src)
 	new /obj/item/attachable/mateba/long/dark(src)
 	new /obj/item/weapon/mateba_key(src)
@@ -94,8 +88,7 @@
 	storage_slots = 6
 	can_hold = list(/obj/item/reagent_container/food/drinks/cans/aspen)
 
-/obj/item/storage/beer_pack/Initialize()
-	. = ..()
+/obj/item/storage/beer_pack/fill_preset_inventory()
 	for(var/i in 1 to 6)
 		new /obj/item/reagent_container/food/drinks/cans/aspen(src)
 

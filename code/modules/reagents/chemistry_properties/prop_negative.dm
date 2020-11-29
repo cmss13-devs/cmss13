@@ -12,6 +12,7 @@
 	code = "HPX"
 	description = "Reacts with hemoglobin in red blood cells preventing oxygen from being absorbed, resulting in hypoxemia."
 	rarity = PROPERTY_COMMON
+	value = -1
 
 /datum/chem_property/negative/hypoxemic/process(mob/living/M, var/potency = 1)
 	..()
@@ -31,6 +32,8 @@
 	code = "TXC"
 	description = "Poisonous substance which causes harm on contact with or through absorption by organic tissues, resulting in bad health or severe illness."
 	rarity = PROPERTY_COMMON
+	starter = TRUE
+	value = -1
 
 /datum/chem_property/negative/toxic/process(mob/living/M, var/potency = 1)
 	..()
@@ -47,6 +50,8 @@
 	code = "CRS"
 	description = "Damages or destroys other substances on contact through a chemical reaction. Causes chemical burns on contact with living tissue."
 	rarity = PROPERTY_COMMON
+	starter = TRUE
+	value = -1
 
 /datum/chem_property/negative/corrosive/process(mob/living/M, var/potency = 1)
 	..()
@@ -63,6 +68,8 @@
 	code = "BCD"
 	description = "Ruptures cell membranes on contact, destroying most types of organic tissue."
 	rarity = PROPERTY_COMMON
+	starter = TRUE
+	value = -1
 
 /datum/chem_property/negative/biocidic/process(mob/living/M, var/potency = 1)
 	..()
@@ -80,6 +87,7 @@
 	description = "Activates the somatosensory system causing neuropathic pain all over the body. Unlike nociceptive pain, this is not caused to any tissue damage and is solely perceptive."
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_STIMULANT
+	value = -1
 
 /datum/chem_property/negative/paining/on_delete(mob/living/M)
 	..()

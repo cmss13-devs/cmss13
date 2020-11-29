@@ -50,7 +50,7 @@
 /obj/structure/machinery/door/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
 	if (PF)
-		PF.flags_can_pass_all = list()
+		PF.flags_can_pass_all = NONE
 
 /obj/structure/machinery/door/proc/handle_multidoor()
 	if(width > 1)

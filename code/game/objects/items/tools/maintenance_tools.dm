@@ -25,7 +25,7 @@
 	throwforce = 7.0
 	w_class = SIZE_SMALL
 	matter = list("metal" = 150)
-	
+
 	attack_verb = list("bashed", "battered", "bludgeoned", "whacked")
 
 
@@ -77,7 +77,7 @@
 	return
 
 /obj/item/tool/screwdriver/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
-	if(!istype(M))	
+	if(!istype(M))
 		return ..()
 	if(user.zone_selected != "eyes") // && user.zone_selected != "head")
 		return ..()
@@ -108,7 +108,7 @@
 	throw_range = 9
 	w_class = SIZE_SMALL
 	matter = list("metal" = 80)
-	
+
 	attack_verb = list("pinched", "nipped")
 	sharp = IS_SHARP_ITEM_SIMPLE
 	edge = 1
@@ -146,7 +146,7 @@
 	matter = list("metal" = 70, "glass" = 30)
 
 	//R&D tech level
-	
+
 
 	//blowtorch specific stuff
 	var/welding = 0 	//Whether or not the blowtorch is off(0), on(1) or currently welding(2)
@@ -166,7 +166,7 @@
 			loc.SetLuminosity(-2)
 		else
 			SetLuminosity(0)
-		processing_objects.Remove(src)
+		STOP_PROCESSING(SSobj, src)
 	. = ..()
 
 /obj/item/tool/weldingtool/examine(mob/user)
@@ -177,7 +177,7 @@
 
 /obj/item/tool/weldingtool/process()
 	if(QDELETED(src))
-		processing_objects.Remove(src)
+		STOP_PROCESSING(SSobj, src)
 		return
 	if(welding)
 		if(++weld_tick >= 20)
@@ -200,7 +200,7 @@
 		if(user.action_busy)
 			return
 		var/self_fixing = FALSE
-		
+
 		if(H.species.flags & IS_SYNTHETIC && M == user)
 			self_fixing = TRUE
 
@@ -308,7 +308,7 @@
 			icon_state = "welder1"
 			w_class = SIZE_LARGE
 			heat_source = 3800
-			processing_objects.Add(src)
+			START_PROCESSING(SSobj, src)
 		else
 			if(M)
 				to_chat(M, SPAN_WARNING("[src] needs more fuel!"))
@@ -333,7 +333,7 @@
 				M.update_inv_l_hand()
 		else
 			SetLuminosity(0)
-		processing_objects.Remove(src)
+		STOP_PROCESSING(SSobj, src)
 
 //Decides whether or not to damage a player's eyes based on what they're wearing as protection
 //Note: This should probably be moved to mob
@@ -395,21 +395,21 @@
 	name = "industrial blowtorch"
 	max_fuel = 40
 	matter = list("metal" = 70, "glass" = 60)
-	
+
 
 /obj/item/tool/weldingtool/hugetank
 	name = "high-capacity industrial blowtorch"
 	max_fuel = 80
 	w_class = SIZE_MEDIUM
 	matter = list("metal" = 70, "glass" = 120)
-	
+
 
 /obj/item/tool/weldingtool/experimental
 	name = "experimental blowtorch"
 	max_fuel = 40 //?
 	w_class = SIZE_MEDIUM
 	matter = list("metal" = 70, "glass" = 120)
-	
+
 	var/last_gen = 0
 
 /obj/item/tool/weldingtool/experimental/proc/fuel_gen()//Proc to make the experimental welder generate fuel, optimized as fuck -Sieve
@@ -434,7 +434,7 @@
 	item_state = "crowbar"
 	w_class = SIZE_SMALL
 	matter = list("metal" = 50)
-	
+
 	attack_verb = list("attacked", "bashed", "battered", "bludgeoned", "whacked")
 	pry_capable = IS_PRY_CAPABLE_CROWBAR
 

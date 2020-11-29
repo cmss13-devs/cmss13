@@ -59,6 +59,8 @@
 	var/weapon_source
 	var/weapon_source_mob
 
+	var/mob/living/homing_target = null
+
 /obj/item/projectile/New(var/source, var/source_mob)
 	..()
 	path = list()
@@ -171,8 +173,19 @@
 	rotate.Turn(angle)
 	apply_transform(rotate)
 
+	var/homing_projectile = homing_target && ammo_flags & AMMO_HOMING
+	if(homing_projectile)
+		var/mob/living/ht = homing_target //Dead or friendly target can't get it, so the homing get stucks.
+		if(ht.is_dead())
+			homing_target = null
+			homing_projectile = FALSE
+		if(ishuman(ht))
+			var/mob/living/carbon/human/H = ht
+			if(!isnull(iff_group) && H.get_target_lock(iff_group))
+				homing_target = null
+				homing_projectile = FALSE
 
-	follow_flightpath(speed,change_x,change_y,range) //pyew!
+	follow_flightpath(speed,change_x,change_y,range, homing_projectile) //pyew!
 
 /obj/item/projectile/proc/each_turf(speed = 1)
 	var/new_speed = speed
@@ -188,7 +201,7 @@
 				if(distance_travelled > 8) new_speed++
 	return new_speed //Need for speed.
 
-/obj/item/projectile/proc/follow_flightpath(speed = 1, change_x, change_y, range) //Everytime we reach the end of the turf list, we slap a new one and keep going.
+/obj/item/projectile/proc/follow_flightpath(speed = 1, change_x, change_y, range, homing = FALSE) //Everytime we reach the end of the turf list, we slap a new one and keep going.
 	set waitfor = 0
 
 	var/dist_since_sleep = 5 //Just so we always see the bullet.
@@ -197,6 +210,7 @@
 	var/turf/next_turf
 	var/this_iteration = 0
 	in_flight = 1
+
 	for(next_turf in path)
 		if(!loc || QDELETED(src) || !in_flight)
 			return
@@ -234,6 +248,18 @@
 			sleep(1)
 
 		current_turf = get_turf(src)
+
+		if(homing && !QDELETED(homing_target) && path && this_iteration >= (length(path)/ 2))
+			path = getline2(current_turf, homing_target)
+			speed *= 2 // Bullet needs to become inescapable quicker otherwise you get stuck with wonky projectiles just following people about.
+			if(length(path) > 0 && src)
+
+				if(length(path) < speed) // The projectile "should" connect with the target next tick. Either way, it loses guidances.
+					homing = FALSE
+
+				distance_travelled--
+				follow_flightpath(speed, change_x, change_y, range, homing) //Onwards!
+				return
 		if(path && this_iteration == path.len)
 			next_turf = locate(current_turf.x + change_x, current_turf.y + change_y, current_turf.z)
 			if(current_turf && next_turf)

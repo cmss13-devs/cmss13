@@ -173,7 +173,7 @@
 		sleep(delay)
 
 	//done throwing, either because it hit something or it finished moving
-	if (isobj(src) && throwing && !early_exit)
+	if ((isobj(src) || ismob(src)) && throwing && !early_exit)
 		var/turf/T = get_turf(src)
 		if(!istype(T))
 			return

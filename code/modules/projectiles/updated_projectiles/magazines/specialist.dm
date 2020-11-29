@@ -4,7 +4,7 @@
 
 /obj/item/ammo_magazine/sniper
 	name = "\improper M42A marksman magazine (10x28mm Caseless)"
-	desc = "A magazine of sniper rifle ammo."
+	desc = "A magazine of sniper rifle ammo. An aimed shot with it will deal significant damage."
 	caliber = "10x28mm"
 	icon_state = "m42c" //PLACEHOLDER
 	w_class = SIZE_MEDIUM
@@ -14,11 +14,13 @@
 
 /obj/item/ammo_magazine/sniper/incendiary
 	name = "\improper M42A incendiary magazine (10x28mm)"
+	desc = "A magazine of sniper rifle ammo. An aimed shot with it will temporarily blind the targe and kindle the blaze further."
 	default_ammo = /datum/ammo/bullet/sniper/incendiary
 	icon_state = "m42c_incen"
 
 /obj/item/ammo_magazine/sniper/flak
 	name = "\improper M42A flak magazine (10x28mm)"
+	desc = "A magazine of sniper rifle ammo. An aimed shot with it will temporarily slow the target and minimize the backlash."
 	default_ammo = /datum/ammo/bullet/sniper/flak
 	icon_state = "m42c_flak"
 
@@ -116,7 +118,7 @@
 	desc = "A rocket tube loaded with a HE warhead. Deals high damage to soft targets on direct hit and stuns most targets in a 5-meter wide area for a short time. Has decreased effect on heavily armored targets."
 	caliber = "rocket"
 	icon_state = "rocket"
-	
+
 	reload_delay = 60
 	matter = list("metal" = 10000)
 	w_class = SIZE_MEDIUM
@@ -294,7 +296,7 @@
 	desc = "A thermobaric rocket tube for an M57-A4 quad launcher with 4 warheads."
 	caliber = "rocket array"
 	icon_state = "quad_rocket"
-	
+
 	max_rounds = 4
 	default_ammo = /datum/ammo/rocket/wp/quad
 	gun_type = /obj/item/weapon/gun/launcher/rocket/m57a4

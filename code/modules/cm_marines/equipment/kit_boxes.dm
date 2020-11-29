@@ -180,7 +180,6 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 /obj/item/spec_kit/asrs/attack_self(mob/user)
 	if(user.job == JOB_SQUAD_MARINE)
 		if (select_and_spawn(user))
-			user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_TRAINED)
 			qdel(src)
 	else
 		to_chat(user, SPAN_NOTICE("This box is not for you, give it to a squad marine!"))
@@ -197,22 +196,27 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 		if("Pyro")
 			new /obj/item/storage/box/spec/pyro (T)
 			kits["Pyro"] --
+			user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_PYRO)
 			return TRUE
 		if("Grenadier")
 			new /obj/item/storage/box/spec/heavy_grenadier (T)
 			kits["Grenadier"] --
+			user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_GRENADIER)
 			return TRUE
 		if("Sniper")
 			new /obj/item/storage/box/spec/sniper (T)
 			kits["Sniper"] --
+			user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_SNIPER)
 			return TRUE
 		if("Scout")
 			new /obj/item/storage/box/spec/scout (T)
 			kits["Scout"] --
+			user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_SCOUT)
 			return TRUE
 		if("Demo")
 			new /obj/item/storage/box/spec/demolitionist (T)
 			kits["Demo"] --
+			user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_ROCKET)
 			return TRUE
 	return FALSE
 

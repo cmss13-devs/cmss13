@@ -89,4 +89,5 @@
 	med_hud_set_status()
 
 	update_icons()
+	SEND_SIGNAL(src, COMSIG_MOB_DEATH, cause, gibbed, deathmessage)
 	return 1

@@ -67,6 +67,16 @@
 #define COMSIG_MOB_APC_CUT_WIRE "mob_apc_cut_wire"
 /// From /obj/structure/machinery/power/apc/proc/pulse
 #define COMSIG_MOB_APC_POWER_PULSE "mob_apc_power_pulse"
+/// From /obj/structure/machinery/power/apc/proc/pulse
+#define COMSIG_MOB_FIRED_GUN "mob_fired_gun"
+/// From /projectiles/updated_projectiles/guns/proc/fire
+#define COMSIG_MOB_FIRED_GUN_ATTACHMENT "mob_fired_gun_attachment"
+/// From /projectiles/updated_projectiles/guns/proc/fire_attachment
+#define COMSIG_MOB_DEATH "mob_death"
+/// From /mob/proc/death
+#define COMSIG_MOB_GETTING_UP "mob_getting_up"
+/// From /mob/proc/update_canmove()
+
 
 /// For when a mob is dragged
 #define COMSIG_MOB_DRAGGED "mob_dragged"

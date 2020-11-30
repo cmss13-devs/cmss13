@@ -56,6 +56,9 @@
 
 	hud_possible = list(XENO_STATUS_HUD)
 	var/mob/is_watching
+	var/next_point = 0
+
+	var/point_delay = 1 SECOND
 
 
 /mob/hologram/queen/Initialize(mapload, mob/M)
@@ -65,6 +68,9 @@
 	var/mob/living/carbon/Xenomorph/Queen/Q = M
 	if(!Q.ovipositor)
 		return INITIALIZE_HINT_QDEL
+
+	// Make sure to turn off any previous overwatches
+	Q.overwatch(stop_overwatch = TRUE)
 
 	. = ..(mapload, M)
 	RegisterSignal(Q, COMSIG_MOB_PRE_CLICK, .proc/handle_overwatch)
@@ -87,6 +93,9 @@
 	qdel(src)
 
 /mob/hologram/queen/handle_move(mob/living/carbon/Xenomorph/X, NewLoc, direct)
+	if(is_watching && (turf_weed_only(src, is_watching.loc) & COMPONENT_TURF_DENY_MOVEMENT))
+		return COMPONENT_OVERRIDE_MOVE
+
 	X.overwatch(stop_overwatch = TRUE)
 
 	return ..()
@@ -115,7 +124,7 @@
 				loc = T
 		UnregisterSignal(target, COMSIG_PARENT_QDELETING)
 
-	if(!isturf(loc))
+	if(!isturf(loc) || (turf_weed_only(src, loc) & COMPONENT_TURF_DENY_MOVEMENT))
 		loc = X.loc
 
 	is_watching = null
@@ -141,16 +150,33 @@
 
 /mob/hologram/queen/proc/handle_overwatch(var/mob/living/carbon/Xenomorph/Queen/Q, var/atom/A, var/mods)
 	SIGNAL_HANDLER
+
+	var/turf/T = get_turf(A)
+	if(!istype(T))
+		return
+
+	if(mods["shift"] && mods["middle"])
+		if(next_point > world.time)
+			return COMPONENT_INTERRUPT_CLICK
+
+		next_point = world.time + point_delay
+		
+		var/message = SPAN_XENONOTICE("[Q] points at [A].")
+
+		to_chat(Q, message)
+		for(var/mob/living/carbon/Xenomorph/X in viewers(7, src))
+			if(X == Q) continue
+			to_chat(X, message)
+
+		new /obj/effect/overlay/temp/point/big/queen(T, src)
+		return COMPONENT_INTERRUPT_CLICK
+
 	if(!mods["ctrl"])
 		return
 	
 	if(isXeno(A))
 		Q.overwatch(A)
 		return COMPONENT_INTERRUPT_CLICK
-
-	var/turf/T = get_turf(A)
-	if(!istype(T))
-		return
 
 	if(!(turf_weed_only(src, T) & COMPONENT_TURF_ALLOW_MOVEMENT))
 		return

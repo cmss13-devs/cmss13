@@ -69,21 +69,64 @@
 	var/turf/T1 = loc
 	var/turf/T2 = M.loc
 
-	if(!T2.x || !T2.y)
-		return
+	if(T2.x && T2.y)
+		var/dist_x = (T2.x - T1.x)
+		var/dist_y = (T2.y - T1.y)
 
-	var/dist_x = (T2.x - T1.x)
-	var/dist_y = (T2.y - T1.y)
-
-	pixel_x = dist_x * 32
-	pixel_y = dist_y * 32
-
-	animate(src, pixel_x = 0, pixel_y = 0, time = glide_time, easing = QUAD_EASING)
+		pixel_x = dist_x * 32
+		pixel_y = dist_y * 32
+		
+		animate(src, pixel_x = 0, pixel_y = 0, time = glide_time, easing = QUAD_EASING)
+	
 	QDEL_IN(src, effect_duration + glide_time)
 
 /obj/effect/overlay/temp/point/big
 	icon_state = "big_arrow"
 	effect_duration = SECONDS_4
+
+/obj/effect/overlay/temp/point/big/queen
+	icon_state = "big_arrow_queen"
+	invisibility = INVISIBILITY_MAXIMUM
+
+	var/list/client/clients
+	var/image/self_icon
+
+/obj/effect/overlay/temp/point/big/queen/proc/show_to_client(var/client/C)
+	if(!C)
+		return
+
+	C.images |= self_icon
+	clients |= C
+
+
+/obj/effect/overlay/temp/point/big/queen/Initialize(mapload, mob/owner)
+	. = ..()
+
+	self_icon = image(icon, src, icon_state = icon_state)
+	LAZYINITLIST(clients)
+
+	show_to_client(owner.client)
+
+	for(var/i in GLOB.observer_list)
+		var/mob/M = i
+		show_to_client(M.client)
+
+	for(var/i in GLOB.living_xeno_list)
+		var/mob/M = i
+		show_to_client(M.client)
+
+/obj/effect/overlay/temp/point/big/queen/Destroy()
+	for(var/i in clients)
+		var/client/C = i
+		if(!C) continue
+		
+		C.images -= self_icon
+		LAZYREMOVE(clients, C)
+	
+	clients = null
+	self_icon = null
+
+	return ..()
 
 //Special laser for coordinates, not for CAS
 /obj/effect/overlay/temp/laser_coordinate

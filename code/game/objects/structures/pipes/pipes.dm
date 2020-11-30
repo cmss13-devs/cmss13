@@ -117,7 +117,8 @@
 		playsound(src, pick('sound/effects/alien_ventcrawl1.ogg', 'sound/effects/alien_ventcrawl2.ogg'), 25, 1)
 		visible_message(SPAN_HIGHDANGER("You hear something squeezing through the ducts."))
 		to_chat(user, SPAN_NOTICE("You begin to climb out of [src]"))
-		INVOKE_ASYNC(src, .proc/animate_ventcrawl)
+		animate_ventcrawl()
+		user.remove_specific_pipe_image(src)
 		if(!do_after(user, 20, INTERRUPT_NO_NEEDHAND))
 			animate_ventcrawl_reset()
 			return

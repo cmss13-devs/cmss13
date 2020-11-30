@@ -272,7 +272,6 @@
 	//DISCONNECT//
 	//////////////
 /client/Del()
-	QDEL_NULL_LIST(qtrees)
 	QDEL_NULL(chatOutput)
 	QDEL_NULL(soundOutput)
 	if(prefs)

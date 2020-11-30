@@ -39,6 +39,7 @@
 /datum/equipment_preset/survivor/scientist/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/colonist(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/tox(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/black(H), WEAR_FEET)
 	if(map_tag in MAPS_COLD_TEMP)
 		add_ice_colony_survivor_equipment(H)
 	else
@@ -66,6 +67,7 @@
 
 /datum/equipment_preset/survivor/doctor/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/medical(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
 
 	if(map_tag in MAPS_COLD_TEMP)
 		add_ice_colony_survivor_equipment(H)
@@ -102,6 +104,7 @@
 /datum/equipment_preset/survivor/corporate/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/norm(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/black(H), WEAR_FEET)
 	if(map_tag in MAPS_COLD_TEMP)
 		add_ice_colony_survivor_equipment(H)
 	else
@@ -134,6 +137,7 @@
 /datum/equipment_preset/survivor/security/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/security/corp(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/sec(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
 	if(map_tag in MAPS_COLD_TEMP)
 		add_ice_colony_survivor_equipment(H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
@@ -155,6 +159,7 @@
 
 /datum/equipment_preset/survivor/prisoner/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/color/orange(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/orange(H), WEAR_FEET)
 
 	if(map_tag in MAPS_COLD_TEMP)
 		add_ice_colony_survivor_equipment(H)
@@ -179,6 +184,7 @@
 /datum/equipment_preset/survivor/civilian/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/pj/red(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/norm(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/black(H), WEAR_FEET)
 
 	if(map_tag in MAPS_COLD_TEMP)
 		add_ice_colony_survivor_equipment(H)
@@ -203,6 +209,7 @@
 /datum/equipment_preset/survivor/chef/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/colonist(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/norm(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
 
 	if(map_tag in MAPS_COLD_TEMP)
 		add_ice_colony_survivor_equipment(H)
@@ -233,6 +240,7 @@
 /datum/equipment_preset/survivor/botanist/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/colonist(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/hyd(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
 
 	if(map_tag in MAPS_COLD_TEMP)
 		add_ice_colony_survivor_equipment(H)
@@ -258,6 +266,7 @@
 /datum/equipment_preset/survivor/chaplain/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/chaplain(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/norm(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
 
 	if(map_tag in MAPS_COLD_TEMP)
 		add_ice_colony_survivor_equipment(H)
@@ -286,6 +295,7 @@
 
 /datum/equipment_preset/survivor/engineer/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/engineer(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
 
 	if(map_tag in MAPS_COLD_TEMP)
 		add_ice_colony_survivor_equipment(H)
@@ -311,6 +321,7 @@
 /datum/equipment_preset/survivor/gangleader/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/bandana(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/color/orange(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/orange(H), WEAR_FEET)
 
 	if(map_tag in MAPS_COLD_TEMP)
 		add_ice_colony_survivor_equipment(H)
@@ -335,6 +346,7 @@
 /datum/equipment_preset/survivor/miner/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/miner(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/norm(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
 
 	if(map_tag in MAPS_COLD_TEMP)
 		add_ice_colony_survivor_equipment(H)
@@ -360,6 +372,7 @@
 
 /datum/equipment_preset/survivor/salesman/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
 
 	if(map_tag in MAPS_COLD_TEMP)
 		add_ice_colony_survivor_equipment(H)
@@ -389,6 +402,7 @@
 
 /datum/equipment_preset/survivor/trucker/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/overalls(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
 
 	if(map_tag in MAPS_COLD_TEMP)
 		add_ice_colony_survivor_equipment(H)
@@ -423,6 +437,7 @@
 /datum/equipment_preset/survivor/colonial_marshall/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/CM_uniform(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/sec(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
 
 	if(map_tag in MAPS_COLD_TEMP)
 		add_ice_colony_survivor_equipment(H)

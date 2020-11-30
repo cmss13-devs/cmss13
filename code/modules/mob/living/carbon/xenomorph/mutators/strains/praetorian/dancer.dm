@@ -40,6 +40,7 @@
 	var/next_slash_buffed = FALSE
 	var/slash_evasion_buffed = FALSE
 	var/slash_evasion_timer = TIMER_ID_NULL
+	var/dodge_activated = FALSE
 
 /datum/behavior_delegate/praetorian_dancer/melee_attack_additional_effects_self()
 	if (!istype(bound_xeno, /mob/living/carbon/Xenomorph))
@@ -57,8 +58,9 @@
 	else
 		slash_evasion_timer = addtimer(CALLBACK(src, .proc/remove_evasion_buff), evasion_buff_ttl, TIMER_STOPPABLE | TIMER_OVERRIDE|TIMER_UNIQUE)
 
-	if (X.flags_pass_temp & PASS_MOB_THRU)
-		X.flags_pass_temp &= ~PASS_MOB_THRU
+	if (dodge_activated)
+		dodge_activated = FALSE
+		X.remove_temp_pass_flags(PASS_MOB_THRU)
 		X.speed_modifier += 0.5
 		X.recalculate_speed()
 		to_chat(X, SPAN_XENOHIGHDANGER("You can no longer move through creatures!"))

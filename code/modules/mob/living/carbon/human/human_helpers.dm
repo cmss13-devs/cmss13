@@ -234,21 +234,15 @@
 			SC.deactivate_camouflage(src)
 			return
 	var/list/cont = contents_recursive()
-	for(var/obj/item/device/motiondetector/md in cont)
-		md.toggle_active(src, TRUE)
-
-/mob/living/carbon/human/proc/disable_detectors()
-	for(var/obj/I in src)
-		check_if_detector(I)
-		if(istype(I, /obj/item/storage/backpack))
-			for(var/obj/inside in I)
-				check_if_detector(inside)
-
-// Used for the above proc to check if the object is a detector and calls the proc to disable.
-/mob/living/carbon/human/proc/check_if_detector(var/I)
-	if(istype(I, /obj/item/device/motiondetector))
-		var/obj/item/device/motiondetector/motionD = I
-		motionD.toggle_active(src, 1)
+	for(var/i in cont)
+		if(istype(i, /obj/item/device/motiondetector))
+			var/obj/item/device/motiondetector/md = i
+			md.toggle_active(src, TRUE)
+		if(istype(i, /obj/item/weapon/gun/smartgun))
+			var/obj/item/weapon/gun/smartgun/sg = i
+			if(sg.motion_detector)
+				sg.motion_detector = FALSE
+				sg.motion_detector()
 
 /mob/living/carbon/human/proc/disable_headsets()
 	//Disable all radios to reduce radio spam for dead people

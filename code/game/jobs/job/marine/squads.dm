@@ -92,6 +92,12 @@
 	SStracking.setup_trackers(null, "FT2")
 	SStracking.setup_trackers(null, "FT3")
 	update_all_squad_info()
+
+	RegisterSignal(SSdcs, COMSIG_GLOB_MODE_POSTSETUP, .proc/setup_supply_drop_list)
+
+/datum/squad/proc/setup_supply_drop_list()
+	SIGNAL_HANDLER
+
 	for(var/i in GLOB.supply_drop_list)
 		var/obj/structure/supply_drop/S = i
 		if(name == S.squad)

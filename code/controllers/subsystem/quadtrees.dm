@@ -32,8 +32,7 @@ SUBSYSTEM_DEF(quadtree)
     while(length(player_feed))
         var/mob/M = player_feed[player_feed.len]
         player_feed.len--
-        for(var/i in new_quadtrees)
-            var/datum/quadtree/Q = i
+        for(var/datum/quadtree/Q in new_quadtrees)
             Q.insert_player(M)
         if(MC_TICK_CHECK)
             return

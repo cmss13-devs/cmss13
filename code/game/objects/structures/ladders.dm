@@ -21,6 +21,12 @@
 	cam.network = list("LADDER")
 	cam.c_tag = name
 
+	GLOB.ladder_list += src
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/structure/ladder/LateInitialize()
+	. = ..()
+	
 	for(var/i in GLOB.ladder_list)
 		var/obj/structure/ladder/L = i
 		if(L.id == id)
@@ -34,7 +40,6 @@
 		if(up && down)	//If both our connections are filled
 			break
 	update_icon()
-	GLOB.ladder_list += src
 
 /obj/structure/ladder/Destroy()
 	if(down)

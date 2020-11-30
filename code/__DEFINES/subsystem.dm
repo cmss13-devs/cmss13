@@ -102,6 +102,7 @@
 #define SS_PRIORITY_STAMINA        126
 #define SS_PRIORITY_COMPONENT      125
 #define SS_PRIORITY_NANOUI         120
+#define SS_PRIORITY_TGUI           120
 #define SS_PRIORITY_VOTE           110
 #define SS_PRIORITY_FAST_OBJECTS   105
 #define SS_PRIORITY_OBJECTS        100

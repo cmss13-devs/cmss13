@@ -148,6 +148,9 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/key_buf // A buffer for setting macro keybinds
 	var/list/key_mod_buf // A buffer for macro modifiers
 
+	var/tgui_fancy = TRUE
+	var/tgui_lock = FALSE
+
 /datum/preferences/New(client/C)
 	if(istype(C))
 		owner = C
@@ -346,6 +349,8 @@ var/const/MAX_SAVE_SLOTS = 10
 
 	dat += "<div id='column3'>"
 	dat += "<h2><b><u>Game Settings:</u></b></h2>"
+	dat += "<b>tgui Window Mode:</b> <a href='?_src_=prefs;preference=tgui_fancy'>[(tgui_fancy) ? "Fancy (default)" : "Compatible (slower)"]</a><br>"
+	dat += "<b>tgui Window Placement:</b> <a href='?_src_=prefs;preference=tgui_lock'>[(tgui_lock) ? "Primary monitor" : "Free (default)"]</a><br>"
 	dat += "<b>Play Admin Midis:</b> <a href='?_src_=prefs;preference=hear_midis'><b>[(toggles_sound & SOUND_MIDI) ? "Yes" : "No"]</b></a><br>"
 	dat += "<b>Play Lobby Music:</b> <a href='?_src_=prefs;preference=lobby_music'><b>[(toggles_sound & SOUND_LOBBY) ? "Yes" : "No"]</b></a><br>"
 	dat += "<b>Ghost Ears:</b> <a href='?_src_=prefs;preference=ghost_ears'><b>[(toggles_chat & CHAT_GHOSTEARS) ? "All Speech" : "Nearest Creatures"]</b></a><br>"
@@ -1292,6 +1297,10 @@ var/const/MAX_SAVE_SLOTS = 10
 					var/mob/new_player/np = user
 					if(istype(np))
 						np.new_player_panel_proc()
+				if("tgui_fancy")
+					tgui_fancy = !tgui_fancy
+				if("tgui_lock")
+					tgui_lock = !tgui_lock
 
 	ShowChoices(user)
 	return 1

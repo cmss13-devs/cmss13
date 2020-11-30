@@ -26,6 +26,7 @@ GLOBAL_DATUM_INIT(STUI, /datum/STUI, new)
 	var/list/game = list()			//Game Chat
 	var/list/debug = list()			//Debug info
 	var/list/runtime = list()       //Runtimes
+	var/list/tgui = list()			//TGUI
 	var/list/processing	= 0     	//bitflag for logs that need processing
 
 /datum/STUI/Topic(href, href_list)
@@ -95,6 +96,14 @@ GLOBAL_DATUM_INIT(STUI, /datum/STUI, new)
 				if(runtime.len > config.STUI_length+1)
 					runtime.Cut(,runtime.len-config.STUI_length)
 				data["log"] = jointext(runtime, "\n")
+			else
+				data["log"] = "You do not have the right permissions to view this."
+		if(STUI_LOG_TGUI)
+			if(user.client.admin_holder.rights & R_DEBUG)
+				data["colour"] = "average"
+				if(tgui.len > config.STUI_length+1)
+					tgui.Cut(,tgui.len-config.STUI_length)
+				data["log"] = jointext(tgui, "\n")
 			else
 				data["log"] = "You do not have the right permissions to view this."
 

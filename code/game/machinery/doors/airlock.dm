@@ -8,6 +8,18 @@
 #define AIRLOCK_WIRE_SPEED          8
 #define AIRLOCK_WIRE_ELECTRIFY      9
 
+GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
+		AIRLOCK_WIRE_MAIN_POWER   = "Main power",
+		AIRLOCK_WIRE_BACKUP_POWER = "Backup power",
+		AIRLOCK_WIRE_DOOR_BOLTS   = "Door bolts",
+		AIRLOCK_WIRE_OPEN_DOOR    = "Door motors",
+		AIRLOCK_WIRE_IDSCAN       = "ID scanner",
+		AIRLOCK_WIRE_LIGHT        = "Bolt lights",
+		AIRLOCK_WIRE_SAFETY       = "Proximity sensor",
+		AIRLOCK_WIRE_SPEED        = "Motor speed override",
+		AIRLOCK_WIRE_ELECTRIFY    = "Ground safety"
+	))
+
 /obj/structure/machinery/door/airlock
 	name = "airlock"
 	icon = 'icons/obj/structures/doors/Doorint.dmi'
@@ -146,20 +158,6 @@
 			take_damage(Proj.ammo.damage, Proj.firer)
 			return TRUE
 	return FALSE
-
-// As opposed to a global var or a list that would clutter the airlock's var list
-/obj/structure/machinery/door/airlock/proc/get_wire_descriptions()
-	return list(
-		AIRLOCK_WIRE_MAIN_POWER   = "Main power",
-		AIRLOCK_WIRE_BACKUP_POWER = "Backup power",
-		AIRLOCK_WIRE_DOOR_BOLTS   = "Door bolts",
-		AIRLOCK_WIRE_OPEN_DOOR    = "Door motors",
-		AIRLOCK_WIRE_IDSCAN       = "ID scanner",
-		AIRLOCK_WIRE_LIGHT        = "Bolt lights",
-		AIRLOCK_WIRE_SAFETY       = "Proximity sensor",
-		AIRLOCK_WIRE_SPEED        = "Motor speed override",
-		AIRLOCK_WIRE_ELECTRIFY    = "Ground safety"
-	)
 
 /obj/structure/machinery/door/airlock/proc/pulse(var/wire)
 	switch(wire)
@@ -431,32 +429,39 @@
 			to_chat(usr, SPAN_WARNING("You look into \the [src]'s access panel and can only see a jumbled mess of colored wires..."))
 			return FALSE
 
-		ui_interact(user)
+		tgui_interact(user)
 	else
 		..(user)
 	return
 
-/obj/structure/machinery/door/airlock/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
-	var/list/data = list()
-	data["wires"] = null
-
-	var/list/wire_descriptions = get_wire_descriptions()
-	var/list/panel_wires = list()
-	for(var/wire = 1 to wire_descriptions.len)
-		panel_wires += list(list("desc" = wire_descriptions[wire], "cut" = isWireCut(wire), "attach" = !isnull(getAssembly(wire))))
-
-	if(panel_wires.len)
-		data["wires"] = panel_wires
-
-	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
-	if(!ui)
-		ui = new(user, src, ui_key, "airlock_panel.tmpl", "Access Panel", 400, 300)
-		ui.set_initial_data(data)
+/obj/structure/machinery/door/airlock/tgui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if (!ui)
+		ui = new(user, src, "Wires", "[name] Wires")
 		ui.open()
 
-/obj/structure/machinery/door/airlock/Topic(href, href_list, var/nowindow = 0)
-	if(!nowindow)
-		..()
+/obj/structure/machinery/door/airlock/ui_data(mob/user)
+	. = list()
+	var/list/payload = list()
+
+	for(var/wire in 1 to length(GLOB.airlock_wire_descriptions))
+		payload.Add(list(list(
+			"number" = wire,
+			"cut" = isWireCut(wire),
+			"attached" = !isnull(getAssembly(wire)),
+		)))
+	.["wires"] = payload
+	.["proper_name"] = name
+
+/obj/structure/machinery/door/airlock/ui_static_data(mob/user)
+	. = list()
+	.["wire_descs"] = GLOB.airlock_wire_descriptions
+
+/obj/structure/machinery/door/airlock/ui_act(action, params)
+	. = ..()
+
+	if(. )//|| !interactable(usr))
+		return
 
 	if(usr.stat || usr.is_mob_restrained() || usr.mob_size == MOB_SIZE_SMALL)
 		return FALSE
@@ -468,77 +473,72 @@
 			to_chat(usr, SPAN_WARNING("You don't understand anything about [src]'s wiring!"))
 			return FALSE
 
-		if(href_list["wire"])
-			var/wireId = text2num(href_list["wire"])
+		var/target_wire = params["wire"]
 
-			if(!iswirecutter(usr.get_active_hand()))
-				to_chat(usr, SPAN_WARNING("You need wirecutters!"))
-				return TRUE
+		switch(action)
+			if("cut")
+				if(!iswirecutter(usr.get_active_hand()))
+					to_chat(usr, SPAN_WARNING("You need wirecutters!"))
+					return TRUE
 
-			if(isWireCut(wireId))
-				mend(wireId)
-			else
-				cut(wireId)
+				if(isWireCut(target_wire))
+					mend(target_wire)
+				else
+					cut(target_wire)
 
-			if(announce_hacked && z == MAIN_SHIP_Z_LEVEL)
-				announce_hacked = FALSE
-				SSclues.create_print(get_turf(usr), usr, "The fingerprint contains oil and wire pieces.")
-				if(usr.detectable_by_ai())
-					ai_silent_announcement("DAMAGE REPORT: Structural damage detected at [get_area(src)], requesting Military Police supervision.")
+				if(announce_hacked && z == MAIN_SHIP_Z_LEVEL)
+					announce_hacked = FALSE
+					SSclues.create_print(get_turf(usr), usr, "The fingerprint contains oil and wire pieces.")
+					if(usr.detectable_by_ai())
+						ai_silent_announcement("DAMAGE REPORT: Structural damage detected at [get_area(src)], requesting Military Police supervision.")
+				. = TRUE
+			if("pulse")
+				if(!ismultitool(usr.get_active_hand()))
+					to_chat(usr, SPAN_WARNING("You need a multitool!"))
+					return TRUE
 
-		else if(href_list["pulse"])
-			var/wireId = text2num(href_list["pulse"])
+				pulse(target_wire)
+				. = TRUE
+			if("attach")
+				if(isnull(getAssembly(target_wire)))
+					if(!issignaler(usr.get_active_hand()))
+						to_chat(usr, SPAN_WARNING("You need a signaller in your hand!"))
+						return TRUE
 
-			if(!ismultitool(usr.get_active_hand()))
-				to_chat(usr, SPAN_WARNING("You need a multitool!"))
-				return TRUE
+					if(getAssembly(target_wire))
+						return TRUE
 
-			pulse(wireId)
-		else if(href_list["attach"])
-			var/wireId = text2num(href_list["attach"])
+					if(!skillcheck(usr, SKILL_ANTAG, SKILL_ANTAG_TRAINED))
+						to_chat(usr, SPAN_WARNING("You don't seem to know how to perform this action."))
+						return TRUE
 
-			if(!issignaler(usr.get_active_hand()))
-				to_chat(usr, SPAN_WARNING("You need a signaller in your hand!"))
-				return TRUE
-			
-			if(getAssembly(wireId))
-				return TRUE
+					var/obj/item/device/assembly/signaler/signaller = usr.get_active_hand()
+					usr.drop_held_item(signaller)
+					signaller.forceMove(src)
 
-			if(!skillcheck(usr, SKILL_ANTAG, SKILL_ANTAG_TRAINED))
-				to_chat(usr, SPAN_WARNING("You don't seem to know how to perform this action."))
-				return TRUE
+					signaller.airlock_wire = target_wire
+					attached_signallers.Add(signaller)
 
-			var/obj/item/device/assembly/signaler/signaller = usr.get_active_hand()
-			usr.drop_held_item(signaller)
-			signaller.forceMove(src)
+					attached_signallers[signaller] = target_wire
+					to_chat(usr, SPAN_NOTICE("You add [signaller] to [src]."))
+					. = TRUE
+				else
+					var/obj/item/device/assembly/signaler/signaller = getAssembly(target_wire)
 
-			signaller.airlock_wire = wireId
-			attached_signallers.Add(signaller)
+					if(!signaller)
+						return TRUE
 
-			attached_signallers[signaller] = wireId
-			to_chat(usr, SPAN_NOTICE("You add [signaller] to [src]."))
+					if(!usr.put_in_active_hand(signaller))
+						to_chat(usr, SPAN_WARNING("Your hand needs to be free!"))
+						return TRUE
 
-		else if(href_list["unattach"])
-			var/wireId = text2num(href_list["unattach"])
-			var/obj/item/device/assembly/signaler/signaller = getAssembly(wireId)
-
-			if(!signaller)
-				return TRUE
-
-			if(!usr.put_in_active_hand(signaller))
-				to_chat(usr, SPAN_WARNING("Your hand needs to be free!"))
-				return TRUE
-			
-			signaller.airlock_wire = null
-			attached_signallers -= signaller
-			to_chat(usr, SPAN_NOTICE("You remove [signaller] from [src]."))
-
-
+					signaller.airlock_wire = null
+					attached_signallers -= signaller
+					to_chat(usr, SPAN_NOTICE("You remove [signaller] from [src]."))
+					. = TRUE
 
 	add_fingerprint(usr)
 	update_icon()
-
-	return TRUE
 
 /obj/structure/machinery/door/airlock/attackby(obj/item/C, mob/user)
 	if(istype(C, /obj/item/clothing/mask/cigarette))

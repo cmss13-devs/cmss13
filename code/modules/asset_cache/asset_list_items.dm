@@ -1,4 +1,28 @@
 //DEFINITIONS FOR ASSET DATUMS START HERE.
+
+/datum/asset/simple/tgui_common
+	keep_local_name = TRUE
+	assets = list(
+		"tgui-common.chunk.js" = 'tgui/public/tgui-common.chunk.js',
+	)
+
+/datum/asset/simple/tgui
+	keep_local_name = TRUE
+	assets = list(
+		"tgui.bundle.js" = 'tgui/public/tgui.bundle.js',
+		"tgui.bundle.css" = 'tgui/public/tgui.bundle.css',
+	)
+
+/datum/asset/simple/fontawesome
+	keep_local_name = TRUE
+	assets = list(
+		"fa-regular-400.eot"  = 'html/font-awesome/webfonts/fa-regular-400.eot',
+		"fa-regular-400.woff" = 'html/font-awesome/webfonts/fa-regular-400.woff',
+		"fa-solid-900.eot"    = 'html/font-awesome/webfonts/fa-solid-900.eot',
+		"fa-solid-900.woff"   = 'html/font-awesome/webfonts/fa-solid-900.woff',
+		"font-awesome.css" = 'html/font-awesome/css/all.min.css'
+	)
+
 /datum/asset/simple/changelog
 	keep_local_name = TRUE
 	assets = list(
@@ -29,7 +53,8 @@
 	children = list(
 		/datum/asset/simple/jquery,
 		/datum/asset/simple/goonchat,
-		/datum/asset/spritesheet/goonchat
+		/datum/asset/spritesheet/goonchat,
+		/datum/asset/simple/fontawesome
 	)
 
 /datum/asset/simple/jquery
@@ -43,11 +68,6 @@
 	assets = list(
 		"json2.min.js"             = 'browserassets/js/json2.min.js',
 		"browserOutput.js"         = 'browserassets/js/browserOutput.js',
-		"fontawesome-webfont.eot"  = 'browserassets/css/fonts/fontawesome-webfont.eot',
-		"fontawesome-webfont.svg"  = 'browserassets/css/fonts/fontawesome-webfont.svg',
-		"fontawesome-webfont.ttf"  = 'browserassets/css/fonts/fontawesome-webfont.ttf',
-		"fontawesome-webfont.woff" = 'browserassets/css/fonts/fontawesome-webfont.woff',
-		"font-awesome.css"	       = 'browserassets/css/font-awesome.css',
 		"browserOutput.css"	       = 'browserassets/css/browserOutput.css',
 		"browserOutput_night.css"  = 'browserassets/css/browserOutput_night.css',
 	)

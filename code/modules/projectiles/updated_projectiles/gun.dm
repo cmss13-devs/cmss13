@@ -1336,7 +1336,10 @@ and you're good to go.
 			total_recoil -= user.skills.get_skill_level(SKILL_FIREARMS)*RECOIL_AMOUNT_TIER_5
 
 	if(total_recoil > 0 && ishuman(user))
-		shake_camera(user, total_recoil + 1, total_recoil)
+		if(total_recoil >= 4)
+			shake_camera(user, total_recoil/2, total_recoil)
+		else
+			shake_camera(user, 1, total_recoil)
 		return TRUE
 
 	return FALSE

@@ -252,37 +252,25 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 		p=p+n_mod
 	return strip_html(t)
 
+#define PIXELS_PER_STRENGTH_VAL 24
 
-/proc/shake_camera(mob/M, duration, strength=1)
-	if(!M || !M.client || M.shakecamera)
+/proc/shake_camera(var/mob/M, var/steps = 1, var/strength = 1, var/time_per_step = 1)
+	if(!M || !M.client || (M.shakecamera > world.time))
 		return
-	M.shakecamera = 1
-	spawn(1)
-		if(!M.client)
-			return
 
-		var/atom/oldeye=M.client.eye
-		var/aiEyeFlag = 0
-		if(istype(oldeye, /mob/aiEye))
-			aiEyeFlag = 1
+	M.shakecamera = world.time + steps * time_per_step
+	strength = abs(strength)*PIXELS_PER_STRENGTH_VAL
+	var/old_X = M.client.pixel_x
+	var/old_y = M.client.pixel_y
 
-		var/x
-		for(x=0; x<duration, x++)
-			if(!M) return //Might have died/logged out before it ended
+	animate(M.client, pixel_x = old_X + rand(-(strength), strength), pixel_y = old_y + rand(-(strength), strength), easing = JUMP_EASING, time = time_per_step)
+	var/i = 1
+	while(i < steps)
+		animate(pixel_x = old_X + rand(-(strength), strength), pixel_y = old_y + rand(-(strength), strength), easing = JUMP_EASING, time = time_per_step)
+		i++
+	animate(pixel_x = old_X, pixel_y = old_y,time = Clamp(Floor(strength/PIXELS_PER_STRENGTH_VAL),2,4))//ease it back
 
-			if(!M.client)
-				M.shakecamera = 0
-				return
-
-			if(aiEyeFlag)
-				M.client.eye = locate(dd_range(1,oldeye.loc.x+rand(-strength,strength),world.maxx),dd_range(1,oldeye.loc.y+rand(-strength,strength),world.maxy),oldeye.loc.z)
-			else
-				M.client.eye = locate(dd_range(1,M.loc.x+rand(-strength,strength),world.maxx),dd_range(1,M.loc.y+rand(-strength,strength),world.maxy),M.loc.z)
-			sleep(1)
-		if(M.client)
-			M.client.eye=oldeye //Mighta disconnected
-		M.shakecamera = 0
-
+#undef PIXELS_PER_STRENGTH_VAL
 
 /proc/findname(msg)
 	for(var/mob/M in GLOB.mob_list)

@@ -49,6 +49,8 @@ GLOBAL_DATUM_INIT(data_core, /obj/effect/datacore, new)
 		var/rank = t.fields["rank"]
 		var/real_rank = t.fields["real_rank"]
 		var/squad_name = t.fields["squad"]
+		if(isnull(name) || isnull(rank) || isnull(real_rank) || isnull(squad_name))
+			continue
 
 		if(OOC)
 			var/active = 0

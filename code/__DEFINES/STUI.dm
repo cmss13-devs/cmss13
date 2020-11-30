@@ -5,3 +5,4 @@
 #define STUI_LOG_GAME_CHAT  16
 #define STUI_LOG_DEBUG      32
 #define STUI_LOG_RUNTIME    64
+#define STUI_LOG_TGUI		128

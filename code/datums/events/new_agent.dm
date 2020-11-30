@@ -26,7 +26,8 @@
 /datum/round_event/new_agent/activate()
 	LAZYCLEARLIST(possible_candidates)
 
-	for(var/mob/living/carbon/human/H in living_human_list)
+	for(var/i in GLOB.alive_human_list)
+		var/mob/living/carbon/human/H = i
 		if(H.agent_holder || !(H.job in agent_approved_jobs))
 			continue
 

@@ -32,7 +32,7 @@ var/global/list/medal_awards = list()
 	var/citation = strip_html(input("What should the medal citation read?","Medal Citation", null) as text|null, MAX_PAPER_MESSAGE_LEN)
 	if(!citation) return
 	var/recipient_ckey
-	for(var/mob/M in mob_list)
+	for(var/mob/M in GLOB.mob_list)
 		if(M == usr)
 			M.count_niche_stat(STATISTICS_NICHE_MEDALS_GIVE)
 		if(M.real_name == chosen_recipient)

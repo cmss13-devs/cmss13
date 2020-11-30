@@ -18,8 +18,6 @@
 
 /obj/structure/New()
 	..()
-	structure_list += src
-
 	if(climbable)
 		verbs += /obj/structure/proc/climb_on
 
@@ -31,7 +29,6 @@
 			continue
 		if(O.unacidable)
 			O.forceMove(get_turf(loc))
-	structure_list -= src
 	debris = null
 	. = ..()
 

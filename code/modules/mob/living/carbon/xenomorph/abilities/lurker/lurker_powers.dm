@@ -14,12 +14,13 @@
 	X.update_icons() // callback to make the icon_state indicate invisibility is in lurker/update_icon
 
 	var/min_dist_found = 100000
-	for (var/mob/living/carbon/Xenomorph/targetX in living_xeno_list) // O(N) search because theres no faster way
+	for (var/i in GLOB.living_xeno_list) // O(N) search because theres no faster way
 																	  // possibly worstcase O(N^2) because sqrt could be expensive on floats (quirky byond), and ordinary sqrt is in O(N^(1/2))
+		var/mob/living/carbon/Xenomorph/targetX = i
 
 		if (targetX == X)
 			continue
-	
+
 		var/curr_dist = get_dist_euclidian(X, targetX)
 		if (curr_dist < min_dist_found)
 			min_dist_found = curr_dist
@@ -57,7 +58,7 @@
 	if (invis_timer_id != TIMER_ID_NULL)
 		deltimer(invis_timer_id)
 		invis_timer_id = TIMER_ID_NULL
-	
+
 	var/mob/living/carbon/Xenomorph/X = owner
 	if (istype(X))
 

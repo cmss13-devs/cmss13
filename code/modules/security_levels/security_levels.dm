@@ -17,7 +17,7 @@
 			level = SEC_LEVEL_RED
 		if("delta")
 			level = SEC_LEVEL_DELTA
-	for(var/X in gun_cabinets)
+	for(var/X in GLOB.gun_cabinets)
 		var/obj/structure/closet/secure_closet/guncabinet/G = X
 		if(G.z == MAIN_SHIP_Z_LEVEL)
 			G.check_sec_level(level)

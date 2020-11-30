@@ -120,7 +120,7 @@
 	//to make the value bold if changed
 	if(!(admin_holder.rights & R_DEBUG))
 		return html
-	
+
 	html += "<li style='backgroundColor:white'><a href='?_src_=glob_vars;varnameedit=[name]'>E</a><a href='?_src_=glob_vars;varnamechange=[name]'>C</a> "
 	if(value != initial(global.vars[name]))
 		html += "<font color='#B300B3'>"
@@ -142,7 +142,7 @@
 		#else
 		html += "[name] = /icon (<span class='value'>[value]</span>)"
 		#endif
-	
+
 	else if (isfile(value))
 		html += "[name] = <span class='value'>'[value]'</span>"
 
@@ -189,13 +189,13 @@
 		return
 
 	else if(href_list["varnameedit"])
-		if(!check_rights(R_VAREDIT))	
+		if(!check_rights(R_VAREDIT))
 			return
 
 		modify_global_variables(href_list["varnameedit"], TRUE)
 
 	else if(href_list["varnamechange"])
-		if(!check_rights(R_VAREDIT))	
+		if(!check_rights(R_VAREDIT))
 			return
 
 		modify_global_variables(href_list["varnamechange"], FALSE)
@@ -391,7 +391,7 @@
 			global.vars[variable] = var_new
 
 		if("mob reference")
-			var/var_new = input("Select reference:","Reference",global.vars[variable]) as null|mob in mob_list
+			var/var_new = input("Select reference:","Reference",global.vars[variable]) as null|mob in GLOB.mob_list
 			if(var_new==null) return
 			global.vars[variable] = var_new
 

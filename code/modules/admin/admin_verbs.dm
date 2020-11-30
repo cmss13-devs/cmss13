@@ -93,7 +93,6 @@ var/list/admin_verbs_debug = list(
 	/client/proc/debug_role_authority,
 	/client/proc/cmd_debug_make_powernets,
 	/client/proc/cmd_debug_fire_ob,
-	/client/proc/cmd_debug_mob_lists,
 	/client/proc/cmd_debug_list_processing_items,
 	/client/proc/cmd_admin_delete,
 	/client/proc/cmd_debug_del_all,
@@ -354,7 +353,7 @@ var/list/admin_verbs_mod = list(
 			to_chat_forced(P.owning_client, "<font color='red'><BIG><B>You have been autobanned due to a warning by [key_name_admin(P.owning_client)].</B></BIG><br>This is a temporary ban, it will be removed in [AUTOBANTIME] minutes.")
 		else
 			message_staff("[key_name_admin(src)] has warned [warned_ckey] resulting in a [AUTOBANTIME] minute ban.")
-		
+
 		P.add_timed_ban("Autobanning due to too many formal warnings", AUTOBANTIME)
 	else
 		if(P.owning_client)
@@ -363,7 +362,7 @@ var/list/admin_verbs_mod = list(
 		else
 			message_staff("[key_name_admin(src)] has warned [warned_ckey] (DC). They have [MAX_WARNS-P.warning_count] strikes remaining.")
 
-/client/proc/give_disease(mob/T as mob in mob_list) // -- Giacom
+/client/proc/give_disease(mob/T as mob in GLOB.mob_list) // -- Giacom
 	set category = "Fun"
 	set name = "Give Disease (old)"
 	set desc = "Gives a (tg-style) Disease to a mob."
@@ -402,7 +401,7 @@ var/list/admin_verbs_mod = list(
 			to_chat(src, "<b>Started logging hrefs</b>")
 
 
-/client/proc/editappear(mob/living/carbon/human/M as mob in mob_list)
+/client/proc/editappear(mob/living/carbon/human/M as mob in GLOB.human_mob_list)
 	set name = "Edit Appearance"
 	set category = null
 

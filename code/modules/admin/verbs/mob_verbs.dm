@@ -1,5 +1,5 @@
 // Converted this into a proc. Verb will be separate
-/client/proc/change_ckey(mob/M in mob_list, var/a_ckey = null)
+/client/proc/change_ckey(mob/M in GLOB.mob_list, var/a_ckey = null)
 	var/new_ckey = a_ckey
 
 	if (!admin_holder || !(admin_holder.rights & R_MOD))
@@ -23,7 +23,7 @@
 	if(istype(XNO))
 		XNO.generate_name()
 
-/client/proc/cmd_admin_changekey(mob/O in mob_list)
+/client/proc/cmd_admin_changekey(mob/O in GLOB.mob_list)
 	set name = "Change CKey"
 	set category = null
 
@@ -40,7 +40,7 @@
 		change_ckey(M, O.ckey)
 	else return
 
-/client/proc/cmd_admin_check_contents(mob/living/M as mob in mob_list)
+/client/proc/cmd_admin_check_contents(mob/living/M as mob in GLOB.living_mob_list)
 	set name = "Check Contents"
 	set category = null
 
@@ -51,7 +51,7 @@
 
 	show_browser(usr, dat, "Contents of [M]", "content")
 
-/client/proc/cmd_admin_addhud(mob/M as mob in mob_list)
+/client/proc/cmd_admin_addhud(mob/M as mob in GLOB.mob_list)
 	set name = "Add HUD To"
 	set category = null
 
@@ -82,7 +82,7 @@
 	to_chat(src, SPAN_INFO("[hud_choice] enabled."))
 	message_staff(SPAN_INFO("[key_name(usr)] has given a [hud_choice] to [M]."))
 
-/client/proc/cmd_admin_gib(mob/M as mob in mob_list)
+/client/proc/cmd_admin_gib(mob/M as mob in GLOB.mob_list)
 	set category = "Special Verbs"
 	set name = "Gib"
 
@@ -101,7 +101,7 @@
 
 	M.gib()
 
-/client/proc/cmd_admin_rejuvenate(mob/living/M as mob in mob_list)
+/client/proc/cmd_admin_rejuvenate(mob/living/M as mob in GLOB.living_mob_list)
 	set category = null
 	set name = "Rejuvenate"
 	if(!admin_holder || !(admin_holder.rights & R_MOD))
@@ -117,11 +117,11 @@
 
 	message_staff(WRAP_STAFF_LOG(usr, "ahealed [key_name(M)] in [get_area(M)] ([M.x],[M.y],[M.z])."), M.x, M.y, M.z)
 
-/client/proc/cmd_admin_subtle_message(mob/M as mob in mob_list)
+/client/proc/cmd_admin_subtle_message(mob/M as mob in GLOB.mob_list)
 	set name = "Subtle Message"
 	set category = null
 
-	if(!ismob(M))	
+	if(!ismob(M))
 		return
 	if (!admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
@@ -181,7 +181,7 @@
 	to_chat(M, SPAN_ANNOUNCEMENT_HEADER_BLUE(msg))
 	message_staff(SPAN_NOTICE("\bold DirectNarrate: [key_name(usr)] to ([M.name]/[M.key]): [msg]"), 1)
 
-/client/proc/cmd_admin_attack_log(mob/M as mob in mob_list)
+/client/proc/cmd_admin_attack_log(mob/M as mob in GLOB.mob_list)
 	set name = "Attack Log"
 	set category = null
 
@@ -189,7 +189,7 @@
 	for(var/t in M.attack_log)
 		to_chat(usr, t)
 
-/proc/possess(obj/O as obj in object_list)
+/proc/possess(obj/O as obj in GLOB.object_list)
 	set name = "Possess Obj"
 	set category = null
 
@@ -209,7 +209,7 @@
 	usr.client.eye = O
 	usr.control_object = O
 
-/proc/release(obj/O as obj in object_list)
+/proc/release(obj/O as obj in GLOB.object_list)
 	set name = "Release Obj"
 	set category = null
 
@@ -225,7 +225,7 @@
 	usr.client.eye = usr
 	usr.control_object = null
 
-/client/proc/cmd_admin_drop_everything(mob/M as mob in mob_list)
+/client/proc/cmd_admin_drop_everything(mob/M as mob in GLOB.mob_list)
 	set name = "Drop Everything"
 	set category = null
 
@@ -306,7 +306,7 @@
 
 	message_staff(SPAN_NOTICE("[key_name(src)] changed name of [old_name] to [newname]."))
 
-/datum/admins/proc/togglesleep(var/mob/living/M as mob in mob_list)
+/datum/admins/proc/togglesleep(var/mob/living/M as mob in GLOB.mob_list)
 	set name = "Toggle Sleeping"
 	set category = null
 

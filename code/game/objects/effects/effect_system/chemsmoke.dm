@@ -81,7 +81,7 @@
 	var/whereLink = "<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[location.x];Y=[location.y];Z=[location.z]'>[where]</a>"
 
 	if(carry.my_atom.fingerprintslast)
-		var/mob/M = get_mob_by_key(carry.my_atom.fingerprintslast)
+		var/mob/M = GLOB.directory[carry.my_atom.fingerprintslast]
 		var/more = ""
 		if(M)
 			more = "(<A HREF='?_src_=admin_holder;adminmoreinfo;extra=\ref[M]'>?</a>)"

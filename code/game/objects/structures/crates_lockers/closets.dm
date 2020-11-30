@@ -31,10 +31,12 @@
 			if(I.density || I.anchored || I == src)
 				continue
 			I.loc = src
+	GLOB.closet_list += src
 
 /obj/structure/closet/Destroy()
 	dump_contents()
-	. = ..()
+	GLOB.closet_list -= src
+	return ..()
 
 /obj/structure/closet/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()

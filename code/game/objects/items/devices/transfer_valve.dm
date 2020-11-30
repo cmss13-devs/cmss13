@@ -171,7 +171,7 @@
 		if(attacher)
 			log_str += "(<A HREF='?_src_=admin_holder;adminmoreinfo;extra=\ref[attacher]'>?</A>)"
 
-		var/mob/mob = get_mob_by_key(src.fingerprintslast)
+		var/mob/mob = GLOB.directory[fingerprintslast]
 		var/last_touch_info = ""
 		if(mob)
 			last_touch_info = "(<A HREF='?_src_=admin_holder;adminmoreinfo;extra=\ref[mob]'>?</A>)"

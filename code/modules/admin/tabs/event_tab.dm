@@ -301,7 +301,7 @@
 		random_names = TRUE
 	if (alert(src, "Are you sure you want to do this? It will laaag.", "Confirmation", "Yes", "No") == "No")
 		return
-	for(var/mob/living/carbon/human/H in mob_list)
+	for(var/mob/living/carbon/human/H in GLOB.human_mob_list)
 		if(ismonkey(H))
 			continue
 		H.set_species(pick("Monkey", "Yiren", "Stok", "Farwa", "Neaera"))
@@ -552,7 +552,7 @@
 			for(var/mob/M in view())
 				heard_midi++
 		if("Individual")
-			var/mob/target = input("Select a mob to play sound to:", "List of All Mobs") as null|anything in mob_list
+			var/mob/target = input("Select a mob to play sound to:", "List of All Mobs") as null|anything in GLOB.mob_list
 			if(istype(target,/mob/))
 				if(!target.client)
 					return
@@ -735,7 +735,7 @@
 	if(alert(usr, "Are you sure you want to change all mutineers back to normal?", "Confirmation", "Yes", "No") == "No")
 		return
 
-	for(var/mob/living/carbon/human/H in human_mob_list)
+	for(var/mob/living/carbon/human/H in GLOB.human_mob_list)
 		if(H && H.faction == FACTION_MUTINEER)
 			H.faction = FACTION_MARINE
 			H.hud_set_squad()

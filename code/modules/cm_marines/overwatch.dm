@@ -870,7 +870,7 @@
 	addtimer(CALLBACK(src, /obj/structure/machinery/computer/overwatch/proc/fire_bombard, user, A, T), SECONDS_6 + 6)
 
 /obj/structure/machinery/computer/overwatch/proc/begin_fire()
-	for(var/mob/living/carbon/H in living_mob_list)
+	for(var/mob/living/carbon/H in GLOB.alive_mob_list)
 		if(H.z == MAIN_SHIP_Z_LEVEL && !H.stat) //USS Almayer decks.
 			to_chat(H, SPAN_WARNING("The deck of the USS Almayer shudders as the orbital cannons open fire on the colony."))
 			if(H.client)
@@ -968,6 +968,14 @@
 	layer = 2.1 //It's the floor, man
 	var/squad = SQUAD_NAME_1
 	var/sending_package = 0
+
+/obj/structure/supply_drop/Initialize(mapload, ...)
+	. = ..()
+	GLOB.supply_drop_list += src
+
+/obj/structure/supply_drop/Destroy()
+	GLOB.supply_drop_list -= src
+	return ..()
 
 /obj/structure/supply_drop/alpha
 	icon_state = "alphadrop"

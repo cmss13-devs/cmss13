@@ -318,8 +318,8 @@
 
 	create_reagents(100)
 
-	living_xeno_list += src
-	xeno_mob_list += src
+	GLOB.living_xeno_list += src
+	GLOB.xeno_mob_list += src
 
 	if(caste && caste.adjust_size_x != 1)
 		var/matrix/M = matrix()
@@ -401,7 +401,7 @@
 	if(!nicknumber)
 		var/tempnumber = rand(1, 999)
 		var/list/numberlist = list()
-		for(var/mob/living/carbon/Xenomorph/X in mob_list)
+		for(var/mob/living/carbon/Xenomorph/X in GLOB.xeno_mob_list)
 			numberlist += X.nicknumber
 
 		while(tempnumber in numberlist)
@@ -483,8 +483,8 @@
 	if(is_zoomed)
 		zoom_out()
 
-	living_xeno_list -= src
-	xeno_mob_list -= src
+	GLOB.living_xeno_list -= src
+	GLOB.xeno_mob_list -= src
 
 	if(IS_XENO_LEADER(src)) //Strip them from the Xeno leader list, if they are indexed in here
 		hive.remove_hive_leader(src)
@@ -758,7 +758,7 @@
 
 /mob/living/carbon/Xenomorph/rejuvenate()
 	if(stat == DEAD && !QDELETED(src))
-		living_xeno_list += src
+		GLOB.living_xeno_list += src
 
 		if(hive)
 			hive.add_xeno(src)

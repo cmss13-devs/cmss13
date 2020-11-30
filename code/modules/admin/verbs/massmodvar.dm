@@ -9,7 +9,7 @@
 
 	if(A.is_datum_protected())
 		to_chat(usr, SPAN_WARNING("This datum is protected. Access Denied"))
-		return 
+		return
 
 	if(!A.can_vv_modify() && !(admin_holder.rights & R_DEBUG))
 		to_chat(usr, "You can't modify this object! You require debugging permission")
@@ -154,12 +154,12 @@
 			O.vars[variable] = initial(O.vars[variable])
 			if(method)
 				if(istype(O, /mob))
-					for(var/mob/M in mob_list)
+					for(var/mob/M in GLOB.mob_list)
 						if ( istype(M , O.type) )
 							M.vars[variable] = O.vars[variable]
 
 				else if(istype(O, /obj))
-					for(var/obj/A in object_list)
+					for(var/obj/A in GLOB.object_list)
 						if ( istype(A , O.type) )
 							A.vars[variable] = O.vars[variable]
 
@@ -170,12 +170,12 @@
 
 			else
 				if(istype(O, /mob))
-					for(var/mob/M in mob_list)
+					for(var/mob/M in GLOB.mob_list)
 						if (M.type == O.type)
 							M.vars[variable] = O.vars[variable]
 
 				else if(istype(O, /obj))
-					for(var/obj/A in object_list)
+					for(var/obj/A in GLOB.object_list)
 						if (A.type == O.type)
 							A.vars[variable] = O.vars[variable]
 
@@ -194,12 +194,12 @@
 
 			if(method)
 				if(istype(O, /mob))
-					for(var/mob/M in mob_list)
+					for(var/mob/M in GLOB.mob_list)
 						if ( istype(M , O.type) )
 							M.vars[variable] = O.vars[variable]
 
 				else if(istype(O, /obj))
-					for(var/obj/A in object_list)
+					for(var/obj/A in GLOB.object_list)
 						if ( istype(A , O.type) )
 							A.vars[variable] = O.vars[variable]
 
@@ -209,12 +209,12 @@
 							A.vars[variable] = O.vars[variable]
 			else
 				if(istype(O, /mob))
-					for(var/mob/M in mob_list)
+					for(var/mob/M in GLOB.mob_list)
 						if (M.type == O.type)
 							M.vars[variable] = O.vars[variable]
 
 				else if(istype(O, /obj))
-					for(var/obj/A in object_list)
+					for(var/obj/A in GLOB.object_list)
 						if (A.type == O.type)
 							A.vars[variable] = O.vars[variable]
 
@@ -235,7 +235,7 @@
 
 			if(method)
 				if(istype(O, /mob))
-					for(var/mob/M in mob_list)
+					for(var/mob/M in GLOB.mob_list)
 						if ( istype(M , O.type) )
 							if(variable=="luminosity")
 								M.SetLuminosity(new_value)
@@ -243,7 +243,7 @@
 								M.vars[variable] = O.vars[variable]
 
 				else if(istype(O, /obj))
-					for(var/obj/A in object_list)
+					for(var/obj/A in GLOB.object_list)
 						if ( istype(A , O.type) )
 							if(variable=="luminosity")
 								A.SetLuminosity(new_value)
@@ -260,7 +260,7 @@
 
 			else
 				if(istype(O, /mob))
-					for(var/mob/M in mob_list)
+					for(var/mob/M in GLOB.mob_list)
 						if (M.type == O.type)
 							if(variable=="luminosity")
 								M.SetLuminosity(new_value)
@@ -268,7 +268,7 @@
 								M.vars[variable] = O.vars[variable]
 
 				else if(istype(O, /obj))
-					for(var/obj/A in object_list)
+					for(var/obj/A in GLOB.object_list)
 						if (A.type == O.type)
 							if(variable=="luminosity")
 								A.SetLuminosity(new_value)
@@ -290,12 +290,12 @@
 			O.vars[variable] = new_value
 			if(method)
 				if(istype(O, /mob))
-					for(var/mob/M in mob_list)
+					for(var/mob/M in GLOB.mob_list)
 						if ( istype(M , O.type) )
 							M.vars[variable] = O.vars[variable]
 
 				else if(istype(O, /obj))
-					for(var/obj/A in object_list)
+					for(var/obj/A in GLOB.object_list)
 						if ( istype(A , O.type) )
 							A.vars[variable] = O.vars[variable]
 
@@ -305,12 +305,12 @@
 							A.vars[variable] = O.vars[variable]
 			else
 				if(istype(O, /mob))
-					for(var/mob/M in mob_list)
+					for(var/mob/M in GLOB.mob_list)
 						if (M.type == O.type)
 							M.vars[variable] = O.vars[variable]
 
 				else if(istype(O, /obj))
-					for(var/obj/A in object_list)
+					for(var/obj/A in GLOB.object_list)
 						if (A.type == O.type)
 							A.vars[variable] = O.vars[variable]
 
@@ -326,12 +326,12 @@
 
 			if(method)
 				if(istype(O, /mob))
-					for(var/mob/M in mob_list)
+					for(var/mob/M in GLOB.mob_list)
 						if ( istype(M , O.type) )
 							M.vars[variable] = O.vars[variable]
 
 				else if(istype(O.type, /obj))
-					for(var/obj/A in object_list)
+					for(var/obj/A in GLOB.object_list)
 						if ( istype(A , O.type) )
 							A.vars[variable] = O.vars[variable]
 
@@ -341,12 +341,12 @@
 							A.vars[variable] = O.vars[variable]
 			else
 				if(istype(O, /mob))
-					for(var/mob/M in mob_list)
+					for(var/mob/M in GLOB.mob_list)
 						if (M.type == O.type)
 							M.vars[variable] = O.vars[variable]
 
 				else if(istype(O.type, /obj))
-					for(var/obj/A in object_list)
+					for(var/obj/A in GLOB.object_list)
 						if (A.type == O.type)
 							A.vars[variable] = O.vars[variable]
 
@@ -361,12 +361,12 @@
 			O.vars[variable] = new_value
 			if(method)
 				if(istype(O, /mob))
-					for(var/mob/M in mob_list)
+					for(var/mob/M in GLOB.mob_list)
 						if ( istype(M , O.type) )
 							M.vars[variable] = O.vars[variable]
 
 				else if(istype(O, /obj))
-					for(var/obj/A in object_list)
+					for(var/obj/A in GLOB.object_list)
 						if ( istype(A , O.type) )
 							A.vars[variable] = O.vars[variable]
 
@@ -377,12 +377,12 @@
 
 			else
 				if(istype(O, /mob))
-					for(var/mob/M in mob_list)
+					for(var/mob/M in GLOB.mob_list)
 						if (M.type == O.type)
 							M.vars[variable] = O.vars[variable]
 
 				else if(istype(O, /obj))
-					for(var/obj/A in object_list)
+					for(var/obj/A in GLOB.object_list)
 						if (A.type == O.type)
 							A.vars[variable] = O.vars[variable]
 
@@ -407,12 +407,12 @@
 			O.vars[variable] = MX
 			if(method)
 				if(istype(O, /mob))
-					for(var/mob/M in mob_list)
+					for(var/mob/M in GLOB.mob_list)
 						if ( istype(M , O.type) )
 							M.vars[variable] = O.vars[variable]
 
 				else if(istype(O, /obj))
-					for(var/obj/A in object_list)
+					for(var/obj/A in GLOB.object_list)
 						if ( istype(A , O.type) )
 							A.vars[variable] = O.vars[variable]
 
@@ -423,12 +423,12 @@
 
 			else
 				if(istype(O, /mob))
-					for(var/mob/M in mob_list)
+					for(var/mob/M in GLOB.mob_list)
 						if (M.type == O.type)
 							M.vars[variable] = O.vars[variable]
 
 				else if(istype(O, /obj))
-					for(var/obj/A in object_list)
+					for(var/obj/A in GLOB.object_list)
 						if (A.type == O.type)
 							A.vars[variable] = O.vars[variable]
 

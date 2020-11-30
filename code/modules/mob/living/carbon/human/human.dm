@@ -1,7 +1,7 @@
 /mob/living/carbon/human/Initialize(mapload, new_species = null)
 	blood_type = pick(7;"O-", 38;"O+", 6;"A-", 34;"A+", 2;"B-", 9;"B+", 1;"AB-", 3;"AB+")
-	human_mob_list += src
-	living_human_list += src
+	GLOB.human_mob_list += src
+	GLOB.alive_human_list += src
 	processable_human_list += src
 
 	if(!species)
@@ -77,8 +77,8 @@
 		limbs = null
 
 	remove_from_all_mob_huds()
-	human_mob_list -= src
-	living_human_list -= src
+	GLOB.human_mob_list -= src
+	GLOB.alive_human_list -= src
 	processable_human_list -= src
 
 	. = ..()
@@ -958,12 +958,16 @@
 
 	//try to find the brain player in the decapitated head and put them back in control of the human
 	if(!client && !mind) //if another player took control of the human, we don't want to kick them out.
-		for(var/obj/item/limb/head/H in item_list)
-			if(H.brainmob)
-				if(H.brainmob.real_name == src.real_name)
-					if(H.brainmob.mind)
-						H.brainmob.mind.transfer_to(src)
-						qdel(H)
+		for(var/i in GLOB.head_limb_list)
+			var/obj/item/limb/head/H = i
+			if(!H.brainmob)
+				continue
+			if(H.brainmob.real_name != src.real_name)
+				continue
+			if(!H.brainmob.mind)
+				continue
+			H.brainmob.mind.transfer_to(src)
+			qdel(H)
 
 	for(var/datum/internal_organ/I in internal_organs)
 		I.damage = 0

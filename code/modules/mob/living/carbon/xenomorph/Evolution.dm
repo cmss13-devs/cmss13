@@ -90,7 +90,7 @@
 			return
 
 //Used for restricting benos to evolve to drone/queen when they're the only potential queen
-	for(var/mob/living/carbon/Xenomorph/M in living_xeno_list)
+	for(var/mob/living/carbon/Xenomorph/M in GLOB.living_xeno_list)
 		if(hivenumber == M.hivenumber)
 			switch(M.tier)
 				if(0)
@@ -216,7 +216,7 @@
 			mind.transfer_to(new_xeno)
 		else
 			new_xeno.key = src.key
-			if(new_xeno.client) 
+			if(new_xeno.client)
 				new_xeno.client.change_view(world_view_size)
 
 		//Regenerate the new mob's name now that our player is inside
@@ -247,7 +247,7 @@
 
 		if (new_xeno.client)
 			new_xeno.client.mouse_pointer_icon = initial(new_xeno.client.mouse_pointer_icon)
-		
+
 		if(new_xeno.mind && round_statistics)
 			round_statistics.track_new_participant(new_xeno.faction, -1) //so an evolved xeno doesn't count as two.
 		SSround_recording.recorder.track_player(new_xeno)
@@ -260,7 +260,7 @@
 	set name = "De-Evolve"
 	set desc = "De-evolve into a lesser form."
 	set category = "Alien"
-	
+
 	if(!check_state())
 		return
 

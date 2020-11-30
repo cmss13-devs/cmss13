@@ -17,6 +17,11 @@ SUBSYSTEM_DEF(atoms)
 /datum/controller/subsystem/atoms/Initialize(timeofday)
 	initialized = INITIALIZATION_INNEW_MAPLOAD
 	InitializeAtoms()
+
+	// Set up roundstart seed list. This is here because vendors were
+	// bugging out and not populating with the correct packet names
+	// due to this list not being instantiated.
+	populate_seed_list()
 	return ..()
 
 /datum/controller/subsystem/atoms/proc/InitializeAtoms(list/atoms)

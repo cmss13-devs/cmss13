@@ -7,12 +7,12 @@ SUBSYSTEM_DEF(xeno)
 	var/list/currentrun = list()
 
 /datum/controller/subsystem/xeno/stat_entry()
-	..("P:[xeno_mob_list.len]")
+	..("P:[GLOB.xeno_mob_list.len]")
 
 
 /datum/controller/subsystem/xeno/fire(resumed = FALSE)
 	if (!resumed)
-		currentrun = xeno_mob_list.Copy()
+		currentrun = GLOB.xeno_mob_list.Copy()
 
 	while (currentrun.len)
 		var/mob/living/carbon/Xenomorph/M = currentrun[currentrun.len]

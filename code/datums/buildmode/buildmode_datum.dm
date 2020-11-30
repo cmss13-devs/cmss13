@@ -48,8 +48,8 @@
 
     var/list/ignore_vars = list("old_turf", "loc", "ckey", "key", "vars", "verbs", \
         "locs", "contents", "vis_locs", "vis_contents", "client", "linked_pylons", \
-        "x", "y", "z", "disposed") 
-    // Might be better to move to a whitelist system instead. If there are too many runtimes/issues, 
+        "x", "y", "z", "disposed")
+    // Might be better to move to a whitelist system instead. If there are too many runtimes/issues,
     // turn this into a whitelist system and whitelist vars like icon_state, overlays and ids
 
     var/list/ignore_types = list(/atom)
@@ -84,13 +84,13 @@
             var/turf/T = get_turf(object)
             if(T)
                 var/turf/newTurf = T.ChangeTurf(selected_object)
-                
+
                 if(!newTurf)
                     newTurf = T
-                
+
                 if(!mods["shift"])
                     apply_copied_vars_shallow(T)
-                
+
         else
             var/atom/A = new selected_object(get_turf(object))
             if(!istype(A))
@@ -113,7 +113,7 @@
             for(var/atom/movable/AM in range(0, object))
                 if(AM == object || isobserver(AM)) continue
                 qdel(AM)
-            
+
             var/turf/T = get_turf(object)
             if(T)
                 if(T.contents)
@@ -197,10 +197,10 @@
     to_chat(usr, SPAN_NOTICE(" Left Mouse Button on turf/obj/mob      = Set var(type) & value"))
     to_chat(usr, SPAN_NOTICE(" Right Mouse Button on turf/obj/mob     = Reset var's value"))
     to_chat(usr, SPAN_NOTICE(" ***********************************************************"))
-    
+
 /datum/buildmode/varedit/icon_clicked(mob/M, list/mods)
     . = ..()
-    
+
     var/list/locked = list("vars", "key", "ckey", "client", "icon")
 
     selected_key = input(usr,"Enter variable name:" ,"Name", "name")
@@ -208,18 +208,18 @@
         return TRUE
     var/type = input(usr,"Select variable type:" ,"Type") in list("text","number","mob-reference","obj-reference","turf-reference")
 
-    if(!type) 
+    if(!type)
         return TRUE
-    
+
     switch(type)
         if("text")
             selected_value = input(usr,"Enter variable value:" ,"Value", "value") as text
         if("number")
             selected_value = input(usr,"Enter variable value:" ,"Value", 0) as num
         if("mob-reference")
-            selected_value = input(usr,"Enter variable value:" ,"Value") as mob in mob_list
+            selected_value = input(usr,"Enter variable value:" ,"Value") as mob in GLOB.mob_list
         if("obj-reference")
-            selected_value = input(usr,"Enter variable value:" ,"Value") as obj in object_list
+            selected_value = input(usr,"Enter variable value:" ,"Value") as obj in GLOB.object_list
         if("turf-reference")
             selected_value = input(usr,"Enter variable value:" ,"Value") as turf in turfs
 

@@ -103,6 +103,7 @@
 #include "code\_globalvars\global_lists.dm"
 #include "code\_globalvars\misc.dm"
 #include "code\_globalvars\lists\mobs.dm"
+#include "code\_globalvars\lists\object_lists.dm"
 #include "code\_onclick\adjacent.dm"
 #include "code\_onclick\ai.dm"
 #include "code\_onclick\click.dm"

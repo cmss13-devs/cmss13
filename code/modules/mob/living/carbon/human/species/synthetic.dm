@@ -41,7 +41,7 @@
 
 /datum/species/synthetic/handle_post_spawn(mob/living/carbon/human/H)
 	H.set_languages(list("English", "Russian", "Tradeband", "Sainja", "Xenomorph"))
-	living_human_list -= H
+	GLOB.alive_human_list -= H
 	return ..()
 
 /datum/species/synthetic/second_gen_synthetic

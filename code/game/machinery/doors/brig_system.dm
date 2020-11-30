@@ -30,7 +30,8 @@
 		if(F.id == id)
 			targets += F
 
-	for(var/obj/structure/closet/secure_closet/brig/C in structure_list)
+	for(var/i in GLOB.brig_locker_list)
+		var/obj/structure/closet/secure_closet/brig/C = i
 		if(C.id == id)
 			targets += C
 
@@ -44,7 +45,7 @@
 	update_icon()
 
 /obj/structure/machinery/brig_cell/process()
-	if(inoperable())	
+	if(inoperable())
 		return
 
 	if(!incident_reports)
@@ -84,7 +85,7 @@
 			disp2 = "Error"
 		update_display(disp1, disp2)
 	else
-		if(maptext)	
+		if(maptext)
 			maptext = ""
 
 /obj/structure/machinery/brig_cell/power_change()
@@ -95,7 +96,7 @@
 /obj/structure/machinery/brig_cell/attackby(var/obj/item/W, var/mob/living/user)
 	if(!istype(W, /obj/item/paper/incident))
 		return
-	
+
 	var/obj/item/paper/incident/I = W
 	if(!I.incident || !I.incident.brig_sentence || I.incident.pardoned)
 		return
@@ -126,7 +127,7 @@
 	current_menu = "main_menu"
 
 /obj/structure/machinery/brig_cell/proc/timer_start(var/mob/living/user)
-	if(inoperable()  || !current_report)	
+	if(inoperable()  || !current_report)
 		return FALSE
 
 	var/datum/crime_incident/C = current_report.incident
@@ -140,7 +141,7 @@
 		C.time_to_release = world.timeofday + ((C.brig_sentence * 600) - C.time_served)
 
 	for(var/obj/structure/machinery/door/window/brigdoor/door in targets)
-		if(door.density)	
+		if(door.density)
 			continue
 
 		INVOKE_ASYNC(door, /obj/structure/machinery/door.proc/close)
@@ -151,7 +152,7 @@
 		ai_silent_announcement("BRIG REPORT: [C.criminal_name] has been jailed for [C.charges_to_string()].")
 
 /obj/structure/machinery/brig_cell/proc/timer_end(var/obj/item/paper/incident/I)
-	if(inoperable() || (!I && !current_report))	
+	if(inoperable() || (!I && !current_report))
 		return FALSE
 
 	var/datum/crime_incident/C

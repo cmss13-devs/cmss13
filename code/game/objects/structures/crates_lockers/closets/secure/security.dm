@@ -171,7 +171,11 @@
 	new /obj/item/clothing/shoes/orange(src)
 	new /obj/item/device/radio/headset(src)
 	update_icon()
+	GLOB.brig_locker_list += src
 
+/obj/structure/closet/secure_closet/brig/Destroy()
+	GLOB.brig_locker_list -= src
+	return ..()
 /obj/structure/closet/secure_closet/courtroom
 	name = "Courtroom Locker"
 	req_one_access = list(ACCESS_MARINE_BRIG, ACCESS_CIVILIAN_BRIG)

@@ -41,7 +41,7 @@
 			if(hive.living_xeno_queen)
 				if(hive.living_xeno_queen.hivenumber == hive.hivenumber)
 					continue
-			for(var/mob/living/carbon/Xenomorph/Queen/Q in living_mob_list)
+			for(var/mob/living/carbon/Xenomorph/Queen/Q in GLOB.living_xeno_list)
 				if(Q.hivenumber == hive.hivenumber && Q.z != ADMIN_Z_LEVEL)
 					hive.living_xeno_queen = Q
 					xeno_message(SPAN_XENOANNOUNCE("A new Queen has risen to lead the Hive! Rejoice!"),3,hive.hivenumber)
@@ -544,7 +544,7 @@
 
 	for(var/mob/living/carbon/M in oview(7, src))
 		if((match_hivemind(M) || isXenoQueen(M)))
-			continue 
+			continue
 
 		M.scream_stun_timeout = SECONDS_20
 		var/dist = get_dist(src, M)

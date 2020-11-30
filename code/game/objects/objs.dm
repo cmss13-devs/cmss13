@@ -18,7 +18,7 @@
 
 /obj/New()
 	..()
-	object_list += src
+	GLOB.object_list += src
 	if(garbage)
 		add_to_garbage(src)
 
@@ -27,7 +27,7 @@
 		unbuckle()
 	. = ..()
 	remove_from_garbage(src)
-	object_list -= src
+	GLOB.object_list -= src
 
 
 /obj/item/proc/is_used_on(obj/O, mob/user)

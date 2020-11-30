@@ -1,7 +1,7 @@
 /client/proc/mooc(msg as text)
 	set category = "OOC"
 	set name = "MOOC"
-	
+
 	if(!src.admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only staff members may talk on this channel.")
 		return
@@ -13,7 +13,8 @@
 
 	log_admin("MOOC: [key_name(src)]: [msg]")
 
-	for(var/mob/M in living_human_list)
+	for(var/i in GLOB.alive_human_list)
+		var/mob/M = i
 		if(M.client && (!M.client.admin_holder || !(M.client.admin_holder.rights & R_MOD)))	// Send to marines who are non-staff
 			to_chat(M, SPAN_MOOC("MOOC: [src.key]([src.admin_holder.rank]): [msg]"))
 

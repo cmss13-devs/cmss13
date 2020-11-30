@@ -944,8 +944,24 @@
 /obj/structure/disposalpipe/up/almayer
 	var/id
 
+/obj/structure/disposalpipe/up/almayer/Initialize(mapload, ...)
+	. = ..()
+	GLOB.disposalpipe_up_list += src
+
+/obj/structure/disposalpipe/up/almayer/Destroy()
+	GLOB.disposalpipe_up_list += src
+	return ..()
+
 /obj/structure/disposalpipe/down/almayer
 	var/id
+
+/obj/structure/disposalpipe/down/almayer/Initialize(mapload, ...)
+	. = ..()
+	GLOB.disposalpipe_down_list += src
+
+/obj/structure/disposalpipe/down/almayer/Destroy()
+	GLOB.disposalpipe_down_list += src
+	return ..()
 
 /obj/structure/disposalpipe/up/almayer/transfer(var/obj/structure/disposalholder/H)
 	var/nextdir = nextdir(H.dir)
@@ -955,7 +971,8 @@
 	var/obj/structure/disposalpipe/P
 
 	if(nextdir == 12)
-		for(var/obj/structure/disposalpipe/down/almayer/F in structure_list)
+		for(var/i in GLOB.disposalpipe_down_list)
+			var/obj/structure/disposalpipe/down/almayer/F = i
 			if(id == F.id)
 				P = F
 				break // stop at first found match
@@ -983,7 +1000,8 @@
 	var/obj/structure/disposalpipe/P
 
 	if(nextdir == 11)
-		for(var/obj/structure/disposalpipe/up/almayer/F in structure_list)
+		for(var/i in GLOB.disposalpipe_up_list)
+			var/obj/structure/disposalpipe/up/almayer/F = i
 			if(id == F.id)
 				P = F
 				break // stop at first found match
@@ -1377,6 +1395,14 @@
 	desc = "An outlet for the pneumatic disposal system."
 	unslashable = TRUE
 	unacidable = TRUE
+
+/obj/structure/disposaloutlet/retrieval/Initialize(mapload, ...)
+	. = ..()
+	GLOB.disposal_retrieval_list += src
+
+/obj/structure/disposaloutlet/retrieval/Destroy()
+	GLOB.disposal_retrieval_list += src
+	return ..()
 
 /obj/structure/disposaloutlet/retrieval/attackby(var/obj/item/I, var/mob/user)
 	return

@@ -6,7 +6,7 @@
 	icon = 'icons/obj/items/assemblies.dmi'
 	icon_state = "mmi_empty"
 	w_class = SIZE_MEDIUM
-	
+
 
 	var/list/construction_cost = list("metal"=1000,"glass"=500)
 	var/construction_time = 75
@@ -40,8 +40,8 @@
 			brainmob.loc = src
 			brainmob.container = src
 			brainmob.stat = 0
-			dead_mob_list -= brainmob//Update dem lists
-			living_mob_list += brainmob
+			GLOB.dead_mob_list -= brainmob//Update dem lists
+			GLOB.alive_mob_list += brainmob
 
 			user.drop_held_item()
 			qdel(O)
@@ -76,7 +76,7 @@
 			var/obj/item/organ/brain/brain = new(user.loc)
 			brainmob.container = null//Reset brainmob mmi var.
 			brainmob.loc = brain//Throw mob into brain.
-			living_mob_list -= brainmob//Get outta here
+			GLOB.alive_mob_list -= brainmob//Get outta here
 			brain.brainmob = brainmob//Set the brain to use the brainmob
 			brainmob = null//Set mmi brainmob var to null
 
@@ -99,7 +99,7 @@
 /obj/item/device/mmi/radio_enabled
 	name = "Radio-enabled Man-Machine Interface"
 	desc = "The Warrior's bland acronym, MMI, obscures the true horror of this monstrosity. This one comes with a built-in radio."
-	
+
 
 	var/obj/item/device/radio/radio = null//Let's give it a radio.
 

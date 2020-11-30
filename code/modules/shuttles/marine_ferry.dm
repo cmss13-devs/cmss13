@@ -262,7 +262,7 @@
 
 	in_transit_time_left = 0
 
-	if(EvacuationAuthority.dest_status >= NUKE_EXPLOSION_IN_PROGRESS) 
+	if(EvacuationAuthority.dest_status >= NUKE_EXPLOSION_IN_PROGRESS)
 		return FALSE //If a nuke is in progress, don't attempt a landing.
 
 	playsound_area(get_area(turfs_int[sound_target]), sound_landing, 100)
@@ -277,7 +277,7 @@
 
 	sleep(100) //Wait for it to finish.
 
-	if(EvacuationAuthority.dest_status == NUKE_EXPLOSION_FINISHED) 
+	if(EvacuationAuthority.dest_status == NUKE_EXPLOSION_FINISHED)
 		return FALSE //If a nuke finished, don't land.
 
 	target_turf = T_trg
@@ -432,7 +432,7 @@
 			continue
 		var/list/left_behind = list()
 		var/list/with_queen = list()
-		for(var/mob/living/carbon/Xenomorph/xeno in living_xeno_list)
+		for(var/mob/living/carbon/Xenomorph/xeno in GLOB.living_xeno_list)
 			if(xeno.hivenumber != hive.hivenumber)
 				continue
 			if(xeno.loc && hive.living_xeno_queen && hive.living_xeno_queen.loc && xeno.loc.z == hive.living_xeno_queen.loc.z) // yes loc because of vent crawling
@@ -445,7 +445,7 @@
 			for(var/mob/living/carbon/Xenomorph/about_to_die in left_behind)
 				to_chat(about_to_die, SPAN_XENOANNOUNCE("The Queen has left without you, you quickly find a hiding place to enter hibernation as you lose touch with the hive mind."))
 				qdel(about_to_die) // just delete them
-		for(var/mob/living/carbon/potential_host in living_mob_list)
+		for(var/mob/living/carbon/potential_host in GLOB.alive_mob_list)
 			if(potential_host.z != 1) continue // ground level
 			if(potential_host.status_flags & XENO_HOST) // a host
 				var/obj/item/alien_embryo/A = locate() in potential_host
@@ -482,7 +482,7 @@
 
 	in_transit_time_left = 0
 
-	if(EvacuationAuthority.dest_status >= NUKE_EXPLOSION_IN_PROGRESS) 
+	if(EvacuationAuthority.dest_status >= NUKE_EXPLOSION_IN_PROGRESS)
 		return FALSE //If a nuke is in progress, don't attempt a landing.
 
 	//This is where things change and shit gets real
@@ -494,7 +494,7 @@
 
 	sleep(85)
 
-	if(EvacuationAuthority.dest_status == NUKE_EXPLOSION_FINISHED) 
+	if(EvacuationAuthority.dest_status == NUKE_EXPLOSION_FINISHED)
 		return FALSE //If a nuke finished, don't land.
 
 	if(security_level < SEC_LEVEL_RED) //automatically set security level to red.
@@ -516,15 +516,13 @@
 		sleep(3)
 
 	// Break the ultra-reinforced windows.
-	for(var/obj/structure/window/framed/almayer/hull/hijack_bustable/H in structure_list)
+	// Break the briefing windows.
+	for(var/i in GLOB.hijack_bustable_windows)
+		var/obj/structure/window/H = i
 		H.shatter_window(1)
 
-	// Break the briefing windows.
-	for(var/obj/structure/window/reinforced/ultra/W in structure_list)
-		W.shatter_window(1)
-
 	// Delete the briefing door(s).
-	for(var/obj/structure/machinery/door/window/ultra/D in structure_list)
+	for(var/D in GLOB.hijack_deletable_windows)
 		qdel(D)
 
 	// Sleep while the explosions do their job
@@ -537,7 +535,8 @@
 				break
 		sleep(1)
 
-	for(var/mob/living/carbon/M in living_human_list) //knock down mobs
+	for(var/i in GLOB.alive_human_list) //knock down mobs
+		var/mob/living/carbon/human/M = i
 		if(M.z != T_trg.z) continue
 		if(M.buckled)
 			to_chat(M, SPAN_WARNING("You are jolted against [M.buckled]!"))

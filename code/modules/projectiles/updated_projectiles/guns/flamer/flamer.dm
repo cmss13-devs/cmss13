@@ -355,7 +355,7 @@
 			return
 
 	if(fire_spread_amount > 0)
-		var/datum/flameshape/FS = flameshapes[flameshape]
+		var/datum/flameshape/FS = GLOB.flameshapes[flameshape]
 		if(!FS)
 			CRASH("Invalid flameshape passed to /obj/flamer_fire. (Expected /datum/flameshape, got [FS] (id: [flameshape]))")
 

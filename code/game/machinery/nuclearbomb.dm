@@ -280,7 +280,7 @@ var/bomb_set = FALSE
 /obj/structure/machinery/nuclearbomb/proc/announce_to_players(var/timer_warning)
 	if(timer_warning)	//we check for timer warnings first
 		//humans part
-		var/list/humans_other = human_mob_list + dead_mob_list
+		var/list/humans_other = GLOB.human_mob_list + GLOB.dead_mob_list
 		var/list/humans_USCM = list()
 		for(var/mob/M in humans_other)
 			var/mob/living/carbon/human/H = M
@@ -311,7 +311,7 @@ var/bomb_set = FALSE
 		return
 
 	//deal with start/stop announcements for players
-	var/list/humans_other = human_mob_list + dead_mob_list
+	var/list/humans_other = GLOB.human_mob_list + GLOB.dead_mob_list
 	var/list/humans_USCM = list()
 	for(var/mob/M in humans_other)
 		var/mob/living/carbon/human/H = M

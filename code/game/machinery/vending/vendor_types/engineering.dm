@@ -14,8 +14,11 @@
 
 /obj/structure/machinery/cm_vending/sorted/tech/Initialize()
 	. = ..()
-	cm_vending_vendors.Add(src)
+	GLOB.cm_vending_vendors += src
 
+/obj/structure/machinery/cm_vending/sorted/tech/Destroy()
+	GLOB.cm_vending_vendors -= src
+	return ..()
 /obj/structure/machinery/cm_vending/sorted/tech/tool_storage
 	name = "\improper Tool Storage Machine"
 	desc = "A large storage machine containing various tools and devices for general repair."

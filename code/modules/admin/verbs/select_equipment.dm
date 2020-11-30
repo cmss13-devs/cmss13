@@ -1,4 +1,4 @@
-/client/proc/cmd_admin_select_mob_rank(var/mob/living/carbon/human/H in mob_list)
+/client/proc/cmd_admin_select_mob_rank(var/mob/living/carbon/human/H in GLOB.human_mob_list)
 	set category = null
 	set name = "Select Rank"
 	if(!istype(H))
@@ -41,7 +41,7 @@
 		switch(newrank)
 			if("Weston-Yamada")
 				var/code = "WY-"
-				
+
 				var/divisions = get_named_wy_ranks("division_code")
 				var/div = input("Select the Division at which they belong to.", "Division") in divisions
 
@@ -115,13 +115,13 @@
 				var/datum/job/J = RoleAuthority.roles_by_name[newskillset]
 				H.set_skills(J.get_skills())
 
-/client/proc/cmd_admin_dress(var/mob/living/carbon/human/M in mob_list)
+/client/proc/cmd_admin_dress(var/mob/living/carbon/human/M in GLOB.human_mob_list)
 	set category = null
 	set name = "Select Equipment"
 
 	cmd_admin_dress_human(M)
 
-/client/proc/cmd_admin_dress_human(var/mob/living/carbon/human/M in mob_list, var/datum/equipment_preset/dresscode, var/no_logs = 0, var/count_participant = FALSE)
+/client/proc/cmd_admin_dress_human(var/mob/living/carbon/human/M in GLOB.human_mob_list, var/datum/equipment_preset/dresscode, var/no_logs = 0, var/count_participant = FALSE)
 	if (!no_logs)
 		dresscode = input("Select dress for [M]", "Robust quick dress shop") as null|anything in gear_presets_list
 
@@ -144,7 +144,7 @@
 
 	if(!M.hud_used)
 		M.create_hud()
-		
+
 	arm_equipment(M, dresscode, FALSE, count_participant)
 	if(!no_logs)
 		message_staff(SPAN_NOTICE("[key_name_admin(usr)] changed the equipment of [key_name_admin(M)] to [dresscode]."), 1)
@@ -161,7 +161,7 @@
 
 	if(alert("Are you sure you want to change the equipment of ALL humans in the world to [dresscode]?",, "Yes", "No") == "No") return
 
-	for(var/mob/living/carbon/human/M in mob_list)
+	for(var/mob/living/carbon/human/M in GLOB.human_mob_list)
 		src.cmd_admin_dress_human(M, dresscode, 1)
 
 	message_staff(SPAN_NOTICE("[key_name_admin(usr)] changed the equipment of ALL HUMANS to [dresscode]."), 1)

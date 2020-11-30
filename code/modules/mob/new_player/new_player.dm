@@ -14,6 +14,7 @@
 /mob/new_player/Initialize()
 	. = ..()
 	GLOB.new_player_list += src
+	GLOB.dead_mob_list -= src
 	if(client)
 		client.view = lobby_view_size
 

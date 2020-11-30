@@ -33,18 +33,8 @@ var/global/list/custom_huds_list = list("midnight" = new /datum/custom_hud(),
 
 var/readied_players = 0								//How many players are readied up in the lobby
 
-var/global/list/mob_list = list()					//List of all mobs, including clientless
-var/global/list/living_mob_list = list()			//List of all alive mobs, including clientless. Excludes /mob/new_player
-var/global/list/dead_mob_list = list()				//List of all dead mobs, including clientless. Excludes /mob/new_player
-
-var/global/list/xeno_mob_list = list() 				// list of all /mob/living/carbon/Xenomorph mobs
-var/global/list/living_xeno_list = list()			//List of all alive mob/living/carbon/Xenomorph mobs
-
-var/global/list/yautja_mob_list = list()
-
-var/global/list/human_mob_list = list() // list of all /mob/living/carbon/human mobs
 var/global/list/processable_human_list = list() //List of all humans to be processed by the SS
-var/global/list/living_human_list = list() // list of alive marines
+
 var/global/list/human_agent_list
 var/global/list/other_factions_human_list
 
@@ -74,17 +64,11 @@ var/global/list/joblist = list()					//List of all jobstypes, minus borg and AI
 
 var/global/list/datum/equipment_preset/gear_presets_list = list()
 
-var/global/list/structure_list = list()				//List of all /obj/structure as they are created, to fetch generic structures with a lot less lag
 var/global/list/active_areas = list()
 var/global/list/all_areas = list()
 
 var/global/list/turfs = list()
 var/global/list/z1turfs = list()
-var/global/list/processing_turfs = list()
-var/global/list/object_list = list()
-var/global/list/item_list = list()
-var/global/list/effect_list = list()
-var/global/list/cm_vending_vendors = list() //Used by our gamemode code
 
 /var/global/list/objects_of_interest // This is used to track the stealing objective for Agents.
 
@@ -95,7 +79,7 @@ var/global/list/grenade_antigrief_exempt_areas = list(
 var/global/list/yautja_gear = list() // list of loose pred gear
 var/global/list/untracked_yautja_gear = list() // List of untracked loose pred gear
 
-var/global/list/gun_cabinets = list()
+GLOBAL_LIST_EMPTY_TYPED(gun_cabinets, /obj/structure/closet/secure_closet/guncabinet)
 
 var/global/list/marine_collectors = list() // Collectors used for marine defenses. They mine.
 

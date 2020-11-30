@@ -76,8 +76,8 @@
 	if(stat == DEAD)
 		if(health > 0)
 			icon_state = icon_living
-			dead_mob_list -= src
-			living_mob_list += src
+			GLOB.dead_mob_list -= src
+			GLOB.alive_mob_list += src
 			stat = CONSCIOUS
 			lying = 0
 			density = 1

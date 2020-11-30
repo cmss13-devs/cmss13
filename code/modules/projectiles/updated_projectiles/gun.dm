@@ -152,6 +152,7 @@
 	update_force_list() //This gives the gun some unique attack verbs for attacking.
 	handle_starting_attachment()
 	handle_random_attachments(random_spawn_chance)
+	GLOB.gun_list += src
 
 
 /obj/item/weapon/gun/proc/set_gun_attachment_offsets()
@@ -289,6 +290,7 @@
 			SetLuminosity(0)
 	attachments = null
 	attachable_overlays = null
+	GLOB.gun_list -= src
 	. = ..()
 
 /obj/item/weapon/gun/emp_act(severity)

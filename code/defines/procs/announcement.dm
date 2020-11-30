@@ -7,7 +7,7 @@
 
 //xenomorph hive announcement
 /proc/xeno_announcement(var/message, var/hivenumber, var/title = QUEEN_ANNOUNCE)
-	var/list/targets = living_xeno_list + dead_mob_list
+	var/list/targets = GLOB.living_xeno_list + GLOB.dead_mob_list
 	if(hivenumber == "everything")
 		for(var/mob/M in targets)
 			var/mob/living/carbon/Xenomorph/X = M
@@ -27,7 +27,7 @@
 
 //general marine announcement
 /proc/marine_announcement(var/message, var/title = COMMAND_ANNOUNCE, var/sound_to_play = sound('sound/misc/notice2.ogg'), var/faction_to_display = FACTION_MARINE, var/add_PMCs = TRUE, var/signature)
-	var/list/targets = human_mob_list + dead_mob_list
+	var/list/targets = GLOB.human_mob_list + GLOB.dead_mob_list
 	if(faction_to_display == FACTION_MARINE)
 		for(var/mob/M in targets)
 			if(isobserver(M))		//observers see everything
@@ -67,7 +67,7 @@
 
 //yautja ship AI announcement
 /proc/yautja_announcement(var/message, var/title = YAUTJA_ANNOUNCE, var/sound_to_play = sound('sound/misc/notice1.ogg'))
-	var/list/targets = human_mob_list + dead_mob_list
+	var/list/targets = GLOB.human_mob_list + GLOB.dead_mob_list
 	for(var/mob/M in targets)
 		if(isobserver(M))		//observers see everything
 			continue
@@ -79,7 +79,7 @@
 
 //AI announcement that uses talking into comms
 /proc/ai_announcement(var/message, var/sound_to_play = sound('sound/misc/interference.ogg'))
-	for(var/mob/M in (human_mob_list + dead_mob_list))
+	for(var/mob/M in (GLOB.human_mob_list + GLOB.dead_mob_list))
 		if(isobserver(M) || ishuman(M) && M.z == MAIN_SHIP_Z_LEVEL)
 			playsound_client(M.client, sound_to_play, M, vol = 45)
 
@@ -102,7 +102,7 @@
 /mob/proc/detectable_by_ai()
 	return TRUE
 
-/mob/living/carbon/human/detectable_by_ai() 
+/mob/living/carbon/human/detectable_by_ai()
 	if(gloves && gloves.hide_prints)
 		return FALSE
 	. = ..()
@@ -110,7 +110,7 @@
 //AI shipside announcement, that uses announcement mechanic instead of talking into comms
 //to ensure that all humans on ship hear it regardless of comms and power
 /proc/shipwide_ai_announcement(var/message, var/title = MAIN_AI_SYSTEM, var/sound_to_play = sound('sound/misc/interference.ogg'), var/signature)
-	var/list/targets = human_mob_list + dead_mob_list
+	var/list/targets = GLOB.human_mob_list + GLOB.dead_mob_list
 	for(var/mob/T in targets)
 		if(isobserver(T))
 			continue

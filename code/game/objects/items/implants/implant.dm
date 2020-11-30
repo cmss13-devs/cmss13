@@ -56,7 +56,15 @@
 	desc = "Track with this."
 	var/id = 1.0
 
+/obj/item/implant/tracking/Initialize(mapload, ...)
+	. = ..()
+	GLOB.tracking_implant_list += src
 
+/obj/item/implant/tracking/Destroy()
+	GLOB.tracking_implant_list -= src
+	return ..()
+
+/obj/item/implant/tracking
 	get_data()
 		var/dat = {"<b>Implant Specifications:</b><BR>
 <b>Name:</b> Tracking Beacon<BR>
@@ -254,6 +262,15 @@ Implant Specifics:<BR>"}
 	desc = "Injects things."
 	allow_reagents = 1
 
+/obj/item/implant/chem/Initialize()
+	. = ..()
+	GLOB.chem_implant_list += src
+
+/obj/item/implant/chem/Destroy()
+	GLOB.chem_implant_list -= src
+	return ..()
+
+/obj/item/implant/chem
 	get_data()
 		var/dat = {"
 <b>Implant Specifications:</b><BR>

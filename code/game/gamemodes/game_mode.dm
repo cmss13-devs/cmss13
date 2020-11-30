@@ -135,7 +135,8 @@ var/global/cas_tracking_id_increment = 0	//this var used to assign unique tracki
 	return 0
 
 /datum/game_mode/proc/calculate_end_statistics()
-	for(var/mob/M in living_mob_list)
+	for(var/i in GLOB.alive_mob_list)
+		var/mob/M = i
 		M.life_time_total = world.time - M.life_time_start
 		M.track_death_calculations()
 		M.statistic_exempt = TRUE
@@ -191,7 +192,8 @@ var/global/cas_tracking_id_increment = 0	//this var used to assign unique tracki
 ///////////////////////////////////
 /datum/game_mode/proc/get_living_heads()
 	var/list/heads = list()
-	for(var/mob/living/carbon/human/player in living_human_list)
+	for(var/i in GLOB.alive_human_list)
+		var/mob/living/carbon/human/player = i
 		if(player.stat!=2 && player.mind && (player.job in ROLES_COMMAND ))
 			heads += player.mind
 	return heads
@@ -202,7 +204,7 @@ var/global/cas_tracking_id_increment = 0	//this var used to assign unique tracki
 ////////////////////////////
 /datum/game_mode/proc/get_all_heads()
 	var/list/heads = list()
-	for(var/mob/player in mob_list)
+	for(var/mob/player in GLOB.mob_list)
 		if(player.mind && (player.job in ROLES_COMMAND ))
 			heads += player.mind
 	return heads
@@ -216,7 +218,8 @@ var/global/cas_tracking_id_increment = 0	//this var used to assign unique tracki
 //////////////////////////
 proc/display_roundstart_logout_report()
 	var/msg = SPAN_NOTICE("<b>Roundstart logout report\n\n")
-	for(var/mob/living/L in mob_list)
+	for(var/i in GLOB.living_mob_list)
+		var/mob/living/L = i
 
 		if(L.ckey)
 			var/found = 0
@@ -241,7 +244,7 @@ proc/display_roundstart_logout_report()
 					continue //Dead
 
 			continue //Happy connected client
-		for(var/mob/dead/observer/D in mob_list)
+		for(var/mob/dead/observer/D in GLOB.observer_list)
 			if(D.mind && (D.mind.original == L || D.mind.current == L))
 				if(L.stat == DEAD)
 					msg += "<b>[L.name]</b> ([ckey(D.mind.key)]), the [L.job] (Dead)\n"
@@ -254,8 +257,8 @@ proc/display_roundstart_logout_report()
 						msg += "<b>[L.name]</b> ([ckey(D.mind.key)]), the [L.job] (<font color='red'><b>Ghosted</b></font>)\n"
 						continue //Ghosted while alive
 
-	for(var/mob/M in mob_list)
-		if(M.client && M.client.admin_holder && (M.client.admin_holder.rights & R_MOD))
+	for(var/mob/M in GLOB.player_list)
+		if(M.client.admin_holder && (M.client.admin_holder.rights & R_MOD))
 			to_chat(M, msg)
 
 //Announces objectives/generic antag text.

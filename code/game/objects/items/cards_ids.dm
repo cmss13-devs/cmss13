@@ -111,7 +111,7 @@
 
 /obj/item/card/id/proc/fail_agent_objectives()
 	var/mob/living/carbon/human/A
-	for(var/mob/living/carbon/human/H in human_mob_list)
+	for(var/mob/living/carbon/human/H in GLOB.human_mob_list)
 		if(H.gid == registered_gid && H.agent_holder)
 			A = H
 

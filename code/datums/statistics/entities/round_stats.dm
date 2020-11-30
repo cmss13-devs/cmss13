@@ -2,7 +2,7 @@
 	var/name = "round"
 	var/datum/entity/map_stats/current_map = null // reference to current map
 	var/list/datum/entity/death_stats/death_stats_list = list()
-	
+
 	var/game_mode = null
 
 	var/real_time_start = 0 // GMT-based 11:04
@@ -158,7 +158,8 @@
 
 /datum/entity/round_stats/proc/track_round_end()
 	real_time_end = world.realtime
-	for(var/mob/M in living_mob_list)
+	for(var/i in GLOB.alive_mob_list)
+		var/mob/M = i
 		if(M.mind)
 			track_final_participant(M.faction)
 
@@ -171,7 +172,8 @@
 	S.value += amount
 
 /datum/entity/round_stats/proc/track_hijack()
-	for(var/mob/M in living_mob_list)
+	for(var/i in GLOB.alive_mob_list)
+		var/mob/M = i
 		if(M.mind)
 			track_hijack_participant(M.faction)
 	round_hijack_time = world.time
@@ -273,7 +275,7 @@
 	stats += "Map name: [current_map.name]\n"
 	stats += "Round time: [duration2text(round_length)]\n"
 	stats += "End round player population: [end_round_player_population]\n"
-	
+
 	stats += "Total xenos spawned: [total_xenos_created]\n"
 	stats += "Total Preds spawned: [total_predators_spawned]\n"
 	stats += "Total Predaliens spawned: [total_predaliens]\n"
@@ -309,7 +311,7 @@
 /datum/action/show_round_statistics/can_use_action()
 	if(!..())
 		return FALSE
-	
+
 	if(!owner.client || !owner.client.player_entity)
 		return FALSE
 
@@ -320,4 +322,3 @@
 		return
 
 	owner.client.player_entity.show_statistics(owner, round_statistics, TRUE)
-	

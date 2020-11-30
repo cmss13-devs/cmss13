@@ -4,13 +4,13 @@
 
 /mob/living/carbon/human/dummy/Initialize(mapload)
 	. = ..()
-	human_mob_list -= src
-	living_human_list -= src
+	GLOB.human_mob_list -= src
+	GLOB.alive_human_list -= src
 	processable_human_list -= src
-	mob_list -= src
-	dead_mob_list -= src
-	living_mob_list -= src
-	
+	GLOB.mob_list -= src
+	GLOB.dead_mob_list -= src
+	GLOB.alive_mob_list -= src
+
 	set_species()
 	change_real_name(src, "Test Dummy")
 	status_flags = GODMODE|CANPUSH

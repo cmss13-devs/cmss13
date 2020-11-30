@@ -13,7 +13,7 @@ var/list/forbidden_varedit_object_types = list(
 
 /client/proc/mod_list_add_ass() //haha
 	var/class = "text"
-	
+
 	var/list/possible_classes = list("text","num","type","reference","mob reference","icon","file","list")
 	if(LAZYLEN(stored_matrices))
 		possible_classes += "matrix"
@@ -43,7 +43,7 @@ var/list/forbidden_varedit_object_types = list(
 			var_value = input("Select reference:","Reference") as null|mob|obj|turf|area in world
 
 		if("mob reference")
-			var_value = input("Select reference:","Reference") as null|mob in mob_list
+			var_value = input("Select reference:","Reference") as null|mob in GLOB.mob_list
 
 		if("file")
 			var_value = input("Pick file:","File") as null|file
@@ -107,7 +107,7 @@ var/list/forbidden_varedit_object_types = list(
 			var_value = input("Select reference:","Reference") as mob|obj|turf|area in world
 
 		if("mob reference")
-			var_value = input("Select reference:","Reference") as mob in mob_list
+			var_value = input("Select reference:","Reference") as mob in GLOB.mob_list
 
 		if("file")
 			var_value = input("Pick file:","File") as file
@@ -138,7 +138,7 @@ var/list/forbidden_varedit_object_types = list(
 			L[var_value] = mod_list_add_ass() //haha
 		if("No")
 			L += var_value
-	
+
 	message_staff("[key_name_admin(src)] added a new element to a list with a key of '[var_value]' and an associated value of [isnum(var_value)? "null" : L[var_value]]", 1)
 
 /client/proc/mod_list(var/list/L)
@@ -278,7 +278,7 @@ var/list/forbidden_varedit_object_types = list(
 			L[L.Find(variable)] = input("Select reference:","Reference") as mob|obj|turf|area in world
 
 		if("mob reference")
-			L[L.Find(variable)] = input("Select reference:","Reference") as mob in mob_list
+			L[L.Find(variable)] = input("Select reference:","Reference") as mob in GLOB.mob_list
 
 		if("file")
 			L[L.Find(variable)] = input("Pick file:","File") as file
@@ -515,11 +515,11 @@ var/list/forbidden_varedit_object_types = list(
 				var/var_new = input("Enter new number:","Num",O.vars[variable]) as null|num
 				if(var_new == null) return
 				if((O.vars[variable] == 2) && (var_new < 2))//Bringing the dead back to life
-					dead_mob_list -= O
-					living_mob_list += O
+					GLOB.dead_mob_list -= O
+					GLOB.alive_mob_list += O
 				if((O.vars[variable] < 2) && (var_new == 2))//Kill he
-					living_mob_list -= O
-					dead_mob_list += O
+					GLOB.alive_mob_list -= O
+					GLOB.dead_mob_list += O
 				O.vars[variable] = var_new
 			else
 				var/var_new =  input("Enter new number:","Num",O.vars[variable]) as null|num
@@ -537,7 +537,7 @@ var/list/forbidden_varedit_object_types = list(
 			O.vars[variable] = var_new
 
 		if("mob reference")
-			var/var_new = input("Select reference:","Reference",O.vars[variable]) as null|mob in mob_list
+			var/var_new = input("Select reference:","Reference",O.vars[variable]) as null|mob in GLOB.mob_list
 			if(var_new==null) return
 			O.vars[variable] = var_new
 

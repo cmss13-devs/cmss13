@@ -71,8 +71,8 @@
 	timeofdeath = world.time
 	life_time_total = world.time - life_time_start
 	if(mind) mind.store_memory("Time of death: [worldtime2text()]", 0)
-	living_mob_list -= src
-	dead_mob_list |= src
+	GLOB.alive_mob_list -= src
+	GLOB.dead_mob_list += src
 
 	if(client && client.player_data)
 		record_playtime(client.player_data, job, type)

@@ -71,6 +71,11 @@
 	var/turf/T = src.loc			// hide if turf is not intact
 	if(level==1) hide(T.intact_tile)
 	update_icon()
+	GLOB.cable_list += src
+
+/obj/structure/cable/Destroy()
+	GLOB.cable_list -= src
+	return ..()
 
 /obj/structure/cable/hide(var/i)
 

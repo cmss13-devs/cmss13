@@ -303,10 +303,10 @@
 
 /mob/living/carbon/human/proc/handle_revive()
 	track_revive(job)
-	living_mob_list.Add(src)
+	GLOB.alive_mob_list += src
 	if(!isSynth(src) && !isYautja(src))
-		living_human_list.Add(src)
-	dead_mob_list.Remove(src)
+		GLOB.alive_human_list += src
+	GLOB.dead_mob_list -= src
 	timeofdeath = 0
 	life_time_start = world.time
 	life_time_total = 0

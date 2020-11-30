@@ -32,7 +32,7 @@
         T = get_step(source_turf, dirn)
         if(istype(T, /turf/open/space))
             continue
-        
+
         var/obj/flamer_fire/foundflame = locate() in T
         if(foundflame && foundflame.tied_reagent == F.tied_reagent)
             continue
@@ -178,7 +178,7 @@
     for(var/turf/T in turfs)
         if(distance > fire_spread_amount)
             break
-        
+
         if(T.density)
             T.flamer_fire_act()
             hit_dense_atom_mid = TRUE
@@ -198,7 +198,7 @@
 
             prev_T = T
             continue
-            
+
         addtimer(CALLBACK(src, .proc/generate_fire, T, F, 0, FLAMESHAPE_TRIANGLE), 0)
         prev_T = T
         sleep(1)
@@ -264,11 +264,11 @@
         F.to_call.Invoke()
 
 
-var/global/list/flameshapes = list(
+GLOBAL_LIST_INIT(flameshapes, list(
     FLAMESHAPE_DEFAULT = new /datum/flameshape/default(),
     FLAMESHAPE_IRREGULAR = new /datum/flameshape/default/irregular(),
     FLAMESHAPE_STAR = new /datum/flameshape/star(),
     FLAMESHAPE_MINORSTAR = new /datum/flameshape/star/minor(),
     FLAMESHAPE_TRIANGLE = new /datum/flameshape/triangle(),
     FLAMESHAPE_LINE = new /datum/flameshape/line(),
-)
+))

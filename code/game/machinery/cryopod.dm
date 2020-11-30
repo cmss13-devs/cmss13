@@ -7,8 +7,8 @@
  */
 
 //Used for logging people entering cryosleep and important items they are carrying.
-var/global/list/frozen_crew = list()
-var/global/list/frozen_items = list(SQUAD_NAME_1 = list(), SQUAD_NAME_2 = list(), SQUAD_NAME_3 = list(), SQUAD_NAME_4 = list(), "MP" = list(), "REQ" = list(), "Eng" = list(), "Med" = list(), "Yautja" = list())
+GLOBAL_LIST_EMPTY(frozen_crew)
+GLOBAL_LIST_INIT(frozen_items, list(SQUAD_NAME_1 = list(), SQUAD_NAME_2 = list(), SQUAD_NAME_3 = list(), SQUAD_NAME_4 = list(), "MP" = list(), "REQ" = list(), "Eng" = list(), "Med" = list(), "Yautja" = list()))
 
 //Main cryopod console.
 
@@ -74,14 +74,14 @@ var/global/list/frozen_items = list(SQUAD_NAME_1 = list(), SQUAD_NAME_2 = list()
 /obj/structure/machinery/computer/cryopod/Topic(href, href_list)
 
 	var/mob/user = usr
-	var/list/frozen_items_for_type = frozen_items[cryotype]
+	var/list/frozen_items_for_type = GLOB.frozen_items[cryotype]
 
 	src.add_fingerprint(user)
 
 	if(href_list["log"])
 
 		var/dat = "<b>Recently stored crewmembers</b><br/><hr/><br/>"
-		for(var/person in frozen_crew)
+		for(var/person in GLOB.frozen_crew)
 			dat += "[person]<br/>"
 		dat += "<hr/>"
 
@@ -214,18 +214,18 @@ var/global/list/frozen_items = list(SQUAD_NAME_1 = list(), SQUAD_NAME_2 = list()
 	items -= occupant //Don't delete the occupant
 	items -= announce //or the autosay radio.
 
-	var/list/dept_console = frozen_items["REQ"]
+	var/list/dept_console = GLOB.frozen_items["REQ"]
 	if(ishuman(occupant))
 		var/mob/living/carbon/human/H = occupant
 		switch(H.job)
 			if("Military Police","Chief MP")
-				dept_console = frozen_items["MP"]
+				dept_console = GLOB.frozen_items["MP"]
 			if("Doctor","Researcher","Chief Medical Officer")
-				dept_console = frozen_items["Med"]
+				dept_console = GLOB.frozen_items["Med"]
 			if("Ordnance Techician","Chief Engineer")
-				dept_console = frozen_items["Eng"]
+				dept_console = GLOB.frozen_items["Eng"]
 			if("Predator")
-				dept_console = frozen_items["Yautja"]
+				dept_console = GLOB.frozen_items["Yautja"]
 
 	var/list/deleteempty = list(/obj/item/storage/backpack/marine/satchel)
 
@@ -363,7 +363,7 @@ var/global/list/frozen_items = list(SQUAD_NAME_1 = list(), SQUAD_NAME_2 = list()
 		occupant.ghostize(0)
 
 	//Make an announcement and log the person entering storage.
-	frozen_crew += "[occupant.real_name]"
+	GLOB.frozen_crew += "[occupant.real_name]"
 	if(!isYautja(occupant))
 		ai_silent_announcement("[occupant.real_name] has entered long-term hypersleep storage. Belongings moved to hypersleep inventory.")
 	visible_message(SPAN_NOTICE("[src] hums and hisses as it moves [occupant.real_name] into hypersleep storage."))

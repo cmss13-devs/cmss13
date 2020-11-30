@@ -2,7 +2,7 @@
 	set category = "OOC"
 	set name = "YOOC"
 	set desc = "OOC channel for Yautja players."
-	
+
 	if(!src.admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only staff members may talk on this channel.")
 		return
@@ -16,7 +16,7 @@
 	log_admin(yooc_message)
 
 	// Send to preds who are non-staff
-	for(var/mob/living/carbon/human/Y in yautja_mob_list)
+	for(var/mob/living/carbon/human/Y in GLOB.yautja_mob_list)
 		if(Y.client && !Y.client.admin_holder)
 			to_chat(Y, SPAN_YOOC(yooc_message))
 

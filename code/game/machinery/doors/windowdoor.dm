@@ -292,6 +292,14 @@
 	name = "Ultra-reinforced glass door"
 	desc = "A window, that is also a door. A windoor if you will. It is indestructible."
 
+/obj/structure/machinery/door/window/ultra/Initialize(mapload, ...)
+	. = ..()
+	GLOB.hijack_deletable_windows += src
+
+/obj/structure/machinery/door/window/ultra/Destroy()
+	GLOB.hijack_deletable_windows -= src
+	return ..()
+
 // No damage taken.
 /obj/structure/machinery/door/window/ultra/attackby(obj/item/I, mob/user)
 	return try_to_activate_door(user)

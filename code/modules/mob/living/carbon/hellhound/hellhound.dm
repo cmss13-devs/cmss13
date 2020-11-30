@@ -34,6 +34,7 @@
 	see_invisible = SEE_INVISIBLE_MINIMUM
 	see_in_dark = 8
 	living_misc_mobs += src
+	GLOB.hellhound_list += src
 
 	for(var/mob/dead/observer/M in GLOB.observer_list)
 		to_chat(M, SPAN_WARNING("<B>A hellhound is now available to play!</b> Please be sure you can follow the rules."))
@@ -41,8 +42,9 @@
 		to_chat(M, SPAN_WARNING("If you need help during play, click adminhelp and ask."))
 
 /mob/living/carbon/hellhound/Destroy()
-	..()
+	GLOB.hellhound_list -= src
 	living_misc_mobs -= src
+	return ..()
 
 /mob/living/carbon/hellhound/Login()
 	. = ..()
@@ -237,7 +239,7 @@
 		if(radio_prefix == ":" || radio_prefix == ";") //Hellhounds do not actually get to talk on the radios, only listen.
 			message = trim(copytext(message,2))
 			if(!message) return
-			for(var/mob/living/carbon/hellhound/M in living_mob_list)
+			for(var/mob/living/carbon/hellhound/M in GLOB.hellhound_list)
 				to_chat(M, SPAN_NOTICE(" <B>\[RADIO\]</b>: [src.name] [verb_used], '<B>[message]<B>'."))
 			return
 
@@ -256,4 +258,5 @@
 
 /mob/living/carbon/hellhound/rejuvenate()
 	..()
+	GLOB.hellhound_list += src
 	living_misc_mobs += src

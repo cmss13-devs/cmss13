@@ -187,7 +187,7 @@
 	for(var/mob/M in mobs)
 		if(!M.ckey)
 			continue
-		
+
 		var/color = i % 2 == 0 ? "#6289b7" : "#48709d"
 
 		var/M_job = ""
@@ -328,11 +328,11 @@
 	if(!ticker || !(ticker.current_state >= GAME_STATE_PLAYING))
 		alert("The game hasn't started yet!")
 		return
-	
+
 	var/dat = "<html><body><h1><B>Antagonists</B></h1>"
 	dat += "Current Game Mode: <B>[ticker.mode.name]</B><BR>"
 	dat += "Round Duration: <B>[round(world.time / 36000)]:[add_zero(world.time / 600 % 60, 2)]:[world.time / 100 % 6][world.time / 100 % 10]</B><BR>"
-	
+
 	if(LAZYLEN(human_agent_list))
 		dat += "<br><table cellspacing=5><tr><td><B>Agents</B></td><td></td><td></td></tr>"
 		for(var/mob/living/carbon/human/H in human_agent_list)
@@ -484,7 +484,7 @@
 	txt += "</tr>"
 	return txt
 
-/datum/admins/proc/show_player_panel(var/mob/M in mob_list)
+/datum/admins/proc/show_player_panel(var/mob/M in GLOB.mob_list)
 	set name = "Show Player Panel"
 	set desc = "Edit player (respawn, ban, heal, etc)"
 	set category = null

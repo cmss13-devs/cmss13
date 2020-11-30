@@ -366,11 +366,11 @@
 
 	var/mob/living/carbon/human/H = user
 	var/ship_to_tele = list("Public" = CLAN_SHIP_PUBLIC, "Ooman Ship" = CLAN_SHIP_ALMAYER)
-	
+
 	if(!isYautja(H))
 		to_chat(user, SPAN_WARNING("You fiddle with it, but nothing happens!"))
 		return
-	
+
 	if(H.client && H.client.clan_info)
 		var/datum/entity/clan_player/clan_info = H.client.clan_info
 		if(clan_info.permissions & CLAN_PERMISSION_ADMIN_VIEW)
@@ -378,7 +378,7 @@
 			for(var/datum/view_record/clan_view/CV in CPV)
 				if(!("[CV.clan_id]" in pred_ships))
 					continue
-				
+
 				ship_to_tele += list("[CV.name]" = "[CV.clan_id]")
 		else if(clan_info.clan_id)
 			ship_to_tele += list("Your clan" = "[clan_info.clan_id]")
@@ -465,7 +465,7 @@
 
 	force = BULLET_DAMAGE_TIER_3
 	throwforce = BULLET_DAMAGE_TIER_8
-	
+
 /obj/item/weapon/wristblades
 	name = "wrist blades"
 	desc = "A pair of huge, serrated blades extending from a metal gauntlet."
@@ -666,11 +666,11 @@
 		var/mob/living/carbon/Xenomorph/X = target
 		X.interference = 30
 
-	
+
 	if(prob(20))
 		user.visible_message(SPAN_DANGER("An opening in combat presents itself!"),SPAN_DANGER("You manage to strike at your foe once more!"))
 		..() //Do it again! CRIT! This will be replaced by a bleed effect.
-	
+
 	return
 
 //Combistick
@@ -885,7 +885,7 @@
 
 	proc/display_camera(var/mob/user as mob)
 		var/list/L = list()
-		for(var/mob/living/carbon/hellhound/H in mob_list)
+		for(var/mob/living/carbon/hellhound/H in GLOB.hellhound_list)
 			L += H.real_name
 		L["Cancel"] = "Cancel"
 
@@ -895,7 +895,7 @@
 			to_chat(user, "Stopping camera feed.")
 			return
 
-		for(var/mob/living/carbon/hellhound/Q in mob_list)
+		for(var/mob/living/carbon/hellhound/Q in GLOB.hellhound_list)
 			if(Q.real_name == choice)
 				current = Q.camera
 				break

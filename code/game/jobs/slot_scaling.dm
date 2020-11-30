@@ -1,7 +1,7 @@
 /proc/get_total_marines()
 	var/count = 0
-	for(var/mob/living/carbon/human/H in human_mob_list)
-		if(H.faction == FACTION_MARINE)	
+	for(var/mob/living/carbon/human/H in GLOB.human_mob_list)
+		if(H.faction == FACTION_MARINE)
 			count++
 	return count
 

@@ -334,7 +334,7 @@
 				closest = dist
 				direction = get_dir(M,loc)
 				areaLoc = loc
-	for(var/mob/living/carbon/human/Y in yautja_mob_list)
+	for(var/mob/living/carbon/human/Y in GLOB.yautja_mob_list)
 		if(Y.stat != DEAD) continue
 		switch(Y.z)
 			if(LOW_ORBIT_Z_LEVEL)

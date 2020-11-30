@@ -113,7 +113,7 @@
 /obj/item/New(loc)
 	..()
 
-	item_list += src
+	GLOB.item_list += src
 	for(var/path in actions_types)
 		new path(src)
 	if(w_class <= SIZE_MEDIUM) //pulling small items doesn't slow you down much
@@ -127,7 +127,7 @@
 	QDEL_NULL(event_dropped)
 	master = null
 	locked_to_mob = null
-	item_list -= src
+	GLOB.item_list -= src
 
 	var/obj/item/storage/S = loc
 	if(istype(S))

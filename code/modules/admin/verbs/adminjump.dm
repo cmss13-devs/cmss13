@@ -33,7 +33,7 @@
 
 	if(!src.mob)
 		return
-	
+
 	if(!isobserver(mob))
 		src.admin_ghost()
 
@@ -43,7 +43,7 @@
 	src.mob.forceMove(T)
 	return
 
-/client/proc/jump_to_object(var/obj/O in object_list)
+/client/proc/jump_to_object(var/obj/O in GLOB.object_list)
 	set name = "Jump to Object"
 	set category = null
 
@@ -55,7 +55,7 @@
 	if(!isturf(object_location))
 		to_chat(usr, "This object is not located in the game world.")
 		return
-	
+
 	if(src.mob)
 		if(!isobserver(mob))
 			src.admin_ghost()
@@ -65,7 +65,7 @@
 		A.forceMove(object_location)
 		message_staff(WRAP_STAFF_LOG(usr, "jumped to [O] in [get_area(O)] ([O.x],[O.y],[O.z])."), O.x, O.y, O.z)
 
-/client/proc/jumptomob(var/mob/M in mob_list)
+/client/proc/jumptomob(var/mob/M in GLOB.mob_list)
 	set name = "Jump to Mob"
 	set category = null
 

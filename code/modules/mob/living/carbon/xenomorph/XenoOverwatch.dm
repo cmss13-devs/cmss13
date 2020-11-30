@@ -38,7 +38,7 @@
 		return
 
 	var/list/possible_xenos = list()
-	for(var/mob/living/carbon/Xenomorph/T in living_mob_list)
+	for(var/mob/living/carbon/Xenomorph/T in GLOB.living_xeno_list)
 		if (T != X && T.z != ADMIN_Z_LEVEL && X.hivenumber == T.hivenumber) // Can't overwatch yourself, Xenos in Thunderdome, or Xenos in other hives
 			possible_xenos += T
 
@@ -53,7 +53,7 @@
 		X.overwatch(selected_xeno, FALSE, /datum/event_handler/xeno_overwatch_onmovement/queen)
 		if (oldXeno)
 			oldXeno.hud_set_queen_overwatch()
-	
+
 	if (selected_xeno && !QDELETED(selected_xeno))
 		selected_xeno.hud_set_queen_overwatch()
 
@@ -71,7 +71,7 @@
 		if(oldXeno)
 			to_chat(src, SPAN_XENOWARNING("You stop watching [oldXeno]."))
 			oldXeno.hud_set_queen_overwatch()
-		
+
 
 	else
 		if(!hive)
@@ -96,7 +96,7 @@
 		if (caste_name != "Queen" && is_zoomed)
 			zoom_out()
 
-		
+
 
 
 		if(observed_xeno)
@@ -106,7 +106,7 @@
 			SEND_SIGNAL(src, COMSIG_XENOMORPH_STOP_OVERWATCH_XENO, oldXeno)
 			oldXeno.hud_set_queen_overwatch()
 
-		observed_xeno = targetXeno 
+		observed_xeno = targetXeno
 
 		observed_xeno.hud_set_queen_overwatch()
 		SEND_SIGNAL(src, COMSIG_XENOMORPH_OVERWATCH_XENO, observed_xeno)
@@ -142,8 +142,8 @@
 
 		var/isQueen = (src.caste_name == "Queen")
 
-		var/mob/living/carbon/Xenomorph/xenoTarget = locate(href_list[XENO_OVERWATCH_TARGET_HREF]) in living_mob_list
-		var/mob/living/carbon/Xenomorph/xenoSrc = locate(href_list[XENO_OVERWATCH_SRC_HREF]) in living_mob_list
+		var/mob/living/carbon/Xenomorph/xenoTarget = locate(href_list[XENO_OVERWATCH_TARGET_HREF]) in GLOB.living_xeno_list
+		var/mob/living/carbon/Xenomorph/xenoSrc = locate(href_list[XENO_OVERWATCH_SRC_HREF]) in GLOB.living_xeno_list
 
 		if(!istype(xenoTarget) || xenoTarget.stat == DEAD || xenoTarget.z == ADMIN_Z_LEVEL)
 			return
@@ -163,8 +163,8 @@
 
 	..()
 
-// Event handler so we reset on movement 
-// I'd recommend reading the event handler code before you try to understand this 
+// Event handler so we reset on movement
+// I'd recommend reading the event handler code before you try to understand this
 /datum/event_handler/xeno_overwatch_onmovement
 	flags_handler = NO_FLAGS
 	var/mob/living/carbon/Xenomorph/X = null
@@ -173,9 +173,9 @@
 	src.X = X
 
 /datum/event_handler/xeno_overwatch_onmovement/Destroy()
-	X = null 
+	X = null
 	return ..()
-	
+
 /datum/event_handler/xeno_overwatch_onmovement/handle(sender, datum/event_args/ev_args)
 	var/datum/event_args/mob_movement/event_args = ev_args
 	var/isMoving = event_args.moving
@@ -186,8 +186,8 @@
 	if (X && !QDELETED(X))
 		X.overwatch(X.observed_xeno, TRUE) // Goodbye overwatch
 											// Even if we hand in null here, it doesn't matter
-		X.event_movement.remove_handler(src)   // Clean ourselves up 
-		return 0 
+		X.event_movement.remove_handler(src)   // Clean ourselves up
+		return 0
 
 // modified for the queen
 /datum/event_handler/xeno_overwatch_onmovement/queen

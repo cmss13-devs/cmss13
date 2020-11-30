@@ -46,7 +46,7 @@
 
 /turf/open/floor/plating/plating_catwalk/Initialize(mapload, ...)
 		. = ..()
-		
+
 		icon_state = base_state
 		update_turf_overlay()
 
@@ -159,7 +159,8 @@
 						H.take_overall_damage(10, 0, "Blunt Trauma")
 				playsound(AM.loc, 'sound/effects/bang.ogg', 10, 0)
 			else
-				for(var/obj/structure/disposaloutlet/retrieval/R in structure_list)
+				for(var/i in GLOB.disposal_retrieval_list)
+					var/obj/structure/disposaloutlet/retrieval/R = i
 					if(R.z != src.z)	continue
 					var/obj/structure/disposalholder/H = new()
 					AM.loc = H

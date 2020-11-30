@@ -230,7 +230,7 @@
 		if(custom_name)
 			return 0
 
-		for (var/mob/living/silicon/robot/drone/A in mob_list)
+		for (var/mob/living/silicon/robot/drone/A in GLOB.mob_list)
 			if(newname == A.nicknumber)
 				to_chat(src, SPAN_WARNING("That identifier is taken, pick again."))
 				return 0

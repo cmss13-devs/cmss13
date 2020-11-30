@@ -21,9 +21,10 @@
 
 	initialize_pain()
 	initialize_stamina()
-
+	GLOB.living_mob_list += src
 
 /mob/living/Destroy()
+	GLOB.living_mob_list -= src
 	pipes_shown = null
 
 	QDEL_NULL(attack_icon)

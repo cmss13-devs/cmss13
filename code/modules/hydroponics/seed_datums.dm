@@ -32,7 +32,8 @@ proc/populate_seed_list()
 
 	// Make sure any seed packets that were mapped in are updated
 	// correctly (since the seed datums did not exist a tick ago).
-	for(var/obj/item/seeds/S in item_list)
+	for(var/i in GLOB.seed_list)
+		var/obj/item/seeds/S = i
 		S.update_seed()
 
 	//Might as well mask the gene types while we're at it.

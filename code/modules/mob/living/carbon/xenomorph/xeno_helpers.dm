@@ -24,7 +24,7 @@
 			return TRUE
 		if(isXenoQueen(src))
 			return TRUE
-		
+
 	return FALSE
 
 /mob/living/carbon/Xenomorph/proc/get_plasma_percentage()
@@ -48,7 +48,7 @@
 
 	// Compare the areas.
 	for(var/mob/living/carbon/Xenomorph/X in hive.totalXenos)
-		if(!(X in living_xeno_list))
+		if(!(X in GLOB.living_xeno_list))
 			continue
 
 		var/area/XA = get_area(X)

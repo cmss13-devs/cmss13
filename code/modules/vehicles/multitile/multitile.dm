@@ -5,7 +5,7 @@
 	This applies to for example interior entrances and hardpoint origins
 */
 
-var/global/list/all_multi_vehicles = list()
+GLOBAL_LIST_EMPTY(all_multi_vehicles)
 
 /obj/vehicle/multitile
 	name = "multitile vehicle"
@@ -149,7 +149,7 @@ var/global/list/all_multi_vehicles = list()
 
 	initialize_cameras()
 
-	all_multi_vehicles += src
+	GLOB.all_multi_vehicles += src
 
 /obj/vehicle/multitile/Destroy()
 	if(!QDELETED(interior))
@@ -157,7 +157,7 @@ var/global/list/all_multi_vehicles = list()
 
 	QDEL_NULL_LIST(hardpoints)
 
-	all_multi_vehicles -= src
+	GLOB.all_multi_vehicles -= src
 
 	. = ..()
 

@@ -81,7 +81,7 @@
 
 /datum/species/yautja/handle_death(var/mob/living/carbon/human/H, gibbed)
 	if(gibbed)
-		yautja_mob_list -= H
+		GLOB.yautja_mob_list -= H
 
 	if(H.yautja_hunted_prey)
 		H.yautja_hunted_prey = null
@@ -93,7 +93,7 @@
 	var/datum/mob_hud/medical/advanced/A = huds[MOB_HUD_MEDICAL_ADVANCED]
 	A.add_to_hud(H)
 	H.blood_type = pick("A+","A-","B+","B-","O-","O+","AB+","AB-")
-	yautja_mob_list -= H
+	GLOB.yautja_mob_list -= H
 	for(var/obj/limb/L in H.limbs)
 		switch(L.name)
 			if("groin","chest")
@@ -111,11 +111,11 @@
 		L.time_to_knit = -1
 
 /datum/species/yautja/handle_post_spawn(var/mob/living/carbon/human/H)
-	living_human_list -= H
+	GLOB.alive_human_list -= H
 	H.universal_understand = 1
 
 	H.blood_type = "Y*"
-	yautja_mob_list += H
+	GLOB.yautja_mob_list += H
 	for(var/obj/limb/L in H.limbs)
 		switch(L.name)
 			if("groin","chest")

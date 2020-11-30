@@ -19,7 +19,7 @@ This one currently doesn't work. Will rework adn readd it during interior update
 		to_chat(src, "Only administrators may use this command.")
 		return
 
-	var/obj/vehicle/multitile/Vehicle = input("Select a vehicle.", "Remove Clamp", null, null) as null|anything in all_multi_vehicles
+	var/obj/vehicle/multitile/Vehicle = input("Select a vehicle.", "Remove Clamp", null, null) as null|anything in GLOB.all_multi_vehicles
 
 	if(!istype(Vehicle))
 		alert("Not a vehicle.")
@@ -39,7 +39,7 @@ This one currently doesn't work. Will rework adn readd it during interior update
 		to_chat(src, "Only administrators may use this command.")
 		return
 
-	var/obj/vehicle/multitile/Vehicle = input("Select a vehicle.", "Rejuvenate", null, null) as null|anything in all_multi_vehicles
+	var/obj/vehicle/multitile/Vehicle = input("Select a vehicle.", "Rejuvenate", null, null) as null|anything in GLOB.all_multi_vehicles
 
 	if(!istype(Vehicle))
 		alert("Not a vehicle.")

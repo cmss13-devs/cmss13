@@ -99,16 +99,15 @@
 	initialize_post_marine_gear_list()
 	lobby_time = world.time
 	randomovertime = pickovertime()
-	var/mob/M
 	for(var/obj/effect/landmark/start/S in world)
 		if(!istype(S, /obj/effect/landmark/start/whiskey))
 			qdel(S)
 
 	if(config) config.remove_gun_restrictions = 1
 
-	for(M in mob_list)
-		if(M.client && istype(M,/mob/living/carbon/human))
-			var/mob/living/carbon/human/H = M
+	for(var/i in GLOB.human_mob_list)
+		var/mob/living/carbon/human/H = i
+		if(H.client)
 			players += H
 			if(H.job in ROLES_MARINES)
 				spawn_player(H)
@@ -214,10 +213,10 @@
 
 /datum/game_mode/whiskey_outpost/count_xenos()//Counts braindead too
 	var/xeno_count = 0
-	for(var/mob/living/carbon/Xenomorph/X in living_xeno_list)
-		if(X) //Prevent any runtime errors
-			if(X.z == 1 && !istype(X.loc,/turf/open/space)) // If they're connected/unghosted and alive and not debrained
-				xeno_count += 1 //Add them to the amount of people who're alive.
+	for(var/i in GLOB.living_xeno_list)
+		var/mob/living/carbon/Xenomorph/X = i
+		if(X.z == 1 && !istype(X.loc,/turf/open/space)) // If they're connected/unghosted and alive and not debrained
+			xeno_count += 1 //Add them to the amount of people who're alive.
 
 	return xeno_count
 
@@ -281,7 +280,7 @@
 		round_finished = 1
 
 	calculate_end_statistics()
-	
+
 	return 1
 
 /datum/game_mode/proc/auto_declare_completion_whiskey_outpost()

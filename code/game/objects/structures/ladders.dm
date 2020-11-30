@@ -15,25 +15,26 @@
 	var/obj/structure/machinery/camera/cam
 	var/busy = 0 //Ladders are wonderful creatures, only one person can use it at a time
 
-/obj/structure/ladder/New()
-	..()
-	spawn(8)
-		cam = new /obj/structure/machinery/camera(src)
-		cam.network = list("LADDER")
-		cam.c_tag = name
+/obj/structure/ladder/Initialize(mapload, ...)
+	. = ..()
+	cam = new /obj/structure/machinery/camera(src)
+	cam.network = list("LADDER")
+	cam.c_tag = name
 
-		for(var/obj/structure/ladder/L in structure_list)
-			if(L.id == id)
-				if(L.height == (height - 1))
-					down = L
-					continue
-				if(L.height == (height + 1))
-					up = L
-					continue
+	for(var/i in GLOB.ladder_list)
+		var/obj/structure/ladder/L = i
+		if(L.id == id)
+			if(L.height == (height - 1))
+				down = L
+				continue
+			if(L.height == (height + 1))
+				up = L
+				continue
 
-			if(up && down)	//If both our connections are filled
-				break
-		update_icon()
+		if(up && down)	//If both our connections are filled
+			break
+	update_icon()
+	GLOB.ladder_list += src
 
 /obj/structure/ladder/Destroy()
 	if(down)
@@ -45,6 +46,7 @@
 			up.down = null
 		up = null
 	QDEL_NULL(cam)
+	GLOB.ladder_list -= src
 	. = ..()
 
 /obj/structure/ladder/update_icon()

@@ -84,7 +84,7 @@
 			else
 				var/f2 = text2path(f)
 				if(text_starts_with(f, "/mob"))
-					for(var/mob/m in mob_list)
+					for(var/mob/m in GLOB.mob_list)
 						if(istype(m, f2))
 							from_objs += m
 
@@ -114,7 +114,7 @@
 							from_objs += m
 
 				else if(text_starts_with(f, "/obj/item"))
-					for(var/obj/item/m in item_list)
+					for(var/obj/item/m in GLOB.item_list)
 						if(istype(m, f2))
 							from_objs += m
 
@@ -124,7 +124,7 @@
 							from_objs += m
 
 				else if(text_starts_with(f, "/obj"))
-					for(var/obj/m in object_list)
+					for(var/obj/m in GLOB.object_list)
 						if(istype(m, f2))
 							from_objs += m
 

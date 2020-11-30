@@ -432,7 +432,7 @@
 			if(recent_audio_emote)
 				to_chat(src, "You just did an audible emote. Wait a while.")
 				return
-			
+
 			message = "<B>[comm_paygrade][src]</B> shouts an inspiring cry!"
 			m_type = 2
 
@@ -586,8 +586,8 @@
  //Hearing gasp and such every five seconds is not good emotes were not global for a reason.
  // Maybe some people are okay with that.
 
-		for(var/mob/M in dead_mob_list)
-			if(!M.client || istype(M, /mob/new_player))
+		for(var/mob/M in GLOB.dead_mob_list)
+			if(!M.client)
 				continue //skip monkeys, leavers and new players
 			if((M.stat == DEAD || isobserver(M)) && M.client.prefs && (M.client.prefs.toggles_chat & CHAT_GHOSTSIGHT) && !(M in viewers(src,null)))
 				M.show_message(message)

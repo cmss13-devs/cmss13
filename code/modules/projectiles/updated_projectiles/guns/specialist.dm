@@ -571,7 +571,8 @@
 		human_user = loc
 
 	ping_count = 0
-	for(var/mob/M in living_mob_list)
+	for(var/i in GLOB.alive_mob_list)
+		var/mob/M = i
 
 		if(loc == null || M == null) continue
 		if(loc.z != M.z) continue

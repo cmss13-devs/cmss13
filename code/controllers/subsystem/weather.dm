@@ -9,14 +9,14 @@ SUBSYSTEM_DEF(weather)
 	// Tracking vars for controller state
 	var/is_weather_event = FALSE			// Is there a weather event going on right now?
 	var/is_weather_event_starting = FALSE	// Is there a weather event starting right now?
-	var/controller_state_lock = FALSE		// Used to prevent double-calls of important methods. Is set anytime 
+	var/controller_state_lock = FALSE		// Used to prevent double-calls of important methods. Is set anytime
 											// the controller enters a proc that significantly modifies its state
 	var/current_event_start_time			// Self explanatory
 	var/last_event_end_time					// Self explanatory
 
 	//// Important vars
 
-	// Map delegate object that handles per-map config 
+	// Map delegate object that handles per-map config
 	// and other map-dependent code
 	var/datum/weather_ss_map_holder/map_holder
 
@@ -24,7 +24,7 @@ SUBSYSTEM_DEF(weather)
 	var/obj/effect/weather_vfx_holder/curr_master_turf_overlay
 
 	// Current weather event type
-	var/weather_event_type 
+	var/weather_event_type
 
 	// If applicable, INSTANCE of weather_event_type
 	// Holds necessary data for the current weather event
@@ -37,7 +37,7 @@ SUBSYSTEM_DEF(weather)
 	switch(map_tag)
 		if (MAP_SOROKYNE_STRATA)
 			map_holder = new /datum/weather_ss_map_holder/sorokyne()
-	
+
 	// Disable the weather subsystem on maps that don't currently implement it
 	if (!map_holder)
 		flags |= SS_NO_FIRE
@@ -75,12 +75,12 @@ SUBSYSTEM_DEF(weather)
 /datum/controller/subsystem/weather/fire()
 	if (controller_state_lock)
 		return
-	
+
 	// End our current event if we must
 	if (is_weather_event && current_event_start_time + weather_event_instance.length < world.time)
 		end_weather_event()
 		return
-	
+
 	// If there's a weather event, return
 	if (is_weather_event)
 		return
@@ -102,7 +102,7 @@ SUBSYSTEM_DEF(weather)
 
 
 // Adjust our state to indicate that we're starting a new event
-// and tell all the mobs we care about to check back in to realize there's 
+// and tell all the mobs we care about to check back in to realize there's
 // now weather.
 /datum/controller/subsystem/weather/proc/start_weather_event()
 	if (controller_state_lock)
@@ -134,7 +134,7 @@ SUBSYSTEM_DEF(weather)
 	controller_state_lock = FALSE
 
 // Adjust our state to indicate that the weather event that WAS running is over
-// and tell all the mobs we care about to check back in to realize there's 
+// and tell all the mobs we care about to check back in to realize there's
 // no more weather.
 /datum/controller/subsystem/weather/proc/end_weather_event()
 
@@ -167,13 +167,13 @@ SUBSYSTEM_DEF(weather)
 /datum/controller/subsystem/weather/proc/add_as_weather_area(var/area/A, var/list/weather_areas)
 	if (istype(A, /area/space) || !A.weather_enabled)
 		return
-	
+
 	weather_areas += A
 	for (var/area/relatedA in A.related)
 		weather_areas += relatedA
 
 // Check whether or not a given atom should be affected by weather.
-// Uses a switch statement on map_tag to hand the execution off to 
+// Uses a switch statement on map_tag to hand the execution off to
 // map-dependent logic.
 /datum/controller/subsystem/weather/proc/weather_affects_check(var/atom/A)
 	return map_holder.should_affect_atom(A)
@@ -181,11 +181,9 @@ SUBSYSTEM_DEF(weather)
 
 /datum/controller/subsystem/weather/proc/update_mobs()
 	// Update weather for living mobs
-	for (var/mob/living/carbon/human/H in living_human_list)
-		H.update_weather()
-	
-	for (var/mob/living/carbon/Xenomorph/X in living_xeno_list)
-		X.update_weather()
+	for (var/i in (GLOB.alive_human_list + GLOB.living_xeno_list))
+		var/mob/living/L = i
+		L.update_weather()
 
 /obj/effect/weather_vfx_holder
 	name = "weather vfx holder"

@@ -367,7 +367,7 @@ Additional game mode variables.
 	var/list/available_xenos_non_ssd = list()
 	var/list/obj/effect/alien/resin/special/pool/hives = list()
 
-	for(var/mob/living/carbon/Xenomorph/X in living_xeno_list)
+	for(var/mob/living/carbon/Xenomorph/X in GLOB.living_xeno_list)
 		var/area/A = get_area(X)
 		if(X.z == ADMIN_Z_LEVEL && (!A || !(A.flags_atom & AREA_ALLOW_XENO_JOIN))) continue //xenos on admin z level don't count
 		if(istype(X) && !X.client)
@@ -413,7 +413,7 @@ Additional game mode variables.
 		if(!xeno_candidate) //
 			return 0
 
-		if(!(new_xeno in living_mob_list) || new_xeno.stat == DEAD)
+		if(!(new_xeno in GLOB.living_xeno_list) || new_xeno.stat == DEAD)
 			to_chat(xeno_candidate, SPAN_WARNING("You cannot join if the xenomorph is dead."))
 			return 0
 
@@ -441,7 +441,7 @@ Additional game mode variables.
 				return 0
 
 		if(alert(xeno_candidate, "Everything checks out. Are you sure you want to transfer yourself into [new_xeno]?", "Confirm Transfer", "Yes", "No") == "Yes")
-			if(new_xeno.client || !(new_xeno in living_mob_list) || new_xeno.stat == DEAD || !xeno_candidate) // Do it again, just in case
+			if(new_xeno.client || !(new_xeno in GLOB.living_xeno_list) || new_xeno.stat == DEAD || !xeno_candidate) // Do it again, just in case
 				to_chat(xeno_candidate, SPAN_WARNING("That xenomorph can no longer be controlled. Please try another."))
 				return 0
 		else return 0
@@ -896,16 +896,13 @@ Additional game mode variables.
 
 	//We take the number of marine players, deduced from other lists, and then get a scale multiplier from it, to be used in arbitrary manners to distribute equipment
 	//This might count players who ready up but get kicked back to the lobby
-	var/marine_pop_size = 0
-
-	for(var/mob/living/carbon/human/H in human_mob_list)
-		if(H.stat != DEAD)
-			marine_pop_size++
+	var/marine_pop_size = length(GLOB.alive_human_list)
 
 	var/scale = max(marine_pop_size / MARINE_GEAR_SCALING_NORMAL, 1) //This gives a decimal value representing a scaling multiplier. Cannot go below 1
 
 	//Set up attachment vendor contents related to Marine count
-	for(var/obj/structure/machinery/cm_vending/sorted/CVS in cm_vending_vendors)
+	for(var/i in GLOB.cm_vending_vendors)
+		var/obj/structure/machinery/cm_vending/sorted/CVS = i
 		CVS.populate_product_list(scale)
 
 	if(VehicleElevatorConsole)

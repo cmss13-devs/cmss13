@@ -51,7 +51,7 @@
 
 	var/agility_speed_increase = 0 // this opens up possibilities for balancing
 
-	// The type of mutator delegate to instantiate on the base caste. Will 
+	// The type of mutator delegate to instantiate on the base caste. Will
 	// be replaced when the Xeno chooses a strain.
 	var/behavior_delegate_type = /datum/behavior_delegate
 
@@ -75,7 +75,7 @@
 	var/can_be_queen_healed = 1
 
 	var/can_vent_crawl = 1
-	
+
 	var/caste_luminosity = 0
 
 	var/burrow_cooldown = SECONDS_5
@@ -150,7 +150,7 @@
 
 	if(minimum_xeno_playtime && total_xeno_playtime < minimum_xeno_playtime)
 		return FALSE
-	
+
 	return TRUE
 
 /datum/caste_datum/proc/get_caste_requirement(var/client/client)
@@ -353,7 +353,7 @@
 /datum/hive_status/proc/remove_hive_leader(var/mob/living/carbon/Xenomorph/xeno)
 	if(!istype(xeno) || !IS_XENO_LEADER(xeno))
 		return FALSE
-	
+
 	var/leader_num = GET_XENO_LEADER_NUM(xeno)
 
 	xeno_leader_list[leader_num] = null
@@ -366,16 +366,16 @@
 		if (i > open_xeno_leader_positions.len || open_xeno_leader_positions[i] > leader_num)
 			open_xeno_leader_positions.Insert(i, leader_num)
 			break
-	
+
 	hive_ui.update_xeno_keys()
 	return TRUE
 
 /datum/hive_status/proc/replace_hive_leader(var/mob/living/carbon/Xenomorph/original, var/mob/living/carbon/Xenomorph/replacement)
 	if(!replacement || replacement.hive_pos != NORMAL_XENO)
 		return remove_hive_leader(original)
-	
+
 	var/leader_num = GET_XENO_LEADER_NUM(original)
-	
+
 	xeno_leader_list[leader_num] = replacement
 
 	original.hive_pos = NORMAL_XENO
@@ -533,7 +533,7 @@
 		if(X.z == ADMIN_Z_LEVEL)
 			continue
 
-		if(!(X in living_xeno_list))
+		if(!(X in GLOB.living_xeno_list))
 			continue
 
 		var/area/A = get_area(X)
@@ -571,14 +571,14 @@
 	return slots
 
 // returns if that location can be used to plant eggs
-/datum/hive_status/proc/in_egg_plant_range(var/turf/T)	
+/datum/hive_status/proc/in_egg_plant_range(var/turf/T)
 	if(!istype(living_xeno_queen))
 		return TRUE // xenos already dicked without queen. Let them plant whereever
-		
+
 	if(!living_xeno_queen.ovipositor)
 		return FALSE // ovid queen only
 
-	return get_dist(living_xeno_queen, T) <= egg_planting_range	
+	return get_dist(living_xeno_queen, T) <= egg_planting_range
 
 /datum/hive_status/proc/can_build_structure(var/structure_name)
 	if(!structure_name || !hive_structures_limit[structure_name])

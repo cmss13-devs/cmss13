@@ -79,7 +79,6 @@
 		return
 	visibilityChanged()
 	flags_atom &= ~INITIALIZED
-	stop_processing()
 	..()
 
 /turf/ex_act(severity)
@@ -95,18 +94,6 @@
 
 /turf/process()
 	return
-
-/turf/proc/start_processing()
-	if(src in processing_turfs)
-		return 0
-	processing_turfs += src
-	return 1
-
-/turf/proc/stop_processing()
-	if(src in processing_turfs)
-		processing_turfs -= src
-		return 1
-	return 0
 
 // Handles whether an atom is able to enter the src turf
 /turf/Enter(atom/movable/mover, atom/forget)
@@ -195,7 +182,7 @@
 						mover.Collide(A)
 						return FALSE
 					break
-	
+
 	//Next, check the turf itself
 	blocking_dir |= BlockedPassDirs(mover, fdir)
 	if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
@@ -609,7 +596,7 @@
 
 			if(P.protection_level > protection_level)
 				protection_level = P.protection_level
-		else 
+		else
 			linked_pylons -= pylon
 
 	return protection_level

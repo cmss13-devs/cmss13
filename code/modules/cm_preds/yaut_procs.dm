@@ -1,6 +1,6 @@
 // Notify all preds with the bracer icon
 /proc/message_all_yautja(var/msg, var/soundeffect = TRUE)
-	for(var/mob/living/carbon/human/Y in yautja_mob_list)
+	for(var/mob/living/carbon/human/Y in GLOB.yautja_mob_list)
 		// Send message to the bracer; appear multiple times if we have more bracers
 		for(var/obj/item/clothing/gloves/yautja/G in Y.contents)
 			to_chat(Y, SPAN_YAUTJABOLD("[htmlicon(G)] \The <b>[G]</b> beeps: [msg]"))

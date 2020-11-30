@@ -112,11 +112,11 @@
 			var/mob/dead/observer/A = usr
 			A.reenter_corpse()
 	if(href_list["track"])
-		var/mob/target = locate(href_list["track"]) in mob_list
+		var/mob/target = locate(href_list["track"]) in GLOB.mob_list
 		if(target)
 			ManualFollow(target)
 	if(href_list[XENO_OVERWATCH_TARGET_HREF])
-		var/mob/target = locate(href_list[XENO_OVERWATCH_TARGET_HREF]) in living_xeno_list
+		var/mob/target = locate(href_list[XENO_OVERWATCH_TARGET_HREF]) in GLOB.living_xeno_list
 		if(target)
 			ManualFollow(target)
 	if(href_list["jumptocoord"])
@@ -590,8 +590,8 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 	var/list/zombie_list = list()
 
-	for(var/mob/living/carbon/human/A in living_mob_list)
-		if(iszombie(A) && !A.client && A.stat != DEAD) // Only living zombies
+	for(var/mob/living/carbon/human/A in GLOB.zombie_list)
+		if(!A.client && A.stat != DEAD) // Only living zombies
 			zombie_list += list(A.real_name = A)
 
 
@@ -680,7 +680,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 	var/list/hellhound_list = list()
 
-	for(var/mob/living/carbon/hellhound/A in living_mob_list)
+	for(var/mob/living/carbon/hellhound/A in GLOB.hellhound_list)
 		if(istype(A) && !A.client)
 			hellhound_list += A.real_name
 
@@ -692,7 +692,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if (isnull(choice) || choice == "Cancel")
 		return
 
-	for(var/mob/living/carbon/hellhound/X in living_mob_list)
+	for(var/mob/living/carbon/hellhound/X in GLOB.hellhound_list)
 		if(choice == X.real_name)
 			L = X
 			break
@@ -763,7 +763,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		to_chat(src, SPAN_INFO("You voted for this one already. Only one please!"))
 		return
 
-	var/list/mobs = living_mob_list
+	var/list/mobs = GLOB.alive_mob_list
 	var/target = null
 
 	for(var/mob/living/M in mobs)

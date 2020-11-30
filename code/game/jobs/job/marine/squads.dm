@@ -92,7 +92,8 @@
 	SStracking.setup_trackers(null, "FT2")
 	SStracking.setup_trackers(null, "FT3")
 	update_all_squad_info()
-	for(var/obj/structure/supply_drop/S in structure_list)
+	for(var/i in GLOB.supply_drop_list)
+		var/obj/structure/supply_drop/S = i
 		if(name == S.squad)
 			drop_pad = S
 			break
@@ -205,15 +206,15 @@
 	M.assigned_squad = null
 
 	switch(M.job)
-		if(JOB_SQUAD_ENGI) 
+		if(JOB_SQUAD_ENGI)
 			num_engineers--
-		if(JOB_SQUAD_MEDIC) 
+		if(JOB_SQUAD_MEDIC)
 			num_medics--
-		if(JOB_SQUAD_SPECIALIST) 
+		if(JOB_SQUAD_SPECIALIST)
 			num_specialists--
-		if(JOB_SQUAD_SMARTGUN) 
+		if(JOB_SQUAD_SMARTGUN)
 			num_smartgun--
-		if(JOB_SQUAD_LEADER) 
+		if(JOB_SQUAD_LEADER)
 			num_leaders--
 
 //proc for demoting current Squad Leader

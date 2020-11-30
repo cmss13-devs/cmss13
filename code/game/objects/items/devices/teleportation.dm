@@ -21,7 +21,7 @@
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 20
 	matter = list("metal" = 400)
-	
+
 
 /obj/item/device/locator/attack_self(mob/user as mob)
 	user.set_interaction(src)
@@ -59,7 +59,8 @@
 			if (sr)
 				src.temp += "<B>Located Beacons:</B><BR>"
 
-				for(var/obj/item/device/radio/beacon/W in item_list)
+				for(var/i in GLOB.radio_beacon_list)
+					var/obj/item/device/radio/beacon/W = i
 					if (W.frequency == src.frequency)
 						var/turf/tr = get_turf(W)
 						if (tr.z == sr.z && tr)
@@ -77,7 +78,8 @@
 							src.temp += "[W.code]-[dir2text(get_dir(sr, tr))]-[direct]<BR>"
 
 				src.temp += "<B>Extranneous Signals:</B><BR>"
-				for (var/obj/item/implant/tracking/W in item_list)
+				for (var/i in GLOB.tracking_implant_list)
+					var/obj/item/implant/tracking/W = i
 					if (!W.implanted || !(istype(W.loc,/obj/limb) || ismob(W.loc)))
 						continue
 					else
@@ -131,7 +133,7 @@
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 5
 	matter = list("metal" = 10000)
-	
+
 
 /obj/item/device/hand_tele/attack_self(mob/user as mob)
 	var/turf/current_location = get_turf(user)//What turf is the user on?
@@ -157,8 +159,10 @@
 	if ((user.get_active_hand() != src || user.stat || user.is_mob_restrained()))
 		return
 	var/count = 0	//num of portals from this teleport in the world
-	for(var/obj/effect/portal/PO in effect_list)
-		if(PO.creator == src)	count++
+	for(var/i in GLOB.portal_list)
+		var/obj/effect/portal/PO = i
+		if(PO.creator == src)
+			count++
 	if(count >= 3)
 		user.show_message(SPAN_NOTICE("\The [src] is recharging!"))
 		return

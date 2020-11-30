@@ -38,7 +38,7 @@
 /mob/living/carbon/human/death(var/cause, var/gibbed)
 	if(stat == DEAD)
 		return
-	living_human_list -= src
+	GLOB.alive_human_list -= src
 	if(!gibbed)
 		disable_special_flags()
 		disable_lights()
@@ -58,7 +58,8 @@
 	// Finding the last guy for anti-delay.
 	if(ticker && ticker.mode && ticker.mode.is_in_endgame)
 		var/mob/last_living_human
-		for(var/mob/M in living_human_list)
+		for(var/i in GLOB.alive_human_list)
+			var/mob/M = i
 			if(M.z != MAIN_SHIP_Z_LEVEL)
 				continue
 			if(last_living_human)

@@ -30,7 +30,12 @@
 
 /obj/effect/portal/Initialize(mapload, ...)
 	. = ..()
+	GLOB.portal_list += src
 	QDEL_IN(src, 30 SECONDS)
+
+/obj/effect/portal/Destroy()
+	GLOB.portal_list -= src
+	return ..()
 
 /obj/effect/portal/proc/teleport(atom/movable/M as mob|obj)
 	if(istype(M, /obj/effect)) //sparks don't teleport

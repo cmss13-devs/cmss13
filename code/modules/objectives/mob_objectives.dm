@@ -20,7 +20,8 @@
 /datum/cm_objective/eliminate/check_completion()
 	. = ..()
 	var/mob_count = 0
-	for(var/mob/M in living_mob_list)
+	for(var/i in GLOB.alive_mob_list)
+		var/mob/M = i
 		if(!is_valid_mob(M))
 			continue
 		switch(elimination_type)
@@ -292,7 +293,7 @@
 
 /datum/cm_objective/recover_corpses/colonists/post_round_start()
 	var/turf/T
-	for(var/mob/living/carbon/human/H in human_mob_list)
+	for(var/mob/living/carbon/human/H in GLOB.human_mob_list)
 		T = get_turf(H)
 		if(!(T.z in SURFACE_Z_LEVELS))
 			continue
@@ -376,7 +377,7 @@
 
 /datum/cm_objective/contain/process()
 	contained_specimen_points = 0
-	for (var/mob/living/carbon/Xenomorph/X in living_xeno_list)
+	for (var/mob/living/carbon/Xenomorph/X in GLOB.living_xeno_list)
 		if(istype(get_area(X),recovery_area))
 			switch(X.tier)
 				if(1)
@@ -395,7 +396,7 @@
 						contained_specimen_points += points_per_specimen_tier_0
 
 
-	for(var/mob/living/carbon/human/Y in yautja_mob_list)
+	for(var/mob/living/carbon/human/Y in GLOB.yautja_mob_list)
 		if(Y.stat == DEAD) continue
 		if(istype(get_area(Y),recovery_area))
 			contained_specimen_points += points_per_specimen_tier_4

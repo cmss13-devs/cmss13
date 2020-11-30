@@ -426,7 +426,7 @@ Turf and target are seperate in case you want to teleport some distance from a t
 		if((world.time-time_passed)>300)
 			return	//took too long
 		newname = reject_bad_name(newname,allow_numbers)	//returns null if the name doesn't meet some basic requirements. Tidies up a few other things like bad-characters.
-		for(var/mob/living/M in living_mob_list)
+		for(var/mob/living/M in GLOB.alive_mob_list)
 			if(M == src)
 				continue
 
@@ -458,7 +458,7 @@ Turf and target are seperate in case you want to teleport some distance from a t
 //When a borg is activated, it can choose which AI it wants to be slaved to
 /proc/active_ais()
 	. = list()
-	for(var/mob/living/silicon/ai/A in living_mob_list)
+	for(var/mob/living/silicon/ai/A in GLOB.alive_mob_list)
 		if(A.stat == DEAD)
 			continue
 		if(A.control_disabled == 1)
@@ -687,7 +687,7 @@ Turf and target are seperate in case you want to teleport some distance from a t
 	return creatures
 
 /proc/get_multi_vehicles()
-	var/list/multi_vehicles = all_multi_vehicles.Copy()
+	var/list/multi_vehicles = GLOB.all_multi_vehicles.Copy()
 	var/list/names = list()
 	var/list/namecounts = list()
 	var/list/vehicles = list()
@@ -722,7 +722,7 @@ Turf and target are seperate in case you want to teleport some distance from a t
 //Orders mobs by type then by name
 /proc/sortmobs()
 	var/list/moblist = list()
-	var/list/sortmob = sortAtom(mob_list)
+	var/list/sortmob = sortAtom(GLOB.mob_list)
 	for(var/mob/living/silicon/ai/M in sortmob)
 		moblist.Add(M)
 	for(var/mob/living/silicon/robot/M in sortmob)
@@ -747,7 +747,7 @@ Turf and target are seperate in case you want to teleport some distance from a t
 
 /proc/sortxenos()
 	var/list/xenolist = list()
-	var/list/sortmob = sortAtom(mob_list)
+	var/list/sortmob = sortAtom(GLOB.xeno_mob_list)
 	for(var/mob/living/carbon/Xenomorph/M in sortmob)
 		if(!M.client)
 			continue
@@ -756,7 +756,7 @@ Turf and target are seperate in case you want to teleport some distance from a t
 
 /proc/sortpreds()
 	var/list/predlist = list()
-	var/list/sortmob = sortAtom(mob_list)
+	var/list/sortmob = sortAtom(GLOB.human_mob_list)
 	for(var/mob/living/carbon/human/M in sortmob)
 		if(!M.client || !M.species.name == "Yautja")
 			continue
@@ -765,7 +765,7 @@ Turf and target are seperate in case you want to teleport some distance from a t
 
 /proc/sorthumans()
 	var/list/humanlist = list()
-	var/list/sortmob = sortAtom(mob_list)
+	var/list/sortmob = sortAtom(GLOB.human_mob_list)
 	for(var/mob/living/carbon/human/M in sortmob)
 		if(!M.client || M.species.name == "Yautja")
 			continue
@@ -774,7 +774,7 @@ Turf and target are seperate in case you want to teleport some distance from a t
 
 /proc/sortsurvivors()
 	var/list/survivorlist = list()
-	var/list/sortmob = sortAtom(mob_list)
+	var/list/sortmob = sortAtom(GLOB.human_mob_list)
 	for(var/mob/living/carbon/human/M in sortmob)
 		if(!M.client || M.species.name == "Yautja")
 			continue
@@ -784,7 +784,7 @@ Turf and target are seperate in case you want to teleport some distance from a t
 
 /proc/sortertmembers()
 	var/list/ertmemberlist = list()
-	var/list/sortmob = sortAtom(mob_list)
+	var/list/sortmob = sortAtom(GLOB.human_mob_list)
 	for(var/mob/living/carbon/human/M in sortmob)
 		if(!M.client)
 			continue
@@ -794,7 +794,7 @@ Turf and target are seperate in case you want to teleport some distance from a t
 
 /proc/sortsynths()
 	var/list/synthlist = list()
-	var/list/sortmob = sortAtom(mob_list)
+	var/list/sortmob = sortAtom(GLOB.human_mob_list)
 	for(var/mob/living/carbon/human/M in sortmob)
 		if(!M.client || !isSynth(M))
 			continue
@@ -1687,7 +1687,7 @@ proc/oview_or_orange(distance = world_view_size , center = usr , type)
 
 proc/get_mob_with_client_list()
 	var/list/mobs = list()
-	for(var/mob/M in mob_list)
+	for(var/mob/M in GLOB.mob_list)
 		if (M.client)
 			mobs += M
 	return mobs

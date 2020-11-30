@@ -155,7 +155,7 @@ GLOBAL_DATUM_INIT(data_core, /obj/effect/datacore, new)
 			sleep(40)
 
 		var/list/jobs_to_check = ROLES_CIC + ROLES_AUXIL_SUPPORT + ROLES_MISC + ROLES_POLICE + ROLES_ENGINEERING + ROLES_REQUISITION + ROLES_MEDICAL + ROLES_MARINES
-		for(var/mob/living/carbon/human/H in human_mob_list)
+		for(var/mob/living/carbon/human/H in GLOB.human_mob_list)
 			if(H.job in jobs_to_check)
 				manifest_inject(H)
 		return

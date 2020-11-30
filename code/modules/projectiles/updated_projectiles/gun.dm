@@ -152,6 +152,7 @@
 	update_force_list() //This gives the gun some unique attack verbs for attacking.
 	handle_starting_attachment()
 	handle_random_attachments(random_spawn_chance)
+	GLOB.gun_list += src
 
 
 /obj/item/weapon/gun/proc/set_gun_attachment_offsets()
@@ -289,6 +290,7 @@
 			SetLuminosity(0)
 	attachments = null
 	attachable_overlays = null
+	GLOB.gun_list -= src
 	. = ..()
 
 /obj/item/weapon/gun/emp_act(severity)
@@ -1328,7 +1330,7 @@ and you're good to go.
 			total_recoil += RECOIL_AMOUNT_TIER_5
 		else
 			total_recoil -= user.skills.get_skill_level(SKILL_FIREARMS)*RECOIL_AMOUNT_TIER_5
-	
+
 	if(total_recoil > 0 && ishuman(user))
 		shake_camera(user, total_recoil + 1, total_recoil)
 		return TRUE

@@ -12,8 +12,13 @@
 
 /obj/item/seeds/Initialize()
 	. = ..()
-
+	GLOB.seed_list += src
 	update_seed()
+
+/obj/item/seeds/Destroy()
+	seed = null
+	GLOB.seed_list -= src
+	return ..()
 
 //Grabs the appropriate seed datum from the global list.
 /obj/item/seeds/proc/update_seed()

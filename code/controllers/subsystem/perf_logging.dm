@@ -59,13 +59,13 @@ SUBSYSTEM_DEF(perf_logging)
 		record.time_taken = SS.cost * 10
 		record.save()
 		record.detach()
-	
+
 	var/datum/entity/mc_timing_info/timing_info = SSentity_manager.select(/datum/entity/mc_timing_info)
 	timing_info.total_time_taken = total_cost * 10
 	timing_info.round_id = round.id
 	timing_info.round_time = current_timer
 	timing_info.client_count = length(GLOB.clients)
 	timing_info.human_count = length(processable_human_list)
-	timing_info.xeno_count = length(xeno_mob_list)
+	timing_info.xeno_count = length(GLOB.xeno_mob_list)
 	timing_info.save()
 	timing_info.detach()

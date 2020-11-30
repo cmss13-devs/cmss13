@@ -602,8 +602,7 @@
 
 
 /obj/structure/machinery/computer/crew/proc/scan()
-	for(var/mob/living/carbon/human/H in mob_list)
-		if(!H || !istype(H)) continue
+	for(var/mob/living/carbon/human/H in GLOB.human_mob_list)
 		if(isYautja(H)) continue
 		var/obj/item/clothing/under/C = H.w_uniform
 		if(!C || !istype(C)) continue

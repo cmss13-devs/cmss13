@@ -418,6 +418,14 @@
 	unslashable = TRUE
 	unacidable = TRUE
 
+/obj/structure/window/reinforced/ultra/Initialize()
+	. = ..()
+	GLOB.hijack_bustable_windows += src
+
+/obj/structure/window/reinforced/ultra/Destroy()
+	GLOB.hijack_bustable_windows -= src
+	return ..()
+
 /obj/structure/window/reinforced/full
 	flags_atom = FPRINT
 	icon_state = "rwindow0"
@@ -558,6 +566,13 @@
 
 /obj/structure/window/framed/almayer/hull/hijack_bustable //I exist to explode after hijack, that is all.
 
+/obj/structure/window/framed/almayer/hull/hijack_bustable/Initialize()
+	. = ..()
+	GLOB.hijack_bustable_windows += src
+
+/obj/structure/window/framed/almayer/hull/hijack_bustable/Destroy()
+	GLOB.hijack_bustable_windows -= src
+	return ..()
 /obj/structure/window/framed/almayer/white
 	icon_state = "white_rwindow0"
 	basestate = "white_rwindow"

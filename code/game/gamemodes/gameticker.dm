@@ -164,13 +164,12 @@ var/global/datum/controller/gameticker/ticker = new()
 
 	supply_controller.process() 		//Start the supply shuttle regenerating points -- TLE
 
-	//for(var/obj/multiz/ladder/L in object_list) L.connect() //Lazy hackfix for ladders. TODO: move this to an actual controller. ~ Z
-
 	Master.SetRunLevel(RUNLEVEL_GAME)
 
 	if(config.sql_enabled)
 		spawn(MINUTES_5)
-		for(var/obj/structure/closet/C in structure_list) //Set up special equipment for lockers and vendors, depending on gamemode
+		for(var/i in GLOB.closet_list) //Set up special equipment for lockers and vendors, depending on gamemode
+			var/obj/structure/closet/C = i
 			C.select_gamemode_equipment(mode.type)
 		for(var/obj/structure/machinery/vending/V in machines)
 			V.select_gamemode_equipment(mode.type)
@@ -214,7 +213,7 @@ var/global/datum/controller/gameticker/ticker = new()
 		qdel(player)
 
 /datum/controller/gameticker/proc/collect_minds()
-	for(var/mob/living/player in living_mob_list)
+	for(var/mob/living/player in GLOB.alive_mob_list)
 		if(player.mind)
 			ticker.minds += player.mind
 
@@ -223,7 +222,7 @@ var/global/datum/controller/gameticker/ticker = new()
 	if(mode && istype(mode,/datum/game_mode/huntergames)) // || istype(mode,/datum/game_mode/whiskey_outpost)
 		return
 
-	for(var/mob/living/carbon/human/player in human_mob_list)
+	for(var/mob/living/carbon/human/player in GLOB.human_mob_list)
 		if(player.mind)
 			if(player.job == "Commanding Officers")
 				captainless = FALSE

@@ -11,7 +11,11 @@
 
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/Initialize()
 	. = ..()
-	cm_vending_vendors.Add(src)
+	GLOB.cm_vending_vendors += src
+
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/Destroy()
+	GLOB.cm_vending_vendors -= src
+	return ..()
 
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/vend_fail()
 	return
@@ -201,7 +205,11 @@
 
 /obj/structure/machinery/cm_vending/sorted/cargo_ammo/Initialize()
 	. = ..()
-	cm_vending_vendors.Add(src)						//this is needed for cm_initialize and needs changing
+	GLOB.cm_vending_vendors += src
+
+/obj/structure/machinery/cm_vending/sorted/cargo_ammo/Destroy()
+	GLOB.cm_vending_vendors -= src
+	return ..()
 
 /obj/structure/machinery/cm_vending/sorted/cargo_ammo/vend_fail()
 	return
@@ -352,7 +360,11 @@
 
 /obj/structure/machinery/cm_vending/sorted/attachments/Initialize()
 	. = ..()
-	cm_vending_vendors.Add(src)						//this is needed for cm_initialize and needs changing
+	GLOB.cm_vending_vendors += src
+
+/obj/structure/machinery/cm_vending/sorted/attachments/Destroy()
+	GLOB.cm_vending_vendors -= src
+	return ..()
 
 /obj/structure/machinery/cm_vending/sorted/attachments/vend_fail()
 	return

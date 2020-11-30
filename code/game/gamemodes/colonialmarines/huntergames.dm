@@ -146,8 +146,10 @@ var/waiting_for_drop_votes = 0
 			if("xeno tunnel")
 				qdel(L)
 
-	for(var/obj/item/weapon/gun/G in item_list) qdel(G) //No guns or ammo allowed.
-	for(var/obj/item/ammo_magazine/M in item_list) qdel(M)
+	for(var/G in GLOB.gun_list)
+		qdel(G) //No guns or ammo allowed.
+	for(var/M in GLOB.ammo_magazine_list)
+		qdel(M)
 
 	for(var/mob/new_player/player in GLOB.new_player_list)
 		if(player && player.ready)
@@ -161,9 +163,9 @@ var/waiting_for_drop_votes = 0
 
 /datum/game_mode/huntergames/post_setup()
 	contestants = list()
-	var/mob/M
-	for(M in mob_list)
-		if(M.client && istype(M,/mob/living/carbon/human))
+	for(var/i in GLOB.human_mob_list)
+		var/mob/M = i
+		if(M.client)
 			contestants += M
 			spawn_contestant(M)
 
@@ -283,7 +285,7 @@ var/waiting_for_drop_votes = 0
 		if(!drops_disabled)
 			to_world(SPAN_ROUNDBODY("Your Predator capturers have decided it is time to bestow a gift upon the scurrying humans."))
 			to_world(SPAN_ROUNDBODY("One lucky contestant should prepare for a supply drop in 60 seconds."))
-			for(var/mob/dead/D in dead_mob_list)
+			for(var/mob/dead/D in GLOB.dead_mob_list)
 				to_chat(D, SPAN_ROUNDBODY("Now is your chance to vote for a supply drop beneficiary! Go to Ghost tab, Spectator Vote!"))
 			world << sound('sound/effects/alert.ogg')
 			last_drop = world.time
@@ -347,7 +349,7 @@ var/waiting_for_drop_votes = 0
 /datum/game_mode/huntergames/proc/count_humans()
 	var/human_count = 0
 
-	for(var/mob/living/carbon/human/H in living_mob_list)
+	for(var/mob/living/carbon/human/H in GLOB.alive_mob_list)
 		if(istype(H) && H.stat == 0 && !istype(get_area(H.loc),/area/centcom) && !istype(get_area(H.loc),/area/tdome))
 			if(H.species != "Yautja") // Preds don't count in round end.
 				human_count += 1 //Add them to the amount of people who're alive.
@@ -372,7 +374,7 @@ var/waiting_for_drop_votes = 0
 		round_statistics.track_round_end()
 	var/mob/living/carbon/winner = null
 
-	for(var/mob/living/carbon/human/Q in living_mob_list)
+	for(var/mob/living/carbon/human/Q in GLOB.alive_mob_list)
 		if(istype(Q) && Q.stat == 0 && !isYautja(Q) && !istype(get_area(Q.loc),/area/centcom) && !istype(get_area(Q.loc),/area/tdome))
 			winner = Q
 			break

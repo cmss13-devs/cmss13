@@ -39,7 +39,7 @@
 		return
 
 	else if(faction in FACTION_LIST_HUMANOID)
-		for(var/mob/M in human_mob_list)
+		for(var/mob/M in GLOB.human_mob_list)
 			if(M && M.faction == faction)
 				show_player_event_info(M)
 		return

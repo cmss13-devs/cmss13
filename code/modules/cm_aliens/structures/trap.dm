@@ -123,7 +123,7 @@
 	var/area/A = get_area(src)
 	facehugger_die()
 	clear_tripwires()
-	for(var/mob/living/carbon/Xenomorph/X in living_xeno_list)
+	for(var/mob/living/carbon/Xenomorph/X in GLOB.living_xeno_list)
 		if(X.hivenumber == hivenumber)
 			to_chat(X, SPAN_XENOMINORWARNING("You sense one of your Hive's hugger traps at [A.name] has been burnt!"))
 
@@ -175,7 +175,7 @@
 			clear_tripwires()
 	if(!A)
 		return
-	for(var/mob/living/carbon/Xenomorph/X in living_xeno_list)
+	for(var/mob/living/carbon/Xenomorph/X in GLOB.living_xeno_list)
 		if(X.hivenumber == hivenumber)
 			if(destroyed)
 				to_chat(X, SPAN_XENOMINORWARNING("You sense one of your Hive's [trap_type_name] traps at [A.name] has been destroyed!"))

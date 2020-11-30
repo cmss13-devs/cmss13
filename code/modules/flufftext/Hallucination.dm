@@ -20,7 +20,7 @@ mob/living/carbon/var
 	hal_crit = 0
 
 mob/living/carbon/proc/handle_hallucinations()
-	if(handling_hal) 
+	if(handling_hal)
 		return
 	handling_hal = 1
 	while(client && hallucination > 20)
@@ -42,17 +42,17 @@ mob/living/carbon/proc/handle_hallucinations()
 					halitem = new
 					var/datum/custom_hud/ui_datum = custom_huds_list[client.prefs.UI_style]
 					var/list/slots_free = list(ui_datum.ui_lhand, ui_datum.ui_rhand)
-					if(l_hand) 
+					if(l_hand)
 						slots_free -= ui_datum.ui_lhand
-					if(r_hand) 
+					if(r_hand)
 						slots_free -= ui_datum.ui_rhand
 					if(ishuman(src))
 						var/mob/living/carbon/human/H = src
-						if(!H.belt) 
+						if(!H.belt)
 							slots_free += ui_datum.ui_belt
-						if(!H.l_store) 
+						if(!H.l_store)
 							slots_free += ui_datum.ui_storage1
-						if(!H.r_store) 
+						if(!H.r_store)
 							slots_free += ui_datum.ui_storage2
 					if(slots_free.len)
 						halitem.screen_loc = pick(slots_free)
@@ -84,7 +84,7 @@ mob/living/carbon/proc/handle_hallucinations()
 								halitem.icon = 'icons/obj/items/weapons/grenade.dmi'
 								halitem.icon_state = "flashbang1"
 								halitem.name = "Flashbang"
-						if(client) 
+						if(client)
 							client.screen += halitem
 						spawn(rand(100,250))
 							if(client)
@@ -112,10 +112,10 @@ mob/living/carbon/proc/handle_hallucinations()
 								halimage = image('icons/obj/items/assemblies.dmi',target,"plastic-explosive2",OBJ_LAYER+0.01)
 
 
-						if(client) 
+						if(client)
 							client.images += halimage
 						spawn(rand(10,50)) //Only seen for a brief moment.
-							if(client) 
+							if(client)
 								client.images -= halimage
 							halimage = null
 
@@ -356,7 +356,7 @@ var/list/non_fakeattack_weapons = list(/obj/item/device/aicard,\
 	var/mob/living/carbon/human/clone = null
 	var/clone_weapon = null
 
-	for(var/mob/living/carbon/human/H in living_mob_list)
+	for(var/mob/living/carbon/human/H in GLOB.alive_mob_list)
 		if(H.stat || H.lying) continue
 //		possible_clones += H
 		clone = H

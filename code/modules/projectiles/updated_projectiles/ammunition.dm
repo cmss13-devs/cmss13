@@ -30,6 +30,7 @@ They're all essentially identical when it comes to getting the job done.
 
 /obj/item/ammo_magazine/New(loc, spawn_empty)
 	..()
+	GLOB.ammo_magazine_list += src
 	base_mag_icon = icon_state
 	base_mag_item = item_state
 	if(spawn_empty) current_rounds = 0
@@ -39,8 +40,12 @@ They're all essentially identical when it comes to getting the job done.
 			icon_state += "_e" //In case it spawns empty instead.
 			item_state += "_e"
 
+/obj/item/ammo_magazine/Destroy()
+	GLOB.ammo_magazine_list -= src
+	return ..()
+
 /obj/item/ammo_magazine/update_icon(var/round_diff = 0) //inhand sprites only get their icon update called when picked back up or removed from storage, known issue.
-	if(current_rounds <= 0) 
+	if(current_rounds <= 0)
 		icon_state = base_mag_icon + "_e"
 		item_state = base_mag_item + "_e"
 		add_to_garbage(src)
@@ -172,7 +177,7 @@ bullets/shells. ~N
 	desc = "A handful of rounds to reload on the go."
 	matter = list("metal" = 50) //This changes based on the ammo ammount. 5k is the base of one shell/bullet.
 	flags_equip_slot = null // It only fits into pockets and such.
-	
+
 	w_class = SIZE_SMALL
 	current_rounds = 1 // So it doesn't get autofilled for no reason.
 	max_rounds = 5 // For shotguns, though this will be determined by the handful type when generated.

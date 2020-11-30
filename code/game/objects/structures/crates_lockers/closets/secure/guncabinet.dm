@@ -16,13 +16,13 @@
 	..()
 	to_chat(usr, SPAN_NOTICE("[src] will only open on [num2seclevel(req_level)] security level."))
 
-/obj/structure/closet/secure_closet/guncabinet/New()
-	..()
-	gun_cabinets += src
+/obj/structure/closet/secure_closet/guncabinet/Initialize()
+	. = ..()
+	GLOB.gun_cabinets += src
 	update_icon()
 
 /obj/structure/closet/secure_closet/guncabinet/Destroy()
-	gun_cabinets -= src
+	GLOB.gun_cabinets -= src
 	return ..()
 
 /obj/structure/closet/secure_closet/guncabinet/toggle()

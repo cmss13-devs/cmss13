@@ -12,10 +12,7 @@
 
 	if (!prob(spawn_nothing_percentage))
 		spawn_item()
-	
-	effect_list -= src
-	object_list -= src
-	
+
 	return INITIALIZE_HINT_QDEL
 
 

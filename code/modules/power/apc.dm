@@ -642,8 +642,10 @@
 
 				var/obj/item/storage/backpack/marine/smartpack/S = H.back
 				if(S.battery_charge < SMARTPACK_MAX_POWER_STORED)
-					cell.charge -= SMARTPACK_MAX_POWER_STORED
-					S.battery_charge = SMARTPACK_MAX_POWER_STORED
+					var/charge_to_use = min(cell.charge, SMARTPACK_MAX_POWER_STORED - S.battery_charge)
+					if(!(cell.use(charge_to_use)))
+						return
+					S.battery_charge += charge_to_use
 					to_chat(user, SPAN_NOTICE("You slot your fingers into the APC interface and siphon off some of the stored charge. [S.name] now has [S.battery_charge]/[SMARTPACK_MAX_POWER_STORED]"))
 					charging = 1
 				else
@@ -799,7 +801,7 @@
 			visible_message(SPAN_WARNING("\The [src] begins flashing error messages wildly!"))
 			SSclues.create_print(get_turf(user), user, "The fingerprint contains specks of wire.")
 			SEND_SIGNAL(user, COMSIG_MOB_APC_CUT_WIRE, src)
-				
+
 		if(APC_WIRE_IDSCAN)
 			locked = 0
 			visible_message(SPAN_NOTICE("\The [src] emits a click."))

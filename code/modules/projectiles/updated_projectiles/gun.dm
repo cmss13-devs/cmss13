@@ -456,7 +456,7 @@
 				damage_armor_profile_armorbreak.Add("N/A")
 
 	var/rpm = max(fire_delay, 0.0001)
-	var/burst_rpm = max(((fire_delay + (burst_delay * burst_amount)) / max(burst_amount, 1)), 0.0001)
+	var/burst_rpm = max((fire_delay * 1.5 + (burst_amount - 1) * burst_delay)/max(burst_amount, 1), 0.0001)
 
 	var/list/data = list(
 		"name" = name,

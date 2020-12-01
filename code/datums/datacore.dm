@@ -49,7 +49,7 @@ GLOBAL_DATUM_INIT(data_core, /obj/effect/datacore, new)
 		var/rank = t.fields["rank"]
 		var/real_rank = t.fields["real_rank"]
 		var/squad_name = t.fields["squad"]
-		if(isnull(name) || isnull(rank) || isnull(real_rank) || isnull(squad_name))
+		if(isnull(name) || isnull(rank) || isnull(real_rank))
 			continue
 
 		if(OOC)
@@ -85,6 +85,8 @@ GLOBAL_DATUM_INIT(data_core, /obj/effect/datacore, new)
 			dept_flags |= FLAG_SHOW_MEDICAL
 			LAZYSET(med[real_rank], name, rank)
 		else if(real_rank in ROLES_MARINES)
+			if(isnull(squad_name))
+				continue
 			dept_flags |= FLAG_SHOW_MARINES
 			squad_sublists[squad_name] = TRUE
 			LAZYSET(marines_by_squad[squad_name][real_rank], name, rank)

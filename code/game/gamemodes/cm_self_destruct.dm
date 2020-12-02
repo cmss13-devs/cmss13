@@ -78,10 +78,10 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 
 /datum/authority/branch/evacuation/proc/get_affected_zlevels() //This proc returns the ship's z level list (or whatever specified), when an evac/self destruct happens.
 	if(dest_status < NUKE_EXPLOSION_IN_PROGRESS && evac_status == EVACUATION_STATUS_COMPLETE) //Nuke is not in progress and evacuation finished, end the round on ship and low orbit (dropships in transit) only.
-		. = MAIN_SHIP_AND_DROPSHIPS_Z_LEVELS
+		. = SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP, ZTRAIT_LOWORBITT))
 	else
 		if(ticker && ticker.mode && ticker.mode.is_in_endgame)
-			. = MAIN_SHIP_AND_DROPSHIPS_Z_LEVELS
+			. = SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP, ZTRAIT_LOWORBITT))
 
 //=========================================================================================
 //=========================================================================================
@@ -209,7 +209,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 		trigger_self_destruct(,,override)
 		return TRUE
 
-/datum/authority/branch/evacuation/proc/trigger_self_destruct(list/z_levels = list(MAIN_SHIP_Z_LEVEL), origin = dest_master, override = FALSE, end_type = NUKE_EXPLOSION_FINISHED, play_anim = TRUE, end_round = TRUE)
+/datum/authority/branch/evacuation/proc/trigger_self_destruct(list/z_levels = SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP), origin = dest_master, override = FALSE, end_type = NUKE_EXPLOSION_FINISHED, play_anim = TRUE, end_round = TRUE)
 	set waitfor = 0
 	if(dest_status < NUKE_EXPLOSION_IN_PROGRESS) //One more check for good measure, in case it's triggered through a bomb instead of the destruct mechanism/admin panel.
 		enter_allowed = 0 //Do not want baldies spawning in as everything is exploding.
@@ -219,7 +219,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 
 		var/ship_status = 1
 		for(var/i in z_levels)
-			if(i == MAIN_SHIP_Z_LEVEL)
+			if(is_mainship_level(i))
 				ship_status = 0 //Destroyed.
 			break
 
@@ -315,7 +315,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 	return FALSE
 
 /obj/structure/machinery/self_destruct/attack_hand()
-	if(..() || in_progress) 
+	if(..() || in_progress)
 		return FALSE //This check is backward, ugh.
 	return TRUE
 
@@ -350,7 +350,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 		if(.) ui_interact(user)
 
 	Topic(href, href_list)
-		if(..()) 
+		if(..())
 			return TRUE
 		switch(href_list["command"])
 			if("dest_start")

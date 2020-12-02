@@ -339,7 +339,7 @@
 
 
 /obj/structure/machinery/power/smes/proc/ion_act()
-	if(src.z == 1)
+	if(is_ground_level(z))
 		if(prob(1)) //explosion
 			for(var/mob/M in viewers(src))
 				M.show_message(SPAN_DANGER("The [src.name] is making strange noises!"), 3, SPAN_DANGER("You hear sizzling electronics."), 2)

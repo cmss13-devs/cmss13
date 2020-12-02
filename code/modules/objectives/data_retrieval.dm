@@ -128,7 +128,7 @@
 	var/obj/structure/machinery/computer/disk_reader/reader = disk.loc
 	if(!reader.powered())
 		return FALSE
-	if(reader.z != MAIN_SHIP_Z_LEVEL)
+	if(!is_mainship_level(reader.z))
 		return FALSE
 
 // --------------------------------------------

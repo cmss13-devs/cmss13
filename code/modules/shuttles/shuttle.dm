@@ -218,7 +218,7 @@
 	for(var/turf/T in origin) // WOW so hacky - who cares. Abby
 		if(iselevator)
 			if(istype(T,/turf/open/space))
-				if(T.z == 3)
+				if(is_mainship_level(T.z))
 					new /turf/open/floor/almayer/empty(T)
 				else
 					new /turf/open/gm/empty(T)

@@ -67,7 +67,7 @@
 	if(..() || !allowed(usr) || inoperable())
 		return
 
-	if(!z == MAIN_SHIP_Z_LEVEL)
+	if(!is_mainship_level(z))
 		to_chat(user, SPAN_DANGER("<b>Unable to establish a connection</b>: \black You're too far away from the station!"))
 		return
 	var/dat

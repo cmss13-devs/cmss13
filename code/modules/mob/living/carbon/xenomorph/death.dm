@@ -26,7 +26,7 @@
 			hud_used.alien_plasma_display.icon_state = "power_display_empty"
 		update_icons()
 
-	if(z != ADMIN_Z_LEVEL) //so xeno players don't get death messages from admin tests
+	if(!is_admin_level(z)) //so xeno players don't get death messages from admin tests
 		if(isXenoQueen(src))
 			var/mob/living/carbon/Xenomorph/Queen/XQ = src
 			playsound(loc, 'sound/voice/alien_queen_died.ogg', 75, 0)

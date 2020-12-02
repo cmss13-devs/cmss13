@@ -9,7 +9,7 @@
 
 /obj/structure/machinery/telecomms/relay/preset/station
 	id = "Station Relay"
-	listening_level = 1
+	listening_level = TELECOMM_GROUND_Z
 	autolinkers = list("s_relay")
 
 /obj/structure/machinery/telecomms/relay/preset/station/prison
@@ -20,7 +20,7 @@
 	icon = 'icons/obj/structures/machinery/comm_tower.dmi'
 	icon_state = "comm_tower"
 	id = "Station Relay"
-	listening_level = 1
+	listening_level = TELECOMM_GROUND_Z
 	autolinkers = list("s_relay")
 	unslashable = TRUE
 	unacidable = TRUE
@@ -35,7 +35,7 @@
 	icon_state = "comm_tower"
 	desc = "A portable compact TC-4T telecommunications tower. Used to set up subspace communications lines between planetary and extra-planetary locations."
 	id = "Station Relay"
-	listening_level = 1
+	listening_level = TELECOMM_GROUND_Z
 	autolinkers = list("s_relay")
 	layer = ABOVE_FLY_LAYER
 	use_power = 0

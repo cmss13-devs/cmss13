@@ -36,7 +36,7 @@
 			if(!istype(H) || H.stat != CONSCIOUS || isYautja(H))	//base human checks
 				targets.Remove(H)
 				continue
-			if(H.z == MAIN_SHIP_Z_LEVEL) // People on ship see everything
+			if(is_mainship_level(H.z)) // People on ship see everything
 				continue
 			if(H.faction != faction_to_display && !add_PMCs || H.faction != faction_to_display && add_PMCs && (H.faction in FACTION_LIST_WY))	//faction checks
 				targets.Remove(H)
@@ -80,7 +80,7 @@
 //AI announcement that uses talking into comms
 /proc/ai_announcement(var/message, var/sound_to_play = sound('sound/misc/interference.ogg'))
 	for(var/mob/M in (GLOB.human_mob_list + GLOB.dead_mob_list))
-		if(isobserver(M) || ishuman(M) && M.z == MAIN_SHIP_Z_LEVEL)
+		if(isobserver(M) || ishuman(M) && is_mainship_level(M.z))
 			playsound_client(M.client, sound_to_play, M, vol = 45)
 
 	for(var/mob/living/silicon/decoy/ship_ai/AI in ai_mob_list)
@@ -114,7 +114,7 @@
 	for(var/mob/T in targets)
 		if(isobserver(T))
 			continue
-		if(!ishuman(T) || isYautja(T) || T.z != MAIN_SHIP_Z_LEVEL)
+		if(!ishuman(T) || isYautja(T) || !is_mainship_level(T.z))
 			targets.Remove(T)
 
 	if(!isnull(signature))

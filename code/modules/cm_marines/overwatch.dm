@@ -1,3 +1,7 @@
+#define HIDE_ALMAYER 2
+#define HIDE_GROUND 1
+#define HIDE_NONE 0
+
 /obj/structure/machinery/computer/overwatch
 	name = "Overwatch Console"
 	desc = "State of the art machinery for giving orders to a squad."
@@ -180,11 +184,18 @@
 				mob_name = H.real_name
 				var/area/A = get_area(H)
 				var/turf/M_turf = get_turf(H)
+				if(!M_turf)
+					continue
 				if(A)
 					area_name = sanitize(A.name)
 
-				if(z_hidden && M_turf && (z_hidden == M_turf.z))
-					continue
+				switch(z_hidden)
+					if(HIDE_ALMAYER)
+						if(is_mainship_level(M_turf.z))
+							continue
+					if(HIDE_GROUND)
+						if(is_ground_level(M_turf.z))
+							continue
 
 				if(H.job)
 					role = H.job
@@ -531,14 +542,14 @@
 				to_chat(usr, "[htmlicon(src, usr)] [SPAN_NOTICE("Dead marines are now shown again.")]")
 		if("choose_z")
 			switch(z_hidden)
-				if(0)
-					z_hidden = MAIN_SHIP_Z_LEVEL
+				if(HIDE_NONE)
+					z_hidden = HIDE_ALMAYER
 					to_chat(usr, "[htmlicon(src, usr)] [SPAN_NOTICE("Marines on the Almayer are now hidden.")]")
-				if(MAIN_SHIP_Z_LEVEL)
-					z_hidden = 1
+				if(HIDE_ALMAYER)
+					z_hidden = HIDE_GROUND
 					to_chat(usr, "[htmlicon(src, usr)] [SPAN_NOTICE("Marines on the ground are now hidden.")]")
 				else
-					z_hidden = 0
+					z_hidden = HIDE_NONE
 					to_chat(usr, "[htmlicon(src, usr)] [SPAN_NOTICE("No location is ignored anymore.")]")
 
 		if("toggle_marine_filter")
@@ -871,7 +882,7 @@
 
 /obj/structure/machinery/computer/overwatch/proc/begin_fire()
 	for(var/mob/living/carbon/H in GLOB.alive_mob_list)
-		if(H.z == MAIN_SHIP_Z_LEVEL && !H.stat) //USS Almayer decks.
+		if(is_mainship_level(H.z) && !H.stat) //USS Almayer decks.
 			to_chat(H, SPAN_WARNING("The deck of the USS Almayer shudders as the orbital cannons open fire on the colony."))
 			if(H.client)
 				shake_camera(H, 10, 1)
@@ -996,3 +1007,7 @@
 /obj/structure/supply_drop/echo //extra supply drop pad
 	icon_state = "echodrop"
 	squad = SQUAD_NAME_5
+
+#undef HIDE_ALMAYER
+#undef HIDE_GROUND
+#undef HIDE_NONE

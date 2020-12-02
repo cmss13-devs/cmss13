@@ -19,7 +19,7 @@
 			level = SEC_LEVEL_DELTA
 	for(var/X in GLOB.gun_cabinets)
 		var/obj/structure/closet/secure_closet/guncabinet/G = X
-		if(G.z == MAIN_SHIP_Z_LEVEL)
+		if(is_mainship_level(G.z))
 			G.check_sec_level(level)
 
 
@@ -31,11 +31,11 @@
 					ai_announcement("Attention: Security level lowered to GREEN - all clear.", no_sound ? null : 'sound/AI/code_green.ogg')
 				security_level = SEC_LEVEL_GREEN
 				for(var/obj/structure/machinery/firealarm/FA in machines)
-					if(FA.z == MAIN_SHIP_Z_LEVEL)
+					if(is_mainship_level(FA.z))
 						FA.overlays = list()
 						FA.overlays += image('icons/obj/structures/machinery/monitors.dmi', "overlay_green")
 				for(var/obj/structure/machinery/status_display/SD in machines)
-					if(SD.z == MAIN_SHIP_Z_LEVEL)
+					if(is_mainship_level(SD.z))
 						SD.set_picture("default")
 			if(SEC_LEVEL_BLUE)
 				if(security_level < SEC_LEVEL_BLUE)
@@ -46,11 +46,11 @@
 						ai_announcement("Attention: Security level lowered to BLUE - potentially hostile activity on board.", no_sound ? null : 'sound/AI/code_blue_lowered.ogg')
 				security_level = SEC_LEVEL_BLUE
 				for(var/obj/structure/machinery/firealarm/FA in machines)
-					if(FA.z == MAIN_SHIP_Z_LEVEL)
+					if(is_mainship_level(FA.z))
 						FA.overlays = list()
 						FA.overlays += image('icons/obj/structures/machinery/monitors.dmi', "overlay_blue")
 				for(var/obj/structure/machinery/status_display/SD in machines)
-					if(SD.z == MAIN_SHIP_Z_LEVEL)
+					if(is_mainship_level(SD.z))
 						SD.set_picture("default")
 			if(SEC_LEVEL_RED)
 				if(security_level < SEC_LEVEL_RED)
@@ -59,22 +59,15 @@
 				else
 					if(announce)
 						ai_announcement("Attention: Security level lowered to RED - there is an immediate threat to the ship.", no_sound ? null : 'sound/AI/code_red_lowered.ogg')
-					/*
-					var/area/A
-					for(var/obj/structure/machinery/power/apc/O in machines)
-						if(O.z == MAIN_SHIP_Z_LEVEL)
-							A = O.loc.loc
-							A.toggle_evacuation()
-					*/
 
 				security_level = SEC_LEVEL_RED
 
 				for(var/obj/structure/machinery/firealarm/FA in machines)
-					if(FA.z == MAIN_SHIP_Z_LEVEL)
+					if(is_mainship_level(FA.z))
 						FA.overlays = list()
 						FA.overlays += image('icons/obj/structures/machinery/monitors.dmi', "overlay_red")
 				for(var/obj/structure/machinery/status_display/SD in machines)
-					if(SD.z == MAIN_SHIP_Z_LEVEL)
+					if(is_mainship_level(SD.z))
 						SD.set_picture("redalert")
 			if(SEC_LEVEL_DELTA)
 				if(announce)
@@ -83,11 +76,11 @@
 					marine_announcement(input, name, 'sound/AI/selfdestruct_short.ogg')
 				security_level = SEC_LEVEL_DELTA
 				for(var/obj/structure/machinery/firealarm/FA in machines)
-					if(FA.z == MAIN_SHIP_Z_LEVEL)
+					if(is_mainship_level(FA.z))
 						FA.overlays = list()
 						FA.overlays += image('icons/obj/structures/machinery/monitors.dmi', "overlay_delta")
 				for(var/obj/structure/machinery/status_display/SD in machines)
-					if(SD.z == MAIN_SHIP_Z_LEVEL)
+					if(is_mainship_level(SD.z))
 						SD.set_picture("redalert")
 				EvacuationAuthority.enable_self_destruct()
 	else

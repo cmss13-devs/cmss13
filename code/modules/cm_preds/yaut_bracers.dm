@@ -321,13 +321,12 @@
 		if (isYautja(loc))
 			//it's actually yautja holding the item, ignore!
 			continue
-		switch(loc.z)
-			if(LOW_ORBIT_Z_LEVEL)
-				gear_low_orbit++
-			if(MAIN_SHIP_Z_LEVEL)
-				gear_on_almayer++
-			if(1)
-				gear_on_planet++
+		if(is_loworbit_level(loc.z))
+			gear_low_orbit++
+		else if(is_mainship_level(loc.z))
+			gear_on_almayer++
+		else if(is_ground_level(loc.z))
+			gear_on_planet++
 		if(M.z == loc.z)
 			var/dist = get_dist(M,loc)
 			if(dist < closest)
@@ -336,13 +335,12 @@
 				areaLoc = loc
 	for(var/mob/living/carbon/human/Y in GLOB.yautja_mob_list)
 		if(Y.stat != DEAD) continue
-		switch(Y.z)
-			if(LOW_ORBIT_Z_LEVEL)
-				dead_low_orbit++
-			if(MAIN_SHIP_Z_LEVEL)
-				dead_on_almayer++
-			if(1)
-				dead_on_planet++
+		if(is_loworbit_level(Y.z))
+			dead_low_orbit++
+		else if(is_mainship_level(Y.z))
+			dead_on_almayer++
+		else if(is_ground_level(Y.z))
+			dead_on_planet++
 		if(M.z == Y.z)
 			var/dist = get_dist(M,Y)
 			if(dist < closest)
@@ -515,7 +513,7 @@
 	if(istype(T) && exploding)
 		victim.apply_damage(50,BRUTE,"chest")
 		if(victim) victim.gib() //Let's make sure they actually gib.
-		if(explosion_type == 0 && (z in SURFACE_Z_LEVELS))
+		if(explosion_type == 0 && is_ground_level(z))
 			cell_explosion(T, 600, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, "yautja self destruct", victim) //Dramatically BIG explosion.
 		else
 			cell_explosion(T, 800, 550, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, "yautja self destruct", victim)

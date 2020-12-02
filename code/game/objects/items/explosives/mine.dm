@@ -46,9 +46,6 @@
 	if(user.loc && (user.loc.density || locate(/obj/structure/fence) in user.loc))
 		to_chat(user, SPAN_WARNING("You can't plant a mine here."))
 		return TRUE
-	/*if(user.z == MAIN_SHIP_Z_LEVEL || user.z == LOW_ORBIT_Z_LEVEL) // Almayer or dropship transit level
-		to_chat(user, SPAN_WARNING("You can't plant a mine on a spaceship!"))
-		return*/
 
 
 
@@ -105,7 +102,7 @@
 			user.visible_message(SPAN_NOTICE("[user] finishes disarming [src]."), \
 			SPAN_NOTICE("You finish disarming [src]."))
 			disarm()
-			
+
 	else
 		return ..()
 

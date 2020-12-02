@@ -12,17 +12,8 @@
 #define GLOBAL_PROC		"magic BS"
 
 //Game defining directives.
-#define SURFACE_Z_LEVELS list(1)
-#define SURFACE_Z_LEVEL 1 // The planet/colony itself
-#define MAIN_SHIP_Z_LEVEL 3 // The main ship
-#define MAIN_SHIP_AND_DROPSHIPS_Z_LEVELS list(3,4) // The main ship and the z level where dropships transit
-#define ADMIN_Z_LEVEL 2
-#define LOW_ORBIT_Z_LEVEL 4 // Where the Almayer dropships stand when in transit.
-#define GAME_PLAY_Z_LEVELS list(1,3,4)
 #define MAIN_AI_SYSTEM "ARES v3.2"
 #define MAIN_SHIP_ESCAPE_POD_NUMBER 18
-
-#define OBJECTS_CAN_REACH(Oa, Ob) (!(Oa.z == ADMIN_Z_LEVEL || Ob.z == ADMIN_Z_LEVEL) || Oa.z == Ob.z)
 
 // Maploader bounds indices
 #define MAP_MINX 1
@@ -406,4 +397,3 @@ var/list/accessable_z_levels = list("1" = 10, "3" = 10, "4" = 10, "5" = 70)
 		else		dist = (0.427*dx) + (0.934*dy)
 
 	return dist
-	

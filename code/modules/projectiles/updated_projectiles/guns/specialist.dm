@@ -1099,7 +1099,7 @@
 	. = ..()
 	if (. && istype(user)) //Let's check all that other stuff first.
 		/*var/turf/current_turf = get_turf(user)
-		if (current_turf.z == 3 || current_turf.z == 4) //Can't fire on the Almayer, bub.
+		if (is_mainship_level(current_turf.z) || is_loworbit_level(current_turf.z)) //Can't fire on the Almayer, bub.
 			click_empty(user)
 			to_chat(user, SPAN_WARNING("You can't fire that here!"))
 			return 0*/

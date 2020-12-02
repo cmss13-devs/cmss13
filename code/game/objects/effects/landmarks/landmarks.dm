@@ -73,7 +73,7 @@
 			qdel(src)
 
 		if("yautja_teleport_loc")
-			if(z == MAIN_SHIP_Z_LEVEL)
+			if(is_mainship_level(z))
 				yautja_almayer_loc += loc
 				if(loc && istype(loc, /turf))
 					var/turf/location = loc
@@ -100,7 +100,7 @@
 
 /obj/effect/landmark/queen_spawn/Initialize(mapload, ...)
 	. = ..()
-	
+
 	queen_spawn_list += loc
 	return INITIALIZE_HINT_QDEL
 

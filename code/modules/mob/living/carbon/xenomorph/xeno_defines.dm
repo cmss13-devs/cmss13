@@ -246,13 +246,13 @@
 	// Can only have one queen.
 	if(isXenoQueen(X))
 
-		if(!living_xeno_queen && X.z != ADMIN_Z_LEVEL) // Don't consider xenos in the ADMIN_Z_LEVEL
+		if(!living_xeno_queen && !is_admin_level(X.z)) // Don't consider xenos in admin level
 			set_living_xeno_queen(X)
 
 	X.hivenumber = hivenumber
 	X.hive = src
 
-	if(X.z != ADMIN_Z_LEVEL)
+	if(!is_admin_level(X.z))
 		totalXenos += X
 		if(X.tier == 2)
 			tier_2_xenos += X
@@ -275,7 +275,7 @@
 		if(living_xeno_queen == X)
 			var/mob/living/carbon/Xenomorph/Queen/next_queen
 			for(var/mob/living/carbon/Xenomorph/Queen/Q in totalXenos)
-				if(Q.z != ADMIN_Z_LEVEL)
+				if(!is_admin_level(Q.z))
 					next_queen = Q
 					break
 
@@ -410,7 +410,7 @@
 
 	for(var/mob/living/carbon/Xenomorph/X in totalXenos)
 		//don't show xenos in the thunderdome when admins test stuff.
-		if(X.z == ADMIN_Z_LEVEL)
+		if(is_admin_level(X.z))
 			continue
 		if(X.caste)
 			xeno_counts[X.caste.tier+1][X.caste.caste_name]++
@@ -426,7 +426,7 @@
 	var/index = 1
 	var/useless_slots = 0
 	for(var/mob/living/carbon/Xenomorph/X in totalXenos)
-		if(X.z == ADMIN_Z_LEVEL)
+		if(is_admin_level(X.z))
 			useless_slots++
 			continue
 
@@ -500,7 +500,7 @@
 	var/list/xenos = list()
 
 	for(var/mob/living/carbon/Xenomorph/X in totalXenos)
-		if(X.z == ADMIN_Z_LEVEL)
+		if(is_admin_level(X.z))
 			continue
 
 		var/xeno_name = X.name
@@ -530,7 +530,7 @@
 	var/list/xenos = list()
 
 	for(var/mob/living/carbon/Xenomorph/X in totalXenos)
-		if(X.z == ADMIN_Z_LEVEL)
+		if(is_admin_level(X.z))
 			continue
 
 		if(!(X in GLOB.living_xeno_list))

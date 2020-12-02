@@ -95,7 +95,7 @@
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/take_damage(var/dam, var/mob/M)
 	var/damage_check = max(0, damage + dam)
-	if(damage_check >= damage_cap && M && z == MAIN_SHIP_Z_LEVEL)
+	if(damage_check >= damage_cap && M && is_mainship_level(z))
 		SSclues.create_print(get_turf(M), M, "The fingerprint contains bits of wire and metal specks.")
 		if(M.detectable_by_ai())
 			ai_silent_announcement("DAMAGE REPORT: Structural damage detected at [get_area(src)], requesting Military Police supervision.")
@@ -194,7 +194,7 @@
 		..()
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/unlock()
-	if(z == 4)
+	if(is_loworbit_level(z))
 		return // in orbit
 	..()
 

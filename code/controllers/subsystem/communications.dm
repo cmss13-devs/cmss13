@@ -246,18 +246,18 @@ SUBSYSTEM_DEF(radio)
 
 /datum/controller/subsystem/radio/proc/get_available_tcomm_zs()
 	//Returns lists of Z levels that have comms
-	var/list/target_zs = list(ADMIN_Z_LEVEL) //Admin level always has comms
+	var/list/target_zs = SSmapping.levels_by_trait(ZTRAIT_ADMIN)
 	if(tcomm_machines_ground.len > 0)
-		target_zs += SURFACE_Z_LEVEL
+		target_zs += SSmapping.levels_by_trait(ZTRAIT_GROUND)
 	if(tcomm_machines_almayer.len > 0)
-		target_zs += MAIN_SHIP_Z_LEVEL
-		target_zs += LOW_ORBIT_Z_LEVEL
+		target_zs += SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)
+		target_zs += SSmapping.levels_by_trait(ZTRAIT_LOWORBITT)
 	return target_zs
 
 /datum/controller/subsystem/radio/proc/add_tcomm_machine(var/obj/machine)
-	if(machine.z == SURFACE_Z_LEVEL)
+	if(is_ground_level(machine.z))
 		addToListNoDupe(tcomm_machines_ground, machine)
-	if(machine.z == MAIN_SHIP_Z_LEVEL)
+	if(is_mainship_level(machine.z))
 		addToListNoDupe(tcomm_machines_almayer, machine)
 
 /datum/controller/subsystem/radio/proc/remove_tcomm_machine(var/obj/machine)

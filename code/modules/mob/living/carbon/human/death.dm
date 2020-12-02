@@ -60,7 +60,7 @@
 		var/mob/last_living_human
 		for(var/i in GLOB.alive_human_list)
 			var/mob/M = i
-			if(M.z != MAIN_SHIP_Z_LEVEL)
+			if(!is_mainship_level(M.z))
 				continue
 			if(last_living_human)
 				last_living_human = null

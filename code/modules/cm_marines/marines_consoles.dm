@@ -551,7 +551,7 @@
 			if(istype(C.loc, /mob/living/carbon/human))
 
 				var/mob/living/carbon/human/H = C.loc
-				if(H && H.faction == FACTION_SURVIVOR && H.loc.z == 1)
+				if(H && H.faction == FACTION_SURVIVOR && is_ground_level(H.loc.z))
 					continue // survivors
 				if(H.w_uniform != C)
 					continue

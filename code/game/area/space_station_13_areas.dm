@@ -22,7 +22,7 @@ var/list/ghostteleportlocs = list()
 			ghostteleportlocs += AR.name
 			ghostteleportlocs[AR.name] = AR
 		var/turf/picked = pick(get_area_turfs(AR.type))
-		if (picked.z == 1 || picked.z == 3 || picked.z == 4 || picked.z == 5)
+		if (is_ground_level(picked.z) || is_mainship_level(picked.z) || is_loworbit_level(picked.z) || is_huntership_level(picked.z))
 			ghostteleportlocs += AR.name
 			ghostteleportlocs[AR.name] = AR
 

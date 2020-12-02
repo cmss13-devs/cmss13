@@ -203,7 +203,7 @@
 
 		H.agent_holder.tools.attack_self(usr)
 		attack_self(usr)
-		return	
+		return
 
 	if (href_list["special_frequency_reset"])
 		if(!agent_unlocked)
@@ -313,10 +313,11 @@
 		var/datum/interior/I = interior_manager.get_interior_by_coords(position.x, position.y)
 		if(I && I.exterior)
 			transmit_z = I.exterior.z
-	if(src.ignore_z == TRUE)
-		transmit_z = ADMIN_Z_LEVEL //this area always has comms
 
 	var/list/target_zs = list(transmit_z)
+	if(ignore_z)
+		target_zs = SSmapping.levels_by_trait(ZTRAIT_ADMIN) //this area always has comms
+
 	/* ###### Intercoms and station-bounced radios ###### */
 	var/filter_type = RADIO_FILTER_TYPE_INTERCOM_AND_BOUNCER
 	if(subspace_transmission)
@@ -348,10 +349,11 @@
 		var/datum/interior/I = interior_manager.get_interior_by_coords(position.x, position.y)
 		if(I && I.exterior)
 			transmit_z = I.exterior.z
-	if(src.ignore_z == TRUE)
-		transmit_z = ADMIN_Z_LEVEL //this area always has comms
 
 	var/list/target_zs = list(transmit_z)
+	if(ignore_z)
+		target_zs = SSmapping.levels_by_trait(ZTRAIT_ADMIN) //this area always has comms
+
 
 	if(subspace_transmission)
 		if(!src.ignore_z)
@@ -400,7 +402,7 @@
 			if(I && I.exterior)
 				receive_z = I.exterior.z
 		if(src.ignore_z == TRUE)
-			receive_z = ADMIN_Z_LEVEL //this area always has comms
+			receive_z = SSmapping.levels_by_trait(ZTRAIT_ADMIN)[1] //this area always has comms
 
 		if(!position || !(receive_z in level))
 			return -1

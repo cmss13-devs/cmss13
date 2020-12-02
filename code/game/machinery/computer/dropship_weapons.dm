@@ -271,7 +271,7 @@
 				var/turf/TU = get_turf(LT.loc)
 				var/area/targ_area = get_area(LT.loc)
 				var/is_outside = FALSE
-				if(TU.z == 1)
+				if(is_ground_level(TU.z))
 					switch(targ_area.ceiling)
 						if(CEILING_NONE)
 							is_outside = TRUE

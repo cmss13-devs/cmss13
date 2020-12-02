@@ -26,7 +26,7 @@
 			if(isXeno(A) && ticker.mode.check_xeno_late_join(src))		//if it's a xeno and all checks are alright, we are gonna try to take their body
 				var/mob/living/carbon/Xenomorph/X = A
 				if(!X.client)
-					if(X.stat == DEAD || X.z == ADMIN_Z_LEVEL)
+					if(X.stat == DEAD || is_admin_level(X.z))
 						to_chat(src, SPAN_WARNING("You cannot join as [X]."))
 						return
 					if(!ticker.mode.xeno_bypass_timer)

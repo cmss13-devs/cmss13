@@ -546,7 +546,7 @@
 			else
 				src.cut(wire)
 
-			if(announce_hacked && z == MAIN_SHIP_Z_LEVEL)
+			if(announce_hacked && is_mainship_level(z))
 				announce_hacked = FALSE
 				SSclues.create_print(get_turf(usr), usr, "The fingerprint contains oil and wire pieces.")
 				if(usr.detectable_by_ai())
@@ -614,7 +614,7 @@
 
 	if (delay_vending)
 		use_power(vend_power_usage)	//actuators and stuff
-		if (icon_vend) 
+		if (icon_vend)
 			flick(icon_vend,src) //Show the vending animation if needed
 		sleep(delay_vending)
 	if (vending_dir == VEND_HAND && istype(user) && Adjacent(user))

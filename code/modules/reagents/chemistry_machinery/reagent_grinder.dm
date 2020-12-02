@@ -190,9 +190,9 @@
 			return
 
 		var/obj/item/reagent_container/glass/bottle/P = new /obj/item/reagent_container/glass/bottle()
-		P.name = "[id] bottle"
 		P.icon_state = "bottle-1" // Default bottle
 		beaker.reagents.trans_id_to(P, id, P.reagents.maximum_volume)
+		P.name = "[P.reagents.get_master_reagent_name()] bottle"
 		linked_storage.add_item(P)
 	else if(href_list["dispose"])
 		var/id = href_list["dispose"]

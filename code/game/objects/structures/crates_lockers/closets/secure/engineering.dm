@@ -15,7 +15,7 @@
 	new /obj/item/clothing/head/hardhat/white(src)
 	new /obj/item/clothing/head/welding(src)
 	new /obj/item/clothing/gloves/yellow(src)
-	if(z && (z == 3 || z == 4))
+	if(is_mainship_level(z) || is_loworbit_level(z))
 		new /obj/item/device/radio/headset/almayer/ce(src)
 	new /obj/item/storage/toolbox/mechanical(src)
 	new /obj/item/clothing/suit/storage/hazardvest(src)
@@ -113,7 +113,7 @@
 
 /obj/structure/closet/secure_closet/engineering_personal/Initialize()
 	. = ..()
-	if(!z == MAIN_SHIP_Z_LEVEL && prob(70)) new /obj/item/clothing/accessory/storage/black_vest/brown_vest(src)
+	if(!is_mainship_level(z) && prob(70)) new /obj/item/clothing/accessory/storage/black_vest/brown_vest(src)
 	else new /obj/item/clothing/accessory/storage/webbing(src)
 	new /obj/item/storage/toolbox/mechanical(src)
 	if(z != 1)
@@ -146,7 +146,7 @@
 
 /obj/structure/closet/secure_closet/atmos_personal/Initialize()
 	. = ..()
-	if (!z == MAIN_SHIP_Z_LEVEL && prob(70)) new /obj/item/clothing/accessory/storage/black_vest/brown_vest(src)
+	if (!is_mainship_level(z) && prob(70)) new /obj/item/clothing/accessory/storage/black_vest/brown_vest(src)
 	else new /obj/item/clothing/accessory/storage/webbing(src)
 	new /obj/item/clothing/suit/fire/firefighter(src)
 	new /obj/item/storage/backpack/industrial(src)

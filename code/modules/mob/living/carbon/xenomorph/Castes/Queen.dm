@@ -42,7 +42,7 @@
 				if(hive.living_xeno_queen.hivenumber == hive.hivenumber)
 					continue
 			for(var/mob/living/carbon/Xenomorph/Queen/Q in GLOB.living_xeno_list)
-				if(Q.hivenumber == hive.hivenumber && Q.z != ADMIN_Z_LEVEL)
+				if(Q.hivenumber == hive.hivenumber && !is_admin_level(Q.z))
 					hive.living_xeno_queen = Q
 					xeno_message(SPAN_XENOANNOUNCE("A new Queen has risen to lead the Hive! Rejoice!"),3,hive.hivenumber)
 					continue outer_loop
@@ -64,7 +64,7 @@
 /mob/hologram/queen/Initialize(mapload, mob/M)
 	if(!isXenoQueen(M))
 		return INITIALIZE_HINT_QDEL
-	
+
 	var/mob/living/carbon/Xenomorph/Queen/Q = M
 	if(!Q.ovipositor)
 		return INITIALIZE_HINT_QDEL
@@ -81,7 +81,7 @@
 		COMSIG_XENOMORPH_STOP_OVERWATCH_XENO
 	), .proc/stop_watching)
 	RegisterSignal(src, COMSIG_TURF_ENTER, .proc/turf_weed_only)
-	
+
 
 	med_hud_set_status()
 	add_to_all_mob_huds()
@@ -99,7 +99,7 @@
 	X.overwatch(stop_overwatch = TRUE)
 
 	return ..()
-	
+
 
 /mob/hologram/queen/proc/start_watching(var/mob/living/carbon/Xenomorph/X, var/mob/living/carbon/Xenomorph/target)
 	SIGNAL_HANDLER
@@ -146,7 +146,7 @@
 	if(W)
 		return COMPONENT_TURF_ALLOW_MOVEMENT
 
-	return COMPONENT_TURF_DENY_MOVEMENT	
+	return COMPONENT_TURF_DENY_MOVEMENT
 
 /mob/hologram/queen/proc/handle_overwatch(var/mob/living/carbon/Xenomorph/Queen/Q, var/atom/A, var/mods)
 	SIGNAL_HANDLER
@@ -173,18 +173,18 @@
 
 	if(!mods["ctrl"])
 		return
-	
+
 	if(isXeno(A))
 		Q.overwatch(A)
 		return COMPONENT_INTERRUPT_CLICK
 
 	if(!(turf_weed_only(src, T) & COMPONENT_TURF_ALLOW_MOVEMENT))
 		return
-	
+
 	loc = T
 	if(is_watching)
 		Q.overwatch(stop_overwatch = TRUE)
-	
+
 	return COMPONENT_INTERRUPT_CLICK
 
 /mob/hologram/queen/handle_view(var/mob/M, var/atom/target)
@@ -195,7 +195,7 @@
 			M.client.eye = is_watching
 		else
 			M.client.eye = src
-	
+
 	return COMPONENT_OVERRIDE_VIEW
 
 
@@ -211,7 +211,7 @@
 	remove_from_all_mob_huds()
 
 	return ..()
-	
+
 /mob/living/carbon/Xenomorph/Queen
 	caste_name = "Queen"
 	name = "Queen"
@@ -323,7 +323,7 @@
 
 /mob/living/carbon/Xenomorph/Queen/Initialize()
 	. = ..()
-	if(z != ADMIN_Z_LEVEL)//so admins can safely spawn Queens in Thunderdome for tests.
+	if(!is_admin_level(z))//so admins can safely spawn Queens in Thunderdome for tests.
 		xeno_message(SPAN_XENOANNOUNCE("A new Queen has risen to lead the Hive! Rejoice!"),3,hivenumber)
 	playsound(loc, 'sound/voice/alien_queen_command.ogg', 75, 0)
 

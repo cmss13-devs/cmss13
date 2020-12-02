@@ -2,7 +2,7 @@
 //They can't, however, activate any of the special functions.
 
 /proc/add_to_missing_pred_gear(var/obj/item/W)
-	if(!(W in yautja_gear) && !(W in untracked_yautja_gear) && !(W.z in ADMIN_Z_LEVEL))
+	if(!(W in yautja_gear) && !(W in untracked_yautja_gear) && !is_admin_level(W.z))
 		yautja_gear += W
 
 /proc/remove_from_missing_pred_gear(var/obj/item/W)
@@ -423,7 +423,7 @@
 	set desc = "Adds this location to the teleporter."
 	set category = "Yautja"
 
-	if(!usr || usr.stat || usr.z != SURFACE_Z_LEVEL)
+	if(!usr || usr.stat || !is_ground_level(usr.z))
 		return
 
 	if(istype(usr.buckled, /obj/structure/bed/nest/))

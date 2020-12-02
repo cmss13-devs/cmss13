@@ -142,7 +142,7 @@
 					to_chat(usr, SPAN_WARNING("Please allow at least [COOLDOWN_COMM_MESSAGE*0.1] second\s to pass between announcements."))
 					return FALSE
 				var/input = stripped_multiline_input(usr, "Please write a message to announce to the station crew.", "Priority Announcement", "")
-				if(!input || authenticated != 2 || world.time < cooldown_message + COOLDOWN_COMM_MESSAGE || !(usr in view(1,src))) 
+				if(!input || authenticated != 2 || world.time < cooldown_message + COOLDOWN_COMM_MESSAGE || !(usr in view(1,src)))
 					return FALSE
 
 				marine_announcement(input)
@@ -204,7 +204,7 @@
 					to_chat(usr, SPAN_WARNING("The distress beacon cannot be launched this early in the operation. Please wait another [round((DISTRESS_TIME_LOCK-world.time)/MINUTES_1)] minutes before trying again."))
 					return FALSE
 
-				if(!ticker || !ticker.mode) 
+				if(!ticker || !ticker.mode)
 					return FALSE //Not a game mode?
 
 				if(ticker.mode.force_end_at == 0)
@@ -239,7 +239,7 @@
 					to_chat(usr, SPAN_WARNING("The self destruct cannot be activated this early in the operation. Please wait another [round((DISTRESS_TIME_LOCK-world.time)/MINUTES_1)] minutes before trying again."))
 					return FALSE
 
-				if(!ticker || !ticker.mode) 
+				if(!ticker || !ticker.mode)
 					return FALSE //Not a game mode?
 
 				if(ticker.mode.force_end_at == 0)
@@ -326,7 +326,7 @@
 			if(!ticker.mode.active_lz)
 				var/lz_choices = list()
 				for(var/obj/structure/machinery/computer/shuttle_control/console in machines)
-					if(console.z == SURFACE_Z_LEVEL && !console.onboard && console.shuttle_type == SHUTTLE_DROPSHIP)
+					if(is_ground_level(console.z) && !console.onboard && console.shuttle_type == SHUTTLE_DROPSHIP)
 						lz_choices += console
 				var/new_lz = input(usr, "Choose the primary LZ for this operation", "Operation Staging")  as null|anything in lz_choices
 				if(new_lz)

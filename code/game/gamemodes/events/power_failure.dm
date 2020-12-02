@@ -13,10 +13,10 @@
 		S.power_change()
 
 	for(var/obj/structure/machinery/power/apc/C in machines)
-		if(C.cell && C.z == 3)
+		if(C.cell && is_mainship_level(C.z))
 			C.cell.charge = 0
 
-	playsound_z(3, 'sound/effects/powerloss.ogg')
+	playsound_z(SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP), 'sound/effects/powerloss.ogg')
 
 	sleep(100)
 	if(announce)
@@ -33,7 +33,7 @@
 		S.power_change()
 
 	for(var/obj/structure/machinery/power/apc/C in machines)
-		if(C.cell && C.z == 3)
+		if(C.cell && is_mainship_level(C.z))
 			C.cell.charge = C.cell.maxcharge
 
 	sleep(100)

@@ -220,7 +220,7 @@
 
 		if(!active_lz && world.time > lz_selection_timer)
 			for(var/obj/structure/machinery/computer/shuttle_control/dropship1/default_console in machines)
-				if(default_console.z == SURFACE_Z_LEVEL && !default_console.onboard)
+				if(is_ground_level(default_console.z) && !default_console.onboard)
 					select_lz(default_console)
 					break
 
@@ -300,7 +300,7 @@
 
 	if(xeno_queen_deaths == num_last_deaths && !round_finished)
 		for(var/datum/hive_status/hs in hive_datum)
-			if(hs.living_xeno_queen && hs.living_xeno_queen.loc.z != ADMIN_Z_LEVEL)
+			if(hs.living_xeno_queen && !is_admin_level(hs.living_xeno_queen.loc.z))
 				//Some Queen is alive, we shouldn't end the game yet
 				return
 		round_finished = MODE_INFESTATION_M_MINOR

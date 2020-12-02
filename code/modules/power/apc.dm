@@ -148,7 +148,7 @@
 
 	sleep(0) //Break few ACPs on the colony
 
-	if(!start_charge && z == 1 && prob(10))
+	if(!start_charge && is_ground_level(z) && prob(10))
 		set_broken()
 
 /obj/structure/machinery/power/apc/set_pixel_location()
@@ -799,7 +799,7 @@
 			visible_message(SPAN_WARNING("\The [src] begins flashing error messages wildly!"))
 			SSclues.create_print(get_turf(user), user, "The fingerprint contains specks of wire.")
 			SEND_SIGNAL(user, COMSIG_MOB_APC_CUT_WIRE, src)
-				
+
 		if(APC_WIRE_IDSCAN)
 			locked = 0
 			visible_message(SPAN_NOTICE("\The [src] emits a click."))

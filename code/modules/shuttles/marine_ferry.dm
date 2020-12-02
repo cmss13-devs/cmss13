@@ -427,7 +427,7 @@
 	// sanity checking
 	// Check for all hives in case of HvH
 	for(var/datum/hive_status/hive in hive_datum)
-		if(!hive.living_xeno_queen || hive.living_xeno_queen.loc.z == ADMIN_Z_LEVEL)
+		if(!hive.living_xeno_queen || is_admin_level(hive.living_xeno_queen.loc.z))
 			//Ignore hives without queens (and on admin levels) to cut down on pointless checks
 			continue
 		var/list/left_behind = list()
@@ -437,7 +437,7 @@
 				continue
 			if(xeno.loc && hive.living_xeno_queen && hive.living_xeno_queen.loc && xeno.loc.z == hive.living_xeno_queen.loc.z) // yes loc because of vent crawling
 				with_queen += xeno
-			else if(xeno.loc && xeno.loc.z == 1)
+			else if(xeno.loc && is_ground_level(xeno.loc.z))
 				left_behind += xeno
 		if(with_queen.len > left_behind.len) // to stop solo-suiciding by queens
 			hive.stored_larva = 0
@@ -573,15 +573,15 @@
 
 
 	for (var/obj/structure/machinery/door_display/research_cell/d in machines)
-		if(d.z == MAIN_SHIP_Z_LEVEL || d.z == LOW_ORBIT_Z_LEVEL)
+		if(is_mainship_level(d.z) || is_loworbit_level(d.z))
 			d.ion_act() //Breaking xenos out of containment
 
 	//Stolen from events.dm. WARNING: This code is old as hell
 	for (var/obj/structure/machinery/power/apc/APC in machines)
-		if(APC.z == MAIN_SHIP_Z_LEVEL || APC.z == LOW_ORBIT_Z_LEVEL)
+		if(is_mainship_level(APC.z) || is_loworbit_level(APC.z))
 			APC.ion_act()
 	for (var/obj/structure/machinery/power/smes/SMES in machines)
-		if(SMES.z == MAIN_SHIP_Z_LEVEL || SMES.z == LOW_ORBIT_Z_LEVEL)
+		if(is_mainship_level(SMES.z) || is_loworbit_level(SMES.z))
 			SMES.ion_act()
 
 	//END: Heavy lifting backend

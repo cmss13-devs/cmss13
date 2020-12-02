@@ -194,11 +194,11 @@
 	if(wave_data.command_announcement.len > 0)
 		marine_announcement(wave_data.command_announcement[1], wave_data.command_announcement[2])
 	if(wave_data.sound_effect.len > 0)
-		playsound_z(SURFACE_Z_LEVEL, pick(wave_data.sound_effect))
+		playsound_z(SSmapping.levels_by_trait(ZTRAIT_GROUND), pick(wave_data.sound_effect))
 
 //CHECK WIN
 /datum/game_mode/whiskey_outpost/check_win()
-	var/C = count_humans_and_xenos(SURFACE_Z_LEVELS)
+	var/C = count_humans_and_xenos(SSmapping.levels_by_trait(ZTRAIT_GROUND))
 
 	if(C[1] == 0)
 		finished = 1 //Alien win
@@ -215,7 +215,7 @@
 	var/xeno_count = 0
 	for(var/i in GLOB.living_xeno_list)
 		var/mob/living/carbon/Xenomorph/X = i
-		if(X.z == 1 && !istype(X.loc,/turf/open/space)) // If they're connected/unghosted and alive and not debrained
+		if(is_ground_level(X.z) && !istype(X.loc,/turf/open/space)) // If they're connected/unghosted and alive and not debrained
 			xeno_count += 1 //Add them to the amount of people who're alive.
 
 	return xeno_count

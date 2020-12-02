@@ -64,7 +64,7 @@
 /datum/cm_objective/communications/check_completion()
 	. = ..()
 	for(var/obj/structure/machinery/telecomms/relay/T in machines)
-		if(!(T.loc.z in SURFACE_Z_LEVELS))
+		if(!is_ground_level(T.loc.z))
 			continue
 		if(!T.powered())
 			continue

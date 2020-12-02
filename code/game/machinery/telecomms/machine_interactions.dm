@@ -7,8 +7,7 @@
 
 */
 
-#define STATION_Z 1
-#define TELECOMM_Z 3
+#define TELECOMM_GROUND_Z "station_z"
 
 /obj/structure/machinery/telecomms
 	var/temp = "" // output message
@@ -186,11 +185,11 @@
 	var/turf/position = get_turf(src)
 
 	// Toggle on/off getting signals from the station or the current Z level
-	if(src.listening_level == STATION_Z) // equals the station
+	if(src.listening_level == TELECOMM_GROUND_Z) // equals the station
 		src.listening_level = position.z
 		return 1
-	else if(position.z == TELECOMM_Z)
-		src.listening_level = STATION_Z
+	else if(is_admin_level(position.z))
+		src.listening_level = TELECOMM_GROUND_Z
 		return 1
 	return 0
 
@@ -239,8 +238,8 @@
 
 /obj/structure/machinery/telecomms/relay/Options_Menu()
 	var/dat = ""
-	if(src.z == TELECOMM_Z)
-		dat += "<br>Signal Locked to Station: <A href='?src=\ref[src];change_listening=1'>[listening_level == STATION_Z ? "TRUE" : "FALSE"]</a>"
+	if(is_admin_level(z))
+		dat += "<br>Signal Locked to Station: <A href='?src=\ref[src];change_listening=1'>[listening_level == TELECOMM_GROUND_Z ? "TRUE" : "FALSE"]</a>"
 	dat += "<br>Broadcasting: <A href='?src=\ref[src];broadcast=1'>[broadcasting ? "YES" : "NO"]</a>"
 	dat += "<br>Receiving:    <A href='?src=\ref[src];receive=1'>[receiving ? "YES" : "NO"]</a>"
 	return dat
@@ -371,6 +370,3 @@
 	if(isRemoteControlling(user) || in_range(user, src))
 		return 1
 	return 0
-
-#undef TELECOMM_Z
-#undef STATION_Z

@@ -47,7 +47,7 @@
 	vis_contents.Cut()
 
 	turfs += src
-	if(src.z == 1)
+	if(is_ground_level(z))
 		z1turfs += src
 
 	assemble_baseturfs()

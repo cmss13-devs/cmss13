@@ -486,7 +486,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 				else
 					cut(target_wire)
 
-				if(announce_hacked && z == MAIN_SHIP_Z_LEVEL)
+				if(announce_hacked && is_mainship_level(z))
 					announce_hacked = FALSE
 					SSclues.create_print(get_turf(usr), usr, "The fingerprint contains oil and wire pieces.")
 					if(usr.detectable_by_ai())

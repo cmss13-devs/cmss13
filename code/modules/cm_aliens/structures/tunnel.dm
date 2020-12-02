@@ -55,7 +55,7 @@
 	var/mob/living/carbon/C = target
 	if(istype(C) && C.allied_to_hivenumber(hivenumber, XENO_SLASH_RESTRICTED))
 		return TRUE
-	
+
 	return FALSE
 
 /obj/structure/tunnel/examine(mob/user)
@@ -107,7 +107,7 @@
 		for(var/obj/structure/tunnel/T in hive.tunnels)
 			if(T == src)
 				continue
-			if(!(T.z in SURFACE_Z_LEVELS))
+			if(!is_ground_level(T.z))
 				continue
 
 			tunnels += list(T.tunnel_desc = T)
@@ -133,7 +133,7 @@
 			return FALSE
 
 		var/obj/structure/tunnel/T = tunnels[pick]
-		
+
 		if(T.contents.len > 2)// max 3 xenos in a tunnel
 			to_chat(X, SPAN_WARNING("The tunnel is too crowded, wait for others to exit!"))
 			return FALSE

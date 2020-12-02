@@ -29,7 +29,7 @@
 
 /turf/closed/wall/almayer/take_damage(dam, var/mob/M)
 	var/damage_check = max(0, damage + dam)
-	if(damage_check >= damage_cap && M && z == MAIN_SHIP_Z_LEVEL)
+	if(damage_check >= damage_cap && M && is_mainship_level(z))
 		SSclues.create_print(get_turf(M), M, "The fingerprint contains specks of metal and dirt.")
 		if(M.detectable_by_ai())
 			ai_silent_announcement("DAMAGE REPORT: Structural damage detected at [get_area(src)], requesting Military Police supervision.")

@@ -108,7 +108,7 @@
 		to_chat(X, SPAN_XENOWARNING("You can't do that from there."))
 		return
 
-	if(!T.can_dig_xeno_tunnel() || !(T.z in SURFACE_Z_LEVELS))
+	if(!T.can_dig_xeno_tunnel() || !is_ground_level(T.z))
 		to_chat(X, SPAN_XENOWARNING("You scrape around, but you can't seem to dig through that kind of floor."))
 		return
 

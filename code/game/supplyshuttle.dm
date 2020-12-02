@@ -385,7 +385,7 @@ var/datum/controller/supply/supply_controller = new()
 /datum/controller/supply/proc/calculate_crate_amount()
 
 	// Sqrt(NUM_XENOS/4)
-	var/crate_amount = Floor(max(0, sqrt(ticker.mode.count_xenos(SURFACE_Z_LEVELS)/3)))
+	var/crate_amount = Floor(max(0, sqrt(ticker.mode.count_xenos(SSmapping.levels_by_trait(ZTRAIT_GROUND))/3)))
 
 	if(crate_iteration <= 5)
 		crate_amount = 4
@@ -666,7 +666,7 @@ var/datum/controller/supply/supply_controller = new()
 	return
 
 /obj/structure/machinery/computer/supplycomp/attack_hand(var/mob/user as mob)
-	if(z != MAIN_SHIP_Z_LEVEL) return
+	if(!is_mainship_level(z)) return
 	if(!allowed(user))
 		to_chat(user, SPAN_DANGER("Access Denied."))
 		return
@@ -724,7 +724,7 @@ var/datum/controller/supply/supply_controller = new()
 	return
 
 /obj/structure/machinery/computer/supplycomp/Topic(href, href_list)
-	if(z != MAIN_SHIP_Z_LEVEL) return
+	if(!is_mainship_level(z)) return
 	if(!supply_controller)
 		world.log << "## ERROR: Eek. The supply_controller controller datum is missing somehow."
 		return
@@ -1015,7 +1015,7 @@ var/datum/controller/supply/supply_controller = new()
 	show_browser(H, dat, "Automated Storage and Retrieval System", "computer", "size=575x450")
 
 /obj/structure/machinery/computer/supplycomp/vehicle/Topic(href, href_list)
-	if(z != MAIN_SHIP_Z_LEVEL)
+	if(!is_mainship_level(z))
 		return
 	if(spent)
 		return

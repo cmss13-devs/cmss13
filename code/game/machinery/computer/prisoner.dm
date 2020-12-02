@@ -49,7 +49,7 @@
 			if(!T.implanted) continue
 			var/loc_display = "Unknown"
 			var/mob/living/carbon/M = T.imp_in
-			if(M.z == 1 && !istype(M.loc, /turf/open/space))
+			if(is_ground_level(M.z) && !istype(M.loc, /turf/open/space))
 				var/turf/mob_loc = get_turf(M)
 				loc_display = mob_loc.loc
 			dat += "ID: [T.id]|Location: [loc_display]<BR>"

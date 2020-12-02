@@ -260,7 +260,7 @@
 	var/area/targ_area = get_area(A)
 	if(!istype(TU)) return
 	var/is_outside = FALSE
-	if(TU.z == 1)
+	if(is_ground_level(TU.z))
 		switch(targ_area.ceiling)
 			if(CEILING_NONE)
 				is_outside = TRUE

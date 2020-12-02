@@ -26,7 +26,8 @@
 			continue
 		switch(elimination_type)
 			if(ELIMINATE_Z_LEVEL)
-				if((M.z in z_levels) || (include_vents && (M.loc.z in z_levels)))
+				var/list/zs = SSmapping.levels_by_any_trait(z_levels)
+				if((M.z in zs) || (include_vents && (M.loc.z in zs)))
 					mob_count++
 				else
 					continue
@@ -56,11 +57,11 @@
 
 /datum/cm_objective/eliminate/xenomorph/ship
 	elimination_type = ELIMINATE_Z_LEVEL
-	z_levels = list(MAIN_SHIP_Z_LEVEL)
+	z_levels = list(ZTRAIT_MARINE_MAIN_SHIP)
 
 /datum/cm_objective/eliminate/xenomorph/queen/ship
 	elimination_type = ELIMINATE_Z_LEVEL
-	z_levels = list(MAIN_SHIP_Z_LEVEL)
+	z_levels = list(ZTRAIT_MARINE_MAIN_SHIP)
 
 // --------------------------------------------
 // *** Get a mob to an area/level ***
@@ -295,7 +296,7 @@
 	var/turf/T
 	for(var/mob/living/carbon/human/H in GLOB.human_mob_list)
 		T = get_turf(H)
-		if(!(T.z in SURFACE_Z_LEVELS))
+		if(!is_ground_level(T.z))
 			continue
 		if(H.stat != DEAD)
 			continue

@@ -42,18 +42,18 @@ SUBSYSTEM_DEF(item_cleanup)
 
 /datum/controller/subsystem/item_cleanup/proc/delete_almayer()
 	//Should only be called for Whiskey Outpost!
-	delete_z_level(MAIN_SHIP_Z_LEVEL)
+	delete_z_level(SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP))
 
 /datum/controller/subsystem/item_cleanup/proc/delete_surface()
 	//Should only be called when lag is really bad and everyone is off the surface, including the dropships
-	delete_z_level(SURFACE_Z_LEVEL)
+	delete_z_level(SSmapping.levels_by_trait(ZTRAIT_GROUND))
 
-/datum/controller/subsystem/item_cleanup/proc/delete_z_level(var/z_level)
+/datum/controller/subsystem/item_cleanup/proc/delete_z_level(list/z_levels)
 	set background = 1
 	for(var/atom/o in GLOB.object_list)
 		if(QDELETED(o) || isnull(o.loc))
 			continue
-		if(o.loc.z == z_level) //item is on the proper Z-level
+		if(o.loc.z in z_levels) //item is on the proper Z-level
 			qdel(o)
 
 /proc/add_to_garbage(var/atom/a)

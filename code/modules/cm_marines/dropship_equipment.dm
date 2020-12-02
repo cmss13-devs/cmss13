@@ -305,7 +305,7 @@
 			to_chat(user, SPAN_WARNING("[src] is busy."))
 			return //prevents spamming deployment/undeployment
 		if(deployed_turret.loc == src) //not deployed
-			if(z == LOW_ORBIT_Z_LEVEL && ship_base.base_category == DROPSHIP_WEAPON)
+			if(is_loworbit_level(z) && ship_base.base_category == DROPSHIP_WEAPON)
 				to_chat(user, SPAN_WARNING("[src] can't deploy mid-flight."))
 			else
 				to_chat(user, SPAN_NOTICE("You deploy [src]."))
@@ -423,7 +423,7 @@
 				to_chat(user, SPAN_WARNING("[src] is not ready."))
 				return //prevents spamming deployment/undeployment
 			if(deployed_mg.loc == src) //not deployed
-				if(z == LOW_ORBIT_Z_LEVEL && ship_base.base_category == DROPSHIP_WEAPON)
+				if(is_loworbit_level(z) && ship_base.base_category == DROPSHIP_WEAPON)
 					to_chat(user, SPAN_WARNING("[src] can't be deployed mid-flight."))
 				else
 					to_chat(user, SPAN_NOTICE("You pull out [deployed_mg]."))
@@ -1185,7 +1185,7 @@
 	if(!ship_base) //system was uninstalled midway
 		return
 
-	if(F.z == 1) //in case the fulton popped during our input()
+	if(is_ground_level(F.z)) //in case the fulton popped during our input()
 		return
 
 	if(!F.attached_atom)
@@ -1222,7 +1222,7 @@
 
 	busy_winch = FALSE
 	var/fail
-	if(!linked_fulton || linked_fulton.z == 1)
+	if(!linked_fulton || is_ground_level(linked_fulton.z))
 		fail = TRUE
 
 	else if(!ship_base) //uninstalled midway

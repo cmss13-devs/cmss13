@@ -1992,7 +1992,7 @@ var/list/WALLITEMS = list(
 	var/turf/T = get_turf(G)
 	if(!(T.loc.type in grenade_antigrief_exempt_areas))
 		var/crash_occured = (ticker && ticker.mode && ticker.mode.is_in_endgame)
-		if(G.harmful && (T.z in MAIN_SHIP_AND_DROPSHIPS_Z_LEVELS) && (security_level < SEC_LEVEL_RED) && !crash_occured && grenade_antigrief_on)
+		if(G.harmful && (T.z in SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP, ZTRAIT_LOWORBITT))) && (security_level < SEC_LEVEL_RED) && !crash_occured && grenade_antigrief_on)
 			return TRUE
 	return FALSE
 

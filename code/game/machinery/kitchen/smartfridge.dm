@@ -387,7 +387,7 @@
 	return 1
 
 /obj/structure/machinery/smartfridge/proc/is_in_network()
-	return networked && z == MAIN_SHIP_Z_LEVEL
+	return networked && is_mainship_level(z)
 
 
 

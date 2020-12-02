@@ -1,8 +1,6 @@
 /datum/species/yautja
 	name = "Yautja"
 	name_plural = "Yautja"
-	icobase_source = "species_hunter"
-	deform_source = "species_hunter"
 	brute_mod = 0.33 //Beefy!
 	burn_mod = 0.65
 	reagent_tag = IS_YAUTJA
@@ -62,6 +60,17 @@
 		WEAR_IN_BELT,\
 		WEAR_IN_BACK\
 	)
+
+/datum/species/yautja/New()
+	. = ..()
+	RegisterSignal(SSdcs, COMSIG_GLOB_MODE_POSTSETUP, .proc/setup_yautja_icons)
+
+/datum/species/yautja/proc/setup_yautja_icons()
+	SIGNAL_HANDLER
+
+	icobase_source = CONFIG_GET(string/species_hunter)
+	deform_source = CONFIG_GET(string/species_hunter)
+	UnregisterSignal(SSdcs, COMSIG_GLOB_MODE_POSTSETUP, .proc/setup_yautja_icons)
 
 /datum/species/yautja/larva_impregnated(var/obj/item/alien_embryo/embryo)
 	var/datum/hive_status/hive = hive_datum[embryo.hivenumber]

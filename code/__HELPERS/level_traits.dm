@@ -5,15 +5,15 @@
 #define ZTRAIT_LOWORBITT 4
 #define ZTRAIT_HUNTER_SHIP 5
 
-#define is_admin_level(z) z == ZTRAIT_ADMIN
+#define is_admin_level(z) (z == ZTRAIT_ADMIN)
 
-#define is_ground_level(z) z == ZTRAIT_GROUND
+#define is_ground_level(z) (z == ZTRAIT_GROUND)
 
-#define is_mainship_level(z) z == ZTRAIT_MARINE_MAIN_SHIP
+#define is_mainship_level(z) (z == ZTRAIT_MARINE_MAIN_SHIP)
 
-#define is_loworbit_level(z) z == ZTRAIT_LOWORBITT
+#define is_loworbit_level(z) (z == ZTRAIT_LOWORBITT)
 
-#define is_huntership_level(z) z == ZTRAIT_HUNTER_SHIP
+#define is_huntership_level(z) (z == ZTRAIT_HUNTER_SHIP)
 
 // extremely placeholder
 GLOBAL_REAL(SSmapping, /datum/mapping_placeholder) = new

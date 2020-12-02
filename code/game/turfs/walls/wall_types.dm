@@ -573,8 +573,8 @@
 	var/hivenumber = XENO_HIVE_NORMAL
 
 /turf/closed/wall/resin/Initialize(mapload, ...)
-	. = ..()
 	icon = get_icon_from_source(CONFIG_GET(string/alien_structures))
+	. = ..()
 
 /turf/closed/wall/resin/make_girder()
 	ScrapeAway()

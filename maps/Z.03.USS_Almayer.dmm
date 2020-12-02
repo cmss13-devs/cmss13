@@ -49204,10 +49204,6 @@
 	tag = "icon-rasputin15"
 	},
 /area/almayer/hull/lower_hull)
-"pjb" = (
-/mob,
-/turf/closed/wall/almayer,
-/area/almayer/living/pilotbunks)
 "pjC" = (
 /obj/structure/machinery/autolathe,
 /turf/open/floor/almayer{
@@ -82037,7 +82033,7 @@ amh
 amb
 aiX
 aiX
-pjb
+aiX
 aiX
 aiX
 aiX

@@ -17,7 +17,6 @@
 
 /mob/living/carbon/Xenomorph/Larva
 	name = "Bloody Larva"
-	icon_source = "alien_embryo"
 	caste_name = "Bloody Larva"
 	speak_emote = list("hisses")
 	icon_state = "Bloody Larva"
@@ -42,6 +41,10 @@
 		)
 	mutation_type = "Normal"
 
+/mob/living/carbon/Xenomorph/Larva/Initialize(mapload, mob/living/carbon/Xenomorph/oldXeno, h_number)
+	. = ..()
+	icon = get_icon_from_source(CONFIG_GET(string/alien_embryo))
+
 /mob/living/carbon/Xenomorph/Larva/Corrupted
 	hivenumber = XENO_HIVE_CORRUPTED
 
@@ -58,9 +61,12 @@
 	hivenumber = XENO_HIVE_DELTA
 
 /mob/living/carbon/Xenomorph/Larva/predalien
-	icon_source = "alien_hunter_embryo"
 	icon_state = "Predalien Larva"
 	caste_name = "Predalien Larva"
+
+/mob/living/carbon/Xenomorph/Larva/predalien/Initialize(mapload, mob/living/carbon/Xenomorph/oldXeno, h_number)
+	. = ..()
+	icon = get_icon_from_source(CONFIG_GET(string/alien_hunter_embryo))
 
 /mob/living/carbon/Xenomorph/Larva/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()

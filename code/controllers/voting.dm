@@ -32,7 +32,7 @@ datum/controller/vote
 
 			// Calculate how much time is remaining by comparing current time, to time of vote start,
 			// plus vote duration
-			time_remaining = round((started_time + config.vote_period - world.time)/10)
+			time_remaining = round((started_time + CONFIG_GET(number/vote_period) - world.time)/10)
 
 			if(time_remaining < 0)
 				result()
@@ -80,7 +80,7 @@ datum/controller/vote
 			if(votes > greatest_votes)
 				greatest_votes = votes
 		//default-vote for everyone who didn't vote
-		if(!config.vote_no_default && choices.len)
+		if(!CONFIG_GET(flag/vote_no_default) && choices.len)
 			var/non_voters = (GLOB.clients.len - total_votes)
 			if(non_voters > 0)
 				if(mode == "restart")
@@ -161,7 +161,7 @@ datum/controller/vote
 
 	proc/submit_vote(var/ckey, var/vote)
 		if(mode)
-			if(config.vote_no_dead && usr.stat == DEAD && (!usr.client.admin_holder || !(usr.client.admin_holder.rights & R_MOD)))
+			if(CONFIG_GET(flag/vote_no_dead) && usr.stat == DEAD && (!usr.client.admin_holder || !(usr.client.admin_holder.rights & R_MOD)))
 				return 0
 			if(current_votes[ckey])
 				choices[choices[current_votes[ckey]]]--
@@ -175,7 +175,7 @@ datum/controller/vote
 	proc/initiate_vote(var/vote_type, var/initiator_key)
 		if(!mode)
 			if(started_time != null && !check_rights(R_ADMIN))
-				var/next_allowed_time = (started_time + config.vote_delay)
+				var/next_allowed_time = (started_time + CONFIG_GET(number/vote_delay))
 				if(next_allowed_time > world.time)
 					return 0
 
@@ -210,7 +210,7 @@ datum/controller/vote
 				text += "\n[question]"
 
 			log_vote(text)
-			to_world("<font color='purple'><b>[text]</b>\nType vote to place your votes.\nYou have [config.vote_period/10] seconds to vote.</font>")
+			to_world("<font color='purple'><b>[text]</b>\nType vote to place your votes.\nYou have [CONFIG_GET(number/vote_period)/10] seconds to vote.</font>")
 			switch(vote_type)
 				if("gamemode")
 					world << sound('sound/ambience/alarm4.ogg', repeat = 0, wait = 0, volume = 50, channel = 1)
@@ -222,7 +222,7 @@ datum/controller/vote
 
 
 
-			time_remaining = round(config.vote_period/10)
+			time_remaining = round(CONFIG_GET(number/vote_period)/10)
 			return 1
 		return 0
 
@@ -269,15 +269,15 @@ datum/controller/vote
 				. += "<font color='grey'>Restart (Disallowed)</font>"
 			. += "</li><li>"
 			if(trialmin)
-				. += "\t(<a href='?src=\ref[src];vote=toggle_restart'>[config.allow_vote_restart?"Allowed":"Disallowed"]</a>)"
+				. += "\t(<a href='?src=\ref[src];vote=toggle_restart'>[CONFIG_GET(flag/allow_vote_restart)?"Allowed":"Disallowed"]</a>)"
 			. += "</li><li>"
 			//gamemode
-			if(trialmin || config.allow_vote_mode)
+			if(trialmin || CONFIG_GET(flag/allow_vote_mode))
 				. += "<a href='?src=\ref[src];vote=gamemode'>GameMode</a>"
 			else
 				. += "<font color='grey'>GameMode (Disallowed)</font>"
 			if(trialmin)
-				. += "\t(<a href='?src=\ref[src];vote=toggle_gamemode'>[config.allow_vote_mode?"Allowed":"Disallowed"]</a>)"
+				. += "\t(<a href='?src=\ref[src];vote=toggle_gamemode'>[CONFIG_GET(flag/allow_vote_mode)?"Allowed":"Disallowed"]</a>)"
 
 			. += "</li>"
 			//custom
@@ -300,15 +300,15 @@ datum/controller/vote
 					reset()
 			if("toggle_restart")
 				if(usr.client.admin_holder && (usr.client.admin_holder.rights & R_MOD))
-					config.allow_vote_restart = !config.allow_vote_restart
+					CONFIG_SET(flag/allow_vote_restart, !CONFIG_GET(flag/allow_vote_restart))
 			if("toggle_gamemode")
 				if(usr.client.admin_holder && (usr.client.admin_holder.rights & R_MOD))
-					config.allow_vote_mode = !config.allow_vote_mode
+					CONFIG_SET(flag/allow_vote_mode, !CONFIG_GET(flag/allow_vote_mode))
 			if("restart")
-				if(config.allow_vote_restart || (usr.client.admin_holder && (usr.client.admin_holder.rights & R_MOD)))
+				if(CONFIG_GET(flag/allow_vote_restart) || (usr.client.admin_holder && (usr.client.admin_holder.rights & R_MOD)))
 					initiate_vote("restart",usr.key)
 			if("gamemode")
-				if(config.allow_vote_mode || (usr.client.admin_holder && (usr.client.admin_holder.rights & R_MOD)))
+				if(CONFIG_GET(flag/allow_vote_mode) || (usr.client.admin_holder && (usr.client.admin_holder.rights & R_MOD)))
 					initiate_vote("gamemode",usr.key)
 			if("custom")
 				if(usr.client.admin_holder && (usr.client.admin_holder.rights & R_MOD))

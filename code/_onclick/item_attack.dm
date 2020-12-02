@@ -37,7 +37,7 @@
 			return FALSE
 
 	if(ishuman(user))
-		var/mob/living/carbon/human/H = user	
+		var/mob/living/carbon/human/H = user
 
 		if(!H.species.melee_allowed)
 			to_chat(H, SPAN_DANGER("You are currently unable to attack."))
@@ -84,8 +84,8 @@
 		user.flick_attack_overlay(M, "punch")
 		if(isXeno(M))
 			var/mob/living/carbon/Xenomorph/X = M
-			power = armor_damage_reduction(config.xeno_melee, power, X.armor_deflection + X.armor_deflection_buff, 20, 0, 0, X.armor_integrity)
-			var/armor_punch = armor_break_calculation(config.xeno_melee, power, X.armor_deflection + X.armor_deflection_buff, 20, 0, 0, X.armor_integrity)
+			power = armor_damage_reduction(GLOB.xeno_melee, power, X.armor_deflection + X.armor_deflection_buff, 20, 0, 0, X.armor_integrity)
+			var/armor_punch = armor_break_calculation(GLOB.xeno_melee, power, X.armor_deflection + X.armor_deflection_buff, 20, 0, 0, X.armor_integrity)
 			X.apply_armorbreak(armor_punch)
 		if(hitsound)
 			playsound(loc, hitsound, 25, 1)

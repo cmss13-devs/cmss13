@@ -3,10 +3,10 @@
 	set name = "wiki"
 	set desc = "Visit the wiki."
 	set hidden = 1
-	if( config.wikiurl )
+	if( CONFIG_GET(string/wikiurl) )
 		if(alert("This will open the wiki in your browser. Are you sure?",,"Yes","No")=="No")
 			return
-		src << link(config.wikiurl)
+		src << link(CONFIG_GET(string/wikiurl))
 	else
 		to_chat(src, SPAN_DANGER("The wiki URL is not set in the server configuration."))
 	return
@@ -15,10 +15,10 @@
 	set name = "forum"
 	set desc = "Visit the forum."
 	set hidden = 1
-	if( config.forumurl )
+	if( CONFIG_GET(string/forumurl) )
 		if(alert("This will open the forum in your browser. Are you sure?",,"Yes","No")=="No")
 			return
-		src << link(config.forumurl)
+		src << link(CONFIG_GET(string/forumurl))
 	else
 		to_chat(src, SPAN_DANGER("The forum URL is not set in the server configuration."))
 	return
@@ -27,10 +27,10 @@
 	set name = "rules"
 	set desc = "Read our rules."
 	set hidden = 1
-	if( config.rulesurl )
+	if( CONFIG_GET(string/rulesurl) )
 		if(alert("This will open the rules in your browser. Are you sure?",,"Yes","No")=="No")
 			return
-		src << link(config.rulesurl)
+		src << link(CONFIG_GET(string/rulesurl))
 	else
 		to_chat(src, SPAN_DANGER("The rules URL is not set in the server configuration."))
 	return

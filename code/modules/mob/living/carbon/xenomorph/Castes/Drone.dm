@@ -24,14 +24,13 @@
 	tackle_max = 4
 	tacklestrength_min = 3
 	tacklestrength_max = 4
-	
+
 	aura_strength = 2
 
 /mob/living/carbon/Xenomorph/Drone
 	caste_name = "Drone"
 	name = "Drone"
 	desc = "An Alien Drone"
-	icon_source = "alien_drone"
 	icon_size = 48
 	icon_state = "Drone Walking"
 	plasma_types = list(PLASMA_PURPLE)
@@ -55,3 +54,7 @@
 		/mob/living/carbon/Xenomorph/proc/rename_tunnel,
 		)
 	mutation_type = DRONE_NORMAL
+
+/mob/living/carbon/Xenomorph/Drone/Initialize(mapload, mob/living/carbon/Xenomorph/oldXeno, h_number)
+	. = ..()
+	icon = get_icon_from_source(CONFIG_GET(string/alien_drone))

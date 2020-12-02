@@ -16,9 +16,9 @@
 
 	if(istype(queen))
 		if(icon_64x64)
-			queen.icon_body = icon_64x64
+			queen.icon = icon_64x64
 		if(icon_ovipositor)
-			queen.icon_ovi = icon_ovipositor
+			queen.icon = icon_ovipositor
 		return
 
 	if(istype(larva) && icon_larva)

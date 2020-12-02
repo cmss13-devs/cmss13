@@ -64,6 +64,7 @@
 				stat("Instances:", "[num2text(length(world.contents), 10)]")
 				stat("World Time:", "[world.time]")
 				GLOB.stat_entry()
+				config.stat_entry()
 				stat(null)
 				if(Master)
 					Master.stat_entry()
@@ -195,9 +196,9 @@
 
 /mob/proc/movement_delay()
 	if(!legcuffed)
-		. = 2 + config.run_speed
+		. = 2 + CONFIG_GET(number/run_speed)
 	else
-		. = 7 + config.walk_speed
+		. = 7 + CONFIG_GET(number/walk_speed)
 	. += speed
 	move_delay = .
 

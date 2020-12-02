@@ -4,9 +4,13 @@
 /obj/effect/alien
 	name = "alien thing"
 	desc = "theres something alien about this"
-	icon_source = "alien_effects"
 	unacidable = TRUE
 	health = 1
+
+/obj/effect/alien/Initialize(mapload, ...)
+	. = ..()
+	icon = get_icon_from_source(CONFIG_GET(string/alien_effects))
+
 /*
  * Resin
  */
@@ -69,7 +73,7 @@
 			playsound(loc, "alien_resin_move", 25)
 		else
 			playsound(loc, "alien_resin_break", 25)
-		
+
 		health -= (M.melee_damage_upper + 50) //Beef up the damage a bit
 		healthcheck()
 
@@ -147,7 +151,6 @@
 /obj/structure/mineral_door/resin
 	name = "resin door"
 	mineralType = "resin"
-	icon_source = "alien_effects"
 	hardness = 1.5
 	health = HEALTH_DOOR_XENO
 	var/close_delay = 100
@@ -157,6 +160,7 @@
 
 /obj/structure/mineral_door/resin/Initialize(mapload, hive)
 	. = ..()
+	icon = get_icon_from_source(CONFIG_GET(string/alien_effects))
 	relativewall()
 	relativewall_neighbours()
 	for(var/turf/closed/wall/W in orange(1))

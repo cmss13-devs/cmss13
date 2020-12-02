@@ -45,64 +45,64 @@ GLOBAL_DATUM_INIT(STUI, /datum/STUI, new)
 		if(STUI_LOG_ATTACK)
 			if(user.client.admin_holder.rights & R_MOD)
 				data["colour"] = "bad"
-				if(attack.len > config.STUI_length+1)
-					attack.Cut(,attack.len-config.STUI_length)
+				if(attack.len > CONFIG_GET(number/STUI_length)+1)
+					attack.Cut(,attack.len-CONFIG_GET(number/STUI_length))
 				data["log"] = jointext(attack, "\n")
 			else
 				data["log"] = "You do not have the right permissions to view this."
 		if(STUI_LOG_ADMIN)
 			if(user.client.admin_holder.rights & R_ADMIN)
 				data["colour"] = "blue"
-				if(admin.len > config.STUI_length+1)
-					admin.Cut(,admin.len-config.STUI_length)
+				if(admin.len > CONFIG_GET(number/STUI_length)+1)
+					admin.Cut(,admin.len-CONFIG_GET(number/STUI_length))
 				data["log"] = jointext(admin, "\n")
 			else
 				data["log"] = "You do not have the right permissions to view this."
 		if(STUI_LOG_STAFF_CHAT)
 			if(user.client.admin_holder.rights & R_ADMIN)
 				data["colour"] = "average"
-				if(staff.len > config.STUI_length+1)
-					staff.Cut(,staff.len-config.STUI_length)
+				if(staff.len > CONFIG_GET(number/STUI_length)+1)
+					staff.Cut(,staff.len-CONFIG_GET(number/STUI_length))
 				data["log"] = jointext(staff, "\n")
 			else
 				data["log"] = "You do not have the right permissions to view this."
 		if(STUI_LOG_OOC_CHAT)
 			if(user.client.admin_holder.rights & R_MOD)
 				data["colour"] = "average"
-				if(ooc.len > config.STUI_length+1)
-					ooc.Cut(,ooc.len-config.STUI_length)
+				if(ooc.len > CONFIG_GET(number/STUI_length)+1)
+					ooc.Cut(,ooc.len-CONFIG_GET(number/STUI_length))
 				data["log"] = jointext(ooc, "\n")
 			else
 				data["log"] = "You do not have the right permissions to view this."
 		if(STUI_LOG_GAME_CHAT)
 			if((user.client.admin_holder.rights & R_ADMIN) || (user.client.admin_holder.rights & R_DEBUG))
 				data["colour"] = "white"
-				if(game.len > config.STUI_length+1)
-					game.Cut(,game.len-config.STUI_length)
+				if(game.len > CONFIG_GET(number/STUI_length)+1)
+					game.Cut(,game.len-CONFIG_GET(number/STUI_length))
 				data["log"] = jointext(game, "\n")
 			else
 				data["log"] = "You do not have the right permissions to view this."
 		if(STUI_LOG_DEBUG)
 			if(user.client.admin_holder.rights & R_DEBUG)
 				data["colour"] = "average"
-				if(debug.len > config.STUI_length+1)
-					debug.Cut(,debug.len-config.STUI_length)
+				if(debug.len > CONFIG_GET(number/STUI_length)+1)
+					debug.Cut(,debug.len-CONFIG_GET(number/STUI_length))
 				data["log"] = jointext(debug, "\n")
 			else
 				data["log"] = "You do not have the right permissions to view this."
 		if(STUI_LOG_RUNTIME)
 			if(user.client.admin_holder.rights & R_DEBUG)
 				data["colour"] = "average"
-				if(runtime.len > config.STUI_length+1)
-					runtime.Cut(,runtime.len-config.STUI_length)
+				if(runtime.len > CONFIG_GET(number/STUI_length)+1)
+					runtime.Cut(,runtime.len-CONFIG_GET(number/STUI_length))
 				data["log"] = jointext(runtime, "\n")
 			else
 				data["log"] = "You do not have the right permissions to view this."
 		if(STUI_LOG_TGUI)
 			if(user.client.admin_holder.rights & R_DEBUG)
 				data["colour"] = "average"
-				if(tgui.len > config.STUI_length+1)
-					tgui.Cut(,tgui.len-config.STUI_length)
+				if(tgui.len > CONFIG_GET(number/STUI_length)+1)
+					tgui.Cut(,tgui.len-CONFIG_GET(number/STUI_length))
 				data["log"] = jointext(tgui, "\n")
 			else
 				data["log"] = "You do not have the right permissions to view this."

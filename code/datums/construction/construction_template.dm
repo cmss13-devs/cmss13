@@ -9,7 +9,6 @@
     var/build_type = /obj/structure
     var/build_loc
     var/build_icon
-    var/build_icon_source
     var/build_icon_state
 
     var/pixel_y = -16
@@ -20,14 +19,19 @@
     var/materials_required = list() //Example resource requirements i.e. MATERIAL_METAL = 1
     var/extras_required = list() //Example extra requirements i.e. /obj/item = 1
 
+/datum/construction_template/New()
+	. = ..()
+	set_structure_image()
+
 /datum/construction_template/Destroy()
     owner = null
     build_loc = null
-    ..()
+    return ..()
+
+/datum/construction_template/proc/set_structure_image()
+	return
 
 /datum/construction_template/proc/get_structure_image()
-    if(build_icon_source)
-        build_icon = get_icon_from_source(build_icon_source)
     return image(build_icon, build_icon_state)
 
 /datum/construction_template/proc/add_crystal(var/mob/living/carbon/Xenomorph/M)

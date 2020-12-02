@@ -815,7 +815,7 @@
 			if(TOX, OXY, CLONE) armor = getarmor_organ(organ, ARMOR_BIO)
 			else armor = getarmor_organ(organ, ARMOR_ENERGY) //Won't be used, but just in case.
 
-		damage_result = armor_damage_reduction(config.marine_ranged, damage, armor, P.ammo.penetration)
+		damage_result = armor_damage_reduction(GLOB.marine_ranged, damage, armor, P.ammo.penetration)
 
 		if(damage_result <= 5)
 			to_chat(src,SPAN_XENONOTICE("Your armor absorbs the force of [P]!"))
@@ -893,8 +893,8 @@
 	if(damage > 0 && !(ammo_flags & AMMO_IGNORE_ARMOR))
 		var/armor = armor_deflection + armor_deflection_buff
 
-		damage_result = armor_damage_reduction(config.xeno_ranged, damage, armor, P.ammo.penetration, P.ammo.pen_armor_punch, P.ammo.damage_armor_punch, armor_integrity)
-		var/armor_punch = armor_break_calculation(config.xeno_ranged, damage, armor, P.ammo.penetration, P.ammo.pen_armor_punch, P.ammo.damage_armor_punch, armor_integrity)
+		damage_result = armor_damage_reduction(GLOB.xeno_ranged, damage, armor, P.ammo.penetration, P.ammo.pen_armor_punch, P.ammo.damage_armor_punch, armor_integrity)
+		var/armor_punch = armor_break_calculation(GLOB.xeno_ranged, damage, armor, P.ammo.penetration, P.ammo.pen_armor_punch, P.ammo.damage_armor_punch, armor_integrity)
 		apply_armorbreak(armor_punch)
 
 		if(damage <= 3)

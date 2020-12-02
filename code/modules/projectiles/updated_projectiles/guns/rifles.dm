@@ -11,8 +11,8 @@
 	aim_slowdown = SLOWDOWN_ADS_RIFLE
 	wield_delay = WIELD_DELAY_NORMAL
 
-/obj/item/weapon/gun/rifle/New()
-	..()
+/obj/item/weapon/gun/rifle/Initialize(mapload, spawn_empty)
+	. = ..()
 	if(current_mag && current_mag.current_rounds > 0) load_into_chamber()
 
 /obj/item/weapon/gun/rifle/set_gun_config_values()

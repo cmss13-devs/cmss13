@@ -161,7 +161,7 @@
 				return
 
 			if(client.prefs.species != "Human")
-				if(!is_alien_whitelisted(src, client.prefs.species) && config.usealienwhitelist)
+				if(!is_alien_whitelisted(src, client.prefs.species) && CONFIG_GET(flag/usealienwhitelist))
 					to_chat(src, "You are currently not whitelisted to play [client.prefs.species].")
 					return
 
@@ -207,7 +207,7 @@
 				return
 
 			if(client.prefs.species != "Human")
-				if(!is_alien_whitelisted(src, client.prefs.species) && config.usealienwhitelist)
+				if(!is_alien_whitelisted(src, client.prefs.species) && CONFIG_GET(flag/usealienwhitelist))
 					to_chat(src, alert("You are currently not whitelisted to play [client.prefs.species]."))
 					return 0
 
@@ -421,7 +421,7 @@
 
 /mob/new_player/proc/is_species_whitelisted(datum/species/S)
 	if(!S) return 1
-	return is_alien_whitelisted(src, S.name) || !config.usealienwhitelist || !(S.flags & IS_WHITELISTED)
+	return is_alien_whitelisted(src, S.name) || !CONFIG_GET(flag/usealienwhitelist) || !(S.flags & IS_WHITELISTED)
 
 /mob/new_player/get_species()
 	var/datum/species/chosen_species

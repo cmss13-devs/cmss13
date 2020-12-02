@@ -23,7 +23,6 @@
 
 /obj/effect/alien/resin/special
 	name = "Special Resin Structure"
-	icon_source = "alien_structures_64x64"
 	pixel_x = -16
 	pixel_y = -16
 	health = 200
@@ -40,7 +39,7 @@
 
 /obj/effect/alien/resin/special/Initialize(mapload, var/hive_ref)
 	. = ..()
-
+	icon = get_icon_from_source(CONFIG_GET(string/alien_structures_64x64))
 	maxhealth = health
 
 	for(var/turf/T in range(block_range, src))

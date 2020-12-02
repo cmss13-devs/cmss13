@@ -48,7 +48,7 @@
 					counted_humanoids["Lobby"]++
 				else
 					entry += " - Playing as [C.mob.real_name]"
-				
+
 				if(isobserver(C.mob))
 					counted_humanoids["Observers"]++
 					if(C.admin_holder)
@@ -196,7 +196,7 @@
 
 			else if(AHOLD_IS_MENTOR(C.admin_holder))
 				mentmsg += "\t[C] is a [C.admin_holder.rank]"
-				
+
 				if(C.is_afk())
 					mentmsg += " (AFK)"
 				mentmsg += "\n"
@@ -223,10 +223,10 @@
 
 	msg = "<b>Current Admins ([num_admins_online]):</b>\n" + msg
 
-	if(config.show_mods)
+	if(CONFIG_GET(flag/show_mods))
 		msg += "\n<b> Current Moderators ([num_mods_online]):</b>\n" + modmsg
 
-	if(config.show_mentors)
+	if(CONFIG_GET(flag/show_mentors))
 		msg += "\n<b> Current Mentors ([num_mentors_online]):</b>\n" + mentmsg
 
 	to_chat(src, msg)

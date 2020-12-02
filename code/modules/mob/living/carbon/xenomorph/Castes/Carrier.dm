@@ -24,7 +24,7 @@
 	weed_level = WEED_LEVEL_STANDARD
 	huggers_max = 16
 	eggs_max = 7
-	
+
 	tackle_min = 2
 	tackle_max = 4
 	tackle_chance = 50
@@ -39,7 +39,6 @@
 	caste_name = "Carrier"
 	name = "Carrier"
 	desc = "A strange-looking alien creature. It carries a number of scuttling jointed crablike creatures."
-	icon_source = "alien_carrier"
 	icon_size = 64
 	icon_state = "Carrier Walking"
 	plasma_types = list(PLASMA_PURPLE)
@@ -63,6 +62,10 @@
 		/datum/action/xeno_action/activable/retrieve_egg, //4th macro
 		)
 	mutation_type = CARRIER_NORMAL
+
+/mob/living/carbon/Xenomorph/Carrier/Initialize(mapload, mob/living/carbon/Xenomorph/oldXeno, h_number)
+	. = ..()
+	icon = get_icon_from_source(CONFIG_GET(string/alien_carrier))
 
 /mob/living/carbon/Xenomorph/Carrier/death(var/cause, var/gibbed)
 	. = ..(cause, gibbed)

@@ -103,7 +103,7 @@
 		if(!istype(S, /obj/effect/landmark/start/whiskey))
 			qdel(S)
 
-	if(config) config.remove_gun_restrictions = 1
+	CONFIG_SET(flag/remove_gun_restrictions, TRUE)
 
 	for(var/i in GLOB.human_mob_list)
 		var/mob/living/carbon/human/H = i

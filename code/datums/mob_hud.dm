@@ -288,7 +288,7 @@ var/list/datum/mob_hud/huds = list(
 		holder.overlays += image('icons/mob/hud/hud.dmi', "xenoshield0")
 
 /mob/living/carbon/Xenomorph/med_hud_set_armor()
-	if(isnull(config.xeno_general) || config.xeno_general.armor_ignore_integrity)
+	if(GLOB.xeno_general.armor_ignore_integrity)
 		return FALSE
 
 	var/image/holder = hud_list[ARMOR_HUD_XENO]

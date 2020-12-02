@@ -23,7 +23,7 @@
 	var/migrated_jobbans = FALSE
 
 	var/stickyban_whitelisted = FALSE
-	
+
 
 // UNTRACKED FIELDS
 	var/name // Used for NanoUI statistics menu
@@ -79,13 +79,13 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 
 	if (!AHOLD_IS_MOD(admin.admin_holder))
 		return FALSE
-	
+
 	// this is here for a short transition period when we still are testing DB notes and constantly deleting the file
-	if(config.duplicate_notes_to_file)
+	if(CONFIG_GET(flag/duplicate_notes_to_file))
 		notes_add(ckey, note_text, admin.mob)
 	else
 		// notes_add already sends a message
-		message_staff(SPAN_NOTICE("[key_name_admin(admin.mob)] has edited [ckey]'s notes: [sanitize(note_text)]")) 
+		message_staff(SPAN_NOTICE("[key_name_admin(admin.mob)] has edited [ckey]'s notes: [sanitize(note_text)]"))
 
 	// create new instance of player_note entity
 	var/datum/entity/player_note/note = DB_ENTITY(/datum/entity/player_note)
@@ -108,7 +108,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	if(!notes)
 		notes = list()
 	// this list is managed by us. Maybe in future relations like this will be managed by Entity Manager in some way
-	notes.Add(note)	
+	notes.Add(note)
 	return TRUE
 
 /datum/entity/player/proc/remove_note(note_id)
@@ -140,12 +140,12 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 
 	if(owning_client && owning_client.admin_holder && (owning_client.admin_holder.rights & R_MOD))
 		return FALSE
-	
+
 	// this is here for a short transition period when we still are testing DB notes and constantly deleting the file
-	if(config.duplicate_notes_to_file)
+	if(CONFIG_GET(flag/duplicate_notes_to_file))
 		AddBan(ckey, last_known_cid, ban_text, admin.ckey, 1, duration, last_known_ip)
 		notes_add(ckey, "Banned by [admin.ckey]|Duration: [duration] minutes|Reason: [sanitize(ban_text)]", usr)
-	
+
 	message_staff("\blue[admin.ckey] has banned [ckey].\nReason: [sanitize(ban_text)]\nThis will be removed in [duration] minutes.")
 	ban_unban_log_save("[admin.ckey] has banned [ckey]|Duration: [duration] minutes|Reason: [sanitize(ban_text)]")
 
@@ -176,14 +176,14 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 
 	if (!AHOLD_IS_MOD(admin.admin_holder))
 		return FALSE
-	
+
 	if(!is_time_banned)
 		return FALSE
 
 	// we cannot remove timed bans
-	if(config.duplicate_notes_to_file)
+	if(CONFIG_GET(flag/duplicate_notes_to_file))
 		message_admins(SPAN_WARNING("CANNOT REMOVE BANS FROM OLD BAN MANAGER. If you see this during test period - reapply unban after test round is done."), 1)
-	
+
 	ban_unban_log_save("[key_name(admin)] removed [ckey]'s ban.")
 	message_staff(SPAN_NOTICE("[key_name_admin(admin)] removed [ckey]'s ban."), 1)
 
@@ -208,13 +208,13 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 
 	if(owning_client && owning_client.admin_holder && (owning_client.admin_holder.rights & R_MOD))
 		return FALSE
-	
+
 	var/total_rank = jointext(ranks, ", ")
 
 	var/duration_text = duration?"jobbanned for [duration/60] hours":"perma-jobbanned"
 
 	// this is here for a short transition period when we still are testing DB notes and constantly deleting the file
-	if(config.duplicate_notes_to_file && !duration)
+	if(CONFIG_GET(flag/duplicate_notes_to_file) && !duration)
 		for(var/rank in ranks)
 			var/safe_rank = ckey(rank)
 			if(job_bans[safe_rank])
@@ -234,7 +234,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		to_chat(owning_client, SPAN_WARNING("Jobban can be lifted only upon request."))
 	else
 		to_chat(owning_client, SPAN_WARNING("This jobban is timed and will expire in [duration] minutes."))
-	
+
 	if(!job_bans)
 		job_bans = list()
 
@@ -267,13 +267,13 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 
 	if (!AHOLD_IS_MOD(admin.admin_holder))
 		return FALSE
-	
+
 	var/safe_rank = ckey(rank)
 
 	if(!job_bans[safe_rank])
 		return
 
-	if(config.duplicate_notes_to_file)
+	if(CONFIG_GET(flag/duplicate_notes_to_file))
 		jobban_remove("[ckey] - [safe_rank]")
 		jobban_savebanfile()
 
@@ -304,7 +304,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		var/time_left = value.expiration - MINUTES_STAMP
 		if(value.ban_time && time_left < 0)
 			value.delete()
-			job_bans -= value		
+			job_bans -= value
 
 /datum/entity/player/proc/load_refs()
 	if(refs_loaded)
@@ -330,7 +330,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	player.is_permabanned = text2num(player.is_permabanned)
 	player.is_time_banned = text2num(player.is_time_banned)
 	player.time_ban_expiration = text2num(player.time_ban_expiration)
-	
+
 	player.migrated_notes = text2num(player.migrated_notes)
 	player.migrated_bans = text2num(player.migrated_bans)
 	player.migrated_jobbans = text2num(player.migrated_jobbans)
@@ -349,7 +349,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 
 	player.load_rels()
 
-/datum/entity/player/proc/load_rels()	
+/datum/entity/player/proc/load_rels()
 	if(migrated_notes)
 		DB_FILTER(/datum/entity/player_note, DB_COMP("player_id", DB_EQUALS, id), CALLBACK(src, /datum/entity/player.proc/on_read_notes))
 	else if(!migrating_notes)
@@ -386,7 +386,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		for(var/datum/entity/player_job_ban/JB in _job_bans)
 			var/safe_job_name = ckey(JB.role)
 			job_bans[safe_job_name] = JB
-	
+
 	auto_unjobban()
 
 /datum/entity/player/proc/on_read_timestat(var/list/datum/entity/player_time/_stat)
@@ -399,7 +399,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 
 		for(var/datum/entity/player_time/S in _stat)
 			LAZYSET(playtimes, S.role_id, S)
-	
+
 
 /proc/get_player_from_key(key)
 	var/safe_key = ckey(key)
@@ -466,16 +466,16 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 			.["desc"]	= "\nReason: Stickybanned\nExpires: PERMANENT"
 			.["reason"]	= "ckey/id"
 			return .
-	
+
 	if(!is_time_banned && !is_permabanned)
 		return null
 	var/appeal
-	if(config && config.banappeals)
-		appeal = "\nFor more information on your ban, or to appeal, head to <a href='[config.banappeals]'>[config.banappeals]</a>"
+	if(CONFIG_GET(string/banappeals))
+		appeal = "\nFor more information on your ban, or to appeal, head to <a href='[CONFIG_GET(string/banappeals)]'>[CONFIG_GET(string/banappeals)]</a>"
 	if(is_permabanned)
 		permaban_admin.sync()
 		log_access("Failed Login: [ckey] [last_known_cid] [last_known_ip] - Banned [permaban_reason]")
-		message_staff(SPAN_NOTICE("Failed Login: [ckey] id:[last_known_cid] ip:[last_known_ip] - Banned [permaban_reason]"))		
+		message_staff(SPAN_NOTICE("Failed Login: [ckey] id:[last_known_cid] ip:[last_known_ip] - Banned [permaban_reason]"))
 		.["desc"]	= "\nReason: [permaban_reason]\nExpires: <B>PERMANENT</B>\nBy: [permaban_admin.ckey][appeal]"
 		.["reason"]	= "ckey/id"
 		return .
@@ -492,7 +492,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		else
 			timeleftstring = "[time_left] Minutes"
 		log_access("Failed Login: [ckey] [last_known_cid] [last_known_ip] - Banned [time_ban_reason]")
-		message_staff(SPAN_NOTICE("Failed Login: [ckey] id:[last_known_cid] ip:[last_known_ip] - Banned [time_ban_reason]"))		
+		message_staff(SPAN_NOTICE("Failed Login: [ckey] id:[last_known_cid] ip:[last_known_ip] - Banned [time_ban_reason]"))
 		.["desc"]	= "\nReason: [time_ban_reason]\nExpires: [timeleftstring]\nBy: [time_ban_admin.ckey][appeal]"
 		.["reason"]	= "ckey/id"
 		return .
@@ -515,11 +515,11 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		var/datum/entity/player_note/note = DB_ENTITY(/datum/entity/player_note)
 		notes.Add(note)
 		note.player = src
-		note.player_id = id		 
+		note.player_id = id
 		note.admin_rank = I.rank
 		if(!note.admin_rank)
 			note.admin_rank = "N/A"
-		note.date = I.timestamp		
+		note.date = I.timestamp
 		var/list/splitting = splittext(I.content, "|")
 		if(splitting.len == 1)
 			note.text = I.content
@@ -539,7 +539,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		if(admin)
 			note.admin_id = admin.id
 			note.admin = admin
-		
+
 		note.save()
 		CHECK_TICK
 	notes_loaded = TRUE
@@ -557,13 +557,13 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	var/banned_by
 
 	Banlist.cd = "/base"
-	
+
 	for (var/A in Banlist.dir)
 		Banlist.cd = "/base/[A]"
-		
+
 		if(ckey != Banlist["key"])
 			continue
-		
+
 		if(Banlist["temp"])
 			if (!GetExp(Banlist["minutes"]))
 				return
@@ -574,13 +574,13 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		reason = Banlist["reason"]
 		banned_by = Banlist["bannedby"]
 		expiration = Banlist["minutes"]
-	
+
 	migrated_bans = TRUE
 	save()
 
 	if(!expiration)
 		return
-	
+
 	var/admin_ckey = "[ckey(banned_by)]"
 	var/datum/entity/player/admin = get_player_from_key(admin_ckey)
 	admin.sync()
@@ -591,7 +591,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	time_ban_expiration = expiration
 	time_ban_admin = admin
 
-	save()	
+	save()
 
 /datum/entity/player/proc/migrate_jobbans()
 	if(!job_bans)
@@ -612,7 +612,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		PJB.role = safe_job_name
 
 		PJB.save()
-		
+
 		job_bans["[safe_job_name]"] = PJB
 		CHECK_TICK
 

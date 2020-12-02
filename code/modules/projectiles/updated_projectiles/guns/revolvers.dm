@@ -24,8 +24,8 @@
 	has_open_icon = TRUE
 	current_mag = /obj/item/ammo_magazine/internal/revolver
 
-/obj/item/weapon/gun/revolver/New()
-	..() //Do all that other stuff.
+/obj/item/weapon/gun/revolver/Initialize(mapload, spawn_empty)
+	. = ..()
 	if(current_mag)
 		replace_cylinder(current_mag.current_rounds)
 
@@ -317,7 +317,7 @@
 		return 0
 	else
 		return ..()
-	
+
 /obj/item/weapon/gun/revolver/m44/custom //accuracy and damage bonus
 	name = "\improper M44 custom combat revolver"
 	desc = "A bulky combat revolver. The handle has been polished to a pearly perfection, and the body is silver plated. Fires .44 Magnum rounds."
@@ -329,7 +329,7 @@
 	..()
 	fire_delay = FIRE_DELAY_TIER_5
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4
-	accuracy_mult_unwielded = BASE_ACCURACY_MULT 
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT
 	scatter = SCATTER_AMOUNT_TIER_8
 	scatter_unwielded = SCATTER_AMOUNT_TIER_4
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_2
@@ -507,7 +507,7 @@
 	name = "\improper Mateba autorevolver custom"
 	desc = "The Mateba is a powerful, fast-firing revolver that uses its own recoil to rotate the cylinders. It uses heavy .454 rounds. This version is a limited edition produced for the USCM, and issued in extremely small amounts. Was a mail-order item back in 2172, and is highly sought after by officers across many different battalions. This one is stamped 'Major Ike Saker, 7th 'Falling Falcons' Battalion.'"
 	icon_state = "cmateba"
-	item_state = "cmateba"	
+	item_state = "cmateba"
 	map_specific_decoration = TRUE
 
 //-------------------------------------------------------

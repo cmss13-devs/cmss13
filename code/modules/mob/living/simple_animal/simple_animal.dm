@@ -306,7 +306,7 @@
 
 /mob/living/simple_animal/movement_delay()
 	. = ..()
-	. += config.animal_delay
+	. += CONFIG_GET(number/animal_delay)
 
 	move_delay = .
 

@@ -143,7 +143,7 @@
 	return total_xeno_playtime
 
 /datum/caste_datum/proc/can_play_caste(var/client/client)
-	if(!config.use_timelocks)
+	if(!CONFIG_GET(flag/use_timelocks))
 		return TRUE
 
 	var/total_xeno_playtime = client.get_total_xeno_playtime()

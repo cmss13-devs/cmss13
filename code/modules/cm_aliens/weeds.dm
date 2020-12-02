@@ -2,7 +2,6 @@
 /obj/effect/alien/weeds
 	name = "weeds"
 	desc = "Weird black weeds..."
-	icon_source = "alien_weeds"
 	icon_state = "base"
 
 	anchored = 1
@@ -24,6 +23,7 @@
 
 /obj/effect/alien/weeds/Initialize(mapload, obj/effect/alien/weeds/node/node)
 	. = ..()
+	icon = get_icon_from_source(CONFIG_GET(string/alien_weeds))
 	if(node)
 		linked_hive = node.linked_hive
 		weed_strength = node.weed_strength
@@ -95,7 +95,7 @@
 		var/turf/T = get_step(src, dirn)
 		if(!istype(T) || !T.is_weedable())
 			continue
-		
+
 		var/obj/effect/alien/weeds/W = locate() in T
 		if(W)
 			if(W.weed_strength >= WEED_LEVEL_HIVE)
@@ -185,11 +185,11 @@
 		var/image/secretion
 
 		if(icon_dir >= 0)
-			secretion = image(get_icon_from_source("alien_effects"), "secrete[icon_dir]")
+			secretion = image(get_icon_from_source(CONFIG_GET(string/alien_effects)), "secrete[icon_dir]")
 		else if(icon_dir == -15)
-			secretion = image(get_icon_from_source("alien_effects"), "secrete_base")
+			secretion = image(get_icon_from_source(CONFIG_GET(string/alien_effects)), "secrete_base")
 		else
-			secretion = image(get_icon_from_source("alien_effects"), "secrete_dir[-icon_dir]")
+			secretion = image(get_icon_from_source(CONFIG_GET(string/alien_effects)), "secrete_dir[-icon_dir]")
 
 		overlays += secretion
 
@@ -213,7 +213,7 @@
 		playsound(loc, "alien_resin_break", 25)
 		health -= X.melee_damage_lower*WEED_XENO_DAMAGEMULT
 		healthcheck()
-		
+
 
 
 /obj/effect/alien/weeds/attackby(obj/item/W, mob/living/user)
@@ -330,7 +330,7 @@
 	else
 		linked_hive = hive_datum[hivenumber]
 
-	
+
 	. = ..(mapload, src)
 
 	overlays += "weednode"
@@ -339,7 +339,7 @@
 		weed_strength = X.weed_level
 		if (weed_strength < WEED_LEVEL_STANDARD)
 			weed_strength = WEED_LEVEL_STANDARD
-			
+
 		node_range = node_range + weed_strength - 1//stronger weeds expand further!
 		if(weed_strength >= WEED_LEVEL_HIVE)
 			name = "hive node sac"

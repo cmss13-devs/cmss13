@@ -114,7 +114,7 @@
 	if(client.admin_holder && (client.admin_holder.rights & R_ADMIN))
 		is_admin = 1
 
-	if (!abandon_allowed && !is_admin)
+	if (!CONFIG_GET(flag/respawn) && !is_admin)
 		to_chat(usr, SPAN_NOTICE(" Respawn is disabled."))
 		return
 	if (stat != 2 || !ticker)
@@ -125,11 +125,6 @@
 		return
 	else
 		var/deathtime = world.time - src.timeofdeath
-//		if(istype(src,/mob/dead/observer))
-//			var/mob/dead/observer/G = src
-//			if(G.has_enabled_antagHUD == 1 && config.antag_hud_restricted)
-//				to_chat(usr, SPAN_NOTICE(" <B>Upon using the antagHUD you forfeighted the ability to join the round.</B>"))
-//				return
 		var/deathtimeminutes = round(deathtime / 600)
 		var/pluralcheck = "minute"
 		if(deathtimeminutes == 0)

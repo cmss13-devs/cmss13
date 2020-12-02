@@ -20,7 +20,7 @@
 	caste_desc = "Gross!"
 	acid_level = 3
 	caste_luminosity = 2
-	
+
 	tackle_min = 2
 	tackle_max = 6
 	tackle_chance = 25
@@ -31,7 +31,6 @@
 	caste_name = "Boiler"
 	name = "Boiler"
 	desc = "A huge, grotesque xenomorph covered in glowing, oozing acid slime."
-	icon_source = "alien_boiler"
 	icon_size = 64
 	icon_state = "Boiler Walking"
 	plasma_types = list(PLASMA_NEUROTOXIN)
@@ -59,8 +58,9 @@
 		/datum/action/xeno_action/onclick/toggle_long_range/boiler, //4th macro
 	)
 
-/mob/living/carbon/Xenomorph/Boiler/New()
-	..()
+/mob/living/carbon/Xenomorph/Boiler/Initialize(mapload, mob/living/carbon/Xenomorph/oldXeno, h_number)
+	. = ..()
+	icon = get_icon_from_source(CONFIG_GET(string/alien_boiler))
 	smoke = new /datum/effect_system/smoke_spread/xeno_acid
 	smoke.attach(src)
 	smoke.source_mob = src

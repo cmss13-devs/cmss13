@@ -67,7 +67,7 @@
 		G.Die()
 		drop_inv_item_on_ground(G)
 	if(!caste || !caste.fire_immune || fire_reagent.fire_penetrating)
-		var/dmg = armor_damage_reduction(config.xeno_fire, PASSIVE_BURN_DAM_CALC(fire_reagent.intensityfire, fire_reagent.durationfire, fire_stacks))
+		var/dmg = armor_damage_reduction(GLOB.xeno_fire, PASSIVE_BURN_DAM_CALC(fire_reagent.intensityfire, fire_reagent.durationfire, fire_stacks))
 		apply_damage(dmg, BURN)
 
 #undef PASSIVE_BURN_DAM_CALC

@@ -26,12 +26,6 @@ ORGAN_REGENERATION_MULTIPLIER 75
 
 ### REVIVAL ###
 
-## whether pod plants work or not
-REVIVAL_POD_PLANTS 1
-
-## whether cloning tubes work or not
-REVIVAL_CLONING 1
-
 ## amount of time (in hundredths of seconds) for which a brain retains the "spark of life" after the person's death (set to -1 for infinite)
 REVIVAL_BRAIN_LIFE -1
 
@@ -44,7 +38,7 @@ REVIVAL_BRAIN_LIFE -1
 ## These values get directly added to values and totals in-game. To speed things up make the number negative, to slow things down, make the number positive.
 
 
-## These modify the run/walk speed of all mobs before the mob-specific modifiers are applied. 
+## These modify the run/walk speed of all mobs before the mob-specific modifiers are applied.
 RUN_SPEED 1
 WALK_SPEED 1
 

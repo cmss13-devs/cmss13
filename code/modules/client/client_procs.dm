@@ -83,7 +83,7 @@
 		show_browser(usr, "<body class='paper'>[info]</body>", "Fax Message", "Fax Message")
 
 	//Logs all hrefs
-	if(config && config.log_hrefs && href_logfile)
+	if(CONFIG_GET(flag/log_hrefs) && href_logfile)
 		href_logfile << "<small>[time2text(world.timeofday,"hh:mm")] [src] (usr:[usr])</small> || [hsrc ? "[hsrc] " : ""][href]<br>"
 
 	switch(href_list["_src_"])
@@ -120,7 +120,7 @@
 	return ..()	//redirect to hsrc.Topic()
 
 /client/proc/handle_spam_prevention(var/message, var/mute_type)
-	if(config.automute_on && !admin_holder && src.last_message == message)
+	if(CONFIG_GET(flag/automute_on) && !admin_holder && src.last_message == message)
 		src.last_message_count++
 		if(src.last_message_count >= SPAM_TRIGGER_AUTOMUTE)
 			to_chat(src, SPAN_DANGER("You have exceeded the spam filter limit for identical messages. An auto-mute was applied."))
@@ -160,14 +160,17 @@
 	if(!(connection in list("seeker", "web")))					//Invalid connection type.
 		return null
 
-	if(!guests_allowed && IsGuestKey(key))
+	if(IsGuestKey(key))
 		alert(src,"This server doesn't allow guest accounts to play. Please go to http://www.byond.com/ and register for a key.","Guest","OK")
 		qdel(src)
 		return
 
 	// Change the way they should download resources.
-	if(config.resource_urls)
-		src.preload_rsc = pick(config.resource_urls)
+	var/static/next_external_rsc = 0
+	var/list/external_rsc_urls = CONFIG_GET(keyed_list/external_rsc_urls)
+	if(length(external_rsc_urls))
+		next_external_rsc = WRAP(next_external_rsc+1, 1, external_rsc_urls.len+1)
+		preload_rsc = external_rsc_urls[next_external_rsc]
 	else src.preload_rsc = 1 // If config.resource_urls is not set, preload like normal.
 
 	to_chat_forced(src, SPAN_WARNING("If the title screen is black, resources are still downloading. Please be patient until the title screen appears."))
@@ -192,10 +195,10 @@
 	prefs.last_ip = address				//these are gonna be used for banning
 	prefs.last_id = computer_id			//these are gonna be used for banning
 	fps = prefs.fps
-	xeno_prefix = prefs.xeno_prefix	
+	xeno_prefix = prefs.xeno_prefix
 	xeno_postfix = prefs.xeno_postfix
 	xeno_name_ban = prefs.xeno_name_ban
-	if(!xeno_prefix || xeno_name_ban)	
+	if(!xeno_prefix || xeno_name_ban)
 		xeno_prefix = "XX"
 	if(!xeno_postfix || xeno_name_ban)
 		xeno_postfix = ""

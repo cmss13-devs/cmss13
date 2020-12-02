@@ -1,25 +1,18 @@
+## Check code/controllers/configuration/entries for detailed explanations, all possible config options and some defaults.
+## Anything after a "#" is commented out, uncomment things to enable them, comment to disable them.
+
+# $include dbconfig.txt
+# $include resources.txt
+# $include icon_source.txt
+
 ## Server name: This appears at the top of the screen in-game. In this case it will read "tgstation: station_name" where station_name is the randomly generated name of the station for the round. Remove the # infront of SERVERNAME and replace 'tgstation' with the name of your choice
 # SERVERNAME spacestation13
-
-## Alert levels
-ALERT_GREEN All threats to the station have passed. Security may not have weapons visible, privacy laws are once again fully enforced.
-ALERT_BLUE_UPTO The station has received reliable information about possible hostile activity on the station. Security staff may have weapons visible, random searches are permitted.
-ALERT_BLUE_DOWNTO The immediate threat has passed. Security may no longer have weapons drawn at all times, but may continue to have them visible. Random searches are still allowed.
-ALERT_RED_UPTO There is an immediate serious threat to the station. Security may have weapons unholstered at all times. Random searches are allowed and advised.
-ALERT_RED_DOWNTO The self-destruct mechanism has been deactivated, there is still however an immediate serious threat to the station. Security may have weapons unholstered at all times, random searches are allowed and advised.
-ALERT_DELTA The station's self-destruct mechanism has been engaged. All crew are instructed to obey all instructions given by heads of staff. Any violations of these orders can be punished by death. This is not a drill.
 
 ## Add a # infront of this if you want to use the SQL based admin system, the legacy system uses admins.txt. You need to set up your database to use the SQL based system.
 ADMIN_LEGACY_SYSTEM
 
-## Add a # infront of this if you want to use the SQL based banning system. The legacy systems use the files in the data folder. You need to set up your database to use the SQL based system.
-BAN_LEGACY_SYSTEM
-
 ## Unhash this entry to use pre-requisite timelocks for roles (play minimum x time as y role to unlock z role)
 #USE_TIMELOCKS
-
-## Unhash this to use recursive explosions, keep it hashed to use circle explosions. Recursive explosions react to walls, airlocks and blast doors, making them look a lot cooler than the boring old circular explosions. They require more CPU and are (as of january 2013) experimental
-#USE_RECURSIVE_EXPLOSIONS
 
 ## log OOC channel
 LOG_OOC
@@ -50,9 +43,6 @@ LOG_EMOTE
 
 ## log attack messages
 LOG_ATTACK
-
-## log pda messages
-LOG_PDA
 
 ## log all Topic() calls (for use by coders in tracking down Topic issues)
 LOG_HREFS
@@ -86,27 +76,6 @@ SHOW_MENTORS
 ## default probablity is 1, increase to make that mode more likely to be picked
 ## set to 0 to disable that mode
 PROBABILITY EXTENDED 1
-PROBABILITY MALFUNCTION 1
-PROBABILITY NUCLEAR 1
-PROBABILITY WIZARD 1
-PROBABILITY CHANGELING 1
-PROBABILITY CULT 1
-PROBABILITY EXTEND-A-TRAITORMONGOUS 6
-
-## Hash out to disable random events during the round.
-#ALLOW_RANDOM_EVENTS
-
-## if amount of traitors scales or not
-TRAITOR_SCALING
-
-## if objectives are disabled
-#OBJECTIVES_DISABLED
-
-## make ERT's be only called by admins
-ERT_ADMIN_ONLY
-
-## If security is prohibited from being most antagonists
-#PROTECT_ROLES_FROM_ANTAGONIST
 
 ## Comment this out to stop admins being able to choose their personal ooccolor
 ALLOW_ADMIN_OOCCOLOR
@@ -126,12 +95,6 @@ VOTE_DELAY 6000
 ## time period (deciseconds) which voting session will last (default 1 minute)
 VOTE_PERIOD 600
 
-## autovote initial delay (deciseconds) before first automatic transfer vote call (default 180 minutes)
-VOTE_AUTOTRANSFER_INITIAL 99108000
-
-##autovote delay (deciseconds) before sequential automatic transfer votes are called (default 60 minutes)
-VOTE_AUTOTRANSFER_INTERVAL 99936000
-
 ## Time left (seconds) before round start when automatic gamemote vote is called (default 100).
 VOTE_AUTOGAMEMODE_TIMELEFT 99999999
 
@@ -141,21 +104,9 @@ VOTE_AUTOGAMEMODE_TIMELEFT 99999999
 ## players' votes default to "No vote" (otherwise,  default to "No change")
 #DEFAULT_NO_VOTE
 
-## Allow ghosts to see antagonist through AntagHUD
-ALLOW_ANTAG_HUD
-
-## If ghosts use antagHUD they are no longer allowed to join the round.
-ANTAG_HUD_RESTRICTED
-
 ## allow AI job
 ALLOW_AI
 
-
-## disable abandon mob
-NORESPAWN
-
-## disables calling del(src) on newmobs if they logout before spawnin in
-# DONT_DEL_NEWMOB
 
 ## set a hosted by name for unix platforms
 HOSTEDBY yournamehere
@@ -186,45 +137,18 @@ RULESURL https://cm-ss13.com/viewtopic.php?f=57&t=5094
 BANAPPEALS https://cm-ss13.com/viewforum.php?f=76
 
 ## In-game features
-## spawns a spellbook which gives object-type spells instead of verb-type spells for the wizard
-# FEATURE_OBJECT_SPELL_SYSTEM
-
-##Toggle for having jobs load up from the .txt
-# LOAD_JOBS_FROM_TXT
-
-##Remove the # mark infront of this to forbid admins from posssessing the singularity.
-#FORBID_SINGULO_POSSESSION
-
 ## Remove the # to show a popup 'reply to' window to every non-admin that recieves an adminPM.
 ## The intention is to make adminPMs more visible. (although I fnd popups annoying so this defaults to off)
 #POPUP_ADMIN_PM
 
-## Remove the # to allow special 'Easter-egg' events on special holidays such as seasonal holidays and stuff like 'Talk Like a Pirate Day' :3 YAARRR
-ALLOW_HOLIDAYS
 ##Defines the ticklag for the world.  0.9 is the normal one, 0.5 is smoother.
 TICKLAG 0.5
-
-## Defines if Tick Compensation is used.  It results in a minor slowdown of movement of all mobs, but attempts to result in a level movement speed across all ticks.  Recommended if tickrate is lowered.
-TICKCOMP 0
-
-## Whether the server will talk to other processes through socket_talk
-SOCKET_TALK 0
 
 ## Uncomment this to ban use of ToR
 #TOR_BAN
 
 ## Comment this out to disable automuting
 #AUTOMUTE_ON
-
-## How long the delay is before the Away Mission gate opens. Default is half an hour.
-GATEWAY_DELAY 18000
-
-## Remove the # to give assistants maint access.
-#ASSISTANT_MAINT
-
-## Remove the # to make rounds which end instantly (Rev, Wizard, Malf) to continue until the shuttle is called or the station is nuked.
-## Malf and Rev will let the shuttle be called when the antags/protags are dead.
-#CONTINUOUS_ROUNDS
 
 ## Uncomment to restrict non-admins from using humanoid alien races
 USEALIENWHITELIST
@@ -234,42 +158,22 @@ USEALIENWHITELIST
 ##Remove the # to let ghosts spin chairs
 #GHOST_INTERACTION
 
-## Password used for authorizing ircbot and other external tools.
-#COMMS_PASSWORD
-
-## Uncomment to enable sending data to the IRC bot.
-#USE_IRC_BOT
-
-## Host where the IRC bot is hosted.  Port 45678 needs to be open.
-#IRC_BOT_HOST localhost
-
-## IRC channel to send information to.  Leave blank to disable.
-#MAIN_IRC #main
-
-## IRC channel to send adminhelps to.  Leave blank to disable adminhelps-to-irc.
-#ADMIN_IRC #admin
-
 ## Path to the python2 executable on the system.  Leave blank for default.
 ## Default is "python" on Windows, "/usr/bin/env python2" on UNIX.
 #PYTHON_PATH
 
-## Uncomment to use the C library nudge instead of the python script.
-## This helps security and stability on Linux, but you need to compile the library first.
-#USE_LIB_NUDGE
-
-## Uncommen to allow ghosts to write in blood during Cult rounds.
-ALLOW_CULT_GHOSTWRITER
-
-## Sets the minimum number of cultists needed for ghosts to write in blood.
-REQ_CULT_GHOSTWRITER 6
-
-## Uncomment to use overmap system for zlevel travel
-#USE_OVERMAP
-
-## Uncomment to make proccall require R_ADMIN instead of R_DEBUG
-## designed for environments where you have testers but don't want them
-## able to use the more powerful debug options.
-#DEBUG_PARANOID
-
 ## Automute the OOC channel. OOC mutes itself at round-start and unmutes itself at round-end.
 AUTOOOCMUTE
+
+## Uncomment to enable the script that posts runtimes to GitLab
+## Before you do so, make sure to set up the required environment vars:
+##     1. GITLAB_RUNTIMES_PID - The Project ID of the project where the issues should be posted. Found on the details page of the project, directly under the project name.
+##     2. GITLAB_RUNTIMES_PAT - A Personal Access Token for an account with access to post issues, assign labels to issues and to open issues
+
+#REPORT_RUNTIMES
+
+## Uncomment to enable round recordings
+## Recorded rounds are saved to data/round_recordings
+
+#RECORD_ROUNDS
+

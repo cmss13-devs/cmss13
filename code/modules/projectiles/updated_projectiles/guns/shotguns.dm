@@ -19,8 +19,8 @@ can cause issues with ammo types getting mixed up during the burst.
 	has_empty_icon = FALSE
 	has_open_icon = FALSE
 
-/obj/item/weapon/gun/shotgun/New()
-	..()
+/obj/item/weapon/gun/shotgun/Initialize(mapload, spawn_empty)
+	. = ..()
 	if(current_mag)
 		replace_tube(current_mag.current_rounds) //Populate the chamber.
 
@@ -165,8 +165,8 @@ can cause issues with ammo types getting mixed up during the burst.
 
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG
 
-/obj/item/weapon/gun/shotgun/merc/New()
-	..()
+/obj/item/weapon/gun/shotgun/merc/Initialize(mapload, spawn_empty)
+	. = ..()
 	if(current_mag && current_mag.current_rounds > 0)
 		load_into_chamber()
 
@@ -216,8 +216,8 @@ can cause issues with ammo types getting mixed up during the burst.
 						/obj/item/attachable/magnetic_harness,
 						/obj/item/attachable/stock/tactical)
 
-/obj/item/weapon/gun/shotgun/combat/New()
-	..()
+/obj/item/weapon/gun/shotgun/combat/Initialize(mapload, spawn_empty)
+	. = ..()
 	if(current_mag && current_mag.current_rounds > 0)
 		load_into_chamber()
 
@@ -494,8 +494,8 @@ can cause issues with ammo types getting mixed up during the burst.
 						/obj/item/attachable/stock/shotgun)
 	map_specific_decoration = TRUE
 
-/obj/item/weapon/gun/shotgun/pump/New()
-	..()
+/obj/item/weapon/gun/shotgun/pump/Initialize(mapload, spawn_empty)
+	. = ..()
 	pump_delay = FIRE_DELAY_TIER_4*2
 
 
@@ -598,8 +598,8 @@ can cause issues with ammo types getting mixed up during the burst.
 	map_specific_decoration = FALSE
 
 
-/obj/item/weapon/gun/shotgun/pump/cmb/New()
-	..()
+/obj/item/weapon/gun/shotgun/pump/cmb/Initialize(mapload, spawn_empty)
+	. = ..()
 	pump_delay = FIRE_DELAY_TIER_5*2
 
 

@@ -169,7 +169,7 @@ var/waiting_for_drop_votes = 0
 			contestants += M
 			spawn_contestant(M)
 
-	if(config) config.remove_gun_restrictions = 1 //This will allow anyone to use cool guns.
+	CONFIG_SET(flag/remove_gun_restrictions, TRUE) //This will allow anyone to use cool guns.
 
 	spawn(10)
 		to_world("<B>The current game mode is - HUNTER GAMES!</B>")

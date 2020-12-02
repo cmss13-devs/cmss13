@@ -133,7 +133,7 @@ There are several things that need to be remembered:
 		if(part.status & LIMB_DESTROYED)
 			continue
 		vis_contents += part
-		part.update_icon(TRUE)		
+		part.update_icon(TRUE)
 
 	if(species.flags & HAS_UNDERWEAR)
 		//Underwear
@@ -152,7 +152,7 @@ There are several things that need to be remembered:
 			apply_overlay(UNDERSHIRT_LAYER)
 
 //HAIR OVERLAY
-/mob/living/carbon/human/proc/update_hair()	
+/mob/living/carbon/human/proc/update_hair()
 	remove_overlay(HAIR_LAYER)
 	remove_overlay(FACIAL_LAYER)
 
@@ -433,7 +433,7 @@ There are several things that need to be remembered:
 			// God I hate 1-based indexing
 			for(var/i in num_helmet_overlays+1 to MAX_HEAD_GARB_ITEMS)
 				overlays_standing[HEAD_GARB_LAYER + (i-1)] = null
-				
+
 			for(var/i in HEAD_GARB_LAYER to (HEAD_GARB_LAYER + MAX_HEAD_GARB_ITEMS - 1))
 				apply_overlay(i)
 
@@ -637,9 +637,9 @@ There are several things that need to be remembered:
 	var/image/standing
 	switch(chestburst)
 		if(1)
-			standing = image("icon" = get_icon_from_source("alien_effects"),"icon_state" = "burst_stand", "layer" = -BURST_LAYER)
+			standing = image("icon" = get_icon_from_source(CONFIG_GET(string/alien_effects)),"icon_state" = "burst_stand", "layer" = -BURST_LAYER)
 		if(2)
-			standing = image("icon" = get_icon_from_source("alien_effects"),"icon_state" = "bursted_stand", "layer" = -BURST_LAYER)
+			standing = image("icon" = get_icon_from_source(CONFIG_GET(string/alien_effects)),"icon_state" = "bursted_stand", "layer" = -BURST_LAYER)
 		else
 			return
 	overlays_standing[BURST_LAYER] = standing

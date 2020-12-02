@@ -78,8 +78,4 @@
 }\
 /datum/controller/subsystem/processing/##X
 
-//for now
-/proc/log_world(X)
-    log_debug(X)
-
 #define log_qdel(X) log_debug(X)

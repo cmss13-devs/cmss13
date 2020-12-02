@@ -28,7 +28,7 @@
 	tackle_chance = 45
 	tacklestrength_min = 4
 	tacklestrength_max = 5
-	
+
 	aura_strength = 2.5
 
 /datum/caste_datum/hivelord/New()
@@ -40,7 +40,6 @@
 	caste_name = "Hivelord"
 	name = "Hivelord"
 	desc = "A builder of really big hives."
-	icon_source = "alien_hivelord"
 	icon_size = 64
 	icon_state = "Hivelord Walking"
 	plasma_types = list(PLASMA_PURPLE,PLASMA_PHEROMONE)
@@ -63,3 +62,7 @@
 		/datum/action/xeno_action/onclick/toggle_speed, //fourth macro
 		)
 	mutation_type = HIVELORD_NORMAL
+
+/mob/living/carbon/Xenomorph/Hivelord/Initialize(mapload, mob/living/carbon/Xenomorph/oldXeno, h_number)
+	. = ..()
+	icon = get_icon_from_source(CONFIG_GET(string/alien_hivelord))

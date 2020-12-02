@@ -12,7 +12,7 @@
 	armor_deflection = XENO_ARMOR_TIER_4
 	evasion = XENO_EVASION_NONE
 	speed = XENO_SPEED_TIER_6
-	
+
 	evolves_to = list("Warrior")
 	deevolves_to = "Larva"
 	can_vent_crawl = 0
@@ -24,7 +24,6 @@
 	caste_name = "Defender"
 	name = "Defender"
 	desc = "A alien with an armored head crest."
-	icon_source = "alien_defender"
 	icon_size = 64
 	icon_state = "Defender Walking"
 	plasma_types = list(PLASMA_CHITIN)
@@ -41,6 +40,10 @@
 		/datum/action/xeno_action/activable/fortify
 	)
 	mutation_type = DEFENDER_NORMAL
+
+/mob/living/carbon/Xenomorph/Defender/Initialize(mapload, mob/living/carbon/Xenomorph/oldXeno, h_number)
+	. = ..()
+	icon = get_icon_from_source(CONFIG_GET(string/alien_defender))
 
 /mob/living/carbon/Xenomorph/Defender/update_icons()
 	if (stat == DEAD)

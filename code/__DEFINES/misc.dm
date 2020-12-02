@@ -103,7 +103,7 @@
 #define SIZE_MEDIUM     3       // Backpacks, belts.    Size of pistols, general magazines
 #define SIZE_LARGE      4       // Size of rifles, SMGs
 #define SIZE_HUGE       5       // Using Large does the same job
-#define SIZE_MASSIVE    6       
+#define SIZE_MASSIVE    6
 
 // Stack amounts
 #define STACK_5			5
@@ -170,3 +170,6 @@
 //Multiplier for turning points into cash
 #define DEFCON_TO_MONEY_MULTIPLIER 10000
 #define SUPPLY_TO_MONEY_MUPLTIPLIER 100
+
+//Force the config directory to be something other than "config"
+#define OVERRIDE_CONFIG_DIRECTORY_PARAMETER "config-directory"

@@ -39,14 +39,14 @@
 
 	icon_state = "drone_fab_active"
 	var/elapsed = world.time - time_last_drone
-	drone_progress = round((elapsed/config.drone_build_time)*100)
+	drone_progress = round((elapsed/CONFIG_GET(number/drone_build_time))*100)
 
 	if(drone_progress >= 100)
 		visible_message("\The [src] voices a strident beep, indicating a drone chassis is prepared.")
 
 /obj/structure/machinery/drone_fabricator/examine(mob/user)
 	..()
-	if(produce_drones && drone_progress >= 100 && istype(user,/mob/dead) && config.allow_drone_spawn && count_drones() < config.max_maint_drones)
+	if(produce_drones && drone_progress >= 100 && istype(user,/mob/dead) && CONFIG_GET(flag/allow_drone_spawn) && count_drones() < CONFIG_GET(number/max_maint_drones))
 		to_chat(user, "<BR><B>A drone is prepared. Select 'Join As Drone' from the Ghost tab to spawn as a maintenance drone.</B>")
 
 /obj/structure/machinery/drone_fabricator/proc/count_drones()
@@ -61,7 +61,7 @@
 	if(stat & NOPOWER)
 		return
 
-	if(!produce_drones || !config.allow_drone_spawn || count_drones() >= config.max_maint_drones)
+	if(!produce_drones || !CONFIG_GET(flag/allow_drone_spawn) || count_drones() >= CONFIG_GET(number/max_maint_drones))
 		return
 
 	if(!player || !istype(player.mob,/mob/dead))
@@ -75,66 +75,3 @@
 	new_drone.transfer_personality(player)
 
 	drone_progress = 0
-
-
-/*
-/////DISABLING THIS FOR NOW
-/mob/dead/verb/join_as_drone()
-
-	set category = "Ghost"
-	set name = "Join As Robot Drone"
-	set desc = "If there is a powered, enabled fabricator in the game world with a prepared chassis, join as a maintenance drone."
-
-
-	if(ticker.current_state < GAME_STATE_PLAYING)
-		to_chat(src, SPAN_DANGER("The game hasn't started yet!"))
-		return
-
-	if(!(config.allow_drone_spawn))
-		to_chat(src, SPAN_DANGER("That verb is not currently permitted."))
-		return
-
-	if (!src.stat)
-		return
-
-	if (usr != src)
-		return 0 //something is terribly wrong
-
-	if(jobban_isbanned(src,"Cyborg"))
-		to_chat(usr, SPAN_DANGER("You are banned from playing synthetics and cannot spawn as a drone."))
-		return
-
-	var/deathtime = world.time - src.timeofdeath
-//	if(istype(src,/mob/dead/observer))
-//		var/mob/dead/observer/G = src
-//		if(G.has_enabled_antagHUD == 1 && config.antag_hud_restricted)
-//			to_chat(usr, SPAN_NOTICE(" <B>Upon using the antagHUD you forfeighted the ability to join the round.</B>"))
-//			return
-
-	var/deathtimeminutes = round(deathtime / MINUTES_1)
-	var/pluralcheck = "minute"
-	if(deathtimeminutes == 0)
-		pluralcheck = ""
-	else if(deathtimeminutes == 1)
-		pluralcheck = " [deathtimeminutes] minute and"
-	else if(deathtimeminutes > 1)
-		pluralcheck = " [deathtimeminutes] minutes and"
-	var/deathtimeseconds = round((deathtime - deathtimeminutes * MINUTES_1) / 10,1)
-
-	if (deathtime < MINUTES_10)
-		to_chat(usr, "You have been dead for[pluralcheck] [deathtimeseconds] seconds.")
-		to_chat(usr, "You must wait 10 minutes to respawn as a drone!")
-		return
-
-	for(var/obj/structure/machinery/drone_fabricator/DF in machines)
-		if(DF.stat & NOPOWER || !DF.produce_drones)
-			continue
-
-		if(DF.count_drones() >= config.max_maint_drones)
-			to_chat(src, SPAN_DANGER("There are too many active drones in the world for you to spawn."))
-			return
-
-		if(DF.drone_progress >= 100)
-			DF.create_drone(src.client)
-			return
-*/

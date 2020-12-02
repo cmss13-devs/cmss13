@@ -3,12 +3,14 @@
 /datum/construction_template/xenomorph
 	name = "xenomorph structure"
 	build_type = /obj/effect/alien/resin/special
-	build_icon_source = "alien_structures_64x64"
 	crystals_required = 45 * XENO_STRUCTURE_PLASMA_MULTIPLIER
 	var/datum/hive_status/hive_ref //Who gets what we build
 	var/requires_node = TRUE
 
 	var/block_range = 1
+
+/datum/construction_template/xenomorph/set_structure_image()
+	build_icon = get_icon_from_source(CONFIG_GET(string/alien_structures_64x64))
 
 /datum/construction_template/xenomorph/complete() //Override because we need to pass the hive ref
 	if(!build_loc)
@@ -60,10 +62,12 @@
 /datum/construction_template/xenomorph/nest
 	name = XENO_STRUCTURE_NEST
 	build_type = /obj/effect/alien/resin/special/nest
-	build_icon_source = "alien_structures"
 	build_icon_state = "reinforced_nest"
 
 	block_range = 2
 
 	pixel_y = -8
 	pixel_x = -8
+
+/datum/construction_template/xenomorph/nest/set_structure_image()
+	build_icon = get_icon_from_source(CONFIG_GET(string/alien_structures))

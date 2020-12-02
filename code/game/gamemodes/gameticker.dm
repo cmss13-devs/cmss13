@@ -47,7 +47,7 @@ var/global/datum/controller/gameticker/ticker = new()
 				vote.process()
 			if(going)
 				pregame_timeleft--
-			if(pregame_timeleft == config.vote_autogamemode_timeleft)
+			if(pregame_timeleft == CONFIG_GET(number/vote_autogamemode_timeleft))
 				if(!vote.time_remaining)
 					vote.autogamemode()	//Quit calling this over and over and over and over.
 					while(vote.time_remaining)
@@ -65,7 +65,7 @@ var/global/datum/controller/gameticker/ticker = new()
 		hide_mode = 1
 	var/list/datum/game_mode/runnable_modes
 	if((master_mode=="random") || (master_mode=="secret"))
-		runnable_modes = config.get_runnable_modes()
+		//runnable_modes = config.get_runnable_modes()
 		if (runnable_modes.len==0)
 			current_state = GAME_STATE_PREGAME
 			to_world("<B>Unable to choose playable game mode.</B> Reverting to pre-game lobby.")
@@ -158,7 +158,7 @@ var/global/datum/controller/gameticker/ticker = new()
 			to_world(SPAN_BLUE("<B>Welcome to [round_statistics.name]</B>"))
 		to_world(SPAN_BLUE("<B>Enjoy the game!</B>"))
 
-	if(config.autooocmute)
+	if(CONFIG_GET(flag/autooocmute))
 		to_world(SPAN_DANGER("<B>The OOC channel has been globally disabled due to round start!</B>"))
 		ooc_allowed = !( ooc_allowed )
 
@@ -166,8 +166,7 @@ var/global/datum/controller/gameticker/ticker = new()
 
 	Master.SetRunLevel(RUNLEVEL_GAME)
 
-	if(config.sql_enabled)
-		spawn(MINUTES_5)
+	spawn(MINUTES_5)
 		for(var/i in GLOB.closet_list) //Set up special equipment for lockers and vendors, depending on gamemode
 			var/obj/structure/closet/C = i
 			C.select_gamemode_equipment(mode.type)
@@ -246,7 +245,7 @@ var/global/datum/controller/gameticker/ticker = new()
 
 	var/game_finished = 0
 	var/mode_finished = 0
-	if (config.continous_rounds)
+	if (CONFIG_GET(flag/continous_rounds))
 		if(EvacuationAuthority.dest_status == NUKE_EXPLOSION_FINISHED || EvacuationAuthority.dest_status == NUKE_EXPLOSION_GROUND_FINISHED) game_finished = 1
 		mode_finished = (!post_game && mode.check_finished())
 	else
@@ -267,7 +266,7 @@ var/global/datum/controller/gameticker/ticker = new()
 			else
 				log_game("Round ended by proper completion")
 
-			if(config.autooocmute && !ooc_allowed)
+			if(CONFIG_GET(flag/autooocmute) && !ooc_allowed)
 				to_world(SPAN_DANGER("<B>The OOC channel has been globally enabled due to round end!</B>"))
 				ooc_allowed = 1
 

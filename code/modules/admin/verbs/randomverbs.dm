@@ -34,7 +34,7 @@
 		to_chat(src, "No matches for that age range found.")
 
 /proc/cmd_admin_mute(mob/M as mob, mute_type, automute = 0)
-	if(automute && !(config.automute_on))
+	if(automute && !CONFIG_GET(flag/automute_on))
 		return FALSE
 	if(!M.client)
 		to_chat(usr, SPAN_WARNING("This mob doesn't have a client tied to it."))

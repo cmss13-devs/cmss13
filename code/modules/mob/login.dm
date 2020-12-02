@@ -6,7 +6,7 @@
 	lastKnownIP	= client.address
 	computer_id	= client.computer_id
 	log_access("Login: [key_name(src)] from [lastKnownIP ? lastKnownIP : "localhost"]-[computer_id] || BYOND v[client.byond_version].[client.byond_build]")
-	if(config.log_access)
+	if(CONFIG_GET(flag/log_access))
 		for(var/mob/M in GLOB.player_list)
 			if(M == src)	continue
 			if( M.key && (M.key != key) )
@@ -41,9 +41,9 @@
 
 	client.images = null
 	client.screen = null				//remove hud items just in case
-	if(!hud_used) 
+	if(!hud_used)
 		create_hud()
-	if(hud_used) 
+	if(hud_used)
 		hud_used.show_hud(hud_used.hud_version)
 
 	reload_fullscreens()

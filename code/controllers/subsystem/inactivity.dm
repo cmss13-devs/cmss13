@@ -8,7 +8,7 @@ SUBSYSTEM_DEF(inactivity)
 	runlevels = RUNLEVELS_DEFAULT|RUNLEVEL_LOBBY
 
 /datum/controller/subsystem/inactivity/fire(resumed = FALSE)
-	if (config.kick_inactive)
+	if (CONFIG_GET(flag/kick_inactive))
 		for(var/i in GLOB.clients)
 			var/client/C = i
 			if(C.admin_holder && C.admin_holder.rights & R_ADMIN) //Skip admins.

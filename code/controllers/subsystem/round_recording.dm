@@ -11,33 +11,8 @@ SUBSYSTEM_DEF(round_recording)
 	recorder = new()
 	can_fire = FALSE
 	return ..()
-/*
-	var/list/lines = file2list("config/round_recording.txt")
 
-	var/record_rounds = FALSE
-	if(!lines || !length(lines))
-		return
-
-	for(var/line in lines)
-		// Ignore empty lines
-		if(!length(line))
-			continue
-		// Ignore comment lines
-		if(copytext(line,1,2) == "#")
-			continue
-
-		// Get the config option
-		var/list/config = splittext(line, " ")
-		if(!config || length(config) < 2)
-			continue
-
-		if(config[1] == "record_rounds")
-			record_rounds = config[2] == "1" ? TRUE : FALSE
-			break
-
-	if(!record_rounds)
-		pause()
-	..()*/
+// use CONFIG_GET(flag/record_rounds)
 
 /datum/controller/subsystem/round_recording/stat_entry()
 	..(recorder ? "SS#: [recorder.snapshots] T: [LAZYLEN(recorder.tracked_players)]" : "Disabled")

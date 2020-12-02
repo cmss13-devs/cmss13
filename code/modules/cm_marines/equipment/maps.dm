@@ -15,15 +15,11 @@
 	usr.visible_message(SPAN_NOTICE("[usr] opens the [src.name]. "))
 	initialize_map()
 
-// /obj/item/map/attack(mob/living/carbon/human/M as mob, mob/living/carbon/human/usr as mob) //Show someone the map by hitting them with it
-//     usr.visible_message(SPAN_NOTICE("You open up the [name] and show it to [M]. "), \ 
-//         SPAN_NOTICE("[usr] opens up the [name] and shows it to \the [M]. "))
-//     M << initialize_map()
 /obj/item/map/attack()
 	return
 
 /obj/item/map/proc/initialize_map()
-	var/wikiurl = config.wikiurl
+	var/wikiurl = CONFIG_GET(string/wikiurl)
 	if(wikiurl)
 		dat = {"
 

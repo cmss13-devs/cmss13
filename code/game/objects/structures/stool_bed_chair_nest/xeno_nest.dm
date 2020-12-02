@@ -3,7 +3,6 @@
 /obj/structure/bed/nest
 	name = "alien nest"
 	desc = "It's a gruesome pile of thick, sticky resin shaped like a nest."
-	icon_source = "alien_effects"
 	icon_state = "nest"
 	buckling_y = 6
 	buildstacktype = null //can't be disassembled and doesn't drop anything when destroyed
@@ -21,6 +20,8 @@
 
 /obj/structure/bed/nest/Initialize(mapload, hive)
 	. = ..()
+
+	icon = get_icon_from_source(CONFIG_GET(string/alien_effects))
 
 	if (hive)
 		hivenumber = hive
@@ -126,7 +127,7 @@
 	var/M_loc = M.loc
 	if(!do_after(user, securing_time, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 		return
-	if(M.loc != M_loc) 
+	if(M.loc != M_loc)
 		return
 
 	if(buckled_mob) //Just in case
@@ -138,7 +139,7 @@
 		if(!H.lying) //Don't ask me why is has to be
 			to_chat(user, SPAN_WARNING("[M] is resisting, ground them."))
 			return
-			
+
 	do_buckle(M, user)
 	if(!M.mind || !ishuman(M))
 		return
@@ -177,7 +178,7 @@
 	buckled_mob.old_y = 0
 
 	var/mob/living/carbon/human/H = buckled_mob // Gets nulled in the next line
-	
+
 	..()
 
 	if(ghost_of_buckled_mob && istype(H))
@@ -189,7 +190,7 @@
 		var/datum/mind/M = ghost_of_buckled_mob.mind
 		if(!isobserver(M.current))
 			return
-			
+
 		if(alert(ghost_of_buckled_mob, "You have been freed from your nest, do you want to return to your body?", ,"Yes", "No") == "Yes")
 			if(!ghost_of_buckled_mob || !ghost_of_buckled_mob.mind)
 				return
@@ -245,7 +246,7 @@
 
 /obj/structure/bed/nest/Destroy()
 	unbuckle()
-	
+
 	. = ..()
 
 	if(ghost_of_buckled_mob)
@@ -280,4 +281,3 @@
 		to_chat(user, SPAN_NOTICE("The sticky resin is too strong for you to do anything to this nest"))
 		return FALSE
 	. = ..()
-	

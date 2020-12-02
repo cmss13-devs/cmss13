@@ -20,18 +20,6 @@
 		sleep(50)
 		world.Reboot()
 
-/datum/admins/proc/toggleguests()
-	set name = "T: Toggle Guest Joining"
-	set desc = "Guests can't enter"
-	set category = "Server"
-
-	guests_allowed = !guests_allowed
-	if(!guests_allowed)
-		to_world("<B>Guests may no longer enter the game.</B>")
-	else
-		to_world("<B>Guests may now enter the game.</B>")
-	message_staff(SPAN_NOTICE("[key_name_admin(usr)] toggled guests game entering [guests_allowed ? "":"dis"]allowed."), 1)
-
 /datum/admins/proc/togglejoin()
 	set name = "T: Toggle Marines Joining"
 	set desc = "Players can still log into the server, but Marines won't be able to join the game as a new mob."

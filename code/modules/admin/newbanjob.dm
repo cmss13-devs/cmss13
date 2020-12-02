@@ -7,7 +7,7 @@ var/savefile/Banlistjob
 	var/id = clientvar.computer_id
 	var/key = clientvar.ckey
 	if (guest_jobbans(rank))
-		if(config.guest_jobban && IsGuestKey(key))
+		if(CONFIG_GET(flag/guest_jobban) && IsGuestKey(key))
 			return 1
 	Banlistjob.cd = "/base"
 	if (Banlistjob.dir.Find("[key][id][rank]"))

@@ -367,9 +367,9 @@ This function restores all limbs.
 
 	var/armor = getarmor(target_limb, armour_type)
 
-	var/armour_config = config.marine_ranged
+	var/armour_config = GLOB.marine_ranged
 	if(armour_type == ARMOR_MELEE)
-		armour_config = config.marine_melee
+		armour_config = GLOB.marine_melee
 
 	var/modified_damage = armor_damage_reduction(armour_config, damage, armor, penetration, 0, 0)
 	apply_damage(modified_damage, damage_type, target_limb)

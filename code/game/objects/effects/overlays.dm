@@ -174,7 +174,7 @@
 		signal.linked_cam.unslashable = TRUE
 		signal.linked_cam.unacidable = TRUE
 		cas_groups[user.faction].add_signal(signal)
-			
+
 
 /obj/effect/overlay/temp/laser_target/Destroy()
 	if(signal)
@@ -188,7 +188,7 @@
 		source_binoc.laser_cooldown = world.time + source_binoc.cooldown_duration
 		source_binoc.laser = null
 		source_binoc = null
-	
+
 	SetLuminosity(0)
 	. = ..()
 
@@ -256,14 +256,14 @@
 
 
 /obj/effect/overlay/temp/gib_animation/xeno
-	icon_source = "alien_gib_48x48"
 	effect_duration = 10
 
-/obj/effect/overlay/temp/gib_animation/xeno/New(Loc, mob/source_mob, gib_icon, new_icon)
-	icon = new_icon
-	..()
-
-
+/obj/effect/overlay/temp/gib_animation/xeno/Initialize(mapload, mob/source_mob, gib_icon, new_icon)
+	. = ..()
+	if(!new_icon)
+		icon = get_icon_from_source(CONFIG_GET(string/alien_effects))
+	else
+		icon = new_icon
 
 //dust animation
 
@@ -281,6 +281,9 @@
 
 /obj/effect/overlay/temp/acid_pool_splash
 	name = "acid splash"
-	icon_source = "alien_effects"
 	icon_state = "acidpoolsplash"
 	effect_duration = SECONDS_10
+
+/obj/effect/overlay/temp/acid_pool_splash/Initialize(mapload, ...)
+	. = ..()
+	icon = get_icon_from_source(CONFIG_GET(string/alien_effects))

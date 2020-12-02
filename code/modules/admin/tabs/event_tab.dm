@@ -52,13 +52,13 @@
 	if(!admin_holder || !config)
 		return
 
-	if(config.remove_gun_restrictions)
+	if(CONFIG_GET(flag/remove_gun_restrictions))
 		to_chat(src, "<b>Enabled gun restrictions.</b>")
 		message_staff("Admin [key_name_admin(usr)] has enabled WY gun restrictions.")
 	else
 		to_chat(src, "<b>Disabled gun restrictions.</b>")
 		message_staff("Admin [key_name_admin(usr)] has disabled WY gun restrictions.")
-	config.remove_gun_restrictions = !config.remove_gun_restrictions
+	CONFIG_SET(flag/remove_gun_restrictions, !CONFIG_GET(flag/remove_gun_restrictions))
 
 /client/proc/togglebuildmodeself()
 	set name = "B: Buildmode"

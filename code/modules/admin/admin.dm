@@ -74,7 +74,7 @@
 		if(N.is_confidential)
 			continue
 		var/ban_text = N.ban_time ? "Banned for [N.ban_time] | " : ""
-		dat += "[ban_text][N.text]<br/>on [N.date]<br/><br/>"		
+		dat += "[ban_text][N.text]<br/>on [N.date]<br/><br/>"
 
 	dat += "</body></html>"
 
@@ -128,12 +128,12 @@
 	set category = "Server"
 	set desc = "Respawn basically"
 	set name = "T: Toggle Respawn"
-	abandon_allowed = !( abandon_allowed )
-	if (abandon_allowed)
+	CONFIG_SET(flag/respawn, !CONFIG_GET(flag/respawn))
+	if (CONFIG_GET(flag/respawn))
 		to_world("<B>You may now respawn.</B>")
 	else
 		to_world("<B>You may no longer respawn :(</B>")
-	message_staff(SPAN_NOTICE("[key_name_admin(usr)] toggled respawn to [abandon_allowed ? "On" : "Off"]."), 1)
+	message_staff(SPAN_NOTICE("[key_name_admin(usr)] toggled respawn to [CONFIG_GET(flag/respawn) ? "On" : "Off"]."), 1)
 	world.update_status()
 
 

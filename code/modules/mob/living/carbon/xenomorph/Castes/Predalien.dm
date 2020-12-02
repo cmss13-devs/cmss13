@@ -18,7 +18,7 @@
 	tackle_max = 6
 	tacklestrength_min = 6
 	tacklestrength_max = 10
-	
+
 	is_intelligent = TRUE
 	tier = 1
 	attack_delay = -2
@@ -29,7 +29,6 @@
 	caste_name = "Predalien"
 	name = "Abomination"
 	desc = "A strange looking creature with fleshy strands on its head. It appears like a mixture of armor and flesh, smooth, but well carapaced."
-	icon_source = "alien_predalien"
 	icon_state = "Predalien Walking"
 	plasma_types = list(PLASMA_CATECHOLAMINE)
 	faction = FACTION_PREDALIEN
@@ -58,11 +57,11 @@
 
 /mob/living/carbon/Xenomorph/Predalien/Initialize(mapload, mob/living/carbon/Xenomorph/oldXeno, h_number)
 	. = ..()
-
+	icon = get_icon_from_source(CONFIG_GET(string/alien_predalien))
 	addtimer(CALLBACK(src, .proc/announce_spawn), SECONDS_3)
 
 /mob/living/carbon/Xenomorph/Predalien/proc/announce_spawn()
-	if(!loc) 
+	if(!loc)
 		return FALSE
 
 	to_chat(src, {"
@@ -87,7 +86,7 @@ Your health meter will not regenerate normally, so kill and die for the hive!</s
 
 /datum/behavior_delegate/predalien_base/on_kill_mob(mob/M)
 	. = ..()
-	
+
 	kills = min(kills + 1, max_kills)
 
 /datum/behavior_delegate/predalien_base/melee_attack_modify_damage(original_damage, atom/A = null)
@@ -118,11 +117,11 @@ Your health meter will not regenerate normally, so kill and die for the hive!</s
 
 		if(ishuman(M))
 			var/mob/living/carbon/human/H = M
-			
+
 			for(var/i in 1 to 3)
 				var/obj/item/reagent_container/food/snacks/meat/h_meat = new(H.loc)
 				h_meat.name = "[H.name] meat"
-			
+
 		else if (isXeno(M))
 			var/mob/living/carbon/Xenomorph/xeno_victim = M
 
@@ -131,7 +130,7 @@ Your health meter will not regenerate normally, so kill and die for the hive!</s
 			xenohide.name = "[xeno_victim.age_prefix][xeno_victim.caste_name]-hide"
 			xenohide.singular_name = "[xeno_victim.age_prefix][xeno_victim.caste_name]-hide"
 			xenohide.stack_id = "[xeno_victim.age_prefix][xeno_victim.caste_name]-hide"
-		
+
 		playsound(X.loc, 'sound/effects/blobattack.ogg', 25)
 
 		M.gib("butchering")

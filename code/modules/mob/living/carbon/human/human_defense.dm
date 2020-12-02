@@ -104,7 +104,7 @@ Contains most of the procs that are called when a mob is attacked by something
 
 			if(shield_blocked_l)
 				visible_message(SPAN_DANGER("<B>[src] blocks [attack_text] with the [l_hand.name]!</B>"), null, null, 5)
-				return TRUE 
+				return TRUE
 			// We cannot return FALSE on fail here, because we haven't checked r_hand yet. Dual-wielding shields perhaps!
 
 		var/obj/item/weapon/I = l_hand
@@ -117,7 +117,7 @@ Contains most of the procs that are called when a mob is attacked by something
 			var/obj/item/weapon/melee/combistick/C = r_hand
 			if(C.on)
 				return TRUE
-				
+
 		if(r_hand.IsShield() && istype(r_hand,/obj/item/weapon/shield)) // Activable shields
 			var/obj/item/weapon/shield/S = r_hand
 			var/shield_blocked_r = FALSE
@@ -129,7 +129,7 @@ Contains most of the procs that are called when a mob is attacked by something
 
 			if(shield_blocked_r)
 				visible_message(SPAN_DANGER("<B>[src] blocks [attack_text] with the [r_hand.name]!</B>"), null, null, 5)
-				return TRUE 
+				return TRUE
 
 		var/obj/item/weapon/I = r_hand
 		if(I.IsShield() && !istype(I, /obj/item/weapon/shield) && (prob(50 - round(damage / 3)))) // other shields. Don't doublecheck activable here.
@@ -203,7 +203,7 @@ Contains most of the procs that are called when a mob is attacked by something
 	else
 		user.flick_attack_overlay(src, "punch")
 
-	var/damage = armor_damage_reduction(config.marine_melee, I.force, armor, (weapon_sharp?30:0) + (weapon_edge?10:0)) // no penetration frm punches
+	var/damage = armor_damage_reduction(GLOB.marine_melee, I.force, armor, (weapon_sharp?30:0) + (weapon_edge?10:0)) // no penetration frm punches
 	apply_damage(damage, I.damtype, affecting, sharp=weapon_sharp, edge=weapon_edge, used_weapon=I)
 
 	var/bloody = 0
@@ -301,12 +301,12 @@ Contains most of the procs that are called when a mob is attacked by something
 	var/weapon_sharp = is_sharp(O)
 	var/weapon_edge = has_edge(O)
 
-	var/damage = armor_damage_reduction(config.marine_melee, impact_damage, armor, (weapon_sharp?30:0) + (weapon_edge?10:0))
+	var/damage = armor_damage_reduction(GLOB.marine_melee, impact_damage, armor, (weapon_sharp?30:0) + (weapon_edge?10:0))
 	apply_damage(damage, dtype, affecting, sharp=weapon_sharp, edge=weapon_edge, used_weapon=O)
 
 	if (damage > 5)
 		last_damage_source = initial(AM.name)
-	
+
 	if (ismob(LM.thrower))
 		var/mob/M = LM.thrower
 		var/client/assailant = M.client
@@ -360,9 +360,9 @@ Contains most of the procs that are called when a mob is attacked by something
 
 /mob/living/carbon/human/proc/get_id_faction_group()
 	var/obj/item/card/id/C = wear_id
-	if(!istype(C)) 
+	if(!istype(C))
 		C = get_active_hand()
-	if(!istype(C)) 
+	if(!istype(C))
 		return null
 
 	return C.faction_group

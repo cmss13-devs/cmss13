@@ -1,6 +1,0 @@
-# Set this to 1 to enable the script that posts runtimes to GitLab
-# Before you do so, make sure to set up the required environment vars:
-#     1. GITLAB_RUNTIMES_PID - The Project ID of the project where the issues should be posted. Found on the details page of the project, directly under the project name.
-#     2. GITLAB_RUNTIMES_PAT - A Personal Access Token for an account with access to post issues, assign labels to issues and to open issues
-
-report_runtimes 0

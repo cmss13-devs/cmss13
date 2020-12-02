@@ -104,7 +104,7 @@
 /mob/living/carbon/Xenomorph/update_inv_legcuffed()
 	remove_overlay(X_LEGCUFF_LAYER)
 	if(legcuffed)
-		overlays_standing[X_LEGCUFF_LAYER]	= image("icon" = get_icon_from_source("alien_effects"), "icon_state" = "legcuff", "layer" =-X_LEGCUFF_LAYER)
+		overlays_standing[X_LEGCUFF_LAYER]	= image("icon" = get_icon_from_source(CONFIG_GET(string/alien_effects)), "icon_state" = "legcuff", "layer" =-X_LEGCUFF_LAYER)
 		apply_overlay(X_LEGCUFF_LAYER)
 
 /mob/living/carbon/Xenomorph/proc/create_shriekwave(var/color = null)
@@ -117,12 +117,12 @@
 		offset_y = -10
 
 	if (color)
-		screech_image = image("icon"=get_icon_from_source("alien_overlay_64x64"), "icon_state" = "shriek_waves_greyscale") // For Praetorian screech
+		screech_image = image("icon"=get_icon_from_source(CONFIG_GET(string/alien_overlay_64x64)), "icon_state" = "shriek_waves_greyscale") // For Praetorian screech
 		screech_image.color = color
 		screech_image.pixel_x = offset_x
 		screech_image.pixel_y = offset_y
 	else
-		screech_image = image("icon"=get_icon_from_source("alien_overlay_64x64"), "icon_state" = "shriek_waves") //Ehh, suit layer's not being used.
+		screech_image = image("icon"=get_icon_from_source(CONFIG_GET(string/alien_overlay_64x64)), "icon_state" = "shriek_waves") //Ehh, suit layer's not being used.
 		screech_image.pixel_x = offset_x
 		screech_image.pixel_y = offset_y
 
@@ -135,21 +135,21 @@
 /mob/living/carbon/Xenomorph/proc/create_stomp()
 	remove_suit_layer()
 
-	overlays_standing[X_SUIT_LAYER] = image("icon"=get_icon_from_source("alien_overlay_64x64"), "icon_state" = "stomp") //Ehh, suit layer's not being used.
+	overlays_standing[X_SUIT_LAYER] = image("icon"=get_icon_from_source(CONFIG_GET(string/alien_overlay_64x64)), "icon_state" = "stomp") //Ehh, suit layer's not being used.
 	apply_overlay(X_SUIT_LAYER)
 	addtimer(CALLBACK(src, .proc/remove_overlay, X_SUIT_LAYER), 12)
 
 /mob/living/carbon/Xenomorph/proc/create_empower()
 	remove_suit_layer()
 
-	overlays_standing[X_SUIT_LAYER] = image("icon"=get_icon_from_source("alien_overlay_64x64"), "icon_state" = "empower")
+	overlays_standing[X_SUIT_LAYER] = image("icon"=get_icon_from_source(CONFIG_GET(string/alien_overlay_64x64)), "icon_state" = "empower")
 	apply_overlay(X_SUIT_LAYER)
 	addtimer(CALLBACK(src, .proc/remove_overlay, X_SUIT_LAYER), 20)
 
 /mob/living/carbon/Xenomorph/proc/create_shield(var/duration = 10)
 	remove_suit_layer()
 
-	overlays_standing[X_SUIT_LAYER] = image("icon"=get_icon_from_source("alien_overlay_64x64"), "icon_state" = "shield2")
+	overlays_standing[X_SUIT_LAYER] = image("icon"=get_icon_from_source(CONFIG_GET(string/alien_overlay_64x64)), "icon_state" = "shield2")
 	apply_overlay(X_SUIT_LAYER)
 	addtimer(CALLBACK(src, .proc/remove_overlay, X_SUIT_LAYER), duration)
 
@@ -162,13 +162,13 @@
 		var/image/I
 		if(mob_size == MOB_SIZE_BIG)
 			if((!initial(pixel_y) || lying) && !resting && !sleeping)
-				I = image("icon"=get_icon_from_source("alien_overlay_64x64"), "icon_state"="alien_fire", "layer"=-X_FIRE_LAYER)
+				I = image("icon"=get_icon_from_source(CONFIG_GET(string/alien_overlay_64x64)), "icon_state"="alien_fire", "layer"=-X_FIRE_LAYER)
 				I.color = fire_reagent.burncolor
 			else
-				I = image("icon"=get_icon_from_source("alien_overlay_64x64"), "icon_state"="alien_fire_lying", "layer"=-X_FIRE_LAYER)
+				I = image("icon"=get_icon_from_source(CONFIG_GET(string/alien_overlay_64x64)), "icon_state"="alien_fire_lying", "layer"=-X_FIRE_LAYER)
 				I.color = fire_reagent.burncolor
 		else
-			I = image("icon"=get_icon_from_source("alien_effects"), "icon_state"="alien_fire", "layer"=-X_FIRE_LAYER)
+			I = image("icon"=get_icon_from_source(CONFIG_GET(string/alien_effects)), "icon_state"="alien_fire", "layer"=-X_FIRE_LAYER)
 			I.color = fire_reagent.burncolor
 
 		overlays_standing[X_FIRE_LAYER] = I
@@ -177,7 +177,7 @@
 /mob/living/carbon/Xenomorph/proc/create_crusher_shield()
 	remove_overlay(X_HEAD_LAYER)
 
-	var/image/shield = image("icon"=get_icon_from_source("alien_overlay_64x64"), "icon_state" = "empower")
+	var/image/shield = image("icon"=get_icon_from_source(CONFIG_GET(string/alien_overlay_64x64)), "icon_state" = "empower")
 	shield.color = rgb(87, 73, 144)
 	overlays_standing[X_HEAD_LAYER] = shield
 	apply_overlay(X_HEAD_LAYER)

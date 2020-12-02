@@ -3,7 +3,6 @@
 /obj/item/alien_embryo
 	name = "alien embryo"
 	desc = "All slimy and yucky."
-	icon_source = "alien_embryo"
 	icon_state = "Larva Dead"
 	var/mob/living/affected_mob
 	var/stage = 0
@@ -13,8 +12,9 @@
 	var/faction = FACTION_XENOMORPH
 	var/flags_embryo = FALSE // Used in /ciphering/predator property
 
-/obj/item/alien_embryo/New()
-	..()
+/obj/item/alien_embryo/Initialize(mapload, ...)
+	. = ..()
+	icon = get_icon_from_source(CONFIG_GET(string/alien_embryo))
 	if(istype(loc, /mob/living))
 		affected_mob = loc
 		affected_mob.status_flags |= XENO_HOST
@@ -23,7 +23,7 @@
 			var/mob/living/carbon/C = affected_mob
 			C.med_hud_set_status()
 	else
-		qdel(src)
+		return INITIALIZE_HINT_QDEL
 
 /obj/item/alien_embryo/Destroy()
 	if(affected_mob)

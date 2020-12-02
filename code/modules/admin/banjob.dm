@@ -94,9 +94,9 @@ var/jobban_keylist[0]		//to store the keys & ranks
 		if(!M.client || !M.client.player_data || !M.client.player_data.jobbans_loaded)
 			return "Not yet loaded"
 		if(guest_jobbans(rank))
-			if(config.guest_jobban && IsGuestKey(M.key))
+			if(CONFIG_GET(flag/guest_jobban) && IsGuestKey(M.key))
 				return "Guest Job-ban"
-			if(config.usewhitelist && !check_whitelist(M))
+			if(CONFIG_GET(flag/usewhitelist) && !check_whitelist(M))
 				return "Whitelisted Job"
 		var/datum/entity/player_job_ban/PJB = M.client.player_data.job_bans[rank]
 		return PJB ? PJB.text : null

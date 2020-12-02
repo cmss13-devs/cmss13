@@ -68,11 +68,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 /datum/controller/master/New()
 	if(!config)
 		config = new
-		config.load("config/config.txt")
-		config.load("config/game_options.txt","game_options")
-		config.load("config/icon_source.txt","icon_source")
-		// apply some settings from config..
-		abandon_allowed = config.respawn
+
 	// Highlander-style: there can only be one! Kill off the old and replace it with the new.
 
 	if(!random_seed)
@@ -193,7 +189,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 
 	var/start_timeofday = REALTIMEOFDAY
 	// Initialize subsystems.
-	current_ticklimit = config.tick_limit_mc_init
+	current_ticklimit = CONFIG_GET(number/tick_limit_mc_init)
 	for (var/datum/controller/subsystem/SS in subsystems)
 		if (SS.flags & SS_NO_INIT)
 			continue
@@ -212,14 +208,14 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	// Sort subsystems by display setting for easy access.
 	sortTim(subsystems, /proc/cmp_subsystem_display)
 	// Set world options.
-	world.change_fps(config.fps)
+	world.change_fps(CONFIG_GET(number/fps))
 	var/initialized_tod = REALTIMEOFDAY
 
 	if(sleep_offline_after_initializations)
 		world.sleep_offline = TRUE
 	sleep(1)
 
-	if(sleep_offline_after_initializations && config.resume_after_initializations)
+	if(sleep_offline_after_initializations && CONFIG_GET(flag/resume_after_initializations))
 		world.sleep_offline = FALSE
 	initializations_finished_with_no_players_logged_in = initialized_tod < REALTIMEOFDAY - 10
 	// Loop.
@@ -632,10 +628,10 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	if (!processing)
 		return
 	var/client_count = length(GLOB.clients)
-	if (client_count < config.disable_high_pop_mc_mode_amount)
-		processing = config.base_mc_tick_rate
-	else if (client_count > config.high_pop_mc_mode_amount)
-		processing = config.high_pop_mc_tick_rate
+	if (client_count < CONFIG_GET(number/mc_tick_rate/disable_high_pop_mc_mode_amount))
+		processing = CONFIG_GET(number/mc_tick_rate/base_mc_tick_rate)
+	else if (client_count > CONFIG_GET(number/mc_tick_rate/high_pop_mc_mode_amount))
+		processing = CONFIG_GET(number/mc_tick_rate/high_pop_mc_tick_rate)
 
 /datum/controller/master/proc/OnConfigLoad()
 	for (var/thing in subsystems)

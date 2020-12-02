@@ -11,7 +11,6 @@
 /obj/item/clothing/mask/facehugger
 	name = "facehugger"
 	desc = "It has some sort of a tube at the end of its tail."
-	icon_source = "alien_effects"
 	icon_state = "facehugger"
 	item_state = "facehugger"
 	w_class = SIZE_TINY //Note: can be picked up by aliens unlike most other items of w_class below 4
@@ -33,6 +32,7 @@
 
 /obj/item/clothing/mask/facehugger/Initialize(mapload, hive)
 	. = ..()
+	icon = get_icon_from_source(CONFIG_GET(string/alien_effects))
 	if (hive)
 		hivenumber = hive
 

@@ -223,7 +223,6 @@
 /turf/closed/wall/indestructible/splashscreen
 	name = "Lobby Art"
 	desc = "Assorted artworks."
-	icon_source = "lobby_art"
 	icon_state = "lobbyart1"
 //	icon_state = "title_holiday"
 	layer = FLY_LAYER
@@ -231,6 +230,7 @@
 
 /turf/closed/wall/indestructible/splashscreen/Initialize()
 	. = ..()
+	icon = get_icon_from_source(CONFIG_GET(string/lobby_art))
 	tag = "LOBBYART"
 	if(icon_state == "lobbyart1") // default
 		// Only pick lobby art that credits the author
@@ -564,7 +564,6 @@
 /turf/closed/wall/resin
 	name = "resin wall"
 	desc = "Weird slime solidified into a wall."
-	icon_source = "alien_structures"
 	icon_state = "resin"
 	walltype = WALL_RESIN
 	damage_cap = HEALTH_WALL_XENO
@@ -572,6 +571,10 @@
 	blend_turfs = list(/turf/closed/wall/resin)
 	blend_objects = list(/obj/structure/mineral_door/resin)
 	var/hivenumber = XENO_HIVE_NORMAL
+
+/turf/closed/wall/resin/Initialize(mapload, ...)
+	. = ..()
+	icon = get_icon_from_source(CONFIG_GET(string/alien_structures))
 
 /turf/closed/wall/resin/make_girder()
 	ScrapeAway()

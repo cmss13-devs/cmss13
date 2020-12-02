@@ -160,7 +160,7 @@
 			return COMPONENT_INTERRUPT_CLICK
 
 		next_point = world.time + point_delay
-		
+
 		var/message = SPAN_XENONOTICE("[Q] points at [A].")
 
 		to_chat(Q, message)
@@ -216,10 +216,7 @@
 	caste_name = "Queen"
 	name = "Queen"
 	desc = "A huge, looming alien creature. The biggest and the baddest."
-	icon_source = "alien_queen_standing"
 	icon_size = 64
-	var/icon_body = "alien_queen_standing"
-	var/icon_ovi = "alien_queen_ovipositor"
 	icon_state = "Queen Walking"
 	plasma_types = list(PLASMA_ROYAL,PLASMA_CHITIN,PLASMA_PHEROMONE,PLASMA_NEUROTOXIN)
 	attacktext = "bites"
@@ -323,6 +320,7 @@
 
 /mob/living/carbon/Xenomorph/Queen/Initialize()
 	. = ..()
+	icon = get_icon_from_source(CONFIG_GET(string/alien_queen_standing))
 	if(!is_admin_level(z))//so admins can safely spawn Queens in Thunderdome for tests.
 		xeno_message(SPAN_XENOANNOUNCE("A new Queen has risen to lead the Hive! Rejoice!"),3,hivenumber)
 	playsound(loc, 'sound/voice/alien_queen_command.ogg', 75, 0)
@@ -761,19 +759,12 @@
 		canmove = FALSE
 		return canmove
 
-
 /mob/living/carbon/Xenomorph/Queen/update_icons()
-	if(icon_body)
-		if(!icon_source_files[icon_body])
-			icon_source_files[icon_body] = file(icon_source_master[icon_body])
-		icon = icon_source_files[icon_body]
+	icon = get_icon_from_source(CONFIG_GET(string/alien_queen_standing))
 	if(stat == DEAD)
 		icon_state = "[mutation_type] Queen Dead"
 	else if(ovipositor)
-		if(icon_ovi)
-			if(!icon_source_files[icon_ovi])
-				icon_source_files[icon_ovi] = file(icon_source_master[icon_ovi])
-			icon = icon_source_files[icon_ovi]
+		icon = get_icon_from_source(CONFIG_GET(string/alien_queen_ovipositor))
 		icon_state = "[mutation_type] Queen Ovipositor"
 	else if(lying)
 		if((resting || sleeping) && (!knocked_down && !knocked_out && health > 0))

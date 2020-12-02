@@ -36,7 +36,7 @@
 			var/obj/limb/E = get_limb(organ_name)
 			if(!E || (E.status & LIMB_DESTROYED))
 				. += MOVE_REDUCTION_LIMB_DESTROYED
-			// Splinted limbs are not as punishing 
+			// Splinted limbs are not as punishing
 			if(E.status & LIMB_SPLINTED)
 				. += MOVE_REDUCTION_LIMB_SPLINTED
 			else if(E.status & LIMB_BROKEN)
@@ -84,7 +84,7 @@
 	if(slowed && !superslowed)
 		. += HUMAN_SLOWED_AMOUNT
 
-	. += config.human_delay
+	. += CONFIG_GET(number/human_delay)
 	move_delay = .
 
 /mob/living/carbon/human/yautja/movement_delay()

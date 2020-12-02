@@ -70,7 +70,7 @@
 		var/total = 0
 		for(var/role_required in roles)
 			total += get_job_playtime(C, role_required)
-		
+
 		return total >= time_required
 	else
 		return get_job_playtime(C, roles) >= time_required
@@ -80,21 +80,21 @@
 		var/total = 0
 		for(var/role_required in roles)
 			total += get_job_playtime(C, role_required)
-		
+
 		return time_required - total
 	else
 		return time_required - get_job_playtime(C, roles)
 
 /datum/job/proc/can_play_role(var/client/client)
-	if(!config.use_timelocks)
+	if(!CONFIG_GET(flag/use_timelocks))
 		return TRUE
-	
+
 	if(client.admin_holder && (client.admin_holder.rights & (R_NOLOCK | R_ADMIN)))
 		return TRUE
 
 	if(get_job_playtime(client, title) > minimum_playtime_as_job)
 		return TRUE
-	
+
 	for(var/prereq in minimum_playtimes)
 		var/datum/timelock/T = prereq
 		if(!T.can_play(client))
@@ -211,7 +211,7 @@
 		NP.mind.setup_human_stats()
 
 	// Update the character icons
-	// This is done in set_species when the mob is created as well, but 
+	// This is done in set_species when the mob is created as well, but
 	INVOKE_ASYNC(new_character, /mob/living/carbon/human.proc/regenerate_icons)
 	INVOKE_ASYNC(new_character, /mob/living/carbon/human.proc/update_body, 1, 0)
 	INVOKE_ASYNC(new_character, /mob/living/carbon/human.proc/update_hair)

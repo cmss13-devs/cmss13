@@ -2,7 +2,6 @@
 
 /obj/effect/alien/resin/collector
 	name = "hive collector"
-	icon_source = "alien_structures_64x64"
 	desc = "A disgusting mass of pulsating spores. It reeks of plasma."
 	icon_state = "collector"
 	pixel_x = -16
@@ -16,8 +15,9 @@
 	var/last_gathered_time
 	var/gather_cooldown = SECONDS_10
 
-/obj/effect/alien/resin/collector/New(loc, var/hive_ref, var/new_node)
-	..()
+/obj/effect/alien/resin/collector/Initialize(mapload, hive_ref, new_node)
+	. = ..()
+	icon = get_icon_from_source(CONFIG_GET(string/alien_structures_64x64))
 	if(hive_ref)
 		linked_hive = hive_ref
 		if(linked_hive.living_xeno_queen)

@@ -20,7 +20,7 @@
 						SPAN_NOTICE("You extinguished the fire on [src]."), null, 5)
 				return 1
 
-			// If unconcious with oxygen damage, do CPR. If dead, we do CPR 
+			// If unconcious with oxygen damage, do CPR. If dead, we do CPR
 			if(!(stat == UNCONSCIOUS && getOxyLoss() > 0) && !(stat == DEAD))
 				help_shake_act(M)
 				return 1
@@ -110,7 +110,7 @@
 				apply_effect(3, WEAKEN)
 
 			damage += attack.damage
-			damage = armor_damage_reduction(config.marine_melee, damage, armor, 0) // no penetration frm punches
+			damage = armor_damage_reduction(GLOB.marine_melee, damage, armor, 0) // no penetration frm punches
 			apply_damage(damage, BRUTE, affecting, sharp=attack.sharp, edge=attack.edge)
 
 
@@ -151,7 +151,7 @@
 							turfs += T
 						var/turf/target = pick(turfs)
 						count_niche_stat(STATISTICS_NICHE_DISCHARGE)
-						
+
 						attack_log += "\[[time_stamp()]\] <b>[key_name(src)]</b> accidentally fired <b>[W.name]</b> in [get_area(src)] triggered by <b>[key_name(M)]</b>."
 						M:attack_log += "\[[time_stamp()]\] <b>[key_name(src)]</b> accidentally fired <b>[W.name]</b> in [get_area(src)] triggered by <b>[key_name(M)]</b>."
 						msg_admin_attack("[key_name(src)] accidentally fired <b>[W.name]</b> in [get_area(M)] ([M.loc.x],[M.loc.y],[M.loc.z]).", M.loc.x, M.loc.y, M.loc.z)

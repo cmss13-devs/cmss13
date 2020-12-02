@@ -132,7 +132,7 @@
 
 	var/damage = severity
 
-	damage = armor_damage_reduction(config.marine_explosive, damage, getarmor(null, ARMOR_BOMB))
+	damage = armor_damage_reduction(GLOB.marine_explosive, damage, getarmor(null, ARMOR_BOMB))
 
 	if(source)
 		last_damage_source = source
@@ -236,7 +236,7 @@
 
 
 /mob/living/carbon/human/proc/implant_loyalty(mob/living/carbon/human/M, override = FALSE) // Won't override by default.
-	if(!config.use_loyalty_implants && !override) return // Nuh-uh.
+	if(!CONFIG_GET(flag/use_loyalty_implants) && !override) return // Nuh-uh.
 
 	var/obj/item/implant/loyalty/L = new/obj/item/implant/loyalty(M)
 	L.imp_in = M

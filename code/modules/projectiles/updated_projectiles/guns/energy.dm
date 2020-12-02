@@ -20,8 +20,8 @@
 	var/charge_cost = 625 // approx 16 shots shots.
 	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_CAN_POINTBLANK
 
-/obj/item/weapon/gun/energy/taser/New()
-	..()
+/obj/item/weapon/gun/energy/taser/Initialize(mapload, spawn_empty)
+	. = ..()
 	cell = new /obj/item/cell/high(src)
 	update_icon()
 
@@ -111,8 +111,8 @@
 	flags_gun_features = GUN_UNUSUAL_DESIGN
 	flags_item = ITEM_PREDATOR
 
-/obj/item/weapon/gun/energy/plasmarifle/New()
-	..()
+/obj/item/weapon/gun/energy/plasmarifle/Initialize(mapload, spawn_empty)
+	. = ..()
 	START_PROCESSING(SSobj, src)
 	last_regen = world.time
 	update_icon()
@@ -239,8 +239,8 @@
 		remove_from_missing_pred_gear(src)
 	..()
 
-/obj/item/weapon/gun/energy/plasmapistol/New()
-	..()
+/obj/item/weapon/gun/energy/plasmapistol/Initialize(mapload, spawn_empty)
+	. = ..()
 	START_PROCESSING(SSobj, src)
 	verbs -= /obj/item/weapon/gun/verb/field_strip
 	verbs -= /obj/item/weapon/gun/verb/toggle_burst
@@ -334,8 +334,8 @@
 	flags_gun_features = GUN_UNUSUAL_DESIGN
 	has_empty_icon = FALSE
 
-/obj/item/weapon/gun/energy/plasma_caster/New()
-	..()
+/obj/item/weapon/gun/energy/plasma_caster/Initialize(mapload, spawn_empty)
+	. = ..()
 	verbs -= /obj/item/weapon/gun/verb/field_strip
 	verbs -= /obj/item/weapon/gun/verb/toggle_burst
 	verbs -= /obj/item/weapon/gun/verb/empty_mag

@@ -15,7 +15,7 @@
 
 	var/damage = severity
 
-	var/cfg = armor_deflection==0 ? config.xeno_explosive_small : config.xeno_explosive
+	var/cfg = armor_deflection==0 ? GLOB.xeno_explosive_small : GLOB.xeno_explosive
 	var/total_explosive_resistance = caste != null ? caste.xeno_explosion_resistance + armor_explosive_buff : armor_explosive_buff
 	damage = armor_damage_reduction(cfg, damage, total_explosive_resistance, pierce, 1, 0.5, armor_integrity)
 	var/armor_punch = armor_break_calculation(cfg, damage, total_explosive_resistance, pierce, 1, 0.5, armor_integrity)
@@ -63,9 +63,9 @@
 	if(damage <= 0)
 		return ..(damage, armour_type, damage_type, def_zone)
 
-	var/armour_config = config.xeno_ranged
+	var/armour_config = GLOB.xeno_ranged
 	if(armour_type == ARMOR_MELEE)
-		armour_config = config.xeno_melee
+		armour_config = GLOB.xeno_melee
 
 	var/modified_damage = armor_damage_reduction(armour_config, damage, armor_deflection + armor_deflection_buff, penetration, armour_break_pr_pen, armour_break_flat)
 	var/armor_punch = armor_break_calculation(armour_config, damage, armor_deflection + armor_deflection_buff, penetration, armour_break_pr_pen, armour_break_flat, armor_integrity)
@@ -114,7 +114,7 @@
 	updatehealth()
 
 	last_hit_time = world.time
-	
+
 	return 1
 
 #define XENO_ARMOR_BREAK_PASS_TIME SECONDS_1 / 2
@@ -122,7 +122,7 @@
 
 /mob/living/carbon/Xenomorph/var/armor_break_to_apply = 0
 /mob/living/carbon/Xenomorph/proc/apply_armorbreak(armorbreak = 0)
-	if(isnull(config.xeno_general) || config.xeno_general.armor_ignore_integrity)
+	if(GLOB.xeno_general.armor_ignore_integrity)
 		return FALSE
 
 	if(stat == DEAD) return

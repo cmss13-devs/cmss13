@@ -2,7 +2,6 @@
 
 /obj/ovipositor
 	name = "Egg Sac"
-	icon_source = "alien_queen_ovipositor"
 	icon_state = "ovipositor"
 	unacidable = TRUE
 	var/begin_decay_time = 0
@@ -11,8 +10,9 @@
 	var/decayed = 0		// This is here so later on we can use the ovpositor molt for research. ~BMC777
 	var/destroyed = 0
 
-/obj/ovipositor/New()
-	..()
+/obj/ovipositor/Initialize(mapload, ...)
+	. = ..()
+	icon = get_icon_from_source(CONFIG_GET(string/alien_queen_ovipositor))
 	begin_decay_time = world.timeofday + QUEEN_OVIPOSITOR_DECAY_TIME
 	process_decay()
 
@@ -37,7 +37,7 @@
 
 	var/turf/T = get_turf(src)
 	if (T)
-		T.overlays += image(get_icon_from_source("alien_queen_ovipositor"), "ovipositor_molted")
+		T.overlays += image(get_icon_from_source(CONFIG_GET(string/alien_queen_ovipositor)), "ovipositor_molted")
 
 	qdel(src)
 
@@ -48,7 +48,7 @@
 
 	var/turf/T = get_turf(src)
 	if (T)
-		T.overlays += image(get_icon_from_source("alien_queen_ovipositor"), "ovipositor_gibbed")
+		T.overlays += image(get_icon_from_source(CONFIG_GET(string/alien_queen_ovipositor)), "ovipositor_gibbed")
 
 	qdel(src)
 

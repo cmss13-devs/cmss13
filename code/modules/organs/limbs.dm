@@ -76,7 +76,7 @@
 		parent.children.Add(src)
 	if(mob_owner)
 		owner = mob_owner
-	
+
 	loc = mob_owner
 
 
@@ -89,7 +89,7 @@
 /obj/limb/process()
 		return 0
 
-/obj/limb/Destroy()	
+/obj/limb/Destroy()
 	if(parent)
 		parent.children -= src
 	parent = null
@@ -177,7 +177,7 @@
 	if(owner.mind && owner.skills)
 		armor += owner.skills.get_skill_level(SKILL_ENDURANCE)*5
 
-	var/damage = armor_damage_reduction(config.marine_organ_damage, brute, armor, sharp ? ARMOR_SHARP_INTERNAL_PENETRATION : 0, 0, 0, max_damage ? (100*(max_damage-brute_dam) / max_damage) : 100)
+	var/damage = armor_damage_reduction(GLOB.marine_organ_damage, brute, armor, sharp ? ARMOR_SHARP_INTERNAL_PENETRATION : 0, 0, 0, max_damage ? (100*(max_damage-brute_dam) / max_damage) : 100)
 
 	if(internal_organs && prob(damage*DMG_ORGAN_DAM_PROB_MULT + brute_dam*BRUTE_ORGAN_DAM_PROB_MULT))
 		//Damage an internal organ
@@ -194,9 +194,9 @@
 	if(owner.mind && owner.skills)
 		armor += owner.skills.get_skill_level(SKILL_ENDURANCE)*5
 
-	var/damage = armor_damage_reduction(config.marine_organ_damage, brute*3, armor, 0, 0, 0, max_damage ? (100*(max_damage-brute_dam) / max_damage) : 100)
+	var/damage = armor_damage_reduction(GLOB.marine_organ_damage, brute*3, armor, 0, 0, 0, max_damage ? (100*(max_damage-brute_dam) / max_damage) : 100)
 
-	if(brute_dam > min_broken_damage * config.organ_health_multiplier && prob(damage*2))
+	if(brute_dam > min_broken_damage * CONFIG_GET(number/organ_health_multiplier) && prob(damage*2))
 		fracture()
 /*
 	Describes how limbs (body parts) of human mobs get damage applied.
@@ -218,7 +218,7 @@
 	if(!is_ff && take_damage_organ_damage(brute, sharp))
 		brute /= 2
 
-	if(config.bones_can_break && !(status & LIMB_ROBOT))
+	if(CONFIG_GET(flag/bones_can_break) && !(status & LIMB_ROBOT))
 		take_damage_bone_break(brute)
 
 	if(status & LIMB_BROKEN && prob(40) && brute > 10)
@@ -229,7 +229,7 @@
 
 	var/can_cut = (prob(brute*2) || sharp) && !(status & LIMB_ROBOT)
 	// If the limbs can break, make sure we don't exceed the maximum damage a limb can take before breaking
-	if((brute_dam + burn_dam + brute + burn) < max_damage || !config.limbs_can_break)
+	if((brute_dam + burn_dam + brute + burn) < max_damage || !CONFIG_GET(flag/limbs_can_break))
 		if(brute)
 			if(can_cut)
 				createwound(CUT, brute, impact_name, is_ff = is_ff)
@@ -240,7 +240,7 @@
 	else
 		//If we can't inflict the full amount of damage, spread the damage in other ways
 		//How much damage can we actually cause?
-		var/can_inflict = max_damage * config.organ_health_multiplier - (brute_dam + burn_dam)
+		var/can_inflict = max_damage * CONFIG_GET(number/organ_health_multiplier) - (brute_dam + burn_dam)
 		var/remain_brute = brute
 		var/remain_burn = burn
 		if(can_inflict)
@@ -285,7 +285,7 @@
 	if(!is_ff && body_part != BODY_FLAG_CHEST && body_part != BODY_FLAG_GROIN && !no_limb_loss)
 		var/obj/item/clothing/head/helmet/H = owner.head
 		if(!(body_part == BODY_FLAG_HEAD && istype(H) && !isSynth(owner)) \
-			&& config.limbs_can_break && brute_dam >= max_damage * config.organ_health_multiplier
+			&& CONFIG_GET(flag/limbs_can_break) && brute_dam >= max_damage * CONFIG_GET(number/organ_health_multiplier)
 		)
 			var/cut_prob = brute/max_damage * 5
 			if(prob(cut_prob))
@@ -294,7 +294,7 @@
 
 	owner.updatehealth()
 	update_icon()
-	start_processing()	
+	start_processing()
 
 /obj/limb/proc/heal_damage(brute, burn, internal = 0, robo_repair = 0)
 	if(status & LIMB_ROBOT && !robo_repair)
@@ -355,7 +355,7 @@ This function completely restores a damaged organ to perfect condition.
 			implants -= implanted_object
 			if(is_sharp(implanted_object) || istype(implanted_object, /obj/item/shard/shrapnel))
 				owner.embedded_items -= implanted_object
-				
+
 	owner.pain.recalculate_pain()
 	owner.updatehealth()
 	update_icon()
@@ -368,7 +368,7 @@ This function completely restores a damaged organ to perfect condition.
 	if(owner.mind && owner.skills)
 		armor += owner.skills.get_skill_level(SKILL_ENDURANCE)*5
 
-	var/damage_ratio = armor_damage_reduction(config.marine_organ_damage, 2*damage/3, armor, 0, 0, 0, max_damage ? (100*(max_damage - brute_dam) / max_damage) : 100)
+	var/damage_ratio = armor_damage_reduction(GLOB.marine_organ_damage, 2*damage/3, armor, 0, 0, 0, max_damage ? (100*(max_damage - brute_dam) / max_damage) : 100)
 	if(prob(damage_ratio) && damage > 10)
 		var/datum/wound/internal_bleeding/I = new (0)
 		add_bleeding(I, TRUE)
@@ -553,7 +553,7 @@ This function completely restores a damaged organ to perfect condition.
 			//we only update wounds once in [wound_update_accuracy] ticks so have to emulate realtime
 			heal_amt = heal_amt * wound_update_accuracy
 			//configurable regen speed woo, no-regen hardcore or instaheal hugbox, choose your destiny
-			heal_amt = heal_amt * config.organ_regeneration_multiplier
+			heal_amt = heal_amt * CONFIG_GET(number/organ_regeneration_multiplier)
 			// amount of healing is spread over all the wounds
 			heal_amt = heal_amt / (wounds.len + 1)
 			// making it look prettier on scanners
@@ -592,7 +592,7 @@ This function completely restores a damaged organ to perfect condition.
 	if(has_stump_icon && (!parent || !(parent.status & LIMB_DESTROYED)))
 		icon = 'icons/mob/humans/dam_human.dmi'
 		icon_state = "stump_[icon_name]"
-	
+
 	var/race_icon = owner.species.icobase
 
 	if (status & LIMB_ROBOT && !(owner.species && owner.species.flags & IS_SYNTHETIC))
@@ -624,7 +624,7 @@ This function completely restores a damaged organ to perfect condition.
 		overlays.Cut()
 		damage_state = n_is
 		update_overlays()
-		
+
 
 /obj/limb/proc/update_overlays()
 	update_damage_icon_part()
@@ -1041,7 +1041,7 @@ This function completely restores a damaged organ to perfect condition.
 		DI = new /image('icons/mob/humans/dam_human.dmi', "burn_[burnstate]")
 		DI.blend_mode = BLEND_INSET_OVERLAY
 		overlays += DI
-	
+
 	// for(var/datum/wound/W in wounds)
 	// 	if(W.impact_icon)
 	// 		DI = new /image(W.impact_icon)

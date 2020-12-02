@@ -18,7 +18,7 @@
 	tackle_chance = 35
 	tacklestrength_min = 4
 	tacklestrength_max = 5
-	
+
 	evolution_allowed = FALSE
 	deevolves_to = "Lurker"
 	caste_desc = "A brutal, devastating front-line attacker."
@@ -31,7 +31,6 @@
 	caste_name = "Ravager"
 	name = "Ravager"
 	desc = "A huge, nasty red alien with enormous scythed claws."
-	icon_source = "alien_ravager"
 	icon_size = 64
 	icon_state = "Ravager Walking"
 	plasma_types = list(PLASMA_CATECHOLAMINE)
@@ -53,6 +52,10 @@
 		/datum/action/xeno_action/activable/scissor_cut
 		)
 
+/mob/living/carbon/Xenomorph/Ravager/Initialize(mapload, mob/living/carbon/Xenomorph/oldXeno, h_number)
+	. = ..()
+	icon = get_icon_from_source(CONFIG_GET(string/alien_ravager))
+
 // Mutator delegate for base ravager
 /datum/behavior_delegate/ravager_base
 	var/damage_per_shield_hp = 0.10
@@ -65,9 +68,9 @@
 /datum/behavior_delegate/ravager_base/melee_attack_modify_damage(original_damage, atom/A = null)
 	var/shield_total = 0
 	for (var/datum/xeno_shield/XS in bound_xeno.xeno_shields)
-		if (XS.shield_source == XENO_SHIELD_SOURCE_RAVAGER) 
+		if (XS.shield_source == XENO_SHIELD_SOURCE_RAVAGER)
 			shield_total += XS.amount
-	
+
 	return original_damage + damage_per_shield_hp*shield_total
 
 /datum/behavior_delegate/ravager_base/melee_attack_additional_effects_self()
@@ -78,18 +81,18 @@
 /datum/behavior_delegate/ravager_base/append_to_stat()
 	var/shield_total = 0
 	for (var/datum/xeno_shield/XS in bound_xeno.xeno_shields)
-		if (XS.shield_source == XENO_SHIELD_SOURCE_RAVAGER) 
+		if (XS.shield_source == XENO_SHIELD_SOURCE_RAVAGER)
 			shield_total += XS.amount
 
 	stat("Empower Shield:", "[shield_total]")
 	stat("Bonus Slash Damage:", "[shield_total*damage_per_shield_hp]")
 
 /datum/behavior_delegate/ravager_base/on_life()
-	var/datum/xeno_shield/rav_shield 
+	var/datum/xeno_shield/rav_shield
 	for (var/datum/xeno_shield/XS in bound_xeno.xeno_shields)
-		if (XS.shield_source == XENO_SHIELD_SOURCE_RAVAGER) 
+		if (XS.shield_source == XENO_SHIELD_SOURCE_RAVAGER)
 			rav_shield = XS
-			break 
+			break
 
 	if (rav_shield && ((rav_shield.last_damage_taken + shield_decay_time) < world.time))
 		bound_xeno.xeno_shields -= rav_shield

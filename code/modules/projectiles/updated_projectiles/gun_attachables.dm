@@ -766,7 +766,7 @@ Defined in conflicts.dm of the #defines folder.
 	recoil_unwielded_mod = RECOIL_AMOUNT_TIER_4
 	scatter_unwielded_mod = SCATTER_AMOUNT_TIER_8
 	//but at the same time you are slow when 2 handed
-	aim_speed_mod = config.slowdown_med
+	aim_speed_mod = CONFIG_GET(number/slowdown_med)
 
 
 	matter = list("wood" = 2000)
@@ -865,7 +865,7 @@ Defined in conflicts.dm of the #defines folder.
 	recoil_unwielded_mod = RECOIL_AMOUNT_TIER_4
 	scatter_unwielded_mod = SCATTER_AMOUNT_TIER_8
 	//but at the same time you are slow when 2 handed
-	aim_speed_mod = config.slowdown_med
+	aim_speed_mod = CONFIG_GET(number/slowdown_med)
 
 /obj/item/attachable/stock/carbine
 	name = "\improper L42 synthetic stock"
@@ -917,7 +917,7 @@ Defined in conflicts.dm of the #defines folder.
 	scatter_mod = -SCATTER_AMOUNT_TIER_6
 	delay_mod = 0
 	movement_acc_penalty_mod = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_5
-	aim_speed_mod = config.slowdown_low
+	aim_speed_mod = CONFIG_GET(number/slowdown_low)
 
 
 /obj/item/attachable/stock/smg/collapsible
@@ -949,7 +949,7 @@ Defined in conflicts.dm of the #defines folder.
 	recoil_unwielded_mod = RECOIL_AMOUNT_TIER_4
 	scatter_unwielded_mod = SCATTER_AMOUNT_TIER_10
 	//but at the same time you are slowish when 2 handed
-	aim_speed_mod = config.slowdown_low
+	aim_speed_mod = CONFIG_GET(number/slowdown_low)
 
 
 /obj/item/attachable/stock/smg/collapsible/proc/apply_on_weapon(obj/item/weapon/gun/G)
@@ -1060,7 +1060,7 @@ Defined in conflicts.dm of the #defines folder.
 	recoil_unwielded_mod = RECOIL_AMOUNT_TIER_4
 	scatter_unwielded_mod = SCATTER_AMOUNT_TIER_8
 	//but at the same time you are slow when 2 handed
-	aim_speed_mod = config.slowdown_med
+	aim_speed_mod = CONFIG_GET(number/slowdown_med)
 
 
 /obj/item/attachable/stock/revolver/activate_attachment(obj/item/weapon/gun/G, mob/living/carbon/user, turn_off)

@@ -26,7 +26,7 @@
 						/obj/item/attachable/attached_gun/extinguisher)
 	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_WIELDED_FIRING_ONLY
 
-/obj/item/weapon/gun/flamer/New()
+/obj/item/weapon/gun/flamer/Initialize(mapload, spawn_empty)
 	. = ..()
 	update_icon()
 

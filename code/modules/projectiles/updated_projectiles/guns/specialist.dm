@@ -796,8 +796,8 @@
 	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
 	map_specific_decoration = TRUE
 
-/obj/item/weapon/gun/launcher/m92/New()
-	..()
+/obj/item/weapon/gun/launcher/m92/Initialize(mapload, spawn_empty)
+	. = ..()
 	grenades += new /obj/item/explosive/grenade/HE(src)
 	grenades += new /obj/item/explosive/grenade/HE(src)
 	grenades += new /obj/item/explosive/grenade/HE(src)
@@ -929,8 +929,8 @@
 	var/grenade_type_allowed = /obj/item/explosive/grenade
 	var/riot_version
 
-/obj/item/weapon/gun/launcher/m81/New(loc, spawn_empty)
-	..()
+/obj/item/weapon/gun/launcher/m81/Initialize(mapload, spawn_empty)
+	. = ..()
 	if(!spawn_empty)
 		if(riot_version)
 			grenade = new /obj/item/explosive/grenade/custom/teargas(src)
@@ -1068,8 +1068,8 @@
 
 	flags_item = TWOHANDED|NO_CRYO_STORE
 
-/obj/item/weapon/gun/launcher/rocket/New()
-	..()
+/obj/item/weapon/gun/launcher/rocket/Initialize(mapload, spawn_empty)
+	. = ..()
 	smoke = new()
 	smoke.attach(src)
 

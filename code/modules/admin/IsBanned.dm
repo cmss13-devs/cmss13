@@ -12,25 +12,25 @@ world/IsBanned(key,address,computer_id, type)
 		return //don't recheck connected clients.
 
 	//Guest Checking
-	if(!guests_allowed && IsGuestKey(key))
+	if(IsGuestKey(key))
 		log_access("Failed Login: [key] - Guests not allowed")
 		message_staff(SPAN_NOTICE("Failed Login: [key] - Guests not allowed"))
 		return list("reason"="guest", "desc"="\nReason: Guests not allowed. Please sign in with a byond account.")
-	
+
 	WAIT_DB_READY
 	if(admin_datums[ckey] && (admin_datums[ckey].rights & R_MOD))
 		return ..()
 
-	if(config.limit_players && config.limit_players < GLOB.clients.len)
-		return list("reason"="POP CAPPED", "desc"="\nReason: Server is pop capped at the moment at [config.limit_players] players. Attempt reconnection in 2-3 minutes.")
-	
+	if(CONFIG_GET(number/limit_players) && CONFIG_GET(number/limit_players) < GLOB.clients.len)
+		return list("reason"="POP CAPPED", "desc"="\nReason: Server is pop capped at the moment at [CONFIG_GET(number/limit_players)] players. Attempt reconnection in 2-3 minutes.")
+
 	var/datum/entity/player/P = get_player_from_key(ckey)
 
 	//check if the IP address is a known TOR node
-	if(config && config.ToRban && ToRban_isbanned(address))
+	if(CONFIG_GET(flag/ToRban) && ToRban_isbanned(address))
 		log_access("Failed Login: [src] - Banned: ToR")
 		message_staff(SPAN_NOTICE("Failed Login: [src] - Banned: ToR"))
-		return list("reason"="Using ToR", "desc"="\nReason: The network you are using to connect has been banned.\nIf you believe this is a mistake, please request help at [config.banappeals]")
+		return list("reason"="Using ToR", "desc"="\nReason: The network you are using to connect has been banned.\nIf you believe this is a mistake, please request help at [CONFIG_GET(string/banappeals)]")
 
 	// wait for database to be ready
 
@@ -40,5 +40,5 @@ world/IsBanned(key,address,computer_id, type)
 
 	return ..()	//default pager ban stuff
 
-	
+
 #endif

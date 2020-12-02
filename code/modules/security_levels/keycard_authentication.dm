@@ -65,7 +65,7 @@
 	if(screen == 1)
 		dat += "Select an event to trigger:<ul>"
 		dat += "<li><A href='?src=\ref[src];triggerevent=Red alert'>Red alert</A></li>"
-		if(!config.ert_admin_call_only)
+		if(!CONFIG_GET(flag/ert_admin_call_only))
 			dat += "<li><A href='?src=\ref[src];triggerevent=Emergency Response Team'>Emergency Response Team</A></li>"
 
 		dat += "<li><A href='?src=\ref[src];triggerevent=Remove Emergency Maintenance Access'>Remove Emergency Maintenance Access</A></li>"
@@ -146,7 +146,7 @@
 			revoke_maint_all_access()
 
 /obj/structure/machinery/keycard_auth/proc/is_ert_blocked()
-	if(config.ert_admin_call_only) return 1
+	if(CONFIG_GET(flag/ert_admin_call_only)) return 1
 	return ticker.mode && ticker.mode.ert_disabled
 
 var/global/maint_all_access = 1
@@ -188,12 +188,12 @@ var/global/maint_all_access = 1
 		return
 	if(!istype(W, card_type))
 		return
-	
+
 	var/obj/item/card/data/cID = W
 	stored_id = cID
 
 	/// We are the SECOND keycard device used (our event_source has already been set)
-	
+
 	if(active && event_source && istype(event_source, /obj/structure/machinery/keycard_auth/lockdown))
 		var/obj/structure/machinery/keycard_auth/lockdown/ES = event_source
 		if(ES.stored_id != stored_id)
@@ -260,7 +260,7 @@ var/global/maint_all_access = 1
 			visible_message(SPAN_NOTICE("[src] states: LOCKDOWN ALREADY LIFTED"))
 			return
 		gCM.round_status_flags |= ROUNDSTATUS_PODDOORS_OPEN // So we don't spam the message twice
-	
+
 	var/text_timeleft = "[timeleft * 0.01] minutes"
 	var/next_interval = MINUTES_1
 	if(timeleft <= MINUTES_1)

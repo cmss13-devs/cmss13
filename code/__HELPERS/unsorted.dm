@@ -2159,3 +2159,10 @@ var/list/WALLITEMS = list(
 	   && !targetmob.ear_deaf && targetmob.say_understands(sourcemob, language))
 		sourcemob.langchat_display_image(targetmob) // strap langchat display on
 #endif // ifdef OBJECTS_PROXY_SPEECH
+
+#define UNTIL(X) while(!(X)) stoplag()
+
+/proc/IsValidSrc(datum/D)
+	if(istype(D))
+		return !QDELETED(D)
+	return FALSE

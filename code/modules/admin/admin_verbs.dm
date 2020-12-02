@@ -11,7 +11,6 @@ var/list/admin_verbs_default = list(
 
 var/list/admin_verbs_admin = list(
 	/datum/admins/proc/togglejoin,		/*toggles whether people can join the current game*/
-	/datum/admins/proc/toggleguests,	/*toggles whether guests can join the current game*/
 	/datum/admins/proc/announce,		/*priority announce something to all clients.*/
 	/datum/admins/proc/view_txt_log,	/*shows the server log (diary) for today*/
 	/client/proc/cmd_stickyban,
@@ -101,8 +100,8 @@ var/list/admin_verbs_debug = list(
 	/client/proc/restart_controller,
 	/client/proc/cmd_debug_toggle_should_check_for_win,
 	/client/proc/enable_debug_verbs,
-	/client/proc/advproccall,
-	/client/proc/callatomproc,
+	/client/proc/proccall_advanced,
+	/client/proc/proccall_atom,
 	/client/proc/toggledebuglogs,
 	/client/proc/togglenichelogs,
 	/client/proc/cmd_admin_change_hivenumber,
@@ -137,8 +136,8 @@ var/list/debug_verbs = list(
 )
 
 var/list/admin_verbs_paranoid_debug = list(
-	/client/proc/advproccall,
-	/client/proc/callatomproc,
+	/client/proc/proccall_advanced,
+	/client/proc/proccall_atom,
 )
 
 var/list/admin_verbs_possess = list(
@@ -261,7 +260,7 @@ var/list/admin_verbs_mod = list(
 			verbs += admin_verbs_server
 		if(admin_holder.rights & R_DEBUG)
 			verbs += admin_verbs_debug
-			if(config.debugparanoid && !check_rights(R_ADMIN))
+			if(CONFIG_GET(flag/debugparanoid) && !check_rights(R_ADMIN))
 				verbs.Remove(admin_verbs_paranoid_debug)			//Right now it's just callproc but we can easily add others later on.
 		if(admin_holder.rights & R_POSSESS)
 			verbs += admin_verbs_possess
@@ -393,11 +392,11 @@ var/list/admin_verbs_mod = list(
 	set category = "Server"
 	if(!admin_holder)	return
 	if(config)
-		if(config.log_hrefs)
-			config.log_hrefs = 0
+		if(CONFIG_GET(flag/log_hrefs))
+			CONFIG_SET(flag/log_hrefs, FALSE)
 			to_chat(src, "<b>Stopped logging hrefs</b>")
 		else
-			config.log_hrefs = 1
+			CONFIG_SET(flag/log_hrefs, TRUE)
 			to_chat(src, "<b>Started logging hrefs</b>")
 
 

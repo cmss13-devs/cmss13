@@ -20,7 +20,7 @@ var/internal_tick_usage = 0
 
 /world/New()
 	internal_tick_usage = 0.2 * world.tick_lag
-	hub_password = "[config.hub_password]"
+	hub_password = "kMZy3U5jJHSiBQjr"
 
 	//logs
 	var/date_string = time2text(world.realtime, "YYYY/MM-Month/DD-Day")
@@ -41,11 +41,9 @@ var/internal_tick_usage = 0
 
 	initialize_marine_armor()
 
-	if(config && config.server_name != null && config.server_suffix && world.port > 0)
-		// dumb and hardcoded but I don't care~
-		config.server_name += " #[(world.port % 1000) / 100]"
+	config.Load(params[OVERRIDE_CONFIG_DIRECTORY_PARAMETER])
 
-	if(config && config.log_runtime)
+	if(CONFIG_GET(flag/log_runtime))
 		log = file("data/logs/runtime/[time2text(world.realtime,"YYYY-MM-DD-(hh-mm-ss)")]-runtime.log")
 
 	load_admins()
@@ -56,7 +54,6 @@ var/internal_tick_usage = 0
 	setupGhostTeleportLocs()
 	loadShuttleInfoDatums()
 	populate_gear_list()
-	loadRuntimeConfig()
 
 	//Emergency Fix
 	//end-emergency fix
@@ -75,7 +72,7 @@ var/internal_tick_usage = 0
 
 	if(!EvacuationAuthority)		EvacuationAuthority = new
 
-	world.tick_lag = config.Ticklag
+	world.tick_lag = CONFIG_GET(number/ticklag)
 
 	Master.Initialize(10, FALSE, TRUE)
 
@@ -84,7 +81,7 @@ var/internal_tick_usage = 0
 	obfs_y = rand(-500, 500) //A number between -100 and 100
 
 	spawn(3000)		//so we aren't adding to the round-start lag
-		if(config.ToRban)
+		if(CONFIG_GET(flag/ToRban))
 			ToRban_autoupdate()
 
 	// Allow the test manager to run all unit tests if this is being hosted just to run unit tests
@@ -138,10 +135,10 @@ var/world_topic_spam_protect_time = world.timeofday
 		var/list/s = list()
 		s["version"] = game_version
 		s["mode"] = master_mode
-		s["respawn"] = config ? abandon_allowed : 0
+		s["respawn"] = CONFIG_GET(flag/respawn)
 		s["enter"] = enter_allowed
-		s["vote"] = config.allow_vote_mode
-		s["ai"] = config.allow_ai
+		s["vote"] = CONFIG_GET(flag/allow_vote_mode)
+		s["ai"] = CONFIG_GET(flag/allow_ai)
 		s["host"] = host ? host : null
 		s["players"] = list()
 		s["stationtime"] = duration2text()
@@ -192,31 +189,6 @@ var/world_topic_spam_protect_time = world.timeofday
 			var/confidential_text = N.is_confidential ? " \[CONFIDENTIALLY\]" : ""
 			dat += "[ban_text][N.text]<br/>by [admin_name] ([N.admin_rank])[confidential_text] on [N.date]<br/><br/>"
 		return dat
-
-
-	/*
-	Comment out as we don't use IRC
-	else if(copytext(T,1,6) == "notes")
-		/*
-			We got a request for notes from the IRC Bot
-			expected output:
-				1. notes = ckey of person the notes lookup is for
-				2. validationkey = the key the bot has, it should match the gameservers commspassword in it's configuration.
-		*/
-		var/input[] = params2list(T)
-		if(input["key"] != config.comms_password)
-			if(world_topic_spam_protect_ip == addr && abs(world_topic_spam_protect_time - world.time) < 50)
-
-				spawn(50)
-					world_topic_spam_protect_time = world.time
-					return "Bad Key (Throttled)"
-
-			world_topic_spam_protect_time = world.time
-			world_topic_spam_protect_ip = addr
-			return "Bad Key"
-
-		return player_notes_show_irc(input["notes"])
-		*/
 
 
 	//START: MAPDAEMON PROCESSING
@@ -398,8 +370,8 @@ var/list/datum/entity/map_vote/all_votes
 		var/datum/chatOutput/chat = C.chatOutput
 		if(chat)
 			chat.browser_send(C, "roundrestart")
-		if(config.server)	//if you set a server location in config.txt, it sends you there instead of trying to reconnect to the same world address. -- NeoFite
-			C << link("byond://[config.server]")
+		if(CONFIG_GET(string/server))	//if you set a server location in config.txt, it sends you there instead of trying to reconnect to the same world address. -- NeoFite
+			C << link("byond://[CONFIG_GET(string/server)]")
 
 	..(reason)
 
@@ -425,9 +397,9 @@ var/list/datum/entity/map_vote/all_votes
 	//Note: Hub content is limited to 254 characters, including HTML/CSS. Image width is limited to 450 pixels.
 	var/s = ""
 
-	if (config && config.server_name)
-		s += "<a href=\"[config.forumurl]\"><b>[config.server_name] &#8212; [MAIN_SHIP_NAME]</b>"
-		s += "<br><img src=\"[config.forumurl]/byond_hub_logo.jpg\"></a>"
+	if (CONFIG_GET(string/servername))
+		s += "<a href=\"[CONFIG_GET(string/forumurl)]\"><b>[CONFIG_GET(string/servername)] &#8212; [MAIN_SHIP_NAME]</b>"
+		s += "<br><img src=\"[CONFIG_GET(string/forumurl)]/byond_hub_logo.jpg\"></a>"
 		// s += "<a href=\"http://goo.gl/04C5lP\">Wiki</a>|<a href=\"http://goo.gl/hMmIKu\">Rules</a>"
 		if(ticker)
 			if(master_mode)

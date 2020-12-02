@@ -6,9 +6,12 @@
 /obj/effect/xenomorph
 	name = "alien thing"
 	desc = "You shouldn't be seeing this."
-	icon_source = "alien_effects"
 	unacidable = TRUE
 	layer = FLY_LAYER
+
+/obj/effect/xenomorph/Initialize(mapload, ...)
+	. = ..()
+	icon = get_icon_from_source(CONFIG_GET(string/alien_effects))
 
 /obj/effect/xenomorph/splatter
 	name = "splatter"

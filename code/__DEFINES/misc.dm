@@ -173,3 +173,10 @@
 
 //Force the config directory to be something other than "config"
 #define OVERRIDE_CONFIG_DIRECTORY_PARAMETER "config-directory"
+
+//Gun categories, currently used for firing while dualwielding.
+#define GUN_CATEGORY_HANDGUN 1
+#define GUN_CATEGORY_SMG 2
+#define GUN_CATEGORY_RIFLE 3
+#define GUN_CATEGORY_SHOTGUN 4
+#define GUN_CATEGORY_HEAVY 5

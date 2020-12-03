@@ -19,6 +19,7 @@
 	var/obj/item/cell/high/cell //10000 power.
 	var/charge_cost = 625 // approx 16 shots shots.
 	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_CAN_POINTBLANK
+	gun_category = GUN_CATEGORY_HANDGUN
 
 /obj/item/weapon/gun/energy/taser/Initialize(mapload, spawn_empty)
 	. = ..()

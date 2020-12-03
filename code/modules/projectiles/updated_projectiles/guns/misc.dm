@@ -13,6 +13,7 @@
 	w_class = SIZE_HUGE
 	force = 20
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_WIELDED_FIRING_ONLY|GUN_AMMO_COUNTER|GUN_RECOIL_BUILDUP|GUN_HAS_FULL_AUTO
+	gun_category = GUN_CATEGORY_HEAVY
 
 /obj/item/weapon/gun/minigun/Initialize(mapload, spawn_empty)
 	. = ..()
@@ -78,6 +79,7 @@
 	w_class = SIZE_LARGE
 	force = 20
 	flags_gun_features = GUN_BURST_ON|GUN_WIELDED_FIRING_ONLY
+	gun_category = GUN_CATEGORY_HEAVY
 	attachable_allowed = list(/obj/item/attachable/m60barrel,
 							/obj/item/attachable/bipod/m60)
 	starting_attachment_types = list(/obj/item/attachable/m60barrel,

@@ -317,6 +317,7 @@
 						/obj/item/attachable/flashlight)
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_HAS_FULL_AUTO
+	gun_category = GUN_CATEGORY_HEAVY
 	starting_attachment_types = list(/obj/item/attachable/smartbarrel)
 
 
@@ -762,6 +763,7 @@
 //-------------------------------------------------------
 //GRENADE LAUNCHER
 /obj/item/weapon/gun/launcher
+	gun_category = GUN_CATEGORY_HEAVY
 	var/list/disallowed_grenade_types = list(/obj/item/explosive/grenade/spawnergrenade)
 
 /obj/item/weapon/gun/launcher/proc/allowed_ammo_type(obj/item/I)
@@ -1259,6 +1261,7 @@
 	reload_sound = 'sound/weapons/gun_shotgun_shell_insert.ogg'
 	fire_sound = 'sound/weapons/gun_flare.ogg'
 	flags_gun_features = GUN_INTERNAL_MAG
+	gun_category = GUN_CATEGORY_HANDGUN
 	attachable_allowed = list(/obj/item/attachable/scope/mini)
 	iff_enabled = TRUE
 	iff_enabled_current = TRUE

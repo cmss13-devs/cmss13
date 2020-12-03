@@ -42,15 +42,17 @@
 	config_entry_value = 1
 
 /datum/config_entry/number/organ_regeneration_multiplier
-	config_entry_value = 1
+	config_entry_value = 0.75
 
 /datum/config_entry/flag/limbs_can_break
+	config_entry_value = TRUE
 
 /datum/config_entry/number/revive_grace_period
 	config_entry_value = 3000
 	min_val = 0
 
 /datum/config_entry/flag/bones_can_break
+	config_entry_value = TRUE
 
 /datum/config_entry/flag/allow_synthetic_gun_use
 

@@ -1190,7 +1190,6 @@
 	..()
 
 /obj/structure/machinery/power/apc/ex_act(severity)
-
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if(prob(25))

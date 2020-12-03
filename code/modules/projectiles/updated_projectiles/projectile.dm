@@ -212,7 +212,7 @@
 	in_flight = 1
 
 	for(next_turf in path)
-		if(!loc || QDELETED(src) || !in_flight)
+		if(!loc || QDELETED(src) || !in_flight || !ammo)
 			return
 
 		if(distance_travelled >= range)

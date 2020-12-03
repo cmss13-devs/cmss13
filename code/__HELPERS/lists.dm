@@ -687,7 +687,7 @@ datum/proc/dd_SortValue()
 			continue
 
 		var/temp_key = i
-		var/temp_value = L[i]
+		var/temp_value = LAZYACCESS(L, i)
 		if(islist(i))
 			var/list/i_two = i
 			temp_key = i_two.Copy()

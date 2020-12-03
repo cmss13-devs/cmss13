@@ -440,7 +440,7 @@
 	creation_cost = max(creation_cost, 5) //min cost of 5
 
 /obj/structure/machinery/chem_simulator/proc/calculate_new_od_level()
-	if(mode == MODE_CREATE || !target)
+	if(mode == MODE_CREATE || !target || !target.data)
 		new_od_level = creation_od_level
 		return
 	new_od_level = max(target.data.overdose, 1)

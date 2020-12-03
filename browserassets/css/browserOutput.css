@@ -1,11 +1,11 @@
 /*****************************************
 *
 * GLOBAL STYLES
-* 
+*
 ******************************************/
 html, body {
-	padding: 0; 
-	margin: 0; 
+	padding: 0;
+	margin: 0;
 	height: 100%;
 	color: #000000;
 }
@@ -37,7 +37,7 @@ img.icon {
 	vertical-align: bottom;
 }
 
-.combine:before { 
+.combine:before {
 	content: 'x';
 }
 
@@ -64,7 +64,7 @@ a.popt {text-decoration: none;}
 /*****************************************
 *
 * OUTPUT NOT RELATED TO ACTUAL MESSAGES
-* 
+*
 ******************************************/
 #loading {
 	position: fixed;
@@ -107,11 +107,11 @@ a.popt {text-decoration: none;}
 	background: #ddd;
 	height: 30px;
 	padding: 8px 0 2px 0;
-} 
+}
 #ping i {display: block; text-align: center;}
 #ping .ms {
-	display: block; 
-	text-align: center; 
+	display: block;
+	text-align: center;
 	font-size: 8pt;
 	padding-top: 2px;
 }
@@ -208,7 +208,7 @@ a.popt {text-decoration: none;}
 /*****************************************
 *
 * OUTPUT ACTUALLY RELATED TO MESSAGES
-* 
+*
 ******************************************/
 
 /* MOTD */
@@ -343,6 +343,9 @@ h1.alert, h2.alert		{color: #000000;}
 .changeling				{color: #800080;}
 .vox					{color: #AA00AA;}
 .monkey					{color: #966C47;}
+.german					{color: #858F1E;	 font-family: 'Times New Roman', Times, serif;}
+.spanish				{color: #CF982B;}
+.commando				{color: #FE9B24; font-style: bold;}
 .rough					{font-family: trebuchet-ms, cursive, sans-serif;}
 .say_quote				{font-family: Georgia, Verdana, sans-serif;}
 

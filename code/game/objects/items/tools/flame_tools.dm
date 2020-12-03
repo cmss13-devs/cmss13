@@ -393,6 +393,21 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	icon_state = "bcigoff"
 
 ////////////
+//  WEED  //
+////////////
+/obj/item/clothing/mask/cigarette/weed
+	name = "weed joint"
+	desc = "A rolled up package of ambrosia vulgaris, aka space weed, in some smooth paper; you sure this is legal dude?"
+	chem_volume = 39
+	smoketime = 20 MINUTES
+
+/obj/item/clothing/mask/cigarette/weed/Initialize()
+	. = ..()
+	reagents.add_reagent("space_drugs",15)
+	reagents.add_reagent("bicaridine", 8)
+	reagents.add_reagent("kelotane", 1)
+
+////////////
 // CIGARS //
 ////////////
 /obj/item/clothing/mask/cigarette/cigar

@@ -255,11 +255,41 @@ var/global/list/gear_datums = list()
 	slot = WEAR_IN_BACK
 	cost = 1
 
+/datum/gear/weed_joint
+	display_name = "Joint of Space Weed"
+	path = /obj/item/clothing/mask/cigarette/weed
+	slot = WEAR_IN_BACK
+	cost = 4
+
 /datum/gear/type_80_Bayonet
 	display_name = "Type 80 Bayonet"
 	path = /obj/item/attachable/bayonet/upp
 	slot = WEAR_IN_BACK
 	cost = 4
+
+/datum/gear/pamphlet_russian
+	display_name = "Russian Language Pamphlet"
+	path = /obj/item/pamphlet/language/russian
+	slot = WEAR_IN_BACK
+	cost = 3
+
+/datum/gear/pamphlet_tradeband
+	display_name = "Tradeband Language Pamphlet"
+	path = /obj/item/pamphlet/language/tradeband
+	slot = WEAR_IN_BACK
+	cost = 3
+
+/datum/gear/pamphlet_german
+	display_name = "German Language Pamphlet"
+	path = /obj/item/pamphlet/language/german
+	slot = WEAR_IN_BACK
+	cost = 3
+
+/datum/gear/pamphlet_spanish
+	display_name = "Spanish Language Pamphlet"
+	path = /obj/item/pamphlet/language/spanish
+	slot = WEAR_IN_BACK
+	cost = 3
 
 /datum/gear/uno_reverse_red
 	display_name = "Uno Reverse - Red"

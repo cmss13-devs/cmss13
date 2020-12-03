@@ -342,6 +342,8 @@
 		SStracking.stop_tracking(ft, H)			//remove from FT group
 		SStracking.start_tracking(tracking_id, H)	//add to SL group
 		to_chat(fireteam_leaders[ft], FONT_SIZE_HUGE(SPAN_BLUE("[H.mind ? H.comm_title : ""] [H] was unassigned from your fireteam.")))
+	if(!H.stat)
+		to_chat(H, FONT_SIZE_HUGE(SPAN_BLUE("You were unassigned from [ft].")))
 
 /datum/squad/proc/assign_ft_leader(fireteam, mob/living/carbon/human/H, upd_ui = TRUE)
 	if(fireteam_leaders[fireteam])
@@ -367,6 +369,8 @@
 		update_fireteam(fireteam)
 	if(upd_ui)
 		update_squad_ui()
+	if(!H.stat)
+		to_chat(H, FONT_SIZE_HUGE(SPAN_BLUE("You were unassigned as [fireteam] Team Leader.")))
 
 /datum/squad/proc/unassign_all_ft_leaders()
 	for(var/team in fireteam_leaders)

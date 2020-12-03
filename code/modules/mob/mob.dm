@@ -138,6 +138,8 @@
 // blind_message (optional) is what blind people will hear e.g. "You hear something!"
 
 /mob/visible_message(message, self_message, blind_message, max_distance, message_flags = CHAT_TYPE_OTHER)
+	set waitfor = FALSE
+
 	var/view_dist = 7
 	var/flags = message_flags
 	if(max_distance) view_dist = max_distance
@@ -149,6 +151,7 @@
 				flags = CHAT_TYPE_BEING_HIT
 		M.show_message( msg, 1, blind_message, 2, flags)
 		CHECK_TICK
+
 	for(var/obj/vehicle/V in orange(max_distance))
 		for(var/mob/M in V.contents)
 			var/msg = message
@@ -158,6 +161,7 @@
 					flags = CHAT_TYPE_BEING_HIT
 			M.show_message( msg, 1, blind_message, 2, flags)
 		CHECK_TICK
+
 
 // Shows three different messages depending on who does it to who and how does it look like to outsiders
 // message_mob: "You do something to X!"

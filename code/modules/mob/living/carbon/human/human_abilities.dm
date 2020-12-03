@@ -386,6 +386,9 @@ CULT
 	var/mob/living/carbon/human/H = owner
 	var/mob/living/carbon/human/chosen = M
 
+	if(!istype(chosen))
+		return
+
 	if(chosen.faction != FACTION_MARINE || (chosen.skills && skillcheck(chosen, SKILL_POLICE, 2)) || (chosen in converted))
 		to_chat(H, SPAN_WARNING("You can't convert [chosen]!"))
 		return

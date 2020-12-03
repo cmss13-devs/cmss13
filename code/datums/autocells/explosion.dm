@@ -152,6 +152,8 @@
 	for(var/atom/A in in_turf)
 		if(A in exploded_atoms)
 			continue
+		if(A.gc_destroyed)
+			return
 		INVOKE_ASYNC(A, /atom.proc/ex_act, power, direction, explosion_source, explosion_source_mob)
 		exploded_atoms += A
 		log_explosion(A, src)
@@ -235,7 +237,10 @@
 
 	// Note that we don't want to make it a directed ex_act because
 	// it could toss them back and make them get hit by the explosion again
-	A.ex_act(power, null, explosion_source, explosion_source_mob)
+	if(A.gc_destroyed)
+		return
+	
+	INVOKE_ASYNC(A, /atom.proc/ex_act, power, null, explosion_source, explosion_source_mob)
 	log_explosion(A, src)
 
 // I'll admit most of the code from here on out is basically just copypasta from DOREC

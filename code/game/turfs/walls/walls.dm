@@ -254,7 +254,7 @@
 	if(O || !QDELETED(O))
 		qdel(O)
 
-	if(W)
+	if(istype(W))
 		W.melting = FALSE
 	
 

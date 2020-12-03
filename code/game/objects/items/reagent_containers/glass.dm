@@ -71,6 +71,9 @@
 
 /obj/item/reagent_container/glass/afterattack(obj/target, mob/user , flag)
 
+	if(!reagents)
+		create_reagents(volume)
+
 	if(!is_open_container() || !flag)
 		return
 

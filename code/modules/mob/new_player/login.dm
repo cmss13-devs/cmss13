@@ -21,6 +21,9 @@
 	addtimer(CALLBACK(src, .proc/lobby), 4 SECONDS)
 
 /mob/new_player/proc/lobby()
+	if(!client)
+		return
+
 	client.playtitlemusic()
 
 	// To show them the full lobby art. This fixes itself on a mind transfer so no worries there.

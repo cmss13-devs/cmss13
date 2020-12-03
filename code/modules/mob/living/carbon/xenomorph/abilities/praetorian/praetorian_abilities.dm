@@ -218,7 +218,7 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
 	xeno_cooldown = 50
-	plasma_cost = 80
+	plasma_cost = 40
 
 	// Config options
 	distance = 4
@@ -234,7 +234,7 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	xeno_cooldown = 180
-	plasma_cost = 180
+	plasma_cost = 80
 
 	var/activation_delay = 10
 	var/prime_delay = 10
@@ -247,7 +247,7 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_4
 
-	plasma_cost = 180
+	plasma_cost = 80
 	xeno_cooldown = 100
 
 	// Configurable options

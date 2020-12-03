@@ -327,6 +327,7 @@
 	role_comm_title = "JKdo"
 	paygrade = "E2"
 	idtype = /obj/item/card/id/data
+	languages = list("Russian", "English", "Tactical Sign Language", "American Spanish")
 
 /datum/equipment_preset/upp/commando/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels

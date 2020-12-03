@@ -239,6 +239,16 @@
 	filling_color = "#125709"
 	plantname = "ambrosia"
 
+/obj/item/reagent_container/food/snacks/grown/ambrosiavulgaris/attackby(obj/item/W as obj, mob/user as mob)
+	if(istype(W, /obj/item/paper))
+		to_chat(user, SPAN_NOTICE("You scoop up the ambrosia vulgaris and wrap it in the paper, making a joint."))
+		new /obj/item/clothing/mask/cigarette/weed (user.loc)
+		qdel(src)
+		qdel(W)
+	else
+		return ..()
+
+
 /obj/item/reagent_container/food/snacks/grown/ambrosiadeus
 	name = "ambrosia deus branch"
 	desc = "Eating this makes you feel immortal!"
@@ -563,7 +573,7 @@
 	desc = "So lubricated, you might slip through space-time."
 	icon_state = "bluespacetomato"
 	potency = 20
-	
+
 	filling_color = "#91F8FF"
 	plantname = "bluespacetomato"
 

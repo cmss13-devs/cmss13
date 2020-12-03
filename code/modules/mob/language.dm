@@ -83,6 +83,33 @@
 	colour = "soghun"
 	key = "3"
 
+/datum/language/german
+	name = "Spacendeutchen"
+	desc = "A common dialect consisting of a hybrid between American English and German developed due to the high immigration and subsequent enlistment of German-Americans into the USCM."
+	speech_verb = "proclaims"
+	ask_verb = "inquires"
+	exclaim_verb = "bellows loudly"
+	colour = "german"
+	key = "4"
+
+/datum/language/spanish
+	name = "American Spanish"
+	desc = "The second most common language spoken in the UA, but mostly mutated from its original roots of its mother tongues in Spain and Latin America."
+	speech_verb = "dice"
+	ask_verb = "cuestiona"
+	exclaim_verb = "grita"
+	colour = "spanish"
+	key = "5"
+
+/datum/language/commando
+	name = "Tactical Sign Language"
+	desc = "TSL is a modern technique with a combination of modified American sign language, tactical hand signals and discreet and esoteric code names for radios only known by elite commando groups."
+	speech_verb = "discreetly communicates"
+	ask_verb = "interrogates"
+	exclaim_verb = "orders"
+	colour = "commando"
+	key = "6"
+
 /datum/language/sainja //Yautja tongue
 	name = "Sainja"
 	desc = "The deep, rumbling, gutteral sounds of the Yautja predators. It is difficult to speak for those without facial mandibles."

@@ -386,6 +386,9 @@
 	H.change_real_name(H, random_name)
 	H.age = rand(17,45)
 
+/datum/equipment_preset/pmc/deathsquad/load_languages(mob/living/carbon/human/H)
+	H.set_languages(list("English", "Tradeband", "Tactical Sign Language"))
+
 /datum/equipment_preset/pmc/deathsquad/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/commando, WEAR_EAR)

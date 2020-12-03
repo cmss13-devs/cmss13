@@ -42,7 +42,7 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
 	xeno_cooldown = 180
-	plasma_cost = 50
+	plasma_cost = 20
 
 	var/damage = 65
 
@@ -58,6 +58,6 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	xeno_cooldown = 260
-	plasma_cost = 50
+	plasma_cost = 20
 
 	var/shield_amount = 150

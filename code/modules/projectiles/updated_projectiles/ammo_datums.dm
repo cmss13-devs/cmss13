@@ -1557,7 +1557,7 @@
 	sound_bounce	= "acid_bounce"
 	damage_type = BURN
 	added_spit_delay = 10
-	spit_cost = 100
+	spit_cost = 25
 
 	accuracy = HIT_ACCURACY_TIER_3
 	damage = BULLET_DAMAGE_TIER_5

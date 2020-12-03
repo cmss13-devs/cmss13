@@ -78,7 +78,9 @@
 	vector_x = 19;
 	vector_y = -98
 	},
-/turf/open/floor/plating/almayer,
+/turf/open/floor/plating/almayer{
+	allow_construction = 0
+	},
 /area/almayer/hallways/aft_hallway)
 "aan" = (
 /obj/effect/projector{
@@ -89,7 +91,9 @@
 /obj/structure/catwalk{
 	health = null
 	},
-/turf/open/floor/plating/almayer,
+/turf/open/floor/plating/almayer{
+	allow_construction = 0
+	},
 /area/almayer/hallways/starboard_hallway)
 "aao" = (
 /turf/open/floor/almayer{
@@ -126,7 +130,9 @@
 	vector_x = 2;
 	vector_y = -99
 	},
-/turf/open/floor/almayer,
+/turf/open/floor/almayer{
+	allow_construction = 0
+	},
 /area/almayer/hallways/aft_hallway)
 "aaz" = (
 /obj/structure/largecrate/random/barrel/red,
@@ -171,7 +177,9 @@
 	vector_x = -19;
 	vector_y = 98
 	},
-/turf/open/floor/plating/almayer,
+/turf/open/floor/plating/almayer{
+	allow_construction = 0
+	},
 /area/almayer/hallways/starboard_hallway)
 "aaG" = (
 /obj/effect/projector{
@@ -179,7 +187,9 @@
 	vector_x = 19;
 	vector_y = -98
 	},
-/turf/open/floor/almayer,
+/turf/open/floor/almayer{
+	allow_construction = 0
+	},
 /area/almayer/hallways/aft_hallway)
 "aaH" = (
 /obj/effect/step_trigger/teleporter_vector{
@@ -188,6 +198,7 @@
 	vector_y = -98
 	},
 /turf/open/floor/almayer{
+	allow_construction = 0;
 	icon_state = "plate";
 	tag = "icon-sterile"
 	},
@@ -199,6 +210,7 @@
 	vector_y = -98
 	},
 /turf/open/floor/almayer{
+	allow_construction = 0;
 	icon_state = "plate";
 	tag = "icon-sterile"
 	},
@@ -216,7 +228,9 @@
 	vector_x = 19;
 	vector_y = -98
 	},
-/turf/open/floor/plating/almayer,
+/turf/open/floor/plating/almayer{
+	allow_construction = 0
+	},
 /area/almayer/hallways/aft_hallway)
 "aaL" = (
 /obj/effect/decal/warning_stripes{
@@ -497,7 +511,9 @@
 	vector_x = 19;
 	vector_y = -98
 	},
-/turf/open/floor/plating/almayer,
+/turf/open/floor/plating/almayer{
+	allow_construction = 0
+	},
 /area/almayer/hallways/aft_hallway)
 "abD" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
@@ -892,7 +908,9 @@
 "acF" = (
 /obj/structure/closet/firecloset,
 /obj/effect/step_trigger/clone_cleaner,
-/turf/open/floor/plating/almayer,
+/turf/open/floor/plating/almayer{
+	allow_construction = 0
+	},
 /area/almayer/hallways/starboard_hallway)
 "acG" = (
 /obj/effect/decal/warning_stripes{
@@ -1039,6 +1057,7 @@
 	vector_y = -99
 	},
 /turf/open/floor/almayer{
+	allow_construction = 0;
 	icon_state = "plate";
 	tag = "icon-sterile"
 	},
@@ -1077,11 +1096,15 @@
 	vector_x = 2;
 	vector_y = -99
 	},
-/turf/open/floor/plating/almayer,
+/turf/open/floor/plating/almayer{
+	allow_construction = 0
+	},
 /area/almayer/hallways/aft_hallway)
 "adc" = (
 /obj/effect/step_trigger/clone_cleaner,
-/turf/open/floor/plating/almayer,
+/turf/open/floor/plating/almayer{
+	allow_construction = 0
+	},
 /area/almayer/hallways/aft_hallway)
 "add" = (
 /obj/structure/bed/stool,
@@ -1122,7 +1145,9 @@
 /obj/structure/catwalk{
 	health = null
 	},
-/turf/open/floor/almayer,
+/turf/open/floor/almayer{
+	allow_construction = 0
+	},
 /area/almayer/hallways/aft_hallway)
 "adl" = (
 /turf/closed/shuttle/escapepod,
@@ -1384,7 +1409,9 @@
 /obj/structure/catwalk{
 	health = null
 	},
-/turf/open/floor/plating/almayer,
+/turf/open/floor/plating/almayer{
+	allow_construction = 0
+	},
 /area/almayer/hallways/aft_hallway)
 "adS" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer{
@@ -1743,7 +1770,9 @@
 	vector_x = -2;
 	vector_y = 99
 	},
-/turf/open/floor/plating/almayer,
+/turf/open/floor/plating/almayer{
+	allow_construction = 0
+	},
 /area/almayer/hallways/starboard_hallway)
 "aeM" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer{
@@ -1807,7 +1836,9 @@
 	vector_x = 19;
 	vector_y = -104
 	},
-/turf/open/floor/plating/almayer,
+/turf/open/floor/plating/almayer{
+	allow_construction = 0
+	},
 /area/almayer/hallways/aft_hallway)
 "aeU" = (
 /obj/effect/decal/warning_stripes{
@@ -2589,7 +2620,9 @@
 /area/almayer/powered)
 "ahj" = (
 /obj/effect/step_trigger/clone_cleaner,
-/turf/open/floor/plating/almayer,
+/turf/open/floor/plating/almayer{
+	allow_construction = 0
+	},
 /area/almayer/hallways/starboard_hallway)
 "ahk" = (
 /obj/structure/closet/firecloset,
@@ -3209,7 +3242,9 @@
 	vector_x = 1;
 	vector_y = -103
 	},
-/turf/open/floor/plating/almayer,
+/turf/open/floor/plating/almayer{
+	allow_construction = 0
+	},
 /area/almayer/hallways/aft_hallway)
 "aiK" = (
 /obj/structure/surface/table/almayer,
@@ -3275,7 +3310,9 @@
 /obj/structure/catwalk{
 	health = null
 	},
-/turf/open/floor/plating/almayer,
+/turf/open/floor/plating/almayer{
+	allow_construction = 0
+	},
 /area/almayer/hallways/starboard_hallway)
 "aiR" = (
 /obj/structure/stairs{
@@ -3287,7 +3324,9 @@
 	vector_x = -2;
 	vector_y = 99
 	},
-/turf/open/floor/plating/almayer,
+/turf/open/floor/plating/almayer{
+	allow_construction = 0
+	},
 /area/almayer/hallways/starboard_hallway)
 "aiS" = (
 /obj/structure/machinery/light{
@@ -3548,7 +3587,9 @@
 /obj/structure/catwalk{
 	health = null
 	},
-/turf/open/floor/plating/almayer,
+/turf/open/floor/plating/almayer{
+	allow_construction = 0
+	},
 /area/almayer/hallways/aft_hallway)
 "ajF" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -3624,7 +3665,9 @@
 	vector_x = -19;
 	vector_y = 98
 	},
-/turf/open/floor/plating/almayer,
+/turf/open/floor/plating/almayer{
+	allow_construction = 0
+	},
 /area/almayer/hallways/starboard_hallway)
 "ajP" = (
 /obj/structure/pipes/standard/manifold/hidden/supply,
@@ -3682,7 +3725,9 @@
 /area/almayer/hallways/stern_hallway)
 "ajX" = (
 /obj/effect/step_trigger/clone_cleaner,
-/turf/open/floor/plating/almayer,
+/turf/open/floor/plating/almayer{
+	allow_construction = 0
+	},
 /area/almayer/hallways/port_hallway)
 "ajY" = (
 /turf/open/floor/almayer_hull{
@@ -4106,7 +4151,9 @@
 "akX" = (
 /obj/effect/step_trigger/clone_cleaner,
 /obj/structure/closet/firecloset,
-/turf/open/floor/plating/almayer,
+/turf/open/floor/plating/almayer{
+	allow_construction = 0
+	},
 /area/almayer/hallways/port_hallway)
 "akY" = (
 /obj/structure/machinery/light,
@@ -4491,7 +4538,9 @@
 	vector_x = 1;
 	vector_y = -103
 	},
-/turf/open/floor/plating/almayer,
+/turf/open/floor/plating/almayer{
+	allow_construction = 0
+	},
 /area/almayer/hallways/aft_hallway)
 "alX" = (
 /turf/open/floor/almayer,
@@ -4869,7 +4918,9 @@
 	vector_y = 104
 	},
 /obj/structure/blocker/forcefield/vehicles,
-/turf/open/floor/plating/almayer,
+/turf/open/floor/plating/almayer{
+	allow_construction = 0
+	},
 /area/almayer/hallways/port_hallway)
 "amT" = (
 /obj/structure/disposalpipe/segment{
@@ -4902,7 +4953,9 @@
 	vector_x = 2;
 	vector_y = -99
 	},
-/turf/open/floor/plating/almayer,
+/turf/open/floor/plating/almayer{
+	allow_construction = 0
+	},
 /area/almayer/hallways/aft_hallway)
 "amX" = (
 /turf/open/floor/almayer{
@@ -5035,7 +5088,9 @@
 	vector_x = -19;
 	vector_y = 104
 	},
-/turf/open/floor/plating/almayer,
+/turf/open/floor/plating/almayer{
+	allow_construction = 0
+	},
 /area/almayer/hallways/port_hallway)
 "ann" = (
 /obj/structure/bed/chair{
@@ -5371,7 +5426,9 @@
 	vector_x = -19;
 	vector_y = 104
 	},
-/turf/open/floor/plating/almayer,
+/turf/open/floor/plating/almayer{
+	allow_construction = 0
+	},
 /area/almayer/hallways/port_hallway)
 "aod" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer{
@@ -5842,7 +5899,9 @@
 /obj/structure/catwalk{
 	health = null
 	},
-/turf/open/floor/almayer,
+/turf/open/floor/almayer{
+	allow_construction = 0
+	},
 /area/almayer/hallways/aft_hallway)
 "apl" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
@@ -5894,7 +5953,9 @@
 	vector_x = 2;
 	vector_y = -99
 	},
-/turf/open/floor/plating/almayer,
+/turf/open/floor/plating/almayer{
+	allow_construction = 0
+	},
 /area/almayer/hallways/aft_hallway)
 "apt" = (
 /obj/structure/machinery/camera/autoname/almayer{
@@ -6624,6 +6685,7 @@
 	vector_y = 98
 	},
 /turf/open/floor/almayer{
+	allow_construction = 0;
 	icon_state = "plate";
 	tag = "icon-sterile"
 	},
@@ -6814,7 +6876,9 @@
 	vector_x = -2;
 	vector_y = 99
 	},
-/turf/open/floor/almayer,
+/turf/open/floor/almayer{
+	allow_construction = 0
+	},
 /area/almayer/hallways/starboard_hallway)
 "arP" = (
 /obj/structure/machinery/status_display{
@@ -6889,6 +6953,7 @@
 	vector_y = 99
 	},
 /turf/open/floor/almayer{
+	allow_construction = 0;
 	icon_state = "plate";
 	tag = "icon-sterile"
 	},
@@ -6927,7 +6992,9 @@
 	vector_x = -2;
 	vector_y = 99
 	},
-/turf/open/floor/plating/almayer,
+/turf/open/floor/plating/almayer{
+	allow_construction = 0
+	},
 /area/almayer/hallways/starboard_hallway)
 "ase" = (
 /turf/open/floor/almayer{
@@ -7001,7 +7068,9 @@
 	vector_x = 2;
 	vector_y = -99
 	},
-/turf/open/floor/plating/almayer,
+/turf/open/floor/plating/almayer{
+	allow_construction = 0
+	},
 /area/almayer/hallways/aft_hallway)
 "asn" = (
 /obj/structure/window/framed/almayer/white,
@@ -7075,7 +7144,9 @@
 	vector_x = 19;
 	vector_y = -104
 	},
-/turf/open/floor/plating/almayer,
+/turf/open/floor/plating/almayer{
+	allow_construction = 0
+	},
 /area/almayer/hallways/aft_hallway)
 "asC" = (
 /obj/effect/step_trigger/teleporter_vector{
@@ -7086,7 +7157,9 @@
 /obj/structure/catwalk{
 	health = null
 	},
-/turf/open/floor/almayer,
+/turf/open/floor/almayer{
+	allow_construction = 0
+	},
 /area/almayer/hallways/aft_hallway)
 "asD" = (
 /obj/structure/machinery/light{
@@ -7168,7 +7241,9 @@
 	vector_x = 19;
 	vector_y = -104
 	},
-/turf/open/floor/almayer,
+/turf/open/floor/almayer{
+	allow_construction = 0
+	},
 /area/almayer/hallways/aft_hallway)
 "asN" = (
 /obj/structure/filingcabinet,
@@ -7341,7 +7416,9 @@
 	vector_x = 1;
 	vector_y = -103
 	},
-/turf/open/floor/almayer,
+/turf/open/floor/almayer{
+	allow_construction = 0
+	},
 /area/almayer/hallways/aft_hallway)
 "atk" = (
 /obj/structure/machinery/door/airlock/almayer/secure,
@@ -7366,6 +7443,7 @@
 	vector_y = -103
 	},
 /turf/open/floor/almayer{
+	allow_construction = 0;
 	icon_state = "plate";
 	tag = "icon-sterile"
 	},
@@ -7525,7 +7603,9 @@
 	vector_x = 1;
 	vector_y = -103
 	},
-/turf/open/floor/plating/almayer,
+/turf/open/floor/plating/almayer{
+	allow_construction = 0
+	},
 /area/almayer/hallways/aft_hallway)
 "atK" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
@@ -7714,7 +7794,9 @@
 	vector_x = -1;
 	vector_y = 103
 	},
-/turf/open/floor/almayer,
+/turf/open/floor/almayer{
+	allow_construction = 0
+	},
 /area/almayer/hallways/port_hallway)
 "auf" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
@@ -7754,6 +7836,7 @@
 	vector_y = 103
 	},
 /turf/open/floor/almayer{
+	allow_construction = 0;
 	icon_state = "plate";
 	tag = "icon-sterile"
 	},
@@ -7767,7 +7850,9 @@
 	vector_x = -1;
 	vector_y = 103
 	},
-/turf/open/floor/plating/almayer,
+/turf/open/floor/plating/almayer{
+	allow_construction = 0
+	},
 /area/almayer/hallways/port_hallway)
 "aum" = (
 /turf/closed/wall/almayer,
@@ -7785,7 +7870,9 @@
 	vector_x = -1;
 	vector_y = 103
 	},
-/turf/open/floor/plating/almayer,
+/turf/open/floor/plating/almayer{
+	allow_construction = 0
+	},
 /area/almayer/hallways/port_hallway)
 "auo" = (
 /obj/structure/machinery/vending/cigarette,
@@ -8522,7 +8609,9 @@
 	vector_y = -103
 	},
 /obj/structure/machinery/light,
-/turf/open/floor/plating/almayer,
+/turf/open/floor/plating/almayer{
+	allow_construction = 0
+	},
 /area/almayer/hallways/aft_hallway)
 "awf" = (
 /obj/structure/surface/rack,
@@ -9965,7 +10054,9 @@
 	vector_x = -1;
 	vector_y = 103
 	},
-/turf/open/floor/plating/almayer,
+/turf/open/floor/plating/almayer{
+	allow_construction = 0
+	},
 /area/almayer/hallways/port_hallway)
 "azz" = (
 /turf/open/floor/almayer{
@@ -10016,7 +10107,9 @@
 	vector_x = -1;
 	vector_y = 103
 	},
-/turf/open/floor/plating/almayer,
+/turf/open/floor/plating/almayer{
+	allow_construction = 0
+	},
 /area/almayer/hallways/port_hallway)
 "azE" = (
 /obj/effect/decal/warning_stripes{
@@ -10329,6 +10422,7 @@
 	vector_y = 104
 	},
 /turf/open/floor/almayer{
+	allow_construction = 0;
 	icon_state = "plate";
 	tag = "icon-sterile"
 	},
@@ -13449,7 +13543,9 @@
 	vector_x = 19;
 	vector_y = -104
 	},
-/turf/open/floor/plating/almayer,
+/turf/open/floor/plating/almayer{
+	allow_construction = 0
+	},
 /area/almayer/hallways/aft_hallway)
 "aKK" = (
 /turf/closed/shuttle/escapepod{
@@ -13746,7 +13842,11 @@
 	vector_x = 19;
 	vector_y = -104
 	},
-/turf/open/floor/plating/almayer,
+/turf/open/floor/almayer{
+	allow_construction = 0;
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
 /area/almayer/hallways/aft_hallway)
 "aLZ" = (
 /obj/structure/surface/table/almayer,
@@ -17371,7 +17471,9 @@
 	vector_x = 19;
 	vector_y = -104
 	},
-/turf/open/floor/almayer,
+/turf/open/floor/almayer{
+	allow_construction = 0
+	},
 /area/almayer/hallways/aft_hallway)
 "aZH" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -17923,7 +18025,9 @@
 	vector_x = 19;
 	vector_y = -104
 	},
-/turf/open/floor/almayer,
+/turf/open/floor/almayer{
+	allow_construction = 0
+	},
 /area/almayer/hallways/aft_hallway)
 "bbr" = (
 /obj/structure/window/framed/almayer,
@@ -17989,7 +18093,9 @@
 	vector_x = -19;
 	vector_y = 98
 	},
-/turf/open/floor/almayer,
+/turf/open/floor/almayer{
+	allow_construction = 0
+	},
 /area/almayer/hallways/starboard_hallway)
 "bbC" = (
 /obj/structure/machinery/light{
@@ -18004,7 +18110,9 @@
 /obj/structure/catwalk{
 	health = null
 	},
-/turf/open/floor/plating/almayer,
+/turf/open/floor/plating/almayer{
+	allow_construction = 0
+	},
 /area/almayer/hallways/starboard_hallway)
 "bbE" = (
 /obj/structure/machinery/door/airlock/almayer/secure{
@@ -18869,7 +18977,9 @@
 	vector_x = -19;
 	vector_y = 98
 	},
-/turf/open/floor/plating/almayer,
+/turf/open/floor/plating/almayer{
+	allow_construction = 0
+	},
 /area/almayer/hallways/starboard_hallway)
 "bdZ" = (
 /obj/structure/surface/table/almayer,
@@ -36607,7 +36717,9 @@
 	vector_x = -19;
 	vector_y = 98
 	},
-/turf/open/floor/plating/almayer,
+/turf/open/floor/plating/almayer{
+	allow_construction = 0
+	},
 /area/almayer/hallways/starboard_hallway)
 "clD" = (
 /turf/open/floor/almayer{
@@ -37217,7 +37329,9 @@
 	vector_y = 98
 	},
 /obj/structure/blocker/forcefield/vehicles,
-/turf/open/floor/plating/almayer,
+/turf/open/floor/plating/almayer{
+	allow_construction = 0
+	},
 /area/almayer/hallways/starboard_hallway)
 "cnp" = (
 /obj/structure/surface/table/almayer,
@@ -37798,7 +37912,9 @@
 "cyG" = (
 /obj/effect/step_trigger/clone_cleaner,
 /obj/structure/blocker/forcefield/vehicles,
-/turf/open/floor/plating/almayer,
+/turf/open/floor/plating/almayer{
+	allow_construction = 0
+	},
 /area/almayer/hallways/port_hallway)
 "cyR" = (
 /obj/structure/disposalpipe/segment{
@@ -38358,7 +38474,9 @@
 /obj/structure/catwalk{
 	health = null
 	},
-/turf/open/floor/plating/almayer,
+/turf/open/floor/plating/almayer{
+	allow_construction = 0
+	},
 /area/almayer/hallways/port_hallway)
 "dix" = (
 /obj/structure/machinery/door/airlock/almayer/secure{
@@ -38714,7 +38832,9 @@
 	vector_x = 19;
 	vector_y = -98
 	},
-/turf/open/floor/almayer,
+/turf/open/floor/almayer{
+	allow_construction = 0
+	},
 /area/almayer/hallways/aft_hallway)
 "dyd" = (
 /obj/structure/bed/chair{
@@ -40153,7 +40273,9 @@
 	vector_x = -19;
 	vector_y = 104
 	},
-/turf/open/floor/almayer,
+/turf/open/floor/almayer{
+	allow_construction = 0
+	},
 /area/almayer/hallways/port_hallway)
 "eZH" = (
 /obj/effect/landmark/start{
@@ -43869,7 +43991,9 @@
 	health = null
 	},
 /obj/structure/machinery/light,
-/turf/open/floor/plating/almayer,
+/turf/open/floor/plating/almayer{
+	allow_construction = 0
+	},
 /area/almayer/hallways/port_hallway)
 "jjZ" = (
 /obj/structure/machinery/light{
@@ -44878,7 +45002,9 @@
 /obj/structure/catwalk{
 	health = null
 	},
-/turf/open/floor/plating/almayer,
+/turf/open/floor/plating/almayer{
+	allow_construction = 0
+	},
 /area/almayer/hallways/starboard_hallway)
 "ktO" = (
 /obj/effect/decal/warning_stripes{
@@ -45117,7 +45243,9 @@
 /obj/structure/catwalk{
 	health = null
 	},
-/turf/open/floor/plating/almayer,
+/turf/open/floor/plating/almayer{
+	allow_construction = 0
+	},
 /area/almayer/hallways/starboard_hallway)
 "kHk" = (
 /obj/structure/reagent_dispensers/fueltank/custom{
@@ -45684,7 +45812,9 @@
 "lpD" = (
 /obj/effect/step_trigger/clone_cleaner,
 /obj/structure/blocker/forcefield/vehicles,
-/turf/open/floor/plating/almayer,
+/turf/open/floor/plating/almayer{
+	allow_construction = 0
+	},
 /area/almayer/hallways/starboard_hallway)
 "lpF" = (
 /obj/structure/closet/secure_closet/guncabinet/red,
@@ -47673,7 +47803,11 @@
 	vector_x = 19;
 	vector_y = -104
 	},
-/turf/open/floor/plating/almayer,
+/turf/open/floor/almayer{
+	allow_construction = 0;
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
 /area/almayer/hallways/aft_hallway)
 "noe" = (
 /turf/closed/wall/almayer{
@@ -49169,7 +49303,9 @@
 	vector_x = -19;
 	vector_y = 104
 	},
-/turf/open/floor/plating/almayer,
+/turf/open/floor/plating/almayer{
+	allow_construction = 0
+	},
 /area/almayer/hallways/port_hallway)
 "pgH" = (
 /obj/structure/window/reinforced{
@@ -49204,6 +49340,22 @@
 	tag = "icon-rasputin15"
 	},
 /area/almayer/hull/lower_hull)
+"pjb" = (
+/obj/effect/step_trigger/clone_cleaner,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	tag = "icon-E-corner"
+	},
+/obj/structure/machinery/light{
+	dir = 4;
+	tag = "icon-tube1 (EAST)"
+	},
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "red";
+	tag = "icon-red (WEST)"
+	},
+/area/almayer/hallways/aft_hallway)
 "pjC" = (
 /obj/structure/machinery/autolathe,
 /turf/open/floor/almayer{
@@ -52102,6 +52254,16 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/medical/lower_medical)
+"slt" = (
+/obj/structure/machinery/door_control{
+	id = "kitchen";
+	name = "Kitchen Shutters";
+	pixel_x = -25
+	},
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/almayer/living/grunt_rnr)
 "smr" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 6;
@@ -52192,7 +52354,9 @@
 	tag = "icon-camera (NORTH)"
 	},
 /obj/structure/blocker/forcefield/vehicles,
-/turf/open/floor/plating/almayer,
+/turf/open/floor/plating/almayer{
+	allow_construction = 0
+	},
 /area/almayer/hallways/port_hallway)
 "soA" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -53301,7 +53465,9 @@
 /obj/structure/catwalk{
 	health = null
 	},
-/turf/open/floor/plating/almayer,
+/turf/open/floor/plating/almayer{
+	allow_construction = 0
+	},
 /area/almayer/hallways/port_hallway)
 "txy" = (
 /obj/structure/pipes/vents/pump{
@@ -53476,7 +53642,9 @@
 /obj/structure/catwalk{
 	health = null
 	},
-/turf/open/floor/plating/almayer,
+/turf/open/floor/plating/almayer{
+	allow_construction = 0
+	},
 /area/almayer/hallways/port_hallway)
 "tGO" = (
 /obj/effect/projector{
@@ -53487,7 +53655,9 @@
 /obj/structure/catwalk{
 	health = null
 	},
-/turf/open/floor/plating/almayer,
+/turf/open/floor/plating/almayer{
+	allow_construction = 0
+	},
 /area/almayer/hallways/port_hallway)
 "tHD" = (
 /obj/effect/projector{
@@ -54484,7 +54654,9 @@
 	vector_x = -19;
 	vector_y = 104
 	},
-/turf/open/floor/plating/almayer,
+/turf/open/floor/plating/almayer{
+	allow_construction = 0
+	},
 /area/almayer/hallways/port_hallway)
 "uRo" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -56828,7 +57000,9 @@
 	vector_y = 99
 	},
 /obj/structure/machinery/light,
-/turf/open/floor/plating/almayer,
+/turf/open/floor/plating/almayer{
+	allow_construction = 0
+	},
 /area/almayer/hallways/starboard_hallway)
 "xpT" = (
 /obj/structure/pipes/vents/pump{
@@ -57573,6 +57747,22 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/shipboard/brig_cells)
+"yfx" = (
+/obj/effect/step_trigger/clone_cleaner,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	tag = "icon-E"
+	},
+/obj/structure/machinery/light{
+	dir = 4;
+	tag = "icon-tube1 (EAST)"
+	},
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "red";
+	tag = "icon-red (WEST)"
+	},
+/area/almayer/hallways/aft_hallway)
 "yfJ" = (
 /obj/structure/window/framed/almayer,
 /turf/open/floor/almayer{
@@ -88249,7 +88439,7 @@ cfg
 vFK
 cjG
 ckL
-chG
+slt
 cqb
 aLd
 cmM
@@ -94597,7 +94787,7 @@ aai
 ahb
 aiv
 aaW
-abM
+pjb
 abM
 abl
 afr
@@ -94653,7 +94843,7 @@ ayH
 aeM
 ccp
 aGR
-aGR
+yfx
 aKC
 biI
 aeq

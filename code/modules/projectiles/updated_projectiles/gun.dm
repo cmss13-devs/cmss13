@@ -112,6 +112,7 @@
 	var/list/starting_attachment_types = null //What attachments this gun starts with THAT CAN BE REMOVED. Important to avoid nuking the attachments on restocking! Added on New()
 
 	var/flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK
+	var/gun_category //Only guns of the same category can be fired together while dualwielding.
 
 	var/base_gun_icon //the default gun icon_state. change to reskin the gun
 	var/has_empty_icon = TRUE // whether gun has icon state of (base_gun_icon)_e
@@ -899,7 +900,7 @@ and you're good to go.
 				var/obj/item/IH = user.get_inactive_hand()
 				if(istype(IH, /obj/item/weapon/gun))
 					var/obj/item/weapon/gun/OG = IH
-					if(!(OG.flags_gun_features & GUN_WIELDED_FIRING_ONLY))
+					if(!(OG.flags_gun_features & GUN_WIELDED_FIRING_ONLY) && OG.gun_category == gun_category)
 						OG.Fire(target,user,params, 0, TRUE)
 						dual_wield = TRUE
 						recoil_comp++

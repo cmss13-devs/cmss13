@@ -47,6 +47,10 @@
 
 /obj/item/frame/table/attack_self(mob/user)
 
+	var/obj/structure/blocker/anti_cade/AC = locate(/obj/structure/blocker/anti_cade) in usr.loc  // for M2C HMG, look at smartgun_mount.dm
+	if(AC)
+		to_chat(user, SPAN_WARNING("You can't construct the table here!"))
+		return
 	if(istype(get_area(loc), /area/shuttle))  //HANGAR/SHUTTLE BUILDING
 		to_chat(user, SPAN_WARNING("No. This area is needed for the dropship."))
 		return

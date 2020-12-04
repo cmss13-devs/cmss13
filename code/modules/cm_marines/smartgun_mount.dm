@@ -360,6 +360,9 @@
 	var/zoom = 0 // 0 is it doesn't zoom, 1 is that it zooms.
 	var/damage_state = M56D_DMG_NONE
 
+	var/gun_noise = 'sound/weapons/gun_rifle.ogg' // Variations for gun noises for M56D, M56DE, the auto one, uses a different set of sounds. emergency_cooling
+	var/empty_alarm = 'sound/weapons/smg_empty_alarm.ogg'
+
 //Making so rockets don't hit M56D
 /obj/structure/machinery/m56d_hmg/calculate_cover_hit_boolean(obj/item/projectile/P, var/distance = 0, var/cade_direction_correct = FALSE)
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
@@ -600,11 +603,7 @@
 			var/initial_angle = Get_Angle(T, U)
 			var/final_angle = initial_angle
 
-
-			var/total_scatter_angle = in_chamber.ammo.scatter
-
-			if (shots_fired > 1)
-				total_scatter_angle += burst_scatter_mult * (shots_fired -1)
+			var/total_scatter_angle = get_scatter()
 
 			if(total_scatter_angle > 0)
 				final_angle += rand(-total_scatter_angle, total_scatter_angle)
@@ -613,17 +612,27 @@
 			in_chamber.weapon_source_mob = user
 			in_chamber.dir = src.dir
 			in_chamber.def_zone = pick("chest","chest","chest","head")
-			playsound(src.loc, 'sound/weapons/gun_rifle.ogg', 75, 1)
-			in_chamber.fire_at(target,src,null,ammo.max_range,ammo.shell_speed)
+			playsound(loc,gun_noise, 50, 1)
+			in_chamber.fire_at(target,user,src,ammo.max_range,ammo.shell_speed)
 			if(target)
 				muzzle_flash(final_angle)
 			in_chamber = null
 			rounds--
 			if(!rounds)
-				visible_message(SPAN_NOTICE(" [htmlicon(src, viewers(src))] \The M56D beeps steadily and its ammo light blinks red."))
-				playsound(src.loc, 'sound/weapons/smg_empty_alarm.ogg', 25, 1)
-				update_icon() //final safeguard.
+				handle_ammo_out()
 	return
+
+/obj/structure/machinery/m56d_hmg/proc/get_scatter(shots_fired = 1)
+	var/total_scatter_angle = in_chamber.ammo.scatter
+
+	if (shots_fired > 1)
+		total_scatter_angle += burst_scatter_mult * (shots_fired -1)
+	return total_scatter_angle
+
+/obj/structure/machinery/m56d_hmg/proc/handle_ammo_out(mob/user)
+	visible_message(SPAN_NOTICE(" [htmlicon(src, viewers(src))] [src] beeps steadily and its ammo light blinks red."))
+	playsound(loc, empty_alarm, 25, 1)
+	update_icon() //final safeguard.
 
 // New proc for MGs and stuff replaced handle_manual_fire(). Same arguements though, so alls good.
 /obj/structure/machinery/m56d_hmg/handle_click(mob/living/carbon/human/user, atom/A, var/list/mods)
@@ -660,6 +669,7 @@
 			playsound(src, 'sound/weapons/gun_empty.ogg', 25, 1, 5)
 		else
 			process_shot(user)
+
 		return HANDLE_CLICK_HANDLED
 
 	return HANDLE_CLICK_UNHANDLED
@@ -760,12 +770,8 @@
 		return 1
 	return ..()
 
-/obj/structure/machinery/m56d_hmg/Collided(atom/movable/AM)
-	..()
-
-	if(istype(AM, /mob/living/carbon/Xenomorph/Crusher))
-		update_health(400)
-
+/obj/structure/machinery/m56d_hmg/proc/CrusherImpact()
+	update_health(400)
 
 /obj/structure/machinery/m56d_hmg/mg_turret //Our mapbound version with stupid amounts of ammo.
 	name = "\improper scoped M56D heavy machine gun nest"
@@ -793,3 +799,639 @@
 		deployment_system.deployed_mg = null
 		deployment_system = null
 	return ..()
+
+/*M2C HEAVY MACHINEGUN AND ITS COMPONENTS */
+// AMMO
+/obj/item/ammo_magazine/m2c
+	name = "M2C Ammunition Box (10x28mm tungsten rounds)"
+	desc = "A box of 125, 10x28mm tungsten rounds for the M2 Heavy Machinegun System. Click the heavy machinegun while there's no ammo box loaded to reload the M2C."
+	w_class = SIZE_LARGE
+	icon = 'icons/obj/items/weapons/guns/ammo.dmi'
+	icon_state = "m56de"
+	item_state = "m56de"
+	max_rounds = 125
+	default_ammo = /datum/ammo/bullet/smartgun
+	gun_type = null
+
+//STORAGE BOX FOR THE MACHINEGUN
+/obj/item/storage/box/m56d/m2c
+	name = "\improper M2C Assembly-Supply Crate"
+	desc = "A large case labelled 'M2C, 10x28mm caliber heavy machinegun', seems to be fairly heavy to hold. contains a deadly M2C Heavy Machinegun System and its ammunition."
+	icon = 'icons/turf/whiskeyoutpost.dmi'
+	icon_state = "M56D_case"
+	w_class = SIZE_HUGE
+	storage_slots = 5
+
+/obj/item/storage/box/m56d/m2c/Initialize()
+	..()
+
+	new /obj/item/device/m2c_gun(src)
+	new /obj/item/ammo_magazine/m2c(src)
+	new /obj/item/ammo_magazine/m2c(src)
+	new /obj/item/ammo_magazine/m2c(src)
+	new /obj/item/ammo_magazine/m2c(src)
+
+// THE GUN ITSELF
+
+/obj/item/device/m2c_gun
+	name = "\improper M2C heavy machine gun"
+	desc = "The disassembled M2C HMG, with its telescopic tripods folded up and unable to fire."
+	unacidable = TRUE
+	w_class = SIZE_HUGE
+	flags_equip_slot = SLOT_BACK
+	icon = 'icons/turf/whiskeyoutpost.dmi'
+	icon_state = "M56DE_gun_mount"
+	item_state = "M56DE_gun_mount"
+	var/assembly_time = 8
+	var/rounds = 0
+	var/overheat_value = 0
+	var/anti_cadehugger_range = 1
+	var/broken_gun = FALSE
+	var/field_recovery = 130
+
+/obj/item/device/m2c_gun/Initialize()
+	. = ..()
+	update_icon()
+
+/obj/item/device/m2c_gun/update_icon() //Lets generate the icon based on how much ammo it has.
+	var/icon_name = initial(icon_state)
+	if(broken_gun)
+		icon_name += "_broken"
+		if(!rounds)
+			icon_name += "_e"
+
+	else if(!broken_gun && !rounds)
+		icon_name += "_e"
+
+	icon_state = icon_name
+
+/obj/item/device/m2c_gun/attack_self(mob/user)
+	if(!ishuman(user))
+		return FALSE
+	var/turf/rotate_check = get_step(user.loc, turn(user.dir,180))
+	var/turf/open/OT = usr.loc
+	var/turf/ACR = range(anti_cadehugger_range, user.loc)
+	if(OT.density)
+		to_chat(user, SPAN_WARNING("You can't set up [src] here."))
+		return
+	if(rotate_check.density)
+		to_chat(user, SPAN_WARNING("You can't set up [src] that way, there's a wall behind you!"))
+		return
+	if(broken_gun)
+		to_chat(user, SPAN_WARNING("You can't set up [src], it's completely broken!"))
+		return
+	if(!(user.alpha > 60))
+		to_chat(user, SPAN_WARNING("You can't set this up while cloaked!"))
+		return
+
+	if(!do_after(user, assembly_time* user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL, BUSY_ICON_FRIENDLY, src))
+		return
+	var/obj/structure/machinery/m56d_hmg/auto/M = new /obj/structure/machinery/m56d_hmg/auto(user.loc)
+	M.dir = user.dir // Make sure we face the right direction
+	M.anchored = TRUE
+	playsound(M, 'sound/items/m56dauto_setup.ogg', 75, 1)
+	to_chat(user, SPAN_NOTICE("You deploy [M]."))
+	if(rounds > 0)
+		user.set_interaction(M)
+	M.rounds = rounds
+	M.overheat_value = overheat_value
+	M.update_icon()
+	qdel(src)
+
+/obj/item/device/m2c_gun/attackby(var/obj/item/O as obj, mob/user as mob)
+	if(!ishuman(user))
+		return
+
+	if(iswelder(O) || user.action_busy)
+		return
+
+	if(!broken_gun)
+		to_chat(user, SPAN_WARNING("[src] isn't critically broken, no need for field recovery operations."))
+		return
+
+	var/obj/item/tool/weldingtool/WT = O
+
+	if(WT.remove_fuel(2, user))
+		user.visible_message(SPAN_NOTICE("[user] begins field recovering [src]."), \
+			SPAN_NOTICE("You begin repairing the severe damages on the [src] in an effort to restore its functions."))
+		playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
+		if(!do_after(user, field_recovery * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL, BUSY_ICON_FRIENDLY, src))
+			return
+		user.visible_message(SPAN_NOTICE("[user] field recovers [src], restoring it back to its original state."), \
+				SPAN_NOTICE("You repair [src] back to a functional state."))
+		broken_gun = FALSE
+		unacidable = TRUE
+		update_icon()
+	else
+		to_chat(user, SPAN_WARNING("You need more fuel in [WT] to start field recovery on [src]."))
+		return
+	return
+
+// MACHINEGUN, AUTOMATIC
+/obj/structure/machinery/m56d_hmg/auto
+	name = "\improper M2C Heavy Machinegun"
+	desc = "A deployable, heavy machine gun. The M2C 'Chimp' HB is a modified M2 HB recongifured to fire 10x28 Caseless Tungsten rounds for USCM use. It is capable of recoiless fire and fast-rotating. However it has a debilitating overheating issue due to the poor quality of metals used in the parts, forcing it to be used in decisive, crushing engagements as a squad support weapon. <B> Click its sprite while behind it without holding anything to man it. Click-drag on NON-GRAB intent to disassemble the gun, GRAB INTENT to remove ammo magazines."
+	icon = 'icons/turf/whiskeyoutpost.dmi'
+	icon_state = "M56DE"
+	icon_full = "M56DE"
+	icon_empty = "M56DE_e"
+	rounds_max = 125
+	ammo = /datum/ammo/bullet/machinegun/auto //rework ammo
+	fire_delay = 1.2
+	last_fired = 0
+	var/grip_dir = null
+	var/fold_time = 32
+	var/repair_time = 40
+	density = 1
+	health = 260
+	health_max = 260
+	var/list/cadeblockers = list()
+	var/cadeblockers_range = 1
+
+	// USED FOR ANIMATIONS AND ROTATIONS
+	var/user_old_x = 0
+	var/user_old_y = 0
+
+	gun_noise = 'sound/weapons/gun_m56d_auto.ogg'
+	empty_alarm = 'sound/weapons/hmg_eject_mag.ogg'
+
+	// OVERHEAT MECHANIC VARIABLES
+	var/overheat_value = 0
+	var/overheat_threshold = 45
+	var/emergency_cooling = FALSE
+	var/overheat_text_cooldown = 0
+	var/force_cooldown_timer = 20
+	var/threshold_ticker = 0 // meant for natural cooldown text
+	var/rotate_timer = 0
+	var/fire_stopper = FALSE
+
+// ANTI-CADE EFFECT, CREDIT TO WALTERMELDRON
+
+/obj/structure/machinery/m56d_hmg/auto/Initialize()
+	. = ..()
+	for(var/turf/T in range(cadeblockers_range, src))
+		var/obj/structure/blocker/anti_cade/CB = new(T)
+		CB.hmg = src
+
+		cadeblockers.Add(CB)
+
+/obj/structure/machinery/m56d_hmg/auto/Destroy()
+	QDEL_NULL_LIST(cadeblockers)
+
+	return ..()
+
+/obj/structure/machinery/m56d_hmg/auto/process(mob/user)
+
+	user = operator
+	overheat_value -= 4
+	if(overheat_value <= 0)
+		overheat_value = 0
+		STOP_PROCESSING(SSobj, src)
+
+	if(world.time > threshold_ticker)
+		threshold_ticker = world.time + SECONDS_4
+		if(overheat_value >= 40)
+			to_chat(user, SPAN_HIGHDANGER("[src]'s barrel is critically hot, it might start melting at this rate."))
+		else if(34 >= overheat_value && overheat_value >= 15)
+			to_chat(user, SPAN_DANGER("[src]'s barrel is pretty hot, although it's still stable."))
+		else if (overheat_value > 0)
+			to_chat(user, SPAN_WARNING("[src]'s barrel is mildly warm."))
+
+	update_icon()
+
+
+// ANTI-CADE EFFECT, CREDIT TO WALTERMELDRON
+/obj/structure/blocker/anti_cade
+	health = INFINITY
+	anchored = 1
+	density = 0
+	unacidable = TRUE
+	indestructible = TRUE
+	invisibility = 101 // no looking at it with alt click
+
+	var/obj/structure/machinery/m56d_hmg/auto/hmg
+
+	alpha = 0
+
+/obj/structure/blocker/anti_cade/BlockedPassDirs(atom/movable/AM, target_dir)
+	if(istype(AM, /obj/structure/barricade))
+		return BLOCKED_MOVEMENT
+
+	return ..()
+
+/obj/structure/blocker/anti_cade/Destroy()
+	if(hmg)
+		hmg.cadeblockers.Remove(src)
+		hmg = null
+
+	return ..()
+
+/obj/structure/machinery/m56d_hmg/auto/update_icon() //Lets generate the icon based on how much ammo it has.
+	if(!rounds)
+		icon_state = "[icon_empty]"
+	else
+		icon_state = "[icon_full]"
+
+	if(overheat_value >= 34)
+		overlays += image('icons/turf/whiskeyoutpost.dmi', "+m56de_overheat")
+
+	else
+		overlays -= image('icons/turf/whiskeyoutpost.dmi', "+m56de_overheat")
+
+// DED
+
+/obj/structure/machinery/m56d_hmg/auto/update_health(amount) //Negative values restores health.
+	health -= amount
+	if(health <= 0)
+		playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
+		visible_message(SPAN_WARNING("[src] has broken down completely!"))
+		var/obj/item/device/m2c_gun/HMG = new(src.loc)
+		HMG.rounds = rounds
+		HMG.broken_gun = TRUE
+		HMG.unacidable = FALSE
+		HMG.update_icon()
+		qdel(src)
+		return
+
+	if(health > health_max)
+		health = health_max
+	update_damage_state()
+	update_icon()
+
+/obj/structure/machinery/m56d_hmg/auto/CrusherImpact()
+	update_health(health*0.45)
+	var/mob/user = operator
+	to_chat(user, SPAN_HIGHDANGER("You are knocked off the gun by the sheer force of the ram, temporairly disabling it!"))
+	user.unset_interaction()
+	user.KnockDown(1)
+
+/obj/structure/machinery/m56d_hmg/auto/attackby(var/obj/item/O as obj, mob/user as mob)
+	if(!ishuman(user))
+		return
+	// RELOADING
+	if(istype(O, /obj/item/ammo_magazine/m2c))
+		var/obj/item/ammo_magazine/m2c/M = O
+		if(rounds)
+			to_chat(user, SPAN_WARNING("There's already an ammo box inside of the machinegun, remove it first!"))
+			return
+		if(user.action_busy) return
+		user.visible_message(SPAN_NOTICE(" [user] loads [src] with an ammo box! "),SPAN_NOTICE(" You load [src] with an ammo box!"))
+		playsound(src.loc, 'sound/items/m56dauto_load.ogg', 75, 1)
+		rounds = min(rounds + M.current_rounds, rounds_max)
+		update_icon()
+		user.temp_drop_inv_item(O)
+		qdel(O)
+		return
+
+	// WELDER REPAIR
+	if(iswelder(O))
+		if(user.action_busy)
+			return
+
+		var/obj/item/tool/weldingtool/WT = O
+
+		if(health == health_max)
+			to_chat(user, SPAN_WARNING("[src] doesn't need repairs, it's well-maintained."))
+			return
+
+		if(WT.remove_fuel(2, user))
+			user.visible_message(SPAN_NOTICE("[user] begins repairing damage on [src]."), \
+				SPAN_NOTICE("You begin repairing the damage on the [src]."))
+			playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
+			if(!do_after(user, repair_time * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL, BUSY_ICON_FRIENDLY, src))
+				return
+			user.visible_message(SPAN_NOTICE("[user] repairs some of the damage on [src]."), \
+					SPAN_NOTICE("You repair [src]."))
+			update_health(-round(health_max*0.2))
+			playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
+		else
+			to_chat(user, SPAN_WARNING("You need more fuel in [WT] to repair damage to [src]."))
+		return
+	return
+
+// HANDLING THE CLICK
+
+/obj/structure/machinery/m56d_hmg/auto/handle_click(mob/living/carbon/human/user, atom/A, var/list/mods)
+	if(!operator) return HANDLE_CLICK_UNHANDLED
+	if(operator != user) return HANDLE_CLICK_UNHANDLED
+	if(istype(A,/obj/screen)) return HANDLE_CLICK_UNHANDLED
+	if(user.lying || get_dist(user,src) > 0 || user.is_mob_incapacitated() || user.frozen)
+		user.unset_interaction()
+		return HANDLE_CLICK_UNHANDLED
+	if(user.get_active_hand())
+		to_chat(usr, SPAN_WARNING("You need a free hand to shoot the [src]."))
+		return HANDLE_CLICK_UNHANDLED
+
+	target = A
+	if(!istype(target))
+		return HANDLE_CLICK_UNHANDLED
+
+	if(target.z != src.z || target.z == 0 || src.z == 0 || isnull(operator.loc) || isnull(src.loc))
+		return HANDLE_CLICK_UNHANDLED
+
+	if(get_dist(target,src.loc) > 15)
+		return HANDLE_CLICK_UNHANDLED
+
+	if(mods["middle"] || mods["shift"] || mods["alt"] || mods["ctrl"])
+		return HANDLE_CLICK_PASS_THRU
+
+	var/angle = get_dir(src,target)
+	//we can only fire in a 90 degree cone
+	if((dir & angle) && target.loc != src.loc && target.loc != operator.loc)
+
+		if(!rounds)
+			to_chat(user, SPAN_WARNING("<b>*click*</b>"))
+			playsound(src, 'sound/weapons/gun_empty.ogg', 30, 1, 5)
+		else
+			process_shot(user)
+		return HANDLE_CLICK_HANDLED
+
+	else
+		if(world.time > rotate_timer)
+			rotate_timer = world.time + 3
+			rotate_to(user, A)
+
+	return HANDLE_CLICK_UNHANDLED
+
+
+// AUTOMATIC FIRING
+
+/obj/structure/machinery/m56d_hmg/auto/proc/auto_fire_start(var/atom/A)
+	if(!ismob(operator))
+		return
+	var/mob/user = operator
+	target = A
+
+	auto_fire_repeat(user)
+
+/obj/structure/machinery/m56d_hmg/auto/proc/auto_fire_stop(var/atom/A)
+	target = null
+
+/obj/structure/machinery/m56d_hmg/auto/proc/auto_fire_new_target(var/atom/start, var/atom/hovered)
+	if(!ismob(operator))
+		return
+	var/mob/user = operator
+
+	if(istype(hovered, /obj/screen))
+		return
+
+	if(get_turf(hovered) == get_turf(user))
+		return
+
+	target = hovered
+
+/obj/structure/machinery/m56d_hmg/auto/proc/auto_fire_repeat(var/mob/user, var/atom/A)
+	if(!target)
+		return
+
+	var/angle = get_dir(src,target)
+	if((dir & angle) && target.loc != src.loc && target.loc != operator.loc)
+
+		if(overheat_value >= overheat_threshold)
+			if(world.time > overheat_text_cooldown)
+				user.visible_message(SPAN_HIGHDANGER("[user]'s [src] has overheated, [src] has started to rapidly cool!"),SPAN_HIGHDANGER("[src] has overheated! You have to wait for it to cooldown!"))
+				overheat_text_cooldown = world.time + 3 SECONDS
+			if(!emergency_cooling)
+				emergency_cooling = TRUE
+				to_chat(user, SPAN_DANGER("You wait for [src]'s barrel to cooldown to continue sustained fire."))
+				fire_stopper = TRUE
+				STOP_PROCESSING(SSobj, src)
+				addtimer(CALLBACK(src, .proc/force_cooldown), force_cooldown_timer)
+
+		else if(overheat_value < overheat_threshold && !fire_stopper)
+			fire_shot(1, user)
+			if(rounds)
+				overheat_value = overheat_value + 1
+				START_PROCESSING(SSobj, src)
+	else
+		rotate_to(user, A)
+		return
+
+	addtimer(CALLBACK(src, .proc/auto_fire_repeat, user), fire_delay)
+
+// SCATTER WAS SUPERBUGGED, REVISED M56E FIRING CODE TO AVOID FUTURE INCIDENTS
+
+/obj/structure/machinery/m56d_hmg/auto/handle_ammo_out(mob/user)
+	visible_message(SPAN_NOTICE(" [htmlicon(src, viewers(src))] [src]'s ammo box drops onto the ground, now completely empty."))
+	playsound(loc, empty_alarm, 70, 1)
+	update_icon() //final safeguard.
+	var/obj/item/ammo_magazine/m2c/AM = new /obj/item/ammo_magazine/m2c(src.loc)
+	AM.current_rounds = 0
+	AM.update_icon()
+				
+
+/obj/structure/machinery/m56d_hmg/auto/get_scatter()
+	return 0 
+
+
+
+// ACTIVE COOLING
+
+/obj/structure/machinery/m56d_hmg/auto/proc/force_cooldown(var/mob/user)
+	user = operator
+
+	overheat_value = round((rand(55,70)/100) * overheat_threshold)
+	playsound(src.loc, 'sound/weapons/hmg_cooling.ogg', 75, 1)
+	to_chat(user, SPAN_NOTICE("[src]'s barrel has cooled down enough to restart firing."))
+	emergency_cooling = FALSE
+	fire_stopper = FALSE
+	fire_delay = 1.2
+	update_health(25)
+	START_PROCESSING(SSobj, src)
+	update_icon()
+
+// TOGGLE MODE
+
+/obj/structure/machinery/m56d_hmg/auto/clicked(var/mob/user, var/list/mods, var/atom/A)
+	if (isobserver(user)) return
+
+	if (mods["ctrl"])
+		if(operator != user) return
+		to_chat(user, SPAN_NOTICE("This isn't a M56D, there IS no burst fire option for the M2C."))
+		return
+
+	return ..()
+
+//ATTACK WITH BOTH HANDS COMBO
+
+/obj/structure/machinery/m56d_hmg/auto/attack_hand(mob/user)
+	..()
+	grip_dir = reverse_direction(dir)
+	var/turf/T = get_step(src.loc, grip_dir)
+	if(user.loc == T)
+		if(operator) //If there is already a operator then they're manning it.
+			if(operator.interactee == null)
+				operator = null //this shouldn't happen, but just in case
+			else
+				to_chat(user, "Someone's already controlling it.")
+				return
+		if(!(user.alpha > 60))
+			to_chat(user, SPAN_WARNING("You aren't going to be setting up while cloaked."))
+			return
+		else
+			if(user.interactee) //Make sure we're not manning two guns at once, tentacle arms.
+				to_chat(user, "You're already manning something!")
+				return
+
+		if(user.get_active_hand() == null && user.get_inactive_hand() == null)
+			user.set_interaction(src)
+		else
+			to_chat(usr, SPAN_NOTICE("Your hands are too busy holding things to grab the handles!"))
+
+	else
+		to_chat(usr, SPAN_NOTICE("You are too far from the handles to man [src]!"))
+
+// DISASSEMBLY
+
+/obj/structure/machinery/m56d_hmg/auto/MouseDrop(over_object, src_location, over_location)
+	if(!ishuman(usr))
+		return
+	var/mob/living/carbon/human/user = usr
+
+	if(over_object == user && in_range(src, user))
+		if((rounds > 0) && (user.a_intent & (INTENT_GRAB)))
+			playsound(src.loc, 'sound/items/m56dauto_load.ogg', 75, 1)
+			user.visible_message(SPAN_NOTICE(" [user] removes [src]'s ammo box."),SPAN_NOTICE(" You remove [src]'s ammo box, preparing the gun for disassembly."))
+			var/obj/item/ammo_magazine/m2c/used_ammo = new(user.loc)
+			used_ammo.current_rounds = rounds
+			user.put_in_active_hand(used_ammo)
+			rounds = 0
+
+		else
+			if(!do_after(user, fold_time* user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL, BUSY_ICON_FRIENDLY, src)) // disassembly time reduced
+				return
+			user.visible_message(SPAN_NOTICE("[user] disassembles [src]."),SPAN_NOTICE("You fold up the tripod for [src], disassembling it."))
+			playsound(src.loc, 'sound/items/m56dauto_setup.ogg', 75, 1)
+			var/obj/item/device/m2c_gun/HMG = new(src.loc)
+			HMG.rounds = src.rounds
+			HMG.overheat_value = round(0.5 * src.overheat_value)
+			if (HMG.overheat_value <= 10)
+				HMG.overheat_value = 0
+			HMG.update_icon()
+			user.put_in_active_hand(HMG)
+			qdel(src)
+
+	update_icon()
+
+// MOUNT THE MG
+
+/obj/structure/machinery/m56d_hmg/auto/on_set_interaction(mob/user)
+	user.frozen = TRUE
+	flags_atom |= RELAY_CLICK
+	user.visible_message(SPAN_NOTICE("[user] handles [src]."),SPAN_NOTICE("You handle [src], locked and loaded!"))
+	user.update_canmove()
+	user.forceMove(src.loc)
+	user.dir = src.dir
+	user_old_x = user.pixel_x
+	user_old_y = user.pixel_y
+	user.reset_view(src)
+
+	update_pixels(user)
+
+	if(user.client)
+		registerListener(user.client, EVENT_LMBDOWN, "hmg_fa_\ref[src]", CALLBACK(src, .proc/auto_fire_start))
+		registerListener(user.client, EVENT_LMBUP, "hmg_fa_\ref[src]", CALLBACK(src, .proc/auto_fire_stop))
+		registerListener(user.client, EVENT_LMBDRAG, "hmg_fa_\ref[src]", CALLBACK(src, .proc/auto_fire_new_target))
+		RegisterSignal(operator, COMSIG_MOB_MOVE, .proc/disable_interaction)
+		operator = user
+
+	user.frozen = FALSE
+
+// DISMOUNT THE MG
+
+/obj/structure/machinery/m56d_hmg/auto/on_unset_interaction(mob/user)
+	flags_atom &= ~RELAY_CLICK
+	user.visible_message(SPAN_NOTICE("[user] releases [src]."),SPAN_NOTICE("You handle [src], letting the gun rest."))
+	user.update_canmove()
+	user.reset_view(null)
+	var/grip_dir = reverse_direction(dir)
+	var/old_dir = dir
+	step(user, grip_dir)
+	user_old_x = 0
+	user_old_y = 0
+	user.dir = old_dir
+
+	if(user.client)
+		user.client.change_view(world_view_size)
+		user.client.pixel_x = 0
+		user.client.pixel_y = 0
+		unregisterListener(user.client, EVENT_LMBDOWN, "hmg_fa_\ref[src]")
+		unregisterListener(user.client, EVENT_LMBUP, "hmg_fa_\ref[src]")
+		unregisterListener(user.client, EVENT_LMBDRAG, "hmg_fa_\ref[src]")
+		UnregisterSignal(operator, COMSIG_MOB_MOVE, .proc/disable_interaction)
+
+	animate(user, pixel_x=user_old_x, pixel_y=user_old_y, 4, 1)
+
+	if(operator == user)
+		operator = null
+
+// GET ANIMATED
+
+/obj/structure/machinery/m56d_hmg/auto/proc/update_pixels(mob/user as mob)
+	var/diff_x = 0
+	var/diff_y = 0
+	var/tilesize = 32
+	var/viewoffset = tilesize * 5
+
+	user.reset_view(src)
+	if(dir == EAST)
+		diff_x = -16 + user_old_x
+		user.client.pixel_x = viewoffset
+		user.client.pixel_y = 0
+	if(dir == WEST)
+		diff_x = 16 + user_old_x
+		user.client.pixel_x = -viewoffset
+		user.client.pixel_y = 0
+	if(dir == NORTH)
+		diff_y = -16 + user_old_y
+		user.client.pixel_x = 0
+		user.client.pixel_y = viewoffset
+	if(dir == SOUTH)
+		diff_y = 16 + user_old_y
+		user.client.pixel_x = 0
+		user.client.pixel_y = -viewoffset
+
+	animate(user, pixel_x=diff_x, pixel_y=diff_y, 0.4 SECONDS)
+
+//ROTATE THE MACHINEGUN
+
+/obj/structure/machinery/m56d_hmg/auto/proc/rotate_to(mob/user, atom/A)
+	if(!A || !user.x || !user.y || !A.x || !A.y)
+		return
+	var/dx = A.x - user.x
+	var/dy = A.y - user.y
+	if(!dx && !dy)
+		return
+
+	var/direction
+	if(abs(dx) < abs(dy))
+		if(dy > 0)
+			direction = NORTH
+		else
+			direction = SOUTH
+	else
+		if(dx > 0)
+			direction = EAST
+		else
+			direction = WEST
+
+	var/turf/rotate_check = get_step(src.loc, turn(direction,180))
+	if(rotate_check.density)
+		to_chat(user, "You can't rotate it that way.")
+		return
+
+	src.dir = direction
+	user.dir = direction
+	update_pixels(user)
+	playsound(src.loc, 'sound/items/m56dauto_rotate.ogg', 25, 1)
+	to_chat(user, "You rotate [src], using the tripod to support your pivoting movement.")
+
+/obj/structure/machinery/m56d_hmg/auto/check_eye(mob/user)
+	if(user.lying || get_dist(user,src) > 0 || user.is_mob_incapacitated() || user.frozen || !user.client)
+		user.unset_interaction()
+
+/obj/structure/machinery/m56d_hmg/auto/proc/disable_interaction(mob/user, NewLoc, direction)
+	SIGNAL_HANDLER
+
+	if(user.lying || get_dist(user,src) > 0 || user.is_mob_incapacitated() || user.frozen || !user.client)
+		user.unset_interaction()

@@ -360,6 +360,24 @@
 	max_storage_space = 40
 	has_gamemode_skin = FALSE
 
+// M56E HMG gunner belt
+/obj/item/storage/belt/marine/m2c
+	name = "\improper M804 Heavygunner Storage Rig"
+	desc = "The M804 Heavygunner Storage Rig is a modified M276 Pattern Toolbelt Rig modified to store the ammunition for the M2C Heavy Machinegun System and other engineering tools for the gunner."
+	icon_state = "m2c_ammo_rig"
+	item_state = "m2c_ammo_rig"
+	storage_slots = 7
+	max_w_class = SIZE_LARGE
+	max_storage_space = 30
+	can_hold = list(
+		/obj/item/tool/weldingtool,
+		/obj/item/tool/weldingtool/largetank,
+		/obj/item/tool/weldingtool/hugetank,
+		/obj/item/explosive/plastic,
+		/obj/item/ammo_magazine/m2c
+	)
+	has_gamemode_skin = FALSE
+
 /obj/item/storage/belt/shotgun
 	name = "\improper M276 pattern shotgun shell loading rig"
 	desc = "An ammunition belt designed to hold shotgun shells or individual bullets."

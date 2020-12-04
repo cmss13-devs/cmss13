@@ -124,9 +124,14 @@
 			to_chat(user, SPAN_WARNING("There's already a barricade here."))
 			return
 	var/turf/open/OT = usr.loc
+	var/obj/structure/blocker/anti_cade/AC = locate(/obj/structure/blocker/anti_cade) in OT // for M2C HMG, look at smartgun_mount.dm
 	if(!OT.allow_construction)
-		to_chat(usr, SPAN_WARNING("The [src] must be constructed on a proper surface!"))
+		to_chat(usr, SPAN_WARNING("[src] must be constructed on a proper surface!"))
 		return
+	if(AC)
+		to_chat(usr, SPAN_WARNING("[src] cannot be built here!"))
+		return
+
 	user.visible_message(SPAN_NOTICE("[user] begins deploying [src]."),
 			SPAN_NOTICE("You begin deploying [src]."))
 	playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)

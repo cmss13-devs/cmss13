@@ -153,7 +153,7 @@
 		if(A in exploded_atoms)
 			continue
 		if(A.gc_destroyed)
-			return
+			continue
 		INVOKE_ASYNC(A, /atom.proc/ex_act, power, direction, explosion_source, explosion_source_mob)
 		exploded_atoms += A
 		log_explosion(A, src)

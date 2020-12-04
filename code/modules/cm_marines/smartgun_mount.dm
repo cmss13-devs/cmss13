@@ -870,12 +870,15 @@
 		return FALSE
 	var/turf/rotate_check = get_step(user.loc, turn(user.dir,180))
 	var/turf/open/OT = usr.loc
-	var/turf/ACR = range(anti_cadehugger_range, user.loc)
+	var/list/ACR = range(anti_cadehugger_range, user.loc)
 	if(OT.density)
 		to_chat(user, SPAN_WARNING("You can't set up [src] here."))
 		return
 	if(rotate_check.density)
 		to_chat(user, SPAN_WARNING("You can't set up [src] that way, there's a wall behind you!"))
+		return
+	if(locate(/obj/structure/barricade) in ACR)
+		to_chat(user, SPAN_WARNING("There's barricades nearby, you can't set up here!"))
 		return
 	if(broken_gun)
 		to_chat(user, SPAN_WARNING("You can't set up [src], it's completely broken!"))

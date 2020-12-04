@@ -1283,7 +1283,6 @@
 #include "code\modules\law\laws\optional.dm"
 #include "code\modules\maps\dmm_suite.dm"
 #include "code\modules\maps\reader.dm"
-#include "code\modules\maps\swapmaps.dm"
 #include "code\modules\mapview\generation.dm"
 #include "code\modules\mentor\mentorhelp.dm"
 #include "code\modules\mob\death.dm"

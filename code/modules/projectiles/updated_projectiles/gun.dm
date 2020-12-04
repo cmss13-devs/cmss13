@@ -433,7 +433,7 @@
 		ammo_name = in_ammo.name
 
 		damage = in_ammo.damage * damage_mult
-		bonus_projectile_amount = in_ammo.bonus_projectiles_amount
+		bonus_projectile_amount = in_ammo.bonus_projectiles_amount ? in_ammo.bonus_projectiles_amount + 1 : 0
 		falloff = in_ammo.damage_falloff * damage_falloff_mult
 
 		penetration = in_ammo.penetration

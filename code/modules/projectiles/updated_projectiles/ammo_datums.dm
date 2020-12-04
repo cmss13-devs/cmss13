@@ -932,6 +932,19 @@
 	penetration= ARMOR_PENETRATION_TIER_10 //Bumped the penetration to serve a different role from sentries, MGs are a bit more offensive
 	accuracy = HIT_ACCURACY_TIER_3
 
+/datum/ammo/bullet/machinegun/auto // for M2C, automatic variant for M56D, stats for bullet should always be moderately overtuned to fulfill its ultra-offense + flank-push purpose
+	name = "heavy machinegun bullet"
+	icon_state 	= "bullet"
+
+	accurate_range = 10
+	damage =  BULLET_DAMAGE_TIER_9
+	penetration = ARMOR_PENETRATION_TIER_4
+	accuracy = HIT_ACCURACY_TIER_6
+	shell_speed = AMMO_SPEED_TIER_4
+	max_range = 11
+	effective_range_max = 8
+	damage_falloff = DAMAGE_FALLOFF_TIER_8
+
 /datum/ammo/bullet/minigun
 	name = "minigun bullet"
 
@@ -1239,6 +1252,7 @@
 		var/mob/living/carbon/human/H = M
 		H.disable_special_items() // Disables scout cloak
 
+/datum/ammo/energy/yautja/
 	accurate_range = 12
 	shell_speed = AMMO_SPEED_TIER_3
 
@@ -1545,10 +1559,6 @@
 			return
 
 	new /obj/effect/alien/resin/sticky/thin(T) */
-
-
-
-
 
 /datum/ammo/xeno/acid
 	name = "acid spit"

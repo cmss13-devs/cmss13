@@ -143,3 +143,5 @@
 #define COMSIG_TURF_ENTER "turf_enter"
 	#define COMPONENT_TURF_ALLOW_MOVEMENT (1<<0)
 	#define COMPONENT_TURF_DENY_MOVEMENT  (1<<1)
+
+#define COMSIG_MOB_MOVE	"mob_move"

@@ -1,5 +1,3 @@
-
-
 //Empty sandbags
 /obj/item/stack/sandbags_empty
 	name = "empty sandbags"
@@ -89,6 +87,7 @@
 
 	//Using same safeties as other constructions
 	for(var/obj/O in user.loc) //Objects, we don't care about mobs. Turfs are checked elsewhere
+		var/obj/structure/blocker/anti_cade/AC = locate(/obj/structure/blocker/anti_cade) in usr.loc // for M2C HMG, look at smartgun_mount.dm
 		if(O.density)
 			if(O.flags_atom & ON_BORDER)
 				if(O.dir == user.dir)
@@ -97,6 +96,9 @@
 			else
 				to_chat(user, SPAN_WARNING("You need a clear, open area to build the sandbag barricade!"))
 				return
+		if(AC)
+			to_chat(usr, SPAN_WARNING("The [O.name] cannot be built here!")) 
+			return	
 
 	if(user.action_busy)
 		return

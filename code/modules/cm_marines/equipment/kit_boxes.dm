@@ -256,6 +256,28 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 	if(!contents.len)
 		qdel(src)
 
+/obj/item/storage/box/kit/machinegunner
+	name = "\improper M2C Heavy Gunner Kit"
+
+/obj/item/storage/box/kit/machinegunner/Initialize()
+	. = ..()
+
+	overlays += image('icons/obj/items/pro_case.dmi', "+hmg")
+
+
+/obj/item/storage/box/kit/machinegunner/fill_preset_inventory()
+	new /obj/item/storage/box/m56d/m2c(src)
+	new /obj/item/storage/belt/marine/m2c(src)
+	new /obj/item/clothing/head/helmet/marine/tech(src)
+	new /obj/item/storage/pouch/tools/tank(src)
+	new /obj/item/explosive/plastic(src)
+	new /obj/item/explosive/plastic(src)
+	new /obj/item/pamphlet/engineer/machinegunner(src)
+
+/obj/item/storage/box/kit/update_icon()
+	if(!length(contents))
+		qdel(src)
+
 /obj/item/storage/box/kit/mini_pyro
 	name = "\improper M240 Pyrotechnician Support Kit"
 

@@ -119,9 +119,9 @@
 
 	if(isobserver(mob)) //Ghosts are snowflakes unfortunately
 		next_movement = world.time + move_delay
-		return mob.Move(n, direct) 
+		return mob.Move(n, direct)
 
-	if(SEND_SIGNAL(mob, COMSIG_CLIENT_MOB_MOVE, n, direct) & COMPONENT_OVERRIDE_MOVE) 
+	if(SEND_SIGNAL(mob, COMSIG_CLIENT_MOB_MOVE, n, direct) & COMPONENT_OVERRIDE_MOVE)
 		next_movement = world.time + MINIMAL_MOVEMENT_INTERVAL
 		return
 
@@ -159,7 +159,7 @@
 			move_delay += mob.next_move_slowdown
 			mob.next_move_slowdown = 0
 
-		mob.last_move_intent = world.time + 10		
+		mob.last_move_intent = world.time + 10
 		mob.cur_speed = Clamp(10/(move_delay + 0.5), MIN_SPEED, MAX_SPEED)
 		//We are now going to move
 		moving = 1
@@ -267,3 +267,7 @@
 
 /mob/proc/on_movement()
 	return TRUE
+
+/mob/Move(NewLoc, direction)
+    SEND_SIGNAL(src, COMSIG_MOB_MOVE, NewLoc, direction)
+    return ..()

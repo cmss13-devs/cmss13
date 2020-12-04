@@ -36,7 +36,7 @@ WEAPONS
 	cost = RO_PRICE_VERY_PRICY
 	containertype = /obj/item/storage/box/m56d_hmg
 	containername = "m56d crate"
-	group = "Weapons"
+	group = "Weapons" 
 
 /datum/supply_packs/gun/pistols
 	contains = list(

@@ -76,6 +76,7 @@
 		list("Forward HPR Shield Kit", round(scale * 3), /obj/item/storage/box/kit/heavy_support, VENDOR_ITEM_REGULAR),
 		list("M240 Pyrotechnician Support Kit", round(scale * 2), /obj/item/storage/box/kit/mini_pyro, VENDOR_ITEM_REGULAR),
 		list("JTAC Radio Kit", round(scale * 4), /obj/item/storage/box/kit/mini_jtac, VENDOR_ITEM_REGULAR),
+		list("M2C Heavy Gunner Kit", 4, /obj/item/storage/box/kit/machinegunner, VENDOR_ITEM_REGULAR),
 		list("M39 Point Man Kit", round(scale * 4), /obj/item/storage/box/kit/pursuit, VENDOR_ITEM_REGULAR),
 		list("M-OU53 Field Test Kit", round(scale * 3), /obj/item/storage/box/kit/mou53_sapper, VENDOR_ITEM_REGULAR),
 

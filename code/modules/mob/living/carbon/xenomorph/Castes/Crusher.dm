@@ -84,7 +84,7 @@
 		var/obj/structure/machinery/m56d_hmg/HMG = target
 		visible_message(SPAN_DANGER("[src] rams [HMG]!"), SPAN_XENODANGER("You ram [HMG]!"))
 		playsound(loc, "punch", 25, 1)
-		HMG.Collided()
+		HMG.CrusherImpact()
 		. =  FALSE
 
 	else if (istype(target, /obj/structure/window))

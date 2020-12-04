@@ -58,9 +58,9 @@
 
 	for(var/turf/closed/wall/W in orange(src, 1))
 		switch(can_join_with(W))
-			if(0)
+			if(FALSE)
 				continue
-			if(1)
+			if(TRUE)
 				wall_dirs += get_dir(src, W)
 		if(propagate)
 			W.update_connections()
@@ -71,10 +71,10 @@
 		for(var/obj/O in T)
 			for(var/b_type in blend_objects)
 				if(istype(O, b_type))
-					success = 1
+					success = TRUE
 				for(var/nb_type in noblend_objects)
 					if(istype(O, nb_type))
-						success = 0
+						success = FALSE
 				if(success)
 					break
 			if(success)

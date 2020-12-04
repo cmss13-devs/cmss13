@@ -398,7 +398,7 @@
 		else
 			to_chat(user, SPAN_WARNING("It seems to be lacking ammo."))
 		switch(damage_state)
-			if(M56D_DMG_NONE) to_chat(user, SPAN_INFO("It looks goods like its in good shape."))
+			if(M56D_DMG_NONE) to_chat(user, SPAN_INFO("It looks like it's in good shape."))
 			if(M56D_DMG_SLIGHT) to_chat(user, SPAN_WARNING("It has sustained some damage, but still fires very steadily."))
 			if(M56D_DMG_MODERATE) to_chat(user, SPAN_WARNING("It's damaged, but holding, rattling with each shot fired."))
 			if(M56D_DMG_HEAVY) to_chat(user, SPAN_WARNING("It's falling apart, barely able to handle the force of its own shots."))
@@ -964,7 +964,6 @@
 	var/emergency_cooling = FALSE
 	var/overheat_text_cooldown = 0
 	var/force_cooldown_timer = 20
-	var/threshold_ticker = 0 // meant for natural cooldown text
 	var/rotate_timer = 0
 	var/fire_stopper = FALSE
 
@@ -983,25 +982,32 @@
 
 	return ..()
 
-/obj/structure/machinery/m56d_hmg/auto/process(mob/user)
+#define M2C_OVERHEAT_CRITICAL 40
+#define M2C_OVERHEAT_BAD 34
+#define M2C_OVERHEAT_OK 15
 
-	user = operator
+/obj/structure/machinery/m56d_hmg/auto/process()
+
+	var/mob/user = operator
 	overheat_value -= 4
 	if(overheat_value <= 0)
 		overheat_value = 0
 		STOP_PROCESSING(SSobj, src)
 
-	if(world.time > threshold_ticker)
-		threshold_ticker = world.time + SECONDS_4
-		if(overheat_value >= 40)
-			to_chat(user, SPAN_HIGHDANGER("[src]'s barrel is critically hot, it might start melting at this rate."))
-		else if(34 >= overheat_value && overheat_value >= 15)
-			to_chat(user, SPAN_DANGER("[src]'s barrel is pretty hot, although it's still stable."))
-		else if (overheat_value > 0)
-			to_chat(user, SPAN_WARNING("[src]'s barrel is mildly warm."))
+	if(overheat_value >= M2C_OVERHEAT_CRITICAL)
+		to_chat(user, SPAN_HIGHDANGER("[src]'s barrel is critically hot, it might start melting at this rate."))
+	else if(overheat_value >= M2C_OVERHEAT_BAD)
+		to_chat(user, SPAN_DANGER("[src]'s barrel is terribly hot, but is still able to fire."))
+	else if(overheat_value  >= M2C_OVERHEAT_OK)
+		to_chat(user, SPAN_DANGER("[src]'s barrel is pretty hot, although it's still stable."))
+	else if (overheat_value > 0)
+		to_chat(user, SPAN_WARNING("[src]'s barrel is mildly warm."))
 
 	update_icon()
 
+#undef M2C_OVERHEAT_CRITICAL
+#undef M2C_OVERHEAT_BAD
+#undef M2C_OVERHEAT_OK
 
 // ANTI-CADE EFFECT, CREDIT TO WALTERMELDRON
 /obj/structure/blocker/anti_cade
@@ -1184,6 +1190,7 @@
 	target = hovered
 
 /obj/structure/machinery/m56d_hmg/auto/proc/auto_fire_repeat(var/mob/user, var/atom/A)
+	if(operator != user) return
 	if(!target)
 		return
 
@@ -1192,7 +1199,7 @@
 
 		if(overheat_value >= overheat_threshold)
 			if(world.time > overheat_text_cooldown)
-				user.visible_message(SPAN_HIGHDANGER("[user]'s [src] has overheated, [src] has started to rapidly cool!"),SPAN_HIGHDANGER("[src] has overheated! You have to wait for it to cooldown!"))
+				user.visible_message(SPAN_HIGHDANGER("[src] has overheated and has been shortly disabled!"),SPAN_HIGHDANGER("[src] has overheated! You have to wait for it to cooldown!"))
 				overheat_text_cooldown = world.time + 3 SECONDS
 			if(!emergency_cooling)
 				emergency_cooling = TRUE
@@ -1221,10 +1228,10 @@
 	var/obj/item/ammo_magazine/m2c/AM = new /obj/item/ammo_magazine/m2c(src.loc)
 	AM.current_rounds = 0
 	AM.update_icon()
-				
+
 
 /obj/structure/machinery/m56d_hmg/auto/get_scatter()
-	return 0 
+	return 0
 
 
 
@@ -1327,6 +1334,7 @@
 	user.dir = src.dir
 	user_old_x = user.pixel_x
 	user_old_y = user.pixel_y
+	update_pixels(user)
 	user.reset_view(src)
 
 	update_pixels(user)

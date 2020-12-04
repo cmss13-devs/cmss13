@@ -1492,7 +1492,7 @@
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 2;
-	id = "$2";
+	id = "CMP Office Shutters";
 	name = "\improper Privacy Shutters"
 	},
 /obj/structure/disposalpipe/segment,
@@ -10491,12 +10491,6 @@
 "aAD" = (
 /obj/structure/surface/table/reinforced,
 /obj/structure/machinery/door_control{
-	id = "Hangar Lockdown";
-	name = "Hangar Lockdown";
-	pixel_x = -7;
-	pixel_y = 2
-	},
-/obj/structure/machinery/door_control{
 	id = "CIC Lockdown";
 	name = "CIC Lockdown";
 	pixel_x = -7;
@@ -10504,10 +10498,10 @@
 	req_access = list(1)
 	},
 /obj/structure/machinery/door_control{
-	id = "bot_armory";
-	name = "Armory Lockdown";
+	id = "Hangar Lockdown";
+	name = "Hangar Lockdown";
 	pixel_x = -7;
-	pixel_y = -5;
+	pixel_y = 2;
 	req_access = list(1)
 	},
 /obj/item/device/radio/intercom{
@@ -10521,6 +10515,13 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
 	icon_state = "exposed01-supply"
+	},
+/obj/structure/machinery/door_control{
+	id = "bot_armory";
+	name = "Armory Lockdown";
+	pixel_x = -7;
+	pixel_y = -5;
+	req_access = list(1)
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -27798,10 +27799,6 @@
 /area/almayer/hallways/hangar)
 "bIq" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/door_control{
-	id = "Hangar Lockdown";
-	name = "Hangar Lockdown"
-	},
 /obj/item/device/radio/intercom{
 	canhear_range = 7;
 	frequency = 1441;
@@ -40386,7 +40383,7 @@
 /obj/structure/window/framed/almayer/hull/hijack_bustable,
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 2;
-	id = "$2";
+	id = "CMP Office Shutters";
 	name = "\improper Privacy Shutters"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer{
@@ -46238,12 +46235,19 @@
 /obj/structure/machinery/door_control{
 	id = "CMP Office Shutters";
 	name = "CMP Office Shutters";
-	pixel_y = 2
+	pixel_y = 2;
+	req_access = list(1)
+	},
+/obj/structure/machinery/door_control{
+	id = "Hangar Lockdown";
+	name = "Hangar Lockdown Override";
+	pixel_y = 9;
+	req_access = list(1)
 	},
 /obj/structure/machinery/door_control{
 	id = "bot_armory";
 	name = "Armory Lockdown";
-	pixel_y = 9;
+	pixel_y = -5;
 	req_access = list(1)
 	},
 /turf/open/floor/almayer,
@@ -47706,7 +47710,7 @@
 /obj/structure/window/framed/almayer/hull/hijack_bustable,
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 2;
-	id = "$2";
+	id = "CMP Office Shutters";
 	name = "\improper Privacy Shutters"
 	},
 /obj/structure/cable{
@@ -57131,11 +57135,6 @@
 /area/almayer/medical/containment/cell)
 "xyw" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/door_control{
-	id = "Hangar Lockdown Override";
-	name = "Hangar Lockdown Override";
-	pixel_y = 27
-	},
 /obj/item/folder/red,
 /obj/item/tool/pen,
 /obj/structure/pipes/vents/pump{

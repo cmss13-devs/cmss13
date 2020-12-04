@@ -98,6 +98,24 @@
 		user.animation_attack_on(src)
 		playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
 		if(damage >= (damage_cap - (damage_cap / XENO_HITS_TO_DESTROY_WALL)))
+			var/dir_to = get_dir(user, src)
+			switch(dir_to)
+				if(WEST, EAST, NORTH, SOUTH)
+					acided_hole_dir = dir_to
+				if(NORTHWEST, NORTHEAST, SOUTHWEST, SOUTHEAST)
+					var/turf/closed/wall/wall_north_turf = get_step(src, NORTH)
+					var/turf/closed/wall/wall_south_turf = get_step(src, SOUTH)
+					var/turf/closed/wall/wall_east_turf = get_step(src, EAST)
+					var/turf/closed/wall/wall_west_turf = get_step(src, WEST)
+					
+					if(!istype(wall_north_turf) && !istype(wall_south_turf) && !istype(wall_east_turf) && !istype(wall_west_turf))
+						acided_hole_dir = dir_to & (NORTH|SOUTH)
+					else if(!istype(wall_north_turf) && !istype(wall_south_turf))
+						acided_hole_dir = dir_to & (NORTH|SOUTH)
+					else if(!istype(wall_east_turf) && !istype(wall_west_turf))
+						acided_hole_dir = dir_to & (EAST|WEST)
+					else
+						acided_hole_dir = dir_to & (NORTH|SOUTH)
 			new /obj/effect/acid_hole(src)
 		else
 			take_damage(damage_cap / XENO_HITS_TO_DESTROY_WALL)

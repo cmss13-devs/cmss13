@@ -22,6 +22,8 @@
 /proc/record_login_triplet(ckey, last_known_ip, last_known_cid)
 	var/datum/entity/login_triplet/LT = DB_ENTITY(/datum/entity/login_triplet)
 	LT.ckey = ckey
+	if(!last_known_ip) // debugging has no ip
+		last_known_ip = "127.0.0.1"
 	var/list/ips = splittext(last_known_ip,".")
 	LT.ip1 = text2num(ips[1])
 	LT.ip2 = text2num(ips[2])

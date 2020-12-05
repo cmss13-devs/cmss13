@@ -5,11 +5,11 @@
 	name = "back left entrance marker";
 	tag = "back_left"
 	},
-/obj/structure/interior_wall/truck{
+/obj/structure/interior_wall/van{
 	dir = 8;
 	icon_state = "truck_back_2"
 	},
-/obj/structure/interior_wall/truck{
+/obj/structure/interior_wall/van{
 	dir = 1;
 	icon_state = "truck_left_1";
 	layer = 2;
@@ -21,7 +21,7 @@
 	},
 /area/vehicle/truck)
 "b" = (
-/obj/structure/interior_wall/truck{
+/obj/structure/interior_wall/van{
 	icon_state = "truck_left_2";
 	layer = 2;
 	pixel_y = 30
@@ -40,13 +40,13 @@
 /obj/effect/landmark/interior/spawn/vehicle_driver_seat{
 	dir = 4
 	},
-/obj/structure/interior_wall/truck{
+/obj/structure/interior_wall/van{
 	dir = 1;
 	icon_state = "truck_left_3";
 	layer = 2;
 	pixel_y = 30
 	},
-/obj/structure/interior_wall/truck{
+/obj/structure/interior_wall/van{
 	dir = 4;
 	icon_state = "truck_front_2"
 	},
@@ -61,11 +61,11 @@
 	name = "back right entrance marker";
 	tag = "back_right"
 	},
-/obj/structure/interior_wall/truck{
+/obj/structure/interior_wall/van{
 	alpha = 50;
 	layer = 4
 	},
-/obj/structure/interior_wall/truck{
+/obj/structure/interior_wall/van{
 	dir = 8;
 	icon_state = "truck_back_1"
 	},
@@ -75,7 +75,7 @@
 	},
 /area/vehicle/truck)
 "e" = (
-/obj/structure/interior_wall/truck{
+/obj/structure/interior_wall/van{
 	alpha = 50;
 	icon_state = "truck_right_2";
 	layer = 4
@@ -95,11 +95,11 @@
 	icon_state = "comfychair";
 	dir = 4
 	},
-/obj/structure/interior_wall/truck{
+/obj/structure/interior_wall/van{
 	dir = 4;
 	icon_state = "truck_front_1"
 	},
-/obj/structure/interior_wall/truck{
+/obj/structure/interior_wall/van{
 	alpha = 50;
 	icon_state = "truck_right_3";
 	layer = 4

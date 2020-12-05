@@ -21,6 +21,8 @@ GLOBAL_LIST_EMPTY(all_multi_vehicles)
 	bound_x = 0
 	bound_y = 0
 
+	can_buckle = FALSE
+
 	//Yay! Working cameras in the vehicles at last!!
 	var/obj/structure/machinery/camera/vehicle/camera_int = null
 	var/nickname		//used for single-use verb to name the vehicle. Put anything here to prevent naming

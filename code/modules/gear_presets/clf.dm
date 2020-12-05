@@ -72,7 +72,7 @@
 /datum/equipment_preset/clf/survivor
 	name = "CLF Survivor"
 	flags = EQUIPMENT_PRESET_EXTRA
-	skills = /datum/skills/civilian/survivor/doctor
+	skills = /datum/skills/civilian/survivor/clf
 
 /datum/equipment_preset/clf/survivor/load_gear(mob/living/carbon/human/H)
 

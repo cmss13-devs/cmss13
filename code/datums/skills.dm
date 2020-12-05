@@ -217,6 +217,17 @@ CIVILIAN
 		SKILL_SURGERY = SKILL_SURGERY_TRAINED,
 	)
 
+/datum/skills/civilian/survivor/clf
+	name = "Survivor CLF"
+	skills = list(
+		SKILL_ENGINEER = SKILL_ENGINEER_ENGI,
+		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_TRAINED,
+		SKILL_ENDURANCE = SKILL_ENDURANCE_SURVIVOR,
+		SKILL_MEDICAL = SKILL_MEDICAL_DOCTOR,
+		SKILL_SURGERY = SKILL_SURGERY_TRAINED,
+		SKILL_VEHICLE = SKILL_VEHICLE_LARGE
+	)
+
 /datum/skills/civilian/survivor/scientist
 	name = "Survivor Scientist"
 	skills = list(

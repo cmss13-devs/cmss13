@@ -28,7 +28,7 @@
 	set src = usr
 	if(client && client.player_entity)
 		client.player_entity.update_panel_data(null)
-	new_player_panel_proc()
+		new_player_panel_proc()
 
 
 /mob/new_player/proc/new_player_panel_proc(var/refresh = FALSE)

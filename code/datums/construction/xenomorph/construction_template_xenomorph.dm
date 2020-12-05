@@ -13,11 +13,12 @@
 	build_icon = get_icon_from_source(CONFIG_GET(string/alien_structures_64x64))
 
 /datum/construction_template/xenomorph/complete() //Override because we need to pass the hive ref
-	if(!build_loc)
+	if(!owner || !get_turf(owner))
 		log_debug("Constuction template ([name]) completed construction without a build location")
 		return
 	if(hive_ref)
 		hive_ref.remove_construction(owner)
+	build_loc = get_turf(owner)
 	new build_type(build_loc, hive_ref)
 	playsound(build_loc, "alien_resin_build", 25)
 	qdel(owner)

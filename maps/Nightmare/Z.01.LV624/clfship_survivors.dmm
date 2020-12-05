@@ -1037,7 +1037,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/sand7)
 "nL" = (
-/obj/vehicle/multitile/truck/fixed,
+/obj/vehicle/multitile/van/fixed,
 /turf/open/floor/plating{
 	dir = 1;
 	icon_state = "warnplate"

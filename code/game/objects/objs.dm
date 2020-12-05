@@ -240,6 +240,10 @@
 			last_move_dir = buckled_mob.last_move_dir
 			buckled_mob.inertia_dir = last_move_dir
 			return 0
+
+	// Even if the movement is entirely managed by the object, notify the buckled mob that it's moving for its handler.
+	//It won't be called otherwise because it's a function of client_move or pulled mob, neither of which accounts for this.
+	buckled_mob.on_movement()
 	return 1
 
 /obj/BlockedPassDirs(atom/movable/mover, target_dir)

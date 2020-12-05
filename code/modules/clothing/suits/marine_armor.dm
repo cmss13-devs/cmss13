@@ -799,7 +799,8 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 
 	H.visible_message(SPAN_DANGER("[H] goes prone, and begins adjusting his ghillie suit!"), SPAN_NOTICE("You go prone, and begins adjusting your ghillie suit."), max_distance = 4)
 	hide_in_progress = TRUE
-	if(!do_after(H, camouflage_enter_delay, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+	H.unset_interaction() // If we're sticking to a machine gun or what not.
+	if(!do_after(H, camouflage_enter_delay, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		hide_in_progress = FALSE
 		return
 	hide_in_progress = FALSE
@@ -851,10 +852,10 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	var/datum/mob_hud/xeno_infection/XI = huds[MOB_HUD_XENO_INFECTION]
 	XI.add_to_hud(H)
 
-/obj/item/clothing/suit/storage/marine/ghillie/proc/fade_in()
+/obj/item/clothing/suit/storage/marine/ghillie/proc/fade_in(mob/user)
 	SIGNAL_HANDLER
+	var/mob/living/carbon/human/H = user
 	if(camo_active)
-		var/mob/living/carbon/human/H = usr
 		if(current_camo < full_camo_alpha)
 			current_camo = full_camo_alpha
 		current_camo = Clamp(current_camo + incremental_shooting_camo_penalty, full_camo_alpha, 255)
@@ -868,7 +869,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 		user.density = FALSE
 
 /obj/item/clothing/suit/storage/marine/ghillie/proc/fade_out_finish(var/mob/living/carbon/human/H)
-	if(camo_active)
+	if(camo_active && H.wear_suit == src)
 		to_chat(H, SPAN_BOLDNOTICE("The smoke clears and your position is once again hidden completely!"))
 		animate(H, alpha = full_camo_alpha)
 		current_camo = full_camo_alpha
@@ -1030,14 +1031,15 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 			blocked = TRUE
 			break
 
-		for(var/obj/structure/S in T)
-			if(S.get_projectile_hit_boolean(P))
+		for(var/obj/O in T)
+			if(O.get_projectile_hit_boolean(P))
 				blocked = TRUE
 				break
 
 		for(var/obj/effect/particle_effect/smoke/S in T)
 			blocked = TRUE
 			break
+
 	return blocked
 
 #undef FULL_CAMOUFLAGE_ALPHA

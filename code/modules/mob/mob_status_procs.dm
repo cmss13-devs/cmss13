@@ -1,19 +1,21 @@
-/mob/var/stun_timer
+/mob/var/stun_timer = TIMER_ID_NULL
 
 /mob/proc/stun_callback()
 	stunned = 0
 	handle_regular_status_updates(FALSE)
 	update_canmove()
-	qdel(stun_timer)
-	stun_timer = null
+	if(stun_timer != TIMER_ID_NULL)
+		deltimer(stun_timer)
+		stun_timer = TIMER_ID_NULL
 
 /mob/proc/stun_callback_check()
 	if(stunned && stunned < recovery_constant)
 		stun_timer = addtimer(CALLBACK(src, /mob/proc/stun_callback), (stunned/recovery_constant) * 2 SECONDS, TIMER_OVERRIDE|TIMER_UNIQUE)
 		return
 
-	qdel(stun_timer)
-	stun_timer = null
+	if(stun_timer != TIMER_ID_NULL)
+		deltimer(stun_timer)
+		stun_timer = TIMER_ID_NULL
 
 // adjust stun if needed, do not call it in adjust stunned
 /mob/proc/stun_clock_adjustment()

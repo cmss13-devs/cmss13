@@ -200,7 +200,7 @@
 	assignment = JOB_PMC_INVESTIGATOR
 	rank = JOB_PMC_INVESTIGATOR
 	paygrade = "PMC2"
-	skills = /datum/skills/pmc/medic
+	skills = /datum/skills/pmc/medic/chem
 
 /datum/equipment_preset/pmc/pmc_med_investigator/load_gear(mob/living/carbon/human/H)
 
@@ -278,7 +278,7 @@
 	rank = JOB_PMC_LEAD_INVEST
 	paygrade = "PMC4"
 	role_comm_title = "SL"
-	skills = /datum/skills/pmc/SL
+	skills = /datum/skills/pmc/SL/chem
 
 /datum/equipment_preset/pmc/pmc_lead_investigator/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels

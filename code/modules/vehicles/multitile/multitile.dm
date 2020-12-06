@@ -122,6 +122,8 @@ GLOBAL_LIST_EMPTY(all_multi_vehicles)
 	icon = 'icons/obj/vehicles/vehicles.dmi'
 	icon_state = "cargo_engine"
 
+	var/move_on_turn = FALSE
+
 /obj/vehicle/multitile/Initialize()
 	. = ..()
 

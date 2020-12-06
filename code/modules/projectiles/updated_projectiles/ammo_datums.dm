@@ -94,7 +94,7 @@
 		if(isliving(M)) //This is pretty ugly, but what can you do.
 			if(isXeno(M))
 				var/mob/living/carbon/Xenomorph/target = M
-				if(target.mob_size == MOB_SIZE_BIG)
+				if(target.mob_size >= MOB_SIZE_BIG)
 					target.apply_effect(2, SLOW)
 					return //Big xenos are not affected.
 				target.apply_effect(0.7, WEAKEN) // 0.9 seconds of stun, per agreement from Balance Team when switched from MC stuns to exact stuns
@@ -114,7 +114,7 @@
 		if(isXeno(M))
 			var/mob/living/carbon/Xenomorph/target = M
 			to_chat(target, SPAN_XENODANGER("You are shaken by the sudden impact!"))
-			if(target.mob_size == MOB_SIZE_BIG)
+			if(target.mob_size >= MOB_SIZE_BIG)
 				target.apply_effect(0.3, DAZE)
 				target.apply_effect(2, SLOW)
 				return
@@ -752,7 +752,7 @@
 		var/blind_duration = 5
 		if(isXeno(M))
 			var/mob/living/carbon/Xenomorph/target = M
-			if(target.mob_size == MOB_SIZE_BIG)
+			if(target.mob_size >= MOB_SIZE_BIG)
 				blind_duration = 2
 		L.AdjustEyeBlur(blind_duration)
 		L.adjust_fire_stacks(10)
@@ -774,7 +774,7 @@
 		var/mob/living/L = M
 		if(isXeno(M))
 			var/mob/living/carbon/Xenomorph/target = M
-			if(target.mob_size == MOB_SIZE_BIG)
+			if(target.mob_size >= MOB_SIZE_BIG)
 				slow_duration = 4
 		M.AdjustSuperslowed(slow_duration)
 		L.apply_armoured_damage(damage, ARMOR_BULLET, BRUTE)

@@ -195,7 +195,7 @@ IN_USE						used for vending/denying
 	M.visible_message(SPAN_WARNING("[M] begins to lean against [src]."), \
 	SPAN_WARNING("You begin to lean against [src]."), null, 5, CHAT_TYPE_XENO_COMBAT)
 	var/shove_time = 80
-	if(M.mob_size == MOB_SIZE_BIG)
+	if(M.mob_size >= MOB_SIZE_BIG)
 		shove_time = 30
 	if(istype(M,/mob/living/carbon/Xenomorph/Crusher))
 		shove_time = 15

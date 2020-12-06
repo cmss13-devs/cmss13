@@ -19,7 +19,7 @@
 	tag = "icon-rasputin15";
 	icon_state = "rasputin14"
 	},
-/area/vehicle/truck)
+/area/vehicle/van)
 "b" = (
 /obj/structure/interior_wall/van{
 	icon_state = "truck_left_2";
@@ -30,7 +30,7 @@
 	tag = "icon-rasputin15";
 	icon_state = "rasputin14"
 	},
-/area/vehicle/truck)
+/area/vehicle/van)
 "c" = (
 /obj/effect/landmark/interior/spawn/entrance{
 	dir = 1;
@@ -54,7 +54,7 @@
 	tag = "icon-rasputin3";
 	icon_state = "rasputin3"
 	},
-/area/vehicle/truck)
+/area/vehicle/van)
 "d" = (
 /obj/effect/landmark/interior/spawn/entrance{
 	dir = 8;
@@ -73,7 +73,7 @@
 	tag = "icon-rasputin15";
 	icon_state = "rasputin14"
 	},
-/area/vehicle/truck)
+/area/vehicle/van)
 "e" = (
 /obj/structure/interior_wall/van{
 	alpha = 50;
@@ -84,7 +84,7 @@
 	tag = "icon-rasputin15";
 	icon_state = "rasputin14"
 	},
-/area/vehicle/truck)
+/area/vehicle/van)
 "f" = (
 /obj/effect/landmark/interior/spawn/entrance{
 	dir = 2;
@@ -108,7 +108,7 @@
 	tag = "icon-rasputin3";
 	icon_state = "rasputin3"
 	},
-/area/vehicle/truck)
+/area/vehicle/van)
 
 (1,1,1) = {"
 a

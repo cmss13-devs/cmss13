@@ -13,6 +13,6 @@
 	name = "\improper APC interior"
 	icon_state = "shuttlered"
 
-/area/vehicle/truck
-	name = "truck interior"
+/area/vehicle/van
+	name = "van interior"
 	icon_state = "shuttlered"

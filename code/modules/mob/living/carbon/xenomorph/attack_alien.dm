@@ -450,7 +450,7 @@
 	M.visible_message(SPAN_DANGER("[M] smashes against [src]!"), \
 	SPAN_DANGER("You smash against [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	var/damage = 25
-	if(M.mob_size == MOB_SIZE_BIG)
+	if(M.mob_size >= MOB_SIZE_BIG)
 		damage = 40
 	take_damage(damage)
 
@@ -887,7 +887,7 @@
 	M.visible_message(SPAN_WARNING("[M] begins to lean against [src]."), \
 	SPAN_WARNING("You begin to lean against [src]."), null, 5, CHAT_TYPE_XENO_COMBAT)
 	var/shove_time = 100
-	if(M.mob_size == MOB_SIZE_BIG)
+	if(M.mob_size >= MOB_SIZE_BIG)
 		shove_time = 50
 	if(istype(M,/mob/living/carbon/Xenomorph/Crusher))
 		shove_time = 15

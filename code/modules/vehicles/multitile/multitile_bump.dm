@@ -17,7 +17,7 @@
 			// Driver needs access
 			var/mob/living/driver = get_seat_mob(VEHICLE_DRIVER)
 			if(!D.requiresID() || (driver && D.allowed(driver)))
-				D.open()
+				D.open(TRUE)
 				return FALSE
 
 	if(istype(A, /obj/structure/barricade/plasteel))
@@ -115,7 +115,7 @@
 	if(isXeno(L))
 		var/mob/living/carbon/Xenomorph/X = L
 		var/blocked = FALSE
-		if((isXenoCrusher(X) || isXenoQueen(X)) && !X.is_mob_incapacitated() && !X.buckled)
+		if((X.mob_size >= MOB_SIZE_IMMOBILE) && !X.is_mob_incapacitated() && !X.buckled)
 			// Check what dir they should be facing to be looking directly at the vehicle
 			var/dir_between = get_dir(X, src)
 			if(dir_between == X.dir) // front hit (facing the vehicle)

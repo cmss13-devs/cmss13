@@ -124,7 +124,7 @@
 
 		var/tunnel_time = TUNNEL_MOVEMENT_XENO_DELAY
 
-		if(X.mob_size == MOB_SIZE_BIG) //Big xenos take WAY longer
+		if(X.mob_size >= MOB_SIZE_BIG) //Big xenos take WAY longer
 			tunnel_time = TUNNEL_MOVEMENT_BIG_XENO_DELAY
 		else if(isXenoLarva(X)) //Larva can zip through near-instantly, they are wormlike after all
 			tunnel_time = TUNNEL_MOVEMENT_LARVA_DELAY
@@ -202,12 +202,12 @@
 
 	var/tunnel_time = TUNNEL_ENTER_XENO_DELAY
 
-	if(M.mob_size == MOB_SIZE_BIG) //Big xenos take WAY longer
+	if(M.mob_size >= MOB_SIZE_BIG) //Big xenos take WAY longer
 		tunnel_time = TUNNEL_ENTER_BIG_XENO_DELAY
 	else if(isXenoLarva(M)) //Larva can zip through near-instantly, they are wormlike after all
 		tunnel_time = TUNNEL_ENTER_LARVA_DELAY
 
-	if(M.mob_size == MOB_SIZE_BIG)
+	if(M.mob_size >= MOB_SIZE_BIG)
 		M.visible_message(SPAN_XENONOTICE("[M] begins heaving their huge bulk down into \the [src]."), \
 		SPAN_XENONOTICE("You begin heaving your monstrous bulk into \the [src]</b>."))
 	else

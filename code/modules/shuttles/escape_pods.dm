@@ -184,7 +184,7 @@ This can probably be done a lot more elegantly either way, but it'll suffice for
 				to_chat(M, msg)
 		else if(istype(i, /mob/living/carbon/Xenomorph))
 			var/mob/living/carbon/Xenomorph/X = i
-			if(X.mob_size == MOB_SIZE_BIG) 
+			if(X.mob_size >= MOB_SIZE_BIG) 
 				return FALSE //Huge xenomorphs will automatically fail the launch.
 			n++
 			if(X.stat != DEAD && msg) 

@@ -149,7 +149,7 @@
 			SPAN_DANGER("<B>You feel a powerful shock course through your body!</B>"), \
 			SPAN_DANGER("You hear a heavy electrical crack.") \
 		)
-		if(isXeno(src) && mob_size == MOB_SIZE_BIG)
+		if(isXeno(src) && mob_size >= MOB_SIZE_BIG)
 			Stun(1)//Sadly, something has to stop them from bumping them 10 times in a second
 			KnockDown(1)
 		else

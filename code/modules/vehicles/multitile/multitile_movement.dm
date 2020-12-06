@@ -64,6 +64,8 @@
 		// Rotation/turning
 		else
 			success = try_rotate(turning_angle(dir, direction))
+			if(move_on_turn)
+				try_move(direction)
 
 		post_movement()
 		return success

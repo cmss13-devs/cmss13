@@ -227,7 +227,7 @@
 	max_grown = 10
 	pixel_x = -16
 	old_x = -16
-	mob_size = MOB_SIZE_BIG
+	mob_size = MOB_SIZE_IMMOBILE
 	drag_delay = 6 //pulling a big dead xeno is hard
 	tier = 0 //Queen doesn't count towards population limit.
 	hive_pos = XENO_QUEEN

@@ -35,7 +35,7 @@
 
 	small_explosives_stun = FALSE
 
-	mob_size = MOB_SIZE_BIG
+	mob_size = MOB_SIZE_IMMOBILE
 
 	pixel_x = -16
 	pixel_y = -3

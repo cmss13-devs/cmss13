@@ -21,7 +21,7 @@
 	icon_state = "rasputin14";
 	tag = "icon-rasputin15"
 	},
-/area/vehicle/truck)
+/area/vehicle/van)
 "c" = (
 /obj/structure/bed/chair/comfy,
 /obj/structure/interior_wall/van{
@@ -30,11 +30,14 @@
 	layer = 2;
 	pixel_y = 30
 	},
+/obj/effect/landmark/interior/spawn/interior_viewport{
+	pixel_y = 29
+	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin14";
 	tag = "icon-rasputin15"
 	},
-/area/vehicle/truck)
+/area/vehicle/van)
 "d" = (
 /obj/structure/bed/chair/comfy{
 	dir = 1;
@@ -56,7 +59,7 @@
 	icon_state = "rasputin14";
 	tag = "icon-rasputin15"
 	},
-/area/vehicle/truck)
+/area/vehicle/van)
 "f" = (
 /obj/structure/bed/chair/comfy{
 	dir = 1;
@@ -68,11 +71,27 @@
 	icon_state = "van_right_2";
 	layer = 4
 	},
+/obj/effect/landmark/interior/spawn/interior_viewport{
+	dir = 1
+	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin14";
 	tag = "icon-rasputin15"
 	},
-/area/vehicle/truck)
+/area/vehicle/van)
+"h" = (
+/obj/structure/bed/chair/comfy,
+/obj/structure/interior_wall/van{
+	dir = 1;
+	icon_state = "van_left_2";
+	layer = 2;
+	pixel_y = 30
+	},
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin14";
+	tag = "icon-rasputin15"
+	},
+/area/vehicle/van)
 "G" = (
 /obj/effect/landmark/interior/spawn/vehicle_driver_seat{
 	dir = 4
@@ -97,7 +116,7 @@
 	icon_state = "rasputin3";
 	tag = "icon-rasputin3"
 	},
-/area/vehicle/truck)
+/area/vehicle/van)
 "J" = (
 /obj/structure/bed/chair/comfy{
 	dir = 4;
@@ -121,10 +140,26 @@
 	icon_state = "rasputin3";
 	tag = "icon-rasputin3"
 	},
-/area/vehicle/truck)
+/area/vehicle/van)
+"N" = (
+/obj/structure/bed/chair/comfy{
+	dir = 1;
+	icon_state = "comfychair";
+	tag = "icon-comfychair (NORTH)"
+	},
+/obj/structure/interior_wall/van{
+	alpha = 50;
+	icon_state = "van_right_2";
+	layer = 4
+	},
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin14";
+	tag = "icon-rasputin15"
+	},
+/area/vehicle/van)
 "O" = (
 /turf/open/void,
-/area/vehicle/truck)
+/area/vehicle/van)
 
 (1,1,1) = {"
 O
@@ -138,8 +173,8 @@ f
 "}
 (3,1,1) = {"
 O
-c
-f
+h
+N
 "}
 (4,1,1) = {"
 O

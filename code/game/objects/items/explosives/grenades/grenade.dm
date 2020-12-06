@@ -47,6 +47,9 @@
 		// Let staff know, in case someone's actually about to try to grief
 		msg_admin_niche("[key_name(user)] attempted to prime \a [name] in [get_area(src)] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>)")
 		return
+	
+	if(SEND_SIGNAL(user, COMSIG_GRENADE_PRE_PRIME) & COMPONENT_GRENADE_PRIME_CANCEL)			
+		return
 
 	add_fingerprint(user)
 
@@ -61,7 +64,6 @@
 	if(initial(dangerous) && has_species(user, "Human"))
 		var/nade_sound = user.gender == FEMALE ? get_sfx("female_fragout") : get_sfx("male_fragout")
 		playsound(user, nade_sound, 35)
-
 
 	var/mob/living/carbon/C = user
 	if(istype(C) && !C.throw_mode)

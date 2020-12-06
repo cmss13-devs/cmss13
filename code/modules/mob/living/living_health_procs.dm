@@ -168,6 +168,9 @@
 	setBrainLoss(0)
 	SetKnockedout(0)
 	SetStunned(0)
+	SetDazed(0)
+	SetSlowed(0)
+	SetSuperslowed(0)
 	SetKnockeddown(0)
 	ExtinguishMob()
 	fire_stacks = 0

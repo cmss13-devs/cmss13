@@ -352,6 +352,8 @@ obj/item/hardpoint/proc/remove_buff(var/obj/vehicle/multitile/V)
 
 /obj/item/hardpoint/attackby(var/obj/item/O, var/mob/user)
 	if(iswelder(O))
+		if(user.action_busy)
+			return
 		handle_repair(O, user)
 		return
 	..()
@@ -408,7 +410,7 @@ obj/item/hardpoint/proc/remove_buff(var/obj/vehicle/multitile/V)
 		return
 
 	WT.remove_fuel(needed_time, user)
-	health += round(0.10 * initial(health))
+	health += round(0.1 * initial(health))
 	health = Clamp(health, 0, initial(health))
 	user.visible_message(SPAN_NOTICE("[user] finishes repairing \the [name]."), SPAN_NOTICE("You finish repairing \the [name]. Integrity now at [round(get_integrity_percent())]%."))
 	being_repaired = FALSE

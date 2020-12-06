@@ -311,6 +311,9 @@
 			to_chat(user, SPAN_XENOWARNING("This facehugger is tainted."))
 			return
 
+		if (!do_after(user, SECONDS_3, INTERRUPT_ALL|INTERRUPT_DAZED, BUSY_ICON_HOSTILE))
+			return
+		
 		set_state(RESIN_TRAP_HUGGER)
 		to_chat(user, SPAN_XENONOTICE("You place a facehugger in [src]."))
 		qdel(FH)

@@ -13,7 +13,8 @@
 
 /datum/action/xeno_action/activable/xeno_spit/action_cooldown_check()
 	var/mob/living/carbon/Xenomorph/X = owner
-	if(X.has_spat < world.time) return TRUE
+	if(X.has_spat < world.time)
+		return TRUE
 
 
 

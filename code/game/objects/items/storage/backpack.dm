@@ -425,6 +425,8 @@ obj/item/storage/backpack/empty(mob/user, turf/T)
 		deactivate_camouflage(H)
 		return
 
+	RegisterSignal(H, COMSIG_GRENADE_PRE_PRIME, .proc/cloak_grenade_callback)
+
 	camo_active = TRUE
 	H.visible_message(SPAN_DANGER("[H] vanishes into thin air!"), SPAN_NOTICE("You activate your cloak's camouflage."), max_distance = 4)
 	playsound(H.loc,'sound/effects/cloak_scout_on.ogg', 15, 1)
@@ -445,6 +447,8 @@ obj/item/storage/backpack/empty(mob/user, turf/T)
 	if(!istype(H))
 		return FALSE
 
+	UnregisterSignal(H, COMSIG_GRENADE_PRE_PRIME)
+
 	camo_active = FALSE
 	H.visible_message(SPAN_DANGER("[H] shimmers into existence!"), SPAN_WARNING("Your cloak's camouflage has deactivated!"), max_distance = 4)
 	playsound(H.loc,'sound/effects/cloak_scout_off.ogg', 15, 1)
@@ -461,6 +465,14 @@ obj/item/storage/backpack/empty(mob/user, turf/T)
 		anim(H.loc, H,'icons/mob/mob.dmi', null, "uncloak", null, H.dir)
 
 	addtimer(CALLBACK(src, .proc/allow_shooting, H), 5)
+
+// This proc is to cancel priming grenades in /obj/item/explosive/grenade/attack_self()
+/obj/item/storage/backpack/marine/satchel/scout_cloak/proc/cloak_grenade_callback(mob/user)
+	SIGNAL_HANDLER
+
+	to_chat(user, SPAN_WARNING("Your cloak prevents you from priming the grenade!"))
+
+	return COMPONENT_GRENADE_PRIME_CANCEL
 
 /obj/item/storage/backpack/marine/satchel/scout_cloak/proc/allow_shooting(var/mob/living/carbon/human/H)
 	if(camo_active && !allow_gun_usage)

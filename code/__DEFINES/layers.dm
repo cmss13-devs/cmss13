@@ -71,7 +71,6 @@
 #define FIREDOOR_CLOSED_LAYER 3.189		//Right under poddoors
 #define PODDOOR_CLOSED_LAYER 3.19	//Above doors which are at 3.1
 
-
 #define WINDOW_LAYER 3.2 //above closed doors
 
 #define WALL_OBJ_LAYER 3.5 //posters on walls
@@ -94,6 +93,7 @@
 
 #define ABOVE_XENO_LAYER 4.12	//for xenos to hide behind bushes and tall grass
 
+#define FACEHUGGER_LAYER 4.13	// For facehuggers
 
 #define INTERIOR_WALL_SOUTH_LAYER 5.2
 #define INTERIOR_DOOR_LAYER       5.21

@@ -17,7 +17,7 @@
 
 	var/mob/living/carbon/Xenomorph/Runner/R = MS.xeno
 	R.mutation_type = RUNNER_ACIDER	
-	R.speed_modifier += XENO_SPEED_MODIFIER_SLOWER
+	R.speed_modifier += XENO_SPEED_SLOWMOD_TIER_5
 	apply_behavior_holder(R)
 	mutator_update_actions(R)
 	R.recalculate_everything()

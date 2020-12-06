@@ -286,6 +286,8 @@
 
 /datum/pain/proc/oxy_kill(mob/living/source, mob/living/carbon/Xenomorph/X)
 	SIGNAL_HANDLER
+	if(source.chestburst)
+		return
 	INVOKE_ASYNC(source, /mob.proc/death)
 	return COMPONENT_CANCEL_DEVOUR
 

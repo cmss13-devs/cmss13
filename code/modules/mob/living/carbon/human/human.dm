@@ -1307,6 +1307,7 @@
 		dat += "Leadership: [usr.skills.get_skill_level(SKILL_LEADERSHIP)]<br/>"
 		dat += "Medical: [usr.skills.get_skill_level(SKILL_MEDICAL)]<br/>"
 		dat += "Surgery: [usr.skills.get_skill_level(SKILL_SURGERY)]<br/>"
+		dat += "Research: [usr.skills.get_skill_level(SKILL_RESEARCH)]<br/>"
 		dat += "Pilot: [usr.skills.get_skill_level(SKILL_PILOT)]<br/>"
 		dat += "Police: [usr.skills.get_skill_level(SKILL_POLICE)]<br/>"
 		dat += "Powerloader: [usr.skills.get_skill_level(SKILL_POWERLOADER)]<br/>"

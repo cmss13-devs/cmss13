@@ -160,7 +160,7 @@
 	remove_overlay(X_FIRE_LAYER)
 	if(on_fire)
 		var/image/I
-		if(mob_size == MOB_SIZE_BIG)
+		if(mob_size >= MOB_SIZE_BIG)
 			if((!initial(pixel_y) || lying) && !resting && !sleeping)
 				I = image("icon"=get_icon_from_source(CONFIG_GET(string/alien_overlay_64x64)), "icon_state"="alien_fire", "layer"=-X_FIRE_LAYER)
 				I.color = fire_reagent.burncolor

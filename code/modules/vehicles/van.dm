@@ -61,6 +61,8 @@
 	var/overdrive_duration = 3 SECONDS
 	var/overdrive_speed_mult = 0.3 // Additive (30% more speed, adds to 80% more speed)
 
+	move_on_turn = TRUE
+
 /obj/structure/interior_wall/van
 	name = "van interior wall"
 	desc = "An interior wall."
@@ -78,6 +80,9 @@
 ** PRESETS
 */
 /obj/vehicle/multitile/van/handle_living_collide(var/mob/living/L)
+	if(L.mob_size >= MOB_SIZE_IMMOBILE)
+		return FALSE
+
 	var/direction_taken = pick(45, -45)
 	var/successful = step(L, turn(last_move_dir, direction_taken))
 	

@@ -27,6 +27,7 @@
 /datum/equipment_preset/uscm_ship/liaison
 	name = "USCM Corporate Liaison (CL)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	languages = list("English", "Japanese")
 
 	idtype = /obj/item/card/id/silver/cl
 	access = list(

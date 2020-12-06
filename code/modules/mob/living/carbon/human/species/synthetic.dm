@@ -40,7 +40,7 @@
 		)
 
 /datum/species/synthetic/handle_post_spawn(mob/living/carbon/human/H)
-	H.set_languages(list("English", "Russian", "Tradeband", "Spacendeutchen", "American Spanish", "Sainja", "Xenomorph"))
+	H.set_languages(list("English", "Russian", "Japanese", "Spacendeutchen", "American Spanish", "Sainja", "Xenomorph"))
 	GLOB.alive_human_list -= H
 	return ..()
 

@@ -387,7 +387,7 @@
 	H.age = rand(17,45)
 
 /datum/equipment_preset/pmc/deathsquad/load_languages(mob/living/carbon/human/H)
-	H.set_languages(list("English", "Tradeband", "Tactical Sign Language"))
+	H.set_languages(list("English", "Japanese", "Tactical Sign Language"))
 
 /datum/equipment_preset/pmc/deathsquad/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels

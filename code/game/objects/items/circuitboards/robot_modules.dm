@@ -56,7 +56,7 @@
 	//full set of languages
 	R.add_language("Sol Common", 1)
 	R.add_language("Russian", 1)
-	R.add_language("Tradeband", 1)
+	R.add_language("Japanese", 1)
 	R.add_language("Gutter", 0)
 
 
@@ -295,7 +295,7 @@
 	//full set of languages
 	R.add_language("Sol Common", 1)
 	R.add_language("Rootspeak", 1)
-	R.add_language("Tradeband", 1)
+	R.add_language("Japanese", 1)
 	R.add_language("Gutter", 1)
 
 /obj/item/circuitboard/robot_module/butler/respawn_consumable(var/mob/living/silicon/robot/R)

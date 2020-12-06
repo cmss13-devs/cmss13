@@ -123,7 +123,7 @@
 	name = "Freelancer (Leader)"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = "Freelancer Warlord"
-	languages = list("English", "Russian", "Tradeband", "Sainja")
+	languages = list("English", "Russian", "Japanese", "Sainja")
 
 	skills = /datum/skills/freelancer/SL
 
@@ -290,7 +290,7 @@
 	name = "Pizza"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	languages = list("English", "Russian", "Tradeband") //Just in case they are delivering to UPP or CLF...
+	languages = list("English", "Russian", "Japanese") //Just in case they are delivering to UPP or CLF...
 	idtype = /obj/item/card/id/pizza
 	assignment = "Pizza Deliverer"
 	rank = FACTION_PIZZA
@@ -334,7 +334,7 @@
 	name = "Souto Man"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	languages = list("English", "Russian", "Tradeband") //Just in case they are delivering to UPP or CLF...
+	languages = list("English", "Russian", "Japanese") //Just in case they are delivering to UPP or CLF...
 	idtype = /obj/item/card/id/souto
 	assignment = FACTION_SOUTO
 	rank = "Souto Man"

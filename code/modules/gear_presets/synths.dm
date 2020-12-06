@@ -1,7 +1,7 @@
 /datum/equipment_preset/synth
 	name = "Synth"
 	uses_special_name = TRUE
-	languages = list("English", "Russian", "Tradeband", "Sainja", "Xenomorph")
+	languages = list("English", "Russian", "Japanese", "Sainja", "Xenomorph")
 	skills = /datum/skills/synthetic
 
 /datum/equipment_preset/synth/New()
@@ -233,7 +233,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/collectable/xenom(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/weapon/melee/baton(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch(H), WEAR_EAR)
-	
+
 
 /datum/equipment_preset/synth/survivor/midwife/load_name(mob/living/carbon/human/H, var/randomise)
 	var/final_name = "Midwife Joe"

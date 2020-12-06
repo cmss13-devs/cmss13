@@ -135,6 +135,7 @@ h1.alert, h2.alert		{color: #000000;}
 .rough					{font-family: trebuchet-ms, cursive, sans-serif;}
 .german					{color: #858F1E; font-family: 'Times New Roman', Times, serif}
 .spanish				{color: #CF982B;}
+.japanese				{color: #0047A0}
 .commando				{color: #FE9B24; font-style: bold;}
 .say_quote				{font-family: Georgia, Verdana, sans-serif;}
 </style>"}

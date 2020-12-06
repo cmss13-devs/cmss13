@@ -1,6 +1,6 @@
 /datum/equipment_preset/clf
 	name = FACTION_CLF
-	languages = list("Tradeband", "English")
+	languages = list("Japanese", "English")
 	assignment = JOB_CLF
 	rank = FACTION_CLF
 	faction = FACTION_CLF

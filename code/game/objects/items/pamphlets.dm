@@ -89,11 +89,11 @@
 	language_type = "Russian"
 	flavour_learning = "After reading the full version of the short story, you feel temporarily morally conflicted about the themes of greed and freedom in the story before snapping back to 2189 reality."
 
-/obj/item/pamphlet/language/tradeband
-	name = "Pages of Turedobando Yohei Adobencha Zohuken"
-	desc = "These are some torn pages from a famous isekai manga named 'Turedobando Yohei Adobencha Zohuken' or Tradeband Mercenary Adventure Sequel about a travelling band of Freelancers sent into a fantasy world. Why do you even know this?"
-	language_type = "Tradeband"
-	flavour_learning = "After reading the cluster of manga panels, you pick up traces of the language of the manga you are reading, but feel like a geek after finishing it."
+/obj/item/pamphlet/language/japanese
+	name = "Pages of Koroniaru Yohei Adobencha Zohuken"
+	desc = "These are some torn pages from a famous isekai manga named 'Koroniaru Yohei Adobencha Zohuken' or Colonial Mercenary Adventure Sequel about a travelling band of Freelancers sent into a fantasy world."
+	language_type = "Japanese"
+	flavour_learning = "After reading the cluster of manga panels, you navigate your way past bad cliches and circular plots and refresh yourself on Japanese, but feel like a geek after finishing it."
 
 /obj/item/pamphlet/language/german
 	name = "Translated Lyrics to 99 Luftballons"

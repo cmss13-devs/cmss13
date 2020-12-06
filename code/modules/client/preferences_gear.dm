@@ -273,9 +273,9 @@ var/global/list/gear_datums = list()
 	slot = WEAR_IN_BACK
 	cost = 3
 
-/datum/gear/pamphlet_tradeband
-	display_name = "Tradeband Language Pamphlet"
-	path = /obj/item/pamphlet/language/tradeband
+/datum/gear/pamphlet_japanese
+	display_name = "Japanese Language Pamphlet"
+	path = /obj/item/pamphlet/language/japanese
 	slot = WEAR_IN_BACK
 	cost = 3
 

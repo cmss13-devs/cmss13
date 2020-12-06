@@ -69,11 +69,11 @@
 */
 
 // Galactic common languages (systemwide accepted standards).
-/datum/language/trader
-	name = "Tradeband"
-	desc = "Maintained by the various trading cartels in major systems, this elegant, structured language is used for bartering and bargaining."
-	speech_verb = "enunciates"
-	colour = "say_quote"
+/datum/language/japanese
+	name = "Japanese"
+	desc = "A language boasting an extensive grammatical system, three writing systems, and a new smattering of English loanwords. This gained popularity due to high cultural contact in the RESS, and finds use outside due to immigration."
+	speech_verb = "vocalizes"
+	colour = "japanese"
 	key = "2"
 
 /datum/language/russian

@@ -153,6 +153,12 @@
 #define LANGUAGE_BINARY		16
 #define LANGUAGE_OTHER		32768
 #define LANGUAGE_UNIVERSAL	65535
+
+//=================================================
+
+// Mob flags.
+#define KNOWS_TECHNOLOGY	1	// This mob understands technology
+
 //=================================================
 
 //Language flags.

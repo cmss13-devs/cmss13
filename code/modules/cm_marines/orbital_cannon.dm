@@ -378,16 +378,16 @@ var/list/ob_type_fuel_requirements
 	for(var/mob/M in orange(30, target))
 		relative_dir = get_dir(M, target)
 		M.show_message( \
-			SPAN_HIGHDANGER("The sky erupts into flames to the [dir2text(relative_dir)]!"), 1, \
-			SPAN_HIGHDANGER("You hear a very loud sound coming from above to the [dir2text(relative_dir)]!"), 2 \
+			SPAN_HIGHDANGER("The sky erupts into flames to the [SPAN_UNDERLINE(dir2text(relative_dir))]!"), 1, \
+			SPAN_HIGHDANGER("You hear a very loud sound coming from above to the [SPAN_UNDERLINE(dir2text(relative_dir))]!"), 2 \
 		)
 	sleep(OB_TRAVEL_TIMING/3)
 
 	for(var/mob/M in orange(25, target))
 		relative_dir = get_dir(M, target)
 		M.show_message( \
-			SPAN_HIGHDANGER("The sky roars louder to the [dir2text(relative_dir)]!"), 1, \
-			SPAN_HIGHDANGER("The sound becomes louder to the [dir2text(relative_dir)]!"), 2 \
+			SPAN_HIGHDANGER("The sky roars louder to the [SPAN_UNDERLINE(dir2text(relative_dir))]!"), 1, \
+			SPAN_HIGHDANGER("The sound becomes louder to the [SPAN_UNDERLINE(dir2text(relative_dir))]!"), 2 \
 		)
 	sleep(OB_TRAVEL_TIMING/3)
 

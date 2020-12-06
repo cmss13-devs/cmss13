@@ -3,7 +3,7 @@
 	layer = MOB_LAYER
 	animate_movement = 2
 	rebounds = TRUE
-//	flags = NOREACT
+	var/mob_flags
 	var/datum/mind/mind
 
 	// An ID that uniquely identifies this mob through the full round

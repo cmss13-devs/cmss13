@@ -98,6 +98,8 @@
 
 	var/melee_allowed = TRUE
 
+	var/mob_flags // The mob flags to give their mob
+
 /datum/species/New()
 	if(unarmed_type) 
 		unarmed = new unarmed_type()

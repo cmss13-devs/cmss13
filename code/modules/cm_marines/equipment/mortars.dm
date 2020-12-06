@@ -216,13 +216,8 @@
 
 			for(var/mob/M in range(7))
 				shake_camera(M, 3, 1)
-			spawn(travel_time) //What goes up
-				playsound(T, 'sound/weapons/gun_mortar_travel.ogg', 50, 1)
-				spawn(45) //Must go down //This should always be 45 ticks!
-					T.ceiling_debris_check(2)
-					mortar_shell.detonate(T)
-					qdel(mortar_shell)
-					firing = 0
+			
+			addtimer(CALLBACK(src, .proc/handle_shell, T, mortar_shell), travel_time)
 		else
 			busy = 0
 
@@ -261,6 +256,37 @@
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			qdel(src)
 	return
+
+/obj/structure/mortar/proc/handle_shell(var/turf/target, var/obj/item/mortar_shell/shell)
+	if(protected_by_pylon(TURF_PROTECTION_MORTAR, target))
+		return
+	playsound(target, 'sound/weapons/gun_mortar_travel.ogg', 50, 1)
+
+	var/relative_dir
+	for(var/mob/M in orange(30, target))
+		relative_dir = get_dir(M, target)
+		M.show_message( \
+			SPAN_HIGHDANGER("A SHELL IS COMING DOWN TOWARDS THE [SPAN_UNDERLINE(uppertext(dir2text(relative_dir)))]!"), 1, \
+			SPAN_HIGHDANGER("YOU HEAR SOMETHING COMING DOWN TOWARDS THE [SPAN_UNDERLINE(uppertext(dir2text(relative_dir)))]!"), 2 \
+		)
+
+	sleep(2.5 SECONDS) // Sleep a bit to give a message
+
+	for(var/mob/M in orange(30, target))
+		relative_dir = get_dir(M, target)
+		M.show_message( \
+			SPAN_HIGHDANGER("A SHELL IS ABOUT TO IMPACT TOWARDS THE [SPAN_UNDERLINE(uppertext(dir2text(relative_dir)))]!"), 1, \
+			SPAN_HIGHDANGER("YOU HEAR SOMETHING VERY CLOSE COMING DOWN TOWARDS THE [SPAN_UNDERLINE(uppertext(dir2text(relative_dir)))]!"), 2 \
+		)
+
+	sleep(2 SECONDS) // Wait out the rest of the landing time
+
+	if(protected_by_pylon(TURF_PROTECTION_MORTAR, target))
+		return
+	target.ceiling_debris_check(2)
+	shell.detonate(target)
+	qdel(shell)
+	firing = 0
 
 /obj/structure/mortar/fixed
 	desc = "A manual, crew-operated mortar system intended to rain down 80mm goodness on anything it's aimed at. Uses manual targetting dials. Insert round to fire. This one is bolted and welded into the ground."

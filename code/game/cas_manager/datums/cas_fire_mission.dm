@@ -116,6 +116,35 @@
 /datum/cas_fire_mission/proc/execute_firemission(obj/structure/machinery/computer/dropship_weapons/linked_console, turf/initial_turf, direction = NORTH, steps = 12, step_delay = 3, datum/cas_fire_envelope/envelope = null)
 	if(initial_turf == null || check(linked_console) != FIRE_MISSION_ALL_GOOD)
 		return -1
+
+	var/relative_dir
+	for(var/mob/M in orange(30, initial_turf))
+		relative_dir = get_dir(M, initial_turf)
+		
+		var/ds_identifier = "LARGE BIRD"
+		if (M.mob_flags & KNOWS_TECHNOLOGY)
+			ds_identifier = "DROPSHIP"
+
+		M.show_message( \
+			SPAN_HIGHDANGER("A [ds_identifier] FLIES TO YOUR [SPAN_UNDERLINE(uppertext(dir2text(relative_dir)))]!"), 1, \
+			SPAN_HIGHDANGER("YOU HEAR SOMETHING GO TO YOUR [SPAN_UNDERLINE(uppertext(dir2text(relative_dir)))]!"), 2 \
+		)
+
+	// Xenos have time to react to the first message
+	sleep(0.5 SECONDS)
+
+	for(var/mob/M in orange(30, initial_turf))
+		relative_dir = get_dir(M, initial_turf)
+		
+		var/ds_identifier = "LARGE BIRD"
+		if (M.mob_flags & KNOWS_TECHNOLOGY)
+			ds_identifier = "DROPSHIP"
+
+		M.show_message( \
+			SPAN_HIGHDANGER("A [ds_identifier] FIRES TO YOUR [SPAN_UNDERLINE(uppertext(dir2text(relative_dir)))]!"), 1, \
+			SPAN_HIGHDANGER("YOU HEAR SOMETHING FIRE TO YOUR [SPAN_UNDERLINE(uppertext(dir2text(relative_dir)))]!"), 2 \
+		)
+
 	var/turf/current_turf = initial_turf
 	var/tally_step = steps / mission_length //how much shots we need before moving to next turf
 	var/next_step = tally_step //when we move to next turf
@@ -150,7 +179,7 @@
 			if (current_turf == null)
 				return -1
 			var/turf/shootloc = locate(current_turf.x + sx*offset, current_turf.y + sy*offset, current_turf.z)
-			if(shootloc && get_area(shootloc).ceiling<CEILING_DEEP_UNDERGROUND && !protected_by_pylon(TURF_PROTECTION_CAS, shootloc))
+			if(shootloc && get_area(shootloc).ceiling < CEILING_DEEP_UNDERGROUND && !protected_by_pylon(TURF_PROTECTION_CAS, shootloc))
 				item.weapon.open_fire_firemission(shootloc)
 		sleep(step_delay)				
 	if(envelope)

@@ -1092,6 +1092,8 @@
 		//additional things to change when we're no longer that species
 		oldspecies.post_species_loss(src)
 
+	mob_flags = species.mob_flags
+
 	species.create_organs(src)
 
 	if(species.base_color && default_colour)

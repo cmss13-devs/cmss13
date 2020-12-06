@@ -19,7 +19,6 @@
 	if(!vehicle)
 		return
 
-	M.set_interaction(vehicle)
 	M.reset_view(vehicle)
 
 // Landmark for spawning windows

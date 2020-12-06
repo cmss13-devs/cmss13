@@ -16,7 +16,7 @@
 		return
 
 	var/mob/living/carbon/Xenomorph/Praetorian/P = MS.xeno
-	P.speed_modifier += XENO_SPEED_MODIFIER_FAST
+	P.speed_modifier += XENO_SPEED_FASTMOD_TIER_3
 	P.armor_modifier += XENO_ARMOR_MOD_VERYLARGE
 	mutator_update_actions(P)
 	MS.recalculate_actions(description, flavor_description)

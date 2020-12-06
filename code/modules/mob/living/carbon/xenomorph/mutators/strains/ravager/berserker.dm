@@ -22,7 +22,7 @@
 	R.plasma_max = 0
 	R.health_modifier -= XENO_HEALTH_MOD_MED
 	R.armor_modifier += XENO_ARMOR_MOD_VERYSMALL
-	R.speed_modifier += XENO_SPEED_MODIFIER_FAST
+	R.speed_modifier += XENO_SPEED_FASTMOD_TIER_3
 	
 	mutator_update_actions(R)
 	MS.recalculate_actions(description, flavor_description)

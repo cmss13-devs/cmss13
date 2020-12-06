@@ -135,6 +135,13 @@
 			else
 				child.GoIdle()
 
+/obj/effect/alien/egg/proc/replace_triggers()
+	if(isnull(loc) || status == EGG_DESTROYED)
+		return
+	
+	create_egg_triggers()
+	deploy_egg_triggers()
+
 /obj/effect/alien/egg/bullet_act(var/obj/item/projectile/P)
 	..()
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
@@ -180,6 +187,8 @@
 				flags_embryo = F.flags_embryo
 
 				qdel(F)
+
+				addtimer(CALLBACK(src, .proc/replace_triggers), SECONDS_30)
 			if(EGG_DESTROYED)
 				to_chat(user, SPAN_XENOWARNING("This egg is no longer usable."))
 			if(EGG_GROWING, EGG_GROWN)

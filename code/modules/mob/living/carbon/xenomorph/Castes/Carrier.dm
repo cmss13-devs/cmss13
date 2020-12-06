@@ -76,13 +76,6 @@
 			if(prob(chance))
 				new /obj/item/xeno_egg(loc, hivenumber)
 				eggs_cur--
-		if (huggers_cur)
-			visible_message(SPAN_XENOWARNING("The chittering mass of tiny aliens is trying to escape [src]!"))
-			for(var/i in 0 to huggers_cur)
-				if(prob(chance))
-					var/obj/item/clothing/mask/facehugger/F = new(loc, hivenumber)
-					step_away(F,src,1)
-					addtimer(CALLBACK(F, /obj/item/clothing/mask/facehugger/.proc/leap_at_nearest_target), SECONDS_3)
 
 
 /mob/living/carbon/Xenomorph/Carrier/Stat()

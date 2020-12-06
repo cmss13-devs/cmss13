@@ -19,13 +19,13 @@
 	flags_atom = NO_FLAGS
 	flags_item = NOBLUDGEON
 	throw_range = 1
-	layer = ABOVE_MOB_LAYER
+	layer = FACEHUGGER_LAYER
 
 	var/stat = CONSCIOUS //UNCONSCIOUS is the idle state in this case
 	var/sterile = 0
 	var/strength = 5
 	var/attached = 0
-	var/lifecycle = 300 //How long the hugger will survive outside of the egg, or carrier.
+	var/lifecycle = SECONDS_10 //How long the hugger will survive outside of the egg, or carrier.
 	var/leaping = 0 //Is actually attacking someone?
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/flags_embryo = NO_FLAGS
@@ -54,7 +54,8 @@
 	var/obj/item/clothing/mask/facehugger/F
 	var/count = 0
 	for(F in get_turf(src))
-		if(F.stat == CONSCIOUS) count++
+		if(F.stat == CONSCIOUS)
+			count++
 		if(count > 2) //Was 5, our rules got much tighter
 			visible_message(SPAN_XENOWARNING("The facehugger is furiously cannibalized by the nearby horde of other ones!"))
 			qdel(src)
@@ -363,8 +364,8 @@
 	if(round_statistics && ishuman(target))
 		round_statistics.total_huggers_applied++
 
-/obj/item/clothing/mask/facehugger/proc/check_lifecycle()
-	if(lifecycle - 50 <= 0)
+/obj/item/clothing/mask/facehugger/proc/check_lifecycle(var/delay = SECONDS_5)
+	if(lifecycle - delay <= 0)
 		if(isturf(loc))
 			var/obj/effect/alien/egg/E = locate() in loc
 			if(E && E.status == EGG_BURST)
@@ -389,22 +390,26 @@
 				return
 		Die()
 	else if(!attached || !ishuman(loc)) //doesn't age while attached
-		lifecycle -= 50
-		return 1
+		lifecycle -= delay
+		return TRUE
 
-/obj/item/clothing/mask/facehugger/proc/GoActive(var/delay = 50)
+/obj/item/clothing/mask/facehugger/proc/GoActive(var/delay = SECONDS_5)
 	set waitfor = 0
 
-	if(stat == DEAD) return
+	if(stat == DEAD)
+		return
 
-	if(stat != CONSCIOUS) icon_state = "[initial(icon_state)]"
+	if(stat != CONSCIOUS)
+		icon_state = "[initial(icon_state)]"
 	stat = CONSCIOUS
 
-	sleep(delay) //Every 5 seconds.
-	if(stat == CONSCIOUS && loc) //Make sure we're conscious and not idle or dead.
-		if(check_lifecycle())
-			leap_at_nearest_target()
-			.()
+	sleep(delay)
+	if(stat != CONSCIOUS || isnull(loc)) //Make sure we're conscious and not idle or dead.
+		return
+	
+	if(check_lifecycle(delay))
+		leap_at_nearest_target()
+		.()
 
 /obj/item/clothing/mask/facehugger/proc/GoIdle() //Idle state does not count toward the death timer.
 	set waitfor = 0

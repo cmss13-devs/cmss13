@@ -145,3 +145,6 @@
 	#define COMPONENT_TURF_DENY_MOVEMENT  (1<<1)
 
 #define COMSIG_MOB_MOVE	"mob_move"
+
+#define COMSIG_GRENADE_PRE_PRIME "grenade_pre_prime"
+	#define COMPONENT_GRENADE_PRIME_CANCEL	(1<<0)

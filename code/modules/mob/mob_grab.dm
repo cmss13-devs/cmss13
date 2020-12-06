@@ -97,7 +97,7 @@
 		if(pulled.buckled)
 			to_chat(X, SPAN_WARNING("[pulled] is buckled to something."))
 			return 0
-		if(pulled.stat == DEAD)
+		if(pulled.stat == DEAD && !pulled.chestburst)
 			to_chat(X, SPAN_WARNING("Ew, [pulled] is already starting to rot."))
 			return 0
 		if(X.stomach_contents.len) //Only one thing in the stomach at a time, please
@@ -119,7 +119,7 @@
 			if(isXeno(pulled.loc) && !X.stomach_contents.len)
 				to_chat(X, SPAN_WARNING("Someone already ate \the [pulled]."))
 				return 0
-			if(X.pulling == pulled && !pulled.buckled && pulled.stat != DEAD && !X.stomach_contents.len) //make sure you've still got them in your claws, and alive
+			if(X.pulling == pulled && !pulled.buckled && (pulled.stat != DEAD || pulled.chestburst) && !X.stomach_contents.len) //make sure you've still got them in your claws, and alive
 				if(SEND_SIGNAL(pulled, COMSIG_MOB_DEVOURED, X) & COMPONENT_CANCEL_DEVOUR)
 					return FALSE
 				
@@ -138,7 +138,7 @@
 				X.stomach_contents.Add(pulled)
 				X.devour_timer = world.time + 500 + rand(0,200) // 50-70 seconds
 				pulled.forceMove(X)
-				return 1
+				return TRUE
 		if(!(pulled in X.stomach_contents))
 			to_chat(X, SPAN_WARNING("You stop devouring \the [pulled]. \He probably tasted gross anyways."))
 		return 0

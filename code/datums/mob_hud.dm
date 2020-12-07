@@ -216,7 +216,7 @@ var/list/datum/mob_hud/huds = list(
 	return
 
 /mob/hologram/queen/remove_from_all_mob_huds()
-	var/datum/mob_hud/hud = huds[XENO_STATUS_HUD]
+	var/datum/mob_hud/hud = huds[MOB_HUD_XENO_STATUS]
 	hud.remove_from_hud(src)
 
 /mob/living/carbon/human/remove_from_all_mob_huds()

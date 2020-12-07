@@ -667,7 +667,7 @@
 
 			else if(wiresexposed == 1 && allcut == 0)
 				for(var/wire = 1; wire < length(get_wire_descriptions()); wire++)
-					cut(wire)
+					cut(wire, user)
 				update_icon()
 				visible_message(SPAN_WARNING("[src]'s wires are shredded!"))
 			else

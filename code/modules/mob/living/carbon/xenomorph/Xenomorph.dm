@@ -667,6 +667,9 @@
 		health = maxHealth
 
 /mob/living/carbon/Xenomorph/proc/recalculate_plasma()
+	if(!plasma_max)
+		return
+
 	var/new_plasma_max = plasmapool_modifier * caste.plasma_max
 	plasma_gain = plasmagain_modifier + caste.plasma_gain
 	if (new_plasma_max == plasma_max)

@@ -360,7 +360,7 @@ var/global/marines_assigned = 0
 
 /datum/authority/branch/role/proc/assign_random_role(mob/new_player/M, list/roles_to_iterate) //In case we want to pass on a list.
 	. = roles_to_iterate
-	if(roles_to_iterate.len)
+	if(length(roles_to_iterate))
 		var/datum/job/J
 		var/i = 0
 		var/j

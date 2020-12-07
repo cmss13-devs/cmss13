@@ -13,7 +13,7 @@ All code is assumed to be licensed under AGPL v3 unless stated otherwise by file
 
 CM-SS13 doesn't have a list of goals and features to add; we instead allow freedom for developers to suggest and create their ideas for the game. That doesn't mean we aren't determined to squash bugs, which unfortunately pop up a lot due to the deep complexity of the game. Here are some useful starting guides, if you want to contribute or if you want to know what challenges you can tackle with zero knowledge about the game's code structure.
 
-Wile developers have the freedom to work on whatever they want, it falls to the team as a whole to decide if changes to the repository should be merged or not. This means that a merge request or change may be denied at the end, so understand that creative freedom does not grant you full reigns to commit anything to the repository without review, and you may have to deal with change requests or potential denial of your change.
+While developers have the freedom to work on whatever they want, it falls to the team as a whole to decide if changes to the repository should be merged or not. This means that a merge request or change may be denied at the end, so understand that creative freedom does not grant you full reigns to commit anything to the repository without review, and you may have to deal with change requests or potential denial of your change.
 
 To start contributing:
 

@@ -66,3 +66,5 @@
 						L[T] = TRUE
 		return L
 
+//Return either pick(list) or null if list is not of type /list or is empty
+#define SAFEPICK(L) (length(L) ? pick(L) : null)

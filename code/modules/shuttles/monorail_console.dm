@@ -145,8 +145,8 @@
 			to_chat(usr, SPAN_WARNING("The monorail isn't responding to prompts, it looks like remote control was disabled."))
 			return
 
-		if(!skip_time_lock && world.time < ticker.mode.round_time_lobby + SHUTTLE_TIME_LOCK && istype(shuttle, /datum/shuttle/ferry/marine))
-			to_chat(usr, SPAN_WARNING("The monorail is still charging and cannot depart yet. Please wait another [round((ticker.mode.round_time_lobby + SHUTTLE_TIME_LOCK-world.time)/600)] minutes before trying again."))
+		if(!skip_time_lock && world.time < SSticker.mode.round_time_lobby + SHUTTLE_TIME_LOCK && istype(shuttle, /datum/shuttle/ferry/marine))
+			to_chat(usr, SPAN_WARNING("The monorail is still charging and cannot depart yet. Please wait another [round((SSticker.mode.round_time_lobby + SHUTTLE_TIME_LOCK-world.time)/600)] minutes before trying again."))
 			return
 
 		sleep(0)

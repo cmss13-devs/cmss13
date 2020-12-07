@@ -85,7 +85,7 @@
 	change_real_name(src, name)
 
 	..()
-	if(ticker && ticker.mode && ticker.mode.flags_round_type & MODE_PREDATOR)
+	if(SSticker.mode && SSticker.mode.flags_round_type & MODE_PREDATOR)
 		addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat, src, "<span style='color: red;'>This is a <B>PREDATOR ROUND</B>! If you are whitelisted, you may Join the Hunt!</span>"), 2 SECONDS)
 
 /mob/dead/observer/Login()
@@ -569,12 +569,12 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if (!client)
 		return
 
-	if(!ticker || ticker.current_state < GAME_STATE_PLAYING || !ticker.mode)
+	if(SSticker.current_state < GAME_STATE_PLAYING || !SSticker.mode)
 		to_chat(src, SPAN_WARNING("The game hasn't started yet!"))
 		return
 
-	if(ticker.mode.check_xeno_late_join(src))
-		ticker.mode.attempt_to_join_as_xeno(src)
+	if(SSticker.mode.check_xeno_late_join(src))
+		SSticker.mode.attempt_to_join_as_xeno(src)
 
 /mob/dead/verb/join_as_zombie() //Adapted from join as hellhoud
 	set category = "Ghost"
@@ -584,7 +584,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if (!client)
 		return
 
-	if(!ticker || ticker.current_state < GAME_STATE_PLAYING || !ticker.mode)
+	if(SSticker.current_state < GAME_STATE_PLAYING || !SSticker.mode)
 		to_chat(src, SPAN_WARNING("The game hasn't started yet!"))
 		return
 
@@ -635,7 +635,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(!M.stat || !M.mind)
 		return
 
-	if(!ticker || ticker.current_state < GAME_STATE_PLAYING || !ticker.mode)
+	if(SSticker.current_state < GAME_STATE_PLAYING || !SSticker.mode)
 		to_chat(src, SPAN_WARNING("The game hasn't started yet!"))
 		return
 
@@ -662,7 +662,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 	var/mob/L = src
 
-	if(ticker.current_state < GAME_STATE_PLAYING)
+	if(SSticker.current_state < GAME_STATE_PLAYING)
 		to_chat(usr, SPAN_WARNING("The game hasn't started yet!"))
 		return
 
@@ -735,23 +735,23 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if (!client)
 		return
 
-	if(!ticker || ticker.current_state < GAME_STATE_PLAYING || !ticker.mode)
+	if(SSticker.current_state < GAME_STATE_PLAYING || !SSticker.mode)
 		to_chat(src, SPAN_WARNING("The game hasn't started yet!"))
 		return
 
-	if(ticker.mode.check_predator_late_join(src))
-		ticker.mode.attempt_to_join_as_predator(src)
+	if(SSticker.mode.check_predator_late_join(src))
+		SSticker.mode.attempt_to_join_as_predator(src)
 
 /mob/dead/verb/drop_vote()
 	set category = "Ghost"
 	set name = "Spectator Vote"
 	set desc = "If it's on Hunter Games gamemode, vote on who gets a supply drop!"
 
-	if(!ticker || ticker.current_state < GAME_STATE_PLAYING || !ticker.mode)
+	if(SSticker.current_state < GAME_STATE_PLAYING || !SSticker.mode)
 		to_chat(src, SPAN_WARNING("The game hasn't started yet!"))
 		return
 
-	if(!istype(ticker.mode,/datum/game_mode/huntergames))
+	if(!istype(SSticker.mode,/datum/game_mode/huntergames))
 		to_chat(src, SPAN_INFO("Wrong game mode. You have to be observing a Hunter Games round."))
 		return
 
@@ -776,7 +776,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		return
 	else
 		to_chat(src, SPAN_INFO("Your vote for [target] has been counted!"))
-		ticker.mode:supply_votes += target
+		SSticker.mode:supply_votes += target
 		voted_this_drop = 1
 		addtimer(VARSET_CALLBACK(src, voted_this_drop, FALSE), 20 SECONDS)
 

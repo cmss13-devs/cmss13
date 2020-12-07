@@ -24,7 +24,7 @@ SUBSYSTEM_DEF(round_recording)
 /*	if(!recorder)
 		return
 
-	if(!ticker || ticker.current_state != GAME_STATE_PLAYING)
+	if(SSticker.current_state != GAME_STATE_PLAYING)
 		return
 
 	if(!resumed)

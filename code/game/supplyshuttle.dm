@@ -385,7 +385,7 @@ var/datum/controller/supply/supply_controller = new()
 /datum/controller/supply/proc/calculate_crate_amount()
 
 	// Sqrt(NUM_XENOS/4)
-	var/crate_amount = Floor(max(0, sqrt(ticker.mode.count_xenos(SSmapping.levels_by_trait(ZTRAIT_GROUND))/3)))
+	var/crate_amount = Floor(max(0, sqrt(SSticker.mode.count_xenos(SSmapping.levels_by_trait(ZTRAIT_GROUND))/3)))
 
 	if(crate_iteration <= 5)
 		crate_amount = 4
@@ -954,9 +954,9 @@ var/datum/controller/supply/supply_controller = new()
 		check_vehicle_lock()
 
 /obj/structure/machinery/computer/supplycomp/vehicle/proc/check_vehicle_lock()
-	if(!ticker.mode || istype(ticker.mode, /datum/game_mode/extended))
+	if(!SSticker.mode || istype(SSticker.mode, /datum/game_mode/extended))
 		return
-	var/datum/game_mode/GM = ticker.mode
+	var/datum/game_mode/GM = SSticker.mode
 
 	if(GM.marine_starting_num < TANK_POPLOCK)
 		tank_unlocked = FALSE

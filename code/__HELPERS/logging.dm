@@ -1,5 +1,6 @@
 #define DIRECT_OUTPUT(A, B) A << B
 #define SEND_TEXT(target, text) DIRECT_OUTPUT(target, text)
+#define WRITE_FILE(file, text) DIRECT_OUTPUT(file, text)
 
 //print an error message to world.log
 

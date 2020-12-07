@@ -23,13 +23,13 @@
 				return 1
 
 		if(ismob(A) || isVehicle(A))
-			if(isXeno(A) && ticker.mode.check_xeno_late_join(src))		//if it's a xeno and all checks are alright, we are gonna try to take their body
+			if(isXeno(A) && SSticker.mode.check_xeno_late_join(src))		//if it's a xeno and all checks are alright, we are gonna try to take their body
 				var/mob/living/carbon/Xenomorph/X = A
 				if(!X.client)
 					if(X.stat == DEAD || is_admin_level(X.z))
 						to_chat(src, SPAN_WARNING("You cannot join as [X]."))
 						return
-					if(!ticker.mode.xeno_bypass_timer)
+					if(!SSticker.mode.xeno_bypass_timer)
 						var/deathtime = world.time - timeofdeath
 						var/deathtimeminutes = round(deathtime / MINUTES_1)
 						var/deathtimeseconds = round((deathtime - deathtimeminutes * MINUTES_1) / 10,1)
@@ -50,7 +50,7 @@
 					if(X.client || X.stat == DEAD) // Do it again, just in case
 						to_chat(src, SPAN_WARNING("That xenomorph can no longer be controlled. Please try another."))
 						return 0
-					ticker.mode.transfer_xeno(src, X)
+					SSticker.mode.transfer_xeno(src, X)
 					return 1
 			ManualFollow(A)
 			return 1

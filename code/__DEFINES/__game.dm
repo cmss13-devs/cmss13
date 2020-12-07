@@ -304,10 +304,6 @@ var/list/accessable_z_levels = list("1" = 10, "3" = 10, "4" = 10, "5" = 70)
 #define FIRE_MISSION_STATE_COOLDOWN 16
 
 //Defines for the ticker
-#define GAME_STATE_PREGAME		1
-#define GAME_STATE_SETTING_UP	2
-#define GAME_STATE_PLAYING		3
-#define GAME_STATE_FINISHED		4
 #define GAME_STATE_COMPILE_FINISHED	5
 
 // Misc client defines

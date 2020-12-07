@@ -94,7 +94,7 @@
 		if((user.getBrainLoss() >= 60) && prob(50))	//too dumb to use flashlight properly
 			return ..()	//just hit them in the head
 
-		if((!ishuman(user) || ticker) && ticker.mode.name != "monkey")	//don't have dexterity
+		if((!ishuman(user) || SSticker) && SSticker.mode.name != "monkey")	//don't have dexterity
 			to_chat(user, SPAN_NOTICE("You don't have the dexterity to do this!"))
 			return
 

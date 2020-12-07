@@ -201,10 +201,10 @@
 			to_chat(usr, SPAN_WARNING("The shuttle isn't responding to prompts, it looks like remote control was disabled."))
 			return
 		//Comment to test
-		if(!skip_time_lock && world.time < ticker.mode.round_time_lobby + SHUTTLE_TIME_LOCK && istype(shuttle, /datum/shuttle/ferry/marine))
-			to_chat(usr, SPAN_WARNING("The shuttle is still undergoing pre-flight fuelling and cannot depart yet. Please wait another [round((ticker.mode.round_time_lobby + SHUTTLE_TIME_LOCK-world.time)/600)] minutes before trying again."))
+		if(!skip_time_lock && world.time < SSticker.mode.round_time_lobby + SHUTTLE_TIME_LOCK && istype(shuttle, /datum/shuttle/ferry/marine))
+			to_chat(usr, SPAN_WARNING("The shuttle is still undergoing pre-flight fuelling and cannot depart yet. Please wait another [round((SSticker.mode.round_time_lobby + SHUTTLE_TIME_LOCK-world.time)/600)] minutes before trying again."))
 			return
-		if(ticker.mode.active_lz != src && !onboard && isXenoQueen(usr))
+		if(SSticker.mode.active_lz != src && !onboard && isXenoQueen(usr))
 			to_chat(usr, SPAN_WARNING("The shuttle isn't responding to prompts, it looks like this isn't the primary shuttle."))
 			return
 		if(istype(shuttle, /datum/shuttle/ferry/marine))

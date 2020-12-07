@@ -51,7 +51,7 @@ var/list/test_env_prefab_types = list(
 		manual_populate()
 
 	// Wait for the game to start before inserting people
-	while(ticker.current_state != GAME_STATE_PLAYING)
+	while(SSticker.current_state != GAME_STATE_PLAYING)
 		sleep(10)
 
 	insert_actors()

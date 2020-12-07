@@ -238,7 +238,7 @@
 //Checks to see who won///
 //////////////////////////
 /datum/game_mode/xenovs/check_win()
-    if(ticker.current_state != GAME_STATE_PLAYING)
+    if(SSticker.current_state != GAME_STATE_PLAYING)
         return
 
     var/list/living_player_list = get_xenos_hive()

@@ -15,10 +15,10 @@
 	set category = "Debug"
 	set desc = "Shows whether or not a mine is contained within the xenomorph list."
 
-	if(!ticker || ticker.current_state != GAME_STATE_PLAYING || !ticker.mode)
+	if(SSticker.current_state != GAME_STATE_PLAYING || !SSticker.mode)
 		to_chat(src, SPAN_WARNING("The round is either not ready, or has already finished."))
 		return
-	if(mind in ticker.mode.xenomorphs)
+	if(mind in SSticker.mode.xenomorphs)
 		to_chat(src, SPAN_DEBUG("[src] mind is in the xenomorph list. Mind key is [mind.key]."))
 		to_chat(src, SPAN_DEBUG("Current mob is: [mind.current]. Original mob is: [mind.original]."))
 	else to_chat(src, SPAN_DEBUG("This xenomorph is not in the xenomorph list."))

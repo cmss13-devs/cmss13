@@ -537,8 +537,8 @@
 
 /*****************************************************************************************************/
 /datum/equipment_preset/other/xeno_cultist/load_status(mob/living/carbon/human/H, var/hivenumber = XENO_HIVE_NORMAL)
-	if(ticker && ticker.mode && H.mind)
-		ticker.mode.xenomorphs += H.mind
+	if(SSticker.mode && H.mind)
+		SSticker.mode.xenomorphs += H.mind
 
 	GLOB.xeno_cultists += H
 

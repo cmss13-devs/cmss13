@@ -181,10 +181,10 @@
 					to_chat(usr, SPAN_WARNING("The distress beacon cannot be launched this early in the operation. Please wait another [round((DISTRESS_TIME_LOCK-world.time)/MINUTES_1)] minutes before trying again."))
 					return FALSE
 
-				if(!ticker || !ticker.mode) 
+				if(!SSticker.mode) 
 					return FALSE //Not a game mode?
 
-				if(ticker.mode.force_end_at == 0)
+				if(SSticker.mode.force_end_at == 0)
 					to_chat(usr, SPAN_WARNING("ARES has denied your request for operational security reasons."))
 					return FALSE
 
@@ -215,10 +215,10 @@
 					to_chat(usr, SPAN_WARNING("The self destruct cannot be activated this early in the operation. Please wait another [round((DISTRESS_TIME_LOCK-world.time)/MINUTES_1)] minutes before trying again."))
 					return FALSE
 
-				if(!ticker || !ticker.mode) 
+				if(!SSticker.mode) 
 					return FALSE //Not a game mode?
 
-				if(ticker.mode.force_end_at == 0)
+				if(SSticker.mode.force_end_at == 0)
 					to_chat(usr, SPAN_WARNING("ARES has denied your request for operational security reasons."))
 					return FALSE
 

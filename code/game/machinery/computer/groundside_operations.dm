@@ -32,7 +32,7 @@
 	dat += "<BR><A href='?src=\ref[src];operation=mapview'>Tactical Map</A>"
 	dat += "<BR><hr>"
 
-	if(ticker && ticker.mode && (isnull(ticker.mode.active_lz) || isnull(ticker.mode.active_lz.loc)))
+	if(SSticker.mode && (isnull(SSticker.mode.active_lz) || isnull(SSticker.mode.active_lz.loc)))
 		dat += "<BR>Primary LZ <BR><A HREF='?src=\ref[src];operation=selectlz'>Select primary LZ</A>"
 		dat += "<BR><hr>"
 
@@ -226,7 +226,7 @@
 				visible_message(SPAN_NOTICE("[src] prints a medal."))
 
 		if("selectlz")
-			if(ticker.mode.active_lz)
+			if(SSticker.mode.active_lz)
 				return
 			var/lz_choices = list()
 			for(var/obj/structure/machinery/computer/shuttle_control/console in machines)
@@ -234,7 +234,7 @@
 					lz_choices += console
 			var/new_lz = input(usr, "Choose the primary LZ for this operation", "Operation Staging")  as null|anything in lz_choices
 			if(new_lz)
-				ticker.mode.select_lz(new_lz)
+				SSticker.mode.select_lz(new_lz)
 
 		if("pick_squad")
 			var/list/squad_list = list()

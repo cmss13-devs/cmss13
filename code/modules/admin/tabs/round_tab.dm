@@ -4,18 +4,18 @@
 	set category = "Round"
 
 	if(admin_holder)
-		if(!ticker || !ticker.mode)
+		if(!SSticker || !SSticker.mode)
 			to_chat(src, SPAN_WARNING("The game hasn't started yet!"))
 			return
 
-		var/value = input(src,"How many additional predators can join? Decreasing the value is not recommended. Current predator count: [ticker.mode.pred_current_num]","Input:", ticker.mode.pred_additional_max) as num|null
+		var/value = input(src,"How many additional predators can join? Decreasing the value is not recommended. Current predator count: [SSticker.mode.pred_current_num]","Input:", SSticker.mode.pred_additional_max) as num|null
 
-		if(value < ticker.mode.pred_current_num)
-			to_chat(src, SPAN_NOTICE("Aborting. Number cannot be lower than the current pred count. (current: [ticker.mode.pred_current_num], attempted: [value])"))
+		if(value < SSticker.mode.pred_current_num)
+			to_chat(src, SPAN_NOTICE("Aborting. Number cannot be lower than the current pred count. (current: [SSticker.mode.pred_current_num], attempted: [value])"))
 			return
 
 		if(value)
-			ticker.mode.pred_additional_max = abs(value)
+			SSticker.mode.pred_additional_max = abs(value)
 			message_staff(SPAN_NOTICE("[key_name_admin(usr)] adjusted the additional pred amount to [abs(value)]."))
 
 /datum/admins/proc/force_predator_round()
@@ -23,14 +23,14 @@
 	set desc = "Force a predator round for the round type. Only works on maps that support Predator spawns."
 	set category = "Round"
 
-	if(!ticker || ticker.current_state < GAME_STATE_PLAYING || !ticker.mode)
+	if(!SSticker || SSticker.current_state < GAME_STATE_PLAYING || !SSticker.mode)
 		to_chat(usr, SPAN_DANGER("The game hasn't started yet!"))
 		return
 
 	if(alert("Are you sure you want to force a predator round?",, "Yes", "No") == "No") 
 		return
 
-	var/datum/game_mode/predator_round = ticker.mode
+	var/datum/game_mode/predator_round = SSticker.mode
 
 	if(!(predator_round.flags_round_type & MODE_PREDATOR))
 		var/datum/job/PJ = RoleAuthority.roles_for_mode[JOB_PREDATOR]
@@ -114,16 +114,16 @@
 	set desc = "Immediately ends the round, be very careful"
 	set category = "Round"
 
-	if(!check_rights(R_SERVER) || !ticker)	
+	if(!check_rights(R_SERVER) || !SSticker.mode)	
 		return
 
 	if(alert("Are you sure you want to end the round?",,"Yes","No") != "Yes")
 		return
 	// trying to end the round before it even starts. bruh
-	if(!ticker.mode)
+	if(!SSticker.mode)
 		return
 
-	ticker.mode.round_finished = MODE_INFESTATION_DRAW_DEATH
+	SSticker.mode.round_finished = MODE_INFESTATION_DRAW_DEATH
 	message_staff(SPAN_NOTICE("[key_name(usr)] has made the round end early."))
 	for(var/client/C in GLOB.admins)
 		to_chat(C, {"
@@ -140,12 +140,12 @@
 
 	if(!check_rights(R_SERVER))	
 		return
-	if (!ticker || ticker.current_state != GAME_STATE_PREGAME)
-		ticker.delay_end = !ticker.delay_end
-		message_staff("[SPAN_NOTICE("[key_name(usr)] [ticker.delay_end ? "delayed the round end" : "has made the round end normally"].")]")
+	if (SSticker.current_state != GAME_STATE_PREGAME)
+		SSticker.delay_end = !SSticker.delay_end
+		message_staff("[SPAN_NOTICE("[key_name(usr)] [SSticker.delay_end ? "delayed the round end" : "has made the round end normally"].")]")
 		for(var/client/C in GLOB.admins)
 			to_chat(C, {"<hr>
-			[SPAN_CENTERBOLD("Staff-Only Alert: <EM>[usr.key]</EM> [ticker.delay_end ? "delayed the round end" : "has made the round end normally"]")]
+			[SPAN_CENTERBOLD("Staff-Only Alert: <EM>[usr.key]</EM> [SSticker.delay_end ? "delayed the round end" : "has made the round end normally"]")]
 			<hr>"})
 		return
 
@@ -166,13 +166,13 @@
 	set desc = "Start the round RIGHT NOW"
 	set category = "Round"
 
-	if (!ticker)
+	if (!SSticker)
 		alert("Unable to start the game as it is not set up.")
 		return
 	if (alert("Are you sure you want to start the round early?",,"Yes","No") != "Yes")
 		return
-	if (ticker.current_state == GAME_STATE_PREGAME)
-		ticker.current_state = GAME_STATE_SETTING_UP
+	if (SSticker.current_state == GAME_STATE_PREGAME)
+		SSticker.current_state = GAME_STATE_SETTING_UP
 		message_staff(SPAN_BLUE("[usr.key] has started the game."))
 
 		return TRUE

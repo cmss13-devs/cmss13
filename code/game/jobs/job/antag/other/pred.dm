@@ -86,5 +86,5 @@
 /datum/job/antag/predator/generate_entry_conditions(mob/living/M, var/whitelist_status)
 	. = ..()
 
-	if(ticker && ticker.mode)
-		ticker.mode.initialize_predator(M, whitelist_status == CLAN_RANK_ADMIN)
+	if(SSticker.mode)
+		SSticker.mode.initialize_predator(M, whitelist_status == CLAN_RANK_ADMIN)

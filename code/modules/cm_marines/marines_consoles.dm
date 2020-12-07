@@ -51,8 +51,6 @@
 	user.set_interaction(src)
 	var/dat
 	var/title
-	if (!( ticker ))
-		return
 	if (mode) // accessing crew manifest
 
 		title = "Crew Manifest"

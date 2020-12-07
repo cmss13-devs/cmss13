@@ -26,7 +26,7 @@
 
 /obj/structure/machinery/drone_fabricator/process()
 
-	if(ticker.current_state < GAME_STATE_PLAYING)
+	if(SSticker.current_state < GAME_STATE_PLAYING)
 		return
 
 	if(stat & NOPOWER || !produce_drones)

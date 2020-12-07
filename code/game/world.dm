@@ -116,7 +116,7 @@ var/internal_tick_usage = 0
 			sleep(10)
 
 		// Start the game ASAP
-		ticker.current_state = GAME_STATE_SETTING_UP
+		SSticker.current_state = GAME_STATE_SETTING_UP
 
 	return
 
@@ -204,15 +204,15 @@ var/world_topic_spam_protect_time = world.timeofday
 
 		if(command == "mapdaemon_get_round_status")
 
-			if(!ticker) return "ERROR" //Yeah yeah wrong data type, but MapDaemon.java can handle it
+			if(!SSticker) return "ERROR" //Yeah yeah wrong data type, but MapDaemon.java can handle it
 
 			if(MapDaemon_UID == -1) MapDaemon_UID = MD_UID //If we haven't seen an instance of MD yet, this is ours now
 
 			if(kill_map_daemon || MD_UID != MapDaemon_UID) return 2 //The super secret killing code that kills it until it's been killed.
 
-			else if(!ticker.mode) return 0 //Before round start
+			else if(!SSticker.mode) return 0 //Before round start
 
-			else if(ticker.mode.round_finished || force_mapdaemon_vote) return 1
+			else if(SSticker.mode.round_finished || force_mapdaemon_vote) return 1
 
 			else return 0 //IDK what would cause this but why not, don't really want runtimes
 
@@ -221,23 +221,23 @@ var/world_topic_spam_protect_time = world.timeofday
 
 		else if(command == "mapdaemon_delay_round")
 
-			if(!ticker) return "ERROR"
+			if(!SSticker) return "ERROR"
 
 			addtimer(CALLBACK(src, .proc/announce_mapvote), 20 SECONDS)
 
-			ticker.automatic_delay_end = TRUE
+			SSticker.automatic_delay_end = TRUE
 			message_staff("World/Topic() call (likely MapDaemon.exe) has delayed the round end.", 1)
 			return "SUCCESS"
 
 		else if(command == "mapdaemon_restart_round")
 
-			if(!ticker) return "ERROR"
+			if(!SSticker) return "ERROR"
 
-			ticker.automatic_delay_end = FALSE
+			SSticker.automatic_delay_end = FALSE
 			message_staff("World/Topic() call (likely MapDaemon.exe) has resumed the round end.", 1)
 
 			//So admins have a chance to make EORG bans and do whatever
-			if(!ticker.delay_end)
+			if(!SSticker.delay_end)
 				message_staff(FONT_SIZE_LARGE(SPAN_BOLDANNOUNCE("NOTICE: Delay round within 30 seconds in order to prevent auto-restart!")), 1)
 
 			MapDaemonHandleRestart() //Doesn't hold
@@ -315,8 +315,8 @@ var/list/datum/entity/map_vote/all_votes
 			most_votes = L[i]
 			next_map = i
 
-	if(!enable_map_vote && ticker && ticker.mode)
-		next_map = ticker.mode.name
+	if(!enable_map_vote && SSticker.mode)
+		next_map = SSticker.mode.name
 	else if(enable_map_vote && forced)
 		next_map = force_result
 
@@ -366,8 +366,8 @@ var/list/datum/entity/map_vote/all_votes
 	Master.Shutdown()
 	var/round_extra_data = ""
 	// Notify helper daemon of reboot, regardless of reason.
-	if(ticker && ticker.mode)
-		round_extra_data = "&message=[ticker.mode.end_round_message()]"
+	if(SSticker.mode)
+		round_extra_data = "&message=[SSticker.mode.end_round_message()]"
 
 	world.Export("http://127.0.0.1:8888/?rebooting=1[round_extra_data]")
 	for(var/client/C in GLOB.clients)
@@ -405,11 +405,11 @@ var/list/datum/entity/map_vote/all_votes
 		s += "<a href=\"[CONFIG_GET(string/forumurl)]\"><b>[CONFIG_GET(string/servername)] &#8212; [MAIN_SHIP_NAME]</b>"
 		s += "<br><img src=\"[CONFIG_GET(string/forumurl)]/byond_hub_logo.jpg\"></a>"
 		// s += "<a href=\"http://goo.gl/04C5lP\">Wiki</a>|<a href=\"http://goo.gl/hMmIKu\">Rules</a>"
-		if(ticker)
+		if(SSticker)
 			if(master_mode)
 				s += "<br>Map: <b>[map_tag]</b>"
-				if(ticker.mode)
-					s += "<br>Mode: <b>[ticker.mode.name]</b>"
+				if(SSticker.mode)
+					s += "<br>Mode: <b>[SSticker.mode.name]</b>"
 				s += "<br>Round time: <b>[duration2text()]</b>"
 		else
 			s += "<br>Map: <b>[map_tag]</b>"
@@ -447,11 +447,11 @@ proc/setup_database_connection()
 /proc/MapDaemonHandleRestart()
 	set waitfor = 0
 
-	ticker.current_state = GAME_STATE_COMPILE_FINISHED
+	SSticker.current_state = GAME_STATE_COMPILE_FINISHED
 
 	sleep(300)
 
-	if(ticker.delay_end || ticker.automatic_delay_end)
+	if(SSticker.delay_end || SSticker.automatic_delay_end)
 		return
 
 	to_world(SPAN_DANGER("<b>Restarting world!</b> \blue Initiated by MapDaemon.exe!"))

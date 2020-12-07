@@ -82,7 +82,7 @@
 				to_chat(src, SPAN_WARNING("You require more plasma! Currently at: [plasma_stored] / 500."))
 				return
 
-			if(ticker && ticker.mode && hive.xeno_queen_timer>world.time)
+			if(SSticker.mode && hive.xeno_queen_timer>world.time)
 				to_chat(src, SPAN_WARNING("You must wait about [round((hive.xeno_queen_timer-world.time) / (60 SECONDS))] minutes for the hive to recover from the previous Queen's death."))
 				return
 		else

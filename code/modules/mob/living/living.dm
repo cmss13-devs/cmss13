@@ -503,7 +503,7 @@
 		user.show_message(SPAN_NOTICE("Key: Suffocation/Toxin/Burns/Brute"), 1)
 		user.show_message(SPAN_NOTICE("Body Temperature: ???"), 1)
 		return
-	if(!(istype(user, /mob/living/carbon/human) || ticker) && ticker.mode.name != "monkey")
+	if(!(istype(user, /mob/living/carbon/human) || SSticker) && SSticker.mode.name != "monkey")
 		to_chat(usr, SPAN_WARNING("You don't have the dexterity to do this!"))
 		return
 	if(!ignore_delay && !skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))

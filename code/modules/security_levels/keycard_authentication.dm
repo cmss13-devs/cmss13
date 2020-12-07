@@ -147,7 +147,7 @@
 
 /obj/structure/machinery/keycard_auth/proc/is_ert_blocked()
 	if(CONFIG_GET(flag/ert_admin_call_only)) return 1
-	return ticker.mode && ticker.mode.ert_disabled
+	return SSticker.mode && SSticker.mode.ert_disabled
 
 var/global/maint_all_access = 1
 
@@ -254,8 +254,8 @@ var/global/maint_all_access = 1
 				INVOKE_ASYNC(M, /obj/structure/machinery/door.proc/open)
 		return
 
-	if(istype(ticker.mode, /datum/game_mode/colonialmarines))
-		var/datum/game_mode/colonialmarines/gCM = ticker.mode
+	if(istype(SSticker.mode, /datum/game_mode/colonialmarines))
+		var/datum/game_mode/colonialmarines/gCM = SSticker.mode
 		if(gCM.round_status_flags & ROUNDSTATUS_PODDOORS_OPEN)
 			visible_message(SPAN_NOTICE("[src] states: LOCKDOWN ALREADY LIFTED"))
 			return
@@ -284,8 +284,8 @@ var/global/maint_all_access = 1
 	set waitfor = 0
 	switch(event)
 		if("Lift Lockdown")
-			if(istype(ticker.mode, /datum/game_mode/colonialmarines))
-				var/datum/game_mode/colonialmarines/gCM = ticker.mode
+			if(istype(SSticker.mode, /datum/game_mode/colonialmarines))
+				var/datum/game_mode/colonialmarines/gCM = SSticker.mode
 				if(gCM.round_status_flags & ROUNDSTATUS_PODDOORS_OPEN)
 					visible_message(SPAN_NOTICE("[src] states: LOCKDOWN ALREADY LIFTED"))
 					return

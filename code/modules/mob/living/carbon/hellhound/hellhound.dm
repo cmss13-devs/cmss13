@@ -152,7 +152,7 @@
 
 //punched by a hu-man
 /mob/living/carbon/hellhound/attack_hand(mob/living/carbon/human/M as mob)
-	if (!ticker)
+	if (!SSticker.mode)
 		to_chat(M, "You cannot attack people before the game has started.")
 		return
 

@@ -33,8 +33,6 @@
 /obj/structure/machinery/door/poddoor/shutters/open()
 	if(operating == 1) //doors can still open when emag-disabled
 		return
-	if(!ticker)
-		return 0
 	if(!operating) //in case of emag
 		operating = 1
 	flick("shutterc0", src)

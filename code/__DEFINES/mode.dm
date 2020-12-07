@@ -222,3 +222,11 @@ var/global/list/whitelist_hierarchy = list(WHITELIST_NORMAL, WHITELIST_COUNCIL, 
 // ERT Proportions
 
 #define ERT_PMC_GUNNER_FRACTION 0.5 //50% gunners, 50% snipers among PMCs
+
+//SSticker.current_state values
+#define GAME_STATE_STARTUP		0
+#define GAME_STATE_PREGAME		1
+#define GAME_STATE_SETTING_UP	2
+#define GAME_STATE_PLAYING		3
+#define GAME_STATE_FINISHED		4
+

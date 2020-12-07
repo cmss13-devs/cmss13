@@ -60,9 +60,6 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_NAME_1 = list(), SQUAD_NAME_2 = list()
 
 	var/dat
 
-	if(!(ticker))
-		return
-
 	dat += "<i>Welcome, [user.real_name].</i><br/><br/><hr/>"
 	dat += "<a href='?src=\ref[src];log=1'>View storage log</a>.<br>"
 	dat += "<a href='?src=\ref[src];view=1'>View objects</a>.<br>"
@@ -338,7 +335,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_NAME_1 = list(), SQUAD_NAME_2 = list()
 						available_specialist_sets += set_name
 			S.forget_marine_in_squad(H)
 
-	ticker.mode.latejoin_tally-- //Cryoing someone out removes someone from the Marines, blocking further larva spawns until accounted for
+	SSticker.mode.latejoin_tally-- //Cryoing someone out removes someone from the Marines, blocking further larva spawns until accounted for
 
 	//Handle job slot/tater cleanup.
 	RoleAuthority.free_role(RoleAuthority.roles_for_mode[occupant.job], TRUE)

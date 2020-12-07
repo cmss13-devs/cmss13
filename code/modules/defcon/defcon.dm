@@ -246,14 +246,14 @@ var/global/datum/controller/defcon/defcon_controller
 	announcement_message = "Additional troops are being taken out of cryo."
 
 /datum/defcon_reward/cryo_squad/apply_reward(var/datum/controller/defcon/d)
-	if (!ticker  || !ticker.mode)
+	if (!SSticker.mode)
 		return
 
 	. = ..()
 	if(. == 0)
 		return
 
-	ticker.mode.get_specific_call("Marine Cryo Reinforcements (Squad)", FALSE, FALSE)
+	SSticker.mode.get_specific_call("Marine Cryo Reinforcements (Squad)", FALSE, FALSE)
 
 /datum/defcon_reward/tank_points
 	name = "Additional Vehicle Parts Delivery System Points"

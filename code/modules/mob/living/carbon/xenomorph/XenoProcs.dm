@@ -18,8 +18,8 @@
 		if(3)
 			fontsize_style = "large"
 
-	if(ticker && ticker.mode && ticker.mode.xenomorphs.len) //Send to only xenos in our gamemode list. This is faster than scanning all mobs
-		for(var/datum/mind/L in ticker.mode.xenomorphs)
+	if(SSticker.mode && SSticker.mode.xenomorphs.len) //Send to only xenos in our gamemode list. This is faster than scanning all mobs
+		for(var/datum/mind/L in SSticker.mode.xenomorphs)
 			var/mob/living/carbon/M = L.current
 			if(M && istype(M) && !M.stat && M.client && M.allied_to_hivenumber(hivenumber, XENO_SLASH_RESTRICTED)) //Only living and connected xenos
 				to_chat(M, SPAN_XENODANGER("<span class=\"[fontsize_style]\"> [message]</span>"))

@@ -31,10 +31,10 @@ SUBSYSTEM_DEF(xevolution)
 
 		var/boost_power_new
 		// Minimum of 5 evo until 10 minutes have passed.
-		if((world.time - ticker.game_start_time) < XENO_ROUNDSTART_PROGRESS_TIME_2)
+		if((world.time - SSticker.round_start_time) < XENO_ROUNDSTART_PROGRESS_TIME_2)
 			boost_power_new = max(boost_power_new, XENO_ROUNDSTART_PROGRESS_AMOUNT) 
 		else
-			boost_power_new = Floor(10 * (world.time - XENO_ROUNDSTART_PROGRESS_TIME_2 - ticker.game_start_time) / EVOLUTION_INCREMENT_TIME) / 10
+			boost_power_new = Floor(10 * (world.time - XENO_ROUNDSTART_PROGRESS_TIME_2 - SSticker.round_start_time) / EVOLUTION_INCREMENT_TIME) / 10
 
 			//Add on any bonuses from evopods after applying upgrade progress
 			boost_power_new += (0.5 * HS.has_special_structure(XENO_STRUCTURE_EVOPOD))

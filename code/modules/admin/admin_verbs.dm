@@ -500,8 +500,7 @@ var/list/admin_verbs_mod = list(
 	set desc = "Tells everyone about a random statistic in the round."
 	set category = "OOC"
 
-	if(ticker && ticker.mode)
-		ticker.mode.declare_random_fact()
+	SSticker.mode?.declare_random_fact()
 
 
 #undef MAX_WARNS

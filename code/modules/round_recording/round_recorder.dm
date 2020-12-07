@@ -38,7 +38,7 @@
 /datum/round_recorder/proc/end_game()
 	game_end = time2text(world.realtime, "DD.MM.YYYY@hh:mm:ss")
 
-	outcome = ticker.mode.round_finished
+	outcome = SSticker.mode.round_finished
 
 	export_data()
 

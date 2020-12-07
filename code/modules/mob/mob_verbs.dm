@@ -117,10 +117,10 @@
 	if (!CONFIG_GET(flag/respawn) && !is_admin)
 		to_chat(usr, SPAN_NOTICE(" Respawn is disabled."))
 		return
-	if (stat != 2 || !ticker)
+	if (stat != 2)
 		to_chat(usr, SPAN_NOTICE(" <B>You must be dead to use this!</B>"))
 		return
-	if (ticker && ticker.mode && (ticker.mode.name == "meteor" || ticker.mode.name == "epidemic")) //BS12 EDIT
+	if (SSticker.mode && (SSticker.mode.name == "meteor" || SSticker.mode.name == "epidemic")) //BS12 EDIT
 		to_chat(usr, SPAN_NOTICE(" Respawn is disabled for this roundtype."))
 		return
 	else

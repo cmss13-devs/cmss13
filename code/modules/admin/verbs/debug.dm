@@ -321,7 +321,7 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 	set category = null
 	set name = "Make Robot"
 
-	if(!ticker)
+	if(!SSticker.mode)
 		alert("Wait until the game starts")
 		return
 	if(istype(M, /mob/living/carbon/human))
@@ -336,7 +336,7 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 	set category = null
 	set name = "Make Simple Animal"
 
-	if(!ticker)
+	if(!SSticker.mode)
 		alert("Wait until the game starts")
 		return
 
@@ -356,7 +356,7 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 	set category = null
 	set name = "Make Alien"
 
-	if(!ticker)
+	if(!SSticker.mode)
 		alert("Wait until the game starts")
 		return
 	if(ishuman(M))
@@ -383,7 +383,7 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 	set category = "Debug"
 	set name = "H: Toggle Round End Checks"
 
-	if(!ticker || !ticker.mode)
+	if(!SSticker.mode)
 		to_chat(usr, "Mode not found?")
 	round_should_check_for_win = !round_should_check_for_win
 	if (round_should_check_for_win)
@@ -457,7 +457,7 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 	set category = null
 	set name = "Grant Full Access"
 
-	if (!ticker)
+	if (!SSticker.mode)
 		alert("Wait until the game starts")
 		return
 	if (istype(M, /mob/living/carbon/human))
@@ -484,7 +484,7 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 	set category = null
 	set name = "Grant All Skills"
 
-	if(!ticker)
+	if(!SSticker.mode)
 		alert("Wait until the game starts")
 		return
 	if(M)

@@ -26,7 +26,7 @@
 		user.show_message(SPAN_NOTICE("Key: Suffocation/Toxin/Burns/Brute"), 1)
 		user.show_message(SPAN_NOTICE("Body Temperature: ???"), 1)
 		return
-	if(!(istype(user, /mob/living/carbon/human) || ticker) && ticker.mode.name != "monkey")
+	if(!(istype(user, /mob/living/carbon/human) || SSticker) && SSticker.mode.name != "monkey")
 		to_chat(user, SPAN_DANGER("You don't have the dexterity to do this!"))
 		return
 	if(!isrobot(M) && !isSynth(M))

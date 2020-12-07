@@ -80,7 +80,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 	if(dest_status < NUKE_EXPLOSION_IN_PROGRESS && evac_status == EVACUATION_STATUS_COMPLETE) //Nuke is not in progress and evacuation finished, end the round on ship and low orbit (dropships in transit) only.
 		. = SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP, ZTRAIT_LOWORBITT))
 	else
-		if(ticker && ticker.mode && ticker.mode.is_in_endgame)
+		if(SSticker.mode && SSticker.mode.is_in_endgame)
 			. = SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP, ZTRAIT_LOWORBITT))
 
 //=========================================================================================
@@ -268,10 +268,10 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 			dest_status = end_type
 
 			sleep(5)
-			if(ticker && ticker.mode)
-				ticker.mode.check_win()
+			if(SSticker.mode)
+				SSticker.mode.check_win()
 
-			if(!ticker || !ticker.mode) //Just a safety, just in case a mode isn't running, somehow.
+			if(!SSticker.mode) //Just a safety, just in case a mode isn't running, somehow.
 				to_world(SPAN_ROUNDBODY("Resetting in 30 seconds!"))
 				sleep(300)
 				log_game("Rebooting due to nuclear detonation.")

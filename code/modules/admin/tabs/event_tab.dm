@@ -134,7 +134,7 @@
 	set desc = "Force Launch the ERT Shuttle."
 	set category = "Event"
 
-	if (!ticker  || !ticker.mode)
+	if (!SSticker.mode)
 		return
 	if(!check_rights(R_ADMIN))
 		return
@@ -186,7 +186,7 @@
 	set desc = "Call a distress beacon. This should not be done if the shuttle's already been called."
 	set category = "Event"
 
-	if (!ticker  || !ticker.mode)
+	if (!SSticker.mode)
 		return
 
 	if(!check_rights(R_FUN)) // Seems more like an event thing than an admin thing
@@ -195,7 +195,7 @@
 	var/list/list_of_calls = list()
 	var/list/assoc_list = list()
 
-	for(var/datum/emergency_call/L in ticker.mode.all_calls)
+	for(var/datum/emergency_call/L in SSticker.mode.all_calls)
 		if(L && L.name != "name")
 			list_of_calls += L.name
 			assoc_list += list(L.name = L)
@@ -210,7 +210,7 @@
 
 	var/datum/emergency_call/chosen_ert
 	if(choice == "Randomize")
-		chosen_ert = ticker.mode.get_random_call()
+		chosen_ert = SSticker.mode.get_random_call()
 	else
 		var/datum/emergency_call/em_call = assoc_list[choice]
 		chosen_ert = new em_call.type()
@@ -232,7 +232,7 @@
 	set desc = "Trigger self destruct countdown. This should not be done if the self destruct has already been called."
 	set category = "Event"
 
-	if(!ticker || !ticker.mode || !check_rights(R_ADMIN) || get_security_level() == "delta")
+	if(!SSticker.mode || !check_rights(R_ADMIN) || get_security_level() == "delta")
 		return
 
 	if(alert(src, "Are you sure you want to do this?", "Confirmation", "Yes", "No") == "No")

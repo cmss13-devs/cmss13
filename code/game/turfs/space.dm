@@ -77,7 +77,7 @@
 
 	inertial_drift(A)
 
-	if(ticker && ticker.mode)
+	if(SSticker.mode)
 
 
 		// Okay, so let's make it so that people can travel z levels but not nuke disks!

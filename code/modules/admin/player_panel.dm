@@ -325,12 +325,12 @@
 
 
 /datum/admins/proc/check_antagonists()
-	if(!ticker || !(ticker.current_state >= GAME_STATE_PLAYING))
+	if(!SSticker || !(SSticker.current_state >= GAME_STATE_PLAYING))
 		alert("The game hasn't started yet!")
 		return
 
 	var/dat = "<html><body><h1><B>Antagonists</B></h1>"
-	dat += "Current Game Mode: <B>[ticker.mode.name]</B><BR>"
+	dat += "Current Game Mode: <B>[SSticker.mode.name]</B><BR>"
 	dat += "Round Duration: <B>[round(world.time / 36000)]:[add_zero(world.time / 600 % 60, 2)]:[world.time / 100 % 6][world.time / 100 % 10]</B><BR>"
 
 	if(LAZYLEN(human_agent_list))
@@ -358,9 +358,9 @@
 				dat += "<td><a href='?src=\ref[src];ahelp=adminplayeropts;extra=\ref[H]'>PP</a></td>"
 		dat += "</table>"
 
-	if(ticker.mode.survivors.len)
+	if(SSticker.mode.survivors.len)
 		dat += "<br><table cellspacing=5><tr><td><B>Survivors</B></td><td></td><td></td></tr>"
-		for(var/datum/mind/L in ticker.mode.survivors)
+		for(var/datum/mind/L in SSticker.mode.survivors)
 			var/mob/M = L.current
 			var/location = get_area(M.loc)
 			if(M)
@@ -370,9 +370,9 @@
 				dat += "<td><A href='?src=\ref[src];ahelp=adminplayeropts;extra=\ref[M]'>PP</A></td></TR>"
 		dat += "</table>"
 
-	if(ticker.mode.xenomorphs.len)
+	if(SSticker.mode.xenomorphs.len)
 		dat += "<br><table cellspacing=5><tr><td><B>Aliens</B></td><td></td><td></td></tr>"
-		for(var/datum/mind/L in ticker.mode.xenomorphs)
+		for(var/datum/mind/L in SSticker.mode.xenomorphs)
 			var/mob/M = L.current
 			if(M)
 				var/location = get_area(M.loc)
@@ -382,9 +382,9 @@
 				dat += "<td><A href='?src=\ref[src];ahelp=adminplayeropts;extra=\ref[M]'>PP</A></td></TR>"
 		dat += "</table>"
 
-	if(ticker.mode.survivors.len)
+	if(SSticker.mode.survivors.len)
 		dat += "<br><table cellspacing=5><tr><td><B>Survivors</B></td><td></td><td></td></tr>"
-		for(var/datum/mind/L in ticker.mode.survivors)
+		for(var/datum/mind/L in SSticker.mode.survivors)
 			var/mob/M = L.current
 			var/location = get_area(M.loc)
 			if(M)
@@ -409,9 +409,9 @@
 	show_browser(usr, dat, "Objectives", "objectives", "size=600x500")
 
 /datum/admins/proc/check_round_status()
-	if (ticker && ticker.current_state >= GAME_STATE_PLAYING)
+	if (SSticker.current_state >= GAME_STATE_PLAYING)
 		var/dat = "<html><body><h1><B>Round Status</B></h1>"
-		dat += "Current Game Mode: <B>[ticker.mode.name]</B><BR>"
+		dat += "Current Game Mode: <B>[SSticker.mode.name]</B><BR>"
 		dat += "Round Duration: <B>[round(world.time / 36000)]:[add_zero(world.time / 600 % 60, 2)]:[world.time / 100 % 6][world.time / 100 % 10]</B><BR>"
 
 		if(check_rights(R_DEBUG, 0))
@@ -445,7 +445,7 @@
 			dat += "<a href='?src=\ref[src];evac_authority=use_dest'>Destruct the [MAIN_SHIP_NAME] NOW</a><br>"
 			dat += "<a href='?src=\ref[src];evac_authority=toggle_dest'>Toggle Self Destruct Permission (does not affect evac in progress)</a><br>"
 
-		dat += "<br><a href='?src=\ref[src];delay_round_end=1'>[ticker.delay_end ? "End Round Normally" : "Delay Round End"]</a><br>"
+		dat += "<br><a href='?src=\ref[src];delay_round_end=1'>[SSticker.delay_end ? "End Round Normally" : "Delay Round End"]</a><br>"
 		dat += "</body></html>"
 		show_browser(usr, dat, "Round Status", "roundstatus", "size=600x500")
 	else

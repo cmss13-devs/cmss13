@@ -128,7 +128,7 @@ FORENSIC SCANNER
 
 	if (user.stat)
 		return
-	if (!(istype(usr, /mob/living/carbon/human) || ticker) && ticker.mode.name != "monkey")
+	if (!(istype(usr, /mob/living/carbon/human) || SSticker) && SSticker.mode.name != "monkey")
 		to_chat(usr, SPAN_DANGER("You don't have the dexterity to do this!"))
 		return
 
@@ -186,7 +186,7 @@ FORENSIC SCANNER
 	if (crit_fail)
 		to_chat(user, SPAN_DANGER("This device has critically failed and is no longer functional!"))
 		return
-	if (!(istype(user, /mob/living/carbon/human) || ticker) && ticker.mode.name != "monkey")
+	if (!(istype(user, /mob/living/carbon/human) || SSticker) && SSticker.mode.name != "monkey")
 		to_chat(user, SPAN_DANGER("You don't have the dexterity to do this!"))
 		return
 	return
@@ -220,7 +220,7 @@ FORENSIC SCANNER
 		return
 	if (user.stat)
 		return
-	if (!(istype(user, /mob/living/carbon/human) || ticker) && ticker.mode.name != "monkey")
+	if (!(istype(user, /mob/living/carbon/human) || SSticker) && SSticker.mode.name != "monkey")
 		to_chat(user, SPAN_DANGER("You don't have the dexterity to do this!"))
 		return
 	if(!istype(O))
@@ -281,7 +281,7 @@ FORENSIC SCANNER
 		return
 	if(user.stat)
 		return
-	if(!(istype(user, /mob/living/carbon/human) || ticker) && ticker.mode.name != "monkey")
+	if(!(istype(user, /mob/living/carbon/human) || SSticker) && SSticker.mode.name != "monkey")
 		to_chat(user, SPAN_DANGER("You don't have the dexterity to do this!"))
 		return
 	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))

@@ -177,3 +177,8 @@ AUTOOOCMUTE
 
 #RECORD_ROUNDS
 
+# LOBBY_MUSIC 1 path/to/sound.ogg
+# LOBBY_MUSIC 2 path/to/sound.ogg
+# LOBBY_MUSIC 3 path/to/sound.ogg
+# LOBBY_MUSIC 4 path/to/sound.ogg
+# LOBBY_MUSIC 5 path/to/sound.ogg

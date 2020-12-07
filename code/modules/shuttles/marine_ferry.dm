@@ -324,7 +324,7 @@
 
 				var/lz_tag = (shuttle_tag == "[MAIN_SHIP_NAME] Dropship 1" ? "lz1" : "lz2")
 				if(istype(node_activator, /obj/effect/landmark/resource_node_activator/landing) && \
-				((ticker.mode.active_lz && ticker.mode.active_lz.shuttle_tag != shuttle_tag) || node_activator.node_group != "marine_first_landfall_[lz_tag]"))
+				((SSticker.mode.active_lz && SSticker.mode.active_lz.shuttle_tag != shuttle_tag) || node_activator.node_group != "marine_first_landfall_[lz_tag]"))
 					continue
 
 				node_activator.trigger()
@@ -589,9 +589,9 @@
 	sleep(100)
 	moving_status = SHUTTLE_CRASHED
 
-	if(ticker && ticker.mode)
-		ticker.mode.is_in_endgame = TRUE
-		ticker.mode.force_end_at = world.time + 15000 // 25 mins
+	if(SSticker.mode)
+		SSticker.mode.is_in_endgame = TRUE
+		SSticker.mode.force_end_at = world.time + 15000 // 25 mins
 
 
 /datum/shuttle/ferry/marine/short_jump()
@@ -650,7 +650,7 @@
 
 		var/lz_tag = (shuttle_tag == "[MAIN_SHIP_NAME] Dropship 1" ? "lz1" : "lz2")
 		if(istype(node_activator, /obj/effect/landmark/resource_node_activator/landing) && \
-		((ticker.mode.active_lz && ticker.mode.active_lz.shuttle_tag != shuttle_tag) || node_activator.node_group != "marine_first_landfall_[lz_tag]"))
+		((SSticker.mode.active_lz && SSticker.mode.active_lz.shuttle_tag != shuttle_tag) || node_activator.node_group != "marine_first_landfall_[lz_tag]"))
 			continue
 
 		node_activator.trigger()

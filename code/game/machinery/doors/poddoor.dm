@@ -73,8 +73,6 @@
 /obj/structure/machinery/door/poddoor/open()
 	if(operating == 1) //doors can still open when emag-disabled
 		return
-	if(!ticker)
-		return 0
 	if(!operating) //in case of emag
 		operating = 1
 
@@ -111,8 +109,6 @@
 /obj/structure/machinery/door/poddoor/two_tile/open()
 	if(operating == 1) //doors can still open when emag-disabled
 		return
-	if(!ticker)
-		return 0
 	if(!operating) //in case of emag
 		operating = 1
 	start_opening()

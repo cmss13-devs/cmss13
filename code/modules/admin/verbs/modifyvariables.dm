@@ -2,15 +2,6 @@ var/list/forbidden_varedit_object_types = list(
 										/datum/admins,						//Admins editing their own admin-power object? Yup, sounds like a good idea.
 									)
 
-/client/proc/cmd_modify_ticker_variables()
-	set category = "Debug"
-	set name = "Edit Ticker Variables"
-
-	if (ticker == null)
-		to_chat(src, "Game hasn't started yet.")
-	else
-		src.modify_variables(ticker)
-
 /client/proc/mod_list_add_ass() //haha
 	var/class = "text"
 

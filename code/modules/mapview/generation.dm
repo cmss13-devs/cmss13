@@ -138,7 +138,7 @@
 			newoverlay.DrawBox(rgb(128,255,128),V.x+1,V.y)
 			newoverlay.DrawBox(rgb(128,255,128),V.x,V.y-1)
 			newoverlay.DrawBox(rgb(128,255,128),V.x,V.y+1)
-	if(ticker.toweractive)
+	if(SSticker.toweractive)
 		for(var/mob/living/carbon/Xenomorph/X in GLOB.living_xeno_list)
 			if(X.loc.z != 1) continue
 			switch(X.tier)

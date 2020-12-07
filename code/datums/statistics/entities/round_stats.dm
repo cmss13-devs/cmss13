@@ -270,7 +270,7 @@
 			end_of_round_marines += S.value
 
 	var/stats = ""
-	stats += "[ticker.mode.round_finished]\n"
+	stats += "[SSticker.mode.round_finished]\n"
 	stats += "Game mode: [game_mode]\n"
 	stats += "Map name: [current_map.name]\n"
 	stats += "Round time: [duration2text(round_length)]\n"

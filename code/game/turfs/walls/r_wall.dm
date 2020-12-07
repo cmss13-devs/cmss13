@@ -16,7 +16,7 @@
 	if(hull)
 		return
 
-	if (!(istype(user, /mob/living/carbon/human) || isrobot(user) || ticker) && ticker.mode.name != "monkey")
+	if (!(istype(user, /mob/living/carbon/human) || isrobot(user) || SSticker) && SSticker.mode.name != "monkey")
 		to_chat(user, SPAN_WARNING("You don't have the dexterity to do this!"))
 		return
 

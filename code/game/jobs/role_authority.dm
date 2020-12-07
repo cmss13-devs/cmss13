@@ -186,7 +186,7 @@ var/global/marines_assigned = 0
 	if(!roles_for_mode && !overwritten_roles_for_mode || !length(roles_for_mode) && !length(overwritten_roles_for_mode)) 
 		return //Can't start if this doesn't exist.
 
-	var/datum/game_mode/G = ticker.mode
+	var/datum/game_mode/G = SSticker.mode
 	switch(G.role_instruction)
 		if(1) //Replacing the entire list.
 			roles_for_mode = new
@@ -249,7 +249,7 @@ var/global/marines_assigned = 0
 		SJ.set_spawn_positions(marines_assigned)
 
 	if(prob(CHANCE_OF_PRED_ROUND))
-		ticker?.mode?.flags_round_type |= MODE_PREDATOR
+		SSticker?.mode?.flags_round_type |= MODE_PREDATOR
 		// Set predators starting amount based on marines assigned
 		var/datum/job/PJ = temp_roles_for_mode[JOB_PREDATOR]
 		if(istype(PJ))
@@ -294,7 +294,7 @@ var/global/marines_assigned = 0
 
 /datum/authority/branch/role/proc/assign_to_xenomorph(var/mob/M)
 	var/datum/mind/P = M.mind
-	var/datum/game_mode/G = ticker.mode
+	var/datum/game_mode/G = SSticker.mode
 	var/datum/hive_status/hive = hive_datum[XENO_HIVE_NORMAL]
 	// if we don't have at least one thing - abort
 	if(!P || !G || !hive)
@@ -540,7 +540,7 @@ var/global/marines_assigned = 0
 			randomize_squad(H)
 
 		if(Check_WO() && job_squad_roles.Find(H.job))	//activates self setting proc for marine headsets for WO
-			var/datum/game_mode/whiskey_outpost/WO = ticker.mode
+			var/datum/game_mode/whiskey_outpost/WO = SSticker.mode
 			WO.self_set_headset(H)
 
 		H.sec_hud_set_ID()

@@ -204,7 +204,6 @@
 /obj/structure/machinery/door/proc/open(var/forced=0)
 	if(!density)		return 1
 	if(operating > 0 || !loc)	return
-	if(!ticker)			return 0
 	if(!operating)		operating = 1
 
 	do_animate("opening")

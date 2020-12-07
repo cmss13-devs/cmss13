@@ -73,8 +73,8 @@ var/global/cas_tracking_id_increment = 0	//this var used to assign unique tracki
 	for(var/mob/new_player/np in GLOB.new_player_list)
 		np.new_player_panel_proc()
 	log_game("Round started at [time2text(world.realtime)]")
-	if(ticker && ticker.mode)
-		log_game("Game mode set to [ticker.mode]")
+	if(SSticker.mode)
+		log_game("Game mode set to [SSticker.mode]")
 	log_game("Server IP: [world.internet_address]:[world.port]")
 	return 1
 

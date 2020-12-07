@@ -96,8 +96,8 @@
 		stat("Security Level:","[uppertext(get_security_level())]")
 		stat("DEFCON Level:","[defcon_controller.current_defcon_level]")
 
-		if(!isnull(ticker) && !isnull(ticker.mode) && !isnull(ticker.mode.active_lz) && !isnull(ticker.mode.active_lz.loc) && !isnull(ticker.mode.active_lz.loc.loc))
-			stat("Primary LZ: ", ticker.mode.active_lz.loc.loc.name)
+		if(!isnull(SSticker) && !isnull(SSticker.mode) && !isnull(SSticker.mode.active_lz) && !isnull(SSticker.mode.active_lz.loc) && !isnull(SSticker.mode.active_lz.loc.loc))
+			stat("Primary LZ: ", SSticker.mode.active_lz.loc.loc.name)
 
 		if(assigned_squad)
 			if(assigned_squad.overwatch_officer)

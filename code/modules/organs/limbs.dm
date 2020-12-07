@@ -432,7 +432,7 @@ This function completely restores a damaged organ to perfect condition.
 
 
 /obj/limb/proc/add_bleeding(var/datum/wound/W, var/internal = FALSE)
-	if(!(ticker && ticker.current_state >= GAME_STATE_PLAYING)) //If the game hasnt started, don't add bleed. Hacky fix to avoid having 100 bleed effect from roundstart.
+	if(!(SSticker.current_state >= GAME_STATE_PLAYING)) //If the game hasnt started, don't add bleed. Hacky fix to avoid having 100 bleed effect from roundstart.
 		return
 
 	if(status & LIMB_ROBOT)

@@ -1,4 +1,4 @@
-var/global/datum/controller/gameticker/ticker = new()
+//var/global/datum/controller/gameticker/ticker = new()
 
 
 
@@ -19,7 +19,6 @@ var/global/datum/controller/gameticker/ticker = new()
 	var/random_players = 0 	// if set to nonzero, ALL players who latejoin or declare-ready join will have random appearances/genders
 
 	var/pregame_timeleft = 0
-	var/game_start_time = 0 // Global world start time.
 	var/toweractive = FALSE
 	var/delay_end = FALSE	//if set to nonzero, the round will not restart on it's own
 	var/automatic_delay_end = FALSE
@@ -173,7 +172,6 @@ var/global/datum/controller/gameticker/ticker = new()
 		for(var/obj/structure/machinery/vending/V in machines)
 			V.select_gamemode_equipment(mode.type)
 
-	game_start_time = world.time
 	return 1
 
 /datum/controller/gameticker/proc/create_characters()
@@ -214,7 +212,7 @@ var/global/datum/controller/gameticker/ticker = new()
 /datum/controller/gameticker/proc/collect_minds()
 	for(var/mob/living/player in GLOB.alive_mob_list)
 		if(player.mind)
-			ticker.minds += player.mind
+			SSticker.minds += player.mind
 
 /datum/controller/gameticker/proc/equip_characters()
 	var/captainless=1
@@ -312,4 +310,4 @@ var/global/datum/controller/gameticker/ticker = new()
 	return 1
 
 /world/proc/has_round_started()
-	return ticker && ticker.current_state >= GAME_STATE_PLAYING
+	return SSticker.current_state >= GAME_STATE_PLAYING

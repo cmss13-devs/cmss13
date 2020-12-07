@@ -32,7 +32,7 @@
 		icon_state = "drone_fab_nopower"
 
 /obj/structure/machinery/part_fabricator/process()
-	if(ticker.current_state < GAME_STATE_PLAYING)
+	if(SSticker.current_state < GAME_STATE_PLAYING)
 		return
 	if(stat & NOPOWER)
 		icon_state = "drone_fab_nopower"

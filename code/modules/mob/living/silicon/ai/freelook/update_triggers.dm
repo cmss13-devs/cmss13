@@ -8,7 +8,7 @@
 	var/image/obscured
 
 /turf/proc/visibilityChanged()
-	if(ticker)
+	if(SSticker)
 		cameranet.updateVisibility(src)
 
 /turf/New()
@@ -16,37 +16,37 @@
 	visibilityChanged()
 
 /obj/structure/machinery/door/poddoor/shutters/open()
-	if(ticker)
+	if(SSticker)
 		cameranet.updateVisibility(src)
 	. = ..()
 
 
 /obj/structure/machinery/door/poddoor/shutters/close()
-	if(ticker)
+	if(SSticker)
 		cameranet.updateVisibility(src)
 	. = ..()
 
 
 /obj/structure/machinery/door/poddoor/shutters/Destroy()
-	if(ticker)
+	if(SSticker)
 		cameranet.updateVisibility(src)
 	. = ..()
 // STRUCTURES
 
 /obj/structure/Destroy()
-	if(ticker)
+	if(SSticker)
 		cameranet.updateVisibility(src)
 	. = ..()
 
 /obj/structure/New()
 	..()
-	if(ticker)
+	if(SSticker)
 		cameranet.updateVisibility(src)
 
 // EFFECTS
 
 /obj/effect/Destroy()
-	if(ticker)
+	if(SSticker)
 		cameranet.updateVisibility(src)
 	. = ..()
 

@@ -59,7 +59,7 @@
 		if(!linked_hive || M.stat != DEAD)
 			return
 		
-		if(ticker && ticker.mode && !(ticker.mode.flags_round_type & MODE_XVX))
+		if(SSticker.mode && !(SSticker.mode.flags_round_type & MODE_XVX))
 			return // For now, disabled on gamemodes that don't support it (primarily distress signal)
 
 		// Will probably allow for hives to slowly gain larva by killing hostile xenos and taking them to the spawnpool
@@ -141,7 +141,7 @@
 		new_xeno.visible_message(SPAN_XENODANGER("A larva suddenly emerges out of from the [src]!"),
 		SPAN_XENODANGER("You emerge out of the [src] and awaken from your slumber. For the Hive!"))
 		playsound(new_xeno, 'sound/effects/xeno_newlarva.ogg', 25, 1)
-		if(!ticker.mode.transfer_xeno(xeno_candidate, new_xeno))
+		if(!SSticker.mode.transfer_xeno(xeno_candidate, new_xeno))
 			qdel(new_xeno)
 			return FALSE
 		to_chat(new_xeno, SPAN_XENOANNOUNCE("You are a xenomorph larva awakened from slumber!"))

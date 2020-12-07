@@ -264,7 +264,7 @@
 //Checks to see who won///
 //////////////////////////
 /datum/game_mode/colonialmarines/check_win()
-	if(ticker.current_state != GAME_STATE_PLAYING)
+	if(SSticker.current_state != GAME_STATE_PLAYING)
 		return
 
 	var/living_player_list[] = count_humans_and_xenos(EvacuationAuthority.get_affected_zlevels())
@@ -281,7 +281,7 @@
 		if(!num_humans && num_xenos) //No humans remain alive.
 			round_finished = MODE_INFESTATION_X_MAJOR //Evacuation did not take place. Everyone died.
 		else if(num_humans && !num_xenos)
-			if(ticker && ticker.mode && ticker.mode.is_in_endgame)
+			if(SSticker.mode && SSticker.mode.is_in_endgame)
 				round_finished = MODE_INFESTATION_X_MINOR //Evacuation successfully took place.
 			else
 				round_finished = MODE_INFESTATION_M_MAJOR //Humans destroyed the xenomorphs.

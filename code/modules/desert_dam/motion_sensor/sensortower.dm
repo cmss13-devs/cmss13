@@ -165,11 +165,11 @@
 
 
 /obj/structure/machinery/sensortower/stop_processing()
-	ticker.toweractive = FALSE
+	SSticker.toweractive = FALSE
 	..()
 
 /obj/structure/machinery/sensortower/start_processing()
-	ticker.toweractive = TRUE
+	SSticker.toweractive = TRUE
 	..()
 
 /obj/structure/machinery/sensortower/power_change()

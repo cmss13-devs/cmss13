@@ -155,7 +155,7 @@
 /datum/behavior_delegate/boxer/New()
 	. = ..()
 
-	if(ticker && ticker.mode && (ticker.mode.flags_round_type & MODE_XVX)) // this is pain to do, but how else? hopefully we can replace clarity with something better in the future
+	if(SSticker.mode && (SSticker.mode.flags_round_type & MODE_XVX)) // this is pain to do, but how else? hopefully we can replace clarity with something better in the future
 		clear_head = 0
 		max_clear_head = 0
 

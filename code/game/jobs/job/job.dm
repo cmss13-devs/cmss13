@@ -187,12 +187,7 @@
 	var/mob/living/carbon/human/new_character = new(NP.loc)
 	new_character.lastarea = get_area(NP.loc)
 
-	if(ticker.random_players)
-		new_character.gender = pick(MALE, FEMALE)
-		NP.client.prefs.real_name = random_name(new_character.gender)
-		NP.client.prefs.randomize_appearance(new_character)
-	else
-		NP.client.prefs.copy_all_to(new_character)
+	NP.client.prefs.copy_all_to(new_character)
 
 	if (NP.client.prefs.be_random_body)
 		var/datum/preferences/TP = new()
@@ -272,7 +267,7 @@
 			RoleAuthority.randomize_squad(H)
 
 		if(Check_WO() && job_squad_roles.Find(H.job))	//activates self setting proc for marine headsets for WO
-			var/datum/game_mode/whiskey_outpost/WO = ticker.mode
+			var/datum/game_mode/whiskey_outpost/WO = SSticker.mode
 			WO.self_set_headset(H)
 
 		H.sec_hud_set_ID()

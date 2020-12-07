@@ -1991,7 +1991,7 @@ var/list/WALLITEMS = list(
 /proc/grenade_grief_check(var/obj/item/explosive/grenade/G)
 	var/turf/T = get_turf(G)
 	if(!(T.loc.type in grenade_antigrief_exempt_areas))
-		var/crash_occured = (ticker && ticker.mode && ticker.mode.is_in_endgame)
+		var/crash_occured = (SSticker?.mode?.is_in_endgame)
 		if(G.harmful && (T.z in SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP, ZTRAIT_LOWORBITT))) && (security_level < SEC_LEVEL_RED) && !crash_occured && grenade_antigrief_on)
 			return TRUE
 	return FALSE

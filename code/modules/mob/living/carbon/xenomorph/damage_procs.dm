@@ -74,7 +74,8 @@
 	apply_damage(modified_damage, damage_type)
 
 /mob/living/carbon/Xenomorph/apply_damage(damage = 0, damagetype = BRUTE, def_zone = null, used_weapon = null, sharp = 0, edge = 0, force = FALSE)
-	if(!damage) return
+	if(!damage)
+		return
 
 	if(SEND_SIGNAL(src, COMSIG_XENO_TAKE_DAMAGE, damage, damagetype) & COMPONENT_BLOCK_DAMAGE) return
 	//We still want to check for blood splash before we get to the damage application.
@@ -89,7 +90,8 @@
 	if(damage > 12) //Light damage won't splash.
 		check_blood_splash(damage, damagetype, chancemod)
 
-	if(stat == DEAD) return
+	if(damage > 0 && stat == DEAD)
+		return
 
 	if(xeno_shields.len != 0 && damage > 0)
 		for(var/datum/xeno_shield/XS in xeno_shields)

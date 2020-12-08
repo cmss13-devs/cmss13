@@ -17,7 +17,7 @@
 
 	var/mob/living/carbon/Xenomorph/Praetorian/P = MS.xeno
 	P.speed_modifier += XENO_SPEED_FASTMOD_TIER_3
-	P.armor_modifier += XENO_ARMOR_MOD_VERYLARGE
+	P.health_modifier -= XENO_HEALTH_MOD_VERYLARGE
 	mutator_update_actions(P)
 	MS.recalculate_actions(description, flavor_description)
 	P.recalculate_everything()
@@ -30,9 +30,9 @@
 	name = "Praetorian Vanguard Behavior Delegate"
 
 	// Config
-	var/shield_recharge_time = 120     // 12 seconds to recharge 1-hit shield
+	var/shield_recharge_time = 200     // 20 seconds to recharge 1-hit shield
 	var/pierce_spin_time = 10          // 1 second to use pierce
-	var/shield_decay_cleave_time = 7   // How long you have to buffed cleave after the shield fully decays
+	var/shield_decay_cleave_time = 15   // How long you have to buffed cleave after the shield fully decays
 
 	// State
 	var/last_combat_time = 0

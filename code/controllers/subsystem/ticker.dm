@@ -178,6 +178,7 @@ SUBSYSTEM_DEF(ticker)
 
 /datum/controller/subsystem/ticker/proc/PostSetup()
 	set waitfor = FALSE
+	mode.initialize_emergency_calls()
 	mode.post_setup()
 
 	for(var/obj/effect/landmark/start/S in landmarks_list)

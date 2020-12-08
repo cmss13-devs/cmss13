@@ -10,19 +10,19 @@
 	wrenchable = TRUE
 
 	listed_products = list(
-			list("PREPARED MEALS", -1, null, null),
+			/*list("PREPARED MEALS", -1, null, null),
 			list("USCM Prepared Meal (Chicken)", 15, /obj/item/reagent_container/food/snacks/mre_pack/meal5, VENDOR_ITEM_REGULAR),
 			list("USCM Prepared Meal (Cornbread)", 15, /obj/item/reagent_container/food/snacks/mre_pack/meal1, VENDOR_ITEM_REGULAR),
 			list("USCM Prepared Meal (Pasta)", 15, /obj/item/reagent_container/food/snacks/mre_pack/meal3, VENDOR_ITEM_REGULAR),
 			list("USCM Prepared Meal (Pizza)", 15, /obj/item/reagent_container/food/snacks/mre_pack/meal4, VENDOR_ITEM_REGULAR),
 			list("USCM Prepared Meal (Pork)", 15, /obj/item/reagent_container/food/snacks/mre_pack/meal2, VENDOR_ITEM_REGULAR),
 			list("USCM Prepared Meal (Tofu)", 15, /obj/item/reagent_container/food/snacks/mre_pack/meal6, VENDOR_ITEM_REGULAR),
-			list("USCM Protein Bar", 50, /obj/item/reagent_container/food/snacks/protein_pack, VENDOR_ITEM_REGULAR),
+			list("USCM Protein Bar", 50, /obj/item/reagent_container/food/snacks/protein_pack, VENDOR_ITEM_REGULAR), */ // no peasant food now its CHRISTMAS
 
-			//list("CHRISTMAS MEALS", -1, null, null),		//uncomment during emerge... Christmas
-			//list("Xmas Prepared Meal (Fruitcake)", 25, /obj/item/reagent_container/food/snacks/mre_pack/xmas3, VENDOR_ITEM_REGULAR),
-			//list("Xmas Prepared Meal (Gingerbread Cookies)", 25, /obj/item/reagent_container/food/snacks/mre_pack/xmas2, VENDOR_ITEM_REGULAR),
-			//list("Xmas Prepared Meal (Sugar Cookies)", 25, /obj/item/reagent_container/food/snacks/mre_pack/xmas1, VENDOR_ITEM_REGULAR),
+			list("CHRISTMAS MEALS", -1, null, null),		//ITS CHRISTMAS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+			list("Xmas Prepared Meal (Fruitcake)", 25, /obj/item/reagent_container/food/snacks/mre_pack/xmas3, VENDOR_ITEM_REGULAR),
+			list("Xmas Prepared Meal (Gingerbread Cookies)", 25, /obj/item/reagent_container/food/snacks/mre_pack/xmas2, VENDOR_ITEM_REGULAR),
+			list("Xmas Prepared Meal (Sugar Cookies)", 25, /obj/item/reagent_container/food/snacks/mre_pack/xmas1, VENDOR_ITEM_REGULAR),
 
 			list("FLASKS", -1, null, null),
 			list("Metal Flask", 10, /obj/item/reagent_container/food/drinks/flask, VENDOR_ITEM_REGULAR),

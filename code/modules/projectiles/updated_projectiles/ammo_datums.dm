@@ -1640,7 +1640,7 @@
 
 	damage_falloff = DAMAGE_FALLOFF_TIER_9
 	accuracy = HIT_ACCURACY_TIER_5*3
-	max_range = 6
+	max_range = 7
 	damage = BULLET_DAMAGE_TIER_5
 	damage_var_low = PROJECTILE_VARIANCE_TIER_6
 	damage_var_high = PROJECTILE_VARIANCE_TIER_8

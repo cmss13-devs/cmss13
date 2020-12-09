@@ -6,7 +6,7 @@
 		for(var/atom/movable/AM in stomach_contents)
 			if(isHumanStrict(AM))
 				return 0
-	return (mob_size != MOB_SIZE_BIG && caste.can_vent_crawl)
+	return (mob_size < MOB_SIZE_BIG && caste.can_vent_crawl)
 
 /mob/living/carbon/Xenomorph/ventcrawl_carry()
 	return 1

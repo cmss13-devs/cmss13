@@ -4,30 +4,28 @@
 //=================================================
 //Please don't edit these values without speaking to Errorage first	~Carn
 //Admin Permissions
-#define R_BUILDMODE		1
-#define R_ADMIN			2
-#define R_BAN			4
-#define R_FUN			8
-#define R_SERVER		16
-#define R_DEBUG			32
-#define R_POSSESS		64
-#define R_PERMISSIONS	128
-#define R_STEALTH		256
-#define R_REJUVINATE	512
-#define R_COLOR			1024
-#define R_VAREDIT		2048
-#define R_SOUNDS		4096
-#define R_SPAWN			8192
-#define R_MOD			16384
-#define R_MENTOR		32768
-#define R_HOST			65536
-#define R_PROFILER		131072
-#define R_NOLOCK		262144
+#define R_BUILDMODE		(1<<0)
+#define R_ADMIN			(1<<1)
+#define R_BAN			(1<<2)
+#define R_FUN			(1<<3)
+#define R_SERVER		(1<<4)
+#define R_DEBUG			(1<<5)
+#define R_POSSESS		(1<<6)
+#define R_PERMISSIONS	(1<<7)
+#define R_STEALTH		(1<<8)
+#define R_REJUVINATE	(1<<9)
+#define R_COLOR			(1<<10)
+#define R_VAREDIT		(1<<11)
+#define R_SOUNDS		(1<<13)
+#define R_SPAWN			(1<<14)
+#define R_MOD			(1<<15)
+#define R_MENTOR		(1<<16)
+#define R_HOST			(1<<17)
+#define R_PROFILER		(1<<18)
+#define R_NOLOCK		(1<<19)
+
+#define R_EVERYTHING	((1<<20)-1) //the sum of all other rank permissions
 // 512.1430 increases maximum bit flags from 16 to 24, so the following flags should be available for future changes:
-// #define R_PERMISSION	524288
-// #define R_PERMISSION	1048576
-// #define R_PERMISSION	2097152
-// #define R_PERMISSION	4194304
 //=================================================
 
 #define AHOLD_IS_MENTOR(ahold) (ahold && (ahold.rights & R_MENTOR))

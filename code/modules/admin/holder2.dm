@@ -27,7 +27,8 @@ var/list/datum/admins/admin_datums = list()
 	if(istype(C))
 		owner = C
 		owner.admin_holder = src
-		owner.add_admin_verbs()	//TODO
+		owner.add_admin_verbs()
+		owner.add_admin_whitelists()
 		GLOB.admins |= C
 		if(owner.admin_holder.rights & R_PROFILER)
 			if(!world.GetConfig("admin", C.ckey))

@@ -45,7 +45,7 @@ Basics, the most important.
 /*
 Administrative related.
 */
-/datum/config_entry/flag/localhost_rank
+/datum/config_entry/flag/no_localhost_rank
 	protection = CONFIG_ENTRY_LOCKED
 
 /datum/config_entry/flag/admin_legacy_system	//Defines whether the server uses the legacy admin system with admins.txt or the SQL system

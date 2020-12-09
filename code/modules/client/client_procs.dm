@@ -196,11 +196,17 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	GLOB.directory[ckey] = src
 	player_entity = setup_player_entity(ckey)
 
+	if(!CONFIG_GET(flag/no_localhost_rank))
+		var/static/list/localhost_addresses = list("127.0.0.1", "::1")
+		if(isnull(address) || (address in localhost_addresses))
+			var/datum/admins/admin = new("!localhost!", R_EVERYTHING, ckey)
+			admin.associate(src)
+
 	//Admin Authorisation
 	admin_holder = admin_datums[ckey]
 	if(admin_holder)
-		GLOB.admins += src
-		admin_holder.owner = src
+		admin_holder.associate(src)
+
 	add_pref_verbs()
 	//preferences datum - also holds some persistant data for the client (because we may as well keep these datums to a minimum)
 	prefs = preferences_datums[ckey]
@@ -256,10 +262,6 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	if( (world.address == address || !address) && !host )
 		host = key
 		world.update_status()
-
-	if(admin_holder)
-		add_admin_verbs()
-		add_admin_whitelists()
 
 	send_assets()
 

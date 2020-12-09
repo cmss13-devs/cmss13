@@ -74,6 +74,7 @@
 	if(mobs_can_store.len)
 		mob_to_store = pick(mobs_can_store)
 		mob_to_store.forceMove(src)
+		mob_to_store.unset_interaction()
 		stored_units += mob_size
 	return stored_units
 

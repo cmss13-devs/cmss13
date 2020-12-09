@@ -11,7 +11,7 @@
 	throw_speed = SPEED_FAST
 	throw_range = 5
 	w_class = SIZE_SMALL
-	
+
 	var/chameleon_on = FALSE
 	var/datum/effect_system/spark_spread/spark_system
 	var/chameleon_cooldown

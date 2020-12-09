@@ -1,3 +1,14 @@
+#define M2C_SETUP_TIME 4
+#define M2C_OVERHEAT_CRITICAL 18
+#define M2C_OVERHEAT_BAD 10
+#define M2C_OVERHEAT_OK 2
+#define M2C_OVERHEAT_DAMAGE 30
+#define M2C_LOW_COOLDOWN_ROLL 0.3
+#define M2C_HIGH_COOLDOWN_ROLL 0.45
+#define M2C_PASSIVE_COOLDOWN_AMOUNT 3
+#define M2C_OVERHEAT_OVERLAY 14
+#define M2C_CRUSHER_STUN 3
+
 //////////////////////////////////////////////////////////////
 //Mounted MG, Replacment for the current jury rig code.
 
@@ -842,12 +853,12 @@
 	icon = 'icons/turf/whiskeyoutpost.dmi'
 	icon_state = "M56DE_gun_mount"
 	item_state = "M56DE_gun_mount"
-	var/assembly_time = 8
 	var/rounds = 0
 	var/overheat_value = 0
 	var/anti_cadehugger_range = 1
 	var/broken_gun = FALSE
 	var/field_recovery = 130
+	health = 230
 
 /obj/item/device/m2c_gun/Initialize()
 	. = ..()
@@ -877,8 +888,8 @@
 	if(rotate_check.density)
 		to_chat(user, SPAN_WARNING("You can't set up [src] that way, there's a wall behind you!"))
 		return
-	if(locate(/obj/structure/barricade) in ACR)
-		to_chat(user, SPAN_WARNING("There's barricades nearby, you can't set up here!"))
+	if((locate(/obj/structure/barricade) in ACR) || (locate(/obj/structure/window_frame) in ACR))
+		to_chat(user, SPAN_WARNING("There's barriers nearby, you can't set up here!"))
 		return
 	if(broken_gun)
 		to_chat(user, SPAN_WARNING("You can't set up [src], it's completely broken!"))
@@ -887,17 +898,18 @@
 		to_chat(user, SPAN_WARNING("You can't set this up while cloaked!"))
 		return
 
-	if(!do_after(user, assembly_time* user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL, BUSY_ICON_FRIENDLY, src))
+	if(!do_after(user, M2C_SETUP_TIME , INTERRUPT_ALL, BUSY_ICON_FRIENDLY, src))
 		return
 	var/obj/structure/machinery/m56d_hmg/auto/M = new /obj/structure/machinery/m56d_hmg/auto(user.loc)
 	M.dir = user.dir // Make sure we face the right direction
 	M.anchored = TRUE
 	playsound(M, 'sound/items/m56dauto_setup.ogg', 75, 1)
 	to_chat(user, SPAN_NOTICE("You deploy [M]."))
-	if(rounds > 0)
+	if((rounds > 0) && !user.get_inactive_hand())
 		user.set_interaction(M)
 	M.rounds = rounds
 	M.overheat_value = overheat_value
+	M.health = health
 	M.update_icon()
 	qdel(src)
 
@@ -905,7 +917,7 @@
 	if(!ishuman(user))
 		return
 
-	if(iswelder(O) || user.action_busy)
+	if(!iswelder(O) || user.action_busy)
 		return
 
 	if(!broken_gun)
@@ -921,14 +933,14 @@
 		if(!do_after(user, field_recovery * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL, BUSY_ICON_FRIENDLY, src))
 			return
 		user.visible_message(SPAN_NOTICE("[user] field recovers [src], restoring it back to its original state."), \
-				SPAN_NOTICE("You repair [src] back to a functional state."))
+			SPAN_NOTICE("You repair [src] back to a functional state."))
 		broken_gun = FALSE
 		unacidable = TRUE
+		health = 110
 		update_icon()
+		return
 	else
 		to_chat(user, SPAN_WARNING("You need more fuel in [WT] to start field recovery on [src]."))
-		return
-	return
 
 // MACHINEGUN, AUTOMATIC
 /obj/structure/machinery/m56d_hmg/auto
@@ -939,15 +951,15 @@
 	icon_full = "M56DE"
 	icon_empty = "M56DE_e"
 	rounds_max = 125
-	ammo = /datum/ammo/bullet/machinegun/auto //rework ammo
+	ammo = /datum/ammo/bullet/machinegun/auto
 	fire_delay = 1.2
 	last_fired = 0
 	var/grip_dir = null
-	var/fold_time = 32
-	var/repair_time = 40
+	var/fold_time = 24
+	var/repair_time = 5 SECONDS
 	density = 1
-	health = 260
-	health_max = 260
+	health = 230
+	health_max = 230
 	var/list/cadeblockers = list()
 	var/cadeblockers_range = 1
 
@@ -960,10 +972,10 @@
 
 	// OVERHEAT MECHANIC VARIABLES
 	var/overheat_value = 0
-	var/overheat_threshold = 45
+	var/overheat_threshold = 30
 	var/emergency_cooling = FALSE
 	var/overheat_text_cooldown = 0
-	var/force_cooldown_timer = 20
+	var/force_cooldown_timer = 12
 	var/rotate_timer = 0
 	var/fire_stopper = FALSE
 
@@ -979,17 +991,12 @@
 
 /obj/structure/machinery/m56d_hmg/auto/Destroy()
 	QDEL_NULL_LIST(cadeblockers)
-
 	return ..()
-
-#define M2C_OVERHEAT_CRITICAL 40
-#define M2C_OVERHEAT_BAD 34
-#define M2C_OVERHEAT_OK 15
 
 /obj/structure/machinery/m56d_hmg/auto/process()
 
 	var/mob/user = operator
-	overheat_value -= 4
+	overheat_value -= M2C_PASSIVE_COOLDOWN_AMOUNT
 	if(overheat_value <= 0)
 		overheat_value = 0
 		STOP_PROCESSING(SSobj, src)
@@ -1004,10 +1011,6 @@
 		to_chat(user, SPAN_WARNING("[src]'s barrel is mildly warm."))
 
 	update_icon()
-
-#undef M2C_OVERHEAT_CRITICAL
-#undef M2C_OVERHEAT_BAD
-#undef M2C_OVERHEAT_OK
 
 // ANTI-CADE EFFECT, CREDIT TO WALTERMELDRON
 /obj/structure/blocker/anti_cade
@@ -1041,7 +1044,7 @@
 	else
 		icon_state = "[icon_full]"
 
-	if(overheat_value >= 34)
+	if(overheat_value >= M2C_OVERHEAT_OVERLAY)
 		overlays += image('icons/turf/whiskeyoutpost.dmi', "+m56de_overheat")
 
 	else
@@ -1058,6 +1061,7 @@
 		HMG.rounds = rounds
 		HMG.broken_gun = TRUE
 		HMG.unacidable = FALSE
+		HMG.health = 0
 		HMG.update_icon()
 		qdel(src)
 		return
@@ -1072,7 +1076,7 @@
 	var/mob/user = operator
 	to_chat(user, SPAN_HIGHDANGER("You are knocked off the gun by the sheer force of the ram, temporairly disabling it!"))
 	user.unset_interaction()
-	user.KnockDown(1)
+	user.KnockDown(M2C_CRUSHER_STUN)
 
 /obj/structure/machinery/m56d_hmg/auto/attackby(var/obj/item/O as obj, mob/user as mob)
 	if(!ishuman(user))
@@ -1127,8 +1131,7 @@
 	if(user.lying || get_dist(user,src) > 0 || user.is_mob_incapacitated() || user.frozen)
 		user.unset_interaction()
 		return HANDLE_CLICK_UNHANDLED
-	if(user.get_active_hand())
-		to_chat(usr, SPAN_WARNING("You need a free hand to shoot the [src]."))
+	if(user.get_active_hand() || user.get_inactive_hand())
 		return HANDLE_CLICK_UNHANDLED
 
 	target = A
@@ -1157,7 +1160,7 @@
 
 	else
 		if(world.time > rotate_timer)
-			rotate_timer = world.time + 3
+			rotate_timer = world.time + 5
 			rotate_to(user, A)
 
 	return HANDLE_CLICK_UNHANDLED
@@ -1190,8 +1193,11 @@
 	target = hovered
 
 /obj/structure/machinery/m56d_hmg/auto/proc/auto_fire_repeat(var/mob/user, var/atom/A)
+	if(!target) return
 	if(operator != user) return
-	if(!target)
+	if(fire_stopper) return
+	if(user.get_active_hand() || user.get_inactive_hand())
+		to_chat(usr, SPAN_WARNING("You need both your hands free to shoot [src]."))
 		return
 
 	var/angle = get_dir(src,target)
@@ -1208,7 +1214,7 @@
 				STOP_PROCESSING(SSobj, src)
 				addtimer(CALLBACK(src, .proc/force_cooldown), force_cooldown_timer)
 
-		else if(overheat_value < overheat_threshold && !fire_stopper)
+		else if(overheat_value < overheat_threshold)
 			fire_shot(1, user)
 			if(rounds)
 				overheat_value = overheat_value + 1
@@ -1233,20 +1239,18 @@
 /obj/structure/machinery/m56d_hmg/auto/get_scatter()
 	return 0
 
-
-
 // ACTIVE COOLING
 
 /obj/structure/machinery/m56d_hmg/auto/proc/force_cooldown(var/mob/user)
 	user = operator
 
-	overheat_value = round((rand(55,70)/100) * overheat_threshold)
+	overheat_value = round((rand(M2C_LOW_COOLDOWN_ROLL,M2C_HIGH_COOLDOWN_ROLL) * overheat_threshold))
 	playsound(src.loc, 'sound/weapons/hmg_cooling.ogg', 75, 1)
 	to_chat(user, SPAN_NOTICE("[src]'s barrel has cooled down enough to restart firing."))
 	emergency_cooling = FALSE
 	fire_stopper = FALSE
-	fire_delay = 1.2
-	update_health(25)
+	fire_delay = initial(fire_delay)
+	update_health(M2C_OVERHEAT_DAMAGE)
 	START_PROCESSING(SSobj, src)
 	update_icon()
 
@@ -1259,6 +1263,11 @@
 		if(operator != user) return
 		to_chat(user, SPAN_NOTICE("This isn't a M56D, there IS no burst fire option for the M2C."))
 		return
+
+	return ..()
+
+/obj/structure/machinery/m56d_hmg/auto/fire_shot(shots_fired = 1, var/mob/user)
+	if(fire_stopper) return
 
 	return ..()
 
@@ -1294,8 +1303,7 @@
 // DISASSEMBLY
 
 /obj/structure/machinery/m56d_hmg/auto/MouseDrop(over_object, src_location, over_location)
-	if(!ishuman(usr))
-		return
+	if(!ishuman(usr)) return
 	var/mob/living/carbon/human/user = usr
 
 	if(over_object == user && in_range(src, user))
@@ -1318,6 +1326,7 @@
 			if (HMG.overheat_value <= 10)
 				HMG.overheat_value = 0
 			HMG.update_icon()
+			HMG.health = health
 			user.put_in_active_hand(HMG)
 			qdel(src)
 
@@ -1343,8 +1352,9 @@
 		registerListener(user.client, EVENT_LMBDOWN, "hmg_fa_\ref[src]", CALLBACK(src, .proc/auto_fire_start))
 		registerListener(user.client, EVENT_LMBUP, "hmg_fa_\ref[src]", CALLBACK(src, .proc/auto_fire_stop))
 		registerListener(user.client, EVENT_LMBDRAG, "hmg_fa_\ref[src]", CALLBACK(src, .proc/auto_fire_new_target))
-		RegisterSignal(operator, COMSIG_MOB_MOVE, .proc/disable_interaction)
-		operator = user
+	RegisterSignal(user, COMSIG_MOB_MOVE, .proc/disable_interaction)
+	RegisterSignal(user, COMSIG_MOB_POST_UPDATE_CANMOVE, .proc/disable_canmove_interaction)
+	operator = user
 
 	user.frozen = FALSE
 
@@ -1352,6 +1362,10 @@
 
 /obj/structure/machinery/m56d_hmg/auto/on_unset_interaction(mob/user)
 	flags_atom &= ~RELAY_CLICK
+	UnregisterSignal(user, list(
+		COMSIG_MOB_MOVE,
+		COMSIG_MOB_POST_UPDATE_CANMOVE
+	))
 	user.visible_message(SPAN_NOTICE("[user] releases [src]."),SPAN_NOTICE("You handle [src], letting the gun rest."))
 	user.update_canmove()
 	user.reset_view(null)
@@ -1369,10 +1383,8 @@
 		unregisterListener(user.client, EVENT_LMBDOWN, "hmg_fa_\ref[src]")
 		unregisterListener(user.client, EVENT_LMBUP, "hmg_fa_\ref[src]")
 		unregisterListener(user.client, EVENT_LMBDRAG, "hmg_fa_\ref[src]")
-		UnregisterSignal(operator, COMSIG_MOB_MOVE, .proc/disable_interaction)
 
 	animate(user, pixel_x=user_old_x, pixel_y=user_old_y, 4, 1)
-
 	if(operator == user)
 		operator = null
 
@@ -1438,11 +1450,28 @@
 	to_chat(user, "You rotate [src], using the tripod to support your pivoting movement.")
 
 /obj/structure/machinery/m56d_hmg/auto/check_eye(mob/user)
-	if(user.lying || get_dist(user,src) > 0 || user.is_mob_incapacitated() || user.frozen || !user.client)
+	if(user.lying || get_dist(user,src) > 0 || user.is_mob_incapacitated() || !user.client)
 		user.unset_interaction()
 
 /obj/structure/machinery/m56d_hmg/auto/proc/disable_interaction(mob/user, NewLoc, direction)
 	SIGNAL_HANDLER
 
-	if(user.lying || get_dist(user,src) > 0 || user.is_mob_incapacitated() || user.frozen || !user.client)
+	if(user.lying || get_dist(user,src) > 0 || user.is_mob_incapacitated() || !user.client)
 		user.unset_interaction()
+
+/obj/structure/machinery/m56d_hmg/auto/proc/disable_canmove_interaction(mob/user, canmove, laid_down, lying)
+	SIGNAL_HANDLER
+
+	if(laid_down)
+		user.unset_interaction()
+
+#undef M2C_OVERHEAT_CRITICAL
+#undef M2C_OVERHEAT_BAD
+#undef M2C_OVERHEAT_OK
+#undef M2C_SETUP_TIME
+#undef M2C_OVERHEAT_DAMAGE
+#undef M2C_LOW_COOLDOWN_ROLL
+#undef M2C_HIGH_COOLDOWN_ROLL
+#undef M2C_PASSIVE_COOLDOWN_AMOUNT
+#undef M2C_OVERHEAT_OVERLAY
+#undef M2C_CRUSHER_STUN

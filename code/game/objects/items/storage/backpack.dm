@@ -372,7 +372,7 @@ obj/item/storage/backpack/empty(mob/user, turf/T)
 	storage_slots = 12
 	can_hold = list(/obj/item/explosive/grenade)
 	is_id_lockable = TRUE
-	has_gamemode_skin = FALSE 
+	has_gamemode_skin = FALSE
 
 /obj/item/storage/backpack/marine/grenadepack/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/storage/box/nade_box) || istype(W, /obj/item/storage/backpack/marine/grenadepack) || istype(W, /obj/item/storage/belt/grenade))
@@ -430,6 +430,7 @@ obj/item/storage/backpack/empty(mob/user, turf/T)
 	camo_active = TRUE
 	H.visible_message(SPAN_DANGER("[H] vanishes into thin air!"), SPAN_NOTICE("You activate your cloak's camouflage."), max_distance = 4)
 	playsound(H.loc,'sound/effects/cloak_scout_on.ogg', 15, 1)
+	H.unset_interaction()
 
 	H.alpha = camo_alpha
 	H.FF_hit_evade = 1000

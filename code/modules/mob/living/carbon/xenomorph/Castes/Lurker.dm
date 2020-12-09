@@ -20,6 +20,8 @@
 	caste_desc = "A fast, powerful backline combatant."
 	evolves_to = list("Ravager")
 
+	heal_resting = 1.5
+
 /mob/living/carbon/Xenomorph/Lurker
 	caste_name = "Lurker"
 	name = "Lurker"

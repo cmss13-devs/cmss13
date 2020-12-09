@@ -21,6 +21,8 @@
 	tacklestrength_min = 3
 	tacklestrength_max = 4
 
+	heal_resting = 1.75
+
 /mob/living/carbon/Xenomorph/Runner
 	caste_name = "Runner"
 	name = "Runner"

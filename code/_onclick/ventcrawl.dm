@@ -77,7 +77,7 @@
 			return
 
 		visible_message(SPAN_NOTICE("[src] begins climbing into [vent_found]."), SPAN_NOTICE("You begin climbing into [vent_found]."))
-		INVOKE_ASYNC(vent_found,/obj/structure/pipes/proc/animate_ventcrawl)
+		vent_found.animate_ventcrawl()
 		if(!do_after(src, 45, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 			vent_found.animate_ventcrawl_reset()
 			return
@@ -120,3 +120,11 @@
 	reset_view()
 
 	pipes_shown = list()
+
+/mob/living/proc/remove_specific_pipe_image(var/obj/structure/pipes/P)
+	if(!client || !P || !P.pipe_vision_img)
+		return
+
+	var/image/pipe_image = P.pipe_vision_img
+	if(pipe_image in pipes_shown)
+		client.images -= pipe_image 

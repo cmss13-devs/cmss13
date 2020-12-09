@@ -4476,7 +4476,7 @@
 /turf/closed/wall/almayer/outer,
 /area/almayer/command/self_destruct)
 "alT" = (
-/obj/structure/window/framed/almayer,
+/obj/structure/window/framed/almayer/hull/hijack_bustable,
 /obj/structure/curtain/red,
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -56177,9 +56177,8 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/engineering/ce_room)
 "wyt" = (
-/obj/structure/machinery/chem_dispenser/soda{
-	pixel_y = 32
-	},
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/chem_dispenser/soda,
 /turf/open/floor/wood,
 /area/almayer/command/cichallway)
 "wza" = (
@@ -73854,8 +73853,8 @@ aag
 aag
 aag
 qwp
-eei
 wyt
+aJp
 iwW
 sTm
 gwR

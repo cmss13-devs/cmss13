@@ -670,8 +670,9 @@ note dizziness decrements automatically in the mob's Life() proc.
 	else if(layer == LYING_DEAD_MOB_LAYER || layer == LYING_LIVING_MOB_LAYER)
 		layer = initial(layer)
 
-	return canmove
+	SEND_SIGNAL(src, COMSIG_MOB_POST_UPDATE_CANMOVE, canmove, laid_down ,lying)
 
+	return canmove
 
 /mob/proc/facedir(var/ndir)
 	if(!canface())	return 0

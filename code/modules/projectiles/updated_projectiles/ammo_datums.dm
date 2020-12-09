@@ -936,14 +936,14 @@
 	name = "heavy machinegun bullet"
 	icon_state 	= "bullet"
 
-	accurate_range = 10
-	damage =  BULLET_DAMAGE_TIER_9
+	accurate_range = 8
+	damage =  BULLET_DAMAGE_TIER_10
 	penetration = ARMOR_PENETRATION_TIER_4
 	accuracy = HIT_ACCURACY_TIER_6
 	shell_speed = AMMO_SPEED_TIER_4
 	max_range = 11
 	effective_range_max = 8
-	damage_falloff = DAMAGE_FALLOFF_TIER_8
+	damage_falloff = DAMAGE_FALLOFF_TIER_6
 
 /datum/ammo/bullet/minigun
 	name = "minigun bullet"

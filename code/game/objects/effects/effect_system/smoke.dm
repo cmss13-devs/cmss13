@@ -271,6 +271,9 @@
 	for(var/obj/vehicle/multitile/R in T)
 		R.take_damage_type(20, "acid")
 
+	for(var/obj/structure/machinery/m56d_hmg/auto/H in T)
+		H.update_health(XENO_ACID_HMG_DAMAGE)
+
 //No effect when merely entering the smoke turf, for balance reasons
 /obj/effect/particle_effect/smoke/xeno_burn/Crossed(mob/living/carbon/M as mob)
 	return

@@ -49,7 +49,7 @@
 
 /obj/item/clothing/head/beanie/tan
 	icon_state = "beanietan"
-	
+
 /obj/item/clothing/head/beret/cm
 	name = "\improper USCM beret"
 	desc = "A hat typically worn by the field-officers of the USCM. Occasionally they find their way down the ranks into the hands of squad-leaders and decorated grunts."
@@ -152,7 +152,10 @@
 	pockets.max_storage_space = 1
 
 /obj/item/clothing/head/cmcap/attack_hand(mob/user)
-	if (pockets.handle_attack_hand(user))
+	if(loc != user)
+		..(user)
+		return
+	if(pockets.handle_attack_hand(user))
 		..()
 
 /obj/item/clothing/head/cmcap/MouseDrop(over_object, src_location, over_location)
@@ -175,16 +178,15 @@
         M.update_inv_head()
 
 /obj/item/clothing/head/cmcap/get_mob_overlay(mob/user_mob, slot)
-    var/image/ret = ..()
+	var/image/ret = ..()
+	if(slot == WEAR_HEAD)
+		if(length(pockets.contents) && (flags_marine_helmet & HELMET_GARB_OVERLAY))
+			var/obj/O = pockets.contents[1]
+			if(O.type in allowed_hat_items)
+				var/image/I = overlay_image('icons/mob/humans/onmob/helmet_garb.dmi', "[allowed_hat_items[O.type]]", color, RESET_COLOR)
+				ret.overlays += I
 
-    if(pockets.contents.len && (flags_marine_helmet & HELMET_GARB_OVERLAY))
-        var/obj/O = pockets.contents[1]
-        if(O.type in allowed_hat_items)
-            var/image/I = overlay_image('icons/mob/humans/onmob/helmet_garb.dmi', "[allowed_hat_items[O.type]]", color, RESET_COLOR)
-            ret.overlays += I
-
-    return ret
-
+		return ret
 
 /obj/item/clothing/head/cmcap/verb/fliphat()
 	set name = "Flip hat"

@@ -193,12 +193,12 @@
 // Get the right onmob icon when we have flamer holstered.
 /obj/item/storage/large_holster/fuelpack/get_mob_overlay(mob/user_mob, slot)
 	var/image/ret = ..()
+	if(slot == WEAR_BACK)
+		if(length(contents))
+			var/image/weapon_holstered = overlay_image('icons/mob/humans/onmob/back.dmi', "+m240t", color, RESET_COLOR)
+			ret.overlays += weapon_holstered
 
-	if(contents.len)
-		var/image/weapon_holstered = overlay_image('icons/mob/humans/onmob/back.dmi', "+m240t", color, RESET_COLOR)
-		ret.overlays += weapon_holstered
-
-	return ret
+		return ret
 
 
 /obj/item/storage/large_holster/fuelpack/attack_self(mob/user)

@@ -167,7 +167,8 @@
                 return
             if(linked_dummy.get_limb(selection).status & LIMB_DESTROYED)
                 return
-            var/datum/wound/internal_bleeding/I = new (10)
+            var/datum/wound/internal_bleeding/I = new (0)//<- copied from limbs.dm, doesn't have any issues with cybernetics
+            limb.add_bleeding(I, TRUE)
             limb.wounds += I
         if ("shrapnel")
             var/selection = select_body_part()

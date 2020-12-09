@@ -102,7 +102,7 @@
 		visible_message("[src] growls at [X].", "You growl at [X].")
 		return
 	else if(a_intent == INTENT_DISARM)
-		if (!(X.knocked_out ) && X.mob_size != MOB_SIZE_BIG)
+		if (!(X.knocked_out ) && X.mob_size < MOB_SIZE_BIG)
 			if(prob(40))
 				X.KnockOut(4)
 				playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1)

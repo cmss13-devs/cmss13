@@ -1,13 +1,6 @@
 //------------GEAR VENDOR---------------
 
-/obj/structure/machinery/cm_vending/gear/intelligence_officer
-	name = "\improper ColMarTech Intelligence Officer Gear Rack"
-	desc = "An automated gear rack for Intelligence Officers."
-	icon_state = "intel_gear"
-	req_access = list(ACCESS_MARINE_BRIDGE)
-	vendor_role = list(JOB_INTEL)
-
-	listed_products = list(
+GLOBAL_LIST_INIT(cm_vending_gear_intelligence_officer, list(
 		list("INTELLIGENCE SET (MANDATORY)", 0, null, null, null),
 		list("Essential Intelligence Set", 0, /obj/effect/essentials_set/intelligence_officer, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
 
@@ -49,7 +42,18 @@
 		list("Reflex Sight", 10, /obj/item/attachable/reflex, null, VENDOR_ITEM_REGULAR),
 		list("Suppressor", 10, /obj/item/attachable/suppressor, null, VENDOR_ITEM_REGULAR),
 		list("Vertical Grip", 10, /obj/item/attachable/verticalgrip, null, VENDOR_ITEM_REGULAR)
-	)
+	))
+
+/obj/structure/machinery/cm_vending/gear/intelligence_officer
+	name = "\improper ColMarTech Intelligence Officer Gear Rack"
+	desc = "An automated gear rack for Intelligence Officers."
+	icon_state = "intel_gear"
+	req_access = list(ACCESS_MARINE_BRIDGE)
+	vendor_role = list(JOB_INTEL)
+
+/obj/structure/machinery/cm_vending/gear/intelligence_officer/Initialize(mapload, ...)
+	. = ..()
+	listed_products = GLOB.cm_vending_gear_intelligence_officer
 
 //------------GUNS VENDOR---------------
 
@@ -106,14 +110,7 @@
 
 //------------CLOTHING VENDOR---------------
 
-//MARINE_CAN_BUY_SHOES MARINE_CAN_BUY_UNIFORM currently not used
-/obj/structure/machinery/cm_vending/clothing/intelligence_officer
-	name = "\improper ColMarTech Intelligence Officer Equipment Rack"
-	desc = "An automated rack hooked up to a colossal storage of Intelligence Officer standard-issue equipment."
-	req_access = list(ACCESS_MARINE_BRIDGE)
-	vendor_role = list(JOB_INTEL)
-
-	listed_products = list(
+GLOBAL_LIST_INIT(cm_vending_clothing_intelligence_officer, list(
 		list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
 		list("Gloves", 0, /obj/item/clothing/gloves/yellow, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_MANDATORY),
 		list("Armor", 0, /obj/item/clothing/suit/storage/marine/intel, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
@@ -163,7 +160,18 @@
 		list("MASK (CHOOSE 1)", 0, null, null, null),
 		list("Gas Mask", 0, /obj/item/clothing/mask/gas, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
 		list("Heat Absorbent Coif", 0, /obj/item/clothing/mask/rebreather/scarf, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR)
-	)
+	))
+
+//MARINE_CAN_BUY_SHOES MARINE_CAN_BUY_UNIFORM currently not used
+/obj/structure/machinery/cm_vending/clothing/intelligence_officer
+	name = "\improper ColMarTech Intelligence Officer Equipment Rack"
+	desc = "An automated rack hooked up to a colossal storage of Intelligence Officer standard-issue equipment."
+	req_access = list(ACCESS_MARINE_BRIDGE)
+	vendor_role = list(JOB_INTEL)
+
+/obj/structure/machinery/cm_vending/clothing/intelligence_officer/Initialize(mapload, ...)
+	. = ..()
+	listed_products = GLOB.cm_vending_clothing_intelligence_officer
 
 //------------ESSENTIAL SETS---------------
 

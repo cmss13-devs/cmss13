@@ -1,13 +1,6 @@
 //------------GEAR VENDOR---------------
 
-/obj/structure/machinery/cm_vending/gear/medic
-	name = "\improper ColMarTech Squad Medic Gear Rack"
-	desc = "An automated gear rack for Squad Medics."
-	icon_state = "med_gear"
-	vendor_role = list(JOB_SQUAD_MEDIC)
-	req_access = list(ACCESS_MARINE_MEDPREP)
-
-	listed_products = list(
+GLOBAL_LIST_INIT(cm_vending_gear_medic, list(
 		list("MEDIC SET (MANDATORY)", 0, null, null, null),
 		list("Essential Medic Set", 0, /obj/effect/essentials_set/medic, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
 
@@ -71,17 +64,22 @@
 
 		list("UTILITIES", 0, null, null, null),
 		list("Fire Extinguisher (Portable)", 5, /obj/item/tool/extinguisher/mini, null, VENDOR_ITEM_REGULAR)
-	)
+	))
+
+/obj/structure/machinery/cm_vending/gear/medic
+	name = "\improper ColMarTech Squad Medic Gear Rack"
+	desc = "An automated gear rack for Squad Medics."
+	icon_state = "med_gear"
+	vendor_role = list(JOB_SQUAD_MEDIC)
+	req_access = list(ACCESS_MARINE_MEDPREP)
+
+/obj/structure/machinery/cm_vending/gear/medic/Initialize(mapload, ...)
+	. = ..()
+	listed_products = GLOB.cm_vending_gear_medic
 
 //------------CLOTHING VENDOR---------------
 
-/obj/structure/machinery/cm_vending/clothing/medic
-	name = "\improper ColMarTech Squad Medic Equipment Rack"
-	desc = "An automated rack hooked up to a colossal storage of Squad Medic standard-issue equipment."
-	req_access = list(ACCESS_MARINE_MEDPREP)
-	vendor_role = list(JOB_SQUAD_MEDIC)
-
-	listed_products = list(
+GLOBAL_LIST_INIT(cm_vending_clothing_medic, list(
 		list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
 		list("Boots", 0, /obj/item/clothing/shoes/marine/knife, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
 		list("Uniform", 0, /obj/item/clothing/under/marine/medic, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_MANDATORY),
@@ -137,7 +135,17 @@
 		list("Gas Mask", 0, /obj/item/clothing/mask/gas, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
 		list("Heat Absorbent Coif", 0, /obj/item/clothing/mask/rebreather/scarf, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
 		list("Sterile Mask", 0, /obj/item/clothing/mask/surgical, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR)
-	)
+	))
+
+/obj/structure/machinery/cm_vending/clothing/medic
+	name = "\improper ColMarTech Squad Medic Equipment Rack"
+	desc = "An automated rack hooked up to a colossal storage of Squad Medic standard-issue equipment."
+	req_access = list(ACCESS_MARINE_MEDPREP)
+	vendor_role = list(JOB_SQUAD_MEDIC)
+
+/obj/structure/machinery/cm_vending/clothing/medic/Initialize(mapload, ...)
+	. = ..()
+	listed_products = GLOB.cm_vending_clothing_medic
 
 /obj/structure/machinery/cm_vending/clothing/medic/alpha
 	squad_tag = SQUAD_NAME_1

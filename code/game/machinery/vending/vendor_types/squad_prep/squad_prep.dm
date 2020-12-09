@@ -49,16 +49,7 @@
 
 //------------SQUAD MARINE UNIFORM AND GEAR VENDOR---------------
 
-/obj/structure/machinery/cm_vending/clothing/marine
-	name = "\improper ColMarTech Automated Marine Equipment Rack"
-	desc = "An automated rack hooked up to a colossal storage of Squad Marine standard-issue equipment."
-	icon_state = "mar_rack"
-	use_points = TRUE
-	vendor_theme = VENDOR_THEME_USCM
-
-	vendor_role = list(JOB_SQUAD_MARINE)
-
-	listed_products = list(
+GLOBAL_LIST_INIT(cm_vending_clothing_marine, list(
 		list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
 		list("Boots", 0, /obj/item/clothing/shoes/marine/knife, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
 		list("Uniform", 0, /obj/item/clothing/under/marine, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_MANDATORY),
@@ -140,7 +131,20 @@
 		list("Motion Detector", 15, /obj/item/device/motiondetector, null, VENDOR_ITEM_REGULAR),
 		list("Shoulder Holster", 15, /obj/item/clothing/accessory/holster, null, VENDOR_ITEM_REGULAR),
 		list("Webbing", 15, /obj/item/clothing/accessory/storage/webbing, null, VENDOR_ITEM_REGULAR)
-	)
+	))
+
+/obj/structure/machinery/cm_vending/clothing/marine
+	name = "\improper ColMarTech Automated Marine Equipment Rack"
+	desc = "An automated rack hooked up to a colossal storage of Squad Marine standard-issue equipment."
+	icon_state = "mar_rack"
+	use_points = TRUE
+	vendor_theme = VENDOR_THEME_USCM
+
+	vendor_role = list(JOB_SQUAD_MARINE)
+
+/obj/structure/machinery/cm_vending/clothing/marine/Initialize(mapload, ...)
+	. = ..()
+	listed_products = GLOB.cm_vending_clothing_marine
 
 /obj/structure/machinery/cm_vending/clothing/marine/alpha
 	squad_tag = SQUAD_NAME_1

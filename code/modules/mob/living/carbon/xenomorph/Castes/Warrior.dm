@@ -24,6 +24,8 @@
 
 	agility_speed_increase = -0.9
 
+	heal_resting = 1.4
+
 /mob/living/carbon/Xenomorph/Warrior
 	caste_name = "Warrior"
 	name = "Warrior"

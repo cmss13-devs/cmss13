@@ -217,16 +217,17 @@
 		to_chat(M, SPAN_XENO("You hear a strange, alien voice in your head. \"[msg]\""))
 		to_chat(X, SPAN_XENONOTICE("You said: \"[msg]\" to [M]"))
 
-/datum/action/xeno_action/onclick/queen_give_plasma
+/datum/action/xeno_action/activable/queen_give_plasma
 	name = "Give Plasma (400)"
 	action_icon_state = "queen_give_plasma"
+	ability_name = "give plasma"
 	plasma_cost = 400
 	macro_path = /datum/action/xeno_action/verb/verb_plasma_xeno
 	action_type = XENO_ACTION_CLICK
-	ability_primacy = XENO_PRIMARY_ACTION_3
-	xeno_cooldown = 15 SECONDS
+	ability_primacy = XENO_PRIMARY_ACTION_2
+	xeno_cooldown = 12 SECONDS
 
-/datum/action/xeno_action/onclick/queen_give_plasma/use_ability(atom/A)
+/datum/action/xeno_action/activable/queen_give_plasma/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/Queen/X = owner
 	if(!X.check_state())
 		return
@@ -234,32 +235,34 @@
 	if(!action_cooldown_check())
 		return
 
-	if(X.observed_xeno)
-		var/mob/living/carbon/Xenomorph/target = X.observed_xeno
-		if(!target.caste.can_be_queen_healed)
-			to_chat(X, SPAN_XENOWARNING("This caste cannot be given plasma!"))
-			return
-		if(target.on_fire)
-			to_chat(X, SPAN_XENOWARNING("You cannot give plasma to xenos that are on fire!"))
-			return
-		if(target.stat != DEAD)
-			if(check_and_use_plasma_owner())
-				for(var/mob/living/carbon/Xenomorph/Xa in range(4, target))
-					if(Xa.on_fire)
-						continue
+	var/mob/living/carbon/Xenomorph/target = A
+	if(!istype(target) || target.stat == DEAD)
+		to_chat(X, SPAN_WARNING("You must target the xeno you want to give plasma to."))
+		return
 
-					if(Xa.stat == DEAD || QDELETED(Xa))
-						continue
+	if(target == X)
+		to_chat(X, SPAN_XENOWARNING("You cannot give plasma to yourself!"))
+		return
 
-					if(Xa.plasma_stored >= Xa.plasma_max)
-						continue
+	if(!X.match_hivemind(target))
+		to_chat(X, SPAN_WARNING("You can only target xenos part of your hive!"))
+		return
 
-					Xa.gain_plasma(target.plasma_max * 0.5)
-				apply_cooldown()
-				to_chat(X, SPAN_XENONOTICE("You transfer some plasma to [target]."))
-	else
-		to_chat(X, SPAN_WARNING("You must overwatch the xeno you want to give plasma to."))
+	if(!target.caste.can_be_queen_healed)
+		to_chat(X, SPAN_XENOWARNING("This caste cannot be given plasma!"))
+		return
+	
+	if(target.on_fire)
+		to_chat(X, SPAN_XENOWARNING("You cannot give plasma to xenos that are on fire!"))
+		return
 
+	if(!check_and_use_plasma_owner())
+		return
+
+	target.gain_plasma(target.plasma_max * 0.75)
+	target.flick_heal_overlay(SECONDS_3, COLOR_CYAN)
+	apply_cooldown()
+	to_chat(X, SPAN_XENONOTICE("You transfer some plasma to [target]."))
 /datum/action/xeno_action/onclick/queen_order
 	name = "Give Order (100)"
 	action_icon_state = "queen_order"

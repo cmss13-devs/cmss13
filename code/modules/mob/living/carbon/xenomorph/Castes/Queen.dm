@@ -670,23 +670,23 @@
 		qdel(A)
 
 	var/list/immobile_abilities = list(\
-		/datum/action/xeno_action/onclick/regurgitate,\
-		/datum/action/xeno_action/onclick/remove_eggsac,\
-		/datum/action/xeno_action/activable/screech,\
-		/datum/action/xeno_action/onclick/emit_pheromones,\
-		/datum/action/xeno_action/onclick/psychic_whisper,\
-		/datum/action/xeno_action/onclick/toggle_queen_zoom,\
-		/datum/action/xeno_action/watch_xeno,\
-		/datum/action/xeno_action/onclick/set_xeno_lead,\
-		/datum/action/xeno_action/onclick/queen_heal,\
-		/datum/action/xeno_action/onclick/queen_give_plasma,\
-		/datum/action/xeno_action/onclick/queen_order,\
-		/datum/action/xeno_action/onclick/choose_resin, \
-		/datum/action/xeno_action/activable/secrete_resin/ovipositor, \
-		/datum/action/xeno_action/activable/place_construction,\
-		/datum/action/xeno_action/onclick/deevolve, \
-		/datum/action/xeno_action/onclick/banish, \
-		/datum/action/xeno_action/onclick/readmit, \
+		/datum/action/xeno_action/onclick/regurgitate,
+		/datum/action/xeno_action/onclick/remove_eggsac,
+		/datum/action/xeno_action/activable/screech,
+		/datum/action/xeno_action/onclick/emit_pheromones,
+		/datum/action/xeno_action/onclick/psychic_whisper,
+		/datum/action/xeno_action/watch_xeno,
+		/datum/action/xeno_action/onclick/set_xeno_lead,
+		/datum/action/xeno_action/activable/queen_heal,
+		/datum/action/xeno_action/activable/queen_give_plasma,
+		/datum/action/xeno_action/onclick/queen_order,
+		/datum/action/xeno_action/onclick/choose_resin, 
+		/datum/action/xeno_action/activable/expand_weeds,
+		/datum/action/xeno_action/activable/secrete_resin/ovipositor, 
+		/datum/action/xeno_action/activable/place_construction,
+		/datum/action/xeno_action/onclick/deevolve, 
+		/datum/action/xeno_action/onclick/banish, 
+		/datum/action/xeno_action/onclick/readmit, 
 		/datum/action/xeno_action/onclick/eye
 		)
 

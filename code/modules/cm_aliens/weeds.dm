@@ -1,3 +1,5 @@
+#define WEED_BASE_GROW_SPEED (10 SECONDS)
+#define WEED_BASE_DECAY_SPEED (20 SECONDS)
 
 /obj/effect/alien/weeds
 	name = "weeds"
@@ -41,9 +43,41 @@
 	update_icon()
 	update_neighbours()
 	if(node && node.loc && (get_dist(node, src) < node.node_range) && !hibernate)
-		spawn(rand(150, 200) / weed_strength) //stronger weeds expand faster
-			if(loc && node && node.loc)
-				weed_expand(node)
+		addtimer(CALLBACK(src, .proc/weed_expand), WEED_BASE_GROW_SPEED / max(weed_strength, 1))
+
+/obj/effect/alien/weeds/proc/on_weed_expand(var/obj/effect/alien/weeds/spread_from, var/list/new_weeds)
+	return
+
+/obj/effect/alien/weeds/weak
+	name = "weak weeds"
+	alpha = 127
+
+/obj/effect/alien/weeds/weak/Initialize(mapload, obj/effect/alien/weeds/node/node)
+	. = ..()
+	name = initial(name)
+	weed_strength = WEED_LEVEL_WEAK
+
+	update_icon()
+
+/obj/effect/alien/weeds/node/weak
+	name = "weak purple sac"
+	health = WEED_HEALTH_STANDARD
+	alpha = 127
+
+/obj/effect/alien/weeds/node/weak/Initialize(mapload, obj/effect/alien/weeds/node/node, var/mob/living/carbon/Xenomorph/X, var/datum/hive_status/hive)
+	. = ..()
+	name = initial(name)
+	weed_strength = WEED_LEVEL_WEAK
+
+	update_icon()
+
+/obj/effect/alien/weeds/node/weak/on_weed_expand(var/obj/effect/alien/weeds/spread_from, var/list/new_weeds)
+	var/atom/to_copy = /obj/effect/alien/weeds/weak
+	for(var/i in new_weeds)
+		var/obj/effect/alien/weeds/W = i
+		W.name = initial(to_copy.name)
+		W.alpha = initial(to_copy.alpha)
+
 
 /obj/effect/alien/weeds/Destroy()
 	if(parent)
@@ -85,12 +119,17 @@
 	if(!parent || weed_strength > WEED_LEVEL_STANDARD)
 		qdel(src)
 
-/obj/effect/alien/weeds/proc/weed_expand(obj/effect/alien/weeds/node/node)
+/obj/effect/alien/weeds/proc/weed_expand()
+	if(!parent)
+		return
+
+	var/obj/effect/alien/weeds/node/node = parent
 	var/turf/U = get_turf(src)
 
 	if(!istype(U))
 		return
 
+	var/list/weeds = list()
 	for(var/dirn in cardinal)
 		var/turf/T = get_step(src, dirn)
 		if(!istype(T) || !T.is_weedable())
@@ -100,7 +139,7 @@
 		if(W)
 			if(W.weed_strength >= WEED_LEVEL_HIVE)
 				continue
-			else if (W.linked_hive == node.linked_hive && W.weed_strength == node.weed_strength)
+			else if (W.linked_hive == node.linked_hive && W.weed_strength >= node.weed_strength)
 				continue
 			qdel(W)
 
@@ -108,13 +147,20 @@
 			continue
 
 		if(istype(T, /turf/closed/wall) && T.density)
-			new /obj/effect/alien/weeds/weedwall(T, node)
+			weeds.Add(new /obj/effect/alien/weeds/weedwall(T, node))
 			continue
 
 		if(!weed_expand_objects(T, dirn))
 			continue
 
-		new /obj/effect/alien/weeds(T, node)
+		weeds.Add(new /obj/effect/alien/weeds(T, node))
+
+
+	on_weed_expand(src, weeds)
+	if(parent)
+		parent.on_weed_expand(src, weeds)
+
+	return weeds
 
 /obj/effect/alien/weeds/proc/weed_expand_objects(var/turf/T, var/direction)
 	for(var/obj/structure/platform/P in src.loc)
@@ -360,7 +406,7 @@
 	for(var/X in children)
 		var/obj/effect/alien/weeds/W = X
 		remove_child(W)
-		addtimer(CALLBACK(W, .proc/avoid_orphanage), rand(350, 450))
+		addtimer(CALLBACK(W, .proc/avoid_orphanage), WEED_BASE_DECAY_SPEED + rand(0, 10)) // Slight variation whilst decaying
 
 	. = ..()
 
@@ -378,3 +424,5 @@
 		addtimer(CALLBACK(parent_pylon, .obj/effect/alien/resin/special/pylon/proc/replace_node), rand(150, 250))
 	parent_pylon = null
 	. = ..()
+
+#undef WEED_BASE_GROW_SPEED

@@ -70,7 +70,7 @@
 	ability_primacy = XENO_PRIMARY_ACTION_2
 
 /datum/action/xeno_action/onclick/choose_resin/queen_macro //so it doesn't screw other macros up
-	ability_primacy = XENO_PRIMARY_ACTION_3 //it's important that hivelord and drone have the same macros because their playstyle is similar, but it's not as important for queen since her playstyle is very different
+	ability_primacy = XENO_PRIMARY_ACTION_4 //it's important that hivelord and drone have the same macros because their playstyle is similar, but it's not as important for queen since her playstyle is very different
 
 // Secrete Resin
 /datum/action/xeno_action/activable/secrete_resin

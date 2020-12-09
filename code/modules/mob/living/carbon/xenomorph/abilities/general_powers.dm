@@ -22,9 +22,14 @@
 		to_chat(X, SPAN_WARNING("Bad place for a garden!"))
 		return
 
-	if(locate(/obj/effect/alien/weeds/node) in T)
+	var/obj/effect/alien/weeds/node/N = locate() in T
+	if(N && N.weed_strength >= X.weed_level)
 		to_chat(X, SPAN_WARNING("There's a pod here already!"))
 		return
+
+	var/list/to_convert
+	if(N)
+		to_convert = N.children.Copy()
 
 	var/obj/effect/alien/weeds/W = locate(/obj/effect/alien/weeds) in T
 	if (W && W.weed_strength >= WEED_LEVEL_HIVE)
@@ -36,12 +41,21 @@
 		to_chat(X, SPAN_XENOWARNING("It's too early to spread the hive this far."))
 		return
 
-	if (check_and_use_plasma_owner())
-		X.visible_message(SPAN_XENONOTICE("\The [X] regurgitates a pulsating node and plants it on the ground!"), \
-		SPAN_XENONOTICE("You regurgitate a pulsating node and plant it on the ground!"), null, 5)
-		new /obj/effect/alien/weeds/node(X.loc, src, X)
+	if (!check_and_use_plasma_owner())
+		return
 
-		playsound(X.loc, "alien_resin_build", 25)
+	X.visible_message(SPAN_XENONOTICE("\The [X] regurgitates a pulsating node and plants it on the ground!"), \
+	SPAN_XENONOTICE("You regurgitate a pulsating node and plant it on the ground!"), null, 5)
+	var/obj/effect/alien/weeds/node/new_node = new /obj/effect/alien/weeds/node(X.loc, src, X)
+
+	if(to_convert)
+		for(var/weed in to_convert)
+			var/turf/target_turf = get_turf(weed)
+			if(target_turf && !target_turf.density)
+				new /obj/effect/alien/weeds(target_turf, new_node)
+			qdel(weed)
+
+	playsound(X.loc, "alien_resin_build", 25)
 
 	apply_cooldown()
 		

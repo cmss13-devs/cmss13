@@ -66,27 +66,37 @@
 
 // Helper proc that checks and uses plasma if possible, returning TRUE 
 // if the use was successful
-/datum/action/xeno_action/proc/check_and_use_plasma_owner()
-	if (!check_plasma_owner())
+/datum/action/xeno_action/proc/check_and_use_plasma_owner(var/plasma_to_use)
+	if (!check_plasma_owner(plasma_to_use))
 		return FALSE
 	
-	use_plasma_owner()
+	use_plasma_owner(plasma_to_use)
 	return TRUE
 
 // Checks the host Xeno's plasma. Returns TRUE if the amount of plasma
 // is sufficient to use the ability and FALSE otherwise.
-/datum/action/xeno_action/proc/check_plasma_owner()
+/datum/action/xeno_action/proc/check_plasma_owner(var/plasma_to_use)
 	if(!owner)
 		return
+
+	var/plasma_to_check = plasma_cost
+	if(plasma_to_use)
+		plasma_to_check = plasma_to_use
+
 	var/mob/living/carbon/Xenomorph/X = owner
-	return X.check_plasma(plasma_cost)
+	return X.check_plasma(plasma_to_check)
 
 // Uses plasma on the owner.
-/datum/action/xeno_action/proc/use_plasma_owner()
+/datum/action/xeno_action/proc/use_plasma_owner(var/plasma_to_use)
 	if(!owner)
 		return
+
+	var/plasma_to_check = plasma_cost
+	if(plasma_to_use)
+		plasma_to_check = plasma_to_use
+	
 	var/mob/living/carbon/Xenomorph/X = owner
-	X.use_plasma(plasma_cost)
+	X.use_plasma(plasma_to_check)
 
 // Activable actions - most abilities in the game. Require Shift/Middle click to do their 'main' effects.
 // The action_activate code of these actions does NOT call use_ability.

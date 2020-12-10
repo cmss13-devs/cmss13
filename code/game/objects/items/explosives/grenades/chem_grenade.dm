@@ -1,7 +1,7 @@
 /obj/item/explosive/grenade/custom
 	name = "Custom grenade"
 	icon_state = "grenade_custom"
-	desc = "A custom chemical grenade with an M40 casing. This one is made to fit into underslung grenade launchers, but can also be used in hand."
+	desc = "A custom chemical grenade with an M40 casing. This one is made to fit into underslung grenade launchers, but can also be thrown by hand."
 	w_class = SIZE_SMALL
 	force = 2.0
 	dangerous = TRUE
@@ -183,7 +183,7 @@
 
 /obj/item/explosive/grenade/custom/ied_incendiary
 	name = "improvised explosive device (incendiary)"
-	desc = "An improvised chemical explosive grenade. Designed spray incendiary shrapnel across a wide area."
+	desc = "An improvised chemical explosive grenade. Designed to spray incendiary shrapnel across a wide area."
 	assembly_stage = ASSEMBLY_LOCKED
 	has_blast_wave_dampener = FALSE
 

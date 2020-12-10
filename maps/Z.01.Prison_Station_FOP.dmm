@@ -28618,9 +28618,6 @@
 /area/prison/visitation)
 "bvJ" = (
 /obj/structure/surface/table/reinforced,
-/obj/item/device/radio/beacon{
-	name = "Elevator Tracking Beacon"
-	},
 /turf/open/floor/prison{
 	icon_state = "redfull"
 	},
@@ -50873,13 +50870,6 @@
 	tag = "icon-floor_plate"
 	},
 /area/prison/cellblock/mediumsec/south)
-"krf" = (
-/obj/structure/surface/table/woodentable,
-/obj/item/device/radio/beacon{
-	name = "Civilian Residences Tracking Beacon"
-	},
-/turf/open/floor/wood,
-/area/prison/residential/central)
 "krJ" = (
 /obj/item/reagent_container/glass/bucket,
 /obj/effect/decal/cleanable/blood,
@@ -52112,7 +52102,6 @@
 "nKm" = (
 /obj/structure/closet/jcloset,
 /obj/effect/landmark/objective_landmark/medium,
-/obj/item/device/hand_tele,
 /turf/open/floor/prison{
 	icon_state = "redfull"
 	},
@@ -55569,12 +55558,6 @@
 /obj/structure/largecrate/random/barrel,
 /turf/open/floor/plating,
 /area/prison/maintenance/residential/sw)
-"xOx" = (
-/obj/item/device/radio/beacon{
-	name = "Priate Ship Tracking Beacon"
-	},
-/turf/open/floor/plating,
-/area/prison/pirate)
 "xQq" = (
 /obj/effect/decal/cleanable/cobweb2,
 /obj/structure/largecrate/random/barrel/yellow,
@@ -65157,7 +65140,7 @@ aSR
 baS
 aSR
 aRU
-krf
+aWo
 aXv
 aYQ
 aWr
@@ -87309,7 +87292,7 @@ cvJ
 cvX
 cwj
 cwB
-xOx
+cjw
 cxg
 cxl
 cxx

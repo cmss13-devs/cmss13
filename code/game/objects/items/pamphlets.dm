@@ -104,5 +104,5 @@
 /obj/item/pamphlet/language/spanish
 	name = "America Latina - A Quick Translation Guide for Southern UA states"
 	desc = "This pamphlet was designed for Intelligence Officers operating on Earth to interact with the local populaces of the Latin American states, but only for IOs who managed to sleep through Dialects and Mannerisms Class."
-	language_type = "American Spanish"
+	language_type = "Spanish"
 	flavour_learning = "You quickly read and memorize the pamphlet, hoping none of your instructors notice you... even though you never attended Dialects and Mannerisms at all."

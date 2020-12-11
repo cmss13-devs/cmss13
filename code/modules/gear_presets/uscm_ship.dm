@@ -552,8 +552,8 @@
 	access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
 	assignment = "USCM Admiral"
 	rank = "USCM Admiral"
-	paygrade = "O8"
-	role_comm_title = "ADM"
+	paygrade = "O7"
+	role_comm_title = "RADM"
 	minimum_age = 50
 	skills = /datum/skills/admiral
 
@@ -626,39 +626,6 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/box/handcuffs(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)
 
-/*****************************************************************************************************/
-
-/datum/equipment_preset/uscm_ship/fleet_admiral
-	name = "Fleet Admiral" //Renamed from Soviet Admiral
-	flags = EQUIPMENT_PRESET_EXTRA
-
-	idtype = /obj/item/card/id/admiral
-	access = list()
-	assignment = "Fleet Admiral"
-	rank = "Fleet Admiral"
-	paygrade = "O9E"
-	role_comm_title = "FADM"
-	minimum_age = 55
-	skills = /datum/skills/admiral
-
-	service_under = list(/obj/item/clothing/under/soviet)
-	service_over = list(/obj/item/clothing/suit/hgpirate)
-	service_hat = list(/obj/item/clothing/head/hgpiratecap)
-
-/datum/equipment_preset/uscm_ship/fleet_admiral/New()
-	. = ..()
-	access = get_all_accesses() + get_all_centcom_access()
-
-/datum/equipment_preset/uscm_ship/fleet_admiral/load_gear(mob/living/carbon/human/H)
-	//TODO: add backpacks and satchels
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/hgpiratecap(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/combat(H), WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/combat(H), WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/cdrcom(H), WEAR_EAR)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/mateba/admiral(H), WEAR_WAIST)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/hgpirate(H), WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/soviet(H), WEAR_BODY)
 
 /*****************************************************************************************************/
 

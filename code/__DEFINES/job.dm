@@ -116,8 +116,8 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_PMC_DOCTOR					"PMC Triage"
 #define JOB_PMC_INVESTIGATOR			"PMC Medical Investigator"
 #define JOB_PMC_ELITE					"PMC Elite"
-#define JOB_PMC_GUNNER					"PMC Specialist"
-#define JOB_PMC_SNIPER					"PMC Sharpshooter"
+#define JOB_PMC_GUNNER					"PMC Support Specialist" //Renamed from Specialist to Support Specialist as it only has SG skills.
+#define JOB_PMC_SNIPER					"PMC Specialist" //Renamed from Sharpshooter to specialist as it uses specialist skills.
 #define JOB_PMC_NINJA					"PMC Ninja"
 #define JOB_PMC_COMMANDO				"PMC Commando"
 #define JOB_PMC_LEADER					"PMC Leader"

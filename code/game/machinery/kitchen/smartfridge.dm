@@ -258,6 +258,7 @@
 			if(!transfer_mode)
 				for(var/obj/O in source)
 					if(O.name == K)
+						source.Remove(O)
 						O.loc = loc
 						i--
 						if (i <= 0)

@@ -401,6 +401,7 @@
 		cloaked = 1
 		RegisterSignal(M, COMSIG_HUMAN_BULLET_ACT, .proc/bullet_hit)
 		to_chat(M, SPAN_NOTICE("You are now invisible to normal detection."))
+		log_game("[key_name_admin(usr)] has enabled their cloaking device.")
 		for(var/mob/O in oviewers(M))
 			O.show_message("[M] vanishes into thin air!",1)
 		playsound(M.loc,'sound/effects/pred_cloakon.ogg', 15, 1)
@@ -420,6 +421,7 @@
 	UnregisterSignal(user, COMSIG_HUMAN_BULLET_ACT)
 	to_chat(user, "Your cloaking device deactivates.")
 	cloaked = 0
+	log_game("[key_name_admin(usr)] has disabled their cloaking device.")
 	for(var/mob/O in oviewers(user))
 		O.show_message("[user.name] shimmers into existence!",1)
 	playsound(user.loc,'sound/effects/pred_cloakoff.ogg', 15, 1)
@@ -530,7 +532,10 @@
 	set category = "Yautja"
 	if(alert("Which explosion type do you want?","Explosive Bracers", "Small", "Big") == "Big")
 		explosion_type = 0
-	else explosion_type = 1
+		log_attack("[key_name_admin(usr)] has changed their Self Destruct to Large")
+	else
+		explosion_type = 1
+		log_attack("[key_name_admin(usr)] has changed their Self Destruct to Small")
 
 
 /obj/item/clothing/gloves/yautja/proc/activate_suicide_internal(var/forced = FALSE)
@@ -595,6 +600,7 @@
 				return
 			exploding = 0
 			to_chat(M, SPAN_NOTICE("Your bracers stop beeping."))
+			message_staff("[usr] ([usr.key]) has deactivated their Self Destruct.")
 		return
 	if((M.wear_mask && istype(M.wear_mask,/obj/item/clothing/mask/facehugger)) || M.status_flags & XENO_HOST)
 		to_chat(M, SPAN_WARNING("Strange...something seems to be interfering with your bracer functions..."))

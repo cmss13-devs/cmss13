@@ -437,6 +437,8 @@
 			return
 		yautja_teleport_desc += name + location.loc_to_string()
 		to_chat(usr, SPAN_WARNING("You can now teleport to this location!"))
+		log_game("[usr] ([usr.key]) has created a new teleport location at [get_area(usr)]")
+		yautja_announcement(SPAN_YAUTJABOLDBIG("[usr.real_name] has created a new teleport location, [name], at [usr.loc] in [get_area(usr)]"))
 //=================//\\=================\\
 //======================================\\
 

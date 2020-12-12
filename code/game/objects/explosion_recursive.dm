@@ -293,7 +293,7 @@ explosion resistance exactly as much as their health
 				return 0
 			if(MOB_SIZE_HUMAN)
 				return 20
-			if(MOB_SIZE_XENO)
+			if(MOB_SIZE_XENO, MOB_SIZE_XENO_SMALL)
 				return 20
 			if(MOB_SIZE_BIG, MOB_SIZE_IMMOBILE)
 				return 40
@@ -343,7 +343,7 @@ explosion resistance exactly as much as their health
 			weight = 0.25
 		if(MOB_SIZE_HUMAN)
 			weight = 1
-		if(MOB_SIZE_XENO)
+		if(MOB_SIZE_XENO, MOB_SIZE_XENO_SMALL)
 			weight = 1
 		if(MOB_SIZE_BIG, MOB_SIZE_IMMOBILE)
 			weight = 4

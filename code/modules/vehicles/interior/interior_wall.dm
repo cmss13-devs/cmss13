@@ -12,6 +12,9 @@
 	unslashable = TRUE
 	indestructible = TRUE
 
+/obj/structure/interior_wall/get_projectile_hit_boolean(obj/item/projectile/P)
+	return FALSE
+
 /obj/structure/interior_wall/ex_act()
 	return
 

@@ -88,9 +88,6 @@ var/list/wood_icons = list("wood", "wood-broken")
 	if(is_plasteel_floor())
 		if(!broken && !burnt)
 			icon_state = icon_regular_floor
-	else if(is_plating())
-		if(!broken && !burnt)
-			icon_state = icon_plating //Because asteroids are 'platings' too.
 	else if(is_light_floor())
 		var/obj/item/stack/tile/light/T = floor_tile
 		if(T.on)

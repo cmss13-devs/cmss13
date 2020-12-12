@@ -67,6 +67,7 @@ GLOBAL_LIST_EMPTY(all_multi_vehicles)
 	//List of all hardpoints you can attach to this vehicle
 	var/list/hardpoints_allowed = list()
 
+	var/mob_size_required_to_hit = MOB_SIZE_XENO_SMALL
 
 	var/vehicle_flags = NO_FLAGS		//variable for various flags
 

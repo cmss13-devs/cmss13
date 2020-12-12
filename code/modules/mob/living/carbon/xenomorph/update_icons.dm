@@ -112,7 +112,7 @@
 
 	var/offset_x = 0
 	var/offset_y = 0
-	if(mob_size == MOB_SIZE_XENO)
+	if(mob_size <= MOB_SIZE_XENO)
 		offset_x = -7
 		offset_y = -10
 

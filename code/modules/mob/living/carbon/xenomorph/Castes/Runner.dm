@@ -37,6 +37,8 @@
 	pull_speed = -0.5
 	viewsize = 9
 
+	mob_size = MOB_SIZE_XENO_SMALL
+
 	actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/regurgitate,

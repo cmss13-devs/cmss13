@@ -183,7 +183,7 @@
 	else
 		if(M.loc != src.loc)
 			return
-	if (M.mob_size == MOB_SIZE_XENO && M.stat == DEAD && istype(src, /obj/structure/bed/roller))
+	if (M.mob_size <= MOB_SIZE_XENO && M.stat == DEAD && istype(src, /obj/structure/bed/roller))
 		do_buckle(M, user)
 		return
 	if (M.mob_size > MOB_SIZE_HUMAN)

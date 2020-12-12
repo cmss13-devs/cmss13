@@ -14,6 +14,9 @@
 	// Which entrance to exit through
 	var/entrance_id = null
 
+/obj/structure/interior_exit/get_projectile_hit_boolean(obj/item/projectile/P)
+	return FALSE
+
 /obj/structure/interior_exit/attack_hand(var/mob/M)
 
 	// Check if drag anything

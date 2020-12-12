@@ -49,17 +49,21 @@
 		HDPT_WHEELS = null
 	)
 
-	turn_momentum_loss_factor = 0
+	turn_momentum_loss_factor = 1
 	
 	req_access = list()
 	req_one_access = list()
 
 	door_locked = FALSE
 
+	mob_size_required_to_hit = MOB_SIZE_XENO
+
 	var/next_overdrive = 0
 	var/overdrive_cooldown = 15 SECONDS
 	var/overdrive_duration = 3 SECONDS
 	var/overdrive_speed_mult = 0.3 // Additive (30% more speed, adds to 80% more speed)
+
+	var/momentum_loss_on_weeds_factor = 0.2
 
 	move_on_turn = TRUE
 
@@ -93,6 +97,13 @@
 		return FALSE
 
 	return successful
+
+/obj/vehicle/multitile/van/post_movement()
+	if(locate(/obj/effect/alien/weeds) in loc)
+		momentum *= momentum_loss_on_weeds_factor
+	
+	. = ..()
+	
 
 /obj/vehicle/multitile/van/attackby(obj/item/O, mob/user)
 	if(iswelder(O) && health >= initial(health))

@@ -427,6 +427,7 @@ updatehealth()
 
 /mob/living/carbon/Xenomorph/proc/handle_luminosity()
 	var/new_luminosity = 0
+	luminosity_total = 0
 	if(caste)
 		new_luminosity += caste.caste_luminosity
 	if(on_fire)

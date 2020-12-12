@@ -7,7 +7,7 @@
 
 /datum/equipment_preset/uscm_ship/uscm_police/mp
 	name = "USCM Military Police (MP)"
-	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 
 	access = list(
 		ACCESS_MARINE_BRIG,
@@ -54,7 +54,7 @@
 
 /datum/equipment_preset/uscm_ship/uscm_police/warden
 	name = "USCM Military Warden (MW)"
-	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 	idtype = /obj/item/card/id/silver
 
 	access = list(
@@ -104,7 +104,7 @@
 
 /datum/equipment_preset/uscm_ship/uscm_police/cmp
 	name = "USCM Chief MP (CMP)"
-	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 	idtype = /obj/item/card/id/silver
 
 	access = list(
@@ -154,7 +154,7 @@
 
 /datum/equipment_preset/uscm_ship/uscm_police/riot_mp
 	name = "USCM Riot MP (RMP)"
-	flags = EQUIPMENT_PRESET_EXTRA
+	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
 
 	idtype = /obj/item/card/id/silver
 	access = list()

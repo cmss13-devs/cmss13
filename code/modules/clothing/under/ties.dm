@@ -113,8 +113,8 @@
 
 //Medals
 /obj/item/clothing/accessory/medal
-	name = "bronze medal"
-	desc = "A bronze medal."
+	name = "medal"
+	desc = "A medal."
 	icon_state = "bronze"
 	var/recipient_name //name of the person this is awarded to.
 	var/recipient_rank
@@ -153,18 +153,27 @@
 
 /obj/item/clothing/accessory/medal/examine(mob/user)
 	..()
-	to_chat(user, "Awarded to: \'[recipient_rank] [recipient_name]\'. The citation reads \'[medal_citation]\'.")
 
-/obj/item/clothing/accessory/medal/conduct
+	var/citation_to_read = ""
+	if(medal_citation)
+		citation_to_read = "The citation reads \'[medal_citation]\'."
+
+	to_chat(user, "Awarded to: \'[recipient_rank] [recipient_name]\'. [citation_to_read]")
+
+/obj/item/clothing/accessory/medal/bronze
+	name = "bronze medal"
+	desc = "A bronze medal."
+
+/obj/item/clothing/accessory/medal/bronze/conduct
 	name = "distinguished conduct medal"
 	desc = "A bronze medal awarded for distinguished conduct. Whilst a great honor, this is the most basic award given by the USCM"
 
-/obj/item/clothing/accessory/medal/bronze_heart
+/obj/item/clothing/accessory/medal/bronze/heart
 	name = "bronze heart medal"
 	desc = "A bronze heart-shaped medal awarded for sacrifice. It is often awarded posthumously or for severe injury in the line of duty."
 	icon_state = "bronze_heart"
 
-/obj/item/clothing/accessory/medal/nobel_science
+/obj/item/clothing/accessory/medal/bronze/science
 	name = "nobel sciences award"
 	desc = "A bronze medal which represents significant contributions to the field of science or engineering."
 
@@ -193,6 +202,27 @@
 /obj/item/clothing/accessory/medal/gold/heroism
 	name = "medal of exceptional heroism"
 	desc = "An extremely rare golden medal awarded only by the USCM. To recieve such a medal is the highest honor and as such, very few exist."
+
+/obj/item/clothing/accessory/medal/platinum
+	name = "platinum medal"
+	desc = "A very prestigious platinum medal, only able to be handed out by admirals due to special circumstances."
+	icon_state = "platinum"
+
+/obj/item/clothing/accessory/medal/bronze/service
+	name = "bronze service medal"
+	desc = "A bronze medal awarded for a marine's service within the USCM. It is a very common medal, and is typically the first medal a marine would receive."
+
+/obj/item/clothing/accessory/medal/silver/service
+	name = "silver service medal"
+	desc = "A shiny silver medal awarded for a marine's service within the USCM. It is a somewhat common medal which signifies the amount of time a marine has spent in the line of duty."
+
+/obj/item/clothing/accessory/medal/gold/service
+	name = "gold service medal"
+	desc = "A prestigious gold medal awarded for a marine's service within the USCM. It is a rare medal which signifies the amount of time a marine has spent in the line of duty."
+
+/obj/item/clothing/accessory/medal/platinum/service
+	name = "platinum service medal"
+	desc = "The highest service medal that can be awarded to a marine; such medals are hand-given by USCM Admirals to a marine. It signifies the sheer amount of time a marine has spent in the line of duty."
 
 //Armbands
 /obj/item/clothing/accessory/armband

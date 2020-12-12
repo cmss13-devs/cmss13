@@ -1,6 +1,6 @@
 /datum/equipment_preset/uscm_ship/uscm_medical/cmo
 	name = "USCM Chief Medical Officer (CMO)"
-	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 
 	idtype = /obj/item/card/id/silver
 	access = list(
@@ -57,7 +57,7 @@
 
 /datum/equipment_preset/uscm_ship/uscm_medical/doctor
 	name = "USCM Doctor"
-	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 
 	access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
 	assignment = JOB_DOCTOR
@@ -104,7 +104,7 @@
 
 /datum/equipment_preset/uscm_ship/uscm_medical/nurse
 	name = "USCM Nurse"
-	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 
 	access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
 	assignment = JOB_NURSE
@@ -150,7 +150,7 @@
 /*****************************************************************************************************/
 /datum/equipment_preset/uscm_ship/uscm_medical/researcher
 	name = "USCM Researcher"
-	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 
 	access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_RESEARCH, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
 	assignment = JOB_RESEARCHER

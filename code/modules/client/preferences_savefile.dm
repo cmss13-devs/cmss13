@@ -69,7 +69,7 @@
 	S["xeno_prefix"]		>> xeno_prefix
 	S["xeno_postfix"]		>> xeno_postfix
 	S["xeno_name_ban"]		>> xeno_name_ban
-	S["show_xeno_age"] 		>> show_xeno_age
+	S["playtime_perks"] 		>> playtime_perks
 	S["view_controller"]	>> View_MC
 	S["observer_huds"]		>> observer_huds
 
@@ -104,7 +104,7 @@
 	UI_style_color	= sanitize_hexcolor(UI_style_color, initial(UI_style_color))
 	UI_style_alpha	= sanitize_integer(UI_style_alpha, 0, 255, initial(UI_style_alpha))
 	window_skin		= sanitize_integer(window_skin, 0, 65535, initial(window_skin))
-	show_xeno_age   = sanitize_integer(show_xeno_age, 0, 1, 1)
+	playtime_perks   = sanitize_integer(playtime_perks, 0, 1, 1)
 
 	synthetic_name 		= synthetic_name ? sanitize_text(synthetic_name, initial(synthetic_name)) : initial(synthetic_name)
 	synthetic_type		= sanitize_text(synthetic_type, initial(synthetic_type))
@@ -156,7 +156,7 @@
 	S["xeno_prefix"]		<< xeno_prefix
 	S["xeno_postfix"]		<< xeno_postfix
 	S["xeno_name_ban"]		<< xeno_name_ban
-	S["show_xeno_age"] 		<< show_xeno_age
+	S["playtime_perks"] 		<< playtime_perks
 
 	S["view_controller"]	<< View_MC
 	S["observer_huds"]		<< observer_huds

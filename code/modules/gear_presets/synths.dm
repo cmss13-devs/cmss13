@@ -33,7 +33,7 @@
 
 /datum/equipment_preset/synth/uscm
 	name = "USCM Synthetic"
-	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 	faction = FACTION_MARINE
 	idtype = /obj/item/card/id/gold
 	assignment = "Synthetic"
@@ -57,7 +57,7 @@
 
 /datum/equipment_preset/synth/uscm/councillor
 	name = "USCM Synthetic Councillor"
-	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 	faction = FACTION_MARINE
 	idtype = /obj/item/card/id/gold
 	assignment = "Synthetic"

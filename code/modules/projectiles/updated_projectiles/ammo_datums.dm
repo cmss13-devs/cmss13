@@ -498,7 +498,7 @@
 /datum/ammo/bullet/rifle/ap
 	name = "armor-piercing rifle bullet"
 
-	damage = BULLET_DAMAGE_TIER_5
+	damage = BULLET_DAMAGE_TIER_6
 	penetration = ARMOR_PENETRATION_TIER_8
 
 /datum/ammo/bullet/rifle/le
@@ -653,7 +653,7 @@
 	accuracy_var_low = PROJECTILE_VARIANCE_TIER_6
 	accuracy_var_high = PROJECTILE_VARIANCE_TIER_6
 	max_range = 12
-	damage = BULLET_DAMAGE_TIER_5
+	damage = BULLET_DAMAGE_TIER_6
 	damage_var_low = PROJECTILE_VARIANCE_TIER_8
 	damage_var_high = PROJECTILE_VARIANCE_TIER_8
 	penetration	= ARMOR_PENETRATION_TIER_7

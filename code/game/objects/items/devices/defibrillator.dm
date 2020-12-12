@@ -209,7 +209,7 @@
 			var/datum/chem_property/P = R.get_property(PROPERTY_ELECTROGENETIC)//Adrenaline helps greatly at restarting the heart
 			if(P)
 				P.trigger(H)
-				H.reagents.remove_reagent(R.id, P.level)
+				H.reagents.remove_reagent(R.id, 1)
 				break
 		if(H.health > HEALTH_THRESHOLD_DEAD)
 			user.visible_message(SPAN_NOTICE("[htmlicon(src, viewers(src))] \The [src] beeps: Defibrillation successful."))

@@ -21,7 +21,7 @@ VALID_CL_TYPES = (
 )
 
 # CL regexps
-CL_REGEX_START = re.compile(r':cl:\s*([a-zA-Z1-9_]{1,40})?')
+CL_REGEX_START = re.compile(r':cl:\s*([a-zA-Z0-9_]{1,40})?')
 CL_REGEX_ENTRY = re.compile(r'\s*(\w+):\s*(.+)')
 CL_REGEX_END = re.compile(r'\/:cl:')
 

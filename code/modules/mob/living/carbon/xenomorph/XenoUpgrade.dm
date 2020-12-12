@@ -16,7 +16,7 @@
 			age = XENO_PRIME
 
 	// For people who wish to remain anonymous
-	if(!client.prefs.show_xeno_age)
+	if(!client.prefs.playtime_perks)
 		age = XENO_NORMAL
 
 	switch(age)

@@ -137,7 +137,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/xeno_postfix = ""
 	var/xeno_name_ban = FALSE
 
-	var/show_xeno_age = TRUE
+	var/playtime_perks = TRUE
 
 	var/stylesheet = "Modern"
 
@@ -230,7 +230,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	dat += "<b>Xeno prefix:</b> <a href='?_src_=prefs;preference=xeno_prefix;task=input'>[display_prefix]</a><br>"
 	dat += "<b>Xeno postfix:</b> <a href='?_src_=prefs;preference=xeno_postfix;task=input'>[display_postfix]</a><br>"
 
-	dat += "<b>Show Xeno Age:</b> <a href='?_src_=prefs;preference=xeno_show_age'><b>[show_xeno_age? "Yes" : "No"]</b></a><br>"
+	dat += "<b>Enable Playtime Perks:</b> <a href='?_src_=prefs;preference=playtime_perks'><b>[playtime_perks? "Yes" : "No"]</b></a><br>"
 
 	var/tempnumber = rand(1, 999)
 	var/postfix_text = xeno_postfix ? ("-"+xeno_postfix) : ""
@@ -1213,8 +1213,8 @@ var/const/MAX_SAVE_SLOTS = 10
 					if(user.client.admin_holder && user.client.admin_holder.rights & R_DEBUG)
 						View_MC = !View_MC
 
-				if("xeno_show_age")
-					show_xeno_age = !show_xeno_age
+				if("playtime_perks")
+					playtime_perks = !playtime_perks
 
 				if("be_special")
 					var/num = text2num(href_list["num"])

@@ -783,7 +783,7 @@ and you're good to go.
 		var/mob/M = usr
 		weapon_source_mob = M
 	var/obj/item/projectile/P = new /obj/item/projectile(bullet_source, weapon_source_mob, src)
-	P.generate_bullet(chambered, 0, 0)
+	P.generate_bullet(chambered, 0, NO_FLAGS)
 
 	return P
 
@@ -1094,7 +1094,7 @@ and you're good to go.
 		var/obj/item/projectile/BP
 		for(var/i in 0 to projectile_to_fire.ammo.bonus_projectiles_amount)
 			BP = new /obj/item/projectile(initial(name), user, M.loc)
-			BP.generate_bullet(ammo_list[projectile_to_fire.ammo.bonus_projectiles_type], 0)
+			BP.generate_bullet(ammo_list[projectile_to_fire.ammo.bonus_projectiles_type], 0, NO_FLAGS)
 			BP.damage *= damage_buff
 			BP.ammo.on_hit_mob(M, BP)
 			M.bullet_act(BP)

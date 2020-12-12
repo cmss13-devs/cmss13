@@ -283,6 +283,8 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/heavy_barrel/Attach(obj/item/weapon/gun/G)
 	if(istype(G, /obj/item/weapon/gun/shotgun))
 		damage_mod = BULLET_DAMAGE_MULT_TIER_1
+	else if(istype(G, /obj/item/weapon/gun/rifle/m41a))
+		damage_mod = BULLET_DAMAGE_MULT_TIER_3
 	else
 		damage_mod = BULLET_DAMAGE_MULT_TIER_6
 	..()
@@ -704,6 +706,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/scope/mini_iff/New()
 	..()
+	damage_mod = -BULLET_DAMAGE_MULT_TIER_4
 	movement_acc_penalty_mod = MOVEMENT_ACCURACY_PENALTY_MULT_TIER_6
 	accuracy_unwielded_mod = 0
 

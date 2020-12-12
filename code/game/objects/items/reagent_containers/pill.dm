@@ -100,7 +100,7 @@ var/global/list/randomized_pill_icons
 
 	if(target.is_open_container() != 0 && target.reagents)
 		if(!target.reagents.total_volume)
-			to_chat(user, SPAN_DANGER("[target] is empty. Cant dissolve pill."))
+			to_chat(user, SPAN_DANGER("[target] is empty. Can't dissolve pill."))
 			return
 		to_chat(user, SPAN_NOTICE("You dissolve the pill in [target]"))
 

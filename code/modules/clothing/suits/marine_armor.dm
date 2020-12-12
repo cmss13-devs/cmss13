@@ -961,8 +961,9 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	GS.aimed_shot_cooldown = world.time + GS.aimed_shot_cooldown_delay
 	var/I = image("icon" = 'icons/effects/Targeted.dmi', "icon_state" = "locking-sniper")
 	M.overlays += I
-	for(var/mob/living/K in viewers(M))
-		K << 'sound/weapons/TargetOn.ogg'
+	if(H.client)
+		playsound_client(H.client, 'sound/weapons/TargetOn.ogg', H, 50)
+	playsound(M, 'sound/weapons/TargetOn.ogg', 70, FALSE, 8, falloff = 0.4)
 
 	if(!do_after(H, GS.aiming_time, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, NO_BUSY_ICON))
 		M.overlays -= I

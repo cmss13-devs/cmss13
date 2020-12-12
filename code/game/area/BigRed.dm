@@ -6,6 +6,10 @@
 	soundscape_playlist = SCAPE_PL_THUNDER
 	soundscape_interval = 50
 
+/area/bigred/garage
+	name = "vehicle garage"
+	icon_state = "green"
+
 /area/bigred/ground
 	name = "ground"
 	icon_state = "blue"

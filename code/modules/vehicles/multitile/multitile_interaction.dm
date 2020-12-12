@@ -159,7 +159,11 @@
 	if(health <= 0)
 		handle_player_entrance(M)
 
-	var/damage = rand(M.melee_damage_lower, M.melee_damage_upper) + dam_bonus
+	if(M.mob_size < mob_size_required_to_hit)
+		to_chat(M, SPAN_XENOWARNING("You're too small to do any significant damage to this vehicle!"))
+		return FALSE
+
+	var/damage = (rand(M.melee_damage_lower, M.melee_damage_upper) + dam_bonus) * XENO_UNIVERSAL_VEHICLE_DAMAGEMULT
 
 	//Frenzy auras stack in a way, then the raw value is multipled by two to get the additive modifier
 	if(M.frenzy_aura > 0)

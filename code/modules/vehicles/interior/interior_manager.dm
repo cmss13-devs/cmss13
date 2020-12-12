@@ -33,8 +33,8 @@ var/global/datum/interior_manager/interior_manager = new
 	var/turf/z_max = locate(world.maxx, world.maxy, interior_z)
 
 	for(var/turf/T in block(z_min, z_max))
-		T.ChangeTurf(/turf/open/void, TRUE)
-		T.baseturfs = /turf/open/void
+		T.ChangeTurf(/turf/open/void/vehicle, TRUE)
+		T.baseturfs = /turf/open/void/vehicle
 
 	var/total_chunk_ids = (world.maxx / chunk_size) ** 2
 
@@ -102,7 +102,7 @@ var/global/datum/interior_manager/interior_manager = new
 	for(var/turf/T in block(min, max))
 		for(var/atom/A in T)
 			qdel(A)
-		T.ChangeTurf(/turf/open/void)
+		T.ChangeTurf(/turf/open/void/vehicle)
 
 
 	chunk_availability[chunk_id] = TRUE

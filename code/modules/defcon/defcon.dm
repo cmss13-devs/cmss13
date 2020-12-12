@@ -126,7 +126,7 @@ var/global/datum/controller/defcon/defcon_controller
 	else
 		// Defaults
 		// Currently just LV
-		defcon_level_triggers = list(6250, 5125, 3400, 1150, 0.0)
+		defcon_level_triggers = list(5150, 4225, 2800, 1000, 0.0)
 	//text2file("Listing level triggers:","data/defcon_log.txt")
 	//for (var/i in defcon_level_triggers)
 		//text2file("Defcon level trigger: [i]","data/defcon_log.txt")

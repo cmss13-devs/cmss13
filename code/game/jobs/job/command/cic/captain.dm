@@ -37,7 +37,7 @@
 	..()
 
 /datum/job/command/commander/proc/do_announce_entry_message(mob/living/carbon/human/H)
-	ai_announcement("Attention all hands, [H.get_paygrade(0)] [H.real_name] on deck!")
+	shipwide_ai_announcement("Attention all hands, [H.get_paygrade(0)] [H.real_name] on deck!")
 	for(var/i in GLOB.co_secure_boxes)
 		var/obj/structure/closet/secure_closet/securecom/S = i
 		var/loc_to_spawn = S.opened ? get_turf(S) : S

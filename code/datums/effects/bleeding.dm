@@ -91,9 +91,6 @@
 	if(bicaridine > REAGENTS_OVERDOSE && affected_mob.getBruteLoss() <= 0)
 		blood_loss -= BICAOD_BLOOD_REDUCTION
 
-	if (affected_mob.reagents && affected_mob.reagents.get_reagent_amount("thwei"))
-		blood_loss -= THWEI_BLOOD_REDUCTION
-		
 	if(affected_mob.reagents && affected_mob.reagents.get_reagent_amount("quickclot")) // Annoying QC check
 		return FALSE
 

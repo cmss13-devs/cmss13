@@ -143,9 +143,9 @@
 	flags_item = ITEM_PREDATOR
 	flags_equip_slot = SLOT_STORE
 	sharp = IS_SHARP_ITEM_ACCURATE
-	force = MELEE_FORCE_STRONG
+	force = MELEE_FORCE_TIER_5
 	w_class = SIZE_TINY
-	throwforce = MELEE_FORCE_STRONG
+	throwforce = MELEE_FORCE_TIER_4
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 6
 	hitsound = 'sound/weapons/slash.ogg'

@@ -246,11 +246,11 @@
 	icon_state = "glaive"
 	item_state = "glaive"
 	desc = "A huge, powerful blade on a metallic pole. Mysterious writing is carved into the weapon."
-	force = 28
+	force = MELEE_FORCE_TIER_3
 	w_class = SIZE_LARGE
 	flags_equip_slot = SLOT_BACK
-	force_wielded = 60
-	throwforce = 50
+	force_wielded = MELEE_FORCE_TIER_9
+	throwforce = MELEE_FORCE_TIER_6
 	embeddable = FALSE //so predators don't lose their glaive when thrown.
 	throw_speed = SPEED_VERY_FAST
 	edge = 1
@@ -258,9 +258,9 @@
 	flags_atom = FPRINT|CONDUCT
 	flags_item = NOSHIELD|TWOHANDED|ITEM_PREDATOR
 	hitsound = 'sound/weapons/bladeslice.ogg'
-	attack_verb = list("sliced", "slashed", "jabbed", "torn", "gored")
+	attack_verb = list("sliced", "slashed", "carved", "diced", "gored")
 	unacidable = TRUE
-	attack_speed = 12 //Default is 7.
+	attack_speed = 14 //Default is 7.
 
 /obj/item/weapon/melee/twohanded/glaive/Destroy()
 	remove_from_missing_pred_gear(src)

@@ -31,8 +31,8 @@
 	)
 	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/humans/species/monkeys/onmob/suit_monkey_1.dmi')
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
-	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
-	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bullet = CLOTHING_ARMOR_HIGH
 	armor_laser = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_energy = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bomb = CLOTHING_ARMOR_HIGH
@@ -199,8 +199,8 @@
 	flags_inventory = NOSLIPPING
 	flags_armor_protection = BODY_FLAG_FEET|BODY_FLAG_LEGS|BODY_FLAG_GROIN
 	flags_item = ITEM_PREDATOR
-	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
-	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bullet = CLOTHING_ARMOR_HIGH
 	armor_laser = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_energy = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bomb = CLOTHING_ARMOR_HIGH
@@ -244,8 +244,8 @@
 	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_ARMS|BODY_FLAG_FEET|BODY_FLAG_HANDS
 	flags_item = ITEM_PREDATOR
 	has_sensor = 0
-	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
-	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bullet = CLOTHING_ARMOR_HIGH
 	armor_laser = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_energy = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bomb = CLOTHING_ARMOR_HIGH
@@ -315,7 +315,7 @@
 	flags_equip_slot = SLOT_WAIST
 	max_w_class = SIZE_MEDIUM
 	flags_item = ITEM_PREDATOR
-	storage_slots = 10
+	storage_slots = 12
 	max_storage_space = 30
 
 /obj/item/storage/backpack/yautja/Destroy()
@@ -457,6 +457,7 @@
 	item_state = "harpoon"
 	embeddable = FALSE
 	attack_verb = list("jabbed","stabbed","ripped", "skewered")
+	throw_range = 4
 	unacidable = TRUE
 	edge = 1
 	hitsound = 'sound/weapons/bladeslice.ogg'
@@ -465,8 +466,8 @@
 /obj/item/weapon/melee/harpoon/yautja/New()
 	. = ..()
 
-	force = BULLET_DAMAGE_TIER_3
-	throwforce = BULLET_DAMAGE_TIER_8
+	force = MELEE_FORCE_TIER_2
+	throwforce = MELEE_FORCE_TIER_6
 
 /obj/item/weapon/wristblades
 	name = "wrist blades"
@@ -475,8 +476,8 @@
 	icon_state = "wrist"
 	item_state = "wristblade"
 	w_class = SIZE_HUGE
-	edge = 1
-	sharp = 2
+	edge = TRUE
+	sharp = IS_SHARP_ITEM_ACCURATE
 	flags_item = NOSHIELD|NODROP|ITEM_PREDATOR
 	flags_equip_slot = NO_FLAGS
 	hitsound = 'sound/weapons/wristblades_hit.ogg'
@@ -490,7 +491,7 @@
 		if(istype(W)) //wristblade in usr's other hand.
 			attack_speed = attack_speed - attack_speed/3
 	attack_verb = list("sliced", "slashed", "jabbed", "torn", "gored")
-	force = BULLET_DAMAGE_TIER_5
+	force = MELEE_FORCE_TIER_4
 
 /obj/item/weapon/wristblades/dropped(mob/living/carbon/human/M)
 	playsound(M,'sound/weapons/wristblades_off.ogg', 15, 1)
@@ -531,17 +532,13 @@
 	embeddable = FALSE
 	w_class = SIZE_MEDIUM
 	unacidable = TRUE
-	sharp = 0
-	edge = 0
+	force = MELEE_FORCE_TIER_6
+	throwforce = MELEE_FORCE_TIER_5
+	sharp = IS_SHARP_ITEM_SIMPLE
+	edge = TRUE
 	attack_verb = list("whipped", "slashed","sliced","diced","shredded")
 	hitsound = 'sound/weapons/chain_whip.ogg'
 
-
-/obj/item/weapon/yautja_chain/New()
-	. = ..()
-
-	force = BULLET_DAMAGE_TIER_12
-	throwforce = BULLET_DAMAGE_TIER_2
 
 /obj/item/weapon/yautja_chain/attack(mob/target, mob/living/user)
 	. = ..()
@@ -562,8 +559,10 @@
 	flags_atom = FPRINT|CONDUCT
 	flags_item = ITEM_PREDATOR
 	flags_equip_slot = SLOT_BACK
-	sharp = 1
-	edge = 1
+	force = MELEE_FORCE_TIER_7
+	throwforce = MELEE_FORCE_TIER_5
+	sharp = IS_SHARP_ITEM_SIMPLE
+	edge = TRUE
 	var/on = FALSE
 	var/timer = FALSE
 	embeddable = FALSE
@@ -572,12 +571,6 @@
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	attack_speed = 9
 	unacidable = TRUE
-
-/obj/item/weapon/melee/yautja_sword/New()
-	. = ..()
-
-	force = BULLET_DAMAGE_TIER_7 //More damage than other weapons like it. Considering how "strong" this sword is supposed to be, 38 damage was laughable.
-	throwforce = BULLET_DAMAGE_TIER_3
 
 /obj/item/weapon/melee/yautja_sword/Destroy()
 	remove_from_missing_pred_gear(src)
@@ -635,19 +628,16 @@
 	flags_atom = FPRINT|CONDUCT
 	flags_item = ITEM_PREDATOR
 	flags_equip_slot = SLOT_WAIST
-	sharp = 1
+	force = MELEE_FORCE_TIER_6
+	throwforce = MELEE_FORCE_TIER_5
+	sharp = IS_SHARP_ITEM_SIMPLE
+	edge = TRUE
 	embeddable = FALSE
 	w_class = SIZE_LARGE
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	unacidable = TRUE
 
-/obj/item/weapon/melee/yautja_scythe/New()
-	. = ..()
-
-	icon_state = pick("predscythe","predscythe_alt")
-	force = BULLET_DAMAGE_TIER_8
-	throwforce = BULLET_DAMAGE_TIER_4
 
 /obj/item/weapon/melee/yautja_scythe/Destroy()
 	remove_from_missing_pred_gear(src)
@@ -666,10 +656,10 @@
 	..()
 	if(isYautja(user) && isXeno(target))
 		var/mob/living/carbon/Xenomorph/X = target
-		X.interference = 30
+		X.interference = 15
 
 
-	if(prob(20))
+	if(prob(15))
 		user.visible_message(SPAN_DANGER("An opening in combat presents itself!"),SPAN_DANGER("You manage to strike at your foe once more!"))
 		..() //Do it again! CRIT! This will be replaced by a bleed effect.
 
@@ -681,24 +671,22 @@
 	desc = "A compact yet deadly personal weapon. Can be concealed when folded. Functions well as a throwing weapon or defensive tool. A common sight in Yautja packs due to its versatility."
 	icon = 'icons/obj/items/weapons/predator.dmi'
 	icon_state = "combistick"
-	flags_atom = FPRINT|CONDUCT|ITEM_UNCATCHABLE
+	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_BACK
 	flags_item = TWOHANDED|ITEM_PREDATOR
 	w_class = SIZE_LARGE
 	embeddable = FALSE //It shouldn't embed so that the Yautja can actually use the yank combi verb, and so that it's not useless upon throwing it at someone.
 	throw_speed = SPEED_VERY_FAST
+	throw_range = 4
 	unacidable = TRUE
-	sharp = IS_SHARP_ITEM_ACCURATE
+	throwforce = MELEE_FORCE_TIER_6
+	sharp = IS_SHARP_ITEM_SIMPLE
+	edge = TRUE
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("speared", "stabbed", "impaled")
 	var/on = 1
 	var/timer = 0
 
-/obj/item/weapon/melee/combistick/New()
-	. = ..()
-
-	throwforce = BULLET_DAMAGE_TIER_7
-	force = BULLET_DAMAGE_TIER_5
 
 /obj/item/weapon/melee/combistick/IsShield()
 	return on
@@ -716,16 +704,6 @@
 		remove_from_missing_pred_gear(src)
 	..()
 
-/obj/item/weapon/melee/combistick/wield(var/mob/user)
-	..()
-	force = BULLET_DAMAGE_TIER_7
-	update_icon()
-
-/obj/item/weapon/melee/combistick/unwield(mob/user)
-	..()
-	force = BULLET_DAMAGE_TIER_5
-	update_icon()
-
 /obj/item/weapon/melee/combistick/verb/use_unique_action()
 	set category = "Weapons"
 	set name = "Unique Action"
@@ -740,6 +718,17 @@
 		else 				wield(user)
 	else
 		to_chat(user, SPAN_WARNING("You need to extend the combi-stick before you can wield it."))
+
+
+/obj/item/weapon/melee/combistick/wield(var/mob/user)
+	..()
+	force = MELEE_FORCE_TIER_6
+	update_icon()
+
+/obj/item/weapon/melee/combistick/unwield(mob/user)
+	..()
+	force = MELEE_FORCE_TIER_3
+	update_icon()
 
 /obj/item/weapon/melee/combistick/update_icon()
 	if(flags_item & WIELDED)
@@ -760,8 +749,8 @@
 		flags_equip_slot = initial(flags_equip_slot)
 		flags_item |= TWOHANDED
 		w_class = SIZE_LARGE
-		force = BULLET_DAMAGE_TIER_6
-		throwforce = BULLET_DAMAGE_TIER_7
+		force = MELEE_FORCE_TIER_6
+		throwforce = MELEE_FORCE_TIER_6
 		attack_verb = list("speared", "stabbed", "impaled")
 		timer = 1
 		addtimer(VARSET_CALLBACK(src, timer, FALSE), 1 SECONDS)
@@ -777,8 +766,8 @@
 		flags_equip_slot = SLOT_STORE
 		flags_item &= ~TWOHANDED
 		w_class = SIZE_TINY
-		force = BULLET_DAMAGE_TIER_2
-		throwforce = BULLET_DAMAGE_TIER_7 - BULLET_DAMAGE_TIER_7
+		force = MELEE_FORCE_TIER_1
+		throwforce = MELEE_FORCE_TIER_6
 		attack_verb = list("thwacked", "smacked")
 		timer = 1
 		addtimer(VARSET_CALLBACK(src, timer, FALSE), 1 SECONDS)

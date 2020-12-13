@@ -20,18 +20,24 @@
 	else
 		S.channel = T.channel
 	S.frequency = T.frequency
-	if(T.x && T.y && T.z)		
+	S.falloff = T.falloff
+	S.status = T.status
+
+	if(T.x && T.y && T.z)
 		var/turf/owner_turf = get_turf(owner.mob)
 		if(owner_turf)
-			if(T.z != owner_turf.z && owner_turf.z == interior_manager.interior_z)	//if we are in interior and hear sound from outside
-				S.falloff = T.falloff
-				S.volume *= 0.5
-			else
-				S.x = T.x - owner_turf.x
-				S.y = 0
-				S.z = T.y - owner_turf.y
-				S.falloff = T.falloff
-	S.status = T.status
+			// We're in an interior and sound came from outside
+			if(owner_turf.z == interior_manager.interior_z && owner_turf.z != T.z)
+				var/datum/interior/VI = interior_manager.get_interior_by_coords(owner_turf.x, owner_turf.y)
+				if(VI && VI.exterior)
+					var/turf/candidate = get_turf(VI.exterior)
+					if(!(candidate.z == T.z))
+						return // Invalid location
+					S.falloff /= 2
+					owner_turf = candidate
+			S.x = T.x - owner_turf.x
+			S.y = 0
+			S.z = T.y - owner_turf.y
 	if(owner.mob.ear_deaf > 0)
 		S.status |= SOUND_MUTE
 

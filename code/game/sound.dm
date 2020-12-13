@@ -47,20 +47,8 @@
 	S.channel = channel ? channel : get_free_channel()
 	S.status = status
 	S.falloff = falloff
-
-	var/turf/turf_source = get_turf(source)
-	if(!turf_source)
-		return FALSE
-	S.x = turf_source.x
-	S.y = turf_source.y
-	S.z = turf_source.z
-
 	S.volume = vol
 	S.volume_cat = vol_cat
-
-	if(!sound_range)
-		sound_range = round(0.25*vol) //if no specific range, the max range is equal to a quarter of the volume.
-	S.range = sound_range
 
 	if(vary != FALSE)
 		if(vary > 1)
@@ -68,29 +56,39 @@
 		else
 			S.frequency = GET_RANDOM_FREQ // Same frequency for everybody
 
+	if(!sound_range)
+		sound_range = round(0.25*vol) //if no specific range, the max range is equal to a quarter of the volume.
+	S.range = sound_range
 
-	var/list/hearers = list()
-	//Grab the hearers in interiors before doing the quadtree search
-	for(var/datum/interior/I in interior_manager.interiors)
-		if(!I.ready)
-			continue
+	var/turf/turf_source = get_turf(source)
+	if(!turf_source || !turf_source.z)
+		return FALSE
+	S.x = turf_source.x
+	S.y = turf_source.y
+	S.z = turf_source.z
 
-		if(!I.exterior)
-			continue
+	if(!interior_manager)
+		SSsound.queue(S)
+		return S.channel
 
-		if(I.exterior.z == turf_source.z && get_dist(I.exterior, turf_source) <= sound_range)
-			var/list/bounds = I.get_bound_turfs()
-			if(!bounds)
-				continue
+	var/list/datum/interior/extra_interiors = list()
+	// If we're in an interior, range the chunk, then adjust to do so from outside instead
+	if(turf_source.z == interior_manager.interior_z)
+		var/datum/interior/VI = interior_manager.get_interior_by_coords(turf_source.x, turf_source.y)
+		if(VI?.ready)
+			extra_interiors |= VI
+			if(VI.exterior)
+				var/turf/new_turf_source = get_turf(VI.exterior)
+				S.x = new_turf_source.x
+				S.y = new_turf_source.y
+				S.z = new_turf_source.z
+			else sound_range = 0
+	// Range for 'nearby interiors' aswell
+	for(var/datum/interior/VI in interior_manager.interiors)
+		if(VI?.ready && VI.exterior?.z == turf_source.z && get_dist(VI.exterior, turf_source) <= sound_range)
+			extra_interiors |= VI
 
-			for(var/turf/interior_turf in block(bounds[1], bounds[2]))
-				// Play the sound to any mobs inside
-				for(var/mob/P in interior_turf)
-					if(!P.client)
-						continue
-					hearers += P.client
-
-	SSsound.queue(S, hearers)
+	SSsound.queue(S, null, extra_interiors)
 	return S.channel
 
 

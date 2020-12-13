@@ -1,3 +1,4 @@
+!*.json
 ## NPM garbage
 node_modules
 *.log

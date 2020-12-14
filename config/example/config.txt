@@ -185,3 +185,37 @@ AUTOOOCMUTE
 # LOBBY_MUSIC 3 path/to/sound.ogg
 # LOBBY_MUSIC 4 path/to/sound.ogg
 # LOBBY_MUSIC 5 path/to/sound.ogg
+
+## LOBBY ART IMAGES
+## LOBBY_ART_IMAGES <icon_state>
+## LOBBY_ART_AUTHORS <author>
+#LOBBY_ART_IMAGES lobbyart1
+#LOBBY_ART_AUTHORS NicBoone
+#LOBBY_ART_IMAGES lobbyart2
+#LOBBY_ART_AUTHORS NicBoone
+#LOBBY_ART_IMAGES lobbyart3
+#LOBBY_ART_AUTHORS NicBoone
+#LOBBY_ART_IMAGES lobbyart4
+#LOBBY_ART_AUTHORS NicBoone
+#LOBBY_ART_IMAGES lobbyart5
+#LOBBY_ART_AUTHORS NicBoone
+#LOBBY_ART_IMAGES lobbyart6
+#LOBBY_ART_AUTHORS Triiodine
+#LOBBY_ART_IMAGES lobbyart7
+#LOBBY_ART_AUTHORS Triiodine
+#LOBBY_ART_IMAGES lobbyart8
+#LOBBY_ART_AUTHORS Triiodine
+#LOBBY_ART_IMAGES lobbyart9
+#LOBBY_ART_AUTHORS Unknown
+# originally for TGMC, asked author if we could use it too
+#LOBBY_ART_IMAGES lobbyart10
+#LOBBY_ART_AUTHORS LightCrabPress
+# originally drawing for discord banner
+#LOBBY_ART_IMAGES lobbyart11
+#LOBBY_ART_AUTHORS Redsting
+# commissioned by Neth
+#LOBBY_ART_IMAGES lobbyart12
+#LOBBY_ART_AUTHORS Substance20
+# commissioned by Neth
+#LOBBY_ART_IMAGES lobbyart13
+#LOBBY_ART_AUTHORS Substance20

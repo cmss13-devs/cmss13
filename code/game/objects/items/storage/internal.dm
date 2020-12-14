@@ -61,7 +61,7 @@
 							else
 								user.drop_inv_item_on_ground(master_item)
 								user.put_in_r_hand(master_item)
-							return 0
+							return
 					else
 						user.drop_inv_item_on_ground(master_item)
 						user.put_in_r_hand(master_item)
@@ -74,7 +74,7 @@
 							else
 								user.drop_inv_item_on_ground(master_item)
 								user.put_in_l_hand(master_item)
-							return 0
+							return
 					else
 						user.drop_inv_item_on_ground(master_item)
 						user.put_in_l_hand(master_item)
@@ -139,4 +139,4 @@
 /obj/item/storage/internal/Destroy()
 	. = ..()
 	master_item = null
-	
+

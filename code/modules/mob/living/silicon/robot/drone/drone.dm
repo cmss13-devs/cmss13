@@ -228,12 +228,12 @@
 		var/newname
 		newname = input(src,"You are drone. Pick a name, no duplicates allowed.", null, null) in greek_letters
 		if(custom_name)
-			return 0
+			return
 
 		for (var/mob/living/silicon/robot/drone/A in GLOB.mob_list)
 			if(newname == A.nicknumber)
 				to_chat(src, SPAN_WARNING("That identifier is taken, pick again."))
-				return 0
+				return
 
 		custom_name = newname
 		nicknumber = newname

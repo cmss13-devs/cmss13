@@ -15,7 +15,7 @@
 	matter = list("metal" = 10000, "glass" = 5000)
 	flags_atom = FPRINT|CONDUCT
 	w_class = SIZE_SMALL
-	
+
 
 /*
  * Hemostat
@@ -27,7 +27,7 @@
 	matter = list("metal" = 5000, "glass" = 2500)
 	flags_atom = FPRINT|CONDUCT
 	w_class = SIZE_SMALL
-	
+
 	attack_verb = list("attacked", "pinched")
 
 /*
@@ -40,7 +40,7 @@
 	matter = list("metal" = 5000, "glass" = 2500)
 	flags_atom = FPRINT|CONDUCT
 	w_class = SIZE_TINY
-	
+
 	attack_verb = list("burnt")
 
 /*
@@ -55,7 +55,7 @@
 	flags_atom = FPRINT|CONDUCT
 	force = 0
 	w_class = SIZE_SMALL
-	
+
 	attack_verb = list("drilled")
 
 /*
@@ -74,7 +74,7 @@
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 5
 	matter = list("metal" = 10000, "glass" = 5000)
-	
+
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 
 /*
@@ -121,7 +121,7 @@
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 5
 	matter = list("metal" = 20000,"glass" = 10000)
-	
+
 	attack_verb = list("attacked", "slashed", "sawed", "cut")
 	sharp = IS_SHARP_ITEM_BIG
 	edge = 1
@@ -139,7 +139,7 @@
 	icon_state = "fixovein"
 	force = 0
 	throwforce = 1.0
-	
+
 	w_class = SIZE_SMALL
 	var/usage_amount = 10
 
@@ -291,7 +291,7 @@
 			spawn(50)
 				if(CHECK != user.loc)
 					to_chat(usr, "This is difficult, you probably shouldn't move")
-					return.
+					return
 				to_chat(usr, "You've cut through the outer layers of Chitin")
 				new /obj/item/XenoBio/Chitin(T.loc) //This will be 1-3 Chitin eventually (depending on tier)
 				new /obj/item/XenoBio/Chitin(T.loc) //This will be 1-3 Chitin eventually (depending on tier)

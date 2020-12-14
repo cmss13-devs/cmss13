@@ -6,7 +6,7 @@ stages:
 variables:
   BYOND_MAJOR: "513"
   BYOND_MINOR: "1527"
-  SPACEMAN_DMM_VERSION: "1.5"
+  SPACEMAN_DMM_VERSION: "1.6"
 
 before_script:
   - apt-get update -qq

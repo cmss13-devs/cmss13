@@ -6,7 +6,7 @@
 			X.visible_message(SPAN_XENOWARNING("\The [X]'s claws twitch."), SPAN_XENOWARNING("Your claws twitch as you try to lunge but lack the strength. Wait a moment to try again."))
 			twitch_message_cooldown = world.time + 5 SECONDS
 		return //this gives a little feedback on why your lunge didn't hit other than the lunge button going grey. Plus, it might spook marines that almost got lunged if they know why the message appeared, and extra spookiness is always good.
-	
+
 	if (!A)
 		return
 
@@ -28,6 +28,9 @@
 	if (!check_and_use_plasma_owner())
 		return
 
+	apply_cooldown()
+	..()
+
 	X.visible_message(SPAN_XENOWARNING("\The [X] lunges towards [H]!"), SPAN_XENOWARNING("You lunge at [H]!"))
 
 	X.throw_atom(get_step_towards(A, X), grab_range, SPEED_FAST, X)
@@ -37,10 +40,7 @@
 	else
 		X.visible_message(SPAN_XENOWARNING("\The [X]'s claws twitch."), SPAN_XENOWARNING("Your claws twitch as you lunge but are unable to grab onto your target. Wait a moment to try again."))
 
-	apply_cooldown()
-	..()
-
-	return 1
+	return TRUE
 
 /datum/action/xeno_action/onclick/toggle_agility/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
@@ -149,7 +149,7 @@
 	if (ishuman(H) && (!L || (L.status & LIMB_DESTROYED)))
 		return
 
-	
+
 	if (!check_and_use_plasma_owner())
 		return
 
@@ -164,7 +164,7 @@
 	if (X.mutation_type != WARRIOR_BOXER)
 		do_base_warrior_punch(H, L)
 	else
-		do_boxer_punch(H,L)		
+		do_boxer_punch(H,L)
 
 	apply_cooldown()
 	..()
@@ -192,13 +192,13 @@
 					fracture_chance = 30
 				if(BODY_FLAG_GROIN)
 					fracture_chance = 40
-			
+
 			if(prob(fracture_chance))
 				L.fracture()
 
-			
+
 	H.apply_armoured_damage(get_xeno_damage_slash(H, damage), ARMOR_MELEE, BRUTE, L? L.name : "chest")
-	
+
 	shake_camera(H, 2, 1)
 	step_away(H, X, 2)
 
@@ -269,8 +269,8 @@
 	var/datum/action/xeno_action/activable/warrior_punch/punch_action = null
 	for (var/datum/action/xeno_action/activable/warrior_punch/P in X.actions)
 		punch_action = P
-		break 
-	
+		break
+
 	if (punch_action && !punch_action.action_cooldown_check())
 		punch_action.end_cooldown()
 
@@ -293,7 +293,7 @@
 
 	if (!X.check_state())
 		return
-	
+
 	var/datum/behavior_delegate/boxer/BD = X.behavior_delegate
 	if(!istype(BD))
 		return
@@ -305,7 +305,7 @@
 		return
 
 	var/mob/living/carbon/H = BD.punching_bag
-	if(H.stat == DEAD) 
+	if(H.stat == DEAD)
 		return
 	if(istype(H.buckled, /obj/structure/bed/nest))
 		return
@@ -315,7 +315,7 @@
 
 	if (!X.Adjacent(H))
 		return
-	
+
 	if(H.mob_size >= MOB_SIZE_BIG)
 		to_chat(X, SPAN_XENOWARNING("[H] is too big for you to uppercut!"))
 		return
@@ -353,7 +353,7 @@
 
 	if(damage)
 		H.apply_armoured_damage(get_xeno_damage_slash(H, base_damage * ko_counter), ARMOR_MELEE, BRUTE, L? L.name : "chest")
-	
+
 	if(knockout)
 		H.KnockOut(knockout_power)
 		BD.display_ko_message(H)

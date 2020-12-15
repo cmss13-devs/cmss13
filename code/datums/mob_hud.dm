@@ -586,6 +586,7 @@ var/list/datum/mob_hud/huds = list(
 			if("Squad Smartgunner") marine_rk = "gun"
 			if("Executive Officer") marine_rk = "xo"
 			if("Commanding Officer") marine_rk = "co"
+			if("USCM Admiral") marine_rk = "admiral"
 			if("Pilot Officer") marine_rk = "po"
 			if("Intelligence Officer") marine_rk = "io"
 			if("Crewman") marine_rk = "tc"
@@ -629,6 +630,9 @@ var/list/datum/mob_hud/huds = list(
 				border_rk = "command"
 			if("Staff Officer")
 				marine_rk = "so"
+				border_rk = "command"
+			if("USCM Admiral")
+				marine_rk = "admiral"
 				border_rk = "command"
 			if("Pilot Officer") marine_rk = "po"
 			if("Intelligence Officer") marine_rk = "io"

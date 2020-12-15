@@ -2,13 +2,13 @@
 	caste_name = "Crusher"
 	tier = 3
 
-	melee_damage_lower = XENO_DAMAGE_TIER_4
-	melee_damage_upper = XENO_DAMAGE_TIER_4
-	max_health = XENO_HEALTH_TIER_6
+	melee_damage_lower = XENO_DAMAGE_TIER_5
+	melee_damage_upper = XENO_DAMAGE_TIER_5
+	max_health = XENO_HEALTH_TIER_8
 	plasma_gain = XENO_PLASMA_GAIN_TIER_7
-	plasma_max = XENO_PLASMA_TIER_2
+	plasma_max = XENO_PLASMA_TIER_4
 	xeno_explosion_resistance = XENO_EXPLOSIVE_ARMOR_TIER_10
-	armor_deflection = XENO_ARMOR_TIER_4
+	armor_deflection = XENO_ARMOR_TIER_3
 	evasion = XENO_EVASION_NONE
 	speed = XENO_SPEED_TIER_2
 	heal_standing = 0.66
@@ -216,7 +216,7 @@
 /datum/behavior_delegate/crusher_base
 	name = "Base Crusher Behavior Delegate"
 
-	var/aoe_slash_damage_reduction = 0.60
+	var/aoe_slash_damage_reduction = 0.40
 
 /datum/behavior_delegate/crusher_base/melee_attack_additional_effects_target(atom/A)
 
@@ -227,7 +227,7 @@
 
 	var/damage = bound_xeno.melee_damage_upper * aoe_slash_damage_reduction
 
-	var/cdr_amount = 10
+	var/cdr_amount = 15
 	for (var/mob/living/carbon/H in orange(1, A))
 		if (H.stat == DEAD)
 			continue

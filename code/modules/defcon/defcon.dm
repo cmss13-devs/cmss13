@@ -76,9 +76,9 @@ var/global/datum/controller/defcon/defcon_controller
 	var/pick = input("Which asset would you like to enable?") as null|anything in rewards_for_purchase
 	if(!pick)
 		return
-	if(defcon_reward_list[pick].apply_reward(src))
+	if(GLOB.defcon_reward_list[pick].apply_reward(src))
 		to_chat(usr, "Asset granted!")
-		defcon_reward_list[pick].announce_reward()
+		GLOB.defcon_reward_list[pick].announce_reward()
 	else
 		to_chat(usr, "Asset granting failed!")
 	return
@@ -89,8 +89,8 @@ var/global/datum/controller/defcon/defcon_controller
 	if(!remaining_reward_points) //No points - can't buy anything
 		return can_purchase
 
-	for(var/str in defcon_reward_list)
-		if (can_purchase_reward(defcon_reward_list[str]))
+	for(var/str in GLOB.defcon_reward_list)
+		if (can_purchase_reward(GLOB.defcon_reward_list[str]))
 			can_purchase += str //can purchase!
 
 	return can_purchase

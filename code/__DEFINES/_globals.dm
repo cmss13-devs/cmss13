@@ -9,6 +9,17 @@
 /// Creates an empty global initializer, do not use
 #define GLOBAL_UNMANAGED(X) /datum/controller/global_vars/proc/InitGlobal##X() { return; }
 
+/// Creates name keyed subtype instance list
+#define GLOBAL_SUBTYPE_INDEXED(X, TypePath, Index)\
+/datum/controller/global_vars/proc/InitGlobal##X(){\
+    ##X = list();\
+    for(var/t in subtypesof(TypePath)){\
+        var##TypePath/A = new t;\
+        ##X[A.##Index] = A;\
+    }\
+    gvars_datum_init_order += #X;\
+}
+
 /// Prevents a given global from being VV'd
 #ifndef TESTING
 #define GLOBAL_PROTECT(X)\
@@ -19,6 +30,12 @@
 #else
 #define GLOBAL_PROTECT(X)
 #endif
+
+#define GLOBAL_SORTED(X)\
+/datum/controller/global_vars/InitGlobal##X(){\
+    ..();\
+    ##X = sortAssoc(##X);\
+}
 
 /// Standard BYOND global, do not use
 #define GLOBAL_REAL_VAR(X) var/global/##X
@@ -61,3 +78,8 @@
 
 /// Load a file in as a global list
 #define GLOBAL_LIST_FILE_LOAD(X, F) GLOBAL_LIST_INIT(X, file2list(F))
+
+/// Creates datum reference list
+#define GLOBAL_REFERENCE_LIST_INDEXED(X, TypePath, Index) GLOBAL_RAW(/list##TypePath/##X); GLOBAL_SUBTYPE_INDEXED(X, TypePath, Index)
+
+#define GLOBAL_REFERENCE_LIST_INDEXED_SORTED(X, TypePath, Index) GLOBAL_RAW(/list##TypePath/##X); GLOBAL_SUBTYPE_INDEXED(X, TypePath, Index); GLOBAL_SORTED(X)

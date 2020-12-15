@@ -36,18 +36,6 @@
 
 		//items that ask to be called every cycle
 
-var/global/list/global_map = null
-	//list/global_map = list(list(1,5),list(4,3))//an array of map Z levels.
-	//Resulting sector map looks like
-	//|_1_|_4_|
-	//|_5_|_3_|
-	//
-	//1 - SS13
-	//4 - Derelict
-	//3 - AI satellite
-	//5 - empty space
-
-
 //////////////
 var/list/paper_tag_whitelist = list("center","p","div","span","h1","h2","h3","h4","h5","h6","hr","pre",	\
 	"big","small","font","i","u","b","s","sub","sup","tt","br","hr","ol","ul","li","caption","col",	\
@@ -180,7 +168,6 @@ var/list/greek_letters = list("Alpha", "Beta", "Gamma", "Delta", "Epsilon", "Zet
 var/list/nato_phonetic_alphabet = list("Alpha", "Bravo", "Charlie", "Delta", "Echo", "Foxtrot", "Golf", "Hotel", "India", "Juliett", "Kilo", "Lima", "Mike", "November", "Oscar", "Papa", "Quebec", "Romeo", "Sierra", "Tango", "Uniform", "Victor", "Whiskey", "X-Ray", "Yankee", "Zulu")
 
 //Used for autocall procs on ERT
-//var/global/list/unanswered_distress = list()
 var/distress_cancel = 0
 var/destroy_cancel = 0
 

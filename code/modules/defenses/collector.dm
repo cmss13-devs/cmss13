@@ -67,7 +67,6 @@ var/global/list/faction_phoron_stored_list = list(
 	if(!(faction_group in faction_phoron_stored_list))
 		faction_group = FACTION_MARINE
 
-	marine_collectors += src
 	start_processing()
 
 /obj/structure/machinery/collector/process()
@@ -147,7 +146,6 @@ var/global/list/faction_phoron_stored_list = list(
 	return
 
 /obj/structure/machinery/collector/Destroy()
-	marine_collectors -= src
 	RN = null
 
 	. = ..()

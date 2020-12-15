@@ -992,13 +992,13 @@ var/const/MAX_SAVE_SLOTS = 10
 						h_style = new_h_style
 
 				if ("ethnicity")
-					var/new_ethnicity = input(user, "Choose your character's ethnicity:", "Character Preferences") as null|anything in ethnicities_list
+					var/new_ethnicity = input(user, "Choose your character's ethnicity:", "Character Preferences") as null|anything in GLOB.ethnicities_list
 
 					if (new_ethnicity)
 						ethnicity = new_ethnicity
 
 				if ("body_type")
-					var/new_body_type = input(user, "Choose your character's body type:", "Character Preferences") as null|anything in body_types_list
+					var/new_body_type = input(user, "Choose your character's body type:", "Character Preferences") as null|anything in GLOB.body_types_list
 
 					if (new_body_type)
 						body_type = new_body_type

@@ -65,27 +65,6 @@
 #define GAS_CO2	(1 << 3)
 #define GAS_N2O	(1 << 4)
 
-var/list/liftable_structures = list(
-	/obj/structure/machinery/autolathe,
-	/obj/structure/machinery/constructable_frame,
-	/obj/structure/machinery/portable_atmospherics/hydroponics,
-	/obj/structure/machinery/computer,
-	/obj/structure/machinery/optable,
-	/obj/structure/dispenser,
-	/obj/structure/machinery/gibber,
-	/obj/structure/machinery/microwave,
-	/obj/structure/machinery/vending,
-	/obj/structure/machinery/seed_extractor,
-	/obj/structure/machinery/space_heater,
-	/obj/structure/machinery/recharge_station,
-	/obj/structure/machinery/flasher,
-	/obj/structure/bed/stool,
-	/obj/structure/closet,
-	/obj/structure/machinery/photocopier,
-	/obj/structure/filingcabinet,
-	/obj/structure/reagent_dispensers,
-	/obj/structure/machinery/portable_atmospherics/canister)
-
 //Pulse levels, very simplified
 #define PULSE_NONE		0	//so !M.pulse checks would be possible
 #define PULSE_SLOW		1	//<60 bpm
@@ -151,7 +130,7 @@ var/list/RESTRICTED_CAMERA_NETWORKS = list( //Those networks can only be accesse
 
 #define FLAME_REAGENT_USE_AMOUNT 1
 
-#define DIRT_SPLATTER "splatter" //Blood, vomit, oil 
+#define DIRT_SPLATTER "splatter" //Blood, vomit, oil
 #define DIRT_JUNK "junk" //Gibs, Robot debris, etcetera
 #define DIRT_MISC "misc" //Anything else
 
@@ -164,3 +143,6 @@ var/list/RESTRICTED_CAMERA_NETWORKS = list( //Those networks can only be accesse
 //For recipes
 #define ONE_TYPE_PER_TURF		1
 #define ONE_TYPE_PER_BORDER		2
+
+#define TOUCH 1
+#define INGEST 2

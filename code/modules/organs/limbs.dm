@@ -600,8 +600,8 @@ This function completely restores a damaged organ to perfect condition.
 		icon_state = "[icon_name]"
 		return
 
-	var/datum/ethnicity/E = ethnicities_list[owner.ethnicity]
-	var/datum/body_type/B = body_types_list[owner.body_type]
+	var/datum/ethnicity/E = GLOB.ethnicities_list[owner.ethnicity]
+	var/datum/body_type/B = GLOB.body_types_list[owner.body_type]
 
 	var/e_icon
 	var/b_icon

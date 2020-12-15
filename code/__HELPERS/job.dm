@@ -22,8 +22,8 @@
 /obj/proc/GetJobRealName()
 	if (!istype(src,/obj/item/card/id)) return
 	var/obj/item/card/id/I = src
-	if(I.rank in joblist) return I.rank
-	if(I.assignment in joblist) return I.assignment
+	if(I.rank in GLOB.joblist) return I.rank
+	if(I.assignment in GLOB.joblist) return I.assignment
 	return "Unknown"
 
 /proc/FindNameFromID(mob/living/carbon/human/H)
@@ -33,7 +33,7 @@
 	I = H.get_active_hand()
 	if(istype(I)) return I.registered_name
 
-/proc/get_all_job_icons() return joblist + list("Prisoner")//For all existing HUD icons
+/proc/get_all_job_icons() return GLOB.joblist + list("Prisoner")//For all existing HUD icons
 
 /obj/proc/GetJobName() //Used in secHUD icon generation
 	var/obj/item/card/id/I = src

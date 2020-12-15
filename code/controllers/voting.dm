@@ -1,7 +1,5 @@
 var/datum/controller/vote/vote = new()
 
-var/global/list/round_voters = list() //Keeps track of the individuals voting for a given round, for use in forcedrafting.
-
 datum/controller/vote
 	var/initiator = null
 	var/started_time = null
@@ -113,9 +111,6 @@ datum/controller/vote
 						text += "\t[option]\n"
 			. = pick(winners)
 
-			for(var/key in current_votes)
-				if(choices[current_votes[key]] == .)
-					round_voters += key // Keep track of who voted for the winning round.
 			if((mode == "gamemode" && . == "extended")) // Announce Extended gamemode, but not other gamemodes
 				text += "<b>Vote Result: [.]</b>"
 			else

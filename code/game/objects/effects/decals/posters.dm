@@ -10,7 +10,7 @@
 
 /obj/item/poster/New(turf/loc, var/given_serial = 0)
 	if(given_serial == 0)
-		serial_number = rand(1, poster_designs.len)
+		serial_number = rand(1, GLOB.poster_designs.len)
 	else
 		serial_number = given_serial
 	name += " - No. [serial_number]"
@@ -32,9 +32,9 @@ obj/structure/sign/poster/New(var/serial)
 	serial_number = serial
 
 	if(serial_number == loc)
-		serial_number = rand(1, poster_designs.len)	//This is for the mappers that want individual posters without having to use rolled posters.
+		serial_number = rand(1, GLOB.poster_designs.len)	//This is for the mappers that want individual posters without having to use rolled posters.
 
-	var/designtype = poster_designs[serial_number]
+	var/designtype = GLOB.poster_designs[serial_number]
 	var/datum/poster/design=new designtype
 	name += " - [design.name]"
 	desc += " [design.desc]"
@@ -111,7 +111,7 @@ obj/structure/sign/poster/attackby(obj/item/W as obj, mob/user as mob)
 		return
 
 	to_chat(user, SPAN_NOTICE("You place the poster!"))
-	
+
 	SSclues.create_print(get_turf(user), user, "The fingerprint contains paper pieces.")
 	SEND_SIGNAL(P, COMSIG_POSTER_PLACED, user)
 

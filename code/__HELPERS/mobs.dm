@@ -1,8 +1,8 @@
 proc/random_ethnicity()
-	return pick(ethnicities_list)
+	return pick(GLOB.ethnicities_list)
 
 proc/random_body_type()
-	return pick(body_types_list)
+	return pick(GLOB.body_types_list)
 
 proc/random_hair_style(gender, species = "Human")
 	var/h_style = "Crewcut"

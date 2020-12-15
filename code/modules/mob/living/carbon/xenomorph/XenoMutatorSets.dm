@@ -31,8 +31,8 @@
 	var/pick = input("Which strain would you like to purchase?") as null|anything in mutators_for_purchase
 	if(!pick)
 		return FALSE
-	if(alert(usr, "[xeno_mutator_list[pick].description]\n\nConfirm mutation?", "Strain purchase", "Yes", "No") == "No")		return
-	if(xeno_mutator_list[pick].apply_mutator(src))
+	if(alert(usr, "[GLOB.xeno_mutator_list[pick].description]\n\nConfirm mutation?", "Strain purchase", "Yes", "No") == "No")		return
+	if(GLOB.xeno_mutator_list[pick].apply_mutator(src))
 		to_chat(usr, "Mutation complete!")
 		return TRUE
 	else
@@ -40,7 +40,7 @@
 		return FALSE
 
 /datum/mutator_set/proc/can_purchase_mutator(var/mutator_name)
-	var/datum/xeno_mutator/XM = xeno_mutator_list[mutator_name]
+	var/datum/xeno_mutator/XM = GLOB.xeno_mutator_list[mutator_name]
 	if(user_level < XM.required_level)
 		return FALSE //xeno doesn't meet the level requirements
 	if(remaining_points < XM.cost)
@@ -50,11 +50,11 @@
 			return FALSE //unique mutator already purchased
 	if(XM.keystone)
 		for(var/name in purchased_mutators)
-			if(xeno_mutator_list[name].keystone)
+			if(GLOB.xeno_mutator_list[name].keystone)
 				return FALSE //We already have a keystone mutator
 	if(XM.flaw)
 		for(var/name in purchased_mutators)
-			if(xeno_mutator_list[name].flaw)
+			if(GLOB.xeno_mutator_list[name].flaw)
 				return FALSE //We already have a flaw mutator
 	return TRUE
 
@@ -62,7 +62,7 @@
 /datum/mutator_set/proc/available_mutators()
 	var/list/can_purchase = list()
 
-	for(var/str in xeno_mutator_list)
+	for(var/str in GLOB.xeno_mutator_list)
 		if (can_purchase_mutator(str))
 			can_purchase += str //can purchase!
 
@@ -96,7 +96,7 @@
 /datum/mutator_set/hive_mutators/can_purchase_mutator(var/mutator_name)
 	if (..() == FALSE)
 		return FALSE //Can't buy it regardless
-	var/datum/xeno_mutator/XM = xeno_mutator_list[mutator_name]
+	var/datum/xeno_mutator/XM = GLOB.xeno_mutator_list[mutator_name]
 	if(XM.individual_only)
 		return FALSE //We can't buy individual mutators on a Hive level
 	return TRUE
@@ -111,7 +111,7 @@
 
 	var/depowered = FALSE
 	for(var/name in purchased_mutators)
-		if(!xeno_mutator_list[name].death_persistent)
+		if(!GLOB.xeno_mutator_list[name].death_persistent)
 			purchased_mutators -= name
 			depowered = TRUE
 
@@ -197,7 +197,7 @@
 /datum/mutator_set/individual_mutators/can_purchase_mutator(var/mutator_name)
 	if (..() == FALSE)
 		return FALSE //Can't buy it regardless
-	var/datum/xeno_mutator/XM = xeno_mutator_list[mutator_name]
+	var/datum/xeno_mutator/XM = GLOB.xeno_mutator_list[mutator_name]
 	if(XM.hive_only)
 		return FALSE //We can't buy Hive mutators on an individual level
 	if(XM.caste_whitelist && (XM.caste_whitelist.len > 0) && !(xeno.caste_name in XM.caste_whitelist))

@@ -378,8 +378,8 @@
 	stamina = new /datum/stamina/none(src)
 
 /mob/living/carbon/Xenomorph/proc/update_caste()
-	if(caste_name && xeno_datum_list[caste_name])
-		caste = xeno_datum_list[caste_name]
+	if(caste_name && GLOB.xeno_datum_list[caste_name])
+		caste = GLOB.xeno_datum_list[caste_name]
 	else
 		to_world("something went very wrong")
 		return

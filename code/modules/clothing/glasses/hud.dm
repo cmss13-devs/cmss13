@@ -90,7 +90,6 @@
 	flags_armor_protection = 0
 	hud_type = MOB_HUD_SECURITY_ADVANCED
 	actions_types = list(/datum/action/item_action/toggle)
-	var/global/list/jobs[0]
 
 /obj/item/clothing/glasses/hud/security/jensenshades
 	name = "augmented shades"

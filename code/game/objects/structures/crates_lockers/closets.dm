@@ -19,6 +19,7 @@
 
 	var/store_items = TRUE
 	var/store_mobs = TRUE
+	var/fill_from_loc = TRUE //Whether items from the tile are automatically moved inside the closet.
 
 	anchored = 1 //Yep
 
@@ -26,7 +27,7 @@
 
 /obj/structure/closet/Initialize()
 	. = ..()
-	if(!opened)		// if closed, any item at the crate's loc is put in the contents
+	if(!opened && fill_from_loc)		// if closed, any item at the crate's loc is put in the contents
 		for(var/obj/item/I in src.loc)
 			if(I.density || I.anchored || I == src)
 				continue

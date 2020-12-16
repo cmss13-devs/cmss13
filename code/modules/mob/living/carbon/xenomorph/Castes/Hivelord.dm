@@ -34,7 +34,7 @@
 /datum/caste_datum/hivelord/New()
 	. = ..()
 
-	resin_build_order = resin_build_order_hivelord
+	resin_build_order = GLOB.resin_build_order_hivelord
 
 /mob/living/carbon/Xenomorph/Hivelord
 	caste_name = "Hivelord"

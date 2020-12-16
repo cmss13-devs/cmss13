@@ -1,7 +1,7 @@
 /datum/equipment_preset/synth
 	name = "Synth"
 	uses_special_name = TRUE
-	languages = list("English", "Russian", "Japanese", "Sainja", "Xenomorph")
+	languages = list("English", "Russian", "Japanese", "Sainja", "Xenomorph","Spacendeutchen","Spanish")
 	skills = /datum/skills/synthetic
 
 /datum/equipment_preset/synth/New()
@@ -38,7 +38,7 @@
 	idtype = /obj/item/card/id/gold
 	assignment = "Synthetic"
 	rank = "Synthetic"
-	paygrade = "???"
+	paygrade = ""
 	role_comm_title = "Syn"
 
 /datum/equipment_preset/synth/uscm/load_gear(mob/living/carbon/human/H)
@@ -62,7 +62,7 @@
 	idtype = /obj/item/card/id/gold
 	assignment = "Synthetic"
 	rank = "Synthetic"
-	paygrade = "???"
+	paygrade = ""
 	role_comm_title = "Syn"
 
 /datum/equipment_preset/synth/uscm/councillor/load_gear(mob/living/carbon/human/H)

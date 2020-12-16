@@ -249,16 +249,16 @@ var/nextAdminBioscan = MINUTES_30//30 minutes in
 	//Pick one random location to disclose
 	var/RandomHostsPlanetLocation = ""
 	if (hostsPlanetLocations.len>0)
-		RandomHostsPlanetLocation = get_area(pick(hostsPlanetLocations)).name
+		RandomHostsPlanetLocation = get_area_name(pick(hostsPlanetLocations))
 	var/RandomHostsShipLocation = ""
 	if (hostsShipLocations.len>0)
-		RandomHostsShipLocation = get_area(pick(hostsShipLocations)).name
+		RandomHostsShipLocation = get_area_name(pick(hostsShipLocations))
 	var/RandomXenosPlanetLocation = ""
 	if (xenosPlanetLocations.len>0)
-		RandomXenosPlanetLocation = get_area(pick(xenosPlanetLocations)).name
+		RandomXenosPlanetLocation = get_area_name(pick(xenosPlanetLocations))
 	var/RandomXenosShipLocation = ""
 	if (xenosShipLocations.len>0)
-		RandomXenosShipLocation = get_area(pick(xenosShipLocations)).name
+		RandomXenosShipLocation = get_area_name(pick(xenosShipLocations))
 
 	if(world.time > nextPredatorBioscan)
 		nextPredatorBioscan += MINUTES_5//5 minutes, straight

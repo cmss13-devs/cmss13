@@ -70,36 +70,6 @@ var/list/sqrtTable = list(1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 
 
 // MATH PROCS
 
-/proc/IsAboutEqual(a, b, deviation = 0.1)
-	return abs(a - b) <= deviation
-
-// Performs a linear interpolation between a and b.
-// Note that amount=0 returns a, amount=1 returns b, and
-// amount=0.5 returns the mean of a and b.
-/proc/Lerp(a, b, amount = 0.5)
-	return a + (b - a) * amount
-
-/proc/Mean(...)
-	var/values 	= 0
-	var/sum		= 0
-	for(var/val in args)
-		values++
-		sum += val
-	return sum / values
-
-// The quadratic formula. Returns a list with the solutions, or an empty list
-// if they are imaginary.
-/proc/SolveQuadratic(a, b, c)
-	ASSERT(a)
-	. = list()
-	var/d		= b*b - 4 * a * c
-	var/bottom  = 2 * a
-	if(d < 0) return
-	var/root = sqrt(d)
-	. += (-b + root) / bottom
-	if(!d) return
-	. += (-b - root) / bottom
-
 // Rotates a point around the given axis by a given amount of degrees
 // You may want to round the result of this, it's very susceptible to floating point errors
 /proc/RotateAroundAxis(var/point, var/axis, var/degrees)

@@ -1,12 +1,4 @@
 // List defines
-
-#if DM_VERSION > 513
-#warn 513 is definitely stable now, remove this
-#endif
-#if DM_VERSION < 513
-#define islist(L) (istype(L, /list))
-#endif
-
 /*
  * Holds procs to help with list operations
  * Contains groups:
@@ -49,24 +41,12 @@ proc/listgetindex(var/list/list,index)
 			return list[index]
 	return
 
-//Return either pick(list) or null if list is not of type /list or is empty
-proc/safepick(list/list)
-	if(!islist(list) || !list.len)
-		return
-	return pick(list)
-
 //Checks for specific types in a list
 /proc/is_type_in_list(var/atom/A, var/list/L)
 	for(var/type in L)
 		if(istype(A, type))
 			return 1
 	return 0
-
-//Empties the list by setting the length to 0. Hopefully the elements get garbage collected
-proc/clearlist(list/list)
-	if(istype(list))
-		list.len = 0
-	return
 
 //Removes any null entries from the list
 proc/listclearnulls(list/list)
@@ -123,30 +103,13 @@ proc/listclearnulls(list/list)
 			return item
 	return null
 
-//Picks an element based upon its weight
-proc/pick_element_by_weight_byindex(list/L)
-  var/totalweight = 0
-  var/item
-  for(item in L)
-    var/weight = L[item]
-    if(isnull(weight))
-      weight = 1; L[item] = 1
-    totalweight += weight
-  totalweight *= rand()
-  for(var/i=1, i<=L.len, ++i)
-    var/weight = L[L[i]]
-    totalweight -= weight
-    if(totalweight < 0)
-      return i
-  return 0
-
-//Pick a random element from the list and remove it from the list.
-/proc/pick_n_take(list/listfrom)
-	if (listfrom.len > 0)
-		var/picked = pick(listfrom)
-		listfrom -= picked
-		return picked
-	return null
+/// Pick a random element from the list and remove it from the list.
+/proc/pick_n_take(list/L)
+	RETURN_TYPE(L[_].type)
+	if(L.len)
+		var/picked = rand(1,L.len)
+		. = L[picked]
+		L.Cut(picked,picked+1)			//Cut is far more efficient that Remove()
 
 //Returns the top(last) element from the list and removes it from the list (typical stack function)
 /proc/pop(list/L)
@@ -383,7 +346,7 @@ proc/pick_element_by_weight_byindex(list/L)
 //Converts a bitfield to a list of numbers (or words if a wordlist is provided)
 /proc/bitfield2list(bitfield = 0, list/wordlist)
 	var/list/r = list()
-	if(istype(wordlist,/list))
+	if(islist(wordlist))
 		var/max = min(wordlist.len,16)
 		var/bit = 1
 		for(var/i=1, i<=max, i++)
@@ -397,179 +360,12 @@ proc/pick_element_by_weight_byindex(list/L)
 
 	return r
 
-// Returns the key based on the index
-/proc/get_key_by_index(var/list/L, var/index)
-	var/i = 1
-	for(var/key in L)
-		if(index == i)
-			return key
-		i++
-	return null
-
 /proc/count_by_type(var/list/L, type)
 	var/i = 0
 	for(var/T in L)
 		if(istype(T, type))
 			i++
 	return i
-
-// Return a list of the values in an assoc list (including null)
-/proc/list_values(var/list/L)
-	. = list()
-	for(var/e in L)
-		. += L[e]
-
-//Don't use this on lists larger than half a dozen or so
-/proc/insertion_sort_numeric_list_ascending(var/list/L)
-	//world.log << "ascending len input: [L.len]"
-	var/list/out = list(pop(L))
-	for(var/entry in L)
-		if(isnum(entry))
-			var/success = 0
-			for(var/i=1, i<=out.len, i++)
-				if(entry <= out[i])
-					success = 1
-					out.Insert(i, entry)
-					break
-			if(!success)
-				out.Add(entry)
-
-	//world.log << "	output: [out.len]"
-	return out
-
-/proc/insertion_sort_numeric_list_descending(var/list/L)
-	//world.log << "descending len input: [L.len]"
-	var/list/out = insertion_sort_numeric_list_ascending(L)
-	//world.log << "	output: [out.len]"
-	return reverselist(out)
-
-proc/dd_sortedObjectList(list/incoming)
-	/*
-	   Use binary search to order by dd_SortValue().
-	   This works by going to the half-point of the list, seeing if the node in
-	   question is higher or lower cost, then going halfway up or down the list
-	   and checking again. This is a very fast way to sort an item into a list.
-	*/
-	var/list/sorted_list = new()
-	var/low_index
-	var/high_index
-	var/insert_index
-	var/midway_calc
-	var/current_index
-	var/current_item
-	var/current_item_value
-	var/current_sort_object_value
-	var/list/list_bottom
-
-	var/current_sort_object
-	for (current_sort_object in incoming)
-		low_index = 1
-		high_index = sorted_list.len
-		while (low_index <= high_index)
-			// Figure out the midpoint, rounding up for fractions.  (BYOND rounds down, so add 1 if necessary.)
-			midway_calc = (low_index + high_index) / 2
-			current_index = round(midway_calc)
-			if (midway_calc > current_index)
-				current_index++
-			current_item = sorted_list[current_index]
-
-			current_item_value = current_item:dd_SortValue()
-			current_sort_object_value = current_sort_object:dd_SortValue()
-			if (current_sort_object_value < current_item_value)
-				high_index = current_index - 1
-			else if (current_sort_object_value > current_item_value)
-				low_index = current_index + 1
-			else
-				// current_sort_object == current_item
-				low_index = current_index
-				break
-
-		// Insert before low_index.
-		insert_index = low_index
-
-		// Special case adding to end of list.
-		if (insert_index > sorted_list.len)
-			sorted_list += current_sort_object
-			continue
-
-		// Because BYOND lists don't support insert, have to do it by:
-		// 1) taking out bottom of list, 2) adding item, 3) putting back bottom of list.
-		list_bottom = sorted_list.Copy(insert_index)
-		sorted_list.Cut(insert_index)
-		sorted_list += current_sort_object
-		sorted_list += list_bottom
-	return sorted_list
-
-
-proc/dd_sortedtextlist(list/incoming, case_sensitive = 0)
-	// Returns a new list with the text values sorted.
-	// Use binary search to order by sortValue.
-	// This works by going to the half-point of the list, seeing if the node in question is higher or lower cost,
-	// then going halfway up or down the list and checking again.
-	// This is a very fast way to sort an item into a list.
-	var/list/sorted_text = new()
-	var/low_index
-	var/high_index
-	var/insert_index
-	var/midway_calc
-	var/current_index
-	var/current_item
-	var/list/list_bottom
-	var/sort_result
-
-	var/current_sort_text
-	for (current_sort_text in incoming)
-		low_index = 1
-		high_index = sorted_text.len
-		while (low_index <= high_index)
-			// Figure out the midpoint, rounding up for fractions.  (BYOND rounds down, so add 1 if necessary.)
-			midway_calc = (low_index + high_index) / 2
-			current_index = round(midway_calc)
-			if (midway_calc > current_index)
-				current_index++
-			current_item = sorted_text[current_index]
-
-			if (case_sensitive)
-				sort_result = sorttextEx(current_sort_text, current_item)
-			else
-				sort_result = sorttext(current_sort_text, current_item)
-
-			switch(sort_result)
-				if (1)
-					high_index = current_index - 1	// current_sort_text < current_item
-				if (-1)
-					low_index = current_index + 1	// current_sort_text > current_item
-				if (0)
-					low_index = current_index		// current_sort_text == current_item
-					break
-
-		// Insert before low_index.
-		insert_index = low_index
-
-		// Special case adding to end of list.
-		if (insert_index > sorted_text.len)
-			sorted_text += current_sort_text
-			continue
-
-		// Because BYOND lists don't support insert, have to do it by:
-		// 1) taking out bottom of list, 2) adding item, 3) putting back bottom of list.
-		list_bottom = sorted_text.Copy(insert_index)
-		sorted_text.Cut(insert_index)
-		sorted_text += current_sort_text
-		sorted_text += list_bottom
-	return sorted_text
-
-
-proc/dd_sortedTextList(list/incoming)
-	var/case_sensitive = 1
-	return dd_sortedtextlist(incoming, case_sensitive)
-
-
-datum/proc/dd_SortValue()
-	return "[src]"
-
-/obj/structure/machinery/dd_SortValue()
-	return "[sanitize(name)]"
 
 //Move a single element from position fromIndex within a list, to position toIndex
 //All elements in the range [1,toIndex) before the move will be before the pivot afterwards
@@ -712,14 +508,6 @@ datum/proc/dd_SortValue()
 		if(A.contents.len)
 			found += A.contents
 	return found
-
-/proc/print_list(list/L)
-	var/list_str = ""
-	for(var/element in L)
-		list_str += "[element],"
-	list_str = copytext(list_str, 1, length(list_str))
-	to_world(list_str)
-	return list_str
 
 // Mergesorts a list, using the sort callback to determine ordering
 /proc/custom_mergesort(var/list/L, var/datum/callback/sort)

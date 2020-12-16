@@ -180,3 +180,10 @@
 #define GUN_CATEGORY_RIFLE 3
 #define GUN_CATEGORY_SHOTGUN 4
 #define GUN_CATEGORY_HEAVY 5
+
+/**
+ * Get the ultimate area of `A`, similarly to [get_turf].
+ *
+ * Use instead of `A.loc.loc`.
+ */
+#define get_area(A) (isarea(A) ? A : get_step(A, 0)?.loc)

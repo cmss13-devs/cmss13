@@ -393,3 +393,12 @@ var/list/accessable_z_levels = list("1" = 10, "3" = 10, "4" = 10, "5" = 70)
 		else		dist = (0.427*dx) + (0.934*dy)
 
 	return dist
+
+//Update this whenever you need to take advantage of more recent byond features
+#define MIN_COMPILER_VERSION 513
+#define MIN_COMPILER_BUILD 1514
+#if DM_VERSION < MIN_COMPILER_VERSION || DM_BUILD < MIN_COMPILER_BUILD
+//Don't forget to update this part
+#error Your version of BYOND is too out-of-date to compile this project. Go to https://secure.byond.com/download and update.
+#error You need version 513.1514 or higher
+#endif

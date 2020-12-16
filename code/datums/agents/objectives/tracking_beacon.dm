@@ -36,7 +36,8 @@
 
 /datum/agent_objective/tracking_beacon/proc/placed_tracker()
 	SIGNAL_HANDLER
-	if(tracker.planted && istypestrict(get_area(tracker), area_to_plant_type))
+	var/area/A = get_area(tracker)
+	if(tracker.planted && istypestrict(A, area_to_plant_type))
 		completed = TRUE
 	else
 		completed = FALSE

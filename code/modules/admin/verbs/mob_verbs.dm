@@ -168,7 +168,7 @@
 		return
 
 	if(!M)
-		M = input("Direct narrate to who?", "Active Players") as null|anything in get_mob_with_client_list()
+		M = input("Direct narrate to who?", "Active Players") as null|anything in GLOB.player_list
 
 	if(!M)
 		return

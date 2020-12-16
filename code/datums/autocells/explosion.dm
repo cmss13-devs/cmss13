@@ -239,7 +239,7 @@
 	// it could toss them back and make them get hit by the explosion again
 	if(A.gc_destroyed)
 		return
-	
+
 	INVOKE_ASYNC(A, /atom.proc/ex_act, power, null, explosion_source, explosion_source_mob)
 	log_explosion(A, src)
 
@@ -301,11 +301,11 @@
 			// who cares about the explosion if it happened nowhere
 			if(!location_of_mob)
 				return
-
+			var/area/thearea = get_area(M)
 			if(M == firing_mob)
 				M.attack_log += "\[[time_stamp()]\] <b>[key_name(M)]</b> blew himself up with \a <b>[explosion_source]</b> in [get_area(T)]."
 			// One human blew up another, be worried about it but do everything basically the same
-			else if(ishuman(firing_mob) && ishuman(M) && M.faction == firing_mob.faction && !get_area(M)?.statistic_exempt)
+			else if(ishuman(firing_mob) && ishuman(M) && M.faction == firing_mob.faction && !thearea?.statistic_exempt)
 				M.attack_log += "\[[time_stamp()]\] <b>[key_name(firing_mob)]</b> blew up <b>[key_name(M)]</b> with \a <b>[explosion_source]</b> in [get_area(T)]."
 
 				firing_mob.attack_log += "\[[time_stamp()]\] <b>[key_name(firing_mob)]</b> blew up <b>[key_name(M)]</b> with \a <b>[explosion_source]</b> in [get_area(T)]."

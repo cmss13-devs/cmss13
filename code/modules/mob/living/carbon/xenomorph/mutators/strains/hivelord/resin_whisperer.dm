@@ -15,7 +15,7 @@
 	. = ..()
 	if(. == 0)
 		return
-	
+
 	var/mob/living/carbon/Xenomorph/Hivelord/H = MS.xeno
 	H.plasmapool_modifier = 0.8 // -20% plasma pool
 	H.extra_build_dist = 12 // 1 + 12 = 13 tile build range
@@ -28,7 +28,7 @@
 	MS.recalculate_actions(description, flavor_description)
 	H.recalculate_plasma()
 
-	H.resin_build_order = resin_build_order_default
+	H.resin_build_order = GLOB.resin_build_order_default
 
 /*
  *    Coerce Resin ability

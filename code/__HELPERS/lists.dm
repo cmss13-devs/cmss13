@@ -380,6 +380,31 @@ proc/pick_element_by_weight_byindex(list/L)
 		return (result + L.Copy(Li, 0))
 	return (result + R.Copy(Ri, 0))
 
+// Same as sortAssoc but rather than creating a whole new list keeps the original list ref and just returns that list modified
+/proc/sortAssocKeepList(var/list/L)
+	if(L.len < 2)
+		return L
+	var/middle = L.len / 2 + 1 // Copy is first,second-1
+	return mergeAssocKeepList(sortAssoc(L.Copy(0,middle)), sortAssoc(L.Copy(middle)), L) //second parameter null = to end of list
+
+/proc/mergeAssocKeepList(var/list/L, var/list/R, var/list/original)
+	var/Li=1
+	var/Ri=1
+	var/list/result = new()
+	while(Li <= L.len && Ri <= R.len)
+		if(sorttext(L[Li], R[Ri]) < 1)
+			result += R&R[Ri++]
+		else
+			result += L&L[Li++]
+
+	if(Li <= L.len)
+		result += L.Copy(Li, 0)
+	else
+		result += R.Copy(Ri, 0)
+	original.Cut()
+	original += result
+	return original
+
 //Converts a bitfield to a list of numbers (or words if a wordlist is provided)
 /proc/bitfield2list(bitfield = 0, list/wordlist)
 	var/list/r = list()

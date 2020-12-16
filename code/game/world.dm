@@ -40,9 +40,6 @@ var/internal_tick_usage = 0
 	mutator_logs << "[log_end]\nStarting up - [time2text(world.realtime,"YYYY-MM-DD (hh:mm:ss)")][log_end]\n---------------------[log_end]"
 	changelog_hash = md5('html/changelog.html')					//used for telling if the changelog has changed recently
 
-	if(byond_version < DM_VERSION)
-		world.log << "Your server's byond version does not meet the recommended requirements for this server. Please update BYOND"
-
 	initialize_marine_armor()
 
 	config.Load(params[OVERRIDE_CONFIG_DIRECTORY_PARAMETER])

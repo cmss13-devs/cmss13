@@ -234,7 +234,7 @@
 	var/attachmentchoice
 
 	if(prob(randchance) && !attachments["rail"]) // Rail
-		attachmentchoice = safepick(random_spawn_rail)
+		attachmentchoice = SAFEPICK(random_spawn_rail)
 		if(attachmentchoice)
 			var/obj/item/attachable/R = new attachmentchoice(src)
 			R.Attach(src)
@@ -242,7 +242,7 @@
 			attachmentchoice = FALSE
 
 	if(prob(randchance) && !attachments["muzzle"]) // Muzzle
-		attachmentchoice = safepick(random_spawn_muzzle)
+		attachmentchoice = SAFEPICK(random_spawn_muzzle)
 		if(attachmentchoice)
 			var/obj/item/attachable/M = new attachmentchoice(src)
 			M.Attach(src)
@@ -250,7 +250,7 @@
 			attachmentchoice = FALSE
 
 	if(prob(randchance) && !attachments["under"]) // Underbarrel
-		attachmentchoice = safepick(random_spawn_underbarrel)
+		attachmentchoice = SAFEPICK(random_spawn_underbarrel)
 		if(attachmentchoice)
 			var/obj/item/attachable/U = new attachmentchoice(src)
 			U.Attach(src)
@@ -258,7 +258,7 @@
 			attachmentchoice = FALSE
 
 	if(prob(randchance) && !attachments["stock"]) // Stock
-		attachmentchoice = safepick(random_spawn_stock)
+		attachmentchoice = SAFEPICK(random_spawn_stock)
 		if(attachmentchoice)
 			var/obj/item/attachable/S = new attachmentchoice(src)
 			S.Attach(src)

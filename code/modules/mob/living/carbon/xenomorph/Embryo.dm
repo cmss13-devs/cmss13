@@ -158,7 +158,7 @@
 
 	if(isYautja(affected_mob) || (flags_embryo & FLAG_EMBRYO_PREDATOR))
 		new_xeno = new /mob/living/carbon/Xenomorph/Larva/predalien(affected_mob)
-		yautja_announcement(SPAN_YAUTJABOLDBIG("WARNING!\n\nAn abomination has been detected at [get_area(new_xeno).name]. It is a stain upon our purity and is unfit for life. Exterminate it immediately"))
+		yautja_announcement(SPAN_YAUTJABOLDBIG("WARNING!\n\nAn abomination has been detected at [get_area_name(new_xeno)]. It is a stain upon our purity and is unfit for life. Exterminate it immediately"))
 	else
 		new_xeno = new(affected_mob)
 

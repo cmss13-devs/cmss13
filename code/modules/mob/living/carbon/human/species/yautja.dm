@@ -97,7 +97,7 @@
 		H.yautja_hunted_prey = null
 
 	// Notify all yautja so they start the gear recovery
-	message_all_yautja("[H] has died at \the [get_area(H).name].")
+	message_all_yautja("[H] has died at \the [get_area_name(H)].")
 
 /datum/species/yautja/post_species_loss(mob/living/carbon/human/H)
 	var/datum/mob_hud/medical/advanced/A = huds[MOB_HUD_MEDICAL_ADVANCED]

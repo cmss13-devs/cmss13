@@ -356,7 +356,7 @@
 		output = 1
 		to_chat(M, SPAN_NOTICE("Your bracer shows a readout of Yautja technology signatures, [gear_on_planet] in the hunting grounds, [gear_on_almayer] in orbit, [gear_low_orbit] in low orbit."))
 	if(closest < 900)
-		var/areaName = get_area(areaLoc).name
+		var/areaName = get_area_name(areaLoc)
 		to_chat(M, SPAN_NOTICE("The closest signature is approximately [round(closest,10)] paces [dir2text(direction)] in [areaName]."))
 	if(!output)
 		to_chat(M, SPAN_NOTICE("There are no signatures that require your attention."))

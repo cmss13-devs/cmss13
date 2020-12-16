@@ -1,24 +1,8 @@
-//This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:31
-
-/proc/dopage(src,target)
-	var/href_list
-	var/href
-	href_list = params2list("src=\ref[src]&[target]=1")
-	href = "src=\ref[src];[target]=1"
-	src:temphtml = null
-	src:Topic(href, href_list)
-	return null
-
-/proc/get_area(atom/A)
-	RETURN_TYPE(/area)
-	var/turf/T = get_turf(A)
-	if(T) . = T.loc
-
-/proc/get_area_name(N) //get area by its name
-	for(var/area/A in all_areas)
-		if(A.name == N)
-			return A
-	return 0
+/proc/get_area_name(atom/X, format_text = FALSE)
+	var/area/A = isarea(X) ? X : get_area(X)
+	if(!A)
+		return null
+	return format_text ? format_text(A.name) : A.name
 
 /proc/in_range(source, user)
 	if(get_dist(source, user) <= 1)
@@ -39,21 +23,6 @@
 
 	return heard
 
-
-
-
-//Magic constants obtained by using linear regression on right-angled triangles of sides 0<x<1, 0<y<1
-//They should approximate pythagoras theorem well enough for our needs.
-#define k1 0.934
-#define k2 0.427
-/proc/cheap_hypotenuse(Ax,Ay,Bx,By) // T is just the second atom to check distance to center with
-	var/dx = abs(Ax - Bx)	//sides of right-angled triangle
-	var/dy = abs(Ay - By)
-	if(dx>=dy)	return (k1*dx) + (k2*dy)	//No sqrt or powers :)
-	else		return (k2*dx) + (k1*dy)
-#undef k1
-#undef k2
-
 // more efficient get_dist, doesn't sqrt
 
 /proc/get_dist_sqrd(atom/Loc1 as turf|mob|obj, atom/Loc2 as turf|mob|obj)
@@ -61,43 +30,6 @@
 	var/dy = abs(Loc1.y - Loc2.y)
 	return (dx * dx) + (dy * dy)
 
-/proc/circlerange(center=usr,radius=3)
-
-	var/turf/centerturf = get_turf(center)
-	var/list/turfs = new/list()
-	var/rsq = radius * (radius+0.5)
-
-	for(var/atom/T in range(radius, centerturf))
-		var/dx = T.x - centerturf.x
-		var/dy = T.y - centerturf.y
-		if(dx*dx + dy*dy <= rsq)
-			turfs += T
-
-	//turfs += centerturf
-	return turfs
-
-/proc/circleview(center=usr,radius=3)
-
-	var/turf/centerturf = get_turf(center)
-	var/list/atoms = new/list()
-	var/rsq = radius * (radius+0.5)
-
-	for(var/atom/A in view(radius, centerturf))
-		var/dx = A.x - centerturf.x
-		var/dy = A.y - centerturf.y
-		if(dx*dx + dy*dy <= rsq)
-			atoms += A
-
-	//turfs += centerturf
-	return atoms
-
-/proc/trange(rad = 0, turf/centre = null) //alternative to range (ONLY processes turfs and thus less intensive)
-	if(!centre)
-		return
-
-	var/turf/x1y1 = locate(((centre.x - rad) < 1 ? 1 : centre.x - rad), ((centre.y-rad) < 1 ? 1 : centre.y - rad), centre.z)
-	var/turf/x2y2 = locate(((centre.x + rad) > world.maxx ? world.maxx : centre.x + rad), ((centre.y + rad) > world.maxy ? world.maxy : centre.y + rad), centre.z)
-	return block(x1y1, x2y2)
 
 /proc/get_dist_euclidian(atom/Loc1 as turf|mob|obj,atom/Loc2 as turf|mob|obj)
 	var/dx = Loc1.x - Loc2.x
@@ -119,20 +51,6 @@
 		if(dx*dx + dy*dy <= rsq)
 			turfs += T
 	return turfs
-
-/proc/circleviewturfs(center=usr,radius=3)		//Is there even a diffrence between this proc and circlerangeturfs()?
-
-	var/turf/centerturf = get_turf(center)
-	var/list/turfs = new/list()
-	var/rsq = radius * (radius+0.5)
-
-	for(var/turf/T in view(radius, centerturf))
-		var/dx = T.x - centerturf.x
-		var/dy = T.y - centerturf.y
-		if(dx*dx + dy*dy <= rsq)
-			turfs += T
-	return turfs
-
 
 
 //var/debug_mob = 0
@@ -330,87 +248,6 @@ proc/isInSight(var/atom/A, var/atom/B)
 		candidates += O
 
 	return candidates
-
-/proc/ScreenText(obj/O, maptext="", screen_loc="CENTER-7,CENTER-7", maptext_height=480, maptext_width=480)
-	if(!isobj(O))	O = new /obj/screen/text()
-	O.maptext = maptext
-	O.maptext_height = maptext_height
-	O.maptext_width = maptext_width
-	O.screen_loc = screen_loc
-	return O
-
-datum/projectile_data
-	var/src_x
-	var/src_y
-	var/time
-	var/distance
-	var/power_x
-	var/power_y
-	var/dest_x
-	var/dest_y
-
-/datum/projectile_data/New(var/src_x, var/src_y, var/time, var/distance, \
-						   var/power_x, var/power_y, var/dest_x, var/dest_y)
-	src.src_x = src_x
-	src.src_y = src_y
-	src.time = time
-	src.distance = distance
-	src.power_x = power_x
-	src.power_y = power_y
-	src.dest_x = dest_x
-	src.dest_y = dest_y
-
-/proc/projectile_trajectory(var/src_x, var/src_y, var/rotation, var/angle, var/power)
-
-	// returns the destination (Vx,y) that a projectile shot at [src_x], [src_y], with an angle of [angle],
-	// rotated at [rotation] and with the power of [power]
-	// Thanks to VistaPOWA for this function
-
-	var/power_x = power * cos(angle)
-	var/power_y = power * sin(angle)
-	var/time = 2* power_y / 10 //10 = g
-
-	var/distance = time * power_x
-
-	var/dest_x = src_x + distance*sin(rotation);
-	var/dest_y = src_y + distance*cos(rotation);
-
-	return new /datum/projectile_data(src_x, src_y, time, distance, power_x, power_y, dest_x, dest_y)
-
-/proc/GetRedPart(const/hexa)
-	return hex2num(copytext(hexa,2,4))
-
-/proc/GetGreenPart(const/hexa)
-	return hex2num(copytext(hexa,4,6))
-
-/proc/GetBluePart(const/hexa)
-	return hex2num(copytext(hexa,6,8))
-
-/proc/GetHexColors(const/hexa)
-	return list(
-			GetRedPart(hexa),
-			GetGreenPart(hexa),
-			GetBluePart(hexa)
-		)
-
-/proc/MixColors(const/list/colors)
-	var/list/reds = list()
-	var/list/blues = list()
-	var/list/greens = list()
-	var/list/weights = list()
-
-	for (var/i in 1 to colors.len)
-		reds.Add(GetRedPart(colors[i]))
-		blues.Add(GetBluePart(colors[i]))
-		greens.Add(GetGreenPart(colors[i]))
-		weights.Add(1)
-
-	var/r = mixOneColor(weights, reds)
-	var/g = mixOneColor(weights, greens)
-	var/b = mixOneColor(weights, blues)
-	return rgb(r,g,b)
-
-
 
 /proc/convert_k2c(var/temp)
 	return ((temp - T0C))

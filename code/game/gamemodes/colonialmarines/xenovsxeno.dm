@@ -169,7 +169,8 @@
     // Have to spawn the queen last or the mind will be added to xenomorphs and double spawned
     for(var/datum/hive_status/hive in picked_queens)
         transform_queen(picked_queens[hive], hive_spots[hive], hive.hivenumber)
-        picked_queens[hive].current.close_spawn_windows()
+        var/datum/mind/M = picked_queens[hive]
+        M.current.close_spawn_windows()
 
     for(var/datum/hive_status/hive in hive_spots)
         new/obj/effect/alien/resin/special/pool(hive_spots[hive], hive) // Spawn a hive pool so they all get fair xenos

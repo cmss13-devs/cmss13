@@ -20,6 +20,7 @@
 	var/list/spawnitems = list(/obj/item/tank/emergency_oxygen/double,/obj/item/clothing/mask/gas)
 	var/amount = 6 // spawns each items X times.
 	icon_state = "emerg"
+	fill_from_loc = FALSE //Only dispenses its own spawnitems; anything else would be unreachable.
 
 /obj/structure/closet/walllocker/emerglocker/toggle(mob/user as mob)
 	src.attack_hand(user)

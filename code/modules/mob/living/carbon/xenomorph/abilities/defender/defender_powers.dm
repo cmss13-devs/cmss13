@@ -19,11 +19,13 @@
 		to_chat(X, SPAN_XENOWARNING("You lower your crest."))
 		X.armor_deflection_buff += armor_buff
 		X.ability_speed_modifier += speed_debuff
+		X.mob_size = MOB_SIZE_BIG //knockback immune
 		X.update_icons()
 	else
-		to_chat(src, SPAN_XENOWARNING("You raise your crest."))
+		to_chat(X, SPAN_XENOWARNING("You raise your crest."))
 		X.armor_deflection_buff -= armor_buff
 		X.ability_speed_modifier -= speed_debuff
+		X.mob_size = MOB_SIZE_XENO //no longer knockback immune
 		X.update_icons()
 
 	apply_cooldown()
@@ -48,12 +50,8 @@
 	if(!check_and_use_plasma_owner())
 		return
 
-	if(X.fortify)
-		to_chat(X, SPAN_XENOWARNING("You cannot use abilities while fortified."))
-		return
-
-	if(X.crest_defense && !X.spiked)
-		to_chat(X, SPAN_XENOWARNING("You cannot use abilities with your crest lowered."))
+	if(X.fortify && !X.steelcrest)
+		to_chat(X, SPAN_XENOWARNING("You cannot use headbutt while fortified."))
 		return
 
 	var/mob/living/carbon/H = A
@@ -62,12 +60,12 @@
 
 	var/distance = get_dist(X, H)
 
-	var/max_distance = 2 + X.spiked
+	var/max_distance = 1 + (X.crest_defense * 2)
 
 	if(distance > max_distance)
 		return
 
-	if(distance > 1)
+	if(X.crest_defense || X.steelcrest && !X.fortify)
 		X.throw_atom(get_step_towards(H, X), 3, SPEED_SLOW, X)
 
 	if(!X.Adjacent(H))
@@ -81,16 +79,16 @@
 	SPAN_XENOWARNING("You ram [H] with your armored crest!"))
 
 	if(H.stat != DEAD && (!(H.status_flags & XENO_HOST) || !istype(H.buckled, /obj/structure/bed/nest)) )
-		var/h_damage = 25 + (X.spiked * 5)
-		H.apply_armoured_damage(get_xeno_damage_slash(H, h_damage), ARMOR_MELEE, BRUTE)
+		var/h_damage = 20 + (X.crest_defense * 10) + (X.steelcrest * 5) //20 or 30, plus 5
+		H.apply_armoured_damage(get_xeno_damage_slash(H, h_damage), ARMOR_MELEE, BRUTE, "chest", 5)
 		shake_camera(H, 2, 1)
 
 	var/facing = get_dir(X, H)
-	var/headbutt_distance = X.spiked + 3
+	var/headbutt_distance = 3 - (X.crest_defense * 2) + (X.steelcrest) - (X.fortify * 2)
 	var/turf/T = get_turf(X)
 	var/turf/temp = get_turf(X)
 
-	for(var/x in 0 to headbutt_distance-1)
+	for(var/x in 0 to headbutt_distance)
 		temp = get_step(T, facing)
 		if(!temp)
 			break
@@ -114,27 +112,26 @@
 	if (!action_cooldown_check())
 		return
 
-	if(!check_and_use_plasma_owner())
-		return
-
 	if(X.fortify)
-		to_chat(src, SPAN_XENOWARNING("You cannot use abilities while fortified."))
+		to_chat(src, SPAN_XENOWARNING("You cannot use tail swipe while fortified."))
 		return
 
 	if(X.crest_defense)
-		to_chat(src, SPAN_XENOWARNING("You cannot use abilities with your crest lowered."))
+		to_chat(src, SPAN_XENOWARNING("You cannot use tail swipe with your crest lowered."))
 		return
 
 	X.visible_message(SPAN_XENOWARNING("[X] sweeps its tail in a wide circle!"), \
 	SPAN_XENOWARNING("You sweep your tail in a wide circle!"))
 
+	if(!check_and_use_plasma_owner())
+		return
+
 	X.spin_circle()
+	X.emote("tail")
 
 	var/sweep_range = 1
 	for(var/mob/living/carbon/H in orange(sweep_range, get_turf(X)))
 		if (!isXenoOrHuman(H) || X.match_hivemind(H)) continue
-
-		if(H != H.handle_barriers(X)) continue
 		if(H.stat == DEAD) continue
 		if(istype(H.buckled, /obj/structure/bed/nest)) continue
 		step_away(H, X, sweep_range, 2)
@@ -159,12 +156,12 @@
 	if (!istype(X))
 		return
 
-	if(X.crest_defense && X.spiked)
+	if(X.crest_defense && X.steelcrest)
 		to_chat(src, SPAN_XENOWARNING("You cannot fortify while your crest is already down!"))
 		return
 
 	if(X.crest_defense)
-		to_chat(src, SPAN_XENOWARNING("You cannot use abilities with your crest lowered."))
+		to_chat(src, SPAN_XENOWARNING("You cannot use fortify with your crest lowered."))
 		return
 
 	if(!X.check_state())
@@ -177,29 +174,35 @@
 
 	if(!X.fortify)
 		to_chat(X, SPAN_XENOWARNING("You tuck yourself into a defensive stance."))
-		if(X.spiked)
-			X.armor_deflection_buff += 25
+		if(X.steelcrest)
+			X.armor_deflection_buff += 30
 			X.armor_explosive_buff += 60
-			X.ability_speed_modifier += 3
+			X.ability_speed_modifier += 1
+			X.damage_modifier -= XENO_DAMAGE_MOD_VERYSMALL
 		else
 			X.armor_deflection_buff += 35
 			X.armor_explosive_buff += 60
 			X.frozen = TRUE
 			X.anchored = TRUE
+			X.small_explosives_stun = FALSE
 			X.update_canmove()
+		X.mob_size = MOB_SIZE_BIG //knockback immune
 		X.update_icons()
 		X.fortify = TRUE
 	else
 		to_chat(X, SPAN_XENOWARNING("You resume your normal stance."))
 		X.frozen = FALSE
 		X.anchored = FALSE
-		if(X.spiked)
-			X.armor_deflection_buff -= 25
-			X.armor_explosive_buff -= 40
-			X.ability_speed_modifier -= 3
+		if(X.steelcrest)
+			X.armor_deflection_buff -= 30
+			X.armor_explosive_buff -= 60
+			X.ability_speed_modifier -= 1
+			X.damage_modifier += XENO_DAMAGE_MOD_VERYSMALL
 		else
 			X.armor_deflection_buff -= 35
-			X.armor_explosive_buff -= 60	
+			X.armor_explosive_buff -= 60
+			X.small_explosives_stun = TRUE
+		X.mob_size = MOB_SIZE_XENO //no longer knockback immune
 		X.update_canmove()
 		X.update_icons()
 		X.fortify = FALSE

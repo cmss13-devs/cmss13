@@ -42,7 +42,7 @@
 	error_weapon = null
 	if(records.len == 0)
 		return FIRE_MISSION_ALL_GOOD //I mean yes... but why?
-	
+
 	for(var/datum/cas_fire_mission_record/record in records)
 		error_weapon = record.weapon
 		if(!istype(record))
@@ -51,7 +51,7 @@
 			return FIRE_MISSION_WEAPON_REMOVED //Someone disconnected it
 		if(record.weapon.linked_console != linked_console)
 			return FIRE_MISSION_WEAPON_REMOVED //Someone installed it on a different dropship
-				
+
 		var/limits = record.get_offsets()
 		var/min
 		var/max
@@ -118,9 +118,9 @@
 		return -1
 
 	var/relative_dir
-	for(var/mob/M in orange(30, initial_turf))
+	for(var/mob/M in range(15, initial_turf))
 		relative_dir = get_dir(M, initial_turf)
-		
+
 		var/ds_identifier = "LARGE BIRD"
 		if (M.mob_flags & KNOWS_TECHNOLOGY)
 			ds_identifier = "DROPSHIP"
@@ -133,9 +133,9 @@
 	// Xenos have time to react to the first message
 	sleep(0.5 SECONDS)
 
-	for(var/mob/M in orange(30, initial_turf))
+	for(var/mob/M in range(10, initial_turf))
 		relative_dir = get_dir(M, initial_turf)
-		
+
 		var/ds_identifier = "LARGE BIRD"
 		if (M.mob_flags & KNOWS_TECHNOLOGY)
 			ds_identifier = "DROPSHIP"
@@ -181,6 +181,6 @@
 			var/turf/shootloc = locate(current_turf.x + sx*offset, current_turf.y + sy*offset, current_turf.z)
 			if(shootloc && get_area(shootloc).ceiling < CEILING_DEEP_UNDERGROUND && !protected_by_pylon(TURF_PROTECTION_CAS, shootloc))
 				item.weapon.open_fire_firemission(shootloc)
-		sleep(step_delay)				
+		sleep(step_delay)
 	if(envelope)
 		envelope.change_current_loc(null)

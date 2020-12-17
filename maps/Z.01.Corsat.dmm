@@ -6781,7 +6781,7 @@
 /area/corsat/sigma/dorms)
 "asV" = (
 /obj/structure/surface/table/woodentable,
-/obj/item/device/assembly/signaler,
+/obj/item/device/assembly/signaller,
 /obj/item/tool/screwdriver,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/wood,
@@ -34613,8 +34613,8 @@
 /area/corsat/gamma/engineering)
 "bQi" = (
 /obj/structure/surface/rack,
-/obj/item/device/assembly/signaler,
-/obj/item/device/assembly/signaler,
+/obj/item/device/assembly/signaller,
+/obj/item/device/assembly/signaller,
 /obj/item/device/assembly/timer,
 /obj/item/device/assembly/timer,
 /obj/item/device/assembly/prox_sensor,
@@ -39775,7 +39775,7 @@
 /area/corsat/gamma/biodome)
 "dxx" = (
 /obj/structure/surface/table/reinforced,
-/obj/item/device/assembly/signaler,
+/obj/item/device/assembly/signaller,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/corsat{
 	icon_state = "lightplate"

@@ -108,59 +108,83 @@
 		holder.update_icon()
 	return
 
-
-/obj/item/device/assembly/prox_sensor/interact(mob/user as mob)//TODO: Change this to the wires thingy
+/obj/item/device/assembly/prox_sensor/interact(mob/user)
 	if(!secured)
-		user.show_message(SPAN_DANGER("The [name] is unsecured!"))
-		return 0
-	var/second = time % 60
-	var/minute = (time - second) / 60
-	var/dat = text("<TT>[] []:[]\n<A href='?src=\ref[];tp=-30'>-</A> <A href='?src=\ref[];tp=-1'>-</A> <A href='?src=\ref[];tp=1'>+</A> <A href='?src=\ref[];tp=30'>+</A>\n</TT>", (timing ? text("<A href='?src=\ref[];time=0'>Arming</A>", src) : text("<A href='?src=\ref[];time=1'>Not Arming</A>", src)), minute, second, src, src, src, src)
-	dat += text("<BR>Range: <A href='?src=\ref[];range=-1'>-</A> [] <A href='?src=\ref[];range=1'>+</A>", src, range, src)
-	dat += text("<BR>Delay: <A href='?src=\ref[];delay=-1'>-</A> [] <A href='?src=\ref[];delay=1'>+</A>", src, delay, src)
-	dat += "<BR><A href='?src=\ref[src];scanning=1'>[scanning?"Armed":"Unarmed"]</A> (Movement sensor active when armed!)"
-	dat += "<BR><BR><A href='?src=\ref[src];refresh=1'>Refresh</A>"
-	dat += "<BR><BR><A href='?src=\ref[src];close=1'>Close</A>"
-	show_browser(user, dat, "Proximity Sensor", "prox")
-	return
+		to_chat(user, SPAN_WARNING("The [name] is unsecured!"))
+		return FALSE
 
+	tgui_interact(user)
 
-/obj/item/device/assembly/prox_sensor/Topic(href, href_list)
-	..()
-	if(!usr.canmove || usr.stat || usr.is_mob_restrained() || !in_range(loc, usr))
-		close_browser(usr, "prox")
+/obj/item/device/assembly/prox_sensor/tgui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if (!ui)
+		ui = new(user, src, "Proximity", "Proximity Assembly")
+		ui.open()
+		ui.set_autoupdate(timing)
+
+#define PROXY_MINIMUM_TIME (2 SECONDS)
+#define PROXY_MAXIMUM_TIME (120 SECONDS)
+
+#define PROXY_MINIMUM_RANGE 1
+#define PROXY_MAXIMUM_RANGE 5
+
+#define PROXY_MINIMUM_DELAY 1
+#define PROXY_MAXIMUM_DELAY 10
+
+/obj/item/device/assembly/prox_sensor/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+
+	if(.)
 		return
 
-	if(href_list["scanning"])
-		toggle_scan()
-
-	if(href_list["time"])
-		timing = text2num(href_list["time"])
-		if(!timing)
-			time = min(max(round(time), 3), 600) SECONDS
-		update_icon()
-
-	if(href_list["tp"])
-		var/tp = text2num(href_list["tp"])
-		time += tp
-		time = min(max(round(time), 3), 600) SECONDS
-
-	if(href_list["range"])
-		var/r = text2num(href_list["range"])
-		range += r
-		range = min(max(range, 1), 5)
-
-	if(href_list["delay"])
-		var/d = text2num(href_list["delay"])
-		delay += d
-		delay = min(max(delay, 1), 10)
-
-	if(href_list["close"])
-		close_browser(usr, "prox")
+	if(!secured)
 		return
 
-	if(usr)
-		attack_self(usr)
+	switch(action)
+		if("set_arming")
+			timing = text2num(params["should_start_arming"])
+			ui.set_autoupdate(timing)
 
+			if(!timing)
+				time = clamp(time, PROXY_MINIMUM_TIME, PROXY_MAXIMUM_TIME)
+			update_icon()
+			. = TRUE
 
-	return
+		if("set_arm_time")
+			time = clamp(text2num(params["arm_time"]) SECONDS, PROXY_MINIMUM_TIME, PROXY_MAXIMUM_TIME)
+			. = TRUE
+
+		if("set_armed")
+			scanning = text2num(params["armed"])
+			update_icon()
+			. = TRUE
+		
+		if("set_delay")
+			delay = clamp(text2num(params["value"]), PROXY_MINIMUM_DELAY, PROXY_MAXIMUM_DELAY)
+			. = TRUE
+
+		if("set_range")
+			range = clamp(text2num(params["value"]), PROXY_MINIMUM_RANGE, PROXY_MAXIMUM_RANGE)
+			. = TRUE
+
+/obj/item/device/assembly/prox_sensor/ui_data(mob/user)
+	. = list()
+	.["current_arm_time"] = time SECONDS_TO_DECISECONDS
+	.["is_arming"] = timing
+
+	.["current_delay"] = delay
+	.["current_range"] = range
+
+	.["armed"] = scanning
+	
+	
+/obj/item/device/assembly/prox_sensor/ui_static_data(mob/user)
+	. = list()
+	.["min_time"] = PROXY_MINIMUM_TIME SECONDS_TO_DECISECONDS
+	.["max_time"] = PROXY_MAXIMUM_TIME SECONDS_TO_DECISECONDS
+
+	.["min_range"] = PROXY_MINIMUM_RANGE
+	.["max_range"] = PROXY_MAXIMUM_RANGE
+
+	.["min_delay"] = PROXY_MINIMUM_DELAY
+	.["max_delay"] = PROXY_MAXIMUM_DELAY

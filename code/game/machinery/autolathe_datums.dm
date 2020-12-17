@@ -201,9 +201,9 @@
 	path = /obj/item/device/assembly/igniter
 	category = "Devices and Components"
 
-/datum/autolathe/recipe/signaler
-	name = "signaler"
-	path = /obj/item/device/assembly/signaler
+/datum/autolathe/recipe/signaller
+	name = "signaller"
+	path = /obj/item/device/assembly/signaller
 	category = "Devices and Components"
 
 /datum/autolathe/recipe/sensor_infra

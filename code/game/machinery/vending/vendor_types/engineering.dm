@@ -87,7 +87,7 @@
 		list("Igniter", round(scale * 8), /obj/item/device/assembly/igniter, VENDOR_ITEM_REGULAR),
 		list("Timer", round(scale * 4), /obj/item/device/assembly/timer, VENDOR_ITEM_REGULAR),
 		list("Proximity Sensor", round(scale * 4), /obj/item/device/assembly/prox_sensor, VENDOR_ITEM_REGULAR),
-		list("Signaler", round(scale * 4), /obj/item/device/assembly/signaler, VENDOR_ITEM_REGULAR),
+		list("Signaller", round(scale * 4), /obj/item/device/assembly/signaller, VENDOR_ITEM_REGULAR),
 
 		list("CONTAINERS", -1, null, null),
 		list("Bucket", round(scale * 6), /obj/item/reagent_container/glass/bucket, VENDOR_ITEM_REGULAR),
@@ -122,7 +122,7 @@
 		list("ASSEMBLY COMPONENTS", -1, null, null),
 		list("Igniter", round(scale * 8), /obj/item/device/assembly/igniter, VENDOR_ITEM_REGULAR),
 		list("Proximity Sensor", round(scale * 4), /obj/item/device/assembly/prox_sensor, VENDOR_ITEM_REGULAR),
-		list("Signaler", round(scale * 4), /obj/item/device/assembly/signaler, VENDOR_ITEM_REGULAR),
+		list("Signaller", round(scale * 4), /obj/item/device/assembly/signaller, VENDOR_ITEM_REGULAR),
 		list("Tank Transfer Valve", round(scale * 4), /obj/item/device/transfer_valve, VENDOR_ITEM_REGULAR),
 		list("Timer", round(scale * 4), /obj/item/device/assembly/timer, VENDOR_ITEM_REGULAR),
 	)
@@ -151,7 +151,7 @@
 		list("Flash", 4, /obj/item/device/flash, VENDOR_ITEM_REGULAR),
 		list("High-Capacity Power Cell", 4, /obj/item/cell/high, VENDOR_ITEM_REGULAR),
 		list("Proximity Sensor", 4, /obj/item/device/assembly/prox_sensor, VENDOR_ITEM_REGULAR),
-		list("Signaler", 4, /obj/item/device/assembly/signaler, VENDOR_ITEM_REGULAR),
+		list("Signaller", 4, /obj/item/device/assembly/signaller, VENDOR_ITEM_REGULAR),
 
 		list("MISCELLANOUS", -1, null, null),
 		list("Anesthetic Tank", 2, /obj/item/tank/anesthetic, VENDOR_ITEM_REGULAR),

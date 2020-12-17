@@ -184,31 +184,35 @@
 			log_game("[key_name(user)] opened fueltank at [loc.loc.name] ([loc.x],[loc.y],[loc.z]), leaking fuel.")
 			leak_fuel(amount_per_transfer_from_this)*/
 	if(istype(W,/obj/item/device/assembly_holder))
+	
 		if(rig)
 			to_chat(user, SPAN_DANGER("There is another device in the way."))
 			return ..()
+
 		user.visible_message("[user] begins rigging [W] to \the [src].", "You begin rigging [W] to \the [src]")
-		if(do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_HOSTILE, src, INTERRUPT_ALL))
+		
+		if(!do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_HOSTILE, src, INTERRUPT_ALL))
+			return
+	
+		if(rig)
+			to_chat(user, SPAN_DANGER("There is another device in the way."))
+			return ..()
 
-			if(rig)
-				to_chat(user, SPAN_DANGER("There is another device in the way."))
-				return ..()
+		user.visible_message(SPAN_NOTICE("[user] rigs [W] to \the [src]."), SPAN_NOTICE(" You rig [W] to \the [src]"))
 
-			user.visible_message(SPAN_NOTICE("[user] rigs [W] to \the [src]."), SPAN_NOTICE(" You rig [W] to \the [src]"))
+		var/obj/item/device/assembly_holder/H = W
+		if (istype(H.a_left,/obj/item/device/assembly/igniter) || istype(H.a_right,/obj/item/device/assembly/igniter))
+			msg_admin_niche("[key_name_admin(user)] rigged [name] at [loc.loc.name] ([loc.x],[loc.y],[loc.z]) for explosion. (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[loc.x];Y=[loc.y];Z=[loc.z]'>JMP</a>)")
+			log_game("[key_name(user)] rigged [name] at [loc.loc.name] ([loc.x],[loc.y],[loc.z]) for explosion.")
 
-			var/obj/item/device/assembly_holder/H = W
-			if (istype(H.a_left,/obj/item/device/assembly/igniter) || istype(H.a_right,/obj/item/device/assembly/igniter))
-				msg_admin_niche("[key_name_admin(user)] rigged [name] at [loc.loc.name] ([loc.x],[loc.y],[loc.z]) for explosion. (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[loc.x];Y=[loc.y];Z=[loc.z]'>JMP</a>)")
-				log_game("[key_name(user)] rigged [name] at [loc.loc.name] ([loc.x],[loc.y],[loc.z]) for explosion.")
+		rig = W
+		user.drop_inv_item_to_loc(W, src)
 
-			rig = W
-			user.drop_inv_item_to_loc(W, src)
+		update_icon()
 
-			update_icon()
-
-	else if(istype(W,/obj/item/stack/sheet/metal/))
-		var/obj/item/stack/sheet/metal/M = W
-		if(M.get_amount() < STACK_5)
+	else if(istype(W,/obj/item/stack/sheet/plasteel))
+		var/obj/item/stack/sheet/plasteel/M = W
+		if(M.get_amount() < STACK_10)
 			to_chat(user, SPAN_WARNING("You don't have enough of [M] to reinforce [src]."))
 			return
 
@@ -218,7 +222,7 @@
 		if(!do_after(user, SECONDS_3, INTERRUPT_ALL, BUSY_ICON_BUILD, src, INTERRUPT_ALL) || reinforced)
 			return
 
-		if(!M.use(STACK_5))
+		if(!M.use(STACK_10))
 			to_chat(user, SPAN_WARNING("You don't have enough of [M] to reinforce [src]."))
 			return
 
@@ -248,34 +252,40 @@
 
 /obj/structure/reagent_dispensers/fueltank/bullet_act(var/obj/item/projectile/Proj)
 	if(exploding) return 0
-	if(istype(Proj.firer,/mob/living/carbon/human) && !reinforced)
-		message_staff("[key_name_admin(Proj.firer)] shot [name] at [loc.loc.name] ([loc.x],[loc.y],[loc.z]) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[loc.x];Y=[loc.y];Z=[loc.z]'>JMP</a>).")
-		log_game("[key_name(Proj.firer)] shot [name] at [loc.loc.name] ([loc.x],[loc.y],[loc.z]).")
 	if(ismob(Proj.firer))
 		source_mob = Proj.firer
 
-	if(Proj.damage > 10 && prob(60))
-		exploding = 1
+	if(Proj.damage > 10 && prob(60) && !reinforced)
+		exploding = TRUE
 		explode()
-	return 1
+
+		if(Proj.firer)
+			message_staff("[key_name_admin(Proj.firer)] fired a projectile at [name] in [loc.loc.name] ([loc.x],[loc.y],[loc.z]) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[loc.x];Y=[loc.y];Z=[loc.z]'>JMP</a>).")
+			log_game("[key_name(Proj.firer)] fired a projectile at [name] in [loc.loc.name] ([loc.x],[loc.y],[loc.z]).")
+	
+	return TRUE
 
 /obj/structure/reagent_dispensers/fueltank/ex_act(severity)
 	if(exploding) return
-	exploding = 1
+
 	if(severity >= EXPLOSION_THRESHOLD_HIGH)
+		exploding = TRUE
 		explode(TRUE)
-	else
+	else if(!reinforced)
+		exploding = TRUE
 		explode()
 
 	if(src)
-		. = ..()
+		return ..()
 
 /obj/structure/reagent_dispensers/fueltank/proc/explode(var/force)
-	if(!(reinforced && !force) && reagents.handle_volatiles() && src)
+	if(reagents.handle_volatiles() || force) 
 		qdel(src)
-	else if(src)
-		exploding = FALSE
-		update_icon()
+		return
+
+	exploding = FALSE
+	update_icon()
+
 
 /obj/structure/reagent_dispensers/fueltank/update_icon(var/cut_overlays = TRUE)
 	if(cut_overlays)
@@ -295,7 +305,7 @@
 		overlays += image(icon, icon_state = "t_reinforced")
 
 /obj/structure/reagent_dispensers/fueltank/fire_act(temperature, volume)
-	if(temperature > T0C+500)
+	if(temperature > T0C+500 && !reinforced)
 		explode()
 	return ..()
 
@@ -313,7 +323,8 @@
 	new /obj/effect/decal/cleanable/liquid_fuel(src.loc, amount)
 
 /obj/structure/reagent_dispensers/fueltank/flamer_fire_act()
-	explode()
+	if(!reinforced)
+		explode()
 
 /obj/structure/reagent_dispensers/fueltank/gas
 	name = "gastank"
@@ -354,7 +365,7 @@
 	update_icon()
 
 /obj/structure/reagent_dispensers/fueltank/custom/update_icon()
-	overlays.Cut()
+	. = ..()
 
 	var/set_icon_state = "tn_color"
 
@@ -367,8 +378,6 @@
 		I.color = mix_color_from_reagents(reagents.reagent_list)
 
 	overlays += I
-
-	. = ..(FALSE)
 
 
 /obj/structure/reagent_dispensers/peppertank

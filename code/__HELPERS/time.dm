@@ -1,6 +1,8 @@
 #define SECOND *10
 #define SECONDS *10
 
+#define SECONDS_TO_DECISECONDS	*0.1
+
 #define MINUTE *600
 #define MINUTES *600
 

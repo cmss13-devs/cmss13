@@ -140,11 +140,11 @@
 	if(!detonator || active || assembly_stage < ASSEMBLY_LOCKED)
 		return
 	if(!isigniter(detonator.a_right))
-		if(!issignaler(detonator.a_right))
+		if(!issignaller(detonator.a_right))
 			detonator.a_right.activate()
 		active = TRUE
 	if(!isigniter(detonator.a_left))
-		if(!issignaler(detonator.a_left))
+		if(!issignaller(detonator.a_left))
 			detonator.a_left.activate()
 		active = TRUE
 

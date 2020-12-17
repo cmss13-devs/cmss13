@@ -25554,7 +25554,7 @@
 /obj/item/device/assembly/igniter,
 /obj/item/device/assembly/igniter,
 /obj/item/device/assembly/igniter,
-/obj/item/device/assembly/signaler,
+/obj/item/device/assembly/signaller,
 /obj/item/circuitboard/airlock,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/prison{
@@ -40656,7 +40656,7 @@
 "cqI" = (
 /obj/structure/surface/table/reinforced,
 /obj/item/folder,
-/obj/item/device/assembly/signaler,
+/obj/item/device/assembly/signaller,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/prison{

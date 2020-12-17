@@ -189,9 +189,7 @@
 /obj/structure/extinguisher_cabinet{
 	pixel_y = 30
 	},
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor{
 	tag = "icon-whiteblue";
 	icon_state = "whiteblue"
@@ -278,9 +276,7 @@
 /area/lv624/lazarus/internal_affairs)
 "aO" = (
 /obj/structure/showcase,
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor{
 	icon_state = "white"
 	},

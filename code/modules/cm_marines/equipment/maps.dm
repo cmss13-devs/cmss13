@@ -156,3 +156,11 @@
 // Landmark - Used for mapping. Will spawn the appropriate map for each gamemode (LV map items will spawn when LV is the gamemode, etc)
 /obj/effect/landmark/map_item
 	name = "map item"
+
+/obj/effect/landmark/map_item/Initialize(mapload, ...)
+	. = ..()
+	GLOB.map_items += src
+
+/obj/effect/landmark/map_item/Destroy()
+	GLOB.map_items -= src
+	return ..()

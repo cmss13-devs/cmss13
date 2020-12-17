@@ -6,7 +6,8 @@
 	mob_max = 7
 	probability = 10
 	shuttle_id = "Distress_UPP"
-	name_of_spawn = "Distress_UPP"
+	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_upp
+	item_spawn = /obj/effect/landmark/ert_spawns/distress_upp/item
 	hostility = TRUE
 
 /datum/emergency_call/upp/New()
@@ -87,3 +88,8 @@
 	max_medics = 2
 	max_heavies = 2
 
+/obj/effect/landmark/ert_spawns/distress_upp
+	name = "Distress_UPP"
+
+/obj/effect/landmark/ert_spawns/distress_upp/item
+	name = "Distress_UPPItem"

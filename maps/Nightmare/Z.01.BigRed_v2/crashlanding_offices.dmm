@@ -122,9 +122,7 @@
 	},
 /area/bigredv2/outside/e)
 "au" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/mars,
 /area/bigredv2/outside/c)
 "av" = (
@@ -469,9 +467,7 @@
 /area/bigredv2/outside/office_complex)
 "bv" = (
 /obj/structure/surface/rack,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin15";
 	icon_state = "rasputin15"
@@ -480,9 +476,7 @@
 "bw" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -597,9 +591,7 @@
 /area/bigredv2/outside/office_complex)
 "bP" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
@@ -715,9 +707,7 @@
 	},
 /area/bigredv2/outside/office_complex)
 "cf" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
@@ -958,9 +948,7 @@
 /area/bigredv2/outside/office_complex)
 "cP" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whiteyellowfull"

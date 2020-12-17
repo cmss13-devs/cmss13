@@ -16,3 +16,8 @@
 /datum/job/marine/standard/equipped/whiskey
 	flags_startup_parameters = ROLE_ADD_TO_SQUAD
 	gear_preset = "WO Dust Raider Squad Marine (PFC)"
+
+/obj/effect/landmark/start/marine
+	name = JOB_SQUAD_MARINE
+	icon_state = "marine_spawn"
+	job = /datum/job/marine/standard

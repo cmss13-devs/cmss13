@@ -21,9 +21,7 @@
 	},
 /area/bigredv2/outside/nw)
 "ae" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	tag = "icon-asteroidwarning";
 	icon_state = "asteroidwarning"
@@ -268,9 +266,7 @@
 	},
 /area/bigredv2/outside/virology)
 "aO" = (
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /turf/open/floor{
 	tag = "icon-asteroidfloor (NORTH)";
 	icon_state = "asteroidfloor";

@@ -202,10 +202,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "aQ" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "aR" = (
@@ -287,9 +284,7 @@
 	dir = 4;
 	layer = 2.4
 	},
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "be" = (
@@ -345,9 +340,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bn" = (
@@ -573,9 +566,7 @@
 /obj/item/stack/sheet/metal{
 	amount = 30
 	},
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bZ" = (
@@ -612,9 +603,7 @@
 	},
 /area/bigredv2/outside/engineering)
 "ch" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "ck" = (
@@ -646,9 +635,7 @@
 /area/bigredv2/outside/engineering)
 "cp" = (
 /obj/item/folder/yellow,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "cq" = (
@@ -1009,9 +996,7 @@
 /turf/closed/wall/solaris/reinforced/hull,
 /area/bigredv2/outside/eta)
 "dJ" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/mars_cave{
 	tag = "icon-mars_cave_2";
 	icon_state = "mars_cave_2"

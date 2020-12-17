@@ -119,9 +119,7 @@
 	},
 /area/prison/telecomms)
 "r" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor/prison,
 /area/prison/telecomms)
 "s" = (
@@ -230,9 +228,7 @@
 /area/prison/telecomms)
 "D" = (
 /obj/structure/surface/table/reinforced,
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor/prison{
 	tag = "icon-darkyellowfull2 (EAST)";
 	icon_state = "darkyellowfull2";

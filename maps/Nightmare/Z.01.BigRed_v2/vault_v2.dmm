@@ -28,9 +28,7 @@
 	},
 /area/bigredv2/outside/c)
 "af" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/mars,
 /area/bigredv2/outside/c)
 "ag" = (
@@ -295,9 +293,7 @@
 	},
 /area/bigredv2/outside/s)
 "ba" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/mars,
 /area/bigredv2/outside/s)
 

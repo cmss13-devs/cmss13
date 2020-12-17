@@ -47,9 +47,7 @@
 /turf/closed/wall,
 /area/lv624/lazarus/quartstorage)
 "o" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle5)
 "p" = (

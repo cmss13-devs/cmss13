@@ -3,9 +3,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/east1)
 "b" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/east1)
 "c" = (
@@ -35,9 +33,7 @@
 "g" = (
 /obj/effect/decal/remains/xeno,
 /obj/structure/surface/table,
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whiteyellowfull"
@@ -132,9 +128,7 @@
 /area/lv624/ground/sand6)
 "t" = (
 /obj/structure/surface/table,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whiteyellowfull"
@@ -154,9 +148,7 @@
 /obj/item/weapon/melee/harpoon/yautja{
 	name = "Alien Harpoon"
 	},
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whiteyellowfull"
@@ -178,9 +170,7 @@
 	},
 /area/lv624/ground/sand6)
 "y" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/gm/dirt,
 /area/lv624/ground/sand3)
 "z" = (

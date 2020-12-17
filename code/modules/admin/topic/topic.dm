@@ -867,7 +867,7 @@
 
 		M.KnockOut(5)
 		sleep(5)
-		M.loc = pick(tdome1)
+		M.forceMove(get_turf(pick(GLOB.thunderdome_one)))
 		spawn(50)
 			to_chat(M, SPAN_NOTICE(" You have been sent to the Thunderdome."))
 		message_staff("[key_name_admin(usr)] has sent [key_name_admin(M)] to the thunderdome. (Team 1)", 1)
@@ -891,7 +891,7 @@
 
 		M.KnockOut(5)
 		sleep(5)
-		M.loc = pick(tdome2)
+		M.forceMove(get_turf(pick(GLOB.thunderdome_two)))
 		spawn(50)
 			to_chat(M, SPAN_NOTICE(" You have been sent to the Thunderdome."))
 		message_staff("[key_name_admin(usr)] has sent [key_name_admin(M)] to the thunderdome. (Team 2)", 1)
@@ -912,7 +912,7 @@
 
 		M.KnockOut(5)
 		sleep(5)
-		M.loc = pick(tdomeadmin)
+		M.forceMove(get_turf(pick(GLOB.thunderdome_admin)))
 		spawn(50)
 			to_chat(M, SPAN_NOTICE(" You have been sent to the Thunderdome."))
 		message_staff("[key_name_admin(usr)] has sent [key_name_admin(M)] to the thunderdome. (Admin.)", 1)
@@ -940,7 +940,7 @@
 			observer.equip_to_slot_or_del(new /obj/item/clothing/shoes/black(observer), WEAR_FEET)
 		M.KnockOut(5)
 		sleep(5)
-		M.loc = pick(tdomeobserve)
+		M.forceMove(get_turf(pick(GLOB.thunderdome_observer)))
 		spawn(50)
 			to_chat(M, SPAN_NOTICE(" You have been sent to the Thunderdome."))
 		message_staff("[key_name_admin(usr)] has sent [key_name_admin(M)] to the thunderdome. (Observer.)", 1)

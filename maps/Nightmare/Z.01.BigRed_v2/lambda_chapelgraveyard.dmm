@@ -96,9 +96,7 @@
 /turf/open/mars,
 /area/bigredv2/outside/se)
 "r" = (
-/obj/effect/landmark{
-	name = "yautja_teleport_loc"
-	},
+/obj/effect/landmark/yautja_teleport,
 /turf/open/mars,
 /area/bigredv2/outside/se)
 "s" = (

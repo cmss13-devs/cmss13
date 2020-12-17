@@ -16,10 +16,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle7)
 "iz" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "green"
@@ -236,9 +233,7 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "oW" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "green"
@@ -255,9 +250,7 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "pI" = (
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "green"
@@ -318,9 +311,7 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "qC" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	dir = 5;
 	icon_state = "green"
@@ -422,9 +413,7 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "rE" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/gm/grass,
 /area/lv624/ground/compound/n)
 "rF" = (

@@ -27,3 +27,7 @@
 /datum/job/logistics/tech/cargo/generate_entry_message(mob/living/carbon/human/H)
 	entry_message_body = "Your job is to dispense supplies to the marines, including weapon attachments. Stay in your department when possible to ensure the marines have full access to the supplies they may require. Listen to the radio in case someone requests a supply drop via the overwatch system."
 	return ..()
+
+/obj/effect/landmark/start/cargo
+	name = JOB_CARGO_TECH
+	job = /datum/job/logistics/tech/cargo

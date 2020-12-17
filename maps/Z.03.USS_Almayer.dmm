@@ -2235,9 +2235,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 1
 	},
-/obj/effect/landmark/start{
-	name = "Commanding Officer"
-	},
+/obj/effect/landmark/start/captain,
 /turf/open/floor/carpet,
 /area/almayer/living/commandbunks)
 "agg" = (
@@ -3416,9 +3414,7 @@
 /area/almayer/living/pilotbunks)
 "ajg" = (
 /obj/structure/bed,
-/obj/effect/landmark/start{
-	name = "Pilot Officer"
-	},
+/obj/effect/landmark/start/pilot,
 /obj/item/bedsheet/brown,
 /turf/open/floor/wood,
 /area/almayer/living/pilotbunks)
@@ -4744,9 +4740,7 @@
 	},
 /area/almayer/engineering/ce_room)
 "amH" = (
-/obj/effect/landmark/start{
-	name = "Chief Engineer"
-	},
+/obj/effect/landmark/start/engineering,
 /obj/structure/machinery/firealarm{
 	pixel_y = 28
 	},
@@ -9435,9 +9429,7 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/obj/effect/landmark/start{
-	name = "Maintenance Technician"
-	},
+/obj/effect/landmark/start/maint,
 /turf/open/floor/almayer,
 /area/almayer/engineering/upper_engineering)
 "aym" = (
@@ -9447,9 +9439,7 @@
 	},
 /area/almayer/evacuation/pod1)
 "ayn" = (
-/obj/effect/landmark{
-	name = "yautja_teleport_loc"
-	},
+/obj/effect/landmark/yautja_teleport,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull)
 "ayo" = (
@@ -9681,9 +9671,7 @@
 	},
 /area/almayer/command/cic)
 "ayN" = (
-/obj/effect/landmark/start{
-	name = "Synthetic"
-	},
+/obj/effect/landmark/start/synthetic,
 /obj/structure/machinery/light{
 	dir = 8
 	},
@@ -10749,9 +10737,7 @@
 /obj/structure/bed/chair/office/light{
 	dir = 8
 	},
-/obj/effect/landmark/start{
-	name = "Maintenance Tech"
-	},
+/obj/effect/landmark/start/maint,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "orangecorner";
@@ -11226,9 +11212,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 1
 	},
-/obj/effect/landmark/start{
-	name = "Researcher"
-	},
+/obj/effect/landmark/start/researcher,
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
 	tag = "icon-sterile"
@@ -13590,9 +13574,7 @@
 /turf/closed/wall/almayer,
 /area/almayer/hull/lower_hull)
 "aLe" = (
-/obj/effect/landmark/start{
-	name = "Executive Officer"
-	},
+/obj/effect/landmark/start/executive,
 /obj/structure/bed,
 /obj/item/bedsheet/brown,
 /obj/structure/bed,
@@ -14367,9 +14349,7 @@
 /area/almayer/living/chapel)
 "aNY" = (
 /obj/structure/bed/chair/office/dark,
-/obj/effect/landmark/start{
-	name = "Researcher"
-	},
+/obj/effect/landmark/start/researcher,
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
 	tag = "icon-sterile"
@@ -19897,9 +19877,7 @@
 /obj/structure/bed/chair/office/light{
 	dir = 8
 	},
-/obj/effect/landmark/start{
-	name = "Requisitions Officer"
-	},
+/obj/effect/landmark/start/requisition,
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 10;
 	tag = "icon-intact-supply (SOUTHWEST)"
@@ -20032,9 +20010,7 @@
 /area/almayer/living/bridgebunks)
 "bhJ" = (
 /obj/structure/bed,
-/obj/effect/landmark/start{
-	name = "Staff Officer"
-	},
+/obj/effect/landmark/start/bridge,
 /obj/item/bedsheet/brown,
 /turf/open/floor/wood,
 /area/almayer/living/bridgebunks)
@@ -24937,18 +24913,14 @@
 	},
 /area/almayer/command/telecomms)
 "bzE" = (
-/obj/effect/landmark{
-	name = "yautja_teleport_loc"
-	},
+/obj/effect/landmark/yautja_teleport,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
 	},
 /area/almayer/hull/upper_hull)
 "bzF" = (
-/obj/effect/landmark{
-	name = "yautja_teleport_loc"
-	},
+/obj/effect/landmark/yautja_teleport,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -24962,9 +24934,7 @@
 	req_one_access = list(2,3,12,19);
 	throw_range = 15
 	},
-/obj/effect/landmark{
-	name = "yautja_teleport_loc"
-	},
+/obj/effect/landmark/yautja_teleport,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -27417,9 +27387,7 @@
 	},
 /area/almayer/hull/lower_hull)
 "bHo" = (
-/obj/effect/landmark{
-	name = "Distress_Cryo"
-	},
+/obj/effect/landmark/ert_spawns/distress_agent,
 /turf/open/floor/almayer,
 /area/almayer/living/cryo_cells)
 "bHp" = (
@@ -30145,9 +30113,7 @@
 	},
 /area/almayer/living/cryo_cells)
 "bPN" = (
-/obj/effect/landmark{
-	name = "Distress_Cryo"
-	},
+/obj/effect/landmark/ert_spawns/distress_agent,
 /obj/structure/pipes/vents/pump{
 	dir = 4
 	},
@@ -30503,9 +30469,6 @@
 	dir = 4;
 	tag = "icon-intact-supply (EAST)"
 	},
-/obj/effect/landmark{
-	name = "Observer-Start"
-	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/briefing)
 "bQQ" = (
@@ -30716,9 +30679,7 @@
 	},
 /area/almayer/hull/lower_hull)
 "bRK" = (
-/obj/effect/landmark/start{
-	name = "Doctor"
-	},
+/obj/effect/landmark/start/doctor,
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
 	tag = "icon-sterile"
@@ -30825,9 +30786,7 @@
 	},
 /area/almayer/living/cryo_cells)
 "bSb" = (
-/obj/effect/landmark{
-	name = "Distress_Cryo"
-	},
+/obj/effect/landmark/ert_spawns/distress_agent,
 /obj/structure/pipes/vents/pump{
 	dir = 4
 	},
@@ -32957,9 +32916,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)
 "bZk" = (
-/obj/effect/landmark/start{
-	name = "Doctor"
-	},
+/obj/effect/landmark/start/doctor,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_side";
@@ -36212,9 +36169,7 @@
 	},
 /area/almayer/hallways/port_hallway)
 "ckn" = (
-/obj/effect/landmark/start{
-	name = "Maintenance Technician"
-	},
+/obj/effect/landmark/start/maint,
 /turf/open/floor/almayer{
 	icon_state = "orange";
 	tag = "icon-orange"
@@ -36337,9 +36292,7 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/obj/effect/landmark/start{
-	name = "Maintenance Technician"
-	},
+/obj/effect/landmark/start/maint,
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "orange";
@@ -36931,9 +36884,7 @@
 /turf/closed/wall/almayer,
 /area/almayer/engineering/engineering_workshop/hangar)
 "cmq" = (
-/obj/effect/landmark{
-	name = "yautja_teleport_loc"
-	},
+/obj/effect/landmark/yautja_teleport,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull)
 "cms" = (
@@ -37501,9 +37452,7 @@
 /area/almayer/engineering/engineering_workshop/hangar)
 "coo" = (
 /obj/structure/bed,
-/obj/effect/landmark/start{
-	name = "Vehicle Crewman"
-	},
+/obj/effect/landmark/start/tank_crew,
 /obj/item/bedsheet/brown,
 /obj/structure/machinery/light{
 	dir = 1;
@@ -37731,9 +37680,7 @@
 	},
 /area/almayer/squads/bravo/req)
 "ctf" = (
-/obj/effect/landmark/start{
-	name = "Intelligence Officer"
-	},
+/obj/effect/landmark/start/intel,
 /obj/item/device/radio/intercom{
 	freerange = 1;
 	name = "General Listening Channel";
@@ -38334,9 +38281,7 @@
 	dir = 8;
 	layer = 3.25
 	},
-/obj/effect/landmark/start{
-	name = "Researcher"
-	},
+/obj/effect/landmark/start/researcher,
 /turf/open/floor/wood,
 /area/almayer/medical/medical_science)
 "ddj" = (
@@ -39202,9 +39147,7 @@
 	},
 /area/almayer/shipboard/brig_cells)
 "dVr" = (
-/obj/effect/landmark/start{
-	name = "Nurse"
-	},
+/obj/effect/landmark/start/nurse,
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
 	tag = "icon-sterile"
@@ -39963,9 +39906,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 1
 	},
-/obj/effect/landmark/start{
-	name = "Researcher"
-	},
+/obj/effect/landmark/start/researcher,
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
 	tag = "icon-sterile"
@@ -40185,9 +40126,7 @@
 	},
 /area/almayer/hallways/port_hallway)
 "eZH" = (
-/obj/effect/landmark/start{
-	name = "Intelligence Officer"
-	},
+/obj/effect/landmark/start/intel,
 /turf/open/floor/almayer{
 	dir = 6;
 	icon_state = "silver";
@@ -40866,9 +40805,7 @@
 /area/almayer/squads/req)
 "fJy" = (
 /obj/structure/bed,
-/obj/effect/landmark/start{
-	name = "Pilot Officer"
-	},
+/obj/effect/landmark/start/pilot,
 /obj/item/bedsheet/brown,
 /obj/structure/machinery/light{
 	dir = 8
@@ -41648,9 +41585,7 @@
 /turf/open/floor/almayer,
 /area/almayer/shipboard/starboard_point_defense)
 "gFs" = (
-/obj/effect/landmark/start{
-	name = "Ordnance Technician"
-	},
+/obj/effect/landmark/start/tech,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "orange";
@@ -42214,9 +42149,7 @@
 "hpf" = (
 /obj/structure/bed,
 /obj/item/bedsheet/blue,
-/obj/effect/landmark/start{
-	name = "Corporate Liaison"
-	},
+/obj/effect/landmark/start/liaison,
 /obj/item/toy/farwadoll{
 	pixel_x = 5
 	},
@@ -42372,9 +42305,7 @@
 	},
 /area/almayer/living/offices)
 "hwT" = (
-/obj/effect/landmark{
-	name = "Distress_Agent"
-	},
+/obj/effect/landmark/ert_spawns/distress_agent,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
@@ -42568,9 +42499,7 @@
 /area/almayer/medical/lower_medical)
 "hFC" = (
 /obj/structure/bed/chair/office/dark,
-/obj/effect/landmark/start{
-	name = "Researcher"
-	},
+/obj/effect/landmark/start/researcher,
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_side";
@@ -42981,9 +42910,7 @@
 	},
 /area/almayer/medical/lower_medical)
 "igG" = (
-/obj/effect/landmark/start{
-	name = "Doctor"
-	},
+/obj/effect/landmark/start/doctor,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side";
 	tag = "icon-sterile"
@@ -43265,9 +43192,7 @@
 /obj/structure/bed/chair/office/light{
 	dir = 4
 	},
-/obj/effect/landmark/start{
-	name = "Senior Enlisted Advisor"
-	},
+/obj/effect/landmark/start/senior,
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/machinery/power/apc/almayer{
 	dir = 8
@@ -43601,9 +43526,7 @@
 	},
 /area/almayer/hallways/aft_hallway)
 "iZQ" = (
-/obj/effect/landmark/start{
-	name = "Military Police"
-	},
+/obj/effect/landmark/start/police,
 /obj/structure/bed/chair{
 	dir = 4
 	},
@@ -43801,9 +43724,7 @@
 	icon_state = "NE-out";
 	tag = "icon-NE-out"
 	},
-/obj/effect/landmark/start{
-	name = "Ordnance Technician"
-	},
+/obj/effect/landmark/start/tech,
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "orangecorner";
@@ -45037,9 +44958,7 @@
 "kBY" = (
 /obj/structure/bed,
 /obj/item/bedsheet/brown,
-/obj/effect/landmark/start{
-	name = "Vehicle Crewman"
-	},
+/obj/effect/landmark/start/tank_crew,
 /turf/open/floor/wood,
 /area/almayer/living/tankerbunks)
 "kCE" = (
@@ -45959,9 +45878,7 @@
 	dir = 4;
 	tag = "icon-chair (WEST)"
 	},
-/obj/effect/landmark/start{
-	name = "Military Police"
-	},
+/obj/effect/landmark/start/police,
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig)
 "lCz" = (
@@ -46220,9 +46137,7 @@
 	},
 /area/almayer/squads/req)
 "lNb" = (
-/obj/effect/landmark{
-	name = "Distress_Cryo"
-	},
+/obj/effect/landmark/ert_spawns/distress_agent,
 /obj/effect/landmark/start/marine/smartgunner,
 /turf/open/floor/almayer,
 /area/almayer/living/cryo_cells)
@@ -46250,9 +46165,7 @@
 /obj/structure/bed/chair{
 	dir = 1
 	},
-/obj/effect/landmark/start{
-	name = "Cargo Technician"
-	},
+/obj/effect/landmark/start/cargo,
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "green";
@@ -47284,9 +47197,7 @@
 	},
 /area/almayer/hull/lower_hull)
 "mUK" = (
-/obj/effect/landmark{
-	name = "Distress_Cryo"
-	},
+/obj/effect/landmark/ert_spawns/distress_agent,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -47824,9 +47735,7 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/obj/effect/landmark/start{
-	name = "Cargo Technician"
-	},
+/obj/effect/landmark/start/cargo,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "green";
@@ -48276,9 +48185,7 @@
 /area/almayer/squads/req)
 "nQx" = (
 /obj/structure/bed/chair,
-/obj/effect/landmark{
-	name = "Distress_Agent"
-	},
+/obj/effect/landmark/ert_spawns/distress_agent,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin3";
 	tag = "icon-rasputin3"
@@ -48506,9 +48413,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
-/obj/effect/landmark/start{
-	name = "Ordnance Technician"
-	},
+/obj/effect/landmark/start/tech,
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "orange";
@@ -51820,9 +51725,7 @@
 	},
 /area/almayer/medical/containment)
 "rRO" = (
-/obj/effect/landmark/start{
-	name = "Intelligence Officer"
-	},
+/obj/effect/landmark/start/intel,
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "silver";
@@ -51835,9 +51738,7 @@
 	dir = 8;
 	tag = "icon-chair (WEST)"
 	},
-/obj/effect/landmark/start{
-	name = "Military Police"
-	},
+/obj/effect/landmark/start/police,
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig)
 "rSD" = (
@@ -52155,9 +52056,7 @@
 	},
 /area/almayer/engineering/ce_room)
 "skl" = (
-/obj/effect/landmark/start{
-	name = "Chief Medical Officer"
-	},
+/obj/effect/landmark/start/professor,
 /obj/structure/bed/chair/office/dark{
 	dir = 8
 	},
@@ -53007,9 +52906,7 @@
 /obj/structure/bed/chair{
 	dir = 1
 	},
-/obj/effect/landmark/start{
-	name = "Military Warden"
-	},
+/obj/effect/landmark/start/warden,
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig)
 "taA" = (
@@ -54348,9 +54245,7 @@
 	},
 /area/almayer/shipboard/firing_range_south)
 "uwL" = (
-/obj/effect/landmark/start{
-	name = "Mess Sergeant"
-	},
+/obj/effect/landmark/start/chef,
 /turf/open/floor/prison{
 	icon_state = "kitchen"
 	},
@@ -54704,9 +54599,7 @@
 	},
 /area/almayer/medical/containment)
 "uWA" = (
-/obj/effect/landmark{
-	name = "Distress_Agent"
-	},
+/obj/effect/landmark/ert_spawns/distress_agent,
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
@@ -55367,9 +55260,7 @@
 	},
 /area/almayer/medical/surgery_hallway)
 "vGp" = (
-/obj/effect/landmark/start{
-	name = "Chief MP"
-	},
+/obj/effect/landmark/start/warrant,
 /turf/open/floor/wood,
 /area/almayer/shipboard/chief_mp_office)
 "vGG" = (
@@ -56637,9 +56528,7 @@
 /turf/open/floor/almayer,
 /area/almayer/squads/delta/req)
 "xba" = (
-/obj/effect/landmark{
-	name = "Distress_Cryo"
-	},
+/obj/effect/landmark/ert_spawns/distress_agent,
 /obj/structure/disposalpipe/segment{
 	dir = 4;
 	icon_state = "pipe-c"
@@ -57756,9 +57645,7 @@
 	dir = 1;
 	tag = "icon-bulb1 (NORTH)"
 	},
-/obj/effect/landmark{
-	name = "yautja_teleport_loc"
-	},
+/obj/effect/landmark/yautja_teleport,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull)
 "yky" = (

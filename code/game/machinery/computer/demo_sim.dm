@@ -6,22 +6,30 @@
 	unacidable = TRUE
 	var/obj/item/configuration
 	var/obj/structure/machinery/camera/simulation/simulation
-	var/list/dummy_spawn_locs = list()
 	var/cooling = FALSE
 
-/obj/structure/machinery/computer/demo_sim/Initialize()
-	. = ..()
-	addtimer(CALLBACK(src, .proc/post_Initialize), 20, TIMER_UNIQUE)
+/obj/effect/landmark/sim_target
+	name = "simulator_target"
 
-/obj/structure/machinery/computer/demo_sim/proc/post_Initialize()
-	for(var/obj/effect/landmark/L in landmarks_list)
-		switch(L.name)
-			if("simulator_target")
-				dummy_spawn_locs += L.loc
-				qdel(L)
-			if("simulator_camera")
-				simulation = new /obj/structure/machinery/camera/simulation(L.loc)
-				qdel(L)
+/obj/effect/landmark/sim_target/Initialize(mapload, ...)
+	. = ..()
+	GLOB.simulator_targets += src
+
+/obj/effect/landmark/sim_target/Destroy()
+	GLOB.simulator_targets -= src
+	return ..()
+
+/obj/effect/landmark/sim_camera
+	name = "simulator_camera"
+	color = "#FFFF00";
+
+/obj/effect/landmark/sim_camera/Initialize(mapload, ...)
+	. = ..()
+	GLOB.simulator_cameras += src
+
+/obj/effect/landmark/sim_camera/Destroy()
+	GLOB.simulator_cameras -= src
+	return ..()
 
 /obj/structure/machinery/computer/demo_sim/examine(mob/user)
 	..()
@@ -52,6 +60,8 @@
 	start_watching(user)
 
 /obj/structure/machinery/computer/demo_sim/proc/start_watching(mob/living/user)
+	if(!simulation)
+		simulation = SAFEPICK(GLOB.simulator_cameras)
 	if(!simulation)
 		to_chat(user, SPAN_WARNING("GPU damaged! Unable to start simulation."))
 		return
@@ -92,8 +102,8 @@
 /obj/structure/machinery/computer/demo_sim/proc/simulate_detonation()
 	cooling = TRUE
 
-	for(var/spawn_loc in dummy_spawn_locs)
-		var/mob/living/carbon/human/dummy = new /mob/living/carbon/human(spawn_loc)
+	for(var/spawn_loc in GLOB.simulator_targets)
+		var/mob/living/carbon/human/dummy = new /mob/living/carbon/human(get_turf(spawn_loc))
 		dummy.name = "simulated human"
 		QDEL_IN(dummy,MINUTES_1)
 
@@ -114,7 +124,7 @@
 		var/obj/item/ammo_magazine/rocket/custom/O = configuration
 		if(O.warhead)
 			make_and_prime_explosive(O.warhead)
-			
+
 	addtimer(CALLBACK(src, .proc/stop_cooling), MINUTES_2, TIMER_UNIQUE)
 
 /obj/structure/machinery/computer/demo_sim/proc/make_and_prime_explosive(var/obj/item/explosive/O)

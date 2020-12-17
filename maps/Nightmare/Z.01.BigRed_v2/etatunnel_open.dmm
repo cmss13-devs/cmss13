@@ -56,9 +56,7 @@
 	},
 /area/bigredv2/caves_sw)
 "n" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/mars_cave{
 	tag = "icon-mars_cave_2";
 	icon_state = "mars_cave_2"
@@ -97,9 +95,7 @@
 	},
 /area/bigredv2/caves_research)
 "t" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/mars_cave{
 	tag = "icon-mars_cave_7";
 	icon_state = "mars_cave_7"

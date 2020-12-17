@@ -95,9 +95,7 @@
 	},
 /area/prison/hangar_storage/main)
 "o" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "darkyellow2"
@@ -133,9 +131,7 @@
 	},
 /area/prison/hangar_storage/main)
 "s" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor/prison{
 	tag = "icon-floor_marked (SOUTHWEST)";
 	icon_state = "floor_marked";

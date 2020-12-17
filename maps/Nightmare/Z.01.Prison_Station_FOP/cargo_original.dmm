@@ -59,9 +59,7 @@
 /area/prison/hangar_storage/main)
 "aIm" = (
 /obj/structure/surface/rack,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor/prison{
 	tag = "icon-darkyellowfull2 (EAST)";
 	icon_state = "darkyellowfull2";

@@ -61,7 +61,6 @@ var/global/list/chemical_identified_list = list()	//List of all identified objec
 //List of all id's from classed /datum/reagent datums indexed by class or tier. Used by chemistry generator and chem spawners.
 var/global/list/list/chemical_gen_classes_list = list("C" = list(),"C1" = list(),"C2" = list(),"C3" = list(),"C4" = list(),"C5" = list(),"C6" = list(),"T1" = list(),"T2" = list(),"T3" = list(),"T4" = list(),"omega" = list(),"tau" = list())
 
-var/global/list/landmarks_list = list()				//List of all landmarks created
 var/global/list/surgery_steps = list()				//List of all surgery steps  |BS12
 var/global/list/ammo_list = list()					//List of all ammo types. Used by guns to tell the projectile how to act.
 GLOBAL_REFERENCE_LIST_INDEXED(joblist, /datum/job, title)					//List of all jobstypes, minus borg and AI

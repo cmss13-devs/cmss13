@@ -460,9 +460,7 @@
 	},
 /area/prison/recreation/highsec/s)
 "aQ" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor/prison{
 	tag = "icon-floor_plate (SOUTHWEST)";
 	icon_state = "floor_plate";
@@ -526,7 +524,7 @@
 /area/prison/cellblock/highsec/south/north)
 "aX" = (
 /obj/structure/pipes/vents/pump{
-	dir = 1 
+	dir = 1
 	},
 /turf/open/floor/prison,
 /area/prison/recreation/highsec/s)
@@ -534,9 +532,7 @@
 /turf/open/floor/prison,
 /area/prison/recreation/highsec/s)
 "aZ" = (
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor/prison{
 	tag = "icon-floor_plate (SOUTHWEST)";
 	icon_state = "floor_plate";
@@ -594,7 +590,7 @@
 /area/prison/maintenance/residential/access/south)
 "bg" = (
 /obj/structure/pipes/vents/pump{
-	dir = 4 
+	dir = 4
 	},
 /turf/open/floor/prison{
 	tag = "icon-floor (SOUTHWEST)";
@@ -892,9 +888,7 @@
 	},
 /area/prison/cellblock/highsec/south/south)
 "bF" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/prison{
 	tag = "icon-floor (SOUTHWEST)";
 	icon_state = "floor";
@@ -1326,9 +1320,7 @@
 	},
 /area/prison/cellblock/highsec/south/south)
 "cD" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/prison{
 	tag = "icon-floor_plate (SOUTHWEST)";
 	icon_state = "floor_plate";
@@ -1685,9 +1677,7 @@
 	},
 /area/prison/cellblock/highsec/south/south)
 "cV" = (
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor/plating,
 /area/prison/cellblock/highsec/south/south)
 "cW" = (
@@ -1770,7 +1760,7 @@
 /area/prison/cellblock/highsec/south/south)
 "dh" = (
 /obj/structure/pipes/vents/pump{
-	dir = 8 
+	dir = 8
 	},
 /turf/open/floor/prison{
 	icon_state = "red"
@@ -2192,9 +2182,7 @@
 	},
 /area/prison/pirate)
 "ei" = (
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor/plating{
 	icon_plating = "platebot";
 	icon_state = "platebot"
@@ -2446,7 +2434,7 @@
 	pixel_y = 0
 	},
 /obj/structure/pipes/vents/pump{
-	dir = 1 
+	dir = 1
 	},
 /turf/open/floor/prison{
 	dir = 8;
@@ -2508,7 +2496,7 @@
 /area/prison/security/checkpoint/highsec_medsec)
 "eM" = (
 /obj/structure/pipes/vents/pump{
-	dir = 4 
+	dir = 4
 	},
 /turf/open/floor/prison{
 	dir = 8;
@@ -2636,9 +2624,7 @@
 	},
 /area/prison/cellblock/highsec/south/south)
 "eX" = (
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor/plating,
 /area/prison/pirate)
 "eY" = (
@@ -2845,7 +2831,7 @@
 /obj/structure/reagent_dispensers/fueltank,
 /obj/structure/closet/walllocker/emerglocker/west,
 /obj/structure/pipes/vents/pump{
-	dir = 4 
+	dir = 4
 	},
 /obj/structure/machinery/light/small,
 /turf/open/floor/plating,
@@ -2925,7 +2911,7 @@
 "fy" = (
 /obj/structure/closet/walllocker/emerglocker/east,
 /obj/structure/pipes/vents/pump{
-	dir = 8 
+	dir = 8
 	},
 /obj/structure/machinery/light/small,
 /turf/open/floor/plating,
@@ -3209,10 +3195,7 @@
 /turf/open/floor/carpet,
 /area/prison/pirate)
 "gl" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/carpet,
 /area/prison/pirate)
 "gm" = (
@@ -3223,7 +3206,7 @@
 /area/prison/pirate)
 "gn" = (
 /obj/structure/pipes/vents/pump{
-	dir = 4 
+	dir = 4
 	},
 /turf/open/shuttle,
 /area/prison/pirate)
@@ -3563,7 +3546,7 @@
 /area/prison/pirate)
 "gV" = (
 /obj/structure/pipes/vents/pump{
-	dir = 8 
+	dir = 8
 	},
 /turf/open/shuttle{
 	icon_state = "floor7"
@@ -3623,7 +3606,7 @@
 "he" = (
 /obj/structure/closet/walllocker/emerglocker/east,
 /obj/structure/pipes/vents/pump{
-	dir = 8 
+	dir = 8
 	},
 /turf/open/floor/plating,
 /area/prison/pirate)
@@ -3987,7 +3970,7 @@
 /area/prison/pirate)
 "hK" = (
 /obj/structure/pipes/vents/pump{
-	dir = 8 
+	dir = 8
 	},
 /obj/structure/surface/table/reinforced{
 	dir = 4;
@@ -4389,7 +4372,7 @@
 	icon_state = "1-2"
 	},
 /obj/structure/pipes/vents/pump{
-	dir = 1 
+	dir = 1
 	},
 /turf/open/floor/plating,
 /area/prison/pirate)
@@ -4875,9 +4858,7 @@
 /obj/structure/pipes/vents/scrubber{
 	dir = 1
 	},
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/prison{
 	tag = "icon-bright_clean (SOUTHWEST)";
 	icon_state = "bright_clean";
@@ -5242,16 +5223,14 @@
 	},
 /area/prison/cellblock/mediumsec/west)
 "kd" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/prison{
 	icon_state = "yellow"
 	},
 /area/prison/cellblock/mediumsec/west)
 "ke" = (
 /obj/structure/pipes/vents/pump{
-	dir = 4 
+	dir = 4
 	},
 /obj/effect/landmark/corpsespawner/prison_security,
 /turf/open/floor/prison{
@@ -5518,9 +5497,7 @@
 /turf/open/floor/plating,
 /area/prison/cellblock/mediumsec/south)
 "kC" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor/plating,
 /area/prison/cellblock/mediumsec/south)
 "kD" = (

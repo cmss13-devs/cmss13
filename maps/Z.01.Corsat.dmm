@@ -1028,9 +1028,7 @@
 	},
 /area/corsat/gamma/hangar/monorail)
 "acS" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/structure/surface/table/woodentable,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/corsat{
@@ -1145,9 +1143,7 @@
 	},
 /area/corsat/gamma/sigmaremote/teleporter)
 "adg" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/structure/surface/table/woodentable,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -1584,9 +1580,7 @@
 /area/corsat/sigma/hangar/arrivals)
 "aey" = (
 /obj/structure/bed/chair/comfy/beige,
-/obj/effect/landmark{
-	name = "surv_spawn"
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "carpet14-10";
@@ -1754,9 +1748,7 @@
 	},
 /area/corsat/sigma/hangar/arrivals)
 "aeW" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/structure/surface/table/woodentable,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -3566,9 +3558,7 @@
 /area/corsat/sigma/hangar/checkpoint)
 "ajI" = (
 /obj/structure/surface/table,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/corsat{
 	dir = 4;
@@ -5089,9 +5079,7 @@
 	},
 /area/corsat/sigma/dorms)
 "anL" = (
-/obj/effect/landmark{
-	name = "xeno_spawn"
-	},
+/obj/effect/landmark/xeno_spawn,
 /obj/effect/alien/weeds/node,
 /turf/open/floor/almayer/research/containment/floor2,
 /area/corsat/inaccessible)
@@ -5125,9 +5113,7 @@
 	},
 /area/corsat/omega/containment)
 "anP" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor/almayer/research/containment/floor2,
 /area/corsat/inaccessible)
 "anQ" = (
@@ -5434,9 +5420,7 @@
 "aoL" = (
 /obj/structure/window/reinforced,
 /obj/structure/surface/table/woodentable,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/corsat{
 	icon_state = "darkgreen"
@@ -5952,9 +5936,7 @@
 	},
 /area/corsat/gamma/engineering)
 "aqn" = (
-/obj/effect/landmark{
-	name = "surv_spawn"
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -6981,9 +6963,7 @@
 /turf/closed/wall/r_wall/biodome,
 /area/corsat/sigma/airlock/east/id)
 "atK" = (
-/obj/effect/landmark{
-	name = "surv_spawn"
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/corsat{
 	icon_state = "officesquares"
 	},
@@ -11048,9 +11028,7 @@
 	},
 /area/corsat/gamma/hangar/arrivals)
 "aDO" = (
-/obj/effect/landmark{
-	name = "surv_spawn"
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/corsat{
 	icon_state = "spiralplate"
 	},
@@ -11465,18 +11443,14 @@
 	},
 /area/corsat/gamma/engineering)
 "aEV" = (
-/obj/effect/landmark{
-	name = "surv_spawn"
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "brown"
 	},
 /area/corsat/gamma/cargo/disposal)
 "aEW" = (
-/obj/effect/landmark{
-	name = "surv_spawn"
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/corsat{
 	dir = 10;
 	icon_state = "whitebluefull"
@@ -11522,17 +11496,13 @@
 /turf/open/ice,
 /area/corsat/gamma/biodome)
 "aFe" = (
-/obj/effect/landmark{
-	name = "xeno_spawn"
-	},
+/obj/effect/landmark/xeno_spawn,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
 /area/corsat/omega/biodome)
 "aFf" = (
-/obj/effect/landmark{
-	name = "xeno_spawn"
-	},
+/obj/effect/landmark/xeno_spawn,
 /obj/effect/alien/weeds/node,
 /turf/open/floor/corsat{
 	icon_state = "plate"
@@ -11542,9 +11512,7 @@
 /obj/structure/bed/chair/wood/normal{
 	dir = 4
 	},
-/obj/effect/landmark{
-	name = "surv_spawn"
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/wood,
 /area/corsat/gamma/residential/east)
 "aFh" = (
@@ -12177,9 +12145,7 @@
 	},
 /area/corsat/sigma/south/complex)
 "aGF" = (
-/obj/effect/landmark{
-	name = "surv_spawn"
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/corsat{
 	icon_state = "officesquares"
 	},
@@ -12945,9 +12911,7 @@
 	},
 /area/corsat/omega/airlocknorth)
 "aIj" = (
-/obj/effect/landmark{
-	name = "surv_spawn"
-	},
+/obj/effect/landmark/survivor_spawn,
 /obj/structure/pipes/vents/pump{
 	dir = 1
 	},
@@ -14358,9 +14322,7 @@
 	},
 /area/corsat/theta/airlock/east/id)
 "aMn" = (
-/obj/effect/landmark{
-	name = "surv_spawn"
-	},
+/obj/effect/landmark/survivor_spawn,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
@@ -15101,9 +15063,7 @@
 	},
 /area/corsat/gamma/hangar/flightcontrol)
 "aOj" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/corsat{
 	dir = 4;
 	icon_state = "red"
@@ -15640,9 +15600,7 @@
 	},
 /area/corsat/gamma/hangar/monorail/railcart)
 "aPC" = (
-/obj/effect/landmark{
-	name = "yautja_teleport_loc"
-	},
+/obj/effect/landmark/yautja_teleport,
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
@@ -15665,9 +15623,7 @@
 /area/corsat/gamma/hangar)
 "aPF" = (
 /obj/structure/surface/table/woodentable,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/corsat{
 	dir = 1;
@@ -15730,9 +15686,7 @@
 	},
 /area/corsat/gamma/hangar/checkpoint)
 "aPN" = (
-/obj/effect/landmark{
-	name = "yautja_teleport_loc"
-	},
+/obj/effect/landmark/yautja_teleport,
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
@@ -16800,9 +16754,7 @@
 	},
 /area/corsat/gamma/biodome/complex)
 "aSz" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/structure/surface/table/woodentable,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/corsat{
@@ -16876,9 +16828,7 @@
 	},
 /area/corsat/gamma/airlock/control)
 "aSH" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/structure/surface/table/woodentable,
 /turf/open/floor/corsat{
 	icon_state = "plate"
@@ -17072,9 +17022,7 @@
 	},
 /area/corsat/sigma/airlock/control)
 "aTg" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/structure/surface/table/woodentable,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/corsat{
@@ -17114,9 +17062,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/effect/landmark{
-	name = "yautja_teleport_loc"
-	},
+/obj/effect/landmark/yautja_teleport,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -18420,9 +18366,7 @@
 /area/corsat/omega/security)
 "aWl" = (
 /obj/structure/surface/table/woodentable,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/structure/platform{
 	dir = 8;
 	layer = 2.8
@@ -18721,9 +18665,7 @@
 /area/corsat/sigma/southeast/datalab)
 "aXa" = (
 /obj/structure/surface/table/woodentable,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/wood,
@@ -18963,9 +18905,7 @@
 	layer = 3
 	},
 /obj/structure/surface/table/woodentable,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/corsat{
@@ -19091,9 +19031,7 @@
 	},
 /area/corsat/theta/biodome/complex)
 "aXS" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/structure/surface/table/woodentable,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -19427,9 +19365,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/structure/surface/table/woodentable,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -19457,9 +19393,7 @@
 	},
 /area/corsat/sigma/biodome/scrapyard)
 "aYK" = (
-/obj/effect/landmark{
-	name = "surv_spawn"
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/corsat{
 	icon_state = "retrosquareslight"
 	},
@@ -27615,9 +27549,7 @@
 /area/corsat/sigma/south/engineering)
 "bvx" = (
 /obj/structure/bed,
-/obj/effect/landmark{
-	name = "surv_spawn"
-	},
+/obj/effect/landmark/survivor_spawn,
 /obj/item/bedsheet/brown,
 /turf/open/floor/wood,
 /area/corsat/sigma/dorms)
@@ -37909,9 +37841,7 @@
 /turf/open/gm/dirtgrassborder,
 /area/corsat/theta/biodome)
 "cce" = (
-/obj/effect/landmark{
-	name = "surv_spawn"
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/corsat{
 	dir = 10;
 	icon_state = "whitebluefull"
@@ -38215,9 +38145,7 @@
 	},
 /area/corsat/omega/complex)
 "cnC" = (
-/obj/effect/landmark{
-	name = "surv_spawn"
-	},
+/obj/effect/landmark/survivor_spawn,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/corsat{
 	icon_state = "squares"
@@ -39446,9 +39374,7 @@
 	},
 /area/corsat/theta/airlock/east)
 "dmK" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -39529,9 +39455,7 @@
 	},
 /area/corsat/gamma/biodome/virology)
 "drv" = (
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /turf/open/gm/river/desert/shallow{
 	name = "pool"
 	},
@@ -39710,9 +39634,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/landmark{
-	name = "xeno_hive_spawn"
-	},
+/obj/effect/landmark/xeno_hive_spawn,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -40069,9 +39991,7 @@
 	},
 /area/corsat/omega/hangar/security)
 "dKn" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/wood,
 /area/corsat/sigma/cafe)
 "dKv" = (
@@ -40256,9 +40176,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/landmark{
-	name = "xeno_hive_spawn"
-	},
+/obj/effect/landmark/xeno_hive_spawn,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -40359,9 +40277,7 @@
 	},
 /area/corsat/gamma/biodome/virology)
 "dVQ" = (
-/obj/effect/landmark{
-	name = "surv_spawn"
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "tan"
@@ -40530,9 +40446,7 @@
 	},
 /area/corsat/gamma/hallwaysouth)
 "eaN" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/wood,
 /area/corsat/sigma/dorms)
 "ebc" = (
@@ -40640,9 +40554,7 @@
 	},
 /area/corsat/gamma/foyer)
 "eeG" = (
-/obj/effect/landmark{
-	name = "xeno_spawn"
-	},
+/obj/effect/landmark/xeno_spawn,
 /obj/effect/landmark/queen_spawn,
 /turf/open/floor/corsat{
 	icon_state = "plate"
@@ -40880,9 +40792,7 @@
 	},
 /area/corsat/gamma/airlock/south/id)
 "elG" = (
-/obj/effect/landmark{
-	name = "xeno_hive_spawn"
-	},
+/obj/effect/landmark/xeno_hive_spawn,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -41122,9 +41032,7 @@
 	},
 /area/corsat/gamma/residential/east)
 "ese" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/corsat{
 	icon_state = "lightplate"
@@ -41597,9 +41505,7 @@
 /area/corsat/gamma/sigmaremote)
 "eMM" = (
 /obj/effect/alien/weeds/node,
-/obj/effect/landmark{
-	name = "xeno_spawn"
-	},
+/obj/effect/landmark/xeno_spawn,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -42063,9 +41969,7 @@
 /turf/open/floor/wood,
 /area/corsat/sigma/dorms)
 "feD" = (
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -42487,9 +42391,7 @@
 	},
 /area/corsat/gamma/hallwaysouth)
 "fst" = (
-/obj/effect/landmark{
-	name = "xeno_hive_spawn"
-	},
+/obj/effect/landmark/xeno_hive_spawn,
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
@@ -42637,9 +42539,7 @@
 	},
 /area/corsat/gamma/hangar/office)
 "fyM" = (
-/obj/effect/landmark{
-	name = "surv_spawn"
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/corsat{
 	icon_state = "officesquares"
 	},
@@ -42733,9 +42633,7 @@
 	layer = 3
 	},
 /obj/structure/surface/table/woodentable,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/wood,
@@ -42867,9 +42765,7 @@
 	},
 /area/corsat/gamma/hallwaysouth)
 "fGU" = (
-/obj/effect/landmark{
-	name = "surv_spawn"
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/corsat{
 	dir = 4;
 	icon_state = "purplewhitecorner"
@@ -43159,9 +43055,7 @@
 	},
 /area/corsat/omega/airlocknorth)
 "fUj" = (
-/obj/effect/landmark{
-	name = "surv_spawn"
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -43259,17 +43153,13 @@
 	pixel_x = 24;
 	start_charge = 0
 	},
-/obj/effect/landmark{
-	name = "yautja_teleport_loc"
-	},
+/obj/effect/landmark/yautja_teleport,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
 /area/corsat/gamma/residential)
 "fXJ" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/corsat{
 	icon_state = "retrosquares"
 	},
@@ -43711,9 +43601,7 @@
 /turf/open/floor/plating,
 /area/corsat/gamma/airlock/south/id)
 "glr" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/gm/dirtgrassborder{
 	dir = 4;
 	icon_state = "grassdirt_corner"
@@ -44179,9 +44067,7 @@
 	},
 /area/corsat/gamma/foyer)
 "gzB" = (
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /turf/open/floor/corsat{
 	icon_state = "officesquares"
 	},
@@ -44240,9 +44126,7 @@
 	},
 /area/corsat/gamma/residential)
 "gCN" = (
-/obj/effect/landmark{
-	name = "surv_spawn"
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/corsat{
 	icon_state = "officesquares"
 	},
@@ -45083,9 +44967,7 @@
 	},
 /area/corsat/omega/hallways)
 "heb" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/corsat{
 	icon_state = "plate"
@@ -45447,9 +45329,7 @@
 	},
 /area/corsat/gamma/residential/showers)
 "hsr" = (
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -45606,9 +45486,7 @@
 	},
 /area/corsat/gamma/residential/west)
 "hvn" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor/corsat{
 	dir = 8;
 	icon_state = "purplewhite"
@@ -45815,9 +45693,7 @@
 	},
 /area/corsat/gamma/biodome/toxins)
 "hBA" = (
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /turf/open/floor/corsat{
 	icon_state = "retrosquareslight"
 	},
@@ -46047,9 +45923,7 @@
 /turf/open/ice,
 /area/corsat/gamma/biodome)
 "hHA" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor/almayer/research/containment/floor2{
 	dir = 1;
 	tag = "icon-containment_floor_2 (NORTH)"
@@ -46153,9 +46027,7 @@
 /area/corsat/gamma/residential)
 "hKH" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "hKZ" = (
@@ -46383,9 +46255,7 @@
 /area/corsat/omega/checkpoint)
 "hSr" = (
 /obj/structure/bed/chair,
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /turf/open/floor/corsat{
 	dir = 4;
 	icon_state = "red"
@@ -46641,9 +46511,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/effect/landmark{
-	name = "surv_spawn"
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/wood,
 /area/corsat/gamma/residential/east)
 "ick" = (
@@ -46826,9 +46694,7 @@
 	},
 /area/corsat/sigma/airlock/east/id)
 "iiY" = (
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /turf/open/floor/corsat{
 	icon_state = "officesquares"
 	},
@@ -46997,9 +46863,7 @@
 /obj/structure/bed/chair/comfy/beige{
 	dir = 1
 	},
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "carpet13-5";
@@ -47143,9 +47007,7 @@
 /area/corsat/sigma/hangar)
 "iuD" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/landmark{
-	name = "xeno_hive_spawn"
-	},
+/obj/effect/landmark/xeno_hive_spawn,
 /turf/open/floor/corsat{
 	icon_state = "retrosquareslight"
 	},
@@ -47298,9 +47160,7 @@
 	},
 /area/corsat/sigma/laundry)
 "iAI" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/corsat{
 	icon_state = "retrosquares"
 	},
@@ -48408,9 +48268,7 @@
 	},
 /area/corsat/gamma/sigmaremote)
 "jvk" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "tan"
@@ -48549,9 +48407,7 @@
 	},
 /area/corsat/omega/offices)
 "jAd" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -48607,9 +48463,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/landmark{
-	name = "surv_spawn"
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/wood,
 /area/corsat/gamma/residential/east)
 "jDp" = (
@@ -48752,9 +48606,7 @@
 	},
 /area/corsat/omega/hallways)
 "jJm" = (
-/obj/effect/landmark{
-	name = "xeno_hive_spawn"
-	},
+/obj/effect/landmark/xeno_hive_spawn,
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "platingdmg3";
@@ -49372,9 +49224,7 @@
 	},
 /area/corsat/gamma/airlock/control)
 "kjZ" = (
-/obj/effect/landmark{
-	name = "yautja_teleport_loc"
-	},
+/obj/effect/landmark/yautja_teleport,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -49388,9 +49238,7 @@
 	},
 /area/corsat/gamma/sigmaremote)
 "kkI" = (
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -50008,9 +49856,7 @@
 /turf/open/floor/wood,
 /area/corsat/gamma/residential/lounge)
 "kHk" = (
-/obj/effect/landmark{
-	name = "surv_spawn"
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -51139,9 +50985,7 @@
 	},
 /area/corsat/gamma/hallwaysouth)
 "lvE" = (
-/obj/effect/landmark{
-	name = "yautja_teleport_loc"
-	},
+/obj/effect/landmark/yautja_teleport,
 /turf/open/floor/wood,
 /area/corsat/sigma/dorms)
 "lvR" = (
@@ -52294,9 +52138,7 @@
 	},
 /area/corsat/sigma/south)
 "mim" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat{
 	dir = 1;
@@ -52577,9 +52419,7 @@
 /turf/open/gm/dirt,
 /area/corsat/theta/biodome)
 "mtG" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/gm/river,
 /area/corsat/theta/biodome)
 "muo" = (
@@ -53285,9 +53125,7 @@
 /area/corsat/sigma/biodome)
 "mTz" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/landmark{
-	name = "xeno_hive_spawn"
-	},
+/obj/effect/landmark/xeno_hive_spawn,
 /obj/effect/landmark/queen_spawn,
 /turf/open/floor/corsat{
 	icon_state = "retrosquareslight"
@@ -53411,9 +53249,7 @@
 	},
 /area/corsat/gamma/biodome/complex)
 "mXC" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor/corsat{
 	icon_state = "retrosquareslight"
 	},
@@ -53852,9 +53688,7 @@
 	},
 /area/corsat/gamma/biodome/complex)
 "npN" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/wood,
 /area/corsat/gamma/rnr/library)
 "nqd" = (
@@ -54190,9 +54024,7 @@
 /turf/open/floor/corsat,
 /area/corsat/gamma/freezer)
 "nAm" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/corsat{
 	icon_state = "lightplate"
 	},
@@ -54357,9 +54189,7 @@
 	},
 /area/corsat/gamma/medbay/morgue)
 "nFc" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "nFt" = (
@@ -55110,9 +54940,7 @@
 /area/corsat/gamma/residential/east)
 "oge" = (
 /obj/structure/flora/jungle/vines/heavy,
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "ogT" = (
@@ -55145,9 +54973,7 @@
 	},
 /area/corsat/sigma/cargo)
 "ohV" = (
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /turf/open/floor/corsat{
 	dir = 4;
 	icon_state = "yellow"
@@ -55164,9 +54990,7 @@
 /obj/structure/bed/chair{
 	dir = 1
 	},
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -55272,9 +55096,7 @@
 /area/corsat/omega/hallways)
 "olY" = (
 /obj/effect/alien/weeds/node,
-/obj/effect/landmark{
-	name = "xeno_spawn"
-	},
+/obj/effect/landmark/xeno_spawn,
 /turf/open/floor/almayer/research/containment/floor2,
 /area/corsat/inaccessible)
 "ome" = (
@@ -55355,9 +55177,7 @@
 	},
 /area/corsat/theta/biodome/complex)
 "opi" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/corsat{
 	icon_state = "retrosquares"
 	},
@@ -55394,9 +55214,7 @@
 	},
 /area/corsat/gamma/residential/east)
 "opW" = (
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /turf/open/mars,
 /area/corsat/sigma/biodome)
 "oqs" = (
@@ -55989,17 +55807,13 @@
 /area/corsat/omega/hangar/office)
 "oNR" = (
 /obj/structure/bed,
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor/corsat{
 	icon_state = "retrosquareslight"
 	},
 /area/corsat/gamma/biodome/virology)
 "oNU" = (
-/obj/effect/landmark{
-	name = "surv_spawn"
-	},
+/obj/effect/landmark/survivor_spawn,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
@@ -56132,9 +55946,7 @@
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
 	},
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -56163,9 +55975,7 @@
 	dir = 2;
 	name = "Research Desk"
 	},
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/corsat{
 	dir = 1;
@@ -56189,9 +55999,7 @@
 /area/corsat/gamma/cargo)
 "oUJ" = (
 /obj/structure/flora/jungle/vines,
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "oVe" = (
@@ -57180,9 +56988,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/landmark{
-	name = "surv_spawn"
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "tan"
@@ -58062,9 +57868,7 @@
 	},
 /area/corsat/theta/airlock/west/id)
 "qoh" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/gm/dirt,
 /area/corsat/theta/biodome)
 "qoq" = (
@@ -58077,9 +57881,7 @@
 	},
 /area/corsat/gamma/medbay/lobby)
 "qoN" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "tan"
@@ -58236,9 +58038,7 @@
 	},
 /area/corsat/theta/biodome/complex)
 "qtZ" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/corsat{
 	icon_state = "officesquares"
 	},
@@ -58530,9 +58330,7 @@
 /turf/open/floor/wood,
 /area/corsat/gamma/residential/east)
 "qFA" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/corsat{
 	icon_state = "officesquares"
 	},
@@ -58607,9 +58405,7 @@
 	},
 /area/corsat/omega/airlocknorth)
 "qIr" = (
-/obj/effect/landmark{
-	name = "xeno_hive_spawn"
-	},
+/obj/effect/landmark/xeno_hive_spawn,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -58691,9 +58487,7 @@
 /area/corsat/omega/complex)
 "qKc" = (
 /obj/structure/surface/table/woodentable,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/wood,
@@ -58945,9 +58739,7 @@
 	},
 /area/corsat/gamma/airlock/south/id)
 "qUI" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -59913,9 +59705,7 @@
 /obj/structure/bed/chair{
 	dir = 1
 	},
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -60084,9 +59874,7 @@
 	},
 /area/corsat/omega/maint)
 "rMq" = (
-/obj/effect/landmark{
-	name = "xeno_hive_spawn"
-	},
+/obj/effect/landmark/xeno_hive_spawn,
 /turf/open/ice,
 /area/corsat/gamma/biodome)
 "rMD" = (
@@ -60697,9 +60485,7 @@
 	},
 /area/corsat/gamma/residential/showers)
 "sga" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /obj/effect/decal/cleanable/blood/splatter/animated,
 /turf/open/floor/corsat{
 	dir = 4;
@@ -60835,9 +60621,7 @@
 /obj/structure/bed/chair/office/light{
 	dir = 4
 	},
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "tan"
@@ -62028,9 +61812,7 @@
 	},
 /area/corsat/gamma/residential/maint)
 "taT" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -62818,9 +62600,7 @@
 	},
 /area/corsat/omega/security)
 "tFv" = (
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /turf/open/floor/corsat{
 	icon_state = "sterileplate"
 	},
@@ -63657,9 +63437,7 @@
 /turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "ukf" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor/almayer/research/containment/corner_var1{
 	dir = 4;
 	tag = "icon-containment_corner_variant_1 (EAST)"
@@ -63989,9 +63767,7 @@
 	},
 /area/corsat/gamma/airlock/north)
 "uww" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -64402,9 +64178,7 @@
 	},
 /area/corsat/sigma/dorms)
 "uLV" = (
-/obj/effect/landmark{
-	name = "xeno_hive_spawn"
-	},
+/obj/effect/landmark/xeno_hive_spawn,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -64515,9 +64289,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/landmark{
-	name = "surv_spawn"
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/corsat{
 	icon_state = "retrosquareslight"
 	},
@@ -64660,9 +64432,7 @@
 /turf/open/floor/wood,
 /area/corsat/gamma/residential/researcher)
 "uTf" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/gm/dirtgrassborder{
 	dir = 8;
 	icon_state = "grassdirt_corner"
@@ -65202,9 +64972,7 @@
 	},
 /area/corsat/gamma/biodome/virology)
 "vkS" = (
-/obj/effect/landmark{
-	name = "xeno_spawn"
-	},
+/obj/effect/landmark/xeno_spawn,
 /obj/effect/landmark/structure_spawner/xenos/pool,
 /turf/open/floor/corsat{
 	icon_state = "plate"
@@ -65559,9 +65327,7 @@
 	},
 /area/corsat/sigma/southeast/dataoffice)
 "vzv" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -65578,9 +65344,7 @@
 	},
 /area/corsat/sigma/hangar/id)
 "vzK" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/gm/dirtgrassborder,
 /area/corsat/theta/biodome)
 "vzV" = (
@@ -65712,9 +65476,7 @@
 	},
 /area/corsat/gamma/medbay)
 "vFf" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor/corsat{
 	icon_state = "retrosquareslight"
 	},
@@ -65735,9 +65497,7 @@
 	},
 /area/corsat/gamma/sigmaremote)
 "vFo" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor/corsat{
 	icon_state = "purplewhitecorner"
 	},
@@ -66270,9 +66030,7 @@
 	},
 /area/corsat/theta/biodome)
 "wbH" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/structure/surface/table/woodentable,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/corsat{
@@ -66549,9 +66307,7 @@
 	},
 /area/corsat/theta/biodome)
 "wmf" = (
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /turf/open/floor/wood,
 /area/corsat/gamma/rnr/bar)
 "wmi" = (
@@ -67116,9 +66872,7 @@
 	},
 /area/corsat/gamma/medbay/lobby)
 "wGb" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/corsat{
 	icon_state = "officesquares"
 	},
@@ -67238,9 +66992,7 @@
 	},
 /area/corsat/omega/security)
 "wIY" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "tan"
@@ -68017,9 +67769,7 @@
 	},
 /area/corsat/sigma/airlock/control)
 "xnk" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/corsat{
 	icon_state = "retrosquareslight"
 	},
@@ -68346,9 +68096,7 @@
 /turf/open/ice,
 /area/corsat/gamma/biodome)
 "xCE" = (
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "bluegrey"
@@ -68448,9 +68196,7 @@
 	},
 /area/corsat/gamma/hangar/cargo)
 "xHk" = (
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -68768,9 +68514,7 @@
 	dir = 4;
 	health = 80
 	},
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/corsat{
 	icon_state = "purplewhite"

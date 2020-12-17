@@ -13,3 +13,7 @@ AddTimelock(/datum/job/command/warrant, list(
 	JOB_POLICE_ROLES = 10 HOURS,
 	JOB_COMMAND_ROLES = 5 HOURS
 ))
+
+/obj/effect/landmark/start/warrant
+	name = JOB_CHIEF_POLICE
+	job = /datum/job/command/warrant

@@ -442,9 +442,7 @@
 	},
 /area/prison/medbay/surgery)
 "sp" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/prison{
 	tag = "icon-sterile_white (SOUTHWEST)";
 	icon_state = "sterile_white";
@@ -453,7 +451,7 @@
 /area/prison/medbay)
 "sq" = (
 /obj/structure/pipes/vents/pump{
-	dir = 4 
+	dir = 4
 	},
 /turf/open/floor/prison{
 	tag = "icon-sterile_white (SOUTHWEST)";
@@ -488,7 +486,7 @@
 /area/prison/medbay/surgery)
 "st" = (
 /obj/structure/pipes/vents/pump{
-	dir = 4 
+	dir = 4
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -851,7 +849,7 @@
 	dir = 1
 	},
 /obj/structure/pipes/vents/pump{
-	dir = 4 
+	dir = 4
 	},
 /turf/open/floor/prison,
 /area/prison/medbay/morgue)
@@ -871,7 +869,7 @@
 /obj/structure/pipes/unary/freezer{
 	dir = 2;
 	icon_state = "freezer_1" ;
-	
+
 	},
 /turf/open/floor/prison,
 /area/prison/medbay)
@@ -1132,7 +1130,7 @@
 /area/prison/medbay)
 "wO" = (
 /obj/structure/pipes/vents/pump{
-	dir = 8 
+	dir = 8
 	},
 /turf/open/floor/prison{
 	tag = "icon-sterile_white (SOUTHWEST)";
@@ -1229,7 +1227,7 @@
 	pixel_y = 0
 	},
 /obj/structure/pipes/vents/pump{
-	dir = 4 
+	dir = 4
 	},
 /turf/open/floor/prison{
 	tag = "icon-whitegreenfull (SOUTHWEST)";
@@ -1351,10 +1349,7 @@
 	icon_state = "intact-scrubbers";
 	dir = 4
 	},
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "whitegreen"
@@ -1746,10 +1741,7 @@
 	icon_state = "intact-scrubbers";
 	dir = 5
 	},
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/prison{
 	icon_state = "darkred2"
 	},
@@ -2302,9 +2294,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor/prison{
 	tag = "icon-bright_clean (SOUTHWEST)";
 	icon_state = "bright_clean";
@@ -2405,7 +2395,7 @@
 /area/prison/medbay)
 "HW" = (
 /obj/structure/pipes/vents/pump{
-	dir = 4 
+	dir = 4
 	},
 /turf/open/floor/prison{
 	dir = 2;

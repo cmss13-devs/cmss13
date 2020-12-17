@@ -82,9 +82,7 @@
 	},
 /area/bigredv2/caves_north)
 "aq" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/mars_cave{
 	tag = "icon-mars_cave_9";
 	icon_state = "mars_cave_9"
@@ -223,9 +221,7 @@
 	},
 /area/bigredv2/outside/general_offices)
 "aR" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin6";
 	icon_state = "rasputin6"
@@ -394,9 +390,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/general_offices)
 "bq" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor/plating,
 /area/bigredv2/outside/general_offices)
 "br" = (
@@ -422,9 +416,7 @@
 	},
 /area/bigredv2/outside/general_offices)
 "bu" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin3";
 	icon_state = "rasputin3"
@@ -482,9 +474,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
 "bC" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	tag = "icon-freezerfloor";
 	icon_state = "freezerfloor"
@@ -562,9 +552,7 @@
 	},
 /area/bigredv2/outside/general_offices)
 "bO" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
@@ -666,15 +654,9 @@
 "cb" = (
 /obj/structure/surface/rack,
 /obj/item/restraints,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
-/obj/effect/landmark{
-	name = "crap_item"
-	},
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
+/obj/effect/landmark/crap_item,
+/obj/effect/landmark/crap_item,
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin15";
 	icon_state = "rasputin15"
@@ -687,9 +669,7 @@
 	},
 /area/bigredv2/outside/general_offices)
 "cd" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin8";
 	tag = "icon-rasputin7"
@@ -800,9 +780,7 @@
 	},
 /area/bigredv2/outside/general_offices)
 "ct" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin15";
 	icon_state = "rasputin15"
@@ -981,9 +959,7 @@
 /area/bigredv2/outside/general_offices)
 "cU" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
@@ -1507,9 +1483,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/bar)
 "ex" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/mars,
 /area/bigredv2/outside/ne)
 "ey" = (

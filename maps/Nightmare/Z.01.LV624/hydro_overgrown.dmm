@@ -71,9 +71,7 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "aai" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "green"
@@ -438,9 +436,7 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/hydroponics)
 "apI" = (
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "green"
@@ -500,9 +496,7 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "aqC" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	dir = 5;
 	icon_state = "green"
@@ -576,9 +570,7 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "arE" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/gm/grass,
 /area/lv624/ground/compound/n)
 "arF" = (
@@ -981,9 +973,7 @@
 /turf/open/gm/dirt,
 /area/lv624/lazarus/hydroponics)
 "aZN" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/gm/dirtgrassborder{
 	dir = 1;
 	icon_state = "grassdirt_corner2"
@@ -1057,9 +1047,7 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "aZV" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/structure/flora/jungle/vines/heavy{
 	icon_state = "heavy_6";
 	pixel_x = 0

@@ -491,10 +491,7 @@
 	dir = 4;
 	tag = "icon-officechair_dark (EAST)"
 	},
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "sterile_white";
@@ -1069,9 +1066,7 @@
 /turf/open/floor/plating,
 /area/prison/research/secret/bioengineering)
 "acn" = (
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor/plating,
 /area/prison/cellblock/maxsec/north)
 "aco" = (
@@ -1545,9 +1540,7 @@
 	},
 /area/prison/research/secret/bioengineering)
 "adz" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "sterile_white";
@@ -1555,9 +1548,7 @@
 	},
 /area/prison/research/secret/bioengineering)
 "adA" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/prison,
 /area/prison/cellblock/maxsec/north)
 "adB" = (
@@ -1664,9 +1655,7 @@
 /area/prison/research/secret/bioengineering)
 "adL" = (
 /obj/structure/surface/table/reinforced,
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/prison{
 	dir = 10;
@@ -2385,9 +2374,7 @@
 	},
 /area/prison/research/secret/containment)
 "afn" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/prison{
 	icon_state = "darkpurple2";
 	tag = "icon-darkpurple2"
@@ -2792,9 +2779,7 @@
 /area/prison/security/monitoring/maxsec/panopticon)
 "agn" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor/prison,
 /area/prison/research/secret/containment)
 "ago" = (
@@ -3183,9 +3168,7 @@
 	pixel_y = 24;
 	start_charge = 0
 	},
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "darkpurple2";
@@ -3291,9 +3274,7 @@
 /turf/open/floor/plating,
 /area/prison/cellblock/maxsec/north)
 "ahA" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor/prison,
 /area/prison/research/secret/containment)
 "ahB" = (
@@ -3419,9 +3400,7 @@
 /area/prison/residential/south)
 "ahT" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor/plating,
 /area/prison/cellblock/maxsec/north)
 "ahV" = (
@@ -4131,9 +4110,7 @@
 /turf/open/floor/plating,
 /area/prison/research/secret/dissection)
 "ajH" = (
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor/prison,
 /area/prison/research/secret)
 "ajI" = (
@@ -4789,9 +4766,7 @@
 /turf/open/floor/plating,
 /area/prison/cellblock/maxsec/south)
 "alm" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/plating,
 /area/prison/cellblock/maxsec/south)
 "aln" = (
@@ -5113,9 +5088,7 @@
 	},
 /area/prison/research/secret)
 "amj" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/prison,
 /area/prison/research/secret)
 "amk" = (
@@ -5630,9 +5603,7 @@
 /turf/open/floor/plating,
 /area/prison/cellblock/highsec/north/north)
 "anx" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor/prison,
 /area/prison/cellblock/highsec/north/north)
 "any" = (
@@ -5839,9 +5810,7 @@
 	},
 /area/prison/research/RD)
 "anX" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor/plating,
 /area/shuttle/drop2/prison)
 "anY" = (
@@ -6211,9 +6180,7 @@
 	},
 /area/prison/cellblock/highsec/north/north)
 "aoS" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/prison,
 /area/prison/cellblock/highsec/north/north)
 "aoT" = (
@@ -6388,9 +6355,7 @@
 /turf/open/floor/plating,
 /area/prison/cellblock/maxsec/south)
 "aps" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "sterile_white";
@@ -6613,18 +6578,14 @@
 	icon_state = "N";
 	tag = "icon-N"
 	},
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor/prison{
 	dir = 8;
 	tag = "icon-floor (WEST)"
 	},
 /area/prison/research/RD)
 "apV" = (
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor/plating,
 /area/shuttle/drop2/prison)
 "apW" = (
@@ -7493,9 +7454,7 @@
 /area/prison/hangar_storage/research)
 "arL" = (
 /obj/structure/surface/rack,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison{
 	dir = 10;
@@ -7526,9 +7485,7 @@
 	dir = 4;
 	tag = "icon-intact-supply (EAST)"
 	},
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "whitepurple"
@@ -8033,9 +7990,7 @@
 	},
 /area/prison/research)
 "ata" = (
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor/prison{
 	icon_state = "darkpurplefull2";
 	tag = "icon-darkpurplefull2"
@@ -8318,9 +8273,7 @@
 	},
 /area/prison/research)
 "atN" = (
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "whitepurple"
@@ -9212,10 +9165,7 @@
 	},
 /area/prison/medbay)
 "awh" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 9;
 	tag = "icon-intact-supply (EAST)"
@@ -9385,9 +9335,7 @@
 /turf/open/floor/plating,
 /area/prison/hanger/research)
 "awF" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor/plating,
 /area/prison/hanger/research)
 "awG" = (
@@ -9565,9 +9513,7 @@
 	dir = 10;
 	tag = "icon-intact-supply (EAST)"
 	},
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
@@ -9585,9 +9531,7 @@
 	},
 /area/prison/chapel)
 "axh" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor/prison,
 /area/prison/security/checkpoint/maxsec)
 "axj" = (
@@ -9659,9 +9603,7 @@
 /area/prison/research)
 "axp" = (
 /obj/structure/surface/table/reinforced,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison{
 	dir = 10;
@@ -9928,9 +9870,7 @@
 	},
 /area/prison/chapel)
 "ayb" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor{
 	dir = 1;
 	icon_regular_floor = "chapel";
@@ -10188,9 +10128,7 @@
 	},
 /area/prison/cellblock/highsec/north/north)
 "ayO" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/prison{
 	dir = 10;
 	tag = "icon-floor (SOUTHWEST)"
@@ -10270,9 +10208,7 @@
 	},
 /area/prison/security/checkpoint/maxsec)
 "azb" = (
-/obj/effect/landmark{
-	name = "yautja_teleport_loc"
-	},
+/obj/effect/landmark/yautja_teleport,
 /turf/open/floor/prison,
 /area/prison/security/checkpoint/maxsec)
 "azc" = (
@@ -10355,10 +10291,7 @@
 	},
 /area/prison/medbay/foyer)
 "azo" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 5;
 	tag = "icon-intact-supply (EAST)"
@@ -10521,9 +10454,7 @@
 /area/prison/residential/north)
 "azN" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean2";
@@ -10656,9 +10587,7 @@
 /turf/open/floor/carpet,
 /area/prison/chapel)
 "aAh" = (
-/obj/effect/landmark{
-	name = "yautja_teleport_loc"
-	},
+/obj/effect/landmark/yautja_teleport,
 /turf/open/floor/carpet,
 /area/prison/chapel)
 "aAi" = (
@@ -11336,9 +11265,7 @@
 	},
 /area/prison/security/checkpoint/maxsec)
 "aBO" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "darkred2"
@@ -11930,18 +11857,14 @@
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor/wood,
 /area/prison/quarters/research)
 "aDw" = (
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor/wood,
 /area/prison/quarters/research)
 "aDy" = (
@@ -12046,9 +11969,7 @@
 	},
 /area/prison/recreation/highsec/n)
 "aDO" = (
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "red"
@@ -12283,9 +12204,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
@@ -12361,9 +12280,7 @@
 	dir = 4;
 	tag = "icon-intact-supply (EAST)"
 	},
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "sterile_white";
@@ -12699,9 +12616,7 @@
 	dir = 8;
 	tag = "icon-wooden_chair (WEST)"
 	},
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
 	tag = "icon-intact-supply (EAST)"
@@ -12717,9 +12632,7 @@
 	dir = 8;
 	tag = "icon-wooden_chair (WEST)"
 	},
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
 	tag = "icon-intact-supply (EAST)"
@@ -13035,9 +12948,7 @@
 /area/prison/research/secret/containment)
 "aGm" = (
 /obj/structure/surface/rack,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison{
@@ -13474,9 +13385,7 @@
 	dir = 4;
 	tag = "icon-intact-supply (EAST)"
 	},
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "whitepurple"
@@ -14105,9 +14014,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/structure/catwalk/prison,
 /turf/open/floor/plating,
 /area/prison/hallway/central/north)
@@ -14812,9 +14719,7 @@
 	},
 /area/prison/cellblock/highsec/north/south)
 "aLi" = (
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "red"
@@ -14987,9 +14892,7 @@
 /turf/open/floor/plating,
 /area/prison/cellblock/highsec/north/south)
 "aLI" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /obj/structure/catwalk/prison,
 /turf/open/floor/plating,
 /area/prison/cellblock/highsec/north/south)
@@ -15128,9 +15031,7 @@
 	},
 /area/prison/security/monitoring/lowsec/ne)
 "aMc" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/prison{
 	dir = 5;
 	icon_state = "darkred2"
@@ -15161,9 +15062,7 @@
 	},
 /area/prison/security/monitoring/lowsec/ne)
 "aMj" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/structure/catwalk/prison,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/plating,
@@ -15566,9 +15465,7 @@
 /area/prison/cellblock/highsec/north/south)
 "aNj" = (
 /obj/structure/pipes/standard/manifold/hidden/supply,
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /obj/structure/catwalk/prison,
 /turf/open/floor/plating,
 /area/prison/cellblock/highsec/north/south)
@@ -15680,9 +15577,7 @@
 	},
 /area/prison/security/monitoring/lowsec/ne)
 "aNB" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "darkredcorners2"
@@ -16263,9 +16158,7 @@
 	},
 /area/prison/cleaning)
 "aPh" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor/prison,
 /area/prison/cleaning)
 "aPi" = (
@@ -16638,9 +16531,7 @@
 	},
 /area/prison/cellblock/lowsec/nw)
 "aQh" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "greencorner"
@@ -16757,9 +16648,7 @@
 /area/prison/cleaning)
 "aQx" = (
 /obj/structure/surface/table/reinforced,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison{
@@ -16894,9 +16783,7 @@
 /turf/open/floor/plating,
 /area/prison/hallway/central/west)
 "aQP" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /obj/structure/catwalk/prison,
 /turf/open/floor/plating,
 /area/prison/hallway/central/west)
@@ -16981,9 +16868,7 @@
 	dir = 4;
 	tag = "icon-intact-supply (EAST)"
 	},
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/plating,
 /area/prison/maintenance/residential/ne)
 "aRf" = (
@@ -17083,9 +16968,7 @@
 	},
 /area/prison/security/checkpoint/highsec/n)
 "aRp" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_plate";
@@ -17667,9 +17550,7 @@
 	dir = 4;
 	tag = "icon-intact-supply (EAST)"
 	},
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_plate";
@@ -17773,10 +17654,7 @@
 /turf/open/floor/wood,
 /area/prison/recreation/staff)
 "aTm" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/wood,
 /area/prison/recreation/staff)
 "aTn" = (
@@ -19748,9 +19626,7 @@
 	},
 /area/prison/cellblock/highsec/north/south)
 "aYx" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "kitchen";
@@ -20389,16 +20265,12 @@
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/prison/cellblock/lowsec/ne)
 "bao" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /obj/structure/catwalk/prison,
 /turf/open/floor/plating,
 /area/prison/hallway/central/east)
 "bap" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean2";
@@ -20819,9 +20691,7 @@
 	},
 /area/prison/security/monitoring/highsec)
 "bbs" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
@@ -21484,9 +21354,7 @@
 /turf/open/floor/prison,
 /area/prison/cellblock/vip)
 "bdn" = (
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor/prison,
 /area/prison/cellblock/vip)
 "bdo" = (
@@ -21572,9 +21440,7 @@
 	},
 /area/prison/security/checkpoint/vip)
 "bdz" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
@@ -21901,9 +21767,7 @@
 	},
 /area/prison/kitchen)
 "ben" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor/prison{
 	icon_state = "kitchen";
 	tag = "icon-kitchen"
@@ -22122,15 +21986,11 @@
 	},
 /area/prison/hanger/main)
 "beN" = (
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor/plating,
 /area/shuttle/drop1/prison)
 "beO" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor/plating,
 /area/shuttle/drop1/prison)
 "beQ" = (
@@ -22853,9 +22713,7 @@
 	},
 /area/prison/cellblock/lowsec/nw)
 "bgG" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean2";
@@ -22875,9 +22733,7 @@
 /area/prison/yard)
 "bgI" = (
 /obj/item/ammo_casing,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean2";
@@ -23412,9 +23268,7 @@
 	},
 /area/prison/cellblock/lowsec/ne)
 "bhR" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean2";
@@ -23752,9 +23606,7 @@
 	},
 /area/prison/hallway/central/east)
 "biC" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
@@ -24139,9 +23991,7 @@
 	},
 /area/prison/cellblock/vip)
 "bjN" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /obj/structure/machinery/camera/autoname{
 	network = list("PRISON")
 	},
@@ -24323,9 +24173,7 @@
 	},
 /area/prison/yard)
 "bki" = (
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
@@ -24342,9 +24190,7 @@
 /area/prison/toilet/canteen)
 "bkk" = (
 /obj/structure/toilet,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "sterile_white";
@@ -24458,9 +24304,7 @@
 /turf/open/floor/plating,
 /area/prison/hallway/central/east)
 "bkB" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/organic/grass,
 /area/prison/residential/central)
 "bkC" = (
@@ -24534,9 +24378,7 @@
 /turf/open/floor/plating,
 /area/prison/security/monitoring/highsec)
 "bkN" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/organic/grass,
 /area/prison/residential/central)
 "bkO" = (
@@ -24679,9 +24521,7 @@
 /area/prison/storage/vip)
 "blk" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /obj/structure/catwalk/prison,
 /turf/open/floor/plating,
 /area/prison/hallway/central/west)
@@ -24693,9 +24533,7 @@
 /area/prison/yard)
 "blm" = (
 /obj/structure/surface/table/reinforced,
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
@@ -24705,9 +24543,7 @@
 "bln" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/gibs,
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
@@ -24740,9 +24576,7 @@
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/gibs,
 /obj/effect/decal/cleanable/blood/gibs,
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /obj/effect/decal/siding/wood_siding{
 	icon_state = "wood_siding8"
 	},
@@ -24754,9 +24588,7 @@
 /area/prison/yard)
 "bls" = (
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
@@ -24765,9 +24597,7 @@
 /area/prison/yard)
 "blt" = (
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/prison{
 	dir = 10;
@@ -24814,16 +24644,12 @@
 	},
 /area/prison/toilet/canteen)
 "blB" = (
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /obj/structure/catwalk/prison,
 /turf/open/floor/plating,
 /area/prison/hallway/entrance)
 "blC" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/prison,
 /area/prison/hallway/entrance)
 "blD" = (
@@ -25189,9 +25015,7 @@
 	},
 /area/prison/yard)
 "bmC" = (
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
 /turf/open/organic/grass,
 /area/prison/yard)
@@ -25251,9 +25075,7 @@
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 4
 	},
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /obj/structure/catwalk/prison,
 /turf/open/floor/plating,
 /area/prison/hallway/central/east)
@@ -25542,9 +25364,7 @@
 	},
 /area/prison/hallway/central/east)
 "bnF" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
@@ -25687,9 +25507,7 @@
 "bnU" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/structure/catwalk/prison,
 /turf/open/floor/plating,
 /area/prison/hallway/entrance)
@@ -25881,9 +25699,7 @@
 	},
 /area/prison/canteen)
 "bor" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
@@ -25905,9 +25721,7 @@
 	},
 /area/prison/toilet/canteen)
 "bou" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean2";
@@ -26277,9 +26091,7 @@
 /obj/structure/pipes/vents/scrubber{
 	dir = 1
 	},
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor/prison,
 /area/prison/cellblock/vip)
 "bpw" = (
@@ -26425,9 +26237,7 @@
 /turf/open/floor/prison,
 /area/prison/security/monitoring/highsec)
 "bpU" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/prison,
 /area/prison/security/monitoring/highsec)
 "bpV" = (
@@ -26460,9 +26270,7 @@
 	},
 /area/prison/security/checkpoint/vip)
 "bqa" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor/plating,
 /area/prison/hanger/main)
 "bqb" = (
@@ -26491,9 +26299,7 @@
 	},
 /area/prison/yard)
 "bqe" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/structure/surface/table/reinforced{
 	flipped = 1
 	},
@@ -26692,9 +26498,7 @@
 	},
 /area/prison/hanger/main)
 "bqH" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/plating,
 /area/prison/hanger/main)
 "bqI" = (
@@ -26925,10 +26729,7 @@
 /area/prison/cellblock/lowsec/se)
 "bro" = (
 /obj/structure/bed,
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean2";
@@ -27525,9 +27326,7 @@
 	},
 /area/prison/store)
 "bsU" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
@@ -27686,9 +27485,7 @@
 	},
 /area/prison/cellblock/lowsec/sw)
 "bto" = (
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /turf/open/floor/plating,
 /area/prison/hanger/main)
 "btp" = (
@@ -27825,9 +27622,7 @@
 /area/prison/holding/holding1)
 "btI" = (
 /obj/structure/surface/table/reinforced,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison{
@@ -28001,9 +27796,7 @@
 /turf/open/floor/plating,
 /area/prison/visitation)
 "bud" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor/prison,
 /area/prison/hallway/entrance)
 "bue" = (
@@ -28355,9 +28148,7 @@
 	},
 /area/prison/cellblock/lowsec/se)
 "buW" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean2";
@@ -29154,9 +28945,7 @@
 /turf/open/floor/plating,
 /area/prison/cellblock/lowsec/sw)
 "bxH" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_plate";
@@ -30048,9 +29837,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "green"
@@ -31307,9 +31094,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/prison{
 	dir = 10;
@@ -31372,9 +31157,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/structure/catwalk/prison,
 /turf/open/floor/plating,
 /area/prison/hallway/east)
@@ -32133,9 +31916,7 @@
 	},
 /area/prison/telecomms)
 "bFR" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
 	tag = "icon-intact-supply (EAST)"
@@ -32166,9 +31947,7 @@
 	dir = 2;
 	icon_state = "pipe-c"
 	},
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 10;
 	tag = "icon-intact-supply (EAST)"
@@ -32304,9 +32083,7 @@
 /area/prison/cellblock/mediumsec/south)
 "bGp" = (
 /obj/structure/pipes/standard/manifold/fourway/hidden/supply,
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /obj/structure/catwalk/prison,
 /turf/open/floor/plating,
 /area/prison/cellblock/highsec/south/north)
@@ -32623,9 +32400,7 @@
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 8
 	},
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor/prison,
 /area/prison/quarters/security)
 "bHh" = (
@@ -32896,9 +32671,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/decal/cleanable/blood,
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
@@ -33066,10 +32839,7 @@
 /turf/open/floor/plating,
 /area/prison/hallway/central/west)
 "bIw" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
@@ -33130,9 +32900,7 @@
 /area/prison/quarters/security)
 "bIG" = (
 /obj/structure/surface/table/reinforced,
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison{
 	dir = 4;
@@ -33220,9 +32988,7 @@
 /obj/structure/pipes/vents/scrubber{
 	dir = 4
 	},
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/prison{
 	dir = 10;
@@ -33571,9 +33337,7 @@
 /area/prison/holding/holding2)
 "bJJ" = (
 /obj/structure/surface/table/reinforced,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/wood,
 /area/prison/parole/main)
@@ -33915,9 +33679,7 @@
 	},
 /area/prison/holding/holding2)
 "bKC" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
@@ -34127,9 +33889,7 @@
 /turf/closed/wall/r_wall/prison,
 /area/prison/storage/highsec/s)
 "bLh" = (
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "red"
@@ -34206,9 +33966,7 @@
 	},
 /area/prison/hallway/central/south)
 "bLr" = (
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
@@ -34942,9 +34700,7 @@
 	},
 /area/prison/security/checkpoint/medsec)
 "bNy" = (
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor/prison{
 	dir = 5;
 	icon_state = "darkred2"
@@ -35107,9 +34863,7 @@
 /turf/closed/wall/r_wall/prison,
 /area/prison/engineering)
 "bOg" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/prison{
 	dir = 4;
@@ -35681,17 +35435,13 @@
 /area/prison/engineering/atmos)
 "bQe" = (
 /obj/structure/bed/stool,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/decal/cleanable/blood,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison,
 /area/prison/intake)
 "bQf" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison,
 /area/prison/intake)
@@ -35813,9 +35563,7 @@
 	},
 /area/prison/toilet/security)
 "bQs" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /obj/effect/landmark/queen_spawn,
 /turf/open/floor/prison{
 	dir = 10;
@@ -36008,9 +35756,7 @@
 	},
 /area/prison/laundry)
 "bQO" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
@@ -36412,9 +36158,7 @@
 /turf/open/floor/plating,
 /area/prison/maintenance/residential/access/south)
 "bRZ" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor/prison,
 /area/prison/security)
 "bSb" = (
@@ -36472,9 +36216,7 @@
 	},
 /area/prison/recreation/highsec/s)
 "bSn" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_plate";
@@ -36897,9 +36639,7 @@
 "bTl" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/decal/cleanable/blood,
 /obj/structure/catwalk/prison,
 /turf/open/floor/plating,
@@ -37141,9 +36881,7 @@
 /turf/open/floor/prison,
 /area/prison/recreation/highsec/s)
 "bTU" = (
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_plate";
@@ -37164,9 +36902,7 @@
 /obj/structure/pipes/vents/scrubber{
 	dir = 1
 	},
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
@@ -37349,9 +37085,7 @@
 /turf/open/floor/plating,
 /area/prison/engineering/atmos)
 "bUy" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor/plating,
 /area/prison/engineering/atmos)
 "bUz" = (
@@ -38288,16 +38022,11 @@
 	},
 /area/prison/cellblock/protective)
 "bWZ" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/wood,
 /area/prison/library)
 "bXa" = (
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor/wood,
 /area/prison/library)
 "bXb" = (
@@ -38974,9 +38703,7 @@
 /turf/open/floor/wood,
 /area/prison/library)
 "bZb" = (
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /obj/structure/pipes/standard/manifold/hidden/supply,
 /turf/open/floor/wood,
 /area/prison/library)
@@ -39181,9 +38908,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/structure/catwalk/prison,
 /turf/open/floor/plating,
 /area/prison/security)
@@ -39409,9 +39134,7 @@
 	},
 /area/prison/cellblock/mediumsec/north)
 "cal" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "yellow"
@@ -39491,9 +39214,7 @@
 /turf/open/floor/prison,
 /area/prison/recreation/medsec)
 "caB" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor/prison{
 	icon_state = "floor_plate";
 	tag = "icon-floor_plate"
@@ -40075,9 +39796,7 @@
 /turf/open/floor/plating,
 /area/prison/cellblock/mediumsec/north)
 "cci" = (
-/obj/effect/landmark{
-	name = "yautja_teleport_loc"
-	},
+/obj/effect/landmark/yautja_teleport,
 /turf/open/floor/wood,
 /area/prison/library)
 "ccj" = (
@@ -40135,9 +39854,7 @@
 /obj/structure/pipes/vents/pump{
 	dir = 1
 	},
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_plate";
@@ -40206,9 +39923,7 @@
 /turf/open/floor/prison,
 /area/prison/hallway/east)
 "ccF" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /obj/structure/catwalk/prison,
 /turf/open/floor/plating,
 /area/prison/security)
@@ -40316,9 +40031,7 @@
 	},
 /area/prison/cellblock/mediumsec/north)
 "ccX" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /obj/structure/catwalk/prison,
 /turf/open/floor/plating,
 /area/prison/cellblock/mediumsec/north)
@@ -40722,9 +40435,7 @@
 /turf/open/floor/plating,
 /area/prison/security)
 "cew" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/prison{
 	icon_state = "floor_plate";
 	tag = "icon-floor_plate"
@@ -40879,9 +40590,7 @@
 	},
 /area/prison/hallway/engineering)
 "ceQ" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "darkyellowfull2";
@@ -41025,9 +40734,7 @@
 /turf/open/floor/prison,
 /area/prison/security/head)
 "cfh" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor/prison{
 	icon_state = "floor_plate";
 	tag = "icon-floor_plate"
@@ -42409,9 +42116,7 @@
 /area/prison/execution)
 "cjh" = (
 /obj/structure/bed/chair,
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor/prison,
 /area/prison/security/briefing)
 "cji" = (
@@ -42794,9 +42499,7 @@
 /area/prison/pirate)
 "cko" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor/prison,
 /area/prison/execution)
 "ckp" = (
@@ -42998,10 +42701,7 @@
 	},
 /area/prison/security/monitoring/protective)
 "ckN" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "blue"
@@ -43095,9 +42795,7 @@
 /area/prison/disposal)
 "ckZ" = (
 /obj/structure/pipes/standard/simple/hidden/yellow,
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor/plating,
 /area/prison/disposal)
 "cla" = (
@@ -43463,9 +43161,7 @@
 	},
 /area/prison/pirate)
 "cmf" = (
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor/plating{
 	icon_plating = "platebot";
 	icon_state = "platebot"
@@ -43553,9 +43249,7 @@
 /turf/open/floor/plating,
 /area/prison/cellblock/protective)
 "cmq" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor/prison{
 	icon_state = "floor_plate";
 	tag = "icon-floor_plate"
@@ -43901,10 +43595,7 @@
 /obj/structure/machinery/conveyor{
 	dir = 8
 	},
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/plating,
 /area/prison/disposal)
 "cny" = (
@@ -44220,9 +43911,7 @@
 	icon_state = "N";
 	tag = "icon-N"
 	},
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor/prison,
 /area/prison/disposal)
 "cou" = (
@@ -44432,9 +44121,7 @@
 /turf/open/floor/prison,
 /area/prison/execution)
 "coZ" = (
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /obj/structure/surface/table/reinforced{
 	dir = 1;
 	flipped = 1
@@ -44600,9 +44287,7 @@
 /obj/structure/pipes/standard/simple/hidden/yellow{
 	dir = 4
 	},
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/structure/catwalk/prison,
 /turf/open/floor/plating,
 /area/prison/disposal)
@@ -44704,9 +44389,7 @@
 /area/prison/disposal)
 "cpS" = (
 /obj/structure/surface/table/reinforced,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison,
 /area/prison/disposal)
@@ -44973,9 +44656,7 @@
 	},
 /area/prison/cellblock/mediumsec/east)
 "cqV" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor/plating,
 /area/prison/disposal)
 "cqW" = (
@@ -45182,9 +44863,7 @@
 	},
 /area/prison/cellblock/mediumsec/west)
 "cry" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/prison{
 	icon_state = "yellow"
 	},
@@ -45448,10 +45127,7 @@
 /turf/open/floor/carpet,
 /area/prison/pirate)
 "csr" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/carpet,
 /area/prison/pirate)
 "css" = (
@@ -45606,10 +45282,7 @@
 /area/prison/pirate)
 "csP" = (
 /obj/structure/bed,
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/shuttle{
 	icon_state = "floor7"
@@ -46012,9 +45685,7 @@
 	},
 /area/prison/cellblock/mediumsec/south)
 "ctZ" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/prison{
 	icon_state = "yellow"
 	},
@@ -46791,10 +46462,7 @@
 	dir = 10;
 	tag = "icon-intact (SOUTHWEST)"
 	},
-/obj/effect/landmark{
-	name = "xeno_hive_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_hive_spawn,
 /turf/open/floor/plating,
 /area/prison/pirate)
 "cwm" = (
@@ -46826,9 +46494,7 @@
 	},
 /area/prison/cellblock/mediumsec/west)
 "cws" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /obj/effect/landmark/queen_spawn,
 /turf/open/floor/prison{
 	dir = 4;
@@ -46938,9 +46604,7 @@
 	dir = 4;
 	tag = "icon-intact-supply (EAST)"
 	},
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "yellowcorner"
@@ -47111,9 +46775,7 @@
 /turf/open/space,
 /area/space)
 "cxA" = (
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /turf/open/floor/plating,
 /area/prison/cellblock/mediumsec/south)
 "cxB" = (
@@ -47141,9 +46803,7 @@
 	},
 /area/prison/cellblock/mediumsec/south)
 "cxE" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor/plating,
 /area/prison/cellblock/mediumsec/south)
 "cxF" = (
@@ -47462,9 +47122,7 @@
 /area/space)
 "cyL" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
-/obj/effect/landmark{
-	name = "yautja_teleport_loc"
-	},
+/obj/effect/landmark/yautja_teleport,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "yellow"
@@ -48203,10 +47861,7 @@
 	},
 /area/prison/storage/vip)
 "dqf" = (
-/obj/effect/landmark{
-	name = "xeno_hive_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_hive_spawn,
 /turf/open/floor/plating,
 /area/shuttle/drop1/prison)
 "duu" = (
@@ -48329,9 +47984,7 @@
 /area/prison/cellblock/mediumsec/east)
 "dMw" = (
 /obj/structure/surface/rack,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor/plating,
 /area/prison/cellblock/mediumsec/south)
 "dMy" = (
@@ -48891,10 +48544,7 @@
 /turf/open/floor/plating,
 /area/prison/residential/north)
 "fGf" = (
-/obj/effect/landmark{
-	name = "xeno_hive_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_hive_spawn,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "sterile_white";
@@ -49001,9 +48651,7 @@
 	},
 /area/prison/research/secret/containment)
 "fTv" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/prison,
 /area/prison/research/secret/containment)
@@ -49015,9 +48663,7 @@
 /turf/open/floor/plating,
 /area/prison/hallway/central/north)
 "fYj" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/structure/catwalk/prison,
 /turf/open/floor/plating,
 /area/prison/hallway/central/south)
@@ -49027,9 +48673,7 @@
 /area/prison/cellblock/highsec/north/north)
 "fZb" = (
 /obj/structure/catwalk/prison,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor/plating,
 /area/prison/hallway/central/south)
 "gas" = (
@@ -49733,9 +49377,7 @@
 	tag = "icon-intact-supply (EAST)"
 	},
 /obj/structure/catwalk/prison,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor/plating,
 /area/prison/hallway/central/north)
 "hNI" = (
@@ -49859,9 +49501,7 @@
 	},
 /area/prison/engineering)
 "hWd" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /obj/structure/catwalk/prison,
 /turf/open/floor/plating,
 /area/prison/hallway/central/south)
@@ -49962,9 +49602,7 @@
 	},
 /area/prison/security/checkpoint/highsec/s)
 "iif" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /obj/structure/catwalk/prison,
 /turf/open/floor/plating,
 /area/prison/hallway/central/south)
@@ -51194,9 +50832,7 @@
 /area/prison/security/monitoring/lowsec/ne)
 "lpH" = (
 /obj/structure/surface/rack,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/plating,
 /area/prison/cellblock/mediumsec/south)
@@ -51233,9 +50869,7 @@
 	},
 /area/prison/canteen)
 "lyJ" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
@@ -51322,9 +50956,7 @@
 	},
 /area/prison/security/monitoring/lowsec/ne)
 "lHc" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /obj/structure/catwalk/prison,
 /turf/open/floor/plating,
 /area/prison/hallway/central/west)
@@ -51653,9 +51285,7 @@
 	dir = 8;
 	flipped = 1
 	},
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison{
 	icon_state = "floor_plate";
@@ -51808,10 +51438,7 @@
 /turf/open/floor/carpet,
 /area/prison/residential/south)
 "mSQ" = (
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_spawn,
 /turf/open/floor/prison{
 	dir = 10;
 	tag = "icon-floor (SOUTHWEST)"
@@ -52745,9 +52372,7 @@
 /area/prison/hallway/central/north)
 "pnT" = (
 /obj/structure/surface/rack,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/plating,
 /area/prison/cellblock/mediumsec/west)
@@ -52806,9 +52431,7 @@
 /turf/open/floor/prison,
 /area/prison/cellblock/highsec/north/north)
 "pqi" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "yellow"
@@ -53003,10 +52626,7 @@
 	dir = 4;
 	tag = "icon-intact-supply (EAST)"
 	},
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_spawn,
 /turf/open/floor/prison{
 	dir = 10;
 	tag = "icon-floor (SOUTHWEST)"
@@ -54539,10 +54159,7 @@
 /obj/effect/decal/siding/wood_siding{
 	icon_state = "wood_siding2"
 	},
-/obj/effect/landmark{
-	name = "xeno_hive_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_hive_spawn,
 /turf/open/floor{
 	icon_state = "asteroid"
 	},
@@ -54727,9 +54344,7 @@
 	},
 /area/prison/cellblock/mediumsec/north)
 "vas" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/prison{
 	dir = 10;

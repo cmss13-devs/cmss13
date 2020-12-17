@@ -651,9 +651,7 @@
 /turf/open/auto_turf/snow/layer2,
 /area/ice_colony/exterior/surface/valley/north)
 "acu" = (
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /turf/open/auto_turf/snow/layer3,
 /area/ice_colony/exterior/surface/valley/north)
 "acv" = (
@@ -739,9 +737,7 @@
 /obj/structure/surface/rack,
 /obj/item/tool/extinguisher/mini,
 /obj/item/circuitboard/airlock,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "darkyellow2";
@@ -1070,10 +1066,7 @@
 	},
 /area/ice_colony/surface/hangar/beta)
 "adx" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor{
 	icon_state = "dark2";
 	tag = "icon-dark2"
@@ -1109,9 +1102,7 @@
 /turf/open/ice,
 /area/ice_colony/exterior/surface/valley/northeast)
 "adB" = (
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /turf/open/auto_turf/snow/layer2,
 /area/ice_colony/exterior/surface/clearing/north)
 "adC" = (
@@ -1201,9 +1192,7 @@
 	name = "Storage Unit Control";
 	pixel_x = -24
 	},
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/surface/requesitions)
 "adL" = (
@@ -1448,9 +1437,7 @@
 /obj/item/cell/hyper/empty,
 /obj/item/cell/hyper/empty,
 /obj/effect/spawner/random/toolbox,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
@@ -1533,9 +1520,7 @@
 	},
 /area/ice_colony/surface/engineering/generator)
 "aeA" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/ice,
 /area/ice_colony/exterior/surface/valley/northeast)
 "aeB" = (
@@ -1562,10 +1547,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /obj/effect/landmark/queen_spawn,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/surface/requesitions)
@@ -1934,9 +1916,7 @@
 /area/ice_colony/surface/engineering/generator)
 "afv" = (
 /obj/structure/surface/table,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
 	dir = 5;
@@ -2632,9 +2612,7 @@
 /area/ice_colony/surface/engineering)
 "agZ" = (
 /obj/structure/closet/radiation,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
 	dir = 1;
@@ -2646,9 +2624,7 @@
 /obj/structure/surface/rack,
 /obj/item/storage/toolbox/mechanical,
 /obj/item/storage/toolbox/mechanical,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
 	dir = 5;
@@ -2686,9 +2662,7 @@
 /area/ice_colony/surface/engineering)
 "ahe" = (
 /obj/structure/surface/table,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
@@ -2733,9 +2707,7 @@
 /turf/open/auto_turf/snow/layer0,
 /area/ice_colony/exterior/surface/clearing/north)
 "ahl" = (
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /turf/open/auto_turf/snow/layer3,
 /area/ice_colony/exterior/surface/clearing/north)
 "ahm" = (
@@ -2762,9 +2734,7 @@
 /area/ice_colony/exterior/surface/valley/west)
 "ahq" = (
 /obj/structure/surface/table,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
 	dir = 6;
@@ -3351,10 +3321,7 @@
 	},
 /area/ice_colony/surface/substation/smes)
 "aiI" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor{
 	icon_state = "dark2";
 	tag = "icon-dark2"
@@ -3620,9 +3587,7 @@
 	pixel_x = 4;
 	pixel_y = 4
 	},
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
 	dir = 9;
@@ -3728,9 +3693,7 @@
 "ajB" = (
 /obj/structure/surface/rack,
 /obj/item/cell/high/empty,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
 	dir = 8;
@@ -4007,9 +3970,7 @@
 /obj/item/stack/sheet/mineral/phoron{
 	amount = 50
 	},
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
 	dir = 10;
@@ -4450,9 +4411,7 @@
 	},
 /area/ice_colony/surface/dorms/restroom_w)
 "aln" = (
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /turf/open/auto_turf/snow/layer0,
 /area/ice_colony/exterior/surface/clearing/north)
 "alo" = (
@@ -4635,10 +4594,7 @@
 	pixel_x = 5;
 	pixel_y = -8
 	},
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /obj/item/storage/toolbox/emergency,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
@@ -4725,9 +4681,7 @@
 	},
 /area/ice_colony/surface/substation)
 "alY" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/ice,
 /area/ice_colony/exterior/surface/clearing/north)
 "alZ" = (
@@ -4757,10 +4711,7 @@
 /turf/open/ice,
 /area/ice_colony/surface/mining)
 "ame" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "darkgreen2";
@@ -4884,9 +4835,7 @@
 	},
 /area/ice_colony/surface/substation)
 "amu" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
 /turf/open/floor{
@@ -4921,9 +4870,7 @@
 /turf/open/auto_turf/snow/layer3,
 /area/ice_colony/exterior/surface/clearing/north)
 "amy" = (
-/obj/effect/landmark{
-	name = "god_item"
-	},
+
 /turf/open/floor/plating,
 /area/ice_colony/surface/mining)
 "amz" = (
@@ -5156,9 +5103,7 @@
 "anb" = (
 /obj/structure/surface/table/reinforced,
 /obj/effect/spawner/random/bomb_supply,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
 	dir = 6;
@@ -5411,9 +5356,7 @@
 /area/ice_colony/surface/mining)
 "anH" = (
 /obj/structure/surface/table,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/plating,
 /area/ice_colony/surface/mining)
@@ -5421,9 +5364,7 @@
 /obj/structure/surface/table,
 /obj/item/stack/cable_coil/random,
 /obj/item/stack/cable_coil/random,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/plating,
 /area/ice_colony/surface/mining)
@@ -5436,9 +5377,7 @@
 /turf/open/floor/plating,
 /area/ice_colony/surface/mining)
 "anK" = (
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /turf/open/ice,
 /area/ice_colony/exterior/surface/valley/west)
 "anL" = (
@@ -5634,18 +5573,14 @@
 	pixel_x = 2;
 	pixel_y = 2
 	},
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor,
 /area/ice_colony/surface/mining)
 "aoi" = (
 /obj/structure/surface/table,
 /obj/item/device/flashlight,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor,
 /area/ice_colony/surface/mining)
@@ -5850,9 +5785,7 @@
 /area/ice_colony/surface/mining)
 "aoP" = (
 /obj/structure/surface/table,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor,
 /area/ice_colony/surface/mining)
@@ -5861,9 +5794,7 @@
 /obj/item/stack/sheet/wood{
 	amount = 15
 	},
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor,
 /area/ice_colony/surface/mining)
@@ -5970,9 +5901,7 @@
 	},
 /area/ice_colony/surface/clinic/treatment)
 "apc" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor{
 	icon_state = "cafeteria"
 	},
@@ -6016,9 +5945,7 @@
 /turf/open/ice,
 /area/ice_colony/exterior/surface/valley/west)
 "api" = (
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /turf/open/floor{
 	icon_state = "freezerfloor";
 	tag = "icon-freezerfloor"
@@ -6085,9 +6012,7 @@
 	},
 /area/ice_colony/surface/clinic/treatment)
 "apq" = (
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /turf/open/floor,
 /area/ice_colony/surface/mining)
 "apr" = (
@@ -6289,9 +6214,7 @@
 /turf/open/auto_turf/snow/layer3,
 /area/ice_colony/exterior/surface/valley/southeast)
 "apR" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/ice,
 /area/ice_colony/exterior/surface/valley/west)
 "apS" = (
@@ -6338,9 +6261,7 @@
 	dir = 4;
 	pixel_x = -24
 	},
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
 	dir = 9;
@@ -6432,10 +6353,7 @@
 	dir = 4;
 	tag = "icon-bulb1 (EAST)"
 	},
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
 	icon_state = "freezerfloor";
@@ -7097,9 +7015,7 @@
 	},
 /area/ice_colony/surface/clinic/treatment)
 "arA" = (
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /turf/open/auto_turf/snow/layer2,
 /area/ice_colony/exterior/surface/valley/west)
 "arB" = (
@@ -7241,10 +7157,7 @@
 "arW" = (
 /obj/structure/bed,
 /obj/item/bedsheet/medical,
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
@@ -7468,9 +7381,7 @@
 "asx" = (
 /obj/structure/closet/cabinet,
 /obj/item/clothing/under/colonist,
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/wood,
 /area/ice_colony/surface/dorms)
@@ -7805,9 +7716,7 @@
 "atm" = (
 /obj/structure/closet/cabinet,
 /obj/item/clothing/under/colonist,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/wood,
 /area/ice_colony/surface/dorms)
@@ -8315,9 +8224,7 @@
 	},
 /area/ice_colony/surface/clinic/lobby)
 "auA" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/gm/grass,
 /area/ice_colony/surface/hydroponics/lobby)
 "auB" = (
@@ -9356,10 +9263,7 @@
 /turf/open/ice,
 /area/ice_colony/exterior/surface/valley/southeast)
 "awN" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/wood,
 /area/ice_colony/surface/dorms)
 "awO" = (
@@ -9391,9 +9295,7 @@
 "awS" = (
 /obj/structure/closet/cabinet,
 /obj/item/clothing/under/colonist,
-/obj/effect/landmark{
-	name = "god_item"
-	},
+
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/wood,
 /area/ice_colony/surface/dorms)
@@ -9462,9 +9364,7 @@
 /area/ice_colony/surface/disposals)
 "axc" = (
 /obj/item/trash/syndi_cakes,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/plating,
 /area/ice_colony/surface/disposals)
@@ -9610,9 +9510,7 @@
 	},
 /area/ice_colony/surface/disposals)
 "axy" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor/plating{
 	icon_state = "warnplate"
 	},
@@ -9775,9 +9673,7 @@
 /area/ice_colony/surface/dorms/canteen)
 "axR" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
 	dir = 1;
@@ -10394,10 +10290,7 @@
 /turf/open/auto_turf/snow/layer1,
 /area/ice_colony/exterior/surface/valley/south/excavation)
 "azu" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor{
 	icon_state = "dark2";
 	tag = "icon-dark2"
@@ -10470,9 +10363,7 @@
 	},
 /area/ice_colony/exterior/surface/cliff)
 "azG" = (
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /turf/open/auto_turf/snow/layer2,
 /area/ice_colony/exterior/surface/valley/south)
 "azH" = (
@@ -10543,9 +10434,7 @@
 	},
 /area/ice_colony/surface/dorms)
 "azP" = (
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /turf/open/auto_turf/snow/layer0,
 /area/ice_colony/exterior/surface/valley/south/excavation)
 "azQ" = (
@@ -10655,9 +10544,7 @@
 /area/ice_colony/surface/garage/one)
 "aAc" = (
 /obj/structure/surface/table,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
 	dir = 1;
@@ -10736,18 +10623,14 @@
 /area/ice_colony/surface/garage/two)
 "aAk" = (
 /obj/structure/surface/table,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/auto_turf/snow/layer0,
 /area/ice_colony/exterior/surface/valley/south/excavation)
 "aAl" = (
 /obj/structure/surface/table,
 /obj/item/storage/box/lightstick/red,
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /obj/effect/landmark/objective_landmark/far,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
@@ -10758,9 +10641,7 @@
 /area/ice_colony/surface/disposals)
 "aAm" = (
 /obj/structure/surface/table,
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/auto_turf/snow/layer0,
 /area/ice_colony/exterior/surface/valley/south/excavation)
@@ -11003,9 +10884,7 @@
 /turf/open/auto_turf/snow/layer0,
 /area/ice_colony/exterior/surface/valley/south/excavation)
 "aAN" = (
-/obj/effect/landmark{
-	name = "yautja_teleport_loc"
-	},
+/obj/effect/landmark/yautja_teleport,
 /turf/open/auto_turf/snow/layer0,
 /area/ice_colony/exterior/surface/valley/south/excavation)
 "aAO" = (
@@ -11193,9 +11072,7 @@
 "aBl" = (
 /obj/structure/surface/table,
 /obj/item/storage/box/lightstick/red,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
 	dir = 5;
@@ -11205,9 +11082,7 @@
 /area/ice_colony/surface/garage/repair)
 "aBm" = (
 /obj/structure/surface/table,
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
 	dir = 8;
@@ -11238,9 +11113,7 @@
 /area/ice_colony/exterior/surface/valley/south/excavation)
 "aBq" = (
 /obj/vehicle/train/cargo/trolley,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
 	icon_state = "dark2";
@@ -11403,9 +11276,7 @@
 /turf/open/auto_turf/snow/layer0,
 /area/ice_colony/exterior/surface/valley/south/excavation)
 "aBJ" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/auto_turf/snow/layer0,
 /area/ice_colony/exterior/surface/valley/south/excavation)
 "aBK" = (
@@ -11591,10 +11462,7 @@
 	},
 /area/ice_colony/surface/command/control/office)
 "aCd" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor{
 	icon_state = "dark2";
 	tag = "icon-dark2"
@@ -11705,9 +11573,7 @@
 	},
 /area/ice_colony/surface/garage/two)
 "aCt" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor{
 	icon_state = "dark2";
 	tag = "icon-dark2"
@@ -11931,9 +11797,7 @@
 /area/ice_colony/surface/garage/one)
 "aCS" = (
 /obj/vehicle/train/cargo/trolley,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
@@ -11960,9 +11824,7 @@
 	dir = 4;
 	pixel_x = -24
 	},
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
 	dir = 8;
@@ -12002,9 +11864,7 @@
 /obj/structure/surface/table/reinforced,
 /obj/item/clipboard,
 /obj/item/tool/stamp,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
 	icon_state = "dark2";
@@ -12227,9 +12087,7 @@
 /area/ice_colony/surface/hydroponics/south)
 "aDy" = (
 /obj/structure/surface/table,
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
 	dir = 10;
@@ -13416,9 +13274,7 @@
 /area/ice_colony/surface/storage_unit/power)
 "aGe" = (
 /obj/structure/largecrate/random,
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "vault"
@@ -13723,9 +13579,7 @@
 /area/ice_colony/exterior/surface/clearing/pass)
 "aHb" = (
 /obj/structure/largecrate/random,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/structure/machinery/light/small{
 	dir = 8;
 	tag = "icon-bulb1 (WEST)"
@@ -13767,15 +13621,9 @@
 	},
 /obj/item/spacecash/c1000,
 /obj/item/spacecash/c500,
-/obj/effect/landmark{
-	name = "god_item"
-	},
-/obj/effect/landmark{
-	name = "god_item"
-	},
-/obj/effect/landmark{
-	name = "good_item"
-	},
+
+
+/obj/effect/landmark/good_item,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/wood,
 /area/ice_colony/surface/command/crisis)
@@ -13866,9 +13714,7 @@
 /area/ice_colony/surface/command/control/pv1)
 "aHt" = (
 /obj/structure/closet/secure_closet/personal,
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/wood,
 /area/ice_colony/surface/command/control/pv2)
@@ -14001,9 +13847,7 @@
 	},
 /area/ice_colony/surface/storage_unit/power)
 "aHQ" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "vault"
@@ -14417,9 +14261,7 @@
 /turf/closed/wall/r_wall,
 /area/ice_colony/exterior/surface/valley/southeast)
 "aJg" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/ice,
 /area/ice_colony/exterior/surface/valley/southeast)
 "aJh" = (
@@ -14453,18 +14295,14 @@
 	},
 /area/ice_colony/surface/storage_unit/telecomms)
 "aJk" = (
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /turf/open/ice,
 /area/ice_colony/exterior/surface/valley/southeast)
 "aJl" = (
 /turf/closed/wall/r_wall/unmeltable,
 /area/ice_colony/surface/hangar/checkpoint)
 "aJm" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/structure/machinery/power/apc{
 	dir = 1;
 	pixel_y = 24;
@@ -14547,9 +14385,7 @@
 /area/ice_colony/surface/storage_unit/telecomms)
 "aJF" = (
 /obj/effect/spawner/random/toolbox,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
 	dir = 8;
@@ -14664,9 +14500,7 @@
 	},
 /area/ice_colony/surface/hangar/checkpoint)
 "aKk" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/ice,
 /area/ice_colony/exterior/surface/valley/west)
 "aKl" = (
@@ -14839,9 +14673,7 @@
 	},
 /area/ice_colony/surface/storage_unit/research)
 "aKS" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "vault"
@@ -15079,9 +14911,7 @@
 	},
 /area/ice_colony/exterior/surface/valley/southeast)
 "aLJ" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/ice,
 /area/ice_colony/exterior/surface/valley/southeast)
 "aLK" = (
@@ -15186,9 +15016,7 @@
 /area/ice_colony/surface/bar/bar)
 "aMb" = (
 /obj/structure/surface/table/gamblingtable,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
@@ -15541,9 +15369,7 @@
 /area/ice_colony/exterior/surface/cliff)
 "aMZ" = (
 /obj/structure/surface/rack,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/structure/machinery/alarm{
 	dir = 4;
 	pixel_x = -24
@@ -15667,9 +15493,7 @@
 /area/ice_colony/surface/bar/canteen)
 "aNt" = (
 /obj/structure/surface/table/reinforced,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/item/tool/kitchen/utensil/knife,
 /obj/effect/landmark/objective_landmark/close,
@@ -15716,9 +15540,7 @@
 	},
 /area/ice_colony/surface/bar/canteen)
 "aNx" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/item/stack/sheet/metal,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
@@ -15844,9 +15666,7 @@
 	},
 /area/ice_colony/surface/research/field_gear)
 "aNS" = (
-/obj/effect/landmark{
-	name = "god_item"
-	},
+
 /turf/open/shuttle/elevator,
 /area/shuttle/elevator3/ground)
 "aNT" = (
@@ -15916,9 +15736,7 @@
 /area/ice_colony/surface/bar/bar)
 "aOe" = (
 /obj/structure/surface/table/gamblingtable,
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/wood,
@@ -17374,10 +17192,7 @@
 /obj/structure/bed/chair{
 	dir = 1
 	},
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/shuttle{
 	icon_state = "floor6";
 	tag = "icon-floor6"
@@ -17618,10 +17433,7 @@
 	},
 /area/ice_colony/surface/bar/bar)
 "aSb" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor{
 	icon_state = "freezerfloor";
 	tag = "icon-freezerfloor"
@@ -17768,9 +17580,7 @@
 "aSx" = (
 /obj/structure/surface/table,
 /obj/item/clothing/gloves/black,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/objective_landmark/science,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
@@ -17793,9 +17603,7 @@
 "aSz" = (
 /obj/structure/surface/table,
 /obj/item/device/reagent_scanner,
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /obj/structure/machinery/light{
 	dir = 1
 	},
@@ -17812,9 +17620,7 @@
 	dir = 4
 	},
 /obj/structure/surface/table,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
 	dir = 4;
@@ -18774,9 +18580,7 @@
 /area/ice_colony/surface/research/temporary)
 "aUT" = (
 /obj/structure/closet/emcloset,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	dir = 1;
@@ -18874,9 +18678,7 @@
 /turf/open/ice,
 /area/ice_colony/exterior/surface/landing_pad_external)
 "aVg" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/ice,
 /area/ice_colony/exterior/surface/landing_pad_external)
 "aVh" = (
@@ -19439,9 +19241,7 @@
 /obj/structure/surface/table,
 /obj/effect/spawner/random/powercell,
 /obj/effect/spawner/random/bomb_supply,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/structure/disposalpipe/segment{
 	dir = 4;
 	icon_state = "pipe-c"
@@ -19481,10 +19281,7 @@
 	},
 /area/ice_colony/surface/research/tech_storage)
 "aWv" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /obj/structure/pipes/vents/pump{
 	dir = 8
 	},
@@ -19675,9 +19472,7 @@
 /area/ice_colony/surface/research/tech_storage)
 "aWV" = (
 /obj/structure/surface/rack,
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	icon_state = "darkyellow2";
@@ -19763,10 +19558,7 @@
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/exterior/surface/container_yard)
 "aXg" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/exterior/surface/container_yard)
 "aXh" = (
@@ -20140,9 +19932,7 @@
 /turf/open/ice,
 /area/ice_colony/exterior/surface/landing_pad_external)
 "aYb" = (
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /turf/open/floor/plating,
 /area/shuttle/drop1/ice_colony)
 "aYc" = (
@@ -20345,9 +20135,7 @@
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/exterior/surface/landing_pad)
 "aYD" = (
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/exterior/surface/landing_pad)
 "aYE" = (
@@ -20569,9 +20357,7 @@
 /turf/open/ice,
 /area/ice_colony/exterior/surface/landing_pad_external)
 "aZs" = (
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/exterior/surface/container_yard)
 "aZt" = (
@@ -21499,9 +21285,7 @@
 	name = "\improper Almayer Dropship 2"
 	})
 "bcz" = (
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /turf/open/floor/plating/icefloor,
 /area/shuttle/drop2/ice_colony{
 	name = "\improper Almayer Dropship 2"
@@ -21665,9 +21449,7 @@
 /area/ice_colony/surface/excavation)
 "bcS" = (
 /obj/structure/surface/rack,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
 	dir = 1;
@@ -21699,9 +21481,7 @@
 "bcV" = (
 /obj/structure/surface/rack,
 /obj/item/device/analyzer,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
 	dir = 1;
@@ -21763,9 +21543,7 @@
 /turf/closed/wall/r_wall,
 /area/ice_colony/underground/requesition)
 "bdh" = (
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /obj/structure/machinery/landinglight/ds2/delaythree{
 	dir = 4;
 	icon_state = "landingstripe";
@@ -22166,9 +21944,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /turf/open/floor{
 	icon_state = "dark2";
 	tag = "icon-dark2"
@@ -22359,10 +22135,7 @@
 	},
 /area/ice_colony/surface/excavation)
 "beK" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor{
 	icon_state = "dark2";
 	tag = "icon-dark2"
@@ -22632,9 +22405,7 @@
 /area/ice_colony/surface/excavation)
 "bfx" = (
 /obj/structure/surface/table,
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
 	icon_state = "darkblue2";
@@ -22721,9 +22492,7 @@
 /obj/structure/surface/rack,
 /obj/item/tool/shovel/snow,
 /obj/item/tool/shovel/snow,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
 	dir = 10;
@@ -22838,9 +22607,7 @@
 	},
 /area/ice_colony/underground/requesition)
 "bfX" = (
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /turf/open/floor{
 	icon_state = "dark2";
 	tag = "icon-dark2"
@@ -22868,10 +22635,7 @@
 /turf/open/ice,
 /area/ice_colony/exterior/surface/valley/south/excavation)
 "bgc" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/icefloor{
 	icon_state = "rockvault";
 	tag = "icon-bcircuit"
@@ -23747,9 +23511,7 @@
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/underground/hangar)
 "biN" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/underground/hangar)
 "biO" = (
@@ -24957,9 +24719,7 @@
 	},
 /area/ice_colony/underground/hallway/north_west)
 "bmo" = (
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /turf/open/floor{
 	icon_state = "dark2";
 	tag = "icon-dark2"
@@ -25367,9 +25127,7 @@
 /obj/structure/surface/rack,
 /obj/item/storage/toolbox/mechanical,
 /obj/item/storage/toolbox/mechanical,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
 	dir = 8;
@@ -25546,9 +25304,7 @@
 /turf/open/ice,
 /area/ice_colony/underground/maintenance/research)
 "bnX" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "darkbrown2";
@@ -25630,9 +25386,7 @@
 	},
 /area/ice_colony/underground/crew/morgue)
 "boh" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor{
 	icon_state = "dark2";
 	tag = "icon-dark2"
@@ -25740,9 +25494,7 @@
 /area/ice_colony/underground/maintenance/north)
 "bot" = (
 /obj/structure/closet/radiation,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
 	dir = 10;
@@ -25879,9 +25631,7 @@
 	},
 /area/ice_colony/underground/engineering)
 "boP" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /obj/effect/landmark/queen_spawn,
 /turf/open/floor{
 	icon_state = "dark2";
@@ -25896,9 +25646,7 @@
 	},
 /area/ice_colony/underground/engineering)
 "boR" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /obj/effect/alien/weeds/node,
 /turf/open/ice,
 /area/ice_colony/exterior/underground/caves/open)
@@ -26104,9 +25852,7 @@
 	},
 /area/ice_colony/underground/hallway/south_east)
 "bpw" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor{
 	icon_state = "dark2";
 	tag = "icon-dark2"
@@ -28066,10 +27812,7 @@
 /turf/open/floor/plating,
 /area/ice_colony/underground/engineering/substation)
 "bup" = (
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_spawn,
 /obj/effect/alien/weeds/node,
 /turf/open/ice,
 /area/ice_colony/exterior/underground/caves/open)
@@ -28393,9 +28136,7 @@
 	},
 /area/ice_colony/underground/medical/lobby)
 "bve" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor{
 	icon_state = "dark2";
 	tag = "icon-dark2"
@@ -29384,9 +29125,7 @@
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/engineering)
 "bxJ" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /obj/effect/alien/weeds/node,
 /obj/structure/mineral_door/resin,
 /turf/open/ice,
@@ -30095,9 +29834,7 @@
 /area/ice_colony/underground/command/center)
 "bzK" = (
 /obj/structure/surface/table,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
 	dir = 5;
@@ -30834,10 +30571,7 @@
 /area/ice_colony/underground/security/marshal)
 "bBz" = (
 /obj/effect/alien/weeds/node,
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_spawn,
 /turf/open/ice,
 /area/ice_colony/exterior/underground/caves/open)
 "bBA" = (
@@ -30854,9 +30588,7 @@
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/research)
 "bBD" = (
@@ -31007,9 +30739,7 @@
 /obj/structure/surface/table/reinforced,
 /obj/item/clipboard,
 /obj/item/tool/stamp,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
 	icon_state = "dark2";
@@ -31389,9 +31119,7 @@
 /area/ice_colony/underground/command/center)
 "bDd" = (
 /obj/structure/surface/table,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
 	icon_state = "darkblue2";
@@ -36739,9 +36467,7 @@
 	},
 /area/ice_colony/underground/crew/disposals)
 "bQm" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/structure/window/reinforced{
 	dir = 1
 	},
@@ -36987,9 +36713,7 @@
 /turf/open/floor/plating,
 /area/ice_colony/underground/crew/disposals)
 "bQU" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor/plating,
 /area/ice_colony/underground/crew/disposals)
 "bQV" = (
@@ -39189,9 +38913,7 @@
 "bWs" = (
 /obj/structure/surface/table,
 /obj/item/device/flashlight/flare,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/ice,
 /area/ice_colony/exterior/underground/caves/open)
@@ -39389,9 +39111,7 @@
 /turf/open/ice,
 /area/ice_colony/exterior/underground/caves/dig)
 "bWT" = (
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor/icefloor{
 	icon = 'icons/turf/shuttle.dmi';
 	icon_state = "floor6"
@@ -39406,9 +39126,7 @@
 	},
 /area/ice_colony/exterior/underground/caves/dig)
 "bWV" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor/icefloor{
 	icon = 'icons/turf/shuttle.dmi';
 	icon_state = "floor7"
@@ -39436,9 +39154,7 @@
 	},
 /area/ice_colony/exterior/underground/caves/dig)
 "bWY" = (
-/obj/effect/landmark{
-	name = "god_item"
-	},
+
 /turf/open/floor/icefloor{
 	icon = 'icons/turf/shuttle.dmi';
 	icon_state = "floor7"
@@ -39524,9 +39240,7 @@
 /turf/open/floor/plating,
 /area/ice_colony/exterior/underground/caves/dig)
 "bXi" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/south)
 "bXj" = (
@@ -39552,9 +39266,7 @@
 	},
 /area/ice_colony/exterior/underground/caves/dig)
 "bXl" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/icefloor{
 	icon = 'icons/turf/shuttle.dmi';
 	icon_state = "floor7"
@@ -40733,10 +40445,7 @@
 /area/ice_colony/underground/requesition/sec_storage)
 "qEB" = (
 /obj/structure/pipes/standard/manifold/fourway/hidden/green,
-/obj/effect/landmark{
-	name = "xeno_hive_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_hive_spawn,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/surface/requesitions)
 "qED" = (
@@ -40786,10 +40495,7 @@
 /turf/open/auto_turf/snow/layer4,
 /area/ice_colony/exterior/surface/valley/northwest)
 "rAm" = (
-/obj/effect/landmark{
-	name = "xeno_hive_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_hive_spawn,
 /turf/open/floor{
 	icon_state = "dark2";
 	tag = "icon-dark2"
@@ -41002,10 +40708,7 @@
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/underground/hangar)
 "tEG" = (
-/obj/effect/landmark{
-	name = "xeno_hive_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_hive_spawn,
 /obj/effect/landmark/queen_spawn,
 /turf/open/ice,
 /area/ice_colony/exterior/underground/caves/open)
@@ -41103,17 +40806,11 @@
 /area/ice_colony/surface/hangar/beta)
 "uUv" = (
 /obj/effect/alien/weeds/node,
-/obj/effect/landmark{
-	name = "xeno_hive_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_hive_spawn,
 /turf/open/ice,
 /area/ice_colony/exterior/underground/caves/open)
 "vcU" = (
-/obj/effect/landmark{
-	name = "xeno_hive_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_hive_spawn,
 /turf/open/ice,
 /area/ice_colony/exterior/underground/caves/open)
 "vhS" = (
@@ -41249,10 +40946,7 @@
 	},
 /area/ice_colony/surface/hydroponics/south)
 "xWm" = (
-/obj/effect/landmark{
-	name = "xeno_hive_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_hive_spawn,
 /turf/open/ice,
 /area/ice_colony/exterior/surface/landing_pad_external)
 "ygw" = (

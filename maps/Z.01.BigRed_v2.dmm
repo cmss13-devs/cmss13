@@ -88,9 +88,7 @@
 	},
 /area/bigredv2/outside/space_port)
 "aan" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/structure/machinery/landinglight/ds1/delaythree{
 	dir = 4;
 	icon_state = "landingstripe";
@@ -401,9 +399,7 @@
 	},
 /area/bigredv2/outside/space_port)
 "aaZ" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
@@ -423,9 +419,7 @@
 	},
 /area/bigredv2/outside/space_port)
 "abb" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor/plating,
 /area/shuttle/drop1/BigRed)
 "abc" = (
@@ -481,9 +475,7 @@
 	},
 /area/bigredv2/outside/space_port)
 "abi" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
@@ -716,9 +708,7 @@
 	},
 /area/bigredv2/outside/space_port)
 "abL" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_19";
 	tag = "icon-mars_cave_19"
@@ -731,9 +721,7 @@
 	},
 /area/bigredv2/caves_north)
 "abN" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
 	tag = "icon-mars_cave_2"
@@ -796,18 +784,14 @@
 	},
 /area/bigredv2/caves_north)
 "abW" = (
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
 	tag = "icon-mars_cave_2"
 	},
 /area/bigredv2/caves_north)
 "abX" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
 	tag = "icon-mars_cave_2"
@@ -864,9 +848,7 @@
 	},
 /area/bigredv2/caves_north)
 "acd" = (
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor/plating,
 /area/shuttle/drop1/BigRed)
 "ace" = (
@@ -961,9 +943,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/marshall_office)
 "acu" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
@@ -986,9 +966,7 @@
 	},
 /area/bigredv2/outside/space_port)
 "acx" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "acy" = (
@@ -1010,9 +988,7 @@
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/telecomm)
 "acB" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "acC" = (
@@ -2017,9 +1993,7 @@
 "aff" = (
 /obj/effect/decal/cleanable/mucus,
 /obj/structure/surface/table,
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor{
 	icon_state = "whitepurplefull";
 	tag = "icon-whitepurplefull"
@@ -2054,9 +2028,7 @@
 /obj/structure/toilet{
 	dir = 4
 	},
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
 	icon_state = "freezerfloor";
@@ -2462,9 +2434,7 @@
 	},
 /area/bigredv2/caves/lambda/xenobiology)
 "agh" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /obj/effect/alien/weeds/node,
 /turf/open/floor{
 	icon_state = "dark";
@@ -2603,9 +2573,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "agA" = (
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "redcorner"
@@ -2885,9 +2853,7 @@
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/space_port)
 "ahi" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/mars,
 /area/bigredv2/outside/nw)
 "ahj" = (
@@ -2898,9 +2864,7 @@
 /area/bigredv2/outside/marshall_office)
 "ahk" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor,
 /area/bigredv2/outside/marshall_office)
 "ahl" = (
@@ -2983,9 +2947,7 @@
 	},
 /area/bigredv2/caves_lambda)
 "ahx" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/alien/weeds/node,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
@@ -3221,9 +3183,7 @@
 /area/bigredv2/outside/marshall_office)
 "aie" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor{
 	icon_state = "redcorner"
 	},
@@ -3263,9 +3223,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/marshall_office)
 "aij" = (
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /obj/effect/alien/weeds/node,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
@@ -3334,9 +3292,7 @@
 	},
 /area/bigredv2/caves/lambda/xenobiology)
 "air" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/alien/weeds/node,
 /turf/open/floor{
 	icon_state = "dark";
@@ -3564,9 +3520,7 @@
 /area/bigredv2/caves/lambda/xenobiology)
 "aiW" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
@@ -3841,9 +3795,7 @@
 /area/bigredv2/outside/marshall_office)
 "ajG" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -4121,9 +4073,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/marshall_office)
 "aks" = (
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor,
 /area/bigredv2/outside/marshall_office)
 "akt" = (
@@ -4345,9 +4295,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/general_offices)
 "akV" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/mars,
 /area/bigredv2/outside/n)
 "akW" = (
@@ -4382,9 +4330,7 @@
 	},
 /area/bigredv2/caves/lambda/xenobiology)
 "alb" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "whitepurplecorner";
@@ -4408,10 +4354,7 @@
 	},
 /area/bigredv2/caves/lambda/xenobiology)
 "ale" = (
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_spawn,
 /obj/effect/alien/weeds/node,
 /turf/open/floor{
 	dir = 8;
@@ -4483,9 +4426,7 @@
 	},
 /area/bigredv2/outside/nw)
 "alo" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/mars{
 	icon_state = "mars_dirt_3";
 	tag = "icon-mars_dirt_3"
@@ -4524,10 +4465,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "alt" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "redcorner"
@@ -4628,9 +4566,7 @@
 	},
 /area/bigredv2/caves_north)
 "alI" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_9";
 	tag = "icon-mars_cave_9"
@@ -4643,9 +4579,7 @@
 	},
 /area/bigredv2/caves_north)
 "alK" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/alien/weeds/node,
 /turf/open/floor/plating,
 /area/bigredv2/caves/lambda/xenobiology)
@@ -4656,9 +4590,7 @@
 	},
 /area/bigredv2/caves/lambda/xenobiology)
 "alM" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /obj/effect/alien/weeds/node,
 /turf/open/floor/plating{
 	dir = 1;
@@ -4687,9 +4619,7 @@
 	},
 /area/bigredv2/caves/lambda/xenobiology)
 "alQ" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /obj/effect/alien/weeds/node,
 /turf/open/floor{
 	icon_state = "whitepurplefull";
@@ -4697,9 +4627,7 @@
 	},
 /area/bigredv2/caves/lambda/xenobiology)
 "alR" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor{
 	icon_state = "whitepurplefull";
 	tag = "icon-whitepurplefull"
@@ -4835,9 +4763,7 @@
 /area/bigredv2/outside/general_offices)
 "ami" = (
 /obj/structure/pipes/standard/manifold/fourway/hidden/green,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor,
 /area/bigredv2/outside/marshall_office)
 "amj" = (
@@ -4914,10 +4840,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor,
 /area/bigredv2/outside/marshall_office)
 "amv" = (
@@ -4981,10 +4904,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "amB" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor{
 	icon_state = "grimy"
@@ -4999,9 +4919,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "amD" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/mars,
 /area/bigredv2/outside/n)
 "amE" = (
@@ -5032,9 +4950,7 @@
 	},
 /area/bigredv2/caves/lambda/xenobiology)
 "amK" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor/plating{
 	icon_state = "warnplate"
 	},
@@ -5431,17 +5347,12 @@
 /turf/open/floor/plating,
 /area/bigredv2/caves/lambda/xenobiology)
 "anN" = (
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_spawn,
 /obj/effect/alien/weeds/node,
 /turf/open/floor/plating,
 /area/bigredv2/caves/lambda/xenobiology)
 "anO" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor/plating{
 	dir = 9;
 	icon_state = "warnplate"
@@ -5451,9 +5362,7 @@
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /obj/effect/alien/weeds/node,
 /turf/open/floor/plating{
 	dir = 1;
@@ -5461,9 +5370,7 @@
 	},
 /area/bigredv2/caves/lambda/xenobiology)
 "anQ" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor/plating{
 	dir = 1;
 	icon_state = "warnplate"
@@ -5545,9 +5452,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/library)
 "aod" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/alien/weeds/node,
 /turf/open/floor{
 	icon_state = "whitegreenfull";
@@ -5745,9 +5650,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
 "aoG" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor/plating{
 	dir = 10;
 	icon_state = "warnplate"
@@ -5878,10 +5781,7 @@
 /area/bigredv2/outside/marshall_office)
 "aoW" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor,
 /area/bigredv2/outside/marshall_office)
 "aoX" = (
@@ -6078,9 +5978,7 @@
 "apx" = (
 /obj/effect/decal/cleanable/blood/gibs/xeno/core,
 /obj/item/shard,
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor{
 	icon_state = "whitepurplefull";
 	tag = "icon-whitepurplefull"
@@ -6643,9 +6541,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
 "aqR" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	icon_state = "freezerfloor";
 	tag = "icon-freezerfloor"
@@ -6754,9 +6650,7 @@
 	},
 /area/bigredv2/caves/lambda/xenobiology)
 "ard" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/mars_cave{
 	icon_state = "mars_dirt_4";
 	tag = "icon-mars_dirt_4"
@@ -7358,9 +7252,7 @@
 /area/bigredv2/outside/medical)
 "asA" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	icon_state = "whitepurplefull";
 	tag = "icon-whitepurplefull"
@@ -7383,9 +7275,7 @@
 	},
 /area/bigredv2/outside/medical)
 "asD" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor{
 	icon_state = "white"
@@ -7793,9 +7683,7 @@
 /area/bigredv2/outside/general_offices)
 "atF" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
 	},
@@ -7895,9 +7783,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/chapel)
 "atQ" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/mars,
 /area/bigredv2/outside/nw)
 "atR" = (
@@ -8087,9 +7973,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/alien/weeds/node,
 /turf/open/floor{
 	icon_state = "dark";
@@ -8157,10 +8041,7 @@
 	},
 /area/bigredv2/caves/lambda/breakroom)
 "aux" = (
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_spawn,
 /obj/effect/alien/weeds/node,
 /obj/structure/window/reinforced{
 	dir = 8
@@ -8458,9 +8339,7 @@
 	dir = 4;
 	tag = "icon-intact-supply (EAST)"
 	},
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /obj/effect/alien/weeds/node,
 /turf/open/floor{
 	dir = 4;
@@ -8604,9 +8483,7 @@
 	},
 /area/bigredv2/outside/medical)
 "avx" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -8921,9 +8798,7 @@
 /area/bigredv2/outside/medical)
 "awn" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
 "awo" = (
@@ -8967,9 +8842,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
 "awv" = (
@@ -8984,9 +8857,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
 "aww" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
 "awx" = (
@@ -8994,9 +8865,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
 "awy" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/mars,
 /area/bigredv2/outside/ne)
 "awz" = (
@@ -9223,9 +9092,7 @@
 /area/bigredv2/outside/dorms)
 "axe" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor{
 	icon_state = "grimy"
 	},
@@ -9349,9 +9216,7 @@
 	},
 /area/bigredv2/caves/lambda/breakroom)
 "axu" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/mars{
 	icon_state = "mars_dirt_8";
 	tag = "icon-mars_dirt_8"
@@ -9400,9 +9265,7 @@
 /area/bigredv2/outside/medical)
 "axA" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -9455,10 +9318,7 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
 "axI" = (
@@ -9539,10 +9399,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
 "axT" = (
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_spawn,
 /obj/effect/alien/weeds/node,
 /turf/open/floor/wood,
 /area/bigredv2/caves/lambda/breakroom)
@@ -9589,9 +9446,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/nw)
 "aya" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
@@ -9847,9 +9702,7 @@
 "ayI" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -9975,9 +9828,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/medical)
 "ayX" = (
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
 "ayY" = (
@@ -9989,10 +9840,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/engineering)
 "aza" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor{
 	icon_state = "grimy"
 	},
@@ -10032,9 +9880,7 @@
 	},
 /area/bigredv2/outside/general_offices)
 "azf" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/alien/weeds/node,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_18";
@@ -10579,9 +10425,7 @@
 /area/bigredv2/outside/medical)
 "aAA" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/mars,
 /area/bigredv2/outside/n)
 "aAB" = (
@@ -10976,9 +10820,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/caves/eta/storage)
 "aBz" = (
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /obj/effect/alien/weeds/node,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_7";
@@ -11456,9 +11298,7 @@
 /turf/closed/wall/solaris,
 /area/bigredv2/caves/eta/xenobiology)
 "aCM" = (
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /turf/open/mars,
 /area/bigredv2/outside/c)
 "aCN" = (
@@ -11501,9 +11341,7 @@
 	},
 /area/bigredv2/outside/dorms)
 "aCT" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -11518,9 +11356,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/bar)
 "aCV" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/mars,
 /area/bigredv2/outside/ne)
 "aCW" = (
@@ -11627,9 +11463,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/caves/eta/xenobiology)
 "aDk" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /obj/effect/alien/weeds/node,
 /turf/open/floor{
 	icon_state = "whitepurplecorner";
@@ -12038,9 +11872,7 @@
 "aEf" = (
 /obj/structure/machinery/portable_atmospherics/hydroponics,
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	icon_state = "whitegreenfull";
 	tag = "icon-whitegreenfull"
@@ -12095,9 +11927,7 @@
 	},
 /area/bigredv2/caves/lambda/research)
 "aEn" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/alien/weeds/node,
 /turf/open/floor{
 	icon_state = "whitepurplefull";
@@ -12158,9 +11988,7 @@
 /turf/closed/wall/solaris/rock,
 /area/bigredv2/outside)
 "aEv" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	icon_state = "asteroidwarning";
 	tag = "icon-asteroidwarning"
@@ -12185,9 +12013,7 @@
 "aEz" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -12315,9 +12141,7 @@
 /area/bigredv2/outside/bar)
 "aEP" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -12491,10 +12315,7 @@
 	},
 /area/bigredv2/caves/lambda/research)
 "aFn" = (
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_spawn,
 /obj/effect/alien/weeds/node,
 /turf/open/floor{
 	icon_state = "dark";
@@ -12674,9 +12495,7 @@
 	},
 /area/bigredv2/outside/medical)
 "aFL" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/mars,
 /area/bigredv2/outside/c)
 "aFM" = (
@@ -13443,9 +13262,7 @@
 /area/bigredv2/outside/medical)
 "aHA" = (
 /obj/structure/bed,
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor{
 	dir = 6;
 	icon_state = "whitegreen";
@@ -13538,9 +13355,7 @@
 	},
 /area/bigredv2/outside/library)
 "aHN" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "carpet11-12";
@@ -13954,9 +13769,7 @@
 	},
 /area/bigredv2/caves/lambda/research)
 "aIO" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/alien/weeds/node,
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 1;
@@ -13984,9 +13797,7 @@
 	},
 /area/bigredv2/caves/lambda/research)
 "aIR" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /obj/effect/alien/weeds/node,
 /obj/structure/mineral_door/resin,
 /turf/open/floor/bluegrid{
@@ -14013,9 +13824,7 @@
 /area/bigredv2/outside/cargo)
 "aIU" = (
 /obj/structure/pipes/vents/scrubber/on,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/alien/weeds/node,
 /turf/open/floor{
 	dir = 1;
@@ -14087,9 +13896,7 @@
 /obj/structure/machinery/door/window{
 	dir = 8
 	},
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/alien/weeds/node,
 /turf/open/floor{
 	dir = 9;
@@ -14111,9 +13918,7 @@
 	},
 /area/bigredv2/outside/admin_building)
 "aJc" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /obj/effect/alien/weeds/node,
 /turf/open/floor{
 	icon_state = "darkish";
@@ -14121,9 +13926,7 @@
 	},
 /area/bigredv2/caves/lambda/virology)
 "aJd" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /obj/effect/alien/weeds/node,
 /turf/open/floor{
 	dir = 4;
@@ -14222,9 +14025,7 @@
 	},
 /area/bigredv2/outside/bar)
 "aJo" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "carpet13-5";
@@ -14379,10 +14180,7 @@
 	},
 /area/bigredv2/caves/lambda/research)
 "aJF" = (
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_spawn,
 /obj/effect/alien/weeds/node,
 /turf/open/floor{
 	icon_state = "darkpurple2";
@@ -14618,9 +14416,7 @@
 /obj/structure/pipes/vents/scrubber/on{
 	dir = 8
 	},
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /obj/effect/alien/weeds/node,
 /turf/open/floor{
 	icon_state = "darkish";
@@ -14657,9 +14453,7 @@
 	},
 /area/bigredv2/caves/lambda/virology)
 "aKg" = (
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
@@ -14724,9 +14518,7 @@
 	},
 /area/bigredv2/outside/c)
 "aKr" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/mars,
 /area/bigredv2/outside/c)
 "aKt" = (
@@ -15153,9 +14945,7 @@
 /area/bigredv2/outside/bar)
 "aLu" = (
 /obj/structure/surface/table/woodentable,
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
 	icon_state = "wood"
@@ -15434,9 +15224,7 @@
 	},
 /area/bigredv2/outside/nw)
 "aMb" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidwarning";
@@ -15488,10 +15276,7 @@
 	},
 /area/bigredv2/outside/bar)
 "aMj" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -15561,10 +15346,7 @@
 /turf/open/floor/bluegrid,
 /area/bigredv2/caves/lambda/research)
 "aMt" = (
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_spawn,
 /obj/effect/alien/weeds/node,
 /turf/open/floor/bluegrid,
 /area/bigredv2/caves/lambda/research)
@@ -15797,9 +15579,7 @@
 	},
 /area/bigredv2/caves_lambda)
 "aMW" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /obj/effect/alien/weeds/node,
 /turf/open/floor/bluegrid{
 	icon_state = "bcircuitoff";
@@ -15889,9 +15669,7 @@
 	},
 /area/bigredv2/outside/virology)
 "aNj" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor{
 	icon_state = "freezerfloor"
 	},
@@ -16242,9 +16020,7 @@
 /area/bigredv2/outside/bar)
 "aNZ" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	icon_state = "yellowfull";
 	tag = "icon-yellowfull"
@@ -16400,9 +16176,7 @@
 	},
 /area/bigredv2/outside/virology)
 "aOt" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /obj/effect/alien/weeds/node,
 /turf/open/floor{
 	icon_state = "freezerfloor"
@@ -16773,9 +16547,7 @@
 	},
 /area/bigredv2/outside/library)
 "aPn" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "carpet13-5";
@@ -16818,10 +16590,7 @@
 	tag = "icon-bulb1 (EAST)"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_spawn,
 /obj/effect/alien/weeds/node,
 /turf/open/floor{
 	icon_state = "whitegreenfull";
@@ -16929,9 +16698,7 @@
 	},
 /area/bigredv2/outside/general_store)
 "aPC" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor,
 /area/bigredv2/outside/general_store)
 "aPD" = (
@@ -17013,10 +16780,7 @@
 	},
 /area/bigredv2/outside/admin_building)
 "aPM" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -17239,9 +17003,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/hydroponics)
 "aQn" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor,
 /area/bigredv2/outside/hydroponics)
 "aQo" = (
@@ -17522,9 +17284,7 @@
 	},
 /area/bigredv2/outside/admin_building)
 "aQW" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -17541,9 +17301,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -17727,9 +17485,7 @@
 	},
 /area/bigredv2/caves_lambda)
 "aRw" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/alien/weeds/node,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_6";
@@ -17885,9 +17641,7 @@
 	},
 /area/bigredv2/outside/general_store)
 "aRM" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor,
 /area/bigredv2/outside/general_store)
 "aRN" = (
@@ -17914,10 +17668,7 @@
 /area/bigredv2/outside/general_store)
 "aRP" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor,
 /area/bigredv2/outside/general_store)
 "aRQ" = (
@@ -18381,9 +18132,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "darkred2";
@@ -18866,9 +18615,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/admin_building)
 "aUf" = (
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "darkred2";
@@ -19139,9 +18886,7 @@
 	},
 /area/bigredv2/outside/virology)
 "aUP" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/alien/weeds/node,
 /turf/open/floor{
 	icon_state = "white"
@@ -19336,9 +19081,7 @@
 /area/bigredv2/outside/admin_building)
 "aVl" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "darkred2";
@@ -19356,9 +19099,7 @@
 	},
 /area/bigredv2/outside/admin_building)
 "aVn" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/mars{
 	icon_state = "mars_dirt_10";
 	tag = "icon-mars_dirt_10"
@@ -19397,9 +19138,7 @@
 	},
 /area/bigredv2/outside/e)
 "aVt" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/mars,
 /area/bigredv2/outside/e)
 "aVv" = (
@@ -19642,9 +19381,7 @@
 	},
 /area/bigredv2/outside/admin_building)
 "aVY" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/mars,
 /area/bigredv2/outside/e)
 "aVZ" = (
@@ -19891,16 +19628,12 @@
 	},
 /area/bigredv2/outside/e)
 "aWL" = (
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /turf/open/mars,
 /area/bigredv2/outside/e)
 "aWM" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "asteroidwarning";
@@ -20045,9 +19778,7 @@
 /obj/structure/sign/safety/computer{
 	pixel_y = 32
 	},
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "darkred2";
@@ -20376,10 +20107,7 @@
 	},
 /area/bigredv2/outside/admin_building)
 "aYk" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor{
 	icon_state = "dark";
 	tag = "icon-dark"
@@ -20614,9 +20342,7 @@
 	},
 /area/bigredv2/outside/admin_building)
 "aYV" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "darkred2";
@@ -20873,9 +20599,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/cargo)
 "aZM" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "aZO" = (
@@ -20957,9 +20681,7 @@
 	name = "Storm Shutters";
 	pixel_y = -32
 	},
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor{
 	icon_state = "darkred2";
 	tag = "icon-darkred2"
@@ -21077,9 +20799,7 @@
 	dir = 8;
 	tag = ""
 	},
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "chapel"
@@ -21143,9 +20863,7 @@
 /area/bigredv2/outside/cargo)
 "baB" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "baC" = (
@@ -21319,10 +21037,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "bbh" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "bbi" = (
@@ -21444,9 +21159,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -21546,9 +21259,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	icon_state = "darkish";
 	tag = "icon-darkish"
@@ -21691,10 +21402,7 @@
 	},
 /area/bigredv2/outside/admin_building)
 "bcd" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/plating,
 /area/bigredv2/outside/admin_building)
 "bce" = (
@@ -21746,19 +21454,14 @@
 	dir = 8;
 	tag = ""
 	},
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "chapel"
 	},
 /area/bigredv2/outside/chapel)
 "bcn" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_6";
 	tag = "icon-mars_cave_6"
@@ -21779,9 +21482,7 @@
 	},
 /area/bigredv2/outside/w)
 "bcq" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/mars{
 	icon_state = "mars_dirt_10";
 	tag = "icon-mars_dirt_10"
@@ -22016,9 +21717,7 @@
 	},
 /area/bigredv2/outside/admin_building)
 "bcT" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
@@ -22106,9 +21805,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "bdk" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/mars_cave{
 	icon_state = "mars_dirt_4";
 	tag = "icon-mars_dirt_4"
@@ -22220,9 +21917,7 @@
 /area/bigredv2/outside/office_complex)
 "bdB" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor,
 /area/bigredv2/outside/office_complex)
 "bdC" = (
@@ -22358,9 +22053,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "bed" = (
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "bee" = (
@@ -22450,10 +22143,7 @@
 /turf/open/mars,
 /area/bigredv2/outside/se)
 "bet" = (
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_spawn,
 /obj/effect/alien/weeds/node,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
@@ -22461,9 +22151,7 @@
 	},
 /area/bigredv2/caves_east)
 "beu" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
@@ -22587,10 +22275,7 @@
 /area/bigredv2/outside/office_complex)
 "beM" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor,
 /area/bigredv2/outside/office_complex)
 "beN" = (
@@ -22751,9 +22436,7 @@
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "redcorner"
@@ -23001,18 +22684,14 @@
 	},
 /area/bigredv2/outside/office_complex)
 "bfT" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/mars_cave{
 	icon_state = "mars_dirt_4";
 	tag = "icon-mars_dirt_4"
 	},
 /area/bigredv2/outside/w)
 "bfU" = (
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /turf/open/mars_cave{
 	icon_state = "mars_dirt_4";
 	tag = "icon-mars_dirt_4"
@@ -23276,9 +22955,7 @@
 	},
 /area/bigredv2/outside/office_complex)
 "bgC" = (
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /turf/open/mars,
 /area/bigredv2/outside/w)
 "bgD" = (
@@ -23363,9 +23040,7 @@
 /area/bigredv2/outside/office_complex)
 "bgO" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -23406,9 +23081,7 @@
 /area/bigredv2/outside/office_complex)
 "bgT" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whiteyellowfull"
@@ -23510,10 +23183,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/storage)
 "bhk" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "redcorner"
@@ -23566,9 +23236,7 @@
 	},
 /area/bigredv2/outside/se)
 "bhr" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/mars,
 /area/bigredv2/outside/se)
 "bhs" = (
@@ -23800,9 +23468,7 @@
 	},
 /area/bigredv2/outside/office_complex)
 "bic" = (
-/obj/effect/landmark{
-	name = "yautja_teleport_loc"
-	},
+/obj/effect/landmark/yautja_teleport,
 /turf/open/mars,
 /area/bigredv2/outside/se)
 "bid" = (
@@ -24084,9 +23750,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "bjk" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	icon_state = "redcorner"
 	},
@@ -24116,9 +23780,7 @@
 	},
 /area/bigredv2/outside/space_port_lz2)
 "bjo" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor/plating,
 /area/shuttle/drop2/BigRed)
 "bjp" = (
@@ -24287,9 +23949,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/office_complex)
 "bjN" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/mars,
 /area/bigredv2/outside/space_port_lz2)
 "bjO" = (
@@ -24436,9 +24096,7 @@
 	},
 /area/bigredv2/outside/s)
 "bkq" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/mars,
 /area/bigredv2/outside/s)
 "bkr" = (
@@ -24762,10 +24420,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "blB" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/camera/autoname{
 	dir = 4
@@ -24791,9 +24446,7 @@
 /area/bigredv2/outside/filtration_plant)
 "blE" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
@@ -24875,10 +24528,7 @@
 "bma" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
@@ -25044,9 +24694,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "bmM" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/plating,
 /area/shuttle/drop2/BigRed)
 "bmN" = (
@@ -25256,9 +24904,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/item/clothing/glasses/meson,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
@@ -25395,9 +25041,7 @@
 /area/bigredv2/outside/engineering)
 "bnX" = (
 /obj/item/folder/yellow,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bnY" = (
@@ -25434,9 +25078,7 @@
 	dir = 4
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "boe" = (
@@ -25516,9 +25158,7 @@
 "boH" = (
 /obj/effect/decal/cleanable/liquid_fuel,
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
@@ -25595,9 +25235,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "boZ" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "bpa" = (
@@ -25613,10 +25251,7 @@
 	},
 /area/bigredv2/outside/filtration_plant)
 "bpe" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bpf" = (
@@ -25792,9 +25427,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bpM" = (
@@ -25844,9 +25477,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "bpT" = (
@@ -25901,9 +25532,7 @@
 	},
 /area/bigredv2/outside/se)
 "bqb" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
@@ -26053,10 +25682,7 @@
 /area/bigredv2/outside/engineering)
 "bqT" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "bqV" = (
@@ -26204,9 +25830,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "brC" = (
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "brD" = (
@@ -26246,9 +25870,7 @@
 /area/bigredv2/outside/engineering)
 "brK" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "brL" = (
@@ -26377,9 +25999,7 @@
 /obj/item/stack/sheet/metal{
 	amount = 30
 	},
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bso" = (
@@ -26387,9 +26007,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bsu" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bsB" = (
@@ -26431,9 +26049,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "bsH" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -26459,9 +26075,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bsL" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -26604,9 +26218,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "btA" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "btB" = (
@@ -26701,9 +26313,7 @@
 	},
 /area/bigredv2/outside/s)
 "buy" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
 	tag = "icon-mars_cave_2"
@@ -26738,9 +26348,7 @@
 	},
 /area/bigredv2/outside/sw)
 "buR" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/mars_cave{
 	icon_state = "mars_dirt_4";
 	tag = "icon-mars_dirt_4"
@@ -26768,9 +26376,7 @@
 /turf/open/floor,
 /area/bigredv2/caves_sw)
 "bvw" = (
-/obj/effect/landmark{
-	name = "yautja_teleport_loc"
-	},
+/obj/effect/landmark/yautja_teleport,
 /turf/open/mars_cave{
 	icon_state = "mars_dirt_4";
 	tag = "icon-mars_dirt_4"
@@ -26796,9 +26402,7 @@
 /turf/open/floor,
 /area/bigredv2/caves_sw)
 "bvH" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/mars_cave{
 	icon_state = "mars_dirt_4";
 	tag = "icon-mars_dirt_4"
@@ -26841,9 +26445,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/caves_sw)
 "bvW" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/alien/weeds/node,
 /turf/open/floor{
 	dir = 1;
@@ -26863,9 +26465,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/eta)
 "bvZ" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/alien/weeds/node,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
@@ -26875,9 +26475,7 @@
 	},
 /area/bigredv2/outside/eta)
 "bwa" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /obj/effect/alien/weeds/node,
 /turf/open/floor{
 	dir = 1;
@@ -27113,9 +26711,7 @@
 /turf/open/floor,
 /area/bigredv2/caves/eta/storage)
 "bxe" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/alien/weeds/node,
 /turf/open/floor,
 /area/bigredv2/caves/eta/storage)
@@ -27314,9 +26910,7 @@
 /area/bigredv2/caves/eta/storage)
 "bxG" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/alien/weeds/node,
 /turf/open/floor{
 	dir = 8;
@@ -27390,10 +26984,7 @@
 /area/bigredv2/caves/eta/research)
 "bxP" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_spawn,
 /obj/effect/alien/weeds/node,
 /turf/open/floor{
 	icon_state = "dark";
@@ -27470,9 +27061,7 @@
 /area/bigredv2/caves/eta/research)
 "byb" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	icon_state = "dark";
 	tag = "icon-dark"
@@ -27524,9 +27113,7 @@
 /area/bigredv2/caves/eta/storage)
 "byk" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/alien/weeds/node,
 /turf/open/floor{
 	icon_state = "dark";
@@ -27997,9 +27584,7 @@
 	},
 /area/bigredv2/caves/eta/research)
 "bzo" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_7";
 	tag = "icon-mars_cave_7"
@@ -28081,9 +27666,7 @@
 	},
 /area/bigredv2/caves/eta/storage)
 "bzy" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	icon_state = "dark";
 	tag = "icon-dark"
@@ -28279,9 +27862,7 @@
 /area/bigredv2/caves/eta/research)
 "bzU" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/alien/weeds/node,
 /turf/open/floor{
 	icon_state = "dark";
@@ -28353,9 +27934,7 @@
 	},
 /area/bigredv2/caves/eta/research)
 "bAe" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/alien/weeds/node,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_5";
@@ -28746,9 +28325,7 @@
 	},
 /area/bigredv2/caves/eta/xenobiology)
 "bBe" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "darkred2";
@@ -28850,10 +28427,7 @@
 	},
 /area/bigredv2/caves/eta/xenobiology)
 "bBs" = (
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_spawn,
 /turf/open/floor{
 	icon_state = "dark";
 	tag = "icon-dark"
@@ -28890,9 +28464,7 @@
 	},
 /area/bigredv2/caves/eta/research)
 "bBB" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/alien/weeds/node,
 /turf/open/floor{
 	icon_state = "dark";
@@ -28900,9 +28472,7 @@
 	},
 /area/bigredv2/caves/eta/research)
 "bBC" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /obj/effect/alien/weeds/node,
 /turf/open/jungle{
 	bushes_spawn = 0;
@@ -29046,10 +28616,7 @@
 	},
 /area/bigredv2/caves/eta/research)
 "bBZ" = (
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_spawn,
 /obj/effect/alien/weeds/node,
 /turf/open/floor{
 	icon_state = "dark";
@@ -29151,9 +28718,7 @@
 /area/bigredv2/caves/eta/xenobiology)
 "bCl" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/alien/weeds/node,
 /turf/open/floor{
 	dir = 8;
@@ -29209,9 +28774,7 @@
 	},
 /area/bigredv2/caves/eta/xenobiology)
 "bCs" = (
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /obj/effect/alien/weeds/node,
 /turf/open/floor{
 	icon_state = "dark";
@@ -29501,9 +29064,7 @@
 	},
 /area/bigredv2/caves/eta/xenobiology)
 "bDe" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/jungle{
 	bushes_spawn = 0;
 	icon_state = "grass_impenetrable"
@@ -29559,9 +29120,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /obj/effect/alien/weeds/node,
 /turf/open/jungle{
 	bushes_spawn = 0;
@@ -29645,9 +29204,7 @@
 /area/bigredv2/caves/eta/living)
 "bDt" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /obj/effect/alien/weeds/node,
 /turf/open/floor{
 	icon_state = "dark";
@@ -29707,9 +29264,7 @@
 /area/bigredv2/caves/eta/living)
 "bDC" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/alien/weeds/node,
 /turf/open/floor{
 	icon_state = "wood"
@@ -29742,9 +29297,7 @@
 	},
 /area/bigredv2/caves/eta/living)
 "bDH" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	icon_state = "darkyellowcorners2";
 	tag = "icon-darkyellowcorners2"
@@ -29923,10 +29476,7 @@
 	},
 /area/bigredv2/caves/eta/xenobiology)
 "bEg" = (
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_spawn,
 /obj/effect/alien/weeds/node,
 /turf/open/mars{
 	icon_state = "mars_dirt_10";
@@ -30029,9 +29579,7 @@
 	},
 /area/bigredv2/caves/eta/xenobiology)
 "bEt" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -30304,9 +29852,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "bZL" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /obj/effect/alien/weeds/node,
 /turf/open/floor{
 	icon_state = "whitepurplefull";
@@ -30314,9 +29860,7 @@
 	},
 /area/bigredv2/caves/lambda/research)
 "caD" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidwarning";
@@ -30450,9 +29994,7 @@
 /turf/open/mars,
 /area/bigredv2/outside/space_port_lz2)
 "daf" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
 	tag = "icon-mars_cave_2"
@@ -30526,9 +30068,7 @@
 	},
 /area/bigredv2/caves_lambda)
 "dPs" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /obj/effect/alien/weeds/node,
 /turf/open/jungle{
 	bushes_spawn = 0;
@@ -30621,9 +30161,7 @@
 	},
 /area/bigredv2/outside/eta)
 "eEm" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/queen_spawn,
 /turf/open/floor{
 	icon_state = "dark";
@@ -30705,9 +30243,7 @@
 	},
 /area/bigredv2/caves_sw)
 "fhI" = (
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_16";
 	tag = "icon-mars_cave_16"
@@ -31038,9 +30574,7 @@
 	},
 /area/bigredv2/caves_sw)
 "hcb" = (
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
 	tag = "icon-mars_cave_2"
@@ -31058,9 +30592,7 @@
 	},
 /area/bigredv2/caves/lambda/research)
 "hoQ" = (
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
 	tag = "icon-mars_cave_2"
@@ -31087,9 +30619,7 @@
 	},
 /area/bigredv2/outside/filtration_plant)
 "hwy" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/alien/weeds/node,
 /turf/open/floor{
 	icon_state = "dark";
@@ -31112,9 +30642,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/caves_sw)
 "hKD" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/alien/weeds/node,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
@@ -31129,9 +30657,7 @@
 /area/bigredv2/caves_north)
 "hNg" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/alien/weeds/node,
 /turf/open/floor{
 	icon_state = "dark";
@@ -31173,9 +30699,7 @@
 	},
 /area/bigredv2/caves/lambda/research)
 "hYI" = (
-/obj/effect/landmark{
-	name = "xeno_hive_spawn"
-	},
+/obj/effect/landmark/xeno_hive_spawn,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -31202,9 +30726,7 @@
 	},
 /area/bigredv2/outside/eta)
 "iml" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/alien/weeds/node,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
@@ -31237,9 +30759,7 @@
 	},
 /area/bigredv2/outside/s)
 "iwG" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
 	tag = "icon-mars_cave_2"
@@ -31285,9 +30805,7 @@
 	},
 /area/bigredv2/caves_sw)
 "iOL" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/mars_cave{
 	icon_state = "mars_dirt_4";
 	tag = "icon-mars_dirt_4"
@@ -31329,9 +30847,7 @@
 	},
 /area/bigredv2/caves_research)
 "iRG" = (
-/obj/effect/landmark{
-	name = "xeno_hive_spawn"
-	},
+/obj/effect/landmark/xeno_hive_spawn,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
 	tag = "icon-mars_cave_2"
@@ -31680,9 +31196,7 @@
 	},
 /area/bigredv2/outside/medical)
 "kNc" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
 	tag = "icon-mars_cave_2"
@@ -31713,9 +31227,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "kWV" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/alien/weeds/node,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_6";
@@ -31817,9 +31329,7 @@
 	},
 /area/bigredv2/caves_se)
 "lVr" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /obj/effect/alien/weeds/node,
 /turf/open/floor{
 	icon_state = "dark";
@@ -31944,9 +31454,7 @@
 	},
 /area/bigredv2/outside/se)
 "nbi" = (
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /obj/effect/alien/weeds/node,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
@@ -32079,9 +31587,7 @@
 	},
 /area/bigredv2/caves/eta/living)
 "oea" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/alien/weeds/node,
 /turf/open/floor{
 	icon_state = "dark";
@@ -32144,9 +31650,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/caves_virology)
 "ozQ" = (
-/obj/effect/landmark{
-	name = "xeno_hive_spawn"
-	},
+/obj/effect/landmark/xeno_hive_spawn,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
 	tag = "icon-mars_cave_2"
@@ -32173,10 +31677,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "oOk" = (
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_spawn,
 /obj/effect/alien/weeds/node,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
@@ -32184,9 +31685,7 @@
 	},
 /area/bigredv2/caves_research)
 "oQz" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/queen_spawn,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
@@ -32224,9 +31723,7 @@
 /turf/closed/wall/solaris,
 /area/bigredv2/outside/se)
 "pbK" = (
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /obj/effect/alien/weeds/node,
 /obj/effect/landmark/queen_spawn,
 /turf/open/mars_cave{
@@ -32393,9 +31890,7 @@
 	},
 /area/bigred/garage)
 "qmY" = (
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_7";
 	tag = "icon-mars_cave_7"
@@ -32422,10 +31917,7 @@
 /turf/closed/wall/solaris/reinforced,
 /area/bigred/garage)
 "qvA" = (
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_spawn,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
 	tag = "icon-mars_cave_2"
@@ -32633,9 +32125,7 @@
 	},
 /area/bigredv2/caves/lambda/research)
 "rYt" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/mars_cave{
 	icon_state = "mars_dirt_6";
 	tag = "icon-mars_dirt_6"
@@ -32724,9 +32214,7 @@
 	},
 /area/bigredv2/caves_lambda)
 "sBu" = (
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /obj/effect/alien/weeds/node,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
@@ -32828,10 +32316,7 @@
 /area/bigredv2/outside/engineering)
 "tsB" = (
 /obj/effect/alien/weeds/node,
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_spawn,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
 	tag = "icon-mars_cave_2"
@@ -33167,9 +32652,7 @@
 	},
 /area/bigredv2/outside/filtration_plant)
 "wfC" = (
-/obj/effect/landmark{
-	name = "xeno_hive_spawn"
-	},
+/obj/effect/landmark/xeno_hive_spawn,
 /obj/effect/landmark/queen_spawn,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
@@ -33395,9 +32878,7 @@
 	},
 /area/bigredv2/caves/eta/research)
 "xuU" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/alien/weeds/node,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
@@ -33414,10 +32895,7 @@
 	},
 /area/bigredv2/caves/eta/living)
 "xAh" = (
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_spawn,
 /obj/effect/alien/weeds/node,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
@@ -33447,9 +32925,7 @@
 	},
 /area/bigredv2/outside/filtration_plant)
 "xUo" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /obj/effect/alien/weeds/node,
 /turf/open/floor{
 	icon_state = "dark";
@@ -33463,9 +32939,7 @@
 	},
 /area/bigredv2/caves/lambda/research)
 "xWI" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_16";
 	tag = "icon-mars_cave_16"
@@ -33502,10 +32976,7 @@
 /area/bigredv2/outside/eta)
 "yfz" = (
 /obj/effect/alien/weeds/node,
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_spawn,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
 	tag = "icon-mars_cave_2"

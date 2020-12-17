@@ -59,9 +59,7 @@
 	},
 /area/bigredv2/outside/cargo)
 "am" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "an" = (
@@ -69,9 +67,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "ao" = (
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "ap" = (
@@ -277,9 +273,7 @@
 /area/bigredv2/outside/cargo)
 "aQ" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor{
 	icon_state = "bot";
 	dir = 1
@@ -441,9 +435,7 @@
 	},
 /area/bigredv2/outside/cargo)
 "bi" = (
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor{
 	icon_state = "bot";
 	dir = 1

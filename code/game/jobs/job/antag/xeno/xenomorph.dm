@@ -25,7 +25,7 @@
 
 	H.first_xeno = TRUE
 	H.stat = 1
-	H.loc = pick(xeno_spawn)
+	H.forceMove(get_turf(pick(GLOB.xeno_spawns)))
 
 	var/list/survivor_types = list(
 		"Survivor - Scientist",

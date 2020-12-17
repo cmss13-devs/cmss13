@@ -18,9 +18,7 @@
 /turf/open/floor/kutjevo/colors/green,
 /area/kutjevo/interior/complex/botany)
 "ad" = (
-/obj/effect/landmark{
-	name = "yautja_teleport_loc"
-	},
+/obj/effect/landmark/yautja_teleport,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/colony_north)
 "ae" = (
@@ -116,10 +114,7 @@
 /turf/open/auto_turf/sand/layer2,
 /area/kutjevo/interior/colony_N_East)
 "av" = (
-/obj/effect/landmark{
-	icon_state = "hive_spawn";
-	name = "xeno_hive_spawn"
-	},
+/obj/effect/landmark/xeno_hive_spawn,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_S_East)
 "aw" = (
@@ -522,9 +517,7 @@
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/complex/botany/east)
 "bO" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/almayer/research/containment/floor2,
 /area/kutjevo/exterior/complex_border/botany_medical_cave)
 "bP" = (
@@ -597,10 +590,7 @@
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/power_pt2_electric_boogaloo)
 "cd" = (
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_spawn,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/colony_north)
 "ce" = (
@@ -1300,10 +1290,7 @@
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/colony_central/mine_elevator)
 "eo" = (
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_spawn,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_S_East)
 "ep" = (
@@ -1326,10 +1313,7 @@
 /turf/open/floor/almayer/research/containment/floor2,
 /area/kutjevo/interior/complex/med/auto_doc)
 "es" = (
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_spawn,
 /turf/open/auto_turf/sand/layer2,
 /area/kutjevo/interior/colony_N_East)
 "et" = (
@@ -1375,10 +1359,7 @@
 /turf/open/floor/mech_bay_recharge_floor,
 /area/kutjevo/interior/colony_central/mine_elevator)
 "ez" = (
-/obj/effect/landmark{
-	icon_state = "monkey_spawn";
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_north)
 "eA" = (
@@ -1544,9 +1525,7 @@
 /turf/open/floor/kutjevo/plate,
 /area/kutjevo/interior/colony_South)
 "fa" = (
-/obj/effect/landmark{
-	name = "yautja_teleport_loc"
-	},
+/obj/effect/landmark/yautja_teleport,
 /turf/open/auto_turf/sand/layer2,
 /area/kutjevo/exterior/scrubland)
 "fb" = (
@@ -1614,10 +1593,7 @@
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/exterior/construction)
 "fn" = (
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_spawn,
 /obj/effect/alien/weeds/node,
 /turf/open/auto_turf/sand/layer2,
 /area/kutjevo/interior/colony_N_East)
@@ -2274,9 +2250,7 @@
 	},
 /area/kutjevo/exterior/runoff_bridge)
 "ho" = (
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/stonyfields)
 "hp" = (
@@ -2343,9 +2317,7 @@
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/lz_dunes)
 "hz" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/scrubland)
 "hA" = (
@@ -2410,9 +2382,7 @@
 /turf/open/floor/kutjevo/grey,
 /area/kutjevo/interior/complex/botany)
 "hJ" = (
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/scrubland)
 "hK" = (
@@ -2484,11 +2454,7 @@
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/construction)
 "hV" = (
-/obj/effect/landmark{
-	icon_state = "x3";
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/kutjevo/colors/cyan,
 /area/kutjevo/interior/complex/med)
 "hW" = (
@@ -2514,11 +2480,7 @@
 /area/kutjevo/exterior/runoff_dunes)
 "ib" = (
 /obj/structure/bed/chair/office/light,
-/obj/effect/landmark{
-	icon_state = "x3";
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /obj/structure/machinery/computer/security/telescreen/entertainment{
 	icon_state = "ai_bsod";
 	pixel_y = 32
@@ -2712,10 +2674,7 @@
 /turf/open/gm/grass/weedable,
 /area/kutjevo/exterior/complex_border/med_park)
 "iD" = (
-/obj/effect/landmark{
-	icon_state = "hive_spawn";
-	name = "xeno_hive_spawn"
-	},
+/obj/effect/landmark/xeno_hive_spawn,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_north)
 "iE" = (
@@ -2737,9 +2696,7 @@
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/colony_South)
 "iH" = (
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /turf/open/floor/almayer/research/containment/floor2,
 /area/kutjevo/exterior/complex_border/botany_medical_cave)
 "iI" = (
@@ -3148,9 +3105,7 @@
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/colony_central)
 "kc" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/stonyfields)
 "kd" = (
@@ -3783,9 +3738,7 @@
 /turf/open/floor/kutjevo/tan/multi_tiles,
 /area/kutjevo/exterior/runoff_bridge)
 "me" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_north)
 "mg" = (
@@ -4351,9 +4304,7 @@
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/complex/med/cells)
 "nL" = (
-/obj/effect/landmark{
-	name = "yautja_teleport_loc"
-	},
+/obj/effect/landmark/yautja_teleport,
 /turf/open/auto_turf/sand/layer2,
 /area/kutjevo/exterior/runoff_dunes)
 "nM" = (
@@ -4599,10 +4550,7 @@
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/interior/complex/botany)
 "oy" = (
-/obj/effect/landmark{
-	icon_state = "monkey_spawn";
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_N_East)
 "oz" = (
@@ -4719,10 +4667,7 @@
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/runoff_dunes)
 "oS" = (
-/obj/effect/landmark{
-	icon_state = "monkey_spawn";
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/construction)
 "oT" = (
@@ -4732,10 +4677,7 @@
 /turf/closed/wall/kutjevo/colony/reinforced,
 /area/kutjevo/exterior/complex_border/med_rec)
 "oV" = (
-/obj/effect/landmark{
-	icon_state = "monkey_spawn";
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/auto_turf/sand/layer2,
 /area/kutjevo/interior/colony_central)
 "oW" = (
@@ -5057,10 +4999,7 @@
 /turf/open/floor/almayer/research/containment/floor2,
 /area/kutjevo/interior/complex/botany)
 "pY" = (
-/obj/effect/landmark{
-	icon_state = "hive_spawn";
-	name = "xeno_hive_spawn"
-	},
+/obj/effect/landmark/xeno_hive_spawn,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/colony_N_East)
 "pZ" = (
@@ -5488,10 +5427,7 @@
 	},
 /area/kutjevo/interior/complex/med/operating)
 "ro" = (
-/obj/effect/landmark{
-	icon_state = "monkey_spawn";
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor/kutjevo/tan/multi_tiles,
 /area/kutjevo/interior/colony_central)
 "rp" = (
@@ -5630,9 +5566,7 @@
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/power)
 "rI" = (
-/obj/effect/landmark{
-	name = "yautja_teleport_loc"
-	},
+/obj/effect/landmark/yautja_teleport,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/scrubland)
 "rJ" = (
@@ -6030,10 +5964,7 @@
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/complex/botany)
 "sZ" = (
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_spawn,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_N_East)
 "ta" = (
@@ -6289,9 +6220,7 @@
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/power)
 "tM" = (
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_north)
 "tN" = (
@@ -6618,10 +6547,7 @@
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/exterior/runoff_bridge)
 "uL" = (
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_spawn,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_South)
 "uM" = (
@@ -6661,11 +6587,7 @@
 	},
 /area/kutjevo/interior/construction)
 "uS" = (
-/obj/effect/landmark{
-	icon_state = "x3";
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/kutjevo/colors/orange,
 /area/kutjevo/interior/foremans_office)
 "uT" = (
@@ -6877,10 +6799,7 @@
 	},
 /area/kutjevo/interior/colony_South/power2)
 "vE" = (
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_spawn,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/colony_S_East)
 "vF" = (
@@ -7188,10 +7107,7 @@
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/colony_north)
 "wJ" = (
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_spawn,
 /obj/effect/alien/weeds/node,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/colony_S_East)
@@ -7245,10 +7161,7 @@
 /turf/open/floor/almayer/research/containment/floor1,
 /area/kutjevo/interior/complex/botany)
 "wS" = (
-/obj/effect/landmark{
-	icon_state = "monkey_spawn";
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_central)
 "wT" = (
@@ -7651,11 +7564,7 @@
 	},
 /area/kutjevo/interior/colony_South/power2)
 "yh" = (
-/obj/effect/landmark{
-	icon_state = "x3";
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/kutjevo/colors,
 /area/kutjevo/interior/complex/med)
 "yi" = (
@@ -8087,10 +7996,7 @@
 	},
 /area/kutjevo/exterior/runoff_river)
 "zG" = (
-/obj/effect/landmark{
-	icon_state = "monkey_spawn";
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/construction)
 "zH" = (
@@ -8568,10 +8474,7 @@
 /turf/open/floor/almayer/research/containment/floor2,
 /area/kutjevo/interior/complex/botany)
 "Bd" = (
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_spawn,
 /obj/effect/alien/weeds/node,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_north)
@@ -8871,9 +8774,7 @@
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/interior/complex/med/operating)
 "Cb" = (
-/obj/effect/landmark{
-	name = "yautja_teleport_loc"
-	},
+/obj/effect/landmark/yautja_teleport,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/stonyfields)
 "Cc" = (
@@ -9026,10 +8927,7 @@
 /turf/open/floor/kutjevo/colors/green,
 /area/kutjevo/interior/complex/botany)
 "Cz" = (
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_spawn,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/colony_N_East)
 "CA" = (
@@ -9317,21 +9215,14 @@
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/scrubland)
 "Dt" = (
-/obj/effect/landmark{
-	icon_state = "monkey_spawn";
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/construction)
 "Du" = (
 /turf/open/floor/almayer/research/containment/floor2,
 /area/kutjevo/exterior/complex_border/med_rec)
 "Dv" = (
-/obj/effect/landmark{
-	icon_state = "x3";
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/power_pt2_electric_boogaloo)
 "Dw" = (
@@ -9394,11 +9285,7 @@
 /area/kutjevo/exterior/construction)
 "DH" = (
 /obj/structure/platform_decoration/kutjevo,
-/obj/effect/landmark{
-	icon_state = "x3";
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/foremans_office)
 "DI" = (
@@ -9438,10 +9325,7 @@
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/lz_dunes)
 "DQ" = (
-/obj/effect/landmark{
-	icon_state = "hive_spawn";
-	name = "xeno_hive_spawn"
-	},
+/obj/effect/landmark/xeno_hive_spawn,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_South)
 "DR" = (
@@ -9752,11 +9636,7 @@
 /turf/open/floor/kutjevo/colors/orange,
 /area/kutjevo/interior/colony_South/power2)
 "EP" = (
-/obj/effect/landmark{
-	icon_state = "x3";
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/kutjevo/colors,
 /area/kutjevo/interior/complex/botany)
 "EQ" = (
@@ -9854,10 +9734,7 @@
 /area/kutjevo/exterior/runoff_dunes)
 "Ff" = (
 /obj/effect/alien/weeds/node,
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_spawn,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/colony_South)
 "Fg" = (
@@ -11434,10 +11311,7 @@
 /turf/open/floor/kutjevo/tan/multi_tiles,
 /area/kutjevo/interior/colony_South/power2)
 "Km" = (
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_spawn,
 /obj/effect/alien/weeds/node,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/colony_north)
@@ -11572,9 +11446,7 @@
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/scrubland)
 "KM" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/scrubland)
 "KN" = (
@@ -13199,9 +13071,7 @@
 /turf/open/floor/kutjevo/colors/orange,
 /area/kutjevo/interior/power)
 "PR" = (
-/obj/effect/landmark{
-	name = "yautja_teleport_loc"
-	},
+/obj/effect/landmark/yautja_teleport,
 /turf/open/floor/kutjevo/grey/plate,
 /area/kutjevo/interior/construction)
 "PS" = (
@@ -13901,10 +13771,7 @@
 	},
 /area/kutjevo/interior/oob)
 "RY" = (
-/obj/effect/landmark{
-	icon_state = "monkey_spawn";
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor/kutjevo/grey/plate,
 /area/kutjevo/interior/construction)
 "RZ" = (
@@ -14085,9 +13952,7 @@
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/colony_South/power2)
 "SG" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/construction)
 "SH" = (
@@ -14254,11 +14119,7 @@
 /obj/structure/barricade/deployable{
 	dir = 8
 	},
-/obj/effect/landmark{
-	icon_state = "x3";
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /obj/structure/bed/chair{
 	dir = 8;
 	tag = "icon-chair (WEST)"
@@ -14628,9 +14489,7 @@
 /turf/open/floor/kutjevo/colors/cyan,
 /area/kutjevo/interior/complex/med/triage)
 "Uu" = (
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/scrubland)
 "Uv" = (
@@ -15098,10 +14957,7 @@
 /turf/open/gm/river/desert/deep/covered,
 /area/kutjevo/interior/complex/med/operating)
 "VR" = (
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_spawn,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_north)
 "VS" = (
@@ -15668,10 +15524,7 @@
 /turf/open/floor/kutjevo/plate,
 /area/kutjevo/exterior/runoff_dunes)
 "XD" = (
-/obj/effect/landmark{
-	icon_state = "monkey_spawn";
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_South)
 "XE" = (
@@ -15688,9 +15541,7 @@
 "XF" = (
 /obj/item/trash/cigbutt,
 /obj/structure/lattice,
-/obj/effect/landmark{
-	name = "yautja_teleport_loc"
-	},
+/obj/effect/landmark/yautja_teleport,
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/construction)
 "XG" = (
@@ -15946,10 +15797,7 @@
 /turf/open/floor/kutjevo/colors/green,
 /area/kutjevo/interior/complex/botany)
 "Yw" = (
-/obj/effect/landmark{
-	icon_state = "monkey_spawn";
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_S_East)
 "Yx" = (
@@ -16217,10 +16065,7 @@
 /turf/open/desert/desert_shore/shore_edge1,
 /area/kutjevo/exterior/runoff_river)
 "Zp" = (
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_spawn,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/colony_South)
 "Zq" = (
@@ -16428,11 +16273,7 @@
 	},
 /area/kutjevo/exterior/runoff_river)
 "ZZ" = (
-/obj/effect/landmark{
-	icon_state = "x3";
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/interior/power)
 

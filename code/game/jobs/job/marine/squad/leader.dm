@@ -21,3 +21,8 @@
 AddTimelock(/datum/job/marine/leader, list(
 	JOB_SQUAD_ROLES = 10 HOURS
 ))
+
+/obj/effect/landmark/start/marine/leader
+	name = JOB_SQUAD_LEADER
+	icon_state = "leader_spawn"
+	job = /datum/job/marine/leader

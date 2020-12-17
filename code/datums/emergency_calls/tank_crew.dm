@@ -7,13 +7,13 @@
 	mob_min = 2
 	probability = 0
 	objectives = "Assist the USCM forces"
-	name_of_spawn = "Distress_Cryo"
+	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_cryo
 	shuttle_id = ""
 
 /datum/emergency_call/tank_crew/create_member(datum/mind/M)
 	set waitfor = 0
 	if(map_tag == MAP_WHISKEY_OUTPOST)
-		name_of_spawn = "distress_wo"
+		name_of_spawn = /obj/effect/landmark/ert_spawns/distress_wo
 	var/turf/spawn_loc = get_spawn_point()
 
 	if(!istype(spawn_loc)) return //Didn't find a useable spawn point.

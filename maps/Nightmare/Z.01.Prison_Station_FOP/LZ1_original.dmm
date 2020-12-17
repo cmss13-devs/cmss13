@@ -420,15 +420,11 @@
 /turf/open/floor/plating,
 /area/prison/hanger/main)
 "aZ" = (
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor/plating,
 /area/shuttle/drop1/prison)
 "ba" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor/plating,
 /area/shuttle/drop1/prison)
 "bb" = (
@@ -709,9 +705,7 @@
 	},
 /area/prison/hanger/main)
 "bG" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor/plating,
 /area/prison/hanger/main)
 "bH" = (
@@ -760,7 +754,7 @@
 /area/prison/hanger/main)
 "bM" = (
 /obj/structure/pipes/vents/pump{
-	dir = 8 
+	dir = 8
 	},
 /turf/open/floor/prison,
 /area/prison/hanger/main)
@@ -842,9 +836,7 @@
 	},
 /area/prison/hanger/main)
 "bU" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/plating,
 /area/prison/hanger/main)
 "bV" = (
@@ -885,7 +877,7 @@
 "bY" = (
 /obj/effect/decal/cleanable/blood,
 /obj/structure/pipes/vents/pump{
-	dir = 1 
+	dir = 1
 	},
 /turf/open/floor/prison{
 	icon_state = "darkred2"
@@ -921,9 +913,7 @@
 /turf/open/floor/prison,
 /area/prison/hanger/main)
 "cc" = (
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /turf/open/floor/plating,
 /area/prison/hanger/main)
 "cd" = (
@@ -1680,7 +1670,7 @@
 /area/prison/monorail/east)
 "dG" = (
 /obj/structure/pipes/vents/pump{
-	dir = 4 
+	dir = 4
 	},
 /turf/open/floor/plating,
 /area/prison/maintenance/hangar_barracks)
@@ -1739,7 +1729,7 @@
 /area/prison/security/checkpoint/hangar)
 "dM" = (
 /obj/structure/pipes/vents/pump{
-	dir = 4 
+	dir = 4
 	},
 /turf/open/floor/prison{
 	tag = "icon-cell_stripe (WEST)";

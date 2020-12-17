@@ -345,21 +345,15 @@
 /turf/open/floor/plating,
 /area/prison/hanger/main)
 "aR" = (
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor/plating,
 /area/shuttle/drop1/prison)
 "aS" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor/plating,
 /area/shuttle/drop1/prison)
 "aT" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor/plating,
 /area/prison/hanger/main)
 "aU" = (

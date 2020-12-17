@@ -30,3 +30,7 @@
 AddTimelock(/datum/job/logistics/tech, list(
 	JOB_ENGINEER_ROLES = 1 HOURS
 ))
+
+/obj/effect/landmark/start/tech
+	name = JOB_ORDNANCE_TECH
+	job = /datum/job/logistics/tech

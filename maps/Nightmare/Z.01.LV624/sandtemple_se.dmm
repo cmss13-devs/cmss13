@@ -186,9 +186,7 @@
 	},
 /area/lv624/ground/jungle1)
 "VR" = (
-/obj/effect/landmark{
-	name = "yautja_teleport_loc"
-	},
+/obj/effect/landmark/yautja_teleport,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle1)
 "Wl" = (
@@ -230,9 +228,7 @@
 	},
 /area/lv624/ground/jungle1)
 "Xz" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/gm/dirt,
 /area/lv624/ground/jungle1)
 "XB" = (

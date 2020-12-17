@@ -45,9 +45,7 @@
 /turf/open/floor,
 /area/lv624/lazarus/landing_zones/lz1)
 "h" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "loadingarea";
@@ -67,9 +65,7 @@
 	},
 /area/lv624/lazarus/landing_zones/lz1)
 "j" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor,
 /area/lv624/lazarus/landing_zones/lz1)
 "k" = (

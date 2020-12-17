@@ -405,10 +405,7 @@
 	},
 /area/prison/engineering)
 "bUz" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/prison,
 /area/prison/storage/medsec)
 "bUA" = (
@@ -479,7 +476,7 @@
 /area/prison/cellblock/protective)
 "bVR" = (
 /obj/structure/pipes/vents/pump{
-	dir = 4 
+	dir = 4
 	},
 /turf/open/floor/wood,
 /area/prison/library)
@@ -544,7 +541,7 @@
 /area/prison/engineering)
 "bVZ" = (
 /obj/structure/pipes/vents/pump{
-	dir = 4 
+	dir = 4
 	},
 /turf/open/floor/plating,
 /area/prison/engineering)
@@ -613,16 +610,11 @@
 	},
 /area/prison/cellblock/protective)
 "bYN" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/wood,
 /area/prison/library)
 "bYO" = (
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor/wood,
 /area/prison/library)
 "bYP" = (
@@ -704,7 +696,7 @@
 /area/prison/engineering)
 "cau" = (
 /obj/structure/pipes/vents/pump{
-	dir = 4 
+	dir = 4
 	},
 /turf/open/floor/prison,
 /area/prison/engineering)
@@ -823,14 +815,12 @@
 /obj/structure/pipes/standard/simple/hidden/scrubbers{
 	dir = 9
 	},
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor/wood,
 /area/prison/library)
 "cbH" = (
 /obj/structure/pipes/vents/pump{
-	dir = 8 
+	dir = 8
 	},
 /turf/open/floor/wood,
 /area/prison/library)
@@ -908,9 +898,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/prison/engineering)
 "ceg" = (
-/obj/effect/landmark{
-	name = "yautja_teleport_loc"
-	},
+/obj/effect/landmark/yautja_teleport,
 /turf/open/floor/wood,
 /area/prison/library)
 "ceh" = (
@@ -1353,7 +1341,7 @@
 /area/prison/cellblock/protective)
 "ckx" = (
 /obj/structure/pipes/vents/pump{
-	dir = 4 
+	dir = 4
 	},
 /turf/open/floor/prison{
 	tag = "icon-bluefull (WEST)";
@@ -1705,10 +1693,7 @@
 	},
 /area/prison/security/monitoring/protective)
 "cmv" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "blue"

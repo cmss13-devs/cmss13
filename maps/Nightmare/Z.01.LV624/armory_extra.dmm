@@ -57,9 +57,7 @@
 /area/lv624/lazarus/main_hall)
 "h" = (
 /obj/structure/machinery/light/small,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -98,12 +96,8 @@
 	pixel_y = 3
 	},
 /obj/item/reagent_container/hypospray/autoinjector/tricord,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	icon_state = "cult";
 	dir = 2
@@ -153,12 +147,8 @@
 /obj/structure/surface/rack{
 	layer = 2.5
 	},
-/obj/effect/landmark{
-	name = "crap_item"
-	},
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
+/obj/effect/landmark/crap_item,
 /obj/item/ammo_magazine/smg/m39/extended,
 /obj/item/weapon/gun/smg/m39,
 /turf/open/floor{
@@ -205,12 +195,8 @@
 /obj/structure/surface/rack{
 	layer = 2.5
 	},
-/obj/effect/landmark{
-	name = "crap_item"
-	},
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
+/obj/effect/landmark/crap_item,
 /obj/item/ammo_magazine/smg/m39/extended,
 /obj/item/weapon/gun/smg/m39,
 /turf/open/floor{
@@ -236,9 +222,7 @@
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle9)
 "A" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	icon_state = "cult";
 	dir = 2

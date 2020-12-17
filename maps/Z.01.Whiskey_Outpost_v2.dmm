@@ -2813,12 +2813,8 @@
 /obj/effect/landmark/start/whiskey{
 	name = "Marine"
 	},
-/obj/effect/landmark{
-	name = "distress_wo"
-	},
-/obj/effect/landmark{
-	name = "latewhiskey"
-	},
+/obj/effect/landmark/ert_spawns/distress_wo,
+/obj/effect/landmark/latewhiskey,
 /turf/open/gm/dirt,
 /area/whiskey_outpost/inside/caves/tunnel)
 "gQ" = (
@@ -2841,12 +2837,8 @@
 /obj/effect/landmark/start/whiskey{
 	name = "Marine"
 	},
-/obj/effect/landmark{
-	name = "distress_wo"
-	},
-/obj/effect/landmark{
-	name = "latewhiskey"
-	},
+/obj/effect/landmark/ert_spawns/distress_wo,
+/obj/effect/landmark/latewhiskey,
 /turf/open/gm/dirt,
 /area/whiskey_outpost/inside/caves/tunnel)
 "gT" = (
@@ -2973,12 +2965,8 @@
 /obj/effect/landmark/start/whiskey{
 	name = "Marine"
 	},
-/obj/effect/landmark{
-	name = "distress_wo"
-	},
-/obj/effect/landmark{
-	name = "latewhiskey"
-	},
+/obj/effect/landmark/ert_spawns/distress_wo,
+/obj/effect/landmark/latewhiskey,
 /turf/open/gm/dirt,
 /area/whiskey_outpost/inside/caves/tunnel)
 "hm" = (
@@ -3053,9 +3041,7 @@
 /obj/effect/landmark/start/whiskey{
 	name = "Marine"
 	},
-/obj/effect/landmark{
-	name = "distress_wo"
-	},
+/obj/effect/landmark/ert_spawns/distress_wo,
 /turf/open/gm/dirt,
 /area/whiskey_outpost/inside/caves/tunnel)
 "hw" = (
@@ -3567,12 +3553,7 @@
 /obj/effect/landmark/start/whiskey{
 	name = "Marine"
 	},
-/obj/effect/landmark{
-	name = "distress_wo"
-	},
-/obj/effect/landmark{
-	name = "distress_wo"
-	},
+/obj/effect/landmark/ert_spawns/distress_wo,
 /turf/open/gm/dirt,
 /area/whiskey_outpost/inside/caves/tunnel)
 "iO" = (

@@ -429,9 +429,7 @@
 /area/bigredv2/outside/medical)
 "bj" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
@@ -482,9 +480,7 @@
 	},
 /area/bigredv2/outside/medical)
 "bq" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor{
 	icon_state = "platingdmg1"
@@ -582,9 +578,7 @@
 	},
 /area/bigredv2/outside/medical)
 "bD" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -892,9 +886,7 @@
 	},
 /area/bigredv2/outside/medical)
 "ct" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
@@ -916,9 +908,7 @@
 "cw" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -1941,9 +1931,7 @@
 "eM" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
@@ -2199,9 +2187,7 @@
 /area/bigredv2/outside/medical)
 "fq" = (
 /obj/structure/bed,
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},

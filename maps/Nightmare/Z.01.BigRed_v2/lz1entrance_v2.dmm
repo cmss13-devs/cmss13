@@ -138,9 +138,7 @@
 	},
 /area/bigredv2/outside/space_port)
 "av" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	dir = 5;
 	icon_state = "asteroidwarning";
@@ -411,9 +409,7 @@
 /area/bigredv2/outside/space_port)
 "aY" = (
 /obj/structure/surface/table,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	dir = 10;
 	icon_state = "darkgreen2";
@@ -682,9 +678,7 @@
 	},
 /area/bigredv2/outside/nw)
 "bK" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	dir = 8;

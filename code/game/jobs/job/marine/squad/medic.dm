@@ -42,3 +42,8 @@ AddTimelock(/datum/job/marine/medic, list(
 	JOB_MEDIC_ROLES = 1 HOURS,
 	JOB_SQUAD_ROLES = 1 HOURS
 ))
+
+/obj/effect/landmark/start/marine/medic
+	name = JOB_SQUAD_MEDIC
+	icon_state = "medic_spawn"
+	job = /datum/job/marine/medic

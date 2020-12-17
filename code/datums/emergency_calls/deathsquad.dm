@@ -10,7 +10,8 @@
 	objectives = "Wipe out everything. Ensure there are no traces of the infestation or any witnesses."
 	probability = 0
 	shuttle_id = "Distress_PMC"
-	name_of_spawn = "Distress_PMC"
+	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_pmc
+	item_spawn = /obj/effect/landmark/ert_spawns/distress_pmc/item
 	max_medics = 1
 	max_heavies = 2
 

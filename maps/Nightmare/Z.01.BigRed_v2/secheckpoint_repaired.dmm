@@ -40,9 +40,7 @@
 	},
 /area/bigred/ground/security)
 "g" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	tag = "icon-asteroidfloor (NORTH)";
 	icon_state = "asteroidfloor";
@@ -92,9 +90,7 @@
 	},
 /area/bigred/ground/security)
 "m" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/floor{
 	tag = "icon-asteroidwarning (NORTHEAST)";
@@ -228,9 +224,7 @@
 	},
 /area/bigred/ground/security)
 "G" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/structure/machinery/light{
 	dir = 4
 	},

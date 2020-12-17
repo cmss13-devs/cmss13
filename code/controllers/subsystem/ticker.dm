@@ -181,8 +181,6 @@ SUBSYSTEM_DEF(ticker)
 	mode.initialize_emergency_calls()
 	mode.post_setup()
 
-	for(var/obj/effect/landmark/start/S in landmarks_list)
-		qdel(S)
 	if(round_statistics)
 		to_world(SPAN_BLUE("<B>Welcome to [round_statistics.name]</B>"))
 
@@ -195,15 +193,7 @@ SUBSYSTEM_DEF(ticker)
 		INVOKE_ASYNC(V, /obj/structure/machinery/vending.proc/select_gamemode_equipment, mode.type)
 
 	setup_done = TRUE
-/*
-	GLOB.start_landmarks_list = shuffle(GLOB.start_landmarks_list) //Shuffle the order of spawn points so they dont always predictably spawn bottom-up and right-to-left
-	for(var/i in GLOB.start_landmarks_list)
-		var/obj/effect/landmark/start/S = i
-		if(istype(S))							//we can not runtime here. not in this important of a proc.
-			S.after_round_start()
-		else
-			stack_trace("[S] [S.type] found in start landmarks list, which isn't a start landmark!")
-*/
+
 
 //These callbacks will fire after roundstart key transfer
 /datum/controller/subsystem/ticker/proc/OnRoundstart(datum/callback/cb)

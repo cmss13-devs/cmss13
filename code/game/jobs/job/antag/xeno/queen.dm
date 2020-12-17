@@ -19,7 +19,7 @@
 
 	// Make the list pretty
 	var/spawn_list_names = list()
-	for(var/T in queen_spawn_list)
+	for(var/T in GLOB.queen_spawns)
 		spawn_list_names += get_area(T)
 
 	// Timed input, answer before the time is up
@@ -38,19 +38,18 @@
 			sleep(SECONDS_2)
 
 	var/turf/QS
-	for(var/T in queen_spawn_list)
+	for(var/T in GLOB.queen_spawns)
 		if(get_area(T) == spawn_name[1])
-			QS = T
+			QS = get_turf(T)
 
 	// Pick a random one if nothing was picked
 	if(isnull(QS))
-		QS = pick(queen_spawn_list)
+		QS = get_turf(pick(GLOB.queen_spawns))
 		// Support maps without queen spawns
 		if(isnull(QS))
-			QS = pick(xeno_spawn)
+			QS = get_turf(pick(GLOB.xeno_spawns))
 
-	if(QS in queen_spawn_list)
-		queen_spawn_list -= QS
+	QDEL_LIST(GLOB.queen_spawns)
 
 	spawn_start_hive_structs(QS)
 

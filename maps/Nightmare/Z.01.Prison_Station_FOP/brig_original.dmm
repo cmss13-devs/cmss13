@@ -242,9 +242,7 @@
 /area/prison/quarters/security)
 "bKN" = (
 /obj/structure/surface/table/reinforced,
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor/prison{
 	tag = "icon-darkyellowfull2 (EAST)";
 	icon_state = "darkyellowfull2";
@@ -417,7 +415,7 @@
 /area/prison/telecomms)
 "bMg" = (
 /obj/structure/pipes/vents/pump{
-	dir = 4 
+	dir = 4
 	},
 /turf/open/floor/prison{
 	dir = 8;
@@ -839,7 +837,7 @@
 /area/prison/security)
 "bOL" = (
 /obj/structure/pipes/vents/pump{
-	dir = 1 
+	dir = 1
 	},
 /turf/open/floor/wood,
 /area/prison/parole/main)
@@ -908,9 +906,7 @@
 /turf/closed/wall/r_wall/prison,
 /area/prison/engineering/atmos)
 "bQk" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/prison{
 	dir = 4;
@@ -1176,16 +1172,12 @@
 /area/prison/engineering/atmos)
 "bRR" = (
 /obj/structure/bed/stool,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/prison,
 /area/prison/intake)
 "bRS" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor/prison,
 /area/prison/intake)
 "bRT" = (
@@ -1227,7 +1219,7 @@
 /area/prison/security)
 "bRX" = (
 /obj/structure/pipes/vents/pump{
-	dir = 1 
+	dir = 1
 	},
 /turf/open/floor/prison,
 /area/prison/security)
@@ -1238,9 +1230,7 @@
 /turf/open/floor/prison,
 /area/prison/security)
 "bRZ" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor/prison,
 /area/prison/security)
 "bSa" = (
@@ -1321,7 +1311,7 @@
 "bTu" = (
 /obj/structure/pipes/binary/pump/high_power{
 	dir = 1;
-	
+
 	},
 /turf/open/floor/plating,
 /area/prison/engineering/atmos)
@@ -1428,9 +1418,7 @@
 /obj/structure/pipes/standard/simple/hidden/scrubbers,
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/prison/hallway/east)
@@ -1591,7 +1579,7 @@
 "bWo" = (
 /obj/structure/pipes/binary/pump/high_power{
 	on = 1;
-	
+
 	},
 /turf/open/floor/plating,
 /area/prison/engineering/atmos)
@@ -1730,7 +1718,7 @@
 /area/prison/hallway/east)
 "bXQ" = (
 /obj/structure/pipes/vents/pump{
-	dir = 8 
+	dir = 8
 	},
 /obj/effect/landmark/corpsespawner/prison_security,
 /obj/effect/decal/cleanable/blood,
@@ -2350,9 +2338,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/prison/security)
 "cci" = (
@@ -2844,9 +2830,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/prison/security)
 "cew" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/prison/security)
 "cex" = (
@@ -3810,7 +3794,7 @@
 /area/prison/security/armory/lethal)
 "ckg" = (
 /obj/structure/pipes/vents/pump{
-	dir = 4 
+	dir = 4
 	},
 /turf/open/floor/wood,
 /area/prison/security/head)
@@ -3845,9 +3829,7 @@
 /area/prison/execution)
 "ckU" = (
 /obj/structure/bed/chair,
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor/prison,
 /area/prison/security/briefing)
 "ckV" = (
@@ -3921,9 +3903,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor/prison,
 /area/prison/execution)
 "clR" = (
@@ -4032,7 +4012,7 @@
 /area/prison/security/armory/riot)
 "cnt" = (
 /obj/structure/pipes/vents/pump{
-	dir = 4 
+	dir = 4
 	},
 /turf/open/floor/prison,
 /area/prison/security/armory/riot)
@@ -4068,7 +4048,7 @@
 /area/prison/security/armory/lethal)
 "cny" = (
 /obj/structure/pipes/vents/pump{
-	dir = 8 
+	dir = 8
 	},
 /turf/open/floor/prison,
 /area/prison/security/armory/lethal)
@@ -4289,7 +4269,7 @@
 /area/prison/execution)
 "cpH" = (
 /obj/structure/pipes/vents/pump{
-	dir = 8 
+	dir = 8
 	},
 /turf/open/floor/prison{
 	tag = "icon-bright_clean (SOUTHWEST)";
@@ -4404,7 +4384,7 @@
 /area/prison/security/briefing)
 "cqu" = (
 /obj/structure/pipes/vents/pump{
-	dir = 1 
+	dir = 1
 	},
 /turf/open/floor/prison{
 	dir = 4;

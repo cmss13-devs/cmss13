@@ -277,9 +277,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "aX" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "aY" = (
@@ -313,9 +311,7 @@
 /area/bigredv2/outside/filtration_plant)
 "be" = (
 /obj/structure/surface/table,
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "bf" = (
@@ -361,9 +357,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "bm" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
@@ -637,9 +631,7 @@
 	},
 /area/bigredv2/outside/filtration_plant)
 "cg" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/mars_cave{
 	tag = "icon-mars_cave_2";
 	icon_state = "mars_cave_2"

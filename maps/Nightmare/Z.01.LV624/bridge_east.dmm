@@ -125,9 +125,7 @@
 	},
 /area/lv624/ground/river2)
 "av" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/coast,
 /area/lv624/ground/river2)
@@ -145,9 +143,7 @@
 	},
 /area/lv624/ground/river2)
 "ay" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/gm/river,
 /area/lv624/ground/river2)
 "az" = (
@@ -413,9 +409,7 @@
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle7)
 "bE" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle7)
 "bF" = (

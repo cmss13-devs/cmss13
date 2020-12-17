@@ -22,3 +22,7 @@ AddTimelock(/datum/job/command/senior, list(
 
 	JOB_COMMAND_ROLES = 5 HOURS,
 ))
+
+/obj/effect/landmark/start/senior
+	name = JOB_SEA
+	job = /datum/job/command/senior

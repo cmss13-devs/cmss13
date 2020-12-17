@@ -151,8 +151,6 @@
 	spawn(0)//Forking here so we dont have to wait for this to finish
 		mode.post_setup()
 		//Cleanup some stuff
-		for(var/obj/effect/landmark/start/S in landmarks_list)
-			qdel(S)
 		if(round_statistics)
 			to_world(SPAN_BLUE("<B>Welcome to [round_statistics.name]</B>"))
 		to_world(SPAN_BLUE("<B>Enjoy the game!</B>"))

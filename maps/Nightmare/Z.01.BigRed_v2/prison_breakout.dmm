@@ -223,9 +223,7 @@
 /obj/structure/toilet{
 	dir = 4
 	},
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor{
 	tag = "icon-freezerfloor";
 	icon_state = "freezerfloor"
@@ -355,9 +353,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "aO" = (
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /turf/open/floor{
 	icon_state = "redcorner";
 	dir = 4
@@ -433,9 +429,7 @@
 /area/bigredv2/outside/marshall_office)
 "aZ" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor,
 /area/bigredv2/outside/marshall_office)
 "ba" = (
@@ -514,9 +508,7 @@
 /area/bigredv2/outside/marshall_office)
 "bl" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor{
 	dir = 2;
 	icon_state = "redcorner"
@@ -747,9 +739,7 @@
 /area/bigredv2/outside/marshall_office)
 "bR" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -989,10 +979,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "cu" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor{
 	icon_state = "redcorner";
 	dir = 4
@@ -1068,9 +1055,7 @@
 /area/bigredv2/outside/marshall_office)
 "cE" = (
 /obj/structure/pipes/standard/manifold/fourway/hidden/green,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor,
 /area/bigredv2/outside/marshall_office)
 "cF" = (
@@ -1287,10 +1272,7 @@
 /area/bigredv2/outside/marshall_office)
 "di" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor,
 /area/bigredv2/outside/marshall_office)
 "dj" = (

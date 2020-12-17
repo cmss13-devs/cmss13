@@ -27,61 +27,63 @@
 	name = "fog blocker"
 	icon_state = "spawn_event"
 
+/obj/effect/landmark/lv624/fog_blocker/Initialize(mapload, ...)
+	. = ..()
+	GLOB.fog_blockers += src
+
+/obj/effect/landmark/lv624/fog_blocker/Destroy()
+	GLOB.fog_blockers -= src
+	return ..()
+
 /obj/effect/landmark/lv624/fog_time_extender
 	name = "fog time extender"
 	icon_state = "spawn_event"
 	var/time_to_extend = 9000
 
+/obj/effect/landmark/lv624/fog_time_extender/Initialize(mapload, ...)
+	. = ..()
+	GLOB.fog_time_extenders += src
+
+/obj/effect/landmark/lv624/fog_time_extender/Destroy()
+	GLOB.fog_time_extenders -= src
+	return ..()
+
 /obj/effect/landmark/lv624/xeno_tunnel
 	name = "xeno tunnel"
 	icon_state = "spawn_event"
+
+/obj/effect/landmark/lv624/xeno_tunnel/Initialize(mapload, ...)
+	. = ..()
+	GLOB.xeno_tunnels += src
+
+/obj/effect/landmark/lv624/xeno_tunnel/Destroy()
+	GLOB.xeno_tunnels -= src
+	return ..()
 
 ////////////////////////////////////////////////////////////////////////////////////////
 
 /* Pre-setup */
 /datum/game_mode/colonialmarines/pre_setup()
 	setup_round_stats()
-	round_fog = new
-	round_toxic_river = new
-	var/xeno_tunnels[] = new
-	var/map_items[] = new
-	var/obj/structure/blocker/fog/F
 	var/fog_timer = 0
-	for(var/obj/effect/landmark/L in landmarks_list)
-		switch(L.name)
-			if("hunter_primary")
-				qdel(L)
-			if("hunter_secondary")
-				qdel(L)
-			if("crap_item")
-				qdel(L)
-			if("good_item")
-				qdel(L)
-			if("block_hellhound")
-				qdel(L)
-			if("fog blocker")
-				F = new(L.loc)
-				round_fog += F
-				qdel(L)
-			if("fog time extender")
-				var/obj/effect/landmark/lv624/fog_time_extender/fte = L
-				if(istype(fte))
-					fog_timer += fte.time_to_extend
-					qdel(L)
-			if("toxic river blocker")
-				F = new(L.loc)
-				round_toxic_river += F
-				qdel(L)
-			if("xeno tunnel")
-				xeno_tunnels += L.loc
-				qdel(L)
-			if("map item")
-				map_items += L.loc
-				qdel(L)
+	for(var/i in GLOB.fog_blockers)
+		var/obj/effect/landmark/lv624/fog_blocker/FB = i
+		round_fog += new /obj/structure/blocker/fog(FB.loc)
+		qdel(FB)
+	for(var/i in GLOB.fog_time_extenders)
+		var/obj/effect/landmark/lv624/fog_time_extender/fte = i
+		fog_timer += fte.time_to_extend
+		qdel(fte)
+
+	QDEL_LIST(GLOB.hunter_primaries)
+	QDEL_LIST(GLOB.hunter_secondaries)
+	QDEL_LIST(GLOB.crap_items)
+	QDEL_LIST(GLOB.good_items)
 
 	// Spawn gamemode-specific map items
-	for(var/turf/T in map_items)
-		map_items -= T
+	for(var/i in GLOB.map_items)
+		var/turf/T = get_turf(i)
+		qdel(i)
 		switch(map_tag)
 			if(MAP_LV_624) new /obj/item/map/lazarus_landing_map(T)
 			if(MAP_ICE_COLONY) new /obj/item/map/ice_colony_map(T)
@@ -107,9 +109,8 @@
 	var/obj/structure/tunnel/T
 	var/i = 0
 	var/turf/t
-	while(xeno_tunnels.len && i++ < 3)
-		t = pick(xeno_tunnels)
-		xeno_tunnels -= t
+	while(GLOB.xeno_tunnels.len && i++ < 3)
+		t = get_turf(pick_n_take(GLOB.xeno_tunnels))
 		T = new(t)
 		T.id = "hole[i]"
 
@@ -141,12 +142,6 @@
 	if(!marines_assigned)
 		return
 
-	var/list/monkey_spawns = list()
-	for(var/obj/effect/landmark/L in landmarks_list)
-		if(L.name == "monkey_spawn")
-			monkey_spawns += L.loc
-			qdel(L)
-
 	switch(map_tag)
 		if(MAP_LV_624)
 			monkey_types = list(/mob/living/carbon/human/farwa, /mob/living/carbon/human/monkey, /mob/living/carbon/human/neaera, /mob/living/carbon/human/stok)
@@ -172,9 +167,8 @@
 
 	var/amount_to_spawn = round(marines_assigned * MONKEYS_TO_MARINES_RATIO)
 
-	for(var/i in 0 to min(amount_to_spawn, length(monkey_spawns)))
-		var/turf/T = pick(monkey_spawns)
-		monkey_spawns -= T
+	for(var/i in 0 to min(amount_to_spawn, length(GLOB.monkey_spawns)))
+		var/turf/T = get_turf(pick_n_take(GLOB.monkey_spawns))
 		var/monkey_to_spawn = pick(monkey_types)
 		new monkey_to_spawn(T)
 

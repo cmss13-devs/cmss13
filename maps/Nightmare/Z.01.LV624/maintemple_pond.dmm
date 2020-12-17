@@ -61,9 +61,7 @@
 /turf/closed/wall/rock/brown,
 /area/lv624/ground/sand6)
 "ap" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/gm/dirt,
 /area/lv624/ground/sand6)
 "aq" = (
@@ -75,9 +73,7 @@
 /area/lv624/ground/sand6)
 "ar" = (
 /obj/structure/surface/table,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whiteyellowfull"
@@ -101,9 +97,7 @@
 /area/lv624/ground/sand6)
 "au" = (
 /obj/structure/surface/table,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/item/legcuffs/yautja{
 	desc = "A bizarre alien device used for trapping and killing prey.";
 	name = "Alien Mine"
@@ -166,9 +160,7 @@
 	},
 /area/lv624/ground/sand6)
 "aD" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whiteyellowfull"
@@ -176,9 +168,7 @@
 /area/lv624/ground/sand6)
 "aE" = (
 /obj/structure/surface/table,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/item/weapon/melee/harpoon,
 /turf/open/floor{
 	dir = 4;
@@ -244,9 +234,7 @@
 	},
 /area/lv624/ground/sand6)
 "aO" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/gm/dirt,
 /area/lv624/ground/sand3)
 "aP" = (
@@ -281,9 +269,7 @@
 /area/lv624/ground/sand3)
 "aV" = (
 /obj/structure/surface/table,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whiteyellowfull"
@@ -320,9 +306,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/sand3)
 "bb" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/gm/dirt,
 /area/lv624/ground/sand3)
 "bc" = (
@@ -330,15 +314,11 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/sand3)
 "bd" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/gm/dirt,
 /area/lv624/ground/sand3)
 "be" = (
-/obj/effect/landmark{
-	name = "yautja_teleport_loc"
-	},
+/obj/effect/landmark/yautja_teleport,
 /turf/open/gm/dirt,
 /area/lv624/ground/sand3)
 

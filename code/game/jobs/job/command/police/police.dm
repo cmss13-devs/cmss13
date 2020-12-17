@@ -30,3 +30,7 @@
 AddTimelock(/datum/job/command/police, list(
 	JOB_SQUAD_ROLES = 10 HOURS
 ))
+
+/obj/effect/landmark/start/police
+	name = JOB_POLICE
+	job = /datum/job/command/police

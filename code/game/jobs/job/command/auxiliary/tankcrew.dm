@@ -15,3 +15,7 @@ AddTimelock(/datum/job/command/tank_crew, list(
 	JOB_SQUAD_ROLES = 10 HOURS,
 	JOB_ENGINEER_ROLES = 5 HOURS
 ))
+
+/obj/effect/landmark/start/tank_crew
+	name = JOB_CREWMAN
+	job = /datum/job/command/tank_crew

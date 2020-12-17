@@ -39,7 +39,8 @@
 
 		var/obj/L = null
 
-		for(var/obj/effect/landmark/sloc in landmarks_list)
+		for(var/i in GLOB.teleporter_landmarks)
+			var/obj/effect/landmark/sloc = i
 			if(sloc.name != C.data) continue
 			if(locate(/mob/living) in sloc.loc) continue
 			L = sloc

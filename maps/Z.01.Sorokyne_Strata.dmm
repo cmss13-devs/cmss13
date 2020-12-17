@@ -21,20 +21,14 @@
 /turf/open/space,
 /area/space)
 "aaf" = (
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_spawn,
 /turf/open/floor/strata{
 	dir = 10;
 	icon_state = "multi_tiles"
 	},
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "aag" = (
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_spawn,
 /turf/open/auto_turf/snow/layer0,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "aah" = (
@@ -384,9 +378,7 @@
 /turf/open/auto_turf/snow/layer0,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "abl" = (
-/obj/effect/landmark{
-	name = "yautja_teleport_loc"
-	},
+/obj/effect/landmark/yautja_teleport,
 /turf/open/auto_turf/snow/layer3,
 /area/strata/ag/exterior/paths/cabin_area/central)
 "abo" = (
@@ -471,10 +463,7 @@
 /turf/closed/wall/resin/membrane/strata/on_tiles,
 /area/strata/ug/interior/jungle/deep/minehead)
 "abD" = (
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_spawn,
 /turf/open/floor/strata{
 	icon_state = "fake_wood"
 	},
@@ -764,10 +753,7 @@
 	dir = 1;
 	pixel_y = 20
 	},
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_spawn,
 /turf/open/floor/strata{
 	icon_state = "fake_wood"
 	},
@@ -1044,10 +1030,7 @@
 	},
 /area/strata/ug/interior/jungle/deep/structures/res)
 "acV" = (
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_spawn,
 /turf/open/floor/strata{
 	icon_state = "floor2"
 	},
@@ -1093,10 +1076,7 @@
 /area/strata/ug/interior/jungle/deep/structures/res)
 "adc" = (
 /obj/effect/alien/weeds/node,
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_spawn,
 /turf/open/floor/strata{
 	icon_state = "floor2"
 	},
@@ -1177,9 +1157,7 @@
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "adn" = (
 /obj/structure/bed/nest,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/auto_turf/snow/layer0,
 /area/strata/ag/interior/outpost/gen/bball/nest)
@@ -1383,9 +1361,7 @@
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "adL" = (
 /obj/structure/bed/nest,
-/obj/effect/landmark{
-	name = "god_item"
-	},
+
 /turf/open/auto_turf/snow/layer0,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "adM" = (
@@ -1588,9 +1564,7 @@
 /turf/open/auto_turf/snow/layer0,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "aen" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/auto_turf/snow/layer0,
 /area/strata/ag/exterior/paths/cabin_area)
 "aep" = (
@@ -2391,10 +2365,7 @@
 	},
 /area/strata/ug/interior/jungle/deep/structures/res)
 "agt" = (
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_spawn,
 /obj/structure/machinery/light/small{
 	dir = 1;
 	pixel_y = 20
@@ -2455,10 +2426,7 @@
 /obj/structure/pipes/vents/pump{
 	dir = 4
 	},
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/strata{
 	icon_state = "multi_tiles"
 	},
@@ -3043,9 +3011,7 @@
 	},
 /area/strata/ug/interior/jungle/deep/minehead)
 "aih" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/strata{
 	icon_state = "red1"
@@ -3523,9 +3489,7 @@
 	},
 /area/strata/ag/interior/dorms/maintenance)
 "aju" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/auto_turf/snow/layer3,
 /area/strata/ag/exterior/paths/cabin_area)
 "ajv" = (
@@ -3599,10 +3563,7 @@
 	},
 /area/strata/ug/interior/jungle/deep/structures/res)
 "ajG" = (
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_spawn,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -4488,10 +4449,7 @@
 /area/strata/ag/interior/outpost/canteen/personal_storage)
 "alY" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/strata{
 	dir = 8;
 	icon_state = "white_cyan2"
@@ -5193,10 +5151,7 @@
 /turf/open/gm/grass/weedable,
 /area/strata/ug/interior/jungle/deep/minehead)
 "aob" = (
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_spawn,
 /turf/open/gm/grass/weedable,
 /area/strata/ug/interior/jungle/deep/minehead)
 "aoc" = (
@@ -6269,9 +6224,7 @@
 	},
 /area/strata/ag/interior/outpost/canteen/personal_storage)
 "aqS" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/gm/dirt,
 /area/strata/ug/interior/jungle/deep/minehead)
 "aqT" = (
@@ -7384,10 +7337,7 @@
 /area/strata/ag/interior/outpost/security)
 "atL" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/strata{
 	icon_state = "red1"
 	},
@@ -8155,10 +8105,7 @@
 /area/strata/ag/interior/outpost/engi)
 "avT" = (
 /obj/structure/bed/chair/office/light,
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/strata{
 	dir = 10;
 	icon_state = "multi_tiles"
@@ -8718,10 +8665,7 @@
 /obj/structure/bed/chair/office/light{
 	dir = 1
 	},
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/strata{
 	icon_state = "floor3"
 	},
@@ -8881,10 +8825,7 @@
 	dir = 1;
 	pixel_y = 24
 	},
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/interior/tatami,
 /area/strata/ag/interior/outpost/canteen)
 "axO" = (
@@ -9449,9 +9390,7 @@
 /turf/open/floor/strata,
 /area/strata/ug/interior/jungle/deep/minehead/ruins)
 "azt" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor/strata,
 /area/strata/ug/interior/jungle/deep/minehead/ruins)
 "azu" = (
@@ -9651,9 +9590,7 @@
 	},
 /area/strata/ag/exterior/research_decks/north)
 "azX" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/gm/dirtgrassborder/weedable{
 	dir = 1;
 	icon_state = "grassdirt_corner2"
@@ -9669,9 +9606,7 @@
 /turf/open/auto_turf/snow/layer0,
 /area/strata/ug/interior/jungle/deep/structures/res)
 "azZ" = (
-/obj/effect/landmark{
-	name = "yautja_teleport_loc"
-	},
+/obj/effect/landmark/yautja_teleport,
 /turf/open/auto_turf/snow/layer0,
 /area/strata/ag/exterior/paths/north_outpost)
 "aAb" = (
@@ -9752,10 +9687,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/prison{
 	icon_state = "darkyellowfull2"
 	},
@@ -10468,10 +10400,7 @@
 "aCn" = (
 /obj/item/stool,
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/interior/tatami,
 /area/strata/ag/interior/outpost/canteen)
 "aCo" = (
@@ -10885,9 +10814,7 @@
 /turf/open/floor/strata,
 /area/strata/ug/interior/jungle/deep/minehead/ruins)
 "aDz" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/gm/dirt,
 /area/strata/ug/interior/jungle/deep/north_carp)
 "aDA" = (
@@ -11007,10 +10934,7 @@
 /turf/open/auto_turf/snow/layer1,
 /area/strata/ug/interior/jungle/deep/structures/res)
 "aDT" = (
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_spawn,
 /turf/open/gm/dirt,
 /area/strata/ug/interior/jungle/deep/south_engi)
 "aDU" = (
@@ -11328,10 +11252,7 @@
 	},
 /area/strata/ug/interior/jungle/deep/south_res)
 "aEE" = (
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_spawn,
 /turf/open/gm/dirt,
 /area/strata/ug/interior/jungle/deep/south_res)
 "aEF" = (
@@ -11646,10 +11567,7 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/strata{
 	dir = 4;
 	icon_state = "white_cyan1"
@@ -12235,9 +12153,7 @@
 	},
 /area/strata/ug/interior/jungle/deep/north_carp)
 "aGU" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/gm/dirt,
 /area/strata/ug/interior/jungle/deep/south_res)
 "aGV" = (
@@ -12616,10 +12532,7 @@
 	},
 /area/strata/ug/interior/jungle/deep/north_carp)
 "aIe" = (
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_spawn,
 /turf/open/gm/dirtgrassborder/weedable{
 	dir = 1;
 	icon_state = "grassdirt_corner"
@@ -12654,9 +12567,7 @@
 /obj/structure/pipes/vents/pump{
 	dir = 8
 	},
-/obj/effect/landmark{
-	name = "xeno_hive_spawn"
-	},
+/obj/effect/landmark/xeno_hive_spawn,
 /turf/open/floor/strata{
 	dir = 8;
 	icon_state = "white_cyan2"
@@ -13848,10 +13759,7 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/strata{
 	icon_state = "floor3"
 	},
@@ -13974,10 +13882,7 @@
 	},
 /area/strata/ag/interior/outpost/admin)
 "aMb" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/strata{
 	icon_state = "floor3"
 	},
@@ -14589,16 +14494,11 @@
 	},
 /area/strata/ag/interior/outpost/maint/canteen_e_1)
 "aNF" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/gm/grass/weedable,
 /area/strata/ug/interior/jungle/deep/east_dorms)
 "aNG" = (
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_spawn,
 /turf/open/gm/grass/weedable,
 /area/strata/ug/interior/jungle/deep/north_carp)
 "aNH" = (
@@ -14853,10 +14753,7 @@
 	dir = 8;
 	tag = "icon-officechair_white (EAST)"
 	},
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/strata{
 	icon_state = "blue1"
 	},
@@ -15583,10 +15480,7 @@
 /obj/structure/pipes/vents/pump{
 	dir = 8
 	},
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/strata{
 	dir = 4;
 	icon_state = "white_cyan1"
@@ -16893,10 +16787,7 @@
 /area/strata/ag/interior/outpost/admin)
 "aTK" = (
 /obj/structure/bed/chair/office/light,
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
@@ -18947,9 +18838,7 @@
 /turf/open/auto_turf/snow/layer0,
 /area/strata/ag/exterior/paths/southadmin)
 "aZQ" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/gm/dirtgrassborder/weedable,
 /area/strata/ug/interior/jungle/deep/hotsprings)
 "aZR" = (
@@ -20549,10 +20438,7 @@
 	},
 /area/strata/ug/interior/jungle/deep/east_carp)
 "beH" = (
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_spawn,
 /turf/open/gm/grass/weedable,
 /area/strata/ug/interior/jungle/deep/hotsprings)
 "beI" = (
@@ -24164,10 +24050,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/strata{
 	icon_state = "fake_wood"
 	},
@@ -24548,9 +24431,7 @@
 /obj/structure/flora/grass/tallgrass/ice/corner{
 	dir = 6
 	},
-/obj/effect/landmark{
-	name = "yautja_teleport_loc"
-	},
+/obj/effect/landmark/yautja_teleport,
 /turf/open/auto_turf/snow/layer1,
 /area/strata/ag/exterior/paths/southresearch)
 "bra" = (
@@ -25344,10 +25225,7 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /obj/structure/platform/strata/metal,
 /turf/open/floor/strata,
 /area/strata/ag/exterior/research_decks/south)
@@ -26683,9 +26561,7 @@
 /turf/open/auto_turf/snow/layer1,
 /area/strata/ag/interior/restricted)
 "byl" = (
-/obj/effect/landmark{
-	name = "xeno_hive_spawn"
-	},
+/obj/effect/landmark/xeno_hive_spawn,
 /obj/effect/landmark/queen_spawn,
 /turf/open/floor/strata{
 	icon_state = "floor2"
@@ -27083,9 +26959,7 @@
 /turf/open/floor/strata,
 /area/strata/ag/interior/disposals)
 "bAx" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/decal/strata_decals/catwalk/prison,
 /turf/open/floor/greengrid,
 /area/strata/ag/interior/disposals)
@@ -27770,9 +27644,7 @@
 	pixel_y = 24;
 	start_charge = 0
 	},
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /obj/structure/surface/rack,
 /obj/structure/machinery/light/small{
 	dir = 4
@@ -28308,9 +28180,7 @@
 /turf/open/gm/river,
 /area/strata/ag/exterior/nearlz2)
 "bIx" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /obj/effect/landmark/queen_spawn,
 /turf/open/gm/grass/weedable,
 /area/strata/ug/interior/jungle/deep/east_carp)
@@ -28978,9 +28848,7 @@
 /turf/open/gm/river,
 /area/strata/ag/exterior/nearlz2)
 "bOa" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/gm/dirtgrassborder/weedable,
 /area/strata/ug/interior/jungle/deep/minehead)
 "bOb" = (
@@ -29009,10 +28877,7 @@
 	dir = 4;
 	tag = "icon-chair (EAST)"
 	},
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /obj/structure/machinery/power/apc{
 	dir = 8;
 	pixel_x = -24;
@@ -29346,10 +29211,7 @@
 	},
 /area/strata/ug/exterior/jungle/deep/carplake_center)
 "bQA" = (
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_spawn,
 /turf/open/gm/grass/weedable,
 /area/strata/ug/interior/jungle/deep/east_carp)
 "bQS" = (
@@ -29693,9 +29555,7 @@
 /obj/structure/flora/grass/tallgrass/ice/corner{
 	dir = 6
 	},
-/obj/effect/landmark{
-	name = "yautja_teleport_loc"
-	},
+/obj/effect/landmark/yautja_teleport,
 /turf/open/ice,
 /area/strata/ag/exterior/paths/southresearch)
 "bUd" = (
@@ -30558,10 +30418,7 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/strata{
 	dir = 8;
 	icon_state = "white_cyan2"
@@ -30787,9 +30644,7 @@
 	},
 /area/strata/ag/exterior/tcomms/tcomms_deck)
 "caY" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/gm/dirt,
 /area/strata/ug/interior/jungle/deep/hotsprings)
 "cbb" = (
@@ -32698,9 +32553,7 @@
 	},
 /area/strata/ug/exterior/jungle/deep/carplake_center)
 "cmf" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/gm/grass/weedable,
 /area/strata/ug/exterior/jungle/deep/carplake_center)
 "cmg" = (
@@ -34486,9 +34339,7 @@
 	},
 /area/strata/ag/interior/outpost/engi/drome)
 "cTj" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/gm/grass/weedable,
 /area/strata/ug/interior/jungle/deep/tearlake)
 "cTI" = (
@@ -34557,9 +34408,7 @@
 	},
 /area/strata/ag/interior/outpost/engi/drome)
 "cXl" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/gm/dirtgrassborder/weedable{
 	dir = 8;
 	icon_state = "grassdirt_corner"
@@ -34813,10 +34662,7 @@
 	},
 /area/strata/ag/interior/outpost/engi/drome)
 "dvX" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/strata{
 	icon_state = "fake_wood"
 	},
@@ -35233,9 +35079,7 @@
 "eek" = (
 /obj/structure/closet/secure_closet/personal,
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/strata{
 	icon_state = "blue1"
@@ -36102,9 +35946,7 @@
 /obj/structure/flora/grass/tallgrass/ice/corner{
 	dir = 6
 	},
-/obj/effect/landmark{
-	name = "yautja_teleport_loc"
-	},
+/obj/effect/landmark/yautja_teleport,
 /turf/open/ice,
 /area/strata/ag/exterior/marsh)
 "fuq" = (
@@ -36190,9 +36032,7 @@
 /area/strata/ug/interior/jungle/deep/east_dorms)
 "fzn" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
-/obj/effect/landmark{
-	name = "god_item"
-	},
+
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/strata{
 	dir = 8;
@@ -36304,9 +36144,7 @@
 /turf/open/ice,
 /area/strata/ag/exterior/marsh/crash)
 "fDG" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/gm/grass/weedable,
 /area/strata/ug/interior/jungle/deep/tearlake_west)
 "fEw" = (
@@ -36350,9 +36188,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/effect/landmark{
-	name = "xeno_hive_spawn"
-	},
+/obj/effect/landmark/xeno_hive_spawn,
 /turf/open/floor/plating,
 /area/strata/ag/exterior/tcomms/tcomms_deck)
 "fKt" = (
@@ -36717,9 +36553,7 @@
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/engi/drome)
 "gjK" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/gm/dirtgrassborder/weedable{
 	dir = 1
 	},
@@ -37356,9 +37190,7 @@
 /turf/open/gm/dirt,
 /area/strata/ug/interior/jungle/deep/tearlake)
 "hiL" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/gm/dirt,
 /area/strata/ug/interior/jungle/deep/south_dorms)
 "hjC" = (
@@ -37421,9 +37253,7 @@
 /area/strata/ug/interior/outpost/jung/dorms/med2)
 "hsg" = (
 /obj/structure/surface/rack,
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /obj/structure/barricade/handrail/strata,
 /turf/open/floor/strata{
 	icon_state = "floor2"
@@ -38165,9 +37995,7 @@
 	},
 /area/strata/ag/interior/engi_shed/four)
 "iGN" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor/strata{
 	icon_state = "purp2"
 	},
@@ -38897,10 +38725,7 @@
 /obj/structure/bed/chair/office/light{
 	dir = 8
 	},
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/strata{
 	dir = 4;
 	icon_state = "cyan2"
@@ -39102,9 +38927,7 @@
 /turf/open/gm/dirtgrassborder/weedable,
 /area/strata/ug/interior/jungle/deep/east_engi)
 "kgs" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/gm/dirtgrassborder/weedable{
 	icon_state = "grassdirt_corner2"
 	},
@@ -39140,9 +38963,7 @@
 /turf/open/asphalt/cement,
 /area/strata/ag/interior/engi_shed/two)
 "khR" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /obj/effect/decal/strata_decals/catwalk/prison,
 /turf/open/floor/greengrid,
 /area/strata/ug/interior/jungle/deep/structures/engi)
@@ -39196,9 +39017,7 @@
 /turf/closed/wall/strata_ice,
 /area/strata/ag/exterior/shed_five_caves)
 "koG" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/gm/dirtgrassborder/weedable{
 	dir = 1;
 	icon_state = "grassdirt_corner2"
@@ -39366,9 +39185,7 @@
 	},
 /area/strata/ug/interior/outpost/jung/dorms/admin2)
 "kGV" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/gm/dirt,
 /area/strata/ug/interior/jungle/deep/east_dorms)
 "kIu" = (
@@ -39583,9 +39400,7 @@
 /turf/open/gm/coast,
 /area/strata/ug/exterior/jungle/deep/carplake_center)
 "kUb" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/gm/dirtgrassborder/weedable{
 	dir = 4;
 	icon_state = "grassdirt_corner2"
@@ -39728,9 +39543,7 @@
 /turf/open/gm/dirt,
 /area/strata/ug/interior/jungle/platform/east/scrub)
 "lhH" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/gm/dirt,
 /area/strata/ug/interior/jungle/deep/east_carp)
 "lhR" = (
@@ -39952,10 +39765,7 @@
 	},
 /area/strata/ag/exterior/research_decks/south)
 "lyl" = (
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_spawn,
 /turf/open/gm/dirtgrassborder/weedable{
 	dir = 8
 	},
@@ -39979,9 +39789,7 @@
 /turf/open/floor/strata,
 /area/strata/ug/interior/outpost/jung/dorms/admin2)
 "lzb" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/gm/dirtgrassborder/weedable{
 	dir = 4;
 	icon_state = "grassdirt_corner2"
@@ -40465,9 +40273,7 @@
 /turf/open/floor/strata,
 /area/strata/ag/exterior/research_decks/south)
 "mjR" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor/strata{
 	icon_state = "purp2"
 	},
@@ -40519,9 +40325,7 @@
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh)
 "mmF" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/gm/dirt,
 /area/strata/ug/exterior/jungle/deep/carplake_center)
 "mnq" = (
@@ -40592,9 +40396,7 @@
 /area/strata/ag/exterior/tcomms/tcomms_deck)
 "mrz" = (
 /obj/structure/closet/secure_closet/personal,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/strata{
 	icon_state = "blue1"
@@ -42143,9 +41945,7 @@
 "piD" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/reagent_container/food/snacks/cheesecakeslice,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/strata,
 /area/strata/ug/interior/outpost/jung/dorms/admin1)
@@ -43847,10 +43647,7 @@
 	},
 /area/strata/ag/interior/outpost/med)
 "rLn" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/plating{
 	icon_state = "warnplate"
 	},
@@ -44478,9 +44275,7 @@
 	},
 /area/strata/ag/exterior/landingzone_2)
 "sQA" = (
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /obj/item/stack/rods,
 /obj/effect/decal/cleanable/blood{
 	icon_state = "xgib6";
@@ -44921,9 +44716,7 @@
 /turf/open/ice,
 /area/strata/ag/exterior/paths/southresearch)
 "tCR" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/plating,
 /area/strata/ag/exterior/landingzone_2)
 "tEf" = (
@@ -45043,9 +44836,7 @@
 	},
 /area/strata/ug/interior/jungle/deep/structures/engi)
 "tLO" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/gm/dirtgrassborder/weedable{
 	dir = 1
 	},
@@ -45526,9 +45317,7 @@
 	},
 /area/strata/ag/exterior/research_decks/south)
 "utV" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/asphalt/cement,
 /area/strata/ug/interior/jungle/platform/east/scrub)
 "utX" = (
@@ -45561,9 +45350,7 @@
 	},
 /area/strata/ag/exterior/research_decks/south)
 "uwJ" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/gm/dirt,
 /area/strata/ug/interior/jungle/platform/east/scrub)
 "uxf" = (
@@ -45695,9 +45482,7 @@
 	dir = 4
 	},
 /obj/structure/surface/table/reinforced/prison,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor/strata{
 	icon_state = "purp2"
 	},
@@ -45813,9 +45598,7 @@
 /turf/open/floor/strata,
 /area/strata/ag/exterior/research_decks/south)
 "uSR" = (
-/obj/effect/landmark{
-	name = "xeno_hive_spawn"
-	},
+/obj/effect/landmark/xeno_hive_spawn,
 /obj/effect/landmark/queen_spawn,
 /turf/open/gm/grass/weedable,
 /area/strata/ug/interior/jungle/deep/tearlake)
@@ -45972,9 +45755,7 @@
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/engi/drome)
 "vhG" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/gm/grass/weedable,
 /area/strata/ug/interior/jungle/deep/minehead)
 "vit" = (
@@ -46121,9 +45902,7 @@
 	},
 /area/strata/ug/interior/outpost/jung/dorms/med2)
 "vqx" = (
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /turf/open/floor/plating,
 /area/strata/ag/exterior/landingzone_2)
 "vrH" = (
@@ -46454,9 +46233,7 @@
 	},
 /area/strata/ag/interior/outpost/engi/drome/shuttle)
 "vJB" = (
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor/strata,
 /area/strata/ug/interior/outpost/jung/dorms/admin2)
 "vKg" = (
@@ -46918,9 +46695,7 @@
 /obj/structure/bed{
 	icon_state = "abed"
 	},
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/strata,
 /area/strata/ug/interior/outpost/jung/dorms/admin2)
@@ -47386,9 +47161,7 @@
 	},
 /area/strata/ag/interior/outpost/med)
 "xAS" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/asphalt/cement{
 	icon_state = "cement4"
 	},
@@ -47480,9 +47253,7 @@
 /turf/open/floor/strata,
 /area/strata/ag/exterior/research_decks/south)
 "xGA" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/gm/dirt,
 /area/strata/ug/interior/jungle/deep/west_engi)
 "xGE" = (
@@ -47584,9 +47355,7 @@
 	},
 /area/strata/ug/interior/jungle/deep/structures/engi)
 "xMr" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor/strata{
 	dir = 10;
 	icon_state = "multi_tiles"
@@ -47600,10 +47369,7 @@
 	},
 /area/strata/ag/exterior/tcomms/tcomms_deck)
 "xOo" = (
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_spawn,
 /turf/open/gm/grass/weedable,
 /area/strata/ug/interior/jungle/deep/east_engi)
 "xOs" = (

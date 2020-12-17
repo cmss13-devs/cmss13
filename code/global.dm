@@ -85,27 +85,9 @@ var/VehicleElevatorConsole
 var/HangarUpperElevator
 var/HangarLowerElevator
 var/global/map_tag
-var/list/newplayer_start = list()
 
 //Spawnpoints.
-var/list/latejoin = list()
-var/list/latewhiskey = list()
-
-var/list/xeno_spawn = list()//Aliens spawn at these.
-var/list/xeno_hive_spawn = list()//Hives spawn at these. Useful only for XvX
-var/list/queen_spawn_list = list()
-var/list/surv_spawn = list()//Survivors spawn at these
-var/list/pred_spawn = list()//Predators spawn at these
-var/list/pred_elder_spawn = list() //For elder preds.
-var/list/yautja_teleport_loc = list() //Yautja teleporter target location.
-var/list/yautja_almayer_loc = list()
-var/list/yautja_teleport_desc = list() //Yautja teleporter target location.
-var/list/yautja_almayer_desc = list()
 var/list/fallen_list = list()
-var/list/tdome1 = list()
-var/list/tdome2 = list()
-var/list/tdomeobserve = list()
-var/list/tdomeadmin = list()
 var/list/cardinal = list(NORTH, SOUTH, EAST, WEST)
 var/list/diagonals = list(NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST)
 var/list/alldirs = list(NORTH, SOUTH, EAST, WEST, NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST)

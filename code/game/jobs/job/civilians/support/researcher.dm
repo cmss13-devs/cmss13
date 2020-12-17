@@ -32,3 +32,7 @@
 AddTimelock(/datum/job/civilian/researcher, list(
 	JOB_MEDIC_ROLES = 5 HOURS
 ))
+
+/obj/effect/landmark/start/researcher
+	name = JOB_RESEARCHER
+	job = /datum/job/civilian/researcher

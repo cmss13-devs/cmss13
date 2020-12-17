@@ -28,3 +28,7 @@
 AddTimelock(/datum/job/command/pilot, list(
 	JOB_SQUAD_ROLES = 5 HOURS
 ))
+
+/obj/effect/landmark/start/pilot
+	name = JOB_PILOT
+	job = /datum/job/command/pilot

@@ -217,16 +217,19 @@
 	if(!istype(M))
 		return
 
-	var/obj/effect/landmark/S //Starting mark.
-	for(var/i in landmarks_list)
+	var/atom/start
+	for(var/i in GLOB.spawns_by_job[type])
 		var/obj/effect/landmark/L = i
-		if(L && L.name == title && !locate(/mob/living) in L.loc)
-			S = L
+		if(!locate(/mob/living) in L.loc)
+			start = L
 			break
-	if(!S)
-		S = locate("start*[title]") //Old type spawn.
-	if(istype(S) && istype(S.loc, /turf))
-		M.loc = S.loc
+	if(!start)
+		start = pick(GLOB.latejoin)
+
+	if(!start)
+		CRASH("Something went wrong and theres no unoccupied job spawns for [type] and somehow no latejoin landmarks")
+
+	M.forceMove(get_turf(start))
 
 	if(ishuman(M))
 		var/mob/living/carbon/H = M

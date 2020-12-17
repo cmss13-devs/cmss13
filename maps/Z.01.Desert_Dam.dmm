@@ -470,10 +470,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_labs)
 "abx" = (
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_spawn,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
@@ -539,10 +536,7 @@
 	},
 /area/desert_dam/exterior/river/riverside_central_north)
 "abH" = (
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_spawn,
 /obj/effect/landmark/queen_spawn,
 /turf/open/floor/prison{
 	icon_state = "bright_clean2"
@@ -637,9 +631,7 @@
 /obj/effect/decal/cleanable/blood{
 	layer = 3
 	},
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/disposals)
 "abU" = (
@@ -809,9 +801,7 @@
 /area/desert_dam/exterior/valley/valley_labs)
 "acA" = (
 /obj/structure/surface/rack,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor/prison,
 /area/desert_dam/exterior/valley/valley_dam)
 "acB" = (
@@ -931,10 +921,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_labs)
 "acQ" = (
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_spawn,
 /turf/open/floor/prison{
 	icon_state = "bright_clean2"
 	},
@@ -958,10 +945,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_west_entrance)
 "acU" = (
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_spawn,
 /turf/open/floor/prison{
 	icon_state = "bright_clean2"
 	},
@@ -1169,10 +1153,7 @@
 /turf/open/gm/river/desert/shallow,
 /area/desert_dam/exterior/river/riverside_east)
 "adD" = (
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_spawn,
 /obj/effect/alien/weeds/node,
 /turf/open/desert/rock,
 /area/desert_dam/interior/caves/east_caves)
@@ -2080,10 +2061,7 @@
 /turf/open/desert/rock,
 /area/desert_dam/interior/dam_interior/south_tunnel)
 "agn" = (
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_spawn,
 /turf/open/floor,
 /area/desert_dam/interior/lab_northeast/east_lab_lobby)
 "ago" = (
@@ -2740,17 +2718,11 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "aik" = (
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_spawn,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "ail" = (
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_spawn,
 /turf/open/desert/rock,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "aim" = (
@@ -2758,10 +2730,7 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_northwest)
 "ain" = (
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_spawn,
 /obj/effect/alien/weeds/node,
 /turf/open/floor/prison{
 	icon_state = "bright_clean2"
@@ -3121,10 +3090,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "ajn" = (
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_spawn,
 /obj/effect/alien/weeds/node,
 /turf/open/floor/prison{
 	icon_state = "bright_clean2"
@@ -3174,9 +3140,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_containment)
 "ajv" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
@@ -3623,9 +3587,7 @@
 /area/desert_dam/interior/lab_northeast/east_lab_excavation)
 "akG" = (
 /obj/structure/surface/table,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor/prison{
 	dir = 5;
 	icon_state = "darkpurple2"
@@ -3958,9 +3920,7 @@
 /obj/structure/surface/rack,
 /obj/item/tool/shovel/snow,
 /obj/item/tool/shovel/snow,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "darkpurple2"
@@ -4987,10 +4947,7 @@
 	},
 /area/desert_dam/interior/dam_interior/hanger)
 "aoq" = (
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_spawn,
 /obj/effect/alien/weeds/node,
 /turf/open/floor/prison{
 	icon_state = "bright_clean2"
@@ -5303,9 +5260,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_east_hallway)
 "apk" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor/plating,
 /area/desert_dam/interior/lab_northeast/east_lab_biology)
 "apl" = (
@@ -7541,9 +7496,7 @@
 /area/desert_dam/exterior/valley/valley_medical)
 "auZ" = (
 /obj/structure/surface/rack,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_two/floodgate_control)
 "ava" = (
@@ -8228,10 +8181,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_crashsite)
 "awS" = (
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_spawn,
 /obj/effect/alien/weeds/node,
 /turf/open/floor{
 	dir = 4;
@@ -8679,9 +8629,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "ayk" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -9058,10 +9006,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_RND)
 "azk" = (
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_spawn,
 /obj/effect/alien/weeds/node,
 /turf/open/floor/prison{
 	icon_state = "bright_clean2"
@@ -9084,9 +9029,7 @@
 /area/desert_dam/interior/lab_northeast/east_lab_RND)
 "azn" = (
 /obj/effect/decal/remains/xeno,
-/obj/effect/landmark{
-	name = "yautja_teleport_loc"
-	},
+/obj/effect/landmark/yautja_teleport,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whiteyellowfull"
@@ -9979,9 +9922,7 @@
 "aBU" = (
 /obj/effect/decal/remains/xeno,
 /obj/structure/surface/table,
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whiteyellowfull"
@@ -10146,10 +10087,7 @@
 /turf/open/floor/interior/wood,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "aCv" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/interior/wood,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "aCw" = (
@@ -10337,10 +10275,7 @@
 /turf/open/floor/interior/wood,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "aCZ" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -11751,9 +11686,7 @@
 	},
 /area/desert_dam/interior/caves/central_caves)
 "aGY" = (
-/obj/effect/landmark{
-	name = "yautja_teleport_loc"
-	},
+/obj/effect/landmark/yautja_teleport,
 /obj/effect/landmark/queen_spawn,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_crashsite)
@@ -12221,9 +12154,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_crashsite)
 "aIo" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/desert/rock,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "aIp" = (
@@ -12299,9 +12230,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_crashsite)
 "aIC" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/desert/excavation/component1{
 	dir = 5
 	},
@@ -14364,9 +14293,7 @@
 /area/desert_dam/exterior/valley/valley_mining)
 "aOn" = (
 /obj/structure/surface/rack,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "whitegreenfull";
@@ -16662,9 +16589,7 @@
 /area/desert_dam/building/mining/workshop)
 "aUZ" = (
 /obj/structure/surface/table,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_two/control_room)
 "aVa" = (
@@ -16864,9 +16789,7 @@
 	},
 /area/desert_dam/building/administration/office)
 "aVL" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -16904,9 +16827,7 @@
 /area/desert_dam/building/administration/office)
 "aVR" = (
 /obj/structure/surface/rack,
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /obj/structure/machinery/light,
 /turf/open/floor/prison,
 /area/desert_dam/exterior/valley/valley_dam)
@@ -18022,9 +17943,7 @@
 /area/desert_dam/exterior/river/riverside_central_north)
 "aZh" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
@@ -18134,10 +18053,7 @@
 	},
 /area/desert_dam/building/administration/control_room)
 "aZy" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/prison{
 	icon_state = "bright_clean2"
 	},
@@ -18374,9 +18290,7 @@
 /area/desert_dam/building/administration/lobby)
 "bal" = (
 /obj/structure/surface/table,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison{
 	dir = 4;
@@ -19566,9 +19480,7 @@
 /area/desert_dam/building/security/courtroom)
 "bdS" = (
 /obj/structure/surface/table,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	dir = 10;
@@ -19662,10 +19574,7 @@
 	},
 /area/desert_dam/building/administration/meetingrooom)
 "beh" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/carpet{
 	dir = 1;
 	icon_state = "carpetside";
@@ -20582,9 +20491,7 @@
 /area/desert_dam/building/water_treatment_two/control_room)
 "bgZ" = (
 /obj/structure/surface/rack,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_two/control_room)
 "bha" = (
@@ -21126,10 +21033,7 @@
 	},
 /area/desert_dam/interior/dam_interior/hanger)
 "biI" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
@@ -24134,9 +24038,7 @@
 "brH" = (
 /obj/structure/surface/rack,
 /obj/item/cell/high/empty,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison{
@@ -25512,9 +25414,7 @@
 /obj/structure/surface/rack,
 /obj/item/tool/extinguisher/mini,
 /obj/item/circuitboard/airlock,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/prison{
 	dir = 9;
@@ -25655,10 +25555,7 @@
 	},
 /area/desert_dam/interior/dam_interior/engine_east_wing)
 "bwz" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/prison{
 	dir = 10;
 	tag = "icon-floor (SOUTHWEST)"
@@ -26017,9 +25914,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/engine_room)
 "bxF" = (
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor/plating,
 /area/desert_dam/building/warehouse/breakroom)
 "bxH" = (
@@ -26731,10 +26626,7 @@
 	},
 /area/desert_dam/interior/dam_interior/control_room)
 "bzP" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor{
 	icon_state = "neutral"
 	},
@@ -26782,10 +26674,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_wilderness)
 "bzW" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/interior/wood/alt,
 /area/desert_dam/building/security/courtroom)
 "bzX" = (
@@ -27962,9 +27851,7 @@
 	},
 /area/desert_dam/building/mining/workshop)
 "bEc" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor/prison{
 	icon_state = "kitchen";
 	tag = "icon-kitchen"
@@ -28054,10 +27941,7 @@
 	},
 /area/desert_dam/interior/dam_interior/north_tunnel)
 "bEo" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	dir = 10;
@@ -29163,10 +29047,7 @@
 /turf/open/desert/rock,
 /area/desert_dam/interior/caves/central_caves)
 "bHu" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/prison,
 /area/desert_dam/building/security/staffroom)
 "bHv" = (
@@ -29573,9 +29454,7 @@
 /area/desert_dam/exterior/valley/valley_telecoms)
 "bIV" = (
 /obj/structure/surface/table/woodentable,
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/bar/backroom)
@@ -31028,10 +30907,7 @@
 	},
 /area/desert_dam/exterior/river/riverside_central_north)
 "bNu" = (
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_spawn,
 /obj/effect/alien/weeds/node,
 /turf/open/desert/rock/deep/transition,
 /area/desert_dam/interior/caves/east_caves)
@@ -31658,9 +31534,7 @@
 /area/desert_dam/building/warehouse/breakroom)
 "bPF" = (
 /obj/structure/surface/table,
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison{
 	dir = 1;
@@ -32158,10 +32032,7 @@
 	},
 /area/desert_dam/interior/dam_interior/workshop)
 "bQW" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
 	tag = "icon-sterile_white"
@@ -33439,9 +33310,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_telecoms)
 "bUU" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whiteyellowfull"
@@ -33562,10 +33431,7 @@
 	},
 /area/desert_dam/interior/dam_interior/control_room)
 "bVj" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	dir = 10;
@@ -35586,9 +35452,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_telecoms)
 "caU" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/bar/backroom)
 "caW" = (
@@ -37007,9 +36871,7 @@
 	},
 /area/desert_dam/exterior/river/riverside_central_south)
 "ceV" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/gm/river{
 	name = "pool"
 	},
@@ -38543,10 +38405,7 @@
 	is_resin_allowed = 0
 	})
 "ckq" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/interior/wood/alt,
@@ -39269,10 +39128,7 @@
 	},
 /area/desert_dam/exterior/river/riverside_south)
 "cms" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "sterile_white";
@@ -39507,9 +39363,7 @@
 	},
 /area/desert_dam/building/warehouse/breakroom)
 "cng" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor/interior/wood/alt,
 /area/desert_dam/building/bar/bar)
 "cni" = (
@@ -40548,10 +40402,7 @@
 	},
 /area/desert_dam/building/medical/west_wing_hallway)
 "cqu" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	dir = 10;
@@ -41885,10 +41736,7 @@
 	},
 /area/desert_dam/building/telecommunication)
 "cuB" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/prison,
 /area/desert_dam/building/telecommunication)
 "cuH" = (
@@ -44395,10 +44243,7 @@
 	},
 /area/desert_dam/building/medical/office1)
 "cBC" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "sterile_white";
@@ -47420,9 +47265,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/exterior/valley/valley_cargo)
 "cJW" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor/plating,
 /area/desert_dam/exterior/valley/valley_cargo)
 "cJX" = (
@@ -47612,9 +47455,7 @@
 	},
 /area/desert_dam/building/medical/virology_isolation)
 "cKy" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor/prison{
 	dir = 10;
 	tag = "icon-floor (SOUTHWEST)"
@@ -47885,9 +47726,7 @@
 	},
 /area/desert_dam/building/medical/virology_wing)
 "cLs" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor/prison{
 	dir = 10;
 	tag = "icon-floor (SOUTHWEST)"
@@ -48471,9 +48310,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/landing_pad_two)
 "cNy" = (
-/obj/effect/landmark{
-	name = "yautja_teleport_loc"
-	},
+/obj/effect/landmark/yautja_teleport,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_cargo)
 "cNz" = (
@@ -48988,9 +48825,7 @@
 	},
 /area/desert_dam/building/church)
 "cOY" = (
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor{
 	icon_state = "cult"
 	},
@@ -49630,9 +49465,7 @@
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/bar/bar)
 "cQS" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/bar/bar)
@@ -50636,10 +50469,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_cargo)
 "cUs" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "sterile_white";
@@ -51528,9 +51358,7 @@
 	icon_state = "N";
 	tag = "icon-N"
 	},
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor/prison{
 	icon_state = "bright_clean2"
 	},
@@ -51781,10 +51609,7 @@
 	},
 /area/desert_dam/building/warehouse/loading)
 "cZy" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	dir = 10;
@@ -53337,10 +53162,7 @@
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dfr" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
 	tag = "icon-sterile_white"
@@ -55114,10 +54936,7 @@
 	},
 /area/desert_dam/building/water_treatment_one/lobby)
 "dsc" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/lobby)
 "dsf" = (
@@ -56473,9 +56292,7 @@
 /area/desert_dam/building/cafeteria/cafeteria)
 "dBe" = (
 /obj/structure/surface/table,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison{
@@ -57602,10 +57419,7 @@
 	},
 /area/desert_dam/building/dorms/hallway_westwing)
 "dGG" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/prison{
 	icon_state = "kitchen";
 	tag = "icon-kitchen"
@@ -57871,15 +57685,11 @@
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dHK" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor/plating,
 /area/desert_dam/building/cafeteria/backroom)
 "dHM" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor/prison,
 /area/desert_dam/building/cafeteria/loading)
 "dHO" = (
@@ -57904,9 +57714,7 @@
 /area/desert_dam/building/hydroponics/hydroponics)
 "dHS" = (
 /obj/structure/surface/table,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison{
 	dir = 10;
@@ -58058,9 +57866,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/hydroponics/hydroponics_storage)
 "dIu" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
 	tag = "icon-sterile_white"
@@ -58574,10 +58380,7 @@
 	},
 /area/desert_dam/building/dorms/pool)
 "dKs" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	dir = 4;
@@ -58650,9 +58453,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	dir = 4;
@@ -59261,9 +59062,7 @@
 "dNB" = (
 /obj/structure/surface/table,
 /obj/item/storage/box/lightstick/red,
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	icon_state = "darkbrown2";
@@ -61060,9 +60859,7 @@
 	},
 /area/desert_dam/building/medical/virology_wing)
 "dSG" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	dir = 10;
@@ -61557,10 +61354,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
 	tag = "icon-sterile_white"
@@ -61615,10 +61409,7 @@
 	},
 /area/desert_dam/building/hydroponics/hydroponics)
 "dUF" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	dir = 10;
@@ -61661,10 +61452,7 @@
 	},
 /area/desert_dam/building/hydroponics/hydroponics)
 "dUJ" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	dir = 10;
@@ -61815,9 +61603,7 @@
 /area/desert_dam/building/water_treatment_one/lobby)
 "dVv" = (
 /obj/structure/surface/table,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/control_room)
@@ -62288,9 +62074,7 @@
 /area/desert_dam/building/water_treatment_one/breakroom)
 "dWy" = (
 /obj/structure/surface/rack,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison{
@@ -62369,9 +62153,7 @@
 /area/desert_dam/building/water_treatment_one/hallway)
 "dWK" = (
 /obj/structure/surface/rack,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison,
@@ -62408,9 +62190,7 @@
 /area/desert_dam/building/cafeteria/cafeteria)
 "dWP" = (
 /obj/structure/surface/table,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
 	icon_state = "whiteyellow";
@@ -62891,10 +62671,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_civilian)
 "dZl" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
 /area/desert_dam/building/dorms/hallway_westwing)
@@ -64551,10 +64328,7 @@
 	},
 /area/desert_dam/building/lab_northwest/west_lab_xenoflora)
 "fyg" = (
-/obj/effect/landmark{
-	name = "xeno_hive_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_hive_spawn,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_northwest)
 "fyq" = (
@@ -64593,10 +64367,7 @@
 /area/desert_dam/exterior/valley/valley_crashsite)
 "fHX" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark{
-	name = "xeno_hive_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_hive_spawn,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
@@ -64756,9 +64527,7 @@
 	},
 /area/desert_dam/interior/dam_interior/hanger)
 "gBV" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	icon_state = "freezerfloor"
@@ -64781,9 +64550,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_civilian)
 "gKo" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/desert/rock/deep{
 	icon_state = "rock3"
 	},
@@ -65072,10 +64839,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/building/substation/northwest)
 "isZ" = (
-/obj/effect/landmark{
-	name = "xeno_hive_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_hive_spawn,
 /turf/open/floor/prison{
 	icon_state = "bright_clean2"
 	},
@@ -65155,9 +64919,7 @@
 	},
 /area/desert_dam/interior/dam_interior/disposals)
 "jqA" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/plating,
 /area/desert_dam/exterior/valley/valley_cargo)
@@ -65357,9 +65119,7 @@
 /area/desert_dam/interior/dam_interior/engine_room)
 "lxq" = (
 /obj/structure/surface/table,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison,
@@ -65437,9 +65197,7 @@
 	},
 /area/desert_dam/building/administration/office)
 "lUU" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/desert/dirt{
 	icon_state = "desert_transition_edge1"
 	},
@@ -65491,9 +65249,7 @@
 	},
 /area/desert_dam/interior/dam_interior/atmos_storage)
 "mqM" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/desert/rock,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "mtk" = (
@@ -66392,10 +66148,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
 "smJ" = (
-/obj/effect/landmark{
-	name = "xeno_hive_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_hive_spawn,
 /obj/effect/landmark/queen_spawn,
 /turf/open/floor/prison{
 	dir = 10;
@@ -66505,9 +66258,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/interior/lab_northeast/east_lab_west_entrance)
 "sMi" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_civilian)
 "sML" = (
@@ -67154,9 +66905,7 @@
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_cargo)
 "xrx" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/desert/dirt{
 	dir = 9;
 	icon_state = "desert_transition_edge1"

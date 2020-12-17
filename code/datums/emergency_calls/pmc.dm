@@ -5,7 +5,8 @@
 	mob_max = 6
 	probability = 25
 	shuttle_id = "Distress_PMC"
-	name_of_spawn = "Distress_PMC"
+	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_pmc
+	item_spawn = /obj/effect/landmark/ert_spawns/distress_pmc/item
 	max_medics = 1
 	max_heavies = 2
 
@@ -100,7 +101,7 @@
 
 	if(!istype(spawn_loc))
 		return //Didn't find a useable spawn point.
-	
+
 	if(!checked_objective)
 		check_objective_info()
 
@@ -137,3 +138,9 @@
 		drop_spawn = get_spawn_point(1)
 		new /obj/item/storage/pouch/document(drop_spawn)
 		new /obj/item/storage/pouch/document(drop_spawn)
+
+/obj/effect/landmark/ert_spawns/distress_pmc
+	name = "Distress_PMC"
+
+/obj/effect/landmark/ert_spawns/distress_pmc/item
+	name = "Distress_PMCitem"

@@ -156,9 +156,7 @@
 	icon_state = "wooden_chair";
 	tag = ""
 	},
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "chapel"
@@ -428,9 +426,7 @@
 	dir = 4;
 	layer = 2.4
 	},
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	tag = "icon-darkish";
 	icon_state = "darkish";
@@ -472,10 +468,7 @@
 	icon_state = "wooden_chair";
 	tag = ""
 	},
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "chapel"

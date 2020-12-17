@@ -237,9 +237,9 @@
 
 	var/turf/T
 	if(map_tag != MAP_WHISKEY_OUTPOST)
-		T = pick(latejoin)
+		T = get_turf(pick(GLOB.latejoin))
 	else if (map_tag == MAP_WHISKEY_OUTPOST)
-		T = pick(latewhiskey)
+		T = get_turf(pick(GLOB.latewhiskey))
 
 	var/mob/living/carbon/human/character = create_character()	//creates the human and transfers vars and mind
 	RoleAuthority.equip_role(character, RoleAuthority.roles_for_mode[rank], T)

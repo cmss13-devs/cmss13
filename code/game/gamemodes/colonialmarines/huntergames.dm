@@ -100,11 +100,7 @@ var/waiting_for_drop_votes = 0
 	var/last_drop = 0
 	var/last_tally
 	var/contestants[]
-	var/primary_spawns[]
-	var/secondary_spawns[]
 	var/supply_votes[]
-	var/crap_spawns[]
-	var/good_spawns[]
 
 	var/ticks_passed = 0
 	var/drops_disabled = 0
@@ -115,36 +111,61 @@ var/waiting_for_drop_votes = 0
 /datum/game_mode/huntergames/announce()
 	return TRUE
 
+/obj/effect/landmark/hunter_primary
+	name = "hunter_primary"
+
+/obj/effect/landmark/hunter_primary/Initialize(mapload, ...)
+	. = ..()
+	GLOB.hunter_primaries += src
+
+/obj/effect/landmark/hunter_primary/Destroy()
+	GLOB.hunter_primaries -= src
+	return ..()
+
+/obj/effect/landmark/hunter_secondary
+	name = "hunter_secondary"
+
+/obj/effect/landmark/hunter_secondary/Initialize(mapload, ...)
+	. = ..()
+	GLOB.hunter_secondaries += src
+
+/obj/effect/landmark/hunter_secondary/Destroy()
+	GLOB.hunter_secondaries -= src
+	return ..()
+
+/obj/effect/landmark/crap_item
+	name = "crap_item"
+
+/obj/effect/landmark/crap_item/Initialize(mapload, ...)
+	. = ..()
+	GLOB.crap_items += src
+
+/obj/effect/landmark/crap_item/Destroy()
+	GLOB.crap_items -= src
+	return ..()
+
+/obj/effect/landmark/good_item
+	name = "good_item"
+
+/obj/effect/landmark/good_item/Initialize(mapload, ...)
+	. = ..()
+	GLOB.good_items += src
+
+/obj/effect/landmark/good_item/Destroy()
+	GLOB.good_items -= src
+	return ..()
+
 /datum/game_mode/huntergames/pre_setup()
-	primary_spawns = list()
-	secondary_spawns = list()
-	crap_spawns = list()
-	good_spawns = list()
 	supply_votes = list()
 
-	for(var/obj/effect/landmark/L in landmarks_list)
-		switch(L.name)
-			if("hunter_primary")
-				primary_spawns += L.loc
-				qdel(L)
-			if("hunter_secondary")
-				secondary_spawns += L.loc
-				qdel(L)
-			if("crap_item")
-				crap_spawns += L.loc
-				place_drop(L.loc, "crap")
-				qdel(L)
-			if("good_item")
-				good_spawns += L.loc
-				place_drop(L.loc, "good")
-				qdel(L)
-			if("block_hellhound")
-				new /obj/effect/step_trigger/hell_hound_blocker(L.loc)
-				qdel(L)
-			if("fog blocker")
-				qdel(L)
-			if("xeno tunnel")
-				qdel(L)
+	for(var/i in GLOB.crap_items)
+		place_drop(get_turf(i), "crap")
+
+	for(var/i in GLOB.good_items)
+		place_drop(get_turf(i), "good")
+
+	QDEL_LIST(GLOB.fog_blockers)
+	QDEL_LIST(GLOB.xeno_tunnels)
 
 	for(var/G in GLOB.gun_list)
 		qdel(G) //No guns or ammo allowed.
@@ -189,12 +210,11 @@ var/waiting_for_drop_votes = 0
 	var/mob/living/carbon/human/H
 	var/turf/picked
 
-	if(primary_spawns.len)
-		picked = pick(primary_spawns)
-		primary_spawns -= picked
+	if(GLOB.hunter_primaries.len)
+		picked = get_turf(pick_n_take(GLOB.hunter_primaries))
 	else
-		if(secondary_spawns.len)
-			picked = pick(secondary_spawns)
+		if(GLOB.hunter_secondaries.len)
+			picked = get_turf(pick_n_take(GLOB.hunter_secondaries))
 		else
 			message_admins("There were no spawn points available for a contestant..")
 

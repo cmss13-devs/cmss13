@@ -26,9 +26,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/central1)
 "i" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/central3)
 "j" = (

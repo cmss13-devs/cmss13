@@ -22,15 +22,11 @@
 /turf/open/floor,
 /area/lv624/lazarus/landing_zones/lz1)
 "f" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor,
 /area/lv624/lazarus/landing_zones/lz1)
 "g" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "loadingarea";
@@ -93,9 +89,7 @@
 /area/lv624/lazarus/landing_zones/lz1)
 "P" = (
 /obj/vehicle/train/cargo/engine,
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor,
 /area/lv624/lazarus/landing_zones/lz1)
 "R" = (

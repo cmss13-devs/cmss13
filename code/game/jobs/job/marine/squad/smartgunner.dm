@@ -35,3 +35,8 @@
 AddTimelock(/datum/job/marine/smartgunner, list(
 	JOB_SQUAD_ROLES = 5 HOURS
 ))
+
+/obj/effect/landmark/start/marine/smartgunner
+	name = JOB_SQUAD_SMARTGUN
+	icon_state = "smartgunner_spawn"
+	job = /datum/job/marine/smartgunner

@@ -1,4 +1,5 @@
 /obj/effect/landmark/survivor_spawner
+	name = "special survivor spawner"
 	var/equipment = ""
 	var/list/intro_text = list()
 	var/story_text = ""
@@ -7,12 +8,13 @@
 	var/roundstart_damage_times = 1
 	var/make_objective = 1
 
-/obj/effect/landmark/survivor_spawner/New()
-	..()
-	tag = "landmark*survivor_spawner"
-	invisibility = 101
-	surv_spawn += src
+/obj/effect/landmark/survivor_spawner/Initialize(mapload, ...)
+	. = ..()
+	GLOB.survivor_spawns += src
 
+/obj/effect/landmark/survivor_spawner/Destroy()
+	GLOB.survivor_spawns -= src
+	return ..()
 /obj/effect/landmark/survivor_spawner/lv624_skylight
 	intro_text = list("<h2>You are a survivor!</h2>",\
 	"<span class='notice'>You are a survivor of the attack on the colony. You worked or lived in the archaeology colony, and managed to avoid the alien attacks...until now.</span>",\

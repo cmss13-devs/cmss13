@@ -19,11 +19,8 @@
 	. = ..()
 	var/mob/living/carbon/human/H = .
 
-	var/obj/effect/landmark/survivor_spawner/spawner = pick(surv_spawn)
-	if(istype(spawner))
-		H.loc = spawner.loc
-	else
-		H.loc = spawner
+	var/obj/effect/landmark/survivor_spawner/spawner = pick(GLOB.survivor_spawns)
+	H.forceMove(get_turf(spawner))
 
 	if(istype(spawner) && spawner.equipment)
 		arm_equipment(H, spawner.equipment, FALSE, TRUE)

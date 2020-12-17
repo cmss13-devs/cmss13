@@ -99,9 +99,6 @@
 	initialize_post_marine_gear_list()
 	lobby_time = world.time
 	randomovertime = pickovertime()
-	for(var/obj/effect/landmark/start/S in world)
-		if(!istype(S, /obj/effect/landmark/start/whiskey))
-			qdel(S)
 
 	CONFIG_SET(flag/remove_gun_restrictions, TRUE)
 

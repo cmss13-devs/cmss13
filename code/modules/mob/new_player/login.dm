@@ -7,10 +7,10 @@
 		mind.current = src
 		mind_initialize()
 
-	if(length(newplayer_start))
-		loc = pick(newplayer_start)
+	if(length(GLOB.newplayer_start))
+		forceMove(get_turf(pick(GLOB.newplayer_start)))
 	else
-		loc = locate(1,1,1)
+		forceMove(locate(1,1,1))
 	lastarea = get_area(src.loc)
 
 	sight |= SEE_TURFS

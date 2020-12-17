@@ -29,3 +29,7 @@ AddTimelock(/datum/job/command/bridge, list(
 	JOB_SQUAD_LEADER = 1 HOURS,
 	JOB_HUMAN_ROLES = 15 HOURS
 ))
+
+/obj/effect/landmark/start/bridge
+	name = JOB_SO
+	job = /datum/job/command/bridge

@@ -35,9 +35,7 @@
 /turf/open/mars,
 /area/bigredv2/caves/eta/xenobiology)
 "h" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/mars,
 /area/bigredv2/caves/eta/xenobiology)
 "i" = (
@@ -113,9 +111,7 @@
 	},
 /area/bigredv2/caves/eta/xenobiology)
 "s" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor{
 	tag = "icon-dark";
 	icon_state = "dark";
@@ -191,10 +187,7 @@
 	},
 /area/bigredv2/caves/eta/xenobiology)
 "C" = (
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_spawn,
 /obj/effect/alien/weeds/node,
 /turf/open/mars{
 	tag = "icon-mars_dirt_10";

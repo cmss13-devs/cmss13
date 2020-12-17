@@ -407,7 +407,7 @@
 		if(clan != CLAN_SHIP_ALMAYER)
 			end_turf = pick(get_clan_spawnpoints(clan))
 		else
-			end_turf = pick(yautja_almayer_loc)
+			end_turf = get_turf(pick(GLOB.mainship_yautja_teleports))
 
 		user.forceMove(end_turf)
 		animation_teleport_quick_in(user)
@@ -431,11 +431,11 @@
 
 	if(loc && istype(usr.loc, /turf))
 		var/turf/location = usr.loc
-		yautja_teleport_loc += location
+		GLOB.yautja_teleports += location
 		var/name = input("What would you like to name this location?", "Text") as null|text
 		if(!name)
 			return
-		yautja_teleport_desc += name + location.loc_to_string()
+		GLOB.yautja_teleport_descs += name + location.loc_to_string()
 		to_chat(usr, SPAN_WARNING("You can now teleport to this location!"))
 		log_game("[usr] ([usr.key]) has created a new teleport location at [get_area(usr)]")
 		yautja_announcement(SPAN_YAUTJABOLDBIG("[usr.real_name] has created a new teleport location, [name], at [usr.loc] in [get_area(usr)]"))

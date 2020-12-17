@@ -29,5 +29,5 @@
 /datum/emergency_call/pizza/cryo
 	name = "Pizza Delivery (Cryo)"
 	probability = 0
-	name_of_spawn = "Distress_Cryo"
+	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_cryo
 	shuttle_id = ""

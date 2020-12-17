@@ -9,13 +9,13 @@
 	objectives = "Assist the USCM forces"
 	max_heavies = 4
 	max_medics = 2
-	name_of_spawn = "Distress_Cryo"
+	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_cryo
 	shuttle_id = ""
 
 /datum/emergency_call/cryo_squad/create_member(datum/mind/M)
 	set waitfor = 0
 	if(map_tag == MAP_WHISKEY_OUTPOST)
-		name_of_spawn = "distress_wo"
+		name_of_spawn = /obj/effect/landmark/ert_spawns/distress_wo
 	var/turf/spawn_loc = get_spawn_point()
 
 	if(!istype(spawn_loc)) return //Didn't find a useable spawn point.
@@ -44,9 +44,12 @@
 
 	GLOB.data_core.manifest_inject(H) //Put people in crew manifest
 
-datum/emergency_call/cryo_squad/platoon
+/datum/emergency_call/cryo_squad/platoon
 	name = "Marine Cryo Reinforcements (Platoon)"
 	mob_min = 8
 	mob_max = 30
 	probability = 0
 	max_heavies = 8
+
+/obj/effect/landmark/ert_spawns/distress_cryo
+	name = "Distress_Cryo"

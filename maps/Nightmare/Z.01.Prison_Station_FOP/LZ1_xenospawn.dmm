@@ -310,10 +310,7 @@
 	tag = "icon-S";
 	icon_state = "S"
 	},
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_spawn,
 /turf/open/floor/plating,
 /area/prison/hallway/entrance)
 "aM" = (
@@ -321,10 +318,7 @@
 	tag = "icon-SW-out";
 	icon_state = "SW-out"
 	},
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_spawn,
 /turf/open/floor/plating,
 /area/prison/hallway/entrance)
 "aN" = (
@@ -362,10 +356,7 @@
 /turf/open/floor/plating,
 /area/prison/hallway/entrance)
 "aR" = (
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_spawn,
 /turf/open/floor/plating,
 /area/prison/hallway/entrance)
 "aS" = (
@@ -377,10 +368,7 @@
 	tag = "icon-W";
 	icon_state = "W"
 	},
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_spawn,
 /turf/open/floor/plating,
 /area/prison/hallway/entrance)
 "aT" = (
@@ -416,10 +404,7 @@
 	tag = "icon-W";
 	icon_state = "W"
 	},
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_spawn,
 /turf/open/floor/plating,
 /area/prison/hallway/entrance)
 "aX" = (
@@ -469,9 +454,7 @@
 /turf/open/floor/plating,
 /area/prison/hallway/entrance)
 "bc" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor/plating,
 /area/prison/hallway/entrance)
 "bd" = (
@@ -594,23 +577,13 @@
 	},
 /area/prison/hallway/entrance)
 "bn" = (
-/obj/effect/landmark{
-	name = "good_item"
-	},
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/good_item,
+/obj/effect/landmark/xeno_spawn,
 /turf/open/floor/plating,
 /area/prison/hallway/entrance)
 "bo" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/crap_item,
+/obj/effect/landmark/xeno_spawn,
 /turf/open/floor/plating,
 /area/prison/hallway/entrance)
 "bp" = (
@@ -817,7 +790,7 @@
 /area/prison/hallway/entrance)
 "bP" = (
 /obj/structure/pipes/vents/pump{
-	dir = 8 
+	dir = 8
 	},
 /turf/open/floor/prison,
 /area/prison/hallway/entrance)
@@ -899,9 +872,7 @@
 	},
 /area/prison/hallway/entrance)
 "bX" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/plating,
 /area/prison/hallway/entrance)
 "bY" = (
@@ -942,7 +913,7 @@
 "cb" = (
 /obj/effect/decal/cleanable/blood,
 /obj/structure/pipes/vents/pump{
-	dir = 1 
+	dir = 1
 	},
 /turf/open/floor/prison{
 	icon_state = "darkred2"
@@ -978,9 +949,7 @@
 /turf/open/floor/prison,
 /area/prison/hallway/entrance)
 "cf" = (
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /turf/open/floor/plating,
 /area/prison/hallway/entrance)
 "cg" = (
@@ -1700,7 +1669,7 @@
 /area/prison/monorail/east)
 "dG" = (
 /obj/structure/pipes/vents/pump{
-	dir = 4 
+	dir = 4
 	},
 /turf/open/floor/plating,
 /area/prison/maintenance/hangar_barracks)
@@ -1751,7 +1720,7 @@
 /area/prison/security/checkpoint/hangar)
 "dM" = (
 /obj/structure/pipes/vents/pump{
-	dir = 4 
+	dir = 4
 	},
 /turf/open/floor/prison{
 	tag = "icon-cell_stripe (WEST)";
@@ -1819,10 +1788,7 @@
 /turf/open/floor/plating,
 /area/prison/hallway/entrance)
 "dS" = (
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_spawn,
 /obj/effect/alien/weeds/node,
 /turf/open/floor/plating,
 /area/prison/hallway/entrance)

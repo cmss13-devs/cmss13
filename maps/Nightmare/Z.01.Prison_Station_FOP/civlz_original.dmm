@@ -35,7 +35,7 @@
 /area/prison/residential/central)
 "h" = (
 /obj/structure/pipes/vents/pump{
-	dir = 4 
+	dir = 4
 	},
 /turf/open/floor/plating,
 /area/prison/residential/central)
@@ -87,10 +87,7 @@
 	tag = "icon-S";
 	icon_state = "S"
 	},
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_spawn,
 /turf/open/floor/plating,
 /area/prison/residential/central)
 "p" = (
@@ -98,10 +95,7 @@
 	tag = "icon-SW-out";
 	icon_state = "SW-out"
 	},
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_spawn,
 /turf/open/floor/plating,
 /area/prison/residential/central)
 "q" = (
@@ -120,10 +114,7 @@
 /turf/open/floor/plating,
 /area/prison/residential/central)
 "r" = (
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_spawn,
 /turf/open/floor/plating,
 /area/prison/residential/central)
 "s" = (
@@ -135,10 +126,7 @@
 	tag = "icon-W";
 	icon_state = "W"
 	},
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_spawn,
 /turf/open/floor/plating,
 /area/prison/residential/central)
 "t" = (
@@ -171,10 +159,7 @@
 	tag = "icon-W";
 	icon_state = "W"
 	},
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_spawn,
 /turf/open/floor/plating,
 /area/prison/residential/central)
 "x" = (
@@ -190,23 +175,13 @@
 /turf/open/floor/plating,
 /area/prison/residential/central)
 "A" = (
-/obj/effect/landmark{
-	name = "good_item"
-	},
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/good_item,
+/obj/effect/landmark/xeno_spawn,
 /turf/open/floor/plating,
 /area/prison/residential/central)
 "B" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/crap_item,
+/obj/effect/landmark/xeno_spawn,
 /turf/open/floor/plating,
 /area/prison/residential/central)
 "C" = (

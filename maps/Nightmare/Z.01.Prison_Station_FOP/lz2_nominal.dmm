@@ -1080,9 +1080,7 @@
 	},
 /area/prison/research/RD)
 "arW" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor/plating,
 /area/shuttle/drop2/prison)
 "asD" = (
@@ -1130,9 +1128,7 @@
 	tag = "icon-N";
 	icon_state = "N"
 	},
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor/prison{
 	tag = "icon-floor (WEST)";
 	icon_state = "floor";
@@ -1223,9 +1219,7 @@
 	},
 /area/prison/research/RD)
 "atp" = (
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor/plating,
 /area/shuttle/drop2/prison)
 "atD" = (
@@ -1370,9 +1364,7 @@
 /area/prison/hangar_storage/research)
 "aus" = (
 /obj/structure/surface/rack,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor/prison{
 	tag = "icon-floor (SOUTHWEST)";
 	icon_state = "floor";
@@ -1584,9 +1576,7 @@
 	},
 /area/prison/research)
 "avD" = (
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor/prison{
 	tag = "icon-darkpurplefull2";
 	icon_state = "darkpurplefull2"
@@ -1981,9 +1971,7 @@
 /turf/open/floor/plating,
 /area/prison/hanger/research)
 "azS" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor/plating,
 /area/prison/hanger/research)
 "azT" = (
@@ -2514,18 +2502,14 @@
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor/wood,
 /area/prison/quarters/research)
 "aFU" = (
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor/wood,
 /area/prison/quarters/research)
 "aFV" = (
@@ -2571,9 +2555,7 @@
 	icon_state = "intact-scrubbers";
 	dir = 4
 	},
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/prison{
 	tag = "icon-sterile_white (SOUTHWEST)";
 	icon_state = "sterile_white";
@@ -2760,9 +2742,7 @@
 /area/prison/maintenance/staff_research)
 "aIm" = (
 /obj/structure/surface/rack,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor/prison{
 	tag = "icon-darkyellowfull2 (EAST)";
 	icon_state = "darkyellowfull2";
@@ -2970,9 +2950,7 @@
 	icon_state = "intact-supply";
 	dir = 4
 	},
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "whitepurple"

@@ -13,7 +13,7 @@
 /datum/emergency_call/wo/create_member(datum/mind/M)
 	set waitfor = 0
 	if(map_tag == MAP_WHISKEY_OUTPOST)
-		name_of_spawn = "distress_wo"
+		name_of_spawn = /obj/effect/landmark/ert_spawns/distress_wo
 	var/turf/spawn_loc = get_spawn_point()
 
 	if(!istype(spawn_loc)) return //Didn't find a useable spawn point.
@@ -69,11 +69,11 @@ datum/emergency_call/wo/platoon
 datum/emergency_call/wo/platoon/cryo
 	name = "Marine Reinforcements (Platoon) (Cryo)"
 	probability = 0
-	name_of_spawn = "Distress_Cryo"
+	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_cryo
 	shuttle_id = ""
 
 datum/emergency_call/wo/cryo
 	name = "Marine Reinforcements (Squad) (Cryo)"
 	probability = 0
-	name_of_spawn = "Distress_Cryo"
+	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_cryo
 	shuttle_id = ""

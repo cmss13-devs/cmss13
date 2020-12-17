@@ -265,9 +265,7 @@
 	},
 /area/lv624/ground/caves/central2)
 "abg" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/central1)
 "abh" = (
@@ -302,9 +300,7 @@
 /turf/closed/wall/resin/membrane/ondirt,
 /area/lv624/ground/caves/east1)
 "abo" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/east1)
 "abp" = (
@@ -321,9 +317,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/central1)
 "abs" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/east1)
 "abt" = (
@@ -351,9 +345,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/east1)
 "aby" = (
-/obj/effect/landmark{
-	name = "xeno_hive_spawn"
-	},
+/obj/effect/landmark/xeno_hive_spawn,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west1)
 "abz" = (
@@ -381,9 +373,7 @@
 /turf/closed/wall/rock/brown,
 /area/lv624/ground/sand4)
 "abE" = (
-/obj/effect/landmark{
-	name = "xeno_hive_spawn"
-	},
+/obj/effect/landmark/xeno_hive_spawn,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/east1)
 "abF" = (
@@ -403,16 +393,11 @@
 	},
 /area/lv624/ground/caves/central1)
 "abH" = (
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/central1)
 "abI" = (
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_spawn,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/central1)
 "abJ" = (
@@ -435,9 +420,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west1)
 "abO" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west1)
 "abP" = (
@@ -466,17 +449,13 @@
 /area/lv624/ground/caves/west1)
 "abV" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/effect/landmark{
-	name = "xeno_hive_spawn"
-	},
+/obj/effect/landmark/xeno_hive_spawn,
 /turf/open/floor{
 	icon_state = "white"
 	},
 /area/lv624/lazarus/main_hall)
 "abW" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/central1)
 "abX" = (
@@ -563,9 +542,7 @@
 	},
 /area/lv624/lazarus/canteen)
 "aco" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/east1)
 "acp" = (
@@ -658,9 +635,7 @@
 "acE" = (
 /obj/effect/decal/remains/human,
 /obj/item/explosive/grenade/HE,
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/shuttle{
 	icon_state = "floor4"
 	},
@@ -739,9 +714,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/sand6)
 "acS" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west1)
 "acT" = (
@@ -782,9 +755,7 @@
 	},
 /area/lv624/ground/sand6)
 "acY" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/central3)
 "acZ" = (
@@ -797,9 +768,7 @@
 	},
 /area/lv624/ground/sand6)
 "adc" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/central3)
 "add" = (
@@ -853,9 +822,7 @@
 	},
 /area/lv624/ground/sand6)
 "adl" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/gm/dirt,
 /area/lv624/ground/sand5)
 "adn" = (
@@ -885,9 +852,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/sand6)
 "adt" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/gm/dirt,
 /area/lv624/ground/sand5)
 "adu" = (
@@ -1004,9 +969,7 @@
 	},
 /area/lv624/ground/sand5)
 "adJ" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west1)
 "adK" = (
@@ -1078,9 +1041,7 @@
 	},
 /area/lv624/ground/sand5)
 "adU" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor/airless{
 	dir = 5;
 	icon_state = "asteroidfloor"
@@ -1110,9 +1071,7 @@
 "adY" = (
 /obj/effect/decal/remains/xeno,
 /obj/structure/surface/table,
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whiteyellowfull"
@@ -1127,9 +1086,7 @@
 	},
 /area/lv624/ground/caves/east1)
 "aea" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/gm/dirt,
 /area/lv624/ground/sand6)
 "aeb" = (
@@ -1165,9 +1122,7 @@
 	},
 /area/lv624/ground/sand6)
 "aef" = (
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /turf/open/gm/dirt,
 /area/lv624/ground/sand5)
 "aeg" = (
@@ -1254,9 +1209,7 @@
 	},
 /area/lv624/ground/sand6)
 "aer" = (
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whiteyellowfull"
@@ -1389,9 +1342,7 @@
 /turf/closed/wall/rock/brown,
 /area/lv624/ground/sand2)
 "aeN" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor,
 /area/lv624/ground/sand5)
 "aeO" = (
@@ -1404,24 +1355,18 @@
 /area/lv624/ground/sand6)
 "aeQ" = (
 /obj/vehicle/train/cargo/engine,
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor,
 /area/lv624/ground/sand6)
 "aeR" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whiteyellowfull"
 	},
 /area/lv624/ground/sand6)
 "aeS" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/gm/river,
 /area/lv624/ground/caves/west1)
 "aeT" = (
@@ -1510,9 +1455,7 @@
 /area/lv624/ground/sand2)
 "afi" = (
 /obj/structure/surface/table,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whiteyellowfull"
@@ -1556,9 +1499,7 @@
 /turf/open/floor,
 /area/lv624/ground/sand2)
 "afp" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor,
 /area/lv624/ground/sand2)
 "afq" = (
@@ -1566,9 +1507,7 @@
 /obj/item/weapon/melee/harpoon/yautja{
 	name = "Alien Harpoon"
 	},
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
 	dir = 4;
@@ -1641,15 +1580,11 @@
 	},
 /area/lv624/ground/sand2)
 "afz" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/gm/dirt,
 /area/lv624/ground/sand2)
 "afA" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/gm/dirt,
 /area/lv624/ground/sand3)
 "afB" = (
@@ -1692,9 +1627,7 @@
 /turf/open/floor/plating,
 /area/lv624/ground/sand2)
 "afI" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor/plating,
 /area/lv624/ground/sand2)
 "afJ" = (
@@ -1737,9 +1670,7 @@
 	},
 /area/lv624/ground/sand2)
 "afQ" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/gm/dirt,
 /area/lv624/ground/sand2)
 "afR" = (
@@ -1843,9 +1774,7 @@
 	flipped = 1
 	},
 /obj/item/ammo_magazine/rifle,
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/plating,
 /area/lv624/ground/sand2)
@@ -1860,9 +1789,7 @@
 /area/lv624/ground/sand2)
 "agk" = (
 /obj/item/ammo_casing,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor/plating,
 /area/lv624/ground/sand2)
 "agl" = (
@@ -1870,9 +1797,7 @@
 /turf/open/floor/plating,
 /area/lv624/ground/sand2)
 "agm" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/gm/dirt,
 /area/lv624/ground/sand3)
 "ago" = (
@@ -1939,9 +1864,7 @@
 	},
 /area/lv624/ground/river2)
 "agy" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/gm/dirt,
 /area/lv624/ground/sand2)
 "agz" = (
@@ -1968,9 +1891,7 @@
 	dir = 8;
 	flipped = 1
 	},
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/plating,
 /area/lv624/ground/sand2)
@@ -2085,9 +2006,7 @@
 	dir = 4;
 	flipped = 1
 	},
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/plating,
 /area/lv624/ground/sand2)
@@ -2129,9 +2048,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/sand4)
 "ahe" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/gm/coast{
 	dir = 4
 	},
@@ -2167,9 +2084,7 @@
 	flipped = 1
 	},
 /obj/item/ammo_casing,
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/plating,
 /area/lv624/ground/sand2)
@@ -2205,23 +2120,17 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/river2)
 "ahq" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/gm/dirt,
 /area/lv624/ground/sand3)
 "ahr" = (
-/obj/effect/landmark{
-	name = "yautja_teleport_loc"
-	},
+/obj/effect/landmark/yautja_teleport,
 /turf/open/gm/dirt,
 /area/lv624/ground/sand3)
 "ahs" = (
 /obj/effect/decal/remains/human,
 /obj/item/ammo_casing,
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor/plating,
 /area/lv624/ground/sand2)
 "aht" = (
@@ -2281,21 +2190,15 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/sand9)
 "ahE" = (
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /turf/open/gm/dirt,
 /area/lv624/ground/sand9)
 "ahF" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/gm/dirt,
 /area/lv624/ground/sand9)
 "ahG" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/gm/dirt,
 /area/lv624/ground/sand9)
 "ahH" = (
@@ -2435,17 +2338,13 @@
 	},
 /area/lv624/ground/sand4)
 "aif" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	icon_state = "redyellowfull"
 	},
 /area/lv624/ground/sand4)
 "aig" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/gm/dirt,
 /area/lv624/ground/sand8)
 "aih" = (
@@ -2458,9 +2357,7 @@
 	},
 /area/lv624/ground/sand8)
 "aii" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/gm/dirt,
 /area/lv624/ground/sand7)
 "aij" = (
@@ -2483,9 +2380,7 @@
 	},
 /area/lv624/ground/sand8)
 "ail" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/gm/dirt,
 /area/lv624/ground/sand8)
 "aim" = (
@@ -2540,9 +2435,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/sand9)
 "ais" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/gm/dirt,
 /area/lv624/ground/sand9)
 "ait" = (
@@ -2610,9 +2503,7 @@
 	},
 /area/lv624/ground/sand8)
 "aiC" = (
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /turf/open/gm/dirt,
 /area/lv624/ground/sand8)
 "aiD" = (
@@ -2782,9 +2673,7 @@
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/sand9)
 "ajd" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor{
 	icon_state = "cult"
 	},
@@ -2944,9 +2833,7 @@
 /turf/open/gm/river,
 /area/lv624/ground/river2)
 "ajH" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/gm/river,
 /area/lv624/ground/river2)
 "ajI" = (
@@ -3075,9 +2962,7 @@
 	},
 /area/lv624/ground/river3)
 "akd" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/gm/river,
 /area/lv624/ground/river3)
 "ake" = (
@@ -3523,9 +3408,7 @@
 /turf/open/gm/river,
 /area/lv624/ground/river3)
 "alx" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/gm/river,
 /area/lv624/ground/river3)
 "aly" = (
@@ -3694,9 +3577,7 @@
 	},
 /area/lv624/ground/river2)
 "alZ" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/gm/dirtgrassborder{
 	dir = 1
 	},
@@ -3773,9 +3654,7 @@
 	},
 /area/lv624/ground/river1)
 "amm" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle7)
 "amn" = (
@@ -3925,9 +3804,7 @@
 	},
 /area/lv624/ground/jungle6)
 "amP" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/gm/dirt,
 /area/lv624/ground/sand1)
 "amQ" = (
@@ -3965,9 +3842,7 @@
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle8)
 "amW" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/gm/grass{
 	icon_state = "grass2"
 	},
@@ -4038,24 +3913,18 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle6)
 "anj" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle8)
 "ank" = (
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
 "anl" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/gm/river,
 /area/lv624/ground/river1)
 "anm" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle7)
 "ann" = (
@@ -4090,9 +3959,7 @@
 	},
 /area/lv624/ground/river3)
 "ant" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/gm/grass{
 	icon_state = "grass2"
 	},
@@ -4240,9 +4107,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/sand7)
 "aoe" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle7)
 "aol" = (
@@ -4257,24 +4122,18 @@
 /turf/open/gm/river,
 /area/lv624/ground/river3)
 "aoo" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/gm/dirt,
 /area/lv624/ground/sand1)
 "aop" = (
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /turf/open/gm/dirt,
 /area/lv624/ground/sand1)
 "aor" = (
 /obj/structure/surface/table,
 /obj/item/clothing/glasses/hud/health,
 /obj/effect/landmark/objective_landmark/science,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/item/reagent_container/spray/cleaner,
 /turf/open/floor{
 	icon_state = "whitebluefull";
@@ -4352,9 +4211,7 @@
 "aoB" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/close,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/structure/machinery/light{
 	dir = 1
 	},
@@ -4392,9 +4249,7 @@
 	},
 /area/lv624/lazarus/medbay)
 "aoI" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -4441,9 +4296,7 @@
 	pixel_y = 6
 	},
 /obj/effect/landmark/objective_landmark/close,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "green"
@@ -4468,9 +4321,7 @@
 	},
 /area/lv624/ground/river3)
 "aoY" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/gm/dirt,
 /area/lv624/ground/sand1)
 "aoZ" = (
@@ -4497,10 +4348,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle2)
 "aph" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle4)
 "api" = (
@@ -4530,9 +4378,7 @@
 /area/lv624/ground/jungle5)
 "apo" = (
 /obj/structure/flora/bush/ausbushes/ppflowers,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/gm/river,
 /area/lv624/ground/river3)
 "app" = (
@@ -4545,9 +4391,7 @@
 /turf/open/gm/grass,
 /area/lv624/lazarus/landing_zones/lz2)
 "apr" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/gm/dirt,
 /area/lv624/ground/sand7)
 "aps" = (
@@ -4676,9 +4520,7 @@
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_3"
 	},
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/gm/grass{
 	icon_state = "grass2"
 	},
@@ -4715,9 +4557,7 @@
 	},
 /area/lv624/ground/jungle5)
 "aqe" = (
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /turf/open/gm/dirt,
 /area/lv624/ground/sand7)
 "aqf" = (
@@ -4773,9 +4613,7 @@
 /turf/open/gm/river,
 /area/lv624/ground/river2)
 "aqs" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/coast,
 /area/lv624/ground/river2)
@@ -4802,9 +4640,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle6)
 "aqy" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle6)
 "aqz" = (
@@ -4841,9 +4677,7 @@
 /turf/open/gm/dirtgrassborder,
 /area/lv624/lazarus/quartstorage/outdoors)
 "aqH" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder,
 /area/lv624/lazarus/quartstorage/outdoors)
@@ -4894,9 +4728,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/compound/n)
 "aqS" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/gm/grass,
 /area/lv624/ground/compound/n)
 "aqV" = (
@@ -4932,9 +4764,7 @@
 	},
 /area/lv624/ground/river3)
 "arc" = (
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /turf/open/gm/river,
 /area/lv624/ground/river1)
 "ard" = (
@@ -4950,9 +4780,7 @@
 	},
 /area/lv624/lazarus/medbay)
 "arg" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "whitebluecorner";
@@ -5070,9 +4898,7 @@
 	},
 /area/lv624/lazarus/quartstorage/outdoors)
 "arx" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle6)
 "arB" = (
@@ -5080,16 +4906,11 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle9)
 "arE" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/gm/grass,
 /area/lv624/ground/compound/n)
 "arG" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/gm/dirt,
 /area/lv624/lazarus/quartstorage/outdoors)
 "arH" = (
@@ -5179,9 +5000,7 @@
 /turf/open/gm/river,
 /area/lv624/ground/river1)
 "arW" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle6)
@@ -5225,9 +5044,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/compound/ne)
 "ash" = (
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle7)
 "asi" = (
@@ -5299,9 +5116,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle1)
 "asw" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/gm/dirt,
 /area/lv624/ground/compound/ne)
 "asx" = (
@@ -5366,9 +5181,7 @@
 	},
 /area/lv624/ground/jungle1)
 "asK" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/gm/dirt,
 /area/lv624/ground/compound/n)
 "asL" = (
@@ -5406,9 +5219,7 @@
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
 "asQ" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle5)
 "asR" = (
@@ -5627,10 +5438,7 @@
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
 "atF" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
 "atG" = (
@@ -5775,9 +5583,7 @@
 	},
 /area/lv624/ground/compound/ne)
 "aua" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/gm/dirt,
 /area/lv624/lazarus/quartstorage/outdoors)
 "aub" = (
@@ -5814,9 +5620,7 @@
 /turf/open/floor/wood,
 /area/lv624/ground/caves/central2)
 "aui" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle9)
 "auj" = (
@@ -5902,9 +5706,7 @@
 /area/lv624/lazarus/research)
 "auv" = (
 /obj/effect/decal/remains/human,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	icon_state = "white"
@@ -5920,9 +5722,7 @@
 	},
 /area/lv624/lazarus/research)
 "aux" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle6)
 "auy" = (
@@ -6181,15 +5981,11 @@
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
 "avj" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
 "avk" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle5)
 "avl" = (
@@ -6244,9 +6040,7 @@
 	},
 /area/lv624/lazarus/research)
 "avs" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle9)
 "avt" = (
@@ -6269,15 +6063,11 @@
 	},
 /area/lv624/lazarus/fitness)
 "avw" = (
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/gm/river,
 /area/lv624/lazarus/fitness)
 "avx" = (
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /turf/open/floor/plating{
 	icon_state = "platebotc"
 	},
@@ -6300,9 +6090,7 @@
 /area/lv624/ground/jungle7)
 "avB" = (
 /obj/structure/surface/table,
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	dir = 5;
@@ -6346,9 +6134,7 @@
 	name = "Science Wing Lockdown";
 	pixel_x = 25
 	},
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	icon_state = "white"
@@ -6397,9 +6183,7 @@
 	},
 /area/lv624/lazarus/fitness)
 "avM" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whitepurplecorner"
@@ -6586,9 +6370,7 @@
 	},
 /area/lv624/lazarus/research)
 "awn" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	icon_state = "white"
@@ -6729,10 +6511,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle6)
 "awG" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	dir = 5;
@@ -6764,9 +6543,7 @@
 /turf/open/gm/river,
 /area/lv624/ground/jungle6)
 "awK" = (
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	dir = 5;
@@ -6821,9 +6598,7 @@
 	},
 /area/lv624/lazarus/fitness)
 "awQ" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/gm/dirtgrassborder,
 /area/lv624/ground/jungle2)
 "awR" = (
@@ -6834,10 +6609,7 @@
 	},
 /area/lv624/lazarus/fitness)
 "awS" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whitepurplecorner"
@@ -6979,10 +6751,7 @@
 /turf/open/gm/river,
 /area/lv624/ground/jungle6)
 "axp" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/wood,
 /area/lv624/ground/jungle6)
 "axq" = (
@@ -7081,9 +6850,7 @@
 /obj/structure/machinery/shower{
 	pixel_y = 16
 	},
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /obj/structure/machinery/light{
 	dir = 4
 	},
@@ -7151,9 +6918,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle5)
 "axQ" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "warnwhite"
@@ -7393,9 +7158,7 @@
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
 "ayD" = (
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
 "ayE" = (
@@ -7517,16 +7280,12 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/main_hall)
 "ayS" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/structure/barricade/wooden,
 /turf/open/gm/grass,
 /area/lv624/ground/compound/ne)
 "ayT" = (
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /turf/open/gm/grass,
 /area/lv624/ground/compound/ne)
 "ayU" = (
@@ -7573,9 +7332,7 @@
 	},
 /area/lv624/lazarus/robotics)
 "aza" = (
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "vault"
@@ -7708,17 +7465,13 @@
 /area/lv624/lazarus/sleep_male)
 "azr" = (
 /obj/structure/machinery/vending/cigarette/colony,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	icon_state = "white"
 	},
 /area/lv624/lazarus/main_hall)
 "azs" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/gm/dirt,
 /area/lv624/ground/compound/c)
 "azt" = (
@@ -8064,9 +7817,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor{
 	icon_state = "bluecorner"
 	},
@@ -8490,9 +8241,7 @@
 	},
 /area/lv624/ground/jungle4)
 "aBx" = (
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /turf/open/gm/dirt,
 /area/lv624/ground/compound/c)
 "aBy" = (
@@ -8549,10 +8298,7 @@
 /obj/structure/bed/chair/comfy/lime{
 	dir = 1
 	},
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
 	dir = 9;
@@ -8602,9 +8348,7 @@
 /turf/open/gm/river,
 /area/lv624/ground/jungle4)
 "aBM" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/gm/river,
 /area/lv624/ground/jungle4)
 "aBN" = (
@@ -8690,9 +8434,7 @@
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle5)
 "aBY" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	icon_state = "bluecorner"
 	},
@@ -8724,9 +8466,7 @@
 	},
 /area/lv624/lazarus/sleep_female)
 "aCc" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "purple"
@@ -8948,10 +8688,7 @@
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle4)
 "aCI" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/gm/dirt,
 /area/lv624/lazarus/landing_zones/lz2)
 "aCK" = (
@@ -9144,9 +8881,7 @@
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/lazarus/landing_zones/lz2)
 "aDm" = (
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle9)
 "aDn" = (
@@ -9163,10 +8898,7 @@
 /obj/structure/bed/chair/comfy/brown{
 	dir = 1
 	},
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor{
 	icon_state = "bluecorner"
 	},
@@ -9339,15 +9071,11 @@
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle3)
 "aDQ" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle4)
 "aDR" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle4)
 "aDS" = (
@@ -9372,9 +9100,7 @@
 	},
 /obj/structure/surface/table,
 /obj/item/trash/cheesie,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -9385,9 +9111,7 @@
 	},
 /obj/structure/surface/table,
 /obj/item/reagent_container/food/snacks/cheeseburger,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -9425,9 +9149,7 @@
 	},
 /area/lv624/ground/compound/c)
 "aEf" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "bot"
@@ -9474,10 +9196,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle4)
 "aEn" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "barber"
@@ -9494,9 +9213,7 @@
 	},
 /area/lv624/ground/jungle4)
 "aEq" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor/plating,
 /area/shuttle/drop2/LV624{
 	name = "\improper Almayer Dropship 2"
@@ -9524,16 +9241,12 @@
 	},
 /area/lv624/lazarus/atmos)
 "aEu" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/gm/dirt,
 /area/lv624/lazarus/landing_zones/lz2)
 "aEv" = (
 /obj/structure/flora/grass/tallgrass/jungle,
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle3)
 "aEw" = (
@@ -9580,9 +9293,7 @@
 /obj/structure/pipes/vents/pump{
 	dir = 4
 	},
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	icon_state = "freezerfloor"
 	},
@@ -9630,10 +9341,7 @@
 	icon_state = "coffin_open";
 	opened = 1
 	},
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
@@ -9907,10 +9615,7 @@
 /obj/structure/machinery/shower{
 	dir = 4
 	},
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor{
 	icon_state = "freezerfloor"
 	},
@@ -10277,10 +9982,7 @@
 	},
 /area/lv624/lazarus/toilet)
 "aGn" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor{
 	icon_state = "freezerfloor"
 	},
@@ -10299,9 +10001,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whiteyellowfull"
@@ -10379,9 +10079,7 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
 "aGC" = (
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /turf/open/floor/plating,
 /area/shuttle/drop1/LV624{
 	name = "\improper Almayer Dropship 1"
@@ -10423,9 +10121,7 @@
 	},
 /area/lv624/lazarus/toilet)
 "aGJ" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	icon_state = "freezerfloor"
 	},
@@ -10487,9 +10183,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle5)
 "aGU" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor/plating,
 /area/shuttle/drop1/LV624{
 	name = "\improper Almayer Dropship 1"
@@ -10576,9 +10270,7 @@
 	},
 /area/lv624/lazarus/main_hall)
 "aHg" = (
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -10727,9 +10419,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle9)
 "aHD" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/gm/dirtgrassborder{
 	dir = 4;
 	icon_state = "grassdirt_corner2"
@@ -10881,9 +10571,7 @@
 	},
 /area/lv624/ground/jungle3)
 "aIe" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -10916,9 +10604,7 @@
 	start_charge = 0
 	},
 /obj/structure/surface/table,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
 	icon_state = "white"
@@ -10969,9 +10655,7 @@
 /area/lv624/ground/compound/sw)
 "aIp" = (
 /obj/structure/surface/table,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
 	icon_state = "white"
@@ -11020,9 +10704,7 @@
 	},
 /area/lv624/lazarus/main_hall)
 "aIv" = (
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -11046,9 +10728,7 @@
 /area/lv624/ground/jungle4)
 "aIz" = (
 /obj/structure/flora/jungle/vines,
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/gm/dirtgrassborder{
 	dir = 1
 	},
@@ -11197,9 +10877,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle6)
 "aIX" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/gm/dirt,
 /area/lv624/ground/compound/sw)
 "aIY" = (
@@ -11283,9 +10961,7 @@
 	},
 /area/lv624/lazarus/main_hall)
 "aJl" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "loadingarea";
@@ -11311,9 +10987,7 @@
 /turf/open/floor/greengrid,
 /area/lv624/lazarus/internal_affairs)
 "aJq" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle9)
 "aJr" = (
@@ -11516,9 +11190,7 @@
 	},
 /area/lv624/lazarus/landing_zones/lz1)
 "aJS" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor,
 /area/lv624/lazarus/landing_zones/lz1)
 "aJT" = (
@@ -11549,10 +11221,7 @@
 /turf/open/floor/bluegrid,
 /area/lv624/lazarus/internal_affairs)
 "aJW" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/bluegrid,
 /area/lv624/lazarus/internal_affairs)
 "aJY" = (
@@ -11616,9 +11285,7 @@
 /turf/open/floor/plating,
 /area/lv624/ground/compound)
 "aKh" = (
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass{
 	icon_state = "grass2"
@@ -11816,9 +11483,7 @@
 /area/lv624/lazarus/atmos)
 "aKJ" = (
 /obj/structure/machinery/light/small,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -11834,9 +11499,7 @@
 /area/lv624/lazarus/main_hall)
 "aKL" = (
 /obj/item/frame/table,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
 	icon_state = "white"
@@ -11852,9 +11515,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle3)
 "aKO" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz2)
 "aKP" = (
@@ -11878,9 +11539,7 @@
 /obj/structure/extinguisher_cabinet{
 	pixel_y = 30
 	},
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor{
 	icon_state = "whiteblue";
 	tag = "icon-whiteblue"
@@ -11939,17 +11598,13 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle3)
 "aKZ" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/gm/grass{
 	icon_state = "grass2"
 	},
 /area/lv624/ground/jungle9)
 "aLa" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle3)
 "aLb" = (
@@ -12043,26 +11698,17 @@
 	},
 /area/lv624/ground/jungle3)
 "aLr" = (
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_spawn,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west1)
 "aLs" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/plating{
 	icon_state = "platebot"
 	},
 /area/lv624/lazarus/robotics)
 "aLt" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor{
 	icon_state = "vault"
 	},
@@ -12134,9 +11780,7 @@
 /area/lv624/lazarus/internal_affairs)
 "aLE" = (
 /obj/structure/showcase,
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -12218,12 +11862,8 @@
 	pixel_y = 3
 	},
 /obj/item/reagent_container/hypospray/autoinjector/tricord,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
 	icon_state = "cult"
@@ -12248,9 +11888,7 @@
 	},
 /area/lv624/lazarus/security)
 "aLY" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle3)
 "aLZ" = (
@@ -12433,9 +12071,7 @@
 	},
 /area/lv624/ground/jungle3)
 "aMx" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/gm/grass{
 	icon_state = "grass2"
 	},
@@ -12515,10 +12151,7 @@
 /obj/structure/machinery/newscaster{
 	pixel_y = -28
 	},
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "whiteblue";
@@ -12721,9 +12354,7 @@
 /turf/closed/wall/r_wall,
 /area/lv624/lazarus/canteen)
 "aNp" = (
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /obj/structure/machinery/landinglight/ds1/delayone{
 	dir = 4;
 	icon_state = "landingstripe";
@@ -12863,12 +12494,8 @@
 /area/lv624/lazarus/armory)
 "aNM" = (
 /obj/structure/surface/rack,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
 	icon_state = "cult"
@@ -13090,10 +12717,7 @@
 	},
 /area/lv624/lazarus/sleep_female)
 "aOq" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/gm/dirt,
 /area/lv624/ground/compound/sw)
 "aOs" = (
@@ -13108,9 +12732,7 @@
 /turf/open/gm/river,
 /area/lv624/lazarus/atmos)
 "aOu" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/gm/river,
 /area/lv624/lazarus/atmos)
 "aOv" = (
@@ -13124,9 +12746,7 @@
 /turf/open/gm/river,
 /area/lv624/lazarus/atmos)
 "aOx" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/gm/dirt,
 /area/lv624/ground/jungle9)
 "aOy" = (
@@ -13143,12 +12763,8 @@
 "aOA" = (
 /obj/item/storage/toolbox/syndicate,
 /obj/structure/surface/rack,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
 	icon_state = "cult"
@@ -13237,10 +12853,7 @@
 /turf/open/floor/grass,
 /area/lv624/lazarus/main_hall)
 "aON" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "brown"
@@ -13274,9 +12887,7 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	icon_state = "bar"
 	},
@@ -13409,9 +13020,7 @@
 	},
 /area/lv624/lazarus/atmos/outside)
 "aPo" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	icon_state = "cult"
 	},
@@ -13487,9 +13096,7 @@
 /area/lv624/ground/sand6)
 "aPx" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor/grass,
 /area/lv624/lazarus/main_hall)
 "aPy" = (
@@ -13566,9 +13173,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor,
 /area/lv624/lazarus/chapel)
 "aPI" = (
@@ -13646,10 +13251,7 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/comms)
 "aPU" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/gm/river,
 /area/lv624/lazarus/atmos)
 "aPV" = (
@@ -13727,9 +13329,7 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	icon_state = "bar"
 	},
@@ -14014,9 +13614,7 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/internal_affairs)
 "aQX" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_2"
 	},
@@ -14187,9 +13785,7 @@
 /obj/structure/pipes/vents/pump{
 	dir = 4
 	},
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor{
 	icon_state = "grimy"
 	},
@@ -14239,9 +13835,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -14270,17 +13864,13 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor{
 	icon_state = "wood"
 	},
 /area/lv624/lazarus/hop)
 "aRJ" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle1)
 "aRK" = (
@@ -14556,9 +14146,7 @@
 	name = "General Listening Channel";
 	pixel_y = 30
 	},
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	icon_state = "bar"
 	},
@@ -14729,9 +14317,7 @@
 /turf/open/gm/dirtgrassborder,
 /area/lv624/lazarus/engineering)
 "aTm" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle3)
 "aTo" = (
@@ -14864,9 +14450,7 @@
 	},
 /area/lv624/lazarus/comms)
 "aTH" = (
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "brown"
@@ -14930,10 +14514,7 @@
 	},
 /area/lv624/lazarus/engineering)
 "aTS" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/gm/dirt,
 /area/lv624/ground/compound/se)
 "aTT" = (
@@ -14982,9 +14563,7 @@
 /area/lv624/lazarus/main_hall)
 "aUa" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -15034,9 +14613,7 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/canteen)
 "aUi" = (
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle3)
 "aUj" = (
@@ -15230,9 +14807,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	icon_state = "freezerfloor"
 	},
@@ -15253,9 +14828,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle1)
 "aUP" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle1)
 "aUQ" = (
@@ -15411,9 +14984,7 @@
 /area/lv624/lazarus/kitchen)
 "aVt" = (
 /obj/structure/machinery/gibber,
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor{
 	icon_state = "freezerfloor"
 	},
@@ -15542,9 +15113,7 @@
 /area/lv624/lazarus/main_hall)
 "aVO" = (
 /obj/structure/barricade/wooden,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -15565,9 +15134,7 @@
 /turf/open/floor/bluegrid,
 /area/lv624/lazarus/internal_affairs)
 "aVR" = (
-/obj/effect/landmark{
-	name = "yautja_teleport_loc"
-	},
+/obj/effect/landmark/yautja_teleport,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle1)
 "aVS" = (
@@ -15610,9 +15177,7 @@
 "aVZ" = (
 /obj/structure/surface/rack,
 /obj/item/ore/diamond,
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/greengrid,
 /area/lv624/lazarus/secure_storage)
@@ -15883,9 +15448,7 @@
 	},
 /area/lv624/lazarus/engineering)
 "aWJ" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/gm/dirt,
 /area/lv624/ground/compound/se)
 "aWK" = (
@@ -15922,9 +15485,7 @@
 	},
 /area/lv624/ground/jungle3)
 "aWP" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/gm/dirt,
 /area/lv624/ground/jungle3)
 "aWQ" = (
@@ -16110,9 +15671,7 @@
 /turf/open/gm/grass,
 /area/lv624/lazarus/engineering)
 "aXo" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle2)
 "aXq" = (
@@ -16157,9 +15716,7 @@
 	},
 /area/lv624/lazarus/engineering)
 "aXv" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle1)
 "aXw" = (
@@ -16306,15 +15863,11 @@
 /turf/closed/wall/mineral/sandstone,
 /area/lv624/ground/jungle3)
 "aXU" = (
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor/greengrid,
 /area/lv624/lazarus/secure_storage)
 "aXV" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle2)
 "aXW" = (
@@ -16440,9 +15993,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle3)
 "aYr" = (
-/obj/effect/landmark{
-	name = "yautja_teleport_loc"
-	},
+/obj/effect/landmark/yautja_teleport,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle3)
 "aYs" = (
@@ -16634,9 +16185,7 @@
 	},
 /area/lv624/ground/river1)
 "aYY" = (
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/coast,
 /area/lv624/ground/river1)
@@ -16948,10 +16497,7 @@
 /turf/open/floor/greengrid,
 /area/lv624/lazarus/secure_storage)
 "aZM" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -16963,10 +16509,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle4)
 "aZO" = (
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_spawn,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/east1)
 "aZP" = (
@@ -17000,9 +16543,7 @@
 	},
 /area/lv624/ground/jungle5)
 "baa" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /obj/structure/flora/grass/tallgrass/jungle,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle6)
@@ -17244,9 +16785,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle6)
 "bbC" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/gm/grass{
 	icon_state = "grass2"
 	},
@@ -17351,9 +16890,7 @@
 /area/lv624/ground/jungle9)
 "bei" = (
 /obj/structure/flora/jungle/vines/heavy,
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle7)
 "bfY" = (
@@ -17374,9 +16911,7 @@
 /turf/open/floor,
 /area/lv624/lazarus/landing_zones/lz1)
 "bte" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_3"
 	},
@@ -17507,9 +17042,7 @@
 	},
 /area/lv624/ground/jungle9)
 "cXd" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/dirtgrassborder{
 	dir = 4
@@ -17535,9 +17068,7 @@
 /turf/open/gm/grass,
 /area/lv624/lazarus/landing_zones/lz1)
 "ddP" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_3"
 	},
@@ -17589,9 +17120,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/jungle1)
 "dEI" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_3"
 	},
@@ -18007,9 +17536,7 @@
 	},
 /area/lv624/lazarus/medbay)
 "hdA" = (
-/obj/effect/landmark{
-	name = "xeno_hive_spawn"
-	},
+/obj/effect/landmark/xeno_hive_spawn,
 /turf/open/floor/plating{
 	dir = 4;
 	icon_state = "asteroidwarning"
@@ -18061,9 +17588,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle7)
 "hxL" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 9
 	},
@@ -18133,9 +17658,7 @@
 	},
 /area/lv624/lazarus/landing_zones/lz1)
 "hSE" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/gm/dirt,
 /area/lv624/lazarus/atmos/outside)
 "hSI" = (
@@ -18437,17 +17960,13 @@
 	},
 /area/lv624/lazarus/atmos/outside)
 "kxo" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/gm/grass,
 /area/lv624/lazarus/landing_zones/lz2)
 "kzd" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/close,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/structure/machinery/light{
 	dir = 4;
 	icon_state = "tube1"
@@ -18503,9 +18022,7 @@
 	},
 /area/lv624/lazarus/canteen)
 "kQs" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle3)
@@ -18520,9 +18037,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/east1)
 "lke" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor,
 /area/lv624/lazarus/landing_zones/lz1)
 "lkF" = (
@@ -18539,9 +18054,7 @@
 	},
 /area/lv624/lazarus/landing_zones/lz1)
 "lnV" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/gm/dirtgrassborder{
 	dir = 1;
 	icon_state = "grassdirt_corner2"
@@ -18706,9 +18219,7 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz2)
 "myI" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_2"
 	},
@@ -18812,9 +18323,7 @@
 /area/lv624/ground/jungle7)
 "nrm" = (
 /obj/structure/surface/table,
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /obj/effect/landmark/objective_landmark/science,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
@@ -18847,9 +18356,7 @@
 /obj/structure/surface/table,
 /obj/item/device/analyzer/plant_analyzer,
 /obj/effect/landmark/objective_landmark/close,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "green"
@@ -18970,9 +18477,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle3)
 "oua" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/gm/dirt,
 /area/lv624/ground/jungle7)
 "oAX" = (
@@ -19165,9 +18670,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle8)
 "pEl" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/gm/grass,
 /area/lv624/lazarus/landing_zones/lz1)
 "pJE" = (
@@ -19222,9 +18725,7 @@
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
 "qaE" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /obj/effect/landmark/queen_spawn,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west1)
@@ -19333,9 +18834,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/central1)
 "rkq" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "green"
@@ -19470,9 +18969,7 @@
 /turf/open/gm/river,
 /area/lv624/ground/jungle4)
 "sau" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/structure/flora/jungle/vines,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle6)
@@ -19712,9 +19209,7 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "udM" = (
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -19926,9 +19421,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle5)
 "wzG" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle4)
@@ -20067,9 +19560,7 @@
 	icon_state = "light_2"
 	},
 /obj/structure/flora/jungle/vines/heavy,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle6)
 "xPn" = (

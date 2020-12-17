@@ -232,18 +232,17 @@ You just gotta get out of this jungle to tell the tale!"}
 	var/mob/living/carbon/human/H
 	var/list/spawns = list()
 	H = M
-	for(var/obj/effect/landmark/start/whiskey/W in world)
+	for(var/i in GLOB.whiskey_start)
+		var/obj/effect/landmark/start/whiskey/W = i
 		if(W.name == "Marine")
-			spawns += W.loc
-	for(var/L in latewhiskey)
-		spawns += L
-	if(spawns.len > 0)
-		var/turf/P = pick(spawns)
-		H.loc = P
-		H.key = M.key
-	if(!H.loc)
-		var/T = pick(latewhiskey)
-		H.loc = T
+			spawns += get_turf(W)
+	for(var/L in GLOB.latewhiskey)
+		spawns += get_turf(L)
+	var/turf/T = SAFEPICK(spawns)
+	if(!T)
+		CRASH("Failed to find spawn for [M] in WO mode")
+	H.forceMove(T)
+	H.key = M.key
 	if(H.client) H.client.change_view(world_view_size)
 	if(!H.mind)
 		H.mind = new(H.key)

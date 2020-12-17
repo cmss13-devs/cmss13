@@ -36,10 +36,7 @@
 	},
 /area/bigredv2/outside/admin_building)
 "ai" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor{
 	tag = "icon-dark";
 	icon_state = "dark";
@@ -346,9 +343,7 @@
 /area/bigredv2/outside/admin_building)
 "aX" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	tag = "icon-darkred2 (WEST)";
 	icon_state = "darkred2";

@@ -728,9 +728,7 @@
 	},
 /area/centcom/living)
 "eX" = (
-/obj/effect/landmark{
-	name = "simulator_target"
-	},
+/obj/effect/landmark/sim_target,
 /turf/open/floor/engine,
 /area/adminlevel/simulation)
 "eY" = (
@@ -1256,9 +1254,7 @@
 /area/shuttle/distress/start)
 "hO" = (
 /obj/structure/surface/rack,
-/obj/effect/landmark{
-	name = "DistressItem"
-	},
+/obj/effect/landmark/ert_spawns/distress/item,
 /obj/item/storage/toolbox/mechanical,
 /obj/item/device/multitool,
 /turf/open/shuttle/dropship{
@@ -1296,9 +1292,7 @@
 /area/shuttle/distress/start_pmc)
 "hV" = (
 /obj/structure/surface/rack,
-/obj/effect/landmark{
-	name = "Distress_PMCItem"
-	},
+/obj/effect/landmark/ert_spawns/distress_pmc/item,
 /obj/item/storage/toolbox/mechanical,
 /obj/item/device/multitool,
 /turf/open/shuttle/dropship{
@@ -1336,9 +1330,7 @@
 /area/shuttle/distress/start_upp)
 "ic" = (
 /obj/structure/surface/rack,
-/obj/effect/landmark{
-	name = "Distress_UPPItem"
-	},
+/obj/effect/landmark/ert_spawns/distress_upp/item,
 /obj/item/storage/toolbox/mechanical,
 /obj/item/device/multitool,
 /turf/open/shuttle/dropship{
@@ -1389,9 +1381,7 @@
 	},
 /area/shuttle/distress/start)
 "ip" = (
-/obj/effect/landmark{
-	name = "Distress"
-	},
+/obj/effect/landmark/ert_spawns/distress,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin3";
 	tag = "icon-rasputin3"
@@ -1399,9 +1389,7 @@
 /area/shuttle/distress/start)
 "iq" = (
 /obj/structure/bed/chair/dropship/passenger,
-/obj/effect/landmark{
-	name = "Distress"
-	},
+/obj/effect/landmark/ert_spawns/distress,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
@@ -1424,9 +1412,7 @@
 	},
 /area/shuttle/distress/start_pmc)
 "it" = (
-/obj/effect/landmark{
-	name = "Distress_PMC"
-	},
+/obj/effect/landmark/ert_spawns/distress_pmc,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin3";
 	tag = "icon-rasputin3"
@@ -1434,9 +1420,7 @@
 /area/shuttle/distress/start_pmc)
 "iu" = (
 /obj/structure/bed/chair/dropship/passenger,
-/obj/effect/landmark{
-	name = "Distress_PMC"
-	},
+/obj/effect/landmark/ert_spawns/distress_pmc,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
@@ -1459,9 +1443,7 @@
 	},
 /area/shuttle/distress/start_upp)
 "ix" = (
-/obj/effect/landmark{
-	name = "Distress_UPP"
-	},
+/obj/effect/landmark/ert_spawns/distress_upp,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin3";
 	tag = "icon-rasputin3"
@@ -1469,9 +1451,7 @@
 /area/shuttle/distress/start_upp)
 "iy" = (
 /obj/structure/bed/chair/dropship/passenger,
-/obj/effect/landmark{
-	name = "Distress_UPP"
-	},
+/obj/effect/landmark/ert_spawns/distress_upp,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
@@ -1481,9 +1461,7 @@
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 4
 	},
-/obj/effect/landmark{
-	name = "Distress"
-	},
+/obj/effect/landmark/ert_spawns/distress,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
@@ -1493,9 +1471,7 @@
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 8
 	},
-/obj/effect/landmark{
-	name = "Distress"
-	},
+/obj/effect/landmark/ert_spawns/distress,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
@@ -1510,9 +1486,7 @@
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 4
 	},
-/obj/effect/landmark{
-	name = "Distress_PMC"
-	},
+/obj/effect/landmark/ert_spawns/distress_pmc,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
@@ -1522,9 +1496,7 @@
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 8
 	},
-/obj/effect/landmark{
-	name = "Distress_PMC"
-	},
+/obj/effect/landmark/ert_spawns/distress_pmc,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
@@ -1544,9 +1516,7 @@
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 4
 	},
-/obj/effect/landmark{
-	name = "Distress_UPP"
-	},
+/obj/effect/landmark/ert_spawns/distress_upp,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
@@ -1556,9 +1526,7 @@
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 8
 	},
-/obj/effect/landmark{
-	name = "Distress_UPP"
-	},
+/obj/effect/landmark/ert_spawns/distress_upp,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
@@ -1609,14 +1577,12 @@
 	},
 /area/shuttle/distress/start_big)
 "ji" = (
-/obj/effect/landmark/start,
+/obj/effect/landmark/newplayer_start,
 /turf/open/floor,
 /area/start)
 "jj" = (
 /obj/structure/surface/rack,
-/obj/effect/landmark{
-	name = "DistressItem"
-	},
+/obj/effect/landmark/ert_spawns/distress/item,
 /obj/item/storage/firstaid/regular,
 /obj/item/storage/belt/medical/lifesaver/full,
 /turf/open/shuttle/dropship{
@@ -1643,9 +1609,7 @@
 /area/shuttle/distress/start_pmc)
 "jn" = (
 /obj/structure/surface/rack,
-/obj/effect/landmark{
-	name = "Distress_PMCItem"
-	},
+/obj/effect/landmark/ert_spawns/distress_pmc/item,
 /obj/item/storage/firstaid/regular,
 /obj/item/storage/belt/medical/lifesaver/full,
 /turf/open/shuttle/dropship{
@@ -1672,9 +1636,7 @@
 /area/shuttle/distress/start_pmc)
 "jr" = (
 /obj/structure/surface/rack,
-/obj/effect/landmark{
-	name = "Distress_UPPItem"
-	},
+/obj/effect/landmark/ert_spawns/distress_upp/item,
 /obj/item/storage/firstaid/regular,
 /obj/item/storage/belt/medical/lifesaver/full,
 /turf/open/shuttle/dropship{
@@ -1698,9 +1660,7 @@
 /obj/structure/surface/rack,
 /obj/item/storage/firstaid/regular,
 /obj/item/storage/belt/medical/lifesaver/full,
-/obj/effect/landmark{
-	name = "Distress_UPPItem"
-	},
+/obj/effect/landmark/ert_spawns/distress_upp/item,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
@@ -6851,9 +6811,7 @@
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/hydroponics)
 "BD" = (
-/obj/effect/landmark{
-	name = "tdome2"
-	},
+/obj/effect/landmark/thunderdome/two,
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
 	tag = "icon-W"
@@ -6927,10 +6885,7 @@
 /turf/open/floor/plating/almayer,
 /area/adminlevel/bunker01/mainroom)
 "Cc" = (
-/obj/effect/landmark{
-	color = "#FFFF00";
-	name = "simulator_camera"
-	},
+/obj/effect/landmark/sim_camera,
 /turf/open/floor/engine{
 	color = "#AAAAAA"
 	},
@@ -7119,9 +7074,7 @@
 	},
 /area/adminlevel/bunker01/mainroom)
 "Ee" = (
-/obj/effect/landmark{
-	name = "tdome1"
-	},
+/obj/effect/landmark/thunderdome/one,
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
@@ -7164,9 +7117,7 @@
 	pixel_x = 2;
 	pixel_y = -5
 	},
-/obj/effect/landmark{
-	name = "Distress_UPPItem"
-	},
+/obj/effect/landmark/ert_spawns/distress_upp/item,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
@@ -7942,9 +7893,7 @@
 /area/adminlevel/bunker01/medbay)
 "LN" = (
 /obj/structure/surface/rack,
-/obj/effect/landmark{
-	name = "Distress_PMCItem"
-	},
+/obj/effect/landmark/ert_spawns/distress_pmc/item,
 /obj/item/storage/firstaid/adv{
 	pixel_x = 2;
 	pixel_y = -5
@@ -8278,9 +8227,7 @@
 	},
 /area/adminlevel/ert_station)
 "OK" = (
-/obj/effect/landmark{
-	name = "tdome1"
-	},
+/obj/effect/landmark/thunderdome/one,
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
 	tag = "icon-W"
@@ -8373,9 +8320,7 @@
 /turf/open/floor/engine,
 /area/adminlevel/simulation)
 "PF" = (
-/obj/effect/landmark{
-	name = "tdome2"
-	},
+/obj/effect/landmark/thunderdome/two,
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
@@ -9187,9 +9132,7 @@
 /area/adminlevel/bunker01/storage)
 "Xt" = (
 /obj/structure/surface/rack,
-/obj/effect/landmark{
-	name = "DistressItem"
-	},
+/obj/effect/landmark/ert_spawns/distress/item,
 /obj/item/storage/firstaid/adv{
 	pixel_x = 2;
 	pixel_y = -5

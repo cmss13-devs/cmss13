@@ -63,9 +63,7 @@
 "cE" = (
 /obj/effect/decal/remains/human,
 /obj/item/explosive/grenade/HE,
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/shuttle{
 	icon_state = "floor4"
 	},
@@ -220,9 +218,7 @@
 	},
 /area/lv624/ground/sand6)
 "dl" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/gm/dirt,
 /area/lv624/ground/sand5)
 "dn" = (
@@ -378,9 +374,7 @@
 	},
 /area/lv624/ground/sand5)
 "dU" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor/airless{
 	dir = 5;
 	icon_state = "asteroidfloor"
@@ -395,15 +389,11 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/sand6)
 "ea" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/gm/dirt,
 /area/lv624/ground/sand6)
 "ef" = (
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /turf/open/gm/dirt,
 /area/lv624/ground/sand5)
 "VV" = (

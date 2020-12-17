@@ -382,15 +382,11 @@
 	},
 /area/bigredv2/outside/space_port)
 "bg" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "bh" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "bi" = (

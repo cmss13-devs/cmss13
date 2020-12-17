@@ -74,42 +74,7 @@
 	return ..()
 
 /mob/proc/AIize()
-	if(client)
-		src << sound(null, repeat = 0, wait = 0, volume = 85, channel = 1) // stop the jams for AIs
-	var/mob/living/silicon/ai/O = new (loc,,1)//No MMI but safety is in effect.
-	O.invisibility = 0
-	O.aiRestorePowerRoutine = 0
-
-	if(mind)
-		mind.transfer_to(O)
-		O.mind.original = O
-	else
-		O.key = key
-		if(O.client) O.client.change_view(world_view_size)
-
-	var/obj/loc_landmark
-	for(var/obj/effect/landmark/start/sloc in landmarks_list)
-		if (sloc.name == "AI")
-			loc_landmark = sloc
-	if(loc_landmark && loc_landmark.loc)
-		O.loc = loc_landmark.loc
-		for (var/obj/item/device/radio/intercom/comm in O.loc)
-			LAZYADD(comm.ai, O)
-
-		to_chat(O, "<B>You are playing the ship's AI. The AI cannot move, but can interact with many objects while viewing them (through cameras).</B>")
-		to_chat(O, "<B>To look at other parts of the station, click on yourself to get a camera menu.</B>")
-		to_chat(O, "<B>While observing through a camera, you can use most (networked) devices which you can see, such as computers, APCs, intercoms, doors, etc.</B>")
-		to_chat(O, "To use something, simply click on it.")
-		O << {"Use :6 to speak to your cyborgs through binary."}
-		O.show_laws()
-		to_chat(O, "<b>These laws may be changed by other players, or by you being the traitor.</b>")
-
-		O.add_ai_verbs()
-		O.job = "AI"
-
-		O.rename_self("ai",1)
-		. = O
-		qdel(src)
+	return // this was unmaintained
 
 
 //human -> robot

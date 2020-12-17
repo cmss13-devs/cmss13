@@ -14,3 +14,7 @@
 AddTimelock(/datum/job/civilian/professor, list(
 	JOB_MEDIC_ROLES = 10 HOURS
 ))
+
+/obj/effect/landmark/start/professor
+	name = JOB_CMO
+	job = /datum/job/civilian/professor

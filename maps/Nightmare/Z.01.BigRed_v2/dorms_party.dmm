@@ -123,9 +123,7 @@
 /area/bigredv2/outside/dorms)
 "ay" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor{
 	icon_state = "grimy"
 	},
@@ -170,10 +168,7 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
 "aF" = (
@@ -299,9 +294,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
 "aX" = (
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
 "aY" = (
@@ -309,10 +302,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
 "ba" = (
-/obj/effect/landmark{
-	name = "surv_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor{
 	icon_state = "grimy"
 	},

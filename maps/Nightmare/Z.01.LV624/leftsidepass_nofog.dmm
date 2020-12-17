@@ -185,9 +185,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle6)
 "aN" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle6)
 "aO" = (
@@ -196,9 +194,7 @@
 	},
 /area/lv624/ground/jungle6)
 "aP" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle6)
 "aQ" = (
@@ -275,15 +271,11 @@
 /turf/open/gm/river,
 /area/lv624/ground/jungle4)
 "bh" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle4)
 "bi" = (
-/obj/effect/landmark{
-	name = "hunter_primary"
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle4)
 "bj" = (
@@ -407,9 +399,7 @@
 /turf/open/gm/river,
 /area/lv624/ground/jungle4)
 "bK" = (
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/gm/river,
 /area/lv624/ground/jungle4)
 "bL" = (
@@ -462,9 +452,7 @@
 /area/lv624/ground/jungle4)
 "bU" = (
 /obj/structure/flora/jungle/vines,
-/obj/effect/landmark{
-	name = "monkey_spawn"
-	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/gm/dirtgrassborder{
 	dir = 1
 	},

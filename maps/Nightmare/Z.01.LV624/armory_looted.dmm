@@ -73,9 +73,7 @@
 /area/lv624/lazarus/security)
 "k" = (
 /obj/structure/machinery/light/small,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	icon_state = "platingdmg3"
 	},

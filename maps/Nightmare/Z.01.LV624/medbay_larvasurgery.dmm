@@ -40,9 +40,7 @@
 /obj/structure/surface/table,
 /obj/item/clothing/glasses/hud/health,
 /obj/effect/landmark/objective_landmark/science,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/item/reagent_container/spray/cleaner,
 /turf/open/floor{
 	icon_state = "whitebluefull";
@@ -130,9 +128,7 @@
 	},
 /area/lv624/lazarus/medbay)
 "az" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -329,9 +325,7 @@
 	},
 /area/lv624/lazarus/medbay)
 "bB" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	tag = "icon-whiteblue (SOUTHWEST)";
 	icon_state = "whitebluecorner";
@@ -352,9 +346,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/jungle7)
 "bK" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/gm/dirt,
 /area/lv624/ground/jungle7)
 "bN" = (

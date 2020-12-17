@@ -3,7 +3,7 @@
 	title = JOB_DOCTOR
 	total_positions = 5
 	spawn_positions = 5
-	allow_additional = 1	
+	allow_additional = 1
 	scaled = 1
 	supervisors = "the chief medical officer"
 	selection_class = "job_doctor"
@@ -30,3 +30,7 @@
 AddTimelock(/datum/job/civilian/doctor, list(
 	JOB_MEDIC_ROLES = 1 HOURS
 ))
+
+/obj/effect/landmark/start/doctor
+	name = JOB_DOCTOR
+	job = /datum/job/civilian/doctor

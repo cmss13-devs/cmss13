@@ -83,18 +83,11 @@
 
 /* Pre-setup */
 /datum/game_mode/xenovs/pre_setup()
-    var/list/monkey_spawns = list()
-    for(var/obj/effect/landmark/L in landmarks_list)
-        if(L.name == "monkey_spawn")
-            monkey_spawns += L.loc
-            qdel(L)
-
     if(monkey_amount)
         if(monkey_types.len)
-            for(var/i = min(round(monkey_amount*GLOB.clients.len), monkey_spawns.len), i > 0, i--)
+            for(var/i = min(round(monkey_amount*GLOB.clients.len), GLOB.monkey_spawns.len), i > 0, i--)
 
-                var/turf/T = pick(monkey_spawns)
-                monkey_spawns -= T
+                var/turf/T = get_turf(pick_n_take(GLOB.monkey_spawns))
                 var/monkey_to_spawn = pick(monkey_types)
                 new monkey_to_spawn(T)
 
@@ -141,7 +134,7 @@
 //We move it later with transform_survivor but they might flicker at any start_loc spawn landmark effects then disappear.
 //Xenos and survivors should not spawn anywhere until we transform them.
 /datum/game_mode/xenovs/post_setup()
-    initialize_post_xenomorph_list(xeno_hive_spawn)
+    initialize_post_xenomorph_list(GLOB.xeno_hive_spawns)
 
     round_time_lobby = world.time
     for(var/area/A in all_areas)
@@ -152,10 +145,10 @@
 
     ..()
 
-/datum/game_mode/xenovs/initialize_post_xenomorph_list(var/list/hive_spawns = xeno_spawn)
+/datum/game_mode/xenovs/initialize_post_xenomorph_list(var/list/hive_spawns = GLOB.xeno_spawns)
     var/list/hive_spots = list()
     for(var/hive in hives)
-        var/turf/spot = pick(hive_spawns)
+        var/turf/spot = get_turf(pick(hive_spawns))
         hive_spots[hive_datum[hive]] = spot
         hive_spawns -= spot
 

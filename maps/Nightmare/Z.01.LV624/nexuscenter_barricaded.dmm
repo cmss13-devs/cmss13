@@ -89,9 +89,7 @@
 	},
 /area/lv624/lazarus/main_hall)
 "am" = (
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /obj/effect/decal/cleanable/blood/splatter/animated,
 /obj/effect/decal/cleanable/blood/splatter/animated,
 /obj/item/ammo_casing,
@@ -153,9 +151,7 @@
 	dir = 4;
 	flipped = 1
 	},
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -172,10 +168,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/effect/decal/cleanable/blood/splatter/animated,
 /obj/item/ammo_casing,
-/obj/effect/landmark{
-	name = "xeno_hive_spawn";
-	pixel_x = -1
-	},
+/obj/effect/landmark/xeno_hive_spawn,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -770,9 +763,7 @@
 	},
 /area/lv624/lazarus/main_hall)
 "bO" = (
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /obj/item/ammo_casing,
 /turf/open/floor{
 	icon_state = "white"
@@ -849,9 +840,7 @@
 	},
 /area/lv624/lazarus/main_hall)
 "bX" = (
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /obj/effect/decal/cleanable/blood/splatter/animated,
 /obj/item/ammo_casing,
 /turf/open/floor{
@@ -980,9 +969,7 @@
 	icon_state = "tube1";
 	pixel_y = 0
 	},
-/obj/effect/landmark{
-	name = "good_item"
-	},
+/obj/effect/landmark/good_item,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whiteyellowfull"
@@ -1072,9 +1059,7 @@
 	},
 /area/lv624/lazarus/main_hall)
 "Ie" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	icon_state = "white"
 	},

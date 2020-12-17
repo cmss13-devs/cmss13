@@ -3,9 +3,7 @@
 /turf/closed/wall/solaris/reinforced/hull,
 /area/bigredv2/outside/e)
 "ab" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor,
 /area/bigredv2/outside/hydroponics)
 "ac" = (
@@ -169,9 +167,7 @@
 /turf/closed/wall/rock/orange,
 /area/bigredv2/caves)
 "aC" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /obj/effect/alien/weeds/node,
 /turf/open/mars_cave{
 	tag = "icon-mars_cave_6";
@@ -516,9 +512,7 @@
 	},
 /area/bigredv2/outside/e)
 "bx" = (
-/obj/effect/landmark{
-	name = "hunter_secondary"
-	},
+/obj/effect/landmark/hunter_secondary,
 /turf/open/mars,
 /area/bigredv2/outside/e)
 "by" = (
@@ -529,9 +523,7 @@
 /area/bigredv2/outside/e)
 "bz" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/floor{
 	tag = "icon-asteroidwarning (WEST)";
 	icon_state = "asteroidwarning";
@@ -630,9 +622,7 @@
 	},
 /area/bigredv2/caves_east)
 "bP" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/mars,
 /area/bigredv2/outside/e)
 "cf" = (
@@ -783,9 +773,7 @@
 	},
 /area/bigredv2/caves_east)
 "dc" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
+/obj/effect/landmark/crap_item,
 /turf/open/mars,
 /area/bigredv2/outside/se)
 "dd" = (

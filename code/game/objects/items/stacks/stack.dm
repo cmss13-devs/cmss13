@@ -111,9 +111,12 @@
 			recipes_list = srl.recipes
 		var/datum/stack_recipe/R = recipes_list[text2num(href_list["make"])]
 		var/multiplier = text2num(href_list["multiplier"])
-		if(!multiplier || (multiplier <= 0)) //href exploit protection
+		if(!isnum(multiplier))	
 			return
-		if(R.skill_req)
+		multiplier = round(multiplier)
+		if(multiplier < 1)
+			return  //href exploit protection
+		if(R.skill_req) 
 			if(ishuman(usr) && !skillcheck(usr, SKILL_CONSTRUCTION, R.skill_req))
 				to_chat(usr, SPAN_WARNING("You are not trained to build this..."))
 				return

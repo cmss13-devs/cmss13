@@ -11,7 +11,9 @@
 	flags_atom = FPRINT
 	matter = list("plastic" = 300)
 	amount_per_transfer_from_this = HIGH_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
+	possible_transfer_amounts = null
 	volume = (HIGH_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD) * INJECTOR_USES
+	magfed = FALSE
 	var/uses_left = 3
 	var/mixed_chem = FALSE
 
@@ -22,9 +24,6 @@
 	reagents.add_reagent(chemname, volume)
 	update_icon()
 
-/obj/item/reagent_container/hypospray/autoinjector/toggle_lock()
-	return
-
 /obj/item/reagent_container/hypospray/autoinjector/attack(mob/M, mob/user)
 	if(uses_left <= 0)
 		return
@@ -33,11 +32,6 @@
 		return
 	uses_left--
 	update_icon()
-
-/obj/item/reagent_container/hypospray/autoinjector/attackby(obj/item/W, mob/user)
-	if(isstorage(W))
-		..(W, user)
-	return
 
 /obj/item/reagent_container/hypospray/autoinjector/update_icon()
 	overlays.Cut()
@@ -139,6 +133,8 @@
 	volume = (REAGENTS_OVERDOSE-1)*2 + (MED_REAGENTS_OVERDOSE-1)
 	mixed_chem = TRUE
 	uses_left = 1
+	injectSFX = 'sound/items/air_release.ogg'
+	injectVOL = 70//limited-supply emergency injector with v.large injection of drugs. Variable sfx freq sometimes rolls too quiet.
 
 /obj/item/reagent_container/hypospray/autoinjector/emergency/Initialize()
 	. = ..()

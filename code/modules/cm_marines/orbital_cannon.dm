@@ -369,13 +369,13 @@ var/list/ob_type_fuel_requirements
 /obj/structure/ob_ammo/warhead/proc/warhead_impact(var/turf/target)
 	// make damn sure everyone hears it
 	playsound(target, 'sound/weapons/gun_orbital_travel.ogg', 100, 1, 75)
-	
+
 	var/cancellation_token = rand(0,32000)
 	orbital_cannon_cancellation["[cancellation_token]"] = src
 	message_staff(FONT_SIZE_XL("<A HREF='?_src_=admin_holder;admincancelob=1;cancellation=[cancellation_token]'>CLICK TO CANCEL THIS OB</a>"))
 
 	var/relative_dir
-	for(var/mob/M in orange(30, target))
+	for(var/mob/M in range(30, target))
 		relative_dir = get_dir(M, target)
 		M.show_message( \
 			SPAN_HIGHDANGER("The sky erupts into flames to the [SPAN_UNDERLINE(dir2text(relative_dir))]!"), 1, \
@@ -383,7 +383,7 @@ var/list/ob_type_fuel_requirements
 		)
 	sleep(OB_TRAVEL_TIMING/3)
 
-	for(var/mob/M in orange(25, target))
+	for(var/mob/M in range(25, target))
 		relative_dir = get_dir(M, target)
 		M.show_message( \
 			SPAN_HIGHDANGER("The sky roars louder to the [SPAN_UNDERLINE(dir2text(relative_dir))]!"), 1, \
@@ -391,7 +391,7 @@ var/list/ob_type_fuel_requirements
 		)
 	sleep(OB_TRAVEL_TIMING/3)
 
-	for(var/mob/M in orange(15, target))
+	for(var/mob/M in range(15, target))
 		relative_dir = get_dir(M, target)
 		M.show_message( \
 			SPAN_HIGHDANGER("OH GOD THE SKY WILL EXPLODE!!!"), 1, \
@@ -491,7 +491,7 @@ var/list/ob_type_fuel_requirements
 			continue
 
 		turf_list += T
-	
+
 	for(var/i = 1 to total_amount)
 		for(var/k = 1 to instant_amount)
 			var/turf/U = pick(turf_list)

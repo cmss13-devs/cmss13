@@ -86,7 +86,7 @@
 
 		if ("dial")
 			handle_dial(FALSE, user, text2num(href_list["dial_x"]), text2num(href_list["dial_y"]))
-			
+
 	ui_interact(user)
 
 /obj/structure/mortar/proc/handle_target(var/manual, var/mob/user, var/temp_targ_x = 0, var/temp_targ_y = 0)
@@ -216,7 +216,7 @@
 
 			for(var/mob/M in range(7))
 				shake_camera(M, 3, 1)
-			
+
 			addtimer(CALLBACK(src, .proc/handle_shell, T, mortar_shell), travel_time)
 		else
 			busy = 0
@@ -263,16 +263,16 @@
 	playsound(target, 'sound/weapons/gun_mortar_travel.ogg', 50, 1)
 
 	var/relative_dir
-	for(var/mob/M in orange(30, target))
+	for(var/mob/M in range(15, target))
 		relative_dir = get_dir(M, target)
 		M.show_message( \
-			SPAN_HIGHDANGER("A SHELL IS COMING DOWN TOWARDS THE [SPAN_UNDERLINE(uppertext(dir2text(relative_dir)))]!"), 1, \
-			SPAN_HIGHDANGER("YOU HEAR SOMETHING COMING DOWN TOWARDS THE [SPAN_UNDERLINE(uppertext(dir2text(relative_dir)))]!"), 2 \
+			SPAN_DANGER("A SHELL IS COMING DOWN TOWARDS THE [SPAN_UNDERLINE(uppertext(dir2text(relative_dir)))]!"), 1, \
+			SPAN_DANGER("YOU HEAR SOMETHING COMING DOWN TOWARDS THE [SPAN_UNDERLINE(uppertext(dir2text(relative_dir)))]!"), 2 \
 		)
 
 	sleep(2.5 SECONDS) // Sleep a bit to give a message
 
-	for(var/mob/M in orange(30, target))
+	for(var/mob/M in range(10, target))
 		relative_dir = get_dir(M, target)
 		M.show_message( \
 			SPAN_HIGHDANGER("A SHELL IS ABOUT TO IMPACT TOWARDS THE [SPAN_UNDERLINE(uppertext(dir2text(relative_dir)))]!"), 1, \

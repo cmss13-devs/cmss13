@@ -118,7 +118,7 @@
 		return -1
 
 	var/relative_dir
-	for(var/mob/M in orange(30, initial_turf))
+	for(var/mob/M in range(15, initial_turf))
 		relative_dir = get_dir(M, initial_turf)
 
 		var/ds_identifier = "LARGE BIRD"
@@ -133,7 +133,7 @@
 	// Xenos have time to react to the first message
 	sleep(0.5 SECONDS)
 
-	for(var/mob/M in orange(30, initial_turf))
+	for(var/mob/M in range(10, initial_turf))
 		relative_dir = get_dir(M, initial_turf)
 
 		var/ds_identifier = "LARGE BIRD"

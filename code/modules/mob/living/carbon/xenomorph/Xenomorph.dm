@@ -234,7 +234,7 @@
 	var/datum/ammo/xeno/ammo = null //The ammo datum for our spit projectiles. We're born with this, it changes sometimes.
 	var/obj/structure/tunnel/start_dig = null
 	var/tunnel_delay = 0
-	var/spiked = FALSE
+	var/steelcrest = FALSE
 
 
 	//////////////////////////////////////////////////////////////////

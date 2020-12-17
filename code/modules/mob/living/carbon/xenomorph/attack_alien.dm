@@ -9,7 +9,7 @@
 
 
 /mob/living/carbon/human/attack_alien(mob/living/carbon/Xenomorph/M, dam_bonus)
-	if(M.fortify || M.burrow)
+	if(M.fortify && !M.steelcrest || M.burrow)
 		return FALSE
 
 	//Reviewing the four primary intents
@@ -210,7 +210,7 @@
 
 //Every other type of nonhuman mob
 /mob/living/attack_alien(mob/living/carbon/Xenomorph/M)
-	if(M.fortify || M.burrow)
+	if(M.fortify && !M.steelcrest || M.burrow)
 		return FALSE
 
 	switch(M.a_intent)

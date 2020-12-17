@@ -7,7 +7,7 @@
 	item_state = "plasticx"
 	flags_item = NOBLUDGEON
 	w_class = SIZE_SMALL
-	allowed_sensors = list(/obj/item/device/assembly/prox_sensor, /obj/item/device/assembly/signaler, /obj/item/device/assembly/timer)
+	allowed_sensors = list(/obj/item/device/assembly/prox_sensor, /obj/item/device/assembly/signaller, /obj/item/device/assembly/timer)
 	max_container_volume = 180
 	reaction_limits = list(	"max_ex_power" = 260,	"base_ex_falloff" = 90,	"max_ex_shards" = 64,
 							"max_fire_rad" = 6,		"max_fire_int" = 26,	"max_fire_dur" = 30,
@@ -143,9 +143,9 @@
 	plant_target = null
 	if(customizable)
 		if(active) //deactivate
-			if(!isigniter(detonator.a_right) && !issignaler(detonator.a_right))
+			if(!isigniter(detonator.a_right) && !issignaller(detonator.a_right))
 				detonator.a_right.activate()
-			if(!isigniter(detonator.a_left) && !issignaler(detonator.a_left))
+			if(!isigniter(detonator.a_left) && !issignaller(detonator.a_left))
 				detonator.a_left.activate()
 	active = FALSE
 	update_icon()
@@ -237,7 +237,7 @@
 			. = ..()
 		else if(!detonator)
 			return
-		else if(issignaler(detonator.a_right) || issignaler(detonator.a_left))
+		else if(issignaller(detonator.a_right) || issignaller(detonator.a_left))
 			overlays += new /obj/effect/overlay/danger
 			layer = INTERIOR_DOOR_LAYER
 			addtimer(CALLBACK(src, .proc/delayed_prime, target_turf), SECONDS_3)

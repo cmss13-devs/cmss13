@@ -402,7 +402,7 @@ the implant may become unstable and either pre-maturely inject the subject or si
 <b>Important Notes:</b> Alerts crew to crewmember death.<BR>
 <HR>
 <b>Implant Details:</b><BR>
-<b>Function:</b> Contains a compact radio signaler that triggers when the host's lifesigns cease.<BR>
+<b>Function:</b> Contains a compact radio signaller that triggers when the host's lifesigns cease.<BR>
 <b>Special Features:</b> Alerts crew to crewmember death.<BR>
 <b>Integrity:</b> Implant will occasionally be degraded by the body's immune system and thus will occasionally malfunction."}
 		return dat
@@ -469,7 +469,7 @@ the implant may become unstable and either pre-maturely inject the subject or si
 <b>Important Notes:</b> Alerts crew to crewmember death.<BR>
 <HR>
 <b>Implant Details:</b><BR>
-<b>Function:</b> Contains a compact radio signaler that triggers when the host's lifesigns cease.<BR>
+<b>Function:</b> Contains a compact radio signaller that triggers when the host's lifesigns cease.<BR>
 <b>Special Features:</b> Alerts crew to crewmember death.<BR>
 <b>Integrity:</b> Implant will occasionally be degraded by the body's immune system and thus will occasionally malfunction."}
 		return dat

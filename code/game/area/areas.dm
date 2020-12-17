@@ -324,7 +324,8 @@
 /area/proc/power_change()
 	for(var/area/RA in related)
 		for(var/obj/structure/machinery/M in RA)	// for each machine in the area
-			M.power_change()				// reverify power status (to update icons etc.)
+			if(!M.gc_destroyed)
+				M.power_change()				// reverify power status (to update icons etc.)
 		if(flags_alarm_state)
 			RA.updateicon()
 

@@ -4468,7 +4468,7 @@
 	},
 /area/prison/execution)
 "crI" = (
-/obj/item/device/assembly/signaler{
+/obj/item/device/assembly/signaller{
 	code = 2;
 	frequency = 1449
 	},

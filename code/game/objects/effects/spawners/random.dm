@@ -71,7 +71,7 @@
 	item_to_spawn()
 		return pick(/obj/item/device/assembly/igniter,\
 					/obj/item/device/assembly/prox_sensor,\
-					/obj/item/device/assembly/signaler,\
+					/obj/item/device/assembly/signaller,\
 					/obj/item/device/multitool)
 
 

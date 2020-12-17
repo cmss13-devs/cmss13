@@ -105,7 +105,7 @@
 	desc = "Blink.  Blink.  Blink. Ages 8 and up."
 	icon = 'icons/obj/items/radio.dmi'
 	icon_state = "beacon"
-	item_state = "signaler"
+	item_state = "signaller"
 
 /*
  * Fake singularity

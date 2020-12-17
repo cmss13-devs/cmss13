@@ -780,7 +780,7 @@
 /obj/item/device/assembly/igniter,
 /obj/item/device/assembly/igniter,
 /obj/item/device/assembly/igniter,
-/obj/item/device/assembly/signaler,
+/obj/item/device/assembly/signaller,
 /obj/item/circuitboard/airlock,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{

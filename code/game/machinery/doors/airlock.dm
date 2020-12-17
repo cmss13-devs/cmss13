@@ -57,7 +57,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 	var/damage_cap = HEALTH_DOOR // Airlock gets destroyed
 	var/autoname = FALSE
 
-	var/list/obj/item/device/assembly/signaler/attached_signallers = list()
+	var/list/obj/item/device/assembly/signaller/attached_signallers = list()
 
 	var/announce_hacked = TRUE
 
@@ -501,7 +501,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 				. = TRUE
 			if("attach")
 				if(isnull(getAssembly(target_wire)))
-					if(!issignaler(usr.get_active_hand()))
+					if(!issignaller(usr.get_active_hand()))
 						to_chat(usr, SPAN_WARNING("You need a signaller in your hand!"))
 						return TRUE
 
@@ -512,7 +512,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 						to_chat(usr, SPAN_WARNING("You don't seem to know how to perform this action."))
 						return TRUE
 
-					var/obj/item/device/assembly/signaler/signaller = usr.get_active_hand()
+					var/obj/item/device/assembly/signaller/signaller = usr.get_active_hand()
 					usr.drop_held_item(signaller)
 					signaller.forceMove(src)
 
@@ -523,7 +523,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 					to_chat(usr, SPAN_NOTICE("You add [signaller] to [src]."))
 					. = TRUE
 				else
-					var/obj/item/device/assembly/signaler/signaller = getAssembly(target_wire)
+					var/obj/item/device/assembly/signaller/signaller = getAssembly(target_wire)
 
 					if(!signaller)
 						return TRUE

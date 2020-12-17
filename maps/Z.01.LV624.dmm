@@ -15430,7 +15430,7 @@
 "aWH" = (
 /obj/structure/surface/table/reinforced,
 /obj/item/folder,
-/obj/item/device/assembly/signaler,
+/obj/item/device/assembly/signaller,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{

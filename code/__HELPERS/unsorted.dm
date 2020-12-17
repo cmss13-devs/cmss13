@@ -1658,6 +1658,13 @@ var/list/WALLITEMS = list(
 /proc/_callback_false()
 	return FALSE
 
+/atom/proc/contains(atom/A)
+	if(!A)
+		return FALSE
+	for(var/atom/location = A.loc, location, location = location.loc)
+		if(location == src)
+			return TRUE
+
 //used to check if a mob can examine an object
 /atom/proc/can_examine(var/mob/user)
 	if(!user.client || user.client.eye != user)

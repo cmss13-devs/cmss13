@@ -827,7 +827,7 @@
 "cbI" = (
 /obj/structure/surface/table/reinforced,
 /obj/item/folder,
-/obj/item/device/assembly/signaler,
+/obj/item/device/assembly/signaller,
 /turf/open/floor/prison,
 /area/prison/engineering)
 "cbJ" = (

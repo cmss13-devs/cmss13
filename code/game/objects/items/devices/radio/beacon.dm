@@ -2,7 +2,7 @@
 	name = "Tracking Beacon"
 	desc = "A beacon used by a teleporter."
 	icon_state = "beacon"
-	item_state = "signaler"
+	item_state = "signaller"
 	var/code = "electronic"
 
 /obj/item/device/radio/beacon/Initialize()

@@ -622,6 +622,7 @@ obj/item/storage/backpack/empty(mob/user, turf/T)
 	storage_slots = 3
 	worn_accessible = TRUE
 	can_hold = list(/obj/item/ammo_magazine/flamer_tank, /obj/item/tool/extinguisher)
+	storage_flags = STORAGE_FLAGS_DEFAULT|STORAGE_ALLOW_DRAWING_METHOD_TOGGLE
 
 //----------OTHER FACTIONS AND ERTS----------
 

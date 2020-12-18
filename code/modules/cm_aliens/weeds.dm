@@ -45,6 +45,11 @@
 	if(node && node.loc && (get_dist(node, src) < node.node_range) && !hibernate)
 		addtimer(CALLBACK(src, .proc/weed_expand), WEED_BASE_GROW_SPEED / max(weed_strength, 1))
 
+/obj/effect/alien/weeds/initialize_pass_flags(var/datum/pass_flags_container/PF)
+	. = ..()
+	if (PF)
+		PF.flags_pass = PASS_FLAGS_WEEDS
+
 /obj/effect/alien/weeds/proc/on_weed_expand(var/obj/effect/alien/weeds/spread_from, var/list/new_weeds)
 	return
 

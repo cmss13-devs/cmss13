@@ -118,7 +118,7 @@
 	alien_weeds.secreting = TRUE
 	alien_weeds.update_icon()
 
-	if(!do_after(src, wait_time, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+	if(!do_after(src, wait_time, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, alien_weeds))
 		alien_weeds.secreting = FALSE
 		alien_weeds.update_icon()
 

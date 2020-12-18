@@ -935,6 +935,25 @@
 	new /obj/item/ammo_magazine/smartgun/dirty(src)
 	new_gun.on_enter_storage(src)
 
+/obj/item/storage/belt/gun/mortarbelt
+	name="\improper M276 pattern mortar operator belt"
+	desc="A belt specifically designed to carry ammunition for the M402 mortar along with a sidearm."
+	storage_slots = 5
+	icon_state="mortarbelt"
+	item_state="mortarbelt"
+	icon_x = 10
+	icon_y = 0
+	can_hold = list(
+		/obj/item/weapon/gun/pistol,
+		/obj/item/weapon/gun/revolver/m44,
+		/obj/item/mortar_shell
+	)
+	bypass_w_limit = list(/obj/item/mortar_shell)
+
+/obj/item/storage/belt/gun/mortarbelt/Initialize()
+	. = ..()
+	select_gamemode_skin(type)
+
 /obj/item/storage/belt/souto
 	name = "\improper Souto belt"
 	desc = "A belt with break away souto cans. They cannot be put back."

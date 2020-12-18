@@ -84,7 +84,7 @@
 		shake_camera(H, 2, 1)
 
 	var/facing = get_dir(X, H)
-	var/headbutt_distance = 3 - (X.crest_defense * 2) + (X.steelcrest) - (X.fortify * 2)
+	var/headbutt_distance = 3 - (X.crest_defense * 2) + (X.steelcrest) - (X.fortify * 3)
 	var/turf/T = get_turf(X)
 	var/turf/temp = get_turf(X)
 
@@ -175,10 +175,10 @@
 	if(!X.fortify)
 		to_chat(X, SPAN_XENOWARNING("You tuck yourself into a defensive stance."))
 		if(X.steelcrest)
-			X.armor_deflection_buff += 30
+			X.armor_deflection_buff += 25
 			X.armor_explosive_buff += 60
-			X.ability_speed_modifier += 1
-			X.damage_modifier -= XENO_DAMAGE_MOD_VERYSMALL
+			X.ability_speed_modifier += 3
+			X.damage_modifier -= XENO_DAMAGE_MOD_SMALL
 		else
 			X.armor_deflection_buff += 35
 			X.armor_explosive_buff += 60
@@ -194,10 +194,10 @@
 		X.frozen = FALSE
 		X.anchored = FALSE
 		if(X.steelcrest)
-			X.armor_deflection_buff -= 30
+			X.armor_deflection_buff -= 25
 			X.armor_explosive_buff -= 60
-			X.ability_speed_modifier -= 1
-			X.damage_modifier += XENO_DAMAGE_MOD_VERYSMALL
+			X.ability_speed_modifier -= 3
+			X.damage_modifier += XENO_DAMAGE_MOD_SMALL
 		else
 			X.armor_deflection_buff -= 35
 			X.armor_explosive_buff -= 60

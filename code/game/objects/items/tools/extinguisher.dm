@@ -74,7 +74,7 @@
 		playsound(user, 'sound/effects/refill.ogg', 25, 1, 3)
 		return
 
-	if(safety)
+	if(safety || (!isturf(target) && !isturf(target.loc)))
 		return ..()
 	
 	if(src.reagents.total_volume < 1)

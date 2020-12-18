@@ -424,40 +424,6 @@
 		if(F.id == shuttle_tag)
 			F.turn_off()
 
-	// sanity checking
-	// Check for all hives in case of HvH
-	for(var/datum/hive_status/hive in hive_datum)
-		if(!hive.living_xeno_queen || is_admin_level(hive.living_xeno_queen.loc.z))
-			//Ignore hives without queens (and on admin levels) to cut down on pointless checks
-			continue
-		var/list/left_behind = list()
-		var/list/with_queen = list()
-		for(var/mob/living/carbon/Xenomorph/xeno in GLOB.living_xeno_list)
-			if(xeno.hivenumber != hive.hivenumber)
-				continue
-			if(xeno.loc && hive.living_xeno_queen && hive.living_xeno_queen.loc && xeno.loc.z == hive.living_xeno_queen.loc.z) // yes loc because of vent crawling
-				with_queen += xeno
-			else if(xeno.loc && is_ground_level(xeno.loc.z))
-				left_behind += xeno
-		if(with_queen.len > left_behind.len) // to stop solo-suiciding by queens
-			hive.stored_larva = 0
-			hive.hive_ui.update_pooled_larva()
-			for(var/mob/living/carbon/Xenomorph/about_to_die in left_behind)
-				to_chat(about_to_die, SPAN_XENOANNOUNCE("The Queen has left without you, you quickly find a hiding place to enter hibernation as you lose touch with the hive mind."))
-				qdel(about_to_die) // just delete them
-		for(var/mob/living/carbon/potential_host in GLOB.alive_mob_list)
-			if(potential_host.z != 1) continue // ground level
-			if(potential_host.status_flags & XENO_HOST) // a host
-				var/obj/item/alien_embryo/A = locate() in potential_host
-				if(A && A.hivenumber != hive.hivenumber)
-					continue //Wrong hive, ignore
-				for(var/obj/item/alien_embryo/embryo in potential_host)
-					qdel(embryo)
-				for(var/mob/living/carbon/Xenomorph/Larva/larva in potential_host)
-					qdel(larva)
-				potential_host.death("larva suicide")
-		qdel(hive.spawn_pool)
-
 	in_transit_time_left = travel_time
 	while(in_transit_time_left > 0)
 		// At halftime, we announce whether or not the AA forced the dropship to divert

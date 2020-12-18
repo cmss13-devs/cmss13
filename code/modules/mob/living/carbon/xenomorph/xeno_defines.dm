@@ -635,22 +635,36 @@
 	hive_structures[name_ref] -= S
 	return TRUE
 
-/datum/hive_status/proc/remove_all_special_structures(var/hijacking_queen)
-	for(var/name_ref in hive_structures)
-		for(var/obj/effect/alien/resin/special/S in hive_structures[name_ref])
-			// For hijack, we skip structures being in the same zone as the Queen.
-			if(hijacking_queen)
-				var/area/QA = get_area(hijacking_queen) // Need to be done here, unfortunately.
-				var/area/SA = get_area(S)
-				if(SA == QA)
-					continue
-			hive_structures[name_ref] -= S
-			qdel(S)
-
 /datum/hive_status/proc/has_special_structure(var/name_ref)
 	if(!name_ref || !hive_structures[name_ref] || !hive_structures[name_ref].len)
 		return 0
 	return hive_structures[name_ref].len
+
+/datum/hive_status/proc/abandon_on_hijack()
+	var/area/hijacked_dropship = get_area(living_xeno_queen)
+	for(var/name_ref in hive_structures)
+		for(var/obj/effect/alien/resin/special/S in hive_structures[name_ref])
+			if(get_area(S) == hijacked_dropship)
+				continue
+			hive_structures[name_ref] -= S
+			qdel(S)
+	for(var/i in totalXenos)
+		var/mob/living/carbon/Xenomorph/xeno = i
+		if(get_area(xeno) != hijacked_dropship && xeno.loc && is_ground_level(xeno.loc.z))
+			to_chat(xeno, SPAN_XENOANNOUNCE("The Queen has left without you, you quickly find a hiding place to enter hibernation as you lose touch with the hive mind."))
+			qdel(xeno)
+	for(var/i in GLOB.alive_mob_list)
+		var/mob/living/potential_host = i
+		if(!(potential_host.status_flags & XENO_HOST))
+			continue
+		if(!is_ground_level(potential_host.z) || get_area(potential_host) == hijacked_dropship)
+			continue
+		var/obj/item/alien_embryo/A = locate() in potential_host
+		if(A && A.hivenumber != hivenumber)
+			continue
+		for(var/obj/item/alien_embryo/embryo in potential_host)
+			qdel(embryo)
+		potential_host.death("larva suicide")
 
 /datum/hive_status/corrupted
 	name = "Corrupted Hive"

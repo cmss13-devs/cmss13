@@ -273,7 +273,7 @@
 					Q.count_niche_stat(STATISTICS_NICHE_FLIGHT)
 
 					if(Q.hive)
-						Q.hive.remove_all_special_structures(Q)
+						Q.hive.abandon_on_hijack()
 
 					if(bomb_set)
 						for(var/obj/structure/machinery/nuclearbomb/bomb in world)

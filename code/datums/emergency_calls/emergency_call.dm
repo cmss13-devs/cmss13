@@ -255,10 +255,12 @@
 	return TRUE
 
 /datum/emergency_call/proc/get_spawn_point(is_for_items)
+	var/landmark
 	if(is_for_items)
-		return SAFEPICK(GLOB.ert_spawns[item_spawn])
+		landmark = SAFEPICK(GLOB.ert_spawns[item_spawn])
 	else
-		return SAFEPICK(GLOB.ert_spawns[name_of_spawn])
+		landmark = SAFEPICK(GLOB.ert_spawns[name_of_spawn])
+	return landmark ? get_turf(landmark) : null
 
 /datum/emergency_call/proc/create_member(datum/mind/M) //This is the parent, each type spawns its own variety.
 	return

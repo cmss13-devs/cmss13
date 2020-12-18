@@ -326,6 +326,7 @@ WEAPONS
 /datum/supply_packs/mortar
 	name = "M402 mortar crate (x1)"
 	contains = list(
+					/obj/item/storage/backpack/marine/mortarpack,
 					/obj/item/mortar_kit
 					)
 	cost = RO_PRICE_PRICY

@@ -20429,6 +20429,7 @@
 /area/shuttle/drop2/sulaco)
 "bfQ" = (
 /obj/item/device/radio/intercom{
+	frequency = 1443;
 	layer = 3.5;
 	name = "dropship intercom";
 	pixel_x = 21;
@@ -21422,6 +21423,7 @@
 /area/shuttle/drop2/sulaco)
 "bjW" = (
 /obj/item/device/radio/intercom{
+	frequency = 1443;
 	name = "dropship intercom";
 	pixel_y = 24
 	},
@@ -21452,6 +21454,7 @@
 /area/shuttle/drop2/sulaco)
 "bjZ" = (
 /obj/item/device/radio/intercom{
+	frequency = 1443;
 	name = "dropship intercom";
 	pixel_y = 24
 	},
@@ -23559,6 +23562,7 @@
 /area/almayer/hallways/hangar)
 "brZ" = (
 /obj/item/device/radio/intercom{
+	frequency = 1443;
 	layer = 3.5;
 	name = "normandy dropship intercom";
 	pixel_x = -10
@@ -23574,6 +23578,7 @@
 /area/shuttle/drop2/sulaco)
 "bsb" = (
 /obj/item/device/radio/intercom{
+	frequency = 1443;
 	layer = 3.5;
 	name = "normandy dropship intercom";
 	pixel_x = 10
@@ -23952,6 +23957,7 @@
 /area/shuttle/drop2/sulaco)
 "btJ" = (
 /obj/item/device/radio/intercom{
+	frequency = 1443;
 	name = "dropship intercom";
 	pixel_y = 24
 	},
@@ -38113,6 +38119,14 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/shipboard/chief_mp_office)
+"cUb" = (
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 1;
+	name = "ship-grade camera";
+	tag = "icon-camera (NORTH)"
+	},
+/turf/open/floor/almayer,
+/area/almayer/engineering/engineering_workshop/hangar)
 "cVh" = (
 /obj/item/device/radio/intercom{
 	freerange = 1;
@@ -41589,6 +41603,11 @@
 /obj/item/reagent_container/glass/bucket{
 	pixel_x = 6;
 	pixel_y = -2
+	},
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 1;
+	name = "ship-grade camera";
+	tag = "icon-camera (NORTH)"
 	},
 /turf/open/floor/almayer{
 	icon_state = "orange";
@@ -83225,7 +83244,7 @@ bei
 hFa
 buH
 hop
-vMx
+buH
 app
 uku
 aqT
@@ -83847,7 +83866,7 @@ atF
 aud
 auF
 bWM
-bWM
+cUb
 asE
 dnX
 aKW
@@ -84037,7 +84056,7 @@ bEZ
 bsp
 bGd
 hop
-buH
+vMx
 auq
 auq
 auq

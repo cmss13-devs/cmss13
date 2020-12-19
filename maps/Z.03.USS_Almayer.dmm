@@ -28027,10 +28027,6 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/hull/lower_hull)
-"bHo" = (
-/obj/effect/landmark/ert_spawns/distress_agent,
-/turf/open/floor/almayer,
-/area/almayer/living/cryo_cells)
 "bHp" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 4;
@@ -30635,7 +30631,6 @@
 	},
 /area/almayer/living/cryo_cells)
 "bPN" = (
-/obj/effect/landmark/ert_spawns/distress_agent,
 /obj/structure/pipes/vents/pump{
 	dir = 4
 	},
@@ -31301,7 +31296,6 @@
 	},
 /area/almayer/living/cryo_cells)
 "bSb" = (
-/obj/effect/landmark/ert_spawns/distress_agent,
 /obj/structure/pipes/vents/pump{
 	dir = 4
 	},
@@ -41452,14 +41446,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/shipboard/starboard_point_defense)
-"gFs" = (
-/obj/effect/landmark/start/tech,
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "orange";
-	tag = "icon-orange (NORTH)"
-	},
-/area/almayer/engineering/engineering_workshop)
 "gGs" = (
 /turf/open/floor/almayer{
 	dir = 1;
@@ -45823,7 +45809,6 @@
 	},
 /area/almayer/squads/req)
 "lNb" = (
-/obj/effect/landmark/ert_spawns/distress_agent,
 /obj/effect/landmark/start/marine/smartgunner,
 /turf/open/floor/almayer,
 /area/almayer/living/cryo_cells)
@@ -46424,6 +46409,19 @@
 	tag = "icon-orangecorner (EAST)"
 	},
 /area/almayer/engineering/engine_core)
+"mBb" = (
+/obj/structure/machinery/door/airlock/almayer/maint{
+	dir = 2
+	},
+/obj/structure/machinery/door/poddoor/almayer/open{
+	id = "Hangar Lockdown";
+	name = "\improper Hangar Lockdown Blast Door"
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hull/lower_hull)
 "mBj" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer{
@@ -46796,7 +46794,6 @@
 	},
 /area/almayer/hull/lower_hull)
 "mUK" = (
-/obj/effect/landmark/ert_spawns/distress_agent,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -55637,7 +55634,6 @@
 /turf/open/floor/almayer,
 /area/almayer/squads/delta/req)
 "xba" = (
-/obj/effect/landmark/ert_spawns/distress_agent,
 /obj/structure/disposalpipe/segment{
 	dir = 4;
 	icon_state = "pipe-c"
@@ -75300,7 +75296,7 @@ aSm
 aSm
 aSm
 aSm
-aMH
+mBb
 aZM
 bHB
 aZQ
@@ -102306,7 +102302,7 @@ aLG
 bbr
 bCO
 bHr
-bHo
+bAZ
 bHr
 bCO
 bAZ
@@ -102320,7 +102316,7 @@ qlz
 bAZ
 bCO
 bHr
-bHo
+bAZ
 bHr
 bCO
 bbr
@@ -102509,7 +102505,7 @@ aLG
 bbr
 bCM
 bDL
-bHo
+bAZ
 bvE
 bCM
 rbF
@@ -102523,7 +102519,7 @@ qlz
 rbF
 bCM
 bvE
-bHo
+bAZ
 bDL
 bCM
 bbr
@@ -102712,7 +102708,7 @@ beB
 bbs
 bCP
 bDL
-bHo
+bAZ
 bvE
 bCN
 rbF
@@ -102726,7 +102722,7 @@ vub
 rbF
 bCN
 bvE
-bHo
+bAZ
 bDL
 bCN
 bbs
@@ -106171,7 +106167,7 @@ cEx
 bpZ
 brx
 boH
-gFs
+jnf
 hfO
 bxo
 byz

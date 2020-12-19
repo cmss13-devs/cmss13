@@ -32,6 +32,9 @@
 
 
 /mob/new_player/proc/new_player_panel_proc(var/refresh = FALSE)
+	if(!client)
+		return
+
 	var/tempnumber = rand(1, 999)
 	var/postfix_text = (client.prefs && client.prefs.xeno_postfix) ? ("-"+client.prefs.xeno_postfix) : ""
 	var/prefix_text = (client.prefs && client.prefs.xeno_prefix) ? client.prefs.xeno_prefix : "XX"

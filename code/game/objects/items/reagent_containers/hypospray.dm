@@ -64,6 +64,9 @@
 		hypoload(VR)
 
 /obj/item/reagent_container/hypospray/attackby(obj/item/B, mob/living/user)
+	if(istype(B,/obj/item/storage)) // If we're hit by a storage-level item, defer to the storage.
+		..(B, user)
+		return
 	if(magfed && !mag)//Is there a vial?
 		if(istype(B,/obj/item/reagent_container/glass/beaker/vial) && src == user.get_inactive_hand())//Is this a new vial being inserted into a hypospray held in the other hand?
 			to_chat(user, SPAN_NOTICE("You add \the [B] to [src]."))

@@ -33,6 +33,12 @@
 	uses_left--
 	update_icon()
 
+
+/obj/item/reagent_container/hypospray/autoinjector/attackby(obj/item/W, mob/user)
+	if(isstorage(W))
+		..(W, user)
+	return
+
 /obj/item/reagent_container/hypospray/autoinjector/update_icon()
 	overlays.Cut()
 	if(uses_left)

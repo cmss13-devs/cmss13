@@ -68,8 +68,8 @@
 		if(!CONFIG_GET(flag/ert_admin_call_only))
 			dat += "<li><A href='?src=\ref[src];triggerevent=Emergency Response Team'>Emergency Response Team</A></li>"
 
-		dat += "<li><A href='?src=\ref[src];triggerevent=Remove Emergency Maintenance Access'>Remove Emergency Maintenance Access</A></li>"
-		dat += "<li><A href='?src=\ref[src];triggerevent=Add Emergency Maintenance Access'>Add Emergency Maintenance Access</A></li>"
+		dat += "<li><A href='?src=\ref[src];triggerevent=enable_maint_sec'>Enable Maintenance Security</A></li>"
+		dat += "<li><A href='?src=\ref[src];triggerevent=disable_maint_sec'>Disable Maintenance Security</A></li>"
 		dat += "</ul>"
 	if(screen == 2)
 		dat += "Please swipe your card to authorize the following event: <b>[event]</b>"
@@ -140,9 +140,9 @@
 	switch(event)
 		if("Red alert")
 			set_security_level(SEC_LEVEL_RED)
-		if("Remove Emergency Maintenance Access")
+		if("disable_maint_sec")
 			make_maint_all_access()
-		if("Add Emergency Maintenance Access")
+		if("enable_maint_sec")
 			revoke_maint_all_access()
 
 /obj/structure/machinery/keycard_auth/proc/is_ert_blocked()

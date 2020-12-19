@@ -487,7 +487,7 @@
 	icon_opened = "secure_open_mortar"
 	icon_locked = "secure_locked_mortar"
 	icon_unlocked = "secure_unlocked_mortar"
-	req_one_access = list(ACCESS_MARINE_ENGINEERING, ACCESS_MARINE_CARGO, ACCESS_MARINE_ENGPREP)
+	req_one_access = list(ACCESS_MARINE_OT, ACCESS_MARINE_CARGO, ACCESS_MARINE_ENGPREP)
 
 /obj/structure/closet/crate/secure/mortar_ammo/full/New()
 	..()

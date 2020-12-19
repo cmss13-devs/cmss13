@@ -2765,7 +2765,7 @@
 /area/almayer/engineering/starboard_atmos)
 "agG" = (
 /obj/structure/machinery/power/apc/almayer{
-	dir = 4
+	dir = 1
 	},
 /turf/open/floor/almayer,
 /area/almayer/hallways/repair_bay)
@@ -4275,9 +4275,6 @@
 	tag = "icon-red"
 	},
 /area/almayer/shipboard/starboard_missiles)
-"akh" = (
-/turf/closed/wall/almayer,
-/area/almayer/command/cic)
 "aki" = (
 /obj/structure/machinery/door/airlock/almayer/security{
 	dir = 2;
@@ -7027,7 +7024,7 @@
 	desc = "A window, that is also a door. A windoor if you will. This one is stronger.";
 	health = 500;
 	name = "Reinforced Glass door";
-	req_one_access = list(2,7)
+	req_one_access = list(2,33)
 	},
 /turf/open/floor/almayer,
 /area/almayer/engineering/engineering_workshop/hangar)
@@ -7606,7 +7603,7 @@
 /obj/structure/filingcabinet,
 /obj/item/folder/yellow,
 /obj/structure/machinery/power/apc/almayer{
-	dir = 8
+	dir = 1
 	},
 /turf/open/floor/almayer{
 	dir = 1;
@@ -40952,6 +40949,10 @@
 	tag = "icon-orange (NORTH)"
 	},
 /area/almayer/hallways/hangar)
+"gds" = (
+/obj/structure/machinery/floodlight/landing,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hallways/hangar)
 "gel" = (
 /turf/closed/wall/almayer/research/containment/wall/west,
 /area/almayer/medical/containment/cell/cl)
@@ -52377,6 +52378,11 @@
 	tag = "icon-redcorner (WEST)"
 	},
 /area/almayer/shipboard/brig)
+"tqg" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/machinery/floodlight/landing,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hallways/hangar)
 "tqo" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 1
@@ -76712,7 +76718,7 @@ aYt
 aYt
 aYt
 bHB
-btO
+gds
 btO
 btO
 btO
@@ -77930,7 +77936,7 @@ aYt
 aYt
 aYt
 oJp
-bvf
+tqg
 bvf
 bvf
 bvf
@@ -78436,7 +78442,7 @@ awr
 aCf
 ayt
 aCf
-akh
+awr
 aCf
 aCg
 aCf

@@ -232,7 +232,7 @@
 	fake_zlevel = 2 // lowerdeck
 
 /area/almayer/hallways/repair_bay
-	name = "\improper Vehicle Repair Bay"
+	name = "\improper Deployment Workshop"
 	icon_state = "dropshiprepair"
 	fake_zlevel = 2 // lowerdeck
 
@@ -357,7 +357,7 @@
 	fake_zlevel = 1 // upperdeck
 
 /area/almayer/living/offices
-	name = "\improper Office Area"
+	name = "\improper Flight Office"
 	icon_state = "briefing"
 	fake_zlevel = 2 // lowerdeck
 

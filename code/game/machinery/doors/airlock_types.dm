@@ -307,7 +307,7 @@
 	name = "\improper Maintenance Hatch"
 	icon = 'icons/obj/structures/doors/maintdoor.dmi'
 	req_access = list()
-	req_one_access = list(ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_ENGINEERING)
+	req_one_access = list(ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_MAINT)
 
 /obj/structure/machinery/door/airlock/almayer/maint/autoname
 	autoname = TRUE
@@ -331,6 +331,14 @@
 
 /obj/structure/machinery/door/airlock/almayer/medical/autoname
 	autoname = TRUE
+
+/obj/structure/machinery/door/airlock/almayer/engineering/OT
+	name = "\improper Ordnance Workshop"
+	icon = 'icons/obj/structures/doors/engidoor.dmi'
+	opacity = 0
+	glass = 1
+	req_access = list()
+	req_one_access = list(ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_OT)
 
 /obj/structure/machinery/door/airlock/almayer/medical/glass
 	name = "\improper Medical Airlock"

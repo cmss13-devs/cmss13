@@ -131,7 +131,7 @@
 	icon_opened = "fridgeopen"
 	icon_broken = "fridgebroken"
 	icon_off = "fridge1"
-	req_access = list(ACCESS_MARINE_ENGINEERING)
+	req_access = list(ACCESS_MARINE_OT)
 	var/obj/structure/machinery/paraform_cooler/CU
 
 /obj/structure/closet/secure_closet/freezer/industry/Initialize()
@@ -139,7 +139,7 @@
 	CU.freezer = src
 	CU.start_processing()
 	. = ..()
-	
+
 /obj/structure/machinery/paraform_cooler
 	var/cooldown = 5
 	var/list/polymerization_recipe = list("formaldehyde" = 3, "water" = 3)

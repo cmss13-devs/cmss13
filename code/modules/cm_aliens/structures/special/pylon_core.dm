@@ -1,3 +1,6 @@
+#define PYLON_REPAIR_TIME (4 SECONDS)
+#define PYLON_WEEDS_REGROWTH_TIME (15 SECONDS)
+
 //Hive Pylon - Remote building location for other structures, generates strong weeds
 
 /obj/effect/alien/resin/special/pylon
@@ -10,12 +13,16 @@
 	var/node_type = /obj/effect/alien/weeds/node/pylon
 	var/linked_turfs = list()
 
+	var/damaged = FALSE
+	var/plasma_stored = 0
+	var/plasma_required_to_repair = 1000 
+
 	var/protection_level = TURF_PROTECTION_CAS
 
 /obj/effect/alien/resin/special/pylon/Initialize(mapload, hive_ref)
 	. = ..()
 
-	replace_node()
+	place_node()
 	for(var/turf/A in range(round(cover_range*PYLON_COVERAGE_MULT), loc))
 		A.linked_pylons += src
 		linked_turfs += A
@@ -30,11 +37,51 @@
 		qdel(W)
 	. = ..()
 
-/obj/effect/alien/resin/special/pylon/proc/replace_node()
-	var/obj/effect/alien/weeds/node/pylon/W = locate() in loc
-	if(W)
+/obj/effect/alien/resin/special/pylon/attack_alien(mob/living/carbon/Xenomorph/M)
+	if(isXenoBuilder(M) && M.a_intent == INTENT_HELP && M.hivenumber == linked_hive.hivenumber)
+		do_repair(M)
+	else
+		return ..()
+
+/obj/effect/alien/resin/special/pylon/proc/do_repair(mob/living/carbon/Xenomorph/M)
+	if(!istype(M))
 		return
-	new node_type(loc, null, null, linked_hive)
+	if(!damaged)
+		to_chat(M, SPAN_XENONOTICE("\The [name] is in good condition, you don't need to repair it."))
+		return
+
+	to_chat(M, SPAN_XENONOTICE("You begin adding the plasma to \the [name] to repair it."))
+	if(!do_after(M, PYLON_REPAIR_TIME, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src) || !damaged)
+		return
+	
+	var/amount_to_use = min(M.plasma_stored, (plasma_required_to_repair - plasma_stored))
+	plasma_stored += amount_to_use
+	M.plasma_stored -= amount_to_use
+
+	if(plasma_stored < plasma_required_to_repair)
+		to_chat(M, SPAN_WARNING("\The [name] requires [plasma_required_to_repair - plasma_stored] more plasma to repair it."))
+		return
+
+	damaged = FALSE
+	plasma_stored = 0 
+	health = initial(health)
+
+	var/obj/effect/alien/weeds/node/pylon/N = locate() in loc
+	if(!N)
+		return
+	for(var/obj/effect/alien/weeds/W in N.children)
+		if(get_dist(N, W) >= N.node_range)
+			continue
+		if(istype(W, /obj/effect/alien/weeds/weedwall))
+			continue
+		addtimer(CALLBACK(W, /obj/effect/alien/weeds/proc/weed_expand, N), PYLON_WEEDS_REGROWTH_TIME, TIMER_UNIQUE)
+
+	to_chat(M, SPAN_XENONOTICE("You have successfully repaired \the [name]."))
+	playsound(loc, "alien_resin_build", 25)
+
+/obj/effect/alien/resin/special/pylon/proc/place_node()
+	var/obj/effect/alien/weeds/node/pylon/W = new node_type(loc, null, null, linked_hive)
+	W.parent_pylon = src
 
 //Hive Core - Generates strong weeds, supports other buildings
 /obj/effect/alien/resin/special/pylon/core
@@ -110,3 +157,6 @@
 				qdel(linked_hive.spawn_pool)
 
 	. = ..()
+
+#undef PYLON_REPAIR_TIME
+#undef PYLON_WEEDS_REGROWTH_TIME

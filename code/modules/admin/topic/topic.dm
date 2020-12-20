@@ -308,7 +308,7 @@
 
 	else if(href_list["jobban2"])
 //		if(!check_rights(R_BAN))	return
-
+		/*
 		var/mob/M = locate(href_list["jobban2"])
 		if(!ismob(M))
 			to_chat(usr, "This can only be used on instances of type /mob")
@@ -385,7 +385,7 @@
 		body = "<body>[jobs]</body>"
 		dat = "<tt>[body]</tt>"
 		show_browser(usr, dat, "Job-Ban Panel: [M.name]", "jobban2", "size=800x490")
-		return
+		return*/ // DEPRECATED
 	//JOBBAN'S INNARDS
 	else if(href_list["jobban3"])
 		if(!check_rights(R_MOD,0) && !check_rights(R_ADMIN))  return
@@ -404,7 +404,10 @@
 			to_chat(usr, "Role Authority has not been set up!")
 			return
 
-		var/datum/entity/player/P1 = get_player_from_key(M.ckey)
+
+		var/datum/entity/player/P1 = M.client?.player_data
+		if(!P1)
+			P1 = get_player_from_key(M.ckey)
 
 		//get jobs for department if specified, otherwise just returnt he one job in a list.
 		var/list/joblist = list()
@@ -454,8 +457,7 @@
 				if(!reason) continue //skip if it isn't jobbanned anyway
 				switch(alert("Job: '[job]' Reason: '[reason]' Un-jobban?","Please Confirm","Yes","No"))
 					if("Yes")
-						var/datum/entity/player/P = get_player_from_key(M.ckey)
-						P.remove_job_ban(job)
+						P1.remove_job_ban(job)
 					else
 						continue
 			href_list["jobban2"] = 1 // lets it fall through and refresh
@@ -1709,8 +1711,7 @@
 	log_game("[key_name_admin(usr)] has sent a randomized distress beacon, requested by [key_name_admin(ref_person)]")
 	message_staff("[key_name_admin(usr)] has sent a randomized distress beacon, requested by [key_name_admin(ref_person)]")
 
-/datum/admins/proc/generate_job_ban_list(var/mob/M, var/list/roles, var/department, var/color = "ccccff")
-	var/datum/entity/player/P = get_player_from_key(M.ckey)
+/datum/admins/proc/generate_job_ban_list(var/mob/M, var/datum/entity/player/P, var/list/roles, var/department, var/color = "ccccff")
 	var/counter = 0
 
 	var/dat = ""

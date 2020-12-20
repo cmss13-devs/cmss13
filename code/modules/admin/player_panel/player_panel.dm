@@ -484,109 +484,155 @@
 	txt += "</tr>"
 	return txt
 
+/datum/player_panel
+	var/mob/targetMob
+
+/datum/player_panel/New(var/mob/target)
+	. = ..()
+	targetMob = target
+
+
+/datum/player_panel/Destroy(force, ...)
+	targetMob = null
+
+	SStgui.close_uis(src)
+	return ..()
+
+
+/datum/player_panel/tgui_interact(mob/user, datum/tgui/ui)
+	if(!targetMob)
+		return
+
+	ui = SStgui.try_update_ui(user, src, ui)
+	if (!ui)
+		ui = new(user, src, "PlayerPanel", "[targetMob.name] Player Panel")
+		ui.open()
+		ui.set_autoupdate(FALSE)
+
+// Player panel
+/datum/player_panel/ui_data(mob/user)
+	. = list()
+	.["mob_name"] = targetMob.name
+
+	.["mob_sleeping"] = targetMob.sleeping
+	.["mob_frozen"] = targetMob.frozen
+
+	.["mob_speed"] = targetMob.speed
+	.["mob_status_flags"] = targetMob.status_flags
+
+	if(isliving(targetMob))
+		var/mob/living/L = targetMob
+		.["mob_feels_pain"] = L.pain?.feels_pain
+
+	.["current_permissions"] = user.client?.admin_holder?.rights
+
+	if(targetMob.client)
+		var/client/targetClient = targetMob.client
+
+		.["client_key"] = targetClient.key
+		.["client_ckey"] = targetClient.ckey
+
+		.["client_muted"] = targetClient.prefs.muted
+		.["client_rank"] = targetClient.admin_holder ? targetClient.admin_holder.rank : "Player"
+		.["client_muted"] = targetClient.prefs.muted
+
+/datum/player_panel/ui_state(mob/user)
+	return GLOB.admin_state
+
+GLOBAL_LIST_INIT(mute_bits, list(
+	list(name = "IC", bitflag = MUTE_IC),
+	list(name = "OOC", bitflag = MUTE_OOC),
+	list(name = "Pray", bitflag = MUTE_PRAY),
+	list(name = "Adminhelp", bitflag = MUTE_ADMINHELP),
+	list(name = "Deadchat", bitflag = MUTE_DEADCHAT)
+))
+
+GLOBAL_LIST_INIT(narrate_span, list(
+	list(name = "Notice", span = "notice"),
+	list(name = "Warning", span = "warning"),
+	list(name = "Alert", span = "alert"),
+	list(name = "Info", span = "info"),
+	list(name = "Danger", span = "danger"),
+	list(name = "Helpful", span = "helpful")
+))
+
+GLOBAL_LIST_INIT(pp_hives, pp_generate_hives())
+
+/proc/pp_generate_hives()
+	. = list()
+	for(var/I in hive_datum)
+		var/datum/hive_status/H = I
+		.[H.name] = H.hivenumber
+
+GLOBAL_LIST_INIT(pp_limbs, list(
+	"Head" = "head",
+	"Left leg" = "l_leg",
+	"Right leg" = "r_leg",
+	"Left arm" = "l_arm",
+	"Right arm" = "r_arm"
+))
+
+GLOBAL_LIST_INIT(pp_status_flags, list(
+	"Stun" = CANSTUN,
+	"Knockdown" = CANKNOCKDOWN,
+	"Knockout" = CANKNOCKOUT,
+	"Push" = CANPUSH,
+	"Slow" = CANSLOW,
+	"Daze" = CANDAZE,
+	"Godmode" = GODMODE
+))
+
+/datum/player_panel/ui_static_data(mob/user)
+	. = list()
+	.["mob_type"] = targetMob.type
+
+	.["is_human"] = ishuman(targetMob)
+	.["is_xeno"] = isXeno(targetMob)
+
+	.["glob_status_flags"] = GLOB.pp_status_flags
+	.["glob_limbs"] = GLOB.pp_limbs
+	.["glob_hives"] = GLOB.pp_hives
+	.["glob_mute_bits"] = GLOB.mute_bits
+	.["glob_pp_actions"] = GLOB.pp_actions_data
+	.["glob_span"] = GLOB.narrate_span
+	.["glob_pp_transformables"] = GLOB.pp_transformables
+
+/datum/player_panel/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+
+	if(.)
+		return
+
+	var/client/clUser = ui.user.client
+
+	var/datum/player_action/P = GLOB.pp_actions[action]
+	if(!P)
+		return
+
+	if(!check_client_rights(clUser, P.permissions_required))
+		return
+
+	return P.act(clUser, targetMob, params)
+
 /datum/admins/proc/show_player_panel(var/mob/M in GLOB.mob_list)
 	set name = "Show Player Panel"
 	set desc = "Edit player (respawn, ban, heal, etc)"
 	set category = null
 
 	if(!M)
-		to_chat(usr, "You seem to be selecting a mob that doesn't exist anymore.")
+		to_chat(owner, "You seem to be selecting a mob that doesn't exist anymore.")
 		return
-	if (!istype(src,/datum/admins))
-		src = usr.client.admin_holder
+
+	// this is stupid, thanks byond
+	if(istype(src, /client))
+		var/client/C = src
+		src = C.admin_holder
+
 	if (!istype(src,/datum/admins) || !(src.rights & R_MOD))
-		to_chat(usr, "Error: you are not an admin!")
+		to_chat(owner, "Error: you are not an admin!")
 		return
 
-	var/body = "<html>"
-	body += "<body>Name: <b>[M]</b>"
-	if(M.client)
-		body += " - Ckey: <b>[M.client]</b> "
-		body += "<A href='?src=\ref[src];editrights=show'>[M.client.admin_holder ? M.client.admin_holder.rank : "Player"]</A>"
+	if(!M.mob_panel)
+		M.create_player_panel()
 
-	if(istype(M, /mob/new_player))
-		body += "| <B>Hasn't Entered Game</B> "
-	else
-		body += {" <A href='?src=\ref[src];revive=\ref[M]'>Heal</A>
-		<br><b>Mob type</b> = [M.type]<br>
-		"}
-
-	body += {"
-		<a href='?_src_=vars;Vars=\ref[M]'>VV</a> -
-		<a href='?src=\ref[src];traitor=\ref[M]'>TP</a> -
-		<a href='?src=\ref[usr];priv_msg=\ref[M]'>PM</a> -
-		<a href='?src=\ref[src];subtlemessage=\ref[M]'>SM</a> -
-		<a href='?src=\ref[src];adminplayerobservejump=\ref[M]'>JMP</a> -
-		<a href='?src=\ref[src];adminplayerfollow=\ref[M]'>FLW</a><br>
-		<br><b>Admin Tools:</b><br>
-		Ban:
-		<A href='?src=\ref[src];newban=\ref[M]'>Ban</A> |
-		<A href='?src=\ref[src];eorgban=\ref[M]'>EORG Ban</A> |
-		<A href='?src=\ref[src];xenoresetname=\ref[M]'>Xeno Name Reset</A> |
-		<A href='?src=\ref[src];xenobanname=\ref[M]'>Xeno Name Ban</A> |
-		<A href='?src=\ref[src];jobban2=\ref[M]'>Jobban</A> |
-		<A href='?src=\ref[src];notes=show;mob=\ref[M]'>Notes</A>
-	"}
-
-	if(M.client)
-		body += "\ <br>"
-		var/muted = M.client.prefs.muted
-		body += {"Mute: <A class='[(muted & MUTE_IC)?"red":"blue"]' href='?src=\ref[src];mute=\ref[M];mute_type=[MUTE_IC]'>IC</a> |
-			<A class='[(muted & MUTE_OOC)?"red":"blue"]' href='?src=\ref[src];mute=\ref[M];mute_type=[MUTE_OOC]'>OOC</a> |
-			<A class='[(muted & MUTE_PRAY)?"red":"blue"]' href='?src=\ref[src];mute=\ref[M];mute_type=[MUTE_PRAY]'>Pray</a> |
-			<A class='[(muted & MUTE_ADMINHELP)?"red":"blue"]' href='?src=\ref[src];mute=\ref[M];mute_type=[MUTE_ADMINHELP]'>Ahelp</a> |
-			<A class='[(muted & MUTE_DEADCHAT)?"red":"blue"]' href='?src=\ref[src];mute=\ref[M];mute_type=[MUTE_DEADCHAT]'>Dchat</a> |
-			<A class='[(muted & MUTE_ALL)?"red":"blue"]' href='?src=\ref[src];mute=\ref[M];mute_type=[MUTE_ALL]'>Toggle All</a>
-		"}
-
-	body += {"<br>Misc:
-		<A href='?_src_=admin_holder;sendbacktolobby=\ref[M]'>Back to Lobby</A> | <A href='?src=\ref[src];getmob=\ref[M]'>Get</A> | <A href='?src=\ref[src];narrateto=\ref[M]'>Narrate</A> | <A href='?src=\ref[src];sendmob=\ref[M]'>Send</A>
-	"}
-
-	if (M.client)
-		if(!istype(M, /mob/new_player))
-			body += {"<br><br>
-				<b>Transformation:</b>
-				<br>Humanoid: <A href='?src=\ref[src];simplemake=human;mob=\ref[M]'>Human</A> | <a href='?src=\ref[src];makeyautja=\ref[M]'>Yautja</a> |
-				<A href='?src=\ref[src];simplemake=farwa;mob=\ref[M]'>Farwa</A> |
-				<A href='?src=\ref[src];simplemake=monkey;mob=\ref[M]'>Monkey</A> |
-				<A href='?src=\ref[src];simplemake=neaera;mob=\ref[M]'>Neaera</A> |
-				<A href='?src=\ref[src];simplemake=yiren;mob=\ref[M]'>Yiren</A>
-				<br>Alien Tier 0: <A href='?src=\ref[src];simplemake=larva;mob=\ref[M]'>Larva</A>
-				<br>Alien Tier 1: <A href='?src=\ref[src];simplemake=runner;mob=\ref[M]'>Runner</A> |
-				<A href='?src=\ref[src];simplemake=drone;mob=\ref[M]'>Drone</A> |
-				<A href='?src=\ref[src];simplemake=sentinel;mob=\ref[M]'>Sentinel</A> |
-				<A href='?src=\ref[src];simplemake=defender;mob=\ref[M]'>Defender</A>
-				<br>Alien Tier 2: <A href='?src=\ref[src];simplemake=lurker;mob=\ref[M]'>Lurker</A> |
-				<A href='?src=\ref[src];simplemake=warrior;mob=\ref[M]'>Warrior</A> |
-				<A href='?src=\ref[src];simplemake=spitter;mob=\ref[M]'>Spitter</A> |
-				<A href='?src=\ref[src];simplemake=burrower;mob=\ref[M]'>Burrower</A> |
-				<A href='?src=\ref[src];simplemake=hivelord;mob=\ref[M]'>Hivelord</A> |
-				<A href='?src=\ref[src];simplemake=carrier;mob=\ref[M]'>Carrier</A>
-				<br>Alien Tier 3: <A href='?src=\ref[src];simplemake=ravager;mob=\ref[M]'>Ravager</A> |
-				<A href='?src=\ref[src];simplemake=praetorian;mob=\ref[M]'>Praetorian</A> |
-				<A href='?src=\ref[src];simplemake=boiler;mob=\ref[M]'>Boiler</A> |
-				<A href='?src=\ref[src];simplemake=crusher;mob=\ref[M]'>Crusher</A>
-				<br>Alien Tier 4: <A href='?src=\ref[src];simplemake=queen;mob=\ref[M]'>Queen</A>
-				<A href='?src=\ref[src];simplemake=predalien;mob=\ref[M]'>Predalien</A>
-				<br>Misc: <A href='?src=\ref[src];makeai=\ref[M]'>AI</A> | <A href='?src=\ref[src];simplemake=cat;mob=\ref[M]'>Cat</A> |
-				<A href='?src=\ref[src];simplemake=corgi;mob=\ref[M]'>Corgi</A> |
-				<A href='?src=\ref[src];simplemake=crab;mob=\ref[M]'>Crab</A> | <A href='?src=\ref[src];simplemake=observer;mob=\ref[M]'>Observer</A> | <A href='?src=\ref[src];simplemake=robot;mob=\ref[M]'>Robot</A>
-			"}
-
-	body += {"<br><br><b>Other actions:</b>
-		<br>
-		Force: <A href='?src=\ref[src];forcespeech=\ref[M]'>Force Say</A> | <A href='?src=\ref[src];forceemote=\ref[M]'>Force Emote</A><br>
-		Thunderdome: <A href='?src=\ref[src];tdome1=\ref[M]'>Thunderdome 1</A> | <A href='?src=\ref[src];tdome2=\ref[M]'>Thunderdome 2</A>
-	"}
-
-	if(ishuman(M))
-		body += {"<br>Infection: <A href='?src=\ref[src];larvainfect=\ref[M]'>Xeno Larva</A> | <A href='?src=\ref[src];zombieinfect=\ref[M]'>Zombie Virus</A><br>
-				Antagonist:	<A href='?src=\ref[src];makemutineer=\ref[M]'>Make Mutineering Leader</A> | <A href='?src=\ref[src];makecultistleader=\ref[M]'>Make Cultist Leader</A>  | <A href='?src=\ref[src];makecultist=\ref[M]'>Make Cultist</A>
-	"}
-
-	body += {"<br>
-		</body></html>
-	"}
-
-	show_browser(usr, body, "Options for [M.key] played by [M.client]", "adminplayeropts", "size=570x530")
+	M.mob_panel.tgui_interact(owner.mob)

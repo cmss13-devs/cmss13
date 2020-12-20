@@ -142,7 +142,7 @@
 	B2.reagents.add_reagent("phosphorus", 25)
 	B2.reagents.add_reagent("sugar", 25)
 
-	detonator = new/obj/item/device/assembly_holder/timer_igniter(src, 2) //~4 second timer
+	detonator = new/obj/item/device/assembly_holder/timer_igniter(src, 4 SECONDS) //~4 second timer
 
 	containers += B1
 	containers += B2

@@ -68,8 +68,7 @@ var/list/admin_verbs_fun = list(
 var/list/admin_verbs_spawn = list(
 	/datum/admins/proc/spawn_atom,
 	/client/proc/game_panel,
-	/client/proc/create_humans,
-	/client/proc/clear_mutineers
+	/client/proc/create_humans
 )
 var/list/admin_verbs_server = list(
 	/datum/admins/proc/startnow,
@@ -240,7 +239,8 @@ var/list/admin_verbs_mod = list(
 	/client/proc/cmd_admin_check_contents,
 	/datum/admins/proc/show_player_panel,
 	/client/proc/show_objectives_status,
-	/client/proc/hide_admin_mob_verbs
+	/client/proc/hide_admin_mob_verbs,
+	/client/proc/clear_mutineers
 )
 
 /client/proc/add_admin_verbs()

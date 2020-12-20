@@ -23,6 +23,8 @@
 	last_damage_source = null
 	last_damage_mob = null
 
+	QDEL_NULL(mob_panel)
+
 	ghostize()
 	clear_fullscreens()
 	return ..()
@@ -46,7 +48,15 @@
 	if(!isnull(current_area) && current_area.statistic_exempt)
 		statistic_exempt = TRUE
 	prepare_huds()
+
+	create_player_panel()
+
 	return ..()
+
+/mob/proc/create_player_panel()
+	QDEL_NULL(mob_panel)
+
+	mob_panel = new(src)
 
 /mob/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()

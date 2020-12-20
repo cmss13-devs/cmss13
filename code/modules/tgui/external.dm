@@ -183,7 +183,7 @@
 			context = context)
 	// Reload all tgui windows
 	if(type == "cacheReloaded")
-		if(!check_rights(R_ADMIN) || usr.client.tgui_cache_reloaded)
+		if(!check_rights(R_ADMIN, FALSE) || usr.client.tgui_cache_reloaded)
 			return TRUE
 		// Mark as reloaded
 		usr.client.tgui_cache_reloaded = TRUE

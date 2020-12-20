@@ -358,6 +358,7 @@ This function completely restores a damaged organ to perfect condition.
 
 	owner.pain.recalculate_pain()
 	owner.updatehealth()
+	owner.update_body()
 	update_icon()
 
 /obj/limb/proc/take_damage_internal_bleeding(damage)

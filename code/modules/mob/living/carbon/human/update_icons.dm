@@ -108,7 +108,7 @@ There are several things that need to be remembered:
 		if(!(O.status & LIMB_DESTROYED))
 			O.update_icon()
 
-/mob/living/proc/AddSleepingIcon()
+/mob/proc/AddSleepingIcon()
 	return
 
 /mob/living/carbon/human/AddSleepingIcon()
@@ -116,7 +116,7 @@ There are several things that need to be remembered:
 	SL = new /image('icons/mob/hud/hud.dmi', "slept_icon")
 	overlays += SL
 
-/mob/living/proc/RemoveSleepingIcon()
+/mob/proc/RemoveSleepingIcon()
 	return
 
 /mob/living/carbon/human/RemoveSleepingIcon()

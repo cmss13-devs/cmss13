@@ -225,3 +225,26 @@ var/savefile/Banlist
 	for (var/A in Banlist.dir)
 		RemoveBan(A)
 
+/client/proc/cmd_admin_do_ban(var/mob/M)
+	if(!check_rights(R_BAN|R_MOD))  return
+
+	if(!ismob(M)) return
+
+	if(M.client && M.client.admin_holder && (M.client.admin_holder.rights & R_MOD))
+		return	//mods+ cannot be banned. Even if they could, the ban doesn't affect them anyway
+
+	if(!M.ckey)
+		to_chat(usr, SPAN_DANGER("<B>Warning: Mob ckey for [M.name] not found.</b>"))
+		return
+	var/mob_key = M.ckey
+	var/mins = input(usr,"How long (in minutes)? \n 1440 = 1 day \n 4320 = 3 days \n 10080 = 7 days","Ban time",1440) as num|null
+	if(!mins)
+		return
+	if(mins >= 525600) mins = 525599
+	var/reason = input(usr,"Reason? \n\nPress 'OK' to finalize the ban.","reason","Griefer") as message|null
+	if(!reason)
+		return
+	var/datum/entity/player/P = get_player_from_key(mob_key) // you may not be logged in, but I will find you and I will ban you
+	if(P.is_time_banned && alert(usr, "Ban already exists. Proceed?", "Confirmation", "Yes", "No") != "Yes")
+		return
+	P.add_timed_ban(reason, mins)

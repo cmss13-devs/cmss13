@@ -729,7 +729,7 @@
 	return
 
 /datum/admins/proc/clear_mutineers()
-	if(!check_rights(R_SPAWN))
+	if(!check_rights(R_MOD))
 		return
 
 	if(alert(usr, "Are you sure you want to change all mutineers back to normal?", "Confirmation", "Yes", "No") == "No")

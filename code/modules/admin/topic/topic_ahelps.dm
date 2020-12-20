@@ -157,4 +157,4 @@
 			to_chat(owner, "(<a href='?src=\ref[usr];priv_msg=\ref[M]'>PM</a>) (<A HREF='?src=\ref[src];ahelp=adminplayeropts;extra=\ref[M]'>PP</A>) (<A HREF='?_src_=vars;Vars=\ref[M]'>VV</A>) (<A HREF='?src=\ref[src];subtlemessage=\ref[M]'>SM</A>) (<A HREF='?src=\ref[src];adminplayerobservejump=\ref[M]'>JMP</A>)")
 		if("adminplayeropts")
 			var/mob/M = locate(href_list["extra"])
-			show_player_panel(M)
+			addtimer(CALLBACK(src, .proc/show_player_panel, M), 0.5 SECONDS)

@@ -201,10 +201,9 @@
 	if(timer_time)
 		tmr.time = timer_time
 	else
-		tmr.time = 5
+		tmr.time = 5 SECONDS
 	tmr.secured = 1
 	tmr.holder = src
-	START_PROCESSING(SSobj, tmr)
 	a_left = tmr
 	a_right = ign
 	secured = 1

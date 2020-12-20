@@ -20,6 +20,10 @@
 	if(!..())	return 0//Cooldown check
 
 	timing = !timing
+	if(timing)
+		START_PROCESSING(SSobj, src)
+	else
+		STOP_PROCESSING(SSobj, src)
 
 	update_icon()
 	return 0
@@ -27,9 +31,9 @@
 
 /obj/item/device/assembly/timer/toggle_secure()
 	secured = !secured
-	if(secured)
+	if(secured && timing)
 		START_PROCESSING(SSobj, src)
-	else
+	else if(!secured)
 		timing = 0
 		STOP_PROCESSING(SSobj, src)
 	update_icon()
@@ -43,6 +47,7 @@
 		visible_message("[htmlicon(src, hearers(src))] *beep* *beep*", "*beep* *beep*")
 	cooldown = 2
 	addtimer(CALLBACK(src, .proc/process_cooldown), 1 SECONDS)
+	STOP_PROCESSING(SSobj, src)
 	return
 
 
@@ -100,6 +105,10 @@
 
 			if(!timing)
 				time = clamp(round(time), TIMER_MINIMUM_TIME, TIMER_MAXIMUM_TIME)
+				STOP_PROCESSING(SSobj, src)
+			else
+				START_PROCESSING(SSobj, src)
+
 			update_icon()
 			. = TRUE
 

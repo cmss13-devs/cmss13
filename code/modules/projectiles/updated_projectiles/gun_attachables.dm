@@ -698,6 +698,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/scope/slavic
 	icon_state = "slavicscope"
+	attach_icon = "slavicscope"
 	desc = "Oppa! How did you get this off glorious Stalin weapon? Blyat, put back on and do job tovarish. Yankee is not shoot self no?"
 
 

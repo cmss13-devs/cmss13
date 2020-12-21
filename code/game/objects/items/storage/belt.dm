@@ -411,21 +411,29 @@
 	icon_state = "knifebelt"
 	item_state = "marinebelt" // aslo temp, maybe somebody update these icons with better ones?
 	w_class = SIZE_LARGE
-	storage_slots = 6
+	storage_slots = 30
+	storage_flags = STORAGE_FLAGS_DEFAULT|STORAGE_USING_DRAWING_METHOD
 	max_w_class = SIZE_SMALL
-	max_storage_space = 6
+	max_storage_space = 48
 	can_hold = list(
 		/obj/item/weapon/melee/throwing_knife,
 		/obj/item/attachable/bayonet
 	)
 
-/obj/item/storage/belt/knifepouch/fill_preset_inventory()
-	new /obj/item/weapon/melee/throwing_knife(src)
-	new /obj/item/weapon/melee/throwing_knife(src)
-	new /obj/item/weapon/melee/throwing_knife(src)
-	new /obj/item/weapon/melee/throwing_knife(src)
-	new /obj/item/weapon/melee/throwing_knife(src)
-	new /obj/item/weapon/melee/throwing_knife(src)
+/obj/item/storage/belt/knifepouch/Initialize()
+	. = ..()
+	for(var/total_storage_slots in 1 to storage_slots)
+		new /obj/item/weapon/melee/throwing_knife(src)
+
+/obj/item/storage/belt/knifepouch/handle_item_insertion(obj/item/W, prevent_warning = 0)
+	. = ..()
+	if(.)
+		playsound(src,'sound/weapons/gun_shotgun_shell_insert.ogg', 15, 1)
+
+/obj/item/storage/belt/knifepouch/remove_from_storage(obj/item/W, atom/new_location)
+	. = ..()
+	if(.)
+		playsound(src,'sound/weapons/gun_shotgun_shell_insert.ogg', 15, 1)
 
 /obj/item/storage/belt/grenade
 	name="\improper M276 pattern M40 HEDP rig"

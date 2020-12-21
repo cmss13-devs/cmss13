@@ -97,20 +97,34 @@
 
 /obj/item/storage/pouch/bayonet
 	name = "bayonet sheath"
-	desc = "A pouch for your knives."
+	desc = "Knife to meet you!"
 	can_hold = list(
 		/obj/item/weapon/melee/throwing_knife,
 		/obj/item/attachable/bayonet
 	)
 	icon_state = "bayonet"
-	storage_slots = 3
+	storage_slots = 10
 	storage_flags = STORAGE_FLAGS_POUCH|STORAGE_USING_DRAWING_METHOD
 
-/obj/item/storage/pouch/bayonet/full/fill_preset_inventory()
-	new /obj/item/attachable/bayonet(src)
+/obj/item/storage/pouch/bayonet/Initialize()
+	. = ..()
+	for(var/total_storage_slots in 1 to storage_slots)
+		new /obj/item/weapon/melee/throwing_knife(src)
 
-/obj/item/storage/pouch/bayonet/upp/fill_preset_inventory()
-	new /obj/item/attachable/bayonet/upp(src)
+/obj/item/storage/pouch/bayonet/upp/Initialize()
+	. = ..()
+	for(var/total_storage_slots in 1 to storage_slots)
+		new /obj/item/attachable/bayonet/upp(src)
+
+/obj/item/storage/pouch/bayonet/handle_item_insertion(obj/item/W, prevent_warning = 0)
+	. = ..()
+	if(.)
+		playsound(src,'sound/weapons/gun_shotgun_shell_insert.ogg', 15, 1)
+
+/obj/item/storage/pouch/bayonet/remove_from_storage(obj/item/W, atom/new_location)
+	. = ..()
+	if(.)
+		playsound(src,'sound/weapons/gun_shotgun_shell_insert.ogg', 15, 1)
 
 /obj/item/storage/pouch/survival
 	name = "survival pouch"

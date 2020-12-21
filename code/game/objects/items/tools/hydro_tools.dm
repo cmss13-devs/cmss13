@@ -106,7 +106,7 @@
 	icon = 'icons/obj/items/weapons/weapons.dmi'
 	icon_state = "hatchet"
 	flags_atom = FPRINT|CONDUCT
-	force = 25.0
+	force = MELEE_FORCE_NORMAL
 	w_class = SIZE_SMALL
 	throwforce = 20.0
 	throw_speed = SPEED_VERY_FAST

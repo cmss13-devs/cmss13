@@ -64,6 +64,17 @@
 		</td>
 	</tr>
 </table>
+			<h2 class="date">21 December 2020</h2>
+			<h3 class="author">Carlarc updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Increased throwing knife belt and pouch capacity to 30 and 10 respectively.</li>
+				<li class="rscadd">Throwing knives deal roughly 100 damage and hit their target almost instantly. Includes UPP knives.</li>
+				<li class="rscadd">Engineers and medics can buy G8 pouches in their clothing and equipment vendor respectively.</li>
+				<li class="tweak">Non-PFC roles can no longer buy knife rig as their belt option, as it's a noob trap.</li>
+				<li class="tweak">Tweaked holstering code so you can draw from knife rigs now. Will also mean you open up things like G8 pouches if they have a gun inside.</li>
+				<li class="rscdel">Soporific and Chloral Hydrate now make you stumble around confusedly for a few seconds until you drop unconscious on the ground. Both the total confusion and sleeping are now capped at 20 seconds total.</li>
+			</ul>
+
 			<h2 class="date">20 December 2020</h2>
 			<h3 class="author">Firartix updated:</h3>
 			<ul class="changes bgimages16">
@@ -3479,122 +3490,6 @@
 				<li class="rscdel">Resin roof will no longer block OBs</li>
 				<li class="bugfix">Pylons now effectively block CAS/Mortars within the range that they can weed.</li>
 				<li class="bugfix">Pylons will no longer leave a roof behind</li>
-			</ul>
-			<h3 class="author">thepiachu updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="maptweak">CORSAT's door access has been tweaked a bit to focus more on civilian access. Core buttons should still work for Marines not to derail the flow of the map.</li>
-			</ul>
-
-			<h2 class="date">22 June 2020</h2>
-			<h3 class="author">Awan updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">Mentor helps will now repeat.</li>
-				<li class="bugfix">Closing the window to pm a player as a mentor no longer closes the mentorhelp.</li>
-				<li class="tweak">Fixes being able to catch throwable combi sticks.</li>
-			</ul>
-			<h3 class="author">Cakey updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Added the underbarrel fire extinguisher. Carries the same amount as a mini extinguisher, and can be attached to most weapons.</li>
-				<li class="rscadd">Flamethrower spec's flamer will now spawn with a default attached UB extinguisher.</li>
-			</ul>
-			<h3 class="author">Fourkhan updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">Buffed: Trapper Boiler, Base Boiler, Base Ravager, Berserker Ravager, Oppressor Praetorian, Vanguard Praetorian, M41 Pulse Rifle</li>
-				<li class="tweak">Nerfed: Warden Prae, Crusher, Hedgehog Ravager, Warrior.</li>
-				<li class="tweak">Removed Materials Crates (metal and plasteel) from ASRS.</li>
-				<li class="tweak">Details:</li>
-				<li class="tweak">Warrior grab is no longer a neck grab mechanically (no more oxyloss).</li>
-				<li class="tweak">Changed the grab escape code to escape 50% of the time instead of being dependent on grab level.</li>
-				<li class="tweak">Changed the damage ratio of trapper boiler's acid mine on barricades from 0.7* total damage to 1.0* total damage.</li>
-				<li class="tweak">Increased the damage of trapper boiler's landmine from 50 to 60.</li>
-				<li class="tweak">Increased Boiler's view range when zoomed out by 1 tile.</li>
-				<li class="tweak">Slightly decreased Crusher's speed at higher maturities.</li>
-				<li class="tweak">Increased the bonus damage base ravager recieves from shields from 5% to 10% of shield HP.</li>
-				<li class="tweak">Increased the cooldown of Crusher's shield by 4 seconds at all maturities.</li>
-				<li class="tweak">Increased the cooldown of Crusher's charge by 6 seconds at all maturities.</li>
-				<li class="tweak">Decreased the damage reduction of Crusher's shield from 12.5 to 10.</li>
-				<li class="tweak">Decreased the duration of Crusher's stomp slow from 3 seconds to 1.5 seconds.</li>
-				<li class="tweak">Slashing targets as a crusher now decreases your cooldowns by 1 second; cleaving a target decreases your cooldowns by .5 seconds.</li>
-				<li class="tweak">Decreased the ratio of Crusher's damage applied by cleave from 0.66 of total slash to 0.60 of total slash.</li>
-				<li class="tweak">Increased Berserker Ravager's armor by 5.</li>
-				<li class="tweak">Decreased the self heal of Berserker's clothesline from 200 -> 150.</li>
-				<li class="tweak">Added a new mechanic to Berserker Ravager, lifesteal. Berserker Ravagers will now heal for (50+5*rage)% of their slash damage whenever they slash a human.</li>
-				<li class="tweak">Increased the internal hitpoint gain from hitting a target with a spit from 40 to 75 for Warden Praetorian.</li>
-				<li class="tweak">Decreased the passive internal hitpoint gain of Warden Praetorian from 10 to 5.</li>
-				<li class="tweak">Oppressor Praetorian's stomp ability now roots marines for 1.5 seconds in addition to stunning them.</li>
-				<li class="tweak">Added a brief stun to Oppressor Praetorian's tail lash ability; additionally, it now slows hit targets for 2 seconds.</li>
-				<li class="tweak">Removed the health decrease from Vanguard Praetorian (+40 HP).</li>
-				<li class="tweak">Increased the damage of Vanguard Praetorian's pierce ability 50 -> 60</li>
-				<li class="tweak">Decreased the cooldown for Vanguard Praetorian's piece ability from 10s constant, it now starts at 4.5 seconds and decreases by .5 seconds every maturity level.</li>
-				<li class="bugfix">Vanguard shield now works as intended and decays over time instead of instantly.</li>
-				<li class="tweak">Removed Warden Praetorian's extra armor.</li>
-				<li class="tweak">Removed Hedgehog Ravager's extra armor.</li>
-				<li class="tweak">Removed the mechanic where Hedgehog Ravager could heal by reactivating it's shield.</li>
-				<li class="tweak">Increased the hit accuracy of the M41Amk2 pulse rifle.</li>
-				<li class="tweak">Decreased the spread of the M41Amk2 pulse rifle.</li>
-				<li class="tweak">Increased the damage of the M41mk2 pulse rifle by 12%.</li>
-				<li class="tweak">Increased the damage modifier of the M46C from 12% additional damage to 21% additional damage.</li>
-				<li class="tweak">Changed the latejoin larva mechanic. Xenos now recieve 1 larva per 4 latejoin marines.</li>
-				<li class="tweak">Changed the Evolution rate mechanic.</li>
-				<li class="tweak">Upgrade rate and Evolution rate are now the same number.</li>
-				<li class="tweak">Xenos start at 3 Evolution rate for the first 10 minutes of the game.</li>
-				<li class="tweak">After 10 minutes, Xenos gain 1 evolution rate per tick per 30 minutes of game duration rounded down plus 0.2*[num evo pods] with a minimum of 1.</li>
-				<li class="tweak">Made DEFCON 1, 2, and 3 much harder to get on LV-624.</li>
-				<li class="tweak">Made DEFCON 1 and 2 slightly harder to get on Prison and Sorokyne.</li>
-				<li class="tweak">Made DEFCON 1 and 2 harder to get on Big Red.</li>
-				<li class="tweak">Made DEFCON 1 and 2 slightly easier to get on Trijent, Ice, and CORSAT.</li>
-				<li class="tweak">Reduced Vanguard's impale damage from 60 -> 50.</li>
-				<li class="tweak">Reduced the root duration of Vanguard's cleave from 1.5 seconds to half a second while unbuffed and from 2.5 seconds to 1.25 seconds while unbuffed.</li>
-				<li class="tweak">Reduced the number of targets hit required to regenerate Vanguard's shield from 3 -> 2.</li>
-				<li class="bugfix">Fixed a bug where Vanguard was immune to explosive damage after it regenerated it's shield twice.</li>
-			</ul>
-			<h3 class="author">Jeser updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">Clicking alive xenomorphs with empty hand on GRAB intent as a human won't result in attempt to grab xenomorph and getting stunned. Yautja and Synths are unchanged. CTRL + Clicking is unchanged.</li>
-				<li class="tweak">Clicking yourself with empty hand on DISARM or GRAB intents as a human will check yourself for injuries now.</li>
-				<li class="tweak">Point Blanks trigger only on HARM intent now.</li>
-			</ul>
-			<h3 class="author">TheDonkified updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">Middle mouse click will now allow you to give items to other humans as a human.</li>
-				<li class="tweak">Middle mouse click will now allow you to climb climbable structures (window frames, tables, etc).</li>
-				<li class="tweak">MMB hand swapping is still in, just don't click on a human or structure object that is right next to you. Xenos that use MMB for abilities will be able to use MMB climbing as long as you do not have an ability toggled on.</li>
-				<li class="tweak">Added a pref for automatic punctuation.</li>
-			</ul>
-			<h3 class="author">ThePiachu updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">Overhauled internal logic of how power is handled.</li>
-				<li class="rscadd">Added a garbage collector to the game. It's basically a background process that will periodically delete junk items from the game to hopefully lower late game lag. The items removed shouldn't affect the gameplay - burnt out flares, empty boxes, spent casings, literal garbage, etc. It won't remove items from your inventory in case you want to hold onto something specifically, and it won't instantly delete newly created garbage.</li>
-				<li class="rscadd">Added boxes of MREs and flares, so that Requisitions won't have to send them down in backpacks. Sprites by Triiodine.</li>
-				<li class="tweak">Changed Requisitions crates to use those boxes instead of the loose items.</li>
-				<li class="tweak">Changed Large Supply Crates to do the same (you can find one in Requisitions!).</li>
-				<li class="rscdel">Removed weapon-specific skills (pistols, shotguns, SMGs, etc.) - they were too redundant.</li>
-				<li class="rscdel">Removed the Survival skill - it was only used to gate one recipe - molotov cocktail. Now everyone can make those! Just use paper on a bottle of something flammable.</li>
-				<li class="rscdel">Squished a lot of skill levels down to just a handful. They most often fall under "untrained / basic training (mini-kits) / trained (combat engis, combat medics, OTs, doctors, etc.)". Cut down on snowflake levels for singular roles, like Researchers being worse at surgery, or CEs being better at powerloader.</li>
-				<li class="tweak">POs' Powerloader skill has been buffed. The only people with a mid-range powerloader skill are planned to be PFCs after reading a special pamphlet (not in a kit form, but found on colonies around powerloaders).</li>
-				<li class="tweak">Some timers have been rebalanced based on the skill changes (like surgery).</li>
-				<li class="tweak">Dual-wielding SMGs now has a higher scatter than before (due to removing snowflake SMG skill check).</li>
-				<li class="tweak">Shipside Synths will have a new role to play in this new skill system. They will be more efficient at tasks with timers than even the specialised roles. This will mean they can prop up an entire department by themselves, so it will be up to the Command to apply them to the right place. Survivor Synthetics are not as well trained - they are only as good as a single trained individual, but still have the variety of skills to apply themselves anywhere.</li>
-				<li class="tweak">The Company has recently launched a colony diversity initiative! Not only will the Weston-Yamada colonies not be staffed by clones, they will have actual names and distinct features!</li>
-				<li class="tweak">Changed the corpse spawner system to use Select Equipment system for loading gear, generating names, appearances, etc. This means the generated colonists will appear more varied.</li>
-				<li class="rscdel">The new USCM protocols have established that walking is now prohibited. All personel must either run or stand still, no inbetween! This extends to every person and creature in the area of operation, civilian or extraterrestrial. (Removed walk intent, it wasn't used anyway, now you will always be running and now have to worry about fat fingering walking intent and dying because of it).</li>
-				<li class="bugfix">Made WO compile again.</li>
-				<li class="tweak">Motion detectors should properly disable themselves when a mob dies, gets hugged, gets buckled into a nest, etc.</li>
-				<li class="tweak">Retrieve corpses objectives should display how many points they earn you, not only their completion percentage.</li>
-				<li class="rscdel">Removed some unused infrared sight from xenos (we don't use it anyway, it's a whole other BYOND feature).</li>
-				<li class="bugfix">Fixed some null error around holsters.</li>
-				<li class="tweak">Dead people's headsets disable themselves automatically. This is for performance reasons. The radios don't disable themselves when you get hugged or nested, so you can preserve that gameplay. To re-enable the headset, just open its menu, it will turn itself on automatically. Hopefully this will improve late-game performance, not having to send messages to 100+ corpses...</li>
-			</ul>
-			<h3 class="author">Vampmare updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">Reduced gun + bayonet damage to slightly below machete level.</li>
-			</ul>
-			<h3 class="author">Vicacrov updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Fixed the hivelord's thick resin door's health. It is now actually stronger than a drone's door. (12052)</li>
-				<li class="bugfix">Fixed the CMP's ID color. It's now silver as with all commissioned officers'. (11879)</li>
-				<li class="bugfix">Fixed the Queen not being able to build nests. (12277)</li>
-				<li class="tweak">The type of the two roundstart OB warheads are now random. You can start with 2 HEs, 2 incediaries, 2 clusters or any of their variations. The number of warheads did not change. (12101)</li>
 			</ul>
 			<h3 class="author">thepiachu updated:</h3>
 			<ul class="changes bgimages16">

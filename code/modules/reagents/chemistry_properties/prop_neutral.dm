@@ -444,13 +444,12 @@
 	category = PROPERTY_TYPE_STIMULANT
 
 /datum/chem_property/neutral/sedative/process(mob/living/M, var/potency = 1)
-	M.paralyzed += potency
-	M.KnockDown(2*potency)	// move this to paralyzed, adjust the number
-	M.paralyzed += 2*potency
-	M.confused += 2*potency
-	if(M.paralyzed > potency * 4)
-		M.AdjustSleeping(potency)
-	else if(prob(10))
+	if(M.confused < 25 && M.sleeping < 20)
+		M.confused += 2*potency
+	if(M.confused > 25)
+		M.AdjustSleeping(2*potency)
+		M.confused -= 2*potency //so when they wake up they aren't still confused
+	else if(prob(25))
 		M.emote("yawn")
 
 /datum/chem_property/neutral/sedative/process_overdose(mob/living/M, var/potency = 1)

@@ -63,6 +63,12 @@
 	required_reagents = list("synaptizine" = 1, "anti_toxin" = 1)
 	result_amount = 2
 
+/datum/chemical_reaction/mutagen
+	name = "Unstable mutagen"
+	id = "mutagen"
+	result = "mutagen"
+	required_reagents = list("radium" = 1, "phosphorus" = 1, "chlorine" = 1)
+	result_amount = 3
 
 /datum/chemical_reaction/stoxin
 	name = "Soporific"
@@ -71,12 +77,12 @@
 	required_reagents = list("sugar" = 4, "chloralhydrate" = 1)
 	result_amount = 5
 
-/datum/chemical_reaction/mutagen
-	name = "Unstable mutagen"
-	id = "mutagen"
-	result = "mutagen"
-	required_reagents = list("radium" = 1, "phosphorus" = 1, "chlorine" = 1)
-	result_amount = 3
+/datum/chemical_reaction/chloralhydrate
+	name = "Chloral Hydrate"
+	id = "chloralhydrate"
+	result = "chloralhydrate"
+	required_reagents = list("chlorine" = 3, "ethanol" = 1, "water" = 1)
+	result_amount = 1
 
 /datum/chemical_reaction/sacid
 	name = "Sulfuric acid"
@@ -271,14 +277,6 @@
 		INVOKE_ASYNC(S, /datum/effect_system/smoke_spread/chem.proc/start)
 		holder.clear_reagents()
 
-
-/datum/chemical_reaction/chloralhydrate
-	name = "Chloral Hydrate"
-	id = "chloralhydrate"
-	result = "chloralhydrate"
-	required_reagents = list("chlorine" = 3, "ethanol" = 1, "water" = 1)
-	result_amount = 1
-
 /datum/chemical_reaction/potassium_chloride
 	name = "Potassium Chloride"
 	id = "potassium_chloride"
@@ -292,13 +290,6 @@
 	result = "potassium_chlorophoride"
 	required_reagents = list("potassium_chloride" = 1, "phoron" = 1, "chloralhydrate" = 1)
 	result_amount = 4
-
-/datum/chemical_reaction/stoxin
-	name = "Soporific"
-	id = "stoxin"
-	result = "stoxin"
-	required_reagents = list( "sugar" = 4, "chloralhydrate" = 1)
-	result_amount = 5
 
 /datum/chemical_reaction/zombiepowder
 	name = "Zombie Powder"

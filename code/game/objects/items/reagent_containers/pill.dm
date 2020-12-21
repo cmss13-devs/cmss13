@@ -44,7 +44,12 @@ var/global/list/randomized_pill_icons
 				return
 
 		M.visible_message(SPAN_NOTICE("[user] swallows [src]."),
-			SPAN_HELPFUL("You swallow [src]."))
+		SPAN_HELPFUL("You swallow [src]."))
+		var/list/reagents_in_pill = list()
+		for(var/datum/reagent/R in reagents.reagent_list)
+			reagents_in_pill += R.name
+		var/contained = english_list(reagents_in_pill)
+		msg_admin_niche("[key_name(user)] swallowed [src] (REAGENTS: [contained]) in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
 		M.drop_inv_item_on_ground(src) //icon update
 		if(reagents && reagents.total_volume)
 			reagents.set_source_mob(user)

@@ -558,18 +558,9 @@
 	return 1
 
 /obj/item/weapon/gun/unwield(var/mob/user)
-
-	if((flags_item|TWOHANDED|WIELDED) != flags_item)
-		return //Have to be actually a twohander and wielded.
-
-	on_unwield()
-
-	flags_item ^= WIELDED
-	name 	    = copytext(name, 1, -10)
-	item_state  = copytext(item_state, 1, -2)
-	slowdown = initial(slowdown)
-	remove_offhand(user)
-	return 1
+	. = ..()
+	if(.)
+		slowdown = initial(slowdown)
 
 //----------------------------------------------------------
 			//							        \\

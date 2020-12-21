@@ -60,7 +60,6 @@
 
 	var/reagent_move_delay_modifier = 0 //negative values increase movement speed
 
-	var/datum/event/event_zoomout = null
 	var/datum/event/event_movement = null
 	var/blood_type = "X*"
 

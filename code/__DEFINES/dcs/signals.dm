@@ -19,6 +19,13 @@
 
 //////////////////////////////////////////////////////////////////
 
+#define COMSIG_CLIENT_LMB_DOWN "client_lmb_down"
+#define COMSIG_CLIENT_LMB_UP "client_lmb_up"
+#define COMSIG_CLIENT_LMB_DRAG "client_lmb_drag"
+
+#define COMSIG_CLIENT_KEY_DOWN "client_key_down"
+#define COMSIG_CLIENT_KEY_UP "client_key_up"
+
 // /datum signals
 /// when a component is added to a datum: (/datum/component)
 #define COMSIG_COMPONENT_ADDED "component_added"
@@ -106,6 +113,17 @@
 
 /// From /mob/living/rejuvenate
 #define COMSIG_LIVING_REJUVENATED "living_rejuvenated"
+/// From /mob/living/proc/IgniteMob
+#define COMSIG_LIVING_PREIGNITION "living_preignition"
+	#define COMPONENT_NO_IGNITION (1<<0)
+
+/// From /obj/flamer_fire/Crossed
+#define COMSIG_LIVING_FLAMER_CROSSED "living_flamer_crossed"
+/// From /obj/flamer_fire/Initialize
+#define COMSIG_LIVING_FLAMER_FLAMED "living_flamer_flamed"
+	#define COMPONENT_NO_BURN (1<<0)
+/// From /obj/item/proc/unzoom
+#define COMSIG_LIVING_ZOOM_OUT "living_zoom_out"
 
 /// From /obj/item/device/defibrillator/attack
 #define COMSIG_HUMAN_REVIVED "human_revived"
@@ -122,6 +140,9 @@
 // /obj/item signals
 ///from base of obj/item/dropped(): (mob/user)
 #define COMSIG_ITEM_DROPPED "item_drop"
+///from /obj/item/proc/unwield
+#define COMSIG_ITEM_UNWIELD "item_unwield"
+
 /// From /atom/movable/proc/launch_towards
 #define COMSIG_MOVABLE_PRE_THROW "movable_pre_throw"
 	#define COMPONENT_CANCEL_THROW (1<<0)

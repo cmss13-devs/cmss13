@@ -26,7 +26,7 @@
 
 	var/list/mods = params2list(params)
 	if(mods["left"])
-		raiseEvent(src, EVENT_LMBDOWN, A, mods)
+		SEND_SIGNAL(src, COMSIG_CLIENT_LMB_DOWN, A, mods)
 		lmb_last_mousedown_mods = mods
 
 /client/MouseUp(var/atom/A, var/turf/T, var/skin_ctl, var/params)
@@ -38,7 +38,7 @@
 
 	var/list/mods = params2list(params)
 	if(mods["left"])
-		raiseEvent(src, EVENT_LMBUP, A, params)
+		SEND_SIGNAL(src, COMSIG_CLIENT_LMB_UP, A, params)
 
 /client/MouseDrag(var/atom/src_obj, var/atom/over_obj, var/turf/src_loc, var/turf/over_loc, var/src_ctl, var/over_ctl, var/params)
 	if(!over_obj)
@@ -48,7 +48,7 @@
 
 	var/list/mods = params2list(params)
 	if(mods["left"])
-		raiseEvent(src, EVENT_LMBDRAG, src_obj, over_obj, params)
+		SEND_SIGNAL(src, COMSIG_CLIENT_LMB_DRAG, src_obj, over_obj, params)
 
 	var/atom/last_atom = LAZYACCESS(mouse_trace_history, mouse_trace_history.len)
 	if(over_obj == last_atom)

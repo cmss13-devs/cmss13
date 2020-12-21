@@ -417,7 +417,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	if (!key)
 		return
 
-	raiseEvent(src, EVENT_READ_KEY_DOWN, key)
+	SEND_SIGNAL(src, COMSIG_CLIENT_KEY_DOWN, key)
 
 /client/verb/read_key_up(var/key as text|null)
 	set name = ".Read Key Up"
@@ -426,7 +426,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	if (!key)
 		return
 
-	raiseEvent(src, EVENT_READ_KEY_UP, key)
+	SEND_SIGNAL(src, COMSIG_CLIENT_KEY_UP, key)
 
 /client/verb/fix_swap_hand_macro()
 	set name = "Fix Swap Hand Macros"

@@ -1538,7 +1538,8 @@ var/const/MAX_SAVE_SLOTS = 10
 /datum/preferences/proc/close_load_dialog(mob/user)
 	close_browser(user, "saves")
 
-/datum/preferences/proc/parse_key_down(var/key)
+/datum/preferences/proc/parse_key_down(client/source, key)
+	SIGNAL_HANDLER
 	key = uppertext(key)
 
 	if (key in key_mod_buf)
@@ -1547,7 +1548,8 @@ var/const/MAX_SAVE_SLOTS = 10
 	if (key in key_mods)
 		key_mod_buf.Add(key)
 
-/datum/preferences/proc/set_key_buf(var/key)
+/datum/preferences/proc/set_key_buf(client/source, key)
+	SIGNAL_HANDLER
 	key_buf = ""
 
 	var/key_upper = uppertext(key)
@@ -1573,14 +1575,16 @@ var/const/MAX_SAVE_SLOTS = 10
 
 	alert("Press OK below, and then input the key sequence!")
 
-	registerListener(owner, EVENT_READ_KEY_DOWN, "reading_key", CALLBACK(src, .proc/parse_key_down))
-	registerListener(owner, EVENT_READ_KEY_UP, "reading_key", CALLBACK(src, .proc/set_key_buf))
+	RegisterSignal(owner, COMSIG_CLIENT_KEY_DOWN, .proc/parse_key_down)
+	RegisterSignal(owner, COMSIG_CLIENT_KEY_UP, .proc/set_key_buf)
 	winset(owner, null, "mainwindow.macro=keyreader")
 	while (!key_buf)
 		stoplag()
 	winset(owner, null, "mainwindow.macro=[old]")
-	unregisterListener(owner, EVENT_READ_KEY_DOWN, "reading_key")
-	unregisterListener(owner, EVENT_READ_KEY_UP, "reading_key")
+	UnregisterSignal(owner, list(
+		COMSIG_CLIENT_KEY_DOWN,
+		COMSIG_CLIENT_KEY_UP,
+	))
 
 	alert("The key sequence is [key_buf].")
 	return key_buf

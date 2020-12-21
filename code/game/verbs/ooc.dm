@@ -208,15 +208,18 @@ var/global/normal_ooc_colour = "#1c52f5"
 // Sometimes the game fails to close NanoUIs, seemingly at random. This makes it impossible to open new ones
 // If this happens, let the player manually close them all
 /client/verb/fixnanoui()
-	set name = "Fix NanoUI"
-	set desc = "Fixes NanoUI by forcing all existing ones to close"
+	set name = "Fix Interfaces"
+	set desc = "Fixes all broken interfaces by forcing all existing ones to close"
 	set category = "OOC"
 
 	if(!mob)
 		return
 
-	for(var/datum/nanoui/ui in mob.open_uis)
+	for(var/I in mob.open_uis)
+		var/datum/nanoui/ui = I
 		if(!QDELETED(ui))
 			ui.close()
 
-	to_chat(mob, SPAN_NOTICE("<b>All NanoUIs have been forcefully closed. Please try re-opening them.</b>"))
+	SStgui.force_close_all_windows(usr)
+
+	to_chat(mob, SPAN_NOTICE("<b>All interfaces have been forcefully closed. Please try re-opening them.</b>"))

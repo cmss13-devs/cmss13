@@ -483,11 +483,12 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 
 /mob/living/carbon/human/proc/holster_unholster_from_belt()
 	if(belt)
-		if(istype(belt, /obj/item/storage/belt/gun/) || istype(belt, /obj/item/storage/large_holster)) //check belts and holsters
-			var/obj/item/storage/G = belt
-			for(var/obj/item/weapon/gun in G.return_inv())
-				belt.attack_hand(src)
-				return TRUE
+		if(istype(belt, /obj/item/storage))
+			var/obj/item/storage/storage = belt
+			for(var/obj/item/wep in storage.return_inv())
+				if(isweapon(wep))
+					belt.attack_hand(src)
+					return TRUE
 		if(isweapon(belt)) //then check for weapons
 			belt.attack_hand(src)
 			return TRUE

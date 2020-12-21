@@ -245,8 +245,7 @@
 
 		if(isliving(O))
 			var/mob/living/L = O
-			if (raiseEventSync(L, EVENT_PREIGNITION_CHECK) != HALTED)
-				L.IgniteMob()
+			L.IgniteMob()
 	return
 
 

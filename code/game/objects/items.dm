@@ -66,9 +66,6 @@
 
 	var/icon_override = null  //Used to override hardcoded ON-MOB clothing dmis in human clothing proc (i.e. not the icon_state sprites).
 
-	var/datum/event/event_dropped = null
-	var/datum/event/event_unwield = null
-
 	var/list/sprite_sheets = list()
 	var/list/item_icons = list()
 
@@ -84,32 +81,6 @@
 	appearance_flags = KEEP_TOGETHER //taken from blood.dm
 	var/global/list/blood_overlay_cache = list() //taken from blood.dm
 
-/obj/item/proc/on_dropped()
-	if(event_dropped)
-		event_dropped.fire_event(src)
-
-/obj/item/proc/add_dropped_handler(datum/event_handler/handler)
-	if(!event_dropped)
-		event_dropped = new /datum/event()
-	event_dropped.add_handler(handler)
-
-/obj/item/proc/remove_dropped_handler(datum/event_handler/handler)
-	if(event_dropped)
-		event_dropped.remove_handler(handler)
-
-/obj/item/proc/on_unwield()
-	if(event_unwield)
-		event_unwield.fire_event(src)
-
-/obj/item/proc/add_unwield_handler(datum/event_handler/handler)
-	if(!event_unwield)
-		event_unwield = new /datum/event()
-	event_unwield.add_handler(handler)
-
-/obj/item/proc/remove_unwield_handler(datum/event_handler/handler)
-	if(event_unwield)
-		event_unwield.remove_handler(handler)
-
 /obj/item/New(loc)
 	..()
 
@@ -123,8 +94,6 @@
 	flags_item &= ~DELONDROP //to avoid infinite loop of unequip, delete, unequip, delete.
 	flags_item &= ~NODROP //so the item is properly unequipped if on a mob.
 	QDEL_NULL_LIST(actions)
-	QDEL_NULL(event_unwield)
-	QDEL_NULL(event_dropped)
 	master = null
 	locked_to_mob = null
 	GLOB.item_list -= src
@@ -303,8 +272,6 @@ cases. Override_icon_state should be a list.*/
 // apparently called whenever an item is removed from a slot, container, or anything else.
 //the call happens after the item's potential loc change.
 /obj/item/proc/dropped(mob/user as mob)
-	on_dropped()
-
 	for(var/X in actions)
 		var/datum/action/A = X
 		A.remove_action(user)
@@ -682,64 +649,78 @@ keep_zoom - do we keep zoom during movement. be careful with setting this to 1
 		to_chat(user, SPAN_WARNING("Your welding equipment gets in the way of you looking through \the [zoom_device]."))
 	else if(!zoom && user.get_active_hand() != src && !istype(src, /obj/item/clothing/mask))
 		to_chat(user, SPAN_WARNING("You need to hold \the [zoom_device] to look through it."))
-	else if(zoom) //If we are zoomed out, reset that parameter.
-		user.visible_message(SPAN_NOTICE("[user] looks up from [zoom_device]."),
-		SPAN_NOTICE("You look up from [zoom_device]."))
-		zoom = !zoom
-		user.zoom_cooldown = world.time + 20
-		user.on_zoomout(src, new /datum/event_args())
-		if(zoom_event_handler)
-			user.remove_movement_handler(zoom_event_handler)
-			remove_dropped_handler(zoom_event_handler)
-			remove_unwield_handler(zoom_event_handler)
-			qdel(zoom_event_handler)
-	else //Otherwise we want to zoom in.
-		if(world.time <= user.zoom_cooldown) //If we are spamming the zoom, cut it out
-			return
-		user.zoom_cooldown = world.time + 20
-
-		if(user.client)
-			user.client.change_view(viewsize)
-
-			if(zoom_event_handler)
-				qdel(zoom_event_handler)
-			zoom_event_handler = new /datum/event_handler/event_gun_zoom(src, user)
-			if(!keep_zoom)
-				user.add_movement_handler(zoom_event_handler)
-			add_dropped_handler(zoom_event_handler)
-			add_unwield_handler(zoom_event_handler)
-
-			var/tilesize = 32
-			var/viewoffset = tilesize * tileoffset
-
-			switch(user.dir)
-				if(NORTH)
-					user.client.pixel_x = 0
-					user.client.pixel_y = viewoffset
-				if(SOUTH)
-					user.client.pixel_x = 0
-					user.client.pixel_y = -viewoffset
-				if(EAST)
-					user.client.pixel_x = viewoffset
-					user.client.pixel_y = 0
-				if(WEST)
-					user.client.pixel_x = -viewoffset
-					user.client.pixel_y = 0
-
-		user.visible_message(SPAN_NOTICE("[user] peers through \the [zoom_device]."),
-		SPAN_NOTICE("You peer through \the [zoom_device]."))
-		zoom = !zoom
-		if(user.interactee)
-			user.unset_interaction()
-		else
-			user.set_interaction(src)
+	else if(!zoom)
+		do_zoom(user, tileoffset, viewsize, keep_zoom)
 		return
+	unzoom(user)
 
+/obj/item/proc/unzoom(mob/living/user)
+	var/zoom_device = zoomdevicename ? "\improper [zoomdevicename] of [src]" : "\improper [src]"
+	INVOKE_ASYNC(user, /atom.proc/visible_message, SPAN_NOTICE("[user] looks up from [zoom_device]."),
+	SPAN_NOTICE("You look up from [zoom_device]."))
+	zoom = !zoom
+	user.zoom_cooldown = world.time + 20
+	SEND_SIGNAL(user, COMSIG_LIVING_ZOOM_OUT)
+	if(zoom_event_handler)
+		user.remove_movement_handler(zoom_event_handler)
+		UnregisterSignal(src, list(
+			COMSIG_ITEM_DROPPED,
+			COMSIG_ITEM_UNWIELD,
+		))
+		qdel(zoom_event_handler)
 	//General reset in case anything goes wrong, the view will always reset to default unless zooming in.
 	if(user.client)
 		user.client.change_view(world_view_size)
 		user.client.pixel_x = 0
 		user.client.pixel_y = 0
+
+/obj/item/proc/unzoom_dropped_callback(datum/source, mob/user)
+	SIGNAL_HANDLER
+	unzoom(user)
+
+/obj/item/proc/do_zoom(mob/living/user, tileoffset = 11, viewsize = 12, keep_zoom = 0)
+	if(world.time <= user.zoom_cooldown) //If we are spamming the zoom, cut it out
+		return
+	user.zoom_cooldown = world.time + 20
+
+	if(user.client)
+		user.client.change_view(viewsize)
+
+		if(zoom_event_handler)
+			qdel(zoom_event_handler)
+		zoom_event_handler = new /datum/event_handler/event_gun_zoom(src, user)
+		if(!keep_zoom)
+			user.add_movement_handler(zoom_event_handler)
+		RegisterSignal(src, list(
+			COMSIG_ITEM_DROPPED,
+			COMSIG_ITEM_UNWIELD,
+		), .proc/unzoom_dropped_callback)
+
+		var/tilesize = 32
+		var/viewoffset = tilesize * tileoffset
+
+		switch(user.dir)
+			if(NORTH)
+				user.client.pixel_x = 0
+				user.client.pixel_y = viewoffset
+			if(SOUTH)
+				user.client.pixel_x = 0
+				user.client.pixel_y = -viewoffset
+			if(EAST)
+				user.client.pixel_x = viewoffset
+				user.client.pixel_y = 0
+			if(WEST)
+				user.client.pixel_x = -viewoffset
+				user.client.pixel_y = 0
+
+	var/zoom_device = zoomdevicename ? "\improper [zoomdevicename] of [src]" : "\improper [src]"
+	user.visible_message(SPAN_NOTICE("[user] peers through \the [zoom_device]."),
+	SPAN_NOTICE("You peer through \the [zoom_device]."))
+	zoom = !zoom
+	if(user.interactee)
+		user.unset_interaction()
+	else
+		user.set_interaction(src)
 
 /obj/item/proc/get_icon_state(mob/user_mob, slot)
 	var/mob_state

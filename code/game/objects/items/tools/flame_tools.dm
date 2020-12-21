@@ -332,7 +332,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 /obj/item/clothing/mask/cigarette/process(delta_time)
 	var/mob/living/M = loc
-	if(isliving(loc) && raiseEventSync(M, EVENT_PREIGNITION_CHECK) != HALTED)
+	if(isliving(loc))
 		M.IgniteMob()
 	smoketime -= delta_time SECONDS
 	if(smoketime < 1)
@@ -672,8 +672,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /obj/item/tool/lighter/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
 	if(!isliving(M))
 		return
-	if(raiseEventSync(M, EVENT_PREIGNITION_CHECK) != HALTED)
-		M.IgniteMob()
+	M.IgniteMob()
 	if(!istype(M, /mob))
 		return
 

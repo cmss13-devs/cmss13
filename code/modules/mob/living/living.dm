@@ -14,7 +14,6 @@
 
 	fire_reagent = new /datum/reagent/napalm/ut()
 
-	event_zoomout = new /datum/event()
 	event_movement = new /datum/event()
 
 	attack_icon = image("icon" = 'icons/effects/attacks.dmi',"icon_state" = "", "layer" = 0)
@@ -28,7 +27,6 @@
 	pipes_shown = null
 
 	QDEL_NULL(attack_icon)
-	QDEL_NULL(event_zoomout)
 	QDEL_NULL(event_movement)
 	QDEL_NULL(pain)
 	QDEL_NULL(stamina)
@@ -458,20 +456,6 @@
 		spawn(40)
 			clear_fullscreen("flash", 20)
 		return 1
-
-
-/mob/living/proc/on_zoomout()
-	var/datum/event_args/ev_args = new /datum/event_args()
-	event_zoomout.fire_event(src, ev_args)
-
-/mob/living/proc/add_zoomout_handler(datum/event_handler/handler)
-	if(isnull(event_zoomout))
-		event_zoomout = new /datum/event()
-	event_zoomout.add_handler(handler)
-
-/mob/living/proc/remove_zoomout_handler(datum/event_handler/handler)
-	event_zoomout.remove_handler(handler)
-
 
 /datum/event_args/mob_movement
 	var/continue_movement = 1

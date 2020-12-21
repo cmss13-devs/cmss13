@@ -723,18 +723,20 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 			flags_gun_features |= GUN_FULL_AUTO_ON
 
 			// Register the full auto click listeners
-			registerListener(usr.client, EVENT_LMBDOWN, "fa_\ref[src]", CALLBACK(src, .proc/full_auto_start))
-			registerListener(usr.client, EVENT_LMBUP, "fa_\ref[src]", CALLBACK(src, .proc/full_auto_stop))
-			registerListener(usr.client, EVENT_LMBDRAG, "fa_\ref[src]", CALLBACK(src, .proc/full_auto_new_target))
+			RegisterSignal(usr.client, COMSIG_CLIENT_LMB_DOWN, .proc/full_auto_start)
+			RegisterSignal(usr.client, COMSIG_CLIENT_LMB_UP, .proc/full_auto_stop)
+			RegisterSignal(usr.client, COMSIG_CLIENT_LMB_DRAG, .proc/full_auto_new_target)
 
 			to_chat(usr, SPAN_NOTICE("[htmlicon(src, usr)] You set [src] to full auto mode."))
 			return
 		else if(flags_gun_features & GUN_FULL_AUTO_ON)
 			flags_gun_features &= ~GUN_FULL_AUTO_ON
 			full_auto_stop() // If the LMBUP hasn't been called for any reason.
-			unregisterListener(usr.client, EVENT_LMBDOWN, "fa_\ref[src]")
-			unregisterListener(usr.client, EVENT_LMBUP, "fa_\ref[src]")
-			unregisterListener(usr.client, EVENT_LMBDRAG, "fa_\ref[src]")
+			UnregisterSignal(usr.client, list(
+				COMSIG_CLIENT_LMB_DOWN,
+				COMSIG_CLIENT_LMB_UP,
+				COMSIG_CLIENT_LMB_DRAG,
+			))
 
 			to_chat(usr, SPAN_NOTICE("[htmlicon(src, usr)] You set [src] to single fire mode."))
 			return

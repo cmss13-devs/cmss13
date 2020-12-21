@@ -560,26 +560,6 @@ Defined in conflicts.dm of the #defines folder.
 	. = ..()
 	G.RemoveElement(/datum/element/magharness)
 
-/datum/event_handler/scope_zoomout_removebuffs
-	var/obj/item/weapon/gun/G = null
-	var/obj/item/attachable/scope/scope
-	flags_handler = HNDLR_FLAG_SINGLE_FIRE
-
-/datum/event_handler/scope_zoomout_removebuffs/New(_g,_scope)
-	G = _g
-	scope = _scope
-
-/datum/event_handler/scope_zoomout_removebuffs/handle(sender, datum/event_args/ev_args)
-	if(isnull(G))
-		qdel(src)
-		return
-
-	if(!G.zoom)
-		G.accuracy_mult -= scope.accuracy_scoped_buff
-		G.fire_delay -= scope.delay_scoped_nerf
-		G.damage_falloff_mult -= scope.damage_falloff_scoped_buff
-
-
 /obj/item/attachable/scope
 	name = "S8 4x telescopic scope"
 	icon_state = "sniperscope"
@@ -613,8 +593,14 @@ Defined in conflicts.dm of the #defines folder.
 		G.accuracy_mult += accuracy_scoped_buff
 		G.fire_delay += delay_scoped_nerf
 		G.damage_falloff_mult += damage_falloff_scoped_buff
-		var/datum/event_handler/eh = new /datum/event_handler/scope_zoomout_removebuffs(G,src)
-		user.add_zoomout_handler(eh)
+		RegisterSignal(user, COMSIG_LIVING_ZOOM_OUT, .proc/remove_scoped_buff)
+
+/obj/item/attachable/scope/proc/remove_scoped_buff(obj/item/weapon/gun/G, mob/living/carbon/user)
+	SIGNAL_HANDLER
+	UnregisterSignal(user, COMSIG_LIVING_ZOOM_OUT)
+	G.accuracy_mult -= accuracy_scoped_buff
+	G.fire_delay -= delay_scoped_nerf
+	G.damage_falloff_mult -= damage_falloff_scoped_buff
 
 /obj/item/attachable/scope/activate_attachment(obj/item/weapon/gun/G, mob/living/carbon/user, turn_off)
 	if(turn_off)
@@ -630,23 +616,6 @@ Defined in conflicts.dm of the #defines folder.
 		G.zoom(user, zoom_offset, zoom_viewsize, allows_movement)
 		apply_scoped_buff(G,user)
 	return 1
-
-
-
-/datum/event_handler/miniscope_zoomout
-	var/obj/item/weapon/gun/G = null
-	var/aim_slowdown = 0
-	var/fire_delay = 0
-	flags_handler = HNDLR_FLAG_SINGLE_FIRE
-
-/datum/event_handler/miniscope_zoomout/handle(sender, datum/event_args/ev_args)
-	if(isnull(G))
-		qdel(src)
-		return
-
-	G.slowdown -= aim_slowdown
-	G.fire_delay -= fire_delay
-
 
 /obj/item/attachable/scope/mini
 	name = "S4 2x telescopic mini-scope"
@@ -673,17 +642,17 @@ Defined in conflicts.dm of the #defines folder.
 		allows_movement	= 1
 		. = ..()
 		if(user && G.zoom)
-			var/datum/event_handler/miniscope_zoomout/handler = new /datum/event_handler/miniscope_zoomout(src)
-			handler.G = G
-			handler.aim_slowdown = dynamic_aim_slowdown
-
 			G.slowdown += dynamic_aim_slowdown
 			if(istype(G, /obj/item/weapon/gun/launcher/m92))
 				G.fire_delay += FIRE_DELAY_TIER_4
-				handler.fire_delay = FIRE_DELAY_TIER_4
+			RegisterSignal(user, COMSIG_LIVING_ZOOM_OUT, .proc/remove_buffs)
 
-			user.add_zoomout_handler(handler)
-
+/obj/item/attachable/scope/mini/proc/remove_buffs(obj/item/weapon/gun/G, mob/living/carbon/user)
+	SIGNAL_HANDLER
+	UnregisterSignal(user, COMSIG_LIVING_ZOOM_OUT)
+	G.slowdown -= dynamic_aim_slowdown
+	if(istype(G, /obj/item/weapon/gun/launcher/m92))
+		G.fire_delay -= FIRE_DELAY_TIER_4
 
 /obj/item/attachable/scope/mini/hunting //can only be attached to the hunting rifle to prevent vending hunting rifles to cannibalize scopes
 	name = "2x hunting mini-scope"
@@ -719,14 +688,13 @@ Defined in conflicts.dm of the #defines folder.
 		allows_movement	= 1
 		. = ..()
 		if(user && G.zoom)
-			var/datum/event_handler/miniscope_zoomout/handler = new /datum/event_handler/miniscope_zoomout(src)
-			handler.G = G
-			handler.aim_slowdown = dynamic_aim_slowdown
-
 			G.slowdown += dynamic_aim_slowdown
+			RegisterSignal(user, COMSIG_LIVING_ZOOM_OUT, .proc/remove_buffs)
 
-			user.add_zoomout_handler(handler)
-
+/obj/item/attachable/scope/mini_iff/proc/remove_buffs(obj/item/weapon/gun/G, mob/living/carbon/user)
+	SIGNAL_HANDLER
+	UnregisterSignal(user, COMSIG_LIVING_ZOOM_OUT)
+	G.slowdown -= dynamic_aim_slowdown
 
 /obj/item/attachable/scope/slavic
 	icon_state = "slavicscope"

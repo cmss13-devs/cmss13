@@ -1349,9 +1349,9 @@
 	update_pixels(user)
 
 	if(user.client)
-		registerListener(user.client, EVENT_LMBDOWN, "hmg_fa_\ref[src]", CALLBACK(src, .proc/auto_fire_start))
-		registerListener(user.client, EVENT_LMBUP, "hmg_fa_\ref[src]", CALLBACK(src, .proc/auto_fire_stop))
-		registerListener(user.client, EVENT_LMBDRAG, "hmg_fa_\ref[src]", CALLBACK(src, .proc/auto_fire_new_target))
+		RegisterSignal(user.client, COMSIG_CLIENT_LMB_DOWN, .proc/auto_fire_start)
+		RegisterSignal(user.client, COMSIG_CLIENT_LMB_UP, .proc/auto_fire_stop)
+		RegisterSignal(user.client, COMSIG_CLIENT_LMB_DRAG, .proc/auto_fire_new_target)
 	RegisterSignal(user, COMSIG_MOB_MOVE, .proc/disable_interaction)
 	RegisterSignal(user, COMSIG_MOB_POST_UPDATE_CANMOVE, .proc/disable_canmove_interaction)
 	operator = user
@@ -1380,9 +1380,11 @@
 		user.client.change_view(world_view_size)
 		user.client.pixel_x = 0
 		user.client.pixel_y = 0
-		unregisterListener(user.client, EVENT_LMBDOWN, "hmg_fa_\ref[src]")
-		unregisterListener(user.client, EVENT_LMBUP, "hmg_fa_\ref[src]")
-		unregisterListener(user.client, EVENT_LMBDRAG, "hmg_fa_\ref[src]")
+		UnregisterSignal(user.client, list(
+			COMSIG_CLIENT_LMB_DOWN,
+			COMSIG_CLIENT_LMB_UP,
+			COMSIG_CLIENT_LMB_DRAG,
+		))
 
 	animate(user, pixel_x=user_old_x, pixel_y=user_old_y, 4, 1)
 	if(operator == user)

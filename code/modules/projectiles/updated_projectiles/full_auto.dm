@@ -1,4 +1,5 @@
-/obj/item/weapon/gun/proc/full_auto_start(var/atom/A, var/params)
+/obj/item/weapon/gun/proc/full_auto_start(client/source, atom/A, params)
+	SIGNAL_HANDLER
 	if(!ismob(loc) || !A)
 		return
 	var/mob/user = loc
@@ -42,13 +43,15 @@
 		return
 
 	// Kick off the full-auto
-	repeat_fire(user)
+	INVOKE_ASYNC(src, .proc/repeat_fire, user)
 
-/obj/item/weapon/gun/proc/full_auto_stop(var/atom/A, var/params)
+/obj/item/weapon/gun/proc/full_auto_stop(client/source, atom/A, params)
+	SIGNAL_HANDLER
 	fa_target = null
 	fa_params = null
 
-/obj/item/weapon/gun/proc/full_auto_new_target(var/atom/start, var/atom/hovered, var/params)
+/obj/item/weapon/gun/proc/full_auto_new_target(client/source, atom/start, atom/hovered, params)
+	SIGNAL_HANDLER
 	if(!ismob(loc))
 		return
 	var/mob/user = loc
@@ -101,9 +104,11 @@
 	if(!user.client)
 		return
 
-	unregisterListener(user.client, EVENT_LMBDOWN, "fa_\ref[src]")
-	unregisterListener(user.client, EVENT_LMBUP, "fa_\ref[src]")
-	unregisterListener(user.client, EVENT_LMBDRAG, "fa_\ref[src]")
+	UnregisterSignal(user.client, list(
+		COMSIG_CLIENT_LMB_DOWN,
+		COMSIG_CLIENT_LMB_UP,
+		COMSIG_CLIENT_LMB_DRAG,
+	))
 
 // Also make sure it's registered when held in any hand and full-auto is on
 /obj/item/weapon/gun/equipped(var/mob/user, var/slot)
@@ -114,12 +119,14 @@
 
 	// If it was equipped to anything but the hands, make sure we're not registered
 	if(slot != WEAR_R_HAND && slot != WEAR_L_HAND)
-		unregisterListener(user.client, EVENT_LMBDOWN, "fa_\ref[src]")
-		unregisterListener(user.client, EVENT_LMBUP, "fa_\ref[src]")
-		unregisterListener(user.client, EVENT_LMBDRAG, "fa_\ref[src]")
+		UnregisterSignal(user.client, list(
+			COMSIG_CLIENT_LMB_DOWN,
+			COMSIG_CLIENT_LMB_UP,
+			COMSIG_CLIENT_LMB_DRAG,
+		))
 		return
 
 	if(flags_gun_features & GUN_FULL_AUTO_ON)
-		registerListener(user.client, EVENT_LMBDOWN, "fa_\ref[src]", CALLBACK(src, .proc/full_auto_start))
-		registerListener(user.client, EVENT_LMBUP, "fa_\ref[src]", CALLBACK(src, .proc/full_auto_stop))
-		registerListener(user.client, EVENT_LMBDRAG, "fa_\ref[src]", CALLBACK(src, .proc/full_auto_new_target))
+		RegisterSignal(user.client, COMSIG_CLIENT_LMB_DOWN, .proc/full_auto_start)
+		RegisterSignal(user.client, COMSIG_CLIENT_LMB_UP, .proc/full_auto_stop)
+		RegisterSignal(user.client, COMSIG_CLIENT_LMB_DRAG, .proc/full_auto_new_target)

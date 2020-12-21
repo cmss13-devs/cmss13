@@ -99,7 +99,9 @@
 
 
 //Mobs on Fire
-/mob/living/proc/IgniteMob()	
+/mob/living/proc/IgniteMob()
+	if(SEND_SIGNAL(src, COMSIG_LIVING_PREIGNITION) & COMPONENT_NO_IGNITION)
+		return FALSE
 	if(fire_stacks > 0 && !on_fire)
 		on_fire = TRUE
 		to_chat(src, SPAN_DANGER("You are on fire! Use Resist to put yourself out!"))
@@ -122,13 +124,13 @@
 /mob/living/proc/update_fire()
 	return
 
-/mob/living/proc/adjust_fire_stacks(add_fire_stacks, var/datum/reagent/R, var/min_stacks = MIN_FIRE_STACKS) //Adjusting the amount of fire_stacks we have on person	
+/mob/living/proc/adjust_fire_stacks(add_fire_stacks, var/datum/reagent/R, var/min_stacks = MIN_FIRE_STACKS) //Adjusting the amount of fire_stacks we have on person
 	if (R)
 		if (!fire_reagent || R.durationfire > fire_stacks || fire_reagent.intensityfire < R.intensityfire || !on_fire)
 			fire_reagent = R
 	else if (!fire_reagent)
 		fire_reagent = new /datum/reagent/napalm/ut()
-	
+
 	var/max_stacks = min(fire_reagent.durationfire, MAX_FIRE_STACKS) // Fire stacks should not exceed MAX_FIRE_STACKS for reasonable resist amounts
 	fire_stacks = Clamp(fire_stacks + add_fire_stacks, min_stacks, max_stacks)
 
@@ -145,9 +147,8 @@
 		adjust_fire_stacks(-0.5, min_stacks = 0) //the fire is consumed slowly
 
 /mob/living/fire_act()
-	if (raiseEventSync(src, EVENT_PREIGNITION_CHECK) != HALTED)
+	if (IgniteMob())
 		adjust_fire_stacks(2)
-		IgniteMob()
 
 //Mobs on Fire end
 
@@ -155,13 +156,13 @@
 	// Only player mobs are affected by weather.
 	if(!src.client)
 		return
-	
+
 	if(!SSweather)
 		return
 
 	// Do this always
 	clear_fullscreen("weather")
-	remove_weather_effects()	
+	remove_weather_effects()
 
 	// Check if we're supposed to be something affected by weather
 	if(SSweather.is_weather_event && SSweather.weather_event_instance && SSweather.weather_affects_check(src))
@@ -176,4 +177,3 @@
 		// Effects
 		if(SSweather.weather_event_instance.effect_type)
 			new SSweather.weather_event_instance.effect_type(src)
-		

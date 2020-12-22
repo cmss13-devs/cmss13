@@ -207,6 +207,7 @@
 		COMSIG_LIVING_REJUVENATED,
 		COMSIG_HUMAN_REVIVED,
 	))
+	..()
 
 /obj/item/device/radio/headset/proc/turn_on()
 	SIGNAL_HANDLER

@@ -758,18 +758,18 @@
 	if(P.ammo.debilitate && stat != DEAD && ( damage || (ammo_flags & AMMO_IGNORE_RESIST) ) )
 		apply_effects(arglist(P.ammo.debilitate))
 
+	. = TRUE
 	if(damage)
 		bullet_message(P)
 		apply_damage(damage, P.ammo.damage_type, P.def_zone, 0, 0, P)
 		P.play_damage_effect(src)
 		if(ammo_flags & AMMO_INCENDIARY)
 			var/datum/reagent/napalm/ut/N = new()
-			adjust_fire_stacks(20, N)
-			IgniteMob()
+			if(!TryIgniteMob(20, N))
+				return
 			if(isHumanStrict(src))
 				emote("scream")
 			to_chat(src, SPAN_HIGHDANGER("You burst into flames!! Stop drop and roll!"))
-	return TRUE
 
 /mob/living/carbon/human/bullet_act(obj/item/projectile/P)
 	if(!P)
@@ -838,7 +838,7 @@
 		if(ammo_flags & AMMO_INCENDIARY)
 			var/datum/reagent/napalm/ut/N = new()
 			adjust_fire_stacks(20, N)
-			IgniteMob()
+			IgniteMob(TRUE)
 			if(!stat && pain.feels_pain)
 				emote("scream")
 			to_chat(src, SPAN_HIGHDANGER("You burst into flames!! Stop drop and roll!"))
@@ -911,7 +911,7 @@
 			emote(pain_emote)
 		if(ammo_flags & AMMO_INCENDIARY)
 			if(caste.fire_immune)
-				if(!stat) to_chat(src, "<span class='avoidharm'>You shrug off some persistent flames.</span>")
+				if(!stat) to_chat(src, SPAN_AVOIDHARM("You shrug off some persistent flames."))
 			else
 				var/datum/reagent/napalm/ut/N = new()
 				adjust_fire_stacks(10 + round(damage_result / 4), N)

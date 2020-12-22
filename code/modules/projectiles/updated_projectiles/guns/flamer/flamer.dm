@@ -408,15 +408,12 @@
 				if(weapon_source)
 					H.track_shot_hit(weapon_source, H)
 
+		var/sig_result = SEND_SIGNAL(M, COMSIG_LIVING_FLAMER_FLAMED, tied_reagent)
 
-		if (tied_reagent.fire_penetrating)
-			M.adjust_fire_stacks(tied_reagent.durationfire, tied_reagent)
+		if(!(sig_result & COMPONENT_NO_IGNITE))
+			M.TryIgniteMob(tied_reagent.durationfire, tied_reagent)
 
-		if(!M.IgniteMob() && tied_reagent.fire_penetrating)
-			M.adjust_fire_stacks(-tied_reagent.durationfire, tied_reagent)
-
-		// If fire shield is on, do not receive burn damage
-		if((SEND_SIGNAL(src, COMSIG_LIVING_FLAMER_FLAMED) & COMPONENT_NO_BURN) && !tied_reagent.fire_penetrating)
+		if(sig_result & COMPONENT_NO_BURN)
 			continue
 
 		M.last_damage_mob = weapon_source_mob
@@ -449,21 +446,16 @@
 /obj/flamer_fire/Crossed(mob/living/M) //Only way to get it to reliable do it when you walk into it.
 	if(!istype(M))
 		return
-	if(SEND_SIGNAL(src, COMSIG_LIVING_FLAMER_CROSSED) & COMPONENT_NO_BURN)
-		return
+	var/sig_result = SEND_SIGNAL(M, COMSIG_LIVING_FLAMER_CROSSED, tied_reagent)
+	var/burn_damage = round(burnlevel*0.5)
 
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if(isXeno(H.pulledby))
 			var/mob/living/carbon/Xenomorph/Z = H.pulledby
-			if(tied_reagent.fire_penetrating)
-				Z.adjust_fire_stacks(tied_reagent.durationfire, tied_reagent)
-			if(!Z.IgniteMob() && tied_reagent.fire_penetrating)
-				Z.adjust_fire_stacks(-tied_reagent.durationfire, tied_reagent)
+			Z.TryIgniteMob(tied_reagent.durationfire, tied_reagent)
 		if(istype(H.wear_suit, /obj/item/clothing/suit/storage/marine/M35) || istype(H.wear_suit, /obj/item/clothing/suit/fire))
-			H.show_message(text("Your suit protects you from the flames."),1)
-			H.apply_damage(burnlevel*0.25, BURN) //Does small burn damage to a person wearing one of the suits.
-			return
+			burn_damage = round(burnlevel*0.25) //Does small burn damage to a person wearing one of the suits.
 
 	if(isXeno(M))
 		var/mob/living/carbon/Xenomorph/X = M
@@ -472,11 +464,11 @@
 		if(X.burrow)
 			return
 
-	if (tied_reagent.fire_penetrating)
-		M.adjust_fire_stacks(tied_reagent.durationfire, tied_reagent) //Make it possible to light them on fire later.
+	if(!(sig_result & COMPONENT_NO_IGNITE))
+		M.TryIgniteMob(tied_reagent.durationfire, tied_reagent)
 
-	if (!M.IgniteMob() && tied_reagent.fire_penetrating)
-		M.adjust_fire_stacks(-tied_reagent.durationfire, tied_reagent)
+	if(sig_result & COMPONENT_NO_BURN)
+		return
 
 	if(weapon_source)
 		M.last_damage_source = weapon_source
@@ -484,7 +476,7 @@
 		M.last_damage_source = initial(name)
 
 	M.last_damage_mob = weapon_source_mob
-	M.apply_damage(round(burnlevel*0.5), BURN) //This makes fire stronk.
+	M.apply_damage(burn_damage, BURN) //This makes fire stronk.
 	to_chat(M, SPAN_DANGER("You are burned!"))
 	if(isXeno(M))
 		M.updatehealth()
@@ -540,10 +532,8 @@
 				var/mob/living/carbon/human/H = I
 				if(istype(H.wear_suit, /obj/item/clothing/suit/storage/marine/M35) || istype(H.wear_suit, /obj/item/clothing/suit/fire))
 					continue
-			if(tied_reagent.fire_penetrating)
-				I.adjust_fire_stacks(firelevel, tied_reagent) // If I stand in the fire I deserve all of this. Also Napalm stacks quickly.
-			if(!I.IgniteMob() && tied_reagent.fire_penetrating)
-				I.adjust_fire_stacks(-firelevel, tied_reagent)
+			// If I stand in the fire I deserve all of this. Also Napalm stacks quickly.
+			if(!I.TryIgniteMob(firelevel, tied_reagent))
 				continue
 			I.show_message(text(SPAN_WARNING("You are burned!")), 1)
 			if(isXeno(I)) //Have no fucken idea why the Xeno thing was there twice.

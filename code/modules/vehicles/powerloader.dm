@@ -117,11 +117,12 @@
 	var/obj/loaded
 
 /obj/item/powerloader_clamp/dropped(mob/user)
-	if(linked_powerloader)
-		forceMove(linked_powerloader)
-		if(linked_powerloader.buckled_mob && linked_powerloader.buckled_mob == user)
-			linked_powerloader.unbuckle() //drop a clamp, you auto unbuckle from the powerloader.
-	else qdel(src)
+	if(!linked_powerloader)
+		qdel(src)
+	..()
+	forceMove(linked_powerloader)
+	if(linked_powerloader.buckled_mob && linked_powerloader.buckled_mob == user)
+		linked_powerloader.unbuckle() //drop a clamp, you auto unbuckle from the powerloader.
 
 
 /obj/item/powerloader_clamp/attack(mob/living/M, mob/living/user, def_zone)

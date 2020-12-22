@@ -401,13 +401,21 @@
 
 	recalculate_everything()
 
-/mob/living/carbon/Xenomorph/proc/fire_immune()
+/mob/living/carbon/Xenomorph/proc/fire_immune(mob/living/L)
 	SIGNAL_HANDLER
-	return COMPONENT_NO_IGNITION
 
-/mob/living/carbon/Xenomorph/proc/flamer_crossed_immune()
+	if(L.fire_reagent?.fire_penetrating)
+		return
+
+	return COMPONENT_CANCEL_IGNITION
+
+/mob/living/carbon/Xenomorph/proc/flamer_crossed_immune(mob/living/L, datum/reagent/R)
 	SIGNAL_HANDLER
-	return COMPONENT_NO_BURN
+
+	if(R.fire_penetrating)
+		return
+
+	return COMPONENT_NO_BURN|COMPONENT_NO_IGNITE
 
 //Off-load this proc so it can be called freely
 //Since Xenos change names like they change shoes, we need somewhere to hammer in all those legos

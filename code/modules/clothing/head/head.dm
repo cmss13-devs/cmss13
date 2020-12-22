@@ -330,15 +330,18 @@
 /obj/item/clothing/head/beret/marine/commander/dress
 	name = "marine captain dress beret"
 	icon_state = "codressberet"
+	desc = "A white beret with the captain insignia emblazoned on it. Its dazzling white color commands power and exudes class."
+
+/obj/item/clothing/head/beret/marine/commander/black
+	name = "marine captain black beret"
+	icon = 'icons/obj/items/clothing/cm_hats.dmi'
+	icon_state = "coblackberet"
+	desc = "A black beret with the captain insignia emblazoned on it. Its sleek black color commands power and exudes class."
 
 /obj/item/clothing/head/beret/marine/commander/cdre
 	name = "marine commodore beret"
-	desc = "A navy beret with the commodore insignia emblazoned on it. Wearer may suffer the heavy weight of responsibility upon his head and shoulders. Often passed onto Captains by Commodores as sign of respect, promise, or any other multitude of reasoning."
-	icon = 'icons/obj/items/clothing/cm_hats.dmi'
+	desc = "A blue beret with the commodore's insignia emblazoned on it. Its blue color symbolizes loyalty, confidence, and politics - the core components of a true Commodore."
 	icon_state = "cdreberet"
-	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
-	)
 
 /obj/item/clothing/head/marine/peaked
 	name = "marine peaked cap"

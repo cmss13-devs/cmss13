@@ -20,7 +20,7 @@
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_FEET|BODY_FLAG_ARMS|BODY_FLAG_HANDS
 	allowed = list(
 		/obj/item/tool/extinguisher,
-		
+
 		/obj/item/device/flashlight,
 		/obj/item/device/healthanalyzer,
 		/obj/item/device/radio,
@@ -35,6 +35,22 @@
 	max_heat_protection_temperature = FIRESUIT_max_heat_protection_temperature
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_FEET|BODY_FLAG_ARMS|BODY_FLAG_HANDS
 
+/obj/item/clothing/suit/fire/equipped(mob/user, slot)
+	if(slot == WEAR_JACKET)
+		RegisterSignal(user, COMSIG_LIVING_FLAMER_CROSSED, .proc/flamer_fire_crossed_callback)
+	..()
+
+/obj/item/clothing/suit/fire/dropped(mob/user)
+	UnregisterSignal(user, COMSIG_LIVING_FLAMER_CROSSED)
+	..()
+
+/obj/item/clothing/suit/fire/proc/flamer_fire_crossed_callback(mob/living/L, datum/reagent/R)
+	SIGNAL_HANDLER
+
+	if(R.fire_penetrating)
+		return
+
+	return COMPONENT_NO_IGNITE
 
 /obj/item/clothing/suit/fire/firefighter
 	icon_state = "firesuit"
@@ -96,7 +112,7 @@
 		/obj/item/weapon/gun,
 		/obj/item/weapon/melee/baton,
 		/obj/item/handcuffs,
-		
+
 		/obj/item/device/flashlight,
 		/obj/item/device/healthanalyzer,
 		/obj/item/device/radio,
@@ -138,7 +154,7 @@
 	allowed = list(
 		/obj/item/clothing/head/radiation,
 		/obj/item/clothing/mask/gas,
-		
+
 		/obj/item/device/flashlight,
 		/obj/item/device/healthanalyzer,
 		/obj/item/device/radio,

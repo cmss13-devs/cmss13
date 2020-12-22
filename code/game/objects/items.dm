@@ -272,6 +272,8 @@ cases. Override_icon_state should be a list.*/
 // apparently called whenever an item is removed from a slot, container, or anything else.
 //the call happens after the item's potential loc change.
 /obj/item/proc/dropped(mob/user as mob)
+	SHOULD_CALL_PARENT(TRUE)
+
 	for(var/X in actions)
 		var/datum/action/A = X
 		A.remove_action(user)

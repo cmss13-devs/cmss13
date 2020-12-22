@@ -77,7 +77,7 @@
 		playsound(O,S, 50, 1)
 	..()
 
-//This is called when the mob or human is thrown into a dense turf or wall 
+//This is called when the mob or human is thrown into a dense turf or wall
 /mob/living/turf_launch_collision(var/turf/T)
 	if (!rebounding)
 		var/impact_damage = (1 + MOB_SIZE_COEFF/(mob_size + 1))*THROW_SPEED_DENSE_COEFF*cur_speed
@@ -105,10 +105,12 @@
 
 
 //Mobs on Fire
-/mob/living/proc/IgniteMob()
-	if(SEND_SIGNAL(src, COMSIG_LIVING_PREIGNITION) & COMPONENT_NO_IGNITION)
+/mob/living/proc/IgniteMob(force)
+	if(!force && SEND_SIGNAL(src, COMSIG_LIVING_PREIGNITION) & COMPONENT_CANCEL_IGNITION)
 		return FALSE
-	if(fire_stacks > 0 && !on_fire)
+	if(fire_stacks > 0)
+		if(on_fire)
+			return TRUE
 		on_fire = TRUE
 		to_chat(src, SPAN_DANGER("You are on fire! Use Resist to put yourself out!"))
 		update_fire()
@@ -131,10 +133,15 @@
 	return
 
 /mob/living/proc/adjust_fire_stacks(add_fire_stacks, var/datum/reagent/R, var/min_stacks = MIN_FIRE_STACKS) //Adjusting the amount of fire_stacks we have on person
-	if (R)
-		if (!fire_reagent || R.durationfire > fire_stacks || fire_reagent.intensityfire < R.intensityfire || !on_fire)
+	if(R)
+		if( \
+			!on_fire || !fire_reagent || \
+			R.durationfire > fire_stacks || \
+			fire_reagent.intensityfire < R.intensityfire || \
+			(!fire_reagent.fire_penetrating && R.fire_penetrating) \
+		)
 			fire_reagent = R
-	else if (!fire_reagent)
+	else if(!fire_reagent)
 		fire_reagent = new /datum/reagent/napalm/ut()
 
 	var/max_stacks = min(fire_reagent.durationfire, MAX_FIRE_STACKS) // Fire stacks should not exceed MAX_FIRE_STACKS for reasonable resist amounts
@@ -153,8 +160,14 @@
 		adjust_fire_stacks(-0.5, min_stacks = 0) //the fire is consumed slowly
 
 /mob/living/fire_act()
-	if (IgniteMob())
-		adjust_fire_stacks(2)
+	TryIgniteMob(2)
+
+/mob/living/proc/TryIgniteMob(fire_stacks, datum/reagent/R)
+	adjust_fire_stacks(fire_stacks, R)
+	if (!IgniteMob())
+		adjust_fire_stacks(-fire_stacks)
+		return FALSE
+	return TRUE
 
 //Mobs on Fire end
 

@@ -472,7 +472,7 @@
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemfiresupp = TRUE
 	//------------------//
-	intensityfire = BURN_LEVEL_TIER_1 
+	intensityfire = BURN_LEVEL_TIER_1
 	durationfire = BURN_TIME_TIER_1
 	rangefire = 4
 	//------------------//
@@ -751,6 +751,23 @@
 	)
 	. = ..()
 
+/datum/reagent/napalm/penetrating
+	name = "Napalm EX"
+	id = "napalmex"
+	description = "A sticky combustable liquid chemical that penetrates the best fire retardants."
+	color = "#800080"
+	burncolor = "#800080"
+	properties = list()
+
+/datum/reagent/napalm/penetrating/New()
+	properties = list(
+		PROPERTY_INTENSITY 			= BURN_LEVEL_TIER_2,
+		PROPERTY_DURATION 			= BURN_TIME_TIER_5,
+		PROPERTY_RADIUS 			= 6,
+		PROPERTY_FIRE_PENETRATING	= 1
+	)
+	. = ..()
+
 /datum/reagent/chlorinetrifluoride
 	name = "Chlorine Trifluoride"
 	id = "chlorine trifluoride"
@@ -766,14 +783,14 @@
 /datum/reagent/chlorinetrifluoride/on_mob_life(var/mob/living/M) // Not a good idea, instantly messes you up from the inside out.
 	. = ..()
 	M.adjust_fire_stacks(max(M.fire_stacks, 15))
-	M.IgniteMob()
+	M.IgniteMob(TRUE)
 	to_chat(M, SPAN_DANGER("It burns! It burns worse than you could ever have imagined!"))
 
 /datum/reagent/chlorinetrifluoride/reaction_mob(var/mob/M, var/method = TOUCH, var/volume) // Spilled on you? Not good either, but not /as/ bad.
 	var/mob/living/L = M
 	if(istype(L))
 		L.adjust_fire_stacks(max(L.fire_stacks, 10))
-		L.IgniteMob()
+		L.IgniteMob(TRUE)
 
 /datum/reagent/methane
 	name = "Methane"

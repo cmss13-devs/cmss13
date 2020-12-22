@@ -63,6 +63,7 @@
 	if(stat == CONSCIOUS && loc) //Make sure we're conscious and not idle or dead.
 		GoIdle()
 		check_lifecycle()
+	..()
 
 /obj/item/clothing/mask/facehugger/attack_hand(var/mob/user)
 
@@ -406,7 +407,7 @@
 	sleep(delay)
 	if(stat != CONSCIOUS || isnull(loc)) //Make sure we're conscious and not idle or dead.
 		return
-	
+
 	if(check_lifecycle(delay))
 		leap_at_nearest_target()
 		.()

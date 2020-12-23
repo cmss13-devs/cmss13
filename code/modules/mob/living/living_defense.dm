@@ -50,7 +50,7 @@
 		return
 
 	src.visible_message(SPAN_DANGER("[src] has been hit by [O]."), null, null, 5)
-	apply_damage(impact_damage, dtype, null, is_sharp(O), has_edge(O), O)
+	apply_armoured_damage(impact_damage, ARMOR_MELEE, dtype, null, , is_sharp(O), has_edge(O), null)
 
 	O.throwing = 0		//it hit, so stop moving
 

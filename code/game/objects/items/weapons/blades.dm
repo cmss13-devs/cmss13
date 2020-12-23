@@ -99,10 +99,10 @@
 	desc = "A military knife designed to be thrown at the enemy. Much quieter than a firearm, but requires a steady hand to be used optimally, although you should probably just use a gun instead."
 	flags_atom = FPRINT|CONDUCT
 	sharp = IS_SHARP_ITEM_ACCURATE
-	force = MELEE_FORCE_WEAK
-	w_class = SIZE_TINY
-	throwforce = MELEE_FORCE_TIER_9 //doubled by throwspeed to 90
-	throw_speed = SPEED_INSTANT
+	force = MELEE_FORCE_TIER_1
+	w_class = SIZE_SMALL
+	throwforce = MELEE_FORCE_TIER_11 //increased by throwspeed to roughly 80
+	throw_speed = SPEED_REALLY_FAST
 	throw_range = 7
 	hitsound = 'sound/weapons/slash.ogg'
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")

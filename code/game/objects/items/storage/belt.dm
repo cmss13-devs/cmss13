@@ -411,7 +411,7 @@
 	icon_state = "knifebelt"
 	item_state = "marinebelt" // aslo temp, maybe somebody update these icons with better ones?
 	w_class = SIZE_LARGE
-	storage_slots = 30
+	storage_slots = 12
 	storage_flags = STORAGE_FLAGS_DEFAULT|STORAGE_USING_DRAWING_METHOD
 	max_w_class = SIZE_SMALL
 	max_storage_space = 48
@@ -419,6 +419,8 @@
 		/obj/item/weapon/melee/throwing_knife,
 		/obj/item/attachable/bayonet
 	)
+	var/draw_cooldown = 0
+	var/draw_cooldown_interval = 1 SECOND
 
 /obj/item/storage/belt/knifepouch/Initialize()
 	. = ..()
@@ -434,6 +436,15 @@
 	. = ..()
 	if(.)
 		playsound(src,'sound/weapons/gun_shotgun_shell_insert.ogg', 15, 1)
+
+/obj/item/storage/belt/knifepouch/attack_hand(mob/user)
+	if(draw_cooldown < world.time)
+		..()
+		draw_cooldown = world.time + draw_cooldown_interval
+		playsound(src,'sound/weapons/gun_shotgun_shell_insert.ogg', 15, 1)
+	else
+		to_chat(user, SPAN_WARNING("You need to wait before drawing another knife!"))
+		return 0
 
 /obj/item/storage/belt/grenade
 	name="\improper M276 pattern M40 HEDP rig"

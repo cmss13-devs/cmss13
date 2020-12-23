@@ -3813,16 +3813,16 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/port_hallway)
 "aje" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/prop/almayer/computer/PC,
-/turf/open/floor/wood,
-/area/almayer/living/pilotbunks)
+/obj/structure/machinery/recharge_station,
+/obj/effect/decal/cleanable/cobweb2,
+/turf/open/floor/plating,
+/area/almayer/command/cichallway)
 "ajf" = (
+/obj/item/book/manual/robotics_cyborgs,
 /obj/structure/surface/table/almayer,
-/obj/item/paper,
-/obj/item/cell/high,
-/turf/open/floor/wood,
-/area/almayer/living/pilotbunks)
+/obj/effect/decal/cleanable/cobweb,
+/turf/open/floor/plating,
+/area/almayer/command/cichallway)
 "ajg" = (
 /obj/structure/bed,
 /obj/effect/landmark/start/pilot,
@@ -5126,27 +5126,13 @@
 	},
 /area/almayer/command/cic)
 "ama" = (
-/obj/structure/machinery/firealarm{
-	pixel_y = 28
-	},
-/obj/structure/surface/table/almayer,
-/obj/item/storage/firstaid/regular,
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/almayer/living/pilotbunks)
-"amb" = (
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/living/pilotbunks)
-"amc" = (
-/obj/structure/machinery/power/apc/almayer{
+/obj/structure/machinery/light/small{
 	dir = 1
 	},
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
+/turf/open/floor/plating,
+/area/almayer/command/cichallway)
+"amb" = (
+/turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/pilotbunks)
 "amd" = (
 /turf/open/floor/almayer,
@@ -5154,6 +5140,10 @@
 "ame" = (
 /obj/structure/machinery/status_display{
 	pixel_y = 30
+	},
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_21";
+	tag = "icon-plant-10"
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/pilotbunks)
@@ -6801,9 +6791,8 @@
 	},
 /area/almayer/living/pilotbunks)
 "apr" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_21";
-	tag = "icon-plant-10"
+/obj/structure/machinery/power/apc/almayer{
+	dir = 1
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/pilotbunks)
@@ -10045,18 +10034,6 @@
 	tag = "icon-blue (NORTHEAST)"
 	},
 /area/almayer/medical/upper_medical)
-"awo" = (
-/obj/effect/landmark/start{
-	name = "Synthetic"
-	},
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/turf/open/floor/almayer{
-	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
-	},
-/area/almayer/command/cichallway)
 "awp" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	dir = 4;
@@ -10311,8 +10288,12 @@
 	},
 /area/almayer/engineering/upper_engineering)
 "awW" = (
-/obj/structure/machinery/cm_vending/gear/synth,
-/turf/open/floor/almayer,
+/obj/item/robot_parts/l_arm,
+/obj/item/robot_parts/l_leg,
+/obj/item/robot_parts/r_arm,
+/obj/item/robot_parts/r_leg,
+/obj/structure/surface/rack,
+/turf/open/floor/plating,
 /area/almayer/command/cichallway)
 "awX" = (
 /obj/structure/surface/table/almayer,
@@ -12742,10 +12723,6 @@
 	tag = "icon-green (EAST)"
 	},
 /area/almayer/command/cic)
-"aDL" = (
-/obj/structure/machinery/cm_vending/clothing/synth,
-/turf/open/floor/almayer,
-/area/almayer/command/cichallway)
 "aDO" = (
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	dir = 1;
@@ -40317,6 +40294,13 @@
 	},
 /turf/open/floor/wood,
 /area/almayer/command/corporateliason)
+"fqu" = (
+/obj/structure/machinery/cm_vending/clothing/synth,
+/turf/open/floor/almayer{
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
+	},
+/area/almayer/command/cichallway)
 "frz" = (
 /obj/structure/machinery/door/airlock/almayer/secure{
 	name = "\improper Exterior Airlock";
@@ -45506,6 +45490,12 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig_cells)
+"lwC" = (
+/obj/effect/landmark/start{
+	name = "Synthetic"
+	},
+/turf/open/floor/plating,
+/area/almayer/command/cichallway)
 "lwJ" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -45866,6 +45856,10 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/squads/charlie/req)
+"lRP" = (
+/obj/effect/decal/cleanable/cobweb,
+/turf/closed/wall/almayer/reinforced,
+/area/almayer/living/commandbunks)
 "lRZ" = (
 /obj/structure/bed/chair/wood/normal{
 	dir = 4;
@@ -48243,8 +48237,7 @@
 	},
 /area/almayer/engineering/lower_engineering)
 "oAO" = (
-/obj/structure/machinery/cm_vending/clothing/synth/snowflake,
-/turf/open/floor/almayer,
+/turf/open/floor/plating,
 /area/almayer/command/cichallway)
 "oBy" = (
 /obj/structure/disposalpipe/segment,
@@ -50363,6 +50356,10 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/tankerbunks)
+"rhf" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/plating,
+/area/almayer/command/cichallway)
 "rhO" = (
 /obj/structure/machinery/disposal{
 	density = 0;
@@ -51205,6 +51202,16 @@
 	},
 /turf/open/floor/plating,
 /area/almayer/shipboard/brig)
+"sbq" = (
+/obj/structure/machinery/cm_vending/gear/synth,
+/obj/effect/decal/cleanable/cobweb{
+	dir = 8
+	},
+/turf/open/floor/almayer{
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
+	},
+/area/almayer/command/cichallway)
 "sbM" = (
 /obj/structure/pipes/vents/scrubber{
 	dir = 4
@@ -52219,6 +52226,13 @@
 	tag = "icon-comfychair (NORTH)"
 	},
 /turf/open/floor/carpet,
+/area/almayer/command/cichallway)
+"teB" = (
+/obj/structure/machinery/cm_vending/clothing/synth/snowflake,
+/turf/open/floor/almayer{
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
+	},
 /area/almayer/command/cichallway)
 "teI" = (
 /obj/structure/machinery/portable_atmospherics/hydroponics,
@@ -77837,7 +77851,7 @@ aig
 aiW
 akp
 agc
-agj
+lRP
 aic
 aov
 awr
@@ -78849,9 +78863,9 @@ aag
 aag
 aag
 aai
-aKa
-awo
-aKa
+ajf
+oAO
+oAO
 aVW
 aic
 aBH
@@ -79053,7 +79067,7 @@ aag
 aag
 aai
 awW
-aDL
+oAO
 oAO
 ceE
 bYz
@@ -79255,9 +79269,9 @@ aag
 aag
 aag
 aai
-awd
-awd
-awd
+oAO
+rhf
+teB
 awd
 awd
 awd
@@ -79457,11 +79471,11 @@ aag
 aag
 aag
 aag
-adG
-aiY
-fdE
-aiX
+aai
 ama
+oAO
+fqu
+awd
 ana
 aqw
 aqw
@@ -79660,11 +79674,11 @@ aag
 aag
 aag
 aag
-adG
+aai
 aje
-aku
-alw
-amb
+lwC
+sbq
+awd
 apq
 apq
 apq
@@ -79863,11 +79877,11 @@ aag
 aag
 aag
 aag
-adG
-ajf
-ajg
-aiX
-amc
+aai
+awd
+awd
+awd
+awd
 amh
 amh
 amh

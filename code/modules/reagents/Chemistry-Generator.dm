@@ -1,6 +1,6 @@
 /*
 	For more info about about this generation process, and for tables describing the generator, check the FDS: https://docs.google.com/document/d/1JHmMm48j-MlUN6hKBfw42grwBDuftbSabZHUxSHWqV8/edit?usp=sharing
-	
+
 	Important keywords:
 		chemclass 						Determines how often a chemical will show up in the generation process
 			CHEM_CLASS_NONE             0 Default. Chemicals not used in the generator
@@ -52,7 +52,7 @@
 	//pick catalyst
 	if(prob(40) || gen_tier >= 4)//chance of requiring a catalyst
 		add_component(null,5,TRUE)
-	
+
 	return TRUE
 
 /datum/chemical_reaction/proc/add_component(var/my_chemid, var/my_modifier, var/is_catalyst, var/tier, var/class)
@@ -135,9 +135,9 @@
 					continue
 		var/list/component_modifier[0]
 		component_modifier["[chem_id]"] = modifier
-		if(is_catalyst) 
+		if(is_catalyst)
 			required_catalysts += component_modifier
-		else 
+		else
 			required_reagents += component_modifier
 
 
@@ -191,7 +191,7 @@
 	for(var/i=1;i<=rand(1,5);i++) //overdose_critical is min 5u, to max 30u + normal overdose
 		if(prob(20))
 			overdose_critical += 5
-		
+
 	//Metabolism
 	var/direction = rand(0,1) //the direction we deviate from 0.2
 	for(var/i=1;i<=rand(1,8);i++) //min of 0.01 (barely metabolizes, but chance is 0.00065%, so it deserves to be this miraculous) to max 0.4 (neuraline)
@@ -202,11 +202,11 @@
 				custom_metabolism -= 0.025
 				if(custom_metabolism<0.01)
 					custom_metabolism = 0.01
-	
+
 	//Color
 	color = text("#[][][]",num2hex(rand(0,255)),num2hex(rand(0,255)),num2hex(rand(0,255)))
 	burncolor = color
-	
+
 	//Description
 	generate_description()
 	return TRUE
@@ -283,7 +283,7 @@
 					property = pick(chemical_properties_list["neutral"])
 				else
 					property = pick(chemical_properties_list["positive"])
-	
+
 	var/datum/chem_property/P = chemical_properties_list[property]
 	//Calculate what our chemical value is with our level
 	var/new_value
@@ -416,7 +416,5 @@
 	if(!C.generate_recipe(complexity))
 		return //Generating a recipe failed, so return null
 	chemical_reactions_list[C.id] = C
-	var/filter_id = C.get_filter()
-	if(filter_id)
-		chemical_reactions_filtered_list[filter_id] += C
+	C.add_to_filtered_list()
 	return C

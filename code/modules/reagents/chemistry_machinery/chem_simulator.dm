@@ -634,7 +634,7 @@
 	C.gen_tier = max(min(C.chemclass, CHEM_CLASS_COMMON),C.gen_tier,1)
 	if(C.chemclass == CHEM_CLASS_SPECIAL)
 		C.gen_tier = 4
-	
+
 	//Change a single component of the reaction or generate a new one if there is no recipe
 	var/datum/chemical_reaction/generated/R = new /datum/chemical_reaction/generated
 	var/datum/chemical_reaction/generated/assoc_R
@@ -662,7 +662,7 @@
 		if(R.required_reagents.len > 2 && !recipe_targets[recipe_target]) //we only replace if the recipe isn't small and the target is not set TRUE to being elevated
 			LAZYREMOVE(R.required_reagents, pick(R.required_reagents))
 		R.add_component(recipe_target)
-	
+
 	//Handle new overdose
 	C.overdose = new_od_level
 	if(C.overdose < 1) //to prevent chems that start at 0 OD to become un-OD-able
@@ -678,21 +678,19 @@
 		var/datum/reagent/component = chemical_reagents_list[recipe_target]
 		if(component && component.chemclass >= CHEM_CLASS_RARE)
 			chemical_data.update_credits(1)
-	
-	
+
+
 	//Save the reagent
 	C.generate_description()
 	C.chemclass = CHEM_CLASS_RARE //So that we can always scan this in the future, don't generate defcon, and don't get a loop of making credits
 	chemical_reagents_list[C.id] = C
 	LAZYADD(simulations, C.id) //Remember we've simulated this
-	
+
 	//Save the reaction
 	R.id = C.id
 	R.result = C.id
 	chemical_reactions_list[R.id] = R
-	var/filter_id = R.get_filter()
-	if(filter_id)
-		chemical_reactions_filtered_list[filter_id] += R
+	R.add_to_filtered_list()
 	status_bar = "SIMULATION COMPLETE"
 	print(C.id, TRUE)
 

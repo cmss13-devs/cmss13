@@ -77,23 +77,16 @@
 	// It is filtered into multiple lists within a list.
 	// For example:
 	// chemical_reaction_list["phoron"] is a list of all reactions relating to phoron
-	paths = typesof(/datum/chemical_reaction) - /datum/chemical_reaction - /datum/chemical_reaction/generated
+	var/list/regular_paths = subtypesof(/datum/chemical_reaction) - typesof(/datum/chemical_reaction/generated)
+	var/list/generated_paths = subtypesof(/datum/chemical_reaction/generated) //Generated chemicals should be initialized last
 	chemical_reactions_filtered_list = list()
 	chemical_reactions_list = list()
 
-	for(var/i=0;i<=1;i++)
+	for(paths in list(regular_paths, generated_paths))
 		for(var/path in paths)
-
 			var/datum/chemical_reaction/D = new path()
-
 			chemical_reactions_list[D.id] = D
-
-			var/filter_id = D.get_filter()
-			if(filter_id)
-				chemical_reactions_filtered_list[filter_id] += D  // We don't have to bother adding ourselves to other reagent ids, it is redundant.
-
-		if(i==0)
-			paths = typesof(/datum/chemical_reaction/generated) - /datum/chemical_reaction/generated //Generated chemicals should be initialized last
+			D.add_to_filtered_list()
 
 /datum/reagents/Destroy()
 	. = ..()

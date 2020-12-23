@@ -182,10 +182,10 @@
 	var/turf/T = get_turf(src)
 	if(is_mainship_level(z))
 		GLOB.mainship_yautja_teleports += src
-		GLOB.mainship_yautja_desc += T.loc.name + T.loc_to_string()
+		GLOB.mainship_yautja_desc[T.loc.name + T.loc_to_string()] = src
 	else
 		GLOB.yautja_teleports += src
-		GLOB.yautja_teleport_descs += T.loc.name + T.loc_to_string()
+		GLOB.yautja_teleport_descs[T.loc.name + T.loc_to_string()] = src
 
 /obj/effect/landmark/yautja_teleport/Destroy()
 	var/turf/T = get_turf(src)

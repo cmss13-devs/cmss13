@@ -103,8 +103,10 @@
 		/obj/item/attachable/bayonet
 	)
 	icon_state = "bayonet"
-	storage_slots = 10
+	storage_slots = 5
 	storage_flags = STORAGE_FLAGS_POUCH|STORAGE_USING_DRAWING_METHOD
+	var/draw_cooldown = 0
+	var/draw_cooldown_interval = 1 SECOND
 
 /obj/item/storage/pouch/bayonet/Initialize()
 	. = ..()
@@ -125,6 +127,15 @@
 	. = ..()
 	if(.)
 		playsound(src,'sound/weapons/gun_shotgun_shell_insert.ogg', 15, 1)
+
+/obj/item/storage/pouch/bayonet/attack_hand(mob/user)
+	if(draw_cooldown < world.time)
+		..()
+		draw_cooldown = world.time + draw_cooldown_interval
+		playsound(src,'sound/weapons/gun_shotgun_shell_insert.ogg', 15, 1)
+	else
+		to_chat(user, SPAN_WARNING("You need to wait before drawing another knife!"))
+		return 0
 
 /obj/item/storage/pouch/survival
 	name = "survival pouch"

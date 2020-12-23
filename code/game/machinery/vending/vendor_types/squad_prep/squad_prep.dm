@@ -42,7 +42,6 @@
 		list("Underslung Grenade Launcher", round(scale * 25), /obj/item/attachable/attached_gun/grenade, VENDOR_ITEM_REGULAR), //They already get these as on-spawns, might as well formalize some spares.
 
 		list("UTILITIES", -1, null, null),
-		list("M11 Throwing Knife", round(scale * 10), /obj/item/weapon/melee/throwing_knife, VENDOR_ITEM_REGULAR),
 		list("M5 Bayonet", round(scale * 25), /obj/item/attachable/bayonet, VENDOR_ITEM_REGULAR),
 		list("M94 Marking Flare Pack", round(scale * 10), /obj/item/storage/box/m94, VENDOR_ITEM_RECOMMENDED)
 	)
@@ -184,7 +183,6 @@ GLOBAL_LIST_INIT(cm_vending_clothing_marine, list(
 	listed_products = list(
 		list("UNIFORM", -1, null, null),
 		list("Lightweight IMP Backpack", 10, /obj/item/storage/backpack/marine, VENDOR_ITEM_REGULAR),
-		list("M276 Knife Rig", 5, /obj/item/storage/belt/knifepouch, VENDOR_ITEM_REGULAR),
 		list("M276 Pattern Ammo Load Rig", 10, /obj/item/storage/belt/marine, VENDOR_ITEM_REGULAR),
 		list("M276 Pattern General Pistol Holster Rig", 10, /obj/item/storage/belt/gun/m4a3, VENDOR_ITEM_REGULAR),
 		list("M276 Pattern M39 Holster Rig", 10, /obj/item/storage/large_holster/m39, VENDOR_ITEM_REGULAR),
@@ -223,7 +221,6 @@ GLOBAL_LIST_INIT(cm_vending_clothing_marine, list(
 	listed_products = list(
 		list("UNIFORM", -1, null, null),
 		list("Lightweight IMP Backpack", 10, /obj/item/storage/backpack/marine, VENDOR_ITEM_REGULAR),
-		list("M276 Knife Rig", 5, /obj/item/storage/belt/knifepouch, VENDOR_ITEM_REGULAR),
 		list("M276 Pattern Ammo Load Rig", 10, /obj/item/storage/belt/marine, VENDOR_ITEM_REGULAR),
 		list("M276 Pattern General Pistol Holster Rig", 10, /obj/item/storage/belt/gun/m4a3, VENDOR_ITEM_REGULAR),
 		list("M276 Pattern M39 Holster Rig", 10, /obj/item/storage/large_holster/m39, VENDOR_ITEM_REGULAR),
@@ -260,7 +257,6 @@ GLOBAL_LIST_INIT(cm_vending_clothing_marine, list(
 	listed_products = list(
 		list("UNIFORM", -1, null, null),
 		list("Lightweight IMP Backpack", 10, /obj/item/storage/backpack/marine, VENDOR_ITEM_REGULAR),
-		list("M276 Knife Rig", 5, /obj/item/storage/belt/knifepouch, VENDOR_ITEM_REGULAR),
 		list("M276 Pattern Ammo Load Rig", 10, /obj/item/storage/belt/marine, VENDOR_ITEM_REGULAR),
 		list("M276 Pattern General Pistol Holster Rig", 10, /obj/item/storage/belt/gun/m4a3, VENDOR_ITEM_REGULAR),
 		list("M276 Pattern M39 Holster Rig", 10, /obj/item/storage/large_holster/m39, VENDOR_ITEM_REGULAR),
@@ -297,7 +293,6 @@ GLOBAL_LIST_INIT(cm_vending_clothing_marine, list(
 	listed_products = list(
 		list("UNIFORM", -1, null, null),
 		list("Lightweight IMP Backpack", 10, /obj/item/storage/backpack/marine, VENDOR_ITEM_REGULAR),
-		list("M276 Knife Rig", 5, /obj/item/storage/belt/knifepouch, VENDOR_ITEM_REGULAR),
 		list("M276 Pattern Ammo Load Rig", 10, /obj/item/storage/belt/marine, VENDOR_ITEM_REGULAR),
 		list("M276 Pattern General Pistol Holster Rig", 10, /obj/item/storage/belt/gun/m4a3, VENDOR_ITEM_REGULAR),
 		list("M276 Pattern M39 Holster Rig", 10, /obj/item/storage/large_holster/m39, VENDOR_ITEM_REGULAR),

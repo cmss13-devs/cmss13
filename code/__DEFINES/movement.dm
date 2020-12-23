@@ -7,6 +7,7 @@
 
 // Speed = [1/(MOVE_DELAY + 0.5)]*10
 #define SPEED_INSTANT       20
+#define SPEED_REALLY_FAST   15
 #define SPEED_VERY_FAST     10
 #define SPEED_FAST          6.67
 #define SPEED_AVERAGE       5

@@ -65,7 +65,7 @@
 	if(distance > max_distance)
 		return
 
-	if(X.crest_defense || X.steelcrest && !X.fortify)
+	if(X.crest_defense)
 		X.throw_atom(get_step_towards(H, X), 3, SPEED_SLOW, X)
 
 	if(!X.Adjacent(H))
@@ -79,12 +79,11 @@
 	SPAN_XENOWARNING("You ram [H] with your armored crest!"))
 
 	if(H.stat != DEAD && (!(H.status_flags & XENO_HOST) || !istype(H.buckled, /obj/structure/bed/nest)) )
-		var/h_damage = 20 + (X.crest_defense * 10) + (X.steelcrest * 5) //20 or 30, plus 5
+		var/h_damage = 20 + (X.crest_defense * 10) + (X.steelcrest * 7.5) //20 or 30, plus 7.5
 		H.apply_armoured_damage(get_xeno_damage_slash(H, h_damage), ARMOR_MELEE, BRUTE, "chest", 5)
-		shake_camera(H, 2, 1)
 
 	var/facing = get_dir(X, H)
-	var/headbutt_distance = 3 - (X.crest_defense * 2) + (X.steelcrest) - (X.fortify * 3)
+	var/headbutt_distance = 3 - (X.crest_defense * 2) - (X.fortify * 2)
 	var/turf/T = get_turf(X)
 	var/turf/temp = get_turf(X)
 
@@ -175,7 +174,7 @@
 	if(!X.fortify)
 		to_chat(X, SPAN_XENOWARNING("You tuck yourself into a defensive stance."))
 		if(X.steelcrest)
-			X.armor_deflection_buff += 25
+			X.armor_deflection_buff += 15
 			X.armor_explosive_buff += 60
 			X.ability_speed_modifier += 3
 			X.damage_modifier -= XENO_DAMAGE_MOD_SMALL
@@ -194,7 +193,7 @@
 		X.frozen = FALSE
 		X.anchored = FALSE
 		if(X.steelcrest)
-			X.armor_deflection_buff -= 25
+			X.armor_deflection_buff -= 15
 			X.armor_explosive_buff -= 60
 			X.ability_speed_modifier -= 3
 			X.damage_modifier += XENO_DAMAGE_MOD_SMALL

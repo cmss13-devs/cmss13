@@ -595,7 +595,7 @@ Defined in conflicts.dm of the #defines folder.
 		G.damage_falloff_mult += damage_falloff_scoped_buff
 		RegisterSignal(user, COMSIG_LIVING_ZOOM_OUT, .proc/remove_scoped_buff)
 
-/obj/item/attachable/scope/proc/remove_scoped_buff(obj/item/weapon/gun/G, mob/living/carbon/user)
+/obj/item/attachable/scope/proc/remove_scoped_buff(mob/living/carbon/user, obj/item/weapon/gun/G)
 	SIGNAL_HANDLER
 	UnregisterSignal(user, COMSIG_LIVING_ZOOM_OUT)
 	G.accuracy_mult -= accuracy_scoped_buff
@@ -647,7 +647,7 @@ Defined in conflicts.dm of the #defines folder.
 				G.fire_delay += FIRE_DELAY_TIER_4
 			RegisterSignal(user, COMSIG_LIVING_ZOOM_OUT, .proc/remove_buffs)
 
-/obj/item/attachable/scope/mini/proc/remove_buffs(obj/item/weapon/gun/G, mob/living/carbon/user)
+/obj/item/attachable/scope/mini/proc/remove_buffs(mob/living/carbon/user, obj/item/weapon/gun/G)
 	SIGNAL_HANDLER
 	UnregisterSignal(user, COMSIG_LIVING_ZOOM_OUT)
 	G.slowdown -= dynamic_aim_slowdown
@@ -691,7 +691,7 @@ Defined in conflicts.dm of the #defines folder.
 			G.slowdown += dynamic_aim_slowdown
 			RegisterSignal(user, COMSIG_LIVING_ZOOM_OUT, .proc/remove_buffs)
 
-/obj/item/attachable/scope/mini_iff/proc/remove_buffs(obj/item/weapon/gun/G, mob/living/carbon/user)
+/obj/item/attachable/scope/mini_iff/proc/remove_buffs(mob/living/carbon/user, obj/item/weapon/gun/G)
 	SIGNAL_HANDLER
 	UnregisterSignal(user, COMSIG_LIVING_ZOOM_OUT)
 	G.slowdown -= dynamic_aim_slowdown

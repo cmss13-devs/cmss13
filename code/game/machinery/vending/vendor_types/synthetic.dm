@@ -229,6 +229,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 		list("Snow Suit", 12, /obj/item/clothing/suit/storage/snow_suit, null, VENDOR_ITEM_REGULAR),
 		list("USCM Service Jacket", 12, /obj/item/clothing/suit/storage/jacket/marine, null, VENDOR_ITEM_REGULAR),
 		list("Waistcoat", 12, /obj/item/clothing/suit/storage/wcoat, null, VENDOR_ITEM_REGULAR),
+		list("Holiday Priest", 12, /obj/item/clothing/suit/holidaypriest, null, VENDOR_ITEM_REGULAR),
 
 		list("BACKPACK", 0, null, null, null),
 		list("Backpack, Industrial", 12, /obj/item/storage/backpack/industrial, null, VENDOR_ITEM_REGULAR),

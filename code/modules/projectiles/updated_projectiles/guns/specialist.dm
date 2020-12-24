@@ -1237,7 +1237,7 @@
 
 	current_mag = /obj/item/ammo_magazine/rocket/m57a4
 	aim_slowdown = SLOWDOWN_ADS_SUPERWEAPON
-	flags_gun_features = GUN_WY_RESTRICTED|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
+	flags_gun_features = GUN_WIELDED_FIRING_ONLY
 
 /obj/item/weapon/gun/launcher/rocket/m57a4/set_gun_config_values()
 	..()

@@ -22,16 +22,12 @@
 /datum/chemical_reaction/proc/on_reaction(var/datum/reagents/holder, var/created_volume)
 	return
 
-/datum/chemical_reaction/proc/get_filter()
-	var/list/reaction_ids = list()
-	if(required_reagents && required_reagents.len)
-		for(var/reaction in required_reagents)
-			reaction_ids += reaction
-	// Create filters based on each reagent id in the required reagents list
-	for(var/id in reaction_ids)
-		if(!chemical_reactions_filtered_list[id])
-			chemical_reactions_filtered_list[id] = list()
-		return id // We don't have to bother adding ourselves to other reagent ids, it is redundant.
+/datum/chemical_reaction/proc/add_to_filtered_list(var/reset = FALSE)
+	if(reset)
+		for(var/R in chemical_reactions_filtered_list)
+			LAZYREMOVE(chemical_reactions_filtered_list[R], src)
+	for(var/R in required_reagents)
+		LAZYADD(chemical_reactions_filtered_list[R], src)
 
 /datum/chemical_reaction/proc/check_duplicate()
 	for(var/R in required_reagents)

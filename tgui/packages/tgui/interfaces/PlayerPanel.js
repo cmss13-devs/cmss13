@@ -50,7 +50,7 @@ const PAGES = [
     color: "blue",
     icon: "crosshairs",
     canAccess: data => {
-      return (data.is_human || data.is_xeno) && hasPermission(data, "fun");
+      return (data.is_human || data.is_xeno);
     },
   },
 ];
@@ -101,7 +101,7 @@ export const PlayerPanel = (props, context) => {
             <Flex.Item width="80px" color="label">Client:</Flex.Item>
             <Flex.Item grow={1} align="left">
               {((canModifyCkey || !client_key) && hasPermission(data, "set_ckey")) && (
-                <Input 
+                <Input
                   value={client_ckey}
                   onChange={(e, value) => act("set_ckey", { ckey: value })}
                 />
@@ -118,16 +118,16 @@ export const PlayerPanel = (props, context) => {
                     color={canModifyCkey? "average" : "good"}
                   />
                 )}
-                <Button 
+                <Button
                   ml={1}
-                  icon="comment-dots" 
+                  icon="comment-dots"
                   disabled={!hasPermission(data, "private_message")}
                   onClick={() => act("private_message")}
                   content="Private Message"
                 />
-                <Button 
+                <Button
                   ml={1}
-                  icon="phone-alt" 
+                  icon="phone-alt"
                   disabled={!hasPermission(data, "subtle_message")}
                   onClick={() => act("subtle_message")}
                   content="Subtle Message"
@@ -197,29 +197,29 @@ const GeneralActions = (props, context) => {
           align="right"
           grow={1}
         >
-          <Button 
+          <Button
             width="100%"
-            icon="first-aid" 
-            color="green" 
+            icon="first-aid"
+            color="green"
             content="Rejuvenate"
             disabled={!hasPermission(data, "mob_rejuvenate")}
             onClick={() => act("mob_rejuvenate")}
           />
-          <Button.Confirm 
+          <Button.Confirm
             width="100%"
-            icon="skull" 
-            color="average" 
-            content="Kill" 
+            icon="skull"
+            color="average"
+            content="Kill"
             confirmColor="average"
             disabled={!hasPermission(data, "mob_kill")}
             onClick={() => act("mob_kill")}
           />
-          <Button.Confirm 
+          <Button.Confirm
             width="100%"
             height="100%" // weird ass bug here, so height set to 100%
-            icon="skull-crossbones" 
-            color="bad" 
-            content="Gib" 
+            icon="skull-crossbones"
+            color="bad"
+            content="Gib"
             confirmColor="bad"
             disabled={!hasPermission(data, "mob_gib")}
             onClick={() => act("mob_gib")}
@@ -233,14 +233,14 @@ const GeneralActions = (props, context) => {
           grow={1}
         >
           <Button.Confirm
-            width="100%" 
+            width="100%"
             icon="reply"
             content="Bring"
             disabled={!hasPermission(data, "mob_bring")}
             onClick={() => act("mob_bring")}
           />
-          <Button 
-            width="100%" 
+          <Button
+            width="100%"
             height="100%"
             icon="share"
             content="Jump To"
@@ -256,7 +256,7 @@ const GeneralActions = (props, context) => {
           grow={1}
         >
           <Button.Checkbox
-            width="100%" 
+            width="100%"
             content="Toggle Sleeping"
             checked={mob_sleeping > 500}
             color={mob_sleeping > 500? "good" : "bad"}
@@ -264,7 +264,7 @@ const GeneralActions = (props, context) => {
             onClick={() => act("mob_sleep", { sleep: mob_sleeping > 500? false : true })}
           />
           <Button.Checkbox
-            width="100%" 
+            width="100%"
             content="Toggle Frozen"
             checked={mob_frozen}
             color={mob_frozen? "good" : "bad"}
@@ -273,7 +273,7 @@ const GeneralActions = (props, context) => {
           />
           <Button
             width="100%"
-            height="100%" 
+            height="100%"
             content="Send Back to Lobby"
             icon="history"
             disabled={!hasPermission(data, "send_to_lobby")}
@@ -288,7 +288,7 @@ const GeneralActions = (props, context) => {
           >
             <FlexItem width="100px" align="left" color="label">Force Say:</FlexItem>
             <FlexItem align="right" grow={1}>
-              <Input 
+              <Input
                 width="100%"
                 grow={1}
                 onEnter={(e, value) => act("mob_force_say", { to_say: value })}
@@ -304,7 +304,7 @@ const GeneralActions = (props, context) => {
           >
             <FlexItem width="100px" align="left" color="label">Force Emote:</FlexItem>
             <FlexItem align="right" grow={1}>
-              <Input 
+              <Input
                 width="100%"
                 grow={1}
                 onEnter={(e, value) => act("mob_force_emote", { to_emote: value })}
@@ -329,26 +329,26 @@ const PunishmentActions = (props, context) => {
         >
           <Button.Confirm
             width="100%"
-            icon="gavel" 
-            color="red" 
+            icon="gavel"
+            color="red"
             content="Ban"
             disabled={!hasPermission(data, "mob_ban")}
             onClick={() => act("mob_ban")}
           />
           <Button.Confirm
             width="100%"
-            icon="gavel" 
-            color="red" 
+            icon="gavel"
+            color="red"
             content="EORG Ban"
             disabled={!hasPermission(data, "mob_eorg_ban")}
             onClick={() => act("mob_eorg_ban")}
           />
-          <Button 
+          <Button
             width="100%"
             height="100%"
-            icon="ban" 
-            color="red" 
-            content="Job-ban" 
+            icon="ban"
+            color="red"
+            content="Job-ban"
             disabled={!hasPermission(data, "mob_jobban")}
             onClick={() => act("mob_jobban")}
           />
@@ -362,8 +362,8 @@ const PunishmentActions = (props, context) => {
         >
           <Button
             width="100%"
-            icon="clipboard-list" 
-            color="average" 
+            icon="clipboard-list"
+            color="average"
             content="Check Notes"
             disabled={!hasPermission(data, "show_notes")}
             onClick={() => act("show_notes")}
@@ -377,7 +377,7 @@ const PunishmentActions = (props, context) => {
           grow={1}
         >
           {glob_mute_bits.map((bit, i) => {
-            const isMuted = (client_muted 
+            const isMuted = (client_muted
               && (client_muted & bit.bitflag));
             return (<Button.Checkbox
               key={i}
@@ -400,8 +400,8 @@ const PunishmentActions = (props, context) => {
         >
           <Button
             width="100%"
-            icon="clipboard-list" 
-            color="average" 
+            icon="clipboard-list"
+            color="average"
             content="Xeno name reset"
             disabled={!hasPermission(data, "reset_xeno_name")}
             onClick={() => act("reset_xeno_name")}
@@ -409,8 +409,8 @@ const PunishmentActions = (props, context) => {
           <Button
             width="100%"
             height="100%"
-            icon="clipboard-list" 
-            color="bad" 
+            icon="clipboard-list"
+            color="bad"
             content="Xeno name ban"
             disabled={!hasPermission(data, "ban_xeno_name")}
             onClick={() => act("ban_xeno_name")}
@@ -484,12 +484,12 @@ const FunActions = (props, context) => {
           >
             <FlexItem width="100px" align="left" color="label">Narrate:</FlexItem>
             <FlexItem align="right" grow={1}>
-              <Input 
+              <Input
                 width="100%"
                 grow={1}
-                onEnter={(e, value) => act("mob_narrate", 
-                  { 
-                    to_narrate: 
+                onEnter={(e, value) => act("mob_narrate",
+                  {
+                    to_narrate:
                       `<span class='${getSpanSetting}'>${value}</span>`,
                   }
                 )}
@@ -529,7 +529,7 @@ const FunActions = (props, context) => {
               ml={1}
               grow={1}
             >
-              <Slider 
+              <Slider
                 unit="Explosive Power"
                 value={expPower}
                 onChange={(e, value) => setExpPower(value)}
@@ -541,7 +541,7 @@ const FunActions = (props, context) => {
                 minValue={0}
                 maxValue={500}
               />
-              <Slider 
+              <Slider
                 unit="Falloff"
                 value={falloff}
                 onChange={(e, value) => setFalloff(value)}
@@ -651,9 +651,9 @@ const AntagActions = (props, context) => {
 
 const PhysicalActions = (props, context) => {
   const { act, data } = useBackend(context);
-  const { 
-    is_human, glob_limbs, mob_speed, 
-    mob_status_flags, glob_status_flags, 
+  const {
+    is_human, glob_limbs, mob_speed,
+    mob_status_flags, glob_status_flags,
     mob_feels_pain,
   } = data;
 
@@ -671,11 +671,11 @@ const PhysicalActions = (props, context) => {
             disabled={!hasPermission(data, "set_status_flags")}
             color={(mob_status_flags & glob_status_flags[val])? "good" : "bad"}
             checked={(mob_status_flags & glob_status_flags[val])}
-            onClick={() => act("set_status_flags", 
-              { 
+            onClick={() => act("set_status_flags",
+              {
                 status_flags:
                   (mob_status_flags & glob_status_flags[val])
-                    ? mob_status_flags & ~glob_status_flags[val] 
+                    ? mob_status_flags & ~glob_status_flags[val]
                     : mob_status_flags|glob_status_flags[val],
               }
             )}
@@ -704,8 +704,8 @@ const PhysicalActions = (props, context) => {
                 checked={delimbOption & limb_flags[index]}
                 onClick={() => setDelimbOption(
                   (delimbOption & limb_flags[index])
-                    ? delimbOption & ~limb_flags[index] 
-                    : delimbOption|limb_flags[index] 
+                    ? delimbOption & ~limb_flags[index]
+                    : delimbOption|limb_flags[index]
                 )}
               />
             ))}
@@ -721,8 +721,8 @@ const PhysicalActions = (props, context) => {
               content="Delimb"
               color="red"
               disabled={!hasPermission(data, "mob_delimb")}
-              onClick={() => act("mob_delimb", { 
-                limbs: limb_flags.map((val, index) => 
+              onClick={() => act("mob_delimb", {
+                limbs: limb_flags.map((val, index) =>
                   !!(delimbOption & val) && glob_limbs[limbs[index]]
                 ),
               })}
@@ -734,8 +734,8 @@ const PhysicalActions = (props, context) => {
               content="Relimb"
               color="green"
               disabled={!hasPermission(data, "mob_relimb")}
-              onClick={() => act("mob_relimb", { 
-                limbs: limb_flags.map((val, index) => 
+              onClick={() => act("mob_relimb", {
+                limbs: limb_flags.map((val, index) =>
                   !!(delimbOption & val) && glob_limbs[limbs[index]]
                 ),
               })}
@@ -754,8 +754,8 @@ const PhysicalActions = (props, context) => {
               disabled={!hasPermission(data, "cryo_human")}
               onClick={() => act("cryo_human")}
             >
-              <Tooltip 
-                content="This will delete the mob, with all of their items and re-open the slot for other players to play." 
+              <Tooltip
+                content="This will delete the mob, with all of their items and re-open the slot for other players to play."
               />
             </Button.Confirm>
           )}

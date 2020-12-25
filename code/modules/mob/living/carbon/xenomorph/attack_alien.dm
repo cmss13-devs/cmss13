@@ -26,6 +26,9 @@
 			if(M == src || anchored || buckled)
 				return FALSE
 
+			if(M.fortify)
+				return FALSE
+
 			if(check_shields(0, M.name)) // Blocking check
 				M.visible_message(SPAN_DANGER("[M]'s grab is blocked by [src]'s shield!"), \
 				SPAN_DANGER("Your grab was blocked by [src]'s shield!"), null, 5, CHAT_TYPE_XENO_COMBAT)
@@ -173,9 +176,14 @@
 			updatehealth()
 
 		if(INTENT_DISARM)
+
 			if(M.legcuffed && isYautja(src))
 				to_chat(M, SPAN_XENODANGER("You don't have the dexterity to tackle the headhunter with that thing on your leg!"))
 				return FALSE
+
+			if(M.fortify)
+				return FALSE
+
 			M.animation_attack_on(src)
 			if(check_shields(0, M.name)) // Blocking check
 				M.visible_message(SPAN_DANGER("[M]'s tackle is blocked by [src]'s shield!"), \
@@ -221,6 +229,9 @@
 
 		if(INTENT_GRAB)
 			if(M == src || anchored || buckled)
+				return FALSE
+
+			if(M.fortify)
 				return FALSE
 
 			if(Adjacent(M)) //Logic!
@@ -277,6 +288,10 @@
 			apply_damage(damage, BRUTE)
 
 		if(INTENT_DISARM)
+
+			if(M.fortify)
+				return FALSE
+
 			playsound(loc, 'sound/weapons/alien_knockdown.ogg', 25, 1)
 			M.visible_message(SPAN_WARNING("[M] shoves [src]!"), \
 			SPAN_WARNING("You shove [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)

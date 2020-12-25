@@ -475,7 +475,7 @@ It is a modified Beretta 93R, and can fire three round burst or single fire. Whe
 	fire_sound = 'sound/weapons/gun_chimp70.ogg'
 	w_class = SIZE_MEDIUM
 	force = 8
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_WY_RESTRICTED
+	flags_gun_features = GUN_AUTO_EJECTOR
 
 /obj/item/weapon/gun/pistol/chimp/set_gun_config_values()
 	..()

@@ -9,7 +9,7 @@
 		return
 
 	message_staff("[src] de-admined themselves.")
-	verbs += /client/proc/readmin_self
+	add_verb(src, /client/proc/readmin_self)
 	deadmin()
 	to_chat(src, "<br><br><span class='centerbold'><big>You are now a normal player. You can ascend back to adminhood at any time using the 'Re-admin Self' verb in your Admin panel.</big></span><br>")
 
@@ -17,7 +17,7 @@
 	set name = "A: Re-Admin"
 	set category = "Admin"
 
-	verbs -= /client/proc/readmin_self
+	remove_verb(src, /client/proc/readmin_self)
 	readmin()
 	to_chat(src, "<br><br><span class='centerbold'><big>You have ascended back to adminhood. All your verbs should be back where you left them.</big></span><br>")
 	message_staff("[src] re-admined themselves.")
@@ -271,15 +271,15 @@
 	set name = "Z: Mob Admin Verbs - Show"
 	set category = "Admin"
 
-	verbs += admin_mob_verbs_hideable
-	verbs -= /client/proc/enable_admin_mob_verbs
+	add_verb(src, admin_mob_verbs_hideable)
+	remove_verb(src, /client/proc/enable_admin_mob_verbs)
 
 /client/proc/hide_admin_mob_verbs()
 	set name = "Z: Mob Admin Verbs - Hide"
 	set category = "Admin"
 
-	verbs -= admin_mob_verbs_hideable
-	verbs += /client/proc/enable_admin_mob_verbs
+	remove_verb(src, admin_mob_verbs_hideable)
+	add_verb(src, /client/proc/enable_admin_mob_verbs)
 
 /client/proc/rejuvenate_all_in_view()
 	set name = "In View Rejuvenate All"

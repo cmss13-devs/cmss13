@@ -210,10 +210,10 @@
 	update_icon()
 	name = initial(name) + " (timer: [tmr.time])"
 
-	loc.verbs += /obj/item/device/assembly_holder/timer_igniter/verb/configure
+	add_verb(loc, /obj/item/device/assembly_holder/timer_igniter/verb/configure)
 
 /obj/item/device/assembly_holder/timer_igniter/detached()
-	loc.verbs -= /obj/item/device/assembly_holder/timer_igniter/verb/configure
+	remove_verb(loc, /obj/item/device/assembly_holder/timer_igniter/verb/configure)
 	..()
 
 /obj/item/device/assembly_holder/timer_igniter/verb/configure()

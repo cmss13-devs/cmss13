@@ -82,10 +82,10 @@ var/list/ai_verbs_default = list(
 	var/datum/announcement/priority/announcement
 
 /mob/living/silicon/ai/proc/add_ai_verbs()
-	src.verbs |= ai_verbs_default
+	add_verb(src, ai_verbs_default)
 
 /mob/living/silicon/ai/proc/remove_ai_verbs()
-	src.verbs -= ai_verbs_default
+	remove_verb(src, ai_verbs_default)
 
 /mob/living/silicon/ai/New(loc, var/obj/item/device/mmi/B, var/safety = 0)
 	var/list/possibleNames = ai_names

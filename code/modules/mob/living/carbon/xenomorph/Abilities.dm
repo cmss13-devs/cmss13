@@ -490,7 +490,7 @@
 
 		// If the player has self-deevolved before, don't allow them to do it again
 		if(!(/mob/living/carbon/Xenomorph/verb/Deevolve in T.verbs))
-			new_xeno.verbs -= /mob/living/carbon/Xenomorph/verb/Deevolve
+			remove_verb(new_xeno, /mob/living/carbon/Xenomorph/verb/Deevolve)
 
 		new_xeno.visible_message(SPAN_XENODANGER("A [new_xeno.caste.caste_name] emerges from the husk of \the [T]."), \
 		SPAN_XENODANGER("[X] makes you regress into your previous form."))

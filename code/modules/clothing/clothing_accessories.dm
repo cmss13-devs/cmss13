@@ -93,7 +93,7 @@
 	LAZYADD(accessories, A)
 	A.on_attached(src, user)
 	if(A.removable)
-		src.verbs |= /obj/item/clothing/proc/removetie_verb
+		add_verb(src, /obj/item/clothing/proc/removetie_verb)
 	update_clothing_icon()
 
 /obj/item/clothing/proc/remove_accessory(mob/user, obj/item/clothing/accessory/A)
@@ -124,7 +124,7 @@
 	src.remove_accessory(usr,A)
 	removables -= A
 	if(!removables.len)
-		src.verbs -= /obj/item/clothing/proc/removetie_verb
+		remove_verb(src, /obj/item/clothing/proc/removetie_verb)
 
 /obj/item/clothing/emp_act(severity)
 	if(LAZYLEN(accessories))

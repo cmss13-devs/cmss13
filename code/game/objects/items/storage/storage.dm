@@ -619,13 +619,13 @@ var/list/global/item_storage_box_cache = list()
 /obj/item/storage/Initialize()
 	. = ..()
 	if (!(storage_flags & STORAGE_QUICK_GATHER))
-		verbs -= /obj/item/storage/verb/toggle_gathering_mode
+		remove_verb(src, /obj/item/storage/verb/toggle_gathering_mode)
 
 	if (!(storage_flags & STORAGE_ALLOW_DRAWING_METHOD_TOGGLE))
-		verbs -= /obj/item/storage/verb/toggle_draw_mode
+		remove_verb(src, /obj/item/storage/verb/toggle_draw_mode)
 
 	if (!(storage_flags & STORAGE_ALLOW_EMPTY))
-		verbs -= /obj/item/storage/verb/empty_verb
+		remove_verb(src, /obj/item/storage/verb/empty_verb)
 
 	boxes = new
 	boxes.name = "storage"
@@ -649,7 +649,7 @@ var/list/global/item_storage_box_cache = list()
 	closer.master = src
 
 	fill_preset_inventory()
-	
+
 	update_icon()
 
 /obj/item/storage/Destroy()

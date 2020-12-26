@@ -36,7 +36,7 @@
 	..()
 
 
-	verbs += /mob/living/proc/hide
+	add_verb(src, /mob/living/proc/hide)
 	//remove_language("Robot Talk")
 	//add_language("Robot Talk", 1) // let them use this since we arent like regular ss13
 	add_language("Drone Talk", 1)
@@ -56,10 +56,14 @@
 		var/datum/robot_component/C = components[V]
 		C.max_damage = 10
 
-	verbs -= /mob/living/silicon/robot/verb/Namepick
-	verbs += /mob/living/silicon/robot/drone/verb/Drone_name_pick
-	verbs += /mob/living/silicon/robot/drone/verb/Power_up
-	verbs -= /mob/living/silicon/robot/drone/verb/set_mail_tag // we dont have mail tubes
+	remove_verb(src, list(
+		/mob/living/silicon/robot/verb/Namepick,
+		/mob/living/silicon/robot/drone/verb/set_mail_tag, // we dont have mail tubes
+	))
+	add_verb(src, list(
+		/mob/living/silicon/robot/drone/verb/Drone_name_pick,
+		/mob/living/silicon/robot/drone/verb/Power_up,
+	))
 
 	module = new /obj/item/circuitboard/robot_module/drone(src)
 

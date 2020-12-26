@@ -28,7 +28,7 @@
 /obj/item/reagent_container/Initialize()
 	. = ..()
 	if (!possible_transfer_amounts)
-		src.verbs -= /obj/item/reagent_container/verb/set_APTFT //which objects actually uses it?
+		remove_verb(src, /obj/item/reagent_container/verb/set_APTFT) //which objects actually uses it?
 	create_reagents(volume)
 
 /obj/item/reagent_container/proc/display_contents(mob/user) // Used on examine for properly skilled people to see contents.

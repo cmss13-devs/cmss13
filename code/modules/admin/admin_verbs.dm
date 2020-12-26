@@ -246,44 +246,43 @@ var/list/admin_verbs_mod = list(
 /client/proc/add_admin_verbs()
 	// mentors don't have access to admin verbs
 	if(admin_holder && !AHOLD_IS_ONLY_MENTOR(admin_holder))
-		verbs += admin_verbs_default
+		add_verb(src, admin_verbs_default)
 		if(admin_holder.rights & R_BUILDMODE)
-			verbs += /client/proc/togglebuildmodeself
+			add_verb(src, /client/proc/togglebuildmodeself)
 		if(admin_holder.rights & R_ADMIN)
-			verbs += admin_verbs_admin
+			add_verb(src, admin_verbs_admin)
 		if(admin_holder.rights & R_BAN)
-			verbs += admin_verbs_ban
-			verbs += admin_verbs_teleport
+			add_verb(src, admin_verbs_ban+admin_verbs_teleport)
 		if(admin_holder.rights & R_FUN)
-			verbs += admin_verbs_fun
+			add_verb(src, admin_verbs_fun)
 		if(admin_holder.rights & R_SERVER)
-			verbs += admin_verbs_server
+			add_verb(src, admin_verbs_server)
 		if(admin_holder.rights & R_DEBUG)
-			verbs += admin_verbs_debug
+			add_verb(src, admin_verbs_debug)
 			if(CONFIG_GET(flag/debugparanoid) && !check_rights(R_ADMIN))
-				verbs.Remove(admin_verbs_paranoid_debug)			//Right now it's just callproc but we can easily add others later on.
+				remove_verb(src, admin_verbs_paranoid_debug) //Right now it's just callproc but we can easily add others later on.
 		if(admin_holder.rights & R_POSSESS)
-			verbs += admin_verbs_possess
+			add_verb(src, admin_verbs_possess)
 		if(admin_holder.rights & R_PERMISSIONS)
-			verbs += admin_verbs_permissions
+			add_verb(src, admin_verbs_permissions)
 		if(admin_holder.rights & R_COLOR)
-			verbs += admin_verbs_color
+			add_verb(src, admin_verbs_color)
 		if(admin_holder.rights & R_SOUNDS)
-			verbs += admin_verbs_sounds
+			add_verb(src, admin_verbs_sounds)
 		if(admin_holder.rights & R_SPAWN)
-			verbs += admin_verbs_spawn
+			add_verb(src, admin_verbs_spawn)
 		if(admin_holder.rights & R_MOD)
-			verbs += admin_verbs_mod
+			add_verb(src, admin_verbs_mod)
 
 		if(RoleAuthority && (RoleAuthority.roles_whitelist[ckey] & WHITELIST_YAUTJA_LEADER))
-			verbs += clan_verbs
+			add_verb(src, clan_verbs)
 
 /client/proc/add_admin_whitelists()
 	if(is_mentor(src) || AHOLD_IS_MOD(admin_holder))
 		RoleAuthority.roles_whitelist[ckey] |= WHITELIST_MENTOR
 
 /client/proc/remove_admin_verbs()
-	verbs.Remove(
+	remove_verb(src, list(
 		admin_verbs_default,
 		/client/proc/togglebuildmodeself,
 		admin_verbs_admin,
@@ -300,8 +299,8 @@ var/list/admin_verbs_mod = list(
 		admin_verbs_teleport,
 		admin_mob_event_verbs_hideable,
 		admin_mob_verbs_hideable,
-		debug_verbs
-		)
+		debug_verbs,
+	))
 
 /client/proc/jobbans()
 	set name = "Display Job Bans"

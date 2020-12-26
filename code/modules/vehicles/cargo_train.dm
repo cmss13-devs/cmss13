@@ -35,7 +35,7 @@
 /obj/vehicle/train/cargo/engine/Initialize()
 	. = ..()
 	cell = new /obj/item/cell/apc
-	verbs -= /atom/movable/verb/pull
+	remove_verb(src, /atom/movable/verb/pull)
 	key = new()
 	var/image/I = new(icon = 'icons/obj/vehicles/vehicles.dmi', icon_state = "cargo_engine_overlay", layer = src.layer + 0.2) //over mobs
 	overlays += I
@@ -57,7 +57,7 @@
 		if(!key)
 			user.drop_inv_item_to_loc(W, src)
 			key = W
-			verbs += /obj/vehicle/train/cargo/engine/verb/remove_key
+			add_verb(src, /obj/vehicle/train/cargo/engine/verb/remove_key)
 		return
 	..()
 
@@ -90,24 +90,28 @@
 		..()
 		update_stats()
 
-		verbs -= /obj/vehicle/train/cargo/engine/verb/stop_engine
-		verbs -= /obj/vehicle/train/cargo/engine/verb/start_engine
+		remove_verb(src, list(
+			/obj/vehicle/train/cargo/engine/verb/stop_engine,
+			/obj/vehicle/train/cargo/engine/verb/start_engine,
+		))
 
 		if(on)
-			verbs += /obj/vehicle/train/cargo/engine/verb/stop_engine
+			add_verb(src, /obj/vehicle/train/cargo/engine/verb/stop_engine)
 		else
-			verbs += /obj/vehicle/train/cargo/engine/verb/start_engine
+			add_verb(src, /obj/vehicle/train/cargo/engine/verb/start_engine)
 
 /obj/vehicle/train/cargo/engine/turn_off()
 	..()
 
-	verbs -= /obj/vehicle/train/cargo/engine/verb/stop_engine
-	verbs -= /obj/vehicle/train/cargo/engine/verb/start_engine
+	remove_verb(src, list(
+		/obj/vehicle/train/cargo/engine/verb/stop_engine,
+		/obj/vehicle/train/cargo/engine/verb/start_engine,
+	))
 
 	if(!on)
-		verbs += /obj/vehicle/train/cargo/engine/verb/start_engine
+		add_verb(src, /obj/vehicle/train/cargo/engine/verb/start_engine)
 	else
-		verbs += /obj/vehicle/train/cargo/engine/verb/stop_engine
+		add_verb(src, /obj/vehicle/train/cargo/engine/verb/stop_engine)
 
 
 //-------------------------------------------
@@ -189,7 +193,7 @@
 		usr.put_in_hands(key)
 	key = null
 
-	verbs -= /obj/vehicle/train/cargo/engine/verb/remove_key
+	remove_verb(src, /obj/vehicle/train/cargo/engine/verb/remove_key)
 
 
 //-------------------------------------------------------
@@ -216,7 +220,7 @@
 		if(verbs.Find(/atom/movable/verb/pull))
 			return
 		else
-			verbs += /atom/movable/verb/pull
+			add_verb(src, /atom/movable/verb/pull)
 	else
 		anchored = 1
-		verbs -= /atom/movable/verb/pull
+		remove_verb(src, /atom/movable/verb/pull)

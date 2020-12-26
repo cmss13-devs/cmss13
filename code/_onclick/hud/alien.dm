@@ -26,7 +26,7 @@
 	using.icon = ui_alien_datum.ui_style_icon
 	using.screen_loc = ui_alien_datum.ui_alien_nightvision
 	infodisplay += using
-	mymob.verbs += /datum/action/xeno_action/verb/verb_night_vision
+	add_verb(mymob, /datum/action/xeno_action/verb/verb_night_vision)
 
 /datum/hud/alien/proc/draw_plasma_display(var/datum/custom_hud/alien/ui_alien_datum)
 	alien_plasma_display = new /obj/screen()
@@ -78,7 +78,7 @@
 	var/datum/custom_hud/alien/ui_alien_datum = custom_huds_list["alien"]
 
 	draw_healths(ui_alien_datum)
-	
+
 	var/obj/screen/using = new /obj/screen/xenonightvision()
 	using.icon = ui_alien_datum.ui_style_icon
 	using.screen_loc = ui_alien_datum.ui_alien_nightvision

@@ -37,8 +37,10 @@
 
 /mob/living/simple_animal/alien_slug/Initialize()
 	. = ..()
-	verbs += /mob/living/proc/ventcrawl
-	verbs += /mob/living/proc/hide
+	add_verb(src, list(
+		/mob/living/proc/ventcrawl,
+		/mob/living/proc/hide,
+	))
 
 /mob/living/simple_animal/alien_slug/start_pulling(var/atom/movable/AM)//Prevents it from pulling things
 	to_chat(src, SPAN_WARNING("You are too small to pull anything."))

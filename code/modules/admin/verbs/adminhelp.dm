@@ -136,9 +136,8 @@ var/global/list/ahelp_msgs = list()
 	to_chat(src, "<br><font color='#009900'><b>PM to Staff ([selected_type]):</font><br>&emsp;<font color='#DA6200'>[original_msg]</b></font><br>")
 
 	// Adminhelp cooldown
-	verbs -= /client/verb/adminhelp
-	spawn(2 MINUTES)
-		verbs += /client/verb/adminhelp
+	remove_verb(src, /client/verb/adminhelp)
+	addtimer(CALLBACK(GLOBAL_PROC, .proc/add_verb, src, /client/verb/adminhelp), 2 MINUTES)
 
 	var/admin_number_present = admins.len - admin_number_afk
 	log_admin("HELP: [key_name(src)]: [original_msg] - heard by [admin_number_present] non-AFK staff.")
